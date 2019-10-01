@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: 6c11f415fc1ea3a578893f6d14a60dfc1c4fddb0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ce59b46667f9139157a751d7d7b0205504d71ab0
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203016"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695648"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -45,28 +45,28 @@ Usługi Azure Virtual Networks zawierają dzienniki przepływu sieciowej grupy z
 
 ## <a name="key-components"></a>Główne składniki
 
-- **Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń)** : Zawiera listę reguł zabezpieczeń, które zezwalają na ruch sieciowy połączony z usługą Azure Virtual Network lub go odmówili. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami, poszczególnymi maszynami wirtualnymi (model klasyczny) lub poszczególnymi interfejsami sieciowymi (NIC) dołączonymi do maszyn wirtualnych (model usługi Resource Manager). Aby uzyskać więcej informacji, zobacz [Omówienie grup zabezpieczeń sieci](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Dzienniki przepływu sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)** : Umożliwia wyświetlanie informacji dotyczących ruchu przychodzącego i wychodzącego IP za pomocą sieciowej grupy zabezpieczeń. Dzienniki przepływu sieciowej grupy zabezpieczeń są zapisywane w formacie JSON i pokazują przepływy wychodzące i przychodzące dla każdej reguły, karta sieciowa przepływu ma zastosowanie do pięciu informacji o przepływie (źródłowy/docelowy adres IP, port źródłowy/docelowy i protokół), a jeśli ruch był dozwolony lub odmowa. Aby uzyskać więcej informacji na temat dzienników przepływów sieciowej grupy zabezpieczeń, zobacz [dzienniki przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: Usługa platformy Azure, która zbiera dane monitorowania i zapisuje dane w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności lub dane niestandardowe udostępniane za pomocą interfejsu API platformy Azure. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Aplikacje monitorujące, takie jak Monitor wydajności sieci i Analiza ruchu, są tworzone przy użyciu Azure Monitor dzienników jako podstawy. Aby uzyskać więcej informacji, zobacz [dzienniki Azure monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Log Analytics obszar roboczy**: Jest przechowywane wystąpienie dzienników Azure Monitor, w których dane odnoszą się do konta platformy Azure. Aby uzyskać więcej informacji na temat obszarów roboczych Log Analytics, zobacz [tworzenie log Analytics obszaru roboczego](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Network Watcher**: Usługa regionalna, która umożliwia monitorowanie i diagnozowanie warunków na poziomie scenariusza sieci na platformie Azure. Dzienniki przepływu sieciowej grupy zabezpieczeń można włączać i wyłączać za pomocą Network Watcher. Aby uzyskać więcej informacji, zobacz [Network Watcher](network-watcher-monitoring-overview.md).
+- **Network Security Group (sieciowej grupy zabezpieczeń)** : zawiera listę reguł zabezpieczeń, które zezwalają na ruch sieciowy lub odmawiają go zasobom podłączonym do Virtual Network platformy Azure. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami, poszczególnymi maszynami wirtualnymi (model klasyczny) lub poszczególnymi interfejsami sieciowymi (NIC) dołączonymi do maszyn wirtualnych (model usługi Resource Manager). Aby uzyskać więcej informacji, zobacz [Omówienie grup zabezpieczeń sieci](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Dzienniki przepływu sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)** : umożliwiają wyświetlanie informacji dotyczących ruchu przychodzącego i wychodzącego IP za pomocą sieciowej grupy zabezpieczeń. Dzienniki przepływu sieciowej grupy zabezpieczeń są zapisywane w formacie JSON i pokazują przepływy wychodzące i przychodzące dla każdej reguły, karta sieciowa przepływu ma zastosowanie do pięciu informacji o przepływie (źródłowy/docelowy adres IP, port źródłowy/docelowy i protokół), a jeśli ruch był dozwolony lub odmowa. Aby uzyskać więcej informacji na temat dzienników przepływów sieciowej grupy zabezpieczeń, zobacz [dzienniki przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
+- **Log Analytics**: usługa platformy Azure, która zbiera dane monitorowania i zapisuje dane w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności lub dane niestandardowe udostępniane za pomocą interfejsu API platformy Azure. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Aplikacje monitorujące, takie jak Monitor wydajności sieci i Analiza ruchu, są tworzone przy użyciu Azure Monitor dzienników jako podstawy. Aby uzyskać więcej informacji, zobacz [dzienniki Azure monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Obszar roboczy log Analytics**: wystąpienie dzienników Azure monitor, w których są przechowywane dane odnoszące się do konta platformy Azure. Aby uzyskać więcej informacji na temat obszarów roboczych Log Analytics, zobacz [tworzenie log Analytics obszaru roboczego](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Network Watcher**: usługa regionalna, która umożliwia monitorowanie i diagnozowanie warunków na poziomie scenariusza sieci na platformie Azure. Dzienniki przepływu sieciowej grupy zabezpieczeń można włączać i wyłączać za pomocą Network Watcher. Aby uzyskać więcej informacji, zobacz [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Jak działa Analiza ruchu
 
-Analiza ruchu analizuje dzienniki nieprzetworzonych przepływów sieciowej grupy zabezpieczeń i przechwytuje zredukowane dzienniki poprzez agregowanie typowych przepływów między tym samym źródłowym adresem IP, docelowym adresem IP, portem docelowym i protokołem. Na przykład host 1 (adres IP: 10.10.10.10) do komunikacji z hostem 2 (adres IP: 10.10.20.10), 100 razy w okresie 1 godziny przy użyciu portu (na przykład 80) i protokołu (na przykład http). Zredukowany Dziennik ma jeden wpis, który host 1 & Host 2 komunikuje się 100 razy w okresie 1 godziny przy użyciu portu *80* i protokołu *http*, a nie do 100 wpisów. Zredukowane dzienniki są ulepszone przy użyciu informacji o lokalizacji geograficznej, zabezpieczeń i topologii, a następnie są przechowywane w obszarze roboczym Log Analytics. Na poniższej ilustracji przedstawiono przepływ danych:
+Analiza ruchu analizuje dzienniki nieprzetworzonych przepływów sieciowej grupy zabezpieczeń i przechwytuje zredukowane dzienniki poprzez agregowanie typowych przepływów między tym samym źródłowym adresem IP, docelowym adresem IP, portem docelowym i protokołem. Na przykład host 1 (adres IP: 10.10.10.10), który komunikuje się z hostem 2 (adres IP: 10.10.20.10), 100 razy w okresie 1 godziny przy użyciu portu (na przykład 80) i protokołu (na przykład http). Zredukowany Dziennik ma jeden wpis, który host 1 & Host 2 komunikuje się 100 razy w okresie 1 godziny przy użyciu portu *80* i protokołu *http*, a nie do 100 wpisów. Zredukowane dzienniki są ulepszone przy użyciu informacji o lokalizacji geograficznej, zabezpieczeń i topologii, a następnie są przechowywane w obszarze roboczym Log Analytics. Na poniższej ilustracji przedstawiono przepływ danych:
 
 ![Przepływ danych dla przetwarzania dzienników przepływu sieciowej grupy zabezpieczeń](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
-## <a name="supported-regions-nsg"></a>Obsługiwane regiony: Sieciowa grupa zabezpieczeń 
+## <a name="supported-regions-nsg"></a>Obsługiwane regiony: sieciowej grupy zabezpieczeń 
 
 Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
 
 * Kanada Środkowa
-* Środkowo-zachodnie stany USA
-* East US
+* Zachodnio-środkowe stany USA
+* Wschodnie stany USA
 * Wschodnie stany USA 2
-* Środkowo-północne stany USA
-* Środkowo-południowe stany USA
+* Północno-środkowe stany USA
+* Południowo-środkowe stany USA
 * Środkowe stany USA
 * Zachodnie stany USA
 * Zachodnie stany USA 2
@@ -79,7 +79,7 @@ Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następ
 * Australia Wschodnia
 * Australia Południowo-Wschodnia
 * Azja Wschodnia
-* Azja Południowo-Wschodnia
+* Azja Południowo-wschodnia
 * Korea Środkowa
 * Indie Środkowe
 * Indie Południowe
@@ -87,14 +87,14 @@ Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następ
 * Japonia Zachodnia
 * Administracja USA — Wirginia
 
-## <a name="supported-regions-log-analytics-workspaces"></a>Obsługiwane regiony: Obszary robocze usługi Log Analytics
+## <a name="supported-regions-log-analytics-workspaces"></a>Obsługiwane regiony: Log Analytics obszary robocze
 
 Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 * Kanada Środkowa
-* Środkowo-zachodnie stany USA
-* East US
+* Zachodnio-środkowe stany USA
+* Wschodnie stany USA
 * Wschodnie stany USA 2
-* Środkowo-południowe stany USA
+* Południowo-środkowe stany USA
 * Zachodnie stany USA
 * Zachodnie stany USA 2
 * Środkowe stany USA
@@ -105,7 +105,7 @@ Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 * Australia Wschodnia
 * Australia Południowo-Wschodnia
 * Azja Wschodnia
-* Azja Południowo-Wschodnia
+* Azja Południowo-wschodnia
 * Korea Środkowa
 * Indie Środkowe
 * Japonia Wschodnia
@@ -117,7 +117,7 @@ Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 
 Twoje konto musi być członkiem jednej z następujących [wbudowanych ról](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)platformy Azure:
 
-|Model wdrożenia   | Role                   |
+|Model wdrażania   | Rola                   |
 |---------          |---------               |
 |Resource Manager   | Właściciel                  |
 |                   | Współautor            |
@@ -131,8 +131,8 @@ Jeśli Twoje konto nie jest przypisane do jednej z ról wbudowanych, musi być p
 - "Microsoft. Network/loadBalancers/Read"
 - "Microsoft. Network/localNetworkGateways/Read"
 - "Microsoft. Network/networkInterfaces/Read"
-- "Microsoft.Network/networkSecurityGroups/read"
-- "Microsoft.Network/publicIPAddresses/read"
+- "Microsoft. Network/networkSecurityGroups/Read"
+- "Microsoft. Network/adresów publicipaddress/Read"
 - "Microsoft. Network/routeTables/Read"
 - "Microsoft. Network/virtualNetworkGateways/Read"
 - "Microsoft. Network/virtualNetworks/Read"
@@ -163,7 +163,7 @@ Zarejestruj dostawcę usługi Azure Insights, jeśli nie został jeszcze zarejes
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-Jeśli nie masz jeszcze konta usługi Azure Storage do przechowywania dzienników przepływu sieciowej grupy zabezpieczeń w programie, musisz utworzyć konto magazynu. Można utworzyć konto magazynu za pomocą poniższego polecenia. Przed uruchomieniem polecenia Zamień `<replace-with-your-unique-storage-account-name>` na nazwę, która jest unikatowa we wszystkich lokalizacjach platformy Azure, od 3-24 znaków, używając tylko cyfr i małych liter. W razie potrzeby można również zmienić nazwę grupy zasobów.
+Jeśli nie masz jeszcze konta usługi Azure Storage do przechowywania dzienników przepływu sieciowej grupy zabezpieczeń w programie, musisz utworzyć konto magazynu. Można utworzyć konto magazynu za pomocą poniższego polecenia. Przed uruchomieniem polecenia Zastąp `<replace-with-your-unique-storage-account-name>` nazwą, która jest unikatowa we wszystkich lokalizacjach platformy Azure, od 3-24 znaków, używając tylko cyfr i małych liter. W razie potrzeby można również zmienić nazwę grupy zasobów.
 
 ```azurepowershell-interactive
 New-AzStorageAccount `
@@ -182,18 +182,21 @@ Wybierz poniższe opcje, jak pokazano na ilustracji:
 4. Ustaw wartość **przechowywanie** na liczbę dni, przez którą mają być przechowywane dane.
 > [!IMPORTANT]
 > Obecnie występuje problem polegający na tym, że [dzienniki przepływu sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń)](network-watcher-nsg-flow-logging-overview.md) dla Network Watcher nie są automatycznie usuwane z magazynu obiektów BLOB na podstawie ustawień zasad przechowywania. Jeśli masz istniejące zasady przechowywania inne niż zero, zalecamy okresowe usuwanie obiektów blob magazynu, które przekroczyły okres przechowywania, aby uniknąć naliczania opłat. Aby uzyskać więcej informacji o usuwaniu blogu magazynu dzienników sieciowej grupy zabezpieczeń Flow, zobacz [usuwanie obiektów blob magazynu dzienników usługi sieciowej grupy zabezpieczeń Flow](network-watcher-delete-nsg-flow-log-blobs.md).
+
 5. Wybierz pozycję *włączone* , aby uzyskać **stan Analiza ruchu**.
 6. Wybierz interwał przetwarzania. W zależności od wybranych dzienników przepływów będą zbierane z konta magazynu i przetwarzane przez Analiza ruchu. Można wybrać interwał przetwarzania co 1 godzinę lub co 10 minut. 
 7. Wybierz istniejący obszar roboczy usługi Log Analytics (OMS) lub wybierz pozycję **Utwórz nowy obszar roboczy** , aby utworzyć nowy. Obszar roboczy Log Analytics jest używany przez Analiza ruchu do przechowywania zagregowanych i indeksowanych danych, które są następnie używane do generowania analizy. Jeśli wybierzesz istniejący obszar roboczy, musi on znajdować się w jednym z [obsługiwanych regionów](#supported-regions-log-analytics-workspaces) i został uaktualniony do nowego języka zapytań. Jeśli nie chcesz uaktualnić istniejącego obszaru roboczego lub nie masz obszaru roboczego w obsługiwanym regionie, Utwórz nowy. Aby uzyskać więcej informacji na temat języków zapytań, zobacz [Azure log Analytics Upgrade to New Search log](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    Obszar roboczy usługi log Analytics obsługujący rozwiązanie do analizy ruchu i sieciowych grup zabezpieczeń nie muszą znajdować się w tym samym regionie. Na przykład możesz mieć dostęp do analizy ruchu w obszarze roboczym w regionie Europa Zachodnia, a ty możesz mieć sieciowych grup zabezpieczeń w regionach Wschodnie stany USA i zachodnie stany USA. W tym samym obszarze roboczym można skonfigurować wiele sieciowych grup zabezpieczeń.
+> [!NOTE]
+>Obszar roboczy usługi log Analytics obsługujący rozwiązanie do analizy ruchu i sieciowych grup zabezpieczeń nie muszą znajdować się w tym samym regionie. Na przykład możesz mieć dostęp do analizy ruchu w obszarze roboczym w regionie Europa Zachodnia, a ty możesz mieć sieciowych grup zabezpieczeń w regionach Wschodnie stany USA i zachodnie stany USA. W tym samym obszarze roboczym można skonfigurować wiele sieciowych grup zabezpieczeń.
+
 8. Wybierz pozycję **Zapisz**.
 
     ![Wybór konta magazynu, obszaru roboczego Log Analytics i włączenia Analiza ruchu](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-Powtórz poprzednie kroki dla wszystkich innych sieciowych grup zabezpieczeń, dla których chcesz włączyć funkcję analizy ruchu dla programu. Dane z dzienników przepływów są wysyłane do obszaru roboczego, dlatego należy się upewnić, że lokalne przepisy i regulacje w Twoim kraju zezwalają na przechowywanie danych w regionie, w którym znajduje się obszar roboczy. Jeśli ustawiono różne interwały przetwarzania dla różnych sieciowych grup zabezpieczeń, dane będą zbierane w różnych interwałach. Na przykład: Można włączyć interwał przetwarzania 10 minut dla sieci wirtualnych krytycznych i 1 godzinę dla niekrytycznego sieci wirtualnychu.
+Powtórz poprzednie kroki dla wszystkich innych sieciowych grup zabezpieczeń, dla których chcesz włączyć funkcję analizy ruchu dla programu. Dane z dzienników przepływów są wysyłane do obszaru roboczego, dlatego należy się upewnić, że lokalne przepisy i regulacje w Twoim kraju zezwalają na przechowywanie danych w regionie, w którym znajduje się obszar roboczy. Jeśli ustawiono różne interwały przetwarzania dla różnych sieciowych grup zabezpieczeń, dane będą zbierane w różnych interwałach. Na przykład: można włączyć interwał przetwarzania równy 10 minut dla sieci wirtualnych krytycznych i 1 godzinę dla niekrytycznego sieci wirtualnychu.
 
-Analiza ruchu można również skonfigurować za pomocą polecenia cmdlet [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) środowiska PowerShell w Azure PowerShell. Uruchom `Get-Module -ListAvailable Az` , aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
+Analiza ruchu można również skonfigurować za pomocą polecenia cmdlet [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) środowiska PowerShell w Azure PowerShell. Uruchom `Get-Module -ListAvailable Az`, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="view-traffic-analytics"></a>Wyświetlanie analizy ruchu
 
@@ -203,7 +206,7 @@ Po lewej stronie portalu wybierz pozycję **wszystkie usługi**, a następnie wp
 
 Po raz pierwszy pulpit nawigacyjny może potrwać do 30 minut, ponieważ Analiza ruchu musi najpierw agregować wystarczającą ilość danych, aby uzyskać istotny wgląd, zanim będzie mógł generować raporty.
 
-## <a name="usage-scenarios"></a>Scenariusze użytkowania
+## <a name="usage-scenarios"></a>Scenariusze użycia
 
 Niektóre szczegółowe informacje, które można uzyskać po skonfigurowaniu Analiza ruchu jest w pełni skonfigurowane, są następujące:
 
@@ -308,7 +311,7 @@ Niektóre szczegółowe informacje, które można uzyskać po skonfigurowaniu An
     ![Pulpit nawigacyjny — pokaz dystrybucji sieci wirtualnej](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - Topologia Virtual Network przedstawia najwyższą Wstążkę do wybierania parametrów, takich jak sieć wirtualna (połączenia sieci wirtualnej/aktywne/nieaktywne), połączenia zewnętrzne, aktywne przepływy i złośliwe przepływy sieci wirtualnej.
-- Topologię Virtual Network można filtrować na podstawie subskrypcji, obszarów roboczych, grup zasobów i interwału czasu. Dodatkowe filtry, które pomagają zrozumieć przepływ: Typ przepływu (ramach, IntraVNET itd.), kierunek przepływu (przychodzący, wychodzący), stan przepływu (dozwolony, zablokowany), sieci wirtualnych (ukierunkowany i połączony), typ połączenia (Komunikacja równorzędna lub Brama-P2S i S2S) oraz sieciowej grupy zabezpieczeń. Użyj tych filtrów, aby skoncentrować się na sieci wirtualnych, który ma zostać szczegółowo sprawdzony.
+- Topologię Virtual Network można filtrować na podstawie subskrypcji, obszarów roboczych, grup zasobów i interwału czasu. Dodatkowe filtry, które ułatwiają zrozumienie przepływu: typ przepływu (ramach, IntraVNET itd.), kierunek przepływu (ruch przychodzący), stan przepływu (dozwolone, zablokowane), sieci wirtualnych (ukierunkowane i połączone), typ połączenia (Komunikacja równorzędna lub Brama-P2S i S2S) oraz sieciowej grupy zabezpieczeń. Użyj tych filtrów, aby skoncentrować się na sieci wirtualnych, który ma zostać szczegółowo sprawdzony.
 - Topologia Virtual Network przedstawia dystrybucję ruchu do sieci wirtualnej w odniesieniu do przepływów (dozwolony/zablokowany/przychodzący/wychodzący/niegroźny/złośliwy), protokołu aplikacji i sieciowych grup zabezpieczeń, na przykład:
 
     ![Topologia sieci wirtualnej przedstawiające informacje o dystrybucji i przepływie ruchu](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
@@ -334,7 +337,7 @@ Dystrybucja ruchu na bramę aplikacji & Load Balancer, topologia, najważniejsze
  - Poznanie podsieci, do której odnosi się Brama aplikacji lub Load Balancer. Jeśli zauważysz nieoczekiwane konwersacje, możesz poprawić konfigurację.
  - Jeśli nieautoryzowane sieci są odwracające do bramy aplikacji lub Load Balancer, można je poprawić, konfigurując reguły sieciowej grupy zabezpieczeń w celu blokowania nieautoryzowanych sieci. 
 
-    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![Topologia podsieci — Prezentacja typu "ruch-dystrybucja między aplikacjami-Brama-sieć" z uwzględnieniem przepływów](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Wyświetlanie portów i maszyn wirtualnych odbierających ruch z Internetu
 

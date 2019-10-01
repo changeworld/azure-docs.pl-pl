@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: efe0aaf7c7d5516401f8c72721121a5dff247b95
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 196565e84ec493352ca9765d5502c9ad8ac7edd3
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350374"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703486"
 ---
 # <a name="live-events-and-live-outputs"></a>Wydarzenia i dane wyjściowe na żywo
 
@@ -29,7 +29,7 @@ Azure Media Services pozwala na dostarczanie na żywo wydarzeń klientom w chmur
 
 ## <a name="live-events"></a>Wydarzenia na żywo
 
-[Wydarzenia na żywo](https://docs.microsoft.com/rest/api/media/liveevents) odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Podczas tworzenia zdarzenia na żywo tworzony jest podstawowy i pomocniczy punkt końcowy wejścia, którego można użyć do wysłania sygnału na żywo ze zdalnego kodera. Zdalny koder na żywo wysyła strumieniowe źródło danych do tego wejściowego punktu końcowego przy użyciu protokołu [RTMP](https://www.adobe.com/devnet/rtmp.html) lub [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmentacja-MP4). W przypadku protokołu pozyskiwania RTMP zawartość może być wysyłana w postaci zwykłej`rtmp://`() lub bezpiecznie zaszyfrowanej w`rtmps://`sieci (). W przypadku protokołu pozyskiwania Smooth Streaming obsługiwane schematy adresów URL to `http://` lub `https://`.  
+[Wydarzenia na żywo](https://docs.microsoft.com/rest/api/media/liveevents) odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Podczas tworzenia zdarzenia na żywo tworzony jest podstawowy i pomocniczy punkt końcowy wejścia, którego można użyć do wysłania sygnału na żywo ze zdalnego kodera. Zdalny koder na żywo wysyła strumieniowe źródło danych do tego wejściowego punktu końcowego przy użyciu protokołu [RTMP](https://www.adobe.com/devnet/rtmp.html) lub [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmentacja-MP4). W przypadku protokołu RTMP pozyskiwania można wysłać zawartość w postaci zwykłego tekstu (`rtmp://`) lub bezpiecznie zaszyfrowanej w sieci (`rtmps://`). W przypadku protokołu pozyskiwania Smooth Streaming obsługiwane schematy adresów URL to `http://` lub `https://`.  
 
 ## <a name="live-event-types"></a>Typy zdarzeń na żywo
 
@@ -76,7 +76,7 @@ Podczas tworzenia zdarzenia na żywo można określić następujące opcje:
 * Podczas tworzenia zdarzenia można określić, że będzie ono automatycznie uruchamiane. <br/>Jeśli automatyczne uruchamianie zostanie ustawione na wartość true, wydarzenie na żywo rozpocznie się po utworzeniu. Rozliczanie zaczyna się zaraz po rozpoczęciu uruchamiania zdarzenia na żywo. Należy jawnie wywołać operację zatrzymywania w zasobie wydarzenia na żywo, aby zatrzymać dalsze rozliczenia. Możesz też uruchomić zdarzenie, gdy wszystko jest gotowe do rozpoczęcia przesyłania strumieniowego. 
 
     Aby uzyskać więcej informacji, zobacz [Live Event states and billing](live-event-states-billing.md) (Stany i rozliczenia dotyczące wydarzenia na żywo).
-* Ograniczenia dotyczące adresów IP w pozyskiwaniu i podglądzie. Można zdefiniować adresy IP, które mogą pozyskiwać pliki wideo w tym wydarzeniu na żywo. Jako dozwolone adresy IP można podać pojedynczy adres IP (na przykład „10.0.0.1”), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (na przykład „10.0.0.1/22”) lub zakres adresów IP przy użyciu adresu IP i maski podsieci w notacji z kropką dziesiętną (na przykład, „10.0.0.1(255.255.252.0)”).<br/>Jeśli adresy IP nie zostaną określone i brakuje definicji reguły, to żaden adres IP nie będzie dozwolony. Aby zezwolić na jakikolwiek adres IP, utwórz regułę i ustaw wartość 0.0.0.0/0.<br/>Adresy IP muszą mieć jeden z następujących formatów: adres IPv4 z 4 cyframi, zakres adresów CIDR.
+* Ograniczenia dotyczące adresów IP w pozyskiwaniu i podglądzie. Można zdefiniować adresy IP, które mogą pozyskiwać pliki wideo w tym wydarzeniu na żywo. Jako dozwolone adresy IP można podać pojedynczy adres IP (na przykład „10.0.0.1”), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (na przykład „10.0.0.1/22”) lub zakres adresów IP przy użyciu adresu IP i maski podsieci w notacji z kropką dziesiętną (na przykład, „10.0.0.1(255.255.252.0)”).<br/>Jeśli adresy IP nie zostaną określone i brakuje definicji reguły, to żaden adres IP nie będzie dozwolony. Aby zezwolić na jakikolwiek adres IP, utwórz regułę i ustaw wartość 0.0.0.0/0.<br/>Adresy IP muszą znajdować się w jednym z następujących formatów: adres IpV4 z 4 numerami, zakres adresów CIDR.
 
     Jeśli chcesz włączyć niektóre adresy IP na własnych zaporach lub chcesz ograniczyć dane wejściowe do zdarzeń na żywo do adresów IP platformy Azure, Pobierz plik JSON z [zakresów adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). Aby uzyskać szczegółowe informacje na temat tego pliku, kliknij sekcję **szczegóły** na stronie.
         
@@ -86,6 +86,9 @@ Podczas tworzenia zdarzenia na żywo można określić następujące opcje:
 * Nazwa powinna być zgodna z tym wzorcem [wyrażenia regularnego](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) : `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
 
 Zobacz również [konwencje nazewnictwa punktów końcowych przesyłania strumieniowego](streaming-endpoint-concept.md#naming-convention).
+
+> [!TIP]
+> Aby zagwarantować unikatowość nazwy zdarzenia na żywo, można wygenerować identyfikator GUID, a następnie usunąć wszystkie łączniki i nawiasy klamrowe (jeśli istnieją). Ciąg będzie unikatowy dla wszystkich wydarzeń na żywo, a jego długość jest gwarantowana na 32.
 
 ## <a name="live-event-ingest-urls"></a>Adresy URL pozyskiwania zdarzeń na żywo
 
@@ -105,7 +108,7 @@ Możesz użyć znaczących lub nieznaczących adresów URL.
 
     Tryb znaczący jest preferowany przez dużych nadawców multimediów, którzy używają sprzętowych koderów emisyjnych i nie chcą ponownie konfigurować swoich koderów, kiedy uruchamiają wydarzenie na żywo. Wolą dysponować predykcyjnym adresem URL pozyskiwania, który nie zmienia się w czasie.
     
-    Aby określić ten tryb, należy ustawić `vanityUrl` na `true` wartość Godzina `false`utworzenia (domyślnie). Należy również przekazać własny token dostępu (`LiveEventInput.accessToken`) podczas tworzenia. Należy określić wartość tokenu, aby uniknąć losowego tokenu w adresie URL. Token dostępu musi być prawidłowym ciągiem identyfikatora GUID (z łącznikami lub bez nich). Po ustawieniu trybu nie można go zaktualizować.
+    Aby określić ten tryb, należy ustawić `vanityUrl` na `true` podczas tworzenia (wartość domyślna to `false`). Podczas tworzenia należy również przekazać własny token dostępu (`LiveEventInput.accessToken`). Należy określić wartość tokenu, aby uniknąć losowego tokenu w adresie URL. Token dostępu musi być prawidłowym ciągiem identyfikatora GUID (z łącznikami lub bez nich). Po ustawieniu trybu nie można go zaktualizować.
 
     Token dostępu musi być unikatowy w centrum danych. Jeśli aplikacja musi używać adresu URL znaczącym, zaleca się, aby zawsze utworzyć nowe wystąpienie GUID dla tokenu dostępu (zamiast ponownie używać dowolnego istniejącego identyfikatora GUID). 
 
@@ -113,8 +116,8 @@ Możesz użyć znaczących lub nieznaczących adresów URL.
     
     |Język|Włącz adres URL znaczącym|Określanie tokenu dostępu|
     |---|---|---|
-    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |Interfejs wiersza polecenia|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--token dostępu](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |REST|[Właściwości. vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |Interfejs CLI|[--znaczącym-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--token dostępu](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
     |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
 ### <a name="live-ingest-url-naming-rules"></a>Reguły nazewnictwa adresów URL pozyskiwania na żywo

@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033830"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702819"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji Azure AD B2C
 
@@ -33,12 +33,12 @@ Kategoria **B2C** w dziennikach inspekcji zawiera następujące typy działań:
 
 |Typ działania |Opis  |
 |---------|---------|
-|Authorization |Działania dotyczące autoryzacji użytkownika w celu uzyskania dostępu do zasobów B2C (na przykład administratorów uzyskujących dostęp do listy zasad B2C).         |
+|Autoryzacja |Działania dotyczące autoryzacji użytkownika w celu uzyskania dostępu do zasobów B2C (na przykład administratorów uzyskujących dostęp do listy zasad B2C).         |
 |Katalog |Działania związane z atrybutami katalogu pobrane, gdy administrator zaloguje się przy użyciu Azure Portal. |
 |Aplikacja | Tworzenie, odczytywanie, aktualizowanie i usuwanie (CRUD) operacji na aplikacjach B2C. |
 |Klucz |Operacje CRUD na kluczach przechowywanych w kontenerze kluczy B2C. |
-|Resource |CRUD operacji na zasobach B2C. Na przykład zasady i dostawcy tożsamości.
-|Authentication |Weryfikowanie poświadczeń użytkownika i wystawianie tokenów.|
+|Zasób |CRUD operacji na zasobach B2C. Na przykład zasady i dostawcy tożsamości.
+|Uwierzytelnianie |Weryfikowanie poświadczeń użytkownika i wystawianie tokenów.|
 
 W przypadku działań CRUD obiektów użytkownika zapoznaj się z kategorią **katalogu podstawowego** .
 
@@ -50,15 +50,15 @@ Ten przykładowy obraz z Azure Portal przedstawia dane przechwycone, gdy użytko
 
 Panel szczegóły działania zawiera następujące informacje:
 
-|`Section`|Pole|Opis|
+|Sekcja|Pole|Opis|
 |-------|-----|-----------|
-| Działanie | Name | Jakie działanie miało miejsce. Na przykład *wydaj id_token do aplikacji*, która zawiera rzeczywiste Logowanie użytkownika. |
-| Zainicjowane przez (aktor) | ObjectId | **Identyfikator obiektu** aplikacji B2C, w której loguje się użytkownik. Ten identyfikator nie jest widoczny w Azure Portal, ale jest dostępny za pośrednictwem interfejsu API Microsoft Graph. |
-| Zainicjowane przez (aktor) | Główna nazwa usługi | **Identyfikator aplikacji** B2C, w której loguje się użytkownik. |
-| Elementy docelowe | ObjectId | **Identyfikator obiektu** użytkownika, który loguje się. |
+| Działanie | Nazwa | Jakie działanie miało miejsce. Na przykład *wydaj id_token do aplikacji*, która zawiera rzeczywiste Logowanie użytkownika. |
+| Zainicjowane przez (aktor) | Obiektu | **Identyfikator obiektu** aplikacji B2C, w której loguje się użytkownik. Ten identyfikator nie jest widoczny w Azure Portal, ale jest dostępny za pośrednictwem interfejsu API Microsoft Graph. |
+| Zainicjowane przez (aktor) | SPN | **Identyfikator aplikacji** B2C, w której loguje się użytkownik. |
+| Elementy docelowe | Obiektu | **Identyfikator obiektu** użytkownika, który loguje się. |
 | Dodatkowe szczegóły | TenantId | **Identyfikator dzierżawy** dzierżawy Azure AD B2C. |
-| Dodatkowe szczegóły | `PolicyId` | **Identyfikator zasad** przepływu użytkownika (zasady) używany do podpisywania użytkownika w programie. |
-| Dodatkowe szczegóły | ApplicationId | **Identyfikator aplikacji** B2C, w której loguje się użytkownik. |
+| Dodatkowe szczegóły | PolicyId | **Identyfikator zasad** przepływu użytkownika (zasady) używany do podpisywania użytkownika w programie. |
+| Dodatkowe szczegóły | Identyfikator | **Identyfikator aplikacji** B2C, w której loguje się użytkownik. |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Wyświetlanie dzienników inspekcji w Azure Portal
 
@@ -90,40 +90,38 @@ Dzienniki inspekcji są publikowane w tym samym potoku co inne działania dotycz
 Aby zezwolić na dostęp skryptowy lub oparty na aplikacji do interfejsu API raportowania usługi Azure AD, potrzebujesz aplikacji Azure Active Directory zarejestrowanej w dzierżawie Azure AD B2C z następującymi uprawnieniami interfejsu API:
 
 * Microsoft Graph
-  * Aplikacja: Odczytaj wszystkie dane dziennika inspekcji
+  * Aplikacja: odczytywanie wszystkich danych dziennika inspekcji
 
 Możesz włączyć te uprawnienia dla istniejącej Azure Active Directory rejestracji aplikacji w ramach dzierżawy usługi B2C lub utworzyć nowy, przeznaczony do użycia z automatyzacją dzienników inspekcji.
 
-Aby utworzyć nową aplikację, przypisz wymagane uprawnienia interfejsu API i Utwórz klucz tajny klienta, wykonując następujące czynności:
+Wykonaj następujące kroki, aby zarejestrować aplikację, udziel jej wymagane Microsoft Graph uprawnienia interfejsu API, a następnie Utwórz klucz tajny klienta.
 
-1. Zarejestruj aplikację w Azure Active Directory
-    1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do katalogu, który zawiera dzierżawę Azure AD B2C.
-    1. Wybierz pozycję **Azure Active Directory** (*nie* Azure AD B2C) z menu po lewej stronie. Lub wybierz pozycję **wszystkie usługi**, a następnie wyszukaj i wybierz **Azure Active Directory**.
-    1. W obszarze **Zarządzaj** w menu po lewej stronie wybierz pozycję **rejestracje aplikacji (starsza wersja)** .
-    1. Wybierz pozycję **rejestracja nowej aplikacji**
-    1. Wprowadź nazwę aplikacji. Na przykład *aplikacja dziennika inspekcji*.
-    1. Wprowadź dowolny prawidłowy adres URL w **adresie URL logowania**. Na przykład *https://localhost* . Ten punkt końcowy nie musi być osiągalny, ale musi być prawidłowym adresem URL.
-    1. Wybierz pozycję **Utwórz**.
-    1. Zapisz **Identyfikator aplikacji** , który pojawia się na stronie **zarejestrowana aplikacja** . Ta wartość jest wymagana do uwierzytelniania w skryptach automatyzacji, takich jak przykładowy skrypt programu PowerShell przedstawiony w dalszej części.
-1. Przypisywanie uprawnień dostępu do interfejsu API
-    1. Na stronie Przegląd **zarejestrowanej aplikacji** wybierz pozycję **Ustawienia**.
-    1. W obszarze **dostęp do interfejsu API**wybierz pozycję **wymagane uprawnienia**.
-    1. Wybierz pozycję **Dodaj**, a następnie **Wybierz interfejs API**.
-    1. Wybierz pozycję **Microsoft Graph**, a następnie **Wybierz pozycję**.
-    1. W obszarze **uprawnienia aplikacji**wybierz opcję **Czytaj wszystkie dane dziennika inspekcji**.
-    1. Wybierz przycisk **Wybierz** , a następnie wybierz pozycję **gotowe**.
-    1. Wybierz **udzielić uprawnień**, a następnie wybierz pozycję **tak**.
-1. Utwórz klucz tajny klienta
-    1. W obszarze **dostęp do interfejsu API**wybierz pozycję **klucze**.
-    1. Wprowadź opis klucza w polu **Opis klucza** . Na przykład *klucz dziennika inspekcji*.
-    1. Wybierz **okres**ważności, a następnie wybierz pozycję **Zapisz**.
-    1. Zapisz **wartość**klucza. Ta wartość jest wymagana do uwierzytelniania w skryptach automatyzacji, takich jak przykładowy skrypt programu PowerShell przedstawiony w dalszej części.
+### <a name="register-application-in-azure-active-directory"></a>Zarejestruj aplikację w Azure Active Directory
+
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+
+### <a name="assign-api-access-permissions"></a>Przypisywanie uprawnień dostępu do interfejsu API
+
+1. Na stronie Przegląd **zarejestrowanej aplikacji** wybierz pozycję **Ustawienia**.
+1. W obszarze **dostęp do interfejsu API**wybierz pozycję **wymagane uprawnienia**.
+1. Wybierz pozycję **Dodaj**, a następnie **Wybierz interfejs API**.
+1. Wybierz pozycję **Microsoft Graph**, a następnie **Wybierz pozycję**.
+1. W obszarze **uprawnienia aplikacji**wybierz opcję **Czytaj wszystkie dane dziennika inspekcji**.
+1. Wybierz przycisk **Wybierz** , a następnie wybierz pozycję **gotowe**.
+1. Wybierz pozycję **Udziel uprawnień**, a następnie wybierz pozycję **tak**.
+
+### <a name="create-client-secret"></a>Utwórz klucz tajny klienta
+
+1. W obszarze **dostęp do interfejsu API**wybierz pozycję **klucze**.
+1. Wprowadź opis klucza w polu **Opis klucza** . Na przykład *klucz dziennika inspekcji*.
+1. Wybierz **okres**ważności, a następnie wybierz pozycję **Zapisz**.
+1. Zapisz **wartość**klucza. Ta wartość jest wymagana do uwierzytelniania w skryptach automatyzacji, takich jak przykładowy skrypt programu PowerShell przedstawiony w dalszej części.
 
 Masz teraz aplikację z wymaganym dostępem do interfejsu API, IDENTYFIKATORem aplikacji i kluczem, którego można użyć w skryptach automatyzacji. Zapoznaj się z sekcją skryptu programu PowerShell w dalszej części tego artykułu, aby zapoznać się z przykładem, jak można pobrać zdarzenia dotyczące aktywności ze skryptem.
 
 ### <a name="access-the-api"></a>Dostęp do interfejsu API
 
-Aby pobrać Azure AD B2C zdarzenia dziennika inspekcji za pośrednictwem interfejsu API, przefiltruj `B2C` dzienniki w kategorii. Aby filtrować według kategorii, użyj `filter` parametru ciągu zapytania podczas wywoływania punktu końcowego interfejsu API raportowania usługi Azure AD.
+Aby pobrać Azure AD B2C zdarzenia dziennika inspekcji za pośrednictwem interfejsu API, przefiltruj dzienniki w kategorii `B2C`. Aby filtrować według kategorii, użyj parametru ciągu zapytania `filter` podczas wywoływania punktu końcowego interfejsu API raportowania usługi Azure AD.
 
 ```HTTP
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z

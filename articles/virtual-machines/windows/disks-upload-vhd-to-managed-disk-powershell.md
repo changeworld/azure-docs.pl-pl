@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: cd8c5b174d92edcf69801edaeabd0c0730985654
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 5b7c612d349c3f596487db4af025e5e599b6589c
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326921"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694792"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu Azure PowerShell
 
@@ -31,14 +31,14 @@ Obecnie bezpośrednie przekazywanie jest obsługiwane dla standardowego dysku tw
 
 ## <a name="create-an-empty-managed-disk"></a>Utwórz pusty dysk zarządzany
 
-Aby przekazać dysk VHD na platformę Azure, musisz utworzyć pusty dysk zarządzany, który jest skonfigurowany dla tego procesu przekazywania. Przed utworzeniem jednego z tych dysków należy zapoznać się z dodatkowymi informacjami.
+Aby przekazać dysk VHD na platformę Azure, musisz utworzyć pusty dysk zarządzany skonfigurowany dla tego procesu przekazywania. Przed utworzeniem jednego z tych dysków należy zapoznać się z dodatkowymi informacjami.
 
 Ten rodzaj dysku zarządzanego ma dwa unikatowe Stany:
 
 - ReadToUpload, co oznacza, że dysk jest gotowy do odebrania przekazania, ale nie Wygenerowano [sygnatury bezpiecznego dostępu](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS).
 - ActiveUpload, co oznacza, że dysk jest gotowy do odebrania przekazywania i Wygenerowano sygnaturę dostępu współdzielonego.
 
-W każdym z tych stanów dysk zarządzany jest rozliczany zgodnie ze [standardowymi cenami](https://azure.microsoft.com/pricing/details/managed-disks/)dysków twardych, niezależnie od rzeczywistego typu dysku. Na przykład P10 będzie rozliczany jako S10. Ta wartość będzie prawdziwa do `revoke-access` momentu wywołania na dysku zarządzanym, który jest wymagany w celu dołączenia dysku do maszyny wirtualnej.
+W każdym z tych stanów dysk zarządzany jest rozliczany zgodnie ze [standardowymi cenami](https://azure.microsoft.com/pricing/details/managed-disks/)dysków twardych, niezależnie od rzeczywistego typu dysku. Na przykład P10 będzie rozliczany jako S10. Ta wartość będzie prawdziwa do momentu wywołania `revoke-access` na dysku zarządzanym, co jest wymagane w celu dołączenia dysku do maszyny wirtualnej.
 
 Przed utworzeniem pustego standardowego dysku twardego do przekazania należy zmienić rozmiar pliku w bajtach wirtualnego dysku twardego, który ma zostać przekazany. Przykładowy kod uzyskasz dla Ciebie, ale aby zrobić to samodzielnie, możesz użyć: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Ta wartość jest używana podczas określania parametru **-UploadSizeInBytes** .
 
@@ -76,7 +76,7 @@ To przekazywanie ma taką samą przepływność jak odpowiednik [standardowego d
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas --blob-type PageBlob
 ```
 
-Jeśli Twoje sygnatury dostępu współdzielonego wygasną podczas przekazywania, `revoke-access` a jeszcze nie wywołano, możesz uzyskać nowe sygnatury dostępu współdzielonego, aby kontynuować przekazywanie przy użyciu `grant-access`programu.
+Jeśli sygnatura dostępu współdzielonego wygaśnie podczas przekazywania i nie wywołano jeszcze `revoke-access`, można uzyskać nowe sygnatury dostępu współdzielonego, aby kontynuować przekazywanie przy użyciu `grant-access`.
 
 Po zakończeniu przekazywania i nie musisz już pisać więcej danych na dysku, odwołaj sygnaturę dostępu współdzielonego. Odwoływanie sygnatury dostępu współdzielonego spowoduje zmianę stanu dysku zarządzanego i umożliwi dołączenie dysku do maszyny wirtualnej.
 
@@ -88,4 +88,4 @@ Revoke-AzDiskAccess -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 
 Teraz, gdy wirtualny dysk twardy został pomyślnie przekazany do dysku zarządzanego, możesz dołączyć dysk do maszyny wirtualnej i zacząć z niego korzystać.
 
-Aby dowiedzieć się, jak dołączyć dysk do maszyny wirtualnej, zapoznaj się z artykułem na temat: [Dołączanie dysku danych do maszyny wirtualnej z systemem Windows przy użyciu programu PowerShell](attach-disk-ps.md).
+Aby dowiedzieć się, jak dołączyć dysk do maszyny wirtualnej, zapoznaj się z artykułem na temat: [dołączanie dysku danych do maszyny wirtualnej z systemem Windows przy użyciu programu PowerShell](attach-disk-ps.md).

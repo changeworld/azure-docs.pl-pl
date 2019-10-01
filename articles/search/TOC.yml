@@ -244,7 +244,7 @@
             - name: Tworzenie magazynu wiedzy w witrynie Azure Portal
               href: knowledge-store-create-portal.md
             - name: Tworzenie przy użyciu rozwiązań REST i Postman
-              href: knowledge-store-howto.md
+              href: knowledge-store-create-rest.md
             - name: Wyświetlanie przy użyciu Eksploratora usługi Storage
               href: knowledge-store-view-storage-explorer.md
             - name: Łączenie z usługą Power BI

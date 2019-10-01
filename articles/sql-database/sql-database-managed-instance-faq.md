@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 8b2147ead7c1a6226b68588b9d0dab53da954bf2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676943"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710149"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database często zadawane pytania dotyczące wystąpienia zarządzanego
 
@@ -76,7 +76,7 @@ Zdecydowanie zaleca się przetestowanie wydajności rzeczywistych obciążeń pr
 
 ## <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>Czy mogę przełączać generowanie sprzętu wystąpienia zarządzanego między programem gen 4 i gen 5 online? 
 
-Automatyczne przełączanie do trybu online między generacjami sprzętowymi jest możliwe, jeśli w regionie, w którym zainicjowano wystąpienie zarządzane, są dostępne oba generacji sprzętowe. W takim przypadku dostępna jest opcja w sekcji warstwa cenowa Azure Portal, aby przełączać się między generacjami sprzętowymi.
+Automatyczne przełączanie do trybu online między generacjami sprzętowymi jest możliwe, jeśli w regionie, w którym zainicjowano wystąpienie zarządzane, są dostępne oba generacji sprzętowe. W takim przypadku można użyć [skryptu z wpisu w blogu](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) wyjaśniającego, jak przełączać się między generacjami sprzętowymi.
 
 Jest to długotrwała operacja, ponieważ nowe wystąpienie zarządzane zostanie udostępnione w tle, a bazy danych zostaną automatycznie przeniesione między starym i nowym wystąpieniem z szybką pracą w trybie failover na końcu procesu. 
 

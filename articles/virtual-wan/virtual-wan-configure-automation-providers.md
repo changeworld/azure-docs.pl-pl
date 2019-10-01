@@ -1,95 +1,96 @@
 ---
-title: Wirtualne sieci WAN partnerzy portalu Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł pomaga partnerów Konfigurowanie WAN wirtualnych usługi Azure automation.
+title: Partnerzy wirtualnych sieci WAN platformy Azure | Microsoft Docs
+description: Ten artykuł pomaga partnerom skonfigurować automatyzację sieci wirtualnej platformy Azure.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/30/2019
 ms.author: cherylmc
-ms.openlocfilehash: f286c02e0eb6e801f62d4f2e16f1197a1e9d44ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72493f084b89d41c1e0d6ff60c35afa3491b0eda
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304547"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703459"
 ---
-# <a name="virtual-wan-partners"></a>Wirtualne sieci WAN partnerów
+# <a name="virtual-wan-partners"></a>Partnerzy wirtualnej sieci WAN
 
-Ten artykuł pomaga zrozumieć sposób konfigurowania środowiska automatyzacji, aby nawiązać połączenie i skonfigurować urządzenie gałęzi (urządzenia sieci VPN klienta w środowisku lokalnym lub SDWAN CPE) dla usługi Azure wirtualnego WAN. Jeśli jesteś dostawcę, który zawiera urządzenia gałęzi, które może obsłużyć połączenia sieci VPN przez protokół IPsec/protokół IKEv2 lub protokołu IPsec/IKEv1, ten artykuł jest dla Ciebie.
+Ten artykuł pomaga zrozumieć, jak skonfigurować środowisko automatyzacji do łączenia i konfigurowania urządzenia rozgałęzienia (lokalnego urządzenia sieci VPN lub SDWAN CPE) dla wirtualnej sieci WAN platformy Azure. Jeśli jesteś dostawcą udostępniającym urządzenia oddziałów, które mogą obsługiwać połączenia sieci VPN za pośrednictwem protokołu IPsec/IKEv2 lub protokołu IPsec/IKEv1, ten artykuł jest dla Ciebie.
 
-Urządzenie gałęzi (klienta na lokalnym urządzeniu sieci VPN lub SDWAN CPE) zwykle korzysta z pulpitu nawigacyjnego urządzenia/kontrolera do zainicjowania obsługi administracyjnej. Administratorzy SD-WAN rozwiązania można często przed udostępnieniem urządzenie przed jego pobiera podłączony do sieci przy użyciu konsoli zarządzania. To urządzenie stanie sieci VPN pobiera swojej logiki płaszczyzna formantu za pomocą kontrolera. Urządzenia sieci VPN lub kontroler SD-WAN można użyć interfejsów API usługi Azure do zautomatyzowania połączenie WAN wirtualnych platformy Azure. Ten typ połączenia wymaga lokalnego urządzenia mają dostępny zewnętrznie publiczny adres IP przypisany do niego.
+Urządzenie rozgałęzienia (lokalne urządzenie sieci VPN lub SDWAN CPE) zwykle używa pulpitu nawigacyjnego kontrolera/urządzenia do aprowizacji. Administratorzy rozwiązań typu SD-WAN mogą często korzystać z konsoli zarządzania w celu wstępnego udostępnienia urządzenia przed podłączeniem go do sieci. To urządzenie z obsługą sieci VPN pobiera logikę płaszczyzny kontroli z kontrolera. Urządzenie sieci VPN lub kontroler SD-WAN może używać interfejsów API platformy Azure do automatyzowania łączności z wirtualną siecią WAN platformy Azure. Ten typ połączenia wymaga, aby urządzenie lokalne miało przypisaną zewnętrznie publiczny adres IP.
 
-## <a name ="before"></a>Przed przystąpieniem do pracy automatyzacji
+## <a name ="before"></a>Przed rozpoczęciem automatyzowania
 
-* Sprawdź, czy urządzenie obsługuje protokół IPsec IKEv1/IKEv2. Zobacz [domyślne zasady](#default).
-* Zobacz [interfejsów API REST](https://docs.microsoft.com/rest/api/azure/) użyjesz do zautomatyzowania połączenie WAN wirtualnych platformy Azure.
-* Przetestowanie środowiska portalu Azure wirtualnego WAN.
-* Następnie zdecyduj, która część kroki łączności, które chcesz zautomatyzować. Jako minimum zalecamy Automatyzowanie:
+* Sprawdź, czy urządzenie obsługuje protokół IPsec IKEv1/IKEv2. Zobacz [zasady domyślne](#default).
+* Zobacz [interfejsy API REST](https://docs.microsoft.com/rest/api/azure/) , które będą używane do automatyzowania łączności z wirtualną siecią WAN platformy Azure.
+* Przetestuj środowisko portalu w wirtualnej sieci WAN platformy Azure.
+* Następnie zdecyduj, która część kroków łączności, które chcesz zautomatyzować. Zalecamy automatyzację:
 
   * Kontrola dostępu
-  * Przekazywanie informacji o urządzeniu gałąź do usługi Azure wirtualnego WAN
-  * Pobieranie konfiguracji platformy Azure i konfigurowania łączności z gałęzi urządzenia do usługi Azure wirtualnego WAN
+  * Przekazywanie informacji o urządzeniu rozgałęzień do wirtualnej sieci WAN platformy Azure
+  * Pobieranie konfiguracji platformy Azure i Konfigurowanie łączności z urządzenia oddziału w usłudze Azure Virtual WAN
 
-* Zrozumienie oczekiwanego komfort w połączeniu z platformy Azure wirtualnego WAN.
+* Zapoznaj się z oczekiwanym doświadczeniem klienta w połączeniu z wirtualną siecią WAN platformy Azure.
 
-  1. Wirtualne sieci WAN użytkownika rozpocznie się proces, tworząc zasobu wirtualnej sieci WAN.
-  2. Użytkownik zostanie skonfigurowany dostęp grupy do zasobów na podstawie jednostki usługi systemu lokalnego (swojej gałęzi kontrolera lub oprogramowania aprowizacji urządzenia sieci VPN) do zapisu informacji o gałęzi do platformy Azure wirtualnego WAN.
-  3. Użytkownik może podjąć decyzję w tej chwili, aby zalogować się do interfejsu użytkownika i skonfigurować poświadczenia nazwy głównej usługi. To znaczy po zakończeniu kontroler powinno być możliwe do przekazania informacji o gałęzi za pomocą usługi automation, które należy podać. Ręczne odpowiednik to po stronie platformy Azure jest tworzenie witryny.
-  4. Gdy informacji o lokacji (urządzenie gałęzi) będzie dostępna na platformie Azure, użytkownik zostanie skojarzony lokacji z koncentratorem. Koncentrator wirtualny jest zarządzany przez firmę Microsoft sieci wirtualnej. Koncentrator zawiera różne punkty końcowe usług, umożliwiające łączność z siecią lokalną (zasobem vpnsite). Koncentrator to podstawowy element sieci w danym regionie. Może istnieć tylko jedno Centrum na region platformy Azure i punktu końcowego sieci vpn (bramy vpngateway) wewnątrz niego jest tworzony w trakcie tego procesu. Brama sieci VPN jest skalowaną bramę, w których rozmiary odpowiednio na podstawie przepustowości i połączeń potrzeb. Można zautomatyzować koncentrator wirtualny i tworzenia bramy vpngateway ze swojego pulpitu nawigacyjnego z kontrolerem urządzenia gałęzi.
-  5. Gdy koncentrator wirtualny jest skojarzona z witryną, generowany jest plik konfiguracji dla użytkownika ręcznie pobrać. Jest to, gdy jest dostępna w automatyzacji, a sprawia, że interfejs użytkownika jest bezproblemowe. Zamiast konieczności ręcznie Pobierz i skonfiguruj urządzenie gałęzi użytkownika można ustawić automatyzacji i zapewnia minimalne środowisko za pomocą kliknięć w interfejsie użytkownika, a tym samym złagodzenia łączności typowe problemy, takie jak udostępnione Niezgodność kluczy parametrów protokołu IPSec Niezgodność konfiguracji pliku czytelność itp.
-  6. Na końcu tego kroku w rozwiązaniu użytkownik będzie miał optymalne połączenie lokacja lokacja między urządzeniem gałęzi i koncentrator wirtualny. Można też skonfigurować dodatkowe połączenia między innymi centrami. Każde połączenie jest tunel typu aktywne aktywne. Klient może wybrać innego usługodawcy internetowego dla każdego łącza dla tunelu.
+  1. Zazwyczaj wirtualny użytkownik sieci WAN rozpocznie proces przez utworzenie zasobu wirtualnej sieci WAN.
+  2. Użytkownik skonfiguruje dostęp do grupy zasobów opartej na jednostce usługi dla systemu lokalnego (kontroler rozgałęzienia lub oprogramowanie do aprowizacji urządzeń sieci VPN) w celu zapisania informacji o gałęzi w wirtualnej sieci WAN platformy Azure.
+  3. Użytkownik może w tym czasie zalogować się do interfejsu użytkownika i skonfigurować poświadczenia nazwy głównej usługi. Po zakończeniu tego procesu kontroler powinien mieć możliwość przekazywania informacji o gałęzi z automatyzacją, którą zapewnisz. Ręczne odpowiednik tego elementu na stronie platformy Azure to "Utwórz witrynę".
+  4. Gdy informacje o witrynie (urządzeniu rozgałęzienia) są dostępne na platformie Azure, użytkownik będzie łączył lokację z centrum. Koncentratorem wirtualnym jest sieć wirtualna zarządzana przez firmę Microsoft. Centrum zawiera różne punkty końcowe usługi umożliwiające łączność z siecią lokalną (vpnsite). Centrum to rdzeń sieci w regionie. Może istnieć tylko jeden koncentrator dla regionu platformy Azure, a punkt końcowy sieci VPN (bramy vpngateway) jest tworzony w trakcie tego procesu. Brama sieci VPN to skalowalna brama, która odpowiednio zmienia rozmiar na podstawie przepustowości i potrzeb związanych z połączeniami. Możesz zautomatyzować tworzenie centrów wirtualnych i bramy vpngateway z poziomu pulpitu nawigacyjnego kontrolera urządzeń gałęzi.
+  5. Po skojarzeniu koncentratora wirtualnego z lokacją zostanie wygenerowany plik konfiguracji, który użytkownik może pobrać ręcznie. Jest to miejsce, w którym znajduje się Automatyzacja i sprawia, że środowisko użytkownika działa bezproblemowo. Zamiast użytkownika, który ma ręcznie pobierać i konfigurować urządzenie oddziału, można ustawić automatyzację i zapewnić minimalne środowisko klikania w interfejsie użytkownika, eliminując w ten sposób typowe problemy z łącznością, takie jak niezgodność klucza wspólnego, parametr IPSec niezgodność, czytelność plików konfiguracji itp.
+  6. Po zakończeniu tego kroku w rozwiązaniu użytkownik będzie miał bezproblemowe połączenie między lokacjami i koncentratorem wirtualnym. Możesz również skonfigurować dodatkowe połączenia w innych centrach. Każde połączenie to tunel aktywny-aktywny. Klient może zdecydować się na użycie innego usługodawcy internetowego dla każdego z linków dla tunelu.
+  7. Należy rozważyć zapewnienie możliwości rozwiązywania problemów i monitorowania w interfejsie zarządzania CPE. Typowe scenariusze obejmują "klient nie może uzyskać dostępu do zasobów platformy Azure z powodu problemu CPE", "Pokaż parametry protokołu IPsec na stronie CPE" itd.
 
-## <a name ="understand"></a>Zrozumienie informacji o automatyzacji
+## <a name ="understand"></a>Informacje o automatyzacji
 
 
 ###  <a name="access"></a>Kontrola dostępu
 
-Klienci musi mieć możliwość skonfigurować kontroli dostępu właściwe dla wirtualnej sieci WAN w interfejsu użytkownika urządzenia. Jest to zalecane, korzystania z jednostki usługi platformy Azure. Dostęp do usługi oparte na jednostce zapewnia uwierzytelniania odpowiedniego kontrolera urządzenia do przekazania informacji o gałęzi. Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Gdy ta funkcja jest poza oferty Azure wirtualnego WAN, listę poniżej typowe etapy, zarządzanie dostępem na platformie Azure, po upływie którego odpowiednie szczegóły są klatkach, w których do pulpitu nawigacyjnego zarządzania urządzeniami
+Klienci muszą mieć możliwość skonfigurowania odpowiedniej kontroli dostępu dla wirtualnej sieci WAN w interfejsie użytkownika urządzenia. Jest to zalecane przy użyciu nazwy głównej usługi platformy Azure. Dostęp oparty na jednostce usługi zapewnia kontrolerowi urządzenia odpowiednie uwierzytelnianie w celu przekazania informacji o gałęzi. Aby uzyskać więcej informacji, zobacz [Tworzenie nazwy głównej usługi](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Chociaż ta funkcja jest poza ofertą wirtualnej sieci WAN platformy Azure, zostanie wystawiona poniżej typowych kroków w celu skonfigurowania dostępu na platformie Azure, po czym odpowiednie szczegóły są wprowadzane na pulpicie nawigacyjnym zarządzania urządzeniami.
 
-* Tworzenie aplikacji usługi Azure Active Directory dla środowiska lokalnego kontrolera urządzenia.
-* Pobierz aplikację Identyfikatora i klucza uwierzytelniania
-* Pobieranie identyfikatora dzierżawy
+* Utwórz aplikację Azure Active Directory dla lokalnego kontrolera urządzenia.
+* Pobieranie identyfikatora aplikacji i klucza uwierzytelniania
+* Uzyskaj identyfikator dzierżawy
 * Przypisywanie aplikacji do roli "Współautor"
 
 ###  <a name="branch"></a>Przekazywanie informacji o urządzeniu gałęzi
 
-Zaprojektuj środowisko użytkownika do przekazania informacji o gałęzi (lokacji lokalnej) na platformie Azure. [Interfejsów API REST](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) dla VPNSite może służyć do tworzenia informacji o lokacji w wirtualnej sieci WAN. Można zapewnić wszystkich gałęzi SDWAN/urządzeń sieci VPN, lub wybrać dostosowania urządzenia zgodnie z potrzebami.
+Zaprojektuj środowisko użytkownika w celu przekazywania informacji o rozgałęzieniu (lokacji lokalnej) do platformy Azure. [Interfejsy API REST](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) dla VPNSite mogą służyć do tworzenia informacji o lokacji w wirtualnej sieci WAN. Wszystkie urządzenia SDWAN/VPN można udostępnić lub wybrać odpowiednie dostosowania urządzeń.
 
 
-### <a name="device"></a>Pobieranie konfiguracji urządzenia i łączność
+### <a name="device"></a>Pobieranie i łączność konfiguracji urządzeń
 
-Ten krok polega na pobraniu konfiguracji platformy Azure i konfigurowania łączności z urządzenia gałąź do usługi Azure wirtualnego WAN. W tym kroku klient, który nie korzysta z dostawcy będzie ręcznie pobrać konfiguracji platformy Azure i zastosować je do swoich lokalnych SDWAN/urządzenia sieci VPN. Jako dostawca powinien zautomatyzować ten krok. Z kontrolerem urządzenia można wywołać interfejsu API REST "GetVpnConfiguration", aby pobrać konfiguracji platformy Azure, która zazwyczaj będzie wyglądać podobnie do następującego pliku.
+Ten krok obejmuje pobranie konfiguracji platformy Azure i skonfigurowanie łączności z urządzenia oddziału w usłudze Azure Virtual WAN. W tym kroku klient, który nie korzysta z dostawcy, ręcznie pobierze konfigurację platformy Azure i zastosuje ją do lokalnego urządzenia SDWAN/VPN. Jako dostawca należy zautomatyzować ten krok. Kontroler urządzenia może wywoływać interfejs API REST "GetVpnConfiguration", aby pobrać konfigurację platformy Azure, która zazwyczaj będzie wyglądać podobnie do poniższego pliku.
 
 **Uwagi dotyczące konfiguracji**
 
-  * W przypadku sieci wirtualnych platformy Azure są podłączone do koncentratora wirtualnego, będą one występować jako ConnectedSubnets.
-  * Połączenia sieci VPN korzysta z konfiguracji opartej na trasach i protokołu IKEv2/IKEv1.
+  * Jeśli usługa Azure sieci wirtualnych jest dołączana do koncentratora wirtualnego, zostaną one wyświetlone jako ConnectedSubnets.
+  * Połączenie sieci VPN korzysta z konfiguracji opartej na trasach i obsługuje protokoły IKEv1 i IKEv2.
 
-#### <a name="understanding-the-device-configuration-file"></a>Opis pliku konfiguracji urządzenia
+#### <a name="understanding-the-device-configuration-file"></a>Informacje o pliku konfiguracji urządzenia
 
-Plik konfiguracji urządzenia zawiera ustawienia używane podczas konfigurowania lokalnego urządzenia sieci VPN. Podczas przeglądania tego pliku należy zwrócić uwagę na następujące informacje:
+Plik konfiguracji urządzenia zawiera ustawienia, które mają być używane podczas konfigurowania lokalnego urządzenia sieci VPN. Podczas wyświetlania tego pliku należy zwrócić uwagę na następujące informacje:
 
-* **vpnSiteConfiguration —** ta sekcja zawiera szczegółowe informacje o urządzeniu skonfigurowanym jako lokacja połączona z wirtualną sieci WAN. Zawiera nazwę i publiczny adres IP urządzenia w oddziale.
-* **vpnSiteConnections —** ta sekcja zawiera informacje dotyczące następujących kwestii:
+* **vpnSiteConfiguration —** W tej sekcji przedstawiono szczegóły urządzenia skonfigurowane jako lokacje łączące się z wirtualną siecią WAN. Zawiera nazwę i publiczny adres IP urządzenia rozgałęzienia.
+* **vpnSiteConnections —** Ta sekcja zawiera informacje o następujących kwestiach:
 
-    * **Przestrzeń adresowa** z wirtualnego koncentratory sieci wirtualnej.<br>Przykład:
+    * **Przestrzeń adresowa** wirtualnej koncentratora (s).<br>Przykład:
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * **Przestrzeń adresowa** sieciach wirtualnych, które są podłączone do koncentratora.<br>Przykład:
+    * **Przestrzeń adresowa** sieci wirtualnych, która jest połączona z centrum.<br>Przykład:
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * **Adresy IP** bramy vpngateway koncentratora wirtualnego. Ponieważ każde połączenie z bramą vpngateway obejmuje dwa tunele w konfiguracji aktywne-aktywne, w pliku wymienione będą oba adresy IP. W tym przykładzie są to wartości „Instance0” i „Instance1” dla każdej lokacji.<br>Przykład:
+    * **Adresy IP** koncentratora wirtualnego bramy vpngateway. Ponieważ bramy vpngateway ma każde połączenie składające się z 2 tuneli w konfiguracji Active-Active, zobaczysz oba adresy IP wymienione w tym pliku. W tym przykładzie dla każdej lokacji są wyświetlane "Instance0" i "Wystąpienia1".<br>Przykład:
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Szczegóły konfiguracji połączenia bramy vpngateway**, takie jak protokół BGP, klucz wstępny i tym podobne. PSK to klucz wstępny, który jest generowany automatycznie. Zawsze możesz edytować połączenie na stronie Przegląd, aby użyć niestandardowego klucza wstępnego.
+    * **Bramy vpngateway szczegóły konfiguracji połączenia** , takie jak BGP, klucz wstępny itp. PSK to klucz wstępny, który jest generowany automatycznie. Możesz zawsze edytować połączenie na stronie Przegląd dla niestandardowego klucza PSK.
   
 #### <a name="example-device-configuration-file"></a>Przykładowy plik konfiguracji urządzenia
 
@@ -196,23 +197,23 @@ Plik konfiguracji urządzenia zawiera ustawienia używane podczas konfigurowania
    }
   ```
 
-## <a name="default"></a>Domyślne zasady dla połączenia protokołu IPsec
+## <a name="default"></a>Zasady domyślne dla łączności protokołu IPsec
 
 [!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
 
-### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>Czy wszystko, czego potrzebuje zgodność zasad bramy vpngateway koncentrator wirtualny i Moje lokalne SDWAN/urządzenia sieci VPN lub technologii SD-WAN konfiguracji?
+### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>Czy wszystkie elementy muszą być zgodne z zasadami bramy vpngateway koncentratora wirtualnego i moimi lokalnym urządzeniem SDWAN/VPN lub konfiguracją SD-WAN?
 
-Urządzenie SDWAN/VPN w środowisku lokalnym lub SD-WAN konfiguracji muszą być zgodne i zawiera następujące algorytmy i parametry, które można określić w zasadach protokołu IPsec/IKE platformy Azure.
+Lokalne urządzenie SDWAN/VPN lub Konfiguracja SD-WAN muszą być zgodne lub zawierać następujące algorytmy i parametry, które można określić w zasadach usługi Azure IPsec/IKE.
 
 * Algorytm szyfrowania IKE
 * Algorytm integralności IKE
 * Grupa DH
 * Algorytm szyfrowania IPsec
-* Algorytm integralności IPsec
+* Algorytm integralności protokołu IPsec
 * Grupa PFS
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat wirtualnych sieci WAN, zobacz [o Azure wirtualne sieci WAN](virtual-wan-about.md) i [Azure wirtualne sieci WAN — często zadawane pytania](virtual-wan-faq.md).
+Aby uzyskać więcej informacji na temat wirtualnej sieci WAN, zobacz [temat informacje o wirtualnej sieci WAN platformy Azure](virtual-wan-about.md) i [usłudze Azure Virtual WAN — często zadawane pytania](virtual-wan-faq.md).
 
-Informacje dodatkowe, Wyślij wiadomość e-mail do <azurevirtualwan@microsoft.com>. W wierszu tematu wpisz nazwę firmy w nawiasie kwadratowym („[ ]”).
+Aby uzyskać dodatkowe informacje, Wyślij wiadomość e-mail na adres <azurevirtualwan@microsoft.com>. W wierszu tematu Uwzględnij nazwę firmy w "[]".

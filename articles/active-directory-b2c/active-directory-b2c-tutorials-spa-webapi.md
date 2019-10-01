@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f940893a5328db65549b40269578399655f8539e
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: HT
+ms.openlocfilehash: 60fe9569b0e6e92ae161271439ecbf1b04788ed4
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679269"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694580"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do ASP.NET Core internetowego interfejsu API z aplikacji jednostronicowej przy użyciu Azure Active Directory B2C
 
@@ -54,12 +54,7 @@ Aby wywołać chroniony internetowy interfejs API z innej aplikacji, należy prz
 
 W samouczku wymagań wstępnych została utworzona aplikacja sieci Web o nazwie *webapp1*. W tym samouczku skonfigurujesz aplikację do wywoływania internetowego interfejsu API utworzonego w poprzedniej sekcji *webapi1*.
 
-1. Przejdź do swojej dzierżawy B2C w Azure Portal
-1. Wybierz pozycję **Aplikacje**, a następnie wybierz pozycję *webapp1*.
-1. Wybierz pozycję **Dostęp do interfejsu API**, a następnie wybierz polecenie **Dodaj**.
-1. Na liście rozwijanej **Wybierz interfejs API** wybierz pozycję *webapi1*.
-1. Z listy rozwijanej **Wybierz zakresy** wybierz zdefiniowane wcześniej zakresy. Na przykład *Demonstracja. odczyt* i *Demonstracja. Write*.
-1. Kliknij przycisk **OK**.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 Jednostronicowa aplikacja sieci Web jest zarejestrowana w celu wywoływania chronionego internetowego interfejsu API. Użytkownik jest uwierzytelniany przy użyciu Azure AD B2C do korzystania z aplikacji jednostronicowej. Aplikacja jednostronicowa uzyskuje autoryzację od Azure AD B2C, aby uzyskać dostęp do chronionego internetowego interfejsu API.
 

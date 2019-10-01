@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki start dotyczący używania usługi Azure App Configuration z platformą .NET Core | Microsoft Docs
-description: Przewodnik Szybki start dotyczący korzystania z usługi Azure App Configuration z aplikacjami platformy .NET Core
+title: Przewodnik Szybki Start dotyczący konfiguracji aplikacji platformy Azure przy użyciu platformy .NET Core | Microsoft Docs
+description: Przewodnik Szybki Start dotyczący używania konfiguracji aplikacji platformy Azure z aplikacjami platformy .NET Core
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 99a42102b30c91b7f1bba06cfaae7662b408b784
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 149542965737b2703bc18e985bfaf4d90c8dab29
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326568"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709410"
 ---
-# <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Szybki start: Tworzenie aplikacji .NET Core z konfiguracją aplikacji
+# <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Szybki Start: Tworzenie aplikacji platformy .NET Core przy użyciu konfiguracji aplikacji
 
 W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azure do aplikacji konsolowej .NET Core w celu scentralizowanego przechowywania i zarządzania ustawieniami aplikacji oddzielonymi od kodu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-- [Zestaw SDK dla platformy .NET Core](https://dotnet.microsoft.com/download)
+- [zestaw .NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz kolejno pozycje **Eksplorator** > konfiguracji **+ Utwórz** , aby dodać następujące pary klucz-wartość:
+6. Wybierz pozycję **Eksplorator konfiguracji** >  **+ Utwórz** , aby dodać następujące pary klucz-wartość:
 
-    | Klucz | Value |
+    | Key | Wartość |
     |---|---|
-    | TestApp:Settings:Message | Dane z usługi Azure App Configuration |
+    | TestApp: Settings: komunikat | Dane z konfiguracji aplikacji platformy Azure |
 
     Dla tej pory pozostaw pustą **etykietę** i **Typ zawartości** .
 
@@ -54,9 +54,9 @@ Za pomocą [interfejsu wiersza polecenia platformy .NET Core](https://docs.micro
 
 ## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
-1. Dodaj odwołanie do `Microsoft.Azure.AppConfiguration.AspNetCore` pakietu NuGet, uruchamiając następujące polecenie:
+1. Dodaj odwołanie do pakietu NuGet `Microsoft.Extensions.Configuration.AzureAppConfiguration`, uruchamiając następujące polecenie:
 
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 2.0.0-preview-009470001-1371
 
 2. Uruchom następujące polecenie, aby przywrócić pakiety dla projektu:
 
@@ -69,7 +69,7 @@ Za pomocą [interfejsu wiersza polecenia platformy .NET Core](https://docs.micro
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-4. Zaktualizuj metodę, aby użyć konfiguracji aplikacji przez `builder.AddAzureAppConfiguration()` wywołanie metody. `Main`
+4. Zaktualizuj metodę `Main`, aby użyć konfiguracji aplikacji przez wywołanie metody `builder.AddAzureAppConfiguration()`.
 
     ```csharp
     static void Main(string[] args)
@@ -82,7 +82,7 @@ Za pomocą [interfejsu wiersza polecenia platformy .NET Core](https://docs.micro
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
+## <a name="build-and-run-the-app-locally"></a>Kompilowanie i uruchamianie aplikacji lokalnie
 
 1. Ustaw zmienną środowiskową o nazwie **ConnectionString**i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. Jeśli używasz wiersza polecenia systemu Windows, uruchom następujące polecenie i ponownie uruchom wiersz polecenia, aby zezwolić na wprowadzenie zmiany:
 
@@ -104,11 +104,11 @@ Za pomocą [interfejsu wiersza polecenia platformy .NET Core](https://docs.micro
 
         dotnet run
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+## <a name="clean-up-resources"></a>Czyszczenie zasobów
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i używał go z aplikacją konsolową platformy .NET Core za pośrednictwem [dostawcy konfiguracji aplikacji](https://go.microsoft.com/fwlink/?linkid=2074664). Aby dowiedzieć się więcej na temat sposobu korzystania z konfiguracji aplikacji, przejdź do następnego samouczka, który pokazuje uwierzytelnianie.
 

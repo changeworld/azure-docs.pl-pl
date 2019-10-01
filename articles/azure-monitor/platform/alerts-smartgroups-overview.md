@@ -1,66 +1,66 @@
 ---
 title: Grupy inteligentne
-description: Inteligentne grup czy agregacji alerty ułatwiające ograniczenia liczby niepotrzebnych alertów
+description: Grupy inteligentne to agregacja alertów, które pomagają zredukować hałas alertów
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/15/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: e0bef0fc4f4b61add24c243af0dac64933ad5bab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346340"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702872"
 ---
 # <a name="smart-groups"></a>Grupy inteligentne
-Typowe wyzwanie sterowaną obsłudze alertów jest ignorowały szumu, aby sprawdzić faktycznie rzeczach — inteligentne grupy mają na celu rozwiązanie tego problemu.  
+Typowym wyzwaniem związanym z alertami jest przechodzenie między zakłóceniami, aby dowiedzieć się, jakie są rzeczywiste kwestie — grupy inteligentne są przeznaczone do rozwiązania tego problemu.  
 
-Inteligentne grupy są tworzone automatycznie za pomocą algorytmów uczenia maszynowego, aby połączyć powiązanych alertów, które reprezentują pojedynczego problemu.  Po utworzeniu alertu algorytm dodaje go do nowej grupy inteligentne lub istniejącej grupy inteligentne w oparciu o informacje, takie jak historyczne wzorce, podobne właściwości i podobną strukturę. Na przykład, jeśli % wykorzystania procesora CPU na wielu maszynach wirtualnych w ramach subskrypcji gwałtowne wzrosty jednocześnie, co prowadzi do wielu poszczególnych alertów, a sugerujące, jeśli takie alerty wystąpiły ze sobą w dowolnym momencie w przeszłości te alerty będą prawdopodobnie pogrupowane w jednej grupie inteligentnych, a Typowe potencjalną główną przyczynę. Oznacza to, że niepowołanym Rozwiązywanie problemów z alertami, inteligentne grup nie tylko umożliwia im szumu dzięki zarządzaniu powiązanych alertów jako pojedyncza jednostka zagregowane, jego również przeprowadzi kierunku możliwości typowych głównych przyczyn ich alertów.
+Grupy inteligentne są tworzone automatycznie przy użyciu algorytmów uczenia maszynowego w celu łączenia powiązanych alertów, które reprezentują pojedynczy problem.  Po utworzeniu alertu algorytm dodaje go do nowej lub istniejącej grupy inteligentnej na podstawie informacji, takich jak wzorce historyczne, podobne właściwości i podobna struktura. Na przykład jeśli procesor CPU na kilku maszynach wirtualnych w subskrypcji jednocześnie przekroczy wiele indywidualnych alertów, a jeśli takie alerty wystąpiły kiedykolwiek w przeszłości, te alerty prawdopodobnie zostaną zgrupowane w jednej grupie inteligentnej, sugerując potencjalna wspólna przyczyna główna. Oznacza to, że w celu rozwiązywania problemów z alertami, grupy inteligentne nie tylko umożliwiają zredukowanie szumu przez zarządzanie powiązanymi alertami jako pojedynczą zagregowaną jednostką, a także prowadzi do tych wspólnych głównych przyczyn dla ich alertów.
 
-Obecnie algorytm uwzględnia alertów z tej samej usługi monitor w ramach subskrypcji. Inteligentne grup może zmniejszyć do 99% liczby niepotrzebnych alertów za pośrednictwem dzięki konsolidacji. Można wyświetlić przyczynę, że alerty zostały uwzględnione w grupie na stronie szczegółów grupy inteligentne.
+Obecnie algorytm uwzględnia tylko alerty z tej samej usługi monitorowania w ramach subskrypcji. Grupy inteligentne mogą zmniejszyć do 99% szumu alertów w ramach tej konsolidacji. Możesz zobaczyć przyczynę dołączenia alertów do grupy na stronie szczegółów grupy inteligentnej.
 
-Możesz wyświetlić szczegóły grupy inteligentne i Ustaw stan podobnie jak można się z alertami. Każdy alert jest elementem członkowskim grupy jeden i tylko jeden inteligentne. 
+Możesz wyświetlić szczegóły grup inteligentnych i ustawić stan podobnie jak w przypadku alertów. Każdy alert jest członkiem jednej i tylko jednej grupy inteligentnej. 
 
-## <a name="smart-group-state"></a>Stan grupy inteligentne
-Stan grupy inteligentne jest koncepcja podobne do stanu alertu, co pozwala na zarządzanie procesem rozwiązania na poziomie grupy inteligentne. Podobnie jak w stan alertu, gdy tworzona jest grupa inteligentne, ma ona **New** stanu, który może zostać zmieniony na opcję **potwierdzono** lub **zamknięte**.
+## <a name="smart-group-state"></a>Stan grupy inteligentnej
+Stan grupy inteligentnej jest podobnym pojęciem do stanu alertu, który umożliwia zarządzanie procesem rozwiązywania na poziomie grupy inteligentnej. Podobny do stanu alertu, gdy tworzona jest grupa inteligentna, ma **Nowy** stan, który można zmienić na **potwierdzony** lub **zamknięty**.
 
-Obsługiwane są następujące stany inteligentne grupy.
+Obsługiwane są następujące inteligentne Stany grup.
 
 | Stan | Opis |
 |:---|:---|
-| Nowa | Problem został wykryty i jeszcze nie została sprawdzona. |
-| Potwierdzone | Administrator ma przejrzane grupy inteligentne i do pracy w niej. |
-| Zamknięte | Problem został rozwiązany. Po zamknięciu inteligentne grupy możesz otworzyć go ponownie, zmieniając go do innego stanu. |
+| Nowość | Problem został właśnie wykryty i nie został jeszcze zweryfikowany. |
+| Potwierdzone | Administrator przejrzał grupę inteligentną i uruchomił ją. |
+| Napis | Problem został rozwiązany. Po zamknięciu grupy inteligentnej można ją otworzyć ponownie, zmieniając ją na inny stan. |
 
-[Dowiedz się, jak można zmienić stanu grupy inteligentne.](https://aka.ms/managing-alert-smart-group-states)
+[Dowiedz się, jak zmienić stan grupy inteligentnej.](https://aka.ms/managing-alert-smart-group-states)
 
 > [!NOTE]
->  Zmiana stanu inteligentne grupy nie powoduje zmiany stanu alerty poszczególnych elementów członkowskich.
+>  Zmiana stanu grupy inteligentnej nie powoduje zmiany stanu alertów poszczególnych członków.
 
-## <a name="smart-group-details-page"></a>Strona szczegółów grupy inteligentne
+## <a name="smart-group-details-page"></a>Strona szczegółów grupy inteligentnej
 
-Po wybraniu grupy inteligentne, zostanie wyświetlona strona szczegółów grupy inteligentne. Zapewnia szczegółowe informacje o inteligentne grupy, w tym przyczyny, dla których został użyty do utworzenia grupy, która umożliwia zmianę stanu.
+Po wybraniu grupy inteligentnej zostanie wyświetlona strona szczegółów grupy inteligentnej. Zawiera szczegółowe informacje o grupie inteligentnej, w tym przyczynę, która została użyta do utworzenia grupy, i umożliwia zmianę jej stanu.
  
-![Szczegóły grupy inteligentne](media/alerts-smartgroups-overview/smart-group-detail.png)
+![Szczegóły grupy inteligentnej](media/alerts-smartgroups-overview/smart-group-detail.png)
 
 
-Strona szczegółów grupy inteligentnych zawiera następujące sekcje.
+Strona szczegółów grupy inteligentnej zawiera następujące sekcje.
 
-| `Section` | Opis |
+| Sekcja | Opis |
 |:---|:---|
-| Alerty | Zawiera listę poszczególnych alertów, które znajdują się w grupie inteligentne. Wybierz alert, aby otworzyć jego stronę szczegółów alertu. |
-| Historia | Wyświetla listę każdej akcji podjętej przez inteligentny grupy i wszelkie zmiany, które zostały wprowadzone. To jest obecnie ograniczona do zmiany stanu i zmiany członkostwa alertu. |
+| Alerty | Wyświetla listę poszczególnych alertów, które znajdują się w grupie inteligentnej. Wybierz Alert, aby otworzyć stronę szczegółów alertu. |
+| Historia | Wyświetla listę wszystkich akcji podejmowanych przez grupę inteligentną i wszelkie zmiany, które są w niej wprowadzane. Jest to obecnie ograniczone do zmian stanu i zmian członkostwa w alertach. |
 
-## <a name="smart-group-taxonomy"></a>Inteligentne grupy ani Taksonomia
+## <a name="smart-group-taxonomy"></a>Taksonomia grupy inteligentnej
 
-Nazwa grupy inteligentne nazywa się jej pierwszy alert. Nie można utworzyć lub zmienić nazwę grupy inteligentne.
+Nazwa grupy inteligentnej jest nazwą pierwszego alertu. Nie można utworzyć grupy inteligentnej ani zmienić jej nazwy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Zarządzanie grupami inteligentne](https://aka.ms/managing-smart-groups)
-- [Zmień swój stan alertu i inteligentne grupy](https://aka.ms/managing-alert-smart-group-states)
+- [Zarządzaj grupami inteligentnymi](https://aka.ms/managing-smart-groups)
+- [Zmiana alertu i stanu grupy inteligentnej](https://aka.ms/managing-alert-smart-group-states)
 
 

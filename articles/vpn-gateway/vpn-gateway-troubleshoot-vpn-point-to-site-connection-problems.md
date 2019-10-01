@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2019
+ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: 0a32f9a9fde0983a5b97f7342a111d40ef01c686
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104814"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695537"
 ---
-# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów z Problemy z połączeniem punkt-lokacja platformy Azure
+# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów: problemy z połączeniem punkt-lokacja platformy Azure
 
 W tym artykule wymieniono typowe problemy z połączeniem punkt-lokacja, które mogą wystąpić. Omówiono w nim również potencjalne przyczyny i rozwiązania tych problemów.
 
-## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>Błąd klienta sieci VPN: Nie można znaleźć certyfikatu
+## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>Błąd klienta sieci VPN: nie można odnaleźć certyfikatu
 
 ### <a name="symptom"></a>Objaw
 
@@ -41,16 +41,16 @@ Ten problem występuje, jeśli brakuje certyfikatu klienta w programie **Certifi
 
 Aby rozwiązać ten problem, wykonaj następujące kroki:
 
-1. Otwórz Menedżera certyfikatów: Kliknij przycisk **Start**, wpisz **Zarządzanie certyfikatami komputerów**, a następnie kliknij pozycję **Zarządzaj certyfikatami komputera** w wyniku wyszukiwania.
+1. Otwórz Menedżera certyfikatów: kliknij przycisk **Start**, wpisz **Zarządzanie certyfikatami komputerów**, a następnie kliknij przycisk **Zarządzaj certyfikatami komputera** w wyniku wyszukiwania.
 
 2. Upewnij się, że następujące certyfikaty znajdują się w prawidłowej lokalizacji:
 
-    | Certyfikat | Location |
+    | Certyfikat | Lokalizacja |
     | ------------- | ------------- |
-    | AzureClient.pfx  | Bieżący User\Personal\Certificates |
+    | AzureClient. pfx  | Bieżący User\Personal\Certificates |
     | AzureRoot. cer    | Główne urzędy certyfikacji Computer\Trusted lokalnego|
 
-3. Przejdź do pozycji\<C:\Users username >\<identyfikator GUID \AppData\Roaming\Microsoft\Network\Connections\Cm >, ręcznie Zainstaluj certyfikat (plik *. cer) w sklepie użytkownika i komputera.
+3. Przejdź do pozycji C:\Users @ no__t-0UserName > \AppData\Roaming\Microsoft\Network\Connections\Cm @ no__t-1GUID >, ręcznie Zainstaluj certyfikat (plik *. cer) w sklepie użytkownika i komputera.
 
 Więcej informacji o sposobie instalowania certyfikatu klienta znajduje się w temacie [generowanie i eksportowanie certyfikatów dla połączeń punkt-lokacja](vpn-gateway-certificates-point-to-site.md).
 
@@ -77,16 +77,16 @@ Aby przygotowywać system Windows 10 lub Server 2016 pod kątem protokołu IKEv2
 
 1. Zainstaluj aktualizację.
 
-   | Wersja systemu operacyjnego | Date | Numer/link |
+   | Wersja systemu operacyjnego | Data | Numer/link |
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 w wersji 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10 w wersji 1709 | 22 marca 2018 r. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows 10 w wersji 1709 | 22 marca, 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. Ustaw wartość klucza rejestru. Utwórz lub ustaw `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` klucz REG_DWORD w rejestrze na 1.
+2. Ustaw wartość klucza rejestru. Utwórz lub Ustaw klucz REG_DWORD `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` w rejestrze na 1.
 
-## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>Błąd klienta sieci VPN: Odebrany komunikat był nieoczekiwany lub nieprawidłowo sformatowany
+## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>Błąd klienta sieci VPN: odebrany komunikat był nieoczekiwany lub nieprawidłowo sformatowany
 
 ### <a name="symptom"></a>Objaw
 
@@ -109,7 +109,7 @@ Aby rozwiązać ten problem, wykonaj następujące kroki:
 1. Usuń UDR w podsieci bramy. Upewnij się, że usługa UDR przekazuje cały ruch poprawnie.
 2. Sprawdź stan certyfikatu głównego w Azure Portal, aby sprawdzić, czy został on odwołany. Jeśli nie jest ona odwołana, spróbuj usunąć certyfikat główny i przekazać go ponownie. Aby uzyskać więcej informacji, zobacz [Tworzenie certyfikatów](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
 
-## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>Błąd klienta sieci VPN: Łańcuch certyfikatów przetworzony, ale zakończony 
+## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>Błąd klienta sieci VPN: łańcuch certyfikatów przetworzony, ale zakończony 
 
 ### <a name="symptom"></a>Objaw 
 
@@ -121,15 +121,15 @@ Podczas próby nawiązania połączenia z siecią wirtualną platformy Azure prz
 
 1. Upewnij się, że następujące certyfikaty znajdują się w prawidłowej lokalizacji:
 
-    | Certyfikat | Location |
+    | Certyfikat | Lokalizacja |
     | ------------- | ------------- |
-    | AzureClient.pfx  | Bieżący User\Personal\Certificates |
-    | Azuregateway-*GUID*.cloudapp.net  | Bieżące główne urzędy certyfikacji User\Trusted|
-    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Główne urzędy certyfikacji Computer\Trusted lokalnego|
+    | AzureClient. pfx  | Bieżący User\Personal\Certificates |
+    | Azuregateway-*GUID*. cloudapp.NET  | Bieżące główne urzędy certyfikacji User\Trusted|
+    | AzureGateway-*GUID*. cloudapp.NET, AzureRoot. cer    | Główne urzędy certyfikacji Computer\Trusted lokalnego|
 
 2. Jeśli certyfikaty znajdują się już w tej lokalizacji, spróbuj je usunąć i zainstalować ponownie. Certyfikat **azuregateway-*GUID*. cloudapp.NET** znajduje się w pakiecie konfiguracji klienta sieci VPN pobranym z Azure Portal. Do wyodrębnienia plików z pakietu można użyć archiwów plików.
 
-## <a name="file-download-error-target-uri-is-not-specified"></a>Błąd pobierania pliku: Nie określono docelowego identyfikatora URI
+## <a name="file-download-error-target-uri-is-not-specified"></a>Błąd pobierania pliku: nie określono docelowego identyfikatora URI
 
 ### <a name="symptom"></a>Objaw
 
@@ -145,7 +145,7 @@ Ten problem występuje z powodu nieprawidłowego typu bramy.
 
 Typem bramy sieci VPN musi być **Sieć VPN**, a typem sieci VPN musi być **RouteBased**.
 
-## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>Błąd klienta sieci VPN: Niepowodzenie niestandardowego skryptu sieci VPN platformy Azure 
+## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>Błąd klienta sieci VPN: niepowodzenie niestandardowego skryptu sieci VPN platformy Azure 
 
 ### <a name="symptom"></a>Objaw
 
@@ -174,17 +174,17 @@ Wyodrębnij pakiet konfiguracji klienta sieci VPN i Znajdź plik. cer. Aby zains
 1. Otwórz program MMC. exe.
 2. Dodaj przystawkę **Certyfikaty** .
 3. Wybierz konto **komputera** dla komputera lokalnego.
-4. Kliknij prawym przyciskiem myszy węzeł **Zaufane główne** urzędy certyfikacji. Kliknij pozycję **wszystko —**  > **Importuj**zadanie i przejdź do pliku CER wyodrębnionego z pakietu konfiguracji klienta sieci VPN.
+4. Kliknij prawym przyciskiem myszy węzeł **Zaufane główne** urzędy certyfikacji. Kliknij kolejno pozycje **wszystkie-zadanie** > **Import**i przejdź do pliku CER wyodrębnionego z pakietu konfiguracji klienta sieci VPN.
 5. Uruchom ponownie komputer. 
 6. Spróbuj zainstalować klienta sieci VPN.
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Błąd Azure Portal: Nie można zapisać bramy sieci VPN, a dane są nieprawidłowe
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Błąd Azure Portal: nie można zapisać bramy sieci VPN, a dane są nieprawidłowe
 
 ### <a name="symptom"></a>Objaw
 
 Podczas próby zapisania zmian dla bramy sieci VPN w Azure Portal zostanie wyświetlony następujący komunikat o błędzie:
 
-**Nie można zapisać &lt; *nazwy*&gt;bramy bramy sieci wirtualnej. Dane &lt; *identyfikatora* certyfikatucertyfikatusąnieprawidłowe.&gt;**
+**Nie można zapisać bramy sieci wirtualnej &lt;*bramy nazwa*&gt;. Dane dla certyfikatu &lt;*Identyfikator certyfikatu*&gt; jest nieprawidłowy.**
 
 ### <a name="cause"></a>Przyczyna 
 
@@ -213,19 +213,19 @@ Upewnij się, że dane w certyfikacie nie zawierają nieprawidłowych znaków, t
     e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
     -----END CERTIFICATE-----
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Błąd Azure Portal: Nie można zapisać bramy sieci VPN, a nazwa zasobu jest nieprawidłowa.
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Błąd Azure Portal: nie można zapisać bramy sieci VPN i nazwa zasobu jest nieprawidłowa
 
 ### <a name="symptom"></a>Objaw
 
 Podczas próby zapisania zmian dla bramy sieci VPN w Azure Portal zostanie wyświetlony następujący komunikat o błędzie: 
 
-**Nie można zapisać &lt; *nazwy*&gt;bramy bramy sieci wirtualnej. Nazwa certyfikatu nazwy zasobu *, którą próbujesz przekazać* &gt; ,** jestnieprawidłowa. &lt;
+**Nie można zapisać bramy sieci wirtualnej &lt;*bramy nazwa*&gt;. Nazwa zasobu &lt;*Nazwa certyfikatu, którą próbujesz przekazać*&gt; jest nieprawidłowa**.
 
 ### <a name="cause"></a>Przyczyna
 
 Ten problem występuje, ponieważ nazwa certyfikatu zawiera nieprawidłowy znak, taki jak spacja. 
 
-## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Błąd Azure Portal: Błąd pobierania pliku pakietu sieci VPN 503
+## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Błąd Azure Portal: błąd pobierania pliku pakietu sieci VPN 503
 
 ### <a name="symptom"></a>Objaw
 
@@ -237,7 +237,7 @@ Podczas próby pobrania pakietu konfiguracji klienta sieci VPN pojawia się nast
 
 Ten błąd może być spowodowany przez tymczasowy problem z siecią. Spróbuj pobrać pakiet sieci VPN ponownie za kilka minut.
 
-## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Uaktualnienie VPN Gateway platformy Azure: Nie można nawiązać połączenia ze wszystkimi klientami punktu do lokacji
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Uaktualnianie VPN Gateway platformy Azure: nie można nawiązać połączenia ze wszystkimi klientami punktu do lokacji
 
 ### <a name="cause"></a>Przyczyna
 
@@ -250,32 +250,6 @@ Aby rozwiązać ten problem, należy ponownie pobrać i wdrożyć pakiet lokacji
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Zbyt wielu klientów sieci VPN podłączonych jednocześnie
 
 Osiągnięto maksymalną dozwoloną liczbę połączeń. Łączna liczba podłączonych klientów znajduje się w Azure Portal.
-
-## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>Sieć VPN typu punkt-lokacja niepoprawnie dodaje trasę dla 10.0.0.0/8 do tabeli tras
-
-### <a name="symptom"></a>Objaw
-
-Po wybraniu połączenia sieci VPN na kliencie punkt-lokacja klient sieci VPN powinien dodać trasę do sieci wirtualnej platformy Azure. Usługa pomocnika IP powinna dodać trasę dla podsieci klientów sieci VPN. 
-
-Zakres klienta sieci VPN należy do mniejszej podsieci 10.0.0.0/8, na przykład 10.0.12.0/24. Zamiast trasy dla 10.0.12.0/24, dodawana jest trasa dla 10.0.0.0/8 o wyższym priorytecie. 
-
-Ta niepoprawna trasa zrywa łączność z innymi sieciami lokalnymi, które mogą należeć do innej podsieci w zakresie 10.0.0.0/8, na przykład 10.50.0.0/24, które nie mają zdefiniowanej określonej trasy. 
-
-### <a name="cause"></a>Przyczyna
-
-To zachowanie jest zaprojektowane dla klientów z systemem Windows. Gdy klient korzysta z protokołu IPCP (PPP), uzyskuje adres IP dla interfejsu tunelu z serwera (Brama sieci VPN w tym przypadku). Jednak ze względu na ograniczenie protokołu Klient nie ma maski podsieci. Ze względu na to, że nie istnieje żaden inny sposób na jego uzyskanie, klient próbuje odgadnąć maskę podsieci na podstawie klasy adresu IP interfejsu tunelu. 
-
-W związku z tym dodawana jest trasa oparta na następującym mapowaniu statycznym: 
-
-Jeśli adres należy do klasy A--> Zastosuj/8
-
-Jeśli adres należy do klasy B--> Zastosuj/16
-
-Jeśli adres należy do klasy C--> Zastosuj/24
-
-### <a name="solution"></a>Rozwiązanie
-
-Należy wprowadzić trasy dla innych sieci w tabeli routingu z najdłuższym dopasowaniem prefiksów lub niższą metryką (stąd wyższym priorytetem) niż punkt do lokacji. 
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>Klient sieci VPN nie może uzyskać dostępu do sieciowych udziałów plików
 
@@ -304,7 +278,7 @@ Należy usunąć połączenie sieci VPN punkt-lokacja, a następnie ponownie zai
 
 ### <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, usuń stare pliki konfiguracji klienta VPN z **\<C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections VirtualNetworkId >** , a następnie ponownie uruchom Instalatora klienta sieci VPN.
+Aby rozwiązać ten problem, usuń stare pliki konfiguracji klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections @ no__t-1VirtualNetworkId >** , a następnie ponownie uruchom Instalatora klienta sieci VPN.
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Klient sieci VPN typu punkt-lokacja nie może rozpoznać nazwy FQDN zasobów w domenie lokalnej
 
@@ -330,16 +304,16 @@ Ten problem może wystąpić, jeśli klient sieci VPN nie uzyska tras z usługi 
 
 Aby rozwiązać ten problem, [Zresetuj usługę Azure VPN Gateway](vpn-gateway-resetgw-classic.md). Aby upewnić się, że nowe trasy są używane, klienci sieci VPN typu punkt-lokacja muszą zostać pobrani ponownie po pomyślnym skonfigurowaniu komunikacji równorzędnej sieci wirtualnej.
 
-## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Błąd: "Funkcja odwoływania nie mogła sprawdzić odwołania, ponieważ serwer odwołań był w trybie offline. (Błąd 0x80092013) "
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Błąd: "funkcja odwoływania nie mogła sprawdzić odwołania, ponieważ serwer odwołań był w trybie offline. (Błąd 0x80092013) "
 
 ### <a name="causes"></a>Przyczyny
-Ten komunikat o błędzie występuje, gdy klient nie http://crl3.digicert.com/ssca-sha2-g1.crl może http://crl4.digicert.com/ssca-sha2-g1.crl uzyskać dostępu do programu i.  Sprawdzanie odwołania wymaga dostępu do tych dwóch lokacji.  Ten problem zwykle występuje na kliencie, na którym skonfigurowano serwer proxy. W niektórych środowiskach, jeśli żądania nie przechodzą przez serwer proxy, nastąpi odmowa w zaporze brzegowej.
+Ten komunikat o błędzie występuje, gdy klient nie może uzyskać dostępu http://crl3.digicert.com/ssca-sha2-g1.crl i http://crl4.digicert.com/ssca-sha2-g1.crl.  Sprawdzanie odwołania wymaga dostępu do tych dwóch lokacji.  Ten problem zwykle występuje na kliencie, na którym skonfigurowano serwer proxy. W niektórych środowiskach, jeśli żądania nie przechodzą przez serwer proxy, nastąpi odmowa w zaporze brzegowej.
 
 ### <a name="solution"></a>Rozwiązanie
 
-Sprawdź ustawienia serwera proxy, upewnij się, że klient ma dostęp http://crl3.digicert.com/ssca-sha2-g1.crl i. http://crl4.digicert.com/ssca-sha2-g1.crl
+Sprawdź ustawienia serwera proxy, upewnij się, że klient ma dostęp do http://crl3.digicert.com/ssca-sha2-g1.crl i http://crl4.digicert.com/ssca-sha2-g1.crl.
 
-## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>Błąd klienta sieci VPN: Połączenie zostało zablokowane z powodu zasad skonfigurowanych na serwerze RAS/VPN. (Błąd 812)
+## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>Błąd klienta sieci VPN: połączenie zostało uniemożliwione z powodu zasad skonfigurowanych na serwerze RAS/VPN. (Błąd 812)
 
 ### <a name="cause"></a>Przyczyna
 
@@ -355,7 +329,7 @@ Upewnij się, że serwer RADIUS jest prawidłowo skonfigurowany. Aby uzyskać wi
 
 Certyfikat główny nie został zainstalowany. Certyfikat główny jest instalowany w magazynie **zaufanych certyfikatów** klienta.
 
-## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>Błąd klienta sieci VPN: Połączenie zdalne nie zostało wykonane z powodu niepowodzenia podjętych tuneli VPN. (Błąd 800) 
+## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>Błąd klienta sieci VPN: połączenie zdalne nie zostało wykonane z powodu niepowodzenia podjętych tuneli VPN. (Błąd 800) 
 
 ### <a name="cause"></a>Przyczyna
 
@@ -371,7 +345,7 @@ Aktualizowanie sterownika karty sieciowej:
 4. Jeśli system Windows nie znajdzie nowego sterownika, możesz spróbować go wyszukać w witrynie sieci Web producenta urządzenia i postępować zgodnie z instrukcjami.
 5. Uruchom ponownie komputer i spróbuj ponownie nawiązać połączenie.
 
-## <a name="error-file-download-error-target-uri-is-not-specified"></a>Błąd: "Nie określono docelowego identyfikatora URI błędu pobierania pliku"
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>Błąd: "nie określono docelowego identyfikatora URI błędu pobierania pliku"
 
 ### <a name="cause"></a>Przyczyna
 
@@ -389,7 +363,7 @@ Ten problem może być spowodowany przez poprzednie instalacje klienta sieci VPN
 
 ### <a name="solution"></a>Rozwiązanie
 
-Usuń stare pliki konfiguracji klienta VPN z **\<C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections VirtualNetworkId >** i ponownie uruchom Instalatora klienta sieci VPN. 
+Usuń stare pliki konfiguracji klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections @ no__t-1VirtualNetworkId >** i ponownie uruchom Instalatora klienta sieci VPN. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>Klient sieci VPN jest w stanie hibernacji lub uśpienia po pewnym czasie
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/14/2019
 ms.author: radeltch
-ms.openlocfilehash: d3fbd38484696f0b133e7494fed11a22dc038148
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 98a12e6892ac8710ae2195cd2c29df43b4c65aba
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101113"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71706301"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux z Azure NetApp Files dla aplikacji SAP
 
@@ -81,7 +81,7 @@ Przeczytaj najpierw następujące informacje i dokumenty SAP:
   * [Dodatkowe informacje o wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Konfigurowanie ASCS/wykres WYWOŁUJĄCYCH dla SAP NetWeaver z zasobami autonomicznymi w RHEL 7,5](https://access.redhat.com/articles/3569681)
   * [Skonfiguruj rozwiązanie SAP S/4HANA ASCS/wykres WYWOŁUJĄCYCH za pomocą autonomicznej kolejki serwer 2 (ENSA2) w Pacemaker na RHEL](https://access.redhat.com/articles/3974941)
-* Dokumentacja usługi RHEL specyficznej dla platformy Azure:
+* Dokumentacja RHEL specyficzna dla platformy Azure:
   * [Zasady obsługi klastrów RHEL o wysokiej dostępności — Microsoft Azure Virtual Machines jako elementy członkowskie klastra](https://access.redhat.com/articles/3131341)
   * [Instalowanie i Konfigurowanie Red Hat Enterprise Linux 7,4 (i nowszych) klastra o wysokiej dostępności na Microsoft Azure](https://access.redhat.com/articles/3252491)
 * [NetApp aplikacje SAP na Microsoft Azure przy użyciu Azure NetApp Files][anf-sap-applications-azure]
@@ -95,46 +95,46 @@ Teraz można osiągnąć rozwiązanie SAP NetWeaver HA przy użyciu magazynu udo
 
 ![Omówienie wysokiej dostępności SAP NetWeaver](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SAP HANA Database używają wirtualnej nazwy hosta i wirtualnych adresów IP. Na platformie Azure moduł równoważenia obciążenia jest wymagany do używania wirtualnego adresu IP. Na poniższej liście przedstawiono konfigurację modułu równoważenia obciążenia z oddzielnymi adresami IP (A) SCS i wykres WYWOŁUJĄCYCH.
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SAP HANA Database używają wirtualnej nazwy hosta i wirtualnych adresów IP. Na platformie Azure moduł równoważenia obciążenia jest wymagany do używania wirtualnego adresu IP. Na poniższej liście przedstawiono konfigurację modułu równoważenia obciążenia z oddzielnymi adresami IP frontonu dla (A) SCS i wykres WYWOŁUJĄCYCH.
 
 > [!IMPORTANT]
 > Klastrowanie z obsługą wiele identyfikatorów SID oprogramowania SAP ASCS/wykres WYWOŁUJĄCYCH z systemem Red Hat Linux jako systemu operacyjnego gościa na maszynach wirtualnych platformy Azure **nie jest obsługiwane**. Klastrowanie z wieloma SIDmi opisuje instalację wielu wystąpień SAP ASCS/wykres WYWOŁUJĄCYCH z różnymi identyfikatorami SID w jednym klastrze Pacemaker.
 
-### <a name="ascs"></a>(A)SCS
+### <a name="ascs"></a>Z SCS
 
 * Konfiguracja frontonu
   * Adres IP 192.168.14.9
 * Konfiguracja zaplecza
   * Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra programu (A) SCS/wykres WYWOŁUJĄCYCH
 * Port sondy
-  * Port 620<strong>&lt;nr&gt;</strong>
+  * Port 620<strong>&lt;NR @ no__t-2</strong>
 * Reguły równoważenia obciążenia
-  * <strong>32&lt;Nr&gt;</strong>  TCP
-  * <strong>36&lt;Nr&gt;</strong>  TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * <strong>81&lt;Nr&gt;</strong>  TCP
-  * <strong>5&lt;Nr&gt;</strong>13 TCP
-  * <strong>5&lt;Nr&gt;</strong>14 TCP
-  * <strong>5&lt;Nr&gt;</strong>16 TCP
+  * 32<strong>&lt;NR @ no__t-2</strong> TCP
+  * 36<strong>&lt;NR @ no__t-2</strong> TCP
+  * 39<strong>&lt;NR @ no__t-2</strong> TCP
+  * 81<strong>&lt;NR @ no__t-2</strong> TCP
+  * 5<strong>@no__t 1NR @ no__t — 2</strong>13 TCP
+  * 5<strong>@no__t 1NR @ no__t-2</strong>14 TCP
+  * 5<strong>@no__t 1NR @ no__t-2</strong>16 TCP
 
-### <a name="ers"></a>ERS
+### <a name="ers"></a>Wykres WYWOŁUJĄCYCH
 
 * Konfiguracja frontonu
   * Adres IP 192.168.14.10
 * Konfiguracja zaplecza
   * Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra programu (A) SCS/wykres WYWOŁUJĄCYCH
 * Port sondy
-  * Port 621<strong>&lt;nr&gt;</strong>
+  * Port 621<strong>&lt;NR @ no__t-2</strong>
 * Reguły równoważenia obciążenia
-  * <strong>32&lt;Nr&gt;</strong>  TCP
-  * <strong>33&lt;Nr&gt;</strong>  TCP
-  * <strong>5&lt;Nr&gt;</strong>13 TCP
-  * <strong>5&lt;Nr&gt;</strong>14 TCP
-  * <strong>5&lt;Nr&gt;</strong>16 TCP
+  * 32<strong>&lt;NR @ no__t-2</strong> TCP
+  * 33<strong>&lt;NR @ no__t-2</strong> TCP
+  * 5<strong>@no__t 1NR @ no__t — 2</strong>13 TCP
+  * 5<strong>@no__t 1NR @ no__t-2</strong>14 TCP
+  * 5<strong>@no__t 1NR @ no__t-2</strong>16 TCP
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Konfigurowanie infrastruktury Azure NetApp Files 
 
-Rozwiązanie SAP NetWeaver wymaga udostępnionego magazynu dla katalogu transportowego i profilu.  Przed przystąpieniem do konfigurowania infrastruktury usługi Azure NetApp Files zapoznaj się z [dokumentacją Azure NetApp Files][anf-azure-doc]. Sprawdź, czy wybrany region platformy Azure oferuje Azure NetApp Files. Poniższy link przedstawia dostępność Azure NetApp Files według regionu platformy Azure: [Azure NetApp Files dostępność według regionów świadczenia usługi Azure][anf-avail-matrix].
+Rozwiązanie SAP NetWeaver wymaga udostępnionego magazynu dla katalogu transportowego i profilu.  Przed przystąpieniem do konfigurowania infrastruktury usługi Azure NetApp Files zapoznaj się z [dokumentacją Azure NetApp Files][anf-azure-doc]. Sprawdź, czy wybrany region platformy Azure oferuje Azure NetApp Files. Poniższy link przedstawia dostępność Azure NetApp Files według regionu platformy Azure: [Azure NetApp Files dostępność według regionu platformy Azure][anf-avail-matrix].
 
 Pliki usługi Azure NetApp są dostępne w kilku [regionach świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Przed wdrożeniem Azure NetApp Files należy zażądać dołączenia do Azure NetApp Files, postępując zgodnie z instrukcjami dotyczącymi [usługi Azure NetApp Files][anf-register]. 
 
@@ -184,7 +184,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
    1. Utwórz adresy IP frontonu
       1. Adres IP 192.168.14.9 dla ASCS
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
-         1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład frontonu) **. QAS. ASCS**)
+         1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **frontonu). QAS. ASCS**)
          1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **192.168.14.9**)
          1. Kliknij przycisk OK.
       1. 192.168.14.10 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
@@ -192,7 +192,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
    1. Tworzenie pul zaplecza
       1. Tworzenie puli zaplecza dla ASCS
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pule zaplecza, a następnie kliknij przycisk Dodaj.
-         1. Wprowadź nazwę nowej puli zaplecza (na przykład zaplecze **. QAS**)
+         1. Wprowadź nazwę nowej puli zaplecza (na przykład **zaplecze. QAS**)
          1. Kliknij pozycję Dodaj maszynę wirtualną.
          1. Wybierz zestaw dostępności utworzony wcześniej dla ASCS 
          1. Wybierz Maszyny wirtualne klastra SCS
@@ -204,12 +204,12 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
          1. Kliknij przycisk OK.
       1. Port 621**01** dla ASCS wykres wywołujących
-            * Powtórz powyższe kroki w sekcji "c", aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**01** i kondycja) **. QAS. Wykres WYWOŁUJĄCYCH**)
+            * Powtórz powyższe kroki w sekcji "c", aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**01** i **kondycja). QAS. Wykres WYWOŁUJĄCYCH**)
    1. Reguły równoważenia obciążenia
       1. 32**00** TCP dla ASCS
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję reguły równoważenia obciążenia, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład **LB. QAS. ASCS. 3200**)
-         1. Wybierz adres IP frontonu dla ASCS, puli zaplecza i sondy kondycji utworzonej wcześniej (na przykład frontonu) **. QAS. ASCS**)
+         1. Wybierz adres IP frontonu dla ASCS, puli zaplecza i sondy kondycji utworzonej wcześniej (na przykład **frontonu). QAS. ASCS**)
          1. Utrzymywanie protokołu **TCP**, wprowadź port **3200**
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
@@ -229,18 +229,18 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker Red Hat Enterprise Lin
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Przygotowanie do instalacji oprogramowania SAP NetWeaver
 
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
-1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+1. **[A]** rozpoznawanie nazw hostów
 
-   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
+   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
     ```
     sudo vi /etc/hosts
     ```
 
-   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
+   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
 
     ```
     # IP address of cluster node 1
@@ -646,7 +646,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
    Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno platformy pas, jak i AAS, **[P]** — dotyczy tylko platformy pas lub **[S]** — dotyczy tylko AAS.  
 
-1. **[A]** rozpoznawanie nazw hostów można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
+1. **[A]** rozpoznawanie nazw hostów można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach:  
 
    ```
@@ -747,7 +747,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 ## <a name="install-database"></a>Zainstaluj bazę danych
 
-W tym przykładzie system SAP NetWeaver jest instalowany na SAP HANA. Dla tej instalacji można użyć każdej obsługiwanej bazy danych. Aby uzyskać więcej informacji na temat instalowania SAP HANA na platformie Azure, zobacz [wysoka dostępność SAP HANA na maszynach wirtualnych platformy Azure w Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+W tym przykładzie system SAP NetWeaver jest instalowany na SAP HANA. Dla tej instalacji można użyć każdej obsługiwanej bazy danych. Aby uzyskać więcej informacji na temat instalowania SAP HANA na platformie Azure, zobacz [wysoka dostępność SAP HANA na maszynach wirtualnych platformy Azure na Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
 1. Uruchamianie instalacji wystąpienia bazy danych SAP
 
@@ -945,7 +945,7 @@ Wykonaj następujące kroki, aby zainstalować serwer aplikacji SAP.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   Jeśli serwer wiadomości zostanie skasowany tylko raz, zostanie on ponownie uruchomiony przez `sapstart`program. Jeśli zakończysz go często, Pacemaker będzie ostatecznie przenieść wystąpienie ASCS do innego węzła. Uruchom następujące polecenia jako główne, aby wyczyścić stan zasobu wystąpienia ASCS i wykres WYWOŁUJĄCYCH po teście.
+   Jeśli serwer wiadomości zostanie skasowany tylko raz, zostanie on uruchomiony ponownie przez `sapstart`. Jeśli zakończysz go często, Pacemaker będzie ostatecznie przenieść wystąpienie ASCS do innego węzła. Uruchom następujące polecenia jako główne, aby wyczyścić stan zasobu wystąpienia ASCS i wykres WYWOŁUJĄCYCH po teście.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
@@ -1039,7 +1039,7 @@ Wykonaj następujące kroki, aby zainstalować serwer aplikacji SAP.
    [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   Jeśli uruchamiasz polecenie tylko raz, `sapstart` program uruchomi ponownie ten proces. Jeśli uruchomisz go często, `sapstart` program nie uruchomi ponownie procesu, a zasób stanie się zatrzymany. Uruchom następujące polecenia jako główne, aby wyczyścić stan zasobu wystąpienia wykres WYWOŁUJĄCYCH po teście.
+   Jeśli uruchamiasz polecenie tylko raz, `sapstart` ponownie uruchomi proces. Jeśli uruchomisz go często, `sapstart` nie uruchomi ponownie procesu, a zasób stanie się zatrzymany. Uruchom następujące polecenia jako główne, aby wyczyścić stan zasobu wystąpienia wykres WYWOŁUJĄCYCH po teście.
 
    ```
    [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01

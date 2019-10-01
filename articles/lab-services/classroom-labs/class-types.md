@@ -15,7 +15,7 @@ ms.date: 09/30/2019
 ms.author: spelluru
 ms.openlocfilehash: d24b22ad7f306e6334369ec859f5f01b2d32184e
 ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/01/2019
 ms.locfileid: "71695834"

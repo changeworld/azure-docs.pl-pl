@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: ad21ddffdb22f7abf999bfa12f4a8ed86f42cfa2
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 69dce46052c18eec7c3f1fa2082907ed62b367d6
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673446"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703346"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Mapowanie obsługi JSON przepływu danych
 
@@ -22,7 +22,7 @@ ms.locfileid: "71673446"
 Dodawanie złożonej kolumny do przepływu danych jest łatwiejsze za pomocą edytora wyrażeń kolumn pochodnych. Po dodaniu nowej kolumny i otwarciu edytora dostępne są dwie opcje: wprowadź ręcznie strukturę JSON lub użyj interfejsu użytkownika, aby interaktywnie dodać podkolumny.
 
 #### <a name="interactive-ui-json-design"></a>Interaktywny projekt JSON interfejsu użytkownika
-W okienku po stronie danych wyjściowych można dodawać nowe podkolumny przy użyciu menu `+`: Dodaj podkolumnę(media/data-flow/addsubcolumn.png "Dodawanie") ![podkolumny]
+W okienku po stronie danych wyjściowych można dodawać nowe podkolumny, używając menu `+`: ![Dodaj]podkolumnę(media/data-flow/addsubcolumn.png "Dodaj") podkolumnę
 
 Z tego miejsca można dodawać nowe kolumny i podkolumny w taki sam sposób. W przypadku każdego niezłożonej pola wyrażenie może być dodane w edytorze wyrażeń z prawej strony.
 
@@ -50,7 +50,7 @@ Jeśli to wyrażenie zostało wprowadzone dla kolumny o nazwie "complexColumn", 
 }
 ```
 
-#### <a name="sample-manual-dsl"></a>Przykładowy ręczny DSL
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Przykładowy skrypt ręczny dla pełnej definicji hierarchicznej
 ```
 @(
     title=Title,
@@ -145,7 +145,7 @@ File3.json
 ```
 
 ## <a name="higher-order-functions"></a>Funkcje wyższego rzędu
-## <a name="filter"></a>filter
+## <a name="filter"></a>filtr
 Filtruje elementy z tablicy, które nie spełniają podanego predykatu. Filtr oczekuje odwołania do jednego elementu w funkcji predykatu jako #item.
 
 ### <a name="examples"></a>Przykłady
@@ -173,7 +173,7 @@ reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-## <a name="sort"></a>Porządku
+## <a name="sort"></a>sort
 Sortuje tablicę przy użyciu podanej funkcji predykatu. Funkcja Sort oczekuje odwołania do dwóch kolejnych elementów w funkcji Expression jako #item1 i #item2.
 
 ### <a name="examples"></a>Przykłady

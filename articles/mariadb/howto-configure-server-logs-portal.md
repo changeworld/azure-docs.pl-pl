@@ -1,68 +1,85 @@
 ---
-title: Konfigurowanie i Dzienniki dostępu serwera usługi Azure Database dla serwera MariaDB w witrynie Azure portal
-description: W tym artykule opisano sposób konfigurowania i uzyskać dostęp do dzienników serwera w usłudze Azure Database dla serwera MariaDB z witryny Azure portal.
-author: rachel-msft
-ms.author: raagyema
+title: Konfigurowanie i uzyskiwanie dostępu do dzienników serwera dla Azure Database for MariaDB w Azure Portal
+description: W tym artykule opisano sposób konfigurowania i uzyskiwania dostępu do dzienników serwera w Azure Database for MariaDB z Azure Portal.
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 3dbf7064e409230916668e62ef861c0ce149fdbb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/30/2019
+ms.openlocfilehash: c8be9519d3393330b3022fadd2de6a49e58ecdcf
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065634"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703501"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurowanie i dzienników serwera dostępu w witrynie Azure portal
+# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurowanie i uzyskiwanie dostępu do dzienników serwera w Azure Portal
 
-Można skonfigurować, listy i pobrać [— Azure Database for dzienniki wolnych zapytań MariaDB](concepts-server-logs.md) w witrynie Azure portal.
+Można skonfigurować, wyświetlić i pobrać [Azure Database for MariaDB wolnych dzienników zapytań](concepts-server-logs.md) z Azure Portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do wykonania kroków w tym przewodniku, potrzebne są:
-- [Azure Database dla serwera MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md)
+Aby krokowo poprowadzić ten przewodnik, musisz:
+- [Serwer Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania
-Konfigurowanie dostępu do dzienników wolnych zapytań. 
+Skonfiguruj dostęp do dziennika wolnych zapytań. 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
-2. Wybierz usługi Azure Database dla serwera MariaDB.
+2. Wybierz serwer Azure Database for MariaDB.
 
-3. W obszarze **monitorowanie** sekcji na pasku bocznym wybierz opcję **dzienniki serwera**. 
-   ![Wybierz dzienniki serwera, kliknij, aby skonfigurować](./media/howto-configure-server-logs-portal/1-select-server-logs-configure.png)
+3. W sekcji **monitorowanie** na pasku bocznym wybierz pozycję **Dzienniki serwera**. 
+   @no__t — Dzienniki serwera 0Select, kliknij, aby skonfigurować @ no__t-1
 
-4. Wybierz nagłówek **kliknij tutaj, aby włączyć dzienniki i skonfigurować parametry dziennika** Aby wyświetlić parametry serwera.
+4. Wybierz nagłówek, **kliknij tutaj, aby włączyć dzienniki i skonfigurować parametry dziennika** w celu wyświetlenia parametrów serwera.
 
-5. Zmień parametry, które należy dopasować, włącznie z włączaniem "slow_query_log" na "Wł.". Wszystkie zmiany wprowadzone w tej sesji są wyróżnione na fioletowo. 
+5. Zmień parametry, które należy dostosować, w tym włączenie "slow_query_log" do "ON". Wszystkie zmiany wprowadzone w tej sesji są wyróżnione kolorem purpurowym. 
 
-   Po zmianie parametrów, możesz kliknąć **Zapisz**. Możesz też **odrzucić** zmiany.
+   Po zmianie parametrów możesz kliknąć przycisk **Zapisz**. Możesz też **odrzucić** zmiany.
 
-   ![Kliknij pozycję Zapisz lub Odrzuć](./media/howto-configure-server-logs-portal/3-save-discard.png)
+   ![Kliknij przycisk Zapisz lub Odrzuć](./media/howto-configure-server-logs-portal/3-save-discard.png)
 
-6. Wróć do listy dzienniki, klikając **przycisk Zamknij** (ikonę X) na **parametrów serwera** strony.
+6. Wróć do listy dzienników, klikając **przycisk Zamknij** (ikonę X) na stronie **parametry serwera** .
 
-## <a name="view-list-and-download-logs"></a>Wyświetl listę i pobieranie dzienników
-Po rozpoczęciu rejestrowania, można wyświetlić listę dostępnych wolnych zapytań dzienników i Pobierz pojedyncze pliki dziennika w okienku dzienniki serwera. 
+## <a name="view-list-and-download-logs"></a>Wyświetl listę i dzienniki pobierania
+Po rozpoczęciu rejestrowania można wyświetlić listę dostępnych wolnych dzienników zapytań i pobrać pojedyncze pliki dziennika w okienku Dzienniki serwera. 
 
 1. Otwórz witrynę Azure Portal.
 
-2. Wybierz usługi Azure Database dla serwera MariaDB.
+2. Wybierz serwer Azure Database for MariaDB.
 
-3. W obszarze **monitorowanie** sekcji na pasku bocznym wybierz opcję **dzienniki serwera**. Strony Wyświetla listę plików dziennika, jak pokazano:
+3. W sekcji **monitorowanie** na pasku bocznym wybierz pozycję **Dzienniki serwera**. Na stronie zostanie wyświetlona lista plików dziennika, jak pokazano poniżej:
 
    ![Lista dzienników](./media/howto-configure-server-logs-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > Konwencja nazewnictwa dziennika jest **mysql - wolno — < nazwa serwera >-yyyymmddhh.log**. Daty i godziny w polu Nazwa pliku jest czas, gdy dziennik został wystawiony. Pliki dziennika są obracane co 24 godziny lub 7.5 GB, zależnie co nastąpi wcześniej.
+   > Konwencja nazewnictwa dziennika to **MySQL-wolno-< nazwę serwera >-yyyymmddhh. log**. Data i godzina użyta w nazwie pliku to czas, kiedy dziennik został wystawiony. Pliki dzienników są obracane co 24 godziny lub 7,5 GB, w zależności od tego, co nastąpi wcześniej.
 
-4. Jeśli to konieczne, należy użyć **pole wyszukiwania** można szybko zawęzić określonego dziennika, w oparciu o daty/godziny. Wyszukiwanie znajduje się na nazwę dziennika.
+4. W razie potrzeby użyj **pola wyszukiwania** , aby szybko zawęzić do określonego dziennika na podstawie daty/godziny. Wyszukiwanie znajduje się na nazwie dziennika.
 
-5. Pobierz pojedyncze pliki dziennika przy użyciu **Pobierz** przycisku (ikona strzałki w dół) obok każdego pliku dziennika, w wierszu tabeli jak pokazano:
+5. Pobierz poszczególne pliki dzienników przy użyciu przycisku **Pobierz** (ikona strzałki w dół) obok każdego pliku dziennika w wierszu tabeli, jak pokazano:
 
    ![Kliknij ikonę pobierania](./media/howto-configure-server-logs-portal/5-download.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [wolne dzienniki zapytań](concepts-server-logs.md) w usłudze Azure Database dla serwera MariaDB.
-- Aby uzyskać więcej informacji na temat rejestrowania i definicjami parametrów, zobacz dokumentację MariaDB na [dzienniki](https://mariadb.com/kb/en/library/slow-query-log-overview/).
+## <a name="set-up-diagnostic-logs"></a>Konfigurowanie dzienników diagnostycznych
 
-<!--- See [Access Server Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download logs programmatically. -->
+1. W sekcji **monitorowanie** na pasku bocznym wybierz pozycję **Ustawienia diagnostyczne**.
+
+1. Kliknij pozycję "+ Dodaj ustawienie diagnostyczne" ![Add ustawienia diagnostyczne @ no__t-1
+
+1. Podaj nazwę ustawienia diagnostycznego.
+
+1. Określ, które ujścia danych mają wysyłać dzienniki wolnych zapytań (konto magazynu, centrum zdarzeń i/lub Log Analytics obszar roboczy).
+
+1. Wybierz pozycję "MySqlSlowLogs" jako typ dziennika.
+![Configure ustawienia diagnostyczne @ no__t-1
+
+1. Po skonfigurowaniu ujścia danych w celu potoku dzienników wolnych zapytań do programu można kliknąć przycisk **Zapisz**.
+![Save ustawienia diagnostyczne @ no__t-1
+
+1. Uzyskaj dostęp do dzienników wolnych zapytań, badając je w skonfigurowanych ujściach danych. Wyświetlenie dzienników może potrwać do 10 minut.
+
+## <a name="next-steps"></a>Następne kroki
+- Zobacz [dostęp do dzienników wolnych zapytań w interfejsie wiersza polecenia](howto-configure-server-logs-cli.md) , aby dowiedzieć się, jak programowo pobrać dzienniki wolnych zapytań.
+- Dowiedz się więcej o [wolnych dziennikach zapytań](concepts-server-logs.md) w Azure Database for MariaDB.
+- Aby uzyskać więcej informacji na temat definicji parametrów i rejestrowania, zapoznaj się z dokumentacją MariaDB dotyczącą [dzienników](https://mariadb.com/kb/en/library/slow-query-log-overview/).

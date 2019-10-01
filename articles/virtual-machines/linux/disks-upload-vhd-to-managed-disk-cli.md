@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: bc8932a9904a3e4e671edc3e624ff15e7253e1ed
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 938f1696c95f8feb9aeebd28139870e3ce020613
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326819"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695448"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -32,14 +32,14 @@ Obecnie bezpośrednie przekazywanie jest obsługiwane dla standardowego dysku tw
 
 ## <a name="create-an-empty-managed-disk"></a>Utwórz pusty dysk zarządzany
 
-Aby przekazać dysk VHD na platformę Azure, musisz utworzyć pusty dysk zarządzany, który jest skonfigurowany dla tego procesu przekazywania. Przed utworzeniem jednego z tych dysków należy zapoznać się z dodatkowymi informacjami.
+Aby przekazać dysk VHD na platformę Azure, musisz utworzyć pusty dysk zarządzany skonfigurowany dla tego procesu przekazywania. Przed utworzeniem jednego z tych dysków należy zapoznać się z dodatkowymi informacjami.
 
 Ten rodzaj dysku zarządzanego ma dwa unikatowe Stany:
 
 - ReadToUpload, co oznacza, że dysk jest gotowy do odebrania przekazania, ale nie Wygenerowano [sygnatury bezpiecznego dostępu](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS).
 - ActiveUpload, co oznacza, że dysk jest gotowy do odebrania przekazywania i Wygenerowano sygnaturę dostępu współdzielonego.
 
-W każdym z tych stanów dysk zarządzany jest rozliczany zgodnie ze [standardowymi cenami](https://azure.microsoft.com/pricing/details/managed-disks/)dysków twardych, niezależnie od rzeczywistego typu dysku. Na przykład P10 będzie rozliczany jako S10. Ta wartość będzie prawdziwa do `revoke-access` momentu wywołania na dysku zarządzanym, który jest wymagany w celu dołączenia dysku do maszyny wirtualnej.
+W każdym z tych stanów dysk zarządzany jest rozliczany zgodnie ze [standardowymi cenami](https://azure.microsoft.com/pricing/details/managed-disks/)dysków twardych, niezależnie od rzeczywistego typu dysku. Na przykład P10 będzie rozliczany jako S10. Ta wartość będzie prawdziwa do momentu wywołania `revoke-access` na dysku zarządzanym, co jest wymagane w celu dołączenia dysku do maszyny wirtualnej.
 
 Przed utworzeniem pustego standardowego dysku twardego do przekazania należy mieć rozmiar pliku wirtualnego dysku twardego, który ma zostać przekazany, w bajtach. Aby to zrobić, możesz użyć opcji `wc -c <yourFileName>.vhd` lub `ls -al <yourFileName>.vhd`. Ta wartość jest używana podczas określania parametru **--upload-size-Bytes** .
 
@@ -79,7 +79,7 @@ To przekazywanie ma taką samą przepływność jak odpowiednik [standardowego d
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
-Jeśli Twoje sygnatury dostępu współdzielonego wygasną podczas przekazywania `revoke-access` , a jeszcze nie wywołano, możesz uzyskać nowe sygnatury dostępu `grant-access`współdzielonego, aby kontynuować przekazywanie przy użyciu programu.
+Jeśli sygnatura dostępu współdzielonego wygasa podczas przekazywania i nie wywołano jeszcze `revoke-access`, można uzyskać nowe sygnatury dostępu współdzielonego, aby kontynuować przekazywanie przy użyciu `grant-access`.
 
 Po zakończeniu przekazywania i nie musisz już pisać więcej danych na dysku, odwołaj sygnaturę dostępu współdzielonego. Odwoływanie sygnatury dostępu współdzielonego spowoduje zmianę stanu dysku zarządzanego i umożliwi dołączenie dysku do maszyny wirtualnej.
 
@@ -91,4 +91,4 @@ az disk revoke-access -n mydiskname -g resourcegroupname
 
 Teraz, gdy wirtualny dysk twardy został pomyślnie przekazany do dysku zarządzanego, możesz dołączyć dysk do maszyny wirtualnej i zacząć z niego korzystać.
 
-Aby dowiedzieć się, jak dołączyć dysk do maszyny wirtualnej, zapoznaj się z artykułem na temat: [Dodaj dysk do maszyny wirtualnej z systemem Linux](add-disk.md).
+Aby dowiedzieć się, jak dołączyć dysk do maszyny wirtualnej, zobacz nasz artykuł w temacie: [Dodawanie dysku do maszyny wirtualnej z systemem Linux](add-disk.md).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 299799566f0d54cc3fa017b032e15b387fe8cdd5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 876fef2b597e9a7dfd896f2b9697378e745a07f3
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467928"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709829"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektury oparte na zdarzeniach bezserwerowych z Azure Cosmos DB i Azure Functions
 
@@ -29,15 +29,15 @@ Korzystając z [wyzwalacza Azure Functions dla Cosmos DB](../azure-functions/fun
 
 Aby zaimplementować przepływ oparty na zdarzeniach bezserwerowych, potrzebne są:
 
-* **Monitorowany kontener**: Monitorowany kontener jest monitorowanym kontenerem usługi Azure Cosmos i przechowuje dane, z których jest generowana podawanie zmian. Wszelkie operacje wstawiania i zmiany (np. CRUD) do monitorowanego kontenera są odzwierciedlane w kanale zmian kontenera.
-* **Kontener dzierżawy**: Kontener dzierżawy przechowuje stan między wieloma i dynamicznymi wystąpieniami funkcji platformy Azure bez serwera i umożliwia dynamiczne skalowanie. Ten kontener dzierżawy może być ręcznie lub automatycznie tworzony przez wyzwalacz Azure Functions dla Cosmos DB. Aby automatycznie utworzyć kontener dzierżawy, Ustaw flagę *CreateLeaseCollectionIfNotExists* w [konfiguracji](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration). Podzielone na partycje kontenery dzierżaw muszą mieć `/id` definicję klucza partycji.
+* **Monitorowany kontener**: monitorowany kontener jest monitorowanym kontenerem usługi Azure Cosmos i przechowuje dane, z których jest generowana podawanie zmian. Wszelkie operacje wstawiania i zmiany (np. CRUD) do monitorowanego kontenera są odzwierciedlane w kanale zmian kontenera.
+* **Kontener dzierżawy**: kontener dzierżawy zachowuje stan między wieloma i dynamicznymi wystąpieniami funkcji platformy Azure bez serwera i umożliwia dynamiczne skalowanie. Ten kontener dzierżawy może być ręcznie lub automatycznie tworzony przez wyzwalacz Azure Functions dla Cosmos DB. Aby automatycznie utworzyć kontener dzierżawy, Ustaw flagę *CreateLeaseCollectionIfNotExists* w [konfiguracji](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration). Kontenery z podzielonymi dzierżawami muszą mieć definicję klucza partycji `/id`.
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Utwórz wyzwalacz Azure Functions dla Cosmos DB
 
 Tworzenie funkcji platformy Azure z wyzwalaczem Azure Functions dla Cosmos DB jest teraz obsługiwane dla wszystkich Azure Functions IDE i integracji interfejsu wiersza polecenia:
 
 * [Rozszerzenie programu Visual Studio](../azure-functions/functions-develop-vs.md) dla użytkowników programu Visual Studio.
-* [Podstawowe rozszerzenie programu Visual Studio](https://code.visualstudio.com/tutorials/functions-extension/create-function) dla użytkowników Visual Studio Code.
+* [Podstawowe rozszerzenie programu Visual Studio](/azure/javascript/tutorial-vscode-serverless-node-01) dla użytkowników Visual Studio Code.
 * A wreszcie [podstawowe narzędzia interfejsu wiersza polecenia](../azure-functions/functions-run-local.md#create-func) dla wieloplatformowego środowiska IDE niezależny od.
 
 ## <a name="run-your-trigger-locally"></a>Uruchamianie wyzwalacza lokalnie
@@ -52,6 +52,6 @@ Teraz możesz dalej dowiedzieć się więcej na temat źródła zmian w następu
 
 * [Przegląd źródła zmian](change-feed.md)
 * [Sposoby odczytywania źródła zmian](read-change-feed.md)
-* [Za pomocą zmian źródła danych z biblioteką procesora](change-feed-processor.md)
+* [Korzystanie z biblioteki procesora kanału informacyjnego zmiany](change-feed-processor.md)
 * [Jak korzystać z biblioteki procesora źródła zmian](change-feed-processor.md)
 * [Przetwarzanie baz danych bezserwerowe przy użyciu Azure Cosmos DB i Azure Functions](serverless-computing-database.md)

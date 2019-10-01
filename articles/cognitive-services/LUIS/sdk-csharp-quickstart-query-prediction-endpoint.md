@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: C#Punkt końcowy przewidywania zapytań zestawu SDK — LUIS'
+title: 'Szybki Start C# : punkt końcowy przewidywania zapytań zestawu SDK — Luis'
 titleSuffix: Azure Cognitive Services
 description: Użyj zestawu SDK języka C# w celu wysłania wypowiedzi użytkownika do usługi LUIS i odebrania przewidywania.
 author: diberry
@@ -8,16 +8,16 @@ ms.service: cognitive-services
 services: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: c0b534848232d60929722e2036f69f4b6e670a4a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4d7c02d8cf37f155af1fd9c0d5de7fa8ec948c4b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563161"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703124"
 ---
-# <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Szybki start: Wysyłanie zapytań do punktu końcowego przewidywania za pomocą zestawu SDK języka C# .NET
+# <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Szybki Start: zapytanie dotyczące punktu końcowego C# przewidywania wersji 2 z zestawem SDK platformy .NET
 
 Użyj zestawu SDK platformy .NET, znajdującego się w pakiecie [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/), aby wysłać wypowiedź użytkownika do usługi Language Understanding (LUIS) i odebrać przewidywanie intencji użytkownika. 
 
@@ -184,4 +184,4 @@ HomeAutomation.Room:'bedroom' begins at position 12 and ends at position 18
 Dowiedz się więcej o [zestawie SDK platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) i zapoznaj się z [dokumentacją referencyjna platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet). 
 
 > [!div class="nextstepaction"] 
-> [Samouczek: Tworzenie aplikacji usługi LUIS umożliwiającej określanie intencji użytkownika](luis-quickstart-intents-only.md) 
+> [Samouczek: kompilowanie aplikacji LUIS w celu określenia zamiarów użytkownika](luis-quickstart-intents-only.md) 

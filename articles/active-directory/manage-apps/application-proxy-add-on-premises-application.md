@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/30/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe6da9b1557293ee9002681c6ce90c1c6c62a25b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c3f3d7eb0fe544316aec1ce1ece45b2c7c1d9085
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231256"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694715"
 ---
-# <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Samouczek: Dodawanie aplikacji lokalnej na potrzeby dostępu zdalnego za pomocą serwera proxy aplikacji w usłudze Azure Active Directory
+# <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Samouczek: Dodawanie aplikacji lokalnej dla dostępu zdalnego przy użyciu serwera proxy aplikacji w Azure Active Directory
 
 Usługa Azure Active Directory (Azure AD) udostępnia usługę serwera proxy aplikacji, która umożliwia użytkownikom zalogowanym na konto usługi Azure AD dostęp do aplikacji lokalnych. W tym samouczku przygotujemy środowisko do obsługi serwera proxy aplikacji. Gdy środowisko będzie gotowe, za pomocą witryny Azure Portal dodamy aplikację lokalną do dzierżawy usługi Azure AD.
 
@@ -40,7 +40,7 @@ Aby dodać aplikację lokalną do usługi Azure AD, potrzebne są:
 * Konto administratora aplikacji
 * Tożsamości użytkowników muszą być synchronizowane z katalogu lokalnego lub tworzone bezpośrednio w dzierżawach usługi Azure AD. Synchronizacja tożsamości umożliwia usłudze Azure AD wstępne uwierzytelnienie użytkowników przed udzieleniem im dostępu do opublikowanych aplikacji serwera proxy aplikacji i posiadanie informacji o identyfikatorze użytkownika w celu przeprowadzenia rejestracji jednokrotnej (SSO).
 
-### <a name="windows-server"></a>Windows server
+### <a name="windows-server"></a>Server systemu Windows
 
 Aby użyć serwera proxy aplikacji, potrzebujesz serwera systemu Windows z systemem Windows Server 2012 R2 lub nowszym. Na serwerze zainstalujesz łącznik serwera proxy aplikacji. Serwer łącznika musi się łączyć z usługami serwera proxy aplikacji na platformie Azure oraz aplikacjami lokalnymi, które zamierzasz opublikować.
 
@@ -50,6 +50,9 @@ Aby zapewnić wysoką dostępność w środowisku produkcyjnym, zalecamy użycie
 
 1. Serwer łącznika powinien znajdować się blisko serwerów aplikacji, aby wydajność komunikacji między łącznikiem a aplikacją była optymalna. Aby uzyskać więcej informacji, zobacz [Network topology considerations (Kwestie związane z topologią sieci)](application-proxy-network-topology.md).
 1. Serwer łącznika i serwery aplikacji sieci Web powinny należeć do tej samej domeny Active Directory lub zakresu zaufanych domen. Posiadanie serwerów w tej samej domenie lub domen ufających jest wymaganiem do korzystania z logowania jednokrotnego (SSO) ze zintegrowanym uwierzytelnianiem systemu Windows (IWA) i ograniczonego delegowania protokołu Kerberos (KCD). Jeśli serwer łącznika znajduje się w innej domenie usługi Active Directory niż serwery aplikacji internetowych, korzystanie z logowania jednokrotnego wymaga użycia delegowania opartego na zasobach. Aby uzyskać więcej informacji, zobacz [KCD for single sign-on with Application Proxy (Ograniczone delegowanie Kerberos dla logowania jednokrotnego przy użyciu serwera proxy aplikacji)](application-proxy-configure-single-sign-on-with-kcd.md).
+
+> [!WARNING]
+> Jeśli wdrożono serwer proxy ochrony hasłem usługi Azure AD, nie instaluj jednocześnie serwera proxy usługi Azure serwer proxy aplikacji usługi Azure AD i usługi Azure AD Password Protection na tym samym komputerze. Usługa Azure serwer proxy aplikacji usługi Azure AD i serwer proxy ochrony hasłem usługi Azure AD instalują różne wersje usługi Azure AD Connect Agent Aktualizator. Te różne wersje są niezgodne, jeśli są zainstalowane razem na tym samym komputerze.
 
 #### <a name="tls-requirements"></a>Wymagania protokołu TLS
 
@@ -75,7 +78,7 @@ Aby włączyć protokół TLS 1.2:
 
 Zacznij od włączenia komunikacji do centrów danych platformy Azure w celu przygotowania środowiska do serwer proxy aplikacji usługi Azure AD platformy Azure. Jeśli w ścieżce znajduje się zapora, upewnij się, że jest otwarta. Otwarta Zapora umożliwia łącznikowi wykonywanie żądań HTTPS (TCP) do serwera proxy aplikacji.
 
-### <a name="open-ports"></a>Otwórz porty
+### <a name="open-ports"></a>Otwieranie portów
 
 Otwórz następujące porty dla ruchu **wychodzącego**.
 
@@ -90,13 +93,13 @@ Jeśli zapora wymusza ruch odpowiednio dla użytkowników, którzy go generują,
 
 Zezwól na dostęp do następujących adresów URL:
 
-| URL | Zastosowanie |
+| Adres URL | Zastosowanie |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikacja między łącznikiem a usługą serwera proxy aplikacji w chmurze |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Na platformie Azure są wykorzystywane te adresy URL do weryfikowania certyfikatów. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*. microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Łącznik używa tych adresów URL podczas procesu rejestracji. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>@no__t — 0.microsoftonline-p.com<br>@no__t — 0.msauth.net<br>@no__t — 0.msauthimages.net<br>@no__t — 0.msecnd.net<br>@no__t — 0.msftauth.net<br>@no__t — 0.msftauthimages.net<br>@no__t — 0.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Łącznik używa tych adresów URL podczas procesu rejestracji. |
 
-Można zezwolić na połączenia z \*. msappproxy.NET i \*. ServiceBus.Windows.NET, Jeśli zapora lub serwer proxy umożliwia skonfigurowanie list dozwolonych DNS. W przeciwnym razie musisz zezwolić na dostęp do [zakresów adresów IP i tagów usług platformy Azure — chmury publicznej](https://www.microsoft.com/download/details.aspx?id=56519). Zakresy adresów IP są aktualizowane co tydzień.
+Można zezwolić na połączenia z \*.msappproxy.net i \*.servicebus.windows.net, Jeśli zapora lub serwer proxy umożliwia skonfigurowanie list dozwolonych DNS. W przeciwnym razie musisz zezwolić na dostęp do [zakresów adresów IP i tagów usług platformy Azure — chmury publicznej](https://www.microsoft.com/download/details.aspx?id=56519). Zakresy adresów IP są aktualizowane co tydzień.
 
 ## <a name="install-and-register-a-connector"></a>Instalowanie i rejestrowanie łącznika
 
@@ -119,7 +122,7 @@ Aby zainstalować łącznik:
 
 ### <a name="general-remarks"></a>Uwagi ogólne
 
-Jeśli wcześniej zainstalowano łącznik, zainstaluj go ponownie, aby uzyskać najnowszą wersję. Aby wyświetlić informacje o poprzednio wydanych wersjach i zmianach, które zawierają [, zobacz serwer proxy aplikacji: Historia](application-proxy-release-version-history.md)wersji.
+Jeśli wcześniej zainstalowano łącznik, zainstaluj go ponownie, aby uzyskać najnowszą wersję. Aby wyświetlić informacje o poprzednio wydanych wersjach i ich zmianach, zobacz [serwer proxy aplikacji: historia wersji](application-proxy-release-version-history.md).
 
 Jeśli masz więcej niż jeden serwer systemu Windows dla aplikacji lokalnych, musisz zainstalować i zarejestrować łącznik na każdym serwerze. Możesz tworzyć grupy łączników. Aby uzyskać więcej informacji, zobacz [Grupy łączników](application-proxy-connector-groups.md).
 
@@ -163,13 +166,13 @@ Po przygotowaniu środowiska i zainstalowaniu łącznika możemy dodać aplikacj
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) jako administrator.
 1. W lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
 1. Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Nowa aplikacja**.
-1. Wybierz **aplikacje lokalne**.  
+1. Wybierz **aplikację lokalną**.  
 1. W sekcji **Dodawanie własnej aplikacji lokalnej** podaj następujące informacje o aplikacji:
 
     | Pole | Opis |
     | :---- | :---------- |
     | **Nazwa** | Nazwa aplikacji, która będzie wyświetlana na panelu dostępu oraz w witrynie Azure Portal. |
-    | **Wewnętrzny adres URL** | Ten adres URL umożliwia dostęp do aplikacji w sieci prywatnej. Możesz wprowadzić określoną ścieżkę na serwerze zaplecza, która zostanie opublikowana, podczas gdy pozostała część serwera pozostanie nieopublikowana. W ten sposób możesz opublikować wiele lokacji jako różne aplikacje na tym samym serwerze, nadając im różne nazwy i reguły dostępu.<br><br>W przypadku publikowania ścieżki upewnij się, że zawiera ona wszystkie niezbędne obrazy, skrypty i arkusze stylów dla aplikacji. Jeśli na przykład aplikacja jest w sieci https:\//yourapp/App i używa obrazów znajdujących się w protokole https:\//yourapp/Media, należy opublikować https\/:/yourapp/jako ścieżkę. Wewnętrzny adres URL nie musi być stroną docelową widoczną dla użytkowników. Aby uzyskać więcej informacji, zobacz [Set a custom home page for published apps (Ustawianie niestandardowej strony głównej dla opublikowanych aplikacji)](application-proxy-configure-custom-home-page.md). |
+    | **Wewnętrzny adres URL** | Ten adres URL umożliwia dostęp do aplikacji w sieci prywatnej. Możesz wprowadzić określoną ścieżkę na serwerze zaplecza, która zostanie opublikowana, podczas gdy pozostała część serwera pozostanie nieopublikowana. W ten sposób możesz opublikować wiele lokacji jako różne aplikacje na tym samym serwerze, nadając im różne nazwy i reguły dostępu.<br><br>W przypadku publikowania ścieżki upewnij się, że zawiera ona wszystkie niezbędne obrazy, skrypty i arkusze stylów dla aplikacji. Na przykład jeśli aplikacja jest w sieci https: \//yourapp/App i używa obrazów znajdujących się w protokole https: \//yourapp/Media, należy opublikować https: \//yourapp/jako ścieżkę. Wewnętrzny adres URL nie musi być stroną docelową widoczną dla użytkowników. Aby uzyskać więcej informacji, zobacz [Set a custom home page for published apps (Ustawianie niestandardowej strony głównej dla opublikowanych aplikacji)](application-proxy-configure-custom-home-page.md). |
     | **Zewnętrzny adres URL** | Ten adres umożliwia użytkownikom dostęp do aplikacji spoza sieci. Jeśli nie chcesz używać domyślnej domeny serwera proxy aplikacji, zobacz [Custom domains in Azure AD Application Proxy (Domeny niestandardowe na serwerze proxy aplikacji usługi Azure AD)](application-proxy-configure-custom-domain.md).|
     | **Wstępne uwierzytelnianie** | Sposób, w jaki serwer proxy aplikacji weryfikuje użytkowników przed udzieleniem im dostępu do aplikacji.<br><br>**Azure Active Directory** — serwer proxy aplikacji przekierowuje użytkowników do zalogowania się w usłudze Azure AD, co umożliwia uwierzytelnienie ich uprawnień do katalogu i aplikacji. Zaleca się pozostawienie tej opcji jako domyślnej, dzięki czemu można korzystać z funkcji zabezpieczeń usługi Azure AD, takich jak dostęp warunkowy i Multi-Factor Authentication. Usługa **Azure Active Directory** jest wymagana do monitorowania aplikacji za pomocą usługi Microsoft Cloud Application Security.<br><br>**Przekazywanie** — użytkownicy nie muszą uwierzytelniać się w usłudze Azure AD w celu uzyskania dostępu do aplikacji. Można jednak na zapleczu skonfigurować wymagania dotyczące uwierzytelniania. |
     | **Grupa łączników** | Łączniki umożliwiają przetwarzanie zdalnego dostępu do aplikacji, a grupy łączników pozwalają klasyfikować łączniki i aplikacje według regionu, sieci lub przeznaczenia. Jeśli nie masz jeszcze żadnych grup łączników, Twoja aplikacja zostanie przypisana do grupy **Domyślne**.<br><br>Jeśli nawiązywanie połączeń w aplikacji odbywa się za pomocą elementów WebSocket, wszystkie łączniki w grupie muszą być w wersji 1.5.612.0 lub nowszej.|

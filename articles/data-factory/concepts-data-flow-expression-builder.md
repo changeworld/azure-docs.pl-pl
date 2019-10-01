@@ -1,80 +1,83 @@
 ---
-title: Konstruktor wyrażeń przepływu danych usługi Azure Data Factory mapowania
-description: Konstruktor wyrażeń dla usługi Azure Data Factory mapowanie danych przepływów
+title: Konstruktor wyrażeń przepływu danych mapowania Azure Data Factory
+description: Konstruktor wyrażeń dla Azure Data Factory mapowania przepływów danych
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269166"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703409"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Konstruktor wyrażeń przepływu danych mapowania
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-W usługi Azure Data Factory mapowania przepływ danych można znaleźć pola wyrażenia, w którym możesz wprowadzić wyrażeń do przekształcania danych. Użyj kolumn, pola, zmiennych, parametrów, funkcje z przepływu danych w tych polach. Aby utworzyć wyrażenie, użyj Kreatora wyrażeń, który jest uruchamiany, klikając pozycję w polu tekstowym wyrażenie wewnątrz przekształcenie. Czasami zostaną wyświetlone opcje "Kolumna obliczana", podczas wybierania kolumn dla transformacji. Po kliknięciu, widoczna będzie również uruchomić Konstruktora wyrażeń.
+W obszarze Azure Data Factory mapowanie przepływu danych znajdziesz pola wyrażeń, w których można wprowadzać wyrażenia do przekształcania danych. W tych polach używaj kolumn, pól, zmiennych, parametrów, funkcji w przepływie danych. Aby skompilować wyrażenie, użyj konstruktora wyrażeń, który jest uruchamiany przez kliknięcie w polu tekstowym wyrażenia wewnątrz transformacji. W przypadku wybrania kolumn do przekształcenia czasami widoczne są opcje "kolumna obliczana". Po kliknięciu tego przycisku zobaczysz również uruchomiony program Expression Builder.
 
-![Konstruktor wyrażeń](media/data-flow/expression.png "Konstruktor wyrażeń")
+(media/data-flow/xpb1.png "Konstruktor wyrażeń") ![konstruktora wyrażeń]
 
-Konstruktor wyrażeń Domyślnie narzędzie używa opcji edytora tekstu. Funkcja autouzupełniania odczytuje z cały model obiektu przepływ danych fabryki danych Azure przy użyciu składni sprawdzanie i wyróżniania.
+Narzędzie Expression Builder domyślnie ustawia opcję Edytor tekstu. Funkcja autouzupełniania odczytuje z całego modelu obiektów przepływu danych Azure Data Factory ze sprawdzaniem składni i wyróżnieniem.
 
-![Konstruktor wyrażeń Autouzupełnianie](media/data-flow/expb1.png "Konstruktor wyrażeń autouzupełniania")
+(media/data-flow/expb1.png "Autouzupełnianie wyrażeń") ![autouzupełniania konstruktora wyrażeń]
 
-## <a name="currently-working-on-field"></a>Aktualnie pracuje nad pola
+## <a name="build-schemas-in-output-schema-pane"></a>Kompiluj schematy w okienku schematu danych wyjściowych
 
-![Konstruktor wyrażeń](media/data-flow/exp3.png "aktualnie pracuje nad")
+![Dodaj kolumny złożonej kolumny](media/data-flow/complexcolumn.png "")
 
-W lewym górnym rogu interfejsu użytkownika Konstruktor wyrażeń, pojawi się pole o nazwie "Obecnie działa On" na nazwę pola, które są aktualnie pracuje. Wyrażenie, które kompilujesz w interfejsie użytkownika zostaną zastosowane tylko do obecnie pola pracy. Jeśli chcesz przekształcić kolejne pole, zapisać bieżącą pracę, a następnie użyj tej listy rozwijanej do wybierz inne pole, a następnie utworzyć wyrażenie dla innych pól.
+W okienku schematu danych wyjściowych po lewej stronie zostaną wyświetlone kolumny, które są modyfikowane i dodawane do schematu. W tym miejscu możesz interaktywnie kompilować proste i złożone struktury danych. Dodaj dodatkowe pola przy użyciu opcji "Dodaj kolumnę" i Utwórz hierarchie przy użyciu polecenia "Dodaj podkolumnę".
+
+Dodaj podkolumnę(media/data-flow/addsubcolumn.png "Dodawanie") ![podkolumny]
 
 ## <a name="data-preview-in-debug-mode"></a>Podgląd danych w trybie debugowania
 
-![Konstruktor wyrażeń](media/data-flow/exp4b.png "wyrażenie danych w wersji zapoznawczej")
+(media/data-flow/exp4b.png "Podgląd danych wyrażeń") ![konstruktora wyrażeń]
 
-Podczas pracy z wyrażenia można opcjonalnie przełączać tryb debugowania z powierzchni projektowej przepływ danych fabryki danych Azure, włączanie podglądu na żywo w toku wyników danych przy użyciu wyrażenia, który jest kompilowany. W czasie rzeczywistym debugowania na żywo jest włączona dla wyrażenia.
+Gdy Pracujesz w wyrażeniach przepływu danych, Przełącz tryb debugowania z powierzchni projektowej przepływu danych Azure Data Factory, włączając w to aktualne Podgląd wyników danych z utworzonego wyrażenia. Debugowanie na żywo w czasie rzeczywistym jest włączone dla wyrażeń.
 
-![Tryb debugowania](media/data-flow/debugbutton.png "przycisk debugowania")
+(media/data-flow/debugbutton.png "Przycisk") debugowania ![trybu debugowania]
 
+Kliknij przycisk Odśwież, aby zaktualizować wyniki wyrażenia na żywo próbki źródła w czasie rzeczywistym.
 
-![Konstruktor wyrażeń](media/data-flow/exp5.png "wyrażenie danych w wersji zapoznawczej")
+(media/data-flow/exp5.png "Podgląd danych wyrażeń") ![konstruktora wyrażeń]
 
 ## <a name="comments"></a>Komentarze
 
-Dodawanie komentarzy do wyrażenia przy użyciu pojedynczego wiersza i komentarzy wielowierszowych składni:
+Dodaj komentarze do wyrażeń przy użyciu jednowierszowej i wielowierszowej składni komentarza:
 
-![Komentarze](media/data-flow/comments.png "komentarze")
+![](media/data-flow/comments.png "Komentarze") komentarzy
 
-## <a name="regular-expressions"></a>Regular Expressions
+## <a name="regular-expressions"></a>Wyrażenia regularne
 
-Język wyrażeń przepływ danych fabryki danych Azure [pełna dokumentacja tutaj](https://aka.ms/dataflowexpressions), włącza funkcje, które zawierają składni wyrażeń regularnych. Korzystając z funkcji wyrażenia regularnego, Konstruktor wyrażeń podejmie próbę interpretacji kreski ułamkowej odwróconej (\\) jako sekwencja znaków ucieczki. Korzystając z ukośników odwrotnych w wyrażeniu regularnym, umieść je całego wyrażenia regularnego w dziesięciomilionowych częściach sekundy (\`) lub podwójny ukośnik odwrotny.
+Język wyrażeń przepływu danych Azure Data Factory, [pełna dokumentacja referencyjna](https://aka.ms/dataflowexpressions), umożliwia korzystanie z funkcji, które zawierają składnię wyrażenia regularnego. W przypadku korzystania z funkcji wyrażenia regularnego, Konstruktor wyrażeń będzie próbować interpretować ukośnik odwrotny (\\) jako sekwencję znaków ucieczki. W przypadku używania ukośników odwrotnych w wyrażeniu regularnym należy ująć całe wyrażenie regularne w Takty (\`) lub użyć podwójnego ukośnika odwrotnego.
 
-Przykład przy użyciu znaczników
+Przykład użycia znaczników
 
 ```
 regex_replace('100 and 200', `(\d+)`, 'digits')
 ```
 
-lub za pomocą podwójny ukośnik
+lub przy użyciu podwójnego ukośnika
 
 ```
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="addressing-array-indexes"></a>Adresowanie indeksy tablicy
+## <a name="addressing-array-indexes"></a>Indeksowanie tablicy adresów
 
-Za pomocą funkcji wyrażenia, które zwracają tablice umożliwia adresu określonego indeksów wewnątrz tego obiektu w tablicy zwracanej nawiasy kwadratowe []. Tablica jest oparte na nich.
+Za pomocą funkcji wyrażeń, które zwracają tablice, użyj nawiasów kwadratowych [] do adresowania określonych indeksów wewnątrz tego obiektu tablicy zwracanej. Tablica jest zależna od siebie.
 
-![Wyrażenie Konstruktor tablicy](media/data-flow/expb2.png "wyrażenie danych w wersji zapoznawczej")
+(media/data-flow/expb2.png "Podgląd danych wyrażenia") ![tablicy konstruktora wyrażeń]
 
 ## <a name="handling-names-with-special-characters"></a>Obsługa nazw ze znakami specjalnymi
 
-W przypadku nazw kolumn, które zawierają znaków specjalnych ani spacji, należy ująć nazwę w nawiasach klamrowych.
+Jeśli masz nazwy kolumn, które zawierają znaki specjalne lub spacje, umieść ją w nawiasach klamrowych.
 * ```{[dbo].this_is my complex name$$$}```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Rozpocznij tworzenie wyrażenia przekształcania danych](data-flow-expression-functions.md)
+[Rozpocznij tworzenie wyrażeń transformacji danych](data-flow-expression-functions.md)

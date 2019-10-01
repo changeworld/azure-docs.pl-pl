@@ -6,14 +6,14 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: f431e5e5f4537d1a5f889457eb81b881e47ee178
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 569b97ecc24306741c3323ce5bc526f88645c1dd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091782"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702949"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak zintegrować wspólny schemat alertów z Logic Apps
 
@@ -35,13 +35,13 @@ W tym artykule przyjęto założenie, że czytelnik zna
 
 1. Postępuj zgodnie z [instrukcjami, aby utworzyć aplikację logiki](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
 
-1.  Wybierz wyzwalacz: **Po odebraniu żądania HTTP**.
+1.  Wybierz wyzwalacz: **po odebraniu żądania HTTP**.
 
-    ![Wyzwalacze aplikacji logiki](media/action-groups-logic-app/logic-app-triggers.png "Wyzwalacze aplikacji logiki")
+    Wyzwalacze(media/action-groups-logic-app/logic-app-triggers.png "aplikacji logiki") ![aplikacji]logiki
 
 1.  Wybierz pozycję **Edytuj** , aby zmienić wyzwalacz żądania HTTP.
 
-    ![Wyzwalacze żądań HTTP](media/action-groups-logic-app/http-request-trigger-shape.png "Wyzwalacze żądań HTTP")
+    Wyzwalacze(media/action-groups-logic-app/http-request-trigger-shape.png "żądań HTTP") ![wyzwalają żądania]http
 
 
 1.  Skopiuj i wklej następujący schemat:
@@ -113,17 +113,17 @@ W tym artykule przyjęto założenie, że czytelnik zna
         }
     ```
 
-1. Wybierz **+** pozycję **nowy krok** , a następnie wybierz pozycję **Dodaj akcję**.
+1. Wybierz pozycję **+** **nowy krok** , a następnie wybierz pozycję **Dodaj akcję**.
 
-    ![Dodaj akcję](media/action-groups-logic-app/add-action.png "Dodaj akcję")
+    ![Dodawanie akcji](media/action-groups-logic-app/add-action.png "Dodaj akcję")
 
 1. Na tym etapie można dodać różne łączniki (Microsoft Teams, zapasowe, Salesforce itp.) na podstawie określonych wymagań firmy. Możesz użyć nieaktualnego pola "Essential Fields". 
 
-    ![Podstawowe pola](media/alerts-common-schema-integrations/logic-app-essential-fields.png "Podstawowe pola")
+    Podstawowe pola(media/alerts-common-schema-integrations/logic-app-essential-fields.png "istotnych") ![pól]
     
     Alternatywnie można utworzyć logikę warunkową opartą na typie alertu przy użyciu opcji "Expression".
 
-    ![Wyrażenie aplikacji logiki](media/alerts-common-schema-integrations/logic-app-expressions.png "Wyrażenie aplikacji logiki")
+    (media/alerts-common-schema-integrations/logic-app-expressions.png "Wyrażenie aplikacji") logiki ![wyrażeń aplikacji logiki]
     
      [Pole "monitoringService"](alerts-common-schema-definitions.md#alert-context) umożliwia jednoznaczną identyfikację typu alertu, na podstawie którego można utworzyć logikę warunkową.
 

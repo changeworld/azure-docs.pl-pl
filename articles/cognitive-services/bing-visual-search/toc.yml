@@ -33,6 +33,8 @@
           href: visual-search-sdk-node.md
         - name: Korzystanie z języka Python
           href: visual-search-sdk-python.md
+        - name: Korzystanie z języka Java
+          href: visual-search-sdk-java.md
 - name: Samouczki
   items:
     - name: Przekazywanie obrazu

@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9015fa445c64bffa74509e84d90eb77508da6d9e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: e0143a6075ef7b88cc0b365a544a5e69c92362ff
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076446"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710121"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Uczenie i rejestrowanie modelu klasyfikacji Keras przy użyciu Azure Machine Learning
 
@@ -34,14 +34,14 @@ Uruchom ten kod w dowolnym z następujących środowisk:
 
  - Maszyna wirtualna w Azure Machine Learning Notes — nie jest wymagane pobieranie ani instalacja
 
-     - Wykonaj kroki z artykułu [Samouczek: Zainstaluj środowisko i obszar](tutorial-1st-experiment-sdk-setup.md) roboczy, aby utworzyć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium.
+     - Ukończ [Samouczek: Zainstaluj środowisko i obszar roboczy](tutorial-1st-experiment-sdk-setup.md) , aby utworzyć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium.
     - W folderze Samples na serwerze notesu Znajdź ukończony i rozwinięty Notes, przechodząc do tego katalogu: How to- **use-azure > Training-with-Learning-uczenie > uczenie** ----------keras.
 
  - Własny serwer Jupyter Notebook
 
     - [Zainstaluj zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
     - [Utwórz plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
-    - [Pobierz pliki przykładowego skryptu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` i`utils.py`
+    - [Pobierz pliki przykładowego skryptu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` i `utils.py`
 
     Ukończoną [wersję Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) tego przewodnika można również znaleźć na stronie przykładów usługi GitHub. Notes obejmuje rozwinięte sekcje obejmujące dostrajanie inteligentnego parametru, wdrożenie modelu i widżety notesu.
 
@@ -49,7 +49,7 @@ Uruchom ten kod w dowolnym z następujących środowisk:
 
 Ta sekcja umożliwia skonfigurowanie eksperymentu szkoleniowego przez załadowanie wymaganych pakietów języka Python, zainicjowanie obszaru roboczego, utworzenie eksperymentu i przekazanie danych szkoleniowych i skryptów szkoleniowych.
 
-### <a name="import-packages"></a>Importowanie pakietów
+### <a name="import-packages"></a>Importuj pakiety
 
 Najpierw zaimportuj niezbędne biblioteki języka Python.
 
@@ -64,9 +64,9 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Inicjowanie obszaru roboczego
 
-[Obszar roboczy Azure Machine Learning](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi. Zapewnia ono scentralizowane miejsce do pracy ze wszystkimi tworzonymi artefaktami. W zestawie SDK języka Python można uzyskać dostęp do artefaktów obszaru roboczego przez [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) utworzenie obiektu.
+[Obszar roboczy Azure Machine Learning](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi. Zapewnia ono scentralizowane miejsce do pracy ze wszystkimi tworzonymi artefaktami. W zestawie SDK języka Python można uzyskać dostęp do artefaktów obszaru roboczego przez utworzenie obiektu [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) .
 
-Utwórz obiekt obszaru roboczego z `config.json` pliku utworzonego w [sekcji wymagania wstępne](#prerequisites).
+Utwórz obiekt obszaru roboczego z pliku `config.json` utworzonego w [sekcji wymagania wstępne](#prerequisites).
 
 ```Python
 ws = Workspace.from_config()
@@ -80,9 +80,10 @@ Utwórz eksperyment o nazwie "keras-mnist ręcznie" w obszarze roboczym.
 exp = Experiment(workspace=ws, name='keras-mnist')
 ```
 
+<a name="data-upload"></a>
 ### <a name="create-a-file-dataset"></a>Utwórz plik DataSet
 
-`FileDataset` Obiekt odwołuje się do co najmniej jednego pliku w magazynie danych obszaru roboczego lub publicznych adresów URL. Pliki mogą być w dowolnym formacie, a Klasa oferuje możliwość pobierania lub instalowania plików do obliczeń. Tworząc `FileDataset`, Utwórz odwołanie do lokalizacji źródła danych. Jeśli zastosowano jakiekolwiek przekształcenia do zestawu danych, zostaną one zapisane również w zestawie danych. Dane pozostają w istniejącej lokalizacji, więc nie są naliczane żadne dodatkowe koszty związane z magazynem. Aby uzyskać więcej informacji, `Dataset` [Zobacz przewodnik po tym pakiecie](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) .
+Obiekt `FileDataset` odwołuje się do co najmniej jednego pliku w magazynie danych obszaru roboczego lub publicznych adresów URL. Pliki mogą być w dowolnym formacie, a Klasa oferuje możliwość pobierania lub instalowania plików do obliczeń. Utworzenie `FileDataset` powoduje utworzenie odwołania do lokalizacji źródła danych. Jeśli zastosowano jakiekolwiek przekształcenia do zestawu danych, zostaną one zapisane również w zestawie danych. Dane pozostają w istniejącej lokalizacji, więc nie są naliczane żadne dodatkowe koszty związane z magazynem. Więcej informacji można znaleźć w przewodniku [jak](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) uzyskać w pakiecie `Dataset`.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -96,7 +97,7 @@ web_paths = [
 dataset = Dataset.File.from_files(path=web_paths)
 ```
 
-`register()` Użyj metody, aby zarejestrować zestaw danych w obszarze roboczym, aby można było udostępnić go innym osobom, ponownie używać w różnych eksperymentach i określać nazwę w skrypcie szkoleniowym.
+Użyj metody `register()`, aby zarejestrować zestaw danych w obszarze roboczym, dzięki czemu mogą one być współużytkowane z innymi osobami, ponownie używane w różnych eksperymentach i nazwach w skrypcie szkoleniowym.
 
 ```python
 dataset = dataset.register(workspace=ws,
@@ -105,7 +106,7 @@ dataset = dataset.register(workspace=ws,
                            create_new_version=True)
 ```
 
-## <a name="create-a-compute-target"></a>Utworzyć cel obliczenia
+## <a name="create-a-compute-target"></a>Tworzenie obiektu docelowego obliczeń
 
 Utwórz obiekt docelowy obliczeń dla zadania TensorFlow. W tym przykładzie należy utworzyć klaster obliczeniowy z obsługą procesora GPU Azure Machine Learning.
 
@@ -129,9 +130,9 @@ Aby uzyskać więcej informacji na temat obiektów docelowych obliczeń, zobacz 
 
 ## <a name="create-a-tensorflow-estimator-and-import-keras"></a>Tworzenie TensorFlow szacowania i importowanie Keras
 
-[TensorFlow szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) zapewnia prosty sposób uruchamiania zadań szkolenia TensorFlow na serwerze docelowym obliczeń. Ponieważ Keras działa na TensorFlow, można użyć szacowania TensorFlow i zaimportować bibliotekę Keras przy użyciu `pip_packages` argumentu.
+[TensorFlow szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) zapewnia prosty sposób uruchamiania zadań szkolenia TensorFlow na serwerze docelowym obliczeń. Ponieważ Keras działa w oparciu o TensorFlow, można użyć szacowania TensorFlow i zaimportować bibliotekę Keras przy użyciu argumentu `pip_packages`.
 
-Najpierw Pobierz dane z magazynu danych obszaru roboczego przy użyciu `Dataset` klasy.
+Najpierw Pobierz dane z magazynu danych obszaru roboczego przy użyciu klasy `Dataset`.
 
 ```python
 dataset = Dataset.get_by_name(ws, 'mnist dataset')
@@ -140,7 +141,7 @@ dataset = Dataset.get_by_name(ws, 'mnist dataset')
 dataset.to_path()
 ```
 
-TensorFlow szacowania jest implementowane za pomocą klasy [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) generycznej, która może służyć do obsługi dowolnej struktury. Ponadto Utwórz słownik `script_params` zawierający ustawienia DNN. Aby uzyskać więcej informacji o modelach szkoleniowych przy użyciu generycznej szacowania, zobacz [uczenie modeli Azure Machine Learning przy](how-to-train-ml-models.md) użyciu usługi szacowania
+TensorFlow szacowania jest implementowane za pomocą klasy generycznej [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) , która może służyć do obsługi dowolnej struktury. Ponadto Utwórz słownik `script_params`, który zawiera ustawienia parametru DNN. Aby uzyskać więcej informacji o modelach szkoleniowych przy użyciu generycznej szacowania, zobacz [uczenie modeli Azure Machine Learning przy](how-to-train-ml-models.md) użyciu usługi szacowania
 
 ```python
 from azureml.train.dnn import TensorFlow
@@ -172,15 +173,15 @@ run.wait_for_completion(show_output=True)
 
 Gdy przebieg jest wykonywany, przechodzi przez następujące etapy:
 
-- **Przygotowywanie**: Obraz platformy Docker jest tworzony zgodnie z TensorFlow szacowania. Obraz zostanie przekazany do rejestru kontenerów obszaru roboczego i zapisany w pamięci podręcznej do późniejszego uruchomienia. Dzienniki są również przesyłane strumieniowo do historii uruchamiania i mogą być przeglądane w celu monitorowania postępu.
+- **Przygotowywanie**: obraz platformy Docker jest tworzony zgodnie z TensorFlow szacowania. Obraz zostanie przekazany do rejestru kontenerów obszaru roboczego i zapisany w pamięci podręcznej do późniejszego uruchomienia. Dzienniki są również przesyłane strumieniowo do historii uruchamiania i mogą być przeglądane w celu monitorowania postępu.
 
-- **Skalowanie**: Klaster próbuje skalować w górę, Jeśli klaster Batch AI wymaga więcej węzłów do uruchomienia przebiegu niż jest to obecnie dostępne.
+- **Skalowanie**: klaster próbuje skalować w górę, jeśli klaster Batch AI wymaga większej liczby węzłów do uruchomienia przebiegu, niż jest to obecnie dostępne.
 
-- **Uruchamianie**: Wszystkie skrypty w folderze skryptów są przekazywane do obiektu docelowego obliczeń, magazyny danych są instalowane lub kopiowane, a entry_script jest wykonywane. Dane wyjściowe z stdout i folder./Logs są przesyłane strumieniowo do historii uruchamiania i mogą być używane do monitorowania przebiegu.
+- **Uruchamianie**: wszystkie skrypty w folderze skryptów są przekazywane do obiektu docelowego obliczeń, magazyny danych są instalowane lub kopiowane, a entry_script jest wykonywane. Dane wyjściowe z stdout i folder./Logs są przesyłane strumieniowo do historii uruchamiania i mogą być używane do monitorowania przebiegu.
 
-- **Przetwarzanie końcowe**: Folder./Outputs przebiegu jest kopiowany do historii uruchamiania.
+- **Przetwarzanie końcowe**: folder./Outputs przebiegu jest kopiowany do historii uruchamiania.
 
-## <a name="register-the-model"></a>Zarejestruj model
+## <a name="register-the-model"></a>Rejestrowanie modelu
 
 Po przeszkoleniu modelu DNN można zarejestrować go w obszarze roboczym. Rejestracja modelu umożliwia przechowywanie modeli i ich wersji w obszarze roboczym w celu uproszczenia [zarządzania modelami i ich wdrażania](concept-model-management-and-deployment.md).
 
@@ -188,7 +189,7 @@ Po przeszkoleniu modelu DNN można zarejestrować go w obszarze roboczym. Rejest
 model = run.register_model(model_name='keras-dnn-mnist', model_path='outputs/model')
 ```
 
-Możesz również pobrać lokalną kopię modelu. Może to być przydatne do wykonywania dodatkowych czynności związanych z walidacją modelu lokalnie. W skrypcie `mnist-keras.py`szkoleniowym obiekt wygaszacza TensorFlow zachowuje model do folderu lokalnego (lokalnie dla elementu docelowego obliczeń). Za pomocą obiektu Run można pobrać kopię z magazynu danych.
+Możesz również pobrać lokalną kopię modelu. Może to być przydatne do wykonywania dodatkowych czynności związanych z walidacją modelu lokalnie. W skrypcie szkoleniowym `mnist-keras.py` TensorFlow obiekt utrwala model do folderu lokalnego (lokalnie dla elementu docelowego obliczeń). Za pomocą obiektu Run można pobrać kopię z magazynu danych.
 
 ```Python
 # Create a model folder in the current directory
@@ -207,7 +208,7 @@ W tym artykule został przeszkolony i zarejestrowany model Keras na Azure Machin
 
 > [!div class="nextstepaction"]
 > [Jak i gdzie wdrażać modele](how-to-deploy-and-where.md)
-* [Śledzenie metryk są uruchamiane podczas szkolenia](how-to-track-experiments.md)
-* [Dostosowywanie hiperparametrów](how-to-tune-hyperparameters.md)
-* [Wdrażanie uczonego modelu](how-to-deploy-and-where.md)
+* [Śledzenie metryk uruchamiania podczas szkolenia](how-to-track-experiments.md)
+* [Dostrajanie parametrów](how-to-tune-hyperparameters.md)
+* [Wdróż przeszkolony model](how-to-deploy-and-where.md)
 * [Architektura referencyjna na potrzeby rozproszonego szkolenia uczenia głębokiego na platformie Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

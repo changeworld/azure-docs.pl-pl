@@ -8,12 +8,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: laobri
-ms.openlocfilehash: 50648d22a62199d27374a1cacf617858ce9e7d6a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ae0694c4c79527ef3b64ad68d32ef3bce0150462
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329274"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703569"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>Tworzenie Azure Search sklepu z bazami danych przy użyciu usługi REST
 
@@ -29,7 +29,7 @@ Po utworzeniu sklepu z bazami danych możesz uzyskać informacje na temat uzyski
 
 + [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych i sklepu z bazami informacji. Twoje konto magazynu musi używać tej samej lokalizacji (na przykład US-zachodni) dla usługi Azure Search. *Rodzaj konta* musi być *StorageV2 (ogólnego przeznaczenia w wersji 2)* (domyślnie) lub *magazynu (ogólnego przeznaczenia w wersji 1)* .
 
-+ Zalecane: [Publikowanie aplikacji klasycznych](https://www.getpostman.com/) na potrzeby wysyłania żądań do Azure Search. Za pomocą interfejsu API REST można korzystać z dowolnego narzędzia, które może pracować z żądaniami HTTP i odpowiedziami. Program Poster jest dobrym rozwiązaniem do eksplorowania interfejsów API REST i zostanie użyty w tym artykule. Ponadto [kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) tego artykułu zawiera kolekcję żądań post. 
++ Zalecane: [publikowanie aplikacji klasycznej](https://www.getpostman.com/) na potrzeby wysyłania żądań do Azure Search. Za pomocą interfejsu API REST można korzystać z dowolnego narzędzia, które może pracować z żądaniami HTTP i odpowiedziami. Program Poster jest dobrym rozwiązaniem do eksplorowania interfejsów API REST i zostanie użyty w tym artykule. Ponadto [kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) tego artykułu zawiera kolekcję żądań post. 
 
 ## <a name="2---store-the-data"></a>2 — Przechowywanie danych
 
@@ -43,9 +43,9 @@ Załaduj plik CSV przeglądów hotelu do magazynu obiektów blob platformy Azure
 1. Dla nowej **nazwy**kontenera wprowadź `hotel-reviews`.
 1. Wybierz dowolny **poziom dostępu publicznego**. Użyto domyślnej.
 1. Kliknij przycisk **OK** , aby utworzyć kontener obiektów blob platformy Azure.
-1. Otwórz nowy `hotels-review` kontener, kliknij przycisk **Przekaż**, a następnie wybierz plik **HotelReviews-Free. csv** , który został pobrany w pierwszym kroku.
+1. Otwórz nowy kontener `hotels-review`, kliknij przycisk **Przekaż**, a następnie wybierz plik **HotelReviews-Free. csv** , który został pobrany w pierwszym kroku.
 
-    ![Przekaż dane](media/knowledge-store-create-portal/upload-command-bar.png "Przekaż przeglądy hotelu")
+    ![Przekazywanie danych](media/knowledge-store-create-portal/upload-command-bar.png "przekazywanie przeglądów hotelu")
 
 1. Kliknij przycisk **Przekaż** , aby ZAIMPORTOWAĆ plik CSV do usługi Azure Blob Storage. Zostanie wyświetlony nowy kontener.
 
@@ -53,7 +53,7 @@ Załaduj plik CSV przeglądów hotelu do magazynu obiektów blob platformy Azure
 
 ## <a name="3---configure-postman"></a>3 — Konfigurowanie wpisu
 
-Pobierz [kod źródłowy kolekcji Poster](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) i zaimportuj go do programu do publikowania przy użyciu **pliku, zaimportuj...** . Przejdź do karty **kolekcje** i kliknij przycisk **...** , a następnie wybierz pozycję **Edytuj**. 
+Pobierz [kod źródłowy kolekcji Poster](https://github.com/Azure-Samples/azure-search-postman-samples/knowledge-store/KnowledgeStore.postman_collection.json) i zaimportuj go do programu do publikowania przy użyciu **pliku, zaimportuj...** . Przejdź do karty **kolekcje** i kliknij przycisk **...** , a następnie wybierz pozycję **Edytuj**. 
 
 ![Aplikacja programu Poster pokazująca nawigację](media/knowledge-store-create-rest/postman-edit-menu.png "do menu Edycja w programie Poster")
 
@@ -334,7 +334,7 @@ Po ustawieniu nagłówków `api-key` i `Content-type` i potwierdzeniu, że treś
 
 ## <a name="8---run-the-indexer"></a>8 — uruchamianie indeksatora 
 
-W Azure Portal przejdź do **omówienia** Search Service i wybierz kartę **indeksatory** . Kliknij pozycję **Hotele-Recenzje-IXR** utworzone w poprzednim kroku. Jeśli indeksator nie został jeszcze uruchomiony, naciśnij przycisk Run ( **Uruchom** ). Zadanie indeksowania może zgłosić pewne ostrzeżenia dotyczące rozpoznawania języka, ponieważ dane obejmują pewne przeglądy w językach, które nie są jeszcze obsługiwane przez umiejętności poznawcze. 
+W Azure Portal przejdź do **omówienia** Search Service i wybierz kartę **indeksatory** . kliknij pozycję **Hotele-Recenzje-IXR** utworzone w poprzednim kroku. Jeśli indeksator nie został jeszcze uruchomiony, naciśnij przycisk Run ( **Uruchom** ). Zadanie indeksowania może zgłosić pewne ostrzeżenia dotyczące rozpoznawania języka, ponieważ dane obejmują pewne przeglądy w językach, które nie są jeszcze obsługiwane przez umiejętności poznawcze. 
 
 ## <a name="next-steps"></a>Następne kroki
 

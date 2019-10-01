@@ -1,67 +1,63 @@
 ---
-title: Rozwiązywanie niezgodnych błędów katalogów w Azure AD Domain Services | Microsoft Docs
-description: Zrozumienie i rozwiązywanie niezgodnych błędów katalogów dla istniejących Azure AD Domain Services domen zarządzanych
+title: Usuń niezgodne błędy katalogów w Azure AD Domain Services | Microsoft Docs
+description: Dowiedz się, co to jest błąd niezgodnego katalogu i jak go rozwiązać w Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 4978f7b782271daff996807172a24103bd8d9860
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 8b1c3184ada743fddb78e1a3d0ce8d67f1f1a94f
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617295"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693329"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Rozwiązywanie niezgodnych błędów katalogów dla istniejących Azure AD Domain Services domen zarządzanych
-Masz istniejącą domenę zarządzaną Azure AD Domain Services. Po przejściu do Azure Portal i wyświetleniu domeny zarządzanej zostanie wyświetlony następujący komunikat o błędzie:
 
-![Niezgodny błąd katalogu](./media/getting-started/mismatched-tenant-error.png)
+Jeśli w domenie zarządzanej Azure Active Directory Domain Services (Azure AD DS) zostanie wyświetlony niezgodny błąd dzierżawy, nie będzie można administrować domeną zarządzaną do momentu rozwiązania problemu. Ten błąd występuje, gdy bazowa sieć wirtualna platformy Azure jest przenoszona do innego katalogu usługi Azure AD.
 
-Nie można administrować tą domeną zarządzaną, dopóki błąd nie zostanie rozwiązany.
+W tym artykule wyjaśniono, dlaczego występuje błąd i jak go rozwiązać.
 
+## <a name="what-causes-this-error"></a>Co powoduje ten błąd?
 
-## <a name="whats-causing-this-error"></a>Co jest przyczyną tego błędu?
-Ten błąd jest spowodowany tym, że zarządzana domena i Sieć wirtualna jest włączona, należy do dwóch różnych dzierżawców usługi Azure AD. Na przykład masz domenę zarządzaną o nazwie "contoso.com" i włączono ją dla dzierżawy usługi Azure AD firmy Contoso. Jednak Sieć wirtualna platformy Azure, w której włączono domenę zarządzaną, należy do innej dzierżawy usługi Azure AD.
+Niezgodny błąd katalogu występuje, gdy domena zarządzana i Sieć wirtualna platformy Azure AD DS należą do dwóch różnych dzierżaw usługi Azure AD. Na przykład może istnieć domena zarządzana AD DS platformy Azure o nazwie *contoso.com* , która działa w dzierżawie usługi Azure AD firmy Contoso. Jednak Sieć wirtualna platformy Azure dla domeny zarządzanej jest częścią dzierżawy usługi Azure AD firmy Fabrikam.
 
-Nowe Azure Portal (a w odróżnieniu od rozszerzenia Azure AD Domain Services) są oparte na Azure Resource Manager. W środowisku Modern Azure Resource Manager niektóre ograniczenia są wymuszane w celu zapewnienia większego poziomu zabezpieczeń i kontroli dostępu opartej na rolach (RBAC) do zasobów. Włączenie Azure AD Domain Services dla dzierżawy usługi Azure AD jest operacją poufną, ponieważ powoduje synchronizowanie skrótów poświadczeń z domeną zarządzaną. Ta operacja wymaga, aby być administratorem dzierżawy dla katalogu. Ponadto należy mieć uprawnienia administracyjne do sieci wirtualnej, w której włączono domenę zarządzaną. Aby testy RBAC działały spójnie, domena zarządzana i Sieć wirtualna powinny należeć do tej samej dzierżawy usługi Azure AD.
+Platforma Azure używa kontroli dostępu opartej na rolach (RBAC), aby ograniczyć dostęp do zasobów. Po włączeniu usługi Azure AD DS w dzierżawie usługi Azure AD skróty poświadczeń są synchronizowane z domeną zarządzaną. Ta operacja wymaga, aby być administratorem dzierżawy dla katalogu usługi Azure AD, a dostęp do tych poświadczeń musi być kontrolowany. Aby wdrożyć zasoby w sieci wirtualnej platformy Azure i kontrolować ruch, musisz mieć uprawnienia administracyjne w sieci wirtualnej, w której wdrażasz usługę Azure AD DS.
 
-Nie można włączyć domeny zarządzanej dla dzierżawy usługi Azure AD "contoso.com" w sieci wirtualnej należącej do subskrypcji platformy Azure należącej do innej dzierżawy usługi Azure AD "fabrikam.com". 
-
-**Prawidłowa konfiguracja**: W tym scenariuszu wdrażania jest włączona domena zarządzana Contoso dla dzierżawy usługi Azure AD firmy Contoso. Domena zarządzana jest uwidaczniana w sieci wirtualnej należącej do subskrypcji platformy Azure należącej do dzierżawy usługi Azure AD firmy Contoso. W związku z tym zarówno domena zarządzana, jak i Sieć wirtualna należą do tej samej dzierżawy usługi Azure AD. Ta konfiguracja jest prawidłowa i jest w pełni obsługiwana.
-
-![Prawidłowa konfiguracja dzierżawy](./media/getting-started/valid-tenant-config.png)
-
-**Niezgodna konfiguracja dzierżawy**: W tym scenariuszu wdrażania jest włączona domena zarządzana Contoso dla dzierżawy usługi Azure AD firmy Contoso. Jednak domena zarządzana jest uwidaczniana w sieci wirtualnej należącej do subskrypcji platformy Azure należącej do dzierżawy usługi Azure AD firmy Fabrikam. W związku z tym domena zarządzana i Sieć wirtualna należą do dwóch różnych dzierżaw usługi Azure AD. Ta konfiguracja jest niezgodną konfiguracją dzierżawy i nie jest obsługiwana. Sieć wirtualną należy przenieść do tej samej dzierżawy usługi Azure AD (czyli contoso) jako domeny zarządzanej. Szczegółowe informacje znajdują się w sekcji [rozwiązanie](#resolution) .
-
-![Niezgodna konfiguracja dzierżawy](./media/getting-started/mismatched-tenant-config.png)
-
-W związku z tym, gdy zarządzana domena i Sieć wirtualna jest włączona, należy do dwóch różnych dzierżawców usługi Azure AD.
+Aby kontrola RBAC działała spójnie i bezpieczny dostęp do wszystkich zasobów używanych przez usługę Azure AD DS, domena zarządzana i Sieć wirtualna muszą należeć do tej samej dzierżawy usługi Azure AD.
 
 W środowisku Menedżer zasobów są stosowane następujące reguły:
+
 - Katalog usługi Azure AD może mieć wiele subskrypcji platformy Azure.
 - Subskrypcja platformy Azure może mieć wiele zasobów, takich jak sieci wirtualne.
 - Dla katalogu usługi Azure AD jest włączona jedna Azure AD Domain Services domena zarządzana.
 - Azure AD Domain Services domeny zarządzanej można włączyć w sieci wirtualnej należącej do dowolnej subskrypcji platformy Azure w ramach tej samej dzierżawy usługi Azure AD.
 
+### <a name="valid-configuration"></a>Prawidłowa konfiguracja
 
-## <a name="resolution"></a>Rozwiązanie
-Dostępne są dwie opcje rozwiązania niezgodnego błędu katalogu. Możesz:
+W poniższym przykładowym scenariuszu wdrażania jest włączona domena zarządzana contoso platformy Azure AD DS w dzierżawie usługi Azure AD firmy Contoso. Domena zarządzana jest wdrażana w sieci wirtualnej należącej do subskrypcji platformy Azure należącej do dzierżawy usługi Azure AD firmy Contoso. Zarówno domena zarządzana, jak i Sieć wirtualna należą do tej samej dzierżawy usługi Azure AD. Ta Przykładowa konfiguracja jest prawidłowa i jest w pełni obsługiwana.
 
-- Kliknij przycisk **Usuń** , aby usunąć istniejącą domenę zarządzaną. Utwórz ponownie przy użyciu [Azure Portal](https://portal.azure.com), aby zarządzana domena i Sieć wirtualna należały do katalogu usługi Azure AD. Dołącz wszystkie komputery wcześniej przyłączone do usuniętej domeny do nowo utworzonej domeny zarządzanej.
+![Prawidłowa konfiguracja dzierżawy usługi Azure AD DS przy użyciu domeny zarządzanej i sieci wirtualnej należącej do tej samej dzierżawy usługi Azure AD](./media/getting-started/valid-tenant-config.png)
 
-- Przenieś subskrypcję platformy Azure zawierającą sieć wirtualną do katalogu usługi Azure AD, do której należy domena zarządzana. Postępuj zgodnie z instrukcjami w artykule [przenoszenie subskrypcji platformy Azure do innego artykułu dotyczącego konta](../billing/billing-subscription-transfer.md) .
+### <a name="mismatched-tenant-configuration"></a>Niezgodna konfiguracja dzierżawy
 
+W tym przykładowym scenariuszu wdrażania jest włączona domena zarządzana contoso Azure AD DS w dzierżawie usługi Azure AD firmy Contoso. Jednak domena zarządzana jest wdrażana w sieci wirtualnej należącej do subskrypcji platformy Azure należącej do dzierżawy usługi Azure AD firmy Fabrikam. Domena zarządzana i Sieć wirtualna należą do dwóch różnych dzierżaw usługi Azure AD. Ta Przykładowa konfiguracja jest niezgodną dzierżawą i nie jest obsługiwana. Sieć wirtualną należy przenieść do tej samej dzierżawy usługi Azure AD, która jest domeną zarządzaną.
 
-## <a name="related-content"></a>Powiązana zawartość
-* [Przewodnik po Wprowadzenie Azure AD Domain Services](tutorial-create-instance.md)
-* [Przewodnik rozwiązywania problemów — Azure AD Domain Services](troubleshoot.md)
+![Niezgodna konfiguracja dzierżawy](./media/getting-started/mismatched-tenant-config.png)
+
+## <a name="resolve-mismatched-tenant-error"></a>Błąd rozwiązywania niezgodnej dzierżawy
+
+Poniższe dwie opcje rozwiązują błąd niezgodnego katalogu:
+
+* [Usuń domenę zarządzaną AD DS platformy Azure](delete-aadds.md) z istniejącego katalogu usługi Azure AD. [Utwórz zastępczą domenę zarządzaną platformy azure AD DS](tutorial-create-instance.md) w tym samym katalogu usługi Azure AD co sieć wirtualna, której chcesz użyć. Gdy wszystko będzie gotowe, Dołącz wszystkie komputery, które zostały wcześniej dołączone do usuniętej domeny zarządzanej.
+* [Przenieś subskrypcję platformy Azure](../billing/billing-subscription-transfer.md) zawierającą sieć wirtualną do tego samego katalogu usługi Azure AD jako domenę zarządzaną platformy Azure AD DS.
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby uzyskać więcej informacji na temat rozwiązywania problemów z usługą Azure AD DS, zobacz [Przewodnik rozwiązywania problemów](troubleshoot.md).

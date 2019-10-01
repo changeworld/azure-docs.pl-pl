@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: 8160cd2cb77a56f3d9b13f3c43929cc4ab7565b0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309578"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703255"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Tworzenie obiektów BLOB w usłudze Azure Blob Storage i zarządzanie nimi za pomocą Azure Logic Apps
 
@@ -25,15 +25,16 @@ W tym artykule pokazano, jak można uzyskać dostęp do plików przechowywanych 
 Załóżmy, że masz narzędzie, które jest aktualizowane w witrynie sieci Web systemu Azure. który działa jako wyzwalacz aplikacji logiki. Po wystąpieniu tego zdarzenia aplikacja logiki może aktualizować jakiś plik w kontenerze magazynu obiektów blob, który jest akcją w aplikacji logiki.
 
 > [!NOTE]
-> Usługa Logic Apps nie może bezpośrednio uzyskać dostępu do kont usługi Azure Storage, które mają [reguły zapory](../storage/common/storage-network-security.md) i istnieją w tym samym regionie. Aplikacje logiki mogą jednak uzyskiwać dostęp do kont usługi Azure Storage, które istnieją w innym regionie, ponieważ publiczny adres IP jest używany do komunikacji między regionami. Można też użyć dowolnej z tych opcji:
+>
+> Usługa Logic Apps nie może bezpośrednio uzyskać dostępu do kont usługi Azure Storage, które mają [reguły zapory](../storage/common/storage-network-security.md) i istnieją w tym samym regionie. Aplikacje logiki mogą jednak uzyskiwać dostęp do kont usługi Azure Storage, które istnieją w innym regionie, ponieważ publiczny adres IP jest używany do komunikacji między regionami. Wystarczy upewnić się, że [wychodzące adresy IP są dozwolone dla łączników zarządzanych w Twoim regionie](../logic-apps/logic-apps-limits-and-config.md#outbound). Można też użyć bardziej zaawansowanych opcji w tym miejscu:
 >
 > * Utwórz [środowisko usługi integracji](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), które może łączyć się z zasobami w sieci wirtualnej platformy Azure.
 >
-> * Jeśli używasz już API Management, możesz użyć tej usługi w tym scenariuszu. Aby uzyskać więcej informacji, zobacz [prosta architektura integracji przedsiębiorstwa](https://aka.ms/aisarch).
+> * W przypadku korzystania z warstwy dedykowanej dla API Management można skorzystać z interfejsu API usługi Storage, korzystając z API Management i zezwalając na te adresy IP w ramach zapory. W zasadzie należy dodać sieć wirtualną platformy Azure używaną przez API Management do ustawienia zapory dla konta magazynu. Następnie można użyć akcji API Management lub akcji HTTP do wywołania interfejsów API usługi Azure Storage. Jednak w przypadku wybrania tej opcji musisz samodzielnie obsłużyć proces uwierzytelniania. Aby uzyskać więcej informacji, zobacz [prosta architektura integracji przedsiębiorstwa](https://aka.ms/aisarch).
 
-Jeśli jesteś nowym usługą Logic Apps, zapoznaj [się z tematem Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [szybki start: Utwórz swoją pierwszą aplikację](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiki. Informacje techniczne dotyczące konkretnego łącznika można znaleźć w [dokumentacji łącznika usługi Azure Blob Storage](/connectors/azureblobconnector/).
+Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj [się z tematem Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informacje techniczne dotyczące konkretnego łącznika można znaleźć w [dokumentacji łącznika usługi Azure Blob Storage](/connectors/azureblobconnector/).
 
-## <a name="limits"></a>Limity
+## <a name="limits"></a>Ograniczeń
 
 * Domyślnie akcje Blob Storage platformy Azure mogą odczytywać lub zapisywać pliki o *rozmiarze 50 MB lub mniejszym*. Do obsługi plików o rozmiarze większym niż 50 MB, ale nawet do 1024 MB, działania Blob Storage platformy Azure obsługują [fragmenty komunikatów](../logic-apps/logic-apps-handle-large-messages.md). Akcja **Pobierz zawartość obiektu BLOB** niejawnie używa podziału.
 
@@ -45,7 +46,7 @@ Jeśli jesteś nowym usługą Logic Apps, zapoznaj [się z tematem Azure Logic A
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 * [Kontener konta i magazynu platformy Azure](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -63,7 +64,7 @@ Ten przykład pokazuje, jak uruchomić przepływ pracy aplikacji logiki przy uż
 
 2. W polu wyszukiwania wprowadź ciąg "Azure Blob" jako filtr. Z listy Wyzwalacze wybierz wyzwalacz, który chcesz.
 
-   W tym przykładzie używa tego wyzwalacza: **Gdy obiekt BLOB jest dodawany lub modyfikowany (tylko właściwości)**
+   W tym przykładzie używa tego wyzwalacza: **gdy obiekt BLOB jest dodawany lub modyfikowany (tylko właściwości)**
 
    ![Wybierz wyzwalacz](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -73,7 +74,7 @@ Ten przykład pokazuje, jak uruchomić przepływ pracy aplikacji logiki przy uż
 
    1. W polu **kontener** wybierz ikonę folderu.
 
-   2. Na liście folder wybierz nawias ostry ( **>** ), a następnie Przeglądaj do momentu znalezienia i wybrania żądanego folderu.
+   2. Na liście folder wybierz nawias kątowy ( **>** ), a następnie Przeglądaj do momentu znalezienia i wybrania żądanego folderu.
 
       ![Wybierz folder](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
 
@@ -112,7 +113,7 @@ Lub, jeśli połączenie już istnieje, podaj niezbędne informacje dla tej akcj
   
       ![Wybierz folder](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
-   2. Znajdź i wybierz odpowiedni plik na podstawie numeru identyfikacyjnego obiektu BLOB . Ten numer identyfikacyjny można znaleźć w metadanych obiektu BLOB, które są zwracane przez poprzednio opisany wyzwalacz magazynu obiektów BLOB.
+   2. Znajdź i wybierz odpowiedni plik na podstawie numeru **identyfikacyjnego** obiektu BLOB. Ten numer **identyfikacyjny** można znaleźć w metadanych obiektu BLOB, które są zwracane przez poprzednio opisany wyzwalacz magazynu obiektów BLOB.
 
 5. Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 Aby przetestować aplikację logiki, upewnij się, że wybrany folder zawiera obiekt BLOB.
@@ -127,7 +128,7 @@ W tym przykładzie pobierana jest tylko zawartość obiektu BLOB. Aby wyświetli
 
 [!INCLUDE [Create a connection to Azure blob storage](../../includes/connectors-create-api-azureblobstorage.md)]
 
-## <a name="connector-reference"></a>Dokumentacja łączników
+## <a name="connector-reference"></a>Odwołanie do łącznika
 
 Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku Open API (dawniej Swagger) łącznika, zobacz [stronę odniesienia łącznika](/connectors/azureblobconnector/).
 

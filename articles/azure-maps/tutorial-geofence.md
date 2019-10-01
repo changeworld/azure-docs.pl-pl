@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a020ef91e52a5d801557399df827d3641bfb974e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934182"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694926"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Konfigurowanie geofencingu przy użyciu usługi Azure Maps
 
@@ -148,10 +148,24 @@ Otwórz aplikację Postman i wykonaj poniższe kroki, aby przekazać geofencing 
    }
    ```
 
-5. Kliknij przycisk wysyłania i przejrzyj nagłówek odpowiedzi. W nagłówku lokalizacji znajduje się identyfikator URI, który umożliwia uzyskanie dostępu do danych i pobranie ich do użycia w przyszłości. Zawiera także unikatowy identyfikator `udId` przekazanych danych.
+5. Kliknij przycisk wysyłania i przejrzyj nagłówek odpowiedzi. Po pomyślnym żądaniu nagłówek **lokalizacji** będzie zawierać identyfikator URI stanu, aby sprawdzić bieżący stan żądania przekazywania. Identyfikator URI stanu będzie mieć następujący format. 
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
+   ```
+
+6. Skopiuj identyfikator URI stanu i Dołącz do niego parametr `subscription-key` z wartością klucza subskrypcji konta Azure Maps. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej:
+
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
+
+7. Aby uzyskać `udId` Otwórz nową kartę w aplikacji Poster i wybierz pozycję Pobierz metodę HTTP na karcie Konstruktor i wprowadź żądanie GET w identyfikatorze URI stanu. Jeśli przekazywanie danych zakończyło się pomyślnie, otrzymasz udId w treści odpowiedzi. Skopiuj udId do późniejszego użycia.
+
+   ```JSON
+   {
+    "udid" : "{udId}"
+   }
    ```
 
 ## <a name="set-up-an-event-handler"></a>Konfigurowanie programu obsługi zdarzeń

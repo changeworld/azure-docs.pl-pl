@@ -9,31 +9,43 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 055cd25f534de5d3cc3ccbe44df88e7111e101a3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ff0a9838d1fcc9db3b6cc25b47c840e01056e6cd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560754"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703153"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Wyodrębnij dane z wypowiedź tekstu z intencjami i jednostkami
-Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub czatbot podjąć działania. W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON.
+LUIS daje możliwość uzyskiwania informacji z wyrażenia długości języka naturalnego użytkownika. Informacje są wyodrębniane w taki sposób, aby mogły być używane przez program, aplikację lub czat bot. W poniższych sekcjach dowiesz się, jakie dane są zwracane z intencji i jednostek z przykładami JSON.
 
 Najtrudniejsze dane do wyodrębnienia to dane zdobyte na maszynie, ponieważ nie jest to dokładne dopasowanie tekstu. Wyodrębnianie danych [jednostek](luis-concept-entity-types.md) , które są poznanie maszynowe, musi być częścią [cyklu tworzenia](luis-concept-app-iteration.md) , dopóki nie uzyskasz pewności, że otrzymasz oczekiwane dane.
 
-## <a name="data-location-and-key-usage"></a>Użycie danych lokalizacji i klucz
-Usługa LUIS udostępnia dane z opublikowanego [punktu końcowego](luis-glossary.md#endpoint). **Żądanie HTTPS** (POST lub GET) zawiera wypowiedź, a także niektóre konfiguracje opcjonalne, takie jak środowisk przejściowych lub produkcyjnych.
+## <a name="data-location-and-key-usage"></a>Lokalizacja danych i użycie klucza
+LUIS udostępnia dane z opublikowanego [punktu końcowego](luis-glossary.md#endpoint). **Żądanie https** (post lub Get) zawiera wypowiedź, a także niektóre opcjonalne konfiguracje, takie jak środowiska przejściowe lub produkcyjne.
+
+#### <a name="v2-prediction-endpoint-requesttabv2"></a>[Żądanie punktu końcowego przewidywania wersji 2](#tab/V2)
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-Jest ona dostępna na stronie **Ustawienia** aplikacji Luis, a także jako część adresu URL (po `/apps/`) podczas edytowania tej aplikacji Luis. `appID` `subscription-key` Jest klucza punktu końcowego używanego na potrzeby zapytań Twojej aplikacji. Chociaż możesz użyć bezpłatnego klucza autorstwa/początkowego podczas uczenia się LUIS, ważne jest, aby zmienić klucz punktu końcowego na klucz, który obsługuje [oczekiwane użycie Luis](luis-boundaries.md#key-limits). `timezoneOffset` Jednostka jest minut.
+#### <a name="v3-prediction-endpoint-requesttabv3"></a>[Żądanie punktu końcowego przewidywania v3](#tab/V3)
 
-**Odpowiedzi HTTPS** zawiera wszystkie informacje na temat intencji i jednostki usługi LUIS można określić na podstawie bieżącego opublikowanego modelu albo punktu końcowego przejściowych lub produkcyjnych. Punkt końcowy adres URL znajduje się na [LUIS](luis-reference-regions.md) witryny sieci Web w **Zarządzaj** sekcji na **kluczy i punktów końcowych** strony.
+`https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
-## <a name="data-from-intents"></a>Dane z opcjami
-Danych podstawowych jest najwyższym oceniania **intencji nazwa**. Za pomocą `MyStore` [Szybki Start](luis-quickstart-intents-only.md), odpowiedź na punkt końcowy jest:
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+* * * 
+
+@No__t-0 jest dostępna na stronie **Ustawienia** aplikacji Luis oraz w ramach adresu URL (po `/apps/`) podczas edytowania tej aplikacji Luis. @No__t-0 to klucz punktu końcowego używany do wykonywania zapytań dotyczących aplikacji. Chociaż możesz użyć bezpłatnego klucza autorstwa/początkowego podczas uczenia się LUIS, ważne jest, aby zmienić klucz punktu końcowego na klucz, który obsługuje [oczekiwane użycie Luis](luis-boundaries.md#key-limits). Jednostka `timezoneOffset` to minuty.
+
+**Odpowiedź https** zawiera wszystkie zamierzenia i informacje o jednostce, które Luis mogą ustalić w oparciu o aktualnie opublikowany model punktu końcowego lub produkcyjnego. Adres URL punktu końcowego znajduje się w witrynie sieci Web [Luis](luis-reference-regions.md) w sekcji **Zarządzanie** na stronie **klucze i punkty końcowe** .
+
+## <a name="data-from-intents"></a>Dane z intencji
+Dane podstawowe są największą **nazwą przeznaczenie**oceniania. Odpowiedź punktu końcowego to:
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -46,11 +58,38 @@ Danych podstawowych jest najwyższym oceniania **intencji nazwa**. Za pomocą `M
 }
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+
+```JSON
+{
+  "query": "when do you open next?",
+  "prediction": {
+    "normalizedQuery": "when do you open next?",
+    "topIntent": "GetStoreInfo",
+    "intents": {
+        "GetStoreInfo": {
+            "score": 0.984749258
+        }
+    }
+  },
+  "entities": []
+}
+```
+
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+* * * 
+
 |Obiekt danych|Typ danych|Lokalizacja danych|Wartość|
 |--|--|--|--|
-|Intencja|Ciąg|topScoringIntent.intent|"GetStoreInfo"|
+|Intencji|String|topScoringIntent. intencja|"GetStoreInfo"|
 
-Jeśli swoją aplikacją usługi LUIS wywołania lub chatbot podejmuje decyzję oparciu o więcej niż jeden wynik konwersji, zwracają wyniki wszystkich intencji, ustawiając parametr querystring `verbose=true`. Odpowiedź na punkt końcowy jest:
+Jeśli aplikacja chatbot lub LUIS-wywołująca podejmuje decyzję na podstawie więcej niż jednego wyniku zamiaru, zwracają wszystkie wyniki założeń.
+
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+
+Ustaw parametr QueryString, `verbose=true`. Odpowiedź punktu końcowego to:
 
 ```JSON
 {
@@ -73,14 +112,44 @@ Jeśli swoją aplikacją usługi LUIS wywołania lub chatbot podejmuje decyzję 
 }
 ```
 
-Intencji są uporządkowane od najwyższego do najniższego wyniku.
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
-|Obiekt danych|Typ danych|Lokalizacja danych|Wartość|Wynik|
+Ustaw parametr QueryString, `show-all-intents=true`. Odpowiedź punktu końcowego to:
+
+```JSON
+{
+    "query": "when do you open next?",
+    "prediction": {
+        "normalizedQuery": "when do you open next?",
+        "topIntent": "GetStoreInfo",
+        "intents": {
+            "GetStoreInfo": {
+                "score": 0.984749258
+            },
+            "None": {
+                 "score": 0.2040639
+            }
+        },
+        "entities": {
+        }
+    }
+}
+```
+
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+* * * 
+
+Intencje są uporządkowane od najwyższego do najniższego wyniku.
+
+|Obiekt danych|Typ danych|Lokalizacja danych|Wartość|dały|
 |--|--|--|--|:--|
-|Intencja|Ciąg|.intent intencji [0]|"GetStoreInfo"|0.984749258|
-|Intencja|Ciąg|.intent intencji [1]|"None"|0.0168218873|
+|Intencji|String|intencje [0]. cel|"GetStoreInfo"|0,984749258|
+|Intencji|String|intencje [1]. cel|Dawaj|0,0168218873|
 
-Jeśli dodasz ze wstępnie utworzonych domen, intencji wskazuje nazwa domeny, takich jak `Utilties` lub `Communication` oraz zamiar:
+W przypadku dodania wstępnie skompilowanych domen nazwa zamierzenia wskazuje domenę, na przykład `Utilties` lub `Communication`, a także zamiar:
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -106,19 +175,49 @@ Jeśli dodasz ze wstępnie utworzonych domen, intencji wskazuje nazwa domeny, ta
 }
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+
+```JSON
+{
+    "query": "Turn on the lights next monday at 9am",
+    "prediction": {
+        "normalizedQuery": "Turn on the lights next monday at 9am",
+        "topIntent": "Utilities.ShowNext",
+        "intents": {
+            "Utilities.ShowNext": {
+                "score": 0.07842206
+            },
+            "Communication.StartOver": {
+                "score": 0.0239675418
+            },
+            "None": {
+                "score": 0.00085447653
+            }
+        },
+        "entities": []
+    }
+}
+```
+
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+* * * 
+
 |Domain|Obiekt danych|Typ danych|Lokalizacja danych|Wartość|
 |--|--|--|--|--|
-|Usługi użyteczności publicznej|Intencja|Ciąg|.intent intencji [0]|"<b>Narzędzia</b>. ShowNext"|
-|Komunikacja|Intencja|Ciąg|.intent intencji [1]|<b>Komunikacja</b>. StartOver"|
-||Intencja|Ciąg|.intent intencji [2]|"None"|
+|Narzędzia|Intencji|String|intencje [0]. cel|"<b>Narzędzia</b>. ShowNext"|
+|Zawiadomienia|Intencji|String|intencje [1]. cel|<b>Komunikacja</b>. StartOver"|
+||Intencji|String|intencje [2]. cel|Dawaj|
 
 
-## <a name="data-from-entities"></a>Dane z jednostki
-Większość czatbotów i aplikacje muszą mieć więcej niż nazwa metody konwersji. To dodatkowe, opcjonalne dane pochodzą z odnalezionych w wypowiedź jednostek. Każdy typ jednostki, zwraca różne informacje o zgodności.
+## <a name="data-from-entities"></a>Dane z jednostek
+Większość rozszerzenie czatbotów i aplikacji potrzebują więcej niż nazwy zamierzeń. Te dodatkowe dane opcjonalne pochodzą z jednostek odnalezionych w wypowiedź. Każdy typ jednostki zwraca różne informacje o dopasowaniu.
 
-Więcej niż jednej jednostki może odnosić się pojedynczego wyrazu lub frazy w wypowiedź. W takim przypadku każdego pasującego obiektu jest zwracany za pomocą jego wynik.
+Pojedyncze słowo lub fraza w wypowiedź może być zgodna z więcej niż jedną jednostką. W takim przypadku każda pasująca jednostka jest zwracana z wynikiem.
 
-Wszystkie jednostki są zwracane w **jednostek** tablicy odpowiedzi z punktu końcowego:
+Wszystkie jednostki są zwracane w tablicy **jednostek** odpowiedzi z punktu końcowego:
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 "entities": [
@@ -141,27 +240,41 @@ Wszystkie jednostki są zwracane w **jednostek** tablicy odpowiedzi z punktu ko�
 ]
 ```
 
-## <a name="tokenized-entity-returned"></a>Jednostka tokenami zwracana
-Kilka [kultur](luis-language-support.md#tokenization) zwracają obiekt jednostki za pomocą `entity` wartość [stokenizowana](luis-glossary.md#token). StartIndex i endIndex zwrócony przez usługi LUIS w obiekcie jednostki nie są mapowane na nowe, tokenami wartość tylko do oryginalnego zapytania w celu uzyskania programowo Wyodrębnij nieprzetworzona jednostki. 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
-Na przykład w języku niemieckim, wyraz `das Bauernbrot` jest stokenizowana do `das bauern brot`. Wartość tokenami `das bauern brot`, jest zwracana i oryginalne wartości można programowo ustalić na podstawie startIndex i endIndex oryginalne zapytanie, zapewniając `das Bauernbrot`.
+```JSON
+"entities": {
+    "name":["bob jones"],
+    "number": [3]
+}
+```
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
 
-## <a name="simple-entity-data"></a>Proste jednostki danych
+* * * 
 
-A [jednostki prostej](reference-entity-simple.md) jest wartością maszyny do opanowania. Można go wyrazu lub frazy.
+## <a name="tokenized-entity-returned"></a>Zwrócono token jednostki
+Kilka [kultur](luis-language-support.md#tokenization) zwraca obiekt jednostki z [tokenem](luis-glossary.md#token)wartości `entity`. Wartości startIndex i endIndex zwrócone przez LUIS w obiekcie Entity nie są mapowane do nowej, z tokenem, ale zamiast oryginalnego zapytania, aby można było programowo wyodrębnić jednostkę pierwotną. 
 
-## <a name="composite-entity-data"></a>Dane złożone jednostki
+Na przykład w języku niemieckim wyraz `das Bauernbrot` jest podzielony na `das bauern brot`. Zwracana jest wartość `das bauern brot`, a oryginalna wartość może być programowo określana na podstawie wartości startIndex i endIndex oryginalnego zapytania, co daje `das Bauernbrot`.
 
-[Jednostka złożona](reference-entity-composite.md) składa się z innych jednostek, takich jak wstępnie zbudowane jednostki, proste, wyrażenie regularne i jednostki listy. Osobne jednostki tworzą całej jednostki. 
+## <a name="simple-entity-data"></a>Proste dane jednostki
 
-## <a name="list-entity-data"></a>Lista danych jednostki
+[Prosta jednostka](reference-entity-simple.md) to wartość nadana przez maszynę. Może to być słowo lub fraza.
 
-[Jednostki listy](reference-entity-list.md) reprezentują stały, zamknięty zestaw powiązanych słów wraz z ich synonimami. Usługa LUIS nie wykrywa dodatkowe wartości dla jednostek z listy. Użyj **zaleca się** funkcji, aby zobaczyć sugestie dotyczące nowych słów na podstawie bieżącej listy. Jeśli istnieje więcej niż jednej jednostki listy z taką samą wartość, każdy obiekt jest zwracany w kwerendy punktu końcowego. 
+## <a name="composite-entity-data"></a>Dane jednostki złożonej
 
-## <a name="prebuilt-entity-data"></a>Wstępnie utworzone jednostki danych
-[Wstępnie utworzone](luis-concept-entity-types.md) jednostki są wykrywane na podstawie dopasowania wyrażenia regularnego przy użyciu typu open-source [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text) projektu. Wstępnie utworzone jednostki są zwracane w tablicy jednostek i użyj nazwy typu prefiksem `builtin::`. Poniższy tekst to wypowiedź przykład za pomocą zwrócone ze wstępnie utworzonych jednostek:
+[Jednostka złożona](reference-entity-composite.md) składa się z innych jednostek, takich jak wstępnie zbudowane jednostki, proste, wyrażenie regularne i jednostki listy. Oddzielne jednostki tworzą całość jednostki. 
+
+## <a name="list-entity-data"></a>Wyświetl dane jednostki
+
+[Jednostki listy](reference-entity-list.md) reprezentują stały, zamknięty zestaw powiązanych słów wraz z ich synonimami. LUIS nie odnajduje dodatkowych wartości dla jednostek listy. Użyj opcji **zalecamy** , aby zobaczyć sugestie dotyczące nowych słów na podstawie bieżącej listy. Jeśli istnieje więcej niż jedna jednostka listy o tej samej wartości, każda jednostka zostanie zwrócona w zapytaniu punktu końcowego. 
+
+## <a name="prebuilt-entity-data"></a>Wstępnie utworzone dane jednostki
+Wstępnie [skompilowane](luis-concept-entity-types.md) jednostki są odnajdywane na podstawie wyrażenia regularnego zgodnego z rozpoznawaniem typu "Open Source [" — projektem tekstu](https://github.com/Microsoft/Recognizers-Text) . Wstępnie skompilowane jednostki są zwracane w tablicy jednostek i używają nazwy typu poprzedzonej `builtin::`. Następujący tekst to przykład wypowiedź z zwróconymi wstępnie skompilowanymi jednostkami:
 
 `Dec 5th send to +1 360-555-1212`
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 "entities": [
@@ -242,103 +355,347 @@ A [jednostki prostej](reference-entity-simple.md) jest wartością maszyny do op
   ]
 ```
 
-## <a name="regular-expression-entity-data"></a>Wyrażenie regularne danych dotyczących jednostki
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+
+Bez parametru QueryString, `verbose=true`:
+
+```json
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "date",
+            "values": [
+                {
+                    "timex": "XXXX-12-05",
+                    "value": "2018-12-05"
+                },
+                {
+                    "timex": "XXXX-12-05",
+                    "value": "2019-12-05"
+                }
+            ]
+        }
+    ],
+    "ordinal": [
+        {
+            "offset": 5,
+            "relativeTo": "start"
+        }
+    ],
+    "ordinalV2": [
+        {
+            "offset": 5,
+            "relativeTo": "start"
+        }
+    ],
+    "number": [
+        1360,
+        555,
+        1212
+    ],
+    "phonenumber": [
+        "1 360-555-1212"
+    ]
+}
+```
+
+Za pomocą QueryString parametru, `verbose=true`:
+
+```json
+
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "date",
+            "values": [
+                {
+                    "timex": "XXXX-12-05",
+                    "value": "2018-12-05"
+                },
+                {
+                    "timex": "XXXX-12-05",
+                    "value": "2019-12-05"
+                }
+            ]
+        }
+    ],
+    "ordinal": [
+        {
+            "offset": 5,
+            "relativeTo": "start"
+        }
+    ],
+    "ordinalV2": [
+        {
+            "offset": 5,
+            "relativeTo": "start"
+        }
+    ],
+    "number": [
+        1360,
+        555,
+        1212
+    ],
+    "phonenumber": [
+        "1 360-555-1212"
+    ],
+    "$instance": {
+        "datetimeV2": [
+            {
+                "type": "builtin.datetimeV2.date",
+                "text": "Dec 5th",
+                "startIndex": 0,
+                "length": 7,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "ordinal": [
+            {
+                "type": "builtin.ordinal",
+                "text": "5th",
+                "startIndex": 4,
+                "length": 3,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "ordinalV2": [
+            {
+                "type": "builtin.ordinalV2",
+                "text": "5th",
+                "startIndex": 4,
+                "length": 3,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "number": [
+            {
+                "type": "builtin.number",
+                "text": "1 360",
+                "startIndex": 17,
+                "length": 5,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.number",
+                "text": "555",
+                "startIndex": 23,
+                "length": 3,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.number",
+                "text": "1212",
+                "startIndex": 27,
+                "length": 4,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "phonenumber": [
+            {
+                "type": "builtin.phonenumber",
+                "text": "1 360-555-1212",
+                "startIndex": 17,
+                "length": 14,
+                "score": 1.0,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+* * * 
+## <a name="regular-expression-entity-data"></a>Dane jednostki wyrażenia regularnego
 
 [Jednostka wyrażenia regularnego](reference-entity-regular-expression.md) wyodrębnia jednostkę na podstawie podania wzorca wyrażenia regularnego.
 
-## <a name="extracting-names"></a>Trwa wyodrębnianie nazw
-Pobieranie nazwy z wypowiedź jest trudne, ponieważ nazwa może zawierać niemal dowolną kombinację literami i wyrazami. W zależności od typu wyodrębnianych nazw można korzystać z kilku opcji. Poniższe sugestie nie są regułami, ale są bardziej szczegółowe.
+## <a name="extracting-names"></a>Wyodrębnianie nazw
+Pobieranie nazw z wypowiedź jest trudne, ponieważ nazwa może być niemal dowolną kombinacją liter i wyrazów. W zależności od typu wyodrębnianych nazw można korzystać z kilku opcji. Poniższe sugestie nie są regułami, ale są bardziej szczegółowe.
 
 ### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>Dodawanie wstępnie utworzonych jednostek PersonName i GeographyV2
 
-[](luis-reference-prebuilt-person.md) Jednostki PersonName i [GeographyV2](luis-reference-prebuilt-geographyV2.md) są dostępne w niektórych [kulturach językowych](luis-reference-prebuilt-entities.md). 
+Jednostki [PersonName](luis-reference-prebuilt-person.md) i [GeographyV2](luis-reference-prebuilt-geographyV2.md) są dostępne w niektórych [kulturach językowych](luis-reference-prebuilt-entities.md). 
 
-### <a name="names-of-people"></a>Nazwiska osób
+### <a name="names-of-people"></a>Nazwy osób
 
-Nazwa osób może mieć pewne niewielkie format, w zależności od języka i kultury. Użyj wstępnie utworzonej jednostki PersonName lub **[prostej jednostki](luis-concept-entity-types.md#simple-entity)** z [rolami](luis-concept-roles.md) imię i nazwisko. **[](luis-reference-prebuilt-person.md)** 
+Nazwa osoby może mieć nieco niewielki format w zależności od języka i kultury. Użyj wstępnie utworzonej jednostki **[PersonName](luis-reference-prebuilt-person.md)** lub **[prostej jednostki](luis-concept-entity-types.md#simple-entity)** z [rolami](luis-concept-roles.md) imię i nazwisko. 
 
-Jeśli używasz prostej jednostki, upewnij się, że są podane przykłady, które używają pierwszej i ostatniej nazwy w różnych częściach wypowiedź, w wyrażenia długości o różnej długości i wyrażenia długości we wszystkich intencjach, w tym dla opcji Brak. [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
+Jeśli używasz prostej jednostki, upewnij się, że są podane przykłady, które używają pierwszej i ostatniej nazwy w różnych częściach wypowiedź, w wyrażenia długości o różnej długości i wyrażenia długości we wszystkich intencjach, w tym dla opcji Brak. Regularnie [Przeglądaj](luis-how-to-review-endoint-utt.md) wyrażenia długości punktu końcowego, aby oznaczyć wszystkie nazwy, które nie zostały prawidłowo przewidywalne.
 
 ### <a name="names-of-places"></a>Nazwy miejsc
 
 Nazwy lokalizacji są ustawiane i znane, takie jak miasta, powiaty, Stany, prowincje i kraje/regiony. Aby wyodrębnić informacje o lokalizacji, Użyj wstępnie skompilowanej jednostki **[geographyV2](luis-reference-prebuilt-geographyv2.md)** .
 
-### <a name="new-and-emerging-names"></a>Nowe i rozwijające się nazwy
+### <a name="new-and-emerging-names"></a>Nowe i pojawiające się nazwy
 
-Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się nazwy, takie jak produkty lub firmy. Te typy nazw są najbardziej trudnym typem wyodrębniania danych. Zacznij od **[prostej jednostki](luis-concept-entity-types.md#simple-entity)** i Dodaj [listę fraz](luis-concept-feature.md). [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
+Niektóre aplikacje muszą być w stanie znaleźć nowe i pojawiające się nazwy, takie jak produkty lub firmy. Te typy nazw są najbardziej trudnym typem wyodrębniania danych. Zacznij od **[prostej jednostki](luis-concept-entity-types.md#simple-entity)** i Dodaj [listę fraz](luis-concept-feature.md). Regularnie [Przeglądaj](luis-how-to-review-endoint-utt.md) wyrażenia długości punktu końcowego, aby oznaczyć wszystkie nazwy, które nie zostały prawidłowo przewidywalne.
 
-## <a name="pattern-roles-data"></a>Wzorzec role danych
-Role różnią się kontekstowych jednostek.
+## <a name="pattern-roles-data"></a>Dane ról wzorca
+Role są kontekstowymi różnicami jednostek.
+
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+
+Nazwa jednostki jest `Location`, z dwiema rolami `Origin` i `Destination`.
 
 ```JSON
-{
-  "query": "move bob jones from seattle to redmond",
-  "topScoringIntent": {
-    "intent": "MoveAssetsOrPeople",
-    "score": 0.9999998
+"entities": [
+  {
+    "entity": "bob jones",
+    "type": "Employee",
+    "startIndex": 5,
+    "endIndex": 13,
+    "score": 0.922820568,
+    "role": ""
   },
-  "intents": [
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 0.9999998
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 6.12244548E-07
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 6.12244548E-07
-    },
-    {
-      "intent": "FindForm",
-      "score": 1.1E-09
-    }
-  ],
-  "entities": [
-    {
-      "entity": "bob jones",
-      "type": "Employee",
-      "startIndex": 5,
-      "endIndex": 13,
-      "score": 0.922820568,
-      "role": ""
-    },
-    {
-      "entity": "seattle",
-      "type": "Location",
-      "startIndex": 20,
-      "endIndex": 26,
-      "score": 0.948008537,
-      "role": "Origin"
-    },
-    {
-      "entity": "redmond",
-      "type": "Location",
-      "startIndex": 31,
-      "endIndex": 37,
-      "score": 0.7047979,
-      "role": "Destination"
-    }
-  ]
+  {
+    "entity": "seattle",
+    "type": "Location",
+    "startIndex": 20,
+    "endIndex": 26,
+    "score": 0.948008537,
+    "role": "Origin"
+  },
+  {
+    "entity": "redmond",
+    "type": "Location",
+    "startIndex": 31,
+    "endIndex": 37,
+    "score": 0.7047979,
+    "role": "Destination"
+  }
+]
+```
+
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+
+W wersji 3 **Nazwa roli** jest nazwą podstawową obiektu. 
+
+Nazwa jednostki jest `Location`, z dwiema rolami `Origin` i `Destination`.
+
+Bez parametru QueryString, `verbose=true`:
+
+```json
+"entities": {
+    "Employee": [
+        "bob jones"
+    ],
+    "Origin": [
+        "seattle"
+    ],
+    "Destination": [
+        "redmond"
+    ]
 }
 ```
 
-## <a name="patternany-entity-data"></a>Pattern.any danych dotyczących jednostki
+Za pomocą QueryString parametru, `verbose=true`:
+
+```json
+"entities": {
+    "Employee": [
+        "bob jones"
+    ],
+    "LocationOrigin": [
+        "seattle"
+    ],
+    "LocationDestination": [
+        "redmond"
+    ],
+    "$instance": {
+        "Employee": [
+            {
+                "type": "Employee",
+                "text": "bob jones",
+                "startIndex": 5,
+                "length": 9,
+                "score": 0.982873261,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "Origin": [
+            {
+                "role": "Origin",
+                "type": "Location",
+                "text": "seattle",
+                "startIndex": 20,
+                "length": 7,
+                "score": 0.9913306,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "Destination": [
+            {
+                "role": "Destination",
+                "type": "Location",
+                "text": "redmond",
+                "startIndex": 31,
+                "length": 7,
+                "score": 0.898179531,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+
+}
+```
+
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+* * *
+
+## <a name="patternany-entity-data"></a>Wzorzec. wszystkie dane jednostki
 
 [Wzorzec. any](reference-entity-pattern-any.md) jest symbolem zastępczym o zmiennej długości używanym tylko w szablonie wzorca wypowiedź, aby oznaczyć, gdzie rozpoczyna się i kończą.  
 
 ## <a name="sentiment-analysis"></a>Analiza tonacji
-Jeśli jest skonfigurowana analiza tonacji, odpowiedź w formacie json usługi LUIS obejmuje analizę tonacji. Dowiedz się więcej na temat analizy tonacji w [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentacji.
+W przypadku skonfigurowania analizy tonacji odpowiedź JSON LUIS obejmuje analizę tonacji. Dowiedz się więcej o analizie tonacji w dokumentacji [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) .
 
-### <a name="sentiment-data"></a>Dane opinii
-Dane opinii jest wynik w zakresie od 1 i 0, wskazując pozytywny (bliżej 1) lub ujemną (bliżej 0) tonacji danych.
+### <a name="sentiment-data"></a>Tonacji dane
+Dane tonacji to wynik z zakresu od 1 do 0 wskazujący dodatnie (bliżej 1) lub ujemne (bliżej 0) tonacji danych.
 
-Gdy jest kultura `en-us`, odpowiedź jest:
+Gdy kultura jest `en-us`, odpowiedź jest:
 
 ```JSON
 "sentimentAnalysis": {
@@ -347,7 +704,7 @@ Gdy jest kultura `en-us`, odpowiedź jest:
 }
 ```
 
-Dla wszystkich innych języków odpowiedź jest:
+W przypadku wszystkich innych kultur odpowiedź jest:
 
 ```JSON
 "sentimentAnalysis": {
@@ -356,8 +713,11 @@ Dla wszystkich innych języków odpowiedź jest:
 ```
 
 
-### <a name="key-phrase-extraction-entity-data"></a>Dane jednostki wyodrębnianie kluczowych fraz
-Jednostki wyodrębnianie kluczowych fraz zwraca kluczowych fraz w wypowiedź, dostarczone przez [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
+### <a name="key-phrase-extraction-entity-data"></a>Dane jednostki wyodrębniania klucza
+Jednostka wyodrębniania klucza zwraca kluczowe frazy w wypowiedź, dostarczone przez [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
+
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -392,13 +752,85 @@ Jednostki wyodrębnianie kluczowych fraz zwraca kluczowych fraz w wypowiedź, do
 }
 ```
 
-## <a name="data-matching-multiple-entities"></a>Dopasowywanie wiele jednostek danych
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
-Usługa LUIS zwraca wszystkie jednostki w wypowiedź. Co w efekcie Twoja chatbot może być konieczne podejmowanie decyzji na podstawie wyników. Wypowiedź może mieć wiele jednostek w wypowiedź:
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+Bez parametru QueryString, `verbose=true`:
+
+```json
+"entities": {
+    "keyPhrase": [
+        "map of places",
+        "beautiful views",
+        "favorite trail"
+    ]
+}
+```
+
+Za pomocą QueryString parametru, `verbose=true`:
+
+```json
+"entities": {
+    "keyPhrase": [
+        "map of places",
+        "beautiful views",
+        "favorite trail"
+    ],
+    "$instance": {
+        "keyPhrase": [
+            {
+                "type": "builtin.keyPhrase",
+                "text": "map of places",
+                "startIndex": 11,
+                "length": 13,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.keyPhrase",
+                "text": "beautiful views",
+                "startIndex": 30,
+                "length": 15,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.keyPhrase",
+                "text": "favorite trail",
+                "startIndex": 51,
+                "length": 14,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+* * *
+
+
+## <a name="data-matching-multiple-entities"></a>Dane pasujące do wielu jednostek
+
+LUIS zwraca wszystkie jednostki odnalezione w wypowiedź. W związku z tym chatbot może wymagać podjęcia decyzji na podstawie wyników. Element wypowiedź może mieć wiele jednostek w wypowiedź:
 
 `book me 2 adult business tickets to paris tomorrow on air france`
 
-Punkt końcowy usługi LUIS można odnajdywanie tych samych danych w różnych jednostkach:
+Punkt końcowy LUIS może odnaleźć te same dane w różnych jednostkach.
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -524,11 +956,194 @@ Punkt końcowy usługi LUIS można odnajdywanie tych samych danych w różnych j
 }
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+
+Bez `verbose=true` jako parametr QueryString.
+
+```json
+"entities": {
+    "TicketsOrder": [
+        {
+            "number": [
+                2
+            ],
+            "PassengerCategory": [
+                "adult"
+            ],
+            "TravelClass": [
+                "business"
+            ]
+        }
+    ],
+    "Location::LocationTo": [
+        "paris"
+    ],
+    "datetimeV2": [
+        {
+            "type": "date",
+            "values": [
+                {
+                    "timex": "2019-09-28",
+                    "value": "2019-09-28"
+                }
+            ]
+        }
+    ],
+    "Airline": [
+        "air france"
+    ]
+}
+```
+
+Za pomocą `verbose=true` jako parametru QueryString.
+
+
+```json
+"entities": {
+    "TicketsOrder": [
+        {
+            "number": [
+                2
+            ],
+            "PassengerCategory": [
+                "adult"
+            ],
+            "TravelClass": [
+                "business"
+            ],
+            "$instance": {
+                "number": [
+                    {
+                        "type": "builtin.number",
+                        "text": "2",
+                        "startIndex": 8,
+                        "length": 1,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ],
+                "PassengerCategory": [
+                    {
+                        "type": "PassengerCategory",
+                        "text": "adult",
+                        "startIndex": 10,
+                        "length": 5,
+                        "score": 0.9503733,
+                        "modelTypeId": 3,
+                        "modelType": "Hierarchical Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ],
+                "TravelClass": [
+                    {
+                        "type": "TravelClass",
+                        "text": "business",
+                        "startIndex": 16,
+                        "length": 8,
+                        "score": 0.950095,
+                        "modelTypeId": 3,
+                        "modelType": "Hierarchical Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "Location::LocationTo": [
+        "paris"
+    ],
+    "datetimeV2": [
+        {
+            "type": "date",
+            "values": [
+                {
+                    "timex": "2019-09-28",
+                    "value": "2019-09-28"
+                }
+            ]
+        }
+    ],
+    "Airline": [
+        "air france"
+    ],
+    "$instance": {
+        "TicketsOrder": [
+            {
+                "type": "TicketsOrder",
+                "text": "2 adult business",
+                "startIndex": 8,
+                "length": 16,
+                "score": 0.942183256,
+                "modelTypeId": 4,
+                "modelType": "Composite Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "Location::LocationTo": [
+            {
+                "type": "Location::LocationTo",
+                "text": "paris",
+                "startIndex": 36,
+                "length": 5,
+                "score": 0.9905354,
+                "modelTypeId": 3,
+                "modelType": "Hierarchical Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "datetimeV2": [
+            {
+                "type": "builtin.datetimeV2.date",
+                "text": "tomorrow",
+                "startIndex": 42,
+                "length": 8,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "Airline": [
+            {
+                "type": "Airline",
+                "text": "air france",
+                "startIndex": 54,
+                "length": 10,
+                "score": 0.9455415,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+* * *
+
 ## <a name="data-matching-multiple-list-entities"></a>Dane zgodne z wieloma jednostkami listy
 
-Jeśli wyraz lub frazę, pasuje do więcej niż jednej jednostki listy, kwerendy punktu końcowego zwraca każdy obiekt listy.
+Jeśli słowo lub fraza pasuje do więcej niż jednej jednostki listy, zapytanie punktu końcowego zwróci każdą jednostkę listy.
 
-Dla zapytania `when is the best time to go to red rock?`, a aplikacja ma słowo `red` w więcej niż jednej listy LUIS rozpoznaje wszystkie jednostki i zwraca tablicę jednostki jako część odpowiedzi JSON punktu końcowego: 
+Dla kwerendy `when is the best time to go to red rock?`, a aplikacja zawiera słowo `red` w więcej niż jednej liście, LUIS rozpoznaje wszystkie jednostki i zwraca tablicę jednostek jako część odpowiedzi punktu końcowego JSON: 
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -564,6 +1179,101 @@ Dla zapytania `when is the best time to go to red rock?`, a aplikacja ma słowo 
 }
 ```
 
+
+
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+
+Bez `verbose=true` w ciągu zapytania:
+
+```JSON
+{
+    "query": "when is the best time to go to red rock",
+    "prediction": {
+        "normalizedQuery": "when is the best time to go to red rock",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.823669851
+            }
+        },
+        "entities": {
+            "Colors": [
+                [
+                    "red"
+                ]
+            ],
+            "Cities": [
+                [
+                    "Destinations"
+                ]
+            ]
+        }
+    }
+}
+```
+
+
+Z `verbose=true` w ciągu zapytania:
+
+```JSON
+{
+    "query": "when is the best time to go to red rock",
+    "prediction": {
+        "normalizedQuery": "when is the best time to go to red rock",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.823669851
+            }
+        },
+        "entities": {
+            "Colors": [
+                [
+                    "red"
+                ]
+            ],
+            "Cities": [
+                [
+                    "Destinations"
+                ]
+            ],
+            "$instance": {
+                "Colors": [
+                    {
+                        "type": "Colors",
+                        "text": "red",
+                        "startIndex": 31,
+                        "length": 3,
+                        "modelTypeId": 5,
+                        "modelType": "List Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ],
+                "Cities": [
+                    {
+                        "type": "Cities",
+                        "text": "red rock",
+                        "startIndex": 31,
+                        "length": 8,
+                        "modelTypeId": 5,
+                        "modelType": "List Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+* * *
+
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz [Dodaj jednostki](luis-how-to-add-entities.md) Aby dowiedzieć się więcej o sposobie dodawania jednostki z aplikacją usługi LUIS.
+Zobacz [Dodawanie jednostek](luis-how-to-add-entities.md) , aby dowiedzieć się więcej na temat dodawania jednostek do aplikacji Luis.

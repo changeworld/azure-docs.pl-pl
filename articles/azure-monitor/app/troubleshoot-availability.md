@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146597"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695037"
 ---
 # <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -29,7 +29,7 @@ Ten artykuł pomoże w rozwiązywaniu typowych problemów, które mogą wystąpi
 |Objaw/komunikat o błędzie| Możliwe przyczyny|
 |--------|------|
 |Nie można utworzyć bezpiecznego kanału SSL/TLS  | Wersja protokołu SSL. Obsługiwane są tylko protokoły TLS 1,0, 1,1 i 1,2. **Protokół SSLv3 nie jest obsługiwana.**
-|Warstwa rekordu TLSv 1.2: Alert (poziom: Krytyczny, opis: Zły rekord MAC| Aby uzyskać [więcej informacji](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake), zobacz wątek stackexchange.
+|Warstwa rekordu TLSv 1.2: Alert (poziom: krytyczny, opis: zły rekord MAC)| Aby uzyskać [więcej informacji](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake), zobacz wątek stackexchange.
 |Adres URL, który kończy się niepowodzeniem, to sieć CDN (Content Delivery Network) | Przyczyną może być niepodzielna konfiguracja w sieci CDN |  
 
 ### <a name="possible-workaround"></a>Możliwe obejście
@@ -44,7 +44,7 @@ Ten artykuł pomoże w rozwiązywaniu typowych problemów, które mogą wystąpi
 |    |Przekierowywanie określonych adresów IP odbywa się za pośrednictwem usług równoważenia obciążenia, menedżerów ruchu geograficznego, trasy usługi Azure Express. 
 |    |W przypadku korzystania z usługi Azure ExpressRoute istnieją scenariusze, w których można porzucić pakiety w przypadkach, gdy [występuje Routing asymetryczny](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
 
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Sporadyczny błąd testu z błędem naruszenia protokołu
+## <a name="test-failure-with-a-protocol-violation-error"></a>Niepowodzenie testu z powodu błędu naruszenia protokołu
 
 |Objaw/komunikat o błędzie| Możliwe przyczyny| Możliwe rozwiązania |
 |----|---------|-----|

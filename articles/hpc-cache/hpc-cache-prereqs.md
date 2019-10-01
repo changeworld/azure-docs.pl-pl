@@ -4,14 +4,14 @@ description: Wymagania wstępne dotyczące korzystania z pamięci podręcznej pl
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299911"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709973"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Wymagania wstępne dotyczące usługi Azure HPC cache (wersja zapoznawcza)
 
@@ -57,15 +57,14 @@ Dowiedz się więcej na temat sieci wirtualnych platformy Azure i konfiguracji s
 Przed rozpoczęciem tworzenia pamięci podręcznej Sprawdź te wymagania wstępne związane z uprawnieniami.
 
 * Wystąpienie pamięci podręcznej musi być w stanie tworzyć wirtualne interfejsy sieciowe (nic). Użytkownik tworzący pamięć podręczną musi mieć wystarczające uprawnienia w subskrypcji, aby można było tworzyć karty sieciowe.
-<!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* W przypadku korzystania z usługi BLOB Storage pamięć podręczna Azure HPC wymaga autoryzacji dostępu do konta magazynu. Za pomocą kontroli dostępu opartej na rolach (RBAC) można zapewnić dostęp do pamięci podręcznej do magazynu obiektów BLOB. Wymagane są dwie role: Współautor konta magazynu i współautor danych obiektu blob magazynu. Postępuj zgodnie z instrukcjami w temacie [Dodawanie elementów docelowych magazynu](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) , aby dodać role.
+* W przypadku korzystania z usługi BLOB Storage pamięć podręczna Azure HPC wymaga autoryzacji dostępu do konta magazynu. Za pomocą kontroli dostępu opartej na rolach (RBAC) można zapewnić dostęp do pamięci podręcznej do magazynu obiektów BLOB. Wymagane są dwie role: współautor konta magazynu i współautor danych obiektu blob magazynu. Postępuj zgodnie z instrukcjami w temacie [Dodawanie elementów docelowych magazynu](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) , aby dodać role.
 
 ## <a name="storage-infrastructure"></a>Infrastruktura magazynu
 
-Pamięć podręczna obsługuje kontenery obiektów blob platformy Azure lub eksporty magazynu sprzętowego systemu plików NFS. Podczas tworzenia pamięci podręcznej można zdefiniować cele magazynu, ale później można dodać magazyn.
+Pamięć podręczna obsługuje kontenery obiektów blob platformy Azure lub eksporty magazynu sprzętowego systemu plików NFS. Dodaj elementy docelowe magazynu po utworzeniu pamięci podręcznej.
 
-Każdy typ magazynu ma określone wymagania wstępne. 
+Każdy typ magazynu ma określone wymagania wstępne.
 
 ### <a name="nfs-storage-requirements"></a>Wymagania dotyczące magazynu NFS
 
@@ -81,9 +80,9 @@ Utwórz konto i kontener przed podjęciem próby dodania go jako miejsca docelow
 
 Aby utworzyć zgodne konto magazynu, użyj następujących ustawień:
 
-* Skuteczności **Standardowa**
+* Wydajność: **standardowa**
 * Rodzaj konta: **StorageV2 (ogólnego przeznaczenia w wersji 2)**
-* Replikacji **Magazyn lokalnie nadmiarowy (LRS)**
+* Replikacja: **Magazyn lokalnie nadmiarowy (LRS)**
 * Warstwa dostępu (domyślna): **gorąca**
 
 Dobrym sposobem jest użycie konta magazynu w tej samej lokalizacji co pamięć podręczna.

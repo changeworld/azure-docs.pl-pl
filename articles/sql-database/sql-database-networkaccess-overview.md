@@ -11,17 +11,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 2d7cc217ff8ae45491c0f9d6b54ea8afea19cd2e
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981236"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703267"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database i kontrola dostępu do sieci hurtowni danych
 
 > [!NOTE]
-> Ten artykuł ma zastosowanie do programu Azure SQL Server oraz do baz danych SQL Database i SQL Data Warehouse utworzonych na serwerze SQL platformy Azure. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
+> Ten artykuł ma zastosowanie do programu Azure SQL Server oraz do baz danych SQL Database i SQL Data Warehouse utworzonych na serwerze SQL platformy Azure. Dla uproszczenia SQL Database jest używany podczas odwoływania się do SQL Database i SQL Data Warehouse.
 
 > [!IMPORTANT]
 > Ten artykuł *nie* dotyczy **Azure SQL Database wystąpienia zarządzanego**. Aby uzyskać więcej informacji na temat konfiguracji sieci, zobacz [nawiązywanie połączenia z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md) .
@@ -72,21 +72,23 @@ Zapora oparta na protokole IP to funkcja platformy Azure SQL Server, która zapo
 ## <a name="virtual-network-firewall-rules"></a>Virtual Network reguły zapory
 
 Oprócz reguł IP Zapora usługi Azure SQL Server umożliwia definiowanie *reguł sieci wirtualnej*.  
-Aby dowiedzieć się więcej, zobacz [Virtual Network punkty końcowe usługi i reguły dla Azure SQL Database](sql-database-vnet-service-endpoint-rule-overview.md).
+Aby dowiedzieć się więcej, zobacz [Virtual Network punkty końcowe usługi i reguły dla Azure SQL Database](sql-database-vnet-service-endpoint-rule-overview.md) lub Obejrzyj ten film wideo:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
 
  ### <a name="azure-networking-terminology"></a>Terminologia dotycząca sieci platformy Azure  
 Należy pamiętać o następujących kwestiach dotyczących sieci platformy Azure podczas eksplorowania Virtual Network regułami zapory
 
 **Sieć wirtualna:** Możesz mieć sieci wirtualne skojarzone z subskrypcją platformy Azure 
 
-**Podsieci** Sieć wirtualna zawiera **podsieci**. Wszystkie maszyny wirtualne platformy Azure, które są przypisane do podsieci. Jedna podsieć może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Węzły obliczeniowe znajdujące się poza siecią wirtualną nie mogą uzyskać dostępu do sieci wirtualnej, chyba że skonfigurowano zabezpieczenia, aby zezwolić na dostęp.
+**Podsieć:** Sieć wirtualna zawiera **podsieci**. Wszystkie maszyny wirtualne platformy Azure, które są przypisane do podsieci. Jedna podsieć może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Węzły obliczeniowe znajdujące się poza siecią wirtualną nie mogą uzyskać dostępu do sieci wirtualnej, chyba że skonfigurowano zabezpieczenia, aby zezwolić na dostęp.
 
 **Virtual Network punkt końcowy usługi:** [Virtual Network Service Endpoint] [VM-Virtual-Network-Service-Endpoints-Overview-649d] jest podsiecią, której wartości właściwości zawierają co najmniej jedną formalną nazwę typu usługi platformy Azure. W tym artykule interesuje Cię nazwę typu **Microsoft. SQL**, która odnosi się do usługi platformy Azure o nazwie SQL Database.
 
 **Reguła sieci wirtualnej:** Reguła sieci wirtualnej dla serwera SQL Database to podsieć wymieniona na liście kontroli dostępu (ACL) serwera SQL Database. Aby można było uzyskać listę ACL SQL Database, podsieć musi zawierać nazwę typu **Microsoft. SQL** . Reguła sieci wirtualnej instruuje serwer SQL Database, aby akceptował komunikację z każdego węzła znajdującego się w podsieci.
 
 
-## <a name="ip-vs-virtual-network-firewall-rules"></a>IP a Virtual Network reguły zapory
+## <a name="ip-vs-virtual-network-firewall-rules"></a>Reguły zapory dla protokołu IP a Virtual Network
 
 Zapora SQL Server platformy Azure umożliwia określenie zakresów adresów IP, z których ma zostać zaakceptowana komunikacja, SQL Database. To podejście jest odpowiednie dla stabilnych adresów IP, które są poza siecią prywatną platformy Azure. Jednak maszyny wirtualne w sieci prywatnej platformy Azure są skonfigurowane przy użyciu *dynamicznych* adresów IP. Dynamiczne adresy IP mogą ulec zmianie po ponownym uruchomieniu maszyny wirtualnej i w wyniku unieważnienia reguły zapory opartej na protokole IP. Folly do określenia dynamicznego adresu IP w regule zapory w środowisku produkcyjnym.
 
@@ -105,7 +107,7 @@ Reguły sieci wirtualnej są łatwiejsze do ustanowienia i zarządzania dostępe
 
 - Aby uzyskać pomoc dotyczącą łączenia się z bazą danych Azure SQL Database z aplikacji Open Source lub innych firm, zobacz [przykłady kodu dla klientów z przewodnikiem Szybki Start do SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 
-- Aby uzyskać informacje na temat dodatkowych portów, które mogą być konieczne do otwarcia **, zobacz SQL Database: Poza zakresem portów poza [1433 dla ADO.NET 4,5 i SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)**
+- Aby uzyskać informacje na temat dodatkowych portów, które mogą być konieczne do otwarcia, zobacz sekcję **SQL Database: zewnątrz i wewnątrz** sekcji [portów powyżej 1433 for ADO.NET 4,5 i SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 - Omówienie łączności Azure SQL Database można znaleźć w temacie [Architektura łączności usługi Azure SQL](sql-database-connectivity-architecture.md)
 

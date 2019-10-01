@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 144b63131be68c9209835a1b8b3a01062245cfdd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326577"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703030"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Zmniejsz koszty usługi przy użyciu Azure Advisor
 
@@ -21,7 +21,7 @@ Usługa Advisor pomaga zoptymalizować i obniżyć ogólne wydatki na platformę
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optymalizowanie wydatków maszyn wirtualnych przez zmianę rozmiarów lub zamykanie nieużywanych wystąpień 
 
-Chociaż niektóre scenariusze aplikacji mogą powodować niskie użycie w projekcie, często możesz zaoszczędzić pieniądze, zarządzając rozmiarem i liczbą maszyn wirtualnych. Usługa Advisor monitoruje użycie maszyn wirtualnych przez 7 dni, a następnie identyfikuje maszyny wirtualne o niskiej przepustowości.  Maszyny wirtualne są uznawane za niskie wykorzystanie, jeśli ich użycie procesora CPU wynosi 5% lub mniej, a ich wykorzystanie sieci jest mniejsze niż 2% i ma wartości progu ilości pamięci lub jeśli bieżące obciążenie może być dostosowane do mniejszego rozmiaru maszyny wirtualnej.
+Chociaż niektóre scenariusze aplikacji mogą powodować niskie użycie w projekcie, często możesz zaoszczędzić pieniądze, zarządzając rozmiarem i liczbą maszyn wirtualnych. Zaawansowane modele oceny usługi Advisor traktują maszyny wirtualne do zamknięcia, gdy P95th maksimum maksymalnego użycia procesora CPU jest mniejsze niż 3%, a wykorzystanie sieci jest mniejsze niż 2% w okresie 7 dni. Maszyny wirtualne są uważane za odpowiedni rozmiar, gdy można dopasować bieżące obciążenie do mniejszej jednostki SKU (w ramach tej samej rodziny SKU) lub mniejszej liczby wystąpień w taki sposób, aby bieżące obciążenie nie przeszedł do 80% w przypadku obciążeń niezwiązanych z użytkownikiem. powyżej 40% w przypadku obciążenia związanego z użytkownikiem. W tym miejscu typ obciążenia jest określany przez analizowanie charakterystyki użycia procesora CPU.
 
 Zalecane akcje są zamykane lub zmieniane, w odniesieniu do zasobów zalecanych dla. Program Advisor pokazuje szacowane oszczędności kosztów dla zalecanych akcji — zmiana rozmiaru lub zamknięcie. Ponadto w przypadku akcji zalecanej do zmiany rozmiaru klasyfikator udostępnia bieżące i docelowe informacje o jednostce SKU. 
 
@@ -29,7 +29,7 @@ Jeśli chcesz bardziej agresywnie identyfikować nieużywane maszyny wirtualne, 
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Zmniejsz koszty, eliminując niezainicjowane obwody usługi ExpressRoute
 
-Program Advisor identyfikuje obwody usługi ExpressRoute, które były w stanie dostawcy nieobsługiwanym przez więcej niż jeden miesiąc, i zaleca usunięcie obwodu, jeśli nie planujesz zainicjowania obsługi obwodu u usługodawcy.
+Program Advisor identyfikuje obwody usługi ExpressRoute, które były w stanie dostawcy *nieobsługiwanym przez więcej* niż jeden miesiąc, i zaleca usunięcie obwodu, jeśli nie planujesz zainicjowania obsługi obwodu u usługodawcy.
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Obniżenie kosztów przez usunięcie lub ponowne skonfigurowanie bezczynnych bram sieci wirtualnej
 
@@ -62,7 +62,7 @@ Aby zaoszczędzić 60% kosztów, zalecamy przechowywanie migawek w magazynie w w
 
 Aby dowiedzieć się więcej na temat zaleceń klasyfikatora, zobacz:
 * [Wprowadzenie do usługi Advisor](advisor-overview.md)
-* [Rozpoczęcie pracy](advisor-get-started.md)
+* [Wprowadzenie](advisor-get-started.md)
 * [Zalecenia dotyczące wydajności usługi Advisor](advisor-cost-recommendations.md)
 * [Zalecenia dotyczące wysokiej dostępności usługi Advisor](advisor-cost-recommendations.md)
 * [Zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-cost-recommendations.md)

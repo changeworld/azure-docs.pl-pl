@@ -8,24 +8,24 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5a9143643b1a1cabb32903933dbd68d665d0424f
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 953558e34d41184f75d72baf5982e84eb51b1781
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171128"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694874"
 ---
 # <a name="http-features"></a>Funkcje HTTP
 
-Durable Functions ma kilka funkcji, które ułatwiają dołączanie trwałych aranżacji i jednostek do przepływów pracy protokołu HTTP. W tym artykule przedstawiono szczegółowe informacje o niektórych z tych funkcji.
+Durable Functions ma kilka funkcji, które ułatwiają dołączanie trwałych aranżacji i jednostek do przepływów pracy protokołu HTTP. W tym artykule szczegółowo przedstawiono niektóre z tych funkcji.
 
 ## <a name="exposing-http-apis"></a>Uwidacznianie interfejsów API protokołu HTTP
 
-Aranżacje i jednostki mogą być wywoływane i zarządzane przy użyciu żądań HTTP. Rozszerzenie Durable Functions udostępnia wbudowane interfejsy API protokołu HTTP, a także udostępnia interfejsy API do współdziałania z aranżacjami i jednostkami z poziomu funkcji wyzwalanych przez protokół HTTP.
+Aranżacje i jednostki mogą być wywoływane i zarządzane przy użyciu żądań HTTP. Rozszerzenie Durable Functions uwidacznia wbudowane interfejsy API protokołu HTTP. Udostępnia również interfejsy API do współdziałania z aranżacjami i jednostkami z poziomu funkcji wyzwalanych przez protokół HTTP.
 
 ### <a name="built-in-http-apis"></a>Wbudowane interfejsy API protokołu HTTP
 
-Rozszerzenie Durable Functions automatycznie dodaje zestaw interfejsów API protokołu HTTP do hosta Azure Functions. Te interfejsy API umożliwiają współdziałanie z aranżacjami i jednostkami oraz zarządzanie nimi bez konieczności pisania kodu.
+Rozszerzenie Durable Functions automatycznie dodaje zestaw interfejsów API protokołu HTTP do hosta Azure Functions. Za pomocą tych interfejsów API można korzystać z aranżacji i jednostek oraz zarządzać nimi bez konieczności pisania kodu.
 
 Obsługiwane są następujące wbudowane interfejsy API protokołu HTTP.
 
@@ -41,31 +41,31 @@ Zobacz artykuł dotyczący [interfejsów API protokołu HTTP](durable-functions-
 
 ### <a name="http-api-url-discovery"></a>Odnajdowanie adresów URL interfejsu API protokołu HTTP
 
-[Powiązanie klienta aranżacji](durable-functions-bindings.md#orchestration-client) udostępnia interfejsy API, których można użyć do generowania wygodnych ładunków odpowiedzi HTTP. Na przykład może utworzyć odpowiedź zawierającą linki do interfejsów API zarządzania dla określonego wystąpienia aranżacji. Oto przykład funkcji wyzwalacza HTTP, która demonstruje, jak używać tego interfejsu API dla nowego wystąpienia aranżacji:
+[Powiązanie klienta aranżacji](durable-functions-bindings.md#orchestration-client) udostępnia interfejsy API, które mogą generować wygodne ładunki odpowiedzi HTTP. Na przykład może utworzyć odpowiedź zawierającą linki do interfejsów API zarządzania dla określonego wystąpienia aranżacji. W poniższych przykładach pokazano funkcję wyzwalacza HTTP, która pokazuje, jak używać tego interfejsu API dla nowego wystąpienia aranżacji:
 
 #### <a name="precompiled-c"></a>PrekompilowanegoC#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-#### <a name="c-script"></a>C#Napisy
+#### <a name="c-script"></a>Skrypt języka C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
+#### <a name="javascript-with-functions-20-or-later-only"></a>JavaScript z funkcjami 2,0 lub nowszymi
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-#### <a name="functionjson"></a>Function.json
+#### <a name="functionjson"></a>Function. JSON
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
-Uruchamianie funkcji programu Orchestrator za pomocą funkcji wyzwalacza HTTP pokazanych powyżej można wykonać przy użyciu dowolnego klienta HTTP. Następujące polecenie zwinięcie uruchamia funkcję programu Orchestrator o nazwie `DoWork`.
+Uruchamianie funkcji programu Orchestrator za pomocą funkcji wyzwalacza protokołu HTTP pokazanych wcześniej można wykonać przy użyciu dowolnego klienta HTTP. Następujące polecenie zwinięcie uruchamia funkcję programu Orchestrator o nazwie `DoWork`:
 
 ```bash
 curl -X POST https://localhost:7071/orchestrators/DoWork -H "Content-Length: 0" -i
 ```
 
-Oto przykładowa odpowiedź dla aranżacji wraz z `abc123` identyfikatorem (niektóre szczegóły zostały usunięte w celu przejrzystości):
+Dalej to Przykładowa odpowiedź dla aranżacji, która ma `abc123` jako identyfikator. Niektóre szczegóły zostały usunięte w celu przejrzystości.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -82,42 +82,42 @@ Retry-After: 10
 }
 ```
 
-Każde z `~Uri` pól w poprzednim przykładzie odpowiada wbudowanym interfejsom API protokołu HTTP. Te interfejsy API mogą służyć do zarządzania docelowym wystąpieniem aranżacji.
+W poprzednim przykładzie każde pole kończące się `Uri` odpowiada wbudowanemu interfejsowi API protokołu HTTP. Za pomocą tych interfejsów API można zarządzać docelowym wystąpieniem aranżacji.
 
 > [!NOTE]
-> Format adresów URL elementu webhook może się różnić w zależności od używanej wersji hosta Azure Functions. Powyższy przykład dotyczy hosta Azure Functions 2,0.
+> Format adresów URL elementu webhook zależy od używanej wersji hosta Azure Functions. Poprzedni przykład dotyczy hosta Azure Functions 2,0.
 
-Opis wszystkich wbudowanych interfejsów API protokołu HTTP można znaleźć w dokumentacji [dotyczącej interfejsu API protokołu HTTP](durable-functions-http-api.md) .
+Aby uzyskać opis wszystkich wbudowanych interfejsów API protokołu HTTP, zobacz [Dokumentacja interfejsu API protokołu HTTP](durable-functions-http-api.md).
 
 ### <a name="async-operation-tracking"></a>Śledzenie operacji asynchronicznych
 
 Wspomniana wcześniej odpowiedź HTTP została zaprojektowana w celu ułatwienia wdrożenia długotrwałych asynchronicznych interfejsów API protokołu HTTP przy użyciu Durable Functions. Ten wzorzec jest czasami nazywany *wzorcem klienta sondowania*. Przepływ klient/serwer działa w następujący sposób:
 
 1. Klient wysyła żądanie HTTP w celu uruchomienia długotrwałego procesu, takiego jak funkcja programu Orchestrator.
-2. Docelowy wyzwalacz http zwraca odpowiedź HTTP 202 z `Location` nagłówkiem `statusQueryGetUri` o wartości.
-3. Klient sonduje adres URL w `Location` nagłówku. Nadal widzisz odpowiedzi HTTP 202 z `Location` nagłówkiem.
-4. Po zakończeniu wystąpienia (lub niepowodzenia) punkt końcowy w `Location` nagłówku zwraca http 200.
+1. Docelowy wyzwalacz HTTP zwraca odpowiedź HTTP 202 z nagłówkiem lokalizacji, który ma wartość "statusQueryGetUri".
+1. Klient sonduje adres URL w nagłówku lokalizacji. Klient nadal widzi odpowiedzi HTTP 202 z nagłówkiem lokalizacji.
+1. Gdy wystąpienie zostanie zakończone lub nie powiedzie się, punkt końcowy w nagłówku lokalizacji zwraca HTTP 200.
 
-Ten protokół umożliwia koordynowanie długotrwałych procesów z zewnętrznymi klientami lub usługami, które obsługują sondowanie punktu końcowego http i po `Location` nagłówku. Zarówno implementacja klienta, jak i serwera tego wzorca jest wbudowana w Durable Functions interfejsów API protokołu HTTP.
-
-> [!NOTE]
-> Domyślnie wszystkie działania oparte na protokole HTTP zapewniane przez [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) obsługują standardowy wzorzec operacji asynchronicznej. Ta funkcja umożliwia osadzenie długotrwałej funkcji trwałej w ramach przepływu pracy Logic Apps. Więcej szczegółów na Logic Apps temat obsługi asynchronicznych wzorców HTTP można znaleźć w temacie [Azure Logic Apps akcje przepływu pracy i informacje o wyzwalaczach](../../logic-apps/logic-apps-workflow-actions-triggers.md).
+Ten protokół umożliwia koordynację długotrwałych procesów z zewnętrznymi klientami lub usługami, które mogą sondować punkt końcowy HTTP i podążać za nagłówkiem lokalizacji. Zarówno implementacja klienta, jak i serwera tego wzorca jest wbudowana w Durable Functions interfejsów API protokołu HTTP.
 
 > [!NOTE]
-> Korzystanie z aranżacji może odbywać się z dowolnego typu funkcji, a nie tylko funkcji wyzwalanych przez protokół HTTP.
+> Domyślnie wszystkie działania oparte na protokole HTTP zapewniane przez [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) obsługują standardowy wzorzec operacji asynchronicznej. Ta funkcja umożliwia osadzenie długotrwałej funkcji trwałej w ramach przepływu pracy Logic Apps. Więcej szczegółowych informacji na temat Logic Apps obsługi asynchronicznych wzorców HTTP można znaleźć w temacie [Azure Logic Apps akcje przepływu pracy i wyzwalacze](../../logic-apps/logic-apps-workflow-actions-triggers.md).
 
-Aby uzyskać więcej informacji na temat zarządzania aranżacjami i jednostkami przy użyciu interfejsów API klienta, zobacz artykuł dotyczący [zarządzania wystąpieniem](durable-functions-instance-management.md) .
+> [!NOTE]
+> Interakcje z aranżacjami mogą być wykonywane z dowolnego typu funkcji, a nie tylko funkcji wyzwalanych przez protokół HTTP.
+
+Aby uzyskać więcej informacji na temat zarządzania aranżacjami i jednostkami przy użyciu interfejsów API klienta, zobacz artykuł dotyczący [zarządzania wystąpieniem](durable-functions-instance-management.md).
 
 ## <a name="consuming-http-apis"></a>Używanie interfejsów API protokołu HTTP
 
-Funkcje programu Orchestrator nie mogą wykonywać operacji we/wy bezpośrednio, zgodnie z opisem w temacie [ograniczenia kodów funkcji](durable-functions-code-constraints.md)w programie Orchestrator. Zamiast tego funkcje programu Orchestrator zazwyczaj wywołują [funkcje działania](durable-functions-types-features-overview.md#activity-functions) , które wykonują operacje we/wy.
+Zgodnie z opisem w temacie [ograniczenia kodu funkcji programu Orchestrator](durable-functions-code-constraints.md)funkcje programu Orchestrator nie mogą bezpośrednio wykonywać operacji we/wy. Zamiast tego zwykle wywołują [funkcje działania](durable-functions-types-features-overview.md#activity-functions) , które wykonują operacje we/wy.
 
 Począwszy od Durable Functions 2,0, aranżacje mogą natywnie korzystać z interfejsów API protokołu HTTP przy użyciu [powiązania wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-trigger).
 
 > [!NOTE]
 > Możliwość wywołania punktów końcowych HTTP bezpośrednio z funkcji programu Orchestrator nie jest jeszcze dostępna w języku JavaScript.
 
-Poniższy przykładowy kod przedstawia funkcję programu C# Orchestrator wykonującą wychodzące żądanie HTTP przy `CallHttpAsync` użyciu interfejsu API platformy .NET:
+Poniższy przykładowy kod przedstawia funkcję programu C# Orchestrator wykonującą wychodzące żądanie HTTP przy użyciu interfejsu API **CallHttpAsync** .NET:
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -137,26 +137,26 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-Akcja "Call HTTP" umożliwia wykonywanie następujących czynności w funkcjach programu Orchestrator:
+Za pomocą akcji "Call HTTP" można wykonywać następujące akcje w funkcjach programu Orchestrator:
 
-* Wywołaj interfejsy API protokołu HTTP bezpośrednio z funkcji aranżacji (z pewnymi ograniczeniami wymienionymi w dalszej części).
-* Automatyczne obsługiwanie wzorców sondowania stanu HTTP 202 po stronie klienta.
+* Wywołaj interfejsy API protokołu HTTP bezpośrednio z funkcji aranżacji, z pewnymi ograniczeniami wymienionymi w dalszej części.
+* Automatycznie obsługuje wzorce sondowania stanu HTTP 202 po stronie klienta.
 * Użyj [tożsamości zarządzanych przez platformę Azure](../../active-directory/managed-identities-azure-resources/overview.md) , aby uzyskać autoryzowane wywołania http do innych punktów końcowych platformy Azure.
 
-Możliwość korzystania z interfejsów API protokołu HTTP bezpośrednio z funkcji programu Orchestrator jest zaprojektowana jako wygoda dla pewnego zestawu typowych scenariuszy. Możliwe jest zaimplementowanie wszystkich tych funkcji samodzielnie za pomocą funkcji działania. W wielu przypadkach funkcje działania mogą zapewnić większą elastyczność.
+Możliwość korzystania z interfejsów API protokołu HTTP bezpośrednio z funkcji programu Orchestrator jest zaprojektowana jako wygoda dla pewnego zestawu typowych scenariuszy. Wszystkie te funkcje można zaimplementować samodzielnie za pomocą funkcji działania. W wielu przypadkach funkcje działania mogą zapewnić większą elastyczność.
 
 ### <a name="http-202-handling"></a>Obsługa protokołu HTTP 202
 
-Interfejs API "Call HTTP" może automatycznie implementować stronę klienta *wzorca sondowania*. Jeśli interfejs API o nazwie zwróci odpowiedź HTTP 202 z `Location` nagłówkiem, funkcja programu Orchestrator automatycznie `Location` sonduje zasób do momentu przywrócenia odpowiedzi z powrotem do 202. Odpowiedź w postaci innej niż 202 będzie odpowiedzią zwracaną do kodu funkcji programu Orchestrator.
+Interfejs API "Call HTTP" może automatycznie implementować stronę klienta wzorca sondowania. Jeśli interfejs API o nazwie zwróci odpowiedź HTTP 202 z nagłówkiem lokalizacji, funkcja programu Orchestrator automatycznie sonduje zasób lokalizacji do momentu otrzymania odpowiedzi innej niż 202. Ta odpowiedź będzie odpowiedzią na kod funkcji programu Orchestrator.
 
 > [!NOTE]
-> Program Orchestrator Functions również natywnie obsługuje *wzorzec klienta sondowania*po stronie serwera, zgodnie z opisem w temacie [śledzenie operacji asynchronicznych](#async-operation-tracking). Oznacza to, że aranżacje w jednej aplikacji funkcji mogą łatwo koordynować funkcje programu Orchestrator w innych aplikacjach funkcji. Jest to podobne do koncepcji [aranżacji podrzędnej](durable-functions-sub-orchestrations.md) , ale z obsługą komunikacji między aplikacjami. Jest to szczególnie przydatne w przypadku tworzenia aplikacji w stylu mikrousług.
+> Program Orchestrator Functions również natywnie obsługuje wzorzec klienta sondowania po stronie serwera, zgodnie z opisem w temacie [śledzenie operacji asynchronicznych](#async-operation-tracking). Ta pomoc techniczna oznacza, że aranżacje w jednej aplikacji funkcji mogą łatwo koordynować funkcje programu Orchestrator w innych aplikacjach funkcji. Jest to podobne do koncepcji [aranżacji podrzędnej](durable-functions-sub-orchestrations.md) , ale z obsługą komunikacji między aplikacjami. Ta obsługa jest szczególnie przydatna w przypadku tworzenia aplikacji w stylu mikrousług.
 
-### <a name="managed-identities"></a>Tożsamości zarządzane
+### <a name="managed-identities"></a>Zarządzane tożsamości
 
-Durable Functions natywnie obsługuje wywoływanie interfejsów API, które akceptują tokeny usługi Azure AD na potrzeby autoryzacji. Ta obsługa używa [tożsamości zarządzanych przez platformę Azure](../../active-directory/managed-identities-azure-resources/overview.md) do uzyskiwania tych tokenów.
+Durable Functions natywnie obsługuje wywołania interfejsów API, które akceptują tokeny Azure Active Directory (Azure AD) na potrzeby autoryzacji. Ta obsługa używa [tożsamości zarządzanych przez platformę Azure](../../active-directory/managed-identities-azure-resources/overview.md) do uzyskiwania tych tokenów.
 
-Poniższy kod stanowi przykład funkcji programu .NET Orchestrator, która wykonuje uwierzytelnione wywołania do ponownego uruchomienia maszyny wirtualnej przy użyciu [interfejsu API REST Virtual Machines](https://docs.microsoft.com/rest/api/compute/virtualmachines)Azure Resource Manager.
+Poniższy kod stanowi przykład funkcji programu .NET Orchestrator. Funkcja wykonuje uwierzytelnione wywołania do ponownego uruchomienia maszyny wirtualnej za pomocą [interfejsu API REST maszyn wirtualnych](https://docs.microsoft.com/rest/api/compute/virtualmachines)Azure Resource Manager.
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -181,31 +181,35 @@ public static async Task RunOrchestrator(
 }
 ```
 
-W poprzednim przykładzie `tokenSource` parametr jest skonfigurowany do uzyskiwania tokenów usługi Azure AD dla [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) (identyfikowanych przez "identyfikator URI zasobu" `https://management.core.windows.net`). W przykładzie przyjęto założenie, że bieżąca aplikacja funkcji działa lokalnie lub została wdrożona jako aplikacja Azure Functionsa z tożsamością zarządzaną. Przyjęto założenie, `myRG`że lokalna tożsamość lub zarządzana tożsamość ma uprawnienia do zarządzania maszynami wirtualnymi w określonej grupie zasobów.
+W poprzednim przykładzie parametr `tokenSource` jest skonfigurowany do uzyskiwania tokenów usługi Azure AD dla [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Tokeny są identyfikowane przez identyfikator URI zasobu `https://management.core.windows.net`. W przykładzie przyjęto założenie, że bieżąca aplikacja funkcji działa lokalnie lub została wdrożona jako aplikacja funkcji z tożsamością zarządzaną. Przyjęto założenie, że lokalna tożsamość lub zarządzana tożsamość ma uprawnienia do zarządzania maszynami wirtualnymi w określonej grupie zasobów `myRG`.
 
-W czasie wykonywania skonfigurowane Źródło tokenu automatycznie zwraca token dostępu OAuth 2,0 i dodaje go jako token okaziciela do `Authorization` nagłówka żądania wychodzącego. Ten model to poprawa ręcznego dodawania nagłówków autoryzacji do żądań HTTP, ponieważ:
+W czasie wykonywania skonfigurowane Źródło tokenu automatycznie zwraca token dostępu OAuth 2,0. Źródło dodaje token jako token okaziciela do nagłówka autoryzacji żądania wychodzącego. Ten model to poprawa ręcznego dodawania nagłówków autoryzacji do żądań HTTP z następujących powodów:
 
 * Odświeżanie tokenu jest obsługiwane automatycznie. Nie musisz martwić się o wygasłe tokeny.
 * Tokeny nigdy nie są przechowywane w stanie nietrwałej aranżacji.
-* Nie trzeba pisać żadnego kodu, aby obsłużyć pozyskiwanie tokenów.
+* Nie musisz pisać żadnego kodu, aby zarządzać pozyskiwaniem tokenów.
 
-Więcej informacji można znaleźć we [wstępnie skompilowanych C# przykładach "RestartVMs"](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs).
+Możesz znaleźć bardziej kompletny przykład w [prekompilowanym C# przykładzie RestartVMs](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs).
 
-Zarządzane tożsamości nie są ograniczone do zarządzania zasobami platformy Azure. Tożsamości zarządzane mogą służyć do uzyskiwania dostępu do dowolnych interfejsów API, które akceptują tokeny okaziciela usługi Azure AD, w tym usługi platformy Azure w pierwszej kolejności lub aplikacje sieci Web innych firm. Aplikacja sieci Web innej firmy może nawet być inną aplikacją funkcji. Aby uzyskać listę usług platformy Azure, które obsługują uwierzytelnianie w usłudze Azure AD, zobacz [usługi platformy Azure, które obsługują uwierzytelnianie w usłudze Azure AD](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Tożsamości zarządzane nie są ograniczone do zarządzania zasobami platformy Azure. Przy użyciu tożsamości zarządzanych można uzyskiwać dostęp do dowolnych interfejsów API, które akceptują tokeny okaziciela usługi Azure AD, w tym usługi platformy Azure firmy Microsoft i aplikacje sieci Web od partnerów. Aplikacja internetowa partnera może nawet być inną aplikacją funkcji. Aby uzyskać listę usług platformy Azure firmy Microsoft, które obsługują uwierzytelnianie w usłudze Azure AD, zobacz [usługi platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 ### <a name="limitations"></a>Ograniczenia
 
-Wbudowana obsługa wywoływania interfejsów API protokołu HTTP jest wygodną funkcją i nie jest odpowiednia dla wszystkich scenariuszy. Żądania HTTP wysyłane przez funkcje programu Orchestrator i ich odpowiedzi są serializowane i utrwalane jako komunikaty w kolejce. To zachowanie w kolejce zapewnia niezawodne i bezpieczne wywoływanie połączeń HTTP [w celu aranżacji](durable-functions-orchestrations.md#reliability). Jednak to zachowanie kolejkowania oznacza również, że:
+Wbudowana obsługa wywoływania interfejsów API protokołu HTTP jest wygodną funkcją. Nie jest ona odpowiednia dla wszystkich scenariuszy.
+
+Żądania HTTP wysyłane przez funkcje programu Orchestrator i ich odpowiedzi są serializowane i trwałe jako komunikaty w kolejce. To zachowanie w kolejce zapewnia niezawodne i bezpieczne wywoływanie połączeń HTTP [w celu aranżacji](durable-functions-orchestrations.md#reliability). Jednak zachowanie kolejkowania ma także ograniczenia:
 
 * Każde żądanie HTTP wymaga dodatkowego opóźnienia w porównaniu do macierzystego klienta HTTP.
-* Duże komunikaty żądania lub odpowiedzi, które nie pasują do komunikatu kolejki, mogą znacząco obniżyć wydajność aranżacji. Potencjalne obniżenie wydajności jest spowodowane obciążeniem odciążania ładunków komunikatów do magazynu obiektów BLOB.
+* Duże komunikaty żądania lub odpowiedzi, które nie pasują do komunikatu kolejki, mogą znacząco obniżyć wydajność aranżacji. Obciążenie odciążania ładunków komunikatów do magazynu obiektów BLOB może spowodować potencjalne obniżenie wydajności.
 * Przesyłanie strumieniowe, fragmenty i ładunki binarne nie są obsługiwane.
 * Możliwość dostosowywania zachowania klienta HTTP jest ograniczona.
 
-Jeśli którykolwiek z tych ograniczeń może mieć wpływ na przypadek użycia, rozważ użycie funkcji działania i bibliotek klienckich protokołu HTTP specyficznych dla języka, aby wychodzące wywołania HTTP.
+Jeśli którykolwiek z tych ograniczeń ma wpływ na przypadek użycia, rozważ użycie funkcji działania i bibliotek klienckich protokołu HTTP specyficznych dla języka, aby wychodzące wywołania HTTP.
 
 > [!NOTE]
-> Jeśli jesteś deweloperem platformy .NET, możesz zastanawiać się, dlaczego ta funkcja `DurableHttpRequest` używa `DurableHttpResponse` i typ zamiast wbudowanego oprogramowania .NET `HttpRequestMessage` i `HttpResponseMessage`. Ten wybór projektu zamierzone. Głównym powodem jest to, że typy niestandardowe pomagają zapewnić, że użytkownicy nie będą wprowadzać nieprawidłowych założeń dotyczących obsługiwanych zachowań wewnętrznego klienta HTTP. Typy o trwałej charakterystyce umożliwiają również uproszczenie projektowania interfejsu API i łatwiejszym w użyciu funkcji specjalnych, takich jak [integracja tożsamości zarządzanej](#managed-identities) i wzorzec dla [odbiorców sondowania](#http-202-handling).
+> Jeśli jesteś deweloperem platformy .NET, możesz zastanawiać się, dlaczego ta funkcja używa typów **DurableHttpRequest** i **DurableHttpResponse** zamiast wbudowanych typów .NET **HttpRequestMessage** i **HttpResponseMessage** .
+>
+> Ten wybór projektu jest zamierzony. Główną przyczyną jest to, że typy niestandardowe pomagają zapewnić, że użytkownicy nie będą wprowadzać nieprawidłowych założeń dotyczących obsługiwanych zachowań wewnętrznego klienta HTTP. Typy specyficzne dla Durable Functions umożliwiają również uproszczenie projektowania interfejsu API. Mogą również łatwiej udostępnić dostępne specjalne funkcje, takie jak [integracja tożsamości zarządzanej](#managed-identities) i [wzorzec klienta sondowania](#http-202-handling). 
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b5be5271e2ff579d93cb70f7c8da93d861d4dc0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: bb816658faff9fb924d075e0fca17e9643c18e40
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648732"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694761"
 ---
 # <a name="get-started-with-azcopy"></a>Wprowadzenie do narzędzia AzCopy
 
@@ -27,26 +27,34 @@ AzCopy to narzędzie wiersza polecenia, które służy do kopiowania obiektów b
 
 ## <a name="download-azcopy"></a>Pobierz AzCopy
 
-Najpierw Pobierz plik wykonywalny AzCopy v10 do dowolnego katalogu na komputerze.
+Najpierw Pobierz plik wykonywalny AzCopy v10 do dowolnego katalogu na komputerze. AzCopy v10 to tylko plik wykonywalny, więc nie ma nic do zainstalowania.
 
-- [System Windows](https://aka.ms/downloadazcopy-v10-windows) kodu
-- System [Linux](https://aka.ms/downloadazcopy-v10-linux) tar
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac) kodu
+- [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
+- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-AzCopy v10 to tylko plik wykonywalny, więc nie ma nic do zainstalowania.
+Te pliki są kompresowane jako plik zip (Windows i Mac) lub plik tar (Linux).
+
+Za pomocą tych poleceń można pobrać i zdekompresować plik tar w systemie Linux.
+
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
+tar -xf azcopy.tar.gz
+```
 
 > [!NOTE]
 > Jeśli chcesz skopiować dane do i z usługi [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) , zainstaluj program [AzCopy w wersji 7,3](https://aka.ms/downloadazcopynet).
+
 
 ## <a name="run-azcopy"></a>Uruchom AzCopy
 
 Dla wygody należy rozważyć dodanie lokalizacji katalogu wykonywalnego AzCopy do ścieżki systemowej w celu ułatwienia użycia. W ten sposób można wpisać `azcopy` z dowolnego katalogu w systemie.
 
-Jeśli nie dodasz katalogu AzCopy do ścieżki, trzeba będzie zmienić katalogi do lokalizacji pliku wykonywalnego AzCopy i wpisać `azcopy` lub `.\azcopy` w wierszach polecenia programu Windows PowerShell.
+W przypadku wybrania opcji nie dodawaj katalogu AzCopy do ścieżki należy zmienić katalogi na lokalizację pliku wykonywalnego AzCopy i wpisać `azcopy` lub `.\azcopy` w wierszach polecenia programu Windows PowerShell.
 
-Aby wyświetlić listę poleceń, wpisz `azcopy -h` , a następnie naciśnij klawisz ENTER.
+Aby wyświetlić listę poleceń, wpisz `azcopy -h`, a następnie naciśnij klawisz ENTER.
 
-Aby dowiedzieć się więcej na temat konkretnego polecenia, należy dołączyć nazwę polecenia (na przykład `azcopy list -h`:).
+Aby dowiedzieć się więcej na temat konkretnego polecenia, należy dołączyć nazwę polecenia (na przykład: `azcopy list -h`).
 
 ![Wbudowana pomoc](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
@@ -59,13 +67,13 @@ Poświadczenia autoryzacji można podawać przy użyciu Azure Active Directory (
 
 Użyj tej tabeli jako przewodnika:
 
-| Typ magazynu | Obecnie obsługiwana metoda autoryzacji |
+| Typ usługi Storage | Obecnie obsługiwana metoda autoryzacji |
 |--|--|
 |**Blob Storage** | Usługa Azure AD & SAS |
 |**BLOB Storage (hierarchiczne przestrzeń nazw)** | Usługa Azure AD & SAS |
 |**Magazyn plików** | Tylko SAS |
 
-### <a name="option-1-use-azure-active-directory"></a>Option 1: Użyj Azure Active Directory
+### <a name="option-1-use-azure-active-directory"></a>Opcja 1: Użyj Azure Active Directory
 
 Za pomocą Azure Active Directory można podać poświadczenia jeden raz zamiast konieczności dołączania tokenu sygnatury dostępu współdzielonego do każdego polecenia.  
 
@@ -87,8 +95,8 @@ Role te można przypisać do podmiotu zabezpieczeń w dowolnym z następujących
 
 - Kontener (system plików)
 - Konto magazynu
-- Resource group
-- Subscription
+- Grupa zasobów
+- Subskrypcja
 
 Aby dowiedzieć się, jak weryfikować i przypisywać role, zobacz [udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki przy użyciu RBAC w Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -113,7 +121,7 @@ Jeśli użytkownik należy do więcej niż jednej organizacji, Uwzględnij ident
 azcopy login --tenant-id=<tenant-id>
 ```
 
-Zastąp `<tenant-id>` symbol zastępczy identyfikatorem dzierżawy organizacji, do której należy konto magazynu. Aby znaleźć identyfikator dzierżawy, wybierz pozycję **Azure Active Directory właściwości > > identyfikator katalogu** w Azure Portal.
+Zastąp symbol zastępczy `<tenant-id>` IDENTYFIKATORem dzierżawy organizacji, do której należy konto magazynu. Aby znaleźć identyfikator dzierżawy, wybierz pozycję **Azure Active Directory właściwości > > identyfikator katalogu** w Azure Portal.
 
 To polecenie zwraca kod uwierzytelniania i adres URL witryny sieci Web. Otwórz witrynę sieci Web, podaj kod, a następnie wybierz przycisk **dalej** .
 
@@ -131,13 +139,13 @@ Przed uruchomieniem skryptu należy zalogować się interaktywnie co najmniej je
 
 Możesz zalogować się do konta przy użyciu klucza tajnego klienta lub przy użyciu hasła certyfikatu skojarzonego z rejestracją aplikacji jednostki usługi.
 
-Aby dowiedzieć się więcej na temat tworzenia nazwy [głównej usługi, zobacz How to: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Aby dowiedzieć się więcej na temat tworzenia nazwy głównej usługi, zobacz [How to: Use the Portal, aby utworzyć aplikację usługi Azure AD i nazwę główną usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 Aby dowiedzieć się więcej na temat ogólnych nazw głównych usług, zobacz temat [obiekty główne aplikacji i usługi w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 
 ##### <a name="using-a-client-secret"></a>Korzystanie z klucza tajnego klienta
 
-Zacznij od ustawienia `AZCOPY_SPA_CLIENT_SECRET` zmiennej środowiskowej na klucz tajny klienta rejestracji aplikacji jednostki usługi.
+Zacznij od ustawienia zmiennej środowiskowej `AZCOPY_SPA_CLIENT_SECRET` na klucz tajny klienta rejestracji aplikacji jednostki usługi.
 
 > [!NOTE]
 > Upewnij się, że ta wartość jest ustawiona w wierszu polecenia, a nie w ustawieniach zmiennych środowiskowych systemu operacyjnego. Dzięki temu wartość jest dostępna tylko dla bieżącej sesji.
@@ -154,10 +162,10 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 Następnie wpisz następujące polecenie, a następnie naciśnij klawisz ENTER.
 
 ```azcopy
-azcopy login --service-principal --application-id <application-id>
+azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
 ```
 
-Zastąp `<application-id>` symbol zastępczy identyfikatorem aplikacji rejestracji aplikacji jednostki usługi.
+Zastąp symbol zastępczy `<application-id>` IDENTYFIKATORem aplikacji rejestracji aplikacji jednostki usługi. Zastąp symbol zastępczy `<tenant-id>` IDENTYFIKATORem dzierżawy organizacji, do której należy konto magazynu. Aby znaleźć identyfikator dzierżawy, wybierz pozycję **Azure Active Directory właściwości > > identyfikator katalogu** w Azure Portal. 
 
 ##### <a name="using-a-certificate"></a>Korzystanie z certyfikatu
 
@@ -165,7 +173,7 @@ Jeśli wolisz użyć własnych poświadczeń do autoryzacji, możesz przekazać 
 
 Oprócz przekazywania certyfikatu do rejestracji aplikacji trzeba również mieć kopię certyfikatu zapisaną na komputerze lub maszynie wirtualnej, na której będzie działać AzCopy. Ta kopia certyfikatu powinna znajdować się w temacie. PFX lub. Format PEM i musi zawierać klucz prywatny. Klucz prywatny powinien być chroniony hasłem. Jeśli używasz systemu Windows, a certyfikat istnieje tylko w magazynie certyfikatów, upewnij się, że ten certyfikat został wyeksportowany do pliku PFX (w tym klucza prywatnego). Aby uzyskać wskazówki, zobacz [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)
 
-Następnie ustaw `AZCOPY_SPA_CERT_PASSWORD` dla zmiennej środowiskowej hasło certyfikatu.
+Następnie ustaw dla zmiennej środowiskowej `AZCOPY_SPA_CERT_PASSWORD` hasło certyfikatu.
 
 > [!NOTE]
 > Upewnij się, że ta wartość jest ustawiona w wierszu polecenia, a nie w ustawieniach zmiennych środowiskowych systemu operacyjnego. Dzięki temu wartość jest dostępna tylko dla bieżącej sesji.
@@ -179,10 +187,10 @@ $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
 Następnie wpisz następujące polecenie, a następnie naciśnij klawisz ENTER.
 
 ```azcopy
-azcopy login --service-principal --certificate-path <path-to-certificate-file>
+azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-Zastąp `<path-to-certificate-file>` symbol zastępczy względną lub w pełni kwalifikowaną ścieżką do pliku certyfikatu. AzCopy zapisuje ścieżkę do tego certyfikatu, ale nie zapisuje kopii certyfikatu, więc pamiętaj, aby zachować ten certyfikat w miejscu.
+Zastąp symbol zastępczy `<path-to-certificate-file>` z względną lub w pełni kwalifikowaną ścieżką do pliku certyfikatu. AzCopy zapisuje ścieżkę do tego certyfikatu, ale nie zapisuje kopii certyfikatu, więc pamiętaj, aby zachować ten certyfikat w miejscu. Zastąp symbol zastępczy `<tenant-id>` IDENTYFIKATORem dzierżawy organizacji, do której należy konto magazynu. Aby znaleźć identyfikator dzierżawy, wybierz pozycję **Azure Active Directory właściwości > > identyfikator katalogu** w Azure Portal.
 
 > [!NOTE]
 > Rozważ użycie monitu, jak pokazano w tym przykładzie. Dzięki temu Twoje hasło nie będzie wyświetlane w historii poleceń konsoli. 
@@ -217,21 +225,21 @@ Następnie w konsoli poleceń wpisz dowolne z poniższych poleceń, a następnie
 azcopy login --identity --identity-client-id "<client-id>"
 ```
 
-Zastąp `<client-id>` symbol zastępczy identyfikatorem klienta tożsamości zarządzanej przypisanej przez użytkownika.
+Zastąp symbol zastępczy `<client-id>` IDENTYFIKATORem klienta tożsamości zarządzanej przypisanej przez użytkownika.
 
 ```azcopy
 azcopy login --identity --identity-object-id "<object-id>"
 ```
 
-`<object-id>` Zamień symbol zastępczy na identyfikator obiektu tożsamości zarządzanej przypisanej przez użytkownika.
+Zastąp symbol zastępczy `<object-id>` IDENTYFIKATORem obiektu tożsamości zarządzanej przypisanej przez użytkownika.
 
 ```azcopy
 azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
-Zastąp `<resource-id>` symbol zastępczy identyfikatorem zasobu tożsamości zarządzanej przypisanej przez użytkownika.
+Zastąp symbol zastępczy `<resource-id>` IDENTYFIKATORem zasobu tożsamości zarządzanej przypisanej przez użytkownika.
 
-### <a name="option-2-use-a-sas-token"></a>Opcja 2: Używanie tokenu sygnatury dostępu współdzielonego
+### <a name="option-2-use-a-sas-token"></a>Opcja 2: używanie tokenu SAS
 
 Do każdego źródłowego lub docelowego adresu URL, który będzie używany w poleceniach AzCopy, można dołączyć token sygnatury dostępu współdzielonego.
 
@@ -273,7 +281,7 @@ Aby uzyskać link, uruchom następujące polecenie:
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
 
 > [!NOTE]
-> `--strip-components=1` WprzypadkusystemuLinuxpolecenieusuwafoldernajwyższegopoziomu,któryzawieranazwęwersji,azamiasttegowyodrębniaplikbinarnybezpośrednio`tar` do bieżącego folderu. Umożliwia to zaktualizowanie skryptu przy użyciu nowej wersji programu `azcopy` przez `wget` zaktualizowanie adresu URL.
+> W przypadku systemu Linux `--strip-components=1` w poleceniu `tar` usuwa folder najwyższego poziomu, który zawiera nazwę wersji, a następnie wyodrębnia plik binarny bezpośrednio do bieżącego folderu. Dzięki temu skrypt zostanie zaktualizowany przy użyciu nowej wersji `azcopy` przez zaktualizowanie adresu URL `wget`.
 
 W danych wyjściowych tego polecenia zostanie wyświetlony adres URL. Skrypt może następnie pobrać AzCopy przy użyciu tego adresu URL.
 
@@ -284,13 +292,13 @@ W danych wyjściowych tego polecenia zostanie wyświetlony adres URL. Skrypt mo�
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>Znaki specjalne ucieczki w tokenach SAS
 
-W plikach wsadowych, które `.cmd` mają rozszerzenie, musisz `%` wprowadzić znaki, które pojawiają się w tokenach sygnatury dostępu współdzielonego. Można to zrobić przez dodanie znaku dodawania `%` obok istniejących `%` znaków w ciągu tokenu sygnatury dostępu współdzielonego.
+W plikach wsadowych, które mają rozszerzenie `.cmd`, trzeba będzie wprowadzić znaki `%`, które pojawiają się w tokenach sygnatury dostępu współdzielonego. Można to zrobić, dodając znak `%` obok istniejących znaków `%` w ciągu tokenu sygnatury dostępu współdzielonego.
 
 ## <a name="use-azcopy-in-storage-explorer"></a>Używanie AzCopy w Eksplorator usługi Storage
 
 Jeśli chcesz wykorzystać zalety wydajności AzCopy, ale wolisz używać Eksplorator usługi Storage, a nie wiersza polecenia, aby współdziałać z plikami, a następnie Włącz AzCopy w Eksplorator usługi Storage.
 
-W Eksplorator usługi Storage wybierz pozycję **Podgląd**->**Użyj AzCopy, aby uzyskać ulepszone przekazywanie obiektów blob i pobieranie**.
+W Eksplorator usługi Storage wybierz pozycję **podgląd**->**Użyj AzCopy do ulepszonego przekazywania obiektów blob i pobierania**.
 
 ![Włącz AzCopy jako aparat transferu w Eksplorator usługi Azure Storage](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 

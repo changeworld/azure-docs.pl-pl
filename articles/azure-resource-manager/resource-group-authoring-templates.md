@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6b027acc5a8a8b7660d5640ff4af335e51fd2dbf
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: HT
+ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676878"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694975"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Zrozumienie struktury i składni szablonów Azure Resource Manager
 
@@ -88,7 +88,7 @@ Aby uzyskać przykłady użycia parametrów, zobacz [Parametry w szablonach Azur
 
 ### <a name="data-types"></a>Typy danych
 
-Typy całkowite mogą przyjmować od-2147483648 do 2147483647. Jednak typy zasobów mogą stosować dolny limit dla właściwości Integer.
+W przypadku liczb całkowitych przewidzianych jako parametry wbudowane zakres wartości może być ograniczony przez zestaw SDK lub narzędzie wiersza polecenia, które jest używane do wdrożenia. Na przykład w przypadku wdrażania szablonu przy użyciu programu PowerShell typy całkowite mogą przyjmować wartość od-2147483648 do 2147483647. Aby uniknąć tego ograniczenia, określ w [pliku parametrów](resource-manager-parameter-files.md)duże wartości całkowite. Typy zasobów stosują własne limity dla właściwości Integer.
 
 Podczas określania wartości logicznych i liczb całkowitych w szablonie nie należy ująć wartości ze znakami cudzysłowu. Początkową i końcową wartość ciągu z podwójnymi cudzysłowami.
 

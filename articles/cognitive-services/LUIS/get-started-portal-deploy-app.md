@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wdrażanie aplikacji za pomocą portalu LUIS'
+title: 'Szybki Start: wdrażanie aplikacji za pomocą portalu LUIS'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak wdrożyć aplikację LUIS w punkcie końcowym przewidywania, gdy aplikacja jest gotowa do zwrócenia prognoz wypowiedź do aplikacji klienckiej, takich jak rozmowa bot. Ten przewodnik Szybki Start przeprowadzi Cię przez proces wdrażania aplikacji, tworząc zasób punktu końcowego przewidywania, przypisując zasób do aplikacji, szkoleń aplikacji i publikowania aplikacji.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f640921e6f48559db3f1414551d6ed974df15e4f
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257074"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703222"
 ---
-# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki start: Wdrażanie aplikacji w portalu LUIS
+# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki Start: wdrażanie aplikacji w portalu LUIS
 
 Gdy aplikacja LUIS jest gotowa do zwrócenia prognoz wypowiedź do aplikacji klienckiej (na przykład bot rozmowy), należy wdrożyć aplikację w punkcie końcowym przewidywania.
 
@@ -32,19 +32,19 @@ W tym przewodniku szybki start dowiesz się, jak wdrożyć aplikację. Tworzysz 
 
 Tworzysz zasób punktu końcowego przewidywania w Azure Portal. Tego zasobu należy używać tylko w przypadku zapytań prognozowania punktów końcowych. Nie używaj tego zasobu do tworzenia zmian w aplikacji.
 
-1. Zaloguj się w witrynie [Azure Portal](https://ms.portal.azure.com/).
+1. Zaloguj się do [Azure Portal](https://ms.portal.azure.com/).
 
-1. Wybierz zielony **+** znak w lewym górnym rogu. `Cognitive Services` Wyszukaj w witrynie Marketplace i wybierz ją.
+1. Wybierz zielony znak **+** w lewym górnym rogu. Wyszukaj `Cognitive Services` w witrynie Marketplace i wybierz ją.
 
 1. Skonfiguruj subskrypcję przy użyciu następujących ustawień:
 
-   |Ustawienie|Value|Cel|
+   |Ustawienie|Wartość|Cel|
    |--|--|--|
-   |Name|`my-cognitive-service-resource`|Nazwa zasobu platformy Azure. Ta nazwa jest potrzebna podczas przypisywania zasobu do aplikacji w portalu LUIS.|
-   |Subscription|Twoja subskrypcja|Wybierz jedną z subskrypcji skojarzonych z Twoim kontem.|
-   |Location|**Zachodnie stany USA**|Region świadczenia usługi Azure dla tego zasobu.|
+   |Nazwa|`my-cognitive-service-resource`|Nazwa zasobu platformy Azure. Ta nazwa jest potrzebna podczas przypisywania zasobu do aplikacji w portalu LUIS.|
+   |Ramach|Twoja subskrypcja|Wybierz jedną z subskrypcji skojarzonych z Twoim kontem.|
+   |Lokalizacja|**Zachodnie stany USA**|Region świadczenia usługi Azure dla tego zasobu.|
    |Warstwa cenowa|**S0**|Domyślna warstwa cenowa dla tego zasobu.|
-   |Resource group|`my-cognitive-service-resource-group`|Utwórz nową grupę zasobów dla wszystkich zasobów usługi poznawczej. Po zakończeniu pracy z zasobami możesz usunąć grupę zasobów, aby oczyścić subskrypcję. |
+   |Grupa zasobów|`my-cognitive-service-resource-group`|Utwórz nową grupę zasobów dla wszystkich zasobów usługi poznawczej. Po zakończeniu pracy z zasobami możesz usunąć grupę zasobów, aby oczyścić subskrypcję. |
    | | | |
 
    ![Wybór interfejsu API platformy Azure](./media/get-started-portal-deploy-app/create-cognitive-services-resource.png)
@@ -65,11 +65,11 @@ Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do
 
     <!-- TBD: get screenshot-->
 
-1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz **przypisany zasób**.
+1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz pozycję **Przypisz zasób**.
 
-   ![Przydziel zasób do aplikacji](./media/get-started-portal-deploy-app/assign-resource.png)
+   ![Przypisywanie zasobu do aplikacji](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. Znajdź nowy wiersz w tabeli i skopiuj adres URL punktu końcowego. Jest on poprawnie skonstruowany w celu `HTTP GET` zgłoszenia do punktu końcowego interfejsu API Luis w celu przewidywania.
+1. Znajdź nowy wiersz w tabeli i skopiuj adres URL punktu końcowego. Jest prawidłowo skonstruowany, aby wykonać żądanie `HTTP GET` do punktu końcowego interfejsu API LUIS w celu przewidywania.
 
 ## <a name="train-and-publish-the-app"></a>Uczenie i publikowanie aplikacji
 
@@ -85,51 +85,58 @@ Przeszkol aplikację, gdy wszystko będzie gotowe do jej przetestowania. Opublik
 
 1. Na stronie **Ustawienia kluczy i punktu końcowego** Znajdź na dole listę przypisanych zasobów i odpowiednich adresów URL punktów końcowych.
 
-1. Wybierz adres URL punktu końcowego skojarzony z nową nazwą zasobu. Ta akcja spowoduje otwarcie przeglądarki sieci Web z poprawnie skonstruowanym adresem URL w `GET` celu zgłoszenia żądania do środowiska uruchomieniowego punktu końcowego przewidywania.
+1. Wybierz adres URL punktu końcowego skojarzony z nową nazwą zasobu. Ta akcja spowoduje otwarcie przeglądarki sieci Web z poprawnie skonstruowanym adresem URL w celu wykonania żądania `GET` do środowiska uruchomieniowego punktu końcowego przewidywania.
 
-1. Na końcu adresu URL jest krótkie dla kwerendy i jest dołączany do żądania GET wypowiedź użytkownika. `q=` `q=`Po wprowadzeniu tych samych użytkowników wypowiedź użytych na końcu poprzedniego przewodnika Szybki Start:
+## <a name="prediction-endpoint-request"></a>Żądanie punktu końcowego przewidywania
 
-    ```Is there a form named hrf-234098```
+<!-- V3FIX -->
 
-    W przeglądarce zostanie wyświetlona odpowiedź, która jest tym samym formatem JSON, który zostanie odebrany przez aplikację kliencką:
+@No__t-0 na końcu adresu URL jest krótkie dla **kwerendy** i polega na tym, że wypowiedź użytkownika jest dołączany do żądania GET. Po @no__t wartość 0 wprowadź tę samą wypowiedź użytkownika, która została użyta na końcu poprzedniego przewodnika Szybki Start:
 
-    ```JSON
+```Is there a form named hrf-234098```
+
+W przeglądarce zostanie wyświetlona odpowiedź, która jest tym samym formatem JSON, który zostanie odebrany przez aplikację kliencką:
+
+```JSON
+{
+"query": "Is there a form named hrf-234098",
+"topScoringIntent": {
+    "intent": "FindForm",
+    "score": 0.9768753
+},
+"intents": [
     {
-    "query": "Is there a form named hrf-234098",
-    "topScoringIntent": {
-        "intent": "FindForm",
-        "score": 0.9768753
+    "intent": "FindForm",
+    "score": 0.9768753
     },
-    "intents": [
-        {
-        "intent": "FindForm",
-        "score": 0.9768753
-        },
-        {
-        "intent": "None",
-        "score": 0.0216071066
-        }
-    ],
-    "entities": [
-        {
-        "entity": "hrf-234098",
-        "type": "Human Resources Form Number",
-        "startIndex": 22,
-        "endIndex": 31
-        }
-      ]
+    {
+    "intent": "None",
+    "score": 0.0216071066
     }
-    ```
+],
+"entities": [
+    {
+    "entity": "hrf-234098",
+    "type": "Human Resources Form Number",
+    "startIndex": 22,
+    "endIndex": 31
+    }
+    ]
+}
+```
 
-    Ta odpowiedź zawiera więcej informacji niż domyślne okienko testów w poprzednim samouczku. Aby wyświetlić ten sam poziom informacji w okienku testów, należy opublikować aplikację. Po opublikowaniu aplikacji wybierz pozycję **Porównaj z opublikowanymi** w okienku testów. Aby wyświetlić ten sam kod JSON w poprzednim kroku, użyj **widoku Pokaż kod JSON** w okienku opublikowany test. W ten sposób można porównać bieżącą aplikację, nad którą pracujesz z aplikacją opublikowaną w punkcie końcowym.
+Ta odpowiedź zawiera więcej informacji niż domyślne okienko testów w poprzednim samouczku. Aby wyświetlić ten sam poziom informacji w okienku testów, należy opublikować aplikację. Po opublikowaniu aplikacji wybierz pozycję **Porównaj z opublikowanymi** w okienku testów. Aby wyświetlić ten sam kod JSON w poprzednim kroku, użyj **widoku Pokaż kod JSON** w okienku opublikowany test. W ten sposób można porównać bieżącą aplikację, nad którą pracujesz z aplikacją opublikowaną w punkcie końcowym.
 
-    [![Porównanie obecnie edytowanej i opublikowanej wersji aplikacji](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+[![Compare obecnie edytowane w porównaniu do opublikowanej wersji aplikacji](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+
+
+## <a name="clean-up-resources"></a>Czyszczenie zasobów
 
 Po zakończeniu pracy z tym przewodnikiem Szybki Start wybierz pozycję **Moje aplikacje** w górnym menu nawigacji. Zaznacz pole wyboru aplikacji z listy, a następnie wybierz pozycję **Usuń** z paska narzędzi kontekstowego nad listą.
 
-[![Usuń aplikację z listy Moje aplikacje](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[Aplikacja ![Delete z listy Moje aplikacje](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 

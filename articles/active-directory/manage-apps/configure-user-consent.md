@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie zgody użytkownika do aplikacji — Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać w sposób, w jaki użytkownicy wyrazić zgodę na uprawnienia aplikacji. Aby uprościć środowisko użytkownika, możesz udzielania zgody administratora. Metody te mają zastosowanie do wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD).
+title: Konfigurowanie zgody użytkownika na aplikację — Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak zarządzać sposobem wyrażania zgody użytkowników na uprawnienia aplikacji. Możesz uprościć środowisko użytkownika, udzielając zgody administratora. Te metody mają zastosowanie do wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,69 +12,70 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4951984d05e75b0271cf6592c77c54ad13678994
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6bd746e79bc9d70be23771f97b1757f090f6375f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476554"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709268"
 ---
-# <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Skonfiguruj sposób, w jaki użytkownicy końcowi wyrażenia zgody na aplikację w usłudze Azure Active Directory
-Dowiedz się, jak skonfigurować sposób, w jaki użytkownicy wyrazić zgodę na uprawnienia aplikacji. Aby uprościć środowisko użytkownika, możesz udzielania zgody administratora. Ten artykuł zawiera różne sposoby, które można skonfigurować zgody użytkownika. Te metody mają zastosowanie do wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD). 
+# <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Konfigurowanie sposobu, w jaki użytkownicy końcowi wyrażają zgodę na aplikację w Azure Active Directory
+Dowiedz się, jak skonfigurować sposób, w jaki użytkownicy wyrażają zgodę na uprawnienia aplikacji. Możesz uprościć środowisko użytkownika, udzielając zgody administratora. W tym artykule przedstawiono różne sposoby konfigurowania wyrażania zgody użytkownika. Metody dotyczą wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD). 
 
-Aby uzyskać więcej informacji na temat wyrażanie zgody na aplikacje, zobacz [platformy wyrażania zgody w usłudze Azure Active Directory](../develop/consent-framework.md).
+Aby uzyskać więcej informacji na temat wyrażania zgody na aplikacje, zobacz [Azure Active Directory](../develop/consent-framework.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Udzielania zgody administratora, należy zalogować się jako administrator globalny, administrator aplikacji lub administrator aplikacji w chmurze.
+Przyznanie zgody administratora wymaga zalogowania się jako Administrator globalny, administrator aplikacji lub administrator aplikacji w chmurze.
 
-Aby ograniczyć dostęp do aplikacji, musisz wymaganie przypisania użytkownika, a następnie Przypisz użytkowników lub grup do aplikacji.  Aby uzyskać więcej informacji, zobacz [metody przypisywania użytkowników i grup](methods-for-assigning-users-and-groups.md).
+Aby ograniczyć dostęp do aplikacji, należy wymagać przypisania użytkownika, a następnie przypisania użytkowników lub grup do aplikacji.  Aby uzyskać więcej informacji, zobacz [metody przypisywania użytkowników i grup](methods-for-assigning-users-and-groups.md).
 
-## <a name="grant-admin-consent-to-enterprise-apps-in-the-azure-portal"></a>Udzielić zgody administratora do aplikacji dla przedsiębiorstw w witrynie Azure portal
+## <a name="grant-admin-consent-to-enterprise-apps-in-the-azure-portal"></a>Udziel zgody administratora na aplikacje dla przedsiębiorstw w Azure Portal
 
-Aby udzielić zgody administratora do aplikacji przedsiębiorstwa:
+Aby udzielić zgody administratora na aplikację dla przedsiębiorstw:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator globalny, administrator aplikacji lub administrator aplikacji w chmurze.
-2. Kliknij przycisk **wszystkich usług** w górnej części menu nawigacji po lewej stronie. **Rozszerzenia usługi Azure Active Directory** zostanie otwarty.
-3. W polu filtru wyszukiwania wpisz **"Azure Active Directory"** i wybierz **usługi Azure Active Directory** elementu.
-4. W menu nawigacyjnym kliknij **aplikacje dla przedsiębiorstw**.
-5. Wybierz aplikację, o ich zgodę.
-6. Wybierz **uprawnienia** a następnie kliknij przycisk **udzielić zgody administratora**. Zostanie wyświetlony monit logować się do administrowanie aplikacji.
-7. Zaloguj się przy użyciu konta, które ma uprawnienia do udzielania zgody administratora dla aplikacji. 
-8. Wyrazić zgodę na uprawnienia dostępu do aplikacji.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny, administrator aplikacji lub administrator aplikacji w chmurze.
+2. Kliknij pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie. Zostanie otwarte **rozszerzenie Azure Active Directory** .
+3. W polu wyszukiwania filtru wpisz **"Azure Active Directory"** i wybierz element **Azure Active Directory** .
+4. W menu nawigacji kliknij pozycję **aplikacje dla przedsiębiorstw**.
+5. Wybierz aplikację do zgody.
+6. Wybierz pozycję **uprawnienia** , a następnie kliknij pozycję **Udziel zgody administratora**. Zostanie wyświetlony monit o zalogowanie się w celu administrowania aplikacją.
+7. Zaloguj się przy użyciu konta, które ma uprawnienia do udzielania zgody administratora aplikacji. 
+8. Wyrażanie zgody na uprawnienia aplikacji.
 
-Tej opcji tylko wtedy, gdy aplikacja jest: 
+Ta opcja działa tylko wtedy, gdy aplikacja jest: 
 
-- Zarejestrowana w Twojej dzierżawie lub
-- Zarejestrowany w innej dzierżawie usługi Azure AD, a które wyraził zgodę, przez co najmniej jednego użytkownika końcowego. Po użytkownik końcowy wyraził zgody na aplikację, usługi Azure AD zawiera listę aplikacji w ramach **aplikacje dla przedsiębiorstw** w witrynie Azure portal.
+- Zarejestrowane w dzierżawie lub
+- Zarejestrowane w innej dzierżawie usługi Azure AD i wysłane przez co najmniej jednego użytkownika końcowego. Gdy użytkownik końcowy wyraził zgodę na aplikację, usługa Azure AD wyświetla listę aplikacji w obszarze **aplikacje dla przedsiębiorstw** w Azure Portal.
 
-## <a name="grant-admin-consent-when-registering-an-app-in-the-azure-portal"></a>Udzielić zgody administratora, podczas rejestrowania aplikacji w witrynie Azure portal
+## <a name="grant-admin-consent-when-registering-an-app-in-the-azure-portal"></a>Udziel zgody administratora podczas rejestrowania aplikacji w Azure Portal
 
-Aby udzielić zgody administratora, podczas rejestrowania aplikacji: 
+Aby udzielić zgody administratora podczas rejestrowania aplikacji: 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) jako administrator globalny.
-2. Przejdź do **rejestracje aplikacji** bloku.
-3. Wybierz aplikację, o ich zgodę.
-4. Wybierz **uprawnienia do interfejsu API**.
-5. Kliknij przycisk **udzielić zgody administratora**.
-
-
-## <a name="grant-admin-consent-through-a-url-request"></a>Udzielić zgody administratora, za pośrednictwem adresu URL żądania
-
-Aby udzielić zgody administratora, za pośrednictwem adresu URL żądania:
-
-1. Konstruowania żądania *login.microsoftonline.com* z konfiguracji aplikacji i Dołącz na `&prompt=admin_consent`. 
-2. Po zarejestrowaniu się przy użyciu poświadczeń administratora, aplikację udzielono zgody dla wszystkich użytkowników.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny.
+2. Przejdź do bloku **rejestracje aplikacji** .
+3. Wybierz aplikację, aby wyrazić zgodę.
+4. Wybierz pozycję **uprawnienia interfejsu API**.
+5. Kliknij pozycję **Udziel zgody administratora**.
 
 
-## <a name="force-user-consent-through-a-url-request"></a>Wymuś zgody użytkownika za pośrednictwem adresu URL żądania
+## <a name="grant-admin-consent-through-a-url-request"></a>Udzielanie zgody administratora przez żądanie adresu URL
 
-Aby wymagać od użytkowników końcowych do wyrażenia zgody na aplikację każdorazowo podczas uwierzytelniania, należy dołączyć `&prompt=consent` adres URL żądania uwierzytelnienia.
+Aby udzielić zgody administratora przez żądanie adresu URL:
 
-## <a name="next-steps"></a>Kolejne kroki
+1. Utwórz żądanie *login.microsoftonline.com* z konfiguracją aplikacji i dołącz do `&prompt=admin_consent`. Ten adres URL będzie wyglądać następująco: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=admin_consent`
+2. Po zalogowaniu się przy użyciu poświadczeń administratora aplikacja uzyskała zgodę dla wszystkich użytkowników.
 
-[Integrowanie aplikacji do usługi Azure AD i zgody](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 
-[Wyrażania zgody i udzielania do nich uprawnień dla usługi Azure AD v2.0 zbieżne aplikacje](../develop/active-directory-v2-scopes.md)
+## <a name="force-user-consent-through-a-url-request"></a>Wymuś zgodę użytkownika za pomocą żądania adresu URL
+
+Aby wymagać od użytkowników końcowych zgody na aplikację przy każdym uwierzytelnianiu, należy dołączyć `&prompt=consent` do adresu URL żądania uwierzytelniania.
+Ten adres URL będzie wyglądać następująco: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=consent`
+
+## <a name="next-steps"></a>Następne kroki
+
+[Wyrażanie zgody i Integrowanie aplikacji z usługą AzureAD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+
+[Wyrażanie zgody i uprawnień dla aplikacji AzureAD v 2.0 z zbieżnością](../develop/active-directory-v2-scopes.md)
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

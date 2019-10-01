@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 77cd720ffd2763b2ad3d73559a5363989f9e3e3a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: HT
+ms.openlocfilehash: fd4bf602cb5ca409b957e9dbd6f963d88428a63f
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679293"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694646"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do interfejsu API sieci Web ASP.NET przy użyciu Azure Active Directory B2C
 
@@ -60,11 +60,7 @@ Zakresy umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy s�
 
 Aby wywoływać chroniony internetowy interfejs API z aplikacji, należy udzielić aplikacji uprawnień do tego interfejsu. W ramach samouczka wymagań wstępnych w usłudze Azure AD B2C została utworzona aplikacja internetowa o nazwie *webapp1*. Tej aplikacji użyjesz do wywołania internetowego interfejsu API.
 
-1. Wybierz pozycję **Aplikacje**, a następnie wybierz pozycję *webapp1*.
-1. Wybierz pozycję **Dostęp do interfejsu API**, a następnie wybierz polecenie **Dodaj**.
-1. Na liście rozwijanej **Wybierz interfejs API** wybierz pozycję *webapi1*.
-1. Z listy rozwijanej **Wybierz zakresy** wybierz zdefiniowane wcześniej zakresy. Na przykład *Demonstracja. odczyt* i *Demonstracja. Write*.
-1. Kliknij przycisk **OK**.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 Twoja aplikacja została zarejestrowana do wywoływania chronionego internetowego interfejsu API. Użytkownik uwierzytelnia się w usłudze Azure AD B2C, aby korzystać z aplikacji. Aplikacja uzyskuje autoryzację z usługi Azure AD B2C w celu uzyskiwania dostępu do chronionego internetowego interfejsu API.
 
@@ -73,8 +69,6 @@ Twoja aplikacja została zarejestrowana do wywoływania chronionego internetoweg
 Po zarejestrowaniu internetowego interfejsu API i zdefiniowaniu zakresów konfigurujesz internetowy interfejs API w celu skorzystania ze swojej dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładowy internetowy interfejs API. Przykładowy internetowy interfejs API jest częścią projektu, który pobrano w samouczku wskazanym w wymaganiach wstępnych.
 
 Przykładowe rozwiązanie zawiera dwa projekty:
-
-Przykładowe rozwiązanie zawiera następujące dwa projekty:
 
 * **TaskWebApp** — tworzenie i edytowanie listy zadań. W przykładowej aplikacji jest używany przepływ użytkownika dotyczący **tworzenia konta lub logowania** na potrzeby tworzenia kont lub logowania użytkowników.
 * **TaskService** — obsługuje następujące funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację TaskWebApp.

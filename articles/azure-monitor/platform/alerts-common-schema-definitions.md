@@ -6,22 +6,22 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 5f05b95085048515c5f8612f3029ffb2efa28091
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 9e2c3849cca392539b96f47d8d7c32815851cf78
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916030"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702882"
 ---
 # <a name="common-alert-schema-definitions"></a>Definicje typowych schematów alertów
 
 W tym artykule opisano [typowe definicje schematów alertów](https://aka.ms/commonAlertSchemaDocs) dla Azure monitor, w tym te dla elementów webhook, Azure Logic Apps, Azure Functions i Azure Automation Runbook. 
 
 Każde wystąpienie alertu opisuje zaatakowany zasób i przyczynę alertu. Te wystąpienia są opisane we wspólnym schemacie w następujących sekcjach:
-* **Podstawowe**informacje: Zestaw standardowych pól, wspólnych dla wszystkich typów alertów, opisujących zasób, w którym znajduje się alert, wraz z dodatkowymi typowymi metadanymi alertów (na przykład ważności lub opisu). 
-* **Kontekst alertu**: Zestaw pól, które opisują przyczynę alertu, z polami, które różnią się w zależności od typu alertu. Na przykład alert dotyczący metryki zawiera pola, takie jak nazwa metryki i wartość metryki w kontekście alertu, podczas gdy alert dziennika aktywności zawiera informacje o zdarzeniu, które wygenerowało alert. 
+* **Podstawowe**: zestaw standardowych pól, wspólnych dla wszystkich typów alertów, opisujących zasób, na którym znajduje się alert, wraz z dodatkowymi typowymi metadanymi alertów (na przykład ważności lub opisu). 
+* **Kontekst alertu**: zestaw pól, które opisują przyczynę alertu, z polami, które różnią się w zależności od typu alertu. Na przykład alert dotyczący metryki zawiera pola, takie jak nazwa metryki i wartość metryki w kontekście alertu, podczas gdy alert dziennika aktywności zawiera informacje o zdarzeniu, które wygenerowało alert. 
 
 **Przykładowy ładunek alertu**
 ```json
@@ -72,13 +72,13 @@ Każde wystąpienie alertu opisuje zaatakowany zasób i przyczynę alertu. Te wy
 }
 ```
 
-## <a name="essentials"></a>Podstawowe elementy
+## <a name="essentials"></a>Essentials
 
 | Pole | Opis|
 |:---|:---|
 | alertId | Identyfikator GUID, który unikatowo identyfikuje wystąpienie alertu. |
 | alertRule | Nazwa reguły alertu, która wygenerowała wystąpienie alertu. |
-| severity | Ważność alertu. Możliwe wartości: Sev0, Sev1, Sev2, Sev3 lub Sev4. |
+| Ważność | Ważność alertu. Możliwe wartości: Sev0, Sev1, Sev2, Sev3 lub Sev4. |
 | sygnałtype | Identyfikuje sygnał, na którym zdefiniowano regułę alertu. Możliwe wartości: Metryka, dziennik lub Dziennik aktywności. |
 | monitorCondition | Po uruchomieniu alertu warunek monitora alertu jest ustawiany na wartość **wyzwolone**. Gdy podstawowy warunek, który spowodował wyczyszczenie alertu, zostanie ustawiony jako **rozwiązany**.   |
 | monitoringService | Usługa monitorowania lub rozwiązanie, które wygenerowało alert. Pola dla kontekstu alertu są podyktowane przez usługę monitorowania. |
@@ -88,7 +88,7 @@ Każde wystąpienie alertu opisuje zaatakowany zasób i przyczynę alertu. Te wy
 | resolvedDateTime | Data i godzina, kiedy warunek monitora dla wystąpienia alertu jest ustawiony na **rozwiązany** w formacie UTC. Dotyczy tylko alertów dotyczących metryk.|
 | description | Opis, zgodnie z definicją w regule alertu. |
 |essentialsVersion| Numer wersji sekcji podstawy.|
-|alertContextVersion | Numer `alertContext` wersji sekcji. |
+|alertContextVersion | Numer wersji sekcji `alertContext`. |
 
 **Przykładowe wartości**
 ```json
@@ -284,7 +284,7 @@ Każde wystąpienie alertu opisuje zaatakowany zasób i przyczynę alertu. Te wy
 }
 ```
 
-### <a name="activity-log-alerts"></a>Alerty dziennika aktywności
+### <a name="activity-log-alerts"></a>Alerty dotyczące dziennika aktywności
 
 #### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 

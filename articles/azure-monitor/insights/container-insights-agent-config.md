@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 2b601825a58fe5739a43df607067acc8d629c5f4
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 7cd915c47fa0661a9da66d7ca3315480ce7d6b98
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558901"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709431"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurowanie zbierania danych agenta dla Azure Monitor kontenerów
 
@@ -41,15 +41,15 @@ Udostępniany jest plik ConfigMap szablonu, który umożliwia łatwe edytowanie 
 
 Poniżej przedstawiono ustawienia, które można skonfigurować w celu kontrolowania zbierania danych.
 
-|Klucz |Typ danych |Value |Opis |
+|Key |Typ danych |Wartość |Opis |
 |----|----------|------|------------|
-|`schema-version` |Ciąg (z uwzględnieniem wielkości liter) |v1 |Jest to wersja schematu używana przez agenta podczas analizowania tego ConfigMap. Obecnie obsługiwana wersja schematu to v1. Modyfikowanie tej wartości nie jest obsługiwane i zostanie odrzucone po obliczeniu ConfigMap.|
+|`schema-version` |Ciąg (z uwzględnieniem wielkości liter) |wersjach |Jest to wersja schematu używana przez agenta podczas analizowania tego ConfigMap. Obecnie obsługiwana wersja schematu to v1. Modyfikowanie tej wartości nie jest obsługiwane i zostanie odrzucone po obliczeniu ConfigMap.|
 |`config-version` |String | | Program obsługuje możliwość śledzenia wersji tego pliku konfiguracji w systemie/repozytorium kontroli źródła. Maksymalna dozwolona liczba znaków wynosi 10, a wszystkie inne znaki są obcinane. |
-|`[log_collection_settings.stdout] enabled =` |Boolean | prawda lub FAŁSZ | Ta funkcja kontroluje, czy jest włączone zbieranie dzienników strumienia stdout. Po ustawieniu na `true` i nie są wykluczone przestrzenie nazw dla zbierania`log_collection_settings.stdout.exclude_namespaces` dzienników stdout (ustawienie poniżej), dzienniki stdout będą zbierane ze wszystkich kontenerów we wszystkich węzłach w klastrze. Jeśli nie zostanie określony w ConfigMaps, wartość domyślna to `enabled = true`. |
-|`[log_collection_settings.stdout] exclude_namespaces =`|String | Tablica rozdzielona przecinkami |Tablica przestrzeni nazw Kubernetes, dla których dzienniki stdout nie będą zbierane. To ustawienie ma zastosowanie tylko wtedy `log_collection_settings.stdout.enabled` , gdy jest `true`ustawione na. Jeśli nie zostanie określony w ConfigMap, wartość domyślna to `exclude_namespaces = ["kube-system"]`.|
-|`[log_collection_settings.stderr] enabled =` |Boolean | prawda lub FAŁSZ |Ta funkcja kontroluje, czy jest włączona kolekcja dzienników kontenera stderr. Po ustawieniu na `true` i nie są wykluczone przestrzenie nazw dla zbierania`log_collection_settings.stderr.exclude_namespaces` dzienników stdout (ustawienie), dzienniki stderr będą zbierane ze wszystkich kontenerów na wszystkich zestawach/węzłach w klastrze. Jeśli nie zostanie określony w ConfigMaps, wartość domyślna to `enabled = true`. |
-|`[log_collection_settings.stderr] exclude_namespaces =` |String |Tablica rozdzielona przecinkami |Tablica przestrzeni nazw Kubernetes, dla których dzienniki stderr nie będą zbierane. To ustawienie ma zastosowanie tylko wtedy `log_collection_settings.stdout.enabled` , gdy jest `true`ustawione na. Jeśli nie zostanie określony w ConfigMap, wartość domyślna to `exclude_namespaces = ["kube-system"]`. |
-| `[log_collection_settings.env_var] enabled =` |Boolean | prawda lub FAŁSZ | Ta funkcja kontroluje, czy jest włączona kolekcja zmiennych środowiskowych. Gdy jest ustawiona `false`na, żadne zmienne środowiskowe nie są zbierane dla żadnego kontenera uruchomionego we wszystkich zbiorach/węzłach w klastrze. Jeśli nie zostanie określony w ConfigMap, wartość domyślna to `enabled = true`. |
+|`[log_collection_settings.stdout] enabled =` |Boolean | prawda lub FAŁSZ | Ta funkcja kontroluje, czy jest włączone zbieranie dzienników strumienia stdout. W przypadku ustawienia wartości `true` i braku przestrzeni nazw nie są one wykluczone dla kolekcji dzienników stdout (ustawienie `log_collection_settings.stdout.exclude_namespaces` poniżej), dzienniki stdout będą zbierane ze wszystkich kontenerów we wszystkich węzłach w klastrze. Jeśli nie zostanie określony w ConfigMaps, wartość domyślna to `enabled = true`. |
+|`[log_collection_settings.stdout] exclude_namespaces =`|String | Tablica rozdzielona przecinkami |Tablica przestrzeni nazw Kubernetes, dla których dzienniki stdout nie będą zbierane. To ustawienie obowiązuje tylko wtedy, gdy `log_collection_settings.stdout.enabled` jest ustawiona na `true`. Jeśli nie zostanie określony w ConfigMap, wartość domyślna to `exclude_namespaces = ["kube-system"]`.|
+|`[log_collection_settings.stderr] enabled =` |Boolean | prawda lub FAŁSZ |Ta funkcja kontroluje, czy jest włączona kolekcja dzienników kontenera stderr. Jeśli ustawiono wartość `true` i żadne obszary nazw nie są wykluczone na potrzeby zbierania dzienników stdout (ustawienie `log_collection_settings.stderr.exclude_namespaces`), dzienniki stderr będą zbierane ze wszystkich kontenerów we wszystkich węzłach w klastrze. Jeśli nie zostanie określony w ConfigMaps, wartość domyślna to `enabled = true`. |
+|`[log_collection_settings.stderr] exclude_namespaces =` |String |Tablica rozdzielona przecinkami |Tablica przestrzeni nazw Kubernetes, dla których dzienniki stderr nie będą zbierane. To ustawienie obowiązuje tylko wtedy, gdy `log_collection_settings.stdout.enabled` jest ustawiona na `true`. Jeśli nie zostanie określony w ConfigMap, wartość domyślna to `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.env_var] enabled =` |Boolean | prawda lub FAŁSZ | Ta funkcja kontroluje, czy jest włączona kolekcja zmiennych środowiskowych. W przypadku ustawienia wartości `false` żadne zmienne środowiskowe nie są zbierane dla żadnego kontenera działającego na wszystkich zestawach/wszystkich węzłach w klastrze. Jeśli nie zostanie określony w ConfigMap, wartość domyślna to `enabled = true`. |
 
 ### <a name="prometheus-scraping-settings"></a>Ustawienia odpadków Prometheus
 
@@ -62,7 +62,7 @@ Aktywne odróżnienie metryk z Prometheus jest wykonywane z jednej z dwóch pers
 * Adresy URL protokołu HTTP w całym klastrze i odnajdywanie elementów docelowych z listy punktów końcowych usługi, usług k8s, takich jak polecenia-DNS i polecenia-State-Metrics, a pod adnotacje specyficzne dla aplikacji. Metryki zebrane w tym kontekście zostaną zdefiniowane w sekcji ConfigMap *[Prometheus data_collection_settings. cluster]* .
 * Adres URL protokołu HTTP w całym węźle i odnajdywanie obiektów docelowych z listy punktów końcowych usługi. Metryki zebrane w tym kontekście zostaną zdefiniowane w sekcji ConfigMap *[Prometheus_data_collection_settings. Node]* .
 
-| Endpoint | Scope | Przykład |
+| Punkt końcowy | Zakres | Przykład |
 |----------|-------|---------|
 | Pod adnotacją | Cały klaster | adnotacj <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000" <br>prometheus.io/scheme: "http"` |
 | Usługa Kubernetes | Cały klaster | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
@@ -70,19 +70,19 @@ Aktywne odróżnienie metryk z Prometheus jest wykonywane z jednej z dwóch pers
 
 W przypadku określenia adresu URL Azure Monitor dla kontenerów odnosi się tylko do punktu końcowego. Gdy jest określona usługa Kubernetes, nazwa usługi jest rozpoznawana z serwerem DNS klastra w celu uzyskania adresu IP, a następnie rozwiązanej usługi.
 
-|Scope | Klucz | Typ danych | Value | Opis |
+|Zakres | Key | Typ danych | Wartość | Opis |
 |------|-----|-----------|-------|-------------|
 | Cały klaster | | | | Określ jedną z następujących trzech metod, aby wypróbować punkty końcowe dla metryk. |
 | | `urls` | String | Tablica rozdzielona przecinkami | Punkt końcowy HTTP (podano adres IP lub prawidłową ścieżkę URL). Na przykład: `urls=[$NODE_IP/metrics]`. ($NODE _IP jest określonym Azure Monitor dla parametru Containers i można go użyć zamiast adresu IP węzła. Musi zawierać wielkie litery). |
-| | `kubernetes_services` | String | Tablica rozdzielona przecinkami | Tablica usług Kubernetes Services do odporności metryk z metryk polecenia-State-Metrics. Na przykład`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Boolean | prawda lub FAŁSZ | Po ustawieniu `true` na wartość w ustawieniach całego klastra, Azure monitor dla agenta kontenerów będą odporne na Kubernetesy w całym klastrze dla następujących adnotacji Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean | prawda lub FAŁSZ | Włącza odpadków pod. `monitor_kubernetes_pods`musi być ustawiony na `true`. |
-| | `prometheus.io/scheme` | String | http lub https | Wartość domyślna to złomowanie za pośrednictwem protokołu HTTP. W `https`razie potrzeby ustaw wartość. | 
-| | `prometheus.io/path` | String | Tablica rozdzielona przecinkami | Ścieżka zasobu HTTP, z której mają zostać pobrane metryki. Jeśli ścieżka metryk nie `/metrics`jest zdefiniowana, zdefiniuj ją z tą adnotacją. |
+| | `kubernetes_services` | String | Tablica rozdzielona przecinkami | Tablica usług Kubernetes Services do odporności metryk z metryk polecenia-State-Metrics. Na przykład `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `monitor_kubernetes_pods` | Boolean | prawda lub FAŁSZ | Ustawienie `true` w ustawieniach całego klastra Azure Monitor dla agenta kontenerów spowoduje odróżnienie Kubernetesych zestawów w całym klastrze dla następujących adnotacji Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Boolean | prawda lub FAŁSZ | Włącza odpadków pod. `monitor_kubernetes_pods` musi być ustawiona na `true`. |
+| | `prometheus.io/scheme` | String | http lub https | Wartość domyślna to złomowanie za pośrednictwem protokołu HTTP. W razie potrzeby ustaw wartość `https`. | 
+| | `prometheus.io/path` | String | Tablica rozdzielona przecinkami | Ścieżka zasobu HTTP, z której mają zostać pobrane metryki. Jeśli ścieżka metryk nie jest `/metrics`, zdefiniuj ją z tą adnotacją. |
 | | `prometheus.io/port` | String | 9102 | Określ port, na którym nasłuchuje nasłuchiwanie. Jeśli port nie jest ustawiony, wartość domyślna to 9102. |
 | Cały węzeł | `urls` | String | Tablica rozdzielona przecinkami | Punkt końcowy HTTP (podano adres IP lub prawidłową ścieżkę URL). Na przykład: `urls=[$NODE_IP/metrics]`. ($NODE _IP jest określonym Azure Monitor dla parametru Containers i można go użyć zamiast adresu IP węzła. Musi zawierać wielkie litery). |
 | Cały węzeł lub cały klaster | `interval` | String | 60 s | Interwał kolekcji jest wartością domyślną 1 minuty (60 sekund). Kolekcję można modyfikować w ramach jednostek czasu *[prometheus_data_collection_settings. Node]* i/lub *[prometheus_data_collection_settings. cluster]* , takich jak NS, US (lub Âμs), MS, s, m, h. |
-| Cały węzeł lub cały klaster | `fieldpass`<br> `fielddrop`| String | Tablica rozdzielona przecinkami | Można określić, które metryki mają być zbierane lub nie z punktu końcowego przez ustawienie listy Zezwalaj`fieldpass`() i nie`fielddrop`Zezwalaj (). Należy najpierw ustawić listę dozwolonych. |
+| Cały węzeł lub cały klaster | `fieldpass`<br> `fielddrop`| String | Tablica rozdzielona przecinkami | Można określić, które metryki mają być zbierane lub nie z punktu końcowego, ustawiając listę dozwolonych (`fieldpass`) i nie zezwalaj (`fielddrop`). Należy najpierw ustawić listę dozwolonych. |
 
 ConfigMap jest globalną listą, a do agenta może być zastosowany tylko jeden ConfigMap. Nie można ConfigMap kolekcji.
 
@@ -95,7 +95,7 @@ Wykonaj następujące kroki, aby skonfigurować i wdrożyć plik konfiguracyjny 
 
     - Aby wykluczyć określone przestrzenie nazw dla zbierania dzienników stdout, należy skonfigurować klucz/wartość przy użyciu następującego przykładu: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
     
-    - Aby wyłączyć kolekcję zmiennych środowiskowych dla określonego kontenera, należy ustawić klucz/wartość `[log_collection_settings.env_var] enabled = true` , aby włączyć kolekcje zmiennych globalnie, a następnie wykonać kroki opisane [tutaj](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) , aby ukończyć konfigurację dla określonego kontenera.
+    - Aby wyłączyć kolekcję zmiennych środowiskowych dla określonego kontenera, ustaw wartość klucza/wartości `[log_collection_settings.env_var] enabled = true`, aby globalnie włączyć zbieranie zmiennych, a następnie wykonaj kroki opisane [tutaj](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) , aby ukończyć konfigurację dla określonego kontenera.
     
     - Aby wyłączyć zbieranie dzienników stderr dla całego klastra, należy skonfigurować klucz/wartość przy użyciu następującego przykładu: `[log_collection_settings.stderr] enabled = false`.
     
@@ -153,7 +153,7 @@ Aby sprawdzić, czy konfiguracja została pomyślnie zastosowana, użyj następu
 config::unsupported/missing config schema version - 'v21' , using defaults
 ```
 
-Błędy związane z zastosowaniem zmian konfiguracji dla Prometheus są również dostępne do przeglądu.  Z dzienników agenta pod użyciem tego samego `kubectl logs` polecenia lub z dzienników na żywo. Dzienniki na żywo pokazują błędy podobne do następujących:
+Błędy związane z zastosowaniem zmian konfiguracji dla Prometheus są również dostępne do przeglądu.  Z dzienników agenta pod użyciem tego samego polecenia `kubectl logs` lub z dzienników na żywo. Dzienniki na żywo pokazują błędy podobne do następujących:
 
 ```
 2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
@@ -163,13 +163,13 @@ Błędy uniemożliwiają programowi omsagent analizowanie pliku, powodując pono
 
 ## <a name="applying-updated-configmap"></a>Stosowanie zaktualizowanych ConfigMap
 
-Jeśli wdrożono już ConfigMap w klastrze i chcesz ją zaktualizować przy użyciu nowszej konfiguracji, możesz edytować wcześniej używany plik ConfigMap, a następnie zastosować go przy użyciu tego samego polecenia jak poprzednio `kubectl apply -f <configmap_yaml_file.yaml`.
+Jeśli wdrożono już ConfigMap w klastrze i chcesz ją zaktualizować przy użyciu nowszej konfiguracji, możesz edytować wcześniej używany plik ConfigMap, a następnie zastosować go przy użyciu tego samego polecenia jak wcześniej, `kubectl apply -f <configmap_yaml_file.yaml`.
 
 Zmiana konfiguracji może potrwać kilka minut, zanim zostanie ona uwzględniona, a wszystkie omsagent zostaną uruchomione ponownie. Ponowne uruchomienie jest ponownym uruchomieniem dla wszystkich omsagentch, a nie wszystkich ponownych uruchomień w tym samym czasie. Po zakończeniu ponownych uruchomień zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik: `configmap "container-azm-ms-agentconfig" updated`.
 
 ## <a name="verifying-schema-version"></a>Weryfikowanie wersji schematu
 
-Obsługiwane wersje schematu konfiguracji są dostępne jako adnotacja pod (wersje schematu) na omsagent pod. Można je wyświetlić za pomocą następującego polecenia polecenia kubectl:`kubectl describe pod omsagent-fdf58 -n=kube-system`
+Obsługiwane wersje schematu konfiguracji są dostępne jako adnotacja pod (wersje schematu) na omsagent pod. Można je wyświetlić za pomocą następującego polecenia polecenia kubectl: `kubectl describe pod omsagent-fdf58 -n=kube-system`
 
 Dane wyjściowe będą wyświetlane podobnie jak w przypadku następujących wersji schematu adnotacji:
 
@@ -187,6 +187,22 @@ Dane wyjściowe będą wyświetlane podobnie jak w przypadku następujących wer
 ```
 
 ## <a name="review-prometheus-data-usage"></a>Przegląd użycia danych Prometheus
+
+Aby wyświetlić metryki Prometheus odpadków Azure Monitor, określ wartość "Prometheus" jako przestrzeń nazw. Oto przykładowe zapytanie umożliwiające wyświetlenie metryk Prometheus z przestrzeni nazw `default` Kubernetes.
+
+```
+InsightsMetrics 
+| where Namespace contains "prometheus"
+| extend tags=parse_json(Tags)
+| where tostring(tags.namespace) == "default" 
+```
+
+Dane Prometheus można także zbadać bezpośrednio według nazwy.
+
+```
+InsightsMetrics 
+| where Name contains "some_prometheus_metric"
+```
 
 Aby określić objętość pozyskiwania każdego rozmiaru metryki w GB dziennie, aby zrozumieć, czy jest ono wysokie, podano następujące zapytanie.
 
@@ -223,6 +239,6 @@ Dodatkowe informacje na temat monitorowania użycia danych i analizowania koszt�
 
 Azure Monitor kontenerów nie zawiera wstępnie zdefiniowanego zestawu alertów. Zapoznaj się z tematem [tworzenie alertów dotyczących wydajności za pomocą Azure monitor dla kontenerów](container-insights-alerts.md) , aby dowiedzieć się, jak utworzyć zalecane alerty dotyczące wysokiego użycia procesora i pamięci, aby zapewnić obsługę procesów i procedur operacyjnych DevOps.
 
-- Aby kontynuować, jak używać usługi Azure Monitor i monitorowanie innych aspektów wybranego działania klastra usługi AKS, zobacz [widok usługi Azure Kubernetes Service health](container-insights-analyze.md).
+- Aby kontynuować uczenie się, jak używać Azure Monitor i monitorować inne aspekty klastra AKS, zobacz [Wyświetlanie usługi Azure Kubernetes Service Health](container-insights-analyze.md).
 
 - Wyświetl [przykłady zapytań dotyczących dzienników](container-insights-log-search.md#search-logs-to-analyze-data) , aby zobaczyć wstępnie zdefiniowane zapytania i przykłady do oszacowania lub dostosowania do tworzenia alertów, wizualizacji lub analizowania klastrów.

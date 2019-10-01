@@ -1,19 +1,19 @@
 ---
 title: Przewodnik rozwiązywania problemów Eksplorator usługi Azure Storage | Microsoft Docs
 description: Omówienie technik debugowania dla Eksplorator usługi Azure Storage
-services: virtual-machines
+services: storage
 author: Deland-Han
 manager: dcscontentpm
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: ad73520c99dd5418fd4444b3f41d7d1e22f8d52f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ca9b4b337eed54f02f42cad53d22387eace6b76c
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090831"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694699"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów Eksplorator usługi Azure Storage
 
@@ -29,7 +29,7 @@ Ten przewodnik zawiera podsumowanie rozwiązań dotyczących problemów, które 
 
 Jeśli masz problemy z uzyskaniem dostępu do zasobów magazynu za pomocą RBAC, być może nie masz przypisanych odpowiednich ról. W poniższych sekcjach opisano uprawnienia Eksplorator usługi Storage obecnie wymagane w celu uzyskania dostępu do zasobów magazynu. Jeśli nie masz pewności, czy masz odpowiednie role lub uprawnienia, skontaktuj się z administratorem konta platformy Azure.
 
-#### <a name="read-listget-storage-accounts-permissions-issue"></a>Przeczytaj Wyświetl/Pobierz konta magazynu "problem z uprawnieniami"
+#### <a name="read-listget-storage-accounts-permissions-issue"></a>"Odczyt: Lista/pobieranie kont magazynu" — problem z uprawnieniami
 
 Musisz mieć uprawnienia do wyświetlania listy kont magazynu. Aby uzyskać to uprawnienie, musisz mieć przypisaną rolę _czytelnik_ .
 
@@ -60,7 +60,7 @@ Jeśli nie masz roli przyznającej uprawnienia do warstwy zarządzania, Eksplora
 
 Obecnie nie mamy rozwiązania dotyczącego kontroli RBAC dla tego problemu. Obejście tego problemu pozwala na zażądanie identyfikatora URI sygnatury dostępu współdzielonego w celu [dołączenia do zasobu](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Błąd: Certyfikat z podpisem własnym w łańcuchu certyfikatów (i podobne błędy)
+## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Błąd: certyfikat z podpisem własnym w łańcuchu certyfikatów (i podobne błędy)
 
 Błędy certyfikatów zwykle występują w jednej z następujących sytuacji:
 
@@ -70,24 +70,24 @@ Błędy certyfikatów zwykle występują w jednej z następujących sytuacji:
 Gdy Eksplorator usługi Storage widzi certyfikat z podpisem własnym lub niezaufany, nie wie, czy odebrany komunikat HTTPS został zmieniony. Jeśli masz kopię certyfikatu z podpisem własnym, możesz poinstruować Eksplorator usługi Storage, aby go ufa, wykonując następujące czynności:
 
 1. Uzyskaj kopię certyfikatu X. 509 z kodowaniem Base-64 (CER).
-2. Przejdź do pozycji **Edytuj** > **Certyfikaty** > SSL**Importuj certyfikaty**, a następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć plik. cer.
+2. Przejdź do **edycji** > **Certyfikaty SSL** > **zaimportować certyfikaty**, a następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć plik. cer.
 
 Ten problem może również wystąpić, jeśli istnieje wiele certyfikatów (głównych i pośrednich). Aby naprawić ten błąd, należy dodać oba certyfikaty.
 
 Jeśli nie masz pewności, skąd pochodzi certyfikat, wykonaj następujące kroki, aby je znaleźć:
 
 1. Zainstaluj OpenSSL.
-    * [Windows](https://slproweb.com/products/Win32OpenSSL.html): Wszystkie wersje oświetlenia powinny być wystarczające.
-    * Komputery Mac i Linux: Powinien być dołączony do systemu operacyjnego.
+    * [Windows](https://slproweb.com/products/Win32OpenSSL.html): wszystkie wersje oświetlenia powinny być wystarczające.
+    * Komputery Mac i Linux: powinny być dołączone do systemu operacyjnego.
 2. Uruchom OpenSSL.
-    * W systemie Windows: Otwórz katalog instalacji, wybierz pozycję **/bin/** , a następnie kliknij dwukrotnie **plik OpenSSL. exe**.
-    * Komputery Mac i Linux: Uruchom `openssl` z terminalu.
+    * Windows: Otwórz katalog instalacji, wybierz pozycję **/bin/** , a następnie kliknij dwukrotnie **plik OpenSSL. exe**.
+    * Mac i Linux: Uruchom `openssl` z terminalu.
 3. Uruchom polecenie `s_client -showcerts -connect microsoft.com:443`.
-4. Wyszukaj certyfikaty z podpisem własnym. Jeśli nie masz pewności, które certyfikaty są z podpisem własnym, pamiętaj o tym, gdzie temat `("s:")` i wystawca `("i:")` są takie same.
-5. Po znalezieniu certyfikatów z podpisem własnym dla każdej z nich skopiuj i Wklej wszystko z (i włącznie z `-----BEGIN CERTIFICATE-----` ) `-----END CERTIFICATE-----` do nowego pliku. cer.
-6. Otwórz Eksplorator usługi Storage i przejdź do pozycji **Edytuj** > **Certyfikaty** > SSL**Importuj certyfikaty**. Następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć utworzone pliki CER.
+4. Wyszukaj certyfikaty z podpisem własnym. Jeśli nie masz pewności, które certyfikaty są podpisane z podpisem własnym, zanotuj miejsce, w którym temat `("s:")` i wystawca `("i:")` są takie same.
+5. Po znalezieniu certyfikatów z podpisem własnym dla każdego z nich skopiuj i Wklej wszystko z (i włącznie z) `-----BEGIN CERTIFICATE-----` do `-----END CERTIFICATE-----` do nowego pliku. cer.
+6. Otwórz Eksplorator usługi Storage i przejdź do **edycji** > **Certyfikaty SSL** > **Importuj certyfikaty**. Następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć utworzone pliki CER.
 
-Jeśli nie możesz znaleźć żadnych certyfikatów z podpisem własnym, wykonaj następujące kroki, aby skontaktować się z nami za pomocą narzędzia do przesyłania opinii. Możesz również otworzyć Eksplorator usługi Storage z wiersza polecenia przy użyciu `--ignore-certificate-errors` flagi. Po otwarciu z tą flagą Eksplorator usługi Storage ignoruje błędy certyfikatów.
+Jeśli nie możesz znaleźć żadnych certyfikatów z podpisem własnym, wykonaj następujące kroki, aby skontaktować się z nami za pomocą narzędzia do przesyłania opinii. Możesz również otworzyć Eksplorator usługi Storage z wiersza polecenia przy użyciu flagi `--ignore-certificate-errors`. Po otwarciu z tą flagą Eksplorator usługi Storage ignoruje błędy certyfikatów.
 
 ## <a name="sign-in-issues"></a>Problemy dotyczące logowania
 
@@ -95,7 +95,7 @@ Jeśli nie możesz znaleźć żadnych certyfikatów z podpisem własnym, wykonaj
 
 Puste okna dialogowe logowania najczęściej występują, gdy Active Directory Federation Services (AD FS) poprosi Eksplorator usługi Storage o przeprowadzenie przekierowania, który jest nieobsługiwany przez elektron. Aby obejść ten problem, możesz spróbować użyć przepływu kodu urządzenia do logowania. Aby to zrobić, wykonaj następujące kroki:
 
-1. W menu Przejdź do pozycji **Podgląd** > **Użyj logowania przy użyciu kodu urządzenia**.
+1. W menu Przejdź do pozycji **podgląd** > **Użyj logowania kodu urządzenia**.
 2. Otwórz okno dialogowe **łączenie** (za pomocą ikony wtyczki na pasku pionowym po lewej stronie lub wybierając pozycję **Dodaj konto** w panelu konta).
 3. Wybierz środowisko, do którego chcesz się zalogować.
 4. Wybierz pozycję **Zaloguj**.
@@ -111,7 +111,7 @@ Jeśli nie możesz zalogować się do konta, którego chcesz użyć, ponieważ d
 Jeśli jesteś w pętli ponownego uwierzytelniania lub zmieniono nazwę UPN jednego z kont, wykonaj następujące czynności:
 
 1. Usuń wszystkie konta, a następnie zamknij Eksplorator usługi Storage.
-2. Usuń. IdentityService z komputera. W systemie Windows folder znajduje się w `C:\users\<username>\AppData\Local`folderze. W przypadku systemów Mac i Linux można znaleźć folder w katalogu głównym katalogu użytkownika.
+2. Usuń. IdentityService z komputera. W systemie Windows folder znajduje się w lokalizacji `C:\users\<username>\AppData\Local`. W przypadku systemów Mac i Linux można znaleźć folder w katalogu głównym katalogu użytkownika.
 3. W przypadku korzystania z systemu Mac lub Linux należy również usunąć wpis Microsoft. developer. IdentityService z magazynu kluczy używanego przez system operacyjny. Na komputerze Mac magazyn kluczy jest aplikacją GNOME z *łańcucha* . W systemie Linux aplikacja jest zazwyczaj nazywana _dzwonkiem_, ale nazwa może się różnić w zależności od dystrybucji.
 
 ### <a name="conditional-access"></a>Dostęp warunkowy
@@ -165,7 +165,7 @@ Jeśli nie można usunąć dołączonego konta lub zasobu magazynu za pomocą in
 > Zamknij Eksplorator usługi Storage przed usunięciem tych folderów.
 
 > [!NOTE]
-> Jeśli kiedykolwiek zaimportowano wszystkie certyfikaty SSL, Utwórz kopię zapasową zawartości `certs` katalogu. Później można użyć kopii zapasowej do zaimportowania certyfikatów SSL.
+> Jeśli kiedykolwiek zostały zaimportowane jakiekolwiek certyfikaty SSL, Utwórz kopię zapasową zawartości katalogu `certs`. Później można użyć kopii zapasowej do zaimportowania certyfikatów SSL.
 
 ## <a name="proxy-issues"></a>Problemy z serwerem proxy
 
@@ -216,11 +216,11 @@ Jeśli zostanie wyświetlony komunikat o błędzie, istnieje możliwość, że n
 
 Jeśli widzisz klucze konta, w usłudze GitHub prosimy o problem, aby pomóc w rozwiązaniu problemu.
 
-## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Wystąpił błąd podczas dodawania nowego połączenia: TypeError Nie można odczytać właściwości "Version" niezdefiniowanej
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Wystąpił błąd podczas dodawania nowego połączenia: TypeError: nie można odczytać właściwości "wersja" niezdefiniowanej
 
 Jeśli podczas próby dodania połączenia niestandardowego zostanie wyświetlony komunikat o błędzie, dane połączenia przechowywane w lokalnym Menedżerze poświadczeń mogą być uszkodzone. Aby obejść ten problem, spróbuj usunąć uszkodzone połączenia lokalne, a następnie dodaj je ponownie:
 
-1. Rozpocznij Eksplorator usługi Storage. W menu Przejdź do pozycji **Pomoc** > i**Przełącz narzędzia deweloperskie**.
+1. Rozpocznij Eksplorator usługi Storage. W menu Przejdź do **pomocy** > **Przełącz narzędzia deweloperskie**.
 2. W otwartym oknie na karcie **aplikacja** przejdź do obszaru **Magazyn lokalny** (po lewej stronie) > **File://** .
 3. W zależności od typu połączenia, z którym występuje problem, poszukaj jego klucza, a następnie skopiuj jego wartość do edytora tekstu. Wartość jest tablicą niestandardowych nazw połączeń, takich jak następujące:
     * Konta magazynu
@@ -248,13 +248,13 @@ Po przejściu przez wszystkie połączenia w przypadku wszystkich nazw połącze
 
 1. W menu **Start** Wyszukaj pozycję **Menedżer poświadczeń** i otwórz ją.
 2. Przejdź do **poświadczeń systemu Windows**.
-3. W obszarze **poświadczenia ogólne**Wyszukaj wpisy, które mają `<connection_type_key>/<corrupted_connection_name>` klucz `StorageExplorer_CustomConnections_Accounts_v1/account1`(na przykład).
+3. W obszarze **poświadczenia ogólne**poszukaj wpisów mających klucz `<connection_type_key>/<corrupted_connection_name>` (na przykład `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Usuń te wpisy i Dodaj je jeszcze raz.
 
 # <a name="macostabmacos"></a>[macOS](#tab/macOS)
 
 1. Otwórz centrum uwagi (Command + SPACEBAR) i Wyszukaj **dostęp do łańcucha kluczy**.
-2. Wyszukaj wpisy, które mają `<connection_type_key>/<corrupted_connection_name>` klucz (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
+2. Poszukaj wpisów o kluczu `<connection_type_key>/<corrupted_connection_name>` (na przykład `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Usuń te wpisy i Dodaj je jeszcze raz.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/Linux)
@@ -262,7 +262,7 @@ Po przejściu przez wszystkie połączenia w przypadku wszystkich nazw połącze
 Lokalne zarządzanie poświadczeniami różni się w zależności od dystrybucji systemu Linux. Jeśli dystrybucja systemu Linux nie udostępnia wbudowanego interfejsu GUI do lokalnego zarządzania poświadczeniami, możesz zainstalować narzędzie innych firm, aby zarządzać poświadczeniami lokalnymi. Na przykład można użyć [Seahorse](https://wiki.gnome.org/Apps/Seahorse/), narzędzia interfejsu GUI open source do zarządzania poświadczeniami lokalnymi systemu Linux.
 
 1. Otwórz swoje lokalne narzędzie do zarządzania poświadczeniami i Znajdź zapisane poświadczenia.
-2. Wyszukaj wpisy, które mają `<connection_type_key>/<corrupted_connection_name>` klucz (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
+2. Poszukaj wpisów o kluczu `<connection_type_key>/<corrupted_connection_name>` (na przykład `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Usuń te wpisy i Dodaj je jeszcze raz.
 ---
 
@@ -279,8 +279,8 @@ Jeśli łączysz się z usługą za pomocą adresu URL sygnatury dostępu wspó�
 Jeśli przypadkowo dołączono przy użyciu nieprawidłowego adresu URL sygnatury dostępu współdzielonego i teraz nie można odłączyć, wykonaj następujące kroki:
 
 1. Gdy korzystasz z programu Eksplorator usługi Storage, naciśnij klawisz F12, aby otworzyć okno Narzędzia deweloperskie.
-2. Na karcie **aplikacja** wybierz pozycję **Magazyn** > lokalny**File://** w drzewie po lewej stronie.
-3. Znajdź klucz skojarzony z typem usługi problematycznego identyfikatora URI sygnatury dostępu współdzielonego. Na przykład jeśli zły identyfikator URI sygnatury dostępu współdzielonego dotyczy kontenera obiektów blob, poszukaj `StorageExplorer_AddStorageServiceSAS_v1_blob`klucza o nazwie.
+2. Na karcie **aplikacja** wybierz pozycję **Magazyn lokalny** > **File://** w drzewie po lewej stronie.
+3. Znajdź klucz skojarzony z typem usługi problematycznego identyfikatora URI sygnatury dostępu współdzielonego. Na przykład jeśli zły identyfikator URI sygnatury dostępu współdzielonego dotyczy kontenera obiektów blob, poszukaj klucza o nazwie `StorageExplorer_AddStorageServiceSAS_v1_blob`.
 4. Wartość klucza powinna być tablicą JSON. Znajdź obiekt skojarzony z nieprawidłowym identyfikatorem URI, a następnie usuń go.
 5. Naciśnij klawisze CTRL + R, aby ponownie załadować Eksplorator usługi Storage.
 
@@ -351,10 +351,10 @@ Te pakiety stanowią najczęstsze wymagania dotyczące Eksplorator usługi Stora
 W przypadku Eksplorator usługi Storage 1.7.0 lub starszych może być konieczne zainstalowanie wersji programu .NET Core używanej przez Eksplorator usługi Storage:
 
 1. Pobierz wersję 1.5.43 z StreamJsonRpc [z narzędzia NuGet](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Poszukaj linku "Pobierz pakiet" po prawej stronie strony.
-2. Po pobraniu pakietu zmień jego rozszerzenie z `.nupkg` na. `.zip`
+2. Po pobraniu pakietu zmień jego rozszerzenie z `.nupkg` na `.zip`.
 3. Rozpakuj pakiet.
 4. Otwórz folder `streamjsonrpc.1.5.43/lib/netstandard1.1/`.
-5. Skopiuj `StreamJsonRpc.dll` do następujących lokalizacji w folderze Eksplorator usługi Storage:
+5. Kopiuj `StreamJsonRpc.dll` do następujących lokalizacji w folderze Eksplorator usługi Storage:
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
@@ -364,7 +364,7 @@ Jeśli przycisk **Otwórz w Eksploratorze** na Azure Portal nie działa, upewnij
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
-* Microsoft Internet Explorer
+* Program Microsoft Internet Explorer
 
 ## <a name="next-steps"></a>Następne kroki
 

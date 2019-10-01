@@ -3,22 +3,22 @@ title: Utwórz komercyjne konto witryny Marketplace w centrum partnerskim
 description: Dowiedz się, jak utworzyć komercyjne konto witryny Marketplace w centrum partnerskim.
 author: ChJenk
 manager: evansma
-ms.author: parthp
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: guide
-ms.date: 09/10/2019
-ms.openlocfilehash: 9d19b31ccce8feeb2d5ce12353d9b79841b40724
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.date: 09/26/2019
+ms.openlocfilehash: beaca02807f3ee33022854f17150d8eeff1568ac
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219434"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695608"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Utwórz komercyjne konto witryny Marketplace w centrum partnerskim
 
 Aby opublikować oferty w [witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/) lub [AppSource](https://appsource.microsoft.com/), musisz utworzyć konto w komercyjnym programie Marketplace w centrum partnerskim. W tym artykule omówiono sposób tworzenia konta Centrum partnerskiego oraz dodawania nowych wydawców do komercyjnego programu w portalu Marketplace.
 
->[!Important]
+>[!IMPORTANT]
 >Jeśli masz konto w [Portal Cloud partner (CPP)](https://cloudpartner.azure.com) , które zostało przeniesione do Centrum partnerskiego, nie musisz tworzyć nowego konta. Aby uzyskać więcej informacji, zobacz [wydawcy z programu CPP](#publishers-moving-from-cpp) .
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
@@ -33,7 +33,7 @@ Będziemy weryfikować te informacje podczas procesu tworzenia konta.
 Istnieją dwa sposoby tworzenia konta:
 
 - Jeśli dopiero zaczynasz korzystać z Centrum partnerskiego i nie masz konta sieciowego firmy Microsoft, Utwórz konto za pomocą polecenia [Utwórz konto przy użyciu strony rejestracja w centrum partnerskim](#create-an-account-using-the-partner-center-enrollment-page).
-- Jeśli już zarejestrowano Cię w Microsoft Partner Network, Utwórz konto bezpośrednio z Centrum partnerskiego za pomocą polecenia [Utwórz konto przy użyciu rejestracji Microsoft Partner Network](#create-an-account-using-your-microsoft-partner-network-enrollment).
+- Jeśli użytkownik jest już zarejestrowany w Microsoft Partner Network, Utwórz konto bezpośrednio z Centrum partnerskiego za pomocą opcji [Utwórz konto przy użyciu istniejących rejestracji w centrum partnerskim firmy Microsoft](#create-an-account-using-existing-microsoft-partner-center-enrollments).
 
 ## <a name="create-an-account-using-the-partner-center-enrollment-page"></a>Tworzenie konta przy użyciu strony rejestracji Centrum partnerskiego
 
@@ -44,7 +44,7 @@ Tej metody należy użyć, jeśli jesteś nowym centrum partnerskim i nie są on
 - [Wyrażanie zgody na warunki i postanowienia](#agree-to-terms-and-conditions)
 - [Podaj swój profil wydawcy](#provide-your-publisher-profile)
 
->[!Important]
+>[!IMPORTANT]
 >Jeśli masz konto w [Portal Cloud partner (CPP)](https://cloudpartner.azure.com) , które zostało przeniesione do Centrum partnerskiego, nie musisz tworzyć nowego konta. Aby uzyskać więcej informacji, zobacz [wydawcy z programu CPP](#publishers-moving-from-cpp) .
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Zarejestruj się na stronie rejestracji Centrum partnerskiego
@@ -55,7 +55,7 @@ Przejrzyj informacje na stronie [**Zapraszamy do rejestracji w centrum partnersk
 
 Zaloguj się przy użyciu konta służbowego, aby można było połączyć domenę służbowej poczty e-mail z firmą z nowym kontem Centrum partnerskiego. Kojarząc te konta, pracownicy firmy mogą logować się do Centrum partnerskiego przy użyciu nazw użytkowników i haseł konta służbowego.
 
->[!Note]
+>[!NOTE]
 >Aby sprawdzić, czy Twoja firma ma już konto służbowe, jak utworzyć nowe konto służbowe lub jak skonfigurować wiele kont służbowych do użycia z centrum partnerskim, odwiedź [konto służbowe firmy i centrum partnerskie](./company-work-accounts.md).
 
 ### <a name="agree-to-terms-and-conditions"></a>Wyrażanie zgody na warunki i postanowienia
@@ -70,42 +70,78 @@ Utwórz identyfikator wydawcy. IDENTYFIKATOR wydawcy jednoznacznie identyfikuje 
 
 Po potwierdzeniu informacji o profilu wydawcy Zaakceptuj warunki i postanowienia i Utwórz konto Centrum partnerskiego, wybierając pozycję **Akceptuj i Kontynuuj**.
 
->[!Important]
+>[!IMPORTANT]
 >*Aby zaakceptować te warunki, musisz mieć uprawnienia do działania w imieniu firmy.*
 
-Dziękujemy za utworzenie konta w centrum partnerskim. Nastąpi przekierowanie do strony [Przegląd komercyjnego portalu Marketplace](./commercial-marketplace-overview.md) .
+Po zarejestrowaniu nastąpi przekierowanie do strony Przegląd komercyjnego portalu Marketplace. **Komercyjne witryny Marketplace** są wyświetlane na lewym pasku nawigacyjnym. W przypadku wybrania opcji **ustawienia** > **ustawienia partnerskie** > **programy**zobaczysz, że komercyjny rynek jest wymieniony jako zarejestrowany.
 
-## <a name="create-an-account-using-your-microsoft-partner-network-enrollment"></a>Tworzenie konta przy użyciu rejestracji Microsoft Partner Network
+Dziękujemy za utworzenie komercyjnego konta w witrynie Marketplace w centrum partnerskim. Aby uzyskać pomoc, zobacz [komercyjne Omówienie witryny Marketplace](./commercial-marketplace-overview.md). Aby uzyskać pomoc dotyczącą dodawania wydawców, zobacz [Dodawanie nowych wydawców do komercyjnego programu Marketplace](#add-new-publishers-to-the-commercial-marketplace-program).
 
-Jeśli jesteś już zarejestrowanym w Microsoft Partner Network, Użyj tej sekcji, aby utworzyć konto bezpośrednio z poziomu Centrum partnerskiego, wykonując następujące kroki:
+## <a name="create-an-account-using-existing-microsoft-partner-center-enrollments"></a>Utwórz konto przy użyciu istniejących rejestracji w centrum partnerskim firmy Microsoft
 
-- [Zaloguj się do Centrum partnerskiego przy użyciu swojego konta służbowego](#sign-into-partner-center-with-your-work-account)
-- [Wprowadź swój profil wydawcy](#enter-your-publisher-profile)
+Użyj tej sekcji, aby utworzyć komercyjne konto witryny Marketplace, jeśli masz już rejestrację w centrum partnerskim firmy Microsoft.
 
-Upewnij się, że informacje o koncie Microsoft Partner Network są przydatne.
+Istnieją dwa typy istniejących rejestracji, których można użyć do skonfigurowania komercyjnego konta witryny Marketplace. Wybierz ten, który ma zastosowanie do Ciebie:
 
->[!Important]
->Jeśli masz konto w [Portal Cloud partner (CPP)](https://cloudpartner.azure.com) , które zostało przeniesione do Centrum partnerskiego, nie musisz tworzyć nowego konta. Aby uzyskać więcej informacji, zobacz [wydawcy z programu CPP](#publishers-moving-from-cpp) .
+- Jeśli masz już rejestrację Microsoft Partner Network, Utwórz konto przy użyciu opcji [zarejestrowane w Microsoft Partner Network](#enrolled-in-the-microsoft-partner-network).
+- Jeśli masz istniejącą rejestrację programu dla deweloperów, Utwórz konto przy użyciu opcji [zarejestrowane w programie dla deweloperów](#enrolled-in-a-developer-program).
 
-### <a name="sign-into-partner-center-with-your-work-account"></a>Zaloguj się do Centrum partnerskiego przy użyciu swojego konta służbowego
+W przypadku obu metod wykonaj następujące czynności:
+
+- Zaloguj się do Centrum partnerskiego przy użyciu istniejących poświadczeń
+- Wprowadź informacje o profilu publikowania
+
+Upewnij się, że informacje o Twoim koncie są przydatne.
+
+>[!IMPORTANT]
+>Jeśli masz konto w [Portal Cloud partner (CPP)](https://cloudpartner.azure.com/) , które zostało przeniesione do Centrum partnerskiego, nie musisz tworzyć nowego konta. Aby uzyskać więcej informacji, zobacz [wydawcy z programu CPP](#publishers-moving-from-cpp) .
+
+### <a name="enrolled-in-the-microsoft-partner-network"></a>Zarejestrowano w Microsoft Partner Network
+
+Jeśli jesteś już zarejestrowanym w Microsoft Partner Network, Użyj tej sekcji, aby utworzyć konto bezpośrednio z Centrum partnerskiego.
 
 Zaloguj się do [Centrum partnerskiego](https://partner.microsoft.com/) przy użyciu swojego konta Microsoft Partner Network, aby połączyć domenę służbową konta e-mail z firmą z nowym kontem Centrum partnerskiego. Kojarząc te konta, pracownicy firmy mogą logować się do Centrum partnerskiego przy użyciu nazw użytkowników i haseł konta służbowego.
 
->[!Note]
+>[!NOTE]
 >Aby sprawdzić, czy Twoja firma ma już konto służbowe Centrum partnerskiego, jak utworzyć nowe konto służbowe lub jak skonfigurować wiele kont służbowych, które mają być używane z centrum partnerskim, odwiedź [firmowe konto służbowe i centrum partnerskie](./company-work-accounts.md).
 
-### <a name="enter-your-publisher-profile"></a>Wprowadź swój profil wydawcy
-
-Po zalogowaniu się wykonaj kroki opisane w tej sekcji, aby zakończyć konfigurowanie konta.
+Po zalogowaniu wykonaj następujące kroki, aby zakończyć konfigurowanie konta.
 
 >[!NOTE]
-> Aby zalogować się do Microsoft Partner Network, musisz mieć uprawnienia administratora konta lub administratora globalnego.
+> Aby zalogować się do Microsoft Partner Network, musisz mieć uprawnienia **administratora konta** lub **administratora globalnego** .
 
-1. W centrum partnerskim wybierz pozycję **Ustawienia** > ustawienia**partnera** > **programy** > **wprowadzenie.**
+1. W [centrum partnerskim](https://partner.microsoft.com/)wybierz pozycję **Ustawienia** > **Ustawienia partnera** > **programów** > **Rozpocznij**.
 2. Microsoft Partner Network wykryje subskrypcję i wyświetli stronę profilu wydawcy, aby wprowadzić nazwę firmy i identyfikator MPN.
 3. Przeczytaj warunki i postanowienia w [Umowie wydawcy Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560), a następnie wybierz pozycję **Zaakceptuj i Kontynuuj** , aby zakończyć rejestrację.
 
-Po zarejestrowaniu nastąpi przekierowanie do strony Przegląd komercyjnego portalu Marketplace. **Komercyjne witryny Marketplace** są wyświetlane na lewym pasku nawigacyjnym. Jeśli wybierzesz pozycję **Ustawienia** > **partnerzy** > **programy**, zobaczysz, że komercyjny rynek jest wymieniony jako zarejestrowany.
+    >[!IMPORTANT]
+    >*Aby zaakceptować te warunki, musisz mieć uprawnienia do działania w imieniu firmy.*
+
+Po zarejestrowaniu nastąpi przekierowanie do strony Przegląd komercyjnego portalu Marketplace. **Komercyjne witryny Marketplace** są wyświetlane na lewym pasku nawigacyjnym. W przypadku wybrania opcji **ustawienia** > **ustawienia partnerskie** > **programy**zobaczysz, że komercyjny rynek jest wymieniony jako zarejestrowany.
+
+Dziękujemy za utworzenie konta w centrum partnerskim. Aby uzyskać pomoc, zobacz [komercyjne Omówienie witryny Marketplace](./commercial-marketplace-overview.md). Aby uzyskać pomoc dotyczącą dodawania wydawców, zobacz [Dodawanie nowych wydawców do komercyjnego programu Marketplace](#add-new-publishers-to-the-commercial-marketplace-program).
+
+### <a name="enrolled-in-a-developer-program"></a>Zarejestrowane w programie dla deweloperów
+
+Jeśli użytkownik jest już zarejestrowany w programie partnerskim dla deweloperów, Skorzystaj z tej sekcji, aby utworzyć konto bezpośrednio z Centrum partnerskiego.
+
+>[!NOTE]
+>Aby zarejestrować się w portalu komercyjnym w ramach tego samego konta, na którym się zalogowano, musisz zarejestrować się w centrum partnerskim przy użyciu konta firmowego. Jeśli zarejestrujesz się przy użyciu pojedynczego konta, Twoja komercyjna Rejestracja w portalu Marketplace zostanie wyświetlona na nowym koncie.
+>
+>Poszczególne konta są przeznaczone dla pojedynczych deweloperów pracujących na ich własnych urządzeniach. Konta firmowe są przeznaczone dla organizacji i firm. Konta firmowe umożliwiają dostęp do przesyłania aplikacji z dodatkowymi funkcjami. Przed zarejestrowaniem się w celu potwierdzenia, że masz uprawnienia do skonfigurowania konta dla firmy, potrzebujemy większej weryfikacji kont firmowych. Ta weryfikacja może potrwać od kilku dni do kilku tygodni i często obejmuje połączenie telefoniczne z firmą. Oba typy kont umożliwiają przesyłanie aplikacji, dodatków i usług. Aby uzyskać więcej informacji, zobacz [typy kont, lokalizacje i opłaty](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
+
+Zaloguj się do [Centrum partnerskiego](https://partner.microsoft.com/) przy użyciu swojego konta Microsoft Partner Center, aby zarejestrować się w komercyjnym programie Marketplace w ramach tego samego konta. Rejestrując się w komercyjnej witrynie Marketplace przy użyciu tego samego konta, możesz zobaczyć zarówno istniejące rejestracje programu, jak i komercyjną witrynę Marketplace w menu nawigacji po lewej stronie Centrum partnerskiego.
+
+Po zalogowaniu wykonaj następujące kroki, aby zakończyć konfigurowanie konta:
+
+1. W centrum partnerskim wybierz pozycję **ustawienia** > **ustawienia dewelopera** > **programy** > **Rozpocznij**pracę, a następnie wprowadź służbowy adres e-mail.
+2. Uzupełnij szczegóły na stronie profil wydawcy.
+3. Przeczytaj warunki i postanowienia w [Umowie wydawcy Microsoft Marketplace](http://go.microsoft.com/fwlink/?LinkID=699560), a następnie wybierz pozycję **Zaakceptuj i Kontynuuj** , aby zakończyć rejestrację.
+
+    >[!Important]
+    >*Aby zaakceptować te warunki, musisz mieć uprawnienia do działania w imieniu firmy.*
+
+Po zarejestrowaniu nastąpi przekierowanie do strony Przegląd komercyjnego portalu Marketplace. **Komercyjne witryny Marketplace** są wyświetlane na lewym pasku nawigacyjnym. W przypadku wybrania opcji **ustawienia** > **ustawienia dewelopera** > **programy**zobaczysz, że komercyjny rynek jest wymieniony jako zarejestrowany.
 
 Dziękujemy za utworzenie konta w centrum partnerskim. Aby uzyskać pomoc, zobacz [komercyjne Omówienie witryny Marketplace](./commercial-marketplace-overview.md). Aby uzyskać pomoc dotyczącą dodawania wydawców, zobacz [Dodawanie nowych wydawców do komercyjnego programu Marketplace](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -121,24 +157,24 @@ Po przeniesieniu informacji o koncie z przeglądarki CPP do Centrum partnerskieg
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Dodaj nowych wydawców do komercyjnego programu Marketplace
 
-Organizacja może mieć wielu wydawców skojarzonych z komercyjnym kontem witryny Marketplace. Istniejący użytkownik może dodać kolejnych wydawców po zalogowaniu się do Centrum partnerskiego, wybierając pozycję **Ustawienia** > konta**wydawcy** > **Dodaj wydawcę**.
+Organizacja może mieć wielu wydawców skojarzonych z komercyjnym kontem witryny Marketplace. Istniejący użytkownik może dodać kolejnych wydawców po zalogowaniu się do Centrum partnerskiego, wybierając pozycję **Ustawienia konta** > **wydawcy** > **Dodaj wydawcę**.
 
->[!Note]
->Przed dodaniem nowego wydawcy Przejrzyj istniejących wydawców, logując się do Centrum partnerskiego i wybierając pozycję **Ustawienia** > konta**wydawcy** , aby wyświetlić listę istniejących wydawców.
+>[!NOTE]
+>Przed dodaniem nowego wydawcy Przejrzyj istniejących wydawców, logując się do Centrum partnerskiego i wybierając pozycję **Ustawienia konta** > **wydawcy** , aby wyświetlić listę istniejących wydawców.
 
 Inny użytkownik z tej samej dzierżawy Azure Active Directory może dodać nowego wydawcę, wykonując poniższe kroki:
 
 1. Rozpocznij pracę z przepływem rejestracji w [centrum partnerskim firmy Microsoft](https://partner.microsoft.com/en-us/dashboard/account/v3/enrollment/introduction/azureisv).
 2. Wybierz pozycję **Zaloguj się przy użyciu konta służbowego** i wprowadź swój służbowy adres e-mail.
-3. Wybierz przycisk **Dodaj** wydawcę.
+3. Wybierz przycisk **Dodaj wydawcę** .
 4. Wybierz identyfikator MPN, który chcesz skojarzyć z wydawcą.
 5. Zaktualizuj **szczegóły wydawcy** w formularzu.
 
-   1. **Nazwa wydawcy**: Nazwa, która będzie wyświetlana w witrynie Azure Marketplace lub AppSource z ofertą.
-   1. **PublisherID**: Identyfikator używany przez centrum partnerskie do unikatowego identyfikowania wydawcy. Wartość domyślna dla tego pola jest mapowana na istniejący i unikatowy `PublisherID` w systemie, którego nie można ponownie użyć, a tym samym pole należy zaktualizować.
-   1. **Informacje kontaktowe**: W razie potrzeby Zaktualizuj informacje kontaktowe.
+   1. **Nazwa wydawcy**: nazwa, która będzie wyświetlana w witrynie Azure Marketplace lub AppSource z ofertą.
+   1. **PublisherID**: identyfikator używany przez centrum partnerskie do unikatowego identyfikowania wydawcy. Wartość domyślna dla tego pola jest mapowana na istniejący i unikatowy `PublisherID` w systemie, którego nie można ponownie użyć, a tym samym pole należy zaktualizować.
+   1. **Informacje kontaktowe**: w razie potrzeby Zaktualizuj informacje kontaktowe.
 
-Po zakończeniu procesu możesz zarządzać nowo utworzonym wydawcą, przechodząc do komercyjnego programu w **portalu Marketplace** wymienionym w menu nawigacji po lewej stronie. Jeśli nie widzisz komercyjnego programu **Marketplace** , Odśwież stronę. Nowy Wydawca zostanie wyświetlony na liście **wydawcy** .
+Po zakończeniu procesu możesz zarządzać nowo utworzonym wydawcą, przechodząc do **komercyjnego programu w portalu Marketplace** wymienionym w menu nawigacji po lewej stronie. Jeśli nie widzisz **komercyjnego programu Marketplace** , Odśwież stronę. Nowy Wydawca zostanie wyświetlony na liście **wydawcy** .
 
 ## <a name="next-step"></a>Następny krok
 

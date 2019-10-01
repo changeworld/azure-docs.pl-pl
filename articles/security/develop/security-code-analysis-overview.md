@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7ab908673f60a651db48ae0485592a362741b6d
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c3e22b34dbb770af2b4a719f8b4eaf040b724c47
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242316"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695427"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informacje o analizie kodu zabezpieczeń firmy Microsoft
 
@@ -45,7 +45,7 @@ Po rozwiązaniu problemów początkowych raportowanych przez narzędzia można s
 
 Domyślnie zadania i narzędzia kompilacji są aktualne. Jeśli istnieje zaktualizowana wersja narzędzia, nie musisz go pobrać i zainstalować. Rozszerzenie zajmuje się aktualizacją.
 
-### <a name="under-the-hood"></a>Kulisy
+### <a name="under-the-hood"></a>Pod okapem
 
 Zadania kompilacji rozszerzenia ukrywają złożoność:
   - Uruchamianie narzędzi do statycznej analizy zabezpieczeń.
@@ -73,7 +73,7 @@ Hasła i inne wpisy tajne przechowywane w kodzie źródłowym są istotnym probl
 
 ### <a name="microsoft-security-risk-detection"></a>Wykrywanie zagrożeń zabezpieczeń firmy Microsoft
 
-Wykrywanie zagrożeń zabezpieczeń firmy Microsoft (MSRD) to usługa oparta na chmurze służąca do testowania rozmytego. Identyfikuje ona luki w zabezpieczeniach w oprogramowaniu. Ta usługa wymaga oddzielnego procesu dołączania. Aby uzyskać więcej informacji, zobacz [Centrum deweloperów MSRD](https://docs.microsoft.com/security-risk-detection/).
+Wykrywanie zagrożeń zabezpieczeń firmy Microsoft (MSRD) to usługa oparta na chmurze służąca do testowania rozmytego. Identyfikuje ona luki w zabezpieczeniach w oprogramowaniu. Ta usługa wymaga oddzielnej subskrypcji i aktywacji. Aby uzyskać więcej informacji, zobacz [Centrum deweloperów MSRD](https://docs.microsoft.com/security-risk-detection/).
 
 ### <a name="roslyn-analyzers"></a>Analizatory Roslyn
 

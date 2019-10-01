@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 379664fb7170249b8f21ec9826f8b0b6fbe19892
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679546"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710192"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
@@ -157,7 +157,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>Uwzględnij dodatkową obsługę języka
 
-Ten artykuł nie obejmuje konfigurowania języka i obsługi regionalnej. Aby uzyskać więcej informacji zobacz następujące artykuły:
+Ten artykuł nie obejmuje konfigurowania języka i obsługi regionalnej. Aby uzyskać więcej informacji, zobacz następujące artykuły:
 
 - [Dodawanie języków do obrazów systemu Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
 - [Funkcje na żądanie](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
@@ -204,7 +204,7 @@ Po przygotowaniu obrazu do przekazania upewnij się, że maszyna wirtualna pozos
 
 Ta sekcja ma zastosowanie tylko wtedy, gdy obraz wzorcowy został utworzony lokalnie.
 
-Poniższe instrukcje przedstawiają sposób przekazania obrazu wzorcowego do konta usługi Azure Storage. Jeśli nie masz jeszcze konta usługi Azure Storage, postępuj zgodnie z instrukcjami w [tym artykule](https://code.visualstudio.com/tutorials/static-website/create-storage) , aby go utworzyć.
+Poniższe instrukcje przedstawiają sposób przekazania obrazu wzorcowego do konta usługi Azure Storage. Jeśli nie masz jeszcze konta usługi Azure Storage, postępuj zgodnie z instrukcjami w [tym artykule](/azure/javascript/tutorial-vscode-static-website-node-03) , aby go utworzyć.
 
 1. Przekonwertuj obraz maszyny wirtualnej (VHD) na stały, jeśli jeszcze tego nie zrobiono. Jeśli nie przekonwertujesz obrazu na naprawione, nie można pomyślnie utworzyć obrazu.
 

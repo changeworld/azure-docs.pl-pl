@@ -6,14 +6,14 @@ services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: f97fa69926cd9c59a0617f409c72610336120333
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 91a770b522011f3955ae0956e289886eb204cf47
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916009"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702908"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Zarządzanie wystąpieniami alertów za pomocą ujednoliconych alertów
 Korzystając z [funkcji ujednoliconych alertów](https://aka.ms/azure-alerts-overview) w Azure monitor, można zobaczyć wszystkie różne typy alertów na platformie Azure. Obejmuje to wiele subskrypcji w jednym okienku. W tym artykule pokazano, jak można wyświetlać wystąpienia alertów oraz jak znaleźć określone wystąpienia alertów w celu rozwiązywania problemów.
@@ -25,8 +25,8 @@ Korzystając z [funkcji ujednoliconych alertów](https://aka.ms/azure-alerts-ove
 
 Można przejść do strony alerty w dowolny z następujących sposobów:
 
-   + W [Azure Portal](https://portal.azure.com/)wybierz pozycję **Monitoruj** > **alerty**.  
-     ![Zrzut ekranu przedstawiający alerty monitora](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
+   + W [Azure Portal](https://portal.azure.com/)wybierz pozycję **Monitoruj** **alerty** > .  
+     ![Screenshot z alertów monitorowania @ no__t-1
   
    + Użyj kontekstu określonego zasobu. Otwórz zasób, przejdź do sekcji **monitorowanie** i wybierz pozycję **alerty**. Strona docelowa jest wstępnie filtrowana pod kątem alertów dotyczących tego konkretnego zasobu.
    
@@ -39,7 +39,7 @@ Można przejść do strony alerty w dowolny z następujących sposobów:
 ## <a name="find-alert-instances"></a>Znajdź wystąpienia alertów
 
 Strona **Podsumowanie alertów** zawiera przegląd wszystkich wystąpień alertów na platformie Azure. Widok podsumowania można zmodyfikować, wybierając **wiele subskrypcji** (maksymalnie 5) lub przez filtrowanie między **grupami zasobów**, określonymi **zasobami**lub **zakresami czasu**. Wybierz pozycję **całkowita liczba alertów**lub dowolny z poziomów ważności, aby przejść do widoku listy alertów.     
-   ![Zrzut ekranu przedstawiający stronę podsumowania alertów](media/alerts-managing-alert-instances/alerts-summary.jpg)
+   ![Screenshot strony podsumowania alertów @ no__t-1
  
 Na stronie **wszystkie alerty** zostaną wyświetlone wszystkie wystąpienia alertów na platformie Azure. W przypadku przełączenia się do portalu z poziomu powiadomienia o alercie można użyć dostępnych filtrów, aby zawęzić w tym konkretnym wystąpieniu alertu.
 
@@ -54,5 +54,5 @@ Oprócz filtrów dostępnych na poprzedniej stronie można również filtrować 
    >  Jeśli strona została przełączona na stronę, wybierając dowolny z poziomów ważności, lista jest wstępnie filtrowana pod kątem ważności.
  
 Po wybraniu dowolnego wystąpienia alertu zostanie otwarta strona **szczegóły alertu** , która umożliwia wyświetlenie szczegółowych informacji o tym konkretnym wystąpieniu alertu.   
-   ![Zrzut ekranu przedstawiający stronę szczegółów alertu](media/alerts-managing-alert-instances/alert-details.jpg)  
+   ![Screenshot strony szczegółów alertu @ no__t-1  
 

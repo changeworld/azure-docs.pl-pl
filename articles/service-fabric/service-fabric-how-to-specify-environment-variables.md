@@ -1,6 +1,6 @@
 ---
-title: Instrukcje określania zmiennych środowiskowych dla usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiesz się, jak używać zmiennych środowiskowych dla aplikacji w usłudze Service Fabric
+title: Jak określić zmienne środowiskowe dla usług na platformie Azure Service Fabric | Microsoft Docs
+description: Pokazuje, jak używać zmiennych środowiskowych dla aplikacji w Service Fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: markfuss
@@ -12,48 +12,57 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: f75de635f08ae06db349387a436c636c149ec9f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df9b199c24301016b9f9da8a8dec52129bbf94bd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720233"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703540"
 ---
-# <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Sposobu określania zmiennych środowiskowych dla usług w usłudze Service Fabric
+# <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Jak określić zmienne środowiskowe dla usług w Service Fabric
 
-W tym artykule przedstawiono sposób określania zmiennych środowiskowych dla usługi lub kontenera w usłudze Service Fabric.
+W tym artykule opisano sposób określania zmiennych środowiskowych dla usługi lub kontenera w Service Fabric.
 
-## <a name="procedure-for-specifying-environment-variables-for-services"></a>Procedura do określania zmiennych środowiskowych dla usług
+## <a name="procedure-for-specifying-environment-variables-for-services"></a>Procedura określania zmiennych środowiskowych dla usług
 
-W tym przykładzie możesz ustawić zmienną środowiskową dla kontenera. Tego artykułu przyjęto założenie, że masz już manifest aplikacji i usługi.
+W tym przykładzie ustawisz zmienną środowiskową dla kontenera. W tym artykule założono, że masz już manifest aplikacji i usługi.
 
-1. Otwórz plik ServiceManifest.xml.
-1. W `CodePackage` elementu, Dodaj nowy `EnvironmentVariables` elementu i `EnvironmentVariable` element dla każdej zmiennej środowiskowej.
+1. Otwórz plik servicemanifest. XML.
+2. W elemencie `CodePackage` Dodaj nowy element `EnvironmentVariables` i element `EnvironmentVariable` dla każdej zmiennej środowiskowej.
 
     ```xml
-      <CodePackage Name="MyCode" Version="CodeVersion1">
-      ...
-        <EnvironmentVariables>
-          <EnvironmentVariable Name="MyEnvVariable" Value="DefaultValue"/>
-          <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
-        </EnvironmentVariables>
-      </CodePackage>
+    <CodePackage Name="MyCode" Version="CodeVersion1">
+            ...
+            <EnvironmentVariables>
+                  <EnvironmentVariable Name="MyEnvVariable" Value="DefaultValue"/>
+                  <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
+            </EnvironmentVariables>
+    </CodePackage>
     ```
 
-    Zmienne środowiskowe można przesłonić w manifeście aplikacji.
+   Zmienne środowiskowe można przesłonić w manifeście aplikacji.
 
-1. Aby zastąpić zmiennych środowiskowych w manifeście aplikacji, użyj `EnvironmentOverrides` elementu.
+3. Aby zastąpić zmienne środowiskowe w manifeście aplikacji, użyj elementu `EnvironmentOverrides`.
 
     ```xml
       <ServiceManifestImport>
-        <ServiceManifestRef ServiceManifestName="FrontEndServicePkg" ServiceManifestVersion="1.0.0" />
+        <ServiceManifestVersion="1.0.0" />
         <EnvironmentOverrides CodePackageRef="MyCode">
           <EnvironmentVariable Name="MyEnvVariable" Value="OverrideValue"/>
         </EnvironmentOverrides>
       </ServiceManifestImport>
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat niektóre podstawowe pojęcia, które zostały omówione w tym artykule, zobacz [Zarządzanie aplikacjami dla wielu środowisk artykułach](service-fabric-manage-multiple-environment-app-configuration.md).
+## <a name="specifying-environment-variables-dynamically-using-docker-compose"></a>Dynamiczne określanie zmiennych środowiskowych za pomocą Docker Compose
 
-Aby uzyskać informacji na temat innych funkcji zarządzania aplikacji, które są dostępne w programie Visual Studio, zobacz [Zarządzanie aplikacjami usługi Service Fabric w programie Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Service Fabric obsługuje możliwość [użycia Docker Compose do wdrożenia](service-fabric-docker-compose.md#supported-compose-directives). Pliki redagowania mogą źródłowe zmienne środowiskowe z powłoki. To zachowanie może służyć do dynamicznego podstawiania żądanych wartości środowiska:
+
+```yml
+environment:
+  - "hostname:${hostname}"
+```
+
+## <a name="next-steps"></a>Następne kroki
+Aby dowiedzieć się więcej na temat podstawowych pojęć omówionych w tym artykule, zobacz [artykuł Zarządzanie aplikacjami dla wielu środowisk](service-fabric-manage-multiple-environment-app-configuration.md).
+
+Aby uzyskać informacje na temat innych funkcji zarządzania aplikacjami, które są dostępne w programie Visual Studio, zobacz [Zarządzanie aplikacjami Service Fabric w programie Visual Studio](service-fabric-manage-application-in-visual-studio.md).

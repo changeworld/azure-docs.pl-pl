@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie usługi alert Management w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Rozwiązanie Zarządzanie alertami w usłudze Log Analytics pomaga analizować wszystkie alerty w danym środowisku.  Oprócz konsolidację alerty wygenerowane w usłudze Log Analytics importuje alerty z połączonych grup zarządzania programu System Center Operations Manager w usłudze Log Analytics.
+title: Alert Management rozwiązanie na platformie Azure Log Analytics | Microsoft Docs
+description: Alert Management rozwiązanie w Log Analytics pomaga analizować wszystkie alerty w danym środowisku.  Oprócz konsolidacji alertów wygenerowanych w ramach Log Analytics importuje alerty z połączonych grup zarządzania System Center Operations Manager do Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: e2f195f648f08c31fbfe44543ee763aeed7459f0
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741279"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702969"
 ---
-# <a name="alert-management-solution-in-azure-log-analytics"></a>Rozwiązanie usługi alert Management w usłudze Azure Log Analytics
+# <a name="alert-management-solution-in-azure-log-analytics"></a>Alert Management rozwiązanie na platformie Azure Log Analytics
 
-![Ikona zarządzania alertu](media/alert-management-solution/icon.png)
+![Ikona Alert Management](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor teraz obsługuje udoskonalone funkcje [zarządzania alertami na dużą skalę](https://aka.ms/azure-alerts-overview), w tym te wygenerowane przez [narzędzia monitorowania, takie jak SCOM, Zabbix lub Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
+>  Azure Monitor teraz obsługuje udoskonalone funkcje [zarządzania alertami na dużą skalę](https://aka.ms/azure-alerts-overview), w tym te wygenerowane przez [narzędzia monitorowania, takie jak System Center Operations Manager, Zabbix lub Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
 >  
 
 
-Rozwiązanie zarządzania alertami pomaga analizować wszystkie alerty w repozytorium usługi Log Analytics.  Te alerty mogą pochodzić z różnych źródeł, w tym tych źródeł [utworzone przez usługę Log Analytics](../../azure-monitor/platform/alerts-overview.md) lub [zaimportowane z Nagios i Zabbix](../../azure-monitor/learn/quick-collect-linux-computer.md). Rozwiązanie również importuje alerty z dowolnego [podłączone grupy zarządzania programu System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
+Alert Management rozwiązanie pomaga analizować wszystkie alerty w repozytorium Log Analytics.  Te alerty mogą pochodzić z różnych źródeł, w tym źródeł [utworzonych przez log Analytics](../../azure-monitor/platform/alerts-overview.md) lub [zaimportowanych z Nagios lub Zabbix](../../azure-monitor/learn/quick-collect-linux-computer.md). Rozwiązanie importuje również alerty z dowolnych [połączonych System Center Operations Manager grup zarządzania](../../azure-monitor/platform/om-agents.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-To rozwiązanie działa ze wszystkimi rekordami w repozytorium usługi Log Analytics z typem **alertu**, więc należy wykonać niezależnie od konfiguracji jest wymagany do zbierania tych rekordów.
+Rozwiązanie działa z dowolnymi rekordami w repozytorium Log Analytics z typem **alertu**, dlatego należy wykonać dowolną konfigurację wymaganą do zebrania tych rekordów.
 
-- W przypadku alertów usługi Log Analytics [tworzyć reguły alertów](../../azure-monitor/platform/alerts-overview.md) utworzyć rekordy alertów bezpośrednio w repozytorium.
-- Alerty programów Nagios i Zabbix [Konfigurowanie tych serwerów](../../azure-monitor/learn/quick-collect-linux-computer.md) do wysyłania alertów do usługi Log Analytics.
-- W przypadku alertów programu System Center Operations Manager [Połącz grupę zarządzania programu Operations Manager do obszaru roboczego usługi Log Analytics](../../azure-monitor/platform/om-agents.md).  Alerty utworzone w programie System Center Operations Manager są importowane do usługi Log Analytics.  
+- W przypadku alertów Log Analytics [Utwórz reguły alertów](../../azure-monitor/platform/alerts-overview.md) , aby utworzyć rekordy alertów bezpośrednio w repozytorium.
+- W przypadku alertów Nagios i Zabbix [Skonfiguruj te serwery](../../azure-monitor/learn/quick-collect-linux-computer.md) do wysyłania alertów do log Analytics.
+- W przypadku alertów System Center Operations Manager [Połącz grupę zarządzania Operations Manager z obszarem roboczym log Analytics](../../azure-monitor/platform/om-agents.md).  Wszystkie alerty utworzone w System Center Operations Manager są importowane do Log Analytics.  
 
 ## <a name="configuration"></a>Konfigurowanie
-Dodawanie rozwiązania do zarządzania alertami z obszarem roboczym usługi Log Analytics przy użyciu procesu opisanego w [Dodawanie rozwiązań](../../azure-monitor/insights/solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
+Dodaj Alert Management rozwiązanie do obszaru roboczego Log Analytics przy użyciu procesu opisanego w temacie [Dodawanie rozwiązań](../../azure-monitor/insights/solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 ## <a name="management-packs"></a>Pakiety administracyjne
-Jeśli grupa zarządzania programu System Center Operations Manager jest połączona z obszarem roboczym usługi Log Analytics, następujące pakiety administracyjne są instalowane w programie System Center Operations Manager po dodaniu tego rozwiązania.  Nie istnieje żadna konfiguracja ani Obsługa pakiety administracyjne wymagane.
+Jeśli grupa zarządzania System Center Operations Manager jest połączona z obszarem roboczym Log Analytics, następujące pakiety administracyjne są instalowane w System Center Operations Manager po dodaniu tego rozwiązania.  Nie ma potrzeby konfigurowania ani konserwacji wymaganych pakietów administracyjnych.
 
-* Zarządzanie alertami programu Microsoft System Center Advisor (Microsoft.IntelligencePacks.AlertManagement)
+* Microsoft System Center Advisor Alert Management (Microsoft. IntelligencePacks. AlertManagement)
 
 Aby uzyskać więcej informacji na temat aktualizowania pakietów administracyjnych rozwiązania, zobacz artykuł [Connect Operations Manager to Log Analytics](../../azure-monitor/platform/om-agents.md) (Połączenie programu Operations Manager z usługą Log Analytics).
 
@@ -54,76 +54,76 @@ W poniższej tabeli opisano połączone źródła, które obsługuje to rozwiąz
 
 | Połączone źródło | Pomoc techniczna | Opis |
 |:--- |:--- |:--- |
-| [Agenci dla systemu Windows](agent-windows.md) | Nie |Agentów bezpośrednich Windows nie generują alerty.  Można tworzyć alertów usługi log Analytics na podstawie zdarzenia i dane wydajności zbierane z Windows agentów. |
-| [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie |Bezpośredni agenci dla systemu Linux nie generują alerty.  Alertów usługi log Analytics można utworzyć zdarzenia i dane dotyczące wydajności zbierane z agentów dla systemu Linux.  Alerty programów Nagios i Zabbix są zbierane przy użyciu tych serwerów, które wymagają agenta systemu Linux. |
-| [Grupa zarządzania programu System Center Operations Manager](../../azure-monitor/platform/om-agents.md) |Yes |Alerty, które są generowane na agentów programu Operations Manager są dostarczane z grupą zarządzania i następnie przekazywane do usługi Log Analytics.<br><br>Bezpośrednie połączenie agenta programu Operations Manager do usługi Log Analytics nie jest wymagane. Dane alertu są przekazywane z grupy zarządzania do repozytorium usługi Log Analytics. |
+| [Agenci dla systemu Windows](agent-windows.md) | Nie |Bezpośredni agenci systemu Windows nie generują alertów.  Alerty Log Analytics mogą być tworzone na podstawie zdarzeń i danych wydajności zebranych z agentów systemu Windows. |
+| [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie |Agenci bezpośredniego systemu Linux nie generują alertów.  Alerty Log Analytics mogą być tworzone na podstawie zdarzeń i danych wydajności zebranych z agentów systemu Linux.  Alerty Nagios i Zabbix są zbierane z tych serwerów, które wymagają agenta systemu Linux. |
+| [System Center Operations Manager grupy zarządzania](../../azure-monitor/platform/om-agents.md) |Tak |Alerty generowane przez agentów Operations Manager są dostarczane do grupy zarządzania, a następnie przekazywane do Log Analytics.<br><br>Bezpośrednie połączenie od agentów Operations Manager do Log Analytics nie jest wymagane. Dane alertu są przekazywane z grupy zarządzania do repozytorium Log Analytics. |
 
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
-- Rekordy alertów są dostępne do rozwiązania, jak są one przechowywane w repozytorium.
-- Dane alertu są wysyłane z grupy zarządzania programu Operations Manager do usługi Log Analytics co trzy minuty.  
+- Rekordy alertów są dostępne dla rozwiązania, gdy tylko są przechowywane w repozytorium.
+- Dane alertu są wysyłane z grupy zarządzania Operations Manager do Log Analytics co trzy minuty.  
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
-Po dodaniu rozwiązania do zarządzania alertami do obszaru roboczego usługi Log Analytics, **zarządzania alertami** zostanie dodany Kafelek do pulpitu nawigacyjnego.  Ten Kafelek zawiera liczbę oraz graficzną reprezentację liczby aktywnych alertów, które zostały wygenerowane w ciągu ostatnich 24 godzin.  Nie można zmienić ten zakres czasu.
+Po dodaniu Alert Management rozwiązanie do obszaru roboczego Log Analytics kafelek **alert Management** zostanie dodany do pulpitu nawigacyjnego.  Ten kafelek przedstawia liczbę i graficzną reprezentację liczby aktywnych alertów, które zostały wygenerowane w ciągu ostatnich 24 godzin.  Tego zakresu czasu nie można zmienić.
 
-![Kafelek Zarządzanie alertu](media/alert-management-solution/tile.png)
+![Kafelek Alert Management](media/alert-management-solution/tile.png)
 
-Kliknij pozycję **zarządzania alertami** Kafelek, aby otworzyć **zarządzania alertami** pulpitu nawigacyjnego.  Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli.  Każda kolumna zawiera listę 10 najważniejszych alertów według liczby odpowiadającego kryteriom tej kolumny dla określonego zakresu i przedziału czasu.  Można uruchomić wyszukiwanie w dzienniku, który zawiera całą listę, klikając pozycję **holograficznych** na dole kolumny lub przez kliknięcie nagłówka kolumny.
+Kliknij kafelek **alert Management** , aby otworzyć pulpit nawigacyjny **alert Management** .  Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli.  Każda kolumna zawiera 10 najważniejszych alertów według liczby pasujących do kryteriów tej kolumny dla określonego zakresu i zakresu czasu.  Możesz uruchomić wyszukiwanie w dzienniku, które udostępnia całą listę, klikając pozycję **Zobacz wszystko** u dołu kolumny lub klikając nagłówek kolumny.
 
 | Kolumna | Opis |
 |:--- |:--- |
-| Alerty krytyczne |Wszystkie alerty o ważności krytycznej, pogrupowane według nazwy alertu.  Kliknij nazwę alertu, aby uruchomić wyszukiwanie w dzienniku zwraca wszystkie rekordy dla tego alertu. |
-| Alerty ostrzegawcze |Wszystkie alerty o ważności ostrzeżenia, pogrupowane według nazwy alertu.  Kliknij nazwę alertu, aby uruchomić wyszukiwanie w dzienniku zwraca wszystkie rekordy dla tego alertu. |
-| Aktywne alerty programu SCOM |Wszystkie alerty zbierane z programu Operations Manager z dowolny stan inny niż *zamknięte* pogrupowane według źródła, który wygenerował alert. |
-| Wszystkie aktywne alerty |Wszystkie alerty o dowolnym ważności, pogrupowane według nazwy alertu. Zawiera tylko alertów programu Operations Manager z dowolny stan inny niż *zamknięte*. |
+| Alerty krytyczne |Wszystkie alerty o ważności krytyczne pogrupowane według nazwy alertu.  Kliknij nazwę alertu, aby uruchomić przeszukiwanie dziennika zwracające wszystkie rekordy dla tego alertu. |
+| Alerty ostrzegawcze |Wszystkie alerty o ważności ostrzeżenie pogrupowane według nazwy alertu.  Kliknij nazwę alertu, aby uruchomić przeszukiwanie dziennika zwracające wszystkie rekordy dla tego alertu. |
+| Alerty aktywnych System Center Operations Manager |Wszystkie alerty zebrane z Operations Manager z dowolnym stanem innym niż *zamknięte* pogrupowane według źródła, które wygenerowały alert. |
+| Wszystkie aktywne alerty |Wszystkie alerty o ważności pogrupowane według nazwy alertu. Zawiera tylko alerty Operations Manager z dowolnym stanem innym niż *zamknięty*. |
 
-Po przewinięciu w prawo, pulpit nawigacyjny zawiera listę kilku typowych zapytań, które możesz kliknąć do wykonywania [wyszukiwanie w dzienniku](../../azure-monitor/log-query/log-query-overview.md) alertów danych.
+W przypadku przewijania po prawej stronie Pulpit nawigacyjny zawiera kilka typowych zapytań, które można kliknąć, aby wykonać [Wyszukiwanie w dzienniku](../../azure-monitor/log-query/log-query-overview.md) dla danych alertów.
 
-![Zgłoś alert, pulpit nawigacyjny zarządzania](media/alert-management-solution/dashboard.png)
+![Pulpit nawigacyjny Alert Management](media/alert-management-solution/dashboard.png)
 
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
-Rozwiązanie zarządzania alertami analizuje każdy rekord o typie **alertu**.  Alerty utworzone przez usługę Log Analytics lub zbierane z Nagios i Zabbix nie są bezpośrednio zbierane przez rozwiązanie.
+Rozwiązanie Alert Management analizuje każdy rekord z typem **alertu**.  Alerty utworzone przez Log Analytics lub zebrane z Nagios lub Zabbix nie są bezpośrednio zbierane przez rozwiązanie.
 
-Rozwiązanie zaimportować alerty z programu System Center Operations Manager i tworzy odpowiedni rekord dla każdego typu **alertu** i system źródłowy **OpsManager**.  Te rekordy mają właściwości podane w poniższej tabeli:  
+Rozwiązanie wykonuje Importowanie alertów z System Center Operations Manager i tworzy odpowiadające im rekordy dla każdego typu **alertu** i SourceSystem **OpsManager**.  Te rekordy mają właściwości w poniższej tabeli:  
 
 | Właściwość | Opis |
 |:--- |:--- |
-| `Type` |*Zgłoś alert* |
+| `Type` |*Wiadom* |
 | `SourceSystem` |*OpsManager* |
-| `AlertContext` |Szczegóły elementu danych, który spowodował alert zostanie wygenerowany w formacie XML. |
+| `AlertContext` |Szczegóły elementu danych, który spowodował wygenerowanie alertu w formacie XML. |
 | `AlertDescription` |Szczegółowy opis alertu. |
 | `AlertId` |Identyfikator GUID alertu. |
 | `AlertName` |Nazwa alertu. |
-| `AlertPriority` |Priorytet alertu. |
+| `AlertPriority` |Poziom priorytetu alertu. |
 | `AlertSeverity` |Poziom ważności alertu. |
 | `AlertState` |Najnowszy stan rozwiązywania alertu. |
 | `LastModifiedBy` |Nazwa użytkownika, który ostatnio zmodyfikował alert. |
-| `ManagementGroupName` |Nazwa grupy zarządzania, w którym alert został wygenerowany. |
-| `RepeatCount` |Liczba przypadków, gdy ten sam alert został wygenerowany dla tego samego monitorowany obiekt od rozwiązania. |
-| `ResolvedBy` |Nazwa użytkownika, który rozpoznał alertu. Pusty, jeśli wpis nie został jeszcze rozwiązane. |
-| `SourceDisplayName` |Wyświetlana nazwa obiektu monitorowania, który wygenerował alert. |
+| `ManagementGroupName` |Nazwa grupy zarządzania, w której został wygenerowany alert. |
+| `RepeatCount` |Liczba przypadków wygenerowania tego samego monitorowanego obiektu od momentu jego rozpoznania. |
+| `ResolvedBy` |Nazwa użytkownika, który rozwiązał alert. Puste, jeśli alert nie został jeszcze rozwiązany. |
+| `SourceDisplayName` |Nazwa wyświetlana obiektu monitorowania, który wygenerował alert. |
 | `SourceFullName` |Pełna nazwa obiektu monitorowania, który wygenerował alert. |
-| `TicketId` |Identyfikator biletu, alert, jeśli środowisko programu System Center Operations Manager jest zintegrowane z procesem przypisywania biletów dla alertów.  Identyfikator pusty biletu nie jest przypisany. |
+| `TicketId` |Identyfikator biletu dla alertu, jeśli środowisko System Center Operations Manager jest zintegrowane z procesem przypisywania biletów dla alertów.  Pusty identyfikator biletu nie jest przypisany. |
 | `TimeGenerated` |Data i godzina utworzenia alertu. |
-| `TimeLastModified` |Data i godzina ostatniej modyfikacji alertu. |
-| `TimeRaised` |Data i godzina, który został wygenerowany alert. |
-| `TimeResolved` |Data i godzina, który ten alert został rozwiązany. Pusty, jeśli wpis nie został jeszcze rozwiązane. |
+| `TimeLastModified` |Data i godzina ostatniej zmiany alertu. |
+| `TimeRaised` |Data i godzina wygenerowania alertu. |
+| `TimeResolved` |Data i godzina, o której alert został rozwiązany. Puste, jeśli alert nie został jeszcze rozwiązany. |
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
-Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów alertu zbieranych przez to rozwiązanie: 
+Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów alertów zebranych przez to rozwiązanie: 
 
 | Zapytanie | Opis |
 |:---|:---|
-| Alert &#124; gdzie system źródłowy == "OpsManager" i AlertSeverity == "error" i TimeRaised > ago(24h) |Alerty krytyczne zgłoszone w ciągu ostatnich 24 godzin |
-| Alert &#124; gdzie AlertSeverity == "ostrzeżenie" i TimeRaised > ago(24h) |Alerty ostrzegawcze zgłoszone w ciągu ostatnich 24 godzin |
-| Alert &#124; gdzie system źródłowy == "OpsManager" i stan alertu! = "Zamknięte" i TimeRaised > ago(24h) &#124; podsumowanie liczby = count() by SourceDisplayName |Źródła z aktywnymi alertami zgłoszonymi w ciągu ostatnich 24 godzin |
-| Alert &#124; gdzie system źródłowy == "OpsManager" i AlertSeverity == "error" i TimeRaised > ago(24h) i stan alertu! = "Zamknięte" |Alerty krytyczne zgłoszone w ciągu ostatnich 24 godzin, które są nadal aktywne |
-| Alert &#124; gdzie system źródłowy == "OpsManager" i TimeRaised > ago(24h) i stan alertu == "Zamknięte" |Alerty zgłoszone w ciągu ostatnich 24 godzin, które teraz są zamknięte |
-| Alert &#124; gdzie system źródłowy == "OpsManager" i TimeRaised > ago(1d) &#124; podsumowanie liczby = count() by AlertSeverity |Alerty zgłoszone w ciągu ostatniej doby pogrupowane według ważności |
-| Alert &#124; gdzie system źródłowy == "OpsManager" i TimeRaised > ago(1d) &#124; Sortuj według malejącej RepeatCount |Alerty zgłoszone w ciągu ostatniej doby posortowane według wartości liczby powtórzeń |
+| Alert &#124; , gdzie SourceSystem = = "OpsManager" i AlertSeverity = = "Error" i TimeRaised > temu (24 godziny) |Alerty krytyczne zgłoszone w ciągu ostatnich 24 godzin |
+| Alert &#124; , gdzie AlertSeverity = = "Warning" i TimeRaised > temu (24 godziny) |Alerty ostrzegawcze zgłoszone w ciągu ostatnich 24 godzin |
+| Alert &#124; , gdzie SourceSystem = = "OpsManager" i stan alertu! = "Closed" oraz TimeRaised > temu (24 godziny &#124; ) podsumowanie liczby = Count () przez SourceDisplayName |Źródła z aktywnymi alertami zgłoszonymi w ciągu ostatnich 24 godzin |
+| Alert &#124; , gdzie SourceSystem = = "OpsManager" i AlertSeverity = = "Error" i TimeRaised > temu (24 godziny) i stan alertu! = "Closed" |Alerty krytyczne zgłoszone w ciągu ostatnich 24 godzin, które są nadal aktywne |
+| Alert &#124; , gdzie SourceSystem = = "OpsManager" i TimeRaised > temu (24 godziny) i stan alertu = = "zamknięte" |Alerty zgłoszone w ciągu ostatnich 24 godzin, które są teraz zamknięte |
+| Alert &#124; , gdzie SourceSystem = = "OpsManager" i TimeRaised > temu (1D &#124; ) Sumuj liczbę = Count () przez AlertSeverity |Alerty zgłoszone w ciągu ostatnich 1 dnia pogrupowane według ich ważności |
+| Alert &#124; , gdzie SourceSystem = = "OpsManager" i TimeRaised > temu (1D &#124; ) Sortuj według opisu RepeatCount |Alerty zgłoszone w ciągu ostatniej doby posortowane według wartości liczby powtórzeń |
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej na temat [alertów w usłudze Log Analytics](../../azure-monitor/platform/alerts-overview.md), aby poznać szczegóły generowania alertów z usługi Log Analytics.

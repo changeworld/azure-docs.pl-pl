@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 5a6c87da7ae62af54990e0a1a2c62065717a201a
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 70e58077fa40ce685324cd24b447886ec3411034
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256951"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703179"
 ---
 # <a name="authoring-and-runtime-keys"></a>Klucze tworzenia i środowiska uruchomieniowego
 
@@ -29,9 +29,9 @@ LUIS używa dwóch typów zasobów platformy Azure, każdy typ ma klucze:
 * [Tworzenie w celu utworzenia](#programmatic-key) intencji, jednostek i etykiet wyrażenia długości, uczenia i publikowania. Gdy wszystko będzie gotowe do opublikowania aplikacji LUIS, potrzebujesz [klucza punktu końcowego przewidywania dla środowiska uruchomieniowego](luis-how-to-azure-subscription.md) przypisanego do aplikacji.
 * [Klucz punktu końcowego przewidywania dla środowiska uruchomieniowego](#prediction-endpoint-runtime-key). Aplikacje klienckie, takie jak rozmowa bot, wymagają dostępu do **punktu końcowego przewidywania zapytań** środowiska uruchomieniowego za pomocą tego klucza. 
 
-|Klucz|Cel|Usługa poznawcze`kind`|Usługa poznawcze`type`|
+|Key|Cel|Usługa poznawcze `kind`|Usługa poznawcze `type`|
 |--|--|--|--|
-|[Tworzenie klucza](#programmatic-key)|Tworzenie, uczenie, publikowanie, testowanie.|`LUIS.Authoring`|`Cognitive Services`|
+|[Klucz tworzenia](#programmatic-key)|Tworzenie, uczenie, publikowanie, testowanie.|`LUIS.Authoring`|`Cognitive Services`|
 |[Klucz środowiska uruchomieniowego punktu końcowego przewidywania](#prediction-endpoint-runtime-key)| Przepowiadaj zapytania do środowiska uruchomieniowego punktu końcowego za pomocą wypowiedź użytkownika, aby określić intencje i jednostki.|`LUIS`|`Cognitive Services`|
 
 LUIS udostępnia również [klucz początkowy](luis-how-to-azure-subscription.md#starter-key) z 1000 transakcji na miesiąc przewidywania. 
@@ -42,7 +42,7 @@ Ważne jest, aby tworzyć aplikacje LUIS w [regionach](luis-reference-regions.md
 
 <a name="programmatic-key" ></a>
 
-## <a name="authoring-key"></a>Tworzenie klucza
+## <a name="authoring-key"></a>Klucz tworzenia
 
 Klucz tworzenia jest tworzony automatycznie podczas tworzenia konta LUIS i jest bezpłatny. Po rozpoczęciu pracy z usługą LUIS masz jeden klucz startowy dla wszystkich aplikacji LUIS dla każdego [regionu](luis-reference-regions.md)tworzenia. Celem klucza tworzenia jest zapewnienie uwierzytelniania w celu zarządzania aplikacją LUIS lub testowania zapytań dotyczących punktów końcowych przewidywania. 
 
@@ -50,7 +50,7 @@ Tworzenie kluczy tworzenia w Azure Portal umożliwia kontrolowanie uprawnień do
 
 Aby znaleźć klucz tworzenia, zaloguj się do [Luis](luis-reference-regions.md#luis-website) i kliknij nazwę konta w prawym górnym pasku nawigacyjnym, aby otworzyć **Ustawienia konta**.
 
-![Tworzenie klucza](./media/luis-concept-keys/authoring-key.png)
+![Klucz tworzenia](./media/luis-concept-keys/authoring-key.png)
 
 Jeśli chcesz wykonać **zapytania środowiska uruchomieniowego**, utwórz zasób usługi Azure [Luis](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). 
 
@@ -67,7 +67,7 @@ Gdy są potrzebne **zapytania punktu końcowego środowiska uruchomieniowego**, 
 
 Po zakończeniu procesu tworzenia zasobu [Przypisz klucz](luis-how-to-azure-subscription.md) do aplikacji. 
 
-* Klucz środowiska uruchomieniowego (punkt końcowy przewidywania zapytania) umożliwia przydział trafień punktów końcowych na podstawie planu użycia określonego podczas tworzenia klucza czasu wykonywania. Zobacz [ceny usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) Aby uzyskać informacje o cenach.
+* Klucz środowiska uruchomieniowego (punkt końcowy przewidywania zapytania) umożliwia przydział trafień punktów końcowych na podstawie planu użycia określonego podczas tworzenia klucza czasu wykonywania. Aby uzyskać informacje o cenach, zobacz [Cennik usługi Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) .
 
 * Klucz czasu wykonywania może być używany dla wszystkich aplikacji LUIS lub określonych aplikacji LUIS. 
 * Nie należy używać klucza środowiska uruchomieniowego do tworzenia aplikacji LUIS. 
@@ -83,28 +83,46 @@ Jest to specjalny zasób utworzony przez Ciebie. Nie jest ona wyświetlana na li
 ### <a name="use-runtime-key-in-query"></a>Użyj klucza środowiska uruchomieniowego w zapytaniu
 Punkt końcowy LUIS środowiska uruchomieniowego akceptuje dwa style zapytania, oba używają klucza środowiska uruchomieniowego punktu końcowego przewidywania, ale w różnych miejscach.
 
-Punkt końcowy używany do uzyskiwania dostępu do środowiska uruchomieniowego używa poddomeny, która jest unikatowa dla regionu zasobu, `{region}` w poniższej tabeli. 
+Punkt końcowy służący do uzyskiwania dostępu do środowiska uruchomieniowego używa poddomeny, która jest unikatowa dla regionu zasobu, co oznacza `{region}` w poniższej tabeli. 
 
-|zlecenia|Przykład lokalizacji adresu url i klucz|
+
+#### <a name="v2-prediction-endpointtabv2"></a>[Punkt końcowy przewidywania wersji 2](#tab/V2)
+
+|Czasownik|Przykładowy adres URL i lokalizacja klucza|
 |--|--|
-|[GET](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>wartość ciągu zapytania `runtime-key`<br><br>Zmień wartość kwerendy punktu końcowego dla `runtime-key` z tworzenia klucza (starter), do nowego klucza punktu końcowego, aby można było używać współczynnik przydziału klucza punktu końcowego usługi LUIS. Jeśli klucz zostanie utworzony i przypisz klucza, ale nie zmieniaj wartości kwerendy punktu końcowego dla `runtime-key`, nie używasz przydziału klucza punktu końcowego.|
-|[POST](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> wartość nagłówka `Ocp-Apim-Subscription-Key`<br>Jeśli utworzysz klucz środowiska uruchomieniowego i przypiszesz klucz środowiska uruchomieniowego, ale nie zmienisz wartości zapytania `Ocp-Apim-Subscription-Key`punktu końcowego dla, nie używasz klucza czasu wykonywania.|
+|[Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`|
+|[POUBOJOWEGO](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`|
 
-Identyfikator aplikacji używane w poprzednich adresów URL, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, jest publiczny aplikacja IoT, używana do [pokaz interaktywny](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). 
+#### <a name="v3-prediction-endpointtabv3"></a>[Punkt końcowy przewidywania v3](#tab/V3)
+
+|Czasownik|Przykładowy adres URL i lokalizacja klucza|
+|--|--|
+|[Pobierz](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a91e54c9db63d589f433)|`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?runtime-key=your-endpoint-key-here&query=turn%20on%20the%20lights`|
+|[POUBOJOWEGO](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a5830f741b27cd03a061)| `https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict`| 
+
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+* * * 
+
+**Pobierz**: Zmień wartość zapytania punktu końcowego dla `runtime-key` z klucza tworzenia (Starter) na nowy klucz punktu końcowego, aby użyć stawki przydziału klucza punktu końcowego Luis. Jeśli utworzysz klucz i przypiszesz klucz, ale nie zmienisz wartości zapytania punktu końcowego dla `runtime-key`, nie używasz limitu przydziału klucza punktu końcowego.
+
+**Wpis**: Zmień wartość nagłówka `Ocp-Apim-Subscription-Key`<br>Jeśli utworzysz klucz środowiska uruchomieniowego i przypiszesz klucz środowiska uruchomieniowego, ale nie zmienisz wartości zapytania punktu końcowego dla `Ocp-Apim-Subscription-Key`, nie używasz klucza czasu wykonywania.
+
+Identyfikator aplikacji użyty w poprzednich adresach URL, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, to publiczna aplikacja IoT używana do [prezentacji interaktywnej](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). 
 
 ## <a name="assignment-of-the-runtime-key"></a>Przypisanie klucza czasu wykonywania
 
 Klucz środowiska uruchomieniowego można [przypisać](luis-how-to-azure-subscription.md) w [portalu Luis](https://www.luis.ai) lub za pośrednictwem odpowiednich interfejsów API. 
 
-## <a name="key-limits"></a>Ograniczenia klucza
+## <a name="key-limits"></a>Limity kluczy
 
 Można utworzyć maksymalnie 10 kluczy tworzenia na region na subskrypcję. 
 
 Zobacz [limity kluczy](luis-boundaries.md#key-limits) i [regiony platformy Azure](luis-reference-regions.md). 
 
-Regiony publikowania różnią się od tworzenia regionów. Upewnij się, że tworzysz aplikację w regionie tworzenia odpowiadającą regionowi publikowania, który ma znajdować się aplikacja kliencka.
+Publikowanie regionów różni się od regionów tworzenia. Upewnij się, że tworzysz aplikację w regionie tworzenia odpowiadającą regionowi publikowania, który ma znajdować się aplikacja kliencka.
 
-## <a name="key-limit-errors"></a>Błędy limitu klucza
+## <a name="key-limit-errors"></a>Błędy limitu kluczy
 W przypadku przekroczenia limitu przydziału transakcji na sekundę (TPS) pojawia się błąd HTTP 429. W przypadku przekroczenia limitu przydziału transakcji na miesiąc (TPS) pojawia się błąd HTTP 403. 
 
 ## <a name="contributions-from-other-authors"></a>Wkłady od innych autorów
@@ -143,59 +161,59 @@ Dostęp do aplikacji z portalu [Luis](luis-reference-regions.md#luis-website) lu
 
 Właściciel i wszyscy Współautorzy mają dostęp do tworzenia aplikacji. 
 
-|Tworzenie dostępu zawiera|Uwagi|
+|Dostęp do tworzenia obejmuje|Uwagi|
 |--|--|
-|Dodawanie lub usuwanie punktu końcowego kluczy||
+|Dodaj lub Usuń klucze punktów końcowych||
 |Eksportowanie wersji||
-|Eksportuj dzienniki punktu końcowego||
-|Importowanie wersji||
-|Upublicznić aplikacji|Gdy aplikacja jest publiczny, każda osoba z kluczem tworzenia lub punkt końcowy kwerendy aplikacji.|
-|Modyfikowanie modelu|
-|Publikowanie|
-|Przejrzyj wypowiedzi punktu końcowego dla [aktywne uczenie](luis-how-to-review-endpoint-utterances.md)|
-|Szkolenie|
+|Eksportowanie dzienników punktów końcowych||
+|Wersja importowana||
+|Tworzenie aplikacji jako publicznej|Gdy aplikacja jest publiczna, każda osoba mająca klucz tworzenia lub punktu końcowego może wysyłać zapytania do aplikacji.|
+|Modyfikuj model|
+|wycofywan|
+|Zapoznaj się z punktem końcowym wyrażenia długości na potrzeby [aktywnego uczenia](luis-how-to-review-endpoint-utterances.md)|
+|Trasy|
 
 ### <a name="prediction-endpoint-runtime-access"></a>Dostęp w czasie wykonywania przewidywania punktu końcowego
 
 Dostęp do zapytania do punktu końcowego przewidywania jest kontrolowany przez ustawienie na stronie **Informacje o aplikacji** w sekcji **Zarządzanie** . 
 
-![Zestaw aplikacji na publiczną](./media/luis-concept-security/set-application-as-public.png)
+![Ustaw aplikację na publiczną](./media/luis-concept-security/set-application-as-public.png)
 
-|[Prywatnych punktów końcowych](#runtime-security-for-private-apps)|[Publiczny punkt końcowy](#runtime-security-for-public-apps)|
+|[Prywatny punkt końcowy](#runtime-security-for-private-apps)|[Publiczny punkt końcowy](#runtime-security-for-public-apps)|
 |:--|:--|
 |Dostępne dla właściciela i współautorów|Dostępne dla właściciela, współautorów i innych osób, które wiedzą o IDENTYFIKATORze aplikacji|
 
-Można kontrolować, kto widzi klucz środowiska uruchomieniowego LUIS, wywołując go w środowisku serwer-serwer. Usługa LUIS korzystają z robota, połączenie między bot i LUIS jest już bezpieczne. Bezpośrednie wywoływanie punktu końcowego usługi LUIS należy utworzyć interfejs API po stronie serwera (takich jak Azure [funkcja](https://azure.microsoft.com/services/functions/)) przy użyciu kontrolowanego dostępu (takich jak [AAD](https://azure.microsoft.com/services/active-directory/)). Gdy interfejs API po stronie serwera jest wywoływany i uwierzytelniany, a Autoryzacja jest weryfikowana, należy przekazać wywołanie do LUIS. Chociaż ta strategia nie zapobiega atakom typu man-in-the-Middle, zasłania klucz i adres URL punktu końcowego od użytkowników, umożliwia śledzenie dostępu i umożliwia dodanie rejestrowania odpowiedzi na punkt końcowy (na przykład [Application Insights](https://azure.microsoft.com/services/application-insights/)).
+Można kontrolować, kto widzi klucz środowiska uruchomieniowego LUIS, wywołując go w środowisku serwer-serwer. Jeśli używasz LUIS z bot, połączenie między bot i LUIS jest już bezpieczne. W przypadku bezpośredniego wywoływania punktu końcowego LUIS należy utworzyć interfejs API po stronie serwera (na przykład [funkcję](https://azure.microsoft.com/services/functions/)platformy Azure) z dostępem kontrolowanym (na przykład [AAD](https://azure.microsoft.com/services/active-directory/)). Gdy interfejs API po stronie serwera jest wywoływany i uwierzytelniany, a Autoryzacja jest weryfikowana, należy przekazać wywołanie do LUIS. Chociaż ta strategia nie zapobiega atakom typu man-in-the-Middle, zasłania klucz i adres URL punktu końcowego od użytkowników, umożliwia śledzenie dostępu i umożliwia dodanie rejestrowania odpowiedzi na punkt końcowy (na przykład [Application Insights](https://azure.microsoft.com/services/application-insights/)).
 
 #### <a name="runtime-security-for-private-apps"></a>Zabezpieczenia środowiska uruchomieniowego dla prywatnych aplikacji
 
 Środowisko uruchomieniowe aplikacji prywatnej jest dostępne tylko dla następujących:
 
-|Klucz i użytkownika|Wyjaśnienie|
+|Klucz i użytkownik|Wyjaśnienie|
 |--|--|
-|Klucz tworzenia właściciela| Maksymalnie 1000 punkt końcowy trafień|
-|Współautorzy/klucze autorstwa| Maksymalnie 1000 punkt końcowy trafień|
+|Klucz autorstwa właściciela| Do 1000 trafień punktów końcowych|
+|Współautorzy/klucze autorstwa| Do 1000 trafień punktów końcowych|
 |Dowolny klucz przypisany do LUIS przez autora lub współpracownika/współautora|Na podstawie warstwy użycia klucza|
 
 #### <a name="runtime-security-for-public-apps"></a>Zabezpieczenia środowiska uruchomieniowego dla aplikacji publicznych
 
-Po skonfigurowaniu aplikacji jako publiczne, _wszelkie_ prawidłowe LUIS tworzenia klucza lub klucza punktu końcowego usługi LUIS mogą wysyłać zapytania swojej aplikacji, tak długo, jak klucz nie został użyty przydział całego punktu końcowego.
+Gdy aplikacja zostanie skonfigurowana jako publiczna, _dowolny_ prawidłowy klucz Luis Authoring lub klucz punktu końcowego Luis może wysyłać zapytania do aplikacji, o ile klucz nie użył całego limitu przydziału punktów końcowych.
 
-Użytkownik, który nie jest właścicielem lub współautorem, może uzyskać dostęp do środowiska uruchomieniowego aplikacji publicznej tylko wtedy, gdy podano identyfikator aplikacji. Usługa LUIS nie ma publicznej _rynku_ lub w inny sposób wyszukiwania dla aplikacji w sieci publicznej.  
+Użytkownik, który nie jest właścicielem lub współautorem, może uzyskać dostęp do środowiska uruchomieniowego aplikacji publicznej tylko wtedy, gdy podano identyfikator aplikacji. LUIS nie ma publicznego _rynku_ ani innego sposobu wyszukiwania aplikacji publicznej.  
 
-Opublikowaniu publicznych aplikacji we wszystkich regionach, aby użytkownik z kluczem zależności od regionu zasobu usługi LUIS dostęp do aplikacji w niezależnie od regionu jest skojarzony z kluczem zasobów.
+Publiczna aplikacja jest publikowana we wszystkich regionach, dzięki czemu użytkownik z kluczem zasobów LUIS opartym na regionie może uzyskać dostęp do aplikacji w dowolnym regionie, który jest skojarzony z kluczem zasobu.
 
-## <a name="transfer-of-ownership"></a>Przeniesienie prawa własności
+## <a name="transfer-of-ownership"></a>Przeniesienie własności
 
-**W przypadku [tworzenia aplikacji migrowanych zasobów](luis-migration-authoring.md)** : 
+**W przypadku [tworzenia aplikacji migrowanych zasobów](luis-migration-authoring.md)** : jako właściciel zasobu można dodać `contributor`.
 
-**W przypadku aplikacji, które nie zostały jeszcze zmigrowane**: Wyeksportuj aplikację jako plik JSON. Inny użytkownik LUIS może zaimportować aplikację, w związku z czym staje się właścicielem aplikacji. Nowa aplikacja będzie mieć inny identyfikator aplikacji.  
+**W przypadku aplikacji, które nie zostały jeszcze zmigrowane**: wyeksportuj aplikację jako plik JSON. Inny użytkownik LUIS może zaimportować aplikację, w związku z czym staje się właścicielem aplikacji. Nowa aplikacja będzie mieć inny identyfikator aplikacji.  
 
 ## <a name="securing-the-endpoint"></a>Zabezpieczanie punktu końcowego 
 
-Można kontrolować, kto może wyświetlać klucz punktu końcowego środowiska uruchomieniowego LUIS prognoz, wywołując go w środowisku serwer-serwer. Usługa LUIS korzystają z robota, połączenie między bot i LUIS jest już bezpieczne. Bezpośrednie wywoływanie punktu końcowego usługi LUIS należy utworzyć interfejs API po stronie serwera (takich jak Azure [funkcja](https://azure.microsoft.com/services/functions/)) przy użyciu kontrolowanego dostępu (takich jak [AAD](https://azure.microsoft.com/services/active-directory/)). Gdy wywoływany jest interfejs API po stronie serwera i uwierzytelnianie i autoryzacja są weryfikowane, Przekaż wywołań do usługi LUIS. Chociaż ta strategia nie zapobiegać atakom typu man-in--middle, zaciemnia punktu końcowego od swoich użytkowników, pozwala na śledzenie dostępu i umożliwia dodawanie rejestrowania odpowiedzi punktu końcowego (takie jak [usługi Application Insights](https://azure.microsoft.com/services/application-insights/)).  
+Można kontrolować, kto może wyświetlać klucz punktu końcowego środowiska uruchomieniowego LUIS prognoz, wywołując go w środowisku serwer-serwer. Jeśli używasz LUIS z bot, połączenie między bot i LUIS jest już bezpieczne. W przypadku bezpośredniego wywoływania punktu końcowego LUIS należy utworzyć interfejs API po stronie serwera (na przykład [funkcję](https://azure.microsoft.com/services/functions/)platformy Azure) z dostępem kontrolowanym (na przykład [AAD](https://azure.microsoft.com/services/active-directory/)). Gdy wywoływany jest interfejs API po stronie serwera, a uwierzytelnianie i autoryzacja są weryfikowane, należy przekazać wywołanie do LUIS. Chociaż ta strategia nie zapobiega atakom typu man-in-the-Middle, zasłania swój punkt końcowy od użytkowników, umożliwia śledzenie dostępu i umożliwia dodanie rejestrowania odpowiedzi na punkt końcowy (na przykład [Application Insights](https://azure.microsoft.com/services/application-insights/)).  
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zrozumienie [versioning](luis-concept-version.md) pojęcia. 
+* Opis pojęć związanych z [przechowywaniem wersji](luis-concept-version.md) . 
 * Dowiedz się [, jak tworzyć klucze](luis-how-to-azure-subscription.md).

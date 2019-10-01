@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 318df27ebb822f49c1f8881d0bf68ac7167dea36
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351304"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695144"
 ---
-# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Tworzenie wielu etapów konwersacji za pomocą dodatkowych monitów
+# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Użyj monitów monitujących, aby utworzyć wiele zamian w konwersacji
 
 Użyj monitów uzupełniających i kontekstu, aby zarządzać wielokrotnymi _przełączami_, nazywanymi wieloma ruchami dla bot z jednego pytania do innego.
 
@@ -55,23 +55,37 @@ Po utworzeniu bazy wiedzy w sekcji Wypełnij w **bazie** wiedzy zostanie wyświe
 
 ![Pole wyboru umożliwiające włączenie wyodrębniania wieloskładnikowego](../media/conversational-context/enable-multi-turn.png)
 
-Po wybraniu tej opcji dla zaimportowanego dokumentu konwersacja z obsługą wielodostępności może być implikowana na podstawie struktury dokumentu. Jeśli ta struktura istnieje, QnA Maker powoduje utworzenie monitu monitujące, który umożliwia parowanie pytań i odpowiedzi w ramach procesu importowania. 
+Po wybraniu tej opcji konwersacja z obsługą wielodostępności może być implikowana na podstawie struktury dokumentu. Jeśli ta struktura istnieje, QnA Maker powoduje utworzenie monitu monitujące, który umożliwia parowanie pytań i odpowiedzi w ramach procesu importowania. 
 
 Strukturę wielostopniową można wywnioskować tylko na podstawie adresów URL, plików PDF lub plików DOCX. Aby zapoznać się z przykładem struktury, Wyświetl obraz [ręcznego pliku PDF użytkownika powierzchniowego](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). Ze względu na rozmiar tego pliku PDF zasób QnA Maker wymaga **warstwy cenowej wyszukiwania** **B** (15 indeksów) lub nowszej. 
 
 ![! [Przykład struktury w podręczniku użytkownika] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-Podczas importowania dokumentu PDF QnA Maker określa monity o instrukcje ze struktury, aby utworzyć przepływ konwersacji. 
+### <a name="determine-multi-turn-structure-from-format"></a>Określanie struktury z formatowaniem wielostopniowym
 
-1. W QnA Maker wybierz pozycję **Utwórz bazę wiedzy**.
-1. Utwórz lub Użyj istniejącej usługi QnA Maker. W poprzednim przykładzie powierzchni firmy Microsoft, ponieważ plik PDF jest zbyt duży dla mniejszej warstwy, Użyj usługi QnA Maker z **usługą wyszukiwania** **B** (15 indeksów) lub większą.
-1. Wprowadź nazwę bazy wiedzy, np. **Ręczne**.
-1. Zaznacz pole wyboru **Włącz wyodrębnianie z adresów URL, plików PDF lub DOCX** . 
-1. Wybierz ręczny adres URL powierzchni, **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** .
+QnA Maker określa wiele przełączania struktury z:
 
-1. Wybierz przycisk **Utwórz swoją KB** . 
+* Rozmiar czcionki nagłówka — Jeśli używasz stylu, koloru lub innego mechanizmu do oznaczania struktury w dokumencie, QnA Maker nie Wyodrębnij wyświetlonych przez siebie wierszy. 
 
-    Po utworzeniu bazy wiedzy zostanie wyświetlony widok par pytań i odpowiedzi.
+Reguły nagłówków obejmują:
+
+* Nie kończyj nagłówka ze znakiem zapytania, `?`. 
+
+### <a name="add-file-with-multi-turn-prompts"></a>Dodaj plik z wielowierszowymi instrukcjami
+
+Po dodaniu dokumentu z obsługą wielodostępności QnA Maker określa monity o instrukcje ze struktury, aby utworzyć przepływ konwersacji. 
+
+1. W QnA Maker wybierz istniejącą bazę wiedzy, która została utworzona z opcją **Włącz wyodrębnianie wieloskładnikowe z adresów URL, plików PDF lub DOCX.** dostępny. 
+1. Przejdź do strony **Ustawienia** , wybierz plik lub adres URL do dodania. 
+1. **Zapisz i Wyszkol** bazę wiedzy.
+
+> [!Caution]
+> Obsługa wyeksportowanych plików TSV lub XLS z użyciem wieloskładnikowej bazy wiedzy jako źródła danych dla nowej lub pustej bazy wiedzy nie jest obsługiwana. Należy **zaimportować** ten typ pliku z poziomu strony **ustawienia** w portalu QNA Maker, aby dodać do bazy wiedzy wyeksportowane komunikaty z obsługą wielowymiarową.
+
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tworzenie bazy wiedzy z instrukcjami wielodostępnymi za pomocą interfejsu API tworzenia
+
+Można utworzyć przypadek wiedzy z instrukcjami wieloletnimi przy użyciu [QNA Maker tworzenia interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Monity są dodawane do tablicy `prompts` właściwości `context`. 
 
 ## <a name="show-questions-and-answers-with-context"></a>Pokaż pytania i odpowiedzi z kontekstem
 
@@ -99,7 +113,7 @@ Dodawanie monitu monitujące do istniejącej pary pytań i odpowiedzi, która ni
 1. W wierszu dla **wylogowaniu**, w kolumnie **odpowiedź** wybierz pozycję **Dodaj monit**uzupełniający.
 1. W polach okna podręcznego **monitu (wersja ZApoznawcza)** wprowadź następujące wartości:
 
-    |Pole|Value|
+    |Pole|Wartość|
     |--|--|
     |Wyświetl tekst|Wprowadź Wyłącz **urządzenie**. Jest to niestandardowy tekst do wyświetlenia w wierszu monitu.|
     |Tylko kontekstowe| Zaznacz to pole wyboru. Odpowiedź jest zwracana tylko wtedy, gdy pytanie określa kontekst.|
@@ -127,29 +141,6 @@ Po utworzeniu monitu o podanie i istniejącej pary pytań i odpowiedzi jako **li
 1. Na górnym pasku nawigacyjnym **Zapisz i poszkol**.
 
 
-<!--
-
-## To find the best prompt answer, add metadata to follow-up prompts 
-
-If you have several follow-up prompts for a specific question-and-answer pair but you know, as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base. You can then send the metadata from the client application as part of the GenerateAnswer request.
-
-In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, and then the follow-ups are returned.
-
-1. Add metadata to each of the two follow-up question-and-answer pairs:
-
-    |Question|Add metadata|
-    |--|--|
-    |*Feedback on a QnA Maker service*|"Feature":"all"|
-    |*Feedback on an existing feature*|"Feature":"one"|
-    
-    ![The "Metadata tags" column for adding metadata to a follow-up prompt](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
-
-1. Select **Save and train**. 
-
-    When you send the question **Give feedback** with the metadata filter **Feature** with a value of **all**, only the question-and-answer pair with that metadata is returned. QnA Maker doesn't return both question-and-answer pairs, because both don't match the filter. 
-
--->
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Dodaj nową parę pytanie-odpowiedź jako monit
 
 Po dodaniu nowej pary pytań i odpowiedzi do bazy wiedzy każda para powinna być połączona z istniejącym pytaniem jako monitem.
@@ -159,7 +150,7 @@ Po dodaniu nowej pary pytań i odpowiedzi do bazy wiedzy każda para powinna by�
 1. W kolumnie **odpowiedź** dla tego pytania wybierz pozycję **Dodaj monit**uzupełniający. 
 1. W obszarze **monitu krok po prawej stronie (wersja ZApoznawcza)** Utwórz nowy monit uzupełniający, wprowadzając następujące wartości: 
 
-    |Pole|Value|
+    |Pole|Wartość|
     |--|--|
     |Wyświetl tekst|*Utwórz konto systemu Windows*. Niestandardowy tekst do wyświetlenia w wierszu monitu.|
     |Tylko kontekstowe|Zaznacz to pole wyboru. Ta odpowiedź jest zwracana tylko wtedy, gdy pytanie określa kontekst.|
@@ -374,21 +365,13 @@ Dodano prośby w bazie wiedzy i przetestowano przepływ w okienku testów. Teraz
 
 [Wyświetlany tekst i porządek wyświetlania](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)zwrócone w odpowiedzi JSON są obsługiwane do edycji przez [interfejs API aktualizacji](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). 
 
-<!--
-
-FIX - Need to go to parent, then answer column, then edit answer. 
-
--->
-
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tworzenie bazy wiedzy z instrukcjami wielodostępnymi za pomocą interfejsu API tworzenia
-
-Bazę wiedzy z obsługą wielodostępną można utworzyć przy użyciu [QNA Maker tworzenia interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Monity są dodawane do tablicy `prompts` właściwości `context`. 
-
-
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Dodawanie lub usuwanie wieloskładnikowych wierszy przy użyciu interfejsu API aktualizacji
 
 Możesz dodawać lub usuwać wieloosiowe polecenia przy użyciu [interfejsu API aktualizacji QNA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  Monity są dodawane w tablicy `promptsToAdd` właściwości `context` i macierzy `promptsToDelete`. 
 
+## <a name="export-knowledge-base-for-version-control"></a>Eksportuj bazę wiedzy na potrzeby kontroli wersji
+
+QnA Maker [obsługuje kontrolę wersji](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) w portalu QNA Maker przez dołączenie do wyeksportowanego pliku kroków konwersacji wielokierunkowej.
 
 ## <a name="next-steps"></a>Następne kroki
 

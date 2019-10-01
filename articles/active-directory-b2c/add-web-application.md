@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 3114f082a402fd005797b270cfdcd7527784dbe1
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: HT
+ms.openlocfilehash: 88ce3931d9f47b8c16251a45e54fa96b97f038e2
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679222"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693288"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Dodawanie aplikacji internetowego interfejsu API do dzierżawy Azure Active Directory B2C
 
@@ -42,10 +42,6 @@ Zakresy umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy s�
 
 Aby wywoływać chroniony internetowy interfejs API z aplikacji, należy udzielić aplikacji uprawnień do tego interfejsu. Na przykład w [samouczku: rejestrowanie aplikacji w Azure Active Directory B2C](tutorial-register-applications.md), aplikacja sieci Web jest tworzona w Azure AD B2C o nazwie *webapp1*. Za pomocą tej aplikacji można wywołać internetowy interfejs API.
 
-1. Wybierz pozycję **aplikacje**, a następnie wybierz aplikację sieci Web.
-1. Wybierz pozycję **Dostęp do interfejsu API**, a następnie wybierz polecenie **Dodaj**.
-1. Na liście rozwijanej **Wybierz interfejs API** wybierz pozycję *webapi1*.
-1. Z listy rozwijanej **Wybierz zakresy** wybierz zdefiniowane wcześniej zakresy. Na przykład *Demonstracja. odczyt* i *Demonstracja. Write*.
-1. Kliknij przycisk **OK**.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 Twoja aplikacja została zarejestrowana do wywoływania chronionego internetowego interfejsu API. Użytkownik uwierzytelnia się w usłudze Azure AD B2C, aby korzystać z aplikacji. Aplikacja uzyskuje autoryzację z usługi Azure AD B2C w celu uzyskiwania dostępu do chronionego internetowego interfejsu API.
