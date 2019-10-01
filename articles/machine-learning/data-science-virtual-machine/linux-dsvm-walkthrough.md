@@ -58,8 +58,8 @@ Następnie połącz dwa pliki razem:
 
 Zestaw danych zawiera kilka typów statystyk dla każdej wiadomości e-mail:
 
-* Kolumny, **takie\_jak\_Word FREQ * Word***, wskazują procent słów w wiadomości e-mail pasującej do *wyrazu*. Jeśli na przykład **słowo\_FREQ\_** ma wartość **1**, *nastąpiło*1% wszystkich wyrazów w wiadomości e-mail.
-* Kolumny, **takie\_jak\_char FREQ * char***, wskazują procent wszystkich znaków w wiadomości e-mail, która jest *znakiem*.
+* Kolumny, **takie\_jak\_Word FREQ *Word*,** wskazują procent słów w wiadomości e-mail pasującej do *wyrazu*. Jeśli na przykład **słowo\_FREQ\_** ma wartość **1**, *nastąpiło*1% wszystkich wyrazów w wiadomości e-mail.
+* Kolumny, **takie\_jak\_char FREQ *char*,** wskazują procent wszystkich znaków w wiadomości e-mail, która jest *znakiem*.
 * **wielkie\_Uruchom\_długość\_najdłuższy** jest najdłuższy okres sekwencję wielkie litery.
 * **wielkie\_Uruchom\_długość\_średni** jest średnia długość wszystkie sekwencje wielkie litery.
 * **wielkie\_Uruchom\_długość\_całkowita** jest łączna długość wszystkich sekwencji wielkie litery.
