@@ -99,7 +99,7 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) `{ENDPOINT_URI}` , aby uzyskać szczegółowe `{API_KEY}` informacje na temat sposobu pobierania wartości i.
 
-Przykłady polecenia są dostępne. [](anomaly-detector-container-configuration.md#example-docker-run-commands) `docker run`
+[Przykłady](anomaly-detector-container-configuration.md#example-docker-run-commands) polecenia są dostępne. `docker run`
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
