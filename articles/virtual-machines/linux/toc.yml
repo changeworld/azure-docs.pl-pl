@@ -35,21 +35,23 @@
       href: tutorial-backup-vms.md
     - name: 10 — Nadzorowanie maszyn wirtualnych
       href: tutorial-govern-resources.md
-    - name: 11 — Monitorowanie i aktualizowanie maszyn wirtualnych
-      href: tutorial-monitoring.md
-    - name: 12 — Zarządzanie zabezpieczeniami maszyn wirtualnych
+    - name: 11 — Śledzenie i aktualizowanie maszyn wirtualnych
+      href: tutorial-config-management.md
+    - name: 12 — Monitorowanie maszyn wirtualnych
+      href: tutorial-monitor.md
+    - name: 13 — Zarządzanie zabezpieczeniami maszyn wirtualnych
       href: tutorial-azure-security.md
-    - name: 13 — Wdrażanie usługi Jenkins
+    - name: 14 — Wdrażanie usługi Jenkins
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14 — Ciągła integracja/ciągłe wdrażanie za pomocą usługi Azure Pipelines
+    - name: 15 — Ciągła integracja/ciągłe wdrażanie za pomocą usługi Azure Pipelines
       href: tutorial-build-deploy-jenkins.md
-    - name: 15a — Tworzenie stosu LAMP
+    - name: 16a — Tworzenie stosu LAMP
       href: tutorial-lamp-stack.md
-    - name: 15b — Tworzenie stosu LEMP
+    - name: 16b — Tworzenie stosu LEMP
       href: tutorial-lemp-stack.md
-    - name: 15c — Tworzenie stosu MEAN
+    - name: 16c — Tworzenie stosu MEAN
       href: tutorial-mean-stack.md
-    - name: 16 — Zabezpieczanie serwera internetowego przy użyciu protokołu SSL
+    - name: 17 — Zabezpieczanie serwera internetowego przy użyciu protokołu SSL
       href: tutorial-secure-web-server.md
 - name: Przykłady
   items:

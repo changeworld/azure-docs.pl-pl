@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Azure Security Center — dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa | Microsoft Docs'
-description: Ten przewodnik Szybki start przedstawia, jak zmienić warstwę cenową usługi Security Center na wyższą warstwę Standardowa w celu zapewnienia dodatkowych zabezpieczeń.
+title: Azure Security Center przewodniku szybki start — dołączanie subskrypcji platformy Azure do Security Center Standard | Microsoft Docs
+description: W tym przewodniku szybki start przedstawiono, jak przeprowadzić uaktualnienie do warstwy cenowej standardowa Security Center, aby zwiększyć bezpieczeństwo.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,99 +14,99 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 138d3fd74b95fe8d51593fcbb2cedda017e35d80
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 689949b2b6fea1dcd06741fd3fc19c9371a96784
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202153"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676390"
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Szybki start: Dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa
-Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i ochronę przed zagrożeniami na potrzeby różnych obciążeń chmury hybrydowej. Warstwa Bezpłatna zapewnia ograniczone bezpieczeństwo jedynie zasobów platformy Azure, natomiast warstwa Standardowa rozszerza te możliwości na środowisko lokalne i inne chmury. Usługa Security Center w warstwie Standardowa pomaga w wyszukiwaniu i naprawianiu luk w zabezpieczeniach, stosowaniu kontroli dostępu i aplikacji w celu blokowania złośliwych działań, wykrywaniu zagrożeń przy użyciu analizy oraz szybkim reagowaniu podczas ataku. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
+# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Szybki Start: dołączanie subskrypcji platformy Azure do usługi Security Center Standard
+Azure Security Center zapewnia ujednolicone Zarządzanie zabezpieczeniami i ochronę przed zagrożeniami w ramach obciążeń chmury hybrydowej. Chociaż warstwa Bezpłatna oferuje ograniczone zabezpieczenia tylko dla zasobów platformy Azure, warstwa standardowa rozszerza te możliwości do lokalnych i innych chmur. Security Center Standard ułatwia znajdowanie i rozwiązywanie luk w zabezpieczeniach, stosowanie kontroli dostępu i aplikacji w celu blokowania złośliwych działań, wykrywanie zagrożeń przy użyciu analiz i analiz oraz szybkie reagowanie na ataki. Możesz bezpłatnie wypróbować Security Center Standard. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
-W tym artykule zmienisz warstwę usługi na wyższą warstwę Standardowa, aby zapewnić dodatkowe zabezpieczenia, i zainstalujesz program Microsoft Monitoring Agent na swoich maszynach wirtualnych w celu monitorowania luk w zabezpieczeniach i zagrożeń.
+Ten artykuł zawiera uaktualnienie do warstwy Standardowa w celu zwiększenia bezpieczeństwa i zainstalowania Microsoft Monitoring Agent na maszynach wirtualnych w celu monitorowania luk w zabezpieczeniach i zagrożeń.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do rozpoczęcia korzystania z usługi Security Center wymagana jest subskrypcja usługi Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
+Aby rozpocząć pracę z usługą Security Center, musisz mieć subskrypcję, aby Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się w celu uzyskania [bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
 
-Aby zmienić warstwę subskrypcji na wyższą warstwę Standardowa, musisz mieć przypisaną rolę właściciela subskrypcji, współautora subskrypcji lub administratora zabezpieczeń.
+Aby uaktualnić subskrypcję do warstwy Standardowa, musisz mieć przypisaną rolę właściciela subskrypcji, współautora subskrypcji lub administratora zabezpieczeń.
 
-## <a name="enable-your-azure-subscription"></a>Włączanie subskrypcji platformy Azure
+## <a name="enable-your-azure-subscription"></a>Włącz subskrypcję platformy Azure
 
 1. Zaloguj się do [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. W menu platformy **Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**.
+2. W menu **Microsoft Azure** wybierz pozycję **Security Center**. **Security Center — przegląd** zostanie otwarty.
 
-   ![Security Center — Przegląd][2]
+   ![Przegląd Security Center][2]
 
-Okno **Security Center — Przegląd** zapewnia ujednolicony wgląd w stan zabezpieczeń obciążeń chmury hybrydowej, dzięki czemu możesz odnajdywać i oceniać zabezpieczenia obciążeń oraz identyfikować i ograniczać ryzyko. Usługa Security Center automatycznie włącza warstwę Bezpłatna dla wszystkich subskrypcji platformy Azure, które nie zostały wcześniej dołączone przez Ciebie lub innego użytkownika subskrypcji.
+**Security Center — Omówienie** zapewnia ujednolicony wgląd w stan zabezpieczeń obciążeń chmury hybrydowej, co pozwala odkrywać i oceniać zabezpieczenia obciążeń oraz identyfikować i ograniczać ryzyko. Security Center automatycznie włącza wszystkie subskrypcje platformy Azure, które nie zostały wcześniej dołączone przez Ciebie lub innego użytkownika subskrypcji do warstwy Bezpłatna.
 
-Klikając element menu **Subskrypcje**, możesz wyświetlić i filtrować listę subskrypcji. Usługa Security Center rozpocznie teraz ocenę zabezpieczeń tych subskrypcji, aby zidentyfikować luki w zabezpieczeniach. Aby dostosować typy ocen, możesz zmodyfikować zasady zabezpieczeń. Zasady zabezpieczeń definiują pożądaną konfigurację Twoich obciążeń oraz pomagają zapewnić zgodność z wymaganiami dotyczącymi zabezpieczeń określonymi przez firmę lub przepisy.
+Aby wyświetlić listę subskrypcji i przefiltrować ją, kliknij element menu **subskrypcje** . Security Center rozpocznie ocenianie zabezpieczeń tych subskrypcji w celu zidentyfikowania luk w zabezpieczeniach. Aby dostosować typy ocen, można zmodyfikować zasady zabezpieczeń. Zasady zabezpieczeń definiują żądaną konfigurację obciążeń i zapewniają zgodność z wymaganiami firmy lub przepisami bezpieczeństwa.
 
-W ciągu kilku minut od pierwszego uruchomienia usługi Security Center mogą zostać wyświetlone następujące informacje:
+W ciągu kilku minut od uruchomienia Security Center po raz pierwszy zobaczysz:
 
-- **Zalecenia** dotyczące sposobów poprawy zabezpieczeń subskrypcji platformy Azure. Kliknięcie kafelka **Zalecenia** spowoduje uruchomienie priorytetyzowanej listy.
-- Spis zasobów **Obliczenia i aplikacje**, **Sieć**, **Bezpieczeństwo danych** oraz **Tożsamość i dostęp**, które są obecnie oceniane przez usługę Security Center wraz ze stanem zabezpieczeń każdego z nich.
+- **Zalecenia** dotyczące sposobów zwiększania bezpieczeństwa subskrypcji platformy Azure. Kliknięcie kafelka **zalecenia** spowoduje uruchomienie listy z priorytetami.
+- Spis **obliczeń & aplikacji**, **sieci**, **zabezpieczeń danych**i **tożsamości & dostępu do** zasobów, które są teraz oceniane przez Security Center oraz stan zabezpieczeń każdego z nich.
 
-Aby w pełni korzystać z usługi Security Center, należy wykonać poniższe kroki w celu zmiany warstwy na wyższą warstwę Standardowa i zainstalowania programu Microsoft Monitoring Agent.
+Aby w pełni wykorzystać Security Center, należy wykonać poniższe kroki, aby przeprowadzić uaktualnienie do warstwy Standardowa i zainstalować Microsoft Monitoring Agent.
 
-## <a name="upgrade-to-the-standard-tier"></a>Zmiana warstwy na wyższą warstwę Standardowa
-Na potrzeby przewodników Szybki start i samouczków usługi Security Center musisz zmienić warstwę na wyższą warstwę Standardowa. Usługa Security Center w warstwie Standardowa jest dostępna w bezpłatnej wersji próbnej. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/). 
+## <a name="upgrade-to-the-standard-tier"></a>Uaktualnij do warstwy Standardowa
+Security Center na potrzeby przewodników Szybki Start i samouczków, które należy uaktualnić do warstwy Standardowa. Istnieje bezpłatna wersja próbna standardu Security Center. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/). 
 
-1. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
+1. W menu głównym Security Center wybierz opcję **wprowadzenie**.
  
-   ![Rozpoczęcie pracy][4]
+   ![Wprowadzenie][4]
 
-2. W obszarze **Uaktualnienie** usługa Security Center wyświetla listę subskrypcji i obszarów roboczych, które kwalifikują się do dołączenia. 
-   - Możesz kliknąć listę rozwijaną **Zastosuj wersję próbną**, aby wyświetlić listę wszystkich subskrypcji i obszarów roboczych ze stanem kwalifikacji do korzystania z wersji próbnej.
+2. W obszarze **uaktualnij**Security Center wyświetla listę subskrypcji i obszarów roboczych kwalifikujących się do dołączenia. 
+   - Możesz kliknąć opcję Rozwiń, aby wyświetlić listę wszystkich subskrypcji i obszarów roboczych ze stanem uprawnień **wersji próbnej** .
    -    Możesz uaktualnić subskrypcje i obszary robocze, które nie kwalifikują się do korzystania z wersji próbnej.
-   -    Możesz wybrać kwalifikujące się obszary robocze i subskrypcje i rozpocząć korzystanie z wersji próbnej.
-3. Kliknij przycisk **Rozpocznij okres próbny**, aby rozpocząć okres próbny w ramach wybranych subskrypcji.
+   -    Możesz wybrać kwalifikujące się obszary robocze i subskrypcje, aby rozpocząć okres próbny.
+3. Kliknij pozycję **Rozpocznij okres próbny** , aby rozpocząć okres próbny dla wybranych subskrypcji.
 
 
   ![Alerty zabezpieczeń][9]
 
 ## <a name="automate-data-collection"></a>Automatyzacja zbierania danych
-Usługa Security Center zbiera dane z maszyn wirtualnych platformy Azure i komputerów spoza platformy Azure w celu monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Domyślnie usługa Security Center utworzy nowy obszar roboczy.
+Security Center zbiera dane z maszyn wirtualnych platformy Azure i komputerów spoza platformy Azure w celu monitorowania luk w zabezpieczeniach i zagrożeń. Dane są zbierane przy użyciu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z komputera i kopiuje dane do obszaru roboczego w celu przeprowadzenia analizy. Domyślnie Security Center utworzy nowy obszar roboczy.
 
-Jeśli jest włączona automatyczna aprowizacja, usługa Security Center instaluje program Microsoft Monitoring Agent na wszystkich obsługiwanych maszynach wirtualnych platformy Azure oraz na wszystkich nowo tworzonych maszynach wirtualnych. Używanie automatycznej aprowizacji jest zdecydowanie zalecane.
+Po włączeniu automatycznej aprowizacji program Security Center instaluje Microsoft Monitoring Agent na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i utworzonych nowych. Automatyczne Inicjowanie obsługi jest zdecydowanie zalecane.
 
-Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
+Aby włączyć automatyczną obsługę administracyjną Microsoft Monitoring Agent:
 
-1. W menu głównym usługi Security Center wybierz pozycję **Zasady zabezpieczeń**.
-2. W wierszu subskrypcji wybierz pozycję **Edytuj ustawienia>** .
-3. Na karcie **Zbieranie danych** ustaw opcję **Automatyczna aprowizacja** na wartość **Wł**.
+1. W menu głównym Security Center wybierz pozycję **cennik & Ustawienia**.
+2. W wierszu subskrypcji kliknij subskrypcję, dla której chcesz zmienić ustawienia.
+3. Na karcie **zbieranie danych** ustaw opcję **samoobsługowego udostępniania** na wartość **włączone**.
 4. Wybierz pozycję **Zapisz**.
 ---
-  ![Włączanie automatycznej aprowizacji][6]
+  ![Włącz automatyczną obsługę administracyjną][6]
 
-Dzięki temu nowemu wglądowi w maszyny wirtualne platformy Azure usługa Security Center może udostępniać dodatkowe zalecenia dotyczące stanu aktualizacji systemu, konfiguracji zabezpieczeń systemu operacyjnego i ochrony punktów końcowych, a także generować dodatkowe alerty zabezpieczeń.
+Dzięki temu nowemu wglądowi w maszyny wirtualne platformy Azure Security Center mogą zapewnić dodatkowe zalecenia związane ze stanem aktualizacji systemu, konfiguracjami zabezpieczeń systemów operacyjnych, programem Endpoint Protection oraz generowaniem dodatkowych alertów zabezpieczeń.
 
-  ![Zalecenia][8]
+  ![Mając][8]
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Inne przewodniki szybkiego startu i samouczki w tej kolekcji bazują na tym przewodniku. Jeśli zamierzasz kontynuować pracę z kolejnymi przewodnikami szybkiego startu i samouczkami, w dalszym ciągu korzystaj z warstwy standardowej i zachowaj włączoną automatyczną aprowizację. Jeśli nie zamierzasz kontynuować lub chcesz wrócić do warstwy bezpłatnej:
+## <a name="clean-up-resources"></a>Czyszczenie zasobów
+Inne Przewodniki Szybki Start i samouczki w tej kolekcji zostały skompilowane w tym przewodniku Szybki Start. Jeśli planujesz kontynuować pracę z kolejnymi przewodnikami Szybki Start i samouczkami, Kontynuuj uruchamianie warstwy Standardowa i Włącz automatyczną obsługę administracyjną. Jeśli nie planujesz kontynuować lub chcesz wrócić do warstwy Bezpłatna:
 
-1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
-2. W wierszu subskrypcji, którą chcesz cofnąć do bezpłatnej, wybierz opcję **Edytuj ustawienia>** .
-3. Wybierz pozycje **Warstwa cenowa** i **Bezpłatna**, aby zmienić subskrypcję z warstwy standardowej na warstwę bezpłatną.
+1. Wróć do menu głównego Security Center i wybierz pozycję **cennik & Ustawienia**.
+2. Kliknij subskrypcję, którą chcesz zmienić w ramach warstwy Bezpłatna.
+3. Wybierz pozycję **warstwa cenowa** i wybierz opcję **bezpłatna** , aby zmienić subskrypcję z warstwy Standardowa na warstwa Bezpłatna.
 5. Wybierz pozycję **Zapisz**.
 
-Jeśli chcesz wyłączyć automatyczną aprowizację:
+Jeśli chcesz wyłączyć automatyczne Inicjowanie obsługi:
 
-1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
-2. W wierszu subskrypcji, dla której chcesz wyłączyć automatyczną aprowizację, wybierz pozycję **Edytuj ustawienia>** .
-3. Na karcie **Zbieranie danych** ustaw opcję **Automatyczna aprowizacja** na wartość **Wył**.
+1. Wróć do menu głównego Security Center i wybierz pozycję **cennik & Ustawienia**.
+2. Wyczyść subskrypcję, dla której chcesz wyłączyć automatyczne Inicjowanie obsługi administracyjnej.
+3. Na karcie **zbieranie danych** Ustaw **funkcję autoaprowizacji** na **off**.
 4. Wybierz pozycję **Zapisz**.
 
 >[!NOTE]
-> Wyłączenie automatycznej aprowizacji nie powoduje usunięcia programu Microsoft Monitoring Agent z maszyn wirtualnych platformy Azure, na których aprowizowano agenta. Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów.
+> Wyłączenie automatycznej aprowizacji nie powoduje usunięcia Microsoft Monitoring Agent z maszyn wirtualnych platformy Azure, w przypadku których Agent został zainicjowany. Wyłączenie automatycznej aprowizacji ogranicza monitorowanie zabezpieczeń zasobów.
 >
 
 ## <a name="next-steps"></a>Następne kroki
-W ramach tego przewodnika Szybki start zmieniono warstwę usługi na wyższą warstwę Standardowa i aprowizowano program Microsoft Monitoring Agent, aby zapewnić ujednolicone zarządzanie zabezpieczeniami i ochronę przed zagrożeniami obciążeń chmury hybrydowej. Aby dowiedzieć się więcej na temat korzystania z usługi Security Center, przejdź do przewodnika Szybki start dotyczącego dołączania komputerów z systemem Windows znajdujących się w środowisku lokalnym i w innych chmurach.
+W tym przewodniku szybki start uaktualniono do warstwy Standardowa i zainicjowano Microsoft Monitoring Agent w celu zapewnienia ujednoliconego zarządzania zabezpieczeniami i ochrony przed zagrożeniami w ramach obciążeń chmury hybrydowej. Aby dowiedzieć się więcej na temat sposobu korzystania z Security Center, przejdź do przewodnika Szybki Start dla komputerów z systemem Windows, które są lokalnie i w innych chmurach.
 
 > [!div class="nextstepaction"]
-> [Szybki start: Dołączanie komputerów z systemem Windows do usługi Azure Security Center](quick-onboard-windows-computer.md)
+> [Szybki Start: dołączanie komputerów z systemem Windows do Azure Security Center](quick-onboard-windows-computer.md)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

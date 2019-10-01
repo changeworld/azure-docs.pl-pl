@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure virtual network TAP Przegląd | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o usłudze virtual network TAP. Sieć wirtualna wzorca TAP umożliwia głęboką kopię ruchu sieciowego maszyny wirtualnej, który może być przesyłany strumieniowo do modułu zbierającego w pakiecie.
+title: Omówienie NACISKania usługi Azure Virtual Network | Microsoft Docs
+description: Dowiedz się więcej o NACIŚNIĘCIu sieci wirtualnej. NACIŚNIĘCIe sieci wirtualnej umożliwia głębokie kopiowanie ruchu w sieci maszyn wirtualnych, które mogą być przesyłane strumieniowo do modułu zbierającego pakiety.
 services: virtual-network
 documentationcenter: na
 author: karthikananth
@@ -15,60 +15,61 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3ea1b97855e5c060b6cbb6c43ce5111506bf4c20
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593184"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676916"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 
-Usługa Azure virtual network TAP (Terminal punktem dostępu) umożliwia ciągłego strumienia do narzędzia sieci pakiet modułu zbierającego lub analizy ruchu sieciowego maszyny wirtualnej. Narzędzie modułu zbierającego lub analizy są dostarczane przez [wirtualnego urządzenia sieciowego](https://azure.microsoft.com/solutions/network-appliances/) partnera. Aby uzyskać listę rozwiązań partnerskich, które są sprawdzane do pracy z usługą virtual network TAP zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions).
+Usługa Azure Virtual Network TAP (punkt dostępu terminalu) umożliwia ciągłą przesyłanie strumieniowego ruchu sieciowego maszyny wirtualnej do narzędzia do zbierania pakietów sieciowych lub narzędzi analitycznych. Moduł zbierający lub narzędzie analityczne jest dostarczany przez partnera [wirtualnego urządzenia sieciowego](https://azure.microsoft.com/solutions/network-appliances/) . Aby uzyskać listę rozwiązań partnerskich, które są sprawdzane pod kątem współpracy z siecią wirtualną, zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions).
 
 > [!IMPORTANT]
-> Sieć wirtualna wzorca TAP jest obecnie w wersji zapoznawczej we wszystkich regionach platformy Azure. Aby korzystać z PODSŁUCHU sieci wirtualnej, musisz zarejestrować się w wersji zapoznawczej, wysyłając wiadomość e-mail na adres <azurevnettap@microsoft.com> przy użyciu identyfikatora subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie można użyć funkcji, dopóki nie otrzymasz wiadomość e-mail z potwierdzeniem. Tej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług i nie powinna być używana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Aby uzyskać szczegółowe informacje.
+> Usługa Virtual Network TAP jest obecnie dostępna w wersji zapoznawczej we wszystkich regionach świadczenia usługi Azure. Aby skorzystać z usługi Virtual Network, musisz zarejestrować się w wersji zapoznawczej, wysyłając wiadomość e-mail na adres @ no__t-0 z IDENTYFIKATORem subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej możliwości, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie powinna być używana na potrzeby obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Zobacz [uzupełniające warunki użytkowania Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)wersje zapoznawcze @no__t — szczegóły 1for.
 
-## <a name="virtual-network-tap-partner-solutions"></a>Rozwiązania partnerów wzorca TAP sieci wirtualnej
+## <a name="virtual-network-tap-partner-solutions"></a>Rozwiązania partnerskie TAP sieci wirtualnej
 
 ### <a name="network-packet-brokers"></a>Brokerzy pakietów sieciowych
 
-- [Big przełącznika big Data, monitorowanie sieci szkieletowej](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
+- [Sieć szkieletowa Big monitoring](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
 - [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 
-### <a name="security-analytics-networkapplication-performance-management"></a>Narzędzia analizy zabezpieczeń, zarządzanie wydajnością aplikacji/Sieć
+### <a name="security-analytics-networkapplication-performance-management"></a>Analiza zabezpieczeń, zarządzanie wydajnością sieci i aplikacji
 
-- [Aktywne zabezpieczeń](https://awakesecurity.com/technology-partners/microsoft-azure/)
-- [Cisco Stealthwatch chmury](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Zabezpieczenia w stanie aktywności](https://awakesecurity.com/technology-partners/microsoft-azure/)
+- [Chmura Cisco Stealthwatch](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
-- [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
-- [Fidelis Cyberbezpieczeństwa](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
+- [ExtraHop (x)](https://www.extrahop.com/company/tech-partners/microsoft/)
+- [Fidelis cyberbezpieczeństwa](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
-- [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
-- [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
-- [Platforma NetWitness® RSA](https://www.rsa.com/azure)
-- [Vectra Cognito](https://vectra.ai/microsoftazure)
+- [LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
+- [VSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
+- [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
+- [® Platformę monitora RSA](https://www.rsa.com/azure)
+- [Vectra usługi cognito](https://vectra.ai/microsoftazure)
 
-Na poniższym obrazie jak wirtualne sieci działa wzorca TAP. Można dodać konfiguracji NACIŚNIJ [interfejs sieciowy](virtual-network-network-interface.md) dołączony do maszyny wirtualnej wdrożony w sieci wirtualnej. Miejsce docelowe jest adresem IP sieci wirtualnej w tej samej sieci wirtualnej jako interfejs sieciowy monitorowanych lub [skomunikowane równorzędnie wirtualnego](virtual-network-peering-overview.md) sieci. Rozwiązania modułu zbierającego dla sieci wirtualnej wzorca TAP można wdrożyć za zaporą [Azure wewnętrznego modułu równoważenia obciążenia](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) wysokiej dostępności. Umożliwia ocenę opcji wdrażania dla poszczególnych rozwiązań, zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions).
+Na poniższej ilustracji przedstawiono sposób działania narzędzia Virtual Network TAP. Możesz dodać konfigurację TAP w [interfejsie sieciowym](virtual-network-network-interface.md) , który jest dołączony do maszyny wirtualnej wdrożonej w sieci wirtualnej. Lokalizacją docelową jest adres IP sieci wirtualnej w tej samej sieci wirtualnej co monitorowany interfejs sieciowy lub [równorzędna Sieć wirtualna](virtual-network-peering-overview.md) . Rozwiązanie modułu zbierającego dla programu Virtual Network TAP można wdrożyć za pomocą [wewnętrznego modułu równoważenia obciążenia platformy Azure](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) w celu zapewnienia wysokiej dostępności. Aby oszacować opcje wdrażania dla poszczególnych rozwiązań, zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions).
 
-![Sieć wirtualna jak wzorca TAP działa](./media/virtual-network-tap/architecture.png)
+![Jak działa NACIŚNIĘCIe sieci wirtualnej](./media/virtual-network-tap/architecture.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed utworzeniem sieci wirtualnej wzorca TAP, muszą Odebrano wiadomość e-mail z potwierdzeniem, które są zarejestrowane w wersji zapoznawczej i mieć jeden lub więcej maszyn wirtualnych utworzonych przy użyciu [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) partnerem i modelu wdrażania rozwiązanie dla agregacji ruchu NACIŚNIJ w tym samym regionie platformy azure. Jeśli nie masz rozwiązania partnerskiego w usłudze virtual network, zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions) Aby wdrożyć. Można użyć tej samej sieci wirtualnej zasobów wzorca TAP agregacji ruchu z wieloma interfejsami sieciowymi w tej samej lub różnych subskrypcji. W przypadku interfejsów sieciowych monitorowanych w różnych subskrypcjach, subskrypcje muszą być skojarzone z tą samą dzierżawą usługi Azure Active Directory. Ponadto interfejsów sieciowych monitorowanych i docelowy punkt końcowy dla agregacji ruchu wzorca TAP może być w równorzędnych sieciach wirtualnych, w tym samym regionie. Jeśli używasz tego modelu wdrażania upewnij się, że [wirtualne sieci równorzędne](virtual-network-peering-overview.md) jest włączona, przed skonfigurowaniem PODSŁUCHU sieci wirtualnej.
+Przed utworzeniem sieci wirtualnej należy otrzymać wiadomość potwierdzającą, która została zarejestrowana w wersji zapoznawczej, i utworzyć co najmniej jedną maszynę wirtualną, która została utworzona przy użyciu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) model wdrażania i rozwiązanie partnerskie do agregowania Naciśnij pozycję ruch w tym samym regionie świadczenia usługi Azure. Jeśli nie masz rozwiązania partnerskiego w sieci wirtualnej, zapoznaj się z tematem [rozwiązania partnerskie](#virtual-network-tap-partner-solutions) , aby wdrożyć aplikację. Możesz użyć tego samego zasobu sieci wirtualnej, aby agregować ruch z wielu interfejsów sieciowych w ramach tej samej lub różnych subskrypcji. Jeśli monitorowane interfejsy sieciowe znajdują się w różnych subskrypcjach, subskrypcje muszą być skojarzone z tą samą dzierżawą Azure Active Directory. Ponadto monitorowane interfejsy sieciowe i docelowy punkt końcowy do agregowania ruchu dla programu TAP mogą znajdować się w równorzędnych sieciach wirtualnych w tym samym regionie. Jeśli używasz tego modelu wdrażania, upewnij się, że [Komunikacja równorzędna sieci wirtualnej](virtual-network-peering-overview.md) jest włączona przed SKONFIGUROWANIEm naciskania sieci wirtualnej.
 
 ## <a name="permissions"></a>Uprawnienia
 
-Konta, użyjesz do zastosowania wzorca TAP konfiguracji w interfejsach sieciowych muszą być przypisane do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany niezbędne czynności z poniższej tabeli:
+Konta używane do zastosowania konfiguracji TAP w interfejsach sieciowych muszą być przypisane do roli [współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , do której przypisano wymagane akcje z poniższej tabeli:
 
-| Akcja | Name (Nazwa) |
+| Działanie | Nazwa |
 |---|---|
-| Microsoft.Network/virtualNetworkTaps/* | Wymagane do utworzenia, aktualizacji, Odczyt i usuwanie zasobów wybierz sieć wirtualną |
-| Microsoft.Network/networkInterfaces/read | Wymagany do odczytu zasobu interfejsu sieciowego, skonfigurować wzorcu TAP |
-| Microsoft.Network/tapConfigurations/* | Wymagane do utworzenia, aktualizacji, Odczyt i usuwanie konfiguracji wzorca TAP w interfejsie sieciowym |
+| Microsoft. Network/virtualNetworkTaps/* | Wymagane do utworzenia, zaktualizowania, odczytania i usunięcia sieci wirtualnej naciśnij zasób |
+| Microsoft. Network/networkInterfaces/odczyt | Wymagane do odczytania zasobu interfejsu sieciowego, na którym zostanie skonfigurowany wybór |
+| Microsoft. Network/tapConfigurations/* | Wymagane do utworzenia, zaktualizowania, odczytania i usunięcia konfiguracji TAP w interfejsie sieciowym |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [tworzenie sieci wirtualnej NACIŚNIJ](tutorial-tap-virtual-network-cli.md).
+- Dowiedz się, jak [utworzyć sieć wirtualną TAP](tutorial-tap-virtual-network-cli.md).

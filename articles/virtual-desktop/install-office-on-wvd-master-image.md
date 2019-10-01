@@ -1,18 +1,18 @@
 ---
 title: Instalowanie pakietu Office na głównym obrazie wirtualnego dysku twardego — Azure
-description: Jak zainstalować i dostosować pakiet Office w obrazie głównym programu Windows Virtual Desktop w wersji zapoznawczej do platformy Azure.
+description: Jak zainstalować i dostosować pakiet Office na głównym obrazie pulpitu wirtualnego systemu Windows na platformie Azure.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 79fe541d1bb3bea8447cf095673111362cec74d2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 378be7ebc1cc04433d42b6a05d7eafc73a515568
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816433"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679522"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalowanie pakietu Office w głównym obrazie wirtualnego dysku twardego
 
@@ -23,7 +23,7 @@ W tym artykule przyjęto założenie, że utworzono już maszynę wirtualną (VM
 W tym artykule przyjęto również, że masz podwyższony poziom dostępu do maszyny wirtualnej, niezależnie od tego, czy jest on zainicjowany na platformie Azure, czy w Menedżerze funkcji Hyper-V. Jeśli nie, zobacz [Podnieś poziom dostępu do zarządzania wszystkimi subskrypcjami i grupami zarządzania platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin).
 
 >[!NOTE]
->Te instrukcje dotyczą konfiguracji programu Windows Virtual Desktop w wersji zapoznawczej, która może być używana z istniejącymi procesami w organizacji.
+>Te instrukcje dotyczą konfiguracji specyficznej dla pulpitu wirtualnego systemu Windows, która może być używana z istniejącymi procesami w organizacji.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Instalowanie pakietu Office w trybie aktywacji komputera udostępnionego
 
@@ -45,7 +45,7 @@ Ten przykładowy plik XML konfiguracji wykona następujące czynności:
 - Włącz aktywację komputera udostępnionego.
 
 >[!NOTE]
->Funkcja wyszukiwania wzornika w programie Visio nie działa w programie Windows Virtual Desktop w trakcie konfiguracji wersji zapoznawczej.
+>Funkcja wyszukiwania wzornika programu Visio może nie zadziałać zgodnie z oczekiwaniami w programie Virtual Desktop systemu Windows.
 
 Oto co to jest przykładowy kod XML konfiguracji:
 
@@ -53,7 +53,7 @@ Oto co to jest przykładowy kod XML konfiguracji:
 - Zainstaluj usługę OneDrive w trybie dla użytkownika. Aby dowiedzieć się więcej, zobacz [Instalowanie usługi OneDrive w trybie dla komputera](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Aktywację komputera udostępnionego można skonfigurować za zasady grupy obiektów zasad grupy (GPO) lub ustawień rejestru. Obiekt zasad grupy znajduje się w **obszarze\\zasady\\konfiguracji\\komputera Szablony administracyjne Microsoft Office 2016 (\\maszyny) ustawienia licencjonowania**
+>Aktywację komputera udostępnionego można skonfigurować za zasady grupy obiektów zasad grupy (GPO) lub ustawień rejestru. Obiekt zasad grupy znajduje się w **konfiguracji komputera @ no__t-1Policies @ no__t-2Administrative templates @ no__t-3Microsoft Office 2016 (Machine) \\Licensing Settings**
 
 Narzędzie wdrażania pakietu Office zawiera plik Setup. exe. Aby zainstalować pakiet Office, uruchom następujące polecenie w wierszu polecenia:
 
@@ -130,11 +130,11 @@ Usługa OneDrive jest zwykle instalowana dla poszczególnych użytkowników. W t
 
 Poniżej przedstawiono sposób instalowania usługi OneDrive w trybie na maszynę:
 
-1. Najpierw Utwórz lokalizację, aby przemieścić Instalatora usługi OneDrive. Lokalizacja folderu dysku lokalnego lub [\\\\UNC] (File://UNC) jest odpowiednia.
+1. Najpierw Utwórz lokalizację, aby przemieścić Instalatora usługi OneDrive. Folder dysku lokalnego lub lokalizacji [\\ @ no__t-1unc] (file://unc) jest prawidłowy.
 
-2. Pobierz OneDriveSetup. exe do lokalizacji przygotowanej za pomocą tego linku:<https://aka.ms/OneDriveWVD-Installer>
+2. Pobierz OneDriveSetup. exe do lokalizacji przygotowanej za pomocą tego linku: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Jeśli zainstalowano pakiet Office z usługą OneDrive przez pominięcie  **\<ExcludeApp ID = "OneDrive\>"/** , Odinstaluj wszystkie istniejące instalacje dla poszczególnych użytkowników w usłudze OneDrive w wierszu polecenia z podwyższonym poziomem uprawnień, uruchamiając następujące polecenie:
+3. Jeśli zainstalowano pakiet Office z usługą OneDrive, pomijając **\<EXCLUDEAPP ID = "OneDrive"/\>** , Odinstaluj wszystkie istniejące instalacje usługi OneDrive dla użytkowników z poziomu wiersza polecenia z podwyższonym poziomem uprawnień, uruchamiając następujące polecenie:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

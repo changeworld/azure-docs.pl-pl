@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: b3f809a21dab86ac50fcf7c194c886b05977e15e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: db0921d709f842b004ec4c23d15a986f2e59ec23
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327105"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687076"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Tworzenie prywatnego punktu końcowego przy użyciu Azure PowerShell
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych. 
@@ -21,7 +21,7 @@ W tym przewodniku szybki start dowiesz się, jak utworzyć maszynę wirtualną n
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Przed utworzeniem zasobów należy utworzyć grupę zasobów, która będzie hostować Virtual Network i prywatny punkt końcowy z poleceniem [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *zachodniej* :
 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>Dodawanie podsieci
 
-Platforma Azure wdraża zasoby w podsieci w ramach Virtual Network, dlatego należy utworzyć podsieć. Utwórz konfigurację podsieci o nazwie Moja *podsieć* z [dodatkiem Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig). Poniższy przykład tworzy podsieć o nazwie Moja *podsieć* z flagą zasad sieci prywatnego punktu końcowego ustawioną na wartość **wyłączone**.
+Platforma Azure wdraża zasoby w podsieci w ramach Virtual Network, dlatego należy utworzyć podsieć. Utwórz konfigurację podsieci o nazwie Moja *podsieć* with [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig). Poniższy przykład tworzy podsieć o nazwie Moja *podsieć* z flagą zasad sieci prywatnego punktu końcowego ustawioną na wartość **wyłączone**.
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -68,7 +68,7 @@ Konfigurację podsieci można zapisać do Virtual Network przy użyciu [opcji 
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-virtual-machine"></a>Utworzenie maszyny wirtualnej
 
 Utwórz maszynę wirtualną w Virtual Network przy użyciu elementu [New-AzVM](/powershell/module/az.compute/new-azvm). Po uruchomieniu następnego polecenia zostanie wyświetlony monit o poświadczenia. Wprowadź nazwę użytkownika i hasło dla maszyny wirtualnej:
 
@@ -167,7 +167,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>Nawiązywanie połączenia z maszyną wirtualną z Internetu
 
-Użyj [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) , aby zwrócić publiczny adres IP maszyny wirtualnej. Ten przykład zwraca publiczny adres IP maszyny wirtualnej *myVM* :
+Użyj [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) To Zwróć publiczny adres IP maszyny wirtualnej. Ten przykład zwraca publiczny adres IP *myVM* VM:
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -175,7 +175,7 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress 
 ```  
-Otwórz wiersz polecenia na komputerze lokalnym. Uruchom polecenie mstsc.  <publicIpAddress>Zamień na publiczny adres IP zwrócony z ostatniego kroku: 
+Otwórz wiersz polecenia na komputerze lokalnym. Uruchom polecenie mstsc. Zastąp ciąg @ no__t-0 @ no__t-1with publiczny adres IP zwrócony z ostatniego kroku: 
 
 
 > [!NOTE]
@@ -190,12 +190,12 @@ mstsc /v:<publicIpAddress>
   > Może być konieczne wybranie pozycji więcej opcji, > użyć innego konta, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej. 
   
 3. Wybierz **przycisk OK**. 
-4. Może zostać wyświetlone ostrzeżenie o certyfikacie. Jeśli to zrobisz, wybierz pozycję **tak** lub **Kontynuuj**. 
+4. Może zostać wyświetlone ostrzeżenie o certyfikacie. W takim przypadku wybierz pozycję **tak**,  or **Kontynuuj**. 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>Dostęp do serwera SQL Database prywatnie z poziomu maszyny wirtualnej
 
 1. W Pulpit zdalny myVM Otwórz program PowerShell.
-2. Wprowadź `nslookup myserver.database.windows.net`. 
+2. Wprowadź wartość @ no__t-0. 
 
     Zostanie wyświetlony komunikat podobny do tego:
     ```azurepowershell
@@ -205,21 +205,19 @@ mstsc /v:<publicIpAddress>
     Name:    myserver.privatelink.database.windows.net
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
-3. Install SQL Server Management Studio
-4. In Connect to server, enter or select this information:
-    Setting Value
-      Server type   Select Database Engine.
-      Server name   Select myserver.database.windows.net
-      Username  Enter a username provided during creation.
-      Password  Enter a password provided during creation.
-      Remember password Select Yes.
-5. Select Connect.
-6. Browse Databases from left menu. 
-7. (Optionally) Create or query information from mydatabase
-8. Close the remote desktop connection to *myVM*. 
+    ```
+3. Zainstaluj SQL Server Management Studio
+4. W obszarze Połącz z serwerem wprowadź lub wybierz następujące informacje: Ustawianie typu serwera wartości wybierz aparat bazy danych.
+      Nazwa serwera wybierz pozycję myserver.database.windows.net Nazwa użytkownika wprowadź nazwę użytkownika podaną podczas tworzenia.
+      Hasło wprowadź hasło podane podczas tworzenia.
+      Pamiętaj hasło wybierz opcję tak.
+5. Wybierz pozycję Połącz.
+6. Przeglądaj bazy danych z menu po lewej stronie. 
+7. Zdefiniować Utwórz lub zapytaj informacje z bazy danych
+8. Zamknij połączenie pulpitu zdalnego z *myVM*. 
 
-## Clean up resources 
-When you're done using the private endpoint, SQL Database server and the VM, use [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) to remove the resource group and all the resources it has:
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
+Gdy skończysz korzystać z prywatnego punktu końcowego, SQL Database serwera i maszyny wirtualnej, użyj polecenia [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) , aby usunąć grupę zasobów i wszystkie jej zasoby:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

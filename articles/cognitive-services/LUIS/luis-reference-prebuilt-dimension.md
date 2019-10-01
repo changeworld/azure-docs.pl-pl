@@ -1,7 +1,7 @@
 ---
 title: Wstępnie utworzone jednostki wymiarów — LUIS
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera wymiar informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
+description: Ten artykuł zawiera informacje o jednostkach wstępnie skompilowanych wymiarów w Language Understanding (LUIS).
 services: cognitive-services
 ms.custom: seodec18
 author: diberry
@@ -9,28 +9,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 37b9ca071ca5b2e423d7efd93e4089e3a77b4e50
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 15ba8ad4d3bcf00024a0c7b14b004de08d37621a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933607"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677664"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Wstępnie utworzona jednostka dla aplikacji LUIS
-Jednostki wymiaru wbudowanych wykrywa różnego rodzaju wymiarów, niezależnie od kultury aplikacji usługi LUIS. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierającego wymiary do intencji aplikacji. Wymiar jednostki jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 
+Wstępnie utworzona jednostka wymiaru wykrywa różne typy wymiarów, niezależnie od kultury aplikacji LUIS. Ponieważ ta jednostka jest już przeszkolone, nie trzeba dodawać przykładowych wyrażenia długości zawierających wymiary do intencji aplikacji. Jednostka wymiaru jest obsługiwana w [wielu kulturach](luis-reference-prebuilt-entities.md). 
 
-## <a name="types-of-dimension"></a>Typy wymiaru
+## <a name="types-of-dimension"></a>Typy wymiarów
 
 Wymiar jest zarządzany przez [Aparaty rozpoznawania tekstu —](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) repozytorium GitHub
 
 
-## <a name="resolution-for-dimension-entity"></a>Rozpoznawanie jednostki wymiaru
+## <a name="resolution-for-dimension-entity"></a>Rozwiązanie dla jednostki wymiaru
 
-### <a name="api-version-2x"></a>Interfejs API w wersji 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
-W poniższym przykładzie pokazano rozdzielczość **builtin.dimension** jednostki.
+Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej. wymiar** .
 
 ```json
 {
@@ -60,9 +60,10 @@ W poniższym przykładzie pokazano rozdzielczość **builtin.dimension** jednost
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API w wersji 3. x
 
-Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `false`
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+
+Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
 
 ```json
 {
@@ -87,7 +88,7 @@ Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `false`
 }
 ```
 
-Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `true`
+Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
 
 ```json
 {
@@ -124,6 +125,10 @@ Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `true`
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [e-mail](luis-reference-prebuilt-email.md), [numer](luis-reference-prebuilt-number.md), i [porządkowe](luis-reference-prebuilt-ordinal.md) jednostek. 
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+Dowiedz się więcej o jednostkach [poczty e-mail](luis-reference-prebuilt-email.md), [liczb](luis-reference-prebuilt-number.md)i [porządkowej](luis-reference-prebuilt-ordinal.md) . 

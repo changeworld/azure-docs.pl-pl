@@ -1,7 +1,7 @@
 ---
 title: Osoba — wstępnie utworzona jednostka — LUIS
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera personName informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
+description: Ten artykuł zawiera wstępnie skompilowane informacje o jednostce PersonName w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: a9da5089c9309ec06f29fd3e0868102cfa538049
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b5f4855c03c1c003df8f58b135cb809f1757e58f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933461"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677480"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>Osoba z wbudowaną jednostką dla aplikacji LUIS
-Jednostki wstępnie personName wykrywa nazwiska osób. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający personName do intencji aplikacji. Jednostka personName jest obsługiwana w językach angielskim i chiński [kultur](luis-reference-prebuilt-entities.md).
+Przedbudowana jednostka PersonName wykrywa nazwiska osób. Ponieważ ta jednostka jest już przeszkolony, nie trzeba dodawać przykładowej wyrażenia długości zawierającej nazwisko osoby do zamiaru aplikacji. Jednostka PersonName jest obsługiwana w [kulturze](luis-reference-prebuilt-entities.md)angielskiej i chińskiej.
 
-## <a name="resolution-for-personname-entity"></a>Rozpoznawanie personName jednostki
+## <a name="resolution-for-personname-entity"></a>Rozwiązanie dla jednostki PersonName
 
-### <a name="api-version-2x"></a>Interfejs API w wersji 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
-W poniższym przykładzie pokazano rozdzielczość **builtin.personName** jednostki.
+Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej. PersonName** .
 
 ```json
 {
@@ -44,10 +44,10 @@ W poniższym przykładzie pokazano rozdzielczość **builtin.personName** jednos
   ]
 }
 ```
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
-### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API w wersji 3. x
 
-Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `false`
+Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
 
 ```json
 {
@@ -69,7 +69,7 @@ Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `false`
 }
 ```
 
-Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `true`
+Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
 
 ```json
 {
@@ -103,6 +103,10 @@ Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `true`
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [e-mail](luis-reference-prebuilt-email.md), [numer](luis-reference-prebuilt-number.md), i [porządkowe](luis-reference-prebuilt-ordinal.md) jednostek. 
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+Dowiedz się więcej o jednostkach [poczty e-mail](luis-reference-prebuilt-email.md), [liczb](luis-reference-prebuilt-number.md)i [porządkowej](luis-reference-prebuilt-ordinal.md) . 

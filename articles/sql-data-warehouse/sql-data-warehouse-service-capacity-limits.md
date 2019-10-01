@@ -1,6 +1,6 @@
 ---
-title: Limity pojemności — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
+title: Limity pojemności — Azure SQL Data Warehouse | Microsoft Docs
+description: Maksymalne wartości dozwolone dla różnych składników Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,80 +10,80 @@ ms.subservice: design
 ms.date: 11/14/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a8f4412861eeaf2cbec360b13c0fe75e99d4fc1d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 4443f94df9095da3a7ec0e9694b8089033c8d177
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839646"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686436"
 ---
-# <a name="sql-data-warehouse-capacity-limits"></a>Usługa SQL Data Warehouse limity pojemności
-Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
+# <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse limity pojemności
+Maksymalne wartości dozwolone dla różnych składników Azure SQL Data Warehouse.
 
-## <a name="workload-management"></a>Zarządzanie obciążeniem
+## <a name="workload-management"></a>Zarządzanie obciążeniami
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
-| [Jednostki magazynu danych (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maksymalna liczba jednostek DWU w pojedynczej SQL Data Warehouse | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Jednostki magazynu danych (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Domyślna wartość DTU na serwer |54,000<br></br>Domyślnie każdy serwer SQL (na przykład myserver.database.windows.net) ma limit przydziału jednostek DTU równa 54 000, co pozwala maksymalnie DW6000c. Ten limit przydziału jest po prostu limitem bezpieczeństwa. Możesz zwiększyć limit przydziału przez [utworzeniem biletu pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) i wybierając polecenie *przydziału* jako typ żądania.  Do obliczania usługi jednostki DTU potrzebuje, należy pomnożyć 7,5 przez łączną DWU potrzebne lub mnożenia 9.0 cDWU całkowity, potrzebne. Przykład:<br></br>DW6000 x w wersji 7.5 = 45 000 jednostek Dtu<br></br>DW6000c x 9.0 = równa 54 000 jednostek Dtu.<br></br>Aktualne użycie jednostek DTU, z opcji programu SQL server można wyświetlić w portalu. Limit przydziału jednostek DTU obejmuje zarówno wstrzymane, jak i niewstrzymane bazy danych. |
-| Połączenie z bazą danych |Maksymalna współbieżnych Otwieranie sesji |1024<br/><br/>Liczba równoczesnych sesji Otwórz będzie zależeć od wybranych jednostek DWU. DWU600c otwarta powyżej obsługuje maksymalnie 1024 sesji. DWU500c i poniżej, obsługę limit maksymalny równoczesnych sesji Otwórz wynoszącej 512. Należy pamiętać, że istnieją ograniczenia dotyczące liczby zapytań, które mogą być wykonywane jednocześnie. Po przekroczeniu limitu współbieżności, żądanie przechodzi w stan kolejki wewnętrznej, gdzie oczekuje na przetworzenie. |
-| Połączenie z bazą danych |Maksymalna ilość pamięci dla przygotowanej instrukcji |20 MB |
-| [Zarządzanie obciążeniami](resource-classes-for-workload-management.md) |Maksymalna liczba jednoczesnych kwerend |128<br/><br/> Usługa SQL Data Warehouse można wykonywać maksymalnie 128 zapytań jednoczesnych lub kolejek, pozostałe zapytania.<br/><br/>Liczba równoczesnych zapytań można zmniejszyć, gdy użytkownicy są przypisane do wyższe klasy zasobów lub jeśli usługa SQL Data Warehouse ma mniejszy [data warehouse Unit, jednostka](memory-and-concurrency-limits.md) ustawienie. Niektórych kwerend, takich jak zapytania DMV, są zawsze może działać i czy nie wpływa na limit współbieżnych zapytania. Aby uzyskać szczegółowe informacje na temat wykonywania zapytań jednoczesnych, zobacz [maksymalne wartości współbieżności](memory-and-concurrency-limits.md#concurrency-maximums) artykułu. |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |Maksymalna GB |399 GB per DW100. W związku z tym w DWU1000, bazy danych tempdb jest o rozmiarze do 3,99 TB. |
+| [Jednostki magazynu danych (jednostek dwu)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maksymalna jednostek dwu dla pojedynczego SQL Data Warehouse | Gen1: DW6000<br></br>Gen2: DW30000c |
+| [Jednostki magazynu danych (jednostek dwu)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Domyślna wartość DTU na serwer |54 000<br></br>Domyślnie każdy serwer SQL (na przykład myserver.database.windows.net) ma limit przydziału jednostek DTU 54 000, który umożliwia do 9 DW6000c. Ten limit przydziału jest po prostu limitem bezpieczeństwa. Możesz zwiększyć limit przydziału, [tworząc bilet pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) i wybierając pozycję *przydział* jako typ żądania.  Aby obliczyć zapotrzebowanie na jednostki DTU, pomnóż 7,5 przez łączną potrzebną jednostek dwu lub pomnożenie 9,0 przez łączną cDWU potrzebną. Na przykład:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW6000c x 9,0 = 54 000 DTU.<br></br>Bieżące użycie jednostek DTU można wyświetlić z poziomu opcji programu SQL Server w portalu. Limit przydziału jednostek DTU obejmuje zarówno wstrzymane, jak i niewstrzymane bazy danych. |
+| Połączenie z bazą danych |Maksymalna liczba otwartych sesji współbieżnych |1024<br/><br/>Liczba równoczesnych otwartych sesji różni się w zależności od wybranej jednostek dwu. DWU600c i nowsze obsługują maksymalnie 1024 otwartych sesji. DWU500c i poniżej, obsługują maksymalny limit współbieżnych sesji otwierania wynoszący 512. Uwaga Istnieją limity liczby zapytań, które mogą być wykonywane współbieżnie. Po przekroczeniu limitu współbieżności żądanie przechodzi do kolejki wewnętrznej, w której czeka na przetworzenie. |
+| Połączenie z bazą danych |Maksymalna ilość pamięci dla przygotowanych instrukcji |20 MB |
+| [Zarządzanie obciążeniami](resource-classes-for-workload-management.md) |Maksymalna liczba współbieżnych zapytań |128<br/><br/> SQL Data Warehouse może wykonać maksymalnie 128 współbieżnych zapytań i kolejki pozostałych zapytań.<br/><br/>Liczba współbieżnych zapytań może się zmniejszyć, gdy użytkownicy są przypisani do wyższych klas zasobów lub gdy SQL Data Warehouse ma niższe ustawienie [jednostki magazynu danych](memory-and-concurrency-limits.md) . Niektóre zapytania, takie jak zapytania DMV, są zawsze dozwolone do uruchomienia i nie wpływają na współbieżny limit zapytań. Aby uzyskać więcej informacji na temat jednoczesnego wykonywania zapytań, zobacz artykuł [maksymalne wartości współbieżności](memory-and-concurrency-limits.md#concurrency-maximums) . |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |Maksymalna ilość GB |399 GB na DW100. W związku z tym w DWU1000 baza danych tempdb ma rozmiar 3,99 TB. |
 
 ## <a name="database-objects"></a>obiekty bazy danych
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
-| Database (Baza danych) |Maksymalny rozmiar | Gen1: 240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od miejsca na bazę danych tempdb lub dziennika, a w związku z tym ta przestrzeń jest dedykowany do tablic stałych.  Kompresja klastrowanego magazynu kolumn szacuje się na 5 X.  Kompresja ta umożliwia bazy danych do około 1 PB, w przypadku wszystkich tabel klastrowanego magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2: 240TB magazynu wierszy i nieograniczony magazyn tabel magazynu kolumn |
+| Database (Baza danych) |Maksymalny rozmiar | Gen1:240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od bazy danych tempdb lub miejsca w dzienniku, dlatego to miejsce jest przeznaczone do trwałych tabel.  Szacuje się, że kompresja magazynu kolumn jest w pięciokrotną.  Ta kompresja pozwala na zwiększenie rozmiaru bazy danych do około 1 PB, gdy wszystkie tabele są klastrowane z magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2:240TB dla magazynu wierszy i nieograniczony magazyn dla tabel magazynu kolumn |
 | Tabela |Maksymalny rozmiar |60 TB skompresowane na dysku |
-| Tabela |Tabele dla bazy danych | 100,000 |
-| Tabela |Kolumn w tabeli |1024 kolumn |
-| Tabela |Liczba bajtów na kolumnę |Zależne od kolumny [— typ danych](sql-data-warehouse-tables-data-types.md). Limit wynosi 8000 dla typów danych char, 4000 nvarchar, czy za 2 GB dla typów danych MAX. |
-| Tabela |Bajtów na wiersz, zdefiniowanego rozmiaru |8060 bajtów<br/><br/>Liczba bajtów na wiersz jest obliczana w taki sam sposób, podobnie jak w przypadku programu SQL Server przy użyciu kompresji strony. Podobnie jak SQL Server, SQL Data Warehouse obsługuje magazynu przepełnienie wierszy, które umożliwia **kolumn o zmiennej długości** ma zostać wypchnięty pozawierszową. Gdy o zmiennej długości wierszy są przekazywane pozawierszową, tylko 24-bajtowy główny znajduje się w głównym rekordzie. Aby uzyskać więcej informacji, zobacz [przepełnienie wiersza danych przekraczających rozmiarze 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Tabela |Partycje na tabelę |15,000<br/><br/>Wydajna, firma Microsoft zaleca, minimalizując liczbę partycji potrzebne podczas przerywania obsługi wymagań biznesowych. Wraz z rozwojem liczby partycji koszty operacji języka definicji danych (DDL) i manipulowania języka DML (Data) zwiększa się i powoduje, że niższej wydajności. |
-| Tabela |Liczba znaków na wartość graniczna partycji. |4000 |
-| Indeks |Indeksy klastrowane inne niż na tabelę. |50<br/><br/>Dotyczy tylko tabele magazynu wierszy. |
-| Indeks |Indeksy klastrowane na tabelę. |1<br><br/>Ma zastosowanie do tabel zarówno magazynu wierszy, jak i magazynu kolumn. |
-| Indeks |Rozmiar klucza indeksu. |900 bajtów.<br/><br/>Dotyczy tylko indeksów magazynu wierszy.<br/><br/>Indeksy w kolumnach varchar o maksymalnym rozmiarze więcej niż 900 bajtów mogą być tworzone, jeśli podczas tworzenia indeksu, istniejące dane w kolumnach nie przekraczać 900 bajtów. Jednak później WSTAWIĆ lub akcji aktualizacji dla kolumn, które powodują całkowity rozmiar przekracza 900 bajtów zakończy się niepowodzeniem. |
-| Indeks |Kolumny klucza indeksu. |16<br/><br/>Dotyczy tylko indeksów magazynu wierszy. Klastrowane indeksy magazynu kolumn, Uwzględnij wszystkie kolumny. |
-| Statystyki |Rozmiar wartości w kolumnach połączone. |900 bajtów. |
-| Statystyki |Kolumny dla każdego obiektu statystyk. |32 |
-| Statystyki |Statystyka utworzone dla kolumn w tabeli. |30,000 |
-| Procedury składowane |Maksymalnej liczby poziomów zagnieżdżenia. |8 |
-| Widok |Kolumn w widoku |1,024 |
+| Tabela |Tabele na bazę danych | 100 000 |
+| Tabela |Kolumny na tabelę |1024 kolumn |
+| Tabela |Bajtów na kolumnę |Zależne od [typu danych](sql-data-warehouse-tables-data-types.md)kolumny. Limit wynosi 8000 dla typów danych char, 4000 dla nvarchar lub 2 GB w przypadku MAKSYMALNYch typów danych. |
+| Tabela |Bajty na wiersz, zdefiniowany rozmiar |8060 bajtów<br/><br/>Liczba bajtów na wiersz jest obliczana w taki sam sposób, jak w przypadku SQL Server z kompresją strony. Podobnie jak SQL Server, SQL Data Warehouse obsługuje magazyn przepełnienia wierszy, co umożliwia wypchnięcie **kolumn o zmiennej długości** poza wierszem. Gdy wiersze o zmiennej długości są wypychane poza wierszem, tylko 24-bajtowy katalog główny jest przechowywany w rekordzie głównym. Aby uzyskać więcej informacji, zobacz [dane przepełnienia wierszy przekraczające 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
+| Tabela |Partycje na tabelę |15 000<br/><br/>W celu zapewnienia wysokiej wydajności zalecamy zminimalizowanie liczby potrzebnych partycji przy zachowaniu wymagań firmy. Wraz ze wzrostem liczby partycji, obciążenie dla operacji języka definicji danych (DDL) i języka manipulowania danymi (DML) zwiększa się i powoduje wolniejszą wydajność. |
+| Tabela |Liczba znaków na wartość graniczną partycji. |4000 |
+| Indeks |Indeksy nieklastrowane na tabelę. |50<br/><br/>Dotyczy tylko tabel magazynu wierszy. |
+| Indeks |Indeksy klastrowane na tabelę. |1<br><br/>Dotyczy zarówno magazynu wierszy, jak i tabel magazynu kolumn. |
+| Indeks |Rozmiar klucza indeksu. |900 bajtów.<br/><br/>Dotyczy tylko indeksów magazynu wierszy.<br/><br/>Można utworzyć indeksy kolumn varchar o maksymalnym rozmiarze większym niż 900 bajtów, jeśli podczas tworzenia indeksu istniejące dane w kolumnach nie przekraczają 900 bajtów. Jednak późniejsze operacje wstawiania lub aktualizowania w kolumnach, które powodują, że całkowity rozmiar przekracza 900 bajtów będzie kończyć się niepowodzeniem. |
+| Indeks |Kolumny kluczy na indeks. |16<br/><br/>Dotyczy tylko indeksów magazynu wierszy. Klastrowane indeksy magazynu kolumn obejmują wszystkie kolumny. |
+| Statystyka |Rozmiar połączonych wartości kolumn. |900 bajtów. |
+| Statystyka |Kolumny na obiekt statystyk. |32 |
+| Statystyka |Statystyka utworzona dla kolumn na tabelę. |30 000 |
+| Procedury składowane |Maksymalne poziomy zagnieżdżenia. |8 |
+| Wyświetl |Kolumny na widok |1 024 |
 
-## <a name="loads"></a>Obciążenia
+## <a name="loads"></a>Powoduje
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
-| Obciążenia funkcji Polybase |MB na wiersz |1<br/><br/>Program Polybase ładuje wierszy, które są mniejsze niż 1 MB. Ładowanie typów danych biznesowych w tabelach z klastrowanego magazynu kolumn indeksu (CCI) nie jest obsługiwane.<br/><br/> |
+| Obciążenia wielopodstawowe |MB na wiersz |1<br/><br/>Liczba wierszy ładowania bazy jest mniejsza niż 1 MB. Ładowanie typów danych obiektów LOB do tabel z klastrowanym indeksem magazynu kolumn (WIK) nie jest obsługiwane.<br/><br/> |
 
 ## <a name="queries"></a>Zapytania
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
-| Zapytanie |Umieszczonych w kolejce kwerend w tabelach użytkownika. |1000 |
-| Zapytanie |Zapytania jednoczesne w widokach systemu. |100 |
-| Zapytanie |Umieszczonych w kolejce zapytań na widoki systemu |1000 |
-| Zapytanie |Maksymalna parametrów |2098 |
-| Batch |Maksymalny rozmiar |65,536*4096 |
-| Wybierz wyniki |Kolumn w wierszach |4096<br/><br/>Nigdy nie może mieć więcej niż 4096 kolumn w wierszach, w wynikach wybierz. Nie ma żadnej gwarancji, że zawsze masz 4096. Jeśli w planie zapytania wymaga tabeli tymczasowej, 1024 kolumn dla tabeli maksymalna mogą być stosowane. |
-| SELECT |Zagnieżdżonych podzapytań |32<br/><br/>Nigdy nie mogą istnieć więcej niż 32 zagnieżdżonych podzapytań w instrukcji SELECT. Nie ma żadnej gwarancji, że zawsze może mieć 32. Na przykład sprzężenia można wprowadzać podzapytania do planu zapytania. Liczbę podzapytania może być ona ograniczona przez ilość dostępnej pamięci. |
-| SELECT |Kolumn na sprzężenia |1024 kolumn<br/><br/>Program może nigdy nie więcej niż 1024 kolumn sprzężenia. Nie ma żadnej gwarancji, że zawsze masz 1024. Jeśli plan sprzężenia wymaga tabelę tymczasową przy użyciu więcej kolumn niż wynik sprzężenia, limitu 1024 stosuje się do tabeli tymczasowej. |
-| SELECT |Bajtów na grupy według kolumn. |8060<br/><br/>Kolumny w klauzuli GROUP BY nie może przekraczać 8060 bajtów. |
-| SELECT |Liczba bajtów na kolumny w klauzuli ORDER BY |8060 bajtów<br/><br/>Kolumny w klauzuli ORDER BY nie może przekraczać 8060 bajtów |
-| Identyfikatory na instrukcję |Liczba identyfikatorów odwołania |65,535<br/><br/>Usługa SQL Data Warehouse ogranicza liczbę identyfikatorów, które mogą być zawarte w jednym wyrażeniu zapytania. Przekroczenie tego numeru powoduje błąd programu SQL Server 8632. Aby uzyskać więcej informacji, zobacz [błąd wewnętrzny: Osiągnięto limit usług wyrażeń](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
-| Literały ciągu | Liczba literał ciągu w instrukcji | 20,000 <br/><br/>Usługa SQL Data Warehouse ogranicza liczbę stałych ciągów w jednym wyrażeniu zapytania. Przekroczenie tego numeru powoduje błąd programu SQL Server 8632.|
+| Zapytanie |Zakolejkowane zapytania w tabelach użytkownika. |1000 |
+| Zapytanie |Współbieżne zapytania w widokach systemu. |100 |
+| Zapytanie |Zakolejkowane zapytania w widokach systemu |1000 |
+| Zapytanie |Parametry maksymalne |2098 |
+| Partia zadań |Maksymalny rozmiar |65536 * 4096 |
+| Wybierz wyniki |Kolumny na wiersz |4096<br/><br/>Nie można nigdy mieć więcej niż 4096 kolumn na wiersz w wyniku SELECT. Nie ma gwarancji, że zawsze możesz mieć 4096. Jeśli plan zapytania wymaga tabeli tymczasowej, może zostać zastosowana Maksymalna liczba kolumn 1024 na tabelę. |
+| SELECT |Zagnieżdżone podzapytania |32<br/><br/>W instrukcji SELECT nigdy nie można korzystać z więcej niż 32 zagnieżdżonych podzapytań. Nie ma gwarancji, że zawsze możesz mieć 32. Na przykład SPRZĘŻENIe może wprowadzić podzapytanie do planu zapytania. Liczbę podzapytań można również ograniczyć przez dostępną pamięć. |
+| SELECT |Kolumny na SPRZĘŻENIe |1024 kolumn<br/><br/>W SPRZĘŻENIu nigdy nie można mieć więcej niż 1024 kolumn. Nie ma gwarancji, że zawsze możesz mieć 1024. Jeśli plan SPRZĘŻENIa wymaga tabeli tymczasowej zawierającej więcej kolumn niż wynik SPRZĘŻENIa, limit 1024 dotyczy tabeli tymczasowej. |
+| SELECT |Bajtów na grupę według kolumn. |8060<br/><br/>Kolumny w klauzuli GROUP BY mogą mieć maksymalnie 8060 bajtów. |
+| SELECT |Liczba bajtów na kolejność według kolumn |8060 bajtów<br/><br/>Kolumny w klauzuli ORDER BY mogą mieć maksymalnie 8060 bajtów. |
+| Identyfikatory na instrukcję |Liczba przywoływanych identyfikatorów |65 535<br/><br/>SQL Data Warehouse ogranicza liczbę identyfikatorów, które mogą być zawarte w pojedynczym wyrażeniu zapytania. Przekroczenie tej liczby spowoduje SQL Server błędu 8632. Aby uzyskać więcej informacji, zobacz [błąd wewnętrzny: osiągnięto limit usług Expression Services](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
+| Literały ciągu | Liczba literałów ciągu w instrukcji | 20 000 <br/><br/>SQL Data Warehouse ogranicza liczbę stałych ciągów w jednym wyrażeniu zapytania. Przekroczenie tej liczby spowoduje SQL Server błędu 8632.|
 
 ## <a name="metadata"></a>Metadane
-| Widok systemowy | Maksymalna liczba wierszy |
+| Widok systemu | Maksymalna liczba wierszy |
 |:--- |:--- |
-| sys.dm_pdw_component_health_alerts |10 000 |
-| sys.dm_pdw_dms_cores |100 |
-| sys.dm_pdw_dms_workers |Łączna liczba pracowników DMS dla ostatnich 1000 żądań SQL. |
-| sys.dm_pdw_errors |10 000 |
-| sys.dm_pdw_exec_requests |10 000 |
-| sys.dm_pdw_exec_sessions |10 000 |
-| sys.dm_pdw_request_steps |Całkowita liczba kroków dla najnowszych żądań SQL 1000, które są przechowywane w sys.dm_pdw_exec_requests. |
-| sys.dm_pdw_os_event_logs |10 000 |
-| sys.dm_pdw_sql_requests |Najnowsze żądania SQL 1000, które są przechowywane w sys.dm_pdw_exec_requests. |
+| sys. DM _pdw_component_health_alerts |10 000 |
+| sys. DM _pdw_dms_cores |100 |
+| sys. DM _pdw_dms_workers |Łączna liczba procesów roboczych usługi DMS dla najnowszych żądań SQL 1000. |
+| sys. DM _pdw_errors |10 000 |
+| sys. DM _pdw_exec_requests |10 000 |
+| sys. DM _pdw_exec_sessions |10 000 |
+| sys. DM _pdw_request_steps |Łączna liczba kroków dla ostatnich 1000 żądań SQL, które są przechowywane w pliku sys. DM _pdw_exec_requests. |
+| sys. DM _pdw_os_event_logs |10 000 |
+| sys. DM _pdw_sql_requests |Najnowsze 1000 żądań SQL, które są przechowywane w pliku sys. DM _pdw_exec_requests. |
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać zalecenia dotyczące używania SQL Data Warehouse, zobacz [da się oszukać arkusza](cheat-sheet.md).
+## <a name="next-steps"></a>Następne kroki
+Aby zapoznać się z zaleceniami dotyczącymi używania SQL Data Warehouse, zobacz [Arkusz Ściągawka](cheat-sheet.md).

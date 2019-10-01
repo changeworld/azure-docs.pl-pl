@@ -1,24 +1,24 @@
 ---
-title: Zarządzanie grupami aplikacji na potrzeby wersji zapoznawczej pulpitu wirtualnego systemu Windows — Azure
-description: Opisuje sposób konfigurowania dzierżawców dla systemu Windows Virtual Desktop w wersji zapoznawczej w Azure Active Directory.
+title: Zarządzanie grupami aplikacji dla pulpitu wirtualnego systemu Windows — Azure
+description: Opisuje sposób konfigurowania dzierżawców pulpitów wirtualnych systemu Windows w Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e158c0a6090493bec0169c144f030300de921516
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163256"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679457"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Samouczek: Zarządzanie grupami aplikacji na potrzeby wersji zapoznawczej pulpitu wirtualnego systemu Windows
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Samouczek: Zarządzanie grupami aplikacji dla pulpitu wirtualnego systemu Windows
 
-Domyślna grupa aplikacji utworzona dla nowej puli hostów systemu Windows Virtual Desktop w wersji zapoznawczej również publikuje pełny pulpit. Ponadto można utworzyć co najmniej jedną grupę aplikacji RemoteApp dla puli hostów. Postępuj zgodnie z tym samouczkiem, aby utworzyć grupę aplikacji RemoteApp i opublikować poszczególne aplikacje menu **Start** .
+Domyślna grupa aplikacji utworzona dla nowej puli hostów systemu Windows Virtual Desktop również publikuje pełny pulpit. Ponadto można utworzyć co najmniej jedną grupę aplikacji RemoteApp dla puli hostów. Postępuj zgodnie z tym samouczkiem, aby utworzyć grupę aplikacji RemoteApp i opublikować poszczególne aplikacje menu **Start** .
 
-W tym samouczku pokazano, jak:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Utwórz grupę usługi RemoteApp.
@@ -50,7 +50,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. Uruchom następujące polecenie cmdlet, aby zainstalować aplikację opartą `AppAlias`na systemie. `AppAlias`staną się widoczne po uruchomieniu danych wyjściowych z kroku 3.
+4. Uruchom następujące polecenie cmdlet, aby zainstalować aplikację na podstawie `AppAlias`. `AppAlias` staną się widoczne po uruchomieniu danych wyjściowych z kroku 3.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>

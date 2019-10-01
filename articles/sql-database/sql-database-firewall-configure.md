@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: cebf5e80ea59a29efed984097a4157f5238fad5c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744973"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686470"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Reguły zapory Azure SQL Database i Azure SQL Data Warehouse IP
 
@@ -38,7 +38,7 @@ Próby połączenia z Internetu i platformy Azure muszą przejść przez zaporę
 
 ### <a name="server-level-ip-firewall-rules"></a>Reguły zapory bazujące na adresach IP na poziomie serwera
 
-  Te reguły umożliwiają klientom dostęp do całego serwera Azure SQL, czyli wszystkich baz danych w ramach tego samego serwera SQL Database. Reguły są przechowywane w bazie danych *Master* .
+  Te reguły umożliwiają klientom dostęp do całego serwera Azure SQL, czyli wszystkich baz danych w ramach tego samego serwera SQL Database. Reguły są przechowywane w bazie danych *Master* . Dla SQL Server platformy Azure można uzyskać maksymalnie 128 reguł zapory adresów IP na poziomie serwera.
   
   Reguły zapory adresów IP na poziomie serwera można skonfigurować przy użyciu instrukcji Azure Portal, PowerShell lub Transact-SQL.
   - Aby korzystać z portalu lub programu PowerShell, musisz być właścicielem subskrypcji lub współautorem subskrypcji.
@@ -178,7 +178,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie prace programistyczne są teraz dostępne dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń w modułach AZ i AzureRm są zasadniczo identyczne.
 
-| Polecenia cmdlet | Poziom | Opis |
+| Polecenie cmdlet | Poziom | Opis |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Serwer |Zwraca bieżące reguły zapory na poziomie serwera |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Serwer |Tworzy nową regułę zapory na poziomie serwera |
@@ -198,7 +198,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Używanie interfejsu wiersza polecenia do zarządzania regułami zapory adresów IP na poziomie serwera
 
-| Polecenia cmdlet | Poziom | Opis |
+| Polecenie cmdlet | Poziom | Opis |
 | --- | --- | --- |
 |[AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Serwer|Tworzy regułę zapory adresu IP serwera|
 |[AZ SQL Server firewall-Rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Serwer|Wyświetla reguły zapory adresów IP na serwerze|
@@ -218,7 +218,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Zarządzanie regułami zapory adresów IP na poziomie serwera przy użyciu interfejsu API REST
 
-| interfejs API | Poziom | Opis |
+| API | Poziom | Opis |
 | --- | --- | --- |
 | [Wyświetlanie listy reguł zapory](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Serwer |Wyświetla bieżące reguły zapory adresów IP na poziomie serwera |
 | [Utwórz lub zaktualizuj reguły zapory](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Serwer |Tworzy lub aktualizuje reguły zapory adresów IP na poziomie serwera |
@@ -231,7 +231,7 @@ Gdy dostęp do usługi SQL Database nie będzie działać zgodnie z oczekiwaniam
 
 - **Konfiguracja zapory lokalnej:**
 
-  Aby komputer mógł uzyskać dostęp do SQL Database, może być konieczne utworzenie na komputerze wyjątku zapory dla portu TCP 1433. Aby nawiązać połączenia w ramach granicy chmury platformy Azure, może być konieczne otwarcie dodatkowych portów. Aby uzyskać więcej informacji, zobacz "SQL Database: Poza sekcją programu vs w obszarze [portów ponad 1433 dla ADO.NET 4,5 i SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+  Aby komputer mógł uzyskać dostęp do SQL Database, może być konieczne utworzenie na komputerze wyjątku zapory dla portu TCP 1433. Aby nawiązać połączenia w ramach granicy chmury platformy Azure, może być konieczne otwarcie dodatkowych portów. Aby uzyskać więcej informacji, zapoznaj się z sekcją "SQL Database: zewnątrz [i wewnątrz" portów powyżej 1433 dla ADO.NET 4,5 i SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 - **Translacja adresów sieciowych:**
 
@@ -260,7 +260,7 @@ Gdy dostęp do usługi SQL Database nie będzie działać zgodnie z oczekiwaniam
 - Upewnij się, że środowisko sieci firmowej zezwala na komunikację przychodzącą z zakresów adresów IP obliczeń (w tym zakresów SQL) używanych przez centra danych platformy Azure. Być może trzeba będzie dodać te adresy IP do listy dozwolonych. Zobacz [zakresy adresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).  
 - Przewodnik Szybki Start dotyczący tworzenia reguły zapory adresów IP na poziomie serwera znajduje się w temacie [Tworzenie bazy danych Azure SQL Database](sql-database-single-database-get-started.md).
 - Aby uzyskać pomoc dotyczącą łączenia się z bazą danych Azure SQL Database z aplikacji Open Source lub innych firm, zobacz [przykłady kodu dla klientów z przewodnikiem Szybki Start do SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
-- Aby uzyskać informacje o dodatkowych portach, które mogą być konieczne do otwarcia, zobacz "SQL Database: Poza sekcją programu vs w obszarze [portów ponad 1433 dla ADO.NET 4,5 i SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
+- Aby uzyskać informacje o dodatkowych portach, które mogą być potrzebne, zobacz sekcję "SQL Database: zewnątrz i wewnątrz" [portów powyżej 1433 for ADO.NET 4,5 i SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
 - Aby zapoznać się z omówieniem zabezpieczeń Azure SQL Database, zobacz [Zabezpieczanie bazy danych](sql-database-security-overview.md).
 
 <!--Image references-->

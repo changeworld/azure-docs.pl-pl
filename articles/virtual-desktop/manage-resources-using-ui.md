@@ -1,25 +1,25 @@
 ---
 title: Wdrażanie narzędzia do zarządzania — Azure
-description: Jak zainstalować narzędzie interfejsu użytkownika w celu zarządzania zasobami programu Windows Virtual Desktop w wersji zapoznawczej.
+description: Jak zainstalować narzędzie interfejsu użytkownika do zarządzania zasobami pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: e0f9dbd9bf6b0c12d3e3f028ab9cd4c80cdb5124
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816502"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679482"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Samouczek: Wdrażanie narzędzia do zarządzania
+# <a name="tutorial-deploy-a-management-tool"></a>Samouczek: wdrażanie narzędzia do zarządzania
 
-Narzędzie do zarządzania udostępnia interfejs użytkownika służący do zarządzania zasobami programu Microsoft Virtual Desktop w wersji zapoznawczej. W tym samouczku dowiesz się, jak wdrożyć narzędzie do zarządzania i nawiązać z nim połączenie.
+Narzędzie do zarządzania udostępnia interfejs użytkownika służący do zarządzania zasobami klasycznymi firmy Microsoft. W tym samouczku dowiesz się, jak wdrożyć narzędzie do zarządzania i nawiązać z nim połączenie.
 
 >[!NOTE]
->Te instrukcje dotyczą konfiguracji programu Windows Virtual Desktop w wersji zapoznawczej, która może być używana z istniejącymi procesami w organizacji.
+>Te instrukcje dotyczą konfiguracji specyficznej dla pulpitu wirtualnego systemu Windows, która może być używana z istniejącymi procesami w organizacji.
 
 ## <a name="important-considerations"></a>Ważne zagadnienia
 
@@ -31,7 +31,7 @@ To narzędzie do zarządzania jest przykładem. Firma Microsoft zapewni ważne a
 
 Przed wdrożeniem szablonu Azure Resource Manager musisz Azure Active Directory użytkownika, aby wdrożyć interfejs użytkownika zarządzania. Ten użytkownik musi:
 
-- Wyłączanie uwierzytelniania wieloskładnikowego (MFA) w systemie Azure
+- Wyłączono usługę Azure Multi-Factor Authentication (MFA)
 - Masz uprawnienia do tworzenia zasobów w ramach subskrypcji platformy Azure
 - Masz uprawnienia do tworzenia aplikacji usługi Azure AD. Wykonaj następujące kroki, aby sprawdzić, czy użytkownik ma [wymagane uprawnienia](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
@@ -50,15 +50,15 @@ Postępuj zgodnie z poniższymi instrukcjami, aby wdrożyć szablon usługi Azur
     - Jeśli wdrażasz w ramach subskrypcji dostawcy rozwiązań w chmurze, postępuj zgodnie z poniższymi instrukcjami, aby wdrożyć platformę Azure:
         1. Przewiń w dół i kliknij prawym przyciskiem myszy pozycję **Wdróż na platformie Azure**, a następnie wybierz pozycję **Kopiuj lokalizację linku**.
         2. Otwórz Edytor tekstu, taki jak Notatnik, i Wklej tam link.
-        3. Po <https://portal.azure.com/> prawej stronie i przed wystąpieniem programu (#) wprowadź znak (@), a po nim nazwę domeny dzierżawy. Oto przykład formatu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        3. Bezpośrednio po <https://portal.azure.com/> i przed wystąpieniem wiersza (#) wprowadź znak (@), a po nim nazwę domeny dzierżawy. Oto przykład formatu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Zaloguj się do Azure Portal jako użytkownik z uprawnieniami administratora/współautora do subskrypcji dostawcy rozwiązań w chmurze.
         5. Wklej skopiowany link do edytora tekstu na pasku adresu.
 
 ### <a name="guidance-for-template-parameters"></a>Wskazówki dotyczące parametrów szablonu
 Oto jak wprowadzić parametry konfigurowania narzędzia:
 
-- Jest to adres URL brokera usług pulpitu zdalnego\/: https:/rdbroker.WVD.Microsoft.com/
-- Jest to adres URL zasobu: https:\//Mrs-prod.AME.GBL/Mrs-RDInfra-prod
+- Jest to adres URL brokera usług pulpitu zdalnego: https: \//rdbroker. WVD. Microsoft. com/
+- Jest to adres URL zasobu: https: \//Mrs-prod. azwa. GBL/Pani-RDInfra-prod
 - Zalogować się do platformy Azure przy użyciu poświadczeń usługi AAD z wyłączonym uwierzytelnianiem wieloskładnikowym. Zobacz [, co jest potrzebne do uruchomienia szablonu Azure Resource Manager](#what-you-need-to-run-the-azure-resource-manager-template).
 - Użyj unikatowej nazwy dla aplikacji, która zostanie zarejestrowana w Azure Active Directory dla narzędzia do zarządzania; na przykład Apr3UX.
 
@@ -101,7 +101,7 @@ Postępuj zgodnie z poniższymi instrukcjami, aby uruchomić narzędzie:
 > [!NOTE]
 > Jeśli masz niestandardową grupę dzierżawców, wprowadź nazwę ręcznie zamiast wybierać ją z listy rozwijanej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy wiesz już, jak wdrożyć narzędzie do zarządzania i połączyć się z nim, możesz dowiedzieć się, jak używać Azure Service Health do monitorowania problemów z usługami i klasyfikatorów kondycji.
 

@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3a0761fad32b2cfb0387cca79b6c1c0dc83c8e98
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345425"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675101"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteracja zasobu, właściwości lub zmiennej w szablonach Azure Resource Manager
 
@@ -57,7 +57,7 @@ Limity liczby są takie same, niezależnie od tego, czy są używane z zasobem, 
 
 ## <a name="resource-iteration"></a>Iteracja zasobu
 
-Jeśli konieczne jest podjęcie decyzji podczas wdrożenia w celu utworzenia jednego lub większej liczby wystąpień zasobu, Dodaj element `copy` do typu zasobu. W elemencie Copy (Kopiuj) Określ liczbę iteracji i nazwę tej pętli.
+Jeśli chcesz utworzyć więcej niż jedno wystąpienie zasobu we wdrożeniu, Dodaj element `copy` do typu zasobu. W elemencie Copy (Kopiuj) Określ liczbę iteracji i nazwę tej pętli.
 
 Zasób do utworzenia kilka razy przyjmuje następujący format:
 
@@ -86,7 +86,7 @@ Zasób do utworzenia kilka razy przyjmuje następujący format:
 }
 ```
 
-Należy zauważyć, że nazwa każdego zasobu zawiera funkcję `copyIndex()`, która zwraca bieżącą iterację w pętli. Funkcja `copyIndex()` rozpoczyna liczenie od zera. Tak więc, Poniższy przykład:
+Należy zauważyć, że nazwa każdego zasobu zawiera funkcję `copyIndex()`, która zwraca bieżącą iterację w pętli. `copyIndex()` to zero. Tak więc, Poniższy przykład:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -98,7 +98,7 @@ Tworzy następujące nazwy:
 * storage1
 * storage2.
 
-Aby przesunąć wartość indeksu, możesz przekazać wartość do funkcji copyIndex(). Liczba iteracji jest nadal określona w elemencie Copy, ale wartość funkcji copyindex jest przesunięta przez określoną wartość. Tak więc, Poniższy przykład:
+Aby przesunięciu wartość indeksu, można przekazać wartość w funkcji funkcji copyindex (). Liczba iteracji jest nadal określona w elemencie Copy, ale wartość funkcji copyindex jest przesunięta przez określoną wartość. Tak więc, Poniższy przykład:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -517,13 +517,13 @@ W poniższym przykładzie przedstawiono implementację:
 
 W poniższych przykładach przedstawiono typowe scenariusze tworzenia więcej niż jednego wystąpienia zasobu lub właściwości.
 
-|Szablon  |Opis  |
+|Formularza  |Opis  |
 |---------|---------|
 |[Kopiuj magazyn](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Wdraża więcej niż jedno konto magazynu o numerze indeksu w nazwie. |
 |[Magazyn kopii seryjnych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Wdraża kilka kont magazynu jeden w czasie. Nazwa zawiera numer indeksu. |
 |[Kopiuj magazyn z tablicą](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Wdraża kilka kont magazynu. Nazwa zawiera wartość z tablicy. |
 |[Wdrożenie maszyny wirtualnej z zmienną liczbą dysków z danymi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Wdraża kilka dysków danych z maszyną wirtualną. |
-|[Skopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ilustruje różne sposoby iteracji na zmiennych. |
+|[Kopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ilustruje różne sposoby iteracji na zmiennych. |
 |[Wiele reguł zabezpieczeń](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Wdraża kilka reguł zabezpieczeń w sieciowej grupie zabezpieczeń. Konstruuje reguły zabezpieczeń z parametru. Dla parametru zobacz [wiele plików parametrów sieciowej grupy zabezpieczeń](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Następne kroki

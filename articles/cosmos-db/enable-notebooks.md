@@ -6,14 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 824a562cb5f0562a235d903fbd4e575bc9c22572
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 22bad3b31b8cbe54900b96bd4b327f18916e81a3
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672748"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677143"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>Włącz notesy dla kont Azure Cosmos DB
+
+> [!IMPORTANT]
+> Wbudowane notesy dla Azure Cosmos DB są obecnie dostępne w następujących regionach platformy Azure: Australia Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia Południowe Zjednoczone Królestwo, Europa Zachodnia i zachodnie stany USA 2. Aby korzystać z notesów, [Utwórz nowe konto z notesami](#enable-notebooks-in-a-new-cosmos-account) lub [Włącz Notesy na istniejącym koncie](#enable-notebooks-in-an-existing-cosmos-account) w jednym z tych regionów.
 
 Wbudowane notesy Jupyter w Azure Cosmos DB umożliwiają analizowanie i wizualizowanie danych z Azure Portal. W tym artykule opisano, jak włączyć tę funkcję dla konta Azure Cosmos DB.
 
@@ -67,4 +70,3 @@ Możesz również wybrać opcję **Nowy Notes** , aby utworzyć nowy Notes lub p
 ## <a name="next-steps"></a>Następne kroki
 
 - Poznaj zalety [Azure Cosmos DB notesów Jupyter](cosmosdb-jupyter-notebooks.md)
-- Dowiedz się więcej [na temat korzystania z funkcji i poleceń notesu](use-notebook-features-and-commands.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 414dc4e69fda8ccd79b5a48b19bccee35bd11a45
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063709"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678145"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure Active Directory B2C przy użyciu zasad niestandardowych
 
@@ -39,16 +39,9 @@ Następujące przepływy nie są obsługiwane:
 
 Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-## <a name="register-an-application"></a>Zarejestruj aplikację
+## <a name="register-an-application"></a>Rejestrowanie aplikacji
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
-3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
-5. Wprowadź nazwę aplikacji, na przykład *ROPC_Auth_app*.
-6. Wybierz pozycję **nie** dla **aplikacji sieci Web/internetowego interfejsu API**, a następnie wybierz pozycję **tak** dla **klienta natywnego**.
-7. Pozostaw wszystkie inne wartości, jeśli są, a następnie wybierz pozycję **Utwórz**.
-8. Wybierz nową aplikację i Zapisz identyfikator aplikacji do późniejszego użycia.
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ##  <a name="create-a-resource-owner-policy"></a>Tworzenie zasad właściciela zasobu
 
@@ -102,7 +95,7 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure 
     </ClaimsTransformations>
     ```
 
-4. Znajdź element **ClaimsProvider** , który ma `Local Account SignIn` wartość **DisplayName** i Dodaj następujący profil techniczny:
+4. Znajdź element **ClaimsProvider** , który ma wartość **DisplayName** `Local Account SignIn` i Dodaj następujący profil techniczny:
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -264,21 +257,21 @@ Użyj ulubionej aplikacji do programowania interfejsów API do wygenerowania wyw
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C.
+- Zastąp `your-tenant-name` nazwą dzierżawy Azure AD B2C.
 - Zastąp `B2C_1A_ROPC_Auth` pełną nazwą zasad poświadczeń hasła właściciela zasobu.
 
-| Klucz | Value |
+| Klucz | Wartość |
 | --- | ----- |
-| username | `user-account` |
-| password | `password1` |
-| grant_type | password |
+| nazwa użytkownika | `user-account` |
+| hasło | `password1` |
+| grant_type | hasło |
 | scope | OpenID Connect `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | id_token tokenu |
 
-- Zamień `user-account` na nazwę konta użytkownika w dzierżawie.
-- Zamień `password1` na hasło konta użytkownika.
-- Zamień `application-id` na identyfikator aplikacji z rejestracji *ROPC_Auth_app* .
+- Zastąp `user-account` nazwą konta użytkownika w dzierżawie.
+- Zastąp `password1` hasłem konta użytkownika.
+- Zastąp `application-id` IDENTYFIKATORem aplikacji z rejestracji *ROPC_Auth_app* .
 - *Offline_access* jest opcjonalne, jeśli chcesz otrzymać token odświeżenia.
 
 Rzeczywiste żądanie POST wygląda podobnie do poniższego przykładu:
@@ -309,19 +302,19 @@ Utwórz wywołanie POST podobne do pokazanego tutaj. Użyj informacji w poniższ
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C.
+- Zastąp `your-tenant-name` nazwą dzierżawy Azure AD B2C.
 - Zastąp `B2C_1A_ROPC_Auth` pełną nazwą zasad poświadczeń hasła właściciela zasobu.
 
-| Klucz | Value |
+| Klucz | Wartość |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| resource | `application-id` |
+| Zasoby | `application-id` |
 | refresh_token | `refresh-token` |
 
-- Zamień `application-id` na identyfikator aplikacji z rejestracji *ROPC_Auth_app* .
-- Zamień `refresh-token` na elemencie **refresh_token** , który został wysłany z powrotem w poprzedniej odpowiedzi.
+- Zastąp `application-id` IDENTYFIKATORem aplikacji z rejestracji *ROPC_Auth_app* .
+- Zastąp `refresh-token` elementem **refresh_token** , który został wysłany z powrotem w poprzedniej odpowiedzi.
 
 Pomyślna odpowiedź wygląda podobnie do poniższego przykładu:
 

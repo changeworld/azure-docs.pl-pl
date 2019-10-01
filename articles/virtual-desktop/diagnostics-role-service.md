@@ -1,22 +1,22 @@
 ---
-title: Identyfikowanie problemów z funkcją diagnostyki wersji zapoznawczej pulpitu wirtualnego systemu Windows — Azure
-description: Zawiera opis funkcji diagnostyki systemu Windows Virtual Desktop w wersji zapoznawczej i sposobu jej używania.
+title: Identyfikowanie problemów z funkcją diagnostyki pulpitu wirtualnego systemu Windows — Azure
+description: Opisuje funkcję diagnostyki pulpitu wirtualnego systemu Windows i sposób jej używania.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: c07086feef1851f1a6e2a5cda2f541d52a50d91d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163488"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676649"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identyfikowanie problemów za pomocą funkcji diagnostyki
 
-Wersja zapoznawcza pulpitu wirtualnego systemu Windows oferuje funkcję diagnostyki, która umożliwia administratorowi identyfikowanie problemów za pomocą jednego interfejsu. Role pulpitu wirtualnego systemu Windows rejestrują aktywność diagnostyczną za każdym razem, gdy użytkownik współdziała z systemem. Każdy dziennik zawiera istotne informacje, takie jak role pulpitu wirtualnego systemu Windows związane z transakcjami, komunikatami o błędach, informacjami o dzierżawie i informacjami o użytkowniku. Działania diagnostyczne są tworzone przez działania wykonywane zarówno przez użytkownika końcowego, jak i administracyjne. można je podzielić na trzy główne zasobniki:
+Pulpit wirtualny systemu Windows oferuje funkcję diagnostyki, która umożliwia administratorowi identyfikowanie problemów za pomocą jednego interfejsu. Role pulpitu wirtualnego systemu Windows rejestrują aktywność diagnostyczną za każdym razem, gdy użytkownik współdziała z systemem. Każdy dziennik zawiera istotne informacje, takie jak role pulpitu wirtualnego systemu Windows związane z transakcjami, komunikatami o błędach, informacjami o dzierżawie i informacjami o użytkowniku. Działania diagnostyczne są tworzone przez działania wykonywane zarówno przez użytkownika końcowego, jak i administracyjne. można je podzielić na trzy główne zasobniki:
 
 * Działania dotyczące subskrypcji kanału informacyjnego: użytkownik końcowy wyzwala te działania przy każdej próbie połączenia się ze źródłem danych za pomocą aplikacji Pulpit zdalny Microsoft.
 * Działania połączenia: użytkownik końcowy wyzwala te działania przy każdej próbie połączenia się z pulpitem lub funkcją RemoteApp za pomocą aplikacji Pulpit zdalny Microsoft.
@@ -32,7 +32,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="diagnose-issues-with-powershell"></a>Diagnozowanie problemów przy użyciu programu PowerShell
 
-Diagnostyka pulpitu wirtualnego systemu Windows używa tylko jednego polecenia cmdlet programu PowerShell, ale zawiera wiele opcjonalnych parametrów, aby pomóc w zawężaniu i izolowaniu problemów. Poniższe sekcje zawierają listę poleceń cmdlet, które można uruchomić w celu zdiagnozowania problemów. Większość filtrów można zastosować razem. Wartości wymienione w nawiasach, takie `<tenantName>`jak, powinny być zastępowane wartościami, które dotyczą danej sytuacji.
+Diagnostyka pulpitu wirtualnego systemu Windows używa tylko jednego polecenia cmdlet programu PowerShell, ale zawiera wiele opcjonalnych parametrów, aby pomóc w zawężaniu i izolowaniu problemów. Poniższe sekcje zawierają listę poleceń cmdlet, które można uruchomić w celu zdiagnozowania problemów. Większość filtrów można zastosować razem. Wartości wymienione w nawiasach, takie jak `<tenantName>`, powinny być zastępowane wartościami, które dotyczą danej sytuacji.
 
 ### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Pobieranie działań diagnostycznych w dzierżawie
 
@@ -46,7 +46,7 @@ Podobnie jak w przypadku innych poleceń cmdlet programu PowerShell dla pulpitu 
 
 ### <a name="retrieve-detailed-diagnostic-activities"></a>Pobierz szczegółowe działania diagnostyczne
 
-**-Szczegółowy** parametr zawiera dodatkowe szczegóły dla każdej zwróconego działania diagnostycznego. Format każdego działania różni się w zależności od typu działania. Parametr **-** Details można dodać do dowolnego zapytania **Get-RdsDiagnosticActivities** , jak pokazano w poniższym przykładzie.
+**-Szczegółowy** parametr zawiera dodatkowe szczegóły dla każdej zwróconego działania diagnostycznego. Format każdego działania różni się w zależności od typu działania. Parametr **-Details** można dodać do dowolnego zapytania **Get-RdsDiagnosticActivities** , jak pokazano w poniższym przykładzie.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
@@ -136,7 +136,7 @@ Scenariusze błędów są kategoryzowane w wewnętrznej usłudze i na pulpicie w
 W poniższej tabeli wymieniono typowe błędy, w których administratorzy mogą pracować.
 
 >[!NOTE]
->Ta wersja zapoznawcza nie obejmuje kompletnej kategoryzacji błędów i będzie regularnie aktualizowana. Aby mieć pewność, że masz najnowsze informacje, pamiętaj o tym, aby ponownie zaewidencjonować ten artykuł co najmniej raz w miesiącu.
+>Ta lista zawiera najczęstsze błędy i jest aktualizowana regularnie erze. Aby mieć pewność, że masz najnowsze informacje, pamiętaj o tym, aby ponownie zaewidencjonować ten artykuł co najmniej raz w miesiącu.
 
 ### <a name="external-management-error-codes"></a>Kody błędów zarządzania zewnętrznego
 
@@ -176,6 +176,6 @@ W poniższej tabeli wymieniono typowe błędy, w których administratorzy mogą 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o rolach na pulpicie wirtualnym systemu Windows, zobacz [środowisko Windows Virtual Desktop Preview](environment-setup.md).
+Aby dowiedzieć się więcej o rolach w ramach pulpitu wirtualnego systemu Windows, zobacz [Środowisko pulpitu wirtualnego systemu Windows](environment-setup.md).
 
 Aby wyświetlić listę dostępnych poleceń cmdlet programu PowerShell dla pulpitu wirtualnego systemu Windows, zobacz [Dokumentacja programu PowerShell](/powershell/windows-virtual-desktop/overview).

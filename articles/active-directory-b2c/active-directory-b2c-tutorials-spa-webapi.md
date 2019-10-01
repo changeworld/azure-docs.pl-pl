@@ -10,14 +10,14 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
-ms.translationtype: MT
+ms.openlocfilehash: f940893a5328db65549b40269578399655f8539e
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064688"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679269"
 ---
-# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET Core z aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C
+# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do ASP.NET Core internetowego interfejsu API z aplikacji jednostronicowej przy użyciu Azure Active Directory B2C
 
 W tym samouczku pokazano, jak wywoływać zasób internetowego interfejsu API ASP.NET Core chronionych Azure Active Directory B2C (Azure AD B2C) z aplikacji jednostronicowej.
 
@@ -31,39 +31,22 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Wykonaj kroki i spełnij wymagania wstępne w [Samouczku: Włącz uwierzytelnianie w aplikacji jednostronicowej przy użyciu Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md).
+* Wykonaj kroki i wymagania wstępne w [samouczku: Włączanie uwierzytelniania w aplikacji jednostronicowej przy użyciu Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md).
 * Program Visual Studio 2019 lub nowszy lub Visual Studio Code
 * .NET Core 2,2 lub nowszy
 * Node.js
 
 ## <a name="add-a-web-api-application"></a>Dodawanie aplikacji internetowego interfejsu API
 
-Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim będzie on mógł akceptować i odpowiadać na żądania chronionych zasobów wysyłane przez aplikacje klienckie przedstawiające token dostępu.
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
-1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-1. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
-1. Wprowadź nazwę aplikacji. Na przykład *webapi1*.
-1. Dla pozycji **Uwzględnij aplikację internetową/internetowy interfejs API** i **Zezwalaj na niejawny przepływ** wybierz wartość **Tak**.
-1. Dla pozycji **Adres URL odpowiedzi** wprowadź punkt końcowy, w którym usługa Azure AD B2C powinna zwracać wszelkie tokeny żądane przez Twoją aplikację. W tym samouczku przykładowa aplikacja jest uruchamiana lokalnie i nasłuchuje na `https://localhost:5000`.
-1. W polu **Identyfikator URI aplikacji**wprowadź identyfikator punktu końcowego interfejsu API dla podanego identyfikatora URI. Dla samouczka wprowadź `api`, aby pełny identyfikator URI był podobny do `https://contosotenant.onmicrosoft.com/api`.
-1. Kliknij przycisk **Utwórz**.
-1. Wybierz aplikację *webapi1* , aby otworzyć jej stronę właściwości.
-1. Zapisz **Identyfikator aplikacji** widoczny na stronie właściwości. Ten identyfikator jest potrzebny w późniejszym kroku podczas konfigurowania aplikacji sieci Web.
+[!INCLUDE [active-directory-b2c-appreg-webapi](../../includes/active-directory-b2c-appreg-webapi.md)]
 
 ## <a name="configure-scopes"></a>Konfigurowanie zakresów
 
 Zakresy umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy są używane przez internetowy interfejs API w celu implementowania kontroli dostępu opartej na zakresach. Na przykład niektórzy użytkownicy mogą mieć dostęp do odczytu i zapisu, a inni użytkownicy mogą mieć uprawnienia tylko do odczytu. W tym samouczku zdefiniujesz uprawnienia do odczytu i zapisu dla internetowego interfejsu API.
 
-1. Wybierz pozycję **aplikacje**, a następnie wybierz pozycję *webapi1* , aby otworzyć jej stronę właściwości, jeśli nie została jeszcze otwarta.
-1. Wybierz pozycję **Opublikowane zakresy**.
-1. W obszarze **zakres**wprowadź `Hello.Read`tekst i wpisz `Read access to hello`polecenie.
-1. W obszarze **zakres**wprowadź `Hello.Write`tekst i wpisz `Write access to hello`polecenie.
-1. Wybierz pozycję **Zapisz**.
-1. Zapisz **pełną wartość** zakresu dla zakresu, `Hello.Read` który ma być używany w późniejszym kroku podczas konfigurowania aplikacji jednostronicowej. Pełny zakres wartości jest podobny do `https://yourtenant.onmicrosoft.com/api/Hello.Read`.
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Opublikowane zakresy umożliwiają udzielenie aplikacji klienckiej uprawnień do internetowego interfejsu API.
+Zapisz **pełny zakres wartości** dla zakresu `demo.read`, który ma być używany w późniejszym kroku podczas konfigurowania aplikacji jednostronicowej. Pełna wartość zakresu jest podobna do `https://yourtenant.onmicrosoft.com/api/demo.read`.
 
 ## <a name="grant-permissions"></a>Udzielenie uprawnień
 
@@ -75,7 +58,7 @@ W samouczku wymagań wstępnych została utworzona aplikacja sieci Web o nazwie 
 1. Wybierz pozycję **Aplikacje**, a następnie wybierz pozycję *webapp1*.
 1. Wybierz pozycję **Dostęp do interfejsu API**, a następnie wybierz polecenie **Dodaj**.
 1. Na liście rozwijanej **Wybierz interfejs API** wybierz pozycję *webapi1*.
-1. Na liście rozwijanej **Wybierz zakresy** wybierz zakresy **Hello.Read** i **Hello.Write**, które zostały wcześniej zdefiniowane.
+1. Z listy rozwijanej **Wybierz zakresy** wybierz zdefiniowane wcześniej zakresy. Na przykład *Demonstracja. odczyt* i *Demonstracja. Write*.
 1. Kliknij przycisk **OK**.
 
 Jednostronicowa aplikacja sieci Web jest zarejestrowana w celu wywoływania chronionego internetowego interfejsu API. Użytkownik jest uwierzytelniany przy użyciu Azure AD B2C do korzystania z aplikacji jednostronicowej. Aplikacja jednostronicowa uzyskuje autoryzację od Azure AD B2C, aby uzyskać dostęp do chronionego internetowego interfejsu API.
@@ -84,7 +67,7 @@ Jednostronicowa aplikacja sieci Web jest zarejestrowana w celu wywoływania chro
 
 Po zarejestrowaniu internetowego interfejsu API i zdefiniowaniu zakresów konfigurujesz kod internetowego interfejsu API w celu skorzystania ze swojej dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację internetową platformy .NET Core pobieraną z usługi GitHub.
 
-Pobierz archiwum zip lub Sklonuj przykładowy projekt internetowego interfejsu API z usługi GitHub. [ \*](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip)
+[Pobierz plik @no__t -1. zip archiwum](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) lub Sklonuj przykładowy projekt internetowego interfejsu API z usługi GitHub.
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi.git
@@ -92,8 +75,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 ### <a name="configure-the-web-api"></a>Konfigurowanie internetowego interfejsu API
 
-1. Otwórz plik *B2C-WebAPI/**appSettings. JSON*** w programie Visual Studio lub Visual Studio Code.
-1. `AzureAdB2C` Zmodyfikuj blok, aby odzwierciedlał nazwę dzierżawy, identyfikator aplikacji internetowego interfejsu API, nazwę zasad rejestracji/logowania oraz zdefiniowane wcześniej zakresy. Blok powinien wyglądać podobnie do poniższego przykładu (z odpowiednimi `Tenant` wartościami `ClientId` i):
+1. Otwórz plik *B2C-WebAPI/* * appSettings. JSON** * w programie Visual Studio lub Visual Studio Code.
+1. Zmodyfikuj blok `AzureAdB2C`, aby odzwierciedlał nazwę dzierżawy, identyfikator aplikacji internetowego interfejsu API, nazwę zasad rejestracji/logowania oraz zdefiniowane wcześniej zakresy. Blok powinien wyglądać podobnie do poniższego przykładu (z odpowiednimi wartościami `Tenant` i `ClientId`):
 
     ```json
     "AzureAdB2C": {
@@ -101,8 +84,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
       "ClientId": "<webapi-application-ID>",
       "Policy": "B2C_1_signupsignin1",
 
-      "ScopeRead": "Hello.Read",
-      "ScopeWrite": "Hello.Write"
+      "ScopeRead": "demo.read",
+      "ScopeWrite": "demo.write"
     },
     ```
 
@@ -118,15 +101,15 @@ Aby umożliwić aplikacji jednostronicowej wywoływanie ASP.NET Core internetowe
         services.AddCors();
     ```
 
-1. Ponadto w ramach `ConfigureServices()` metody `jwtOptions.Authority` ustaw wartość na następujący identyfikator URI wystawcy tokenu.
+1. Ponadto w metodzie `ConfigureServices()` ustaw wartość `jwtOptions.Authority` na następujący identyfikator URI wystawcy tokenu.
 
-    Zamień `<your-tenant-name>` na nazwę dzierżawy B2C.
+    Zastąp `<your-tenant-name>` nazwą dzierżawy B2C.
 
     ```csharp
     jwtOptions.Authority = $"https://<your-tenant-name>.b2clogin.com/{Configuration["AzureAdB2C:Tenant"]}/{Configuration["AzureAdB2C:Policy"]}/v2.0";
     ```
 
-1. `Configure()` W metodzie Skonfiguruj mechanizm CORS.
+1. W metodzie `Configure()` Skonfiguruj mechanizm CORS.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -135,8 +118,8 @@ Aby umożliwić aplikacji jednostronicowej wywoływanie ASP.NET Core internetowe
             builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
-1. (Tylko Visual Studio) W obszarze **Właściwości** w Eksplorator rozwiązań otwórz plik *profilu launchsettings. JSON* , `iisExpress` a następnie Znajdź blok.
-1. (Tylko Visual Studio) Zaktualizuj wartość przy użyciu numeru portu określonego podczas rejestrowania aplikacji webapi1 we wcześniejszym kroku. `applicationURL` Przykład:
+1. (Tylko Visual Studio) W obszarze **Właściwości** w Eksplorator rozwiązań otwórz plik *profilu launchsettings. JSON* , a następnie Znajdź blok `iisExpress`.
+1. (Tylko Visual Studio) Zaktualizuj wartość `applicationURL` numerem portu określonym podczas rejestrowania aplikacji *webapi1* we wcześniejszym kroku. Na przykład:
 
     ```json
     "iisExpress": {
@@ -154,16 +137,16 @@ Ta sekcja umożliwia zaktualizowanie aplikacji jednostronicowej w celu wywołani
 Aby zmienić ustawienia w SPA:
 
 1. Otwórz plik *index. html* w projekcie [Active-Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] , który został pobrany lub sklonowany w poprzednim samouczku.
-1. Skonfiguruj przykład za pomocą identyfikatora URI dla utworzonego wcześniej zakresu *Hello. Read* i adresu URL internetowego interfejsu API.
-    1. W definicji Zastąp wartość pełnym identyfikatorem URI dla zakresu ( **pełna wartość zakresu** została zapisana wcześniej). `b2cScopes` `appConfig`
-    1. `webApi` Zmień wartość`applicationURL` na wartość określoną w poprzedniej sekcji.
+1. Skonfiguruj przykład za pomocą identyfikatora URI dla *demonstracji.* wcześniej utworzony zakres odczytu i adres URL internetowego interfejsu API.
+    1. W definicji `appConfig` Zastąp wartość `b2cScopes` pełnym identyfikatorem URI dla zakresu ( **pełna wartość zakresu** została zapisana wcześniej).
+    1. Zmień wartość `webApi` na wartość `applicationURL` określoną w poprzedniej sekcji.
 
-    Definicja powinna wyglądać podobnie do następującego bloku kodu (z nazwą dzierżawy w `<your-tenant-name>`miejscu): `appConfig`
+    Definicja `appConfig` powinna wyglądać podobnie do następującego bloku kodu (z nazwą dzierżawy w miejscu `<your-tenant-name>`):
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
     var appConfig = {
-      b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/Hello.Read"],
+      b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/demo.read"],
       webApi: "http://localhost:5000/"
     };
     ```
@@ -178,15 +161,15 @@ Mimo że obie aplikacje działają lokalnie w tym samouczku, używają Azure AD 
 
 W programie Visual Studio naciśnij klawisz **F5** , aby skompilować i debugować rozwiązanie *rozwiązanie B2C-WebApi. sln* . Po uruchomieniu projektu Strona sieci Web zostanie wyświetlona w domyślnej przeglądarce informującej, że internetowy interfejs API jest dostępny dla żądań.
 
-Jeśli wolisz używać `dotnet` interfejsu wiersza polecenia zamiast programu Visual Studio:
+Jeśli wolisz używać interfejsu wiersza polecenia `dotnet` zamiast programu Visual Studio:
 
-1. Otwórz okno konsoli i przejdź do katalogu zawierającego  *\*plik. csproj* . Na przykład:
+1. Otwórz okno konsoli i przejdź do katalogu zawierającego plik *@no__t -1. csproj* . Na przykład:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 
-1. Kompiluj i uruchamiaj internetowy interfejs API, `dotnet run`wykonując.
+1. Kompiluj i uruchamiaj internetowy interfejs API, wykonując `dotnet run`.
 
-    Gdy interfejs API jest uruchomiony i działa, powinny zostać wyświetlone dane wyjściowe podobne do następujących (samouczek umożliwia bezpieczne ignorowanie `NETSDK1059` ostrzeżeń):
+    Gdy interfejs API jest uruchomiony i działa, powinny zostać wyświetlone dane wyjściowe podobne do następujących (dla tego samouczka możesz bezpiecznie zignorować wszelkie `NETSDK1059` ostrzeżeń):
 
     ```console
     $ dotnet run
@@ -215,8 +198,8 @@ Jeśli wolisz używać `dotnet` interfejsu wiersza polecenia zamiast programu Vi
     Listening on port 6420...
     ```
 
-1. Przejdź do `http://localhost:6420` przeglądarki, aby wyświetlić aplikację.
-1. Zaloguj się przy użyciu adresu e-mail i hasła użytego w [poprzednim samouczku](active-directory-b2c-tutorials-spa.md). Po pomyślnym zalogowaniu powinien zostać `User 'Your Username' logged-in` wyświetlony komunikat.
+1. Przejdź do `http://localhost:6420` w przeglądarce, aby wyświetlić aplikację.
+1. Zaloguj się przy użyciu adresu e-mail i hasła użytego w [poprzednim samouczku](active-directory-b2c-tutorials-spa.md). Po pomyślnym zalogowaniu powinna zostać wyświetlona wiadomość `User 'Your Username' logged-in`.
 1. Wybierz przycisk **Wywołaj internetowy interfejs API** . SPA uzyskuje autoryzację od Azure AD B2C, następnie uzyskuje dostęp do chronionego internetowego interfejsu API w celu wyświetlenia zawartości strony indeksu:
 
     ```Output

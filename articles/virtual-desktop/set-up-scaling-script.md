@@ -1,22 +1,22 @@
 ---
-title: Automatyczne skalowanie hostów sesji usługi Windows Virtual Desktop w wersji zapoznawczej — Azure
-description: Opisuje sposób konfigurowania skryptu automatycznego skalowania dla hostów sesji programu Windows Virtual Desktop w wersji zapoznawczej.
+title: Automatyczne skalowanie hostów sesji pulpitu wirtualnego systemu Windows — Azure
+description: Opisuje sposób konfigurowania skryptu automatycznego skalowania dla hostów sesji usług pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 7babfca617ab42da615518726d1b1d4cafe112b5
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f0d847596ef21af67973b6572737e27e1d015991
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163232"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676484"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatyczne skalowanie hostów sesji
 
-W przypadku wielu wdrożeń w wersji zapoznawczej pulpitu wirtualnego systemu Windows na platformie Azure koszty maszyny wirtualnej reprezentują znaczną część całkowitego kosztu wdrożenia pulpitu wirtualnego systemu Windows. Aby obniżyć koszty, najlepszym rozwiązaniem jest zamknięcie i cofnięcie alokacji maszyn wirtualnych hosta sesji w godzinach użycia poza szczytem, a następnie ich ponowne uruchomienie w godzinach szczytowego użycia.
+W przypadku wielu wdrożeń pulpitów wirtualnych systemu Windows na platformie Azure koszty maszyny wirtualnej reprezentują znaczną część całkowitego kosztu wdrożenia pulpitu wirtualnego systemu Windows. Aby obniżyć koszty, najlepszym rozwiązaniem jest zamknięcie i cofnięcie alokacji maszyn wirtualnych hosta sesji w godzinach użycia poza szczytem, a następnie ich ponowne uruchomienie w godzinach szczytowego użycia.
 
 W tym artykule jest używany prosty skrypt skalowania do automatycznego skalowania maszyn wirtualnych hosta sesji w środowisku pulpitu wirtualnego systemu Windows. Aby dowiedzieć się więcej o tym, jak działa skrypt skalowania, zobacz sekcję [jak działa skrypt skalowania](#how-the-scaling-script-works) .
 
@@ -49,10 +49,10 @@ Poniższe procedury zawierają informacje dotyczące sposobu wdrażania skryptu 
 Najpierw Przygotuj środowisko do skalowania skryptu:
 
 1. Zaloguj się do maszyny wirtualnej (maszyny wirtualnej skalowania), która uruchomi zaplanowane zadanie przy użyciu konta administratora domeny.
-2. Utwórz folder na maszynie wirtualnej skalowania, aby przechowywać skrypt skalowania i jego konfigurację (na przykład **C:\\skalowanie-HostPool1**).
+2. Utwórz folder na maszynie wirtualnej skalowania, aby przechowywać skrypt skalowania i jego konfigurację (na przykład **C: \\scaling-HostPool1**).
 3. Pobierz pliki **basicScale. ps1**, **config. XML**i **Functions-PSStoredCredentials. ps1** oraz folder **PowershellModules** z [repozytorium skryptów skalowania](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) i skopiuj je do folderu utworzonego w kroku 2. Istnieją dwa podstawowe sposoby uzyskiwania plików przed skopiowaniem ich do maszyny wirtualnej skalowania:
     - Sklonuj repozytorium Git na komputerze lokalnym.
-    - Wyświetl nieprzetworzoną wersję każdego pliku, skopiuj i wklej zawartość każdego pliku do edytora tekstów, a następnie Zapisz pliki z odpowiadającą jej nazwą i typem pliku. 
+    - Wyświetl **nieprzetworzoną** wersję każdego pliku, skopiuj i wklej zawartość każdego pliku do edytora tekstów, a następnie Zapisz pliki z odpowiadającą jej nazwą i typem pliku. 
 
 ### <a name="create-securely-stored-credentials"></a>Twórz bezpiecznie przechowywane poświadczenia
 
@@ -72,9 +72,9 @@ Następnie musisz utworzyć bezpieczne przechowywane poświadczenia:
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
-    Na przykład: **Set-Variable-Name Path-Scope Global-Value "c:\\skalowanie-HostPool1"**
-5. Uruchom polecenie cmdlet **New-StoredCredential- \$** Path. Po wyświetleniu monitu wprowadź poświadczenia pulpitu wirtualnego systemu Windows z uprawnieniami do wysyłania zapytań do puli hostów (Pula hostów jest określona w **pliku config. XML**).
-    - Jeśli używasz różnych jednostek usługi lub konta standardowego, uruchom polecenie cmdlet **New-StoredCredential- \$** Path dla każdego konta, aby utworzyć lokalne poświadczenia przechowywane.
+    Na przykład **@no__t: Set-Variable-Name Path-Scope Global-Value**
+5. Uruchom polecenie cmdlet **New-StoredCredential-path \$KeyPath** . Po wyświetleniu monitu wprowadź poświadczenia pulpitu wirtualnego systemu Windows z uprawnieniami do wysyłania zapytań do puli hostów (Pula hostów jest określona w **pliku config. XML**).
+    - W przypadku korzystania z różnych jednostek usługi lub konta standardowego Uruchom polecenie cmdlet **New-StoredCredential \$KeyPath** dla każdego konta, aby utworzyć lokalne poświadczenia przechowywane.
 6. Uruchom **Get-StoredCredential-list** , aby potwierdzić, że poświadczenia zostały pomyślnie utworzone.
 
 ### <a name="configure-the-configxml-file"></a>Konfiguruj plik config. XML
@@ -89,7 +89,7 @@ Wprowadź odpowiednie wartości w poniższych polach, aby zaktualizować ustawie
 | currentAzureSubscriptionId    | Identyfikator subskrypcji platformy Azure, w której działają maszyny wirtualne hosta sesji                        |
 | tenantName                    | Nazwa dzierżawy pulpitu wirtualnego systemu Windows                                                    |
 | hostPoolName                  | Nazwa puli hostów usług pulpitu wirtualnego systemu Windows                                                 |
-| RDBroker                      | Adres URL usługi WVD, wartość domyślna to https:\//rdbroker.WVD.Microsoft.com             |
+| RDBroker                      | Adres URL usługi WVD, wartość domyślna to https: \//rdbroker. WVD. Microsoft. com             |
 | Nazwa użytkownika                      | Identyfikator aplikacji głównej usługi (może mieć taką samą nazwę główną usługi jak AADApplicationId) lub użytkownika standardowego bez uwierzytelniania wieloskładnikowego |
 | isServicePrincipal            | Akceptowane wartości to **true** i **false**. Wskazuje, czy drugi używany zestaw poświadczeń jest jednostką usługi lub kontem standardowym. |
 | BeginPeakTime                 | Gdy rozpoczyna się czas szczytowego użycia                                                            |
@@ -111,7 +111,7 @@ Po skonfigurowaniu pliku Configuration. XML należy skonfigurować Harmonogram z
 4. Przejdź do karty **wyzwalacze** , a następnie wybierz pozycję **Nowy...**
 5. W oknie dialogowym **Nowy wyzwalacz** w obszarze **Ustawienia zaawansowane**zaznacz opcję **Powtarzaj zadanie co** i wybierz odpowiedni okres i czas trwania (na przykład **15 minut** lub **nieskończoność**).
 6. Wybierz kartę **Akcje** i **Nowy...**
-7. W oknie dialogowym **Nowa akcja** wprowadź polecenie **PowerShell. exe** do pola **Program/skrypt** , **\\a następnie wprowadź C:\\basicScale. ps1** w polu **Dodaj argumenty (opcjonalnie)** .
+7. W oknie dialogowym **Nowa akcja** wpisz **PowerShell. exe** w polu **Program/skrypt** , a następnie wprowadź **C: \\Scaling @ no__t-5basicScale. ps1** w polu **Dodaj argumenty (opcjonalnie)** .
 8. Przejdź do karty **warunki** i **Ustawienia** , a następnie wybierz **przycisk OK** , aby zaakceptować ustawienia domyślne dla każdego z nich.
 9. Wprowadź hasło dla konta administracyjnego, w którym planujesz uruchomić skrypt skalowania.
 

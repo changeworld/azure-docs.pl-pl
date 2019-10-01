@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233249"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676659"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -98,13 +98,13 @@ Poniżej przedstawiono sposób ręcznego konfigurowania zalecanych liczników wy
 1. Otwórz przeglądarkę internetową i zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu konta administracyjnego.
 2. Następnie przejdź do **obszaru roboczego log Analytics** , aby przejrzeć skonfigurowane liczniki wydajności systemu Windows.
 3. W sekcji **Ustawienia** wybierz pozycję **Ustawienia zaawansowane**.
-4. Następnie przejdź do **danych** > **liczników wydajności systemu Windows** i Dodaj następujące liczniki:
+4. Następnie przejdź do **danych**liczników wydajności  > **systemu Windows** i Dodaj następujące liczniki:
 
-    -   Dysk logiczny (\*)\|: wolne miejsce (%)
-    -   Dysk logiczny (C:)\\średnia. Długość kolejki dysku
-    -   Pamięć (\*)\\dostępne MB
-    -   Informacje o procesorze\\(\*) czas procesora
-    -   Opóźnienie wejściowe użytkownika na sesję (\*)\\maksymalne opóźnienie wejściowe
+    -   Dysk logiczny (\*) \|% wolnego miejsca
+    -   Dysk logiczny (C:) \\Avg. Długość kolejki dysku
+    -   Pamięć (\*) @no__t — 1Available MB
+    -   Informacje o procesorze (\*) @no__t — czas 1Processor
+    -   Opóźnienie danych wejściowych użytkownika na sesję (\*) opóźnienie @no__t 1Max
 
 Dowiedz się więcej o licznikach wydajności w [źródłach danych wydajności systemu Windows i Linux w Azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
@@ -131,14 +131,14 @@ Aby upewnić się, że obszar roboczy Log Analytics ma wstępnie skonfigurowane 
 
 1. W [Azure Portal](https://portal.azure.com/)przejdź do **obszaru log Analytics obszary robocze** , aby przejrzeć skonfigurowane liczniki wydajności systemu Windows.
 2. W obszarze **Ustawienia**wybierz pozycję **Ustawienia zaawansowane**.
-3. Następnie przejdź do pozycji **dane** > **liczniki wydajności systemu Windows**.
+3. Następnie przejdź do **danych** > **liczników wydajności systemu Windows**.
 4. Upewnij się, że następujące liczniki są wstępnie skonfigurowane:
 
-   - Dysk logiczny (\*)\|% wolnego miejsca: Przedstawia ilość wolnego miejsca na dysku w postaci wartości procentowej.
-   - Dysk logiczny (C:)\\średnia. Długość kolejki dysku: Długość żądania transferu dysku dla dysku C. Wartość nie może przekroczyć 2 przez dłuższy czas.
-   - Pamięć (\*)\\dostępne MB: Dostępna pamięć dla systemu (w megabajtach).
-   - Informacje o procesorze\\(\*) czas procesora: wyrażony w procentach czas, przez jaki procesor zużywa nieczynny wątek.
-   - Opóźnienie wejściowe użytkownika na sesję (\*)\\maksymalne opóźnienie wejściowe
+   - Dysk logiczny (\*) \|% wolnego miejsca: Wyświetla ilość wolnego miejsca na dysku w postaci wartości procentowej.
+   - Dysk logiczny (C:) \\Avg. Długość kolejki dysku: długość żądania transferu dysku dla dysku C. Wartość nie może przekroczyć 2 przez dłuższy czas.
+   - Pamięć (\*) \\Available MB: dostępna pamięć dla systemu (w megabajtach).
+   - Informacje o procesorze (\*) \\Processor: wyrażony w procentach czas, przez który procesor poświęca na wykonywanie bezczynnego wątku.
+   - Opóźnienie danych wejściowych użytkownika na sesję (\*) opóźnienie @no__t 1Max
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Nawiązywanie połączenia z maszynami wirtualnymi w obszarze roboczym Log Analytics
 
@@ -181,7 +181,7 @@ Aby ustawić identyfikator URI przekierowania:
 
    ![Strona URI przekierowania](media/redirect-uri-page.png)
 
-8. Teraz przejdź do zasobów platformy Azure, wybierz zasób App Services platformy Azure o nazwie podanej w szablonie i przejdź do adresu URL skojarzonego z nim. (Na przykład jeśli nazwa aplikacji użyta w szablonie `contosoapp45`to, wówczas skojarzony adres URL to <https://contosoapp45.azurewebsites.net>).
+8. Teraz przejdź do zasobów platformy Azure, wybierz zasób App Services platformy Azure o nazwie podanej w szablonie i przejdź do adresu URL skojarzonego z nim. (Na przykład jeśli nazwa aplikacji użyta w szablonie została `contosoapp45`, wówczas skojarzony adres URL to <https://contosoapp45.azurewebsites.net>).
 9. Zaloguj się przy użyciu odpowiedniego konta użytkownika Azure Active Directory.
 10.   Wybierz pozycję **Zaakceptuj**.
 
@@ -189,8 +189,8 @@ Aby ustawić identyfikator URI przekierowania:
 
 Przed udostępnieniem narzędzi diagnostycznych użytkownikom upewnij się, że mają one następujące uprawnienia:
 
-- Użytkownicy potrzebują dostępu do odczytu usługi log Analytics. Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z rolami, uprawnieniami i zabezpieczeniami przy użyciu Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
--  Użytkownicy muszą również mieć dostęp do odczytu dla dzierżawy pulpitu wirtualnego systemu Windows (rola czytnika usług pulpitu zdalnego). Aby uzyskać więcej informacji, zobacz [delegowany dostęp w wersji zapoznawczej pulpitu wirtualnego systemu Windows](delegated-access-virtual-desktop.md).
+- Użytkownicy potrzebują dostępu do odczytu usługi log Analytics. Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z rolami, uprawnieniami i zabezpieczeniami przy użyciu Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+-  Użytkownicy muszą również mieć dostęp do odczytu dla dzierżawy pulpitu wirtualnego systemu Windows (rola czytnika usług pulpitu zdalnego). Aby uzyskać więcej informacji, zobacz [delegowany dostęp w programie Virtual Desktop systemu Windows](delegated-access-virtual-desktop.md).
 
 Należy również nadać użytkownikom następujące informacje:
 
@@ -226,25 +226,25 @@ Możesz również korzystać z użytkowników na hoście sesji:
 
 ### <a name="windows-performance-counter-thresholds"></a>Progi licznika wydajności systemu Windows
 
-- Dysk logiczny (\*)\|% wolnego miejsca:
+- Dysk logiczny (\*) \|% wolnego miejsca:
 
     - Przedstawia wartość procentową całkowitego użytecznego miejsca na dysku logicznym, który jest bezpłatny.
-    - Próg Mniej niż 20% jest oznaczone jako w złej kondycji.
+    - Próg: mniej niż 20% jest oznaczone jako w złej kondycji.
 
-- Dysk logiczny (C:)\\średnia. Długość kolejki dysku:
+- Dysk logiczny (C:) \\Avg. Długość kolejki dysku:
 
     - Reprezentuje warunki systemu magazynu.
-    - Próg Większy niż 5 jest oznaczony jako w złej kondycji.
+    - Próg: wartość wyższa niż 5 jest oznaczona jako zła.
 
-- Pamięć (\*)\\dostępne MB:
+- Pamięć (\*) \\Available MB:
 
     - Dostępna pamięć dla systemu.
-    - Próg Mniej niż 500 megabajtów oznaczone jako w złej kondycji.
+    - Próg: mniej niż 500 megabajtów oznaczono jako zła kondycja.
 
-- Informacje o procesorze\\(\*) czas procesora:
+- Informacje o procesorze (\*) \\Processor:
 
-    - Próg Większy niż 80% jest oznaczony jako w złej kondycji.
+    - Próg: wartość wyższa niż 80% jest oznaczona jako zła.
 
-- [Opóźnienie danych wejściowych użytkownika na sesję\*(\\) maksymalne opóźnienie wejścia](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Opóźnienie danych wejściowych użytkownika na sesję (\* @no__t) opóźnienie operacji wejścia](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)/wyjścia 2max:
 
-    - Próg Ponad 2000 MS jest oznaczony jako w złej kondycji.
+    - Próg: większe niż 2000 MS jest oznaczone jako złej kondycji.

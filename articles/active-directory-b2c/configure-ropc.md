@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69924674fba44595e4f5a9702607579d8c7a8bc8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064466"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679314"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure AD B2C
 
@@ -25,14 +25,14 @@ Przepływ poświadczeń hasła właściciela zasobu (ROPC) to standardowy przep�
 
 W Azure Active Directory B2C (Azure AD B2C) obsługiwane są następujące opcje:
 
-- **Klient natywny**: Interakcja użytkownika podczas uwierzytelniania występuje, gdy kod jest uruchamiany na urządzeniu po stronie użytkownika. Urządzenie może być aplikacją mobilną, która działa w natywnym systemie operacyjnym, takim jak Android lub działa w przeglądarce, takiej jak JavaScript.
-- **Publiczny przepływ klienta**: W wywołaniu interfejsu API są wysyłane tylko poświadczenia użytkownika zebrane przez aplikację. Poświadczenia aplikacji nie są wysyłane.
-- **Dodaj nowe oświadczenia**: Zawartość tokenu identyfikatora można zmienić, aby dodać nowe oświadczenia.
+- **Klient natywny**: interakcja użytkownika podczas uwierzytelniania występuje, gdy kod jest uruchamiany na urządzeniu po stronie użytkownika. Urządzenie może być aplikacją mobilną, która działa w natywnym systemie operacyjnym, takim jak Android lub działa w przeglądarce, takiej jak JavaScript.
+- **Publiczny przepływ klienta**: tylko poświadczenia użytkownika zebrane przez aplikację są wysyłane w wywołaniu interfejsu API. Poświadczenia aplikacji nie są wysyłane.
+- **Dodawanie nowych oświadczeń**: zawartość tokenu identyfikatora można zmienić, aby dodać nowe oświadczenia.
 
 Następujące przepływy nie są obsługiwane:
 
-- **Serwer-** serwer: System ochrony tożsamości musi mieć niezawodny adres IP zebrany od wywołującego (natywnego klienta) w ramach interakcji. W wywołaniu interfejsu API po stronie serwera jest używany tylko adres IP serwera. Jeśli zostanie przekroczony dynamiczny próg nieudanych uwierzytelnień, system ochrony tożsamości może zidentyfikować powtórzony adres IP jako osobę atakującą.
-- **Poufny przepływ klienta**: Identyfikator klienta aplikacji jest zweryfikowany, ale wpis tajny aplikacji nie jest zweryfikowany.
+- **Serwer-serwer**: system ochrony tożsamości musi mieć niezawodny adres IP zebrany od wywołującego (natywnego klienta) w ramach interakcji. W wywołaniu interfejsu API po stronie serwera jest używany tylko adres IP serwera. Jeśli zostanie przekroczony dynamiczny próg nieudanych uwierzytelnień, system ochrony tożsamości może zidentyfikować powtórzony adres IP jako osobę atakującą.
+- **Poufny przepływ klienta**: identyfikator klienta aplikacji został zweryfikowany, ale wpis tajny aplikacji nie jest zweryfikowany.
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Tworzenie przepływu użytkownika właściciela zasobu
 
@@ -51,30 +51,26 @@ Następujące przepływy nie są obsługiwane:
    `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
 
 
-## <a name="register-an-application"></a>Zarejestruj aplikację
+## <a name="register-an-application"></a>Rejestrowanie aplikacji
 
-1. W ustawieniach B2C wybierz pozycję **aplikacje**, a następnie wybierz pozycję **Dodaj**.
-2. Wprowadź nazwę aplikacji, na przykład *ROPC_Auth_app*.
-3. Wybierz pozycję **nie** dla **aplikacji sieci Web/internetowego interfejsu API**, a następnie wybierz pozycję **tak** dla **klienta natywnego**.
-4. Pozostaw wszystkie inne wartości, jeśli są, a następnie wybierz pozycję **Utwórz**.
-5. Wybierz nową aplikację i zanotuj identyfikator aplikacji do późniejszego użycia.
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ## <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
 Użyj ulubionej aplikacji do programowania interfejsów API do wygenerowania wywołania interfejsu API i przejrzyj odpowiedź, aby debugować przepływ użytkownika. Utwórz wywołanie podobne do tego z informacjami w poniższej tabeli jako treść żądania POST:
-- Zastąp  *\<yourtenant. onmicrosoft. com >* nazwą dzierżawy B2C.
-- Zastąp  *\<B2C_1A_ROPC_Auth >* pełną nazwą zasad poświadczeń hasła właściciela zasobu.
-- Zastąp  *\<ciąg bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* identyfikatorem aplikacji z rejestracji.
+- Zastąp *@no__t -1yourtenant. onmicrosoft. com >* nazwą dzierżawy B2C.
+- Zastąp *\<B2C_1A_ROPC_Auth >* pełną nazwą zasad poświadczeń hasła właściciela zasobu.
+- Zastąp *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* identyfikatorem aplikacji z rejestracji.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klucz | Value |
+| Klucz | Wartość |
 | --- | ----- |
-| username | leadiocl@outlook.com |
-| password | Passxword1 |
-| grant_type | password |
+| nazwa użytkownika | leadiocl@outlook.com |
+| hasło | Passxword1 |
+| grant_type | hasło |
 | scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | id_token tokenu |
 
 *Client_id* jest wartością zanotowaną wcześniej jako identyfikator aplikacji. *Offline_access* jest opcjonalne, jeśli chcesz otrzymać token odświeżenia. Używana nazwa użytkownika i hasło muszą być poświadczeniami istniejącego użytkownika w dzierżawie Azure AD B2C.
@@ -108,12 +104,12 @@ Utwórz wywołanie POST podobne do przedstawionego tutaj z informacjami w poniż
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klucz | Value |
+| Klucz | Wartość |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
-| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| Zasoby | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* i *Resource* to wartości, które zostały wcześniej zanotowane jako identyfikator aplikacji. *Refresh_token* to token otrzymany wcześniej w wywołaniu uwierzytelniania.

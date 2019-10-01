@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 9bc6cfdcbc67761e99150c730adeb23602232632
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8b2147ead7c1a6226b68588b9d0dab53da954bf2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032945"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676943"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database często zadawane pytania dotyczące wystąpienia zarządzanego
 
@@ -38,12 +38,19 @@ Aby uzyskać dostęp do dostępnych warstw usług i ich cech, zobacz [różnice 
 
 Aby poznać usterki i znane problemy, zobacz [znane problemy](sql-database-managed-instance-transact-sql-information.md#Issues).
 
+## <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>Gdzie mogę znaleźć najnowsze funkcje i funkcje dostępne w publicznej wersji zapoznawczej?
+
+Aby poznać nowe funkcje i w wersji zapoznawczej, zobacz [Informacje o wersji](/azure/sql-database/sql-database-release-notes?tabs=managed-instance).
+
+## <a name="how-much-time-takes-to-create-or-update-instance-or-to-restore-a-database"></a>Ile czasu zajmuje utworzenie lub zaktualizowanie wystąpienia lub przywrócenie bazy danych?
+
+Oczekiwany czas tworzenia nowego wystąpienia zarządzanego lub zmiany warstwy usług (rdzeni wirtualnych, Storage) zależy od kilku czynników. Zapoznaj się z [operacjami zarządzania](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 
+
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>Czy wystąpienie zarządzane może mieć taką samą nazwę jak SQL Server lokalnego?
 
 Wystąpienie zarządzane musi mieć nazwę kończącą się na *Database.Windows.NET*. Aby użyć innej strefy DNS zamiast domyślnego, na przykład **mi-innej-Name**. contoso.com: 
 - Użyj CliConfig, aby zdefiniować alias. To narzędzie jest tylko otoką ustawień rejestru, dlatego można ją wykonać przy użyciu zasad grupy lub skryptu.
 - Użyj opcji *CNAME* z *TrustServerCertificate = true* .
-
 
 ## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>Jak przenieść bazę danych z wystąpienia zarządzanego z powrotem do SQL Server lub Azure SQL Database?
 
@@ -51,11 +58,11 @@ Wystąpienie zarządzane musi mieć nazwę kończącą się na *Database.Windows
 
 Jeśli wszystkie tabele w bazie danych mają klucze podstawowe, można użyć replikacji transakcyjnej.
 
-Nie `COPY_ONLY` można przywrócić natywnych kopii zapasowych wykonanych z wystąpienia zarządzanego do SQL Server, ponieważ wystąpienie zarządzane ma nowszą wersję bazy danych porównaną z SQL Server.
+Nie można przywrócić kopii zapasowych natywnych `COPY_ONLY` z wystąpienia zarządzanego do SQL Server, ponieważ wystąpienie zarządzane ma nowszą wersję bazy danych w porównaniu do SQL Server.
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>Jak przeprowadzić migrację bazy danych wystąpienia do jednego Azure SQL Database?
 
-Jedną z opcji jest [wyeksportowanie bazy danych do BACPAC](sql-database-export.md) , a następnie zaimportowanie [pliku BACPAC]( sql-database-import.md). 
+Jedną z opcji jest [wyeksportowanie bazy danych do BACPAC](sql-database-export.md) , a następnie [zaimportowanie pliku BACPAC](sql-database-import.md). 
 
 Jest to zalecane rozwiązanie, jeśli baza danych jest mniejsza niż 100 GB. Jeśli wszystkie tabele w bazie danych mają klucze podstawowe, można użyć replikacji transakcyjnej.
 
@@ -125,9 +132,10 @@ Aby zmniejszyć ryzyko związane z siecią, klienci są zalecani do zastosowania
 Analizy przypadków wystąpienia zarządzanego:
 
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [powerdetails](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)  
-Aby lepiej zrozumieć korzyści, koszty i ryzyko związane z wdrażaniem Azure SQL Database wystąpienia zarządzanego, istnieje również badanie Forrester: [Łączny wpływ na środowisko mi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
+Aby lepiej zrozumieć korzyści, koszty i ryzyko związane z wdrażaniem Azure SQL Database wystąpienia zarządzanego, istnieje również badanie Forrester: [Całkowity wpływ na](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)to, co jest ekonomiczne.
 
 
 ## <a name="can-i-do-dns-refresh"></a>Czy można odświeżyć DNS? 
@@ -163,7 +171,7 @@ Obejścia obejmują tworzenie nowego wystąpienia zarządzanego ze stosowną str
 
 Aby porównać wydajność między wystąpieniem zarządzanym i SQL Server, dobrym punktem początkowym jest [najlepsze rozwiązanie w zakresie porównania wydajności między wystąpieniem zarządzanym usługi Azure SQL i](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) artykułem SQL Server.
 
-Ładowanie danych jest często wolniejsze na wystąpieniu zarządzanym niż w SQL Server z powodu obowiązkowego pełnego [](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) modelu odzyskiwania i limitów przepływności zapisu w dzienniku transakcji. Czasami może to być spowodowane załadowaniem danych przejściowych do bazy danych tempdb, a nie z użyciem klastrowanej magazynu kolumn lub tabel zoptymalizowanych pod kątem pamięci.
+Ładowanie danych jest często wolniejsze na wystąpieniu zarządzanym niż w SQL Server z powodu obowiązkowego pełnego modelu odzyskiwania i [limitów](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) przepływności zapisu w dzienniku transakcji. Czasami może to być spowodowane załadowaniem danych przejściowych do bazy danych tempdb, a nie z użyciem klastrowanej magazynu kolumn lub tabel zoptymalizowanych pod kątem pamięci.
 
 
 ## <a name="can-i-restore-my-encrypted-database-to-managed-instance"></a>Czy można przywrócić zaszyfrowaną bazę danych do wystąpienia zarządzanego?

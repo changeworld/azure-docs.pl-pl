@@ -14,14 +14,14 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: e27635d153e58f96dad7db6870ed1dc3f640236a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f4ebbd4f37422c5aa2fea07a243eb624ec9e2961
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326486"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687024"
 ---
-# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Szybki start: Tworzenie aplikacji ze sprężyną Java przy użyciu konfiguracji aplikacji platformy Azure
+# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Szybki Start: Tworzenie aplikacji ze sprężyną Java przy użyciu konfiguracji aplikacji platformy Azure
 
 W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azure do aplikacji ze sprężyną Java w celu scentralizowanego przechowywania i zarządzania ustawieniami aplikacji oddzielonymi od kodu.
 
@@ -35,9 +35,9 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz kolejno pozycje **Eksplorator** > konfiguracji **+ Utwórz** , aby dodać następujące pary klucz-wartość:
+6. Wybierz pozycję **Eksplorator konfiguracji** >  **+ Utwórz** , aby dodać następujące pary klucz-wartość:
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     |---|---|
     | /application/config.message | Witamy |
 
@@ -45,7 +45,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 ## <a name="create-a-spring-boot-app"></a>Tworzenie aplikacji Spring Boot
 
-Używasz sprężyny [Initializr](https://start.spring.io/) do tworzenia nowego projektu sprężyny rozruchowej.
+Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego projektu sprężyny rozruchowej.
 
 1. Przejdź do <https://start.spring.io/>.
 
@@ -68,7 +68,7 @@ Używasz sprężyny [Initializr](https://start.spring.io/) do tworzenia nowego p
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M3</version>
+        <version>1.1.0.M4</version>
     </dependency>
     ```
 
@@ -119,7 +119,7 @@ Używasz sprężyny [Initializr](https://start.spring.io/) do tworzenia nowego p
     }
     ```
 
-6. Utwórz nowy plik o nazwie `bootstrap.properties` w katalogu zasobów aplikacji, a następnie Dodaj do pliku następujące wiersze. Zastąp przykładowe wartości odpowiednimi właściwościami magazynu konfiguracji aplikacji.
+6. Utwórz nowy plik o nazwie `bootstrap.properties` w katalogu zasobów aplikacji i Dodaj do pliku następujące wiersze. Zastąp przykładowe wartości odpowiednimi właściwościami magazynu konfiguracji aplikacji.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
@@ -133,7 +133,7 @@ Używasz sprężyny [Initializr](https://start.spring.io/) do tworzenia nowego p
     mvn clean package
     mvn spring-boot:run
     ```
-2. Po uruchomieniu aplikacji należy użyć zazwinięcie  do przetestowania aplikacji, na przykład:
+2. Po uruchomieniu aplikacji należy użyć *zazwinięcie* do przetestowania aplikacji, na przykład:
 
       ```shell
       curl -X GET http://localhost:8080/

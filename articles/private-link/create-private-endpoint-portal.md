@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 74df4f8e3161576280e1d71c4a9b2f50a169dbb4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d7c2aee3ad73552a57776af5ce6585b36518d169
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350317"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687049"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Tworzenie prywatnego punktu końcowego przy użyciu Azure Portal
 
@@ -24,7 +24,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 > [!NOTE]
 > Prywatne punkty końcowe są niedozwolone w połączeniu z punktami końcowymi usługi w tej samej podsieci.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -41,11 +41,11 @@ W tej sekcji utworzysz Virtual Network i podsieć, która będzie hostować masz
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Name | Wprowadź *MyVirtualNetwork*. |
+    | Nazwa | Wprowadź *MyVirtualNetwork*. |
     | Przestrzeń adresowa | Wprowadź adres *10.1.0.0/16*. |
-    | Subscription | Wybierz subskrypcję.|
-    | Resource group | Wybierz pozycję **Utwórz nową**, wprowadź nazwę *myResourceGroup*, a następnie wybierz przycisk **OK**. |
-    | Location | Wybierz pozycję **WestCentralUS**.|
+    | Subskrypcja | Wybierz subskrypcję.|
+    | Grupa zasobów | Wybierz pozycję **Utwórz nową**, wprowadź nazwę *myResourceGroup*, a następnie wybierz przycisk **OK**. |
+    | Lokalizacja | Wybierz pozycję **WestCentralUS**.|
     | Podsieć — nazwa | Wprowadź nazwę moja *podsieć*. |
     | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź *10.1.0.0/24*. |
     |||
@@ -54,21 +54,21 @@ W tej sekcji utworzysz Virtual Network i podsieć, która będzie hostować masz
 
 ### <a name="create-virtual-machine"></a>Utwórz maszynę wirtualną
 
-1. W lewym górnym rogu ekranu w Azure Portal wybierz pozycję **Utwórz zasób** > **obliczeniowy** > **maszyny wirtualnej**.
+1. W lewym górnym rogu ekranu w Azure Portal wybierz pozycję **Utwórz zasób** > **COMPUTE** > **maszynę wirtualną**.
 
 1. W obszarze **Tworzenie maszyny wirtualnej — ustawienia podstawowe** wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
     | **SZCZEGÓŁY PROJEKTU** | |
-    | Subscription | Wybierz subskrypcję. |
-    | Resource group | Wybierz pozycję **myResourceGroup**. Utworzono to w poprzedniej sekcji.  |
+    | Subskrypcja | Wybierz subskrypcję. |
+    | Grupa zasobów | Wybierz pozycję **myResourceGroup**. Utworzono to w poprzedniej sekcji.  |
     | **SZCZEGÓŁY WYSTĄPIENIA** |  |
     | Nazwa maszyny wirtualnej | Wprowadź *myVm*. |
     | Region | Wybierz pozycję **WestCentralUS**. |
     | Opcje dostępności | Pozostaw wartość domyślną **Brak wymaganej nadmiarowości infrastruktury**. |
-    | Image | Wybierz pozycję **Windows Server 2019 Datacenter**. |
-    | Size | Pozostaw wartość domyślną **Standardowy DS1, wersja 2**. |
+    | Image (Obraz) | Wybierz pozycję **Windows Server 2019 Datacenter**. |
+    | Rozmiar | Pozostaw wartość domyślną **Standardowy DS1, wersja 2**. |
     | **KONTO ADMINISTRATORA** |  |
     | Nazwa użytkownika | Wprowadź wybraną nazwę użytkownika. |
     | Hasło | Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -79,9 +79,9 @@ W tej sekcji utworzysz Virtual Network i podsieć, która będzie hostować masz
     | Masz już licencję systemu Windows? | Pozostaw wartość domyślną **Nie**. |
     |||
 
-1. Wybierz opcję **Dalej: Dyski**.
+1. Wybierz pozycję **Dalej: dyski**.
 
-1. W obszarze **Tworzenie maszyny wirtualnej — dyski**pozostaw wartości domyślne i wybierz pozycję **dalej: Sieć**.
+1. W obszarze **Utwórz maszynę wirtualną**, pozostaw wartości domyślne, a następnie wybierz pozycję **Dalej: sieć**.
 
 1. W obszarze **Tworzenie maszyny wirtualnej — sieć** wybierz następujące informacje:
 
@@ -89,7 +89,7 @@ W tej sekcji utworzysz Virtual Network i podsieć, która będzie hostować masz
     | ------- | ----- |
     | Sieć wirtualna | Pozostaw wartość domyślną **MyVirtualNetwork**.  |
     | Przestrzeń adresowa | Pozostaw wartość domyślną **10.1.0.0/24**.|
-    | Subnet | Pozostaw domyślną wartość moja **podsieć (10.1.0.0/24)** .|
+    | Podsieć | Pozostaw domyślną wartość moja **podsieć (10.1.0.0/24)** .|
     | Publiczny adres IP | Pozostaw wartość domyślną **(nowy) myVm-ip**. |
     | Publiczne porty wejściowe | Wybierz pozycję **Zezwalaj na wybrane porty**. |
     | Wybierz porty wejściowe | Wybierz pozycje **HTTP** i **RDP**.|
@@ -103,30 +103,30 @@ W tej sekcji utworzysz Virtual Network i podsieć, która będzie hostować masz
 ## <a name="create-a-sql-database-server"></a>Tworzenie serwera bazy danych SQL
 W tej sekcji utworzysz serwer bazy danych SQL na platformie Azure. 
 
-1. W lewym górnym rogu ekranu w Azure Portal wybierz pozycję **Utwórz zasób** >  > **bazy danych SQL Database**.
+1. W lewym górnym rogu ekranu w Azure Portal wybierz pozycję **Utwórz zasób**@no__t **-1 bazy danych @no__t**-3**SQL Database**.
 
 1. W obszarze **Tworzenie bazy danych SQL — podstawy**wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
     | **Szczegóły bazy danych** | |
-    | Subscription | Wybierz subskrypcję. |
-    | Resource group | Wybierz pozycję **myResourceGroup**. Utworzono to w poprzedniej sekcji.|
+    | Subskrypcja | Wybierz subskrypcję. |
+    | Grupa zasobów | Wybierz pozycję **myResourceGroup**. Utworzono to w poprzedniej sekcji.|
     | **SZCZEGÓŁY WYSTĄPIENIA** |  |
     | Nazwa bazy danych  | Wprowadź *bazę danych*. Jeśli ta nazwa jest wykonywana, utwórz unikatową nazwę. |
     |||
 5. W obszarze **serwer**wybierz pozycję **Utwórz nowy**. 
 6. W obszarze **nowy serwer**wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
     |Nazwa serwera  | Wprowadź *tekst*. Jeśli ta nazwa jest wykonywana, utwórz unikatową nazwę.|
     | Identyfikator logowania administratora serwera| Wprowadź wybraną nazwę administratora. |
     | Hasło | Wprowadź wybrane hasło. Hasło musi mieć długość co najmniej 8 znaków i spełniać zdefiniowane wymagania. |
-    | Location | Wybierz region platformy Azure, w którym chcesz mieć SQL Server. |
+    | Lokalizacja | Wybierz region platformy Azure, w którym chcesz mieć SQL Server. |
     
 7. Wybierz **przycisk OK**. 
-8. Wybierz pozycję **Recenzja + Utwórz**. Nastąpi przejście do strony **Recenzja i tworzenie** , w której platforma Azure weryfikuje konfigurację. 
+8. Wybierz pozycję **Recenzja + Utwórz**. Nastąpi przejście do **przeglądu i tworzenia**@no__t 1page, gdzie platforma Azure weryfikuje konfigurację. 
 9. Gdy zobaczysz komunikat o przekazaniu walidacji, wybierz pozycję **Utwórz**. 
 10. Gdy zobaczysz komunikat o przekazaniu walidacji, wybierz pozycję Utwórz. 
 
@@ -138,41 +138,41 @@ W tej sekcji utworzysz program SQL Server i dodasz do niego prywatny punkt końc
 2. W **centrum linków prywatnych — Omówienie**opcji **tworzenia połączenia prywatnego z usługą**wybierz pozycję **Rozpocznij**.
 1. W obszarze **Tworzenie prywatnego punktu końcowego (wersja zapoznawcza) — podstawy**wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
     | **Szczegóły projektu** | |
-    | Subscription | Wybierz subskrypcję. |
-    | Resource group | Wybierz pozycję **myResourceGroup**. Utworzono to w poprzedniej sekcji.|
+    | Subskrypcja | Wybierz subskrypcję. |
+    | Grupa zasobów | Wybierz pozycję **myResourceGroup**. Utworzono to w poprzedniej sekcji.|
     | **SZCZEGÓŁY WYSTĄPIENIA** |  |
-    | Name | *Wprowadź myPrivateEndpoint*. Jeśli ta nazwa jest wykonywana, utwórz unikatową nazwę. |
+    | Nazwa | Wprowadź * myPrivateEndpoint*. Jeśli ta nazwa jest wykonywana, utwórz unikatową nazwę. |
     |Region|Wybierz pozycję **WestCentralUS**.|
     |||
-5. Wybierz **pozycję Dalej: Zasób**.
+5. Wybierz pozycję **Dalej: zasób**.
 6. W obszarze **Utwórz prywatny punkt końcowy zasobu**wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
     |Metoda połączenia  | Wybierz pozycję Połącz z zasobem platformy Azure w moim katalogu.|
-    | Subscription| Wybierz subskrypcję. |
+    | Subskrypcja| Wybierz subskrypcję. |
     | Typ zasobu | Wybierz pozycję **Microsoft. SQL/Server**. |
-    | Resource |Wybierz *pozycję* Wyznacz|
+    | Zasób |Wybierz *pozycję* Wyznacz|
     |Docelowy zasób podrzędny |Wybierz *sqlServer*|
     |||
-7. Wybierz **pozycję Dalej: Konfiguracja**.
+7. Wybierz pozycję **Dalej: Konfiguracja**.
 8. W obszarze **Tworzenie prywatnego punktu końcowego (wersja zapoznawcza) — Konfiguracja**wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
     |**SIECI**| |
     | Sieć wirtualna| Wybierz pozycję *MyVirtualNetwork*. |
-    | Subnet | Wybierz pozycję Moja *podsieć*. |
+    | Podsieć | Wybierz pozycję Moja *podsieć*. |
     |**PRYWATNA INTEGRACJA Z USŁUGĄ DNS**||
     |Integracja z prywatną strefą DNS |Wybierz pozycję **tak**. |
     |Strefa Prywatna strefa DNS |SELECT *(New) privatelink. Database. Windows. NET* |
     |||
 
-1. Wybierz pozycję **Recenzja + Utwórz**. Nastąpi przejście do strony **Recenzja i tworzenie** , w której platforma Azure weryfikuje konfigurację. 
-2. Gdy zobaczysz komunikat o  **przekazaniu walidacji**, wybierz pozycję **Utwórz**. 
+1. Wybierz pozycję **Recenzja + Utwórz**. Nastąpi przejście do **przeglądu i tworzenia**@no__t 1page, gdzie platforma Azure weryfikuje konfigurację. 
+2. Gdy zobaczysz **weryfikację przekazaną** message, wybierz pozycję **Utwórz**. 
  
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Nawiązywanie połączenia z maszyną wirtualną przy użyciu Pulpit zdalny (RDP)
 
@@ -204,7 +204,7 @@ Po utworzeniu*myVm** Połącz się z nim za pośrednictwem Internetu w następuj
 
 1. W Pulpit zdalny *myVM*Otwórz program PowerShell.
 
-2. Wprowadź `nslookup myserver.database.windows.net`. 
+2. Wprowadź wartość @ no__t-0. 
 
     Zostanie wyświetlony komunikat podobny do tego:
     ```azurepowershell
@@ -214,30 +214,31 @@ Po utworzeniu*myVm** Połącz się z nim za pośrednictwem Internetu w następuj
     Name:    myserver.privatelink.database.windows.net
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
-3. Install [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+    ```
+3. Zainstaluj [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-4. In **Connect to server**, enter or select this information:
+4. W obszarze **Połącz z serwerem**wprowadź lub wybierz następujące informacje:
 
-    | Setting | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
-    | Server type| Select **Database Engine**.|
-    | Server name| Select *myserver.database.windows.net* |
-    | User name | Enter a password provided during the SQL server creation. |
-    |Password |Enter a password provided during the SQL server creation. |
-    |Remember password|Select **Yes**.|
+    | Typ serwera| Wybierz pozycję **Aparat bazy danych**.|
+    | Nazwa serwera| Wybierz *MyServer.Database.Windows.NET* |
+    | Nazwa użytkownika | Wprowadź hasło podane podczas tworzenia programu SQL Server. |
+    |Hasło |Wprowadź hasło podane podczas tworzenia programu SQL Server. |
+    |Zapamiętaj hasło|Wybierz pozycję **tak**.|
     |||
-1. Select **Connect**.
-2. Browse databases from left menu.
-3. (Optionally) Create or query information from mydatabase.
-4. Close the remote desktop connection to *myVm*. 
+1. Wybierz pozycję **Połącz**.
+2. Przeglądaj bazy danych z menu po lewej stronie.
+3. Zdefiniować Utwórz lub zapytaj informacje z bazy danych.
+4. Zamknij połączenie pulpitu zdalnego z *myVm*. 
 
-## Clean up resources 
-When you're done using the private endpoint, SQL server, and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
-2. Select **Delete resource group**. 
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
+Gdy skończysz korzystać z prywatnego punktu końcowego, programu SQL Server i maszyny wirtualnej, Usuń grupę zasobów i wszystkie zawarte w niej zasoby: 
+1. Wprowadź wartość *Webresourcename* in **Wyszukiwanie** box w górnej części portalu i wybierz pozycję Moja *zasobów*@no__t — 5from wyniki wyszukiwania. 
+2. Wybierz pozycję **Usuń grupę zasobów**. 
+3. Wprowadź dla elementu webresourcename **Typ Nazwa grupy zasobów** and wybierz pozycję **Usuń**.
 
-## Next steps
+## <a name="next-steps"></a>Następne kroki
 
-In this quickstart, you created a VM on a virtual network, a SQL database server, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the SQL database server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint?](private-endpoint-overview.md).
+W tym przewodniku szybki start utworzono MASZYNę wirtualną w sieci wirtualnej, na serwerze bazy danych SQL i prywatnym punkcie końcowym dostępu prywatnego. Nawiązano połączenie z jedną maszyną wirtualną z Internetu i bezpieczną komunikację z serwerem usługi SQL Database przy użyciu linku prywatnego. Aby dowiedzieć się więcej o prywatnych punktach końcowych, zobacz [co to jest prywatny punkt końcowy platformy Azure?](private-endpoint-overview.md).
 

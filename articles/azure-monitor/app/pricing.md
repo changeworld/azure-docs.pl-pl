@@ -11,26 +11,26 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: dalek
-ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 448469d4c1ff15ed2ba814dfaa653c4d3c7e3452
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067012"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677816"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
 > [!NOTE]
-> W tym artykule opisano sposób analizowania Application Insights użycia danych.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
-> - [Monitorowanie użycia i szacowanych kosztów](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
+> W tym artykule opisano sposób analizowania Application Insights użycia danych.  Zapoznaj się z następującymi artykułami, aby uzyskać pokrewne informacje.
+> - [Monitorowanie użycia i szacowane koszty](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) opisują sposób wyświetlania użycia i szacowane koszty w wielu funkcjach monitorowania platformy Azure dla różnych modeli cen. Opisano w nim również, jak zmienić model cen.
 
 Jeśli masz pytania dotyczące sposobu działania cen dla Application Insights, możesz ogłosić pytanie na naszym [forum](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights).
 
 ## <a name="pricing-model"></a>Model cen
 
-Cennik [usługi Azure Application Insights][start] jest oparty na woluminie pozyskiwanym danych. Każdy zasób Application Insights jest rozliczany jako osobna usługa i przyczynia się do rozliczenia za subskrypcję platformy Azure.
+Cennik [usługi Azure Application Insights][start] jest oparty na ilości danych pozyskiwanych i opcjonalnie w celu dłuższego przechowywania danych. Każdy zasób Application Insights jest rozliczany jako osobna usługa i przyczynia się do rozliczenia za subskrypcję platformy Azure.
 
 ### <a name="data-volume-details"></a>Szczegóły ilości danych
 
@@ -41,13 +41,13 @@ Cennik [usługi Azure Application Insights][start] jest oparty na woluminie pozy
 > [!NOTE]
 > Wszystkie ceny wyświetlane na zrzutach ekranu w tym artykule są przeznaczone tylko do celów. W przypadku bieżących cen w walucie i regionie zapoznaj się z tematem [Application Insights cenniku][pricing].
 
-### <a name="multi-step-web-tests"></a>Wieloetapowe testy sieci Web
+### <a name="multi-step-web-tests"></a>Wieloetapowy test witryny
 
 [Wieloetapowe testy sieci Web](../../azure-monitor/app/availability-multistep.md) wiążą się z dodatkowymi opłatami. Wieloetapowe testy sieci Web to testy sieci Web, które wykonują sekwencję akcji.
 
 Nie ma oddzielnej opłaty za *testy ping* dla pojedynczej strony. Dane telemetryczne z testów ping i testów wieloetapowych są rozliczone tak samo jak inne dane telemetryczne z aplikacji.
 
-## <a name="review-usage-and-estimate-costs"></a>Przegląd kosztów użytkowania i oszacowania
+## <a name="understand-your-usage-and-estimate-costs"></a>Zapoznaj się z użyciem i szacunkowymi kosztami
 
 Application Insights ułatwia zrozumienie, jakie koszty są prawdopodobnie oparte na najnowszych wzorcach użycia. Aby rozpocząć, w Azure Portal, dla zasobu Application Insights, przejdź do strony **użycie i szacowane koszty** :
 
@@ -71,7 +71,7 @@ Aby zrozumieć, ile danych jest wysyłanych przez aplikację, możesz:
 
 * Przejdź do okienka **użycie i szacowane koszty** , aby wyświetlić wykres dziennego wolumenu danych. 
 * W Eksplorator metryk Dodaj nowy wykres. Dla metryki wykresu wybierz pozycję **wolumin punktu danych**. Włącz **grupowanie**, a następnie Grupuj według **typu danych**.
-* Użyj typu `systemEvents` danych. Na przykład aby zobaczyć ilość danych pozyskaną w ciągu ostatniego dnia, zapytanie będzie:
+* Użyj typu danych `systemEvents`. Na przykład aby zobaczyć ilość danych pozyskaną w ciągu ostatniego dnia, zapytanie będzie:
 
 ```kusto
 systemEvents 
@@ -86,19 +86,19 @@ Tego zapytania można użyć w [alercie dziennika platformy Azure](https://docs.
 
 Ilość wysyłanych danych może być zarządzana na trzy sposoby:
 
-* **Próbkowanie**: Możesz użyć próbkowania, aby zmniejszyć ilość danych telemetrycznych wysyłanych z serwera i aplikacji klienckich przy minimalnym zniekształceniu metryk. Próbkowanie to podstawowe narzędzie, za pomocą którego można dostroić ilość wysyłanych danych. Dowiedz się więcej o [funkcjach pobierania próbek](../../azure-monitor/app/sampling.md).
+* **Próbkowanie**: możesz użyć próbkowania, aby zmniejszyć ilość danych telemetrycznych wysyłanych z serwera i aplikacji klienckich przy minimalnym zniekształceniu metryk. Próbkowanie to podstawowe narzędzie, za pomocą którego można dostroić ilość wysyłanych danych. Dowiedz się więcej o [funkcjach pobierania próbek](../../azure-monitor/app/sampling.md).
  
-* **Dzienny limit**: Po utworzeniu zasobu Application Insights w Azure Portal dzienny limit jest ustawiany na 100 GB/dzień. Podczas tworzenia zasobu Application Insights w programie Visual Studio wartość domyślna to małe (tylko 32,3 MB/dzień). Domyślna wartość limitu dziennego jest ustawiana na ułatwienia testowania. Przed wdrożeniem aplikacji w środowisku produkcyjnym należy zamierzać, że użytkownik będzie zgłaszał dzienny limit. 
+* **Dzienny limit**: podczas tworzenia zasobu Application Insights w Azure Portal dzienny limit jest ustawiany na 100 GB/dzień. Podczas tworzenia zasobu Application Insights w programie Visual Studio wartość domyślna to małe (tylko 32,3 MB/dzień). Domyślna wartość limitu dziennego jest ustawiana na ułatwienia testowania. Przed wdrożeniem aplikacji w środowisku produkcyjnym należy zamierzać, że użytkownik będzie zgłaszał dzienny limit. 
 
     Maksymalny limit wynosi 1 000 GB/dzień, chyba że zostanie zażądana wyższa wartość maksymalna dla aplikacji o dużym ruchu. 
     
-    Ostrzegawcze wiadomości e-mail dotyczące dziennego limitu są wysyłane do konta, które są członkami tych ról dla zasobu Application Insights: "Serviceadmin", "AccountAdmin", "Administrator", "Owner".
+    Ostrzegawcze wiadomości e-mail dotyczące dziennego limitu są wysyłane do konta, które są członkami tych ról dla Application Insights zasobu: "serviceadmin", "AccountAdmin", "Administrator", "Owner".
 
     Należy zachować ostrożność podczas ustawiania dziennego limitu. Zamiarem powinna być *nigdy nie trafiać dziennego limitu*. Po osiągnięciu dziennego limitu utracisz dane przez pozostałą część dnia i nie będzie można monitorować aplikacji. Aby zmienić dzienny limit, użyj opcji **dzienny limit ilości** . Możesz uzyskać dostęp do tej opcji w okienku **użycie i szacowane koszty** (jest to opisane w dalszej części artykułu).
     
     Usunięto ograniczenie dla niektórych typów subskrypcji, które mają środki kredytowe, których nie można użyć dla Application Insights. Wcześniej, jeśli subskrypcja ma limit wydatków, w oknie dialogowym dzienne zakończenie znajdują się instrukcje usuwania limitu wydatków i włączania codziennych limitów ponad 32,3 MB/dzień.
     
-* **Ograniczanie przepustowości**: Ograniczanie przepustowości ogranicza szybkość danych do 32 000 zdarzeń na sekundę, średnio na 1 minutę na klucz Instrumentacji. Ilość danych wysyłanych przez aplikację jest szacowana co minutę. W przypadku przekroczenia stawki za sekundę obliczonej w ciągu minuty serwer odrzuca niektóre żądania. Zestaw SDK buforuje dane, a następnie próbuje ponownie wysłać ją. Rozłożenie przeskoku przez kilka minut. Jeśli aplikacja stale wysyła dane przy użyciu stawki ograniczenia, niektóre dane zostaną usunięte. (Zestawy SDK ASP.NET, Java i JavaScript próbują ponownie wysłać dane w ten sposób; inne zestawy SDK mogą po prostu porzucić dane ograniczające ograniczenia). W przypadku wystąpienia ograniczenia zostanie wyświetlone ostrzeżenie informujące o tym, że wystąpiło.
+* **Ograniczanie**przepływności: ograniczanie szybkości danych do 32 000 zdarzeń na sekundę, średnia na 1 minutę na klucz Instrumentacji. Ilość danych wysyłanych przez aplikację jest szacowana co minutę. W przypadku przekroczenia stawki za sekundę obliczonej w ciągu minuty serwer odrzuca niektóre żądania. Zestaw SDK buforuje dane, a następnie próbuje ponownie wysłać ją. Rozłożenie przeskoku przez kilka minut. Jeśli aplikacja stale wysyła dane przy użyciu stawki ograniczenia, niektóre dane zostaną usunięte. (Zestawy SDK ASP.NET, Java i JavaScript próbują ponownie wysłać dane w ten sposób; inne zestawy SDK mogą po prostu porzucić dane ograniczające ograniczenia). W przypadku wystąpienia ograniczenia zostanie wyświetlone ostrzeżenie informujące o tym, że wystąpiło.
 
 ## <a name="reduce-your-data-volume"></a>Zmniejszanie ilości danych
 
@@ -110,17 +110,23 @@ Oto kilka rzeczy, które można zrobić, aby zmniejszyć ilość danych:
 * Podziel dane telemetryczne między osobnymi kluczami Instrumentacji. 
 * Metryki przed agregacją. W przypadku umieszczenia wywołań TrackMetric w aplikacji można zmniejszyć ruch przy użyciu przeciążenia, które akceptuje Obliczanie średniej i odchylenia standardowego partii pomiarów. Lub można użyć [wstępnie agregowanego pakietu](https://www.myget.org/gallery/applicationinsights-sdk-labs).
 
-## <a name="manage-the-maximum-daily-data-volume"></a>Zarządzanie Maksymalna dzienna ilość danych
+## <a name="manage-your-maximum-daily-data-volume"></a>Zarządzanie maksymalnym dziennym woluminem danych
 
 Możesz użyć dziennego limitu ilości, aby ograniczyć zbierane dane. Jeśli jednak zostanie osiągnięty limit, utracisz wszystkie dane telemetryczne wysyłane z aplikacji dla pozostałej części dnia. *Nie zaleca* się, aby aplikacja osiągnęła dzienny limit. Nie można śledzić kondycji i wydajności aplikacji po osiągnięciu dziennego limitu.
 
 Zamiast używać dziennego limitu ilości, użyj [próbkowania](../../azure-monitor/app/sampling.md) , aby dostosować ilość danych do żądanego poziomu. Następnie użyj dziennego limitu tylko jako "ostatniej", jeśli aplikacja nieoczekiwanie zacznie wysyłać znacznie wyższe ilości danych telemetrycznych.
 
+### <a name="identify-what-daily-data-limit-to-define"></a>Określ dzienny limit danych do zdefiniowania
+
+Przejrzyj Application Insights użycie i szacowane koszty, aby zrozumieć trend pozyskiwania danych i co to jest dzienny limit ilości do zdefiniowania. Należy wziąć pod uwagę opiekę, ponieważ nie będzie można monitorować zasobów po osiągnięciu limitu. 
+
+### <a name="set-the-daily-cap"></a>Ustaw limit dzienny
+
 Aby zmienić dzienny limit, w sekcji **Konfigurowanie** zasobu Application Insights, na stronie **użycie i szacowane koszty** wybierz pozycję **dzienny limit**.
 
 ![Dostosuj dzienny limit ilości danych telemetrycznych](./media/pricing/pricing-003.png)
 
-Aby [zmienić dzienny limit za pośrednictwem Azure Resource Manager](../../azure-monitor/app/powershell.md), właściwość do zmiany jest `dailyQuota`.  Za pomocą Azure Resource Manager można również ustawić `dailyQuotaResetTime` i dzienny `warningThreshold`limit. 
+Aby [zmienić dzienny limit za pośrednictwem Azure Resource Manager](../../azure-monitor/app/powershell.md), właściwość do zmiany jest `dailyQuota`.  Za pośrednictwem Azure Resource Manager można również ustawić `warningThreshold` dla `dailyQuotaResetTime` i dziennego limitu. 
 
 ## <a name="sampling"></a>Próbkowanie
 [Próbkowanie](../../azure-monitor/app/sampling.md) to metoda zmniejszania szybkości, z jaką dane telemetryczne są wysyłane do aplikacji, przy zachowaniu możliwości wyszukiwania pokrewnych zdarzeń podczas wyszukiwania diagnostycznego. Należy również zachować poprawne liczby zdarzeń.
@@ -148,7 +154,7 @@ Aby wykryć rzeczywistą częstotliwość próbkowania bez względu na to, gdzie
 
 W każdym zachowanym rekordzie `itemCount` wskazuje liczbę oryginalnych rekordów, które reprezentuje. Jest równa 1 + liczba poprzednich odrzuconych rekordów. 
 
-## <a name="change-the-data-retention-period"></a>Zmienić okres przechowywania danych
+## <a name="change-the-data-retention-period"></a>Zmień okres przechowywania danych
 
 > [!NOTE]
 > Ta funkcja została tymczasowo usunięta podczas rozwiązywania problemu.  Będziemy ją z powrotem do pierwszego tygodnia w 2019 października.
@@ -161,6 +167,10 @@ Aby zmienić przechowywanie, z zasobu Application Insights przejdź na stronę *
 
 Po włączeniu rozliczeń o dłuższym czasie przechowywania dane przechowywane przez czas dłuższy niż 90 dni będą rozliczane jako ta sama stawka, która jest rozliczana w przypadku przechowywania danych Log Analytics Azure. Dowiedz się więcej na [stronie cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). Bądź na bieżąco z zmiennym postępem przechowywania w ramach [tej sugestii](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 
+## <a name="data-transfer-charges-using-application-insights"></a>Opłaty za transfer danych przy użyciu Application Insights
+
+Wysyłanie danych do Application Insights może spowodować naliczenie opłat za przepustowość danych. Zgodnie z opisem na [stronie cennika przepustowości platformy Azure](https://azure.microsoft.com/pricing/details/bandwidth/)transfer danych między usługami platformy Azure znajdującymi się w dwóch regionach jest naliczany jako wychodzący transfer danych. Transfer danych przychodzących jest bezpłatny. Ta opłata jest jednak bardzo mała (kilka%) w porównaniu z kosztami Application Insights pozyskiwania danych dziennika. W związku z tym, kontrolując koszty Log Analytics muszą skupić się na pozyskiwanym woluminie danych i mamy wskazówki ułatwiające zrozumienie tego w [tym miejscu](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume).   
+
 ## <a name="limits-summary"></a>Podsumowanie limitów
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
@@ -171,7 +181,7 @@ Aby wyłączyć dzienne wiadomości e-mail z limitem ilości, w sekcji **Konfigu
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Warstwa cenowa starszej wersji przedsiębiorstwa (na węzeł)
 
-W przypadku wczesnych użytkowników platformy Azure Application Insights nadal istnieją dwie możliwe warstwy cenowe: Basic i Enterprise. Podstawowa warstwa cenowa jest taka sama jak opisana powyżej i jest warstwą domyślną. Obejmuje ona wszystkie funkcje warstwy korporacyjnej bez dodatkowych kosztów. Podstawowa warstwa jest rozliczana głównie na ilość danych, które zostały pozyskane. 
+W przypadku wczesnych użytkowników platformy Azure Application Insights nadal istnieją dwie warstwy cenowe: Basic i Enterprise. Podstawowa warstwa cenowa jest taka sama jak opisana powyżej i jest warstwą domyślną. Obejmuje ona wszystkie funkcje warstwy korporacyjnej bez dodatkowych kosztów. Podstawowa warstwa jest rozliczana głównie na ilość danych, które zostały pozyskane. 
 
 > [!NOTE]
 > Te starsze warstwy cenowe zostały zmienione. Warstwa cenowa przedsiębiorstwa jest teraz wywoływana **dla każdego węzła** , a podstawowa warstwa cenowa jest teraz wywoływana **na GB**. Te nowe nazwy są używane poniżej i w Azure Portal.  
@@ -211,7 +221,7 @@ Ponieważ ta warstwa ma zastosowanie tylko do klientów z subskrypcją pakietu O
 |:---------------------------------------|:----------------:|
 | 1 aplikacja używająca 3 wystąpień Azure App Service i 1 serwera wirtualnego | 4 |
 | 3 aplikacje działające na 2 maszynach wirtualnych; zasoby Application Insights dla tych aplikacji znajdują się w tej samej subskrypcji i w warstwie na węzeł | 2 | 
-| 4 aplikacje, których zasoby usługi Application Insights znajdują się w tej samej subskrypcji; Każda aplikacja uruchamia 2 wystąpienia w godzinach od 16 godzin szczytu i 4 wystąpienia w ciągu 8 godzin szczytu | 13.33 | 
+| 4 aplikacje, których zasoby usługi Application Insights znajdują się w tej samej subskrypcji; Każda aplikacja uruchamia 2 wystąpienia w godzinach od 16 godzin szczytu i 4 wystąpienia w ciągu 8 godzin szczytu | 13,33 | 
 | Usługi w chmurze z 1 rolą proces roboczy i 1 rolą sieci Web, każdy uruchomiony 2 wystąpienia | 4 | 
 | Klaster programu Azure Service Fabric w systemie 5 z systemem 50 mikrousług; Każda mikrousługa z uruchomioną 3 wystąpieniami | 5|
 
@@ -221,7 +231,7 @@ Ponieważ ta warstwa ma zastosowanie tylko do klientów z subskrypcją pakietu O
   * Jeśli aplikacja używa zestawu SDK do ustawiania **roleInstance** na wartość niestandardową, domyślnie ta sama wartość jest używana do określenia liczby węzłów. 
   * W przypadku korzystania z nowej wersji zestawu SDK z aplikacją uruchomioną z komputerów klienckich lub urządzeń przenośnych liczba węzłów może zwracać liczbę bardzo dużą (z powodu dużej liczby komputerów klienckich lub urządzeń przenośnych). 
 
-## <a name="automation"></a>Automatyzacja
+## <a name="automation"></a>Automation
 
 Można napisać skrypt do ustawienia warstwy cenowej za pomocą usługi Azure Resource Management. [Dowiedz się, jak to zrobić](powershell.md#price).
 

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure transferu wiadomości usługi Service Bus, blokady i uzgadnianie | Dokumentacja firmy Microsoft
-description: Omówienie operacji rozliczenia i transfery komunikatów usługi Service Bus
+title: Azure Service Bus transfery, blokady i rozliczanie komunikatów | Microsoft Docs
+description: Przegląd Service Bus transferów komunikatów i operacji rozliczeń
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,36 +13,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: aschhab
-ms.openlocfilehash: a78409a15acb4e60fc4200778d0f33b3fb566e85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9aaada1ede8912b8b70f37c628ec918eca9be9d2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60403945"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676263"
 ---
-# <a name="message-transfers-locks-and-settlement"></a>Transferowanie, blokady i uzgadnianie komunikatów
+# <a name="message-transfers-locks-and-settlement"></a>Transfery, blokady i rozliczenia komunikatów
 
-Możliwości centralnego brokera komunikatów, takie jak Service Bus jest akceptować komunikaty do kolejki lub tematu i udostępniane do pobrania nowsze. *Wyślij* jest terminem, który jest powszechnie używany do transferu wiadomości do brokera komunikatów. *Odbieranie* termin często używane do przekazywania wiadomości do klienta podczas pobierania.
+Centralną możliwością brokera komunikatów, takiego jak Service Bus, jest akceptowanie komunikatów do kolejki lub tematu i przechowywanie ich w celu późniejszego pobrania. *Send* to termin, który jest często używany do przesyłania wiadomości do brokera komunikatów. *Odbieranie* jest terminem często używanym do przesyłania wiadomości do klienta pobierającego.
 
-Gdy klient wysyła komunikat, zazwyczaj chce wiedzieć, czy wiadomość została prawidłowo przeniesione do i zaakceptowane przez brokera lub tego, czy Wystąpił jakiś błąd. Po potwierdzeniu tej pozytywnych lub negatywnych rozlicza klienta i broker opis o stanie transferu wiadomości i jest zatem określany jako *rozliczenia*.
+Gdy klient wysyła komunikat, zazwyczaj chce wiedzieć, czy wiadomość została prawidłowo przetransferowana do i zaakceptowana przez brokera, czy też w przypadku wystąpienia pewnego błędu. To pozytywne lub ujemne potwierdzenie rozliczy klienta i brokera o stanie transferu wiadomości i jest to nazywane *rozliczeniami*.
 
-Podobnie, gdy brokera przenosi wiadomość do klienta, broker i klienta ma zostać zrozumienia tego, czy wiadomość została pomyślnie przetworzona i może zostać usunięty lub czy dostarczaniem wiadomości lub przetwarzania nie, a tym samym komunikat ma może być dostarczony ponownie.
+Podobnie, gdy Broker przesyła komunikat do klienta, Broker i klient chcą ustalić, czy komunikat został pomyślnie przetworzony i można go usunąć, albo czy dostarczanie lub przetwarzanie komunikatu nie powiodło się, a tym samym może być konieczne ponowne dostarczenie komunikatu.
 
-## <a name="settling-send-operations"></a>Operacje wysyłania rozliczania
+## <a name="settling-send-operations"></a>Rozliczanie operacji wysyłania
 
-Przy użyciu dowolnej z obsługiwanych klientów API usługi Service Bus, Wyślij operacji w usłudze Service Bus należy zawsze jawnie są rozliczane, co oznacza, że operacji interfejsu API czeka na wynik akceptacji z usługi Service Bus zostanie dostarczona, a następnie kończy operację wysyłania.
+Przy użyciu dowolnego z obsługiwanych Service Bus klientów interfejsu API operacje wysyłania do Service Bus są zawsze jawnie rozliczane, co oznacza, że operacja interfejsu API czeka na nadejście wyniku Service Bus, a następnie kończy operację wysyłania.
 
-Jeśli komunikat zostanie odrzucony przez usługę Service Bus, odrzucenia zawiera wskaźnik błędów i tekstu za pomocą "-identyfikator śledzenia" wewnątrz niej. Odrzucenia zawiera także informacje dotyczące tego, czy operacja mogą być ponawiane przy użyciu dowolnej oczekiwania na powodzenie. W kliencie te informacje są przekształcane w wyjątek i wywoływane obiektowi wywołującemu operację wysyłania. Jeśli komunikat zostanie zaakceptowana, dyskretnie zakończeniu operacji.
+Jeśli komunikat zostanie odrzucony przez Service Bus, odrzucenie zawiera wskaźnik błędu i tekst z "identyfikatorem śledzenia" w tym miejscu. Odrzucanie zawiera również informacje o tym, czy można ponowić próbę wykonania operacji z oczekiwaniami. W kliencie te informacje są włączane do wyjątku i wywoływane do obiektu wywołującego operacji wysyłania. Jeśli wiadomość została zaakceptowana, operacja zostanie dyskretnie ukończona.
 
-Podczas korzystania z protokołu AMQP, który jest protokołem wyłączny dla klienta programu .NET Standard i klienta Java i [czyli opcję klienta .NET Framework](service-bus-amqp-dotnet.md), są potokowe transferu wiadomości i rozliczenia i w całości asynchroniczny, i zaleca się, że używasz wariantów asynchronicznego interfejsu API modelu programowania.
+W przypadku korzystania z protokołu AMQP, który jest wyłącznym protokołem dla klienta .NET Standard i klienta Java, [który jest opcją dla klienta .NET Framework](service-bus-amqp-dotnet.md), transfery komunikatów i rozliczenia są potoku i całkowicie asynchroniczne. zalecane jest używanie wariantów interfejsu API modelu programowania asynchronicznego.
 
-Nadawca można umieścić kilka komunikatów na potrzeby przesyłu w krótkim odstępie czasu bez konieczności oczekiwania dla każdego komunikatu do potwierdzenia, ponieważ w przeciwnym razie byłoby w przypadku protokołu SBMP lub za pomocą protokołu HTTP 1.1. Te operacje asynchronicznego wysyłania wykonaj kroki zgodnie z odpowiednich komunikaty zostaną zaakceptowane i przechowywane na partycjonowane jednostki lub podczas wysyłania operacji do nakładania się różnymi jednostkami. Uzupełnianie może również wystąpić poza pierwotną kolejność wysyłania.
+Nadawca może umieścić kilka komunikatów w sieci w krótkim czasie, bez konieczności oczekiwania na potwierdzenie poszczególnych komunikatów, tak jak w przypadku protokołu SBMP lub HTTP 1,1. Operacje wysyłania asynchronicznego są ukończone, gdy odpowiednie komunikaty są akceptowane i przechowywane, w jednostkach partycjonowanych lub gdy operacje wysyłania do różnych jednostek nakładają się na siebie. Ukończenie może również wystąpić z oryginalnego zamówienia wysyłania.
 
-Strategię obsługi wynik operacji wysyłania może mieć wpływ na wydajność natychmiastowe i istotne dla twojej aplikacji. Przykłady w tej sekcji są napisane w języku C# i zgłoś się ekwiwalentnie prognoz języka Java.
+Strategia obsługi wyników operacji wysyłania może mieć bezpośredni i znaczący wpływ na wydajność aplikacji. Przykłady w tej sekcji są zapisywane C# i stosowane w sposób odpowiedni dla przyszłość języka Java.
 
-Jeśli aplikacja generuje wzrosty wiadomości, przedstawione w tym miejscu przy użyciu zwykłego pętli i zostałby oczekiwać na zakończenie każdego Wyślij operację przed wysłaniem nowego komunikatu synchronicznego lub asynchronicznego interfejsu API wzornika podobne tylko wysyłanie komunikatów 10 kończy się po 10 kolejne pełne rund do rozliczenia.
+Jeśli aplikacja generuje szereg komunikatów, zilustrowane w tym miejscu za pomocą zwykłej pętli i musiało oczekiwać na ukończenie każdej operacji wysyłania przed wysłaniem kolejnego komunikatu, synchroniczne lub asynchroniczne kształty interfejsów API, co spowoduje, że wysyłanie 10 komunikatów kończy się tylko po 10 sekwencyjne pełne podróże do rozliczenia.
 
-Zajmuje z zakładanego 70 milisekund TCP w obie strony opóźnienie odległość między lokacją lokalną usługi Service Bus i zapewniając tylko 10 ms dla usługi Service Bus, aby zaakceptować i przechowywanie każdej wiadomości, co najmniej 8 sekund, nie licząc zamykającego czas transferu ładunku lub potencjalne następującą pętlę efekty przeciążenia trasy:
+Przy założeniu, że odległość czasu oczekiwania na ruch wychodzący w ciągu 70 milisekund od lokacji lokalnej do Service Bus i podania zaledwie 10 ms dla Service Bus, aby akceptować i przechowywać każdy komunikat, następująca pętla zajmie co najmniej 8 sekund, nie oblicza czasu transferu ładunku lub potencjalnych efekty przeciążenia trasy:
 
 ```csharp
 for (int i = 0; i < 100; i++)
@@ -52,9 +52,9 @@ for (int i = 0; i < 100; i++)
 }
 ```
 
-Jeśli aplikacja rozpoczyna się 10 operacji asynchronicznego wysyłania kolejno natychmiastowego i czeka na ich zakończenie odpowiednich oddzielnie, nakłada czas obiegu tych 10 operacji wysyłania. 10 wiadomości są przesyłane w bezpośrednim odstępie czasu, potencjalnie nawet udostępnianie ramki protokołu TCP, a całkowity czas trwania transferu dużej mierze zależy związanych z siecią czas potrzebny do pobrania komunikaty przekazywane do brokera.
+Jeśli aplikacja uruchamia 10 asynchronicznych operacji wysyłania w bezpośrednim pomyślnym sukcesie i oczekuje na ich zakończenie oddzielnie, czas błądzenia dla tych 10 operacji wysyłania nakłada się na siebie. 10 komunikatów jest przesyłanych natychmiast, potencjalnie nawet przez udostępnienie ramek TCP, a całkowity czas przesyłania jest w dużym stopniu zależny od czasu potrzebnego na sieć do uzyskania komunikatów przesyłanych do brokera.
 
-Wprowadzania tych samych założeń, jak w przypadku wcześniejszego pętli, łączny czas wykonywania nachodzące na następującą pętlę mogą pozostać również w obszarze jednej sekundy:
+W przypadku takich samych założeń jak dla poprzedniej pętli łączny czas wykonywania dla następującej pętli może pozostać w jednej sekundzie:
 
 ```csharp
 var tasks = new List<Task>();
@@ -65,9 +65,9 @@ for (int i = 0; i < 100; i++)
 await Task.WhenAll(tasks);
 ```
 
-Jest to należy pamiętać, że wszystkie modele programowania asynchronicznego formularz niektóre kolejki pracy opartego na pamięci, ukryte, który posiada oczekujące operacje. Gdy [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) lub **wysyłania** return (Java), zadanie wysyłania jest umieszczone w kolejce w tej kolejce pracy, ale gestu protokołu tylko rozpoczyna się po kolej zadania do uruchomienia. Dla kodu, który ma tendencję do wypychania wzrosty komunikatów i gdzie niezawodności jest istotna należy z rozwagą, nie jest zbyt wiele komunikatów są umieszczane "w locie", ponieważ wszystkie komunikaty wysłane zajmują pamięć do momentu ich rzeczywiście zostały wprowadzone do sieci.
+Należy pamiętać, że wszystkie asynchroniczne modele programowania korzystają z pewnej kolejki pracy w pamięci, która przechowuje oczekujące operacje. Gdy [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) lub **send** (Java) zwracają, zadanie wysyłania jest umieszczane w kolejce w tej kolejce roboczej, ale gest protokołu rozpoczyna się tylko wtedy, gdy zostanie uruchomione zadanie. W przypadku kodu, który ma na celu wypychanie obciążeń komunikatów i w przypadku, gdy niezawodność jest istotna, należy zadbać o to, aby nie było zbyt wiele komunikatów jednocześnie "w locie", ponieważ wszystkie wysłane komunikaty zajmują pamięć, dopóki nie zostaną rzeczywiście umieszczone w sieci.
 
-Semaforów, jak pokazano w poniższym fragmencie kodu w języku C# są obiekty synchronizacji, umożliwiające takich aplikacji na poziomie ograniczania, gdy potrzebne. Umożliwia to wykorzystania semafor co najwyżej 10 wiadomości za w locie na raz. Jedną z 10 blokad semafora dostępne jest pobierana przed wysłaniem i jest zwalniany jako zakończeniu wysyłania. 11 przekazywania czeka pętli, dopóki nie wysyła co najmniej jedną z wcześniej została ukończona, a następnie udostępnia blokady:
+Semafory, jak pokazano w poniższym fragmencie kodu w, C#są obiektami synchronizacji, które umożliwiają takie Ograniczanie poziomu aplikacji w razie konieczności. Użycie semafora pozwala na co najwyżej 10 komunikatów jednocześnie. Jeden z 10 dostępnych blokad semaforów jest pobierany przed wysłaniem i zostaje ogłoszony jako zakończenie wysyłania. 11 przechodzenie przez pętlę czeka do momentu, aż co najmniej jeden z wcześniejszych operacji wysłania zakończył pracę, a następnie udostępnił blokadę:
 
 ```csharp
 var semaphore = new SemaphoreSlim(10);
@@ -82,7 +82,7 @@ for (int i = 0; i < 100; i++)
 await Task.WhenAll(tasks);
 ```
 
-Aplikacje powinny **nigdy nie** zainicjować operację asynchronicznego wysyłania w sposób "fire and forget" bez pobierania wyniki operacji. Ten sposób można załadować kolejki zadań wewnętrznych i niewidoczności, aż do wyczerpania pamięci i uniemożliwiają aplikacji wykrywanie błędów wysyłania:
+Aplikacje **nigdy nie** powinny inicjować asynchronicznej operacji wysyłania w sposób "pożar i zapomnij" bez pobierania wyniku operacji. Może to spowodować załadowanie wewnętrznej i niewidocznej kolejki zadań do wyczerpania pamięci i uniemożliwienie aplikacji wykrywania błędów wysyłania:
 
 ```csharp
 for (int i = 0; i < 100; i++)
@@ -92,40 +92,52 @@ for (int i = 0; i < 100; i++)
 }
 ```
 
-Za pomocą niskiego poziomu klienta protokołu AMQP usługi Service Bus akceptuje transfery "wstępnie rozliczone". Wstępnie rozliczona transferu jest pożarowego i zapominać operacji, dla której wynik w obu przypadkach nie jest zgłaszany ponownie do klienta i komunikat jest uznawany za rozliczane po wysłaniu. Brak opinii do klienta oznacza również, że jest nie wiarygodne dane wymagane diagnostyki, co oznacza, że w tym trybie nie kwalifikuje się o pomoc za pośrednictwem pomocy technicznej platformy Azure.
+Za pomocą klienta AMQP niskiego poziomu, Service Bus również akceptuje "wstępnie rozliczane" transfery. Przeprowadzony transfer jest operacją typu "Uruchom i zapomnij", dla której wynik nie jest raportowany z powrotem do klienta, a komunikat jest traktowany jako rozliczony podczas wysyłania. Brak informacji zwrotnych dla klienta oznacza również, że nie ma dostępnych danych do wykonania dla celów diagnostycznych, co oznacza, że ten tryb nie kwalifikuje się do pomocy za pośrednictwem pomocy technicznej platformy Azure.
 
-## <a name="settling-receive-operations"></a>Operacje rozliczania odbioru
+## <a name="settling-receive-operations"></a>Rozliczanie operacji odbioru
 
-Dla operacji odbioru, klienci interfejsu API usługi Service Bus włączyć dwa różne tryby jawne: *Odbieranie i usuwanie* i *Odbierz*.
+W przypadku operacji odbioru Service Bus klienci interfejsu API włączają dwa różne tryby jawne: *Receive-and-DELETE* i *Peek-Lock*.
 
-[Odbieranie i usuwanie](/dotnet/api/microsoft.servicebus.messaging.receivemode) tryb informuje brokera wziąć pod uwagę wszystkie komunikaty, które wysyła do klienta odbieranie jako rozliczona kiedy wysyłane. Oznacza to, że wiadomość jest uważana za używane tak szybko, jak broker ma umieścić go na podczas transmisji. Jeśli transfer komunikatów nie powiedzie się, komunikat zostanie utracony.
+### <a name="receiveanddelete"></a>ReceiveAndDelete
 
-Odwróć tego trybu jest, nie trzeba wykonać dalsze czynności w komunikacie odbiornik i jest również nie spowolnienie czekasz na wyniki rozliczenia. Jeśli dane znajdujące się w poszczególnych wiadomości ma niską wartość i/lub tylko mają znaczenie dla bardzo krótkim czasie, ten tryb jest uzasadnione wybór.
+Tryb [odbierania i usuwania](/dotnet/api/microsoft.servicebus.messaging.receivemode) instruuje brokera, aby uwzględniał wszystkie komunikaty wysyłane do klienta odbierającego jako rozliczone podczas wysyłania. Oznacza to, że wiadomość jest uważana za zużytą zaraz po umieszczeniu jej w sieci przez brokera. Jeśli transfer komunikatów zakończy się niepowodzeniem, komunikat zostanie utracony.
 
-[Odbierz](/dotnet/api/microsoft.servicebus.messaging.receivemode) tryb informuje brokera odbieranie klient chce jawnie rozliczenia Odebrane komunikaty. Komunikat jest udostępniany dla odbiornika do przetwarzania, podczas gdy przechowywanych w ramach blokady na wyłączność w usłudze, aby innych, konkurencyjnych odbiorców nie jest widoczna. Czas trwania blokady jest wstępnie zdefiniowana na poziomie kolejki lub subskrypcji i można rozszerzyć przez klienta, będąca właścicielem blokady, za pośrednictwem [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) operacji.
+W tym trybie jest to, że odbiornik nie musi podejmować dalszych działań w komunikacie i nie jest również wolniejszy przez oczekiwanie na wynik rozliczenia. Jeśli dane zawarte w poszczególnych wiadomościach mają niską wartość i/lub mają tylko znaczenie dla bardzo krótkiego czasu, ten tryb jest rozsądny.
 
-Gdy komunikat jest zablokowany, innym klientom odbieranie z tej samej kolejki lub subskrypcji można przyjmą blokad i pobrania dalej komunikatów dostępne nieobjętego active blokady. Zwolnionych blokadę komunikatu jest jawnie lub po wygaśnięciu blokady komunikat POP kopii zapasowej na lub w pobliżu początku pobierania aby ponowne dostarczenie.
+### <a name="peeklock"></a>PeekLock
 
-Gdy komunikat jest wielokrotnie wydane przez odbiorniki lub umożliwiają one blokady upłynąć dla zdefiniowanej liczby godzin ([maxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount)), wiadomość jest automatycznie usuwane z kolejki lub subskrypcji i umieszczane w skojarzonej Kolejka utraconych wiadomości.
+Tryb [blokady wglądu](/dotnet/api/microsoft.servicebus.messaging.receivemode) instruuje brokera, że klient odbierający chce jawnie rozliczyć odebrane komunikaty. Komunikat jest udostępniany do przetworzenia przez odbiorcę, a poza wyłączną blokadą w usłudze, tak że inne, konkurujące odbiorcy nie mogą go zobaczyć. Czas trwania blokady jest początkowo zdefiniowany na poziomie kolejki lub subskrypcji i może zostać rozszerzony przez klienta będącego właścicielem blokady za pośrednictwem operacji [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) .
 
-Odbieranie klienta inicjuje rozliczenia odebranego komunikatu o potwierdzenie pozytywne, gdy wywołuje [Complete](/dotnet/api/microsoft.servicebus.messaging.queueclient.complete#Microsoft_ServiceBus_Messaging_QueueClient_Complete_System_Guid_) na poziomie interfejsu API. Oznacza to, aby broker czy wiadomość została pomyślnie przetworzona i komunikat zostanie usunięty z kolejki lub subskrypcji. Odpowiedzi broker na intencje rozliczenia odbiorcy odpowiedzi, która wskazuje, czy może być wykonana, rozliczenia.
+Po zablokowaniu komunikatu inni klienci odbierający z tej samej kolejki lub subskrypcji mogą wykonać blokadę i pobrać kolejne dostępne komunikaty, które nie są objęte blokadą aktywną. Gdy blokada komunikatu jest jawnie wydawana lub gdy blokada wygaśnie, komunikat jest wyświetlany na początku lub w najbliższym miejscu kolejności pobierania na potrzeby ponownej dostawy.
 
-Podczas odbierania klient nie może przetworzyć komunikatu, ale chce komunikat, który ma być dostarczony ponownie, jawnie można zadawać na komunikat, który ma być zwolnione i odblokować natychmiast, wywołując [Abandon](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) lub go nie rób nic i pozwól blokady upłynąć.
+Gdy komunikat jest wielokrotnie wydawany przez odbiorniki lub zezwalają na zablokowanie przez zdefiniowaną liczbę razy ([maxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount)), wiadomość zostanie automatycznie usunięta z kolejki lub subskrypcji i umieszczona w skojarzonej kolejce utraconych wiadomości.
 
-Jeśli odbieranie klient nie może przetworzyć komunikatu i wie, że redelivering komunikat i ponownym wykonaniem operacji nie pomoże, można go odrzucić komunikatu, która przenosi je do kolejki utraconych wiadomości, wywołując [utraconych](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter), który również Umożliwia ustawienie właściwości niestandardowej, w tym kod przyczyny, które można pobrać za pomocą komunikatu z kolejki utraconych wiadomości.
+Klient odbierający inicjuje rozliczenie otrzymanej wiadomości z pozytywnym potwierdzeniem po [zakończeniu](/dotnet/api/microsoft.servicebus.messaging.queueclient.complete#Microsoft_ServiceBus_Messaging_QueueClient_Complete_System_Guid_) wywołania na poziomie interfejsu API. Wskazuje to brokerowi, że komunikat został pomyślnie przetworzony, a wiadomość zostanie usunięta z kolejki lub subskrypcji. Broker odpowiada na zamiar rozliczenia odbiorcy z odpowiedzią wskazującą, czy można wykonać rozliczenie.
 
-Przypadek specjalny rozliczenia jest opóźnienia, która została omówiona w oddzielnym artykule.
+Gdy klient otrzymujący nie może przetworzyć komunikatu, ale chce, aby komunikat został ponownie dostarczony, może jawnie poprosił o natychmiastowe zwolnienie i odblokowanie komunikatu przez wywołanie metody [Abandon](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) lub wykonanie operacji blokowania.
 
-**Complete** lub **utraconych** operacje, jak również **RenewLock** operacje mogą kończyć się niepowodzeniem z powodu problemów z siecią wygasł gruncie blokadę, czy istnieją inne warunki po stronie usługi, które uniemożliwiają rozliczenia. W jednym z ostatnich przypadkach usługa wysyła negatywnego potwierdzenia który uwypukli najistotniejsze jako wyjątek w klientach interfejsu API. Jeśli przyczyną jest przerwane połączenie, blokada zostało porzucone, ponieważ usługa Service Bus nie obsługuje odzyskiwania istniejących powiązań protokołu AMQP na inne połączenie.
+Jeśli klient otrzymujący żądanie nie może przetworzyć komunikatu i wie, że ponowne dostarczenie komunikatu i ponowienie próby wykonania tej operacji nie pomoże, może odrzucić komunikat, który przenosi go do kolejki utraconych wiadomości przez wywołanie [utraconych](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)wiadomości, co umożliwia również ustawienie niestandardowego Właściwość uwzględniająca kod przyczyny, który można pobrać z wiadomości z kolejki utraconych wiadomości.
 
-Jeśli **Complete** kończy się niepowodzeniem, w których występuje zwykle na samym końcu obsługi wiadomości, a w niektórych przypadkach po minut pracy przetwarzania aplikacja odbierająca może zdecydować, czy zachowuje stan pracy i ignoruje takie same komunikat po dostarczeniu po raz drugi lub czy tosses limit wyników pracy i ponawia próbę co komunikat jest dostarczony ponownie.
+Szczególnym przypadkiem rozliczenia jest odroczenie, który został omówiony w osobnym artykule.
 
-Typowe mechanizm do identyfikowania dostaw zduplikowany komunikat jest, sprawdzając identyfikator wiadomości, co może i powinna być ustawiona przez nadawcę do unikatowej wartości prawdopodobnie są wyrównane z identyfikatorem procesu źródłowy. Harmonogram zadań będzie prawdopodobnie ustawienie message ID. Identyfikator zadania, które podejmuje próbę przypisania do procesu roboczego z danego procesu roboczego i proces roboczy będzie Ignoruj drugie wystąpienie przypisania zadania, jeśli zadania zostało już przeprowadzone.
+**Wykonywanie operacji zakończonych** lub **utraconych** , a także operacji **RenewLock** może zakończyć się niepowodzeniem z powodu problemów z siecią, jeśli zatrzymywana blokada wygasła lub istnieją inne warunki po stronie usługi, które uniemożliwiają rozliczanie. W jednym z tych przypadków usługa wysyła negatywne potwierdzenie, które powierzchnie jako wyjątek w klientach interfejsu API. Jeśli powodem jest przerwane połączenie sieciowe, blokada zostanie porzucona, ponieważ Service Bus nie obsługuje odzyskiwania istniejących linków AMQP w innym połączeniu.
 
-## <a name="next-steps"></a>Kolejne kroki
+Jeśli **zakończy** się niepowodzeniem, to jest zazwyczaj na bardzo zakończenie obsługi komunikatów, a w niektórych przypadkach po upływie minut działania przetwarzania, aplikacja do odbioru może zdecydować, czy zachowuje stan pracy i ignoruje ten sam komunikat, gdy zostanie on dostarczony drugi raz lub czy tosses wyniki pracy i ponawiania prób po ponownym dostarczeniu komunikatu.
 
-Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus, zobacz następujące tematy:
+Typowym mechanizmem służącym do identyfikowania powielonych dostaw komunikatów jest sprawdzenie identyfikatora komunikatu, który może i powinien być ustawiony przez nadawcę na unikatową wartość, ewentualnie wyrównany przy użyciu identyfikatora z procesu źródłowego. Harmonogram zadań prawdopodobnie ustawi Identyfikator komunikatu na identyfikator zadania, które ma zostać przypisane do procesu roboczego przez danego pracownika, a proces roboczy zignoruje drugie wystąpienie przypisania zadania, jeśli to zadanie zostało już wykonane.
 
-* [Kolejki, tematy i subskrypcje usługi Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Jak używać tematów i subskrypcji usługi Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+> [!IMPORTANT]
+> Należy pamiętać, że blokada, która PeekLock uzyskuje w komunikacie, jest nietrwała i może zostać utracona w następujących warunkach
+>   * Aktualizacja usługi
+>   * Aktualizacja systemu operacyjnego
+>   * Zmiana właściwości jednostki (kolejki, tematu, subskrypcji) podczas utrzymywania blokady.
+>
+> Gdy blokada zostanie utracona, Azure Service Bus wygeneruje element LockLostException, który zostanie nadany w kodzie aplikacji klienta. W tym przypadku domyślna logika ponowienia klienta powinna być automatycznie uruchamiana i spróbuj ponownie wykonać operację.
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby dowiedzieć się więcej na temat Service Bus Messaging, zobacz następujące tematy:
+
+* [Service Bus kolejkami, tematami i subskrypcjami](service-bus-queues-topics-subscriptions.md)
+* [Rozpoczynanie pracy z kolejkami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Jak używać tematów i subskrypcji Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

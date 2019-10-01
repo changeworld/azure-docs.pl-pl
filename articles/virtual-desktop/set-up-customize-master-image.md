@@ -1,22 +1,22 @@
 ---
 title: Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego — Azure
-description: Jak przygotować, dostosować i przekazać główny obraz programu Windows Virtual Desktop w wersji zapoznawczej do platformy Azure.
+description: Przygotowywanie, dostosowywanie i przekazywanie obrazu wzorca pulpitu wirtualnego systemu Windows na platformę Azure.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 8127c0a42ec42a661af31cc489964cc40cb4937d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 379664fb7170249b8f21ec9826f8b0b6fbe19892
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981072"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679546"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
-W tym artykule przedstawiono sposób przygotowania obrazu głównego wirtualnego dysku twardego (VHD) do przekazania do platformy Azure, w tym sposobu tworzenia maszyn wirtualnych i instalowania na nich oprogramowania. Te instrukcje dotyczą konfiguracji programu Windows Virtual Desktop w wersji zapoznawczej, która może być używana z istniejącymi procesami w organizacji.
+W tym artykule przedstawiono sposób przygotowania obrazu głównego wirtualnego dysku twardego (VHD) do przekazania do platformy Azure, w tym sposobu tworzenia maszyn wirtualnych i instalowania na nich oprogramowania. Te instrukcje dotyczą konfiguracji specyficznej dla pulpitu wirtualnego systemu Windows, która może być używana z istniejącymi procesami w organizacji.
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
@@ -72,7 +72,7 @@ Jeśli użytkownicy muszą uzyskać dostęp do określonych aplikacji biznesowyc
 
 Aby wyłączyć aktualizacje automatyczne za pośrednictwem zasady grupy lokalnego:
 
-1. Otwórz **Edytor lokalnych zasad grupy\\Szablony administracyjne\\składników\\systemu Windows Windows Update**.
+1. Otwórz **Edytor lokalnych zasad grupy @ no__t-1Administrative templates @ no__t-2Windows Components @ no__t-3Windows Update**.
 2. Kliknij prawym przyciskiem myszy pozycję **Skonfiguruj automatyczną aktualizację** i ustaw ją na wartość **wyłączone**.
 
 Aby wyłączyć aktualizacje automatyczne, można również uruchomić następujące polecenie w wierszu polecenia.
@@ -99,7 +99,7 @@ Jeśli usługa Windows Defender jest skonfigurowana na maszynie wirtualnej, upew
 
 Ta konfiguracja usuwa tylko skanowanie plików VHD i VHDX podczas załączników, ale nie wpływa na skanowanie w czasie rzeczywistym.
 
-Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania usługi Windows Defender w systemie Windows Server, zobacz Konfigurowanie wykluczeń programu antywirusowego [Windows Defender w systemie Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania usługi Windows Defender w systemie Windows Server, zobacz [Konfigurowanie wykluczeń programu antywirusowego Windows Defender w systemie Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
 
 Aby dowiedzieć się więcej o tym, jak skonfigurować usługę Windows Defender do wykluczania niektórych plików z skanowania, zobacz [Konfigurowanie i weryfikowanie wykluczeń na podstawie rozszerzenia pliku i lokalizacji folderu](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
 
@@ -109,7 +109,7 @@ Zasady sesji zdalnej można wymusić na poziomie zasady grupy, ponieważ wszystk
 
 Aby skonfigurować zasady sesji zdalnej:
 
-1. Przejdź do **Szablony administracyjne** >  > składników >  > systemu Windows usługi pulpitu zdalnego pulpit zdalny**limitów czasu sesji**hosta sesji.
+1. Przejdź do **Szablony administracyjne** > **składników systemu Windows** > **usługi pulpitu zdalnego** > **pulpit zdalny Host sesji** > **limitów czasu sesji**.
 2. W panelu po prawej stronie wybierz pozycję **Ustaw limit czasu dla aktywnych, ale bezczynnych zasad sesji usługi pulpitu zdalnego** .
 3. Po wyświetleniu okna modalnego Zmień opcję zasad z **Nieskonfigurowane** na wartość **włączone** , aby aktywować zasady.
 4. W menu rozwijanym poniżej opcji zasady Ustaw ilość czasu na **3 godziny**.
@@ -134,7 +134,7 @@ Aby przekierować strefy czasowe:
 1. Na serwerze Active Directory Otwórz **Konsola zarządzania zasadami grupy**.
 2. Rozwiń domenę i zasady grupy obiekty.
 3. Kliknij prawym przyciskiem myszy **obiekt zasady grupy** , który został utworzony dla ustawień zasad grupy, a następnie wybierz polecenie **Edytuj**.
-4. W **Edytor zarządzania zasadami grupy**przejdź do węzła**zasady** >  **konfiguracji** > komputera**Szablony administracyjne** > **składniki**  >  systemu Windows **Usługi pulpitu zdalnego**pulpit zdalny urządzeńhosta > sesji i przekierowania zasobów. > 
+4. W **Edytor zarządzania zasadami grupy**przejdź do **konfiguracji komputera** > **zasady** > **Szablony administracyjne** > **składników systemu Windows** > **usługi pulpitu zdalnego**@no__ **pulpit zdalny hosta sesji**t-10 2**urządzenia i przekierowania zasobów**.
 5. Włącz ustawienie **Zezwalaj na przekierowywanie strefy czasowej** .
 
 Możesz również uruchomić to polecenie na głównym obrazie, aby przekierować strefy czasowe:

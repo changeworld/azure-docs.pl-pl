@@ -1,22 +1,22 @@
 ---
-title: Tworzenie puli hostów programu Windows Virtual Desktop w wersji zapoznawczej przy użyciu szablonu Azure Resource Manager — Azure
-description: Jak utworzyć pulę hostów w programie Windows Virtual Desktop w wersji zapoznawczej przy użyciu szablonu Azure Resource Manager.
+title: Tworzenie puli hostów pulpitu wirtualnego systemu Windows przy użyciu szablonu Azure Resource Manager — Azure
+description: Jak utworzyć pulę hostów w programie Virtual Desktop systemu Windows przy użyciu szablonu Azure Resource Manager.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 27fe19c2b1f92b67e02b4e09d5fcd607759d8abd
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b96ecad93c481a762b81a7888940850ed3a73e5f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163738"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679610"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Tworzenie puli hostów za pomocą szablonu usługi Azure Resource Manager
 
-Pule hostów to zbiór co najmniej jednej identycznej maszyny wirtualnej w środowiskach dzierżawy systemu Windows Virtual Desktop w wersji zapoznawczej. Każda pula hostów może zawierać grupę aplikacji, z którą użytkownicy mogą wchodzić w pracę, tak jak na pulpicie fizycznym.
+Pule hostów są kolekcją co najmniej jednej identycznej maszyny wirtualnej w środowiskach dzierżawy usług pulpitu wirtualnego systemu Windows. Każda pula hostów może zawierać grupę aplikacji, z którą użytkownicy mogą wchodzić w pracę, tak jak na pulpicie fizycznym.
 
 Postępuj zgodnie z instrukcjami w tej sekcji, aby utworzyć pulę hostów dla dzierżawy pulpitu wirtualnego systemu Windows przy użyciu szablonu Azure Resource Manager dostarczonego przez firmę Microsoft. W tym artykule przedstawiono sposób tworzenia puli hostów w programie Virtual Desktop systemu Windows, tworzenia grupy zasobów z maszynami wirtualnymi w ramach subskrypcji platformy Azure, przyłączania tych maszyn wirtualnych do domeny usługi AD i rejestrowania maszyn wirtualnych za pomocą pulpitu wirtualnego systemu Windows.
 
@@ -42,7 +42,7 @@ Jeśli wdrażasz w ramach subskrypcji dostawcy rozwiązań w chmurze, wykonaj na
 
 1. Przewiń w dół i kliknij prawym przyciskiem myszy pozycję **Wdróż na platformie Azure**, a następnie wybierz pozycję **Kopiuj lokalizację linku**.
 2. Otwórz Edytor tekstu, taki jak Notatnik, i Wklej tam link.
-3. Po znaku "https://portal.azure.com/" i przed jego wystąpieniem (#) wprowadź znak (@), a po nim nazwę domeny dzierżawy. Oto przykład formatu, którego należy użyć: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
+3. Bezpośrednio po "https://portal.azure.com/" i przed wystąpieniem (#) wprowadź znak (@), a po nim nazwę domeny dzierżawy. Oto przykład formatu, którego należy użyć: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
 4. Zaloguj się do Azure Portal jako użytkownik z uprawnieniami administratora/współautora do subskrypcji dostawcy rozwiązań w chmurze.
 5. Wklej skopiowany link do edytora tekstu na pasku adresu.
 

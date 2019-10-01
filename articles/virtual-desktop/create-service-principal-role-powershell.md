@@ -1,27 +1,27 @@
 ---
-title: Tworzenie głównych i przypisań ról usługi Windows Virtual Desktop w wersji zapoznawczej przy użyciu programu PowerShell — Azure
-description: Jak tworzyć jednostki usługi i przypisywać role przy użyciu programu PowerShell w wersji zapoznawczej pulpitu wirtualnego systemu Windows.
+title: Tworzenie jednostek usługi pulpitu wirtualnego systemu Windows i przypisań ról przy użyciu programu PowerShell — Azure
+description: Jak utworzyć jednostki usługi i przypisać role przy użyciu programu PowerShell na pulpicie wirtualnym systemu Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: dbde4ccede7f27ae494c8326babc7ec69b4a1266
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 87057d29d9d95ac0ebca298e40ca0d8c2aa9b0b1
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985005"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679634"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Samouczek: Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
+# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Samouczek: tworzenie jednostek usługi i przypisań ról przy użyciu programu PowerShell
 
-Nazwy główne usług są tożsamościami, które można utworzyć w Azure Active Directory, aby przypisać role i uprawnienia do określonego celu. W wersji zapoznawczej pulpitu wirtualnego systemu Windows można utworzyć jednostkę usługi, aby:
+Nazwy główne usług są tożsamościami, które można utworzyć w Azure Active Directory, aby przypisać role i uprawnienia do określonego celu. Na pulpicie wirtualnym systemu Windows można utworzyć jednostkę usługi, aby:
 
 - Automatyzowanie określonych zadań zarządzania pulpitem wirtualnym systemu Windows.
 - Użyj jako poświadczeń zamiast użytkowników wymaganych przez uwierzytelnianie wieloskładnikowe podczas uruchamiania dowolnego szablonu Azure Resource Manager dla pulpitu wirtualnego systemu Windows.
 
-W tym samouczku pokazano, jak:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Utwórz nazwę główną usługi w Azure Active Directory.

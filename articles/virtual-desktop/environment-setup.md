@@ -1,67 +1,67 @@
 ---
-title: Środowisko Windows wirtualnego pulpitu (wersja zapoznawcza) — platformy Azure
-description: Podstawowe elementy w środowisku Windows wirtualnego Desktop w wersji zapoznawczej.
+title: Środowisko pulpitu wirtualnego systemu Windows — Azure
+description: Podstawowe elementy środowiska pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 6aa6c7326759e480235df5fe9d4b0878cd11024d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23bf9be8e3e5f1c52546faa9ed5171c140eba59a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142381"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676624"
 ---
-# <a name="windows-virtual-desktop-preview-environment"></a>Środowisko Windows wirtualnego pulpitu (wersja zapoznawcza)
+# <a name="windows-virtual-desktop-environment"></a>Środowisko usługi Windows Virtual Desktop
 
-Windows wirtualnego pulpitu (wersja zapoznawcza) to usługa, która zapewnia użytkownikom łatwy i bezpieczny dostęp do ich pulpity nawigacyjne i wirtualizacją RemoteApps. Ten temat informuje o nieco więcej informacji na temat ogólną strukturę środowiska wirtualnego pulpitu Windows.
+Windows Virtual Desktop to usługa zapewniająca użytkownikom łatwy i bezpieczny dostęp do swoich zwirtualizowanych pulpitów i programów RemoteApp. W tym temacie przedstawiono nieco więcej informacji na temat ogólnej struktury środowiska pulpitu wirtualnego systemu Windows.
 
-## <a name="tenants"></a>Dzierżaw
+## <a name="tenants"></a>dzierżaw
 
-Dzierżawa Windows pulpitu wirtualnego jest podstawowym interfejsem do zarządzania środowiskiem Windows pulpitu wirtualnego. Każda dzierżawa Windows pulpitu wirtualnego musi być skojarzony z usługą Azure Active Directory zawierającą użytkowników, którzy będą Zaloguj się do środowiska. W dzierżawie pulpitu wirtualnego Windows możesz przystąpić do tworzenia pul hosta do uruchamiania obciążeń użytkowników.
+Dzierżawa pulpitu wirtualnego systemu Windows to podstawowy interfejs do zarządzania środowiskiem pulpitu wirtualnego systemu Windows. Każda dzierżawa pulpitu wirtualnego systemu Windows musi być skojarzona z Azure Active Directoryą zawierającą użytkowników, którzy będą logować się do środowiska. Z poziomu dzierżawy pulpitu wirtualnego systemu Windows można rozpocząć tworzenie pul hostów w celu uruchamiania obciążeń użytkowników.
 
-## <a name="host-pools"></a>Pule hosta
+## <a name="host-pools"></a>Pule hostów
 
-Pula hosta jest kolekcją maszyn wirtualnych platformy Azure, które rejestrują się pulpitu wirtualnego Windows jako hosty sesji podczas uruchamiania agenta Windows pulpitu wirtualnego. Wszystkie maszyny wirtualne hosta sesji w puli hosta powinien źródło za pomocą tego samego obrazu dla spójne środowisko użytkownika.
+Pula hostów jest kolekcją maszyn wirtualnych platformy Azure, które są rejestrowane na pulpicie wirtualnym systemu Windows jako hosty sesji podczas uruchamiania agenta pulpitu wirtualnego systemu Windows. Wszystkie maszyny wirtualne hosta sesji w puli hostów powinny być źródłem tego samego obrazu w celu zapewnienia spójnego środowiska użytkownika.
 
-Może to być jeden z dwóch typów puli hosta:
+Pula hostów może być jednym z dwóch typów:
 
-- Osobisty, kontekstowy, gdzie każdy host sesji jest przypisane do poszczególnych użytkowników.
-- W puli, gdzie hosty sesji może akceptować połączeń z każdego użytkownika uprawnień do grupy aplikacji w ramach puli hosta.
+- Osobisty, gdzie każdy Host sesji jest przypisany do poszczególnych użytkowników.
+- W puli, gdzie hosty sesji mogą akceptować połączenia od dowolnego użytkownika autoryzowanego do grupy aplikacji w puli hostów.
 
-Możesz ustawić dodatkowe właściwości puli hosta na zmianę zachowania równoważenia obciążenia, ile sesji, każdy host sesji może trwać, i co użytkownik może zrobić, aby hosty sesji w puli hosta, gdy użytkownik jest zalogowany celu ich sesji pulpitu wirtualnego Windows. Możesz kontrolować zasoby opublikowane dla użytkowników za pomocą grup aplikacji.
+Można ustawić dodatkowe właściwości puli hostów, aby zmienić zachowanie równoważenia obciążenia, ile sesji może upłynąć każdy Host sesji i co użytkownik może zrobić, aby hosty sesji w puli hostów były zalogowane do sesji pulpitu wirtualnego systemu Windows. Możesz kontrolować zasoby publikowane dla użytkowników za pomocą grup aplikacji.
 
 ## <a name="app-groups"></a>Grupy aplikacji
 
-Grupy aplikacji jest logicznym grupowaniem aplikacji zainstalowanych na hostach sesji w puli hosta. Grupa aplikacji może być jeden z dwóch typów:
+Grupa aplikacji to logiczna Grupa aplikacji zainstalowanych na hostach sesji w puli hostów. Grupa aplikacji może być jednym z dwóch typów:
 
-- Połączenia programów RemoteApp, gdzie użytkownicy uzyskują dostęp do RemoteApps indywidualnie wybierz i opublikować w grupie aplikacji
-- Pulpitu, w którym użytkownicy uzyskują dostęp do pełnego pulpitu
+- Funkcja RemoteApp, w której użytkownicy uzyskują dostęp do wybranych przez siebie programów RemoteApp i publikuje je w grupie aplikacji
+- Komputery stacjonarne, w których użytkownicy uzyskują dostęp do pełnego pulpitu
 
-Domyślnie grupy aplikacji komputerowej (o nazwie "Grupa aplikacji pulpitu") jest tworzony automatycznie podczas tworzenia puli hosta. W dowolnym momencie można usunąć tej grupy aplikacji. Jednak nie można utworzyć innej grupy aplikacji klasycznej w puli hosta, gdy istnieje grupa aplikacji klasycznej. Aby opublikować RemoteApps, należy utworzyć grupę aplikacji programów RemoteApp. Można utworzyć wiele grup aplikacji programów RemoteApp scenariuszy innego procesu roboczego. Może również zawierać nakładających się RemoteApps różnych grup aplikacji programów RemoteApp.
+Domyślnie grupa aplikacji klasycznych (o nazwie "aplikacja klasyczna") jest tworzona automatycznie za każdym razem, gdy tworzona jest pula hostów. Tę grupę aplikacji można usunąć w dowolnym momencie. Nie można jednak utworzyć innej grupy aplikacji klasycznych w puli hostów, gdy istnieje grupa aplikacji klasycznych. Aby opublikować usługi RemoteApp, należy utworzyć grupę aplikacji usługi RemoteApp. Można utworzyć wiele grup aplikacji usługi RemoteApp, aby uwzględnić różne scenariusze procesów roboczych. Różne grupy aplikacji RemoteApp mogą również zawierać nakładające się usługi RemoteApp.
 
-Do publikowania zasobów dla użytkowników, należy je przypisać do grup aplikacji. Podczas przypisywania użytkowników do grupy aplikacji, należy wziąć pod uwagę następujące elementy:
+Aby opublikować zasoby dla użytkowników, należy przypisać je do grup aplikacji. Podczas przypisywania użytkowników do grup aplikacji należy wziąć pod uwagę następujące kwestie:
 
-- Nie można przypisać użytkownika do grupy aplikacji komputerowej i programów RemoteApp grupy aplikacji w tej samej puli hosta.
-- Użytkownika można przypisać do wielu grup aplikacji w ramach tej samej puli hosta, a ich źródło danych będzie nagromadzenia obu grup aplikacji.
+- Nie można przypisać użytkownika do grupy aplikacji pulpitu i grupy aplikacji RemoteApp w tej samej puli hostów.
+- Użytkownik może być przypisany do wielu grup aplikacji w ramach tej samej puli hostów, a ich źródło danych to nagromadzenie obu grup aplikacji.
 
-## <a name="tenant-groups"></a>Dzierżawa grupy
+## <a name="tenant-groups"></a>Grupy dzierżaw
 
-W Windows pulpitu wirtualnego dzierżawy Windows pulpitu wirtualnego jest, gdzie się dzieje w większości instalacji i konfiguracji. Dzierżawy pulpitu wirtualnego Windows zawiera pule hosta, grupy aplikacji i przypisań użytkowników grupy aplikacji. Jednak może być pewne sytuacje, gdzie trzeba zarządzać wieloma dzierżawami pulpitu wirtualnego Windows jednocześnie, szczególnie w przypadku dostawcy usług chmury (CSP) albo jako partnera hostingu. W takich sytuacjach można użyć niestandardową grupę dzierżawy pulpitu wirtualnego Windows umieszczenie wszystkich klientów pulpitu wirtualnego Windows dzierżaw i centralnie zarządzać dostępem. Jednak jeśli zarządzasz pojedynczej dzierżawy Windows pulpitu wirtualnego, pojęcie grup dzierżawy nie ma zastosowania i nadal działać i zarządzanie dzierżawą, która znajduje się w grupie domyślnej dzierżawy.
+W systemie Windows Virtual Desktop dzierżawca usług pulpitu wirtualnego systemu Windows to miejsce, w którym występuje większość instalacji i konfiguracji. Dzierżawa pulpitu wirtualnego systemu Windows zawiera pule hostów, grupy aplikacji i przypisania użytkowników grupy aplikacji. Mogą jednak wystąpić sytuacje, w których konieczne jest zarządzanie wieloma dzierżawcami pulpitów wirtualnych systemu Windows jednocześnie, szczególnie jeśli jesteś dostawcą usług w chmurze (CSP) lub partnerem hostingu. W takich sytuacjach można użyć niestandardowej grupy dzierżawców pulpitów wirtualnych systemu Windows, aby umieścić każdą dzierżawę pulpitów wirtualnych systemu Windows dla klientów i centralnie zarządzać dostępem. Jeśli jednak zarządzasz tylko jedną dzierżawą usług pulpitu wirtualnego systemu Windows, pojęcie grupy dzierżawców nie ma zastosowania i możesz nadal korzystać z dzierżawy, która istnieje w domyślnej grupie dzierżawców i zarządzać nią.
 
 ## <a name="end-users"></a>Użytkownicy końcowi
 
-Po przypisaniu użytkowników do ich grup aplikacji, można nawiązać wdrożenie pulpitu wirtualnego Windows z któregokolwiek z klientów Windows pulpitu wirtualnego.
+Po przypisaniu użytkowników do grup aplikacji mogą oni łączyć się z wdrożeniem pulpitu wirtualnego systemu Windows przy użyciu dowolnego klienta pulpitu wirtualnego systemu Windows.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o delegowany dostęp i jak przypisać role do użytkowników w [delegowany dostęp w wersji zapoznawczej pulpitu wirtualnego Windows](delegated-access-virtual-desktop.md).
+Dowiedz się więcej o dostępie delegowanym oraz o sposobach przypisywania ról użytkownikom z [dostępem delegowanym na pulpicie wirtualnym systemu Windows](delegated-access-virtual-desktop.md).
 
-Aby dowiedzieć się, jak skonfigurować swoją dzierżawę, pulpitu wirtualnego Windows, zobacz [utworzyć dzierżawę w wersji zapoznawczej pulpitu wirtualnego Windows](tenant-setup-azure-active-directory.md).
+Aby dowiedzieć się, jak skonfigurować dzierżawcę pulpitów wirtualnych systemu Windows, zobacz [Tworzenie dzierżawy w systemie Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
 
-Aby dowiedzieć się, jak nawiązać połączenie z pulpitem wirtualnym Windows, zobacz jeden z następujących artykułów:
+Aby dowiedzieć się, jak nawiązać połączenie z pulpitem wirtualnym systemu Windows, zobacz jeden z następujących artykułów:
 
 - [Łączenie z systemem Windows 10 lub Windows 7](connect-windows-7-and-10.md)
-- [Łączenie z przeglądarki sieci web](connect-web.md)
+- [Nawiązywanie połączenia z przeglądarki sieci Web](connect-web.md)

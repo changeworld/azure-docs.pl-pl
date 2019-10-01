@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a2064e0012abea237c1b4c0c6f7e35119c1aeff5
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305996"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686800"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrację ruchu do nowszych bram
 
@@ -29,12 +29,12 @@ Pierwsza część migracji ruchu do nowszych bram jest zaplanowana na **14 paźd
 - Brazylia Południowa
 - Zachodnie stany USA
 - Europa Zachodnia
-- East US
+- Wschodnie stany USA
 - Środkowe stany USA
-- Azja Południowo-Wschodnia
-- Środkowo-południowe stany USA
+- Azja Południowo-wschodnia
+- Południowo-środkowe stany USA
 - Europa Północna
-- Środkowo-północne stany USA
+- Północno-środkowe stany USA
 - Japonia Zachodnia
 - Japonia Wschodnia
 - Wschodnie stany USA 2
@@ -52,7 +52,7 @@ Nie będzie to miało wpływu na następujące warunki:
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>Co zrobić, jeśli chcesz to zrobić
 
-Zalecamy Zezwalanie na ruch wychodzący do adresów IP dla wszystkich [adresów IP bramy Azure SQL Database](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) w regionie na porcie TCP 1433 i zakres portów 11000-11999 na urządzeniu zapory. Aby uzyskać więcej informacji na temat zakresów portów, zobacz [zasady połączeń](sql-database-connectivity-architecture.md#connection-policy).
+Zalecamy Zezwalanie na ruch wychodzący do adresów IP dla wszystkich [adresów IP bramy Azure SQL Database](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) w regionie na porcie TCP 1433 i zakres portów 11000-11999. To zalecenie dotyczy klientów łączących się z lokalnymi, a także połączeń za pośrednictwem punktów końcowych usługi. Aby uzyskać więcej informacji na temat zakresów portów, zobacz [zasady połączeń](sql-database-connectivity-architecture.md#connection-policy).
 
 Połączenia wykonane z aplikacji przy użyciu sterownika programu Microsoft JDBC w wersji 4,0 mogą kończyć się niepowodzeniem weryfikacji certyfikatu. Niższe wersje programu Microsoft JDBC korzystają z nazwy pospolitej (CN) w polu podmiotu certyfikatu. Środki zaradcze polegają na zapewnieniu, że właściwość hostNameInCertificate jest ustawiona na *. database.windows.net. Aby uzyskać więcej informacji na temat sposobu ustawiania właściwości hostNameInCertificate, zobacz [nawiązywanie połączenia przy użyciu szyfrowania SSL](/sql/connect/jdbc/connecting-with-ssl-encryption).
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie metody równoważenia obciążenia w wersji zapoznawczej pulpitu wirtualnego systemu Windows — Azure
+title: Konfigurowanie metody równoważenia obciążenia pulpitu wirtualnego systemu Windows — Azure
 description: Jak skonfigurować metodę równoważenia obciążenia dla środowiska pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: e1f1ea10dc68e501cfac7ef0cf0383ce78e8f380
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3a940dbf592087878cb9dd19f856f1a3d94291c5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163764"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676774"
 ---
-# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>Konfigurowanie metody równoważenia obciążenia w wersji zapoznawczej pulpitu wirtualnego systemu Windows
+# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Konfigurowanie metody równoważenia obciążenia usługi Windows Virtual Desktop
 
-Skonfigurowanie metody równoważenia obciążenia dla puli hostów umożliwia dostosowanie środowiska Windows Virtual Desktop w wersji zapoznawczej w celu lepszego dopasowania do Twoich potrzeb.
+Skonfigurowanie metody równoważenia obciążenia dla puli hostów umożliwia dostosowanie środowiska pulpitu wirtualnego systemu Windows w celu lepszego dopasowania do Twoich potrzeb.
 
 >[!NOTE]
 > Nie dotyczy to trwałej puli hostów komputerów stacjonarnych, ponieważ użytkownicy mają zawsze mapowanie 1:1 do hosta sesji w puli hostów.

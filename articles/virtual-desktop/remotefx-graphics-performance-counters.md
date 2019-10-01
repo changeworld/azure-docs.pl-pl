@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816408"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676545"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnozowanie problemów z wydajnością grafiki w programie Pulpit zdalny
 
@@ -24,8 +24,8 @@ Do identyfikacji liczników wydajności grafiki potrzebna jest nazwa sesji zdaln
 
 1. Otwórz wiersz polecenia systemu Windows z sesji zdalnej.
 2. Uruchom polecenie **qwinsta** i Znajdź nazwę sesji.
-    - Jeśli sesja jest hostowana na maszynie wirtualnej wielosesyjnej (VM): Wystąpienie każdego licznika jest sufiksem o tym samym numerze, który ma sufiks nazwy sesji, na przykład "RDP-TCP 37".
-    - Jeśli sesja jest hostowana na maszynie wirtualnej obsługującej wirtualne jednostki przetwarzania grafiki (vGPU): Wystąpienie każdego licznika jest przechowywane na serwerze, a nie na maszynie wirtualnej. Wystąpienia liczników zawierają nazwę maszyny wirtualnej zamiast numeru w nazwie sesji, na przykład "Win8 Enterprise VM".
+    - Jeśli sesja jest hostowana na maszynie wirtualnej z obsługą wielu sesji (VM): wystąpienie każdego licznika jest sufiksem o tej samej liczbie, która ma sufiks nazwy sesji, na przykład "RDP-TCP 37".
+    - Jeśli sesja jest hostowana na maszynie wirtualnej obsługującej wirtualne jednostki przetwarzania grafiki (vGPU): wystąpienie każdego licznika jest przechowywane na serwerze, a nie na maszynie wirtualnej. Wystąpienia liczników zawierają nazwę maszyny wirtualnej zamiast numeru w nazwie sesji, na przykład "Win8 Enterprise VM".
 
 >[!NOTE]
 > Chociaż liczniki mają funkcję RemoteFX w swoich nazwach, obejmują również grafikę pulpitu zdalnego w scenariuszach vGPU.
@@ -34,7 +34,7 @@ Do identyfikacji liczników wydajności grafiki potrzebna jest nazwa sesji zdaln
 
 Po ustaleniu nazwy sesji zdalnej postępuj zgodnie z tymi instrukcjami, aby zebrać liczniki wydajności grafiki RemoteFX dla sesji zdalnej.
 
-1. Wybierz kolejno pozycje **Uruchom** > **Narzędzia** > administracyjne**Monitor wydajności**.
+1. Wybierz kolejno pozycje **Start** > **Narzędzia administracyjne** > **Monitor wydajności**.
 2. W oknie dialogowym **Monitor wydajności** rozwiń węzeł **Narzędzia do monitorowania**, wybierz pozycję **Monitor wydajności**, a następnie wybierz pozycję **Dodaj**.
 3. W oknie dialogowym **Dodawanie liczników** z listy **dostępne liczniki** rozwiń sekcję dotyczącą grafiki RemoteFX.
 4. Wybierz liczniki do monitorowania.
@@ -101,6 +101,6 @@ Jeśli zasoby klienta powodują wąskie gardło, wypróbuj jedną z następując
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby utworzyć maszynę wirtualną platformy Azure zoptymalizowaną pod kątem procesora GPU, zobacz [Konfigurowanie przyspieszenia procesora graficznego dla systemu Windows w wersji](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)zapoznawczej.
+- Aby utworzyć maszynę wirtualną platformy Azure zoptymalizowaną pod kątem procesora GPU, zobacz [Konfigurowanie przyspieszania procesora GPU dla środowiska pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
 - Aby zapoznać się z omówieniem rozwiązywania problemów i śledzenia eskalacji, zobacz [Omówienie rozwiązywania problemów, opinie i pomoc techniczną](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- Aby dowiedzieć się więcej na temat usługi w wersji zapoznawczej, zobacz [środowisko Windows Desktop Preview](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Aby dowiedzieć się więcej na temat usługi, zobacz [Środowisko pulpitu systemu Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).

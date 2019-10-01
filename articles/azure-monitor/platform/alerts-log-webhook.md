@@ -1,19 +1,19 @@
 ---
 title: Akcje elementu webhook dla alertów dziennika w usłudze Azure Alerts
 description: W tym artykule opisano sposób tworzenia reguły alertu dziennika przy użyciu obszaru roboczego Log Analytics lub Application Insights, sposobu wypchnięcia danych jako elementu webhook protokołu HTTP i szczegółowych informacji o różnych możliwych dostosowaniach.
-author: msvijayn
+author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8bdd0d5230feeeb4c80775ce63aa7e4eaccb601c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226793"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677771"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu webhook dla reguł alertów dziennika
 Po [utworzeniu alertu dziennika na platformie Azure](alerts-log.md)można [skonfigurować go za pomocą grup akcji](action-groups.md) , aby wykonać jedną lub więcej akcji. W tym artykule opisano różne akcje elementu webhook, które są dostępne i przedstawiono sposób konfigurowania niestandardowego elementu webhook opartego na notacji JSON.
@@ -21,7 +21,7 @@ Po [utworzeniu alertu dziennika na platformie Azure](alerts-log.md)można [skonf
 > [!NOTE]
 > Można również użyć [wspólnego schematu alertów](https://aka.ms/commonAlertSchemaDocs) dla integracji elementów webhook. Typowy schemat alertów umożliwia korzystanie z jednego rozszerzalnego i ujednoliconego ładunku alertów dla wszystkich usług alertów w Azure Monitor. [Dowiedz się więcej na temat typowych definicji schematu alertów.](https://aka.ms/commonAlertSchemaDefinitions)
 
-## <a name="webhook-actions"></a>Akcje elementu Webhook
+## <a name="webhook-actions"></a>Akcje elementów webhook
 
 Za pomocą akcji elementu webhook można wywołać proces zewnętrzny poprzez pojedyncze żądanie HTTP POST. Wywołana usługa powinna obsługiwać elementy webhook i określać, jak używać dowolnego otrzymanego ładunku.
 
@@ -45,7 +45,7 @@ Elementy webhook zawierają adres URL i ładunek sformatowany w formacie JSON, k
 | *AlertThresholdOperator* |#thresholdoperator |Operator progu dla reguły alertu, który używa wartości większej niż lub mniejszej niż. |
 | *AlertThresholdValue* |#thresholdvalue |Wartość progowa dla reguły alertu. |
 | *LinkToSearchResults* |#linktosearchresults |Połącz się z portalem analizy, który zwraca rekordy z zapytania, które spowodowało utworzenie alertu. |
-| *ResultCount* |#searchresultcount |Liczba rekordów w wynikach wyszukiwania. |
+| *Właściwości resultcount dla* |#searchresultcount |Liczba rekordów w wynikach wyszukiwania. |
 | *Czas zakończenia interwału wyszukiwania* |#searchintervalendtimeutc |Czas zakończenia zapytania w formacie UTC z formatem mm/dd/rrrr HH: mm: ss AM/PM. |
 | *Interwał wyszukiwania* |#searchinterval |Przedział czasu dla reguły alertu w formacie gg: mm: SS. |
 | *Interwał wyszukiwania czas rozpoczęcia* |#searchintervalstarttimeutc |Godzina rozpoczęcia zapytania w formacie UTC z formatem mm/dd/rrrr HH: mm: ss AM/PM. 
@@ -210,5 +210,5 @@ Następujący przykładowy ładunek dotyczy akcji niestandardowej elementu webho
 - Zapoznaj się z tematem jak [zarządzać alertami dziennika na platformie Azure](alerts-log.md).
 - Tworzenie grup akcji i zarządzanie nimi [na platformie Azure](action-groups.md).
 - Dowiedz się więcej o [Application Insights](../../azure-monitor/app/analytics.md).
-- Dowiedz się więcej o zapytaniach [dziennika](../log-query/log-query-overview.md). 
+- Dowiedz się więcej o [zapytaniach dziennika](../log-query/log-query-overview.md). 
 

@@ -1,19 +1,19 @@
 ---
 title: Przełączenie ze starszej wersji interfejsu API alertów usługi Log Analytics na nowe
 description: Przegląd starszej wersji zapisanego wyszukiwania opartej Log Analytics na interfejsie API alertów i proces przełączania reguł alertów na nowy interfejs API ScheduledQueryRules, ze szczegółowymi informacjami dotyczącymi typowych problemów klientów.
-author: msvijayn
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8f23d19b06152b633df6688489753498c86aee27
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7b3a09c9227110d6dba205987903a2c97dccf1b8
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034786"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677805"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Przełączanie preferencji interfejsu API dla alertów dzienników
 
@@ -22,13 +22,13 @@ ms.locfileid: "70034786"
 
 Do niedawna regułami alertów zarządzało się w portalu Microsoft Operations Management Suite. Nowe środowisko alertów zostało zintegrowane z różnymi usługami w Microsoft Azure, w tym Log Analytics, a my poprosimy o rozproszenie [reguł alertów z portalu pakietu OMS na platformę Azure](alerts-extend.md). Jednak aby zapewnić klientom minimalne zakłócenia, proces nie zmienia interfejsu programistycznego dla [interfejsu API alertów log Analytics](api-alerts.md) użycia na podstawie zapisanego wyszukiwania.
 
-Jednak teraz ogłaszamy, Log Analytics użytkownicy z alertami mają prawdziwą alternatywną platformę Azure, [Azure monitor-ScheduledQueryRules interfejs API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), który jest również odzwierciedleniem w rozliczeniach na [platformie Azure — na potrzeby alertów dzienników](alerts-unified-log.md#pricing-and-billing-of-log-alerts). Aby dowiedzieć się więcej na temat zarządzania alertami dzienników przy użyciu interfejsu API, zobacz [Zarządzanie alertami dzienników przy użyciu szablonu zasobów platformy Azure](alerts-log.md#managing-log-alerts-using-azure-resource-template) i [Zarządzanie alertami dzienników przy użyciu programu PowerShell](alerts-log.md#managing-log-alerts-using-powershell).
+Jednak teraz ogłaszamy, Log Analytics użytkownicy z alertami mają prawdziwą alternatywną platformę Azure, [Azure monitor-ScheduledQueryRules interfejs API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), który jest również odzwierciedleniem w [rozliczeniach na platformie Azure — na potrzeby alertów dzienników](alerts-unified-log.md#pricing-and-billing-of-log-alerts). Aby dowiedzieć się więcej na temat zarządzania alertami dzienników przy użyciu interfejsu API, zobacz [Zarządzanie alertami dzienników przy użyciu szablonu zasobów platformy Azure](alerts-log.md#managing-log-alerts-using-azure-resource-template) i [Zarządzanie alertami dzienników przy użyciu programu PowerShell](alerts-log.md#managing-log-alerts-using-powershell).
 
 ## <a name="benefits-of-switching-to-new-azure-api"></a>Zalety przełączania do nowego interfejsu API platformy Azure
 
 Istnieje kilka korzyści związanych z tworzeniem alertów i zarządzaniem nimi za pomocą [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) przez [starszy interfejs api alertów log Analytics](api-alerts.md). Poniżej wymieniono niektóre z najważniejszych poniżej:
 
-- Możliwość przeszukiwania [dzienników w obszarze roboczym](../log-query/cross-workspace-query.md) w regułach alertów i obejmujących zasoby zewnętrzne, takie jak log Analytics obszary robocze, a nawet aplikacje Application Insights
+- Możliwość [przeszukiwania dzienników w obszarze roboczym](../log-query/cross-workspace-query.md) w regułach alertów i obejmujących zasoby zewnętrzne, takie jak log Analytics obszary robocze, a nawet aplikacje Application Insights
 - Gdy wiele pól jest używanych do grupowania w zapytaniu, za pomocą [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) można określić, które pole ma być agregowane w Azure Portal
 - Alerty dzienników utworzone za pomocą [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) mogą mieć określony okres do 48 godzin i pobierać dane przez dłuższy okres niż przed
 - Tworzenie reguł alertów w jednym zrzucie jako pojedynczy zasób bez konieczności tworzenia trzech poziomów zasobów jako z [starszym interfejsem API alertów log Analytics](api-alerts.md)
@@ -38,13 +38,13 @@ Istnieje kilka korzyści związanych z tworzeniem alertów i zarządzaniem nimi 
 
 ## <a name="process-of-switching-from-legacy-log-alerts-api"></a>Proces przełączania ze starszego interfejsu API alertów dziennika
 
-Użytkownicy mogą korzystać z starszego [interfejsu API alertów log Analytics](api-alerts.md) lub nowego [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Reguły alertów utworzone za pomocą obu interfejsów API będą *możliwe do zarządzania tylko przez ten sam interfejs API* — a także z Azure Portal. Domyślnie Azure Monitor będzie nadal używać [starszej wersji interfejsu API log Analytics](api-alerts.md) do tworzenia nowej reguły alertu na podstawie Azure Portal dla istniejących obszarów roboczych log Analytics. Zgodnie z [ogłoszonym nowym obszarem roboczym dziennika utworzonym w dniu lub po 1 czerwca 2019](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/) — automatycznie będzie używać nowego [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , w tym w Azure Portal.
+Użytkownicy mogą korzystać z [starszego interfejsu API alertów log Analytics](api-alerts.md) lub nowego [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Reguły alertów utworzone za pomocą obu interfejsów API będą *możliwe do zarządzania tylko przez ten sam interfejs API* — a także z Azure Portal. Domyślnie Azure Monitor będzie nadal używać [starszej wersji interfejsu API log Analytics](api-alerts.md) do tworzenia nowej reguły alertu na podstawie Azure Portal dla istniejących obszarów roboczych log Analytics. Zgodnie z [ogłoszonym nowym obszarem roboczym dziennika utworzonym w dniu lub po 1 czerwca 2019](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/) — automatycznie będzie używać nowego [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , w tym w Azure Portal.
 
 Poniżej przedstawiono wpływ przełączania preferencji do interfejsu API scheduledQueryRules:
 
 - Wszystkie interakcje wykonywane w celu zarządzania alertami dziennika za pośrednictwem interfejsów programistycznych muszą być teraz wykonywane przy użyciu [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) . Aby uzyskać więcej informacji, zobacz przykład [użycia przy użyciu szablonu zasobów platformy Azure](alerts-log.md#managing-log-alerts-using-azure-resource-template) i [przykładowego użycia za pośrednictwem programu PowerShell](alerts-log.md#managing-log-alerts-using-powershell) .
 - Każda Nowa reguła alertu dziennika utworzona w Azure Portal, zostanie utworzona tylko przy użyciu [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) i umożliwi użytkownikom korzystanie z [dodatkowych funkcji nowego interfejsu API](#benefits-of-switching-to-new-azure-api) za pośrednictwem Azure Portal
-- Ważność dla reguł alertów dziennika przesunie się z: *Krytyczne, ostrzegawcze & informacyjne*, do *wartości ważności 0, 1 & 2*. Wraz z opcją tworzenia/aktualizacji reguł alertów o ważności 3 i 4.
+- Ważność reguł alertów dziennika zmienia się z: *krytyczne, ostrzegawcze & informacyjne*, do *wartości ważności 0, 1 & 2*. Wraz z opcją tworzenia/aktualizacji reguł alertów o ważności 3 i 4.
 
 Proces przechodzenia reguł alertów ze [starszej wersji interfejsu API alertu log Analytics](api-alerts.md) nie obejmuje zmiany definicji alertu, zapytania ani konfiguracji. Reguły alertów i monitorowanie nie są modyfikowane, a alerty nie zatrzymają się ani nie zostaną wstrzymane podczas przełączania lub po nim. Jedyną zmianą jest zmiana preferencji interfejsu API i dostęp do reguł za pośrednictwem nowego interfejsu API.
 

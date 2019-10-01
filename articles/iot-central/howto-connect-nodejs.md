@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 75b900ecb37ae8d092d4e37129b7f39f801c470d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ccded68cfaa00e6e13e2bb32e114b81108742829
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066444"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686664"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie ogólnej aplikacji klienckiej z aplikacją usługi Azure IoT Central (Node. js)
 
@@ -26,7 +26,7 @@ W tym artykule opisano sposób, w jaki deweloper urządzenia nawiązuje połącz
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 - Aplikacja IoT Central platformy Azure. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
-- Komputer deweloperski z zainstalowanym środowiskiem [Node. js](https://nodejs.org/) w wersji 4.0.0 lub nowszej. Aby sprawdzić swoją `node --version` wersję, można uruchomić polecenie w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
+- Komputer deweloperski z zainstalowanym środowiskiem [Node. js](https://nodejs.org/) w wersji 4.0.0 lub nowszej. Aby sprawdzić swoją wersję, można uruchomić `node --version` w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
 ## <a name="create-a-device-template"></a>Tworzenie szablonu urządzenia
 
@@ -38,9 +38,9 @@ Na stronie **pomiary** Dodaj następujące dane telemetryczne:
 
 | Nazwa wyświetlana | Nazwa pola  | Jednostki | Min. | Maks. | Miejsca dziesiętne |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
-| Temperatura  | temperature | P     | 60  | 110 | 0              |
+| Temperatura  | temperature | F     | 60  | 110 | 0              |
 | Wilgotność     | humidity    | %     | 0   | 100 | 0              |
-| Ciśnienie     | pressure    | kPa   | 80  | 110 | 0              |
+| Wykorzystania     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
 > Typ danych pomiaru telemetrii jest liczbą zmiennoprzecinkową.
@@ -53,7 +53,7 @@ Na stronie **pomiary** należy dodać następujący stan:
 
 | Nazwa wyświetlana | Nazwa pola  | Wartość 1 | Nazwa wyświetlana | Wartość 2 | Nazwa wyświetlana |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Tryb wentylatora     | fanmode     | 1       | Działanie      | 0       | Zatrzymano      |
+| Tryb wentylatora     | fanmode     | 1       | Działanie      | 0       | Zatrzymane      |
 
 > [!NOTE]
 > Typ danych pomiaru stanu to ciąg.
@@ -64,7 +64,7 @@ Wprowadź nazwy pól dokładnie tak, jak pokazano w tabeli w szablonie urządzen
 
 Na stronie **pomiary** Dodaj następujące zdarzenie:
 
-| Nazwa wyświetlana | Nazwa pola  | severity |
+| Nazwa wyświetlana | Nazwa pola  | Ważność |
 | ------------ | ----------- | -------- |
 | Przegrzaniu  | overheat    | Błąd    |
 
@@ -77,7 +77,7 @@ Na stronie **pomiary** Dodaj następujące pomiary lokalizacji:
 
 | Nazwa wyświetlana | Nazwa pola  |
 | ------------ | ----------- |
-| Location     | location    |
+| Lokalizacja     | location    |
 
 Typ danych pomiar lokalizacji składa się z dwóch liczb zmiennoprzecinkowych dla długości geograficznej i szerokości geograficznej oraz opcjonalnej liczby zmiennoprzecinkowej dla wysokości.
 
@@ -89,8 +89,8 @@ Na stronie **Właściwości** Dodaj następujące właściwości urządzenia:
 
 | Nazwa wyświetlana        | Nazwa pola        | Typ danych |
 | ------------------- | ----------------- | --------- |
-| Numer seryjny       | serialNumber      | text      |
-| Producent urządzenia | producent      | text      |
+| Numer seryjny       | serialNumber      | tekst      |
+| Producent urządzenia | instrukcj      | tekst      |
 
 Wprowadź nazwy pól dokładnie tak, jak pokazano w tabeli w szablonie urządzenia. Jeśli nazwy pól nie są zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, właściwości nie mogą być wyświetlane w aplikacji.
 
@@ -98,10 +98,10 @@ Wprowadź nazwy pól dokładnie tak, jak pokazano w tabeli w szablonie urządzen
 
 Dodaj następujące ustawienia **liczbowe** na stronie **Ustawienia** :
 
-| Nazwa wyświetlana    | Nazwa pola     | Jednostki | Miejsca dziesiętne | Min. | Maks.  | Początkowa |
+| Nazwa wyświetlana    | Nazwa pola     | Jednostki | Miejsca dziesiętne | Min. | Maks.  | Początkowego |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Szybkość wentylatorów       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
-| Ustaw temperaturę | setTemperature | P     | 0        | 20  | 200  | 80      |
+| Ustaw temperaturę | setTemperature | F     | 0        | 20  | 200  | 80      |
 
 Wprowadź nazwę pola dokładnie tak, jak pokazano w tabeli w szablonie urządzenia. Jeśli nazwy pól nie są zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, urządzenie nie może odebrać wartości ustawienia.
 
@@ -111,13 +111,13 @@ Na stronie **polecenia** Dodaj następujące polecenie:
 
 | Nazwa wyświetlana    | Nazwa pola     | Domyślny limit czasu | Typ danych |
 | --------------- | -------------- | --------------- | --------- |
-| Licz       | licz      | 30              | number    |
+| Licz       | Licz      | 30              | numer    |
 
 Dodaj następujące pole wejściowe do polecenia odliczania:
 
-| Nazwa wyświetlana    | Nazwa pola     | Typ danych | Value |
+| Nazwa wyświetlana    | Nazwa pola     | Typ danych | Wartość |
 | --------------- | -------------- | --------- | ----- |
-| Liczba od      | countFrom      | number    | 10    |
+| Liczba od      | countFrom      | numer    | 10    |
 
 Wprowadź nazwy pól dokładnie tak, jak pokazano w tabelach w szablonie urządzenia. Jeśli nazwy pól nie są zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, urządzenie nie może przetworzyć polecenia.
 
@@ -125,7 +125,7 @@ Wprowadź nazwy pól dokładnie tak, jak pokazano w tabelach w szablonie urządz
 
 W aplikacji IoT Central platformy Azure Dodaj rzeczywiste urządzenie do szablonu urządzenia utworzonego w poprzedniej sekcji.
 
-Zanotuj informacje o połączeniu urządzenia na stronie **połączenie urządzenia** : **Identyfikator zakresu**, **Identyfikator urządzenia**i **klucz podstawowy**. Te wartości można dodać w kodzie urządzenia w dalszej części tego przewodnika:
+Zanotuj informacje o połączeniu urządzenia na stronie połączenie z **urządzeniem** : **Identyfikator zakresu**, **Identyfikator urządzenia**i **klucz podstawowy**. Te wartości można dodać w kodzie urządzenia w dalszej części tego przewodnika:
 
 ![Informacje o połączeniu z urządzeniem](./media/howto-connect-nodejs/device-connection.png)
 
@@ -142,9 +142,9 @@ Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementu
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Utwórz plik o nazwie **connectedAirConditionerAdv. js** w `connected-air-conditioner-adv` folderze.
+1. Utwórz plik o nazwie **connectedAirConditionerAdv. js** w folderze `connected-air-conditioner-adv`.
 
-1. Dodaj następujące `require` instrukcje na początku pliku **connectedAirConditionerAdv. js** :
+1. Dodaj następujące instrukcje `require` na początku pliku **connectedAirConditionerAdv. js** :
 
     ```javascript
     "use strict";
@@ -164,7 +164,7 @@ Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementu
     var provisioningHost = 'global.azure-devices-provisioning.net';
     var idScope = '{your Scope ID}';
     var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key};
+    var symmetricKey = '{your Primary Key}';
     var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
     var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
     var hubClient;
@@ -174,7 +174,7 @@ Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementu
     var locLat = 47.6740;
     ```
 
-    Aktualizowanie symboli zastępczych `{your Scope ID}`, `{your Device ID}`i `{your Primary Key}` z wartościami, które zostały wcześniej wykonane. W tym przykładzie zainicjowano `targetTemperature` do zera, można użyć bieżącego odczytu z urządzenia lub wartości z sznurka urządzenia.
+    Zaktualizuj symbole zastępcze `{your Scope ID}`, `{your Device ID}` i `{your Primary Key}` z wartościami, które zostały wcześniej wykonane. W tym przykładzie zainicjowano `targetTemperature` do zera, można użyć bieżącego odczytu z urządzenia lub wartości z sznurka urządzenia.
 
 1. Aby wysyłać pomiary danych telemetrycznych, stanowych, zdarzeń i lokalizacji do aplikacji IoT Central platformy Azure, Dodaj następującą funkcję do pliku:
 

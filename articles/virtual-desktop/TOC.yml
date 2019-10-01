@@ -38,6 +38,8 @@
       href: create-host-pools-arm-template.md
     - name: Tworzenie puli hostów przy użyciu programu PowerShell
       href: create-host-pools-powershell.md
+    - name: Wdrażanie maszyny wirtualnej z systemem Windows 7 w usłudze Windows Virtual Desktop
+      href: deploy-windows-7-virtual-machine.md
     - name: Stosowanie licencji systemu Windows do hostów sesji usługi Windows Virtual Desktop
       href: apply-windows-license.md
     - name: Tworzenie kontenera profilu dla puli hostów za pomocą udziału plików
@@ -86,6 +88,8 @@
       href: troubleshoot-set-up-issues.md
     - name: Konfiguracja maszyny wirtualnej hosta sesji
       href: troubleshoot-vm-configuration.md
+    - name: Rozwiązywanie problemów z maszynami wirtualnymi z systemem Windows 7 w usłudze Windows Virtual Desktop
+      href: troubleshoot-windows-7-vm.md
     - name: Połączenia klienta pulpitu zdalnego
       href: troubleshoot-client-connection.md
     - name: Program PowerShell dla usługi Windows Virtual Desktop

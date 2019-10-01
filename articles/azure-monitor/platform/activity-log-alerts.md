@@ -1,23 +1,23 @@
 ---
 title: Alerty dziennika aktywności w Azure Monitor
 description: Otrzymywanie powiadomień za pośrednictwem wiadomości SMS, elementu webhook, wiadomości SMS, poczty e-mail i innych informacji w przypadku wystąpienia określonych zdarzeń w dzienniku aktywności.
-author: msvijayn
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: vinagara
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 61b5b96636ea12b5c63da657e006bd3121c34756
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: b24f24edf2a3a0df8cb8ef9687f205a4a8868537
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67852609"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675232"
 ---
 # <a name="alerts-on-activity-log"></a>Alerty dotyczące dziennika aktywności 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Alerty dziennika aktywności są alertami, które uaktywniają się, gdy wystąpi nowe [zdarzenie dziennika aktywności](activity-log-schema.md) zgodne z warunkami określonymi w alercie. Reguła alertu będzie uruchamiana na podstawie kolejności i ilości zdarzeń zarejestrowanych w [dzienniku aktywności platformy Azure](activity-logs-overview.md). Reguły alertów dziennika aktywności to zasoby platformy Azure, dzięki czemu można je tworzyć przy użyciu szablonu Azure Resource Manager. Można je także tworzyć, aktualizować lub usuwać w Azure Portal. W tym artykule przedstawiono pojęcia dotyczące alertów dziennika aktywności. Aby uzyskać więcej informacji na temat tworzenia i używania reguł alertów dziennika aktywności, zobacz [tworzenie alertów dziennika aktywności i zarządzanie nimi](alerts-activity-log.md).
 
 > [!NOTE]
@@ -36,22 +36,22 @@ Alert dziennika aktywności można skonfigurować na podstawie dowolnej właści
 
 Alerty dziennika aktywności mają kilka typowych opcji:
 
-- **Kategoria**: Administracyjne, Service Health, automatyczne skalowanie, zabezpieczenia, zasady i zalecenia. 
-- **Zakres**: Pojedynczy zasób lub zestaw zasobów, dla których zdefiniowano alert w dzienniku aktywności. Zakres alertu dziennika aktywności można zdefiniować na różnych poziomach:
-    - Poziom zasobu: Na przykład dla określonej maszyny wirtualnej
-    - Poziom grupy zasobów: Na przykład wszystkie maszyny wirtualne w określonej grupie zasobów
-    - Poziom subskrypcji: Na przykład wszystkie maszyny wirtualne w subskrypcji (lub) wszystkie zasoby w subskrypcji
+- **Kategoria**: administracyjne, Service Health, automatyczne skalowanie, zabezpieczenia, zasady i rekomendacje. 
+- **Zakres**: pojedynczy zasób lub zestaw zasobów, dla których zdefiniowano alert w dzienniku aktywności. Zakres alertu dziennika aktywności można zdefiniować na różnych poziomach:
+    - Poziom zasobu: na przykład dla określonej maszyny wirtualnej
+    - Poziom grupy zasobów: na przykład wszystkie maszyny wirtualne w określonej grupie zasobów
+    - Poziom subskrypcji: na przykład wszystkie maszyny wirtualne w subskrypcji (lub) wszystkie zasoby w ramach subskrypcji
 - **Grupa zasobów**: Domyślnie reguła alertu jest zapisywana w tej samej grupie zasobów co element docelowy zdefiniowany w zakresie. Użytkownik może również zdefiniować grupę zasobów, w której ma być przechowywana reguła alertu.
-- **Typ zasobu**: Menedżer zasobów zdefiniowaną przestrzeń nazw dla elementu docelowego alertu.
-- **Nazwa operacji**: Nazwa [operacji Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) używana dla Access Control opartych na rolach. Operacji nie zarejestrowano w Azure Resource Manager nie można użyć w regule alertu dziennika aktywności.
-- **Poziom**: Poziom ważności zdarzenia (verbose, informacyjny, ostrzegawczy, błąd lub krytyczny).
-- **Stan**: Stan zdarzenia, zazwyczaj rozpoczęte, zakończone niepowodzeniem lub zakończone powodzeniem.
-- **Zdarzenie zainicjowane przez**: Znana także jako "obiekt wywołujący". Adres e-mail lub identyfikator Azure Active Directory użytkownika, który wykonał operację.
+- **Typ zasobu**: Menedżer zasobów zdefiniowanej przestrzeni nazw dla elementu docelowego alertu.
+- **Nazwa operacji**: użyto nazwy [operacji Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) dla Access Control opartej na rolach. Operacji nie zarejestrowano w Azure Resource Manager nie można użyć w regule alertu dziennika aktywności.
+- **Poziom**: poziom ważności zdarzenia (verbose, informacyjny, ostrzegawczy, błąd lub krytyczny).
+- **Stan**: stan zdarzenia, zazwyczaj rozpoczęte, zakończone niepowodzeniem lub zakończone powodzeniem.
+- **Zdarzenie zainicjowane przez**: nazywane również "obiektem wywołującym". Adres e-mail lub identyfikator Azure Active Directory użytkownika, który wykonał operację.
 
 > [!NOTE]
 > W subskrypcji do 100 reguły alertów można utworzyć dla działania zakresu w jednym z nich: pojedynczy zasób, wszystkie zasoby w grupie zasobów (lub) cały poziom subskrypcji.
 
-Po aktywowaniu alertu dziennika aktywności program używa grupy akcji do generowania akcji lub powiadomień. Grupa akcji to zbiór odbiorników powiadomień wielokrotnego użytku, takich jak adresy e-mail, adresy URL elementów webhook lub numery telefonów SMS. Odbiorcy mogą odwoływać się z wielu alertów w celu scentralizowania i grupowania kanałów powiadomień. Podczas definiowania alertu dziennika aktywności dostępne są dwie opcje. Możesz:
+Po aktywowaniu alertu dziennika aktywności program używa grupy akcji do generowania akcji lub powiadomień. Grupa akcji to zbiór odbiorników powiadomień wielokrotnego użytku, takich jak adresy e-mail, adresy URL elementów webhook lub numery telefonów SMS. Odbiorcy mogą odwoływać się z wielu alertów w celu scentralizowania i grupowania kanałów powiadomień. Podczas definiowania alertu dziennika aktywności dostępne są dwie opcje. Można:
 
 * Użyj istniejącej grupy akcji w alercie dziennika aktywności.
 * Utwórz nową grupę akcji.
@@ -64,4 +64,4 @@ Aby dowiedzieć się więcej na temat grup akcji, zobacz [Tworzenie grup akcji i
 - Zapoznaj się [z omówieniem alertów](alerts-overview.md).
 - Dowiedz się więcej o [tworzeniu i modyfikowaniu alertów dziennika aktywności](alerts-activity-log.md).
 - Przejrzyj [schemat elementu webhook alertu dziennika aktywności](activity-log-alerts-webhook.md).
-- Dowiedz się więcej o powiadomieniach o [kondycji usługi](service-notifications.md).
+- Dowiedz się więcej o [powiadomieniach o kondycji usługi](service-notifications.md).
