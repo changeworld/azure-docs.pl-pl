@@ -70,6 +70,14 @@
               href: devtest-lab-use-claim-capabilities.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Laboratoria klas — typy klas
+      items:
+        - name: Typy klas
+          href: classroom-labs/class-types.md
+        - name: Uczenie głębokie w przetwarzaniu naturalnym
+          href: classroom-labs/class-type-deep-learning-natural-processing.md
+        - name: Skrypty powłoki w systemie Linux
+          href: classroom-labs/class-type-shell-scripting-linux.md
     - name: Laboratorium na potrzeby zajęć
       items:
         - name: Tworzenie i konfigurowanie kont laboratoriów (właściciel konta laboratorium)

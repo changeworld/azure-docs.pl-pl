@@ -21,17 +21,17 @@
       items:
         - name: Korzystanie z narzędzia Draft
           href: kubernetes-draft.md
-        - name: Korzystanie z języka Java (VS Code i interfejs wiersza polecenia)
-          href: ../dev-spaces/quickstart-java.md
-          maintainContext: true
-        - name: Korzystanie z programu .NET Core (VS Code oraz interfejs wiersza polecenia)
+        - name: Używanie programu Visual Studio Code i usługi Azure Dev Spaces
           href: ../dev-spaces/quickstart-netcore.md
           maintainContext: true
-        - name: Korzystanie z programu .NET Core (Visual Studio 2017)
+        - name: Używanie programu Visual Studio i usługi Azure Dev Spaces
           href: ../dev-spaces/quickstart-netcore-visualstudio.md
           maintainContext: true
-        - name: Korzystanie ze środowiska Node.js (VS Code oraz interfejs wiersza polecenia)
-          href: ../dev-spaces/quickstart-nodejs.md
+        - name: Używanie interfejsu wiersza polecenia i usługi Azure Dev Spaces
+          href: ../dev-spaces/quickstart-cli.md
+          maintainContext: true
+        - name: Programowanie zespołowe za pomocą usługi Azure Dev Spaces
+          href: ../dev-spaces/quickstart-team-development.md
           maintainContext: true
 - name: Samouczki
   items:
