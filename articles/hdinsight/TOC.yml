@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: Zarządzanie klastrami usługi HDInsight — Powershell
           href: ./hdinsight-administer-use-powershell.md
+        - name: Tworzenie potoku ETL
+          href: ./hdinsight-sales-insights-etl.md
     - name: Przykłady
       items:
         - name: Przykłady interfejsu wiersza polecenia platformy Azure

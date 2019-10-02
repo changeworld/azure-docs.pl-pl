@@ -73,7 +73,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     - Podczas migrowania maszyn wirtualnych możesz wybrać inny region docelowy platformy Azure. Wszystkie regiony platformy Azure są obsługiwane w celu migracji.
 
 7. Kliknij przycisk **Dalej**.
-8. W **narzędziu Wybierz ocenę**wybierz **pozycję Azure Migrate: Ocena serwera** > **Dalej.
+8. W **narzędziu Wybierz ocenę**wybierz **pozycję Azure Migrate: Ocena serwera** > **Dalej**.
 
     ![Tworzenie projektu Azure Migrate](./media/tutorial-assess-hyper-v/assessment-tool.png)
 

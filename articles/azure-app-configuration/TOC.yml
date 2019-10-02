@@ -25,6 +25,8 @@
       items:
         - name: ASP.NET Core
           href: quickstart-feature-flag-aspnet-core.md
+        - name: Java Spring
+          href: quickstart-feature-flag-spring-boot.md
 - name: Samouczki
   items:
     - name: Enable dynamic configuration in ASP.NET Core (Włączanie dynamicznej konfiguracji na platformie ASP.NET Core)
@@ -33,6 +35,8 @@
       href: enable-dynamic-configuration-dotnet-core.md
     - name: Używanie flag funkcji w aplikacji platformy .NET Core
       href: use-feature-flags-dotnet-core.md
+    - name: Używanie flag funkcji w aplikacji Spring Boot
+      href: use-feature-flags-spring-boot.md
     - name: Zarządzanie flagami funkcji
       href: manage-feature-flags.md
     - name: Integracja z potokiem ciągłej integracji/ciągłego wdrażania
