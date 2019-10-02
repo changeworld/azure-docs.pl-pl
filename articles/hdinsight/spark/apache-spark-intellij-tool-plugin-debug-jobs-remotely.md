@@ -59,7 +59,7 @@ Zalecamy również utworzenie klastra Apache Spark w usłudze Azure HDInsight, k
 
     ![Wybieranie hostów w programie Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. Zostanie wyświetlona lista węzłów głównych, węzłów procesu roboczego i węzłów dozorcy. Węzły główne mają prefiks **HN***. Wybierz pierwszy węzeł główny.
+1. Zostanie wyświetlona lista węzłów głównych, węzłów procesu roboczego i węzłów dozorcy. Węzły główne mają prefiks **HN**\*. Wybierz pierwszy węzeł główny.
 
     ![Znajdowanie węzła głównego w programie Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 

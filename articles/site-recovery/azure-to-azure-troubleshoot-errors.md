@@ -272,7 +272,7 @@ Aby ponownie zmienić stan replikacji maszyny wirtualnej, możesz wybrać opcję
 
 #### <a name="to-protect-the-disks"></a>Aby chronić dyski
 
-1. Przejdź do **pozycji zreplikowane elementy** >  > *Nazwa maszyny wirtualnej***dyski**.
+1. Przejdź do **pozycji zreplikowane elementy** > *Nazwa maszyny wirtualnej* > **dyski**.
 1. Wybierz dysk niechroniony, a następnie wybierz pozycję **Włącz replikację**:
 
     ![Włącz replikację na dyskach maszyn wirtualnych](./media/azure-to-azure-troubleshoot-errors/add-disk.png)

@@ -164,7 +164,7 @@ Po wypchnięciu zdarzeń do Log Analytics można uruchomić następujące [zapyt
 1. W obszarze **Akcje**wybierz pozycję **Utwórz grupę akcji**. Zostanie otwarta strona **Dodaj grupę akcji** .
 1. W polu **Nazwa grupy akcji**wpisz *Akcja*.
 1. W polu **krótka nazwa**wpisz **Akcja**.
-1. W obszarze **Grupa zasobów**wybierz pozycję * myResourceGroupAvailability * *.
+1. W obszarze **Grupa zasobów**wybierz pozycję *myResourceGroupAvailability* *.
 1. W obszarze Akcje w polu **Nazwa akcji** wpisz **adres e-mail**, a następnie wybierz pozycję **poczta e-mail/SMS/wypychanie/głos**. Zostanie otwarta strona **wiadomości e-mail/SMS/wypychana/głosowa** .
 1. Wybierz pozycję **poczta e-mail**, wpisz adres e-mail, a następnie wybierz przycisk **OK**.
 1. Na stronie **Dodaj grupę akcji** wybierz pozycję **OK**. 

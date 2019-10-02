@@ -406,7 +406,7 @@ Jest to maszyna wirtualna, która jest używana do nawiązywania połączenia pr
 2. W obszarze **popularne**wybierz pozycję **Windows Server 2016 Datacenter**.
 3. Wprowadź poniższe wartości dla maszyny wirtualnej:
     - **Grupa zasobów** — wybierz pozycję istniejące, a następnie wybierz pozycję **PD-hybrydowy-test**.
-    - **Nazwa maszyny wirtualnej***VM-lokalnego.*  - 
+    - **Nazwa maszyny wirtualnej** *VM-lokalnego.*  - 
     - **Region — w** tym samym regionie, który jest używany wcześniej.
     - **Nazwa użytkownika**: *azureuser*.
     - **Hasło**: *Azure123456!* .

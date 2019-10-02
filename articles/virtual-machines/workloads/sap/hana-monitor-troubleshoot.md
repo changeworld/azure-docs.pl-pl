@@ -129,7 +129,7 @@ W SAP HANA Studio na karcie **Informacje o systemie** kliknij prawym przyciskiem
 
 Wybierz plik zip instrukcji SQL przechowywany lokalnie, a folder z odpowiednimi instrukcjami SQL zostanie zaimportowany. W tym momencie wiele różnych testów diagnostycznych można uruchomić za pomocą tych instrukcji SQL.
 
-Na przykład, aby przetestować wymagania dotyczące przepustowości replikacji systemu SAP HANA, kliknij prawym przyciskiem myszy instrukcję  ****przepustowości** w obszarze replikacja: Przepustowość** i wybierz pozycję **Otwórz** w konsoli SQL.
+Na przykład, aby przetestować wymagania dotyczące przepustowości replikacji systemu SAP HANA, kliknij prawym przyciskiem myszy instrukcję **przepustowości** w obszarze **replikacja: Przepustowość** i wybierz pozycję **Otwórz** w konsoli SQL.
 
 Zostanie otwarta kompletna instrukcja SQL zezwalająca na zmianę parametrów wejściowych (modyfikacja sekcji), a następnie wykonanie.
 
