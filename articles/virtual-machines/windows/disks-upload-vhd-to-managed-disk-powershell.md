@@ -1,6 +1,6 @@
 ---
 title: Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu Azure PowerShell
-description: Dowiedz się, jak przekazać dysk VHD do dysku zarządzanego platformy Azure przy użyciu Azure PowerShell.
+description: Dowiedz się, jak przekazać dysk VHD do dysku zarządzanego platformy Azure i skopiować dysk zarządzany między regionami przy użyciu Azure PowerShell.
 author: roygara
 ms.author: rogarana
 ms.date: 05/06/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 5b7c612d349c3f596487db4af025e5e599b6589c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: de9975151270ccce8d4a7abd58210c6550d40464
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694792"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720335"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu Azure PowerShell
 
@@ -27,7 +27,8 @@ Obecnie bezpośrednie przekazywanie jest obsługiwane dla standardowego dysku tw
 
 - Pobierz najnowszą [wersję programu AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Zainstaluj moduł Azure PowerShell](/powershell/azure/install-Az-ps).
-- Plik VHD zapisany lokalnie.
+- Jeśli zamierzasz przekazać dysk VHD z dysku na PEM: dysk VHD, który został [przygotowany na platformie Azure, jest](prepare-for-upload-vhd-image.md)przechowywany lokalnie.
+- Lub dysk zarządzany na platformie Azure, jeśli zamierzasz wykonać akcję kopiowania.
 
 ## <a name="create-an-empty-managed-disk"></a>Utwórz pusty dysk zarządzany
 
@@ -82,6 +83,45 @@ Po zakończeniu przekazywania i nie musisz już pisać więcej danych na dysku, 
 
 ```powershell
 Revoke-AzDiskAccess -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
+```
+
+## <a name="copy-a-managed-disk"></a>Kopiowanie dysku zarządzanego
+
+Bezpośrednie przekazywanie upraszcza również proces kopiowania dysku zarządzanego. Można wykonać kopię w tym samym regionie lub w różnych regionach (do innego regionu).
+
+Wykonanie poniższej skryptu spowoduje to, że proces jest podobny do opisanego wcześniej procedury, z pewnymi różnicami, ponieważ pracujesz z istniejącym dyskiem.
+
+> [!IMPORTANT]
+> Należy dodać przesunięcie 512, gdy podajesz rozmiar dysku w bajtach dysku zarządzanego na platformie Azure. Wynika to z faktu, że platforma Azure pomija stopkę podczas zwracania rozmiaru dysku. Kopia nie powiedzie się, jeśli to zrobisz. Poniższy skrypt już robi to za Ciebie.
+
+Zastąp `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` i `<yourTargetLocationHere>` (przykładem wartości lokalizacji byłaby uswest2) wartościami, a następnie uruchom poniższy skrypt w celu skopiowania dysku zarządzanego.
+
+```powershell
+
+$sourceRG = <sourceResourceGroupHere>
+$sourceDiskName = <sourceDiskNameHere>
+$targetDiskName = <targetDiskNameHere>
+$targetRG = <targetResourceGroupHere>
+$targetLocate = <yourTargetLocationHere>
+#Expected value for OS is either "Windows" or "Linux"
+$targetOS = <yourOSTypeHere>
+
+$sourceDisk = Get-AzDisk -ResourceGroupName $sourceRG -DiskName $sourceDiskName
+
+# Adding the sizeInBytes with the 512 offset, and the -Upload flag
+$targetDiskconfig = New-AzDiskConfig -SkuName 'Standard_LRS' -osType $targetOS -UploadSizeInBytes $($sourceDisk.DiskSizeBytes+512) -Location $targetLocate -CreateOption 'Upload'
+
+$targetDisk = New-AzDisk -ResourceGroupName $targetRG -DiskName $targetDiskName -Disk $targetDiskconfig
+
+$sourceDiskSas = Grant-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName -DurationInSecond 86400 -Access 'Read'
+
+$targetDiskSas = Grant-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName -DurationInSecond 86400 -Access 'Write'
+
+azcopy copy $sourceDiskSas.AccessSAS $targetDiskSas.AccessSAS --blob-type PageBlob
+
+Revoke-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName
+
+Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName 
 ```
 
 ## <a name="next-steps"></a>Następne kroki

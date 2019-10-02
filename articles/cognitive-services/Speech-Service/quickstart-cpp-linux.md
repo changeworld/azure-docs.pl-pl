@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Rozpoznawanie mowy, C++ (Linux) — usługa mowy'
+title: 'Szybki Start: Rozpoznawanie mowy C++ , (Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak rozpoznawać mowę w języku C++ w systemie Linux przy użyciu zestawu Speech SDK
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: dfbf40ef422903069352e64340fe5e3cb960a105
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f1b87d0219bdf1b317eed41f91e65bf318b31e5a
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559446"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803362"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku C++ w systemie Linux przy użyciu zestawu Speech SDK
 
@@ -24,7 +24,7 @@ Przewodniki Szybki Start są również dostępne dla [zamiany tekstu na mowę](q
 W razie potrzeby przejdź do innego języka programowania i/lub środowiska:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule opisano tworzenie aplikacji C++ konsolowej dla systemu Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). Użyjesz zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services do transkrypcji na tekst w czasie rzeczywistym mowy z mikrofonu komputera. Aplikacja jest kompilowana przy użyciu [zestawu Speech SDK dla systemu Linux](https://aka.ms/csspeech/linuxbinary) i kompilatora języka C++ dystrybucji systemu Linux (na przykład `g++`).
+W tym artykule opisano tworzenie aplikacji C++ konsolowej dla systemu Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). Należy użyć zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services do transkrypcji mowy na tekst w czasie rzeczywistym z mikrofonu komputera. Aplikacja jest kompilowana przy użyciu [zestawu Speech SDK dla systemu Linux](https://aka.ms/csspeech/linuxbinary) i kompilatora języka C++ dystrybucji systemu Linux (na przykład `g++`).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,8 +33,6 @@ Aby ukończyć ten przewodnik Szybki Start, potrzebujesz klucza subskrypcji usł
 ## <a name="install-speech-sdk"></a>Instalowanie zestawu Speech SDK
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
-
-Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.6.0`.
 
 Zestawu Speech SDK dla systemu Linux można używać do kompilowania aplikacji 64-bitowych i 32-bitowych. Wymagane biblioteki i pliki nagłówkowe można pobrać jako plik tar ze strony https://aka.ms/csspeech/linuxbinary.
 
@@ -91,11 +89,11 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-linux/helloworld.cpp#code)]
 
-1. W tym nowym pliku Zamień ciąg `YourSubscriptionKey` na klucz subskrypcji usługi Speech Services.
+1. W tym nowym pliku Zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji usługi Speech Services.
 
 1. Zastąp ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
-## <a name="build-the-app"></a>Tworzenie aplikacji
+## <a name="build-the-app"></a>Kompilacja aplikacji
 
 > [!NOTE]
 > Pamiętaj o wprowadzeniu poniższych poleceń jako _pojedynczego wiersza polecenia_. Najprostszym sposobem wykonania tej czynności jest skopiowanie polecenia przy użyciu przycisku **Kopiuj** obok danego polecenia, a następnie wklejenie go w oknie powłoki.
@@ -110,6 +108,12 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
+  ```
+
+* W systemie **arm64** (64-bitowym) Uruchom następujące polecenie, aby skompilować aplikację.
+
+  ```sh
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
   ```
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
@@ -128,13 +132,19 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
+   * W systemie **arm64** (64-bitowym) wprowadź następujące polecenie.
+
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
+     ```
+
 1. Uruchom aplikację.
 
    ```sh
    ./helloworld
    ```
 
-1. W oknie konsoli zostanie wyświetlony monit o wypowiedzenie tekstu. Wypowiedz zwrot lub zdanie w języku angielskim. Twoja Zamiana jest przekazywana do usługi mowy i uzyskanego do tekstu, który pojawia się w tym samym oknie.
+1. W oknie konsoli zostanie wyświetlony monit o wypowiedzenie tekstu. Wymów frazę lub zdanie w języku angielskim. Twoja Zamiana jest przekazywana do usługi mowy i uzyskanego do tekstu, który pojawia się w tym samym oknie.
 
    ```text
    Say something...

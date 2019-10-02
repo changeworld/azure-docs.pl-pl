@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 09/30/2019
 ms.author: v-adgera
-ms.openlocfilehash: a39663adedfdb9c00c4429f65ec1bd27286cb136
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: f33e5be2408d2ebacd215c5f0601d712197254a7
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904294"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803409"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak skonfigurować usługę Poster dla usługi bliźniaczych reprezentacji Digital
 
@@ -35,21 +35,42 @@ Za pośrednictwem klienta programu Poster deweloperzy rozwiązań mogą określi
 
 Skonfiguruj aplikację Azure Active Directory tak, aby korzystała z niejawnego przepływu uwierzytelniania OAuth 2,0.
 
-1. Wykonaj kroki opisane w [naszym przewodniku szybki start](./quickstart-view-occupancy-dotnet.md) , aby utworzyć aplikację usługi Azure AD. Lub Utwórz [aplikację natywną przy użyciu starszego bloku AAD](./how-to-use-legacy-aad.md).
+1. Otwórz okienko **uprawnień interfejsu API** dla rejestracji aplikacji. Wybierz przycisk **Dodaj uprawnienie** . W okienku **uprawnienia żądania interfejsu API** wybierz pozycję **interfejsy API Moja organizacja używa** karty, a następnie wyszukaj:
+    
+    1. `Azure Digital Twins`. Wybierz interfejs API **Digital bliźniaczych reprezentacji platformy Azure** .
 
-1. W obszarze **uprawnienia interfejsu API**wybierz pozycję **Dodaj uprawnienie**. Następnie **usługa Azure Digital bliźniaczych reprezentacji** w obszarze **interfejsy API jest stosowana przez moją organizację**. Jeśli wyszukiwanie nie znajdzie interfejsu API, zamiast tego wyszukaj frazę **Azure Smart Spaces**. Następnie wybierz pozycję **uprawnienia delegowane**, Odczytaj > **Odczyt. zapis**i **Dodaj uprawnienie**.
+        [![Search API lub Azure Digital bliźniaczych reprezentacji](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
-    [![Dodawanie interfejsu API Azure Active Directory rejestracji aplikacji](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    1. Możesz też wyszukać `Azure Smart Spaces Service`. Wybierz interfejs API **usługi Azure Smart Spaces** .
 
-1. Wybierz pozycję **manifest** , aby otworzyć manifest aplikacji dla aplikacji. Ustaw wartość oauth2AllowImplicitFlow `true`na.
+        [@no__t — interfejs API 1Search dla usługi Azure Smart Spaces](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
+
+    > [!IMPORTANT]
+    > Nazwa i identyfikator interfejsu API usługi Azure AD, który będzie wyświetlany, zależy od dzierżawcy:
+    > * Test dzierżawy i konta klienta powinny wyszukiwać `Azure Digital Twins`.
+    > * Inne konta Microsoft powinny szukać `Azure Smart Spaces Service`.
+
+1. Wybrany interfejs API jest wyświetlany jako **usługa Azure Digital bliźniaczych reprezentacji** w tym samym okienku **uprawnień interfejsu API żądania** . Wybierz listę rozwijaną **Odczyt (1)** , a następnie wybierz pole wyboru **Odczyt. zapis** . Wybierz przycisk **Dodaj uprawnienia** .
+
+    [![Dodawanie uprawnień do interfejsu API](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+
+1. W zależności od ustawień organizacji może być konieczne wykonanie dodatkowych czynności w celu udzielenia administratorowi dostępu do tego interfejsu API. Aby uzyskać więcej informacji, skontaktuj się z administratorem. Po zatwierdzeniu dostępu administratora kolumna **wymagana zgoda administratora** w okienku **uprawnienia interfejsu API** będzie wyglądać podobnie do poniższego dla interfejsów API:
+
+    [![Dodawanie uprawnień do interfejsu API](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+
+
+1. Wybierz pozycję **manifest** , aby otworzyć manifest aplikacji dla aplikacji. Ustaw wartość *oauth2AllowImplicitFlow* na `true`.
 
     [![Azure Active Directory niejawny przepływ](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
-1. Skonfiguruj `https://www.getpostman.com/oauth2/callback` **adres URL odpowiedzi** .
+1. Skonfiguruj **adres URL odpowiedzi** na `https://www.getpostman.com/oauth2/callback`.
 
-    [![Adres URL odpowiedzi Azure Active Directory](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+    [adres URL odpowiedzi @no__t 1Azure Active Directory](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
 
 1. Skopiuj i Zachowaj **Identyfikator aplikacji** Azure Active Directory aplikacji. Jest on używany w kolejnych krokach.
+
+   [@no__t — identyfikator aplikacji Active Directory 1Azure](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
+
 
 ## <a name="obtain-an-oauth-20-token"></a>Uzyskaj token OAuth 2,0
 
@@ -64,25 +85,25 @@ Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azur
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Name  | Zamień na | Przykład |
+    | Nazwa  | Zamień na | Przykład |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | Nazwa dzierżawy lub organizacji | `microsoft` |
 
 1. Wybierz kartę **autoryzacja** , wybierz pozycję **OAuth 2,0**, a następnie wybierz pozycję **Pobierz nowy token dostępu**.
 
-    | Pole  | Value |
+    | Pole  | Wartość |
     |---------|---------|
     | Typ udzielania | `Implicit` |
     | Adres URL wywołania zwrotnego | `https://www.getpostman.com/oauth2/callback` |
-    | Adres URL uwierzytelniania | Użyj **adresu URL autoryzacji** z kroku 2 |
+    | Adres URL uwierzytelniania | Użyj **adresu URL autoryzacji** z **kroku 2** |
     | Identyfikator klienta | Użyj **identyfikatora aplikacji** dla aplikacji Azure Active Directory, która została utworzona lub ponownie użyta w poprzedniej sekcji |
-    | Scope | Pozostaw puste |
-    | State | Pozostaw puste |
+    | Zakres | Pozostaw puste |
+    | Stan | Pozostaw puste |
     | Uwierzytelnianie klienta | `Send as Basic Auth header` |
 
 1. Klient powinien teraz wyglądać następująco:
 
-    [![Przykład klienta Poster](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
+    [przykład klienta ![Postman](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. Wybierz **token żądania**.
 
@@ -92,21 +113,19 @@ Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azur
   
 1. Przewiń w dół i wybierz pozycję **Użyj tokenu**.
 
-<div id="multi"></div>
-
 ## <a name="make-a-multipart-post-request"></a>Utwórz wieloczęściowe żądanie POST
 
 Po wykonaniu powyższych kroków Skonfiguruj program do ogłaszania w celu wypróbowania uwierzytelnionego żądania protokołu HTTP wieloczęściowego:
 
 1. Na karcie **nagłówek** Dodaj **Typ zawartości** klucz nagłówka żądania HTTP z wartością `multipart/mixed`.
 
-   [![Typ zawartości wieloczęściowy/mieszany](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
+   [![Content typ wieloczęściowy/mieszany](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serializacja danych nietekstowych w plikach. Dane JSON zostałyby zapisane jako plik JSON.
 1. Na karcie **treść** Dodaj każdy plik, przypisując nazwę **klucza** , wybierając `file` lub `text`.
 1. Następnie zaznacz każdy plik za pomocą przycisku **Wybierz plik** .
 
-   [![Przykład klienta Poster](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
+   [przykład klienta ![Postman](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
 
    >[!NOTE]
    > * Klient programu Poster nie wymaga, aby fragmenty wieloczęściowe miały ręcznie przypisane **elementy Content-Type** i **Content-Dyspozycja**.

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, Java — QnA Maker'
+title: 'Szybki start: uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, Java — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku Szybki start opartym na protokole REST i języku Java opisano sposób programowego uzyskiwania odpowiedzi z bazy wiedzy.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 008ecf221dfcc069f6ac3b2ee3d8e5e46056c83c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 813eb624dfab0b88b0e907f86de77ebc0ae35f2c
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308131"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802917"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Szybki start: Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Java
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Szybki Start: uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Java
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) , takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) jest wysyłane do usługi QNA Maker. [Odpowiedź](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obejmuje odpowiedzi przewidziane w górnej części. 
 

@@ -1,7 +1,7 @@
 ---
 title: Twórz, uruchamiaj, & Śledź potoki ML
 titleSuffix: Azure Machine Learning
-description: Tworzenie i uruchamianie usługi machine learning potoku z zestawem Azure Machine Learning SDK dla języka Python. Przy użyciu potoków ML można tworzyć przepływy pracy, które łączą fazy uczenia maszynowego (ML) i zarządzać nimi. Te fazy obejmują Przygotowywanie danych, szkolenia modeli, wdrażanie modeli i wnioskowanie/ocenianie.
+description: Utwórz i uruchom potok uczenia maszynowego za pomocą zestawu Azure Machine Learning SDK dla języka Python. Przy użyciu potoków ML można tworzyć przepływy pracy, które łączą fazy uczenia maszynowego (ML) i zarządzać nimi. Te fazy obejmują Przygotowywanie danych, szkolenia modeli, wdrażanie modeli i wnioskowanie/ocenianie.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1a0db395b86f473d2372a5ca779020e54186e45
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: af20c9e3a50c0c60135b1e447e7e1cba1fc36526
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034837"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815723"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoków uczenia maszynowego za pomocą zestawu SDK Azure Machine Learning
 
-Ten artykuł zawiera informacje na temat tworzenia, publikowania, uruchamiania i śledzenia potoku uczenia [maszynowego](concept-ml-pipelines.md) przy użyciu [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Użyj **potoków ml** , aby utworzyć przepływ pracy, który jest połączony z różnymi etapami ml, a następnie opublikuj ten potok w obszarze roboczym Azure Machine Learning, aby uzyskać dostęp do nich później lub udostępniać innym osobom.  Potoki ML doskonale nadają się do scenariuszy wsadowych oceniania, przy użyciu różnych obliczeń, ponownej realizacji czynności zamiast uruchamiania ich, a także udostępniania przepływów pracy ML innym osobom. 
+Ten artykuł zawiera informacje na temat tworzenia, publikowania, uruchamiania i śledzenia [potoku uczenia maszynowego](concept-ml-pipelines.md) przy użyciu [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Użyj **potoków ml** , aby utworzyć przepływ pracy, który jest połączony z różnymi etapami ml, a następnie opublikuj ten potok w obszarze roboczym Azure Machine Learning, aby uzyskać dostęp do nich później lub udostępniać innym osobom.  Potoki ML doskonale nadają się do scenariuszy wsadowych oceniania, przy użyciu różnych obliczeń, ponownej realizacji czynności zamiast uruchamiania ich, a także udostępniania przepływów pracy ML innym osobom. 
 
 Chociaż możesz użyć innego rodzaju potoku o nazwie [potoku platformy Azure](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml) do automatyzacji wykonywania zadań w usłudze ml, ten typ potoku nigdy nie jest przechowywany w obszarze roboczym. [Porównaj te różne potoki](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use).
 
@@ -30,11 +30,11 @@ Utworzone potoki ML są widoczne dla członków [obszaru roboczego](how-to-manag
 
 Potoki ML wykorzystują zdalne cele obliczeniowe do obliczeń i przechowywania danych pośrednich i końcowych skojarzonych z tym potokiem. Mogą odczytywać i zapisywać dane w i z obsługiwanych lokalizacji [usługi Azure Storage](https://docs.microsoft.com/azure/storage/) .
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Tworzenie [obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md) do przechowywania wszystkich zasobów potoku.
+* Utwórz [obszar roboczy Azure Machine Learning](how-to-manage-workspace.md) , aby pomieścić wszystkie zasoby potoku.
 
 * [Skonfiguruj środowisko programistyczne](how-to-configure-environment.md) , aby zainstalować zestaw SDK Azure Machine Learning lub użyć [maszyny wirtualnej z notesem](tutorial-1st-experiment-sdk-setup.md#azure) z już zainstalowanym zestawem SDK.
 
@@ -48,19 +48,19 @@ ws = Workspace.from_config()
 ```
 
 
-## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów w machine learning
+## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów uczenia maszynowego
 
 Utwórz zasoby wymagane do uruchomienia potoku ML:
 
-* Skonfiguruj Magazyn danych umożliwia dostęp do danych, potrzebne w etapach potoku.
+* Skonfiguruj magazyn danych, który jest używany do uzyskiwania dostępu do wymaganych przez kroki potoku.
 
-* `DataReference` Skonfiguruj obiekt, aby wskazywał dane, które znajdują się w, lub jest dostępny w magazynie danych.
+* Skonfiguruj obiekt `DataReference` w taki sposób, aby wskazywał dane, które znajdują się w lub jest dostępny w magazynie danych.
 
-* Konfigurowanie [celów obliczeń](concept-azure-machine-learning-architecture.md#compute-targets) uruchamiania etapów potoku.
+* Skonfiguruj [cele obliczeń](concept-azure-machine-learning-architecture.md#compute-targets) , na których będą uruchamiane kroki potoku.
 
-### <a name="set-up-a-datastore"></a>Skonfiguruj Magazyn danych
+### <a name="set-up-a-datastore"></a>Konfigurowanie magazynu danych
 
-Magazyn danych przechowuje dane dla potoku w celu uzyskania dostępu do. Każdy obszar roboczy ma domyślny magazyn danych. Możesz zarejestrować dodatkowe magazynów danych. 
+Magazyn danych przechowuje dane dla potoku do uzyskania dostępu. Każdy obszar roboczy ma domyślny magazyn danych. Możesz zarejestrować dodatkowe magazyny danych. 
 
 Podczas tworzenia obszaru roboczego [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) i [Magazyn obiektów blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) są dołączone do obszaru roboczego. W celu nawiązania połączenia z magazynem obiektów blob platformy Azure jest zarejestrowany domyślny magazyn danych. Aby dowiedzieć się więcej, zobacz [Decydowanie o tym, kiedy używać Azure Files, obiektów blob platformy Azure lub dysków platformy Azure](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
 
@@ -76,7 +76,7 @@ def_file_store = Datastore(ws, "workspacefilestore")
 
 ```
 
-Przekaż dane plików lub katalogów do magazynu danych dla nich, które mają być dostępne z potokami. Ten przykład używa magazynu obiektów BLOB jako magazynu danych:
+Przekaż pliki danych lub katalogi do magazynu datastore, aby były dostępne z potoków. Ten przykład używa magazynu obiektów BLOB jako magazynu danych:
 
 ```python
 def_blob_store.upload_files(
@@ -85,11 +85,11 @@ def_blob_store.upload_files(
     overwrite=True)
 ```
 
-Potok składa się z co najmniej jednego kroku. Krok to jednostka systemem obliczeniowego elementu docelowego. Kroki może być używanie źródeł danych i generować dane "pośredni". Krok można utworzyć, dane, takie jak model, katalog o modelu i pliki zależne lub dane tymczasowe. Te dane są następnie dostępne dla innych kroków później w potoku.
+Potok składa się z jednego lub kilku kroków. Krok to jednostka uruchamiana na obiekcie docelowym obliczeń. Kroki mogą zużywać źródła danych i generować "pośrednie" dane. Krok może tworzyć dane, takie jak model, katalog z modelem i zależnymi plikami lub dane tymczasowe. Te dane są następnie dostępne dla innych kroków w dalszej części potoku.
 
-### <a name="configure-data-reference"></a>Konfiguruj odwołanie do danych
+### <a name="configure-data-reference"></a>Konfigurowanie odwołania do danych
 
-Utworzono źródła danych, które mogą być przywoływane w potoku jako dane wejściowe do etapu. Źródło danych w potoku jest reprezentowany przez [element DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) obiektu. `DataReference` Obiektu punktów danych, który znajduje się w lub jest dostępny z magazynu danych.
+Właśnie utworzono źródło danych, do którego można się odwoływać w potoku jako dane wejściowe do kroku. Źródło danych w potoku jest reprezentowane przez obiekt [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) . Obiekt `DataReference` wskazuje dane, które znajdują się w lub są dostępne z magazynu danych.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -100,7 +100,7 @@ blob_input_data = DataReference(
     path_on_datastore="20newsgroups/20news.pkl")
 ```
 
-Pośredni danych (lub danych wyjściowych kroku), jest reprezentowane przez [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) obiektu. `output_data1`jest tworzony jako dane wyjściowe kroku i używany jako dane wejściowe jednego lub kilku przyszłych kroków. `PipelineData`wprowadza zależność danych między krokami i tworzy niejawną kolejność wykonywania w potoku.
+Dane pośrednie (lub dane wyjściowe kroku) są reprezentowane przez obiekt [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) . `output_data1` jest tworzony jako dane wyjściowe kroku i używany jako dane wejściowe jednego lub kilku przyszłych kroków. `PipelineData` wprowadza zależność danych między krokami i tworzy niejawną kolejność wykonywania w potoku.
 
 ```python
 from azureml.pipeline.core import PipelineData
@@ -111,20 +111,20 @@ output_data1 = PipelineData(
     output_name="output_data1")
 ```
 
-## <a name="set-up-compute-target"></a>Konfigurowanie obliczeniowego elementu docelowego
+## <a name="set-up-compute-target"></a>Skonfiguruj cel obliczeń
 
-W Azure Machine Learning termin computes__ (lub __element docelowy obliczeń__) odnosi się do maszyn lub klastrów wykonujących kroki obliczeniowe w potoku uczenia maszynowego.   Zobacz [cele obliczeń dla szkolenia modelu](how-to-set-up-training-targets.md) , aby uzyskać pełną listę elementów docelowych obliczeń oraz sposób tworzenia i dołączania ich do obszaru roboczego.  Proces tworzenia i dołączania obiektu docelowego obliczeń jest taki sam, niezależnie od tego, czy jest to szkoleniowy model, czy też uruchamiany jest krok potoku. Po utworzeniu i dołączeniu obiektu docelowego obliczeń Użyj `ComputeTarget` obiektu w kroku potoku. [](#steps)
+W Azure Machine Learning termin computes__ (lub __element docelowy obliczeń__) odnosi się do maszyn lub klastrów wykonujących kroki obliczeniowe w potoku uczenia maszynowego.   Zobacz [cele obliczeń dla szkolenia modelu](how-to-set-up-training-targets.md) , aby uzyskać pełną listę elementów docelowych obliczeń oraz sposób tworzenia i dołączania ich do obszaru roboczego.  Proces tworzenia i dołączania obiektu docelowego obliczeń jest taki sam, niezależnie od tego, czy jest to szkoleniowy model, czy też uruchamiany jest krok potoku. Po utworzeniu i dołączeniu obiektu docelowego obliczeń Użyj obiektu `ComputeTarget` w [kroku potoku](#steps).
 
 > [!IMPORTANT]
 > Wykonywanie operacji zarządzania na obiektach docelowych obliczeń nie jest obsługiwane w ramach zadań zdalnych. Potoki uczenia maszynowego są przesyłane jako zadania zdalne, dlatego nie należy używać operacji zarządzania na obiektach docelowych obliczeń z wnętrza potoku.
 
 Poniżej przedstawiono przykłady tworzenia i dołączania obiektów docelowych obliczeń dla:
 
-* Usługi Azure Machine Learning obliczeń
+* Azure Machine Learning obliczeń
 * Azure Databricks 
 * Azure Data Lake Analytics
 
-### <a name="azure-machine-learning-compute"></a>Obliczeniowe platformy Azure Machine Learning
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning obliczeń
 
 Można utworzyć Azure Machine Learning obliczeń do uruchamiania kroków.
 
@@ -155,17 +155,17 @@ else:
     print(compute_target.status.serialize())
 ```
 
-### <a id="databricks"></a>Usługa Azure Databricks
+### <a id="databricks"></a>Azure Databricks
 
-Usługa Azure Databricks to oparta na platformie Apache Spark środowisko w chmurze platformy Azure. Może służyć jako obiekt docelowy obliczeń z potokiem Azure Machine Learning.
+Azure Databricks jest środowiskiem opartym na Apache Spark w chmurze platformy Azure. Może służyć jako obiekt docelowy obliczeń z potokiem Azure Machine Learning.
 
 Utwórz obszar roboczy Azure Databricks, zanim go użyjesz. Aby utworzyć zasób obszaru roboczego, zobacz dokument [Uruchamianie zadania Spark na Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) .
 
 Aby dołączyć Azure Databricks jako element docelowy obliczeń, podaj następujące informacje:
 
-* __Nazwa obliczeniowa datakostek__: Nazwa, która ma zostać przypisana do tego zasobu obliczeniowego.
-* __Nazwa obszaru roboczego__datakosteks: Nazwa obszaru roboczego Azure Databricks.
-* __Token dostępu do datakostki__: Token dostępu używany do uwierzytelniania w Azure Databricks. Aby wygenerować token dostępu, zobacz [uwierzytelniania](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
+* __Nazwa obliczeniowa datakostek__: nazwa, która ma zostać przypisana do tego zasobu obliczeniowego.
+* __Nazwa obszaru roboczego elementów datakostki__: Nazwa obszaru roboczego Azure Databricks.
+* __Token dostępu do datakostki__: token dostępu używany do uwierzytelniania w Azure Databricks. Aby wygenerować token dostępu, zobacz dokument [uwierzytelniania](https://docs.azuredatabricks.net/api/latest/authentication.html) .
 
 Poniższy kod ilustruje sposób dołączania Azure Databricks jako obiektu docelowego obliczeń przy użyciu zestawu SDK Azure Machine Learning:
 
@@ -210,17 +210,17 @@ Aby zapoznać się z bardziej szczegółowym przykładem, zobacz [przykładowy N
 
 ### <a id="adla"></a>Azure Data Lake Analytics
 
-Usługa Azure Data Lake Analytics to platforma analiz danych big data w chmurze platformy Azure. Może służyć jako obiekt docelowy obliczeń z potokiem Azure Machine Learning.
+Azure Data Lake Analytics to platforma analizy danych Big Data w chmurze platformy Azure. Może służyć jako obiekt docelowy obliczeń z potokiem Azure Machine Learning.
 
-Utwórz konto Azure Data Lake Analytics przed użyciem go. Aby utworzyć ten zasób, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) dokumentu.
+Utwórz konto Azure Data Lake Analytics przed użyciem go. Aby utworzyć ten zasób, zapoznaj się z dokumentem [wprowadzenie do Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) .
 
-Aby dołączyć usługi Data Lake Analytics, jako cel obliczenia, możesz użyć zestawu SDK usługi Azure Machine Learning i podaj następujące informacje:
+Aby dołączyć Data Lake Analytics jako obiekt docelowy obliczeń, należy użyć zestawu SDK Azure Machine Learning i podać następujące informacje:
 
-* __Nazwa obliczenia__: Nazwa, która ma zostać przypisana do tego zasobu obliczeniowego.
-* __Grupa zasobów__: Grupa zasobów zawierająca konto Data Lake Analytics.
-* __Nazwa konta__: Nazwa konta Data Lake Analytics.
+* __Nazwa obliczania__: nazwa, która ma zostać przypisana do tego zasobu obliczeniowego.
+* __Grupa zasobów__: Grupa zasobów, która zawiera konto Data Lake Analytics.
+* __Nazwa konta__: nazwa konta Data Lake Analytics.
 
-Poniższy kod przedstawia sposób dołączania usługi Data Lake Analytics, jako cel obliczenia:
+Poniższy kod ilustruje sposób dołączania Data Lake Analytics jako obiekt docelowy obliczeń:
 
 ```python
 import os
@@ -259,11 +259,11 @@ except ComputeTargetException:
 Aby zapoznać się z bardziej szczegółowym przykładem, zobacz [przykładowy Notes](https://aka.ms/pl-adla) w witrynie GitHub.
 
 > [!TIP]
-> Potoki usługi Azure Machine Learning może pracować tylko z danych przechowywanych w magazynie danych domyślnego konta usługi Data Lake Analytics. Jeśli dane potrzebne do pracy z znajduje się w magazynie innych niż domyślne, można użyć [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) do kopiowania danych przed szkolenia.
+> Potoki Azure Machine Learning mogą korzystać tylko z danych przechowywanych w domyślnym magazynie danych konta Data Lake Analytics. Jeśli dane, które mają być używane, należą do magazynu innego niż domyślny, można użyć [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) do skopiowania danych przed szkoleniem.
 
 ## <a id="steps"></a>Konstruowanie kroków potoku
 
-Po utworzeniu i dołączeniu obiektu docelowego obliczeń do obszaru roboczego możesz zdefiniować krok potoku. Wiele wbudowanych kroków są dostępne za pośrednictwem zestawu SDK usługi Azure Machine Learning. Najbardziej podstawową procedurą jest [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), która uruchamia skrypt języka Python w określonym obiekcie docelowym obliczeń:
+Po utworzeniu i dołączeniu obiektu docelowego obliczeń do obszaru roboczego możesz zdefiniować krok potoku. Istnieje wiele wbudowanych kroków dostępnych za pośrednictwem zestawu SDK Azure Machine Learning. Najbardziej podstawową procedurą jest [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), która uruchamia skrypt języka Python w określonym obiekcie docelowym obliczeń:
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -278,7 +278,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-Ponowne użycie poprzednich wyników (`allow_reuse`) jest kluczem w przypadku używania potoków w środowisku współpracy, ponieważ wyeliminowanie niepotrzebnych ponownych prób zapewnia elastyczność. Ponowne użycie jest zachowaniem domyślnym, gdy script_name, dane wejściowe i parametry kroku pozostają takie same. Gdy dane wyjściowe kroku są ponownie używane, zadanie nie zostanie przesłane do obliczenia, a wyniki z poprzedniego przebiegu są natychmiast dostępne dla uruchomienia następnego kroku. Jeśli `allow_reuse` jest ustawiona na wartość false, nowy przebieg będzie zawsze generowany dla tego kroku podczas wykonywania potoku. 
+Ponowne użycie poprzednich wyników (`allow_reuse`) jest kluczem w przypadku używania potoków w środowisku współpracy, ponieważ wyeliminowanie niepotrzebnych ponownych prób zapewnia elastyczność. Ponowne użycie jest zachowaniem domyślnym, gdy script_name, dane wejściowe i parametry kroku pozostają takie same. Gdy dane wyjściowe kroku są ponownie używane, zadanie nie zostanie przesłane do obliczenia, a wyniki z poprzedniego przebiegu są natychmiast dostępne dla uruchomienia następnego kroku. Jeśli wartość `allow_reuse` ma wartość false, po wykonaniu potoku jest zawsze generowany nowy przebieg dla tego kroku. 
 
 Po zdefiniowaniu kroków można skompilować potok za pomocą niektórych lub wszystkich tych kroków.
 
@@ -320,12 +320,12 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 
 Aby uzyskać więcej informacji, zobacz [pakiet Azure-Pipeline-etaps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) i informacje o [klasie potoku](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) .
 
-## <a name="submit-the-pipeline"></a>Przesyłanie potoku
+## <a name="submit-the-pipeline"></a>Prześlij potok
 
-Gdy przesyłasz potok, Azure Machine Learning sprawdza zależności dla każdego kroku i przekazuje migawkę podanego katalogu źródłowego. Jeśli katalog źródłowy nie zostanie określony, bieżący katalog lokalny jest przekazywany. Migawka jest również przechowywana w ramach eksperymentu w obszarze roboczym.
+Gdy przesyłasz potok, Azure Machine Learning sprawdza zależności dla każdego kroku i przekazuje migawkę podanego katalogu źródłowego. Jeśli katalog źródłowy nie zostanie określony, zostanie przekazany bieżący katalog lokalny. Migawka jest również przechowywana w ramach eksperymentu w obszarze roboczym.
 
 > [!IMPORTANT]
-> Aby uniemożliwić Dołączanie plików do migawki, Utwórz plik [. gitignore](https://git-scm.com/docs/gitignore) lub `.amlignore` w katalogu i Dodaj do niego pliki. Plik używa tej samej składni i wzorców co plik [. gitignore.](https://git-scm.com/docs/gitignore) `.amlignore` Jeśli istnieją oba pliki, `.amlignore` ma pierwszeństwo.
+> Aby uniemożliwić Dołączanie plików do migawki, Utwórz plik [. gitignore](https://git-scm.com/docs/gitignore) lub `.amlignore` w katalogu i Dodaj do niego pliki. Plik `.amlignore` używa tej samej składni i wzorców co plik [. gitignore](https://git-scm.com/docs/gitignore) . Jeśli istnieją oba pliki, plik `.amlignore` ma pierwszeństwo.
 >
 > Aby uzyskać więcej informacji, zobacz [migawki](concept-azure-machine-learning-architecture.md#snapshots).
 
@@ -342,7 +342,7 @@ Podczas pierwszego uruchomienia potoku Azure Machine Learning:
 * Pobiera migawkę projektu do obiektu docelowego obliczeń z magazynu obiektów BLOB skojarzonego z obszarem roboczym.
 * Kompiluje obraz platformy Docker odpowiadający każdemu krokowi w potoku.
 * Pobiera obraz platformy Docker dla każdego kroku do obiektu docelowego obliczeń z rejestru kontenerów.
-* Instaluje magazyn danych, jeśli `DataReference` obiekt jest określony w kroku. Jeśli instalacji nie jest obsługiwany, dane zamiast tego jest kopiowany do obliczeniowego elementu docelowego.
+* Instaluje magazyn danych, jeśli w kroku jest określony obiekt `DataReference`. Jeśli instalacja nie jest obsługiwana, dane są kopiowane do elementu docelowego obliczeń.
 * Uruchamia krok w elemencie docelowym obliczeń określonym w definicji kroku. 
 * Tworzy artefakty, takie jak dzienniki, stdout i stderr, metryki i dane wyjściowe określone przez krok. Te artefakty są następnie przekazywane i przechowywane w domyślnym magazynie danych użytkownika.
 
@@ -358,9 +358,9 @@ Po rozpoczęciu szkolenia w przypadku, gdy katalog źródłowy jest lokalnym rep
 
 ## <a name="publish-a-pipeline"></a>Publikowanie potoku
 
-Możesz opublikować potoku, aby uruchomić go później przy użyciu różnych danych wejściowych. W przypadku punktu końcowego REST już opublikowanego potoku w celu zaakceptowania parametrów należy Sparametryzuj potok przed opublikowaniem.
+Można opublikować potok, aby uruchomić go z innymi danymi wejściowymi później. W przypadku punktu końcowego REST już opublikowanego potoku w celu zaakceptowania parametrów należy Sparametryzuj potok przed opublikowaniem.
 
-1. Aby utworzyć parametr potoku, użyj [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) obiekt z wartością domyślną.
+1. Aby utworzyć parametr potoku, użyj obiektu [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) z wartością domyślną.
 
    ```python
    from azureml.pipeline.core.graph import PipelineParameter
@@ -370,7 +370,7 @@ Możesz opublikować potoku, aby uruchomić go później przy użyciu różnych 
      default_value=10)
    ```
 
-2. Dodaj tę `PipelineParameter` obiekt jako parametr do dowolnego z kroków w potoku w następujący sposób:
+2. Dodaj ten obiekt `PipelineParameter` jako parametr do dowolnego z kroków w potoku w następujący sposób:
 
    ```python
    compareStep = PythonScriptStep(
@@ -382,7 +382,7 @@ Możesz opublikować potoku, aby uruchomić go później przy użyciu różnych 
      source_directory=project_folder)
    ```
 
-3. Opublikuj ten potok, który akceptuje parametr po wywołaniu.
+3. Opublikuj ten potok, który zostanie zaakceptowany przez wywoływany parametr.
 
    ```python
    published_pipeline1 = pipeline_run1.publish_pipeline(
@@ -391,7 +391,7 @@ Możesz opublikować potoku, aby uruchomić go później przy użyciu różnych 
         version="1.0")
    ```
 
-### <a name="run-a-published-pipeline"></a>Uruchamianie potoku opublikowane
+### <a name="run-a-published-pipeline"></a>Uruchom opublikowany potok
 
 Wszystkie opublikowane potoki mają punkt końcowy REST. Ten punkt końcowy wywołuje przebieg potoku z systemów zewnętrznych, takich jak klienci spoza języka Python. Ten punkt końcowy włącza "zarządzaną powtarzalność" w ramach oceniania wsadowego i scenariuszy ponownego szkolenia.
 
@@ -410,12 +410,12 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Wyświetl wyniki opublikowanego potoku
 
 Zobacz listę wszystkich opublikowanych potoków i ich szczegóły przebiegu:
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
 
-1. [Wyświetlanie obszaru roboczego](how-to-manage-workspace.md#view) listy potoków.
- ![listy potoków uczenia maszynowego](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
+1. [Wyświetlenie obszaru roboczego](how-to-manage-workspace.md#view) , aby znaleźć listę potoków.
+ ![list potoków uczenia maszynowego @ no__t-1
  
-1. Wybierz określone potoku, aby zobaczyć wyniki jego działania.
+1. Wybierz konkretny potok, aby wyświetlić wyniki przebiegu.
 
 Te wyniki są również dostępne na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
 
@@ -429,17 +429,17 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-Można włączyć ją ponownie za pomocą `p.enable()`. Aby uzyskać więcej informacji, zobacz [PublishedPipeline klasy](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) Reference.
+Można ją ponownie włączyć z `p.enable()`. Aby uzyskać więcej informacji, zobacz [PublishedPipeline klasy](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) Reference.
 
 
 ## <a name="caching--reuse"></a>Buforowanie & ponownie używane  
 
 Aby zoptymalizować i dostosować zachowanie potoków, można wykonać kilka czynności związanych z buforowaniem i wielokrotnym użyciem. Można na przykład wybrać następujące opcje:
-+ Wyłącz **domyślne ponowne użycie kroku Uruchom dane wyjściowe** przez ustawienie `allow_reuse=False` podczas [definiowania kroku](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Ponowne użycie jest kluczem przy użyciu potoków w środowisku współpracy, ponieważ wyeliminowanie niepotrzebnych uruchomień zapewnia elastyczność. Można jednak zrezygnować z ponownego użycia.
-+ **Rozszerzenie mieszania wykraczające poza skrypt**, aby również zawierać ścieżkę bezwzględną lub względną do pliku katalog_źródłowy do innych plików i katalogów za pomocą`hash_paths=['<file or directory']` 
-+ **Wymuś ponowne wygenerowanie danych wyjściowych dla wszystkich kroków w przebiegu** z`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
++ Wyłącz **domyślne ponowne użycie kroku uruchamiania etapu** przez ustawienie `allow_reuse=False` podczas [definiowania kroku](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Ponowne użycie jest kluczem przy użyciu potoków w środowisku współpracy, ponieważ wyeliminowanie niepotrzebnych uruchomień zapewnia elastyczność. Można jednak zrezygnować z ponownego użycia.
++ **Zwiększ mieszanie poza skryptem**, aby dołączyć ścieżkę bezwzględną lub względną do pliku katalog_źródłowy do innych plików i katalogów przy użyciu `hash_paths=['<file or directory']` 
++ **Wymuś ponowne wygenerowanie danych wyjściowych dla wszystkich kroków w przebiegu** z `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-Domyślnie dla kroków `allow_reuse` jest włączone, a tylko główny plik skryptu jest skrótem. Tak więc, jeśli skrypt dla danego kroku pozostaje taki sam (`script_name`, dane wejściowe i parametry), dane wyjściowe wykonywane w poprzednim kroku są ponownie używane, zadanie nie zostanie przesłane do obliczenia, a wyniki z poprzedniego uruchomienia są natychmiast dostępne w następnym kroku zamiast .  
+Domyślnie, `allow_reuse` dla kroków jest włączona, a tylko główny plik skryptu jest używany jako skrót. Tak więc, jeśli skrypt dla danego kroku pozostaje taki sam (`script_name`, dane wejściowe i parametry), dane wyjściowe wykonywane w poprzednim kroku są ponownie używane, zadanie nie zostanie przesłane do obliczenia, a wyniki z poprzedniego przebiegu są natychmiast dostępne do następnego kroku.  
 
 ```python
 step = PythonScriptStep(name="Hello World",
@@ -449,11 +449,11 @@ step = PythonScriptStep(name="Hello World",
                         allow_reuse=False,
                         hash_paths=['hello_world.ipynb'])
 ```
- 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Użyj [tych aplikacji Jupyter notebooks w usłudze GitHub](https://aka.ms/aml-pipeline-readme) do eksplorowania dalsze potoków uczenia maszynowego.
+- [Te notesy Jupyter w usłudze GitHub](https://aka.ms/aml-pipeline-readme) umożliwiają dalsze Eksplorowanie potoków usługi Machine Learning.
 - Zapoznaj się z dokumentacją zestawu SDK dla pakietu [Azure-Pipelines-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) oraz pakietem [kroków potoków usługi Azure](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) .
+- Zobacz Porady [dotyczące debugowania](how-to-debug-pipelines.md) i rozwiązywania problemów z potokami.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

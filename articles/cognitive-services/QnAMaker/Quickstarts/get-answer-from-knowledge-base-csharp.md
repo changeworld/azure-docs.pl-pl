@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, C# — QnA Maker'
+title: 'Szybki start: uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, C# — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku Szybki start opartym na protokole REST i języku C# opisano sposób programowego uzyskiwania odpowiedzi z bazy wiedzy.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/24/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 21c7220fe10537f56ac7d935f576aa9dac57f64f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e06ded1b684d442c9f6257ebd92b3a3b8fdb87a3
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261945"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803007"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Szybki start: Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka C#
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Szybki Start: uzyskiwanie odpowiedzi na pytanie z bazy wiedzyC#
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) , takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) jest wysyłane do usługi QNA Maker. [Odpowiedź](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obejmuje odpowiedzi przewidziane w górnej części. 
 

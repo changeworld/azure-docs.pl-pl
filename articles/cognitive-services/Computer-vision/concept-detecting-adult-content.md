@@ -1,42 +1,41 @@
 ---
-title: Zawartość dla dorosłych i erotycznej — przetwarzanie obrazów
+title: Dorosła, erotycznej, gorii Content — przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia związane z wykrywaniem treści dla dorosłych i erotycznej w obrazach przy użyciu interfejsu APi przetwarzanie obrazów.
+description: Pojęcia związane z wykrywaniem treści dla dorosłych w obrazach przy użyciu interfejsu APi przetwarzanie obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ca5f35ab47822d74de556671c38886942d23d9ff
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946281"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718513"
 ---
-# <a name="detect-adult-and-racy-content"></a>Wykrywanie zawartości dla osób dorosłych i erotycznej
+# <a name="detect-adult-content"></a>Wykrywanie treści dla dorosłych
 
-Przetwarzanie obrazów może wykryć dorosłe materiały w obrazach, dzięki czemu deweloperzy mogą ograniczyć wyświetlanie takich obrazów w oprogramowaniu. Flagi zawartości są stosowane z wynikiem między wartością zero a jedną, tak aby deweloperzy mogli interpretować wyniki zgodnie z ich własnymi preferencjami. 
+Przetwarzanie obrazów może wykryć dorosłe materiały w obrazach, dzięki czemu deweloperzy mogą ograniczyć wyświetlanie tych obrazów w oprogramowaniu. Flagi zawartości są stosowane z wynikiem między wartością zero a jedną, tak aby deweloperzy mogli interpretować wyniki zgodnie z ich własnymi preferencjami.
 
 > [!NOTE]
-> Ta funkcja jest również oferowana przez usługę [Content moderator platformy Azure](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) . Zapoznaj się z tą alternatywą dla rozwiązań bardziej rygorystycznych scenariuszy moderowania zawartości, takich jak moderowanie tekstu i przepływy pracy przeglądu przez ludzi.
+> Wiele z tych funkcji jest oferowanych przez usługę [Content moderator platformy Azure](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) . Zapoznaj się z tą alternatywą dla rozwiązań bardziej rygorystycznych scenariuszy moderowania zawartości, takich jak moderowanie tekstu i przepływy pracy przeglądu przez ludzi.
 
 ## <a name="content-flag-definitions"></a>Definicje flag zawartości
 
-Obrazy **dla dorosłych** są definiowane jako te, które są pornograficznej w charakterze i często przedstawiają nagość i seksualne działania. 
+W ramach klasyfikacji "Dorosła" są kilka różnych kategorii:
 
-Obrazy **erotycznej** są definiowane jako obrazy, które mają charakter płciowo sugerujący i często zawierają mniej wyraźną zawartość z Seksem niż obrazy otagowane jako **osoba dorosła**. 
+- Obrazy **dla dorosłych** są definiowane jako te, które są wyraźnie płciowo i często przedstawiają nagość i seks.
+- Obrazy **erotycznej** są definiowane jako obrazy, które mają charakter płciowo sugerujący i często zawierają mniej wyraźną zawartość z Seksem niż obrazy otagowane jako **osoba dorosła**.
+- Obrazy **gorii** są definiowane jako te, które przedstawiają Gore.
 
-## <a name="identify-adult-and-racy-content"></a>Zidentyfikuj zawartość dla dorosłych i erotycznej
+## <a name="use-the-api"></a>Korzystanie z interfejsu API
 
-Interfejs API [analizy](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
+Możesz wykryć zawartość dla dorosłych za pomocą interfejsu API [analizy obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Po dodaniu wartości `Adult` do parametru zapytania **visualFeatures** interfejs API zwraca trzy właściwości logiczne @ no__t-2 @ no__t-3, `isRacyContent` i `isGoryContent` @ no__t-6in jego odpowiedź JSON. Metoda zwraca również odpowiednie właściwości @ no__t-0 @ no__t-1, `racyScore` i `goreScore` @ no__t-4which reprezentuje wyniki zaufania między zerem i jedną dla każdej odpowiedniej kategorii.
 
-Metoda Analizuj obraz zwraca dwie właściwości logiczne, `isAdultContent` a `isRacyContent`w odpowiedzi JSON metody, aby wskazać odpowiednio zawartość dla dorosłych i erotycznej. Metoda zwraca również dwie właściwości `adultScore` i `racyScore`, które reprezentują oceny wiarygodności odpowiednio do identyfikacji zawartości dla dorosłych i erotycznej.
-
-## <a name="next-steps"></a>Następne kroki
-
-Poznaj koncepcje dotyczące [wykrywania zawartości specyficznej dla domeny](concept-detecting-domain-content.md) i [wykrywania](concept-detecting-faces.md)twarzy.
+- [Szybki Start: analizowanie obrazu (zestaw SDK dla platformy .NET)](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [Szybki Start: analizowanie obrazu (interfejs API REST)](./quickstarts/csharp-analyze.md)

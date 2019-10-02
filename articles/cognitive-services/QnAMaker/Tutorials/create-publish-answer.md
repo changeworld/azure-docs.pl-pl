@@ -9,21 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: e5b8cd01a64274e58927a5647897b1f9d86f7c24
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f0888b25258f6a7830df1195995159432b19907d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390867"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802826"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Samouczek: używanie języka C# do tworzenia bazy wiedzy, a następnie odpowiadania na pytanie z bazy wiedzy
 
 Ten samouczek przedstawia sposób programowego tworzenia i publikowania bazy wiedzy, a następnie odpowiadania na pytanie klienta za pomocą bazy wiedzy. 
 
 > [!div class="checklist"]
-> * Tworzenie bazy wiedzy 
+> * Utwórz bazę wiedzy 
 > * Sprawdzanie stanu tworzenia
 > * Uczenie i publikowanie bazy wiedzy
 > * Uzyskiwanie informacji o punkcie końcowym
@@ -41,7 +41,7 @@ To wywołanie narzędzia do szybkiego startu QnA Maker interfejsy API REST:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Najnowsza [**wersja programu Visual Studio Community**](https://www.visualstudio.com/downloads/).
-* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz, wybierz pozycję **Klucze** w obszarze **Zarządzanie zasobami** na pulpicie nawigacyjnym. 
+* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać nazwę klucza i zasobu, wybierz pozycję **Szybki Start** w Azure Portal dla zasobu QNA Maker. 
 
 > [!NOTE] 
 > Pliki kompletnego rozwiązania są dostępne w [repozytorium GitHub **Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
@@ -146,19 +146,19 @@ W przypadku pomyślnego publikowania wywołanie interfejsu API zwraca stan 204 b
 W przypadku wszystkich innych odpowiedzi są one zwracane w niezmienionej postaci.
 
 ## <a name="generating-an-answer"></a>Generowanie odpowiedzi
-Aby uzyskać dostęp do bazy wiedzy w celu wysłania pytania i otrzymania najlepszej odpowiedzi, program potrzebuje _hosta punktu końcowego_ z interfejsu API szczegółów bazy wiedzy oraz _klucza podstawowego punktu końcowego_ z interfejsu API punktów końcowych. Te metody są dodawane w poniższych sekcjach wraz z metodą do generowania odpowiedzi. 
+Aby można było uzyskać dostęp do bazy wiedzy w celu wysłania pytania i uzyskania najlepszej odpowiedzi, program potrzebuje _nazwy zasobu_ z interfejsu API szczegóły KB i _podstawowego klucza punktu końcowego_ z interfejsu API punktów końcowych. Te metody są dodawane w poniższych sekcjach wraz z metodą do generowania odpowiedzi. 
 
 W poniższej tabeli przedstawiono sposób, w jaki dane są używane do konstruowania identyfikatora URI:
 
 |Generowanie szablonu identyfikatora URI odpowiedzi|
 |--|
-|https://**NAZWA HOSTA**.azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
+|https://**nazwę zasobu**. azurewebsites.NET/qnamaker/knowledgebases/**KBID**/generateAnswer|
 
 _Podstawowy punkt końcowy_ jest przekazywany jako nagłówek do uwierzytelniania żądania w celu wygenerowania odpowiedzi:
 
 |Nazwa nagłówka|Wartość nagłówka|
 |--|--|
-|Authorization|`Endpoint` + **podstawowy punkt końcowy**<br>Przykład: `Endpoint xxxxxxx`<br>Zwróć uwagę na odstęp między tekstem `Endpoint` a wartością podstawowego punktu końcowego. 
+|Autoryzacja|`Endpoint` + **podstawowy punkt końcowy**<br>Przykład: `Endpoint xxxxxxx`<br>Zwróć uwagę na odstęp między tekstem `Endpoint` a wartością podstawowego punktu końcowego. 
 
 Treść żądania musi przekazać prawidłowe dane w formacie JSON:
 
@@ -169,7 +169,7 @@ Treść żądania musi przekazać prawidłowe dane w formacie JSON:
 ```
 
 ## <a name="get-kb-details"></a>Pobieranie szczegółów bazy wiedzy
-Dodaj następującą metodę w celu pobrania szczegółów bazy wiedzy. Te szczegóły zawierają nazwę hosta bazy wiedzy. Nazwa hosta to nazwa usługi internetowej platformy Azure dla usługi QnA Maker, wprowadzona podczas tworzenia zasobu usługi QnA Maker. 
+Dodaj następującą metodę w celu pobrania szczegółów bazy wiedzy. Te szczegóły zawierają nazwę zasobu KB, znaną jako `hostName` w poniższym kodzie JSON. Nazwa zasobu to nazwa zasobu QnA Maker wprowadzonego podczas tworzenia zasobu QnA Maker. 
 
 [!code-csharp[Get KB Details](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=260-273 "Add publish method")]
 

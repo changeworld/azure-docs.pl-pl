@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Rozpoznawanie mowy, Java (Android) — usługa mowy'
+title: 'Szybki Start: Rozpoznawanie mowy, Java (Android) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak rozpoznawać mowę w języku Java w systemie Android przy użyciu zestawu Speech SDK
 services: cognitive-services
@@ -10,23 +10,25 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: c9b63685ae73fb4e056c72a640d6c4049e98b8b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2f728231c01056ecb8709f84f13e834ef3618dc8
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559507"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803309"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu Speech SDK
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Przewodnik Szybki start: Rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu Speech SDK
+
+Przewodniki Szybki Start są również dostępne dla [syntezy mowy](quickstart-text-to-speech-java-android.md) i [wirtualnego asystenta głosowego](quickstart-virtual-assistant-java-android.md).
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Z tego artykułu dowiesz się, jak utworzyć aplikację języka Java dla systemu Android przy użyciu zestawu Speech SDK usługi Cognitive Services, aby wykonać transkrypcję mowy na tekst.
-Aplikacja jest oparta na pakiecie Maven zestawu mowy SDK, w wersji 1.6.0 i Android Studio 3,3.
+Aplikacja jest oparta na pakiecie Maven zestawu mowy SDK i Android Studio 3,3.
 Zestaw Speech SDK jest obecnie zgodny z urządzeniami z systemem Android oraz 32 lub 64-bitowymi procesorami ARM i procesorami x86 lub x64 firmy Intel.
 
 > [!NOTE]
-> Aby uzyskać informacje dotyczące zestawu Speech Devices SDK oraz urządzenia Roobo, zobacz [Speech Devices SDK](speech-devices-sdk.md).
+> W przypadku zestawu Speech Devices SDK i urządzenia Roobo zobacz [Speech Devices SDK](speech-devices-sdk.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -56,7 +58,7 @@ Tekst i graficzna reprezentacja interfejsu użytkownika powinny teraz wyglądać
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/res/layout/activity_main.xml)]
 
-## <a name="add-sample-code"></a>Dodaj kod przykładowy
+## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
 1. Otwórz plik źródłowy `MainActivity.java`. Zastąp cały zawarty w tym pliku kod poniższym kodem.
 

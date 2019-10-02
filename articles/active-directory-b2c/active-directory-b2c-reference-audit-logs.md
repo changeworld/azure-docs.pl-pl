@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702819"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802109"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji Azure AD B2C
 
@@ -34,9 +34,9 @@ Kategoria **B2C** w dziennikach inspekcji zawiera następujące typy działań:
 |Typ działania |Opis  |
 |---------|---------|
 |Autoryzacja |Działania dotyczące autoryzacji użytkownika w celu uzyskania dostępu do zasobów B2C (na przykład administratorów uzyskujących dostęp do listy zasad B2C).         |
-|Katalog |Działania związane z atrybutami katalogu pobrane, gdy administrator zaloguje się przy użyciu Azure Portal. |
+|Katalogi |Działania związane z atrybutami katalogu pobrane, gdy administrator zaloguje się przy użyciu Azure Portal. |
 |Aplikacja | Tworzenie, odczytywanie, aktualizowanie i usuwanie (CRUD) operacji na aplikacjach B2C. |
-|Klucz |Operacje CRUD na kluczach przechowywanych w kontenerze kluczy B2C. |
+|Key |Operacje CRUD na kluczach przechowywanych w kontenerze kluczy B2C. |
 |Zasób |CRUD operacji na zasobach B2C. Na przykład zasady i dostawcy tożsamości.
 |Uwierzytelnianie |Weryfikowanie poświadczeń użytkownika i wystawianie tokenów.|
 
@@ -50,7 +50,7 @@ Ten przykładowy obraz z Azure Portal przedstawia dane przechwycone, gdy użytko
 
 Panel szczegóły działania zawiera następujące informacje:
 
-|Sekcja|Pole|Opis|
+|Paragraf|Pole|Opis|
 |-------|-----|-----------|
 | Działanie | Nazwa | Jakie działanie miało miejsce. Na przykład *wydaj id_token do aplikacji*, która zawiera rzeczywiste Logowanie użytkownika. |
 | Zainicjowane przez (aktor) | Obiektu | **Identyfikator obiektu** aplikacji B2C, w której loguje się użytkownik. Ten identyfikator nie jest widoczny w Azure Portal, ale jest dostępny za pośrednictwem interfejsu API Microsoft Graph. |
@@ -64,7 +64,7 @@ Panel szczegóły działania zawiera następujące informacje:
 
 Azure Portal zapewnia dostęp do zdarzeń dziennika inspekcji w dzierżawie Azure AD B2C.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)
 1. Przejdź do katalogu, który zawiera Azure AD B2C dzierżawy, a następnie przejdź do **Azure AD B2C**.
 1. W obszarze **działania** w menu po lewej stronie wybierz pozycję **dzienniki inspekcji**.
 
@@ -112,10 +112,7 @@ Wykonaj następujące kroki, aby zarejestrować aplikację, udziel jej wymagane 
 
 ### <a name="create-client-secret"></a>Utwórz klucz tajny klienta
 
-1. W obszarze **dostęp do interfejsu API**wybierz pozycję **klucze**.
-1. Wprowadź opis klucza w polu **Opis klucza** . Na przykład *klucz dziennika inspekcji*.
-1. Wybierz **okres**ważności, a następnie wybierz pozycję **Zapisz**.
-1. Zapisz **wartość**klucza. Ta wartość jest wymagana do uwierzytelniania w skryptach automatyzacji, takich jak przykładowy skrypt programu PowerShell przedstawiony w dalszej części.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Masz teraz aplikację z wymaganym dostępem do interfejsu API, IDENTYFIKATORem aplikacji i kluczem, którego można użyć w skryptach automatyzacji. Zapoznaj się z sekcją skryptu programu PowerShell w dalszej części tego artykułu, aby zapoznać się z przykładem, jak można pobrać zdarzenia dotyczące aktywności ze skryptem.
 

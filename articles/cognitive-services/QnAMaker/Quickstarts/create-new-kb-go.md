@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie bazy wiedzy — środowisko REST, Go — QnA Maker'
+title: 'Szybki start: tworzenie bazy wiedzy — środowisko REST, Go — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Ten oparty na protokole REST przewodnik Szybki start dla języka Go zawiera omówienie programowego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która będzie wyświetlana na pulpicie nawigacyjnym platformy Azure w ramach konta interfejsu API usługi Cognitive Services.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: a6ee10c998af564630ae1aefd01ec2f4e360abf8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8c96bea6fc55d45a7e2d790f355f6fe19323029d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563053"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803456"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Szybki start: Tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Go
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Go
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API. 
 
@@ -25,10 +25,14 @@ Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 * [Tworzenie bazy wiedzy](https://go.microsoft.com/fwlink/?linkid=2092179)
 * [Pobieranie szczegółów operacji](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Środowisko Go w wersji 1.10.1](https://golang.org/dl/)
-* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz, wybierz pozycję **Klucze** w obszarze **Zarządzanie zasobami** na pulpicie nawigacyjnym. 
+* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal.
+
+[Przykładowy kod](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go) jest dostępny w repozytorium GitHub dla QNA Maker za pomocą języka go.
 
 ## <a name="create-a-knowledge-base-go-file"></a>Tworzenie pliku Go bazy wiedzy
 

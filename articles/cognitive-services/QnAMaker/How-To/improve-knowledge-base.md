@@ -8,16 +8,16 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab4447c8c07f8e8315c0258cc3254e5272ab7582
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: e605f2ab0e79fa3d7d3ee3735f47776654566cb6
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272435"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802328"
 ---
-# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Korzystanie z usługi Active Learning w celu ulepszania bazy wiedzy
 
 Usługa Active Learning pozwala ulepszyć jakość bazy wiedzy, sugerując alternatywne pytania na podstawie przesłanych przez użytkowników do pary pytań i odpowiedzi. Te sugestie można przejrzeć, dodając je do istniejących pytań lub odrzucając je. 
 
@@ -71,7 +71,7 @@ Aktywna nauka jest domyślnie wyłączona. Włącz tę opcję, aby zobaczyć sug
 
 1. Znajdź usługę QnA Maker a następnie Przełącz **aktywną naukę**. 
 
-    [![Na stronie Ustawienia usługi Przełącz funkcję Active Learning. Jeśli nie możesz przełączać tej funkcji, może być konieczne uaktualnienie usługi.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [![On stronie ustawień usługi, przełącz funkcję Active Learning. Jeśli nie możesz przełączać tej funkcji, może być konieczne uaktualnienie usługi.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
     > Dokładna wersja na powyższym obrazie jest pokazywana tylko jako przykład. Twoja wersja może być inna. 
@@ -84,15 +84,15 @@ Usługa Active Learning zmienia bazę wiedzy lub Search Service po zatwierdzeniu
 
 1. Aby wyświetlić sugerowane pytania, na stronie **Edytowanie** bazy wiedzy wybierz opcję **Wyświetl opcje**, a następnie wybierz pozycję **Pokaż aktywne sugestie dotyczące uczenia**. 
 
-    [![W sekcji Edycja portalu wybierz pozycję Pokaż sugestie, aby zobaczyć alternatywy dla nowych pytań.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [@no__t — 1On sekcję Edycja portalu, wybierz pozycję Pokaż sugestie, aby zobaczyć alternatywy dla nowych pytań.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. Przefiltruj bazę wiedzy przy użyciu par pytań i odpowiedzi, aby wyświetlić tylko sugestie, wybierając pozycję **Filtruj według sugestii**.
 
-    [![Użyj przełącznika Filtruj według sugestii, aby wyświetlić tylko rozwiązania alternatywne dla sugerowanych pytań.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![Use przełącznik Filtruj według sugestii, aby wyświetlić tylko rozwiązania alternatywne dla sugerowanych pytań.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Każda para QNA sugeruje nowe alternatywy pytania ze znacznikiem `✔` wyboru,,,,, aby zaakceptować pytanie `x` lub aby odrzucić sugestie. Zaznacz znacznik wyboru, aby dodać pytanie. 
+1. Każda para QnA sugeruje nowe alternatywy pytania ze znacznikiem wyboru, `✔`, aby zaakceptować pytanie lub `x`, aby odrzucić sugestie. Zaznacz znacznik wyboru, aby dodać pytanie. 
 
-    [![Zaznacz lub Odrzuć zaproponowane pytania dotyczące aktywnego uczenia, zaznaczając zielony znacznik wyboru lub czerwony znacznik usuwający.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![Select lub odrzucić alternatywną wiedzę dotyczącą pytania, wybierając zielony znacznik wyboru lub czerwony znacznik Usuń.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     Możesz dodawać lub usuwać _wszystkie sugestie_ , wybierając pozycję **Dodaj wszystko** lub **Odrzuć wszystko** na kontekstowym pasku narzędzi.
 
@@ -109,7 +109,7 @@ Usługa Active Learning zmienia bazę wiedzy lub Search Service po zatwierdzeniu
 
 Bot lub inna aplikacja kliencka powinna używać następującego przepływu architektury do korzystania z usługi Active Learning:
 
-* Bot [Pobiera odpowiedź z bazy wiedzy](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) z interfejsem API GenerateAnswer przy użyciu `top` właściwości, aby uzyskać wiele odpowiedzi.
+* Bot [Pobiera odpowiedź z bazy wiedzy](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) z interfejsem API GenerateAnswer przy użyciu właściwości `top`, aby uzyskać wiele odpowiedzi.
 * Bot określa jawną opinię:
     * Korzystając z własnej [niestandardowej logiki biznesowej](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user), odfiltruj niskie wyniki.
     * W bot lub aplikacji klienta Wyświetl listę możliwych odpowiedzi dla użytkownika i uzyskaj odpowiedź wybraną przez użytkownika.
@@ -118,7 +118,7 @@ Bot lub inna aplikacja kliencka powinna używać następującego przepływu arch
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Użyj właściwości Top w żądaniu GenerateAnswer, aby uzyskać kilka pasujących odpowiedzi
 
-Podczas przesyłania pytania do QNA Maker na potrzeby odpowiedzi `top` Właściwość treści JSON ustawia liczbę odpowiedzi do zwrócenia. 
+Podczas przesyłania pytania do QnA Maker na potrzeby odpowiedzi Właściwość `top` treści JSON ustawia liczbę odpowiedzi do zwrócenia. 
 
 ```json
 {
@@ -130,7 +130,7 @@ Podczas przesyłania pytania do QNA Maker na potrzeby odpowiedzi `top` Właściw
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>Korzystanie z właściwości Score wraz z logiką biznesową w celu uzyskania listy odpowiedzi na potrzeby wyświetlania użytkownika
 
-Gdy aplikacja kliencka (na przykład Chat bot) otrzymuje odpowiedź, zwracane są 3 pierwsze pytania. Użyj właściwości `score` , aby przeanalizować bliskość między wynikami. Ten zakres bliskości jest określany przez własną logikę biznesową. 
+Gdy aplikacja kliencka (na przykład Chat bot) otrzymuje odpowiedź, zwracane są 3 pierwsze pytania. Użyj właściwości `score`, aby przeanalizować bliskość między wynikami. Ten zakres bliskości jest określany przez własną logikę biznesową. 
 
 ```json
 {
@@ -175,7 +175,7 @@ Aplikacja kliencka wyświetli pytania z opcją dla użytkownika, aby wybrać _po
 
 Gdy użytkownik wybierze jedno z istniejących pytań, aplikacja kliencka wysyła wybór użytkownika jako opinię za pomocą interfejsu API pouczenia QnA Maker. Ta opinia kończy aktywną pętlę opinii szkoleniowych. 
 
-## <a name="train-api"></a>Interfejs API trenowania
+## <a name="train-api"></a>Interfejs API uczenia
 
 Aktywne opinie dotyczące uczenia są wysyłane do QnA Maker za pomocą żądania POST interfejsu API uczenia. Podpis interfejsu API to:
 
@@ -186,22 +186,22 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Właściwość żądania HTTP|Name|Type|Cel|
+|Właściwość żądania HTTP|Nazwa|Typ|Cel|
 |--|--|--|--|
-|Parametr trasy adresu URL|Identyfikator bazy wiedzy|ciąg|Identyfikator GUID bazy wiedzy.|
-|Poddomena hosta|Nazwa zasobu QnAMaker|ciąg|Nazwa hosta QnA Maker w ramach subskrypcji platformy Azure. Jest on dostępny na stronie Ustawienia po opublikowaniu bazy wiedzy. |
-|nagłówek|Content-Type|ciąg|Typ nośnika treści wysyłanej do interfejsu API. Wartość domyślna to:`application/json`|
-|nagłówek|Authorization|ciąg|Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Parametr trasy adresu URL|Identyfikator bazy wiedzy|string|Identyfikator GUID bazy wiedzy.|
+|Niestandardowa poddomena|Nazwa zasobu QnAMaker|string|Nazwa zasobu jest używana jako niestandardowa poddomena dla QnA Maker. Jest on dostępny na stronie Ustawienia po opublikowaniu bazy wiedzy. Jest on wyświetlany jako `host`.|
+|nagłówek|Typ zawartości|string|Typ nośnika treści wysyłanej do interfejsu API. Wartość domyślna to: `application/json`|
+|nagłówek|Autoryzacja|string|Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Opublikuj treść|Obiekt JSON|JSON|Opinie szkoleniowe|
 
 Treść JSON ma kilka ustawień:
 
-|Właściwość treści JSON|Type|Cel|
+|Właściwość treści JSON|Typ|Cel|
 |--|--|--|--|
-|`feedbackRecords`|array|Lista opinii.|
-|`userId`|ciąg|Identyfikator użytkownika osoby akceptującej sugerowane pytania. Format identyfikatora użytkownika jest aktualny. Na przykład adres e-mail może być prawidłowym IDENTYFIKATORem użytkownika w danej architekturze. Opcjonalny.|
-|`userQuestion`|ciąg|Dokładny tekst zapytania użytkownika. Wymagany.|
-|`qnaID`|number|Identyfikator pytania znaleziony w [odpowiedzi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties). |
+|`feedbackRecords`|tablica|Lista opinii.|
+|`userId`|string|Identyfikator użytkownika osoby akceptującej sugerowane pytania. Format identyfikatora użytkownika jest aktualny. Na przykład adres e-mail może być prawidłowym IDENTYFIKATORem użytkownika w danej architekturze. Opcjonalny.|
+|`userQuestion`|string|Dokładny tekst zapytania użytkownika. Wymagany.|
+|`qnaID`|liczba|Identyfikator pytania znaleziony w [odpowiedzi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
 Przykładowa treść JSON wygląda następująco:
 
@@ -221,7 +221,7 @@ Pomyślna odpowiedź zwraca stan 204 i bez treści odpowiedzi JSON.
 
 ### <a name="batch-many-feedback-records-into-a-single-call"></a>Tworzenie wsadowe wielu rekordów opinii w jednym wywołaniu
 
-W aplikacji po stronie klienta, na przykład bot, można przechowywać dane, a następnie wysyłać wiele rekordów w jednej treści JSON w `feedbackRecords` tablicy. 
+W aplikacji po stronie klienta, na przykład bot, można przechowywać dane, a następnie wysyłać wiele rekordów w jednej treści JSON w tablicy `feedbackRecords`. 
 
 Przykładowa treść JSON wygląda następująco:
 
@@ -298,14 +298,14 @@ public class FeedbackRecord
 /// <summary>
 /// Method to call REST-based QnAMaker Train API for Active Learning
 /// </summary>
-/// <param name="host">Endpoint host of the runtime</param>
+/// <param name="endpoint">Endpoint URI of the runtime</param>
 /// <param name="FeedbackRecords">Feedback records train API</param>
 /// <param name="kbId">Knowledgebase Id</param>
 /// <param name="key">Endpoint key</param>
 /// <param name="cancellationToken"> Cancellation token</param>
-public async static void CallTrain(string host, FeedbackRecords feedbackRecords, string kbId, string key, CancellationToken cancellationToken)
+public async static void CallTrain(string endpoint, FeedbackRecords feedbackRecords, string kbId, string key, CancellationToken cancellationToken)
 {
-    var uri = host + "/knowledgebases/" + kbId + "/train/";
+    var uri = endpoint + "/knowledgebases/" + kbId + "/train/";
 
     using (var client = new HttpClient())
     {
@@ -368,9 +368,9 @@ async callTrain(stepContext){
 
 ## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Usługa Active Learning jest zapisywana w wyeksportowanej bazie wiedzy
 
-Gdy aplikacja ma aktywne uczenie i eksportujesz aplikację, `SuggestedQuestions` kolumna w pliku TSV zachowuje aktywne dane szkoleniowe. 
+Gdy aplikacja ma aktywną naukę i eksportujesz aplikację, kolumna `SuggestedQuestions` w pliku TSV zachowuje aktywne dane szkoleniowe. 
 
-Kolumna jest obiektem JSON informacji o niejawnych, `autosuggested`i jawnych `usersuggested` informacjach zwrotnych. `SuggestedQuestions` Przykładem tego obiektu JSON dla pojedynczego pytania `help` przesłanego przez użytkownika jest:
+Kolumna `SuggestedQuestions` jest obiektem JSON informacji o niejawnej, `autosuggested` i jawnym `usersuggested`. Przykładem tego obiektu JSON dla pojedynczego pytania przesłanego przez użytkownika `help` jest:
 
 ```JSON
 [
@@ -390,15 +390,15 @@ Kolumna jest obiektem JSON informacji o niejawnych, `autosuggested`i jawnych `us
 ```
 
 Możesz również użyć interfejsu API pobierania zmian, aby przejrzeć te zmiany, używając protokołu REST lub dowolnego z zestawów SDK opartych na języku:
-* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+* [INTERFEJS API REST](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [ZESTAW SDK PLATFORMY .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
 Po ponownym zaimportowaniu tej aplikacji aktywna nauka nadal zbiera informacje i zaleca sugestie dotyczące bazy wiedzy. 
 
 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
 Najlepsze rozwiązania dotyczące korzystania z usługi Active Learning można znaleźć w temacie [Best Practices](../Concepts/best-practices.md#active-learning).
 

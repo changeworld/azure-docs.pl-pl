@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Przetwarzanie obrazów Biblioteka kliencka dla środowiska Node. js | Microsoft Docs'
+title: 'Szybki Start: przetwarzanie obrazówa Biblioteka kliencka dla środowiska Node. js | Microsoft Docs'
 description: Wprowadzenie do biblioteki klienta przetwarzanie obrazów dla środowiska Node. js...
 services: cognitive-services
 author: PatrickFarley
@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/18/2019
+ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: bcce9c53e2618f9501dde63905fb834bce7985ee
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: fdf2b132b5d07b2b12c679cb436968c6fb19887e
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204506"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719509"
 ---
-# <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Szybki start: Przetwarzanie obrazów Biblioteka kliencka dla środowiska Node. js
+# <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Szybki Start: przetwarzanie obrazówa Biblioteka kliencka dla środowiska Node. js
 
 Rozpocznij pracę z biblioteką klienta przetwarzanie obrazów dla środowiska Node. js. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań. 
 
@@ -25,7 +25,7 @@ Użyj przetwarzanie obrazów biblioteki klienta dla środowiska Node. js, aby:
 * [Analizowanie obrazu](#analyze-an-image)
 * [Odczytaj tekst drukowany i odręczny](#read-printed-and-handwritten-text)
 
-[](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [Przykłady](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) pakietu | [kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision)[](https://www.npmjs.com/package/azure-cognitiveservices-computervision)źródłowego biblioteki dokumentacji referencyjnej (npm) | 
+[Dokumentacja referencyjna](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [pakiet (npm)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [przykładów](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -41,7 +41,7 @@ Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azur
 * Uzyskaj [klucz wersji próbnej](https://azure.microsoft.com/try/cognitive-services/#decision) ważny przez siedem dni bezpłatnie. Po utworzeniu konta będzie ono dostępne w [witrynie sieci Web systemu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Wyświetl zasób na [Azure Portal](https://portal.azure.com/).
 
-Po otrzymaniu klucza z subskrypcji próbnej lub zasobu należy [utworzyć zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla adresu URL klucza i punktu końcowego, `COMPUTER_VISION_SUBSCRIPTION_KEY` nazwanych i `COMPUTER_VISION_ENDPOINT` odpowiednio.
+Po otrzymaniu klucza z subskrypcji próbnej lub zasobu [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla adresu URL klucza i punktu końcowego o nazwie `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
  
 ### <a name="create-a-new-nodejs-application"></a>Tworzenie nowej aplikacji Node.js
 
@@ -51,7 +51,7 @@ W oknie konsoli (na przykład cmd, PowerShell lub bash) Utwórz nowy katalog dla
 mkdir myapp && cd myapp
 ```
 
-Uruchom polecenie, aby utworzyć aplikację Node `package.json` z plikiem. `npm init` 
+Uruchom polecenie `npm init`, aby utworzyć aplikację Node z plikiem `package.json`. 
 
 ```console
 npm init
@@ -59,13 +59,13 @@ npm init
 
 ### <a name="install-the-client-library"></a>Zainstaluj bibliotekę kliencką
 
-Zainstaluj pakiety `azure-cognitiveservices-computervision`inpm: `ms-rest-azure`
+Zainstaluj `ms-rest-azure` i `azure-cognitiveservices-computervision` NPM:
 
 ```console
 npm install azure-cognitiveservices-computervision ms-rest-azure
 ```
 
-`package.json` Plik aplikacji zostanie zaktualizowany z zależnościami.
+Plik `package.json` aplikacji zostanie zaktualizowany z zależnościami.
 
 ### <a name="prepare-the-nodejs-script"></a>Przygotowywanie skryptu Node. js
 
@@ -73,7 +73,7 @@ Utwórz nowy plik, *index. js*i otwórz go w edytorze tekstu. Dodaj następując
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imports)]
 
-Następnie zdefiniuj funkcję `computerVision` i Zadeklaruj serię asynchroniczną z funkcją podstawową i funkcją wywołania zwrotnego. Kod szybkiego startu zostanie dodany do funkcji podstawowej i zostanie wywołana `computerVision` w dolnej części skryptu.
+Następnie zdefiniuj funkcję `computerVision` i Zadeklaruj serię asynchroniczną z funkcją podstawową i funkcją wywołania zwrotnego. Kod szybkiego startu zostanie dodany do funkcji podstawowej i Wywołaj `computerVision` u dołu skryptu.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
 
@@ -83,7 +83,7 @@ Następnie zdefiniuj funkcję `computerVision` i Zadeklaruj serię asynchroniczn
 
 Poniższe klasy i interfejsy obsługują niektóre główne funkcje zestawu SDK przetwarzanie obrazów Node. js.
 
-|Name|Opis|
+|Nazwa|Opis|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Ta klasa jest wymagana dla wszystkich funkcji przetwarzanie obrazów. Utwórz wystąpienie go przy użyciu informacji o subskrypcji i użyj go do wykonania większości operacji na obrazie.|
 |[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| To Wyliczenie definiuje różne typy analizy obrazów, które można wykonać przy użyciu standardowej operacji analizy. Należy określić zestaw wartości **VisualFeatureTypes** w zależności od potrzeb. |
@@ -131,7 +131,7 @@ Poniższy kod pobiera wykrytą kategorię obrazu. Aby uzyskać więcej informacj
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories)]
 
-Zdefiniuj funkcję `formatCategories`pomocnika:
+Zdefiniuj funkcję pomocnika `formatCategories`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories_format)]
 
@@ -141,7 +141,7 @@ Poniższy kod pobiera zestaw wykrytych tagów z obrazu. Aby uzyskać więcej inf
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tags)]
 
-Zdefiniuj funkcję `formatTags`pomocnika:
+Zdefiniuj funkcję pomocnika `formatTags`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tagsformat)]
 
@@ -151,7 +151,7 @@ Poniższy kod wykrywa typowe obiekty w obrazie i drukuje je do konsoli programu.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objects)]
 
-Zdefiniuj funkcję `formatRectObjects`pomocnika:
+Zdefiniuj funkcję pomocnika `formatRectObjects`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objectformat)]
 
@@ -167,13 +167,13 @@ Poniższy kod zwraca wykryte twarze na obrazie ze współrzędnymi prostokątów
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_faces)]
 
-Zdefiniuj funkcję `formatRectFaces`pomocnika:
+Zdefiniuj funkcję pomocnika `formatRectFaces`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
 
-### <a name="detect-adult-or-racy-content"></a>Wykrywanie zawartości dla dorosłych lub erotycznej
+### <a name="detect-adult-racy-or-gory-content"></a>Wykrywanie zawartości dla dorosłych, erotycznej lub gorii
 
-Poniższy kod drukuje wykrytą obecność zawartości dla dorosłych lub erotycznej w obrazie. Aby uzyskać więcej informacji [, zobacz zawartość dla dorosłych i erotycznej](../concept-detecting-adult-content.md) .
+Poniższy kod drukuje wykryte obecność treści dla dorosłych w obrazie. Aby uzyskać więcej informacji, zobacz [erotycznej, gorii Content](../concept-detecting-adult-content.md) .
 
 Zdefiniuj adres URL obrazu do użycia:
 
@@ -189,7 +189,7 @@ Poniższy kod drukuje wykryte atrybuty koloru w obrazie, takie jak kolory dominu
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_colors)]
 
-Zdefiniuj funkcję `printColorScheme` pomocnika, aby drukować szczegóły schematu kolorów w konsoli programu.
+Zdefiniuj funkcję pomocnika `printColorScheme`, aby wydrukować szczegóły schematu kolorów do konsoli programu.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_colors_print)]
 
@@ -205,17 +205,17 @@ Poniższy kod analizuje dane dotyczące wykrytych punktów orientacyjnych w obra
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_landmarks)]
 
-Zdefiniuj funkcję `formatRectDomain` pomocnika, aby przeanalizować dane lokalizacji dotyczące wykrytych punktów orientacyjnych.
+Zdefiniuj funkcję pomocnika `formatRectDomain`, aby przeanalizować dane lokalizacji dotyczące wykrytych punktów orientacyjnych.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_landmarks_rect)]
 
 ### <a name="get-the-image-type"></a>Pobierz typ obrazu
 
-Poniższy kod drukuje informacje o typie obrazu&mdash;, niezależnie od tego, czy jest to obiekt clipart czy rysowanie liniowe.
+Poniższy kod drukuje informacje o typie obrazu @ no__t-0whether, który jest obiektem clipart lub rysowaniem linii.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype)]
 
-Zdefiniuj funkcję `describeType`pomocnika:
+Zdefiniuj funkcję pomocnika `describeType`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
@@ -234,21 +234,21 @@ Zapisz odwołanie do adresu URL obrazów, z których ma zostać wyodrębniony te
 
 ### <a name="call-the-recognize-api"></a>Wywoływanie interfejsu API rozpoznawania
 
-Dodaj poniższy kod, który wywołuje `recognizeText` funkcję dla danego obrazu.
+Dodaj poniższy kod, który wywołuje funkcję `recognizeText` dla danego obrazu.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-`recognizeText` Zdefiniuj funkcję. Powoduje to wywołanie metody **recognizeText** w obiekcie Client, która zwraca identyfikator operacji i uruchamia proces asynchroniczny w celu odczytania zawartości obrazu. Następnie używa identyfikatora operacji do sprawdzenia operacji w okresach jednego sekundy do momentu zwrócenia wyników. Następnie zwraca wyodrębnione wyniki.
+Zdefiniuj funkcję `recognizeText`. Powoduje to wywołanie metody **recognizeText** w obiekcie Client, która zwraca identyfikator operacji i uruchamia proces asynchroniczny w celu odczytania zawartości obrazu. Następnie używa identyfikatora operacji do sprawdzenia operacji w okresach jednego sekundy do momentu zwrócenia wyników. Następnie zwraca wyodrębnione wyniki.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-Następnie zdefiniuj funkcję `printRecText`pomocnika, która drukuje wyniki operacji rozpoznawania w konsoli programu.
+Następnie zdefiniuj funkcję pomocnika `printRecText`, która drukuje wyniki operacji rozpoznawania w konsoli programu.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Uruchom aplikację za pomocą `node` polecenia w pliku szybkiego startu.
+Uruchom aplikację za pomocą polecenia `node` w pliku szybkiego startu.
 
 ```console
 node index.js

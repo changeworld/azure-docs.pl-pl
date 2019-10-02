@@ -1,20 +1,20 @@
 ---
-title: 'Samouczek usługi Azure Cosmos DB: tworzenie, wykonywanie zapytań i przechodzenie w konsoli Apache TinkerPops Gremlin'
-description: Przewodnik Szybki start usługi Azure Cosmos DB opisujący tworzenie wierzchołków, krawędzi i zapytań za pomocą interfejsu API języka Gremlin w usłudze Azure Cosmos DB.
+title: 'Samouczek Azure Cosmos DB: Tworzenie, wykonywanie zapytań i przechodzenie w konsoli programu Apache TinkerPops Gremlin'
+description: Azure Cosmos DB przewodniku szybki start do tworzenia wierzchołków, krawędzi i zapytań przy użyciu interfejsu API Azure Cosmos DB Gremlin.
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: cb365517c581ebf83026046f385496afd3e28d7f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3f25bbbbc8b3f34bdb89ba8797b042826a88ca8d
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261583"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815966"
 ---
-# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Szybki start: Tworzenie, wykonywanie zapytań i przechodzenie Azure Cosmos DB bazy danych programu Graph przy użyciu konsoli Gremlin
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Szybki Start: Tworzenie, wykonywanie zapytań i przechodzenie Azure Cosmos DB bazy danych grafów przy użyciu konsoli Gremlin
 
 > [!div class="op_single_selector"]
 > * [Konsola Gremlin](create-graph-gremlin-console.md)
@@ -22,51 +22,51 @@ ms.locfileid: "71261583"
 > * [Java](create-graph-java.md)
 > * [Node.js](create-graph-nodejs.md)
 > * [Python](create-graph-python.md)
-> * [PHP](create-graph-php.md)
+> * [Obsługa](create-graph-php.md)
 >  
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
+Azure Cosmos DB to globalnie dystrybuowana wielomodelowa usługa bazy danych firmy Microsoft. Można szybko tworzyć i badać bazy danych dokumentów, kluczy/wartości i grafów, a wszystkie korzyści wynikające z dystrybucji globalnej i możliwości skalowania poziomego w ramach podstawy Azure Cosmos DB. 
 
-Ten przewodnik Szybki Start przedstawia sposób Azure Cosmos DB tworzenia konta [interfejsu API Gremlin](graph-introduction.md) , bazy danych i grafu (kontenera) przy użyciu Azure Portal, a następnie używania [konsoli Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z platformy [Apache TinkerPop](https://tinkerpop.apache.org) do pracy z danymi interfejsu API programu Gremlin. W tym samouczku utworzysz wierzchołki i krawędzie oraz wykonasz względem nich zapytania, zaktualizujesz właściwość wierzchołka, przejdziesz graf i usuniesz wierzchołek.
+Ten przewodnik Szybki Start przedstawia sposób Azure Cosmos DB tworzenia konta [interfejsu API Gremlin](graph-introduction.md) , bazy danych i grafu (kontenera) przy użyciu Azure Portal, a następnie używania [konsoli Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z platformy [Apache TinkerPop](https://tinkerpop.apache.org) do pracy z danymi interfejsu API programu Gremlin. W tym samouczku utworzysz wierzchołki i krawędzie zapytania, zaktualizujesz Właściwość wierzchołka, wierzchołki zapytań, przechodzą na wykres i upuszczasz wierzchołek.
 
-![Usługa Azure Cosmos DB w konsoli Apache Gremlin](./media/create-graph-gremlin-console/gremlin-console.png)
+![Azure Cosmos DB z poziomu konsoli Apache Gremlin](./media/create-graph-gremlin-console/gremlin-console.png)
 
-Konsola Gremlin jest oparta na języku Groovy/Java i działa w systemach Linux, Mac i Windows. Możesz ją pobrać z [witryny Apache TinkerPop](https://tinkerpop.apache.org/downloads.html).
+Konsola Gremlin jest oparta na groovy/Java i działa w systemach Linux, Mac i Windows. Można go pobrać z [witryny Apache TinkerPop](https://tinkerpop.apache.org/downloads.html).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz dysponować subskrypcją platformy Azure, aby utworzyć konto usługi Azure Cosmos DB na potrzeby tego przewodnika Szybki start.
+Musisz mieć subskrypcję platformy Azure, aby utworzyć konto Azure Cosmos DB dla tego przewodnika Szybki Start.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Należy również zainstalować [konsolę Gremlin](https://tinkerpop.apache.org/). Użyj wersji 3.2.5 lub nowszej. (Aby używać konsoli Gremlin w systemie Windows, musisz zainstalować [środowisko uruchomieniowe języka Java](https://www.oracle.com/technetwork/java/javase/overview/index.html)).
+Należy również zainstalować [konsolę Gremlin](https://tinkerpop.apache.org/). Użyj wersji 3.2.5 lub nowszej. (Aby użyć konsoli Gremlin w systemie Windows, należy zainstalować [środowisko uruchomieniowe języka Java](https://www.oracle.com/technetwork/java/javase/overview/index.html)).
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
 
 [!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
-## <a name="add-a-graph"></a>Dodawanie grafu
+## <a name="add-a-graph"></a>Dodawanie wykresu
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a id="ConnectAppService"></a>Łączenie z usługą aplikacji
-1. Przed uruchomieniem konsoli Gremlin utwórz lub zmodyfikuj plik konfiguracji remote-secure.yaml w katalogu `apache-tinkerpop-gremlin-console-3.2.5/conf`.
-2. Wypełnij ustawienia konfiguracji *host*, *port*, *username*, *password*, *connectionPool* i *serializer* zgodnie z poniższą tabelą:
+## <a id="ConnectAppService"></a>Nawiązywanie połączenia z usługą App Service
+1. Przed uruchomieniem konsoli Gremlin Utwórz lub zmodyfikuj plik konfiguracji Remote-Secure. YAML w katalogu `apache-tinkerpop-gremlin-console-3.2.5/conf`.
+2. Wypełnij ustawienia konfiguracji *host*, *port*, *username*, *Password*, *connectionPool*i *Serializer* zdefiniowane w poniższej tabeli:
 
     Ustawienie|Sugerowana wartość|Opis
     ---|---|---
-    hosty|[*account-name*.gremlin.cosmos.azure.com]|Zobacz poniższy zrzut ekranu. Jest to wartość identyfikatora URI Gremlin na stronie Przegląd w witrynie Azure Portal w nawiasach kwadratowych z usuniętym fragmentem końcowym :443/.
-    port|443|Ustaw wartość 443.
-    nazwa użytkownika|*Twoja nazwa użytkownika*|Zasób w postaci `/dbs/<db>/colls/<coll>`, gdzie `<db>` jest nazwą bazy danych, a `<coll>` oznacza nazwę kolekcji.
-    hasło|*Twój klucz podstawowy*| Zobacz drugi zrzut ekranu poniżej. To jest klucz podstawowy, który można pobrać ze strony Klucze w witrynie Azure Portal, z pola Klucz podstawowy. Aby skopiować wartość, użyj przycisku kopiowania po lewej stronie pola.
+    Pracując|[*nazwa konta*. **Gremlin**. Cosmos.Azure.com]|Zobacz poniższy zrzut ekranu. Jest to wartość **identyfikatora URI Gremlin** na stronie Przegląd Azure Portal w nawiasach kwadratowych z końcowym: 443/usunięty. Uwaga: Pamiętaj, aby użyć wartości Gremlin, a **nie** identyfikatora URI kończącego się na [*account-name*. Documents.Azure.com], co prawdopodobnie spowoduje, że "host nie odpowiedział w odpowiednim czasie" podczas próby wykonania zapytań Gremlin w późniejszym czasie. 
+    port|443|Ustaw wartość na 443.
+    uż|*Twoja nazwa użytkownika*|Zasób formularza `/dbs/<db>/colls/<coll>` gdzie `<db>` to nazwa bazy danych, a `<coll>` to nazwa kolekcji.
+    Hasło|*Klucz podstawowy*| Zobacz drugi zrzut ekranu poniżej. Jest to klucz podstawowy, który można pobrać ze strony klucze Azure Portal w polu klucz podstawowy. Użyj przycisku kopiowania po lewej stronie pola, aby skopiować wartość.
     connectionPool|{enableSsl: true}|Ustawienie puli połączeń protokołu SSL.
-    serializer|{ className: org.apache.tinkerpop.gremlin.<br>Driver. SQL. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Ustaw tę wartość i usuń wszystkie podziały wiersza `\n` podczas wklejania w wartości.
+    Serializator|{className: org. Apache. tinkerpop. Gremlin.<br>Driver. SQL. GraphSONMessageSerializerV2d0,<br> Konfiguracja: {serializeResultToString: true}}|Ustaw tę wartość i Usuń wszystkie @no__t podziały wierszy podczas wklejania wartości.
 
-    W przypadku wartości hosta skopiuj wartość **Identyfikator URI Gremlin** ze strony **Przegląd**: ![Wyświetlanie i kopiowanie wartości Identyfikator URI Gremlin na stronie Przegląd w witrynie Azure Portal](./media/create-graph-gremlin-console/gremlin-uri.png)
+    W przypadku wartości hosts skopiuj wartość **Identyfikator URI Gremlin** ze strony **Przegląd** : ![VIEW i skopiuj wartość identyfikator URI Gremlin na stronie Przegląd w Azure Portal @ no__t-3
 
-    W przypadku wartości hasła skopiuj wartość **Klucz podstawowy** ze strony **Klucze**: ![Wyświetlanie i kopiowanie klucza podstawowego w witrynie Azure Portal na stronie Klucze](./media/create-graph-gremlin-console/keys.png)
+    W polu wartość hasła Skopiuj **klucz podstawowy** ze strony **klucze** : ![View i skopiuj klucz podstawowy w Azure Portal, Strona klucze @ no__t-3
 
-Zdalny plik secure.yaml powinien wyglądać następująco:
+Plik Remote-Secure. YAML powinien wyglądać następująco:
 
 ```
 hosts: [your_database_server.gremlin.cosmos.azure.com] 
@@ -79,22 +79,22 @@ connectionPool: {
 serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
 ```
 
-pamiętaj, aby wartość parametru hosta umieścić w nawiasach kwadratowych []. 
+Pamiętaj, aby zawinąć wartość parametru hosty w nawiasy kwadratowe []. 
 
-1. W terminalu uruchom `bin/gremlin.bat` lub `bin/gremlin.sh`, aby uruchomić [Konsolę Gremlin](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/).
-1. W terminalu uruchom `:remote connect tinkerpop.server conf/remote-secure.yaml` w celu nawiązania połączenia z usługą aplikacji.
+1. W terminalu uruchom `bin/gremlin.bat` lub `bin/gremlin.sh`, aby uruchomić [konsolę Gremlin](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/).
+1. W terminalu uruchom `:remote connect tinkerpop.server conf/remote-secure.yaml`, aby nawiązać połączenie z usługą App Service.
 
     > [!TIP]
-    > Jeśli zostanie wyświetlony błąd `No appenders could be found for logger`, upewnij się, że zaktualizowano wartość serializatora w pliku remote-secure.yaml, zgodnie z opisem w kroku 2. 
+    > Jeśli wystąpi błąd `No appenders could be found for logger` upewnij się, że Zaktualizowano wartość serializatora w pliku Remote-Secure. YAML, zgodnie z opisem w sekcji Krok 2. Jeśli konfiguracja jest poprawna, to ostrzeżenie można bezpiecznie zignorować, ponieważ nie ma to wpływu na korzystanie z konsoli programu. 
 
-1. Następnie uruchom `:remote console`, aby przekierować wszystkie polecenia konsoli na serwer zdalny.
+1. Następne uruchomienie `:remote console`, aby przekierować wszystkie polecenia konsoli do serwera zdalnego.
 
    > [!NOTE]
-   > Jeśli nie uruchomisz polecenia `:remote console`, ale chcesz przekierować wszystkie polecenia konsoli na serwer zdalny, dodaj do polecenia prefiks `:>`, na przykład uruchom polecenie jako `:> g.V().count()`. Ten prefiks jest częścią polecenia i jest to ważne, gdy konsola Gremlin jest używana z usługą Azure Cosmos DB. Pominięcie tego prefiksu oznacza, że konsola ma wykonać polecenia lokalnie, często względem grafu w pamięci. Użycie tego prefiksu `:>` powoduje wykonanie polecenia zdalnego przez konsolę, w tym przypadku względem usługi Azure Cosmos DB (emulatora localhost lub wystąpienia platformy Azure).
+   > Jeśli nie uruchomisz polecenia `:remote console`, ale chcesz przekierować wszystkie polecenia konsoli do serwera zdalnego, należy prefiksować polecenie z `:>`, na przykład należy uruchomić polecenie jako `:> g.V().count()`. Ten prefiks jest częścią polecenia i jest ważne w przypadku korzystania z konsoli Gremlin z Azure Cosmos DB. Pominięcie tego prefiksu nakazuje konsoli wykonywanie polecenia lokalnie, często w odniesieniu do grafu w pamięci. Za pomocą tego prefiksu `:>` instruuje konsolę do wykonania polecenia zdalnego, w tym przypadku względem Azure Cosmos DB (emulatora localhost lub wystąpienia platformy Azure).
 
-Wspaniale! Teraz, po zakończeniu konfigurowania, zacznijmy uruchamianie poleceń konsoli.
+Znakomity! Po zakończeniu instalacji uruchom ponownie niektóre polecenia konsoli.
 
-Wypróbujmy proste polecenie count(). Wpisz następujący tekst w wierszu polecenia konsoli:
+Wypróbujmy proste polecenie Count (). W wierszu polecenia wpisz następujący tekst:
 
 ```
 g.V().count()
@@ -102,7 +102,7 @@ g.V().count()
 
 ## <a name="create-vertices-and-edges"></a>Tworzenie wierzchołków i krawędzi
 
-Zacznijmy od dodania wierzchołków dla pięciu osób: *Thomas*, *Mary Kay*, *Robin*, *Ben* i *Jack*.
+Zacznijmy od dodania pięciu wierzchołków osoby dla *Thomas*, *Mary Kay*, *Robin*, *Ben*i *Jack*.
 
 Dane wejściowe (Thomas):
 
@@ -115,7 +115,7 @@ Dane wyjściowe:
 ```
 ==>[id:796cdccc-2acd-4e58-a324-91d6f6f5ed6d,label:person,type:vertex,properties:[firstName:[[id:f02a749f-b67c-4016-850e-910242d68953,value:Thomas]],lastName:[[id:f5fa3126-8818-4fda-88b0-9bb55145ce5c,value:Andersen]],age:[[id:f6390f9c-e563-433e-acbf-25627628016e,value:44]],userid:[[id:796cdccc-2acd-4e58-a324-91d6f6f5ed6d|userid,value:1]]]]
 ```
-Dane wejściowe (Mary Kay):
+Dane wejściowe (Maria Kay):
 
 ```
 g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2).property('pk', 'pk')
@@ -154,7 +154,7 @@ Dane wyjściowe:
 ==>[id:ee86b670-4d24-4966-9a39-30529284b66f,label:person,type:vertex,properties:[firstName:[[id:a632469b-30fc-4157-840c-b80260871e9a,value:Ben]],lastName:[[id:4a08d307-0719-47c6-84ae-1b0b06630928,value:Miller]],userid:[[id:ee86b670-4d24-4966-9a39-30529284b66f|userid,value:4]]]]
 ```
 
-Dane wejściowe (Jack):
+Wejście (gniazdo):
 
 ```
 g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5).property('pk', 'pk')
@@ -167,9 +167,9 @@ Dane wyjściowe:
 ```
 
 
-Następnie dodajmy krawędzie dla relacji między tymi osobami.
+Następnie Dodajmy krawędzie dla relacji między naszymi osobami.
 
-Dane wejściowe (Thomas -> Mary Kay):
+Dane wejściowe (Thomas-> Mary Kay):
 
 ```
 g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
@@ -181,7 +181,7 @@ Dane wyjściowe:
 ==>[id:c12bf9fb-96a1-4cb7-a3f8-431e196e702f,label:knows,type:edge,inVLabel:person,outVLabel:person,inV:0d1fa428-780c-49a5-bd3a-a68d96391d5c,outV:1ce821c6-aa3d-4170-a0b7-d14d2a4d18c3]
 ```
 
-Dane wejściowe (Thomas -> Robin):
+Dane wejściowe (Thomas->):
 
 ```
 g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
@@ -193,7 +193,7 @@ Dane wyjściowe:
 ==>[id:58319bdd-1d3e-4f17-a106-0ddf18719d15,label:knows,type:edge,inVLabel:person,outVLabel:person,inV:3e324073-ccfc-4ae1-8675-d450858ca116,outV:1ce821c6-aa3d-4170-a0b7-d14d2a4d18c3]
 ```
 
-Dane wejściowe (Robin -> Ben):
+Dane wejściowe (Robin-> Ben):
 
 ```
 g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
@@ -207,9 +207,9 @@ Dane wyjściowe:
 
 ## <a name="update-a-vertex"></a>Aktualizowanie wierzchołka
 
-Zaktualizujmy wierzchołek *Thomas*, podając nowy wiek: *45*.
+Zaktualizujmy wierzchołek *Thomas* przy użyciu nowego wieku *45*.
 
-Dane wejściowe:
+Klawiatur
 ```
 g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 ```
@@ -219,11 +219,11 @@ Dane wyjściowe:
 ==>[id:ae36f938-210e-445a-92df-519f2b64c8ec,label:person,type:vertex,properties:[firstName:[[id:872090b6-6a77-456a-9a55-a59141d4ebc2,value:Thomas]],lastName:[[id:7ee7a39a-a414-4127-89b4-870bc4ef99f3,value:Andersen]],age:[[id:a2a75d5a-ae70-4095-806d-a35abcbfe71d,value:45]]]]
 ```
 
-## <a name="query-your-graph"></a>Wykonywanie zapytania względem grafu
+## <a name="query-your-graph"></a>Tworzenie zapytań względem grafu
 
-Teraz uruchommy różne zapytania względem grafu.
+Teraz Uruchommy wiele zapytań względem grafu.
 
-Najpierw wypróbujmy zapytanie z filtrem, aby zwrócić tylko te osoby, które mają więcej niż 40 lat.
+Najpierw Spróbujmy użyć zapytania z filtrem, aby zwrócić tylko osoby, które są starsze niż 40 lat.
 
 Dane wejściowe (zapytanie filtru):
 
@@ -237,9 +237,9 @@ Dane wyjściowe:
 ==>[id:ae36f938-210e-445a-92df-519f2b64c8ec,label:person,type:vertex,properties:[firstName:[[id:872090b6-6a77-456a-9a55-a59141d4ebc2,value:Thomas]],lastName:[[id:7ee7a39a-a414-4127-89b4-870bc4ef99f3,value:Andersen]],age:[[id:a2a75d5a-ae70-4095-806d-a35abcbfe71d,value:45]]]]
 ```
 
-Następnie wyświetlmy imiona osób, które mają więcej niż 40 lat.
+Następnie Przyjrzyjmy się pierwszej nazwie osobom, które są starsze niż 40 lat.
 
-Dane wejściowe (zapytanie filtru i projekcji):
+Dane wejściowe (zapytanie + projekcja):
 
 ```
 g.V().hasLabel('person').has('age', gt(40)).values('firstName')
@@ -251,11 +251,11 @@ Dane wyjściowe:
 ==>Thomas
 ```
 
-## <a name="traverse-your-graph"></a>Przechodzenie grafu
+## <a name="traverse-your-graph"></a>Przechodzenie wykresu
 
-Przejdźmy graf w celu zwrócenia wszystkich znajomych Thomasa.
+Przejdźmy do grafu, aby zwrócić wszystkich znajomych z firmy Thomas.
 
-Dane wejściowe (znajomi Thomasa):
+Dane wejściowe (znajomi z Thomas):
 
 ```
 g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
@@ -268,9 +268,9 @@ Dane wyjściowe:
 ==>[id:91605c63-4988-4b60-9a30-5144719ae326,label:person,type:vertex,properties:[firstName:[[id:f760e0e6-652a-481a-92b0-1767d9bf372e,value:Robin]],lastName:[[id:352a4caa-bad6-47e3-a7dc-90ff342cf870,value:Wakefield]]]]
 ```
 
-Następnie uzyskajmy kolejną warstwę wierzchołków. Przejdźmy graf w celu zwrócenia wszystkich osób będących znajomymi znajomych Thomasa.
+Następnie Przyjrzyjmy się następnej warstwie wierzchołków. Przechodzenie grafu w celu zwrócenia wszystkich znajomych znajomych.
 
-Dane wejściowe (znajomi znajomych Thomasa):
+Dane wejściowe (znajomi znajomych z Thomasów):
 
 ```
 g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
@@ -281,40 +281,40 @@ Dane wyjściowe:
 ==>[id:a801a0cb-ee85-44ee-a502-271685ef212e,label:person,type:vertex,properties:[firstName:[[id:b9489902-d29a-4673-8c09-c2b3fe7f8b94,value:Ben]],lastName:[[id:e084f933-9a4b-4dbc-8273-f0171265cf1d,value:Miller]]]]
 ```
 
-## <a name="drop-a-vertex"></a>Usuwanie wierzchołka
+## <a name="drop-a-vertex"></a>Upuszczanie wierzchołka
 
-Usuńmy teraz wierzchołek z bazy danych grafu.
+Teraz Usuń wierzchołek z bazy danych grafów.
 
-Dane wejściowe (usunięcie wierzchołka Jacka):
+Wejście (inicjał wierzchołka):
 
 ```
 g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
-## <a name="clear-your-graph"></a>Czyszczenie grafu
+## <a name="clear-your-graph"></a>Wyczyść wykres
 
-Na koniec usuńmy z bazy danych wszystkie wierzchołki i krawędzie.
+Na koniec wyczyśćmy bazę danych wszystkich wierzchołków i krawędzi.
 
-Dane wejściowe:
+Klawiatur
 
 ```
 g.E().drop()
 g.V().drop()
 ```
 
-Gratulacje! Pomyślnie ukończono samouczek usługi Azure Cosmos DB: interfejs API języka Gremlin!
+Nabycia! Ukończono to Azure Cosmos DB: samouczek interfejsu API Gremlin.
 
-## <a name="review-slas-in-the-azure-portal"></a>Przeglądanie umów SLA w witrynie Azure Portal
+## <a name="review-slas-in-the-azure-portal"></a>Przejrzyj umowy SLA w Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+## <a name="clean-up-resources"></a>Czyszczenie zasobów
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start wyjaśniono, jak utworzyć konto usługi Azure Cosmos DB, jak utworzyć graf za pomocą Eksploratora danych oraz jak utworzyć wierzchołki i krawędzie, a także jak przejść graf za pomocą konsoli Gremlin. Teraz możesz tworzyć bardziej złożone zapytania i implementować zaawansowaną logikę przechodzenia grafu za pomocą języka Gremlin. 
+W tym przewodniku szybki start przedstawiono sposób tworzenia konta Azure Cosmos DB, tworzenia wykresu przy użyciu Eksplorator danych, tworzenia wierzchołków i krawędzi oraz przechodzenia do wykresu przy użyciu konsoli Gremlin. Teraz można tworzyć bardziej złożone zapytania i implementować zaawansowane logiki przechodzenia wykresu przy użyciu Gremlin. 
 
 > [!div class="nextstepaction"]
-> [Wykonywanie zapytań przy użyciu języka Gremlin](tutorial-query-graph.md)
+> [Zapytanie przy użyciu Gremlin](tutorial-query-graph.md)

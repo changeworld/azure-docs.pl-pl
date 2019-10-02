@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 43ae6e7100efd923c81a0f9b94867a9101549d9b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9114d491be1ae11623264c3beaf7c26f1fa143de
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559858"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803140"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Python
 
@@ -25,10 +25,12 @@ Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 * [Tworzenie bazy wiedzy](https://go.microsoft.com/fwlink/?linkid=2092179)
 * [Pobieranie szczegółów operacji](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Środowisko Python w wersji 3.7](https://www.python.org/downloads/)
-* Musisz mieć usługę QnA Maker. Aby pobrać klucz, wybierz pozycję Klucze w obszarze Zarządzanie zasobami na pulpicie nawigacyjnym.
+* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal. 
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
@@ -43,7 +45,7 @@ Na początku pliku `create-new-knowledge-base-3x.py` dodaj następujące wiersze
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Dodawanie wymaganych stałych
-Po poprzednich wymaganych zależnościach dodaj wymagane stałe umożliwiające dostęp do usługi QnA Maker. Zastąp wartość zmiennej `subscriptionKey` własnym kluczem usługi QnA Maker.
+Po poprzednich wymaganych zależnościach dodaj wymagane stałe umożliwiające dostęp do usługi QnA Maker. Zastąp wartość `<your-qna-maker-subscription-key>` i `<your-resource-name>` własnym kluczem QnA Maker i nazwą zasobu.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
 
@@ -125,7 +127,7 @@ Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stro
 
 [!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://go.microsoft.com/fwlink/?linkid=2092179)

@@ -1,41 +1,40 @@
 ---
-title: 'Szybki start: Funkcja syntezy mowy i aparatu Unity — usługa rozpoznawania mowy'
+title: 'Szybki Start: synteza mowy, usługa Unity — Speech'
 titleSuffix: Azure Cognitive Services
-description: Skorzystaj z tego przewodnika, aby utworzyć aplikację zamiany tekstu na mowę przy użyciu aparatu Unity i zestawu Speech SDK dla aparatu Unity (beta). Po zakończeniu można wypróbować mowę z tekstu w czasie rzeczywistym do głośnika urządzenia.
+description: Skorzystaj z tego przewodnika, aby utworzyć aplikację zamiany tekstu na mowę przy użyciu aparatu Unity i zestawu Speech SDK dla aparatu Unity. Po zakończeniu można wypróbować mowę z tekstu w czasie rzeczywistym do głośnika urządzenia.
 services: cognitive-services
 author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 6/26/2019
+ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 507ab9ef9bb3e482e5a33d2406424dfb9116de54
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: be5f07b8ea58d0d62c70e0e9dc8ab187ce4a0f63
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553610"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803201"
 ---
-# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-unity-beta"></a>Szybki start: Wyszukiwać mowę przy użyciu zestawu Speech SDK dla aparatu Unity (beta)
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-unity"></a>Szybki Start: syntezowanie mowy przy użyciu zestawu Speech SDK dla aparatu Unity
 
-Przewodniki Szybki Start są również dostępne do [rozpoznawania mowy](quickstart-csharp-unity.md).
+Przewodniki Szybki Start są również dostępne dla [funkcji rozpoznawania mowy](quickstart-csharp-unity.md).
 
-Skorzystaj z tego przewodnika, aby utworzyć aplikację zamiany tekstu na mowę przy użyciu [aparatu Unity](https://unity3d.com/) i zestawu Speech SDK dla aparatu Unity (beta).
+Skorzystaj z tego przewodnika, aby utworzyć aplikację zamiany tekstu na mowę przy użyciu [aparatu Unity](https://unity3d.com/) i zestawu Speech SDK dla aparatu Unity.
 Po zakończeniu można wypróbować mowę z tekstu w czasie rzeczywistym do głośnika urządzenia.
 Jeśli nie znasz środowiska Unity, zalecamy zapoznanie się z [podręcznikiem użytkownika środowiska Unity](https://docs.unity3d.com/Manual/UnityManual.html) przed rozpoczęciem tworzenia aplikacji.
 
 > [!NOTE]
-> Zestaw Speech SDK for Unity jest obecnie dostępny w wersji beta.
-> Obsługuje Pulpity systemu Windows (x86 i x64) lub platforma uniwersalna systemu Windows (x86, x64, ARM/ARM64) i Android (x86, ARM32/64).
+> Obsługuje Pulpity systemu Windows (x86 i x64) lub platforma uniwersalna systemu Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) i iOS (x64 symulator, ARM32 i ARM64).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 
 * [Środowisko unity 2018,3 lub nowsze](https://store.unity.com/) z funkcją [Unity 2019,1 Dodawanie obsługi platformy UWP arm64](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-     * Aby uzyskać pomoc techniczną ARM64, zainstaluj [opcjonalne narzędzia kompilacji dla arm64 i zestaw Windows 10 SDK dla arm64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) 
+* [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/). Wersja 15,9 lub nowsza programu Visual Studio 2017 jest również akceptowalna.
+* Aby uzyskać pomoc techniczną dla systemu Windows ARM64, zainstaluj [opcjonalne narzędzia kompilacji dla arm64 i zestaw Windows 10 SDK dla arm64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) 
 * Klucz subskrypcji dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
 ## <a name="create-a-unity-project"></a>Tworzenie projektu środowiska Unity
@@ -63,18 +62,18 @@ Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 Dodamy minimalny interfejs użytkownika do naszej sceny, składający się z pola wejściowego, aby wprowadzić tekst do syntezy, przycisk wyzwalający syntezę mowy i pole tekstowe, aby wyświetlić wynik.
 
 * W [oknie Hierarchy (Hierarchia)](https://docs.unity3d.com/Manual/Hierarchy.html), domyślnie po lewej stronie, jest wyświetlona przykładowa scena utworzona przez środowisko Unity za pomocą nowego projektu.
-* Kliknij przycisk **Utwórz** w górnej części okna hierarchia, a następnie wybierz**pole wejściowy** **interfejs użytkownika** > .
-* Spowoduje to utworzenie trzech obiektów gry, które można wyświetlić w oknie hierarchii: obiekt **pola wejściowego** zagnieżdżony w  obrębie obiektu kanwy i obiektu **EventSystem** .
+* Kliknij przycisk **Utwórz** w górnej części okna hierarchia, a następnie wybierz pozycję **interfejs użytkownika** > **pole wejściowe**.
+* Spowoduje to utworzenie trzech obiektów gry, które można wyświetlić w oknie hierarchii: obiekt **pola wejściowego** zagnieżdżony w obrębie obiektu **kanwy** i obiektu **EventSystem** .
 * [Przejdź do widoku sceny](https://docs.unity3d.com/Manual/SceneViewNavigation.html) , aby uzyskać dobry widok kanwy i pola wejściowego w [widoku sceny](https://docs.unity3d.com/Manual/UsingTheSceneView.html).
 * Kliknij obiekt **pola wejściowego** w oknie hierarchia, aby wyświetlić jego ustawienia w [oknie Inspektora](https://docs.unity3d.com/Manual/UsingTheInspector.html) (domyślnie po prawej).
 * Ustaw właściwości **pos X** i **pos** na **0**, aby pole wejściowe było wyśrodkowane w środku kanwy.
-* Kliknij przycisk **Utwórz** w górnej części okna hierarchia, a następnie wybierz**przycisk** **interfejsu użytkownika** > , aby utworzyć przycisk.
+* Kliknij przycisk **Utwórz** w górnej części okna hierarchia, a następnie wybierz pozycję **interfejs użytkownika** > **przycisk** , aby utworzyć przycisk.
 * Kliknij obiekt **Button** w oknie Hierarchy (Hierarchia), aby wyświetlić jego ustawienia w [oknie Inspector (Inspektor)](https://docs.unity3d.com/Manual/UsingTheInspector.html), domyślnie po prawej stronie.
 * Ustaw właściwości **pos X** i **pos** na **0** i **-48**, a następnie ustaw właściwości **Width** i **Height** na **160** i **30** , aby upewnić się, że przycisk i pole wejściowe nie nakładają się na siebie.
-* Kliknij przycisk **Utwórz** w górnej części okna hierarchia, a następnie wybierz opcję**tekst** **interfejsu użytkownika** > , aby utworzyć pole tekstowe.
+* Kliknij przycisk **Utwórz** w górnej części okna hierarchia, a następnie wybierz pozycję **interfejs użytkownika** > **tekst** , aby utworzyć pole tekstowe.
 * Kliknij obiekt **Text** w oknie Hierarchy (Hierarchia), aby wyświetlić jego ustawienia w [oknie Inspector (Inspektor)](https://docs.unity3d.com/Manual/UsingTheInspector.html), domyślnie po prawej stronie.
 * Ustaw właściwości **pos X** i **pos** na **0** i **80**, a następnie ustaw właściwości **Width** i **Height** na **320** i **80** , aby upewnić się, że pole tekstowe i pole wejściowe nie nakładają się na siebie.
-* Kliknij przycisk **Utwórz** w górnej części okna hierarchia, a następnie wybierz pozycję **audio** > audio**Źródło** , aby utworzyć źródło audio.
+* Kliknij przycisk **Utwórz** w górnej części okna hierarchia, a następnie wybierz pozycję **audio** > **Źródło Audio** , aby utworzyć źródło audio.
 
 Gdy wszystko będzie gotowe, interfejs użytkownika powinien wyglądać podobnie jak na następującym zrzucie ekranu:
 
@@ -103,7 +102,7 @@ Gdy wszystko będzie gotowe, interfejs użytkownika powinien wyglądać podobnie
 
    * Kliknij pozycję **Canvas** (Kanwa) obiektu w oknie Hierarchy (Hierarchia). Spowoduje to otwarcie ustawienia w [oknie Inspektora](https://docs.unity3d.com/Manual/UsingTheInspector.html) (domyślnie po prawej stronie).
    * Kliknij przycisk **Add Component** (Dodaj składnik) w oknie Inspector (Inspektor), a następnie wyszukaj skrypt HelloWorld utworzony powyżej i dodaj go.
-   * Należy zauważyć, że składnik Hello World ma cztery niezainicjowane właściwości, **tekst danych wyjściowych**, **pole wejściowe**, **przycisk mów** i **Źródło Audio** `HelloWorld` , które pasują do właściwości publicznych klasy.
+   * Należy zauważyć, że składnik Hello world ma cztery niezainicjowane właściwości, **tekst danych wyjściowych**, **pole wejściowe**, **przycisk mów** i **Źródło Audio**, które pasują do właściwości publicznych klasy `HelloWorld`.
      Aby powiązać je, kliknij selektor obiektów (małą ikonę okręgu po prawej stronie właściwości) i wybierz obiekty tekstowe i przycisku utworzone wcześniej.
 
      > [!NOTE]

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Synteza mowy, C++ (Linux) — usługa mowy'
+title: 'Szybki Start: synteza mowy C++ , (Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak przeprowadzić funkcję C++ syntezy mowy w systemie Linux przy użyciu zestawu Speech SDK
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: dbc9c2adc2663d3ba0ec3f9ea17b758ca2723441
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0846af20a2ee993742f648840bcbe49e187f6db9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553702"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803172"
 ---
-# <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Szybki start: Wykorzystaj mowę C++ w systemie Linux przy użyciu zestawu Speech SDK
+# <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Szybki Start: synteza mowy C++ w systemie Linux przy użyciu zestawu Speech SDK
 
 Przewodniki Szybki Start są również dostępne do [rozpoznawania mowy](quickstart-cpp-linux.md).
 
@@ -30,8 +30,6 @@ Aby ukończyć ten przewodnik Szybki Start, potrzebujesz klucza subskrypcji usł
 ## <a name="install-speech-sdk"></a>Instalowanie zestawu Speech SDK
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
-
-Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.6.0`.
 
 Zestawu Speech SDK dla systemu Linux można używać do kompilowania aplikacji 64-bitowych i 32-bitowych. Wymagane biblioteki i pliki nagłówkowe można pobrać jako plik tar ze strony https://aka.ms/csspeech/linuxbinary.
 
@@ -88,11 +86,11 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/cpp-linux/helloworld.cpp#code)]
 
-1. W tym nowym pliku Zamień ciąg `YourSubscriptionKey` na klucz subskrypcji usługi Speech Services.
+1. W tym nowym pliku Zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji usługi Speech Services.
 
 1. Zastąp ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
-## <a name="build-the-app"></a>Tworzenie aplikacji
+## <a name="build-the-app"></a>Kompilacja aplikacji
 
 > [!NOTE]
 > Pamiętaj o wprowadzeniu poniższych poleceń jako _pojedynczego wiersza polecenia_. Najprostszym sposobem wykonania tej czynności jest skopiowanie polecenia przy użyciu przycisku **Kopiuj** obok danego polecenia, a następnie wklejenie go w oknie powłoki.
@@ -109,6 +107,12 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
+* W systemie **arm64** (64-bitowym) Uruchom następujące polecenie, aby skompilować aplikację.
+
+  ```sh
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
+  ```
+
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 
 1. Skonfiguruj ścieżkę biblioteki modułu ładującego tak, aby wskazywała bibliotekę zestawu Speech SDK.
@@ -123,6 +127,12 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
+     ```
+
+   * W systemie **arm64** (64-bitowym) wprowadź następujące polecenie.
+
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
      ```
 
 1. Uruchom aplikację.

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tłumaczenie mowy, Java (Windows, Linux) — usługa mowy'
+title: 'Szybki Start: Tłumaczenie mowy, Java (Windows, Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start utworzysz prostą aplikację Java do przechwytywania mowy użytkownika, tłumaczenia jej na inny język i przekazywania tekstu do wiersza polecenia. Ten przewodnik jest przeznaczony dla użytkowników systemów Windows i Linux.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 402bf198981641db74a86bbc420fab83124f0b47
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553389"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802029"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Szybki start: Tłumaczenie mowy z zestawem SDK rozpoznawania mowy, języka Java
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Szybki Start: Tłumaczenie mowy przy użyciu zestawu Speech SDK dla języka Java
 
-Przewodniki Szybki Start są również dostępne dla [asystenta wirtualnego](quickstart-virtual-assistant-java-jre.md)mowy i głosu [z](quickstart-java-jre.md) dźwiękiem.
+Przewodniki Szybki Start są również dostępne dla [asystentów](quickstart-virtual-assistant-java-jre.md) [zamiany mowy na tekst](quickstart-java-jre.md), [zamiany tekstu na mowę](quickstart-text-to-speech-java-jre.md)i głosu.
 
 W tym przewodniku Szybki start utworzysz prostą aplikację Java, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja została zaprojektowana tak, aby działała w 64-bitowej wersji systemu Windows lub 64-bitowym systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) lub macOS 10,13 lub nowszym. Jest on zbudowany przy użyciu pakietu Maven SDK mowy i środowiska IDE języka Java.
 
@@ -29,7 +29,7 @@ Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy,
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* System operacyjny: 64-bitowy system Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) lub macOS 10,13 lub nowszy
+* System operacyjny: 64-bitowy Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) lub macOS 10,13 lub nowszy
 * [Zintegrowane środowisko projektowe Eclipse Java](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [zestaw JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
@@ -51,13 +51,13 @@ Jeśli używasz systemu Linux, upewnij się, że te zależności są zainstalowa
    ```
 
 > [!NOTE]
-> Aby uzyskać informacje dotyczące zestawu Speech Devices SDK oraz urządzenia Roobo, zobacz [Speech Devices SDK](speech-devices-sdk.md).
+> W przypadku zestawu Speech Devices SDK i urządzenia Roobo zobacz [Speech Devices SDK](speech-devices-sdk.md).
 
 ## <a name="create-and-configure-project"></a>Tworzenie i konfigurowanie projektu
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodaj kod przykładowy
+## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
 1. Aby dodać nową pustą klasę do projektu języka Java, wybierz kolejno pozycje **Plik** > **Nowy** > **Klasa**.
 
@@ -92,6 +92,6 @@ Dodatkowe przykłady, dotyczące między innymi odczytywania mowy z pliku audio 
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Szybki start: rozpoznawanie mowy, Java (Windows, Linux)](quickstart-java-jre.md)
+- [Szybki Start: Rozpoznawanie mowy, Java (Windows, Linux)](quickstart-java-jre.md)
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

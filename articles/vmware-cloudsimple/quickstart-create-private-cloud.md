@@ -8,20 +8,24 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e5cea36760746eaa63451c9e9955368c71ba4472
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845497"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816124"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Szybki Start — Konfigurowanie środowiska chmury prywatnej
 
 W tym artykule dowiesz się, jak utworzyć chmurę prywatną CloudSimple i skonfigurować środowisko chmury prywatnej.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Przejrzyj [wymagania wstępne dotyczące sieci](cloudsimple-network-checklist.md).
+
+## <a name="sign-in-to-azure"></a>Zaloguj się do platformy Azure
+
+Zaloguj się do Azure Portal w [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-private-cloud"></a>Tworzenie chmury prywatnej
 
@@ -29,7 +33,7 @@ Chmura prywatna to izolowany stos oprogramowania VMware obsługujący hosty ESXi
 
 Chmurami prywatnymi zarządza się za pomocą portalu CloudSimple. Mają własny serwer vCenter we własnej domenie zarządzania. Stos działa na dedykowanych węzłach i izolowanych węzłach sprzętowych bez systemu operacyjnego.
 
-1. Wybierz pozycję **Wszystkie usługi**.
+1. Wybierz pozycję **wszystkie usługi**.
 2. Wyszukaj **usługi CloudSimple Services**.
 3. Wybierz usługę CloudSimple, w której chcesz utworzyć chmurę prywatną.
 4. W obszarze **Przegląd**kliknij pozycję **Utwórz chmurę prywatną** , aby otworzyć nową kartę przeglądarki dla portalu CloudSimple.  Jeśli zostanie wyświetlony monit, zaloguj się przy użyciu poświadczeń logowania na platformie Azure.  
@@ -43,7 +47,7 @@ Chmurami prywatnymi zarządza się za pomocą portalu CloudSimple. Mają własny
 
     ![Tworzenie chmury prywatnej — informacje podstawowe](media/create-private-cloud-basic-info.png)
 
-9. Kliknij pozycję **Next: Opcje**zaawansowane.
+9. Kliknij przycisk **Dalej: Opcje zaawansowane**.
 10. Wprowadź zakres CIDR dla podsieci vSphere/sieci vSAN. Upewnij się, że zakres CIDR nie nakłada się na żadną z lokalizacji lokalnych lub innych podsieci platformy Azure (sieci wirtualnych) lub z podsiecią bramy.
 
     **Opcje zakresu CIDR:** /24,/23,/22 lub/21. Zakres CIDR/24 obsługuje maksymalnie 26 węzłów, a/23 zakres CIDR obsługuje do 58 węzłów, a zakres CIDR/22 i/21 obsługuje węzły 64 (maksymalną liczbę węzłów w chmurze prywatnej).  Aby dowiedzieć się więcej o sieciach VLAN i podsieciach, zobacz [sieci VLAN i podsieci — Omówienie](cloudsimple-vlans-subnets.md).
@@ -51,7 +55,7 @@ Chmurami prywatnymi zarządza się za pomocą portalu CloudSimple. Mają własny
       > [!IMPORTANT]
       > Adresy IP w zakresie CIDR vSphere/sieci vSAN są zarezerwowane do użytku przez infrastrukturę chmury prywatnej.  Nie używaj adresu IP z tego zakresu na żadnej maszynie wirtualnej.
 
-11. Kliknij pozycję **Next: Przejrzyj i Utwórz**.
+11. Kliknij przycisk **Dalej: Przejrzyj i Utwórz**.
 12. Przejrzyj ustawienia. Jeśli musisz zmienić dowolne ustawienia, kliknij przycisk **Wstecz**.
 13. Kliknij przycisk **Utwórz**.
 
@@ -61,7 +65,7 @@ Rozpocznie się proces aprowizacji w chmurze prywatnej.  Zainicjowanie obsługi 
 
 Możesz uzyskać dostęp do portalu CloudSimple z poziomu Azure Portal.  Portal CloudSimple zostanie uruchomiony z poświadczeniami logowania platformy Azure przy użyciu logowania jednokrotnego (SSO).  Dostęp do portalu CloudSimple wymaga autoryzacji aplikacji **autoryzacji usługi CloudSimple** .  Aby uzyskać więcej informacji na temat przyznawania uprawnień, zobacz [wyrażanie zgody na aplikację autoryzacji usługi CloudSimple](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application).
 
-1. Wybierz pozycję **Wszystkie usługi**.
+1. Wybierz pozycję **wszystkie usługi**.
 2. Wyszukaj **usługi CloudSimple Services**.
 3. Wybierz usługę CloudSimple, w której chcesz utworzyć chmurę prywatną.
 4. W obszarze przegląd kliknij pozycję **Przejdź do portalu CloudSimple** , aby otworzyć nową kartę przeglądarki dla portalu CloudSimple.  Jeśli zostanie wyświetlony monit, zaloguj się przy użyciu poświadczeń logowania na platformie Azure.  
@@ -135,7 +139,7 @@ Po utworzeniu chmury prywatnej Utwórz sieć VLAN, w której zostaną wdrożone 
 5. Wybierz z listy identyfikator sieci VLAN.  
 6. Wprowadź nazwę podsieci, aby zidentyfikować podsieć.
 7. Określ zakres i maskę maski podsieci.  Ten zakres nie może pokrywać się z żadną istniejącą podsiecią.
-8. Kliknij przycisk **Submit** (Prześlij).
+8. Kliknij przycisk **Prześlij**.
 
     ![Utwórz szczegóły sieci VLAN/podsieci](media/create-new-vlan-subnet-details.png)
 
@@ -155,7 +159,7 @@ Teraz możesz zalogować się do programu vCenter, aby skonfigurować maszyny wi
 
 2. Wybierz preferowanego klienta vSphere, aby uzyskać dostęp do programu vCenter i zalogować się przy użyciu nazwy użytkownika i hasła.  Wartości domyślne to:
     * Nazwa użytkownika: **CloudOwner@cloudsimple.local**
-    * Hasło **CloudSimple123!**  
+    * Hasło: **CloudSimple123!**  
 
 Ekrany programu vCenter w następnych procedurach pochodzą z klienta vSphere (HTML5).
 
@@ -164,15 +168,15 @@ Ekrany programu vCenter w następnych procedurach pochodzą z klienta vSphere (H
 CloudSimple zaleca zmianę hasła przy pierwszym logowaniu się do programu vCenter.  
 Ustawione hasło musi spełniać następujące wymagania:
 
-* Maksymalny okres istnienia: Hasło należy zmienić co 365 dni
-* Ogranicz ponowne użycie: Użytkownicy nie mogą ponownie używać żadnego z pięciu poprzednich haseł
+* Maksymalny okres istnienia: należy zmienić hasło co 365 dni
+* Ogranicz ponowne użycie: użytkownicy nie mogą ponownie używać żadnego z pięciu poprzednich haseł
 * Długość: 8-20 znaków
-* Znak specjalny: Co najmniej jeden znak specjalny
-* Znaki alfabetu: Co najmniej jeden znak pisany wielkimi literami, A-Z i co najmniej jedną małą literę, a – z
-* Numery Co najmniej jeden znak numeryczny, 0-9
-* Maksymalna liczba identycznych znaków sąsiednich: Trzy
+* Znak specjalny: co najmniej jeden znak specjalny
+* Znaki alfabetyczne: co najmniej jeden znak pisany wielkimi literami, A-Z i co najmniej jedną małą literę, a – z
+* Liczby: co najmniej jeden znak numeryczny, 0-9
+* Maksymalna liczba identycznych znaków sąsiednich: trzy
 
-    Przykład: Element CC lub CCC jest akceptowany jako część hasła, ale CCCC nie jest.
+    Przykład: CC lub CCC jest akceptowalny jako część hasła, ale CCCC nie jest.
 
 Jeśli ustawisz hasło, które nie spełnia wymagań:
 
@@ -184,7 +188,7 @@ Jeśli ustawisz hasło, które nie spełnia wymagań:
 Program NSX Manager jest wdrażany z domyślnym hasłem.  Zalecamy zmianę hasła po utworzeniu chmury prywatnej.
 
 * Nazwa użytkownika: **administrator**
-* Hasło **CloudSimple123!**
+* Hasło: **CloudSimple123!**
 
 W portalu CloudSimple można znaleźć w pełni kwalifikowaną nazwę domeny (FQDN) i adres IP programu NSX Manager.
 

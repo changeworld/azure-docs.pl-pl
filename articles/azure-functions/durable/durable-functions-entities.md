@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 99e61cef55bd97704063e4d2da90909d0376c327
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 06dfa40b6f320646513ab759f0ad5f4d10790236
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961461"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719981"
 ---
 # <a name="entity-functions-preview"></a>Funkcje jednostki (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Jednostki (czasami określane jako *wystąpienia*jednostek) są dostępne za po�
 * **Nazwa jednostki**: Nazwa identyfikująca typ jednostki (na przykład "licznik").
 * **Klucz jednostki**: ciąg, który jednoznacznie identyfikuje jednostkę między wszystkimi innymi jednostkami o tej samej nazwie (na przykład identyfikator GUID).
 
-Na przykład funkcja jednostki *licznika* może być używana do przechowywania wyników w grze online. Każde wystąpienie gry będzie miało unikatowy identyfikator jednostki, na `@Counter@Game1`przykład, `@Counter@Game2`, i tak dalej. Wszystkie operacje przeznaczone dla określonej jednostki wymagają określenia identyfikatora jednostki jako parametru.
+Na przykład funkcja jednostki *licznika* może być używana do przechowywania wyników w grze online. Każde wystąpienie gry będzie miało unikatowy identyfikator jednostki, taki jak `@Counter@Game1`, `@Counter@Game2` i tak dalej. Wszystkie operacje przeznaczone dla określonej jednostki wymagają określenia identyfikatora jednostki jako parametru.
 
 ## <a name="programming-models"></a>Modele programowania
 
@@ -38,7 +38,7 @@ Trwałe jednostki obsługują dwa różne modele programowania. Pierwszy model j
 
 ### <a name="defining-entities"></a>Definiowanie jednostek
 
-Istnieją dwa opcjonalne modele programowania do tworzenia trwałych jednostek. Poniższy kod jest przykładem prostej jednostki *licznika* zaimplementowaną jako funkcja standardowa. Ta funkcja definiuje trzy *operacje*, `add`, `reset`, i `get`, z których `currentValue`każda działa na wartości stanu liczby całkowitej.
+Istnieją dwa opcjonalne modele programowania do tworzenia trwałych jednostek. Poniższy kod jest przykładem prostej jednostki *licznika* zaimplementowaną jako funkcja standardowa. Ta funkcja definiuje trzy *operacje*, `add`, `reset` i `get`, z których każda działa na wartości typu integer, `currentValue`.
 
 ```csharp
 [FunctionName("Counter")]
@@ -50,7 +50,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
     {
         case "add":
             int amount = ctx.GetInput<int>();
-            currentValue += operand;
+            currentValue += amount;
             break;
         case "reset":
             currentValue = 0;
@@ -64,7 +64,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Ten model działa najlepiej w przypadku prostych implementacji jednostek lub implementacji, które mają dynamiczny zestaw operacji. Można jednak również użyć modelu programowania opartego na klasach, który jest przydatny dla jednostek, które są statyczne, ale mają bardziej złożone implementacje. Poniższy przykład jest równoważną implementacją `Counter` jednostki przy użyciu klas i metod.
+Ten model działa najlepiej w przypadku prostych implementacji jednostek lub implementacji, które mają dynamiczny zestaw operacji. Można jednak również użyć modelu programowania opartego na klasach, który jest przydatny dla jednostek, które są statyczne, ale mają bardziej złożone implementacje. Poniższy przykład jest równoważną implementacją jednostki `Counter` przy użyciu klas i metod.
 
 ```csharp
 public class Counter
@@ -85,9 +85,9 @@ public class Counter
 ```
 
 > [!NOTE]
-> Metoda punktu wejścia funkcji z `[FunctionName]` atrybutem *musi* być zadeklarowana `static` w przypadku używania klas jednostek. Niestatyczne metody punktu wejścia mogą spowodować inicjalizację wielu obiektów oraz inne niezdefiniowane zachowania.
+> Metoda punktu wejścia funkcji z atrybutem `[FunctionName]` *musi* być zadeklarowana `static` w przypadku używania klas jednostek. Niestatyczne metody punktu wejścia mogą spowodować inicjalizację wielu obiektów oraz inne niezdefiniowane zachowania.
 
-W modelu `IDurableEntityContext` programowania opartym na klasie obiekt jest dostępny `Entity.Current` we właściwości statycznej.
+W modelu programowania opartego na klasach obiekt `IDurableEntityContext` jest dostępny we właściwości statycznej `Entity.Current`.
 
 Model oparty na klasie jest podobny do modelu programowania popularnego przez [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). W tym modelu typ jednostki jest zdefiniowany jako Klasa platformy .NET. Każda metoda klasy jest operacją, którą może wywołać Klient zewnętrzny. W przeciwieństwie do orleans interfejsy .NET są jednak opcjonalne. Poprzedni przykład *licznika* nie korzystał z interfejsu, ale nadal może być wywoływany przez inne funkcje lub wywołania interfejsu API protokołu HTTP.
 
@@ -160,7 +160,7 @@ Tylko aranżacje mogą wywołać jednostki i uzyskać odpowiedź, co może być 
 
 ### <a name="dependency-injection-in-entity-classes-net"></a>Iniekcja zależności w klasach jednostek (.NET)
 
-Klasy jednostek obsługują [iniekcję zależności Azure Functions](../functions-dotnet-dependency-injection.md). Poniższy przykład pokazuje, jak zarejestrować `IHttpClientFactory` usługę w jednostce opartej na klasie.
+Klasy jednostek obsługują [iniekcję zależności Azure Functions](../functions-dotnet-dependency-injection.md). Poniższy przykład pokazuje, jak zarejestrować usługę `IHttpClientFactory` w jednostce opartej na klasie.
 
 ```csharp
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
@@ -205,13 +205,13 @@ public class HttpEntity
 ```
 
 > [!NOTE]
-> W przeciwieństwie do używania iniekcji konstruktora w zwykłych Azure Functions .NET, Metoda punktu wejścia funkcji dla jednostek opartych na klasie musi `static`być zadeklarowana. Deklarowanie niestatycznego punktu wejścia funkcji może spowodować konflikty między normalnym inicjatorem obiektu Azure Functions i inicjatorem obiektów trwałe jednostki.
+> W przeciwieństwie do używania iniekcji konstruktora w zwykłych Azure Functions .NET, Metoda punktu wejścia funkcji dla jednostek opartych na klasie *musi* być zadeklarowana `static`. Deklarowanie niestatycznego punktu wejścia funkcji może spowodować konflikty między normalnym inicjatorem obiektu Azure Functions i inicjatorem obiektów trwałe jednostki.
 
 ### <a name="bindings-in-entity-classes-net"></a>Powiązania w klasach jednostek (.NET)
 
-W przeciwieństwie do funkcji regularnych, metody klasy jednostek nie mają bezpośredniego dostępu do powiązań wejściowych i wyjściowych. Zamiast tego, dane wiążące muszą być przechwytywane w deklaracji funkcji punktu wejścia, a następnie przekazywać do `DispatchAsync<T>` metody. Wszystkie obiekty, do `DispatchAsync<T>` których przechodzą, zostaną automatycznie przesłane do konstruktora klasy jednostki jako argument.
+W przeciwieństwie do funkcji regularnych, metody klasy jednostek nie mają bezpośredniego dostępu do powiązań wejściowych i wyjściowych. Zamiast tego, dane wiążące muszą być przechwytywane w deklaracji funkcji punktu wejścia, a następnie przekazywać do metody `DispatchAsync<T>`. Wszystkie obiekty przenoszone do `DispatchAsync<T>` będą automatycznie przesyłane do konstruktora klasy jednostki jako argument.
 
-Poniższy przykład pokazuje, `CloudBlobContainer` jak odwołanie z [powiązania danych wejściowych obiektu BLOB](../functions-bindings-storage-blob.md#input) może zostać udostępnione jednostce opartej na klasie.
+Poniższy przykład pokazuje, jak odwołanie `CloudBlobContainer` z [powiązania danych wejściowych obiektu BLOB](../functions-bindings-storage-blob.md#input) może zostać udostępnione dla jednostki opartej na klasie.
 
 ```csharp
 public class BlobBackedEntity
@@ -245,10 +245,10 @@ Mogą wystąpić sytuacje, w których trzeba skoordynować operacje w wielu jedn
 
 ### <a name="transfer-funds-example-in-c"></a>Przykład transferu pieniędzy wC#
 
-Poniższy przykładowy kod transferuje fundusze między dwiema jednostkami _kont_ przy użyciu funkcji programu Orchestrator. Koordynacja aktualizacji jednostek wymaga użycia `LockAsync` metody do utworzenia _sekcji krytycznej_ w aranżacji:
+Poniższy przykładowy kod transferuje fundusze między dwiema jednostkami _kont_ przy użyciu funkcji programu Orchestrator. Koordynacja aktualizacji jednostek wymaga użycia metody `LockAsync` do utworzenia _sekcji krytycznej_ w aranżacji:
 
 > [!NOTE]
-> Dla uproszczenia w tym przykładzie użyto `Counter` wcześniej zdefiniowanej jednostki. Jednak w rzeczywistej aplikacji lepiej jest zdefiniować bardziej szczegółową `BankAccount` jednostkę.
+> Dla uproszczenia w tym przykładzie użyto zdefiniowanej wcześniej jednostki `Counter`. Jednak w rzeczywistej aplikacji lepiej jest zdefiniować bardziej szczegółową jednostkę `BankAccount`.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -290,18 +290,18 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-W programie .NET `LockAsync` `IDisposable` funkcja zwraca wartość, która powoduje zakończenie sekcji krytycznej po jej zlikwidowaniu. Tego `IDisposable` wyniku można używać razem `using` z blokiem, aby uzyskać składniową reprezentację sekcji krytycznej.
+W programie .NET `LockAsync` zwraca `IDisposable`, które kończą sekcję krytyczną po usunięciu. Ten @no__t wynik-0 może być używany razem z blokiem `using` w celu uzyskania składniowej reprezentacji sekcji krytycznej.
 
-W poprzednim przykładzie funkcja programu Orchestrator przesłała fundusze z jednostki _źródłowej_ do jednostki _docelowej_ . Metoda została zablokowana zarówno dla jednostki konta _źródłowego_ , jak i _docelowego._ `LockAsync` To blokowanie zapewnia, że żaden inny klient nie może wykonać zapytania lub zmodyfikować stanu jednego z kont, dopóki logika aranżacji nie zakończyła _sekcji krytycznej_ na `using` końcu instrukcji. Skutecznie uniemożliwia to przekroczenie możliwości przeprojektowania z konta _źródłowego_ .
+W poprzednim przykładzie funkcja programu Orchestrator przesłała fundusze z jednostki _źródłowej_ do jednostki _docelowej_ . Metoda `LockAsync` zablokowała zarówno jednostkę _źródłową_ , jak i _docelową_ . Ten blok zapewnia, że żaden inny klient nie może wykonać zapytania lub zmodyfikować stanu jednego z kont do momentu, gdy logika aranżacji nie zakończyła _sekcji krytycznej_ na końcu instrukcji `using`. Skutecznie uniemożliwia to przekroczenie możliwości przeprojektowania z konta _źródłowego_ .
 
 ### <a name="critical-section-behavior"></a>Zachowanie sekcji krytycznej
 
-Metoda tworzy _sekcję krytyczną_ w aranżacji. `LockAsync` Te _krytyczne sekcje_ uniemożliwiają innym aranżacjom wprowadzanie nakładających się zmian do określonego zestawu jednostek. `LockAsync` Wewnętrznie interfejs API wysyła do jednostek operacje "Lock" i zwraca, gdy odbierze komunikat odpowiedzi "Zablokuj pobrany" z każdej z tych samych jednostek. *Blokady* i *odblokowywanie* to wbudowane operacje obsługiwane przez wszystkie jednostki.
+Metoda `LockAsync` tworzy _sekcję krytyczną_ w aranżacji. Te _krytyczne sekcje_ uniemożliwiają innym aranżacjom wprowadzanie nakładających się zmian do określonego zestawu jednostek. Wewnętrznie interfejs API `LockAsync` wysyła operacje "Lock" do jednostek i zwraca, gdy odbierze komunikat odpowiedzi "lockd" z każdej z tych samych jednostek. *Blokady* i *odblokowywanie* to wbudowane operacje obsługiwane przez wszystkie jednostki.
 
 Nie można wykonywać operacji z innych klientów w jednostce, gdy jest ona w stanie zablokowanym. Takie zachowanie zapewnia, że tylko jedno wystąpienie aranżacji może blokować jednostkę jednocześnie. Jeśli obiekt wywołujący podejmie próbę wywołania operacji na jednostce, gdy jest ona zablokowana przez aranżację, ta operacja zostanie umieszczona w *kolejce oczekujących operacji*. Żadne oczekujące operacje nie zostaną przetworzone do momentu, gdy organizacja holdingowa zwolni blokadę.
 
 > [!NOTE] 
-> Różni się to nieco od elementów pierwotnych synchronizacji używanych w większości języków programowania, takich jak `lock` instrukcja w C#. Na przykład w C#, `lock` instrukcja musi być używana przez wszystkie wątki, aby zapewnić poprawne synchronizację w wielu wątkach. Jednostki nie wymagają jednak, aby wszyscy wywołujący jawnie _blokowały_ jednostkę. Jeśli jakikolwiek obiekt wywołujący zablokuje jednostkę, wszystkie pozostałe operacje na tej jednostce zostaną zablokowane i umieszczone w kolejce za tę blokadę.
+> Różni się to nieco od elementów pierwotnych synchronizacji używanych w większości języków programowania, takich jak instrukcja `lock` w C#. Na przykład w C#, instrukcja `lock` musi być używana przez wszystkie wątki, aby zapewnić poprawne synchronizację w wielu wątkach. Jednostki nie wymagają jednak, aby wszyscy wywołujący jawnie _blokowały_ jednostkę. Jeśli jakikolwiek obiekt wywołujący zablokuje jednostkę, wszystkie pozostałe operacje na tej jednostce zostaną zablokowane i umieszczone w kolejce za tę blokadę.
 
 Blokady na jednostkach są trwałe, więc będą zachowywane nawet wtedy, gdy proces wykonywany zostanie odtworzony. Blokady są wewnętrznie utrwalane jako część trwałego stanu jednostki.
 

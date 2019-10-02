@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy przy użyciu narzędzia Postman — QnA Maker'
+title: 'Szybki Start: korzystanie z programu Poster w celu uzyskania odpowiedzi z bazy wiedzy QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku Szybki start opisano sposób uzyskiwania odpowiedzi z bazy wiedzy przy użyciu narzędzia Postman.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 01/01/2019
 ms.author: diberry
-ms.openlocfilehash: 7c419ea7cb5c9ae1d1cc419798961ec67f250160
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3df2703ba24091d0d21f06ae55aca389837e93d9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563003"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803048"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy przy użyciu narzędzia Postman
+# <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Szybki Start: uzyskiwanie odpowiedzi z bazy wiedzy przy użyciu programu Poster
 
 W tym samouczku Szybki start opisano sposób uzyskiwania odpowiedzi z bazy wiedzy przy użyciu narzędzia Postman.
 
@@ -57,7 +57,7 @@ Aby wygenerować odpowiedź za pomocą narzędzia Postman, wykonaj następujące
 
     [![W narzędziu Postman ustaw nagłówki](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox).
 
-1. Wybierz **treści** kartę.
+1. Wybierz kartę **Treść**.
 1. Wybierz format **raw** i wprowadź wartość JSON (nr 5 na obrazie) reprezentującą pytanie.
 
     `{"question":"How do I programmatically update my Knowledge Base?"}`
@@ -71,7 +71,7 @@ Aby wygenerować odpowiedź za pomocą narzędzia Postman, wykonaj następujące
 
 ## <a name="use-staging-endpoint"></a>Korzystanie z przejściowego punktu końcowego
 
-Jeśli chcesz uzyskać odpowiedź z punktu końcowego przemieszczania, Dołącz adres URL z `isTest` właściwością Body.
+Jeśli chcesz uzyskać odpowiedź z punktu końcowego przemieszczania, Dołącz adres URL z właściwością treści `isTest`.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129717"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720128"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w Azure App Service
 <a name="Overview"></a>
@@ -38,7 +38,7 @@ Aby skalować aplikację do innej warstwy, upewnij się, że warstwa docelowa ob
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Dodaj miejsce
+## <a name="add-a-slot"></a>Dodaj gniazdo
 Aplikacja musi być uruchomiona w warstwie **standardowa**, **Premium**lub **izolowanej** , aby można było włączyć wiele miejsc wdrożenia.
 
 1. W [Azure Portal](https://portal.azure.com/)Otwórz [stronę zasobów](../azure-resource-manager/manage-resources-portal.md#manage-resources)aplikacji.
@@ -90,7 +90,7 @@ W przypadku wymiany dwóch gniazd (zwykle z miejsca przejściowego w gnieździe 
 
 1. Jeśli [Funkcja autoswap](#Auto-Swap) jest włączona z [niestandardowym rozruchem](#Warm-up), wyzwól [INICJOWANIE aplikacji](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) , wysyłając żądanie HTTP do głównego katalogu aplikacji ("/") w każdym wystąpieniu miejsca źródłowego.
 
-    Jeśli `applicationInitialization` nie jest określony, wyzwól żądanie HTTP do katalogu głównego aplikacji w gnieździe źródłowym dla każdego wystąpienia. 
+    Jeśli nie określono `applicationInitialization`, wyzwól żądanie HTTP do katalogu głównego aplikacji miejsca źródłowego w każdym wystąpieniu. 
     
     Jeśli wystąpienie zwróci dowolną odpowiedź HTTP, jest uznawana za rozgrzaną.
 
@@ -128,7 +128,7 @@ Aby wymienić miejsca wdrożenia:
 
 2. Wybierz żądane miejsce **źródłowe** i **docelowe** . Zwykle miejscem docelowym jest miejsce produkcyjne. Zaznacz również karty **zmiany źródła** i **docelowe zmiany** , a następnie sprawdź, czy zmiany konfiguracji są oczekiwane. Po zakończeniu możesz zamienić miejsca bezpośrednio, wybierając pozycję **Zamień**.
 
-    ![Ukończ zamianę](./media/web-sites-staged-publishing/SwapImmediately.png)
+    ![Kończenie zamiany](./media/web-sites-staged-publishing/SwapImmediately.png)
 
     Aby sprawdzić, jak miejsce docelowe będzie uruchamiane z nowymi ustawieniami przed faktycznym zastąpieniem, nie zaznaczaj opcji **Zamień**, ale postępuj zgodnie z instrukcjami w artykule [wymiana z podglądem](#Multi-Phase).
 
@@ -140,9 +140,6 @@ Jeśli masz jakieś problemy, zobacz [Rozwiązywanie problemów z wymianą](#tro
 
 ### <a name="swap-with-preview-multi-phase-swap"></a>Zamień na wersję zapoznawczą (wymiana wielofazowy)
 
-> [!NOTE]
-> Wymiana z podglądem nie jest obsługiwana w aplikacjach sieci Web w systemie Linux.
-
 Przed przejściem do środowiska produkcyjnego jako miejsca docelowego Sprawdź, czy aplikacja jest uruchamiana z zamienionymi ustawieniami. Gniazdo źródłowe jest również rozgrzane przed ukończeniem wymiany, które jest odpowiednie dla aplikacji o znaczeniu strategicznym.
 
 Podczas przeprowadzania wymiany w wersji zapoznawczej App Service wykonuje tę samą [operację zamiany](#AboutConfiguration) , ale wstrzymuje się po pierwszym kroku. Następnie można sprawdzić wynik w miejscu przejściowym przed ukończeniem zamiany. 
@@ -153,13 +150,13 @@ Aby zamienić z podglądem:
 
 1. Postępuj zgodnie z instrukcjami w [miejsc wdrożenia wymiany](#Swap) , ale wybierz pozycję **Przeprowadź wymianę z podglądem**.
 
-    ![Zamień z podglądem](./media/web-sites-staged-publishing/SwapWithPreview.png)
+    ![Zamień na wersję zapoznawczą](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
     W oknie dialogowym pokazano, w jaki sposób konfiguracja w gnieździe źródłowym zmienia się w fazie 1 oraz jak zmienia się miejsce źródłowe i docelowe w fazie 2.
 
 2. Gdy wszystko będzie gotowe do rozpoczęcia wymiany, wybierz pozycję **Rozpocznij zamianę**.
 
-    Po zakończeniu fazy 1 powiadomienie zostanie wyświetlone w oknie dialogowym. Wyświetl podgląd wymiany w gnieździe źródłowym, przechodząc `https://<app_name>-<source-slot-name>.azurewebsites.net`do. 
+    Po zakończeniu fazy 1 powiadomienie zostanie wyświetlone w oknie dialogowym. Wyświetl podgląd wymiany w gnieździe źródłowym, przechodząc do `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
 
 3. Gdy wszystko będzie gotowe do ukończenia oczekującej zamiany, wybierz pozycję **Zakończ zamianę** w ramach **akcji zamiany** i wybierz pozycję **Zakończ zamianę**.
 
@@ -191,7 +188,7 @@ Funkcja autoswap usprawnia scenariusze usługi Azure DevOps, w której aplikacja
 
 Aby skonfigurować funkcję autoswap:
 
-1. Przejdź do strony zasobów aplikacji. Wybierz pozycję miejsca **wdrożenia** >  >  >  *\<żądane miejsce źródłowe >* **Ustawienia ogólne**konfiguracji.
+1. Przejdź do strony zasobów aplikacji. Wybierz pozycję miejsca **wdrożenia** >  *\<desired Source >*  > **Configuration** > **Ustawienia ogólne**.
    
 2. W przypadku opcji **autoswap włączone**wybierz pozycję **włączone**. Następnie wybierz żądane miejsce docelowe dla **miejsca wdrożenia autoswap**, a następnie wybierz pozycję **Zapisz** na pasku poleceń. 
    
@@ -204,7 +201,8 @@ Jeśli masz jakieś problemy, zobacz [Rozwiązywanie problemów z wymianą](#tro
 <a name="Warm-up"></a>
 
 ## <a name="specify-custom-warm-up"></a>Określ niestandardową rozgrzewanie
-Gdy używasz funkcji [autoswap](#Auto-Swap), niektóre aplikacje mogą wymagać niestandardowych akcji rozgrzewania przed wymianą. Element `applicationInitialization` konfiguracji w pliku Web. config pozwala określić niestandardowe akcje inicjowania. [Operacja wymiany](#AboutConfiguration) czeka na zakończenie tej niestandardowej rozgrzanej wartości przed zamianą na miejsce docelowe. Oto przykładowy fragment pliku Web. config.
+
+Niektóre aplikacje mogą wymagać niestandardowych akcji rozgrzewania przed wymianą. Element konfiguracji `applicationInitialization` w pliku Web. config pozwala określić niestandardowe akcje inicjowania. [Operacja wymiany](#AboutConfiguration) czeka na zakończenie tej niestandardowej rozgrzanej wartości przed zamianą na miejsce docelowe. Oto przykładowy fragment pliku Web. config.
 
     <system.webServer>
         <applicationInitialization>
@@ -213,15 +211,15 @@ Gdy używasz funkcji [autoswap](#Auto-Swap), niektóre aplikacje mogą wymagać 
         </applicationInitialization>
     </system.webServer>
 
-Aby uzyskać więcej informacji na temat `applicationInitialization` dostosowywania elementu, zobacz [najczęstsze błędy wymiany miejsca wdrożenia i sposoby ich naprawiania](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+Aby uzyskać więcej informacji na temat dostosowywania elementu `applicationInitialization`, zobacz [większość typowych błędów wymiany miejsca wdrożenia i sposoby ich naprawiania](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
 Możesz również dostosować zachowanie rozgrzewania, korzystając z jednego lub obu następujących [ustawień aplikacji](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: Ścieżka do polecenia ping do rozgrzewania lokacji. Dodaj to ustawienie aplikacji, określając ścieżkę niestandardową rozpoczynającą się od ukośnika jako wartość. Może to być na przykład `/statuscheck`. Wartość domyślna to `/`. 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Prawidłowe kody odpowiedzi HTTP dla operacji rozgrzewania. Dodaj to ustawienie aplikacji z rozdzieloną przecinkami listą kodów HTTP. Przykładem jest `200,202` . Jeśli zwrócony kod stanu nie znajduje się na liście, operacje rozgrzewania i swap są zatrzymane. Domyślnie wszystkie kody odpowiedzi są prawidłowe.
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: ścieżka do polecenia ping, aby rozgrzać lokację. Dodaj to ustawienie aplikacji, określając ścieżkę niestandardową rozpoczynającą się od ukośnika jako wartość. Może to być na przykład `/statuscheck`. Wartość domyślna to `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: prawidłowe kody odpowiedzi HTTP dla operacji rozgrzewania. Dodaj to ustawienie aplikacji z rozdzieloną przecinkami listą kodów HTTP. Przykładem jest `200,202`. Jeśli zwrócony kod stanu nie znajduje się na liście, operacje rozgrzewania i swap są zatrzymane. Domyślnie wszystkie kody odpowiedzi są prawidłowe.
 
 > [!NOTE]
-> `<applicationInitialization>`jest częścią każdego uruchomienia aplikacji, gdzie te dwa ustawienia aplikacji mają zastosowanie tylko do zamian w gnieździe.
+> `<applicationInitialization>` jest częścią każdego uruchomienia aplikacji, gdzie te dwa ustawienia aplikacji mają zastosowanie tylko do zamian w gnieździe.
 
 Jeśli masz jakieś problemy, zobacz [Rozwiązywanie problemów z wymianą](#troubleshoot-swaps).
 
@@ -231,7 +229,7 @@ Jeśli [operacja wymiany](#AboutConfiguration) trwa długo, możesz uzyskać inf
 
 Na stronie zasobów aplikacji w portalu w lewym okienku wybierz pozycję **Dziennik aktywności**.
 
-Operacja zamiany zostanie wyświetlona w zapytaniu dziennika jako `Swap Web App Slots`. Można ją rozwinąć i wybrać jedną z podoperacji lub błędów, aby wyświetlić szczegóły.
+Operacja zamiany pojawia się w zapytaniu dziennika jako `Swap Web App Slots`. Można ją rozwinąć i wybrać jedną z podoperacji lub błędów, aby wyświetlić szczegóły.
 
 ## <a name="route-traffic"></a>Ruch tras
 
@@ -249,11 +247,11 @@ Aby automatycznie kierować ruch produkcyjny:
 
 Po zapisaniu tego ustawienia określony procent klientów jest losowo kierowany do gniazda nieprodukcyjnego. 
 
-Po automatycznym przekierowaniu klienta do określonego gniazda zostanie on przypięty do tego gniazda w okresie istnienia sesji klienta. W przeglądarce klienta możesz sprawdzić, do którego gniazda sesja jest przypięta, przeglądając `x-ms-routing-name` plik cookie w nagłówkach HTTP. Żądanie, które jest kierowane do miejsca "przemieszczania", zawiera plik `x-ms-routing-name=staging`cookie. Żądanie, które jest kierowane do miejsca produkcyjnego, zawiera plik `x-ms-routing-name=self`cookie.
+Po automatycznym przekierowaniu klienta do określonego gniazda zostanie on przypięty do tego gniazda w okresie istnienia sesji klienta. W przeglądarce klienta możesz sprawdzić, do którego gniazda sesja jest przypięta, przeglądając plik cookie `x-ms-routing-name` w nagłówkach HTTP. Żądanie przesyłane do miejsca "przemieszczania" ma plik cookie `x-ms-routing-name=staging`. Żądanie przesyłane do miejsca produkcyjnego ma plik cookie `x-ms-routing-name=self`.
 
 ### <a name="route-production-traffic-manually"></a>Ręczne kierowanie ruchu produkcyjnego
 
-Oprócz automatycznego routingu ruchu App Service mogą kierować żądania do określonego gniazda. Jest to przydatne, jeśli chcesz, aby użytkownicy mogli wyrazić zgodę na lub zrezygnować z aplikacji w wersji beta. Aby ręcznie skierować ruch produkcyjny, należy użyć `x-ms-routing-name` parametru zapytania.
+Oprócz automatycznego routingu ruchu App Service mogą kierować żądania do określonego gniazda. Jest to przydatne, jeśli chcesz, aby użytkownicy mogli wyrazić zgodę na lub zrezygnować z aplikacji w wersji beta. Aby ręcznie skierować ruch produkcyjny, należy użyć parametru zapytania `x-ms-routing-name`.
 
 Aby umożliwić użytkownikom zrezygnowanie z aplikacji w wersji beta, można na przykład umieścić ten link na stronie sieci Web:
 
@@ -261,7 +259,7 @@ Aby umożliwić użytkownikom zrezygnowanie z aplikacji w wersji beta, można na
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-Ciąg `x-ms-routing-name=self` określa miejsce produkcyjne. Po uzyskaniu dostępu do linku przez przeglądarkę klienta zostanie on przekierowany do miejsca produkcyjnego. Każde kolejne żądanie zawiera `x-ms-routing-name=self` plik cookie, który przypina sesję do miejsca produkcyjnego.
+Ciąg `x-ms-routing-name=self` określa miejsce produkcyjne. Po uzyskaniu dostępu do linku przez przeglądarkę klienta zostanie on przekierowany do miejsca produkcyjnego. Każde kolejne żądanie ma plik cookie `x-ms-routing-name=self`, który przypina sesję do miejsca produkcyjnego.
 
 Aby umożliwić użytkownikom dołączanie do aplikacji w wersji beta, należy ustawić ten sam parametr zapytania na nazwę gniazda nieprodukcyjnego. Oto przykład:
 
@@ -269,13 +267,13 @@ Aby umożliwić użytkownikom dołączanie do aplikacji w wersji beta, należy u
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-Domyślnie nowe gniazda otrzymują regułę `0%`routingu wyświetloną w kolorze szarym. Gdy jawnie ustawisz tę wartość na `0%` (pokazana w kolorze czarnym), użytkownicy mogą uzyskać dostęp do miejsca przejściowego ręcznie przy `x-ms-routing-name` użyciu parametru zapytania. Ale nie są one automatycznie kierowane do gniazda, ponieważ wartość procentowa routingu jest ustawiona na 0. Jest to zaawansowany scenariusz, w którym można "ukryć" miejsce przejściowe z publicznego, jednocześnie umożliwiając zespołom wewnętrznym testowanie zmian w gnieździe.
+Domyślnie nowe gniazda otrzymują regułę routingu `0%`, która jest wyświetlana w kolorze szarym. Gdy jawnie ustawisz tę wartość na `0%` (pokazana w kolorze czarnym), użytkownicy mogą uzyskać dostęp do miejsca przejściowego ręcznie przy użyciu parametru zapytania `x-ms-routing-name`. Ale nie są one automatycznie kierowane do gniazda, ponieważ wartość procentowa routingu jest ustawiona na 0. Jest to zaawansowany scenariusz, w którym można "ukryć" miejsce przejściowe z publicznego, jednocześnie umożliwiając zespołom wewnętrznym testowanie zmian w gnieździe.
 
 <a name="Delete"></a>
 
 ## <a name="delete-a-slot"></a>Usuń gniazdo
 
-Przejdź do strony zasobów aplikacji. Wybierz >  > *miejscewdrożenia\<gniazda, aby usunąć >* przegląd. Na pasku poleceń wybierz pozycję **Usuń** .  
+Przejdź do strony zasobów aplikacji. Wybierz pozycję miejsca **wdrożenia** >  *\<slot, aby usunąć***Przegląd**>  > . Na pasku poleceń wybierz pozycję **Usuń** .  
 
 ![Usuń miejsce wdrożenia](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -292,7 +290,7 @@ Azure PowerShell to moduł, który udostępnia polecenia cmdlet do zarządzania 
 Informacje o instalowaniu i konfigurowaniu Azure PowerShell oraz o uwierzytelnianiu Azure PowerShell z subskrypcją platformy Azure znajdują się w temacie [How to Install and configure Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 ---
-### <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
+### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
@@ -334,7 +332,61 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
----
+## <a name="automate-with-arm-templates"></a>Automatyzowanie przy użyciu szablonów ARM
+
+[Szablony ARM](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview) to DEKLARACYJNE pliki JSON używane do automatyzowania wdrażania i konfigurowania zasobów platformy Azure. Aby zamienić miejsca przy użyciu szablonów ARM, należy ustawić dwie właściwości dla zasobów *Microsoft. Web/Sites/Slots* i *Microsoft. Web/Sites* :
+
+- `buildVersion`: jest to właściwość ciągu reprezentująca bieżącą wersję aplikacji wdrożonej w gnieździe. Na przykład: "v1", "1.0.0.1" lub "2019-09-20T11:53:25.2887393-07:00".
+- `targetBuildVersion`: jest to właściwość ciągu określająca, co `buildVersion` powinno mieć miejsce. Jeśli targetBuildVersion nie jest taka sama jak bieżąca `buildVersion`, spowoduje to wyzwolenie operacji zamiany przez znalezienie gniazda, które ma określoną `buildVersion`.
+
+### <a name="example-arm-template"></a>Przykładowy szablon ARM
+
+Następujący szablon ARM zaktualizuje `buildVersion` miejsca przejściowego i ustawi `targetBuildVersion` w gnieździe produkcyjnym. Spowoduje to zamianę dwóch miejsc. Szablon zakłada, że masz już webapp utworzony z miejscem o nazwie "przemieszczanie".
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "my_site_name": {
+            "defaultValue": "SwapAPIDemo",
+            "type": "String"
+        },
+        "sites_buildVersion": {
+            "defaultValue": "v1",
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites/slots",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(parameters('my_site_name'), '/staging')]",
+            "location": "East US",
+            "kind": "app",
+            "properties": {
+                "buildVersion": "[parameters('sites_buildVersion')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('my_site_name')]",
+            "location": "East US",
+            "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites/slots', parameters('my_site_name'), 'staging')]"
+            ],
+            "properties": {
+                "targetBuildVersion": "[parameters('sites_buildVersion')]"
+            }
+        }        
+    ]
+}
+```
+
+Ten szablon ARM jest idempotentne, co oznacza, że może być wykonywany wielokrotnie i generować ten sam stan miejsc. Po pierwszym wykonaniu `targetBuildVersion` będzie pasować do bieżącej `buildVersion`, więc nie zostanie wyzwolone zamiana.
+
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
@@ -370,9 +422,9 @@ Poniżej przedstawiono niektóre typowe błędy wymiany:
       ...
     </conditions>
     ```
-- Niektóre [reguły ograniczeń adresów IP](app-service-ip-restrictions.md) mogą uniemożliwiać operacji zamiany wysyłanie żądań HTTP do aplikacji. Zakresy adresów IPv4, które zaczynają `100.` się od `10.` i są wewnętrzne dla Twojego wdrożenia. Należy zezwolić im na łączenie się z Twoją aplikacją.
+- Niektóre [reguły ograniczeń adresów IP](app-service-ip-restrictions.md) mogą uniemożliwiać operacji zamiany wysyłanie żądań HTTP do aplikacji. Zakresy adresów IPv4, które zaczynają się od `10.` i `100.` są wewnętrzne dla wdrożenia. Należy zezwolić im na łączenie się z Twoją aplikacją.
 
-- Po wymianie gniazd może wystąpić nieoczekiwane ponowne uruchomienie aplikacji. Jest to spowodowane tym, że po wymianie Konfiguracja powiązania nazwy hosta nie jest zsynchronizowana, co nie powoduje ponownego uruchomienia. Jednak niektóre bazowe zdarzenia magazynu (takie jak przełączanie awaryjne woluminu magazynu) mogą wykryć te rozbieżności i wymusić ponowne uruchomienie wszystkich procesów roboczych. Aby zminimalizować te typy ponownych uruchomień, należy ustawić [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` ustawienie aplikacji](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) na *wszystkie gniazda*. To ustawienie aplikacji *nie działa jednak* z aplikacjami Windows Communication Foundation (WCF).
+- Po wymianie gniazd może wystąpić nieoczekiwane ponowne uruchomienie aplikacji. Jest to spowodowane tym, że po wymianie Konfiguracja powiązania nazwy hosta nie jest zsynchronizowana, co nie powoduje ponownego uruchomienia. Jednak niektóre bazowe zdarzenia magazynu (takie jak przełączanie awaryjne woluminu magazynu) mogą wykryć te rozbieżności i wymusić ponowne uruchomienie wszystkich procesów roboczych. Aby zminimalizować te typy ponownych uruchomień, należy ustawić dla *wszystkich miejsc* [Ustawienia aplikacji `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) . To ustawienie aplikacji *nie działa jednak* z aplikacjami Windows Communication Foundation (WCF).
 
 ## <a name="next-steps"></a>Następne kroki
 [Blokuj dostęp do gniazd nieprodukcyjnych](app-service-ip-restrictions.md)

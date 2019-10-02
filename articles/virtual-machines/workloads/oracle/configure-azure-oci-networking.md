@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: eb5d03d50a99978e4f3ee58fba206dd730f7d5fe
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100136"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802209"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Skonfiguruj bezpośrednie połączenie między platformą Azure a infrastrukturą chmurową Oracle  
 
 Aby utworzyć [zintegrowane środowisko z obsługą chmury](oracle-oci-overview.md) (wersja zapoznawcza), firma Microsoft i oprogramowanie Oracle oferują bezpośrednie połączenia między platformą Azure i usługą Oracle Cloud Infrastructure (OCI) za pośrednictwem usług [ExpressRoute](../../../expressroute/expressroute-introduction.md) i [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm). Za pośrednictwem połączeń ExpressRoute i FastConnect klienci mogą mieć małe opóźnienia, wysoką przepływność i prywatną łączność bezpośrednią między dwiema chmurami.
 
 > [!IMPORTANT]
-> Połączenie między Microsoft Azure i OCI jest na etapie wersji zapoznawczej. Aby włączyć łączność z małymi opóźnieniami między platformą Azure a OCI, Twoja subskrypcja platformy Azure musi być wyświetlona na liście dla tej funkcji. Musisz zarejestrować się w wersji zapoznawczej, wykonując ten krótki [formularz ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej możliwości, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Możesz również skontaktować się z przedstawicielem firmy Microsoft w celu włączenia tej wersji zapoznawczej. Dostęp do funkcji wersji zapoznawczej podlega dostępności i jest ograniczony przez firmę Microsoft w ramach własnego uznania. Zakończenie ankiety nie gwarantuje dostępu. Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie powinna być używana na potrzeby obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Połączenie między Microsoft Azure i OCI jest na etapie wersji zapoznawczej. Aby zapewnić łączność z niską opóźnieniami między platformą Azure a OCI, należy najpierw włączyć tę subskrypcję platformy Azure. Musisz zarejestrować się w wersji zapoznawczej, wykonując ten krótki [formularz ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej możliwości, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Możesz również skontaktować się z przedstawicielem firmy Microsoft w celu włączenia tej wersji zapoznawczej. Dostęp do funkcji wersji zapoznawczej podlega dostępności i jest ograniczony przez firmę Microsoft w ramach własnego uznania. Zakończenie ankiety nie gwarantuje dostępu. Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie powinna być używana na potrzeby obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 Na poniższej ilustracji przedstawiono ogólne omówienie połączeń:
 
@@ -35,9 +35,9 @@ Na poniższej ilustracji przedstawiono ogólne omówienie połączeń:
 
 * Aby nawiązać połączenie między platformą Azure a OCI, musisz mieć aktywną subskrypcję platformy Azure i aktywną dzierżawę OCI.
 
-* Połączenie jest możliwe tylko wtedy, gdy lokalizacja komunikacji równorzędnej usługi Azure ExpressRoute znajduje się w pobliżu lub w tej samej lokalizacji komunikacji równorzędnej co OCI FastConnect. Zobacz temat [ograniczenia wersji](oracle-oci-overview.md#preview-limitations)zapoznawczej.
+* Połączenie jest możliwe tylko wtedy, gdy lokalizacja komunikacji równorzędnej usługi Azure ExpressRoute znajduje się w pobliżu lub w tej samej lokalizacji komunikacji równorzędnej co OCI FastConnect. Zobacz temat [ograniczenia wersji zapoznawczej](oracle-oci-overview.md#preview-limitations).
 
-* Twoja subskrypcja platformy Azure musi być listy dozwolonych dla tej funkcji w wersji zapoznawczej.
+* Dla tej funkcji w wersji zapoznawczej należy włączyć subskrypcję platformy Azure.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Konfigurowanie bezpośredniej łączności między ExpressRoute i FastConnect
 
@@ -57,15 +57,15 @@ Na poniższej ilustracji przedstawiono ogólne omówienie połączeń:
 1. Utwórz bramę dynamicznej routingu (DRG). Będzie to potrzebne podczas tworzenia obwodu FastConnect. Aby uzyskać więcej informacji, zobacz dokumentację [dynamicznej bramy routingu](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) .
 1. Utwórz obwód FastConnect w ramach dzierżawy firmy Oracle. Aby uzyskać więcej informacji, zobacz [dokumentację firmy Oracle](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
   
-    * W obszarze Konfiguracja FastConnect wybierz **pozycję Microsoft Azure: ExpressRoute** jako dostawca.
+    * W obszarze Konfiguracja FastConnect wybierz pozycję **Microsoft Azure: ExpressRoute** jako dostawcę.
     * Wybierz bramę dynamicznego routingu, która została zainicjowana w poprzednim kroku.
     * Wybierz przepustowość, która ma zostać zainicjowana. W celu uzyskania optymalnej wydajności przepustowość musi być zgodna z przepustowością wybraną podczas tworzenia obwodu usługi ExpressRoute.
     * W **kluczu usługi dostawcy**Wklej klucz usługi ExpressRoute.
-    * Użyj pierwszej/30 prywatnej przestrzeni adresów IP używać miejsca w poprzednim kroku dla **podstawowego adresu IP protokołu BGP** i drugiej/30 prywatnej przestrzeni adresów IP dla pomocniczego adresu IP protokołu **BGP** .
+    * Użyj pierwszej/30 prywatnej przestrzeni adresów IP używać miejsca w poprzednim kroku dla **podstawowego adresu IP protokołu BGP** i drugiej/30 prywatnej przestrzeni adresów IP dla **POMOCNICZego adresu IP protokołu BGP** .
         * Przypisz pierwszy możliwy do użycia adres dla adresów IP Oracle (podstawowy i pomocniczy), a drugi adres adres IP protokołu BGP klienta (z perspektywy FastConnect). Pierwszy użyteczny adres IP to drugi adres IP w przestrzeni adresowej/30 (pierwszy adres IP jest zastrzeżony przez firmę Microsoft).
     * Kliknij przycisk **Utwórz**.
 1. Dokończ łączenie FastConnect z wirtualną siecią chmurową w ramach dzierżawy Oracle za pośrednictwem bramy routingu dynamicznego przy użyciu tabeli tras.
-1. Przejdź do platformy Azure i upewnij się, że **stan dostawcy** dla obwodu usługi ExpressRoute został zmieniony na zainicjowany i że Zainicjowano obsługę komunikacji równorzędnej typu **Azure Private** . Jest to wymaganie wstępne dla następujących kroków.
+1. Przejdź do platformy Azure i upewnij się, że **stan dostawcy** dla obwodu usługi ExpressRoute został zmieniony na **zainicjowany** i że Zainicjowano obsługę komunikacji równorzędnej typu **Azure Private** . Jest to wymaganie wstępne dla następujących kroków.
 
     ![Stan dostawcy ExpressRoute](media/configure-azure-oci-networking/exr-provider-status.png)
 1. Kliknij prywatną komunikację równorzędną **platformy Azure** . Szczegóły dotyczące komunikacji równorzędnej zostaną automatycznie skonfigurowane na podstawie informacji wprowadzonych podczas konfigurowania obwodu FastConnect.
@@ -75,11 +75,11 @@ Na poniższej ilustracji przedstawiono ogólne omówienie połączeń:
 ## <a name="connect-virtual-network-to-expressroute"></a>Łączenie sieci wirtualnej z usługą ExpressRoute
 
 1. Utwórz sieć wirtualną i bramę sieci wirtualnej, jeśli jeszcze tego nie zrobiono. Aby uzyskać szczegółowe informacje, zobacz [Przewodnik krok po kroku](../../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md).
-1. Skonfiguruj połączenie między bramą sieci wirtualnej i obwodem usługi ExpressRoute, wykonując [skrypt Terraform](https://github.com/microsoft/azure-oracle/tree/master/InterConnect-2) lub wykonując polecenie programu PowerShell w celu skonfigurowania [FastPath ExpressRoute](../../../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath).
+1. Skonfiguruj połączenie między bramą sieci wirtualnej i obwodem usługi ExpressRoute, wykonując [skrypt Terraform](https://github.com/microsoft/azure-oracle/tree/master/InterConnect-2) lub wykonując polecenie programu PowerShell w celu [skonfigurowania FastPath ExpressRoute](../../../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath).
 
 Po zakończeniu konfiguracji sieci można sprawdzić poprawność konfiguracji, klikając pozycję **Pobierz rekordy ARP** i **Pobierz tabelę tras** w bloku prywatnej komunikacji równorzędnej ExpressRoute w Azure Portal.
 
-## <a name="automation"></a>Automatyzacja
+## <a name="automation"></a>Automation
 
 Firma Microsoft stworzyła skrypty Terraform, aby umożliwić automatyczne wdrażanie połączeń sieciowych. Przed wykonaniem skryptów Terraform należy przeprowadzić uwierzytelnienie na platformie Azure, ponieważ wymagają one odpowiednich uprawnień w ramach subskrypcji platformy Azure. Uwierzytelnianie można wykonać przy użyciu jednostki [usługi Azure Active Directory](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) lub przy użyciu interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją Terraform](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html).
 

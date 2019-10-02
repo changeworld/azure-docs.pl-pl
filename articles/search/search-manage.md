@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c4b2a03e7e5c818453eaf4ad6881b2caba3b93c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647675"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719880"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Administrowanie usługą dla Azure Search w Azure Portal
 > [!div class="op_single_selector"]
-> * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
+> * [Program PowerShell](search-manage-powershell.md)
+> * [Interfejs API REST](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * @No__t języka [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)— 1 
 
 Azure Search to w pełni zarządzana usługa wyszukiwania oparta na chmurze służąca do tworzenia bogatego środowiska wyszukiwania w aplikacjach niestandardowych. W tym artykule omówiono zadania administracyjne usługi, które można wykonać w [Azure Portal](https://portal.azure.com) dla usługi wyszukiwania, która została już zainicjowana. Administrowanie usługami jest lekkie przez projektowanie, ograniczone do następujących zadań:
 
@@ -64,8 +64,8 @@ Na pulpicie nawigacyjnym monitorowanie zasobów jest ograniczone do informacji w
 
 Korzystając z interfejsu API REST Search Service, można programowo pobrać liczbę dokumentów i indeksów: 
 
-* [Pobieranie statystyki indeksu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Liczba dokumentów](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Pobierz statystyki indeksu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Liczenie dokumentów](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Odzyskiwanie po awarii i awaria usługi
 
@@ -77,12 +77,11 @@ Klienci używający [indeksatorów](search-indexer-overview.md) do wypełniania 
 
 Jeśli nie używasz indeksatorów, użyj kodu aplikacji do wypychania obiektów i danych do różnych usług wyszukiwania równolegle. Aby uzyskać więcej informacji, zobacz [wydajność i optymalizacja w Azure Search](search-performance-optimization.md).
 
-## <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
+## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
 
-Ponieważ Azure Search nie jest podstawowym rozwiązaniem magazynu danych, firma Microsoft nie udostępnia formalnego mechanizmu tworzenia i przywracania kopii zapasowych samoobsługi. Kod aplikacji używany do tworzenia i wypełniania indeksu jest opcją przywracania w przypadku usunięcia indeksu przez pomyłkę. 
+Ponieważ Azure Search nie jest podstawowym rozwiązaniem magazynu danych, firma Microsoft nie udostępnia formalnego mechanizmu tworzenia i przywracania kopii zapasowych samoobsługi. Można jednak użyć przykładowego kodu **"index-Backup-Restore"** w tym [Azure Search przykładowym repozytorium .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples) , aby utworzyć kopię zapasową definicji indeksu i migawki do serii plików JSON, a następnie użyć tych plików do przywrócenia indeksu, w razie potrzeby. To narzędzie umożliwia również przenoszenie indeksów między warstwami usług.
 
-Aby ponownie skompilować indeks, należy go usunąć (przy założeniu, że istnieje), ponownie utworzyć indeks w usłudze i załadować ponownie przez pobranie danych z podstawowego magazynu danych.
-
+W przeciwnym razie kod aplikacji używany do tworzenia i wypełniania indeksu jest opcją przywracania de facto w przypadku usunięcia indeksu przez pomyłkę. Aby ponownie skompilować indeks, należy go usunąć (przy założeniu, że istnieje), ponownie utworzyć indeks w usłudze i załadować ponownie przez pobranie danych z podstawowego magazynu danych.
 
 <a id="scale"></a>
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4c42959d46aa522042275456a87e590f9e009348
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: c5fb79fc3aa3297068f93b631d11e967c9345f4c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183066"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71717164"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpieczanie interfejsu API usługi Azure API Management przy użyciu Azure AD B2C
 
@@ -37,7 +37,7 @@ W przypadku zabezpieczania interfejsu API w usłudze Azure API Management przy u
 
 1. Przejdź do dzierżawy Azure AD B2C w [Azure Portal](https://portal.azure.com).
 1. W obszarze **Zarządzaj**wybierz pozycję **aplikacje**.
-1. Zapisz wartość w IDENTYFIKATORze **aplikacji** dla *webapp1* lub inną utworzoną wcześniej aplikację.
+1. Zapisz wartość w **identyfikatorze aplikacji** dla *webapp1* lub inną utworzoną wcześniej aplikację.
 
   ![Lokalizacja identyfikatora aplikacji aplikacji B2C w Azure Portal](media/secure-apim-with-b2c-token/portal-02-app-id.png)
 
@@ -53,7 +53,7 @@ Następnie uzyskaj dobrze znany adres URL konfiguracji dla jednego z Azure AD B2
     ![Dobrze znane hiperłącze URI na stronie uruchamiania teraz Azure Portal](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
 
 1. Wybierz hiperlink, aby przejść do strony OpenID Connect Connect dobrze znana konfiguracja.
-1. Na stronie, która zostanie otwarta w przeglądarce, Zapisz `issuer` wartość, na przykład:
+1. Na stronie, która zostanie otwarta w przeglądarce, Zapisz wartość `issuer`, na przykład:
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
@@ -74,12 +74,12 @@ Teraz można przystąpić do dodawania zasad ruchu przychodzącego w usłudze Az
 1. Wybierz pozycję **Interfejsy API**.
 1. Wybierz interfejs API, który ma być zabezpieczony za pomocą Azure AD B2C.
 1. Wybierz kartę **Projekt**.
-1. W obszarze **Przetwarzanie przychodzące**wybierz **\< / pozycję\>** Otwórz Edytor kodu zasad.
-1. Umieść następujący `<validate-jwt>` tag `<inbound>` wewnątrz zasad.
+1. W obszarze **Przetwarzanie przychodzące**wybierz pozycję **\< @ no__t-3 @ no__t-4** , aby otworzyć Edytor kodu zasad.
+1. Umieść Poniższy tag `<validate-jwt>` wewnątrz zasad `<inbound>`.
 
-    1. `url` Zaktualizuj wartość`<openid-config>` w elemencie za pomocą dobrze znanego adresu URL konfiguracji zasad.
-    1. Zaktualizuj element za pomocą identyfikatora aplikacji utworzonej wcześniej w dzierżawie usługi B2C (na przykład webapp1). `<audience>`
-    1. `<issuer>` Zaktualizuj element za pomocą zarejestrowanego wcześniej punktu końcowego wystawcy tokenu.
+    1. Zaktualizuj wartość `url` w elemencie `<openid-config>` za pomocą dobrze znanego adresu URL konfiguracji zasad.
+    1. Zaktualizuj element `<audience>` z IDENTYFIKATORem aplikacji utworzonej wcześniej w dzierżawie usługi B2C (na przykład *webapp1*).
+    1. Zaktualizuj element `<issuer>` z zarejestrowanym wcześniej punktem końcowym wystawcy tokenu.
 
     ```xml
     <policies>
@@ -103,19 +103,19 @@ Teraz można przystąpić do dodawania zasad ruchu przychodzącego w usłudze Az
 
 ## <a name="validate-secure-api-access"></a>Weryfikowanie bezpiecznego dostępu do interfejsu API
 
-Aby upewnić się, że tylko uwierzytelnione obiekty wywołujące mogą uzyskać dostęp do interfejsu API, możesz zweryfikować konfigurację usługi Azure [](https://www.getpostman.com/)API Management, wywołując interfejs API za pomocą programu Poster.
+Aby upewnić się, że tylko uwierzytelnione obiekty wywołujące mogą uzyskać dostęp do interfejsu API, możesz zweryfikować konfigurację usługi Azure API Management, wywołując interfejs API za pomocą programu [Poster](https://www.getpostman.com/).
 
 Aby wywołać interfejs API, wymagany jest token dostępu wystawiony przez Azure AD B2C i klucz subskrypcji APIM.
 
 ### <a name="get-an-access-token"></a>Pobranie tokenu dostępu
 
-Najpierw musisz mieć token wystawiony przez Azure AD B2C do użycia w `Authorization` nagłówku w programie Poster. Możesz uzyskać jeden z nich, korzystając z funkcji **Uruchom teraz** przepływu użytkownika tworzenia konta/logowania, który powinien zostać utworzony jako jedno z wymagań wstępnych.
+Najpierw musisz mieć token wystawiony przez Azure AD B2C do użycia w nagłówku `Authorization` w programie Poster. Możesz uzyskać jeden z nich, korzystając z funkcji **Uruchom teraz** przepływu użytkownika tworzenia konta/logowania, który powinien zostać utworzony jako jedno z wymagań wstępnych.
 
 1. Przejdź do dzierżawy Azure AD B2C w [Azure Portal](https://portal.azure.com).
 1. W obszarze **zasady**wybierz pozycję **przepływy użytkownika (zasady)** .
 1. Wybierz istniejący przepływ użytkownika rejestracji/logowania, na przykład *B2C_1_signupsignin1*.
 1. W przypadku **aplikacji**wybierz pozycję *webapp1*.
-1. Dla **adresu URL odpowiedzi**wybierz `https://jwt.ms`opcję.
+1. W obszarze **adres URL odpowiedzi**wybierz pozycję `https://jwt.ms`.
 1. Wybierz pozycję **Uruchom przepływ użytkownika**.
 
     ![Uruchom stronę przepływu użytkownika w celu zarejestrowania się w przepływie użytkownika w Azure Portal](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
@@ -131,8 +131,8 @@ Aplikacja kliencka (w tym przypadku) wywołująca opublikowany interfejs API mus
 
 1. Przejdź do wystąpienia usługi Azure API Management w [Azure Portal](https://portal.azure.com).
 1. Wybierz pozycję **Subskrypcje**.
-1. Wybierz wielokropek dla **produktu: Bez**ograniczeń wybierz pozycję **Pokaż/Ukryj klucze**.
-1. Zapisz **klucz podstawowy** dla produktu. Ten klucz jest używany dla `Ocp-Apim-Subscription-Key` nagłówka w żądaniu HTTP w programie Poster.
+1. Wybierz wielokropek dla **produktu: nieograniczone**, a następnie wybierz pozycję **Pokaż/Ukryj klucze**.
+1. Zapisz **klucz podstawowy** dla produktu. Ten klucz jest używany dla nagłówka `Ocp-Apim-Subscription-Key` w żądaniu HTTP w programie Poster.
 
 ![Strona klucza subskrypcji z kluczami Pokaż/Ukryj wybrane w Azure Portal](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
 
@@ -140,15 +140,15 @@ Aplikacja kliencka (w tym przypadku) wywołująca opublikowany interfejs API mus
 
 Po zarejestrowaniu tokenu dostępu i klucza subskrypcji APIM można już sprawdzić, czy bezpieczny dostęp do interfejsu API został prawidłowo skonfigurowany.
 
-1. Utwórz nowe `GET` żądanie w programie [Poster](https://www.getpostman.com/). W polu adres URL żądania Określ punkt końcowy listy głośników interfejsu API, który został opublikowany jako jedno z wymagań wstępnych. Przykład:
+1. Utwórz nowe żądanie `GET` w programie [Poster](https://www.getpostman.com/). W polu adres URL żądania Określ punkt końcowy listy głośników interfejsu API, który został opublikowany jako jedno z wymagań wstępnych. Na przykład:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
 1. Następnie Dodaj następujące nagłówki:
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     | --- | ----- |
-    | `Authorization` | Zapisana wcześniej wartość tokenu zakodowana, poprzedzona `Bearer ` znakiem (z uwzględnieniem odstępu po "okaziciela") |
+    | `Authorization` | Zarejestrowano wcześniej wartość tokenu zakodowanego, poprzedzoną `Bearer ` (Dodaj odstęp po "okaziciela") |
     | `Ocp-Apim-Subscription-Key` | APIM klucz subskrypcji został zarejestrowany wcześniej |
 
     Adres URL i **nagłówki** żądania **pobrania** powinny wyglądać podobnie do:
@@ -184,7 +184,7 @@ Po zarejestrowaniu tokenu dostępu i klucza subskrypcji APIM można już sprawdz
 
 ### <a name="test-an-insecure-api-call"></a>Testowanie wywołania niezabezpieczonego interfejsu API
 
-Po pomyślnym wykonaniu żądania Przetestuj przypadek niepowodzenia, aby upewnić się, że wywołania interfejsu API z nieprawidłowym tokenem zostaną odrzucone zgodnie z oczekiwaniami. Jednym ze sposobów przeprowadzenia testu jest dodanie lub zmiana kilku znaków w wartości tokenu, a następnie wykonanie tego samego `GET` żądania co poprzednio.
+Po pomyślnym wykonaniu żądania Przetestuj przypadek niepowodzenia, aby upewnić się, że wywołania interfejsu API z *nieprawidłowym* tokenem zostaną odrzucone zgodnie z oczekiwaniami. Jednym ze sposobów przeprowadzenia testu jest dodanie lub zmiana kilku znaków w wartości tokenu, a następnie wykonanie tego samego żądania `GET` tak jak wcześniej.
 
 1. Dodaj kilka znaków do wartości tokenu, aby symulować nieprawidłowy token. Na przykład Dodaj wartość "Nieprawidłowa" do wartości tokenu:
 
@@ -199,21 +199,21 @@ Po pomyślnym wykonaniu żądania Przetestuj przypadek niepowodzenia, aby upewni
     }
     ```
 
-Jeśli zobaczysz `401` kod stanu, sprawdzono, że tylko wywołujący mający prawidłowy token dostępu wystawiony przez Azure AD B2C mogą wykonywać pomyślne żądania do interfejsu API usługi Azure API Management.
+Jeśli zobaczysz kod stanu `401`, sprawdzono, że tylko wywołania z prawidłowym tokenem dostępu wystawionego przez Azure AD B2C mogą wykonywać pomyślne żądania do interfejsu API API Management platformy Azure.
 
 ## <a name="support-multiple-applications-and-issuers"></a>Obsługa wielu aplikacji i wystawców
 
-Niektóre aplikacje zwykle współpracują z pojedynczym interfejsem API REST. Aby umożliwić wielu aplikacjom wywoływanie interfejsu API, Dodaj ich identyfikatory aplikacji do `<audiences>` elementu w zasadach APIM przychodzących.
+Niektóre aplikacje zwykle współpracują z pojedynczym interfejsem API REST. Aby umożliwić interfejsowi API akceptowanie tokenów przeznaczonych dla wielu aplikacji, Dodaj ich identyfikatory aplikacji do elementu `<audiences>` w zasadach ruchu przychodzącego APIM.
 
 ```XML
-<!-- Accept requests from multiple applications -->
+<!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
     <audience>66666666-0000-0000-0000-666666666666</audience>
 </audiences>
 ```
 
-Podobnie aby obsługiwać wiele wystawców tokenów, Dodaj ich identyfikatory URI punktu końcowego `<audiences>` do elementu w zasadach APIM przychodzących.
+Podobnie aby obsługiwać wiele wystawców tokenów, Dodaj ich identyfikatory URI punktu końcowego do elementu `<issuers>` w zasadach ruchu przychodzącego APIM.
 
 ```XML
 <!-- Accept tokens from multiple issuers -->
@@ -225,7 +225,7 @@ Podobnie aby obsługiwać wiele wystawców tokenów, Dodaj ich identyfikatory UR
 
 ## <a name="migrate-to-b2clogincom"></a>Migrowanie do b2clogin.com
 
-Jeśli masz interfejs API APIM, który sprawdza poprawność tokenów wystawionych przez starszy `login.microsoftonline.com` punkt końcowy, należy przeprowadzić migrację interfejsu API i aplikacji, które go wywołują, aby używać tokenów wystawionych przez [b2clogin.com](b2clogin.md).
+Jeśli masz interfejs API APIM, który sprawdza poprawność tokenów wystawionych przez starszy punkt końcowy `login.microsoftonline.com`, należy migrować interfejs API i aplikacje, które go wywołują, aby używać tokenów wystawionych przez [b2clogin.com](b2clogin.md).
 
 Ten ogólny proces można wykonać w celu przeprowadzenia migracji etapowej:
 
@@ -261,4 +261,4 @@ W poniższym przykładzie zasady ruchu przychodzącego APIM przedstawiają spos�
 
 Aby uzyskać dodatkowe informacje na temat zasad usługi Azure API Management, zobacz [indeks odwołań zasad APIM](../api-management/api-management-policies.md).
 
-Informacje na temat migrowania interfejsów API sieci Web opartych na OWIN i ich aplikacji do b2clogin.com w celu migrowania internetowego [interfejsu API opartego na usłudze Owin do b2clogin.com](multiple-token-endpoints.md).
+Informacje na temat migrowania interfejsów API sieci Web opartych na OWIN i ich aplikacji do b2clogin.com w celu [migrowania internetowego interfejsu API opartego na usłudze Owin do b2clogin.com](multiple-token-endpoints.md).

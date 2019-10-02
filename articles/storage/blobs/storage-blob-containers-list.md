@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/01/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 06454798deb4a5bc5064e28535a837f73c083e1c
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: a76b83218a194c2b5cbf3ce582e8094014004123
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671301"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803381"
 ---
 # <a name="list-blob-containers-with-net"></a>Wyświetlanie listy kontenerów obiektów BLOB przy użyciu platformy .NET
 
@@ -30,21 +30,21 @@ Przeciążenia tych metod zawierają dodatkowe opcje zarządzania kontenerami zw
 
 ### <a name="manage-how-many-results-are-returned"></a>Zarządzanie liczbą zwracanych wyników
 
-Domyślnie operacja tworzenia listy zwraca do 5000 wyników jednocześnie. Aby zwrócić mniejszy zestaw wyników, podaj wartość różną od zera dla `maxresults` parametru podczas wywoływania jednej z metod **ListContainerSegmented** .
+Domyślnie operacja tworzenia listy zwraca do 5000 wyników jednocześnie. Aby zwrócić mniejszy zestaw wyników, podaj wartość różną od zera dla parametru `maxresults` podczas wywoływania jednej z metod **ListContainerSegmented** .
 
-Jeśli konto magazynu zawiera więcej niż 5000 kontenerów lub jeśli określono wartość w `maxresults` taki sposób, że operacja tworzenia listy zwróci podzestaw kontenerów na koncie magazynu, usługa Azure Storage zwraca *token kontynuacji* z Lista kontenerów. Token kontynuacji jest wartością nieprzezroczystą, która służy do pobierania następnego zestawu wyników z usługi Azure Storage.
+Jeśli konto magazynu zawiera więcej niż 5000 kontenerów lub jeśli określono wartość `maxresults` w taki sposób, że operacja tworzenia listy zwróci podzestaw kontenerów na koncie magazynu, usługa Azure Storage zwraca *token kontynuacji* z listą opakowania. Token kontynuacji jest wartością nieprzezroczystą, która służy do pobierania następnego zestawu wyników z usługi Azure Storage.
 
 W kodzie Sprawdź wartość tokenu kontynuacji, aby określić, czy ma ona wartość null. Gdy token kontynuacji ma wartość null, zestaw wyników jest zakończony. Jeśli token kontynuacji nie ma wartości null, ponownie wywołaj **ListContainersSegmented** lub **ListContainersSegmentedAsync** , przekazując token kontynuacji, aby pobrać następny zestaw wyników, dopóki token kontynuacji nie będzie miał wartości null.
 
 ### <a name="filter-results-with-a-prefix"></a>Filtruj wyniki przy użyciu prefiksu
 
-Aby odfiltrować listę kontenerów, Określ ciąg dla `prefix` parametru. Ciąg prefiksu może zawierać jeden lub więcej znaków. Usługa Azure Storage zwraca tylko te kontenery, których nazwy rozpoczynają się od tego prefiksu.
+Aby odfiltrować listę kontenerów, Określ ciąg dla parametru `prefix`. Ciąg prefiksu może zawierać jeden lub więcej znaków. Usługa Azure Storage zwraca tylko te kontenery, których nazwy rozpoczynają się od tego prefiksu.
 
 ### <a name="return-container-metadata"></a>Zwracanie metadanych kontenera
 
 Aby zwrócić metadane kontenera z wynikami, określ wartość **metadanych** dla wyliczenia [ContainerListDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) . Usługa Azure Storage obejmuje metadane z każdym zwracanym kontenerem, dlatego nie trzeba również wywoływać jednej z metod **FetchAttributes** , aby pobrać metadane kontenera.
 
-## <a name="example-list-containers"></a>Przykład: Wyświetlanie listy kontenerów
+## <a name="example-list-containers"></a>Przykład: kontenery list
 
 Poniższy przykład asynchronicznie wyświetla listę kontenerów na koncie magazynu, które zaczynają się od określonego prefiksu. Przykład zawiera listę kontenerów z przyrostem 5 wyników w czasie i używa tokenu kontynuacji w celu uzyskania następnego segmentu wyników. Przykład zwraca również metadane kontenera z wynikami.
 
@@ -99,5 +99,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Zobacz także
 
-[Kontenery](/rest/api/storageservices/list-containers2)
-list[wyliczające zasoby obiektów BLOB](/rest/api/storageservices/enumerating-blob-resources)
+[Kontenery List](/rest/api/storageservices/list-containers2)
+[wyliczanie zasobów obiektów BLOB](/rest/api/storageservices/enumerating-blob-resources)

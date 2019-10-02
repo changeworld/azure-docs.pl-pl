@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Rozpoznawanie mowy, obiektyw-C-Speech Service'
+title: 'Szybki Start: Rozpoznawanie mowy, obiektyw-C-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak rozpoznawać mowę w celu macOS przy użyciu zestawu Speech SDK
 services: cognitive-services
@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 45cd1210ee6af3c456171a427729f6e16caf2d58
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f843636b0c4f604af4984c6d75bb6c3cae75d275
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559355"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803293"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w celu języka C na macOS przy użyciu zestawu Speech SDK
+# <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku C na macOS przy użyciu zestawu Speech SDK
+
+Przewodniki Szybki Start są również dostępne dla [syntezy mowy](quickstart-text-to-speech-objectivec-macos.md).
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -34,10 +36,8 @@ Przed rozpoczęciem pracy zapoznaj się z poniższą listą wymagań wstępnych:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.6.0`.
-
 Zestaw SDK mowy Cognitive Services dla komputerów Mac jest dystrybuowany jako pakiet platformy.
-Może być używany w projektach Xcode jako [CocoaPod](https://cocoapods.org/)lub pobierany z https://aka.ms/csspeech/macosbinary i połączony ręcznie. Ten przewodnik używa CocoaPod.
+Mogą być używane w projektach Xcode jako [CocoaPod](https://cocoapods.org/)lub pobierane z https://aka.ms/csspeech/macosbinary i połączone ręcznie. Ten przewodnik używa CocoaPod.
 
 ## <a name="create-an-xcode-project"></a>Tworzenie projektu Xcode
 
@@ -59,21 +59,21 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
 1. Ustaw uprawnienia dostępu do sieci i mikrofonu. Kliknij nazwę aplikacji w pierwszym wierszu przeglądu po lewej stronie, aby przejść do konfiguracji aplikacji, a następnie wybierz kartę "możliwości".
     1. Włącz ustawienie "piaskownica aplikacji" dla aplikacji.
     1. Włącz pola wyboru dla dostępu "połączenia wychodzące" i "mikrofon".
-    ![Ustawienia piaskownicy](media/sdk/qs-objectivec-macos-sandbox.png)
-1. Aplikacja musi również zadeklarować użycie mikrofonu w `Info.plist` pliku. Kliknij plik w przeglądzie i Dodaj klucz "Opis użycia mikrofonu prywatności" z wartością, taką jak "mikrofon jest wymagany w przypadku rozpoznawania mowy".
-    ![Ustawienia w info. plist](media/sdk/qs-objectivec-macos-info-plist.png)
+    ![Sandbox Settings @ no__t-1
+1. Aplikacja musi również zadeklarować użycie mikrofonu w pliku `Info.plist`. Kliknij plik w przeglądzie i Dodaj klucz "Opis użycia mikrofonu prywatności" z wartością, taką jak "mikrofon jest wymagany w przypadku rozpoznawania mowy".
+    ![Settings w info. plist @ no__t-1
 1. Zamknij projekt Xcode. Będzie można użyć innego wystąpienia później po skonfigurowaniu CocoaPods.
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Zainstaluj zestaw SDK jako CocoaPod
 
 1. Zainstaluj Menedżera zależności CocoaPod zgodnie z opisem w [instrukcje dotyczące instalacji](https://guides.cocoapods.org/using/getting-started.html).
 1. Przejdź do katalogu aplikacji przykładowej (`helloworld`). Umieść plik tekstowy o nazwie `Podfile` i następującej zawartości w tym katalogu:  
-   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
-1. Przejdź do `helloworld` katalogu w terminalu i uruchom polecenie `pod install`. Spowoduje to wygenerowanie `helloworld.xcworkspace` obszaru roboczego Xcode zawierającego zarówno przykładową aplikację, jak i zestaw mowy SDK jako zależność. Ten obszar roboczy zostanie użyty w poniższej tabeli.
+   [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
+1. Przejdź do katalogu `helloworld` w terminalu i uruchom polecenie `pod install`. Spowoduje to wygenerowanie @no__tego obszaru roboczego Xcode-0 zawierającego zarówno przykładową aplikację, jak i zestaw Speech SDK jako zależność. Ten obszar roboczy zostanie użyty w poniższej tabeli.
 
 ## <a name="add-the-sample-code"></a>Dodawanie przykładowego kodu
 
-1. `helloworld.xcworkspace` Otwórz obszar roboczy w Xcode.
+1. Otwórz obszar roboczy `helloworld.xcworkspace` w Xcode.
 1. Zastąp zawartość automatycznie wygenerowanego pliku `AppDelegate.m` następującą zawartością:  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
 1. Zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.
@@ -82,7 +82,7 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
 ## <a name="build-and-run-the-sample"></a>Kompilowanie i uruchamianie przykładu
 
 1. Uwidocznij dane wyjściowe debugowania (**View** > **Debug Area** > **Activate Console** — Widok > Obszar debugowania > Aktywuj konsolę).
-1. Kompiluj i uruchamiaj przykładowy kod **, wybierając** > pozycję**Uruchom** z menu lub klikając przycisk **Odtwórz** .
+1. Kompiluj i uruchamiaj przykładowy kod, wybierając **produkt** > **Run** z menu lub klikając przycisk **Odtwórz** .
 1. Po kliknięciu przycisku i rozpoczęciu kilku wyrazów powinien zostać wyświetlony tekst mówiony w dolnej części ekranu. Po uruchomieniu aplikacji po raz pierwszy powinien zostać wyświetlony monit o przyznanie aplikacji dostępu do mikrofonu na komputerze.
 
 ## <a name="next-steps"></a>Następne kroki

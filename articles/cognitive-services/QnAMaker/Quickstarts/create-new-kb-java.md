@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie bazy wiedzy — środowisko REST, Java — QnA Maker'
+title: 'Szybki start: tworzenie bazy wiedzy — środowisko REST, Java — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Ten przewodnik Szybki start oparty na protokole Java REST zawiera omówienie programistycznego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która zostanie wyświetlona na pulpicie nawigacyjnym platformy Azure w ramach konta interfejsu API usługi Cognitive Services.
 services: cognitive-services
@@ -8,20 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 06e2a772bfad7b1964f813a6cb6266efe61c6ccf
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c5a1af0b26f30cac39a76c4480848fbe1d75477b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206855"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803105"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Szybki start: Tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Java
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Java
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API.
 
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* [Środowisko Go w wersji 1.10.1](https://golang.org/dl/)
+* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal.
+
+[Przykładowy kod](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java) jest dostępny w repozytorium GitHub dla QNA Maker przy użyciu języka Java.
 
 ## <a name="create-a-knowledge-base-file"></a>Tworzenie pliku bazy wiedzy
 
@@ -34,7 +43,11 @@ Na początku pliku `CreateKB.java` dodaj następujące wiersze, aby dodać niezb
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Dodawanie wymaganych stałych
-Po poprzednich wymaganych zależnościach dodaj wymagane stałe do klasy `CreateKB` umożliwiające dostęp do usługi QnA Maker. Zastąp wartość zmiennej `subscriptionKey` własnym kluczem usługi QnA Maker. Nie jest konieczne dodawanie końcowego nawiasu klamrowego, aby zakończyć klasę — znajduje się on w ostatnim fragmencie kodu na końcu tego przewodnika Szybki Start.
+Po poprzednich wymaganych zależnościach dodaj wymagane stałe do klasy `CreateKB` umożliwiające dostęp do usługi QnA Maker. 
+
+Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać nazwę klucza i zasobu, wybierz pozycję **Szybki Start** w Azure Portal dla zasobu QNA Maker. 
+
+Nie jest konieczne dodawanie końcowego nawiasu klamrowego, aby zakończyć klasę — znajduje się on w ostatnim fragmencie kodu na końcu tego przewodnika Szybki Start.
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
 
@@ -100,7 +113,7 @@ Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia:
 ```
 
 ## <a name="add-a-main-method"></a>Dodawanie metody głównej
-Metoda główna tworzy bazę wiedzy, a następnie wykonuje sondowanie pod kątem stanu. Identyfikator operacji jest zwracany w **lokalizacji**pola nagłówka odpowiedzi post, a następnie używany jako część trasy w żądaniu get. `while` Pętla ponawia próbę stanu, jeśli nie została ukończona.
+Metoda główna tworzy bazę wiedzy, a następnie wykonuje sondowanie pod kątem stanu. Identyfikator operacji jest zwracany w **lokalizacji**pola nagłówka odpowiedzi post, a następnie używany jako część trasy w żądaniu get. Pętla `while` ponawia próbę stanu, jeśli nie została ukończona.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

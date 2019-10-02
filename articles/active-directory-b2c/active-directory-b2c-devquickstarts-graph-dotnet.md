@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 02765538ce8a351db539438837b6426c0896d2d4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71701894"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802050"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: korzystanie z usługi Azure AD interfejs API programu Graph
 
@@ -49,19 +49,11 @@ Aby korzystać z interfejs API programu Graph usługi Azure AD z dzierżawą B2C
 
 ### <a name="assign-api-access-permissions"></a>Przypisywanie uprawnień dostępu do interfejsu API
 
-1. Na stronie Przegląd **zarejestrowanej aplikacji** wybierz pozycję **Ustawienia**.
-1. W obszarze **dostęp do interfejsu API**wybierz pozycję **wymagane uprawnienia**.
-1. Wybierz pozycję **Windows Azure Active Directory**.
-1. W obszarze **uprawnienia aplikacji**wybierz pozycję **Odczytuj i Zapisz dane katalogu**.
-1. Wybierz pozycję **Zapisz**.
-1. Wybierz pozycję **Udziel uprawnień**, a następnie wybierz pozycję **tak**. Pełne propagowanie uprawnień może potrwać kilka minut.
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="create-client-secret"></a>Utwórz klucz tajny klienta
 
-1. W obszarze **dostęp do interfejsu API**wybierz pozycję **klucze**.
-1. Wprowadź opis klucza w polu **Opis klucza** . Na przykład *klucz zarządzania*.
-1. Wybierz **okres** ważności, a następnie wybierz pozycję **Zapisz**.
-1. Zapisz **wartość**klucza. Ta wartość jest używana do konfiguracji w późniejszym kroku.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Masz teraz aplikację, która ma uprawnienia do *tworzenia*, *odczytywania*i *aktualizowania* użytkowników w dzierżawie Azure AD B2C. Przejdź do następnej sekcji, aby dodać uprawnienia do *usuwania* i *aktualizowania hasła* użytkownika.
 

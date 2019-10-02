@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Biblioteka kliencka programu Personalizacja dla języka Python | Microsoft Docs'
+title: 'Szybki Start: Biblioteka kliencka programu Personalizacja dla języka Python | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Rozpocznij pracę z biblioteką klienta narzędzia Personalizacja dla języka Python za pomocą pętli szkoleniowej.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 877a28e5f672bbd61bad2b4c5c9175c7dafa71ab
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345334"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802528"
 ---
-# <a name="quickstart-personalize-client-library-for-python"></a>Szybki start: Personalizowanie biblioteki klienckiej dla języka Python
+# <a name="quickstart-personalize-client-library-for-python"></a>Szybki Start: Personalizowanie biblioteki klienckiej dla języka Python
 
 Wyświetl spersonalizowaną zawartość w tym przewodniku szybki start dla języka Python za pomocą usługi personalizacji.
 
@@ -26,7 +26,7 @@ Rozpocznij pracę z biblioteką klienta personalizacji dla języka Python. Wykon
  * Ustalanie rangi listy akcji do personalizacji.
  * Ocenę nagrody raportu wskazującej na powodzenie najwyższej funkcjonalnej akcji.
 
-[Przykłady pakietów (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Pakiet (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/)—[przykłady](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)  | 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -54,8 +54,8 @@ Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azur
 
 Po otrzymaniu klucza z subskrypcji próbnej lub zasobu Utwórz dwie [zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `PERSONALIZER_KEY`dla klucza zasobu.
-* `PERSONALIZER_ENDPOINT`dla punktu końcowego zasobu.
+* `PERSONALIZER_KEY` dla klucza zasobu.
+* `PERSONALIZER_ENDPOINT` dla punktu końcowego zasobu.
 
 W Azure Portal wartości klucza i punktu końcowego są dostępne na stronie **Szybki Start** .
 
@@ -67,8 +67,6 @@ Zainstaluj bibliotekę klienta programu Personalizacja dla języka Python za pom
 ```console
 pip install azure-cognitiveservices-personalizer
 ```
-
-Jeśli używasz środowiska IDE programu Visual Studio, Biblioteka kliencka jest dostępna jako pakiet NuGet do pobrania.
 
 ## <a name="change-the-model-update-frequency"></a>Zmień częstotliwość aktualizacji modelu
 
@@ -98,7 +96,7 @@ Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą bi
 
 ## <a name="create-a-new-python-application"></a>Tworzenie nowej aplikacji w języku Python
 
-Utwórz nową aplikację w języku Python przy użyciu preferowanego edytora lub `sample.py`środowiska IDE o nazwie. 
+Utwórz nową aplikację w języku Python przy użyciu preferowanego edytora lub środowiska IDE o nazwie `sample.py`. 
 
 ## <a name="add-the-dependencies"></a>Dodawanie zależności
 
@@ -108,19 +106,21 @@ W katalogu projektu Otwórz plik **Sample.py** w preferowanym edytorze lub w śr
 
 ## <a name="add-personalizer-resource-information"></a>Dodawanie informacji o zasobach personalizacji
 
-W klasie **program** Utwórz zmienne dla klucza i punktu końcowego usługi Azure Resource pobrane ze zmiennych środowiskowych o nazwie `PERSONALIZER_RESOURCE_KEY` i. `PERSONALIZER_RESOURCE_ENDPOINT` Jeśli po uruchomieniu aplikacji zostały utworzone zmienne środowiskowe, Edytor, środowisko IDE lub powłoka, na których działa, będzie musiał zostać zamknięte i ponownie załadowane w celu uzyskania dostępu do zmiennej. Metody zostaną utworzone w dalszej części tego przewodnika Szybki Start.
+Utwórz zmienne dla klucza i punktu końcowego usługi Azure Resource ściągnięte ze zmiennych środowiskowych o nazwie `PERSONALIZER_RESOURCE_KEY` i `PERSONALIZER_RESOURCE_ENDPOINT`. Jeśli po uruchomieniu aplikacji zostały utworzone zmienne środowiskowe, Edytor, środowisko IDE lub powłoka, na których działa, będzie musiał zostać zamknięte i ponownie załadowane w celu uzyskania dostępu do zmiennej. Metody zostaną utworzone w dalszej części tego przewodnika Szybki Start.
+
+Nazwa zasobu jest częścią adresu URL punktu końcowego: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Tworzenie klienta programu Personalizacja
 
-Następnie Utwórz metodę zwracającą klienta programu Personalizacja. Parametr do metody ma `PERSONALIZER_RESOURCE_ENDPOINT` wartość, a ApiKey `PERSONALIZER_RESOURCE_KEY`jest.
+Następnie Utwórz metodę zwracającą klienta programu Personalizacja. Parametr do metody jest `PERSONALIZER_RESOURCE_ENDPOINT`, a ApiKey jest `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-python[Create the Personalizer client](~/samples-personalizer/quickstarts/python/sample.py?name=Client)]
 
 ## <a name="get-content-choices-represented-as-actions"></a>Pobierz opcje zawartości reprezentowane jako akcje
 
-Akcje reprezentują opcje zawartości, które chcesz spersonalizować. Dodaj następujące metody do klasy program, aby uzyskać dane wejściowe użytkownika z wiersza polecenia dla pory dnia i bieżącego preferencji żywności.
+Akcje reprezentują opcje zawartości, które chcesz spersonalizować. Dodaj następujące metody, aby uzyskać dane wejściowe użytkownika z wiersza polecenia dla pory dnia i bieżącego preferencji żywności.
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
@@ -132,7 +132,7 @@ Akcje reprezentują opcje zawartości, które chcesz spersonalizować. Dodaj nas
 
 Pętla szkoleniowa personalizacji jest cyklem wywołań [rangi](#request-a-rank) i [nagrody](#send-a-reward) . W tym przewodniku szybki start każdy wywołania rangi, aby spersonalizować zawartość, nastąpi wywołanie zarobkowe, aby poinformować program Personalizuj, jak dobrze zaklasyfikował zawartość usługi. 
 
-Poniższy kod w `main` metodzie jest pętlą przez cykl, który prosi użytkownika o ich preferencje w wierszu polecenia, wysyłając te informacje do narzędzia Personalizowanie do rangi, prezentując wybór rangi do klienta, aby wybrać spośród , a następnie wysłanie nagrody do programu Personalizowanie sygnalizujące, jak dobrze ta usługa w klasyfikacji zaznaczenia.
+Poniższy kod prowadzi pętlę przez cykl monitowania użytkownika o ich preferencje w wierszu polecenia, wysyłając te informacje do narzędzia personalizacji do rangi, prezentując wybór rangi do klienta, aby wybrać spośród listy, a następnie wysłać wynagrodzenie do narzędzia Personalizacja Sygnalizowanie działania usługi w klasyfikacji zaznaczenia.
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=mainLoop&highlight=9,10,29)]
 
@@ -146,7 +146,7 @@ Dodaj następujące metody, które [pobierają Opcje zawartości](#get-content-c
 
 ## <a name="request-a-rank"></a>Żądaj rangi
 
-Aby ukończyć żądanie rangi, program prosi o preferencje użytkownika w celu utworzenia `currentContent` opcji zawartości. Proces może utworzyć zawartość, która ma zostać wykluczona z rangi `excludeActions`, pokazana jako. Żądanie rangi wymaga akcji, currentContext, excludeActions i unikatowego identyfikatora zdarzenia rangi (jako identyfikatora GUID), aby otrzymać żądaną odpowiedź. 
+Aby ukończyć żądanie rangi, program prosi o preferencje użytkownika w celu utworzenia `currentContent` opcji zawartości. Proces może utworzyć zawartość, która ma zostać wykluczona z rangi, pokazana jako `excludeActions`. Żądanie rangi wymaga akcji, currentContext, excludeActions i unikatowego identyfikatora zdarzenia rangi (jako identyfikatora GUID), aby otrzymać żądaną odpowiedź. 
 
 Ten przewodnik Szybki Start zawiera proste funkcje kontekstu o porze dnia i preferencjach żywności dla użytkowników. W systemach produkcyjnych określenie i [Ocena](concept-feature-evaluation.md) [działań i funkcji](concepts-features.md) może być nieuproszczona.  
 

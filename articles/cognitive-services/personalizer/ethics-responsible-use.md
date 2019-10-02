@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: f565d95f8270612a8d83dd44a1e1bb895d1a4373
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662781"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720238"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Wytyczne dotyczące odpowiedzialnej implementacji personalizacji
 
@@ -25,7 +25,7 @@ Te wytyczne nie są przeznaczone jako porady prawne i należy oddzielnie upewni�
 
 Ponadto podczas projektowania aplikacji przy użyciu narzędzia personalizacji należy wziąć pod uwagę szeroki zestaw obowiązków podczas opracowywania systemu AI skoncentrowanego na danych, w tym etyki, ochrony prywatności, bezpieczeństwa, bezpieczeństwa, dołączania, przejrzystości i odpowiedzialności. Więcej informacji na ten temat można znaleźć w sekcji [zalecane odczytywanie](#recommended-reading) .
 
-Możesz użyć poniższej zawartości jako listy początkowych list kontrolnych i dostosować ją do danego scenariusza. Ten dokument zawiera dwa główne sekcje: Pierwszy jest przeznaczony do wyróżniania właściwych kwestii związanych z użyciem podczas wybierania scenariuszy, funkcji i korzyści dla narzędzia Personalizacja. Druga należy wziąć pod uwagę, że w przypadku tworzenia systemów AI należy uwzględnić zestaw wartości Microsoft, a także zapewnia sugestie z możliwością podejmowania działań i ryzyka związane z używaniem przez niego personalizacji. 
+Możesz użyć poniższej zawartości jako listy początkowych list kontrolnych i dostosować ją do danego scenariusza. Ten dokument zawiera dwa główne sekcje: pierwszy jest przeznaczony do wyróżniania właściwych zagadnień związanych z użyciem podczas wybierania scenariuszy, funkcji i korzyści dla narzędzia Personalizacja. Druga należy wziąć pod uwagę, że w przypadku tworzenia systemów AI należy uwzględnić zestaw wartości Microsoft, a także zapewnia sugestie z możliwością podejmowania działań i ryzyka związane z używaniem przez niego personalizacji. 
 
 
 ## <a name="your-responsibility"></a>Twoja odpowiedzialność
@@ -53,17 +53,18 @@ Użycie usługi, która uczy się do personalizacji zawartości i interfejsów u
 Przykłady użycia programu personalizacji z podwyższonym prawdopodobieństwem negatywnych efektów ubocznych lub brakiem przejrzystości obejmują scenariusze, w których "wynagrodzenie" zależy od wielu długoterminowych, złożonych czynników, które w przypadku nadmiernego uzyskania swobodnego wynagrodzenia mogą mieć niekorzystny wpływ wyniki dla osób indywidualnych. Są one traktowane jako "wynikowe" Opcje lub opcje, które wiążą się z ryzykiem szkody. Na przykład: 
 
 
-* **Finanse**: Personalizowanie ofert w przypadku pożyczek, finansów i produktów ubezpieczeniowych, w których czynniki ryzyka opierają się na danych, które nie są dla nich widoczne, nie mogą uzyskać ani nie mogą zgłosić sporu. 
+* **Finanse**: Personalizowanie ofert dotyczących pożyczek, finansów i produktów ubezpieczeniowych, w przypadku których czynniki ryzyka opierają się na danych, na których nie wiadomo, nie mogą uzyskać ani nie mogą się zakwestionować. 
 * **Edukacja**: Personalizowanie rang dla kursów szkolnych i instytucji edukacyjnych, w których zalecenia mogą propagować bias i zmniejszać świadomość użytkowników w innych opcjach.
-* **Demokracja i projektowi Civic Innovation uczestnictwo**: Personalizowanie zawartości dla użytkowników, którzy mają wpływ na opinie, są wynikowe i manipulowane.
-* **Ocena nagrody**innych firm: Personalizowanie elementów w przypadku, gdy wynagrodzenie jest oparte na drugiej ocenie użytkownika przez inną firmę, a nie z wynagrodzeniem wygenerowanym przez własne zachowanie użytkownika.
-* **Nietolerancja do eksploracji**: Wszelkie sytuacje, w których zachowanie programu Personalizujer może spowodować szkody.
+* **Demokracja i projektowi Civic Innovation uczestnictwo**: Personalizowanie zawartości dla użytkowników mających na celu wpływanie opinii jest wynikowe i manipulowane.
+* **Ocena nagrody**innych firm: Personalizacja elementów w przypadku, gdy wynagrodzenie jest oparte na drugiej ocenie użytkownika przez inną firmę, a nie z wynagrodzeniem wygenerowanym przez własne zachowanie użytkownika.
+* **Nietolerancja do eksploracji**: każda sytuacja, w której zachowanie eksplorowania może spowodować szkody.
 
 Podczas wybierania przypadków użycia dla personalizacji:
 
 * Rozpocznij proces projektowania, biorąc pod uwagę, jak Personalizacja pomaga użytkownikom.
 * Należy wziąć pod uwagę negatywne konsekwencje w świecie rzeczywistym, jeśli niektóre elementy nie są klasyfikowane dla użytkowników ze względu na wzorce personalizacji lub eksplorację.
-* Rozważ samoobsługowe pętle Prophecy. Może się tak zdarzyć, jeśli pozostała Personalizacja pociąga za siebie model, dzięki czemu może później dalej wykluczyć grupę demograficzną z dostępu do odpowiedniej zawartości. Na przykład większość osób w okolicy o niskim poziomie dochodu nie otrzymuje oferty ubezpieczenia Premium, a nikt w okolicy nie zobaczy oferty.
+* Należy wziąć pod uwagę, czy przypadek użycia stanowi automatyczne przetwarzanie, które znacząco wpływa na zagadnienia dotyczące danych uregulowane w ramach [Rodo](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679) artykułu 22 lub innych przepisów.
+* Rozważ samoobsługowe pętle Prophecy. Może się tak zdarzyć, jeśli pozostała Personalizacja pociąga za siebie model, dzięki czemu może później dalej wykluczyć grupę demograficzną z dostępu do odpowiedniej zawartości. Na przykład większość osób w sąsiedztwie o małym dochodowiu nie uzyskuje oferty ubezpieczenia Premium i powoli nikt nie zobaczy oferty, jeśli nie ma wystarczającej eksploracji.
 * Zapisuj kopie modeli i zasady uczenia w przypadku, gdy konieczne jest odtworzenie personalizacji w przyszłości. Można to zrobić okresowo lub przez każdy okres odświeżania modelu.
 * Należy wziąć pod uwagę poziom eksploracji odpowiedni dla miejsca i sposób używania go jako narzędzia do ograniczenia efektów "komory ECHA".
 
@@ -74,16 +75,16 @@ Personalizowanie zawartości zależy od posiadania użytecznych informacji o zaw
 
 Należy wziąć pod uwagę wpływ tych funkcji:
 
-* Dane **demograficzne użytkownika**: Funkcje dotyczące płci, płci, wieku, rasę, religii: Te funkcje mogą być niedozwolone w niektórych aplikacjach z przyczyn prawnych i nie mogą być etyczne w celu spersonalizowania ich, ponieważ Personalizacja propaguje generalizacje i BiAS. Przykładem propagacji bias jest księgowanie zadań dla inżynierów, które nie są widoczne dla starszych lub grup odbiorców opartych na płci.
-* **Informacje o ustawieniach regionalnych**: W wielu miejscach świata informacje o lokalizacji (takie jak kod pocztowy, kod pocztowy lub nazwa klubu) mogą być wysoce skorelowane z dochodami, rasę i religii.
-* **Postrzeganie przez użytkownika wartości godziwej**: Nawet w przypadkach, w których Twoja aplikacja podejmuje decyzje, należy wziąć pod uwagę wpływ użytkowników, którzy postrzegali zawartość wyświetlaną w aplikacji w taki sposób, aby były one skorelowane z funkcjami, które byłyby dyskryminujące.
-* **Niezamierzona różnica w funkcjach**:  Istnieją różne typy bias, które mogą być wprowadzane przy użyciu funkcji, które mają wpływ tylko na podzestaw populacji. Wymaga to dodatkowej uwagi, jeśli funkcja jest generowana algorithmically, na przykład podczas korzystania z analizy obrazów do wyodrębnienia elementów w analizie obrazu lub tekstu w celu odnalezienia jednostek w tekście. Zapoznaj się z charakterystyką usług używanych do tworzenia tych funkcji.
+* Dane **demograficzne użytkownika**: funkcje dotyczące płci, płci, wieku, rasę, religii: te funkcje mogą być niedozwolone w niektórych aplikacjach z przyczyn prawnych i nie mogą być etyczne w celu spersonalizowania ich, ponieważ Personalizacja zostanie propagowana generalizacje i BiAS. Przykładem propagacji bias jest księgowanie zadań dla inżynierów, które nie są widoczne dla starszych lub grup odbiorców opartych na płci.
+* **Informacje o ustawieniach regionalnych**: w wielu miejscach świata informacje o lokalizacji (takie jak kod pocztowy, kod pocztowy lub nazwa klubu) mogą być wysoce skorelowane z dochodami, rasę i religii.
+* **Postrzeganie atrakcyjności przez użytkownika**: nawet w przypadkach, gdy Twoja aplikacja podejmuje decyzje dźwiękowe, należy wziąć pod uwagę wpływ użytkowników, którzy postrzegali zawartość wyświetlaną w aplikacji w sposób, który wydaje się być skorelowany z funkcjami, które byłyby dyskryminator.
+* **Niezamierzona różnica w funkcjach**: istnieją różne rodzaje odchyleń, które mogą być wprowadzane przy użyciu funkcji, które mają wpływ tylko na podzestaw populacji. Wymaga to dodatkowej uwagi, jeśli funkcja jest generowana algorithmically, na przykład podczas korzystania z analizy obrazów do wyodrębnienia elementów w analizie obrazu lub tekstu w celu odnalezienia jednostek w tekście. Zapoznaj się z charakterystyką usług używanych do tworzenia tych funkcji.
 
 Zastosuj następujące praktyki podczas wybierania funkcji do wysłania w kontekstach i akcjach do personalizacji:
 
 * Należy wziąć pod uwagę legalność i etykę przy użyciu pewnych funkcji dla niektórych aplikacji oraz czy nieszkodliwe funkcje mogą być serwerami proxy dla innych użytkowników, którzy chcą lub których należy unikać.
 * Być przezroczyste dla użytkowników, których algorytmy i analiza danych są używane do personalizowania widocznych opcji.
-* Zadaj sobie: Czy wszyscy użytkownicy zadbają i będą zadowoleni, jeśli użyłem tych informacji w celu spersonalizowania ich zawartości? Czy warto się dowiedzieć, jak w jaki sposób podjąć decyzję w celu wyróżnienia lub ukrycia niektórych elementów?
+* Poproś siebie: Czy wszyscy użytkownicy zadbają i będą zadowoleni, jeśli użyłem tych informacji w celu spersonalizowania ich zawartości? Czy warto się dowiedzieć, jak w jaki sposób podjąć decyzję w celu wyróżnienia lub ukrycia niektórych elementów?
 * Należy używać zachowań zamiast danych klasyfikacji lub segmentacji na podstawie innych właściwości. Informacje demograficzne były tradycyjnie wykorzystywane przez detalistów z przyczyn historycznych — atrybuty demograficzne były proste do zebrania i działania przed elektroniczną era kontekstowe i historyczne dane, które są bardziej ściśle powiązane z preferencjami i tożsamością użytkowników.
 * Zastanów się, jak zapobiegać występowaniu "sfałszowanych" funkcji przez złośliwych użytkowników, które w przypadku ataków z dużymi liczbami mogą prowadzić do nauczenia się narzędzia do szkolenia w celu celowo całkowicie zakłóceń, Embarrass i nękania niektórych klas użytkowników. 
 * Jeśli jest to odpowiednie i możliwe, Zaprojektuj aplikację, tak aby użytkownicy mogli wyrazić zgodę na korzystanie z określonych funkcji osobistych lub zrezygnować z nich. Mogą one być zgrupowane, takie jak "informacje o lokalizacji", "informacje o urządzeniu", "przeszła Historia zakupów" itp.
@@ -120,7 +121,7 @@ Poniżej przedstawiono obszary projektowania dla odpowiedzialnych implementacji 
 
 ![Wartości AI z przyszłych obliczonych](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
-### <a name="accountability"></a>Odpowiedzialność
+### <a name="accountability"></a>Licz
 *Osoby, które projektują i wdrażają systemy AI, muszą być odpowiedzialne za działanie systemów*. 
 
 * Utwórz wewnętrzne wytyczne dotyczące implementacji personalizacji, dokumentu i komunikacji z zespołem, kierownikami i dostawcami.
@@ -128,10 +129,10 @@ Poniżej przedstawiono obszary projektowania dla odpowiedzialnych implementacji 
 * Łatwo Komunikuj się z użytkownikami, w jaki sposób jest używany program Personalizuj, w jakim celu i z danymi.
 * Archiwizuj informacje i zasoby, takie jak modele, zasady uczenia i inne dane, które są używane przez program do działania, aby można było odtworzyć wyniki.
 
-### <a name="transparency"></a>Przezroczystości
+### <a name="transparency"></a>Przezroczystość
 *Systemy AI powinny być zrozumiałe*. Z personalizacją:
 
-* *Przekaż użytkownikom informacje o sposobie spersonalizowania zawartości.* Na przykład możesz pokazać użytkownikom przycisk z etykietą `Why These Suggestions?` pokazującą, które najważniejsze funkcje użytkownika i akcje odgrywają rolę w wynikach narzędzia Personalizacja.
+* *Przekaż użytkownikom informacje o sposobie spersonalizowania zawartości.* Na przykład możesz pokazać użytkownikom przycisk z etykietą `Why These Suggestions?`, który pokazuje, które najważniejsze funkcje użytkownika i akcji odgrywają rolę w wynikach narzędzia Personalizacja.
 * Upewnij się, że Twoje warunki użytkowania zawierają informacje o tym, że będziesz używać informacji o użytkownikach i ich zachowania w celu spersonalizowania środowiska.
 
 ### <a name="fairness"></a>Sprawiedliwe
@@ -150,7 +151,7 @@ Poniżej przedstawiono obszary projektowania dla odpowiedzialnych implementacji 
 * *Wykonywanie częstych ocen w trybie offline*. Pomoże to monitorować trendy i upewnić się, że efektywność jest znana.
 * *Ustanów proces wykrywania i działania w przypadku złośliwego manipulowania*. Istnieją aktory korzystające z możliwości uczenia maszynowego i systemu AI do uczenia się w ich środowisku w celu przesunięcia wyników do ich celów. Jeśli korzystanie z programu Personalizujer ma wpływ na ważne wybory, upewnij się, że masz odpowiednie środki na wykrycie i złagodzenie tych klas ataków, w tym przegląd ludzki w odpowiednich okolicznościach.
 
-### <a name="security-and-privacy"></a>Zabezpieczenia i ochrona prywatności
+### <a name="security-and-privacy"></a>Bezpieczeństwo i ochrona prywatności
 *Systemy AI powinny być bezpieczne i uwzględniać ochronę prywatności*. W przypadku korzystania z narzędzia Personalizacja:
 
 * *Poinformuj użytkowników o zbieranych danych i sposobie ich użycia i uzyskaj ich zgodę wcześniej*zgodnie z obowiązującymi przepisami lokalnymi i branżowymi.
@@ -200,6 +201,6 @@ Firma Microsoft ciągle wprowadza nakład pracy w narzędzia i dokumenty ułatwi
 * [Zasady FATML dla algorytmów umożliwiających obsługę](https://www.fatml.org/resources/principles-for-accountable-algorithms)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Funkcje: Akcja i kontekst](concepts-features.md).

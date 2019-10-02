@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, Go — QnA Maker'
+title: 'Szybki start: uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, Go — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku Szybki start opartym na protokole REST i języku Go opisano sposób programowego uzyskiwania odpowiedzi z bazy wiedzy.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 9e5bb77c25b4f9fe00b75918812a1d52feff3b2a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 7fa0a747965f946198c59aa521c6269fa159c702
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308209"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802958"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Szybki start: Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Go
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Szybki Start: uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka go
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) , takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) jest wysyłane do usługi QNA Maker. [Odpowiedź](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obejmuje odpowiedzi przewidziane w górnej części. 
 

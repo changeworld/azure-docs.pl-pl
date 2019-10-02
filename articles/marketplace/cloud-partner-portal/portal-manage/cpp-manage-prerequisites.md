@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087458"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720063"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Wymagania wstępne dotyczące zarządzania kontami w portal Cloud Partner 
 
@@ -28,20 +28,19 @@ Należy uważnie wybrać swoją nazwę konta.  Reprezentuje Twoją organizację,
 
 ## <a name="registration-steps"></a>Kroki rejestracji
 
-W poniższej tabeli przedstawiono kroki niezbędne do pełnego zarejestrowania się jako Wydawca w chmurze firmy Microsoft.  Aby uzyskać pełne instrukcje, [Zobacz Zostań wydawcą](https://docs.microsoft.com/azure/marketplace/become-publisher
-)portalu Marketplace w chmurze. 
+W poniższej tabeli przedstawiono kroki niezbędne do pełnego zarejestrowania się jako Wydawca w chmurze firmy Microsoft.  Aby uzyskać pełne instrukcje, zobacz [Zostań wydawcą portalu Marketplace w chmurze](https://docs.microsoft.com/azure/marketplace/become-publisher). 
 
 
-|                   Krok                   |  Wynikiem rejestracji lub zasobie                     |
+|                   Czynność                   |  Wynikiem rejestracji lub zasobie                     |
 |                  ------                  |  -----------------------------------                    |
 | 1. Zarejestruj się w Microsoft Partner Network |  Identyfikator Microsoft Partner Network organizacji |
-| 2. Tworzenie konto Microsoft *           |  Zweryfikowane konto Microsoft, kończące @outlook.comsię @live.comna, itd. |
-| 3. Prześlij formularz rejestracji w portalu Marketplace | Konto wydawcy na portal Cloud Partner      |
+| 2. Utwórz konto Microsoft *           |  Zweryfikowane konto Microsoft, kończące się na @outlook.com, @live.com itd. |
+| 3. Prześlij formularz rejestracyjny portalu Marketplace | Konto wydawcy na portal Cloud Partner      |
 | 4. Zaloguj się do portal Cloud Partner        | Aby tworzyć i publikować oferty, zarządzać użytkownikami, zbierać metryki witryny Marketplace itp. |
 | 5. Zarejestruj się w centrum deweloperów firmy Microsoft * | Zweryfikowane konto Centrum deweloperów; Urząd do przeprowadzania transakcji w witrynie Marketplace  |
 |   |   |
 
-\*Te kroki są wymagane w przypadku ofert Transact w portalu Azure Marketplace, ale zdecydowanie zaleca się dla wszystkich ofert.  Po ustanowieniu konto Microsoft i zarejestrowaniu jako dewelopera firmy Microsoft możesz uzyskać dostęp do dodatkowych zasobów klienta i deweloperów firmy Microsoft oraz opcjonalnych ofert partnerskich.  
+\* te kroki są wymagane w przypadku ofert Transact w witrynie Azure Marketplace, ale zdecydowanie zaleca się dla wszystkich ofert.  Po ustanowieniu konto Microsoft i zarejestrowaniu jako dewelopera firmy Microsoft możesz uzyskać dostęp do dodatkowych zasobów klienta i deweloperów firmy Microsoft oraz opcjonalnych ofert partnerskich.  
 
 
 ## <a name="next-steps"></a>Następne kroki

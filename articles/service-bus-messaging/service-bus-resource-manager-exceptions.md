@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 67e95133b9d78823f37ba48f291175ae8e9058d6
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 7b9d4099734af3a04f43d35d89f07f8b005c90f9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703556"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802513"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Wyjątki Menedżer zasobów Service Bus
 
@@ -37,7 +37,7 @@ Poniżej znajdują się różne wyjątki/błędy, które są przedstawione w Azu
 | Kod błędu | Kod podkodu błędu | Komunikat o błędzie | Opis | Zalecenie |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Nieprawidłowe żądanie | 40000 | Kod Subcode = 40000. Nie można ustawić właściwości *"Property Name"* podczas tworzenia kolejki, ponieważ przestrzeń nazw *"name* " ma używaną warstwę "Basic". Ta operacja jest obsługiwana tylko w warstwie Standardowa lub Premium. | W warstwie Podstawowa Azure Service Bus nie można ustawić ani zaktualizować poniższych właściwości — <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>requiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> Prześlij dalej </li> <li> Tematy </li> </ul> | Rozważ uaktualnienie z warstwy Podstawowa do standardowa lub Premium, aby korzystać z tej funkcji. |
-| Nieprawidłowe żądanie | 40000 | Kod Subcode = 40000. Nie można zmienić wartości właściwości "requiresDuplicateDetection" istniejącej kolejki (lub tematu). | Wykrywanie duplikatów musi być włączone/wyłączone w momencie tworzenia jednostki. Po utworzeniu nie można zmienić parametru konfiguracji wykrywania duplikatów. | Aby włączyć wykrywanie duplikatów dla wcześniej utworzonej kolejki/tematu, można utworzyć nową kolejkę/temat z wykrywaniem duplikatów, a następnie przekazać ją z oryginalnej kolejki do nowej kolejki lub tematu. |
+| Nieprawidłowe żądanie | 40000 | Kod Subcode = 40000. Nie można zmienić wartości właściwości "requiresDuplicateDetection" istniejącej kolejki (lub tematu). | Wykrywanie duplikatów musi być włączone/wyłączone w momencie tworzenia jednostki. Nie można zmienić parametru konfiguracji wykrywania duplikatów po utworzeniu. | Aby włączyć wykrywanie duplikatów dla wcześniej utworzonej kolejki/tematu, można utworzyć nową kolejkę/temat z wykrywaniem duplikatów, a następnie przekazać ją z oryginalnej kolejki do nowej kolejki lub tematu. |
 | Nieprawidłowe żądanie | 40000 | Kod Subcode = 40000. Określona wartość 16384 jest nieprawidłowa. Właściwość "MaxSizeInMegabytes" musi mieć jedną z następujących wartości: 1024; 2048; 3072; 4096; 5120. | Wartość MaxSizeInMegabytes jest nieprawidłowa. | Upewnij się, że MaxSizeInMegabytes ma jedną z następujących wartości: 1024, 2048, 3072, 4096, 5120. |
 | Nieprawidłowe żądanie | 40000 | Kod Subcode = 40000. Nie można zmienić partycjonowania dla kolejki/tematu. | Nie można zmienić partycjonowania dla jednostki. | Utwórz nową jednostkę (kolejkę lub temat) i Włącz partycje. | 
 | Nieprawidłowe żądanie | brak | Przestrzeń nazw *"name"* nie istnieje. | Przestrzeń nazw nie istnieje w ramach Twojej subskrypcji platformy Azure. | Aby rozwiązać ten problem, spróbuj wykonać poniższe czynności. <ul> <li> Upewnij się, że subskrypcja platformy Azure jest poprawna. </li> <li> Upewnij się, że przestrzeń nazw istnieje. </li> <li> Sprawdź, czy nazwa przestrzeni nazw jest poprawna (nie występują błędy pisowni ani ciągi o wartości null). </li> </ul> | 
@@ -58,4 +58,17 @@ Podobnie jak w przypadku protokołu HTTP "kod błędu 429" wskazuje "zbyt wiele 
 | 429 | 40901 | Subcode = 40901. Inna operacja powodująca konflikt jest w toku. | Inna operacja powodująca konflikt jest w toku dla tego samego zasobu/jednostki | Poczekaj na zakończenie bieżącej operacji w toku przed ponowną próbą. |
 | 429 | 40900 | Subcode = 40900. Kolizj. Żądasz operacji, która nie jest dozwolona w bieżącym stanie zasobu. | Ten stan może być osiągnięty w przypadku wykonywania wielu żądań w celu wykonania operacji na tej samej jednostce (Kolejka, temat, subskrypcja lub reguła) w tym samym czasie. | Poczekaj kilka sekund i spróbuj ponownie |
 | 429 | brak | Wystąpił konflikt zasobów. Inna operacja powodująca konflikt może być w toku. Jeśli ponowienie operacji nie powiodło się, czyszczenie w tle nadal oczekuje. Spróbuj ponownie później. | Ten stan może wystąpić, gdy istnieje oczekująca operacja w odniesieniu do tej samej jednostki. | Poczekaj na zakończenie poprzedniej operacji przed ponowną próbą. |
+| 429 | brak | Wystąpił konflikt żądania w jednostce *"Nazwa jednostki* " z innym żądaniem | Inna operacja powodująca konflikt jest w toku dla tego samego zasobu/jednostki | Poczekaj na zakończenie poprzedniej operacji przed ponowną próbą |
+| 429 | brak | Inne żądanie aktualizacji jest w toku dla jednostki *"Nazwa jednostki"* . | Inna operacja powodująca konflikt jest w toku dla tego samego zasobu/jednostki | Poczekaj na zakończenie poprzedniej operacji przed ponowną próbą |
 
+
+## <a name="error-code-not-found"></a>Kod błędu: nie znaleziono
+
+Ta klasa błędów wskazuje, że nie znaleziono zasobu.
+
+| Kod błędu | Kod podkodu błędu | Komunikat o błędzie | Opis | Zalecenie |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Nie znaleziono | brak | Nie znaleziono jednostki *"Nazwa jednostki"* . | Jednostka, względem której nie znaleziono operacji. | Sprawdź, czy jednostka istnieje, a następnie spróbuj ponownie wykonać operację. |
+| Nie znaleziono | brak | Nie znaleziono. Operacja nie istnieje. | Operacja, którą próbujesz wykonać, nie istnieje. | Sprawdź operację i spróbuj ponownie. |
+| Nie znaleziono | brak | Żądanie przychodzące nie zostało rozpoznane jako żądanie przełączenia zasad przestrzeni nazw. | Treść żądania przychodzącego ma wartość null, dlatego nie można jej wykonać jako żądania Put. | Sprawdź treść żądania, aby upewnić się, że nie jest ona pusta. | 
+| Nie znaleziono | brak | Nie można odnaleźć jednostki obsługi komunikatów *"Nazwa jednostki"* . | Nie można odnaleźć jednostki, w której próbujesz wykonać operację. | Sprawdź, czy jednostka istnieje, a następnie spróbuj ponownie wykonać operację. |

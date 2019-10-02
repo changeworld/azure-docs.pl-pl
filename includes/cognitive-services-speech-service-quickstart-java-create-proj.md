@@ -4,48 +4,48 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: ebefe878393b66e5097ebbda5ef6159a8413833f
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: d6ee5f432321753b9a09749ccf45c9a5bda5300d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298445"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802466"
 ---
-1. Uruchom środowisko Eclipse.
+1. Rozpocznij przezaćmienie.
 
-1. W programie Eclipse Launcher w polu **Workspace** (Obszar roboczy) wprowadź nazwę nowego katalogu roboczego. Następnie wybierz pozycję **Launch** (Uruchom).
+1. W obszarze **roboczym** zaćmienie Zanotuj nazwę nowego katalogu obszaru roboczego. Następnie wybierz pozycję **Uruchom**.
 
-   ![Zrzut ekranu przedstawiający program Eclipse Launcher](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
+   ![Zrzut ekranu uruchamiania programu zaćmienie](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
 
-1. Za chwilę zostanie wyświetlone główne okno środowiska IDE programu Eclipse. Zamknij ekran powitalny, jeśli się pojawi.
+1. W chwili pojawi się okno główne środowiska IDE w języku zaćmienie. Zamknij ekran powitalny, jeśli jest obecny.
 
-1. Na pasku menu programu Eclipse utwórz nowy projekt, wybierając kolejno pozycje **File** > **New** > **Project** (Plik > Nowy > Projekt).
+1. Na pasku menu zaćmienie Utwórz nowy projekt, wybierając **plik** > **Nowy** > **projektu**.
 
-1. **Nowy projekt** pojawi się okno dialogowe. Wybierz pozycję **Java Project** (Projekt języka Java) i wybierz pozycję **Next** (Dalej).
+1. Pojawi się okno dialogowe **Nowy projekt** . Wybierz pozycję **projekt Java**, a następnie wybierz przycisk **dalej**.
 
-   ![Zrzut ekranu dialogowego New Project (Nowy projekt) z wyróżnioną pozycją Java Project (Projekt języka Java)](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
+   ![Zrzut ekranu przedstawiający okno dialogowe Nowy projekt z wyróżnionym projektem Java](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
 
-1. Zostanie uruchomiony kreator nowego projektu języka Java. W polu **Project name** (Nazwa projektu) wprowadź ciąg **quickstart** i wybierz **JavaSE-1.8** jako środowisko wykonania. Wybierz pozycję **Finish** (Zakończ).
+1. Zostanie uruchomiony Kreator nowego projektu Java. W polu **Nazwa projektu** wprowadź **Przewodnik Szybki Start**, a następnie wybierz pozycję **Java-1,8** jako środowisko wykonawcze. Wybierz pozycję **Zakończ**.
 
-   ![Zrzut ekranu przedstawiający kreatora nowego projektu języka Java](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-03-create-java-project.png)
+   ![Zrzut ekranu przedstawiający Kreatora nowego projektu Java](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-03-create-java-project.png)
 
-1. Jeśli zostanie wyświetlone okno **Open Associated Perspective?** (Otworzyć skojarzoną perspektywę?), wybierz pozycję **Open Perspective** (Otwórz perspektywę).
+1. Jeśli zostanie wyświetlone okno **Otwórz skojarzoną perspektywę?** , wybierz pozycję **Otwórz perspektywę**.
 
-1. W narzędziu **Package Explorer** kliknij prawym przyciskiem myszy projekt **quickstart**. Z menu kontekstowego wybierz kolejno pozycje **Configure** > **Convert to Maven Project** (Konfiguruj > Konwertuj na projekt Maven).
+1. W **Eksploratorze pakietów**kliknij prawym przyciskiem myszy projekt **szybkiego startu** . Wybierz pozycję **konfiguruj** > **Konwertuj na projekt Maven** z menu kontekstowego.
 
-   ![Zrzut ekranu narzędzia Package Explorer](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
+   ![Zrzut ekranu przedstawiający Eksploratora pakietów](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. Zostanie wyświetlone okno **Create new POM** (Tworzenie nowego modelu POM). W polu **Group Id** (Identyfikator grupy) wprowadź ciąg **com.microsoft.cognitiveservices.speech.samples**, a w polu **Artifact Id** (Identyfikator artefaktu) — ciąg **quickstart**. Następnie wybierz pozycję **Zakończ**.
+1. Zostanie wyświetlone okno **Utwórz nowy pliku pom** . W polu **Identyfikator grupy** wprowadź wartość **com. Microsoft. cognitiveservices. Speech. Samples**i w polu **Identyfikator artefaktu** wprowadź **Szybki Start**. Następnie wybierz pozycję **Zakończ**.
 
-   ![Zrzut ekranu okna Create new POM (Tworzenie nowego modelu POM)](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
+   ![Zrzut ekranu przedstawiający tworzenie nowego okna pliku pom](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 
-1. Otwórz plik **pom.xml** i edytuj go.
+1. Otwórz plik **pliku pom. XML** i edytuj go.
 
-   * Na końcu pliku przed tagiem zamykającym `</project>` utwórz element `repositories` z odwołaniem do repozytorium narzędzia Maven dla zestawu Speech SDK, jak pokazano poniżej:
+   * Na końcu pliku przed tagiem zamykającym `</project>` Utwórz element `repositories` z odwołaniem do repozytorium Maven dla zestawu Speech SDK, jak pokazano poniżej:
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-   * Należy również dodać `dependencies` element z opcją 1.6.0 zestawu mowy SDK jako zależność:
+   * Dodaj również `dependencies` elementu z zestawem SDK mowy w wersji 1.7.0 jako zależność:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 

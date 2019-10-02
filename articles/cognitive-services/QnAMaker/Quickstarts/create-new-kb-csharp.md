@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie bazy wiedzy — REST, C# QNA Maker'
+title: 'Szybki start: tworzenie bazy wiedzy — środowisko REST, C# — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Ten oparty na protokole REST przewodnik Szybki start dla języka C# zawiera omówienie programowego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która będzie wyświetlana na pulpicie nawigacyjnym platformy Azure w ramach konta interfejsu API usługi Cognitive Services.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/24/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 16e1c96da8fa35a4e8aaa8ce91da1c7976291079
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a7114044f5e29af4bbf8e7c38b390b833ac818ec
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261923"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803498"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka C#
 
@@ -27,10 +27,12 @@ Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 * [Pobieranie szczegółów operacji](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 * [Publikowanie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 
 
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Najnowsza [**wersja programu Visual Studio Community**](https://www.visualstudio.com/downloads/).
-* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz, wybierz pozycję **Klucze** w obszarze **Zarządzanie zasobami** na pulpicie nawigacyjnym. 
+* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal. 
 
 > [!NOTE] 
 > Pliki kompletnego rozwiązania są dostępne w [repozytorium GitHub **Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp).

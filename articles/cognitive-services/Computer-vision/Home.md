@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967057"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719540"
 ---
 # <a name="what-is-computer-vision"></a>Czym jest przetwarzanie obrazów?
 
-Usługa przetwarzania obrazów platformy Azure oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i informacji zwrotnych. W celu analizy obrazu można przekazać obraz lub określić jego adres URL. Algorytmy przetwarzania obrazów pozwalają analizować zawartość na różne sposoby, w zależności od interesujących Cię funkcji wizualnych. Na przykład przetwarzanie obrazów może określić, czy obraz zawiera zawartość dla dorosłych lub erotycznej, czy też znaleźć wszystkie ludzkie twarzy na obrazie.
+Usługa przetwarzania obrazów platformy Azure oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i informacji zwrotnych. W celu analizy obrazu można przekazać obraz lub określić jego adres URL. Algorytmy przetwarzania obrazów pozwalają analizować zawartość na różne sposoby, w zależności od interesujących Cię funkcji wizualnych. Na przykład przetwarzanie obrazów może określić, czy obraz zawiera zawartość dla dorosłych, czy też może znaleźć wszystkie ludzkie twarzy na obrazie.
 
 Przetwarzania obrazów w aplikacji można używać, korzystając z natywnego zestawu SDK lub wywołując interfejs API REST bezpośrednio. Na tej stronie ogólnie omówiono, co można zrobić za pomocą przetwarzania obrazów.
 
@@ -28,7 +28,7 @@ Przetwarzania obrazów w aplikacji można używać, korzystając z natywnego zes
 
 Obrazy można analizować, aby wykrywać cechy wizualne i właściwości obrazów oraz dostarczać szczegółowe informacje na ich temat. Wszystkie funkcje w poniższej tabeli są udostępniane przez interfejs API [analizowania obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa).
 
-| Action | Opis |
+| Działanie | Opis |
 | ------ | ----------- |
 |**[Tagowanie funkcji wizualnych](concept-tagging-images.md)**|Identyfikowanie i tagowanie elementów wizualnych na obrazie w oparciu o zestaw tysięcy rozpoznawalnych obiektów, istot żywych, scenerii i akcji. Gdy Tagi są niejednoznaczne lub nietypowej wiedzy, odpowiedź interfejsu API zawiera wskazówki wyjaśniające kontekst znacznika. Tagowanie nie jest ograniczone do głównego tematu, na przykład do osoby na pierwszym planie, ale uwzględnia także otoczenie (wewnątrz lub na zewnątrz), meble, narzędzia, rośliny, zwierzęta, akcesoria, gadżety itd.|
 |**[Wykrywanie obiektów](concept-object-detection.md)**| Wykrywanie obiektów jest podobne do tagowania, ale interfejs API zwraca współrzędne pola ograniczenia dla każdego zastosowanego tagu. Na przykład jeśli na obrazie znajduje się pies, kot i osoba, operacja wykrywania utworzy listę tych obiektów wraz z ich współrzędnymi na obrazie. Ta funkcja umożliwia przetwarzanie dalszych relacji między obiektami na obrazie. Ponadto w odpowiednich przypadkach informuje, że obraz zawiera wiele wystąpień tego samego tagu.|
@@ -52,7 +52,7 @@ Możesz również użyć interfejsu API [rozpoznawania znaków optycznych (OCR)]
 
 ## <a name="moderate-content-in-images"></a>Moderowanie zawartości na obrazach
 
-Przy użyciu usługi przetwarzania obrazów można [wykrywać zawartość przeznaczoną dla dorosłych](concept-detecting-adult-content.md) na obrazie i zwracać współczynnik ufności. Możesz ustawić filtr wykrywania zawartości dla osób dorosłych i erotycznej na ruchomej skali, aby dopasować swoje preferencje.
+Za pomocą przetwarzanie obrazów można [wykrywać zawartość dla dorosłych](concept-detecting-adult-content.md) w obrazie i zwracać wyniki zaufania dla różnych klasyfikacji. Próg oflagowania zawartości można ustawić na ruchomej skali, aby dopasować swoje preferencje.
 
 ## <a name="use-containers"></a>Korzystanie z kontenerów
 
@@ -75,6 +75,6 @@ Jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający 
 
 Rozpocznij pracę z przetwarzaniem obrazów, korzystając z przewodnika Szybki start:
 
-- [Szybki start: Zestaw SDK przetwarzanie obrazów .NET](quickstarts-sdk/csharp-sdk.md)
-- [Szybki start: przetwarzanie obrazów Python SDK](quickstarts-sdk/python-sdk.md)
-- [Szybki start: przetwarzanie obrazów Java SDK](quickstarts-sdk/java-sdk.md)
+- [Szybki Start: przetwarzanie obrazów zestawu .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [Szybki Start: przetwarzanie obrazów Python SDK](quickstarts-sdk/python-sdk.md)
+- [Szybki Start: przetwarzanie obrazów zestawu Java SDK](quickstarts-sdk/java-sdk.md)

@@ -1,6 +1,6 @@
 ---
-title: Utwórz testy chaotyczne i pracy awaryjnej dla usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Za pomocą usługi Service Fabric chaos testu i trybu failover przetestować scenariusze wywoływać błędy i weryfikację niezawodność usług.
+title: Tworzenie testów chaos i trybu failover dla usługi Azure Service Fabric | Microsoft Docs
+description: Przy użyciu scenariuszy testowania Service Fabric chaos i przełączenia w tryb failover w celu wywołania błędów i zweryfikowania niezawodności usług.
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -12,50 +12,50 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/07/2017
+ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ea30b59e3195a0229c2584212e2897aaff4ee31
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60865026"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718230"
 ---
-# <a name="testability-scenarios"></a>Scenariuszy testowalności
-Dużych systemach rozproszonych jak infrastruktur chmury są założenia wiarygodne. Usługa Azure Service Fabric umożliwia deweloperom pisanie usług do uruchomienia na szczycie infrastruktury zawodne. Pisanie wysokiej jakości usług, w celu deweloperzy muszą być w stanie wywoływać takie zawodnych infrastruktury do testowania stabilność usług.
+# <a name="testability-scenarios"></a>Scenariusze testowania
+Duże systemy rozproszone, takie jak infrastruktury chmury, są z natury zawodowe. Dzięki platformie Azure Service Fabric deweloperzy mogą pisać usługi do uruchamiania w oparciu o niezawodną infrastrukturę. Aby można było napisać wysokiej jakości usługi, deweloperzy muszą mieć możliwość wywołujący taką niezawodną infrastrukturę w celu przetestowania stabilności usług.
 
-Usługa analizy błędów daje deweloperom możliwość wywołują akcje błędów do testowania usług w razie awarii. Jednak docelowych błędów symulowane uzyskasz tylko do tej pory. Scenariusze testowania podejmowanie testowania, można użyć w usłudze Service Fabric: chaos test i test pracy awaryjnej. Te scenariusze symulowanie ciągłe przeplotem błędów, zarówno bezpieczne, jak i nieprawidłowego, w całym klastrze przez dłuższy czas. Po skonfigurowaniu testu z szybkości i rodzaju błędów, może być uruchamiany za pośrednictwem interfejsów API języka C# lub programu PowerShell w celu generowania błędy w klastrze i usługi.
+Usługa błędu Analysis Services umożliwia deweloperom wywoływanie działań błędów w celu przetestowania usług w przypadku wystąpienia awarii. Niemniej jednak symulowane błędy są możliwe tylko do tej pory. Aby kontynuować testowanie, można użyć scenariuszy testowych w Service Fabric: test chaos i Test trybu failover. Te scenariusze symulują ciągłe i nieprzerwane błędy w całym klastrze przez dłuższy czas. Gdy test zostanie skonfigurowany z szybkością i rodzajem błędów, można go uruchomić za pomocą C# interfejsów API lub programu PowerShell, aby generować błędy w klastrze i usłudze.
 
 > [!WARNING]
-> ChaosTestScenario jest zastępowany przez Chaos bardziej odporne na błędy, opartych na usługach. Można znaleźć w artykule nowe [kontrolowane Chaos](service-fabric-controlled-chaos.md) Aby uzyskać więcej informacji.
+> ChaosTestScenario jest zastępowana przez bardziej odporną chaos opartą na usługach. Aby uzyskać więcej informacji, zapoznaj się z artykułem o [kontrolowanej chaos](service-fabric-controlled-chaos.md) .
 > 
 > 
 
-## <a name="chaos-test"></a>Test chaosu
-Scenariusz chaos generuje błędy dla całego klastra usługi Service Fabric. Scenariusz kompresuje błędy zazwyczaj występuje w ciągu miesięcy lub lat do kilku godzin. Kombinacja przeplotem błędów przy użyciu współczynnika wysoką odporność umożliwia znalezienie przypadki brzegowe, które w przeciwnym razie zostaną pominięte. Prowadzi to do znacznej poprawy jakości kodu usługi.
+## <a name="chaos-test"></a>Test chaos
+Scenariusz chaos generuje błędy w całym klastrze Service Fabric. Scenariusz kompresuje błędy ogólnie widoczne w miesiącach lub latach do kilku godzin. Połączenie z przeplotem błędów o wysokim współczynniku błędów powoduje znalezienie przypadków narożnych, które w przeciwnym razie nie zostały pominięte. Prowadzi to do znacznego zwiększenia jakości kodu usługi.
 
-### <a name="faults-simulated-in-the-chaos-test"></a>Błędy symulowane w teście chaosu
-* Ponowne uruchomienie węzła
-* Uruchom ponownie pakiet wdrożonego kodu
-* Usuwanie repliki
+### <a name="faults-simulated-in-the-chaos-test"></a>Błędy symulowane w teście chaos
+* Ponowne uruchamianie węzła
+* Ponowne uruchamianie wdrożonego pakietu kodu
+* Usuń replikę
 * Uruchom ponownie replikę
-* Przenieś repliki podstawowej (opcjonalnie)
-* Przenieś tylko do repliki pomocniczej (opcjonalnie)
+* Przenieś replikę podstawową (opcjonalnie)
+* Przenoszenie repliki pomocniczej (opcjonalnie)
 
-Chaos test działa wiele iteracji, błędów i sprawdzanie poprawności klastra w określonym okresie czasu. Konfiguruje się czas dla klastra to stabilizację i sprawdzanie poprawności zakończyło się sukcesem. Scenariusz kończy się niepowodzeniem, gdy naciśniesz pojedynczego uszkodzenia podczas sprawdzania poprawności klastra.
+Test chaos uruchamia wiele iteracji błędów i walidacji klastra w określonym przedziale czasu. Można również skonfigurować czas oczekiwania na stabilizację klastra i pomyślne sprawdzenie poprawności. Scenariusz kończy się niepowodzeniem w przypadku wystąpienia pojedynczego błędu podczas sprawdzania poprawności klastra.
 
-Rozważmy na przykład test do uruchamiania na jedną godzinę z maksymalnie trzech współbieżnych błędów. Test occurs trzy błędów, a następnie sprawdzania poprawności kondycji klastra. Test iteracji przez poprzedniego kroku do momentu złej kondycji klastra lub przekazuje jedną godzinę. Jeśli klaster staje się zła w dowolną iterację, czyli nie stabilizacji w skonfigurowanym czasie, test zakończy się niepowodzeniem z powodu wyjątku. Ten wyjątek wskazuje, że wystąpił problem i musi bliższe zbadanie tej sprawy.
+Rozważmy na przykład, że zestaw testów ma być uruchamiany przez jedną godzinę, a maksymalnie trzy współbieżne błędy. Test będzie powodować trzy błędy, a następnie sprawdza kondycję klastra. Test przeprowadzi iterację w poprzednim kroku, aż klaster stanie się w złej kondycji lub upłynie godzinę. Jeśli klaster ulegnie złej kondycji w dowolnej iteracji, czyli nie jest ustabilizowany w skonfigurowanym czasie, test zakończy się niepowodzeniem z wyjątkiem. Ten wyjątek wskazuje na to, że coś pozostało niewłaociwe i wymaga dalszych badań.
 
-W jego obecnej formie aparatu generowania błędów w teście chaos wywołuje tylko bezpiecznych błędów. Oznacza to, że w przypadku braku błędów zewnętrznych kworum lub utraty danych nigdy nie wystąpi.
+W bieżącym formularzu aparat generacji błędów w teście chaos wywołuje tylko bezpieczne błędy. Oznacza to, że w przypadku braku zewnętrznych błędów kworum lub utracie danych nigdy nie wystąpi.
 
-### <a name="important-configuration-options"></a>Opcje konfiguracji ważne
-* **Wartość TimeToRun**: Łączny czas testu przed zakończeniem sukcesem. Test może zakończyć wcześniej audytów niepowodzenia weryfikacji.
-* **MaxClusterStabilizationTimeout**: Maksymalna ilość czasu oczekiwania klaster poprawi przed niepowodzeniem testu. Kontrole wykonywane są, czy kondycja klastra jest OK, usługa kondycji jest dobry, uzyskuje się rozmiaru docelowego zestawu replik partycji usługi i replik w stanie InBuild nie istnieje.
-* **MaxConcurrentFaults**: Maksymalna liczba współbieżnych błędów wywołanego w każdej iteracji. Wyższa wartość, bardziej aktywnego testu, dlatego skutkuje bardziej złożonych operacji Failover i kombinacji przejścia. Test gwarantuje, że w przypadku braku błędów zewnętrznych nie będzie kworum lub utraty danych, niezależnie od tego, jak wysoka jest w tej konfiguracji.
-* **EnableMoveReplicaFaults**: Włącza lub wyłącza błędy, które powodują przeniesienie repliki podstawowej lub dodatkowej. Te błędy są domyślnie wyłączone.
-* **WaitTimeBetweenIterations**: Ilość czasu oczekiwania między poszczególnymi iteracjami po round błędów i odpowiedni sprawdzania poprawności.
+### <a name="important-configuration-options"></a>Ważne opcje konfiguracji
+* **TimeToRun**: łączny czas uruchomienia testu przed zakończeniem sukcesem. Test może zakończyć się wcześniej zamiast błędu walidacji.
+* **MaxClusterStabilizationTimeout**: maksymalny czas oczekiwania, aż klaster przestanie działać w dobrej kondycji przed zakończeniem testu. Przeprowadzane sprawdzenia polegają na tym, czy kondycja klastra jest prawidłowa, kondycja usługi to OK, rozmiar docelowego zestawu replik jest osiągany dla partycji usługi i nie istnieją repliki inbuild.
+* **MaxConcurrentFaults**: Maksymalna liczba współbieżnych błędów wywołanych w każdej iteracji. Im większa liczba, tym bardziej agresywny test, co spowodowało bardziej skomplikowane przejścia w tryb failover i kombinacje przejść. Test gwarantuje, że w przypadku braku zewnętrznych błędów nie będzie kworum lub utracie danych, niezależnie od tego, jak wysoka jest taka konfiguracja.
+* **EnableMoveReplicaFaults**: włącza lub wyłącza błędy, które powodują przeniesienie repliki podstawowej lub pomocniczej. Te błędy są domyślnie wyłączone.
+* **WaitTimeBetweenIterations**: ilość czasu oczekiwania między iteracjami, tj. po rozpoczęciu rundy błędów i odpowiadającej jej weryfikacji.
 
-### <a name="how-to-run-the-chaos-test"></a>Jak uruchomić test chaosu
+### <a name="how-to-run-the-chaos-test"></a>Jak uruchomić test chaos
 Przykład w języku C#
 
 ```csharp
@@ -133,6 +133,8 @@ class Test
 
 PowerShell
 
+Moduł Service Fabric PowerShell zawiera dwa sposoby rozpoczęcia scenariusza chaos. `Invoke-ServiceFabricChaosTestScenario` jest oparty na kliencie, a jeśli komputer kliencki jest zamykany w połowie, nie będą wprowadzane żadne dalsze błędy. Alternatywnie istnieje zestaw poleceń, które mają na celu zachowanie przebiegu testu w przypadku jego zamknięcia. `Start-ServiceFabricChaos` używa stanowej i niezawodnej usługi systemowej o nazwie FaultAnalysisService, dzięki czemu błędy będą nadal wprowadzane do momentu, gdy TimeToRun się nie. `Stop-ServiceFabricChaos` może służyć do ręcznego zatrzymania scenariusza, a `Get-ServiceFabricChaosReport` spowoduje uzyskanie raportu. Aby uzyskać więcej informacji, zobacz [informacje dotyczące platformy Azure Service Fabric PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) i [powodowania kontrolowanego chaos w klastrach Service Fabric](service-fabric-controlled-chaos.md).
+
 ```powershell
 $connection = "localhost:19000"
 $timeToRun = 60
@@ -146,26 +148,26 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 ```
 
 
-## <a name="failover-test"></a>Test pracy awaryjnej
-Scenariusz testu w trybie failover jest wersją chaos scenariusza testu, który jest przeznaczony dla partycji określonej usługi. Sprawdza efekt przejścia w tryb failover na partycji określonej usługi, pozostawiając inne usługi nie ma wpływu. Po skonfigurowaniu przy użyciu informacji o partycji docelowej oraz innych parametrów, jest uruchamiana jako narzędzie po stronie klienta, które używa interfejsów API języka C# lub programu PowerShell do wygenerowania błędów na potrzeby partycji usługi. Scenariusz iterację sekwencja symulowane błędów i weryfikacji usługi podczas logiki biznesowej po stronie, zapewnienie obciążenia. Wystąpił błąd podczas weryfikacji usługi wskazuje problem, który wymaga dalszego badania.
+## <a name="failover-test"></a>Test pracy w trybie failover
+Scenariusz testowania trybu failover jest wersją scenariusza testowania chaos, który jest przeznaczony dla określonej partycji usługi. Testuje efekt przejścia w tryb failover na określonej partycji usługi, pozostawiając pozostałe usługi bez zmian. Po skonfigurowaniu z informacjami o partycji docelowej i innych parametrów działa jako narzędzie po stronie klienta, które używa C# interfejsów API lub programu PowerShell do generowania błędów dla partycji usługi. Scenariusz wykonuje iterację przez sekwencję symulowanych błędów i walidacji usługi, podczas gdy logika biznesowa jest uruchamiana po stronie w celu zapewnienia obciążenia. Błąd weryfikacji usługi wskazuje na problem wymagający dalszych badań.
 
-### <a name="faults-simulated-in-the-failover-test"></a>Błędy w test pracy awaryjnej
-* Uruchom ponownie pakiet wdrożonego kodu, w którym jest hostowana partycja
-* Usuwanie repliki podstawowe i pomocnicze lub bezstanowych wystąpienia
-* Uruchom ponownie podstawowej repliki pomocniczej (Jeśli usługa utrwalona)
-* Przenieś replika podstawowa
-* Przenieś replika pomocnicza
-* Uruchom ponownie partycję
+### <a name="faults-simulated-in-the-failover-test"></a>Błędy symulowane w teście trybu failover
+* Uruchom ponownie wdrożony pakiet kodu, w którym jest hostowana partycja
+* Usuń replikę podstawową/pomocniczą lub wystąpienie bezstanowe
+* Uruchom ponownie podstawową replikę pomocniczą (jeśli trwała usługa)
+* Przenoszenie repliki podstawowej
+* Przenoszenie repliki pomocniczej
+* Ponowne uruchamianie partycji
 
-Test pracy awaryjnej wywołuje wybranej usterki, a następnie uruchamia sprawdzania poprawności w usłudze, aby zapewnić jego stabilność. Test pracy awaryjnej wywołuje tylko jeden błąd w czasie, w przeciwieństwie do to możliwe, wiele błędów w teście chaos. Partycji Usługa docelowa nie stabilizacji przed upływem skonfigurowanego limitu czasu po każdym błędów, test kończy się niepowodzeniem. Test wywołuje tylko bezpiecznych błędów. Oznacza to, że w przypadku braku błędów zewnętrznych, utraty danych lub kworum nie nastąpi.
+Test trybu failover polega na wybranym błędzie, a następnie uruchamia weryfikację w usłudze w celu zapewnienia jej stabilności. Test pracy awaryjnej wywołuje tylko jeden błąd w czasie, w przeciwieństwie do możliwej wielu błędów testu chaos. Jeśli partycja usługi nie jest stabilna w skonfigurowanym limicie czasu po każdym błędzie, test zakończy się niepowodzeniem. Test wywołuje tylko bezpieczne błędy. Oznacza to, że w przypadku braku zewnętrznych błędów kworum lub utracie danych nie nastąpi.
 
-### <a name="important-configuration-options"></a>Opcje konfiguracji ważne
-* **PartitionSelector**: Obiekt selektor, który określa partycję, która musi być obiektem.
-* **Wartość TimeToRun**: Łączny czas testu przed zakończeniem.
-* **MaxServiceStabilizationTimeout**: Maksymalna ilość czasu oczekiwania klaster poprawi przed niepowodzeniem testu. Kontrole wykonywane są, czy usługa kondycji jest OK, rozmiaru docelowego zestawu replik odbywa się dla wszystkich partycji i replik w stanie InBuild nie istnieje.
-* **WaitTimeBetweenFaults**: Ilość czasu oczekiwania między każdym cyklu błędów i sprawdzanie poprawności.
+### <a name="important-configuration-options"></a>Ważne opcje konfiguracji
+* **PartitionSelector**: obiekt selektora określający partycję, która musi być celem.
+* **TimeToRun**: łączny czas, po upływie którego test zostanie uruchomiony przed zakończeniem.
+* **MaxServiceStabilizationTimeout**: maksymalny czas oczekiwania, aż klaster przestanie działać w dobrej kondycji przed zakończeniem testu. Sprawdzenia wykonywane polegają na tym, czy kondycja usługi jest prawidłowa, docelowy rozmiar zestawu replik zostanie osiągnięty dla wszystkich partycji i nie istnieją repliki inbuild.
+* **WaitTimeBetweenFaults**: ilość czasu oczekiwania między każdym cyklem błędu i walidacji.
 
-### <a name="how-to-run-the-failover-test"></a>Jak przeprowadzić test pracy awaryjnej
+### <a name="how-to-run-the-failover-test"></a>Jak uruchomić test pracy w trybie failover
 **C#**
 
 ```csharp

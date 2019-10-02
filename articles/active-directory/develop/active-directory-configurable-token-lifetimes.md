@@ -13,31 +13,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/17/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9244dfabef8b13105ef830f9f4543da9cb2cca9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b3696ebc216062a6d52fd187819f07dfb0078057
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842638"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812575"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurowalne okresy istnienia tokenu w Azure Active Directory (wersja zapoznawcza)
 
 Możesz określić okres istnienia tokenu wystawionego przez Azure Active Directory (Azure AD). Okresy istnienia tokenów można ustawić dla wszystkich aplikacji w organizacji, dla aplikacji wielodostępnej (z wieloma organizacjami) lub dla określonej jednostki usługi w organizacji.
 
 > [!IMPORTANT]
-> Po przesłuchaniu od klientów w wersji zapoznawczej wdrożono [funkcje zarządzania sesjami uwierzytelniania](https://go.microsoft.com/fwlink/?linkid=2083106) w usłudze Azure AD dostęp warunkowy. Ta nowa funkcja służy do konfigurowania okresów istnienia tokenu odświeżania przez ustawienie częstotliwości logowania. Po 1 listopada 2019 nie będzie można użyć konfigurowalnych zasad istnienia tokenu w celu skonfigurowania tokenów odświeżania, ale nadal można użyć go do skonfigurowania tokenów dostępu.
+> Po przesłuchaniu od klientów w wersji zapoznawczej wdrożono [funkcje zarządzania sesjami uwierzytelniania](https://go.microsoft.com/fwlink/?linkid=2083106) w usłudze Azure AD dostęp warunkowy. Ta nowa funkcja służy do konfigurowania okresów istnienia tokenu odświeżania przez ustawienie częstotliwości logowania. Po 1 listopada 2019 nie będzie można użyć konfigurowalnych zasad okresu istnienia tokenu do konfigurowania tokenów sesji i odświeżania. Nadal można skonfigurować okresy istnienia tokenu dostępu po zakończeniu działania.
 
 W usłudze Azure AD obiekt zasad reprezentuje zestaw reguł, które są wymuszane dla poszczególnych aplikacji lub we wszystkich aplikacjach w organizacji. Każdy typ zasad ma unikatową strukturę z zestawem właściwości, które są stosowane do obiektów, do których są przypisane.
 
 Zasady można wyznaczyć jako zasady domyślne dla swojej organizacji. Zasady są stosowane do wszystkich aplikacji w organizacji, o ile nie zostały zastąpione przez zasady o wyższym priorytecie. Można również przypisać zasady do określonych aplikacji. Kolejność priorytetów różni się w zależności od typu zasad.
 
 > [!NOTE]
-> Konfigurowalne zasady okresu istnienia tokenu nie są obsługiwane w usłudze SharePoint Online.  Mimo że masz możliwość tworzenia tych zasad za pośrednictwem programu PowerShell, usługi SharePoint Online nie będą potwierdzać tych zasad. Zapoznaj się z blogiem usługi [SharePoint Online](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) , aby dowiedzieć się więcej o konfigurowaniu limitów czasu bezczynności sesji.
+> Konfigurowalne zasady okresu istnienia tokenu nie są obsługiwane w usłudze SharePoint Online.  Mimo że masz możliwość tworzenia tych zasad za pośrednictwem programu PowerShell, usługi SharePoint Online nie będą potwierdzać tych zasad. Zapoznaj się z [blogiem usługi SharePoint Online](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) , aby dowiedzieć się więcej o konfigurowaniu limitów czasu bezczynności sesji.
 >* Domyślny okres istnienia tokenu dostępu usługi SharePoint Online wynosi 1 godzinę. 
 >* Domyślny maksymalny czas nieaktywności tokenu odświeżania usługi SharePoint Online to 90 dni.
 
@@ -52,18 +52,18 @@ Klienci używają tokenów dostępu w celu uzyskiwania dostępu do chronionego z
 
 ### <a name="refresh-tokens"></a>Odśwież tokeny
 
-Gdy klient uzyskuje token dostępu w celu uzyskania dostępu do chronionego zasobu, klient otrzymuje również token odświeżenia. Token odświeżania służy do uzyskiwania nowych par tokenów dostępu/odświeżania w przypadku wygaśnięcia bieżącego tokenu dostępu. Token odświeżania jest powiązany z kombinacją użytkownika i klienta. Token odświeżania można odwołać [w dowolnym momencie](access-tokens.md#token-revocation), a ważność tokenu jest sprawdzana za każdym razem, gdy token jest używany.  Tokeny odświeżania nie są odwoływane, gdy są używane do pobierania nowych tokenów dostępu — najlepszym rozwiązaniem jest jednak, aby bezpiecznie usunąć stary token podczas uzyskiwania nowego. 
+Gdy klient uzyskuje token dostępu w celu uzyskania dostępu do chronionego zasobu, klient otrzymuje również token odświeżenia. Token odświeżania służy do uzyskiwania nowych par tokenów dostępu/odświeżania w przypadku wygaśnięcia bieżącego tokenu dostępu. Token odświeżania jest powiązany z kombinacją użytkownika i klienta. Token odświeżania można [odwołać w dowolnym momencie](access-tokens.md#token-revocation), a ważność tokenu jest sprawdzana za każdym razem, gdy token jest używany.  Tokeny odświeżania nie są odwoływane, gdy są używane do pobierania nowych tokenów dostępu — najlepszym rozwiązaniem jest jednak, aby bezpiecznie usunąć stary token podczas uzyskiwania nowego. 
 
 Ważne jest, aby wprowadzić rozróżnienie między poufnymi klientami i klientami publicznymi, co ma wpływ na to, jak długo można używać tokenów odświeżania. Aby uzyskać więcej informacji na temat różnych typów klientów, zobacz [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Okresy istnienia tokenów z poufnymi tokenami odświeżania klienta
-Poufne klienci są aplikacjami, które mogą bezpiecznie przechowywać hasło klienta (poufne). Mogą oni udowodnić, że żądania pochodzą z zabezpieczonej aplikacji klienckiej, a nie od złośliwego aktora. Na przykład aplikacja sieci Web to poufny klient, ponieważ może przechowywać klucz tajny klienta na serwerze sieci Web. Nie jest on narażony. Ponieważ te przepływy są bezpieczniejsze, domyślne okresy istnienia tokenów odświeżania wystawionych dla `until-revoked`tych przepływów nie mogą być zmieniane przy użyciu zasad i nie zostaną odwołane w przypadku resetowania hasła dobrowolnego.
+Poufne klienci są aplikacjami, które mogą bezpiecznie przechowywać hasło klienta (poufne). Mogą oni udowodnić, że żądania pochodzą z zabezpieczonej aplikacji klienckiej, a nie od złośliwego aktora. Na przykład aplikacja sieci Web to poufny klient, ponieważ może przechowywać klucz tajny klienta na serwerze sieci Web. Nie jest on narażony. Ponieważ te przepływy są bezpieczniejsze, domyślne okresy istnienia tokenów odświeżania wystawionych dla tych przepływów to `until-revoked`, nie można zmienić przy użyciu zasad i nie zostaną odwołane w przypadku resetowania hasła dobrowolnego.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Okresy istnienia tokenów z publicznymi tokenami odświeżania klienta
 
-Klienci publiczni nie mogą bezpiecznie przechowywać hasła klienta (poufne). Na przykład aplikacja dla systemu iOS/Android nie może zasłaniać wpisu tajnego z właściciela zasobu, więc jest traktowana jako klient publiczny. Można ustawić zasady dla zasobów, aby zapobiec tokenom odświeżania od klientów publicznych starszych niż określony okres od uzyskania nowej pary tokenów dostępu/odświeżenia. (W tym celu należy użyć właściwości maksymalny czas nieaktywności tokenu odświeżania (`MaxInactiveTime`).) Można również użyć zasad, aby ustawić okres, po którym tokeny odświeżania nie są już akceptowane. (W tym celu należy użyć właściwości maksymalny wiek tokenu odświeżania). Można dostosować okres istnienia tokenu odświeżania, aby określić, kiedy i jak często użytkownik musi ponownie wprowadzić poświadczenia, zamiast być w sposób dyskretny uwierzytelniany w przypadku korzystania z publicznej aplikacji klienckiej.
+Klienci publiczni nie mogą bezpiecznie przechowywać hasła klienta (poufne). Na przykład aplikacja dla systemu iOS/Android nie może zasłaniać wpisu tajnego z właściciela zasobu, więc jest traktowana jako klient publiczny. Można ustawić zasady dla zasobów, aby zapobiec tokenom odświeżania od klientów publicznych starszych niż określony okres od uzyskania nowej pary tokenów dostępu/odświeżenia. (W tym celu należy użyć właściwości maks. czas nieaktywności tokenu odświeżania (`MaxInactiveTime`)). Można również użyć zasad, aby ustawić okres, po którym tokeny odświeżania nie są już akceptowane. (W tym celu należy użyć właściwości maksymalny wiek tokenu odświeżania). Można dostosować okres istnienia tokenu odświeżania, aby określić, kiedy i jak często użytkownik musi ponownie wprowadzić poświadczenia, zamiast być w sposób dyskretny uwierzytelniany w przypadku korzystania z publicznej aplikacji klienckiej.
 
-### <a name="id-tokens"></a>Tokeny identyfikatorów
+### <a name="id-tokens"></a>IDENTYFIKATORY tokenów
 Tokeny identyfikatorów są przesyłane do witryn sieci Web i natywnych klientów. Tokeny identyfikatorów zawierają informacje o profilu użytkownika. Token identyfikatora jest powiązany z określoną kombinacją użytkownika i klienta. Tokeny identyfikatorów są uznawane za ważne do momentu ich wygaśnięcia. Zwykle aplikacja sieci Web dopasowuje okres istnienia sesji użytkownika w aplikacji do okresu istnienia tokenu identyfikatora wydanego dla użytkownika. Możesz dostosować okres istnienia tokenu identyfikatora, aby określić, jak często aplikacja sieci Web wygaśnie w sesji aplikacji i jak często wymaga ponownego uwierzytelnienia użytkownika w usłudze Azure AD (dyskretnie lub interaktywnie).
 
 ### <a name="single-sign-on-session-tokens"></a>Tokeny sesji logowania jednokrotnego
@@ -79,14 +79,14 @@ Można użyć zasad, aby ustawić czas po wydaniu pierwszego tokenu sesji, poza 
 Zasada okresu istnienia tokenu jest typem obiektu zasad, który zawiera reguły okresu istnienia tokenu. Użyj właściwości zasad do kontrolowania określonych okresów istnienia tokenu. Jeśli nie ustawiono żadnych zasad, system wymusza domyślną wartość okresu istnienia.
 
 ### <a name="configurable-token-lifetime-properties"></a>Konfigurowalne właściwości okresu istnienia tokenu
-| Właściwość | Ciąg właściwości zasad | Mową | Domyślny | Minimalne | Maksimum |
+| Właściwość | Ciąg właściwości zasad | Mową | Domyślny | Minimalnie | Maksymalnie |
 | --- | --- | --- | --- | --- | --- |
 | Okres istnienia tokenu dostępu |AccessTokenLifetime<sup>2</sup> |Tokeny dostępu, tokeny identyfikatorów, tokeny SAML2 |1 godzina |10 minut |1 dzień |
 | Maksymalny czas nieaktywności tokenu odświeżania |MaxInactiveTime |Odśwież tokeny |90 dni |10 minut |90 dni |
-| Maksymalny wiek tokenu odświeżania pojedynczego czynnika |MaxAgeSingleFactor |Odśwież tokeny (dla wszystkich użytkowników) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
-| Maksymalny wiek tokenu wieloskładnikowego odświeżania |MaxAgeMultiFactor |Odśwież tokeny (dla wszystkich użytkowników) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
-| Maksymalny wiek tokenu sesji pojedynczego czynnika |MaxAgeSessionSingleFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
-| Maksymalny wiek tokenu sesji wieloskładnikowe |MaxAgeSessionMultiFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
+| Maksymalny wiek tokenu odświeżania pojedynczego czynnika |MaxAgeSingleFactor |Odśwież tokeny (dla wszystkich użytkowników) |Do odwołania |10 minut |Do odwołania<sup>1</sup> |
+| Maksymalny wiek tokenu wieloskładnikowego odświeżania |MaxAgeMultiFactor |Odśwież tokeny (dla wszystkich użytkowników) |Do odwołania |10 minut |Do odwołania<sup>1</sup> |
+| Maksymalny wiek tokenu sesji pojedynczego czynnika |MaxAgeSessionSingleFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Do odwołania<sup>1</sup> |
+| Maksymalny wiek tokenu sesji wieloskładnikowe |MaxAgeSessionMultiFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Do odwołania<sup>1</sup> |
 
 * <sup>1</sup>365 dni to maksymalna jawna długość, którą można ustawić dla tych atrybutów.
 * <sup>2</sup> Aby umożliwić działanie klienta sieci Web Microsoft Teams, zaleca się ustawienie AccessTokenLifetime na ponad 15 minut dla zespołów Microsoft Teams.
@@ -112,12 +112,12 @@ Aby uzyskać więcej informacji na temat relacji między obiektami aplikacji i o
 
 Ważność tokenu jest oceniana w czasie używania tokenu. Zasady z najwyższym priorytetem w aplikacji, do której uzyskuje się dostęp, zaczynają obowiązywać.
 
-Wszystkie używane tu przedziały czasu są sformatowane zgodnie C# z obiektem [TimeSpan](/dotnet/api/system.timespan) -D. hh: mm: SS.  Tak więc 80 dni i 30 minut `80.00:30:00`.  Interlinię D można porzucić, jeśli zero, więc 90 minut `00:90:00`.  
+Wszystkie używane tu przedziały czasu są sformatowane zgodnie C# z obiektem [TimeSpan](/dotnet/api/system.timespan) -D. hh: mm: SS.  Więc 80 dni i 30 minut `80.00:30:00`.  Interlinię D można porzucić, jeśli zero, więc 90 minut będzie `00:90:00`.  
 
 > [!NOTE]
 > Oto przykładowy scenariusz.
 >
-> Użytkownik chce uzyskać dostęp do dwóch aplikacji sieci Web: Aplikacja sieci Web a i aplikacja sieci Web B.
+> Użytkownik chce uzyskać dostęp do dwóch aplikacji sieci Web: aplikacji sieci Web A i aplikacji sieci Web B.
 > 
 > Elementy
 > * Obie aplikacje sieci Web znajdują się w tej samej organizacji nadrzędnej.
@@ -137,63 +137,63 @@ Wszystkie używane tu przedziały czasu są sformatowane zgodnie C# z obiektem [
 
 ## <a name="configurable-policy-property-details"></a>Szczegóły właściwości zasad konfigurowalnych
 ### <a name="access-token-lifetime"></a>Okres istnienia tokenu dostępu
-**Parametry** AccessTokenLifetime
+**Ciąg:** AccessTokenLifetime
 
-**Mową** Tokeny dostępu, tokeny identyfikatorów
+**Ma wpływ na:** Tokeny dostępu, tokeny identyfikatorów
 
-**Podsumowanie** Ta zasada kontroluje, jak długo tokeny dostępu i identyfikatorów dla tego zasobu są uznawane za ważne. Zmniejszenie właściwości okresu istnienia tokenu dostępu zmniejsza ryzyko związane z tokenem dostępu lub tokenem ID używanym przez złośliwy aktor przez dłuższy czas. (Tokeny te nie mogą zostać odwołane). W wyniku tego jest niekorzystnie wpływać na wydajność, ponieważ tokeny muszą być częściej zastępowane.
+**Podsumowanie:** Ta zasada kontroluje, jak długo tokeny dostępu i identyfikatorów dla tego zasobu są uznawane za ważne. Zmniejszenie właściwości okresu istnienia tokenu dostępu zmniejsza ryzyko związane z tokenem dostępu lub tokenem ID używanym przez złośliwy aktor przez dłuższy czas. (Tokeny te nie mogą zostać odwołane). W wyniku tego jest niekorzystnie wpływać na wydajność, ponieważ tokeny muszą być częściej zastępowane.
 
 ### <a name="refresh-token-max-inactive-time"></a>Maksymalny czas nieaktywności tokenu odświeżania
-**Parametry** MaxInactiveTime
+**Ciąg:** MaxInactiveTime
 
-**Mową** Odśwież tokeny
+**Ma wpływ na:** Odśwież tokeny
 
-**Podsumowanie** Ta zasada kontroluje, jak stara token odświeżania, zanim klient nie będzie mógł go już używać do pobierania nowej pary tokenów dostępu/odświeżania podczas próby uzyskania dostępu do tego zasobu. Ponieważ nowy token odświeżania jest zwykle zwracany, gdy używany jest token odświeżania, te zasady uniemożliwiają dostęp, jeśli klient próbuje uzyskać dostęp do dowolnego zasobu przy użyciu bieżącego tokenu odświeżania w określonym przedziale czasu.
+**Podsumowanie:** Ta zasada kontroluje, jak stara token odświeżania, zanim klient nie będzie mógł go już używać do pobierania nowej pary tokenów dostępu/odświeżania podczas próby uzyskania dostępu do tego zasobu. Ponieważ nowy token odświeżania jest zwykle zwracany, gdy używany jest token odświeżania, te zasady uniemożliwiają dostęp, jeśli klient próbuje uzyskać dostęp do dowolnego zasobu przy użyciu bieżącego tokenu odświeżania w określonym przedziale czasu.
 
 Te zasady wymuszają, że użytkownicy, którzy nie zostali aktywni na kliencie w celu ponownego uwierzytelnienia w celu pobrania nowego tokenu odświeżania.
 
 Właściwość maksymalny czas nieaktywności tokenu odświeżania musi być ustawiona na wartość niższą niż maksymalny wiek tokenu usługi Single-Factor i Maksymalna liczba właściwości wieku tokenu usługi wieloskładnikowej.
 
 ### <a name="single-factor-refresh-token-max-age"></a>Maksymalny wiek tokenu odświeżania pojedynczego czynnika
-**Parametry** MaxAgeSingleFactor
+**Ciąg:** MaxAgeSingleFactor
 
-**Mową** Odśwież tokeny
+**Ma wpływ na:** Odśwież tokeny
 
-**Podsumowanie** Ta zasada kontroluje, jak długo użytkownik może użyć tokenu odświeżania, aby uzyskać nową parę tokenów dostępu/odświeżenia po pomyślnym uwierzytelnieniu przy użyciu tylko jednego czynnika. Po uwierzytelnieniu i otrzymaniu nowego tokenu odświeżania użytkownik może użyć przepływu tokenu odświeżania przez określony czas. (Jest to prawdziwe, o ile bieżący token odświeżania nie jest odwołany i nie jest jeszcze nieużywany przez czas dłuższy niż nieaktywny). W tym momencie użytkownik jest zmuszony do ponownego uwierzytelnienia w celu otrzymania nowego tokenu odświeżania.
+**Podsumowanie:** Ta zasada kontroluje, jak długo użytkownik może użyć tokenu odświeżania, aby uzyskać nową parę tokenów dostępu/odświeżenia po pomyślnym uwierzytelnieniu przy użyciu tylko jednego czynnika. Po uwierzytelnieniu i otrzymaniu nowego tokenu odświeżania użytkownik może użyć przepływu tokenu odświeżania przez określony czas. (Jest to prawdziwe, o ile bieżący token odświeżania nie jest odwołany i nie jest jeszcze nieużywany przez czas dłuższy niż nieaktywny). W tym momencie użytkownik jest zmuszony do ponownego uwierzytelnienia w celu otrzymania nowego tokenu odświeżania.
 
 Skrócenie maksymalnego wieku zmusza użytkowników do częstego uwierzytelniania. Ponieważ uwierzytelnianie wieloskładnikowe jest uznawane za mniej bezpieczne niż w przypadku uwierzytelniania wieloskładnikowego, zalecamy ustawienie tej właściwości na wartość, która jest równa lub mniejsza niż Właściwość maksymalnego wieku tokena odświeżania.
 
 ### <a name="multi-factor-refresh-token-max-age"></a>Maksymalny wiek tokenu wieloskładnikowego odświeżania
-**Parametry** MaxAgeMultiFactor
+**Ciąg:** MaxAgeMultiFactor
 
-**Mową** Odśwież tokeny
+**Ma wpływ na:** Odśwież tokeny
 
-**Podsumowanie** Ta zasada kontroluje, jak długo użytkownik może użyć tokenu odświeżania, aby uzyskać nową parę tokenów dostępu/odświeżenia po pomyślnym uwierzytelnieniu przy użyciu wielu czynników. Po uwierzytelnieniu i otrzymaniu nowego tokenu odświeżania użytkownik może użyć przepływu tokenu odświeżania przez określony czas. (Wartość ta jest równa, o ile bieżący token odświeżania nie jest odwołany i nie jest używany dłużej niż czas nieaktywności). W tym momencie użytkownicy są zmuszeni do ponownego uwierzytelnienia w celu otrzymania nowego tokenu odświeżania.
+**Podsumowanie:** Ta zasada kontroluje, jak długo użytkownik może użyć tokenu odświeżania, aby uzyskać nową parę tokenów dostępu/odświeżenia po pomyślnym uwierzytelnieniu przy użyciu wielu czynników. Po uwierzytelnieniu i otrzymaniu nowego tokenu odświeżania użytkownik może użyć przepływu tokenu odświeżania przez określony czas. (Wartość ta jest równa, o ile bieżący token odświeżania nie jest odwołany i nie jest używany dłużej niż czas nieaktywności). W tym momencie użytkownicy są zmuszeni do ponownego uwierzytelnienia w celu otrzymania nowego tokenu odświeżania.
 
 Skrócenie maksymalnego wieku zmusza użytkowników do częstego uwierzytelniania. Ponieważ uwierzytelnianie wieloskładnikowe jest uznawane za mniej bezpieczne niż w przypadku uwierzytelniania wieloskładnikowego, zalecamy ustawienie tej właściwości na wartość, która jest równa lub większa niż Właściwość maksymalnego wieku tokena odświeżania.
 
 ### <a name="single-factor-session-token-max-age"></a>Maksymalny wiek tokenu sesji pojedynczego czynnika
-**Parametry** MaxAgeSessionSingleFactor
+**Ciąg:** MaxAgeSessionSingleFactor
 
-**Mową** Tokeny sesji (trwałe i nietrwałe)
+**Ma wpływ na:** Tokeny sesji (trwałe i nietrwałe)
 
-**Podsumowanie** Ta zasada kontroluje, jak długo użytkownik może użyć tokenu sesji w celu uzyskania nowego identyfikatora i tokenu sesji po pomyślnym uwierzytelnieniu przy użyciu tylko jednego czynnika. Po uwierzytelnieniu i odebraniu nowego tokenu sesji użytkownik może użyć przepływu tokenu sesji przez określony czas. (Wartość ta jest równa, o ile token bieżącej sesji nie został odwołany i nie wygasł.) Po upływie określonego czasu użytkownik jest zmuszony do ponownego uwierzytelnienia w celu otrzymania nowego tokenu sesji.
+**Podsumowanie:** Ta zasada kontroluje, jak długo użytkownik może użyć tokenu sesji w celu uzyskania nowego identyfikatora i tokenu sesji po pomyślnym uwierzytelnieniu przy użyciu tylko jednego czynnika. Po uwierzytelnieniu i odebraniu nowego tokenu sesji użytkownik może użyć przepływu tokenu sesji przez określony czas. (Wartość ta jest równa, o ile token bieżącej sesji nie został odwołany i nie wygasł.) Po upływie określonego czasu użytkownik jest zmuszony do ponownego uwierzytelnienia w celu otrzymania nowego tokenu sesji.
 
 Skrócenie maksymalnego wieku zmusza użytkowników do częstego uwierzytelniania. Ponieważ uwierzytelnianie wieloskładnikowe jest uznawane za mniej bezpieczne niż w przypadku uwierzytelniania wieloskładnikowego, zalecamy ustawienie tej właściwości na wartość, która jest równa lub mniejsza niż maksymalny wiek tokenu sesji wieloskładnikowej.
 
 ### <a name="multi-factor-session-token-max-age"></a>Maksymalny wiek tokenu sesji wieloskładnikowe
-**Parametry** MaxAgeSessionMultiFactor
+**Ciąg:** MaxAgeSessionMultiFactor
 
-**Mową** Tokeny sesji (trwałe i nietrwałe)
+**Ma wpływ na:** Tokeny sesji (trwałe i nietrwałe)
 
-**Podsumowanie** Ta zasada kontroluje, jak długo użytkownik może użyć tokenu sesji w celu uzyskania nowego identyfikatora i tokenu sesji po ostatnim pomyślnym uwierzytelnieniu przy użyciu wielu czynników. Po uwierzytelnieniu i odebraniu nowego tokenu sesji użytkownik może użyć przepływu tokenu sesji przez określony czas. (Wartość ta jest równa, o ile token bieżącej sesji nie został odwołany i nie wygasł.) Po upływie określonego czasu użytkownik jest zmuszony do ponownego uwierzytelnienia w celu otrzymania nowego tokenu sesji.
+**Podsumowanie:** Ta zasada kontroluje, jak długo użytkownik może użyć tokenu sesji w celu uzyskania nowego identyfikatora i tokenu sesji po ostatnim pomyślnym uwierzytelnieniu przy użyciu wielu czynników. Po uwierzytelnieniu i odebraniu nowego tokenu sesji użytkownik może użyć przepływu tokenu sesji przez określony czas. (Wartość ta jest równa, o ile token bieżącej sesji nie został odwołany i nie wygasł.) Po upływie określonego czasu użytkownik jest zmuszony do ponownego uwierzytelnienia w celu otrzymania nowego tokenu sesji.
 
 Skrócenie maksymalnego wieku zmusza użytkowników do częstego uwierzytelniania. Ponieważ uwierzytelnianie wieloskładnikowe jest uznawane za mniej bezpieczne niż w przypadku usługi uwierzytelniania wieloskładnikowego, zalecamy ustawienie tej właściwości na wartość, która jest równa lub większa niż Właściwość maksymalnego wieku tokenu sesji.
 
 ## <a name="example-token-lifetime-policies"></a>Przykładowe zasady okresu istnienia tokenu
 Wiele scenariuszy jest dostępnych w usłudze Azure AD, gdy można tworzyć okresy istnienia tokenów dla aplikacji, podmiotów usługi i całej organizacji oraz zarządzać nimi. W tej sekcji omówiono kilka typowych scenariuszy zasad, które mogą pomóc w nałożeniu nowych reguł dla:
 
-* Czas życia tokenu
+* Okres istnienia tokenu
 * Maksymalny czas nieaktywności tokenu
 * Maksymalny wiek tokenu
 
@@ -210,7 +210,7 @@ W poniższych przykładach tworzysz, aktualizujesz, łączysz i usuwasz zasady d
 Aby rozpocząć, wykonaj następujące czynności:
 
 1. Pobierz najnowszą [wersję publicznej wersji zapoznawczej modułu programu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
-2. `Connect` Uruchom polecenie, aby zalogować się do konta administratora usługi Azure AD. Uruchom to polecenie przy każdym uruchomieniu nowej sesji.
+2. Uruchom polecenie `Connect`, aby zalogować się do konta administratora usługi Azure AD. Uruchom to polecenie przy każdym uruchomieniu nowej sesji.
 
     ```powershell
     Connect-AzureAD -Confirm
@@ -293,7 +293,7 @@ W tym przykładzie utworzysz zasady, które wymagają, aby użytkownicy uwierzyt
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Przykład: Tworzenie zasad dla aplikacji natywnej, która wywołuje interfejs API sieci Web
+### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Przykład: Tworzenie zasad dla natywnej aplikacji, która wywołuje interfejs API sieci Web
 W tym przykładzie utworzysz zasady, które wymagają, aby użytkownicy byli uwierzytelniani rzadziej. Zasada wydłuża również czas nieaktywności użytkownika, po upływie którego użytkownik musi ponownie przeprowadzić uwierzytelnienie. Zasady są stosowane do internetowego interfejsu API. Gdy aplikacja natywna zażąda internetowego interfejsu API jako zasobu, te zasady są stosowane.
 
 1. Utwórz zasady czasu istnienia tokenu.
@@ -355,7 +355,7 @@ W tym przykładzie utworzysz kilka zasad, aby dowiedzieć się, jak działa syst
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. `IsOrganizationDefault` Ustaw flagę na wartość false:
+3. Ustaw flagę `IsOrganizationDefault` na wartość false:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
@@ -389,7 +389,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 | <code>&#8209;DisplayName</code> |Ciąg nazwy zasad. |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;IsOrganizationDefault</code> |W przypadku wartości true ustawia zasady jako domyślne zasady organizacji. W przypadku wartości false nic nie robi. |`-IsOrganizationDefault $true` |
 | <code>&#8209;Type</code> |Typ zasad. W przypadku okresów istnienia tokenu zawsze używaj "TokenLifetimePolicy". | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Obowiązkowe |Ustawia identyfikator alternatywny dla zasad. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;AlternativeIdentifier</code> [opcjonalne] |Ustawia identyfikator alternatywny dla zasad. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -402,7 +402,7 @@ Get-AzureADPolicy
 
 | Parametry | Opis | Przykład |
 | --- | --- | --- |
-| <code>&#8209;Id</code>Obowiązkowe |**Objectid (ID)** żądanych zasad. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> [opcjonalne] |**Objectid (ID)** żądanych zasad. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -430,10 +430,10 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**Objectid (ID)** żądanych zasad. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |Ciąg nazwy zasad. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code>Obowiązkowe |Tablica JSON skonwertowanej, która zawiera wszystkie reguły zasad. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code>Obowiązkowe |W przypadku wartości true ustawia zasady jako domyślne zasady organizacji. W przypadku wartości false nic nie robi. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code>Obowiązkowe |Typ zasad. W przypadku okresów istnienia tokenu zawsze używaj "TokenLifetimePolicy". |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Obowiązkowe |Ustawia identyfikator alternatywny dla zasad. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;Definition</code> [opcjonalne] |Tablica JSON skonwertowanej, która zawiera wszystkie reguły zasad. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;IsOrganizationDefault</code> [opcjonalne] |W przypadku wartości true ustawia zasady jako domyślne zasady organizacji. W przypadku wartości false nic nie robi. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Type</code> [opcjonalne] |Typ zasad. W przypadku okresów istnienia tokenu zawsze używaj "TokenLifetimePolicy". |`-Type "TokenLifetimePolicy"` |
+| <code>&#8209;AlternativeIdentifier</code> [opcjonalne] |Ustawia identyfikator alternatywny dla zasad. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -494,7 +494,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 
 </br></br>
 
-### <a name="service-principal-policies"></a>Zasady dotyczące nazw głównych usług
+### <a name="service-principal-policies"></a>Zasady dotyczące nazwy głównej usługi
 W przypadku zasad głównych usługi można użyć następujących poleceń cmdlet.
 
 #### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 3d2c3e2bf693f763db13d90961a31e871aa25235
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d12b952d298b41c8d06f0fcac141a45749de9051
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558863"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71799953"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiana tekstu na mowę?
 
@@ -55,7 +55,7 @@ Wszystkie dane wejściowe wysyłane do usługi zamiany tekstu na mowę muszą by
 W przypadku korzystania z usługi zamiany tekstu na mowę naliczane są opłaty za każdy znak konwertowany na mowę, w tym znaki interpunkcyjne. Chociaż sam dokument SSML nie jest rozliczany, opcjonalne elementy, które są używane do dostosowywania sposobu konwersji tekstu na mowę, takie jak fonemów i gęstość, są zliczane jako znaki rozliczeniowe. Poniżej znajduje się lista rzeczy, które są rozliczane:
 
 * Tekst przesłany do usługi zamiany tekstu na mowę w treści SSML żądania
-* Wszystkie znaczniki w polu tekstowym treści żądania w formacie SSML, z wyjątkiem tagów for `<speak>` i `<voice>`
+* Wszystkie znaczniki w polu tekstowym treści żądania w formacie SSML, z wyjątkiem tagów `<speak>` i `<voice>`
 * Litery, interpunkcja, spacje, tabulatory, znaczniki i wszystkie znaki odstępu
 * Każdy punkt kodowy zdefiniowany w kodzie Unicode
 
@@ -70,14 +70,14 @@ W tej tabeli przedstawiono podstawowe funkcje zamiany tekstu na mowę:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Konwertuj tekst na mowę. | Yes | Yes |
-| Przekazywanie zestawów danych do adaptacji głosowej. | Nie | Opcję\* |
-| Twórz modele czcionek głosowych i zarządzaj nimi. | Nie | Opcję\* |
-| Twórz wdrożenia czcionek głosowych i zarządzaj nimi. | Nie | Opcję\* |
-| Twórz i Zarządzaj testami czcionek głosowych. | Nie | Opcję\* |
-| Zarządzanie subskrypcjami. | Nie | Opcję\* |
+| Konwertuj tekst na mowę. | Tak | Tak |
+| Przekazywanie zestawów danych do adaptacji głosowej. | Nie | Tak @ no__t-0 |
+| Twórz modele czcionek głosowych i zarządzaj nimi. | Nie | Tak @ no__t-0 |
+| Twórz wdrożenia czcionek głosowych i zarządzaj nimi. | Nie | Tak @ no__t-0 |
+| Twórz i Zarządzaj testami czcionek głosowych. | Nie | Tak @ no__t-0 |
+| Zarządzanie subskrypcjami. | Nie | Tak @ no__t-0 |
 
-\**Te usługi są dostępne za pomocą punktu końcowego CRIS.AI. Zobacz [Dokumentacja struktury Swagger](https://westus.cris.ai/swagger/ui/index). Te niestandardowe interfejsy API szkolenia i zarządzania umożliwiają wdrożenie ograniczenia ograniczające liczbę żądań do 25 na 5 sekund, natomiast interfejs API syntezy mowy implementuje ograniczenie, które umożliwia 200 żądań na sekundę. W przypadku ograniczenia przepustowości użytkownik zostanie powiadomiony o nagłówkach wiadomości.*
+\* *te usługi są dostępne za pomocą punktu końcowego CRIS.AI. Zobacz [Dokumentacja struktury Swagger](https://westus.cris.ai/swagger/ui/index). Te niestandardowe interfejsy API szkolenia i zarządzania umożliwiają wdrożenie ograniczenia ograniczające liczbę żądań do 25 na 5 sekund, natomiast interfejs API syntezy mowy implementuje ograniczenie, które umożliwia 200 żądań na sekundę. W przypadku ograniczenia przepustowości użytkownik zostanie powiadomiony o nagłówkach wiadomości.*
 
 ## <a name="get-started-with-text-to-speech"></a>Wprowadzenie do zamiany tekstu na mowę
 
@@ -85,22 +85,29 @@ Oferujemy Przewodniki Szybki Start zaprojektowane do uruchamiania kodu w mniej n
 
 ### <a name="sdk-quickstarts"></a>Przewodniki Szybki Start dotyczące zestawu SDK
 
-| Szybki Start (SDK) | Platforma | Dokumentacja interfejsów API |
+| Szybki Start (SDK) | Platforma | Odwołanie API |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-text-to-speech-dotnetcore.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
-| [C#, PLATFORMY UWP](quickstart-text-to-speech-csharp-uwp.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
-| [C#, Unity](quickstart-text-to-speech-csharp-unity.md) | Windows, Android | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
-| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/cppref) |
-| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Przeglądaj](https://aka.ms/csspeech/cppref) |
+| [C#, .NET Core](quickstart-text-to-speech-dotnetcore.md) | Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
+| [C#, .NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
+| [C#, Platformy UWP](quickstart-text-to-speech-csharp-uwp.md) | Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
+| [C#, Unity](quickstart-text-to-speech-csharp-unity.md) | Windows, Android | [Przycisku](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Przycisku](https://aka.ms/csspeech/cppref) |
+| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Przycisku](https://aka.ms/csspeech/cppref) |
+| [Java](quickstart-text-to-speech-java-jre.md) | Windows, Linux, macOS | [Przycisku](https://aka.ms/csspeech/javaref) |
+| [Java](quickstart-text-to-speech-java-android.md) | Android | [Przycisku](https://aka.ms/csspeech/javaref) |
+| [Objective-C](quickstart-text-to-speech-objectivec-macos.md) | macOS | [Przycisku](https://aka.ms/csspeech/objectivecref) |
+| [Objective-C](quickstart-text-to-speech-objectivec-ios.md) | iOS | [Przycisku](https://aka.ms/csspeech/objectivecref) |
+| [Adres](quickstart-text-to-speech-swift-macos.md) | macOS | [Przycisku](https://aka.ms/csspeech/objectivecref) |
+| [Adres](quickstart-text-to-speech-swift-ios.md) | iOS | [Przycisku](https://aka.ms/csspeech/objectivecref) |
+| [Python](quickstart-text-to-speech-python.md) | Window, Linux, macOS | [Przycisku](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>Przewodniki Szybki Start
 
-| Szybki Start (REST) | Platforma | Dokumentacja interfejsów API |
+| Szybki Start (REST) | Platforma | Odwołanie API |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Przycisku](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Przycisku](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Przycisku](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
@@ -109,15 +116,15 @@ Przykładowy kod dla zamiany tekstu na mowę jest dostępny w witrynie GitHub. T
 * [Przykłady zamiany tekstu na mowę (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [Przykłady zamiany tekstu na mowę (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
-## <a name="reference-docs"></a>Dokumentacja
+## <a name="reference-docs"></a>Dokumentacja dokumentacji
 
-* [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
+* [Zestaw Speech SDK](speech-sdk-reference.md)
 * [Zestaw SDK urządzeń mowy](speech-devices-sdk.md)
-* [INTERFEJS API REST: Zamiana mowy na tekst](rest-speech-to-text.md)
-* [INTERFEJS API REST: Zamiana tekstu na mowę](rest-text-to-speech.md)
-* [INTERFEJS API REST: Transkrypcja i dostosowywanie partii](https://westus.cris.ai/swagger/ui/index)
+* [Interfejs API REST: zamiana mowy na tekst](rest-speech-to-text.md)
+* [Interfejs API REST: zamiana tekstu na mowę](rest-text-to-speech.md)
+* [Interfejs API REST: Transkrypcja i dostosowywanie partii](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Uzyskaj bezpłatną subskrypcję usługi Speech Services](get-started.md)
-* [Tworzenie niestandardowych voice czcionek](how-to-customize-voice-font.md)
+* [Tworzenie niestandardowych czcionek głosowych](how-to-customize-voice-font.md)

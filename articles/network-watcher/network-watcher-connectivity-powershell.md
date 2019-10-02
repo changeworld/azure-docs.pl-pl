@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 0f18140036ac762c7383ed1b1d8081aa8d5f877f
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 82bd92de8b2cbb0da4d6d37911a6a3f71186b592
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165120"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802040"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Rozwiązywanie problemów z usługą Azure Network Watcher przy użyciu programu PowerShell
 
@@ -39,7 +39,7 @@ Dowiedz się, jak używać rozwiązywania problemów z połączeniami, aby spraw
 * Maszyny wirtualne do rozwiązywania problemów z usługą.
 
 > [!IMPORTANT]
-> Rozwiązywanie problemów z połączeniem wymaga, aby maszyna wirtualna z `AzureNetworkWatcherExtension` maszyną wirtualną była zainstalowana jako rozszerzenie maszyny wirtualnej. Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Windows, odwiedź [rozszerzenie maszyny wirtualnej usługi azure Network Watcher Agent dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny wirtualnej z systemem Linux odwiedź [rozszerzenie maszyny wirtualnej agenta usługi Azure Network Watcher](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagane w docelowym punkcie końcowym.
+> Rozwiązywanie problemów z połączeniem wymaga, aby maszyna wirtualna z maszyną wirtualną, z której na@no__t stąpiło Rozwiązywanie Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Windows, odwiedź [rozszerzenie maszyny wirtualnej usługi azure Network Watcher Agent dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny wirtualnej z systemem Linux odwiedź [rozszerzenie maszyny wirtualnej agenta usługi Azure Network Watcher](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagane w docelowym punkcie końcowym.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Sprawdź łączność z maszyną wirtualną
 
@@ -57,14 +57,14 @@ $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 $VM2 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $destVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location} 
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationId $VM2.Id -DestinationPort 80
 ```
 
 ### <a name="response"></a>Odpowiedź
 
-Poniższa odpowiedź pochodzi z poprzedniego przykładu.  W tej odpowiedzi `ConnectionStatus` jest nieosiągalny. Można zobaczyć, że wszystkie sondy zostały wysłane. Łączność z urządzeniem wirtualnym nie powiodła się z powodu konfiguracji `NetworkSecurityRule` użytkownika o nazwie **UserRule_Port80**, skonfigurowanej do blokowania ruchu przychodzącego na porcie 80. Te informacje mogą służyć do badania problemów z połączeniami.
+Poniższa odpowiedź pochodzi z poprzedniego przykładu.  W tej odpowiedzi `ConnectionStatus` jest **nieosiągalny**. Można zobaczyć, że wszystkie sondy zostały wysłane. Łączność z urządzeniem wirtualnym nie powiodła się ze względu na skonfigurowane przez użytkownika `NetworkSecurityRule` o nazwie **UserRule_Port80**, skonfigurowane do blokowania ruchu przychodzącego na porcie 80. Te informacje mogą służyć do badania problemów z połączeniami.
 
 ```
 ConnectionStatus : Unreachable
@@ -148,14 +148,14 @@ $sourceVMName = "MultiTierApp0"
 $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress 13.107.21.200 -DestinationPort 80
 ```
 
 ### <a name="response"></a>Odpowiedź
 
-W poniższym przykładzie `ConnectionStatus` jest wyświetlany jako nieosiągalny. W szczegółach można `Issues` zobaczyć, że ruch `UserDefinedRoute`został zablokowany z powodu. `Hops` 
+W poniższym przykładzie `ConnectionStatus` jest pokazywany jako **nieosiągalny**. W `Hops` szczegóły można zobaczyć w obszarze `Issues`, że ruch został zablokowany ze względu na `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -211,7 +211,7 @@ $sourceVMName = "MultiTierApp0"
 $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://bing.com/
@@ -219,7 +219,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Odpowiedź
 
-W poniższej odpowiedzi widać, że `ConnectionStatus` są wyświetlane jako **dostępne**. Po pomyślnym nawiązaniu połączenia są podawane wartości opóźnienia.
+W poniższej odpowiedzi można zobaczyć, że `ConnectionStatus` jest wyświetlana jako **osiągalna**. Po pomyślnym nawiązaniu połączenia są podawane wartości opóźnienia.
 
 ```
 ConnectionStatus : Reachable
@@ -264,14 +264,14 @@ $RG = Get-AzResourceGroup -Name $rgName
 
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location }
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://contosostorageexample.blob.core.windows.net/ 
 ```
 
 ### <a name="response"></a>Odpowiedź
 
-Poniższy kod JSON to Przykładowa odpowiedź z uruchomienia poprzedniego polecenia cmdlet. Gdy lokalizacja docelowa jest osiągalna, `ConnectionStatus` właściwość jest wyświetlana jako **osiągalna**.  Podano szczegółowe informacje dotyczące liczby przeskoków wymaganych do uzyskania dostępu do obiektu blob magazynu i opóźnienia.
+Poniższy kod JSON to Przykładowa odpowiedź z uruchomienia poprzedniego polecenia cmdlet. Gdy lokalizacja docelowa jest osiągalna, właściwość `ConnectionStatus` jest wyświetlana jako **osiągalna**.  Podano szczegółowe informacje dotyczące liczby przeskoków wymaganych do uzyskania dostępu do obiektu blob magazynu i opóźnienia.
 
 ```json
 ConnectionStatus : Reachable

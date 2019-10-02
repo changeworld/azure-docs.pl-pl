@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: QnA Maker Biblioteka kliencka dla języka Python'
+title: 'Szybki Start: QnA Makera Biblioteka kliencka dla języka Python'
 titleSuffix: Azure Cognitive Services
 description: Rozpocznij pracę z biblioteką klienta QnA Maker dla języka Python. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.  Usługa QnA Maker umożliwia zasilanie usługi pytań i odpowiedzi za pomocą częściowo ustrukturyzowanej zawartości, takiej jak dokumenty z często zadawanymi pytaniami, adresy URL i podręczniki produktów.
 services: cognitive-services
@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/21/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 90712012f904f7b098af01433fee4a97ee8f2160
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 81e5ac5e5017330d2c5ea8bf5b269c4ce70b495b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203780"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802838"
 ---
-# <a name="quickstart-qna-maker-client-library-for-python"></a>Szybki start: QnA Maker Biblioteka kliencka dla języka Python
+# <a name="quickstart-qna-maker-client-library-for-python"></a>Szybki Start: QnA Makera Biblioteka kliencka dla języka Python
 
 Rozpocznij pracę z biblioteką klienta QnA Maker dla języka Python. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.  Usługa QnA Maker umożliwia zasilanie usługi pytań i odpowiedzi za pomocą częściowo ustrukturyzowanej zawartości, takiej jak dokumenty z często zadawanymi pytaniami, adresy URL i podręczniki produktów. 
 
 Użyj biblioteki klienta QnA Maker dla języka Python, aby:
 
-* Tworzenie bazy wiedzy 
+* Utwórz bazę wiedzy 
 * Zarządzanie bazą wiedzy
 * Publikowanie bazy wiedzy
 
-[](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) | [Przykłady języka Python](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) [(PyPi)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/)[](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | koduźródłowego | biblioteki dokumentacji
+[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python)@no__t — 1[kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [pakiet (PyPi)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | [Python przykłady](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,7 +42,7 @@ Użyj biblioteki klienta QnA Maker dla języka Python, aby:
 
 Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azure, które subskrybujesz. Utwórz zasób dla QnA Maker przy użyciu [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na komputerze lokalnym. 
 
-Po uzyskaniu klucza z zasobu [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla zasobu o nazwie `QNAMAKER_KEY` i. `QNAMAKER_HOST` Użyj wartości klucza i hosta znalezionych w Azure Portal.
+Po uzyskaniu klucza z zasobu [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla zasobu o nazwie `QNAMAKER_KEY` i `QNAMAKER_HOST`. Użyj wartości klucza i punktu końcowego znajdujących się w Azure Portal.
 
 ### <a name="install-the-python-library-for-qna-maker"></a>Zainstaluj bibliotekę języka Python dla QnA Maker
 
@@ -82,7 +84,7 @@ Utwórz zmienne dla punktu końcowego i klucza usługi Azure Resource. Jeśli zm
 |Zmienna środowiskowa|Zmienna języka Python|Przykład|
 |--|--|--|
 |`QNAMAKER_KEY`|`subscription_key`|Identyfikator GUID znaku 32|
-|`QNAMAKER_HOST`|`host`|`https://westus.api.cognitive.microsoft.com`|
+|`QNAMAKER_HOST`|`host`|`https://your-resource-name.api.cognitive.microsoft.com` — Zmień `your-resource-name` na własną nazwę zasobu|
 ||||
 
 [!code-python[Azure resource variables](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=resourcekeys)]
@@ -94,7 +96,7 @@ Następnie Utwórz obiekt CognitiveServicesCredentials przy użyciu klucza i uż
 
 [!code-python[Authorization to resource key](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=authorization)]
 
-## <a name="create-a-knowledge-base"></a>Tworzenie bazy wiedzy
+## <a name="create-a-knowledge-base"></a>Utwórz bazę wiedzy
 
  Użyj obiektu klienta, aby uzyskać obiekt [operacji bazy wiedzy](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) .
 
@@ -108,7 +110,7 @@ Wywołaj metodę [Create](https://docs.microsoft.com/python/api/azure-cognitives
 
 [!code-python[Create a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=createkb&highlight=15)]
 
-Upewnij się, że Dołącz [`_monitor_operation`](#get-status-of-an-operation) funkcję, do której odwołuje się powyższy kod, w celu pomyślnego utworzenia bazy wiedzy. 
+Upewnij się, że uwzględniono funkcję [`_monitor_operation`](#get-status-of-an-operation) , do której odwołuje się powyższy kod, w celu pomyślnego utworzenia bazy wiedzy. 
 
 ## <a name="update-a-knowledge-base"></a>Aktualizowanie bazy wiedzy
 
@@ -116,7 +118,7 @@ Bazę wiedzy można zaktualizować, przekazując informacje o IDENTYFIKATORze ba
 
 [!code-python[Update a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=updatekb&highlight=2)]
 
-Upewnij się, że Dołącz [`_monitor_operation`](#get-status-of-an-operation) funkcję, do której odwołuje się powyższy kod, aby pomyślnie zaktualizować bazę wiedzy. 
+Upewnij się, że uwzględniono funkcję [`_monitor_operation`](#get-status-of-an-operation) , do której odwołuje się powyższy kod, w celu pomyślnej aktualizacji bazy wiedzy. 
 
 ## <a name="publish-a-knowledge-base"></a>Publikowanie bazy wiedzy
 
@@ -146,7 +148,7 @@ Wywołanie _setTimeout_ w poniższym bloku kodu służy do symulowania kodu asyn
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Uruchom aplikację za pomocą `python knowledgebase_quickstart.py` polecenia z katalogu aplikacji.
+Uruchom aplikację za pomocą polecenia `python knowledgebase_quickstart.py` z katalogu aplikacji.
 
 Wszystkie fragmenty kodu w tym artykule są [dostępne](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) i można je uruchamiać jako pojedynczy plik. 
 
@@ -164,8 +166,8 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
->[Samouczek: Utwórz i Odpowiedz na KB](../tutorials/create-publish-query-in-portal.md)
+>[Samouczek: Tworzenie i odpowiadanie na KB](../tutorials/create-publish-query-in-portal.md)
 
 * [Co to jest interfejs API usługi QnA Maker?](../Overview/overview.md)
-* [Edytowanie wiedzy](../how-to/edit-knowledge-base.md)
+* [Edytowanie bazy wiedzy](../how-to/edit-knowledge-base.md)
 * [Pobierz analizę użycia](../how-to/get-analytics-knowledge-base.md)

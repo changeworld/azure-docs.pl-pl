@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Rozpoznawanie mowy, Python-Speech Service'
+title: 'Szybki Start: Rozpoznawanie mowy, Python-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu zestawu SDK usługi Mowa dla języka Python. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
 services: cognitive-services
@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 6cbe583ca59cb98ba233e58dc665c7e18c2a1f7f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3f473e8ad15d3df053cca100580574b1b115f492
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559289"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803258"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla języka Python
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Szybki Start: Rozpoznawanie mowy przy użyciu zestawu Speech SDK dla języka Python
+
+Przewodniki Szybki Start są również dostępne dla [syntezy mowy](quickstart-text-to-speech-python.md)
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -30,7 +32,7 @@ W tym artykule przedstawiono sposób korzystania z usług mowy za pomocą zestaw
 * Pakiet zestawu Speech SDK dla języka Python jest dostępny dla tych systemów operacyjnych:
     * Windows: x64 i x86.
     * Mac: macOS X w wersji 10.12 lub nowszej.
-    * W systemie Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 w x64.
+    * Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 w x64.
 * W systemie Linux Uruchom następujące polecenia, aby zainstalować wymagane pakiety:
 
   * W systemie Ubuntu:
@@ -103,9 +105,9 @@ Ewentualnie możesz pobrać ten samouczek Szybki start jako notes programu [Jupy
 1. Skopiuj, wklej i zapisz [kod języka Python](#sample-code) w nowo utworzonym pliku.
 1. Wstaw informacje o subskrypcji usługi Speech Services.
 1. Jeśli został wybrany interpreter języka Python, zostanie wyświetlony po lewej stronie paska stanu u dołu okna.
-   W przeciwnym razie możesz wyświetlić listę dostępnych interpreterów języka Python. Otwórz paletę poleceń (Ctrl+Shift+P) i wprowadź tekst **Python: Select Interpreter** (Python: wybierz interpreter). Wybierz odpowiedni.
+   W przeciwnym razie możesz wyświetlić listę dostępnych interpreterów języka Python. Otwórz paletę poleceń (Ctrl + Shift + P) i wprowadź **Python: SELECT interpreter**. Wybierz odpowiedni.
 1. Możesz zainstalować pakiet języka Python zestawu Speech SDK z poziomu programu Visual Studio Code. Zrób to, jeśli nie został on jeszcze zainstalowany dla wybranego interpretera języka Python.
-   Aby zainstalować pakiet zestawu Speech SDK, otwórz terminal. Wyświetl ponownie paletę poleceń (Ctrl+Shift+P), a następnie wprowadź tekst **Terminal: Create New Integrated Terminal** (Terminal: utwórz nowy zintegrowany terminal).
+   Aby zainstalować pakiet zestawu Speech SDK, otwórz terminal. Ponownie wywołaj paletę poleceń (Ctrl + Shift + P) i wprowadź **Terminal: Utwórz nowy, zintegrowany terminal**.
    W wyświetlonym terminalu wprowadź polecenie `python -m pip install azure-cognitiveservices-speech` lub polecenie odpowiednie dla swojego systemu.
 1. Aby uruchomić przykładowy kod, kliknij prawym przyciskiem myszy w dowolnym miejscu w edytorze. Wybierz pozycję **Uruchom plik języka Python w terminalu**.
    W odpowiedzi na monit powiedz kilka słów. Po chwili powinna zostać wyświetlona transkrypcja tekstu.

@@ -6,14 +6,14 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: ae0694c4c79527ef3b64ad68d32ef3bce0150462
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: e28fa919c4c656b9ceb1d34806c3ef08aec2df2c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703569"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719933"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>Tworzenie Azure Search sklepu z bazami danych przy użyciu usługi REST
 
@@ -29,7 +29,7 @@ Po utworzeniu sklepu z bazami danych możesz uzyskać informacje na temat uzyski
 
 + [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych i sklepu z bazami informacji. Twoje konto magazynu musi używać tej samej lokalizacji (na przykład US-zachodni) dla usługi Azure Search. *Rodzaj konta* musi być *StorageV2 (ogólnego przeznaczenia w wersji 2)* (domyślnie) lub *magazynu (ogólnego przeznaczenia w wersji 1)* .
 
-+ Zalecane: [publikowanie aplikacji klasycznej](https://www.getpostman.com/) na potrzeby wysyłania żądań do Azure Search. Za pomocą interfejsu API REST można korzystać z dowolnego narzędzia, które może pracować z żądaniami HTTP i odpowiedziami. Program Poster jest dobrym rozwiązaniem do eksplorowania interfejsów API REST i zostanie użyty w tym artykule. Ponadto [kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) tego artykułu zawiera kolekcję żądań post. 
++ Zalecane: [publikowanie aplikacji klasycznej](https://www.getpostman.com/) na potrzeby wysyłania żądań do Azure Search. Za pomocą interfejsu API REST można korzystać z dowolnego narzędzia, które może pracować z żądaniami HTTP i odpowiedziami. Program Poster jest dobrym rozwiązaniem do eksplorowania interfejsów API REST i zostanie użyty w tym artykule. Ponadto [kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) tego artykułu zawiera kolekcję żądań post. 
 
 ## <a name="2---store-the-data"></a>2 — Przechowywanie danych
 
@@ -53,7 +53,7 @@ Załaduj plik CSV przeglądów hotelu do magazynu obiektów blob platformy Azure
 
 ## <a name="3---configure-postman"></a>3 — Konfigurowanie wpisu
 
-Pobierz [kod źródłowy kolekcji Poster](https://github.com/Azure-Samples/azure-search-postman-samples/knowledge-store/KnowledgeStore.postman_collection.json) i zaimportuj go do programu do publikowania przy użyciu **pliku, zaimportuj...** . Przejdź do karty **kolekcje** i kliknij przycisk **...** , a następnie wybierz pozycję **Edytuj**. 
+Pobierz [kod źródłowy kolekcji Poster](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) i zaimportuj go do programu do publikowania przy użyciu **pliku, zaimportuj...** . Przejdź do karty **kolekcje** i kliknij przycisk **...** , a następnie wybierz pozycję **Edytuj**. 
 
 ![Aplikacja programu Poster pokazująca nawigację](media/knowledge-store-create-rest/postman-edit-menu.png "do menu Edycja w programie Poster")
 
@@ -88,7 +88,7 @@ Tworzenie sklepu z bazami informacji wymaga, aby wystawić cztery żądania HTTP
 1. Żądanie PUT umożliwiające utworzenie zestawu umiejętności. Zestawu umiejętności określa wzbogacenia zastosowane do danych i strukturę magazynu wiedzy.
 1. Żądanie PUT umożliwiające utworzenie indeksatora. Uruchomienie indeksatora odczytuje dane, stosuje zestawu umiejętności i przechowuje wyniki. Należy uruchomić to żądanie jako ostatnie.
 
-[Kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) zawiera kolekcję ogłoszeń obejmującą te cztery żądania. Aby wydać żądania, przejdź do karty żądania w programie Poster i Dodaj nagłówki żądania `api-key` i `Content-Type`. Ustaw wartość `api-key` na `{{admin-key}}`. Ustaw wartość `Content-type` na `application/json`. 
+[Kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) zawiera kolekcję ogłoszeń obejmującą te cztery żądania. Aby wydać żądania, przejdź do karty żądania w programie Poster i Dodaj nagłówki żądania `api-key` i `Content-Type`. Ustaw wartość `api-key` na `{{admin-key}}`. Ustaw wartość `Content-type` na `application/json`. 
 
 > [!div class="mx-imgBorder"]
 > ![Screenshot przedstawiający interfejs autora dla nagłówków @ no__t-1

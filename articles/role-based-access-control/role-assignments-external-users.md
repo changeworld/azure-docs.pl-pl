@@ -16,12 +16,12 @@ ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 12f4b0276074b6732cf57443f51ef5d867f205a6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967272"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802684"
 ---
 # <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Zarządzanie dostępem do zasobów platformy Azure dla zewnętrznych użytkowników-Gości korzystających z funkcji RBAC
 
@@ -45,7 +45,7 @@ Wykonaj następujące kroki, aby dodać użytkownika-gościa do katalogu przy u�
 
 1. Upewnij się, że ustawienia współpracy zewnętrznej Twojej organizacji zostały skonfigurowane tak, aby można było zapraszać Gości. Aby uzyskać więcej informacji, zobacz [Włączanie współpracy zewnętrznej B2B i zarządzanie osobami, które mogą zapraszać Gości](../active-directory/b2b/delegate-invitations.md).
 
-1. W Azure Portal kliknij pozycję **Azure Active Directory** > **Użytkownicy** > **nowy użytkownik-Gość**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** > **users** > **nowy użytkownik-Gość**.
 
     ![Nowa funkcja użytkownika-gościa w Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -71,7 +71,7 @@ Aby udzielić dostępu w ramach RBAC, należy przypisać rolę. Aby udzielić do
 
 1. Kliknij konkretny zasób.
 
-1. Kliknij przycisk **kontrola dostępu (IAM)** .
+1. Kliknij pozycję **Kontrola dostępu (IAM)** .
 
     Poniższy zrzut ekranu przedstawia przykład bloku kontroli dostępu (IAM) dla grupy zasobów. Jeśli w tym miejscu wprowadzisz jakiekolwiek zmiany kontroli dostępu, zostaną one zastosowane tylko do grupy zasobów.
 
@@ -107,7 +107,7 @@ Jeśli użytkownik-Gość nie znajduje się jeszcze w Twoim katalogu, możesz za
 
 1. Kliknij konkretny zasób.
 
-1. Kliknij przycisk **kontrola dostępu (IAM)** .
+1. Kliknij pozycję **Kontrola dostępu (IAM)** .
 
 1. Kliknij kartę **przypisania roli** , aby wyświetlić wszystkie przypisania ról w tym zakresie.
 
@@ -155,11 +155,11 @@ Przed usunięciem użytkownika-gościa z katalogu należy najpierw usunąć wszy
 
 1. W wyświetlonym komunikacie dotyczącym usuwania przypisania roli wybierz pozycję **Tak**.
 
-1. Na pasku nawigacyjnym po lewej stronie kliknij pozycję **Azure Active Directory** > **Użytkownicy**.
+1. Na lewym pasku nawigacyjnym kliknij pozycję **Azure Active Directory** **Użytkownicy** > .
 
 1. Kliknij użytkownika-gościa, który chcesz usunąć.
 
-1. Kliknij przycisk **Usuń**.
+1. Kliknij polecenie **Usuń**.
 
    ![Usuń użytkownika-gościa](./media/role-assignments-external-users/delete-guest-user.png)
 
@@ -203,6 +203,7 @@ Jeśli użytkownik-Gość uzyska dostęp do katalogu, ale nie widzi zasobów, do
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal](../active-directory/b2b/add-users-administrator.md)
+- [Dodawanie Azure Active Directory użytkowników współpracy B2B w Azure Portal](../active-directory/b2b/add-users-administrator.md)
 - [Właściwości Azure Active Directory użytkownika współpracy B2B](../active-directory/b2b/user-properties.md)
 - [Elementy wiadomości e-mail z zaproszeniem do współpracy B2B — Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [Dodawanie użytkownika-gościa jako współadministratora](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)

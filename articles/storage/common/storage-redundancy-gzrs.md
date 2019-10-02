@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673065"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720357"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
@@ -21,7 +21,7 @@ Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza) cywilnego wysokiej 
 
 Za pomocą konta magazynu GZRS można nadal odczytywać i zapisywać dane, jeśli strefa dostępności stanie się niedostępna lub nie można jej odzyskać. Ponadto dane są również trwałe w przypadku kompletnej awarii regionalnej lub awarii, w której region podstawowy nie jest możliwy do odzyskania. GZRS zaprojektowano w celu udostępnienia co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku. GZRS oferuje również te same [elementy docelowe skalowalności](storage-scalability-targets.md) jak LRS, ZRS, GRS lub RA-GRS. Opcjonalnie można włączyć dostęp do odczytu do danych w regionie pomocniczym ze strefą geograficzną z dostępem do odczytu — nadmiarowy magazyn (RA-GZRS), jeśli aplikacje muszą mieć możliwość odczytywania danych w przypadku awarii w regionie podstawowym.
 
-Firma Microsoft zaleca korzystanie z GZRS dla aplikacji wymagających spójności, trwałości, wysokiej dostępności, doskonałej wydajności i odporności na odzyskiwanie diaster. Aby uzyskać dodatkowe zabezpieczenia dotyczące dostępu do odczytu do regionu pomocniczego w przypadku awarii regionalnej, Włącz RA-GZRS dla konta magazynu.
+Firma Microsoft zaleca używanie GZRS dla aplikacji wymagających spójności, trwałości, wysokiej dostępności, doskonałej wydajności i odporności na odzyskiwanie po awarii. Aby uzyskać dodatkowe zabezpieczenia dotyczące dostępu do odczytu do regionu pomocniczego w przypadku awarii regionalnej, Włącz RA-GZRS dla konta magazynu.
 
 ## <a name="about-the-preview"></a>Informacje o wersji zapoznawczej
 
@@ -35,7 +35,7 @@ GZRS i RA-GZRS są obecnie dostępne w wersji zapoznawczej w następujących reg
 - Wschodnie stany USA 2
 - Środkowe stany USA
 
-Firma Microsoft nadal włącza GZRS i RA-GZRS w dodatkowych regionach świadczenia usługi Azure. Sprawdź regularnie informacje o obsługiwanych regionach na stronie  [aktualizacji usługi platformy Azure](https://azure.microsoft.com/updates/).
+Firma Microsoft nadal włącza GZRS i RA-GZRS w dodatkowych regionach świadczenia usługi Azure. Regularnie sprawdzaj [aktualizacje usługi platformy Azure](https://azure.microsoft.com/updates/) page, aby uzyskać informacje o obsługiwanych regionach.
 
 Aby uzyskać informacje na temat cennika wersji zapoznawczej, zobacz cennik usługi GZRS w wersji zapoznawczej dla [obiektów BLOB](https://azure.microsoft.com/pricing/details/storage/blobs), [plików](https://azure.microsoft.com/pricing/details/storage/files/), [kolejek](https://azure.microsoft.com/pricing/details/storage/queues/)i [tabel](https://azure.microsoft.com/pricing/details/storage/tables/).
 
@@ -49,11 +49,11 @@ Gdy dane są zapisywane na koncie magazynu z włączonym GZRS lub RA-GZRS, dane 
 > [!IMPORTANT]
 > Replikacja asynchroniczna obejmuje opóźnienie między czasem zapisywania danych w regionie podstawowym a replikacją do regionu pomocniczego. W przypadku awarii regionalnej zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone, jeśli nie można odzyskać tych danych z regionu podstawowego.
 
-Podczas tworzenia konta magazynu należy określić sposób replikowania danych z tego konta, a także określić region podstawowy dla tego konta. Sparowany region pomocniczy dla konta z replikacją geograficzną jest określany na podstawie regionu podstawowego i nie można go zmienić. Aby uzyskać aktualne informacje dotyczące regionów obsługiwanych przez platformę Azure, zobacz temat [ciągłość działania i odzyskiwanie po awarii (BCDR): Sparowane regiony](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)platformy Azure. Aby uzyskać informacje na temat tworzenia konta magazynu za pomocą usługi GZRS lub RA-GZRS, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).
+Podczas tworzenia konta magazynu należy określić sposób replikowania danych z tego konta, a także określić region podstawowy dla tego konta. Sparowany region pomocniczy dla konta z replikacją geograficzną jest określany na podstawie regionu podstawowego i nie można go zmienić. Aby uzyskać aktualne informacje dotyczące regionów obsługiwanych przez platformę Azure, zobacz temat [ciągłość działania i odzyskiwanie po awarii (BCDR): wielosparowane regiony platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Aby uzyskać informacje na temat tworzenia konta magazynu za pomocą usługi GZRS lub RA-GZRS, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Korzystanie z usługi RA-GZRS w celu zapewnienia wysokiej dostępności
 
-Po włączeniu usługi RA-GZRS dla konta magazynu dane można odczytać z pomocniczego punktu końcowego oraz z podstawowego punktu końcowego dla konta magazynu. Pomocniczy punkt końcowy dołącza sufiks *— pomocniczy* do nazwy konta. Na przykład jeśli podstawowy punkt końcowy BLOB Service to `myaccount.blob.core.windows.net`, wówczas pomocniczy punkt końcowy to. `myaccount-secondary.blob.core.windows.net` Klucze dostępu dla konta magazynu są takie same dla podstawowych i pomocniczych punktów końcowych.
+Po włączeniu usługi RA-GZRS dla konta magazynu dane można odczytać z pomocniczego punktu końcowego oraz z podstawowego punktu końcowego dla konta magazynu. Pomocniczy punkt końcowy dołącza sufiks *— pomocniczy*@no__t — 1To nazwę konta. Na przykład jeśli podstawowy punkt końcowy Blob service to @ no__t-0, wówczas pomocniczy punkt końcowy to @ no__t-1. Klucze dostępu dla konta magazynu są takie same dla podstawowych i pomocniczych punktów końcowych.
 
 Aby skorzystać z funkcji RA-GZRS w przypadku awarii regionalnej, musisz zaprojektować aplikację z wyprzedzeniem, aby obsłużyć ten scenariusz. Aplikacja powinna odczytywać i zapisywać w podstawowym punkcie końcowym, ale przełączyć się do korzystania z pomocniczego punktu końcowego w przypadku, gdy region podstawowy stał się niedostępny. Aby uzyskać wskazówki dotyczące projektowania wysokiej dostępności za pomocą usługi RA-GZRS, zobacz [projektowanie wysoce dostępnych aplikacji przy użyciu usługi RA-GZRS lub RA-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
@@ -115,7 +115,7 @@ Migracja ręczna może skutkować przestojem aplikacji. Jeśli aplikacja wymaga 
 
 Podczas migracji na żywo można korzystać z konta magazynu podczas migrowania danych między kontami magazynu źródłowego i docelowego. Podczas migracji na żywo Twoje konto nadal spełnia warunki umowy SLA dotyczące trwałości i dostępności. Migracja na żywo nie powoduje przestoju lub utraty danych.
 
-Tylko konta ogólnego przeznaczenia w wersji 2 obsługują usługi GZRS/RA-GZRS, dlatego przed przesłaniem żądania migracji na żywo do usługi GZRS/RA-GZRS należy uaktualnić konto do poziomu ogólnego przeznaczenia w wersji 2. Aby uzyskać więcej informacji, zobacz  [Omówienie konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview)i [uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+Tylko konta ogólnego przeznaczenia w wersji 2 obsługują usługi GZRS/RA-GZRS, dlatego przed przesłaniem żądania migracji na żywo do usługi GZRS/RA-GZRS należy uaktualnić konto do poziomu ogólnego przeznaczenia w wersji 2. Aby uzyskać więcej informacji, zobacz [Omówienie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview) and [upgrade na konto magazynu ogólnego przeznaczenia w wersji 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 
 Po zakończeniu migracji ustawienie replikacji konta magazynu zostanie zaktualizowane do **magazynu geograficznie nadmiarowego (GZRS)** lub **do odczytu stref geograficznie nadmiarowego (Ra-GZRS)** . Punkty końcowe usługi, klucze dostępu, sygnatury dostępu współdzielonego (SAS) i inne opcje konfiguracji konta pozostają bez zmian i nie zostały naruszone.
 
@@ -134,16 +134,16 @@ Należy pamiętać o następujących ograniczeniach migracji na żywo:
 Aby zażądać migracji na żywo, użyj [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). W portalu wybierz konto magazynu do migracji do GZRS lub RA-GZRS i wykonaj następujące instrukcje:
 
 1. Wybierz pozycję **nowe żądanie obsługi**.
-2. Wypełnij **podstawowe** informacje na podstawie informacji o koncie. W sekcji **Usługa** wybierz pozycję  **Zarządzanie kontem magazynu**i określ konto, które ma zostać zmigrowane.
+2. Wypełnij **podstawowe**informacje @no__t 1based na temat informacji o koncie. W @no__t **usługi**— 1section wybierz pozycję **zarządzanie kontem magazynu** and Określ konto, które ma zostać zmigrowane.
 3. Wybierz pozycję  **Dalej**.
-4. Określ następujące wartości w sekcji **problem** :
-    - **Ważność**: Pozostaw wartość domyślną.
-    - **Typ problemu**: Wybierz pozycję **migracja danych**.
-    - **Kategoria**: Wybierz pozycję **Migruj do (Ra-) GZRS w regionie**.
-    - **Tytuł**: Wpisz opisowy tytuł, na przykład **(Ra-) GZRS migracji konta**.
-    - **Szczegóły**: Wpisz dodatkowe szczegóły w **szczegółach** box, na przykład "Chcę MIGROWAĆ do GZRS z [LRS, GRS] w regionie \_ @ no__t-3". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w regionie \_ @ no__t-1".
+4. Określ następujące wartości **problemu** section:
+    - **Ważność**: pozostaw wartość domyślną równą-is.
+    - **Typ problemu**: wybierz pozycję **migracja danych**.
+    - **Kategoria**: wybierz pozycję **MIGRUJ do (Ra-) GZRS w regionie**.
+    - **Title**: wpisz opisowy tytuł, na przykład **(Ra-) GZRS migracji konta**.
+    - **Szczegóły**: wpisz dodatkowe szczegóły w **szczegółach** box, na przykład "chcę przeprowadzić migrację do GZRS z [LRS, GRS] w regionie \_ @ no__t-4". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w regionie \_ @ no__t-1".
 5. Wybierz pozycję  **Dalej**.
-6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje** kontaktowe.
+6. Sprawdź, czy informacje kontaktowe są poprawne na stronie **informacje kontaktowe** blade.
 7. Wybierz pozycję  **Utwórz**.
 
 Przedstawiciel działu pomocy technicznej skontaktuje się z Tobą, aby zapewnić pomoc.
@@ -151,5 +151,5 @@ Przedstawiciel działu pomocy technicznej skontaktuje się z Tobą, aby zapewni�
 ## <a name="see-also"></a>Zobacz także
 
 - [Replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
-- [Magazyn lokalnie nadmiarowy (LRS): Niski koszt nadmiarowości danych dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
-- [Magazyn strefowo nadmiarowy (ZRS): Aplikacje usługi Azure Storage o wysokiej dostępności](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
+- [Magazyn strefowo nadmiarowy (ZRS): aplikacje usługi Azure Storage o wysokiej dostępności](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 

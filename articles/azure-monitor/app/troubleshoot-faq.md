@@ -10,16 +10,16 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 09/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875374"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802301"
 ---
-# <a name="application-insights-frequently-asked-questions"></a>Application Insights: Często zadawane pytania
+# <a name="application-insights-frequently-asked-questions"></a>Application Insights: często zadawane pytania
 
 ## <a name="configuration-problems"></a>Problemy z konfiguracją
 *Mam problem z konfigurowaniem:*
@@ -59,7 +59,7 @@ Plan przedsiębiorstwa wiąże się z opłatą za każdy dzień, w którym każd
 
 [Zapoznaj się z planem cenowym](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="how-much-is-it-costing"></a>Ile kosztuje?
+## <a name="how-much-does-it-cost"></a>Ile to kosztuje?
 
 * Otwórz **stronę użycie i szacowane koszty** w zasobie Application Insights. Istnieje wykres przedstawiający ostatnie użycie. Jeśli chcesz, możesz ustawić limit ilości danych.
 * Otwórz [blok rozliczeń platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) , aby wyświetlić rachunki dla wszystkich zasobów.
@@ -69,8 +69,8 @@ Szczegóły są zależne od typu projektu. Dla aplikacji sieci Web:
 
 * Dodaje te pliki do projektu:
 
-  * ApplicationInsights.config.
-  * ai.js
+  * ApplicationInsights. config.
+  * AI. js
 * Instaluje te pakiety NuGet:
 
   * *Application INSIGHTS API* — podstawowy interfejs API
@@ -78,19 +78,19 @@ Szczegóły są zależne od typu projektu. Dla aplikacji sieci Web:
   * *Application INSIGHTS API dla aplikacji JavaScript* — służy do wysyłania danych telemetrycznych z klienta
 
     Pakiety obejmują następujące zestawy:
-  * Microsoft.ApplicationInsights
-  * Microsoft.ApplicationInsights.Platform
+  * Microsoft. ApplicationInsights
+  * Microsoft. ApplicationInsights. platform
 * Wstawia elementy do:
 
   * Web.config
-  * packages.config
+  * Packages. config
 * (Tylko nowe projekty — w przypadku [dodania Application Insights do istniejącego projektu][start]należy to zrobić ręcznie). Wstawia fragmenty kodu klienta i serwera, aby je zainicjować przy użyciu identyfikatora zasobu Application Insights. Na przykład w aplikacji MVC kod jest wstawiany do widoku strony głównej/Shared/_Layout. cshtml.
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Jak mogę uaktualnić ze starszych wersji zestawu SDK?
 Zapoznaj się z [informacjami o wersji](release-notes.md) zestawu SDK, które są odpowiednie dla danego typu aplikacji.
 
 ## <a name="update"></a>Jak mogę zmienić zasób platformy Azure, do którego mój projekt wysyła dane?
-W Eksplorator rozwiązań kliknij prawym przyciskiem `ApplicationInsights.config` myszy i wybierz polecenie **Aktualizuj Application Insights**. Dane można wysyłać do istniejącego lub nowego zasobu na platformie Azure. Kreator aktualizacji zmienia klucz Instrumentacji w pliku ApplicationInsights. config, który określa, gdzie zestaw SDK serwera wysyła dane. Chyba że usuniesz opcję "Aktualizuj wszystko", zostanie również zmieniony klucz, w którym pojawia się na stronach sieci Web.
+W Eksplorator rozwiązań kliknij prawym przyciskiem myszy pozycję `ApplicationInsights.config` i wybierz polecenie **aktualizuj Application Insights**. Dane można wysyłać do istniejącego lub nowego zasobu na platformie Azure. Kreator aktualizacji zmienia klucz Instrumentacji w pliku ApplicationInsights. config, który określa, gdzie zestaw SDK serwera wysyła dane. Chyba że usuniesz opcję "Aktualizuj wszystko", zostanie również zmieniony klucz, w którym pojawia się na stronach sieci Web.
 
 ## <a name="what-is-status-monitor"></a>Co to jest monitor stanu?
 
@@ -103,7 +103,7 @@ Aplikacja klasyczna, która może być używana na serwerze sieci Web usług IIS
 Z aplikacji serwer sieci Web:
 
 * Żądania HTTP
-* [Zależności](asp-net-dependencies.md). Wywołania: Bazy danych SQL; Wywołania HTTP do usług zewnętrznych; Azure Cosmos DB, tabela, Magazyn obiektów blob i kolejka. 
+* [Zależności](asp-net-dependencies.md). Wywołania do: bazy danych SQL; Wywołania HTTP do usług zewnętrznych; Azure Cosmos DB, tabela, Magazyn obiektów blob i kolejka. 
 * [Wyjątki](asp-net-exceptions.md) i ślady stosu.
 * [Liczniki wydajności](performance-counters.md) — jeśli używasz [Monitor stanu](monitor-performance-live-website-now.md), [monitorowanie platformy Azure dla App Services](azure-web-apps.md), [monitorowanie platformy Azure dla maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych](azure-vm-vmss-apps.md)oraz [Application Insights zebrany moduł zapisujący](java-collectd.md).
 * [Niestandardowe zdarzenia i metryki](api-custom-events-metrics.md) , które kodują.
@@ -138,9 +138,11 @@ Dowiedz się więcej na temat [ASP.NET](api-filtering-sampling.md) lub [Java](ja
 Wyszukujemy adres IP (IPv4 lub IPv6) klienta sieci Web za pomocą [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 * Telemetria przeglądarki: Zbieramy adres IP nadawcy.
-* Dane telemetryczne serwera: Moduł Application Insights zbiera adres IP klienta. Nie jest zbierane, jeśli `X-Forwarded-For` jest ustawiony.
+* Dane telemetryczne serwera: moduł Application Insights zbiera adres IP klienta. Nie jest zbierane, jeśli ustawiono `X-Forwarded-For`.
+* Aby dowiedzieć się więcej o sposobie zbierania danych o adresie IP i geolokalizacji w Application Insights zapoznaj się z tym [artykułem](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
-Można skonfigurować, `ClientIpHeaderTelemetryInitializer` aby przyjmować adres IP z innego nagłówka. W niektórych systemach jest to na przykład przenoszone przez serwer proxy, moduł równoważenia obciążenia lub sieć CDN do `X-Originating-IP`programu. [Dowiedz się więcej](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+
+Można skonfigurować `ClientIpHeaderTelemetryInitializer`, aby uzyskać adres IP z innego nagłówka. W niektórych systemach jest to na przykład przenoszone przez serwer proxy, moduł równoważenia obciążenia lub sieć CDN do `X-Originating-IP`. [Dowiedz się więcej](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 Możesz [użyć Power BI](export-power-bi.md ) , aby wyświetlić dane telemetryczne żądania na mapie.
 
@@ -189,29 +191,29 @@ Użyj pojedynczego zasobu dla wszystkich składników lub ról w jednym systemie
 * Aby zidentyfikować zalogowanego użytkownika na maszynach i w przeglądarkach, należy dodać wywołanie do [setAuthenticatedUserContext ()](api-custom-events-metrics.md#authenticated-users).
 
 ## <a name="q17"></a>Czy mam wszystko, co jest dostępne w Application Insights?
-| Co powinno zostać wyświetlone | Jak uzyskać | Dlaczego chcesz |
+| Co powinno być widoczne | Jak uzyskać | Dlaczego chcesz |
 | --- | --- | --- |
 | Wykresy dostępności |[Testy sieci Web](monitor-web-app-availability.md) |Znajomość aplikacji sieci Web |
 | Wydajność aplikacji serwera: czasy odpowiedzi,... |[Dodaj Application Insights do projektu](asp-net.md) lub [Zainstaluj Monitor stanu AI na serwerze](monitor-performance-live-website-now.md) (lub napisz własny kod w celu [śledzenia zależności](api-custom-events-metrics.md#trackdependency)) |Wykrywanie problemów wydajności |
 | Telemetria zależności |[Zainstaluj monitor stanu AI na serwerze](monitor-performance-live-website-now.md) |Diagnozowanie problemów z bazami danych lub innymi składnikami zewnętrznymi |
-| Pobierz ślady stosu z wyjątków |[Wstaw wywołania instrukcji trackexception w kodzie](asp-net-exceptions.md) (niektóre są raportowane automatycznie) |Wykrywanie i diagnozowanie wyjątków |
+| Pobierz ślady stosu z wyjątków |[Wstaw wywołania metody trackexception w kodzie](asp-net-exceptions.md) (ale niektóre są raportowane automatycznie) |Wykrywanie i diagnozowanie wyjątków |
 | Wyszukaj ślady dziennika |[Dodawanie karty rejestrowania](asp-net-trace-logs.md) |Diagnozowanie wyjątków, problemy z wydajnością |
 | Podstawowe informacje dotyczące użycia klientów: wyświetlenie stron, sesje,... |[Inicjator JavaScript na stronach sieci Web](javascript.md) |Analiza użycia |
-| Metryki niestandardowe klienta |[Śledzenie wywołań na stronach sieci Web](api-custom-events-metrics.md) |Ulepszanie środowiska użytkownika |
-| Metryki niestandardowe serwera |[Śledzenie wywołań na serwerze](api-custom-events-metrics.md) |Analiza biznesowa |
+| Metryki niestandardowe klienta |[Śledzenie wywołań na stronach sieci Web](api-custom-events-metrics.md) |Udoskonalanie środowiska użytkownika |
+| Metryki niestandardowe serwera |[Śledzenie wywołań na serwerze](api-custom-events-metrics.md) |Analizy biznesowe |
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Dlaczego liczniki na wykresach wyszukiwania i metryk są nierówne?
 
 [Próbkowanie](sampling.md) zmniejsza liczbę elementów telemetrycznych (żądań, zdarzeń niestandardowych itd.), które są faktycznie wysyłane z aplikacji do portalu. W obszarze wyszukiwanie zostanie wyświetlona liczba elementów, które faktycznie zostały odebrane. Na wykresach metryk, które wyświetlają liczbę zdarzeń, zobaczysz liczbę oryginalnych zdarzeń, które wystąpiły. 
 
-Każdy element, który jest przesyłany `itemCount` , przenosi właściwość, która pokazuje, ile oryginalnych zdarzeń reprezentuje element. Aby obserwować próbkowanie w operacji, można uruchomić to zapytanie w analizie:
+Każdy przesłany element przenosi Właściwość `itemCount`, która pokazuje, ile oryginalnych zdarzeń reprezentuje element. Aby obserwować próbkowanie w operacji, można uruchomić to zapytanie w analizie:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
 
-## <a name="automation"></a>Automatyzacja
+## <a name="automation"></a>Automation
 
 ### <a name="configuring-application-insights"></a>Konfigurowanie Application Insights
 
@@ -227,7 +229,7 @@ Nie można skonfigurować raportu Eksploratora metryk ani skonfigurować eksport
 
 ### <a name="querying-the-telemetry"></a>Wykonywanie zapytania dotyczącego telemetrii
 
-Użyj [interfejsu API REST](https://dev.applicationinsights.io/) , aby [](analytics.md) uruchomić zapytania analityczne.
+Użyj [interfejsu API REST](https://dev.applicationinsights.io/) , aby uruchomić zapytania [analityczne](analytics.md) .
 
 ## <a name="how-can-i-set-an-alert-on-an-event"></a>Jak ustawić alert dla zdarzenia?
 
@@ -248,8 +250,8 @@ Zalecamy używanie naszych zestawów SDK i korzystanie z [interfejsu API zestawu
 
 Tak, ale musisz zezwolić na ruch do naszych usług przez wyjątki zapory lub przekierowania serwera proxy.
 - QuickPulse `https://rt.services.visualstudio.com:443` 
-- ApplicationIdProvider`https://dc.services.visualstudio.com:443` 
-- TelemetryChannel`https://dc.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
 Zapoznaj się z pełną listą usług i adresów IP w [tym miejscu](../../azure-monitor/app/ip-addresses.md).
@@ -263,7 +265,7 @@ Zezwól serwerowi sieci Web na wysyłanie danych telemetrycznych do naszych punk
 Kierowanie ruchu z serwera do bramy w intranecie przez zastępowanie punktów końcowych w konfiguracji.
 Jeśli te właściwości "punkt końcowy" nie są obecne w konfiguracji, te klasy będą używały domyślnych wartości przedstawionych poniżej w przykładowym pliku ApplicationInsights. config. 
 
-Twoja Brama powinna kierować ruch do adresu podstawowego tego punktu końcowego. W konfiguracji Zastąp wartości `http://<your.gateway.address>/<relative path>`domyślne wartością.
+Twoja Brama powinna kierować ruch do adresu podstawowego tego punktu końcowego. W konfiguracji Zastąp wartości domyślne wartością `http://<your.gateway.address>/<relative path>`.
 
 
 #### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Przykład ApplicationInsights. config z domyślnymi punktami końcowymi:
@@ -308,7 +310,7 @@ Aby uzyskać więcej informacji, zobacz artykuł dotnet w witrynie [defaultProxy
 
 Nasze [testy sieci Web](monitor-web-app-availability.md) działają w punktach obecności rozmieszczonych na całym świecie. Istnieją dwa rozwiązania:
 
-* Drzwi zapory — Zezwalaj na żądania kierowane do serwera od długiej i możliwej do [zmiany listy agentów testów sieci Web](ip-addresses.md).
+* Drzwi zapory — Zezwalaj na żądania kierowane do serwera od [długiej i możliwej do zmiany listy agentów testów sieci Web](ip-addresses.md).
 * Napisz własny kod, aby wysyłać okresowe żądania do serwera z wnętrza intranetu. W tym celu można uruchomić testy sieci Web programu Visual Studio. Tester może wysłać wyniki do Application Insights przy użyciu interfejsu API TrackAvailability ().
 
 ## <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>Jak długo trwa zbieranie danych telemetrycznych?

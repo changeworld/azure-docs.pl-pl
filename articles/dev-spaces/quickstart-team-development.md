@@ -10,16 +10,16 @@ ms.topic: quickstart
 description: Tworzenie zespołu Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 0abfe655e30b62829a7d353b6da85bb51e378f6d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3509fd32e06117ce3709f110223b38ef0e0eed30
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842592"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815789"
 ---
-# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Szybki start: Programowanie zespołowe na Kubernetes przy użyciu Azure Dev Spaces
+# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Szybki Start: Programowanie zespołowe na Kubernetes przy użyciu Azure Dev Spaces
 
-Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
+W tym przewodniku dowiesz się, jak:
 
 - Skonfiguruj Azure Dev Spaces w zarządzanym klastrze Kubernetes na platformie Azure.
 - Wdróż dużą aplikację z wieloma mikrousługami w miejscu dev.
@@ -30,7 +30,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
-- [Zainstalowany interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- [Zainstalowano interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Helm 2,13 lub nowszy](https://github.com/helm/helm/blob/master/docs/install.md).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Tworzenie klastra usługi Azure Kubernetes Service
@@ -46,7 +46,10 @@ Klaster *MyAKS* jest również tworzony z jednym węzłem, przy użyciu rozmiaru
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Włączanie Azure Dev Spaces w klastrze AKS
 
-`use-dev-spaces` Użyj polecenia, aby włączyć miejsca deweloperskie w klastrze AKS i postępuj zgodnie z monitami. Poniższe polecenie włącza miejsca deweloperskie w klastrze *MyAKS* w grupie Grupa *zasobów* i tworzy przestrzeń dev o nazwie *dev*.
+Użyj `use-dev-spaces` polecenia, aby włączyć miejsca deweloperskie w klastrze AKS i postępuj zgodnie z monitami. Poniższe polecenie włącza miejsca deweloperskie w klastrze *MyAKS* w grupie Grupa *zasobów* i tworzy przestrzeń dev o nazwie *dev*.
+
+> [!NOTE]
+> Polecenie `use-dev-spaces` zainstaluje również interfejs wiersza polecenia Azure Dev Spaces, jeśli nie został jeszcze zainstalowany. Nie można zainstalować interfejsu wiersza polecenia Azure Dev Spaces w Azure Cloud Shell.
 
 ```cmd
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
@@ -56,7 +59,7 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
 
 W tym artykule użyto [przykładowej aplikacji do udostępniania Azure dev Spaces roweru](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) do zademonstrowania przy użyciu Azure dev Spaces.
 
-Klonowanie aplikacji z usługi GitHub i przechodzenie do jej katalogu:
+Sklonuj aplikację z witryny GitHub i przejdź do jej katalogu:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
@@ -65,7 +68,7 @@ cd dev-spaces/samples/BikeSharingApp/
 
 ## <a name="retrieve-the-hostsuffix-for-dev"></a>Pobierz HostSuffix dla *deweloperów*
 
-Użyj polecenia, aby wyświetlić HostSuffix dla *deweloperów.* `azds show-context`
+Użyj `azds show-context` polecenia, aby wyświetlić HostSuffix dla *deweloperów*.
 
 ```cmd
 $ azds show-context
@@ -77,7 +80,7 @@ MyAKS               MyResourceGroup   dev       fedcab0987.eus.azds.io
 
 ## <a name="update-the-helm-chart-with-your-hostsuffix"></a>Aktualizowanie wykresu Helm za pomocą HostSuffix
 
-Otwórz [wykresy/Values. YAML](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml) i Zastąp wszystkie wystąpienia `<REPLACE_ME_WITH_HOST_SUFFIX>` z pobraną wcześniej wartością HostSuffix. Zapisz zmiany i zamknij plik.
+Otwórz [wykresy/Values. YAML](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml) i Zastąp wszystkie wystąpienia `<REPLACE_ME_WITH_HOST_SUFFIX>` wartością HostSuffix, która została pobrana wcześniej. Zapisz zmiany i zamknij plik.
 
 ## <a name="run-the-sample-application-in-kubernetes"></a>Uruchamianie przykładowej aplikacji w Kubernetes
 
@@ -85,7 +88,7 @@ Polecenia służące do uruchamiania przykładowej aplikacji na Kubernetes są c
 
 Azure Dev Spaces do programowania zespołowego można użyć po uruchomieniu aplikacji w klastrze, niezależnie od narzędzi użytych do jego wdrożenia.
 
-Użyj poleceń `helm install` i, aby skonfigurować i zainstalować przykładową aplikację w klastrze. `helm init`
+Użyj poleceń `helm init` i `helm install`, aby skonfigurować i zainstalować przykładową aplikację w klastrze.
 
 ```cmd
 cd charts/
@@ -93,9 +96,9 @@ helm init --wait
 helm install -n bikesharing . --dep-up --namespace dev --atomic 
 ```
 > [!Note]
-> W **przypadku korzystania z klastra z włączoną funkcją RBAC**należy pamiętać o skonfigurowaniu [konta usługi dla](https://helm.sh/docs/using_helm/#role-based-access-control)tego elementu. W przeciwnym razie polecenia zakończą się niepowodzeniem. `helm`
+> W **przypadku korzystania z klastra z włączoną funkcją RBAC**należy pamiętać o skonfigurowaniu [konta usługi dla](https://helm.sh/docs/using_helm/#role-based-access-control)tego elementu. W przeciwnym razie polecenia `helm` zakończą się niepowodzeniem.
 
-Wykonanie `helm install` polecenia może potrwać kilka minut. Dane wyjściowe polecenia pokazują stan wszystkich usług, które zostały wdrożone w klastrze po zakończeniu:
+Wykonanie polecenia `helm install` może potrwać kilka minut. Dane wyjściowe polecenia pokazują stan wszystkich usług, które zostały wdrożone w klastrze po zakończeniu:
 
 ```cmd
 $ cd charts/
@@ -117,7 +120,7 @@ reservationengine  1/1    1           1          4m32s
 users              1/1    1           1          4m32s
 ```
 
-Po zainstalowaniu przykładowej aplikacji w klastrze, ponieważ w klastrze są włączone spacje, użyj `azds list-uris` polecenia, aby wyświetlić adresy URL dla przykładowej aplikacji w *deweloperskim* , który jest aktualnie wybrany.
+Po zainstalowaniu przykładowej aplikacji w klastrze, ponieważ w klastrze są włączone spacje, użyj polecenia `azds list-uris`, aby wyświetlić adresy URL dla przykładowej aplikacji w *deweloperskim* , który jest obecnie wybrany.
 
 ```cmd
 $ azds list-uris
@@ -127,13 +130,13 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Przejdź do usługi *bikesharingweb* , otwierając publiczny adres URL z `azds list-uris` polecenia. W powyższym przykładzie publiczny adres URL usługi *bikesharingweb* to `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik. Upewnij się, że zobaczysz tekst *Hi Aurelia Briggs | Wyloguj się* u góry.
+Przejdź do usługi *bikesharingweb* , otwierając publiczny adres URL z `azds list-uris` polecenia. W powyższym przykładzie publiczny adres URL dla usługi *bikesharingweb* jest `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik. Upewnij się, że zobaczysz tekst *Hi Aurelia Briggs | Wyloguj się* u góry.
 
 ![Przykładowa aplikacja do udostępniania roweru Azure Dev Spaces](media/quickstart-team-development/bikeshare.png)
 
 ## <a name="create-child-dev-spaces"></a>Tworzenie podrzędnych miejsc dev
 
-Użyj polecenia `azds space select` , aby utworzyć dwie spacje podrzędne w obszarze *dev*:
+Użyj `azds space select` polecenia, aby utworzyć dwie spacje podrzędne w obszarze *dev*:
 
 ```cmd
 azds space select -n dev/azureuser1 -y
@@ -142,7 +145,7 @@ azds space select -n dev/azureuser2 -y
 
 Powyższe polecenia powodują utworzenie dwóch miejsc potomnych w obszarze *dev* o nazwie *azureuser1* i *azureuser2*. Te dwie przestrzenie podrzędne reprezentują różne miejsca deweloperskie dla *azureuser1* i *azureuser2* dla deweloperów, które mają być używane do wprowadzania zmian w aplikacji przykładowej.
 
-Użyj polecenia, aby wyświetlić listę wszystkich miejsc dev i potwierdzić, że jest wybrana opcja *dev/azureuser2.* `azds space list`
+Użyj `azds space list` polecenia, aby wyświetlić listę wszystkich miejsc dev i potwierdzić, że jest wybrana opcja *dev/azureuser2* .
 
 ```cmd
 $ azds space list
@@ -154,7 +157,7 @@ $ azds space list
 *  dev/azureuser2  True
 ```
 
-Użyj, `azds list-uris` aby wyświetlić adresy URL dla przykładowej aplikacji w aktualnie wybranym miejscu, które jest *dev/azureuser2*.
+Użyj `azds list-uris`, aby wyświetlić adresy URL dla przykładowej aplikacji w aktualnie wybranym miejscu, które jest *dev/azureuser2*.
 
 ```cmd
 $ azds list-uris
@@ -164,13 +167,13 @@ http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Upewnij się, że adresy URL wyświetlane `azds list-uris` przez polecenie mają prefiks *azureuser2. s. dev* . Ten prefiks potwierdza, że bieżące wybrane miejsce to *azureuser2*, które jest elementem podrzędnym *dev*.
+Upewnij się, że adresy URL wyświetlane przez polecenie `azds list-uris` mają prefiks *azureuser2. s. dev* . Ten prefiks potwierdza, że bieżące wybrane miejsce to *azureuser2*, które jest elementem podrzędnym *dev*.
 
-Przejdź do usługi *bikesharingweb* , aby uzyskać dostęp do deweloperów *dev/azureuser2* , otwierając publiczny `azds list-uris` adres URL za pomocą polecenia. W powyższym przykładzie publiczny adres URL usługi *bikesharingweb* to `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik. Upewnij się, że zobaczysz tekst *Hi Aurelia Briggs | Wyloguj się* u góry.
+Przejdź do usługi *bikesharingweb* dla obszaru tworzenia */azureuser2* dev, otwierając publiczny adres URL z polecenia `azds list-uris`. W powyższym przykładzie publiczny adres URL dla usługi *bikesharingweb* jest `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik. Upewnij się, że zobaczysz tekst *Hi Aurelia Briggs | Wyloguj się* u góry.
 
-## <a name="update-code"></a>Aktualizowanie kodu
+## <a name="update-code"></a>Aktualizuj kod
 
-Otwórz *BikeSharingWeb/Components/header. js* z edytorem tekstu i Zmień tekst w [elemencie span na wartość `userSignOut` ClassName](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16).
+Otwórz *BikeSharingWeb/Components/header. js* z edytorem tekstu i Zmień tekst w [elemencie span z nazwą klasy `userSignOut`](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16).
 
 ```html
 <span className="userSignOut">
@@ -182,7 +185,7 @@ Zapisz zmiany i zamknij plik.
 
 ## <a name="build-and-run-the-updated-bikesharingweb-service-in-the-devazureuser2-dev-space"></a>Kompilowanie i uruchamianie zaktualizowanej usługi bikesharingweb w obszarze deweloperów *dev/azureuser2*
 
-Przejdź do katalogu *BikeSharingWeb/* i uruchom `azds up` polecenie.
+Przejdź do katalogu *BikeSharingWeb/* i uruchom polecenie `azds up`.
 
 ```cmd
 $ cd ../BikeSharingWeb/
@@ -198,16 +201,16 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 
 To polecenie kompiluje i uruchamia usługę *bikesharingweb* w obszarze deweloperskim */azureuser2* dev. Ta usługa jest uruchamiana poza usługą *bikesharingweb* działającą w środowisku *deweloperskim* i jest używana tylko w przypadku żądań z prefiksem adresu URL *azureuser2. s* . Aby uzyskać więcej informacji na temat działania routingu między nadrzędną i podrzędną przestrzenią programistyczną, zobacz [jak działa Azure dev Spaces i jest skonfigurowany](how-dev-spaces-works.md).
 
-Przejdź do usługi *bikesharingweb* dla obszaru tworzenia */azureuser2* dev, otwierając publiczny adres URL wyświetlany w `azds up` danych wyjściowych polecenia. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik. Sprawdź, czy w prawym górnym rogu zobaczysz zaktualizowany tekst. Może być konieczne odświeżenie strony lub wyczyszczenie pamięci podręcznej przeglądarki, jeśli ta zmiana nie zostanie natychmiast widoczna.
+Przejdź do usługi *bikesharingweb* dla obszaru tworzenia */azureuser2* dev, otwierając publiczny adres URL wyświetlany w danych wyjściowych polecenia `azds up`. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik. Sprawdź, czy w prawym górnym rogu zobaczysz zaktualizowany tekst. Może być konieczne odświeżenie strony lub wyczyszczenie pamięci podręcznej przeglądarki, jeśli ta zmiana nie zostanie natychmiast widoczna.
 
 ![Zaktualizowana aplikacja Przykładowa udostępniania Azure Dev Spaces roweru](media/quickstart-team-development/bikeshare-update.png)
 
 > [!NOTE]
-> Gdy przejdziesz do usługi w trakcie `azds up`działania, w danych wyjściowych `azds up` polecenia są również wyświetlane dane śledzenia żądań HTTP. Te ślady mogą pomóc w rozwiązywaniu problemów i debugowaniu usługi. Te ślady można wyłączyć przy `--disable-http-traces` użyciu programu `azds up`podczas uruchamiania.
+> Po przejściu do usługi podczas działania `azds up`, ślady żądania HTTP są również wyświetlane w danych wyjściowych polecenia `azds up`. Te ślady mogą pomóc w rozwiązywaniu problemów i debugowaniu usługi. Można wyłączyć te ślady przy użyciu `--disable-http-traces` podczas uruchamiania `azds up`.
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>Upewnij się, że inne miejsca deweloperskie nie zostały zmienione
 
-Jeśli polecenie jest nadal uruchomione, naciśnij *klawisze CTRL + c.* `azds up`
+Jeśli polecenie `azds up` jest nadal uruchomione, naciśnij *klawisze CTRL + c*.
 
 ```cmd
 $ azds list-uris --all
@@ -233,10 +236,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak usługa Azure Dev Spaces pomaga tworzyć bardziej złożone aplikacje w wielu kontenerach i jak można uprościć programowanie zespołowe przez pracę z różnymi wersjami lub gałęziami kodu w różnych obszarach.
+Dowiedz się, jak Azure Dev Spaces ułatwiają tworzenie bardziej złożonych aplikacji w wielu kontenerach i jak można uprościć programowanie do współpracy, pracując z różnymi wersjami lub gałęziami kodu w różnych miejscach.
 
 > [!div class="nextstepaction"]
-> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-nodejs.md)
+> [Praca z wieloma kontenerami i programowaniem zespołu](multi-service-nodejs.md)
 
 
 [supported-regions]: about.md#supported-regions-and-configurations

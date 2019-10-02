@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Publikowanie bazy wiedzy, REST i C# QNA Maker'
+title: 'Szybki Start: Publikowanie bazy wiedzy, REST C# i QNA Maker'
 titleSuffix: Azure Cognitive Services
 description: Ten przewodnik Szybki start oparty na protokole REST języka C# przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/24/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: a116dd595b7bde3f320bc0617c99fdb2ab7830d4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 2b2c2ed43a229d929353767b229f8331b49a0e46
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261959"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802899"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Szybki start: Publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka C#
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka C#
 
 Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez programowe publikowanie bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
 
@@ -28,7 +28,7 @@ Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Najnowsza [**wersja programu Visual Studio Community**](https://www.visualstudio.com/downloads/).
-* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz, wybierz pozycję **Klucze** w obszarze **Zarządzanie zasobami** na pulpicie nawigacyjnym. 
+* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal.
 * Identyfikator bazy wiedzy usługi QnA Maker dostępny w adresie URL w parametrze ciągu zapytania kbid, jak pokazano poniżej.
 
     ![Identyfikator bazy wiedzy usługi QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
@@ -41,7 +41,7 @@ Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 ## <a name="create-knowledge-base-project"></a>Tworzenie projektu bazy wiedzy
 
 1. Otwórz program Visual Studio 2019 Community Edition.
-1. Utwórz nowy projekt **Aplikacja konsolowa (.NET Core)** i nadaj mu nazwę `QnaMakerQuickstart`. Zaakceptuj wartości domyślne pozostałych ustawień.
+1. Utwórz nowy projekt **aplikacja konsoli (.NET Core)** i nazwij projekt `QnaMakerQuickstart`. Zaakceptuj wartości domyślne pozostałych ustawień.
 
 ## <a name="add-required-dependencies"></a>Dodawanie wymaganych zależności
 

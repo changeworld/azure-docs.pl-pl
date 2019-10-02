@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, Node.js — QnA Maker'
+title: 'Szybki start: uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, Node.js — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku Szybki start opartym na protokole REST i środowisku Node.js opisano sposób programowego uzyskiwania odpowiedzi z bazy wiedzy.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: ce8d0d669af93d4886b4bca25f67e9261e5af20a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 8ed5225591065082d937f1cac92893886bf90e40
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308122"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802944"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Szybki start: Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu środowiska Node.js
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Szybki Start: uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu środowiska Node. js
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) , takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) jest wysyłane do usługi QNA Maker. [Odpowiedź](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obejmuje odpowiedzi przewidziane w górnej części. 
 

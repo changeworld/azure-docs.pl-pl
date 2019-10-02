@@ -1,6 +1,6 @@
 ---
-title: Aplikacja internetowa wywołuje interfejsy API (logowanie) — Platforma tożsamości usługi Microsoft sieci web
-description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje internetowych interfejsów API (Zaloguj się)
+title: Aplikacja sieci Web, która wywołuje interfejsy API sieci Web (logowanie) — Microsoft Identity platform
+description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje interfejsy API sieci Web (logowanie)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,50 +11,74 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 663cea72eb620217ad5fa8925d3bb00eedbf890c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3036f8cb72f2a07673743a77e8be37614002563f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074563"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720194"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci web — logowanie
+# <a name="web-app-that-calls-web-apis---sign-in"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — logowanie
 
-Już wiesz, jak dodawać logowania do aplikacji sieci web. Dowiesz się, że w [aplikacji sieci Web, czy użytkownicy objawy — Dodawanie logowania](scenario-web-app-sign-user-sign-in.md).
+Już wiesz, jak dodać logowanie do aplikacji sieci Web. Dowiesz się, że w [aplikacji internetowej, która loguje się do użytkowników, Dodaj logowanie](scenario-web-app-sign-user-sign-in.md).
 
-Czym różni się w tym miejscu, jest po użytkownik zalogował się w poziomie, z tej aplikacji lub z poziomu dowolnej aplikacji usunąć z pamięci podręcznej tokenu, tokeny skojarzonych z użytkownikiem.
+Co więcej, jest to, że jeśli użytkownik wyloguje się z tej aplikacji lub z dowolnej aplikacji, należy usunąć tokeny skojarzone z tym użytkownikiem.
 
-## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Przechwytuje wywołania zwrotnego po wylogowaniu - pojedynczego Wyloguj
+## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Przechwytywanie wywołania zwrotnego po wylogowaniu — Rejestracja jednokrotna
 
-Aplikację można przechwycić po `logout` zdarzenie, na przykład wyczyść wpis pamięci podręcznej tokenu skojarzone z kontem Uruchom jako wylogowany. Zobaczymy w drugiej części tego samouczka (dotyczące funkcji Web app wywoływanie interfejsu API sieci Web), aplikacji sieci web będą przechowywane tokeny dostępu dla użytkownika w pamięci podręcznej. Przechwytuje po `logout` wywołanie zwrotne umożliwia aplikacji sieci web usunąć użytkownika z pamięci podręcznej tokenu. Ten mechanizm zilustrowano `AddMsal()` metody [143 StartupHelper.cs L137](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/b87a1d859ff9f9a4a98eb7b701e6a1128d802ec5/Microsoft.Identity.Web/StartupHelpers.cs#L137-L143)
+Aplikacja może przechwycić zdarzenie po `logout`, aby na przykład wyczyścić wpis pamięci podręcznej tokenów skojarzonej z kontem, które wylogowano. Aplikacja sieci Web będzie przechowywać tokeny dostępu dla użytkownika w pamięci podręcznej. Przechwycenie wywołania zwrotnego po `logout` umożliwia aplikacji sieci Web usunięcie użytkownika z pamięci podręcznej tokenów.
 
-**Adres Url wylogowania** zarejestrowaniu dla aplikacji umożliwia implementowania logowania jednokrotnego w poziomie. Platforma Microsoft identity `logout` punkt końcowy będzie wywoływać **adres URL wylogowania** zarejestrowane z aplikacją. To wywołanie się dzieje w przypadku wylogowywania zainicjowano z aplikacji sieci web lub innej aplikacji sieci web lub w przeglądarce. Aby uzyskać więcej informacji, zobacz [wylogowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc#single-sign-out) w dokumentacji koncepcyjnego.
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
+Ten mechanizm jest zilustrowany w metodzie `AddMsal()` [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)
+
+**Adres URL wylogowania** , który został zarejestrowany dla aplikacji, umożliwia wdrożenie rejestracji jednokrotnej. Punkt końcowy na platformie tożsamości firmy Microsoft `logout` wywoła **adres URL wylogowania** zarejestrowany w aplikacji. To wywołanie występuje, jeśli wylogowanie zostało zainicjowane z aplikacji sieci Web lub z innej aplikacji sieci Web lub przeglądarki. Aby uzyskać więcej informacji, zobacz [Logowanie](v2-protocols-oidc.md#single-sign-out)jednokrotne.
 
 ```CSharp
-public static IServiceCollection AddMsal(this IServiceCollection services, IEnumerable<string> initialScopes)
+public static class WebAppServiceCollectionExtensions
 {
-    services.AddTokenAcquisition();
+ public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")
+ {
+  // Code omitted here
 
-    services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-    {
-     ...
-        // Handling the sign-out: removing the account from MSAL.NET cache
-        options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
-        {
-            // Remove the account from MSAL.NET token cache
-            var _tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
-            await _tokenAcquisition.RemoveAccount(context);
-        };
-    });
-    return services;
+  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+  {
+   // Code omitted here
+
+   // Handling the sign-out: removing the account from MSAL.NET cache
+   options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
+   {
+    // Remove the account from MSAL.NET token cache
+    var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
+    await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
+   };
+  });
+  return services;
+ }
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+Kod dla RemoveAccountAsync jest dostępny w [witrynie Microsoft. Identity. Web/TokenAcquisition. cs # L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288).
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+Przykład ASP.NET nie usuwa kont z pamięci podręcznej po wylogowaniu globalnym
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Przykład Java nie usuwa kont z pamięci podręcznej na globalnym wylogowaniu
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Przykład języka Python nie usuwa kont z pamięci podręcznej na globalnym wylogowaniu
+
+---
+
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Uzyskiwanie tokenu dla aplikacji sieci web](scenario-web-app-call-api-acquire-token.md)
+> [Uzyskiwanie tokenu dla aplikacji sieci Web](scenario-web-app-call-api-acquire-token.md)

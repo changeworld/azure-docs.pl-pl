@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269211"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720175"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co to jest obszar roboczy Azure Machine Learning?
 
@@ -26,7 +26,7 @@ Gdy masz model, możesz zarejestrować go w obszarze roboczym. Następnie można
 
 Taksonomia obszaru roboczego przedstawiono na poniższym diagramie:
 
-[![Taksonomia obszaru roboczego](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[@no__t — Taksonomia 1Workspace](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 Na diagramie przedstawiono następujące składniki obszaru roboczego:
 
@@ -66,21 +66,18 @@ Zadania uczenia maszynowego odczytują i/lub zapisują artefakty w obszarze robo
 + Wyświetlanie artefaktów uczenia maszynowego, takich jak eksperymenty, potoki, modele, wdrożenia.
 + Śledź i monitoruj modele.
 
-
-
-
 ## <a name="workspace-management"></a>Zarządzanie obszarem roboczym
 
 Można również wykonać następujące zadania zarządzania obszarem roboczym:
 
-| Zadanie zarządzania obszarem roboczym   | Portal              | SDK        | Interfejs wiersza polecenia        |
+| Zadanie zarządzania obszarem roboczym   | Portal              | SDK        | Interfejs CLI        |
 |---------------------------|------------------|------------|------------|
 | Tworzenie obszaru roboczego        | **&check;**     | **&check;** | **&check;** |
 | Tworzenie zasobów obliczeniowych i zarządzanie nimi    | **&check;**   | **&check;** |  **&check;**   |
 | Zarządzanie dostępem do obszaru roboczego    | **&check;**   | |  **&check;**    |
 | Tworzenie maszyny wirtualnej notesu | **&check;**   | |     |
 
-### <a name='create-workspace'></a>Tworzenie obszaru roboczego
+## <a name='create-workspace'></a>Tworzenie obszaru roboczego
 
 Istnieje wiele sposobów tworzenia obszaru roboczego.
 
@@ -91,12 +88,12 @@ Istnieje wiele sposobów tworzenia obszaru roboczego.
 
 ## <a name="resources"></a>Skojarzone zasoby
 
-Gdy tworzysz nowy obszar roboczy, automatycznie tworzy kilka zasobów platformy Azure, które są używane przez obszar roboczy:
+Podczas tworzenia nowego obszaru roboczego program automatycznie tworzy kilka zasobów platformy Azure, które są używane przez obszar roboczy:
 
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Rejestruje kontenery platformy Docker, które są używane podczas szkoleń i podczas wdrażania modelu. Aby zminimalizować koszty, ACR jest **załadowane z opóźnieniem** do momentu utworzenia obrazów wdrożenia.
-+ [Konto usługi Azure Storage](https://azure.microsoft.com/services/storage/): Jest używany jako domyślny magazyn danych dla obszaru roboczego.  Notesy Jupyter używane razem z maszynami wirtualnymi notesu są również przechowywane w tym miejscu.
-+ [Application Insights platformy Azure](https://azure.microsoft.com/services/application-insights/): Przechowuje informacje o monitorowaniu dla modeli.
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Przechowuje wpisy tajne, które są używane przez cele obliczeniowe i inne poufne informacje, które są niezbędne w obszarze roboczym.
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): rejestruje kontenery platformy Docker, które są używane podczas uczenia i wdrażania modelu. Aby zminimalizować koszty, ACR jest **załadowane z opóźnieniem** do momentu utworzenia obrazów wdrożenia.
++ [Konto usługi Azure Storage](https://azure.microsoft.com/services/storage/): służy jako domyślny magazyn danych dla obszaru roboczego.  Notesy Jupyter używane razem z maszynami wirtualnymi notesu są również przechowywane w tym miejscu.
++ [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): przechowuje informacje o monitorowaniu dla modeli.
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): przechowuje wpisy tajne, które są używane przez cele obliczeniowe i inne poufne informacje, które są zbędne w obszarze roboczym.
 
 > [!NOTE]
 > Oprócz tworzenia nowych wersji, można również korzystać z istniejących usług platformy Azure.
@@ -108,4 +105,4 @@ Aby rozpocząć pracę z Azure Machine Learning, zobacz:
 + [Przegląd Azure Machine Learning](overview-what-is-azure-ml.md)
 + [Tworzenie obszaru roboczego](how-to-manage-workspace.md)
 + [Zarządzanie obszarem roboczym](how-to-manage-workspace.md)
-+ [Samouczek: trenowanie modelu](tutorial-train-models-with-aml.md)
++ [Tutorial: Train a model](tutorial-train-models-with-aml.md) (Samouczek: uczenie modelu)

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, Python — QnA Maker'
+title: 'Szybki start: uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, Python — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku Szybki start opartym na protokole REST i języku Python opisano sposób programowego uzyskiwania odpowiedzi z bazy wiedzy.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 34c85de456e7ec96f3244d327fd53c91ed90d109
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f7bf73561cadab866c08ae279d18bc1bd4655983
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306910"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802973"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Szybki start: Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Python
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Szybki Start: uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Python
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) , takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) jest wysyłane do usługi QNA Maker. [Odpowiedź](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obejmuje odpowiedzi przewidziane w górnej części. 
 
@@ -43,6 +43,8 @@ Otwórz program VSCode i utwórz nowy plik o nazwie `get-answer-3x.py`.
 Na początku pliku `get-answer-3x.py` dodaj wymagane zależności do projektu:
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=1-2 "Add the required dependencies")]
+
+<!--TBD - reword this following paragraph -->
 
 Host i trasa są inne niż te wyświetlane na stronie **Publikowanie**. Jest to spowodowane tym, że biblioteka języka Python nie zezwala na routing na hoście. Routing, który pojawia się na stronie **Publikowanie** jako część hosta, został przeniesiony do trasy.
 

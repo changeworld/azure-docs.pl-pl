@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych z zebrane w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Zebrane jest demonów systemu Linux typu open source, który okresowo zbiera dane z aplikacji i informacje o poziomie systemu.  Ten artykuł zawiera informacje dotyczące zbierania danych z zebrane w usłudze Azure Monitor.
+title: Zbieranie danych z zebranych w Azure Monitor | Microsoft Docs
+description: Zebrany to demon Open Source systemu Linux, który okresowo zbiera dane z aplikacji i informacji o poziomie systemu.  Ten artykuł zawiera informacje dotyczące zbierania danych z zebranych w Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1f02e01fef95bdd06930aa30479dd16d40675ce
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764962"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812570"
 ---
-# <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Zbieranie danych z zebrane na agentach systemu Linux w usłudze Azure Monitor
-[Zebrane](https://collectd.org/) jest demonów systemu Linux typu open source, który okresowo zbiera metryki wydajności z aplikacji i informacje o poziomie systemu. Przykładowe aplikacje obejmują maszyny wirtualnej Java (JVM), serwer MySQL i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych wydajności z zebrane w usłudze Azure Monitor.
+# <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Zbieraj dane z zebranych w agencie systemu Linux w Azure Monitor
+[Zebrany](https://collectd.org/) to demon Open Source systemu Linux, który okresowo zbiera metryki wydajności aplikacji i informacji o poziomie systemu. Przykładowe aplikacje obejmują wirtualna maszyna Java (JVM), MySQL Server i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych o wydajności z zebranych w Azure Monitor.
 
-Pełną listę dostępnych wtyczek znajduje się w temacie [tabeli wtyczek](https://collectd.org/wiki/index.php/Table_of_Plugins).
+Pełną listę dostępnych wtyczek można znaleźć w [tabeli wtyczek](https://collectd.org/wiki/index.php/Table_of_Plugins).
 
-![Zebrane — omówienie](media/data-sources-collectd/overview.png)
+![Przegląd zebranych](media/data-sources-collectd/overview.png)
 
-Następująca konfiguracja zebrane znajduje się w agenta usługi Log Analytics dla systemu Linux na przesyłanie danych zebrane do agenta usługi Log Analytics dla systemu Linux.
+Następująca zebrana konfiguracja jest uwzględniona w agencie Log Analytics dla systemu Linux w celu rozesłania zebranych danych do agenta Log Analytics dla systemu Linux.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -41,7 +41,7 @@ Następująca konfiguracja zebrane znajduje się w agenta usługi Log Analytics 
          </Node>
     </Plugin>
 
-Ponadto jeśli używane wersje zebrane przed 5.5 zamiast tego użyj poniższej konfiguracji.
+Ponadto w przypadku korzystania z wersji zebranych przed 5,5 Użyj poniższej konfiguracji.
 
     LoadPlugin write_http
 
@@ -52,12 +52,12 @@ Ponadto jeśli używane wersje zebrane przed 5.5 zamiast tego użyj poniższej k
        </URL>
     </Plugin>
 
-Domyślnie korzysta z konfiguracji zebrane`write_http` dodatek plug-in, aby Wysyłaj dane metryk wydajności za pośrednictwem portu 26000 do agenta usługi Log Analytics dla systemu Linux. 
+Zebrana konfiguracja używa domyślnej wtyczki @ no__t-0 do wysyłania danych metryk wydajności przez port 26000 do agenta Log Analytics dla systemu Linux. 
 
 > [!NOTE]
-> Jeśli to konieczne, można skonfigurować tego portu na port niestandardowy.
+> Ten port można skonfigurować do niestandardowego portu zdefiniowanego w razie potrzeby.
 
-Agenta usługi Log Analytics dla systemu Linux również nasłuchuje na porcie 26000 metryki zebrane i konwertuje je do usługi Azure Monitor schematu metryk. Poniżej przedstawiono agenta usługi Log Analytics dla systemu Linux konfiguracji `collectd.conf`.
+Agent Log Analytics dla systemu Linux nasłuchuje również na porcie 26000 dla zebranych metryk, a następnie konwertuje je na metryki schematu Azure Monitor. Poniżej przedstawiono konfigurację Log Analytics agenta dla systemu Linux `collectd.conf`.
 
     <source>
       type http
@@ -69,58 +69,60 @@ Agenta usługi Log Analytics dla systemu Linux również nasłuchuje na porcie 2
       type filter_collectd
     </filter>
 
+> [!NOTE]
+> Zbierane domyślnie są ustawione na odczyt wartości w [przedziale](https://collectd.org/wiki/index.php/Interval)10 sekund. Ponieważ ma to bezpośredni wpływ na ilość danych wysyłanych do dzienników Azure Monitor, może być konieczne dostrojenie tego interwału w ramach zebranej konfiguracji w celu uzyskania odpowiedniej równowagi między wymaganiami dotyczącymi monitorowania a związanymi z nimi kosztami i użyciem dzienników Azure Monitor.
 
 ## <a name="versions-supported"></a>Obsługiwane wersje
-- Usługa Azure Monitor obsługuje obecnie zebrane wersji 4.8 i nowsze wersje.
-- Log Analytics agenta dla systemu Linux v1.1.0-217 lub nowszego jest wymagany na potrzeby kolekcji metryki zebrane.
+- Azure Monitor obecnie obsługuje zebraną wersję 4,8 lub nowszą.
+- Agent Log Analytics dla systemu Linux v 1.1.0-217 lub nowszego jest wymagany dla kolekcji metryk zebranych.
 
 
-## <a name="configuration"></a>Konfigurowanie
-Poniżej przedstawiono podstawowe kroki, aby skonfigurować zbieranie zebrane dane w usłudze Azure Monitor.
+## <a name="configuration"></a>Konfiguracja
+Poniżej przedstawiono podstawowe kroki konfigurowania kolekcji zbieranych danych w Azure Monitor.
 
-1. Skonfiguruj zebrane w celu wysyłania danych do agenta usługi Log Analytics dla systemu Linux przy użyciu wtyczki write_http.  
-2. Konfigurowanie agenta usługi Log Analytics dla systemu Linux do nasłuchiwania pod kątem zebrane dane w odpowiedni port.
-3. Uruchom ponownie agenta zebrane i Log Analytics dla systemu Linux.
+1. Skonfiguruj zebrane dane w celu wysłania danych do agenta Log Analytics dla systemu Linux przy użyciu wtyczki write_http.  
+2. Skonfiguruj Log Analytics agenta dla systemu Linux, aby nasłuchiwać zebranych danych na odpowiednim porcie.
+3. Uruchom ponownie zebrane i Log Analytics agenta dla systemu Linux.
 
-### <a name="configure-collectd-to-forward-data"></a>Konfigurowanie zebrane do przekazywania danych 
+### <a name="configure-collectd-to-forward-data"></a>Konfigurowanie zebranych danych do przesyłania dalej 
 
-1. Aby dane zebrane trasy do agenta usługi Log Analytics dla systemu Linux `oms.conf` musi zostać dodane do katalogu konfiguracji zebrane firmy. Miejsce docelowe tego pliku zależy od dystrybucja systemu Linux maszyny.
+1. Aby skierować dane zebrane do agenta Log Analytics dla systemu Linux, należy dodać `oms.conf` do katalogu konfiguracji zebranych. Miejsce docelowe tego pliku zależy od dystrybucji komputera z systemem Linux.
 
-    Jeśli katalog konfiguracji zebrane znajduje się w /etc/collectd.d/:
+    Jeśli zebrany katalog konfiguracji znajduje się w/etc/collectd.d/:
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
 
-    Jeśli katalog konfiguracji zebrane znajduje się w /etc/collectd/collectd.conf.d/:
+    Jeśli zebrany katalog konfiguracji znajduje się w/etc/collectd/collectd.conf.d/:
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >W przypadku wersji zebrane przed 5.5 trzeba będzie zmodyfikować tagów w `oms.conf` jak pokazano powyżej.
+    >W przypadku wersji zebranych przed 5,5 należy zmodyfikować Tagi w `oms.conf`, jak pokazano powyżej.
     >
 
-2. Skopiuj collectd.conf katalog konfiguracji omsagent żądanego obszaru roboczego.
+2. Kopiuj zebrane. conf do katalogu konfiguracji omsagent wybranego obszaru roboczego.
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
         sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
 
-3. Uruchom ponownie agenta zebrane i Log Analytics dla systemu Linux przy użyciu poniższych poleceń.
+3. Uruchom ponownie zebrane i Log Analytics agenta dla systemu Linux przy użyciu następujących poleceń.
 
-    ponowne uruchomienie "sudo" usługi zebrane ponowne uruchomienie "sudo" /opt/microsoft/omsagent/bin/service_control
+    Usługa sudo została ponownie uruchomiona sudo/opt/Microsoft/omsagent/bin/service_control restart
 
-## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Metryki zebrane do konwersji schematu usługi Azure Monitor
-Aby zachować znanego modelu między metryk infrastruktury już zebrane przez agenta usługi Log Analytics dla systemu Linux i nowe metryki zebrane przez zebrane następujące mapowanie schematu jest używany:
+## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Zebrane metryki do Azure Monitor konwersji schematu
+Aby zachować znany model między metrykami infrastruktury już zebranymi przez agenta Log Analytics dla systemu Linux i są używane nowe metryki zbierane przez zebrane następujące mapowanie schematu:
 
-| Metryki zebrane pola | Pole monitorowania platformy Azure |
+| Pole metryki zebranej | Pole Azure Monitor |
 |:--|:--|
-| `host` | Computer (Komputer) |
+| `host` | Komputerem |
 | `plugin` | Brak |
-| `plugin_instance` | Nazwa wystąpienia<br>Jeśli **plugin_instance** jest *null* następnie InstanceName = " *_Total*" |
-| `type` | Nazwa obiektu |
-| `type_instance` | CounterName<br>Jeśli **type_instance** jest *null* następnie CounterName =**puste** |
+| `plugin_instance` | Nazwa wystąpienia<br>Jeśli **plugin_instance** ma *wartość null* , InstanceName = " *_Total*" |
+| `type` | Obiektu |
+| `type_instance` | CounterName<br>Jeśli **type_instance** ma *wartość null* , CounterName =**blank** |
 | `dsnames[]` | CounterName |
 | `dstypes` | Brak |
 | `values[]` | CounterValue |
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
-* Użyj [pól niestandardowych](custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.
+## <a name="next-steps"></a>Następne kroki
+* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań. 
+* [Pola niestandardowe](custom-fields.md) służą do analizowania danych z rekordów dziennika systemowego do poszczególnych pól.

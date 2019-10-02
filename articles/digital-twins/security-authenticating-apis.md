@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: lyhughes
-ms.openlocfilehash: ad51fbe7d2f8e8f115adf03d6333c0747765ee43
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 6d8d6f03847fcd22a6d78c445ae039c73e9badfa
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338605"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719164"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Nawiązywanie połączenia z interfejsami API i uwierzytelnianie przy użyciu
 
@@ -28,13 +28,16 @@ Aby zintegrować aplikację lub usługę z usługą Azure AD, deweloper musi naj
 
 Usługa Azure AD obsługuje [pięć scenariuszy aplikacji podstawowych](../active-directory/develop/v2-app-types.md) :
 
-* Aplikacja jednostronicowa (SPA): Użytkownik musi zalogować się do aplikacji jednostronicowej zabezpieczonej przez usługę Azure AD.
-* Przeglądarka sieci Web do aplikacji sieci Web: Użytkownik musi zalogować się do aplikacji sieci Web, która jest zabezpieczona przez usługę Azure AD.
-* Natywna aplikacja do interfejsu API sieci Web: Natywna aplikacja działająca na telefonie, tablecie lub komputerze musi uwierzytelnić użytkownika, aby pobierać zasoby z internetowego interfejsu API, który jest zabezpieczony przez usługę Azure AD.
-* Aplikacja sieci Web do interfejsu API sieci Web: Aplikacja sieci Web musi pobrać zasoby z internetowego interfejsu API chronionego przez usługę Azure AD.
-* Demon lub aplikacja serwera do interfejsu API sieci Web: Aplikacja demona lub aplikacja serwera bez interfejsu użytkownika sieci Web musi pobierać zasoby z internetowego interfejsu API zabezpieczonego przez usługę Azure AD.
+* Aplikacja jednostronicowa (SPA): użytkownik musi zalogować się do aplikacji jednostronicowej zabezpieczonej przez usługę Azure AD.
+* Przeglądarka sieci Web do aplikacji sieci Web: użytkownik musi zalogować się do aplikacji sieci Web, która jest zabezpieczona przez usługę Azure AD.
+* Natywna aplikacja do interfejsu API sieci Web: Natywna aplikacja działająca na telefonie, tablecie lub komputerze musi uwierzytelnić użytkownika w celu pobierania zasobów z internetowego interfejsu API, który jest zabezpieczony przez usługę Azure AD.
+* Aplikacja sieci Web do interfejsu API sieci Web: aplikacja sieci Web musi pobrać zasoby z internetowego interfejsu API zabezpieczonego przez usługę Azure AD.
+* Demon lub aplikacja serwera do interfejsu API sieci Web: aplikacja demona lub aplikacja serwera bez interfejsu użytkownika sieci Web musi pobierać zasoby z internetowego interfejsu API zabezpieczonego przez usługę Azure AD.
 
-Biblioteka uwierzytelniania systemu Windows Azure oferuje wiele metod uzyskiwania tokenów Active Directory. Aby uzyskać szczegółowe informacje na temat biblioteki i przykłady kodu, zobacz witrynę [typu Wiki ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
+> [!IMPORTANT]
+> Usługa Azure Digital bliźniaczych reprezentacji obsługuje obie następujące biblioteki uwierzytelniania:
+> * Najnowsza [Biblioteka uwierzytelniania firmy Microsoft (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * [Biblioteka Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Wywoływanie Digital bliźniaczych reprezentacji z poziomu internetowego interfejsu API sieci Web
 

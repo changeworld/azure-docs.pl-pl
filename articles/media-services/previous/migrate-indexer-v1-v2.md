@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 304091634c9e07f0a34029e83111a537b95bc061
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 329c7191482787f25cfddfd8c4d70074df9a7c1f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338531"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719964"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrowanie z Media Indexer i Media Indexer 2 do Video Indexer
 
-Procesor multimedialny [Azure Media Indexer V1](media-services-index-content.md) zostanie wycofany 1 października 2020. Procesory z nośników w [wersji Zapoznawczej Azure Media Indexer v2](media-services-process-content-with-indexer2.md) zostaną wycofane 1 stycznia 2020.  [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje te starsze procesory nośników.
+Procesor multimediów [Azure Media Indexer](media-services-index-content.md) zostanie wycofany 1 października 2020. [Azure Media Indexer 2 wersji zapoznawczej](media-services-process-content-with-indexer2.md) procesorów multimediów zostanie wycofana 1 stycznia 2020.  [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje te starsze procesory nośników.
 
 Video Indexer Azure Media Services jest oparta na Azure Media Analytics, Azure Search, Cognitive Services (np. interfejs API rozpoznawania twarzy, Microsoft translator, interfejs API przetwarzania obrazów i Custom Speech Service). Umożliwia wyodrębnianie szczegółowych informacji z plików wideo przy użyciu modeli wideo i audio usługi Video Indexer. Aby dowiedzieć się, jakie scenariusze Video Indexer mogą być używane w programie, jakie funkcje oferują i jak zacząć, zobacz [Video Indexer modele wideo i audio](../video-indexer/video-indexer-overview.md). 
 
 Można wyodrębnić szczegółowe informacje z plików wideo i audio, korzystając z [ustawień domyślnych programu Azure Media Services v3 Analyzer](../latest/analyzing-video-audio-files-concept.md) lub bezpośrednio przy użyciu [interfejsów API Video Indexer](https://api-portal.videoindexer.ai/). Obecnie istnieje nakładanie się między funkcjami oferowanymi przez interfejsy API Video Indexer i interfejsy API Media Services v3.
 
 > [!NOTE]
-> Aby ustalić, kiedy należy używać usługi Video Indexer zamiast ustawień wstępnych analizatora usługi Media Services, zapoznaj się z [dokumentem z porównaniem](../video-indexer/compare-video-indexer-with-media-services-presets.md). 
+> Aby zrozumieć, Kiedy chcesz użyć Video Indexer a Media Services ustawienia wstępne analizatora, zapoznaj się z [dokumentem porównania](../video-indexer/compare-video-indexer-with-media-services-presets.md). 
 
 W tym artykule omówiono procedurę migrowania z Azure Media Indexer i Azure Media Indexer 2 do Azure Media Services Video Indexer.  
 
@@ -42,7 +42,7 @@ W tym artykule omówiono procedurę migrowania z Azure Media Indexer i Azure Med
 
 ## <a name="getting-started-with-video-indexer"></a>Wprowadzenie do Video Indexer
 
-W poniższej sekcji przedstawiono odpowiednie linki: [Jak rozpocząć pracę z Video Indexer?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
+W poniższej sekcji przedstawiono odpowiednie linki: jak zacząć [korzystać z video Indexer?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Wprowadzenie do interfejsów API Media Services v3
 
@@ -50,13 +50,13 @@ Interfejs API programu Azure Media Services v3 umożliwia wyodrębnienie szczeg�
 
 **AudioAnalyzerPreset** umożliwia wyodrębnienie wielu szczegółowych informacji audio z pliku audio lub wideo. Dane wyjściowe obejmują plik VTT lub TTML dla transkrypcji audio i pliku JSON (ze wszystkimi dodatkowymi spostrzeżeniami w usłudze audio). Szczegółowe informacje o danych audio obejmują słowa kluczowe, indeksowanie głośników i analizę tonacji mowy. AudioAnalyzerPreset obsługuje również wykrywanie języka dla określonych języków. Aby uzyskać szczegółowe informacje, zobacz [transformacje](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
-### <a name="get-started"></a>Rozpoczęcie pracy
+### <a name="get-started"></a>Rozpocznij
 
 Aby rozpocząć, zobacz:
 
 * [Samouczek](../latest/analyze-videos-tutorial-with-api.md)
-* Przykłady AudioAnalyzerPreset: [Zestaw SDK języka Java](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer) lub [zestaw SDK platformy .NET](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
-* Przykłady VideoAnalyzerPreset: [Zestaw SDK języka Java](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer) lub [zestaw SDK platformy .NET](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
+* Przykłady AudioAnalyzerPreset: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer) lub [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
+* Przykłady VideoAnalyzerPreset: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer) lub [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
 
 ## <a name="getting-started-with-cognitive-services-speech-services"></a>Wprowadzenie do usługi Cognitive Services Speech Services
 
@@ -79,7 +79,7 @@ Niektóre znane różnice obejmują:
 
 ## <a name="contact-us"></a>Skontaktuj się z nami 
 
-Jeśli masz pytania dotyczące wycofania Azure Media Indexer 1 i Azure Media Indexer 2 lub migracji do innych usług, skontaktuj się z nami za pośrednictwemamshelp@microsoft.com 
+Jeśli masz pytania dotyczące wycofania Azure Media Indexer 1 i Azure Media Indexer 2 lub migracji do innych usług, skontaktuj się z nami za pośrednictwem amshelp@microsoft.com 
 
 ## <a name="next-steps"></a>Następne kroki
 

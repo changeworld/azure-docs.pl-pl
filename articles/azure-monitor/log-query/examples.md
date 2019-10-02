@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 10/01/2019
 ms.author: bwren
-ms.openlocfilehash: d50a680ed2b054f87a9cf36e761bd16d79677fb3
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304701"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718916"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Przykłady zapytań w dzienniku Azure Monitor
 Ten artykuł zawiera różne przykłady [zapytań](log-query-overview.md) używających [języka zapytań Kusto](/azure/kusto/query/) do pobierania różnych typów danych dziennika z Azure monitor. Różne metody służą do konsolidowania i analizowania danych, dzięki czemu można używać tych przykładów do identyfikowania różnych strategii, których można użyć do własnych wymagań.  
 
 Aby uzyskać szczegółowe informacje o różnych słowach kluczowych używanych w tych przykładach, zobacz [Dokumentacja języka Kusto](https://docs.microsoft.com/azure/kusto/query/) . Zapoznaj się z lekcji, aby [utworzyć zapytania](get-started-queries.md) , jeśli jesteś nowym Azure monitor.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Wydarzenia
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Wyszukaj zdarzenia na poziomie aplikacji opisane jako "kryptograficzne"
-W tym przykładzie tabela **Zdarzenia** jest przeszukiwana pod kątem rekordów, które w parametrze **EventLog** mają wartość _Application_ oraz zawierają ciąg _cryptographic_ w parametrze **RenderedDescription**. Wyświetlane są rekordy z ostatnich 24 godzin.
+Ten przykład przeszukuje tabelę **Events** pod kątem rekordów, w których **EventLog** jest _Application_ i **RenderedDescription** zawiera dane _kryptograficzne_. Zawiera rekordy z ostatnich 24 godzin.
 
 ```Kusto
 Event
@@ -38,7 +38,7 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>Wyszukaj zdarzenia związane z rozorganizowaniem
-Wyszukaj w tabelach **zdarzenia** i **SecurityEvents** dla rekordów, które wymieniają informacje o rozkierowaniu.
+Wyszukaj w tabelach **zdarzenia** i **SecurityEvents** dla rekordów, które wymieniają informacje o _rozkierowaniu_.
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
@@ -79,7 +79,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Dopasuj rekordy stanu chronionego przy użyciu rekordów pulsu
 
 Ten przykład wyszukuje powiązane rekordy stanu ochrony i rekordy pulsu, dopasowane zarówno na komputerze, jak i w czasie.
-Zwróć uwagę, że pole Time jest zaokrąglane do najbliższej minuty. Użyto obliczeń bin w czasie wykonywania, aby to `round_time=bin(TimeGenerated, 1m)`zrobić:.
+Zwróć uwagę, że pole Time jest zaokrąglane do najbliższej minuty. W tym celu użyto obliczeń bin dla środowiska uruchomieniowego: `round_time=bin(TimeGenerated, 1m)`.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -208,7 +208,7 @@ Perf
 ## <a name="protection-status"></a>Stan ochrony
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Komputery z niezgodnym okresem ważności ochrony
-W tym przykładzie wyświetlana jest lista komputerów, których stan ochrony to _Not Reporting_, oraz informacja o tym, przez jaki czas komputery znajdowały się w tym stanie.
+Ten przykład zawiera listę komputerów, które mają stan ochrony _bez raportowania_ i czas trwania tego stanu.
 
 ```Kusto
 ProtectionStatus
@@ -237,7 +237,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Liczba zdarzeń zabezpieczeń według identyfikatora działania
 
 
-Ten przykład opiera się na stałej strukturze kolumny **aktywności** : \<Nazwa\>-identyfikatora\<.\>
+Ten przykład opiera się na stałej strukturze kolumny **aktywności** : \<ID @ no__t-2 @ no__t-3 @ No__t-4Name @ no__t-5.
 Analizuje ona wartość **działania** w dwie nowe kolumny i zlicza wystąpienia każdego **activityIDu**.
 
 ```Kusto
@@ -249,7 +249,7 @@ SecurityEvent
 ```
 
 ### <a name="count-security-events-related-to-permissions"></a>Liczba zdarzeń zabezpieczeń związanych z uprawnieniami
-Ten przykład pokazuje liczbę rekordów **securityEvent**, w których kolumna **Działania** zawiera całe wyrażenie _Permissions_. Kwerenda dotyczy rekordów utworzonych w ciągu ostatnich 30 minut.
+W tym przykładzie przedstawiono liczbę rekordów **securityEvent** , w których kolumna **Activity** zawiera _uprawnienia_całodzienne. Zapytanie dotyczy rekordów utworzonych w ciągu ostatnich 30 minut.
 
 ```Kusto
 SecurityEvent
@@ -278,7 +278,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Nazwa i identyfikator działania analizy
-Dwa poniższe przykłady polegają na stałej strukturze kolumny **aktywności** : \<Nazwa\>-identyfikatora\<.\> W pierwszym przykładzie używa operatora **Parse** do przypisywania wartości do dwóch nowych kolumn: **ActivityId** i **activityDesc**.
+Dwa poniższe przykłady polegają na stałej strukturze kolumny **aktywności** : \<ID @ no__t-2 @ no__t-3 @ No__t-4Name @ no__t-5. W pierwszym przykładzie używa operatora **Parse** do przypisywania wartości do dwóch nowych kolumn: **ActivityId** i **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -356,7 +356,7 @@ SecurityEvent
 | project-away Account1
 ```
 
-Korzystając z funkcji **Join**, możesz sprawdzić, czy te same podejrzane konta były później mogły zostać pomyślnie zalogować.
+Korzystając z funkcji **Join**, możesz **sprawdzić, czy** te same podejrzane konta były później mogły zostać pomyślnie zalogować.
 
 ```Kusto
 let timeframe = 1d;
@@ -399,7 +399,7 @@ Usage
 
 ### <a name="timechart-latency-percentiles-50-and-95"></a>Timechart percentyly opóźnienia 50 i 95
 
-Ten przykład oblicza i wykresówuje percentyle pięćdziesiąt i używany 95. w ciągu  ostatnich 24 godzin.
+Ten przykład oblicza i wykresówuje percentyle pięćdziesiąt i **używany 95. w ciągu** ostatnich 24 godzin.
 
 ```Kusto
 Usage
@@ -425,13 +425,12 @@ Ten przykład przedstawia listę komputerów, na których brakuje co najmniej je
 
 ```Kusto
 let ComputersMissingUpdates3DaysAgo = Update
-| where TimeGenerated between (ago(3d)..ago(2d))
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where TimeGenerated between (ago(30d)..ago(1h))
+| where Classification !has "Critical" and UpdateState =~ "Needed"
 | summarize makeset(Computer);
-
 Update
 | where TimeGenerated > ago(1d)
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where Classification has "Critical" and UpdateState =~ "Needed"
 | where Computer in (ComputersMissingUpdates3DaysAgo)
 | summarize UniqueUpdatesCount = dcount(Product) by Computer, OSType
 ```

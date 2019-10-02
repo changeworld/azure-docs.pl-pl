@@ -17,14 +17,14 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 943cad871330e2f3b6e13b33dca582ab545fe4be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a83980c3d4d03f53a19918ed213c965e50baa406
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726569"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720055"
 ---
-# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Samouczek: Łączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych przy użyciu witryny Azure portal
+# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Samouczek: łączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych z użyciem witryny Azure Portal
 
 Sieci wirtualne możesz łączyć ze sobą za pomocą komunikacji równorzędnej sieci wirtualnych. Te sieci wirtualne mogą znajdować się w tym samym regionie lub w różnych regionach (określane także jako globalne wirtualne sieci równorzędne). Po połączeniu sieci wirtualnych za pomocą komunikacji równorzędnej zasoby w obu sieciach wirtualnych mogą komunikować się ze sobą przy takim samym opóźnieniu i z taką samą przepustowością, jakby zasoby były w tej samej sieci wirtualnej. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -50,7 +50,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name (Nazwa)|myVirtualNetwork1|
+    |Nazwa|myVirtualNetwork1|
     |Przestrzeń adresowa|10.0.0.0/16|
     |Subskrypcja| Wybierz subskrypcję.|
     |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*.|
@@ -64,7 +64,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name (Nazwa)|myVirtualNetwork2|
+    |Nazwa|myVirtualNetwork2|
     |Przestrzeń adresowa|10.1.0.0/16|
     |Grupa zasobów| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
     |Zakres adresów podsieci|10.1.0.0/24|
@@ -80,27 +80,18 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name (Nazwa)|myVirtualNetwork1-myVirtualNetwork2|
+    |Nazwa komunikacji równorzędnej z myVirtualNetwork1 do zdalnej sieci wirtualnej|myVirtualNetwork1-myVirtualNetwork2 — po pierwszym załadowaniu strony w tym miejscu zobaczysz frazę "zdalna Sieć wirtualna". Po wybraniu zdalnej sieci wirtualnej fraza "zdalna Sieć wirtualna" zostanie zastąpiona nazwą zdalnej sieci wirtualnej.|
     |Subskrypcja| Wybierz subskrypcję.|
-    |Sieć wirtualna|myVirtualNetwork2 — aby wybrać sieć wirtualną *myVirtualNetwork2*, wybierz pozycję **Sieć wirtualna**, a następnie wybierz pozycję **myVirtualNetwork2**. Możesz wybrać sieć wirtualną znajdującą się w tym samym regionie lub w innym regionie.|
+    |Sieć wirtualna|myVirtualNetwork2 — aby wybrać sieć wirtualną *myVirtualNetwork2* , wybierz pozycję **Sieć wirtualna**, a następnie wybierz pozycję **myVirtualNetwork2 (moja ResourceName)** . Możesz wybrać sieć wirtualną znajdującą się w tym samym regionie lub w innym regionie.|
+    |Nazwa komunikacji równorzędnej z myVirtualNetwork2 do myVirtualNetwork1|myVirtualNetwork2-myVirtualNetwork1|
 
-    ![Ustawienia komunikacji równorzędnej](./media/tutorial-connect-virtual-networks-portal/peering-settings.png)
+    ![Ustawienia komunikacji równorzędnej](./media/tutorial-connect-virtual-networks-portal/peering-settings-bidirectional.png)
 
-    **STAN KOMUNIKACJI RÓWNORZĘDNEJ** to *Zainicjowano*, jak pokazano na poniższym obrazie:
+    **Stan komunikacji równorzędnej** jest *połączony*, jak pokazano na poniższej ilustracji:
 
-    ![Stan komunikacji równorzędnej](./media/tutorial-connect-virtual-networks-portal/peering-status.png)
+    ![Stan komunikacji równorzędnej](./media/tutorial-connect-virtual-networks-portal/peering-status-connected.png)
 
     Jeśli stan nie jest widoczny, odśwież przeglądarkę.
-
-4. W polu **Szukaj** w górnej części witryny Azure Portal rozpocznij wpisywanie ciągu *myVirtualNetwork2*. Gdy pozycja **myVirtualNetwork2** pojawi się w wynikach wyszukiwania, wybierz ją.
-5. Ponownie wykonaj kroki 2–3 z następującymi zmianami, a następnie wybierz przycisk **OK**:
-
-    |Ustawienie|Wartość|
-    |---|---|
-    |Name (Nazwa)|myVirtualNetwork2-myVirtualNetwork1|
-    |Sieć wirtualna|myVirtualNetwork1|
-
-    **STAN KOMUNIKACJI RÓWNORZĘDNEJ** to *Połączono*. Platforma Azure również zmieniła stan komunikacji równorzędnej dla komunikacji równorzędnej *myVirtualNetwork2-myVirtualNetwork1* z *Zainicjowano* na *Połączono*. Komunikacja równorzędna sieci wirtualnych nie zostanie w pełni nawiązana do chwili, gdy obie sieci wirtualne nie będą miały stanu *Połączono*. 
 
 ## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
@@ -114,7 +105,7 @@ Utwórz maszynę wirtualną w każdej sieci wirtualnej, dzięki czemu będzie mo
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name (Nazwa)|myVm1|
+    |Nazwa|myVm1|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Grupa zasobów| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
@@ -137,7 +128,7 @@ Wykonaj ponownie kroki 1–6 z następującymi zmianami:
 
 |Ustawienie|Wartość|
 |---|---|
-|Name (Nazwa) | myVm2|
+|Nazwa | myVm2|
 |Sieć wirtualna | myVirtualNetwork2|
 
 Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
@@ -182,7 +173,7 @@ Gdy grupa zasobów nie będzie już potrzebna, usuń ją wraz ze wszystkimi zaso
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób połączenia dwóch sieci w tym samym regionie świadczenia usługi Azure za pomocą komunikacji równorzędnej sieci wirtualnych. Możesz też nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych [obsługiwanych regionach](virtual-network-manage-peering.md#cross-region) i w [różnych subskrypcjach platformy Azure](create-peering-different-subscriptions.md#portal), a także utworzyć [projekty sieci w topologii gwiazdy](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) z komunikacją równorzędną. Aby dowiedzieć się więcej na temat komunikacji równorzędnej sieci wirtualnych, zobacz [Virtual network peering overview (Omówienie komunikacji równorzędnej sieci wirtualnych)](virtual-network-peering-overview.md) i [Manage virtual network peerings (Zarządzanie komunikacją równorzędną sieci wirtualnych)](virtual-network-manage-peering.md).
 

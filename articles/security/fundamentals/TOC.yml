@@ -235,8 +235,6 @@
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
       items:
-        - name: Usługi platformy Azure według zakresu inspekcji
-          href: ../compliance/azure-services-in-fedramp-auditscope.md
         - name: Analiza danych
           href: ../blueprints/fedramp-analytics-overview.md
         - name: Magazyn danych
@@ -283,16 +281,6 @@
           href: ../blueprints/pcidss-iaaswa-overview.md
         - name: Aplikacja internetowa PaaS
           href: ../blueprints/pcidss-paaswa-overview.md
-    - name: SCCA
-      displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Zabezpieczanie architektury obliczeniowej platformy Azure
-          href: ../compliance/secure-azure-computing-architecture.md
-    - name: TIC
-      displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Połączenia Trusted Internet Connection za pomocą platformy Azure
-          href: ../compliance/compliance-tic.md
     - name: UK NHS
       displayName: 'blueprint, privacy, certifications'
       items:

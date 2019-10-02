@@ -1,6 +1,6 @@
 ---
 title: Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
-description: Dowiedz się, jak przekazać dysk VHD do dysku zarządzanego platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure.
+description: Dowiedz się, jak przekazać dysk VHD do dysku zarządzanego platformy Azure i skopiować dysk zarządzany między regionami przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 938f1696c95f8feb9aeebd28139870e3ce020613
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: d16e37849ce8ba043fdb1fddb13df2abe8732cda
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695448"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71717170"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -29,6 +29,8 @@ Obecnie bezpośrednie przekazywanie jest obsługiwane dla standardowego dysku tw
 - Pobierz najnowszą [wersję programu AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Zainstaluj interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 - Plik VHD zapisany lokalnie
+- Jeśli zamierzasz przekazać dysk VHD z dysku na PEM: dysk VHD, który został [przygotowany na platformie Azure, jest](../windows/prepare-for-upload-vhd-image.md)przechowywany lokalnie.
+- Lub dysk zarządzany na platformie Azure, jeśli zamierzasz wykonać akcję kopiowania.
 
 ## <a name="create-an-empty-managed-disk"></a>Utwórz pusty dysk zarządzany
 
@@ -45,7 +47,7 @@ Przed utworzeniem pustego standardowego dysku twardego do przekazania należy mi
 
 Tworzenie pustego standardowego dysku twardego do przekazywania przez określenie zarówno parametru **--for-upload** , jak i parametru **--upload-size-Bytes** w poleceniu cmdlet [Create Disk](/cli/azure/disk#az-disk-create) :
 
-```azurecli-interactive
+```bash
 az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
@@ -55,7 +57,7 @@ Utworzono pusty dysk zarządzany skonfigurowany dla procesu przekazywania. Aby p
 
 Aby wygenerować zapisywalne SAS pustego dysku zarządzanego, użyj następującego polecenia:
 
-```azurecli-interactive
+```bash
 az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --duration-in-seconds 86400
 ```
 
@@ -75,7 +77,7 @@ Za pomocą AzCopy v10 Przekaż swój lokalny plik VHD na dysk zarządzany, okre�
 
 To przekazywanie ma taką samą przepływność jak odpowiednik [standardowego dysku twardego](disks-types.md#standard-hdd). Na przykład jeśli masz rozmiar, który jest równa S4, będziesz mieć przepływność do 60 MiB/s. Ale jeśli masz rozmiar, który jest równa S70, będziesz mieć przepływność do 500 MiB/s.
 
-```
+```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
@@ -83,8 +85,41 @@ Jeśli sygnatura dostępu współdzielonego wygasa podczas przekazywania i nie w
 
 Po zakończeniu przekazywania i nie musisz już pisać więcej danych na dysku, odwołaj sygnaturę dostępu współdzielonego. Odwoływanie sygnatury dostępu współdzielonego spowoduje zmianę stanu dysku zarządzanego i umożliwi dołączenie dysku do maszyny wirtualnej.
 
-```azurecli-interactive
+```bash
 az disk revoke-access -n mydiskname -g resourcegroupname
+```
+
+## <a name="copy-a-managed-disk"></a>Kopiowanie dysku zarządzanego
+
+Bezpośrednie przekazywanie upraszcza również proces kopiowania dysku zarządzanego. Można wykonać kopię w tym samym regionie lub w różnych regionach (do innego regionu).
+
+Wykonanie poniższej skryptu spowoduje to, że proces jest podobny do opisanego wcześniej procedury, z pewnymi różnicami, ponieważ pracujesz z istniejącym dyskiem.
+
+> [!IMPORTANT]
+> Należy dodać przesunięcie 512, gdy podajesz rozmiar dysku w bajtach dysku zarządzanego na platformie Azure. Wynika to z faktu, że platforma Azure pomija stopkę podczas zwracania rozmiaru dysku. Kopia nie powiedzie się, jeśli to zrobisz. Poniższy skrypt już robi to za Ciebie.
+
+Zastąp `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` i `<yourTargetLocationHere>` (przykładem wartości lokalizacji byłaby uswest2) wartościami, a następnie uruchom poniższy skrypt w celu skopiowania dysku zarządzanego.
+
+```bash
+sourceDiskName = <sourceDiskNameHere>
+sourceRG = <sourceResourceGroupHere>
+targetDiskName = <targetDiskNameHere>
+targetRG = <targetResourceGroupHere>
+targetLocale = <yourTargetLocationHere>
+
+sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[uniqueId]' -o tsv)
+
+az disk create -n $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+
+targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
+
+sourceSASURI=$(az disk grant-access -n <sourceDiskNameHere> -g $sourceRG --duration-in-seconds 86400 --query [acessSas] -o tsv)
+
+.\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
+
+az disk revoke-access -n $sourceDiskName -g $sourceRG
+
+az disk revoke-access -n $targetDiskName -g $targetRG
 ```
 
 ## <a name="next-steps"></a>Następne kroki

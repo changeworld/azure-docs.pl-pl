@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088172"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811623"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurowanie wzajemnego uwierzytelniania TLS dla Azure App Service
 
@@ -31,19 +31,28 @@ Możesz ograniczyć dostęp do aplikacji Azure App Service, włączając dla nie
 
 ## <a name="enable-client-certificates"></a>Włączanie certyfikatów klienta
 
-Aby skonfigurować aplikację tak, aby wymagała certyfikatów klienta, należy ustawić `clientCertEnabled` ustawienie dla aplikacji na. `true` Aby ustawić ustawienie, uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com).
+Aby skonfigurować aplikację tak, aby wymagała certyfikatów klienta, należy ustawić ustawienie `clientCertEnabled` dla aplikacji na `true`. Aby ustawić ustawienie, uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
+## <a name="exclude-paths-from-requiring-authentication"></a>Wyklucz ścieżki z wymagania uwierzytelniania
+
+Po włączeniu uwierzytelniania wzajemnego dla aplikacji wszystkie ścieżki w katalogu głównym aplikacji będą wymagać certyfikatu klienta w celu uzyskania dostępu. Aby zapewnić, że pewne ścieżki pozostaną otwarte dla dostępu anonimowego, można zdefiniować ścieżki wykluczeń w ramach konfiguracji aplikacji.
+
+Ścieżki wykluczeń można skonfigurować poprzez wybranie opcji **konfiguracja** > **Ustawienia ogólne** i zdefiniowanie ścieżki wykluczania. W tym przykładzie wszystko w ścieżce `/public` dla aplikacji nie zażąda certyfikatu klienta.
+
+![Ścieżki wykluczania certyfikatów][exclusion-paths]
+
+
 ## <a name="access-client-certificate"></a>Dostęp do certyfikatu klienta
 
-W App Service zakończenie żądania protokołu SSL w usłudze równoważenia obciążenia frontonu odbywa się. Podczas przekazywania żądania do kodu aplikacji z włączonymi [certyfikatami klienta](#enable-client-certificates)App Service `X-ARR-ClientCert` wprowadza nagłówek żądania z certyfikatem klienta. App Service nie robi niczego z certyfikatem klienta innego niż przesłanie go do aplikacji. Kod aplikacji jest odpowiedzialny za Weryfikowanie certyfikatu klienta.
+W App Service zakończenie żądania protokołu SSL w usłudze równoważenia obciążenia frontonu odbywa się. Podczas przekazywania żądania do kodu aplikacji z [włączonymi certyfikatami klienta](#enable-client-certificates)App Service wprowadza nagłówek żądania `X-ARR-ClientCert` z certyfikatem klienta. App Service nie robi niczego z certyfikatem klienta innego niż przesłanie go do aplikacji. Kod aplikacji jest odpowiedzialny za Weryfikowanie certyfikatu klienta.
 
 W przypadku ASP.NET certyfikat klienta jest dostępny za pomocą właściwości **HttpRequest. ClientCertificate** .
 
-W przypadku innych stosów aplikacji (Node. js, php itp.) certyfikat klienta jest dostępny w aplikacji za pomocą zakodowanej wartości Base64 w `X-ARR-ClientCert` nagłówku żądania.
+W przypadku innych stosów aplikacji (Node. js, PHP itp.) certyfikat klienta jest dostępny w aplikacji za pomocą zakodowanej wartości Base64 w nagłówku żądania `X-ARR-ClientCert`.
 
 ## <a name="aspnet-sample"></a>Przykład ASP.NET
 
@@ -171,7 +180,7 @@ W przypadku innych stosów aplikacji (Node. js, php itp.) certyfikat klienta jes
 
 ## <a name="nodejs-sample"></a>Przykład środowiska Node. js
 
-Poniższy przykładowy kod w języku Node. js pobiera `X-ARR-ClientCert` nagłówek i używa [fałszowania węzła](https://github.com/digitalbazaar/forge) , aby przekonwertować ciąg PEM zakodowany algorytmem Base64 na obiekt certyfikatu i sprawdzić jego poprawność:
+Poniższy przykładowy kod w języku Node. js pobiera nagłówek `X-ARR-ClientCert` i używa algorytmu [fałszowania](https://github.com/digitalbazaar/forge) w celu przekonwertowania ciągu PEM zakodowanego algorytmem Base64 do obiektu certyfikatu i sprawdzenia jego poprawności:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -213,3 +222,5 @@ export class AuthorizationHandler {
     }
 }
 ```
+
+[exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png

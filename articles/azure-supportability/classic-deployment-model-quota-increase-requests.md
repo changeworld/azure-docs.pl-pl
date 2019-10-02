@@ -7,24 +7,30 @@ ms.date: 06/20/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 70ad44eade871d52591014ee24e645b95c52f1e5
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: c7860a098096d718a6c5d7cd661ef2b1c1b21e89
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234872"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802666"
 ---
 # <a name="classic-deployment-model"></a>Klasyczny model wdrażania
 
-Klasyczny model wdrażania jest starszym trybem wdrażania platformy Azure, który wymusza globalne limity przydziału vCPU dla maszyn wirtualnych i zestawów skalowania maszyn wirtualnych. Klasyczny model wdrażania nie jest już zalecany i jest teraz zastępowany przez Menedżer zasobów model. Aby dowiedzieć się więcej na temat tych dwóch modeli wdrażania i zalet Menedżer zasobów można znaleźć na stronie Menedżer zasobów model wdrażania. Po utworzeniu nowej subskrypcji zostanie do niej przypisany domyślny przydział procesorów wirtualnych vCPU. Gdy nowa maszyna wirtualna ma zostać wdrożona przy użyciu klasycznego modelu wdrażania, suma nowych i istniejących procesorów wirtualnych vCPU użycie we wszystkich regionach nie może przekroczyć limitu przydziału vCPU zatwierdzonego dla klasycznego modelu wdrażania. Dowiedz się więcej o przydziałach na [stronie limitów subskrypcji i usług platformy Azure](https://aka.ms/quotalimits)
+Klasyczny model wdrażania jest starszym modelem wdrażania platformy Azure. Wymusza globalny limit przydziału vCPU dla maszyn wirtualnych i zestawów skalowania maszyn wirtualnych. Klasyczny model wdrażania nie jest już zalecany i jest teraz zastępowany przez model Menedżer zasobów. 
 
-Można zażądać zwiększenia limitu procesorów wirtualnych vCPU dla klasycznego modelu wdrażania za pośrednictwem bloku pomoc i obsługa techniczna oraz bloku użycie i przydział w portalu.
+Aby dowiedzieć się więcej na temat tych dwóch modeli wdrażania i korzyści z używania Menedżer zasobów, zapoznaj się ze stroną [wdrożenia Menedżer zasobów i klasycznego](../azure-resource-manager/resource-manager-deployment-model.md) .
+ 
+Po utworzeniu nowej subskrypcji zostanie do niej przypisany domyślny przydział procesorów wirtualnych vCPU. Gdy nowa maszyna wirtualna ma zostać wdrożona przy użyciu klasycznego modelu wdrażania, suma nowych i istniejących vCPU użycie we wszystkich regionach nie może przekraczać limitu przydziału vCPU zatwierdzonego dla klasycznego modelu wdrażania.
+ 
+Dowiedz się więcej na temat przydziałów na stronie [limitów subskrypcji i usług platformy Azure](https://aka.ms/quotalimits) .
+
+Można zażądać zwiększenia limitu przydziału vCPU dla klasycznego modelu wdrażania za pośrednictwem bloku "pomoc + obsługa techniczna" lub bloku "użycie i przydział" w portalu.
 
 ## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Żądanie zwiększania limitu przydziału vCPU na poziomie subskrypcji przy użyciu bloku **Pomoc i obsługa techniczna**
 
 Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy technicznej za pomocą bloku "pomoc i obsługa techniczna platformy Azure" dostępnego w Azure Portal. 
 
-1. W https://portal.azure.com programie wybierz pozycję **Pomoc i obsługa techniczna**.
+1. W https://portal.azure.com wybierz pozycję **Pomoc i obsługa techniczna**.
 
    ![Pomoc i obsługa techniczna](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -64,15 +70,15 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy tec
 
 Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy technicznej za pomocą bloku "użycie i limit przydziału" platformy Azure dostępnego w Azure Portal. 
 
-1. W https://portal.azure.com programie wybierz pozycję **subskrypcje**.
+1. W https://portal.azure.com wybierz pozycję **subskrypcje**.
 
    ![Subskrypcje](./media/resource-manager-core-quotas-request/subscriptions.png)
 
 2. Wybierz subskrypcję, która wymaga zwiększenia limitu przydziału.
 
-   ![Wybieranie subskrypcji](./media/resource-manager-core-quotas-request/select-subscription.png)
+   ![Wybierz subskrypcję](./media/resource-manager-core-quotas-request/select-subscription.png)
 
-3. Wybierz **użycie i** przydziały
+3. Wybierz **użycie i przydziały**
 
    ![Wybierz użycie i przydziały](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
 

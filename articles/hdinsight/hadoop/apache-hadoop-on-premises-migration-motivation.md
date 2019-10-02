@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736110"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718357"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — motywacji i korzyści
 
@@ -51,15 +51,15 @@ Usługa Azure HDInsight to dystrybucja w chmurze składników usługi Hadoop. Us
 
 - **Produktywność** — możesz używać różnych narzędzi dla usługi Hadoop i platformy Spark w preferowanym środowisku programistycznym.
 
-- **Rozszerzalność z narzędziami niestandardowymi lub aplikacjami innych** firm — klastry usługi HDInsight można rozszerzać z zainstalowanymi składnikami i można je również zintegrować z innymi rozwiązaniami do obsługi danych Big Data przy użyciu wdrożeń [jednym kliknięciem](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) z Miejsce na rynku platformy Azure.
+- **Rozszerzalność przy użyciu narzędzi niestandardowych lub aplikacji innych** firm — klastry usługi HDInsight można rozszerzać z zainstalowanymi składnikami i można je również zintegrować z innymi rozwiązaniami do obsługi danych Big Data, korzystając z [jednego kliknięcia](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)@no__t 2deployments z platformy Azure Miejsce na rynku.
 
-- **Łatwe zarządzanie, administrowanie i monitorowanie** — usługa Azure HDInsight integruje się z [dziennikami](../hdinsight-hadoop-oms-log-analytics-tutorial.md) Azure monitor, aby zapewnić pojedynczy interfejs, za pomocą którego można monitorować wszystkie klastry.
+- **Łatwe zarządzanie, administrowanie i monitorowanie** — usługa Azure HDInsight integruje się z [dziennikami Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) to zapewniają jeden interfejs, za pomocą którego można monitorować wszystkie klastry.
 
 - **Integracja z innymi usługami Azure** — HDInsight można łatwo zintegrować z innymi popularnymi usługami platformy Azure, takimi jak następujące:
 
     - Azure Data Factory (ADF)
     - Azure Blob Storage
-    - Azure Data Lake Storage Gen2
+    - Usługa Azure Data Lake Storage 2. generacji
     - Azure Cosmos DB
     - Azure SQL Database
     - Azure Analysis Services
@@ -89,15 +89,15 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 
 | **Zainteresowany** | **Przykład** | **Udzielić** |
 |---|---|---|
-|**Temat**: **Środowisko**|||
-|Wersja dystrybucji klastra|HDP 2.6.5, CDH 5.7|
+|**Temat**: **środowisko**|||
+|Wersja dystrybucji klastra|HDP 2.6.5, PROGRAMU CDH 5,7|
 |Duże ilości danych — składniki systemu|HDFS, przędza, Hive, LLAP, Impala, kudu, HBase, Spark, MapReduce, Kafka, dozorcy, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
 |Typy klastrów|Hadoop, Spark, Kafka, burza, Solr|
 |Liczba klastrów|4|
 |Liczba węzłów głównych|2|
 |Liczba węzłów procesu roboczego|100|
 |Liczba węzłów krawędzi| 5|
-|Całkowite miejsce na dysku|100 TB|
+|Całkowite miejsce na dysku|100 TB|
 |Konfiguracja węzła głównego|m/y, procesor, dysk itd.|
 |Konfiguracja węzłów danych|m/y, procesor, dysk itd.|
 |Konfiguracja węzłów brzegowych|m/y, procesor, dysk itd.|
@@ -106,14 +106,14 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Odzyskiwanie po awarii/tworzenie kopii zapasowej|Utworzyć kopię zapasową klastra?|  
 |Systemy, które są zależne od klastra|SQL Server, Teradata, Power BI, MongoDB|
 |Integracje innych firm|Tableau, GridGain, Qubole, Informatica, Splunk|
-|**Temat**: **Zabezpieczenia**|||
+|**Temat**: **zabezpieczenia**|||
 |Zabezpieczenia obwodu|Zapory|
 |Uwierzytelnianie klastra & autoryzacja|Active Directory, Ambari, Cloudera Manager, brak uwierzytelniania|
 |Access Control HDFS|  Użytkownicy z ręcznym protokołem SSH|
 |Uwierzytelnianie w usłudze Hive & autoryzacja|Sentry, LDAP, AD z Kerberos, Ranger|
 |Inspekcja|Ambari, Nawigator Cloudera, Ranger|
-|Monitorowanie|Graphite, collectd, statsd, Telegraf, InfluxDB|
-|Generowanie alertów|Kapacitor, Prometheus, usługi Datadog|
+|Monitorowanie|Grafit, zebrany, z telegraf, InfluxDB|
+|Alerty|Kapacitor, Prometheus, usługi Datadog|
 |Czas przechowywania danych| 3 lata, 5 lat|
 |Administratorzy klastrów|Pojedynczy administrator, wielu administratorów|
 
@@ -121,7 +121,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 
 |**Zainteresowany**|**Przykład**|**Udzielić**|
 |---|---|---|
-|**Temat**: **Obciążenia i częstotliwość**|||
+|**Temat**: **obciążenia i częstotliwość**|||
 |Zadania MapReduce|10 zadań — dwa razy dziennie||
 |Zadania Hive|100 zadań — co godzinę||
 |Zadania wsadowe Spark|50 zadań — co 15 minut||
@@ -129,58 +129,58 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Zadania przesyłania strumieniowego ze strukturą|5 zadań — co minutę||
 |Zadania szkoleniowe dotyczące modelu ML|2 zadania — raz w tygodniu||
 |Języki programowania|Python, Scala, Java||
-|Obsługa skryptów|Shell, Python||
-|**Temat**: **Dane**|||
-|Źródła danych|Flat files, Json, Kafka, RDBMS||
-|Organizowanie danych|Przepływy pracy Oozie, przepływ powietrza||
+|Skrypty|Shell, Python||
+|**Temat**: **dane**|||
+|Źródła danych|Pliki płaskie, JSON, Kafka, RDBMS||
+|Aranżacja danych|Przepływy pracy Oozie, przepływ powietrza||
 |Wyszukiwania w pamięci|Apache zapłon, Redis||
 |Miejsca docelowe danych|HDFS, RDBMS, Kafka, MPP ||
-|**Temat**: **Meta dane**|||
+|**Temat**: **meta data**|||
 |Typ bazy danych Hive|MySQL, Postgres||
-|Nie. magazynów metadanych Hive|2||
-|Nie. tabel programu Hive|100||
-|Nie. zasad Ranger|20||
-|Nie. przepływów pracy Oozie|100||
-|**Temat**: **Skalowanie**|||
-|Ilość danych, w tym replikacja|100 TB||
+|Liczba magazynów metadanych Hive|2||
+|Liczba tabel programu Hive|100||
+|Liczba zasad Ranger|20||
+|Liczba przepływów pracy Oozie|100||
+|**Temat**: **skalowanie**|||
+|Ilość danych, w tym replikacja|100 TB||
 |Dzienny wolumin pozyskiwania|50 GB||
 |Szybkość wzrostu danych|10% na rok||
 |Tempo wzrostu węzłów klastra|5% na rok
-|**Temat**: **Wykorzystanie klastra**|||
+|**Temat**: **wykorzystanie klastra**|||
 |Średnie użycie procesora CPU (%)|60%||
 |Wykorzystano średnią pamięć (%)|75%||
 |Używane miejsce na dysku|75%||
 |Użyto średniej sieci%|25%
-|**Temat**: **Kadr**|||
-|Nie. Administratorów|2||
-|Nie. dla deweloperów|10||
-|Nie. użytkowników końcowych|100||
-|Umiejętności|Hadoop, Spark||
-|Nie. dostępnych zasobów na potrzeby prac związanych z migracją|2||
-|**Temat**: **Ograniczenia**|||
+|**Temat**: **personel**|||
+|Liczba administratorów|2||
+|Liczba deweloperów|10||
+|Liczba użytkowników końcowych|100||
+|Nowych|Hadoop, Spark||
+|Liczba dostępnych zasobów na potrzeby prac związanych z migracją|2||
+|**Temat**: **ograniczenia**|||
 |Bieżące ograniczenia|Opóźnienie jest wysokie||
 |Bieżące wyzwania|Problem współbieżności||
 
 ### <a name="azure-requirements-questionnaire"></a>Kwestionariusz wymagań platformy Azure
 
-|**Temat**: **Pozostając** |||
+|**Temat**: **infrastruktura** |||
 |---|---|---|
 |**Zainteresowany**|**Przykład**|**Udzielić**|
 | Preferowany region|Wschodnie stany USA||
 |Preferowana Sieć wirtualna?|Tak||
 |Wymagana HA/DR?|Tak||
 |Integracja z innymi usługami w chmurze?|ADF, CosmosDB||
-|**Temat**:   **Przenoszenie danych**  |||
+|**Temat**: **przenoszenie danych**  |||
 |Początkowe preferencje ładowania|Pomocą distcp, pole danych, ADF, WANDisco||
 |Różnica transferu danych|Pomocą distcp, AzCopy||
 |Ciągły przyrostowy transfer danych|Pomocą distcp, Sqoop||
-|**Temat**:   **Monitorowanie alertów &** |||
+|**Temat**: **monitorowanie alertów &** |||
 |Korzystanie z usługi Azure Monitoring & alertów vs Integruj monitorowanie innych firm|Korzystanie z alertów usługi Azure Monitoring &||
-|**Temat**:   **Preferencje zabezpieczeń** |||
+|**Temat**: **Preferencje zabezpieczeń** |||
 |Prywatny i chroniony Potok danych?|Tak||
 |Klaster przyłączony do domeny (ESP)?|     Tak||
 |AD Sync lokalnych do chmury?|     Tak||
-|Nie. czy użytkownicy usługi AD mają być zsynchronizowani?|          100||
+|Liczba użytkowników usługi AD do synchronizacji?|          100||
 |Czy chcesz zsynchronizować hasła z chmurą?|    Tak||
 |Tylko użytkownicy w chmurze?|                 Tak||
 |Potrzebujesz usługi MFA?|                       Nie|| 
@@ -189,7 +189,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Inspekcja jest wymagana?|                  Tak||
 |Szyfrowanie danych w spoczynku?|          Tak||
 |Szyfrowanie danych jest w trakcie przesyłania?|       Tak||
-|**Temat**:   **Preferencje dotyczące ponownej architektury** |||
+|**Temat**: **Preferencje architektury** |||
 |Pojedynczy klaster a typy klastrów określonych|Określone typy klastrów||
 |Rozłożone magazyny a Magazyn zdalny?|Magazyn zdalny||
 |Mniejszy rozmiar klastra jako dane są przechowywane zdalnie?|Mniejszy rozmiar klastra||

@@ -1,6 +1,6 @@
 ---
-title: Artykuł dotyczący znanych problemów/ograniczeń migracji z migracją online do Azure Database for MySQL | Microsoft Docs
-description: Informacje o znanych problemach/ograniczeniach migracji z migracją online do Azure Database for MySQL.
+title: Artykuł dotyczący znanych problemów/ograniczeń migracji z migracją online z PostgreSQL do Azure Database for PostgreSQL-pojedynczego serwera | Microsoft Docs
+description: Informacje o znanych problemach/ograniczeniach migracji z migracją online z PostgreSQL do Azure Database for PostgreSQL.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,17 +10,17 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/06/2019
-ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.date: 10/03/2019
+ms.openlocfilehash: 891e8a261e092de0ffcef3941dd48f01942a8030
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743540"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802584"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Znane problemy/ograniczenia migracji z migracją online do usługi Azure DB for PostgreSQL
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Znane problemy/ograniczenia migracji z migracją online z PostgreSQL do usługi Azure DB dla PostgreSQL — jeden serwer
 
-Znane problemy i ograniczenia związane z migracją online z PostgreSQL do Azure Database for PostgreSQL są opisane w poniższych sekcjach.
+Znane problemy i ograniczenia związane z migracją online z PostgreSQL do Azure Database for PostgreSQL-pojedynczego serwera są opisane w poniższych sekcjach.
 
 ## <a name="online-migration-configuration"></a>Konfiguracja migracji w trybie online
 
@@ -32,7 +32,7 @@ Znane problemy i ograniczenia związane z migracją online z PostgreSQL do Azure
 
 - Aby włączyć replikację logiczną w pliku **Source PostgreSQL PostgreSQL. conf** , ustaw następujące parametry:
   - **wal_level** = logiczny
-  - **max_replication_slots** = [Maksymalna liczba baz danych do migracji]; Jeśli chcesz przeprowadzić migrację 4 baz danych, ustaw wartość na 4.
+  - **max_replication_slots** = [Maksymalna liczba baz danych do migracji]; Jeśli chcesz migrować cztery bazy danych, ustaw wartość na 4.
   - **max_wal_senders** = [liczba baz danych uruchomionych współbieżnie]; Zalecana wartość to 10
 - Dodawanie adresu IP agenta DMS do źródła PostgreSQL pg_hba. conf
   1. Zanotuj adres IP DMS po zakończeniu aprowizacji wystąpienia DMS.
@@ -42,7 +42,7 @@ Znane problemy i ograniczenia związane z migracją online z PostgreSQL do Azure
 
 - Użytkownik musi mieć uprawnienia administratora na serwerze hostującym źródłową bazę danych
 - W schemacie źródłowej bazy danych muszą one być zgodne z wyliczeniem wyliczeniowym źródłowej i docelowej bazy danych.
-- Schemat w Azure Database for PostgreSQL docelowym nie może mieć kluczy obcych. Użyj następującego zapytania, aby porzucić klucze obce:
+- Schemat w docelowym Azure Database for PostgreSQL-pojedynczy serwer nie może mieć kluczy obcych. Użyj następującego zapytania, aby porzucić klucze obce:
 
     ```
                                 SELECT Queries.tablename
@@ -73,7 +73,7 @@ Znane problemy i ograniczenia związane z migracją online z PostgreSQL do Azure
 
     Uruchom docelowy klucz obcy (znajduje się w drugiej kolumnie) w wyniku zapytania.
 
-- Schemat w Azure Database for PostgreSQL docelowym nie może mieć żadnych wyzwalaczy. Aby wyłączyć Wyzwalacze w docelowej bazie danych, wykonaj następujące czynności:
+- Schemat w Azure Database for PostgreSQL docelowym — pojedynczy serwer nie może mieć żadnych wyzwalaczy. Aby wyłączyć Wyzwalacze w docelowej bazie danych, wykonaj następujące czynności:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
@@ -81,15 +81,15 @@ Znane problemy i ograniczenia związane z migracją online z PostgreSQL do Azure
 
 ## <a name="datatype-limitations"></a>Ograniczenia typów danych
 
-- **Ograniczenie**: Jeśli w źródłowej bazie danych PostgreSQL istnieje typ danych ENUM, migracja zakończy się niepowodzeniem podczas synchronizacji ciągłej.
+- **Ograniczenie**: Jeśli w źródłowej bazie danych PostgreSQL istnieje typ danych enum, migracja zakończy się niepowodzeniem podczas synchronizacji ciągłej.
 
-    **Obejście problemu**: Zmodyfikuj typ WYLICZENIOWY jako znak zróżnicowany w Azure Database for PostgreSQL.
+    **Obejście**: Zmodyfikuj typ elementu Enum do postaci różnej w Azure Database for PostgreSQL.
 
 - **Ograniczenie**: Jeśli nie ma klucza podstawowego w tabelach, synchronizacja ciągła zakończy się niepowodzeniem.
 
-    **Obejście problemu**: Tymczasowo Ustaw klucz podstawowy dla tabeli do migracji, aby kontynuować. Klucz podstawowy można usunąć po zakończeniu migracji danych.
+    **Obejście**: tymczasowo Ustaw klucz podstawowy dla tabeli do migracji, aby kontynuować. Klucz podstawowy można usunąć po zakończeniu migracji danych.
 
-- **Ograniczenie**: Typ JSONB nie jest obsługiwany w przypadku migracji.
+- **Ograniczenie**: JSONB typ danych nie jest obsługiwany w przypadku migracji.
 
 ## <a name="lob-limitations"></a>Ograniczenia dotyczące obiektów LOB
 
@@ -97,7 +97,7 @@ Kolumny dużego obiektu (LOB) są kolumnami, które mogą rosnąć duże. W przy
 
 - **Ograniczenie**: Jeśli typy danych LOB są używane jako klucze podstawowe, migracja zakończy się niepowodzeniem.
 
-    **Obejście problemu**: Zastąp klucz podstawowy innymi rodzajami danych lub kolumnami, które nie są LOB.
+    **Obejście**: Zastąp klucz podstawowy innymi rodzajami danych lub kolumnami, które nie są LOB.
 
 - **Ograniczenie**: Jeśli długość kolumny dużego obiektu (LOB) jest większa niż 32 KB, dane mogą być obcinane w miejscu docelowym. Możesz sprawdzić długość kolumny LOB przy użyciu tego zapytania:
 
@@ -105,11 +105,11 @@ Kolumny dużego obiektu (LOB) są kolumnami, które mogą rosnąć duże. W przy
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **Obejście problemu**: Jeśli masz obiekt LOB o rozmiarze większym niż 32 KB, skontaktuj się z zespołem inżynieryjnym w [poproszeniu do migracji bazy danych platformy Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
+    **Obejście**: Jeśli masz obiekt LOB o rozmiarze większym niż 32 KB, skontaktuj się z zespołem inżynieryjnym z [pytaniami do migracji usługi Azure Database](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
-- **Ograniczenie**: Jeśli w tabeli znajdują się kolumny LOB i nie istnieje zestaw kluczy podstawowych dla tej tabeli, dane mogą nie być migrowane dla tej tabeli.
+- **Ograniczenie**: Jeśli w tabeli znajdują się kolumny LOB, a dla tej tabeli nie istnieje zestaw kluczy podstawowych, dane mogą nie być migrowane dla tej tabeli.
 
-    **Obejście problemu**: Tymczasowo Ustaw klucz podstawowy dla tabeli w celu przeprowadzenia migracji. Klucz podstawowy można usunąć po zakończeniu migracji danych.
+    **Obejście**: tymczasowo Ustaw klucz podstawowy dla tabeli na potrzeby migracji, aby przeprowadzić migrację. Klucz podstawowy można usunąć po zakończeniu migracji danych.
 
 ## <a name="postgresql10-workaround"></a>Obejście PostgreSQL10
 
@@ -157,25 +157,25 @@ COMMIT;
 
 Podczas próby przeprowadzenia migracji w trybie online z AWS RDS PostgreSQL do Azure Database for PostgreSQL mogą wystąpić następujące błędy.
 
-- **Błąd**: Wartość domyślna kolumny „{column}” w tabeli „{table}” w bazie danych „{baza danych}” różni się na serwerze źródłowym i docelowym. Na serwerze źródłowym jest to „{value on source}”, a na serwerze docelowym — „{value on target}”.
+- **Błąd**: wartość domyślna kolumny "{Column}" w tabeli "{Table}" w bazie danych "{Database}" różni się w zależności od serwera źródłowego i docelowego. Na serwerze źródłowym jest to „{value on source}”, a na serwerze docelowym — „{value on target}”.
 
-  **Ograniczenie**: Ten błąd występuje, gdy wartość domyślna w schemacie kolumny różni się między źródłową i docelową bazą danych.
-  **Obejście problemu**: Upewnij się, że schemat na miejscu docelowym jest zgodny ze schematem w źródle. Aby uzyskać szczegółowe informacje na temat migrowania schematu, zapoznaj się z [dokumentacją dotyczącą migracji do usługi Azure PostgreSQL online](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
+  **Ograniczenie**: ten błąd występuje, gdy wartość domyślna schematu kolumny różni się między źródłową i docelową bazą danych.
+  **Obejście**: Upewnij się, że schemat na miejscu docelowym jest zgodny ze schematem w źródle. Aby uzyskać szczegółowe informacje na temat migrowania schematu, zapoznaj się z [dokumentacją dotyczącą migracji do usługi Azure PostgreSQL online](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
-- **Błąd**: docelowa baza danych „{database}” zawiera następującą liczbę tabel: „{number of tables}”, natomiast źródłowa baza danych „{database}” zawiera następującą liczbę tabel: „{number of tables}”. Liczba tabel w źródłowej i docelowej bazie danych powinna być taka sama.
+- **Błąd**: docelowa baza danych "{Database}" ma tabele "{Number of Tables}", w których źródłowa baza danych "{Database}" ma tabele "{Number of Tables}". Liczba tabel w źródłowej i docelowej bazie danych powinna być taka sama.
 
-  **Ograniczenie**: Ten błąd występuje, gdy liczba tabel między źródłową i docelową bazą danych jest różna.
-  **Obejście problemu**: Upewnij się, że schemat na miejscu docelowym jest zgodny ze schematem w źródle. Aby uzyskać szczegółowe informacje na temat migrowania schematu, zapoznaj się z [dokumentacją dotyczącą migracji do usługi Azure PostgreSQL online](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
+  **Ograniczenie**: ten błąd występuje, gdy liczba tabel jest różna między źródłową i docelową bazą danych.
+  **Obejście**: Upewnij się, że schemat na miejscu docelowym jest zgodny ze schematem w źródle. Aby uzyskać szczegółowe informacje na temat migrowania schematu, zapoznaj się z [dokumentacją dotyczącą migracji do usługi Azure PostgreSQL online](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
 - **Błąd:** Źródłowa baza danych {Database} jest pusta.
 
-  **Ograniczenie**: Ten błąd występuje, gdy źródłowa baza danych jest pusta. Najprawdopodobniej przyczyną jest wybranie niewłaściwej bazy danych jako źródła.
-  **Obejście problemu**: Sprawdź dwukrotnie źródłową bazę danych wybraną do migracji, a następnie spróbuj ponownie.
+  **Ograniczenie**: ten błąd występuje, gdy źródłowa baza danych jest pusta. Najprawdopodobniej przyczyną jest wybranie niewłaściwej bazy danych jako źródła.
+  **Obejście**: dokładnie sprawdź źródłową bazę danych wybraną do migracji, a następnie spróbuj ponownie.
 
 - **Błąd:** Docelowa baza danych {Database} jest pusta. Przeprowadź migrację schematu.
 
-  **Ograniczenie**: Ten błąd występuje, gdy w docelowej bazie danych nie ma schematu. Upewnij się, że schemat na miejscu docelowym jest zgodny ze schematem w źródle.
-  **Obejście problemu**: Upewnij się, że schemat na miejscu docelowym jest zgodny ze schematem w źródle. Aby uzyskać szczegółowe informacje na temat migrowania schematu, zapoznaj się z [dokumentacją dotyczącą migracji do usługi Azure PostgreSQL online](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
+  **Ograniczenie**: ten błąd występuje, gdy w docelowej bazie danych nie ma schematu. Upewnij się, że schemat na miejscu docelowym jest zgodny ze schematem w źródle.
+  **Obejście**: Upewnij się, że schemat na miejscu docelowym jest zgodny ze schematem w źródle. Aby uzyskać szczegółowe informacje na temat migrowania schematu, zapoznaj się z [dokumentacją dotyczącą migracji do usługi Azure PostgreSQL online](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
 ## <a name="other-limitations"></a>Inne ograniczenia
 

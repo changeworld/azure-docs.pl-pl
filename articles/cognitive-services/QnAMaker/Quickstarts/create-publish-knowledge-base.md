@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie, uczenie i publikowanie bazy wiedzy — QnA Maker'
+title: 'Szybki Start: Tworzenie, uczenie i publikowanie bazy wiedzy — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Baza wiedzy QnA Maker w tym przykładzie jest tworzona na podstawie prostych często zadawanych pytań i odpowiedzi na pytania dotyczące odzyskiwania klucza funkcji BitLocker.
 author: diberry
@@ -8,20 +8,22 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 229956b41f7f26637e6a6aa62e341c4b06b8a429
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: cafc1e2f3f195301a6c0f9485ebaa10111b08c7d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376363"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803062"
 ---
-# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Szybki start: Tworzenie, szkolenie i publikowanie bazy wiedzy usługi QnA Maker
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Szybki Start: Tworzenie, uczenie i publikowanie bazy wiedzy QnA Maker
 
 Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Ten artykuł zawiera przykład tworzenia bazy wiedzy QnA Makerej na podstawie prostej witryny sieci Web często zadawanych pytań i odpowiedzi na pytania dotyczące odzyskiwania klucza funkcji BitLocker.
 
-## <a name="prerequisite"></a>Wymagania wstępne
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+## <a name="prerequisite"></a>Warunek wstępny
 
 > [!div class="checklist"]
 > * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -54,7 +56,7 @@ Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podr�
 
 ## <a name="edit-the-knowledge-base"></a>Edytowanie bazy wiedzy
 
-1. W portalu QnA Maker w sekcji **Edycja** wybierz pozycję **Dodaj parę QNA** , aby dodać nowy wiersz do bazy wiedzy. W obszarze **Pytanie** wprowadź **Hi.** (Cześć). W obszarze **Odpowiedź** wprowadź **Hello. Pytaj o pytania funkcji BitLocker.**
+1. W portalu QnA Maker w sekcji **Edycja** wybierz pozycję **Dodaj parę QNA** , aby dodać nowy wiersz do bazy wiedzy. W obszarze **Pytanie** wprowadź **Hi.** (Cześć). W obszarze **odpowiedź**wpisz **Hello. Pytaj o pytania funkcji BitLocker.**
 
     ![Zrzut ekranu przedstawiający Portal QnA Maker](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
