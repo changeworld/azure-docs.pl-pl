@@ -47,6 +47,8 @@
       href: manage-cli.md
     - name: Zarządzanie konsorcjum za pomocą programu PowerShell
       href: manage-consortium-powershell.md
+    - name: Używanie usługi Logic Apps
+      href: ethereum-logic-app.md
 - name: Zasoby
   items:
     - name: Interfejs API REST łańcucha bloków

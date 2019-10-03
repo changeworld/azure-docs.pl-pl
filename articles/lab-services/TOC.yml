@@ -72,7 +72,7 @@
   items:
     - name: Laboratoria klas — typy klas
       items:
-        - name: Typy klas
+        - name: Omówienie typów klas
           href: classroom-labs/class-types.md
         - name: Uczenie głębokie w przetwarzaniu naturalnym
           href: classroom-labs/class-type-deep-learning-natural-processing.md

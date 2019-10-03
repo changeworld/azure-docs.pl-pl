@@ -4,10 +4,12 @@
 - name: Omówienie
   expanded: true
   items:
-    - name: Co to jest środowisko Data Science Virtual Machine?
+    - name: Co to jest środowisko Data Science Virtual Machine (DSVM)?
       href: overview.md
     - name: Co to jest maszyna DSVM ze sztuczną inteligencją w zakresie danych geograficznych?
       href: geo-ai-dsvm-overview.md
+    - name: Narzędzia dostępne w środowisku DSVM
+      href: tools-included.md
 - name: Przewodniki Szybki start
   expanded: true
   items:

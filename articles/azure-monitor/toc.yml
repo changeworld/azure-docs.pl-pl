@@ -830,6 +830,8 @@
                   href: log-query/app-expression.md
                 - name: wyrażenie workspace
                   href: log-query/workspace-expression.md
+                - name: wyrażenie zasobu
+                  href: log-query/resource-expression.md
                 - name: Ujednolicenie zasobów danych aplikacji
                   href: log-query/unify-app-resource-data.md
             - name: Przykłady i wskazówki

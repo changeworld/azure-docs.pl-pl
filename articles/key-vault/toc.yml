@@ -66,12 +66,12 @@
       items:
         - name: Omówienie zabezpieczeń
           href: overview-security.md
-        - name: Wbudowane mechanizmy zabezpieczeń
-          href: key-vault-security-controls.md
         - name: Środowiska zabezpieczeń
           href: key-vault-ovw-security-worlds.md
         - name: Zabezpieczanie własnego magazynu kluczy
           href: key-vault-secure-your-key-vault.md
+        - name: Wbudowane mechanizmy zabezpieczeń
+          href: key-vault-security-controls.md
     - name: Usuwanie nietrwałe
       href: key-vault-ovw-soft-delete.md
     - name: Ograniczanie przepływności
@@ -98,8 +98,12 @@
       items:
         - name: Zalecenia
           href: security-recommendations.md
-    - name: Używanie tożsamości zarządzanej usługi App Service
-      href: managed-identity.md
+    - name: Authentication
+      items:
+        - name: Używanie tożsamości zarządzanej usługi App Service
+          href: managed-identity.md
+        - name: Korzystanie z zasad kontroli dostępu
+          href: key-vault-group-permissions-for-apps.md
     - name: Funkcja rejestrowania usługi Azure Key Vault
       href: key-vault-logging.md
     - name: Uzyskiwanie dostępu za zaporami
@@ -114,8 +118,6 @@
       href: key-vault-soft-delete-cli.md
     - name: Jak używać usuwania nietrwałego w usłudze Key Vault z programem Azure PowerShell
       href: key-vault-soft-delete-powershell.md
-    - name: Używanie grup do udzielania dostępu
-      href: key-vault-group-permissions-for-apps.md
     - name: Konfigurowanie zapór i sieci wirtualnych
       href: key-vault-network-security.md
     - name: Tworzenie w środowisku Java

@@ -113,7 +113,7 @@
       href: concept-generating-thumbnails.md
     - name: Rozpoznawanie tekstu drukowanego i odręcznego
       href: concept-recognizing-text.md
-    - name: Wykrywanie zawartości nieprzyzwoitej i przeznaczonej dla dorosłych
+    - name: Wykrywanie zawartości dla dorosłych
       href: concept-detecting-adult-content.md
 - name: Przewodniki z instrukcjami
   items:

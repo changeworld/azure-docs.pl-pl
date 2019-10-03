@@ -276,6 +276,12 @@
               href: authentication-national-cloud.md
             - name: Authentication
               href: msal-national-cloud.md
+        - name: Automatyczna aprowizacja użytkowników (SCIM)
+          items:
+            - name: Co to jest automatyczna aprowizacja użytkowników?
+              href: /azure/active-directory/manage-apps/user-provisioning
+            - name: Kompilowanie i integrowanie punktu końcowego SCIM
+              href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
     - name: Przewodniki z instrukcjami
       items:
         - name: Authentication
