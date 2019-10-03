@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Dodawanie pytań i odpowiedzi w portalu QnA Maker'
+title: 'Szybki Start: dodawanie pytań i odpowiedzi w portalu QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/27/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: dc4548e0c07adc485d1bb5785179aeb7ea2f3fe1
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ed50e6adbcca7cbb4935400c7850c37dc2ed389f
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195694"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803529"
 ---
-# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Szybki start: Dodawanie pytań i odpowiedzi za pomocą portalu QnA Maker
+# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Szybki Start: dodawanie pytań i odpowiedzi za pomocą portalu QnA Maker
 
 Po utworzeniu bazy wiedzy Dodaj do niej zestawy pytań i odpowiedzi, aby użytkownicy mogli znaleźć odpowiednią odpowiedź na pytanie.
 
@@ -61,7 +61,7 @@ Po zaimportowaniu tego adresu URL zostanie utworzona tylko jedno pytanie z jedn�
 
 W tej procedurze należy dodać dodatkowe pytania.
 
-1. Na stronie **Edytuj** Użyj pola tekstowego Wyszukaj powyżej zestawów pytań i odpowiedzi, aby znaleźć pytanie`How large a knowledge base can I create?`
+1. Na stronie **Edytuj** Użyj pola tekstowego Wyszukaj powyżej zestawów pytań i odpowiedzi, aby znaleźć pytanie `How large a knowledge base can I create?`
 
 1. W kolumnie **pytania** wybierz pozycję **+ Dodaj alternatywne sformułowanie** , a następnie Dodaj każde nowe sformułowanie, które podano w poniższej tabeli.
 
@@ -76,7 +76,7 @@ W tej procedurze należy dodać dodatkowe pytania.
 
     `What GB size can a knowledge base be?`
 
-    Prawidłowa odpowiedź jest zwracana w formacie promocji:`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    Prawidłowa odpowiedź jest zwracana w formacie promocji: `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
 
     W przypadku wybrania opcji **Sprawdź** w odpowiedzi na odpowiedź można zobaczyć więcej odpowiedzi, ale nie ma tego samego wysokiego poziomu zaufania. 
 
@@ -92,14 +92,14 @@ Dodanie metadanych do zestawu pytań i odpowiedzi umożliwia aplikacji klienckie
 
 1. Wybierz pozycję **Wyświetl opcje**, a następnie wybierz pozycję **Pokaż metadane**. 
 
-1. Dla dodawanego pytania i odpowiedzi wybierz pozycję **Dodaj Tagi metadanych**, a następnie Dodaj nazwę `service` i wartość `search`, `service:search`.
+1. Dla dodawanego pytania i odpowiedzi wybierz pozycję **Dodaj Tagi metadanych**, a następnie dodaj nazwę `service` i wartość `search`, `service:search`.
 
-1. Dodaj kolejne Tagi metadanych o nazwie `link_in_answer` i `false`wartości, `link_in_answer:false`.
+1. Dodaj kolejne Tagi metadanych o nazwie `link_in_answer` i wartości `false`, `link_in_answer:false`.
 
 1. Wyszukaj pierwszą odpowiedź w tabeli, `How large a knowledge base can I create?`. 
 1. Dodaj pary metadanych dla tych samych dwóch tagów metadanych:
 
-    `link_in_answer` : `true`<br>
+    `link_in_answer`: `true`<br>
     `server`: `qna_maker`
 
     Masz teraz dwa pytania z tymi samymi tagami metadanych o różnych wartościach. 
@@ -121,7 +121,7 @@ Dodanie metadanych do zestawu pytań i odpowiedzi umożliwia aplikacji klienckie
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Zwróć uwagę, że pytanie jest tylko pojedynczym `size`słowem, które może zwracać zestaw pytań i odpowiedzi. Tablica informuje odpowiedź, aby zmniejszyć do `qna_maker` tylko odpowiedzi. `strictFilters` 
+    Zwróć uwagę, że pytanie jest tylko pojedynczym słowem, `size`, które może zwrócić dowolny zestaw pytań i odpowiedzi. Tablica `strictFilters` informuje odpowiedź o zmniejszeniu do zaledwie odpowiedzi `qna_maker`. 
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
@@ -162,7 +162,7 @@ Dodanie metadanych do zestawu pytań i odpowiedzi umożliwia aplikacji klienckie
     }
     ```
 
-    Jeśli istnieje pytanie i odpowiedź, które nie spełniły wyszukiwanego terminu, ale spełniały filtr, nie zostanie on zwrócony. Zamiast tego jest zwracana ogólna `No good match found in KB.` odpowiedź.
+    Jeśli istnieje pytanie i odpowiedź, które nie spełniły wyszukiwanego terminu, ale spełniały filtr, nie zostanie on zwrócony. Zamiast tego jest zwracana ogólna odpowiedź `No good match found in KB.`.
 
     Upewnij się, że nazwy metadanych i wartości są przechowywane w wymaganym limicie. 
 
