@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 39395c9d082bc40836c14ee4c0d328341f96edca
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 228ca0f43322c271b1a6db55a37c852ca1f66799
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816121"
+ms.locfileid: "71828901"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Szybki Start — Tworzenie rozwiązania VMware platformy Azure według usługi CloudSimple
 
@@ -31,13 +31,13 @@ Przydziel blok CIDR/28 dla podsieci bramy.  Podsieć bramy jest wymagana dla us�
 
 Przejrzyj [wymagania wstępne dotyczące sieci](cloudsimple-network-checklist.md). 
 
-## <a name="sign-in-to-azure"></a>Zaloguj się do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się do Azure Portal w [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-the-service"></a>Tworzenie usługi
 
-1. Wybierz pozycję **wszystkie usługi**.
+1. Wybierz pozycję **Wszystkie usługi**.
 2. Wyszukaj **usługę CloudSimple**.
 
     ![Wyszukaj usługę CloudSimple](media/create-cloudsimple-service-search.png)
@@ -58,11 +58,11 @@ Zaloguj się do Azure Portal w [https://portal.azure.com](https://portal.azure.c
 
 Usługa zostanie utworzona i dodana do listy usług.
 
-## <a name="provision-nodes"></a>Inicjowanie obsługi węzłów
+## <a name="provision-nodes"></a>Aprowizowanie węzłów
 
 Aby skonfigurować funkcję płatność zgodnie z rzeczywistym użyciem dla środowiska chmury prywatnej CloudSimple, należy najpierw udostępnić węzły w Azure Portal.
 
-1. Wybierz pozycję **wszystkie usługi**.
+1. Wybierz pozycję **Wszystkie usługi**.
 2. Wyszukaj **węzły CloudSimple**.
 
     ![Wyszukaj węzły CloudSimple](media/create-cloudsimple-node-search.png)
@@ -77,9 +77,9 @@ Aby skonfigurować funkcję płatność zgodnie z rzeczywistym użyciem dla śro
 7. Wprowadź prefiks, aby zidentyfikować węzły.
 8. Wybierz lokalizację dla zasobów węzła.
 9. Wybierz dedykowaną lokalizację do hostowania zasobów węzła.
-10. Wybierz typ węzła. Można wybrać [opcję CS28 lub CS36](cloudsimple-node.md). Ta ostatnia opcja obejmuje maksymalną moc obliczeniową i pojemność pamięci.
+10. Wybierz [Typ węzła](cloudsimple-node.md).
 11. Wybierz liczbę węzłów do aprowizacji.
-12. Wybierz pozycję **Recenzja + Utwórz**.
+12. Wybierz pozycję **Przegląd + utwórz**.
 13. Przejrzyj ustawienia. Aby zmodyfikować wszystkie ustawienia, kliknij przycisk **Wstecz**.
 14. Wybierz pozycję **Utwórz**.
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 9fdbf3466256c5e24de17541770fa2095fcf38a4
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 92ee9b0a8a0906bca31d7dcb1730c3464d0d6cbc
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171085"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839193"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Dodawanie powiązania kolejki usługi Azure Storage do funkcji języka Python
 
@@ -30,20 +30,11 @@ Większość powiązań wymaga przechowywanych parametrów połączenia używany
 
 Przed rozpoczęciem tego artykułu wykonaj kroki opisane w [części 1 przewodnika Szybki Start](functions-create-first-function-python.md)dla języka Python.
 
+[!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
+
 ## <a name="download-the-function-app-settings"></a>Pobierz ustawienia aplikacji funkcji
 
-W poprzednim artykule szybki start utworzono aplikację funkcji na platformie Azure wraz z wymaganym kontem magazynu. Parametry połączenia dla tego konta są bezpiecznie przechowywane w ustawieniach aplikacji na platformie Azure. W tym artykule opisano pisanie komunikatów w kolejce magazynu w ramach tego samego konta. Aby nawiązać połączenie z kontem magazynu podczas lokalnego uruchamiania funkcji, musisz pobrać ustawienia aplikacji do pliku Local. Settings. JSON. Uruchom następujące polecenie Azure Functions Core Tools, aby pobrać ustawienia do pliku Local. Settings. JSON, `<APP_NAME>` zastępując je nazwą aplikacji funkcji z poprzedniego artykułu:
-
-```bash
-func azure functionapp fetch-app-settings <APP_NAME>
-```
-
-Może być konieczne zalogowanie się do konta platformy Azure.
-
-> [!IMPORTANT]  
-> Ponieważ zawiera wpisy tajne, plik Local. Settings. JSON nigdy nie jest publikowany i powinien być wykluczony z kontroli źródła.
-
-Wymagana jest wartość `AzureWebJobsStorage`, czyli parametry połączenia konta magazynu. To połączenie służy do sprawdzania, czy powiązanie danych wyjściowych działa zgodnie z oczekiwaniami.
+[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>Włącz zbiory rozszerzeń
 
@@ -53,80 +44,13 @@ Teraz możesz dodać powiązanie danych wyjściowych magazynu do projektu.
 
 ## <a name="add-an-output-binding"></a>Dodawanie powiązania danych wyjściowych
 
-W funkcjach każdy typ powiązania wymaga `direction` `type`, aby w pliku Function. JSON został zdefiniowany `name` , a i unikatowy. W zależności od typu powiązania mogą być wymagane dodatkowe właściwości. [Konfiguracja wyjściowa kolejki](functions-bindings-storage-queue.md#output---configuration) opisuje pola wymagane dla powiązania kolejki usługi Azure Storage.
+W funkcjach każdy typ powiązania wymaga `direction`, `type` i unikatowych `name` do zdefiniowania w pliku Function. JSON. Sposób definiowania tych atrybutów zależy od języka aplikacji funkcji.
 
-Aby utworzyć powiązanie, należy dodać obiekt konfiguracji powiązania do pliku Function. JSON. Edytuj plik Function. JSON w folderze HttpTrigger, aby dodać obiekt do `bindings` tablicy, która ma następujące właściwości:
-
-| Właściwość | Value | Opis |
-| -------- | ----- | ----------- |
-| **`name`** | `msg` | Nazwa identyfikująca parametr powiązania, do którego odwołuje się kod. |
-| **`type`** | `queue` | Powiązanie to powiązanie kolejki usługi Azure Storage. |
-| **`direction`** | `out` | Powiązanie jest powiązaniem wyjściowym. |
-| **`queueName`** | `outqueue` | Nazwa kolejki, w której ma zostać zapisywany powiązania. Gdy element `queueName` nie istnieje, powiązanie tworzy je przy pierwszym użyciu. |
-| **`connection`** | `AzureWebJobsStorage` | Nazwa ustawienia aplikacji, które zawiera parametry połączenia dla konta magazynu. `AzureWebJobsStorage` Ustawienie zawiera parametry połączenia dla konta magazynu utworzonego za pomocą aplikacji funkcji. |
-
-Plik Function. JSON powinien teraz wyglądać podobnie do tego przykładu:
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-  {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Dodawanie kodu korzystającego z powiązania danych wyjściowych
 
-`name` Po skonfigurowaniu programu można rozpocząć korzystanie z niego, aby uzyskać dostęp do powiązania jako atrybutu metody w podpisie funkcji. W poniższym przykładzie `msg` jest wystąpieniem [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest).
-
-```python
-import logging
-
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
 W przypadku korzystania z powiązania danych wyjściowych nie trzeba używać kodu zestawu SDK usługi Azure Storage do uwierzytelniania, uzyskiwania odwołania do kolejki lub zapisywania danych. Te zadania są wykonywane za pomocą środowiska uruchomieniowego usługi Functions i powiązania danych wyjściowych kolejki.
 
@@ -141,48 +65,25 @@ func host start
 > [!NOTE]  
 > Ponieważ w poprzednim przewodniku szybki start włączono pakiety rozszerzeń w pliku host. JSON, [rozszerzenie powiązania magazynu](functions-bindings-storage-blob.md#packages---functions-2x) zostało pobrane i zainstalowane dla Ciebie podczas uruchamiania, wraz z innymi rozszerzeniami powiązań firmy Microsoft.
 
-Skopiuj adres URL funkcji `HttpTrigger` z danych wyjściowych środowiska uruchomieniowego i wklej go w pasku adresu swojej przeglądarki. Dołącz ciąg `?name=<yourname>` zapytania do tego adresu URL i uruchom żądanie. W przeglądarce powinna zostać wyświetlona taka sama odpowiedź jak w poprzednim artykule.
+Skopiuj adres URL funkcji `HttpTrigger` z danych wyjściowych środowiska uruchomieniowego i wklej go w pasku adresu swojej przeglądarki. Dołącz ciąg zapytania `?name=<yourname>` do tego adresu URL i uruchom żądanie. W przeglądarce powinna zostać wyświetlona taka sama odpowiedź jak w poprzednim artykule.
 
-Tym razem powiązanie danych wyjściowych tworzy również kolejkę o `outqueue` nazwie na koncie magazynu i dodaje komunikat z tym samym ciągiem.
+Tym razem powiązanie danych wyjściowych tworzy również kolejkę o nazwie `outqueue` na koncie magazynu i dodaje komunikat z tym samym ciągiem.
 
 Następnie użyj interfejsu wiersza polecenia platformy Azure, aby wyświetlić nową kolejkę i sprawdzić, czy wiadomość została dodana. Możesz również wyświetlić kolejkę za pomocą [Eksplorator usługi Microsoft Azure Storage][Azure Storage Explorer] lub [Azure Portal](https://portal.azure.com).
 
 ### <a name="set-the-storage-account-connection"></a>Ustawianie połączenia konta magazynu
 
-Otwórz plik Local. Settings. JSON i skopiuj wartość `AzureWebJobsStorage`, która jest ciągiem połączenia konta magazynu. Ustaw zmienną `AZURE_STORAGE_CONNECTION_STRING` środowiskową na parametry połączenia za pomocą tego polecenia bash:
-
-```azurecli-interactive
-export AZURE_STORAGE_CONNECTION_STRING=<STORAGE_CONNECTION_STRING>
-```
-
-Po ustawieniu parametrów połączenia w `AZURE_STORAGE_CONNECTION_STRING` zmiennej środowiskowej można uzyskać dostęp do konta magazynu bez konieczności podawania uwierzytelniania za każdym razem.
+[!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
 ### <a name="query-the-storage-queue"></a>Wykonywanie zapytań względem kolejki magazynu
 
-Możesz użyć [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) polecenia, aby wyświetlić kolejki magazynu na koncie, tak jak w poniższym przykładzie:
-
-```azurecli-interactive
-az storage queue list --output tsv
-```
-
-Dane wyjściowe tego polecenia obejmują kolejkę o nazwie `outqueue`, która jest kolejką utworzoną podczas uruchamiania funkcji.
-
-Następnie użyj [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) polecenia, aby wyświetlić komunikaty w tej kolejce, jak w tym przykładzie:
-
-```azurecli-interactive
-echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-```
-
-Zwracany ciąg powinien być taki sam jak komunikat wysłany do przetestowania funkcji.
-
-> [!NOTE]  
-> Poprzedni przykład dekoduje zwracany ciąg z base64. Wynika to z faktu, że powiązania magazynu kolejek zapisują i odczytują dane z usługi Azure Storage jako [ciągi Base64](functions-bindings-storage-queue.md#encoding).
+[!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
 Teraz można ponownie opublikować zaktualizowaną aplikację funkcji na platformie Azure.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
-Ponownie można użyć zawieszeń lub przeglądarki do przetestowania wdrożonej funkcji. Tak jak wcześniej, dołącz ciąg `&name=<yourname>` zapytania do adresu URL, jak w poniższym przykładzie:
+Ponownie można użyć zawieszeń lub przeglądarki do przetestowania wdrożonej funkcji. Tak jak wcześniej, należy dołączyć ciąg zapytania `&name=<yourname>` do adresu URL, jak w poniższym przykładzie:
 
 ```bash
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>

@@ -1,5 +1,5 @@
 ---
-title: 'Partnerzy sieci: Sieć platformy Azure | Microsoft Docs'
+title: 'Partnerzy sieci: Azure Networking | Microsoft Docs'
 description: Ten artykuł zawiera listę partnerów sieciowych MSP
 services: networking
 author: skishen525
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 8d71863406eb6e8b032a78f65ab5be97cca91bd7
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: bf62e62e1235c7a37c092e79df57ca518e07ff4b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212889"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828199"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informacje o partnerach MSP sieci platformy Azure
 
@@ -20,19 +20,19 @@ Program partnerski dostawcy usług zarządzanych przez sieć Azure (MSP) umożli
 
 Usługa Azure Network msp to wyspecjalizowany zbiór dostawców usług zarządzanych, które zaspokajają potrzeby i wyzwania sieci w chmurze przedsiębiorstwa we wszystkich aspektach sieci chmurowej i hybrydowej. Zarządzane usługi sieciowe obejmują co najmniej jedną z następujących usług: Architektura sieci, planowanie, wdrażanie, operacje, konserwacja i optymalizacja.
 
-![MSP][0]
+![WYMIENIONE][0]
 
 Klienci mogą kupić oferty usług zarządzanych przez MSP w portalu Azure Marketplace lub bezpośrednio z MSP. Usługa msp umożliwia wdrażanie zasobów sieciowych platformy Azure i zarządzanie nimi w ramach subskrypcji i grup zasobów klientów przy użyciu usługi Azure Lighthouse.
 
 ## <a name="msp"></a>Partnerzy MSP sieci platformy Azure
 
-Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarządzanych usług sieciowych w chmurze oferowanych przez partnerów MSP dla sieci platformy Azure. Jeśli partner usług sieci w chmurze nie jest wymieniony w poniższej sekcji, skontaktuj się z nami. Mogą skontaktować się z nami, wysyłając wiadomość ManagedVirtualWAN@microsoft.come-mail na adres. 
+Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarządzanych usług sieciowych w chmurze oferowanych przez partnerów MSP dla sieci platformy Azure. Jeśli partner usług sieci w chmurze nie jest wymieniony w poniższej sekcji, skontaktuj się z nami. Mogą skontaktować się z nami, wysyłając wiadomość e-mail na adres ManagedVirtualWAN@microsoft.com. 
 
 [ANS — Grupa UK](https://www.ans.co.uk/)
 
 [Sieci aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)
 
-[BT](https://www.globalservices.bt.com/en/aboutus/news-press/bt-named-one-of-the-first-global-managed-service-providers-for-a-new-microsoft-azure-networking-virtual-wan-services/)
+[TESTY](https://www.globalservices.bt.com/en/aboutus/news-press/bt-named-one-of-the-first-global-managed-service-providers-for-a-new-microsoft-azure-networking-virtual-wan-services/)
 
 [Dane wymiaru](https://www.dimensiondata.com/)
 
@@ -46,15 +46,19 @@ Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarz
 
 [ixreach](https://www.ixreach.com/)
 
+[KINX](https://www.kinx.net/service/cloud/?lang=en)
+
 [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
 
 [Cloud Services oncore]( https://www.oncore.cloud/services/ue-for-expressroute/)
 
 [Orixcom]( https://www.orixcom.com/cloud-solutions/)
 
-[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)
+[Komunikacja tata](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)
 
-[Vandis](https://www.vandis.com/services/azure-migration/)
+[Vandis](https://www.vandis.com/microsoft-azure-practice/)
+
+[Czujność](https://vigilant.it/manage-cloud-service/)
 
 ## <a name="expressroute"></a>Partnerzy ExpressRoute
 

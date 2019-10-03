@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wysyłanie danych telemetrycznych do usługi Azure IoT Hub przy użyciu języka Java'
+title: 'Szybki Start: wysyłanie danych telemetrycznych do usługi Azure IoT Hub przy użyciu języka Java'
 description: W tym przewodniku Szybki start uruchomisz dwie przykładowe aplikacje języka Java wysyłające symulowane dane telemetryczne do centrum IoT oraz odczytujące dane telemetryczne z centrum IoT na potrzeby przetwarzania w chmurze.
 author: wesmc7777
 manager: philmea
@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: a97081101df5199d3201a6ec47df4c2ac2747416
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a808216b62459869e9adfd88afc60ee53259221d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309144"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838644"
 ---
-# <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Szybki start: Wysyłanie danych telemetrycznych do usługi Azure IoT Hub i odczytywanie ich za pomocą aplikacji Java
+# <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Szybki Start: wysyłanie danych telemetrycznych do usługi Azure IoT Hub i odczytywanie ich za pomocą aplikacji Java
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -69,13 +69,13 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
-   **MyJavaDevice**: nazwa rejestrowanego urządzenia. Użyj elementu **MyJavaDevice** w pokazany sposób. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
+   **MyJavaDevice**: nazwa urządzenia, które jest rejestrowany. Użyj elementu **MyJavaDevice** w pokazany sposób. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyJavaDevice
     ```
 
-2. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane: **YourIoTHubName: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
+2. Uruchom następujące polecenia w Azure Cloud Shell, aby uzyskać _Parametry połączenia urządzenia_ dla zarejestrowanego urządzenia: * * YourIoTHubName: Zastąp ten symbol zastępczy poniżej nazwą wybraną dla Centrum IoT Hub.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyJavaDevice --output table
@@ -89,7 +89,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 3. Wymagany jest również _Event Hubs punkt końcowy zgodny_ze standardem _Event Hubs_i _klucz podstawowy usługi_ z Centrum IoT, aby umożliwić aplikacji zaplecza łączenie się z Centrum IoT Hub i pobieranie komunikatów. Następujące polecenie pobiera te wartości dla Twojego centrum IoT:
 
-     **YourIoTHubName: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
+     \* * YourIoTHubName: Zastąp ten symbol zastępczy poniżej nazwą wybraną dla Centrum IoT.
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name YourIoTHubName
@@ -125,7 +125,7 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym
 
     Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie wysyłania przez aplikację urządzenia symulowanego danych telemetrycznych do centrum IoT:
 
-    ![Uruchamianie urządzenia symulowanego](media/quickstart-send-telemetry-java/SimulatedDevice.png)
+    ![Dane wyjściowe z telemetrii wysyłanej przez urządzenie do centrum IoT Hub](media/quickstart-send-telemetry-java/iot-hub-simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Odczytywanie danych telemetrycznych z centrum
 
@@ -135,7 +135,7 @@ Aplikacja zaplecza łączy się z punktem końcowym **Zdarzenia** po stronie us�
 
 2. Otwórz plik **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java** w wybranym edytorze tekstów. Zaktualizuj następujące zmienne i zapisz zmiany w pliku.
 
-    | Zmienna | Value |
+    | Zmienna | Wartość |
     | -------- | ----------- |
     | `eventHubsCompatibleEndpoint` | Zastąp wartość tej zmiennej punktem końcowym zgodnym z usługą Event Hubs zanotowanym wcześniej. |
     | `eventHubsCompatiblePath`     | Zastąp wartość tej zmiennej ścieżką zgodną z usługą Event Hubs zanotowaną wcześniej. |
@@ -155,7 +155,7 @@ Aplikacja zaplecza łączy się z punktem końcowym **Zdarzenia** po stronie us�
 
     Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie odbierania przez aplikację zaplecza danych telemetrycznych wysyłanych przez urządzenie symulowane do centrum:
 
-    ![Uruchamianie aplikacji zaplecza](media/quickstart-send-telemetry-java/ReadDeviceToCloud.png)
+    ![Dane wyjściowe w postaci aplikacji zaplecza odbierają Telemetria wysyłane do centrum IoT Hub](media/quickstart-send-telemetry-java/iot-hub-read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -168,4 +168,4 @@ W tym przewodniku Szybki start skonfigurowano centrum IoT, zarejestrowano urząd
 Aby dowiedzieć się, jak kontrolować urządzenie symulowane z poziomu aplikacji zaplecza, przejdź do następnego przewodnika Szybki start.
 
 > [!div class="nextstepaction"]
-> [Szybki start: Sterowanie urządzeniem połączonym z centrum IoT Hub](quickstart-control-device-java.md)
+> [Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT](quickstart-control-device-java.md)

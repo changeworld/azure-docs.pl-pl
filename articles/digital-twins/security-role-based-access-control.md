@@ -6,18 +6,18 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: lyhughes
-ms.openlocfilehash: 4e29cb488c9b491ec551ead1873e8cfd2d33a93b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: a5953aab179a62d4a8e37b7f5c7659318628918e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336731"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827037"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Kontrola dostępu oparta na rolach w usłudze Azure Digital bliźniaczych reprezentacji
 
-Usługa Azure Digital bliźniaczych reprezentacji umożliwia precyzyjne sterowanie dostępem do określonych danych, zasobów i akcji w grafie przestrzennym. Odbywa się to za pośrednictwem szczegółowego zarządzania rolami i uprawnieniami o nazwie kontroli dostępu opartej na rolach (RBAC). RBAC składa się z _ról_ i przypisań _ról_. Role identyfikują poziom uprawnień. Przypisania ról kojarzą rolę z użytkownikiem lub urządzeniem.
+Usługa Azure Digital bliźniaczych reprezentacji umożliwia precyzyjne sterowanie dostępem do określonych danych, zasobów i akcji w grafie przestrzennym. Odbywa się to za pośrednictwem szczegółowego zarządzania rolami i uprawnieniami o nazwie kontroli dostępu opartej na rolach (RBAC). RBAC składa się z _ról_ i _przypisań ról_. Role identyfikują poziom uprawnień. Przypisania ról kojarzą rolę z użytkownikiem lub urządzeniem.
 
 Przy użyciu RBAC można udzielić uprawnienia do:
 
@@ -32,7 +32,7 @@ Stopień dostępu może być również dostosowany.
 
 RBAC jest unikatowy w tym, że uprawnienia są dziedziczone jako wykres przestrzenny.
 
-## <a name="what-can-i-do-with-rbac"></a>Co można zrobić za pomocą kontroli dostępu opartej na rolach?
+## <a name="what-can-i-do-with-rbac"></a>Co mogę zrobić przy użyciu RBAC?
 
 Deweloper może używać RBAC, aby:
 
@@ -45,7 +45,7 @@ Deweloper może używać RBAC, aby:
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-rbac-best-practices.md)]
 
-## <a name="roles"></a>Role
+## <a name="roles"></a>Pełnione
 
 ### <a name="role-definitions"></a>Definicje ról
 

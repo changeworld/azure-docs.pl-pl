@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 manager: jeconnoc
-ms.openlocfilehash: 63065c918a6f78510b4908c5e2ae80df67665b40
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: dfb4abaf3868b76e17fb35f952c4db6bcdf30634
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672604"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838937"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Łączenie funkcji z usługą Azure Storage przy użyciu Visual Studio Code
 
@@ -71,50 +71,7 @@ W funkcjach każdy typ powiązania wymaga `direction`, `type` i unikatowych `nam
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-Atrybuty powiązań są definiowane bezpośrednio w pliku Function. JSON. W zależności od typu powiązania mogą być wymagane dodatkowe właściwości. [Konfiguracja wyjściowa kolejki](functions-bindings-storage-queue.md#output---configuration) opisuje pola wymagane dla powiązania kolejki usługi Azure Storage. Rozszerzenie ułatwia dodawanie powiązań do pliku Function. JSON. 
-
-Aby utworzyć powiązanie, kliknij prawym przyciskiem myszy (Ctrl + kliknięcie na macOS) plik `function.json` w folderze HttpTrigger i wybierz polecenie **Dodaj powiązanie...** . Postępuj zgodnie z monitami, aby zdefiniować następujące właściwości powiązań dla nowego powiązania:
-
-| Monit | Value | Opis |
-| -------- | ----- | ----------- |
-| **Wybierz kierunek powiązania** | `out` | Powiązanie jest powiązaniem wyjściowym. |
-| **Wybierz powiązanie z kierunkiem...** | `Azure Queue Storage` | Powiązanie to powiązanie kolejki usługi Azure Storage. |
-| **Nazwa używana do identyfikowania tego powiązania w kodzie** | `msg` | Nazwa, która identyfikuje parametr powiązania przywoływany w kodzie. |
-| **Kolejka, do której zostanie wysłany komunikat** | `outqueue` | Nazwa kolejki, w której ma zostać zapisywany powiązania. Gdy *Kolejka* nie istnieje, powiązanie tworzy je przy pierwszym użyciu. |
-| **Wybierz ustawienie z pliku "Local. Setting. JSON"** | `AzureWebJobsStorage` | Nazwa ustawienia aplikacji, które zawiera parametry połączenia dla konta magazynu. Ustawienie `AzureWebJobsStorage` zawiera parametry połączenia dla konta magazynu utworzonego za pomocą aplikacji funkcji. |
-
-Powiązanie jest dodawane do tablicy `bindings` w pliku Function. JSON, który powinien teraz wyglądać podobnie do poniższego przykładu:
-
-```json
-{
-   ...
-
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
@@ -128,37 +85,7 @@ Po zdefiniowaniu powiązania można użyć `name` powiązania, aby uzyskać do n
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-Dodaj kod, który używa obiektu powiązania wyjściowego `msg` w `context.bindings` w celu utworzenia komunikatu w kolejce. Dodaj ten kod przed instrukcją `context.res`.
-
-```javascript
-// Add a message to the Storage queue.
-context.bindings.msg = "Name passed to the function: " + 
-(req.query.name || req.body.name);
-```
-
-W tym momencie funkcja powinna wyglądać w następujący sposób:
-
-```javascript
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
-
-    if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " + 
-        (req.query.name || req.body.name);
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-```
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 

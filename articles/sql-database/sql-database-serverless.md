@@ -11,18 +11,18 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123087"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828232"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bezserwerowe (wersja zapoznawcza)
 
 Azure SQL Database bezserwerowe (wersja zapoznawcza) to warstwa obliczeniowa dla pojedynczych baz danych, która automatycznie skaluje obliczenia na podstawie zapotrzebowania na obciążenia i rachunków dla ilości użytych obliczeń na sekundę. Warstwa obliczeniowa bezserwerowa również automatycznie wstrzymuje bazy danych w trakcie okresów nieaktywnych, gdy są naliczane opłaty za magazyn i automatycznie wznawiają bazy danych po powrocie działania.
 
-## <a name="serverless-compute-tier"></a>Warstwa bezserwerowych usług obliczeniowych
+## <a name="serverless-compute-tier"></a>Warstwa obliczeń bezserwerowych
 
 Warstwa obliczeń bezserwerowych dla pojedynczej bazy danych jest sparametryzowane według zakresu obliczeń skalowania automatycznego i opóźnienia automatycznego wstrzymania.  Konfiguracja tych parametrów służy do kształtowania wydajności bazy danych i kosztu obliczeniowego.
 
@@ -66,16 +66,16 @@ W poniższej tabeli zestawiono różnice między warstwą obliczeniową bezserwe
 | | **Obliczenia bezserwerowe** | **Zainicjowane obliczenie** |
 |:---|:---|:---|
 |**Wzorzec użycia bazy danych**| Sporadyczne, nieprzewidywalne użycie z niższym średnim wykorzystaniem obliczeń w czasie. |  Bardziej regularne wzorce użycia z wyższym średnim wykorzystaniem obliczeń w czasie lub wielu bazach danych korzystających z pul elastycznych.|
-| **Nakład pracy zarządzania wydajnością** |Dołu|Wyższa|
-|**Skalowanie obliczeniowe**|Automatyczne|Ręczne|
-|**Czas odpowiedzi obliczeń**|Poniżej nieaktywnych okresów|Natychmiastowe|
+| **Nakład pracy zarządzania wydajnością** |Dołu|Większych|
+|**Skalowanie obliczeniowe**|Automatyczne|Ręcznie|
+|**Czas odpowiedzi obliczeń**|Poniżej nieaktywnych okresów|Bezpośredniego|
 |**Stopień szczegółowości rozliczeń**|Na sekundę|Za godzinę|
 
 ## <a name="purchasing-model-and-service-tier"></a>Model zakupów i warstwa usług
 
 SQL Database bezserwerowe jest obecnie obsługiwane tylko w warstwie Ogólnego przeznaczenia na sprzęcie generacji 5 w modelu zakupu rdzeń wirtualny.
 
-## <a name="autoscaling"></a>Skalowanie automatyczne
+## <a name="autoscaling"></a>Skalowania automatycznego
 
 ### <a name="scaling-responsiveness"></a>Skalowanie czasu odpowiedzi
 
@@ -124,14 +124,14 @@ Autowstrzymywanie jest tymczasowo uniemożliwiane podczas wdrażania niektórych
 
 Autowznawianie jest wyzwalane, jeśli w dowolnym momencie spełniony jest którykolwiek z następujących warunków:
 
-|Cecha|Wyzwalacz autowznawiania|
+|Funkcja|Wyzwalacz autowznawiania|
 |---|---|
-|Uwierzytelnianie i autoryzacja|Zaloguj|
+|Uwierzytelnianie i autoryzacja|Identyfikatorów|
 |Wykrywanie zagrożeń|Włączanie/wyłączanie ustawień wykrywania zagrożeń na poziomie bazy danych lub serwera.<br>Modyfikowanie ustawień wykrywania zagrożeń na poziomie bazy danych lub serwera.|
-|Odnajdowanie i klasyfikacja danych|Dodawanie, modyfikowanie, usuwanie lub wyświetlanie etykiet czułości|
+|Odnajdywanie i Klasyfikacja danych|Dodawanie, modyfikowanie, usuwanie lub wyświetlanie etykiet czułości|
 |Inspekcja|Wyświetlanie rekordów inspekcji.<br>Aktualizowanie lub przeglądanie zasad inspekcji.|
 |Maskowanie danych|Dodawanie, modyfikowanie, usuwanie lub wyświetlanie reguł maskowania danych|
-|Transparent Data Encryption|Wyświetlanie stanu lub stanu przezroczystego szyfrowania danych|
+|Przezroczyste szyfrowanie danych|Wyświetlanie stanu lub stanu przezroczystego szyfrowania danych|
 |Zapytanie (wydajność) — magazyn danych|Modyfikowanie lub wyświetlanie ustawień magazynu zapytań|
 |Autodostrajanie|Aplikacja i weryfikacja zalecenia autodostrajania, takie jak indeksowanie automatycznego|
 |Kopiowanie bazy danych|Utwórz bazę danych jako kopię.<br>Eksportuj do pliku BACPAC.|
@@ -157,31 +157,31 @@ Tworzenie nowej bazy danych lub przeniesienie istniejącej bazy danych do warstw
 
    |Nazwa celu usługi|Warstwa usług|Generowanie sprzętu|Maksymalna rdzeni wirtualnych|
    |---|---|---|---|
-   |GP_S_Gen5_1|Ogólne zastosowanie|5\. generacji|1|
-   |GP_S_Gen5_2|Ogólne zastosowanie|5\. generacji|2|
-   |GP_S_Gen5_4|Ogólne zastosowanie|5\. generacji|4|
-   |GP_S_Gen5_6|Ogólne zastosowanie|5\. generacji|6|
-   |GP_S_Gen5_8|Ogólne zastosowanie|5\. generacji|8|
-   |GP_S_Gen5_10|Ogólne zastosowanie|5\. generacji|10|
-   |GP_S_Gen5_12|Ogólne zastosowanie|5\. generacji|12|
-   |GP_S_Gen5_14|Ogólne zastosowanie|5\. generacji|14|
-   |GP_S_Gen5_16|Ogólne zastosowanie|5\. generacji|16|
+   |GP_S_Gen5_1|Ogólnego przeznaczenia|5 rdzeń|1|
+   |GP_S_Gen5_2|Ogólnego przeznaczenia|5 rdzeń|2|
+   |GP_S_Gen5_4|Ogólnego przeznaczenia|5 rdzeń|4|
+   |GP_S_Gen5_6|Ogólnego przeznaczenia|5 rdzeń|6|
+   |GP_S_Gen5_8|Ogólnego przeznaczenia|5 rdzeń|8|
+   |GP_S_Gen5_10|Ogólnego przeznaczenia|5 rdzeń|10|
+   |GP_S_Gen5_12|Ogólnego przeznaczenia|5 rdzeń|12|
+   |GP_S_Gen5_14|Ogólnego przeznaczenia|5 rdzeń|14,5|
+   |GP_S_Gen5_16|Ogólnego przeznaczenia|5 rdzeń|16|
 
 2. Opcjonalnie można określić opóźnienie rdzeni wirtualnych i pauzę, aby zmienić wartości domyślne. W poniższej tabeli przedstawiono dostępne wartości tych parametrów.
 
    |Parametr|Opcje wartości|Wartość domyślna|
    |---|---|---|---|
-   |Min rdzeni wirtualnych|Dowolny z {0,5, 1, 2, 4} nie przekracza maksymalnej rdzeni wirtualnych|0,5 rdzeni wirtualnych|
-   |Opóźnienie AutoPause|Minimalny 60 minut (1 godzina)<br>Długość 10080 minut (7 dni)<br>Zwiększa 60 minut<br>Wyłącz autowstrzymywanie:-1|60 minut|
+   |Min rdzeni wirtualnych|Zależy od maksymalnej skonfigurowanej usługi rdzeni wirtualnych — zobacz [limity zasobów](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 rdzeni wirtualnych|
+   |Opóźnienie AutoPause|Minimum: 60 minut (1 godzina)<br>Maksimum: 10080 minut (7 dni)<br>Przyrosty: 60 minut<br>Wyłącz autowstrzymywanie:-1|60 minut|
 
 > [!NOTE]
 > Używanie języka T-SQL do przenoszenia istniejącej bazy danych do bezserwerowej lub zmiany jej rozmiaru nie jest obecnie obsługiwane, ale można ją wykonać za pośrednictwem Azure Portal lub PowerShell.
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Utwórz nową bazę danych w warstwie obliczeniowej bezserwerowej 
 
-#### <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
+#### <a name="use-azure-portal"></a>Użyj Azure Portal
 
-Zobacz [Szybki start: Utwórz pojedynczą bazę danych w Azure SQL Database przy użyciu](sql-database-single-database-get-started.md)Azure Portal.
+Zobacz [Szybki Start: Tworzenie pojedynczej bazy danych w Azure SQL Database przy użyciu Azure Portal](sql-database-single-database-get-started.md).
 
 #### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
@@ -225,23 +225,23 @@ Bezserwerowa baza danych może zostać przeniesiona do warstwy obliczeń aprowiz
 
 ## <a name="modifying-serverless-configuration"></a>Modyfikowanie konfiguracji bezserwerowej
 
-### <a name="maximum-vcores"></a>Maksymalna liczba rdzeni wirtualnych
+### <a name="maximum-vcores"></a>Maksymalna rdzeni wirtualnych
 
 #### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
-Modyfikowanie maksymalnej rdzeni wirtualnych jest wykonywane przy użyciu polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu `MaxVcore` argumentu.
+Modyfikowanie maksymalnej rdzeni wirtualnych jest wykonywane przy użyciu polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentu `MaxVcore`.
 
-### <a name="minimum-vcores"></a>Minimalna liczba rdzeni wirtualnych
+### <a name="minimum-vcores"></a>Minimalna rdzeni wirtualnych
 
 #### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
-Modyfikacja minimalnej rdzeni wirtualnych jest wykonywana za pomocą polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu `MinVcore` argumentu.
+Modyfikacja minimalnej rdzeni wirtualnych jest wykonywana za pomocą polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentu `MinVcore`.
 
 ### <a name="autopause-delay"></a>Opóźnienie AutoPause
 
 #### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
-Modyfikowanie opóźnienia AutoPause jest wykonywane przy użyciu polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu `AutoPauseDelayInMinutes` argumentu.
+Modyfikowanie opóźnienia AutoPause jest wykonywane przy użyciu polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentu `AutoPauseDelayInMinutes`.
 
 ## <a name="monitoring"></a>Monitorowanie
 
@@ -261,16 +261,16 @@ Pula zasobów użytkowników jest wewnętrzną największą granicą zarządzani
 
 Metryki monitorowania użycia zasobów pakietu aplikacji i puli użytkowników bazy danych bezserwerowych są wymienione w poniższej tabeli:
 
-|Jednostka|Metryka|Opis|Jednostki|
+|Jednostka|Metryki|Opis|Uczestnictwa|
 |---|---|---|---|
-|Pakiet aplikacji|app_cpu_percent|Procent rdzeni wirtualnych używany przez aplikację względem maksymalnej rdzeni wirtualnych dozwolony dla aplikacji.|Wartość procentowa|
+|Pakiet aplikacji|app_cpu_percent|Procent rdzeni wirtualnych używany przez aplikację względem maksymalnej rdzeni wirtualnych dozwolony dla aplikacji.|Wartości|
 |Pakiet aplikacji|app_cpu_billed|Kwota obliczeń rozliczanych dla aplikacji w okresie raportowania. Kwota płacona w tym okresie jest iloczynem tej metryki i ceny jednostkowej rdzeń wirtualny. <br><br>Wartości tej metryki są określane przez agregowanie w czasie, gdy jest używana wartość maksymalna procesora CPU i używana pamięć. Jeśli użyta kwota jest mniejsza niż minimalna ilość określona przez minimalną rdzeni wirtualnych i minimalną pamięć, jest naliczana opłata w wysokości minimalnej. Aby porównać procesor z pamięcią na potrzeby rozliczeń, pamięć jest znormalizowana do jednostek rdzeni wirtualnych przez ponowne skalowanie ilości pamięci w GB przez 3 GB na rdzeń wirtualny.|Rdzeń wirtualny sekund|
-|Pakiet aplikacji|app_memory_percent|Procent pamięci używanej przez aplikację względem maksymalnej pamięci dozwolonej dla aplikacji.|Wartość procentowa|
-|Pula użytkowników|cpu_percent|Procent rdzeni wirtualnych używany przez obciążenie użytkowników względem maksymalnej rdzeni wirtualnych dozwolony dla obciążenia użytkownika.|Wartość procentowa|
-|Pula użytkowników|data_IO_percent|Procent operacji we/wy danych używanych przez obciążenie użytkownikami względem maksymalnej liczby operacji we/wy na sekundę dozwolonych dla obciążenia użytkownikami.|Wartość procentowa|
-|Pula użytkowników|log_IO_percent|Procent zdarzeń dzienników używanych przez obciążenie użytkowników względem maksymalnej liczby MB dzienników/s dozwolony dla obciążenia użytkownika.|Wartość procentowa|
-|Pula użytkowników|workers_percent|Procent procesów roboczych używanych przez obciążenie użytkowników względem maksymalnej liczby procesów roboczych dozwolonych dla obciążenia użytkownikami.|Wartość procentowa|
-|Pula użytkowników|sessions_percent|Procent sesji używanych przez obciążenie użytkownikami względem maksymalnej liczby sesji dozwolonych dla obciążenia użytkownika.|Wartość procentowa|
+|Pakiet aplikacji|app_memory_percent|Procent pamięci używanej przez aplikację względem maksymalnej pamięci dozwolonej dla aplikacji.|Wartości|
+|Pula użytkowników|cpu_percent|Procent rdzeni wirtualnych używany przez obciążenie użytkowników względem maksymalnej rdzeni wirtualnych dozwolony dla obciążenia użytkownika.|Wartości|
+|Pula użytkowników|data_IO_percent|Procent operacji we/wy danych używanych przez obciążenie użytkownikami względem maksymalnej liczby operacji we/wy na sekundę dozwolonych dla obciążenia użytkownikami.|Wartości|
+|Pula użytkowników|log_IO_percent|Procent zdarzeń dzienników używanych przez obciążenie użytkowników względem maksymalnej liczby MB dzienników/s dozwolony dla obciążenia użytkownika.|Wartości|
+|Pula użytkowników|workers_percent|Procent procesów roboczych używanych przez obciążenie użytkowników względem maksymalnej liczby procesów roboczych dozwolonych dla obciążenia użytkownikami.|Wartości|
+|Pula użytkowników|sessions_percent|Procent sesji używanych przez obciążenie użytkownikami względem maksymalnej liczby sesji dozwolonych dla obciążenia użytkownika.|Wartości|
 
 ### <a name="pause-and-resume-status"></a>Stan wstrzymania i wznowienia
 
@@ -290,13 +290,13 @@ Get-AzSqlDatabase `
 
 W przypadku limitów zasobów zapoznaj się z tematem [warstwa obliczeń bezserwerowych](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).
 
-## <a name="billing"></a>Rozliczenia
+## <a name="billing"></a>Godzin
 
 Kwota naliczanych obliczeń jest wartością maksymalnego użycia procesora CPU i używanej pamięci w każdej sekundzie. Jeśli ilość używanej procesora CPU i używanej pamięci jest mniejsza niż minimalna ilość przywidziana dla każdej z nich, zostanie naliczona opłata za zainicjowaną kwotę. Aby porównać procesor z pamięcią na potrzeby rozliczeń, pamięć jest znormalizowana do jednostek rdzeni wirtualnych przez ponowne skalowanie ilości pamięci w GB przez 3 GB na rdzeń wirtualny.
 
-- **Zasoby rozliczane**: Procesor i pamięć
+- **Zasoby rozliczane**: procesor CPU i pamięć
 - **Kwota rozliczana**: rdzeń wirtualny cena jednostkowa * Max (min rdzeni wirtualnych, rdzeni wirtualnych użyte, min pamięci gb * 1/3, użycie pamięci gb * 1/3) 
-- **Częstotliwość rozliczeń**: Na sekundę
+- **Częstotliwość rozliczeń**: na sekundę
 
 Cena jednostkowa rdzeń wirtualny jest kosztem za rdzeń wirtualny na sekundę. Zapoznaj się ze [stroną cennika Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) w przypadku określonych cen jednostkowych w danym regionie.
 
@@ -304,7 +304,7 @@ Kwota naliczanych obliczeń jest uwidaczniana przez następującą metrykę:
 
 - **Metric**: App_cpu_billed (rdzeń wirtualny s)
 - **Definicja**: max (min rdzeni wirtualnych, rdzeni wirtualnychd, min pamięci gb * 1/3, użyto pamięci gb * 1/3)
-- **Częstotliwość raportowania**: Za minutę
+- **Częstotliwość raportowania**: na minutę
 
 Ta ilość jest obliczana na sekundę i agregowana w ciągu 1 minuty.
 
@@ -314,7 +314,7 @@ W takim przypadku baza danych jest rozliczana za obliczenia i przechowywanie w c
 
 Dokładniejszy rachunek obliczeń w tym przykładzie jest obliczany w następujący sposób:
 
-|Interwał czasu|Rdzeni wirtualnych używane w każdej sekundzie|GB używanych w każdej sekundzie|Wymiar obliczeniowy rozliczany|Rdzeń wirtualny s rozliczane w przedziale czasu|
+|Przedział czasu|Rdzeni wirtualnych używane w każdej sekundzie|GB używanych w każdej sekundzie|Wymiar obliczeniowy rozliczany|Rdzeń wirtualny s rozliczane w przedziale czasu|
 |---|---|---|---|---|
 |0:00-1:00|4|9|Rdzeni wirtualnych używane|4 rdzeni wirtualnych * 3600 sekund = 14400 rdzeń wirtualny s|
 |1:00-2:00|1|12|Używana pamięć|12 GB * 1/3 * 3600 sekund = 14400 rdzeń wirtualny s|
@@ -326,9 +326,9 @@ Załóżmy, że cena jednostkowa obliczeń to $0.000073/rdzeń wirtualny/s.  Nas
 
 ## <a name="available-regions"></a>Dostępne regiony
 
-Warstwa obliczeń bezserwerowych jest dostępna na całym świecie, z wyjątkiem następujących regionów: Australia Środkowa, Chiny Wschodnie, Chiny Północne, Francja Południowa, Niemcy środkowe, Niemcy Wschodnie, Indie Zachodnie, Korea południowo-Południowa, Zachodnia Republika Południowej Afryki, Północne Zjednoczone Królestwo, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo i zachodnio-środkowe stany USA.
+Warstwa obliczeń bezserwerowych jest dostępna na całym świecie, z wyjątkiem następujących regionów: Australia Środkowa, Chiny Wschodnie, Chiny Północne, Francja Południowa, Niemcy środkowe, Niemcy północny, Indie Zachodnie, Korea Południowa, Zachodnia Republika Południowej Afryki, Północne Zjednoczone Królestwo, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo i zachodnie Środkowe stany USA.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby rozpocząć, zobacz [szybki start: Utwórz pojedynczą bazę danych w Azure SQL Database przy użyciu](sql-database-single-database-get-started.md)Azure Portal.
+- Aby rozpocząć, zobacz [Szybki Start: Tworzenie pojedynczej bazy danych w Azure SQL Database przy użyciu Azure Portal](sql-database-single-database-get-started.md).
 - W przypadku limitów zasobów zobacz [limity zasobów warstwy obliczeń Bezserwerowych](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).

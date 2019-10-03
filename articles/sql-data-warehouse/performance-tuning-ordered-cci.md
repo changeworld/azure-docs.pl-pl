@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 74a1a2218020718a05c9d01de96ddf4fccb35eb4
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802564"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845705"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Dostrajanie wydajności z uporządkowanym klastrowanym indeksem magazynu kolumn  
 
@@ -24,7 +24,7 @@ Gdy użytkownicy wysyłają zapytanie do tabeli magazynu kolumn w Azure SQL Data
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Uporządkowany a nieuporządkowany klastrowany indeks magazynu kolumn 
 Domyślnie dla każdej tabeli magazynu danych platformy Azure, która została utworzona bez opcji indeksu, składnik wewnętrzny (Konstruktor indeksowania) tworzy na nim nieuporządkowany klastrowany indeks magazynu kolumn (WIK).  Dane w każdej kolumnie są kompresowane do oddzielnego segmentu grupy wierszy WIK.  Istnieją metadane dla każdego zakresu wartości segmentu, dlatego segmenty, które znajdują się poza granicami predykatu zapytania, nie są odczytywane z dysku podczas wykonywania zapytania.  WIK oferuje najwyższy poziom kompresji danych i zmniejsza rozmiar segmentów do odczytu, dzięki czemu zapytania mogą działać szybciej. Jednak ponieważ Konstruktor indeksu nie sortuje danych przed ich kompresowaniem do segmentów, mogą wystąpić segmenty z nakładającymi się zakresami wartości, co sprawia, że zapytania odczytują więcej segmentów z dysku i trwają dłużej.  
 
-Podczas tworzenia uporządkowanej WIK, aparat Azure SQL Data Warehouse sortuje dane w pamięci według kluczy zamówienia, zanim Konstruktor indeksów kompresuje go do segmentów indeksu.  Posortowane dane, nakładające się segmenty, zmniejszają się, umożliwiając wykonywanie zapytań o bardziej wydajny sposób eliminacji segmentów, co zwiększa wydajność, ponieważ liczba segmentów odczytywanych z dysku jest mniejsza.  Jeśli wszystkie dane można sortować jednocześnie w pamięci, można uniknąć nakładania się segmentów.  W przypadku dużej ilości danych w tabelach magazynu danych ten scenariusz nie jest często wykonywany.  
+Podczas tworzenia uporządkowanej WIK, aparat Azure SQL Data Warehouse sortuje istniejące dane w pamięci przez klucze kolejności, zanim Konstruktor index kompresuje je do segmentów indeksu.  Posortowane dane, nakładające się segmenty, zmniejszają się, umożliwiając wykonywanie zapytań o bardziej wydajny sposób eliminacji segmentów, co zwiększa wydajność, ponieważ liczba segmentów odczytywanych z dysku jest mniejsza.  Jeśli wszystkie dane można sortować jednocześnie w pamięci, można uniknąć nakładania się segmentów.  W przypadku dużej ilości danych w tabelach magazynu danych ten scenariusz nie jest często wykonywany.  
 
 Aby sprawdzić zakresy segmentów dla kolumny, Uruchom to polecenie z nazwą tabeli i nazwą kolumny:
 
@@ -42,6 +42,9 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 ```
 
+> [!NOTE] 
+> W uporządkowanej tabeli WIK nowe dane, które wynikają z operacji ładowania DML lub danych, nie są automatycznie sortowane.  Użytkownicy mogą odbudować uporządkowaną WIK, aby posortować wszystkie dane w tabeli.  
+
 ## <a name="data-loading-performance"></a>Wydajność ładowania danych
 
 Wydajność ładowania danych do uporządkowanej tabeli WIK jest podobna do ładowania danych do tabeli partycjonowanej.  
@@ -51,12 +54,24 @@ Poniżej przedstawiono przykładowe porównanie wydajności ładowania danych do
 ![Performance_comparison_data_loading @ no__t-1
  
 ## <a name="reduce-segment-overlapping"></a>Zmniejsz nakładające się segmenty
-Poniżej znajdują się opcje umożliwiające dalsze zmniejszenie nakładających się segmentów podczas tworzenia uporządkowanej WIK dla nowej tabeli za pośrednictwem CTAS lub istniejącej tabeli zawierającej dane:
 
-- Użyj większej klasy zasobów, aby umożliwić sortowanie większej ilości danych jednocześnie w pamięci, zanim Konstruktor indeksów kompresuje je do segmentów.  Raz w segmencie indeksu nie można zmienić fizycznej lokalizacji danych.  Nie ma sortowania danych w ramach segmentu ani między segmentami.  
+Liczba nakładających się segmentów zależy od rozmiaru danych do sortowania, dostępnej pamięci oraz ustawienia maksymalnego stopnia równoległości (MAXDOP) podczas tworzenia uporządkowanej WIK. Poniżej znajdują się opcje zmniejszania nakładania się segmentów podczas tworzenia uporządkowanej WIK.
 
-- Użyj niższego stopnia równoległości (na przykład stopień RÓWNOLEGŁOŚCI = 1).  Każdy wątek używany do uporządkowanego tworzenia WIK działa w ramach podzestawu danych i sortuje go lokalnie.  Nie ma sortowania globalnego dla danych posortowanych według różnych wątków.  Użycie równoległych wątków może skrócić czas tworzenia uporządkowanej WIK, ale generuje więcej nakładających się segmentów niż przy użyciu jednego wątku. 
+- Użyj klasy zasobów xlargerc na wyższym jednostek dwu, aby umożliwić większą ilość pamięci na potrzeby sortowania danych, zanim Konstruktor indeksów kompresuje dane do segmentów.  Raz w segmencie indeksu nie można zmienić fizycznej lokalizacji danych.  Nie ma sortowania danych w ramach segmentu ani między segmentami.  
+
+- Utwórz uporządkowaną WIK z MAXDOP = 1.  Każdy wątek używany do uporządkowanego tworzenia WIK działa w ramach podzestawu danych i sortuje go lokalnie.  Nie ma sortowania globalnego dla danych posortowanych według różnych wątków.  Użycie równoległych wątków może skrócić czas tworzenia uporządkowanej WIK, ale generuje więcej nakładających się segmentów niż przy użyciu jednego wątku.  Obecnie opcja MAXDOP jest obsługiwana tylko w przypadku tworzenia tabeli uporządkowanej WIK przy użyciu CREATE TABLE jako polecenia SELECT.  Tworzenie uporządkowanej WIK za pomocą poleceń CREATE INDEX lub CREATE TABLE nie obsługuje opcji MAXDOP. Na przykład
+
+```sql
+CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
+AS SELECT * FROM ExampleTable
+OPTION (MAXDOP 1);
+```
 - Przed załadowaniem danych do tabel Azure SQL Data Warehouse należy je wstępnie sortować według kluczy sortowania.
+
+
+Oto przykład uporządkowanej dystrybucji tabel WIK, która ma zerowy segment nakładający się na poniższe zalecenia. Uporządkowana tabela WIK jest tworzona w bazie danych DWU1000c za pośrednictwem CTAS z tabeli sterty 20 GB za pomocą MAXDOP 1 i xlargerc.  WIK jest uporządkowana w kolumnie BIGINT bez duplikatów.  
+
+![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>Tworzenie uporządkowanej WIK w dużych tabelach
 Tworzenie uporządkowanej WIK jest operacją offline.  W przypadku tabel bez partycji dane nie będą dostępne dla użytkowników, dopóki nie zostanie ukończony uporządkowany proces tworzenia WIK.   W przypadku partycjonowanych tabel, ponieważ aparat tworzy uporządkowaną partycję WIK według partycji, użytkownicy mogą nadal uzyskiwać dostęp do danych w partycjach, w których uporządkowane tworzenie WIK nie jest w toku.   Za pomocą tej opcji można zminimalizować przestoje podczas tworzenia uporządkowanej WIK w dużych tabelach: 
@@ -86,4 +101,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Więcej porad programistycznych znajdziesz w artykule [Omówienie programowania w usłudze SQL Data Warehouse](sql-data-warehouse-overview-develop.md).
+Aby uzyskać więcej porad programistycznych, zobacz [Omówienie opracowywania SQL Data Warehouse](sql-data-warehouse-overview-develop.md).

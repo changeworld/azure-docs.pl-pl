@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 5f6f4ce4fc77533a4d893472298ef3a20f153136
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568000"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828209"
 ---
 # <a name="in-memory-sample"></a>Przykład w pamięci
 
@@ -25,7 +25,7 @@ Technologie w pamięci w Azure SQL Database umożliwiają zwiększenie wydajnoś
 W tym artykule zobaczysz dwa przykłady ilustrujące użycie OLTP w pamięci, a także indeksów magazynu kolumn w Azure SQL Database.
 
 Aby uzyskać więcej informacji, zobacz:
-- [Omówienie OLTP i scenariusze użycia w pamięci](https://msdn.microsoft.com/library/mt774593.aspx) (zawiera odwołania do analiz przypadków klientów i informacji, aby rozpocząć)
+- [Omówienie OLTP i scenariusze użycia w pamięci (w](https://msdn.microsoft.com/library/mt774593.aspx) tym informacje na temat analiz przypadków klientów i informacji na temat rozpoczynania pracy)
 - [Dokumentacja przetwarzania OLTP w pamięci](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Przewodnik po indeksach magazynu kolumn](https://msdn.microsoft.com/library/gg492088.aspx)
 - Hybrydowe przetwarzanie transakcyjne/analityczne (HTAP), znane także jako [Analiza operacyjna w czasie rzeczywistym](https://msdn.microsoft.com/library/dn817827.aspx)
@@ -34,7 +34,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 &nbsp;
 
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. Instalowanie przykładu OLTP w pamięci
+## <a name="1-install-the-in-memory-oltp-sample"></a>1. Zainstaluj przykład OLTP w pamięci
 
 Przykładową bazę danych AdventureWorksLT można utworzyć za pomocą kilku kliknięć w [Azure Portal](https://portal.azure.com/). Następnie w procedurach przedstawionych w tej sekcji wyjaśniono, jak można wzbogacić bazę danych AdventureWorksLT z obiektami OLTP w pamięci i przedstawić zalety wydajności.
 
@@ -49,9 +49,9 @@ Aby uzyskać więcej uproszczony, ale bardziej atrakcyjny wizualnie pokaz wydajn
 
 2. Nawiąż połączenie z bazą danych za pomocą programu SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
-3. Skopiuj [skrypt OLTP języka Transact-SQL w pamięci](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) do Schowka. Skrypt T-SQL tworzy niezbędne obiekty w pamięci w przykładowej bazie danych AdventureWorksLT, która została utworzona w kroku 1.
+3. Skopiuj [skrypt OLTP języka Transact-SQL w pamięci](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) do Schowka. Skrypt T-SQL tworzy niezbędne obiekty w pamięci w przykładowej bazie danych AdventureWorksLT, która została utworzona w kroku 1.
 
-4. Wklej skrypt T-SQL do programu SSMS, a następnie wykonaj skrypt. `MEMORY_OPTIMIZED = ON` Klauzula CREATE TABLE instrukcji jest istotna. Na przykład:
+4. Wklej skrypt T-SQL do programu SSMS, a następnie wykonaj skrypt. Klauzula `MEMORY_OPTIMIZED = ON` CREATE TABLE instrukcje są kluczowe. Na przykład:
 
 
 ```sql
@@ -78,16 +78,16 @@ Wynik **0** oznacza, że w pamięci nie jest obsługiwane, a **1** oznacza, że 
 
 #### <a name="about-the-created-memory-optimized-items"></a>Informacje o utworzonych elementach zoptymalizowanych pod kątem pamięci
 
-**Tabele**: Przykład zawiera następujące tabele zoptymalizowane pod kątem pamięci:
+**Tabele**: przykład zawiera następujące tabele zoptymalizowane pod kątem pamięci:
 
-- SalesLT.Product_inmem
-- SalesLT.SalesOrderHeader_inmem
+- Tabeli SalesLT. Product_inmem
+- Tabeli SalesLT. SalesOrderHeader_inmem
 - Tabeli SalesLT. SalesOrderDetail_inmem
-- Demo.DemoSalesOrderHeaderSeed
-- Demo.DemoSalesOrderDetailSeed
+- Demonstracja. DemoSalesOrderHeaderSeed
+- Demonstracja. DemoSalesOrderDetailSeed
 
 
-Tabele zoptymalizowane pod kątem pamięci można sprawdzić za pomocą **Eksplorator obiektów** w programie SSMS. Kliknij prawym przyciskiem myszy pozycję **tabele** > **Ustawienia** > filtru**Filtr** > **jest zoptymalizowane pod kątem pamięci**. Wartość jest równa 1.
+Tabele zoptymalizowane pod kątem pamięci można sprawdzić za pomocą **Eksplorator obiektów** w programie SSMS. Kliknij prawym przyciskiem myszy pozycję **tabele** > **Filtr** > **Ustawienia filtru** > **jest zoptymalizowana pod kątem pamięci**. Wartość jest równa 1.
 
 
 Lub można wykonywać zapytania dotyczące widoków wykazu, takich jak:
@@ -100,7 +100,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**Procedura składowana skompilowana w sposób macierzysty**: Tabeli SalesLT. USP _InsertSalesOrder_inmem można sprawdzić za pomocą zapytania widoku wykazu:
+**Procedura składowana skompilowana w sposób macierzysty**: można sprawdzić tabeli SalesLT. USP _insertsalesorder_inmem za pomocą zapytania widoku wykazu:
 
 
 ```sql
@@ -116,8 +116,8 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 Jedyną różnicą między poniższymi *procedurami składowanymi* jest użycie w pierwszej kolejności wersji zoptymalizowanych pod kątem pamięci, podczas gdy druga procedura używa zwykłych tabel na dysku:
 
-- SalesLT **.** usp_InsertSalesOrder **_inmem**
-- SalesLT **.** usp_InsertSalesOrder **_ondisk**
+- Tabeli SalesLT **.** usp_InsertSalesOrder **_inmem**
+- Tabeli SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
 
 W tej sekcji dowiesz się, jak za pomocą narzędzia użyteczny **ostress. exe** wykonać dwa procedury składowane na poziomach obciążeniowych. Można porównać czas trwania dwóch przebiegów obciążeniowych.
@@ -140,7 +140,7 @@ Ta sekcja zawiera skrypt T-SQL, który jest osadzony w naszym wierszu polecenia 
 
 Poniższy skrypt wstawia przykładowy porządek sprzedaży z pięcioma wierszami wierszy do następujących *tabel*zoptymalizowanych pod kątem pamięci:
 
-- SalesLT.SalesOrderHeader_inmem
+- Tabeli SalesLT. SalesOrderHeader_inmem
 - Tabeli SalesLT. SalesOrderDetail_inmem
 
 
@@ -171,10 +171,10 @@ end
 Aby udostępnić wersję *_ondisk* poprzedniego skryptu T-SQL dla ostress. exe, należy zamienić oba wystąpienia podciągu *_inmem* na *_ondisk*. Te zamienniki mają wpływ na nazwy tabel i procedur składowanych.
 
 
-### <a name="install-rml-utilities-and-ostress"></a>Zainstaluj narzędzia RML i`ostress`
+### <a name="install-rml-utilities-and-ostress"></a>Zainstaluj narzędzia RML i `ostress`
 
 
-Najlepiej zaplanować uruchomienie programu ostress. exe na maszynie wirtualnej platformy Azure. Należy utworzyć maszynę [wirtualną platformy Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) w tym samym regionie geograficznym platformy Azure, w którym znajduje się baza danych AdventureWorksLT. Ale zamiast tego można uruchomić ostress. exe na laptopie.
+Najlepiej zaplanować uruchomienie programu ostress. exe na maszynie wirtualnej platformy Azure. Należy utworzyć [maszynę wirtualną platformy Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) w tym samym regionie geograficznym platformy Azure, w którym znajduje się baza danych AdventureWorksLT. Ale zamiast tego można uruchomić ostress. exe na laptopie.
 
 
 Na maszynie wirtualnej lub na dowolnym z wybranych hostów Zainstaluj narzędzia odtwarzania RML. Narzędzia te obejmują ostress. exe.
@@ -198,7 +198,7 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-inmem-stress-workload-first"></a>Najpierw uruchom obciążenie obciążeniowe *_inmem*
+### <a name="run-the-_inmem-stress-workload-first"></a>Najpierw uruchom obciążenie obciążeniowe *_inmem*
 
 
 Możesz użyć okna *wiersza polecenia RML cmd* , aby uruchomić nasz wiersz poleceń ostress. exe. Parametry wiersza polecenia bezpośrednio `ostress` do:
@@ -223,7 +223,7 @@ Aby uruchomić poprzedni wiersz polecenia ostress. exe:
 
 2. Skopiuj tekst poprzedniego wiersza polecenia ostress. exe do Schowka.
 
-3. `<placeholders>` Zamień na parametry-S-u-P-d z prawidłowymi wartościami rzeczywistymi.
+3. Zastąp wartość `<placeholders>` dla parametrów-S-U-P-d z prawidłowymi wartościami rzeczywistymi.
 
 4. Uruchom edytowany wiersz polecenia w oknie RML cmd.
 
@@ -231,12 +231,12 @@ Aby uruchomić poprzedni wiersz polecenia ostress. exe:
 #### <a name="result-is-a-duration"></a>Wynik to czas trwania
 
 
-Po `ostress.exe` zakończeniu zapisuje czas wykonywania jako ostatni wiersz danych wyjściowych w oknie RML cmd. Na przykład krótszy przebieg testu został zaostatni o 1,5 minut:
+Po zakończeniu `ostress.exe` czas trwania przebiegu jest pisywany jako ostatni wiersz danych wyjściowych w oknie cmd RML. Na przykład krótszy przebieg testu został zaostatni o 1,5 minut:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>Zresetuj, Edytuj pod kątem *_ondisk*, a następnie uruchom ponownie
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Zresetuj, Edytuj pod kątem *_ondisk*, a następnie uruchom ponownie
 
 
 Po uzyskaniu wyniku z przebiegu *_inmem* wykonaj następujące kroki, aby uruchomić *_ondisk* :
@@ -256,13 +256,13 @@ Po uzyskaniu wyniku z przebiegu *_inmem* wykonaj następujące kroki, aby urucho
 
 #### <a name="expected-comparison-results"></a>Oczekiwane wyniki porównania
 
-Nasze testy w pamięci pokazują, że wydajność ulepszona przez **dziewięć razy** dla tego obciążenia uproszczony z `ostress` uruchomionym na maszynie wirtualnej platformy Azure w tym samym regionie świadczenia usługi Azure, w której znajduje się baza danych.
+Nasze testy w pamięci pokazują, że wydajność ulepszona przez **dziewięć razy** dla tego obciążenia uproszczony z uruchomioną `ostress` na maszynie wirtualnej platformy Azure w tym samym regionie świadczenia usługi Azure, w której znajduje się baza danych.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
 &nbsp;
 
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. Instalowanie przykładowej analizy w pamięci
+## <a name="2-install-the-in-memory-analytics-sample"></a>2. Zainstaluj przykład analizy w pamięci
 
 
 W tej sekcji porównano wyniki operacji we/wy i statystyki w przypadku używania indeksu magazynu kolumn w porównaniu z tradycyjnym indeksem drzewa b.
@@ -279,7 +279,7 @@ W przypadku analiz w czasie rzeczywistym w obciążeniu OLTP często najlepszym 
    - Użyj tej dokładnej nazwy.
    - Wybierz dowolną warstwę usługi Premium.
 
-2. Skopiuj [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) do Schowka.
+2. Skopiuj [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) do Schowka.
    - Skrypt T-SQL tworzy niezbędne obiekty w pamięci w przykładowej bazie danych AdventureWorksLT, która została utworzona w kroku 1.
    - Skrypt tworzy tabelę wymiarów i dwie tabele faktów. Tabele faktów są wypełniane 3 500 000 wierszami.
    - Wykonanie skryptu może zająć 15 minut.
@@ -302,14 +302,14 @@ W przypadku analiz w czasie rzeczywistym w obciążeniu OLTP często najlepszym 
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>Kluczowe zapytania do porównywania indeksu magazynu kolumn
 
 
-Istnieje [kilka typów zapytań T-SQL, które można uruchomić,](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) aby zobaczyć ulepszenia wydajności. W kroku 2 w skrypcie T-SQL należy zwrócić uwagę na tę parę zapytań. Różnią się one tylko jednym wierszem:
+Istnieje [kilka typów zapytań T-SQL, które można uruchomić,](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/clustered_columnstore_sample_queries.sql) aby zobaczyć ulepszenia wydajności. W kroku 2 w skrypcie T-SQL należy zwrócić uwagę na tę parę zapytań. Różnią się one tylko jednym wierszem:
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
 - `FROM FactResellerSalesXL_CCI a`
 
 
-Klastrowany indeks magazynu kolumn znajduje się w tabeli\_FactResellerSalesXL WIK.
+Klastrowany indeks magazynu kolumn znajduje się w tabeli FactResellerSalesXL @ no__t-0CCI.
 
 Poniższy fragment skryptu T-SQL drukuje statystyki dla operacji we/wy oraz czas dla kwerendy każdej tabeli.
 
@@ -382,7 +382,7 @@ W bazie danych z warstwą cenową P2 można oczekiwać około dziewięciu razy w
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Szybki Start 1: Technologie OLTP w pamięci do szybszej wydajności T-SQL](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Szybki Start 1: technologie OLTP w pamięci do szybszej wydajności T-SQL](https://msdn.microsoft.com/library/mt694156.aspx)
 
 - [Używanie OLTP w pamięci w istniejącej aplikacji Azure SQL](sql-database-in-memory-oltp-migration.md)
 
@@ -417,4 +417,4 @@ W bazie danych z warstwą cenową P2 można oczekiwać około dziewięciu razy w
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
-- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Narzędzia danych SQL Server (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

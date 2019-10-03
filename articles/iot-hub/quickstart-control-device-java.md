@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Sterowanie urządzeniem z poziomu usługi Azure IoT Hub przy użyciu języka Java'
+title: 'Szybki Start: sterowanie urządzeniem w usłudze Azure IoT Hub przy użyciu języka Java'
 description: W tym przewodniku Szybki start uruchomisz dwie przykładowe aplikacje Java. Jedna z aplikacji to aplikacja zaplecza, która może zdalnie kontrolować urządzenia podłączone do centrum. Druga z aplikacji symuluje urządzenie podłączone do centrum, które można kontrolować zdalnie.
 author: wesmc7777
 manager: philmea
@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 9fb110eff1d498b2b20952048759c76a2dac39f2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f59a3409d508c63f232294d8d66ade5669815b3c
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306484"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843326"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Szybki start: Sterowanie urządzeniem podłączonym do usługi Azure IoT Hub za pomocą języka Java
+# <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Szybki Start: sterowanie urządzeniem podłączonym do usługi Azure IoT Hub za pomocą języka Java
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -77,7 +77,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
-   **MyJavaDevice**: nazwa rejestrowanego urządzenia. Użyj elementu **MyJavaDevice** w pokazany sposób. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
+   **MyJavaDevice**: nazwa urządzenia, które jest rejestrowany. Użyj elementu **MyJavaDevice** w pokazany sposób. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -119,7 +119,7 @@ Użyjesz tej wartości w dalszej części tego przewodnika Szybki start. Paramet
 
 ## <a name="listen-for-direct-method-calls"></a>Nasłuchiwanie wywołań metod bezpośrednich
 
-Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym dla urządzenia w centrum IoT, wysyła symulowane dane telemetryczne i nasłuchuje wywołań metod bezpośrednich z centrum. W tym przewodniku Szybki start wywołanie metody bezpośredniej z centrum nakazuje urządzeniu zmienić interwał wysyłania danych telemetrycznych. Urządzenie symulowane wysyła potwierdzenie z powrotem do centrum po wykonaniu metody bezpośredniej.
+Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym dla urządzenia w centrum IoT, wysyła symulowane dane telemetryczne i nasłuchuje wywołań metod bezpośrednich z centrum. W tym przewodniku Szybki start wywołanie metody bezpośredniej z centrum nakazuje urządzeniu zmienić interwał wysyłania danych telemetrycznych. Symulowane urządzenie wysyła potwierdzenie z powrotem do centrum po wykonaniu metody bezpośredniej.
 
 1. W lokalnym oknie terminalu przejdź do folderu głównego przykładowego projektu Java. Następnie przejdź do folderu **iot-hub\Quickstarts\simulated-device-2**.
 
@@ -141,11 +141,11 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym 
 
     Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie wysyłania przez aplikację urządzenia symulowanego danych telemetrycznych do centrum IoT:
 
-    ![Uruchamianie urządzenia symulowanego](./media/quickstart-control-device-java/SimulatedDevice-1.png)
+    ![Dane wyjściowe z telemetrii wysyłanej przez urządzenie do centrum IoT Hub](./media/quickstart-control-device-java/iot-hub-application-send-telemetry-output.png)
 
 ## <a name="call-the-direct-method"></a>Wywoływanie metody bezpośredniej
 
-Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudze IoT Hub. Aplikacja wykonuje wywołania metod bezpośrednich do urządzenia za pośrednictwem centrum IoT oraz nasłuchuje potwierdzeń. Aplikacja zaplecza usługi IoT Hub zwykle działa w chmurze.
+Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudze IoT Hub. Aplikacja wykonuje bezpośrednie wywołania metody do urządzenia za pośrednictwem Centrum IoT Hub i nasłuchuje pod kątem potwierdzeń. Aplikacja zaplecza usługi IoT Hub zwykle działa w chmurze.
 
 1. W innym lokalnym oknie terminalu przejdź do folderu głównego przykładowego projektu Java. Następnie przejdź do folderu **iot-hub\Quickstarts\back-end-application**.
 
@@ -165,13 +165,13 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
     java -jar target/back-end-application-1.0.0-with-deps.jar
     ```
 
-    Poniższy zrzut ekranu przedstawia dane wyjściowe w sytuacji, w której aplikacja wykonuje wywołanie metody bezpośredniej do urządzenia i odbiera potwierdzenie:
+    Na poniższym zrzucie ekranu przedstawiono dane wyjściowe, gdy aplikacja wysyła wywołanie metody bezpośredniej do urządzenia i otrzymuje potwierdzenie:
 
-    ![Uruchamianie aplikacji zaplecza](./media/quickstart-control-device-java/BackEndApplication.png)
+    ![Dane wyjściowe w postaci aplikacji umożliwiają bezpośrednie wywoływanie metody za pośrednictwem Centrum IoT Hub](./media/quickstart-control-device-java/iot-hub-direct-method-call-output.png)
 
     Po uruchomieniu aplikacji zaplecza zobaczysz komunikat w oknie konsoli uruchomionym na urządzeniu symulowanym, a także zobaczysz, że zmienia się prędkość wysyłania komunikatów:
 
-    ![Zmiana w kliencie symulowanym](./media/quickstart-control-device-java/SimulatedDevice-2.png)
+    ![Komunikat konsoli z urządzenia pokazuje szybkość zmiany](./media/quickstart-control-device-java/iot-hub-sent-message-change-rate.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

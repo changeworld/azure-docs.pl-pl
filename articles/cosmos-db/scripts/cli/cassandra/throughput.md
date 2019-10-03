@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 9/25/2019
-ms.openlocfilehash: fc635be68c87d29b21c41bb70aac4e3cbe34bcd3
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 3615157543d826050b8adf0e6ae59bf62ad9cb1b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275416"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827300"
 ---
 # <a name="update-rus-for-a-cassandra-keyspace-and-table-using-azure-cli"></a>Aktualizowanie RU/s dla Cassandraej przestrzeni kluczy i tabeli przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -44,7 +44,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Tworzy konto usługi Azure Cosmos DB. |
 | [AZ cosmosdb Cassandra Create Space](/cli/azure/cosmosdb/cassandra/keyspace#az-cosmosdb-cassandra-keyspace-create) | Tworzy przestrzeń kluczy Cassandra usługi Azure Cosmos. |
 | [AZ cosmosdb Cassandra Table Create](/cli/azure/cosmosdb/cassandra/table#az-cosmosdb-cassandra-table-create) | Tworzy tabelę usługi Azure Cosmos Cassandra. |
-| [AZ cosmosdb Cassandra — przepływność przestrzeni kluczy](/cli/azure/cosmosdb/cassandra/keyspace/throughputaz-cosmosdb-cassandra-keyspace-throughput-update) | Zaktualizuj RU/s dla przestrzeni kluczy usługi Azure Cosmos Cassandra. |
+| [AZ cosmosdb Cassandra — przepływność przestrzeni kluczy](/cli/azure/cosmosdb/cassandra/keyspace/throughput?view=azure-cli-latest#az-cosmosdb-cassandra-keyspace-throughput-update) | Zaktualizuj RU/s dla przestrzeni kluczy usługi Azure Cosmos Cassandra. |
 | [AZ cosmosdb Cassandra — aktualizacja przepływności tabeli](/cli/azure/cosmosdb/cassandra/table/throughput#az-cosmosdb-cassandra-table-throughput-update) | Aktualizowanie RU/s dla tabeli usługi Azure Cosmos Cassandra. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 

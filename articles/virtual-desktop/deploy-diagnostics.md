@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c9ae01b3a8f49b210c363fea20bc3c221d9e837a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676659"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839636"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -148,7 +148,7 @@ Aby można było wyświetlić kondycję maszyn wirtualnych, należy włączyć L
 2. Przejdź do obszaru roboczego Log Analytics.
 3. W lewym panelu w obszarze źródła danych obszaru roboczego wybierz pozycję **maszyny wirtualne**.
 4. Wybierz nazwę maszyny wirtualnej, z którą chcesz nawiązać połączenie.
-5. Wybierz przycisk **Połącz**.
+5. Wybierz pozycję **Połącz**.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -159,7 +159,7 @@ Aby wdrożyć szablon zarządzania zasobami platformy Azure dla narzędzia Diagn
 
     -   Identyfikator klienta
     -   Klient-klucz tajny
-    -   Identyfikator obszaru roboczego usługi Log Analytics
+    -   Identyfikator obszaru roboczego Log Analytics
 
 3.  Po podaniu parametrów wejściowych Zaakceptuj warunki i postanowienia, a następnie wybierz pozycję **Kup**.
 
@@ -203,7 +203,7 @@ Po zalogowaniu się do konta przy użyciu informacji otrzymanych od organizacji 
 
 ### <a name="how-to-read-activity-search-results"></a>Jak odczytać wyniki wyszukiwania aktywności
 
-Działania są sortowane według sygnatury czasowej, najpierw z najnowszą aktywnością. Jeśli wyniki zwracają błąd, najpierw sprawdź, czy jest to błąd usługi. W przypadku błędów usługi Utwórz bilet pomocy technicznej z informacjami o działaniu, aby pomóc nam w debugowaniu problemu. Wszystkie inne typy błędów mogą być zwykle rozwiązywane przez użytkownika lub administratora. Aby zapoznać się z listą najczęściej spotykanych scenariuszy błędów i sposobu ich rozwiązywania, zobacz temat [identyfikowanie problemów z funkcją diagnostyki](diagnostics-role-service.md#common-error-scenarios).
+Działania są sortowane według sygnatury czasowej, najpierw z najnowszą aktywnością. Jeśli wyniki zwracają błąd, najpierw sprawdź, czy jest to błąd usługi. W przypadku błędów usługi Utwórz bilet pomocy technicznej z informacjami o działaniu, aby pomóc nam w debugowaniu problemu. Wszystkie inne typy błędów mogą być zwykle rozwiązywane przez użytkownika lub administratora. Aby zapoznać się z listą najczęściej spotykanych scenariuszy błędów i sposobu ich rozwiązywania, zobacz [Identyfikowanie i diagnozowanie problemów](diagnostics-role-service.md#common-error-scenarios).
 
 >[!NOTE]
 >Błędy usługi są nazywane "błędami zewnętrznymi" w połączonej dokumentacji. Ta wartość zostanie zmieniona podczas aktualizowania odwołania programu PowerShell.

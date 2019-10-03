@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 5c90d7b5eefdf8357c0f6f8efb619bd69af12b06
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 53c9dea83fc6d413d7e82194696ffedabcc8cf7b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843282"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830142"
 ---
 Ważne jest, aby zachować bezpieczeństwo maszyny wirtualnej dla aplikacji, które są uruchamiane. Zabezpieczanie maszyn wirtualnych może obejmować jedną lub więcej usług i funkcji platformy Azure, które obejmują bezpieczny dostęp do maszyn wirtualnych i bezpieczny magazyn danych. Ten artykuł zawiera informacje, które umożliwiają bezpieczne zachowanie maszyny wirtualnej i aplikacji.
 
@@ -25,7 +25,7 @@ Dostęp w czasie just in Time do Security Center można zastosować w ramach wdr
 
 ## <a name="encryption"></a>Szyfrowanie
 
-W przypadku ulepszonych zabezpieczeń i zgodności [maszyn](../articles/virtual-machines/linux/encrypt-disks.md) wirtualnych z [systemem Windows](../articles/virtual-machines/windows/encrypt-disks.md) można zaszyfrować dyski wirtualne na platformie Azure. Dyski wirtualne na maszynach wirtualnych z systemem Windows są szyfrowane przy użyciu funkcji BitLocker. Dyski wirtualne na maszynach wirtualnych z systemem Linux są szyfrowane przy użyciu DM-Crypt. 
+W przypadku ulepszonych zabezpieczeń i zgodności [maszyn](../articles/virtual-machines/linux/disk-encryption-overview.md) wirtualnych z [systemem Windows](../articles/virtual-machines/windows/encrypt-disks.md) można zaszyfrować dyski wirtualne na platformie Azure. Dyski wirtualne na maszynach wirtualnych z systemem Windows są szyfrowane przy użyciu funkcji BitLocker. Dyski wirtualne na maszynach wirtualnych z systemem Linux są szyfrowane przy użyciu DM-Crypt. 
 
 Nie jest naliczana opłata za szyfrowanie dysków wirtualnych na platformie Azure. Klucze kryptograficzne są przechowywane w Azure Key Vault przy użyciu ochrony oprogramowania lub można importować lub generować klucze w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń) z certyfikatem standardu FIPS 140-2 Level 2. Te klucze kryptograficzne są używane do szyfrowania i odszyfrowywania dysków wirtualnych dołączonych do maszyny wirtualnej. Zachowujesz kontrolę nad tymi kluczami kryptograficznymi i można przeprowadzić inspekcję ich użycia. Jednostka usługi Azure Active Directory zapewnia bezpieczny mechanizm wystawiania tych kluczy kryptograficznych w miarę włączania i wyłączania maszyn wirtualnych.
 

@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3ba804f76f8d443c0b49a9b4e5425333f01f0b9a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bbf127f105f0ef22a23f00541396c2ac66b0e5f9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102326"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828359"
 ---
-# <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Szybki start: Tworzenie maszyny wirtualnej systemu Windows z programem SQL Server 2017 w witrynie Azure Portal
+# <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Szybki start: tworzenie maszyny wirtualnej systemu Windows z programem SQL Server 2017 w witrynie Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Windows](quickstart-sql-vm-create-portal.md)
@@ -43,7 +43,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 1. Wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania.
 1. Wybierz pozycję **+ Dodaj** , aby otworzyć stronę **Wybieranie opcji wdrożenia SQL** . Dodatkowe informacje można wyświetlić, wybierając pozycję **Pokaż szczegóły** na kafelku **maszyny wirtualne SQL** .
-1. Wybierz obraz **Free SQL Server License: SQL Server deweloper 2017 na obrazie systemu** Windows Server 2016 z listy rozwijanej.
+1. Wybierz **bezpłatną licencję SQL Server: SQL Server 2017 Developer w systemie Windows Server 2016** obraz z listy rozwijanej.
 
    ![Nowe okno wyszukiwania](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
@@ -57,13 +57,13 @@ Na karcie **podstawowe** podaj następujące informacje:
 
 1. W sekcji **szczegóły projektu** wybierz subskrypcję platformy Azure, a następnie wybierz pozycję **Utwórz nową** , aby utworzyć nową grupę zasobów. Wpisz _SQLVM-RG_ jako nazwę.
 
-   ![Subscription](media/quickstart-sql-vm-create-portal/basics-project-details.png)
+   ![Subskrypcja](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
 1. W obszarze **szczegóły wystąpienia**:
     1. Wpisz _SQLVM_ dla **nazwy maszyny wirtualnej**. 
     1. Wybierz lokalizację dla **regionu**. 
-    1. Na potrzeby tego przewodnika Szybki Start pozostaw opcję **dostępność** ustawioną na niewymaganą _nadmiarowość infrastruktury_. Aby uzyskać więcej informacji na temat opcji dostępności, zobacz [dostępność](../../windows/availability.md). 
-    1. Na liście **obraz** wybierz pozycję _bezpłatna SQL Server Licencja: SQL Server 2017 Developer w systemie Windows Server_2016. 
+    1. Na potrzeby tego przewodnika Szybki Start pozostaw opcję **dostępność** ustawioną na _niewymaganą nadmiarowość infrastruktury_. Aby uzyskać więcej informacji na temat opcji dostępności, zobacz [dostępność](../../windows/availability.md). 
+    1. Na liście **obraz** wybierz opcję _bezpłatna SQL Server licencja: SQL Server 2017 Developer w systemie Windows Server 2016_. 
     1. Wybierz opcję **zmiany rozmiaru** maszyny wirtualnej i wybierz **podstawową ofertę a2** . Pamiętaj, aby wyczyścić zasoby po wykonaniu tych czynności, aby zapobiec nieoczekiwanym opłatom. 
 
    ![Szczegóły wystąpienia](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
@@ -76,14 +76,15 @@ Na karcie **podstawowe** podaj następujące informacje:
 
    ![Reguły portów wejściowych](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
-## <a name="sql-server-settings"></a>Ustawienia serwera SQL Server
+## <a name="sql-server-settings"></a>Ustawienia programu SQL Server
 
 Na karcie **ustawienia SQL Server** skonfiguruj następujące opcje:
 
-1. W obszarze **zabezpieczenia & sieci**wybierz opcję _publiczny (Internet_) dla **łączności SQL** i zmień port na `1401` , aby uniknąć używania dobrze znanego numeru portu w scenariuszu publicznym. 
-1. W obszarze **uwierzytelnianie SQL**wybierz pozycję **Włącz**. Identyfikator logowania SQL jest ustawiony na tą samą nazwę użytkownika i hasło, które zostały skonfigurowane na potrzeby maszyny wirtualnej. Użyj ustawień domyślnych dla **Azure Key Vault integracji** i **konfigurowania magazynu**.  
+1. W obszarze **zabezpieczenia & sieci**wybierz opcję _publiczny (Internet_) dla **łączności SQL** i zmień port na `1401`, aby uniknąć używania dobrze znanego numeru portu w scenariuszu publicznym. 
+1. W obszarze **uwierzytelnianie SQL**wybierz pozycję **Włącz**. Identyfikator logowania SQL jest ustawiony na tą samą nazwę użytkownika i hasło, które zostały skonfigurowane na potrzeby maszyny wirtualnej. Użyj domyślnego ustawienia [**integracji Azure Key Vault**](virtual-machines-windows-ps-sql-keyvault.md). **Konfiguracja magazynu** jest niedostępna dla obrazu maszyny wirtualnej w warstwie Podstawowa SQL Server ale można znaleźć więcej informacji na temat dostępnych opcji innych obrazów w [konfiguracji magazynu](virtual-machines-windows-sql-server-storage-configuration.md#new-vms).  
 
    ![Ustawienia zabezpieczeń programu SQL Server](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
+
 
 1. W razie konieczności Zmień inne ustawienia, a następnie wybierz pozycję **Przegląd + Utwórz**. 
 

@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241710"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827156"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD? (Wersja zapoznawcza)
 
@@ -46,7 +46,7 @@ Organizacje korporacyjne często napotykają problemy związane z zarządzaniem 
 - Użytkownicy mogą mieć problemy z lokalizowaniem odpowiednich osób lub odpowiednich zasobów
 - Gdy użytkownicy znajdą i uzyskają dostęp do zasobu, mogą uzyskać dostęp do niego dłużej niż jest to wymagane do celów służbowych
 
-Te problemy są złożone dla użytkowników, którzy potrzebują dostępu z innego katalogu, takich jak użytkownicy zewnętrzni z organizacji łańcucha dostaw lub innych partnerów firmy. Przykład:
+Te problemy są złożone dla użytkowników, którzy potrzebują dostępu z innego katalogu, takich jak użytkownicy zewnętrzni z organizacji łańcucha dostaw lub innych partnerów firmy. Na przykład:
 
 - Organizacje mogą nie znać wszystkich konkretnych osób w innych katalogach, aby mogli je zapraszać
 - Nawet jeśli organizacje mogły zaprosić tych użytkowników, organizacje mogą nie pamiętać, aby zarządzać wszystkimi dostępem użytkownika spójnie
@@ -105,7 +105,7 @@ Na poniższym diagramie przedstawiono przykład różnych elementów w usłudze 
 
 ![Omówienie zarządzania uprawnieniami](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="external-users"></a>Zewnętrzni użytkownicy
+## <a name="external-users"></a>Użytkownicy zewnętrzni
 
 W przypadku korzystania z funkcji zapraszania [usługi Azure AD Business-to-Business (B2B)](../b2b/what-is-b2b.md) musisz znać adresy e-mail użytkowników zewnętrznego gościa, którzy mają zostać dołączeni do katalogu zasobów i z którymi pracują. Jest to doskonałe rozwiązanie, gdy pracujesz nad mniejszym lub krótkoterminowym projektem i znasz już wszystkich uczestników, ale jest to trudniejsze do zarządzania, jeśli masz wielu użytkowników, z którymi chcesz pracować, lub jeśli uczestnicy zmieniają się z upływem czasu.  Na przykład użytkownik może pracować z inną organizacją i mieć jeden punkt kontaktu z tą organizacją, ale w miarę upływu czasu dodatkowi użytkownicy z tej organizacji będą musieli również uzyskać dostęp.
 
@@ -122,17 +122,17 @@ Aby lepiej zrozumieć Zarządzanie uprawnieniami i dokumentację, należy zapozn
 | Termin lub pojęcie | Opis |
 | --- | --- |
 | Zarządzanie prawami | Usługa, która przypisuje, odwołuje i zarządza pakietami dostępu. |
-| pakiet dostępu | Kolekcja uprawnień i zasad do zasobów, które użytkownicy mogą żądać. Pakiet dostępu jest zawsze zawarty w wykazie. |
-| żądanie dostępu | Żądanie dostępu do pakietu dostępu. Żądanie zwykle przechodzi przez przepływ pracy. |
-| zasady | Zestaw reguł definiujących cykl życia dostępu, takich jak użytkownicy uzyskują dostęp, kto może zatwierdzić i jak długo użytkownicy mają dostęp. Przykładowe zasady obejmują dostęp pracownika i dostęp zewnętrzny. |
-| catalog | Kontener powiązanych zasobów i pakietów dostępu. |
+| pakiet dostępu | Zbiór zasobów wymaganych przez zespół lub projekt i podlega zasadom. Pakiet dostępu jest zawsze zawarty w wykazie. |
+| żądanie dostępu | Żądanie dostępu do zasobów w pakiecie dostępu. Żądanie zwykle przechodzi przez przepływ pracy. |
+| policy | Zestaw reguł definiujących cykl życia dostępu, takich jak użytkownicy uzyskują dostęp, kto może zatwierdzić i jak długo użytkownicy mają dostęp. Przykładowe zasady obejmują dostęp pracownika i dostęp zewnętrzny. |
+| Pełnotekstowy | Kontener powiązanych zasobów i pakietów dostępu. |
 | Wykaz ogólny | Wbudowany wykaz, który jest zawsze dostępny. Aby dodać zasoby do wykazu ogólnego, wymagane są pewne uprawnienia. |
-| resource | Zasób lub usługa (na przykład grupa Office, Grupa zabezpieczeń, aplikacja lub witryna usługi SharePoint Online), do której użytkownik może uzyskać uprawnienia. |
-| typ zasobu | Typ zasobu, który obejmuje grupy, aplikacje i witryny usługi SharePoint Online. |
+| Zasoby | Zasób lub usługa (na przykład grupa Office, Grupa zabezpieczeń, aplikacja lub witryna usługi SharePoint Online), do której użytkownik może uzyskać uprawnienia. |
+| Typ zasobu | Typ zasobu, który obejmuje grupy, aplikacje i witryny usługi SharePoint Online. |
 | Rola zasobu | Kolekcja uprawnień skojarzonych z zasobem. |
 | Katalog zasobów | Katalog, który ma co najmniej jeden zasób do udostępnienia. |
 | przypisani użytkownicy | Przypisanie pakietu dostępu do użytkownika, tak aby użytkownik miał wszystkie role zasobów tego pakietu. |
-| włącz | Proces tworzenia pakietu dostępu dostępnego dla użytkowników do żądania. |
+| Mogły | Proces tworzenia pakietu dostępu dostępnego dla użytkowników do żądania. |
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
 

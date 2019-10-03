@@ -1,0 +1,218 @@
+---
+title: Ogólne rozwiązywanie problemów z wydajnością dla maszyny wirtualnej platformy Azure z systemem Linux lub Windows
+description: W tym artykule opisano ogólne Rozwiązywanie problemów z wydajnością maszyny wirtualnej za pośrednictwem monitorowania i poszanowania wąskich gardeł oraz możliwe Korygowanie problemów, które mogą wystąpić.
+services: virtual-machines-windows, azure-resource-manager
+documentationcenter: ''
+author: v-miegge
+manager: dcscontentpm
+editor: ''
+tags: top-support-issue, azure-resource-manager
+ms.service: virtual-machines-windows
+ms.workload: na
+ms.tgt_pltfrm: vm-windows
+ms.topic: troubleshooting
+ms.date: 09/18/2019
+ms.author: v-miegge
+ms.openlocfilehash: 4e4a2b1df178d884e02ab5029f2e76a0376a7653
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71846565"
+---
+# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Ogólne rozwiązywanie problemów z wydajnością dla maszyny wirtualnej platformy Azure z systemem Linux lub Windows
+
+W tym artykule opisano ogólne Rozwiązywanie problemów z wydajnością maszyny wirtualnej za pośrednictwem monitorowania i poszanowania wąskich gardeł oraz możliwe Korygowanie problemów, które mogą wystąpić.
+
+## <a name="enabling-monitoring"></a>Włączanie monitorowania
+
+### <a name="azure-iaas-virtual-machine-monitoring"></a>Monitorowanie maszyn wirtualnych IAAS platformy Azure
+
+Aby monitorować maszynę wirtualną gościa, należy użyć monitorowania maszyn wirtualnych platformy Azure, które będzie powiadamiać o określonych warunkach zasobów wysokiego poziomu. Aby sprawdzić, czy włączono diagnostykę maszyny wirtualnej, zobacz [Omówienie dzienników zasobów platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#change-settings-for-an-existing-resource). Jeśli zobaczysz następujące polecenie, najprawdopodobniej nie masz włączonej diagnostyki:
+
+![Monitorowanie nie jest włączone](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
+ 
+### <a name="enable-vm-diagnostics-through-microsoft-azure-portal"></a>Włącz diagnostykę maszyny wirtualnej za poorednictwem Azure Portal firmy Microsoft
+
+Aby włączyć diagnostykę maszyn wirtualnych, przejdź do maszyny wirtualnej, kliknij pozycję **Ustawienia**, a następnie kliknij pozycję **Diagnostyka**.
+
+![Kliknij kolejno pozycje Ustawienia, Diagnostyka](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
+ 
+### <a name="enable-storage-account-diagnostics-through-azure-portal"></a>Włącz diagnostykę konta magazynu za Azure Portal
+
+Najpierw należy określić konto magazynu (lub konta) używane przez maszynę wirtualną, wybierając maszynę wirtualną. Kliknij pozycję **Ustawienia**, a następnie kliknij pozycję **dyski**:
+
+![Kliknij przycisk Ustawienia, a następnie dysków](media/troubleshoot-performance-virtual-machine-linux-windows/3-storage-disks-disks-selection.png)
+
+W portalu przejdź do konta magazynu (lub kont) dla maszyny wirtualnej i wykonaj następujące czynności:
+
+![Wybieranie metryk obiektów BLOB](media/troubleshoot-performance-virtual-machine-linux-windows/4-select-blob-metrics.png)
+ 
+1. Wybierz pozycję **wszystkie ustawienia**.
+2. Włącz diagnostykę.
+3. Wybierz pozycję *metryki *obiektów BLOB** * i ustaw wartość przechowywanie na **30** dni.
+4. Zapisz zmiany.
+
+## <a name="observing-bottlenecks"></a>Obserwowanie wąskich gardeł
+
+### <a name="accessing-the-monitoring"></a>Uzyskiwanie dostępu do monitorowania
+
+Wybierz maszynę wirtualną platformy Azure, którą chcesz zbadać, i wybierz pozycję **monitorowanie**.
+
+![Wybierz monitorowanie](media/troubleshoot-performance-virtual-machine-linux-windows/5-observe-monitoring.png)
+ 
+### <a name="timelines-of-observation"></a>Osie czasu obserwacji
+
+Aby określić, czy masz jakieś wąskie gardła zasobów, Przejrzyj dane. Jeśli okaże się, że maszyna działała prawidłowo, ale została zgłoszona, że wydajność była ostatnio obniżona, przejrzyj przedział czasu, w którym znajdują się dane metryki wydajności przed zgłoszoną zmianą, podczas i po tym problemie.
+
+### <a name="check-for-cpu-bottleneck"></a>Sprawdzanie wąskiego gardła procesora
+
+![Sprawdzanie wąskiego gardła procesora](media/troubleshoot-performance-virtual-machine-linux-windows/6-cpu-bottleneck-time-range.png)
+
+1. Edytuj Graf.
+2. Ustaw zakres czasu.
+3. Następnie należy dodać w liczniku: procent użycia procesora CPU gościa
+4. Pisał.
+
+### <a name="cpu-observe-trends"></a>Trendy dotyczące procesora CPU
+
+Analizując problemy z wydajnością, weź pod uwagę trendy i zapoznaj się z nimi. W następnych sekcjach użyjemy wykresów monitorowania z portalu do wyświetlania trendów. Mogą być również przydatne w przypadku zachowań krzyżowego odwołujących się do różnic w tym samym okresie czasu. Aby dostosować wykresy, kliknij pozycję [Azure monitor Data Platform](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform).
+
+Skok — skok może być powiązany z zaplanowanym zadaniem/znanym zdarzeniem. Jeśli możesz zidentyfikować zadanie, ustal, czy zadanie jest uruchamiane na wymaganym poziomie wydajności. W przypadku akceptowalnej wydajności może nie być konieczne zwiększenie ilości zasobów.
+
+Zwiększanie i stałe — często wskazuje nowe obciążenie. Jeśli nie jest to rozpoznane obciążenie, Włącz monitorowanie na maszynie wirtualnej, aby dowiedzieć się, jakiego procesu (lub procesów) powoduje zachowanie. Po rozpoznaniu procesu Ustal, czy zwiększone zużycie jest spowodowane przez nieefektywny kod lub normalne użycie. W przypadku normalnego zużycia należy zdecydować, czy proces działa na wymaganym poziomie wydajności.
+
+Stała — Określ, czy maszyna wirtualna ma być zawsze uruchamiana na tym poziomie, czy ma działać tylko na tym poziomie, ponieważ Diagnostyka została włączona. Jeśli tak, zidentyfikuj proces (procesy) powodujący problem i rozważ dodanie większej ilości tego zasobu.
+
+Stale rośnie — stałe zwiększenie zużycia jest często niewydajnego kodu lub procesu, który zajmuje więcej obciążenia użytkownikami.
+
+### <a name="high-cpu-utilization-remediation"></a>Duże korygowanie użycia procesora CPU
+
+Jeśli aplikacja lub proces nie działa na poprawnym poziomie wydajności i widzisz 95% + moc użycia procesora CPU, można wykonać jedno z następujących zadań:
+
+* W celu natychmiastowego zwolnienia — zwiększenie rozmiaru maszyny wirtualnej do rozmiaru o większej liczbie rdzeni
+* Zapoznaj się z problemem — zlokalizuj aplikację/proces i Rozwiąż odpowiednie problemy.
+
+Jeśli zwiększono maszynę wirtualną, a procesor CPU nadal działa 95%, ustal, czy to ustawienie zapewnia lepszą wydajność lub wyższą przepływność aplikacji do akceptowalnego poziomu. W przeciwnym razie Rozwiązywanie problemów z indywidualnym application\process.
+
+## <a name="check-for-memory-bottleneck"></a>Sprawdzanie wąskiego gardła pamięci
+
+Aby wyświetlić metryki:
+
+1. Dodaj sekcję.
+2. Dodaj kafelek.
+3. Otwórz galerię.
+4. Wybierz użycie pamięci i przeciągnij ją. Gdy kafelek jest zadokowany, kliknij prawym przyciskiem myszy i wybierz pozycję **6x4**.
+
+### <a name="memory-observe-trends"></a>Trendy dotyczące pamięci
+
+Użycie pamięci pokazuje, ile pamięci jest zużywanej z maszyną wirtualną. Zapoznaj się z trendem i czy jest on mapowany na czas, w którym widzisz problemy. Zawsze powinna być dostępna więcej niż 100 MB dostępnej pamięci.
+
+Powiększanie i stałe/stałe — duże użycie pamięci może nie być przyczyną złej wydajności, ponieważ niektóre aplikacje, takie jak aparaty relacyjnych baz danych, przydzielają duże ilości pamięci, a wykorzystanie może nie być znaczące. Jeśli jednak istnieje wiele aplikacji zasobożernych pamięci, może zostać wyświetlona niska wydajność z rywalizacji o pamięć powodująca przycinanie i stronicowanie na dysku. Ta niska wydajność jest często zauważalną przyczyną wpływu na wydajność aplikacji.
+
+Stałe zwiększenie zużycia — możliwą aplikację "rozgrzewanie", to zużycie jest wspólne między aparatami bazy danych. Jednak może to również być znak przecieku pamięci w aplikacji. Zidentyfikuj aplikację i sprawdź, czy zachowanie jest oczekiwane.
+
+Użycie strony lub pliku wymiany — Sprawdź, czy używasz pliku stronicowania systemu Windows (znajdującego się na komputerze D: \) lub plik wymiany Linux (znajdujący się w `/dev/sdb`) są intensywnie używane. Jeśli na tych woluminach nie ma niczego z wyjątkiem tych plików, sprawdź, czy na tych dyskach są dostępne duże operacje odczytu i zapisu. Ten problem jest wskaźnikiem niewielkich warunków pamięci.
+
+### <a name="high-memory-utilization-remediation"></a>Duże korygowanie wykorzystania pamięci
+
+Aby rozwiązać duże wykorzystanie pamięci, wykonaj dowolne z następujących zadań:
+
+* W celu natychmiastowego zwolnienia lub użycia pliku lub wymiany plików — zwiększenie rozmiaru maszyny wirtualnej do jednego z większą ilością pamięci, a następnie monitorowanie.
+* Opis problemu — lokalizowanie aplikacji/procesu i rozwiązywanie problemów w celu identyfikowania wysoce zużywających się aplikacji pamięci.
+* Jeśli znasz aplikację, sprawdź, czy alokacja pamięci może być ograniczona.
+
+Jeśli po przeprowadzeniu uaktualnienia do większej maszyny wirtualnej okaże się, że nadal masz stały wzrost ciągły do 100%, zidentyfikuj aplikację/proces i rozwiązywanie problemów.
+
+## <a name="check-for-disk-bottleneck"></a>Sprawdź, czy nie ma wąskiego gardła dysku
+
+Aby sprawdzić podsystem magazynowania dla maszyny wirtualnej, sprawdź diagnostykę na poziomie maszyny wirtualnej platformy Azure przy użyciu liczników w diagnostyce maszyny wirtualnej, a także diagnostyki konta magazynu.
+
+Należy pamiętać, że nie mamy liczników dla stref nadmiarowych i kont Premium Storage. W przypadku problemów związanych z tymi licznikami Zgłoś zgłoszenie do pomocy technicznej.
+
+### <a name="viewing-storage-account-diagnostics-in-monitoring"></a>Wyświetlanie diagnostyki konta magazynu w ramach monitorowania
+
+Aby obejść poniższe elementy, przejdź do konta magazynu dla maszyny wirtualnej w portalu:
+
+![Wyświetlanie diagnostyki konta magazynu w ramach monitorowania](media/troubleshoot-performance-virtual-machine-linux-windows/7-virtual-machine-storage-account.png)
+
+1. Edytuj wykres monitorowania.
+2. Ustaw zakres czasu.
+3. Dodaj liczniki opisane w poniższych krokach.
+4. Zapisz zmiany.
+
+### <a name="disk-observe-trends-standard-storage-only"></a>Trendy na dysku (tylko w przypadku magazynu w warstwie Standardowa)
+
+Aby zidentyfikować problemy związane z magazynem, zapoznaj się z metrykami wydajności dotyczącymi diagnostyki konta magazynu i diagnostyki maszyn wirtualnych.
+
+Dla każdego poniższego sprawdzenia poszukaj najważniejszych trendów, gdy występują problemy w przedziale czasowym problemu.
+
+#### <a name="check-azure-storage-availability--add-the-storage-account-metric-availability"></a>Sprawdź dostępność usługi Azure Storage — Dodaj metrykę konta magazynu: dostępność
+
+Jeśli pojawi się lista dostępności, może wystąpić problem z platformą, sprawdź [Stan platformy Azure](https://azure.microsoft.com/status/). Jeśli w tym miejscu nie jest wyświetlany żaden problem, zgłoś nowe żądanie obsługi.
+
+#### <a name="check-for-azure-storage-timeout---add-the-storage-account-metrics"></a>Sprawdź limit czasu usługi Azure Storage — Dodaj metryki konta magazynu:
+
+* ClientTimeOutError
+* ServerTimeOutError
+* Niską averagee2elatency
+* Wartość averageserverlatency
+* TotalRequests
+
+Wartości w metrykach * TimeOutError wskazują, że operacja we/wy trwała zbyt długo i przekroczyła limit czasu. Wykonanie kolejnych kroków pomoże w zidentyfikowaniu potencjalnych przyczyn.
+
+Wartość averageserverlatency zwiększa się w tym samym czasie na TimeOutErrors może to być problem z platformą. W tej sytuacji Zgłoś nowe żądanie obsługi.
+
+Niską averagee2elatency reprezentuje opóźnienie klienta. Sprawdź, w jaki sposób operacje we/wy są wykonywane przez aplikację. Poszukaj wzrostu lub ciągle dużej TotalRequests metryki. Ta Metryka reprezentuje liczbę IOPS. Jeśli zaczynasz obowiązywać limity konta magazynu lub pojedynczego wirtualnego dysku twardego, opóźnienie może być związane z ograniczaniem.
+
+#### <a name="check-for-azure-storage-throttling---add-the-storage-account-metrics-throttlingerror"></a>Sprawdź ograniczenia dotyczące usługi Azure Storage — Dodaj metryki konta magazynu: ThrottlingError
+
+Wartości ograniczania wydajności wskazują, że są ograniczane na poziomie konta magazynu, co oznacza, że naciśnięcie limitu liczby IOPS dla konta. Możesz określić, czy osiągasz próg IOPs, sprawdzając **TotalRequests**metryki.
+
+Należy pamiętać, że każdy wirtualny dysk twardy ma limit 500 operacji we/wy lub 60 megabitów, ale jest związany z łącznym limitem liczby operacji 20000 we/wy na konto magazynu.
+
+Korzystając z tej metryki, nie można określić, który obiekt BLOB powoduje ograniczenie i które ma to wpływ. Jest to jednak szybkość operacji we/wy na sekundę lub limity ruchu przychodzącego/wychodzącego.
+
+Aby ustalić, czy zbliżasz się do limitu liczby operacji we/wy, przejdź do diagnostyki konta magazynu i sprawdź TotalRequests, aby sprawdzić, czy dojdziesz do 20000 TotalRequests. Zidentyfikuj zmianę wzorca, niezależnie od tego, czy widzisz limit po raz pierwszy, czy ten limit występuje w określonym czasie.
+
+#### <a name="references"></a>Odwołania
+
+* [Elementy docelowe skalowalności dla dysków maszyny wirtualnej](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
+
+Przepustowość konta magazynu jest mierzona przez metryki konta magazynu: TotalIngress i TotalEgress. Istnieją różne progi przepustowości w zależności od typu nadmiarowości i regionów.
+
+* [Elementy docelowe skalowalności dla obiektów blob, kolejek, tabel i plików](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)
+
+Sprawdź TotalIngress i TotalEgress względem limitów ruchu przychodzącego i wychodzącego dla opcji Typ i region nadmiarowości konta magazynu.
+
+Sprawdź limity przepływności wirtualnych dysków twardych dołączonych do maszyny wirtualnej. Dodaj dysk metryk maszyny wirtualnej odczyt i zapis.
+
+Każdy wirtualny dysk twardy może obsługiwać do 60 MB/s (liczba operacji we/wy nie jest dostępna dla wirtualnego dysku twardego). Sprawdź dane, aby sprawdzić, czy są używane limity łącznej przepływności dysków VHD na poziomie maszyny wirtualnej przy użyciu odczytu i zapisu na dysku, a następnie Zoptymalizuj konfigurację magazynu maszyn wirtualnych w celu skalowania ostatnich limitów jednego dysku VHD.
+
+### <a name="high-disk-utilizationlatency-remediation"></a>Duże użycie dysku/korygowanie opóźnień
+
+Zmniejszenie opóźnienia klienta i zoptymalizowanie operacji we/wy maszyny wirtualnej w celu skalowania limitów ostatnich dysków VHD
+
+* [Optymalizacja operacji we/wy dla systemu Windows na platformie Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices/)
+
+* [Optymalizowanie operacji we/wy dla systemu Linux na platformie Azure](https://blogs.msdn.microsoft.com/igorpag/2014/10/23/azure-storage-secrets-and-linux-io-optimizations/)
+
+#### <a name="reduce-throttling"></a>Zmniejsz ograniczenie przepustowości
+
+W przypadku górnego limitu kont magazynu należy ponownie zrównoważyć wirtualne dyski twarde między kontami magazynu. Zapoznaj się z [celami skalowalności i wydajności usługi Azure Storage](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/).
+
+### <a name="increase-throughput-and-reduce-latency"></a>Zwiększanie przepływności i zmniejszanie opóźnień
+
+Jeśli masz poufną aplikację, która wymaga dużej przepływności, dokonaj migracji wirtualnych dysków twardych do usługi Azure Premium Storage przy użyciu maszyny wirtualnej z serii DS i GS.
+
+W tych artykułach omówiono konkretne scenariusze:
+
+* [Migrowanie do usługi Azure Premium Storage](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+
+* [Korzystanie z usługi Azure Premium Storage z usługą SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
+
+## <a name="next-steps"></a>Następne kroki
+
+Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, skontaktuj się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/).
+
+Alternatywnie możesz zaplikować zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**.

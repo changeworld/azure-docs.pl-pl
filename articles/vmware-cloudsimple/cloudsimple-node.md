@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 58af69b401400c7b2f663a91de8bf38bc9a296a3
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 729b832c068dcd401fa6e9d2f4af9193d3859a83
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877698"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845545"
 ---
 # <a name="cloudsimple-nodes-overview"></a>Przegląd węzłów CloudSimple
 
@@ -36,19 +36,20 @@ Zakupione węzły zapewniają pojemność płatną zgodnie z rzeczywistym użyci
 
 Następujące typy węzłów są dostępne do zakupu lub rezerwacji.
 
-| SKU | CS28 — węzeł | CS36 — węzeł |
-|-----|-------------|-------------|
-| Procesor CPU | 2\.2,2 GHz, 28 rdzeni (56 HT) | 2 rdzenie 2,3 GHz, 36 (72 HT) |
-| Pamięć RAM | 256 GB | 512 GB |
-| Dysk pamięci podręcznej |  1,6 – TB interfejsu NVMe | 3,2 – TB interfejsu NVMe |
-| Dysk pojemności | 5,625 TB nieprzetworzonych | 11,25 TB nieprzetworzonych |
-| Typ magazynu | Wszystkie lampy błyskowe | Wszystkie lampy błyskowe |
+| Magazyn           | CS28 — węzeł                 | CS36 — węzeł                 | CS36m — węzeł                |
+|---------------|-----------------------------|-----------------------------|-----------------------------|
+| okolicy        | Wschodnie stany USA, zachodnie stany USA            | Wschodnie stany USA, zachodnie stany USA            | Europa Zachodnia                 |
+| CPU           | 2\.2,2 GHz, 28 rdzeni (56 HT) | 2 rdzenie 2,3 GHz, 36 (72 HT) | 2 rdzenie 2,3 GHz, 36 (72 HT) |
+| Pamięć RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
+| Dysk pamięci podręcznej    | 1,6 – TB interfejsu NVMe                 | 3,2 – TB interfejsu NVMe                 | 3,2 – TB interfejsu NVMe                 |
+| Dysk pojemności | 5,625 TB nieprzetworzonych                | 11,25 TB nieprzetworzonych                | 15,36 TB nieprzetworzonych                |
+| Typ magazynu  | Wszystkie lampy błyskowe                   | Wszystkie lampy błyskowe                   | Wszystkie lampy błyskowe                   |
 
-## <a name="limits"></a>Limity
+## <a name="limits"></a>Ograniczeń
 
 Poniższe limity węzłów mają zastosowanie do chmur prywatnych.
 
-| Resource | Limit |
+| Zasób | Granice |
 |----------|-------|
 | Minimalna liczba węzłów do utworzenia chmury prywatnej | 3 |
 | Maksymalna liczba węzłów w klastrze w chmurze prywatnej | 16 |

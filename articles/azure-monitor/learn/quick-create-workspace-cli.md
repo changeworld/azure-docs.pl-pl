@@ -1,6 +1,6 @@
 ---
-title: Utwórz obszar roboczy usługi Log Analytics przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć obszar roboczy usługi Log Analytics umożliwia zarządzanie rozwiązaniami i gromadzenia danych z środowiska w chmurze i lokalnych przy użyciu wiersza polecenia platformy Azure.
+title: Tworzenie obszaru roboczego Log Analytics przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: Dowiedz się, jak utworzyć obszar roboczy Log Analytics, aby umożliwić zarządzanie rozwiązaniami i zbieraniem danych w środowiskach w chmurze i lokalnych przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -13,49 +13,49 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 4be33b809ee2e620a565c9907a5b77833a279567
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ee8302a026cf7584996bca481e79190586b77b3
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66130383"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838849"
 ---
-# <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Utwórz obszar roboczy usługi Log Analytics przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+# <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Tworzenie obszaru roboczego Log Analytics przy użyciu interfejsu wiersza polecenia platformy Azure 2,0
 
-Interfejs wiersza polecenia platformy Azure 2.0 umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi z poziomu wiersza polecenia lub za pomocą skryptów. Ten przewodnik Szybki Start dowiesz się, jak wdrożyć obszar roboczy usługi Log Analytics w usłudze Azure Monitor za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0. Obszar roboczy usługi Log Analytics jest unikatowy środowiska za dane dziennika usługi Azure Monitor. Każdy obszar roboczy ma własne repozytorium danych i konfiguracji i źródeł danych i rozwiązań, które są skonfigurowane do przechowywania swoich danych w określonym obszarze roboczym. Obszar roboczy usługi Log Analytics jest wymagane, jeśli jest planowane na zbieranie danych z następujących źródeł:
+Interfejs wiersza polecenia platformy Azure 2,0 służy do tworzenia zasobów platformy Azure i zarządzania nimi z poziomu wiersza poleceń lub skryptów. Ten przewodnik Szybki Start przedstawia sposób wdrażania obszaru roboczego Log Analytics w programie Azure Monitor przy użyciu interfejsu wiersza polecenia platformy Azure 2,0. Obszar roboczy Log Analytics jest unikatowym środowiskiem dla Azure Monitor danych dziennika. Każdy obszar roboczy ma własne repozytorium danych i konfigurację, a źródła danych i rozwiązania są skonfigurowane do przechowywania danych w określonym obszarze roboczym. Musisz mieć Log Analytics obszar roboczy, jeśli zamierzasz zbierać dane z następujących źródeł:
 
 * Zasoby platformy Azure w ramach subskrypcji  
-* Lokalnych komputerów monitorowanych przez program System Center Operations Manager  
-* Kolekcje w programie System Center Configuration Manager  
-* Dane diagnostyczne lub dziennika z usługi Azure Storage  
+* Komputery lokalne monitorowane przez System Center Operations Manager  
+* Kolekcje urządzeń z System Center Configuration Manager  
+* Dane diagnostyczne lub dzienniki z usługi Azure Storage  
  
-W przypadku innych źródeł, takie jak maszyny wirtualne platformy Azure i Windows lub maszyny wirtualne systemu Linux w środowisku zobacz następujące tematy:
+W przypadku innych źródeł, takich jak maszyny wirtualne platformy Azure i maszyny wirtualne z systemem Windows lub Linux w danym środowisku, zobacz następujące tematy:
 
-* [Zbieranie danych z maszyn wirtualnych platformy Azure](../learn/quick-collect-azurevm.md)
-* [Zbieranie danych z komputera z systemem Linux hybrydowe](../learn/quick-collect-linux-computer.md)
-* [Zbieranie danych z komputera Windows hybrydowe](quick-collect-windows-computer.md)
+* [Zbieranie danych z usługi Azure Virtual Machines](../learn/quick-collect-azurevm.md)
+* [Zbieranie danych z hybrydowego komputera z systemem Linux](../learn/quick-collect-linux-computer.md)
+* [Zbieranie danych z hybrydowego komputera z systemem Windows](quick-collect-windows-computer.md)
 
-Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed przystąpieniem do wykonywania.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki Start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom `az --version`, aby znaleźć wersję. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2,0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
-Utwórz obszar roboczy z [Utwórz wdrożenie grupy az](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). Poniższy przykład tworzy obszar roboczy o nazwie *TestWorkspace* w grupie zasobów *laboratorium* w *eastus* lokalizacji za pomocą szablonu usługi Resource Manager z lokalnym maszyny. Szablon JSON jest skonfigurowany do tylko wyświetlenie monitu o nazwę obszaru roboczego i określenie wartości domyślnej dla innych parametrów, które prawdopodobnie będzie służyć jako standardowej konfiguracji w danym środowisku. Możesz także przechowywać szablon na koncie magazynu platformy Azure w celu zapewnienia dostępu współdzielonego w Twojej organizacji. Aby uzyskać dodatkowe informacje na temat pracy z szablonami, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+Utwórz obszar roboczy za pomocą [AZ Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). Poniższy przykład tworzy obszar roboczy w lokalizacji *Wschodnie* przy użyciu szablonu Menedżer zasobów z komputera lokalnego. Szablon JSON jest skonfigurowany tak, aby monitował o nazwę obszaru roboczego i określać wartość domyślną dla innych parametrów, które prawdopodobnie będą używane jako Konfiguracja standardowa w danym środowisku. Możesz również przechowywać szablon na koncie usługi Azure Storage w celu uzyskania dostępu współdzielonego w organizacji. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Uzyskać informacji o obsługiwanych regionach, zobacz [usługi Log Analytics jest dostępna w regionach](https://azure.microsoft.com/regions/services/) i wyszukaj zasób usługi Azure Monitor z **wyszukiwanie produktu** pola. 
+Aby uzyskać informacje o obsługiwanych regionach, zobacz [regiony log Analytics jest dostępny w](https://azure.microsoft.com/regions/services/) i Wyszukaj Azure monitor w polu **Wyszukaj produkt** . 
 
-Następujące parametry ustawiona wartość domyślna:
+Następujące parametry ustawiają wartość domyślną:
 
-* Lokalizacja — wartość domyślna to wschodnie stany USA
-* Jednostka SKU — wartość domyślna to nowej warstwy cenowej na GB, wydana w kwietniu 2018 r., model cen
+* Lokalizacja — wartość domyślna to Wschodnie stany USA
+* jednostka SKU — wartość domyślna to nowa warstwa cenowa według GB wydana w modelu cen z kwietnia 2018
 
 >[!WARNING]
->W przypadku tworzenia lub konfigurowania obszaru roboczego usługi Log Analytics w ramach subskrypcji, który występował w nowych z kwietnia 2018 r modelu cen, jest prawidłowa tylko usługi Log Analytics warstwy cenowej **PerGB2018**. 
+>W przypadku tworzenia lub konfigurowania obszaru roboczego Log Analytics w ramach subskrypcji, która została wybrana w nowym modelu cen 2018 kwietnia, jedyną prawidłową warstwą cenową Log Analytics jest **PerGB2018**. 
 >
 
-### <a name="create-and-deploy-template"></a>Tworzenie i wdrażanie szablonu
+### <a name="create-and-deploy-template"></a>Utwórz i Wdróż szablon
 
 1. Skopiuj i wklej następującą składnię JSON do pliku:
 
@@ -113,22 +113,22 @@ Następujące parametry ustawiona wartość domyślna:
     }
     ```
 
-2. Edytuj szablon do własnych wymagań. Przegląd [szablonu Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) odwołania, aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
-3. Zapisz ten plik jako **deploylaworkspacetemplate.json** do folderu lokalnego.   
-4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Użyj następujących poleceń z poziomu folderu zawierającego szablon:
+2. Edytuj szablon w celu spełnienia wymagań. Zapoznaj się z tematem dokumentacja [szablonu Microsoft. OperationalInsights/Workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) , aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
+3. Zapisz ten plik jako **deploylaworkspacetemplate. JSON** w folderze lokalnym.   
+4. Możesz przystąpić do wdrożenia tego szablonu. Użyj następujących poleceń z folderu zawierającego szablon. Po wyświetleniu monitu o nazwę obszaru roboczego Podaj nazwę globalnie unikatową we wszystkich subskrypcjach platformy Azure.
 
     ```azurecli
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
     ```
 
-Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego, który zawiera wynik:
+Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do następującego:
 
-![Przykład wyniku, gdy wdrożenie jest ukończone](media/quick-create-workspace-cli/template-output-01.png)
+![Przykładowy wynik po zakończeniu wdrażania](media/quick-create-workspace-cli/template-output-01.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Teraz, gdy masz dostępnego obszaru roboczego, możesz skonfigurować zbieranie danych telemetrycznych monitorowania, uruchamiają przeszukiwanie dzienników w celu analizowania danych i dodać rozwiązanie do zarządzania w celu zapewnienia dodatkowych danych i szczegółowych informacji analitycznych.  
+## <a name="next-steps"></a>Następne kroki
+Teraz, gdy dostępny jest obszar roboczy, można skonfigurować zbieranie danych telemetrycznych monitorowania, uruchamiać wyszukiwania w dziennikach, aby analizować te dane, i dodać rozwiązanie do zarządzania, aby zapewnić dodatkowe dane i szczegółowe informacje analityczne.  
 
-* Aby włączyć zbieranie danych z zasobów platformy Azure Diagnostyka Azure lub usługi Azure storage, zobacz [zbieranie dzienników platformy Azure usługi i metryk do użycia w usłudze Log Analytics](../platform/collect-azure-metrics-logs.md).  
-* Dodaj [programu System Center Operations Manager jako źródła danych](../platform/om-agents.md) do zbierania danych z agentów raportujących do grupy zarządzania programu Operations Manager i zapisać ją w obszarze roboczym usługi Log Analytics.  
-* Połącz [programu Configuration Manager](../platform/collect-sccm.md) do zaimportowania komputerów, które są członkami kolekcji w hierarchii.  
-* Przegląd [rozwiązania do monitorowania](../insights/solutions.md) dostępne i jak dodać lub usunąć rozwiązanie z obszaru roboczego.
+* Aby włączyć zbieranie danych z zasobów platformy Azure za pomocą usługi Diagnostyka Azure lub Azure Storage, zobacz [zbieranie dzienników usług platformy Azure i metryki do użycia w programie log Analytics](../platform/collect-azure-metrics-logs.md).  
+* Dodaj [System Center Operations Manager jako źródło danych](../platform/om-agents.md) , aby zebrać dane z agentów zgłaszających Operations Manager grupy zarządzania i zapisać je w obszarze roboczym log Analytics.  
+* Połącz [Configuration Manager](../platform/collect-sccm.md) , aby zaimportować komputery należące do kolekcji w hierarchii.  
+* Przejrzyj dostępne [rozwiązania do monitorowania](../insights/solutions.md) oraz sposób dodawania lub usuwania rozwiązania z obszaru roboczego.

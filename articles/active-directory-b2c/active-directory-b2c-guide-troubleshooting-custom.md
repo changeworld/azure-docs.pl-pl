@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dee0ef768180057452a232436fc295b36fd756c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 4893025b7d54dad1f1da6c5967d3c1dec99b499b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963731"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826904"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Rozwiązywanie problemów Azure AD B2C zasad niestandardowych i struktury środowiska obsługi tożsamości
 
@@ -39,34 +39,32 @@ Sprawdzanie poprawności pliku zasad XML jest wykonywane automatycznie przy prze
 
 Typowe błędy walidacji obejmują następujące elementy:
 
-> Fragment kodu błędu:`...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
+> Fragment kodu błędu: `...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
 
 * Wartość elementu ClaimType może być błędna lub nie istnieje w schemacie.
 * Wartości typu ClaimType muszą być zdefiniowane w co najmniej jednym z plików w ramach zasad.
     Na przykład: `<ClaimType Id="issuerUserId">`
 * Jeśli element ClaimType jest zdefiniowany w pliku rozszerzeń, ale jest również używany w wartości profilu technicznym w pliku podstawowym, przekazanie pliku bazowego spowoduje wystąpienie błędu.
 
-> Fragment kodu błędu:`...makes a reference to a ClaimsTransformation with id...`
+> Fragment kodu błędu: `...makes a reference to a ClaimsTransformation with id...`
 
 * Przyczyny tego błędu mogą być takie same jak w przypadku błędu elementu ClaimType.
 
-> Fragment kodu błędu:`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
+> Fragment kodu błędu: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
-* Sprawdź, czy wartość TenantId w `<TrustFrameworkPolicy\>` elementach i `<BasePolicy\>` jest zgodna z docelową dzierżawą Azure AD B2C.
+* Sprawdź, czy wartość TenantId w elementach `<TrustFrameworkPolicy\>` i `<BasePolicy\>` odpowiada Twojej docelowej Azure AD B2C dzierżawcy.
 
 ## <a name="troubleshoot-the-runtime"></a>Rozwiązywanie problemów dotyczących środowiska uruchomieniowego
 
-* Używaj **teraz** i `https://jwt.ms` Przetestuj swoje zasady niezależnie od aplikacji sieci Web lub mobilnej. Ta witryna sieci Web działa jak aplikacja jednostki uzależnionej. Wyświetla zawartość tokenu sieci Web JSON (JWT) wygenerowanego przez zasady Azure AD B2C. Aby utworzyć aplikację testową, przejdź do **Azure AD B2C** \> **aplikacji** w Azure Portal i Dodaj aplikację z następującymi wartościami:
+* Użyj **teraz** i `https://jwt.ms`, aby przetestować swoje zasady niezależnie od aplikacji sieci Web lub mobilnej. Ta witryna sieci Web działa jak aplikacja jednostki uzależnionej. Wyświetla zawartość tokenu sieci Web JSON (JWT) wygenerowanego przez zasady Azure AD B2C.
 
-  * **Nazwa**: TestApp
-  * **Aplikacja sieci Web/interfejs API sieci Web**: Nie
-  * **Klient natywny**: Nie
+    Aby utworzyć aplikację testową, która może przekierować do `https://jwt.ms` w celu przeprowadzenia inspekcji tokenu:
 
-  Następnie Dodaj `https://jwt.ms` jako **adres URL odpowiedzi**.
+    [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 * Aby śledzić wymianę komunikatów między przeglądarką klienta i Azure AD B2C, użyj [programu Fiddler](https://www.telerik.com/fiddler). Może to pomóc w uzyskaniu informacji o tym, gdzie podróż użytkownika kończy się niepowodzeniem w ramach kroków aranżacji.
 
-* W **trybie programistycznym**Użyj [Application Insights](active-directory-b2c-troubleshoot-custom.md) , aby śledzić aktywność użytkownika platformy do obsługi tożsamości. W **trybie programistycznym**można obserwować wymianę oświadczeń między strukturą środowiska tożsamości a różnymi dostawcami oświadczeń, które są zdefiniowane przez profile techniczne, takie jak dostawcy tożsamości, usługi oparte na interfejsie API, Azure AD B2C użytkownika Katalog i inne usługi, takie jak uwierzytelnianie wieloskładnikowe systemu Azure.
+* W **trybie programistycznym**Użyj [Application Insights](active-directory-b2c-troubleshoot-custom.md) , aby śledzić aktywność użytkownika platformy do obsługi tożsamości. W **trybie programistycznym**można obserwować wymianę oświadczeń między strukturą środowiska tożsamości a różnymi dostawcami oświadczeń, które są zdefiniowane przez profile techniczne, takie jak dostawcy tożsamości, usługi oparte na interfejsie API, Azure AD B2C użytkownika Katalog i inne usługi, takie jak Azure Multi-Factor Authentication.
 
 ## <a name="recommended-practices"></a>Zalecane praktyki
 

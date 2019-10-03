@@ -4,20 +4,20 @@ description: Opisuje sposób rozwiązywania problemów z więcej niż 800 wdroż
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 10/01/2019
+ms.date: 10/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: f06aff74e2cf800d44115f34921825122b09a9e7
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 755383c9d40c104d50ad9bb7a31b3a00f8348313
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719437"
+ms.locfileid: "71827018"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Usuń błąd, gdy liczba wdrożeń przekracza 800
 
 Każda grupa zasobów jest ograniczona do 800 wdrożeń w swojej historii wdrażania. W tym artykule opisano błąd pojawiający się w przypadku niepowodzenia wdrożenia, ponieważ spowodowałoby to przekroczenie dozwolonych wdrożeń 800. Aby rozwiązać ten problem, Usuń wdrożenia z historii grupy zasobów. Usunięcie wdrożenia z historii nie ma wpływu na żadne wdrożone zasoby.
 
-## <a name="symptom"></a>Objaw
+## <a name="symptom"></a>Objawów
 
 Podczas wdrażania zostanie wyświetlony komunikat o błędzie informujący o tym, że bieżące wdrożenie przekroczy przydział 800 wdrożeń.
 
@@ -37,7 +37,7 @@ Bieżącą liczbę można uzyskać w historii wdrożenia za pomocą następując
 az group deployment list --resource-group exampleGroup --query "length(@)"
 ```
 
-### <a name="azure-powershell"></a>Program Azure PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Użyj polecenia [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) , aby usunąć wdrożenia z historii.
 
@@ -51,3 +51,9 @@ Bieżącą liczbę można uzyskać w historii wdrożenia za pomocą następując
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
 ```
 
+## <a name="third-party-solutions"></a>Rozwiązania innych firm
+
+Poniższe scenariusze dotyczące adresów zewnętrznych:
+
+* [Rozwiązania Azure Logic Apps i programu PowerShell](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
+* [Rozszerzenie AzDevOps](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)

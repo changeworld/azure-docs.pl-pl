@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 846f0ecdd49fc1c501893209b60fa9acc8a32ed2
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242329"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828248"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 Masz pytania? Zapoznaj się z poniższymi PYTANIAmi, aby uzyskać więcej informacji.
@@ -48,7 +48,7 @@ W większości przypadków zadania kompilacji Azure DevOps są bezpośrednimi ot
 
 Zauważalne różnice:
 
-- Narzędzia są uruchamiane z folderu źródłowego agenta $ (Build. SourcesDirectory) lub z% BUILD_SOURCESDIRECTORY%. Przykładem jest C:\agent\_work\1\s.
+- Narzędzia są uruchamiane z folderu źródłowego agenta $ (Build. SourcesDirectory) lub z% BUILD_SOURCESDIRECTORY%. Przykładem jest C:\agent @ no__t-0work\1\s.
 - Ścieżki w argumentach mogą być względne względem katalogu głównego katalogu źródłowego wymienionego wcześniej. Ścieżki mogą być również bezwzględne. Ścieżki bezwzględne są uzyskiwane przy użyciu zmiennych kompilacji DevOps platformy Azure lub przez uruchomienie agenta lokalnego z znanymi lokalizacjami wdrożenia zasobów lokalnych.
 - Narzędzia automatycznie zapewniają ścieżkę lub folder pliku wyjściowego. Jeśli podano lokalizację wyjściową dla zadania kompilacji, Ta lokalizacja zostanie zastąpiona ścieżką do dobrze znanej lokalizacji dzienników w agencie kompilacji.
 - Niektóre dodatkowe argumenty wiersza polecenia są zmieniane dla niektórych narzędzi. Jednym z przykładów jest dodanie lub usunięcie opcji, które zapewniają, że nie jest uruchamiany graficzny interfejs użytkownika.
@@ -63,7 +63,7 @@ Zadania kompilacji filtrują niektóre dane wejściowe użytkownika. Dla tego py
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Gdzie znajdują się pliki wyjściowe generowane przez narzędzia? 
 
-Zadania kompilacji automatycznie dodają ścieżki wyjściowe do tej dobrze znanej lokalizacji na agencie kompilacji: $ (Agent. BuildDirectory)\_sdt\logs. Ze względu na to, że firma Microsoft stosuje się do tej lokalizacji, wszystkie zespoły, które tworzą lub zużywają dzienniki analizy kodu, mają dostęp do danych wyjściowych.
+Zadania kompilacji automatycznie dodają ścieżki wyjściowe do tej dobrze znanej lokalizacji agenta kompilacji: $ (Agent. BuildDirectory) \_sdt \ dzienniki. Ze względu na to, że firma Microsoft stosuje się do tej lokalizacji, wszystkie zespoły, które tworzą lub zużywają dzienniki analizy kodu, mają dostęp do danych wyjściowych.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Czy można kolejkować kompilację, aby uruchamiać te zadania na hostowanym agencie kompilacji? 
 
@@ -123,7 +123,7 @@ Klucz skrótu wpisu tajnego z pliku wyjściowego CredScan jest wymagany, jak pok
 
 Wyrażeniem pliku może być nazwa pliku. Może to być również część podstawowa elementu pełnej ścieżki pliku lub nazwy pliku. Symbole wieloznaczne nie są obsługiwane.
 
-W poniższych przykładach pokazano, jak pominąć plik \<inputPath > \src\JS\lib\angular.js
+W poniższych przykładach pokazano, jak pominąć plik \<InputPath > \src\JS\lib\angular.js
 
 Przykłady prawidłowych reguł pomijania:
 
@@ -152,20 +152,17 @@ Przykłady prawidłowych reguł pomijania:
 
 #### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>Jakie są zalecane wskazówki dotyczące zarządzania wpisami tajnymi?
 
-Warto szybko wykrywać stałe kodowane klucze tajne i ograniczać ryzyko. Nie należy jednak jeszcze lepiej zaewidencjonować wpisów tajnych.
-
-Aby pomóc w tym przypadku, firma Microsoft udostępniła wczesną wersję zapoznawczą analizatora kodu skanera poświadczeń jako część [rozszerzenia Microsoft DevLabs](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) dla programu Visual Studio. Analizator jest wersją wczesnej wersji zapoznawczej. Oferuje deweloperom wbudowane środowisko do wykrywania potencjalnych wpisów tajnych w kodzie. Dzięki temu Analizator udostępnia również deweloperom szansę rozwiązać te problemy w czasie rzeczywistym.
-
-Aby uzyskać więcej informacji, zobacz wpis w blogu [Zarządzanie kluczami tajnymi bezpiecznie w chmurze](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).
-
 Poniższe zasoby ułatwiają bezpieczne zarządzanie kluczami tajnymi i dostęp do poufnych informacji z poziomu aplikacji:
 
- - [Usługa Azure Key Vault](../../key-vault/index.yml)
+ - [Azure Key Vault](../../key-vault/index.yml)
  - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
  - [Usługa Azure AD tożsamość usługi zarządzanej (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
- - [Tożsamości zarządzane dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md)
+ - [Zarządzane tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Zarządzane tożsamości w Azure App Service i Azure Functions](../../app-service/overview-managed-identity.md)
  - [Biblioteka AppAuthentication](../../key-vault/service-to-service-authentication.md)
+
+
+Aby uzyskać więcej informacji, zobacz wpis w blogu [Zarządzanie kluczami tajnymi bezpiecznie w chmurze](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Czy mogę napisać własne niestandardowe wyszukiwania?
 
@@ -173,17 +170,17 @@ Skaner poświadczeń polega na zestawie wyszukiwania zawartości, które są cz�
 
 Wyszukiwanie zawartości jest zdefiniowane w następujący sposób:
 
-- **Nazwa**: Nazwa opisowa wyszukiwania, który ma być używany w plikach wyjściowych skanera poświadczeń. Zalecamy użycie konwencji nazewnictwa notacji CamelCase-Case dla nazw usługi Search.
-- **RuleID**: Stabilny identyfikator nieprzezroczystego elementu wyszukiwania:
+- **Nazwa**: nazwa opisowa wyszukiwania, który ma być używany w plikach wyjściowych skanera poświadczeń. Zalecamy użycie konwencji nazewnictwa notacji CamelCase-Case dla nazw usługi Search.
+- **RuleID**: stabilny identyfikator nieprzezroczystego elementu wyszukiwania:
     - Domyślnym analitykiem skanera poświadczeń jest przypisana wartość **RuleID** , na przykład CSCAN0010, CSCAN0020 lub CSCAN0030. Ostatnia cyfra jest zarezerwowana dla potencjalnie łączących lub dzielących grupy wyszukiwania za pomocą wyrażeń regularnych (wyrażenie regularne).
-    - Wartość **RuleID** niestandardowego wyszukiwania powinna mieć własną przestrzeń nazw. Przykłady obejmują CSCAN-\<przestrzeń\>nazw 0,010, CSCAN\<-\>przestrzeń nazw 0020 i CSCAN\<-\>Namespace 0030.
+    - Wartość **RuleID** niestandardowego wyszukiwania powinna mieć własną przestrzeń nazw. Przykłady obejmują CSCAN-\<Namespace @ no__t-10010, CSCAN-\<Namespace @ no__t-30020 i CSCAN-\<Namespace @ no__t-50030.
     - W pełni kwalifikowana nazwa wyszukiwania to kombinacja wartości **RuleID** i nazwy szukanej. Przykłady obejmują CSCAN0010. KeyStoreFiles i CSCAN0020. Base64EncodedCertificate.
-- **ResourceMatchPattern**: Wyrażenie regularne rozszerzeń plików do sprawdzenia dla wyszukiwania.
-- **ContentSearchPatterns**: Tablica ciągów zawierających instrukcje wyrażenia regularnego do dopasowania. Jeśli nie zdefiniowano żadnych wzorców wyszukiwania, zwracane są wszystkie pliki zgodne z wartością **ResourceMatchPattern** .
-- **ContentSearchFilters**: Tablica ciągów zawierających instrukcje wyrażenia regularnego do filtrowania fałszywych wartości dodatnich dla wyszukiwania.
+- **ResourceMatchPattern**: wyrażenie regularne rozszerzeń plików do sprawdzenia dla wyszukiwania.
+- **ContentSearchPatterns**: tablica ciągów zawierających instrukcje wyrażenia regularnego do dopasowania. Jeśli nie zdefiniowano żadnych wzorców wyszukiwania, zwracane są wszystkie pliki zgodne z wartością **ResourceMatchPattern** .
+- **ContentSearchFilters**: tablica ciągów zawierających instrukcje wyrażenia regularnego do filtrowania fałszywych wartości dodatnich dla wyszukiwania.
 - **MatchDetails**: Komunikat opisowy, instrukcje ograniczenia lub oba, które mają zostać dodane dla każdego dopasowania do usługi wyszukiwania.
-- **Zalecenie**: Sugestie — zawartość pola dla dopasowania przy użyciu formatu raportu wstępnie szybkiego.
-- **Ważność**: Liczba całkowita, która odzwierciedla poziom ważności problemu. Najwyższy poziom ważności ma wartość 1.
+- **Zalecenie**: sugestie — zawartość pola dla dopasowania przy użyciu formatu raportu wstępnie szybkiego.
+- **Ważność**: liczba całkowita, która odzwierciedla poziom ważności problemu. Najwyższy poziom ważności ma wartość 1.
 
   ![Plik XML pokazujący konfigurację skanera poświadczeń](./media/security-tools/6-credscan-customsearchers.png)
 
@@ -195,7 +192,7 @@ Wyszukiwanie zawartości jest zdefiniowane w następujący sposób:
 
 Pełny komunikat o błędzie:
 
-Porn Projekt został przywrócony przy użyciu programu Microsoft. servicecore. App w wersji *x. x. x*, ale z bieżącymi ustawieniami, zamiast tego zostanie użyta wersja *y. y. y* . Aby rozwiązać ten problem, upewnij się, że te same ustawienia są używane do przywracania i dla kolejnych operacji, takich jak Kompilowanie lub publikowanie. Zazwyczaj ten problem może wystąpić, jeśli właściwość RuntimeIdentifier jest ustawiona podczas kompilowania lub publikowania, ale nie podczas przywracania.
+"Błąd: projekt został przywrócony przy użyciu programu Microsoft. servicecore. App w wersji *x. x. x*, ale z bieżącymi ustawieniami w zamian zostanie użyta wersja *y. y. y* . Aby rozwiązać ten problem, upewnij się, że te same ustawienia są używane do przywracania i dla kolejnych operacji, takich jak Kompilowanie lub publikowanie. Zazwyczaj ten problem może wystąpić, jeśli właściwość RuntimeIdentifier jest ustawiona podczas kompilowania lub publikowania, ale nie podczas przywracania.
 
 Ponieważ zadania analizatorów Roslyn są uruchamiane jako część kompilacji, drzewo źródłowe na maszynie kompilacji musi być w stanie możliwego do skompilowania.
 
@@ -205,13 +202,13 @@ Krok między głównymi krokami kompilowania i Roslynów może spowodować umies
 
 Pełny komunikat o błędzie:
 
-Zakończono działanie "CSC. exe" z kodem błędu 1 — nie można utworzyć wystąpienia analizatora *AAAA* z pliku C:\\*bbbb*. dll: Nie można załadować pliku lub zestawu "Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35" lub jednej z jego zależności. System nie może odnaleźć określonego pliku."
+Zakończono działanie "CSC. exe" z kodem błędu 1 — nie można utworzyć wystąpienia analizatora *AAAA* z dysku C: \\*bbbb*. dll: nie można załadować pliku lub zestawu "Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' lub jeden z jego zależności. System nie może odnaleźć określonego pliku. "
 
 Upewnij się, że kompilator obsługuje analizatory Roslyn. Uruchomienie polecenia **CSC. exe/Version** powinno spowodować zgłoszenie wartości wersji 2,6 lub nowszej.
 
 Czasami plik. csproj może zastąpić instalację programu Visual Studio na maszynie kompilacji, odwołując się do pakietu z Microsoft.Net. Kompilators. Jeśli nie zamierzasz używać określonej wersji kompilatora, Usuń odwołania do Microsoft.Net. Kompilators. W przeciwnym razie upewnij się, że wersja przywoływanego pakietu jest również 2,6 lub nowsza.
 
-Spróbuj uzyskać ścieżkę dziennika błędów, która jest określona w opcji **CSC. exe/ErrorLog** . Opcja i ścieżka są wyświetlane w dzienniku dla zadania kompilacji analizatory Roslyn. Mogą wyglądać podobnie do **/ErrorLog: f:\ts-Services-\_123 work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Spróbuj uzyskać ścieżkę dziennika błędów, która jest określona w opcji **CSC. exe/ErrorLog** . Opcja i ścieżka są wyświetlane w dzienniku dla zadania kompilacji analizatory Roslyn. Mogą wyglądać podobnie do **/ErrorLog: F:\ts-Services-123 @ no__t-1work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>Wersja C# kompilatora nie jest wystarczająco aktualna
 
@@ -225,9 +222,9 @@ Zadanie kompilacji analizatorów Roslyn musi wysyłać zapytania do usługi Azur
 
 Jeśli potrzebujesz dodatkowej pomocy, obsługa analizy kodu zabezpieczeń firmy Microsoft jest dostępna od poniedziałku do piątku od 9:00 AM do 5:00 PM (pacyficzny czas standardowy).
 
-  - Dołączania Aby rozpocząć, skontaktuj się z kierownikami ds. klientów technicznych.
+  - Dołączanie: Aby rozpocząć, skontaktuj się z kierownikami ds. klientów technicznych.
   
-  - Pomocy Wyślij wiadomość e-mail do naszego zespołu w usłudze [Microsoft Security code Analysis support](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
+  - Pomoc techniczna: Wyślij wiadomość E-mail do naszego zespołu przy [pomocy technicznej analizy kodu zabezpieczeń firmy Microsoft](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
 
   >[!NOTE] 
   >Być może nie masz płatnej pomocy technicznej z firmą Microsoft. Może też istnieć oferta pomocy technicznej, która uniemożliwia zakup usług z katalogu Phoenix. Jeśli spełniony jest dowolny z tych warunków, odwiedź [stronę główną usług pomocy technicznej](https://www.microsoft.com/enterprise/services/support) , aby uzyskać więcej informacji.

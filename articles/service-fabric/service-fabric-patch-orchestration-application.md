@@ -1,6 +1,6 @@
 ---
-title: Aplikacja aranżacji poprawek Service Fabric platformy Azure | Microsoft Docs
-description: Aplikacja do automatyzowania poprawek systemu operacyjnego w klastrze Service Fabric.
+title: Poprawianie systemu operacyjnego Windows w klastrze Service Fabric | Microsoft Docs
+description: W tym artykule omówiono sposób automatyzowania stosowania poprawek systemu operacyjnego w klastrze Service Fabric przy użyciu aplikacji aranżacji patch.
 services: service-fabric
 documentationcenter: .net
 author: khandelwalbrijeshiitr
@@ -14,73 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 2aa2dd8373a9568478a02691ca5e6a43e80cd408
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: d1ff58611278f02d74f064f0536e5f6f77195fb2
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71289423"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828877"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Poprawianie systemu operacyjnego Windows w klastrze Service Fabric
 
 > 
 > [!IMPORTANT]
-> Wersja aplikacji 1,2. * jest nieobsługiwana w dniu 30 kwietnia 2019. Przeprowadź uaktualnienie do najnowszej wersji.
+> Od 30 kwietnia 2019, aplikacja aranżacji poprawek w wersji 1,2. * nie jest już obsługiwana. Upewnij się, że uaktualniono do najnowszej wersji.
 
 
-[Automatyczne uaktualnianie obrazu systemu operacyjnego w usłudze Azure Virtual Machine Scale](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) to najlepsze rozwiązanie w zakresie zachowywania poprawek w systemach operacyjnych na platformie Azure, a aplikacja aranżacji poprawek (POA) to otoka usługi Service Fabric repairmanager Systems Service Włącza planowanie poprawek systemu operacyjnego opartego na konfiguracji dla klastrów hostowanych poza platformą Azure. POA nie jest wymagany w przypadku klastrów hostowanych poza platformą Azure, ale planowanie instalacji poprawek przez domeny uaktualnienia jest wymagane do poprawek Service Fabric klastrów hostów bez przestoju.
+Korzystanie z [automatycznych uaktualnień obrazu systemu operacyjnego w zestawie skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) to najlepsze rozwiązanie w celu zachowania poprawek systemu operacyjnego na platformie Azure. Poprawka Orchestration Application (POA) to otoka obejmująca usługę Azure Service Fabric Menedżer naprawy, która umożliwia planowanie poprawek systemu operacyjnego opartych na konfiguracji dla klastrów hostowanych poza platformą Azure. POA nie jest wymagany w przypadku klastrów hostowanych poza platformą Azure, ale planowanie instalacji poprawek przy użyciu domeny aktualizacji jest wymagane do poprawki Service Fabric hostach klastra bez ponoszenia przestojów.
 
-POA to aplikacja Service Fabric platformy Azure, która automatyzuje stosowanie poprawek systemu operacyjnego w klastrze Service Fabric bez przestojów.
+POA jest aplikacją Service Fabric, która automatyzuje stosowanie poprawek systemu operacyjnego w klastrze Service Fabric bez ponoszenia przestojów.
 
-Aplikacja aranżacji poprawek oferuje następujące funkcje:
+POA oferuje następujące funkcje:
 
-- **Automatyczna instalacja aktualizacji systemu operacyjnego**. Aktualizacje systemu operacyjnego są automatycznie pobierane i instalowane. Węzły klastra są ponownie uruchamiane w razie potrzeby bez przestoju klastra.
+- **Automatyczna instalacja aktualizacji systemu operacyjnego**. Aktualizacje systemu operacyjnego są automatycznie pobierane i instalowane. Węzły klastra są ponownie uruchamiane w razie potrzeby bez ponoszenia przestojów klastra.
 
-- **Stosowanie poprawek obsługujących klaster i integracja z kondycją**. Podczas stosowania aktualizacji aplikacja aranżacji patch monitoruje kondycję węzłów klastra. Węzły klastra są uaktualniane jednym węzłem jednocześnie lub w jednej domenie uaktualnienia jednocześnie. Jeśli kondycja klastra ulegnie awarii ze względu na proces stosowania poprawek, poprawka zostaje zatrzymana, aby uniknąć pogorszenia problemu.
+- **Stosowanie poprawek obsługujących klaster i integracja z kondycją**. Podczas gdy POA stosuje aktualizacje, monitoruje kondycję węzłów klastra. Węzły klastra są aktualizowane po jednym węźle naraz lub w jednej domenie aktualizacji jednocześnie. Jeśli kondycja klastra ulegnie awarii ze względu na proces stosowania poprawek, poprawka zostaje zatrzymana, aby uniknąć pogorszenia problemu.
 
-## <a name="internal-details-of-the-app"></a>Wewnętrzne szczegóły aplikacji
+## <a name="internal-details-of-poa"></a>Wewnętrzne szczegóły dotyczące POA
 
-Aplikacja aranżacji poprawek składa się z następujących podskładników:
+POA składa się z następujących podskładników:
 
 - **Usługa koordynatora**: Ta usługa stanowa jest odpowiedzialna za:
     - Koordynowanie zadania Windows Update w całym klastrze.
     - Przechowywanie wyniku zakończonych operacji Windows Update.
-- **Usługa agenta węzłów**: Ta usługa bezstanowa jest uruchamiana na wszystkich Service Fabric węzłach klastra. Usługa jest odpowiedzialna za:
+
+- **Usługa agenta węzła**: Ta usługa bezstanowa jest uruchamiana na wszystkich Service Fabric węzłach klastra. Usługa jest odpowiedzialna za:
     - Inicjowanie programu Node Agent NTService.
     - Monitorowanie NTService agenta.
-- **NTService agenta węzła**: Ta usługa systemu Windows NT działa z uprawnieniami wyższego poziomu (SYSTEM). Z kolei usługa agenta węzła i usługa koordynatora są uruchamiane z uprawnieniem niskiego poziomu (usługa sieciowa). Usługa jest odpowiedzialna za wykonywanie następujących zadań Windows Update na wszystkich węzłach klastra:
-    - Wyłączanie automatycznego Windows Update w węźle.
-    - Pobieranie i instalowanie Windows Update zgodnie z zasadami dostarczonymi przez użytkownika.
-    - Ponowne uruchamianie instalacji Windows Update na komputerze.
+
+- **Node Agent NTService**: Ta usługa systemu Windows NT jest uruchamiana z uprawnieniami wyższego poziomu (system). Z kolei usługa agenta węzła i usługa koordynatora są uruchamiane z uprawnieniem niskiego poziomu (usługa sieciowa). Usługa jest odpowiedzialna za wykonywanie następujących zadań Windows Update na wszystkich węzłach klastra:
+    - Wyłączanie automatycznych aktualizacji systemu Windows w węźle.
+    - Pobieranie i instalowanie aktualizacji systemu Windows zgodnie z zasadami dostarczonymi przez użytkownika.
+    - Ponowne uruchomienie komputera po zakończeniu instalacji aktualizacji systemu Windows.
     - Przekazywanie wyników aktualizacji systemu Windows do usługi koordynatora.
     - Raportowanie raportów kondycji w przypadku niepowodzenia operacji po wyczerpaniu wszystkich ponownych prób.
 
 > [!NOTE]
-> Aplikacja aranżacji poprawek używa usługi systemowej Service Fabric Repair Manager, aby wyłączyć lub włączyć węzeł i przeprowadzić kontrole kondycji. Zadanie naprawy utworzone przez aplikację aranżacji patch śledzi Windows Update postęp dla każdego węzła.
+> POA używa usługi Service Fabric Menedżer naprawy, aby wyłączyć lub włączyć węzeł i przeprowadzić kontrole kondycji. Zadanie naprawy utworzone przez POA śledzi Windows Update postęp dla każdego węzła.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!NOTE]
-> Minimalna wymagana wersja programu .NET Framework to 4,6.
+> Wymagana minimalna wersja .NET Framework to 4,6.
 
-### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>Włącz usługę Repair Manager (jeśli nie jest jeszcze uruchomiona)
+### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>Włącz usługę Menedżer naprawy (jeśli nie jest jeszcze uruchomiona)
 
-Aplikacja aranżacji poprawek wymaga włączenia usługi System Manager Repair w klastrze.
+POA wymaga włączenia usługi Menedżer naprawy w klastrze.
 
 #### <a name="azure-clusters"></a>Klastry platformy Azure
 
-W klastrach platformy Azure w warstwie trwałości Silver Usługa Menedżera naprawy jest domyślnie włączona. W przypadku klastrów platformy Azure w warstwie trwałości Gold może być włączona usługa Repair Manager, w zależności od tego, kiedy te klastry zostały utworzone. W klastrach platformy Azure w warstwie trwałości Bronze domyślnie nie jest włączona usługa Menedżera naprawy. Jeśli usługa jest już włączona, można ją sprawdzić w sekcji usługi systemowe w Service Fabric Explorer.
+W klastrach platformy Azure w warstwie trwałości Silver domyślnie włączona jest usługa Menedżer naprawy. W przypadku klastrów platformy Azure w warstwie trwałości Gold może być włączona usługa Menedżer naprawy, w zależności od tego, kiedy te klastry zostały utworzone. W klastrach platformy Azure w warstwie trwałości Bronze domyślnie nie jest włączona usługa Menedżer naprawy. Jeśli usługa jest już włączona, można ją zobaczyć w sekcji usługi systemowe w Service Fabric Explorer.
 
-##### <a name="azure-portal"></a>Azure Portal
-Menedżera naprawy można włączyć z Azure Portal w momencie konfigurowania klastra. Wybierz opcję **dołącz Menedżer naprawy** w obszarze **funkcje dodatków** w czasie konfiguracji klastra.
+##### <a name="the-azure-portal"></a>Azure Portal
+Podczas konfigurowania klastra można włączyć Menedżer naprawy z Azure Portal. Podczas konfigurowania klastra wybierz opcję **uwzględnij Menedżer naprawy** w obszarze **funkcje dodatków**.
+
 ![Obraz przedstawiający Włączanie Menedżer naprawy z Azure Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
-##### <a name="azure-resource-manager-deployment-model"></a>Azure Resource Manager model wdrażania
-Alternatywnie można użyć [modelu wdrażania Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) , aby włączyć usługę Repair Manager w nowych i istniejących klastrach Service Fabric. Pobierz szablon klastra, który chcesz wdrożyć. Można użyć przykładowych szablonów lub utworzyć szablon niestandardowego modelu wdrażania Azure Resource Manager. 
+##### <a name="the-azure-resource-manager-deployment-model"></a>Azure Resource Manager model wdrażania
+Alternatywnie można użyć [Azure Resource Manager model wdrażania](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) , aby włączyć usługę Menedżer naprawy w nowych i istniejących klastrach Service Fabric. Pobierz szablon klastra, który chcesz wdrożyć. Można użyć przykładowych szablonów lub utworzyć szablon niestandardowego modelu wdrażania Azure Resource Manager. 
 
-Aby włączyć usługę Repair Manager przy użyciu [Azure Resource Manager szablonu modelu wdrażania](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
+Aby włączyć usługę Menedżer naprawy przy użyciu [szablonu modelu wdrażania Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm), wykonaj następujące czynności:
 
-1. Najpierw sprawdź, czy `apiversion` jest `2017-07-01-preview` ustawiony na wartość dla `Microsoft.ServiceFabric/clusters` zasobu. Jeśli jest inny, należy zaktualizować `apiVersion` wartość do wartości `2017-07-01-preview` lub wyższej:
+1. Upewnij się, że `apiVersion` jest ustawiona na *2017-07-01-Preview* dla zasobu *Microsoft. servicefabric/Clusters* . Jeśli jest inny, należy zaktualizować `apiVersion` do *2017-07-01 — wersja zapoznawcza* lub nowsza:
 
     ```json
     {
@@ -92,7 +95,7 @@ Aby włączyć usługę Repair Manager przy użyciu [Azure Resource Manager szab
     }
     ```
 
-2. Teraz Włącz usługę Repair Manager, dodając następującą `addonFeatures` sekcję `fabricSettings` po sekcji:
+1. Włącz usługę Menedżer naprawy, dodając następującą sekcję `addonFeatures` po sekcji `fabricSettings`:
 
     ```json
     "fabricSettings": [
@@ -103,15 +106,15 @@ Aby włączyć usługę Repair Manager przy użyciu [Azure Resource Manager szab
     ],
     ```
 
-3. Po zaktualizowaniu szablonu klastra przy użyciu tych zmian należy je zastosować i umożliwić zakończenie uaktualniania. Teraz można zobaczyć usługę systemową Repair Manager działającą w klastrze. Jest on wywoływany `fabric:/System/RepairManagerService` w sekcji usługi systemowe w Service Fabric Explorer. 
+3. Po zaktualizowaniu szablonu klastra przy użyciu tych zmian należy je zastosować i umożliwić zakończenie aktualizacji. Teraz można zobaczyć usługę Menedżer naprawy działającą w klastrze. Jest on nazywany *siecią szkieletową:/system/RepairManagerService* w sekcji usługi systemowe w Service Fabric Explorer. 
 
 ### <a name="standalone-on-premises-clusters"></a>Autonomiczne klastry lokalne
 
-Możesz użyć [ustawień konfiguracji autonomicznego klastra systemu Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest) , aby włączyć usługę Repair Manager w nowym i istniejącym klastrze Service Fabric.
+Aby włączyć usługę Menedżer naprawy w nowym lub istniejącym klastrze Service Fabric, można użyć [ustawień konfiguracji autonomicznego klastra systemu Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest).
 
-Aby włączyć usługę Repair Manager:
+Aby włączyć usługę Menedżer naprawy:
 
-1. Najpierw należy sprawdzić, `apiversion` czy w obszarze [ogólne Konfiguracje klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) jest `04-2017` ustawiona wartość lub większa:
+1. Upewnij się, że `apiVersion` w [ogólnych konfiguracjach klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) ma wartość *04-2017* lub nowszą, jak pokazano poniżej:
 
     ```json
     {
@@ -122,7 +125,7 @@ Aby włączyć usługę Repair Manager:
     }
     ```
 
-2. Teraz Włącz usługę naprawy Menedżera, dodając następującą `addonFeatures` sekcję `fabricSettings` poniżej sekcji, jak pokazano poniżej:
+1. Włącz usługę Menedżer naprawy, dodając następującą sekcję `addonFeatures` po sekcji `fabricSettings`, jak pokazano poniżej:
 
     ```json
     "fabricSettings": [
@@ -133,68 +136,70 @@ Aby włączyć usługę Repair Manager:
     ],
     ```
 
-3. Zaktualizuj manifest klastra o te zmiany, używając zaktualizowanego manifestu klastra [Utwórz nowy klaster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) lub [Uaktualnij konfigurację klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). Po uruchomieniu klastra z zaktualizowanym manifestem klastra można teraz zobaczyć usługę systemową Repair Manager działającą w klastrze, która jest wywoływana `fabric:/System/RepairManagerService`, w sekcji usługi systemowe w Eksploratorze Service Fabric.
+1. Zaktualizuj manifest klastra o te zmiany przy użyciu zaktualizowanego manifestu klastra [Utwórz nowy klaster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) lub [Uaktualnij konfigurację klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). 
+
+   Po uruchomieniu klastra ze zaktualizowanym manifestem klastra można zobaczyć usługę Menedżer naprawy działającą w klastrze. Jest on nazywany *siecią szkieletową:/system/RepairManagerService*i znajduje się w sekcji usługi systemowe w Service Fabric Explorer.
 
 ### <a name="configure-windows-updates-for-all-nodes"></a>Skonfiguruj aktualizacje systemu Windows dla wszystkich węzłów
 
-Automatyczne aktualizacje systemu Windows mogą prowadzić do utraty dostępności, ponieważ w tym samym czasie można uruchomić wiele węzłów klastra. Aplikacja aranżacji poprawek domyślnie próbuje wyłączyć automatyczne Windows Update na każdym węźle klastra. Jeśli jednak ustawienia są zarządzane przez administratora lub zasady grupy, zalecamy ustawienie zasad Windows Update na "powiadamianie przed pobraniem".
+Automatyczne aktualizacje systemu Windows mogą prowadzić do utraty dostępności, ponieważ w tym samym czasie mogą być ponownie uruchomione wiele węzłów klastra. Domyślnie program próbuje wyłączyć automatyczne aktualizacje systemu Windows w każdym węźle klastra. Jeśli jednak ustawienia są zarządzane przez administratora lub zasady grupy, zalecamy ustawienie zasad Windows Update na "powiadamianie przed pobraniem".
 
-## <a name="download-the-app-package"></a>Pobierz pakiet aplikacji
+## <a name="download-the-application-package"></a>Pobierz pakiet aplikacji
 
-Aby pobrać pakiet aplikacji, odwiedź [stronę](https://github.com/microsoft/Service-Fabric-POA/releases/latest/) wydania usługi GitHub w aplikacji aranżacji poprawki.
+Aby pobrać pakiet aplikacji, przejdź do [strony udostępnianie aplikacji aranżacji poprawek](https://github.com/microsoft/Service-Fabric-POA/releases/latest/) w witrynie GitHub.
 
-## <a name="configure-the-app"></a>Konfigurowanie aplikacji
+## <a name="configure-poa-behavior"></a>Skonfiguruj zachowanie POA
 
-Zachowanie aplikacji aranżacji patch można skonfigurować tak, aby spełniały Twoje potrzeby. Zastąp wartości domyślne, przekazując parametr aplikacji podczas tworzenia lub aktualizowania aplikacji. Parametry aplikacji można podać, określając `ApplicationParameter` `Start-ServiceFabricApplicationUpgrade` dla poleceń cmdlet lub `New-ServiceFabricApplication` .
+Zachowanie POA można skonfigurować w celu spełnienia Twoich potrzeb. Zastąp wartości domyślne, przekazując parametr aplikacji podczas tworzenia lub aktualizowania aplikacji. Parametry aplikacji można podać, określając `ApplicationParameter` w @no__t poleceniach cmdlet `Start-ServiceFabricApplicationUpgrade` lub.
 
-|**Parametr**        |**Typ**                          | **Szczegóły**|
+| Parametr        | Typ                          | Szczegóły |
 |:-|-|-|
-|MaxResultsToCache    |Długie                              | Maksymalna liczba Windows Updateych wyników, które powinny być buforowane. <br>Wartość domyślna to 3000 przy założeniu, że: <br> -Liczba węzłów wynosi 20. <br> -Liczba aktualizacji w węźle miesięcznie wynosi pięć. <br> -Liczba wyników na operację może wynosić 10. <br> -Wyniki z ostatnich trzech miesięcy powinny być przechowywane. |
-|TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które mają być używane przez usługę koordynatora do instalowania aktualizacji systemu Windows na Service Fabric węzłach klastra.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest instalowany jeden węzeł w danym momencie. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update zainstalowaniu jednej domeny uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia mogą przejść dla Windows Update.)<br> Zapoznaj się z sekcją [często zadawanych pytań](#frequently-asked-questions) , aby określić, które zasady najlepiej nadają się do użycia w klastrze.
-|LogsDiskQuotaInMB   |Długie  <br> Wartooć 1024)               |Maksymalny rozmiar dzienników aplikacji Orchestration dla aranżacji w MB, które mogą być utrwalane lokalnie w węzłach.
-| WUQuery               | ciąg<br>Wartooć "IsInstalled = 0")                | Zapytanie w celu pobrania aktualizacji systemu Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Boolean <br> (wartość domyślna: false)                 | Użyj tej flagi, aby określić, które aktualizacje mają zostać pobrane i zainstalowane. Następujące wartości są dozwolone <br>true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>false — instaluje wszystkie dostępne aktualizacje na komputerze.          |
-| WUOperationTimeOutInMinutes | Int <br>Wartooć 90)                   | Określa limit czasu dla każdej operacji Windows Update (Wyszukaj lub Pobierz lub zainstaluj). Jeśli operacja nie zostanie zakończona w określonym limicie czasu, zostanie przerwana.       |
-| WURescheduleCount     | Int <br> Wartooć 5)                  | Maksymalna liczba ponownych uruchomień usługi w usłudze Windows Update w przypadku niepowodzenia operacji.          |
-| WURescheduleTimeInMinutes | Int <br>Wartooć 30) | Interwał, w którym usługa ponownie planuje usługę Windows Update w przypadku niepowodzenia utrwalania. |
-| WUFrequency           | Ciąg rozdzielony przecinkami (domyślnie: "Tygodniowe, środa, 7:00:00")     | Częstotliwość instalowania Windows Update. Format i możliwe wartości to: <br>-Miesięcznie, DD, gg: MM: SS, na przykład miesięcznie, 5, 12:22:32.<br>Dozwolone wartości pola DD (Day) to liczby z zakresu od 1-28 do "Last". <br> -Weekly, dzień, gg: MM: SS, na przykład Weekly, wtorek, 12:22:32.  <br> -Codziennie, gg: MM: SS, na przykład codziennie, 12:22:32.  <br> -Brak wskazuje, że nie należy wykonać Windows Update.  <br><br> Należy pamiętać, że czasy są w formacie UTC.|
-| AcceptWindowsUpdateEula | Boolean <br>(Wartość domyślna: true) | Ustawiając tę flagę, aplikacja akceptuje umowę licencyjną użytkownika końcowego dla Windows Update w imieniu właściciela maszyny.              |
+|MaxResultsToCache    |długo                              | Maksymalna liczba Windows Updateych wyników, które powinny być buforowane. <br><br>Wartość domyślna to 3000, przy założeniu, że: <br> &nbsp; @ no__t-1 — Liczba węzłów wynosi 20. <br> &nbsp; @ no__t-1 — liczba aktualizacji w węźle miesięcznie wynosi 5. <br> &nbsp; @ no__t-1 — liczba wyników na operację może wynosić 10. <br> &nbsp; @ no__t-1 — wyniki dla ostatnich trzech miesięcy powinny być przechowywane. |
+|TaskApprovalPolicy   |Wyliczenie <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które mają być używane przez usługę koordynatora do instalowania aktualizacji systemu Windows na Service Fabric węzłach klastra.<br><br>Dozwolone wartości to: <br>*NodeWise*: aktualizacje systemu Windows są instalowane po jednym węźle w danym momencie. <br> *UpgradeDomainWise*: aktualizacje systemu Windows są instalowane w jednej domenie aktualizacji jednocześnie. (W większości, wszystkie węzły należące do domeny aktualizacji mogą przejść do usługi Windows Update).<br><br> Aby ułatwić podjęcie decyzji, które zasady najlepiej nadają się dla klastra, zobacz sekcję [często zadawanych pytań](#frequently-asked-questions) .
+|LogsDiskQuotaInMB   |długo  <br> (Domyślnie: *1024*)               | Maksymalny rozmiar dzienników aplikacji aranżacji w MB, które mogą być utrwalane lokalnie w węzłach.
+| WUQuery               | string<br>(Domyślnie: *IsInstalled = 0*)                | Zapytanie w celu pobrania aktualizacji systemu Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
+| InstallWindowsOSOnlyUpdates | *Typu* <br> (wartość domyślna: false)                 | Użyj tej flagi, aby określić, które aktualizacje mają zostać pobrane i zainstalowane. Następujące wartości są dozwolone <br>true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>false — instaluje wszystkie dostępne aktualizacje na komputerze.          |
+| WUOperationTimeOutInMinutes | int <br>(Domyślnie: *90*)                   | Określa limit czasu dla każdej operacji Windows Update (Wyszukaj lub Pobierz lub zainstaluj). Jeśli operacja nie zostanie zakończona w określonym limicie czasu, zostanie przerwana.       |
+| WURescheduleCount     | int <br> (Domyślnie: *5*)                  | Maksymalna liczba przypadków, w których usługa ponownie planuje aktualizację systemu Windows, jeśli operacja nie powiedzie się.          |
+| WURescheduleTimeInMinutes | int <br>(Wartość domyślna: *30*) | Interwał, w którym usługa ponownie planuje aktualizacje systemu Windows, jeśli błąd będzie nadal występował. |
+| WUFrequency           | Ciąg rozdzielony przecinkami (wartość domyślna: *Weekly, środa, 7:00:00*)     | Częstotliwość instalowania aktualizacji systemu Windows. Format i możliwe wartości to: <br>&nbsp; @ no__t-1-miesięczny: DD, gg: MM: SS (na przykład *miesięcznie, 5, 12:22:32*)<br>Dozwolone wartości pola DD (Day) to liczby od 1 do 28 i "Last". <br> &nbsp; @ no__t-1 — tydzień, dzień, HH: MM: SS (na przykład *Weekly, wtorek, 12:22:32*)  <br> &nbsp; @ no__t-1-dziennie, gg: MM: SS (na przykład *dziennie, 12:22:32*)  <br> &nbsp; @ no__t-1 @ no__t-2*Brak* wskazuje, że aktualizacje systemu Windows nie należy wykonywać.  <br><br> Czasy są w formacie UTC.|
+| AcceptWindowsUpdateEula | Boolean <br>(Wartość domyślna: *true*) | Ustawiając tę flagę, aplikacja akceptuje umowę licencyjną użytkownika końcowego dla Windows Update w imieniu właściciela maszyny.              |
 
 > [!TIP]
-> Jeśli chcesz, aby Windows Update się natychmiast, ustaw `WUFrequency` względem czasu wdrożenia aplikacji. Załóżmy na przykład, że masz klaster testowy z pięcioma węzłami i planujesz wdrożenie aplikacji na około 5:00 PM czasu UTC. Jeśli założono, że uaktualnienie lub wdrożenie aplikacji trwa 30 minut, ustaw wartość WUFrequency na "codziennie, 17:30:00"
+> Jeśli aktualizacje systemu Windows mają być wykonywane natychmiast, ustaw wartość `WUFrequency` względem czasu wdrożenia aplikacji. Załóżmy na przykład, że masz klaster testowy z pięcioma węzłami i planujesz wdrożenie aplikacji na około 5:00 PM czasu UTC. Jeśli założono, że uaktualnienie lub wdrożenie aplikacji trwa 30 minut, ustaw WUFrequency jako *codziennie, 17:30:00*.
 
-## <a name="deploy-the-app"></a>Wdrażanie aplikacji
+## <a name="deploy-poa"></a>Wdróż aplikację POA
 
 1. Wykonaj wszystkie kroki wymagań wstępnych, aby przygotować klaster.
-2. Wdróż aplikację aranżacji poprawek, taką jak każda inna aplikacja Service Fabric. Aplikację można wdrożyć przy użyciu programu PowerShell. Wykonaj kroki opisane w temacie [wdrażanie i usuwanie aplikacji przy użyciu programu PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-3. Aby skonfigurować aplikację w czasie wdrażania, należy przekazać `ApplicationParameter` `New-ServiceFabricApplication` do polecenia cmdlet. Dla wygody użytkownika udostępniamy skrypt Deploy. ps1 wraz z aplikacją. Aby użyć skryptu:
+1. Wdróż program POA podobnie jak każda inna aplikacja Service Fabric. Aby wdrożyć go przy użyciu programu PowerShell, zobacz [wdrażanie i usuwanie aplikacji przy użyciu programu PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
+1. Aby skonfigurować aplikację w czasie wdrażania, należy przekazać `ApplicationParameter` do polecenia cmdlet `New-ServiceFabricApplication`. Dla wygody użytkownika udostępniamy skrypt Deploy. ps1 wraz z aplikacją. Aby użyć skryptu:
 
-    - Nawiązywanie połączenia z klastrem Service Fabric `Connect-ServiceFabricCluster`przy użyciu programu.
-    - Wykonaj skrypt PowerShell Deploy. ps1 z odpowiednią `ApplicationParameter` wartością.
+    - Połącz się z klastrem Service Fabric przy użyciu `Connect-ServiceFabricCluster`.
+    - Wykonaj skrypt PowerShell Deploy. ps1 z odpowiednią wartością `ApplicationParameter`.
 
 > [!NOTE]
-> Zachowaj skrypt i folder aplikacji PatchOrchestrationApplication w tym samym katalogu.
+> Zachowaj skrypt i folder aplikacji *PatchOrchestrationApplication* w tym samym katalogu.
 
-## <a name="upgrade-the-app"></a>Uaktualnianie aplikacji
+## <a name="upgrade-poa"></a>Uaktualnij POA
 
-Aby uaktualnić istniejącą aplikację aranżacji patch przy użyciu programu PowerShell, wykonaj kroki opisane w [Service Fabric Uaktualnianie aplikacji przy użyciu programu PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell).
+Aby uaktualnić wersję POA przy użyciu programu PowerShell, postępuj zgodnie z instrukcjami w temacie [Service Fabric upgrade Applications using PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell).
 
-## <a name="remove-the-app"></a>Usuń aplikację
+## <a name="remove-poa"></a>Usuń POA
 
-Aby usunąć aplikację, wykonaj kroki opisane w temacie [wdrażanie i usuwanie aplikacji przy użyciu programu PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
+Aby usunąć aplikację, postępuj zgodnie z instrukcjami w temacie [wdrażanie i usuwanie aplikacji przy użyciu programu PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
 
-Dla wygody udostępnimy skrypt undeploy. ps1 wraz z aplikacją. Aby użyć skryptu:
+Dla wygody udostępniamy skrypt undeploy. ps1 wraz z aplikacją. Aby użyć skryptu:
 
-  - Nawiązywanie połączenia z klastrem Service Fabric ```Connect-ServiceFabricCluster```przy użyciu programu.
-
+  - Połącz się z klastrem Service Fabric przy użyciu ```Connect-ServiceFabricCluster```.
   - Wykonanie skryptu programu PowerShell undeploy. ps1.
 
 > [!NOTE]
-> Zachowaj skrypt i folder aplikacji PatchOrchestrationApplication w tym samym katalogu.
+> Zachowaj skrypt i folder aplikacji *PatchOrchestrationApplication* w tym samym katalogu.
 
 ## <a name="view-the-windows-update-results"></a>Wyświetl wyniki Windows Update
 
-Aplikacja aranżacji poprawek uwidacznia interfejsy API REST, aby wyświetlić wyniki historyczne dla użytkownika. Przykład JSON wynik:
+POA udostępnia interfejsy API REST, aby wyświetlić historyczne wyniki dla użytkowników. Oto przykład kodu JSON wyniku:
+
 ```json
 [
   {
@@ -225,30 +230,30 @@ Aplikacja aranżacji poprawek uwidacznia interfejsy API REST, aby wyświetlić w
 ]
 ```
 
-Pola w formacie JSON są opisane poniżej.
+Pola JSON są opisane w poniższej tabeli:
 
 Pole | Wartości | Szczegóły
 -- | -- | --
-OperationResult | 0 — powodzenie<br> 1 — powodzenie z błędami<br> 2 — Niepowodzenie<br> 3 — przerwana<br> 4 — przerwano z limitem czasu | Wskazuje wynik operacji ogólnej (zazwyczaj obejmuje instalację jednej lub kilku aktualizacji).
-ResultCode | Analogicznie jak klasy OperationResult | To pole wskazuje wynik operacji instalacji dla pojedynczej aktualizacji.
-OperationType | 1 — Instalacja<br> 0 — wyszukiwanie i pobieranie.| Instalacja jest jedyną operacją, która będzie domyślnie wyświetlana w wynikach.
-WindowsUpdateQuery | Wartość domyślna to "IsInstalled = 0" |Zapytanie usługi Windows Update, które zostało użyte do wyszukiwania aktualizacji. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
+Klasy OperationResult | 0 — powodzenie<br> 1 — powodzenie z błędami<br> 2 — Niepowodzenie<br> 3 — przerwana<br> 4 — przerwano z limitem czasu | Wskazuje wynik operacji ogólnej, która zwykle obejmuje instalację jednej lub kilku aktualizacji.
+resultCode | Analogicznie jak klasy OperationResult | To pole wskazuje wynik operacji instalacji dla pojedynczej aktualizacji.
+operationType | 1 — Instalacja<br> 0 — wyszukiwanie i pobieranie| Domyślnie instalacja jest jedyną operacją, która jest wyświetlana w wynikach.
+WindowsUpdateQuery | Wartość domyślna to "IsInstalled = 0" | Zapytanie Windows Update używane do wyszukiwania aktualizacji. Aby uzyskać więcej informacji, zobacz [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
 RebootRequired | true — wymagany jest ponowny rozruch<br> FAŁSZ — nie jest wymagane ponowne uruchomienie komputera | Wskazuje, czy do ukończenia instalacji aktualizacji jest wymagany ponowny rozruch.
-OperationStartTime | DateTime | Wskazuje czas, w którym uruchomiono operację (pobieranie/instalacja).
-OperationTime | DateTime | Wskazuje godzinę ukończenia operacji (pobieranie/instalacja).
-Wynik | 0 — powodzenie<br> inne — niepowodzenie| Wskazuje przyczynę niepowodzenia aktualizacji systemu Windows z updateID "7392acaf-6a85-427c-8a8d-058c25beb0d6".
+OperationStartTime | DataGodzina | Wskazuje czas, w którym uruchomiono operację (pobieranie/instalacja).
+OperationTime | DataGodzina | Wskazuje czas ukończenia operacji (pobieranie/instalacja).
+Wynik | 0 — powodzenie<br> inne — niepowodzenie| Wskazuje przyczynę niepowodzenia usługi Windows Update z updateID "7392acaf-6a85-427c-8a8d-058c25beb0d6".
 
 Jeśli nie zaplanowano jeszcze żadnej aktualizacji, wynikowy kod JSON jest pusty.
 
-Zaloguj się do klastra w celu zbadania Windows Update wyników. Następnie sprawdź adres repliki dla podstawowego usługi koordynatora i naciśnij adres URL z przeglądarki: http://&lt;Replica-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/ GetWindowsUpdateResults.
+Zaloguj się do klastra w celu zbadania Windows Update wyników. Sprawdź adres IP repliki dla podstawowego adresu usługi koordynatora i Otwórz następujący adres URL w przeglądarce: http://&lt;REPLICA-IP @ no__t-1: &lt;ApplicationPort @ no__t-3/PatchOrchestrationApplication/V1/GetWindowsUpdateResults.
 
-Punkt końcowy REST usługi koordynatora ma port dynamiczny. Aby sprawdzić dokładny adres URL, zapoznaj się z Service Fabric Explorer. Na przykład wyniki są dostępne pod adresem `http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults`.
+Punkt końcowy REST usługi koordynatora ma port dynamiczny. Aby sprawdzić dokładny adres URL, zapoznaj się z tematem Service Fabric Explorer. Na przykład wyniki są dostępne pod adresem *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* .
 
 ![Obraz punktu końcowego REST](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
+Jeśli zwrotny serwer proxy jest włączony w klastrze, można uzyskać dostęp do adresu URL spoza klastra.
 
-Jeśli zwrotny serwer proxy jest włączony w klastrze, można również uzyskać dostęp do adresu URL spoza klastra.
-Punkt końcowy, który musi zostać trafiony,&lt;to&gt;http://&lt;SERVERURL&gt;: REVERSEPROXYPORT/PatchOrchestrationApplication/CoordinatorService/V1/GetWindowsUpdateResults.
+Wymagany punkt końcowy to *http://&lt;SERVERURL @ no__t-2: &lt;REVERSEPROXYPORT @ no__t-4/PatchOrchestrationApplication/CoordinatorService/V1/GetWindowsUpdateResults*.
 
 Aby włączyć zwrotny serwer proxy w klastrze, postępuj zgodnie z instrukcjami w [odwrotnym serwerze proxy na platformie Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
 
@@ -256,37 +261,45 @@ Aby włączyć zwrotny serwer proxy w klastrze, postępuj zgodnie z instrukcjami
 > [!WARNING]
 > Po skonfigurowaniu zwrotnego serwera proxy wszystkie mikrousługi w klastrze, które uwidaczniają punkt końcowy HTTP, są adresowane spoza klastra.
 
-## <a name="diagnosticshealth-events"></a>Zdarzenia diagnostyki/kondycji
+## <a name="diagnostics-and-health-events"></a>Zdarzenia diagnostyki i kondycji
 
-W poniższej sekcji omówiono debugowanie/diagnozowanie problemów z aktualizacjami poprawek za pomocą aplikacji aranżacji poprawek w klastrach Service Fabric.
+W tej sekcji omówiono debugowanie lub diagnozowanie problemów z aktualizacjami poprawek za pomocą programu POA w klastrach Service Fabric.
 
 > [!NOTE]
-> Należy mieć zainstalowaną wersję 1.4.0 w wersji 2.0, aby można było uzyskać wiele z poniższych elementów o nazwie udoskonalenia samodiagnostyki.
+> Aby uzyskać wiele z następujących wywoływanych ulepszeń samoobsługowych, należy mieć zainstalowany program POA w wersji 1.4.0 lub nowszej.
 
-NodeAgentNTService tworzy [zadania naprawy](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) w celu zainstalowania aktualizacji w węzłach. Każde zadanie jest następnie przygotowywane przez CoordinatorService zgodnie z zasadami zatwierdzania zadań. Przygotowane zadania są ostatecznie zatwierdzone przez Menedżer naprawy, które nie zatwierdzą żadnego zadania, Jeśli klaster jest w złej kondycji. Umożliwia przechodzenie krok po kroku, aby zrozumieć, jak aktualizacje są przebiegać w węźle.
+Agent Node NTService tworzy [zadania naprawcze](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) służące do instalowania aktualizacji w węzłach. Każde zadanie jest następnie przygotowywane przez usługę koordynatora zgodnie z zasadami zatwierdzania zadań. Na koniec przygotowane zadania są zatwierdzane przez Menedżer naprawy, które nie zatwierdzają żadnych zadań, Jeśli klaster jest w złej kondycji. 
 
-1. NodeAgentNTService, uruchomione w każdym węźle, wyszukuje dostępne Windows Update w zaplanowanym czasie. Jeśli aktualizacje są dostępne, zostaną pobrane do węzła.
-2. Po pobraniu aktualizacji NodeAgentNTService tworzy odpowiednie zadanie naprawy dla węzła o nazwie POS___ < unique_id >. Jeden z nich może przeglądać te zadania naprawy przy użyciu polecenia cmdlet [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) lub SFX w sekcji Szczegóły węzła. Gdy zadanie naprawy zostanie utworzone, program szybko przejdzie do [żądanego stanu](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
-3. Usługa koordynatora okresowo szuka zadań naprawczych w stanie zatwierdzono i aktualizuje je w celu przygotowania stanu na podstawie TaskApprovalPolicy. Jeśli TaskApprovalPolicy jest skonfigurowany jako NodeWise, zadanie naprawy odpowiadające węzłowi jest przygotowywane tylko wtedy, gdy w trakcie przygotowywania/zatwierdzania/wykonywania/przywracania nie ma żadnych innych zadań naprawy. Podobnie, w przypadku UpgradeWise TaskApprovalPolicy, jest on zapewniony w dowolnym momencie, że istnieją zadania w powyższych Stanach tylko dla węzłów należących do tej samej domeny uaktualnienia. Gdy zadanie naprawy zostanie przeniesione do stanu przygotowywania, odpowiedni węzeł Service Fabric jest [wyłączony](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) z intencją jako "Uruchom ponownie".
+Aby ułatwić zrozumienie, jak aktualizacje są realizowane w węźle, przejdźmy krok po kroku:
 
-   POA (v 1.4.0 i nowsze) zapisuje zdarzenia z właściwością "ClusterPatchingStatus" na CoordinaterService, aby wyświetlić węzły, które są aktualizowane. Na poniższej ilustracji przedstawiono aktualizacje, które są instalowane w systemie _poanode_0:
+1. NodeAgentNTService, uruchomione w każdym węźle, wyszukuje dostępne aktualizacje systemu Windows w zaplanowanym czasie. Jeśli aktualizacje są dostępne, pobiera je w węźle.
 
-    [![Obraz stanu poprawek klastra](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
+1. Po pobraniu aktualizacji Agent węzła NTService tworzy odpowiednie zadanie naprawy dla węzła o nazwie *POS___ @ no__t-1unique_id >* . Te zadania naprawy można wyświetlić za pomocą polecenia cmdlet [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) lub za pomocą SFX w sekcji Szczegóły węzła. Po utworzeniu zadania naprawy szybko przechodzi do [stanu *zatwierdzono* ](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
 
-4. Po wyłączeniu węzła zadanie naprawy jest przenoszone do stanu wykonywania.
+1. Usługa koordynatora okresowo szuka zadań naprawy w stanie *zatwierdzono* , a następnie aktualizuje je w celu *przygotowania* stanu na podstawie TaskApprovalPolicy. Jeśli TaskApprovalPolicy jest skonfigurowany jako NodeWise, zadanie naprawy odnoszące się do węzła jest przygotowywane tylko wtedy, gdy żadne inne zadanie naprawy nie jest obecnie *przygotowywane*, *zatwierdzane*, *wykonywane*lub *przywracane* . 
+
+   Podobnie w przypadku UpgradeWise TaskApprovalPolicy istnieją zadania w powyższych Stanach tylko dla węzłów należących do tej samej domeny aktualizacji. Po przeniesieniu zadania naprawy do stanu *przygotowywania* odpowiedni węzeł Service Fabric jest [wyłączony](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) z zamiarem ustawionym na *ponowne uruchomienie*.
+
+   Wersje POA 1.4.0 i nowsze zdarzenia wpisu z właściwością ClusterPatchingStatus na CoordinatorService w celu wyświetlenia poprawek, które są używane. Aktualizacje są instalowane na _poanode_0, jak pokazano na poniższej ilustracji:
+
+    [![Image stanu poprawek klastra](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
+
+1. Po wyłączeniu węzła zadanie naprawy jest przenoszone do stanu *wykonywania* . 
    
-   >[!NOTE]
-   > Węzeł zablokowany w stanie wyłączonym może blokować nowe zadanie naprawy, co spowoduje zatrzymanie operacji stosowania poprawki w klastrze.
+   > [!NOTE]
+   > Węzeł, który jest zablokowany w stanie *wyłączone* , może blokować nowe zadanie naprawy, które wstrzymuje operację stosowania poprawek w klastrze.
 
-5. Gdy zadanie naprawy jest w stanie wykonywania, rozpocznie się instalacja poprawek w tym węźle. W tym miejscu po zainstalowaniu poprawki węzeł może lub nie może zostać uruchomiony ponownie w zależności od poprawki. Opublikuj to zadanie naprawy, aby przywrócić stan przywracania, co umożliwia ponowne włączenie węzła, a następnie jego oznaczenie zostało zakończone.
+1. Gdy zadanie naprawy jest w stanie *wykonywania* , rozpocznie się instalacja poprawek w tym węźle. Po zainstalowaniu poprawki węzeł może lub nie może zostać ponownie uruchomiony, w zależności od poprawki. Następnie zadanie naprawy jest przenoszone do stanu *przywracania* , co powoduje ponowną obsługę węzła. Zadanie naprawy jest następnie oznaczane jako ukończone.
 
-   W programie v 1.4.0 i nowszych wersjach aplikacji można znaleźć stan aktualizacji, przeglądając zdarzenia kondycji na NodeAgentService z właściwością "WUOperationStatus-[nodename]". Wyróżnione sekcje na poniższej ilustracji pokazują stan aktualizacji systemu Windows w węźle "poanode_0" i "poanode_2":
+   W programie POA w wersji 1.4.0 i nowszych można znaleźć stan aktualizacji, wyświetlając zdarzenia kondycji na NodeAgentService z właściwością WUOperationStatus-\<NodeName >. Wyróżnione sekcje na poniższych ilustracjach pokazują stan aktualizacji systemu Windows w węzłach *poanode_0* i *poanode_2*:
 
-   [![Obraz stanu operacji aktualizacji systemu Windows](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![Image stanu operacji Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Obraz stanu operacji aktualizacji systemu Windows](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![Image stanu operacji Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
-   Może również uzyskać szczegółowe informacje za pomocą programu PowerShell, łącząc się z klastrem i pobierając stan zadania naprawy przy użyciu polecenia [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps). Podobnie jak w poniższym przykładzie pokazano, że zadanie "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15" jest w stanie DownloadComplete. Oznacza to, że aktualizacje zostały pobrane w węźle "poanode_2", a instalacja zostanie podjęta, gdy zadanie przejdzie do stanu wykonania.
+   Możesz również uzyskać szczegółowe informacje za pomocą programu PowerShell. W tym celu należy połączyć się z klastrem i pobrać stan zadania naprawy przy użyciu polecenia [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps). 
+   
+   W poniższym przykładzie zadanie "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15" jest w stanie *DownloadComplete* . Oznacza to, że aktualizacje zostały pobrane w węźle *poanode_2* i zostanie podjęta próba instalacji, gdy zadanie przejdzie do stanu *wykonywania* .
 
    ``` powershell
     D:\service-fabric-poa-bin\service-fabric-poa-bin\Release> $k = Get-ServiceFabricRepairTask -TaskId "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15"
@@ -295,30 +308,30 @@ NodeAgentNTService tworzy [zadania naprawy](https://docs.microsoft.com/dotnet/ap
     {"ExecutorSubState":2,"ExecutorTimeoutInMinutes":90,"RestartRequestedTime":"0001-01-01T00:00:00"}
     ```
 
-   Jeśli nadal chcesz znaleźć więcej informacji, zaloguj się do określonych maszyn wirtualnych/maszyn wirtualnych, aby dowiedzieć się więcej o problemie przy użyciu dzienników zdarzeń systemu Windows. Wymienione powyżej zadanie naprawy może mieć tylko te podstany wykonawcy:
+   Jeśli chcesz znaleźć więcej problemów, zaloguj się do maszyny wirtualnej lub maszyn wirtualnych i uzyskaj informacje o nich przy użyciu dzienników zdarzeń systemu Windows. Wyżej wymienione zadanie naprawy może istnieć tylko w następujących podstanach wykonywania:
 
-      ExecutorSubState | Szczegóły
+      ExecutorSubState | Opis
     -- | -- 
-      Brak = 1 |  Oznacza, że nie było trwającą operacją w węźle. Możliwe przejścia stanu.
-      DownloadCompleted=2 | Oznacza, że operacja pobierania zakończyła się pomyślnie, częściowym błędem lub błędem.
-      InstallationApproved=3 | Oznacza, że operacja pobierania została zakończona wcześniej, a Menedżer naprawya zatwierdziła instalację.
-      InstallationInProgress=4 | Odnosi się do stanu wykonania zadania naprawy.
-      InstallationCompleted=5 | Oznacza, że instalacja została ukończona z sukcesem, częściowym sukcesem lub niepowodzeniem.
-      RestartRequested = 6 | Oznacza, że instalacja poprawek została zakończona, a w węźle istnieje oczekująca akcja ponownego uruchomienia.
-      RestartNotNeeded=7 |  Oznacza, że ponowne uruchomienie nie jest wymagane po zakończeniu instalacji poprawki.
-      RestartCompleted=8 | Oznacza, że ponowne uruchomienie zostało pomyślnie zakończone.
-      OperationCompleted=9 | Operacja aktualizacji systemu Windows została ukończona pomyślnie.
-      OperationAborted=10 | Oznacza, że operacja aktualizacji systemu Windows została przerwana.
+      Brak = 1 |  Oznacza, że nie było trwającą operacją w węźle. Stan może być w fazie przejścia.
+      DownloadCompleted = 2 | Oznacza, że operacja pobierania została ukończona z sukcesem, częściowym uszkodzeniem lub błędem.
+      InstallationApproved = 3 | Oznacza, że operacja pobierania została zakończona wcześniej, a Menedżer naprawy zatwierdziła instalację.
+      InstallationInProgress = 4 | Odnosi się do stanu wykonania zadania naprawy.
+      InstallationCompleted = 5 | Oznacza, że instalacja została ukończona z sukcesem, częściowym sukcesem lub niepowodzeniem.
+      RestartRequested = 6 | Oznacza, że instalacja poprawki została ukończona i istnieje oczekująca akcja ponownego uruchomienia w węźle.
+      RestartNotNeeded = 7 |  Oznacza, że ponowne uruchomienie nie było wymagane po zakończeniu instalacji poprawki.
+      RestartCompleted = 8 | Oznacza, że ponowne uruchomienie zostało zakończone pomyślnie.
+      OperationCompleted = 9 | Operacja Windows Update została ukończona pomyślnie.
+      OperationAborted = 10 | Oznacza, że operacja Windows Update została przerwana.
 
-6. W programie v 1.4.0 i nowszych aplikacjach po zakończeniu próby aktualizacji w węźle zostanie wysłane zdarzenie z właściwością "WUOperationStatus-[nodename]" na NodeAgentService w celu powiadomienia, gdy zostanie podjęta kolejna próba pobrania i zainstalowania aktualizacji, Uruchom. Zapoznaj się z poniższym obrazem:
+1. W programie POA w wersji 1.4.0 i nowszych po zakończeniu próby aktualizacji węzła zdarzenie z właściwością "WUOperationStatus-[nodename]" jest ogłaszane w usłudze NodeAgentService, aby powiadomić użytkownika, gdy zostanie rozpoczęta następna próba pobrania i zainstalowania aktualizacji systemu Windows. Ta wartość jest wyświetlana na poniższym obrazie:
 
-     [![Obraz stanu operacji aktualizacji systemu Windows](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![Image stanu operacji Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
-### <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
+### <a name="diagnostics-logs"></a>Dzienniki diagnostyczne
 
 Dzienniki aplikacji aranżacji poprawek są zbierane w ramach dzienników środowiska uruchomieniowego Service Fabric.
 
-Jeśli chcesz przechwytywać dzienniki za pośrednictwem wybranego narzędzia diagnostycznego lub potoku. Aplikacja aranżacji poprawek używa poniżej stałych identyfikatorów dostawcy do rejestrowania zdarzeń za pośrednictwem [źródła zdarzeń](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)
+Dzienniki można przechwycić za pomocą wybranego narzędzia diagnostycznego lub potoku. POA używa następujących stałych identyfikatorów dostawcy do rejestrowania zdarzeń za pośrednictwem [źródła zdarzeń](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1):
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -327,137 +340,148 @@ Jeśli chcesz przechwytywać dzienniki za pośrednictwem wybranego narzędzia di
 
 ### <a name="health-reports"></a>Raporty dotyczące kondycji
 
-Aplikacja aranżacji patch publikuje także raporty o kondycji dotyczące usługi koordynatora lub usługi agenta węzłów w następujących przypadkach:
+POA publikuje także raporty o kondycji dotyczące usługi agenta węzłów lub usługi koordynatora w następujących scenariuszach:
 
-#### <a name="the-node-agent-ntservice-is-down"></a>NTService agenta węzła nie działa
+* NTService agenta węzła nie działa
 
-Jeśli Agent węzła NTService nie działa w węźle, generowany jest raport o kondycji na poziomie ostrzeżenia dla usługi agenta węzła.
+   Jeśli Agent węzła NTService nie działa w węźle, generowany jest raport o kondycji na poziomie ostrzeżenia dla usługi agenta węzła.
 
-#### <a name="the-repair-manager-service-is-not-enabled"></a>Usługa Menedżera naprawy nie jest włączona
+* Usługa Menedżer naprawy nie jest włączona
 
-Jeśli w klastrze nie znaleziono usługi Menedżera naprawy, dla usługi koordynatora zostanie wygenerowany raport o kondycji na poziomie ostrzeżenia.
+   Jeśli usługa Menedżer naprawy nie zostanie znaleziona w klastrze, generowany jest raport o kondycji na poziomie ostrzeżenia dla usługi koordynatora.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-PYTANIE: **Dlaczego mój klaster jest wyświetlany w stanie błędu, gdy jest uruchomiona aplikacja aranżacji poprawek?**
+**P: Dlaczego widzę mój klaster w stanie błędu, gdy jest uruchomiony program POA?**
 
-A. Podczas instalacji aplikacja aranżacji patch wyłącza lub uruchamia ponownie węzły, co może tymczasowo spowodować kondycję klastra.
+Odp.: w trakcie instalacji, POA wyłącza lub uruchamia ponownie węzły, co może spowodować tymczasowy klaster w złej kondycji.
 
-W oparciu o zasady dla aplikacji, jeden węzeł może przejść w dół operacji poprawiania *lub* cała domena uaktualnienia może przejść jednocześnie.
+W zależności od zasad aplikacji jeden węzeł może zostać wyłączony podczas stosowania poprawek *lub* cała domena aktualizacji może przejść w dół.
 
-Po zakończeniu instalacji Windows Update węzły są ponownie włączone po ponownym uruchomieniu.
+Po zakończeniu instalacji aktualizacji systemu Windows węzły są ponownie włączone po ponownym uruchomieniu.
 
-W poniższym przykładzie klaster przeszedł do stanu błędu tymczasowo, ponieważ dwa węzły były wyłączone i zasady MaxPercentageUnhealthyNodes zostały naruszone. Ten błąd jest tymczasowy do momentu trwającej operacji poprawiania.
+W poniższym przykładzie klaster przeszedł do stanu błędu tymczasowo, ponieważ dwa węzły były wyłączone i zasady MaxPercentageUnhealthyNodes zostały naruszone. Błąd jest tymczasowy do momentu rozpoczęcia operacji poprawki.
 
 ![Obraz przedstawiający klaster w złej kondycji](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
 Jeśli problem będzie się powtarzać, zapoznaj się z sekcją rozwiązywania problemów.
 
-PYTANIE: **Aplikacja aranżacji poprawek jest w stanie ostrzegawczym**
+**P: co mogę zrobić, jeśli wartość POA jest w stanie ostrzegawczym?**
 
-A. Sprawdź, czy raport kondycji opublikowany dla aplikacji jest główną przyczyną. Zwykle ostrzeżenie zawiera szczegółowe informacje o problemie. Jeśli problem jest przejściowy, aplikacja oczekuje na Autoodzyskiwanie z tego stanu.
+Odp.: Sprawdź, czy raport kondycji opublikowany dla aplikacji wskazuje główną przyczynę. Zwykle ostrzeżenie zawiera szczegółowe informacje o problemie. Jeśli problem jest przejściowy, oczekiwanie na automatyczne odzyskanie aplikacji.
 
-PYTANIE: **Co mogę zrobić, jeśli mój klaster jest w złej kondycji i muszę przeprowadzić pilną aktualizację systemu operacyjnego?**
+**P: co mogę zrobić, jeśli mój klaster jest w złej kondycji i muszę przeprowadzić pilną aktualizację systemu operacyjnego?**
 
-A. Aplikacja aranżacji poprawek nie instaluje aktualizacji, gdy klaster jest w złej kondycji. Spróbuj przełączyć klaster do stanu dobrej kondycji, aby odblokować przepływ pracy aplikacji aranżacji poprawek.
+Odp.: POA nie instaluje aktualizacji, gdy klaster jest w złej kondycji. Spróbuj przełączyć klaster do stanu dobrej kondycji, aby odblokować przepływ pracy POA.
 
-PYTANIE: **Czy należy ustawić TaskApprovalPolicy jako "NodeWise" lub "UpgradeDomainWise" dla mojego klastra?**
+**P: czy należy ustawić TaskApprovalPolicy jako "NodeWise" lub "UpgradeDomainWise" dla mojego klastra?**
 
-A. "UpgradeDomainWise" sprawia, że ogólna poprawka klastra jest szybsza, co poprawia wszystkie węzły należące do domeny uaktualnienia równolegle. Oznacza to, że węzły należące do całej domeny uaktualnienia byłyby niedostępne (w stanie [wyłączone](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled) ) podczas procesu stosowania poprawek.
+Odp.: ustawienie "UpgradeDomainWise" przyspiesza ogólne naprawianie klastra przez stosowanie poprawek równolegle do wszystkich węzłów należących do domeny aktualizacji. W trakcie procesu węzły należące do całej domeny aktualizacji są niedostępne (w [stanie *wyłączone* ](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
 
-W przeciwieństwie do zasad "NodeWise" tylko jeden węzeł w tym samym czasie, to oznacza to, że ogólna poprawka klastra zajmie więcej czasu. Jednak co najwyżej jeden węzeł będzie niedostępny (w stanie [wyłączone](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled) ) podczas procesu poprawiania.
+W przeciwieństwie do ustawienia "NodeWise" są poprawiane tylko jeden węzeł, co oznacza, że ogólna poprawka klastra może trwać dłużej. Jednak tylko jeden węzeł nie będzie dostępny (w stanie *wyłączone* ) podczas procesu stosowania poprawek.
 
-Jeśli klaster może tolerować działanie w N-1 Liczba domenach uaktualnienia w cyklu stosowania poprawek (gdzie N to całkowita liczba domen uaktualnienia w klastrze), można ustawić zasady jako "UpgradeDomainWise", w przeciwnym razie ustawić je na "NodeWise".
+Jeśli klaster może tolerować działanie na N-1 Liczba domenach aktualizacji w cyklu stosowania poprawek (gdzie N to całkowita liczba domen aktualizacji w klastrze), zasady można ustawić jako "UpgradeDomainWise". W przeciwnym razie ustaw dla niego wartość "NodeWise".
 
-PYTANIE: **Ile czasu zajmuje poprawka węzła?**
+**P: ile czasu zajmuje się poprawką węzła?**
 
-A. Stosowanie poprawek w węźle może potrwać kilka minut (na przykład: [Aktualizacje definicji Windows Defender](https://www.microsoft.com/en-us/wdsi/definitions)) na godziny (na przykład: [Aktualizacje zbiorcze systemu Windows](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Czas wymagany do zastosowania poprawek węzła zależy głównie od 
- - Rozmiar aktualizacji
- - Liczba aktualizacji, które należy zastosować w oknie poprawek
+Odp.: Poprawka węzła może trwać od kilku minut (na przykład [Aktualizacje definicji usługi Windows Defender](https://www.microsoft.com/en-us/wdsi/definitions)) do godzin (na przykład [aktualizacji zbiorczych systemu Windows](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Czas wymagany do zastosowania poprawek węzła zależy głównie od: 
+ - Rozmiar aktualizacji.
+ - Liczba aktualizacji, które należy zastosować w oknie poprawki.
  - Czas potrzebny na zainstalowanie aktualizacji, ponowne uruchomienie węzła (jeśli jest to wymagane) i zakończenie kroków instalacji po ponownym uruchomieniu.
- - Wydajność maszyn wirtualnych/maszyn i warunków sieciowych.
+ - Wydajność maszyny wirtualnej lub maszyny oraz warunki sieciowe.
 
-PYTANIE: **Jak długo trwa poprawka całego klastra?**
+**P: jak długo trwa poprawka całego klastra?**
 
-A. Czas wymagany do zastosowania poprawki całego klastra zależy od następujących czynników:
+Odp.: czas wymagany do zastosowania poprawki całego klastra zależy od następujących:
 
-- Czas wymagany do zastosowania poprawki do węzła.
-- Zasady usługi koordynatora. -Zasady `NodeWise`domyślne,, w wyniku stosowania poprawek tylko jeden węzeł, co może być wolniejsze niż `UpgradeDomainWise`. Na przykład: Jeśli w węźle trwa wartość 1 godzina, aby można było zastosować poprawki, w celu zastosowania poprawki do 20 węzłów (tego samego typu węzły) klastra z 5 domenami uaktualnienia każdy z nich zawiera 4 węzły.
-    - Poprawka całego klastra powinna trwać po 20 godzinach`NodeWise`
-    - Jeśli zasady powinny trwać o około 5 godzinach`UpgradeDomainWise`
-- Ładowanie klastra — każda operacja stosowania poprawek wymaga ponownego lokalizowania obciążenia klienta do innych dostępnych węzłów w klastrze. W tym czasie poprawka w węźle będzie [](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) w stanie wyłączać. Jeśli klaster działa blisko szczytowego obciążenia, proces wyłączania zajmie dłuższy czas. W związku z tym ogólna procedura stosowania poprawek może wydawać się niska w takich warunkach.
-- Błędy kondycji klastra podczas stosowania poprawek — ewentualne [obniżenie](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) [kondycji klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) spowoduje przerwanie procesu stosowania poprawki. Spowoduje to dodanie do całkowitego czasu wymaganego do poprawienia całego klastra.
+- Czas wymagany do zastosowania poprawek do węzła.
 
-PYTANIE: **Dlaczego widzę niektóre aktualizacje w Windows Update wynikach uzyskanych za pośrednictwem interfejsu API REST, ale nie w ramach historii Windows Update na maszynie?**
+- Zasady usługi koordynatora. Zasady domyślne, "NodeWise", w wyniku stosowania poprawek tylko jeden węzeł w danym momencie, są wolniejsze niż użycie "UpgradeDomainWise". 
 
-A. Niektóre aktualizacje produktów będą widoczne tylko w odpowiedniej historii aktualizacji/poprawek. Na przykład aktualizacje usługi Windows Defender mogą nie być wyświetlane w historii Windows Update w systemie Windows Server 2016.
+   Na przykład: Jeśli w węźle trwa wartość 1 godzina, należy zastosować poprawkę do 20 węzłów (tego samego typu) klastra z 5 domenami aktualizacji, z których każda zawiera 4 węzły, wymagane:
+    - Dla "NodeWise": ~ 20 godzin.
+    - Dla "UpgradeDomainWise": ~ 5 godzin.
 
-PYTANIE: **Czy można zastosować poprawkę aplikacji aranżacji do poprawki mojego klastra deweloperskiego (klaster z jednym węzłem)?**
+- Obciążenie klastra. Każda operacja Patch wymaga przelokalizowania obciążenia klienta do innych dostępnych węzłów w klastrze. W tym czasie nastąpi [ *wyłączenie* ](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) poprawki w węźle. Jeśli klaster działa blisko szczytowego obciążenia, proces wyłączania zajmie więcej czasu. W związku z tym ogólna procedura stosowania poprawek może wydawać się niska w takich warunkach.
 
-A. Nie, aplikacja aranżacji poprawek nie może zostać użyta do poprawki klastra z jednym węzłem. To ograniczenie jest zależne od projektu, ponieważ usługi [usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) lub aplikacje klienta będą powodować przestoje i w związku z tym jakiekolwiek zadanie naprawy dla poprawek nigdy nie zostanie zatwierdzone przez Menedżera napraw.
+- Błędy kondycji klastra podczas stosowania poprawek. Wszelkie [obniżenie](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) [kondycji klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) spowodowałoby przerwanie procesu stosowania poprawek. Ten problem zostanie dodany do całkowitego czasu wymaganego do zastosowania poprawki całego klastra.
 
-PYTANIE: **Jak mogę zastosować poprawki do węzłów klastra w systemie Linux?**
+**P: Dlaczego widzę niektóre aktualizacje w Windows Update wyników uzyskanych za pośrednictwem interfejsu API REST, ale nie w ramach historii Windows Update na maszynie?**
 
-A. Zapoznaj się z [automatycznymi uaktualnieniami obrazu systemu operacyjnego na platformie Azure Virtual Machine Scale](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) , aby organizować aktualizacje w systemie Linux.
+Odp.: niektóre aktualizacje produktów są wyświetlane tylko we własnej historii aktualizacji lub poprawek. Na przykład aktualizacje usługi Windows Defender mogą lub nie są wyświetlane w historii Windows Update w systemie Windows Server 2016.
 
-P.**dlaczego cykl aktualizacji trwa tak długo?**
+**P: Czy można użyć POA do poprawki mojego klastra deweloperskiego (klaster z jednym węzłem)?**
 
-A. Wykonaj zapytanie dotyczące wynikowego kodu JSON, a następnie przejdź przez wpis cyklu aktualizacji dla wszystkich węzłów, a następnie spróbuj sprawdzić czas trwania instalacji aktualizacji na każdym węźle przy użyciu OperationStartTime i OperationTime (OperationCompletionTime). W przypadku dużego przedziału czasu, w którym nie przeprowadzono aktualizacji, może to być spowodowane faktem, że klaster był w stanie błędu, a ponieważ Menedżer naprawy nie zatwierdził żadnych innych zadań naprawy POA. Jeśli instalacja aktualizacji trwała w dowolnym węźle, może to oznaczać, że węzeł nie został zaktualizowany przez długi czas, a wiele aktualizacji oczekuje na instalację, co trwało. Może również istnieć przypadek, w którym nastąpi zablokowanie poprawek w węźle, ze względu na to, że węzeł jest blokowany w stanie wyłączania, co zwykle zdarza się, ponieważ wyłączenie węzła może prowadzić do sytuacji utraty kworum/danych.
+Odp.: nie, nie można użyć POA do poprawki klastra z jednym węzłem. To ograniczenie jest zaprojektowane, ponieważ [usługi systemu Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) lub inne aplikacje klienta spowodują Przestój. W związku z tym zadania naprawy poprawki nigdy nie zostaną zatwierdzone przez Menedżer naprawy.
 
-PYTANIE: **Dlaczego jest wymagane, aby wyłączyć węzeł, gdy jest on poprawiany przez plik POA?**
+**P: Jak mogę zastosować poprawki do węzłów klastra w systemie Linux?**
 
-A. Aplikacja aranżacji poprawek wyłącza węzeł z zamiarem "restart", która powoduje zatrzymanie/ponowną alokację wszystkich usług usługi Service Fabric uruchomionych w węźle. W tym celu należy się upewnić, że aplikacje nie zakończą się przy użyciu kombinacji nowych i starych bibliotek DLL, dlatego nie zaleca się stosowania poprawek do węzła bez wyłączania.
+Odp.: Aby dowiedzieć się więcej o aranżacji aktualizacji w systemie Linux, zobacz [zestaw skalowania maszyn wirtualnych platformy Azure automatyczne uaktualnienia obrazu systemu operacyjnego](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade).
 
-## <a name="disclaimers"></a>Zastrzeżenia
+**P: Dlaczego cykl aktualizacji trwa tak długo?**
 
-- Aplikacja aranżacji poprawek akceptuje umowę licencyjną użytkownika końcowego Windows Update w imieniu użytkownika. Opcjonalnie ustawienie to może być wyłączone w konfiguracji aplikacji.
+Odp.: zapytanie dotyczące wynikowego kodu JSON, wprowadź cykl aktualizacji dla wszystkich węzłów, a następnie spróbuj sprawdzić czas potrzebny przez aktualizację instalacji na każdym węźle przy użyciu OperationStartTime i OperationTime (OperationCompletionTime). 
 
-- Aplikacja aranżacji poprawek zbiera dane telemetryczne w celu śledzenia użycia i wydajności. Dane telemetryczne aplikacji są zgodne z ustawieniem ustawienia telemetrii środowiska uruchomieniowego Service Fabric, które jest domyślnie włączone.
+W przypadku dużego przedziału czasu, w którym nie ma aktualizacji, klaster może być w stanie błędu i w związku z tym Menedżer naprawy nie może zatwierdzić żadnych zadań naprawy POA. Jeśli instalacja aktualizacji trwa długo na dowolnym węźle, ten węzeł mógł nie zostać zaktualizowany przez pewien czas. Duża liczba aktualizacji może być w trakcie instalacji, co może spowodować opóźnienia. 
+
+Może być również możliwe, że stosowanie poprawek węzłów zostało zablokowane, ponieważ jest ono zablokowane . Zwykle dzieje się tak, ponieważ wyłączenie węzła może prowadzić do wystąpienia kworum lub utraty danych.
+
+**P: Dlaczego węzeł musi być wyłączony, gdy jest w nim poprawka POA?**
+
+Odp.: POA wyłącza węzeł z zamiarą *ponownego uruchomienia* , która powoduje zatrzymanie lub ponowne przydzielenie wszystkich usług Service Fabric uruchomionych w węźle. POA robi to, aby upewnić się, że aplikacje nie zakończą się przy użyciu kombinacji nowych i starych bibliotek DLL, dlatego nie zaleca się stosowania poprawek do węzła bez wyłączania go.
+
+## <a name="disclaimers"></a>Zastrzeżeniami
+
+- POA akceptuje umowę licencyjną użytkownika końcowego dla Windows Update w imieniu użytkownika. Opcjonalnie ustawienie to może być wyłączone w konfiguracji aplikacji.
+
+- POA zbiera dane telemetryczne służące do śledzenia użycia i wydajności. Dane telemetryczne aplikacji są zgodne z ustawieniem ustawienia telemetrii środowiska uruchomieniowego Service Fabric, które jest domyślnie włączone.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
+Ta sekcja zawiera możliwe rozwiązania rozwiązywania problemów z poprawkami węzłów.
+
 ### <a name="a-node-is-not-coming-back-to-up-state"></a>Węzeł nie wraca do stanu up
 
-**Węzeł może być zablokowany w stanie wyłączania, ponieważ**:
+* Węzeł może być zablokowany w stanie *wyłączania* , ponieważ:
 
-Sprawdzanie bezpieczeństwa jest w stanie oczekiwania. Aby rozwiązać ten problem, upewnij się, że wystarczająca liczba węzłów jest w dobrej kondycji.
+  - Sprawdzanie bezpieczeństwa jest w stanie oczekiwania. Aby rozwiązać ten problem, upewnij się, że wystarczająca liczba węzłów jest w dobrej kondycji.
 
-**Węzeł może być zablokowany w stanie wyłączenia, ponieważ**:
+* Węzeł może być zablokowany w stanie *wyłączenia* , ponieważ:
 
-- Węzeł został wyłączony ręcznie.
-- Węzeł został wyłączony z powodu trwającego zadania infrastruktury platformy Azure.
-- Węzeł został tymczasowo wyłączony przez aplikację aranżacji patch w celu zastosowania poprawki do węzła.
+  - Zostało wyłączone ręcznie.
+  - Zostało wyłączone z powodu trwającego zadania infrastruktury platformy Azure.
+  - Plik został tymczasowo wyłączony przez POA, aby zastosować poprawkę do węzła.
 
-**Węzeł może być zablokowany w stanie down, ponieważ**:
+* Węzeł może być zablokowany w stanie down, ponieważ:
 
-- Węzeł został umieszczony w stanie down ręcznie.
-- Węzeł zostanie ponownie uruchomiony (może zostać wyzwolony przez aplikację aranżacji poprawek).
-- Węzeł nie działa ze względu na wadliwą maszynę wirtualną lub maszynę lub problemy z łącznością sieciową.
+  - Został on umieszczony w stanie down ręcznie.
+  - Powoduje to ponowne uruchomienie (które może zostać wyzwolone przez POA).
+  - Ma ona wadliwą maszynę wirtualną lub maszynę lub ma problemy z łącznością sieciową.
 
 ### <a name="updates-were-skipped-on-some-nodes"></a>Aktualizacje zostały pominięte na niektórych węzłach
 
-Aplikacja aranżacji poprawek próbuje zainstalować aktualizację systemu Windows zgodnie z zasadami ponownego planowania. Usługa próbuje odzyskać węzeł i pominąć aktualizację zgodnie z zasadami aplikacji.
+POA próbuje zainstalować aktualizację systemu Windows zgodnie z zasadami ponownego planowania. Usługa próbuje odzyskać węzeł i pominąć aktualizację zgodnie z zasadami aplikacji.
 
-W takim przypadku Raport kondycji na poziomie ostrzeżenia jest generowany w odniesieniu do usługi agenta węzła. Wynik dla Windows Update również zawiera możliwą przyczynę niepowodzenia.
+W takim przypadku Raport kondycji na poziomie ostrzeżenia jest generowany w odniesieniu do usługi agenta węzła. Wynik Windows Update również zawiera możliwą przyczynę niepowodzenia.
 
-### <a name="the-health-of-the-cluster-goes-to-error-while-the-update-installs"></a>Kondycja klastra przechodzi do błędu podczas instalacji aktualizacji
+### <a name="the-health-of-the-cluster-goes-to-error-while-the-update-is-being-installed"></a>Kondycja klastra przechodzi do błędu podczas instalowania aktualizacji
 
-Wadliwa Aktualizacja systemu Windows może spowodować, że kondycja aplikacji lub klastra znajduje się w określonym węźle lub domenie uaktualnienia. Aplikacja aranżacji poprawek nie kontynuuje żadnej kolejnej Windows Update operacji, dopóki klaster nie będzie w dobrej kondycji.
+Wadliwa Aktualizacja systemu Windows może spowodować, że kondycja aplikacji lub klastra znajduje się w określonym węźle lub domenie aktualizacji. POA nie kontynuuje żadnej kolejnej Windows Update operacji, dopóki klaster nie będzie w dobrej kondycji.
 
 Administrator musi interweniować i określić przyczynę złej kondycji aplikacji lub klastra z powodu Windows Update.
 
-## <a name="release-notes"></a>Informacje o wersji
+## <a name="poa-release-notes"></a>Informacje o wersji POA
 
 >[!NOTE]
-> Począwszy od wersji 1.4.0, informacje o wersji i wydania można znaleźć na [stronie](https://github.com/microsoft/Service-Fabric-POA/releases/)wydania usługi GitHub.
+> W przypadku wersji POA 1.4.0 i nowszych można znaleźć informacje o wersji i wydania na [stronie wersji aplikacji aranżacji poprawek](https://github.com/microsoft/Service-Fabric-POA/releases/) w witrynie GitHub.
 
-### <a name="version-110"></a>Wersji 1.1.0
+### <a name="version-110"></a>1\.1.0 wersja
 - Wydanie publiczne
 
 ### <a name="version-111"></a>Wersja 1.1.1
 - Naprawiono usterkę w SetupEntryPoint NodeAgentService, która uniemożliwiła instalację NodeAgentNTService.
 
-### <a name="version-120"></a>Wersji 1.2.0 lub nowszej
+### <a name="version-120"></a>1\.2.0 wersja
 
 - Poprawki błędów wokół przepływu pracy ponownego uruchomienia systemu.
 - Poprawka błędu podczas tworzenia zadań Menedżera zasobów, z powodu tego, że sprawdzanie kondycji podczas przygotowywania zadań naprawy nie było wykonywane zgodnie z oczekiwaniami.
@@ -473,16 +497,16 @@ Administrator musi interweniować i określić przyczynę złej kondycji aplikac
 - Pliki binarne są teraz podpisane.
 - Dodano link sfpkg dla aplikacji.
 
-### <a name="version-130"></a>Wersja 1.3.0
+### <a name="version-130"></a>1\.3.0 wersja
 
 - Ustawienie InstallWindowsOSOnlyUpdates na false spowoduje zainstalowanie wszystkich dostępnych aktualizacji.
 - Zmieniono logikę wyłączania aktualizacji automatycznych. Eliminuje to usterkę, w której aktualizacje automatyczne nie zostały wyłączone na serwerze 2016 i nowszych.
 - Sparametryzowane ograniczenie położenia dla mikrousług POA dla zaawansowanych przypadków użycia.
 
 ### <a name="version-131"></a>Wersja 1.3.1
-- Naprawianie regresji w przypadku, gdy POA 1.3.0 nie będzie działał w systemie Windows Server 2012 R2 lub niższym z powodu niepowodzenia wyłączenia aktualizacji automatycznych. 
+- Naprawianie regresji, gdzie 1.3.0 POA nie będzie działała w systemie Windows Server 2012 R2 lub starszym z powodu błędu wyłączenia aktualizacji automatycznych. 
 - Naprawianie usterki, w której konfiguracja InstallWindowsOSOnlyUpdates jest zawsze wybierana jako true.
 - Zmiana wartości domyślnej InstallWindowsOSOnlyUpdates na false.
 
 ### <a name="version-132"></a>Wersja 1.3.2
-- Rozwiązanie problemu, który zadziałał w cyklu życia poprawek w węźle w przypadku, gdy istnieją węzły o nazwie, która jest podzbiorem bieżącej nazwy węzła. W przypadku takich węzłów możliwe jest stosowanie poprawek lub oczekiwanie na ponowne uruchomienie. 
+- Rozwiązanie problemu wpływającego na cykl życia poprawek w węźle, jeśli istnieją węzły o nazwie, która jest podzbiorem bieżącej nazwy węzła. W przypadku takich węzłów istnieje możliwość, że poprawki zostały pominięte lub oczekiwanie na ponowne uruchomienie.

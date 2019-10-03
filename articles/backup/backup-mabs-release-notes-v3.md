@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/22/2018
 ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 5ca3305dd96ad9f14f028c88520368ae5a49016c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: e9c7d5f79f2af77554122b607aeae470a1145954
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019022"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827289"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Informacje o wersji programu Microsoft Azure Backup Server
 W tym artykule przedstawiono znane problemy i rozwiązania dla programu Microsoft Azure Backup Server (serwera usługi MAB) v3.
@@ -23,7 +23,7 @@ W tym artykule przedstawiono znane problemy i rozwiązania dla programu Microsof
 
 **Opis:** Tworzenie kopii zapasowej/przywracanie nie powiedzie się w przypadku klastrowanych źródeł danych, takich jak klaster funkcji Hyper-V lub klaster SQL (zawsze włączone) lub program Exchange w grupie dostępności bazy danych (DAG) po uaktualnieniu serwera usługi MAB v2 do wersji serwera usługi MAB v3.
 
-**Obejście:** Aby temu zapobiec, Otwórz SQL Server Management Studio (SSMS)) i uruchom następujący skrypt SQL w bazie danych programu DPM:
+Obejście **:** Aby temu zapobiec, Otwórz SQL Server Management Studio (SSMS)) i uruchom następujący skrypt SQL w bazie danych programu DPM:
 
 ```sql
     IF EXISTS (SELECT * FROM dbo.sysobjects
@@ -57,12 +57,12 @@ W tym artykule przedstawiono znane problemy i rozwiązania dla programu Microsof
 
 **Opis:** Uaktualnianie z wersji serwera usługi MAB v2 do serwera usługi MAB V3 w rosyjskich ustawieniach regionalnych kończy się niepowodzeniem z kodem błędu **4387**.
 
-**Obejście:** Wykonaj następujące kroki, aby uaktualnić program do wersji serwera usługi MAB v3 przy użyciu pakietu instalacji Rosyjskiej:
+Obejście **:** Wykonaj następujące kroki, aby uaktualnić program do wersji serwera usługi MAB v3 przy użyciu pakietu instalacji Rosyjskiej:
 
 1.  [Utwórz kopię zapasową](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) bazy danych SQL i odinstaluj serwera usługi MAB v2 (Wybierz, aby zachować chronione dane podczas odinstalowywania).
 2.  Uaktualnij do wersji SQL 2017 (Enterprise) i Odinstaluj raportowanie w ramach uaktualnienia.
 3. [Zainstaluj](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) program SQL Server Reporting Services (SSRS).
-4.  [Zainstaluj](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms#download-ssms-182) program SQL Server Management Studio (SSMS).
+4.  [Zainstaluj](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) program SQL Server Management Studio (SSMS).
 5.  Skonfiguruj raportowanie przy użyciu parametrów zgodnie z opisem w temacie [Konfiguracja usług SSRS w programie SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
 6.  [Zainstaluj](backup-azure-microsoft-azure-backup.md) program SERWERA USŁUGI MAB V3.
 7. [Przywróć](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL za pomocą programu SSMS i uruchom narzędzie synchronizacji programu DPM zgodnie z opisem w [tym miejscu](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10)).

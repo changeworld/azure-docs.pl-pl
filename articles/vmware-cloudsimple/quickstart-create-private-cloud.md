@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5cea36760746eaa63451c9e9955368c71ba4472
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816124"
+ms.locfileid: "71828942"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Szybki Start — Konfigurowanie środowiska chmury prywatnej
 
@@ -23,9 +23,9 @@ W tym artykule dowiesz się, jak utworzyć chmurę prywatną CloudSimple i skonf
 
 Przejrzyj [wymagania wstępne dotyczące sieci](cloudsimple-network-checklist.md).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się do Azure Portal w [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-private-cloud"></a>Tworzenie chmury prywatnej
 
@@ -33,7 +33,7 @@ Chmura prywatna to izolowany stos oprogramowania VMware obsługujący hosty ESXi
 
 Chmurami prywatnymi zarządza się za pomocą portalu CloudSimple. Mają własny serwer vCenter we własnej domenie zarządzania. Stos działa na dedykowanych węzłach i izolowanych węzłach sprzętowych bez systemu operacyjnego.
 
-1. Wybierz pozycję **wszystkie usługi**.
+1. Wybierz pozycję **Wszystkie usługi**.
 2. Wyszukaj **usługi CloudSimple Services**.
 3. Wybierz usługę CloudSimple, w której chcesz utworzyć chmurę prywatną.
 4. W obszarze **Przegląd**kliknij pozycję **Utwórz chmurę prywatną** , aby otworzyć nową kartę przeglądarki dla portalu CloudSimple.  Jeśli zostanie wyświetlony monit, zaloguj się przy użyciu poświadczeń logowania na platformie Azure.  
@@ -42,7 +42,7 @@ Chmurami prywatnymi zarządza się za pomocą portalu CloudSimple. Mają własny
 
 5. W portalu CloudSimple Podaj nazwę chmury prywatnej.
 6. Wybierz **lokalizację** chmury prywatnej.
-7. Wybierz **Typ węzła**spójny z zakupionymi informacjami na platformie Azure. Można wybrać [opcję CS28 lub CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Ta ostatnia opcja obejmuje maksymalną moc obliczeniową i pojemność pamięci.
+7. Wybierz **Typ węzła**spójny z zakupionymi informacjami na platformie Azure.
 8. Określ **liczbę węzłów**.  Aby można było utworzyć chmurę prywatną, wymagane są co najmniej trzy węzły.
 
     ![Tworzenie chmury prywatnej — informacje podstawowe](media/create-private-cloud-basic-info.png)
@@ -65,7 +65,7 @@ Rozpocznie się proces aprowizacji w chmurze prywatnej.  Zainicjowanie obsługi 
 
 Możesz uzyskać dostęp do portalu CloudSimple z poziomu Azure Portal.  Portal CloudSimple zostanie uruchomiony z poświadczeniami logowania platformy Azure przy użyciu logowania jednokrotnego (SSO).  Dostęp do portalu CloudSimple wymaga autoryzacji aplikacji **autoryzacji usługi CloudSimple** .  Aby uzyskać więcej informacji na temat przyznawania uprawnień, zobacz [wyrażanie zgody na aplikację autoryzacji usługi CloudSimple](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application).
 
-1. Wybierz pozycję **wszystkie usługi**.
+1. Wybierz pozycję **Wszystkie usługi**.
 2. Wyszukaj **usługi CloudSimple Services**.
 3. Wybierz usługę CloudSimple, w której chcesz utworzyć chmurę prywatną.
 4. W obszarze przegląd kliknij pozycję **Przejdź do portalu CloudSimple** , aby otworzyć nową kartę przeglądarki dla portalu CloudSimple.  Jeśli zostanie wyświetlony monit, zaloguj się przy użyciu poświadczeń logowania na platformie Azure.  
@@ -116,7 +116,7 @@ Klient sieci VPN jest wymagany do nawiązywania połączenia z usługą CloudSim
 4. Wybierz pozycję **Użytkownicy**.
 5. Kliknij pozycję **Pobierz moją konfigurację sieci VPN**.
 
-    ![Pobierz konfigurację sieci VPN](media/download-p2s-vpn-configuration.png)
+    ![Pobieranie konfiguracji sieci VPN](media/download-p2s-vpn-configuration.png)
 
 6. Zaimportuj konfigurację na kliencie sieci VPN.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 18a19f5f853206b06c617307c761a99033c9f92a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 4d0e7bc7f491e328f5e9fce291d415452c49c745
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266929"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830139"
 ---
 Rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci oferują duże proporcje pamięci dla serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizę w pamięci. Ten artykuł zawiera informacje na temat liczby procesorów wirtualnych vCPU, dysków danych i kart sieciowych, a także przepływności magazynu i przepustowości sieci dla każdego rozmiaru w ramach tego grupowania.
 
@@ -33,26 +33,26 @@ Rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci oferują duże p
 
 ## <a name="esv3-series"></a>Seria Esv3
 
-ACU 160-190 <sup>1</sup>
+ACU: 160-190 <sup>1</sup>
 
-Magazyn w warstwie Premium:  Obsługiwane
+Premium Storage: obsługiwane
 
-Buforowanie Premium Storage:  Obsługiwane
+Buforowanie Premium Storage: obsługiwane
 
-Wystąpienia serii ESv3 są oparte na procesorach Intel XEON® E5-2673 v4 (Broadwell) z zegarem 2,3 GHz, które dzięki technologii Intel Turbo Boost 2.0 mogą osiągnąć częstotliwość 3,5 GHz i korzystają z magazynu Premium Storage. Wystąpienia serii Ev3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
+Wystąpienia serii ESv3 są oparte na procesorach Intel Xeon® E5-2673 v4 (Broadwell) z zegarem 2,3 GHz i technologią Intel Turbo Boost 2.0, dzięki której mogą osiągnąć częstotliwość 3,5 GHz oraz korzystają z magazynu Premium Storage. Wystąpienia serii Ev3 są doskonałe dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
 
 
-| Size             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Liczba IOPS/MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar             | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standardowa_E2s_v3 | 2      | 16          | 32             | 4              | 4000/32 (50)                                                       | 3200/48                                | 2 / 1000                                   |
-| Standard_E4s_v3&nbsp;<sup>2</sup> | 4      | 32          | 64             | 8              | 8000/64 (100)                                                      | 6400/96                                | 2 / 2000                                   |
-| Standard_E8s_v3&nbsp;<sup>2</sup> | 8      | 64          | 128            | 16             | 16000/128 (200)                                                    | 12800/192                              | 4 / 4000                                       |
-| Standard_E16s_v3&nbsp;<sup>2</sup> | 16     | 128         | 256            | 32             | 32000/256 (400)                                                    | 25600/384                              | 8 / 8000                                       |
+| Standard_E4s_v3 @ no__t-0<sup>2</sup> | 4      | 32          | 64             | 8              | 8000/64 (100)                                                      | 6400/96                                | 2 / 2000                                   |
+| Standard_E8s_v3 @ no__t-0<sup>2</sup> | 8      | 64          | 128            | 16             | 16000/128 (200)                                                    | 12800/192                              | 4 / 4000                                       |
+| Standard_E16s_v3 @ no__t-0<sup>2</sup> | 16     | 128         | 256            | 32             | 32000/256 (400)                                                    | 25600/384                              | 8 / 8000                                       |
 | Standard_E20s_v3                   | 20     | 160         | 320            | 32             | 40000/320 (400)                                                    | 32000/480                              | 8 / 10000                                       |
-| Standard_E32s_v3&nbsp;<sup>2</sup> | 32     | 256         | 512            | 32             | 64000/512 (800)                                                    | 51200/768                              | 8 / 16 000                             |
-| Standard_E48s_v3&nbsp;<sup>2</sup> | 48     | 384         | 768            | 32             | 96000/768 (1200)                                                   | 76800/1152                             | 8 / 24000                             |
-| Standard_E64s_v3&nbsp;<sup>2</sup> | 64     | 432         | 864            | 32             | 128000/1024 (1600)                                                   | 80000/1200                             | 8 / 30000                             |
-| Standard_E64is_v3&nbsp;<sup>3</sup> | 64     | 432         | 864            | 32             | 128000/1024 (1600)                                                   | 80000/1200                             | 8 / 30000                             |
+| Standard_E32s_v3 @ no__t-0<sup>2</sup> | 32     | 256         | 512            | 32             | 64000/512 (800)                                                    | 51200/768                              | 8 / 16 000                             |
+| Standard_E48s_v3 @ no__t-0<sup>2</sup> | 48     | 384         | 768            | 32             | 96000/768 (1200)                                                   | 76800/1152                             | 8 / 24000                             |
+| Standard_E64s_v3 @ no__t-0<sup>2</sup> | 64     | 432         | 864            | 32             | 128000/1024 (1600)                                                   | 80000/1200                             | 8 / 30000                             |
+| Standard_E64is_v3 @ no__t-0<sup>3</sup> | 64     | 432         | 864            | 32             | 128000/1024 (1600)                                                   | 80000/1200                             | 8 / 30000                             |
 
 
 <sup>1</sup> platforma maszyny wirtualnej z serii Esv3 firmy Intel® technologię wielowątkowości.
@@ -63,15 +63,15 @@ dostępne <sup>dwa</sup> ograniczone rozmiary rdzeni.
 
 ## <a name="easv3-series-preview"></a>Easv3 — seria (wersja zapoznawcza)
 
-Magazyn w warstwie Premium: Obsługiwane
+Premium Storage: obsługiwane
 
-Buforowanie Premium Storage: Obsługiwane
+Buforowanie Premium Storage: obsługiwane
 
 Rozmiary serii Easv3 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który może osiągnąć podwyższenie poziomu Fmax — 3.35 GHz i korzystać z magazynu Premium Storage. Rozmiary serii Easv3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
 
 [Kliknij tutaj, aby zarejestrowanie się w wersji zapoznawczej](http://aka.ms/azureamdpreview).
 
-| Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
+| Rozmiar | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
 |---|---|---|---|
 | Standard_E2as_v3  | 2  | 16  | 32  |
 | Standard_E4as_v3  | 4  | 32  | 64  |
@@ -83,18 +83,18 @@ Rozmiary serii Easv3 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 745
 
 ## <a name="ev3-series"></a>Seria Ev3 
 
-ACU 160 – 190 <sup>1</sup>
+ACU: 160 – 190 <sup>1</sup>
 
-Magazyn w warstwie Premium:  Brak obsługi
+Premium Storage: nieobsługiwane
 
-Buforowanie Premium Storage:  Brak obsługi
+Buforowanie Premium Storage: nieobsługiwane
 
-Wystąpienia serii Ev3 są oparte na procesorach Intel XEON® E5-2673 v4 (Broadwell) 2,3 GHz i technologią Intel Turbo Boost 2.0, dzięki której mogą osiągnąć częstotliwość 3,5 GHz. Wystąpienia serii Ev3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
+Wystąpienia serii Ev3 są oparte na procesorach Intel XEON® E5-2673 v4 (Broadwell) 2,3 GHz i technologią Intel Turbo Boost 2.0, dzięki której mogą osiągnąć częstotliwość 3,5 GHz. Wystąpienia serii Ev3 są doskonałe dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
 
 Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów ESv3. Liczniki cen i rozliczeń dla rozmiarów ESv3 są takie same jak dla serii Ev3. 
 
 
-| Size            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu tymczasowego: Liczba IOPS/Odczyt MB/s/zapis MB/s | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standardowa_E2_v3  | 2         | 16          | 50             | 4              | 3000/46/23                                               | 2 / 1000                 |
 | Standardowa_E4_v3  | 4         | 32          | 100            | 8              | 6000/93/46                                               | 2 / 2000                 |
@@ -104,7 +104,7 @@ Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny 
 | Standardowa_E32_v3 | 32        | 256         | 800            | 32             | 48000/750/375                                            | 8 / 16 000                 |
 | Standard_E48_v3 | 48        | 384         | 1200            | 32             | 96000/1000/500                                            | 8 / 24000                 |
 | Standardowa_E64_v3 | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30000           |
-| Standard_E64i_v3&nbsp;<sup>2,&nbsp;3</sup> | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30000           |
+| Standard_E64i_v3 @ no__t-0<sup>2, &nbsp;3</sup> | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30000           |
 
 <sup>1</sup> platforma maszyny wirtualnej z serii EV3 firmy Intel® technologię wielowątkowości.
 
@@ -114,15 +114,15 @@ dostępne <sup>dwa</sup> ograniczone rozmiary rdzeni.
 
 ## <a name="eav3-series-preview"></a>Eav3 — seria (wersja zapoznawcza)
 
-Magazyn w warstwie Premium: Brak obsługi
+Premium Storage: nieobsługiwane
 
-Buforowanie Premium Storage: Brak obsługi
+Buforowanie Premium Storage: nieobsługiwane
 
 Rozmiary serii Eav3 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który może osiągnąć podwyższenie poziomu Fmax — 3.35 GHz i korzystać z magazynu Premium Storage. Rozmiary serii Eav3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci. Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów serii Easv3. Liczniki cen i rozliczeń dla rozmiarów Easv3 są takie same jak dla serii Eav3.
 
 [Kliknij tutaj, aby zarejestrowanie się w wersji zapoznawczej](http://aka.ms/azureamdpreview).
 
-| Size             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
+| Rozmiar             | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
 |------------------|------|-------------|-------------------------|
 | Standard_E2a_v3  | 2    | 16          | 50                      |
 | Standard_E4a_v3  | 4    | 32          | 100                     |
@@ -134,22 +134,22 @@ Rozmiary serii Eav3 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452
 
 ## <a name="mv2-series"></a>Seria Mv2
 
-Magazyn w warstwie Premium: Obsługiwane
+Premium Storage: obsługiwane
 
-Buforowanie Premium Storage: Obsługiwane
+Buforowanie Premium Storage: obsługiwane
 
-Akcelerator zapisu: [Obsługiwane](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Akcelerator zapisu: [obsługiwane](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
 Funkcja serii Mv2 ma wysoką przepływność, małe opóźnienia, bezpośrednio mapowane lokalne magazyny interfejsu NVMe działające w procesorze Intel® Xeon® Platinum 8180M 2,5 GHz (Skylake) z podstawową częstotliwością bazową wynoszącą 2,5 GHz i maksymalną częstotliwość Turbo 3,8 GHz. Wszystkie rozmiary maszyn wirtualnych z serii Mv2 mogą korzystać z dysków trwałych w warstwach Standardowa i Premium. Wystąpienia serii Mv2 to rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci, które zapewniają niezrównaną wydajność obliczeniową w celu obsługi dużych baz danych i obciążeń w pamięci, dzięki czemu jest idealnym rozwiązaniem z dużą ilością pamięci w przypadku serwerów relacyjnych baz danych, dużych pamięci podręcznych i w pamięci wersję. 
 
-|Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Liczba IOPS/MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+|Rozmiar | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
 | Standard_M208ms_v2<sup>1, 2</sup> | 208 | 5700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16 000 |
 | Standard_M208s_v2<sup>1, 2</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16 000 |
 
 Funkcja maszyny wirtualnej z serii Mv2 Intel® technologia wielowątkowości funkcji Hyper-Threading  
 
-<sup>1</sup> te duże maszyny wirtualne wymagają jednego z następujących obsługiwanych systemów operacyjnych gościa: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
+<sup>1</sup> te duże maszyny wirtualne wymagają jednego z tych obsługiwanych systemów operacyjnych gościa: Windows Server 2016, windows Server 2019, SLES 12 SP4, SLES 15.
 
 <sup>2</sup> maszyny wirtualne z serii Mv2 są tylko 2 generacji. Jeśli używasz systemu Linux, zapoznaj się z sekcją jak znaleźć i wybrać obraz systemu SUSE Linux.
 
@@ -166,14 +166,14 @@ Aby wybrać odpowiedni obraz SUSE Linux w Azure Portal:
     
 1. Obrazy SUSE zgodne z seriami Mv2 są poprzedzone nazwą `GEN2:`. Następujące obrazy SUSE są dostępne dla maszyn wirtualnych z serii Mv2:
 
-    * GEN2 SUSE Linux Enterprise Server (SLES) 12 z dodatkiem SP4 dla aplikacji SAP
-    * GEN2 SUSE Linux Enterprise Server (SLES) 15 dla aplikacji SAP
-    * GEN2 SUSE Linux Enterprise Server (SLES) 12 z dodatkiem SP4 dla aplikacji SAP (BYOS)
-    * GEN2 SUSE Linux Enterprise Server (SLES) 15 for SAP Applications (BYOS)
+    * GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 dla aplikacji SAP
+    * GEN2: SUSE Linux Enterprise Server (SLES) 15 dla aplikacji SAP
+    * GEN2: SUSE Linux Enterprise Server (SLES) 12 z dodatkiem SP4 dla aplikacji SAP (BYOS)
+    * GEN2: SUSE Linux Enterprise Server (SLES) 15 dla aplikacji SAP (BYOS)
 
 #### <a name="select-a-suse-image-via-azure-cli"></a>Wybierz obraz SUSE za pośrednictwem interfejsu wiersza polecenia platformy Azure
 
-Aby wyświetlić listę dostępnych obecnie SLES dla obrazów SAP dla maszyn wirtualnych z serii Mv2, użyj następującego [`az vm image list`](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list) polecenia:
+Aby wyświetlić listę dostępnych obecnie SLES dla obrazów SAP dla maszyn wirtualnych z serii Mv2, użyj następującego polecenia [`az vm image list`](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list) :
 
 ```azurecli
 az vm image list --output table --publisher SUSE --sku gen2 --all
@@ -194,36 +194,38 @@ SLES-SAP-BYOS  SUSE       gen2-15      SUSE:SLES-SAP-BYOS:gen2-15:2019.05.13    
 
 ## <a name="m-series"></a>Seria M 
 
-ACU 160-180 <sup>1</sup>
+ACU: 160-180 <sup>1</sup>
 
-Magazyn w warstwie Premium:  Obsługiwane
+Premium Storage: obsługiwane
 
-Buforowanie Premium Storage:  Obsługiwane
+Buforowanie Premium Storage: obsługiwane
 
-Akcelerator zapisu:  [Obsługiwane](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Rozmiary serii M są oparte na procesorze Intel (R) Xeon (R) E7-8890 v3 @ 2.50 GHz   
 
-| Size            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Liczba IOPS/MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+Akcelerator zapisu: [obsługiwane](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+
+| Rozmiar            | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M8ms&nbsp;<sup>3</sup>    | 8  | 218,75 | 256  | 8  | 10000/100 (793)  | 5000  / 125 | 4 / 2000 |
-| Standard_M16ms&nbsp;<sup>3</sup>   | 16 | 437,5  | 512  | 16 | 20000/200 (1587) | 10000/250 | 8 / 4000 |
+| Standard_M8ms @ no__t-0<sup>3</sup>    | 8  | 218,75 | 256  | 8  | 10000/100 (793)  | 5000/125 | 4 / 2000 |
+| Standard_M16ms @ no__t-0<sup>3</sup>   | 16 | 437,5  | 512  | 16 | 20000/200 (1587) | 10000/250 | 8 / 4000 |
 | Standard_M32ts | 32 | 192    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
 | Standard_M32ls | 32 | 256    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
-| Standard_M32ms&nbsp;<sup>3</sup>   | 32 | 875    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
+| Standard_M32ms @ no__t-0<sup>3</sup>   | 32 | 875    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
 | Standard_M64s  | 64 | 1024   | 2048 | 64 | 80000/800 (6348)| 40000/1000 | 8 / 16 000          |
 | Standard_M64ls  | 64 | 512    | 2048 | 64 | 80000/800 (6348) | 40000/1000 | 8 / 16 000 |
-| Standard_M64ms&nbsp;<sup>3</sup>  | 64   | 1792 | 2048 | 64 | 80000/800 (6348)| 40000/1000 | 8 / 16 000          |
-| Standard_M128s&nbsp;<sup>2</sup> | 128  | 2048        | 4096  | 64 | 160000/1600 (12696) | 80000/2000                            | 8 / 30000          |
-| Standard_M128ms&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3892  | 4096 | 64 | 160000/1600 (12696) | 80000/2000                            | 8 / 30000          |
+| Standard_M64ms @ no__t-0<sup>3</sup>  | 64   | 1792 | 2048 | 64 | 80000/800 (6348)| 40000/1000 | 8 / 16 000          |
+| Standard_M128s @ no__t-0<sup>2</sup> | 128  | 2048        | 4096  | 64 | 160000/1600 (12696) | 80000/2000                            | 8 / 30000          |
+| Standard_M128ms @ no__t-0<sup>2, &nbsp;3, &nbsp;4</sup> | 128  | 3892  | 4096 | 64 | 160000/1600 (12696) | 80000/2000                            | 8 / 30000          |
 | Standard_M64   | 64  | 1024 | 7168  | 64 | 80000/800 (1228) | 40000/1000 | 8 / 16 000 |
 | Standard_M64m  | 64  | 1792 | 7168  | 64 | 80000/800 (1228) | 40000/1000 | 8 / 16 000 |
-| Standard_M128&nbsp;2<sup>  | 128 | 2048 | 14336 | 64 | 250000/1600 (2456) | 80000/2000 | 8 / 32000 |
-| Standard_M128m&nbsp;2<sup> | 128 | 3892 | 14336 | 64 | 250000/1600 (2456) | 80000/2000 | 8 / 32000 |
+| Standard_M128 @ no__t-0 @ no__t-12  | 128 | 2048 | 14336 | 64 | 250000/1600 (2456) | 80000/2000 | 8 / 32000 |
+| Standard_M128m @ no__t-0 @ no__t-12 | 128 | 3892 | 14336 | 64 | 250000/1600 (2456) | 80000/2000 | 8 / 32000 |
 
 
 
 <sup>1</sup> funkcja maszyny wirtualnej z serii M Intel® technologia wielowątkowości funkcji Hyper-Threading
 
-<sup>2</sup> więcej niż 64 vCPU wymaga jednego z tych obsługiwanych systemów operacyjnych gościa: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 z dodatkiem SP2 i Red Hat Enterprise Linux, CentOS 7,3 lub Oracle Linux 7,3 z podsystemem LIS 4.2.1.
+<sup>2</sup> więcej niż 64 vCPU wymaga jednego z tych obsługiwanych systemów operacyjnych gościa: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 i Red Hat Enterprise Linux, CentOS 7,3 lub Oracle Linux 7,3 z prze4.2.1.
 
 dostępne są <sup>3</sup> ograniczone rozmiary rdzeni.
 
@@ -233,19 +235,21 @@ dostępne są <sup>3</sup> ograniczone rozmiary rdzeni.
 
 ## <a name="dsv2-series-11-15"></a>DSv2 — Seria 11-15
 
-ACU 210 – 250 <sup>1</sup>
+ACU: 210 – 250 <sup>1</sup>
 
-Magazyn w warstwie Premium:  Obsługiwane
+Premium Storage: obsługiwane
 
-Buforowanie Premium Storage:  Obsługiwane
+Buforowanie Premium Storage: obsługiwane
 
-| Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Liczba IOPS/MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+Rozmiary serii DSv2 są oparte na procesorze Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz
+
+| Rozmiar | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS11_v2&nbsp;<sup>3</sup> |2 |14 |28 |8 |8000/64 (72) |6400/96 |2 / 1500 |
-| Standard_DS12_v2&nbsp;<sup>3</sup> |4 |28 |56 |16 |16000/128 (144) |12800/192 |4 / 3000 |
-| Standard_DS13_v2&nbsp;<sup>3</sup> |8 |56 |112 |32 |32000/256 (288) |25600/384 |8 / 6000 |
-| Standard_DS14_v2&nbsp;<sup>3</sup>|16 |112 |224 |64 |64000/512 (576) |51200/768 |8 / 12000 |
-| Standard_DS15_v2&nbsp;<sup>2</sup> |20 |140 |280 |64 |80000/640 (720) |64000/960 |8 / 25000&nbsp;<sup>4</sup>
+| Standard_DS11_v2 @ no__t-0<sup>3</sup> |2 |14 |28 |8 |8000/64 (72) |6400/96 |2 / 1500 |
+| Standard_DS12_v2 @ no__t-0<sup>3</sup> |4 |28 |56 |16 |16000/128 (144) |12800/192 |4 / 3000 |
+| Standard_DS13_v2 @ no__t-0<sup>3</sup> |8 |56 |112 |32 |32000/256 (288) |25600/384 |8 / 6000 |
+| Standard_DS14_v2 @ no__t-0<sup>3</sup>|16 |112 |224 |64 |64000/512 (576) |51200/768 |8 / 12000 |
+| Standard_DS15_v2 @ no__t-0<sup>2</sup> |20 |140 |280 |64 |80000/640 (720) |64000/960 |8/25000 @ no__t-0<sup>4</sup>
 
 <sup>1</sup> maksymalna przepływność dysku (IOPS lub MB/s) możliwa dla maszyny wirtualnej serii DSv2 może być ograniczona przez liczbę, rozmiar i rozkładanie dołączonych dysków.  Aby uzyskać szczegółowe informacje, zobacz [projektowanie pod kątem wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md).  
 <sup>2</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.  
@@ -256,19 +260,21 @@ dostępne są <sup>3</sup> ograniczone rozmiary rdzeni.
 
 ## <a name="dv2-series-11-15"></a>Dv2 — Seria 11-15
 
-ACU 210 – 250
+ACU: 210–250
 
-Magazyn w warstwie Premium:  Brak obsługi
+Premium Storage: nieobsługiwane
 
-Buforowanie Premium Storage:  Brak obsługi
+Buforowanie Premium Storage: nieobsługiwane
 
-| Size              | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Liczba IOPS/Odczyt MB/s/zapis MB/s | Maksymalna liczba dysków danych/przepływność: IOPS | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+Rozmiary serii DSv2 są oparte na procesorze Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz
+
+| Rozmiar              | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standardowa_D11_v2   | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8 x 500                         | 2 / 1500                     |
 | Standardowa_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16 x 500                         | 4 / 3000                     |
 | Standardowa_D13_v2   | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 6000                     |
-| Standardowa_D14_v2   | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 12000          |
-| Standard_D15_v2&nbsp;<sup>1</sup> | 20        | 140         | 1000          | 60000 / 937 / 468                                        | 64 / 64x500                       | 8 / 25000&nbsp;<sup>2</sup> |
+| Standardowa_D14_v2   | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64/64x500                       | 8 / 12000          |
+| Standard_D15_v2 @ no__t-0<sup>1</sup> | 20        | 140         | 1000          | 60000 / 937 / 468                                        | 64/64x500                       | 8/25000 @ no__t-0<sup>2</sup> |
 
 <sup>1</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.  
 <sup>2</sup> 25000 MB/s z przyspieszoną siecią. 

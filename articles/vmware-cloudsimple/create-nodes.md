@@ -8,24 +8,24 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5806198968d98fea4c5cbf8731358ca4041f0935
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972869"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828179"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Inicjowanie obsługi administracyjnej węzłów dla rozwiązań VMware platformy Azure według CloudSimple
 
 Inicjowanie obsługi węzłów w Azure Portal. Następnie możesz skonfigurować przepustowość zgodnie z rzeczywistym użyciem dla środowiska chmury prywatnej CloudSimple.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do Azure Portal w [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>Dodawanie węzła do prywatnej chmury CloudSimple
 
-1. Wybierz pozycję **Wszystkie usługi**.
+1. Wybierz pozycję **wszystkie usługi**.
 2. Wyszukaj **węzły CloudSimple**.
 
    ![Wyszukaj węzły CloudSimple](media/create-cloudsimple-node-search.png)
@@ -40,9 +40,9 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 7. Wprowadź prefiks, aby zidentyfikować węzły.
 8. Wybierz lokalizację dla zasobów węzła.
 9. Wybierz dedykowaną lokalizację do hostowania zasobów węzła.
-10. Wybierz typ węzła. Można wybrać [opcję CS28 lub CS36](cloudsimple-node.md). Ta ostatnia opcja obejmuje maksymalną moc obliczeniową i pojemność pamięci.
+10. Wybierz [Typ węzła](cloudsimple-node.md).
 11. Wybierz liczbę węzłów do aprowizacji.
-12. Wybierz pozycję **Przegląd + utwórz**.
+12. Wybierz pozycję **Recenzja + Utwórz**.
 13. Przejrzyj ustawienia. Aby zmodyfikować wszystkie ustawienia, kliknij przycisk **Wstecz**.
 14. Wybierz pozycję **Utwórz**.
 

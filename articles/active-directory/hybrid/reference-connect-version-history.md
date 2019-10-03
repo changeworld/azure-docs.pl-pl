@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/23/2019
+ms.date: 10/2/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7555dc44e533945d360a3d2e4120f71f953a6d2
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709357"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827100"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -42,6 +42,17 @@ Pobierz | [Pobierz Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615
 >Wydanie nowej wersji Azure AD Connect to proces, który wymaga kilku kroków kontroli jakości, aby zapewnić działanie usługi i przechodząc przez ten proces, numer wersji nowej wersji, a także stan wydania zostanie zaktualizowany. Aby odzwierciedlić najnowszy stan.
 W trakcie tego procesu numer wersji wersji będzie wyświetlany jako "X" w pozycji pomocniczej numer wersji, jak w "1.3. X. 0" — oznacza to, że informacje o wersji w tym dokumencie są prawidłowe dla wszystkich wersji zaczynających się od "1,3". Po sfinalizowaniu procesu wydania numer wersji zostanie zaktualizowany do ostatnio wydanej wersji, a stan wydania zostanie zaktualizowany na "zwolnione do pobrania i Autouaktualnianie".
 Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania. Stan wersji wskazuje, czy wersja jest udostępniona do autouaktualnienia, czy tylko do pobrania. Jeśli automatyczne uaktualnianie zostało włączone na serwerze Azure AD Connect, serwer zostanie automatycznie uaktualniony do najnowszej wersji Azure AD Connect wydanej na potrzeby automatycznego uaktualniania. Należy pamiętać, że nie wszystkie konfiguracje Azure AD Connect mogą być stosowane do autouaktualnienia. Skorzystaj z tego linku, aby dowiedzieć się więcej na temat [autouaktualniania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+
+## <a name="14250"></a>1.4.25.0
+
+### <a name="release-status"></a>Stan wydania
+9/28/2019: wydano do autouaktualnienia, aby wybrać dzierżawców. Niedostępne do pobrania.
+
+Ta wersja naprawia usterkę, w której niektóre serwery, które zostały automatycznie uaktualnione z poprzedniej wersji do 1.4.18.0 i napotkały problemy z funkcją samoobsługowego resetowania hasła (SSPR) i zapisywania zwrotnego haseł.
+
+### <a name="fixed-issues"></a>Rozwiązane problemy
+
+W pewnych okolicznościach serwery, które były automatycznie uaktualnione do wersji 1.4.18.0, nie włączyły ponownie funkcji samoobsługowego resetowania hasła i zapisywania zwrotnego haseł po zakończeniu uaktualniania. Ta wersja automatycznego uaktualniania rozwiązuje problem i ponownie włącza funkcję samoobsługowego resetowania hasła i zapisywania zwrotnego haseł.
 
 ## <a name="14180"></a>1.4.18.0
 
@@ -74,7 +85,7 @@ Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania.
 - Dodano nowe zadanie zarządzania federacyjnego o nazwie "Zarządzanie serwerami", które ma podzadania do wdrożenia serwera AD FS, wdrożenia serwera proxy aplikacji sieci Web i określenia serwera podstawowego.
 - Dodano nowe zadanie zarządzania federacyjnego o nazwie "Wyświetl konfigurację Federacji", które wyświetla bieżące ustawienia AD FS.  (W związku z tym, że ustawienia AD FS zostały usunięte z strony "Przejrzyj swoje rozwiązanie").
 
-### <a name="fixed-issues"></a>Rozwiązano problemy
+### <a name="fixed-issues"></a>Rozwiązane problemy
 - Rozwiązano problem z błędem synchronizacji dotyczący scenariusza, w którym obiekt użytkownika przeszukiwany przez odpowiadający mu obiekt Contact ma odwołanie do samego siebie (np. użytkownik jest własnym menedżerem).
 - Okna podręczne pomocy są teraz widoczne na fokus klawiatury.
 - W przypadku autouaktualniania, jeśli jakakolwiek aplikacja powodująca konflikt jest uruchomiona od 6 godzin, należy ją skasować i kontynuować uaktualnianie.
@@ -95,14 +106,14 @@ Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania.
 > Aby rozwiązać ten problem, należy zaimportować moduł **AdSync** , a następnie uruchomić polecenie cmdlet programu PowerShell @ no__t-1 na serwerze Azure AD Connect.  Można wykonać następujące czynności:
 >
 >1. Otwórz program PowerShell w trybie administrator
->2. Uruchom `Import-Module "ADSync"`
->3. Uruchom `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`
+>2. Uruchom polecenie `Import-Module "ADSync"`
+>3. Uruchom polecenie `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`
  
 ### <a name="release-status"></a>Stan wydania 
 
 05/14/2019: wydano do pobrania
 
-### <a name="fixed-issues"></a>Rozwiązano problemy 
+### <a name="fixed-issues"></a>Rozwiązane problemy 
 
 - Usunięto lukę w zabezpieczeniach, która istnieje w Microsoft Azure Active Directory Connect kompilacja 1.3.20.0.  Ta luka w zabezpieczeniach w pewnych warunkach może pozwolić osobie atakującej na wykonywanie dwóch poleceń cmdlet programu PowerShell w kontekście konta uprzywilejowanego i wykonywanie uprzywilejowanych akcji.  Ta aktualizacja zabezpieczeń rozwiązuje ten problem, wyłączając te polecenia cmdlet. Aby uzyskać więcej informacji, zobacz [Aktualizacja zabezpieczeń](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1000).
 
@@ -135,7 +146,7 @@ Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania.
 - Zmieniono zachowanie usługi Install New AD FS farmie, aby wymagało certyfikatu PFX przez usunięcie opcji korzystania z certyfikatu preinstalowanego.
 - Zaktualizowano przepływ pracy AD FS instalacji nowej farmy, tak aby zezwalał tylko na wdrażanie 1 AD FS i 1 serwera WAP.  Wszystkie dodatkowe serwery zostaną wykonane po instalacji początkowej. 
 
-### <a name="fixed-issues"></a>Rozwiązano problemy 
+### <a name="fixed-issues"></a>Rozwiązane problemy 
 
 - Naprawianie logiki reconnect programu SQL dla usługi ADSync 
 - Poprawka zezwalająca na czystą instalację przy użyciu pustej bazy danych SQL AOA 
@@ -159,7 +170,7 @@ Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania.
 
 12/18/2018: wydano do pobrania
 
-### <a name="fixed-issues"></a>Rozwiązano problemy
+### <a name="fixed-issues"></a>Rozwiązane problemy
 
 Ta kompilacja aktualizuje łączniki niestandardowe (na przykład ogólny łącznik LDAP i ogólny łącznik SQL) dostarczane z Azure AD Connect. Aby uzyskać więcej informacji na temat odpowiednich łączników, zobacz wersja 1.1.911.0 w [artykule historia wersji łącznika](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history).
 
@@ -169,7 +180,7 @@ Ta kompilacja aktualizuje łączniki niestandardowe (na przykład ogólny łącz
 ### <a name="release-status"></a>Stan wydania
 12/11/2018: wydano do pobrania
 
-### <a name="fixed-issues"></a>Rozwiązano problemy
+### <a name="fixed-issues"></a>Rozwiązane problemy
 Ta kompilacja poprawek umożliwia użytkownikowi wybranie domeny docelowej w określonym lesie dla kontenera RegisteredDevices podczas włączania funkcji zapisywania zwrotnego urządzeń.  W poprzednich wersjach, które zawierają nowe funkcje opcji urządzeń (1.1.819.0 – 1.2.68.0), lokalizacja kontenera RegisteredDevices została ograniczona do katalogu głównego lasu i nie zezwala na używanie domen podrzędnych.  To ograniczenie jest zaatakowane tylko w nowych wdrożeniach — w przypadku uaktualnień w miejscu.  
 
 Jeśli dowolna kompilacja zawierająca zaktualizowane funkcje opcji urządzenia została wdrożona na nowym serwerze i włączono funkcję zapisywania zwrotnego urządzeń, należy ręcznie określić lokalizację kontenera, jeśli nie ma go w katalogu głównym lasu.  W tym celu należy wyłączyć funkcję zapisywania zwrotnego urządzeń i włączyć ją ponownie, co umożliwi określenie lokalizacji kontenera na stronie "zapisywanie zwrotne" lasu.
@@ -182,7 +193,7 @@ Jeśli dowolna kompilacja zawierająca zaktualizowane funkcje opcji urządzenia 
 
 11/30/2018: wydano do pobrania
 
-### <a name="fixed-issues"></a>Rozwiązano problemy
+### <a name="fixed-issues"></a>Rozwiązane problemy
 
 Ta kompilacja poprawek rozwiązuje konflikt, w którym może wystąpić błąd uwierzytelniania spowodowany niezależną obecnością modułu Galeria programu PowerShell MSOnline na serwerze synchronizacji.
 
@@ -194,7 +205,7 @@ Ta kompilacja poprawek rozwiązuje konflikt, w którym może wystąpić błąd u
 
 11/19/2018: wydano do pobrania
 
-### <a name="fixed-issues"></a>Rozwiązano problemy
+### <a name="fixed-issues"></a>Rozwiązane problemy
 
 Ta kompilacja poprawek rozwiązuje regresję w poprzedniej kompilacji, w której zapisywanie zwrotne haseł kończy się niepowodzeniem podczas korzystania z dołączenia kontrolera domeny w systemie Windows Server 2008/R2.
 
@@ -217,7 +228,7 @@ Ta kompilacja poprawek rozwiązuje regresję w poprzedniej kompilacji, w której
 
  
 
-### <a name="fixed-issues"></a>Rozwiązano problemy   
+### <a name="fixed-issues"></a>Rozwiązane problemy   
 
 - Naprawiono usterkę, w której Azure AD Connect uaktualnienie nie powiedzie się, jeśli jest używane SQL Always On. 
 - Rozwiązano usterkę umożliwiającą prawidłowe analizowanie nazw jednostek organizacyjnych, które zawierają ukośnik. 
@@ -234,7 +245,7 @@ Ta kompilacja poprawek rozwiązuje regresję w poprzedniej kompilacji, w której
 
 9/7/2018: zwolnione do pobrania, nie będzie wydania do autouaktualniania 
 
-### <a name="fixed-issues"></a>Rozwiązano problemy  
+### <a name="fixed-issues"></a>Rozwiązane problemy  
 
 Uaktualnianie Azure AD Connect kończy się niepowodzeniem, jeśli dla usługi ADSync DB skonfigurowano zawsze dostęp do usługi SQL Server. Ta poprawka rozwiązuje ten problem i umożliwia pomyślne uaktualnienie. 
 
@@ -259,7 +270,7 @@ Uaktualnianie Azure AD Connect kończy się niepowodzeniem, jeśli dla usługi A
 - Wszystkie dodatkowe zadania federacyjne są teraz pogrupowane w jednym podmenu w celu ułatwienia użycia.
 - Nowy moduł odnowionych ADSyncConfig Posh (AdSyncConfig. PSM1) z nowymi funkcjami uprawnień usługi AD przenoszony ze starego ADSyncPrep. PSM1 (co może być wkrótce przestarzałe)
 
-### <a name="fixed-issues"></a>Rozwiązano problemy 
+### <a name="fixed-issues"></a>Rozwiązane problemy 
 
 - Rozwiązano problem polegający na tym, że serwer usługi AAD Connect będzie wyświetlał duże użycie procesora po uaktualnieniu do programu .NET 4.7.2
 - Rozwiązano błąd, który mógłby sporadycznie generować komunikat o błędzie dla nierozwiązanego problemu zakleszczenia SQL
@@ -292,7 +303,7 @@ Nowe funkcje i ulepszenia
 - Konfiguracja zapisywania zwrotnego urządzeń jest teraz zarządzana wyłącznie w Kreatorze Azure AD Connect.
 - Dodano nowy moduł programu PowerShell o nazwie ADSyncTools. PSM1, który może służyć do rozwiązywania problemów z łącznością SQL i różnych narzędzi do rozwiązywania problemów. Więcej informacji na temat modułu ADSyncTools można znaleźć [tutaj](tshoot-connect-tshoot-sql-connectivity.md). 
 - Dodano nowe zadanie dodatkowe "Konfigurowanie opcji urządzenia". Możesz użyć zadania, aby skonfigurować następujące dwie operacje: 
-  - **Hybrydowe dołączanie do usługi Azure AD**: Jeśli w środowisku znajduje się lokalna usługa AD i chcesz również skorzystać z możliwości zapewnianych przez Azure Active Directory, możesz zaimplementować urządzenia dołączone do hybrydowej usługi Azure AD. Są to urządzenia, które są połączone z lokalnym Active Directory i Azure Active Directory.
+  - **Hybrydowe dołączanie do usługi Azure AD**: Jeśli w środowisku znajduje się lokalna usługa AD i chcesz również skorzystać z możliwości zapewnianych przez Azure Active Directory, możesz zaimplementować urządzenia dołączone do hybrydowej usługi Azure AD. Są to urządzenia dołączone do lokalnej usługi Active Directory oraz usługi Azure Active Directory.
   - **Zapisywanie zwrotne urządzeń**: zapisywanie zwrotne urządzeń służy do włączania dostępu warunkowego opartego na urządzeniach do AD FS (2012 R2 lub nowsze) chronionych urządzeń
 
     >[!NOTE] 
@@ -301,7 +312,7 @@ Nowe funkcje i ulepszenia
 
 
 
-### <a name="fixed-issues"></a>Rozwiązano problemy 
+### <a name="fixed-issues"></a>Rozwiązane problemy 
 
 - W tej wersji zaktualizowano instalację SQL Server Express do wersji SQL Server 2012 SP4, która zawiera poprawki kilku luk w zabezpieczeniach.  Więcej informacji na temat SQL Server 2012 SP4 można znaleźć [tutaj](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information) .
 - Przetwarzanie reguły synchronizacji: reguły synchronizacji dołączania danych wychodzących bez warunku sprzężenia powinny zostać cofnięte, jeśli nadrzędna reguła synchronizacji nie ma już zastosowania
@@ -341,12 +352,12 @@ Status 4/12/2018: wydano tylko do pobrania
 >[!NOTE]
 >Ta wersja jest poprawką dla Azure AD Connect
 
-### <a name="azure-ad-connect-sync"></a>Synchronizacja Azure AD Connect
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+### <a name="azure-ad-connect-sync"></a>Synchronizacja programu Azure AD Connect
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 Rozwiązano problem polegający na tym, że automatyczne odnajdowanie wystąpień platformy Azure dla dzierżawców Chin było sporadyczne niepowodzeniem.  
 
 ### <a name="ad-fs-management"></a>Zarządzanie AD FS
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 
 Wystąpił problem z logiką ponawiania konfiguracji, która spowodowałaby, że ArgumentException wskazuje, że element o tym samym kluczu został już dodany.  Spowoduje to, że wszystkie operacje ponawiania zakończą się niepowodzeniem.
 
@@ -359,8 +370,8 @@ Status 3/22/2018: wydano do autouaktualnienia i pobrania.
 >"Funkcja autouaktualniania została nieprawidłowo wyłączona dla niektórych dzierżawców, którzy wdrażali kompilacje później niż 1.1.524.0. Aby upewnić się, że wystąpienie Azure AD Connect nadal kwalifikuje się do autouaktualnienia, uruchom następujące polecenie cmdlet programu PowerShell: "Set-ADSyncAutoUpgrade-AutoupGradeState Enabled"
 
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+### <a name="azure-ad-connect"></a>Program Azure AD Connect
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 
 * Polecenie cmdlet Set-ADSyncAutoUpgrade powinno blokować funkcję autouaktualniania, jeśli stan autouaktualniania jest ustawiony na zawieszone. Ta funkcja została zmieniona, więc nie blokuje autouaktualniania przyszłych kompilacji.
 * Zmieniono opcję strony **logowania użytkownika** "Synchronizacja haseł" na "Synchronizacja skrótów haseł".  Azure AD Connect synchronizuje skróty haseł, a nie hasła, więc jest to zgodne z rzeczywistym użyciem.  Aby uzyskać więcej informacji, zobacz [Implementacja synchronizacji skrótów haseł z synchronizacją Azure AD Connect](how-to-connect-password-hash-synchronization.md)
@@ -371,8 +382,8 @@ Stan: wydano, aby wybrać klientów
 >[!NOTE]
 >Po zakończeniu uaktualniania do tej nowej wersji zostanie automatycznie wyzwolona pełna synchronizacja i pełny import dla łącznika usługi Azure AD oraz pełna synchronizacja łącznika usługi AD. Ponieważ może to potrwać pewien czas, w zależności od rozmiaru środowiska Azure AD Connect upewnij się, że wykonano czynności niezbędne do zapewnienia obsługi tego lub wyłączenia podczas uaktualniania do momentu, gdy okaże się to wygodne.
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+### <a name="azure-ad-connect"></a>Program Azure AD Connect
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 * Naprawianie okna chronometrażu zadań w tle dla strony filtrowania partycji podczas przełączania na następną stronę.
 
 * Rozwiązano błąd, który spowodował naruszenie zasad dostępu podczas akcji niestandardowej ConfigDB.
@@ -433,7 +444,7 @@ Stan: 12 grudnia, 2017
 >[!NOTE]
 >Ta wersja jest poprawką powiązaną z zabezpieczeniami dla Azure AD Connect
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Program Azure AD Connect
 Dodano ulepszenia do Azure AD Connect wersji 1.1.654.0 (i po), aby upewnić się, że zalecane zmiany uprawnień opisane w sekcji [Zablokuj dostęp do konta AD DS](#lock) są automatycznie stosowane podczas Azure AD Connect tworzenia AD DS koncie. 
 
 - Podczas konfigurowania Azure AD Connect administrator może udostępnić istniejące konto AD DS lub pozwolić Azure AD Connect automatycznie utworzyć konto. Zmiany uprawnień są automatycznie stosowane do konta AD DS, które jest tworzone przez Azure AD Connect podczas instalacji. Nie są one stosowane do istniejącego konta AD DS dostarczonego przez administratora instalacji.
@@ -449,18 +460,18 @@ Zablokuj dostęp do konta AD DS, implementując następujące zmiany uprawnień 
 *   Usuń wszystkie wpisy kontroli dostępu do określonego obiektu, z wyjątkiem ACE określonych dla siebie. Chcemy zachować domyślne uprawnienia, które są niezmienione, gdy nastąpi samodzielne.
 *   Przypisz te określone uprawnienia:
 
-Typ     | Nazwa                          | Access               | Dotyczy:
+Typ     | Nazwa                          | Dostęp               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
-Zezwalaj    | SYSTEMAMI                        | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Administratorzy przedsiębiorstwa             | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Wyświetl zawartość        | Ten obiekt  |
-Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Uprawnienia do odczytu     | Ten obiekt  |
-Zezwalaj    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
-Zezwalaj    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwalaj    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwól    | SYSTEMAMI                        | Pełna kontrola         | Ten obiekt  |
+Zezwól    | Administratorzy przedsiębiorstwa             | Pełna kontrola         | Ten obiekt  |
+Zezwól    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
+Zezwól    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
+Zezwól    | Kontrolery domeny przedsiębiorstwa | Wyświetl zawartość        | Ten obiekt  |
+Zezwól    | Kontrolery domeny przedsiębiorstwa | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwól    | Kontrolery domeny przedsiębiorstwa | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwól    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
+Zezwól    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwól    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
 
 Aby wzmocnić ustawienia dla konta AD DS można uruchomić [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Skrypt programu PowerShell przypisze uprawnienia wymienione powyżej do konta AD DS.
 
@@ -468,13 +479,13 @@ Aby wzmocnić ustawienia dla konta AD DS można uruchomić [ten skrypt programu 
 
 Aby użyć skryptu programu PowerShell do zastosowania tych ustawień, na istniejącym koncie AD DS (Eter udostępniony przez organizację lub utworzony przez poprzednią instalację Azure AD Connect, należy pobrać skrypt z podanego łącza powyżej.
 
-##### <a name="usage"></a>Wykorzystywani
+##### <a name="usage"></a>Użycie:
 
 ```powershell
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-Gdzie 
+Lokalizacja 
 
 **$ObjectDN** = konto Active Directory, którego uprawnienia należy wzmocnić.
 
@@ -500,7 +511,7 @@ Stan: Październik 27 2017
 >[!NOTE]
 >Ta kompilacja nie jest dostępna dla klientów za pomocą funkcji Azure AD Connect autoupgrade.
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Program Azure AD Connect
 #### <a name="fixed-issue"></a>Rozwiązano problem
 * Rozwiązano problem ze zgodnością wersji między Azure AD Connect i agentem Azure AD Connect Health (na potrzeby synchronizacji). Ten problem dotyczy klientów, którzy wykonują Azure AD Connect uaktualnieniem w miejscu do wersji 1.1.647.0, ale obecnie ma agenta kondycji w wersji 3.0.127.0. Po uaktualnieniu Agent kondycji nie będzie mógł wysyłać danych o kondycji dotyczących usługi Azure AD Connect Synchronization do Usługa kondycji Azure AD. Ta poprawka powoduje zainstalowanie agenta kondycji w wersji 3.0.129.0 podczas Azure AD Connect uaktualnienia w miejscu. Wersja agenta kondycji 3.0.129.0 nie ma problemu ze zgodnością w wersji 1.1.649.0 Azure AD Connect.
 
@@ -513,8 +524,8 @@ Stan: październik 19 2017
 >
 >
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+### <a name="azure-ad-connect"></a>Program Azure AD Connect
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 * Rozwiązano problem z kreatorem *zmiany zadania logowania użytkownika* w Azure AD Connect:
 
   * Ten problem występuje, gdy istnieje wdrożenie Azure AD Connect z **włączoną**synchronizacją haseł i podjęto próbę ustawienia metody logowania użytkownika jako *uwierzytelniania przekazywanego*. Przed zastosowaniem zmiany Kreator nieprawidłowo wyświetli monit "*Wyłącz synchronizację haseł*". Jednak synchronizacja haseł pozostaje włączona po zastosowaniu zmiany. W przypadku tej poprawki Kreator nie wyświetla już monitu.
@@ -547,11 +558,11 @@ Stan: październik 19 2017
 #### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 * Dodano logikę, aby uprościć kroki wymagane do skonfigurowania Azure AD Connect z usługą Microsoft Niemcy Cloud. Wcześniej należy zaktualizować określone klucze rejestru na serwerze Azure AD Connect, aby działały prawidłowo w chmurze Microsoft Niemcy, zgodnie z opisem w tym artykule. Teraz Azure AD Connect może automatycznie wykryć, czy dzierżawca znajduje się w chmurze firmy Microsoft (Niemcy) w oparciu o poświadczenia administratora globalnego podane podczas instalacji.
 
-### <a name="azure-ad-connect-sync"></a>Synchronizacja Azure AD Connect
+### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
 > [!NOTE]
 > Uwaga: usługa synchronizacji ma interfejs WMI, który umożliwia tworzenie własnych niestandardowych harmonogramów. Ten interfejs jest obecnie przestarzały i zostanie usunięty z przyszłych wersji Azure AD Connect dostarczonego po 30 czerwca 2018. Klienci, którzy chcą dostosować harmonogram synchronizacji, powinni używać [wbudowanego harmonogramu](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler).
 
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 * Gdy Kreator Azure AD Connect tworzy konto łącznika usługi AD wymagane do synchronizacji zmian z Active Directory lokalnych, nie przypisze prawidłowo konta uprawnienia wymaganego do odczytu obiektów PublicFolder. Ten problem dotyczy zarówno instalacji ekspresowej, jak i instalacji niestandardowej. Ta zmiana rozwiązuje ten problem.
 
 * Rozwiązano problem, który spowodował, że strona Rozwiązywanie problemów z kreatorem Azure AD Connect nie jest prawidłowo renderowana dla administratorów z systemem Windows Server 2016.
@@ -570,19 +581,19 @@ Stan: październik 19 2017
 ## <a name="116140"></a>1.1.614.0
 Stan: wrzesień 05 2017
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Program Azure AD Connect
 
 #### <a name="known-issues"></a>Znane problemy
 * Istnieje znany problem, który powoduje Niepowodzenie uaktualnienia Azure AD Connect z powodu błędu "*nie można uaktualnić usługi synchronizacji*". Ponadto usługa synchronizacji nie może już się zaczynać z powodu błędu zdarzenia "*nie można uruchomić usługi, ponieważ wersja bazy danych jest nowsza niż zainstalowana wersja plików binarnych*". Ten problem występuje, gdy administrator przeprowadzający uaktualnienie nie ma uprawnień administratora systemu do programu SQL Server, który jest używany przez Azure AD Connect. Uprawnienia dbo nie są wystarczające.
 
 * Istnieje znany problem z uaktualnieniem Azure AD Connect, który ma wpływ na klientów, którzy włączyli [bezproblemowe logowanie jednokrotne](how-to-connect-sso.md). Po uaktualnieniu Azure AD Connect funkcja zostanie wyświetlona jako wyłączona w kreatorze, mimo że funkcja pozostanie włączona. Rozwiązanie tego problemu będzie dostępne w przyszłym wydaniu. Klienci, którzy są zainteresowani tym problemem dotyczącym wyświetlania, mogą ręcznie rozwiązać ten problem, włączając bezproblemową rejestrację jednokrotną w kreatorze.
 
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 * Rozwiązano problem uniemożliwiający Azure AD Connect aktualizacji reguł oświadczeń w lokalnym AD FS podczas włączania funkcji [MS-ds-ConsistencyGuid as Source](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) . Problem występuje, jeśli spróbujesz włączyć funkcję dla istniejącego wdrożenia Azure AD Connect, które ma AD FS skonfigurowany jako metoda logowania. Ten problem występuje, ponieważ Kreator nie monituje o poświadczenia usług ADFS przed próbą zaktualizowania reguł oświadczeń w AD FS.
 * Rozwiązano problem, który spowodował niepowodzenie instalacji Azure AD Connect, jeśli lokalny Las usługi AD ma wyłączone NTLM. Problem jest spowodowany tym, że Kreator Azure AD Connect nie udostępnia w pełni kwalifikowanych poświadczeń podczas tworzenia kontekstów zabezpieczeń wymaganych do uwierzytelniania Kerberos. Powoduje to niepowodzenie uwierzytelniania Kerberos i Azure AD Connect kreatora, aby wrócić do korzystania z protokołu NTLM.
 
-### <a name="azure-ad-connect-sync"></a>Synchronizacja Azure AD Connect
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 * Rozwiązano problem polegający na tym, że nie można utworzyć nowej reguły synchronizacji, jeśli atrybut tagu nie jest wypełniony.
 * Rozwiązano problem, który spowodował Azure AD Connect łączenia się z lokalną usługą AD na potrzeby synchronizacji haseł przy użyciu protokołu NTLM, chociaż jest dostępny protokół Kerberos. Ten problem występuje, gdy lokalna topologia usługi AD ma jeden lub więcej kontrolerów domeny, które zostały przywrócone z kopii zapasowej.
 * Rozwiązano problem, który spowodował, że pełne kroki synchronizacji występują niepotrzebnie po uaktualnieniu. Ogólnie rzecz biorąc, wykonywanie kroków pełnej synchronizacji jest wymagane po uaktualnieniu, jeśli istnieją zmiany w regułach synchronizacji out-of-box. Problem był spowodowany błędem logiki wykrywania zmian, który niepoprawnie wykrył zmianę w przypadku napotkania wyrażenia reguły synchronizacji z znakami nowego wiersza. Znaki nowego wiersza są wstawiane do wyrażenia reguły synchronizacji w celu zwiększenia czytelności.
@@ -596,7 +607,7 @@ Stan: wrzesień 05 2017
 * Azure AD Connect teraz obsługuje nowy tryb instalacji o nazwie **use istniejąca baza danych**. Ten tryb instalacji umożliwia klientom zainstalowanie Azure AD Connect, która określa istniejącą bazę danych ADSync. Aby uzyskać więcej informacji na temat tej funkcji, zapoznaj się z artykułem [Korzystanie z istniejącej bazy danych](how-to-connect-install-existing-database.md).
 * W celu zwiększenia bezpieczeństwa Azure AD Connect teraz używać protokołu TLS 1.2 do nawiązywania połączenia z usługą Azure AD w celu synchronizacji katalogów. Poprzednio wartość domyślna to TLS 1.0.
 * Po uruchomieniu Azure AD Connect agenta synchronizacji haseł próbuje nawiązać połączenie z dobrze znanym punktem końcowym usługi Azure AD na potrzeby synchronizacji haseł. Po pomyślnym nawiązaniu połączenia zostanie on przekierowany do punktu końcowego określonego dla regionu. Wcześniej Agent synchronizacji haseł buforuje punkt końcowy specyficzny dla regionu, dopóki nie zostanie ponownie uruchomiony. Teraz Agent czyści pamięć podręczną i ponowi próbę z dobrze znanym punktem końcowym, jeśli napotka problem z połączeniem z punktem końcowym specyficznym dla regionu. Ta zmiana zapewnia, że synchronizacja haseł może przełączeć w tryb failover do innego punktu końcowego określonego dla regionu, gdy punkt końcowy specyficzny dla regionu nie jest już dostępny.
-* Aby synchronizować zmiany z lokalnego lasu usługi AD, wymagane jest konto AD DS. Możesz albo (i) samodzielnie utworzyć konto AD DS i podać swoje poświadczenie, aby Azure AD Connect, lub (II) podać poświadczenia administratora przedsiębiorstwa i Azure AD Connect utworzyć konto AD DS. Wcześniej, (i) jest opcją domyślną w Kreatorze Azure AD Connect. Teraz (II) jest opcją domyślną.
+* Aby zsynchronizować zmiany z lokalnego lasu usługi AD, wymagane jest konto usługi AD DS. Możesz albo (i) samodzielnie utworzyć konto AD DS i podać swoje poświadczenie, aby Azure AD Connect, lub (II) podać poświadczenia administratora przedsiębiorstwa i Azure AD Connect utworzyć konto AD DS. Wcześniej, (i) jest opcją domyślną w Kreatorze Azure AD Connect. Teraz (II) jest opcją domyślną.
 
 ### <a name="azure-ad-connect-health"></a>Azure AD Connect Health
 
@@ -604,7 +615,7 @@ Stan: wrzesień 05 2017
 * Dodano obsługę Microsoft Azure Government chmury i Microsoft Cloud Niemcy.
 
 ### <a name="ad-fs-management"></a>Zarządzanie AD FS
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 * Polecenie cmdlet Initialize-ADSyncNGCKeysWriteBack w module programu PowerShell do przygotowywania usługi AD nieprawidłowo stosowało listy ACL do kontenera rejestracji urządzeń i w związku z tym dziedziczy tylko istniejące uprawnienia.  Ta aktualizacja została zaktualizowana tak, aby konto usługi synchronizacji miało odpowiednie uprawnienia.
 
 #### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
@@ -613,14 +624,14 @@ Stan: wrzesień 05 2017
 * Podczas uaktualniania programu AAD Connect nie będzie już można przeprowadzić uaktualnienia, jeśli aktualizacja zaufania usług AD FS nie powiedzie się.  Jeśli tak się stanie, zostanie wyświetlony odpowiedni komunikat ostrzegawczy, który powinien być resetowany przez dodatkowe zadanie usługi AAD Connect.
 
 ### <a name="seamless-single-sign-on"></a>Bezproblemowe logowanie jednokrotne
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 * Rozwiązano problem, który spowodował, że Kreator Azure AD Connect zwrócił błąd, jeśli spróbujesz włączyć [bezproblemowe logowanie jednokrotne](how-to-connect-sso.md). Komunikat o błędzie to *"Konfiguracja agenta uwierzytelniania Microsoft Azure AD nie powiodła się".* Ten problem dotyczy istniejących klientów, którzy mogli ręcznie uaktualnić wersję zapoznawczą agentów uwierzytelniania na potrzeby [uwierzytelniania przekazywanego](how-to-connect-sso.md) na podstawie kroków opisanych w tym [artykule](how-to-connect-pta-upgrade-preview-authentication-agents.md).
 
 
 ## <a name="115610"></a>1.1.561.0
 Stan: Lipiec 23 2017
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Program Azure AD Connect
 
 #### <a name="fixed-issue"></a>Rozwiązano problem
 
@@ -660,7 +671,7 @@ Stan: Lipiec 23 2017
 ## <a name="115580"></a>1.1.558.0
 Stan: nie zostanie wydana. Zmiany w tej kompilacji są zawarte w wersji 1.1.561.0.
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Program Azure AD Connect
 
 #### <a name="fixed-issue"></a>Rozwiązano problem
 
@@ -691,7 +702,7 @@ Stan: lipiec 2017
 >[!NOTE]
 >Ta kompilacja nie jest dostępna dla klientów za pomocą funkcji Azure AD Connect autoupgrade.
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Program Azure AD Connect
 
 #### <a name="fixed-issue"></a>Rozwiązano problem
 * Rozwiązano problem z poleceniem cmdlet Initialize-ADSyncDomainJoinedComputerSync, które spowodowało zmianę zweryfikowanej domeny skonfigurowanej w istniejącym obiekcie punktu połączenia z usługą, nawet jeśli jest ona nadal prawidłową domeną. Ten problem występuje, gdy dzierżawa usługi Azure AD ma więcej niż jedną zweryfikowaną domenę, której można użyć do skonfigurowania punktu połączenia z usługą.
@@ -717,7 +728,7 @@ Stan: czerwiec 2017
 >
 >
 
-### <a name="azure-ad-connect-sync"></a>Synchronizacja Azure AD Connect
+### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
 
 #### <a name="known-issue"></a>Znany problem
 * Występuje problem, który ma wpływ na klientów, którzy korzystają z [filtrowania opartego na jednostce organizacyjnej](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) za pomocą synchronizacji Azure AD Connect. Po przejściu do [strony filtrowania domeny i jednostki organizacyjnej](how-to-connect-install-custom.md#domain-and-ou-filtering) w Kreatorze Azure AD Connect jest oczekiwane następujące zachowanie:
@@ -726,7 +737,7 @@ Stan: czerwiec 2017
 
 Występuje problem polegający na tym, że **opcja Synchronizuj wszystkie domeny i jednostki organizacyjne** jest zawsze zaznaczona po uruchomieniu kreatora.  Dzieje się tak nawet wtedy, gdy wcześniej skonfigurowano filtrowanie na podstawie jednostki organizacyjnej. Przed zapisaniem zmian konfiguracji programu AAD Connect upewnij się, że wybrano **opcję Synchronizuj wybrane domeny i jednostki organizacyjne** i upewnij się, że wszystkie jednostki organizacyjne, które wymagają synchronizacji, są włączone ponownie. W przeciwnym razie filtrowanie na podstawie jednostki organizacyjnej będzie wyłączone.
 
-#### <a name="fixed-issues"></a>Rozwiązano problemy
+#### <a name="fixed-issues"></a>Rozwiązane problemy
 
 * Rozwiązano problem z funkcją zapisywania zwrotnego haseł, która umożliwia administratorowi usługi Azure AD Resetowanie hasła do lokalnego konta użytkownika uprzywilejowanego usługi AD. Ten problem występuje, gdy Azure AD Connect przyznano uprawnienia resetowania hasła na koncie uprzywilejowanym. Ten problem został rozwiązany w tej wersji programu Azure AD Connect przez nieumożliwienie administratorowi usługi Azure AD resetowania hasła do dowolnego lokalnego konta użytkownika, które ma uprzywilejowane konto usługi AD, chyba że administrator jest właścicielem tego konta. Więcej informacji można znaleźć w [dokumencie Security Advisory 4033453](https://technet.microsoft.com/library/security/4033453).
 
@@ -745,7 +756,7 @@ Występuje problem polegający na tym, że **opcja Synchronizuj wszystkie domeny
 
 #### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 
-* Wcześniej funkcja [kotwicy MS-ds-ConsistencyGuid as Source](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) była dostępna tylko dla nowych wdrożeń. Teraz jest dostępny dla istniejących wdrożeń. Dokładniej:
+* Wcześniej funkcja [kotwicy MS-ds-ConsistencyGuid as Source](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) była dostępna tylko dla nowych wdrożeń. Teraz jest dostępny dla istniejących wdrożeń. Więcej szczegółów:
   * Aby uzyskać dostęp do tej funkcji, uruchom Kreatora Azure AD Connect i wybierz opcję *Aktualizuj zakotwiczenie źródła* .
   * Ta opcja jest widoczna tylko dla istniejących wdrożeń, które używają parametru objectGuid jako atrybutu sourceAnchor.
   * Podczas konfigurowania opcji Kreator sprawdza poprawność stanu atrybutu MS-DS-ConsistencyGuid w lokalnym Active Directory. Jeśli atrybut nie jest skonfigurowany w żadnym obiekcie użytkownika w katalogu, Kreator użyje właściwości MS-DS-ConsistencyGuid jako atrybutu sourceAnchor. Jeśli atrybut jest skonfigurowany w co najmniej jednym obiekcie użytkownika w katalogu, Kreator końcowy ten atrybut jest używany przez inne aplikacje i nie jest odpowiedni jako atrybut sourceAnchor i nie zezwala na przechodzenie przez zakotwiczenie źródłowe. Jeśli masz pewność, że atrybut nie jest używany przez istniejące aplikacje, musisz skontaktować się z pomocą techniczną, aby uzyskać informacje na temat sposobu pomijania tego błędu.
@@ -793,8 +804,8 @@ CBool(
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Wybierz|
-    |CertKeyAlgorithmParams|CertHashString|Gdzie|
-    |||Się|
+    |CertKeyAlgorithmParams|CertHashString|Lokalizacja|
+    |||Zawiera|
 
 * Wprowadzono następujące zmiany schematu, które umożliwiają klientom tworzenie niestandardowych reguł synchronizacji w celu przepływu zasad sAMAccountName, domainNetBios i domainFQDN dla obiektów grup, a także nazwy odróżnionyname dla obiektów użytkownika:
 
@@ -843,7 +854,7 @@ Wydanie: 2017 maja
 
 **Rozwiązano problemy:**
 
-Synchronizacja Azure AD Connect
+Synchronizacja programu Azure AD Connect
 
 * Rozwiązano problem powodujący automatyczne uaktualnienie na serwerze Azure AD Connect, nawet jeśli klient wyłączył tę funkcję za pomocą polecenia cmdlet Set-ADSyncAutoUpgrade. W przypadku tej poprawki proces automatycznego uaktualniania na serwerze nadal sprawdza okres uaktualniania, ale pobrany Instalator przestrzega konfiguracji automatycznego uaktualniania.
 * Podczas uaktualniania w miejscu usługi DirSync usługa Azure AD Connect tworzy konto usług Azure AD, które będzie używane przez łącznik usługi Azure AD do synchronizowania z usługą Azure AD. Po utworzeniu konta Azure AD Connect uwierzytelniać się w usłudze Azure AD przy użyciu konta. Czasami uwierzytelnianie kończy się niepowodzeniem z powodu przejściowych problemów, które z kolei powodują, że uaktualnienie narzędzia DirSync w miejscu nie powiedzie się z powodu błędu *"Wystąpił błąd podczas wykonywania AAD Sync konfigurowania zadania: AADSTS50034: Aby zalogować się do tej aplikacji, należy dodać konto do Katalog xxx.onmicrosoft.com ".* Aby zwiększyć odporność na uaktualnienie narzędzia DirSync, Azure AD Connect teraz ponawia próbę wykonania kroku uwierzytelniania.
@@ -860,7 +871,7 @@ Synchronizacja Azure AD Connect
 
 **Nowe funkcje/ulepszenia:**
 
-Synchronizacja Azure AD Connect
+Synchronizacja programu Azure AD Connect
 * Zmiany reguły synchronizacji — zaimplementowano następujące zmiany reguły synchronizacji:
   * Zaktualizowano domyślny zestaw reguł synchronizacji, aby nie eksportować atrybutów **userCertificate** i **userSMIMECertificate** , jeśli atrybuty mają więcej niż 15 wartości.
   * Atrybuty AD **IDPracownika** i **msExchBypassModerationLink** są teraz dołączone do domyślnego zestawu reguł synchronizacji.
@@ -900,7 +911,7 @@ Opublikowano: kwiecień 2017
 
 **Rozwiązano problemy:**
 
-Synchronizacja Azure AD Connect
+Synchronizacja programu Azure AD Connect
 * Rozwiązano problem polegający na tym, że harmonogram synchronizacji pomija cały krok synchronizacji, jeśli co najmniej jeden łącznik nie ma profilu uruchamiania dla tego kroku synchronizacji. Na przykład ręcznie dodano łącznik przy użyciu Synchronization Service Manager bez tworzenia dla niego profilu przebiegu importu różnicowego. Ta poprawka zapewnia, że harmonogram synchronizacji kontynuuje wykonywanie importu różnicowego dla innych łączników.
 * Rozwiązano problem polegający na tym, że usługa synchronizacji natychmiast zatrzyma przetwarzanie profilu przebiegu, gdy wystąpi problem z jednym z kroków uruchomienia. Ta poprawka zapewnia, że usługa synchronizacji pomija ten krok uruchamiania i kontynuuje przetwarzanie reszty. Na przykład masz profil przebiegu importu różnicowego dla łącznika usługi AD z wieloma krokami uruchamiania (jeden dla każdej lokalnej domeny usługi AD). Usługa synchronizacji uruchomi Importowanie różnicowe z innymi domenami usługi AD, nawet jeśli jedna z nich ma problemy z łącznością sieciową.
 * Rozwiązano problem powodujący pominięcie aktualizacji łącznika usługi Azure AD podczas automatycznego uaktualniania.
@@ -916,7 +927,7 @@ Logowanie jednokrotne na komputerze
 
 **Nowe funkcje/ulepszenia:**
 
-Synchronizacja Azure AD Connect
+Synchronizacja programu Azure AD Connect
 * Azure AD Connect Sync obsługuje teraz użycie konta usługi wirtualnej, zarządzanego konta usługi i konta usługi zarządzanego przez grupę jako konta usługi. Dotyczy to tylko nowej instalacji Azure AD Connect. Podczas instalowania Azure AD Connect:
     * Domyślnie Kreator Azure AD Connect utworzy konto usługi wirtualnej i użyje go jako konta usługi.
     * Jeśli instalujesz program na kontrolerze domeny, Azure AD Connect powraca do poprzedniego zachowania, w którym zostanie utworzone konto użytkownika domeny i użyje go jako konta usługi.
@@ -942,7 +953,7 @@ Wydanie: marzec 2017
 
 **Rozwiązano problemy:**
 
-Synchronizacja Azure AD Connect
+Synchronizacja programu Azure AD Connect
 * Rozwiązano problem, który powoduje niepowodzenie działania kreatora Azure AD Connect, jeśli nazwa wyświetlana łącznika usługi Azure AD nie zawiera początkowej domeny onmicrosoft.com przypisanej do dzierżawy usługi Azure AD.
 * Rozwiązano problem, który powoduje niepowodzenie działania kreatora Azure AD Connect podczas tworzenia połączenia z usługą SQL Database, gdy hasło konta usługi synchronizacji zawiera znaki specjalne, takie jak apostrof, dwukropek i spacja.
 * Rozwiązano problem, który powoduje, że wystąpił błąd "obraz ma kotwicę inną niż obraz" na serwerze Azure AD Connect w trybie przejściowym po tymczasowym wykluczeniu lokalnego obiektu usługi AD z synchronizacji, a następnie dołączeniu go ponownie do synchronizacji.
@@ -961,7 +972,7 @@ Resetowanie hasła
 
 **Nowe funkcje/ulepszenia:**
 
-Synchronizacja Azure AD Connect
+Synchronizacja programu Azure AD Connect
 * Polecenie cmdlet Get-ADSyncScheduler zwraca teraz nową właściwość Boolean o nazwie SyncCycleInProgress. Jeśli zwracana wartość to true, oznacza to, że cykl synchronizacji jest zaplanowany w toku.
 * Folder docelowy do przechowywania Azure AD Connect instalacji i dzienników instalacji został przeniesiony z%localappdata%\AADConnect do%programdata%\AADConnect w celu usprawnienia ułatwienia dostępu do plików dziennika.
 
@@ -1213,7 +1224,7 @@ Zmieniono nazwę z Azure AD Sync na Azure AD Connect.
 * Instalacja [ustawień ekspresowych](how-to-connect-install-express.md)
 * Można [skonfigurować AD FS](how-to-connect-install-custom.md#configuring-federation-with-ad-fs)
 * Można [uaktualnić z narzędzia DirSync](how-to-dirsync-upgrade-get-started.md)
-* [Zapobiegaj przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md)
+* [Zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 * Wprowadzony [tryb przejściowy](how-to-connect-sync-staging-server.md)
 
 **Nowe funkcje w wersji zapoznawczej:**
@@ -1312,4 +1323,4 @@ Wydanie: wrzesień 2014
 **Początkowa wersja Azure AD Sync.**
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej [na temat integrowania tożsamości lokalnych z Azure Active Directory](whatis-hybrid-identity.md).
+Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

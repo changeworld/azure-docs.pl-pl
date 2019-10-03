@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f892857d74150ee42cc2ea4b5c996feac3d1cfa2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 19e1a5f1534d09246ca85029f45ee918ec57e51f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695613"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828406"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozszerzanie wirtualnych dysków twardych na maszynę wirtualną z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -26,7 +26,7 @@ Upewnij się, że zainstalowano najnowszy [interfejs wiersza polecenia platformy
 
 Ten artykuł wymaga istniejącej maszyny wirtualnej na platformie Azure z co najmniej jednym dyskiem danych dołączonym i przygotowanym. Jeśli nie masz jeszcze maszyny wirtualnej, której możesz użyć, zobacz [Tworzenie i przygotowywanie maszyny wirtualnej z dyskami danych](tutorial-manage-disks.md#create-and-attach-disks).
 
-W poniższych przykładach Zastąp przykładowe nazwy parametrów, takie *jak* *myVM* i, z własnymi wartościami.
+W poniższych przykładach Zastąp przykładowe nazwy parametrów, takie jak *myVM* *i, z* własnymi wartościami.
 
 1. Nie można wykonać operacji na wirtualnych dyskach twardych z uruchomioną maszyną wirtualną. Cofnij przydział maszyny wirtualnej za pomocą [AZ VM deallocate](/cli/azure/vm#az-vm-deallocate). Poniższy przykład powoduje cofnięcie przydziału maszyny wirtualnej o nazwie *myVM* w grupie zasobów o nazwie Moja *zasobów*:
 
@@ -35,7 +35,7 @@ W poniższych przykładach Zastąp przykładowe nazwy parametrów, takie *jak* *
     ```
 
     > [!NOTE]
-    > Aby zwiększyć rozmiar wirtualnego dysku twardego, należy cofnąć przydział maszyny wirtualnej. Zatrzymywanie maszyny wirtualnej `az vm stop` przy użyciu programu nie powoduje zwolnienia zasobów obliczeniowych. Aby zwolnić zasoby obliczeniowe, `az vm deallocate`Użyj programu.
+    > Aby zwiększyć rozmiar wirtualnego dysku twardego, należy cofnąć przydział maszyny wirtualnej. Zatrzymywanie maszyny wirtualnej przy użyciu `az vm stop` nie powoduje zwolnienia zasobów obliczeniowych. Aby zwolnić zasoby obliczeniowe, użyj `az vm deallocate`.
 
 1. Wyświetl listę dysków zarządzanych w grupie zasobów za pomocą [AZ Disk list](/cli/azure/disk#az-disk-list). Poniższy przykład przedstawia listę dysków zarządzanych w grupie zasobów o nazwie Moja *zasobów*:
 
@@ -82,13 +82,13 @@ Aby użyć rozszerzonego dysku, rozwiń podstawową partycję i system plików.
     sudo umount /dev/sdc1
     ```
 
-    b. Użyj `parted` , aby wyświetlić informacje o dysku i zmienić rozmiar partycji:
+    b. Użyj `parted`, aby wyświetlić informacje o dysku i zmienić rozmiar partycji:
 
     ```bash
     sudo parted /dev/sdc
     ```
 
-    Wyświetl informacje o istniejącym układzie partycji za `print`pomocą programu. Dane wyjściowe są podobne do poniższego przykładu, który pokazuje, że dysk podstawowy to 215 GB:
+    Wyświetl informacje o istniejącym układzie partycji z `print`. Dane wyjściowe są podobne do poniższego przykładu, który pokazuje, że dysk podstawowy to 215 GB:
 
     ```bash
     GNU Parted 3.2
@@ -105,7 +105,7 @@ Aby użyć rozszerzonego dysku, rozwiń podstawową partycję i system plików.
         1      0.00B  107GB  107GB  ext4
     ```
 
-    c. Rozwiń partycję za `resizepart`pomocą. Wprowadź numer partycji, *1*i rozmiar nowej partycji:
+    s. Rozwiń partycję `resizepart`. Wprowadź numer partycji, *1*i rozmiar nowej partycji:
 
     ```bash
     (parted) resizepart
@@ -113,7 +113,7 @@ Aby użyć rozszerzonego dysku, rozwiń podstawową partycję i system plików.
     End?  [107GB]? 215GB
     ```
 
-    d. Aby wyjść, wprowadź `quit`.
+    Wykres. Aby wyjść, wprowadź `quit`.
 
 1. Po zmianie rozmiaru partycji Sprawdź spójność partycji z `e2fsck`:
 
@@ -121,13 +121,13 @@ Aby użyć rozszerzonego dysku, rozwiń podstawową partycję i system plików.
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. Zmień rozmiar systemu plików `resize2fs`przy użyciu:
+1. Zmień rozmiar systemu plików o `resize2fs`:
 
     ```bash
     sudo resize2fs /dev/sdc1
     ```
 
-1. Zainstaluj partycję w odpowiedniej lokalizacji, `/datadrive`na przykład:
+1. Zainstaluj partycję w żądanej lokalizacji, na przykład `/datadrive`:
 
     ```bash
     sudo mount /dev/sdc1 /datadrive
@@ -142,4 +142,4 @@ Aby użyć rozszerzonego dysku, rozwiń podstawową partycję i system plików.
 
 ## <a name="next-steps"></a>Następne kroki
 * Jeśli potrzebujesz dodatkowego magazynu, możesz również [dodać dyski danych do maszyny wirtualnej z systemem Linux](add-disk.md). 
-* Aby uzyskać więcej informacji o szyfrowaniu dysków, zobacz [szyfrowanie dysków na maszynie wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure](encrypt-disks.md).
+* Aby uzyskać więcej informacji na temat szyfrowania dysków, zobacz [Azure Disk Encryption dla maszyn wirtualnych z systemem Linux](disk-encryption-overview.md).

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d1cbca20b9f1ee1d5f7eefb760ed60fa4d019050
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972854"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828917"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Często zadawane pytania dotyczące rozwiązania VMware według CloudSimple
 
@@ -29,11 +29,11 @@ Chmura prywatna CloudSimple to prywatna, dedykowana Chmura, która składa się 
 
 **Gdzie jest dostępna usługa CloudSimple?**
 
-CloudSimple jest dostępna w regionach Wschodnie stany USA i zachodnie stany USA z dodatkowymi regionami już wkrótce.
+CloudSimple jest dostępna w regionach Wschodnie stany USA, zachodnie stany USA i Europa Zachodnia z dodatkowymi regionami już wkrótce.
 
 **Jak mogę włączyć moją subskrypcję usługi CloudSimple?**
 
-[azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) Aby włączyć subskrypcję usługi CloudSimple, możesz skontaktować się z przedstawicielem konto Microsoft. Podaj identyfikator subskrypcji w wiadomości e-mail, dla której usługa CloudSimple ma być włączona.  
+Aby włączyć subskrypcję usługi CloudSimple, możesz skontaktować się z przedstawicielem konto Microsoft w [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) . Podaj identyfikator subskrypcji w wiadomości e-mail, dla której usługa CloudSimple ma być włączona.  
 
 **Jak mogę uzyskać dostęp do portalu CloudSimple?**
 
@@ -90,7 +90,7 @@ Można skonfigurować reguły dla ruchu północ-południe i wschód-zachód.  R
 
 W portalu CloudSimple można przydzielić nowy publiczny adres IP i skojarzyć go z prywatnym adresem IP maszyny wirtualnej lub urządzenia.  Możesz również utworzyć nowe reguły zapory lub zastosować istniejące reguły zapory, aby zezwolić na ruch z określonych portów i adresów IP w portalu. Aby uzyskać szczegółowe informacje, zobacz [przydzielanie publicznych adresów IP dla środowiska chmury prywatnej](public-ips.md).
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 **Jakie są moje opcje zabezpieczeń w witrynie CloudSimple?**
 
@@ -106,14 +106,15 @@ Usługa CloudSimple zapewnia następujące funkcje zabezpieczeń w celu zabezpie
 
 CloudSimple oferuje następujące typy hostów:
 
-* **Węzeł CS28:** Procesor: 2,2 2 GHz, łącznie 28 rdzeni, 48 HT.  Pamięć RAM: 256 GB.  Storage: pamięć podręczna interfejsu NVMe 1600 GB, dane 5760 GB (wszystkie-Flash). NFS 2x25Gbe NIC
-* **Węzeł CS36:** Procesor 2,3 2 GHz, łączne rdzenie 36, 72 HT.  Pamięć RAM: 512 GB.  Storage: 3200 GB pamięci podręcznej interfejsu NVMe o pojemności 11520 GB (wszystkie-Flash).  NFS 2x25Gbe NIC
+* **Węzeł CS28:** Procesor: 2,2 2 GHz, łącznie 28 rdzeni, 48 HT.  PAMIĘĆ RAM: 256 GB.  Magazyn: pamięć podręczna interfejsu NVMe 1600 GB, dane 5760 GB (wszystkie-Flash). Sieć: karta sieciowa 4x25Gbe
+* **Węzeł CS36:** Procesor 2,3 2 GHz, łączne rdzenie 36, 72 HT.  PAMIĘĆ RAM: 512 GB.  Magazyn: 3200 GB pamięci podręcznej interfejsu NVMe 11520 GB danych (wszystkie-Flash).  Sieć: karta sieciowa 4x25Gbe
+* **Węzeł CS36m:** Procesor 2,3 2 GHz, łączne rdzenie 36, 72 HT.  PAMIĘĆ RAM: 576 GB.  Magazyn: 3200 GB pamięci podręcznej interfejsu NVMe 13360 GB danych (wszystkie-Flash).  Sieć: karta sieciowa 4x25Gbe
 
 **Jak są obsługiwane błędy sprzętu?**
 
 Cała infrastruktura CloudSimple jest stale monitorowana przez platformę CloudSimple i naszych zespołów operacyjnych usług.  Jeśli awaria sprzętowa zostanie wykryta, do chmury prywatnej zostanie dodany nowy węzeł i zostanie usunięty węzeł zakończony niepowodzeniem.
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Usługa Storage
 
 **Jakiego typu magazyn jest obsługiwany w chmurze prywatnej?**
 
@@ -130,7 +131,7 @@ CloudSimple stale monitoruje wszystkie składniki sprzętowe chmury prywatnej.  
 
 **Jak mogę wykonywać na dużą skalę przekazywanie lub migrację aplikacji i danych z lokalnego systemu?**
 
-CloudSimple zapewnia natywne rozwiązanie VMware vSphere.  Wszystkie narzędzia VMware do migracji danych zbiorczych mogą być używane z chmurą prywatną.  Opcje obejmują:
+CloudSimple zapewnia natywne rozwiązanie VMware vSphere.  Wszystkie narzędzia VMware do migracji danych zbiorczych mogą być używane z chmurą prywatną.  Dostępne są następujące opcje:
 
 * Oprogramowanie VMware HCX na potrzeby migracji zbiorczej danych.
 * Zimna migracja danych przy użyciu usługi Storage vMotion z lokalnego do CloudSimple.
@@ -149,7 +150,7 @@ Program CloudSimple nie wykonuje uaktualnień ani aktualizacji aplikacji zainsta
 
 **Jakie usługi platformy Azure są obsługiwane?**
 
-Usługa CloudSimple udostępnia połączenie usługi Azure ExpressRoute z subskrypcją na platformie Azure.  Wszystkie usługi działające w ramach subskrypcji mogą łączyć się z chmurą prywatną.  Przykłady:
+Usługa CloudSimple udostępnia połączenie usługi Azure ExpressRoute z subskrypcją na platformie Azure.  Wszystkie usługi działające w ramach subskrypcji mogą łączyć się z chmurą prywatną.  Przykłady obejmują:
 
 * **Azure Active Directory** jako źródło tożsamości dla programu CloudSimple vCenter.
 * **Usługa Azure Storage** do przechowywania kopii zapasowych, obrazów i innych danych z chmury prywatnej.
