@@ -9,15 +9,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 278e873d01eb3dd7d614d771e5b50b8fe624800a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 43986ce57b8d320beeae748d3b848cf9ef38744d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490354"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718723"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Informacje o opłatach za usługi zewnętrzne na platformie Azure
 Usługi zewnętrzne są publikowane przez zewnętrznych dostawców oprogramowania na platformie Azure Marketplace. Na przykład SendGrid to usługa zewnętrzna, którą można zakupić na platformie Azure, ale która nie jest publikowana przez firmę Microsoft. Także niektóre produkty firmy Microsoft są sprzedawane na platformie Azure Marketplace.

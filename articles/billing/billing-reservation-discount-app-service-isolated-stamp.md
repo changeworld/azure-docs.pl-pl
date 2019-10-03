@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: cb4b371deadb1ae9e6ae048c3157809aff857c9d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 759f83001353957f23b917440b68719b54690bea
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68298258"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718804"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>Jak są stosowane rabaty za wystąpienia zarezerwowane w przypadku sygnatur izolowanej usługi Azure App Service
 
@@ -49,7 +49,7 @@ W poniższych przykładach pokazano, jak w zależności od wdrożenia jest stoso
 - Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz temat [Manage Azure Reservations](billing-manage-reserved-vm-instance.md) (Zarządzanie wystąpieniami zarezerwowanymi na platformie Azure).
 - Aby dowiedzieć się więcej na temat wcześniejszego zakupu wydajności rezerwowej w ramach opłaty jednostkowej za korzystanie z usługi App Service w środowisku izolowanym, zobacz temat [Prepay for Azure App Service Isolated Stamp Fee with reserved capacity](billing-prepay-app-service-isolated-stamp.md) (Uiszczanie z góry opłaty jednostkowej za korzystanie z usługi Azure App Service w środowisku izolowanym z wydajnością rezerwową).
 - Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
-  - [Co to jest Azure Reservations?](billing-save-compute-costs-reservations.md)
-  - [Zarządzanie rezerwacjami na platformie Azure](billing-manage-reserved-vm-instance.md)
-  - [Informacje na temat użycia rezerwacji w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
+  - [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
+  - [Zarządzanie rejestracjami platformy Azure](billing-manage-reserved-vm-instance.md)
+  - [Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
   - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)

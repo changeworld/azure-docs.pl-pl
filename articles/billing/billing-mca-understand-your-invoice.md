@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/22/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: a5f77120c1d4e8a6721f3bc207132bee19a7772f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d514afdc4d9b571346768d283320f9e605e57f57
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68383536"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719731"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Terminy na fakturze za umowę klienta firmy Microsoft
 
@@ -43,7 +43,7 @@ W poniższych sekcjach wymieniono i opisano ważne terminy występujące na fakt
 | Sprzedano dla |Adres podmiotu prawnego, wyświetlany we właściwościach konta rozliczeniowego|
 | Rachunek dla |Adres do rozliczeń w profilu rozliczeniowym, do którego jest wysyłana faktura, wyświetlany we właściwościach tego profilu|
 | Profil rozliczeniowy |Nazwa profilu rozliczeniowego, do którego jest wysyłana faktura |
-| Numer zamówienia zakupu |Opcjonalny numer zamówienia zakupu przypisany do Ciebie na potrzeby śledzenia |
+| Numer zamówienia numer |Opcjonalny numer zamówienia zakupu przypisany do Ciebie na potrzeby śledzenia |
 | Numer faktury |Unikatowy, wygenerowany przez firmę Microsoft numer faktury używany na potrzeby śledzenia |
 | Data faktury |Data wygenerowania faktury. Zazwyczaj jest to od 5 do 12 dni po zakończeniu okresu rozliczeniowego. Datę faktury można sprawdzić we właściwościach profilu rozliczeniowego.|
 | Warunki płatności |Sposób płatności rachunku od firmy Microsoft. Zapis *Do 30 dni* oznacza, że płatność powinna nastąpić w ciągu 30 dni od daty faktury. |

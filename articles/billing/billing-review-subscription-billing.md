@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2018
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 8cfa429b18fb282f5c1f85d2fd1637704653b855
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 33fc6e59a0a85275b055524d8ccf5d78935725a8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68443045"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718756"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Przegląd rozliczeń subskrypcji przy użyciu interfejsów API REST
 
@@ -108,6 +108,6 @@ Inne kody stanu wskazują na błędy. W takich przypadkach obiekt odpowiedzi wyj
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-- Zobacz temat [Przegląd raportowania korporacyjnego](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- Zapoznaj się z [interfejsem API REST rozliczania korporacyjnego](https://docs.microsoft.com/rest/api/billing/)
-- [Pierwsze kroki z interfejsem API REST platformy Azure](https://docs.microsoft.com/rest/api/azure/)
+- Przejrzyj temat [Przegląd raportowania korporacyjnego](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
+- Zapoznaj się z tematem [Interfejs API REST rozliczania korporacyjnego](https://docs.microsoft.com/rest/api/billing/)
+- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](https://docs.microsoft.com/rest/api/azure/)

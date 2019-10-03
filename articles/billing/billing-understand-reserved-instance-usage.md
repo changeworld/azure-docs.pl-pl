@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 11f05c3de50f2f82173b6666d304887fbc2038cc
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f16fabf86cebc41f8d057f5bfab2e0d776d73395
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490364"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709439"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Informacje na temat użycia rezerwacji platformy Azure dla indywidualnej subskrypcji z płatnością zgodnie z rzeczywistym użyciem
 
@@ -104,4 +104,4 @@ Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następ
 - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
 - [Omówienie stosowania rabatu na rezerwacje](billing-understand-vm-reservation-charges.md)
 - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)
-- [Koszty oprogramowania systemu Windows nieobjęte usługą Azure Reservations](billing-reserved-instance-windows-software-costs.md)
+- [Windows software costs not included with Reservations (Koszty oprogramowania systemu Windows nieuwzględniane w przypadku rezerwacji)](billing-reserved-instance-windows-software-costs.md)

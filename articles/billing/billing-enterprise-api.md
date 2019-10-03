@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 04/25/2017
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: f706ad86493981d5b38248ec209a7c8b936f6817
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f5d549006961f3108bf7155610dfb3a9ea78422a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68443210"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719774"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Przegląd interfejsów API raportowania dla klientów korporacyjnych
 Interfejsy API raportowania umożliwiają klientom korporacyjnym platformy Azure programowe ściąganie danych użycia i rozliczeń do preferowanych narzędzi do analizy danych. Klienci korporacyjni podpisali umowę [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) na platformie Azure, na podstawie której mają wynegocjowane zobowiązania pieniężne i dostęp do niestandardowych cen zasobów platformy Azure.

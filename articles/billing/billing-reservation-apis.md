@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 36bc403c4000e58541f22c2cb44f77a28e81cb72
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 50de654fb9222951a7380a322160496421006e7a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68779906"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719682"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure
 
@@ -116,5 +116,5 @@ Aby programowo zmienić zakres, użyj interfejsu API [Rezerwacja — aktualizacj
 - [Understand how other reservation discounts are applied (Informacje na temat sposobu stosowania innych rabatów przy rezerwacji)](billing-understand-reservation-charges.md)
 - [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](billing-understand-reserved-instance-usage.md)
 - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)
-- [Windows software costs not included with reservations (Koszty oprogramowania systemu Windows nieuwzględniane w przypadku wystąpień zarezerwowanych)](billing-reserved-instance-windows-software-costs.md)
-- [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program (Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim)](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Koszty oprogramowania systemu Windows nieuwzględniane w przypadku wystąpień zarezerwowanych](billing-reserved-instance-windows-software-costs.md)
+- [Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim](https://docs.microsoft.com/partner-center/azure-reservations)
