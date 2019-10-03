@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/30/2019
 ms.author: diberry
-ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: bad581fbc53292b5a7c25157ef839e07f33e131e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962522"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827881"
 ---
 # <a name="personalizer-settings"></a>Ustawienia personalizacji
 
@@ -25,13 +25,13 @@ Konfiguracja usługi zawiera informacje o tym, jak usługa traktuje korzyści, j
 
 Utwórz zasób personalizacji dla każdej pętli opinii. 
 
-1. Zaloguj się w [portalu Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Poprzedni link prowadzi do strony **Tworzenie** dla usługi personalizacji. 
+1. Zaloguj się do [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Poprzedni link prowadzi do strony **Tworzenie** dla usługi personalizacji. 
 1. Wprowadź nazwę usługi, wybierz subskrypcję, lokalizację, warstwę cenową i grupę zasobów.
 1. Wybierz potwierdzenie i wybierz pozycję **Utwórz**.
 
 ## <a name="configure-service-settings-in-the-azure-portal"></a>Skonfiguruj ustawienia usługi w Azure Portal
 
-1. Zaloguj się w witrynie [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
+1. Zaloguj się do [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
 1. Znajdź zasób personalizowania. 
 1. W sekcji **Zarządzanie zasobami** wybierz pozycję **Ustawienia**.
 
@@ -45,7 +45,7 @@ Skonfiguruj ustawienia usługi dla używanej przez pętlę opinii. Zmiany nastę
 
 |Ustawienie|Cel|
 |--|--|
-|Nagradzany czas oczekiwania|Ustawia długość czasu, przez który program Personalizuj będzie zbierać wartości nagrody dla wywołania rangi, rozpoczynając od momentu wywołania rangi. Ta wartość jest ustawiana przez pytanie: "Jak długo Personalizacja ma czekać na nagrody?" Wszystkie nagrody przychodzące po tym oknie będą rejestrowane, ale nie są używane do uczenia się.|
+|Nagradzany czas oczekiwania|Ustawia długość czasu, przez który program Personalizuj będzie zbierać wartości nagrody dla wywołania rangi, rozpoczynając od momentu wywołania rangi. Ta wartość jest ustawiana przez pytanie: "jak długo program Personalizuj powinien czekać na nadawanie nagrody?" Wszystkie nagrody przychodzące po tym oknie będą rejestrowane, ale nie są używane do uczenia się.|
 |Wynagrodzenie domyślne|Jeśli Personalizacja nie otrzymuje żadnego nadawania w czasie oczekiwania w przedziale czasowym, skojarzonym z wywołaniem rangi, Personalizowanie przypisze domyślne wynagrodzenie. Domyślnie, a w większości scenariuszy wartość domyślna to zero.|
 |Agregacja nagrody|Jeśli odebrane zostanie wiele nagrody dla tego samego wywołania interfejsu API rangi, używana jest ta metoda agregacji: **sum** lub **Najwcześniejsza**. Najwcześniej wybierany jest najwcześniejszy wynik otrzymany i odrzuca resztę. Jest to przydatne, jeśli chcesz uzyskać unikatowe wynagrodzenie między możliwymi duplikatami wywołań. |
 
@@ -87,6 +87,21 @@ Z sekcji Zarządzanie zasobami dla **modelu i zasad**przejrzyj temat Tworzenie m
 
 Z sekcji Zarządzanie zasobami dotyczącymi **modelu i zasad**należy zaimportować nowe zasady uczenia lub wyeksportować bieżące zasady nauki.
 Możesz pobrać pliki zasad uczenia z poprzednich eksportów lub pobrać zoptymalizowane zasady wykryte podczas oceny w trybie offline. Ręczne wprowadzanie zmian w tych plikach będzie miało wpływ na wydajność uczenia maszynowego i dokładność ocen w trybie offline, a firma Microsoft nie może zagwarantowania dokładności uczenia maszynowego i ocen ani wyjątków usług wynikających z ręcznej edycji zasad.
+
+## <a name="clear-data-for-your-learning-loop"></a>Wyczyść dane dla swojej pętli szkoleniowej
+
+1. W Azure Portal dla zasobu personalizacji na stronie **model i zasady** wybierz pozycję **Wyczyść dane**.
+1. Aby wyczyścić wszystkie dane i zresetować pętlę uczenia do oryginalnego stanu, zaznacz wszystkie 3 pola wyboru.
+
+    ![W Azure Portal Wyczyść dane z zasobów personalizacji.](./media/settings/clear-data-from-personalizer-resource.png)
+
+    |Ustawienie|Cel|
+    |--|--|
+    |Zarejestrowane dane personalizacji i nagrody.|Te dane rejestrowania są używane w obliczeniach w trybie offline. Wyczyść dane, jeśli resetuje się zasób.|
+    |Zresetuj model personalizowania.|Ten model zmienia się w każdym przeszkoleniu. Ta częstotliwość uczenia jest określona w polu **częstotliwość przekazywania modeli** na stronie **Ustawienia** . |
+    |Ustaw domyślne zasady uczenia.|Jeśli zasady uczenia zostały zmienione w ramach oceny w trybie offline, spowoduje to przywrócenie oryginalnych zasad nauki.|
+
+1. Wybierz pozycję **Wyczyść wybrane dane** , aby rozpocząć proces czyszczenia. Stan jest raportowany w powiadomieniach platformy Azure w prawym górnym rogu. 
 
 ## <a name="next-steps"></a>Następne kroki
 

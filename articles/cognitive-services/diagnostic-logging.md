@@ -1,5 +1,5 @@
 ---
-title: Rejestrowanie diagnostyczne
+title: Rejestrowanie informacji diagnostycznych
 titleSuffix: Azure Cognitive Services
 description: Ten przewodnik zawiera instrukcje krok po kroku dotyczące włączania rejestrowania diagnostycznego dla usługi poznawczej platformy Azure. Te dzienniki zapewniają rozbudowane, częste dane dotyczące operacji zasobu, które są używane do identyfikacji i debugowania problemu.
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: cd380b4e2a7c05f0beedc2ab102b268aa4068f66
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516368"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827894"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Włączanie rejestrowania diagnostycznego dla usługi Azure Cognitive Services
 
@@ -35,15 +35,15 @@ Aby włączyć rejestrowanie diagnostyczne, musisz przechowywać dane dziennika.
 Zacznijmy od włączenia rejestrowania diagnostycznego przy użyciu Azure Portal.
 
 > [!NOTE]
-> Aby włączyć tę funkcję przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure, Skorzystaj z instrukcji dostarczonych w temacie [zbieranie i korzystanie z danych dzienników z zasobów platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings).
+> Aby włączyć tę funkcję przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure, Skorzystaj z instrukcji dostarczonych w temacie [zbieranie i korzystanie z danych dzienników z zasobów platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
 1. Przejdź do Azure Portal. Następnie odszukaj i wybierz zasób Cognitive Services. Na przykład Twoja subskrypcja wyszukiwanie w sieci Web Bing.   
 2. Następnie w menu nawigacji po lewej stronie Znajdź pozycję **monitorowanie** i wybierz pozycję **Ustawienia diagnostyczne**. Ten ekran zawiera wszystkie wcześniej utworzone ustawienia diagnostyczne dla tego zasobu.
 3. Jeśli wcześniej utworzono zasób, którego chcesz użyć, możesz wybrać go teraz. W przeciwnym razie wybierz pozycję **+ Dodaj ustawienie diagnostyczne**.
 4. Wprowadź nazwę tego ustawienia. Następnie wybierz pozycję **Archiwizuj na koncie magazynu** i **Wyślij do usługi log Analytics**.
 5. Po wyświetleniu monitu o skonfigurowanie wybierz konto magazynu i obszar roboczy pakietu OMS, który ma być używany do przechowywania dzienników diagnostycznych. **Uwaga**: Jeśli nie masz konta magazynu lub obszaru roboczego OMS, postępuj zgodnie z monitami, aby go utworzyć.
-6. Wybierz kolejno pozycje Inspekcja, **RequestResponse**i **AllMetrics**. Następnie ustaw okres przechowywania danych dzienników diagnostycznych. Jeśli zasady przechowywania mają wartość zero, zdarzenia dla tej kategorii dzienników są przechowywane przez czas nieokreślony.
-7. Kliknij polecenie **Zapisz**.
+6. Wybierz kolejno pozycje **Inspekcja**, **RequestResponse**i **AllMetrics**. Następnie ustaw okres przechowywania danych dzienników diagnostycznych. Jeśli zasady przechowywania mają wartość zero, zdarzenia dla tej kategorii dzienników są przechowywane przez czas nieokreślony.
+7. Kliknij przycisk **Zapisz**.
 
 Zarejestrowanie i przeanalizowanie danych może potrwać do dwóch godzin. Nie martw się, jeśli nie widzisz niczego od razu.
 
@@ -53,12 +53,12 @@ Usługa Azure Storage to niezawodne rozwiązanie magazynu obiektów, które jest
 
 1. Na Azure Portal odszukaj zasób usługi Azure Storage, który został utworzony w ostatniej sekcji.
 2. W menu nawigacji po lewej stronie Znajdź pozycję **monitorowanie** i wybierz pozycję **metryki**.
-3. Użyj dostępnych list rozwijanych, aby skonfigurować zapytanie. Na potrzeby tego przykładu Ustaw zakres czasu na **ostatnie 30 dni** i metrykę na transakcję .
+3. Użyj dostępnych list rozwijanych, aby skonfigurować zapytanie. Na potrzeby tego przykładu Ustaw zakres czasu na **ostatnie 30 dni** i metrykę na **transakcję**.
 4. Po zakończeniu kwerendy zobaczysz wizualizację transakcji w ciągu ostatnich 30 dni. Aby wyeksportować te dane, użyj przycisku **Eksportuj do programu Excel** znajdującego się w górnej części strony.
 
 Dowiedz się więcej na temat tego, co możesz zrobić z danymi diagnostycznymi w [usłudze Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
 
-## <a name="view-logs-in-log-analytics"></a>Wyświetlanie dzienników w usłudze Log Analytics
+## <a name="view-logs-in-log-analytics"></a>Wyświetlanie dzienników w Log Analytics
 
 Postępuj zgodnie z tymi instrukcjami, aby poznać dane usługi log Analytics dla zasobu.
 
@@ -111,11 +111,11 @@ by bin(TimeGenerated, 10s), OperationName
 | render areachart kind=unstacked
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się, jak włączyć rejestrowanie, a także kategorie metryk i dzienników, które są obsługiwane przez różne usługi platformy Azure, zapoznaj się z [omówieniem metryk](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) w Microsoft Azure i [Omówienie artykułów dotyczących dzienników diagnostycznych platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) .
-* Przeczytaj następujące artykuły, aby dowiedzieć się więcej o usłudze event hubs:
-  * [Co to jest usługa Azure Event Hubs?](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs)
-  * [Rozpoczynanie pracy z usługą Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-csharp-ephcs-getstarted)
-* Odczyt [pobrać metryk i dzienników diagnostycznych z usługi Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#download-blobs).
+* Przeczytaj te artykuły, aby dowiedzieć się więcej o centrach zdarzeń:
+  * [Co to jest platforma Azure Event Hubs?](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs)
+  * [Wprowadzenie do Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-csharp-ephcs-getstarted)
+* Przeczytaj artykuł [pobieranie metryk i dzienników diagnostycznych z usługi Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#download-blobs).
 * Przeczytaj [Opis wyszukiwania w dzienniku Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-new).
