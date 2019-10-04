@@ -1,6 +1,6 @@
 ---
 title: Pomiń usuwanie użytkowników spoza zakresu | Microsoft Docs
-description: Dowiedz się, jak zastąpić domyślne zachowanie usuwania użytkowników spoza zakresu.
+description: Dowiedz się, jak zastąpić domyślne zachowanie anulowania aprowizacji użytkowników poza zakresem.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2019
+ms.date: 10/03/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a753d8cce3f3b610abab2f78d54d76a05d8bc5cb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70816025"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958628"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Pomiń usuwanie kont użytkowników, które wykraczają poza zakres
 
-Domyślnie aparat aprowizacji usługi Azure AD usuwa lub wyłącza użytkowników, którzy wykraczają poza zakres. Jednak w przypadku niektórych scenariuszy, takich jak Workday do użytkownika usługi AD, Inicjowanie obsługi ruchu przychodzącego może nie być oczekiwane i może zaistnieć potrzeba zastąpienia tego zachowania domyślnego.  
+Domyślnie aparat aprowizacji usługi Azure AD nie usuwa lub wyłącza użytkowników, którzy wykraczają poza zakres. Jednak w przypadku niektórych scenariuszy, takich jak Workday do użytkownika usługi AD, Inicjowanie obsługi ruchu przychodzącego może nie być oczekiwane i może zaistnieć potrzeba zastąpienia tego zachowania domyślnego.  
 
 W tym przewodniku opisano, jak za pomocą interfejsu API Microsoft Graph i Eksploratora interfejsu API Microsoft Graph ustawić flagę ***SkipOutOfScopeDeletions*** , która steruje przetwarzaniem kont, które wykraczają poza zakres. 
 * Jeśli wartość ***SkipOutOfScopeDeletions*** jest równa 0 (FAŁSZ), konta, które wykraczają poza zakres, zostaną wyłączone w miejscu docelowym
@@ -32,14 +32,14 @@ W tym przewodniku opisano, jak za pomocą interfejsu API Microsoft Graph i Ekspl
 
 Ponieważ ta konfiguracja jest szeroko używana wraz z *produktem Workday do Active Directory aplikacji do aprowizacji użytkowników* , poniższe kroki obejmują zrzuty ekranu aplikacji Workday. Można go również używać z innymi aplikacjami aprowizacji.
 
-## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1: Pobierz App Service identyfikatora podmiotu zabezpieczeń (identyfikator obiektu)
+## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1. Pobieranie inicjowania obsługi App Service Identyfikator podmiotu zabezpieczeń (identyfikator obiektu)
 
 1. Uruchom [Azure Portal](https://portal.azure.com)i przejdź do sekcji właściwości aplikacji aprowizacji. Na przykład jeśli chcesz wyeksportować swój *dzień roboczy do usługi AD, mapowanie aplikacji do inicjowania obsługi administracyjnej użytkowników* , przejdź do sekcji Właściwości tej aplikacji. 
 1. W sekcji właściwości aplikacji aprowizacji skopiuj wartość identyfikatora GUID skojarzoną z polem *Identyfikator obiektu* . Ta wartość jest również nazywana **ServicePrincipalId** aplikacji i będzie używana w operacjach Eksploratora grafu.
 
    ![Identyfikator podmiotu zabezpieczeń App Service Workday](./media/export-import-provisioning-mappings/wd_export_01.png)
 
-## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Krok 2: Zaloguj się do Microsoft Graph Explorer
+## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Krok 2. Logowanie do Microsoft Graph Explorer
 
 1. Uruchom [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)
 1. Kliknij przycisk "Zaloguj się za pomocą firmy Microsoft" i zaloguj się przy użyciu poświadczeń administratora globalnego usługi Azure AD lub administratora aplikacji.
@@ -48,12 +48,12 @@ Ponieważ ta konfiguracja jest szeroko używana wraz z *produktem Workday do Act
 
 1. Po pomyślnym zalogowaniu zobaczysz szczegóły konta użytkownika w okienku po lewej stronie.
 
-## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>Krok 3: Pobierz istniejące poświadczenia aplikacji i szczegóły łączności
+## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>Krok 3. Uzyskiwanie istniejących poświadczeń aplikacji i szczegółów łączności
 
 W Eksploratorze Microsoft Graph Uruchom następujące polecenie GET Query zastępujące [servicePrincipalId] z **servicePrincipalId** wyodrębnionym z [kroku 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id).
 
 ```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs
+   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
    ![Pobierz zapytanie dotyczące zadania](./media/skip-out-of-scope-deletions/skip-03.png)
@@ -71,7 +71,7 @@ Oto blok JSON, który ma zostać dodany do mapowania.
         }
 ```
 
-## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Krok 4: Aktualizowanie punktu końcowego tajemnicy przy użyciu flagi SkipOutOfScopeDeletions
+## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Krok 4. aktualizowanie punktu końcowego tajemnicy przy użyciu flagi SkipOutOfScopeDeletions
 
 W Eksploratorze grafu uruchom poniższe polecenie, aby zaktualizować punkt końcowy Secret przy użyciu flagi ***SkipOutOfScopeDeletions*** . 
 
@@ -90,7 +90,7 @@ Dane wyjściowe powinny zostać pobrane jako "powodzenie — kod stanu 204".
 
    ![Umieść odpowiedź](./media/skip-out-of-scope-deletions/skip-06.png)
 
-## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>Krok 5. Sprawdź, czy użytkownicy spoza zakresu nie są wyłączani
+## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>Krok 5. sprawdzenie, czy użytkownicy spoza zakresu nie są wyłączani
 
 Możesz przetestować tę flagę w oczekiwany sposób, aktualizując reguły określania zakresu, aby pominąć określonego użytkownika. W poniższym przykładzie wykluczamy pracownika z IDENTYFIKATORem 21173 (kto wcześniej miał zakres) przez dodanie nowej reguły określania zakresu: 
 

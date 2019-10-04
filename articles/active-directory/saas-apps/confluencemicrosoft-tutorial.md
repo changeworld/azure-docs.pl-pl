@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Confluence SAML SSO przez firmę Microsoft | Microsoft Docs'
+title: 'Samouczek Azure Active Directory: integracja logowania jednokrotnego (SSO) z usługą Confluence SAML SSO przez firmę Microsoft | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a aplikacją Confluence SAML SSO by Microsoft.
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1384a8c9cfc4da9e8757c26bdb3e92defdb73708
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d54580d395b17d80742ed95aefa479f4bc104484
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743647"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960078"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Confluence SAML SSO przez firmę Microsoft
 
@@ -55,7 +55,7 @@ Do skonfigurowania integracji usługi Azure AD z aplikacją Confluence SAML SSO 
 
 Aby rozpocząć, potrzebne są następujące elementy:
 
-* Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+* Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 * Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
 * Confluence z logowaniem jednokrotnym SAML za pomocą subskrypcji usługi logowania jednokrotnego (SSO) firmy Microsoft.
 
@@ -63,7 +63,7 @@ Aby rozpocząć, potrzebne są następujące elementy:
 
 Aktualnie obsługiwane są następujące wersje aplikacji Confluence:
 
-- Confluence: 5.0 do 5.10
+- Confluence: 5,0 do 5,10
 - Confluence: 6.0.1
 - Confluence: 6.1.1
 - Confluence: 6.2.1
@@ -75,9 +75,13 @@ Aktualnie obsługiwane są następujące wersje aplikacji Confluence:
 - Confluence: 6.8.1
 - Confluence: 6.9.0
 - Confluence: 6.10.0
+- Confluence: 6.10.3
 - Confluence: 6.11.0
 - Confluence: 6.12.0
+- Confluence: 6.13.5
 - Confluence: 6.15.3
+- Confluence: 6.15.4
+- Confluence: 6.15.8
 
 > [!NOTE]
 > Należy pamiętać, że nasza wtyczka Confluence działa również na Ubuntu w wersji 16,04
@@ -128,24 +132,24 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<domain:port>/`
 
-    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<domain:port>/plugins/servlet/saml/auth`
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Port jest opcjonalny, jeśli adres URL zawiera nazwę. Te wartości można uzyskać podczas konfigurowania wtyczki Confluence, co jest objaśnione w dalszej części tego samouczka.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** kliknij przycisk Kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
+    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij przycisk **Utwórz**.
 
@@ -157,7 +161,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście aplikacji wybierz pozycję **Confluence SAML SSO by Microsoft**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -196,11 +200,11 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 1. Po zainstalowaniu wtyczki jest ona wyświetlana w sekcji dodatków **Zainstalowane przez użytkownika** w ramach sekcji **Zarządzanie dodatkami**. Kliknij pozycję **Configure** (Konfiguruj), aby skonfigurować nową wtyczkę.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/confluencemicrosoft-tutorial/addon13.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. Wykonaj następujące kroki na stronie konfiguracji:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/confluencemicrosoft-tutorial/addon53.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Upewnij się, że tylko jeden certyfikat jest zamapowany do aplikacji, aby zapobiec błędom podczas rozpoznawania metadanych. Jeśli dostępnych jest wiele certyfikatów, administrator otrzyma błąd podczas rozpoznawania metadanych.
@@ -210,6 +214,8 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
     1. Skopiuj wartości **identyfikatora, adresu URL odpowiedzi i adresu URL logowania**, a następnie wklej je odpowiednio w polach tekstowych **Identyfikator, Adres URL odpowiedzi i Adres URL logowania** w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
     1. W polu **Nazwa przycisku logowania** wpisz nazwę przycisku, która według Twojej organizacji ma być wyświetlana użytkownikom na ekranie logowania.
+    
+    1. W polu **Opis przycisku Zaloguj** wpisz opis przycisku, który organizacja chce, aby użytkownicy widzieli na ekranie logowania.
 
     1. W polu **Lokalizacje identyfikatora użytkownika SAML** wybierz opcję **Identyfikator użytkownika znajduje się w elemencie NameIdentifier instrukcji Subject** lub **Identyfikator użytkownika znajduje się w elemencie Attribute**.  Ten identyfikator musi być IDENTYFIKATORem użytkownika Confluence. Jeśli identyfikator użytkownika nie jest zgodny, system nie zezwoli użytkownikom na logowanie się. 
 
@@ -247,7 +253,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się na serwerze lokaln
 
     ![Dodawanie pracownika](./media/confluencemicrosoft-tutorial/user1.png)
 
-1. W sekcji Users (Użytkownicy) kliknij kartę **Add users** (Dodawanie użytkowników). Na stronie **Add a User** (Dodawanie użytkownika) okna dialogowego wykonaj następujące kroki:
+1. W obszarze Użytkownicy kliknij przycisk **Dodaj użytkowników** kartę. Na stronie **Dodawanie użytkownika** wykonaj następujące czynności:
 
     ![Dodawanie pracownika](./media/confluencemicrosoft-tutorial/user2.png)
 
@@ -255,21 +261,21 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się na serwerze lokaln
 
     b. W polu tekstowym **pełna nazwa** wpisz pełną nazwę użytkownika, na przykład B. Simon.
 
-    c. W polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail użytkownika, np. B.Simon@contoso.com.
+    d. W polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail użytkownika, np. B.Simon@contoso.com.
 
     d. W polu tekstowym **hasło** wpisz hasło dla B. Simon.
 
     e. Kliknij pozycję **Confirm Password** (Potwierdź hasło), a następnie ponownie wprowadź hasło.
 
-    f. Kliknij przycisk **Dodaj** przycisku.
+    f. Kliknij przycisk **Add** (Dodaj).
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Confluence SAML SSO by Microsoft na panelu dostępu powinno nastąpić automatyczne zalogowanie do programu Confluence SAML SSO by Microsoft, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

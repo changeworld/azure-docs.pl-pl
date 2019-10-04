@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: d74d1c33816b3c028a26335af4c6d5b23b7a2046
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844689"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958487"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 
@@ -28,9 +28,9 @@ Przykładowe projekty funkcji autonomicznych w języku Python znajdują się w s
 
 ## <a name="programming-model"></a>Model programowania
 
-Azure Functions oczekuje, że funkcja będzie metodą bezstanową w skrypcie języka Python, która przetwarza dane wejściowe i generuje dane wyjściowe. Domyślnie środowisko uruchomieniowe oczekuje metody, która ma być zaimplementowana jako metoda globalna `main()` wywołana `__init__.py` w pliku. Można również [określić alternatywny punkt wejścia](#alternate-entry-point).
+Azure Functions oczekuje, że funkcja będzie metodą bezstanową w skrypcie języka Python, która przetwarza dane wejściowe i generuje dane wyjściowe. Domyślnie środowisko uruchomieniowe oczekuje metody, która ma być zaimplementowana jako metoda globalna o nazwie `main()` w pliku `__init__.py`. Można również [określić alternatywny punkt wejścia](#alternate-entry-point).
 
-Dane z wyzwalaczy i powiązań są powiązane z funkcją za pośrednictwem atrybutów metod przy `name` użyciu właściwości zdefiniowanej w pliku *Function. JSON* . Na przykład, _Funkcja. JSON_ poniżej opisuje prostą funkcję wyzwalaną przez żądanie HTTP o nazwie `req`:
+Dane z wyzwalaczy i powiązań są powiązane z funkcją za pośrednictwem atrybutów metody przy użyciu właściwości `name` zdefiniowanej w pliku *Function. JSON* . Na przykład, _Funkcja. JSON_ poniżej opisuje prostą funkcję wyzwalaną przez żądanie HTTP o nazwie `req`:
 
 ```json
 {
@@ -50,7 +50,7 @@ Dane z wyzwalaczy i powiązań są powiązane z funkcją za pośrednictwem atryb
 }
 ```
 
-`__init__.py` Plik zawiera następujący kod funkcji:
+Plik `__init__.py` zawiera następujący kod funkcji:
 
 ```python
 def main(req):
@@ -73,7 +73,7 @@ Użyj adnotacji w języku Python zawartych w pakiecie [Azure. Functions. *](/pyt
 
 ## <a name="alternate-entry-point"></a>Alternatywny punkt wejścia
 
-Domyślne zachowanie funkcji można zmienić, opcjonalnie określając `scriptFile` właściwości i `entryPoint` w pliku *Function. JSON* . Na przykład _Funkcja Function. JSON_ poinformuje środowisko uruchomieniowe, aby używała `customentry()` metody w pliku _Main.py_ jako punktu wejścia dla funkcji platformy Azure.
+Domyślne zachowanie funkcji można zmienić, opcjonalnie określając `scriptFile` i `entryPoint` właściwości w pliku *Function. JSON* . Na przykład plik _Function. JSON_ poniżej nakazuje środowisko uruchomieniowe użycie metody `customentry()` w pliku _Main.py_ jako punktu wejścia dla funkcji platformy Azure.
 
 ```json
 {
@@ -123,7 +123,7 @@ Podczas wdrażania projektu funkcji w aplikacji funkcji na platformie Azure cał
 
 ## <a name="triggers-and-inputs"></a>Wyzwalacze i dane wejściowe
 
-Dane wejściowe są podzielone na dwie kategorie w Azure Functions: Wyzwól dane wejściowe i dodatkowe. Chociaż różnią się one w `function.json` pliku, użycie jest identyczne w kodzie języka Python.  Parametry połączenia lub wpisy tajne dla wyzwalacza i źródła danych wejściowych są `local.settings.json` mapowane na wartości w pliku podczas uruchamiania lokalnego oraz ustawienia aplikacji podczas uruchamiania na platformie Azure. 
+Dane wejściowe są podzielone na dwie kategorie w Azure Functions: Wyzwól dane wejściowe i dodatkowe. Chociaż różnią się one w pliku `function.json`, użycie jest identyczne w kodzie języka Python.  Parametry połączenia lub wpisy tajne dla wyzwalacza i źródła danych wejściowych są mapowane na wartości w pliku `local.settings.json` podczas uruchamiania lokalnego oraz ustawienia aplikacji podczas uruchamiania na platformie Azure. 
 
 Na przykład poniższy kod ilustruje różnicę między tymi dwoma:
 
@@ -173,16 +173,16 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Po wywołaniu funkcji żądanie HTTP jest przekazywane do tej funkcji jako `req`. Wpis zostanie pobrany z usługi Azure Blob Storage w oparciu o _Identyfikator_ w adresie URL trasy i udostępniony jako `obj` w treści funkcji.  W tym miejscu określone konto magazynu to ciąg połączenia, w `AzureWebJobsStorage` którym znajduje się to samo konto magazynu używane przez aplikację funkcji.
+Gdy funkcja jest wywoływana, żądanie HTTP jest przesyłane do funkcji jako `req`. Wpis zostanie pobrany z usługi Azure Blob Storage w oparciu o _Identyfikator_ w adresie URL trasy i udostępniony jako `obj` w treści funkcji.  W tym miejscu określone konto magazynu to parametry połączenia Znalezione w programie, które jest tym samym kontem magazynu, które jest używane przez aplikację funkcji.
 
 
-## <a name="outputs"></a>outputs
+## <a name="outputs"></a>Dane wyjściowe
 
 Dane wyjściowe można wyrazić zarówno w wartości zwracanej, jak i wyjściowych. Jeśli istnieje tylko jedno wyjście, zalecamy użycie wartości zwracanej. W przypadku wielu wyjść należy użyć parametrów wyjściowych.
 
-Aby użyć wartości zwracanej funkcji jako wartości powiązania danych wyjściowych, `name` właściwość powiązania powinna być ustawiona na `$return` wartość w `function.json`.
+Aby użyć wartości zwracanej przez funkcję jako wartości powiązania danych wyjściowych, właściwość `name` powiązania powinna być ustawiona na `$return` w `function.json`.
 
-Aby utworzyć wiele wyjść, użyj `set()` metody dostarczonej [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) przez interfejs do przypisania wartości do powiązania. Na przykład następująca funkcja może wypchnąć komunikat do kolejki i zwrócić odpowiedź HTTP.
+Aby wygenerować wiele danych wyjściowych, należy użyć metody `set()` dostarczonej przez interfejs [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) do przypisania wartości do powiązania. Na przykład następująca funkcja może wypchnąć komunikat do kolejki i zwrócić odpowiedź HTTP.
 
 ```json
 {
@@ -224,7 +224,7 @@ def main(req: func.HttpRequest,
 
 ## <a name="logging"></a>Rejestrowanie
 
-Dostęp do rejestratora środowiska uruchomieniowego Azure Functions jest dostępny za [`logging`](https://docs.python.org/3/library/logging.html#module-logging) pośrednictwem głównego programu obsługi w aplikacji funkcji. Ten rejestrator jest powiązany z Application Insights i pozwala na Flagowanie ostrzeżeń i błędów napotkanych podczas wykonywania funkcji.
+Dostęp do rejestratora środowiska uruchomieniowego Azure Functions jest dostępny za pośrednictwem głównego programu obsługi [`logging`](https://docs.python.org/3/library/logging.html#module-logging) w aplikacji funkcji. Ten rejestrator jest powiązany z Application Insights i pozwala na Flagowanie ostrzeżeń i błędów napotkanych podczas wykonywania funkcji.
 
 Poniższy przykład rejestruje komunikat informacyjny, gdy funkcja jest wywoływana za pośrednictwem wyzwalacza HTTP.
 
@@ -250,7 +250,7 @@ Aby dowiedzieć się więcej o rejestrowaniu, zobacz [Monitor Azure Functions](f
 
 ## <a name="http-trigger-and-bindings"></a>Wyzwalacz i powiązania HTTP
 
-Wyzwalacz HTTP jest zdefiniowany w pliku Function. Jan. `name` Powiązanie musi być zgodne z nazwanym parametrem w funkcji. W poprzednich przykładach jest używana nazwa `req` powiązania. Ten parametr jest obiektem [HttpRequest] i zwracany jest obiekt [HttpResponse] .
+Wyzwalacz HTTP jest zdefiniowany w pliku Function. Jan. @No__t-0 powiązania musi być zgodna z nazwanym parametrem w funkcji. W poprzednich przykładach nazwa powiązania `req` jest używana. Ten parametr jest obiektem [HttpRequest] i zwracany jest obiekt [HttpResponse] .
 
 Z obiektu [HttpRequest] można uzyskać nagłówki żądań, parametry zapytania, parametry tras i treść wiadomości. 
 
@@ -278,37 +278,49 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-W tej funkcji wartość `name` parametru zapytania jest uzyskiwana `params` z parametru obiektu [HttpRequest] . Treść komunikatu zakodowanego w formacie JSON jest odczytywana `get_json` przy użyciu metody. 
+W tej funkcji wartość parametru zapytania `name` jest uzyskiwana z parametru `params` obiektu [HttpRequest] . Treść komunikatu zakodowanego w formacie JSON jest odczytywana przy użyciu metody `get_json`. 
 
 Analogicznie, można ustawić `status_code` i `headers` dla komunikatu odpowiedzi w zwracanym obiekcie [HttpResponse] .
-                                                              
-## <a name="async"></a>Asynchroniczne
 
-Zalecamy pisanie funkcji platformy Azure jako procedury asynchronicznej przy użyciu `async def` instrukcji.
+## <a name="concurrency"></a>Współbieżność
+
+Domyślnie środowisko uruchomieniowe języka Python może przetwarzać tylko jedno wywołanie funkcji w danym momencie. Ten poziom współbieżności może być niewystarczający w przypadku co najmniej jednego z następujących warunków:
+
++ Próbujesz obsłużyć wiele wywołań w tym samym czasie.
++ Przetwarzasz dużą liczbę zdarzeń we/wy.
++ Twoja aplikacja jest powiązana ze we/wy.
+
+W takich sytuacjach można poprawić wydajność, uruchamiając asynchronicznie i używając wielu procesów roboczych języka.  
+
+### <a name="async"></a>Asynchroniczne
+
+Zalecamy użycie instrukcji `async def`, aby funkcja była uruchamiana jako procedura asynchroniczna.
 
 ```python
-# Will be run with asyncio directly
-
+# Runs with asyncio directly
 
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Jeśli funkcja Main () jest synchroniczna (brak kwalifikatora), automatycznie uruchamiamy funkcję w `asyncio` puli wątków.
+Gdy funkcja `main()` jest synchroniczna (bez kwalifikatora `async`), funkcja jest automatycznie uruchamiana w puli wątków `asyncio`.
 
 ```python
-# Would be run in an asyncio thread-pool
-
+# Runs in an asyncio thread-pool
 
 def main():
     some_blocking_socket_io()
 ```
 
+### <a name="use-multiple-language-worker-processes"></a>Korzystanie z wielu procesów roboczych języka
+
+Domyślnie każde wystąpienie hosta funkcji ma proces roboczy o pojedynczym języku. Jednak obsługa wielu procesów roboczych języka dla każdego wystąpienia hosta. Wywołania funkcji mogą być następnie dystrybuowane równomiernie między tymi procesami roboczymi. Aby zmienić tę wartość, użyj ustawienia aplikacji [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . 
+
 ## <a name="context"></a>Kontekst
 
-Aby uzyskać kontekst wywołania funkcji podczas wykonywania, należy uwzględnić [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) argument w jego podpisie. 
+Aby uzyskać kontekst wywołania funkcji podczas wykonywania, należy uwzględnić w podpisie argument [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) . 
 
-Przykład:
+Na przykład:
 
 ```python
 import azure.functions
@@ -348,7 +360,7 @@ def main(req):
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 
-W funkcjach, [Ustawienia aplikacji](functions-app-settings.md), takie jak parametry połączenia usługi, są ujawniane jako zmienne środowiskowe podczas wykonywania. Możesz uzyskać dostęp do tych ustawień, `import os` deklarując, a następnie `setting = os.environ["setting-name"]`używając,.
+W funkcjach, [Ustawienia aplikacji](functions-app-settings.md), takie jak parametry połączenia usługi, są ujawniane jako zmienne środowiskowe podczas wykonywania. Możesz uzyskać dostęp do tych ustawień, deklarując `import os`, a następnie używając `setting = os.environ["setting-name"]`.
 
 Poniższy przykład pobiera [ustawienie aplikacji](functions-how-to-use-azure-function-app-settings.md#settings)z kluczem o nazwie `myAppSetting`:
 
@@ -370,9 +382,9 @@ W przypadku programowania lokalnego ustawienia aplikacji są [przechowywane w pl
 
 Obecnie Azure Functions obsługuje tylko język Python 3.6. x (oficjalna dystrybucja CPython).
 
-Podczas programowania lokalnego przy użyciu Azure Functions Core Tools lub Visual Studio Code Dodaj nazwy i wersje wymaganych pakietów do `requirements.txt` pliku i zainstaluj je za pomocą polecenia. `pip`
+Podczas programowania lokalnego przy użyciu Azure Functions Core Tools lub Visual Studio Code Dodaj nazwy i wersje wymaganych pakietów do pliku `requirements.txt` i zainstaluj je przy użyciu `pip`.
 
-Na przykład można użyć następującego pliku wymagań i polecenia PIP, aby zainstalować `requests` pakiet z PyPI.
+Na przykład można użyć poniższego pliku wymagań i polecenia PIP, aby zainstalować pakiet `requests` z PyPI.
 
 ```txt
 requests==2.19.1
@@ -401,7 +413,7 @@ There was an error restoring dependencies.ERROR: cannot install <package name - 
 The terminal process terminated with exit code: 1
 ```
 
-Aby utworzyć lokalnie i skonfigurować wymagane pliki binarne, [Zainstaluj platformę Docker](https://docs.docker.com/install/) na komputerze lokalnym i uruchom następujące polecenie w celu opublikowania przy użyciu [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Pamiętaj, aby `<app name>` zamienić na nazwę aplikacji funkcji na platformie Azure. 
+Aby utworzyć lokalnie i skonfigurować wymagane pliki binarne, [Zainstaluj platformę Docker](https://docs.docker.com/install/) na komputerze lokalnym i uruchom następujące polecenie w celu opublikowania przy użyciu [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Pamiętaj, aby zastąpić `<app name>` nazwą swojej aplikacji funkcji na platformie Azure. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps
@@ -413,7 +425,7 @@ Aby skompilować zależności i publikować przy użyciu systemu ciągłego dost
 
 ## <a name="unit-testing"></a>Testowanie jednostkowe
 
-Funkcje w języku Python można testować podobnie jak w przypadku innych kodów języka Python przy użyciu standardowych platform testowania. W przypadku większości powiązań można utworzyć obiekt wejściowy imitacji, tworząc wystąpienie odpowiedniej klasy z `azure.functions` pakietu. Ponieważ pakiet nie jest natychmiast dostępny, należy go zainstalować `requirements.txt` za pośrednictwem pliku zgodnie z opisem w powyższej sekcji dotyczącej [wersji i zarządzania pakietami języka Python](#python-version-and-package-management) . [`azure.functions`](https://pypi.org/project/azure-functions/)
+Funkcje w języku Python można testować podobnie jak w przypadku innych kodów języka Python przy użyciu standardowych platform testowania. W przypadku większości powiązań można utworzyć obiekt wejściowy imitacji, tworząc wystąpienie odpowiedniej klasy z pakietu `azure.functions`. Ponieważ pakiet [`azure.functions`](https://pypi.org/project/azure-functions/) nie jest natychmiast dostępny, należy go zainstalować za pośrednictwem pliku `requirements.txt`, zgodnie z opisem w powyższej sekcji dotyczącej [wersji i zarządzania pakietami języka Python](#python-version-and-package-management) .
 
 Na przykład poniżej znajduje się przykładowy test funkcji wyzwalanej przez protokół HTTP:
 
@@ -535,9 +547,9 @@ Wszystkie znane problemy i żądania funkcji są śledzone za pomocą listy [pro
 
 ### <a name="cross-origin-resource-sharing"></a>Współużytkowanie zasobów między źródłami
 
-Azure Functions obsługuje udostępnianie zasobów między źródłami (CORS). Mechanizm CORS jest konfigurowany [w portalu](functions-how-to-use-azure-function-app-settings.md#cors) i za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/functionapp/cors). Lista źródeł dozwolonych CORS jest stosowana na poziomie aplikacji funkcji. Po włączeniu funkcji CORS odpowiedzi zawierają `Access-Control-Allow-Origin` nagłówek. Aby uzyskać więcej informacji, zobacz temat [Współużytkowanie zasobów między źródłami](functions-how-to-use-azure-function-app-settings.md#cors).
+Azure Functions obsługuje udostępnianie zasobów między źródłami (CORS). Mechanizm CORS jest konfigurowany [w portalu](functions-how-to-use-azure-function-app-settings.md#cors) i za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/functionapp/cors). Lista źródeł dozwolonych CORS jest stosowana na poziomie aplikacji funkcji. Po włączeniu funkcji CORS odpowiedzi zawierają nagłówek `Access-Control-Allow-Origin`. Aby uzyskać więcej informacji, zobacz temat [Współużytkowanie zasobów między źródłami](functions-how-to-use-azure-function-app-settings.md#cors).
 
-Lista dozwolonych źródeł [nie jest obecnie obsługiwana](https://github.com/Azure/azure-functions-python-worker/issues/444) dla aplikacji funkcji języka Python. Ze względu na to ograniczenie należy wyraźnie ustawić `Access-Control-Allow-Origin` nagłówek w funkcjach http, jak pokazano w następującym przykładzie:
+Lista dozwolonych źródeł [nie jest obecnie obsługiwana](https://github.com/Azure/azure-functions-python-worker/issues/444) dla aplikacji funkcji języka Python. Ze względu na to ograniczenie należy jawnie ustawić nagłówek `Access-Control-Allow-Origin` w funkcjach HTTP, jak pokazano w następującym przykładzie:
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -568,7 +580,7 @@ Ta metoda jest używana przez przeglądarkę Chrome do negocjowania listy dozwol
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji, zobacz następujące zasoby:
+Więcej informacji zawierają następujące zasoby:
 
 * [Dokumentacja interfejsu API pakietu Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)

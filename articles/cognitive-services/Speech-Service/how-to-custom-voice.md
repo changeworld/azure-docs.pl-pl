@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9bb654f37ecc4fda46171e859adac0236b51e4b2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881479"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959399"
 ---
-# <a name="get-started-with-custom-voice"></a>Wprowadzenie do usługi Custom Voice
+# <a name="get-started-with-custom-voice"></a>Wprowadzenie do niestandardowego głosu
 
 [Niestandardowy głos](https://aka.ms/customvoice) to zestaw narzędzi online, które umożliwiają tworzenie rozpoznawalnego, jednoczęściowego głosu dla marki. Wszystkie potrzebne do rozpoczęcia pracy to kilku plików audio i skojarzonych transkrypcji. Skorzystaj z poniższych linków, aby rozpocząć tworzenie niestandardowego środowiska zamiany tekstu na mowę.
 
@@ -55,10 +55,10 @@ Po utworzeniu konta platformy Azure i subskrypcji usługi Speech Services należ
 
 Zawartość, taka jak dane, modele, testy i punkty końcowe, są zorganizowane w **projekty** w portalu niestandardowym. Każdy projekt jest specyficzny dla kraju/języka i płci głosu, który chcesz utworzyć. Na przykład możesz utworzyć projekt dla żeńskiego głosu dla rozmowy telefonicznej botów, która używa języka angielskiego w Stany Zjednoczone (EN-US).
 
-Aby utworzyć swój pierwszy projekt, wybierz kartę **Zamiana tekstu na mowę/niestandardową** , a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu zobaczysz cztery karty: **Dane**, **szkolenia**, **testowanie**i **wdrażanie**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
+Aby utworzyć swój pierwszy projekt, wybierz kartę **Zamiana tekstu na mowę/niestandardową** , a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu zobaczysz cztery karty: **dane**, **szkolenia**, **testowanie**i **wdrażanie**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Przygotowywanie niestandardowych danych głosowych](how-to-custom-voice.md)
+- [Przygotowywanie niestandardowych danych głosowych](how-to-custom-voice-prepare-data.md)
 - [Tworzenie niestandardowego głosu](how-to-custom-voice-create-voice.md)
-- [Prowadzą Rejestruj przykłady głosu](record-custom-voice-samples.md)
+- [Przewodnik: zapisywanie przykładów głosu](record-custom-voice-samples.md)

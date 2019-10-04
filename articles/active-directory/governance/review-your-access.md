@@ -15,24 +15,18 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b48e035476e5381104b442f87dcac03ac11778
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: df8b03d513e2d78083031fbc9a3f6dbc1b7d15d9
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499676"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958564"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przejrzyj dostęp do swoich grup lub aplikacji w przeglądach dostępu usługi Azure AD
 
 Azure Active Directory (Azure AD) upraszczają, w jaki sposób przedsiębiorstwa zarządzają dostępem do grup lub aplikacji w usłudze Azure AD i innych usługach online firmy Microsoft przy użyciu funkcji o nazwie przeglądy dostępu usługi Azure AD.
 
 W tym artykule opisano sposób przeglądania własnego dostępu do grupy lub aplikacji.
-
-## <a name="prerequisites"></a>Wymagania wstępne
-
-- Usługa Azure AD — warstwa Premium P2
-
-Aby uzyskać więcej informacji, zobacz, [którzy użytkownicy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="open-the-access-review"></a>Otwórz przegląd dostępu
 
@@ -46,7 +40,7 @@ Pierwszym krokiem do przeprowadzenia przeglądu dostępu jest znalezienie i otwa
 
 Jeśli nie masz wiadomości e-mail, możesz znaleźć oczekujące przeglądy dostępu, wykonując następujące kroki.
 
-1. Zaloguj się do portalu aplikacji w witrynie [https://myapps.microsoft.com](https://myapps.microsoft.com).
+1. Zaloguj się do portalu aplikacji w [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
     ![Portal aplikacji z listą aplikacji, do których masz uprawnienia](./media/review-your-access/myapps-access-panel.png)
 
@@ -76,7 +70,7 @@ Po otwarciu przeglądu dostępu zobaczysz Twój dostęp.
 
     ![Zakończono przegląd dostępu z pytaniem, czy nadal potrzebujesz dostępu do grupy](./media/review-your-access/perform-access-review-submit.png)
 
-1. Kliknij przycisk **Submit** (Prześlij).
+1. Kliknij przycisk **Prześlij**.
 
     Twój wybór zostanie przesłany i wrócisz do portalu aplikacji.
 
@@ -85,6 +79,6 @@ Po otwarciu przeglądu dostępu zobaczysz Twój dostęp.
     > [!NOTE]
     > Jeśli użytkownik wykazał, że nie potrzebujesz już dostępu, nie zostanie natychmiast usunięty. Użytkownik jest usuwany po zakończeniu przeglądu lub gdy administrator zatrzyma przegląd.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Ukończ przegląd dostępu do grup lub aplikacji](complete-access-review.md)

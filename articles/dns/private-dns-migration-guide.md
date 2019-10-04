@@ -1,51 +1,51 @@
 ---
-title: Migrowanie starszej wersji usługi Azure DNS Private Zones do nowego modelu zasobów
-description: Ten przewodnik zawiera instrukcje krok po kroku dotyczące sposobu przeprowadzenia migracji starszych prywatnych stref DNS do najnowszego modelu zasobów
+title: Migrowanie starszej Azure DNS Private Zones do nowego modelu zasobów
+description: Ten przewodnik zawiera instrukcje krok po kroku dotyczące migrowania starszych prywatnych stref DNS do najnowszego modelu zasobów
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: e7ebbf35cd572601f02a69930b58811686a92c86
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 870f8f43fb37f3f58fc19f2fd544e77b1a3a3967
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276097"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960555"
 ---
-# <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrowanie starszej wersji strefami prywatnymi usługi Azure DNS do nowego modelu zasobów
+# <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrowanie starszych stref prywatnych Azure DNS do nowego modelu zasobów
 
-Firma Microsoft dostarczane nowy model zasobu/interfejsu API w przypadku stref prywatnych w usłudze Azure DNS jako część wersji zapoznawczej odświeżania. Odświeżanie (wersja zapoznawcza) zawiera nowe funkcje i usuwa kilka ograniczeń i ograniczenia początkowej publicznej wersji zapoznawczej. Jednak te korzyści nie są dostępne w prywatnych stref DNS, które zostały utworzone przy użyciu starszej wersji interfejsu API. Aby uzyskać korzyści wynikające z nowej wersji, należy przeprowadzić migrację starszych zasobów strefy prywatnej DNS do nowego modelu zasobów. Proces migracji jest prosty i udostępniliśmy skrypt programu PowerShell, aby zautomatyzować ten proces. Ten przewodnik zawiera instrukcje krok po kroku migracji strefami prywatnymi usługi Azure DNS do nowego modelu zasobów.
+Bieżąca Azure DNS wersja stref prywatnych udostępnia nowe funkcje i usuwa kilka ograniczeń i ograniczeń początkowej publicznej wersji zapoznawczej. Te korzyści nie są jednak dostępne w prywatnych strefach DNS, które zostały utworzone przy użyciu interfejsu API w wersji zapoznawczej. Aby uzyskać korzyści wynikające z nowej wersji, należy przeprowadzić migrację starszych prywatnych zasobów strefy DNS do nowego modelu zasobów. Proces migracji jest prosty i podano skrypt programu PowerShell do automatyzowania tego procesu. Ten przewodnik zawiera instrukcje krok po kroku dotyczące migrowania stref prywatnych Azure DNS do nowego modelu zasobów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Upewnij się, że zainstalowano najnowszą wersję programu Azure PowerShell. Aby uzyskać więcej informacji na temat programu Azure PowerShell (Az) i jak je zainstalować, odwiedź stronę https://docs.microsoft.com/powershell/azure/new-azureps-module-az
+Upewnij się, że zainstalowano najnowszą wersję Azure PowerShell. Aby uzyskać więcej informacji na temat Azure PowerShell (az) i sposobu ich instalacji, odwiedź https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
-Upewnij się, zostało Az.PrivateDns modułu dla zainstalowany program Azure PowerShell. Aby zainstalować ten moduł, Otwórz okno programu PowerShell z podwyższonym poziomem uprawnień (w trybie administracyjnych), a następnie wprowadź następujące polecenie
+Upewnij się, że zainstalowano moduł PrivateDns dla Azure PowerShell. Aby zainstalować ten moduł, Otwórz okno programu PowerShell z podwyższonym poziomem uprawnień (tryb administracyjny) i wprowadź następujące polecenie
 
 ```powershell
 Install-Module -Name Az.PrivateDns -AllowPrerelease
 ```
 
 >[!IMPORTANT]
->Proces migracji jest w pełni zautomatyzowane i nie powinien powodować żadnych przestojów. Jednak jeśli używasz strefami prywatnymi usługi Azure DNS (wersja zapoznawcza) w środowisku produkcyjnym krytyczne powinien wykonaniu poniżej proces migracji przedziale czasu planowanej konserwacji. Upewnij się, że możesz nie należy modyfikować konfiguracji lub zestawy rekordów prywatnych stref DNS podczas, gdy używasz skryptu migracji.
+>Proces migracji jest w pełni zautomatyzowany i nie powinien powodować jakiegokolwiek przestoju. Jeśli jednak używasz stref prywatnych Azure DNS (wersja zapoznawcza) w krytycznym środowisku produkcyjnym, musisz wykonać następujący proces migracji w trakcie planowanego okna czasu konserwacji. Podczas uruchamiania skryptu migracji nie należy modyfikować konfiguracji ani zestawów rekordów w prywatnych strefach DNS.
 
-## <a name="installing-the-script"></a>Skrypt instalacji
+## <a name="installing-the-script"></a>Instalowanie skryptu
 
-Otwórz okno programu PowerShell z podwyższonym poziomem uprawnień (w trybie administracyjnych) i uruchom następujące polecenie
+Otwórz okno programu PowerShell z podwyższonym poziomem uprawnień (tryb administracyjny) i uruchom następujące polecenie
 
 ```powershell
 install-script PrivateDnsMigrationScript
 ```
 
-Wprowadź "A", po wyświetleniu monitu o skrypt instalacji
+Wprowadź "A" po wyświetleniu monitu o zainstalowanie skryptu
 
-![Skrypt instalacji](./media/private-dns-migration-guide/install-migration-script.png)
+![Instalowanie skryptu](./media/private-dns-migration-guide/install-migration-script.png)
 
-Można również ręcznie uzyskać najnowszą wersję skrypt PowerShell pod https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
+Możesz również ręcznie uzyskać najnowszą wersję skryptu programu PowerShell na https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
 
-## <a name="running-the-script"></a>Uruchomienie skryptu
+## <a name="running-the-script"></a>Uruchamianie skryptu
 
 Wykonaj następujące polecenie, aby uruchomić skrypt
 
@@ -53,67 +53,67 @@ Wykonaj następujące polecenie, aby uruchomić skrypt
 PrivateDnsMigrationScript.ps1
 ```
 
-![Uruchomienie skryptu](./media/private-dns-migration-guide/running-migration-script.png)
+![Uruchamianie skryptu](./media/private-dns-migration-guide/running-migration-script.png)
 
-### <a name="enter-the-subscription-id-and-sign-in-to-azure"></a>Wprowadź identyfikator subskrypcji i zaloguj się do platformy Azure
+### <a name="enter-the-subscription-id-and-sign-in-to-azure"></a>Wprowadź identyfikator subskrypcji i zaloguj się na platformie Azure
 
-Zostanie wyświetlony monit o podanie Identyfikatora subskrypcji, zawierający prywatnych stref DNS, które zamierzasz migrować. Zostanie wyświetlony monit logowania do konta platformy Azure. Ukończ logowania, czemu skrypt może uzyskiwać dostęp do zasobów prywatnych stref DNS w ramach subskrypcji.
+Zostanie wyświetlony monit o podanie identyfikatora subskrypcji zawierającego prywatne strefy DNS, które mają zostać zmigrowane. Zostanie wyświetlony monit o zalogowanie się do konta platformy Azure. Ukończ logowanie, aby skrypt mógł uzyskać dostęp do prywatnych zasobów strefy DNS w subskrypcji.
 
 ![Logowanie na platformie Azure](./media/private-dns-migration-guide/login-migration-script.png)
 
-### <a name="select-the-dns-zones-you-want-to-migrate"></a>Wybierz stref DNS, które mają zostać zmigrowane
+### <a name="select-the-dns-zones-you-want-to-migrate"></a>Wybierz strefy DNS, które chcesz zmigrować
 
-Skrypt za pomocą uzyskać listę wszystkich prywatnych stref DNS w ramach subskrypcji i wyświetlenie monitu o potwierdzenie te, które mają zostać zmigrowane. Wprowadź "A", aby przeprowadzić migrację wszystkich prywatnych stref DNS. Po wykonaniu tego kroku, skrypt utworzy nowy prywatnych stref DNS przy użyciu nowego modelu zasobów i skopiować dane do nowej strefy DSN. Ten krok nie ma wpływu na istniejących prywatnych stref DNS w mimo to.
+Skrypt z listą wszystkich prywatnych stref DNS w subskrypcji i monituje o potwierdzenie, które z nich mają zostać zmigrowane. Wprowadź wartość "A", aby zmigrować wszystkie prywatne strefy DNS. Po wykonaniu tego kroku skrypt utworzy nowe prywatne strefy DNS przy użyciu nowego modelu zasobów i skopiuje dane do nowej strefy DSN. Ten krok nie spowoduje zmiany istniejących prywatnych stref DNS mimo to.
 
-![Wybierz stref DNS](./media/private-dns-migration-guide/migratezone-migration-script.png)
+![Wybierz strefy DNS](./media/private-dns-migration-guide/migratezone-migration-script.png)
 
 ### <a name="switching-dns-resolution-to-the-new-dns-zones"></a>Przełączanie rozpoznawania nazw DNS do nowych stref DNS
 
-Po strefy i rekordy zostały skopiowane do nowego modelu zasobu, skrypt wyświetli monit Przełącz rozpoznawania nazw DNS do nowej strefy DNS. Ten krok usuwa skojarzenie między starszych prywatnych stref DNS i sieci wirtualnych. Kiedy odłączone od sieci wirtualnych jest strefa starszej wersji, nowych stref DNS utworzoną w kroku będzie automatycznie przejąć rozpoznawania nazw DNS dla tych sieci wirtualnych.
+Po skopiowaniu stref i rekordów do nowego modelu zasobów skrypt wyświetli monit o przełączenie rozpoznawania DNS do nowych stref DNS. Ten krok powoduje usunięcie skojarzenia między starszymi prywatnymi strefami DNS i sieciami wirtualnymi. Gdy Starsza strefa zostanie odłączona od sieci wirtualnych, nowe strefy DNS utworzone w powyższym kroku spowodują automatyczne przejęcie rozpoznawania nazw DNS dla tych sieci wirtualnych.
 
-Wybierz "A", aby przełączyć rozpoznawania nazw DNS dla wszystkich sieci wirtualnych.
+Wybierz pozycję "A", aby przełączyć rozpoznawanie nazw DNS dla wszystkich sieci wirtualnych.
 
 ![Przełączanie rozpoznawania nazw](./media/private-dns-migration-guide/switchresolution-migration-script.png)
 
-### <a name="verify-the-dns-resolution"></a>Sprawdź rozpoznawanie nazw DNS
+### <a name="verify-the-dns-resolution"></a>Weryfikowanie rozpoznawania nazw DNS
 
-Przed kontynuacją sprawdź, czy rozpoznawanie nazw DNS na stref DNS działa zgodnie z oczekiwaniami. Użytkownik może zalogować się do maszyn wirtualnych platformy azure i problem nslookup zapytania względem zmigrowanych strefy, aby sprawdzić, że rozpoznawanie nazw DNS działa.
+Przed kontynuowaniem upewnij się, że rozpoznawanie nazw DNS w strefach DNS działa zgodnie z oczekiwaniami. Możesz zalogować się do maszyn wirtualnych platformy Azure i wydać zapytanie nslookup dla zmigrowanych stref, aby sprawdzić, czy rozpoznawanie nazw DNS działa prawidłowo.
 
-![Sprawdzanie rozpoznawania nazw](./media/private-dns-migration-guide/verifyresolution-migration-script.png)
+![Weryfikuj rozpoznawanie nazw](./media/private-dns-migration-guide/verifyresolution-migration-script.png)
 
-Jeśli okaże się, że nie są rozpoznawania zapytań DNS, poczekaj kilka minut i ponów próbę wykonania zapytania. Jeśli zapytania DNS działają w oczekiwany sposób, wprowadź "Y", gdy skrypt monituje o usunięcie sieć wirtualną z prywatnej strefy DNS.
+Jeśli okaże się, że zapytania DNS nie są rozwiązywane, zaczekaj kilka minut i ponów próbę wykonania zapytań. Jeśli zapytania DNS działają zgodnie z oczekiwaniami, wprowadź wartość "Y", gdy skrypt monituje o usunięcie sieci wirtualnej z prywatnej strefy DNS.
 
-![Upewnij się, rozpoznawanie nazw](./media/private-dns-migration-guide/confirmresolution-migration-script.png)
+![Potwierdź rozpoznawanie nazw](./media/private-dns-migration-guide/confirmresolution-migration-script.png)
 
 >[!IMPORTANT]
->Jeśli z dowolnej przyczyny DNS rozwiązania dla migrowanych stref nie działa zgodnie z oczekiwaniami, wprowadź "n" w powyżej kroku i skrypt spowoduje przełączenie rozpoznawania nazw DNS do strefy starszej wersji. Utwórz bilet pomocy technicznej i możemy pomóc Ci przy migracji stref DNS.
+>Jeśli ze względu na to, że rozpoznawanie nazw DNS względem zmigrowanych stref nie działa zgodnie z oczekiwaniami, wprowadź "N" w powyższym kroku, a skrypt spowoduje przełączenie rozpoznawania DNS z powrotem do starszych stref. Utwórz bilet pomocy technicznej i będziemy mogli pomóc w migracji stref DNS.
 
 ## <a name="cleanup"></a>Czyszczenie
 
-Ten krok spowoduje usunięcie starszych stref DNS i powinny być wykonywane tylko wtedy, gdy masz już pewność, że rozpoznawanie nazw DNS działa zgodnie z oczekiwaniami. Zostanie wyświetlony monit usunąć każdy prywatnej strefy DNS. Po sprawdzeniu, czy rozpoznawanie nazw DNS dla tej strefy działa prawidłowo, wpisz "Y" w każdym wierszu.
+Ten krok spowoduje usunięcie starszych stref DNS i należy je wykonać dopiero po sprawdzeniu, że rozpoznawanie nazw DNS działa zgodnie z oczekiwaniami. Zostanie wyświetlony monit o usunięcie każdej prywatnej strefy DNS. Wprowadź "Y" w każdym monicie po sprawdzeniu, czy rozpoznawanie nazw DNS dla tych stref działa prawidłowo.
 
 ![Czyszczenie](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
-## <a name="update-your-automation"></a>Aktualizuj automatyzacji
+## <a name="update-your-automation"></a>Aktualizowanie usługi Automation
 
-Jeśli używasz usługi automation, takie jak szablony, skrypty programu PowerShell lub niestandardowy kod opracowany przy użyciu zestawu SDK, należy zaktualizować automatyzacji na potrzeby nowego modelu zasobów prywatnych stref DNS. Poniżej znajdują się linki do nowych prywatnych DNS interfejsu wiersza polecenia/PS/dokumentacji zestawu SDK.
-* [Usługa system DNS Azure prywatnych stref interfejsu API REST](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
-* [Strefami prywatnymi usługi Azure DNS interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
-* [Strefami prywatnymi usługi Azure DNS programu PowerShell](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
-* [Strefami prywatnymi usługi Azure DNS zestawu SDK](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+Jeśli używasz automatyzacji, w tym szablonów, skryptów programu PowerShell lub niestandardowego kodu opracowanego przy użyciu zestawu SDK, musisz zaktualizować automatyzację, aby używała nowego modelu zasobów dla prywatnych stref DNS. Poniżej znajdują się linki do nowej prywatnej infrastruktury interfejsu wiersza polecenia DNS/PS/SDK.
+* [Interfejs API REST stref prywatnych Azure DNS](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
+* [Interfejs wiersza polecenia Azure DNS strefy prywatnej](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Azure DNS stref prywatnych programu PowerShell](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Azure DNS zestawu SDK stref prywatnych](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
-## <a name="need-further-help"></a>Potrzebujesz więcej pomocy
+## <a name="need-further-help"></a>Potrzebna dodatkowa pomoc
 
-Utwórz bilet pomocy technicznej, jeśli możesz dodatkowo potrzebujesz pomocy podczas procesu migracji lub z powodu jakiegoś powyższych kroków wymienionych nie działają dla Ciebie. Dołącz plik transkrypcji wygenerowane przez skrypt programu PowerShell przy użyciu biletu pomocy technicznej.
+Utwórz bilet pomocy technicznej, jeśli potrzebujesz dalszej pomocy dotyczącej procesu migracji lub z dowolnego powodu powyższe wymienione kroki nie będą działały. Dołącz plik transkrypcji wygenerowany przez skrypt programu PowerShell do biletu pomocy technicznej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak utworzyć prywatną strefę w usłudze Azure DNS przy użyciu [programu Azure PowerShell](./private-dns-getstarted-powershell.md) lub [wiersza polecenia platformy Azure](./private-dns-getstarted-cli.md).
+* Dowiedz się, jak utworzyć strefę prywatną w Azure DNS przy użyciu [Azure PowerShell](./private-dns-getstarted-powershell.md) lub [interfejsu wiersza polecenia platformy Azure](./private-dns-getstarted-cli.md).
 
-* Przeczytaj o niektórych typowych [scenariusze prywatnej strefy](./private-dns-scenarios.md) , które można realizować ze strefami prywatnymi w usłudze Azure DNS.
+* Zapoznaj się z typowymi [scenariuszami stref prywatnych](./private-dns-scenarios.md) , które mogą być realizowane przy użyciu stref prywatnych w Azure DNS.
 
-* Typowe pytania i odpowiedzi na pytania dotyczące stref prywatnych w usłudze Azure DNS, w tym określone zachowanie można oczekiwać na niektóre rodzaje operacji, zobacz [— często zadawane pytania do prywatnej DNS](./dns-faq-private.md).
+* Często zadawane pytania i odpowiedzi dotyczące stref prywatnych w Azure DNS, w tym określonych zachowań, których można oczekiwać w przypadku niektórych rodzajów operacji, zapoznaj się z tematem [prywatna strefa DNS często zadawane pytania](./dns-faq-private.md).
 
-* Więcej informacji na temat stref i rekordów DNS, odwiedzając [DNS strefy i rekordy Przegląd](dns-zones-records.md).
+* Informacje o strefach i rekordach DNS zawiera temat [Omówienie stref i rekordów DNS](dns-zones-records.md).
 
 * Poznaj inne kluczowe [możliwości sieciowe](../networking/networking-overview.md) platformy Azure.

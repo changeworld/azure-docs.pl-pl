@@ -1,17 +1,17 @@
 ---
 title: Przegląd ciągłości działania z Azure Database for PostgreSQL — pojedynczy serwer
-description: Przegląd ciągłości działania z Azure Database for PostgreSQL.
+description: W tym artykule opisano ciągłość biznesową (przywracanie do punktu w czasie, awaria centrum danych, przywracanie geograficzne) podczas korzystania z Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: c346360c125d9316aed81ceeedbe265fd09465c1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 3623611bcd22486d90651c6e8b6880c6de1de0c5
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907500"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950095"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Przegląd ciągłości działania z Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -26,7 +26,7 @@ W poniższej tabeli porównano ERT i cel punktu odzyskiwania dla dostępnych fun
 | **Pozwala** | **Podstawowa** | **Ogólnego przeznaczenia** | **Optymalizacja pod kątem pamięci** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Przywracanie do punktu w czasie z kopii zapasowej | Dowolny punkt przywracania w okresie przechowywania | Dowolny punkt przywracania w okresie przechowywania | Dowolny punkt przywracania w okresie przechowywania |
-| Przywracanie geograficzne z kopii zapasowych replikowanych geograficznie | Nieobsługiwane | ERT < 12 h<br/>Cel punktu odzyskiwania < 1 h | ERT < 12 h<br/>Cel punktu odzyskiwania < 1 h |
+| Przywracanie geograficzne z kopii zapasowych replikowanych geograficznie | Brak obsługi | ERT < 12 h<br/>Cel punktu odzyskiwania < 1 h | ERT < 12 h<br/>Cel punktu odzyskiwania < 1 h |
 
 > [!IMPORTANT]
 > **Nie** można przywrócić usuniętych serwerów. Usunięcie serwera spowoduje również usunięcie wszystkich baz danych należących do serwera, których nie można odzyskać. Użyj [blokady zasobów platformy Azure](../azure-resource-manager/resource-group-lock-resources.md) , aby zapobiec przypadkowemu usunięciu serwera.

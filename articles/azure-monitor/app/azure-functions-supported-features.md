@@ -1,9 +1,9 @@
 ---
-title: Usługa Azure Application Insights — usługi Azure Functions obsługiwane funkcje | Dokumentacja firmy Microsoft
-description: Usługa Application Insights obsługiwane funkcje dotyczące usługi Azure Functions
+title: Obsługiwane funkcje platformy Azure Azure Functions Application Insights | Microsoft Docs
+description: Application Insights obsługiwane funkcje Azure Functions
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: ''
 ms.service: application-insights
 ms.workload: TBD
@@ -12,63 +12,63 @@ ms.topic: reference
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 0199d8f0c4a76a10fffcab7cf2819643d0ac2d68
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf39c8b5e204493380c095519e0ff25c3ce19f68
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075358"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959900"
 ---
-# <a name="application-insights-for-azure-functions-supported-features"></a>Usługa Application Insights dla usługi Azure Functions obsługiwane funkcje
+# <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights Azure Functions obsługiwanych funkcji
 
-Platforma Azure oferuje funkcje [wbudowana integracja](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) za pomocą usługi Application Insights, który jest dostępny za pośrednictwem interfejsu ILogger. Poniżej znajduje się lista aktualnie obsługiwanych funkcji. Przejrzyj przewodnik usługi Azure Functions dla [wprowadzenie](https://github.com/Azure/Azure-Functions/wiki/App-Insights).
+Azure Functions oferuje [wbudowaną integrację](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) z usługą Application Insights, która jest dostępna za pomocą interfejsu ILogger. Poniżej znajduje się lista obecnie obsługiwanych funkcji. Zapoznaj się z tematem "Przewodnik po [rozpoczęciu](https://github.com/Azure/Azure-Functions/wiki/App-Insights)Azure Functions".
 
 ## <a name="supported-features"></a>Obsługiwane funkcje
 
-| Azure Functions                       | Wersja 1                | W wersji 2 (Konferencja Ignite 2018 r.)  | 
+| Azure Functions                       | Wersjach                | V2 (zapłon 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Usługa Application Insights SDK platformy .NET**   | **2.5.0**       | **2.9.1**         |
+| **Zestaw SDK Application Insights .NET**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatyczne zbieranie**        |                 |                   |               
-| &bull; Żądania                     | Tak             | Tak               | 
-| &bull; Wyjątki                   | Tak             | Tak               | 
-| &bull; Liczniki wydajności         | Yes             | Yes               |
-| &bull; Zależności                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Tak               | 
-| &nbsp;&nbsp;&nbsp;&mdash; Centrum zdarzeń  |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Tak               | 
+| Żądania &bull;                     | Tak             | Tak               | 
+| Wyjątki &bull;                   | Tak             | Tak               | 
+| Liczniki wydajności &bull;         | Tak             | Tak               |
+| Zależności &bull;                   |                   |                   |               
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 HTTP      |                 | Tak               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 ServiceBus|                 | Tak               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 EventHub  |                 | Tak               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 SQL       |                 | Tak               | 
 | | | | 
 | **Obsługiwane funkcje**                |                   |                   |               
-| &bull; QuickPulse/LiveMetrics       | Yes             | Tak               | 
-| &nbsp;&nbsp;&nbsp;&mdash; Bezpieczny kanał kontrolny|                 | Tak               | 
-| &bull; Próbkowania                     | Tak             | Yes               | 
-| &bull; Puls                   |                 | Tak               | 
+| &bull; QuickPulse/LiveMetrics       | Tak             | Tak               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Secure Control Channel|                 | Tak               | 
+| Próbkowanie &bull;                     | Tak             | Tak               | 
+| pulsy &bull;                   |                 | Tak               | 
 | | | | 
 | **Korelacja**                       |                   |                   |               
-| &bull; ServiceBus                     |                   | Yes               | 
-| &bull; Centrum zdarzeń                       |                   | Tak               | 
+| &bull; ServiceBus                     |                   | Tak               | 
+| &bull; EventHub                       |                   | Tak               | 
 | | | | 
-| **Można konfigurować**                      |                   |                   |           
-| &bull;W pełni konfigurowalne.<br/>Zobacz [usługi Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) instrukcje.<br/>Zobacz [platformy Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) dla wszystkich opcji.               |                   | Tak                   | 
+| **Skonfigurować**                      |                   |                   |           
+| &bull;Fully — konfigurowalne.<br/>Aby uzyskać instrukcje, zobacz [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Zobacz [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) , aby poznać wszystkie opcje.               |                   | Tak                   | 
 
 
 ## <a name="performance-counters"></a>Liczniki wydajności
 
-Automatyczne zbieranie liczników wydajności działają tylko Windows maszyn.
+Automatyczne zbieranie liczników wydajności działa tylko na maszynach z systemem Windows.
 
 
-## <a name="live-metrics--secure-control-channel"></a>Metryki na żywo i bezpiecznego kanału kontroli
+## <a name="live-metrics--secure-control-channel"></a>Metryki na żywo & kanale bezpiecznego sterowania
 
-Filtry niestandardowe określonych kryteriów są wysyłane do składnika metryki na żywo w zestaw SDK usługi Application Insights. Filtry potencjalnie mogą zawierać poufne informacje, takie jak customerIDs. Kanał można zabezpieczyć przy użyciu klucza tajnego klucza interfejsu API. Zobacz [bezpieczny kanał kontrolny](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) instrukcje.
+Określone kryteria filtrów niestandardowych są wysyłane z powrotem do składnika metryki na żywo w zestawie Application Insights SDK. Filtry mogą potencjalnie zawierać informacje poufne, takie jak customerID. Kanał można zabezpieczyć przy użyciu klucza tajnego interfejsu API. Instrukcje można znaleźć w temacie [Zabezpieczenia kanału kontroli](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) .
 
-## <a name="sampling"></a>Próbkowanie
+## <a name="sampling"></a>Sond
 
-Usługa Azure Functions umożliwia pobieranie próbek domyślnie w swojej konfiguracji. Aby uzyskać więcej informacji, zobacz [skonfigurować próbkowania](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
+Azure Functions domyślnie włącza próbkowanie w ich konfiguracji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie próbkowania](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
 
-Projekt przyjmuje zależności zestawu SDK Application Insights w celu ręcznego telemetrii śledzenia, może wystąpią nietypowe zachowanie konfiguracji pobierania próbek różni się od funkcje konfiguracji pobierania próbek. 
+Jeśli projekt przyjmuje zależność od zestawu SDK Application Insights do ręcznego śledzenia danych telemetrycznych, może wystąpić dziwne zachowanie, jeśli konfiguracja próbkowania różni się od konfiguracji próbkowania funkcji. 
 
-Zalecamy używanie tej samej konfiguracji jako funkcje. Za pomocą **funkcje w wersji 2**, uzyskasz tę samą konfigurację przy użyciu iniekcji zależności w konstruktora:
+Zalecamy używanie tej samej konfiguracji co funkcje. Z **funkcjami w wersji 2**można uzyskać tę samą konfigurację przy użyciu iniekcji zależności w konstruktorze:
 
 ```csharp
 using Microsoft.ApplicationInsights;

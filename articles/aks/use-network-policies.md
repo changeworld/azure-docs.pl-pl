@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 1339fe66a4925104d459c0491caccdd7db5998a7
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 63678ad7260210d86daf035bfec9bb467a526042
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114461"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950324"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpieczanie ruchu między różnymi sieciami przy użyciu zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.61 lub no
 > 
 > Jeśli chcesz kontynuować korzystanie z istniejących klastrów testowych, które używały zasad sieciowych podczas korzystania z wersji zapoznawczej, Uaktualnij klaster do nowej wersji usługi Kubernetes w najnowszej wersji, a następnie wdróż następujący manifest YAML, aby naprawić awarię serwera metryk i Kubernetes cyfrowego. Ta poprawka jest wymagana tylko w przypadku klastrów, które używały aparatu zasad sieciowych Calico.
 >
-> Zgodnie z najlepszymi rozwiązaniami w zakresie bezpieczeństwa, zapoznaj się z [zawartością tego manifestu YAML][calico-aks-cleanup] , aby zrozumieć, co jest wdrażane w klastrze AKS.
+> Zgodnie z najlepszymi rozwiązaniami w zakresie bezpieczeństwa, [zapoznaj się z zawartością tego manifestu YAML][calico-aks-cleanup] , aby zrozumieć, co jest wdrażane w klastrze AKS.
 >
 > `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
@@ -50,19 +50,14 @@ Platforma Azure zapewnia dwa sposoby implementacji zasad sieciowych. Podczas two
 
 Obie implementacje używają systemu Linux *dołączenie iptables* , aby wymusić określone zasady. Zasady są tłumaczone na zestawy dozwolonych i niedozwolonych par adresów IP. Te pary są następnie zaprogramowane jako reguły filtru IPTable.
 
-Zasada sieciowa działa tylko z opcją Azure CNI (Advanced). Implementacja jest inna dla dwóch opcji:
-
-* *Zasady sieci platformy Azure* — usługa Azure CNI konfiguruje mostek na hoście maszyny wirtualnej dla sieci wewnątrz węzła. Reguły filtrowania są stosowane, gdy pakiety są przekazywane przez mostek.
-* *Zasady sieci Calico* — usługa Azure CNI konfiguruje lokalne trasy jądra dla ruchu wewnątrz węzła. Zasady są stosowane w interfejsie sieciowym pod.
-
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Różnice między zasadami platformy Azure i Calico oraz ich możliwościami
 
 | Możliwość                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Obsługiwane platformy                      | Linux                      | Linux                       |
-| Obsługiwane opcje sieci             | Azure CNI                  | Azure CNI                   |
+| Obsługiwane opcje sieci             | Azure CNI                  | Azure CNI i korzystającą wtyczki kubenet       |
 | Zgodność ze specyfikacją Kubernetes | Wszystkie typy zasad obsługiwane |  Wszystkie typy zasad obsługiwane |
-| Dodatkowe funkcje                      | Brak                       | Rozszerzony model zasad składający się z globalnych zasad sieciowych, globalnego zestawu sieci i punktu końcowego hosta. Aby uzyskać więcej informacji na temat `calicoctl` korzystania z interfejsu wiersza polecenia do zarządzania tymi rozszerzonymi funkcjami, zobacz [calicoctl User Reference][calicoctl]. |
+| Dodatkowe funkcje                      | Brak                       | Rozszerzony model zasad składający się z globalnych zasad sieciowych, globalnego zestawu sieci i punktu końcowego hosta. Aby uzyskać więcej informacji na temat używania interfejsu wiersza polecenia `calicoctl` do zarządzania tymi rozszerzonymi funkcjami, zobacz [calicoctl User Reference][calicoctl]. |
 | Pomoc techniczna                                  | Obsługiwane przez zespół pomocy technicznej i inżynierów platformy Azure | Wsparcie społeczności Calico. Aby uzyskać więcej informacji na temat dodatkowej płatnej pomocy technicznej, zobacz [Opcje pomocy technicznej dla programu Project Calico][calico-support]. |
 | Rejestrowanie                                  | Reguły dodane/usunięte w dołączenie iptables są rejestrowane na każdym hoście w obszarze */var/log/Azure-npm.log* | Aby uzyskać więcej informacji, zobacz [dzienniki składników Calico][calico-logs] |
 
@@ -76,15 +71,15 @@ Aby wyświetlić zasady sieciowe w działaniu, Utwórz i rozwiń zasady, które 
 
 Najpierw Utwórzmy klaster AKS, który obsługuje zasady sieciowe. Funkcja zasad sieciowych można włączyć tylko podczas tworzenia klastra. Nie można włączyć zasad sieciowych w istniejącym klastrze AKS.
 
-Aby używać zasad sieciowych z klastrem AKS, należy użyć [wtyczki Azure CNI][azure-cni] i zdefiniować własną sieć wirtualną i podsieci. Aby uzyskać szczegółowe informacje na temat planowania wymaganych zakresów podsieci, zobacz [Konfigurowanie zaawansowanej sieci][use-advanced-networking].
+Aby korzystać z zasad sieciowych platformy Azure, musisz użyć [wtyczki CNI platformy Azure][azure-cni] i zdefiniować własną sieć wirtualną oraz podsieci. Aby uzyskać szczegółowe informacje na temat planowania wymaganych zakresów podsieci, zobacz [Konfigurowanie zaawansowanej sieci][use-advanced-networking]. Zasad sieciowych Calico można użyć z tą samą wtyczką CNI platformy Azure lub z dodatkiem plug-in korzystającą wtyczki kubenet CNI.
 
 Następujący przykładowy skrypt:
 
 * Tworzy sieć wirtualną i podsieć.
 * Tworzy jednostkę usługi Azure Active Directory (Azure AD) do użycia z klastrem AKS.
-* Przypisuje uprawnienia współautora dla jednostki usługi klastra AKS w sieci wirtualnej.
+* Przypisuje uprawnienia *współautora* dla jednostki usługi klastra AKS w sieci wirtualnej.
 * Tworzy klaster AKS w zdefiniowanej sieci wirtualnej i włącza zasady sieciowe.
-    * Opcja zasad sieciowych *platformy Azure* jest używana. Aby zamiast tego użyć Calico jako opcji zasad sieciowych, należy użyć `--network-policy calico` parametru.
+    * Opcja zasad sieciowych *platformy Azure* jest używana. Aby zamiast tego użyć Calico jako opcji zasad sieciowych, należy użyć parametru `--network-policy calico`. Uwaga: Calico można użyć z wartością `--network-plugin azure` lub `--network-plugin kubenet`.
 
 Podaj własne bezpieczne *SP_PASSWORD*. Można zastąpić zmienne *RESOURCE_GROUP_NAME* i *CLUSTER_NAME* :
 
@@ -139,7 +134,7 @@ az aks create \
     --network-policy azure
 ```
 
-Utworzenie klastra trwa kilka minut. Gdy klaster jest gotowy, skonfiguruj `kubectl` , aby nawiązać połączenie z klastrem Kubernetes za pomocą polecenia [AZ AKS Get-Credentials][az-aks-get-credentials] . To polecenie umożliwia pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes do ich użycia:
+Utworzenie klastra trwa kilka minut. Gdy klaster jest gotowy, skonfiguruj `kubectl`, aby połączyć się z klastrem Kubernetes przy użyciu polecenia [AZ AKS Get-Credentials][az-aks-get-credentials] . To polecenie umożliwia pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes do ich użycia:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -168,7 +163,7 @@ Utwórz kolejną stronę pod i Dołącz sesję terminalową, aby sprawdzić, czy
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-W wierszu polecenia powłoki Użyj `wget` , aby potwierdzić, że możesz uzyskać dostęp do domyślnej strony sieci Web Nginx:
+W wierszu polecenia powłoki Użyj `wget`, aby potwierdzić, że możesz uzyskać dostęp do domyślnej strony sieci Web NGINX:
 
 ```console
 wget -qO- http://backend
@@ -192,7 +187,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Tworzenie i stosowanie zasad sieciowych
 
-Po potwierdzeniu, że możesz użyć podstawowej strony sieci Web NGINX na przykładowej zaplecza, Utwórz zasady sieciowe, aby odmówić całego ruchu. Utwórz plik o nazwie `backend-policy.yaml` i wklej następujący manifest YAML. Ten manifest używa *podSelector* do dołączania zasad do zasobników, które mają etykietę *App: webapp, role: zaplecza* , taką jak przykład Nginx. W ramach ruchu przychodzącegonie są zdefiniowane żadne reguły, dlatego cały ruch przychodzący do niego jest odrzucany:
+Po potwierdzeniu, że możesz użyć podstawowej strony sieci Web NGINX na przykładowej zaplecza, Utwórz zasady sieciowe, aby odmówić całego ruchu. Utwórz plik o nazwie `backend-policy.yaml` i wklej następujący manifest YAML. Ten manifest używa *podSelector* do dołączania zasad do zasobników, które mają etykietę *App: webapp, role: zaplecza* , taką jak przykład Nginx. *W ramach ruchu*przychodzącego nie są zdefiniowane żadne reguły, dlatego cały ruch przychodzący do niego jest odrzucany:
 
 ```yaml
 kind: NetworkPolicy
@@ -223,7 +218,7 @@ Sprawdźmy, czy można ponownie użyć strony sieci Web NGINX na zapleczu. Utwó
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-W wierszu polecenia powłoki Użyj `wget` , aby zobaczyć, czy można uzyskać dostęp do domyślnej strony sieci Web Nginx. Tym razem ustaw wartość limitu czasu na *2* sekundy. Zasady sieciowe blokują teraz cały ruch przychodzący, więc nie można załadować strony, jak pokazano w następującym przykładzie:
+W wierszu polecenia powłoki Użyj `wget`, aby sprawdzić, czy można uzyskać dostęp do domyślnej strony sieci Web NGINX. Tym razem ustaw wartość limitu czasu na *2* sekundy. Zasady sieciowe blokują teraz cały ruch przychodzący, więc nie można załadować strony, jak pokazano w następującym przykładzie:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -278,7 +273,7 @@ Zaplanuj pod nazwą *App = webapp, role = fronton* i Dołącz sesję terminalow�
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-W wierszu polecenia powłoki Użyj `wget` , aby zobaczyć, czy można uzyskać dostęp do domyślnej strony sieci Web Nginx:
+W wierszu polecenia powłoki Użyj `wget`, aby sprawdzić, czy można uzyskać dostęp do domyślnej strony sieci Web NGINX:
 
 ```console
 wget -qO- http://backend
@@ -308,7 +303,7 @@ Zasady sieciowe zezwalają na ruch z aplikacji z nazwami oznaczonymi etykietą *
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-W wierszu polecenia powłoki Użyj `wget` , aby zobaczyć, czy można uzyskać dostęp do domyślnej strony sieci Web Nginx. Zasady sieciowe blokują ruch przychodzący, więc nie można załadować strony, jak pokazano w następującym przykładzie:
+W wierszu polecenia powłoki Użyj `wget`, aby sprawdzić, czy można uzyskać dostęp do domyślnej strony sieci Web NGINX. Zasady sieciowe blokują ruch przychodzący, więc nie można załadować strony, jak pokazano w następującym przykładzie:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -333,13 +328,13 @@ kubectl create namespace production
 kubectl label namespace/production purpose=production
 ```
 
-Zaplanuj test pod w przestrzeni nazw produkcyjny, który jest oznaczony jako *App = webapp, role = fronton*. Dołącz sesję terminalową:
+Zaplanuj test pod w przestrzeni nazw *produkcyjny* , który jest oznaczony jako *App = webapp, role = fronton*. Dołącz sesję terminalową:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-W wierszu polecenia powłoki Użyj `wget` , aby potwierdzić, że możesz uzyskać dostęp do domyślnej strony sieci Web Nginx:
+W wierszu polecenia powłoki Użyj `wget`, aby potwierdzić, że możesz uzyskać dostęp do domyślnej strony sieci Web NGINX:
 
 ```console
 wget -qO- http://backend.development
@@ -363,7 +358,7 @@ exit
 
 ### <a name="update-the-network-policy"></a>Aktualizowanie zasad sieciowych
 
-Zaktualizujmy sekcję *namespaceSelector* reguły transferu danych przychodzących, aby zezwalać tylko na ruch z przestrzeni nazw deweloperskich. Edytuj plik manifestu *zaplecza-Policy. YAML* , jak pokazano w następującym przykładzie:
+Zaktualizujmy sekcję *namespaceSelector* reguły transferu danych przychodzących, aby zezwalać tylko na ruch z przestrzeni nazw *deweloperskich* . Edytuj plik manifestu *zaplecza-Policy. YAML* , jak pokazano w następującym przykładzie:
 
 ```yaml
 kind: NetworkPolicy
@@ -397,13 +392,13 @@ kubectl apply -f backend-policy.yaml
 
 ### <a name="test-the-updated-network-policy"></a>Testowanie zaktualizowanych zasad sieciowych
 
-Zaplanuj inny element pod w przestrzeni nazw produkcyjnej i Dołącz sesję terminala:
+Zaplanuj inny element pod w przestrzeni nazw *produkcyjnej* i Dołącz sesję terminala:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-W wierszu polecenia powłoki Użyj `wget` , aby zobaczyć, że zasady sieciowe odrzucają teraz ruch:
+W wierszu polecenia powłoki Użyj `wget`, aby zobaczyć, że zasady sieciowe odrzucają teraz ruch:
 
 ```console
 $ wget -qO- --timeout=2 http://backend.development
@@ -417,13 +412,13 @@ Wyjdź z testu pod:
 exit
 ```
 
-Mając odmowę ruchu z przestrzeni nazw produkcyjnej, Zaplanuj test na odwrocie w przestrzeni nazw *deweloperskiej* i Dołącz sesję terminala:
+Mając odmowę ruchu z przestrzeni nazw *produkcyjnej* , Zaplanuj test na odwrocie w przestrzeni nazw *deweloperskiej* i Dołącz sesję terminala:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-W wierszu polecenia powłoki Użyj `wget` , aby zobaczyć, że zasady sieciowe zezwalają na ruch:
+W wierszu polecenia powłoki Użyj `wget`, aby sprawdzić, czy zasady sieciowe zezwalają na ruch:
 
 ```console
 wget -qO- http://backend
@@ -468,9 +463,9 @@ Aby dowiedzieć się więcej na temat zasad, zobacz [Kubernetes Network policies
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.6/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
 [calico-support]: https://www.projectcalico.org/support
-[calico-logs]: https://docs.projectcalico.org/v3.6/maintenance/component-logs
+[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->

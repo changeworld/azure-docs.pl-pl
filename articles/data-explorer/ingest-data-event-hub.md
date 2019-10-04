@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 2dbb900d297f1acf05e77dca3e1753745e9b2b38
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: a83e2163c9aa970932f2eea8e2e04a715107ac7f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937399"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950247"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
@@ -114,6 +114,7 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
     | Przestrzeń nazw centrum zdarzeń | Unikatowa nazwa przestrzeni nazw | Wybrana wcześniej nazwa, która identyfikuje Twoją przestrzeń nazw. |
     | Centrum zdarzeń | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
     | Grupa konsumentów | *test-group* | Grupa konsumentów zdefiniowana w utworzonym przez Ciebie centrum zdarzeń. |
+    | Właściwości systemu zdarzeń | Wybierz odpowiednie właściwości | [Właściwości systemu centrum zdarzeń](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations) |
     | | |
 
     Tabela docelowa:
@@ -124,7 +125,7 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
     | Tabela | *TestTable* | Tabela utworzona przez Ciebie w obszarze **TestDatabase**. |
-    | Format danych | *JSON* | Obsługiwane formaty to: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV i TXT. Obsługiwane opcje kompresji: GZip |
+    | Format danych | *JSON* | Obsługiwane formaty to Avro, CSV, JSON, WIELOWIERSZOWY kod JSON, PSV, SOHSV, SCSV, TSV, TSVE i TXT. Obsługiwane opcje kompresji: GZip |
     | Mapowanie kolumn | *TestMapping* | Mapowanie utworzone przez Ciebie w obszarze **TestDatabase**, które mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli **TestTable**. Wymagane dla formatu JSON, wielowierszowego kodu JSON lub AVRO oraz opcjonalne dla innych formatów.|
     | | |
 

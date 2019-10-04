@@ -1,5 +1,5 @@
 ---
-title: Co to jest prywatna strefa DNS platformy Azure?
+title: Co to jest platforma Azure Prywatna strefa DNS?
 description: Przegląd prywatnej usługi hostingu DNS na Microsoft Azure.
 services: dns
 author: vhorne
@@ -7,19 +7,14 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 0921a1ac7aa1192fae78f168c2eb51ee3e74e24a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 152087ab3dc20dfc95cfeaa0353d961917d362d6
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774621"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959346"
 ---
-# <a name="what-is-azure-private-dns"></a>Co to jest prywatna strefa DNS platformy Azure?
-
-> [!IMPORTANT]
-> Usługa Azure Prywatna strefa DNS jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="what-is-azure-private-dns"></a>Co to jest platforma Azure Prywatna strefa DNS?
 
 System nazw domen (DNS) jest odpowiedzialny za tłumaczenie (lub rozpoznanie) nazwy usługi na adres IP.  Azure DNS to usługa hostingu dla domen DNS, która zapewnia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Oprócz obsługi domen DNS dostępnych w Internecie Azure DNS również obsługuje prywatne strefy DNS.
 
@@ -32,7 +27,7 @@ Aby rozwiązać rekordy prywatnej strefy DNS z sieci wirtualnej, należy połąc
 > [!NOTE]
 > Najlepszym rozwiązaniem jest korzystanie z domeny *lokalnej* dla prywatnej strefy DNS. Nie wszystkie systemy operacyjne obsługują ten system.
 
-## <a name="benefits"></a>Korzyści
+## <a name="benefits"></a>Zalety
 
 Usługa Azure Prywatna strefa DNS zapewnia następujące korzyści:
 
@@ -50,7 +45,7 @@ Usługa Azure Prywatna strefa DNS zapewnia następujące korzyści:
 
 * **Dostępne we wszystkich regionach świadczenia usługi Azure**. Funkcja stref prywatnych Azure DNS jest dostępna we wszystkich regionach świadczenia usługi Azure w chmurze publicznej platformy Azure.
 
-## <a name="capabilities"></a>Możliwości
+## <a name="capabilities"></a>Możliwość
 
 Azure DNS zapewnia następujące możliwości:
 
@@ -60,22 +55,14 @@ Azure DNS zapewnia następujące możliwości:
 
 * **Odwrotne wyszukiwanie DNS jest obsługiwane w zakresie sieci wirtualnej**. Odwrotne wyszukiwanie DNS dla prywatnego adresu IP w ramach sieci wirtualnej przypisanej do strefy prywatnej zwraca nazwę FQDN, która zawiera nazwy hosta/rekordu i nazwa strefy jako sufiks.
 
-## <a name="known-issues"></a>Znane problemy
-Następujące elementy są znanymi usterkami i problemami w wersji zapoznawczej:
-* Usunięcie sieci wirtualnej połączonej z prywatną strefą DNS nie powoduje usunięcia linków do prywatnej strefy DNS. Łącze kończy się niepowodzeniem, jeśli ponownie utworzysz sieć wirtualną o tej samej nazwie i grupie zasobów, a następnie spróbujesz połączyć ją z dowolną prywatną strefą DNS. Aby obejść ten problem, należy utworzyć sieć wirtualną w innej grupie zasobów lub z inną nazwą w tej samej grupie zasobów.
-* Jeśli przeniesiesz sieć wirtualną do innej grupy zasobów lub subskrypcji, nie aktualizuje ona linków do prywatnej strefy DNS. Rozpoznawanie nazw przeniesionej sieci wirtualnej nadal działa, jednak podczas wyświetlania łączy sieci wirtualnej prywatnej strefy DNS zobaczysz stare identyfikatory ARM sieci wirtualnej.
-* Obecnie połączone sieci wirtualne hostowane w regionie Zjednoczone Emiraty Arabskie, środkowe Zjednoczone Emiraty Arabskie, Zachodnia Republika Południowej Afryki, Północna Republika Południowej Afryki, Kanada Wschodnia, Francja Południowa mogą kończyć się niepowodzeniem i mogą być widoczne sporadyczne problemy z rozpoznawaniem nazw DNS. 
-
-
 ## <a name="other-considerations"></a>Inne zagadnienia
 
 Azure DNS ma następujące ograniczenia:
 
 * Określona Sieć wirtualna może być połączona tylko z jedną strefą prywatną, jeśli jest włączona automatyczna rejestracja rekordów DNS maszyn wirtualnych. Można jednak połączyć wiele sieci wirtualnych z pojedynczą strefą DNS.
 * Odwrotny serwer DNS działa tylko w przypadku prywatnych przestrzeni adresów IP w połączonej sieci wirtualnej
-* Zwrotny serwer DNS dla prywatnego adresu IP dla połączonej sieci wirtualnej zwraca wartość "internal.cloudapp.net" jako domyślny sufiks dla maszyny wirtualnej. W przypadku sieci wirtualnych, które są połączone ze strefą prywatną z włączoną funkcją autorejestracji, odwrotny serwer DNS dla prywatnego adresu IP zwraca 2 nazwy FQDN, jeden z sufiksem domyślnym *Internal.cloudapp.NET* i drugi z sufiksem strefy prywatnej.
-* Warunkowe przekazywanie nie jest w tej chwili obsługiwane w sposób natywny. Aby włączyć rozwiązanie między platformą Azure i sieciami lokalnymi, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień ról](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
-
+* Zwrotny serwer DNS dla prywatnego adresu IP dla połączonej sieci wirtualnej zwraca *Internal.cloudapp.NET* jako domyślny sufiks dla maszyny wirtualnej. W przypadku sieci wirtualnych, które są połączone ze strefą prywatną z włączoną funkcją autorejestracji, odwrotny serwer DNS dla prywatnego adresu IP zwraca dwie nazwy FQDN: jeden z domyślną sufiks *Internal.cloudapp.NET* i drugi z sufiksem strefy prywatnej.
+* Warunkowe przekazywanie nie jest obecnie obsługiwane natywnie. Aby umożliwić rozwiązanie problemu między sieciami Azure i lokalnymi. Zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień ról](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
 ## <a name="pricing"></a>Cennik
 

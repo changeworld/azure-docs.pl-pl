@@ -10,14 +10,14 @@ ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b9bd4b3516ee03ce78fcf255eba011f86f9c29c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d4f206b63be38c902f93a084889e60184ce03e07
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883934"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958042"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi referencyjnymi GA dla środowiska Azure Time Series Insights za pomocąC#
 
@@ -29,18 +29,18 @@ Przed skompilowaniem i uruchomieniem przykładowego kodu wykonaj następujące c
 
 1. [Utwórz zestaw danych referencyjnych](time-series-insights-add-reference-data-set.md).
 
-1. Skonfiguruj token dostępu autoryzacji dla aplikacji. Upewnij się, że token jest uzyskiwany za pomocą interfejsu API Azure Active Directory. Ten token powinien zostać przekazany w `Authorization` nagłówku każdego żądania interfejsu API zapytań.
+1. Skonfiguruj token dostępu autoryzacji dla aplikacji. Upewnij się, że token jest uzyskiwany za pomocą interfejsu API Azure Active Directory. Ten token powinien zostać przekazany w nagłówku `Authorization` każdego żądania interfejsu API zapytania.
 
    Informacje o sposobie konfigurowania aplikacji nieinterakcyjnych znajdują się w temacie [uwierzytelnianie i autoryzacja](time-series-insights-authentication-and-authorization.md).
 
 1. Edytuj przykładowy kod, aby zastąpić przykładowe stałe oznaczone w **#DUMMY #** , blisko początku kodu.
 
 > [!NOTE]
-> Zapoznaj się z przykładowym [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)kodem "ga" w.
+> Zapoznaj się z przykładowym kodem ["ga" w https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Zależności projektu
 
-Dodaj pakiety `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet i `Newtonsoft.Json` w tym przykładzie.
+W tym przykładzie Dodaj pakiety NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` i `Newtonsoft.Json`.
 
 ## <a name="c-sample-code"></a>C#przykładowy kod
 
@@ -245,6 +245,6 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Odczytaj [Informacje o interfejsie API danych referencyjnych](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).

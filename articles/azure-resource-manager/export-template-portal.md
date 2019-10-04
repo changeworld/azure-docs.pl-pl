@@ -1,72 +1,72 @@
 ---
-title: Eksportowanie szablonu usługi Azure Resource Manager przy użyciu witryny Azure portal
-description: Eksportowanie szablonu usługi Azure Resource Manager z zasobów w ramach subskrypcji za pomocą witryny Azure portal.
+title: Eksportowanie szablonu Azure Resource Manager przy użyciu Azure Portal
+description: Użyj Azure Portal, aby wyeksportować szablon Azure Resource Manager z zasobów w ramach subskrypcji.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: e482bf99013b9bec9dfbf64c4e8ad5a8a43ff540
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 15f527dfe517dcb3329b8b61243d7c5054eedb56
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296303"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959695"
 ---
-# <a name="single-and-multi-resource-export-to-template-in-azure-portal"></a>Eksportowanie pojedynczych i wielu zasobów do szablonu w witrynie Azure portal
+# <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Eksport jednego i kilku zasobów do szablonu w Azure Portal
 
-Aby ułatwić tworzenie szablonów usługi Azure Resource Manager, możesz wyeksportować szablon z istniejących zasobów. Wyeksportowany szablon ułatwia zrozumienie składni JSON i właściwości, które wdrażasz swoje zasoby. Aby zautomatyzować przyszłych wdrożeniach, rozpoczynać wyeksportowany szablon i zmodyfikuj go odpowiednio do danego scenariusza.
+Aby pomóc w tworzeniu szablonów Azure Resource Manager, można wyeksportować szablon z istniejących zasobów. Wyeksportowany szablon pomaga zrozumieć składnię i właściwości JSON, które wdrażają zasoby. Aby zautomatyzować przyszłe wdrożenia, Zacznij od wyeksportowanego szablonu i zmodyfikuj go dla danego scenariusza.
 
-Usługi Resource Manager pozwala wybrać jeden lub więcej zasobów do eksportowania do szablonu. Możesz skupić się na potrzebne w szablonie zasoby.
+Menedżer zasobów umożliwia wybranie jednego lub większej liczby zasobów do wyeksportowania do szablonu. Możesz skupić się na dokładnie żądanych zasobach w szablonie.
 
-W tym artykule pokazano, jak można wyeksportować szablony przy użyciu portalu. Można również użyć [wiersza polecenia platformy Azure](manage-resource-groups-cli.md#export-resource-groups-to-templates), [programu Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates), lub [interfejsu API REST](/rest/api/resources/resourcegroups/exporttemplate).
+W tym artykule przedstawiono sposób eksportowania szablonów za pomocą portalu. Można również użyć interfejsu [wiersza polecenia platformy Azure](manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates)lub [API REST](/rest/api/resources/resourcegroups/exporttemplate).
 
-## <a name="choose-the-right-export-option"></a>Wybierz opcję prawo eksportu
+## <a name="choose-the-right-export-option"></a>Wybierz opcję eksportu z prawej strony
 
 Istnieją dwa sposoby eksportowania szablonu:
 
-* **Eksportowanie z grupy zasobów lub zasobu**. Ta opcja powoduje wygenerowanie nowego szablonu z istniejących zasobów. Wyeksportowany szablon jest "snapshot" bieżący stan grupy zasobów. Możesz wyeksportować całą grupę zasobów lub określonych zasobów w tej grupie zasobów.
+* **Eksportuj z grupy zasobów lub zasobu**. Ta opcja generuje nowy szablon z istniejących zasobów. Wyeksportowany szablon jest "migawką" bieżącego stanu grupy zasobów. Można wyeksportować całą grupę zasobów lub konkretne zasoby w ramach tej grupy zasobów.
 
-* **Eksportowanie przed wdrożeniem lub z historii**. Ta opcja umożliwia pobranie dokładną kopię szablonu użyć dla wdrożenia.
+* **Eksportuj przed wdrożeniem lub z historii**. Ta opcja pobiera dokładną kopię szablonu użytego do wdrożenia.
 
-W zależności od wybranej opcji wyeksportowane szablony mają różne cechy.
+W zależności od wybranej opcji, eksportowane szablony mają różne jakości.
 
-| Z grupy zasobów lub zasobu | Przed przystąpieniem do wdrożenia lub z historii |
+| Z grupy zasobów lub zasobu | Przed wdrożeniem lub historią |
 | --------------------- | ----------------- |
-| Szablon jest migawki bieżącego stanu zasobów. Obejmuje ona wszelkie ręczne zmiany wprowadzone po wdrożeniu. | Szablon zawiera tylko stan zasobów w czasie wdrażania. Wszelkie ręczne zmiany wprowadzone po wdrożeniu nie są uwzględniane. |
-| Możesz wybrać zasoby z grupy zasobów do wyeksportowania. | Uwzględniono wszystkie zasoby dla określonego wdrożenia. Nie można wybrać podzbiór tych zasobów, lub Dodaj zasoby, które zostały dodane w innym czasie. |
-| Szablon zawiera wszystkie właściwości dla zasobów, w tym niektóre właściwości, które normalnie nie ustawisz podczas wdrażania. Możesz chcieć usunąć lub wyczyścić te właściwości, przed ponownym użyciem tego szablonu. | Szablon zawiera tylko właściwości, które są potrzebne do wdrożenia. Szablon jest gotowy do użycia. |
-| Szablon prawdopodobnie nie zawiera wszystkich parametrów, które są potrzebne do ponownego wykorzystania. Większość wartości właściwości są zakodowane w szablonie. Aby przeprowadzić ponowne wdrożenie szablonu w innych środowiskach, należy dodać parametry, które zwiększają możliwość konfigurowania zasobów. | Szablon zawiera parametry, które ułatwiają do ponownego wdrożenia w różnych środowiskach. |
+| Szablon jest migawką bieżącego stanu zasobów. Obejmuje ona wszystkie zmiany ręczne dokonane po wdrożeniu. | Szablon pokazuje tylko stan zasobów w czasie wdrażania. Wszystkie zmiany ręczne wprowadzone po wdrożeniu nie są uwzględniane. |
+| Możesz wybrać zasoby z grupy zasobów do wyeksportowania. | Uwzględniono wszystkie zasoby dla określonego wdrożenia. Nie można wybrać podzestawu tych zasobów ani dodać zasobów, które zostały dodane w innym czasie. |
+| Szablon zawiera wszystkie właściwości zasobów, w tym niektóre właściwości, które normalnie nie zostały ustawione podczas wdrażania. Przed ponownym użyciem szablonu warto usunąć lub wyczyścić te właściwości. | Szablon zawiera tylko właściwości, które są związane z wdrożeniem. Szablon jest gotowy do użycia. |
+| Szablon prawdopodobnie nie zawiera wszystkich parametrów, które są potrzebne do ponownego użycia. Większość wartości właściwości jest zakodowana w szablonie. Aby ponownie wdrożyć szablon w innych środowiskach, należy dodać parametry, które zwiększają możliwości konfiguracji zasobów. | Szablon zawiera parametry, które ułatwiają ponowne wdrażanie w różnych środowiskach. |
 
-Eksportowanie szablonu z grupy zasobów lub zasobu, gdy:
+Wyeksportuj szablon z grupy zasobów lub zasobu, gdy:
 
-* Zachodzi potrzeba przechwytywania zmianami w zasobach, które zostały wprowadzone po oryginalnego wdrożenia.
-* Chcesz wybrać, które zasoby są eksportowane.
+* Musisz przechwycić zmiany w zasobach, które zostały wprowadzone po pierwotnym wdrożeniu.
+* Chcesz wybrać zasoby, które mają zostać wyeksportowane.
 
-Eksportowanie szablonu przed wdrożeniem lub z historii, gdy:
+Wyeksportuj szablon przed wdrożeniem lub z historii, gdy:
 
-* Chcesz, aby ponowne łatwe użycie szablonu.
-* Nie należy do uwzględnienia zmian wprowadzonych po oryginalnego wdrożenia.
+* Chcesz, aby szablon był łatwy do ponownego użycia.
+* Nie trzeba dołączać zmian wprowadzonych po oryginalnym wdrożeniu.
 
-## <a name="export-template-from-resource-group"></a>Eksportowanie szablonu z grupy zasobów
+## <a name="export-template-from-resource-group"></a>Eksportuj szablon z grupy zasobów
 
 Aby wyeksportować jeden lub więcej zasobów z grupy zasobów:
 
-1. Wybierz grupę zasobów, która zawiera zasoby, które chcesz wyeksportować.
+1. Wybierz grupę zasobów zawierającą zasoby, które chcesz wyeksportować.
 
-1. Aby wyeksportować wszystkie zasoby w grupie zasobów, zaznacz wszystko i następnie **Eksportuj szablon**. **Eksportuj szablon** opcja staje się dostępne tylko po wybraniu co najmniej jeden zasób.
+1. Aby wyeksportować wszystkie zasoby w grupie zasobów, zaznacz opcję Wszystkie, a następnie **Eksportuj szablon**. Opcja **Eksportuj szablon** zostanie włączona tylko po wybraniu co najmniej jednego zasobu.
 
    ![Eksportuj wszystkie zasoby](./media/export-template-portal/select-all-resources.png)
 
-1. Aby wybrać określone zasoby eksportu, zaznacz pola wyboru obok tych zasobów. Następnie wybierz **Eksportuj szablon**.
+1. Aby wybrać określone zasoby do wyeksportowania, zaznacz pola wyboru obok tych zasobów. Następnie wybierz pozycję **Eksportuj szablon**.
 
    ![Wybierz zasoby do wyeksportowania](./media/export-template-portal/select-resources.png)
 
-1. Wyeksportowany szablon jest wyświetlany i jest dostępna do pobrania.
+1. Zostanie wyświetlony wyeksportowany szablon i jest dostępny do pobrania.
 
-   ![Wyświetlanie szablonu](./media/export-template-portal/show-template.png)
+   ![Pokaż szablon](./media/export-template-portal/show-template.png)
 
-## <a name="export-template-from-resource"></a>Eksportowanie szablonu z zasobu
+## <a name="export-template-from-resource"></a>Eksportuj szablon z zasobu
 
 Aby wyeksportować jeden zasób:
 
@@ -76,47 +76,47 @@ Aby wyeksportować jeden zasób:
 
    ![Wybierz zasób](./media/export-template-portal/select-link-resource.png)
 
-1. Dla tego zasobu, wybierz **Eksportuj szablon** w okienku po lewej stronie.
+1. W przypadku tego zasobu wybierz pozycję **Eksportuj szablon** w lewym okienku.
 
    ![Eksportuj zasób](./media/export-template-portal/export-single-resource.png)
 
-1. Wyeksportowany szablon jest wyświetlany i jest dostępna do pobrania. Szablon zawiera tylko pojedynczy zasób.
+1. Zostanie wyświetlony wyeksportowany szablon i jest dostępny do pobrania. Szablon zawiera tylko jeden zasób.
 
-## <a name="export-template-before-deployment"></a>Eksportowanie szablonu przed przystąpieniem do wdrożenia
+## <a name="export-template-before-deployment"></a>Eksportuj szablon przed wdrożeniem
 
 1. Wybierz usługę platformy Azure, którą chcesz wdrożyć.
 
-1. Podaj wartości dla nowej usługi.
+1. Wprowadź wartości dla nowej usługi.
 
-1. Po pomyślnym sprawdzania poprawności, ale przed rozpoczęciem wdrażania, wybierz **Pobierz szablon do automatyzacji**.
+1. Po przekazaniu walidacji, ale przed rozpoczęciem wdrażania, wybierz pozycję **Pobierz szablon do automatyzacji**.
 
    ![Pobieranie szablonu](./media/export-template-portal/download-before-deployment.png)
 
 1. Szablon jest wyświetlany i jest dostępny do pobrania.
 
-   ![Wyświetlanie szablonu](./media/export-template-portal/show-template-before-deployment.png)
+   ![Pokaż szablon](./media/export-template-portal/show-template-before-deployment.png)
 
-## <a name="export-template-after-deployment"></a>Eksportowanie szablonu po wdrożeniu
+## <a name="export-template-after-deployment"></a>Eksportuj szablon po wdrożeniu
 
-Możesz wyeksportować szablon, który został użyty do wdrożenia istniejących zasobów. Szablon, który jest pobierany jest dokładnie jeden, który został użyty do wdrożenia.
+Możesz wyeksportować szablon, który został użyty do wdrożenia istniejących zasobów. Pobrany szablon jest dokładnie taki, który został użyty do wdrożenia.
 
-1. Wybierz grupę zasobów, które chcesz wyeksportować.
+1. Wybierz grupę zasobów, którą chcesz wyeksportować.
 
-1. Wybierz link w obszarze **wdrożeń**.
+1. Wybierz link w obszarze **wdrożenia**.
 
-   ![Wybierz pozycję Historia wdrażania](./media/export-template-portal/select-deployment-history.png)
+   ![Wybierz historię wdrożenia](./media/export-template-portal/select-deployment-history.png)
 
-1. Wybierz jedno z wdrożeń z historii wdrożenia.
+1. Wybierz jedno z wdrożeń z historii wdrażania.
 
-   ![Wybieranie pozycji wdrożenie](./media/export-template-portal/select-details.png)
+   ![Wybieranie wdrożenia](./media/export-template-portal/select-details.png)
 
-1. Wybierz **szablonu**. Szablon użyty dla tego wdrożenia jest wyświetlany i jest dostępna do pobrania.
+1. Wybierz **szablon**. Zostanie wyświetlony szablon użyty dla tego wdrożenia, który jest dostępny do pobrania.
 
    ![Wybierz szablon](./media/export-template-portal/show-template-from-history.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak wyeksportować szablony przy użyciu [wiersza polecenia platformy Azure](manage-resource-groups-cli.md#export-resource-groups-to-templates), [programu Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates), lub [interfejsu API REST](/rest/api/resources/resourcegroups/exporttemplate).
-- Aby dowiedzieć się składni szablonu usługi Resource Manager, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](./resource-group-authoring-templates.md).
-- Aby dowiedzieć się, jak opracowywać szablony, zobacz [samouczki krok po kroku](/azure/azure-resource-manager/).
-- Aby wyświetlić schematy szablonów usługi Azure Resource Manager, zobacz [odwołanie do szablonu](/azure/templates/).
+- Dowiedz się, jak eksportować szablony przy użyciu interfejsu [wiersza polecenia platformy Azure](manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates)lub [API REST](/rest/api/resources/resourcegroups/exporttemplate).
+- Aby poznać składnię szablonu Menedżer zasobów, zobacz [Opis struktury i składni Azure Resource Manager szablonów](./resource-group-authoring-templates.md).
+- Aby dowiedzieć się, jak opracowywać szablony, zobacz [Samouczki krok po kroku](/azure/azure-resource-manager/).
+- Aby wyświetlić Azure Resource Manager Schematy szablonów, zobacz [Dokumentacja szablonu](/azure/templates/).

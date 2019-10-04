@@ -1,20 +1,20 @@
 ---
 title: Jak utworzyć funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Jak utworzyć funkcje zdefiniowane przez użytkownika, przydziały i przypisania ról w usłudze Azure Digital bliźniaczych reprezentacji.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
+ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 24b7f05bc59f3eb951897f5e36030b531d8f3aa9
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336907"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959097"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak utworzyć funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -67,9 +67,9 @@ Z treścią JSON:
 }
 ```
 
-| Value | Zamień na |
+| Wartość | Zamień na |
 | --- | --- |
-| YOUR_SPACE_IDENTIFIER | Region serwera, w którym jest hostowane używane wystąpienie |
+| YOUR_SPACE_IDENTIFIER | Region serwera, na którym jest hostowane wystąpienie |
 
 ## <a name="create-a-user-defined-function"></a>Tworzenie funkcji zdefiniowanej przez użytkownika
 
@@ -107,7 +107,7 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Value | Zamień na |
+| Wartość | Zamień na |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Nazwa granicy wieloczęściowej zawartości |
 | YOUR_SPACE_IDENTIFIER | Identyfikator przestrzeni  |
@@ -140,7 +140,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Parametr telemetrii uwidacznia atrybuty **SensorId** i **Message** , odpowiadające komunikatowi wysyłanemu przez czujnik. Parametr **kontekście wykonywania** uwidacznia następujące atrybuty:
+Parametr **telemetrii** uwidacznia atrybuty **SensorId** i **Message** , odpowiadające komunikatowi wysyłanemu przez czujnik. Parametr **kontekście wykonywania** uwidacznia następujące atrybuty:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -204,7 +204,7 @@ Utwórz przypisanie roli dla funkcji zdefiniowanej przez użytkownika do uruchom
     ```
    Zachowaj żądany identyfikator roli. Zostanie ona przeniesiona jako atrybut treści JSON **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) poniżej.
 
-1. identyfikator obiektu (`YOUR_USER_DEFINED_FUNCTION_ID`) będzie identyfikatorem funkcji zdefiniowanej przez użytkownika, który został utworzony wcześniej.
+1. **objectid** (`YOUR_USER_DEFINED_FUNCTION_ID`) będzie zdefiniowanym wcześniej identyfikatorem funkcji zdefiniowanej przez użytkownika.
 1. Znajdź wartość **Path** (`YOUR_ACCESS_CONTROL_PATH`), wykonując zapytania dotyczące spacji przy użyciu `fullpath`.
 1. Skopiuj zwróconą wartość `spacePaths`. Użyjesz poniższego. Wykonaj uwierzytelnione żądanie HTTP GET:
 
@@ -212,7 +212,7 @@ Utwórz przypisanie roli dla funkcji zdefiniowanej przez użytkownika do uruchom
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Value | Zamień na |
+    | Wartość | Zamień na |
     | --- | --- |
     | YOUR_SPACE_NAME | Nazwa miejsca, którego chcesz użyć |
 
@@ -232,7 +232,7 @@ Utwórz przypisanie roli dla funkcji zdefiniowanej przez użytkownika do uruchom
     }
     ```
 
-    | Value | Zamień na |
+    | Wartość | Zamień na |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | Identyfikator żądanej roli |
     | YOUR_USER_DEFINED_FUNCTION_ID | Identyfikator funkcji zdefiniowanej przez użytkownika, która ma być używana |

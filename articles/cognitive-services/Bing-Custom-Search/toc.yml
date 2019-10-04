@@ -60,8 +60,9 @@
     - name: Obsługa wyróżniania trafień
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Dzielenie wyników wyszukiwania stron internetowych na strony
-      href: page-webpages.md
+    - name: Dzielenie wyników wyszukiwania na strony
+      href: ../Bing-Web-Search/paging-search-results.md
+      maintainContext: true
 - name: Dokumentacja
   items:
     - name: Dokumentacja interfejsu API niestandardowego automatycznego sugerowania Bing

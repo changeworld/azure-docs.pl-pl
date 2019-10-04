@@ -1,59 +1,58 @@
 ---
-title: Scenariusze dotyczące usługi Azure DNS Private Zones
-description: Omówienie typowe scenariusze dotyczące korzystania z usługi Azure DNS Private Zones.
+title: Scenariusze dotyczące Azure DNS Private Zones
+description: Omówienie typowych scenariuszy dotyczących używania Azure DNS Private Zones.
 services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 409595febded7b242eae876ebb2cb35ae4999e5e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 747fe891bf4d6bd042e689107cd87680795eb82b
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686866"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959327"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Scenariusze usługi Azure DNS Private Zones
-Usługa Azure DNS Private Zones umożliwia rozpoznawanie nazw w sieci wirtualnej także między sieciami wirtualnymi. W tym artykule przyjrzymy się kilka typowych scenariuszy, które można realizować za pomocą tej funkcji. 
+# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS scenariusze stref prywatnych
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+Azure DNS Private Zones zapewnić rozpoznawanie nazw w sieci wirtualnej, a także między sieciami wirtualnymi. W tym artykule przedstawiono kilka typowych scenariuszy, które mogą być zrealizowane przy użyciu tej funkcji.
 
-## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>Scenariusz: Rozpoznawanie nazw ograniczone do pojedynczej sieci wirtualnej
-W tym scenariuszu masz sieć wirtualną platformy Azure, która ma wiele zasobów platformy Azure, łącznie z maszyn wirtualnych (VM). Chcesz usunąć zasoby z w ramach sieci wirtualnej za pośrednictwem określoną nazwę domeny (strefy DNS) i należy rozpoznawania nazw, prywatne i nie jest dostępny z Internetu. Ponadto w przypadku maszyn wirtualnych w sieci Wirtualnej należy platformy Azure, aby automatycznie zarejestrować je w strefie DNS. 
+## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>Scenariusz: Rozpoznawanie nazw do zakresu pojedynczej sieci wirtualnej
+W tym scenariuszu masz sieć wirtualną na platformie Azure, która zawiera wiele zasobów platformy Azure, w tym maszyn wirtualnych. Chcesz rozwiązać zasoby z sieci wirtualnej za pośrednictwem określonej nazwy domeny (strefy DNS) i potrzebujesz rozpoznawania nazw jako prywatnego i niedostępności z Internetu. Ponadto w przypadku maszyn wirtualnych w sieci wirtualnej potrzebna jest platforma Azure do automatycznego rejestrowania ich w strefie DNS. 
 
-Ten scenariusz jest opisany poniżej. Sieć wirtualną o nazwie "A" zawiera dwie maszyny wirtualne (maszyna VM1 zachodzi komunikacja równorzędna między i komunikacja równorzędna między VM2). Każdy z nich ma prywatne adresy IP skojarzone. Po utworzeniu strefy prywatnej o nazwie contoso.com i link ta sieć wirtualna jako sieć wirtualną rejestracji, usługa Azure DNS automatycznie utworzy dwa rekordy A w strefie jak pokazano. Teraz zapytania DNS z maszyny VM1 zachodzi komunikacja równorzędna między rozwiązaniem VM2.contoso.com zachodzi komunikacja równorzędna między otrzyma odpowiedź DNS, który zawiera prywatny adres IP dla maszyny VM2 zachodzi komunikacja równorzędna między. Ponadto zapytania odwrotnego systemu DNS (PTR), aby uzyskać prywatny adres IP z zachodzi komunikacja równorzędna między-VM1 (10.0.0.1) wystawionego maszyny VM2 zachodzi komunikacja równorzędna między otrzyma odpowiedź DNS, który zawiera nazwę zachodzi komunikacja równorzędna między-VM1, zgodnie z oczekiwaniami. 
+Ten scenariusz przedstawiono poniżej. Virtual Network o nazwie "A" zawiera dwie maszyny wirtualne (VNETA-VM1 i VNETA-VM2). Każdy z nich ma skojarzone prywatne adresy IP. Po utworzeniu strefy prywatnej o nazwie contoso.com i połączeniu tej sieci wirtualnej jako sieci wirtualnej rejestracji Azure DNS automatycznie utworzy dwa rekordy A w strefie. Teraz zapytania DNS z VNETA-VM1 do rozwiązania VNETA-VM2.contoso.com będą otrzymywać odpowiedzi DNS zawierające prywatny adres IP VNETA-VM2. Ponadto odwrotne zapytanie DNS (PTR) dla prywatnego adresu IP VNETA-VM1 (10.0.0.1) wydane z VNETA-VM2 otrzyma odpowiedź DNS, która zawiera nazwę VNETA-VM1, zgodnie z oczekiwaniami. 
 
-![Pojedynczy rozpoznawanie sieci wirtualnej](./media/private-dns-scenarios/single-vnet-resolution.png)
+![Rozpoznawanie pojedynczej sieci wirtualnej](./media/private-dns-scenarios/single-vnet-resolution.png)
 
 ## <a name="scenario-name-resolution-across-virtual-networks"></a>Scenariusz: Rozpoznawanie nazw w sieciach wirtualnych
 
-Ten scenariusz jest bardziej powszechne przypadek, w których należy skojarzyć strefę prywatną z wieloma sieciami wirtualnymi. W tym scenariuszu można umieścić architektury, na przykład model Gwiazda — w przypadku, gdy istnieje centralnej sieci wirtualnej koncentratora, z których wiele innych szprych sieci wirtualne są połączone. Centralna centralnej sieci wirtualnej mogą być połączone jako sieć wirtualną rejestracji na strefę prywatną i mogą być połączone sieci wirtualne będące Szprychami jako sieciami wirtualnymi rozpoznawania. 
+Ten scenariusz jest najpopularniejszym przypadkiem, w którym należy skojarzyć strefę prywatną z wieloma sieciami wirtualnymi. Ten scenariusz może być zgodny z architekturą, taką jak model gwiazdy i gwiazdy, w której istnieje Centralna Sieć wirtualna koncentratora, do której są połączone wiele innych sieci wirtualnych. Centralną sieć wirtualną centrum można połączyć jako sieć wirtualną rejestracji ze strefą prywatną, a sieci wirtualne szprychy mogą być połączone jako rozwiązania sieci wirtualne. 
 
-Na poniższym diagramie przedstawiono proste wersję w tym scenariuszu w przypadku, gdy istnieją tylko dwie sieci wirtualne - A i B. Wyznaczony jako sieć wirtualną rejestracji A i B jest wyznaczony jako sieć wirtualną rozpoznawania. Celem jest, obie sieci wirtualne udostępnić typowych strefie contoso.com. Po utworzeniu strefy i rozdzielczość i rejestracji w sieci wirtualne są połączone do strefy, Azure zostanie automatycznie rejestruje rekordy DNS dla maszyn wirtualnych (maszyny VM1 zachodzi komunikacja równorzędna między i komunikacja równorzędna między VM2) z A. sieci wirtualnej Można również ręcznie dodawać rekordy DNS do strefy dla maszyn wirtualnych w sieci wirtualnej rozpoznawania B. W przypadku takiej konfiguracji można zauważyć na następujące zachowanie dotyczące wykonywalna i wsteczna zapytania DNS:
-* Zapytania DNS od VM1 VNETC w sieć wirtualną rozpoznawania B dla VM1.contoso.com zachodzi komunikacja równorzędna między, otrzyma zawierająca prywatny adres IP z maszyny VM1 zachodzi komunikacja równorzędna między mógł zweryfikować odpowiedź DNS.
-* Kwerendy odwrotnego DNS (PTR) z maszyny VM2 VNETC w sieć wirtualną rozpoznawania B, aby uzyskać 10.1.0.1, otrzyma zawierający nazwę FQDN VNETC-VM1.contoso.com mógł zweryfikować odpowiedź DNS. Przyczyną jest to, że zapytania odwrotnego systemu DNS są ograniczone do tej samej sieci wirtualnej. 
-* Kwerendy odwrotnego DNS (PTR) z maszyny VM3 VNETC w sieć wirtualną rozpoznawania B, 10.0.0.1, otrzyma NXDOMAIN. Przyczyną jest to, że zapytania odwrotnego systemu DNS tylko są ograniczone do tej samej sieci wirtualnej. 
+Na poniższym diagramie przedstawiono prostą wersję tego scenariusza, w której istnieją tylko dwie sieci wirtualne-A i B. A jest wyznaczeni jako sieć wirtualna rejestracji, a B jest wyznaczono jako sieć wirtualna rozpoznawania. Celem jest dla obu sieci wirtualnych udostępnienie wspólnej strefy contoso.com. Gdy strefa zostanie utworzona, a sieci wirtualne rozpoznawania i rejestracji są połączone ze strefą, platforma Azure automatycznie rejestruje rekordy DNS dla maszyn wirtualnych (VNETA-VM1 i VNETA-VM2) z sieci wirtualnej A. Rekordy DNS można także dodać ręcznie do strefy dla maszyn wirtualnych w sieci wirtualnej rozwiązania B. W przypadku tej konfiguracji zaobserwujesz następujące zachowanie zapytań DNS do przodu i wstecznego:
+* Zapytanie DNS z VNETC-VM1 w sieci wirtualnej rozpoznawania B, dla VNETA-VM1.contoso.com, otrzyma odpowiedź DNS zawierającą prywatny adres IP VNETA-VM1.
+* Odwrotna kwerenda DNS (PTR) od VNETC-VM2 w sieci wirtualnej rozpoznawania B, dla 10.1.0.1, otrzyma odpowiedź DNS zawierającą VNETB-VM1.contoso.com FQDN. Przyczyną jest to, że zapytania odwrotne DNS są ograniczone do tej samej sieci wirtualnej. 
+* Zapytanie odwrotne DNS (PTR) od VNETC-VM3 w sieci wirtualnej rozpoznawania B, dla 10.0.0.1, będzie otrzymywać NXDOMAIN. Przyczyną jest to, że zapytania odwrotne DNS są ograniczone do tej samej sieci wirtualnej. 
 
 
 ![Wiele rozwiązań sieci wirtualnej](./media/private-dns-scenarios/multi-vnet-resolution.png)
 
-## <a name="scenario-split-horizon-functionality"></a>Scenariusz: Funkcja split-Horizon
+## <a name="scenario-split-horizon-functionality"></a>Scenariusz: funkcja Split-Horizon
 
-W tym scenariuszu masz przypadek użycia, w którym chcesz weź pod uwagę różne zachowanie rozpoznawania DNS, w zależności od tego, gdzie klient znajduje się (wewnątrz usługi Azure lub na zewnątrz w Internecie), dla tej samej strefie DNS. Na przykład mogą mieć prywatnych i publicznych wersji aplikacji, który zawiera różne funkcje lub zachowania, ale chcesz użyć tej samej nazwy domeny dla obu wersji. W tym scenariuszu można realizować za pomocą usługi Azure DNS, tworząc strefę DNS publicznych, jak również strefę prywatną o takiej samej nazwie.
+W tym scenariuszu masz przypadek użycia, w którym chcesz zrealizować inne zachowanie rozpoznawania nazw DNS w zależności od tego, gdzie klient znajduje się w ramach platformy Azure lub z Internetu, w przypadku tej samej strefy DNS. Na przykład możesz mieć prywatną i publiczną wersję aplikacji, która ma inne funkcje lub zachowanie, ale chcesz użyć tej samej nazwy domeny dla obu wersji. W tym scenariuszu można zrealizować Azure DNS, tworząc publiczną strefę DNS oraz strefę prywatną o tej samej nazwie.
 
-W tym scenariuszu przedstawiono na poniższym diagramie. Masz sieć wirtualną A, który ma dwie maszyny wirtualne (maszyna VM1 zachodzi komunikacja równorzędna między i komunikacja równorzędna między VM2) mających zarówno prywatne adresy IP i przydzielane publiczne adresy IP. Tworzenie strefy DNS publicznego o nazwie contoso.com i zarejestrować publicznych adresów IP dla tych maszyn wirtualnych jako rekordów DNS w strefie. Możesz również utworzyć strefy prywatnej strefy DNS jest określana skrótem contoso.com, określając A jako sieć wirtualną rejestracji. Azure powoduje automatyczne zarejestrowanie maszyny wirtualne jako rekordy do strefy prywatne, wskazując ich prywatnych adresów IP.
+Na poniższym diagramie przedstawiono ten scenariusz. Masz sieć wirtualną A, która ma dwie maszyny wirtualne (VNETA-VM1 i VNETA-VM2) z przydzielonymi prywatnymi adresami IP i publicznymi adresami IP. Tworzysz publiczną strefę DNS o nazwie contoso.com i zarejestruj publiczne adresy IP dla tych maszyn wirtualnych jako rekordy DNS w strefie. Należy również utworzyć strefę Prywatna strefa DNS o nazwie contoso.com, określając jako sieć wirtualną rejestracji. Platforma Azure automatycznie rejestruje maszyny wirtualne jako rekordy w strefie prywatnej, wskazując na ich prywatne adresy IP.
 
-Teraz gdy klienta internetowego wysyła zapytanie DNS, aby wyszukać zachodzi komunikacja równorzędna między VM1.contoso.com, Azure zwróci publiczny adres IP rekordu ze strefy publicznej. Jeśli tego samego zapytania DNS są wydawane z innej maszyny Wirtualnej (na przykład: VNETA-VM2) w tej samej sieci wirtualnej, A, Azure zwróci rekordu prywatny adres IP z prywatnej strefy. 
+Teraz, gdy klient internetowy wystawia zapytanie DNS w celu wyszukania VNETA-VM1.contoso.com, platforma Azure zwróci publiczny rekord IP ze strefy publicznej. Jeśli to samo zapytanie DNS zostało wystawione przez inną maszynę wirtualną (na przykład: VNETA-VM2) w tej samej sieci wirtualnej A, platforma Azure zwróci prywatny rekord IP ze strefy prywatnej. 
 
-![Rozpoznawanie Brian podziału](./media/private-dns-scenarios/split-brain-resolution.png)
+![Podziel Brian rozwiązanie](./media/private-dns-scenarios/split-brain-resolution.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat prywatnych stref DNS, zobacz [Using Azure DNS for private domains (Używanie usługi Azure DNS dla domen prywatnych)](private-dns-overview.md).
+## <a name="next-steps"></a>Następne kroki
+Aby dowiedzieć się więcej o prywatnych strefach DNS, zobacz [używanie Azure DNS w przypadku domen prywatnych](private-dns-overview.md).
 
-Dowiedz się, jak [tworzenia prywatnej strefy DNS](./private-dns-getstarted-powershell.md) w usłudze Azure DNS.
+Dowiedz się, jak [utworzyć prywatną strefę DNS](./private-dns-getstarted-powershell.md) w Azure DNS.
 
-Dowiedz się więcej o stref i rekordów DNS, odwiedzając: [Strefy i rekordy przegląd DNS](dns-zones-records.md).
+Dowiedz się więcej o strefach i rekordach DNS, odwiedzając: [Omówienie stref i rekordów DNS](dns-zones-records.md).
 
 Poznaj inne kluczowe [możliwości sieciowe](../networking/networking-overview.md) platformy Azure.
 

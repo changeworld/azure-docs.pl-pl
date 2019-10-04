@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b7f701cd3ce07099d80bca40e506108bcc9a9da9
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b4eebf7dac4d388411f570b1546c96e3b82b2a98
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178097"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950060"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i Azure Resource Manager
 
@@ -33,7 +33,7 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
 Aby użyć szablonu, należy wykonać następujące czynności:
 
 - Utwórz nowy plik JSON i skopiuj szablon
-- Zamień `<your-principal-id>` na unikatowy identyfikator użytkownika, grupy lub aplikacji, do której ma zostać przypisana rola. Identyfikator ma format:`11111111-1111-1111-1111-111111111111`
+- Zastąp `<your-principal-id>` unikatowym identyfikatorem użytkownika, grupy lub aplikacji, do której ma zostać przypisana rola. Identyfikator ma format: `11111111-1111-1111-1111-111111111111`
 
 ```json
 {
@@ -159,6 +159,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
 ```
 
+> [!NOTE]
+> Ten szablon nie jest idempotentne, chyba że ta sama wartość `roleNameGuid` jest podana jako parametr dla każdego wdrożenia szablonu. Jeśli nie podano `roleNameGuid`, domyślnie nowy identyfikator GUID jest generowany dla każdego wdrożenia, a kolejne wdrożenia zakończą się niepowodzeniem z błędem `Conflict: RoleAssignmentExists`.
+
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>Tworzenie przypisania roli w zakresie zasobów
 
 Jeśli konieczne jest utworzenie przypisania roli na poziomie zasobu, format przypisania roli jest inny. Podaj przestrzeń nazw dostawcy zasobów i typ zasobu zasobu, do którego ma zostać przypisana rola. Należy również podać nazwę zasobu w nazwie przypisania roli.
@@ -180,8 +183,6 @@ Aby użyć szablonu, należy określić następujące dane wejściowe:
 
 - Unikatowy identyfikator użytkownika, grupy lub aplikacji, do której ma zostać przypisana rola
 - Rola do przypisania
-- Unikatowy identyfikator, który będzie używany do przypisania roli, lub można użyć identyfikatora domyślnego
-
 
 ```json
 {
@@ -203,13 +204,6 @@ Aby użyć szablonu, należy określić następujące dane wejściowe:
             ],
             "metadata": {
                 "description": "Built-in role to assign"
-            }
-        },
-        "roleNameGuid": {
-            "type": "string",
-            "defaultValue": "[newGuid()]",
-            "metadata": {
-                "description": "A new GUID used to identify the role assignment"
             }
         },
         "location": {
@@ -238,7 +232,7 @@ Aby użyć szablonu, należy określić następujące dane wejściowe:
         {
             "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
             "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(parameters('storageName'))))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -267,12 +261,12 @@ Poniżej przedstawiono przykład przypisania roli współautor do użytkownika d
 
 ## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Tworzenie przypisania roli dla nowej nazwy głównej usługi
 
-Jeśli utworzysz nową nazwę główną usługi i natychmiast spróbujesz przypisać rolę do tej jednostki usługi, w niektórych przypadkach przypisanie roli może zakończyć się niepowodzeniem. Jeśli na przykład utworzysz nową tożsamość zarządzaną, a następnie spróbujesz przypisać rolę do tej jednostki usługi w tym samym szablonie Azure Resource Manager, przypisanie roli może zakończyć się niepowodzeniem. Przyczyną tego błędu jest prawdopodobnie opóźnienie replikacji. Nazwa główna usługi jest tworzona w jednym regionie; jednak przypisanie roli może wystąpić w innym regionie, który jeszcze nie replikuje jednostki usługi. Aby rozwiązać ten scenariusz, należy ustawić `principalType` właściwość na `ServicePrincipal` przy tworzeniu przypisania roli.
+Jeśli utworzysz nową nazwę główną usługi i natychmiast spróbujesz przypisać rolę do tej jednostki usługi, w niektórych przypadkach przypisanie roli może zakończyć się niepowodzeniem. Jeśli na przykład utworzysz nową tożsamość zarządzaną, a następnie spróbujesz przypisać rolę do tej jednostki usługi w tym samym szablonie Azure Resource Manager, przypisanie roli może zakończyć się niepowodzeniem. Przyczyną tego błędu jest prawdopodobnie opóźnienie replikacji. Nazwa główna usługi jest tworzona w jednym regionie; jednak przypisanie roli może wystąpić w innym regionie, który jeszcze nie replikuje jednostki usługi. Aby rozwiązać ten scenariusz, należy ustawić właściwość `principalType` na `ServicePrincipal` podczas tworzenia przypisania roli.
 
 Poniższy szablon demonstruje:
 
 - Jak utworzyć nową nazwę główną usługi tożsamości zarządzanej
-- Jak określić`principalType`
+- Jak określić `principalType`
 - Jak przypisać rolę współautor do tej nazwy głównej usługi w zakresie grupy zasobów
 
 Aby użyć szablonu, należy określić następujące dane wejściowe:
@@ -335,7 +329,7 @@ Poniżej przedstawiono przykład przypisania roli współautor do nowej jednostk
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Szybki start: tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [Understand the structure and syntax of Azure Resource Manager Templates (Omówienie struktury i składni szablonów usługi Azure Resource Manager)](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Tworzenie grup zasobów i zasobów na poziomie subskrypcji](../azure-resource-manager/deploy-to-subscription.md)
 - [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=rbac)

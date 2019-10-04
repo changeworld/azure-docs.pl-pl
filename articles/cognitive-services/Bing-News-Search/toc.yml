@@ -49,8 +49,8 @@
     - name: Obsługa wyróżniania trafień
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Dzielenie wiadomości na strony
-      href: paging-news.md
+    - name: Dzielenie wyników wyszukiwania na strony
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Zmiana rozmiaru i przycinanie miniatur
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

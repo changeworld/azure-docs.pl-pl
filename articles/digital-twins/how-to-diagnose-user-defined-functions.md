@@ -1,20 +1,20 @@
 ---
 title: Jak debugować UDF w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Wskazówki dotyczące debugowania UDF w usłudze Azure Digital bliźniaczych reprezentacji.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: df12d6866f5e9e6bf492e228e32b0b10f7266eb4
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843869"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949886"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak debugować funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 

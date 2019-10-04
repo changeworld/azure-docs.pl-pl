@@ -1,5 +1,5 @@
 ---
-title: 'Program Azure AD Connect: Bezproblemowe logowanie jednokrotne — często zadawane pytania | Microsoft Docs'
+title: 'Azure AD Connect: bezproblemowe logowanie jednokrotne — często zadawane pytania | Microsoft Docs'
 description: Odpowiedzi na często zadawane pytania dotyczące Azure Active Directory bezproblemowego logowania jednokrotnego.
 services: active-directory
 keywords: Co to jest Azure AD Connect, zainstaluj Active Directory, wymagane składniki usługi Azure AD, logowania jednokrotnego, rejestracji jednokrotnej
@@ -16,137 +16,137 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96d0253e1e656f4bdb5180af0d57824aceb4f0dd
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b12acf083e83d42ff3e8d6967d747f4bb2d93543
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176667"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960199"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblemowe logowanie jednokrotne: Często zadawane pytania
+# <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblemowe logowanie jednokrotne: często zadawane pytania
 
 W tym artykule opisano często zadawane pytania dotyczące Azure Active Directory bezproblemowego logowania jednokrotnego. Kontynuuj sprawdzanie pod kątem nowej zawartości.
 
-**Pyt.: Jakie metody logowania ułatwiają pracę z logowaniem jednokrotnym za pomocą**
+**P: Jakie metody logowania umożliwiają bezproblemowe logowanie jednokrotne za pomocą**
 
 Bezproblemowe logowanie jednokrotne może być łączone z [synchronizacją skrótów haseł](how-to-connect-password-hash-synchronization.md) lub metodami logowania przy [użyciu uwierzytelniania przekazywanego](how-to-connect-pta.md) . Ta funkcja nie może być używana z usługą Active Directory Federation Services (AD FS).
 
-**Pyt.: Czy bezproblemowe logowanie jednokrotne jest bezpłatne?**
+**P: ma bezproblemowe bezpłatne funkcje rejestracji jednokrotnej?**
 
 Bezproblemowe logowanie jednokrotne jest bezpłatną funkcją i nie są potrzebne żadne płatne wersje usługi Azure AD do użycia.
 
-**Pyt.: Jest bezproblemowe dostęp do usługi SSO w [chmurze Microsoft Azure (Niemcy)](https://www.microsoft.de/cloud-deutschland) i w [chmurze Microsoft Azure Government](https://azure.microsoft.com/features/gov/)?**
+**P: ma bezproblemowe dostęp do logowania jednokrotnego w [chmurze Microsoft Azure (Niemcy)](https://www.microsoft.de/cloud-deutschland) i w [chmurze Microsoft Azure Government](https://azure.microsoft.com/features/gov/)?**
 
 Nie. Bezproblemowe logowanie jednokrotne jest dostępne tylko w świecie wystąpienia usługi Azure AD.
 
-**Pyt.: Jakie aplikacje wykorzystują `domain_hint` funkcję lub `login_hint` możliwość bezproblemowego logowania jednokrotnego?**
+**P: Jakie aplikacje wykorzystują funkcje `domain_hint` lub `login_hint` dla bezproblemowego logowania jednokrotnego?**
 
 Poniżej wymieniono niekompletną listę aplikacji, które mogą wysyłać te parametry do usługi Azure AD. w związku z tym użytkownicy uzyskują dyskretne środowisko logowania za pomocą bezproblemowego logowania jednokrotnego (tzn. nie ma potrzeby wprowadzania nazw użytkowników ani haseł przez użytkownika):
 
 | Nazwa aplikacji | Adres URL aplikacji do użycia |
 | -- | -- |
-| Panel dostępu | https:\//myapps.Microsoft.com/contoso.com |
-| Program Outlook w sieci Web | https:\//Outlook.office365.com/contoso.com |
-| Portale pakietu Office 365 | https:\//Portal.Office.com? domain_hint = contoso. com, https:\//www.Office.com? domain_hint = contoso. com |
+| Panel dostępu | https: \//moje aplikacje. Microsoft. com/contoso. com |
+| Program Outlook w sieci Web | https: \//Outlook. Office 365. com/contoso. com |
+| Portale pakietu Office 365 | https: \//Portal. Office. com? domain_hint = contoso. com, https: \//www. Office. com? domain_hint = contoso. com |
 
-Ponadto użytkownicy uzyskują ciche czynności w przypadku, gdy aplikacja wysyła żądania logowania do punktów końcowych usługi Azure AD skonfigurowanych jako dzierżawcy — czyli https:\//login.microsoftonline.com/contoso.com/<.. > lub https:\//login.microsoftonline.com/<tenant_ID>/<.. > — zamiast wspólnego punktu końcowego usługi Azure AD, czyli https:\//login.microsoftonline.com/common/<... >. Poniżej wymieniono niekompletną listę aplikacji, które tworzą te typy żądań logowania.
+Ponadto użytkownicy uzyskują ciche działania w przypadku, gdy aplikacja wysyła żądania logowania do punktów końcowych usługi Azure AD skonfigurowanych jako dzierżawcy — czyli https: \//login. microsoftonline. com/contoso. com/<.. > lub https: \//login. microsoftonline. com/< tenant_ID >/<.. > — zamiast wspólnego punktu końcowego usługi Azure AD — czyli protokołu https: \//login. microsoftonline. com/common/<... >. Poniżej wymieniono niekompletną listę aplikacji, które tworzą te typy żądań logowania.
 
 | Nazwa aplikacji | Adres URL aplikacji do użycia |
 | -- | -- |
-| SharePoint Online | https:\//contoso.SharePoint.com |
-| Azure Portal | https:\//Portal.Azure.com/contoso.com |
+| SharePoint Online | https: \//contoso. SharePoint. com |
+| Azure Portal | https: \//Portal. Azure. com/contoso. com |
 
 W powyższych tabelach Zastąp ciąg "contoso.com" nazwą domeny, aby uzyskać dostęp do odpowiednich adresów URL aplikacji dla dzierżawy.
 
 Jeśli chcesz, aby inne aplikacje korzystali z naszych dyskretnych funkcji logowania, poinformuj nas o tym w sekcji opinii.
 
-**Pyt.: Czy nie jest to `Alternate ID` nazwa użytkownika, `userPrincipalName`która bezproblemowo obsługuje logowanie jednokrotne?**
+**P: zapewnia bezproblemową obsługę logowania jednokrotnego `Alternate ID` jako nazwę użytkownika, a nie `userPrincipalName`?**
 
-Tak. Bezproblemowe logowanie jednokrotne jest obsługiwane `Alternate ID` jako nazwa użytkownika po skonfigurowaniu w Azure AD Connect, jak pokazano [poniżej](how-to-connect-install-custom.md). Nie wszystkie aplikacje `Alternate ID`pakietu Office 365. Zapoznaj się z dokumentacją dotyczącą pomocy technicznej dotyczącej określonej aplikacji.
+Tak. Bezproblemowe logowanie jednokrotne obsługuje `Alternate ID` jako nazwę użytkownika po skonfigurowaniu w Azure AD Connect, jak pokazano [poniżej](how-to-connect-install-custom.md). Nie wszystkie aplikacje pakietu Office 365 obsługują `Alternate ID`. Zapoznaj się z dokumentacją dotyczącą pomocy technicznej dotyczącej określonej aplikacji.
 
-**Pyt.: Czym różni się środowisko logowania jednokrotnego zapewniane przez [usługę Azure AD Join](../active-directory-azureadjoin-overview.md) i bezproblemowe logowanie jednokrotne?**
+**P: Jaka jest różnica między środowiskiem logowania jednokrotnego udostępnianym przez [usługę Azure AD Join](../active-directory-azureadjoin-overview.md) i bezproblemowe logowanie jednokrotne?**
 
 [Usługa Azure AD Join](../active-directory-azureadjoin-overview.md) umożliwia logowanie jednokrotne dla użytkowników, jeśli ich urządzenia są zarejestrowane w usłudze Azure AD. Urządzenia te nie muszą być przyłączone do domeny. Logowanie jednokrotne jest dostarczane przy użyciu *podstawowych tokenów odświeżania* lub *PRTs*, a nie protokołu Kerberos. Środowisko użytkownika jest najbardziej optymalne na urządzeniach z systemem Windows 10. Logowanie jednokrotne odbywa się automatycznie w przeglądarce Microsoft Edge. Działa również w programie Chrome przy użyciu rozszerzenia przeglądarki.
 
 W dzierżawie można używać zarówno sprzężenia usługi Azure AD, jak i bezproblemowego logowania jednokrotnego. Te dwie funkcje uzupełniają się. Jeśli obie funkcje są włączone, logowanie jednokrotne z usługi Azure AD ma pierwszeństwo przed bezproblemowym logowaniem jednokrotnym.
 
-**Pyt.: Chcę zarejestrować urządzenia z systemem innym niż Windows 10 w usłudze Azure AD bez używania AD FS. Czy zamiast tego można użyć bezproblemowego logowania jednokrotnego?**
+**P: chcę zarejestrować urządzenia z systemem innym niż Windows 10 w usłudze Azure AD bez używania AD FS. Czy zamiast tego można użyć bezproblemowego logowania jednokrotnego?**
 
 Tak, ten scenariusz wymaga wersji 2,1 lub nowszej [klienta dołączania do miejsca pracy](https://www.microsoft.com/download/details.aspx?id=53554).
 
-**Pyt.: Jak można wycofać klucz `AZUREADSSOACC` odszyfrowujący protokołu Kerberos konta komputera?**
+**P: jak można wycofać klucz odszyfrowujący protokołu Kerberos konta komputera `AZUREADSSOACC`?**
 
-Ważne jest, aby często przetworzyć klucz `AZUREADSSOACC` odszyfrowujący protokołu Kerberos konta komputera (co reprezentuje usługę Azure AD) utworzony w lokalnym lesie usługi AD.
+Ważne jest, aby często przetworzyć klucz odszyfrowujący protokołu Kerberos dla konta komputera `AZUREADSSOACC` (co reprezentuje usługę Azure AD) utworzonego w lokalnym lesie usługi AD.
 
 >[!IMPORTANT]
 >Zdecydowanie zalecamy przeprowadzenie klucza odszyfrowywania Kerberos co najmniej co 30 dni.
 
 Wykonaj następujące kroki na serwerze lokalnym, na którym jest uruchomiony program Azure AD Connect:
 
-    **Step 1. Get list of AD forests where Seamless SSO has been enabled**
+   **Krok 1. Pobierz listę lasów usługi AD, w których włączono bezproblemowe logowanie jednokrotne**
 
-    1. Najpierw pobierz i zainstaluj program [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
-    2. Przejdź do folderu `%programfiles%\Microsoft Azure Active Directory Connect`.
-    3. Zaimportuj bezproblemowe moduł programu PowerShell dla logowania jednokrotnego za pomocą tego polecenia: `Import-Module .\AzureADSSO.psd1`.
-    4. Uruchom program PowerShell jako administrator. W programie PowerShell Wywołaj `New-AzureADSSOAuthenticationContext`polecenie. To polecenie powinno umożliwić podręczne wprowadzenie poświadczeń administratora globalnego dzierżawy.
-    5. Wywołanie `Get-AzureADSSOStatus | ConvertFrom-Json`. To polecenie umożliwia wyświetlenie listy lasów usługi AD (Zobacz listę "domeny"), na której włączono tę funkcję.
+   1. Najpierw pobierz i zainstaluj program [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   2. Przejdź do folderu `%programfiles%\Microsoft Azure Active Directory Connect`.
+   3. Zaimportuj bezproblemowy moduł programu PowerShell dla logowania jednokrotnego za pomocą tego polecenia: `Import-Module .\AzureADSSO.psd1`.
+   4. Uruchom program PowerShell jako administrator. W programie PowerShell Wywołaj `New-AzureADSSOAuthenticationContext`. To polecenie powinno umożliwić podręczne wprowadzenie poświadczeń administratora globalnego dzierżawy.
+   5. Wywołaj `Get-AzureADSSOStatus | ConvertFrom-Json`. To polecenie umożliwia wyświetlenie listy lasów usługi AD (Zobacz listę "domeny"), na której włączono tę funkcję.
 
-    **Krok 2. Zaktualizuj klucz odszyfrowujący protokołu Kerberos w każdym lesie usługi AD, na którym został on skonfigurowany**
+   **Krok 2. Zaktualizuj klucz odszyfrowujący protokołu Kerberos w każdym lesie usługi AD, na którym został on skonfigurowany**
 
-    1. Wywołanie `$creds = Get-Credential`. Po wyświetleniu monitu wprowadź poświadczenia administratora domeny dla zamierzonego lasu usługi AD.
+   1. Wywołaj `$creds = Get-Credential`. Po wyświetleniu monitu wprowadź poświadczenia administratora domeny dla zamierzonego lasu usługi AD.
 
-    > [!NOTE]
-    > Używamy nazwy użytkownika administratora domeny, która została podana w formacie głównej nazwy użytkownika (UPN)johndoe@contoso.com() lub kwalifikowanej nazwy konta sam (contoso\johndoe lub contoso. com\johndoe) zgodnej z domeną, aby znaleźć zamierzony Las usługi AD. Jeśli używana jest kwalifikowana nazwa konta sam, używana jest część domeny nazwy użytkownika do [lokalizowania kontrolera domeny administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego używasz nazwy UPN, [przetłumaczmy ją na nazwę konta sam z kwalifikowaną domeną](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) .
+   > [!NOTE]
+   > Używamy nazwy użytkownika administratora domeny, która została podana w formacie nazwy głównej użytkownika (UPN) (johndoe@contoso.com) lub w formacie contoso\johndoe lub contoso. com\johndoe (kwalifikowana nazwa konta), aby znaleźć zamierzony Las usługi AD. Jeśli używana jest kwalifikowana nazwa konta sam, używana jest część domeny nazwy użytkownika do [lokalizowania kontrolera domeny administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego używasz nazwy UPN, [przetłumaczmy ją na nazwę konta sam z kwalifikowaną domeną](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) .
 
-    2. Wywołanie `Update-AzureADSSOForest -OnPremCredentials $creds`. To polecenie aktualizuje klucz odszyfrowujący protokołu Kerberos dla `AZUREADSSOACC` konta komputera w tym określonym lesie usługi AD i aktualizuje go w usłudze Azure AD.
-    3. Powtórz powyższe kroki dla każdego lasu usługi AD, dla którego skonfigurowano funkcję.
+   2. Wywołaj `Update-AzureADSSOForest -OnPremCredentials $creds`. To polecenie aktualizuje klucz odszyfrowujący protokołu Kerberos dla konta komputera `AZUREADSSOACC` w tym określonym lesie usługi AD i aktualizuje go w usłudze Azure AD.
+   3. Powtórz powyższe kroki dla każdego lasu usługi AD, dla którego skonfigurowano funkcję.
 
-    >[!IMPORTANT]
-    >Upewnij się, że `Update-AzureADSSOForest` polecenie nie jest uruchamiane więcej niż raz. W przeciwnym razie funkcja przestanie działać do czasu wygaśnięcia biletów protokołu Kerberos użytkowników i zostanie ponownie wystawiona przez Active Directory lokalnych.
+   >[!IMPORTANT]
+   >Upewnij się, że polecenie `Update-AzureADSSOForest` _nie_ jest uruchamiane więcej niż raz. W przeciwnym razie funkcja przestanie działać do czasu wygaśnięcia biletów protokołu Kerberos użytkowników i zostanie ponownie wystawiona przez Active Directory lokalnych.
 
-**Pyt.: Jak mogę wyłączyć bezproblemowe logowanie jednokrotne?**
+**P: Jak mogę wyłączyć bezproblemowe logowanie jednokrotne?**
 
-    **Step 1. Disable the feature on your tenant**
+   **Krok 1. Wyłącz funkcję w dzierżawie**
 
-        **Option A: Disable using Azure AD Connect**
+   **Opcja A: Wyłącz używanie Azure AD Connect**
+    
+   1. Uruchom Azure AD Connect, wybierz pozycję **Zmień stronę logowania użytkownika** , a następnie kliknij przycisk **dalej**.
+   2. Usuń zaznaczenie opcji **Włącz logowanie jednokrotne** . Kontynuuj pracę z kreatorem.
 
-        1. Run Azure AD Connect, choose **Change user sign-in page** and click **Next**.
-        2. Uncheck the **Enable single sign on** option. Continue through the wizard.
+   Po ukończeniu działania kreatora bezproblemowy Logowanie jednokrotne zostanie wyłączone w dzierżawie. Zobaczysz jednak komunikat na ekranie, który odczytuje w następujący sposób:
 
-        After completing the wizard, Seamless SSO will be disabled on your tenant. However, you will see a message on screen that reads as follows:
+   "Logowanie jednokrotne jest teraz wyłączone, ale istnieją dodatkowe czynności ręczne, które należy wykonać w celu ukończenia czyszczenia. Dowiedz się więcej "
 
-        "Single sign-on is now disabled, but there are additional manual steps to perform in order to complete clean-up. Learn more"
+   Aby ukończyć proces oczyszczania, wykonaj kroki 2 i 3 na serwerze lokalnym, na którym jest uruchomiony program Azure AD Connect.
 
-        To complete the clean-up process, follow steps 2 and 3 on the on-premises server where you are running Azure AD Connect.
+   **Opcja B: wyłączanie przy użyciu programu PowerShell**
 
-        **Option B: Disable using PowerShell**
+   Na serwerze lokalnym, na którym jest uruchomiony program Azure AD Connect, wykonaj następujące czynności:
 
-        Run the following steps on the on-premises server where you are running Azure AD Connect:
+   1. Najpierw pobierz i zainstaluj program [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   2. Przejdź do folderu `%programfiles%\Microsoft Azure Active Directory Connect`.
+   3. Zaimportuj bezproblemowy moduł programu PowerShell dla logowania jednokrotnego za pomocą tego polecenia: `Import-Module .\AzureADSSO.psd1`.
+   4. Uruchom program PowerShell jako administrator. W programie PowerShell Wywołaj `New-AzureADSSOAuthenticationContext`. To polecenie powinno umożliwić podręczne wprowadzenie poświadczeń administratora globalnego dzierżawy.
+   5. Wywołaj `Enable-AzureADSSO -Enable $false`.
 
-        1. First, download, and install [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
-        2. Navigate to the `%programfiles%\Microsoft Azure Active Directory Connect` folder.
-        3. Import the Seamless SSO PowerShell module using this command: `Import-Module .\AzureADSSO.psd1`.
-        4. Run PowerShell as an Administrator. In PowerShell, call `New-AzureADSSOAuthenticationContext`. This command should give you a popup to enter your tenant's Global Administrator credentials.
-        5. Call `Enable-AzureADSSO -Enable $false`.
+   >[!IMPORTANT]
+   >Wyłączenie bezproblemowego logowania jednokrotnego przy użyciu programu PowerShell nie spowoduje zmiany stanu w Azure AD Connect. Bezproblemowe logowanie jednokrotne zostanie wyświetlone jako włączone na stronie **zmiany logowania użytkownika** .
 
-        >[!IMPORTANT]
-        >Disabling Seamless SSO using PowerShell will not change the state in Azure AD Connect. Seamless SSO will show as enabled in the **Change user sign-in** page.
+   **Krok 2. Pobierz listę lasów usługi AD, w których włączono bezproblemowe logowanie jednokrotne**
 
-    **Step 2. Get list of AD forests where Seamless SSO has been enabled**
+   Wykonaj zadania od 1 do 4 poniżej, jeśli wyłączono bezproblemowe logowanie jednokrotne przy użyciu Azure AD Connect. Jeśli wyłączysz bezproblemowe logowanie jednokrotne przy użyciu programu PowerShell, przejdź do kolejnego zadania 5 poniżej.
 
-    Follow tasks 1 through 4 below if you have disabled Seamless SSO using Azure AD Connect. If you have disabled Seamless SSO using PowerShell instead, jump ahead to task 5 below.
+   1. Najpierw pobierz i zainstaluj program [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   2. Przejdź do folderu `%programfiles%\Microsoft Azure Active Directory Connect`.
+   3. Zaimportuj bezproblemowy moduł programu PowerShell dla logowania jednokrotnego za pomocą tego polecenia: `Import-Module .\AzureADSSO.psd1`.
+   4. Uruchom program PowerShell jako administrator. W programie PowerShell Wywołaj `New-AzureADSSOAuthenticationContext`. To polecenie powinno umożliwić podręczne wprowadzenie poświadczeń administratora globalnego dzierżawy.
+   5. Wywołaj `Get-AzureADSSOStatus | ConvertFrom-Json`. To polecenie umożliwia wyświetlenie listy lasów usługi AD (Zobacz listę "domeny"), na której włączono tę funkcję.
 
-    1. Najpierw pobierz i zainstaluj program [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
-    2. Przejdź do folderu `%programfiles%\Microsoft Azure Active Directory Connect`.
-    3. Zaimportuj bezproblemowe moduł programu PowerShell dla logowania jednokrotnego za pomocą tego polecenia: `Import-Module .\AzureADSSO.psd1`.
-    4. Uruchom program PowerShell jako administrator. W programie PowerShell Wywołaj `New-AzureADSSOAuthenticationContext`polecenie. To polecenie powinno umożliwić podręczne wprowadzenie poświadczeń administratora globalnego dzierżawy.
-    5. Wywołanie `Get-AzureADSSOStatus | ConvertFrom-Json`. To polecenie umożliwia wyświetlenie listy lasów usługi AD (Zobacz listę "domeny"), na której włączono tę funkcję.
-
-    **Krok 3. Ręcznie usuń `AZUREADSSOACCT` konto komputera z poszczególnych lasów usługi AD, które są widoczne na liście.**
+   **Krok 3. Ręcznie usuń konto komputera `AZUREADSSOACCT` z każdego lasu usługi AD, który znajduje się na liście.**
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [**Szybki Start**](how-to-connect-sso-quick-start.md) — Uzyskaj i korzystaj z bezproblemowego logowania jednokrotnego usługi Azure AD.
+- [**Przewodnik Szybki Start**](how-to-connect-sso-quick-start.md) — Rozpoczynanie pracy z usługą Azure AD bez logowania jednokrotnego.
 - [**Szczegółowee techniczne głębokie**](how-to-connect-sso-how-it-works.md) — zrozumienie, jak działa ta funkcja.
 - [**Rozwiązywanie problemów**](tshoot-connect-sso.md) — Dowiedz się, jak rozwiązywać typowe problemy z funkcją.
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) — w przypadku zgłaszania nowych żądań funkcji.

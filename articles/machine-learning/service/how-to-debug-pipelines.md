@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.author: trbye
 author: trevorbye
-ms.date: 10/01/2019
-ms.openlocfilehash: 50593741e185a146c5a376c34da959063198e7d0
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 10/03/2019
+ms.openlocfilehash: 3df95f88c057fa564078dbf05d5dfa4b26150f6a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813810"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959652"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debugowanie i rozwiązywanie problemów z potokami uczenia maszynowego
 
@@ -27,7 +27,7 @@ Poniższe sekcje zawierają omówienie typowych pułapek podczas kompilowania po
 
 Jeden z najczęstszych błędów w potoku polega na tym, że dołączony skrypt (skrypt czyszczący dane, skrypt oceniania itp.) nie jest uruchomiony zgodnie z oczekiwaniami lub zawiera błędy środowiska uruchomieniowego w zdalnym kontekście obliczeniowym, które są trudne do debugowania w obszarze roboczym w Azure Portal. 
 
-Potoki same nie mogą być uruchamiane lokalnie, ale testowanie jednostkowe skryptów jest łatwym sposobem, aby upewnić się, że skrypty działają zgodnie z oczekiwaniami, bez czekania na pełny czas trwania uruchomienia potoku. Aby to zrobić, należy wykonać następujące czynności:
+Potoki same nie mogą być uruchamiane lokalnie, ale uruchamianie skryptów w izolacji na komputerze lokalnym pozwala na szybsze debugowanie, ponieważ nie trzeba czekać na proces tworzenia i kompilowania środowiska. Aby to zrobić, należy wykonać następujące czynności:
 
 * Jeśli dane są w magazynie danych w chmurze, musisz pobrać dane i udostępnić je dla skryptu. Użycie małego przykładu danych jest dobrym sposobem na wycinanie w czasie wykonywania i szybkie uzyskanie opinii na temat zachowania skryptu
 * Jeśli podjęto próbę symulowania pośredniego etapu potoku, może być konieczne ręczne skompilowanie typów obiektów, których konkretny skrypt oczekuje od poprzedniego kroku
@@ -38,6 +38,9 @@ Po skonfigurowaniu skryptu do uruchomienia w środowisku lokalnym można znaczni
 * Dołączanie konfiguracji debugowania niestandardowego
 * Wstrzymywanie wykonywania i sprawdzania stanu obiektu
 * Typ przechwytywania lub błędy logiczne, które nie zostaną ujawnione do czasu wykonania
+
+> [!TIP] 
+> Po sprawdzeniu, czy skrypt działa zgodnie z oczekiwaniami, dobrym następnym krokiem jest uruchomienie skryptu w potoku jednoetapowym przed podjęciem próby uruchomienia go w potoku z wieloma krokami.
 
 ## <a name="debugging-scripts-from-remote-context"></a>Debugowanie skryptów z kontekstu zdalnego
 
@@ -71,7 +74,7 @@ Przejdź do karty **dzienniki** . Inne dzienniki zawierają informacje o procesi
 
 Poniższa tabela zawiera typowe problemy podczas tworzenia potoku z potencjalnymi rozwiązaniami.
 
-| Związane | Możliwe rozwiązanie |
+| Problem | Możliwe rozwiązanie |
 |--|--|
 | Nie można przekazać danych do katalogu `PipelineData` | Upewnij się, że utworzono katalog w skrypcie, który odnosi się do miejsca, w którym potok oczekuje danych wyjściowych kroku. W większości przypadków argument wejściowy określi katalog wyjściowy, a następnie utworzysz katalog jawnie. Użyj `os.makedirs(args.output_dir, exist_ok=True)`, aby utworzyć katalog wyjściowy. Zapoznaj się z [samouczkiem](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) przykładowego skryptu oceniania, który pokazuje ten Wzorzec projektowy. |
 | Błędy zależności | Jeśli lokalnie opracowano i przetestowano skrypty, ale występują problemy z zależnościami podczas uruchamiania na zdalnym obliczeniu w potoku, upewnij się, że zależności środowiska obliczeniowego i wersje są zgodne ze środowiskiem testowym. |

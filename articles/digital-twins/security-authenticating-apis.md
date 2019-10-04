@@ -1,19 +1,19 @@
 ---
 title: Informacje o uwierzytelnianiu interfejsu API za pomocą usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Dowiedz się, jak łączyć się z interfejsami API i uwierzytelniać je za pomocą usługi Azure Digital bliźniaczych reprezentacji.
-author: lyrana
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: lyhughes
-ms.openlocfilehash: 6d8d6f03847fcd22a6d78c445ae039c73e9badfa
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: c75db8d1885c8680dd316952a5f67e11dc26edb1
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719164"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949795"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Nawiązywanie połączenia z interfejsami API i uwierzytelnianie przy użyciu
 
@@ -24,7 +24,7 @@ Aby zapoznać się z omówieniem usługi Azure AD, odwiedź [stronę podstawy](h
 > [!TIP]
 > Postępuj zgodnie z [samouczkiem](tutorial-facilities-setup.md) , aby skonfigurować i uruchomić przykładową aplikację usługi Azure Digital bliźniaczych reprezentacji.
 
-Aby zintegrować aplikację lub usługę z usługą Azure AD, deweloper musi najpierw zarejestrować aplikację w usłudze Azure AD. Szczegółowe instrukcje i zrzuty ekranu znajdują się w [tym przewodniku szybki start](../active-directory/develop/quickstart-register-app.md).
+Aby zintegrować aplikację lub usługę z usługą Azure AD, Deweloper musi najpierw zarejestrować aplikację w usłudze Azure AD. Szczegółowe instrukcje i zrzuty ekranu znajdują się w [tym przewodniku szybki start](../active-directory/develop/quickstart-register-app.md).
 
 Usługa Azure AD obsługuje [pięć scenariuszy aplikacji podstawowych](../active-directory/develop/v2-app-types.md) :
 

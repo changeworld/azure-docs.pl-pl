@@ -1,19 +1,19 @@
 ---
 title: Wyjście i punkty końcowe w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Wskazówki dotyczące sposobu tworzenia punktów końcowych za pomocą usługi Azure Digital bliźniaczych reprezentacji.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
-ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.date: 10/02/2019
+ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013936"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959111"
 ---
 # <a name="egress-and-endpoints"></a>Wyjście i punkty końcowe
 
@@ -23,7 +23,7 @@ Zdarzenia są kierowane do punktów końcowych zgodnie ze wstępnie zdefiniowany
 
 Aby dowiedzieć się więcej o zdarzeniach, routingu i typach zdarzeń, zobacz [zdarzenia routingu i komunikaty w usłudze Azure Digital bliźniaczych reprezentacji](./concepts-events-routing.md).
 
-## <a name="events"></a>Events
+## <a name="events"></a>Zdarzenia
 
 Zdarzenia są wysyłane przez obiekty IoT (takie jak urządzenia i czujniki) do przetwarzania przez brokerów komunikatów i zdarzeń platformy Azure. Zdarzenia są definiowane przez następujące [Azure Event Grid odwołanie do schematu zdarzenia](../event-grid/event-schema.md).
 
@@ -47,16 +47,16 @@ Zdarzenia są wysyłane przez obiekty IoT (takie jak urządzenia i czujniki) do 
 }
 ```
 
-| Atrybut | Type | Opis |
+| Atrybut | Typ | Opis |
 | --- | --- | --- |
-| id | string | Unikatowy identyfikator zdarzenia. |
-| subject | string | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
-| data | object | Dane zdarzenia specyficzne dla dostawcy zasobów. |
+| identyfikator | string | Unikatowy identyfikator zdarzenia. |
+| Temat | string | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| dane | object | Dane zdarzenia specyficzne dla dostawcy zasobów. |
 | Klasę | string | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
 | eventTime | string | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
-| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca definiuje wersję schematu. |
-| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
-| topic | string | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
+| wersja | string | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | string | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
+| rozdziału | string | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
 
 Aby uzyskać więcej informacji o schemacie zdarzeń Event Grid:
 
@@ -90,7 +90,7 @@ Formaty zdarzeń dla każdego typu zdarzenia są opisane w poniższych podsekcja
 - Czujnik
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Spacja
+- Miejsce
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -122,7 +122,7 @@ Formaty zdarzeń dla każdego typu zdarzenia są opisane w poniższych podsekcja
 }
 ```
 
-| Value | Zamień na |
+| Wartość | Zamień na |
 | --- | --- |
 | YOUR_TOPIC_NAME | Nazwa dostosowanego tematu |
 
@@ -153,7 +153,7 @@ Formaty zdarzeń dla każdego typu zdarzenia są opisane w poniższych podsekcja
 }
 ```
 
-| Value | Zamień na |
+| Wartość | Zamień na |
 | --- | --- |
 | YOUR_TOPIC_NAME | Nazwa dostosowanego tematu |
 
@@ -188,7 +188,7 @@ Formaty zdarzeń dla każdego typu zdarzenia są opisane w poniższych podsekcja
 }
 ```
 
-| Value | Zamień na |
+| Wartość | Zamień na |
 | --- | --- |
 | YOUR_TOPIC_NAME | Nazwa dostosowanego tematu |
 
@@ -223,7 +223,7 @@ Formaty zdarzeń dla każdego typu zdarzenia są opisane w poniższych podsekcja
 }
 ```
 
-| Value | Zamień na |
+| Wartość | Zamień na |
 | --- | --- |
 | YOUR_TOPIC_NAME | Nazwa dostosowanego tematu |
 
@@ -244,7 +244,7 @@ Zarządzanie punktami końcowymi odbywa się za pomocą interfejsu API punktów 
 W poniższych przykładach pokazano, jak skonfigurować obsługiwane punkty końcowe.
 
 >[!IMPORTANT]
-> Zwróć szczególną uwagę na atrybut eventtypes. Definiuje, które typy zdarzeń są obsługiwane przez punkt końcowy, a tym samym określają jego Routing.
+> Zwróć szczególną uwagę na atrybut **eventtypes** . Definiuje, które typy zdarzeń są obsługiwane przez punkt końcowy, a tym samym określają jego Routing.
 
 Uwierzytelnione żądanie HTTP POST względem:
 
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Zamień na |
+    | Wartość | Zamień na |
     | --- | --- |
     | YOUR_NAMESPACE | Przestrzeń nazw punktu końcowego |
     | YOUR_PRIMARY_KEY | Podstawowe parametry połączenia używane do uwierzytelniania |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Zamień na |
+    | Wartość | Zamień na |
     | --- | --- |
     | YOUR_PRIMARY_KEY | Podstawowe parametry połączenia używane do uwierzytelniania|
     | YOUR_SECONDARY_KEY | Pomocnicze parametry połączenia używane do uwierzytelniania |
@@ -313,14 +313,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Zamień na |
+    | Wartość | Zamień na |
     | --- | --- |
     | YOUR_NAMESPACE | Przestrzeń nazw punktu końcowego |
     | YOUR_PRIMARY_KEY | Podstawowe parametry połączenia używane do uwierzytelniania |
     | YOUR_SECONDARY_KEY | Pomocnicze parametry połączenia używane do uwierzytelniania |
     | YOUR_EVENT_HUB_NAME | Nazwa centrum zdarzeń |
 
-- Roześlij do Event Hubs typu zdarzenia **DeviceMessage**. Włączenie elementu `EntityPath` **ConnectionString** jest obowiązkowe:
+- Roześlij do Event Hubs typu zdarzenia **DeviceMessage**. Włączenie `EntityPath` w **elemencie ConnectionString** jest obowiązkowe:
 
   ```JSON
   {
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Zamień na |
+    | Wartość | Zamień na |
     | --- | --- |
     | YOUR_NAMESPACE | Przestrzeń nazw punktu końcowego |
     | YOUR_PRIMARY_KEY | Podstawowe parametry połączenia używane do uwierzytelniania |

@@ -52,8 +52,9 @@
       href: gif-images.md
     - name: Pobieranie popularnych obrazów
       href: trending-images.md
-    - name: Dzielenie wyników wyszukiwania obrazów na strony
-      href: paging-images.md
+    - name: Dzielenie wyników wyszukiwania na strony
+      maintainContext: true
+      href: ../bing-web-search/paging-search-results.md
     - name: Zmiana rozmiaru i przycinanie miniatur
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

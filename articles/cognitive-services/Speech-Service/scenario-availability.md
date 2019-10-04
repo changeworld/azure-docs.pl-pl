@@ -1,7 +1,7 @@
 ---
 title: Dostępność scenariusza — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Odwołanie dla regionów usługi mowy.
+description: Dokumentacja dotycząca regionów usługi mowy.
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 94fd415909e86a43916ee2f510732a6a6d9c5ed3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552947"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959020"
 ---
 # <a name="scenario-availability"></a>Dostępność scenariusza
 
@@ -26,6 +26,10 @@ Zestaw SDK usługi mowy zawiera wiele scenariuszy obejmujących różne języki 
 - **Zamiana tekstu na mowę (TTS)**
   - C++/Windows & Linux
   - C#/Windows & platformy UWP & Unity
+  - Java (JRE i Android)
+  - Python
+  - Adres
+  - Objective-C
   - Interfejs API REST usługi TTS może być używany w każdej innej sytuacji.
 - **Wake Word (słowo kluczowe Spotter/KWS)**
   - C++/Windows & Linux
@@ -46,4 +50,4 @@ Zestaw SDK usługi mowy zawiera wiele scenariuszy obejmujących różne języki 
 - **Koder-dekoder skompresowanego sygnału audio**
   - C++/Linux
   - C#/Linux
-  - Java/Linux & Android
+  - Java/Linux, Android i iOS

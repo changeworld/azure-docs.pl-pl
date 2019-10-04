@@ -5,22 +5,20 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 09/20/2019
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 1f13a56941a137397fbb849093feaeb19b897131
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 79b626ef6beaad3a8f15da08b882fc7d596540b0
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156254"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960382"
 ---
-# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Szybki start: Tworzenie prywatnej strefy DNS platformy Azure przy użyciu Azure Portal
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Szybki Start: Tworzenie prywatnej strefy DNS platformy Azure przy użyciu Azure Portal
 
 Ten przewodnik Szybki Start przeprowadzi Cię przez kroki tworzenia pierwszej prywatnej strefy i rekordu DNS przy użyciu Azure Portal.
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
-
-Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby opublikować prywatną strefę DNS w sieci wirtualnej, musisz określić listę sieci wirtualnych, które mogą rozpoznawać rekordy w strefie.  Są one nazywane *połączonymi* sieciami wirtualnymi. Gdy Autorejestracja jest włączona, Azure DNS aktualizuje także rekordy strefy za każdym razem, gdy maszyna wirtualna jest tworzona, zmienia jej adres IP lub został usunięty.
+Strefa DNS służy do hostowania rekordów systemu DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby opublikować prywatną strefę DNS w sieci wirtualnej, musisz określić listę sieci wirtualnych, które mogą rozpoznawać rekordy w strefie.  Są one nazywane *połączonymi* sieciami wirtualnymi. Gdy Autorejestracja jest włączona, Azure DNS aktualizuje także rekordy strefy za każdym razem, gdy maszyna wirtualna jest tworzona, zmienia jej adres IP lub został usunięty.
 
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 
@@ -50,8 +48,8 @@ Strefa DNS zawiera wpisy DNS dla domeny. Aby rozpocząć hostowanie domeny w us�
 
 1. Na stronie **Tworzenie strefy prywatna strefa DNS** wpisz lub wybierz następujące wartości:
 
-   - **Grupa zasobów**: Wybierz pozycję **Utwórz nowy**, wpisz *MyAzureResourceGroup*, a następnie wybierz **przycisk OK**. Nazwa grupy zasobów musi być unikatowa w ramach subskrypcji platformy Azure. 
-   -  **Nazwa**: Dla tego przykładu wpisz *Private.contoso.com* .
+   - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wpisz *MyAzureResourceGroup*, a następnie wybierz **przycisk OK**. Nazwa grupy zasobów musi być unikatowa w ramach subskrypcji platformy Azure. 
+   -  **Name**: wpisz *Private.contoso.com* w tym przykładzie.
 1. W obszarze **Lokalizacja grupy zasobów**wybierz pozycję **zachodnio-środkowe stany USA**.
 
 1. Wybierz pozycję **Przegląd + utwórz**.
@@ -94,10 +92,10 @@ Teraz utworzysz dwie maszyny wirtualne, aby umożliwić przetestowanie strefy pr
 2. Wpisz **Azure12345678** hasła i Potwierdź hasło.
 
 5. W przypadku **publicznych portów ruchu przychodzącego**wybierz opcję **Zezwalaj na wybrane porty**, a następnie wybierz pozycję **RDP (3389)** w obszarze **Wybieranie portów przychodzących**.
-10. Zaakceptuj inne wartości domyślne dla strony, a następnie kliknij **przycisk Dalej: >** Dysków.
-11. Zaakceptuj wartości domyślne na stronie **dyski** , a następnie kliknij **przycisk Dalej: >** Sieci.
+10. Zaakceptuj inne wartości domyślne dla strony, a następnie kliknij przycisk **Dalej: dyski >** .
+11. Zaakceptuj wartości domyślne na stronie **dyski** , a następnie kliknij przycisk **dalej: Sieć >** .
 1. Upewnij się, że wybrano **myAzureVNet** dla sieci wirtualnej.
-1. Zaakceptuj inne wartości domyślne dla strony, a następnie kliknij przycisk **dalej: >** Zarządzania.
+1. Zaakceptuj inne wartości domyślne dla strony, a następnie kliknij przycisk **Dalej: zarządzanie >** .
 2. W obszarze **Diagnostyka rozruchu**wybierz pozycję **wyłączone**, zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Przegląd + Utwórz**.
 1. Przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz**.
 

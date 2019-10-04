@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: 72493f084b89d41c1e0d6ff60c35afa3491b0eda
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 430d90b2b372602072527c49796244c503778a3b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703459"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959003"
 ---
 # <a name="virtual-wan-partners"></a>Partnerzy wirtualnej sieci WAN
 
@@ -23,7 +23,7 @@ Urządzenie rozgałęzienia (lokalne urządzenie sieci VPN lub SDWAN CPE) zwykle
 ## <a name ="before"></a>Przed rozpoczęciem automatyzowania
 
 * Sprawdź, czy urządzenie obsługuje protokół IPsec IKEv1/IKEv2. Zobacz [zasady domyślne](#default).
-* Zobacz [interfejsy API REST](https://docs.microsoft.com/rest/api/azure/) , które będą używane do automatyzowania łączności z wirtualną siecią WAN platformy Azure.
+* Wyświetl [interfejsy API REST](#additional) , których używasz do automatyzowania łączności z wirtualną siecią WAN platformy Azure.
 * Przetestuj środowisko portalu w wirtualnej sieci WAN platformy Azure.
 * Następnie zdecyduj, która część kroków łączności, które chcesz zautomatyzować. Zalecamy automatyzację:
 
@@ -31,7 +31,16 @@ Urządzenie rozgałęzienia (lokalne urządzenie sieci VPN lub SDWAN CPE) zwykle
   * Przekazywanie informacji o urządzeniu rozgałęzień do wirtualnej sieci WAN platformy Azure
   * Pobieranie konfiguracji platformy Azure i Konfigurowanie łączności z urządzenia oddziału w usłudze Azure Virtual WAN
 
-* Zapoznaj się z oczekiwanym doświadczeniem klienta w połączeniu z wirtualną siecią WAN platformy Azure.
+### <a name ="additional"></a>Dodatkowe informacje
+
+* [Interfejs API REST](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs) do automatyzowania tworzenia koncentratora wirtualnego
+* [Interfejs API REST](https://docs.microsoft.com/rest/api/virtualwan/vpngateways) do automatyzowania bramy sieci VPN platformy Azure dla wirtualnej sieci WAN
+* [Interfejs API REST](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections) do łączenia VPNSite z Centrum sieci VPN platformy Azure
+* [Domyślne zasady protokołu IPsec](#default)
+
+## <a name ="ae"></a>Obsługa klienta
+
+Zapoznaj się z oczekiwanym doświadczeniem klienta w połączeniu z wirtualną siecią WAN platformy Azure.
 
   1. Zazwyczaj wirtualny użytkownik sieci WAN rozpocznie proces przez utworzenie zasobu wirtualnej sieci WAN.
   2. Użytkownik skonfiguruje dostęp do grupy zasobów opartej na jednostce usługi dla systemu lokalnego (kontroler rozgałęzienia lub oprogramowanie do aprowizacji urządzeń sieci VPN) w celu zapisania informacji o gałęzi w wirtualnej sieci WAN platformy Azure.
@@ -41,8 +50,7 @@ Urządzenie rozgałęzienia (lokalne urządzenie sieci VPN lub SDWAN CPE) zwykle
   6. Po zakończeniu tego kroku w rozwiązaniu użytkownik będzie miał bezproblemowe połączenie między lokacjami i koncentratorem wirtualnym. Możesz również skonfigurować dodatkowe połączenia w innych centrach. Każde połączenie to tunel aktywny-aktywny. Klient może zdecydować się na użycie innego usługodawcy internetowego dla każdego z linków dla tunelu.
   7. Należy rozważyć zapewnienie możliwości rozwiązywania problemów i monitorowania w interfejsie zarządzania CPE. Typowe scenariusze obejmują "klient nie może uzyskać dostępu do zasobów platformy Azure z powodu problemu CPE", "Pokaż parametry protokołu IPsec na stronie CPE" itd.
 
-## <a name ="understand"></a>Informacje o automatyzacji
-
+## <a name ="understand"></a>Szczegóły automatyzacji
 
 ###  <a name="access"></a>Kontrola dostępu
 
@@ -55,19 +63,18 @@ Klienci muszą mieć możliwość skonfigurowania odpowiedniej kontroli dostępu
 
 ###  <a name="branch"></a>Przekazywanie informacji o urządzeniu gałęzi
 
-Zaprojektuj środowisko użytkownika w celu przekazywania informacji o rozgałęzieniu (lokacji lokalnej) do platformy Azure. [Interfejsy API REST](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) dla VPNSite mogą służyć do tworzenia informacji o lokacji w wirtualnej sieci WAN. Wszystkie urządzenia SDWAN/VPN można udostępnić lub wybrać odpowiednie dostosowania urządzeń.
-
+Należy zaprojektować środowisko użytkownika w celu przekazywania informacji o rozgałęzieniu (lokacji lokalnej) do platformy Azure. Aby utworzyć informacje o lokacji w wirtualnej sieci WAN, można użyć [interfejsów API REST](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) dla VPNSite. Wszystkie urządzenia SDWAN/VPN można udostępnić lub wybrać odpowiednie dostosowania urządzeń.
 
 ### <a name="device"></a>Pobieranie i łączność konfiguracji urządzeń
 
-Ten krok obejmuje pobranie konfiguracji platformy Azure i skonfigurowanie łączności z urządzenia oddziału w usłudze Azure Virtual WAN. W tym kroku klient, który nie korzysta z dostawcy, ręcznie pobierze konfigurację platformy Azure i zastosuje ją do lokalnego urządzenia SDWAN/VPN. Jako dostawca należy zautomatyzować ten krok. Kontroler urządzenia może wywoływać interfejs API REST "GetVpnConfiguration", aby pobrać konfigurację platformy Azure, która zazwyczaj będzie wyglądać podobnie do poniższego pliku.
+Ten krok obejmuje pobranie konfiguracji platformy Azure i skonfigurowanie łączności z urządzenia oddziału w usłudze Azure Virtual WAN. W tym kroku klient, który nie korzysta z dostawcy, ręcznie pobierze konfigurację platformy Azure i zastosuje ją do lokalnego urządzenia SDWAN/VPN. Jako dostawca należy zautomatyzować ten krok. Aby uzyskać dodatkowe informacje, zobacz [interfejsy API REST](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) pobierania. Kontroler urządzenia może wywoływać interfejs API REST "GetVpnConfiguration", aby pobrać konfigurację platformy Azure.
 
 **Uwagi dotyczące konfiguracji**
 
   * Jeśli usługa Azure sieci wirtualnych jest dołączana do koncentratora wirtualnego, zostaną one wyświetlone jako ConnectedSubnets.
   * Połączenie sieci VPN korzysta z konfiguracji opartej na trasach i obsługuje protokoły IKEv1 i IKEv2.
 
-#### <a name="understanding-the-device-configuration-file"></a>Informacje o pliku konfiguracji urządzenia
+## <a name="devicefile"></a>Plik konfiguracji urządzenia
 
 Plik konfiguracji urządzenia zawiera ustawienia, które mają być używane podczas konfigurowania lokalnego urządzenia sieci VPN. Podczas wyświetlania tego pliku należy zwrócić uwagę na następujące informacje:
 
@@ -92,7 +99,7 @@ Plik konfiguracji urządzenia zawiera ustawienia, które mają być używane pod
         ```
     * **Bramy vpngateway szczegóły konfiguracji połączenia** , takie jak BGP, klucz wstępny itp. PSK to klucz wstępny, który jest generowany automatycznie. Możesz zawsze edytować połączenie na stronie Przegląd dla niestandardowego klucza PSK.
   
-#### <a name="example-device-configuration-file"></a>Przykładowy plik konfiguracji urządzenia
+**Przykładowy plik konfiguracji urządzenia**
 
   ```
   { 
@@ -197,11 +204,7 @@ Plik konfiguracji urządzenia zawiera ustawienia, które mają być używane pod
    }
   ```
 
-## <a name="default"></a>Zasady domyślne dla łączności protokołu IPsec
-
-[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
-
-### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>Czy wszystkie elementy muszą być zgodne z zasadami bramy vpngateway koncentratora wirtualnego i moimi lokalnym urządzeniem SDWAN/VPN lub konfiguracją SD-WAN?
+## <a name="default"></a>Szczegóły łączności
 
 Lokalne urządzenie SDWAN/VPN lub Konfiguracja SD-WAN muszą być zgodne lub zawierać następujące algorytmy i parametry, które można określić w zasadach usługi Azure IPsec/IKE.
 
@@ -211,6 +214,12 @@ Lokalne urządzenie SDWAN/VPN lub Konfiguracja SD-WAN muszą być zgodne lub zaw
 * Algorytm szyfrowania IPsec
 * Algorytm integralności protokołu IPsec
 * Grupa PFS
+
+### <a name="default"></a>Zasady domyślne dla łączności protokołu IPsec 
+
+Podczas pracy z zasadami domyślnymi platforma Azure może działać jako inicjator i obiekt odpowiadający podczas instalacji tunelu IPsec. Brak obsługi platformy Azure jako obiektu odpowiadającego.
+
+[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

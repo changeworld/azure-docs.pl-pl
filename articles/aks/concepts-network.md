@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 26ba3ff600ddca6158579941ab5d32b60ff13101
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69969646"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950362"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ W tym artykule przedstawiono podstawowe koncepcje zapewniające obsługę sieci 
 
 Aby zezwolić na dostęp do aplikacji lub do komunikacji między składnikami aplikacji, Kubernetes zapewnia warstwę abstrakcji dla sieci wirtualnych. Węzły Kubernetes są połączone z siecią wirtualną i mogą zapewniać łączność ruchu przychodzącego i wychodzącego w przypadku zasobników. Składnik *polecenia-proxy* działa w każdym węźle, aby udostępnić te funkcje sieciowe.
 
-W programie Kubernetes *usługi* logicznie grupują elementy w celu umożliwienia bezpośredniego dostępu za pośrednictwem adresu IP lub nazwy DNS i określonego portu. Ruch można także dystrybuować przy użyciu *modułu równoważenia obciążenia*. Bardziej skomplikowany Routing ruchu aplikacji można również uzyskać za pomocą *kontrolerów*transferu danych przychodzących. Zabezpieczenia i filtrowanie ruchu sieciowego dla każdego z nich jest możliwe przy użyciu *zasad sieciowych* Kubernetes (w wersji zapoznawczej w AKS).
+W programie Kubernetes *usługi* logicznie grupują elementy w celu umożliwienia bezpośredniego dostępu za pośrednictwem adresu IP lub nazwy DNS i określonego portu. Ruch można także dystrybuować przy użyciu *modułu równoważenia obciążenia*. Bardziej skomplikowany Routing ruchu aplikacji można również uzyskać za pomocą *kontrolerów*transferu danych przychodzących. Zabezpieczenia i filtrowanie ruchu sieciowego dla każdego z nich jest możliwe przy użyciu *zasad sieciowych*Kubernetes.
 
 Platforma Azure pomaga również uprościć sieci wirtualne klastrów AKS. Podczas tworzenia modułu równoważenia obciążenia Kubernetes zostanie utworzony i skonfigurowany źródłowy zasób modułu równoważenia obciążenia platformy Azure. Podczas otwierania portów sieciowych do zasobników, są konfigurowane odpowiednie reguły grupy zabezpieczeń sieci platformy Azure. W przypadku routingu aplikacji HTTP platforma Azure może również skonfigurować *zewnętrzny system DNS* jako nowe trasy transferu danych przychodzących.
 
@@ -134,7 +134,7 @@ Inną wspólną funkcją transferu danych przychodzących jest protokół SSL/TL
 
 Możesz również skonfigurować kontroler transferu danych przychodzących, aby zachować źródłowy adres IP klienta w przypadku żądań do kontenerów w klastrze AKS. Gdy żądanie klienta jest kierowane do kontenera w klastrze AKS za pośrednictwem kontrolera transferu danych przychodzących, oryginalny źródłowy adres IP tego żądania nie będzie dostępny dla kontenera docelowego. Po włączeniu *zachowywania źródłowego adresu IP klienta*jest dostępny źródłowy adres IP klienta w nagłówku żądania w obszarze *X-forwardd-for*. W przypadku korzystania z funkcji zachowywania źródłowych adresów IP klienta na kontrolerze transferu danych przychodzących nie można używać przekazywania protokołu SSL. Przechowywanie źródłowych adresów IP klienta i przekazywanie protokołu SSL mogą być używane z innymi usługami, takimi jak typ *modułu równoważenia obciążenia* .
 
-## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
+## <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń
 
 Sieciowa Grupa zabezpieczeń filtruje ruch dla maszyn wirtualnych, takich jak węzły AKS. Podczas tworzenia usług, takich jak moduł równoważenia obciążenia, platforma Azure automatycznie konfiguruje wszystkie potrzebne reguły sieciowej grupy zabezpieczeń. Nie należy ręcznie konfigurować zasad sieciowych grup zabezpieczeń w celu filtrowania ruchu dla zasobników w klastrze AKS. Zdefiniuj wszystkie wymagane porty i przekazanie w ramach manifestów usługi Kubernetes, a platforma Azure umożliwia tworzenie i aktualizowanie odpowiednich reguł. Możesz również użyć zasad sieciowych, jak opisano w następnej sekcji, aby automatycznie zastosować reguły filtru ruchu do zasobników.
 

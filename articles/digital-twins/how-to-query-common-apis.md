@@ -1,19 +1,19 @@
 ---
 title: Typowe wzorce zapytań usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Poznaj typowe wzorce wykonywania zapytań dotyczących interfejsów API zarządzania usługą Azure Digital bliźniaczych reprezentacji.
-author: kingdomofends
-manager: philmea
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: v-adgera
-ms.openlocfilehash: 55b0676ce0a0dc6d4347ddcadf43b7b650f0f9a1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 1d1c0e2f12d5a971cf08933e5d469093eb1f6d52
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172804"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949871"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Jak wykonywać zapytania dotyczące interfejsów API Digital bliźniaczych reprezentacji platformy Azure dla typowych zadań
 
@@ -56,7 +56,7 @@ Ta sekcja zawiera przykładowe zapytania, aby uzyskać więcej informacji o zain
     YOUR_MANAGEMENT_API_URL/propertykeys?spaceId=YOUR_SPACE_ID
     ```
 
-- Pobierz spacje przy użyciu klucza właściwości o nazwie *AreaInSqMeters* , a jego wartość to 30. Możesz również wykonywać operacje na ciągach, na przykład Pobierz spacje zawierające klucz właściwości `name = X contains Y`z.
+- Pobierz spacje przy użyciu klucza właściwości o nazwie *AreaInSqMeters* , a jego wartość to 30. Możesz również wykonywać operacje na ciągach, na przykład Pobierz spacje zawierające klucz właściwości z `name = X contains Y`.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?propertyKey=AreaInSqMeters&propertyValue=30

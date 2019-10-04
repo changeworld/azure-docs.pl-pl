@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a3faa76c1506664a075648edc7d57fbba542b011
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099606"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960546"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: Definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
@@ -95,7 +95,7 @@ Poniższe kroki przedstawiają sposób tworzenia nowego szablonu urządzenia **P
 
     ![Biblioteka szablonów urządzeń](./media/tutorial-define-device-type/devicetemplatelibrary.png)
 
-3. Wybierz niestandardową, wprowadź wartość w polupołączono **środowisko powietrza** jako nazwę szablonu urządzenia, a następnie wybierz pozycję **Utwórz**. Istnieje możliwość przekazania obrazu urządzenia widocznego dla operatorów w eksploratorze urządzeń:
+3. Wybierz **niestandardową**, wprowadź wartość w polu **połączono środowisko powietrza** jako nazwę szablonu urządzenia, a następnie wybierz pozycję **Utwórz**. Istnieje możliwość przekazania obrazu urządzenia widocznego dla operatorów w eksploratorze urządzeń:
 
     ![Urządzenie niestandardowe](./media/tutorial-define-device-type/createcustomdevice.png)
 
@@ -132,11 +132,11 @@ Poniższe kroki przedstawiają sposób tworzenia nowego szablonu urządzenia **P
 
      Aby skonfigurować miarę telemetrii **Temperatura**, skorzystaj z informacji w poniższej tabeli:
 
-     | Ustawienie              | Value         |
+     | Ustawienie              | Wartość         |
      | -------------------- | -----------   |
      | Nazwa wyświetlana         | Temperatura   |
      | Nazwa pola           | temperature   |
-     | Jednostki                | P             |
+     | Jednostki                | F             |
      | Min.                  | 60            |
      | Maks.                  | 110           |
      | Miejsca dziesiętne       | 0             |
@@ -174,11 +174,11 @@ Użyj zdarzeń, aby zdefiniować dane wysyłane przez urządzenie w momencie wys
 
      Aby skonfigurować pozycję telemetrii **Błąd silnika wentylatora**, skorzystaj z informacji w poniższej tabeli:
 
-     | Ustawienie              | Value             |
+     | Ustawienie              | Wartość             |
      | -------------------- | -----------       |
      | Nazwa wyświetlana         | Błąd silnika wentylatora   |
      | Nazwa pola           | fanmotorerr       |
-     | severity             | Błąd             |
+     | Ważność             | Błąd             |
 
      Aby zapisać definicję zdarzenia, wybierz pozycję **Zapisz**:
 
@@ -212,14 +212,14 @@ Stan służy do definiowania i wizualizowania stanu urządzenia lub jego składn
 
      Aby skonfigurować stan **Tryb wentylatora**, skorzystaj z informacji w poniższej tabeli:
 
-     | Ustawienie              | Value             |
+     | Ustawienie              | Wartość             |
      | -------------------- | -----------       |
      | Nazwa wyświetlana         | Tryb wentylatora          |
      | Nazwa pola           | fanmode           |
-     | Value                | 1                 |
+     | Wartość                | 1                 |
      | Wyświetlana etykieta        | Działa         |
-     | Value                | 0                 |
-     | Wyświetlana etykieta        | Zatrzymano           |
+     | Wartość                | 0                 |
+     | Wyświetlana etykieta        | Zatrzymane           |
 
      Aby zapisać definicję pomiaru stanu, wybierz pozycję **Zapisz**:
 
@@ -257,11 +257,11 @@ Ustawienia, właściwości oraz polecenia to różne wartości zdefiniowane w sz
 
 3. Aby skonfigurować ustawienie **Ustaw temperaturę**, skorzystaj z informacji w poniższej tabeli:
 
-    | Pole                | Value           |
+    | Pole                | Wartość           |
     | -------------------- | -----------     |
     | Nazwa wyświetlana         | Ustaw temperaturę |
     | Nazwa pola           | setTemperature  |
-    | Jednostka miary      | P               |
+    | Jednostka miary      | F               |
     | Miejsca dziesiętne       | 1               |
     | Wartość minimalna        | 20              |
     | Wartość maksymalna        | 200             |
@@ -287,9 +287,9 @@ Ustawienia, właściwości oraz polecenia to różne wartości zdefiniowane w sz
 
 1. Istnieje możliwość utworzenia właściwości urządzenia różnych typów, takich jak tekst lub liczby. Aby dodać właściwość lokalizacji do szablonu urządzenia, wybierz pozycję **Lokalizacja**. Aby skonfigurować właściwość lokalizacji, skorzystaj z informacji w poniższej tabeli:
 
-    | Pole                | Value                |
+    | Pole                | Wartość                |
     | -------------------- | -------------------- |
-    | Nazwa wyświetlana         | Location             |
+    | Nazwa wyświetlana         | Lokalizacja             |
     | Nazwa pola           | location             |
     | Wartość początkowa        | Seattle, WA          |
     | Opis          | Lokalizacja urządzenia      |
@@ -304,7 +304,7 @@ Ustawienia, właściwości oraz polecenia to różne wartości zdefiniowane w sz
 
 1. Aby skonfigurować właściwość daty ostatniego serwisowania, skorzystaj z informacji w poniższej tabeli:
 
-    | Pole                | Value                   |
+    | Pole                | Wartość                   |
     | -------------------- | ----------------------- |
     | Nazwa wyświetlana         | Data ostatniego serwisowania       |
     | Nazwa pola           | serviceDate             |
@@ -321,11 +321,11 @@ Ustawienia, właściwości oraz polecenia to różne wartości zdefiniowane w sz
 
 1. Aby skonfigurować wersję oprogramowania układowego, skorzystaj z informacji w poniższej tabeli:
 
-    | Pole                | Value                   |
+    | Pole                | Wartość                   |
     | -------------------- | ----------------------- |
     | Nazwa wyświetlana         | Wersja oprogramowania układowego        |
     | Nazwa pola           | firmwareVersion         |
-    | Typ danych            | text                    |
+    | Typ danych            | tekst                    |
     | Opis          | Wersja oprogramowania układowego klimatyzatora |
 
     ![Skonfiguruj wersję oprogramowania układowego](./media/tutorial-define-device-type/configureproperties3.png)
@@ -336,11 +336,11 @@ Ustawienia, właściwości oraz polecenia to różne wartości zdefiniowane w sz
 
 1. Aby skonfigurować numer seryjny, skorzystaj z informacji w poniższej tabeli:
 
-    | Pole                | Value                   |
+    | Pole                | Wartość                   |
     | -------------------- | ----------------------- |
     | Nazwa wyświetlana         | Numer seryjny           |
     | Nazwa pola           | serialNumber            |
-    | Typ danych            | text                    |
+    | Typ danych            | tekst                    |
     | Opis          | Numer seryjny klimatyzatora  |
 
     ![Skonfiguruj numer seryjny](./media/tutorial-define-device-type/configureproperties4.png)
@@ -360,15 +360,15 @@ Za pomocą _poleceń_ można umożliwić operatorowi uruchamianie poleceń bezpo
 
 1. Aby skonfigurować nowe polecenie, skorzystaj z informacji w poniższej tabeli:
 
-    | Pole                | Value           |
+    | Pole                | Wartość           |
     | -------------------- | -----------     |
     | Nazwa wyświetlana         | Polecenie echo    |
     | Nazwa pola           | echo            |
     | Domyślny limit czasu      | 30              |
-    | Typ wyświetlany         | text            |
+    | Typ danych         | tekst            |
     | Opis          | Polecenie urządzenia  |  
 
-    Możesz dodać dodatkowe dane wejściowe do polecenia, wybierając pozycję **+** dla **pól wejściowych**.
+    Możesz dodać dodatkowe dane wejściowe do polecenia, wybierając **+** dla **pól wejściowych**.
 
     ![Przygotowanie do dodania ustawienia](./media/tutorial-define-device-type/commandsecho1.png)
 
@@ -386,7 +386,7 @@ Po zdefiniowaniu Twojego szablonu urządzenia **Połączony klimatyzator** może
 
 1. Skonfiguruj składnik **Wykres liniowy**, korzystając z informacji w poniższej tabeli:
 
-    | Ustawienie      | Value       |
+    | Ustawienie      | Wartość       |
     | ------------ | ----------- |
     | Tytuł        | Temperatura |
     | Zakres czasu   | Ostatnie 30 minut |
@@ -398,7 +398,7 @@ Po zdefiniowaniu Twojego szablonu urządzenia **Połączony klimatyzator** może
 
 1. Wybierz składnik **historia zdarzeń** , korzystając z informacji podanych w poniższej tabeli:
 
-    | Ustawienie      | Value       |
+    | Ustawienie      | Wartość       |
     | ------------ | ----------- |
     | Tytuł        | Zdarzenia silnika wentylatora |
     | Zakres czasu   | Ostatnie 30 minut |
@@ -410,7 +410,7 @@ Po zdefiniowaniu Twojego szablonu urządzenia **Połączony klimatyzator** może
 
 1. Skonfiguruj składnik **Historia stanu**, korzystając z informacji w poniższej tabeli:
 
-    | Ustawienie      | Value       |
+    | Ustawienie      | Wartość       |
     | ------------ | ----------- |
     | Tytuł        | Tryb wentylatora |
     | Zakres czasu   | Ostatnie 30 minut |
@@ -424,7 +424,7 @@ Po zdefiniowaniu Twojego szablonu urządzenia **Połączony klimatyzator** może
 
 1. Skonfiguruj składnik **Ustawienia i właściwości**, korzystając z informacji w poniższej tabeli:
 
-    | Ustawienie                 | Value         |
+    | Ustawienie                 | Wartość         |
     | ----------------------- | ------------- |
     | Tytuł                   | Właściwości urządzenia |
     | Ustawienia i właściwości | Ustaw temperaturę<br/>Numer seryjny<br/>Wersja oprogramowania układowego |

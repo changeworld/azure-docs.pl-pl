@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: d12fde33ec9d55c891c801f1b89143b4db6f8ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 87d2b19f6143f567782778e35c8511f233d8b0e8
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035750"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958140"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Automatyczne skalowanie w pionie za pomocą zestawów skalowania maszyn wirtualnych
 
-W tym artykule opisano, jak w pionie skalować [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) platformy Azure z lub bez ponownego aprowizacji. W przypadku skalowania w pionie maszyn wirtualnych, które nie znajdują się w zestawach skalowania, zapoznaj się z [Azure Automation maszyną wirtualną platformy Azure](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)w pionie
+W tym artykule opisano, jak w pionie skalować [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) platformy Azure z lub bez ponownego aprowizacji. 
 
-Skalowanie w pionie, nazywane również skalowaniem w *górę* i *w dół*, oznacza zwiększenie lub zmniejszenie rozmiaru maszyny wirtualnej w odpowiedzi na obciążenie. Porównaj to zachowanie przy [](virtual-machine-scale-sets-autoscale-overview.md)użyciu skalowania poziomego, nazywanego również skalą i *skalą w*, gdzie liczba maszyn wirtualnych jest zmieniana w zależności od obciążenia.
+Skalowanie w pionie, nazywane również skalowaniem w *górę* i *w dół*, oznacza zwiększenie lub zmniejszenie rozmiaru maszyny wirtualnej w odpowiedzi na obciążenie. Porównaj to zachowanie przy użyciu [skalowania poziomego](virtual-machine-scale-sets-autoscale-overview.md), nazywanego również *skalą* i *skalą w*, gdzie liczba maszyn wirtualnych jest zmieniana w zależności od obciążenia.
 
 Ponowne Inicjowanie obsługi administracyjnej oznacza usunięcie istniejącej maszyny wirtualnej i zastąpienie jej nową. W przypadku zwiększenia lub zmniejszenia rozmiaru maszyn wirtualnych w zestawie skalowania maszyn wirtualnych, w niektórych przypadkach, chcesz zmienić rozmiar istniejących maszyn wirtualnych i zachować dane, w innych przypadkach należy wdrożyć nowe maszyny wirtualne o nowym rozmiarze. Ten dokument obejmuje oba przypadki.
 
@@ -64,8 +64,8 @@ Można skonfigurować skalowanie w pionie na podstawie alertów opartych na metr
 > | Standardowa_D11_v2 |Standardowa_D14_v2 |
 > | Standardowa_DS1_v2 |Standardowa_DS5_v2 |
 > | Standardowa_DS11_v2 |Standardowa_DS14_v2 |
-> | Maszyna wirtualna Standard_D2_v3 |Standard_D64_v3 |
-> | Standard_D2s_v3 |Standard_D64s_v3 |
+> | Standardowa_D2_v3 |Standard_D64_v3 |
+> | Standardowa_D2s_v3 |Standard_D64s_v3 |
 > | Standard_DC2s |Standard_DC4s |
 > | Standardowa_E2_v3 |Standardowa_E64_v3 |
 > | Standardowa_E2s_v3 |Standardowa_E64s_v3 |
@@ -124,7 +124,7 @@ Po zaimportowaniu elementów Runbook Dodaj element webhook do elementu Runbook, 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Dodawanie alertu do zestawu skalowania maszyn wirtualnych
 
-Poniżej znajduje się skrypt programu PowerShell, który pokazuje, jak dodać alert do zestawu skalowania maszyn wirtualnych. Zapoznaj się z następującym artykułem, aby uzyskać nazwę metryki w celu uruchomienia alertu: [Azure monitor częste skalowanie typowych metryk](../azure-monitor/platform/autoscale-common-metrics.md).
+Poniżej znajduje się skrypt programu PowerShell, który pokazuje, jak dodać alert do zestawu skalowania maszyn wirtualnych. Zapoznaj się z następującym artykułem, aby uzyskać nazwę metryki, na której ma zostać wyzwolony alert: [Azure monitor automatyczne skalowanie metryk](../azure-monitor/platform/autoscale-common-metrics.md).
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com

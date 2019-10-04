@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9796a4efdacef04390705607defb7b5cdd462886
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 704c1cdf95424bffa19e0946d13fa45d1b520753
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828742"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959952"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -48,7 +48,7 @@ Ta strona zawiera również informacje o [tymczasowych znanych problemach](#Issu
 - [PORZUĆ GRUPĘ DOSTĘPNOŚCI](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Klauzula [SET HADR Cluster](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) instrukcji [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>Kopii zapasowej
 
 Wystąpienia zarządzane mają automatyczne kopie zapasowe, dlatego użytkownicy mogą tworzyć pełne kopie zapasowe `COPY_ONLY`. Kopie zapasowe, dzienniki i migawki plików nie są obsługiwane.
 
@@ -118,7 +118,7 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="credential"></a>Poświadczenie
+### <a name="credential"></a>Poświadczeń
 
 Obsługiwane są tylko tożsamości Azure Key Vault i `SHARED ACCESS SIGNATURE`. Użytkownicy systemu Windows nie są obsługiwani.
 
@@ -131,7 +131,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do plików, więc nie możn
 - `CREATE CRYPTOGRAPHIC PROVIDER` nie jest obsługiwana. Zobacz [Tworzenie dostawcy usług kryptograficznych](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER` nie jest obsługiwana. Zobacz [ALTER Cryptographic Provider](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
 
-### <a name="logins-and-users"></a>Nazwy logowania i użytkownicy
+### <a name="logins-and-users"></a>Logowania i użytkownicy
 
 - Obsługiwane są nazwy logowania SQL utworzone przy użyciu `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` i `FROM SID`. Zobacz [Tworzenie nazwy logowania](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - Obsługiwane są nazwy podmiotów zabezpieczeń serwera usługi Azure Active Directory (Azure AD) utworzone przy użyciu składni [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) lub [Create User from login [Azure AD login]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) (publiczna wersja zapoznawcza). Te nazwy logowania są tworzone na poziomie serwera.
@@ -152,8 +152,8 @@ Wystąpienie zarządzane nie może uzyskać dostępu do plików, więc nie możn
   - Wartość Uruchom jako użytkownik nie jest obsługiwana dla użytkowników usługi Azure AD, gdy nazwa jest inna niż nazwa logowania. Przykładem jest to, że użytkownik jest tworzony przy użyciu składni CREATE USER [myAadUser] FROM LOGIN [john@contoso.com], a Personifikacja jest podejmowana przy użyciu polecenia EXEC AS USER = _myAadUser_. Podczas tworzenia **użytkownika** z poziomu podmiotu zabezpieczeń serwera usługi Azure AD (login) należy określić wartość nazwa_użytkownika jako taką samą Login_name z **logowania**.
   - Tylko podmioty zabezpieczeń na poziomie SQL Server (logowania) będące częścią roli `sysadmin` mogą wykonywać następujące operacje dotyczące podmiotów zabezpieczeń usługi Azure AD:
 
-    - EXECUTE AS USER
-    - EXECUTE AS LOGIN
+    - URUCHOM JAKO UŻYTKOWNIK
+    - URUCHOM JAKO LOGIN
 
 - Ograniczenia dotyczące publicznej wersji zapoznawczej dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania):
 
@@ -188,7 +188,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do plików, więc nie możn
 - [Tworzenie kopii zapasowej klucza głównego usługi](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database).
 - [Przywracanie klucza głównego usługi](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database).
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 ### <a name="buffer-pool-extension"></a>Rozszerzenie puli buforów
 
@@ -276,11 +276,11 @@ Nie można modyfikować następujących opcji:
 
 Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
-### <a name="sql-server-agent"></a>Program SQL Server Agent
+### <a name="sql-server-agent"></a>Agent SQL Server
 
-- Włączanie i wyłączanie agenta SQL Server nie jest obecnie obsługiwane w wystąpieniu zarządzanym. Agent SQL zawsze działa.
+- Włączanie i wyłączanie agenta SQL Server nie jest obecnie obsługiwane w wystąpieniu zarządzanym. Program SQL Agent jest zawsze uruchomiony.
 - Ustawienia agenta SQL Server są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym. 
-- Stanowiska
+- Zadania
   - Obsługiwane są czynności zadania T-SQL.
   - Obsługiwane są następujące zadania replikacji:
     - Dziennik transakcji
@@ -308,9 +308,9 @@ Następujące funkcje agenta SQL nie są obecnie obsługiwane:
 - Włączanie lub wyłączanie agenta
 - Alerty
 
-Aby uzyskać informacje na temat agenta programu SQL Server, zobacz [SQL Server Agent (Agent programu SQL Server)](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
+Aby uzyskać informacje o SQL Server agencie, zobacz [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
-### <a name="tables"></a>Tabele
+### <a name="tables"></a>Tabelę
 
 Następujące typy tabel nie są obsługiwane:
 
@@ -329,6 +329,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do udziałów plików i fol
 
 - w przypadku importowania plików z usługi Azure Blob Storage wymagane jest `DATASOURCE` w poleceniu `BULK INSERT`. Zobacz [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
 - `DATASOURCE` jest wymagana w funkcji `OPENROWSET` podczas odczytywania zawartości pliku z usługi Azure Blob Storage. Zobacz [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+- `OPENROWSET` może służyć do odczytywania danych z innych baz danych SQL Azure, wystąpień zarządzanych lub wystąpień SQL Server. Inne źródła, takie jak bazy danych Oracle lub pliki programu Excel, nie są obsługiwane.
 
 ### <a name="clr"></a>CLR
 
@@ -354,7 +355,7 @@ Nieudokumentowane instrukcje DBCC, które są włączone w SQL Server nie są ob
 
 Usługi MSDTC i [transakcje elastyczne](sql-database-elastic-transactions-overview.md) obecnie nie są obsługiwane w wystąpieniach zarządzanych.
 
-### <a name="extended-events"></a>Rozszerzone zdarzenia
+### <a name="extended-events"></a>Zdarzenia rozszerzone
 
 Niektóre elementy docelowe specyficzne dla systemu Windows dla zdarzeń rozszerzonych (XEvents) nie są obsługiwane:
 
@@ -384,7 +385,7 @@ Aby uzyskać więcej informacji, zobacz [FILESTREAM](https://docs.microsoft.com/
 
 [Wyszukiwanie semantyczne](https://docs.microsoft.com/sql/relational-databases/search/semantic-search-sql-server) nie jest obsługiwane.
 
-### <a name="linked-servers"></a>Serwery połączone
+### <a name="linked-servers"></a>Połączone serwery
 
 Połączone serwery w wystąpieniach zarządzanych obsługują ograniczoną liczbę elementów docelowych:
 
@@ -392,19 +393,19 @@ Połączone serwery w wystąpieniach zarządzanych obsługują ograniczoną licz
 - Połączone serwery nie obsługują dystrybuowanych transakcji zapisywalnych (MS DTC).
 - Elementy docelowe, które nie są obsługiwane to pliki, Analysis Services i inne RDBMS. Spróbuj użyć natywnego importu CSV z platformy Azure Blob Storage przy użyciu `BULK INSERT` lub `OPENROWSET` jako alternatywy dla importu pliku.
 
-Operations
+Składowa
 
 - Transakcje zapisu między wystąpieniami nie są obsługiwane.
 - `sp_dropserver` jest obsługiwana w przypadku upuszczania połączonego serwera. Zobacz [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - Funkcja `OPENROWSET` może służyć do wykonywania zapytań tylko w wystąpieniach SQL Server. Mogą być zarządzane, lokalne lub na maszynach wirtualnych. Zobacz [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
-- Funkcja `OPENDATASOURCE` może służyć do wykonywania zapytań tylko w wystąpieniach SQL Server. Mogą być zarządzane, lokalne lub na maszynach wirtualnych. Tylko wartości `SQLNCLI`, `SQLNCLI11` i `SQLOLEDB` są obsługiwane jako dostawcy. Może to być na przykład `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Zobacz [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
+- Funkcja `OPENDATASOURCE` może służyć do wykonywania zapytań tylko w wystąpieniach SQL Server. Mogą być zarządzane, lokalne lub na maszynach wirtualnych. Tylko wartości `SQLNCLI`, `SQLNCLI11` i `SQLOLEDB` są obsługiwane jako dostawcy. Przykładem jest `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Zobacz [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
 - Połączonych serwerów nie można używać do odczytywania plików (Excel, CSV) z udziałów sieciowych. Spróbuj użyć [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) lub [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) , który odczytuje pliki CSV z usługi Azure Blob Storage. Śledź te żądania dla [elementu opinii o wystąpieniu zarządzanym](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
 
 ### <a name="polybase"></a>PolyBase
 
 Tabele zewnętrzne odwołujące się do plików w systemie HDFS lub Azure Blob Storage nie są obsługiwane. Aby uzyskać informacje o bazie danych Base, zobacz artykuł [Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
-### <a name="replication"></a>Replikacja
+### <a name="replication"></a>Replikacji
 
 - Obsługiwane są migawki i dwukierunkowe typy replikacji. Replikacja scalająca, replikacja równorzędna i aktualizowalne subskrypcje nie są obsługiwane.
 - [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) jest dostępna dla publicznej wersji zapoznawczej w wystąpieniu zarządzanym z pewnymi ograniczeniami:
@@ -456,7 +457,7 @@ Jeśli replikacja jest włączona w bazie danych w [grupie trybu failover](sql-d
 - Nieobsługiwana Składnia:
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- Źródło: 
+- Zewnętrz 
   - `FROM URL` (magazyn obiektów blob platformy Azure) jest jedyną obsługiwaną opcją.
   - `FROM DISK` @ no__t-1 @ no__t-2/urządzenie kopii zapasowej nie jest obsługiwane.
   - Zestawy kopii zapasowych nie są obsługiwane.
@@ -522,7 +523,7 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 ## <a name="Environment"></a>Ograniczenia środowiska
 
-### <a name="subnet"></a>Podsieć
+### <a name="subnet"></a>Podsieci
 -  Nie można umieścić żadnych innych zasobów (np. maszyn wirtualnych) w podsieci, w której wdrożono wystąpienie zarządzane. Wdróż te zasoby przy użyciu innej podsieci.
 - Podsieć musi mieć wystarczającą liczbę dostępnych [adresów IP](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Wartość minimalna to 16, podczas gdy zalecenie ma mieć co najmniej 32 adresów IP w podsieci.
 - [Punktów końcowych usługi nie można kojarzyć z podsiecią wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Upewnij się, że opcja punkty końcowe usługi jest wyłączona podczas tworzenia sieci wirtualnej.
@@ -542,7 +543,7 @@ Maksymalny rozmiar pliku `tempdb` nie może być większy niż 24 GB na rdzeń w
 
 Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów. Istnieje wiele wewnętrznych zdarzeń systemowych, które są rejestrowane w dzienniku błędów. Użyj niestandardowej procedury, aby odczytać dzienniki błędów, które filtrują pewne nieistotne wpisy. Aby uzyskać więcej informacji, zobacz [wystąpienie zarządzane — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
-## <a name="Issues"></a>Znane problemy
+## <a name="Issues"></a> Znane problemy
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Podczas próby usunięcia pliku, który nie jest pusty, został zwrócony nieprawidłowy błąd
 

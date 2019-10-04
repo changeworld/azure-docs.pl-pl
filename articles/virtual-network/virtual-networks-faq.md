@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 1a3859e1831f64269e7684072ddf166f29566fd9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 642b99e3eaaf73844d30d1cd464ae0b777b0b3fa
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828973"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71957806"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
@@ -254,7 +254,6 @@ W poniższych zasobach są używane podstawowe usługi równoważenia obciążen
 - Aplikacje logiki
 - HDInsight
 -   Azure Batch
-- AKS
 - Środowisko usługi App Service
 
 Możesz połączyć się z tymi zasobami za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.

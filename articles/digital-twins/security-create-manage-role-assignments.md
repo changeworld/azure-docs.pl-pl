@@ -1,20 +1,20 @@
 ---
 title: Tworzenie przypisań ról i zarządzanie nimi — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Dowiedz się więcej na temat tworzenia przypisań ról i zarządzania nimi w usłudze Azure Digital bliźniaczych reprezentacji.
-author: lyrana
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 9a9f3398df099eca7d83b38595364956e6b3b76b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827684"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949821"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Tworzenie przypisań ról i zarządzanie nimi w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -42,7 +42,7 @@ W poniższej tabeli opisano każdy atrybut:
 | Obiektu | Identyfikator obiektu | Tak | String | Identyfikator Azure Active Directory, identyfikator obiektu jednostki usługi lub nazwa domeny. Do czego jest przypisane przypisanie roli. Przypisanie roli musi być sformatowane zgodnie ze skojarzonym z nim typem. Dla `DomainName` objectIdtype identyfikator objectId musi rozpoczynać się od znaku `“@”`. |
 | objectIdtype | Typ identyfikatora obiektu | Tak | String | Rodzaj używanego identyfikatora obiektu. Zobacz sekcję **obsługiwane ObjectIdTypes** poniżej. |
 | ścieżka | Ścieżka miejsca | Tak | String | Pełna ścieżka dostępu do obiektu `Space`. Przykładem jest `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, określ `"/"`. Ten znak określa katalog główny, ale jego użycie nie jest zalecane. Zawsze stosuj zasadę najniższych uprawnień. |
-| TenantId | Identyfikator dzierżawy | Różni się | String | W większości przypadków Azure Active Directory identyfikator dzierżawy. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalne dla nazwa_domeny. |
+| tenantId | Identyfikator dzierżawy | Różni się | String | W większości przypadków Azure Active Directory identyfikator dzierżawy. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalne dla nazwa_domeny. |
 
 ### <a name="supported-role-definition-identifiers"></a>Obsługiwane Identyfikatory definicji ról
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932476"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960572"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalowanie i korzystanie z programu Azure IoT Explorer
 
@@ -29,7 +29,7 @@ W tym artykule pokazano, jak:
 Aby korzystać z narzędzia Azure IoT Explorer, potrzebne są:
 
 - Usługa Azure IoT Hub. Istnieje wiele sposobów dodawania usługi IoT Hub do subskrypcji platformy Azure, takich jak [Tworzenie Centrum IoT Hub przy użyciu interfejsu wiersza polecenia platformy Azure](../iot-hub/iot-hub-create-using-cli.md). Do uruchomienia narzędzia Azure IoT Explorer potrzebne są parametry połączenia z usługą IoT Hub. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Urządzenie zarejestrowane w usłudze IoT Hub. Aby zarejestrować urządzenie, można użyć poniższego polecenia interfejsu CLI platformy Azure. Pamiętaj, aby zastąpić `{YourIoTHubName}` symbole zastępcze i `{YourDeviceID}` wartościami:
+- Urządzenie zarejestrowane w usłudze IoT Hub. Aby zarejestrować urządzenie, można użyć poniższego polecenia interfejsu CLI platformy Azure. Pamiętaj, aby zastąpić symbole zastępcze `{YourIoTHubName}` i `{YourDeviceID}` wartościami:
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -51,13 +51,13 @@ Definicje modeli dla urządzenia IoT Plug and Play są przechowywane w repozytor
 
 Aby dodać Źródło:
 
-1. Przejdź do **ustawienia**.
+1. Przejdź do obszaru **Settings** (Ustawienia).
 1. Wybierz pozycję **Nowy** i wybierz źródło.
 1. W przypadku dodawania repozytorium modelu firmy podaj parametry połączenia.
 
 Aby usunąć Źródło:
 
-1. Przejdź do **ustawienia**.
+1. Przejdź do obszaru **Settings** (Ustawienia).
 1. Znajdź źródło, które chcesz usunąć.
 1. Wybierz pozycję **X** , aby ją usunąć. Nie można usunąć repozytorium modelu publicznego, ponieważ wspólne definicje interfejsu pochodzą z tego repozytorium.
 
@@ -65,29 +65,27 @@ Zmień priorytety źródłowe:
 
 Możesz przeciągać i upuszczać jeden ze źródeł definicji modelu do innej klasyfikacji na liście. Jeśli występuje konflikt, źródła definicji o wyższych klasyfikacjach przesłaniają źródła z niższą klasyfikacją.
 
-### <a name="overview-page"></a>Strona przeglądu
+### <a name="view-devices"></a>Wyświetlanie urządzeń
 
-#### <a name="device-overview"></a>Przegląd urządzenia
+Po połączeniu narzędzia z Centrum IoT zostanie wyświetlona strona lista **urządzeń** z listą tożsamości urządzeń zarejestrowanych w centrum IoT Hub. Można rozwinąć każdy wpis na liście, aby wyświetlić więcej informacji.
 
-Po połączeniu narzędzia z Centrum IoT zostanie wyświetlona strona przegląd zawierająca listę wszystkich tożsamości urządzeń zarejestrowanych w usłudze Azure IoT Hub. Wybierz urządzenie, aby wyświetlić więcej szczegółów.
+Na stronie lista **urządzeń** można wykonać następujące instrukcje:
 
-#### <a name="device-management"></a>Zarządzanie urządzeniami
-
-- Aby zarejestrować nowe urządzenie w centrum, wybierz pozycję **Dodaj**. Wprowadź identyfikator urządzenia. Użyj ustawień domyślnych, aby automatycznie generować klucze uwierzytelniania i włączyć połączenie z centrum.
-- Aby usunąć tożsamość urządzenia, wybierz pozycję **Usuń**. Przed ukończeniem tej akcji Przejrzyj szczegóły urządzenia, aby upewnić się, że usuwasz właściwą tożsamość urządzenia.
-- Narzędzie obsługuje zapytania w `capabilityID` i. `interfaceID` Dodaj swój `capabilityID` lub `interfaceID` jako parametr, aby wykonać zapytanie dotyczące urządzeń.
+- Wybierz pozycję **Dodaj** , aby zarejestrować nowe urządzenie w centrum. Następnie wprowadź identyfikator urządzenia. Użyj ustawień domyślnych, aby automatycznie generować klucze uwierzytelniania i włączyć połączenie z centrum.
+- Wybierz urządzenie, a następnie wybierz pozycję **Usuń** , aby usunąć tożsamość urządzenia. Przed ukończeniem tej akcji Przejrzyj szczegóły urządzenia, aby upewnić się, że usuwasz właściwą tożsamość urządzenia.
+- Zapytanie według `capabilityID` i `interfaceID`. Dodaj `capabilityID` lub `interfaceID` jako parametr do wysyłania zapytań do urządzeń.
 
 ## <a name="interact-with-a-device"></a>Korzystanie z urządzenia
 
-Kliknij dwukrotnie urządzenie na stronie Przegląd, aby wyświetlić następny poziom szczegółowości. Istnieją dwie sekcje: **Urządzenia** i **sznurki cyfrowe**.
+Na stronie lista **urządzeń** wybierz wartość w kolumnie **Identyfikator urządzenia** , aby wyświetlić stronę szczegółów dla zarejestrowanego urządzenia. W przypadku urządzeń znajdują się dwie sekcje: **urządzenie** i **cyfrowe sznurki**.
 
 ### <a name="device"></a>Urządzenie
 
-Ta sekcja zawiera karty **tożsamość urządzenia**, dane **telemetryczne**i **sznurki urządzenia** .
+Ta sekcja zawiera karty **tożsamość urządzenia**, **sznurki urządzenia**i dane **telemetryczne** .
 
-- Informacje o tożsamości urządzenia można wyświetlić i zaktualizować na karcie **tożsamość urządzenia** .
-- Jeśli urządzenie jest połączone i aktywnie wysyła dane, można je wyświetlić na karcie **telemetrii** .
-- Dostęp do informacji o bliźniaczych urządzeniach można uzyskać na karcie **sznurki urządzenia** .
+- Informacje o [tożsamości urządzenia](../iot-hub/iot-hub-devguide-identity-registry.md) można wyświetlić i zaktualizować na karcie **tożsamość urządzenia** .
+- Dostęp do informacji o [bliźniaczych urządzeniach](../iot-hub/iot-hub-devguide-device-twins.md) można uzyskać na karcie **sznurki urządzenia** .
+- Jeśli urządzenie jest połączone i aktywnie wysyła dane, [można je wyświetlić na karcie](../iot-hub/iot-hub-devguide-messages-read-builtin.md) **telemetrii** .
 
 ### <a name="digital-twin"></a>Cyfrowe sznurki
 

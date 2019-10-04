@@ -54,7 +54,7 @@
     - name: Obsługa wyróżniania trafień
       href: hit-highlighting.md
     - name: Dzielenie wyników na strony
-      href: paging-webpages.md
+      href: paging-search-results.md
     - name: Zmiana rozmiaru i przycinanie miniatur
       href: resize-and-crop-thumbnails.md
     - name: Uaktualnienie z wersji v5 do v7

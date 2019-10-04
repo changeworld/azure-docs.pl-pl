@@ -1,19 +1,19 @@
 ---
-title: Przetwarzanie danych i funkcje zdefiniowane przez użytkownika przy użyciu usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+title: Przetwarzanie danych i funkcje zdefiniowane przez użytkownika — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Omówienie przetwarzania i dopasowywania danych oraz funkcji zdefiniowanych przez użytkownika przy użyciu usługi Azure Digital bliźniaczych reprezentacji.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178251"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949975"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Przetwarzanie danych i funkcje zdefiniowane przez użytkownika
 
@@ -23,7 +23,7 @@ Usługa Azure Digital bliźniaczych reprezentacji oferuje zaawansowane możliwo�
 
 Gdy urządzenia wysyłają dane telemetryczne do usługi Azure Digital bliźniaczych reprezentacji, deweloperzy mogą przetwarzać dane w czterech fazach: *Walidacja*, *dopasowanie*, *Obliczanie*i *wysyłanie*.
 
-[![Przepływ przetwarzania danych Digital bliźniaczych reprezentacji systemu Azure](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[przepływ przetwarzania danych Digital bliźniaczych reprezentacji @no__t 1Azure](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Faza walidacji przekształca przychodzące komunikaty telemetryczne do powszechnie rozumiany format [obiektu transferu danych](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) . W tej fazie wykonywane jest również Walidacja urządzenia i czujnika.
 1. Etap dopasowywania umożliwia znalezienie odpowiednich funkcji zdefiniowanych przez użytkownika do uruchomienia. Wstępnie zdefiniowane dopasowania znajdują funkcje zdefiniowane przez użytkownika na podstawie informacji o urządzeniu, czujniku i miejscu z przychodzącego komunikatu telemetrii.
@@ -34,17 +34,17 @@ Gdy urządzenia wysyłają dane telemetryczne do usługi Azure Digital bliźniac
 
 Przetwarzanie danych w usłudze Azure Digital bliźniaczych reprezentacji składa się z definiowania trzech obiektów: *dopasowań*, *funkcji zdefiniowanych przez użytkownika*i *przypisań ról*.
 
-[![Obiekty przetwarzania danych Digital bliźniaczych reprezentacji na platformie Azure](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
+[@no__t — obiekty 1Azure Digital bliźniaczych reprezentacji Data Processing](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Dopasowanie
 
 Dopasowania definiują zestaw warunków, które sprawdzają, jakie akcje odbywają się w oparciu o przychodzące dane telemetryczne czujnika. Warunki do określenia dopasowania mogą obejmować właściwości z czujnika, urządzenie nadrzędne czujnika i przestrzeń nadrzędną czujnika. Warunki są wyrażane jako porównania ze [ścieżką JSON](https://jsonpath.com/) , jak pokazano w tym przykładzie:
 
-- Wszystkie czujniki **temperatury** elementu DataType reprezentowane przez wartość ciągu ucieczki`\"Temperature\"`
-- Posiadanie `01` w porcie
-- Który należy do urządzeń z kluczem właściwości rozszerzonej **producent** ustawiony na wartość ciągu o zmienionym znaczeniu`\"GoodCorp\"`
-- Które należy do spacji typu określonego przez ciąg ucieczki`\"Venue\"`
-- Które są elementami podrzędnymi elementu nadrzędnego **SpaceId**`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
+- Wszystkie czujniki **temperatury** elementu DataType reprezentowane przez wartość ciągu ucieczki `\"Temperature\"`
+- Posiadanie `01` na swoim porcie
+- Który należy do urządzeń, dla których **producent** klucza właściwości rozszerzonej ma ustawioną wartość ciągu ucieczki `\"GoodCorp\"`
+- Który należy do spacji typu określonego przez ciąg ucieczki `\"Venue\"`
+- Które są elementami podrzędnymi nadrzędnego **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
@@ -83,16 +83,16 @@ Dopasowania definiują zestaw warunków, które sprawdzają, jakie akcje odbywaj
 > [!IMPORTANT]
 > - W ścieżkach JSON jest rozróżniana wielkość liter.
 > - Ładunek JSON jest taki sam jak ładunek zwracany przez:
->   - `/sensors/{id}?includes=properties,types`dla czujnika.
->   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`dla urządzenia nadrzędnego czujnika.
->   - `/spaces/{id}?includes=properties,types,location,timezone`dla obszaru nadrzędnego czujnika.
+>   - `/sensors/{id}?includes=properties,types` dla czujnika.
+>   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes` dla urządzenia nadrzędnego czujnika.
+>   - `/spaces/{id}?includes=properties,types,location,timezone` dla obszaru nadrzędnego czujnika.
 > - W porównaniach jest rozróżniana wielkość liter.
 
 ### <a name="user-defined-functions"></a>Funkcje zdefiniowane przez użytkownika
 
 Funkcja zdefiniowana przez użytkownika jest funkcją niestandardową wykonywaną w izolowanym środowisku usługi Azure Digital bliźniaczych reprezentacji. Funkcje zdefiniowane przez użytkownika mają dostęp do komunikatu telemetrii nieprzetworzonej czujnika, gdy zostanie on odebrany. Funkcje zdefiniowane przez użytkownika mają również dostęp do przestrzennego wykresu i usługi dyspozytora. Po zarejestrowaniu funkcji zdefiniowanej przez użytkownika w grafie należy utworzyć odpowiednika (szczegółowo [powyżej](#matchers)), aby określić czas wykonywania funkcji. Na przykład gdy usługa Azure Digital bliźniaczych reprezentacji otrzymuje nową telemetrię z danego czujnika, dopasowana funkcja zdefiniowana przez użytkownika może obliczyć średnią przesunięcia z ostatnich kilku odczytów czujnika.
 
-Funkcje zdefiniowane przez użytkownika mogą być zapisywane w języku JavaScript. Metody pomocnika współpracują z wykresem w środowisku wykonawczym zdefiniowanym przez użytkownika. Deweloperzy mogą wykonywać niestandardowe fragmenty kodu w odniesieniu do komunikatów telemetrycznych czujnika. Przykłady:
+Funkcje zdefiniowane przez użytkownika mogą być zapisywane w języku JavaScript. Metody pomocnika współpracują z wykresem w środowisku wykonawczym zdefiniowanym przez użytkownika. Deweloperzy mogą wykonywać niestandardowe fragmenty kodu w odniesieniu do komunikatów telemetrycznych czujnika. Przykłady obejmują:
 
 - Ustaw odczyt czujnika bezpośrednio do obiektu czujnika na grafie.
 - Wykonaj akcję w oparciu o różne odczyty czujników w obrębie obszaru wykresu.

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c6d7b3403209710c9086b90abcb0e2ce61a0e8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612735"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958546"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Administrowanie zasady grupy w Azure AD Domain Servicesej domenie zarządzanej
 
@@ -39,6 +39,9 @@ Aby wykonać ten artykuł, potrzebne są następujące zasoby i uprawnienia:
     * W razie potrzeby uzupełnij ten samouczek, aby [utworzyć maszynę wirtualną z systemem Windows Server i dołączyć ją do domeny zarządzanej][create-join-windows-vm].
 * Konto użytkownika, które jest członkiem grupy *administratorów DC usługi Azure AD* w dzierżawie usługi Azure AD.
 
+> [!NOTE]
+> Ponieważ nie ma [dostępu do kontrolerów domeny w usłudze Azure AD DS](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop), nie można utworzyć i używać magazynu centralnego dla szablonów administracyjnych zasad grupy w domenie zarządzanej. [Folder SYSVOL nie jest uwzględniony w lokalnej synchronizacji Azure AD Connect](synchronization.md#what-isnt-synchronized-to-azure-ad-ds), więc nie można również utworzyć lokalnego magazynu centralnego i zsynchronizować go z usługą Azure AD DS za pomocą usługi Azure AD.
+
 ## <a name="install-group-policy-management-tools"></a>Instalowanie zasady grupy narzędzia do zarządzania
 
 Aby utworzyć i skonfigurować zasady grupy obiektów (GPO), należy zainstalować narzędzia do zarządzania zasady grupy. Te narzędzia można zainstalować jako funkcję systemu Windows Server. Aby uzyskać więcej informacji na temat instalowania narzędzi administracyjnych na kliencie systemu Windows, zobacz Install [Narzędzia administracji zdalnej serwera (RSAT)][install-rsat].
@@ -47,7 +50,7 @@ Aby utworzyć i skonfigurować zasady grupy obiektów (GPO), należy zainstalowa
 1. **Menedżer serwera** powinna być otwarta domyślnie po zalogowaniu się do maszyny wirtualnej. Jeśli nie, w menu **Start** wybierz **Menedżer serwera**.
 1. W okienku *pulpit nawigacyjny* okna **Menedżer serwera** wybierz pozycję **Dodaj role i funkcje**.
 1. Na stronie **zanim rozpoczniesz** *Kreatora dodawania ról i funkcji*wybierz pozycję **dalej**.
-1. W polu *Typ instalacji*pozostaw zaznaczoną opcję **Instalacja oparta na rolach lub** oparta na funkcjach, a następnie wybierz pozycję **dalej**.
+1. W polu *Typ instalacji*pozostaw zaznaczoną opcję **Instalacja oparta na rolach lub oparta na funkcjach** , a następnie wybierz pozycję **dalej**.
 1. Na stronie **Wybór serwera** wybierz bieżącą maszynę wirtualną z puli serwerów, takiej jak *MyVM.contoso.com*, a następnie wybierz przycisk **dalej**.
 1. Na stronie **role serwera** kliknij przycisk **dalej**.
 1. Na stronie **funkcje** wybierz funkcję **zarządzania zasady grupy** .
