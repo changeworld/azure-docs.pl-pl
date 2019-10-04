@@ -1,5 +1,5 @@
 ---
-title: Zabezpieczenia kontenerów
+title: Zabezpieczenia kontenera
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak zabezpieczyć kontener
 services: cognitive-services
@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 0e9fa9146292bf7dabbbf06d3bb436aa6cd2e6e2
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124094"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842568"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Zabezpieczenia kontenera Cognitive Services platformy Azure
 
@@ -25,7 +25,7 @@ Bezpieczeństwo powinno być głównym punktem skupienia przy tworzeniu aplikacj
 
 Na poniższym diagramie przedstawiono domyślne i **niebezpieczne** podejście:
 
-![Zabezpieczenia kontenerów](../media/container-security.svg)
+![Zabezpieczenia kontenera](../media/container-security.svg)
 
 Jako alternatywne i *bezpieczne* podejście, odbiorcy Cognitive Services kontenerów mogą rozszerzyć kontener z składnikiem czołowym, utrzymując punkt końcowy kontenera jako prywatny. Rozważmy scenariusz, w którym korzystamy z [Istio][istio] jako bramy transferu danych przychodzących. Istio obsługuje uwierzytelnianie przy użyciu protokołu HTTPS/SSL i certyfikatu klienta. W tym scenariuszu fronton Istio uwidacznia dostęp do kontenera, który przedstawia certyfikat klienta, który jest listy dozwolonych wcześniej z Istio.
 
@@ -44,7 +44,7 @@ Host powinien zezwalać na listę **portów 443** i następujących domen:
 
 #### <a name="disable-deep-packet-inspection"></a>Wyłącz dokładną inspekcję pakietów
 
-> [Szczegółowa inspekcja pakietów](https://en.wikipedia.org/wiki/Deep_packet_inspection) (DPI) to typ przetwarzania danych, który sprawdza szczegółowe dane przesyłane przez sieć komputerową, a zazwyczaj wykonuje akcję przez zablokowanie, ponowne kierowanie lub zarejestrowanie odpowiednio.
+> [Głębokie Inspekcja pakietów](https://en.wikipedia.org/wiki/Deep_packet_inspection) (dpi) to typ przetwarzania danych, który sprawdza szczegółowo dane wysyłane przez sieć komputerową i zazwyczaj wykonuje akcję przez zablokowanie, ponowne kierowanie lub zarejestrowanie odpowiednio.
 
 Wyłącz wartość DPI w bezpiecznych kanałach, które kontenery Cognitive Services tworzyć na serwerach firmy Microsoft. Niewykonanie tej czynności uniemożliwi poprawne działanie kontenera.
 

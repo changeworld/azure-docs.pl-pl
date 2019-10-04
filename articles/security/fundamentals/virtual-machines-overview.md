@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7b33484084b4ada5aeaf89eb90167658ade15ad8
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899781"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828555"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Omówienie zabezpieczeń usługi Azure Virtual Machines
 Ten artykuł zawiera omówienie podstawowych funkcji zabezpieczeń platformy Azure, które mogą być używane z maszynami wirtualnymi.
 
 Możesz użyć usługi Azure Virtual Machines do wdrożenia szerokiego zakresu rozwiązań obliczeniowych w sposób Agile. Usługa obsługuje systemy Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP i Azure BizTalk Services. Pozwala to na wdrożenie dowolnego obciążenia i dowolnego języka w prawie każdym systemie operacyjnym.
 
-Maszyna wirtualna Azure umożliwia swobodne korzystanie z wirtualizacji bez konieczności kupowania i utrzymywania fizycznego sprzętu potrzebnego do działania maszyny wirtualnej. Możesz tworzyć i wdrażać aplikacje z gwarancją, że dane są chronione i bezpieczne w wysoce zabezpieczonych centrach danych.
+Maszyna wirtualna platformy Azure zapewnia elastyczność wirtualizacji bez konieczności kupowania i konserwowania fizycznego sprzętu z uruchomioną maszyną wirtualną. Możesz tworzyć i wdrażać aplikacje z gwarancją, że dane są chronione i bezpieczne w wysoce zabezpieczonych centrach danych.
 
 Na platformie Azure można tworzyć rozwiązania zgodne z ulepszonymi zabezpieczeniami, które:
 
@@ -37,7 +37,7 @@ Na platformie Azure można tworzyć rozwiązania zgodne z ulepszonymi zabezpiecz
 * Identyfikowanie i wykrywanie zagrożeń.
 * Spełnianie wymagań dotyczących zgodności.  
 
-## <a name="antimalware"></a>Oprogramowanie chroniące przed złośliwym kodem
+## <a name="antimalware"></a>Antimalware
 
 Na platformie Azure możesz używać oprogramowania chroniącego przed złośliwym kodem od dostawców zabezpieczeń, takich jak Microsoft, Symantec, Trend Micro i Kaspersky pomogą. To oprogramowanie pomaga chronić maszyny wirtualne przed złośliwymi plikami, programami reklamujące i innymi zagrożeniami.
 
@@ -47,21 +47,21 @@ Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft dla 
 
 Po wdrożeniu i włączeniu ochrony przed złośliwym oprogramowaniem firmy Microsoft dla platformy Azure dostępne są następujące podstawowe funkcje:
 
-* **Ochrona w czasie rzeczywistym**: Monitoruje aktywność w Cloud Services i na Virtual Machines w celu wykrywania i blokowania wykonywania złośliwego oprogramowania.
-* **Zaplanowane skanowanie**: Program okresowo przeprowadza skanowanie w celu wykrywania złośliwego oprogramowania, w tym aktywnie działających programów.
-* **Korygowanie złośliwego oprogramowania**: Program automatycznie podejmuje akcję dotyczącą wykrytego złośliwego oprogramowania, takiego jak usuwanie lub poddawania kwarantannie złośliwych plików oraz oczyszczanie złośliwych wpisów rejestru.
-* **Aktualizacje sygnatur**: Program automatycznie instaluje najnowsze sygnatury ochrony (definicje wirusów), aby zapewnić aktualność ochrony przed ustaloną częstotliwością.
-* **Aktualizacje aparatu ochrony przed złośliwym kodem**: Automatycznie aktualizuje aparat ochrony przed złośliwym oprogramowaniem firmy Microsoft dla platformy Azure.
-* **Aktualizacje platformy chroniącej przed złośliwym kodem**: Automatycznie aktualizuje platformę Microsoft chroniącą przed złośliwym kodem dla platformy Azure.
-* **Aktywna ochrona**: Raportuje metadane telemetrii na platformie Azure dotyczące wykrytych zagrożeń i podejrzanych zasobów, aby zapewnić szybką odpowiedź. Włącza przekazywanie synchronicznych podpisów w czasie rzeczywistym za pomocą systemu Microsoft Active Protection System (MAPS).
-* **Przykłady raportowania**: Dostarcza i raportuje przykłady do usługi Microsoft chroniącej przed złośliwym kodem dla platformy Azure, aby ułatwić udoskonalanie usługi i rozwiązywanie problemów.
-* **Wykluczenia**: Umożliwia administratorom aplikacji i usługi Konfigurowanie określonych plików, procesów i dysków w celu wykluczenia ich z ochrony i skanowania pod kątem wydajności i innych przyczyn.
-* **Zbieranie zdarzeń ochrony przed złośliwym kodem**: Rejestruje kondycję usługi chroniącej przed złośliwym kodem, podejrzane działania i akcje korygowania wykonywane w dzienniku zdarzeń systemu operacyjnego i zbiera je na koncie usługi Azure Storage.
+* **Ochrona w czasie rzeczywistym**: monitoruje aktywność w Cloud Services i na Virtual Machines w celu wykrywania i blokowania wykonywania złośliwego oprogramowania.
+* **Zaplanowane skanowanie**: okresowo przeprowadzaj skanowanie w celu wykrywania złośliwego oprogramowania, w tym aktywnie działających programów.
+* **Korygowanie złośliwego oprogramowania**: program automatycznie podejmuje akcję dotyczącą wykrytego złośliwego oprogramowania, takiego jak usuwanie lub poddawania kwarantannie złośliwych plików oraz oczyszczanie złośliwych wpisów rejestru.
+* **Aktualizacje sygnatur**: program automatycznie instaluje najnowsze sygnatury ochrony (definicje wirusów) w celu zapewnienia aktualności ochrony przed ustaloną częstotliwością.
+* **Aktualizacje aparatu ochrony przed złośliwym kodem**: usługa automatycznie aktualizuje aparat ochrony przed złośliwym oprogramowaniem firmy Microsoft.
+* **Aktualizacje platformy chroniącej przed złośliwym kodem**: automatycznie aktualizuje platformę Microsoft chroniącą przed złośliwym kodem dla platformy Azure.
+* **Aktywna ochrona**: raporty telemetryczne na platformie Azure o wykrytych zagrożeniach i podejrzanych zasobach w celu zapewnienia szybkiej odpowiedzi. Włącza przekazywanie synchronicznych podpisów w czasie rzeczywistym za pomocą systemu Microsoft Active Protection System (MAPS).
+* **Przykłady raportowania**: dostarcza i raportuje przykłady do usługi Microsoft chroniącej przed złośliwym kodem dla platformy Azure, aby ułatwić udoskonalanie usługi i rozwiązywanie problemów.
+* **Wykluczenia**: umożliwiają administratorom aplikacji i usługi Konfigurowanie określonych plików, procesów i dysków, aby wykluczyć je z ochrony i skanowania pod kątem wydajności i innych powodów.
+* **Zbieranie zdarzeń chroniących przed złośliwym kodem**: rejestruje kondycję usługi chroniącej przed złośliwym kodem, podejrzane działania i akcje korygowania wykonane w dzienniku zdarzeń systemu operacyjnego i zbiera je na koncie usługi Azure Storage.
 
 Dowiedz się więcej o oprogramowaniu chroniącym przed złośliwym kodem, aby pomóc w ochronie maszyn wirtualnych:
 
 * [Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft Cloud Services i Virtual Machines](antimalware.md)
-* [Wdrażanie rozwiązań do ochrony przed złośliwym kodem na maszynach wirtualnych platformy Azure](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
+* [Wdrażanie rozwiązań chroniących przed złośliwym kodem na platformie Azure Virtual Machines](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Jak zainstalować i skonfigurować Trend Micro głębokiego zabezpieczenia jako usługi na maszynie wirtualnej z systemem Windows](/azure/virtual-machines/windows/classic/install-trend)
 * [Jak zainstalować i skonfigurować Endpoint Protection firmy Symantec na maszynie wirtualnej z systemem Windows](/azure/virtual-machines/windows/classic/install-symantec)
 * [Rozwiązania zabezpieczeń w portalu Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
@@ -77,7 +77,7 @@ W celu zapewnienia jeszcze bardziej zaawansowanej ochrony należy rozważyć uż
 * [Zarządzanie i interfejsy API](/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Ochrona przed zagrożeniami firmy Microsoft](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Wprowadzenie do WDATP](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)  
 * [Przegląd możliwości WDATP](/windows/security/threat-protection/windows-defender-atp/overview)  
@@ -86,9 +86,9 @@ Więcej informacji:
 
 Zwiększenie bezpieczeństwa klucza może zwiększyć ochronę szyfrowania i uwierzytelniania. Można uprościć zarządzanie i zabezpieczanie kluczowych kluczy tajnych i kluczy, przechowując je w Azure Key Vault.
 
-Usługa Key Vault oferuje możliwość przechowywania kluczy w sprzętowych modułach zabezpieczeń z certyfikatami poświadczającymi zgodność ze standardami FIPS 140-2 (poziom 2). Klucze szyfrowania SQL Server na potrzeby tworzenia kopii zapasowej lub [przezroczystego szyfrowania danych](https://msdn.microsoft.com/library/bb934049.aspx) mogą być przechowywane w Key Vault z użyciem dowolnych kluczy lub wpisów tajnych aplikacji. Uprawnienia i dostęp do tych chronionych elementów są zarządzane za poorednictwem [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Key Vault udostępnia opcję przechowywania kluczy w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń) certyfikowanych do standardów standardu FIPS 140-2 Level 2. Klucze szyfrowania SQL Server na potrzeby tworzenia kopii zapasowej lub [przezroczystego szyfrowania danych](https://msdn.microsoft.com/library/bb934049.aspx) mogą być przechowywane w Key Vault z użyciem dowolnych kluczy lub wpisów tajnych aplikacji. Uprawnienia i dostęp do tych chronionych elementów są zarządzane za poorednictwem [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Co to jest Azure Key Vault?](/azure/key-vault/key-vault-overview)
 * [Blog Azure Key Vault](https://blogs.technet.microsoft.com/kv/)
@@ -99,16 +99,16 @@ Azure Disk Encryption to nowa funkcja szyfrowania dysków maszyn wirtualnych z s
 
 Rozwiązanie jest zintegrowane z Azure Key Vault, które ułatwiają sterowanie kluczami szyfrowania dysków i wpisami tajnymi w ramach subskrypcji magazynu kluczy oraz zarządzanie nimi. Gwarantuje to, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane w usłudze Azure Storage.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Azure Disk Encryption maszyn wirtualnych IaaS](/azure/security/azure-security-disk-encryption-overview)
-* [Szybki start: Szyfrowanie maszyny wirtualnej z systemem Windows IaaS przy użyciu Azure PowerShell](../azure-disk-encryption-linux-powershell-quickstart.md)
+* [Szybki Start: szyfrowanie maszyny wirtualnej z systemem Windows IaaS za pomocą Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>Kopia zapasowa maszyny wirtualnej
 
-Azure Backup to skalowalne rozwiązanie, które pomaga chronić dane aplikacji bez konieczności inwestowania kapitału i minimalnych kosztów operacyjnych. Błędy aplikacji mogą powodować uszkodzenia danych, a błędy użytkowników — usterki aplikacji. W przypadku Azure Backup maszyny wirtualne z systemem Windows i Linux są chronione.
+Azure Backup to skalowalne rozwiązanie, które pomaga chronić dane aplikacji bez konieczności inwestowania kapitału i minimalnych kosztów operacyjnych. Błędy aplikacji mogą uszkodzić dane, a błędy ludzkie mogą wprowadzać usterki do aplikacji. W przypadku Azure Backup maszyny wirtualne z systemem Windows i Linux są chronione.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Co to jest Azure Backup?](/azure/backup/backup-introduction-to-azure-backup)
 * [Często zadawane pytania dotyczące usługi Azure Backup](/azure/backup/backup-azure-backup-faq)
@@ -120,27 +120,27 @@ Istotną częścią strategii BCDR organizacji jest ustalenie, jak utrzymywać o
 Site Recovery:
 
 * **Upraszcza strategię BCDR**: Site Recovery ułatwia obsługę replikacji, trybu failover i odzyskiwania wielu obciążeń i aplikacji firmowych z jednej lokalizacji. Site Recovery organizuje replikację i pracę w trybie failover, ale nie przechwytuje danych aplikacji ani nie zawiera żadnych informacji o nim.
-* **Zapewnia elastyczną replikację**: Za pomocą Site Recovery można replikować obciążenia uruchomione na maszynach wirtualnych funkcji Hyper-V, maszynach wirtualnych VMware oraz serwerach fizycznych z systemem Windows/Linux.
-* **Obsługuje tryb failover i odzyskiwanie**: Site Recovery zapewnia test pracy w trybie failover w celu obsługi testów odzyskiwania po awarii bez wpływu na środowiska produkcyjne. Możesz również uruchomić planowane tryby failover (brak utraty danych) w przypadku przewidywanych przerw w działaniu lub nieplanowane tryby failover (minimalna utrata danych, zależna od częstotliwości replikacji) w przypadku nieoczekiwanych awarii. Po przejściu w tryb failover można wrócić do lokacji głównych. Usługa Site Recovery zapewnia plany odzyskiwania, które mogą uwzględniać skrypty i skoroszyty automatyzacji platformy Azure. Dzięki nim możesz dostosować tryb failover i odzyskiwanie dla aplikacji wielowarstwowych.
-* **Eliminuje dodatkowe centra**danych: Można przeprowadzić replikację do dodatkowej lokacji lokalnej lub do platformy Azure. Korzystanie z platformy Azure jako miejsca docelowego do odzyskiwania po awarii eliminuje koszt i złożoność utrzymywania lokacji dodatkowej. Zreplikowane dane są przechowywane w usłudze Azure Storage.
+* **Zapewnia elastyczną replikację**: korzystając z Site Recovery, można replikować obciążenia uruchomione na maszynach wirtualnych funkcji Hyper-V, maszynach wirtualnych VMware oraz serwerach fizycznych z systemem Windows/Linux.
+* **Obsługuje tryb failover i odzyskiwanie**: Site Recovery umożliwia testowanie pracy w trybie failover w celu obsługi szczegółów odzyskiwania po awarii bez wpływu na środowiska produkcyjne. Można również uruchamiać planowane przejścia w tryb failover z utratą danych o zerowej awarii lub nieplanowanym przełączeniu w tryb failover z minimalną utratą danych (w zależności od częstotliwości replikacji) w przypadku nieoczekiwanych awarii. Po przejściu w tryb failover można wrócić do lokacji głównych. Site Recovery udostępnia plany odzyskiwania, które mogą obejmować skrypty i skoroszyty usługi Azure Automation, dzięki czemu można dostosować tryb failover i odzyskiwanie aplikacji wielowarstwowych.
+* **Eliminuje dodatkowe centra**danych: można przeprowadzić replikację do dodatkowej lokacji lokalnej lub do platformy Azure. Korzystanie z platformy Azure jako miejsca docelowego do odzyskiwania po awarii eliminuje koszt i złożoność utrzymywania lokacji dodatkowej. Zreplikowane dane są przechowywane w usłudze Azure Storage.
 * **Integruje się z istniejącymi technologiami BCDR**: Partnerzy Site Recovery z funkcjami BCDR innych aplikacji. Na przykład można użyć Site Recovery, aby pomóc w ochronie SQL Server zaplecza obciążeń firmowych. Obejmuje to natywną obsługę usługi SQL Server, która jest zawsze włączona, aby zarządzać trybem failover grup dostępności.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Co to jest Azure Site Recovery?](/azure/site-recovery/site-recovery-overview)
 * [Jak działa Azure Site Recovery?](/azure/site-recovery/site-recovery-components)
 * [Jakie obciążenia są chronione przez Azure Site Recovery?](/azure/site-recovery/site-recovery-workload)
 
-## <a name="virtual-networking"></a>Sieć wirtualna
+## <a name="virtual-networking"></a>Sieci wirtualne
 
 Maszyny wirtualne muszą mieć łączność sieciową. Aby zapewnić obsługę tego wymagania, platforma Azure wymaga, aby maszyny wirtualne były połączone z siecią wirtualną platformy Azure.
 
 Usługa Azure Virtual Network to konstrukcja logiczna oparta na fizycznej sieci szkieletowej platformy Azure. Każda logiczna Sieć wirtualna platformy Azure jest odizolowana od wszystkich innych sieci wirtualnych platformy Azure. Ta izolacja pomaga upewnić się, że ruch sieciowy we wdrożeniach nie jest dostępny dla innych klientów Microsoft Azure.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Omówienie zabezpieczeń sieci platformy Azure](network-overview.md)
-* [Omówienie usługi Virtual Network](/azure/virtual-network/virtual-networks-overview)
+* [Przegląd Virtual Network](/azure/virtual-network/virtual-networks-overview)
 * [Funkcje sieciowe i partnerstwo dla scenariuszy dla przedsiębiorstw](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Zarządzanie zasadami zabezpieczeń i raportowanie
@@ -149,33 +149,33 @@ Azure Security Center pomaga zapobiegać zagrożeniom, wykrywać je i reagować 
 
 Security Center pomaga zoptymalizować i monitorować zabezpieczenia maszyn wirtualnych, wykonując następujące działania:
 
-* Zapewnianie zaleceń dotyczących [zabezpieczeń](/azure/security-center/security-center-recommendations) dla maszyn wirtualnych. Przykładowe zalecenia: Zastosuj aktualizacje systemu, skonfiguruj punkty końcowe list kontroli dostępu, Włącz ochronę przed złośliwym kodem, Włącz grupy zabezpieczeń sieci i Zastosuj szyfrowanie dysków.
+* Zapewnianie [zaleceń dotyczących zabezpieczeń](/azure/security-center/security-center-recommendations) dla maszyn wirtualnych. Przykładowe zalecenia: Zastosuj aktualizacje systemu, skonfiguruj punkty końcowe list kontroli dostępu, Włącz ochronę przed złośliwym kodem, Włącz grupy zabezpieczeń sieci i Zastosuj szyfrowanie dysków.
 * Monitorowanie stanu maszyn wirtualnych.
 
-Więcej informacji:
+Dowiedz się więcej:
 
-* [Wprowadzenie do usługi Azure Security Center](/azure/security-center/security-center-intro)
+* [Wprowadzenie do Azure Security Center](/azure/security-center/security-center-intro)
 * [Azure Security Center często zadawane pytania](/azure/security-center/security-center-faq)
 * [Azure Security Center planowanie i operacje](/azure/security-center/security-center-planning-and-operations-guide)
 
-## <a name="compliance"></a>Zgodność
+## <a name="compliance"></a>Przepisów
 
 Usługa Azure Virtual Machines ma certyfikat dla FISMA, FedRAMP, HIPAA, PCI DSS poziomu 1 i innych programów do oceny zgodności. Ten certyfikat ułatwia korzystanie z własnych aplikacji platformy Azure w celu spełnienia wymagań dotyczących zgodności oraz dla Twojej firmy.
 
-Więcej informacji:
+Dowiedz się więcej:
 
-* [Centrum zaufania firmy Microsoft: Przepisów](https://www.microsoft.com/en-us/trustcenter/compliance)
+* [Centrum zaufania firmy Microsoft: zgodność](https://www.microsoft.com/en-us/trustcenter/compliance)
 * [Zaufana chmura: Microsoft Azure zabezpieczenia, prywatność i zgodność](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 
 ## <a name="confidential-computing"></a>Przetwarzanie poufne
 
 Chociaż dane poufne nie są technicznie częścią zabezpieczeń maszyn wirtualnych, temat zabezpieczeń maszyn wirtualnych należy do podmiotu zabezpieczeń "COMPUTE" wyższego poziomu. Przetwarzanie poufne należy do kategorii zabezpieczeń "obliczeniowe".
 
-Ochrona danych poufnych gwarantuje, że w przypadku, gdy dane są "jasne", co jest wymagane do wydajnego przetwarzania, dane są chronione wewnątrz zaufanego środowiska https://en.wikipedia.org/wiki/Trusted_execution_environment wykonawczego (tee-znanego również jako enklawy), przykładem, który pokazano na poniższej ilustracji. .  
+Ochrona danych poufnych gwarantuje, że w przypadku, gdy dane są "jasne", co jest wymagane do wydajnego przetwarzania, dane są chronione wewnątrz zaufanego środowiska wykonawczego https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE-również znany jako enklawy), przykład, który jest przedstawiony na poniższej ilustracji.  
 
 TEEs upewnij się, że nie ma sposobu wyświetlania danych lub wykonywania operacji wewnątrz poza programem, nawet z debugerem. Nawet zapewniają, że dostęp do danych jest dozwolony tylko w autoryzowanym kodzie. Jeśli kod zostanie zmieniony lub naruszony, operacje są odrzucane i środowisko wyłączone. TEE wymusza te zabezpieczenia w czasie wykonywania kodu.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Wprowadzenie do rozwiązania do przetwarzania poufnego platformy Azure](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Dane poufne platformy Azure](https://azure.microsoft.com/blog/azure-confidential-computing/)  

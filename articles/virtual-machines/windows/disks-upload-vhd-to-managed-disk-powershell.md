@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: de9975151270ccce8d4a7abd58210c6550d40464
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 88b5cacf432e467c893dac6fc5839c468b2eafbd
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720335"
+ms.locfileid: "71828659"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu Azure PowerShell
 
@@ -74,7 +74,7 @@ Za pomocą AzCopy v10 Przekaż swój lokalny plik VHD na dysk zarządzany, okre�
 To przekazywanie ma taką samą przepływność jak odpowiednik [standardowego dysku twardego](disks-types.md#standard-hdd). Na przykład jeśli masz rozmiar, który jest równa S4, będziesz mieć przepływność do 60 MiB/s. Ale jeśli masz rozmiar, który jest równa S70, będziesz mieć przepływność do 500 MiB/s.
 
 ```
-AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas --blob-type PageBlob
+AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
 
 Jeśli sygnatura dostępu współdzielonego wygaśnie podczas przekazywania i nie wywołano jeszcze `revoke-access`, można uzyskać nowe sygnatury dostępu współdzielonego, aby kontynuować przekazywanie przy użyciu `grant-access`.

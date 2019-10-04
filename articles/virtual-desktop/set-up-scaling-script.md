@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: f0d847596ef21af67973b6572737e27e1d015991
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 932fbe6814df8ec324dd3360bcacfcbcf1c19b62
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676484"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842766"
 ---
-# <a name="automatically-scale-session-hosts"></a>Automatyczne skalowanie hostów sesji
+# <a name="scale-session-hosts-dynamically"></a>Dynamiczne skalowanie hostów sesji
 
 W przypadku wielu wdrożeń pulpitów wirtualnych systemu Windows na platformie Azure koszty maszyny wirtualnej reprezentują znaczną część całkowitego kosztu wdrożenia pulpitu wirtualnego systemu Windows. Aby obniżyć koszty, najlepszym rozwiązaniem jest zamknięcie i cofnięcie alokacji maszyn wirtualnych hosta sesji w godzinach użycia poza szczytem, a następnie ich ponowne uruchomienie w godzinach szczytowego użycia.
 

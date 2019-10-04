@@ -4,24 +4,24 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
-ms.openlocfilehash: 77019068279261a36f8ba40247e5f5694ca77892
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1ab6243be39bf30bc060ed5745fbf600924743a9
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67183635"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839218"
 ---
-| Zasób | Limit |
+| Zasób | Granice |
 | --- | --- |
-| Rozmiar pamięci podręcznej |530 GB |
+| Rozmiar pamięci podręcznej |1,2 TB |
 | Bazy danych |64 |
-| Maksymalna liczba podłączonych klientów |40,000 |
+| Maksymalna liczba podłączonych klientów |40 000 |
 | Pamięć podręczna systemu Azure dla replik Redis w celu zapewnienia wysokiej dostępności |1 |
-| Fragmentów w cache w warstwie premium z klastrowaniem |10 |
+| Fragmentów w pamięci podręcznej Premium z klastrowaniem |10 |
 
-Ogranicza pamięć podręczna systemu Azure dla usługi Redis i rozmiary różnią się dla każdej warstwy cenowej. Aby wyświetlić warstwy cenowe i ich skojarzone rozmiary, zobacz [Azure cache for Redis — Cennik](https://azure.microsoft.com/pricing/details/cache/).
+Pamięć podręczna systemu Azure dla limitów i rozmiarów Redis różni się dla każdej warstwy cenowej. Aby wyświetlić warstwy cenowe i ich skojarzone rozmiary, zobacz [Azure cache for Redis — Cennik](https://azure.microsoft.com/pricing/details/cache/).
 
-Aby uzyskać więcej informacji na temat usługi Azure Cache limitów konfiguracji pamięci podręcznej Redis, zobacz [Redis domyślna konfiguracja serwera](../articles/azure-cache-for-redis/cache-configure.md#default-redis-server-configuration).
+Aby uzyskać więcej informacji na temat limitów konfiguracji usługi Azure cache for Redis, zobacz [domyślną konfigurację serwera Redis](../articles/azure-cache-for-redis/cache-configure.md#default-redis-server-configuration).
 
-Ponieważ konfiguracji i zarządzania usługi Azure cache dla wystąpień usługi Redis odbywa się przez firmę Microsoft, nie wszystkie polecenia usługi Redis są obsługiwane w pamięci podręcznej Azure dla usługi Redis. Aby uzyskać więcej informacji, zobacz [polecenia nie są obsługiwane w usłudze Azure Cache, dla usługi Redis Redis](../articles/azure-cache-for-redis/cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis).
+Ponieważ konfiguracja i zarządzanie pamięcią podręczną platformy Azure dla wystąpień Redis jest wykonywane przez firmę Microsoft, nie wszystkie polecenia Redis są obsługiwane w usłudze Azure cache for Redis. Aby uzyskać więcej informacji, zobacz [Redis polecenia nie są obsługiwane w usłudze Azure cache for Redis](../articles/azure-cache-for-redis/cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis).
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c2408d8ea8fb6458761ef1d853d5dde52ac2311
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: d75c925ef55163ce06b2ceff585e230d95b38c77
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907136"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837502"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "69907136"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 
-Utwórz nowy projekt w języku Go przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do swojego projektu do pliku o nazwie `detect-language.go`.
+Utwórz nowy projekt w języku go przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do projektu w pliku o nazwie `detect-language.go`.
 
 ```go
 package main
@@ -33,9 +33,9 @@ import (
 )
 ```
 
-## <a name="create-the-main-function"></a>Tworzenie funkcji main
+## <a name="create-the-main-function"></a>Tworzenie funkcji Main
 
-Ten przykład spróbuje odczytać klucz subskrypcji tłumaczenie tekstu w usłudze translator i punkt końcowy z tych zmiennych środowiskowych: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` i `TRANSLATOR_TEXT_ENDPOINT`. Jeśli nie znasz zmiennych środowiskowych, możesz ustawić `subscriptionKey` i `endpoint` jako ciągi i dodać komentarz do instrukcji warunkowych.
+Ten przykład spróbuje odczytać klucz subskrypcji tłumaczenie tekstu w usłudze Translator i punkt końcowy z tych zmiennych środowiskowych: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` i `TRANSLATOR_TEXT_ENDPOINT`. Jeśli nie znasz zmiennych środowiskowych, możesz ustawić `subscriptionKey` i `endpoint` jako ciągi i dodać komentarz do instrukcji warunkowych.
 
 Skopiuj ten kod do projektu:
 
@@ -65,9 +65,9 @@ func main() {
 }
 ```
 
-## <a name="create-a-function-to-detect-the-text-language"></a>Tworzenie funkcji na potrzeby wykrywania języka tekstu
+## <a name="create-a-function-to-detect-the-text-language"></a>Tworzenie funkcji wykrywania języka tekstu
 
-Utwórzmy funkcję na potrzeby wykrywania języka tekstu. Ta funkcja będzie przyjmować jeden argument — Twój klucz subskrypcji na potrzeby tłumaczenia tekstu w usłudze Translator.
+Utwórzmy funkcję wykrywania języka tekstu. Ta funkcja będzie mieć jeden argument, tłumaczenie tekstu w usłudze Translator klucza subskrypcji.
 
 ```go
 func detect(subscriptionKey string, uri string) {
@@ -78,7 +78,7 @@ func detect(subscriptionKey string, uri string) {
 }
 ```
 
-Następnie utwórzmy adres URL. Adres URL został utworzony przy użyciu metod `Parse()` i `Query()`.
+Następnie Utwórzmy adres URL. Adres URL jest tworzony przy użyciu metod `Parse()` i `Query()`.
 
 Skopiuj ten kod do funkcji `detect`.
 
@@ -90,11 +90,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [Translator Text API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) (Interfejs API tłumaczenia tekstu w usłudze Translator 3.0: wykrywanie).
+> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [interfejs API tłumaczenia tekstu w usłudze Translator 3,0: Detection](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
 
-## <a name="create-a-struct-for-your-request-body"></a>Tworzenie struktury treści żądania
+## <a name="create-a-struct-for-your-request-body"></a>Tworzenie struktury dla treści żądania
 
-Następnie utwórz anonimową strukturę treści żądania i zakoduj ją jako dane JSON przy użyciu metody `json.Marshal()`. Dodaj ten kod do funkcji `detect`.
+Następnie utwórz anonimową strukturę dla treści żądania i Zakoduj ją jako plik JSON z `json.Marshal()`. Dodaj ten kod do funkcji `detect`.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -106,9 +106,9 @@ body := []struct {
 b, _ := json.Marshal(body)
 ```
 
-## <a name="build-the-request"></a>Tworzenie żądania
+## <a name="build-the-request"></a>Kompiluj żądanie
 
-Teraz, gdy treść żądania została zakodowana jako dane JSON, możesz utworzyć żądanie POST i wywołać interfejs API tłumaczenia tekstu w usłudze Translator.
+Teraz, gdy treść żądania została zakodowana w formacie JSON, możesz skompilować żądanie POST i wywołać interfejs API tłumaczenia tekstu w usłudze Translator.
 
 ```go
 // Build the HTTP POST request
@@ -127,11 +127,11 @@ if err != nil {
 }
 ```
 
-Jeśli używasz subskrypcji usługi Cognitive Services, musisz także uwzględnić `Ocp-Apim-Subscription-Region` w parametrach żądania. [Dowiedz się więcej o uwierzytelnianiu w ramach subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Jeśli używasz subskrypcji usługi Cognitive Services, musisz także uwzględnić w parametrach żądania `Ocp-Apim-Subscription-Region`. [Dowiedz się więcej o uwierzytelnianiu w ramach subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="handle-and-print-the-response"></a>Obsługa i wyświetlanie odpowiedzi
+## <a name="handle-and-print-the-response"></a>Obsługuj i wydrukuj odpowiedź
 
-Dodaj następujący kod do funkcji `detect`, aby zdekodować odpowiedź JSON, a następnie sformatować i wyświetlić wynik.
+Dodaj ten kod do funkcji `detect`, aby zdekodować odpowiedź JSON, a następnie sformatuj i wydrukuj wynik.
 
 ```go
 // Decode the JSON response
@@ -144,19 +144,23 @@ prettyJSON, _ := json.MarshalIndent(result, "", "  ")
 fmt.Printf("%s\n", prettyJSON)
 ```
 
-## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
+## <a name="put-it-all-together"></a>Umieść wszystko razem
 
-To wszystko. Utworzono prosty program, który będzie wywoływał interfejs API tłumaczenia tekstu w usłudze Translator i zwracał odpowiedź w formacie JSON. Teraz nadszedł czas, aby uruchomić program:
+Jest to również prosty program, który wywoła interfejs API tłumaczenia tekstu w usłudze Translator i zwróci odpowiedź JSON. Teraz czas na uruchomienie programu:
 
 ```console
 go run detect-language.go
 ```
 
-Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny w witrynie [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
+Jeśli chcesz porównać swój kod z naszą usługą, kompletny przykład jest dostępny w witrynie [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
 
-Znajdź skrót kraju/regionu na [liście języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Po uruchomieniu przykładu na terminalu powinny zostać wyświetlone następujące elementy:
+
+> [!NOTE]
+> Znajdź skrót kraju/regionu na [liście języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+
 
 ```json
 [

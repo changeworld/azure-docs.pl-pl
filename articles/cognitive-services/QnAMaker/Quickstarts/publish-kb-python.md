@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Publikowanie bazy wiedzy, REST i Python — QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki start oparty na protokole REST języka Python przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
+description: Ten przewodnik Szybki Start oparty na języku Python przeprowadzi Cię przez proces publikowania bazy wiedzy, która wypycha najnowszą wersję przetestowanej bazy wiedzy do dedykowanego indeksu Azure Search reprezentującego opublikowaną bazę wiedzy. Tworzy również punkt końcowy, który można wywołać w aplikacji lub bot rozmowy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,62 +11,62 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 54f9e1eb9614708880c9a45cddcf9d7a282d0305
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 09523bb6c9c8a58f5f7bd102d2ac30ad77f28d1c
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802856"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840187"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka Python
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Szybki Start: Publikowanie bazy wiedzy w QnA Maker przy użyciu języka Python
 
-Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez programowe publikowanie bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
+Ten przewodnik Szybki Start zawiera instrukcje programistyczne publikowania bazy wiedzy (KB). Publikowanie powoduje wypchnięcie najnowszej wersji bazy wiedzy do dedykowanego indeksu Azure Search i utworzenie punktu końcowego, który można wywołać w aplikacji lub rozmowie bot.
 
-Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
-* [Publikowanie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) — ten interfejs API nie wymaga żadnych informacji zawartych w treści żądania.
+To wywołanie narzędzia do szybkiego startu QnA Maker interfejsy API REST:
+* [Publikowanie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) — ten interfejs API nie wymaga żadnych informacji w treści żądania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Środowisko Python w wersji 3.7](https://www.python.org/downloads/)
-* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal.
-* Identyfikator bazy wiedzy usługi QnA Maker dostępny w adresie URL w parametrze ciągu zapytania kbid, jak pokazano poniżej.
+* [Python 3,7](https://www.python.org/downloads/)
+* Wymagana jest [usługa QNA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal.
+* QnA Maker identyfikator bazy wiedzy (KB) znaleziony w adresie URL w parametrze ciągu zapytania kbid, jak pokazano poniżej.
 
-    ![Identyfikator bazy wiedzy usługi QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
+    ![Identyfikator bazy wiedzy QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Jeśli nie masz jeszcze bazy wiedzy, możesz utworzyć przykładową bazę na potrzeby tego podręcznika Szybki start: [Tworzenie nowej bazy wiedzy](create-new-kb-nodejs.md).
+    Jeśli nie masz jeszcze bazy wiedzy, możesz utworzyć przykład jednej do użycia w tym przewodniku szybki start: [Tworzenie nowej bazy wiedzy](../how-to/create-knowledge-base.md).
 
 > [!NOTE] 
-> Pliki kompletnego rozwiązania są dostępne w [repozytorium GitHub **Azure-Samples/cognitive-services-qnamaker-python**](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
+> Kompletne pliki rozwiązania są dostępne w [repozytorium GitHub **Azure-Samples/poznawcze-Services-qnamaker-Python** ](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
 
-## <a name="create-a-knowledge-base-python-file"></a>Tworzenie pliku Python bazy wiedzy
+## <a name="create-a-knowledge-base-python-file"></a>Utwórz plik bazy wiedzy w języku Python
 
 Utwórz plik o nazwie `publish-kb-3x.py`.
 
-## <a name="add-the-required-dependencies"></a>Dodawanie wymaganych zależności
+## <a name="add-the-required-dependencies"></a>Dodaj wymagane zależności
 
-Na początku pliku `publish-kb-3x.py` dodaj następujące wiersze, aby dodać niezbędne zależności do projektu:
+W górnej części `publish-kb-3x.py` Dodaj następujące wiersze, aby dodać wymagane zależności do projektu:
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=1-1 "Add the required dependencies")]
 
-## <a name="add-required-constants"></a>Dodawanie wymaganych stałych
+## <a name="add-required-constants"></a>Dodaj wymagane stałe
 
-Po poprzednich wymaganych zależnościach dodaj wymagane stałe umożliwiające dostęp do usługi QnA Maker. Przedstawione wartości zastąp własnymi.
+Po powyższych wymaganych zależnościach Dodaj wymagane stałe, aby uzyskać dostęp do QnA Maker. Zastąp wartości własnymi.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=5-15 "Add the required constants")]
 
-## <a name="add-post-request-to-publish-knowledge-base"></a>Dodawanie żądania POST w celu publikowania bazy wiedzy
+## <a name="add-post-request-to-publish-knowledge-base"></a>Dodaj żądanie POST w celu opublikowania bazy wiedzy
 
-Poniżej wymaganych stałych dodaj następujący kod, który wysyła żądanie HTTPS do interfejsu API usługi QnA Maker, aby opublikować bazę wiedzy, oraz odbiera odpowiedź:
+Po wprowadzeniu wymaganych stałych Dodaj następujący kod, który wysyła żądanie HTTPS do interfejs API usługi QnA Maker w celu opublikowania bazy wiedzy i otrzymuje odpowiedź:
 
 [!code-python[Add a POST request to publish knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=17-26 "Add a POST request to publish knowledge base")]
 
-W przypadku pomyślnego publikowania wywołanie interfejsu API zwraca stan 204 bez jakiejkolwiek zawartości w treści odpowiedzi. Ten kod dodaje zawartość dla odpowiedzi stanu 204.
+Wywołanie interfejsu API zwraca stan 204 dla pomyślnego opublikowania bez żadnej zawartości w treści odpowiedzi. Kod dodaje zawartość do 204 odpowiedzi.
 
-W przypadku wszystkich innych odpowiedzi są one zwracane w niezmienionej postaci.
+W przypadku każdej innej odpowiedzi odpowiedź jest zwracana bez zmian.
 
 ## <a name="build-and-run-the-program"></a>Kompilowanie i uruchamianie programu
 
-Wprowadź następujące polecenie w wierszu polecenia, aby uruchomić program. Spowoduje to wysłanie żądania do interfejsu API usługi QnA Maker w celu opublikowania bazy wiedzy. W przypadku powodzenia zwracany jest kod 204. W przeciwnym razie wyświetlane są błędy.
+Wprowadź następujące polecenie w wierszu polecenia, aby uruchomić program. Wyśle żądanie do interfejs API usługi QnA Maker w celu opublikowania bazy wiedzy, a następnie drukuje 204 dla sukcesu lub błędów.
 
 ```bash
 python publish-kb-3x.py
@@ -76,9 +76,9 @@ python publish-kb-3x.py
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po opublikowaniu bazy wiedzy potrzebny jest [adres URL punktu końcowego do wygenerowania odpowiedzi](../Tutorials/create-publish-answer.md#generating-an-answer). 
+Po opublikowaniu bazy wiedzy wymagany jest [adres URL punktu końcowego w celu wygenerowania odpowiedzi](../Tutorials/create-publish-answer.md#generating-an-answer). 
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Dokumentacja interfejsu API REST usługi QnA Maker (v4)](https://go.microsoft.com/fwlink/?linkid=2092179)
 
-[Omówienie usługi QnA Maker](../Overview/overview.md)
+[Przegląd QnA Maker](../Overview/overview.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Pobierz długość zdania — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki Start: pobieranie długości zdań — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start dowiesz się, jak określić długość zdania przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
@@ -11,20 +11,18 @@ ms.topic: quickstart
 ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 97db9e145c290e97dbda63a6207f5101a80d67ec
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: fc2d75c47cb9a1f4011e6147f46ec2df31216482
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70393926"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827439"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Szybki start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator, aby określić długość zdania
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Szybki Start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator, aby określić długość zdania
 
 W tym przewodniku szybki start dowiesz się, jak określić długość zdań przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
 
-Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
-
-[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
+Ten przewodnik Szybki Start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenie tekstu w usłudze translator. Jeśli nie masz konta, możesz skorzystać z [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/) , aby uzyskać klucz subskrypcji.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -58,8 +56,8 @@ Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](http
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Tłumaczenie tekstu](quickstart-translate.md)
-* [Transliteracja tekstu](quickstart-transliterate.md)
-* [Identyfikowanie język na podstawie danych wejściowych](quickstart-detect.md)
-* [Uzyskiwanie alternatywnych tłumaczeń](quickstart-dictionary.md)
-* [Pobieranie listy obsługiwanych języków](quickstart-languages.md)
+* [Przetłumacz tekst](quickstart-translate.md)
+* [Zatransliteracja tekstu](quickstart-transliterate.md)
+* [Zidentyfikuj język według danych wejściowych](quickstart-detect.md)
+* [Pobierz alternatywne tłumaczenia](quickstart-dictionary.md)
+* [Pobierz listę obsługiwanych języków](quickstart-languages.md)

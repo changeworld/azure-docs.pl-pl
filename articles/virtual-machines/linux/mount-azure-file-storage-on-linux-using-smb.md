@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: c394b013b057a78e99cafc0adde9727d0a75a87c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091826"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828397"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Instalowanie usługi Azure File Storage na maszynach wirtualnych z systemem Linux przy użyciu protokołu SMB
 
@@ -28,12 +28,12 @@ Usługa File Storage oferuje udziały plików w chmurze, które używają standa
 
 Przeniesienie plików z maszyny wirtualnej do instalacji SMB, która jest hostowana w usłudze File Storage, to doskonały sposób na Debugowanie dzienników. Ten sam udział SMB można zainstalować lokalnie na komputerze Mac, w systemie Linux lub na stacji roboczej z systemem Windows. Protokół SMB nie jest najlepszym rozwiązaniem do przesyłania strumieniowego dzienników systemu Linux lub aplikacji w czasie rzeczywistym, ponieważ nie jest on zbudowany w celu obsługi takich dużych obowiązków rejestrowania. Dedykowane, ujednolicone narzędzie do warstwy rejestrowania, takie jak Fluent, będzie lepszym rozwiązaniem niż SMB do zbierania danych wyjściowych systemu Linux i rejestrowania aplikacji.
 
-Ten przewodnik wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby odnaleźć wersję, uruchom polecenie **az --version**. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+Ten przewodnik wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom **AZ--Version** , aby znaleźć wersję. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów o nazwie moja resourceName w lokalizacji *Wschodnie stany USA* .
+Utwórz grupę zasobów o nazwie Moja *resourceName* w lokalizacji *Wschodnie stany USA* .
 
 ```bash
 az group create --name myResourceGroup --location eastus
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Utwórz nowe konto magazynu w utworzonej grupie zasobów przy użyciu polecenia [AZ Storage account Create](/cli/azure/storage/account). Ten przykład tworzy konto magazynu o nazwie *ciąg mystorageacct\<liczba losowa >* i umieszcza nazwę tego konta magazynu w zmiennej **STORAGEACCT**. Nazwy kont magazynu muszą być unikatowe, korzystając `$RANDOM` z dołączania liczby do końca, aby uczynić ją unikatową.
+Utwórz nowe konto magazynu w utworzonej grupie zasobów przy użyciu polecenia [AZ Storage account Create](/cli/azure/storage/account). Ten przykład tworzy konto magazynu o nazwie *ciąg mystorageacct @ no__t-1random number >* i umieszcza nazwę tego konta magazynu w zmiennej **STORAGEACCT**. Nazwa konta magazynu musi być unikatowa, przy użyciu `$RANDOM` dołącza liczbę do końca, aby była unikatowa.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -69,9 +69,9 @@ STORAGEKEY=$(az storage account keys list \
 
 Utwórz udział magazynu plików za pomocą polecenia [AZ Storage Share Create](/cli/azure/storage/share). 
 
-Nazwy udziałów muszą składać się z małych liter, cyfr i pojedynczych łączników, ale nie mogą rozpoczynać się od łącznika. Szczegółowe informacje o nazwach plików i udziałów plików można znaleźć w temacie [Nazywanie i odwoływanie się do udziałów, katalogów, plików i metadanych](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Nazwy udziałów muszą składać się z małych liter, cyfr i pojedynczych łączników, ale nie mogą rozpoczynać się od łącznika. Aby uzyskać szczegółowe informacje o nazewnictwie udziałów plików i plików, zobacz [nazewnictwo i odwoływanie się do udziałów, katalogów, plików i metadanych](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
-W tym przykładzie tworzony jest udział o nazwie GIB z limitem przydziału 10. 
+W tym przykładzie tworzony jest udział *o nazwie GIB* z limitem przydziału 10. 
 
 ```bash
 az storage share create --name myshare \
@@ -99,7 +99,7 @@ Zainstaluj udział plików platformy Azure w katalogu lokalnym.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Powyższe polecenie używa polecenia [Mount](https://linux.die.net/man/8/mount) do zainstalowania udziału plików platformy Azure i opcji specyficznych dla protokołu [CIFS](https://linux.die.net/man/8/mount.cifs). W odniesieniu do opcji file_mode i dir_mode można ustawić pliki i `0777`katalogi na uprawnienia. `0777` Uprawnienie przyznaje uprawnienia Odczyt, zapis i wykonywanie wszystkim użytkownikom. Te uprawnienia można zmienić, zastępując wartości innymi [uprawnieniami chmod](https://en.wikipedia.org/wiki/Chmod). Można również użyć innych opcji [CIFS](https://linux.die.net/man/8/mount.cifs) , takich jak gid lub UID. 
+Powyższe polecenie używa polecenia [Mount](https://linux.die.net/man/8/mount) do zainstalowania udziału plików platformy Azure i opcji specyficznych dla protokołu [CIFS](https://linux.die.net/man/8/mount.cifs). W odniesieniu do opcji file_mode i dir_mode można ustawić pliki i katalogi na uprawnienia `0777`. Uprawnienie `0777` udziela wszystkim użytkownikom uprawnień do odczytu, zapisu i wykonywania. Te uprawnienia można zmienić, zastępując wartości innymi [uprawnieniami chmod](https://en.wikipedia.org/wiki/Chmod). Można również użyć innych opcji [CIFS](https://linux.die.net/man/8/mount.cifs) , takich jak gid lub UID. 
 
 
 ## <a name="persist-the-mount"></a>Utrwalanie instalacji
@@ -115,5 +115,5 @@ W celu zwiększenia bezpieczeństwa w środowiskach produkcyjnych należy przech
 
 - [Dostosowywanie maszyny wirtualnej z systemem Linux podczas tworzenia przy użyciu funkcji Cloud-init](using-cloud-init.md)
 - [Dodawanie dysku do maszyny wirtualnej z systemem Linux](add-disk.md)
-- [Szyfrowanie dysków na maszynie wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure](encrypt-disks.md)
+- [Azure Disk Encryption dla maszyn wirtualnych z systemem Linux](disk-encryption-overview.md)
 

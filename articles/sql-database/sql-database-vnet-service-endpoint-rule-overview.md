@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 485c79bab90295cf9af9ef1dbbc209d46931a485
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984939"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828828"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Korzystanie z punktów końcowych usługi sieci wirtualnej i reguł dla serwerów baz danych
 
 *Reguły sieci wirtualnej* to jedna funkcja zabezpieczeń zapory, która kontroluje, czy serwer bazy danych dla pojedynczych baz danych i elastycznej puli na platformie Azure [SQL Database](sql-database-technical-overview.md) lub dla baz danych w [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) akceptuje komunikację są wysyłane z określonych podsieci w sieciach wirtualnych. W tym artykule wyjaśniono, dlaczego funkcja reguły sieci wirtualnej jest czasami najlepszą opcją bezpiecznego zezwalania na komunikację z Azure SQL Database i SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Ten artykuł ma zastosowanie do programu Azure SQL Server oraz do baz danych SQL Database i SQL Data Warehouse utworzonych na serwerze SQL platformy Azure. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. Ten artykuł *nie* dotyczy wdrożenia **wystąpienia zarządzanego** w Azure SQL Database, ponieważ nie ma skojarzonego z nim punktu końcowego usługi.
+> Ten artykuł ma zastosowanie do programu Azure SQL Server oraz do baz danych SQL Database i SQL Data Warehouse utworzonych na serwerze SQL platformy Azure. Dla uproszczenia SQL Database jest używany podczas odwoływania się do SQL Database i SQL Data Warehouse. Ten artykuł *nie* dotyczy wdrożenia **wystąpienia zarządzanego** w Azure SQL Database, ponieważ nie ma skojarzonego z nim punktu końcowego usługi.
 
 Aby można było utworzyć regułę sieci wirtualnej, musi ona być [punktem końcowym usługi sieci wirtualnej][vm-virtual-network-service-endpoints-overview-649d] , aby uzyskać odwołanie do reguły.
 
@@ -53,8 +53,8 @@ Każda reguła sieci wirtualnej ma zastosowanie do całego serwera Azure SQL Dat
 
 Istnieje separacja ról zabezpieczeń w administrowaniu punktami końcowymi usługi Virtual Network. Wymagana jest akcja z każdej z następujących ról:
 
-- **Administrator sieci:** &nbsp;Włącz punkt końcowy.
-- **Administrator bazy danych:** &nbsp;Zaktualizuj listę kontroli dostępu (ACL), aby dodać daną podsieć do serwera SQL Database.
+- **Administrator sieci:** &nbsp; Włącz punkt końcowy.
+- **Administrator bazy danych:** &nbsp;. zaktualizowanie listy kontroli dostępu (ACL) w celu dodania danej podsieci do serwera SQL Database.
 
 *Alternatywa RBAC:*
 
@@ -89,11 +89,11 @@ W przypadku Azure SQL Database funkcja reguł sieci wirtualnej ma następujące 
 
 Korzystając z punktów końcowych usługi dla Azure SQL Database, zapoznaj się z następującymi kwestiami:
 
-- **Wymagane do Azure SQL Database publicznych adresów IP**: Grupy zabezpieczeń sieci (sieciowych grup zabezpieczeń) muszą zostać otwarte, aby Azure SQL Database adresy IP w celu umożliwienia łączności. Można to zrobić za pomocą [tagów usługi](../virtual-network/security-overview.md#service-tags) sieciowej grupy zabezpieczeń dla Azure SQL Database.
+- **Wychodzące do Azure SQL Database publicznych adresów IP jest wymagane**: aby umożliwić łączność, należy otworzyć sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) w celu Azure SQL Database adresów IP. Można to zrobić za pomocą [tagów usługi](../virtual-network/security-overview.md#service-tags) sieciowej grupy zabezpieczeń dla Azure SQL Database.
 
 ### <a name="expressroute"></a>ExpressRoute
 
-jeśli korzystasz z usługi [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) w środowisku lokalnym na potrzeby publicznej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft, konieczne będzie określenie używanych adresów IP translatora adresów sieciowych. W przypadku publicznej komunikacji równorzędnej każdy obwód usługi ExpressRoute domyślnie używa dwóch adresów IP translatora adresów sieciowych stosowanych do ruchu w ramach usługi platformy Azure, gdy ruch trafia do sieci szkieletowej platformy Microsoft Azure. W przypadku komunikacji równorzędnej firmy Microsoft używane adresy IP translatora adresów sieciowych są dostarczane przez klienta lub przez dostawcę usług. Aby umożliwić dostęp do zasobów usługi, musisz zezwolić na te publiczne adresy IP w ustawieniu zapory adresu IP zasobu. Aby znaleźć adresy IP obwodów usługi ExpressRoute publicznej komunikacji równorzędnej, [otwórz bilet pomocy technicznej przy użyciu usługi ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w witrynie Azure Portal. Dowiedz się więcej o [translatorze adresów sieciowych publicznej komunikacji równorzędnej i komunikacji równorzędnej firmy Microsoft dla usługi ExpressRoute.](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)
+Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) z Twojego miejsca do publicznej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft, musisz określić używane adresy IP translatora adresów sieciowych. W przypadku publicznej komunikacji równorzędnej każdy obwód usługi ExpressRoute domyślnie używa dwóch adresów IP translatora adresów sieciowych stosowanych do ruchu usług platformy Azure, gdy ruch przechodzi do Microsoft Azure sieci szkieletowej. W przypadku komunikacji równorzędnej firmy Microsoft używane adresy IP translatora adresów sieciowych są dostarczane przez klienta lub przez dostawcę usług. Aby zezwolić na dostęp do zasobów usługi, musisz zezwolić na te publiczne adresy IP w ustawieniu zapory adresu IP zasobu. Aby znaleźć adresy IP obwodu publicznego komunikacji równorzędnej ExpressRoute, [Otwórz bilet pomocy technicznej z ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) za pośrednictwem Azure Portal. Dowiedz się więcej o [translatorze adresów sieciowych dla usługi ExpressRoute Public i komunikacji równorzędnej firmy Microsoft.](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)
   
 Aby umożliwić komunikację z obwodu do Azure SQL Database, należy utworzyć reguły sieci IP dla publicznych adresów IP translatora adresów sieciowych.
 
@@ -138,7 +138,7 @@ Baza danych wielobase jest często używana do ładowania dane do Azure SQL Data
    > - Jeśli masz konto usługi Magazyn ogólnego przeznaczenia w wersji 1 lub BLOB, musisz **najpierw przeprowadzić uaktualnienie do wersji 2** przy użyciu tego [przewodnika](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Aby uzyskać znane problemy z Azure Data Lake Storage Gen2, zapoznaj się z tym [przewodnikiem](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. W obszarze konto magazynu przejdź do pozycji **Access Control (IAM)** , a następnie kliknij pozycję **Dodaj przypisanie roli**. Przypisz rolę RBAC **współautor danych obiektów blob magazynu** do platformy Azure SQL Server Hosting Azure SQL Data Warehouse, który został zarejestrowany w usłudze Azure Active Directory (AAD), jak w kroku 1.
+1. W obszarze konto magazynu przejdź do pozycji **Access Control (IAM)** , a następnie kliknij pozycję **Dodaj przypisanie roli**. Przypisz rolę RBAC **współautor danych obiektów blob magazynu** do platformy Azure SQL Server Hosting Azure SQL Data Warehouse, które zostały zarejestrowane w usłudze Azure Active Directory (AAD), jak w kroku 1.
 
    > [!NOTE] 
    > Tylko członkowie z uprawnieniami właściciela mogą wykonać ten krok. Aby uzyskać różne wbudowane role dla zasobów platformy Azure, zapoznaj się z tym [przewodnikiem](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
@@ -197,9 +197,9 @@ Błąd połączenia 40914 odnosi się do *reguł sieci wirtualnej*określonych w
 
 ### <a name="error-40615"></a>Błąd 40615
 
-*Tekst komunikatu:* Nie można otworzyć serwera{0}"" żądanego przez nazwę logowania. Klient z adresem IP "{1}" nie może uzyskać dostępu do serwera.
+*Tekst komunikatu:* Nie można otworzyć serwera "{0}" żądanego podczas logowania. Klient z adresem IP "{1}" nie może uzyskać dostępu do serwera.
 
-*Opis błędu:* Klient próbuje nawiązać połączenie z adresu IP, który nie jest autoryzowany do nawiązywania połączenia z serwerem Azure SQL Database. Zapora serwera nie ma reguły adresu IP zezwalającej klientowi na komunikację z usługą SQL Database z tego adresu IP.
+*Opis błędu:* Klient próbuje nawiązać połączenie z adresu IP, który nie jest autoryzowany do nawiązywania połączenia z serwerem Azure SQL Database. Zapora serwera nie ma żadnej reguły adresu IP, która umożliwia klientowi komunikowanie się z podanym adresem IP do SQL Database.
 
 *Rozwiązywanie błędów:* Wprowadź adres IP klienta jako regułę adresu IP. W tym celu należy użyć okienka Zapora w Azure Portal.
 
@@ -224,7 +224,7 @@ Skrypt programu PowerShell może również tworzyć reguły sieci wirtualnej. Kl
 
 Wewnętrznie polecenia cmdlet programu PowerShell dla akcji sieci wirtualnej SQL wywołują interfejsy API REST. Interfejsy API REST można wywołać bezpośrednio.
 
-- [Reguły Virtual Network: Składowa][rest-api-virtual-network-rules-operations-862r]
+- [Reguły Virtual Network: operacje][rest-api-virtual-network-rules-operations-862r]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -237,9 +237,9 @@ Musisz mieć już podsieć, która jest otagowana przy użyciu konkretnej *nazwy
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroki
 
-1. Zaloguj się w witrynie [Azure Portal][http-azure-portal-link-ref-477t].
+1. Zaloguj się do [Azure Portal][http-azure-portal-link-ref-477t].
 
-2. Następnie przejdź do portalu do **serwerów** &gt; SQL **Zapora/sieci wirtualne**.
+2. Następnie przejdź do portalu do **serwerów SQL** &gt; **Zapora/sieci wirtualne**.
 
 3. Ustaw ustawienie **Zezwalaj na dostęp do usług platformy Azure** .
 
@@ -254,7 +254,7 @@ Musisz mieć już podsieć, która jest otagowana przy użyciu konkretnej *nazwy
 
     > [!TIP]
     > Należy podać prawidłowy **prefiks adresu** dla podsieci. Wartość można znaleźć w portalu.
-    > Przejdź do **wszystkich zasobów** &gt; **wszystkie typy** &gt; **sieci wirtualne**. Filtr Wyświetla sieci wirtualne. Kliknij sieć wirtualną, a następnie kliknij pozycję **podsieci**. Kolumna **zakres adresów** ma prefiks adresu, którego potrzebujesz.
+    > Przejdź do **wszystkich zasobów** &gt; **wszystkich typów** &gt; **sieci wirtualnych**. Filtr Wyświetla sieci wirtualne. Kliknij sieć wirtualną, a następnie kliknij pozycję **podsieci**. Kolumna **zakres adresów** ma prefiks adresu, którego potrzebujesz.
 
     ![Wypełnij pola dla nowej reguły.][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -266,14 +266,14 @@ Musisz mieć już podsieć, która jest otagowana przy użyciu konkretnej *nazwy
 
 > [!NOTE]
 > Następujące stany lub Stany stosują się do zasad:
-> - **Gotowe** Wskazuje, że zainicjowana operacja zakończyła się pomyślnie.
-> - **Awarii** Wskazuje, że zainicjowana operacja zakończyła się niepowodzeniem.
-> - **Skasowan** Dotyczy tylko operacji usuwania i wskazuje, że reguła została usunięta i nie ma już zastosowania.
-> - **Toku** Wskazuje, że operacja jest w toku. Stara reguła jest stosowana, gdy ta operacja jest w tym stanie.
+> - **Gotowe:** Wskazuje, że zainicjowana operacja zakończyła się pomyślnie.
+> - **Nie powiodło się:** Wskazuje, że zainicjowana operacja zakończyła się niepowodzeniem.
+> - **Usunięte:** Dotyczy tylko operacji usuwania i wskazuje, że reguła została usunięta i nie ma już zastosowania.
+> - W **toku:** Wskazuje, że operacja jest w toku. Stara reguła jest stosowana, gdy ta operacja jest w tym stanie.
 
 <a name="anchor-how-to-links-60h" />
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Powiązane artykuły
 
 - [Punkty końcowe usługi sieci wirtualnej platformy Azure][vm-virtual-network-service-endpoints-overview-649d]
 - [Azure SQL Database reguły zapory na poziomie serwera i na poziomie bazy danych][sql-db-firewall-rules-config-715d]
@@ -283,7 +283,7 @@ Funkcja reguły sieci wirtualnej dla Azure SQL Database stała się dostępna z 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Użyj programu PowerShell, aby utworzyć punkt końcowy usługi sieci wirtualnej, a następnie regułę sieci wirtualnej dla Azure SQL Database.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
-- [Reguły Virtual Network: Operacje][rest-api-virtual-network-rules-operations-862r] przy użyciu interfejsów API REST
+- [Reguły Virtual Network: operacje][rest-api-virtual-network-rules-operations-862r] przy użyciu interfejsów API REST
 
 <!-- Link references, to images. -->
 

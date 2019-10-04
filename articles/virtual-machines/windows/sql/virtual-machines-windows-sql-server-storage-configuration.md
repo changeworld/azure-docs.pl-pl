@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309238"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828612"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfiguracja magazynu dla maszyn wirtualnych SQL Server
 
@@ -42,9 +42,28 @@ W poniższych sekcjach opisano sposób konfigurowania magazynu dla nowych maszyn
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Podczas aprowizacji maszyny wirtualnej platformy Azure przy użyciu obrazu galerii SQL Server możesz wybrać opcję automatycznego konfigurowania magazynu dla nowej maszyny wirtualnej. Należy określić rozmiar magazynu, limity wydajności i typ obciążenia. Poniższy zrzut ekranu przedstawia blok konfiguracji magazynu używany podczas aprowizacji maszyny wirtualnej SQL.
+Podczas aprowizacji maszyny wirtualnej platformy Azure przy użyciu obrazu galerii SQL Server wybierz pozycję **Zmień konfigurację** na karcie **Ustawienia SQL Server** , aby otworzyć stronę Konfiguracja magazynu zoptymalizowanego pod kątem wydajności. Możesz pozostawić wartości domyślne lub zmodyfikować typ konfiguracji dysku, który najlepiej odpowiada Twoim potrzebom, na podstawie obciążenia. 
 
 ![SQL Server konfigurację magazynu maszyny wirtualnej podczas aprowizacji](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
+
+Wybierz typ obciążenia, które wdrażasz SQL Server na potrzeby **optymalizacji magazynu**. W przypadku opcji **ogólnej** optymalizacji domyślnie istnieje jeden dysk z danymi o pojemności 5000 maks. liczba IOPS i ten sam dysk jest używany do przechowywania danych, dzienników transakcji i magazynu tempdb. Wybranie opcji **przetwarzanie transakcyjne** (OLTP) lub **Magazyn danych** spowoduje utworzenie oddzielnego dysku dla danych, oddzielnego dysku dla dziennika transakcji i użycie lokalnego SSD dla bazy tempdb. Nie istnieją różnice między **przetwarzaniem transakcyjnym** i **magazynem danych**, ale zmieniają [konfigurację rozłożenia i flagi śledzenia](#workload-optimization-settings). Wybranie usługi Premium Storage ustawia buforowanie do *odczytu* dla dysku danych i *Brak* dla dysku dziennika jako SQL Server najlepszych rozwiązań dotyczących [wydajności maszyn wirtualnych](virtual-machines-windows-sql-performance.md). 
+
+![SQL Server konfigurację magazynu maszyny wirtualnej podczas aprowizacji](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+Konfiguracja dysku jest w pełni dostosowywana, co pozwala na skonfigurowanie topologii magazynu, typu dysku i liczby IOPs potrzebnych dla SQL Server obciążenia maszyny wirtualnej. Istnieje również możliwość korzystania z UltraSSD (wersja zapoznawcza) jako opcji dla **typu dysku** , jeśli maszyna wirtualna SQL Server znajduje się w jednym z obsługiwanych regionów (Wschodnie stany USA 2, Azja Południowo-Wschodnia i Europa Północna) i włączono [dla niej Ultra disks](/azure/virtual-machines/windows/disks-enable-ultra-ssd).  
+
+Ponadto można ustawić buforowanie dla dysków. Maszyny wirtualne platformy Azure mają wielowarstwową technologię buforowania o nazwie [BLOB cache](/azure/virtual-machines/windows/premium-storage-performance#disk-caching) , gdy jest używana z [dyskami w warstwie Premium](/azure/virtual-machines/windows/disks-types#premium-ssd). Pamięć podręczna obiektów BLOB używa kombinacji pamięci RAM maszyny wirtualnej i lokalnego dysku SSD na potrzeby buforowania. 
+
+Buforowanie dysków dla SSD w warstwie Premium może być *tylko do odczytu*, *ReadWrite* lub *none*. 
+
+- Buforowanie *tylko do odczytu* jest wysoce korzystne dla SQL Server plików danych przechowywanych w Premium Storage. Buforowanie w trybie *tylko* do odczytu to opóźnienie, duże odczyty operacji we/wy odczytu i przepływność, co pozwala na odczyty z pamięci podręcznej, która systemu operacyjnego w pamięci maszyny wirtualnej i lokalny dysk SSD Te odczyty są znacznie szybsze niż odczyt z dysku danych, który pochodzi z magazynu obiektów blob platformy Azure. Usługa Premium Storage nie zlicza odczytów obsługiwanych z pamięci podręcznej do operacji we/wy na dysku. W związku z tym, Twoje stosowne jest w stanie osiągnąć wyższą łączną przepustowość operacji we/wy ANT. 
+- *Nie należy* używać konfiguracji pamięci podręcznej dla dysków hostującym SQL Server pliku dziennika, ponieważ plik dziennika jest pisany sekwencyjnie i nie korzysta z buforowania *tylko do odczytu* . 
+- Buforowanie *ReadWrite* nie powinno być używane do hostowania plików SQL Server, ponieważ SQL Server nie obsługuje spójności danych z pamięcią podręczną *ReadWrite* . Zapisy pojemności pamięci podręcznej obiektów BLOB *tylko do odczytu* i opóźnień nieco zwiększają się, jeśli zapisy przechodzą *przez warstwy* pamięci podręcznej obiektów BLOB. 
+
+
+   > [!TIP]
+   > Upewnij się, że konfiguracja magazynu jest zgodna z ograniczeniami narzuconymi przez wybrany rozmiar maszyny wirtualnej. Wybranie parametrów magazynu, które przekraczają limit wydajności dla rozmiaru maszyny wirtualnej, spowoduje błąd: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`. Zmniejsz liczbę operacji we/wy przez zmianę typu dysku lub zwiększenie ograniczenia wydajności przez zwiększenie rozmiaru maszyny wirtualnej. 
+
 
 Na podstawie wybranych opcji platforma Azure wykonuje następujące zadania konfiguracji magazynu po utworzeniu maszyny wirtualnej:
 
@@ -64,6 +83,13 @@ W przypadku używania następujących szablonów Menedżer zasobów są domyśln
 * [Tworzenie maszyny wirtualnej z automatyczną poprawką](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [Tworzenie maszyny wirtualnej z integracją AKV](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
+### <a name="quickstart-template"></a>Szablon szybkiego startu
+
+Poniższy szablon szybkiego startu umożliwia wdrożenie maszyny wirtualnej SQL Server przy użyciu funkcji optymalizacji magazynu. 
+
+* [Tworzenie maszyny wirtualnej przy użyciu optymalizacji magazynu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage/)
+* [Tworzenie maszyny wirtualnej przy użyciu UltraSSD](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage-ultrassd)
+
 ## <a name="existing-vms"></a>Istniejące maszyny wirtualne
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
@@ -73,38 +99,17 @@ W przypadku istniejących maszyn wirtualnych SQL Server można zmodyfikować nie
 * Dane SQL
 * Dziennik SQL
 * Inne (magazyn inny niż SQL)
-* Dostępne
+* Dostępna
 
 Aby zmodyfikować ustawienia magazynu, wybierz pozycję **Konfiguruj** w obszarze **Ustawienia**. 
 
 ![Konfigurowanie magazynu dla istniejącej maszyny wirtualnej SQL Server](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
-Opcje konfiguracji, które można zobaczyć, różnią się w zależności od tego, czy ta funkcja została wcześniej użyta. W przypadku korzystania z programu po raz pierwszy można określić wymagania dotyczące magazynu dla nowego dysku. Jeśli ta funkcja została wcześniej użyta do utworzenia dysku, można wybrać opcję przechowania magazynu tego dysku.
+Można zmodyfikować ustawienia dysku dla dysków, które zostały skonfigurowane podczas procesu tworzenia maszyny wirtualnej SQL Server. Wybranie pozycji **rozszerzająca dysk** otwiera stronę modyfikacja dysku, umożliwiając zmianę typu dysku, a także dodanie dodatkowych dysków. 
 
-### <a name="use-for-the-first-time"></a>Użyj po raz pierwszy
+![Konfigurowanie magazynu dla istniejącej maszyny wirtualnej SQL Server](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 
-Jeśli korzystasz z tej funkcji po raz pierwszy, możesz określić rozmiar magazynu i limity wydajności dla nowego dysku. To środowisko jest podobne do tego, co zobaczysz w czasie aprowizacji. Główną różnicą jest to, że nie można określić typu obciążenia. To ograniczenie uniemożliwia zakłócenie istniejących konfiguracji SQL Server na maszynie wirtualnej.
 
-Platforma Azure tworzy nowy dysk na podstawie specyfikacji. W tym scenariuszu platforma Azure wykonuje następujące zadania konfiguracji magazynu:
-
-* Tworzy i dołącza dyski danych magazynu Premium Storage do maszyny wirtualnej.
-* Konfiguruje dyski danych, które mają być dostępne dla SQL Server.
-* Konfiguruje dyski danych w puli magazynów na podstawie określonych wymagań dotyczących rozmiaru i wydajności (IOPS i przepływności).
-* Kojarzy pulę magazynów z nowym dyskiem na maszynie wirtualnej.
-
-Aby uzyskać więcej informacji na temat konfigurowania ustawień magazynu przez platformę Azure, zobacz [sekcję Konfiguracja magazynu](#storage-configuration).
-
-### <a name="add-a-new-drive"></a>Dodaj nowy dysk
-
-Jeśli już skonfigurowano magazyn na maszynie wirtualnej SQL Server, rozbudowany magazyn oferuje dwie nowe opcje. Pierwsza opcja polega na dodaniu nowego dysku, co może zwiększyć poziom wydajności maszyny wirtualnej.
-
-Jednak po dodaniu dysku należy wykonać dodatkową konfigurację ręczną, aby osiągnąć wzrost wydajności.
-
-### <a name="extend-the-drive"></a>Zwiększ dysk
-
-Drugą opcją rozwinięcia magazynu jest rozszerzenie istniejącego dysku. Ta opcja zwiększa ilość dostępnego miejsca na dysku, ale nie zwiększa wydajności. W przypadku pul magazynów nie można zmienić liczby kolumn po utworzeniu puli magazynów. Liczba kolumn określa liczbę równoległych zapisów, które mogą być rozłożone na dyskach danych. W związku z tym wszystkie dodane dyski danych nie mogą zwiększyć wydajności. Mogą one zapewnić więcej miejsca do magazynowania dla zapisywanych danych. To ograniczenie oznacza również, że w przypadku rozszerzenia dysku liczba kolumn określa minimalną liczbę dysków z danymi, które można dodać. Dlatego w przypadku utworzenia puli magazynów z czterema dyskami danych liczba kolumn jest również cztery. Za każdym razem, gdy rozszerzy magazyn, należy dodać co najmniej cztery dyski z danymi.
-
-![Zwiększanie dysku dla maszyny wirtualnej SQL](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
 ## <a name="storage-configuration"></a>Konfiguracja usługi Storage
 
@@ -119,14 +124,14 @@ Aby uzyskać informacje o cenach, zobacz stronę z [cennikiem usługi Storage](h
 
 Platforma Azure używa następujących ustawień do utworzenia puli magazynów na SQL Server maszynach wirtualnych.
 
-| Ustawienie | Value |
+| Ustawienie | Wartość |
 | --- | --- |
 | Rozmiar paska |256 KB (magazynowanie danych); 64 KB (transakcyjna) |
 | Rozmiary dysków |1 TB każdego |
-| Pamięć podręczna |Odczyt |
+| Cache |Odczyt |
 | Rozmiar alokacji |rozmiar jednostki alokacji systemu plików NTFS 64 KB |
-| Natychmiastowe inicjowanie pliku |Włączono |
-| Zablokuj strony w pamięci |Włączono |
+| Natychmiastowe inicjowanie pliku |Enabled (Włączony) |
+| Zablokuj strony w pamięci |Enabled (Włączony) |
 | Odzyskiwanie |Odzyskiwanie proste (bez odporności) |
 | Liczba kolumn |Liczba dysków z danymi<sup>1</sup> |
 | Lokalizacja bazy danych TempDB |Przechowywane na dyskach danych<sup>2</sup> |
@@ -143,7 +148,7 @@ W poniższej tabeli opisano trzy dostępne opcje typu obciążenia oraz ich odpo
 | --- | --- | --- |
 | **Ogólne** |Ustawienie domyślne obsługujące większość obciążeń |Brak |
 | **Przetwarzanie transakcyjne** |Optymalizuje magazyn dla tradycyjnych obciążeń OLTP bazy danych |Flaga śledzenia 1117<br/>Flaga śledzenia 1118 |
-| **Magazynowania danych** |Optymalizuje magazyn do obciążeń analitycznych i sprawozdawczych |Flaga śledzenia 610<br/>Flaga śledzenia 1117 |
+| **Magazynowanie danych** |Optymalizuje magazyn do obciążeń analitycznych i sprawozdawczych |Flaga śledzenia 610<br/>Flaga śledzenia 1117 |
 
 > [!NOTE]
 > Typ obciążenia można określić tylko podczas inicjowania obsługi administracyjnej maszyny wirtualnej SQL, wybierając ją w kroku konfiguracji magazynu.

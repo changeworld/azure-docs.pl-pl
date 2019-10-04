@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Pobierz listę obsługiwanych języków — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki Start: Pobieranie listy obsługiwanych języków — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji i wyszukiwania w słowniku przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
+description: W tym przewodniku szybki start otrzymasz listę języków obsługiwanych w celu tłumaczenia, przepełniania i wyszukiwania słownika przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,16 @@ ms.topic: quickstart
 ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: e1d31aab9c113a421fda2f6de96ee25b44bba8d1
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 18eb9f2e1c509cbefef2cab59c82317b927ef060
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70393811"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827831"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Szybki start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator, aby uzyskać listę obsługiwanych języków
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Szybki Start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator, aby uzyskać listę obsługiwanych języków
 
-W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji i wyszukiwania w słowniku przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
-
-[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
+W tym przewodniku szybki start otrzymasz listę języków obsługiwanych w celu tłumaczenia, przepełniania i wyszukiwania słownika przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -56,8 +54,8 @@ W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrz
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Tłumaczenie tekstu](quickstart-translate.md)
-* [Transliteracja tekstu](quickstart-transliterate.md)
-* [Identyfikowanie język na podstawie danych wejściowych](quickstart-detect.md)
-* [Uzyskiwanie alternatywnych tłumaczeń](quickstart-dictionary.md)
-* [Określanie długości zdań na podstawie danych wejściowych](quickstart-sentences.md)
+* [Przetłumacz tekst](quickstart-translate.md)
+* [Zatransliteracja tekstu](quickstart-transliterate.md)
+* [Zidentyfikuj język według danych wejściowych](quickstart-detect.md)
+* [Pobierz alternatywne tłumaczenia](quickstart-dictionary.md)
+* [Określanie długości zdań z danych wejściowych](quickstart-sentences.md)

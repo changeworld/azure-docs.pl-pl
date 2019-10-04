@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: v-adgera
-ms.openlocfilehash: f33e5be2408d2ebacd215c5f0601d712197254a7
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: f04946dffd66dcd44743197a0ca8f0fe21624285
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803409"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844508"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak skonfigurować usługę Poster dla usługi bliźniaczych reprezentacji Digital
 
@@ -37,7 +37,7 @@ Skonfiguruj aplikację Azure Active Directory tak, aby korzystała z niejawnego 
 
 1. Otwórz okienko **uprawnień interfejsu API** dla rejestracji aplikacji. Wybierz przycisk **Dodaj uprawnienie** . W okienku **uprawnienia żądania interfejsu API** wybierz pozycję **interfejsy API Moja organizacja używa** karty, a następnie wyszukaj:
     
-    1. `Azure Digital Twins`. Wybierz interfejs API **Digital bliźniaczych reprezentacji platformy Azure** .
+    1. `Azure Digital Twins`., Wybierz interfejs API **Digital bliźniaczych reprezentacji platformy Azure** .
 
         [![Search API lub Azure Digital bliźniaczych reprezentacji](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -52,11 +52,11 @@ Skonfiguruj aplikację Azure Active Directory tak, aby korzystała z niejawnego 
 
 1. Wybrany interfejs API jest wyświetlany jako **usługa Azure Digital bliźniaczych reprezentacji** w tym samym okienku **uprawnień interfejsu API żądania** . Wybierz listę rozwijaną **Odczyt (1)** , a następnie wybierz pole wyboru **Odczyt. zapis** . Wybierz przycisk **Dodaj uprawnienia** .
 
-    [![Dodawanie uprawnień do interfejsu API](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    [uprawnienia interfejsu API @no__t 1Add](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. W zależności od ustawień organizacji może być konieczne wykonanie dodatkowych czynności w celu udzielenia administratorowi dostępu do tego interfejsu API. Aby uzyskać więcej informacji, skontaktuj się z administratorem. Po zatwierdzeniu dostępu administratora kolumna **wymagana zgoda administratora** w okienku **uprawnienia interfejsu API** będzie wyglądać podobnie do poniższego dla interfejsów API:
 
-    [![Dodawanie uprawnień do interfejsu API](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [uprawnienia interfejsu API @no__t 1Add](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
 
 1. Wybierz pozycję **manifest** , aby otworzyć manifest aplikacji dla aplikacji. Ustaw wartość *oauth2AllowImplicitFlow* na `true`.
@@ -122,7 +122,8 @@ Po wykonaniu powyższych kroków Skonfiguruj program do ogłaszania w celu wypr�
    [![Content typ wieloczęściowy/mieszany](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serializacja danych nietekstowych w plikach. Dane JSON zostałyby zapisane jako plik JSON.
-1. Na karcie **treść** Dodaj każdy plik, przypisując nazwę **klucza** , wybierając `file` lub `text`.
+1. Na karcie **treść** wybierz pozycję `form-data`. 
+1. Dodaj każdy plik, przypisując nazwę **klucza** , wybierając `file`.
 1. Następnie zaznacz każdy plik za pomocą przycisku **Wybierz plik** .
 
    [przykład klienta ![Postman](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)

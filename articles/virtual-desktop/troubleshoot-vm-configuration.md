@@ -1,24 +1,24 @@
 ---
-title: Tworzenie dzierżawy i puli hostów w programie Virtual Desktop systemu Windows — Azure
-description: Jak rozwiązywać problemy podczas konfigurowania maszyny wirtualnej dzierżawy i hosta sesji w środowisku pulpitu wirtualnego systemu Windows.
+title: Konfiguracja maszyny wirtualnej hosta sesji — Azure
+description: Jak rozwiązywać problemy podczas konfigurowania maszyn wirtualnych hosta sesji usług pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: d163bbf50193743b6602bc9ec3d330df4c14ebcc
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 4c684a2db02b7587b6d81eaf2f034540250fc001
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676419"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841291"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hostów
+# <a name="session-host-virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej hosta sesji
 
 Ten artykuł służy do rozwiązywania problemów występujących podczas konfigurowania maszyn wirtualnych hosta sesji usług pulpitu wirtualnego systemu Windows.
 
-## <a name="provide-feedback"></a>Wyraź opinię
+## <a name="provide-feedback"></a>Prześlij opinię
 
 Odwiedź [społeczność Tech. pulpitu wirtualnego systemu Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , aby omówić usługę pulpitu wirtualnego systemu Windows z zespołem produktu i aktywnymi członkami społeczności.
 
@@ -335,8 +335,8 @@ Aby przeprowadzić uaktualnienie do systemu Windows 10 w wersji 1903:
     
     ![Zrzut ekranu przedstawiający okno "Ustawianie trybu licencjonowania Pulpit zdalny" skonfigurowany zgodnie z instrukcjami w kroku 6.](media/group-policy-editor-per-user.png)
 
-7. Wybierz pozycję **Zastosuj**.
-8. Wybierz **przycisk OK**.
+7. Wybierz przycisk **Zastosuj**.
+8. Kliknij przycisk **OK**.
 9.  Uruchom ponownie komputer.
 
 Aby ponownie wdrożyć pulę hostów przy użyciu najnowszego obrazu:
@@ -347,8 +347,8 @@ Aby ponownie wdrożyć pulę hostów przy użyciu najnowszego obrazu:
 4. W obszarze Konfiguracja komputera przejdź do **pozycji Szablony administracyjne** > **Windows Components** > **usługi pulpitu zdalnego** > **pulpit zdalny Host sesji** > **Licencjonowanie**.
 5. Wybierz pozycję **Ustaw tryb licencjonowania pulpit zdalny**.
 6. W otwartym oknie, najpierw wybierz opcję **włączone**, a następnie w obszarze Opcje Określ tryb licencjonowania dla serwera hosta sesji usług pulpitu zdalnego dla **danego użytkownika**.
-7. Wybierz pozycję **Zastosuj**.
-8. Wybierz **przycisk OK**.
+7. Wybierz przycisk **Zastosuj**.
+8. Kliknij przycisk **OK**.
 9.  Uruchom ponownie komputer.
 
 ### <a name="version-1903"></a>Wersja 1903
@@ -363,8 +363,8 @@ Jeśli numer wersji to "1903", postępuj zgodnie z następującymi instrukcjami:
     
     ![Zrzut ekranu przedstawiający okno "Ustawianie trybu licencjonowania Pulpit zdalny" skonfigurowany zgodnie z instrukcjami w kroku 6.](media/group-policy-editor-per-user.png)
 
-7. Wybierz pozycję **Zastosuj**.
-8. Wybierz **przycisk OK**.
+7. Wybierz przycisk **Zastosuj**.
+8. Kliknij przycisk **OK**.
 9.  Uruchom ponownie komputer.
 
 ## <a name="next-steps"></a>Następne kroki

@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 10/01/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: d0f5f9a1d488b6be8ca91fdd057880e351ae0b3f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3fb00977a2e1dba5cf9627b8081aee2f76bc8bd4
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261043"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845464"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak skonfigurować monitorowanie w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -40,17 +40,17 @@ Rejestrowanie aktywności usługi Azure Digital bliźniaczych reprezentacji jest
 1. Wybieranie wystąpienia usługi Azure Digital bliźniaczych reprezentacji.
 1. Wybieranie **dziennika aktywności** w celu wyświetlenia panelu wyświetlania:
 
-    [![Dziennik aktywności](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
+    [@no__t — dziennik 1Activity](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
 W przypadku zaawansowanego rejestrowania aktywności:
 
 1. Wybierz opcję **dzienniki** , aby wyświetlić **Activity Log Analytics przegląd**:
 
-    [![Wybór](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
+    [@no__t — 1Selection](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
 1. **Omówienie Activity Log Analytics** podsumowuje podstawowe dane dziennika aktywności:
 
-    [![Analiza dzienników aktywności — Omówienie]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
+    [@no__t — Omówienie usługi log Analytics 1Activity]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
 >Użyj **dzienników aktywności** , aby szybko uzyskać wgląd w zdarzenia na poziomie subskrypcji.
@@ -70,12 +70,12 @@ Aby włączyć dzienniki diagnostyczne dla wystąpienia:
 1. Wywołaj zasób w Azure Portal.
 1. Wybierz pozycję **Ustawienia diagnostyczne**:
 
-    [![Ustawienia diagnostyczne — jeden](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
+    [@no__t — ustawienia 1Diagnostic jeden](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
 1. Wybierz pozycję **Włącz diagnostykę** , aby zbierać dane (jeśli nie zostały wcześniej włączone).
 1. Wypełnij żądane pola i wybierz sposób i miejsce, w którym zostaną zapisane dane:
 
-    [![Ustawienia diagnostyczne — dwa](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
+    [@no__t — ustawienia 1Diagnostic dwa](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
     Dzienniki diagnostyczne są często zapisywane przy użyciu [usługi Azure File Storage](../storage/files/storage-files-deployment-guide.md) i udostępniane w [dziennikach Azure monitor](../azure-monitor/log-query/get-started-portal.md). Można wybrać obie opcje.
 
@@ -99,15 +99,15 @@ Pełne zapytania dzienników są udostępniane za poorednictwem [dzienników Azu
 1. Wyszukaj **log Analytics** w Azure Portal.
 1. Zobaczysz dostępne wystąpienia **obszaru roboczego log Analytics** . Wybierz jeden z nich i wybierz pozycję **dzienniki** do zapytania:
 
-    [![Analiza dzienników](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
+    [@no__t — analiza 1Log](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
 1. Jeśli nie masz jeszcze wystąpienia **obszaru roboczego log Analytics** , możesz utworzyć obszar roboczy, wybierając przycisk **Dodaj** :
 
-    [![Tworzenie pakietu OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
+    [@no__t — 1Create pakietu OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
 Po zainicjowaniu wystąpienia **obszaru roboczego log Analytics** można używać zaawansowanych zapytań do znajdowania wpisów w wielu dziennikach lub wyszukiwanie przy użyciu określonych kryteriów przy użyciu funkcji **zarządzania dziennikami**:
 
-   [![Zarządzanie dziennikami](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
+   [@no__t — zarządzanie 1Log](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 Aby uzyskać więcej informacji na temat zaawansowanych operacji związanych z zapytaniami, zobacz [Rozpoczynanie pracy z zapytaniami](../azure-monitor/log-query/get-started-queries.md).
 
@@ -116,7 +116,7 @@ Aby uzyskać więcej informacji na temat zaawansowanych operacji związanych z z
 
 Dzienniki Azure Monitor zapewniają także zaawansowane usługi błędów i powiadamiania o alertach, które można wyświetlić, wybierając opcję **Diagnozuj i rozwiąż problemy**:
 
-   [![Alerty i powiadomienia o błędach](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
+   [@no__t — 1Alert i powiadomienia o błędach](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
 >Użyj **log Analytics obszaru roboczego** , aby zbadać historie dziennika dla wielu funkcji, subskrypcji lub usług aplikacji.

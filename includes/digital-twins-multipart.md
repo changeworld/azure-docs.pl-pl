@@ -1,19 +1,19 @@
 ---
-title: Plik dyrektywy include
-description: Plik dyrektywy include
+title: plik dołączany
+description: plik dołączany
 services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 10/02/2019
 ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: f9b1b32775393196a77bef3aa2257f6fb66afdcb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 76a05817ae91bb49240e5d72988c776ce67ec1c0
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012224"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845531"
 ---
 > [!NOTE]
 > Żądania wieloczęściowe wymagają zwykle trzech kawałków:
@@ -26,11 +26,11 @@ ms.locfileid: "69012224"
 >
 > **Typ zawartości** i **Dyspozycja zawartości** będą się różnić w zależności od scenariusza użycia.
 
-Wieloczęściowe żądania można wprowadzać programowo ( C#przez) za pomocą klienta REST lub narzędzia, takiego jak [](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi)program. Narzędzia klienta REST mogą mieć różne poziomy obsługi złożonych żądań wieloczęściowych. Ustawienia konfiguracji mogą być również nieco inne niż narzędzia do narzędzia. Sprawdź, które narzędzie jest najlepiej dopasowane do Twoich potrzeb.
+Wieloczęściowe żądania można wprowadzać programowo ( C#przez) za pomocą klienta REST lub narzędzia, takiego jak [program.](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#make-a-multipart-post-request) Narzędzia klienta REST mogą mieć różne poziomy obsługi złożonych żądań wieloczęściowych. Ustawienia konfiguracji mogą być również nieco inne niż narzędzia do narzędzia. Sprawdź, które narzędzie jest najlepiej dopasowane do Twoich potrzeb.
 
 > [!IMPORTANT]
 > Wieloczęściowe żądania interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management mają zwykle dwie części:
-> * Metadane obiektu BLOB (takie jak skojarzony typ MIME) zadeklarowane przez **Typ zawartości** i/lub dyspozycję **zawartości**
+> * Metadane obiektu BLOB (takie jak skojarzony typ MIME) zadeklarowane przez **Typ zawartości** i/lub **dyspozycję zawartości**
 > * Zawartość obiektu BLOB, która obejmuje zawartość bez struktury pliku do przekazania
 >
 > Żadna z tych dwóch części nie jest wymagana w przypadku żądań **patch** . Oba są wymagane dla operacji **post** lub CREATE.

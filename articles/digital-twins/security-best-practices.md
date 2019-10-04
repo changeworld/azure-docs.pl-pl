@@ -6,16 +6,16 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: v-adgera
-ms.openlocfilehash: 181176e00595daa307504d4dea7494aefa7f1942
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: e98f8a4becad41d27d89de16f598b6fa531ad5e3
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336706"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827664"
 ---
-# <a name="security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń
+# <a name="security-best-practices"></a>Najlepsze rozwiązania w zakresie zabezpieczeń
 
 Usługa Azure Digital bliźniaczych reprezentacji Security umożliwia precyzyjne dostęp do określonych zasobów i akcji w grafie IoT. Odbywa się to za pośrednictwem szczegółowego zarządzania rolami i uprawnieniami o nazwie [Kontrola dostępu oparta na rolach](./security-role-based-access-control.md).
 

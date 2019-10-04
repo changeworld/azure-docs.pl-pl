@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 6a92ee6fe53b1676c493c54510dd0f6c4b4b5dc9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bee4b108d2747e8c386abe41dc61b5b19aecf4f5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079567"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828680"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Szyfrowanie dysków wirtualnych na maszynie wirtualnej z systemem Windows
-W celu zapewnienia bezpieczeństwa i zgodności z ulepszoną maszyną wirtualną można zaszyfrować dyski wirtualne na platformie Azure. Dyski są szyfrowane przy użyciu kluczy kryptograficznych zabezpieczonych w Azure Key Vault. Można kontrolować te klucze kryptograficzne i przeprowadzać inspekcję ich użycia. W tym artykule opisano sposób szyfrowania dysków wirtualnych na maszynie wirtualnej z systemem Windows przy użyciu Azure PowerShell. Maszynę wirtualną z systemem Linux można także zaszyfrować przy [użyciu interfejsu wiersza polecenia platformy Azure](../linux/encrypt-disks.md).
+W celu zapewnienia bezpieczeństwa i zgodności z ulepszoną maszyną wirtualną można zaszyfrować dyski wirtualne na platformie Azure. Dyski są szyfrowane przy użyciu kluczy kryptograficznych zabezpieczonych w Azure Key Vault. Można kontrolować te klucze kryptograficzne i przeprowadzać inspekcję ich użycia. W tym artykule opisano sposób szyfrowania dysków wirtualnych na maszynie wirtualnej z systemem Windows przy użyciu Azure PowerShell. [Maszynę wirtualną z systemem Linux można także zaszyfrować przy użyciu interfejsu wiersza polecenia platformy Azure](../linux/disk-encryption-overview.md).
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
@@ -60,11 +60,11 @@ Szyfrowanie dysków nie jest obecnie obsługiwane w następujących scenariuszac
 
 
 ## <a name="create-an-azure-key-vault-and-keys"></a>Tworzenie Azure Key Vault i kluczy
-Przed rozpoczęciem upewnij się, że zainstalowano najnowszą wersję modułu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). W poniższych przykładach poleceń Zastąp wszystkie przykładowe parametry własnymi nazwami, lokalizacją i wartościami klucza, takimijak *myKeyVault*, *myVM*i tak dalej.
+Przed rozpoczęciem upewnij się, że zainstalowano najnowszą wersję modułu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). W poniższych przykładach poleceń Zastąp wszystkie przykładowe parametry własnymi nazwami, lokalizacją i wartościami klucza, takimi *jak* *myKeyVault*, *myVM*i tak dalej.
 
 Pierwszym krokiem jest utworzenie Azure Key Vault do przechowywania kluczy kryptograficznych. Magazyny kluczy Azure mogą przechowywać klucze, wpisy tajne lub hasła, które umożliwiają bezpieczne wdrażanie ich w aplikacjach i usługach. W przypadku szyfrowania dysków wirtualnych utworzysz Key Vault do przechowywania klucza kryptograficznego, który jest używany do szyfrowania lub odszyfrowywania dysków wirtualnych. 
 
-Włącz dostawcę Azure Key Vault w ramach subskrypcji platformy Azure za pomocą usługi [register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider), a następnie utwórz grupę zasobów za pomocą polecenie [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład umożliwia utworzenie grupy zasobów nazwa zasobu w lokalizacji *Wschodnie stany USA* :
+Włącz dostawcę Azure Key Vault w ramach subskrypcji platformy Azure za pomocą usługi [register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider), a następnie utwórz grupę zasobów za pomocą polecenie [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład umożliwia utworzenie grupy *zasobów nazwa zasobu* w lokalizacji *Wschodnie stany USA* :
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -94,7 +94,7 @@ Add-AzKeyVaultKey -VaultName $keyVaultName `
     -Destination "Software"
 ```
 
-## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 Aby przetestować proces szyfrowania, Utwórz maszynę wirtualną przy użyciu polecenie [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* przy użyciu obrazu *systemu Windows Server 2016 Datacenter* . Gdy zostanie wyświetlony monit o podanie poświadczeń, wprowadź nazwę użytkownika i hasło, które mają być używane dla maszyny wirtualnej:
 
 ```azurepowershell-interactive

@@ -6,14 +6,14 @@ author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4d736556147797bcd007bdab1b5328deeadea712
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241796"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827353"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -59,7 +59,9 @@ W przypadku węzłów systemu Windows Server (obecnie dostępnych w wersji zapoz
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Dlaczego są dwie grupy zasobów utworzone za pomocą AKS?
 
-Każde wdrożenie AKS obejmuje dwie grupy zasobów:
+AKS kompiluje się z wielu zasobów infrastruktury platformy Azure, w tym zestawów skalowania maszyn wirtualnych, sieci wirtualnych i dysków zarządzanych. Dzięki temu można korzystać z wielu podstawowych możliwości platformy Azure w ramach zarządzanego środowiska Kubernetes zapewnianego przez AKS. Na przykład większość typów maszyn wirtualnych platformy Azure może być używana bezpośrednio z AKS i Azure Reservations może być używana do automatycznego otrzymywania rabatów dla tych zasobów.
+
+Aby włączyć tę architekturę, każde wdrożenie AKS obejmuje dwie grupy zasobów:
 
 1. Należy utworzyć pierwszą grupę zasobów. Ta grupa zawiera tylko zasób usługi Kubernetes. Dostawca zasobów AKS automatycznie tworzy drugą grupę zasobów podczas wdrażania. Przykładem drugiej grupy zasobów jest *MC_myResourceGroup_myAKSCluster_eastus*. Aby uzyskać informacje na temat sposobu określania nazwy tej drugiej grupy zasobów, zobacz następną sekcję.
 1. Druga grupa zasobów, znana jako *Grupa zasobów węzła*, zawiera wszystkie zasoby infrastruktury skojarzone z klastrem. Te zasoby obejmują maszyny wirtualne węzła Kubernetes, wirtualne sieci i magazyn. Domyślnie grupa zasobów węzła ma nazwę, taką jak *MC_myResourceGroup_myAKSCluster_eastus*. AKS automatycznie usuwa zasób węzła przy każdym usunięciu klastra, dlatego powinien być używany tylko w przypadku zasobów, które współdzielą cykl życia klastra.
@@ -120,14 +122,14 @@ Ważne jest, aby rozpoznać rozróżnienie między dostępnością usługi AKS, 
 
 ## <a name="why-cant-i-set-maxpods-below-30"></a>Dlaczego nie mogę ustawić maxPods poniżej 30?
 
-W AKS można ustawić `maxPods` wartość podczas tworzenia klastra przy użyciu interfejsu wiersza polecenia platformy Azure i szablonów Azure Resource Manager. Jednak zarówno korzystającą wtyczki kubenet, jak i Azure CNI wymagają *wartości minimalnej* (zweryfikowany podczas tworzenia):
+W AKS można ustawić wartość `maxPods` podczas tworzenia klastra przy użyciu interfejsu wiersza polecenia platformy Azure i szablonów Azure Resource Manager. Jednak zarówno korzystającą wtyczki kubenet, jak i Azure CNI wymagają *wartości minimalnej* (zweryfikowany podczas tworzenia):
 
-| Networking | Minimalne | Maksimum |
+| Obsługa sieci | Minimalnie | Maksymalnie |
 | -- | :--: | :--: |
-| Azure CNI | 30 | 250 |
-| Korzystającą wtyczki kubenet | 30 | 110 |
+| Azure CNI | 0,30 | 250 |
+| Korzystającą wtyczki kubenet | 0,30 | 110 |
 
-Ponieważ AKS jest usługą zarządzaną, wdrażamy Dodatki i zasobniki oraz zarządzają nimi w ramach klastra. W przeszłości użytkownicy mogą definiować `maxPods` wartość niższą niż wartość, którą muszą używać zarządzane zasobniki (na przykład 30). AKS teraz oblicza minimalną liczbę zasobników przy użyciu tej formuły: (((maxPods lub (maxPods * vm_count)) >.
+Ponieważ AKS jest usługą zarządzaną, wdrażamy Dodatki i zasobniki oraz zarządzają nimi w ramach klastra. W przeszłości użytkownicy mogą definiować wartość `maxPods` niższą niż wartość, którą muszą używać zarządzane zasobniki (na przykład 30). AKS teraz oblicza minimalną liczbę zasobników przy użyciu tej formuły: (((maxPods lub (maxPods * vm_count)) >.
 
 Użytkownicy nie mogą zastąpić minimalnej `maxPods` weryfikacji.
 
@@ -137,7 +139,7 @@ Węzły agenta AKS są rozliczane jako standardowe maszyny wirtualne platformy A
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Czy mogę przenieść lub migrować mój klaster między dzierżawami platformy Azure?
 
-Za `az aks update-credentials` pomocą polecenia można przenieść klaster AKS między dzierżawami platformy Azure. Postępuj zgodnie z instrukcjami w temacie [Wybierz, aby zaktualizować lub utworzyć nazwę główną usługi](https://docs.microsoft.com/azure/aks/update-credentials) , a następnie [zaktualizuj klaster AKS przy użyciu nowych poświadczeń](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
+Za pomocą polecenia `az aks update-credentials` można przenieść klaster AKS między dzierżawami platformy Azure. Postępuj zgodnie z instrukcjami w temacie [Wybierz, aby zaktualizować lub utworzyć nazwę główną usługi](https://docs.microsoft.com/azure/aks/update-credentials) , a następnie [zaktualizuj klaster AKS przy użyciu nowych poświadczeń](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Czy mogę przenieść klaster między subskrypcjami?
 
@@ -159,17 +161,17 @@ Można, ale AKS nie jest to zalecane. Uaktualnienia powinny być wykonywane, gdy
 
 Nie, Usuń/Usuń wszystkie węzły w stanie awarii lub w inny sposób usunięte z klastra przed uaktualnieniem.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Klaster został usunięty, ale zapoznaj się z błędem`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Klaster został usunięty, ale zapoznaj się z błędem `[Errno 11001] getaddrinfo failed` 
 
 Najczęściej jest to spowodowane tym, że użytkownicy, którzy mają co najmniej jedną sieciową grupę zabezpieczeń (sieciowych grup zabezpieczeń), są nadal używani i skojarzeni z klastrem.  Usuń je i spróbuj ponownie wykonać operację usuwania.
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Uruchomiono uaktualnianie, ale teraz moje zasobniki są w pętli awarii, a sondy gotowości nie powiodły się?
 
-Upewnij się, że nazwa główna usługi nie wygasła.  Zobacz: [AKS nazwy głównej usługi](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) i [AKS zaktualizuj poświadczenia](https://docs.microsoft.com/azure/aks/update-credentials).
+Upewnij się, że nazwa główna usługi nie wygasła.  Zapoznaj się z tematem: [AKS nazwa główna usługi](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) i [AKS Aktualizuj poświadczenia](https://docs.microsoft.com/azure/aks/update-credentials).
 
 ## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Mój klaster działał, ale nagle nie może zainicjować obsługi LoadBalancers, instalacji obwodów PVC itp.? 
 
-Upewnij się, że nazwa główna usługi nie wygasła.  Zobacz: [AKS nazwy głównej usługi](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) i [AKS zaktualizuj poświadczenia](https://docs.microsoft.com/azure/aks/update-credentials).
+Upewnij się, że nazwa główna usługi nie wygasła.  Zapoznaj się z tematem: [AKS nazwa główna usługi](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) i [AKS Aktualizuj poświadczenia](https://docs.microsoft.com/azure/aks/update-credentials).
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Czy można używać interfejsów API zestawu skalowania maszyn wirtualnych do skalowania ręcznie?
 

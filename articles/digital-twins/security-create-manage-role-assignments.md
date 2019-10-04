@@ -1,20 +1,20 @@
 ---
-title: Tworzenie przypisań ról i zarządzanie nimi w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
-description: Tworzenie przypisań ról i zarządzanie nimi w usłudze Azure Digital bliźniaczych reprezentacji.
+title: Tworzenie przypisań ról i zarządzanie nimi — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Dowiedz się więcej na temat tworzenia przypisań ról i zarządzania nimi w usłudze Azure Digital bliźniaczych reprezentacji.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/02/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 2c43dd7c0700efdd2fbf2f16c57c9c9dc69d3c6b
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9a9f3398df099eca7d83b38595364956e6b3b76b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703351"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827684"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Tworzenie przypisań ról i zarządzanie nimi w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -165,8 +165,8 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  Oznacza | String |   Identyfikator obiektu dla identyfikatora obiektu UserIdtype. |
 | YOUR_PATH | Oznacza | String |   Wybrana ścieżka do sprawdzenia dostępu. |
-| YOUR_ACCESS_TYPE |  Oznacza | String |   Typ dostępu, który ma zostać wyszukany. |
-| YOUR_RESOURCE_TYPE | Oznacza | String |  Zasób do sprawdzenia. |
+| YOUR_ACCESS_TYPE |  Oznacza | String |   *Odczytaj*, *Utwórz*, *zaktualizuj*lub *Usuń* |
+| YOUR_RESOURCE_TYPE | Oznacza | String |  *Device*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *rozszerzonytype*, *punkt końcowy*, *Magazyn*kluczy, *odpowiednika*, *Ontology*, *raport*,  *Definicji*, *czujnik*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *system* , *UerDefinedFunction*, *User*, *UserBlobMetadata*lub *UserExtendedProperty* |
 
 Pomyślne żądanie zwróci wartość logiczną `true` lub `false` w celu wskazania, czy typ dostępu został przypisany do użytkownika dla danej ścieżki i zasobu.
 
@@ -198,7 +198,7 @@ Pomyślne żądanie zwróci tablicę JSON z każdym przypisaniem roli skojarzony
 
 ### <a name="revoke-a-permission"></a>Odwołaj uprawnienie
 
-Aby odwołać uprawnienia od adresata, usuń przypisanie roli, wykonując uwierzytelnione żądanie HTTP DELETE:
+Aby odwołać uprawnienie od adresata, usuń przypisanie roli, wykonując uwierzytelnione żądanie HTTP DELETE:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID

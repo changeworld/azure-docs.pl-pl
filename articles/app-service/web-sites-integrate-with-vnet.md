@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210120"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827581"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z usługą Azure Virtual Network
-W tym dokumencie opisano funkcję integracji Azure App Service sieci wirtualnej i sposób jej konfigurowania z aplikacjami w [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure][VNETOverview] (Sieci wirtualnych) umożliwia umieszczenie wielu zasobów platformy Azure w sieci bez obsługi Internetu.  
+W tym dokumencie opisano funkcję integracji Azure App Service sieci wirtualnej i sposób jej konfigurowania z aplikacjami w [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Usługa Azure Virtual Networks][VNETOverview] (sieci wirtualnych) umożliwia umieszczanie wielu zasobów platformy Azure w sieci bez obsługi Internetu.  
 
 Azure App Service ma dwie odmiany. 
 
@@ -37,7 +37,7 @@ Istnieją dwa formy funkcji integracji sieci wirtualnej
 
 Aplikacja może jednocześnie korzystać z jednej formy funkcji integracji sieci wirtualnej. Następnie pytanie to funkcja, której należy użyć. Możesz użyć dowolnej dla wielu rzeczy. Jasne odróżniające są następujące:
 
-| Problem  | Rozwiązanie | 
+| Związane  | Rozwiązanie | 
 |----------|----------|
 | Chcesz uzyskać dostęp do adresu RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) w tym samym regionie | Integracja z regionalną siecią wirtualną |
 | Chcesz uzyskać dostęp do zasobów w klasycznej sieci wirtualnej lub sieci wirtualnej w innym regionie | Integracja sieci wirtualnej wymagana przez bramę |
@@ -60,7 +60,7 @@ Istnieje kilka rzeczy, które nie są obsługiwane przez integrację sieci wirtu
 
 * Instalowanie dysku
 * Integracja z usługą AD 
-* NetBios
+* NetBIOS
 
 ## <a name="regional-vnet-integration"></a>Integracja z regionalną siecią wirtualną 
 
@@ -121,7 +121,7 @@ Nowa funkcja integracji sieci wirtualnej umożliwia korzystanie z punktów końc
 
 Aplikacje w App Service są hostowane na rolach procesów roboczych. Plany cenowe w warstwach Podstawowa i wyższa są dedykowanymi planami hostingu, w których nie ma żadnych innych obciążeń klientów działających w ramach tych samych procesów roboczych. Integracja z siecią wirtualną działa przez zainstalowanie interfejsów wirtualnych z adresami w podsieci delegowanej. Ponieważ adres od jest w sieci wirtualnej, ma dostęp do większości rzeczy w sieci wirtualnej lub przez sieć wirtualną, podobnie jak w przypadku maszyny wirtualnej w sieci wirtualnej. Implementacja sieci jest inna niż w przypadku uruchamiania maszyny wirtualnej w sieci wirtualnej, co oznacza, że niektóre funkcje sieciowe nie są jeszcze dostępne podczas korzystania z tej funkcji.
 
-![Integracja sieci wirtualnej](media/web-sites-integrate-with-vnet/vnet-integration.png)
+![Integracja z siecią wirtualną](media/web-sites-integrate-with-vnet/vnet-integration.png)
 
 Po włączeniu integracji sieci wirtualnej aplikacja nadal będzie wyłączać połączenia wychodzące do Internetu za pomocą tych samych kanałów co normalny. Adresy wychodzące, które są wyświetlane w portalu właściwości aplikacji, nadal są adresami używanymi przez aplikację. Jakie zmiany w aplikacji to, wywołania do usług zabezpieczonych przez punkt końcowy usługi lub adresy RFC 1918 są umieszczane w sieci wirtualnej. 
 
@@ -142,8 +142,8 @@ Funkcja integracji sieci wirtualnej wymagana przez bramę:
 
 Ta funkcja nie obsługuje:
 * Korzystanie z aplikacji systemu Linux
-* Uzyskiwanie dostępu do zasobów w usłudze ExpressRoute 
-* Uzyskiwanie dostępu do zasobów w obrębie punktów końcowych usługi 
+* Uzyskiwanie dostępu do zasobów w ramach ExpressRoute 
+* Uzyskiwanie dostępu do zasobów między punktami końcowymi usługi 
 
 ### <a name="getting-started"></a>Wprowadzenie
 
@@ -171,13 +171,13 @@ Jeśli właśnie tworzysz bramę do użycia z integracją App Service sieci wirt
 Aby włączyć integrację sieci wirtualnej w aplikacji: 
 
 1. Przejdź do aplikacji w Azure Portal i Otwórz aplet Ustawienia aplikacji, a następnie wybierz pozycję Sieć > Integracja z siecią wirtualną. Środowisko ASP musi znajdować się w standardowej jednostce SKU lub lepiej korzystać z funkcji integracji sieci wirtualnej. 
- ![Interfejs użytkownika integracji sieci wirtualnej][1]
+ Interfejs użytkownika integracji @no__t 0VNet @ no__t-1
 
 1. Wybierz pozycję **Dodaj sieć wirtualną**. 
- ![Dodaj integrację sieci wirtualnej][2]
+ Integracja z siecią wirtualną @no__t 0Add no__t — 1
 
 1. Wybierz sieć wirtualną. 
-  ![Wybierz sieć wirtualną][8]
+  @no__t — 0Select sieci wirtualnej @ no__t-1
   
 Aplikacja zostanie ponownie uruchomiona po ostatnim kroku.  
 
@@ -226,11 +226,11 @@ Aplikacje mogą uzyskiwać dostęp do zasobów lokalnych przez integrację z us�
 Nie jest wymagana dodatkowa konfiguracja funkcji integracji regionalnej sieci wirtualnej z siecią wirtualną ani w środowisku lokalnym. Wystarczy połączyć sieć wirtualną z lokalnymi przy użyciu usługi ExpressRoute lub sieci VPN typu lokacja-lokacja. 
 
 > [!NOTE]
-> Funkcja integracji sieci wirtualnej wymagana przez bramę nie integruje aplikacji z siecią wirtualną, która ma bramę ExpressRoute. Nawet jeśli Brama ExpressRoute jest skonfigurowana w [trybie][VPNERCoex] współistnienia, integracja sieci wirtualnej nie działa. Jeśli potrzebujesz dostępu do zasobów za pomocą połączenia ExpressRoute, możesz użyć funkcji integracji regionalnej sieci wirtualnej lub [App Service Environment][ASE], która działa w sieci wirtualnej. 
+> Funkcja integracji sieci wirtualnej wymagana przez bramę nie integruje aplikacji z siecią wirtualną, która ma bramę ExpressRoute. Nawet jeśli Brama ExpressRoute jest skonfigurowana w [trybie współistnienia][VPNERCoex] , integracja sieci wirtualnej nie działa. Jeśli potrzebujesz dostępu do zasobów za pomocą połączenia ExpressRoute, możesz użyć funkcji integracji regionalnej sieci wirtualnej lub [App Service Environment][ASE], która działa w sieci wirtualnej. 
 > 
 > 
 
-## <a name="peering"></a>Komunikacja równorzędna
+## <a name="peering"></a>Komunikacji równorzędnej
 Jeśli używasz komunikacji równorzędnej z integracją regionalnej sieci wirtualnej, nie musisz wykonywać żadnych dodatkowych czynności konfiguracyjnych. 
 
 Jeśli jest używana brama wymagana Integracja sieci wirtualnej z usługą komunikacji równorzędnej, należy skonfigurować kilka dodatkowych elementów. Aby skonfigurować komunikację równorzędną do pracy z aplikacją:
@@ -245,7 +245,7 @@ Funkcja integracji regionalnej sieci wirtualnej nie ma dodatkowej opłaty za uż
 
 Istnieją trzy powiązane opłaty za korzystanie z funkcji integracji sieci wirtualnej wymagane przez bramę:
 
-* Opłaty za warstwę cenową ASP — Twoje aplikacje muszą być zgodne z planem App Service Standard, Premium lub PremiumV2. Więcej informacji o tych kosztach można znaleźć tutaj: [Cennik App Service][ASPricing]. 
+* Opłaty za warstwę cenową ASP — Twoje aplikacje muszą być zgodne z planem App Service Standard, Premium lub PremiumV2. Więcej informacji o tych kosztach można znaleźć tutaj: [cennik App Service][ASPricing]. 
 * Koszty transferu danych — naliczane są opłaty za wychodzące dane, nawet jeśli sieć wirtualna znajduje się w tym samym centrum danych. Te opłaty są opisane w [transfer danych szczegóły cennika][DataPricing]. 
 * VPN Gateway koszty — istnieje koszt dla bramy sieci wirtualnej, która jest wymagana w przypadku połączeń VPN typu punkt-lokacja. Szczegóły znajdują się na stronie [cennika VPN Gateway][VNETPricing] .
 
@@ -343,6 +343,6 @@ Możesz zintegrować App Service z Virtual Network platformy Azure przy użyciu 
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
-[creategatewaysubnet]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
+[creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

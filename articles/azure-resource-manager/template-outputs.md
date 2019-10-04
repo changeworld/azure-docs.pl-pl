@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3805e0bb86772836ba4a1c91661477f29d5e0f70
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 0ff1e3cb71bd1bf5ee947eb5204839d48103628b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384049"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827941"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Dane wyjściowe w szablonie Azure Resource Manager
 
@@ -19,7 +19,7 @@ W tym artykule opisano sposób definiowania wartości wyjściowych w szablonie A
 
 ## <a name="define-output-values"></a>Definiowanie wartości wyjściowych
 
-Poniższy przykład pokazuje, jak zwraca identyfikator zasobu dla publicznego adresu IP:
+Poniższy przykład pokazuje, jak zwrócić identyfikator zasobu dla publicznego adresu IP:
 
 ```json
 "outputs": {
@@ -54,7 +54,7 @@ Aby pobrać wartość wyjściową z połączonego szablonu, użyj funkcji [Refer
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Podczas pobierania właściwości danych wyjściowych z dołączonego szablonu, nazwy właściwości nie może zawierać kreskę.
+Podczas pobierania właściwości wyjściowej z połączonego szablonu, nazwa właściwości nie może zawierać kreski.
 
 Poniższy przykład pokazuje, jak ustawić adres IP dla modułu równoważenia obciążenia przez pobranie wartości z połączonego szablonu.
 
@@ -64,7 +64,7 @@ Poniższy przykład pokazuje, jak ustawić adres IP dla modułu równoważenia o
 }
 ```
 
-Nie można użyć `reference` funkcji w danych wyjściowych części [zagnieżdżonych szablonów](resource-group-linked-templates.md#link-or-nest-a-template). Aby zwrócić wartości dla zasobów wdrożonych w zagnieżdżonych szablonów, należy przekonwertować zagnieżdżony szablon do dołączonego szablonu.
+Nie można użyć funkcji `reference` w sekcji dane wyjściowe [szablonu zagnieżdżonego](resource-group-linked-templates.md#nested-template). Aby zwrócić wartości wdrożonego zasobu w zagnieżdżonym szablonie, przekonwertuj zagnieżdżony szablon na połączony szablon.
 
 ## <a name="get-output-values"></a>Pobierz wartości wyjściowe
 
@@ -72,7 +72,7 @@ Po pomyślnym wdrożeniu wartości wyjściowe są automatycznie zwracane w wynik
 
 Aby uzyskać wartości wyjściowe z historii wdrożenia, można użyć skryptu.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -95,11 +95,11 @@ az group deployment show \
 
 W poniższych przykładach przedstawiono scenariusze używania danych wyjściowych.
 
-|Szablon  |Opis  |
+|Formularza  |Opis  |
 |---------|---------|
-|[Skopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Tworzy zmienne złożone i wysyła te wartości. Nie należy wdrażać żadnych zasobów. |
-|[Publiczny adres IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Tworzy publiczny adres IP, a następnie generuje identyfikator zasobu. |
-|[Moduł równoważenia obciążenia](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Zawiera łącza do Powyższy szablon. Używa Identyfikatora zasobu w danych wyjściowych, podczas tworzenia modułu równoważenia obciążenia. |
+|[Kopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Tworzy złożone zmienne i wyprowadza te wartości. Nie wdraża żadnych zasobów. |
+|[Publiczny adres IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Tworzy publiczny adres IP i wyprowadza identyfikator zasobu. |
+|[Moduł równoważenia obciążenia](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Linki do poprzedniego szablonu. Używa identyfikatora zasobu w danych wyjściowych podczas tworzenia modułu równoważenia obciążenia. |
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,74 +1,74 @@
 ---
-title: Wizualizuj anomalii przy użyciu wykrywania usługi batch i usługa Power BI
+title: Wizualizowanie anomalii przy użyciu wykrywania wsadowego i usługi Power BI
 titleSuffix: Azure Cognitive Services
-description: Użyj interfejsu API wykrywanie anomalii i usługi Power BI do wizualizacji anomalie w danych szeregów czasowych.
+description: Użyj interfejsu API wykrywania anomalii i Power BI, aby wizualizować anomalie w danych szeregów czasowych.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 04/30/2019
+ms.date: 10/01/2019
 ms.author: aahi
-ms.openlocfilehash: 74b51d04f2706d890475c500e1e730cff75397c5
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721486"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840864"
 ---
-# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Samouczek: Wizualizuj anomalii przy użyciu wykrywania usługi batch i usługa Power BI
+# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Samouczek: wizualizacja anomalii przy użyciu wykrywania partii i Power BI
 
-Użyj tego samouczka, aby znaleźć anomalie w zestawie danych serii czasu jako zadania wsadowego. Za pomocą programu Power BI desktop, będą zająć pliku programu Excel, przygotować dane do interfejsu API wykrywanie anomalii, a także wizualizować statystyczne anomalie w całym jej.
+Skorzystaj z tego samouczka, aby znaleźć anomalie w zestawie danych szeregów czasowych jako partię. Za pomocą Power BI Desktop będziesz korzystać z pliku programu Excel, przygotowywać dane dla interfejsu API wykrywania anomalii i wizualizować statystyczne anomalie.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Program Power BI Desktop do importowania i przekształcania zestawu danych serii czasu
-> * Integracja usługi Power BI Desktop przy użyciu interfejsu API wykrywanie anomalii do wykrywania anomalii w usłudze batch
-> * Umożliwia wizualizację anomalii w danych, zawierającą wartości z oczekiwaniami i jest dostępny i granice wykrywania anomalii.
+> * Używanie Power BI Desktop do importowania i przekształcania zestawu danych szeregów czasowych
+> * Integruj Power BI Desktop z interfejsem API wykrywania anomalii w celu wykrycia anomalii usługi Batch
+> * Wizualizuj anomalie w danych, w tym oczekiwane i widoczne wartości, a także granice wykrywania anomalii.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), która jest dostępna bezpłatnie.
-* Wskazuje programu excel (xlsx) pliku zawierającego dane szeregów czasowych. Przykładowe dane dla tego przewodnika Szybki Start można znaleźć na [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962)
+* [Program Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), dostępny bezpłatnie.
+* Plik programu Excel (xlsx) zawierający punkty danych szeregów czasowych. Przykładowe dane dla tego przewodnika Szybki Start można znaleźć w witrynie [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962)
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
 [!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
-## <a name="load-and-format-the-time-series-data"></a>Ładowanie i formatowania danych szeregów czasowych
+## <a name="load-and-format-the-time-series-data"></a>Załaduj i sformatuj dane szeregów czasowych
 
-Aby rozpocząć, Otwórz w programie Power BI Desktop i załadować dane szeregów czasowych, które zostały pobrane z wymagań wstępnych. Ten plik programu excel zawiera szereg pary sygnatur czasowych i wartości uniwersalnego czasu koordynowanego (UTC).  
+Aby rozpocząć, Otwórz Power BI Desktop i Załaduj dane szeregów czasowych pobrane z wymagań wstępnych. Ten plik programu Excel zawiera serię sygnatury czasowej skoordynowanego czasu uniwersalnego (UTC) i par wartości.  
 
 > [!NOTE]
-> Usługa Power BI można użyć danych z wielu różnych źródeł, takich jak pliki CSV, programu SQL bazy danych, magazynu obiektów blob platformy Azure i inne.  
+> Power BI mogą używać danych z wielu różnych źródeł, takich jak pliki CSV, bazy danych SQL, Magazyn obiektów blob platformy Azure i nie tylko.  
 
-W głównym oknie programu Power BI Desktop kliknij **Home** wstążki. W **dane zewnętrzne** grupy wstążki, otwórz **Pobierz dane** menu listy rozwijanej i kliknij przycisk **Excel**.
+W oknie głównym Power BI Desktop kliknij Wstążkę **Narzędzia główne** . W **zewnętrznej grupie danych** wstążki Otwórz menu rozwijane **Pobierz dane** i kliknij pozycję **Excel**.
 
-![Obraz przedstawiający przycisk "Pobierz dane" w usłudze Power BI](../media/tutorials/power-bi-get-data-button.png)
+![Obraz przycisku "Pobierz dane" w Power BI](../media/tutorials/power-bi-get-data-button.png)
 
-Po wyświetleniu okna dialogowego, przejdź do folderu, do którego został pobrany plik xlsx przykład i zaznacz go. Po **Nawigator** zostanie wyświetlone okno dialogowe, kliknij przycisk **Arkusz1**, a następnie **Edytuj**.
+Po wyświetleniu okna dialogowego przejdź do folderu, w którym został pobrany przykładowy plik. xlsx, i zaznacz go. Po wyświetleniu okna dialogowego **nawigatora** kliknij opcję **Arkusz1**, a następnie pozycję **Edytuj**.
 
-![Obraz ekranu "Nawigator" źródła danych w usłudze Power BI](../media/tutorials/navigator-dialog-box.png)
+![Obraz ekranu "Nawigator" źródła danych w Power BI](../media/tutorials/navigator-dialog-box.png)
 
-Usługa Power BI przekonwertuje sygnatury czasowe w pierwszej kolumnie były `Date/Time` typu danych. Te znaczniki czasu musi zostać przekonwertowana na tekst w celu wysłania do interfejsu API wykrywanie anomalii. Edytor Power Query nie zostanie automatycznie otwarta, kliknij przycisk **Edytuj zapytania** na karcie home. 
+Power BI spowoduje przekonwertowanie sygnatur czasowych w pierwszej kolumnie na typ danych `Date/Time`. Te sygnatury czasowe muszą być konwertowane na tekst, aby można było je wysyłać do interfejsu API wykrywania anomalii. Jeśli Edytor Power Query nie zostanie otwarty automatycznie, kliknij przycisk **Edytuj zapytania** na karcie Narzędzia główne. 
 
-Kliknij przycisk **Przekształcanie** wstążki w edytorze Power Query. W **dowolna kolumna** grupę, otwórz **— typ danych:** menu rozwijanego, a następnie wybierz **tekstu**.
+Kliknij Wstążkę **Przekształć** w edytorze Power Query. W grupie **dowolna kolumna** Otwórz **Typ danych:** menu rozwijane i wybierz pozycję **tekst**.
 
-![Obraz ekranu "Nawigator" źródła danych w usłudze Power BI](../media/tutorials/data-type-drop-down.png)
+![Obraz ekranu "Nawigator" źródła danych w Power BI](../media/tutorials/data-type-drop-down.png)
 
-Gdy otrzymasz powiadomienie o zmianie typu kolumny, kliknij przycisk **Zastąp bieżący**. Później, kliknij przycisk **Zamknij i Zastosuj** lub **Zastosuj** w **Home** wstążki. 
+Po otrzymaniu powiadomienia o zmianie typu kolumny kliknij pozycję **Zamień bieżący**. Następnie kliknij przycisk **zamknij & Zastosuj** lub **Zastosuj** na Wstążce **Narzędzia główne** . 
 
-## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Tworzenie funkcji do wysyłania danych i formatowanie odpowiedzi
+## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Utwórz funkcję do wysyłania danych i sformatuj odpowiedź
 
-Aby sformatować i Wyślij plik danych do interfejsu API wykrywanie anomalii, można wywoływać zapytania w tabeli utworzonej powyżej. W edytorze Power Query z **Home** wstążki, otwórz **nowe źródło** menu listy rozwijanej i kliknij przycisk **puste zapytanie**.
+Aby sformatować i wysłać plik danych do interfejsu API wykrywania anomalii, można wywołać zapytanie w utworzonej powyżej tabeli. W edytorze Power Query na Wstążce **Narzędzia główne** Otwórz menu rozwijane **nowe źródło** i kliknij polecenie **puste zapytanie**.
 
-Upewnij się, że wybrano opcję nowe zapytanie, a następnie kliknij przycisk **edytora zaawansowanego**. 
+Upewnij się, że nowe zapytanie jest zaznaczone, a następnie kliknij przycisk **Edytor zaawansowany**. 
 
-![Obraz przycisku "Editor zaawansowane" w usłudze Power BI](../media/tutorials/advanced-editor-screen.png)
+![Obraz przycisku "Edytor zaawansowany" w Power BI](../media/tutorials/advanced-editor-screen.png)
 
-W ramach edytora zaawansowanego umożliwia poniższy fragment kodu Power Query M Wyodrębnij kolumny z tabeli oraz wysyłać je do interfejsu API. Później zapytanie Utwórz tabelę na podstawie odpowiedź w formacie JSON i przywrócić go. Zastąp `apiKey` zmiennej za pomocą prawidłowy klucz interfejsu API wykrywanie anomalii i `endpoint` z punktem końcowym usługi. Po wprowadzeniu zapytania do edytora zaawansowanego, kliknij przycisk **gotowe**.
+W Edytor zaawansowany Użyj poniższego fragmentu Power Query M, aby wyodrębnić kolumny z tabeli i wysłać je do interfejsu API. Następnie zapytanie utworzy tabelę z odpowiedzi JSON i zwróci ją. Zastąp zmienną `apiKey` prawidłowym kluczem interfejsu API wykrywania anomalii i `endpoint` z punktem końcowym. Po wprowadzeniu zapytania do Edytor zaawansowany kliknij przycisk **gotowe**.
 
 ```M
 (table as table) => let
@@ -112,67 +112,67 @@ W ramach edytora zaawansowanego umożliwia poniższy fragment kodu Power Query M
  in results
 ```
 
-Wywołania zapytania w arkuszu danych, wybierając `Sheet1` poniżej **Wprowadzanie parametru**i kliknij przycisk **Invoke**. 
+Wywołaj zapytanie w arkuszu danych, wybierając `Sheet1` poniżej **wprowadź parametr**, a następnie kliknij pozycję **Wywołaj**. 
 
-![Obraz przedstawiający przycisk "Zaawansowane Editor"](../media/tutorials/invoke-function-screenshot.png)
+![Obraz przycisku "Edytor zaawansowany"](../media/tutorials/invoke-function-screenshot.png)
 
-## <a name="data-source-privacy-and-authentication"></a>Prywatność źródła danych i uwierzytelniania
+## <a name="data-source-privacy-and-authentication"></a>Prywatność i uwierzytelnianie źródła danych
 
 > [!NOTE]
-> Należy pamiętać o zasady organizacji prywatność danych i dostęp. Zobacz [poziomy prywatności programu Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-privacy-levels) Aby uzyskać więcej informacji.
+> Należy pamiętać o zasadach organizacji dotyczących prywatności i dostępu do danych. Aby uzyskać więcej informacji, zobacz [Power BI Desktop poziomów prywatności](https://docs.microsoft.com/power-bi/desktop-privacy-levels) .
 
-Może zostać komunikat ostrzegawczy, gdy próbują uruchomić zapytania, ponieważ korzysta ona z zewnętrznego źródła danych. 
+Podczas próby uruchomienia zapytania może zostać wyświetlony komunikat ostrzegawczy, ponieważ korzysta on z zewnętrznego źródła danych. 
 
-![Obraz przedstawiający ostrzeżenie utworzone przez usługę Power BI](../media/tutorials/blocked-function.png)
+![Obraz przedstawiający ostrzeżenie utworzone przez Power BI](../media/tutorials/blocked-function.png)
 
-Aby rozwiązać ten problem, kliknij przycisk **pliku**, i **opcje i ustawienia**. Następnie kliknij przycisk **opcje**. Poniżej **bieżący plik**, wybierz opcję **zachowania**, i **ignorowanie poziomów prywatności i potencjalne poprawianie wydajności**. 
+Aby rozwiązać ten problem, kliknij menu **plik**, a następnie **Opcje i ustawienia**. Następnie kliknij pozycję **Opcje**. Poniżej **bieżącego pliku**wybierz opcję **prywatność**i **zignoruj poziomy prywatności i potencjalnie poprawić wydajność**. 
 
-Ponadto może zostać komunikat z prośbą do określenia, jak chcesz się połączyć z interfejsem API.
+Ponadto może zostać wyświetlony komunikat z prośbą o określenie, w jaki sposób chcesz połączyć się z interfejsem API.
 
-![Obraz przedstawiający żądanie, aby określić poświadczenia dostępu do](../media/tutorials/edit-credentials-message.png)
+![Obraz przedstawiający żądanie określenia poświadczeń dostępu](../media/tutorials/edit-credentials-message.png)
 
-Aby rozwiązać ten problem, kliknij przycisk **edytowanie poświadczeń** w komunikacie. Gdy pojawi się okno dialogowe, wybierz **anonimowe** na anonimowe połączenia interfejsu API. Następnie kliknij przycisk **Connect** (Połącz). 
+Aby rozwiązać ten problem, kliknij pozycję **Edytuj poświadczenia** w komunikacie. Po wyświetleniu okna dialogowego wybierz pozycję **anonimowe** , aby połączyć się z interfejsem API anonimowo. Następnie kliknij przycisk **Connect** (Połącz). 
 
-Później, kliknij przycisk **Zamknij i Zastosuj** w **Home** wstążki, aby zastosować zmiany.
+Następnie kliknij przycisk **zamknij & Zastosuj** na Wstążce **Narzędzia główne** , aby zastosować zmiany.
 
-## <a name="visualize-the-anomaly-detector-api-response"></a>Wizualizuj odpowiedzi interfejsu API wykrywanie anomalii
+## <a name="visualize-the-anomaly-detector-api-response"></a>Wizualizuj odpowiedź interfejsu API wykrywania anomalii
 
-Na ekranie głównym usługi Power BI rozpocząć korzystanie z zapytań utworzone powyżej do wizualizacji danych. Najpierw wybierz **wykres liniowy** w **wizualizacje**. Następnie Dodaj sygnaturę czasową z wywołano funkcję do wykresu liniowego **osi**. Kliknij prawym przyciskiem myszy na nim, a następnie wybierz pozycję **sygnatura czasowa**. 
+Na ekranie głównym Power BI Zacznij korzystać z kwerend utworzonych powyżej, aby wizualizować dane. Najpierw wybierz **Wykres liniowy** w **wizualizacjach**. Następnie Dodaj sygnaturę czasową z wywoływanej funkcji do **osi**wykresu liniowego. Kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **sygnatura czasowa**. 
 
 ![Kliknij prawym przyciskiem myszy wartość sygnatury czasowej](../media/tutorials/timestamp-right-click.png)
 
-Dodaj następujące pola z **wywołana funkcja** wykres **wartości** pola. Użyj Poniższy zrzut ekranu, aby ułatwić tworzenie wykresu.
+Dodaj następujące pola z **wywoływanej funkcji** do pola **wartości** wykresu. Użyj poniższego zrzutu ekranu, aby pomóc w tworzeniu wykresu.
 
     * Wartość
     * UpperMargins
     * LowerMargins
     * ExpectedValues
 
-![Obraz nowy ekran szybka miara](../media/tutorials/chart-settings.png)
+![Obraz nowego ekranu szybkiej miary](../media/tutorials/chart-settings.png)
 
-Po dodaniu pola, kliknij wykres, a rozmiar, tak aby pokazać wszystkie punkty danych. Wykres będzie wyglądać podobnie jak poniższy zrzut ekranu:
+Po dodaniu pól kliknij wykres i zmień jego rozmiar, aby pokazać wszystkie punkty danych. Wykres będzie wyglądać podobnie do poniższego zrzutu ekranu:
 
-![Obraz nowy ekran szybka miara](../media/tutorials/chart-visualization.png)
+![Obraz nowego ekranu szybkiej miary](../media/tutorials/chart-visualization.png)
 
-### <a name="display-anomaly-data-points"></a>Wyświetl punkty danych anomalii
+### <a name="display-anomaly-data-points"></a>Wyświetlanie nietypowych punktów danych
 
-Po prawej stronie okna usługi Power BI poniżej **pola** okienku kliknij prawym przyciskiem myszy **wartość** w obszarze **zapytania wywołana funkcja**i kliknij przycisk **nowych możliwości szybkiego Miara**.
+Po prawej stronie okna Power BI, poniżej okienka **pola** , kliknij prawym przyciskiem myszy **wartość** w obszarze **zapytania wywoływanej funkcji**, a następnie kliknij pozycję **Nowa szybka miara**.
 
-![Obraz nowy ekran szybka miara](../media/tutorials/new-quick-measure.png)
+![Obraz nowego ekranu szybkiej miary](../media/tutorials/new-quick-measure.png)
 
-Na wyświetlonym ekranie zaznacz **filtrowana wartość** jako obliczeń. Ustaw **podstawowej wartości** do `Sum of Value`. Następnie przeciągnij `IsAnomaly` z **wywołana funkcja** polom **filtru**. Wybierz `True` z **filtru** menu rozwijanego.
+Na wyświetlonym ekranie wybierz pozycję **przefiltrowana wartość** jako obliczenie. Ustaw **wartość podstawową** na `Sum of Value`. Następnie przeciągnij `IsAnomaly` z **wywoływanych pól funkcji** , aby **przefiltrować**. Wybierz `True` z menu rozwijanego **Filtr** .
 
-![Obraz nowy ekran szybka miara](../media/tutorials/new-quick-measure-2.png)
+![Obraz nowego ekranu szybkiej miary](../media/tutorials/new-quick-measure-2.png)
 
-Po kliknięciu przycisku **Ok**, będziesz mieć `Value for True` pola w dolnej części listy pól. Kliknij go prawym przyciskiem myszy, a następnie zmień jej nazwę na **anomalii**. Dodaj go do wykresu **wartości**. Następnie wybierz pozycję **Format** narzędzia i Ustaw typ osi x **podzielone**.
+Po kliknięciu przycisku **OK**będziesz mieć pole `Value for True` w dolnej części listy pól. Kliknij go prawym przyciskiem myszy i zmień jego nazwę na **anomalie**. Dodaj go do **wartości**wykresu. Następnie wybierz narzędzie **Format** i ustaw typ osi X na **kategorii**.
 
-![Obraz nowy ekran szybka miara](../media/tutorials/format-x-axis.png)
+![Obraz nowego ekranu szybkiej miary](../media/tutorials/format-x-axis.png)
 
-Zastosowanie kolorów wykresu, klikając **Format** narzędzia i **kolory danych**. Wykres powinien wyglądać następująco:
+Zastosuj kolory do wykresu, klikając narzędzie **Format** i **kolory danych**. Wykres powinien wyglądać podobnie do poniższego:
 
-![Obraz nowy ekran szybka miara](../media/tutorials/final-chart.png)
+![Obraz nowego ekranu szybkiej miary](../media/tutorials/final-chart.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
->[Przesyłanie strumieniowe wykrywanie anomalii przy użyciu usługi Azure Databricks](anomaly-detection-streaming-databricks.md)
+>[Wykrywanie anomalii przesyłania strumieniowego za pomocą Azure Databricks](anomaly-detection-streaming-databricks.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 4d76578de0c80570e67db03046c42985500ddcdb
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e8ffb9051220cc80aa12adaa9dc9b1fcc6ddfc20
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914722"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839981"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Wersja zapoznawcza — Tworzenie klastra usługi Azure Kubernetes Service (AKS), który używa Strefy dostępności
 
@@ -30,7 +30,7 @@ W tym artykule pokazano, jak utworzyć klaster AKS i rozesłać składniki węz�
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.66 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.66 lub nowszej. Uruchom @ no__t-0, aby znaleźć wersję. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
 
@@ -71,9 +71,14 @@ az provider register --namespace Microsoft.ContainerService
 
 Klastry AKS można obecnie tworzyć przy użyciu stref dostępności w następujących regionach:
 
+* Środkowe stany USA
 * Wschodnie stany USA 2
+* Wschodnie stany USA
+* Francja środkowa
+* Japonia Wschodnia
 * Europa Północna
-* Azja Południowo-wschodnia
+* Azja Południowo-Wschodnia
+* Południowe Zjednoczone Królestwo
 * Europa Zachodnia
 * Zachodnie stany USA 2
 
@@ -96,11 +101,11 @@ Jeśli konieczne jest uruchamianie obciążeń stanowych, należy użyć przysta
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Omówienie Strefy dostępności klastrów AKS
 
-Strefy dostępności to oferta wysokiej dostępności, która chroni Twoje aplikacje i dane przed awariami centrów danych. Strefy są unikatowymi lokalizacjami fizycznymi w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Fizyczna separacja stref dostępności w ramach regionu chroni aplikacje i dane przed awariami centrum danych. Usługi strefowo nadmiarowe replikujeją aplikacje i dane między Strefy dostępności, aby chronić je przed awariami jednego punktu.
+Strefy dostępności to oferta wysokiej dostępności, która chroni Twoje aplikacje i dane przed awariami centrów danych. Strefy są unikatowymi lokalizacjami fizycznymi w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jednego centrum danych wyposażonego w niezależną moc, chłodzenie i sieci. W celu zapewnienia odporności dostępne są co najmniej trzy oddzielne strefy we wszystkich włączonych regionach. Fizyczne rozdzielenie Strefy dostępności w regionie chroni aplikacje i dane z niepowodzeń centrów danych. Usługi strefowo nadmiarowe replikujeją aplikacje i dane między Strefy dostępności, aby chronić je przed awariami jednego punktu.
 
 Aby uzyskać więcej informacji, zobacz [co to jest strefy dostępności na platformie Azure?][az-overview]
 
-Klastry AKS wdrożone przy użyciu stref dostępności umożliwiają dystrybucję węzłów między wieloma strefami w jednym regionie. Na przykład klaster w regionie *Wschodnie stany USA 2* może tworzyć węzły we wszystkich trzech strefach dostępności w *regionach Wschodnie stany USA 2*. Ta dystrybucja zasobów klastra AKS zwiększa dostępność klastra w miarę odporności na awarię określonej strefy.
+Klastry AKS wdrożone przy użyciu stref dostępności umożliwiają dystrybucję węzłów między wieloma strefami w jednym regionie. Na przykład klaster w *regionie Wschodnie stany USA 2* region może tworzyć węzły we wszystkich trzech strefach dostępności w *regionie Wschodnie stany USA 2*. Ta dystrybucja zasobów klastra AKS zwiększa dostępność klastra w miarę odporności na awarię określonej strefy.
 
 ![Rozkład węzłów AKS w różnych strefach dostępności](media/availability-zones/aks-availability-zones.png)
 
@@ -108,9 +113,9 @@ W przypadku awarii strefy węzły można ponownie zrównoważyć ręcznie lub pr
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>Tworzenie klastra AKS w różnych strefach dostępności
 
-W przypadku tworzenia klastra przy użyciu polecenia [AZ AKS Create][az-aks-create] `--node-zones` parametr określa, które węzły agenta stref są wdrożone w programie. Składniki płaszczyzny kontroli AKS dla klastra są również rozłożone między strefy w najwyższej dostępnej konfiguracji podczas tworzenia klastra określającego `--node-zones` parametr.
+Podczas tworzenia klastra przy użyciu polecenia [AZ AKS Create][az-aks-create] , parametr `--node-zones` definiuje, które węzły agentów zostaną wdrożone w programie. Składniki płaszczyzny kontroli AKS dla klastra są również rozłożone między strefy w najwyższej dostępnej konfiguracji podczas tworzenia klastra określającego parametr `--node-zones`.
 
-Jeśli nie zdefiniowano żadnych stref dla domyślnej puli agentów podczas tworzenia klastra AKS, składniki płaszczyzny kontroli AKS dla klastra nie będą używać stref dostępności. Można dodać dodatkowe pule węzłów (obecnie w wersji zapoznawczej w AKS) przy użyciu polecenia [AZ AKS nodepool Add][az-aks-nodepool-add] i określić `--node-zones` dla tych nowych węzłów agenta, jednak składniki płaszczyzny kontroli pozostają bez świadomości strefy dostępności. Po wdrożeniu nie można zmienić świadomości strefy dla puli węzłów ani składników płaszczyzny kontroli AKS.
+Jeśli nie zdefiniowano żadnych stref dla domyślnej puli agentów podczas tworzenia klastra AKS, składniki płaszczyzny kontroli AKS dla klastra nie będą używać stref dostępności. Można dodać dodatkowe pule węzłów (obecnie w wersji zapoznawczej w AKS) za pomocą polecenia [AZ AKS nodepool Add][az-aks-nodepool-add] i określić `--node-zones` dla tych nowych węzłów agenta, jednak składniki płaszczyzny kontroli pozostają bez świadomości strefy dostępności. Po wdrożeniu nie można zmienić świadomości strefy dla puli węzłów ani składników płaszczyzny kontroli AKS.
 
 Poniższy przykład tworzy klaster AKS o nazwie *myAKSCluster* w grupie zasobów o nazwie Moja *resourceName*. Łącznie *3* węzły są tworzone — jeden Agent w strefie *1*, jeden w *2*, a następnie jeden w *3*. Składniki płaszczyzny kontroli AKS są również dystrybuowane między strefami w najwyższej dostępnej konfiguracji, ponieważ są one definiowane jako część procesu tworzenia klastra.
 

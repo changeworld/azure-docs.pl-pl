@@ -14,30 +14,30 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: ddb9dd49af4557e6ff8d38110de4a99a9cf6fed7
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: eb6773d1547499fcd3a73aebf8f17ec61b6dc06a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687000"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827599"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak administrować usługą Azure cache for Redis
 W tym temacie opisano sposób wykonywania zadań administracyjnych, takich jak [Ponowne uruchamianie](#reboot) i [Planowanie aktualizacji](#schedule-updates) pamięci podręcznej platformy Azure dla wystąpień Redis.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="reboot"></a>Ponowne uruchamianie
+## <a name="reboot"></a>Ponownie uruchom komputer
 Blok **ponowne uruchomienie** umożliwia ponowne uruchomienie jednego lub większej liczby węzłów pamięci podręcznej. Ta funkcja ponownego uruchamiania umożliwia testowanie aplikacji pod kątem odporności w przypadku awarii węzła pamięci podręcznej.
 
-![Ponowne uruchamianie](./media/cache-administration/redis-cache-administration-reboot.png)
+![Ponownie uruchom komputer](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Wybierz węzły do ponownego uruchomienia, a następnie kliknij przycisk **Uruchom ponownie**.
 
-![Ponowne uruchamianie](./media/cache-administration/redis-cache-reboot.png)
+![Ponownie uruchom komputer](./media/cache-administration/redis-cache-reboot.png)
 
 Jeśli masz pamięć podręczną Premium z włączoną obsługą klastrowania, możesz wybrać fragmentów pamięci podręcznej, aby przeprowadzić ponowny rozruch.
 
-![Ponowne uruchamianie](./media/cache-administration/redis-cache-reboot-cluster.png)
+![Ponownie uruchom komputer](./media/cache-administration/redis-cache-reboot-cluster.png)
 
 Aby ponownie uruchomić co najmniej jeden węzeł pamięci podręcznej, wybierz odpowiednie węzły, a następnie kliknij przycisk **Uruchom ponownie**. Jeśli masz pamięć podręczną Premium z włączoną obsługą klastrowania, wybierz żądaną fragmentów do ponownego uruchomienia, a następnie kliknij przycisk **Uruchom ponownie**. Po kilku minutach wybrane węzły zostaną przełączone ponownie, a następnie ponownie w trybie online kilka minut później.
 
@@ -82,15 +82,15 @@ Tak, aby uzyskać instrukcje dotyczące programu PowerShell, zobacz [Aby ponowni
 ### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>Jakie warstwy cenowe mogą korzystać z funkcji ponownego uruchamiania?
 Dla wszystkich warstw cenowych jest dostępny ponowny rozruch.
 
-## <a name="schedule-updates"></a>Aktualizacje harmonogramu
-Blok **harmonogram aktualizacji** umożliwia wyznaczenie okna obsługi dla pamięci podręcznej warstwy Premium. Po określeniu okna obsługi wszystkie aktualizacje serwera Redis są wykonywane w tym oknie. 
+## <a name="schedule-updates"></a>Zaplanuj aktualizacje
+Blok **harmonogram aktualizacji** umożliwia wyznaczenie okna obsługi dla wystąpienia pamięci podręcznej. Po określeniu okna obsługi wszystkie aktualizacje serwera Redis są wykonywane w tym oknie. 
 
 > [!NOTE] 
 > Okno obsługi ma zastosowanie tylko do aktualizacji serwera Redis, a nie do aktualizacji lub aktualizacji platformy Azure dla systemu operacyjnego maszyn wirtualnych, które obsługują pamięć podręczną.
 > 
 > 
 
-![Aktualizacje harmonogramu](./media/cache-administration/redis-schedule-updates.png)
+![Zaplanuj aktualizacje](./media/cache-administration/redis-schedule-updates.png)
 
 Aby określić okno obsługi, sprawdź wymagane dni i określ czas rozpoczęcia okna obsługi dla każdego dnia, a następnie kliknij przycisk **OK**. Należy pamiętać, że czas okna obsługi jest w formacie UTC. 
 

@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 9c9d02eeead4ccbed372e9a55d9b551da83caa39
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7af40404550fb78af891563d8256f23620781b24
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642295"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841534"
 ---
 # <a name="understanding-the-ip-address-of-your-iot-hub"></a>Informacje o adresie IP Centrum IoT Hub
 
@@ -34,3 +34,6 @@ Ten adres IP może się zmieniać bez powiadomienia. W przypadku scenariusza odz
 
 Spróbuj utworzyć reguły zapory i filtrowanie na podstawie nazwy lub domeny hosta Centrum IoT Hub. Jeśli można zezwolić tylko na ruch wychodzący do określonych adresów, należy regularnie sondować adres IP Centrum IoT i aktualizować reguły zapory.
 
+## <a name="support-for-ipv6"></a>Obsługa protokołu IPv6 
+
+Protokół IPv6 nie jest obecnie obsługiwany w IoT Hub.

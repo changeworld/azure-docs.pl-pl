@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5401260921aee5fc54b50c1222188a6b244a0c5a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676649"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840143"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>Identyfikowanie problemów za pomocą funkcji diagnostyki
+# <a name="identify-and-diagnose-issues"></a>Identyfikowanie i diagnozowanie problemów
 
 Pulpit wirtualny systemu Windows oferuje funkcję diagnostyki, która umożliwia administratorowi identyfikowanie problemów za pomocą jednego interfejsu. Role pulpitu wirtualnego systemu Windows rejestrują aktywność diagnostyczną za każdym razem, gdy użytkownik współdziała z systemem. Każdy dziennik zawiera istotne informacje, takie jak role pulpitu wirtualnego systemu Windows związane z transakcjami, komunikatami o błędach, informacjami o dzierżawie i informacjami o użytkowniku. Działania diagnostyczne są tworzone przez działania wykonywane zarówno przez użytkownika końcowego, jak i administracyjne. można je podzielić na trzy główne zasobniki:
 
@@ -171,8 +171,8 @@ W poniższej tabeli wymieniono typowe błędy, w których administratorzy mogą 
 |2|FileNotFound|Aplikacja, do której próbowano uzyskać dostęp, jest nieprawidłowo zainstalowana lub ustawiona na niepoprawną ścieżkę.|
 |3|InvalidCredentials|Wprowadzona nazwa użytkownika lub hasło nie są zgodne z istniejącymi nazwami użytkowników ani hasłami. Przejrzyj poświadczenia pod kątem pisowni i spróbuj ponownie.|
 |8|ConnectionBroken|Połączenie między klientem a bramą lub serwerem zostało usunięte. Nie trzeba wykonywać żadnych czynności, chyba że wystąpi nieoczekiwany.|
-|14|UnexpectedNetworkDisconnect|Połączenie z siecią zostało usunięte. Poproszenie użytkownika o ponowne nawiązanie połączenia.|
-|24|ReverseConnectFailed|Maszyna wirtualna hosta nie ma bezpośredniego wglądu w szczegółowe informacje z bramą usług pulpitu zdalnego. Upewnij się, że można rozpoznać adres IP bramy.|
+|14,5|UnexpectedNetworkDisconnect|Połączenie z siecią zostało usunięte. Poproszenie użytkownika o ponowne nawiązanie połączenia.|
+|codzienne|ReverseConnectFailed|Maszyna wirtualna hosta nie ma bezpośredniego wglądu w szczegółowe informacje z bramą usług pulpitu zdalnego. Upewnij się, że można rozpoznać adres IP bramy.|
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 2a707eda6a7e32a95666dd70e196c8da3c3b7834
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 6f5472e42b7ef43123698f01ee76fb0e691aa45e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815943"
+ms.locfileid: "71827802"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Generowanie alertów i monitorowanie fabryk danych przy użyciu Azure Monitor
 
@@ -472,7 +472,7 @@ Po kilku chwilach nowe ustawienie zostanie wyświetlone na liście ustawień dla
 * W trybie _diagnostyki na platformie Azure_ , dzienniki diagnostyczne przepływają do tabeli _AzureDiagnostics_
 
 > [!NOTE]
-> Ponieważ tabela dzienników platformy Azure nie może mieć więcej niż 500 kolumn, zdecydowanie zalecamy wybranie trybu określonego dla zasobu. Aby uzyskać więcej informacji, zobacz [log Analytics znane ograniczenia](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics).
+> Ponieważ tabela dzienników platformy Azure nie może mieć więcej niż 500 kolumn, zdecydowanie zalecamy wybranie trybu określonego dla zasobu. Aby uzyskać więcej informacji, zobacz [log Analytics znane ograniczenia](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics).
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Instalowanie Azure Data Factory Analytics w witrynie Azure Marketplace
 

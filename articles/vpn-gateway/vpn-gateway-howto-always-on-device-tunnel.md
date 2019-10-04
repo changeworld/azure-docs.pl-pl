@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 98d8c2f6870be16f3eb92219fc3d02f988390a41
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: bc2ec2b952b4f0c6e61fc4953559fa882edfff09
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295462"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841139"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurowanie tunelu zawsze włączonego urządzenia sieci VPN
 
@@ -28,16 +28,11 @@ Zawsze włączone połączenia sieci VPN obejmują dwa typy tuneli:
 
 Tunel urządzenia i tunel użytkownika działają niezależnie od profilów sieci VPN. Mogą być połączone w tym samym czasie i mogą korzystać z innych metod uwierzytelniania i innych ustawień konfiguracji sieci VPN zgodnie z potrzebami.
 
-## <a name="1-configure-the-gateway"></a>1. Konfigurowanie bramy
+## <a name="1-configure-the-gateway"></a>1. Skonfiguruj bramę
 
 Skonfiguruj bramę sieci VPN do korzystania z protokołu IKEv2 i uwierzytelniania opartego na certyfikatach przy użyciu tego [artykułu punkt-lokacja](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 
-## <a name="2-configure-the-user-tunnel"></a>2. Konfigurowanie tunelu użytkownika
-
-1. Zainstaluj certyfikaty klienta na kliencie systemu Windows 10, jak pokazano w tym artykule dotyczącym [klienta sieci VPN typu punkt-lokacja](point-to-site-how-to-vpn-client-install-azure-cert.md). Certyfikat musi znajdować się w bieżącym magazynie użytkownika
-2. Użyj [tych instrukcji](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections), aby skonfigurować klienta usługi Always On VPN za pomocą programu PowerShell, oprogramowania SCCM lub usługi Intune.
-
-## <a name="3-configure-the-device-tunnel"></a>3. Konfigurowanie tunelu urządzenia
+## <a name="2-configure-the-device-tunnel"></a>2. Konfigurowanie tunelu urządzenia
 
 Aby można było pomyślnie ustanowić tunel urządzenia, muszą zostać spełnione następujące wymagania:
 
@@ -160,7 +155,7 @@ Po skonfigurowaniu bramy sieci wirtualnej i zainstalowaniu certyfikatu klienta w
    ![pliku](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. Wyszukaj wpis **MachineCertTest** , a następnie kliknij przycisk **Połącz**.
 
-   ![Połączenie](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![Łączenie](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Jeśli połączenie zakończy się pomyślnie, należy ponownie uruchomić komputer. Tunel zostanie automatycznie nawiązane.
 
 ## <a name="cleanup"></a>Czyszczenie

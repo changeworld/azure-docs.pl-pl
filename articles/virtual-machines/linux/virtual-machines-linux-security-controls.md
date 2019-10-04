@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c8608a980c405f1f9fdd5aa274a9a21d801a59ed
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 00753d885985e2734f0d87fdad9f219f44277d5a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886497"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828346"
 ---
 # <a name="security-controls-for-linux-virtual-machines"></a>Kontrolki zabezpieczeń dla Linux Virtual Machines
 
@@ -24,7 +24,7 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w Linux Virtual Machine
 
 ## <a name="network"></a>Sieć
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi |
+| Kontrola zabezpieczeń | Tak/nie | Uwagi |
 |---|---|--|
 | Obsługa punktów końcowych usługi| Tak | |
 | Obsługa iniekcji sieci wirtualnej| Tak | |
@@ -33,32 +33,32 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w Linux Virtual Machine
 
 ## <a name="monitoring--logging"></a>Monitorowanie rejestrowania &
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
+| Kontrola zabezpieczeń | Tak/nie | Uwagi|
 |---|---|--|
-| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Zobacz [monitorowanie i aktualizowanie maszyny wirtualnej z systemem Linux na platformie Azure](/azure/virtual-machines/linux/tutorial-monitoring) oraz [monitorowanie i aktualizowanie maszyny wirtualnej z systemem Windows na platformie Azure](/azure/virtual-machines/windows/tutorial-monitoring). |
+| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Zobacz [monitorowanie i aktualizowanie maszyny wirtualnej z systemem Linux na platformie Azure](/azure/virtual-machines/linux/tutorial-monitoring). |
 | Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak |  |
 | Rejestrowanie i inspekcja płaszczyzny danych | Nie |  |
 
 ## <a name="identity"></a>Tożsamość
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
+| Kontrola zabezpieczeń | Tak/nie | Uwagi|
 |---|---|--|
-| Authentication| Tak |  |
-| Authorization| Tak |  |
+| Uwierzytelnianie| Tak |  |
+| Autoryzacja| Tak |  |
 
 ## <a name="data-protection"></a>Ochrona danych
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi |
+| Kontrola zabezpieczeń | Tak/nie | Uwagi |
 |---|---|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: Klucze zarządzane przez firmę Microsoft | Tak | Zobacz [jak szyfrować maszynę wirtualną z systemem Linux na platformie Azure](/azure/virtual-machines/linux/encrypt-disks) i [szyfrować dyski wirtualne na maszynie wirtualnej z systemem Windows](/azure/virtual-machines/windows/encrypt-disks). |
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | Tak | Zobacz [Azure Disk Encryption dla maszyn wirtualnych z systemem Linux](disk-encryption-overview.md). |
 | Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Usługa Azure Virtual Machines obsługuje szyfrowanie [ExpressRoute](/azure/expressroute) i wirtualne. Zobacz [szyfrowanie w trakcie przesyłania na maszynach wirtualnych](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Tak | Klucze zarządzane przez klienta to obsługiwany scenariusz szyfrowania platformy Azure; Zobacz [Omówienie usługi Azure Encryption](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
-| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |
+| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| Brak | |
 | Wywołania interfejsu API są szyfrowane| Tak | Za pośrednictwem protokołów HTTPS i SSL. |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
+| Kontrola zabezpieczeń | Tak/nie | Uwagi|
 |---|---|--|
 | Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| Tak |  | 
 

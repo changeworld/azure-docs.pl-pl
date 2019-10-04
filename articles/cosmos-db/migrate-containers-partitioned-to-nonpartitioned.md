@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300111"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844405"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrowanie kontenerów bez partycjonowania do kontenerów partycjonowanych
 
@@ -24,7 +24,7 @@ Kontenery bez partycjonowania są starsze i należy migrować istniejące konten
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Migrowanie kontenera przy użyciu klucza partycji zdefiniowanej przez system
 
-W celu obsługi migracji Azure Cosmos DB udostępnia klucz `/_partitionkey` partycji zdefiniowany przez system na wszystkich kontenerach, które nie mają klucza partycji. Nie można zmienić definicji klucza partycji po migracji kontenerów. Na przykład definicja kontenera migrowanego do kontenera partycjonowanego będzie następująca:
+W celu obsługi migracji Azure Cosmos DB udostępnia klucz partycji zdefiniowany przez system o nazwie `/_partitionkey` we wszystkich kontenerach, które nie mają klucza partycji. Nie można zmienić definicji klucza partycji po migracji kontenerów. Na przykład definicja kontenera migrowanego do kontenera partycjonowanego będzie następująca:
 
 ```json
 {
@@ -38,7 +38,7 @@ W celu obsługi migracji Azure Cosmos DB udostępnia klucz `/_partitionkey` part
 }
 ```
 
-Po migracji kontenera można utworzyć dokumenty, wypełniając `_partitionKey` Właściwość wraz z innymi właściwościami dokumentu. `_partitionKey` Właściwość reprezentuje klucz partycji dokumentów.
+Po migracji kontenera można utworzyć dokumenty, wypełniając właściwość `_partitionKey` wraz z innymi właściwościami dokumentu. Właściwość `_partitionKey` reprezentuje klucz partycji dokumentów.
 
 Wybór odpowiedniego klucza partycji jest ważny w celu optymalnego wykorzystania alokowanej przepływności. Aby uzyskać więcej informacji, zobacz artykuł [jak wybrać klucz partycji](partitioning-overview.md) .
 
@@ -95,11 +95,11 @@ Aby zapoznać się z kompletnym przykładem, zobacz repozytorium [.NET Samples](
                       
 ## <a name="migrate-the-documents"></a>Migrowanie dokumentów
 
-Mimo że definicja kontenera jest rozszerzona za pomocą właściwości klucza partycji, dokumenty w kontenerze nie są migrowane. Oznacza to, że ścieżka właściwości `/_partitionKey` klucza partycji systemowej nie jest automatycznie dodawana do istniejących dokumentów. Należy ponownie podzielić na partycje istniejące dokumenty, odczytując dokumenty, które zostały utworzone bez klucza partycji i ponownie zapisując je z `_partitionKey` właściwością w dokumentach.
+Mimo że definicja kontenera jest rozszerzona za pomocą właściwości klucza partycji, dokumenty w kontenerze nie są migrowane. Oznacza to, że właściwość klucza partycji systemowej `/_partitionKey` ścieżka nie jest automatycznie dodawana do istniejących dokumentów. Musisz ponownie podzielić istniejące dokumenty, odczytując dokumenty, które zostały utworzone bez klucza partycji, i Zapisz je ponownie z właściwością `_partitionKey` w dokumentach.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Dostęp do dokumentów, które nie mają klucza partycji
 
-Aplikacje mogą uzyskiwać dostęp do istniejących dokumentów, które nie mają klucza partycji przy użyciu specjalnej właściwości systemu o nazwie "CosmosContainerSettings. NonePartitionKeyValue", która jest wartością niezmigrowanych dokumentów. Tej właściwości można używać we wszystkich operacjach CRUD i zapytania. Poniższy przykład przedstawia przykład odczytu pojedynczego dokumentu z NonePartitionKey. 
+Aplikacje mogą uzyskiwać dostęp do istniejących dokumentów, które nie mają klucza partycji przy użyciu specjalnej właściwości systemowej o nazwie "PartitionKey. None", która jest wartością niezmigrowanych dokumentów. Tej właściwości można używać we wszystkich operacjach CRUD i zapytania. Poniższy przykład przedstawia przykład odczytu pojedynczego dokumentu z NonePartitionKey. 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
@@ -120,7 +120,7 @@ Jeśli migrowany kontener jest używany przez najnowszą wersję zestawu SDK/v3 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partitioning-overview.md)
-* [Jednostki żądania w usłudze Azure Cosmos DB](request-units.md)
+* [Partycjonowanie w Azure Cosmos DB](partitioning-overview.md)
+* [Jednostki żądań w Azure Cosmos DB](request-units.md)
 * [Obsługa przepływności na kontenerach i bazach danych](set-throughput.md)
 * [Współpraca z kontem usługi Azure Cosmos](account-overview.md)

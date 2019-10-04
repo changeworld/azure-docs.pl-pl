@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/01/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: df12d6866f5e9e6bf492e228e32b0b10f7266eb4
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260859"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843869"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak debugować funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -43,7 +43,7 @@ Po skonfigurowaniu można wybrać wszystkie kategorie i metryki dzienników oraz
 
 Aby śledzić dane telemetryczne czujnika, sprawdź, czy ustawienia diagnostyczne są włączone dla Twojego wystąpienia usługi Azure Digital bliźniaczych reprezentacji. Następnie upewnij się, że wybrano wszystkie żądane kategorie dzienników. Na koniec upewnij się, że żądane dzienniki są wysyłane do dzienników Azure Monitor.
 
-Aby dopasować komunikat telemetrii czujnika do odpowiednich dzienników, można określić identyfikator korelacji dla wysyłanych danych zdarzenia. Aby to zrobić, należy ustawić `x-ms-client-request-id` właściwość na identyfikator GUID.
+Aby dopasować komunikat telemetrii czujnika do odpowiednich dzienników, można określić identyfikator korelacji dla wysyłanych danych zdarzenia. Aby to zrobić, należy ustawić właściwość `x-ms-client-request-id` na identyfikator GUID.
 
 Po wysłaniu telemetrii Otwórz Azure Monitor Log Analytics, aby wykonać zapytanie dotyczące dzienników przy użyciu zestawu identyfikator korelacji:
 
@@ -56,7 +56,14 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | Identyfikator korelacji określony dla danych zdarzenia |
 
-Jeśli włączysz rejestrowanie dla funkcji zdefiniowanej przez użytkownika, te dzienniki będą widoczne w wystąpieniu usługi log Analytics z kategorią `UserDefinedFunction`. Aby je pobrać, wprowadź następujący warunek zapytania w usłudze log Analytics:
+Aby wyświetlić wszystkie ostatnie zapytania dotyczące dzienników telemetrycznych:
+
+```Kusto
+AzureDiagnostics
+| order by CorrelationId desc
+```
+
+W przypadku włączenia rejestrowania dla funkcji zdefiniowanej przez użytkownika dzienniki te są wyświetlane w wystąpieniu usługi log Analytics z kategorią `UserDefinedFunction`. Aby je pobrać, wprowadź następujący warunek zapytania w usłudze log Analytics:
 
 ```Kusto
 AzureDiagnostics
@@ -100,7 +107,7 @@ GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSO
 | *YOUR_MATCHER_IDENTIFIER* | Identyfikator dopasowań, który chcesz oszacować |
 | *YOUR_SENSOR_IDENTIFIER* | Identyfikator czujnika, który chcesz oszacować |
 
-Odpowiedź:
+Reakcji
 
 ```JavaScript
 {
@@ -123,7 +130,7 @@ GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=Use
 | --- | --- |
 | *YOUR_SENSOR_IDENTIFIER* | Identyfikator czujnika do wysyłania telemetrii |
 
-Odpowiedź:
+Reakcji
 
 ```JavaScript
 [
@@ -166,7 +173,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-Ten scenariusz występuje, ponieważ użyty identyfikator odwołuje się do czujnika, a określony typ obiektu topologii `Space`to.
+Ten scenariusz występuje, ponieważ użyty identyfikator odwołuje się do czujnika, podczas gdy określony typ obiektu topologii to `Space`.
 
 **Poprawne** Przyklad
 
@@ -178,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-Najprostszym sposobem nieuruchomienia tego problemu jest użycie `Notify` metody w obiekcie metadanych.
+Najprostszym sposobem nieuruchomienia tego problemu jest użycie metody `Notify` w obiekcie metadanych.
 
 Przykład:
 

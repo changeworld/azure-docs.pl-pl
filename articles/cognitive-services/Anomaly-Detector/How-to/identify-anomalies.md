@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 10/01/2019
 ms.author: aahi
-ms.openlocfilehash: c7b3d9b66d74f16dc0938c888456d673b9cd4b77
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882881"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840224"
 ---
-# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Instrukcje: Korzystanie z interfejsu API wykrywania anomalii w danych szeregów czasowych  
+# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Instrukcje: korzystanie z interfejsu API wykrywania anomalii w danych szeregów czasowych  
 
-[Interfejs API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) wykrywania anomalii oferuje dwie metody wykrycia anomalii. Możesz wykryć anomalie jako partię w szeregu czasowym lub w miarę generowania danych przez wykrycie stanu anomalii najnowszego punktu danych. Model wykrywania zwraca wyniki anomalii wraz z oczekiwaną wartością każdego punktu danych i górną i dolną granicą wykrywania anomalii. tych wartości można użyć do wizualizacji zakresu normalnych wartości i anomalii w danych.
+[Interfejs API wykrywania anomalii](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) oferuje dwie metody wykrycia anomalii. Możesz wykryć anomalie jako partię w szeregu czasowym lub w miarę generowania danych przez wykrycie stanu anomalii najnowszego punktu danych. Model wykrywania zwraca wyniki anomalii wraz z oczekiwaną wartością każdego punktu danych i górną i dolną granicą wykrywania anomalii. tych wartości można użyć do wizualizacji zakresu normalnych wartości i anomalii w danych.
 
 ## <a name="anomaly-detection-modes"></a>Tryby wykrywania anomalii 
 
 Interfejs API wykrywania anomalii zapewnia tryby wykrywania: Batch i streaming.
 
 > [!NOTE]
-> Następujące adresy URL żądania muszą być połączone z odpowiednim punktem końcowym dla subskrypcji. Na przykład: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> Następujące adresy URL żądania muszą być połączone z odpowiednim punktem końcowym dla subskrypcji. Na przykład: `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
 ### <a name="batch-detection"></a>Wykrywanie partii
@@ -47,7 +47,7 @@ Wysyłając nowe punkty danych podczas ich generowania, można monitorować dane
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Dopasowywanie dolnych i górnych granic wykrywania anomalii
 
-Domyślnie górne i dolne granice wykrywania anomalii są obliczane przy użyciu `expectedValue`, `upperMargin`i `lowerMargin`. Jeśli potrzebujesz różnych granic, zalecamy zastosowanie `marginScale` do `upperMargin` lub `lowerMargin`. Granice zostałyby obliczone w następujący sposób:
+Domyślnie górne i dolne granice wykrywania anomalii są obliczane przy użyciu `expectedValue`, `upperMargin` i `lowerMargin`. Jeśli potrzebujesz różnych granic, zalecamy zastosowanie `marginScale` do `upperMargin` lub `lowerMargin`. Granice zostałyby obliczone w następujący sposób:
 
 |Obwiedni  |Obliczenia  |
 |---------|---------|
@@ -71,4 +71,4 @@ W poniższych przykładach pokazano wynik interfejsu API wykrywania anomalii w r
 ## <a name="next-steps"></a>Następne kroki
 
 * [Co to jest interfejs API wykrywania anomalii?](../overview.md)
-* [Szybki start: Wykrywaj anomalie w danych szeregów czasowych przy użyciu interfejsu API REST usługi wykrywania anomalii](../quickstarts/detect-data-anomalies-csharp.md)
+* [Szybki Start: wykrywanie anomalii w danych szeregów czasowych przy użyciu interfejsu API REST usługi wykrywania anomalii](../quickstarts/detect-data-anomalies-csharp.md)

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 30751bebd397b378924453987462c9e2b3b55ebf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4b46bc952782fc7c9b56d6f0c049fe17b63d0f2
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803929"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836337"
 ---
 # <a name="electric-vehicle-routing-using-azure-notebooks-python"></a>Elektryczne Routing pojazdu przy użyciu Azure Notebooks (Python)
 
-Azure Maps to portfolio interfejsów API usług geoprzestrzennych natywnie zintegrowanych z platformą Azure, które umożliwiają deweloperom, firmom i dostawcom oprogramowania Tworzenie aplikacji obsługujących lokalizację oraz rozwiązań IoT, mobilności, logistycznych i śledzenia zasobów. Interfejsy API REST Azure Maps mogą być wywoływane z języków, takich jak Python i R, aby umożliwić analizę danych geoprzestrzennych i scenariusze uczenia maszynowego. Azure Maps oferuje niezawodny zestaw [interfejsów API routingu]([https://docs.microsoft.com/rest/api/maps/route) , który umożliwia użytkownikom obliczanie tras między kilkoma punktami danych w oparciu o różne warunki, takie jak typ pojazdu lub dostępny obszar. W tym samouczku przedstawiono scenariusz, w którym można uzyskać pomoc dotyczącą sterownika pojazdu elektrycznego, którego pojazd jest niski, aby znaleźć najbliższą możliwą stację ładowania w odniesieniu do czasu dysku.
+Azure Maps to portfolio interfejsów API usług geoprzestrzennych natywnie zintegrowanych z platformą Azure, które umożliwiają deweloperom, firmom i dostawcom oprogramowania Tworzenie aplikacji obsługujących lokalizację oraz rozwiązań IoT, mobilności, logistycznych i śledzenia zasobów. Interfejsy API REST Azure Maps mogą być wywoływane z języków, takich jak Python i R, aby umożliwić analizę danych geoprzestrzennych i scenariusze uczenia maszynowego. Azure Maps oferuje niezawodny zestaw [interfejsów API routingu](https://docs.microsoft.com/rest/api/maps/route) , który umożliwia użytkownikom obliczanie tras między kilkoma punktami danych w oparciu o różne warunki, takie jak typ pojazdu lub dostępny obszar. W tym samouczku przedstawiono scenariusz, w którym można uzyskać pomoc dotyczącą sterownika pojazdu elektrycznego, którego pojazd jest niski, aby znaleźć najbliższą możliwą stację ładowania w odniesieniu do czasu dysku.
 
 W tym samouczku wykonasz następujące instrukcje:
 
@@ -367,7 +367,7 @@ await session.close()
 display(Image(staticMapImage))
 ```
 
-![trasa](./media/tutorial-ev-routing/route.png)
+![Szlak](./media/tutorial-ev-routing/route.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
