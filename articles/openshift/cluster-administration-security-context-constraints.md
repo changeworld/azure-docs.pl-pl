@@ -1,26 +1,26 @@
 ---
 title: Zarządzanie ograniczeniami kontekstu zabezpieczeń w systemie Azure Red Hat OpenShift | Microsoft Docs
-description: Zarządzanie ograniczeniami kontekstu zabezpieczeń przez administratora usługi Azure Red Hat OpenShift
+description: Ograniczenia kontekstu zabezpieczeń dla administratorów klastrów Red Hat OpenShift platformy Azure
 services: container-service
 author: troy0820
 ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 8e85ac98683487c6b18be7f502f28cad9a0c2251
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: afbde512ecb5a38eac38d6f5db614d92cd44c908
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709932"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937418"
 ---
-# <a name="overview"></a>Omówienie 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Zarządzanie ograniczeniami kontekstu zabezpieczeń na platformie Azure Red Hat OpenShift 
 
-Ograniczenia kontekstu zabezpieczeń umożliwiają administratorom kontrolowanie uprawnień dla zasobników. Aby dowiedzieć się więcej na temat tego typu interfejsu API, zobacz dokumentację architektury [ograniczenia kontekstu zabezpieczeń](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html) (SCCs). Możesz zarządzać SCCs w swoim wystąpieniu jako normalnymi obiektami interfejsu API przy użyciu interfejsu wiersza polecenia.
+Ograniczenia kontekstu zabezpieczeń (SCCs) umożliwiają administratorom klastra kontrolowanie uprawnień dla zasobników. Aby dowiedzieć się więcej na temat tego typu interfejsu API, zobacz [dokumentację architektury dla SCCs](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). Możesz zarządzać SCCs w swoim wystąpieniu jako normalnymi obiektami interfejsu API za pomocą interfejsu wiersza polecenia.
 
-## <a name="listing-security-context-constraints"></a>Wyświetlanie listy ograniczeń kontekstu zabezpieczeń
+## <a name="list-security-context-constraints"></a>Wyświetl listę ograniczeń kontekstu zabezpieczeń
 
-Aby uzyskać bieżącą listę SCCs 
+Aby uzyskać bieżącą listę SCCs, użyj tego polecenia: 
 
 ```bash
 $ oc get scc
@@ -35,9 +35,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examining-a-security-context-constraints-object"></a>Badanie obiektu ograniczeń kontekstu zabezpieczeń
+## <a name="examine-an-object-for-security-context-constraints"></a>Badanie obiektu pod kątem ograniczeń kontekstu zabezpieczeń
 
-Aby zapoznać się z konkretnym SCC, użyj `oc get`, `oc describe` lub `oc edit`.  Na przykład, aby przejrzeć **ograniczoną** wartość SCC:
+Aby zapoznać się z konkretnym SCC, użyj `oc get`, `oc describe` lub `oc edit`.  Aby na przykład przeanalizować **ograniczoną** wartość SCC, użyj tego polecenia:
 ```bash
 $ oc describe scc restricted
 Name:                   restricted
@@ -72,6 +72,5 @@ Settings:
     Ranges:             <none>
 ```
 ## <a name="next-steps"></a>Następne kroki
-Jak skonfigurować rolę OSA-Customer-administrator:
 > [!div class="nextstepaction"]
-> [Azure Active Directory integrację z usługą Azure Red Hat OpenShift](howto-aad-app-configuration.md) 
+> [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) 

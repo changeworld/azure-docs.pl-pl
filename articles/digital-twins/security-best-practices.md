@@ -1,21 +1,21 @@
 ---
 title: Informacje o najlepszych rozwiązaniach dotyczących zabezpieczeń — Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Poznaj najlepsze rozwiązania w zakresie zabezpieczeń dotyczące usługi Azure Digital bliźniaczych reprezentacji i Internet rzeczy.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-adgera
-ms.openlocfilehash: e98f8a4becad41d27d89de16f598b6fa531ad5e3
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: ba10a6105972eddc8474841b234d2eeddc994f5d
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827664"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948913"
 ---
-# <a name="security-best-practices"></a>Najlepsze rozwiązania w zakresie zabezpieczeń
+# <a name="security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń
 
 Usługa Azure Digital bliźniaczych reprezentacji Security umożliwia precyzyjne dostęp do określonych zasobów i akcji w grafie IoT. Odbywa się to za pośrednictwem szczegółowego zarządzania rolami i uprawnieniami o nazwie [Kontrola dostępu oparta na rolach](./security-role-based-access-control.md).
 

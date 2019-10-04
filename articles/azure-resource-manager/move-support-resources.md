@@ -4,14 +4,14 @@ description: Wyświetla listę typów zasobów platformy Azure, które można pr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: b34c244708c52ec7324c766286aff8ee9340db0b
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 81096a4299ec190cb4299f1b8ea4f9c2533d37ad
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687122"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948038"
 ---
 # <a name="move-operation-support-for-resources"></a>Obsługa operacji przenoszenia dla zasobów
 W tym artykule przedstawiono, czy typ zasobu platformy Azure obsługuje operację przenoszenia. Zawiera również informacje dotyczące specjalnych warunków, które należy wziąć pod uwagę podczas przeniesienia zasobu.
@@ -268,7 +268,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | oparty | Nie | Nie |
 > | fileservers | Nie | Nie |
 > | zadania | Nie | Nie |
-> | Obszarów roboczych | Nie | Nie |
+> | obszarów roboczych | Nie | Nie |
 
 ## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
@@ -382,7 +382,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | availabilitysets | Tak | Tak |
 > | diskencryptionsets | Nie | Nie |
-> | Dysku | Tak | Tak |
+> | dysku | Tak | Tak |
 > | znajduj | Nie | Nie |
 > | Galerie/obrazy | Nie | Nie |
 > | Galerie/obrazy/wersje | Nie | Nie |
@@ -393,7 +393,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | restorepointcollections | Nie | Nie |
 > | sharedvmimages | Nie | Nie |
 > | sharedvmimages/wersje | Nie | Nie |
-> | Migawki | Tak | Tak |
+> | migawki | Tak | Tak |
 > | virtualmachines | Tak | Tak |
 > | virtualmachines/rozszerzenia | Tak | Tak |
 > | virtualmachinescalesets | Tak | Tak |
@@ -482,7 +482,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | Obszarów roboczych | Nie | Nie |
+> | obszarów roboczych | Nie | Nie |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft. datacatalog
 
@@ -504,7 +504,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | Pakiety | Nie | Nie |
+> | pakiety | Nie | Nie |
 > | pakiety | Nie | Nie |
 
 ## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
@@ -644,7 +644,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
 > | oparty | Tak | Tak |
-> | Przestrzeni | Tak | Tak |
+> | przestrzeni | Tak | Tak |
 
 ## <a name="microsoftgenomics"></a>Microsoft. genomika
 
@@ -711,14 +711,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | activitylogalerts | Nie | Nie |
 > | alertrules | Tak | Tak |
 > | autoscalesettings | Tak | Tak |
-> | Komponentów | Tak | Tak |
+> | komponentów | Tak | Tak |
 > | guestdiagnosticsettings | Nie | Nie |
 > | metricalerts | Nie | Nie |
 > | notificationgroups | Nie | Nie |
 > | notificationrules | Nie | Nie |
 > | scheduledqueryrules | Tak | Tak |
 > | testów internetowych | Tak | Tak |
-> | Otwiera | Tak | Tak |
+> | otwiera | Tak | Tak |
 
 > [!IMPORTANT]
 > Upewnij się, że przejście do nowej subskrypcji nie przekracza [przydziałów subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
@@ -736,7 +736,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | Tak | Tak |
-> | Ziół | Tak | Tak |
+> | ziół | Tak | Tak |
 
 ## <a name="microsoftkeyvault"></a>Microsoft. kluczy — magazyn
 
@@ -795,7 +795,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | commitmentplans | Tak | Tak |
 > | WebServices | Tak | Nie |
-> | Obszarów roboczych | Tak | Tak |
+> | obszarów roboczych | Tak | Tak |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
 
@@ -835,7 +835,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | Obszarów roboczych | Nie | Nie |
+> | obszarów roboczych | Nie | Nie |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
@@ -954,7 +954,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | Przestrzeni | Tak | Tak |
+> | przestrzeni | Tak | Tak |
 > | przestrzenie nazw/notificationhubs | Tak | Tak |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
@@ -962,7 +962,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | Obszarów roboczych | Tak | Tak |
+> | obszarów roboczych | Tak | Tak |
 
 > [!IMPORTANT]
 > Upewnij się, że przejście do nowej subskrypcji nie przekracza [przydziałów subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
@@ -988,7 +988,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | Pulpitów nawigacyjnych | Tak | Tak |
+> | pulpitów nawigacyjnych | Tak | Tak |
 
 ## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
 
@@ -1033,7 +1033,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | Przestrzeni | Tak | Tak |
+> | przestrzeni | Tak | Tak |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
@@ -1088,7 +1088,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | Przestrzeni | Tak | Tak |
+> | przestrzeni | Tak | Tak |
 
 ## <a name="microsoftservicefabric"></a>Microsoft. servicefabric
 
@@ -1245,7 +1245,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
 > | providerregistrations | Nie | Nie |
-> | Produkcyjnych | Nie | Nie |
+> | produkcyjnych | Nie | Nie |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
 
@@ -1296,7 +1296,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | Przystawki | Nie | Tak |
+> | przystawki | Nie | Tak |
 > | connectiongateways | Tak | Tak |
 > | Licznik | Tak | Tak |
 > | customapis | Tak | Tak |
@@ -1323,7 +1323,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | applicationgroups | Nie | Nie |
 > | hostpools | Nie | Nie |
-> | Obszarów roboczych | Nie | Nie |
+> | obszarów roboczych | Nie | Nie |
 
 ## <a name="third-party-services"></a>Usługi innych firm
 

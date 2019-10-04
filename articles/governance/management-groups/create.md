@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7b5ee5bfe4b7498bc13ff0c8582b49fed8478e0a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 1b53d8a15e6ca1d4fc5a8ed6d58e526fadd12466
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337781"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949000"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grup zarządzania dla organizacji zasobów i zarządzania nimi
 
@@ -31,9 +31,13 @@ Grupę zarządzania można utworzyć przy użyciu portalu, programu PowerShell l
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
-1. Wybierz pozycję **wszystkie** > **grupy zarządzania**usług.
+1. Wybierz pozycję **wszystkie usługi** > **Zarządzanie i nadzór**.
 
-1. Na stronie głównej wybierz pozycję **Nowa grupa zarządzania**.
+1. Wybierz **Cost Management i rozliczanie**
+
+1. Na stronie Cost Management i grupy zarządzania rozliczeniami wybierz pozycję **grupy zarządzania**
+
+1. Wybierz pozycję **+ Dodaj grupę zarządzania**.
 
    ![Strona do pracy z grupami zarządzania](./media/main.png)
 

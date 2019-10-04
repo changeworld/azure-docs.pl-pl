@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 83f5339dbc4f093ba0b7287b53c053e319f928c9
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: 327fd5352a3f067638c7f9ceb51e2de9e284d845
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937388"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947846"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Pozyskiwanie danych z IoT Hub na platformie Azure Eksplorator danych (wersja zapoznawcza)
 
@@ -76,11 +76,11 @@ Teraz nawiążesz połączenie z IoT Hubą z usługi Azure Eksplorator danych. P
 
     **Ustawienie** | **Opis pola**
     |---|---|
-    | Nazwa połączenia danych | Nazwa połączenia, które chcesz utworzyć w usłudze Azure Data Explorer.
-    | IoT Hub | Nazwa IoT Hub. |
-    | Zasady dostępu współdzielonego | Nazwa zasad dostępu współdzielonego. Musi mieć uprawnienia do odczytu. |
-    | Grupa konsumentów |  Grupa odbiorców zdefiniowana w IoT Hub wbudowanym punkcie końcowym. |
-    | Właściwości systemu zdarzeń | Właściwości systemu zdarzeń IoT Hub. W przypadku, gdy istnieje wiele rekordów na komunikat o zdarzeniu, właściwości systemu zostaną dodane do pierwszej z nich. |
+    | Nazwa połączenia danych | Nazwa połączenia, które chcesz utworzyć na platformie Azure Eksplorator danych
+    | IoT Hub | Nazwa IoT Hub |
+    | Zasady dostępu współdzielonego | Nazwa zasad dostępu współdzielonego. Musi mieć uprawnienia do odczytu |
+    | Grupa konsumentów |  Grupa odbiorców zdefiniowana w IoT Hub wbudowanym punkcie końcowym |
+    | Właściwości systemu zdarzeń | [IoT Hub właściwości systemu zdarzeń](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages) , jeśli istnieje wiele rekordów dla każdego komunikatu o zdarzeniu, właściwości systemu zostaną dodane do pierwszej z nich.|
     | | 
 
     > [!NOTE]
@@ -94,7 +94,7 @@ Teraz nawiążesz połączenie z IoT Hubą z usługi Azure Eksplorator danych. P
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
     | Tabela | *TestTable* | Tabela utworzona w **TestDB**. |
-    | Format danych | *JSON* | Obsługiwane formaty to: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV i TXT. |
+    | Format danych | *JSON* | Obsługiwane formaty to Avro, CSV, JSON, WIELOWIERSZOWY kod JSON, PSV, SOHSV, SCSV, TSV, TSVE i TXT. |
     | Mapowanie kolumn | *TestMapping* | Mapowanie utworzone w **TestDB**, które mapuje przychodzące dane JSON do nazw kolumn i typów danych **TestDB**. Wymagane dla notacji JSON, wielowierszowego kodu JSON i AVRO oraz opcjonalne dla innych formatów.|
     | | |
 

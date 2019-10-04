@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: pabutler
-ms.openlocfilehash: 3010b63c7c4c575d915789c19b60710194c79196
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 54369e0f2c943c146d186605833198253b960022
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874669"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949537"
 ---
-# <a name="iot-edge-modules"></a>Moduły usługi IoT Edge
+# <a name="iot-edge-modules"></a>Moduły IoT Edge
 
 Platforma [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) jest obsługiwana przez chmurę platformy Azure.  Ta platforma umożliwia użytkownikom wdrażanie obciążeń w chmurze do uruchomienia bezpośrednio na urządzeniach IoT.  Moduł IoT Edge może uruchamiać obciążenia w trybie offline i analizować dane lokalnie. Ten typ oferty pomaga zaoszczędzić przepustowość, chronić lokalne i poufne dane oraz zapewnia czas odpowiedzi o małym opóźnieniu.  Masz teraz możliwość skorzystania z tych wstępnie skompilowanych obciążeń. Do tej pory dostępne są tylko kilku rozwiązań pierwszej firmy od firmy Microsoft.  Musisz zainwestować czas i zasoby na tworzenie własnych niestandardowych rozwiązań IoT.
 
@@ -51,7 +51,7 @@ Portal Marketplace obsługuje obecnie **bezpłatne** opcje rozliczania **licencj
 
 We wszystkich przypadkach moduł IoT Edge powinien wybrać opcję publikowania **Transact** .  Aby uzyskać więcej informacji na temat opcji publikowania, zobacz [Wybieranie opcji publikowania](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) .  
 
-## <a name="eligibility-criteria"></a>Kryteria kwalifikacji
+## <a name="eligibility-criteria"></a>Kryteria kwalifikujące
 
 Wszystkie postanowienia Microsoft Azure Marketplace umów i zasad mają zastosowanie do ofert IoT Edge module.  Ponadto istnieją wymagania wstępne i techniczne dla modułów IoT Edge.  
 
@@ -82,9 +82,7 @@ Podstawowe wymagania techniczne dotyczące modułu IoT Edge, aby można było uz
 
 Jeśli jeszcze tego nie zrobiono,
 
-- Zarejestruj się w [Microsoft Partner Network](https://partner.microsoft.com/membership).
-- Utwórz [konto Microsoft](https://account.microsoft.com/account/) (wymagane dla ofert Transact w portalu Azure Marketplace; zalecane dla innych).
-- Prześlij [formularz rejestracji w portalu Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv). Aby uzyskać więcej informacji, zobacz jak [utworzyć konto Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
+- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) się w portalu Marketplace.
 
 Jeśli jesteś zarejestrowanym użytkownikiem i tworzysz nową ofertę lub pracujesz nad istniejącym,
 

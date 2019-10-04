@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14e82bc5f58383c37bfd82d793851fc7e927b2f4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 61c85d17e88016e5e9067d4be86e1cd290b4b12a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828440"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948184"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption dla maszyn wirtualnych z systemem Linux 
 
@@ -44,7 +44,7 @@ Po zakończeniu procesu szyfrowania dysku systemu operacyjnego na maszynach wirt
 
 Azure Disk Encryption jest również dostępna dla maszyn wirtualnych z magazynem w warstwie Premium. 
 
-### <a name="supported-operating-systems"></a>Supported operating systems
+### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
 Azure Disk Encryption jest obsługiwane w podzestawie [dystrybucji systemu Linux z zatwierdzona przez platformę Azure](endorsed-distros.md), które jest samym podzbiorem wszystkich możliwych dystrybucji serwerów z systemem Linux.
 
@@ -57,22 +57,24 @@ Dystrybucje serwera z systemem Linux, które nie są zatwierdzone przez platform
 | Ubuntu | 18,04| System operacyjny i dysk z danymi |
 | Ubuntu | 16,04| System operacyjny i dysk z danymi |
 | Ubuntu | 14.04.5</br>[Dzięki dostrojeniu jądra platformy Azure do wersji 4,15 lub nowszej](disk-encryption-troubleshooting.md) | System operacyjny i dysk z danymi |
+| RHEL | 7,7 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7,6 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7,5 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7,4 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
-| RHEL | 7,3 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
-| RHEL | 7,2 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
-| RHEL | 6,8 | Dysk danych (patrz Uwaga poniżej) |
-| RHEL | 6,7 | Dysk danych (patrz Uwaga poniżej) |
+| RHEL | 7.3 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 7.2 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 6.8 | Dysk danych (patrz Uwaga poniżej) |
+| RHEL | 6.7 | Dysk danych (patrz Uwaga poniżej) |
+| CentOS | 7,7 | System operacyjny i dysk z danymi |
 | CentOS | 7,6 | System operacyjny i dysk z danymi |
 | CentOS | 7,5 | System operacyjny i dysk z danymi |
 | CentOS | 7,4 | System operacyjny i dysk z danymi |
-| CentOS | 7,3 | System operacyjny i dysk z danymi |
+| CentOS | 7.3 | System operacyjny i dysk z danymi |
 | CentOS | 7.2 n | System operacyjny i dysk z danymi |
-| CentOS | 6,8 | Dysk danych |
-| openSUSE | 42,3 | Dysk danych |
-| SLES | 12 — SP4 | Dysk danych |
-| SLES | 12 — SP3 | Dysk danych |
+| CentOS | 6.8 | Dysk z danymi |
+| openSUSE | 42,3 | Dysk z danymi |
+| SLES | 12 — SP4 | Dysk z danymi |
+| SLES | 12 — SP3 | Dysk z danymi |
 
 > [!NOTE]
 > Nowa implementacja elementu ADE jest obsługiwana w przypadku systemu operacyjnego RHEL i dysku danych dla obrazów z opcją płatność zgodnie z rzeczywistym użyciem. ADE nie jest obecnie obsługiwane w przypadku obrazów RHEL z własnymi subskrypcjami (BYOS). 

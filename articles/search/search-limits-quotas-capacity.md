@@ -6,14 +6,14 @@ manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/03/2019
 ms.author: heidist
-ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327166"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947776"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w Azure Search
 Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokumentów i innych obiektów zależą od tego, czy [Zainicjowano obsługę administracyjną Azure Search](search-create-service-portal.md) w warstwach **bezpłatna**, **podstawowa**, **standardowa**i **zoptymalizowana pod kątem magazynu** .
@@ -24,12 +24,12 @@ Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokument
 
 + **Standardowe** przebiegi na dedykowanych maszynach o większej pojemności magazynu i przetwarzania na każdym poziomie. Standard obejmuje cztery poziomy: S1, S2, S3 i S3 HD.
 
-+ **Zoptymalizowane pod kątem magazynu** są uruchamiane na dedykowanych maszynach o większej liczbie magazynów, przepustowości magazynu i pamięci niż w **warstwie Standardowa**. Optymalizacja pod kątem magazynu jest na dwa poziomach: L1 i L2
++ **Zoptymalizowane pod kątem magazynu** są uruchamiane na dedykowanych maszynach o większej liczbie magazynów, przepustowości magazynu i pamięci niż w **warstwie Standardowa**. Zoptymalizowane pod kątem magazynu dostępne są dwa poziomy: L1 i L2
 
 > [!NOTE]
 > Od 1 lipca wszystkie warstwy są ogólnie dostępne, w tym warstwy zoptymalizowane pod kątem magazynu. Wszystkie ceny można znaleźć na stronie [szczegółów cennika](https://azure.microsoft.com/pricing/details/search/) .
 
-  Wysoka gęstość S3 (S3 HD) jest zaprojektowana dla określonych obciążeń [](search-modeling-multitenant-saas-applications.md) : Wielodostępność i duże ilości małych indeksów (1 000 000 dokumentów na indeks, 3000 indeksów na usługę). Ta warstwa nie udostępnia [funkcji indeksatora](search-indexer-overview.md). W systemie S3 HD dane muszą wykorzystać podejście wypychane przy użyciu wywołań interfejsu API w celu wypychania danych ze źródła do indeksu. 
+  Wysoka gęstość S3 (S3 HD) jest zaprojektowana dla określonych obciążeń: [Wielodostępność](search-modeling-multitenant-saas-applications.md) i duże ilości małych indeksów (1 000 000 dokumentów na indeks, 3000 indeksów na usługę). Ta warstwa nie udostępnia [funkcji indeksatora](search-indexer-overview.md). W systemie S3 HD dane muszą wykorzystać podejście wypychane przy użyciu wywołań interfejsu API w celu wypychania danych ze źródła do indeksu. 
 
 > [!NOTE]
 > Usługa została zainicjowana z określoną warstwą. Warstwy przeskoków mające na celu uzyskanie pojemności wymagają aprowizacji nowej usługi (uaktualnienie w miejscu nie istnieje). Aby uzyskać więcej informacji, zobacz [Wybieranie jednostki SKU lub warstwy](search-sku-tier.md). Aby dowiedzieć się więcej o dostosowywaniu pojemności w ramach już zainicjowanej usługi, zobacz [poziomy zasobów skalowania dla obciążeń zapytań i indeksowania](search-capacity-planning.md).
@@ -45,14 +45,14 @@ Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokument
 
 ## <a name="index-limits"></a>Limity indeksu
 
-| Resource | Wolne | Podstawowa&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | PAMIĘCI PODRĘCZNEJ L2 |
+| Zasób | Bezpłatnie | Basic @ no__t-0<sup>1</sup>  | S1 | S2 | S3 | S3 @ no__t — 0HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba indeksów |3 |5 lub 15 |50 |200 |200 |1000 na partycję lub 3000 na usługę |10 |10 |
 | Maksymalna liczba prostych pól na indeks |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
 | Maksymalna liczba złożonych pól kolekcji na indeks |40 |40 |40 |40 |40 |40 |40 |40 |
 | Maksymalna liczba elementów we wszystkich złożonych kolekcjach na dokument |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Maksymalna głębokość pól złożonych |10 |10 |10 |10 |10 |10 |10 |10 |
-| Maksymalna [](https://docs.microsoft.com/rest/api/searchservice/suggesters) liczba sugestii na indeks |1 |1 |1 |1 |1 |1 |1 |1 |
+| Maksymalna liczba [sugestii](https://docs.microsoft.com/rest/api/searchservice/suggesters) na indeks |1 |1 |1 |1 |1 |1 |1 |1 |
 | Maksymalna liczba [profilów oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) na indeks |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maksymalna liczba funkcji na profil |8 |8 |8 |8 |8 |8 |8 |8 |
 
@@ -78,13 +78,13 @@ Jeśli portal wskazuje limit dokumentu, usługa została utworzona przed późny
 + Azja Wschodnia
 + Indie Środkowe
 + Japonia Zachodnia
-+ Środkowo-zachodnie stany USA
++ Zachodnio-środkowe stany USA
 
 W przypadku usług objętych limitami dokumentu obowiązują następujące maksymalne limity:
 
-|  Wolne | Podstawowa | S1 | S2 | S3 | S3&nbsp;HD |
+|  Bezpłatnie | Basic | S1 | S2 | S3 | S3 @ no__t — 0HD |
 |-------|-------|----|----|----|-------|
-|  10 000 |1&nbsp;milion |15 mln na partycję lub 180 mln na usługę |60 mln na partycję lub 720 mln na usługę |120 mln na partycję lub 1,4 mld na usługę |1 mln na indeks lub 200 mln na partycję |
+|  10 000 |1 @ no__t — 0million |15 mln na partycję lub 180 mln na usługę |60 mln na partycję lub 720 mln na usługę |120 mln na partycję lub 1,4 mld na usługę |1 mln na indeks lub 200 mln na partycję |
 
 Jeśli usługa ma limity, które blokują, Utwórz nową usługę i ponownie Opublikuj całą zawartość do tej usługi. Nie istnieje mechanizm bezproblemowego ponownego inicjowania obsługi administracyjnej usługi na nowym sprzęcie w tle.
 
@@ -105,17 +105,17 @@ Aby zachować rozmiar dokumentu w dół, pamiętaj, aby wykluczyć z żądania d
 Maksymalne czasy działania są dostępne w celu zapewnienia równowagi i stabilności usługi jako całości, ale większe zestawy danych mogą wymagać więcej czasu indeksowania niż maksymalna dozwolona wartość. Jeśli zadanie indeksowania nie może zakończyć się w maksymalnym dozwolonym czasie, spróbuj uruchomić je zgodnie z harmonogramem. Harmonogram śledzi Stan indeksowania. Jeśli zaplanowane zadanie indeksowania zostanie przerwane z dowolnego powodu, indeksator może zostać pobrany w miejscu, w którym został on ostatnio pozostawiony podczas następnego zaplanowanego uruchomienia.
 
 
-| Resource | Bezpłatnie&nbsp;<sup>1</sup> | Podstawowa&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |PAMIĘCI PODRĘCZNEJ L2 |
+| Zasób | Bezpłatna wersja @ no__t-0<sup>1</sup> | Basic @ no__t-0<sup>2</sup>| S1 | S2 | S3 | S3 @ no__t-0HD @ no__t-1<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba indeksatorów |3 |5 lub 15|50 |200 |200 |ND |10 |10 |
 | Maksymalna liczba źródeł danych |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |
 | Maksymalna umiejętności <sup>4</sup> |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |
-| Maksymalne ładowanie indeksowania na wywołanie |10 000 dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |ND |Bez limitu |Bez limitu |
+| Maksymalne ładowanie indeksowania na wywołanie |10 000 dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |ND |Bez ograniczeń |Bez ograniczeń |
 | Minimalny harmonogram | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
 | Maksymalny czas działania <sup>5</sup> | 1-3 minut |24 godziny |24 godziny |24 godziny |24 godziny |ND  |24 godziny |24 godziny |
 | Maksymalny czas działania dla umiejętności wyszukiwania poznawczego lub indeksowania obiektów BLOB za pomocą analizy obrazów <sup>5</sup> | 3-10 minut |2 godziny |2 godziny |2 godziny |2 godziny |ND  |2 godziny |2 godziny |
 | Indeksator obiektów blob: maksymalny rozmiar obiektu BLOB, MB |16 |16 |128 |256 |256 |ND  |256 |256 |
-| Indeksator obiektów blob: Maksymalna liczba znaków zawartości wyodrębnionych z obiektu BLOB |32,000 |64,000 |4&nbsp;mln |4&nbsp;mln |4&nbsp;mln |ND |4&nbsp;mln |4&nbsp;mln |
+| Indeksator obiektów blob: Maksymalna liczba znaków zawartości wyodrębnionych z obiektu BLOB |32 000 |64 000 |4 @ no__t — 0million |4 @ no__t — 0million |4 @ no__t — 0million |ND |4 @ no__t — 0million |4 @ no__t — 0million |
 
 <sup>1</sup> bezpłatne usługi mają maksymalny czas wykonywania indeksatora wynoszący 3 minuty dla źródeł obiektów blob i 1 minuty dla wszystkich innych źródeł danych. W przypadku indeksowania AI, które wywołuje Cognitive Services, bezpłatne usługi są ograniczone do 20 bezpłatnych transakcji dziennie, gdzie transakcja jest definiowana jako dokument, który został pomyślnie przeszedł przez potok wzbogacania.
 
@@ -131,7 +131,7 @@ Maksymalne czasy działania są dostępne w celu zapewnienia równowagi i stabil
 
 Maksymalna liczba dozwolonych map synonimów jest różna w zależności od warstwy cenowej. Każda reguła może mieć do 20 rozszerzeń, gdzie rozwinięcie jest terminem equivalvent. Na przykład podaną "Cat", skojarzenie z "Kitty", "Feline" i "Felis" (rodzaj dla kotów) będzie liczona jako 3 rozszerzenia.
 
-| Resource | Wolne | Podstawowa | S1 | S2 | S3 | S3 — HD |L1 | PAMIĘCI PODRĘCZNEJ L2 |
+| Zasób | Bezpłatnie | Basic | S1 | S2 | S3 | S3 — HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maksymalne mapy synonimów |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maksymalna liczba reguł na mapę |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
@@ -146,7 +146,19 @@ W przypadku warstw zoptymalizowanych pod kątem magazynu należy oczekiwać mnie
 
 ## <a name="data-limits-cognitive-search"></a>Limity danych (wyszukiwanie poznawcze)
 
-[Potok wyszukiwania poznawczego](cognitive-search-concept-intro.md) , który tworzy wywołania do zasobu analiza tekstu na potrzeby [rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md), [wyodrębniania fraz kluczowych](cognitive-search-skill-keyphrases.md), [analizy tonacji](cognitive-search-skill-sentiment.md)i [wykrywania języka](cognitive-search-skill-language-detection.md) , podlega limitom danych. Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych przez [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli musisz podzielić dane przed wysłaniem ich do analizatora tonacji, użyj [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
+[Potok wyszukiwania poznawczego](cognitive-search-concept-intro.md) , który tworzy wywołania do zasobu analiza tekstu na potrzeby [rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md), [wyodrębniania fraz kluczowych](cognitive-search-skill-keyphrases.md), [analizy tonacji](cognitive-search-skill-sentiment.md)i [wykrywania języka](cognitive-search-skill-language-detection.md) , podlega limitom danych. Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli musisz podzielić dane przed wysłaniem ich do analizatora tonacji, użyj [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
+
+## <a name="throttling-limits"></a>Limity ograniczania
+
+Zapytania wyszukiwania i żądania indeksowania są ograniczone, ponieważ system zbliża się do pojemności szczytowej. Ograniczanie przepływności działa inaczej dla różnych interfejsów API. Interfejsy API zapytań (wyszukiwanie/sugerowanie/Autouzupełnianie) i indeksowanie interfejsów API indeksowania dynamicznie na podstawie obciążenia usługi. Interfejsy API indeksu mają limity szybkości żądań statycznych. 
+
+Limity liczby żądań statycznych dla operacji związanych z indeksem:
+
++ Indeksy list (GET/Indexes): 5 na sekundę na jednostkę wyszukiwania
++ Pobierz indeks (GET/Indexes/MyIndex): 10 na sekundę na jednostkę wyszukiwania
++ Utwórz indeks (POST/Indexes): 12 na minutę na jednostkę wyszukiwania
++ Utwórz lub zaktualizuj indeks (PUT/Indexes/MyIndex): 6 na sekundę na jednostkę wyszukiwania
++ Usuń indeks (DELETE/Indexes/MyIndex): 12 na minutę na jednostkę wyszukiwania 
 
 ## <a name="api-request-limits"></a>Limity żądań interfejsu API
 * Maksymalnie 16 MB na żądanie <sup>1</sup>

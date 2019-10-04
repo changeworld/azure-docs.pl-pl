@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845705"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948177"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Dostrajanie wydajności z uporządkowanym klastrowanym indeksem magazynu kolumn  
 
@@ -45,6 +45,43 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 > [!NOTE] 
 > W uporządkowanej tabeli WIK nowe dane, które wynikają z operacji ładowania DML lub danych, nie są automatycznie sortowane.  Użytkownicy mogą odbudować uporządkowaną WIK, aby posortować wszystkie dane w tabeli.  
 
+## <a name="query-performance"></a>Wydajność zapytań
+
+Wzrost wydajności zapytania z uporządkowanej WIK zależy od wzorców zapytania, rozmiaru danych, sposobu sortowania danych, fizycznej struktury segmentów oraz klasy jednostek dwu i zasobów wybranej do wykonania zapytania.  Użytkownicy powinni przejrzeć wszystkie te czynniki przed wybraniem kolejności kolumn podczas projektowania uporządkowanej tabeli WIK.
+
+Zapytania ze wszystkimi tymi wzorcami zazwyczaj działają szybciej przy użyciu uporządkowanej WIK.  
+1. Zapytania mają równość, nierówność lub predykaty zakresu
+1. Kolumny predykatu i uporządkowane kolumny WIK są takie same.  
+1. Kolumny predykatu są używane w tej samej kolejności co numer kolumny uporządkowanej kolumny WIK.  
+ 
+W tym przykładzie tabela T1 ma klastrowany indeks magazynu kolumn uporządkowany według sekwencji Col_C, Col_B i Col_A.
+
+```sql
+
+CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI ON  T1
+ORDER (Col_C, Col_B, Col_A)
+
+```
+
+Wydajność zapytania 1 może przynieść więcej korzyści od uporządkowanej WIK niż pozostałe 3 zapytania. 
+
+```sql
+-- Query #1: 
+
+SELECT * FROM T1 WHERE Col_C = 'c' AND Col_B = 'b' AND Col_A = 'a';
+
+-- Query #2
+
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_C = 'c' AND Col_A = 'a';
+
+-- Query #3
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_A = 'a';
+
+-- Query #4
+SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
+
+```
+
 ## <a name="data-loading-performance"></a>Wydajność ładowania danych
 
 Wydajność ładowania danych do uporządkowanej tabeli WIK jest podobna do ładowania danych do tabeli partycjonowanej.  
@@ -59,7 +96,7 @@ Liczba nakładających się segmentów zależy od rozmiaru danych do sortowania,
 
 - Użyj klasy zasobów xlargerc na wyższym jednostek dwu, aby umożliwić większą ilość pamięci na potrzeby sortowania danych, zanim Konstruktor indeksów kompresuje dane do segmentów.  Raz w segmencie indeksu nie można zmienić fizycznej lokalizacji danych.  Nie ma sortowania danych w ramach segmentu ani między segmentami.  
 
-- Utwórz uporządkowaną WIK z MAXDOP = 1.  Każdy wątek używany do uporządkowanego tworzenia WIK działa w ramach podzestawu danych i sortuje go lokalnie.  Nie ma sortowania globalnego dla danych posortowanych według różnych wątków.  Użycie równoległych wątków może skrócić czas tworzenia uporządkowanej WIK, ale generuje więcej nakładających się segmentów niż przy użyciu jednego wątku.  Obecnie opcja MAXDOP jest obsługiwana tylko w przypadku tworzenia tabeli uporządkowanej WIK przy użyciu CREATE TABLE jako polecenia SELECT.  Tworzenie uporządkowanej WIK za pomocą poleceń CREATE INDEX lub CREATE TABLE nie obsługuje opcji MAXDOP. Na przykład
+- Utwórz uporządkowaną WIK z MAXDOP = 1.  Każdy wątek używany do uporządkowanego tworzenia WIK działa w ramach podzestawu danych i sortuje go lokalnie.  Nie ma sortowania globalnego dla danych posortowanych według różnych wątków.  Użycie równoległych wątków może skrócić czas tworzenia uporządkowanej WIK, ale generuje więcej nakładających się segmentów niż przy użyciu jednego wątku.  Obecnie opcja MAXDOP jest obsługiwana tylko w przypadku tworzenia tabeli uporządkowanej WIK przy użyciu CREATE TABLE jako polecenia SELECT.  Tworzenie uporządkowanej WIK za pomocą poleceń CREATE INDEX lub CREATE TABLE nie obsługuje opcji MAXDOP. Na przykład:
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
@@ -101,4 +138,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej porad programistycznych, zobacz [Omówienie opracowywania SQL Data Warehouse](sql-data-warehouse-overview-develop.md).
+Więcej porad programistycznych znajdziesz w artykule [Omówienie programowania w usłudze SQL Data Warehouse](sql-data-warehouse-overview-develop.md).

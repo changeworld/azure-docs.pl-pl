@@ -1,18 +1,18 @@
 ---
 title: Wybieranie kolumn dystrybucji w Azure Database for PostgreSQL — funkcja do skalowania (Citus)
-description: Dobrym wybór dla kolumn dystrybucji we wspólnych scenariuszach w ramach skalowania
+description: Dowiedz się, jak wybierać kolumny dystrybucji w typowych scenariuszach w ramach skalowania w Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b0d1f343aa9b125ab0a5a9ab559d0788253037aa
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 0b29567dcd22c79c30e70594066f7ff87c18fdb0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998194"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947593"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Wybieranie kolumn dystrybucji w Azure Database for PostgreSQL — funkcja do skalowania (Citus)
 
@@ -28,20 +28,20 @@ Architektura wielu dzierżawców korzysta z formy modelowania hierarchicznej baz
 
 Funkcja wieloskalowania (Citus) sprawdza zapytania, aby zobaczyć, który identyfikator dzierżawy obejmuje i znajduje pasującą tabelę fragmentu. Kieruje zapytanie do jednego węzła procesu roboczego, który zawiera fragmentu. Uruchomienie zapytania ze wszystkimi odpowiednimi danymi umieszczonymi w tym samym węźle nosi nazwę wspólnej lokalizacji.
 
-Poniższy diagram ilustruje współlokalizowanie w modelu danych wielodostępnych. Zawiera dwie tabele, konta i kampanie, z których każdy `account_id`jest dystrybuowany przez program. Zacienione pola reprezentują fragmentów. Zielona fragmentów są przechowywane razem w jednym węźle procesu roboczego, a niebieskie fragmentów są przechowywane w innym węźle procesu roboczego. Zwróć uwagę, jak zapytanie sprzężenia między kontami i kampaniami zawiera wszystkie niezbędne dane razem w jednym węźle, gdy obie tabele są ograniczone\_do tego samego identyfikatora konta.
+Poniższy diagram ilustruje współlokalizowanie w modelu danych wielodostępnych. Zawiera dwie tabele, konta i kampanie, z których każdy jest dystrybuowany przez `account_id`. Zacienione pola reprezentują fragmentów. Zielona fragmentów są przechowywane razem w jednym węźle procesu roboczego, a niebieskie fragmentów są przechowywane w innym węźle procesu roboczego. Zwróć uwagę, jak zapytanie sprzężenia między kontami i kampaniami zawiera wszystkie niezbędne dane w jednym węźle, gdy obie tabele są ograniczone do tego samego konta @ no__t-0id.
 
 ![Współlokalizacja z wieloma dzierżawcami](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-Aby zastosować ten projekt we własnym schemacie, należy określić, co stanowi dzierżawcę w aplikacji. Typowe wystąpienia to firma, konto, organizacja lub klient. Nazwa kolumny będzie wyglądać następująco `company_id` lub. `customer_id` Sprawdź poszczególne zapytania i zadawaj siebie, czy będą one działały, jeśli miały dodatkowe klauzule WHERE, aby ograniczyć wszystkie tabele do wierszy z tym samym IDENTYFIKATORem dzierżawy?
+Aby zastosować ten projekt we własnym schemacie, należy określić, co stanowi dzierżawcę w aplikacji. Typowe wystąpienia to firma, konto, organizacja lub klient. Nazwa kolumny będzie wyglądać podobnie do `company_id` lub `customer_id`. Sprawdź poszczególne zapytania i zadawaj siebie, czy będą one działały, jeśli miały dodatkowe klauzule WHERE, aby ograniczyć wszystkie tabele do wierszy z tym samym IDENTYFIKATORem dzierżawy?
 Zapytania w modelu z wieloma dzierżawcami są objęte zakresem dzierżawy. Na przykład zapytania dotyczące sprzedaży lub spisu są objęte zakresem w ramach określonego magazynu.
 
 #### <a name="best-practices"></a>Najlepsze praktyki
 
--   **Partycjonowanie tabel rozproszonych za pomocą\_wspólnej kolumny identyfikatora dzierżawy.** Na przykład w aplikacji SaaS, w której znajdują się dzierżawcy są firmy\_, identyfikator dzierżawy może być identyfikatorem firmy.\_
+-   **Partycjonowanie tabel rozproszonych za pomocą wspólnej dzierżawy kolumny @ no__t-1iD.** Na przykład w aplikacji SaaS, w której znajdują się dzierżawcy, dzierżawa @ no__t-0id prawdopodobnie należy do firmy @ no__t-1iD.
 -   **Konwertuj małe tabele obejmujące wiele dzierżawców na tabele referencyjne.** Gdy wiele dzierżawców udostępnia małą tabelę informacji, należy ją rozpowszechnić jako tabelę referencyjną.
--   **Ogranicz filtrowanie wszystkich zapytań aplikacji według identyfikatora\_dzierżawy.** Każde zapytanie powinno zażądać informacji dla jednej dzierżawy w danym momencie.
+-   **Ogranicz filtrowanie wszystkich zapytań aplikacji według dzierżawy @ no__t-1iD.** Każde zapytanie powinno zażądać informacji dla jednej dzierżawy w danym momencie.
 
-Zapoznaj się z samouczkiem z [wieloma dzierżawcami](./tutorial-design-database-hyperscale-multi-tenant.md) , aby zapoznać się z przykładem tworzenia tego rodzaju aplikacji.
+Zapoznaj się z [samouczkiem z wieloma dzierżawcami](./tutorial-design-database-hyperscale-multi-tenant.md) , aby zapoznać się z przykładem tworzenia tego rodzaju aplikacji.
 
 ### <a name="real-time-apps"></a>Aplikacje w czasie rzeczywistym
 
@@ -72,7 +72,7 @@ Najbardziej typowym błędem modelowania informacji o szeregach czasowych w rama
 -   **Nie wybieraj sygnatury czasowej jako kolumny dystrybucji.** Wybierz inną kolumnę dystrybucji. W aplikacji z wieloma dzierżawami Użyj identyfikatora dzierżawy lub w aplikacji w czasie rzeczywistym Użyj identyfikatora jednostki.
 -   **Zamiast tego użyj partycjonowania tabeli PostgreSQL.** Partycjonowanie tabeli służy do dzielenia dużej ilości danych uporządkowanych według czasu na wiele dziedziczonych tabel każdej tabeli zawierającej różne zakresy czasu. Dystrybuowanie tabeli partycjonowanej Postgres w Citus) tworzy fragmentów dla dziedziczonych tabel.
 
-Zapoznaj [](https://aka.ms/hyperscale-tutorial-timeseries) się z samouczkiem dotyczącym szeregów czasowych, aby zapoznać się z przykładem tworzenia tego rodzaju aplikacji.
+Zapoznaj się z [samouczkiem dotyczącym szeregów czasowych](https://aka.ms/hyperscale-tutorial-timeseries) , aby zapoznać się z przykładem tworzenia tego rodzaju aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
-- Dowiedz [](concepts-hyperscale-colocation.md) się, jak współdziałanie między danymi rozproszonymi ułatwia wykonywanie zapytań.
+- Dowiedz się [, jak](concepts-hyperscale-colocation.md) współdziałanie między danymi rozproszonymi ułatwia wykonywanie zapytań.

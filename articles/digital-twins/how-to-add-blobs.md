@@ -1,20 +1,20 @@
 ---
-title: Jak dodać obiekty blob do obiektów w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+title: Jak dodać obiekty blob do obiektów — Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Dowiedz się, jak dodawać obiekty blob do obiektów w usłudze Azure Digital bliźniaczych reprezentacji.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 35bc5a4532f040aeb464a91b14adcb540ccc113a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 3a278501f1110da0ab332d0e1acf170892be26ee
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845468"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949140"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Dodaj obiekty blob do obiektów w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -117,7 +117,7 @@ Pojedyncze zwrócone obiekty blob są zgodne z następującym schematem JSON:
 | **element typeId** | Liczba całkowita | Identyfikator podtypu dla obiektu BLOB — nie można użyć *podtypu* i elementu *subtypeid* |
 | **wspólnie** | String | Czy obiekt BLOB może być współużytkowany-enum [`None`, `Tree`, `Global`] |
 | **zharmonizowan** | String | Dostosowany opis obiektu BLOB |
-| **contentInfos** | macierzy | Określa informacje o metadanych bez struktury, w tym wersję |
+| **contentInfos** | Macierzy | Określa informacje o metadanych bez struktury, w tym wersję |
 | **fullName** | String | Pełna nazwa obiektu BLOB |
 | **spacePaths** | String | Ścieżka miejsca |
 
@@ -204,7 +204,7 @@ Pomyślne OPUBLIKOWANie zwraca identyfikator nowego obiektu BLOB (wyróżniony c
 
 W poniższych sekcjach opisano podstawowe punkty końcowe interfejsu API powiązane z obiektami BLOB i ich funkcje.
 
-### <a name="devices"></a>urządzeniem
+### <a name="devices"></a>Urządzeniem
 
 Obiekty blob można dołączać do urządzeń. Na poniższej ilustracji przedstawiono dokumentację referencyjną struktury Swagger dla interfejsów API zarządzania. Określa punkty końcowe interfejsu API związane z urządzeniami do użycia obiektów blob i wszystkie wymagane parametry ścieżki do przekazania do nich.
 
@@ -242,7 +242,7 @@ Pomyślne żądania zwracają obiekt JSON zgodnie z [wcześniejszym opisem](#blo
 
 Żądanie poprawki do tego samego punktu końcowego aktualizuje opisy metadanych i tworzy wersje obiektu BLOB. Żądanie HTTP jest nawiązywane za pośrednictwem metody PATCH, wraz z wszelkimi niezbędnymi danymi formularza meta i wieloczęściowych.
 
-### <a name="users"></a>użytkownikowi
+### <a name="users"></a>Użytkownikowi
 
 Obiekty blob można dołączać do modeli użytkowników (na przykład w celu skojarzenia obrazu profilu). Na poniższej ilustracji przedstawiono odpowiednie punkty końcowe interfejsu API użytkownika i wszystkie wymagane parametry ścieżki, takie jak `id`:
 

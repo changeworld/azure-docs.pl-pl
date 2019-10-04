@@ -15,17 +15,17 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300679"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947899"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debugowanie aplikacji Service Fabric przy użyciu programu Visual Studio
 > [!div class="op_single_selector"]
 > * [Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
-> * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
+> * [Zaćmienie/Java](service-fabric-debugging-your-application-java.md)
 >
 
 
@@ -76,14 +76,10 @@ Jeśli Service Fabric aplikacje są uruchomione w klastrze Service Fabric na pla
 
 > [!NOTE]
 > Ta funkcja wymaga [Service Fabric zestawu sdk 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) i [zestawu Azure SDK dla programu .NET 2,9](https://azure.microsoft.com/downloads/).    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > Debugowanie zdalne jest przeznaczone do scenariuszy deweloperskich i testowych i nie może być używane w środowiskach produkcyjnych, ponieważ ma to wpływ na uruchomione aplikacje.
-> 
-> 
 
 1. Przejdź do klastra w programie **Cloud Explorer**. Kliknij prawym przyciskiem myszy i wybierz polecenie **Włącz debugowanie**
    
@@ -128,8 +124,6 @@ Istnieje również możliwość strumieniowego przesyłania śladów bezpośredn
 > [!WARNING]
 > Ślady przesyłania strumieniowego są przeznaczone dla scenariuszy deweloperskich i testowych i nie mogą być używane w środowiskach produkcyjnych, ponieważ mają wpływ na uruchomione aplikacje.
 > W scenariuszu produkcyjnym należy polegać na zdarzeniach przekazywania przy użyciu Diagnostyka Azure.
-> 
-> 
 
 1. Przejdź do klastra w programie **Cloud Explorer**. Kliknij prawym przyciskiem myszy i wybierz opcję **Włącz śledzenie przesyłania strumieniowego**
    

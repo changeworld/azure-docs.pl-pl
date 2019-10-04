@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: c9ae01b3a8f49b210c363fea20bc3c221d9e837a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839636"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947614"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -51,14 +51,22 @@ W tej sekcji przedstawiono sposób użycia programu PowerShell do tworzenia apli
 >Uprawnienia interfejsu API to pulpity wirtualne systemu Windows, Log Analytics i Microsoft Graph uprawnienia interfejsu API są dodawane do aplikacji Azure Active Directory.
 
 1. Otwórz program PowerShell jako administrator.
-2. Przejdź do [repozytorium usługi RDS — szablony GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) i uruchom skrypt **Create AD App for Diagnostics. ps1** w programie PowerShell.
-3.  Gdy skrypt prosi o podanie nazwy aplikacji, wprowadź unikatową nazwę aplikacji.
-4.  Następnie skrypt będzie prosił o zalogowanie się przy użyciu konta administracyjnego. Wprowadź poświadczenia użytkownika z [dostępem delegowanego administratora](delegated-access-virtual-desktop.md). Administrator powinien mieć uprawnienia właściciela usług pulpitu zdalnego lub współautora.
+2. Zaloguj się do platformy Azure przy użyciu konta, które ma uprawnienia właściciela lub współautora w ramach subskrypcji platformy Azure, której chcesz użyć dla narzędzia diagnostycznego:
+   ```powershell
+   Login-AzAccount
+   ```
+3. Zaloguj się do usługi Azure AD przy użyciu tego samego konta:
+   ```powershell
+   Connect-AzureAD
+   ```
+4. Przejdź do [repozytorium RDS-templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) i uruchom skrypt **CreateADAppRegistrationforDiagnostics. ps1** w programie PowerShell.
+5.  Gdy skrypt prosi o podanie nazwy aplikacji, wprowadź unikatową nazwę aplikacji.
+
 
 Po pomyślnym uruchomieniu skryptu powinny one zawierać następujące elementy w jego danych wyjściowych:
 
 -  Komunikat potwierdzający, że aplikacja ma teraz przypisanie roli głównej usługi.
--  Identyfikator klienta drukowania i klucz tajny klienta, które będą potrzebne do wdrożenia narzędzia diagnostycznego.
+-  Identyfikator klienta i klucz tajny klienta, które będą potrzebne do wdrożenia narzędzia diagnostycznego.
 
 Po zarejestrowaniu aplikacji należy skonfigurować obszar roboczy Log Analytics.
 
@@ -76,7 +84,7 @@ Można uruchomić skrypt programu PowerShell, aby utworzyć obszar roboczy Log A
 Aby uruchomić skrypt programu PowerShell:
 
 1.  Otwórz program PowerShell jako administrator.
-2.  Przejdź do [repozytorium RDS-templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) i uruchom skrypt **Create LogAnalyticsWorkspace for Diagnostics. ps1** w programie PowerShell.
+2.  Przejdź do [repozytorium RDS-templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) i uruchom skrypt **CreateLogAnalyticsWorkspaceforDiagnostics. ps1** w programie PowerShell.
 3. Wprowadź następujące wartości parametrów:
 
     - W polu **ResourceGroupName**wprowadź nazwę grupy zasobów.
@@ -148,7 +156,7 @@ Aby można było wyświetlić kondycję maszyn wirtualnych, należy włączyć L
 2. Przejdź do obszaru roboczego Log Analytics.
 3. W lewym panelu w obszarze źródła danych obszaru roboczego wybierz pozycję **maszyny wirtualne**.
 4. Wybierz nazwę maszyny wirtualnej, z którą chcesz nawiązać połączenie.
-5. Wybierz pozycję **Połącz**.
+5. Wybierz przycisk **Połącz**.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -159,7 +167,7 @@ Aby wdrożyć szablon zarządzania zasobami platformy Azure dla narzędzia Diagn
 
     -   Identyfikator klienta
     -   Klient-klucz tajny
-    -   Identyfikator obszaru roboczego Log Analytics
+    -   Identyfikator obszaru roboczego usługi Log Analytics
 
 3.  Po podaniu parametrów wejściowych Zaakceptuj warunki i postanowienia, a następnie wybierz pozycję **Kup**.
 

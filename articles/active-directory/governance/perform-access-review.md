@@ -15,24 +15,18 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3be5d6eb443d90d3413510576a9609fe43df7caa
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: e51ad8faecd935ea999b1287e542e4b14d55290a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499631"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948238"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przeglądanie dostępu do grup lub aplikacji w przeglądach dostępu do usługi Azure AD
 
 Azure Active Directory (Azure AD) upraszczają, w jaki sposób przedsiębiorstwa zarządzają dostępem do grup i aplikacji w usłudze Azure AD i innych usługach online firmy Microsoft przy użyciu funkcji o nazwie przeglądy dostępu usługi Azure AD.
 
 W tym artykule opisano, w jaki sposób wskazany recenzent wykonuje przegląd dostępu dla członków grupy lub użytkowników mających dostęp do aplikacji.
-
-## <a name="prerequisites"></a>Wymagania wstępne
-
-- Usługa Azure AD — warstwa Premium P2
-
-Aby uzyskać więcej informacji, zobacz, [którzy użytkownicy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="open-the-access-review"></a>Otwórz przegląd dostępu
 
@@ -46,7 +40,7 @@ Pierwszym krokiem do przeprowadzenia przeglądu dostępu jest znalezienie i otwa
 
 Jeśli nie masz wiadomości e-mail, możesz znaleźć oczekujące przeglądy dostępu, wykonując następujące kroki.
 
-1. Zaloguj się do portalu aplikacji w witrynie [https://myapps.microsoft.com](https://myapps.microsoft.com).
+1. Zaloguj się do portalu aplikacji w [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
     ![Portal aplikacji z listą aplikacji, do których masz uprawnienia](./media/perform-access-review/myapps-access-panel.png)
 
@@ -79,7 +73,7 @@ Istnieją dwa sposoby zatwierdzenia lub odmowy dostępu:
 
 1. Aby zatwierdzić lub odmówić dostępu dla jednego użytkownika, kliknij wiersz, aby otworzyć okno, aby określić akcję do wykonania. Aby zatwierdzić lub odmówić dostępu dla wielu użytkowników, należy dodać znaczniki wyboru obok użytkowników, a następnie kliknąć przycisk **Przejrzyj użytkownika X** , aby otworzyć okno, w którym można określić akcję do wykonania.
 
-1. Kliknij  przycisk Zatwierdź lub **Odmów**. Jeśli **nie**masz pewności, możesz kliknąć opcję nieznane. Spowoduje to, że użytkownik będzie utrzymywać dostęp, ale wybór zostanie odzwierciedlony w dziennikach inspekcji.
+1. Kliknij przycisk **Zatwierdź** lub **Odmów**. Jeśli nie masz pewności, możesz kliknąć opcję **nieznane**. Spowoduje to, że użytkownik będzie utrzymywać dostęp, ale wybór zostanie odzwierciedlony w dziennikach inspekcji.
 
     ![Okno akcji, które obejmuje opcje Zatwierdź, Odmów i nieznane](./media/perform-access-review/approve-deny.png)
 

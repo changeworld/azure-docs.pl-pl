@@ -1,21 +1,21 @@
 ---
 title: Limity usługi Azure Digital bliźniaczych reprezentacji w publicznej wersji zapoznawczej | Microsoft Docs
 description: Informacje o limitach usługi Digital bliźniaczych reprezentacji Public Preview.
-author: dwalthermsft
-manager: deshner
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: dwalther
-ms.openlocfilehash: d182a4aea00581b044b5734a5b7d6831f9e55c45
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 10/03/2019
+ms.openlocfilehash: 88a66506b5102a4efaeefe1c7033b337dff9889a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638480"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949241"
 ---
-# <a name="public-preview-service-limits"></a>Limity usługi w publicznej wersji zapoznawczej
+# <a name="public-preview-service-limits"></a>Limity usługi publicznej wersji zapoznawczej
 
 W publicznej wersji zapoznawczej usługa Azure Digital bliźniaczych reprezentacji ma następującą tymczasową subskrypcję, wystąpienie i limity szybkości.
 
@@ -72,6 +72,6 @@ Następujące ograniczenia ograniczają łączną liczbę wszystkich komunikató
 
 - 100 komunikatów na sekundę
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby wypróbować próbkę Digital bliźniaczych reprezentacji na platformie Azure, przejdź do [przewodnika Szybki Start, aby znaleźć dostępne pokoje](./quickstart-view-occupancy-dotnet.md).

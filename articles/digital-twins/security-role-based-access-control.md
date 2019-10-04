@@ -1,19 +1,19 @@
 ---
 title: Informacje na temat kontroli dostępu opartej na rolach — Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Informacje na temat kontroli dostępu opartej na rolach i zarządzania uprawnieniami w usłudze Azure Digital bliźniaczych reprezentacji.
-author: lyrana
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: lyhughes
-ms.openlocfilehash: a5953aab179a62d4a8e37b7f5c7659318628918e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827037"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949020"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Kontrola dostępu oparta na rolach w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -32,7 +32,7 @@ Stopień dostępu może być również dostosowany.
 
 RBAC jest unikatowy w tym, że uprawnienia są dziedziczone jako wykres przestrzenny.
 
-## <a name="what-can-i-do-with-rbac"></a>Co mogę zrobić przy użyciu RBAC?
+## <a name="what-can-i-do-with-rbac"></a>Co można zrobić za pomocą kontroli dostępu opartej na rolach?
 
 Deweloper może używać RBAC, aby:
 
@@ -45,7 +45,7 @@ Deweloper może używać RBAC, aby:
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-rbac-best-practices.md)]
 
-## <a name="roles"></a>Pełnione
+## <a name="roles"></a>Role
 
 ### <a name="role-definitions"></a>Definicje ról
 

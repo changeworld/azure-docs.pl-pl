@@ -1,21 +1,22 @@
 ---
-title: 'Samouczek: Monitorowanie przestrzeni za pomocą usługi Azure Digital Twins | Microsoft Docs'
+title: 'Samouczek: Monitorowanie obszaru za pomocą usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs'
 description: Dowiedz się, jak aprowizować zasoby przestrzenne i monitorować warunki pracy za pomocą usługi Azure Digital Twins, wykonując czynności opisane w tym samouczku.
 services: digital-twins
+ms.author: alinast
 author: alinamstanciu
+manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.author: alinast
-ms.openlocfilehash: bdf37225e815d3848a87b88737daf4b5a5d2560c
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 74e3c46b2b1427c27923ed91846755797b8da690
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300049"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949083"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Samouczek: Zapewnij swoje warunki pracy tworzenia i monitorowania za pomocą usługi Azure Digital bliźniaczych reprezentacji w wersji zapoznawczej
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Samouczek: udostępnianie warunków roboczych tworzenia i monitorowania za pomocą usługi Azure Digital bliźniaczych reprezentacji Preview
 
 W tym samouczku pokazano, jak używać usługi Azure Digital bliźniaczych reprezentacji Preview do monitorowania obszarów pod kątem wymagań dotyczących temperatury i poziomu komfortu. Po [skonfigurowaniu przykładowego budynku](tutorial-facilities-setup.md) możesz zaaprowizować swój budynek i uruchamiać funkcje niestandardowe na danych z czujników, wykonując czynności opisane w tym samouczki.
 
@@ -53,7 +54,7 @@ Dodaj następujący element matcher poniżej istniejących elementów matcher. U
         dataTypeValue: Temperature
 ```
 
-Ten odpowiednik śledzi `SAMPLE_SENSOR_TEMPERATURE` czujnik dodany w [pierwszym samouczku](tutorial-facilities-setup.md). 
+Ten dopasowany element będzie śledził czujnik `SAMPLE_SENSOR_TEMPERATURE` dodany w [pierwszym samouczku](tutorial-facilities-setup.md). 
 
 ## <a name="create-a-user-defined-function"></a>Tworzenie funkcji zdefiniowanej przez użytkownika
 
@@ -91,7 +92,7 @@ Zwróć również uwagę na sekcję o nazwie **roleassignments**. Służy ona do
         });
     ```
 
-    c. Dodaj następujący wiersz po instrukcji definiującej zmienną `var carbonDioxideValue` pod komentarzem `// Add your sensor latest value here`:
+    d. Dodaj następujący wiersz po instrukcji definiującej zmienną `var carbonDioxideValue` pod komentarzem `// Add your sensor latest value here`:
 
     ```JavaScript
         var temperatureValue = getFloatValue(temperatureSensor.Value().Value);
@@ -184,7 +185,7 @@ Zwróć również uwagę na sekcję o nazwie **roleassignments**. Służy ona do
 
 1. Z danych wyjściowych w oknie polecenia skopiuj wartość elementu `ConnectionString` w sekcji `Devices` do schowka. Ta wartość będzie potrzebna do symulowania połączenia urządzenia w następnej sekcji.
 
-    [![Przykład udostępniania](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
+    [@no__t — przykład 1Provision](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Jeśli podczas aprowizowania zostanie wyświetlony komunikat podobny do następującego „Operacja We/Wy została przerwana z powodu zakończenia wątku lub żądania aplikacji”, spróbuj ponownie uruchomić polecenie. Może się to zdarzyć, jeśli klient HTTP przekroczy limit czasu ze względu na problem z siecią.
@@ -205,7 +206,7 @@ W tej sekcji będziesz korzystać z projektu o nazwie *device-connectivity* w ra
 
    a. **DeviceConnectionString**: przypisz wartość `ConnectionString` w oknie danych wyjściowych z poprzedniej sekcji. Skopiuj cały ciąg między cudzysłowami, aby symulator mógł poprawnie nawiązać połączenie z centrum IoT Hub.
 
-   b. **HardwareId** w tablicy **Sensors**: Ponieważ symulowane są zdarzenia z czujników, które są obsługiwane w wystąpieniu usługi Azure Digital bliźniaczych reprezentacji, identyfikator sprzętu i nazwy czujników w tym pliku powinny być zgodne z `sensors` węzłem pliku *provisionSample. YAML* .
+   b. **HardwareId** w tablicy **czujników** : ponieważ symulujesz zdarzenia z czujników, które są obsługiwane w wystąpieniu usługi Azure Digital bliźniaczych reprezentacji, identyfikator sprzętu i nazwy czujników w tym pliku powinny być zgodne z węzłem *`sensors` plik provisionSample. YAML* .
 
       Dodaj nowy wpis dla czujnika temperatury. Węzeł **czujników** w pliku *appSettings. JSON* powinien wyglądać następująco:
 
@@ -245,7 +246,7 @@ Funkcja zdefiniowana przez użytkownika jest uruchamiana za każdym razem, gdy w
 
 W oknie danych wyjściowych będzie widoczne wykonywanie funkcji zdefiniowanej przez użytkownika oraz przechwytywanie zdarzeń z symulacji urządzenia. 
 
-   [![Dane wyjściowe dla UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [![Output dla UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
 W przypadku spełnienia monitorowanego warunku funkcja zdefiniowana przez użytkownika ustawi wartość dla przestrzeni, zwracając odpowiedni komunikat, jak pokazano [wyżej](#create-a-user-defined-function). Funkcja `GetAvailableAndFreshSpaces` wyświetla komunikat w konsoli.
 

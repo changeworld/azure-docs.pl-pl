@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/01/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e7681afe3f5361b17670312c8391349c650a89d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: fd752540d078ef57c8b6150edbf9b124bc445fe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936767"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949333"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -61,7 +61,7 @@ Z listy rozwijanej **Wybierz format identyfikatora nazwy** można wybrać jedną
 
 | Format NameID | Opis |
 |---------------|-------------|
-| **Domyślne** | Usługa Azure AD będzie używać domyślnego formatu źródła. |
+| **Default** | Usługa Azure AD będzie używać domyślnego formatu źródła. |
 | **Trwałe** | Usługa Azure AD będzie używać trwałego formatu NameID. |
 | **EmailAddress** | Usługa Azure AD będzie używać EmailAddress jako formatu NameID. |
 | **Nieokreślony** | Usługa Azure AD będzie używać nieokreślone jako formatu NameID. |
@@ -74,15 +74,29 @@ Wybierz żądane źródło dla żądania `NameIdentifier` (lub NameID). Można w
 
 | Nazwa | Opis |
 |------|-------------|
-| Adres e-mail | Adres e-mail użytkownika |
+| Poczta e-mail | Adres e-mail użytkownika |
 | userprincipalName | Główna nazwa użytkownika (UPN) użytkownika |
 | onpremisessamaccount | Nazwa konta SAM, które zostało zsynchronizowane z lokalnej usługi Azure AD |
 | obiektu | Identyfikator obiektu użytkownika w usłudze Azure AD |
-| employeeid | IDPracownika użytkownika |
+| IDPracownika | IDPracownika użytkownika |
 | Rozszerzenia katalogów | Rozszerzenia katalogu [zsynchronizowane z Active Directory lokalnego przy użyciu synchronizacji Azure AD Connect](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Atrybuty rozszerzenia 1-15 | Atrybuty rozszerzenia lokalnego używane do rozszerzania schematu usługi Azure AD |
 
 Aby uzyskać więcej informacji, zobacz [tabela 3: prawidłowe wartości identyfikatorów na źródło](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
+
+Możesz również przypisać dowolną stałą (statyczną) wartość do wszelkich oświadczeń zdefiniowanych w usłudze Azure AD. Postępuj zgodnie z poniższymi instrukcjami, aby przypisać stałą wartość:
+
+1. W [Azure Portal](https://portal.azure.com/), w sekcji **atrybuty użytkownika & oświadczenia** , kliknij ikonę **Edytuj** , aby edytować oświadczenia.
+
+1. Kliknij wymagane żądanie, które chcesz zmodyfikować.
+
+1. Wprowadź wartość stałą w **atrybucie Source** zgodnie z Twoją organizacją, a następnie kliknij przycisk **Zapisz**.
+
+    ![Otwórz sekcję atrybuty użytkownika & oświadczenia w Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
+
+1. Wartość stała zostanie wyświetlona w następujący sposób.
+
+    ![Otwórz sekcję atrybuty użytkownika & oświadczenia w Azure Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Specjalne oświadczenia — przekształcenia
 

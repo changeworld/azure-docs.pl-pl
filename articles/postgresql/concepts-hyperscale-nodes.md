@@ -1,28 +1,28 @@
 ---
-title: Węzły w usłudze Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
-description: Dwa typy węzłów w grupy serwerów.
+title: Węzły w Azure Database for PostgreSQL — Citus (wersja zapoznawcza)
+description: Zapoznaj się z dwoma typami węzłów, koordynatorem i pracownikami w grupie serwerów w Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: c6b948ed63f43f1597103d123be5ed39f42bd276
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 097fcdb3a7e53bb63db9dc2d352d754062df7be6
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077278"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947551"
 ---
-# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Węzły w usłudze Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
+# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Węzły w Azure Database for PostgreSQL — Citus (wersja zapoznawcza)
 
-Hiperskali (Citus) (wersja zapoznawcza), typ hostingu umożliwia — Azure Database dla serwerów MySQL (nazywane węzłami) koordynują się ze sobą w architekturze "bez udostępniania". Węzły w grupie serwerów zbiorczo przechowywać więcej danych i używać więcej rdzeni procesora CPU nie byłoby możliwe na jednym serwerze. Architektura umożliwia również bazy danych skalować, dodając więcej węzłów do grupy serwerów.
+Typ hostingu Citus (wersja zapoznawcza) umożliwia Azure Database for PostgreSQL serwerów (nazywanych węzłami) do współrzędnych ze sobą w architekturze "udostępniona Nothing". Węzły w grupie serwerów wspólnie przechowują więcej danych i wykorzystują więcej rdzeni procesora CPU niż jest to możliwe na jednym serwerze. Architektura umożliwia również skalowanie bazy danych przez dodanie większej liczby węzłów do grupy serwerów.
 
-## <a name="coordinator-and-workers"></a>Koordynator i procesów roboczych
+## <a name="coordinator-and-workers"></a>Koordynator i procesy robocze
 
-Każda grupa serwera ma węzeł koordynatora i wielu procesów roboczych. Aplikacje wysłać ich zapytań do węzła koordynatora, który przekazuje je do odpowiednich pracowników i gromadzi ich wyniki. Aplikacje nie są mogli połączyć się bezpośrednio z procesów roboczych.
+Każda grupa serwerów ma węzeł koordynatora i wielu procesów roboczych. Aplikacje wysyłają swoje zapytania do węzła koordynatora, który przekazuje go do odpowiednich pracowników i gromadzi wyniki. Aplikacje nie mogą łączyć się bezpośrednio z pracownikami.
 
-Dla każdego zapytania koordynator kieruje je do węzła pojedynczego procesu roboczego albo parallelizes go dla kilku w zależności od tego, czy wymagane dane są przechowywane w jednym węźle lub wielu. Koordynator decyduje, co należy zrobić, sprawdzając tabel metadanych. Te tabele śledzenia nazwy DNS i kondycję węzłów procesu roboczego oraz rozkład danych między węzłami.
+Dla każdego zapytania koordynator kieruje go do jednego węzła procesu roboczego lub parallelizes go w kilka w zależności od tego, czy wymagane dane znajdują się na pojedynczym lub wielu węzłach. Koordynator decyduje o tym, co należy zrobić, aby poznać tabele metadanych. Te tabele śledzą nazwy DNS i kondycję węzłów procesu roboczego oraz dystrybucję danych między węzłami.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak przechowywać węzłów [rozproszonych danych](concepts-hyperscale-distributed-data.md)
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się, jak węzły przechowują [rozproszone dane](concepts-hyperscale-distributed-data.md)

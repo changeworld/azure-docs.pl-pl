@@ -50,7 +50,8 @@
     - name: Pobieranie popularnych wideo
       href: trending-videos.md
     - name: Dzielenie wyników wyszukiwania wideo na strony
-      href: paging-videos.md
+      maintainContext: true
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Zmiana rozmiaru i przycinanie miniatur
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

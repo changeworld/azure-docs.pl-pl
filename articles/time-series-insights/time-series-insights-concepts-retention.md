@@ -9,20 +9,20 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5388b157ebea78a69355eb745492910f260be3ad
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5799974581ba74d3265f0a5a66f9b081ded9f800
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823649"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948208"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Informacje o przechowywaniu danych w Azure Time Series Insights
 
 W tym artykule opisano dwa ustawienia, które mają wpływ na przechowywanie danych w środowisku Azure Time Series Insightsu.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 ### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Poniższe wideo podsumowuje Time Series Insights przechowywanie danych i sposób ich planowania.</br>
 
@@ -32,7 +32,7 @@ Każde środowisko Azure Time Series ma ustawienie kontrolujące **czas przechow
 
 Ponadto środowisko szeregów czasowych platformy Azure ma ustawienie **zachowania przekroczenia limitu magazynu** . Steruje zachowaniem ruchu przychodzącego i przeczyszczania, gdy osiągnięto maksymalną pojemność środowiska. Podczas konfigurowania go można wybrać dwa zachowania:
 
-- **Przeczyść stare dane** wartooć  
+- **Przeczyść stare dane** (ustawienie domyślne)  
 - **Wstrzymaj ruch przychodzący**
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Porównaj zachowanie podczas przechowywania danych:
 
 - To zachowanie jest zachowaniem domyślnym dla środowisk Time Series Insights.  
 - Takie zachowanie jest preferowane, gdy użytkownicy chcą zawsze zobaczyć *najnowsze dane* w środowisku Time Series Insights.
-- To zachowanie powoduje przeczyszczenie danych po osiągnięciu limitów środowiska (czasu przechowywania, rozmiaru lub liczby, zależnie od tego, co nastąpi wcześniej). Wartość przechowywania jest domyślnie ustawiona na 30 dni.
+- To zachowanie powoduje *przeczyszczenie* danych po osiągnięciu limitów środowiska (czasu przechowywania, rozmiaru lub liczby, zależnie od tego, co nastąpi wcześniej). Wartość przechowywania jest domyślnie ustawiona na 30 dni.
 - Najstarsze dane pozyskiwane są czyszczone jako pierwsze (podejście FIFO).
 
 ### <a name="example-one"></a>Przykład jeden
@@ -75,9 +75,9 @@ Za każdym razem, gdy dzienny wskaźnik transferu danych w danym środowisku prz
 
 ### <a name="example-three"></a>Przykład trzy
 
-Rozważ użycie środowiska z zachowaniem zachowania, które **zostało**skonfigurowane w celu wstrzymania transferu danych przychodzących. W tym przykładzie **okres przechowywania danych** jest skonfigurowany na 60 dni. **Pojemność** jest ustawiona na trzy (3) jednostki warstwy S1. Załóżmy, że to środowisko obejmuje dane z 2 GB danych każdego dnia. W tym środowisku ruch przychodzący jest wstrzymywany po osiągnięciu maksymalnej wydajności.
+Rozważ użycie środowiska z zachowaniem zachowania, które zostało skonfigurowane w celu **wstrzymania**transferu danych przychodzących. W tym przykładzie **okres przechowywania danych** jest skonfigurowany na 60 dni. **Pojemność** jest ustawiona na trzy (3) jednostki warstwy S1. Załóżmy, że to środowisko obejmuje dane z 2 GB danych każdego dnia. W tym środowisku ruch przychodzący jest wstrzymywany po osiągnięciu maksymalnej wydajności.
 
-W tym czasie środowisko pokazuje ten sam zestaw danych do momentu wznowienia transferu lub do momentu włączenia operacji transferu danych przychodzących (dzięki czemu można przeczyścić starsze dane, aby zwolnić miejsce na nowe dane).
+W tym czasie środowisko pokazuje ten sam zestaw danych do momentu wznowienia transferu lub **do momentu** włączenia operacji transferu danych przychodzących (dzięki czemu można przeczyścić starsze dane, aby zwolnić miejsce na nowe dane).
 
 Po wznowieniu transferu danych przychodzących:
 
@@ -89,9 +89,9 @@ Po wznowieniu transferu danych przychodzących:
 
 W Event Hubs, których dotyczy problem, Rozważ zmianę właściwości **przechowywania wiadomości** , aby zminimalizować utratę danych podczas wstrzymania ruchu przychodzącego w Time Series Insights.
 
-[![Przechowywanie komunikatu centrum zdarzeń.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[@no__t — przechowywanie komunikatów w centrum 1Event.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Jeśli nie skonfigurowano żadnych właściwości dla źródła zdarzeń`timeStampPropertyName`(), Time Series Insights domyślną sygnatura czasowa przybycia w centrum zdarzeń jako oś X. Jeśli `timeStampPropertyName` jest skonfigurowany jako inny, środowisko szuka skonfigurowanej `timeStampPropertyName` w pakiecie danych, gdy zdarzenia są analizowane.
+Jeśli nie skonfigurowano żadnych właściwości dla źródła zdarzeń (`timeStampPropertyName`), Time Series Insights domyślnie do sygnatury czasowej przybycia w centrum zdarzeń jako oś X. Jeśli `timeStampPropertyName` jest skonfigurowany jako coś innego, środowisko szuka skonfigurowanego `timeStampPropertyName` w pakiecie danych podczas analizowania zdarzeń.
 
 Jeśli konieczne jest skalowanie środowiska w celu uwzględnienia dodatkowej pojemności lub zwiększenia długości przechowywania, zobacz [Jak skalować środowisko Time Series Insights](time-series-insights-how-to-scale-your-environment.md) , aby uzyskać więcej informacji.  
 

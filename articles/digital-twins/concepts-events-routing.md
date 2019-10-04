@@ -1,19 +1,19 @@
 ---
-title: Routing zdarzeń i komunikatów za pomocą usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+title: Zdarzenia i komunikaty routingu — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs
 description: Omówienie zdarzeń routingu i komunikatów do punktów końcowych usługi przy użyciu usługi Azure Digital bliźniaczych reprezentacji
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177084"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949261"
 ---
 # <a name="routing-events-and-messages"></a>Routing zdarzeń i komunikatów
 
@@ -23,13 +23,13 @@ Rozwiązania IoT często łączą kilka zaawansowanych usług, które obejmują 
 
 Usługa Azure Digital bliźniaczych reprezentacji oferuje dwa sposoby łączenia zdarzeń IoT z innymi usługami platformy Azure lub aplikacjami biznesowymi:
 
-* **Routing zdarzeń usługi Azure Digital bliźniaczych reprezentacji**: Obiekt w grafie przestrzennym, który zmienia, odebrane dane telemetryczne lub funkcja zdefiniowana przez użytkownika, która tworzy powiadomienie na podstawie wstępnie zdefiniowanych warunków, może wyzwalać zdarzenia usługi Azure Digital bliźniaczych reprezentacji. Użytkownicy mogą wysyłać te zdarzenia do [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [tematów Azure Service Bus](https://azure.microsoft.com/services/service-bus/)lub [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do dalszej obróbki.
+* **Routing zdarzeń usługi Azure Digital bliźniaczych reprezentacji**: obiekt w grafie przestrzennym, który zmienia, odebrane dane telemetryczne lub funkcja zdefiniowana przez użytkownika, która tworzy powiadomienie na podstawie wstępnie zdefiniowanych warunków, może wyzwalać zdarzenia usługi Azure Digital bliźniaczych reprezentacji. Użytkownicy mogą wysyłać te zdarzenia do [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [tematów Azure Service Bus](https://azure.microsoft.com/services/service-bus/)lub [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do dalszej obróbki.
 
-* **Telemetrię urządzenia routingu**: Oprócz zdarzeń routingu usługa Azure Digital bliźniaczych reprezentacji może również kierować komunikaty telemetryczne z nieprzetworzonych urządzeń do Event Hubs w celu uzyskania dalszych szczegółowych informacji i analizy. Te typy komunikatów nie są przetwarzane przez usługę Azure Digital bliźniaczych reprezentacji. Są one przekazywane tylko do centrum zdarzeń.
+* **Routing danych telemetrycznych urządzeń**: oprócz zdarzeń routingu usługa Azure Digital bliźniaczych reprezentacji może również kierować komunikaty telemetryczne z nieprzetworzonych urządzeń do Event Hubs w celu uzyskania dalszych szczegółowych informacji i analizy. Te typy komunikatów nie są przetwarzane przez usługę Azure Digital bliźniaczych reprezentacji. Są one przekazywane tylko do centrum zdarzeń.
 
 Użytkownicy mogą określać jeden lub więcej punktów końcowych ruchu wychodzącego w celu wysyłania zdarzeń lub przesyłania dalej komunikatów. Zdarzenia i komunikaty będą wysyłane do punktów końcowych zgodnie z tymi wstępnie zdefiniowanymi preferencjami routingu. Innymi słowy użytkownicy mogą określić określony punkt końcowy do odbierania zdarzeń operacji wykresu, drugi do odbierania zdarzeń telemetrii urządzenia itd.
 
-[![Routing zdarzeń usługi Azure Digital bliźniaczych reprezentacji](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
+[Routing zdarzeń 1Azure Digital bliźniaczych reprezentacjis @no__t](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
 Routing do Event Hubs zachowuje kolejność, w której wysyłane są komunikaty telemetryczne. Tak więc docierają do punktu końcowego w tej samej kolejności, w jakiej zostały pierwotnie odebrane. Event Grid i Service Bus nie gwarantuje, że punkty końcowe będą odbierać zdarzenia w takiej samej kolejności, w jakiej wystąpiły. Jednak schemat zdarzenia zawiera sygnaturę czasową, która może służyć do identyfikowania kolejności po nadejściu zdarzeń w punkcie końcowym.
 

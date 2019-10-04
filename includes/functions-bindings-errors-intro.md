@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: f771b6b0416c5777c1ebde7e2cf2c4ffc6f375ff
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 178fa7d5f129a12736ec068fca605ba24cd37839
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155296"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955873"
 ---
 Błędy wywoływane w Azure Functions mogą pochodzić z jednego z następujących źródeł:
 
@@ -23,7 +23,7 @@ Po zastosowaniu stałych praktyk obsługi błędów ważne jest, aby uniknąć u
 - [Włącz Application Insights](../articles/azure-functions/functions-monitoring.md)
 - [Użyj strukturalnej obsługi błędów](#use-structured-error-handling)
 - [Projektuj dla idempotentności](../articles/azure-functions/functions-idempotent.md)
-- Zaimplementuj zasady ponawiania (w razie potrzeby)
+- [Zaimplementuj zasady ponawiania](../articles/azure-functions/functions-reliable-event-processing.md) (w razie potrzeby)
 
 ### <a name="use-structured-error-handling"></a>Użyj strukturalnej obsługi błędów
 
@@ -33,7 +33,7 @@ Błędy przechwytywania i publikowania mają kluczowe znaczenie dla monitorowani
 
 Następujące wyzwalacze obsługują wbudowaną ponowną próbę:
 
-* [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
+* [Magazyn obiektów blob platformy Azure](../articles/azure-functions/functions-bindings-storage-blob.md)
 * [Usługa Azure queue storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (Kolejka/temat)](../articles/azure-functions/functions-bindings-service-bus.md)
 
