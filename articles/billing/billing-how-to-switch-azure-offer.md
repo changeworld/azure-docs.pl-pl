@@ -9,20 +9,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 8e87bcb9f7d05fd5041623693c96f8c737758c32
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e382b4bf12b53573f3506474837093456f9b84c6
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490983"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709635"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Zmienianie subskrypcji platformy Azure na inną ofertę
 
 Jako klient z [indywidualną subskrypcją z płatnością zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/) możesz przełączyć swoją subskrypcję platformy Azure na inną ofertę w [Centrum konta](https://account.windowsazure.com/Subscriptions). Na przykład możesz użyć tej funkcji, aby skorzystać z [miesięcznych środków dla subskrybentów programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
-**Chcesz tylko podwyższyć poziom z bezpłatnej wersji próbnej?** Zobacz [podwyższenie poziomu subskrypcji](billing-upgrade-azure-subscription.md).
+**Chcesz tylko podwyższyć poziom z bezpłatnej wersji próbnej?** Zobacz [Podwyższanie poziomu subskrypcji](billing-upgrade-azure-subscription.md).
 
 ## <a name="whats-supported"></a>Jakie operacje są obsługiwane:
 
@@ -101,7 +101,7 @@ Po przełączeniu ofert wszystkie [limity lub limity przydziału wykraczające p
 
 W dniu przełączenia ofert zostanie wygenerowana faktura na wszystkie zaległe opłaty. Od tego momentu Twoja subskrypcja jest rozliczana według warunków cenowych nowej oferty. Rocznica rozliczenia Twojej subskrypcji zmieni się na datę, kiedy zostały zmienione oferty. Dane dotyczące użycia i rozliczeń przed zmianą oferty nie zostaną zachowane, dlatego zalecamy pobranie ich kopii przed przełączeniem.
 
-### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Czy mogę przeprowadzić migrację z subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem do programu [Cloud Solution Provider](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) lub umowy [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA)?
+### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Czy mogę przeprowadzić migrację z subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem do programu Cloud Solution Provider (CSP) lub umowy Enterprise Agreement (EA)?
 
 * Aby przeprowadzić migrację do programu CSP, zobacz [Migracja subskrypcji z płatnością zgodnie z rzeczywistym użyciem do programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
 * Aby przeprowadzić migrację do umowy EA, poproś administratora rejestracji o dodanie Twojego konta do umowy EA. Postępuj zgodnie z instrukcjami w wiadomości e-mail z zaproszeniem, aby przenieść swoje subskrypcje do rejestracji w ramach umowy EA. Aby dowiedzieć się więcej, zobacz [Kojarzenie istniejącego konta](https://ea.azure.com/helpdocs/associateExistingAccount) w witrynie EA Portal.

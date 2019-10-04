@@ -4,16 +4,16 @@ description: W tym artykule opisano typowe zadania wykonywane przez administrato
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 09/25/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 236a8d6d280e75102df84fec5ab3df51f7ba355b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105483"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308106"
 ---
 # <a name="azure-ea-portal-administration"></a>Administracja przy użyciu witryny Azure EA Portal
 
@@ -31,7 +31,7 @@ Gdy nowi właściciele konta są po raz pierwszy dodawani do rejestracji w ramac
 
 Po utworzeniu działu przez administratora portalu Azure EA administrator oferty Azure Enterprise może dodać administratorów działu i skojarzyć ich z działem. Administrator działu może tworzyć nowe konta. Nowe konta są potrzebne do tworzenia subskrypcji portalu Azure EA.
 
-Aby uzyskać więcej informacji na temat dodawania działu, zobacz temat dotyczący tworzenia działu w portalu Azure EA.
+Aby uzyskać więcej informacji o dodawaniu administratora działu, zobacz [Tworzenie administratora działu w portalu Azure EA](billing-ea-portal-get-started.md#add-a-department-admin).
 
 ## <a name="enterprise-user-roles"></a>Role użytkownika przedsiębiorstwa
 
@@ -124,14 +124,14 @@ Podczas przenoszenia konta nie występują przestoje. Można je wykonać w tym s
 
 Po zażądaniu przeniesienia rejestracji podaj następujące informacje:
 
-- W przypadku rejestracji źródłowej numer rejestracji i konto do przeniesienia
-- W przypadku rejestracji docelowej numer rejestracji, do której nastąpi przeniesienie
+- W przypadku rejestracji źródłowej numer rejestracji i konto do przeniesienia.
+- W przypadku rejestracji docelowej numer rejestracji, do której nastąpi przeniesienie.
 - W przypadku daty obowiązywania przeniesienia rejestracji może to być data początkowa rejestracji docelowej lub późniejsza. Wybrana data nie może wpływać na użycie dla żadnej wystawionej już faktury nadwyżkowej.
 
 Inne zagadnienia, które należy wziąć pod uwagę przed przeniesieniem rejestracji:
 
-- Zatwierdzenie od administratora umowy EA jest wymagane w przypadku rejestracji docelowej i źródłowej
-  - W niektórych przypadkach firma Microsoft może zażądać dodatkowego zatwierdzenia od administratora umowy EA z rejestracji źródłowej
+- Zatwierdzenie od administratora umowy EA jest wymagane w przypadku rejestracji docelowej i źródłowej.
+  - W niektórych przypadkach firma Microsoft może zażądać dodatkowego zatwierdzenia od administratora umowy EA z rejestracji źródłowej.
 - Jeśli przeniesienie rezerwacji nie spełnia Twoich wymagań, rozważ przeniesienie konta.
 - Tylko wybrane przez Ciebie konta są przenoszone. Możesz poprosić o przeniesienie wszystkich kont.
 - Rejestracja źródłowa zachowuje stan jako aktywny/rozszerzony. Z rejestracji można korzystać do momentu jej wygaśnięcia.
@@ -208,7 +208,7 @@ Jeśli użytkownik nie otrzymuje powiadomienia, sprawdź, czy ustawienia powiado
 6. W razie potrzeby dodaj kontakt, a następnie kliknij przycisk **Dodaj**.
 7. Kliknij pozycję **Zapisz**.
 
-![Przykład pokazujący dodawanie kontaktu ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
+![Przykład pokazujący okno dodawania kontaktu ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Oferta dostępu sponsorowanego Azure
 Oferta dostępu sponsorowanego Azure to ograniczone, sponsorowane konto platformy Microsoft Azure. Jest ono dostępne tylko na zaproszenie e-mail dla ograniczonej liczby klientów wybranych przez firmę Microsoft. Jeśli masz upoważnienie do oferty dostępu sponsorowanego Microsoft Azure, otrzymasz zaproszenie e-mail oferty dla Twojego identyfikatora konta.

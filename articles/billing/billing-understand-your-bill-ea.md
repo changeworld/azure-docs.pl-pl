@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f89d7935af10ebb477125c598a01278a4ceef0bd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490281"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326942"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Omówienie rachunku za umowę Enterprise platformy Azure
 
@@ -28,7 +28,7 @@ Klienci mający umowę Enterprise platformy Azure otrzymują fakturę w przypadk
 
 Ta sekcja nie dotyczy klientów platformy Azure w Australii, Japonii i Singapurze. Jeśli znajdujesz się w jednym z tych krajów/regionów, zobacz [Faktury dla pozostałych klientów](#invoices-for-other-customers).
 
-Otrzymasz fakturę za korzystanie z platformy Azure, jeśli w okresie rozliczeniowym nastąpi jedno z poniższych zdarzeń:
+Otrzymasz fakturę za korzystanie z platformy Azure, jeśli w okresie rozliczeniowym nastąpi dowolne z poniższych zdarzeń:
 
 - **Nadwyżkowe użycie usług**: Opłaty za użycie w organizacji przekraczają saldo dostępnych środków.
 - **Opłaty rozliczane oddzielnie**: Niektóre usługi używane przez organizację nie są pokrywane z dostępnych środków. Niezależnie od salda środków otrzymasz faktury za następujące usługi:
@@ -54,7 +54,7 @@ Na fakturze wykazane jest całe użycie platformy Azure, a następnie wszelkie o
 
 Możesz porównać łączną kwotę widoczną w obszarze **Raporty** > **Podsumowanie użycia** w witrynie Enterprise Portal z kwotą na fakturze za platformę Azure. Kwoty w raporcie **Podsumowanie użycia** nie zawierają podatku.
 
-1. Zaloguj się w witrynie [Enterprise Portal](https://ea.azure.com).
+1. Zaloguj się do [witryny Enterprise Portal](https://ea.azure.com).
 1. Wybierz pozycję **Raporty**.
 1. W prawym górnym rogu karty przełącz widok z **M** na **C** i dopasuj okres na fakturze.  
     ![Zrzut ekranu przedstawiający opcje M i C w raporcie Podsumowanie użycia.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
@@ -66,10 +66,10 @@ Możesz porównać łączną kwotę widoczną w obszarze **Raporty** > **Podsumo
 
 Ta sekcja dotyczy tylko klientów platformy Azure w Australii, Japonii lub Singapurze.
 
-Otrzymasz co najmniej jedną fakturę za korzystanie z platformy Azure, jeśli nastąpi jedno z poniższych zdarzeń:
+Otrzymasz co najmniej jedną fakturę za korzystanie z platformy Azure, jeśli nastąpi dowolne z poniższych zdarzeń:
 
 - **Nadwyżkowe użycie usług**: Opłaty za użycie w organizacji przekraczają saldo dostępnych środków.
-- **Opłaty rozliczane oddzielnie**: Niektóre usługi używane przez organizację nie są pokrywane z dostępnych środków. Niezależnie od salda środków otrzymasz faktury za następujące usługi:
+- **Opłaty rozliczane oddzielnie**: Niektóre usługi używane przez organizację nie są pokrywane z dostępnych środków. Otrzymasz fakturę za następujące usługi:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop

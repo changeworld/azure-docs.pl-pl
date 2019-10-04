@@ -220,6 +220,8 @@
               href: connect-environment-lab-virtual-network.md
             - name: Konfigurowanie środowisk testowych przy użyciu szablonów zagnieżdżonych
               href: deploy-nested-template-environments.md
+            - name: Używanie tożsamości zarządzanych przez platformę Azure do wdrażania środowisk
+              href: use-managed-identities-environments.md
         - name: Zarządzanie szablonami wielokrotnego użytku
           items:
             - name: Obrazy niestandardowe a formuły
