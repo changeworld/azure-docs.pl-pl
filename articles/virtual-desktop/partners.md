@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673022"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937500"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -33,9 +33,9 @@ Firma Citrix rozszerza wartość pulpitu wirtualnego systemu Windows z niezawodn
 
 ![Logo VMware](./media/partners/vmware.png)
 
-Usługa VMware Horizon Cloud w Microsoft Azure zapewnia organizacjom możliwość łączenia własnych wystąpień Microsoft Azure z prostą, intuicyjną płaszczyzną kontroli w chmurze, tworząc bezpieczną, kompleksową, hostowaną w chmurze rozwiązanie do dostarczania zwirtualizowanych Aplikacje i pulpity systemu Windows. Wraz z wydaniem pulpitu wirtualnego systemu Windows program VMware współpracujący z firmą Microsoft w celu zwiększenia funkcjonalności pulpitu wirtualnego systemu Windows do klientów korzystających z usługi Horizon w chmurze w Microsoft Azure.
-
-Jako zatwierdzony dostawca usługa VMware Horizon Cloud na Microsoft Azure klienci uzyskuje wszystkie korzyści z używania pulpitu wirtualnego systemu Windows, takiego jak Windows 10 Enterprise dla wielu sesji, system Windows 7 z bezpłatnymi rozszerzonymi aktualizacjami zabezpieczeń na maksymalnie trzy lata i FSLogix możliwości, oprócz wszystkich nowoczesnych funkcji klasy korporacyjnej w chmurze, takich jak szeroka obsługa punktów końcowych; globalne, zoptymalizowane pod kątem chmury, elastyczne opcje i konfiguracje pulpitu, zarządzanie środowiskiem użytkownika oraz obsługa środowisk hybrydowych. 
+Usługa VMware Horizon Cloud w Microsoft Azure zapewnia organizacjom możliwość łączenia własnych wystąpień Microsoft Azure z prostą, intuicyjną płaszczyzną kontroli w chmurze, tworząc bezpieczną, kompleksową, hostowaną w chmurze rozwiązanie do dostarczania zwirtualizowanych Aplikacje i pulpity systemu Windows. Wraz z wydaniem pulpitu wirtualnego systemu Windows program VMware współpracujący z firmą Microsoft w celu zwiększenia funkcjonalności pulpitu wirtualnego systemu Windows do klientów korzystających z usługi Horizon w chmurze w Microsoft Azure. Ta funkcja będzie dostępna w wersji zapoznawczej Tech Preview do końca 2019.
+ 
+Jako zatwierdzony dostawca korzyści z pulpitu wirtualnego systemu Windows zostaną rozszerzone na chmurę programu VMware Horizon na Microsoft Azure klientach, w tym Windows 10 Enterprise dla wielu sesji, system Windows 7 z bezpłatnymi rozszerzonymi aktualizacjami zabezpieczeń na maksymalnie trzy lata. FSLogix. Ponadto klienci otrzymają funkcje klasy korporacyjnej w chmurze horyzontu, takie jak Obsługa szerokiego punktu końcowego. globalne, zoptymalizowane w chmurze brokering; elastyczne opcje i konfiguracje pulpitu; Zarządzanie środowiskiem użytkownika; i Obsługa środowisk hybrydowych.
 
 - [Zarejestruj się w celu uzyskania wersji zapoznawczej chmury horyzontowej w Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Przejdź do witryny sieci Web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
@@ -93,7 +93,7 @@ Nerdio to platforma automatyzacji IT platformy Azure, która ułatwia wdrażanie
 Nerdio rozszerza wartość pulpitu wirtualnego systemu Windows, co ułatwia Inicjowanie obsługi zasobów platformy Azure i usprawnienie wdrażania. Program Nerdio for Azure umożliwia automatyczne wdrażanie i zarządzanie kompletnym środowiskiem platformy Azure, w tym pulpitem wirtualnym systemu Windows, w ciągu dwóch godzin.
 
 - [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
-- [Przejdź do witryny sieci Web partnera](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/).
+- [Przejdź do witryny sieci Web partnera](https://getnerdio.com/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>ThinPrint
 

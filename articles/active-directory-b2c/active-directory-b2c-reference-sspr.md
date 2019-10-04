@@ -1,6 +1,6 @@
 ---
-title: Samoobsługowe resetowanie haseł w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Pokazuje, jak skonfigurować samoobsługowe resetowanie haseł dla klientów w usłudze Azure Active Directory B2C
+title: Samoobsługowe resetowanie haseł w Azure Active Directory B2C | Microsoft Docs
+description: Pokazuje, jak skonfigurować Samoobsługowe resetowanie haseł dla klientów w Azure Active Directory B2C
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,33 +10,34 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e8137bc0e75595b5f548584bb2d1644de2e0fecd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7903ec669772c3a3858a9c1d514ab3e6de6a2bd4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508924"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936834"
 ---
-# <a name="set-up-self-service-password-reset-for-your-customers"></a>Konfigurowanie samoobsługowego resetowania haseł dla swoich klientów
+# <a name="set-up-self-service-password-reset-for-your-customers"></a>Konfigurowanie samoobsługowego resetowania haseł dla klientów
 
-Korzystając z funkcji resetowania haseł klientów, którzy utworzyli konto dla kont lokalnych mogą resetować swoje hasła, samodzielnie. Pozwala to znacznie ograniczyć obciążenie z personelem pomocy technicznej, zwłaszcza, jeśli aplikacja ma miliony klientów przy użyciu go w regularnych odstępach czasu. Obecnie korzystanie ze zweryfikowanym adresem e-mail jest metoda tylko obsługiwane odzyskiwania.
+Dzięki funkcji samoobsługowego resetowania hasła Klienci, którzy zarejestrowali się do kont lokalnych, mogą samodzielnie resetować swoje hasła. Znacznie zmniejsza to obciążenie personelu pomocy technicznej, zwłaszcza jeśli aplikacja ma miliony klientów regularnie korzystających z nich. Obecnie przy użyciu zweryfikowanego adresu e-mail jest jedyną obsługiwaną metodą odzyskiwania.
 
 > [!NOTE]
-> Ten artykuł dotyczy haseł resetowania używane w kontekście V1 **Zaloguj** przepływ użytkownika, który używa **logowanie za pomocą konta lokalnego** jako dostawcy tożsamości. Jeśli potrzebujesz przepływy użytkownika resetowania hasła w pełni dostosowywalnych wywoływane z poziomu aplikacji, zobacz [w tym artykule](active-directory-b2c-reference-policies.md).
+> Ten artykuł ma zastosowanie do funkcji samoobsługowego resetowania hasła używanej w kontekście usługi przepływu użytkowników **logowania** w wersji 1, która używa **konta lokalnego logowania** jako dostawcy tożsamości. Jeśli chcesz w pełni dostosowywalne przepływy użytkownika resetowania haseł wywoływane z poziomu aplikacji, zobacz [ten artykuł](active-directory-b2c-reference-policies.md).
 > 
 > 
 
-Domyślnie katalogu nie ma hasła Samoobsługowe resetowanie jest włączona. Aby włączyć tę funkcję, wykonaj następujące kroki:
+Domyślnie katalog nie ma włączonej funkcji samoobsługowego resetowania hasła. Wykonaj następujące kroki, aby je włączyć:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako Administrator subskrypcji. Jest to ten sam pracy lub konta służbowego lub tego samego konta Microsoft, który został użyty do utworzenia katalogu.
-2. Otwórz **usługi Azure Active Directory** (na pasku nawigacyjnym po lewej stronie).
-4. Ustaw **samodzielnie resetowania hasła włączone** do **wszystkich**. 
-5. Kliknij przycisk **Zapisz** w górnej części strony. Gotowe!
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako administrator subskrypcji. To samo konto służbowe lub szkolne konto Microsoft, które zostało użyte do utworzenia katalogu.
+2. Otwórz **Azure Active Directory** (na pasku nawigacyjnym po lewej stronie).
+3. Przewiń w dół w bloku opcje i wybierz pozycję **Resetowanie hasła**.
+4. Ustaw funkcję samoobsługowego **resetowania hasła** na **wszystkie**. 
+5. Kliknij przycisk **Zapisz** w górnej części strony. Wszystko gotowe!
 
-Aby przetestować, funkcja "Uruchom teraz" na dowolnym przepływu logowania użytkownika, który zawiera konta lokalnego jako dostawcy tożsamości. Na logowanie lokalne konto stronie (którym możesz wprowadzić adres e-mail i hasło, lub nazwę użytkownika i hasło), kliknij **nie może uzyskać dostępu do konta?** zweryfikowanie środowiska klienta.
+Aby przetestować, użyj funkcji "Uruchom teraz" w dowolnym przepływie użytkownika logowania, który ma konta lokalne jako dostawcę tożsamości. Na stronie logowania do konta lokalnego (w przypadku wprowadzenia adresu e-mail i hasła lub nazwy użytkownika i hasła) kliknij pozycję **nie można uzyskać dostępu do konta?** , aby zweryfikować środowisko klienta.
 
 > [!NOTE]
-> Strony resetowania haseł, które można dostosować za pomocą [funkcji znakowania firmowego](../active-directory/fundamentals/customize-branding.md).
+> Strony samoobsługowego resetowania hasła można dostosować przy użyciu [funkcji znakowania firmowego](../active-directory/fundamentals/customize-branding.md).
 > 
 > 
 

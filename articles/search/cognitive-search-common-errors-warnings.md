@@ -9,25 +9,24 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: abmotley
-ms.subservice: cognitive-search
-ms.openlocfilehash: 62dd3440deaf31f3739ad5d8fde1d8b54a20197e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: HT
+ms.openlocfilehash: 18befbfb924129518ac32a7fdddaa9ee573840b0
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828264"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936486"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Typowe błędy i ostrzeżenia dotyczące potoku wzbogacenia AI w Azure Search
 
 Ten artykuł zawiera informacje i rozwiązania typowych błędów i ostrzeżeń, które mogą wystąpić podczas wzbogacania AI w Azure Search.
 
-## <a name="errors"></a>błędy
+## <a name="errors"></a>Błędy
 Indeksowanie jest przerywane, gdy licznik błędów przekracza wartość ["maxfaileditems"](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). Poniższe sekcje mogą pomóc w rozwiązywaniu problemów, co umożliwia kontynuowanie indeksowania.
 
 ### <a name="could-not-read-document"></a>Nie można odczytać dokumentu
 Indeksator nie mógł odczytać dokumentu ze źródła danych. Przyczyną może być:
 
-| Przyczyna | Przykład | Akcja |
+| Przyczyna | Przykład | Działanie |
 | --- | --- | --- |
 | niespójne typy pól w różnych dokumentach | Typ wartości jest niezgodny z typem kolumny. Nie można zapisać `'{47.6,-122.1}'` w kolumnie autorów.  Oczekiwany typ to JArray. | Upewnij się, że typ każdego pola jest taki sam w różnych dokumentach. Na przykład jeśli pierwszy dokument `'startTime'` ma wartość DateTime, a w drugim dokumencie jest ciągiem, ten błąd zostanie trafiony. |
 | błędy usługi źródłowej źródła danych | (od Cosmos DB) `{"Errors":["Request rate is large"]}` | Sprawdź wystąpienie magazynu, aby upewnić się, że jest w dobrej kondycji. Może być konieczne dostosowanie skalowania/partycjonowania. |
@@ -36,7 +35,7 @@ Indeksator nie mógł odczytać dokumentu ze źródła danych. Przyczyną może 
 ### <a name="could-not-extract-document-content"></a>Nie można wyodrębnić zawartości dokumentu
 Indeksator ze źródłem danych obiektu BLOB nie mógł wyodrębnić zawartości z dokumentu (na przykład pliku PDF). Przyczyną może być:
 
-| Przyczyna | Przykład | Akcja |
+| Przyczyna | Przykład | Działanie |
 | --- | --- | --- |
 | rozmiar obiektu BLOB przekracza limit. | Dokument ma `'150441598'` bajtów, który przekracza maksymalny rozmiar `'134217728'` bajty na potrzeby wyodrębniania dokumentów dla bieżącej warstwy usług. | [Błędy indeksowania obiektów BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | Obiekt BLOB ma nieobsługiwany typ zawartości | Dokument zawiera nieobsługiwany typ zawartości `'image/png'` | [Błędy indeksowania obiektów BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -46,7 +45,7 @@ Indeksator ze źródłem danych obiektu BLOB nie mógł wyodrębnić zawartości
 ### <a name="could-not-parse-document"></a>Nie można przeanalizować dokumentu
 Indeksator odczytuje dokument ze źródła danych, ale wystąpił problem podczas konwertowania zawartości dokumentu do określonego schematu mapowania pól. Przyczyną może być:
 
-| Przyczyna | Przykład | Akcja |
+| Przyczyna | Przykład | Działanie |
 | --- | --- | --- |
 | Brak klucza dokumentu | Brak klucza dokumentu lub jest on pusty | Upewnij się, że wszystkie dokumenty mają prawidłowe klucze dokumentu |
 | Klucz dokumentu jest nieprawidłowy | Klucz dokumentu nie może mieć więcej niż 1024 znaków | Zmodyfikuj klucz dokumentu, aby spełniał wymagania dotyczące weryfikacji. |
@@ -111,7 +110,7 @@ Jeśli wystąpi błąd przekroczenia limitu czasu z utworzoną niestandardową u
 
 Maksymalna wartość, którą można ustawić dla parametru `timeout` wynosi 230 sekund.  Jeśli niestandardowa umiejętność nie będzie działać spójnie w ciągu 230 sekund, możesz rozważyć zmniejszenie `batchSize` niestandardowej umiejętności, dzięki czemu będzie ona mogła przetwarzać mniejsze dokumenty w ramach jednego wykonania.  Jeśli ustawiono już `batchSize` do 1, należy ponownie napisać umiejętność, aby można było wykonać ją w mniej niż 230 sekund lub w inny sposób podzielić ją na wiele umiejętności niestandardowych, tak aby czas wykonywania dla każdej pojedynczej umiejętności niestandardowej wynosił maksymalnie 230 sekund. Zapoznaj się z dokumentacją dotyczącą [niestandardowych umiejętności](cognitive-search-custom-skill-web-api.md) , aby uzyskać więcej informacji.
 
-##  <a name="warnings"></a>Ostrzeżenia
+##  <a name="warnings"></a>Ostrzeżeni
 Ostrzeżenia nie zatrzymują indeksowania, ale wskazują warunki, które mogą spowodować nieoczekiwane wyniki. Niezależnie od tego, czy podejmujesz akcję, czy nie zależą od danych i Twojego scenariusza.
 
 ### <a name="skill-input-was-truncated"></a>Dane wejściowe kwalifikacji zostały obcięte

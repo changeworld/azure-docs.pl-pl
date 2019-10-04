@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: raynew
-ms.openlocfilehash: c54273e0ca8c88a6fe47d5611950acd38f50b4c0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8e034153a2e98a101527f411c78ace6e46b01b29
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212800"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937523"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -73,7 +73,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
-Konto magazynu | Site Recovery teraz obsługuje używanie kont magazynu z włączoną zaporą dla funkcji Hyper-V na potrzeby odzyskiwania po awarii platformy Azure.  Można wybrać konta magazynu z obsługą zapory jako konto docelowe lub magazyn pamięci podręcznej. W przypadku korzystania z konta z włączoną zaporą upewnij się, że opcja zezwala na używanie zaufanych usług firmy Microsoft.
+Konto magazynu | Site Recovery teraz obsługuje używanie kont magazynu z włączoną zaporą dla funkcji Hyper-V na potrzeby odzyskiwania po awarii platformy Azure.  Można wybrać konta magazynu z obsługą zapory jako konto docelowe lub magazyn pamięci podręcznej. W przypadku korzystania z konta z włączoną zaporą upewnij się, że opcja zezwala na używanie zaufanych usług firmy Microsoft.<br/><br/> Jest to obsługiwane w przypadku maszyn wirtualnych funkcji Hyper-V z programem System Center VMM lub bez niego.
 
 
 ## <a name="updates-august-2019"></a>Aktualizacje (sierpień 2019)
@@ -232,7 +232,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Funkcja** | **Szczegóły**
 --- | ---
 **System plików BRTFS systemu Linux** | Site Recovery teraz obsługuje replikację maszyn wirtualnych VMware przy użyciu systemu plików BRTFS. Replikacja nie jest obsługiwana, jeśli:<br/><br/>-Wolumin systemu plików BTRFS jest zmieniany po włączeniu replikacji.<br/><br/>— System plików jest rozłożony na wiele dysków.<br/><br/>— System plików BTRFS obsługuje macierz RAID.
-**Windows Server 2019** | Dodano obsługę dla maszyn z systemem Windows Server 2019.
+**System Windows Server 2019** | Dodano obsługę dla maszyn z systemem Windows Server 2019.
 
 
 ## <a name="updates-january-2019"></a>Aktualizacje (styczeń 2019)
@@ -287,7 +287,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Obsługa systemu Linux** | Dodano obsługę dla Oracle Linux 6,8 i 6,9/7.0 oraz dla jądra UEK5.
 **LVM** | Dodano obsługę dla woluminów LVM i LVM2.<br/><br/> Katalog/Boot na partycji dysku i na woluminach LVM jest teraz obsługiwany.
 **Katalogi** | Dodano obsługę tych katalogów jako osobne partycje lub systemy plików, które nie znajdują się na tym samym dysku systemowym:<br/><br/> /(root),/Boot,/usr,/usr/local,/var,/etc.
-**Windows Server 2008** | Dodano obsługę dla dysków dynamicznych.
+**System Windows Server 2008** | Dodano obsługę dla dysków dynamicznych.
 **Tryb failover** | Ulepszony czas pracy w trybie failover dla maszyn wirtualnych VMware, gdzie storvsc i vsbus nie są sterownikami rozruchowymi
 **Obsługa interfejsu UEFI** | Maszyny wirtualne platformy Azure nie obsługują typu rozruchu UEFI. Teraz można migrować lokalne serwery fizyczne z interfejsem UEFI do platformy Azure za pomocą Site Recovery. Site Recovery migruje serwer, konwertując typ rozruchu na system BIOS przed migracją. Site Recovery poprzednio obsługiwać tę konwersję tylko dla maszyn wirtualnych. Pomoc techniczna jest dostępna dla serwerów fizycznych z systemem Windows Server 2012 lub nowszym.
 
@@ -380,7 +380,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 --- | ---
 **Obsługa systemu Linux** | Dodano obsługę do RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> Maszyny wirtualne oparte na systemie Linux, które używają stylu partycji tabeli partycji GUID (GPT) w trybie zgodności ze starszymi wersjami systemu BIOS, są teraz obsługiwane. Aby uzyskać więcej informacji, przejrzyj [często zadawane pytania dotyczące maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) . 
 **Odzyskiwanie po awarii dla maszyn wirtualnych po migracji** | Obsługa włączenia odzyskiwania po awarii do regionu pomocniczego dla lokalnej maszyny wirtualnej VMware migrowanej do platformy Azure bez konieczności odinstalowywania usługi mobilności na maszynie wirtualnej przed włączeniem replikacji.
-**Windows Server 2008** | Obsługa migracji maszyn z systemem Windows Server 2008 R2/2008 64-bit i 32-bit.<br/><br/> Tylko migracja (replikacja i tryb failover). Powrót po awarii nie jest obsługiwany.
+**System Windows Server 2008** | Obsługa migracji maszyn z systemem Windows Server 2008 R2/2008 64-bit i 32-bit.<br/><br/> Tylko migracja (replikacja i tryb failover). Powrót po awarii nie jest obsługiwany.
 
 ## <a name="updates-july-2018"></a>Aktualizacje (lipiec 2018)
 

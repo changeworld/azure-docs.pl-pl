@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie użycia i szacowanych kosztów w usłudze Azure Monitor
-description: Omówienie procesu stosowania optymalizacji użycia usługi Azure Monitor i szacowane koszty strony
+title: Monitorowanie użycia i szacowane koszty w Azure Monitor
+description: Przegląd procesu korzystania z Azure Monitor użycia i szacowanych kosztów
 author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,107 +9,105 @@ ms.date: 04/18/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 787618b59cd18dd4c38892ddf0861808211671cb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453830"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936625"
 ---
-# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorowanie użycia i szacowanych kosztów w usłudze Azure Monitor
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorowanie użycia i szacowane koszty w Azure Monitor
 
 > [!NOTE]
-> W tym artykule opisano sposób wyświetlania użycie i szacunkowe koszty między wiele funkcji monitorowania platformy Azure dla różnych modeli cen.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
-> - [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](manage-cost-storage.md) opisano, jak kontrolować ponoszone koszty, zmieniając okresu przechowywania danych.
-> - [Analizowanie użycia danych w usłudze Log Analytics](../../azure-monitor/platform/data-usage.md) w tym artykule opisano sposób analizowanie i alerty dotyczące użycia danych.
-> - [Zarządzanie cenami i ilością danych w usłudze Application Insights](../../azure-monitor/app/pricing.md) opisano, jak i analizowanie użycia danych w usłudze Application Insights.
+> W tym artykule opisano sposób wyświetlania użycia i szacowane koszty w wielu funkcjach monitorowania platformy Azure dla różnych modeli cen. Pokrewne artykuły dla określonych składników Azure Monitor obejmują:
+> - [Zarządzanie użyciem i kosztami za pomocą dzienników Azure monitor](manage-cost-storage.md) opisuje sposób kontrolowania kosztów przez zmianę okresu przechowywania danych oraz analizowanie i zgłaszanie alertów dotyczących użycia danych.
+> - [Zarządzanie użyciem i kosztami Application Insights](../../azure-monitor/app/pricing.md) opisuje sposób analizowania użycia danych w programie Application Insights.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+W centrum monitorów Azure Portal na stronie **użycie i szacowane koszty** objaśniono użycie podstawowych funkcji monitorowania, takich jak [alerty, metryki, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [Azure log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)i [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). W przypadku klientów korzystających z planów cenowych dostępnych przed 2018 kwietnia będzie to również Log Analytics użycie zakupione w ramach oferty usługi Insights i Analytics.
 
-W Centrum monitora w witrynie Azure Portal **użycie i szacunkowe koszty** stronie wyjaśniamy użycia podstawowej platformy monitorowania funkcji, takich jak [, alertów metryk, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [usługi Azure Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/), i [usługi Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). W przypadku klientów na plany cenowe dostępne przed kwietnia 2018 r. obejmuje to także użycie usługi Log Analytics, które zostały zakupione w ramach wgląd w dane i Analytics oferuje.
+Na tej stronie użytkownicy mogą wyświetlić użycie zasobów przez ostatnie 31 dni, zagregowane na subskrypcję. Przechodzenia do szczegółów pokazują trendy użycia w okresie 31 dni. Do tego oszacowania należy wiele danych, dlatego należy poczekać, aż strona zostanie załadowana.
 
-Na tej stronie użytkownicy mogą wyświetlać ich użycia zasobów w ciągu ostatnich 31 dni, zagregowane na subskrypcję. Dodatki testowania odzyskiwania po awarii pokazuje trendy użycia przez 31-dniowego okresu. Dużą ilość danych, trzeba łączą się na te dane szacunkowe, dlatego prosimy o cierpliwość, ponieważ ładowania strony.
+W tym przykładzie przedstawiono monitorowanie użycia i szacunkowe koszty:
 
-Ten przykład przedstawia sposób monitorowania użycia i oszacowanie kosztów wynikowy:
+![Zrzut ekranu portalu użycia i szacowanej kosztów](./media/usage-estimated-costs/001.png)
 
-![Użycie i szacowane koszty portalu zrzut ekranu](./media/usage-estimated-costs/001.png)
+Wybierz łącze w kolumnie użycie miesięczne, aby otworzyć wykres pokazujący trendy użycia w ciągu ostatnich 31 dni:
 
-Wybierz link w kolumnie miesięczne użycie, aby Otwórz wykres, który pokazuje trendy użycia w ciągu ostatnich 31 dni:
+![Zrzut ekranu przedstawiający wykres słupkowy na węzeł](./media/usage-estimated-costs/002.png)
 
-![Uwzględnione na węzeł paska wykresu zrzut ekranu](./media/usage-estimated-costs/002.png)
+Oto inne podobne użycie i podsumowanie kosztów. Ten przykład przedstawia subskrypcję w nowym modelu cen opartym na zużyciu 2018 kwietnia. Zwróć uwagę na brak wszystkich rozliczeń opartych na węzłach. Pozyskiwanie i przechowywanie danych dla Log Analytics i Application Insights są teraz zgłaszane na nowym wspólnym mierniku.
 
-Oto inny podobny sposób użycia i kosztów — podsumowanie. Ten przykład przedstawia subskrypcji w nowym kwietnia 2018 r. na podstawie użycia modelu cen. Należy zwrócić uwagę braku dowolnego rozliczania opartego na węźle. Pozyskiwanie danych i przechowywania dla usługi Log Analytics i usługi Application Insights teraz są zgłaszane na nowego licznika wspólnej.
+![Zrzut ekranu portalu użycie i szacowane koszty — kwiecień 2018](./media/usage-estimated-costs/003.png)
 
-![Użycie i szacowane koszty portalu zrzut ekranu — ceny z kwietnia 2018 r.](./media/usage-estimated-costs/003.png)
+## <a name="pricing-model"></a>Model cen
 
-## <a name="new-pricing-model"></a>Nowy model cen
+W kwietniu 2018 [wydano nowy model cen monitorowania](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Ta funkcja jest zoptymalizowana pod kątem użycia w chmurze cen opartych na użyciu ("płatność zgodnie z rzeczywistym użyciem"). Płacisz tylko za to, czego używasz, bez zobowiązań opartych na węzłach. Szczegóły nowego modelu cen są dostępne dla [alertów, metryk, powiadomień](https://azure.microsoft.com/pricing/details/monitor/), [log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) i [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
 
-W kwietniu 2018 r. [monitorowania nowego modelu cen został wydany](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Funkcje, cennik przyjazny dla chmury, na podstawie użycia. Płacisz tylko za rzeczywiste użycie bez zobowiązań oparte na węzłach. Szczegóły nowego modelu cen są dostępne dla [, alertów metryk, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) i [usługi Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
+Oprócz modelu "płatność zgodnie z rzeczywistym użyciem" we wrześniu 2019 dodaliśmy rezerwacje zdolności produkcyjnych dla Log Analytics, co pozwala zaoszczędzić do 25% w porównaniu z ceną płatność zgodnie z rzeczywistym użyciem. Cennik rezerwacji zdolności produkcyjnych umożliwia zakupienie rezerwacji rozpoczynającej się o 100 GB/dzień. Każde użycie powyżej poziomu rezerwacji będzie rozliczane według stawki płatności zgodnie z rzeczywistym użyciem. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/monitor/) o cenach rezerwacji pojemności.
 
-Dla klientów dołączanie do usługi Log Analytics lub usługi Application Insights po 2 kwietnia 2018 r. nowy model cen jest jedyną opcją. W przypadku klientów, którzy używają już tych usług przejście do nowego modelu cen jest opcjonalne.
+W przypadku klientów, którzy dołączeli do Log Analytics lub Application Insights po 2 kwietnia 2018, nowy model cen jest jedyną opcją. W przypadku klientów, którzy już korzystają z tych usług, przeniesienie do nowego modelu cen jest opcjonalne.
 
-## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Ocena wpływu nowego modelu cen
-Nowy model cen będzie mieć inny wpływ na poszczególnych klientów, na podstawie ich monitorowania wzorców użycia. Dla klientów, którzy zostały przy użyciu usługi Log Analytics lub usługi Application Insights przed 2 kwietnia 2018 r. **użycia i szacowanych kosztów** strony w usłudze Azure Monitor szacuje jakichkolwiek zmian w koszty, jeśli zostały przeniesione do nowego modelu cen. Zapewnia sposób, aby przenieść subskrypcję do nowego modelu. W przypadku większości klientów nowego modelu cen będzie korzystne. W przypadku klientów z wzorców użycia szczególnie dużej ilości danych lub w regionach wyższe koszty może to być nie tak.
+## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Ocenianie wpływu nowego modelu cen
+Nowy model cen będzie miał różne wpływ na poszczególnych klientów w oparciu o ich wzorce użycia monitorowania. W przypadku klientów, którzy korzystali z Log Analytics lub Application Insights przed 2 kwietnia 2018, Strona **użycie i szacowany koszt** w Azure monitor szacuje wszelkie zmiany kosztów w przypadku przechodzenia do nowego modelu cen. Umożliwia przeniesienie subskrypcji do nowego modelu. W przypadku większości klientów będzie korzystne użycie nowego modelu cen. W przypadku klientów, którzy mają szczególnie duże użycie danych lub w regionach z wyższymi kosztami, może to nie być przypadek.
 
-Aby wyświetlić oszacowanie kosztów dla subskrypcji, które wybrano na **użycie i szacunkowe koszty** wybierz niebieski Baner w górnej części strony. Najlepiej zrobić to jedną subskrypcję, w czasie, ponieważ jest to poziom nowego modelu cen może zostać przyjęta.
+Aby zobaczyć oszacowanie kosztów subskrypcji wybranych na stronie **użycie i szacowane koszty** , wybierz niebieski baner w górnej części strony. Najlepiej wykonać tę jedną subskrypcję w danym momencie, ponieważ jest to poziom, na którym można przyjąć nowy model cen.
 
-![Monitoruj użycie i szacowane koszty w nowych cen zrzut ekranu z modelu](./media/usage-estimated-costs/004.png)
+![Monitoruj użycie i szacowane koszty na zrzucie ekranu nowego modelu cen](./media/usage-estimated-costs/004.png)
 
-Nowa strona zawiera podobne wersję strony zielony transparent z wcześniejszych:
+Na nowej stronie zostanie wyświetlona Podobna wersja poprzedniej strony z zielonym transparentem:
 
-![Monitoruj użycie i szacowane koszty w bieżącym cen zrzut ekranu z modelu](./media/usage-estimated-costs/005.png)
+![Monitoruj użycie i szacowane koszty na zrzucie ekranu bieżącego modelu cen](./media/usage-estimated-costs/005.png)
 
-Na stronie znajdują się również inny zbiór liczników, które odnoszą się do nowego modelu cen. Ta lista jest przykładem:
+Na stronie przedstawiono również różne zestawy liczników, które odpowiadają nowemu modelowi cen. Ta lista jest przykładem:
 
-- Usługa Insight and Analytics\Overage na węzeł
-- Usługa Insight and Analytics\Included na węzeł
-- Dane nadwyżkowe Insights\Basic aplikacji
+- Wgląd i Analytics\Overage na węzeł
+- Wgląd i Analytics\Included na węzeł
+- Dane nadwyżkowe aplikacji Insights\Basic
 - Dane Insights\Included aplikacji
 
-Nowy model cen nie ma alokacje oparte na węzłach uwzględnione dane. W związku z tym, te liczniki pozyskiwania danych są łączone w nowego licznika przyjmowanie wspólnych danych o nazwie **udostępnione pozyskiwania Services\Data**. 
+Nowy model cen nie obejmuje przydziałów danych opartych na węzłach. W związku z tym te liczniki pozyskiwania danych są połączone z nowym wspólnym miernikiem pozyskiwania danych o nazwie **Shared Services\Data**pozyskiwanie. 
 
-Istnieje inna zmiana na dane pozyskane do usługi Log Analytics lub usługi Application Insights w regionach z wyższych kosztów. Dane dotyczące tych regionów kosztu wysokiej będą wyświetlane przy użyciu nowego mierniki regionalne. Na przykład **pozyskiwanie danych (zachodnio-środkowe stany USA)** .
-
-> [!NOTE]
-> Na subskrypcję szacowane koszty nie wziąć pod uwagę na poziomie konta na węźle uprawnień subskrypcji usługi Operations Management Suite (OMS). Zapoznaj się z przedstawicielem klienta dla bardziej szczegółowym omówieniem nowego modelu cen w tym przypadku.
-
-## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Nowy cennik modelu i uprawnienia subskrypcji pakietu Operations Management Suite
-
-Klienci, którzy zakupili pakiet Microsoft Operations Management Suite E1 i E2 kwalifikują się do każdego węzła uprawnień do wprowadzania danych dla [usługi Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) i [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Aby otrzymać te uprawnienia dla obszarów roboczych usługi Log Analytics i zasoby usługi Application Insights w ramach danej subskrypcji: 
-
-- Model cen subskrypcji musi pozostać w modelu sprzed kwietnia 2018 r.
-- Obszary robocze usługi log Analytics, należy używać "za węzeł (OMS)" warstwy cenowej.
-- Zasoby usługi Application Insights, należy użyć "Enterprise" plan cenowy.
-
-W zależności od liczby węzłów pakietu nabytym przez organizację przeniesienie niektórych subskrypcji do nowego modelu cen może być korzystne, ale wymaga to szczególną uwagę. Ogólnie rzecz biorąc zalecane jest po prostu, aby pozostać w modelu sprzed kwietnia 2018 r. zgodnie z powyższym opisem.
-
-> [!WARNING]
-> Jeśli Twoja organizacja zakupiła pakiet Microsoft Operations Management Suite E1 i E2, zazwyczaj najlepiej jest zapewnienie subskrypcji w modelu cenowym sprzed kwietnia 2018 r. 
->
-
-## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Zmiany w przypadku przenoszenia do nowego modelu cen
-
-Nowy model cen upraszcza usługi Log Analytics i opcje do tylko jednej warstwy (lub planu) ceny usługi Application Insights. Przeniesienie subskrypcji do nowego będzie modelu cen:
-
-- Zmień warstwę cenową dla każdej usługi Log Analytics na nową warstwę na GB (o nazwie "pergb2018" w usłudze Azure Resource Manager)
-- Wszystkie zasoby usługi Application Insights w planie Enterprise jest zmieniany na Basic plan.
-
-Szacowanie kosztów pokazuje wpływ tych zmian.
-
-> [!WARNING]
-> Ważna uwaga, jeśli używasz usługi Azure Resource Manager lub programu PowerShell do wdrożenia w tym miejscu [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) lub [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) w ramach subskrypcji zostały przeniesione do nowego modelu cen. Jeśli określisz warstwy/planu cenowego innych niż "pergb2018" dla usługi Log Analytics lub "Podstawowa" dla usługi Application Insights, zamiast niepowodzenie wdrożenia ze względu na określanie nieprawidłowy warstwy/plan cenowy ona powiedzie się **, ale będzie używać jedyne prawidłowe Warstwa/plan cenowy** (nie dotyczy organizacji Log Analytics bezpłatna którym generowany jest komunikat nieprawidłowy warstwy cenowej).
->
-
-## <a name="moving-to-the-new-pricing-model"></a>Przejście do nowego modelu cen
-
-Jeśli zdecydujesz, który wdrożył nowy model cen w ramach danej subskrypcji, przejdź do każdego zasobu usługi Application Insights, otwórz **użycie i szacunkowe koszty** Pamiętaj, że jest on warstwy cenowej podstawowa i przejdź do każdej usługi Log Analytics obszar roboczy, Otwórz każdy **warstwa cenowa** strony i zmienić **na GB (2018)** warstwy cenowej. 
+Istnieje inna zmiana danych wprowadzanych do Log Analytics lub Application Insights w regionach z wyższymi kosztami. Dane dla tych regionów o wysokim koszcie zostaną wyświetlone przy użyciu nowych liczników regionalnych. Przykładem jest pozyskiwanie **danych (Zachodnie stany USA)** .
 
 > [!NOTE]
-> Wymóg, że wszystkie zasoby usługi Application Insights i obszarów roboczych usługi Log Analytics w ramach danej subskrypcji przyjąć najnowszej model cen zostanie usunięte, dzięki czemu większa elastyczność i łatwiejsze konfiguracji. 
+> Szacowane koszty na subskrypcję nie są uwzględniane dla uprawnień na poziomie konta na węzeł w ramach subskrypcji pakietu Operations Management Suite (OMS). Zapoznaj się z przedstawicielem swojego konta, aby uzyskać bardziej szczegółowe omówienie nowego modelu cen w tym przypadku.
 
-## <a name="automate-moving-to-the-new-pricing-model"></a>Automatyzowanie przenoszenia do nowego modelu cen
+## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Nowy model cen i uprawnienia do subskrypcji pakietu Operations Management Suite
 
-Jak wspomniano powyżej, nie jest już wymagane Przenieś wszystkie zasoby monitorowania w ramach subskrypcji do nowego modelu cen, w tym samym czasie, a wówczas ``migratetonewpricingmodel`` akcji nie będzie już mieć żadnego efektu. Teraz można przenieść zasobów usługi Application Insights i obszary robocze usługi Log Analytics oddzielnie do najnowszych warstw cenowych.  
+Klienci, którzy zakupili Microsoft Operations Management Suite E1 i E2, mają uprawnienia do pozyskiwania danych na węzłach dla [log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) i [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Aby otrzymywać te uprawnienia dla Log Analytics obszarów roboczych lub Application Insights zasobów w ramach danej subskrypcji: 
 
-Automatyzowanie ta zmiana jest udokumentowany dla usługi Application Insights przy użyciu [AzureRmApplicationInsightsPricingPlan zestaw](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) z ``-PricingPlan "Basic"`` i przy użyciu usługi Log Analytics [Set-AzureRmOperationalInsightsWorkspace](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) z ``-sku "PerGB2018"``. 
+- Model cenowy subskrypcji musi pozostać w modelu 2018 z góry kwietnia.
+- Obszary robocze Log Analytics powinny korzystać z warstwy cenowej "na węzeł (OMS)".
+- Zasoby Application Insights powinny korzystać z planu cenowego "Enterprise".
 
+W zależności od liczby węzłów pakietu zakupionej przez Twoją organizację przeniesienie niektórych subskrypcji do nowego modelu cen może być korzystne, ale wymaga to starannej uwagi. Ogólnie rzecz biorąc, zaleca się, aby zachować w modelu 2018 z góry kwietnia, jak opisano powyżej.
+
+> [!WARNING]
+> Jeśli Twoja organizacja zakupiła Microsoft Operations Management Suite E1 i E2, zazwyczaj najlepszym rozwiązaniem jest utrzymywanie subskrypcji w modelu cen z góry kwietnia 2018. 
+>
+
+## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Zmiany po przeniesieniu do nowego modelu cen
+
+Nowy model cen upraszcza Log Analytics i Application Insights opcje cenowe tylko do jednej warstwy (lub planu). Przeniesienie subskrypcji do nowego modelu cen spowoduje:
+
+- Zmień warstwę cenową dla każdego Log Analytics na nową warstwę za GB (o nazwie "pergb2018" w Azure Resource Manager)
+- Wszystkie zasoby Application Insights w planie Enterprise są zmieniane na plan podstawowy.
+
+Oszacowanie kosztów pokazuje wpływ tych zmian.
+
+> [!WARNING]
+> Oto ważna Uwaga w przypadku używania Azure Resource Manager lub programu PowerShell do wdrażania [log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) lub [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) w ramach subskrypcji przeniesionej do nowego modelu cen. W przypadku określenia warstwy cenowej/planu innego niż "pergb2018" dla Log Analytics lub "Basic" dla Application Insights, a nie niepowodzeniem wdrożenia z powodu określenia nieprawidłowej warstwy cenowej/planu, zostanie ona wykonana pomyślnie, **ale będzie używać tylko prawidłowej warstwy cenowej/ Planowanie** (nie dotyczy to log Analytics warstwy Bezpłatna, w której jest generowany nieprawidłowy komunikat warstwy cenowej).
+>
+
+## <a name="moving-to-the-new-pricing-model"></a>Przechodzenie do nowego modelu cen
+
+Jeśli podjęto decyzję o przyjęciu nowego modelu cen dla danej subskrypcji, przejdź do każdego zasobu Application Insights, Otwórz **użycie i szacowane koszty** i upewnij się, że znajduje się w warstwie cenowej podstawowa, i przejdź do każdego log Analytics obszarze roboczym, Otwórz każdą z **nich. Strona warstwy cenowej** i przejdź do warstwy cenowej **na GB (2018)** . 
+
+> [!NOTE]
+> Wymaganie, aby wszystkie zasoby Application Insights i Log Analytics obszary robocze w ramach danej subskrypcji zostały teraz usunięte, co pozwala na większą pracę i lepszą konfigurację. 
+
+## <a name="automate-moving-to-the-new-pricing-model"></a>Automatyzowanie przejścia do nowego modelu cen
+
+Jak wspomniano powyżej, nie jest już wymagane przeniesienie wszystkich zasobów monitorowania w ramach subskrypcji do nowego modelu cen w tym samym czasie, w związku z czym akcja ``migratetonewpricingmodel`` nie będzie już miała żadnego efektu. Teraz można przenosić Application Insights zasoby i Log Analytics obszary robocze oddzielnie do najnowszych warstw cenowych.  
+
+Automatyzacja tej zmiany jest udokumentowana dla Application Insights przy użyciu polecenia [Set-AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) z ``-PricingPlan "Basic"`` i log Analytics za pomocą polecenia [Set-AzureRmOperationalInsightsWorkspace](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) z ``-sku "PerGB2018"``. 

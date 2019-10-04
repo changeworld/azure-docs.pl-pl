@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: cbe9aa2ea664d97df6008de05d6cb84da9771bcc
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
-ms.translationtype: MT
+ms.openlocfilehash: 83f5339dbc4f093ba0b7287b53c053e319f928c9
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166552"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937388"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Pozyskiwanie danych z IoT Hub na platformie Azure Eksplorator danych (wersja zapoznawcza)
 
@@ -76,17 +76,17 @@ Teraz nawiążesz połączenie z IoT Hubą z usługi Azure Eksplorator danych. P
 
     **Ustawienie** | **Opis pola**
     |---|---|
-    | Nazwa połączenia danych | Nazwa połączenia, które chcesz utworzyć na platformie Azure Eksplorator danych
-    | IoT Hub | Nazwa centrum IoT |
-    | Zasady dostępu współużytkowanego | Nazwa zasad dostępu współdzielonego. Musi mieć uprawnienia do odczytu |
-    | Grupa konsumentów |  Grupa odbiorców zdefiniowana w IoT Hub wbudowanym punkcie końcowym |
-    | Właściwości systemu zdarzeń | Właściwości systemu zdarzeń IoT Hub |
+    | Nazwa połączenia danych | Nazwa połączenia, które chcesz utworzyć w usłudze Azure Data Explorer.
+    | IoT Hub | Nazwa IoT Hub. |
+    | Zasady dostępu współdzielonego | Nazwa zasad dostępu współdzielonego. Musi mieć uprawnienia do odczytu. |
+    | Grupa konsumentów |  Grupa odbiorców zdefiniowana w IoT Hub wbudowanym punkcie końcowym. |
+    | Właściwości systemu zdarzeń | Właściwości systemu zdarzeń IoT Hub. W przypadku, gdy istnieje wiele rekordów na komunikat o zdarzeniu, właściwości systemu zostaną dodane do pierwszej z nich. |
     | | 
 
     > [!NOTE]
     > W przypadku [ręcznego przełączania do trybu failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover)należy ponownie utworzyć połączenie danych.
 
-    **Tabela**docelowa:
+    **Tabela docelowa**:
 
     Dostępne są dwie opcje routingu pozyskiwanych danych: *statyczne* i *dynamiczne*. 
     W tym artykule należy używać routingu statycznego, w którym można określić nazwę tabeli, format danych i mapowanie. W związku z tym pozostaw pole **Moje dane zawierają informacje o routingu** niezaznaczone.
@@ -98,8 +98,9 @@ Teraz nawiążesz połączenie z IoT Hubą z usługi Azure Eksplorator danych. P
     | Mapowanie kolumn | *TestMapping* | Mapowanie utworzone w **TestDB**, które mapuje przychodzące dane JSON do nazw kolumn i typów danych **TestDB**. Wymagane dla notacji JSON, wielowierszowego kodu JSON i AVRO oraz opcjonalne dla innych formatów.|
     | | |
 
-    > [!TIP]
-    > Wybierz pozycję **moje dane zawiera informacje o routingu** , aby użyć routingu dynamicznego, gdzie dane zawierają niezbędne informacje dotyczące routingu, jak pokazano w komentarzach [przykładowych aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Jeśli są ustawione właściwości static i Dynamic, właściwości dynamiczne zastępują statyczne. 
+    > [!NOTE]
+    > * Wybierz pozycję **moje dane zawiera informacje o routingu** , aby użyć routingu dynamicznego, gdzie dane zawierają niezbędne informacje dotyczące routingu, jak pokazano w komentarzach [przykładowych aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Jeśli są ustawione właściwości static i Dynamic, właściwości dynamiczne zastępują statyczne. 
+    > * Zostaną pozyskane tylko zdarzenia znajdujące się w kolejce po utworzeniu połączenia danych.
 
 ## <a name="generate-sample-data-for-testing"></a>Generuj przykładowe dane do testowania
 
@@ -111,7 +112,7 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym
 
 1. Otwórz plik **SimulatedDevice.cs** w wybranym edytorze.
 
-    Zastąp wartość `s_connectionString` zmiennej parametrami połączenia urządzenia, [Aby zarejestrować urządzenie w IoT Hub](#register-a-device-to-the-iot-hub). Następnie zapisz zmiany w pliku **SimulatedDevice.cs**.
+    Zastąp wartość zmiennej `s_connectionString` parametrami połączenia urządzenia, [Aby zarejestrować urządzenie w IoT Hub](#register-a-device-to-the-iot-hub). Następnie zapisz zmiany w pliku **SimulatedDevice.cs**.
 
 1. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane pakiety dla aplikacji urządzenia symulowanego:
 
@@ -155,7 +156,7 @@ Za pomocą aplikacji generującej dane można teraz zobaczyć przepływ danych z
     ![Pokaż wyniki pozyskiwanych danych](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]
-    > * W systemie Azure Data Explorer istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania. Zasady są domyślnie skonfigurowane do 5 minut lub 500 MB danych, dzięki czemu mogą wystąpić opóźnienia. Zobacz temat [zasady](/azure/kusto/concepts/batchingpolicy) tworzenia wsadowego dla opcji agregacji. 
+    > * W systemie Azure Data Explorer istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania. Zasady są domyślnie skonfigurowane do 5 minut lub 500 MB danych, dzięki czemu mogą wystąpić opóźnienia. Zobacz temat [zasady tworzenia wsadowego](/azure/kusto/concepts/batchingpolicy) dla opcji agregacji. 
     > * Skonfiguruj tabelę do obsługi przesyłania strumieniowego i Usuń opóźnienie w czasie odpowiedzi. Zobacz [zasady przesyłania strumieniowego](/azure/kusto/concepts/streamingingestionpolicy). 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

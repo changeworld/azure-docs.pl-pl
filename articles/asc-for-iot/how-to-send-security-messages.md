@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/03/2019
 ms.author: mlottner
-ms.openlocfilehash: af775a57356af304aa27453baffa518788d0f5e7
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 4d91eecc6168ae195fecdf788f091fd70b785f05
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326545"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937131"
 ---
 # <a name="send-security-messages-sdk"></a>Wyślij zestaw SDK komunikatów zabezpieczeń
 
@@ -46,7 +46,7 @@ Azure Security Center dla IoT definiuje komunikat zabezpieczeń przy użyciu nas
 - Jeśli komunikat jest zgodny ze [schematem komunikatu zabezpieczeń](https://aka.ms/iot-security-schemas)
 - Jeśli wiadomość została ustawiona jako komunikat zabezpieczeń przed wysłaniem
 
-Każdy komunikat zabezpieczeń zawiera metadane nadawcy `AgentId` `MessageSchemaVersion` , takie jak, `AgentVersion`i listę zdarzeń zabezpieczeń.
+Każdy komunikat zabezpieczeń zawiera metadane nadawcy, takie jak `AgentId`, `AgentVersion`, `MessageSchemaVersion` i listę zdarzeń zabezpieczeń.
 Schemat definiuje prawidłowe i wymagane właściwości komunikatu zabezpieczeń, w tym typy zdarzeń.
 
 >[!Note]
@@ -57,7 +57,7 @@ Schemat definiuje prawidłowe i wymagane właściwości komunikatu zabezpieczeń
 
 ## <a name="valid-message-example"></a>Prawidłowy przykład wiadomości
 
-W poniższym przykładzie pokazano prawidłowy obiekt komunikatu zabezpieczeń. Przykład zawiera metadane komunikatów i jedno `ProcessCreate` zdarzenie zabezpieczeń.
+W poniższym przykładzie pokazano prawidłowy obiekt komunikatu zabezpieczeń. Przykład zawiera metadane komunikatu i jedno zdarzenie zabezpieczeń `ProcessCreate`.
 
 Po ustawieniu jako komunikat zabezpieczeń i wysłaniu ten komunikat zostanie przetworzony przez Azure Security Center dla IoT.
 
@@ -203,6 +203,19 @@ async def send_security_message_async(message_content):
     await device_client.disconnect()
 ```
 
+#### <a name="java-api"></a>Interfejs API języka Java
+
+```java
+public void SendSecurityMessage(string message)
+{
+    ModuleClient client = new ModuleClient("<connection_string>", IotHubClientProtocol.MQTT);
+    Message msg = new Message(message);
+    msg.setAsSecurityMessage();
+    EventCallback callback = new EventCallback();
+    string context = "<user_context>";
+    client.sendEventAsync(msg, callback, context);
+}
+```
 
 
 ## <a name="next-steps"></a>Następne kroki
@@ -212,4 +225,4 @@ async def send_security_message_async(message_content):
 - Przeczytaj [często zadawane pytania](resources-frequently-asked-questions.md)
 - Dowiedz się, jak uzyskać dostęp do [danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
 - Omówienie [zaleceń](concept-recommendations.md)
-- Informacje [](concept-security-alerts.md) o alertach
+- Informacje o [alertach](concept-security-alerts.md)

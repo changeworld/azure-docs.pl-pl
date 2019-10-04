@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 53bed3fe50afef260ac44f73a9f82e6894015c90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349014"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937320"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Najlepsze rozwiązania dotyczące używania Power BI do wykonywania zapytań i wizualizacji danych Eksplorator danych platformy Azure
 
@@ -28,13 +28,13 @@ Podczas pracy z terabajtami świeżych danych pierwotnych postępuj zgodnie z po
 
 * **Tryb importu i tryb zapytania bezpośredniego** — Używanie trybu **importu** do interakcji z mniejszymi zestawami danych. Używaj trybu **zapytania bezpośredniego** w przypadku dużych, często aktualizowanych zestawów danych. Na przykład Utwórz tabele wymiarów przy użyciu trybu **importu** , ponieważ są one małe i rzadko nie zmieniają się. Ustaw interwał odświeżania zgodnie z oczekiwaną częstotliwością aktualizacji danych. Utwórz tabele faktów przy użyciu trybu **zapytania bezpośredniego** , ponieważ te tabele są duże i zawierają dane pierwotne. Te tabele służą do prezentowania przefiltrowanych danych przy użyciu Power BI [przeglądania szczegółowego](https://docs.microsoft.com/power-bi/desktop-drillthrough).
 
-* **Równoległość** — platforma Azure Data Explorer jest liniowo skalowalną platformą danych, dlatego można poprawić wydajność renderowania pulpitu nawigacyjnego, zwiększając równoległość przepływu kompleksowego w następujący sposób:
+* **Równoległość** — platforma Azure Eksplorator danych jest skalowalną w poziomie platformą danych, dlatego można poprawić wydajność renderowania pulpitu nawigacyjnego przez zwiększenie równoległości przepływu pełnego w następujący sposób:
 
    * Zwiększ liczbę [jednoczesnych połączeń w zapytaniu bezpośrednim w Power BI](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery).
 
    * [Aby poprawić równoległość, należy użyć słabej spójności](/azure/kusto/concepts/queryconsistency). Może to mieć wpływ na świeżość danych.
 
-* **Efektywne fragmentatory** — możesz użyć [fragmentatorów synchronizacji](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) , aby uniemożliwić raportom ładowanie danych przed ich przystąpieniem. Po dokonaniu struktury zestawu danych Umieść wszystkie wizualizacje i Oznacz wszystkie fragmentatory, możesz wybrać fragmentator synchronizacji, aby załadować tylko potrzebne dane.
+* **Efektywne fragmentatory** — Użyj [fragmentatorów synchronizacji](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) , aby uniemożliwić raportom ładowanie danych przed ich przystąpieniem. Po dokonaniu struktury zestawu danych Umieść wszystkie wizualizacje i Oznacz wszystkie fragmentatory, możesz wybrać fragmentator synchronizacji, aby załadować tylko potrzebne dane.
 
 * **Użyj filtrów** — można użyć dowolnej liczby filtrów Power BI, aby skoncentrować się na usłudze Azure Eksplorator danych Search na odpowiednich fragmentówch danych.
 
@@ -46,7 +46,7 @@ W poniższej sekcji przedstawiono porady i wskazówki dotyczące korzystania z j
 
 ### <a name="complex-queries-in-power-bi"></a>Złożone zapytania w Power BI
 
-Złożone zapytania są łatwiej wyrażone w Kusto niż w Power Query. Powinny być zaimplementowane jako [funkcje Kusto](/azure/kusto/query/functions)i wywoływane w Power BI. Ta metoda jest wymagana w przypadku używania **zapytania bezpośredniego** z instrukcjami `let` w zapytaniu Kusto. Ponieważ Power BI sprzęga dwa zapytania i nie można używać instrukcji `let` z operatorem `join`, mogą wystąpić błędy składniowe. W związku z tym Zapisz każdą część sprzężenia jako funkcję Kusto i zezwól Power BI do łączenia tych dwóch funkcji jednocześnie.
+Złożone zapytania są łatwiej wyrażone w Kusto niż w Power Query. Powinny być zaimplementowane jako [funkcje Kusto](/azure/kusto/query/functions)i wywoływane w Power BI. Ta metoda jest wymagana w przypadku używania **zapytania bezpośredniego** z instrukcjami `let` w zapytaniu Kusto. Ponieważ Power BI sprzęga dwa zapytania, a instrukcje `let` nie mogą być używane z operatorem `join`, mogą wystąpić błędy składniowe. W związku z tym Zapisz każdą część sprzężenia jako funkcję Kusto i zezwól Power BI do łączenia tych dwóch funkcji jednocześnie.
 
 ### <a name="how-to-simulate-a-relative-data-time-operator"></a>Jak symulować względny operator czasu danych
 
@@ -104,7 +104,7 @@ W oknie **Edytowanie zapytań** , @no__t **Home**-2**Edytor zaawansowany**
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
-1. Zastąp odpowiednią część zapytania parametrem. Dzielenie zapytania na wiele części i połączenie ich z powrotem przy użyciu znaku &, wraz z parametrem.
+1. Zastąp odpowiednią część zapytania parametrem. Podziel zapytanie na wiele części i połącz je z powrotem przy użyciu znaku handlowego "i" (&) wraz z parametrem.
 
    Na przykład w powyższym zapytaniu zajmiemy się częścią `State == 'ALABAMA'` i zostanie ona podzielona na: `State == '` i `'` i umieścimy między nimi parametr `State`:
    
@@ -142,7 +142,7 @@ Power BI obejmuje harmonogram odświeżania danych, który może okresowo wydawa
 
 ### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI może wysyłać tylko krótkie (&lt;2000 znaków) zapytania do Kusto
 
-W przypadku uruchamiania zapytania w Power BI powoduje następujący błąd:  _"Źródło danych. błąd: Plik Web. Contents nie może pobrać zawartości z... "_ zapytanie jest prawdopodobnie dłuższe niż 2000 znaków. Power BI używa **PowerQuery** do wysyłania zapytań do Kusto przez wystawienie żądania HTTP GET, które koduje zapytanie jako część pobieranego identyfikatora URI. W związku z tym zapytania Kusto wystawiane przez Power BI są ograniczone do maksymalnej długości identyfikatora URI żądania (2000 znaków minus małe przesunięcie). Jako obejście można zdefiniować [przechowywaną funkcję](/azure/kusto/query/schema-entities/stored-functions) w Kusto i mieć Power BI używać tej funkcji w zapytaniu.
+W przypadku uruchamiania zapytania w Power BI powoduje następujący błąd: _"DataSource. Error: Web. Contents nie może pobrać zawartości z..."_ długość zapytania jest najprawdopodobnie dłuższa niż 2000 znaków. Power BI używa **PowerQuery** do wysyłania zapytań do Kusto przez wystawienie żądania HTTP GET, które koduje zapytanie jako część pobieranego identyfikatora URI. W związku z tym zapytania Kusto wystawiane przez Power BI są ograniczone do maksymalnej długości identyfikatora URI żądania (2000 znaków minus małe przesunięcie). Jako obejście można zdefiniować [przechowywaną funkcję](/azure/kusto/query/schema-entities/stored-functions) w Kusto i mieć Power BI używać tej funkcji w zapytaniu.
 
 ## <a name="next-steps"></a>Następne kroki
 

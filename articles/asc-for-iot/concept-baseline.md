@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/03/2019
 ms.author: mlottner
-ms.openlocfilehash: a9de9924b851024dd36c848203cc3ada2cde208c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b0f5696b36082375a29e99298395cf16734d5bb4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329411"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937154"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Azure Security Center dla linii bazowej i czeków niestandardowych
 
 W tym artykule wyjaśniono Azure Security Center dla linii bazowej IoT oraz podsumowano wszystkie skojarzone właściwości niestandardowych kontroli linii bazowej.
 
-## <a name="baseline"></a>Linia bazowa
+## <a name="baseline"></a>Punkt odniesienia
 
 Linia bazowa ustala standardowe zachowanie poszczególnych urządzeń i ułatwia ustalenie nietypowego zachowania lub odchylenia od oczekiwanych norm.  
 
 ## <a name="baseline-custom-checks"></a>Niestandardowe kontrole linii bazowej
 
-Niestandardowe kontrole linii bazowej określają niestandardową listę kontroli dla każdej linii bazowej urządzenia przy użyciu sznurka tożsamości modułu urządzenia. 
+Niestandardowe kontrole linii bazowej określają niestandardową listę kontroli dla każdej linii bazowej urządzenia przy użyciu **sznurka tożsamości modułu** urządzenia. 
 
 ## <a name="setting-baseline-properties"></a>Ustawianie właściwości linii bazowej
 
@@ -64,11 +64,11 @@ Aby skonfigurować niestandardowe kontrole linii bazowej:
 
 ## <a name="baseline-custom-check-properties"></a>Właściwości niestandardowego sprawdzania kontroli linii bazowej
 
-| Name| State | Prawidłowe wartości| Wartości domyślne| Opis |
+| Nazwa| Stan | Prawidłowe wartości| Wartości domyślne| Opis |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|baselineCustomChecksEnabled|Wymagane: prawda |Prawidłowe wartości: **Wartość logiczna** |Wartość domyślna: **Fałsz** |Maksymalny przedział czasu przed wysłaniem komunikatów o wysokim priorytecie.|
-|baselineCustomChecksFilePath |Wymagane: prawda|Prawidłowe wartości: **Ciąg**, **null** |Wartość domyślna: **PT5H** |Pełna ścieżka do podstawowej konfiguracji XML|
-|baselineCustomChecksFileHash |Wymagane: prawda|Prawidłowe wartości: **Ciąg**, **null** |Wartość domyślna: **PT5H** |`sha256sum` pliku konfiguracyjnego XML. Aby uzyskać dodatkowe informacje, użyj [odwołania sha256sum](https://linux.die.net/man/1/sha256sum) . |
+|baselineCustomChecksEnabled|Wymagane: prawda |Prawidłowe wartości: **wartość logiczna** |Wartość domyślna: **Fałsz** |Maksymalny przedział czasu przed wysłaniem komunikatów o wysokim priorytecie.|
+|baselineCustomChecksFilePath |Wymagane: prawda|Prawidłowe wartości: **String**, **null** |Wartość domyślna: **null** |Pełna ścieżka do podstawowej konfiguracji XML|
+|baselineCustomChecksFileHash |Wymagane: prawda|Prawidłowe wartości: **String**, **null** |Wartość domyślna: **null** |`sha256sum` pliku konfiguracyjnego XML. Aby uzyskać dodatkowe informacje, użyj [odwołania sha256sum](https://linux.die.net/man/1/sha256sum) . |
 
 Aby zapoznać się z dodatkowymi przykładami linii bazowej, zobacz [przykład niestandardowego punktu odniesienia-1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) i [niestandardowy punkt odniesienia — 2](https://ascforiot.blob.core.windows.net/public/oms_audits.xml).
 

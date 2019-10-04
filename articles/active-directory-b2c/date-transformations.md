@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 077915705c242805d3709b5d52d445288fa5336a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 13c3f3aaf54bc3fb8ef656b5c1ce227fa70cee0b
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064349"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936790"
 ---
 # <a name="date-claims-transformations"></a>Przekształceń oświadczeń dat
 
@@ -29,17 +29,17 @@ Sprawdza, czy jedno wystąpienie daty i czasu (typu danych String) jest późnie
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | leftOperand | ciąg | Typ pierwszego wystąpienia, który powinien być późniejszy od drugiego żądania. |
-| Oświadczenie inputclaim | rightOperand | ciąg | Typ drugiego zgłoszenia, który powinien być wcześniejszy niż pierwszy z nich. |
-| InputParameter | AssertIfEqualTo | boolean | Określa, czy potwierdzenie powinno być przekazywane, jeśli lewy operand jest równy operandowi z prawej strony. |
-| InputParameter | AssertIfRightOperandIsNotPresent | boolean | Określa, czy potwierdzenie ma być przekazywane, jeśli brakuje prawego operandu. |
+| Oświadczenie inputclaim | leftOperand | string | Typ pierwszego wystąpienia, który powinien być późniejszy od drugiego żądania. |
+| Oświadczenie inputclaim | rightOperand | string | Typ drugiego zgłoszenia, który powinien być wcześniejszy niż pierwszy z nich. |
+| InputParameter | AssertIfEqualTo | wartość logiczna | Określa, czy potwierdzenie powinno być przekazywane, jeśli lewy operand jest równy operandowi z prawej strony. |
+| InputParameter | AssertIfRightOperandIsNotPresent | wartość logiczna | Określa, czy potwierdzenie ma być przekazywane, jeśli brakuje prawego operandu. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Określa liczbę milisekund, które mają być dozwolone między dwiema datami czasu, aby uwzględnić czasy równe (na przykład w przypadku pochylenia zegara). |
 
 Przekształcenie oświadczeń **AssertDateTimeIsGreaterThan** jest zawsze wykonywane z poziomu [weryfikacji profilu technicznego](validation-technical-profile.md) , który jest wywoływany przez [własny profil techniczny](self-asserted-technical-profile.md). **DateTimeGreaterThan** z własnym profilem technicznym metadane są kontrolowane komunikat o błędzie, który zostanie wyświetlony przez profil techniczny.
 
 ![AssertStringClaimsAreEqual wykonywanie](./media/date-transformations/assert-execution.png)
 
-Poniższy przykład porównuje `currentDateTime` `approvedDateTime` z tym roszczeń. Błąd jest zgłaszany, `currentDateTime` jeśli jest późniejszy `approvedDateTime`niż. Transformacja traktuje wartości jako równe, jeśli są one w ciągu 5 minut (30000 milisekund).
+Poniższy przykład porównuje `currentDateTime` z wnioskiem o `approvedDateTime`. Błąd jest zgłaszany, jeśli `currentDateTime` jest późniejsza niż `approvedDateTime`. Transformacja traktuje wartości jako równe, jeśli są one w ciągu 5 minut (30000 milisekund).
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -55,7 +55,7 @@ Poniższy przykład porównuje `currentDateTime` `approvedDateTime` z tym roszcz
 </ClaimsTransformation>
 ```
 
-`AssertApprovedDateTimeLaterThanCurrentDateTime` Profil techniczny `login-NonInteractive` weryfikacji wywołuje transformację oświadczeń.
+Profil techniczny weryfikacji `login-NonInteractive` wywołuje transformację `AssertApprovedDateTimeLaterThanCurrentDateTime` oświadczeń.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -81,9 +81,9 @@ Profil techniczny z własnym potwierdzeniem wywołuje profil techniczny **logowa
 ### <a name="example"></a>Przykład
 
 - Oświadczenia wejściowe:
-    - **leftOperand**: 2018-10-01T15:00:00.0000000Z
-    - **rightOperand**: 2018-10-01T14:00:00.0000000Z
-- Wynika Zgłoszono błąd
+    - **leftOperand**: 2018 r-10-01T15:00:00.0000000 z
+    - **rightOperand**: 2018 r-10-01T14:00:00.0000000 z
+- Wynik: zgłoszono błąd
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
@@ -92,9 +92,9 @@ Konwertuje **datę oświadczenia daty** na element ClaimType **DateTime** . Tran
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie inputclaim | Oświadczenie inputclaim | date | Wartość oświadczenia do przekonwertowania. |
-| Oświadczenie outputclaim | Oświadczenie outputclaim | Data i godzina | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | Datę | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
-Poniższy przykład ilustruje konwersję (typ danych daty `dateOfBirth` ) żądania na inne zastrzeżenie `dateOfBirthWithTime` (typ danych DateTime).
+Poniższy przykład ilustruje konwersję `dateOfBirth` (Data typ danych) do innego żądania `dateOfBirthWithTime` (typ danych dateTime).
 
 ```XML
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
@@ -112,7 +112,7 @@ Poniższy przykład ilustruje konwersję (typ danych daty `dateOfBirth` ) żąda
 - Oświadczenia wejściowe:
     - **oświadczenie inputclaim**: 2019-06-01
 - Oświadczenia wyjściowe:
-    - **oświadczenie outputclaim**: 1559347200 (1 czerwca 2019 12:00:00 AM)
+    - **oświadczenie outputclaim**: 1559347200 (1 czerwca 2019 12:00:00 am)
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
@@ -120,7 +120,7 @@ Pobierz bieżącą datę i godzinę UTC i Dodaj wartość do elementu ClaimType.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie outputclaim | currentDateTime | Data i godzina | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie outputclaim | currentDateTime | Datę | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
 ```XML
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
@@ -133,19 +133,19 @@ Pobierz bieżącą datę i godzinę UTC i Dodaj wartość do elementu ClaimType.
 ### <a name="example"></a>Przykład
 
 * Oświadczenia wyjściowe:
-    * **currentDateTime**: 1534418820 (16 sierpnia 2018 11:27:00 AM)
+    * **currentDateTime**: 1534418820 (16 sierpnia 2018 11:27:00 am)
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Ustal, czy jedna wartość daty i godziny jest późniejsza, wcześniejsza lub równa innej. Wynik jest nową wartością logiczną typu Boolean, z wartością `true` lub. `false`
+Ustal, czy jedna wartość daty i godziny jest późniejsza, wcześniejsza lub równa innej. Wynikiem jest nowa wartość logiczna typu Boolean, z wartością `true` lub `false`.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | firstDateTime | Data i godzina | Pierwszy element dateTime, aby porównać, czy jest on wcześniejszy, czy późniejszy niż drugi dateTime. Wartość null zgłasza wyjątek. |
-| Oświadczenie inputclaim | secondDateTime | Data i godzina | Druga data/godzina do porównania, czy jest wcześniejsza lub późniejsza niż pierwsza wartość daty i godziny. Wartość zerowa jest traktowana jako bieżąca datetTime. |
-| InputParameter | Zakład | ciąg | Jedna z następujących wartości: taka sama, późniejsza niż lub wcześniejsza niż. |
+| Oświadczenie inputclaim | firstDateTime | Datę | Pierwszy element dateTime, aby porównać, czy jest on wcześniejszy, czy późniejszy niż drugi dateTime. Wartość null zgłasza wyjątek. |
+| Oświadczenie inputclaim | secondDateTime | Datę | Druga data/godzina do porównania, czy jest wcześniejsza lub późniejsza niż pierwsza wartość daty i godziny. Wartość zerowa jest traktowana jako bieżąca datetTime. |
+| InputParameter | Zakład | string | Jedna z następujących wartości: taka sama, późniejsza niż lub wcześniejsza niż. |
 | InputParameter | timeSpanInSeconds | int | Dodaj przedział czasu do pierwszej wartości daty i godziny. |
-| Oświadczenie outputclaim | wynik | boolean | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie outputclaim | Wynika | wartość logiczna | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
 Użyj tej transformacji oświadczeń, aby określić, czy dwa oświadczenia są równe, nowsze czy starsze. Na przykład użytkownik może przechowywać ostatnio zaakceptowane warunki użytkowania usług (TOS) przez użytkownika. Po 3 miesiącach możesz polecić użytkownikowi ponowne uzyskanie dostępu do tych organizacji.
 Aby uruchomić transformację roszczeń, najpierw musisz uzyskać bieżącą wartość dateTime, a także godzinę, w której użytkownik ostatnio akceptuje te organizacje.
@@ -169,8 +169,8 @@ Aby uruchomić transformację roszczeń, najpierw musisz uzyskać bieżącą war
 ### <a name="example"></a>Przykład
 
 - Oświadczenia wejściowe:
-    - **firstDateTime**: 2018-01-01T00:00:00.100000Z
-    - **secondDateTime**: 2018-04-01T00:00:00.100000Z
+    - **firstDateTime**: 2018 r-01-01T00:00:00.100000 z
+    - **secondDateTime**: 2018 r-04-01T00:00:00.100000 z
 - Parametry wejściowe:
     - **operator**: nowszy niż
     - **timeSpanInSeconds**: 7776000 (90 dni)

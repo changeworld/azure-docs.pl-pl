@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 83ff39e9f3b7f95256466c74011e55ebdc22a7a9
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 5df9df1474489d7f1b1fb4e1089143cca63a3e42
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910524"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71935598"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -33,10 +33,10 @@ Aby upewnić się, że baza danych działa bez problemów, należy:
 ## <a name="monitor-database-performance"></a>Monitorowanie wydajności bazy danych
 
 Aby monitorować wydajność bazy danych SQL na platformie Azure, Zacznij od monitorowania zasobów używanych względem wybranego poziomu wydajności bazy danych. Monitoruj następujące zasoby:
- - **Użycie procesora CPU**: Sprawdź, czy baza danych osiągnie 100% użycia procesora CPU przez dłuższy czas. Duże użycie procesora CPU może wskazywać na to, że trzeba identyfikować i dostrajać zapytania, które wykorzystują największą moc obliczeniową. Duże użycie procesora CPU może również oznaczać, że baza danych lub wystąpienie należy uaktualnić do wyższej warstwy usług. 
+ - **Użycie procesora**: Sprawdź, czy baza danych osiągnie 100% użycia procesora CPU przez dłuższy czas. Duże użycie procesora CPU może wskazywać na to, że trzeba identyfikować i dostrajać zapytania, które wykorzystują największą moc obliczeniową. Duże użycie procesora CPU może również oznaczać, że baza danych lub wystąpienie należy uaktualnić do wyższej warstwy usług. 
  - **Statystyka oczekiwania**: Użyj [widoku sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) , aby określić, jak długo zapytania oczekują. Zapytania oczekują na zasoby, czekają na kolejki lub czekają na zewnątrz. 
  - **Użycie we/wy**: Sprawdź, czy baza danych zbliża się do limitów operacji we/wy magazynu bazowego.
- - **Użycie pamięci**: Ilość pamięci dostępnej dla bazy danych lub wystąpienia jest proporcjonalna do liczby rdzeni wirtualnych. Upewnij się, że pamięć jest wystarczająca dla obciążenia. Stron życia stron to jeden z parametrów, które mogą wskazywać na szybkość usuwania stron z pamięci.
+ - **Użycie pamięci**: ilość pamięci dostępnej dla bazy danych lub wystąpienia jest proporcjonalna do liczby rdzeni wirtualnych. Upewnij się, że pamięć jest wystarczająca dla obciążenia. Stron życia stron to jeden z parametrów, które mogą wskazywać na szybkość usuwania stron z pamięci.
 
 Usługa Azure SQL Database obejmuje narzędzia i zasoby pomagające w rozwiązywaniu problemów z wydajnością i naprawianiu potencjalnych problemów. Możesz identyfikować możliwości ulepszania i optymalizowania wydajności zapytań bez zmieniania zasobów, przeglądając [zalecenia dotyczące dostrajania wydajności](sql-database-advisor.md). 
 
@@ -67,14 +67,14 @@ Aby zdiagnozować i rozwiązać problemy z wydajnością, Zacznij od znalezienia
 Problem z wydajnością w obciążeniu może być spowodowany przez rywalizację procesora (warunek *związany z uruchomieniem* ) lub pojedyncze zapytania, które oczekują na coś (warunek *oczekujący* ).
 
 Problemy związane z uruchamianiem mogą być spowodowane przez:
-- **Problemy z kompilacją**: Optymalizator zapytań SQL może utworzyć nieoptymalny plan ze względu na nieodświeżone statystyki, błędne oszacowanie liczby wierszy do przetworzenia lub niedokładne oszacowanie wymaganej pamięci. Jeśli wiesz, że zapytanie zostało wykonane szybciej w przeszłości lub w innym wystąpieniu (wystąpienie zarządzane lub SQL Server wystąpienie), porównaj rzeczywiste plany wykonywania, aby zobaczyć, czy są one różne. Spróbuj zastosować wskazówki dotyczące zapytania lub ponownie skompilować statystyki lub indeksy, aby uzyskać lepszy plan. Włącz automatyczną korektę planu w Azure SQL Database, aby automatycznie wyeliminować te problemy.
-- **Problemy z wykonywaniem**: Jeśli plan zapytania jest optymalny, prawdopodobnie nastąpi ograniczenie zasobów bazy danych, takie jak przepływność zapisu w dzienniku. Lub mogą używać pofragmentowanych indeksów, które powinny być ponownie skompilowane. Problemy z wykonywaniem mogą również wystąpić, gdy duża liczba współbieżnych zapytań wymaga tych samych zasobów. Problemy *zależne* są zwykle związane z problemami z wykonywaniem, ponieważ zapytania, które nie wykonują wydajnej pracy, prawdopodobnie oczekują na niektóre zasoby.
+- **Problemy z kompilacją**: optymalizator zapytań SQL może utworzyć nieoptymalny plan ze względu na nieodświeżone statystyki, nieprawidłowe oszacowanie liczby wierszy do przetworzenia lub niedokładne oszacowanie wymaganej pamięci. Jeśli wiesz, że zapytanie zostało wykonane szybciej w przeszłości lub w innym wystąpieniu (wystąpienie zarządzane lub SQL Server wystąpienie), porównaj rzeczywiste plany wykonywania, aby zobaczyć, czy są one różne. Spróbuj zastosować wskazówki dotyczące zapytania lub ponownie skompilować statystyki lub indeksy, aby uzyskać lepszy plan. Włącz automatyczną korektę planu w Azure SQL Database, aby automatycznie wyeliminować te problemy.
+- **Problemy z wykonywaniem**: Jeśli plan zapytania jest optymalny, prawdopodobnie spowoduje to przekroczenie limitów zasobów bazy danych, takich jak przepływność zapisu w dzienniku. Lub mogą używać pofragmentowanych indeksów, które powinny być ponownie skompilowane. Problemy z wykonywaniem mogą również wystąpić, gdy duża liczba współbieżnych zapytań wymaga tych samych zasobów. Problemy *zależne* są zwykle związane z problemami z wykonywaniem, ponieważ zapytania, które nie wykonują wydajnej pracy, prawdopodobnie oczekują na niektóre zasoby.
 
 Problemy zależne mogą być spowodowane przez:
-- **Blokowanie**: Jedno zapytanie może blokować blokowanie obiektów w bazie danych, podczas gdy inne próbują uzyskać dostęp do tych samych obiektów. Można zidentyfikować blokowanie zapytań za pomocą narzędzi widoków DMV lub monitorowania.
-- **Problemy we/wy**: Zapytania mogą oczekiwać na zapisanie stron w plikach danych lub dziennika. W takim przypadku sprawdź `INSTANCE_LOG_RATE_GOVERNOR`statystyki, `WRITE_LOG`lub `PAGEIOLATCH_*` Zaczekaj na DMV.
-- **Problemy z**bazą danych tempdb: Jeśli obciążenie używa tabel tymczasowych lub w planach występuje wyciek bazy danych TempDB, zapytania mogą mieć problem z przepływem pracy w bazie danych TempDB. 
-- **Problemy związane z pamięcią**: Jeśli obciążenie nie ma wystarczającej ilości pamięci, może zostać pobrana stron życia strony lub zapytania mogą uzyskać mniejszą ilość pamięci niż jest to potrzebne. W niektórych przypadkach wbudowana analiza w optymalizatora zapytań naprawi problemy związane z pamięcią.
+- **Blokowanie**: jedno zapytanie może blokować blokowanie obiektów w bazie danych, podczas gdy inne próbują uzyskać dostęp do tych samych obiektów. Można zidentyfikować blokowanie zapytań za pomocą narzędzi widoków DMV lub monitorowania.
+- **Problemy we/wy**: zapytania mogą oczekiwać na zapisanie stron w plikach danych lub dziennika. W takim przypadku należy sprawdzić statystykę oczekiwania `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG` lub `PAGEIOLATCH_*` w DMV.
+- **Problemy**z bazą danych tempdb: Jeśli obciążenie używa tabel tymczasowych lub w planach występuje Relanie bazy danych tempdb, zapytania mogą mieć problem z przepływem pracy w bazie danych tempdb. 
+- **Problemy związane z pamięcią**: Jeśli obciążenie nie ma wystarczającej ilości pamięci, może to oznaczać, że stron życia strony lub zapytania mogą uzyskać mniejszą ilość pamięci niż jest to potrzebne. W niektórych przypadkach wbudowana analiza w optymalizatora zapytań naprawi problemy związane z pamięcią.
  
 W poniższych sekcjach opisano sposób identyfikowania i rozwiązywania problemów niektórych typów problemów.
 
@@ -105,7 +105,7 @@ Aby uzyskać więcej informacji na temat wykrywania parametrów i przetwarzania 
 
 Kilka obejść może rozwiązać problemy związane z PSP. Każde obejście ma powiązane kompromisy i wady:
 
-- Użyj wskazówki dotyczącej ponownej [kompilacji](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) w każdym wykonaniu zapytania. To obejście umożliwia wymianę czasu kompilacji i zwiększenie procesora w celu zapewnienia lepszej jakości planu. `RECOMPILE` Opcja jest często niemożliwa w przypadku obciążeń wymagających dużej przepływności.
+- Użyj wskazówki dotyczącej ponownej [kompilacji](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) w każdym wykonaniu zapytania. To obejście umożliwia wymianę czasu kompilacji i zwiększenie procesora w celu zapewnienia lepszej jakości planu. Opcja `RECOMPILE` często nie jest możliwa w przypadku obciążeń wymagających dużej przepływności.
 - Użyj [opcji zapytania (Optymalizacja dla...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) , aby zastąpić rzeczywistą wartość parametru wartością typowego parametru, która generuje plan, który jest wystarczająco dobry dla większości wartości parametrów. Ta opcja wymaga dobrego poznania optymalnych wartości parametrów i skojarzonych cech planu.
 - Użyj [opcji (Optymalizacja dla NIEznanej)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki, aby zastąpić rzeczywistą wartość parametru, a zamiast tego użyć średniej gęstości wektora. Można to zrobić również, przechwytując wartości parametrów przychodzących w zmiennych lokalnych, a następnie używając zmiennych lokalnych w predykatach zamiast używać samych parametrów. W przypadku tej poprawki średnia gęstość musi być *wystarczająca*.
 - Wyłącz wykrywanie parametrów za pomocą wskazówki zapytania [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .
@@ -118,7 +118,7 @@ Aby uzyskać więcej informacji na temat rozwiązywania problemów z PSP, zobacz
 
 - [Zapach I parametr](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)
 - [Conor a dynamiczne SQL a procedury i planowanie jakości zapytań parametrycznych](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
-- [Techniki optymalizacji zapytań SQL w SQL Server: Wykrywanie parametrów](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
+- [Techniki optymalizacji zapytań SQL w SQL Server: wykrywanie parametrów](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
 
 ### <a name="compile-activity-caused-by-improper-parameterization"></a>Działanie kompilowania spowodowane przez niewłaściwe parametryzacja
 
@@ -132,7 +132,7 @@ FROM t1 JOIN t2 ON t1.c1 = t2.c1
 WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
-W tym przykładzie `t1.c1` przyjmuje `@p1`, ale `t2.c2` nadal przyjmuje identyfikator GUID jako literał. W takim przypadku, jeśli zmienisz wartość dla `c2`, zapytanie jest traktowane jako inne zapytanie i zostanie wykonana Nowa kompilacja. Aby zmniejszyć kompilacje w tym przykładzie, należy również Sparametryzuj identyfikator GUID.
+W tym przykładzie `t1.c1` przyjmuje `@p1`, ale `t2.c2` kontynuuje korzystanie z identyfikatora GUID jako literału. W takim przypadku, jeśli zmienisz wartość `c2`, zapytanie jest traktowane jako inne zapytanie i zostanie wykonana Nowa kompilacja. Aby zmniejszyć kompilacje w tym przykładzie, należy również Sparametryzuj identyfikator GUID.
 
 Następujące zapytanie pokazuje liczbę zapytań według skrótu zapytania, aby określić, czy zapytanie jest prawidłowo sparametryzowane:
 
@@ -175,19 +175,19 @@ Jeśli używasz wskazówki RECOMPILE, plan nie zostanie zapisany w pamięci podr
 
 Ponowna kompilacja (lub Nowa kompilacja po wykluczeniu pamięci podręcznej) nadal może skutkować generowaniem planu wykonywania zapytania, który jest identyczny z oryginałem. W przypadku zmiany planu z planu poprzedniego lub oryginalnego te wyjaśnienia mogą być następujące:
 
-- **Zmieniono projekt fizyczny**: Na przykład nowo utworzone indeksy bardziej efektywnie obejmują wymagania zapytania. Nowe indeksy mogą być używane w nowej kompilacji, jeśli optymalizator zapytań zdecyduje, że użycie tego nowego indeksu jest bardziej optymalne niż użycie struktury danych, która została pierwotnie wybrana dla pierwszej wersji wykonywania zapytania.  Wszelkie zmiany fizyczne obiektów, do których istnieją odwołania, mogą spowodować powstanie nowego planu w czasie kompilacji.
+- **Zmieniony projekt fizyczny**: na przykład nowo utworzone indeksy bardziej efektywnie obejmują wymagania zapytania. Nowe indeksy mogą być używane w nowej kompilacji, jeśli optymalizator zapytań zdecyduje, że użycie tego nowego indeksu jest bardziej optymalne niż użycie struktury danych, która została pierwotnie wybrana dla pierwszej wersji wykonywania zapytania.  Wszelkie zmiany fizyczne obiektów, do których istnieją odwołania, mogą spowodować powstanie nowego planu w czasie kompilacji.
 
-- **Różnice zasobów serwera**: Gdy plan w jednym systemie różni się od planu w innym systemie, dostępność zasobów, taka jak liczba dostępnych procesorów, może mieć wpływ na sposób generowania planu.  Na przykład jeśli jeden system ma więcej procesorów, można wybrać plan równoległy. 
+- **Różnice zasobów serwera**: gdy plan w jednym systemie różni się od planu w innym systemie, dostępność zasobów, taka jak liczba dostępnych procesorów, może mieć wpływ na sposób generowania planu.  Na przykład jeśli jeden system ma więcej procesorów, można wybrać plan równoległy. 
 
-- **Różne statystyki**: Statystyka skojarzona z obiektami, do których się odwołuje, mogła ulec zmianie lub może być istotnie różna od statystyk oryginalnego systemu.  W przypadku zmiany statystyk i ponownej kompilacji optymalizator zapytań używa statystyk rozpoczynających się od momentu zmiany. Dane statystyczne i częstotliwości dla zaktualizowanych statystyk mogą się różnić od tych, które zostały oryginalnie skompilowane.  Te zmiany są używane do tworzenia oszacowań kardynalności. (*Oszacowania kardynalności* to liczba wierszy, które powinny przepływać przez drzewo zapytania logicznego). Zmiany w oszacowaniach kardynalności mogą prowadzić do wyboru różnych operatorów fizycznych i skojarzonych z nimi zamówień.  Nawet niewielkie zmiany w statystyce mogą spowodować zmianę planu wykonywania zapytania.
+- **Różne statystyki**: Statystyka skojarzona z obiektami, do których istnieją odwołania, mogła ulec zmianie lub może być istotnie różna od statystyk oryginalnego systemu.  W przypadku zmiany statystyk i ponownej kompilacji optymalizator zapytań używa statystyk rozpoczynających się od momentu zmiany. Dane statystyczne i częstotliwości dla zaktualizowanych statystyk mogą się różnić od tych, które zostały oryginalnie skompilowane.  Te zmiany są używane do tworzenia oszacowań kardynalności. (*Oszacowania kardynalności* to liczba wierszy, które powinny przepływać przez drzewo zapytania logicznego). Zmiany w oszacowaniach kardynalności mogą prowadzić do wyboru różnych operatorów fizycznych i skojarzonych z nimi zamówień.  Nawet niewielkie zmiany w statystyce mogą spowodować zmianę planu wykonywania zapytania.
 
-- **Zmieniony poziom zgodności bazy danych lub wersja szacowania kardynalności**:  Zmiany poziomu zgodności bazy danych mogą umożliwić nowe strategie i funkcje, które mogą spowodować powstanie innego planu wykonywania zapytań.  Poza poziomem zgodności bazy danych wyłączona lub włączona flaga śledzenia 4199 lub zmieniony stan QUERY_OPTIMIZER_HOTFIXES konfiguracji bazy danych może również mieć wpływ na Opcje planu wykonywania zapytania w czasie kompilacji.  Flagi śledzenia 9481 (Wymuś starszą wersję CE) i 2312 (Wymuś ustawienie domyślne CE) wpływają również na plan. 
+- **Zmieniony poziom zgodności bazy danych lub wersja szacowaniaa Kardynalność**: zmiany poziomu zgodności bazy danych mogą umożliwić nowe strategie i funkcje, które mogą spowodować powstanie innego planu wykonywania zapytań.  Poza poziomem zgodności bazy danych wyłączona lub włączona flaga śledzenia 4199 lub zmieniony stan QUERY_OPTIMIZER_HOTFIXES konfiguracji bazy danych może również mieć wpływ na Opcje planu wykonywania zapytania w czasie kompilacji.  Flagi śledzenia 9481 (Wymuś starszą wersję CE) i 2312 (Wymuś ustawienie domyślne CE) wpływają również na plan. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Rozwiązywanie zapytań dotyczących problemów lub podawanie większej ilości zasobów
 
 Po zidentyfikowaniu problemu można dostosować zapytania dotyczące problemów lub uaktualnić rozmiar lub warstwę usługi, aby zwiększyć pojemność bazy danych SQL w celu zaabsorbowania wymagań procesora. 
 
-Aby uzyskać więcej informacji, zobacz [skalowanie zasobów pojedynczej bazy danych w Azure SQL Database](sql-database-single-database-scale.md) i [skalowanie zasobów puli elastycznej w Azure SQL Database](sql-database-elastic-pool-scale.md). Aby uzyskać informacje na temat skalowania wystąpienia zarządzanego, zobacz [limity zasobów na poziomie wystąpienia](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+Aby uzyskać więcej informacji, zobacz [skalowanie zasobów pojedynczej bazy danych w Azure SQL Database](sql-database-single-database-scale.md) i [skalowanie zasobów puli elastycznej w Azure SQL Database](sql-database-elastic-pool-scale.md). Aby uzyskać informacje na temat skalowania wystąpienia zarządzanego, zobacz [limity zasobów w warstwie usług](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
 ### <a name="performance-problems-caused-by-increased-workload-volume"></a>Problemy z wydajnością spowodowane przez zwiększony wolumin obciążeń
 
@@ -203,11 +203,11 @@ Podsumowując, jeśli plan wykonywania zapytania nie został wykonany inaczej, a
 
 Nie zawsze można łatwo zidentyfikować zmiany woluminu obciążenia, który zapewnia problem z procesorem CPU. Należy wziąć pod uwagę następujące czynniki: 
 
-- **Zmieniono użycie zasobu**: Rozważmy na przykład scenariusz, w którym użycie procesora CPU wzrosło do 80% przez dłuższy czas.  Samo użycie procesora CPU nie oznacza, że wolumin obciążenia został zmieniony. Regresje w planie wykonywania zapytań oraz zmiany w dystrybucji danych mogą również przyczynić się do większej ilości zasobów, nawet jeśli aplikacja wykonuje to samo obciążenie.
+- **Zmieniono użycie zasobów**: na przykład Rozważmy scenariusz, w którym użycie procesora CPU wzrosło do 80% przez dłuższy czas.  Samo użycie procesora CPU nie oznacza, że wolumin obciążenia został zmieniony. Regresje w planie wykonywania zapytań oraz zmiany w dystrybucji danych mogą również przyczynić się do większej ilości zasobów, nawet jeśli aplikacja wykonuje to samo obciążenie.
 
-- **Wygląd nowej kwerendy**: Aplikacja może uzyskać nowy zestaw zapytań w różnym czasie.
+- **Wygląd nowej kwerendy**: aplikacja może uzyskać nowy zestaw zapytań w różnym czasie.
 
-- **Zwiększenie lub zmniejszenie liczby żądań**: Ten scenariusz to najbardziej oczywista miara obciążenia. Liczba zapytań nie zawsze odpowiada większej ilości zasobów. Jednak ten pomiar jest nadal znaczący, przy założeniu, że inne czynniki nie są zmieniane.
+- **Zwiększenie lub zmniejszenie liczby żądań**: ten scenariusz jest najbardziej oczywistą miarą obciążenia. Liczba zapytań nie zawsze odpowiada większej ilości zasobów. Jednak ten pomiar jest nadal znaczący, przy założeniu, że inne czynniki nie są zmieniane.
 
 ## <a name="waiting-related-performance-problems"></a>Problemy z wydajnością związane z oczekiwaniem 
 

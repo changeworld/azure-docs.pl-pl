@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie indeksu wyszukiwania przy użyciu Azure Portal-Azure Search'
+title: 'Szybki Start: Tworzenie indeksu wyszukiwania przy użyciu Azure Portal-Azure Search'
 description: Użyj Kreatora importowania danych w Azure Portal, aby utworzyć, załadować i zbadać swój pierwszy indeks w programie Azure Search.
 author: lobrien
 manager: nitinme
@@ -9,22 +9,22 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a4a25b8504d873b624e1f6822807c9c08ebd2e4f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884564"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936978"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Szybki start: Tworzenie indeksu Azure Search przy użyciu Azure Portal
+# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Szybki Start: Tworzenie indeksu Azure Search przy użyciu Azure Portal
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
-> * [PowerShell](search-get-started-powershell.md)
+> * [Program PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [C#](search-get-started-dotnet.md)
 
-Aby szybko poznać działanie usługi Azure Search, wypróbuj narzędzia wbudowane w witrynie Azure Portal. Kreatory i edytory nie oferują pełnej równoważności z interfejsami API .NET i REST, ale możesz szybko zacząć pracę bez korzystania z kodu, w ciągu kilku minut pisząc ciekawe zapytania odnoszące się do danych przykładowych.
+Aby szybko poznać działanie usługi Azure Search, wypróbuj narzędzia wbudowane w witrynie Azure Portal. Kreatorzy i edytory nie zapewniają pełnej zgodności z interfejsami API platformy .NET i REST, ale możesz szybko rozpocząć pracę dzięki wprowadzeniu bezpłatnego kodu, pisząc interesujące zapytania względem indeksu w ciągu kilku minut.
 
 > [!div class="checklist"]
 > * Rozpocznij od publicznego bezpłatnego zestawu przykładowych danych hostowanego na platformie Azure
@@ -53,7 +53,7 @@ W sekcjach na pulpicie nawigacyjnym usługi wyświetlana jest liczba posiadanych
 
 Zapytania wyszukiwania używają iteracyjnie [*indeksu*](search-what-is-an-index.md) zawierającego dane z możliwością wyszukiwania, metadane i dodatkowe konstrukcje, które optymalizują określone zachowania związane z wyszukiwaniem.
 
-W tym samouczku zostanie użyty wbudowany przykładowy zestaw danych, który można przeszukiwać przy użyciu [*indeksatora*](search-indexer-overview.md) za pośrednictwem **kreatora importu danych**. Indeksator to przeszukiwarka specyficzna dla źródła, mająca możliwość odczytu metadanych i zawartości z obsługiwanych źródeł danych platformy Azure. Indeksatory są zazwyczaj używane programowo, ale w portalu można uzyskać do nich dostęp za pośrednictwem kreatora **Importowanie danych**. 
+W tym samouczku użyjemy wbudowanego przykładowego zestawu danych, który można przeszukiwać przy użyciu [*indeksatora*](search-indexer-overview.md) za pomocą [kreatora **importu danych** ](search-import-data-portal.md). Indeksator to przeszukiwarka specyficzna dla źródła, mająca możliwość odczytu metadanych i zawartości z obsługiwanych źródeł danych platformy Azure. Indeksatory są zazwyczaj używane programowo, ale w portalu można uzyskać do nich dostęp za pośrednictwem kreatora **Importowanie danych**. 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Krok 1 — Uruchomienie Kreatora importowania danych i utworzenie źródła danych
 
@@ -61,7 +61,7 @@ W tym samouczku zostanie użyty wbudowany przykładowy zestaw danych, który mo�
 
    ![Polecenie importu danych](media/search-get-started-portal/import-data-cmd.png)
 
-2. W Kreatorze kliknij pozycję **Połącz z danymi** >  > **przykładowymi hoteli**. To źródło danych jest wbudowane. Podczas tworzenia własnego źródła danych należy określić nazwę, typ i informacje o połączeniu. Po utworzeniu staje się ono „istniejącym źródłem danych”, które może zostać ponownie użyte w innych operacjach importu.
+2. W Kreatorze kliknij pozycję **Połącz z danymi** > **przykładów** > **Hotele-przykład**. To źródło danych jest wbudowane. Podczas tworzenia własnego źródła danych należy określić nazwę, typ i informacje o połączeniu. Po utworzeniu staje się ono „istniejącym źródłem danych”, które może zostać ponownie użyte w innych operacjach importu.
 
    ![Wybieranie przykładowego zestawu danych](media/search-get-started-portal/import-datasource-sample.png)
 
@@ -111,13 +111,13 @@ W kreatorze **importu danych** kliknij pozycję **Indeksator** > **Nazwa**, a na
 
 Ten obiekt definiuje proces wykonywalny. Możesz go uruchamiać w ramach harmonogramu cyklicznego, ale na razie użyj opcji domyślnej, aby od razu uruchomić indeksator jeden raz.
 
-Kliknij przycisk **Prześlij**, aby utworzyć i jednocześnie uruchomić indeksator.
+Kliknij przycisk **Prześlij**, aby utworzyć i od razu uruchomić indeksator.
 
   ![Indeksator hoteli](media/search-get-started-portal/hotels-indexer.png)
 
 ## <a name="monitor-progress"></a>Monitorowanie postępu
 
-Kreator powinien przenieść Cię do listy Indeksatory, gdzie można monitorować postęp. W przypadku samodzielnej nawigacji przejdź do strony Przegląd, a następnie kliknij przycisk **Indeksatory**.
+Kreator powinien przenieść Cię do listy Indeksatory, gdzie można monitorować postęp. W przypadku samodzielnej nawigacji przejdź do strony Przegląd i kliknij opcję **Indeksatory**.
 
 Aktualizacja strony w portalu może wymagać kilku minut, ale na liście powinien być widoczny nowo utworzony indeksator w stanie wskazującym na trwające indeksowanie lub jego pomyślne zakończenie wraz z liczbą zindeksowanych dokumentów.
 
@@ -204,7 +204,7 @@ Filtry aspektów są uwzględniane w żądaniach wyszukiwania. Korzystając z pa
 
 * Parametr **$top=2** powoduje zwrócenie dwóch dokumentów, co pokazuje, że za pomocą parametru `top` możesz zmniejszyć lub zwiększyć liczbę wyników.
 
-#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Przykład (aspekt dla wartości liczbowych):`search=spa&facet=Rating`
+#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Przykład (aspekt dla wartości liczbowych): `search=spa&facet=Rating`
 
 * To zapytanie jest zestawem reguł dla klasyfikacji podczas wyszukiwania tekstu na potrzeby *Spa*. *Klasyfikacja* warunku może być określona jako aspekt, ponieważ pole jest oznaczone jako możliwe do pobrania, z możliwością filtrowania i do zastosowania w indeksie, a wartości, które zawiera (liczbowe, od 1 do 5), są odpowiednie do kategoryzacji list w grupach.
 

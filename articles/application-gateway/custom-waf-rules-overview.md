@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 154317e558c2c9a22f569f569684cced467900d5
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716625"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937477"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2"></a>Reguły niestandardowe dla zapory aplikacji sieci Web v2
 
@@ -37,7 +37,7 @@ Wyrażenia regularne są również obsługiwane w regułach niestandardowych, po
 
 Zezwalanie i blokowanie ruchu jest proste z regułami niestandardowymi. Na przykład można zablokować cały ruch pochodzący z zakresu adresów IP. Można utworzyć kolejną regułę zezwalającą na ruch, jeśli żądanie pochodzi z określonej przeglądarki.
 
-Aby zezwolić na coś, upewnij się `-Action` , że parametr jest ustawiony na **Zezwalaj**. Aby zablokować coś, upewnij się, `-Action` że parametr jest ustawiony do **blokowania**.
+Aby zezwolić na coś, upewnij się, że parametr `-Action` ma ustawioną wartość **Zezwalaj**. Aby zablokować coś, upewnij się, że parametr `-Action` ma ustawioną wartość **Blokuj**.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -55,7 +55,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Poprzednie `$BlockRule` mapowania do następującej reguły niestandardowej w Azure Resource Manager:
+Poprzednie `$BlockRule` mapuje do następującej reguły niestandardowej w Azure Resource Manager:
 
 ```json
 "customRules": [
@@ -96,8 +96,8 @@ To jest nazwa reguły. Ta nazwa jest wyświetlana w dziennikach.
 
 ### <a name="priority-required"></a>Priorytet [wymagany]
 
-- Określa kolejność, w której reguły są oceniane. Im niższa wartość, tym wcześniejsza Ocena reguły.
--Musi być unikatowa wśród wszystkich reguł niestandardowych. Reguła o priorytecie 100 zostanie oceniona przed regułą o priorytecie 200.
+- Określa kolejność, w której reguły są oceniane. Im niższa wartość, tym wcześniejsza Ocena reguły. Dozwolony zakres to od 1-100. 
+- Musi być unikatowa wśród wszystkich reguł niestandardowych. Reguła o priorytecie 40 zostanie oceniona przed regułą o priorytecie 80.
 
 ### <a name="rule-type-required"></a>Typ reguły [wymagane]
 
@@ -126,7 +126,7 @@ Musi być jednym z następujących operatorów:
 
 - IPMatch — używany tylko wtedy, gdy zmienna Match jest *RemoteAddr*
 - Equals — wartość wejściowa jest taka sama jak MatchValue
-- zawiera
+- Contains
 - LessThan
 - GreaterThan
 - LessThanOrEqual
@@ -144,7 +144,7 @@ Wyklucza bieżący warunek.
 Lista ciągów z nazwami transformacji, które należy wykonać przed próbą dopasowania. Mogą to być następujące przekształcenia:
 
 - Małe litery
-- Przytnij
+- Trim
 - UrlDecode
 - UrlEncode 
 - RemoveNulls

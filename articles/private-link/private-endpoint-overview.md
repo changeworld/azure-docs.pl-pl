@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1fff9c076349d98d7a72c4bf69edb0a2795ac88f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266366"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937375"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -22,15 +22,15 @@ Prywatny punkt końcowy platformy Azure to interfejs sieciowy, który nawiązuje
  Prywatny punkt końcowy określa następujące właściwości: 
 
 
-|Właściwość  |Description |
+|Właściwość  |Opis |
 |---------|---------|
-|Name    |    Unikatowa nazwa w obrębie grupy zasobów.      |
-|Subnet    |  Podsieć do wdrożenia i przydzielenia prywatnych adresów IP z sieci wirtualnej. Wymagania dotyczące podsieci znajdują się w sekcji ograniczenia w tym artykule.         |
+|Nazwa    |    Unikatowa nazwa w obrębie grupy zasobów.      |
+|Podsieć    |  Podsieć do wdrożenia i przydzielenia prywatnych adresów IP z sieci wirtualnej. Wymagania dotyczące podsieci znajdują się w sekcji ograniczenia w tym artykule.         |
 |Zasób link prywatny    |   Zasób link prywatny do łączenia się przy użyciu identyfikatora zasobu lub aliasu z listy dostępnych typów. Dla całego ruchu wysyłanego do tego zasobu zostanie wygenerowany unikatowy identyfikator sieci.       |
 |Podzasób docelowy   |      Podzasób do nawiązania połączenia. Każdy typ zasobu link prywatny ma różne opcje, które można wybrać na podstawie preferencji.    |
 |Metoda zatwierdzania połączeń    |  Automatyczne lub ręczne. W oparciu o uprawnienia kontroli dostępu opartej na rolach (RBAC) można automatycznie zatwierdzać prywatny punkt końcowy. Jeśli spróbujesz nawiązać połączenie z prywatnym zasobem linku bez RBAC, użyj metody ręcznej, aby zezwolić właścicielowi zasobu na zatwierdzanie połączenia.        |
 |Komunikat żądania     |  Można określić komunikat dla żądanych połączeń, które mają być zatwierdzane ręcznie. Ten komunikat może służyć do identyfikowania konkretnego żądania.        |
-|Stan połączenia   |   Właściwość tylko do odczytu określająca, czy prywatny punkt końcowy jest aktywny. Do wysyłania ruchu można używać tylko prywatnych punktów końcowych w zatwierdzonym stanie. Dostępne są dodatkowe Stany: <br>-**Zatwierdzone**: Połączenie zostało automatycznie lub ręcznie zatwierdzone i jest gotowe do użycia.</br><br>-**Oczekiwanie**: Połączenie zostało utworzone ręcznie i oczekuje na zatwierdzenie przez właściciela zasobu link prywatny.</br><br>-**Odrzucono**: Połączenie zostało odrzucone przez właściciela zasobu link prywatny.</br><br>-**Rozłączono**: Połączenie zostało usunięte przez właściciela zasobu link prywatny. Prywatny punkt końcowy zmienia się na format i powinien zostać usunięty do oczyszczenia. </br>|
+|Stan połączenia   |   Właściwość tylko do odczytu określająca, czy prywatny punkt końcowy jest aktywny. Do wysyłania ruchu można używać tylko prywatnych punktów końcowych w zatwierdzonym stanie. Dostępne są dodatkowe Stany: <br>-**zatwierdzono**: połączenie zostało automatycznie lub ręcznie zatwierdzone i jest gotowe do użycia.</br><br>-**oczekujące**: połączenie zostało utworzone ręcznie i oczekuje na zatwierdzenie przez właściciela zasobu link prywatny.</br><br>-**odrzucono**: połączenie zostało odrzucone przez właściciela zasobu linku prywatnego.</br><br>-**Rozłączono**: połączenie zostało usunięte przez właściciela zasobu link prywatny. Prywatny punkt końcowy zmienia się na format i powinien zostać usunięty do oczyszczenia. </br>|
 
 Poniżej przedstawiono niektóre kluczowe szczegóły dotyczące prywatnych punktów końcowych: 
 - Prywatny punkt końcowy umożliwia łączność między konsumentami z tej samej sieci wirtualnej, z regionalnie równorzędną sieci wirtualnych, globalnie równorzędną sieci wirtualnych i lokalnie przy użyciu [sieci VPN](https://azure.microsoft.com/services/vpn-gateway/) lub [Express Route](https://azure.microsoft.com/services/expressroute/) i usługi obsługiwane przez link prywatny.
@@ -53,8 +53,8 @@ Zasób link prywatny jest docelowym miejscem docelowym danego prywatnego punktu 
 |Nazwa zasobu linku prywatnego  |Typ zasobu   |Dowolnych podrzędnych  |
 |---------|---------|---------|
 |**Usługa link prywatny** (Twoja usługa)   |  Microsoft. Network/privateLinkServices       | ciągiem |
-|**Azure SQL Database** | Microsoft.Sql/servers    |  Program SQL Server (sqlServer)        |
-|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  Program SQL Server (sqlServer)        |
+|**Azure SQL Database** | Microsoft. SQL/serwery    |  Program SQL Server (sqlServer)        |
+|**Azure SQL Data Warehouse** | Microsoft. SQL/serwery    |  Program SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  Obiekt BLOB (BLOB, blob_secondary)<BR> Tabela (tabela, table_secondary)<BR> Kolejka (Queue, queue_secondary)<BR> Plik (plik, file_secondary)<BR> Sieć Web (sieć Web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Obiekt BLOB (BLOB, blob_secondary)       |
  
@@ -66,7 +66,7 @@ Możesz całkowicie zablokować obciążenia, aby uzyskać dostęp do publicznyc
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Dostęp do prywatnego zasobu linku przy użyciu przepływu pracy zatwierdzania 
 Możesz połączyć się z zasobem link prywatny przy użyciu następujących metod zatwierdzania połączeń:
-- **Automatycznie** zatwierdzane podczas posiadania lub masz uprawnienia do określonego zasobu łącza prywatnego. Wymagane uprawnienie jest oparte na typie zasobu link prywatny w następującym formacie: Programu. \<Dostawca >/< resource_type >/privateEndpointConnectionApproval/Action
+- **Automatycznie** zatwierdzane podczas posiadania lub masz uprawnienia do określonego zasobu łącza prywatnego. Wymagane uprawnienie jest oparte na typie zasobu link prywatny w następującym formacie: Microsoft. \<Provider >/< resource_type >/privateEndpointConnectionApproval/action
 - **Ręczne** żądanie, gdy nie masz wymaganego uprawnienia i chcesz zażądać dostępu. Zostanie zainicjowany przepływ pracy zatwierdzania. Prywatny punkt końcowy i kolejne połączenie prywatnego punktu końcowego zostaną utworzone w stanie "oczekiwanie". Właściciel zasobu link prywatny jest odpowiedzialny za zaakceptowanie połączenia. Po jego zatwierdzeniu prywatny punkt końcowy jest włączony do wysyłania ruchu normalnie, jak pokazano na poniższym diagramie przepływu pracy zatwierdzania.  
 
 ![zatwierdzenie przepływu pracy](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -124,8 +124,9 @@ Poniższa tabela zawiera listę znanych ograniczeń dotyczących używania prywa
 |Reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) nie mają zastosowania do prywatnego punktu końcowego    |SIECIOWEJ grupy zabezpieczeń nie jest obsługiwany w prywatnych punktach końcowych. W podsieciach zawierających prywatny punkt końcowy może być skojarzonych sieciowej grupy zabezpieczeń, więc reguły nie będą obowiązywać w przypadku ruchu przetwarzanego przez prywatny punkt końcowy. Aby wdrażać prywatne punkty końcowe w podsieci, należy [wyłączyć wymuszanie zasad sieciowych](disable-private-endpoint-network-policy.md) . SIECIOWEJ grupy zabezpieczeń jest nadal wymuszane dla innych obciążeń hostowanych w tej samej podsieci.   | Kontroluj ruch przy użyciu reguł sieciowej grupy zabezpieczeń dla ruchu wychodzącego na klientach źródłowych.        |
 |Nie można tworzyć prywatnych punktów końcowych w podsieciach włączonych dla punktu końcowego usługi lub obciążeń wyspecjalizowanych    |Nie można wdrożyć prywatnych punktów końcowych w podsieciach z włączonymi punktami końcowymi usług lub podsieciami delegowanymi do wyspecjalizowanych obciążeń|  Utwórz oddzielną podsieć do wdrożenia prywatnych punktów końcowych.        |
 |prywatny punkt końcowy można zamapować tylko do usługi linku prywatnego (należącej do klienta) w tym samym regionie.    |   Łączenie się z usługą linku prywatnego (własne) z innego regionu nie jest obsługiwane       |  W trakcie okresu zapoznawczego należy wdrożyć usługę prywatnego linku w tym samym regionie.        |
-|Wyspecjalizowane obciążenia nie mogą uzyskać dostępu do prywatnych punktów końcowych    |   Następujące usługi wdrożone w sieci wirtualnej nie mogą uzyskać dostępu do żadnego prywatnego zasobu linku przy użyciu prywatnych punktów końcowych:<br>Plan Usługi aplikacji</br>Wystąpienie kontenera platformy Azure</br>Azure NetApp Files</br>Dedykowany moduł HSM platformy Azure<br>       |   Brak środków zaradczych w trakcie okresu zapoznawczego.       |
-|  Portal nie obsługuje tworzenia prywatnych punktów końcowych przy użyciu aliasu  |   Portal umożliwia tylko tworzenie prywatnych punktów końcowych przy użyciu identyfikatora URI zasobu      | Użyj identyfikatora URI zasobu do żądania prywatnych połączeń punktów końcowych        |
+|  Virtual Network komunikacji równorzędnej z prywatnymi punktami końcowymi nie są obsługiwane   |   Podczas nawiązywania połączenia z prywatnymi punktami końcowymi w Virtual Network komunikacji równorzędnej bez żadnych innych obciążeń nie jest obsługiwane       | Wdróż pojedynczą maszynę wirtualną na Virtual Network komunikacji równorzędnej w celu włączenia łączności |
+|Wyspecjalizowane obciążenia nie mogą uzyskać dostępu do prywatnych punktów końcowych    |   Następujące usługi wdrożone w sieci wirtualnej nie mogą uzyskać dostępu do żadnego prywatnego zasobu linku przy użyciu prywatnych punktów końcowych:<br>Plan usługi App Service</br>Wystąpienie kontenera platformy Azure</br>Azure NetApp Files</br>Dedykowany moduł HSM platformy Azure<br>       |   Brak środków zaradczych w trakcie okresu zapoznawczego.       |
+
 
 ## <a name="next-steps"></a>Następne kroki
 - [Tworzenie prywatnego punktu końcowego dla serwera SQL Database przy użyciu portalu](create-private-endpoint-portal.md)

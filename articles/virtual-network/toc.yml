@@ -230,6 +230,8 @@
           items:
             - name: Podsieci
               href: virtual-network-manage-subnet.md
+            - name: Delegowanie podsieci
+              href: manage-subnet-delegation.md
             - name: Komunikacja równorzędna
               href: virtual-network-manage-peering.md
             - name: Ochrona przed atakami DDOS
