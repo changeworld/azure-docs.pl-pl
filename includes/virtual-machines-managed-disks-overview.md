@@ -1,6 +1,6 @@
 ---
-title: Plik dyrektywy include
-description: Plik dyrektywy include
+title: plik dołączany
+description: plik dołączany
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266912"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949726"
 ---
 ## <a name="benefits-of-managed-disks"></a>Zalety dysków zarządzanych
 
 Przejdźmy do niektórych korzyści z używania usługi Managed Disks.
 
-### <a name="highly-durable-and-available"></a>Duża trwałość i wysoka dostępność
+### <a name="highly-durable-and-available"></a>Wysoce trwałe i dostępne
 
-Dyski zarządzane są przeznaczone do dostępności na 99,999%. Dyski zarządzane uzyskują się w ten sposób, dostarczając trzy repliki danych, co zapewnia wysoką trwałość. Jeśli w jednej lub nawet w dwóch replikach wystąpią błędy, pozostałe repliki pomogą w zapewnieniu trwałości danych i dużej tolerancji w przypadku awarii. Ta architektura umożliwiła platformę Azure spójnie dostarczać trwałość klasy korporacyjnej dla dysków infrastruktury jako usługi (IaaS), a wiodący w branży ZERO% stawka niepowodzeń.
+Dyski zarządzane są przeznaczone do dostępności na 99,999%. Dyski zarządzane uzyskują się w ten sposób, dostarczając trzy repliki danych, co zapewnia wysoką trwałość. Jeśli jedna lub nawet dwie repliki napotykają problemy, pozostałe repliki pomagają zapewnić trwałość danych i wysoką tolerancję przed awariami. Ta architektura umożliwiła platformę Azure spójnie dostarczać trwałość klasy korporacyjnej dla dysków infrastruktury jako usługi (IaaS), a wiodący w branży ZERO% stawka niepowodzeń.
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Proste i skalowalne wdrożenie maszyny wirtualnej
 
@@ -33,7 +33,7 @@ Dyski zarządzane są zintegrowane z zestawami dostępności, aby upewnić się,
 
 ### <a name="integration-with-availability-zones"></a>Integracja z usługą Strefy dostępności
 
-Usługa Managed disks obsługuje [strefy dostępności](../articles/availability-zones/az-overview.md), która jest ofertą wysokiej dostępności, która chroni aplikacje przed awariami centrów danych. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Dzięki strefom dostępności platforma Azure oferuje najlepszą w branży umowę dotycząca poziomu usług (SLA) gwarantującą czas działania na poziomie 99,99%.
+Usługa Managed disks obsługuje [strefy dostępności](../articles/availability-zones/az-overview.md), która jest ofertą wysokiej dostępności, która chroni aplikacje przed awariami centrów danych. Strefy dostępności są unikatowymi lokalizacjami fizycznymi w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jednego centrum danych wyposażonego w niezależną moc, chłodzenie i sieci. W celu zapewnienia odporności dostępne są co najmniej trzy oddzielne strefy we wszystkich włączonych regionach. Dzięki Strefy dostępności platforma Azure oferuje branżową najlepszą umowę SLA na 99,99% czasu na maszynę wirtualną.
 
 ### <a name="azure-backup-support"></a>Obsługa Azure Backup
 
@@ -59,7 +59,7 @@ Dyski zarządzane oferują dwa różne rodzaje szyfrowania. Pierwszy jest szyfro
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Azure Disk Encryption pozwala na szyfrowanie dysków systemu operacyjnego i danych używanych przez maszynę wirtualną IaaS. To szyfrowanie obejmuje dyski zarządzane. W przypadku systemu Windows dyski są szyfrowane przy użyciu standardowej technologii szyfrowania funkcji BitLocker. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Proces szyfrowania jest zintegrowany z usługą Azure Key Vault, aby umożliwić kontrolowanie kluczy szyfrowania dysków i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [Azure Disk Encryption dla maszyn wirtualnych IaaS](../articles/security/azure-security-disk-encryption-overview.md).
+Azure Disk Encryption pozwala na szyfrowanie dysków systemu operacyjnego i danych używanych przez maszynę wirtualną IaaS. To szyfrowanie obejmuje dyski zarządzane. W przypadku systemu Windows dyski są szyfrowane przy użyciu standardowej technologii szyfrowania funkcji BitLocker. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Proces szyfrowania jest zintegrowany z Azure Key Vault, aby umożliwić kontrolowanie kluczy szyfrowania dysków i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [Azure Disk Encryption dla maszyn wirtualnych IaaS](../articles/security/azure-security-disk-encryption-overview.md).
 
 ## <a name="disk-roles"></a>Role dysków
 
@@ -67,13 +67,13 @@ Na platformie Azure istnieją trzy role dysków głównych: dysk danych, dysk sy
 
 ![Role dysków w działaniu](media/virtual-machines-managed-disks-overview/disk-types.png)
 
-### <a name="data-disk"></a>Dysk z danymi
+### <a name="data-disk"></a>Dysk danych
 
 Dysk danych to dysk zarządzany połączony z maszyną wirtualną w celu przechowywania danych aplikacji lub innych danych, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone wybraną literą. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 32 767 gibibajtach (GiB). Rozmiar maszyny wirtualnej określa liczbę dysków z danymi, które można dołączyć do niej, oraz typ magazynu, którego można użyć do hostowania dysków.
 
 ### <a name="os-disk"></a>Dysk systemu operacyjnego
 
-Każda maszyna wirtualna ma jeden dołączony dysk systemu operacyjnego. Ten dysk systemu operacyjnego ma wstępnie zainstalowany system operacyjny, który został wybrany podczas tworzenia maszyny wirtualnej.
+Każda maszyna wirtualna ma jeden dołączony dysk systemu operacyjnego. Ten dysk systemu operacyjnego ma wstępnie zainstalowany system operacyjny, który został wybrany podczas tworzenia maszyny wirtualnej. Ten dysk zawiera wolumin rozruchowy.
 
 Ten dysk ma maksymalną pojemność wynoszącą 2 048 GiB.
 
@@ -90,7 +90,7 @@ Migawki są rozliczane na podstawie użytego rozmiaru. Na przykład, jeśli utwo
 Aby dowiedzieć się więcej na temat tworzenia migawek z dyskami zarządzanymi, zobacz następujące zasoby:
 
 * [Tworzenie kopii wirtualnego dysku twardego przechowywanego jako dysk zarządzany przy użyciu migawek w systemie Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Tworzenie kopii wirtualnego dysku twardego przechowywanej jako dysk zarządzany przy użyciu migawek w systemie Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Tworzenie kopii wirtualnego dysku twardego przechowywanego jako dysk zarządzany przy użyciu migawek w systemie Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>Obrazy
 
@@ -99,7 +99,7 @@ Dyski zarządzane obsługują również tworzenie zarządzanego obrazu niestanda
 Aby uzyskać informacje na temat tworzenia obrazów, zobacz następujące artykuły:
 
 * [Jak przechwycić zarządzany obraz uogólnionej maszyny wirtualnej na platformie Azure](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Uogólnianie i przechwytywanie maszyny wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/capture-image.md)
+* [Jak uogólniać i przechwytywać maszynę wirtualną z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Obrazy i migawki
 
