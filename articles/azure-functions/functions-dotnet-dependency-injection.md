@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: e1cf67abcc44a3ca134e5435137869d4fff1a7eb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: de8782edcc8b9c64621f1ca67d4bb810c926afaf
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162358"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973385"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Używanie iniekcji zależności w programie .NET Azure Functions
 
@@ -31,15 +31,15 @@ Azure Functions obsługuje wzorzec projektowania oprogramowania dla iniekcji zal
 
 Aby można było użyć iniekcji zależności, należy zainstalować następujące pakiety NuGet:
 
-- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Pakiet Microsoft. NET. Sdk. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) w wersji 1.0.28 lub nowszej
 
 ## <a name="register-services"></a>Zarejestruj usługi
 
-Aby zarejestrować usługi, należy utworzyć metodę konfigurowania i dodawania składników do `IFunctionsHostBuilder` wystąpienia.  Azure Functions host tworzy wystąpienie `IFunctionsHostBuilder` i przekazuje je bezpośrednio do metody.
+Aby zarejestrować usługi, należy utworzyć metodę konfigurowania i dodawania składników do wystąpienia `IFunctionsHostBuilder`.  Azure Functions host tworzy wystąpienie `IFunctionsHostBuilder` i przekazuje je bezpośrednio do metody.
 
-Aby zarejestrować metodę, Dodaj `FunctionsStartup` atrybut zestawu, który określa nazwę typu używaną podczas uruchamiania.
+Aby zarejestrować metodę, Dodaj atrybut zestawu `FunctionsStartup`, który określa nazwę typu używaną podczas uruchamiania.
 
 ```csharp
 using System;
@@ -72,15 +72,15 @@ namespace MyNamespace
 
 Seria kroków rejestracji jest uruchamiana przed i po przetworzeniu klasy startowej przez środowisko uruchomieniowe. W związku z tym należy wziąć pod uwagę następujące elementy:
 
-- *Klasa startowa jest przeznaczona tylko do konfiguracji i rejestracji.* Unikaj korzystania z usług zarejestrowanych podczas uruchamiania podczas uruchamiania. Na przykład nie należy próbować rejestrować komunikatu w rejestratorze, który jest rejestrowany podczas uruchamiania. Ten punkt procesu rejestracji jest zbyt wczesny, aby Twoje usługi były dostępne do użycia. Po uruchomieniu `Configure` metody środowisko uruchomieniowe funkcji kontynuuje rejestrowanie dodatkowych zależności, co może wpłynąć na działanie usług.
+- *Klasa startowa jest przeznaczona tylko do konfiguracji i rejestracji.* Unikaj korzystania z usług zarejestrowanych podczas uruchamiania podczas uruchamiania. Na przykład nie należy próbować rejestrować komunikatu w rejestratorze, który jest rejestrowany podczas uruchamiania. Ten punkt procesu rejestracji jest zbyt wczesny, aby Twoje usługi były dostępne do użycia. Po uruchomieniu metody `Configure` środowisko uruchomieniowe funkcji kontynuuje rejestrowanie dodatkowych zależności, co może wpłynąć na działanie usług.
 
-- *Kontener iniekcji zależności zawiera tylko jawnie zarejestrowane typy*. Jedyne usługi dostępne jako typy z możliwością iniekcji to ustawienia konfiguracji `Configure` w metodzie. W efekcie typy specyficzne dla funkcji, takie jak `BindingContext` i `ExecutionContext` , nie są dostępne podczas instalacji lub jako typy wstrzykiwane.
+- *Kontener iniekcji zależności zawiera tylko jawnie zarejestrowane typy*. Jedyne usługi dostępne jako typy z możliwością wstrzykiwania to ustawienia konfiguracji w metodzie `Configure`. W związku z tym typy specyficzne dla funkcji, takie jak `BindingContext` i `ExecutionContext`, nie są dostępne podczas instalacji ani jako typy wstrzykiwane.
 
 ## <a name="use-injected-dependencies"></a>Użyj wstrzykiwanych zależności
 
 Iniekcja konstruktora służy do udostępniania zależności w funkcji. Użycie iniekcji konstruktora wymaga, aby nie używać klas statycznych.
 
-Poniższy przykład demonstruje, jak `IMyService` i `HttpClient` zależności są wstrzykiwane do funkcji wyzwalanej przez protokół http. W tym przykładzie zastosowano pakiet [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) wymagany do zarejestrowania podczas uruchamiania. `HttpClient`
+Poniższy przykład demonstruje, jak zależności `IMyService` i `HttpClient` są wstrzykiwane do funkcji wyzwalanej przez protokół HTTP. W tym przykładzie zastosowano pakiet [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) wymagany do zarejestrowania `HttpClient` podczas uruchamiania.
 
 ```csharp
 using System;
@@ -124,19 +124,19 @@ namespace MyNamespace
 
 Aplikacje Azure Functions zapewniają te same okresy istnienia usługi jak [iniekcja zależności ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). W przypadku aplikacji funkcji różne okresy istnienia usługi działają w następujący sposób:
 
-- **Przejściowy**: Dla każdego żądania usługi są tworzone usługi przejściowe.
-- **Zakres**: Okres istnienia usługi w zakresie jest zgodny z okresem istnienia funkcji. Usługi w zakresie są tworzone raz na wykonanie. Późniejsze żądania dla tej usługi podczas wykonywania ponownie użyją istniejącego wystąpienia usługi.
-- **Pojedyncze**: Okres istnienia usługi pojedynczej jest zgodny z okresem istnienia hosta i jest ponownie używany w ramach wykonywania funkcji w tym wystąpieniu. Pojedyncze usługi okresu istnienia są zalecane dla połączeń i klientów, `SqlConnection` na `HttpClient` przykład lub dla wystąpień.
+- **Przejściowe**: usługi przejściowe są tworzone na podstawie każdego żądania usługi.
+- W **zakresie**: okres istnienia usługi w zakresie jest zgodny z okresem istnienia funkcji. Usługi w zakresie są tworzone raz na wykonanie. Późniejsze żądania dla tej usługi podczas wykonywania ponownie użyją istniejącego wystąpienia usługi.
+- **Pojedyncze**: okres istnienia usługi pojedynczej jest zgodny z okresem istnienia hosta i jest ponownie używany w ramach wykonywania funkcji w tym wystąpieniu. Dla połączeń i klientów zaleca się używanie pojedynczych usług okresu istnienia, na przykład `SqlConnection` lub `HttpClient`.
 
 Wyświetl lub Pobierz [przykład różnych okresów istnienia usługi](https://aka.ms/functions/di-sample) w serwisie GitHub.
 
 ## <a name="logging-services"></a>Usługi rejestrowania
 
-Jeśli potrzebujesz własnego dostawcy rejestrowania, Zarejestruj niestandardowy typ jako `ILoggerProvider` wystąpienie. Application Insights jest automatycznie dodawane przez Azure Functions.
+Jeśli potrzebujesz własnego dostawcy rejestrowania, Zarejestruj niestandardowy typ jako wystąpienie `ILoggerProvider`. Application Insights jest automatycznie dodawane przez Azure Functions.
 
 > [!WARNING]
-> - Nie należy dodawać `AddApplicationInsightsTelemetry()` do kolekcji usług, ponieważ rejestruje ona usługi, które powodują konflikt z usługami udostępnianymi przez środowisko.
-> - Nie rejestruj własnych `TelemetryConfiguration` ani `TelemetryClient` nie korzystasz z wbudowanej funkcji Application Insights.
+> - Nie należy dodawać `AddApplicationInsightsTelemetry()` do kolekcji usług, ponieważ rejestruje ona usługi powodujące konflikt z usługami udostępnianymi przez środowisko.
+> - Nie rejestruj własnych `TelemetryConfiguration` lub `TelemetryClient`, jeśli używasz wbudowanej funkcji Application Insights.
 
 ## <a name="function-app-provided-services"></a>Usługi funkcji dostarczone przez aplikację
 
@@ -155,9 +155,11 @@ Zastępowanie usług dostarczonych przez hosta nie jest obecnie obsługiwane.  J
 
 ## <a name="working-with-options-and-settings"></a>Praca z opcjami i ustawieniami
 
-Wartości zdefiniowane w [ustawieniach aplikacji](./functions-how-to-use-azure-function-app-settings.md#settings) są dostępne w `IConfiguration` wystąpieniu, co umożliwia odczytywanie wartości ustawień aplikacji w klasie startowej.
+Wartości zdefiniowane w [ustawieniach aplikacji](./functions-how-to-use-azure-function-app-settings.md#settings) są dostępne w wystąpieniu `IConfiguration`, co umożliwia odczytywanie wartości ustawień aplikacji w klasie startowej.
 
-Można wyodrębnić wartości z `IConfiguration` wystąpienia do typu niestandardowego. Kopiowanie wartości ustawień aplikacji do typu niestandardowego ułatwia testowanie usług dzięki wprowadzeniu tych wartości do dodania. Rozważmy następującą klasę, która zawiera właściwość o nazwie spójne z ustawieniem aplikacji.
+Można wyodrębnić wartości z wystąpienia `IConfiguration` do typu niestandardowego. Kopiowanie wartości ustawień aplikacji do typu niestandardowego ułatwia testowanie usług dzięki wprowadzeniu tych wartości do dodania. Ustawienia odczytywane w wystąpieniu konfiguracji muszą być prostymi parami klucz/wartość.
+
+Rozważmy następującą klasę, która zawiera właściwość o nazwie spójne z ustawieniem aplikacji.
 
 ```csharp
 public class MyOptions
@@ -166,7 +168,7 @@ public class MyOptions
 }
 ```
 
-Wewnątrz `Startup.Configure` metody można wyodrębnić wartości `IConfiguration` z wystąpienia do typu niestandardowego przy użyciu następującego kodu:
+Wewnątrz metody `Startup.Configure` można wyodrębnić wartości z wystąpienia `IConfiguration` do typu niestandardowego przy użyciu następującego kodu:
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -176,9 +178,9 @@ builder.Services.AddOptions<MyOptions>()
                                            });
 ```
 
-Wywoływanie `Bind` kopii wartości, które mają pasujące nazwy właściwości z konfiguracji do wystąpienia niestandardowego. Wystąpienie opcji jest teraz dostępne w kontenerze IoC, aby wstrzyknąć do funkcji.
+Wywołanie `Bind` kopiuje wartości, które mają pasujące nazwy właściwości z konfiguracji do wystąpienia niestandardowego. Wystąpienie opcji jest teraz dostępne w kontenerze IoC, aby wstrzyknąć do funkcji.
 
-Obiekt options jest wstrzykiwany do funkcji jako wystąpienie interfejsu generycznego `IOptions` . `Value` Użyj właściwości, aby uzyskać dostęp do wartości znajdujących się w konfiguracji.
+Obiekt options jest wstrzykiwany do funkcji jako wystąpienie ogólnego interfejsu `IOptions`. Użyj właściwości `Value`, aby uzyskać dostęp do wartości znajdujących się w konfiguracji.
 
 ```csharp
 using System;
@@ -203,7 +205,7 @@ Zapoznaj się z [wzorcem opcji w ASP.NET Core](https://docs.microsoft.com/aspnet
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji, zobacz następujące zasoby:
+Więcej informacji zawierają następujące zasoby:
 
 - [Jak monitorować aplikację funkcji](functions-monitoring.md)
 - [Najlepsze rozwiązania dotyczące funkcji](functions-best-practices.md)

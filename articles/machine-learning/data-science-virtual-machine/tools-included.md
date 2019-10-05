@@ -2,7 +2,7 @@
 title: Narzędzia dołączone do DSVM
 titleSuffix: Azure Data Science Virtual Machine tools
 description: Lista narzędzi dostępnych w obrazach systemu Windows i Ubuntu DSVM
-keywords: narzędzia do nauki dotyczące danych, maszyna wirtualna do nauki o danych, narzędzia do nauki o danych, nauka danych systemu Linux
+keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,27 +10,27 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: overview
 ms.date: 09/27/2019
-ms.openlocfilehash: e8f0eeabd4e869b3812f2d690d2665a8ec31cd14
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: eef8ddf31f038afffddfa6b818c266c1cb4a3d44
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950145"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973674"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Jakie narzędzia są dostępne na platformie Azure Data Science Virtual Machine?
 
 Poniżej zamieszczono aktualną listę narzędzi uwzględnionych w Data Science Virtual Machine oraz linki do zrozumienia sposobu konfiguracji poszczególnych narzędzi.
 
 
-| **Narzędziem**                                                           | **DSVM systemu Windows** | **DSVM systemu Linux** | **Uwagi dotyczące użycia** |
+| **Narzędzie**                                                           | **Maszyna DSVM z systemem Windows** | **DSVM systemu Linux** | **Uwagi dotyczące użycia** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|:------:|
-| [Microsoft R Open](https://mran.microsoft.com/open/) ze wstępnie zainstalowanymi popularnymi pakietami   |<span class='green-check'>&#9989;</span></br> 3\.4.3                    |<span class='green-check'>&#9989;</span></br> 3\.4.3  | [R na DSVM](./dsvm-languages.md#r)           |
+| [Microsoft R Open](https://mran.microsoft.com/open/) z preinstalowanymi popularnymi pakietami   |<span class='green-check'>&#9989;</span></br> 3\.4.3                    |<span class='green-check'>&#9989;</span></br> 3\.4.3  | [R na DSVM](./dsvm-languages.md#r)           |
 | [Microsoft Machine Learning Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) Wersja Developer zawiera: <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [kolekcję funkcji revoscaler/biblioteki revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) Parallel i Distributed High-Performance Platform (R i Python)<br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package), nowe, najnowocześniejsze algorytmy uczenia maszynowego firmy Microsoft <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [R i Python operacjonalizacji](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |<span class='green-check'>&#9989;</span>  </br> (9.3.0)                 |<span class='green-check'>&#9989;</span> | |
 | [Microsoft Office](https://products.office.com/business/office-365-proplus-business-software) ProPlus z aktywację udostępnioną: Excel, Word i PowerPoint   |<span class='green-check'>&#9989;</span>                       |<span class='red-x'>&#10060;</span>              | |
 | [Anaconda Python](https://www.continuum.io/) 2,7 i 3,5 z preinstalowanymi popularnymi pakietami    |<span class='green-check'>&#9989;</span>                       |<span class='green-check'>&#9989;</span></br> (4,2)        | |
-| [JuliaPro](https://juliacomputing.com/products/juliapro.html) ze popularnymi pakietami dla wstępnie zainstalowanego języka Julia                         |<span class='green-check'>&#9989;</span> </br> (0.6.4)                   |<span class='green-check'>&#9989;</span></br> (0.6.2)              | [Julia na DSVM](./dsvm-languages.md#julia) |
-| Relacyjne bazy danych                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Wersja Developer| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) | [SQL Server w DSVM](./dsvm-data-platforms.md#sql-server-2017-developer-edition) |
-| Narzędzia bazy danych                                                       |  SQL Server Management Studio <br/> SQL Server Integration Services<br/> [BCP, SQLCMD](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br />  Sterowniki ODBC/JDBC|  [Squirrel SQL](http://squirrel-sql.sourceforge.net/) (narzędzie do wykonywania zapytań), <br />  BCP, SQLCMD <br />  Sterowniki ODBC/JDBC| |
+| [JuliaPro](https://juliacomputing.com/products/juliapro.html) z preinstalowanymi popularnymi pakietami języka Julia                         |<span class='green-check'>&#9989;</span> </br> (0.6.4)                   |<span class='green-check'>&#9989;</span></br> (0.6.2)              | [Julia na DSVM](./dsvm-languages.md#julia) |
+| Relacyjne bazy danych                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) | [SQL Server w DSVM](./dsvm-data-platforms.md#sql-server-2017-developer-edition) |
+| Narzędzia bazy danych                                                       |  SQL Server Management Studio <br/> Usługi integracji programu SQL Server<br/> [BCP, SQLCMD](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br />  Sterowniki ODBC/JDBC|  [Squirrel SQL](http://squirrel-sql.sourceforge.net/) (narzędzie do wykonywania zapytań), <br />  BCP, SQLCMD <br />  Sterowniki ODBC/JDBC| |
 | Skalowalna analiza w bazie danych za pomocą usługi SQL Server Machine Learning (R, Python) |<span class='green-check'>&#9989;</span>    | <span class='red-x'>&#10060;</span>                | |
 | [Serwer Jupyter Notebook](https://jupyter.org/) z następującymi jądrami:                                  |<span class='green-check'>&#9989;</span></br> 5\.5.0   |<span class='green-check'>&#9989;</span> | [Przykłady Jupyter Notebook](./dsvm-samples-and-walkthroughs.md) | 
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 R |<span class='green-check'>&#9989;</span></br> 3\.4.3 |<span class='green-check'>&#9989;</span></br> 3\.4.3 | [Przykłady języka R Jupyter](./dsvm-samples-and-walkthroughs.md#r-language) |
@@ -54,8 +54,8 @@ Poniżej zamieszczono aktualną listę narzędzi uwzględnionych w Data Science 
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [git](https://git-scm.com/) i git bash |<span class='green-check'>&#9989;</span></br> (2.20.1) |<span class='green-check'>&#9989;</span></br> (0.6.2) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [OpenJDK](https://openjdk.java.net) |<span class='green-check'>&#9989;</span></br> (1.8.0_201) |<span class='green-check'>&#9989;</span></br> (1.8.0_222) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 .NET Framework |<span class='green-check'>&#9989;</span></br> 4\.7.2 |<span class='red-x'>&#10060;</span>   | |
-| [Power BI Desktop](https://powerbi.microsoft.com/en-us/) |<span class='green-check'>&#9989;</span></br> (2.65.5313.1381) |<span class='red-x'>&#10060;</span>   |
-| Zestawy SDK umożliwiające dostęp do platformy Azure i Cortana Intelligence Suite usług |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span> | [Power BI pulpicie DSVM](./dsvm-tools-development.md#power-bi-desktop) |
+| [Program Power BI Desktop](https://powerbi.microsoft.com/en-us/) |<span class='green-check'>&#9989;</span></br> (2.65.5313.1381) |<span class='red-x'>&#10060;</span>   |
+| Zestawy SDK umożliwiające dostęp do platformy Azure i pakietu usług Cortana Intelligence Suite |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span> | [Power BI pulpicie DSVM](./dsvm-tools-development.md#power-bi-desktop) |
 | Narzędzia do przenoszenia i zarządzania danymi: | | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Eksplorator usługi Azure Storage](https://azure.microsoft.com/en-us/features/storage-explorer/) |<span class='green-check'>&#9989;</span></br> 1\.6.2 |<span class='green-check'>&#9989;</span></br> (0.7.20160129.1) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure) |<span class='green-check'>&#9989;</span></br> (2.0.56) |<span class='green-check'>&#9989;</span></br> (2.0.58) | |
@@ -81,6 +81,9 @@ Poniżej zamieszczono aktualną listę narzędzi uwzględnionych w Data Science 
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Horovod](https://github.com/horovod/horovod) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (0.16.1) | [Horovod na DSVM](./dsvm-deep-learning-ai-frameworks.md#horovod) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Keras](https://keras.io) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> 2\.2.4 | [Keras na DSVM](./dsvm-deep-learning-ai-frameworks.md#keras) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/en-us/cognitive-toolkit/) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> 2\.5.1 | [CNTK na DSVM](./dsvm-deep-learning-ai-frameworks.md#microsoft-cognitive-toolkit-cntk) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MXNet](https://mxnet.apache.org/) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> (1.3.0) | [MXNet na DSVM](./dsvm-deep-learning-ai-frameworks.md#mxnet) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MXNet model Server](https://github.com/awslabs/mxnet-model-server#quick-start) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> 1\.0.1 | [Serwer modelu MXNet na DSVM](./dsvm-deep-learning-ai-frameworks.md#mxnet-model-server) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [NVIDIA System Management Interface (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br>| [NVIDIA-SMI na DSVM](./dsvm-deep-learning-ai-frameworks.md#nvidia-system-management-interface-nvidia-smi) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [PyTorch](https://pytorch.org) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> 1\.2.0 | [PyTorch na DSVM](./dsvm-deep-learning-ai-frameworks.md#pytorch) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [TensorFlow](https://www.tensorflow.org) |<span class='green-check'>&#9989;</span></br> (1,13) |<span class='green-check'>&#9989;</span></br> (1,13) | [TensorFlow na DSVM](./dsvm-deep-learning-ai-frameworks.md#tensorflow) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [TensorFlow obsługujący](https://www.tensorflow.org/tfx/guide/serving) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (1.12.0) | [TensorFlow na DSVM](./dsvm-deep-learning-ai-frameworks.md#tensorflow-serving) |

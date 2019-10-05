@@ -8,12 +8,12 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: e6df6a1f751106f62cdfecc3a7b5efb0fe4c63bf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 732ce570f8235d1f147055af6972c2a8d12599dc
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875995"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971626"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Eksportowanie danych do usługi Azure IoT Central
 
@@ -33,9 +33,9 @@ W tym artykule opisano sposób używania funkcji ciągłego eksportu danych w us
 
 ## <a name="set-up-export-destination"></a>Skonfiguruj miejsce docelowe eksportu
 
-Jeśli nie masz istniejącego Event Hubs/Service Bus do eksportowania do programu, wykonaj następujące kroki:
+Jeśli nie masz istniejącego Event Hubs/Service Bus do eksportowania do programu, wykonaj następujące kroki, aby je utworzyć:
 
-## <a name="create-event-hubs-namespace"></a>Tworzenie przestrzeni nazw Event Hubs
+### <a name="create-event-hubs-namespace"></a>Tworzenie przestrzeni nazw Event Hubs
 
 1. Utwórz [nową przestrzeń nazw Event Hubs w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Więcej informacji można znaleźć w witrynie [Azure Event Hubs docs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 2. wybierz subskrypcję. 
@@ -44,7 +44,7 @@ Jeśli nie masz istniejącego Event Hubs/Service Bus do eksportowania do program
     > Teraz możesz eksportować dane do innych subskrypcji, które **nie są takie same** jak dla aplikacji z opcją płatność zgodnie z rzeczywistym użyciem IoT Central. W tym przypadku zostanie nawiązane połączenie przy użyciu parametrów połączenia.
 3. Utwórz centrum zdarzeń w przestrzeni nazw Event Hubs. Przejdź do obszaru nazw, a następnie wybierz pozycję **+ centrum zdarzeń** u góry, aby utworzyć wystąpienie centrum zdarzeń.
 
-## <a name="create-service-bus-namespace"></a>Tworzenie przestrzeni nazw Service Bus
+### <a name="create-service-bus-namespace"></a>Tworzenie przestrzeni nazw Service Bus
 
 1. Utwórz [nową przestrzeń nazw Service Bus w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . Więcej informacji można znaleźć w dokumentacji [Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
 2. wybierz subskrypcję. 
@@ -66,16 +66,14 @@ Teraz, gdy masz miejsce docelowe Event Hubs/Service Bus do eksportowania danych 
     > [!Note]
     > Jeśli nie widzisz ciągłego eksportu danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Skontaktuj się z administratorem, aby skonfigurować eksportowanie danych.
 
-    ![Utwórz nowe centrum zdarzeń CDE](media/howto-export-data/export_menu1.png)
-
 3. Wybierz przycisk **+ Nowy** w prawym górnym rogu. Wybierz jedną z **Event Hubs platformy Azure** lub **Azure Service Bus** jako lokalizację docelową eksportu. 
 
     > [!NOTE] 
     > Maksymalna liczba eksportów na aplikację wynosi pięć. 
 
-    ![Utwórz nowy ciągły eksport danych](media/howto-export-data/export_new1.png)
+    ![Utwórz nowy ciągły eksport danych](media/howto-export-data/export-new2.png)
 
-4. W polu listy rozwijanej wybierz **Event Hubs przestrzeń nazw/Service Bus przestrzeń**nazw. Możesz również wybrać ostatnią opcję z listy, która jest wprowadzeniem **parametrów połączenia**. 
+4. W polu listy rozwijanej wybierz **Event Hubs przestrzeń nazw/Service Bus przestrzeń**nazw. Możesz również wybrać ostatnią opcję z listy, która jest **wprowadzeniem parametrów połączenia**. 
 
     > [!NOTE] 
     > Będą widoczne tylko konta magazynu/Event Hubs przestrzenie nazw/Service Bus przestrzenie nazw w **tej samej subskrypcji,** w której znajduje się aplikacja IoT Central. Jeśli chcesz wyeksportować do lokalizacji docelowej poza tą subskrypcją, wybierz pozycję **wprowadź parametry połączenia** i zobacz krok 5.
@@ -83,11 +81,11 @@ Teraz, gdy masz miejsce docelowe Event Hubs/Service Bus do eksportowania danych 
     > [!NOTE] 
     > W przypadku 7-dniowych aplikacji próbnych jedynym sposobem skonfigurowania ciągłego eksportu danych jest użycie parametrów połączenia. Wynika to z faktu, że 7-dniowe aplikacje próbne nie mają skojarzonej subskrypcji platformy Azure.
 
-    ![Utwórz nowe centrum zdarzeń CDE](media/howto-export-data/export_create1.png)
+    ![Utwórz nowe centrum zdarzeń CDE](media/howto-export-data/export-eh.png)
 
 5. Obowiązkowe W przypadku wybrania opcji **wprowadź parametry połączenia**pojawi się nowe pole umożliwiające wklejenie parametrów połączenia. Aby uzyskać parametry połączenia dla:
     - Event Hubs lub Service Bus, przejdź do przestrzeni nazw w Azure Portal.
-        - W obszarze **Ustawienia**wybierz pozycję **zasady dostępu** współdzielonego.
+        - W obszarze **Ustawienia**wybierz pozycję **zasady dostępu współdzielonego** .
         - Wybierz domyślną **RootManageSharedAccessKey** lub Utwórz nową
         - Skopiuj podstawowe lub pomocnicze parametry połączenia
  
@@ -95,14 +93,12 @@ Teraz, gdy masz miejsce docelowe Event Hubs/Service Bus do eksportowania danych 
 
 7. W obszarze **dane do eksportowania**Określ każdy typ danych do wyeksportowania, ustawiając typ na wartość **włączone**.
 
-6. Aby włączyć funkcję ciągłego eksportowania danych, upewnij się, że **Eksportowanie danych** jest **włączone**. Wybierz pozycję **Zapisz**.
+8. Aby włączyć ciągły eksport danych, upewnij się, że przełącznik **eksportu danych** jest **włączony**. Wybierz pozycję **Zapisz**.
 
-    ![Konfigurowanie ciągłego eksportowania danych](media/howto-export-data/export_list1.png)
-
-7. Po kilku minutach dane zostaną wyświetlone w wybranym miejscu docelowym.
+9. Po kilku minutach dane zostaną wyświetlone w wybranym miejscu docelowym.
 
 
-## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Eksportuj do usługi Azure Event Hubs i Azure Service Bus
+## <a name="data-format"></a>Format danych
 
 Dane pomiarów, urządzeń i szablonów urządzeń są eksportowane do centrum zdarzeń lub kolejki Service Bus lub tematu w niemal czasie rzeczywistym. Eksportowane dane pomiarów zawierają część komunikatów wysyłanych przez urządzenia do IoT Central, a nie tylko wartości pomiarów. Dane wyeksportowanych urządzeń zawierają zmiany właściwości i ustawień wszystkich urządzeń, a wyeksportowane szablony urządzeń zawierają zmiany we wszystkich szablonach urządzeń. Eksportowane dane są we właściwości "Body" i są w formacie JSON.
 
@@ -146,7 +142,7 @@ Poniższy przykład przedstawia komunikat dotyczący danych pomiarów odebranych
     "x-opt-enqueued-time": 1539381030200
   },
   "sequenceNumber": 25325,
-  "enqueuedTimeUtc": "2018-10-12T21:50:30.200Z",
+  "enqueuedTimeUtc": "2018-10-02T21:50:30.200Z",
   "offset": "<offset>",
   "properties": {
     "content_type": "application/json",
@@ -162,9 +158,9 @@ Komunikaty zawierające dane urządzenia są wysyłane do centrum zdarzeń lub k
 - Urządzenia ze zmienionymi wartościami właściwości i ustawień
 
 Każdy komunikat reprezentuje co najmniej jedną zmianę urządzenia od ostatniego wyeksportowanego komunikatu. Informacje wysyłane w poszczególnych wiadomościach obejmują:
-- `id`urządzenia w IoT Central
-- `name`urządzenia
-- `deviceId`z [usługi Device](https://aka.ms/iotcentraldocsdps) Provisioning
+- `id` urządzenia w IoT Central
+- `name` urządzenia
+- `deviceId` z [usługi Device Provisioning](https://aka.ms/iotcentraldocsdps)
 - Informacje o szablonie urządzenia
 - Wartości właściwości
 - Ustawianie wartości
@@ -211,7 +207,7 @@ Poniższy przykład przedstawia komunikat dotyczący danych urządzenia w centru
   },
   "partitionKey": "<partitionKey>",
   "sequenceNumber": 39740,
-  "enqueuedTimeUtc": "2018-10-11T16:22:39.654Z",
+  "enqueuedTimeUtc": "2018-10-02T16:22:39.654Z",
   "offset": "<offset>",
 }
 ```
@@ -223,9 +219,9 @@ Komunikaty zawierające szablony urządzeń są wysyłane do centrum zdarzeń lu
 - Szablony urządzeń ze zmienionymi pomiarymi, właściwościami i definicjami ustawień
 
 Każdy komunikat reprezentuje co najmniej jedną zmianę w szablonie urządzenia od ostatniego wyeksportowanego komunikatu. Informacje wysyłane w poszczególnych wiadomościach obejmują:
-- `id`szablonu urządzenia
-- `name`szablonu urządzenia
-- `version`szablonu urządzenia
+- `id` szablonu urządzenia
+- `name` szablonu urządzenia
+- `version` szablonu urządzenia
 - Typy danych pomiarowych i wartości minimalne/maksymalne
 - Typy danych właściwości i wartości domyślne
 - Ustawianie typów danych i wartości domyślnych
@@ -236,62 +232,62 @@ Każdy komunikat reprezentuje co najmniej jedną zmianę w szablonie urządzenia
 Poniższy przykład przedstawia komunikat dotyczący danych szablonów urządzeń w centrum zdarzeń lub Service Bus kolejki lub tematu:
 
 ```json
-{
-  "body": {
-    "id": "<id>",
-    "version": "1.0.0",
-    "name": "<templateName>",
-    "measurements": {
-      "telemetry": {
-        "humidity": {
-          "dataType": "double",
-          "name": "humidity"
+{ 
+  "body":{ 
+    "id":"<id>",
+    "version":"1.0.0",
+    "name":"<templateName>",
+    "measurements":{ 
+      "telemetry":{ 
+        "humidity":{ 
+          "dataType":"double",
+          "name":"humidity"
         },
-        "pressure": {
-          "dataType": "double",
-          "name": "pressure"
+        "pressure":{ 
+          "dataType":"double",
+          "name":"pressure"
         },
-        "temp": {
-          "dataType": "double",
-          "name": "temperature"
+        "temp":{ 
+          "dataType":"double",
+          "name":"temperature"
         }
       }
     },
-    "properties": {
-      "cloud": {
-        "location": {
-          "dataType": "string",
-          "name": "Location"
+    "properties":{ 
+      "cloud":{ 
+        "location":{ 
+          "dataType":"string",
+          "name":"Location"
         }
       },
-      "device": {
-        "dieNumber": {
-          "dataType": "double",
-          "name": "Die Number"
+      "device":{ 
+        "dieNumber":{ 
+          "dataType":"double",
+          "name":"Die Number"
         }
       }
     },
-    "settings": {
-      "device": {
-        "fanSpeed": {
-          "dataType": "double",
-          "name": "Fan Speed",
-          "initialValue": 0
+    "settings":{ 
+      "device":{ 
+        "fanSpeed":{ 
+          "dataType":"double",
+          "name":"Fan Speed",
+          "initialValue":0
         }
       }
     }
   },
-  "annotations": {
-    "iotcentral-message-source": "deviceTemplates",
-    "x-opt-partition-key": "<partitionKey>",
-    "x-opt-sequence-number": 25315,
-    "x-opt-offset": "<offset>",
-    "x-opt-enqueued-time": 1539274985085
+  "annotations":{ 
+    "iotcentral-message-source":"deviceTemplates",
+    "x-opt-partition-key":"<partitionKey>",
+    "x-opt-sequence-number":25315,
+    "x-opt-offset":"<offset>",
+    "x-opt-enqueued-time":1539274985085
   },
-  "partitionKey": "<partitionKey>",
-  "sequenceNumber": 25315,
-  "enqueuedTimeUtc": "2018-10-11T16:23:05.085Z",
-  "offset": "<offset>",
+  "partitionKey":"<partitionKey>",
+  "sequenceNumber":25315,
+  "enqueuedTimeUtc":"2018-10-02T16:23:05.085Z",
+  "offset":"<offset>"
 }
 ```
 

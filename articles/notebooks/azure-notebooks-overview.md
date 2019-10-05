@@ -4,21 +4,20 @@ description: Notesy Jupyter można uruchamiać w chmurze przy użyciu bezpłatne
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/05/2019
 ms.author: kraigb
-ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12d9a1a92c0b008244c7db4ec23d5a28888b042a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60634324"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973163"
 ---
 # <a name="overview-of-azure-notebooks"></a>Omówienie usługi Azure Notebooks
 
@@ -59,7 +58,7 @@ Azure Notebooks to bezpłatna usługa, jednak każdy projekt jest ograniczony do
 
 Aby zwolnić wszystkie limity, zaloguj się do usługi Azure Notebooks przy użyciu konta korzystającego z usługi Azure Active Directory (na przykład konta firmowego). Jeśli to konto jest skojarzone z subskrypcją platformy Azure, możesz nawiązać połączenie z dowolnymi wystąpieniami usługi Azure Data Science Virtual Machine w ramach tej subskrypcji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie projektów i zarządzanie nimi — warstwa Obliczenia](configure-manage-azure-notebooks-projects.md#compute-tier).
 
-Serwery Notes jest gwarantowana ma ich na maksymalnie 8 godzin. W większości przypadków kontenera nie podlegają ten limit i kontynuuje działanie po tym terminie, ale długotrwałe sesje mogą czasami zamknięty dla stabilności systemu.
+Serwery notesów mają gwarantowane istnienie przez maksymalnie 8 godzin. W większości przypadków kontener nie podlega temu ograniczeniu i w dalszym ciągu działa dłużej, ale długotrwałe sesje mogą być czasami wyłączone w celu zapewnienia stabilności systemu.
 
 ## <a name="available-kernels-and-environments"></a>Dostępne jądra i środowiska
 
@@ -73,7 +72,7 @@ Dla każdego notesu można wybrać jądro (tj. środowisko uruchomieniowe), któ
 
 Usługa Azure Notebooks udostępnia również dodatkowe pakiety, które nie znajdują się w podstawowych dystrybucjach. Na przykład jądra języka Python zawierają biblioteki numpy, pandas, scikit-learn, matplotlib i bokeh.
 
-Można również dostosować projekt, tworząc środowisko dla wszystkich notesów. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie projektu w środowisku niestandardowym](quickstart-create-jupyter-notebook-project-environment.md)
+Można również dostosować projekt, tworząc środowisko dla wszystkich notesów. Aby uzyskać więcej informacji, zobacz [Szybki start: tworzenie projektu w środowisku niestandardowym](quickstart-create-jupyter-notebook-project-environment.md).
 
 Oprócz podstawowych dystrybucji usługa Azure Notebooks udostępnia wiele dodatkowych, wstępnie zainstalowanych pakietów, które są przydatne dla analityków danych. Można także instalować własne pakiety, korzystając z typowych procesów dla poszczególnych języków.
 

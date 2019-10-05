@@ -1,26 +1,26 @@
 ---
-title: Obsługiwane wersje w Azure Database for MariaDB
-description: Opisuje obsługiwane wersje w Azure Database for MariaDB.
+title: Obsługiwane wersje — Azure Database for MariaDB
+description: Dowiedz się, które wersje serwera MariaDB są obsługiwane w usłudze Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: e5d1dbc8c212d4cdefb12fb740a454324d3adfa1
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 950f8600dac6fccfa72f5dea6e900a210572ee38
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962919"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973539"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>Obsługiwane wersje serwera Azure Database for MariaDB
 
-Azure Database for MariaDB został opracowany z [serwera MariaDB](https://downloads.mariadb.org/)"open source" przy użyciu aparatu InnoDB. 
+Azure Database for MariaDB został opracowany z [serwera MariaDB](https://downloads.mariadb.org/)"open source" przy użyciu aparatu InnoDB.
 
 MariaDB używa schematu nazewnictwa X. Y. Z. X jest wersją główną, Y jest wersją pomocniczą i Z jest wersją poprawki.
 
 > [!NOTE]
-> W usłudze brama służy do przekierowywania połączeń do wystąpień serwera. Po nawiązaniu połączenia klient MySQL wyświetla wersję zestawu MariaDB w bramie, a nie rzeczywistą wersję działającą w wystąpieniu serwera MariaDB. Aby określić wersję wystąpienia serwera MariaDB, użyj `SELECT VERSION();` polecenia.
+> W usłudze brama służy do przekierowywania połączeń do wystąpień serwera. Po nawiązaniu połączenia klient MySQL wyświetla wersję zestawu MariaDB w bramie, a nie rzeczywistą wersję działającą w wystąpieniu serwera MariaDB. Aby określić wersję wystąpienia serwera MariaDB, użyj polecenia `SELECT VERSION();`.
 
 Azure Database for MariaDB obecnie obsługuje następującą wersję:
 
@@ -39,7 +39,7 @@ Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/library/mariad
 ## <a name="managing-updates-and-upgrades"></a>Zarządzanie aktualizacjami i uaktualnieniami
 Usługa automatycznie zarządza uaktualnieniami aktualizacji poprawek. Na przykład 10.2.21 do 10.2.23.  
 
-Obecnie wersje pomocnicze i główne nie są obsługiwane. Na przykład uaktualnienie z MariaDB 10,2 do MariaDB 10,3 nie jest obsługiwane. Jeśli chcesz przeprowadzić uaktualnienie z 10,2 do 10,3, zrób [zrzut i Przywróć](./howto-migrate-dump-restore.md) go do serwera, który został utworzony przy użyciu nowej wersji aparatu.
+Obecnie uaktualnienia wersji pomocniczych i głównych nie są obsługiwane. Na przykład uaktualnienie bazy danych MariaDB 10.2 do wersji 10.3 nie jest obsługiwane. Jeśli chcesz przeprowadzić uaktualnienie z 10,2 do 10,3, zrób [zrzut i Przywróć](./howto-migrate-dump-restore.md) go do serwera, który został utworzony przy użyciu nowej wersji aparatu.
 
 ## <a name="next-steps"></a>Następne kroki
 

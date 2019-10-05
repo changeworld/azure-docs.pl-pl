@@ -1,17 +1,17 @@
 ---
-title: Tworzenie i zarządzanie nimi odczytu replik w usłudze Azure Database for MySQL
-description: W tym artykule opisano sposób konfigurowania replik odczytu i zarządzania nimi w Azure Database for MySQL przy użyciu portalu.
+title: Tworzenie & Zarządzanie replikami odczytu (Azure Portal) — Azure Database for MySQL
+description: Dowiedz się, jak skonfigurować repliki odczytu i zarządzać nimi w Azure Database for MySQL przy użyciu Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 275c7bc8127855712c191141ef681526da7c377b
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a90e9cccf8b59dabbee8415818c0e819ba1b26c3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309505"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972870"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Tworzenie replik odczytu i zarządzanie nimi w Azure Database for MySQL przy użyciu Azure Portal
 
@@ -19,18 +19,18 @@ W tym artykule przedstawiono sposób tworzenia replik odczytu i zarządzania nim
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [— Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md) który będzie używany jako serwer główny.
+- [Serwer Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md) , który będzie używany jako serwer główny.
 
 > [!IMPORTANT]
-> Odczytu replik funkcja jest dostępna tylko dla usługi Azure Database dla serwerów MySQL w warstw cenowych ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Upewnij się, że serwer główny znajduje się w jednej z tych warstw cenowych.
+> Funkcja odczytu repliki jest dostępna tylko dla serwerów Azure Database for MySQL w warstwach cenowych Ogólnego przeznaczenia lub zoptymalizowanych pod kątem pamięci. Upewnij się, że serwer główny znajduje się w jednej z tych warstw cenowych.
 
-## <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
+## <a name="create-a-read-replica"></a>Tworzenie repliki odczytu
 
 Serwer repliki odczytu można utworzyć, wykonując następujące czynności:
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
 
-2. Wybierz istniejący serwer Azure Database for MySQL, który ma być używany jako główny. Ta akcja powoduje otwarcie **Przegląd** strony.
+2. Wybierz istniejący serwer Azure Database for MySQL, który ma być używany jako główny. Ta akcja powoduje otwarcie strony **Przegląd** .
 
 3. Wybierz opcję **replikacja** z menu, w obszarze **Ustawienia**.
 
@@ -52,16 +52,16 @@ Serwer repliki odczytu można utworzyć, wykonując następujące czynności:
 7. Wybierz **przycisk OK** , aby potwierdzić utworzenie repliki.
 
 > [!NOTE]
-> Repliki do odczytu są tworzone przy użyciu tej samej konfiguracji serwera jako wzorzec. Konfiguracja serwera repliki można zmienić po jego utworzeniu. Zaleca się, że konfiguracja serwera repliki należy przechowywać w większa lub równa wartości niż główny, aby upewnić się, że replika jest w stanie na bieżąco ze wzorcem.
+> Repliki odczytu są tworzone z tą samą konfiguracją serwera co serwer główny. Konfigurację serwera repliki można zmienić po jego utworzeniu. Zaleca się, aby konfiguracja serwera repliki była utrzymywana z równymi lub większymi wartościami niż wzorzec, aby upewnić się, że replika jest w stanie utrzymać się z serwerem głównym.
 
 Po utworzeniu serwera repliki można go wyświetlić w bloku **replikacja** .
 
    ![Repliki list Azure Database for MySQL](./media/howto-read-replica-portal/list-replica.png)
 
-## <a name="stop-replication-to-a-replica-server"></a>Zatrzymywanie replikacji na serwer repliki
+## <a name="stop-replication-to-a-replica-server"></a>Zatrzymaj replikację do serwera repliki
 
 > [!IMPORTANT]
-> Zatrzymywanie replikacji na serwerze jest nieodwracalne. Po replikacji została zatrzymana między głównego i repliki, nie można cofnąć. Serwer repliki następnie staje się serwerem autonomicznym i obsługuje teraz zarówno odczytu i zapisu. Ten serwer nie wprowadzać ponownie do repliki.
+> Zatrzymywanie replikacji na serwerze jest nieodwracalne. Po zatrzymaniu replikacji między serwerem głównym a repliką nie można jej cofnąć. Serwer repliki stał się serwerem autonomicznym i obsługuje teraz zarówno odczyt, jak i zapis. Nie można ponownie wykonać tego serwera w replice.
 
 Aby zatrzymać replikację między wzorcem i serwerem repliki z Azure Portal, wykonaj następujące czynności:
 
@@ -101,10 +101,10 @@ Aby usunąć serwer repliki odczytu z Azure Portal, wykonaj następujące czynno
 
    ![Potwierdzenie usunięcia repliki Azure Database for MySQL](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
-## <a name="delete-a-master-server"></a>Usuń serwer główny
+## <a name="delete-a-master-server"></a>Usuwanie serwera głównego
 
 > [!IMPORTANT]
-> Usuwanie serwera głównego zatrzymanie replikacji na wszystkich serwerach repliki i usuwa samego serwera głównego. Serwer funkcji replica stają się autonomicznymi serwerami, które obsługują teraz zarówno odczytu i zapisu.
+> Usunięcie serwera głównego powoduje zatrzymanie replikacji do wszystkich serwerów repliki i usunięcie samego serwera głównego. Serwery repliki stają się serwerami autonomicznymi, które teraz obsługują zarówno odczyt, jak i zapis.
 
 Aby usunąć serwer główny z Azure Portal, wykonaj następujące czynności:
 
@@ -138,4 +138,4 @@ Aby usunąć serwer główny z Azure Portal, wykonaj następujące czynności:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [odczytu replik](concepts-read-replicas.md)
+- Dowiedz się więcej na temat [odczytu replik](concepts-read-replicas.md)

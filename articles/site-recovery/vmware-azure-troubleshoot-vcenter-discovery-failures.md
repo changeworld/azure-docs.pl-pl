@@ -1,28 +1,28 @@
 ---
-title: Rozwiązywanie problemów z powrotu po awarii do środowiska lokalnego podczas odzyskiwania po awarii maszyn wirtualnych programu VMware na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak rozwiązywać problemy podczas powrotu po awarii i ponownego włączania ochrony podczas odzyskiwania po awarii maszyn wirtualnych programu VMware na platformę Azure za pomocą usługi Azure Site Recovery.
-author: vDonGlover
-manager: JarrettRenshaw
+title: Rozwiązywanie problemów z powrotem po awarii do stanu lokalnego podczas odzyskiwania po awarii maszyny wirtualnej VMware na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs
+description: W tym artykule opisano sposoby rozwiązywania problemów z odzyskiwaniem po awarii i ochroną podczas odzyskiwania po awarii maszyny wirtualnej VMware na platformę Azure przy użyciu Azure Site Recovery.
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: v-doglov
-ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: raynew
+ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565195"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970850"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>Rozwiązywanie problemów z awariami odnajdywania w programie vCenter
 
-Ten artykuł pomaga rozwiązywać problemy, które występują ze względu na błędy wykrywania programu VMware vCenter.
+Ten artykuł pomaga w rozwiązywaniu problemów występujących w wyniku awarii programu VMware vCenter Discovery.
 
-## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Wartości nieliczbowe we właściwości maxSnapShots
+## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Wartości inne niż liczbowe we właściwości maxSnapShots
 
-W wersjach przed 9,20 vCenter odłącza podczas pobierania wartości nieliczbowe właściwość `snapshot.maxSnapShots` właściwości na maszynie Wirtualnej.
+W wersjach wcześniejszych niż 9,20, program vCenter rozłącza się, gdy pobiera nieliczbową wartość właściwości `snapshot.maxSnapShots` właściwości na maszynie wirtualnej.
 
-Ten problem jest identyfikowana przez identyfikator błędu 95126.
+Ten problem jest identyfikowany przez błąd o IDENTYFIKATORze 95126.
 
     ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
     System.FormatException: Input string was not in a correct format.
@@ -32,51 +32,51 @@ Ten problem jest identyfikowana przez identyfikator błędu 95126.
     
 Aby rozwiązać ten problem:
 
-- Zidentyfikuj maszynę Wirtualną, a następnie ustaw wartość na wartość numeryczną (maszyny Wirtualnej, Edytuj ustawienia w programie vCenter).
+- Zidentyfikuj maszynę wirtualną i ustaw wartość na wartość liczbową (ustawienia ustawień maszyny wirtualnej w programie vCenter).
 
 Lub
 
-- Uaktualnij serwer konfiguracji do wersji 9.20 lub nowszej.
+- Uaktualnij serwer konfiguracji do wersji 9,20 lub nowszej.
 
-## <a name="proxy-configuration-issues-for-vcenter-connectivity"></a>Problemy z konfiguracją serwera proxy dla połączenia vCenter
+## <a name="proxy-configuration-issues-for-vcenter-connectivity"></a>Problemy z konfiguracją serwera proxy dla łączności vCenter
 
-vCenter odnajdywania honoruje systemowe ustawienia proxy domyślne skonfigurowany przez użytkownika systemu. Usługa agenta DRA honoruje ustawienia serwera proxy, dostarczone przez użytkownika podczas instalacji serwera konfiguracji za pomocą ujednoliconej konfiguracji Instalatora lub szablonu OVA. 
+Odnajdowanie vCenter uwzględnia domyślne ustawienia serwera proxy systemu skonfigurowane przez użytkownika systemu. Usługa DRA przestrzega ustawień serwera proxy dostarczonych przez użytkownika podczas instalacji serwera konfiguracji za pomocą ujednoliconego Instalatora Instalatora lub szablonu komórki jajowe. 
 
-Ogólnie rzecz biorąc serwer proxy jest używany do komunikacji z sieci publicznych. takich jak komunikacja z platformą Azure. Jeśli skonfigurowano serwer proxy, a vCenter znajduje się w środowisku lokalnym, nie będzie mogła nawiązać połączenia z agenta DRA.
+Ogólnie rzecz biorąc, serwer proxy jest używany do komunikacji z sieciami publicznymi; na przykład komunikacja z platformą Azure. Jeśli serwer proxy jest skonfigurowany i program vCenter znajduje się w środowisku lokalnym, nie będzie mógł komunikować się z agentem DRA.
 
-Po ten problem występuje, wykonywane są następujące sytuacje:
+Podczas napotkania tego problemu występują następujące sytuacje:
 
-- Serwer vCenter \<vCenter > jest nieosiągalny z powodu błędu: Serwer zdalny zwrócił błąd: Serwer (503) jest niedostępny
-- Serwer vCenter \<vCenter > jest nieosiągalny z powodu błędu: Serwer zdalny zwrócił błąd: Nie można nawiązać połączenia z serwerem zdalnym.
-- Nie można połączyć się z serwerem vCenter/ESXi.
+- Serwer vCenter \<vCenter > jest nieosiągalny z powodu błędu: serwer zdalny zwrócił błąd: (503) serwer niedostępny
+- Serwer vCenter \<vCenter > jest nieosiągalny z powodu błędu: serwer zdalny zwrócił błąd: nie można nawiązać połączenia z serwerem zdalnym.
+- Nie można nawiązać połączenia z serwerem vCenter/ESXi.
 
 Aby rozwiązać ten problem:
 
-Pobierz [narzędzia PsExec](https://aka.ms/PsExec). 
+Pobierz [Narzędzie PsExec](https://aka.ms/PsExec). 
 
-Narzędzie PsExec dostęp do kontekstu użytkownika systemu i sprawdzenie, czy adres serwera proxy jest skonfigurowany. Następnie można dodać vCenter do listy pomijania, korzystając z poniższych procedur.
+Użyj narzędzia PsExec, aby uzyskać dostęp do kontekstu użytkownika systemu i określić, czy adres serwera proxy jest skonfigurowany. Następnie można dodać program vCenter do listy obejścia przy użyciu poniższych procedur.
 
-Konfigurowanie serwera proxy odnajdywania:
+W przypadku konfiguracji serwera proxy odnajdywania:
 
-1. Otwieranie programu Internet Explorer w kontekście użytkownika systemu za pomocą narzędzia PsExec.
+1. Otwórz program IE w kontekście użytkownika systemu przy użyciu narzędzia PsExec.
     
-    psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+    PsExec-s-i "użycie ścieżki%ProgramFiles%\Internet Explorer\iexplore.exe"
 
-2. Zmodyfikuj ustawienia serwera proxy w programie Internet Explorer, aby pominąć vCenter adresu IP.
+2. Zmodyfikuj ustawienia serwera proxy w programie Internet Explorer, aby pominąć adres IP programu vCenter.
 3. Uruchom ponownie usługę tmanssvc.
 
-Konfigurowanie serwera proxy DRA:
+W przypadku konfiguracji serwera proxy agenta DRA:
 
-1. Otwórz wiersz polecenia, a następnie otwórz folder dostawcy Microsoft Azure Site Recovery.
+1. Otwórz wiersz polecenia i Otwórz folder Microsoft Azure Site Recovery dostawcy.
  
-    **Dostawca CD C:\Program Files\Microsoft Azure Site Recovery**
+    **CD C:\Program Files\Microsoft Azure Site Recovery Provider**
 
 3. W wierszu polecenia Uruchom następujące polecenie.
    
-   **DRCONFIGURATOR. Plik EXE / configure /AddBypassUrls [adres IP/nazwę FQDN programu vCenter Server podane w czasie, Dodawanie serwera vCenter]**
+   **DRCONFIGURATOR. EXE/Configure/AddBypassUrls [adres IP/nazwa FQDN vCenter Server podano w czasie dodawania programu vCenter]**
 
-4. Uruchom ponownie usługę agenta DRA dostawcy.
+4. Uruchom ponownie usługę dostawcy DRA.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 
+[Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyny wirtualnej VMware](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 

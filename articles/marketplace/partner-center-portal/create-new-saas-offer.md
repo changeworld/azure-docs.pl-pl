@@ -6,19 +6,22 @@ manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: e846db86ce95bd32d21727a4a5ec3195458cb9eb
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.date: 10/04/2019
+ms.openlocfilehash: 48ef7aeb1804aca9001288f6babd302b9c3a8347
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936875"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969535"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
 Aby rozpocząć tworzenie ofert oprogramowania jako usługi (SaaS), upewnij się, że najpierw [utworzysz konto Centrum partnerskiego](./create-account.md) i otworzysz [komercyjny pulpit nawigacyjny Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)z wybraną kartą **Przegląd** .
 
 ![Komercyjny pulpit nawigacyjny portalu Marketplace w centrum partnerskim](./media/new-offer-overview.png)
+
+>[!Note]
+> Po opublikowaniu oferty zmiany wprowadzone w centrum partnerskim zostaną zaktualizowane w systemie i przechowane przed ponownym opublikowaniem. Upewnij się, że przesyłasz ofertę do publikacji po wprowadzeniu zmian.
 
 Wybierz pozycję + **Nowa oferta...** , a następnie wybierz element menu **oprogramowanie jako usługa** . 
 
@@ -220,7 +223,7 @@ Na karcie Lista ofert są wyświetlane języki (i rynki), w których oferta jest
 
 Podaj szczegóły, które mają być wyświetlane w witrynie Marketplace, w tym opisy oferty i zasobów marketingowych.
 
-- **Nazwa** (wymagana): Nazwa zdefiniowana w tym miejscu zostanie wyświetlona jako tytuł oferty w wybranym portalu Marketplace. Nazwa jest wstępnie wypełniana na podstawie poprzedniej nowej pozycji **oferty** .  Może to być znak towarowy.  Ta wartość nie może zawierać odstępów, znaków emoji (chyba że są to znaki towarowe i znaki praw autorskich) i muszą mieć ograniczone do 50 znaków.
+- **Nazwa** (wymagana): Nazwa zdefiniowana w tym miejscu zostanie wyświetlona jako tytuł oferty w wybranym portalu Marketplace. Nazwa jest wstępnie wypełniana na podstawie poprzedniej nowej pozycji **oferty** .  Może to być znak towarowy.  Nie może zawierać znaków emoji (chyba że są to symbole towarowe i praw autorskich) i muszą być ograniczone do 50 znaków.
 - **Podsumowanie** (wymagane): Podaj krótki opis oferty, który ma być używany na potrzeby wyników wyszukiwania na liście w portalu Marketplace. W tym polu można wprowadzić do 100 znaków tekstu.
 - **Opis** (wymagane): Podaj opis oferty, która ma zostać wyświetlona na liście przeglądów portalu Marketplace. Rozważ uwzględnienie propozycji wartości, najważniejszych korzyści, wszelkich kategorii lub związków branżowych, możliwości zakupu w aplikacji, wszelkich wymaganych informacji oraz linku, aby dowiedzieć się więcej.
 W tym polu można wprowadzić do 3 000 znaków tekstu. Aby uzyskać dodatkowe wskazówki, zobacz artykuł [Napisz doskonały opis aplikacji](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).

@@ -2,25 +2,24 @@
 title: Centrum wdrażania dla usługi Azure Kubernetes
 description: Centrum wdrażania w usłudze Azure DevOps upraszcza Konfigurowanie niezawodnego potoku usługi Azure DevOps dla aplikacji
 ms.author: puagarw
-ms.manager: douge
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 35484566890f3bfd964e3fda337bfb3666d1da6c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618728"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972980"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Centrum wdrażania dla usługi Azure Kubernetes
 
 Centrum wdrażania w usłudze Azure DevOps upraszcza Konfigurowanie niezawodnego potoku usługi Azure DevOps dla aplikacji. Domyślnie centrum wdrażania konfiguruje potok usługi Azure DevOps w celu wdrożenia aktualizacji aplikacji w klastrze Kubernetes. Można rozszerzyć domyślny skonfigurowany potok usługi Azure DevOps, a także dodać bogatsze możliwości: możliwość uzyskania zatwierdzenia przed wdrożeniem, aprowizacji dodatkowych zasobów platformy Azure, uruchamiania skryptów, uaktualniania aplikacji, a nawet wykonywania dodatkowych testów weryfikacyjnych.
 
-W tym samouczku wykonasz następujące czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Skonfiguruj potok Azure DevOps, aby wdrożyć aktualizacje aplikacji w klastrze Kubernetes.
@@ -58,9 +57,9 @@ W tym samouczku wykonasz następujące czynności:
 
 1. Wybierz klaster AKS, a następnie wybierz pozycję **centrum wdrażania (wersja zapoznawcza)** w lewym bloku. Wybierz pozycję **Rozpocznij**.
 
-   ![ustawienia](media/deployment-center-launcher/settings.png)
+   ![settings](media/deployment-center-launcher/settings.png)
 
-1. Wybierz lokalizację kodu i wybierz pozycję **dalej**. Następnie wybierz jeden z obecnie obsługiwanych repozytoriów: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** lub **GitHub**.
+1. Wybierz lokalizację kodu i wybierz pozycję **dalej**. Następnie wybierz jedną z obecnie obsługiwanych repozytoriów: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** lub **GitHub**.
 
     Azure Repos to zestaw narzędzi kontroli wersji, które ułatwiają zarządzanie kodem. Bez względu na to, czy projekt oprogramowania jest duży, czy mały, z użyciem kontroli wersji jak najszybciej jest dobrym pomysłem.
 
@@ -70,7 +69,7 @@ W tym samouczku wykonasz następujące czynności:
 
     - **GitHub**: Autoryzuj i wybieraj repozytorium dla konta usługi GitHub.
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![Witryna GitHub](media/deployment-center-launcher/github.gif)
 
 
 1. Centrum wdrażania analizuje repozytorium i wykrywa pliku dockerfile. Jeśli chcesz zaktualizować pliku dockerfile, możesz edytować określony numer portu.
@@ -79,13 +78,13 @@ W tym samouczku wykonasz następujące czynności:
 
     Jeśli repozytorium nie zawiera pliku dockerfile, system wyświetli komunikat, aby go zatwierdzić.
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![Pliku dockerfile](media/deployment-center-launcher/dockerfile.png)
 
 1. Wybierz istniejący rejestr kontenerów lub utwórz go, a następnie wybierz pozycję **Zakończ**. Potok jest tworzony automatycznie i kolejkuje kompilację w [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops).
 
     Azure Pipelines to usługa w chmurze, która umożliwia automatyczne Kompilowanie i testowanie projektu kodu i udostępnianie go innym użytkownikom. Azure Pipelines łączy ciągłą integrację i ciągłe dostarczanie, aby stale i spójnie testować i kompilować kod oraz dostarczać go do dowolnego celu.
 
-    ![Rejestr kontenerów](media/deployment-center-launcher/container-registry.png)
+    ![Container Registry](media/deployment-center-launcher/container-registry.png)
 
 1. Wybierz łącze, aby wyświetlić bieżący potok.
 
@@ -119,15 +118,15 @@ Centrum wdrażania automatycznie skonfiguruje potok ciągłej integracji/ciągł
 
 Centrum wdrażania automatycznie tworzy i konfiguruje relację między organizacją usługi Azure DevOps i subskrypcją platformy Azure. Te kroki obejmują skonfigurowanie połączenia usługi platformy Azure w celu uwierzytelnienia subskrypcji platformy Azure za pomocą usługi Azure DevOps. Zautomatyzowany proces tworzy również potok wydania, który zapewnia ciągłe dostarczanie na platformę Azure.
 
-1. Wybierz pozycję potoki, a następnie wybierz pozycję **wersje**.
+1. Wybierz pozycję **potoki**, a następnie wybierz pozycję **wersje**.
 
 1. Aby edytować potok wersji, wybierz pozycję **Edytuj**.
 
-1. Wybierz  pozycję Porzuć z listy **artefaktów** . W poprzednich krokach sprawdzona potoku konstruowania generuje dane wyjściowe używane dla artefaktu. 
+1. Wybierz pozycję **Porzuć** z listy **artefaktów** . W poprzednich krokach sprawdzona potoku konstruowania generuje dane wyjściowe używane dla artefaktu. 
 
 1. Wybierz wyzwalacz **ciągłego wdrażania** po prawej stronie opcji **Drop** . Ten potok wersji ma włączony wyzwalacz CD, który uruchamia wdrożenie przy każdym udostępnieniu nowego artefaktu kompilacji. Możesz również wyłączyć wyzwalacz, aby wymagać ręcznego wykonania dla wdrożeń.
 
-1. Aby przejrzeć wszystkie zadania dla potoku, wybierz pozycję **zadania**. Wydanie ustawia środowisko przyrzeczer, konfiguruje `imagePullSecrets` parametr, instaluje narzędzia Helm i wdraża wykresy Helm w klastrze Kubernetes.
+1. Aby przejrzeć wszystkie zadania dla potoku, wybierz pozycję **zadania**. Wydanie ustawia środowisko programu do odczytu, konfiguruje parametr `imagePullSecrets`, instaluje narzędzia Helm i wdraża wykresy Helm w klastrze Kubernetes.
 
 1. Aby wyświetlić historię wersji, wybierz pozycję **Wyświetl wersje**.
 

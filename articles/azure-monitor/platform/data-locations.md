@@ -1,45 +1,44 @@
 ---
-title: Monitorowanie lokalizacji danych w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Zawiera opis różnych lokalizacji, gdzie dane monitorowania są przechowywane na platformie Azure, w tym platformę danych usługi Azure Monitor.
+title: Monitorowanie lokalizacji danych w Azure Monitor | Microsoft Docs
+description: Opisuje różne lokalizacje, w których dane monitorowania są przechowywane na platformie Azure, w tym na platformie danych Azure Monitor.
 documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/21/2019
 ms.author: bwren
-ms.openlocfilehash: 1d92973e32e9c694b1d0488753b9a701e7d71a5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f6071bc1d3d7514d22658a07810690ec8a8056b
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416915"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972757"
 ---
-# <a name="monitoring-data-locations-in-azure-monitor"></a>Monitorowanie lokalizacji danych w usłudze Azure Monitor
+# <a name="monitoring-data-locations-in-azure-monitor"></a>Monitorowanie lokalizacji danych w Azure Monitor
 
-Usługa Azure Monitor jest oparty na [platforma danych](data-platform.md) z [dzienniki](data-platform-logs.md) i [metryki](data-platform-metrics.md) zgodnie z opisem w [platforma danych usługi Azure Monitor](data-platform.md). Dane monitorowania z zasobów platformy Azure mogą być zapisane w innych lokalizacjach, albo zanim zostaną one skopiowane do usługi Azure Monitor lub o obsługę dodatkowych scenariuszy. 
+Azure Monitor jest oparta na [platformie danych](data-platform.md) [dzienników](data-platform-logs.md) i [metryk](data-platform-metrics.md) , zgodnie z opisem w [Azure monitor platformę danych](data-platform.md). Dane monitorowania z zasobów platformy Azure mogą być zapisywane w innych lokalizacjach, zanim zostaną skopiowane do Azure Monitor lub do obsługi dodatkowych scenariuszy. 
 
-## <a name="monitoring-data-locations"></a>Lokalizacje danych monitorowania
+## <a name="monitoring-data-locations"></a>Monitorowanie lokalizacji danych
 
-W poniższej tabeli przedstawiono różnych lokalizacji danych na platformie Azure monitorowania wysyłania i różnych metod dostępu do niego.
+W poniższej tabeli przedstawiono różne lokalizacje, w których są wysyłane dane monitorowania na platformie Azure i różne metody uzyskiwania do nich dostępu.
 
-| Lokalizacja | Opis | Metod dostępu |
+| Lokalizacja | Opis | Metody dostępu |
 |:---|:---|:---|:--|
-| Azure Monitor Metrics | Baza danych szeregów czasowych, który jest zoptymalizowany pod kątem analizowania danych z sygnaturami czasowymi. | [Eksplorator metryk](metrics-getting-started.md)<br>[Interfejs API metryk usługi Azure Monitor](/rest/api/monitor/metrics) |
-| Dzienniki usługi Azure Monitor    | Zaloguj się obszar roboczy analizy, który jest oparty na Eksplorator danych platformy Azure, która udostępnia zaawansowane analizy język zapytań aparatu i zaawansowanego. | [Log Analytics](../log-query/portals.md)<br>[Interfejs API analizy dzienników](https://dev.loganalytics.io/)<br>[Usługa Application Insights interfejsu API](https://dev.applicationinsights.io/reference/get-query) |
-| Dziennik aktywności | Dane z dziennika aktywności jest najbardziej użyteczna, gdy wysyłane do usługi Azure Monitor dzienniki analizując je z innymi danymi, ale również są zbierane samodzielnie, dzięki czemu mogą być bezpośrednio wyświetlane w witrynie Azure portal. | [Azure Portal](activity-log-view.md#azure-portal)<br>[Usługa Azure Monitor zdarzenia interfejsu API](/rest/api/monitor/eventcategories) |
-| Azure Storage | Niektóre źródła danych spowoduje zapisu bezpośrednio do usługi Azure storage i wymagają konfiguracji, aby przenieść dane do dzienników. Można również wysyłać dane do usługi Azure storage w celu archiwizowania oraz integracja z systemami zewnętrznymi.  | [Analityka magazynu](/rest/api/storageservices/storage-analytics)<br>[Eksplorator serwera](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) |
-| Event Hubs | Wysłać dane do usługi Azure Event Hubs, przesłać go strumieniowo do innych lokalizacji. | [Funkcję przechwytywania w usłudze Storage](../../event-hubs/event-hubs-capture-overview.md)  |
-| Usługa Azure Monitor dla maszyn wirtualnych | Usługa Azure Monitor dla maszyn wirtualnych są przechowywane dane kondycji obciążenie w niestandardowej lokalizacji, używanego przez jego monitorowania środowiska w witrynie Azure portal. | [Azure Portal](../insights/vminsights-overview.md)<br>[Monitor obciążenia interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)<br>[Kondycja zasobów Azure interfejsu API REST](https://docs.microsoft.com/rest/api/resourcehealth/)  |
-| Alerty | Alerty utworzone przez usługi Azure Monitor. | [Azure Portal](alerts-managing-alert-instances.md)<br>[Alerty interfejs API REST zarządzania](https://docs.microsoft.com/rest/api/monitor/alertsmanagement/alerts) |
+| Metryki Azure Monitor | Baza danych szeregów czasowych zoptymalizowana pod kątem analizowania danych z sygnaturami czasowymi. | [Eksplorator metryk](metrics-getting-started.md)<br>[Interfejs API metryk Azure Monitor](/rest/api/monitor/metrics) |
+| Dzienniki usługi Azure Monitor    | Log Analytics obszar roboczy oparty na usłudze Azure Eksplorator danych, który oferuje zaawansowany aparat analityczny i bogaty język zapytań. | [Log Analytics](../log-query/portals.md)<br>[Interfejs API Log Analytics](https://dev.loganalytics.io/)<br>[Interfejs API Application Insights](https://dev.applicationinsights.io/reference/get-query) |
+| Dziennik aktywności | Dane z dziennika aktywności są najbardziej przydatne, gdy są wysyłane do dzienników Azure Monitor, aby przeanalizować je z innymi danymi, ale są również zbierane we własnym zakresie, dzięki czemu można je wyświetlić bezpośrednio w Azure Portal. | [Azure Portal](activity-log-view.md#azure-portal)<br>[Interfejs API zdarzeń Azure Monitor](/rest/api/monitor/eventcategories) |
+| Azure Storage | Niektóre źródła danych zapisują bezpośrednio do usługi Azure Storage i wymagają skonfigurowania przenoszenia danych do dzienników. Możesz również wysyłać dane do usługi Azure Storage w celu archiwizacji i integracji z systemami zewnętrznymi.  | [Analityka magazynu](/rest/api/storageservices/storage-analytics)<br>[Eksplorator serwera](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[Eksplorator usługi Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) |
+| Centra zdarzeń | Wyślij dane do usługi Azure Event Hubs, aby przesłać strumieniowo do innych lokalizacji. | [Przechwyć do magazynu](../../event-hubs/event-hubs-capture-overview.md)  |
+| Usługa Azure Monitor dla maszyn wirtualnych | Azure Monitor dla maszyn wirtualnych przechowuje dane kondycji obciążeń w niestandardowej lokalizacji używanej przez środowisko monitorowania w Azure Portal. | [Azure Portal](../insights/vminsights-overview.md)<br>[Interfejs API REST monitora obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)<br>[Interfejs API REST usługi Azure Resource Health](https://docs.microsoft.com/rest/api/resourcehealth/)  |
+| Alerty | Alerty utworzone przez Azure Monitor. | [Azure Portal](alerts-managing-alert-instances.md)<br>[Interfejs API REST zarządzania alertami](https://docs.microsoft.com/rest/api/monitor/alertsmanagement/alerts) |
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz różnych źródłach [dane monitorowania zbierane przez usługi Azure Monitor](data-sources.md).
-- Dowiedz się więcej o [typów danych monitorowania zbieranych przez usługi Azure Monitor](data-platform.md) oraz jak wyświetlać i analizować te dane.
+- Zapoznaj się z różnymi źródłami [danych monitorowania zbieranych przez Azure monitor](data-sources.md).
+- Dowiedz się więcej na temat [typów danych monitorowania zbieranych przez Azure monitor](data-platform.md) oraz sposobu wyświetlania i analizowania danych.

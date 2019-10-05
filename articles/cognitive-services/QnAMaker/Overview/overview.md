@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 08/01/2019
 ms.author: diberry
-ms.openlocfilehash: f56798359cdc8739a363bed3bfddadd584617adf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815492"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973788"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Co to jest usługa QnA Maker?
 
@@ -28,7 +28,7 @@ Aplikacja kliencka dla QnA Maker to każda aplikacja do konwersacji, która komu
 * **Jeśli masz informacje statyczne** — Użyj QNA Maker, jeśli masz informacje statyczne w bazie wiedzy o odpowiedziach. Ta baza wiedzy jest niestandardowa w Twoich potrzebach, które zostały skompilowane przy użyciu dokumentów, takich jak [pliki PDF i adresy URL](../concepts/data-sources-supported.md).
 * **Jeśli chcesz podać tę samą odpowiedź na żądanie, pytanie lub polecenie** — w przypadku przesyłania tego samego pytania przez różnych użytkowników ta sama odpowiedź jest zwracana do obu tych wartości. 
 * **Gdy chcesz filtrować informacje statyczne w oparciu o meta-informacje** — Dodaj Tagi [metadanych](../how-to/metadata-generateanswer-usage.md) , aby zapewnić dodatkowe opcje filtrowania odpowiednie dla użytkowników aplikacji klienckiej i informacje. Typowe informacje o metadanych obejmują [Chit — rozmowę](../how-to/chit-chat-knowledge-base.md), typ zawartości lub format, cel zawartości i świeżość zawartości.
-* **Gdy chcesz zarządzać konwersacją bot zawierającą informacje statyczne** — Twoja wiedza Pobiera tekst lub polecenie konwersacji użytkownika i odpowiada na nie. Jeśli odpowiedź jest częścią wstępnie określonego przepływu konwersacji, reprezentowanej w bazie wiedzy z [kontekstem](../how-to/multiturn-conversation.md)wielodostępnym, bot może łatwo udostępnić ten przepływ.  
+* **Gdy chcesz zarządzać konwersacją bot zawierającą informacje statyczne** — Twoja wiedza Pobiera tekst lub polecenie konwersacji użytkownika i odpowiada na nie. Jeśli odpowiedź jest częścią wstępnie określonego przepływu konwersacji, reprezentowanej w bazie wiedzy z [kontekstem wielodostępnym](../how-to/multiturn-conversation.md), bot może łatwo udostępnić ten przepływ.  
 
 ## <a name="use-qna-maker-knowledge-base-in-a-chat-bot"></a>Korzystanie z QnA Maker bazy wiedzy w bot rozmowy
 
@@ -36,7 +36,7 @@ Po opublikowaniu QnA Maker bazy wiedzy aplikacja kliencka wysyła pytanie do pun
 
 ![Poproś bot pytania i uzyskaj odpowiedzi z zawartości bazy wiedzy](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
 
-|Krok|Action|
+|Czynność|Działanie|
 |:--|:--|
 |1|Aplikacja kliencka wysyła _pytanie_ użytkownika (tekst we własnych słowach), "Jak mogę programowo zaktualizować moją bazę wiedzy?". do punktu końcowego bazy wiedzy.|
 |2|QnA Maker korzysta z przeszkolonej bazy wiedzy, aby zapewnić poprawną odpowiedź i wszelkie monity monitujące, których można użyć do uściślenia wyszukiwania najlepszej odpowiedzi. QnA Maker zwraca odpowiedź sformatowaną w formacie JSON.|
@@ -67,9 +67,9 @@ System QnA Maker jest podejściem z klasyfikacją warstwową. Dane są przechowy
 
 QnA Maker oferuje wielodostępne instrukcje i aktywne uczenie, które pomagają ulepszyć podstawowe zestawy pytań i odpowiedzi. 
 
-Polecenia z obsługą wielodostępności umożliwiają połączenie par pytań i odpowiedzi. To połączenie umożliwia aplikacji klienckiej dostarczenie odpowiedzi na największą odpowiedź i zawiera więcej pytań dotyczących wyszukiwania końcowej odpowiedzi. 
+Polecenia z **obsługą wielodostępności** umożliwiają połączenie par pytań i odpowiedzi. To połączenie umożliwia aplikacji klienckiej dostarczenie odpowiedzi na największą odpowiedź i zawiera więcej pytań dotyczących wyszukiwania końcowej odpowiedzi. 
 
-Po otrzymaniu przez bazę wiedzy pytań od użytkowników w opublikowanym punkcie końcowym program QNA Maker stosuje aktywną naukę do tych rzeczywistych pytań, aby zasugerować zmiany w bazie wiedzy w celu poprawienia jakości. 
+Po otrzymaniu przez bazę wiedzy pytań od użytkowników w opublikowanym punkcie końcowym program QnA Maker stosuje **aktywną naukę** do tych rzeczywistych pytań, aby zasugerować zmiany w bazie wiedzy w celu poprawienia jakości. 
 
 ## <a name="development-lifecycle"></a>Cykl projektowania oprogramowania
 
@@ -77,29 +77,16 @@ QnA Maker zapewnia tworzenie, uczenie i publikowanie wraz z uprawnieniami do wsp
 
 ## <a name="how-do-i-start"></a>Od czego zacząć?
 
-**Krok 1**: Utwórz zasób QnA Maker w [Azure Portal](https://portal.azure.com). 
+**Krok 1**. utworzenie zasobu QnA Maker w [Azure Portal](https://portal.azure.com). 
 
-**Krok 2**: Utwórz bazę wiedzy w portalu [QNA Maker](https://www.qnamaker.ai) . Dodaj [pliki i adresy URL](../concepts/data-sources-supported.md) , aby utworzyć bazę wiedzy.  
+**Krok 2**. Tworzenie bazy wiedzy w portalu [QNA Maker](https://www.qnamaker.ai) . Dodaj [pliki i adresy URL](../concepts/data-sources-supported.md) , aby utworzyć bazę wiedzy.  
 
-**Krok 3**. Opublikuj bazę wiedzy i przetestuj ją z niestandardowego punktu końcowego za [](../quickstarts/get-answer-from-kb-using-curl.md) pomocą zaskrytki lub wystawcy. [](../quickstarts/get-answer-from-kb-using-postman.md) 
+**Krok 3**. opublikowanie bazy wiedzy i przetestowanie jej z niestandardowego punktu [końcowego za pomocą](../quickstarts/get-answer-from-kb-using-curl.md) [zaskrytka](../quickstarts/get-answer-from-kb-using-postman.md)lub wystawcy. 
 
-**Krok 4**. W aplikacji klienckiej programowe wywoływanie punktu końcowego bazy wiedzy i odczytywanie odpowiedzi JSON przedstawia najlepszą odpowiedź użytkownikowi.  
-
-## <a name="news-and-updates"></a>Wiadomości i aktualizacje
-
-Dowiedz się, co nowego w QnA Maker.
-
-* Czerwiec 2019
-    * Ulepszony model rangi w języku francuskim, włoskim, niemieckim, hiszpańskim, portugalskim
-* Kwiecień 2019
-    * Obsługa wyodrębniania zawartości witryny sieci Web
-    * Obsługa dokumentów programu SharePoint
-* Marzec 2019
-    * Uczenie aktywne 
-    * Ulepszony model NLP rank dla języka angielskiego, 
+**Krok 4**. w aplikacji klienckiej programowe wywoływanie punktu końcowego bazy wiedzy i odczytywanie odpowiedzi JSON przedstawia najlepszą odpowiedź użytkownikowi.  
 
 ## <a name="next-steps"></a>Następne kroki
 QnA Maker zapewnia wszystko, co jest potrzebne do kompilowania i wdrażania niestandardowej bazy wiedzy oraz zarządzania nią. 
 
 > [!div class="nextstepaction"]
-> [Tworzenie usługi QnA Maker](../how-to/set-up-qnamaker-service-azure.md)
+> [Zapoznaj się z najnowszymi zmianami](../whats-new.md)

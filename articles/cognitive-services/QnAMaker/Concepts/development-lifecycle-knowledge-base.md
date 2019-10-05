@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 530869928f7a25e779cb01f0fe392efdbb54c5ba
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 52d4efaba25dcede3322586d05fceb4d166f51e3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695113"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973802"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Cykl życia bazy wiedzy w QnA Maker
 QnA Maker uczy się najlepiej w iteracyjnym cyklu zmian modelu, wypowiedź przykładów, publikowania i zbierania danych z zapytań punktów końcowych. 
@@ -24,7 +24,7 @@ QnA Maker uczy się najlepiej w iteracyjnym cyklu zmian modelu, wypowiedź przyk
 ![Cykl tworzenia](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
 ## <a name="creating-a-qna-maker-knowledge-base"></a>Tworzenie bazy wiedzy QnA Maker
-Punkt końcowy QnA Maker Knowledge Base (KB) zapewnia najlepszą zgodność z kwerendą użytkownika w oparciu o zawartość KB. Tworzenie bazy wiedzy to jednorazowa akcja służąca do konfigurowania repozytorium zawartości pytań, odpowiedzi i skojarzonych metadanych. Bazę wiedzy można utworzyć, przeszukiwanie istniejącej zawartości, takiej jak strony często zadawanych pytań, podręczniki produktu lub strukturalne pary pytań i odpowiedzi. Dowiedz się, jak [utworzyć bazę wiedzy](../How-To/create-knowledge-base.md).
+Punkt końcowy QnA Maker Knowledge Base (KB) zapewnia najlepszą zgodność z kwerendą użytkownika w oparciu o zawartość KB. Tworzenie bazy wiedzy to jednorazowa akcja służąca do konfigurowania repozytorium zawartości pytań, odpowiedzi i skojarzonych metadanych. Bazę wiedzy można utworzyć, przeszukiwanie istniejącej zawartości, takiej jak strony często zadawanych pytań, podręczniki produktu lub strukturalne pary pytań i odpowiedzi. Dowiedz się, jak [utworzyć bazę wiedzy](../quickstarts/create-publish-knowledge-base.md).
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Testowanie i aktualizowanie bazy wiedzy
 
@@ -47,7 +47,7 @@ W przypadku dużych artykułów bazy wiedzy Użyj testów automatycznych z [inte
 ```
 
 ## <a name="publish-the-knowledge-base"></a>Publikowanie bazy wiedzy
-Po zakończeniu testowania bazy wiedzy możesz ją opublikować. Publikowanie powoduje wypchnięcie najnowszej wersji przetestowanej bazy wiedzy na dedykowany indeks Azure Search reprezentujący **opublikowaną** bazę wiedzy. Tworzy również punkt końcowy, który można wywołać w aplikacji lub bot rozmowy.
+Po zakończeniu testowania bazy wiedzy możesz ją opublikować. Publikowanie powoduje wypchnięcie najnowszej wersji przetestowanej bazy wiedzy na dedykowany indeks Azure Search reprezentujący **opublikowaną** bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
 
 W ten sposób wszelkie zmiany wprowadzone w wersji testowej bazy wiedzy nie mają wpływu na opublikowaną wersję, która może znajdować się w aplikacji produkcyjnej.
 
@@ -74,7 +74,3 @@ Jeśli musisz wrócić do określonej wersji, musisz zaimportować ten plik z sy
 
 > [!div class="nextstepaction"]
 > [Wynik pewności](./confidence-score.md)
-
-## <a name="see-also"></a>Zobacz także 
-
-@No__t [bazy wiedzy](./knowledge-base.md)—[Omówienie QNA Maker](../Overview/overview.md)

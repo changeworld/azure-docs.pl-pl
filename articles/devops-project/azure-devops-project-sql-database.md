@@ -1,22 +1,22 @@
 ---
-title: 'Samouczek: Wdrażanie aplikacji platformy ASP.NET i kod usługi Azure SQL Database przy użyciu usługi Azure DevOps Projects'
+title: 'Samouczek: wdrażanie aplikacji ASP.NET i kodu bazy danych Azure SQL Database za pomocą usługi Azure DevOps Projects'
 description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Usługa DevOps Projects pozwala wdrożyć aplikację platformy ASP.NET i kod bazy danych Azure SQL Database w kilku prostych krokach.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 0d05a2f3de92791572f0a5e6313777b5388af3df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 560b16a40d73d07df6c9f446c7196cd930e2274e
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554942"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971500"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Samouczek: Wdrażanie aplikacji platformy ASP.NET i kod usługi Azure SQL Database przy użyciu usługi Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Samouczek: wdrażanie aplikacji ASP.NET i kodu bazy danych Azure SQL Database za pomocą usługi Azure DevOps Projects
 
 Usługa Azure DevOps Projects stanowi uproszczone środowisko, do którego możesz przenieść istniejący kod i repozytorium Git lub wybrać aplikację przykładową, aby utworzyć potok ciągłej integracji i ciągłego dostarczania na platformie Azure. 
 
@@ -45,7 +45,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 
 Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa Azure DevOps Projects tworzy również zasoby platformy Azure, na przykład bazę danych Azure SQL Database, w wybranej przez użytkownika subskrypcji platformy Azure.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**.
 
@@ -182,7 +182,7 @@ Aby połączyć się z bazą danych Azure SQL Database potrzebne są odpowiednie
 
     Możesz teraz opcjonalnie użyć narzędzi klienta, takich jak SQL Server Management Studio lub Visual Studio, aby połączyć się z usługą SQL Server i bazą danych Azure SQL Database. Użyj właściwości **Nazwa serwera**, aby nawiązać połączenie.
 
-    Jeśli nie zmieniono nazwy użytkownika bazy danych podczas początkowego konfigurowania projektu w usłudze DevOps Projects, nazwa użytkownika to lokalna część adresu e-mail. Na przykład, jeśli Twój adres e-mail jest *jankowalski\@microsoft.com*, Twoja nazwa użytkownika jest *jankowalski*.
+    Jeśli nie zmieniono nazwy użytkownika bazy danych podczas początkowego konfigurowania projektu w usłudze DevOps Projects, nazwa użytkownika to lokalna część adresu e-mail. Na przykład jeśli adres e-mail to *johndoe\@microsoft.com*, nazwa użytkownika to *jankowalski*.
 
    > [!NOTE]
    > Jeśli zmienisz hasło logowania usługi SQL, musisz zmienić hasło w zmiennej potoku wydania, zgodnie z instrukcjami w sekcji „Badanie potoku ciągłego wdrażania”.
@@ -216,6 +216,6 @@ Aby dowiedzieć się więcej na temat potoku ciągłej integracji/ciągłego wdr
 > [!div class="nextstepaction"]
 > [Definiowanie wieloetapowego potoku ciągłego wdrażania](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
-## <a name="videos"></a>Filmy wideo
+## <a name="videos"></a>Filmy
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3308/player]

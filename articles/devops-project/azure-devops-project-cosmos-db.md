@@ -1,20 +1,20 @@
 ---
-title: 'Samouczek: Wdróż aplikacje Node. js obsługiwane przez Azure Cosmos DB z Azure DevOps Projects'
+title: 'Samouczek: wdrażanie aplikacji node. js opartych na Azure Cosmos DB z Azure DevOps Projects'
 description: Usługa Azure DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Za pomocą DevOps Projects można wdrożyć aplikację Node. js, która jest oparta na Azure Cosmos DB do aplikacji sieci Web systemu Windows w kilku prostych krokach.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 38fc4aa04269924ad0acd529e961dd3228ec236e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884415"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969663"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>Wdróż aplikacje Node. js obsługiwane przez Azure Cosmos DB z DevOps Projects
 
@@ -26,7 +26,7 @@ Usługa DevOps Projects wykonuje również następujące działania:
 
 * Tworzy i konfiguruje potok zwolnienia ciągłej integracji/ciągłego wdrażania w usłudze Azure DevOps
 
-W tym samouczku wykonasz następujące czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Użyj DevOps Projects do wdrożenia aplikacji node. js obsługiwanej przez Azure Cosmos DB
@@ -45,7 +45,7 @@ Potrzebna jest subskrypcja platformy Azure, za pomocą której możesz bezpłatn
 
 Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. DevOps Projects tworzy również zasoby platformy Azure, takie jak Azure Cosmos DB, Application Insights, App Service i App Service, w wybranej subskrypcji platformy Azure.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**.
 
@@ -119,7 +119,7 @@ Usługa DevOps Projects automatycznie konfiguruje potok ciągłej integracji/ci�
 
 Usługa DevOps Projects automatycznie tworzy i konfiguruje kroki wymagane do wdrożenia z organizacji usługi Azure DevOps w ramach subskrypcji platformy Azure. Te kroki obejmują konfigurowanie połączenia usługi platformy Azure w celu uwierzytelniania usługi Azure DevOps w subskrypcji platformy Azure. W ramach automatyzacji jest też tworzony potok wydania, który zapewnia ciągłe wdrażanie na platformie Azure. Aby dowiedzieć się więcej o potoku wydania, wykonaj następujące czynności:
 
-1. Przejdź do pozycji potoki i wybierz pozycję **wersje**.
+1. Przejdź do pozycji **potoki** i wybierz pozycję **wersje**.
 
 1. Wybierz pozycję **Edit** (Edytuj).
 
@@ -142,13 +142,13 @@ Usługa DevOps Projects automatycznie tworzy i konfiguruje kroki wymagane do wdr
 
 Teraz możesz przystąpić do współpracy z zespołem w aplikacji przy użyciu procesu ciągłej integracji/ciągłego wdrażania, który wdraża najnowszą pracę na App Service. Każda zmiana w repozytorium Git rozpoczyna kompilację w usłudze Azure DevOps, a potok ciągłego wdrażania wykonuje wdrażanie na platformie Azure. Wykonaj procedurę opisaną w tej sekcji lub użyj innej techniki, aby zatwierdzić zmiany w repozytorium. Możesz na przykład sklonować repozytorium Git za pomocą ulubionego narzędzia lub środowiska IDE, a następnie wypchnąć zmiany do tego repozytorium.
 
-1. W menu Azure DevOps wybierz kolejno pozycje repozytoria i **pliki**. Następnie przejdź do repozytorium.
+1. W menu Azure DevOps wybierz kolejno pozycje **repozytoria** i **pliki**. Następnie przejdź do repozytorium.
 
 1. Repozytorium zawiera już kod oparty na języku aplikacji wybranym w procesie tworzenia. Otwórz plik **Application/views/index. Pug** .
 
 1. Wybierz pozycję **Edytuj**, a następnie wprowadź zmiany w **wierszu numer 15**. Można na przykład zmienić ją na "pierwsze wdrożenie, Azure App Service obsługiwane przez Azure Cosmos DB".
 
-1. W prawym górnym rogu wybierz pozycję **Zatwierdź**, a następnie ponownie wybierz pozycję Zatwierdź, aby wypchnąć zmianę.
+1. W prawym górnym rogu wybierz pozycję **Zatwierdź**, a następnie ponownie wybierz pozycję **Zatwierdź** , aby wypchnąć zmianę.
 
      Po kilku sekundach kompilacja rozpocznie się w usłudze Azure DevOps i zostanie wykonana wersja w celu wdrożenia zmian. Monitoruj stan kompilacji na pulpicie nawigacyjnym usługi DevOps Projects lub w przeglądarce przy użyciu organizacji usługi Azure DevOps.
 

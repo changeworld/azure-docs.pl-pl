@@ -4,10 +4,12 @@
   items:
     - name: Co jest usługa QnA Maker?
       href: Overview/overview.md
+    - name: Co nowego
+      href: whats-new.md
 - name: Przewodniki Szybki start
   items:
     - name: Tworzenie nowej bazy wiedzy
-      href: How-To/create-knowledge-base.md
+      href: quickstarts/create-publish-knowledge-base.md
     - name: Dodawanie pytań za pomocą metadanych
       href: quickstarts/add-question-metadata-portal.md
     - name: Uzyskiwanie odpowiedzi

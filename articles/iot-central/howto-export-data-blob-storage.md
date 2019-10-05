@@ -4,27 +4,27 @@ description: Jak wyeksportować dane z aplikacji IoT Central platformy Azure do 
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/08/2019
+ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
-manager: peterpr
-ms.openlocfilehash: 7366072dbf6b000981899a56ca1c8cfe6af6f04a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+manager: corywink
+ms.openlocfilehash: 7ee9d2bf32fcec5f5f4435fe09916f437d6323ee
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876046"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971655"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Eksportowanie danych do usługi Azure Blob Storage
 
-[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+[!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 *Ten temat ma zastosowanie do administratorów.*
 
-W tym artykule opisano sposób korzystania z funkcji ciągłego eksportu danych w usłudze Azure IoT Central w celu okresowego eksportowania danych do **konta usługi Azure Blob Storage**. **Pomiary**, **urządzenia**i **Szablony urządzeń** można eksportować do plików w formacie Apache Avro. Wyeksportowane dane mogą służyć do analizy ścieżki zimnej, takiej jak modele szkoleniowe w Azure Machine Learning lub długoterminowej analizie trendów w programie Microsoft Power BI.
+W tym artykule opisano sposób korzystania z funkcji ciągłego eksportu danych w usłudze Azure IoT Central w celu okresowego eksportowania danych do **konta usługi Azure Blob Storage** lub **konta magazynu Azure Data Lake Storage Gen2**. **Pomiary**, **urządzenia**i **Szablony urządzeń** można eksportować do plików w formacie JSON lub Apache Avro. Wyeksportowane dane mogą służyć do analizy ścieżki zimnej, takiej jak modele szkoleniowe w Azure Machine Learning lub długoterminowej analizie trendów w programie Microsoft Power BI.
 
 > [!Note]
-> Po włączeniu ciągłego eksportowania danych w tym momencie otrzymujesz tylko dane z tego momentu. Obecnie nie można pobrać danych przez czas, gdy ciągły eksport danych jest wyłączony. Aby zachować bardziej historyczne dane, należy wczesnie włączyć ciągły eksport danych.
+> Po włączeniu ciągłego eksportowania danych otrzymujesz tylko dane z tego momentu. Obecnie nie można pobrać danych przez czas, gdy ciągły eksport danych jest wyłączony. Aby zachować bardziej historyczne dane, należy wczesnie włączyć ciągły eksport danych.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -36,17 +36,15 @@ W tym artykule opisano sposób korzystania z funkcji ciągłego eksportu danych 
 
 Jeśli nie masz istniejącego magazynu do eksportowania, wykonaj następujące kroki:
 
-## <a name="create-storage-account"></a>Utwórz konto magazynu
-
-1. Utwórz [nowe konto magazynu w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Więcej informacji można znaleźć w dokumentacji [usługi Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
-2. W polu Typ konta wybierz pozycję **ogólnego przeznaczenia** lub **magazynu obiektów BLOB**.
-3. wybierz subskrypcję. 
+1. Utwórz [nowe konto magazynu w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Możesz dowiedzieć się więcej na temat tworzenia nowych [kont usługi Azure Blob Storage](https://aka.ms/blobdocscreatestorageaccount) lub [kont magazynu Azure Data Lake Storage v2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account).
 
     > [!Note] 
-    > Teraz możesz eksportować dane do innych subskrypcji, które **nie są takie same** jak dla aplikacji z opcją płatność zgodnie z rzeczywistym użyciem IoT Central. W tym przypadku zostanie nawiązane połączenie przy użyciu parametrów połączenia.
+    > Jeśli zdecydujesz się wyeksportować dane do konta magazynu ADLS v2, musisz wybrać **rodzaj konta** jako **BlobStorage**. 
 
-4. Utwórz kontener na koncie magazynu. Przejdź do swojego konta magazynu. W obszarze **BLOB Service**wybierz pozycję **Przeglądaj obiekty blob**. Wybierz pozycję **+ kontener** u góry, aby utworzyć nowy kontener
+    > [!Note] 
+    > Dane można eksportować do kont magazynu w ramach subskrypcji innych niż te dla aplikacji z opcją płatność zgodnie z rzeczywistym użyciem IoT Central. W tym przypadku zostanie nawiązane połączenie przy użyciu parametrów połączenia.
 
+2. Utwórz kontener na koncie magazynu. Przejdź do swojego konta magazynu. W obszarze **BLOB Service**wybierz pozycję **Przeglądaj obiekty blob**. Wybierz pozycję **+ kontener** u góry, aby utworzyć nowy kontener.
 
 ## <a name="set-up-continuous-data-export"></a>Konfigurowanie ciągłego eksportu danych
 
@@ -54,21 +52,19 @@ Teraz, gdy masz miejsce docelowe magazynu, do którego chcesz wyeksportować dan
 
 1. Zaloguj się do aplikacji IoT Central.
 
-2. W menu po lewej stronie wybierz pozycję **ciągły eksport danych**.
+2. W menu po lewej stronie wybierz pozycję **eksport danych**.
 
     > [!Note]
-    > Jeśli nie widzisz ciągłego eksportu danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Skontaktuj się z administratorem, aby skonfigurować eksportowanie danych.
-
-    ![Utwórz nowe centrum zdarzeń CDE](media/howto-export-data/export_menu1.png)
+    > Jeśli nie widzisz eksportu danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Skontaktuj się z administratorem, aby skonfigurować eksportowanie danych.
 
 3. Wybierz przycisk **+ Nowy** w prawym górnym rogu. Wybierz pozycję **Azure Blob Storage** jako lokalizację docelową eksportu. 
 
     > [!NOTE] 
     > Maksymalna liczba eksportów na aplikację wynosi pięć. 
 
-    ![Utwórz nowy ciągły eksport danych](media/howto-export-data/export_new1.png)
+    ![Utwórz nowy ciągły eksport danych](media/howto-export-data/export-new2.png)
 
-4. W polu listy rozwijanej wybierz **przestrzeń nazw konta magazynu**. Możesz również wybrać ostatnią opcję z listy, która jest wprowadzeniem **parametrów połączenia**. 
+4. W polu listy rozwijanej wybierz **przestrzeń nazw konta magazynu**. Możesz również wybrać ostatnią opcję z listy, która jest **wprowadzeniem parametrów połączenia**. 
 
     > [!NOTE] 
     > W **tej samej subskrypcji,** w której znajduje się aplikacja IoT Central, zobaczysz tylko przestrzenie nazw kont magazynu. Jeśli chcesz wyeksportować do lokalizacji docelowej poza tą subskrypcją, wybierz pozycję **wprowadź parametry połączenia** i zobacz krok 5.
@@ -76,34 +72,41 @@ Teraz, gdy masz miejsce docelowe magazynu, do którego chcesz wyeksportować dan
     > [!NOTE] 
     > W przypadku 7-dniowych aplikacji próbnych jedynym sposobem skonfigurowania ciągłego eksportu danych jest użycie parametrów połączenia. Wynika to z faktu, że 7-dniowe aplikacje próbne nie mają skojarzonej subskrypcji platformy Azure.
 
-    ![Utwórz nowe centrum zdarzeń CDE](media/howto-export-data/export-create-blob.png)
+    ![Utwórz nowy eksport do obiektu BLOB](media/howto-export-data/export-create-blob2.png)
 
-5. Obowiązkowe W przypadku wybrania opcji **wprowadź parametry połączenia**pojawi się nowe pole umożliwiające wklejenie parametrów połączenia. Aby uzyskać parametry połączenia dla:
-    - Konto magazynu przejdź do konta magazynu w Azure Portal.
-        - W obszarze **Ustawienia**wybierz pozycję **klucze dostępu** .
-        - Skopiuj parametry połączenia Klucz1 lub parametry połączenia klucz2
+5. Obowiązkowe W przypadku wybrania opcji **wprowadź parametry połączenia**pojawi się nowe pole umożliwiające wklejenie parametrów połączenia. Aby uzyskać parametry połączenia dla konta magazynu, przejdź do konta magazynu w Azure Portal:-w obszarze **Ustawienia**wybierz pozycję **klucze dostępu** — Skopiuj parametry połączenia Klucz1 lub parametry połączenia klucz2
  
-6. Wybierz kontener z listy rozwijanej.
+6. Wybierz kontener z listy rozwijanej. Jeśli nie masz kontenera, przejdź do swojego konta magazynu w Azure Portal:
+    - W obszarze **BLOB Service**wybierz pozycję **obiekty blob**. Kliknij pozycję **+ kontener** i nadaj kontenerowi nazwę. Wybierz publiczny poziom dostępu do danych (wszystkie będą współpracować z ciągłym eksportowaniem danych). Dowiedz się więcej z dokumentacji [usługi Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container).
 
-7. W obszarze **dane do eksportowania**Określ każdy typ danych do wyeksportowania, ustawiając typ na wartość **włączone**.
+7. Wybierz preferowany **Format danych** : JSON lub [Apache Avro](https://avro.apache.org/docs/current/index.html) format.
 
-6. Aby włączyć funkcję ciągłego eksportowania danych, upewnij się, że **Eksportowanie danych** jest **włączone**. Wybierz pozycję **Zapisz**.
+8. W obszarze **dane do eksportowania**Określ każdy typ danych do wyeksportowania, ustawiając typ na wartość **włączone**.
 
-   ![Konfigurowanie ciągłego eksportowania danych](media/howto-export-data/export-list-blob.png)
+9. Aby włączyć ciągły eksport danych, upewnij się, że przełącznik **eksportu danych** jest **włączony**. Wybierz pozycję **Zapisz**.
 
-7. Po kilku minutach dane zostaną wyświetlone w wybranym miejscu docelowym.
+   ![Konfigurowanie ciągłego eksportowania danych](media/howto-export-data/export-list-blob2.png)
+
+10. Po kilku minutach dane zostaną wyświetlone na koncie magazynu.
 
 
-## <a name="export-to-azure-blob-storage"></a>Eksportuj do Blob Storage platformy Azure
+## <a name="path-structure"></a>Struktura ścieżki
 
-Dane pomiarów, urządzeń i szablonów urządzeń są eksportowane do konta magazynu raz na minutę, przy czym każdy plik zawierający partię zmian od ostatniego wyeksportowanego pliku. Eksportowane dane są w formacie [Apache Avro](https://avro.apache.org/docs/current/index.html) i zostaną wyeksportowane do trzech folderów. Domyślne ścieżki na koncie magazynu:
-- Komunikaty: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Urządzenia: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Szablony urządzeń: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+Dane pomiarów, urządzeń i szablonów urządzeń są eksportowane do konta magazynu raz na minutę, przy czym każdy plik zawierający partię zmian od ostatniego wyeksportowanego pliku. Eksportowane dane są umieszczane w trzech folderach w formacie JSON lub Avro. Domyślne ścieżki na koncie magazynu:
+- Komunikaty: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+- Urządzenia: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+- Szablony urządzeń: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+
+Wyeksportowane pliki można przeglądać w Azure Portal, przechodząc do pliku i wybierając kartę **Edytuj obiekt BLOB** .
+
+## <a name="data-format"></a>Format danych 
 
 ### <a name="measurements"></a>Miary
 
 Eksportowane dane pomiarów zawierają wszystkie nowe komunikaty odebrane przez IoT Central ze wszystkich urządzeń w tym czasie. Eksportowane pliki używają tego samego formatu co pliki komunikatów wyeksportowane przez [IoT Hub Routing komunikatów](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do magazynu obiektów BLOB.
+
+> [!NOTE]
+> Upewnij się, że urządzenia wysyłają komunikaty z `contentType: application/JSON` i `contentEncoding:utf-8` (lub `utf-16`, `utf-32`). Przykład można znaleźć w [dokumentacji IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-body) .
 
 > [!NOTE]
 > Urządzenia, które wysyłają pomiary, są reprezentowane przez identyfikatory urządzeń (zobacz następujące sekcje). Aby uzyskać nazwy urządzeń, wyeksportuj migawki urządzeń. Należy skorelować każdy rekord komunikatu przy użyciu **connectionDeviceId** , który odpowiada identyfikatorowi **deviceId** rekordu urządzenia.
@@ -111,25 +114,25 @@ Eksportowane dane pomiarów zawierają wszystkie nowe komunikaty odebrane przez 
 Poniższy przykład przedstawia rekord w zdekodowanym pliku Avro:
 
 ```json
-{
-    "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
-    "Properties": {},
-    "SystemProperties": {
-        "connectionDeviceId": "<connectionDeviceId>",
-        "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "<generationId>",
-        "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
-    },
-    "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
+{ 
+  "EnqueuedTimeUtc":"2019-06-11T00:00:08.2250000Z",
+  "Properties":{},
+  "SystemProperties":{ 
+    "connectionDeviceId":"<deviceId>",
+    "connectionAuthMethod":"{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+    "connectionDeviceGenerationId":"<generationId>",
+    "enqueuedTime":"2019-06-11T00:00:08.2250000Z"
+  },
+  "Body":"{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
 }
 ```
 
 ### <a name="devices"></a>Urządzenia
 
 Gdy ciągły eksport danych jest najpierw włączony, wyeksportowana jest pojedyncza migawka ze wszystkimi urządzeniami. Każde urządzenie obejmuje:
-- `id`urządzenia w IoT Central
-- `name`urządzenia
-- `deviceId`z [usługi Device](https://aka.ms/iotcentraldocsdps) Provisioning
+- `id` urządzenia w IoT Central
+- `name` urządzenia
+- `deviceId` z [usługi Device Provisioning](https://aka.ms/iotcentraldocsdps)
 - Informacje o szablonie urządzenia
 - Wartości właściwości
 - Ustawianie wartości
@@ -144,42 +147,42 @@ Nowa migawka jest zapisywana raz na minutę. Migawka obejmuje następujące:
 >
 > Szablon urządzenia, do którego należy każde urządzenie, jest reprezentowany przez identyfikator szablonu urządzenia. Aby uzyskać nazwę szablonu urządzenia, wyeksportuj migawki szablonów urządzeń.
 
-Rekord w zdekodowanym pliku Avro może wyglądać następująco:
+Eksportowane pliki zawierają jeden wiersz dla każdego rekordu. Poniższy przykład przedstawia rekord w formacie Avro, zdekodowany:
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerator 2",
-    "simulated": true,
-    "deviceId": "<deviceId>",
-    "deviceTemplate": {
-        "id": "<template id>",
-        "version": "1.0.0"
+{ 
+  "id":"<id>",
+  "name":"Refrigerator 2",
+  "simulated":true,
+  "deviceId":"<deviceId>",
+  "deviceTemplate":{ 
+    "id":"<template id>",
+    "version":"1.0.0"
+  },
+  "properties":{ 
+    "cloud":{ 
+      "location":"New York",
+      "maintCon":true,
+      "tempThresh":20
     },
-    "properties": {
-        "cloud": {
-            "location": "New York",
-            "maintCon": true,
-            "tempThresh": 20
-        },
-        "device": {
-            "lastReboot": "2018-02-09T22:22:47.156Z"
-        }
-    },
-    "settings": {
-        "device": {
-            "fanSpeed": 0
-        }
+    "device":{ 
+      "lastReboot":"2018-02-09T22:22:47.156Z"
     }
+  },
+  "settings":{ 
+    "device":{ 
+      "fanSpeed":0
+    }
+  }
 }
 ```
 
 ### <a name="device-templates"></a>Szablony urządzeń
 
 Gdy ciągły eksport danych jest najpierw włączony, wyeksportowana jest pojedyncza migawka ze wszystkimi szablonami urządzeń. Każdy szablon urządzenia zawiera:
-- `id`szablonu urządzenia
-- `name`szablonu urządzenia
-- `version`szablonu urządzenia
+- `id` szablonu urządzenia
+- `name` szablonu urządzenia
+- `version` szablonu urządzenia
 - Typy danych pomiarów oraz wartości minimalne/maksymalne.
 - Typy danych właściwości i wartości domyślne.
 - Ustawianie typów danych i wartości domyślnych.
@@ -192,79 +195,79 @@ Nowa migawka jest zapisywana raz na minutę. Migawka obejmuje następujące:
 > [!NOTE]
 > Szablony urządzeń usunięte od momentu ostatniej migawki nie są eksportowane. Obecnie migawki nie mają wskaźników dla usuniętych szablonów urządzeń.
 
-Rekord w zdekodowanym pliku Avro może wyglądać następująco:
+Eksportowane pliki zawierają jeden wiersz dla każdego rekordu. Poniższy przykład przedstawia rekord w formacie Avro, zdekodowany:
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerated Vending Machine",
-    "version": "1.0.0",
-    "measurements": {
-        "telemetry": {
-            "humidity": {
-                "dataType": "double",
-                "name": "Humidity"
-            },
-            "magnetometerX": {
-                "dataType": "double",
-                "name": "Magnetometer X"
-            },
-            "magnetometerY": {
-                "dataType": "double",
-                "name": "Magnetometer Y"
-            },
-            "magnetometerZ": {
-                "dataType": "double",
-                "name": "Magnetometer Z"
-            }
-        },
-        "states": {
-            "connectivity": {
-                "dataType": "enum",
-                "name": "Connectivity"
-            }
-        },
-        "events": {
-            "opened": {
-                "name": "Door Opened",
-                "category": "informational"
-            }
-        }
+{ 
+  "id":"<id>",
+  "name":"Refrigerated Vending Machine",
+  "version":"1.0.0",
+  "measurements":{ 
+    "telemetry":{ 
+      "humidity":{ 
+        "dataType":"double",
+        "name":"Humidity"
+      },
+      "magnetometerX":{ 
+        "dataType":"double",
+        "name":"Magnetometer X"
+      },
+      "magnetometerY":{ 
+        "dataType":"double",
+        "name":"Magnetometer Y"
+      },
+      "magnetometerZ":{ 
+        "dataType":"double",
+        "name":"Magnetometer Z"
+      }
     },
-    "settings": {
-        "device": {
-            "fanSpeed": {
-                "dataType": "double",
-                "name": "Fan Speed",
-                "initialValue": 0
-            }
-        }
+    "states":{ 
+      "connectivity":{ 
+        "dataType":"enum",
+        "name":"Connectivity"
+      }
     },
-    "properties": {
-        "cloud": {
-            "location": {
-                "dataType": "string",
-                "name": "Location",
-                "initialValue": "Seattle"
-            },
-            "maintCon": {
-                "dataType": "boolean",
-                "name": "Maintenance Contract",
-                "initialValue": true
-            },
-            "tempThresh": {
-                "dataType": "double",
-                "name": "Temperature Alert Threshold",
-                "initialValue": 30
-            }
-        },
-        "device": {
-            "lastReboot": {
-                "dataType": "dateTime",
-                "name": "Last Reboot"
-            }
-        }
+    "events":{ 
+      "opened":{ 
+        "name":"Door Opened",
+        "category":"informational"
+      }
     }
+  },
+  "settings":{ 
+    "device":{ 
+      "fanSpeed":{ 
+        "dataType":"double",
+        "name":"Fan Speed",
+        "initialValue":0
+      }
+    }
+  },
+  "properties":{ 
+    "cloud":{ 
+      "location":{ 
+        "dataType":"string",
+        "name":"Location",
+        "initialValue":"Seattle"
+      },
+      "maintCon":{ 
+        "dataType":"boolean",
+        "name":"Maintenance Contract",
+        "initialValue":true
+      },
+      "tempThresh":{ 
+        "dataType":"double",
+        "name":"Temperature Alert Threshold",
+        "initialValue":30
+      }
+    },
+    "device":{ 
+      "lastReboot":{ 
+        "dataType":"dateTime",
+        "name":"Last Reboot"
+      }
+    }
+  }
 }
 ```
 

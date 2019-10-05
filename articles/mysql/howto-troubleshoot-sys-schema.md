@@ -1,83 +1,83 @@
 ---
-title: Sposób użycia sys_schema dostrajania wydajności i konserwacji bazy danych w usłudze Azure Database for MySQL
-description: W tym artykule opisano, jak za pomocą sys_schema znajdowanie problemów z wydajnością i obsługa bazy danych w usłudze Azure Database for MySQL.
+title: Użyj sys_schema, aby dostroić wydajność i zachować Azure Database for MySQL
+description: Dowiedz się, jak za pomocą programu sys_schema znaleźć problemy z wydajnością i zachować bazę danych w Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7dc6b4744c74c56803127f63a8a6f29ca5a15090
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61422375"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972790"
 ---
-# <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Jak używać sys_schema dla wydajności dostosowywania oraz konserwacji bazy danych w usłudze Azure Database for MySQL
+# <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Jak używać sys_schema do dostrajania wydajności i konserwacji bazy danych w Azure Database for MySQL
 
-MySQL performance_schema, pierwsza dostępna w wersji 5.5 MySQL, zawiera Instrumentację do wielu zasobów od serwera, takich jak alokacji pamięci, programy przechowywane, metadane, blokowanie, itd. Jednak performance_schema zawiera więcej niż 80 tabele i niezbędne informacje często wymaga przyłączanie tabel w performance_schema, jak również tabele z information_schema. Opierając się na performance_schema i information_schema, sys_schema udostępnia zaawansowany zbiór [przyjazny dla użytkownika widoków](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) w bazie danych tylko do odczytu i w pełni włączony w usłudze Azure Database for MySQL w wersji 5.7.
+Program MySQL performance_schema, dostępny w pierwszej kolejności w programie MySQL 5,5, zapewnia instrumentację dla wielu najważniejszych zasobów serwera, takich jak alokacja pamięci, programy przechowywane, blokowanie metadanych itp. Jednak performance_schema zawiera więcej niż 80 tabel i uzyskanie niezbędnych informacji często wymaga sprzężenia tabel w performance_schema, a także tabel z INFORMATION_SCHEMA. W przypadku kompilowania zarówno performance_schema, jak i INFORMATION_SCHEMA, sys_schema zapewnia zaawansowaną kolekcję [widoków przyjaznych dla użytkownika](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) w bazie danych tylko do odczytu i jest w pełni włączona w Azure Database for MySQL wersji 5,7.
 
-![Widoki sys_schema](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
+![widoki sys_schema](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
-W sys_schema są widoki 52, a każdy widok zawiera jedną z następujących prefiksów:
+W sys_schema istnieją widoki 52, a każdy widok ma jedną z następujących prefiksów:
 
-- Host_summary lub operacji We/Wy: Operacje We/Wy związane z opóźnieniami poniżej.
-- InnoDB: Stan buforu aparatu InnoDB i blokad.
-- Pamięć: Użycie pamięci przez hosta i użytkowników.
-- Schemat: Schematu, powiązane informacje, takie jak automatyczne zwiększanie, indeksy itp.
-- Instrukcja: Informacji na temat instrukcji języka SQL; może to być instrukcja, która spowodowała pełne skanowanie tabeli lub długi czas wykonywania zapytania.
-- Użytkownik: Zasoby używane i pogrupowanych według użytkowników. Przykłady to plik operacji We/Wy, połączeń i pamięci.
-- Oczekiwania: Poczekaj zdarzeń pogrupowanych wg hosta lub użytkownika.
+- Host_summary lub we/wy: powiązane opóźnienia we/wy.
+- InnoDB: InnoDB buforu stanu i blokady.
+- Pamięć: użycie pamięci przez hosta i użytkowników.
+- Schemat: informacje dotyczące schematu, takie jak autoprzyrost, indeksy itd.
+- Instrukcja: informacje na temat instrukcji SQL; może to być instrukcja, która spowodowała pełne skanowanie tabeli lub długi czas wykonywania zapytań.
+- Użytkownik: zasoby używane i pogrupowane według użytkowników. Przykłady to plik I/OS, połączenia i pamięć.
+- Czekaj: zdarzenia oczekiwania pogrupowane według hosta lub użytkownika.
 
-Teraz Spójrzmy na niektóre typowe wzorce użycia sys_schema. Najpierw zostanie pogrupujemy wzorców użycia na dwie kategorie: **Dostrajanie wydajności** i **baza danych konserwacji**.
+Teraz przyjrzyjmy się typowym wzorcem użycia sys_schema. Aby zacząć od, będziemy grupować wzorce użycia do dwóch kategorii: **dostrajania wydajności** i **konserwacji bazy danych**.
 
 ## <a name="performance-tuning"></a>Dostosowywanie wydajności
 
-### <a name="sysusersummarybyfileio"></a>*sys.user_summary_by_file_io*
+### <a name="sysuser_summary_by_file_io"></a>*sys. user_summary_by_file_io*
 
-We/Wy jest najbardziej kosztownych operacji w bazie danych. Firma Microsoft można znaleźć średni czas oczekiwania operacji We/Wy, badając *sys.user_summary_by_file_io* widoku. Przy użyciu domyślnego 125 GB aprowizowanego magazynu, Moje czas oczekiwania operacji We/Wy jest około 15 sekund.
+We/wy jest najtańszą operacją w bazie danych. Średni czas oczekiwania operacji we/wy można sprawdzić, badając widok *sys. user_summary_by_file_io* . Przy domyślnym 125 GB magazynu z zainicjowaną obsługą operacji we/wy trwa około 15 sekund.
 
-![czas oczekiwania operacji We/Wy: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
+![opóźnienie we/wy: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
 
-Ponieważ — Azure Database for MySQL umożliwia skalowanie operacji We/Wy w odniesieniu do magazynu, po zwiększeniu ilości do 1 TB aprowizowanego magazynu, Moje czas oczekiwania operacji We/Wy zmniejsza 571 MS.
+Ponieważ Azure Database for MySQL skaluje we/wy w odniesieniu do magazynu, po zwiększeniu miejsca do magazynowania na 1 TB, opóźnienie operacji we/wy zmniejsza się do 571 MS.
 
-![czas oczekiwania operacji We/Wy: 1TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+![opóźnienie we/wy: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
-### <a name="sysschematableswithfulltablescans"></a>*sys.schema_tables_with_full_table_scans*
+### <a name="sysschema_tables_with_full_table_scans"></a>*sys. schema_tables_with_full_table_scans*
 
-Pomimo starannego planowania wiele zapytań nadal może spowodować skanowania pełną tabelę. Aby uzyskać dodatkowe informacje o typach indeksy i sposobu ich optymalizacji mogą odwoływać się do tego artykułu: [Jak rozwiązywać problemy z wydajnością zapytań](./howto-troubleshoot-query-performance.md). Tabela pełnego skanowania są dużej ilości zasobów i obniżyć wydajność bazy danych. Najszybszym sposobem znalezienia tabele zawierające pełne skanowanie tabeli jest do kwerendy *sys.schema_tables_with_full_table_scans* widoku.
+Pomimo starannego planowania wiele zapytań nadal może prowadzić do pełnego skanowania tabel. Aby uzyskać dodatkowe informacje o typach indeksów i sposobach ich optymalizacji, można zapoznać się z tym artykułem: [Jak rozwiązywać problemy z wydajnością zapytań](./howto-troubleshoot-query-performance.md). Pełne skanowanie tabeli polega na wielu zasobach i obniżeniu wydajności bazy danych. Najszybszym sposobem znajdowania tabel za pomocą pełnego skanowania tabeli jest zbadanie widoku *sys. schema_tables_with_full_table_scans* .
 
-![Tabela pełnego skanowania](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
+![pełne skanowanie tabeli](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 
-### <a name="sysusersummarybystatementtype"></a>*sys.user_summary_by_statement_type*
+### <a name="sysuser_summary_by_statement_type"></a>*sys. user_summary_by_statement_type*
 
-Aby rozwiązać problemy z wydajnością bazy danych, może być korzystne ustalić zdarzenia wykonywane w bazie danych, a za pomocą *sys.user_summary_by_statement_type* widok może po prostu robią lewy.
+Aby rozwiązać problemy z wydajnością bazy danych, może być korzystne zidentyfikowanie zdarzeń występujących w bazie danych, a korzystanie z widoku *sys. user_summary_by_statement_type* może wystarczy zrobić.
 
-![Podsumowanie przez instrukcję](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
+![Podsumowanie według instrukcji](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
 
-W tym przykładzie — Azure Database for MySQL poświęcony 53 minut opróżniania dziennika zapytań slog 44579 razy. To dużo czasu i wiele z systemem IOs. Można zmniejszyć tego działania, albo Wyłącz dziennik wolnych zapytań lub zmniejszyć częstotliwość wolnych zapytań logowania w witrynie Azure portal.
+W tym przykładzie Azure Database for MySQL poświęcają 53 minut na opróżnianie 44579 dziennika zapytań slog. To długi czas i wiele systemów IOs. To działanie można ograniczyć, wyłączając dziennik wolnych zapytań lub zmniejszając częstotliwość powolnych logowań do Azure Portal.
 
-## <a name="database-maintenance"></a>Konserwacji bazy danych
+## <a name="database-maintenance"></a>Konserwacja bazy danych
 
-### <a name="sysinnodbbufferstatsbytable"></a>*sys.innodb_buffer_stats_by_table*
+### <a name="sysinnodb_buffer_stats_by_table"></a>*sys. innodb_buffer_stats_by_table*
 
-Pula buforów aparatu InnoDB znajduje się w pamięci i mechanizm głównej pamięci podręcznej między bazami danych i magazynem. Rozmiar puli bufora aparatu InnoDB jest powiązany z warstwy wydajności i nie można zmienić, o ile nie zostanie wybrany inny produkt jednostki SKU. Podobnie jak w przypadku pamięci w systemie operacyjnym, starej strony są wymieniane aby zwolnić miejsce dla fresher danych. Aby dowiedzieć się, tabel, które zużywają większość pamięci puli buforów aparatu InnoDB, można tworzyć zapytania *sys.innodb_buffer_stats_by_table* widoku.
+Pula buforów InnoDB znajduje się w pamięci i jest głównym mechanizmem pamięci podręcznej między systemem DBMS i magazynem. Rozmiar puli buforów InnoDB jest powiązany z warstwą wydajności i nie można jej zmienić, jeśli nie wybrano innej jednostki SKU produktu. Podobnie jak w przypadku pamięci w systemie operacyjnym, stare strony są wymieniane w celu zapewnienia pokoju na potrzeby świeżych danych. Aby dowiedzieć się, które tabele zużywają większość pamięci puli buforów InnoDB, można wykonać zapytanie do widoku *sys. innodb_buffer_stats_by_table* .
 
-![Stan buforu aparatu InnoDB](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
+![Stan buforu InnoDB](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
 
-Na rysunku powyżej jest jasne, że inne niż tabele systemowe i widoki, każdej tabeli w bazie danych mysqldatabase033 której zainstalowany jeden z moich witryn WordPress, zajmuje 16 KB lub 1 stronę danych w pamięci.
+Na grafice powyżej widać, że inne niż tabele i widoki systemowe, każda tabela w bazie danych mysqldatabase033, która hostuje jedną z witryn WordPress, zajmuje 16 KB lub 1 stronę danych w pamięci.
 
-### <a name="sysschemaunusedindexes--sysschemaredundantindexes"></a>*Sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
+### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys. schema_unused_indexes* & *sys. schema_redundant_indexes*
 
-Indeksy są doskonałe narzędzia pozwalające zwiększyć wydajność odczytu, ale pociągnąć za sobą dodatkowe koszty dla instrukcji INSERT i magazynu. *Sys.schema_unused_indexes* i *sys.schema_redundant_indexes* niezastąpione nieużywany lub zduplikowany indeksów.
+Indeksy to doskonałe narzędzia pozwalające zwiększyć wydajność odczytu, ale wiążą się z dodatkowymi kosztami operacji wstawiania i przechowywania. *Sys. schema_unused_indexes* i *sys. schema_redundant_indexes* zapewniają wgląd w nieużywane lub zduplikowane indeksy.
 
-![nieużywane indeksów](./media/howto-troubleshoot-sys-schema/unused-indexes.png)
+![nieużywane indeksy](./media/howto-troubleshoot-sys-schema/unused-indexes.png)
 
 ![nadmiarowe indeksy](./media/howto-troubleshoot-sys-schema/redundant-indexes.png)
 
 ## <a name="conclusion"></a>Podsumowanie
 
-Podsumowując sys_schema jest doskonałym narzędziem do obu wydajności dostosowywania oraz konserwacji bazy danych. Pamiętaj skorzystać z tej funkcji w usłudze Azure Database for MySQL. 
+Podsumowując, sys_schema to doskonałe narzędzie do dostrajania wydajności i konserwacji bazy danych. Upewnij się, że korzystasz z tej funkcji w Azure Database for MySQL. 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Aby znaleźć elementu równorzędnego odpowiedzi na pytania dotyczące najbardziej interesujących lub zadać nowe pytanie/odpowiedź, odwiedź stronę [forum MSDN dotyczącym](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) lub [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+## <a name="next-steps"></a>Następne kroki
+- Aby znaleźć odpowiedzi na najczęściej zadawane pytania lub opublikować nowe pytanie/odpowiedź, odwiedź [forum MSDN](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) lub [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

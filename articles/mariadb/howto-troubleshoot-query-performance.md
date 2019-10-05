@@ -1,20 +1,20 @@
 ---
-title: Jak rozwiązywać problemy z wydajnością zapytań w usłudze Azure Database dla serwera MariaDB
-description: W tym artykule opisano, jak rozwiązywać problemy z wydajnością zapytań w usłudze Azure Database dla serwera MariaDB za pomocą wyjaśnienia.
+title: Rozwiązywanie problemów z wydajnością zapytań w Azure Database for MariaDB
+description: Informacje na temat rozwiązywania problemów z wydajnością zapytań w Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/09/2018
-ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2f5e7e7c9ca39c092e13242ecdac2675b09fc0d
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745166"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973507"
 ---
-# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak za pomocą wyjaśnienia profil wydajności zapytań w usłudze Azure Database dla serwera MariaDB
-**WYJAŚNIONO** jest przydatnym narzędziem do optymalizacji zapytań. WYJAŚNIĆ, że instrukcja może być używana w celu uzyskania informacji o jak instrukcje SQL są wykonywane. Następujące dane wyjściowe zawierają przykład wykonywania instrukcji wyjaśnienia.
+# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak użyć WYJAŚNIj, aby uzyskać informacje o wydajności zapytań dotyczących profilów w Azure Database for MariaDB
+**Wyjaśnienie** to przydatne narzędzie do optymalizowania zapytań. Instrukcji WYJAŚNIj można użyć do uzyskania informacji o sposobie wykonywania instrukcji SQL. Poniższe dane wyjściowe przedstawiają przykład wykonania instrukcji WYJAŚNIeń.
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-Jak widać w tym przykładzie wartość *klucz* ma wartość NULL. Te dane wyjściowe oznacza MariaDB nie można odnaleźć żadnych indeksów, zoptymalizowane pod kątem zapytania i wykona pełne skanowanie tabeli. Umożliwia optymalizowanie tego zapytania, dodając indeksu na **identyfikator** kolumny.
+Jak widać na podstawie tego przykładu, wartość *klucza* jest równa null. To wyjście oznacza, że MariaDB nie może znaleźć żadnych indeksów zoptymalizowanych pod kątem zapytania i wykonuje pełne skanowanie tabeli. Zoptymalizujmy to zapytanie, dodając indeks w kolumnie **ID** .
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -53,10 +53,10 @@ possible_keys: id
         Extra: NULL
 ```
 
-Nowe wyjaśnienia pokazuje, że MariaDB używa teraz indeksu ograniczenia liczby wierszy do 1, co z kolei znacznie skrócony czas wyszukiwania.
+Nowe wyjaśnienie pokazuje, że MariaDB teraz używa indeksu, aby ograniczyć liczbę wierszy do 1, co z kolei znacznie skraca czas wyszukiwania.
  
-## <a name="covering-index"></a>Obejmujących indeksu
-Indeks obejmujący składa się ze wszystkich kolumn z zapytania w indeksie, aby ograniczyć pobieranie wartości z tabelami danych. Oto ilustrację poniżej **GROUP BY** instrukcji.
+## <a name="covering-index"></a>Indeks obejmujący
+Indeks obejmujący zawiera wszystkie kolumny zapytania w indeksie, aby zmniejszyć liczbę pobieranych wartości z tabel danych. Oto ilustracja w następującej instrukcji **Group by** .
  
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
@@ -75,9 +75,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Jak wynika z danych wyjściowych, MariaDB nie używa żadnych indeksów, żadne odpowiednie indeksy nie są dostępne. Pokazuje także *przy użyciu tymczasowego; Przy użyciu pliku sortowania*, co oznacza, że MariaDB tworzy tymczasową tabelę do zaspokojenia **GROUP BY** klauzuli.
+Jak widać na podstawie danych wyjściowych, MariaDB nie używa żadnych indeksów, ponieważ nie są dostępne żadne prawidłowe indeksy. Pokazuje także *czas użycia tymczasowego; Użycie sortowania plików*, co oznacza, że MariaDB tworzy tabelę tymczasową w celu spełnienia klauzuli **Group by** .
  
-Tworzenie indeksu w kolumnie **c2** samodzielnie sprawia, że nie różnicy i MariaDB nadal konieczna utworzyć tabelę tymczasową:
+Utworzenie indeksu dla samego kolumny **C2** nie powoduje żadnych różnic, a MariaDB nadal musi utworzyć tabelę tymczasową:
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-W tym przypadku **ustawy indeksu** zarówno **c1** i **c2** można tworzyć, według których dodanie wartości **c2**"bezpośrednio w indeksie, aby Dodatkowo eliminują wyszukiwania danych.
+W takim przypadku można utworzyć **pokryty indeks** zarówno **C1** , jak i **C2** , dodając wartość **C2**"bezpośrednio w indeksie, aby wyeliminować dalsze wyszukiwanie danych.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
@@ -117,10 +117,10 @@ possible_keys: covered
         Extra: Using where; Using index
 ```
 
-Jak pokazano na powyższym wyjaśnienia, MariaDB teraz używa indeksu objęte usługą i unikanie tworzenia tabeli tymczasowej. 
+Zgodnie z powyższym WYJAŚNIENIEm, MariaDB używa teraz indeksu pokrytego i nie należy tworzyć tabeli tymczasowej. 
 
-## <a name="combined-index"></a>Połączone indeksu
-Indeksu złożonego składa się wartości z wielu kolumn i jest uznawana za tablicę wierszy, które są sortowane według złączenie wartości indeksowanych kolumn. Ta metoda może być przydatne w **GROUP BY** instrukcji.
+## <a name="combined-index"></a>Połączony indeks
+Połączony indeks zawiera wartości z wielu kolumn i może być traktowany jako tablica wierszy, które są posortowane przez konkatenację wartości indeksowanych kolumn. Ta metoda może być przydatna w instrukcji **Group by** .
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-Wykonuje MariaDB *sortowania pliku* operacji, która jest dość wolne, szczególnie gdy obsługuje sortowanie wielu wierszy. W celu zoptymalizowania tego zapytania, można utworzyć połączone indeks na obie kolumny, które są sortowane.
+MariaDB wykonuje operację *sortowania plików* , która jest stosunkowo niska, zwłaszcza gdy musi sortować wiele wierszy. Aby zoptymalizować to zapytanie, połączony indeks można utworzyć dla obu kolumn, które są sortowane.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
@@ -159,11 +159,11 @@ possible_keys: NULL
         Extra: Using where; Using index
 ```
 
-WYJAŚNIENIE teraz pokazuje, że MariaDB jest mogli używać indeksu złożonego, aby uniknąć dodatkowych sortowanie, ponieważ jest już sortowana indeksu.
+W WYJAŚNIeniu są teraz widoczne, że MariaDB jest w stanie użyć połączonego indeksu, aby uniknąć dodatkowego sortowania, ponieważ indeks jest już posortowany.
  
 ## <a name="conclusion"></a>Podsumowanie
  
-Przy użyciu wyjaśnienia i innego typu indeksów może znacząco zwiększyć wydajność. Po prostu, ponieważ masz indeksu w tabeli nie musi oznaczać, że MariaDB można go używać w zapytaniach. Zawsze sprawdzić za pomocą wyjaśnienie założeń i optymalizowania zapytań przy użyciu indeksów.
+Użycie WYJAŚNIeń i różnych typów indeksów może znacząco zwiększyć wydajność. Indeks tabeli nie musi oznaczać, że MariaDB będzie mógł użyć jej do wykonywania zapytań. Zawsze Weryfikuj założenia przy użyciu WYJAŚNIeń i Optymalizuj zapytania przy użyciu indeksów.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Aby znaleźć elementu równorzędnego odpowiedzi na pytania dotyczące najbardziej interesujących lub zadać nowe pytanie/odpowiedź, odwiedź stronę [forum MSDN dotyczącym](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) lub [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).
+## <a name="next-steps"></a>Następne kroki
+- Aby znaleźć odpowiedzi na najczęściej zadawane pytania lub opublikować nowe pytanie/odpowiedź, odwiedź [forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) lub [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).

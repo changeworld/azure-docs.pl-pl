@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266878"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973015"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych usługi Azure IaaS oraz zarządzanych i niezarządzanych dysków Premium
 
@@ -85,9 +85,9 @@ Należy skonfigurować prywatne konto magazynu na potrzeby diagnostyki maszyn wi
 
 Managed Disks obsługuje trzy role domyślne klucza:
 
-* Właociciela Może zarządzać wszystko, w tym dostępem
-* Trybu Może zarządzać wszystko z wyjątkiem dostępu
-* Czytnika Może wyświetlać wszystko, ale nie może wprowadzać zmian
+* Właściciel: może zarządzać wszystkimi, w tym dostępem
+* Współautor: może zarządzać wszystko z wyjątkiem dostępu
+* Czytelnik: może wyświetlać wszystko, ale nie może wprowadzać zmian
 
 **Czy istnieje sposób, aby można było skopiować lub wyeksportować dysk zarządzany do prywatnego konta magazynu?**
 
@@ -157,7 +157,7 @@ SSD w warstwie Premium, standardowy dysk SSD i standardowe dyski twarde obsługu
 - DSv3
 
 **Jak należy ustawić moją przepływność na dysku?**
-Jeśli nie masz pewności, w jaki sposób ustawić przepływność dysku, zalecamy rozpoczęcie od zagwarantowania, że rozmiar we/wy wynoszący 16 KiB i dostosowanie wydajności w trakcie monitorowania aplikacji. Formuła: Przepływność w MB/s = liczba operacji we/wy * 16/1000.
+Jeśli nie masz pewności, w jaki sposób ustawić przepływność dysku, zalecamy rozpoczęcie od zagwarantowania, że rozmiar we/wy wynoszący 16 KiB i dostosowanie wydajności w trakcie monitorowania aplikacji. Formuła: przepływność w MB/s = liczba operacji we/wy * 16/1000.
 
 **Mam skonfigurowany dysk do 40000 IOPS, ale widzę tylko 12800 operacji we/wy na sekundę, dlaczego nie widzę wydajności dysku?**
 Oprócz ograniczenia dysku istnieje ograniczenie we/wy, które jest nakładane na poziomie maszyny wirtualnej. Upewnij się, że rozmiar maszyny wirtualnej, z której korzystasz, może obsługiwać poziomy skonfigurowane na dyskach. Aby uzyskać szczegółowe informacje dotyczące limitów we/wy narzuconych przez maszynę wirtualną, zobacz [rozmiary maszyn wirtualnych z systemem Windows na platformie Azure](../articles/virtual-machines/windows/sizes.md).
@@ -218,8 +218,8 @@ Tak, Azure Backup jest teraz dostępny.
 **Jak mogę utworzyć dyski SSD w warstwie Standardowa?**
 SSD w warstwie Standardowa dysków można utworzyć przy użyciu szablonów Azure Resource Manager, zestawu SDK, programu PowerShell lub interfejsu wiersza polecenia. Poniżej znajdują się parametry, które są konieczne w szablonie Menedżer zasobów do tworzenia dysków SSD w warstwie Standardowa:
 
-* *apiVersion* dla Microsoft. COMPUTE musi być ustawiona jako `2018-04-01` (lub nowsza)
-* Określ *managedDisk. storageAccountType* jako`StandardSSD_LRS`
+* *apiVersion* dla Microsoft. COMPUTE musi być ustawiony jako `2018-04-01` (lub nowszy)
+* Określ *managedDisk. storageAccountType* jako `StandardSSD_LRS`
 
 W poniższym przykładzie przedstawiono sekcję *Properties. obszarze storageprofile. osDisk* dla maszyny wirtualnej korzystającej z dysków SSD w warstwie Standardowa:
 
@@ -250,7 +250,7 @@ Nie, standardowe dyski dysków SSD są dostępne tylko jako Managed Disks.
 **Czy SSD w warstwie Standardowa dyski obsługują "umowę SLA maszyny wirtualnej o pojedynczym wystąpieniu"?**
 Nie, standardowa dysków SSD nie ma umowy SLA dotyczącej pojedynczego wystąpienia maszyny wirtualnej. Użyj SSD w warstwie Premium dysków dla umowy SLA dla pojedynczego wystąpienia maszyny wirtualnej.
 
-## <a name="migrate-to-managed-disks"></a>Przeprowadź migrację do funkcji Dyski zarządzane
+## <a name="migrate-to-managed-disks"></a>Migrowanie do funkcji Dyski zarządzane
 
 **Czy istnieje jakikolwiek wpływ migracji na wydajność Managed Disks?**
 
@@ -294,6 +294,10 @@ Tak
 
 Tak.
 
+**Czy wolumin rozruchowy jest szyfrowany domyślnie na dysku zarządzanym?**
+
+Tak. Domyślnie wszystkie dyski zarządzane są szyfrowane, łącznie z dyskiem systemu operacyjnego.
+
 **Kto zarządza kluczami szyfrowania?**
 
 Firma Microsoft zarządza kluczami szyfrowania.
@@ -329,7 +333,7 @@ Tak
 
 Nie. Jednak w przypadku eksportowania dysku VHD na zaszyfrowane konto magazynu z zaszyfrowanego dysku zarządzanego lub migawki jest on szyfrowany. 
 
-## <a name="premium-disks-managed-and-unmanaged"></a>Dyski w warstwie Premium: Zarządzane i niezarządzane
+## <a name="premium-disks-managed-and-unmanaged"></a>Dyski w warstwie Premium: zarządzane i niezarządzane
 
 **Jeśli maszyna wirtualna korzysta z serii rozmiarów, która obsługuje SSD w warstwie Premium dysków, takich jak DSv2, czy można dołączyć dyski danych w warstwie Premium i Standardowa?** 
 
@@ -359,7 +363,7 @@ Lokalny dysk SSD jest magazynem tymczasowym, który jest dołączony do maszyny 
 
 Na dyskach w warstwie Premium lub standard nie ma Minusem do użycia opcji TRIM na dyskach platformy Azure.
 
-## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nowe rozmiary dysków: Zarządzane i niezarządzane
+## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nowe rozmiary dysków: zarządzane i niezarządzane
 
 **Jaki jest największy obsługiwany rozmiar dysku zarządzanego dla systemu operacyjnego i dysków z danymi?**
 
@@ -379,10 +383,10 @@ Nie musisz uaktualniać istniejących narzędzi platformy Azure, aby tworzyć, d
 
 |Narzędzia platformy Azure      | Obsługiwane wersje                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Numer wersji 4.1.0: Czerwiec 2017 lub nowszy|
-|Interfejs wiersza polecenia platformy Azure w wersji 1     | Numer wersji 0.10.13: Maj 2017 lub nowsza|
-|Interfejs wiersza polecenia platformy Azure w wersji 2     | Numer wersji 2.0.12: Wydanie 2017 lipca lub nowsze|
-|Narzędzie AzCopy           | Numer wersji 6.1.0: Czerwiec 2017 lub nowszy|
+|Program Azure PowerShell | Numer wersji 4.1.0: wydanie 2017 czerwca lub nowszej|
+|Interfejs wiersza polecenia platformy Azure w wersji 1     | Numer wersji 0.10.13:2017 maja lub nowszej|
+|Interfejs wiersza polecenia platformy Azure w wersji 2     | Numer wersji 2.0.12: wydanie 2017 lipca lub nowszej|
+|Narzędzie AzCopy           | Numer wersji 6.1.0: wydanie 2017 czerwca lub nowszej|
 
 **Czy rozmiary dysków P4 i P6 są obsługiwane w przypadku dysków niezarządzanych lub stronicowych obiektów BLOB?**
 
@@ -406,7 +410,7 @@ Największy rozmiar dysku obsługiwany przez Azure Backup i Azure Site Recovery 
 
 **Jakie są zalecane rozmiary maszyn wirtualnych dla większych rozmiarów dysków (> 4 TiB) dla dysków SSD w warstwie Standardowa i HDD w warstwie Standardowa w celu osiągnięcia zoptymalizowanych operacji we/wy na dysku?**
 
-Aby osiągnąć przepływność dysków SSD w warstwie Standardowa i HDD w warstwie Standardowa duże rozmiary dysków (> 4 TiB) poza 500 IOPS i 60 MiB/s, zalecamy wdrożenie nowej maszyny wirtualnej z jednego z następujących rozmiarów maszyn wirtualnych w celu zoptymalizowania wydajności: Maszyny wirtualne serii B, DSv2, Dsv3 serii, serii ESv3, Seria FS, Seria Fsv2, serii M, Seria GS, serie serii, Seria z serii NCv2 lub z serii LS. Dołączanie dużych dysków do istniejących maszyn wirtualnych lub maszyn wirtualnych, które nie używają zalecanych rozmiarów, może obniżyć wydajność.
+Aby osiągnąć przepływność dysków SSD w warstwie Standardowa i HDD w warstwie Standardowa duże rozmiary dysków (> 4 TiB) poza 500 IOPS i 60 MiB/s, zalecamy wdrożenie nowej maszyny wirtualnej z jednego z następujących rozmiarów maszyn wirtualnych w celu zoptymalizowania wydajności: Seria B, Seria DSv2, Dsv3, Seria ESv3 Maszyny wirtualne z serii Fsv2 i serii M, Seria GS, Seria NCv2, Seria Seria NCV3 i ls. Dołączanie dużych dysków do istniejących maszyn wirtualnych lub maszyn wirtualnych, które nie używają zalecanych rozmiarów, może obniżyć wydajność.
 
 **Jak uaktualnić moje dyski (> 4 TiB), które zostały wdrożone podczas większego rozmiaru dysku w wersji zapoznawczej w celu uzyskania większej liczby operacji we/wy & przepustowości?**
 

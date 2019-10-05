@@ -1,18 +1,18 @@
 ---
-title: 'Połącz sieć lokalną z siecią wirtualną platformy Azure: Sieć VPN typu lokacja-lokacja: Portal | Microsoft Docs'
+title: 'Łączenie sieci lokalnej sieci z siecią wirtualną platformy Azure: sieci VPN typu lokacja-lokacja: portal | Microsoft Docs'
 description: Kroki tworzenia połączenia IPsec z sieci lokalnej do sieci wirtualnej platformy Azure za pośrednictwem publicznego Internetu. Kroki te są pomocne podczas tworzenia obejmującego wiele lokalizacji połączenia bramy sieci VPN typu lokacja-lokacja za pomocą portalu.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9fb62d74025869c3442308f9e4ac9fb8fc02669b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 96a8b8d33f713faf96e7a96b32e9e41ca669e6cb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266551"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970804"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Tworzenie połączenia typu lokacja-lokacja w witrynie Azure Portal
 
@@ -20,7 +20,7 @@ Ten artykuł pokazuje, jak używać witryny Azure Portal do tworzenia połączen
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Program PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [Interfejs wiersza polecenia](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Portal Azure (klasyczny)](vpn-gateway-howto-site-to-site-classic-portal.md)
 > 
@@ -44,20 +44,19 @@ W przykładach w tym artykule są stosowane następujące wartości. Tych warto�
 
 * **Nazwa sieci wirtualnej:** VNet1
 * **Przestrzeń adresowa:** 10.1.0.0/16
-* **Subskrypcja:** Subskrypcja, której chcesz użyć
+* **Subskrypcja:** subskrypcja, której chcesz użyć
 * **Grupa zasobów:** TestRG1
-* **Lokalizacja:** East US
-* **Podsieci** FrontEnd: 10.1.0.0/24, zaplecze: 10.1.1.0/24 (opcjonalnie w tym ćwiczeniu)
-* **Nazwa podsieci bramy:** GatewaySubnet (Ta funkcja zostanie wypełniona w portalu)
+* **Region:** Wschodnie stany USA
+* **Podsieć:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (opcjonalnie w tym ćwiczeniu)
 * **Zakres adresów podsieci bramy:** 10.1.255.0/27
-* **Nazwa bramy Virtual Network:** VNet1GW
-* **Publiczny adres IP:** VNet1GWIP
-* **Typ sieci VPN:** Oparte na trasach
+* **Nazwa bramy sieci wirtualnej:** VNet1GW
+* **Nazwa publicznego adresu IP:** VNet1GWIP
+* **Typ sieci VPN:** oparta na trasach
 * **Typ połączenia:** Lokacja-lokacja (IPsec)
 * **Typ bramy:** VPN
 * **Nazwa bramy sieci lokalnej:** Site1
 * **Nazwa połączenia:** VNet1toSite1
-* **Klucz współużytkowany:** W tym przykładzie używamy abc123. Jednak możesz użyć dowolnej wartości zgodnej ze sprzętem sieci VPN. Ważne, żeby wartości były zgodne po obu stronach połączenia.
+* **Klucz współużytkowany:** w tym przykładzie użyjemy klucza abc123. Jednak możesz użyć dowolnej wartości zgodnej ze sprzętem sieci VPN. Ważne, żeby wartości były zgodne po obu stronach połączenia.
 
 ## <a name="CreatVNet"></a>1. Tworzenie sieci wirtualnej
 
@@ -69,18 +68,35 @@ W tym kroku zostaje utworzona brama dla sieci wirtualnej użytkownika. Tworzenie
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
+### <a name="example-settings"></a>Przykładowe ustawienia
+
+* **Szczegóły wystąpienia > region:** Wschodnie stany USA
+* **Virtual Network > sieci wirtualnej:** VNet1
+* **Nazwa > szczegółów wystąpienia:** VNet1GW
+* **Szczegóły wystąpienia > typ bramy:** POŁĄCZENIE
+* **Szczegóły wystąpienia > sieci VPN:** Oparta na trasach
+* **Zakres adresów podsieci bramy > Virtual Network:** 10.1.255.0/27
+* **Publiczny adres ip > nazwa publicznego adresu IP:** VNet1GWIP
+
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 
-## <a name="LocalNetworkGateway"></a>3. Tworzenie bramy sieci lokalnej
+## <a name="LocalNetworkGateway"></a>3. Utwórz bramę sieci lokalnej
 
 Brama sieci lokalnej zazwyczaj odwołuje się do lokalizacji lokalnej. Nadaj lokacji nazwę, za pomocą której platforma Azure może odwołać się do niej, a następnie określ adres IP lokalnego urządzenia sieci VPN, z którym będzie tworzone połączenie. Określ również prefiksy adresów IP, które będą kierowane za pośrednictwem bramy sieci VPN do urządzenia sieci VPN. Określone prefiksy adresów są prefiksami znajdującymi się w Twojej sieci lokalnej. W przypadku zmiany sieci lokalnej lub jeśli trzeba zmienić publiczny adres IP urządzenia sieci VPN, można łatwo zaktualizować wartości później.
 
+**Przykładowe wartości**
+
+* **Nazwa:** Site1
+* **Grupa zasobów:** TestRG1
+* **Lokalizacja:** Wschodnie stany USA
+
+
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
-## <a name="VPNDevice"></a>4. Konfiguracja urządzenia sieci VPN
+## <a name="VPNDevice"></a>4. Skonfiguruj urządzenie sieci VPN
 
 Połączenia typu lokacja-lokacja z siecią lokalną wymagają urządzenia sieci VPN. W tym kroku konfigurowane jest urządzenie sieci VPN. Podczas konfigurowania urządzenia sieci VPN potrzebne będą:
 
@@ -95,7 +111,7 @@ Utwórz połączenie sieci VPN typu lokacja-lokacja między bramą sieci wirtual
 
 [!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
 
-## <a name="VerifyConnection"></a>6. Sprawdzenie połączenia sieci VPN
+## <a name="VerifyConnection"></a>6. Sprawdź połączenie sieci VPN
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 

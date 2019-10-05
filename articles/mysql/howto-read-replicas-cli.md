@@ -1,17 +1,17 @@
 ---
-title: Tworzenie replik odczytu i zarządzanie nimi w Azure Database for MySQL — interfejs wiersza polecenia platformy Azure
-description: W tym artykule opisano sposób konfigurowania replik odczytu i zarządzania nimi w programie Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure w interfejsie API REST
+title: Tworzenie & Zarządzanie replikami odczytu — Azure Database for MySQL
+description: Dowiedz się, jak skonfigurować repliki odczytu i zarządzać nimi w Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure lub interfejsu API REST.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/14/2019
-ms.openlocfilehash: 5bec4e7284e78506372d395bf022055fa31998e3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 741b50bdb2ec9c8d29a9f759e46209856de3a49c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993553"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970311"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Jak tworzyć repliki odczytu i zarządzać nimi w Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure i API REST
 
@@ -23,28 +23,28 @@ Można tworzyć repliki odczytu i zarządzać nimi za pomocą interfejsu wiersza
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 - [Zainstaluj interfejs wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [— Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md) który będzie używany jako serwer główny. 
+- [Serwer Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md) , który będzie używany jako serwer główny. 
 
 > [!IMPORTANT]
-> Odczytu replik funkcja jest dostępna tylko dla usługi Azure Database dla serwerów MySQL w warstw cenowych ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Upewnij się, że serwer główny znajduje się w jednej z tych warstw cenowych.
+> Funkcja odczytu repliki jest dostępna tylko dla serwerów Azure Database for MySQL w warstwach cenowych Ogólnego przeznaczenia lub zoptymalizowanych pod kątem pamięci. Upewnij się, że serwer główny znajduje się w jednej z tych warstw cenowych.
 
-### <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
+### <a name="create-a-read-replica"></a>Tworzenie repliki odczytu
 
-Serwer repliki odczytu mogą być tworzone przy użyciu następującego polecenia:
+Serwer repliki odczytu można utworzyć przy użyciu następującego polecenia:
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-`az mysql server replica create` Polecenie wymaga następujących parametrów:
+Polecenie `az mysql server replica create` wymaga następujących parametrów:
 
 | Ustawienie | Przykładowa wartość | Opis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Grupa zasobów, do której zostanie utworzona na serwerze repliki.  |
-| name | mydemoreplicaserver | Nazwa nowego serwera repliki, który jest tworzony. |
-| source-server | mydemoserver | Nazwa lub identyfikator istniejącego serwera głównego, aby replikować z. |
+| resource-group |  myresourcegroup |  Grupa zasobów, w której zostanie utworzony serwer repliki.  |
+| name | mydemoreplicaserver | Nazwa nowego serwera repliki, który został utworzony. |
+| source-server | mydemoserver | Nazwa lub identyfikator istniejącego serwera głównego, z którego ma być wykonywana replikacja. |
 
-Aby utworzyć replikę odczytu między regionami, `--location` Użyj parametru. Poniższy przykład interfejsu wiersza polecenia tworzy replikę w regionie zachodnie stany USA.
+Aby utworzyć replikę odczytu między regionami, użyj parametru `--location`. Poniższy przykład interfejsu wiersza polecenia tworzy replikę w regionie zachodnie stany USA.
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
@@ -54,10 +54,10 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 > Aby dowiedzieć się więcej na temat regionów, w których można utworzyć replikę, zapoznaj się z [artykułem dotyczącym pojęć dotyczących repliki](concepts-read-replicas.md). 
 
 > [!NOTE]
-> Repliki do odczytu są tworzone przy użyciu tej samej konfiguracji serwera jako wzorzec. Konfiguracja serwera repliki można zmienić po jego utworzeniu. Zaleca się, że konfiguracja serwera repliki należy przechowywać w większa lub równa wartości niż główny, aby upewnić się, że replika jest w stanie na bieżąco ze wzorcem.
+> Repliki odczytu są tworzone z tą samą konfiguracją serwera co serwer główny. Konfigurację serwera repliki można zmienić po jego utworzeniu. Zaleca się, aby konfiguracja serwera repliki była utrzymywana z równymi lub większymi wartościami niż wzorzec, aby upewnić się, że replika jest w stanie utrzymać się z serwerem głównym.
 
 
-### <a name="list-replicas-for-a-master-server"></a>Lista replik dla serwera głównego
+### <a name="list-replicas-for-a-master-server"></a>Wyświetlanie listy replik dla serwera głównego
 
 Aby wyświetlić wszystkie repliki dla danego serwera głównego, uruchom następujące polecenie: 
 
@@ -65,45 +65,45 @@ Aby wyświetlić wszystkie repliki dla danego serwera głównego, uruchom nastę
 az mysql server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-`az mysql server replica list` Polecenie wymaga następujących parametrów:
+Polecenie `az mysql server replica list` wymaga następujących parametrów:
 
 | Ustawienie | Przykładowa wartość | Opis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Grupa zasobów, do której zostanie utworzona na serwerze repliki.  |
+| resource-group |  myresourcegroup |  Grupa zasobów, w której zostanie utworzony serwer repliki.  |
 | nazwa-serwera | mydemoserver | Nazwa lub identyfikator serwera głównego. |
 
-### <a name="stop-replication-to-a-replica-server"></a>Zatrzymywanie replikacji na serwer repliki
+### <a name="stop-replication-to-a-replica-server"></a>Zatrzymaj replikację do serwera repliki
 
 > [!IMPORTANT]
-> Zatrzymywanie replikacji na serwerze jest nieodwracalne. Po replikacji została zatrzymana między głównego i repliki, nie można cofnąć. Serwer repliki następnie staje się serwerem autonomicznym i obsługuje teraz zarówno odczytu i zapisu. Ten serwer nie wprowadzać ponownie do repliki.
+> Zatrzymywanie replikacji na serwerze jest nieodwracalne. Po zatrzymaniu replikacji między serwerem głównym a repliką nie można jej cofnąć. Serwer repliki stał się serwerem autonomicznym i obsługuje teraz zarówno odczyt, jak i zapis. Nie można ponownie wykonać tego serwera w replice.
 
-Można zatrzymać replikacji na serwerze repliki odczytu przy użyciu następującego polecenia:
+Replikację na serwer repliki odczytu można zatrzymać przy użyciu następującego polecenia:
 
 ```azurecli-interactive
 az mysql server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-`az mysql server replica stop` Polecenie wymaga następujących parametrów:
+Polecenie `az mysql server replica stop` wymaga następujących parametrów:
 
 | Ustawienie | Przykładowa wartość | Opis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Grupa zasobów, w której istnieje serwer repliki.  |
-| name | mydemoreplicaserver | Nazwa serwera repliki, aby zatrzymać replikację. |
+| name | mydemoreplicaserver | Nazwa serwera repliki, na którym ma zostać zatrzymana replikacja. |
 
 ### <a name="delete-a-replica-server"></a>Usuwanie serwera repliki
 
-Usuwanie serwera repliki odczytu może odbywać się przez uruchomienie **[az mysql server delete](/cli/azure/mysql/server)** polecenia.
+Usuwanie serwera repliki odczytu można wykonać, uruchamiając polecenie **[AZ MySQL Server Delete](/cli/azure/mysql/server)** .
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserver
 ```
 
-### <a name="delete-a-master-server"></a>Usuń serwer główny
+### <a name="delete-a-master-server"></a>Usuwanie serwera głównego
 
 > [!IMPORTANT]
-> Usuwanie serwera głównego zatrzymanie replikacji na wszystkich serwerach repliki i usuwa samego serwera głównego. Serwer funkcji replica stają się autonomicznymi serwerami, które obsługują teraz zarówno odczytu i zapisu.
+> Usunięcie serwera głównego powoduje zatrzymanie replikacji do wszystkich serwerów repliki i usunięcie samego serwera głównego. Serwery repliki stają się serwerami autonomicznymi, które teraz obsługują zarówno odczyt, jak i zapis.
 
-Aby usunąć serwer główny, możesz uruchomić **[az mysql server delete](/cli/azure/mysql/server)** polecenia.
+Aby usunąć serwer główny, można uruchomić polecenie **[AZ MySQL Server Delete](/cli/azure/mysql/server)** .
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
@@ -113,7 +113,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="rest-api"></a>Interfejs API REST
 Można tworzyć repliki odczytu i zarządzać nimi za pomocą [interfejsu API REST platformy Azure](/rest/api/azure/).
 
-### <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
+### <a name="create-a-read-replica"></a>Tworzenie repliki odczytu
 Replikę odczytu można utworzyć przy użyciu [interfejsu API tworzenia](/rest/api/mysql/servers/create):
 
 ```http
@@ -133,7 +133,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > Aby dowiedzieć się więcej na temat regionów, w których można utworzyć replikę, zapoznaj się z [artykułem dotyczącym pojęć dotyczących repliki](concepts-read-replicas.md). 
 
-Jeśli nie ustawisz `azure.replication_support` parametru na replikę na serwerze głównym ogólnego przeznaczenia lub zoptymalizowanym pod kątem pamięci i ponownie uruchomiono serwer, zostanie wyświetlony komunikat o błędzie. Przed utworzeniem repliki wykonaj te dwa kroki.
+Jeśli nie ustawisz parametru `azure.replication_support` na **replikę** na serwerze głównym ogólnego przeznaczenia lub zoptymalizowanym pod kątem pamięci i ponownie uruchomiono serwer, zostanie wyświetlony komunikat o błędzie. Przed utworzeniem repliki wykonaj te dwa kroki.
 
 Replika jest tworzona przy użyciu tych samych ustawień obliczeniowych i magazynu co główny. Po utworzeniu repliki można zmienić kilka ustawień niezależnie od serwera głównego: generowanie obliczeń, rdzeni wirtualnych, magazyn i okres przechowywania zapasowego. Warstwę cenową można także zmienić niezależnie, z wyjątkiem warstwy Podstawowa lub z niej.
 
@@ -148,7 +148,7 @@ Listę replik serwera głównego można wyświetlić za pomocą [interfejsu API 
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>Zatrzymywanie replikacji na serwer repliki
+### <a name="stop-replication-to-a-replica-server"></a>Zatrzymaj replikację do serwera repliki
 Można zatrzymać replikację między serwerem głównym a repliką odczytu przy użyciu [interfejsu API aktualizacji](/rest/api/mysql/servers/update).
 
 Po zatrzymaniu replikacji na serwer główny i replikę odczytu nie można jej cofnąć. Replika odczytu jest autonomicznym serwerem, który obsługuje zarówno operacje odczytu, jak i zapisu. Serwer autonomiczny nie może zostać ponownie utworzony w replice.
@@ -177,4 +177,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [odczytu replik](concepts-read-replicas.md)
+- Dowiedz się więcej na temat [odczytu replik](concepts-read-replicas.md)

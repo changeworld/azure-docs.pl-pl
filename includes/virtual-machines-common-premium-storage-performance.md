@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036027"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975326"
 ---
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
 
@@ -21,7 +21,7 @@ Oceniamy, czy aplikacja działa prawidłowo, czy nie korzysta ze wskaźników wy
 
 W tej sekcji omówiono typowe wskaźniki wydajności w kontekście Premium Storage. W poniższej sekcji, zbierając wymagania dotyczące aplikacji, dowiesz się, jak zmierzyć te wskaźniki wydajności dla aplikacji. Później w celu optymalizacji wydajności aplikacji można dowiedzieć się więcej na temat czynników wpływających na te wskaźniki wydajności i zalecenia w celu ich zoptymalizowania.
 
-## <a name="iops"></a>IOPS
+## <a name="iops"></a>Operacje wejścia/wyjścia
 
 Operacje we/wy lub wejścia/wyjścia na sekundę to liczba żądań wysyłanych przez aplikację do dysków magazynu w jednej sekundzie. Operacja wejścia/wyjścia może mieć Odczyt lub zapis, sekwencyjne lub losowe. Aplikacje przetwarzania transakcji online (OLTP), takie jak witryna sieci Web w trybie online, muszą natychmiast przetwarzać wiele równoczesnych żądań użytkowników. Żądania użytkownika są wstawiane i aktualizowane z dużą ilością transakcji bazy danych, które aplikacja musi szybko przetwarzać. W związku z tym aplikacje OLTP wymagają bardzo dużej liczby operacji we/wy. Takie aplikacje obsługują miliony małych i losowych żądań we/wy. Jeśli masz taką aplikację, musisz zaprojektować infrastrukturę aplikacji, aby zoptymalizować ją pod kątem operacji we/wy na sekundę. W dalszej części, *Optymalizacja wydajności aplikacji*pozwala szczegółowo omówić wszystkie czynniki, które należy wziąć pod uwagę w celu uzyskania dużej liczby operacji we/wy na sekundę.
 
@@ -76,8 +76,8 @@ Następnie Zmierz maksymalne wymagania dotyczące wydajności aplikacji przez ca
 | Długości. Opóźnienie | | | |
 | Średnie opóźnienie | | | |
 | Maksymalnie z Procesor CPU | | | |
-| Średnie użycie procesora CPU | | | |
-| Maksymalnie z Memory (Pamięć) | | | |
+| Średni procesor CPU | | | |
+| Maksymalnie z Pamięć | | | |
 | Średnia pamięć | | | |
 | Głębokość kolejki | | | |
 
@@ -92,11 +92,11 @@ Najlepszym sposobem mierzenia wymagań dotyczących wydajności aplikacji jest u
 
 Liczniki Monitora wydajności są dostępne dla procesora, pamięci i każdego dysku logicznego i dysku fizycznego serwera programu. W przypadku korzystania z dysków magazynu Premium Storage z maszyną wirtualną liczniki dysku fizycznego są dla każdego dysku magazynu w warstwie Premium, a liczniki dysku logicznego są dla każdego woluminu utworzonego na dyskach magazynu w warstwie Premium. Należy przechwycić wartości dysków, które obsługują obciążenie aplikacji. Jeśli istnieje jedno do jednego mapowanie między dyskami logicznymi i fizycznymi, można odwoływać się do liczników dysków fizycznych. w przeciwnym razie odwołaj się do liczników dysku logicznego. W systemie Linux polecenie iostat generuje raport użycia procesora CPU i dysku. Raport o wykorzystaniu dysku zawiera statystyki na fizyczne urządzenie lub partycję. Jeśli masz serwer bazy danych z danymi i dzienniki na oddzielnych dyskach, Zbierz te dane dla obu dysków. W poniższej tabeli opisano liczniki dotyczące dysków, procesorów i pamięci:
 
-| Licznik | Opis | Monitora wydajności | Iostat |
+| Przeciw | Opis | Monitora wydajności | Iostat |
 | --- | --- | --- | --- |
 | **Liczba operacji we/wy na sekundę** |Liczba żądań we/wy wystawionych na dysk magazynujący na sekundę. |Odczyty dysku/s <br> Zapisy dysku/s |TPS <br> r/s <br> w/s |
 | **Odczyty i zapisy z dysku** |% operacji odczytu i zapisu wykonanych na dysku. |Czas odczytu dysku (%) <br> Czas zapisu na dysku (%) |r/s <br> w/s |
-| **Przepływność** |Ilość danych odczytywanych lub zapisywana na dysku na sekundę. |Bajty odczytu z dysku/s <br> Bajty zapisu na dysku/s |kB_read/s <br> kB_wrtn/s |
+| **Przepływność** |Ilość danych odczytywanych lub zapisywana na dysku na sekundę. |Bajty odczytu dysku/s <br> Bajty zapisu dysku/s |kB_read/s <br> kB_wrtn/s |
 | **Opóźnienie** |Łączny czas wykonywania żądania we/wy dysku. |Średni czas dysku w s/odczyt <br> Średni czas dysku w s/zapis |kart <br> svctm |
 | **Rozmiar we/wy** |Rozmiar żądań we/wy dotyczy dysków magazynu. |Średnia liczba bajtów dysku/odczyt <br> Średnia liczba bajtów dysku/zapis |avgrq — sz |
 | **Głębokość kolejki** |Liczba oczekujących żądań we/wy oczekujących na odczytanie lub zapis na dysku magazynu. |Bieżąca długość kolejki dysku |avgqu — sz |
@@ -119,7 +119,7 @@ W poniższej tabeli zestawiono czynniki wydajności i kroki niezbędne do optyma
 
 Aby uzyskać więcej informacji o rozmiarach maszyn wirtualnych oraz o liczbie operacji we/wy, przepływności i opóźnieniu dla każdego typu maszyny wirtualnej, zobacz [rozmiary maszyn wirtualnych](../articles/virtual-machines/linux/sizes.md) z systemem Linux lub [rozmiary maszyn wirtualnych z systemem Windows](../articles/virtual-machines/windows/sizes.md).
 
-| &nbsp; | **IOPS** | **Przepływność** | **Opóźnienie** |
+| &nbsp; | **Wejścia** | **Przepływność** | **Opóźnienie** |
 | --- | --- | --- | --- |
 | **Przykładowy scenariusz** |Aplikacja OLTP przedsiębiorstwa wymagająca bardzo dużej liczby transakcji na sekundę. |Przetwarzanie dużych ilości danych przez aplikację do magazynowania danych przedsiębiorstwa. |Aplikacje niemal w czasie rzeczywistym wymagające natychmiastowych odpowiedzi na żądania użytkowników, takie jak gry online. |
 | Czynniki wydajności | &nbsp; | &nbsp; | &nbsp; |
@@ -135,14 +135,14 @@ Aby uzyskać więcej informacji o rozmiarach maszyn wirtualnych oraz o liczbie o
 
 ## <a name="nature-of-io-requests"></a>Charakter żądań we/wy
 
-Żądanie we/wy jest jednostką operacji wejścia/wyjścia, która będzie wykonywana przez aplikację. Zidentyfikowanie charakteru żądań we/wy, losowych lub sekwencyjnych, Odczyt, zapis, mały lub duży, pomoże określić wymagania dotyczące wydajności aplikacji. Ważne jest zrozumienie charakteru żądań we/wy, aby podejmować odpowiednie decyzje podczas projektowania infrastruktury aplikacji.
+Żądanie we/wy jest jednostką operacji wejścia/wyjścia, która będzie wykonywana przez aplikację. Zidentyfikowanie charakteru żądań we/wy, losowych lub sekwencyjnych, Odczyt, zapis, mały lub duży, pomoże określić wymagania dotyczące wydajności aplikacji. Ważne jest zrozumienie charakteru żądań we/wy, aby podejmować odpowiednie decyzje podczas projektowania infrastruktury aplikacji. System IOs musi być równomiernie dystrybuowany w celu osiągnięcia najlepszej możliwej wydajności.
 
 Rozmiar we/wy to jeden z ważniejszych czynników. Rozmiar we/wy to rozmiar żądania operacji wejścia/wyjścia wygenerowanego przez aplikację. Rozmiar we/wy ma znaczny wpływ na wydajność, szczególnie w przypadku operacji wejścia/wyjścia aplikacji. Poniższa formuła przedstawia relację między operacjami IOPS, rozmiarem we/wy i przepustowością/przepływność.  
     ![](media/premium-storage-performance/image1.png)
 
-Niektóre aplikacje umożliwiają zmianę rozmiaru operacji we/wy, podczas gdy niektóre aplikacje nie są. Na przykład SQL Server określa optymalny rozmiar we/wy i nie zapewnia użytkownikom żadnych pokrętłów, aby je zmienić. Z drugiej strony firma Oracle udostępnia parametr o nazwie [\_\_DataBlock size](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , za pomocą którego można skonfigurować rozmiar żądania we/wy bazy danych.
+Niektóre aplikacje umożliwiają zmianę rozmiaru operacji we/wy, podczas gdy niektóre aplikacje nie są. Na przykład SQL Server określa optymalny rozmiar we/wy i nie zapewnia użytkownikom żadnych pokrętłów, aby je zmienić. Z drugiej strony firma Oracle udostępnia parametr o nazwie [DB @ no__t-1BLOCK @ no__t-2SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , za pomocą którego można skonfigurować rozmiar żądania we/wy bazy danych.
 
-Jeśli używasz aplikacji, która nie pozwala na zmianę rozmiaru we/wy, Skorzystaj z wytycznych w tym artykule, aby zoptymalizować wskaźnik KPI wydajności, który jest najbardziej odpowiedni dla aplikacji. Na przykład
+Jeśli używasz aplikacji, która nie pozwala na zmianę rozmiaru we/wy, Skorzystaj z wytycznych w tym artykule, aby zoptymalizować wskaźnik KPI wydajności, który jest najbardziej odpowiedni dla aplikacji. Na przykład:
 
 * Aplikacja OLTP generuje miliony małych i losowych żądań we/wy. Aby obsłużyć te typy żądań we/wy, należy zaprojektować infrastrukturę aplikacji w celu uzyskania większych liczb IOPS.  
 * Aplikacja do magazynowania danych generuje duże i sekwencyjne żądania we/wy. Aby obsługiwać te typy żądań we/wy, należy zaprojektować infrastrukturę aplikacji w celu uzyskania większej przepustowości lub przepływności.
@@ -154,12 +154,12 @@ Jeśli używasz aplikacji, która pozwala na zmianę rozmiaru we/wy, Użyj tej r
 
 Oto przykład sposobu obliczania liczby operacji we/wy i przepływności/przepustowości dla aplikacji. Rozważ zastosowanie aplikacji przy użyciu dysku P30. Maksymalna liczba operacji we/wy i przepływność/przepustowość na dysku P30 to 5000 operacji we/wy i 200 MB na sekundę. Jeśli aplikacja wymaga maksymalnej liczby IOPS z dysku P30 i używasz mniejszego rozmiaru we/wy, takiego jak 8 KB, uzyskana przepustowość będzie dostępna na 40 MB na sekundę. Jeśli jednak aplikacja wymaga maksymalnej przepływności/przepustowości z dysku P30 i używasz większego rozmiaru we/wy, takiego jak 1024 KB, wyniki IOPS będą mniejsze, 200 IOPS. W związku z tym Dostosuj rozmiar operacji we/wy, tak aby spełniał zarówno dane IOPS aplikacji, jak i przepływność/przepustowość. W poniższej tabeli zestawiono różne rozmiary we/wy oraz odpowiadające im IOPS i przepływność dla dysku P30.
 
-| Wymaganie aplikacji | Rozmiar we/wy | IOPS | Przepływność/przepustowość |
+| Wymaganie aplikacji | Rozmiar we/wy | Operacje wejścia/wyjścia | Przepływność/przepustowość |
 | --- | --- | --- | --- |
-| Maks. IOPS |8 KB |5,000 |40 MB na sekundę |
+| Maksymalna liczba IOPS |8 KB |5000 |40 MB na sekundę |
 | Maksymalna przepływność |1024 KB |200 |200 MB na sekundę |
-| Maksymalna przepływność i duże liczby operacji we/wy |64 KB |3,200 |200 MB na sekundę |
-| Maksymalna liczba IOPS i Wysoka przepływność |32 KB |5,000 |160 MB na sekundę |
+| Maksymalna przepływność i duże liczby operacji we/wy |64 KB |3 200 |200 MB na sekundę |
+| Maksymalna liczba IOPS i Wysoka przepływność |32 KB |5000 |160 MB na sekundę |
 
 Aby uzyskać liczbę operacji we/wy i przepustowość wyższą niż maksymalna wartość jednego dysku magazynu Premium Storage, należy użyć wielu dysków w warstwie Premium. Na przykład można rozdzielić dwa dyski P30, aby uzyskać łączną liczbę operacji we/wy 10 000 IOPS lub łączną przepływność równą 400 MB na sekundę. Zgodnie z opisem w następnej sekcji należy użyć rozmiaru maszyny wirtualnej, który obsługuje łączenie operacji we/wy na dysku.
 
@@ -174,7 +174,7 @@ Po rozpoczęciu projektowania aplikacji należy wybrać maszynę wirtualną do h
 
 Maszyny wirtualne o wysokiej skali są dostępne w różnych rozmiarach przy użyciu innej liczby rdzeni procesora CPU, pamięci, systemu operacyjnego i tymczasowego rozmiaru dysku. Każdy rozmiar maszyny wirtualnej ma również maksymalną liczbę dysków z danymi, które można dołączyć do maszyny wirtualnej. W związku z tym wybrany rozmiar maszyny wirtualnej będzie miał wpływ na to, jak dużo pamięci masowej i pojemności magazynu są dostępne dla aplikacji. Ma to również wpływ na koszt obliczeń i magazynu. Na przykład poniżej przedstawiono specyfikacje największego rozmiaru maszyny wirtualnej w serii DS, serii DSv2 i serii GS:
 
-| Rozmiar maszyny wirtualnej | Rdzenie procesora CPU | Memory (Pamięć) | Rozmiary dysków maszyny wirtualnej | Maksymalnie z dyski danych | Rozmiar pamięci podręcznej | IOPS | Limity operacji we/wy pamięci podręcznej przepustowości |
+| Rozmiar maszyny wirtualnej | Rdzenie procesora CPU | Pamięć | Rozmiary dysków maszyny wirtualnej | Maksymalnie z dyski danych | Rozmiar pamięci podręcznej | Operacje wejścia/wyjścia | Limity operacji we/wy pamięci podręcznej przepustowości |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standardowa_DS14 |16 |112 GB |SYSTEM OPERACYJNY = 1023 GB <br> Lokalny dysk SSD = 224 GB |32 |576 GB |LICZBA OPERACJI WE/WY 50 000 <br> 512 MB na sekundę |4 000 operacji we/wy i 33 MB na sekundę |
 | Standard_GS5 |32 |448 GB |SYSTEM OPERACYJNY = 1023 GB <br> Lokalny dysk SSD = 896 GB |64 |4224 GB |LICZBA OPERACJI WE/WY 80 000 <br> 2 000 MB na sekundę |5 000 operacji we/wy i 50 MB na sekundę |
@@ -189,17 +189,17 @@ Załóżmy na przykład, że wymaganie aplikacji jest maksymalnie 4 000 operacji
 *Koszt operacji*  
 W wielu przypadkach istnieje możliwość, że całkowity koszt operacji przy użyciu Premium Storage jest niższy niż przy użyciu magazynu w warstwie Standardowa.
 
-Rozważmy na przykład aplikację wymagającą 16 000 operacji we/wy na sekundę. Aby osiągnąć tę wydajność, potrzebna jest standardowa\_maszyna wirtualna D14 Azure IaaS, która może zapewnić maksymalną liczbę IOPS 16 000 32 przy użyciu dysków magazynu w warstwie Standardowa 1 TB. Każdy dysk magazynu o pojemności 1 TB może osiągać maksymalnie 500 operacji we/wy na sekundę. Szacowany koszt tej maszyny wirtualnej na miesiąc to $1 570. Miesięczny koszt 32 dysków magazynu w warstwie Standardowa to $1 638. Szacowany łączny koszt miesięczny wynosi $3 208.
+Rozważmy na przykład aplikację wymagającą 16 000 operacji we/wy na sekundę. Aby osiągnąć tę wydajność, potrzebna jest Standardowa maszyna wirtualna @ no__t-0D14 Azure IaaS VM, która może zapewnić maksymalną liczbę operacji we/wy 16 000 przy użyciu dysków magazynu 32 w warstwie Standardowa 1 TB. Każdy dysk magazynu o pojemności 1 TB może osiągać maksymalnie 500 operacji we/wy na sekundę. Szacowany koszt tej maszyny wirtualnej na miesiąc to $1 570. Miesięczny koszt 32 dysków magazynu w warstwie Standardowa to $1 638. Szacowany łączny koszt miesięczny wynosi $3 208.
 
-Jeśli jednak ta sama aplikacja jest hostowana na Premium Storage, potrzebny będzie mniejszy rozmiar maszyny wirtualnej i mniej dysków magazynu Premium Storage, co zmniejsza całkowity koszt. Standardowa\_maszyna wirtualna DS13 może spełnić wymagania dotyczące liczby operacji we/wy 16 000 przy użyciu czterech dysków P30. Maszyna wirtualna DS13 ma maksymalną liczbę IOPS 25 600, a każdy dysk P30 ma maksymalną liczbę IOPS 5 000. Ogólnie Konfiguracja ta może osiągnąć 5 000 x 4 20 000 = liczba operacji we/wy na sekundę. Szacowany koszt tej maszyny wirtualnej na miesiąc to $1 003. Miesięczny koszt czterech dysków magazynu P30 Premium będzie $544,34. Szacowany łączny koszt miesięczny wynosi $1 544.
+Jeśli jednak ta sama aplikacja jest hostowana na Premium Storage, potrzebny będzie mniejszy rozmiar maszyny wirtualnej i mniej dysków magazynu Premium Storage, co zmniejsza całkowity koszt. Standardowa maszyna wirtualna @ no__t-0DS13 może spełnić wymagania liczby IOPS 16 000 przy użyciu czterech dysków P30. Maszyna wirtualna DS13 ma maksymalną liczbę IOPS 25 600, a każdy dysk P30 ma maksymalną liczbę IOPS 5 000. Ogólnie Konfiguracja ta może osiągnąć 5 000 x 4 20 000 = liczba operacji we/wy na sekundę. Szacowany koszt tej maszyny wirtualnej na miesiąc to $1 003. Miesięczny koszt czterech dysków magazynu P30 Premium będzie $544,34. Szacowany łączny koszt miesięczny wynosi $1 544.
 
 W poniższej tabeli zestawiono podział kosztów tego scenariusza dla standardów i Premium Storage.
 
-| &nbsp; | **Standardowa** | **Premium** |
+| &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
-| **Koszt maszyny wirtualnej miesięcznie** |$1 570,58 (standardowa\_D14) |$1 003,66 (standardowa\_DS13) |
+| **Koszt maszyny wirtualnej miesięcznie** |$1 570,58 (standardowa @ no__t-0D14) |$1 003,66 (standardowa @ no__t-0DS13) |
 | **Koszt dysków miesięcznie** |$1 638,40 (32 x 1 TB dysków) |$544,34 (4 x P30 dysków) |
-| **Łączny koszt miesięcznie** |$3,208.98 |$1,544.34 |
+| **Łączny koszt miesięcznie** |$3 208,98 |$1 544,34 |
 
 *Dystrybucje systemu Linux*  
 
@@ -209,13 +209,9 @@ Podczas uruchamiania systemu Linux z Premium Storage Sprawdź najnowsze aktualiz
 
 ## <a name="premium-storage-disk-sizes"></a>Rozmiary dysków magazynu w warstwie Premium
 
-Usługa Azure Premium Storage oferuje osiem wielkości dysków i trzy rozmiary dysków, które są obecnie w wersji zapoznawczej. Każdy rozmiar dysku ma inny limit skalowania dla operacji we/wy na sekundę, przepustowości i magazynu. Wybierz odpowiedni Premium Storage rozmiar dysku w zależności od wymagań aplikacji i rozmiaru maszyny wirtualnej o dużej skali. Poniższa tabela przedstawia rozmiary 11 dysków i ich możliwości. Rozmiary P4, P6, P15, P60, P70 i P80 są obecnie obsługiwane tylko dla Managed Disks.
+Usługa Azure Premium Storage oferuje różne rozmiary, dzięki czemu możesz wybrać jeden z nich, który najlepiej odpowiada Twoim potrzebom. Każdy rozmiar dysku ma inny limit skalowania dla operacji we/wy na sekundę, przepustowości i magazynu. Wybierz odpowiedni Premium Storage rozmiar dysku w zależności od wymagań aplikacji i rozmiaru maszyny wirtualnej o dużej skali. W poniższej tabeli przedstawiono rozmiary dysków i ich możliwości. Rozmiary P4, P6, P15, P60, P70 i P80 są obecnie obsługiwane tylko dla Managed Disks.
 
-| Typ dysków w warstwie Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Rozmiar dysku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32 767 GiB (32 TiB)    |
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15,000              | 20,000              |
-| Przepływność na dysk | 25 MiB na sekundę  | 50 MiB na sekundę  | 100 MiB na sekundę |125 MiB na sekundę | 150 MiB na sekundę | 200 MiB na sekundę | 250 MiB na sekundę | 250 MiB na sekundę | 480 MiB na sekundę | 750 MiB na sekundę | 750 MiB na sekundę |
+[!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 Liczba wybranych dysków zależy od wybranego rozmiaru dysku. Aby spełnić wymagania aplikacji, można użyć jednego dysku P50 lub wielu dysków P10. Po dokonaniu wyboru należy wziąć pod uwagę poniższe kwestie.
 
@@ -249,16 +245,16 @@ Ważne jest włączenie pamięci podręcznej w odpowiednim zestawie dysków. Okr
 
 | **Typ dysku** | **Domyślne ustawienie pamięci podręcznej** |
 | --- | --- |
-| Dysk systemu operacyjnego |Odczyt/zapis |
-| Dysk z danymi |Tylko do odczytu |
+| Dysk systemu operacyjnego |ReadWrite |
+| Dysk z danymi |ReadOnly |
 
 Poniżej przedstawiono zalecane ustawienia pamięci podręcznej dysków dla dysków z danymi,
 
 | **Ustawienie buforowania dysku** | **zalecenie dotyczące sytuacji, w których należy używać tego ustawienia** |
 | --- | --- |
 | Brak |Skonfiguruj pamięć podręczną hosta jako brak dla dysków tylko do zapisu i zapisu z dużym obciążeniem. |
-| Tylko do odczytu |Skonfiguruj pamięć podręczną hosta jako ReadOnly dla dysków tylko do odczytu i zapisu. |
-| Odczyt/zapis |Skonfiguruj pamięć podręczną hosta jako ReadWrite tylko wtedy, gdy aplikacja prawidłowo obsługuje zapisywanie danych w pamięci podręcznej na dyskach trwałych w razie potrzeby. |
+| ReadOnly |Skonfiguruj pamięć podręczną hosta jako ReadOnly dla dysków tylko do odczytu i zapisu. |
+| ReadWrite |Skonfiguruj pamięć podręczną hosta jako ReadWrite tylko wtedy, gdy aplikacja prawidłowo obsługuje zapisywanie danych w pamięci podręcznej na dyskach trwałych w razie potrzeby. |
 
 *Trybie*  
 Konfigurując buforowanie w trybie tylko do odczytu na Premium Storage dyskach danych, można osiągnąć niskie opóźnienie i uzyskać bardzo wysokie operacje we/wy odczytu i przepływność aplikacji. Dzieje się tak z dwóch powodów,
@@ -269,7 +265,7 @@ Konfigurując buforowanie w trybie tylko do odczytu na Premium Storage dyskach d
 *ReadWrite*  
 Domyślnie dyski systemu operacyjnego mają włączone buforowanie ReadWrite. Niedawno dodaliśmy obsługę buforowania ReadWrite na dyskach danych. Jeśli używasz buforowania ReadWrite, musisz mieć właściwy sposób zapisu danych z pamięci podręcznej na dyskach trwałych. Na przykład SQL Server obsługuje zapisywanie w pamięci podręcznej danych na trwałych dyskach magazynu. Używanie pamięci podręcznej ReadWrite z aplikacją, która nie obsługuje utrwalania wymaganych danych może spowodować utratę danych, jeśli maszyna wirtualna ulegnie awarii.
 
-*Brak*  
+*Dawaj*  
 Obecnie **żadna wartość nie** jest obsługiwana tylko na dyskach danych. Nie jest on obsługiwany na dyskach z systemem operacyjnym. Jeśli na dysku systemu operacyjnego nie zostanie ustawiona **żadna wartość Brak** , spowoduje to zastąpienie wewnętrznie i ustawienie wartości **tylko do odczytu**.
 
 Na przykład można zastosować te wytyczne do SQL Server uruchamiania na Premium Storage, wykonując następujące czynności:
@@ -284,9 +280,9 @@ Na przykład można zastosować te wytyczne do SQL Server uruchamiania na Premiu
 
 Dla wszystkich dysków SSD Premium lub Ultra dysków z pamięcią podręczną ustawioną na wartość **ReadOnly** lub **none**należy wyłączyć "bariery" podczas instalowania systemu plików. W tym scenariuszu nie są potrzebne przeszkody, ponieważ zapisy w usłudze Premium Storage są trwałe dla tych ustawień pamięci podręcznej. Po pomyślnym zakończeniu żądania zapisu dane zostały zapisane w magazynie trwałym. Aby wyłączyć "bariery", użyj jednej z poniższych metod. Wybierz jeden z nich dla systemu plików:
   
-* Aby wyłączyć bariery w programie **reiserFS**, użyj `barrier=none` opcji instalacji. (Aby włączyć bariery, `barrier=flush`Użyj.)
-* Aby wyłączyć bariery dla **ext3/ext4**, użyj `barrier=0` opcji instalacji. (Aby włączyć bariery, `barrier=1`Użyj.)
-* Aby wyłączyć bariery w programie **XFS**, użyj `nobarrier` opcji instalacji. (Aby włączyć bariery, `barrier`Użyj.)
+* Aby wyłączyć bariery w programie **reiserFS**, użyj opcji instalacji `barrier=none`. (Aby włączyć bariery, użyj `barrier=flush`).
+* Aby wyłączyć bariery dla **ext3/ext4**, użyj opcji instalacji `barrier=0`. (Aby włączyć bariery, użyj `barrier=1`).
+* Aby wyłączyć bariery w programie **XFS**, użyj opcji instalacji `nobarrier`. (Aby włączyć bariery, użyj `barrier`).
 * W przypadku dysków usługi Premium Storage z pamięcią podręczną ustawioną na **ReadWrite**Włącz bariery dla trwałości zapisu.
 * Aby etykiety woluminów były utrwalane po ponownym uruchomieniu maszyny wirtualnej, należy zaktualizować/etc/fstab przy użyciu unikatowych identyfikatorów uniwersalnych (UUID) do dysków. Aby uzyskać więcej informacji, zobacz [Dodawanie dysku zarządzanego do maszyny wirtualnej z systemem Linux](../articles/virtual-machines/linux/add-disk.md).
 
@@ -294,20 +290,20 @@ Następujące dystrybucje systemu Linux zostały sprawdzone pod kątem usługi P
 
 Niektóre wersje wymagają najnowszych usług integracji z systemem Linux (LIS), v 4.0 dla platformy Azure. Aby pobrać i zainstalować dystrybucję, postępuj zgodnie z linkiem wymienionym w poniższej tabeli. Dodaliśmy obrazy do listy po zakończeniu walidacji. Nasze walidacje pokazują, że wydajność jest różna dla każdego obrazu. Wydajność zależy od charakterystyki obciążenia i ustawień obrazu. Różne obrazy są dostrojone do różnych rodzajów obciążeń.
 
-| Dystrybucja | Version | Obsługiwane jądro | Szczegóły |
+| Dystrybucja | Wersja | Obsługiwane jądro | Szczegóły |
 | --- | --- | --- | --- |
-| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
-| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
-| Debian | 7.x, 8.x | 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> SUSE-SLES-12-v20150213 |
-| SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 wymagane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 zalecane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
-| Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |
-| Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 lub RHCK |
-| Oracle | 7.0-7.1 | &nbsp; | UEK4 lub RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 | &nbsp; | UEK4 lub RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Ubuntu | 12,04 | 3.2.0 — 75.110 + | Ubuntu-12_04_5-LTS-amd64-Server-20150119-en-US-30 GB |
+| Ubuntu | 14,04 | 3.13.0 — 44.73 + | Ubuntu-14_04_1-LTS-amd64-Server-20150123-en-US-30 GB |
+| Debian | 7. x, 8. x | 3.16.7-ckt4-1 + | &nbsp; |
+| SUSE | SLES 12| 3.12.36 — 38.1 +| SUSE-SLES-12-Priority-v20150213 <br> SUSE-SLES-12-v20150213 |
+| SUSE | SLES 11 Z DODATKIEM SP4 | 3.0.101 — 0.63.1 + | &nbsp; |
+| CoreOS | 584.0.0 +| 3.18.4 + | CoreOS 584.0.0 |
+| CentOS | 6,5, 6,6, 6,7, 7,0 | &nbsp; | [LIS4 wymagane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
+| CentOS | 7.1 + | 3.10.0-229.1.2. el7 + | [LIS4 zalecane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
+| Red Hat Enterprise Linux (RHEL) | 6,8 +, 7.2 + | &nbsp; | &nbsp; |
+| Oracle | 6.0 +, 7.2 + | &nbsp; | UEK4 lub RHCK |
+| Oracle | 7.0 — 7.1 | &nbsp; | UEK4 lub RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4 — 6.7 | &nbsp; | UEK4 lub RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>Sterowniki LIS dla OpenLogic CentOS
 
@@ -326,7 +322,7 @@ Jeśli maszyna wirtualna o dużej skali jest dołączona do kilku dysków trwał
 
 W systemie Windows można używać funkcji miejsca do magazynowania w celu rozdzielenia dysków. Dla każdego dysku w puli należy skonfigurować jedną kolumnę. W przeciwnym razie ogólna wydajność woluminu rozłożonego może być niższa niż oczekiwana, ze względu na nierównomierny rozkład ruchu między dyskami.
 
-Ważne: Za pomocą Menedżer serwera interfejsu użytkownika można ustawić całkowitą liczbę kolumn do 8 dla woluminu rozłożonego. W przypadku dołączania więcej niż ośmiu dysków należy utworzyć wolumin przy użyciu programu PowerShell. Za pomocą programu PowerShell można ustawić liczbę kolumn równą liczbie dysków. Na przykład, jeśli na jednym zestawie rozłożonym znajduje się 16 dysków; Określ 16 kolumn w parametrze *NumberOfColumns* polecenia cmdlet *New-VirtualDisk* programu PowerShell.
+Ważne: przy użyciu Menedżer serwera interfejsu użytkownika można ustawić całkowitą liczbę kolumn do 8 dla woluminu rozłożonego. W przypadku dołączania więcej niż ośmiu dysków należy utworzyć wolumin przy użyciu programu PowerShell. Za pomocą programu PowerShell można ustawić liczbę kolumn równą liczbie dysków. Na przykład, jeśli na jednym zestawie rozłożonym znajduje się 16 dysków; Określ 16 kolumn w parametrze *NumberOfColumns* polecenia cmdlet *New-VirtualDisk* programu PowerShell.
 
 W systemie Linux Użyj narzędzia MDADM, aby połączyć dyski ze sobą. Aby uzyskać szczegółowe instrukcje dotyczące dysków rozłożonych w systemie Linux, zobacz [Konfigurowanie RAID oprogramowania w systemie Linux](../articles/virtual-machines/linux/configure-raid.md).
 
@@ -352,7 +348,7 @@ Istnieją ustawienia konfiguracji, które można zmienić w celu wywierania wpł
 
 Załóżmy na przykład, że aplikacja używa SQL Server wykonuje duże zapytania i operację indeksowania w tym samym czasie. Załóżmy, że chcemy, aby Operacja indeksowania była większa niż w przypadku dużego zapytania. W takim przypadku można ustawić wartość MAXDOP operacji indeksu na wyższą niż wartość MAXDOP zapytania. W ten sposób SQL Server ma więcej procesorów, których może używać dla operacji indeksu w porównaniu z liczbą procesorów, które mogą być dedykowane dla dużego zapytania. Pamiętaj, że nie kontrolujesz liczby wątków, SQL Server będą używane dla każdej operacji. Można kontrolować maksymalną liczbę procesorów dedykowanych dla wielu wątków.
 
-Dowiedz się [](https://technet.microsoft.com/library/ms188611.aspx) więcej o stopniach równoległości w SQL Server. Dowiedz się, jakie ustawienia mają wpływ na wiele wątków w aplikacji i ich konfiguracje w celu zoptymalizowania wydajności.
+Dowiedz się więcej o [stopniach równoległości](https://technet.microsoft.com/library/ms188611.aspx) w SQL Server. Dowiedz się, jakie ustawienia mają wpływ na wiele wątków w aplikacji i ich konfiguracje w celu zoptymalizowania wydajności.
 
 ## <a name="queue-depth"></a>Głębokość kolejki
 

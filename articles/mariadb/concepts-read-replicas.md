@@ -1,17 +1,17 @@
 ---
 title: Odczytaj repliki w Azure Database for MariaDB
-description: W tym artykule opisano Odczytaj repliki dla Azure Database for MariaDB.
+description: 'Informacje na temat odczytu replik w Azure Database for MariaDB: wybór regionów, tworzenie replik, łączenie z replikami, monitorowanie replikacji i zatrzymywanie replikacji.'
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 5018cab1213fb99f4c3b07944d0cb3172d1cd2c7
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 29725c302887448689f4aafd86f1f834d81c23ed
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123225"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973596"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Odczytaj repliki w Azure Database for MariaDB
 
@@ -19,7 +19,7 @@ Funkcja Read Replica umożliwia replikowanie danych z serwera Azure Database for
 
 Repliki to nowe serwery, którymi można zarządzać podobnie jak regularne Azure Database for MariaDB serwery. Dla każdej repliki odczytu są naliczane opłaty za zasoby obliczeniowe rdzeni wirtualnych i magazyn w GB/miesiąc.
 
-Więcej informacji na temat replikacji GTID można znaleźć w dokumentacji dotyczącej [replikacji MariaDB](https://mariadb.com/kb/en/library/gtid/).
+Więcej informacji na temat replikacji GTID można znaleźć w [dokumentacji dotyczącej replikacji MariaDB](https://mariadb.com/kb/en/library/gtid/).
 
 ## <a name="when-to-use-a-read-replica"></a>Kiedy używać repliki odczytu
 
@@ -40,10 +40,10 @@ Replikę odczytu można utworzyć w innym regionie niż serwer główny. Replika
 
 Serwer główny może być w dowolnym [regionie Azure Database for MariaDB](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb).  Serwer główny może mieć replikę w osobnym regionie lub regionach uniwersalnej repliki. Na poniższej ilustracji przedstawiono, które regiony replik są dostępne w zależności od regionu głównego.
 
-[![Odczytaj regiony repliki](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[@no__t — regiony repliki 1Read](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Regiony uniwersalnej repliki
-Można zawsze utworzyć replikę odczytu w jednym z następujących regionów, niezależnie od tego, gdzie znajduje się serwer główny. Są to uniwersalne regiony repliki:
+Replikę odczytu można utworzyć w dowolnym z następujących regionów, niezależnie od tego, gdzie znajduje się serwer główny. Obsługiwane regiony uniwersalnej repliki obejmują:
 
 Australia Wschodnia, Australia Wschodnia, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Ameryka Północna, Południowe stany USA, Europa Północna, Południowo-środkowe stany USA, Zachodnie Zjednoczone Królestwo Południowe Zjednoczone Królestwo Azja Południowo-Wschodnia
 
@@ -55,9 +55,9 @@ Jeśli używasz replik między regionami do planowania odzyskiwania po awarii, z
 
 Istnieją jednak ograniczenia, które należy wziąć pod uwagę: 
 
-* Dostępność w regionach: Azure Database for MariaDB jest dostępny w regionie zachodnie stany USA 2, Francja środkowa, Zjednoczone Emiraty Arabskie i Niemcy środkowe. Jednak ich sparowane regiony nie są dostępne.
+* Dostępność regionalna: Azure Database for MariaDB jest dostępna w regionie zachodnie stany USA 2, Francja środkowa, Zjednoczone Emiraty Arabskie i Niemcy środkowe. Jednak ich sparowane regiony nie są dostępne.
     
-* Pary jednokierunkowe: Niektóre regiony platformy Azure są sparowane tylko w jednym kierunku. Regiony te obejmują Indie Zachodnie, Brazylia Południowa i US Gov Wirginia. 
+* Pary jednokierunkowe: niektóre regiony platformy Azure są sparowane tylko w jednym kierunku. Regiony te obejmują Indie Zachodnie, Brazylia Południowa i US Gov Wirginia. 
    Oznacza to, że serwer główny w regionie zachodnie Indie może utworzyć replikę w Indiach Południowej. Jednak główny serwer nie może utworzyć repliki w Indiach zachodnim. Jest to spowodowane tym, że region pomocniczy w zachodniej Indiach to Indie Południowe, ale region pomocniczy w Republice Południowej Indie nie jest Indie Zachodnie.
 
 
@@ -78,7 +78,7 @@ Podczas tworzenia repliki nie są dziedziczone reguły zapory ani punkt końcowy
 
 Replika dziedziczy konto administratora z serwera głównego. Wszystkie konta użytkowników na serwerze głównym są replikowane do replik odczytu. Można nawiązać połączenie z repliką odczytu tylko przy użyciu kont użytkowników, które są dostępne na serwerze głównym.
 
-Możesz połączyć się z repliką przy użyciu nazwy hosta i prawidłowego konta użytkownika, tak jak w przypadku zwykłego serwera Azure Database for MariaDB. W przypadku serwera o nazwie Moja replika znazwą administratora administrator można nawiązać połączenie z repliką przy użyciu interfejsu wiersza polecenia MySQL:
+Możesz połączyć się z repliką przy użyciu nazwy hosta i prawidłowego konta użytkownika, tak jak w przypadku zwykłego serwera Azure Database for MariaDB. W przypadku serwera o nazwie Moja **replika** z **nazwą administratora**administrator można nawiązać połączenie z repliką przy użyciu interfejsu wiersza polecenia MySQL:
 
 ```bash
 mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
@@ -90,11 +90,11 @@ W wierszu polecenia wprowadź hasło dla konta użytkownika.
 
 Azure Database for MariaDB zapewnia wartość **opóźnienia replikacji w sekundach** w Azure monitor. Ta Metryka jest dostępna tylko dla replik.
 
-Ta Metryka jest obliczana przy `seconds_behind_master` użyciu metryki dostępnej w `SHOW SLAVE STATUS` MariaDB polecenia.
+Ta Metryka jest obliczana przy użyciu metryki `seconds_behind_master` dostępnej w poleceniu `SHOW SLAVE STATUS` MariaDB.
 
 Ustaw Alert, aby poinformować Cię, gdy zwłoka replikacji osiągnie wartość, która nie jest akceptowalna dla obciążenia.
 
-## <a name="stop-replication"></a>Zatrzymaj replikację
+## <a name="stop-replication"></a>Zatrzymywanie replikacji
 
 Można zatrzymać replikację między serwerem głównym a repliką. Po zatrzymaniu replikacji między serwerem głównym a repliką odczytu replika stanie się serwerem autonomicznym. Dane na serwerze autonomicznym to dane, które były dostępne w replice w momencie uruchomienia polecenia Zatrzymaj replikację. Serwer autonomiczny nie jest przechwytywany z serwerem głównym.
 
@@ -114,7 +114,7 @@ Repliki odczytu są obecnie dostępne tylko w warstwach cenowych Ogólnego przez
 
 ### <a name="master-server-restart"></a>Ponowne uruchamianie serwera głównego
 
-Gdy tworzysz replikę dla wzorca, który nie ma istniejących replik, wzorzec zostanie najpierw uruchomiony ponownie w celu przygotowania się do replikacji. Weź pod uwagę i wykonaj te operacje w okresie poza szczytem.
+Gdy tworzysz replikę dla wzorca, który nie ma istniejących replik, wzorzec zostanie najpierw uruchomiony ponownie w celu przygotowania się do replikacji. Należy wziąć pod uwagę i wykonać te operacje w okresie poza szczytem.
 
 ### <a name="new-replicas"></a>Nowe repliki
 
@@ -141,13 +141,13 @@ Użytkownicy na serwerze głównym są replikowana do replik odczytu. Można naw
 
 ### <a name="server-parameters"></a>Parametry serwera
 
-Aby zapobiec synchronizacji danych i uniknąć utraty lub uszkodzenia danych, niektóre parametry serwera są blokowane przed aktualizacją podczas korzystania z replik odczytu.
+Aby zapobiec utracie synchronizacji danych i ich możliwej utracie lub uszkodzeniu, aktualizacja niektórych parametrów jest zablokowana w przypadku korzystania z replik do odczytu.
 
 Następujące parametry serwera są blokowane na serwerach głównych i repliki:
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) Parametr jest zablokowany na serwerach repliki.
+Parametr [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) jest zablokowany na serwerach repliki.
 
 ### <a name="other"></a>Inne
 

@@ -4,14 +4,14 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1190798b234f9c73e02fda41c03ffa296246be63
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69626378"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975327"
 ---
-| Resource | Limit domyślny | Limit maksymalny |
+| Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Zasoby na [grupę zasobów](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)dla każdego typu zasobu |800 |Niektóre typy zasobów mogą przekraczać limit 800. Zobacz [zasoby nieograniczone do 800 wystąpień na grupę zasobów](../articles/azure-resource-manager/resources-without-rg-limit.md). |
 | Wdrożenia według grupy zasobów w historii wdrożenia |800<sup>1</sup> |800 |
@@ -21,16 +21,16 @@ ms.locfileid: "69626378"
 | Długość klucza tagu |512 |512 |
 | Długość wartości tagu |256 |256 |
 
-<sup>1</sup> Jeśli osiągnięto limit 800 wdrożeń dla każdej grupy zasobów, należy usunąć wdrożenia z historii, które nie są już potrzebne. Usunięcie wpisu z historii wdrożenia nie ma wpływu na wdrożone zasoby. Wpisy z historii można usuwać za pomocą polecenia [AZ Group Deployment Delete](/cli/azure/group/deployment) for Azure CLI lub [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) w programie PowerShell.  W przypadku skryptu programu PowerShell, który automatyzuje usuwanie wdrożeń w scenariuszu ciągłej integracji i ciągłego dostarczania (CI/CD), zobacz [Remove-Deployments. ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f).
+<sup>1</sup> Jeśli osiągnięto limit 800 wdrożeń dla każdej grupy zasobów, należy usunąć wdrożenia z historii, które nie są już potrzebne. Usunięcie wpisu z historii wdrożenia nie ma wpływu na wdrożone zasoby. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie błędów, gdy liczba wdrożeń przekracza 800](../articles/azure-resource-manager/deployment-quota-exceeded.md).
 
 #### <a name="template-limits"></a>Limity szablonów
 
-| Value | Limit domyślny | Limit maksymalny |
+| Wartość | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Parametry |256 |256 |
 | Zmienne |256 |256 |
 | Zasoby (w tym liczba kopii) |800 |800 |
-| outputs |64 |64 |
+| Dane wyjściowe |64 |64 |
 | Wyrażenie szablonu |24 576 znaków |24 576 znaków |
 | Zasoby w wyeksportowanych szablonach |200 |200 | 
 | Rozmiar szablonu |4 MB |4 MB |

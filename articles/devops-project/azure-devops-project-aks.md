@@ -2,19 +2,19 @@
 title: 'Samouczek: wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Kubernetes Service za pomocą usługi Azure DevOps Projects'
 description: Usługa Azure DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Za pomocą usługi DevOps Projects możesz wdrożyć aplikację ASP.NET Core za pomocą usługi Azure Kubernetes Service (AKS) w kilku prostych krokach.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 2aa103b36f60a84aaafc47f03a6cf6d5b6b66160
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b27d56d78296dc5500f97802f811a8923c4e87a8
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554943"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969683"
 ---
 # <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>Samouczek: wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Kubernetes Service za pomocą usługi Azure DevOps Projects
 
@@ -45,7 +45,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 
 Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure, na przykład klaster AKS, w wybranej subskrypcji platformy Azure.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**.
 

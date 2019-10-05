@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: cd00f49aea08e5c94a9206b64f66f4424ef3ca04
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: d50b0858ac7c4c0e5e0263bd157e044d0fec4489
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057655"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972669"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Tworzenie zasobu Cognitive Services przy użyciu interfejsu wiersza polecenia platformy Azure (CLI)
 
@@ -60,7 +60,7 @@ az account list-locations \
 
 Po utworzeniu lokalizacji platformy Azure Utwórz nową grupę zasobów w interfejsie wiersza polecenia platformy Azure przy użyciu poleceń [AZ Group Create](/cli/azure/group#az-group-create) .
 
-W poniższym przykładzie Zastąp lokalizację `westus2` platformy Azure jedną z lokalizacji platformy Azure dostępnych dla Twojej subskrypcji.
+W poniższym przykładzie Zastąp lokalizację platformy Azure `westus2` jednym z lokalizacji platformy Azure dostępnych dla Twojej subskrypcji.
 
 ```azurecli-interactive
 az group create \
@@ -72,42 +72,42 @@ az group create \
 
 ### <a name="choose-a-cognitive-service-and-pricing-tier"></a>Wybieranie usługi poznawczej i warstwy cenowej
 
-Podczas tworzenia nowego zasobu należy znać "rodzaj" usługi, która ma być używana, wraz z żądaną warstwą cenową ( [](https://azure.microsoft.com/pricing/details/cognitive-services/) lub jednostką SKU). Te i inne informacje są używane jako parametry podczas tworzenia zasobu.
+Podczas tworzenia nowego zasobu należy znać "rodzaj" usługi, która ma być używana, wraz z żądaną [warstwą cenową](https://azure.microsoft.com/pricing/details/cognitive-services/) (lub jednostką SKU). Te i inne informacje są używane jako parametry podczas tworzenia zasobu.
 
 > [!NOTE]
 > Wiele usług poznawczej ma bezpłatną warstwę, której można użyć do wypróbowania usługi. Aby skorzystać z warstwy Bezpłatna, użyj `F0` jako jednostki SKU dla zasobu.
 
 ### <a name="vision"></a>Obraz
 
-| Usługa                    | rodzaj                      |
+| Usługa                    | Natur                      |
 |----------------------------|---------------------------|
 | Przetwarzanie obrazów            | `ComputerVision`          |
 | Custom Vision — przewidywanie | `CustomVision.Prediction` |
 | Custom Vision — szkolenie   | `CustomVision.Training`   |
-| Interfejs API rozpoznawania twarzy                   | `Face`                    |
+| Interfejs API twarzy                   | `Face`                    |
 | Rozpoznawanie formularzy            | `FormRecognizer`          |
 | Rozpoznawanie pisma odręcznego             | `InkRecognizer`           |
 
-### <a name="search"></a>Wyszukaj
+### <a name="search"></a>Search
 
-| Usługa            | rodzaj                  |
+| Usługa            | Natur                  |
 |--------------------|-----------------------|
 | Automatyczne sugerowanie Bing   | `Bing.Autosuggest.v7` |
-| Wyszukiwanie niestandardowe Bing | `Bing.CustomSearch`   |
+| Bing Custom Search | `Bing.CustomSearch`   |
 | Wyszukiwanie jednostek Bing | `Bing.EntitySearch`   |
-| Szukaj za pomocą wyszukiwarki Bing        | `Bing.Search.v7`      |
+| Wyszukiwanie Bing        | `Bing.Search.v7`      |
 | Sprawdzanie pisowni Bing   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Mowa
 
-| Usługa            | rodzaj                 |
+| Usługa            | Natur                 |
 |--------------------|----------------------|
 | Usługi mowy    | `SpeechServices`     |
 | Rozpoznawanie mowy | `SpeakerRecognition` |
 
 ### <a name="language"></a>Język
 
-| Usługa            | rodzaj                |
+| Usługa            | Natur                |
 |--------------------|---------------------|
 | Zrozumienie formularza | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -117,7 +117,7 @@ Podczas tworzenia nowego zasobu należy znać "rodzaj" usługi, która ma być u
 
 ### <a name="decision"></a>Decyzja
 
-| Usługa           | rodzaj               |
+| Usługa           | Natur               |
 |-------------------|--------------------|
 | Narzędzie do wykrywania anomalii  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |
@@ -170,6 +170,16 @@ Warstwy cenowe (oraz opłata naliczana) są zależne od liczby wysyłanych trans
 * funkcje usługi są włączone w ramach warstwy cenowej.
 * Koszt wstępnie zdefiniowanej liczby transakcji. Przekroczenie tej kwoty spowoduje dodatkową opłatą określoną w [szczegółach cennika](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) usługi.
 
+## <a name="get-current-quota-usage-for-your-resource"></a>Pobierz bieżące użycie przydziału dla zasobu
+
+Użyj polecenia [AZ cognitiveservices Account List-Usage](https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) , aby uzyskać użycie zasobu usługi poznawczej.
+
+```azurecli-interactive
+az cognitiveservices account list-usage \
+    --name anomaly-detector-resource \
+    --resource-group cognitive-services-resource-group \
+    --subscription subscription-name
+```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

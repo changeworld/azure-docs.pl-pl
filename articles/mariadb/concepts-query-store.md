@@ -1,21 +1,21 @@
 ---
 title: Magazyn zapytań w Azure Database for MariaDB
-description: W tym artykule opisano funkcję magazynu zapytań w Azure Database for MariaDB
+description: Dowiedz się więcej o funkcji magazynu zapytań w Azure Database for MariaDB, aby ułatwić śledzenie wydajności w miarę upływu czasu.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 5d4d01f9f85c78d0e864ec9d11c1d8cd43542e57
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ee0a3c41edd144c1220cdc9b5a5463b43bef5551
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950636"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973551"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Monitorowanie wydajności Azure Database for MariaDB przy użyciu magazynu zapytań
 
-**Dotyczy:**  Azure Database for MariaDB 10,2
+**Dotyczy:** @no__t 1Azure Database for MariaDB 10,2
 
 > [!IMPORTANT]
 > Magazyn zapytań jest w wersji zapoznawczej.
@@ -37,7 +37,7 @@ Magazyn zapytań jest funkcją wyboru, dlatego nie jest domyślnie aktywna na se
 ### <a name="enable-query-store-using-the-azure-portal"></a>Włącz magazyn zapytań przy użyciu Azure Portal
 
 1. Zaloguj się do Azure Portal i wybierz swój serwer Azure Database for MariaDB.
-1. Wybierz opcję **Parametry** serwera w sekcji **Ustawienia** w menu.
+1. Wybierz opcję **parametry serwera** in **Ustawienia** section menu.
 1. Wyszukaj parametr query_store_capture_mode.
 1. Ustaw wartość wszystkie i **Zapisz**.
 
@@ -78,8 +78,8 @@ Poniżej przedstawiono kilka przykładów, w których można uzyskać więcej sz
 | **Uchwyceni** | **Akcja** |
 |---|---|
 |Duża blokada | Sprawdź teksty zapytania dla zaatakowanych zapytań i zidentyfikuj jednostki docelowe. Wyszukaj inne zapytania w magazynie zapytań, modyfikując tę samą jednostkę, która jest wykonywana często i/lub o dużym czasie trwania. Po zidentyfikowaniu tych zapytań Rozważ zmianę logiki aplikacji, aby zwiększyć współbieżność, lub użyj mniej restrykcyjnego poziomu izolacji. |
-|Duże oczekiwania we/wy | Znajdź zapytania z dużą liczbą odczytów fizycznych w magazynie zapytań. Jeśli są one zgodne z kwerendami o wysokim poziomie operacji we/wy, rozważ wprowadzenie indeksu w jednostce źródłowej, aby przeszukiwać zamiast skanów. Zmniejsza to obciążenie operacji we/wy dla zapytań. Sprawdź **zalecenia** dotyczące wydajności serwera w portalu, aby sprawdzić, czy istnieją zalecenia dotyczące indeksów dla tego serwera, które optymalizują zapytania. |
-|Duża ilość pamięci | Znajdź zapytania zużywające najwięcej pamięci w magazynie zapytań. Te zapytania prawdopodobnie opóźnią dalsze postępy zapytań, których to dotyczy. Sprawdź **zalecenia** dotyczące wydajności serwera w portalu, aby sprawdzić, czy istnieją zalecenia dotyczące indeksów, które optymalizują te zapytania.|
+|Duże oczekiwania we/wy | Znajdź zapytania z dużą liczbą odczytów fizycznych w magazynie zapytań. Jeśli są one zgodne z kwerendami o wysokim poziomie operacji we/wy, rozważ wprowadzenie indeksu w jednostce źródłowej, aby przeszukiwać zamiast skanów. Zmniejsza to obciążenie operacji we/wy dla zapytań. Sprawdź **zalecenia dotyczące wydajności**@no__t 1for serwera w portalu, aby sprawdzić, czy istnieją zalecenia dotyczące indeksów dla tego serwera, które optymalizują zapytania. |
+|Duża ilość pamięci | Znajdź zapytania zużywające najwięcej pamięci w magazynie zapytań. Te zapytania prawdopodobnie opóźnią dalsze postępy zapytań, których to dotyczy. Sprawdź **zalecenia dotyczące wydajności**@no__t 1for serwera w portalu, aby sprawdzić, czy istnieją zalecenia dotyczące indeksów, które optymalizują te zapytania.|
 
 ## <a name="configuration-options"></a>Opcje konfiguracji
 
@@ -87,18 +87,18 @@ Po włączeniu magazynu zapytań dane są zapisywane w 15-minutowych oknach agre
 
 Następujące opcje są dostępne na potrzeby konfigurowania parametrów magazynu zapytań.
 
-| **Parametr** | **Opis** | **Domyślne** | **Range** |
+| **Konstruktora** | **Opis** | **Domyślne** | **Zakres** |
 |---|---|---|---|
-| query_store_capture_mode | Włącz/Wyłącz funkcję magazynu zapytań na podstawie wartości. Uwaga: Jeśli performance_schema jest wyłączona, włączenie opcji query_store_capture_mode spowoduje włączenie performance_schema i podzestawu narzędzi schematu wydajności wymaganych dla tej funkcji. | WSZYSTKIE | BRAK, WSZYSTKIE |
+| query_store_capture_mode | Włącz/Wyłącz funkcję magazynu zapytań na podstawie wartości. Uwaga: Jeśli performance_schema jest wyłączona, włączenie query_store_capture_mode spowoduje włączenie performance_schema i podzestawu narzędzi schematu wydajności wymaganych dla tej funkcji. | CAŁĄ | BRAK, WSZYSTKIE |
 | query_store_capture_interval | Interwał przechwytywania magazynu zapytań (w minutach). Umożliwia określenie interwału, w którym metryki zapytania są agregowane | 15 | 5 - 60 |
 | query_store_capture_utility_queries | Włączenie lub wyłączenie w celu przechwycenia wszystkich zapytań narzędziowych wykonywanych w systemie. | NO | TAK, NIE |
 | query_store_retention_period_in_days | Przedział czasu w dniach, aby zachować dane w magazynie zapytań. | 7 | 1 - 30 |
 
 Poniższe opcje są stosowane w odniesieniu do statystyk oczekiwania.
 
-| **Parametr** | **Opis** | **Domyślne** | **Range** |
+| **Konstruktora** | **Opis** | **Domyślne** | **Zakres** |
 |---|---|---|---|
-| query_store_wait_sampling_capture_mode | Umożliwia włączenie/wyłączenie statystyk oczekiwania. | BRAK | BRAK, WSZYSTKIE |
+| query_store_wait_sampling_capture_mode | Umożliwia włączenie/wyłączenie statystyk oczekiwania. | DAWAJ | BRAK, WSZYSTKIE |
 | query_store_wait_sampling_frequency | Zmienia częstotliwość próbkowania oczekiwania w sekundach. od 5 do 300 sekund. | 30 | 5-300 |
 
 > [!NOTE]
@@ -108,7 +108,7 @@ Użyj [Azure Portal](howto-server-parameters.md) , aby uzyskać lub ustawić in
 
 ## <a name="views-and-functions"></a>Widoki i funkcje
 
-Wyświetlanie magazynu zapytań i zarządzanie nim przy użyciu następujących widoków i funkcji. Każda osoba w [roli publicznej Wybieranie uprawnienia](howto-create-users.md#create-additional-admin-users) może używać tych widoków do wyświetlania danych w magazynie zapytań. Te widoki są dostępne tylko w bazie danych **MySQL** .
+Wyświetlanie magazynu zapytań i zarządzanie nim przy użyciu następujących widoków i funkcji. Każda osoba w [roli publicznej Wybieranie uprawnienia](howto-create-users.md#create-additional-admin-users) może używać tych widoków do wyświetlania danych w magazynie zapytań. Te widoki są dostępne tylko w programie **mysql**@no__t 1database.
 
 Zapytania są znormalizowane przez przejrzenie ich struktury po usunięciu literałów i stałych. Jeśli dwa zapytania są identyczne z wyjątkiem wartości literału, będą miały ten sam skrót.
 
@@ -120,17 +120,17 @@ Ten widok zwraca wszystkie dane w magazynie zapytań. Dla każdego unikatowego i
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | Nazwa schematu |
 | `query_id`| bigint (20) | NO| Unikatowy identyfikator wygenerowany dla konkretnego zapytania, jeśli to samo zapytanie jest wykonywane w innym schemacie, zostanie wygenerowany nowy identyfikator |
-| `timestamp_id` | timestamp| NO| Znacznik czasu, w którym jest wykonywane zapytanie. Jest to oparte na konfiguracji query_store_interval|
+| `timestamp_id` | sygnatura czasowa| NO| Znacznik czasu, w którym jest wykonywane zapytanie. Jest to oparte na konfiguracji query_store_interval|
 | `query_digest_text`| longtext| NO| Znormalizowany tekst zapytania po usunięciu wszystkich literałów|
 | `query_sample_text` | longtext| NO| Pierwszy wygląd rzeczywistego zapytania z literałami|
-| `query_digest_truncated` | bit| TAK| Czy tekst zapytania został obcięty. Wartość będzie równa tak, jeśli zapytanie jest dłuższe niż 1 KB|
+| `query_digest_truncated` | bit| OPCJĘ| Czy tekst zapytania został obcięty. Wartość będzie równa tak, jeśli zapytanie jest dłuższe niż 1 KB|
 | `execution_count` | bigint (20)| NO| Liczba wykonań zapytania dla tego identyfikatora znacznika czasu/w skonfigurowanym okresie interwału|
 | `warning_count` | bigint (20)| NO| Liczba ostrzeżeń wygenerowanych przez to zapytanie w czasie wewnętrznym|
 | `error_count` | bigint (20)| NO| Liczba błędów wygenerowanych przez to zapytanie w interwale|
-| `sum_timer_wait` | double| TAK| Łączny czas wykonywania tego zapytania w interwale|
-| `avg_timer_wait` | double| TAK| Średni czas wykonywania dla tego zapytania w interwale|
-| `min_timer_wait` | double| TAK| Minimalny czas wykonywania dla tego zapytania|
-| `max_timer_wait` | double| TAK| Maksymalny czas wykonywania|
+| `sum_timer_wait` | double| OPCJĘ| Łączny czas wykonywania tego zapytania w interwale|
+| `avg_timer_wait` | double| OPCJĘ| Średni czas wykonywania dla tego zapytania w interwale|
+| `min_timer_wait` | double| OPCJĘ| Minimalny czas wykonywania dla tego zapytania|
+| `max_timer_wait` | double| OPCJĘ| Maksymalny czas wykonywania|
 | `sum_lock_time` | bigint (20)| NO| Łączny czas spędzony dla wszystkich blokad dla tego wykonania zapytania w tym przedziale czasu|
 | `sum_rows_affected` | bigint (20)| NO| Liczba zaatakowanych wierszy|
 | `sum_rows_sent` | bigint (20)| NO| Liczba wierszy wysłanych do klienta|
@@ -142,17 +142,17 @@ Ten widok zwraca wszystkie dane w magazynie zapytań. Dla każdego unikatowego i
 | `sum_no_good_index_used` | bigint (20)| NO| Liczba przypadków, gdy aparat wykonywania zapytania nie korzystał z prawidłowych indeksów|
 | `sum_created_tmp_tables` | bigint (20)| NO| Łączna liczba utworzonych tabel tymczasowych|
 | `sum_created_tmp_disk_tables` | bigint (20)| NO| Łączna liczba tabel tymczasowych utworzonych w dysku (generuje we/wy)|
-| `first_seen` | timestamp| NO| Pierwsze wystąpienie (UTC) zapytania w oknie agregacji|
-| `last_seen` | timestamp| NO| Ostatnie wystąpienie (UTC) zapytania w tym oknie agregacji|
+| `first_seen` | sygnatura czasowa| NO| Pierwsze wystąpienie (UTC) zapytania w oknie agregacji|
+| `last_seen` | sygnatura czasowa| NO| Ostatnie wystąpienie (UTC) zapytania w tym oknie agregacji|
 
-### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
 
 Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden wiersz dla każdego identyfikatora bazy danych, identyfikatora użytkownika, identyfikatora zapytania i zdarzenia.
 
 | **Nazwa**| **Typ danych** | **IS_NULLABLE** | **Opis** |
 |---|---|---|---|
-| `interval_start` | timestamp | NO| Początek interwału (15-minutowy przyrost)|
-| `interval_end` | timestamp | NO| Koniec interwału (co 15 minut)|
+| `interval_start` | sygnatura czasowa | NO| Początek interwału (15-minutowy przyrost)|
+| `interval_end` | sygnatura czasowa | NO| Koniec interwału (co 15 minut)|
 | `query_id` | bigint (20) | NO| Wygenerowano unikatowy identyfikator w znormalizowanej kwerendzie (z magazynu zapytań)|
 | `query_digest_id` | varchar (32) | NO| Znormalizowany tekst zapytania po usunięciu wszystkich literałów (z magazynu zapytań) |
 | `query_digest_text` | longtext | NO| Pierwszy wygląd rzeczywistego zapytania z literałami (z magazynu zapytań) |
@@ -161,7 +161,7 @@ Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden 
 | `count_star` | bigint (20) | NO| Liczba zdarzeń oczekiwania próbkowanych w przedziale czasu dla zapytania |
 | `sum_timer_wait_ms` | double | NO| Łączny czas oczekiwania (w milisekundach) tego zapytania w interwale |
 
-### <a name="functions"></a>Funkcje
+### <a name="functions"></a>Functions
 
 | **Nazwa**| **Opis** |
 |---|---|
@@ -172,7 +172,7 @@ Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden 
 ## <a name="limitations-and-known-issues"></a>Ograniczenia i znane problemy
 
 - Jeśli serwer MariaDB ma parametr `default_transaction_read_only` na, magazyn zapytań nie może przechwycić danych.
-- Funkcja magazynu zapytań może zostać przerwana, jeśli napotka długie zapytania Unicode (\>= 6000 bajtów).
+- Funkcja magazynu zapytań może zostać przerwana, jeśli napotka długie zapytania Unicode (\> = 6000 bajtów).
 - Okres przechowywania statystyk oczekiwania wynosi 24 godziny.
 - Statystyki oczekiwania wykorzystują przykładowe przechwycenie zdarzenia. Częstotliwość można zmodyfikować przy użyciu parametru `query_store_wait_sampling_frequency`.
 

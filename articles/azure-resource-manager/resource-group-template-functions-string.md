@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: b558e046f3402fdfa127192788d7d3ee1307ddeb
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 93f17ea9d2ffa33d1dca9da3eb60f75165e8ed61
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937031"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973328"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla Azure Resource Manager szablonów
 
@@ -333,7 +333,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | ---- | ---- | ----- |
 | przesłać | Tablica | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>Wyświetlana
+## <a name="contains"></a>wyświetlana
 
 `contains (container, itemToFind)`
 
@@ -407,12 +407,12 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| stringTrue | logiczna | True |
-| stringFalse | logiczna | False |
-| objectTrue | logiczna | True |
-| objectFalse | logiczna | False |
-| arrayTrue | logiczna | True |
-| arrayFalse | logiczna | False |
+| stringTrue | Logiczna | True |
+| stringFalse | Logiczna | False |
+| objectTrue | Logiczna | True |
+| objectFalse | Logiczna | False |
+| arrayTrue | Logiczna | True |
+| arrayFalse | Logiczna | False |
 
 ## <a name="datauri"></a>dataUri
 
@@ -585,11 +585,11 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayEmpty | logiczna | True |
-| objectEmpty | logiczna | True |
-| stringEmpty | logiczna | True |
+| arrayEmpty | Logiczna | True |
+| objectEmpty | Logiczna | True |
+| stringEmpty | Logiczna | True |
 
-## <a name="endswith"></a>EndsWith
+## <a name="endswith"></a>endsWith
 
 `endsWith(stringToSearch, stringToFind)`
 
@@ -648,12 +648,12 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| startsTrue | logiczna | True |
-| startsCapTrue | logiczna | True |
-| startsFalse | logiczna | False |
-| endsTrue | logiczna | True |
-| endsCapTrue | logiczna | True |
-| endsFalse | logiczna | False |
+| startsTrue | Logiczna | True |
+| startsCapTrue | Logiczna | True |
+| startsFalse | Logiczna | False |
+| endsTrue | Logiczna | True |
+| endsCapTrue | Logiczna | True |
+| endsFalse | Logiczna | False |
 
 ## <a name="first"></a>pierwszego
 
@@ -894,7 +894,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | Ostatnia | ZAOKR | 3 |
 | firstString | ZAOKR | 2 |
 | lastString | ZAOKR | 0 |
-| NotFound | ZAOKR | -1 |
+| notFound | ZAOKR | -1 |
 
 ## <a name="last"></a>ostatniego
 
@@ -946,7 +946,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | arrayOutput | Ciąg | trzy |
-| stringOutput | Ciąg | Adres |
+| stringOutput | Ciąg | adres |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -1007,7 +1007,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | Ostatnia | ZAOKR | 3 |
 | firstString | ZAOKR | 2 |
 | lastString | ZAOKR | 0 |
-| NotFound | ZAOKR | -1 |
+| notFound | ZAOKR | -1 |
 
 ## <a name="length"></a>Długość
 
@@ -1097,7 +1097,7 @@ Tej funkcji można użyć tylko w wyrażeniu dla wartości domyślnej parametru.
 
 Funkcja newGuid różni się od funkcji [GUID](#guid) , ponieważ nie przyjmuje żadnych parametrów. W przypadku wywołania identyfikatora GUID z tym samym parametrem zwraca ten sam identyfikator za każdym razem. Użyj identyfikatora GUID, gdy zachodzi potrzeba niezawodnego generowania tego samego identyfikatora GUID dla określonego środowiska. Użyj newGuid, gdy w każdym momencie potrzebny jest inny identyfikator, taki jak wdrażanie zasobów w środowisku testowym.
 
-Jeśli zostanie użyta [opcja ponownego wdrożenia wcześniejszego pomyślnego wdrożenia](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails), a wcześniejsze wdrożenie zawiera parametr, który używa newGuid, parametr nie zostanie ponownie oceniony. Zamiast tego wartość parametru z wcześniejszego wdrożenia zostanie automatycznie ponownie użyta w ramach wdrożenia wycofywania.
+Jeśli zostanie użyta [opcja ponownego wdrożenia wcześniejszego pomyślnego wdrożenia](rollback-on-error.md), a wcześniejsze wdrożenie zawiera parametr, który używa newGuid, parametr nie zostanie ponownie oceniony. Zamiast tego wartość parametru z wcześniejszego wdrożenia zostanie automatycznie ponownie użyta w ramach wdrożenia wycofywania.
 
 W środowisku testowym może być konieczne wielokrotne wdrożenie zasobów, które są tylko na żywo przez krótki czas. Zamiast konstruowania unikatowych nazw, można użyć newGuid z [uniqueString](#uniquestring) do tworzenia unikatowych nazw.
 
@@ -1364,7 +1364,7 @@ Zwraca tablicę ciągów, która zawiera podciągi ciągu wejściowego, które s
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | inputString |Tak |string |Ciąg do podzielenia. |
-| Ogranicznik |Tak |ciąg lub tablica ciągów |Ogranicznik używany do dzielenia ciągu. |
+| ogranicznik |Tak |ciąg lub tablica ciągów |Ogranicznik używany do dzielenia ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1471,12 +1471,12 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| startsTrue | logiczna | True |
-| startsCapTrue | logiczna | True |
-| startsFalse | logiczna | False |
-| endsTrue | logiczna | True |
-| endsCapTrue | logiczna | True |
-| endsFalse | logiczna | False |
+| startsTrue | Logiczna | True |
+| startsCapTrue | Logiczna | True |
+| startsFalse | Logiczna | False |
+| endsTrue | Logiczna | True |
+| endsCapTrue | Logiczna | True |
+| endsFalse | Logiczna | False |
 
 ## <a name="string"></a>string
 
@@ -1676,7 +1676,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | arrayOutput | Tablica | ["jeden", "dwa"] |
-| stringOutput | Ciąg | Z |
+| stringOutput | Ciąg | z |
 
 ## <a name="tolower"></a>toLower
 
@@ -1904,7 +1904,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-## <a name="uri"></a>Adresu
+## <a name="uri"></a>adresu
 
 `uri (baseUri, relativeUri)`
 
@@ -2110,7 +2110,7 @@ Zwraca bieżącą wartość daty/godziny w określonym formacie. Jeśli format n
 
 Tej funkcji można użyć tylko w wyrażeniu dla wartości domyślnej parametru. Użycie tej funkcji w dowolnym miejscu w szablonie powoduje zwrócenie błędu. Funkcja nie jest dozwolona w innych częściach szablonu, ponieważ zwraca inną wartość za każdym razem, gdy jest wywoływana. Wdrożenie tego samego szablonu z tymi samymi parametrami nie da niezawodnego wygenerowania tych samych wyników.
 
-Jeśli zostanie użyta [opcja ponownego wdrożenia wcześniejszego pomyślnego wdrożenia](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails), a wcześniejsze wdrożenie zawiera parametr, który używa UtcNow, parametr nie zostanie ponownie oceniony. Zamiast tego wartość parametru z wcześniejszego wdrożenia zostanie automatycznie ponownie użyta w ramach wdrożenia wycofywania.
+Jeśli zostanie użyta [opcja ponownego wdrożenia wcześniejszego pomyślnego wdrożenia](rollback-on-error.md), a wcześniejsze wdrożenie zawiera parametr, który używa UtcNow, parametr nie zostanie ponownie oceniony. Zamiast tego wartość parametru z wcześniejszego wdrożenia zostanie automatycznie ponownie użyta w ramach wdrożenia wycofywania.
 
 Należy zachować ostrożność wdrażania szablonu, który opiera się na funkcji utcNow dla wartości domyślnej. Po ponownym wdrożeniu i niepodaniu wartości parametru funkcja jest ponownie Szacowana. Jeśli chcesz zaktualizować istniejący zasób zamiast tworzyć nowe, przekaż wartość parametru z wcześniejszego wdrożenia.
 

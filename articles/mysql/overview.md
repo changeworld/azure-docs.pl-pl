@@ -1,20 +1,20 @@
 ---
 title: Omówienie usługi relacyjnej bazy danych Azure Database for MySQL
-description: Omówienie usługi relacyjnej bazy danych Azure Database for MySQL.
-ms.service: mysql
+description: Dowiedz się więcej na temat usługi Azure Database for MySQL, usługi relacyjnej bazy danych w chmurze firmy Microsoft w oparciu o wersję MySQL Community Edition.
 author: ajlam
+ms.service: mysql
 ms.author: andrela
 ms.custom: mvc
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 08/13/2019
-ms.openlocfilehash: 1299f82c28181d1c24f68a0d36ba13c6b40d21ee
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 03fe0b091939b3281d0cc0cb5e35bf055fb307e1
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013402"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970370"
 ---
-# <a name="what-is-azure-database-for-mysql"></a>Co to jest Azure Database for MySQL?
+# <a name="what-is-azure-database-for-mysql"></a>Co to jest usługa Azure Database for MySQL?
 
 Azure Database for MySQL jest usługą relacyjnej bazy danych w chmurze firmy Microsoft opartą na programie [MySQL Community Edition](https://www.mysql.com/products/community/) (dostępnym w ramach GPLv2 licencji), wersje 5,6, 5,7 i 8,0. Azure Database for MySQL oferuje:
 
@@ -39,7 +39,7 @@ Aby uzyskać zestaw przykładów interfejsu wiersza polecenia platformy Azure, z
 - [Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for MySQL](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Dostosowanie wydajności i skalowania w kilka sekund
-Usługa Azure Database for MySQL oferuje kilka warstw usług: Podstawowa, Ogólnego przeznaczenia i Zoptymalizowane pod kątem pamięci. Każda z warstw oferuje inną wydajność i różne możliwości w celu obsługi różnych obciążeń bazy danych, zarówno niewielkich, jak i ogromnych. Możesz utworzyć swoją pierwszą aplikację na podstawie małej bazy danych za jedynie kilka dolarów miesięcznie, a następnie dostosować skalowanie do potrzeb rozwiązania. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów. Zapłacisz tylko za potrzebne zasoby i tylko wtedy, gdy będą używane. Aby uzyskać szczegółowe informacje, zobacz  [Warstwy cenowe](concepts-service-tiers.md).
+Usługa Azure Database for MySQL oferuje kilka warstw usług: podstawowa, Ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Każda z warstw oferuje inną wydajność i różne możliwości w celu obsługi różnych obciążeń bazy danych, zarówno niewielkich, jak i ogromnych. Możesz utworzyć swoją pierwszą aplikację na podstawie małej bazy danych za jedynie kilka dolarów miesięcznie, a następnie dostosować skalowanie do potrzeb rozwiązania. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów. Zapłacisz tylko za potrzebne zasoby i tylko wtedy, gdy będą używane. Aby uzyskać szczegółowe informacje, zobacz  [Warstwy cenowe](concepts-service-tiers.md).
 
 ## <a name="monitoring-and-alerting"></a>Monitorowanie i zgłaszanie alertów
 Jak podjąć decyzję o tym, kiedy należy regulować w górę i w dół? Możesz użyć wbudowanych funkcji monitorowania wydajności i alertów w połączeniu z ocenami wydajności opartymi na rdzeniach wirtualnych. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania rdzeni wirtualnych w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności. Aby uzyskać szczegółowe informacje, zobacz [Alerty](howto-alert-on-metric.md).
@@ -55,7 +55,7 @@ Usługa Azure Database for MySQL używa szyfrowania magazynu dla danych w trybie
 Domyślnie usługa Azure Database for MySQL jest skonfigurowana tak, aby wymagała [zabezpieczeń połączeń SSL](./concepts-ssl-connection-security.md) na potrzeby ruchu danych w sieci. Wymuszanie połączeń SSL między serwerem bazy danych a aplikacjami klienckimi ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją. Opcjonalnie możesz wyłączyć wymaganie protokołu SSL dla połączeń z usługą bazy danych, jeśli Twoja aplikacja kliencka nie obsługuje łączności SSL.
 
 ## <a name="contacts"></a>Kontakty
-Aby dowiedzieć się więcej na temat pytań lub sugestii dotyczących pracy z Azure Database for MySQL, Wyślij wiadomość e-mail do zespołu Azure Database for MySQL ([ @Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Należy pamiętać, że nie jest to alias pomocy technicznej.
+Aby dowiedzieć się więcej na temat pytań lub sugestii dotyczących pracy z Azure Database for MySQL, Wyślij wiadomość e-mail do zespołu Azure Database for MySQL ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Ten adres e-mail nie jest aliasem pomocy technicznej.
 
 Ponadto, w zależności od potrzeb, należy wziąć pod uwagę następujące punkty kontaktowe:
 
@@ -64,8 +64,8 @@ Ponadto, w zależności od potrzeb, należy wziąć pod uwagę następujące pun
 - Aby przekazać opinię lub poprosić o nowe funkcje, utwórz wpis w platformie [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, po zapoznaniu się z wprowadzeniem do Azure Database for MySQL i udzieleniem odpowiedzi na pytanie "co to jest Azure Database for MySQL?", wszystko jest gotowe do:
+Teraz, po zapoznaniu się z wprowadzeniem do Azure Database for MySQL i odpowiedzieć na pytanie "co to jest Azure Database for MySQL?". wszystko jest gotowe do:
 
 - Odwiedzenie strony cennika zawierającej porównania kosztów i kalkulatory. [Cennik](https://azure.microsoft.com/pricing/details/mysql/)
 - Rozpoczęcie pracy przez utworzenie pierwszego serwera. [Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Kompiluj swoją pierwszą aplikację przy użyciu preferowanego języka: [Środowisko Python](./connect-python.md) | [](./connect-ruby.md)[Node. js](./connect-nodejs.md) | [Java języka](./connect-java.md) | [php](./connect-php.md)[.NET (C#](./connect-csharp.md))— | [](./connect-go.md) przejdź |  | 
+- Tworzenie pierwszej aplikacji przy użyciu preferowanego języka: [Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [php](./connect-php.md) | [.NET (C#)](./connect-csharp.md)@no__t[-12](./connect-go.md)

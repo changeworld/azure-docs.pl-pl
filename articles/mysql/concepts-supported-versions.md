@@ -1,17 +1,17 @@
 ---
-title: Obsługiwane wersje w Azure Database for MySQL
-description: Opisuje obsługiwane wersje w Azure Database for MySQL.
+title: Obsługiwane wersje — Azure Database for MySQL
+description: Dowiedz się, które wersje serwera MySQL są obsługiwane w usłudze Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 25251b617522840412a4868331e155285f64a18c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f9c7278e60c8342aa7d5b68ab8da7143abaf4c89
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962581"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970529"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Obsługiwane wersje serwera Azure Database for MySQL
 
@@ -26,13 +26,13 @@ Azure Database for MySQL obecnie obsługuje następujące wersje:
 
 ## <a name="mysql-version-56"></a>Baza danych MySQL w wersji 5,6
 
-Wydanie poprawki usterek: 5.6.44
+Poprawka poprawek usterek: 5.6.44
 
 Zapoznaj się z [informacjami o wersji](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-44.html) programu MySQL, aby dowiedzieć się więcej na temat ulepszeń i poprawek w tej wersji.
 
 ## <a name="mysql-version-57"></a>Baza danych MySQL w wersji 5,7
 
-Wydanie poprawki usterek: 5.7.26
+Poprawka poprawek usterek: 5.7.26
 
 Zapoznaj się z [informacjami o wersji](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-26.html) programu MySQL, aby dowiedzieć się więcej na temat ulepszeń i poprawek w tej wersji.
 
@@ -41,14 +41,14 @@ Zapoznaj się z [informacjami o wersji](https://dev.mysql.com/doc/relnotes/mysql
 > [!IMPORTANT]
 > Baza danych MySQL 8,0 jest obecnie dostępna w wersji zapoznawczej.
 
-Wydanie poprawki usterek: 8.0.15
+Poprawka poprawek usterek: 8.0.15
 
 Zapoznaj się z [informacjami o wersji](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) programu MySQL, aby dowiedzieć się więcej na temat ulepszeń i poprawek w tej wersji.
 
 ## <a name="managing-updates-and-upgrades"></a>Zarządzanie aktualizacjami i uaktualnieniami
 Usługa automatycznie zarządza poprawkami do poprawek błędów wersji. Na przykład 5.7.20 do 5.7.21.  
 
-Obecnie wersje pomocnicze i główne nie są obsługiwane. Na przykład uaktualnienie z programu MySQL 5,6 do bazy danych MySQL 5,7 nie jest obsługiwane. Jeśli chcesz przeprowadzić uaktualnienie z 5,6 do 5,7, zrób [zrzut i Przywróć](./concepts-migrate-dump-restore.md) go do serwera, który został utworzony przy użyciu nowej wersji aparatu.
+Obecnie uaktualnienia wersji pomocniczych i głównych nie są obsługiwane. Na przykład uaktualnienie bazy danych MySQL 5.6 do wersji 5.7 nie jest obsługiwane. Jeśli chcesz przeprowadzić uaktualnienie z wersji 5.6 do 5.7, wykonaj [zrzut i przywróć go](./concepts-migrate-dump-restore.md) na serwer, który został utworzony przy użyciu nowej wersji aparatu.
 
 ## <a name="next-steps"></a>Następne kroki
 

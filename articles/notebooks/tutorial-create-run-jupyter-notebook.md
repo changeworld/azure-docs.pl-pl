@@ -1,75 +1,74 @@
 ---
-title: Samouczek — tworzenie i uruchamianie notesu programu Jupyter na platformie Azure
-description: Jak utworzyć uruchomienia notesu programu Jupyter w notesach platformy Azure, który demonstruje proces regresji liniowej w zakresie analizy danych.
+title: Samouczek — Tworzenie i uruchamianie notesu Jupyter na platformie Azure
+description: Jak utworzyć Notes Run Jupyter w Azure Notebooks, który pokazuje proces regresji liniowej w nauce danych.
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 65bbb5fe-9939-4e8e-8f5b-c197d4be142a
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 09d4038e705fb3bc4ff2c82daf5dc4c07f346f94
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 827338c299b19d04245d7114a99d946d0332c82f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751760"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973040"
 ---
-# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Samouczek: tworzenie i uruchamianie notesu Jupyter przy użyciu języka Python
+# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Samouczek: Tworzenie i uruchamianie notesu Jupyter przy użyciu języka Python
 
-Ten samouczek przeprowadzi Cię przez proces przy użyciu notesów usługi Azure do utworzenia pełne notesu programu Jupyter, który pokazuje prosty regresji liniowej. W ramach tego samouczka możesz zapoznać się z notesu programu Jupyter interfejsu użytkownika, w tym tworzenie różnych komórek, uruchamianie komórek i umożliwienie korzystania z notesu jako pokaz slajdów.
+Ten samouczek przeprowadzi Cię przez proces używania Azure Notebooks w celu utworzenia kompletnego notesu Jupyter, który pokazuje prostą regresję liniową. W ramach tego samouczka zaznajomisz się z interfejsem użytkownika notesu Jupyter, który obejmuje tworzenie różnych komórek, uruchamianie komórek i prezentowanie notesu jako pokazu slajdów.
 
-Ukończone notesu można znaleźć na [GitHub - Samples notesów usługi Azure](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Ten samouczek rozpoczyna się od nowy projekt i pusty notes jednak, dzięki czemu możesz skorzystać z jej tworzenia, krok po kroku.
+Ukończony Notes można znaleźć w [przykładach Azure Notebooks GitHub](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Ten samouczek, jednak rozpoczyna się od nowego projektu i pustego notesu, aby można było go utworzyć krok po kroku.
 
 ## <a name="create-the-project"></a>Tworzenie projektu
 
-1. Przejdź do [notesów usługi Azure](https://notebooks.azure.com) i zaloguj się. (Aby uzyskać więcej informacji, zobacz [Szybki Start — Zaloguj się do platformy Azure, notesy](quickstart-sign-in-azure-notebooks.md)).
+1. Przejdź do [Azure Notebooks](https://notebooks.azure.com) i zaloguj się. (Aby uzyskać szczegółowe informacje, zobacz [Szybki Start — logowanie do Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
-1. Na stronie profilu publicznego, wybierz **Moje projekty** w górnej części strony:
+1. Na stronie Twój profil publiczny wybierz pozycję **Moje projekty** w górnej części strony:
 
-    ![Moje łącza projektów u góry okna przeglądarki](media/quickstarts/my-projects-link.png)
+    ![Link Moje projekty w górnej części okna przeglądarki](media/quickstarts/my-projects-link.png)
 
-1. Na **Moje projekty** wybierz opcję **+ nowy projekt** (skrót klawiaturowy: n); przycisku może występować tylko jako **+** Jeśli okno przeglądarki jest wąskie:
+1. Na stronie **Moje projekty** wybierz pozycję **+ Nowy projekt** (skrót klawiaturowy: n). przycisk może być wyświetlany tylko jako **+** , jeśli okno przeglądarki jest wąskie:
 
-    ![Nowe polecenie projektu na stronie Moje projekty](media/quickstarts/new-project-command.png)
+    ![Polecenie nowego projektu na stronie Moje projekty](media/quickstarts/new-project-command.png)
 
-1. W **Utwórz nowy projekt** okna podręcznego, który pojawia się, wprowadź lub ustaw następujące szczegóły, a następnie wybierz **Utwórz**:
+1. W wyświetlonym oknie podręcznym **Utwórz nowy projekt** wprowadź lub ustaw następujące szczegóły, a następnie wybierz pozycję **Utwórz**:
 
-    - **Nazwa projektu**: Przykład regresji liniowej — Cricket Chirps
-    - **Identyfikator projektu**: przykład liniowej regresji
-    - **Projekt publicznych**: (usunięty)
-    - **Utwórz plik README.md**: (usunięty)
+    - **Nazwa projektu**: przykład regresji liniowej — Cricket chirps
+    - **Identyfikator projektu**: regresja liniowa — przykład
+    - **Projekt publiczny**: (wyczyszczone)
+    - **Utwórz element Readme.MD**: (wyczyszczony)
 
-1. Po kilku chwilach notesy platformy Azure przechodzi należy do nowego projektu.
+1. Po kilku chwilach Azure Notebooks przechodzi do nowego projektu.
 
-## <a name="create-the-data-file"></a>Tworzenie pliku danych
+## <a name="create-the-data-file"></a>Utwórz plik danych
 
-Tworzenie notesu uczenia modelu regresji liniowej rysuje danych z pliku w projekcie o nazwie *cricket_chirps.csv*. Ten plik można utworzyć albo przez skopiowanie go z [GitHub - Samples notesów usługi Azure](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps), lub wprowadzając dane bezpośrednio. W poniższych sekcjach opisano oba podejścia.
+Model regresji liniowej tworzony w notesie pobiera dane z pliku w projekcie o nazwie *cricket_chirps. csv*. Ten plik można utworzyć, kopiując go z przykładów usługi [GitHub-Azure Notebooks](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)lub wprowadzając dane bezpośrednio. W poniższych sekcjach opisano oba podejścia.
 
 ### <a name="upload-the-data-file"></a>Przekaż plik danych
 
-1. Na pulpicie nawigacyjnym projektu w notesach platformy Azure, wybierz **przekazywanie** > **z adresu URL**
-1. W okienku wyskakującym wprowadź następujący adres URL w **adres URL pliku** i *cricket_chirps.csv* w **nazwy pliku**, a następnie wybierz **gotowe**.
+1. Na pulpicie nawigacyjnym projektu w Azure Notebooks wybierz pozycję **przekaż** > **z adresu URL**
+1. W oknie podręcznym wprowadź następujący adres URL w polu **adres URL pliku** i *cricket_chirps. csv* w polu **Nazwa pliku**, a następnie wybierz pozycję **gotowe**.
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
     ```
 
-1. *Cricket_chirps.csv* plik teraz powinien być widoczny na liście plików projektu:
+1. Plik *cricket_chirps. csv* powinien teraz pojawić się na liście plików projektu:
 
-    ![Nowo utworzony plik CSV, wyświetlane na liście plików projektu](media/tutorial/csv-file-in-project.png)
+    ![Nowo utworzony plik CSV wyświetlany na liście plików projektu](media/tutorial/csv-file-in-project.png)
 
-### <a name="create-a-file-from-scratch"></a>Utwórz plik od podstaw
+### <a name="create-a-file-from-scratch"></a>Tworzenie pliku od podstaw
 
-1. Na pulpicie nawigacyjnym projektu w notesach platformy Azure, wybierz **+ nowy** > **pusty plik**
-1. Pole jest wyświetlane na liście plików projektu. Wprowadź *cricket_chirps.csv* i naciśnij klawisz Enter.
-1. Kliknij prawym przyciskiem myszy *cricket_chirps.csv* i wybierz **Edytuj plik**.
-1. W edytorze, który pojawi się wprowadź następujące dane:
+1. Na pulpicie nawigacyjnym projektu w Azure Notebooks wybierz pozycję **+ nowy** > **pusty plik**
+1. Pole pojawi się na liście plików projektu. Wprowadź *cricket_chirps. csv* i naciśnij klawisz ENTER.
+1. Kliknij prawym przyciskiem myszy *cricket_chirps. csv* i wybierz polecenie **Edytuj plik**.
+1. W wyświetlonym edytorze wprowadź następujące dane:
 
     ```csv
     Chirps/Minute,Temperature
@@ -90,13 +89,13 @@ Tworzenie notesu uczenia modelu regresji liniowej rysuje danych z pliku w projek
     14.4,76.3
     ```
 
-1. Wybierz **Zapisz plik** Zapisz plik i powróć do pulpitu nawigacyjnego projektu.
+1. Wybierz pozycję **Zapisz plik** , aby zapisać plik, i wróć do pulpitu nawigacyjnego projektu.
 
-## <a name="install-project-level-packages"></a>Instalowanie pakietów na poziomie projektu
+## <a name="install-project-level-packages"></a>Zainstaluj pakiety na poziomie projektu
 
-W notesie, zawsze można użyć poleceń, takich jak `!pip install` w komórce kodu, aby zainstalować wymagane pakiety. Jednak takie polecenia są uruchamiane za każdym razem, gdy uruchomienia komórki kodu w notesie, a może zająć znaczną ilość czasu. Z tego powodu, możesz zamiast tego zainstalować pakiety na poziomie projektu przy użyciu `requirements.txt` pliku.
+W notesie można zawsze używać poleceń, takich jak `!pip install` w komórce kodu, aby zainstalować wymagane pakiety. Jednak takie polecenia są uruchamiane przy każdym uruchomieniu komórek kodu notesu i mogą zająć dużo czasu. Z tego powodu zamiast tego można instalować pakiety na poziomie projektu przy użyciu pliku `requirements.txt`.
 
-1. Użyj procesu opisanego w [Utwórz plik od podstaw](#create-a-file-from-scratch) do utworzenia pliku o nazwie `requirements.txt` z następującą zawartością:
+1. Użyj procesu opisanego w artykule [Tworzenie pliku od podstaw](#create-a-file-from-scratch) , aby utworzyć plik o nazwie `requirements.txt` z następującą zawartością:
 
     ```text
     matplotlib==3.0.0
@@ -105,78 +104,78 @@ W notesie, zawsze można użyć poleceń, takich jak `!pip install` w komórce k
     scikit-learn==0.20.0
     ```
 
-    Możesz również przekazać `requirements.txt` plików z komputera lokalnego, jeśli wolisz, zgodnie z opisem na [przekazywanie pliku danych](#upload-the-data-file).
+    Możesz również przekazać plik `requirements.txt` z komputera lokalnego, jeśli wolisz, zgodnie z opisem na stronie [przekazywanie pliku danych](#upload-the-data-file).
 
-1. Na pulpicie nawigacyjnym projektu wybierz **ustawienia projektu**.
-1. W wyświetlonym oknie podręcznym, zaznacz **środowiska** kartę, a następnie wybierz **+ Dodaj**.
-1. W pierwszej kontrolce listy rozwijanej (operacji) w obszarze **kroków konfiguracji środowiska**, wybierz **Requirements.txt**.
-1. W drugiej kontrolce listy rozwijanej (nazwa pliku) wybierz *requirements.txt* (plik utworzono).
-1. W trzecim kontrolka listy rozwijanej (wersja języka Python) wybierz **środowisko Python w wersji 3.6**.
+1. Na pulpicie nawigacyjnym projektu wybierz pozycję **Ustawienia projektu**.
+1. W wyświetlonym oknie podręcznym wybierz kartę **środowisko** , a następnie wybierz pozycję **+ Dodaj**.
+1. W pierwszej kontrolce listy rozwijanej (operacja) w obszarze **czynności konfiguracyjne środowiska**wybierz pozycję **Requirements. txt**.
+1. W drugiej kontrolce listy rozwijanej (nazwa pliku) wybierz pozycję *Requirements. txt* (utworzony plik).
+1. W trzeciej kontrolce listy rozwijanej (wersja języka Python) Wybierz środowisko **Python w wersji 3,6**.
 1. Wybierz pozycję **Zapisz**.
 
-![Na karcie środowisko ustawień projektu Określanie pliku requirements.txt](media/tutorial/tutorial-requirements-txt.png)
+![Karta środowisko ustawień projektu określająca plik Requirements. txt](media/tutorial/tutorial-requirements-txt.png)
 
-Ten krok konfiguracji w miejscu każdego dostępnego po uruchomieniu w projekcie będą uruchamiane w środowisku zainstalowanym te pakiety.
+W przypadku tego kroku instalacji każdy Notes uruchomiony w projekcie zostanie uruchomiony w środowisku, w którym są zainstalowane te pakiety.
 
 ## <a name="create-and-run-a-notebook"></a>Tworzenie i uruchamianie notesu
 
-Dzięki zestawowi środowiska projektu i pliku danych, które jest gotowy można tworzyć i otworzyć notes.
+W przypadku gotowości pliku danych i ustawienia środowiska projektowego możesz teraz utworzyć i otworzyć Notes.
 
-1. Na pulpicie nawigacyjnym projektu wybierz **+ nowy** > **notesu**.
-1. W okienku wyskakującym wprowadź *liniowej przykład regresji — Cricket Chirps.ipynb* dla **nazwa elementu**, wybierz **środowiska Python 3.6** w języku — a następnie wybierz pozycję **New**.
-1. Gdy nowy notes zostanie wyświetlony na liście plików, wybierz go do uruchamiania notesu. Automatycznie zostanie otwarta nowa karta przeglądarki.
-1. Ponieważ masz *requirements.txt* plików w ustawieniach środowiska zostanie wyświetlony komunikat "Oczekiwanie na zakończenie kontener przygotowywany." Możesz wybrać **OK** Zamknij komunikat i kontynuować pracę w notesie; nie można uruchomić komórki kodu, jednak, dopóki środowisko jest w pełni skonfigurowany.
-1. Notes zostanie otwarty w interfejsie Jupyter, z jednym pustej komórce kodu jako domyślny.
+1. Na pulpicie nawigacyjnym projektu wybierz pozycję **+ nowy** > **Notes**.
+1. W oknie podręcznym wprowadź *przykład regresji liniowej — Cricket chirps. ipynb* dla **nazwy elementu**, wybierz opcję **Python 3,6** dla języka, a następnie wybierz pozycję **Nowy**.
+1. Po pojawieniu się nowego notesu na liście plików wybierz go, aby uruchomić Notes. Zostanie automatycznie otwarta nowa karta przeglądarki.
+1. Ponieważ plik *Requirements. txt* jest w ustawieniach środowiska, zobaczysz komunikat "Oczekiwanie na zakończenie przygotowywania kontenera". Możesz wybrać **przycisk OK** , aby zamknąć komunikat i kontynuować pracę w notesie. nie można jednak uruchomić komórek kodu, dopóki środowisko nie zostanie skonfigurowane w pełni.
+1. Notes zostanie otwarty w interfejsie Jupyter z pojedynczą pustą komórką kodu jako domyślną.
 
-    [![Widok początkowy nowy notes w notesach platformy Azure](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Initial widok nowego notesu w programie Azure Notebooks](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
-## <a name="tour-the-notebook-interface"></a>Przewodnik po interfejsie notesu
+## <a name="tour-the-notebook-interface"></a>Samouczek dotyczący interfejsu notesu
 
-Z notesem uruchomiony możesz dodać kod komórek języka znaczników Markdown, uruchom tych komórek i zarządzać działaniem notesu. Po pierwsze jednak warto trwa kilka minut na zapoznanie się z interfejsem. Pełną dokumentację można wybrać **pomocy** > **pomocy notesu** polecenia menu.
+Z uruchomionym notesem możesz dodać kod i komórki o promocji, uruchomić te komórki i zarządzać działaniem notesu. Po pierwsze zapoznaj się z interfejsem za kilka minut. Aby uzyskać pełną dokumentację, wybierz polecenie **pomoc** > **Notes — pomoc** .
 
-Wzdłuż górnej części okna, zostaną wyświetlone następujące elementy:
+W górnej części okna widoczne są następujące elementy:
 
-(A) Nazwa notesu, który można edytować, klikając przycisk.
-(B) przycisków, aby przejść do projektu zawierającego i pulpit nawigacyjny projekty, które otwarcie nowej karty w przeglądarce.
-Menu (C) A za pomocą polecenia do pracy z notesem.
-(D) pasek narzędzi za skrótów klawiaturowych dla typowych operacji.
-(E) edycji kanwy zawierających komórki.
-(F) wskazuje, czy jest zaufany Notes (wartość domyślna to **zaufany**).
-(G) jądra używane do uruchamiania notesu wraz z wskaźnik aktywności.
+(A) nazwa notesu, którą można edytować, klikając pozycję.
+(B) przyciski, aby przejść do zawierającego go projektu i pulpitu nawigacyjnego projekty, które otwierają nowe karty w przeglądarce.
+(C) menu z poleceniami służącymi do pracy z notesem.
+(D) pasek narzędzi ze skrótami dla typowych operacji.
+(E) Kanwa edycji zawierającej komórki.
+(F) wskaźnik określający, czy Notes jest zaufany (domyślnie **nie jest to zaufana**).
+(G) jądro używane do uruchamiania notesu wraz ze wskaźnikiem aktywności.
 
-[![Główne obszary interfejsu użytkownika interfejsu programu Jupyter](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[obszary interfejsu użytkownika @no__t 1Primary w interfejsie Jupyter](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
-Jupyter zapewnia wbudowane Przewodnik po przykładzie podstawowe elementy interfejsu użytkownika. Uruchom samouczek, wybierając **pomocy** > **samouczek interfejsu użytkownika** polecenia i klikając okna podręczne.
+Jupyter zawiera wbudowany Przewodnik dotyczący głównych elementów interfejsu użytkownika. Rozpocznij pracę z przewodnikiem, wybierając polecenie **pomoc** > **samouczka interfejsu użytkownika** i klikając okna podręczne.
 
 Grupy poleceń menu są następujące:
 
 | Menu | Opis |
 | --- | --- |
-| Plik | Polecenia do zarządzania pliku Notes, włącznie z poleceniami, aby utworzyć i kopiowanie notesów, Pokaż podgląd wydruku i Pobierz Notes w różnych formatach. |
-| Edytuj | Typowe polecenia w celu wycinania, kopiowania i wklejać komórki, Znajdź i Zamień wartości, Zarządzaj załącznikami komórki i wstawiać obrazy.  |
-| Widok | Polecenia służące do sterowania widocznością różnych części interfejsu użytkownika programu Jupyter. |
-| Insert | Polecenia, aby wstawić nową komórkę powyżej lub poniżej bieżącej komórki. Możesz użyć tych poleceń, często używany podczas tworzenia notesu. |
-| Komórki | Różne **Uruchom** polecenia są uruchamiane w różnych kombinacjach co najmniej jedną komórkę. **Typ komórki** polecenia Zmień typ komórki między **kodu**, **Markdown**, i **pierwotne NBConvert** (zwykły tekst). **Bieżące dane wyjściowe** i **wszystkie dane wyjściowe** polecenia Sterowanie dane wyjściowe wykonywania kodu jest wyświetlany i uwzględnić polecenia, aby wyczyścić wszystkie dane wyjściowe. |
-| Jądra | Polecenia do zarządzania, jak kod jest uruchamiany w jądrze, wraz z **jądra zmiany** do zmiany języka lub wersji języka Python, używane do uruchamiania notesu. |
-| Dane | Polecenia, aby przekazywać i pobierać pliki z projektu lub sesji. Zobacz [Praca z plikami danych projektu](work-with-project-data-files.md) |
-| elementy widget | Polecenia do zarządzania [widżetów Jupyter](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), które zapewniają dodatkowe możliwości dla wizualizacji, mapowanie i rysowanie.|
-| Pomoc | Polecenia, które zapewniają pomoc i dokumentacja interfejsu Jupyter. |
+| Plik | Polecenia służące do zarządzania plikiem notesu, w tym polecenia do tworzenia i kopiowania notesów, wyświetlania podglądu wydruku i pobierania notesu w różnych formatach. |
+| Edytuj | Typowe polecenia służące do wycinania, kopiowania i wklejania komórek, znajdowania i zamieniania wartości, zarządzania załącznikami komórek i wstawiania obrazów.  |
+| Wyświetl | Polecenia służące do sterowania widocznością różnych części interfejsu użytkownika Jupyter. |
+| Insert | Polecenia służące do wstawiania nowej komórki powyżej lub poniżej bieżącej komórki. Te polecenia są często używane podczas tworzenia notesu. |
+| Unieważni | Różne polecenia **uruchamiania** uruchamiają co najmniej jedną komórkę w różnych kombinacjach. Polecenia **typu komórki** zmieniają typ komórki między **kodem** **, rozróżnieniem i** **nieprzetworzonym NBConvert** (zwykłym tekstem). **Bieżące** dane wyjściowe i **wszystkie polecenia wyjściowe** kontrolują sposób wyświetlania danych wyjściowych w kodzie uruchomienia i zawierają polecenie czyszczenia wszystkich danych wyjściowych. |
+| Palm | Polecenia służące do zarządzania sposobem uruchamiania kodu w jądrze, a także **zmiany jądra** w celu zmiany języka lub wersji środowiska Python używanego do uruchamiania notesu. |
+| Dane | Polecenia do przekazywania i pobierania plików z projektu lub sesji. Zobacz [pracy z plikami danych projektu](work-with-project-data-files.md) |
+| Elementy | Polecenia do zarządzania [widżetami Jupyter](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), które zapewniają dodatkowe możliwości wizualizacji, mapowania i wykreślania.|
+| Pomoc | Polecenia, które zapewniają pomoc i dokumentację dla interfejsu Jupyter. |
 
-Większość poleceń na pasku narzędzi mają odpowiednie polecenia z menu. Jedynym wyjątkiem jest **Enter/Edytuj ROSNĄĆ w pokaz slajdów**, omówiony w [udziału i notesy obecne](present-jupyter-notebooks-slideshow.md).
+Większość poleceń na pasku narzędzi ma równoważne polecenia menu. Jedynym wyjątkiem jest **Pokaz slajdów i edytowanie**, który jest omawiany w [notesie udostępniania i prezentacji](present-jupyter-notebooks-slideshow.md).
 
-Wykorzystanie wielu tych poleceń, jak wypełnić Notes w kolejnych sekcjach.
+Podczas wypełniania notesu w poniższych sekcjach należy użyć kilku poleceń.
 
-## <a name="create-a-markdown-cell"></a>Utwórz komórki języka znaczników Markdown
+## <a name="create-a-markdown-cell"></a>Utwórz komórkę z promocji
 
-1. Klikaj pierwszą pustą komórkę wyświetlane na kanwie notesu. Domyślnie jest komórki **kodu** typ, który oznacza, że zostało zaprojektowane do zawierają możliwe do uruchomienia kodu dla wybranych jądra (Python, R, lub F#). Bieżącym typem jest wyświetlany w typie listy rozwijanej na pasku narzędzi:
+1. Kliknij w pierwszej pustej komórce widocznej na kanwie notesu. Domyślnie komórka jest typem **kodu** , co oznacza, że jest ona zaprojektowana tak, aby zawierała kod możliwy do uruchomienia dla wybranego jądra (Python, R F#lub). Bieżący typ jest wyświetlany na liście rozwijanej Typ na pasku narzędzi:
 
-    ![Pasek narzędzi listy rozwijanej typ komórki](media/tutorial/tutorial-cell-type-drop-down.png)
+    ![Lista rozwijana paska narzędzi typu komórka](media/tutorial/tutorial-cell-type-drop-down.png)
 
-1. Zmień typ komórki na **Markdown** przy użyciu narzędzi listy rozwijanej; możesz też skorzystać **komórki** > **typ komórki**  >   **Markdown** polecenia menu:
+1. Zmień typ **komórki na** przestawkę na rozbiciu przy użyciu listy rozwijanej paska narzędzi. Alternatywnie, użyj **komórki** > **Typ komórki**@no__t **-4:**
 
-    ![Polecenia menu Typ komórki](media/tutorial/tutorial-cell-type-menu.png)
+    ![Menu Typ komórki — polecenie](media/tutorial/tutorial-cell-type-menu.png)
 
-1. Kliknij w komórce w celu rozpoczęcia edycji, a następnie wprowadź następujący kod Markdown:
+1. Kliknij komórkę, aby rozpocząć edycję, a następnie wprowadź następujące opcje promocji:
 
     ```markdown
     # Example Linear Regression
@@ -197,9 +196,9 @@ Wykorzystanie wielu tych poleceń, jak wypełnić Notes w kolejnych sekcjach.
     When you run a code cell, Jupyter executes the code; when you run a Markdown cell, Jupyter renders all the formatting into text that's suitable for presentation.
     ```
 
-1. Aby renderować języku znaczników Markdown w kodzie HTML do przeglądarki, zaznacz **Uruchom** polecenia na pasku narzędzi lub użyj **komórki** > **Uruchom komórek** polecenia. Kod języka znaczników Markdown do formatowania i łącza są teraz wyświetlane zgodnie z oczekiwaniami ich w przeglądarce.
+1. Aby renderować przestawkę na kod HTML w przeglądarce, wybierz polecenie **Uruchom** na pasku narzędzi lub użyj **komórki** > **Run Cells** polecenia. Kod promocji dla formatowania i linków jest teraz wyświetlany, gdy zachodzi taka potrzeba w przeglądarce.
 
-1. Po uruchomieniu ostatniej komórki w notesie Jupyter automatycznie tworzy nową komórkę poniżej, które było uruchomione. Umieścić więcej języka znaczników Markdown w tej komórce, powtarzając kroki w tej części następujący kod Markdown:
+1. Po uruchomieniu ostatniej komórki w notesie Jupyter automatycznie tworzy nową komórkę poniżej tego, który został uruchomiony. Aby uzyskać więcej informacji na temat tej komórki, należy powtórzyć kroki opisane w tej sekcji z uwzględnieniem następującej promocji:
 
     ```markdown
     ## Install packages using pip or conda
@@ -213,13 +212,13 @@ Wykorzystanie wielu tych poleceń, jak wypełnić Notes w kolejnych sekcjach.
     \```
     ```
 
-1. Ponownie edytować języku znaczników Markdown, kliknij dwukrotnie w komórce renderowany. Aby renderować HTML ponownie po wprowadzeniu zmian, należy uruchomić komórkę.
+1. Aby ponownie zmodyfikować tę replikę, kliknij dwukrotnie w renderowanej komórce. Aby renderować kod HTML ponownie po wprowadzeniu zmian, uruchom komórkę.
 
-## <a name="create-a-code-cell-with-commands"></a>Tworzenie komórkę kodu za pomocą polecenia
+## <a name="create-a-code-cell-with-commands"></a>Tworzenie komórki kodu za pomocą poleceń
 
-Jak wyjaśniono poprzedniej komórki języka znaczników Markdown, można umieścić bezpośrednio w notesie. Polecenia można użyć do zainstalowania pakietów, uruchom narzędzie curl lub wget, aby pobrać dane lub cokolwiek innego. Notesów programu Jupyter efektywnej pracy w przypadku maszyn wirtualnych systemu Linux pozwala uzyskać pełnej Linux zestaw poleceń chcesz pracować.
+Jak opisano w poprzedniej komórce promocji, możesz uwzględnić polecenia bezpośrednio w notesie. Za pomocą poleceń można instalować pakiety, uruchamiać zwinięcie lub Wget w celu pobierania danych lub innych elementów. Jupyter notesy skutecznie działają na maszynie wirtualnej z systemem Linux, więc masz pełne polecenie systemu Linux, z którym będzie pracować.
 
-1. Wpisz poniższe polecenia w komórce kodu, które pojawiło się po **Uruchom** na poprzedniej komórki języka znaczników Markdown. Jeśli nie widzisz nową komórkę, zrób to za pomocą **Wstaw** > **Wstaw komórkę poniżej** lub użyj **+** przycisk na pasku narzędzi.
+1. Wprowadź poniższe polecenia w komórce kodu, która pojawiła się po **uruchomieniu** w poprzedniej komórce promocji. Jeśli nie widzisz nowej komórki, Utwórz **ją za pomocą wstaw @no__t**-1**Wstaw komórkę poniżej** lub użyj przycisku **+** na pasku narzędzi.
 
     ```bash
     !pip install numpy
@@ -228,21 +227,21 @@ Jak wyjaśniono poprzedniej komórki języka znaczników Markdown, można umieś
     !pip install sklearn
     ```
 
-1. Przed uruchomieniem komórki, Utwórz nową komórkę z **+** znajdujący się na pasku narzędzi, ustaw ją na języka znaczników Markdown i wprowadź poniżej informacje:
+1. Przed uruchomieniem komórki Utwórz nową komórkę z przyciskiem **+** na pasku narzędzi, ustaw ją na wartość promocji i wprowadź następujące wyjaśnienie:
 
     ```markdown
     Note that when you run a code block that contains install commands, and also those with `import` statements, it make take the notebooks a little time to complete the task. To the left of the code block you see `In [*]` to indicate that execution is happening. The Notebook's kernel on the upper right also shows a filled-in circle to indicate "busy."
     ```
 
-1. Wybierz **komórki** > **Uruchom wszystkie** polecenie, aby uruchomić wszystkie komórki w notesie. Zauważ, że komórek Markdown renderowane jako HTML i polecenia uruchamiane w jądrze i sprawdź, czy wskaźnik jądra zgodnie z opisem w języku znaczników Markdown, sama:
+1. Wybierz **komórkę** > **Uruchom polecenie All** , aby uruchomić wszystkie komórki w notesie. Zwróć uwagę, że komórki promocji są renderowane jako HTML, a polecenie jest uruchamiane w jądrze i obserwuj wskaźnik jądra zgodnie z opisem w samej promocji:
 
     ![Wskaźnik zajętości dla jądra notesu](media/tutorial/tutorial-kernel-busy.png)
 
-1. Zajmuje trochę czasu dla wszystkich `pip install` polecenia do uruchomienia, a ponieważ zainstalowane te pakiety w środowisku projektu (i są one również dołączone w notesach Azure domyślnie), zobacz wiele komunikatów, które odczytują "wymagania jeszcze spełniony." Wszystkie te dane wyjściowe można wzrokowo rozprasza uwagę, dlatego należy wybierać, sprzedawanie, (za pomocą jednego kliknięcia), a następnie użyj **komórki** > **komórkę w danych wyjściowych** > **Przełącz**Aby ukryć dane wyjściowe. Można również użyć **wyczyść** na tej samej podmenu, aby całkowicie usunąć dane wyjściowe polecenia.
+1. Jest to również nieco czasochłonne dla wszystkich poleceń `pip install`, a ponieważ te pakiety zostały już zainstalowane w środowisku projektu (i ponieważ są także domyślnie dołączone do Azure Notebooks), zobaczysz wiele komunikatów odczytanych, "wymaganie już spełnione ". Wszystkie te dane wyjściowe mogą wizualnie rozpraszać, więc wybierz opcję Sprzedaj (za pomocą jednego kliknięcia), a następnie użyj **komórki** > **wyjściowej komórki**@no__t **-3,** aby ukryć dane wyjściowe. Możesz również użyć polecenia **Wyczyść** w tym samym podmenu, aby całkowicie usunąć dane wyjściowe.
 
-    **Przełącz** polecenia ukrywa tylko najbardziej aktualne dane wyjściowe z komórki; ponownie uruchomić komórkę danych wyjściowych zostanie wyświetlony ponownie.
+    **Przełącznik** powoduje ukrycie tylko najnowszych danych wyjściowych z komórki; po ponownym uruchomieniu komórki dane wyjściowe zostaną wyświetlone ponownie.
 
-1. Ponieważ te pakiety są zainstalowane w środowisku projektu, komentarz `! pip install` polecenia przy użyciu `#`; w ten sposób ich może pozostać w notesie jako materiałów szkoleniowych, ale nie będzie skorzystać w dowolnym momencie do uruchomienia i nie generuje niepotrzebne danych wyjściowych. W takim przypadku zachowanie polecenia komentarze w notesie wskazuje także zależności notesu.
+1. Ponieważ pakiety są zainstalowane w środowisku projektu, Dodaj komentarz do poleceń `! pip install` przy użyciu `#`; w ten sposób mogą pozostawać w notesie jako materiał instruktażowy, ale nie zajmie się żadnym czasem i nie będzie generować niepotrzebnych danych wyjściowych. W takim przypadku zachowywanie poleceń z komentarzem w notesie wskazuje również zależności notesu.
 
     ```bash
     # !pip install numpy
@@ -251,17 +250,17 @@ Jak wyjaśniono poprzedniej komórki języka znaczników Markdown, można umieś
     # !pip install sklearn
     ```
 
-## <a name="create-the-remaining-cells"></a>Tworzenie pozostałych komórek
+## <a name="create-the-remaining-cells"></a>Utwórz pozostałe komórki
 
-Aby wypełnić pozostałe Notes, możesz utworzyć szereg języka znaczników Markdown i komórki kodu. Dla każdej komórki wymienione poniżej najpierw utwórz nową komórkę, Ustaw typ, a następnie wklej zawartość.
+Aby wypełnić resztę notesu, należy utworzyć serię promocji i komórek kodu. Dla każdej komórki wymienionej poniżej najpierw utwórz nową komórkę, a następnie ustaw typ, a następnie wklej zawartość.
 
-Chociaż możesz zaczekać, aby uruchomić Notes, po utworzeniu każdej komórki, jest interesujące do uruchomienia każdej komórki podczas jej tworzenia. Nie wszystkie komórki Pokaż dane wyjściowe; Jeśli nie widzisz błędy przyjęto założenie, że komórki został uruchomiony normalnie.
+Mimo że możesz poczekać na uruchomienie notesu po utworzeniu każdej komórki, warto uruchomić każdą komórkę podczas tworzenia. Nie wszystkie komórki wyświetlają dane wyjściowe; Jeśli nie widzisz żadnych błędów, założono, że komórka została normalnie uruchomiona.
 
-Każda komórka kod zależy od kodu uruchamianego w poprzedniej komórki, a pominięcie Uruchom jedną z komórek, nowsze komórek może powodować błędy. Jeśli okaże się, czy pamiętasz uruchomić komórkę, spróbuj użyć **komórki** > **Uruchom wszystkie powyższe** przed uruchomieniem bieżącej komórki.
+Każda komórka kodu zależy od kodu, który został uruchomiony w poprzednich komórkach, i jeśli nie zostanie uruchomiona jedna z komórek, późniejsze komórki mogą spowodować błędy. Jeśli okaże się, że zapomniano uruchomić komórkę, spróbuj użyć **komórki** > **Uruchom wszystkie powyżej** przed uruchomieniem bieżącej komórki.
 
-Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, czy każda komórka jest ustawione na "Code" lub "Markdown" zgodnie z potrzebami. Na przykład błąd "Nieprawidłowa składnia" zazwyczaj występuje po wprowadzeniu języka znaczników Markdown w komórce kodu.
+Jeśli zobaczysz nieoczekiwane wyniki (prawdopodobnie będą!), sprawdź, czy w zależności od potrzeb każda komórka ma ustawioną wartość "Code" lub "replika". Na przykład błąd "Nieprawidłowa składnia" zwykle występuje po wprowadzeniu promocji w komórce kodu.
 
-1. Komórka markdown:
+1. Komórka z promocji:
 
     ```markdown
     ## Import packages and prepare the dataset
@@ -269,7 +268,7 @@ Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, 
     In this example we're using numpy, pandas, and matplotlib. Data is in the file cricket_chirps.csv. Because this file is in the same project as this present Notebook, we can just load it using a relative pathname.
     ```
 
-1. Komórkę kodu; Po uruchomieniu spisu treści jest wyświetlany jako dane wyjściowe. Dane wyjściowe można pominąć, zakomentowując `print` instrukcji.
+1. Komórka kodu; Po uruchomieniu program wyświetla zawartość tabeli jako dane wyjściowe. Możesz pominąć dane wyjściowe, dodając komentarz do instrukcji `print`.
 
     ```python
     import numpy as np
@@ -282,15 +281,15 @@ Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, 
     ```
 
     > [!Note]
-    > Może zostać wyświetlony ostrzeżenia dotyczące tego kodu o "zmienić rozmiar numpy.dtype"; można bezpiecznie zignorować ostrzeżenia.
+    > W tym kodzie mogą pojawić się ostrzeżenia o zmianie rozmiaru "numpy. dtype"; ostrzeżenia można bezpiecznie zignorować.
 
-1. Komórka markdown:
+1. Komórka z promocji:
 
     ```markdown
     Next, split the dataset into a Training set (2/3rds) and Test set (1/3rd). We don't need to do any feature scaling because there is only one column of independent variables, and packages typically do scaling for you.
     ```
 
-1. Komórkę kodu; Po uruchomieniu tej komórki nie ma wyjściowego.
+1. Komórka kodu; Po uruchomieniu ta komórka nie ma danych wyjściowych.
 
     ```python
     from sklearn.model_selection import train_test_split
@@ -298,7 +297,7 @@ Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state = 0)
     ```
 
-1. Komórka markdown:
+1. Komórka z promocji:
 
     ```markdown
     ## Fit the data to the training set
@@ -310,7 +309,7 @@ Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, 
     The regressor's `fit` method here creates the line, which algebraically is of the form `y = x*b1 + b0`, where b1 is the coefficient or slope of the line (which you can get to through `regressor.coef_`), and b0 is the intercept of the line at x=0 (which you can get to through `regressor.intercept_`).
     ```
 
-1. Komórkę kodu; Po uruchomieniu ta komórka zawiera dane wyjściowe, `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`.
+1. Komórka kodu; Po uruchomieniu ta komórka wyświetla dane wyjściowe, `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`.
 
     ```python
     from sklearn.linear_model import LinearRegression
@@ -319,7 +318,7 @@ Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, 
     regressor.fit(X_train, y_train)   # Provide training data so the machine can learn to predict using a learned model.
     ```
 
-1. Komórka markdown:
+1. Komórka z promocji:
 
     ```markdown
     ## Predict the results
@@ -331,14 +330,14 @@ Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, 
     In the code, the `y_test` matrix (from when we split the set) contains the real observations. `y_pred` assigned here contains the predictions for the same `X_test` inputs. It's not expected that the test or training points exactly fit the regression; the regression is trying to find the model that we can use to make predictions with new observations of the independent variables.
     ```
 
-1. Komórkę kodu; Po uruchomieniu tej komórki przedstawia wyniki, takie jak `[79.49588055 75.98873911 77.87719989 80.03544077 75.17939878]`.
+1. Komórka kodu; Po uruchomieniu ta komórka pokazuje wyniki, takie jak `[79.49588055 75.98873911 77.87719989 80.03544077 75.17939878]`.
 
     ```python
     y_pred = regressor.predict(X_test)
     print(y_pred)
     ```
 
-1. Komórka markdown:
+1. Komórka z promocji:
 
     ```markdown
     It's interesting to think that all the "predictions" we use in daily life, like weather forecasts, are just regression models of some sort working with various data sets. Those models are much more complicated than what's shown here, but the idea is the same.
@@ -350,7 +349,7 @@ Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, 
     The challenge is determining what data to actually use. For example, with weather, how far back in time do you go? How have weather patterns been changing decade by decade? In any case, something like weather predictions will be doing things hour by hour, day by day, for things like temperature, precipitation, winds, cloud cover, etc. Radar and other observations are of course fed into the model and the predictions are reduced to mathematics.
     ```
 
-1. Komórka markdown:
+1. Komórka z promocji:
 
     ```markdown
     ## Visualize the results
@@ -358,7 +357,7 @@ Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, 
     The following code generates a plot: green dots are training data, red dots are test data, blue dots are predictions. Gray line is the regression itself. You see that all the blue dots are exactly on the line, as they should be, because the predictions exactly fit the model (the line).
     ```
 
-1. Komórkę kodu; Po uruchomieniu tej komórki tworzy wykres graficzny. Jeśli nie sprawdzić czas kreślenia pierwszy (i zamiast tego zobacz "Rozmiar rysunek 640 x 480 z osiami 1"), należy ponownie uruchomić komórkę.
+1. Komórka kodu; Po uruchomieniu ta komórka tworzy graficzny wykres. Jeśli nie widzisz wykresu po raz pierwszy (a zamiast tego Zobacz "rozmiar rysunku 640x480 z 1 osiami"), ponownie uruchom komórkę.
 
     ```python
     import matplotlib.pyplot as plt
@@ -373,9 +372,9 @@ Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, 
     plt.show()
     ```
 
-    ![Dane wyjściowe kodu matplotlib wykres](media/tutorial/tutorial-plot-output.png)
+    ![Wykreśl dane wyjściowe z kodu matplotlib](media/tutorial/tutorial-plot-output.png)
 
-1. Komórka markdown:
+1. Komórka z promocji:
 
     ```markdown
     ## Closing comments
@@ -387,48 +386,48 @@ Jeśli widzisz nieoczekiwane wyniki, (które prawdopodobnie będą!), sprawdź, 
     Again, once you are working with more than one or two independent variables, it's much easier to use machine learning to crunch the numbers than to try to visualize it graphically.
     ```
 
-## <a name="clear-outputs-and-rerun-all-cells"></a>Wyczyść dane wyjściowe i uruchom ponownie wszystkie komórki
+## <a name="clear-outputs-and-rerun-all-cells"></a>Wyczyść dane wyjściowe i ponownie uruchom wszystkie komórki
 
-Po wykonaniu czynności opisane w poprzedniej sekcji, aby wypełnić całe Notes, utworzono zarówno element uruchamianie kodu w kontekście pełnym samouczku dotyczącym na regresji liniowej. Ta kombinacja bezpośredniego kodu i tekstu jest jedną z zalet notesów!
+Po wykonaniu kroków opisanych w poprzedniej sekcji w celu wypełnienia całego notesu utworzono fragment uruchomionego kodu w kontekście pełnego samouczka dotyczącego regresji liniowej. Bezpośrednia kombinacja kodu i tekstu jest jedną z doskonałych zalet notebooków!
 
-Wypróbuj teraz ponowne uruchomienie całego Notes:
+Spróbuj ponownie uruchomić cały Notes:
 
-1. Wyczyść wszystkie jądra dane sesji, a wszystkie komórki danych wyjściowych, wybierając **jądra** > **Wyczyść dane wyjściowe & ponownego uruchomienia**. To polecenie jest zawsze zalecana do uruchomienia po zakończeniu Notes, po prostu, aby upewnić się, że nie utworzono żadnych dziwne zależności między komórki kodu.
+1. Wyczyść wszystkie dane sesji jądra i wszystkie komórki wyjściowe, wybierając **jądro** > **restart & Wyczyść dane wyjściowe**. To polecenie jest zawsze dobrym obiektem do uruchomienia po zakończeniu pracy z notesem, tylko w celu upewnienia się, że nie utworzono żadnych niewielkich zależności między komórkami kodu.
 
-1. Ponownie przy użyciu notesu **komórki** > **Uruchom wszystkie**. Zwróć uwagę, że wskaźnik jądra jest wypełnione, gdy kod jest uruchomiony.
+1. Uruchom ponownie Notes przy użyciu **komórki** > **Uruchom wszystkie**. Zauważ, że wskaźnik jądra jest wypełniany, gdy kod jest uruchomiony.
 
-    Jeśli masz wszelki kod, który jest uruchamiany zbyt długo lub w przeciwnym razie zablokowania, można zatrzymać jądra za pomocą **jądra** > **przerwań** polecenia.
+    Jeśli masz kod, który jest zbyt długi lub jest zablokowany w inny sposób, możesz zatrzymać jądro za pomocą polecenia **jądra** > **przerwania** .
 
-1. Przewiń Notes, aby przejrzeć wyniki. (Jeśli ponownie wykres nie jest widoczna, należy ponownie uruchomić tę komórkę.)
+1. Przewiń Notes, aby przeanalizować wyniki. (Jeśli wykres nie zostanie wyświetlony, należy ponownie uruchomić tę komórkę).
 
-## <a name="save-halt-and-close-the-notebook"></a>Zapisz, wstrzymać i zamknąć notes
+## <a name="save-halt-and-close-the-notebook"></a>Zapisz, zatrzymywanie i zamykanie notesu
 
-Podczas edytowania notesu można zapisać jego bieżący stan z **pliku** > **zapisywanie i punktu kontrolnego** polecenia lub Zapisz przycisk na pasku narzędzi. "Punkt kontrolny" tworzy migawkę, możesz przywrócić w dowolnym momencie podczas sesji. Punkty kontrolne umożliwiają szereg zmian eksperymentalne i jeśli te zmiany nie działa, możesz po prostu przywrócić punktu kontrolnego przy użyciu **pliku** > **przywrócić punktu kontrolnego** polecenia. Alternatywne podejście dotyczy tworzenie dodatkowych komórek i komentarz dla jakiegokolwiek kodu, który nie ma być uruchomione. w obu przypadkach działa.
+Podczas edytowania notesu można zapisać jego bieżący stan za pomocą polecenia**Zapisz i Utwórz punkt kontrolny** **pliku** >  lub przycisk Zapisz na pasku narzędzi. "Punkt kontrolny" tworzy migawkę, którą można przywrócić w dowolnym momencie podczas sesji. Punkty kontrolne umożliwiają dokonanie szeregu eksperymentalnych zmian i jeśli te zmiany nie działają, można po prostu wrócić do punktu kontrolnego za pomocą **pliku** >  polecenie**Przywróć do punktu kontrolnego** . Alternatywnym podejściem jest tworzenie dodatkowych komórek i Dodawanie komentarzy do kodu, który nie ma być uruchamiany; w dowolny sposób działa.
 
-Można również użyć **pliku** > **Utwórz kopię** polecenie w dowolnym momencie, aby utworzyć kopię bieżącego stanu Notes do nowego pliku w projekcie. Tej kopii automatycznie otwiera się na nowej karcie przeglądarki.
+Można również użyć **pliku** >  Utwórz polecenie**copy** w dowolnym momencie, aby utworzyć kopię bieżącego stanu notesu w nowym pliku w projekcie. Ta kopia zostanie otwarta automatycznie na nowej karcie przeglądarki.
 
-Po zakończeniu korzystania z notesu, użyj **pliku** > **Zamknij i zatrzymania** polecenia, które powoduje zamknięcie notesu i zamyka jądra, która działa go. Notesy platformy Azure następnie na karcie przeglądarki zostanie automatycznie zamknięte.
+Gdy skończysz pracę z notesem, użyj **pliku** > **Close i zatrzymywanie** , co spowoduje zamknięcie tego notesu i zamknięcie jądra, na którym uruchomiono go. Azure Notebooks następnie automatycznie zamknie kartę przeglądarki.
 
-## <a name="debug-notebooks-using-visual-studio-code"></a>Debugowanie notesów programu Visual Studio Code
+## <a name="debug-notebooks-using-visual-studio-code"></a>Debugowanie notesów przy użyciu Visual Studio Code
 
-Jeśli komórki kodu w notesie nie działają w taki sposób, w których oczekujesz, możesz mieć kod błędy lub inne usterki. Jednak inne niż przy użyciu `print` instrukcji, aby wyświetlić wartości zmiennych, typowe środowisko Jupyter nie oferuje żadnych urządzeń debugowania.
+Jeśli komórki kodu w notesie nie zachowywać się w oczekiwany sposób, mogą wystąpić błędy kodu lub inne wady. Jednak inne niż użycie instrukcji `print` w celu wyświetlenia wartości zmiennych, typowe środowisko Jupyter nie oferuje żadnych funkcji debugowania.
 
-Na szczęście możesz pobrać notesu *.ipynb* pliku, a następnie otwórz go w programie Visual Studio Code za pomocą rozszerzenia języka Python. Rozszerzenie bezpośrednio importuje notesu jako plik pojedynczego kodu, zachowując swoje komórek języka znaczników Markdown w komentarzach. Po zaimportowaniu Notes, można użyć debugera programu Visual Studio Code, można przejść przez kod, ustawić punkty przerwania, sprawdź stan i tak dalej. Po wprowadzeniu poprawek w kodzie, można następnie wyeksportować *.ipynb* pliku z programu Visual Studio Code, a następnie przekaż go do notesów usługi Azure.
+Na szczęście można pobrać plik *. ipynb* notesu, a następnie otworzyć go w Visual Studio Code przy użyciu rozszerzenia języka Python. Rozszerzenie bezpośrednio importuje Notes jako pojedynczy plik kodu, zachowując komórki promocji w komentarzach. Po zaimportowaniu notesu można użyć debugera Visual Studio Code do przechodzenia przez kod, ustawiania punktów przerwania, sprawdzania stanu i tak dalej. Po wprowadzeniu poprawek do kodu wyeksportuj plik *. ipynb* z Visual Studio Code i przekaż go z powrotem do Azure Notebooks.
 
-Aby uzyskać więcej informacji, zobacz [debugowania notesu programu Jupyter](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) w dokumentacji programu Visual Studio Code.
+Aby uzyskać więcej informacji, zobacz [debugowanie notesu Jupyter](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) w dokumentacji Visual Studio Code.
 
-Zobacz też [programu Visual Studio Code — Obsługa Jupyter](https://code.visualstudio.com/docs/python/jupyter-support) do dodatkowych funkcji programu Visual Studio Code dla notesów programu Jupyter.
+Zobacz też [Visual Studio Code-Jupyter support](https://code.visualstudio.com/docs/python/jupyter-support) for Visual Studio Code features for Jupyter Notess.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Eksploruj przykładowe notesów](azure-notebooks-samples.md)
+- [Explore sample notebooks (Eksplorowanie przykładowych notesów)](azure-notebooks-samples.md)
 
 Artykuły z poradami:
 
 - [Tworzenie i klonowanie projektów](create-clone-jupyter-notebooks.md)
-- [Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
-- [Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
-- [Przedstawia pokaz slajdów](present-jupyter-notebooks-slideshow.md)
+- [Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
+- [Instalowanie pakietów z poziomu notesu](install-packages-jupyter-notebook.md)
+- [Prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)
 - [Praca z plikami danych](work-with-project-data-files.md)
-- [Uzyskaj dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
-- [Użyj usługi Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Uzyskiwanie dostępu do zasobów danych](access-data-resources-jupyter-notebooks.md)
+- [Korzystanie z usług Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

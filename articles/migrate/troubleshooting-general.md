@@ -1,17 +1,18 @@
 ---
 title: Rozwiązywanie problemów z Azure Migrate | Microsoft Docs
 description: Zawiera omówienie znanych problemów z usługą Azure Migrate, a także wskazówki dotyczące rozwiązywania problemów z typowymi błędami.
-author: rayne-wiselman
+author: musa-57
+ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: raynew
-ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.author: hamusa
+ms.openlocfilehash: 468c87e176cc61c48ba4caabd1c5a26f94d5fb5b
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067809"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970652"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -87,8 +88,8 @@ Aby usunąć projekt w starszej wersji Azure Migrate:
 ### <a name="delete-a-workspace"></a>Usuwanie obszaru roboczego
 
 Przejdź do obszaru roboczego Log Analytics dołączonego do projektu.
-* Jeśli projekt Azure Migrate nie został usunięty, można znaleźć link do obszaru roboczego w**ocenie serwera** **Essentials** > .
-       ![LA — obszar roboczy](./media/troubleshooting-general/loganalytics-workspace.png)
+* Jeśli projekt Azure Migrate nie został usunięty, można znaleźć link do obszaru roboczego w programie **Essentials** > **Ocena serwera**.
+       ![LA obszar roboczy @ no__t-1
 
      * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
@@ -105,13 +106,13 @@ Podczas tworzenia projektu ten błąd może wskazywać, że nie masz dostępu do
 
 ## <a name="error-invalid-ovf-manifest-entry"></a>Błąd "nieprawidłowy wpis manifestu OVF"
 
-Jeśli zostanie wyświetlony komunikat o błędzie "podany plik manifestu jest nieprawidłowy: Nieprawidłowy wpis manifestu OVF ", wykonaj następujące czynności:
+Jeśli zostanie wyświetlony komunikat o błędzie "podany plik manifestu jest nieprawidłowy: nieprawidłowy wpis manifestu OVF", wykonaj następujące czynności:
 
 1. Sprawdź, czy plik komórki jajowe urządzenia Azure Migrate został poprawnie pobrany, sprawdzając jego wartość skrótu. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Jeśli wartość skrótu nie jest zgodna, pobierz ponownie plik komórki jajowe i spróbuj ponownie wykonać wdrożenie.
 2. Jeśli wdrożenie nadal kończy się niepowodzeniem i używasz klienta VMware vSphere do wdrożenia pliku OVF, spróbuj wdrożyć go za pośrednictwem klienta sieci Web vSphere. Jeśli wdrożenie nadal kończy się niepowodzeniem, spróbuj użyć innej przeglądarki sieci Web.
 3. Jeśli używasz klienta sieci Web vSphere i podjęto próbę jego wdrożenia na vCenter Server 6,5 lub 6,7, spróbuj wdrożyć komórki jajowe bezpośrednio na hoście ESXi:
    - Połącz się bezpośrednio z hostem ESXi (zamiast vCenter Server) z klientem sieci Web (https://<*adres IP hosta*>/UI).
-   -  > W obszarze spis sprzętu wybierz pozycję plik Wdróż OVF szablon. >  Przejdź do komórek jajowych i Ukończ wdrożenie.
+   - W obszarze **Narzędzia główne**@no__t **-1 wybierz pozycję** **plik** > **Wdróż szablon OVF**. Przejdź do komórek jajowych i Ukończ wdrożenie.
 4. Jeśli wdrożenie nadal kończy się niepowodzeniem, skontaktuj się z pomocą techniczną Azure Migrate.
 
 ## <a name="appliance-cant-connect-to-the-internet"></a>Urządzenie nie może połączyć się z Internetem
@@ -151,7 +152,7 @@ Jeśli wystąpi błąd połączenia, może nie być możliwe nawiązanie połąc
     4. Sprawdź, czy vCenter Server działa.
 
 
-## <a name="error-appliance-might-not-be-registered"></a>Błąd: Urządzenie może nie być zarejestrowane
+## <a name="error-appliance-might-not-be-registered"></a>Błąd: urządzenie może nie być zarejestrowane
 
 - Błąd 60052, "urządzenie mogło nie zostać pomyślnie zarejestrowane w projekcie Azure Migrate" występuje, jeśli konto platformy Azure użyte do zarejestrowania urządzenia ma niewystarczające uprawnienia.
     - Upewnij się, że konto użytkownika platformy Azure używane do zarejestrowania urządzenia ma co najmniej uprawnienia współautora w ramach subskrypcji.
@@ -160,7 +161,7 @@ Jeśli wystąpi błąd połączenia, może nie być możliwe nawiązanie połąc
     - W Azure Portal i sprawdź, czy projekt istnieje w grupie zasobów.
     - Jeśli projekt nie istnieje, Utwórz nowy projekt Azure Migrate w grupie zasobów i ponownie Zarejestruj urządzenie. [Dowiedz się, jak](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) utworzyć nowy projekt.
 
-## <a name="error-key-vault-management-operation-failed"></a>Błąd: Nie można wykonać operacji zarządzania Key Vault
+## <a name="error-key-vault-management-operation-failed"></a>Błąd: nie można wykonać operacji zarządzania Key Vault
 
 Jeśli zostanie wyświetlony błąd 60030 lub 60031, "Azure Key Vault operacji zarządzania nie powiodła się", wykonaj następujące czynności:
 - Upewnij się, że konto użytkownika platformy Azure używane do zarejestrowania urządzenia ma co najmniej uprawnienia współautora w ramach subskrypcji.
@@ -168,16 +169,16 @@ Jeśli zostanie wyświetlony błąd 60030 lub 60031, "Azure Key Vault operacji z
 - Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) o wymaganych rolach i uprawnieniach platformy Azure.
 
-## <a name="fix-discovery-couldnt-be-initiated"></a>Wiązane Nie można zainicjować odnajdywania
+## <a name="fix-discovery-couldnt-be-initiated"></a>Naprawa: nie można zainicjować odnajdywania
 
-Błąd 60028: "Nie można zainicjować odnajdywania z powodu błędu. Operacja nie powiodła się dla określonej listy hostów lub klastrów "oznacza, że nie można uruchomić odnajdywania na hostach wymienionych w błędzie z powodu problemu z dostępem lub pobraniem informacji o maszynie wirtualnej. Pozostałe hosty zostały pomyślnie dodane.
+Błąd 60028: "nie można zainicjować odnajdywania z powodu błędu. Operacja nie powiodła się dla określonej listy hostów lub klastrów "oznacza, że nie można uruchomić odnajdywania na hostach wymienionych w błędzie z powodu problemu z dostępem lub pobraniem informacji o maszynie wirtualnej. Pozostałe hosty zostały pomyślnie dodane.
 
 - Ponownie Dodaj hosty wymienione w błędzie przy użyciu opcji **Dodaj hosta** .
 - Jeśli wystąpi błąd walidacji, przejrzyj wskazówki dotyczące korygowania, aby naprawić błędy, a następnie spróbuj ponownie wykonać operację **zapisywania i uruchamiania odnajdywania** .
 
-## <a name="fix-azure-ad-operation-failed-60025"></a>Wiązane Operacja usługi Azure AD nie powiodła się (60025)
+## <a name="fix-azure-ad-operation-failed-60025"></a>Poprawka: operacja usługi Azure AD nie powiodła się (60025)
 
-Błąd 60025: "Operacja usługi Azure AD nie powiodła się. Wystąpił błąd podczas tworzenia lub aktualizowania aplikacji usługi Azure AD "występuje, gdy konto użytkownika platformy Azure używane do inicjowania odnajdywania jest inne niż konto użyte do zarejestrowania urządzenia. Wykonaj jedną z następujących czynności:
+Błąd 60025: "operacja usługi Azure AD nie powiodła się. Wystąpił błąd podczas tworzenia lub aktualizowania aplikacji usługi Azure AD "występuje, gdy konto użytkownika platformy Azure używane do inicjowania odnajdywania jest inne niż konto użyte do zarejestrowania urządzenia. Wykonaj jedną z następujących czynności:
 
 - Upewnij się, że konto użytkownika, które inicjuje odnajdywanie, jest takie samo jak użyte do zarejestrowania urządzenia.
 - Podaj Azure Active Directory uprawnienia dostępu do aplikacji dla konta użytkownika, dla którego operacja odnajdywania kończy się niepowodzeniem.
@@ -200,7 +201,7 @@ Jeśli urządzenie zostało wdrożone w sposób ciągły do wykrywania środowis
 - Dane odnajdywania zebrane przez urządzenie zostaną odzwierciedlone w portalu do 30 minut.
 - Jeśli nie widzisz aktualnych informacji po 30 minutach, Odśwież dane, wykonując następujące czynności:
 
-    1. W obszarze **serwery** > **Azure Migrate oceny serwera**wybierz pozycję **Przegląd**.
+    1. W obszarze **serwery** > **Azure Migrate oceny serwera**, wybierz pozycję **Przegląd**.
     2. W obszarze **Zarządzaj**wybierz pozycję **Agent Health**
     3. Wybierz pozycję **Odśwież agenta**.
     1. Poczekaj na zakończenie operacji odświeżania. Informacje powinny być teraz wyświetlane na bieżąco.
@@ -210,22 +211,22 @@ Jeśli urządzenie zostało wdrożone w sposób ciągły do wykrywania środowis
 - Dane odnajdywania zebrane przez urządzenie zostaną odzwierciedlone w portalu do 30 minut.
 - Jeśli nie widzisz aktualnych informacji po 30 minutach, Odśwież dane, wykonując następujące czynności:
 
-    1. W obszarze **serwery** > **Azure Migrate oceny serwera**wybierz pozycję **Przegląd**.
+    1. W obszarze **serwery** > **Azure Migrate oceny serwera**, wybierz pozycję **Przegląd**.
     2. W obszarze **Zarządzaj**wybierz pozycję **Agent Health**
     3. Wybierz pozycję **Odśwież agenta**.
     1. Poczekaj na zakończenie operacji odświeżania. Informacje powinny być teraz wyświetlane na bieżąco.
 
 
-## <a name="fix-cant-connect-to-host-or-cluster"></a>Wiązane Nie można nawiązać połączenia z hostem lub klastrem
+## <a name="fix-cant-connect-to-host-or-cluster"></a>Poprawka: nie można nawiązać połączenia z hostem lub klastrem
 
-Błąd 50004: "Nie można nawiązać połączenia z hostem lub klastrem, ponieważ nie można rozpoznać nazwy serwera. Kod błędu WinRM: 0x803381B9 "może wystąpić, jeśli usługa Azure DNS dla urządzenia nie może rozpoznać dostarczonej nazwy klastra lub hosta.
+Błąd 50004: "nie można nawiązać połączenia z hostem lub klastrem, ponieważ nie można rozpoznać nazwy serwera. Kod błędu WinRM: 0x803381B9 "może wystąpić, jeśli usługa Azure DNS dla urządzenia nie może rozpoznać podanej nazwy klastra lub hosta.
 
 - Jeśli ten błąd jest wyświetlany w klastrze, nazwa FQDN klastra.
 - Ten błąd może również pojawić się w przypadku hostów w klastrze. Oznacza to, że urządzenie może połączyć się z klastrem, ale klaster zwraca nazwy hostów, które nie są nazwami FQDN. Aby rozwiązać ten problem, zaktualizuj plik Hosts na urządzeniu poprzez dodanie mapowania adresów IP i nazw hostów:
     1. Otwórz Notatnik jako administrator.
     2. Otwórz plik C:\Windows\System32\Drivers\etc\hosts.
     3. Dodaj adres IP i nazwę hosta w wierszu. Powtórz tę czynność dla każdego hosta lub klastra, w którym widzisz ten błąd.
-    4. Zapisz i zamknij plik hosts.
+    4. Zapisz i zamknij plik Hosts.
     5. Sprawdź, czy urządzenie może nawiązać połączenie z hostami przy użyciu aplikacji do zarządzania urządzeniami. Po 30 minutach powinny zostać wyświetlone najnowsze informacje dotyczące tych hostów w Azure Portal.
 
 
@@ -234,23 +235,23 @@ Błąd 50004: "Nie można nawiązać połączenia z hostem lub klastrem, poniewa
 
 Rozwiąż problemy z gotowością do oceny w następujący sposób:
 
-**Wykonaj** | **Fix**
+**Wykonaj** | **Wiązane**
 --- | ---
 Nieobsługiwany typ rozruchu | Platforma Azure nie obsługuje maszyn wirtualnych z typem rozruchu EFI. Przed uruchomieniem migracji zalecamy przekonwertowanie typu rozruchu na system BIOS. <br/><br/>Do obsługi migracji takich maszyn wirtualnych można użyć migracji serwera Azure Migrate. Spowoduje to przekonwertowanie typu rozruchowego maszyny wirtualnej na system BIOS podczas migracji.
 Warunkowo obsługiwany system operacyjny Windows | System operacyjny przeszedłł datę końca okresu obsłudze i potrzebuje niestandardowej umowy pomocy technicznej (CSA) w celu uzyskania [pomocy technicznej na platformie Azure](https://aka.ms/WSosstatement). Przed przeprowadzeniem migracji na platformę Azure Rozważ uaktualnienie.
 Nieobsługiwany system operacyjny Windows | Platforma Azure obsługuje tylko [wybrane wersje systemu operacyjnego Windows](https://aka.ms/WSosstatement). Rozważ uaktualnienie maszyny przed przeprowadzeniem migracji na platformę Azure.
-Warunkowo wspierany system operacyjny Linux | Platforma Azure poświadcza tylko [wybrane wersje systemu operacyjnego Linux](../virtual-machines/linux/endorsed-distros.md). Rozważ uaktualnienie maszyny przed przeprowadzeniem migracji na platformę Azure.
-Niewspierany system operacyjny Linux | Maszyna może zaczynać się na platformie Azure, ale platforma Azure nie zapewnia obsługi systemu operacyjnego. Przed przeprowadzeniem migracji na platformę Azure Rozważ uaktualnienie do [zatwierdzonej wersji systemu Linux](../virtual-machines/linux/endorsed-distros.md) .
+Warunkowo potwierdzony system operacyjny Linux | Platforma Azure poświadcza tylko [wybrane wersje systemu operacyjnego Linux](../virtual-machines/linux/endorsed-distros.md). Rozważ uaktualnienie maszyny przed przeprowadzeniem migracji na platformę Azure.
+Niepotwierdzony system operacyjny Linux | Maszyna może zaczynać się na platformie Azure, ale platforma Azure nie zapewnia obsługi systemu operacyjnego. Przed przeprowadzeniem migracji na platformę Azure Rozważ uaktualnienie do [zatwierdzonej wersji systemu Linux](../virtual-machines/linux/endorsed-distros.md) .
 Nieznany system operacyjny | System operacyjny maszyny wirtualnej został określony jako "inny" w vCenter Server. To zachowanie uniemożliwia Azure Migrate weryfikacji gotowości maszyny wirtualnej platformy Azure. Przed przeprowadzeniem migracji maszyny upewnij się, że system operacyjny jest [obsługiwany](https://aka.ms/azureoslist) przez platformę Azure.
 Nieobsługiwana wersja bitowa | Maszyny wirtualne z 32-bitowymi systemami operacyjnymi mogą przeprowadzić rozruch na platformie Azure, ale zalecamy uaktualnienie do wersji 64-bitowej przed migracją na platformę Azure.
 Wymaga subskrypcji Microsoft Visual Studio | Na komputerze jest uruchomiony system operacyjny klienta systemu Windows, który jest obsługiwany tylko przez subskrypcję programu Visual Studio.
 Nie znaleziono maszyny wirtualnej wymaganej wydajności magazynu | Wydajność magazynu (operacje wejścia/wyjścia na sekundę [IOPS] i przepływność) wymagane dla maszyny przekraczają obsługę maszyny wirtualnej platformy Azure. Przed migracją Zmniejsz wymagania dotyczące magazynu maszyny.
 Nie znaleziono maszyny wirtualnej dla wymaganej wydajności sieci | Wydajność sieci (WE/wychodzącej) wymagana przez maszynę przekracza obsługę maszyny wirtualnej platformy Azure. Zmniejsz wymagania dotyczące sieci dla maszyny.
 Nie znaleziono maszyny wirtualnej w określonej lokalizacji | Użyj innej lokalizacji docelowej przed migracją.
-Znaleziono co najmniej jeden nieodpowiedni dysk | Co najmniej jeden dysk dołączony do maszyny wirtualnej nie spełnia wymagań platformy Azure. Z<br/><br/> Azure Migrate: Ocena serwera obecnie nie obsługuje SSD w warstwie Ultra dysków i ocenia dyski w oparciu o limity dysków dla dysków zarządzanych w warstwie Premium (32 TB).<br/><br/> Dla każdego dysku podłączonego do maszyny wirtualnej upewnij się, że rozmiar dysku to < 64 TB (obsługiwane przez dyski SSD w warstwie Ultra).<br/><br/> Jeśli tak nie jest, zmniejsz rozmiar dysku przed przeprowadzeniem migracji na platformę Azure lub Użyj wielu dysków [na platformie Azure, aby uzyskać](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) wyższe limity magazynu. Należy upewnić się, że wydajność (IOPS i przepustowość) wymagana przez poszczególne dyski są obsługiwane przez [maszyny wirtualne zarządzane](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)przez platformę Azure.
+Co najmniej jeden niewłaściwy dysk | Co najmniej jeden dysk dołączony do maszyny wirtualnej nie spełnia wymagań platformy Azure. Z<br/><br/> Azure Migrate: Ocena serwera obecnie nie obsługuje dysków SSD w warstwie Ultra i ocenia dyski w oparciu o limity dysków dla dysków zarządzanych w warstwie Premium (32 TB).<br/><br/> Dla każdego dysku podłączonego do maszyny wirtualnej upewnij się, że rozmiar dysku to < 64 TB (obsługiwane przez dyski SSD w warstwie Ultra).<br/><br/> Jeśli tak nie jest, zmniejsz rozmiar dysku przed przeprowadzeniem migracji na platformę Azure lub Użyj wielu dysków [na platformie Azure, aby uzyskać](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) wyższe limity magazynu. Należy upewnić się, że wydajność (IOPS i przepustowość) wymagana przez poszczególne dyski są obsługiwane przez [maszyny wirtualne zarządzane](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)przez platformę Azure.
 Co najmniej jedna nieodpowiednia karta sieciowa. | Przed migracją Usuń nieużywane karty sieciowe z maszyny.
 Liczba dysków przekracza limit | Usuń nieużywane dyski z maszyny przed migracją.
-Rozmiar dysku przekracza limit | Azure Migrate: Ocena serwera obecnie nie obsługuje SSD w warstwie Ultra dysków i ocenia dyski w oparciu o limity dysku Premium (32 TB).<br/><br/> Platforma Azure obsługuje jednak dyski o rozmiarze do 64 TB (obsługiwane przez dyski SSD w warstwie Ultra). Zmniejsz liczbę dysków do mniej niż 64 TB przed migracją lub Użyj wielu [dysków na platformie Azure, aby uzyskać](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) wyższe limity magazynu.
+Rozmiar dysku przekracza limit | Azure Migrate: Ocena serwera obecnie nie obsługuje dysków SSD w warstwie Ultra i ocenia dyski w oparciu o limity dysku Premium (32 TB).<br/><br/> Platforma Azure obsługuje jednak dyski o rozmiarze do 64 TB (obsługiwane przez dyski SSD w warstwie Ultra). Zmniejsz liczbę dysków do mniej niż 64 TB przed migracją lub Użyj wielu [dysków na platformie Azure, aby uzyskać](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) wyższe limity magazynu.
 Dysk niedostępny w określonej lokalizacji | Przed przeprowadzeniem migracji upewnij się, że dysk znajduje się w lokalizacji docelowej.
 Dysk niedostępny dla określonej nadmiarowości | Dysk powinien używać typu magazynu nadmiarowości zdefiniowanego w ustawieniach oceny (domyślnie LRS).
 Nie można określić przydatności dysku z powodu błędu wewnętrznego | Spróbuj utworzyć nową ocenę dla grupy.
@@ -275,7 +276,7 @@ Ocena serwera Azure Migrate może zalecać jednostki SKU maszyny wirtualnej plat
 
 
 - Zalecenie dotyczące jednostki SKU maszyny wirtualnej zależy od właściwości oceny.
-- Ma to wpływ na typ oceny wykonywanej w ocenie serwera: *Oparta na wydajności*lub *w środowisku lokalnym*.
+- Ma to wpływ na typ oceny wykonywanej w ocenie serwera: *oparty na wydajności*lub w środowisku *lokalnym*.
 - W przypadku ocen opartych na wydajności Ocena serwera traktuje dane użycia lokalnych maszyn wirtualnych (procesora CPU, pamięci, dysku i wykorzystania sieci) w celu określenia odpowiedniej docelowej jednostki SKU maszyny wirtualnej dla lokalnych maszyn wirtualnych. Dodaje również współczynnik komfortu podczas określania efektywnego wykorzystania.
 - W przypadku lokalnego określania wielkości dane wydajności nie są brane pod uwagę, a docelowa jednostka SKU jest zalecana na podstawie przydziału lokalnego.
 
@@ -296,7 +297,7 @@ Ocena serwera Azure Migrate może zalecić większy dysk na podstawie typu oceny
 
 Jeśli na przykład masz dysk lokalny z 32 GB pamięci, ale zagregowane liczby operacji we/wy odczytu i zapisu dla dysku to 800 IOPS, Ocena serwera zaleca dysk w warstwie Premium (z powodu wyższych wymagań IOPS), a następnie zaleca użycie dysku SKU, który może obsługiwać język r wymagane i rozmiar operacji we/wy. Najbliższym dopasowaniem w tym przykładzie byłaby jednostka P15 (256 GB, 1100 operacji we/wy na sekundę). Mimo że rozmiar wymagany przez dysk lokalny to 32 GB, Ocena serwera zaleca większy dysk z powodu dużego wymagania IOPS dysku lokalnego.
 
-## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>Wiązane Procent użytego rdzenia lub braku pamięci
+## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>Naprawa: nie pozostała część użytego rdzenia lub pamięci
 
 Raporty oceny serwera "PercentageOfCoresUtilizedMissing" lub "PercentageOfMemoryUtilizedMissing", gdy urządzenie Azure Migrate nie może zbierać danych wydajności dla odpowiednich lokalnych maszyn wirtualnych.
 
@@ -332,7 +333,7 @@ Po zainstalowaniu agentów wizualizacji zależności na lokalnych maszynach wirt
 
 Dla maszyn wirtualnych z systemem Windows:
 1. W panelu sterowania uruchom MMA.
-2. We **właściwościach** > Microsoft Monitoring Agent**Azure log Analytics (OMS)** upewnij się, że **stan** obszaru roboczego to zielony.
+2. We **właściwościach Microsoft Monitoring Agent** > **Azure log Analytics (OMS)** upewnij się, że **stan** obszaru roboczego to zielony.
 3. Jeśli stan nie jest zielony, spróbuj usunąć obszar roboczy i dodać go ponownie do MMA.
 
       ![Okno dialogowe właściwości MMA](./media/troubleshooting-general/mma-status.png)
@@ -374,7 +375,7 @@ Po przeprowadzeniu migracji maszyn z włączoną wizualizacją zależności na p
 
 Zbierz dzienniki w następujący sposób:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Naciśnij klawisz F12, aby rozpocząć Narzędzia deweloperskie. W razie konieczności Wyczyść ustawienie **Wyczyść wpisy przy nawigacji** .
 3. Wybierz kartę **Sieć** i Rozpocznij przechwytywanie ruchu sieciowego:
    - W programie Chrome wybierz opcję **Zachowaj dziennik**. Nagrywanie powinno być uruchamiane automatycznie. Czerwony okrąg wskazuje na to, że ruch jest przechwytywany. Jeśli czerwony okrąg nie jest wyświetlany, wybierz czarny okrąg, aby rozpocząć.

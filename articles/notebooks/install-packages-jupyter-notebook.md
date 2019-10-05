@@ -1,34 +1,33 @@
 ---
 title: Instalowanie pakietów w notesie Jupyter na platformie Azure
-description: Zainstaluj język Python, R, jak i F# pakietów z w ramach notesu programu Jupyter, działające na platformie Azure.
+description: Jak zainstalować język Python, R i F# pakiety z poziomu notesu Jupyter działającego na platformie Azure.
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 6f089c12-128b-4dbd-96e3-1320d37eeba4
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b0881cb6dac9ec83d2126942c758508e760f9c83
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e6582bb21cb6d383e298bdf68bdb2f565147c20a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274437"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969935"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>Instalowanie pakietów z w ramach notesu
+# <a name="install-packages-from-within-a-notebook"></a>Instalowanie pakietów z poziomu notesu
 
-Wprawdzie możliwe jest skonfigurowanie [środowisko notesu na poziomie projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), warto zainstalować pakiety bezpośrednio z poziomu pojedynczych notesu.
+Mimo że można skonfigurować [środowisko dla notesu na poziomie projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), można zainstalować pakiety bezpośrednio w ramach danego notesu.
 
-Zainstalowane pakiety z notesu dotyczą tylko bieżącej sesji serwera. Instalacji pakietów nie są utrwalane, gdy serwer jest zamykany.
+Pakiety zainstalowane w notesie dotyczą tylko bieżącej sesji serwera. Instalacje pakietów nie są utrwalane po zamknięciu serwera.
 
 ## <a name="python"></a>Python
 
-Pakiety języka Python można zainstalować przy użyciu narzędzia pip lub conda przy użyciu poleceń w komórkach kodu:
+Pakiety w języku Python można instalować przy użyciu PIP lub Conda przy użyciu poleceń w komórkach kodu:
 
 ```bash
 !pip install <package_name>
@@ -36,11 +35,11 @@ Pakiety języka Python można zainstalować przy użyciu narzędzia pip lub cond
 !conda install <package_name> -y
 ```
 
-Jeśli dane wyjściowe polecenia wskazuje, że wymaganie już jest spełniony, a następnie notesów usługi Azure może obejmować pakiet domyślnie. Można także zainstalować pakiet za pośrednictwem [kroku konfiguracji środowiska projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
+Jeśli dane wyjściowe polecenia wskazują, że wymaganie jest już spełnione, Azure Notebooks może zawierać pakiet domyślnie. Pakiet może być również instalowany za pomocą [kroku konfiguracji środowiska projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
 
 ## <a name="r"></a>R
 
-Pakiety w języku R można instalować z Cran lub GitHub przy użyciu `install.packages` funkcji w komórce kodu:
+Pakiety w języku R można instalować z CRAN lub GitHub przy użyciu funkcji `install.packages` w komórce kodu:
 
 ```r
 install.packages("package_name")
@@ -56,7 +55,7 @@ install_github('<user>/<repo>')
 
 ## <a name="f"></a>F#
 
-Pakiety w F# mogą być instalowane z [nuget.org](https://www.nuget.org) przez wywołanie zależności Paket menedżera z w komórkach kodu. Najpierw załadować Menedżera Paket:
+Pakiety w F# programie można instalować z [NuGet.org](https://www.nuget.org) przez wywołanie Menedżera zależności Paket z poziomu komórek kodu. Najpierw załaduj program Paket Manager:
 
 ```fsharp
 #load "Paket.fsx"
@@ -84,4 +83,4 @@ open MathNet.Numerics
 ## <a name="next-steps"></a>Następne kroki
 
 - [Instrukcje: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
-- [Instrukcje: Prezentuj pokaz slajdów](present-jupyter-notebooks-slideshow.md)
+- [Instrukcje: prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)

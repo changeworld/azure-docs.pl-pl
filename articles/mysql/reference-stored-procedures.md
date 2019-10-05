@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL procedury składowane
-description: W tym artykule przedstawiono procedury składowane specyficzne dla Azure Database for MySQL.
+title: Procedury składowane zarządzania Azure Database for MySQL
+description: Dowiedz się, które procedury składowane w Azure Database for MySQL są przydatne, aby ułatwić Konfigurowanie replikacji danych, ustawianie strefy czasowej i zabicia zapytań.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.openlocfilehash: f01a0bf68e510133058dc0075f27cfcf6241c7a8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 34598278ac7f432c5976de86eaf5dcf477c7e81a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156178"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970335"
 ---
-# <a name="azure-database-for-mysql-stored-procedures"></a>Azure Database for MySQL procedury składowane
+# <a name="azure-database-for-mysql-management-stored-procedures"></a>Procedury składowane zarządzania Azure Database for MySQL
 
 Procedury składowane są dostępne na serwerach Azure Database for MySQL, aby ułatwić zarządzanie serwerem MySQL. Obejmuje to zarządzanie połączeniami serwera, kwerendami i konfigurowaniem replikacja typu data-in.  
 
@@ -25,11 +25,11 @@ Poniższe procedury składowane służą do konfigurowania lub usuwania replikac
 
 |**Nazwa procedury składowanej**|**Parametry wejściowe**|**Parametry wyjściowe**|**Uwaga dotycząca użycia**|
 |-----|-----|-----|-----|
-|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|ND|Aby przenieść dane z trybem SSL, Przekaż kontekst certyfikatu urzędu certyfikacji do parametru master_ssl_ca. </br><br>Aby przesłać dane bez protokołu SSL, Przekaż pusty ciąg do parametru master_ssl_ca.|
+|*MySQL. AZ _replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|ND|Aby przenieść dane z trybem SSL, Przekaż kontekst certyfikatu urzędu certyfikacji do parametru master_ssl_ca. </br><br>Aby przesłać dane bez protokołu SSL, Przekaż pusty ciąg do parametru master_ssl_ca.|
 |*MySQL. AZ _replication _start*|ND|ND|Uruchamia replikację.|
 |*MySQL. AZ _replication _stop*|ND|ND|Kończy replikację.|
-|*mysql.az_replication _remove_master*|ND|ND|Usuwa relację replikacji między serwerem głównym a repliką.|
-|*mysql.az_replication_skip_counter*|ND|ND|Pomija jeden błąd replikacji.|
+|*MySQL. AZ _replication _remove_master*|ND|ND|Usuwa relację replikacji między serwerem głównym a repliką.|
+|*MySQL. AZ _replication_skip_counter*|ND|ND|Pomija jeden błąd replikacji.|
 
 Aby skonfigurować replikacja typu data-in między wzorcem a repliką w Azure Database for MySQL, zapoznaj się z [tematem konfigurowanie replikacja typu Data-in](howto-data-in-replication.md).
 
@@ -39,9 +39,9 @@ Poniższe procedury składowane są dostępne w Azure Database for MySQL zarząd
 
 |**Nazwa procedury składowanej**|**Parametry wejściowe**|**Parametry wyjściowe**|**Uwaga dotycząca użycia**|
 |-----|-----|-----|-----|
-|*MySQL. AZ _kill*|processlist_id|ND|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) Równoważne polecenie. Nastąpi przerwanie połączenia skojarzonego z podaną processlist_id po zakończeniu instrukcji wykonywanych przez połączenie.|
-|*MySQL. AZ _kill_query*|processlist_id|ND|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) Równoważne polecenie. Zakończy instrukcję, że połączenie jest aktualnie wykonywane. Opuszcza połączenie.|
-|*MySQL. AZ _load_timezone*|ND|ND|Ładuje tabele strefy czasowej, `time_zone` aby zezwolić na ustawienie wartości nazwanych (np. "USA/Pacyfik").|
+|*MySQL. AZ _kill*|processlist_id|ND|Odpowiednik [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) polecenia. Nastąpi przerwanie połączenia skojarzonego z podaną processlist_id po zakończeniu instrukcji wykonywanych przez połączenie.|
+|*MySQL. AZ _kill_query*|processlist_id|ND|Odpowiednik [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) polecenia. Zakończy instrukcję, że połączenie jest aktualnie wykonywane. Opuszcza połączenie.|
+|*MySQL. AZ _load_timezone*|ND|ND|Ładuje tabele strefy czasowej, aby zezwolić na ustawienie wartości parametrów `time_zone` (np. "USA/Pacyfik").|
 
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się, jak skonfigurować [replikacja typu Data-in](howto-data-in-replication.md)

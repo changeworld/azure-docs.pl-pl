@@ -4,14 +4,14 @@ description: Wyświetla listę typów zasobów platformy Azure, które mogą mie
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 7/30/2019
+ms.date: 10/4/2019
 ms.author: tomfitz
-ms.openlocfilehash: eec448dcbf1c550b6b0a0ee0f17505fd6ddd3c74
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194738"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973318"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Zasoby nieograniczone do 800 wystąpień na grupę zasobów
 
@@ -20,67 +20,79 @@ Domyślnie można wdrożyć do 800 wystąpień typu zasobu w każdej grupie zaso
 W przypadku niektórych typów zasobów należy skontaktować się z pomocą techniczną, aby ograniczyć liczbę wystąpień 800. Te typy zasobów zostały wymienione w tym artykule.
 
 
-## <a name="microsoftautomation"></a>Microsoft.Automation
+## <a name="microsoftautomation"></a>Microsoft. Automation
 
 * automationAccounts
 
-## <a name="microsoftazurestack"></a>Microsoft.AzureStack
+## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
 * rejestracje
 * rejestracje/customerSubscriptions
 * rejestracje/produkty
 
-## <a name="microsoftbotservice"></a>Microsoft.BotService
+## <a name="microsoftbotservice"></a>Microsoft. BotService
 
 * botServices — skontaktuj się z pomocą techniczną, aby zwiększyć limit.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* dyski
-* obrazy
+* dysku
+* images
 * migawki
 * virtualMachines
 
-## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
+## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
+
+* containerGroups
+
+## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
 * rejestry/buildTasks
 * rejestry/buildTasks/listSourceRepositoryProperties
-* registries/buildTasks/steps
+* rejestry/buildTasks/kroki
 * rejestry/buildTasks/etapy/listBuildArguments
-* registries/eventGridFilters
+* rejestry/eventGridFilters
 * rejestry/replikacje
 * rejestry/zadania
 * rejestry/elementy webhook
 
-## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
+## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
-* serwerów
+* serwery
 
-## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
-* serwerów
+* serwery
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 * serverGroups
-* serwerów
+* serwery
 * serversv2
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
 * services
 
-## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
 * guestConfigurationAssignments
 * programy
 * softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsoftlogic"></a>Microsoft.Logic
+## <a name="microsoftlogic"></a>Microsoft. Logic
 
 * integrationAccounts
 * przebieg
+
+## <a name="microsoftnetapp"></a>Microsoft. NetApp
+
+* netAppAccounts
+* netAppAccounts/capacityPools
+* netAppAccounts/capacityPools/woluminy
+* netAppAccounts/capacityPools/woluminy/mountTargets
+* netAppAccounts/capacityPools/woluminy/migawki
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -121,26 +133,35 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 * trafficmanagerprofiles
 * virtualNetworkTaps
 
-## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
+## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
 
 * rootResources
 
-## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
+## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
 * workspaceCollections — skontaktuj się z pomocą techniczną, aby zwiększyć limit.
 
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
+## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
 * jobcollections
+
+## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
+
+* aplikacji
+* containerGroups
+* bram
+* sieci
+* wpisy tajne
+* volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * storageAccounts
 
-## <a name="microsoftweb"></a>Microsoft.Web
+## <a name="microsoftweb"></a>Microsoft. Web
 
-* apiManagementAccounts/apis
-* lokacje
+* apiManagementAccounts/interfejsy API
+* teren
 
 ## <a name="next-steps"></a>Następne kroki
 

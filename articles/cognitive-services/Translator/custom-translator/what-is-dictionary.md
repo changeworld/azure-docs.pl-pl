@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a4aac8afb7974be402ee98bb65c920133d4c118f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 36b449c4c4ca30eb658c9519ce8e870a4f1fab32
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947701"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970737"
 ---
 # <a name="what-is-a-dictionary"></a>Co to jest słownik?
 
@@ -34,12 +34,12 @@ Możesz nauczyć model przy użyciu tylko danych słownika. W tym celu zaznacz t
 >[!Note]
 >W przypadku translatora niestandardowego nie są wyrównania plików słowników, dlatego ważne jest, aby w dokumentach słownika była równa Liczba zwrotów źródłowych i docelowych, a także dokładnie wyrównane.
 
-## <a name="recommendations"></a>Mając
+## <a name="recommendations"></a>Polecane elementy
 
 - Słowniki nie stanowią zamiennika szkolenia modelu przy użyciu danych szkoleniowych. Zaleca się ich uniknięcie i umożliwienie systemowi uczenia się od danych szkoleniowych. Jednak gdy zdania lub rzeczowniki złożone muszą być renderowane jako-is, należy użyć słownika.
 - Słownik wyrazów powinien być oszczędnie używany. Należy więc pamiętać, że gdy fraza w zdaniu zostanie zastąpiona, kontekst w tym zdaniu zostanie utracony lub ograniczony do przetłumaczenia reszty zdania. Wynikiem tego jest to, że podczas gdy fraza lub wyraz w zdaniu zostanie przetłumaczy zgodnie z podanym słownikiem, ogólna jakość tłumaczenia zdania często się odnosi.
 - Słownik fraz dobrze sprawdza się w przypadku niezłożonej rzeczowników, takich jak nazwy produktów ("Microsoft SQL Server"), odpowiednie nazwy ("miasto Hamburg") lub funkcje produktu ("tabela przestawna"). Nie działa równie dobrze w przypadku czasowników lub przymiotników, ponieważ są zwykle wysoce oddzielone w źródle lub w języku docelowym. Najlepsze praktyki polegają na uniknięciu wpisów słownika zwrotów dla niczego, ale rzeczowników złożonych.
-- W przypadku korzystania z słownika, wielkie litery i interpunkcja są ważne. Wpisy słownika będą pasować tylko do wyrazów i fraz, które mają taką samą wielką literę i znaki interpunkcyjne jak wpis znaleziony w słowniku. Twoje tłumaczenia będą odzwierciedlać wielkie litery i znaki interpunkcyjne podane w stronie docelowej pliku słownika. Załóżmy na przykład, że został przeszkolony model angielski do hiszpański, przy użyciu słownika, który określił "Hello" w pliku źródłowym do tłumaczenia na "Buenos Dias" w pliku docelowym. Po zażądaniu tłumaczenia zdania zawierającego "Hello" system przeszuka najpierw słownik i znajdzie dopasowanie ("Witaj") i zwróci "Buenos Dias" w końcowym tłumaczeniu.
+- W przypadku korzystania z słownika fraz, wielkie litery i interpunkcja są ważne. Wpisy słownika dopasowują tylko wyrazy i frazy w zdaniu wejściowym, które używają dokładnie tej samej wielkości liter i znaków interpunkcyjnych, jak określono w pliku słownika źródłowego. Ponadto tłumaczenia będą odzwierciedlać wielkie litery i znaki interpunkcyjne podane w docelowym pliku słownika. Na przykład w przypadku przeszkolonego języka angielskiego do hiszpańskiego systemu, który używa słownika frazy, który określa "US" w pliku źródłowym i "EE. UU ". w pliku docelowym. Po zażądaniu tłumaczenia zdania zawierającego wyraz "US" (bez wersalików) nie pasuje do słownika. Jeśli jednak zażądasz tłumaczenia zdania zawierającego wyraz "US" (Wielka litera), będzie on pasować do słownika, a tłumaczenie będzie zawierać "EE". UU ". Należy zauważyć, że wielkie litery i znaki interpunkcyjne w tłumaczeniu mogą być inne niż określone w pliku docelowym słownika i mogą różnić się od wielkości liter i znaków interpunkcyjnych w źródle. Są one zgodne z regułami języka docelowego.
 - Jeśli słowo pojawia się więcej niż raz w pliku słownika, system zawsze będzie używać ostatniego dostarczonego wpisu. W związku z tym słownik nie powinien zawierać wielu tłumaczeń tego samego wyrazu.
 
 ## <a name="next-steps"></a>Następne kroki

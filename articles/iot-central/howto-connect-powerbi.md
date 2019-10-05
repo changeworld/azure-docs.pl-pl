@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/09/2019
+ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 897b72dd7b292492e45cdc7401fe1acc5c86ca20
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 3ce2f4304787107d0d6875333e4630dae8d7d1dd
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877452"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973767"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Wizualizowanie i analizowanie danych IoT Central platformy Azure na pulpicie nawigacyjnym Power BI
 
@@ -31,12 +31,19 @@ Użyj rozwiązania Power BI dla IoT Central platformy Azure, aby utworzyć zaawa
 
 To rozwiązanie konfiguruje potok, który pobiera dane z konta usługi Azure Blob Storage z [ciągłego eksportu danych](howto-export-data.md). Te dane są przesyłane przez program do Azure Functions, Azure Data Factory i Azure SQL Database do przetwarzania i przekształcania danych. Dane wyjściowe można wizualizować i analizować w Power BI raport, który można pobrać jako plik PBIX. Wszystkie te zasoby są tworzone w ramach subskrypcji platformy Azure, dzięki czemu można dostosować każdy składnik do swoich potrzeb.
 
+> [!Note] 
+> Power BI rozwiązanie dla platformy Azure IoT Central współpracuje z aplikacjami IoT Central, które nie obsługują Plug and Play IoT (obecnie w wersji zapoznawczej)
+
 ## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Pobierz [Power BI rozwiązanie dla platformy Azure IoT Central](https://aka.ms/iotcentralpowerbisolutiontemplate) z Microsoft AppSource.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Skonfigurowanie rozwiązania wymaga następujących czynności:
 - Dostęp do subskrypcji platformy Azure
-- Wyeksportowane dane przy użyciu [ciągłego eksportu danych](howto-export-data.md) z aplikacji IoT Central. Zalecamy włączenie pomiarów, urządzeń i strumieni szablonów urządzeń w celu maksymalnego wykorzystania pulpitu nawigacyjnego Power BI.
+- Aplikacja IoT Central, która nie obsługuje Plug and Play IoT (aplikacje w wersji zapoznawczej dzisiaj)
+- Ciągły eksport danych skonfigurowany do Blob Storage platformy Azure z poziomu aplikacji IoT Central
+    - Upewnij się, że format danych to Avro
+    - Zalecamy włączenie pomiarów, urządzeń i strumieni szablonów urządzeń w celu maksymalnego wykorzystania pulpitu nawigacyjnego Power BI.
+    - Dowiedz się [, jak skonfigurować ciągły eksport danych](howto-export-data-blob-storage.md)
 - Power BI Desktop (Najnowsza wersja)
 - Power BI Pro (Jeśli chcesz udostępnić pulpit nawigacyjny innym osobom)
 
@@ -59,7 +66,7 @@ Do wszystkich utworzonych zasobów można uzyskać dostęp w Azure Portal. Wszys
 
 Szczegóły poszczególnych zasobów i sposobu ich użycia opisano poniżej.
 
-### <a name="azure-functions"></a>Azure Functions
+### <a name="azure-functions"></a>Stan usługi Funkcje Azure
 Aplikacja funkcji platformy Azure jest wyzwalana za każdym razem, gdy nowy plik zostanie zapisany w magazynie obiektów BLOB. Funkcje wyodrębniają pola w ramach każdego pomiaru, urządzeń i pliku szablonów urządzeń i wypełniają kilka pośrednich tabel SQL, które mają być używane przez Azure Data Factory.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
@@ -74,7 +81,7 @@ Te tabele są tworzone automatycznie w celu wypełnienia raportów domyślnych. 
 |[Analiza]. Komunikaty|
 |[etap]. Pomiarów|
 |[Analiza]. Aœciwoœci|
-|[analytics].[PropertyDefinitions]|
+|[Analiza]. [PropertyDefinitions]|
 |[Analiza]. [MeasurementDefinitions]|
 |[Analiza]. Urządzeniem|
 |[Analiza]. [DeviceTemplates]|
@@ -86,7 +93,7 @@ Te tabele są tworzone automatycznie w celu wypełnienia raportów domyślnych. 
 Poniżej przedstawiono oszacowanie kosztów platformy Azure (Azure Function, Data Factory, Azure SQL). Wszystkie ceny są podane w USD. Należy pamiętać, że ceny różnią się w zależności od regionu, więc zawsze należy szukać najnowszych cen poszczególnych usług w celu uzyskania rzeczywistych cen.
 Następujące wartości domyślne są ustawiane w szablonie (można je zmodyfikować po skonfigurowaniu):
 
-- Azure Functions: Plan App Service S1, $74.40 miesięcznie
+- Azure Functions: App Service plan S1, $74.40 miesięcznie
 - Azure SQL S1, ~ $30 miesięcznie
 
 Zachęcamy do zapoznania się z różnymi opcjami cenowymi i dostosowaniem ich do Twoich potrzeb.

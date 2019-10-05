@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: d0b3c6124af30cb9ad870ad5f2600495ab872698
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 4eda37fab14a45a0bb5159beaabb9522046d1580
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983651"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969639"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Adresy IP używane przez Application Insights i Log Analytics
 Usługa [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) używa wielu adresów IP. Może być konieczne poznanie tych adresów, jeśli monitorowana aplikacja jest hostowana za zaporą.
@@ -28,14 +28,14 @@ Usługa [Azure Application Insights](../../azure-monitor/app/app-insights-overvi
 > 
 
 > [!TIP]
-> Zasubskrybuj Tę stronę jako źródło danych RSS, dodając https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom do ulubionego czytnika RSS/Atom, aby otrzymywać powiadomienia o najnowszych zmianach.
+> Zasubskrybuj Tę stronę jako źródło danych RSS, dodając https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom do ulubionego czytnika RSS/ATOM, aby otrzymywać powiadomienia o najnowszych zmianach.
 > 
 > 
 
 ## <a name="outgoing-ports"></a>Porty wychodzące
 Należy otworzyć niektóre porty wychodzące w zaporze serwera, aby zezwolić Application Insights SDK i/lub monitor stanu na wysyłanie danych do portalu:
 
-| Cel | URL | IP | Porty |
+| Przeznaczenie | Adres URL | IP | Porty |
 | --- | --- | --- | --- |
 | Telemetria |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.162.117<br/>40.73.171.20<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248 | 443 |
 | Live Metrics Stream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
@@ -43,7 +43,7 @@ Należy otworzyć niektóre porty wychodzące w zaporze serwera, aby zezwolić A
 ## <a name="status-monitor"></a>Monitor stanu
 Konfiguracja monitor stanu — wymagana tylko w przypadku wprowadzania zmian.
 
-| Cel | URL | IP | Porty |
+| Przeznaczenie | Adres URL | IP | Porty |
 | --- | --- | --- | --- |
 | Konfigurowanie |`management.core.windows.net` | |`443` |
 | Konfigurowanie |`management.azure.com` | |`443` |
@@ -52,7 +52,7 @@ Konfiguracja monitor stanu — wymagana tylko w przypadku wprowadzania zmian.
 | Konfigurowanie |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Konfigurowanie |`auth.gfx.ms` | |`443` |
 | Konfigurowanie |`login.live.com` | |`443` |
-| Instalacja | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`,`dc.services.vsallin.net` | |`443` |
+| Instalacja | `globalcdn.nuget.org`, `packages.nuget.org`, `api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>Testy dostępności
 Jest to lista adresów, z których są uruchamiane [testy sieci Web dostępności](../../azure-monitor/app/monitor-web-app-availability.md) . Jeśli chcesz uruchomić testy sieci Web w aplikacji, ale serwer sieci Web jest ograniczony do obsługi określonych klientów, musisz zezwolić na ruch przychodzący z naszych serwerów testowych dostępności.
@@ -168,73 +168,73 @@ East US
 ```  
 
 ## <a name="application-insights-api"></a>Interfejs API Application Insights
-| Cel | Identyfikator URI | IP | Porty |
+| Przeznaczenie | ADRESU | IP | Porty |
 | --- | --- | --- | --- |
-| interfejs API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
-| Dokumentacja interfejsu API |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
-| Rozszerzenie adnotacji potoku platformy Azure |aigs1.aisvc.visualstudio.com |dynamiczne|443 |
+| API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80 443 |
+| Dokumentacja interfejsu API |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80 443 |
+| Rozszerzenie adnotacji potoku platformy Azure |aigs1.aisvc.visualstudio.com |dynamicznych|443 |
 
 ## <a name="log-analytics-api"></a>Interfejs API Log Analytics
 
-| Cel | Identyfikator URI | IP | Porty |
+| Przeznaczenie | ADRESU | IP | Porty |
 | --- | --- | --- | --- |
-| interfejs API |api.loganalytics.io<br/>*.api.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
-| Dokumentacja interfejsu API |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
+| API |api.loganalytics.io<br/>*. api.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80 443 |
+| Dokumentacja interfejsu API |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80 443 |
 
 ## <a name="application-insights-analytics"></a>Analiza Application Insights
 
-| Cel | Identyfikator URI | IP | Porty |
+| Przeznaczenie | ADRESU | IP | Porty |
 | --- | --- | --- | --- |
-| Portal analizy | analytics.applicationinsights.io | dynamiczne | 80,443 |
-| CDN | applicationanalytics.azureedge.net | dynamiczne | 80,443 |
-| Usługa Media CDN | applicationanalyticsmedia.azureedge.net | dynamiczne | 80,443 |
+| Portal analizy | analytics.applicationinsights.io | dynamicznych | 80 443 |
+| CDN | applicationanalytics.azureedge.net | dynamicznych | 80 443 |
+| Usługa Media CDN | applicationanalyticsmedia.azureedge.net | dynamicznych | 80 443 |
 
 Uwaga: *. applicationinsights.io domena jest własnością zespołu Application Insights.
 
 ## <a name="log-analytics-portal"></a>Portal Log Analytics
 
-| Cel | Identyfikator URI | IP | Porty |
+| Przeznaczenie | ADRESU | IP | Porty |
 | --- | --- | --- | --- |
-| Portal | portal.loganalytics.io | dynamiczne | 80,443 |
-| CDN | applicationanalytics.azureedge.net | dynamiczne | 80,443 |
+| Portal | portal.loganalytics.io | dynamicznych | 80 443 |
+| CDN | applicationanalytics.azureedge.net | dynamicznych | 80 443 |
 
 Uwaga: domena loganalytics.io jest własnością zespołu Log Analytics.
 
 ## <a name="application-insights-azure-portal-extension"></a>Rozszerzenie Azure Portal Application Insights
 
-| Cel | Identyfikator URI | IP | Porty |
+| Przeznaczenie | ADRESU | IP | Porty |
 | --- | --- | --- | --- |
-| Application Insights rozszerzenie | stamp2.app.insightsportal.visualstudio.com | dynamiczne | 80,443 |
-| Application Insights rozszerzenia CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | dynamiczne | 80,443 |
+| Application Insights rozszerzenie | stamp2.app.insightsportal.visualstudio.com | dynamicznych | 80 443 |
+| Application Insights rozszerzenia CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | dynamicznych | 80 443 |
 
 ## <a name="application-insights-sdks"></a>Zestawy SDK Application Insights
 
-| Cel | Identyfikator URI | IP | Porty |
+| Przeznaczenie | ADRESU | IP | Porty |
 | --- | --- | --- | --- |
-| Application Insights JS SDK sieci CDN | az416426.vo.msecnd.net | dynamiczne | 80,443 |
-| Application Insights Java SDK | aijavasdk.blob.core.windows.net | dynamiczne | 80,443 |
+| Application Insights JS SDK sieci CDN | az416426.vo.msecnd.net | dynamicznych | 80 443 |
+| Application Insights Java SDK | aijavasdk.blob.core.windows.net | dynamicznych | 80 443 |
 
 ## <a name="alert-webhooks"></a>Elementy webhook alertu
 
-| Cel | IP | Porty
+| Przeznaczenie | IP | Porty
 | --- | --- | --- |
-| Generowanie alertów | 23.96.11.4 | 443 |
+| Alerty | 23.96.11.4 | 443 |
 
 ## <a name="profiler"></a>Profiler
 
-| Cel | Identyfikator URI | IP | Porty |
+| Przeznaczenie | ADRESU | IP | Porty |
 | --- | --- | --- | --- |
-| Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73 | 443
-| Portal | gateway.azureserviceprofiler.net | dynamiczne | 443
-| Magazyn | *.core.windows.net | dynamiczne | 443
+| Agent | agent.azureserviceprofiler.net<br/>*. agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
+| Portal | gateway.azureserviceprofiler.net | dynamicznych | 443
+| Usługa Storage | *. core.windows.net | dynamicznych | 443
 
-## <a name="snapshot-debugger"></a>Rozszerzenie Snapshot Debugger
+## <a name="snapshot-debugger"></a>Debuger migawek
 
 > [!NOTE]
 > Profiler i Snapshot Debugger współużytkują ten sam zestaw adresów IP.
 
-| Cel | Identyfikator URI | IP | Porty |
+| Przeznaczenie | ADRESU | IP | Porty |
 | --- | --- | --- | --- |
-| Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73 | 443
-| Portal | ppe.gateway.azureserviceprofiler.net | dynamiczne | 443
-| Magazyn | *.core.windows.net | dynamiczne | 443
+| Agent | ppe.azureserviceprofiler.net<br/>*. ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
+| Portal | ppe.gateway.azureserviceprofiler.net | dynamicznych | 443
+| Usługa Storage | *. core.windows.net | dynamicznych | 443
