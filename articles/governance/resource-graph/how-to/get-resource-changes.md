@@ -1,52 +1,51 @@
 ---
-title: Uzyskiwanie zmian zasobów
-description: Dowiedz się, jak można znaleźć, kiedy zasób został zmieniony i uzyskać listę właściwości, które zmieniane.
+title: Pobierz zmiany zasobów
+description: Dowiedz się, jak znaleźć, kiedy zasób został zmieniony i uzyskać listę właściwości, które uległy zmianie.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: b6ef57a3f39c82be30d92aef72c1bbe03b653768
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2027f56d44be14895a40550d78a79d9e9dda9d97
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236510"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980336"
 ---
-# <a name="get-resource-changes"></a>Uzyskiwanie zmian zasobów
+# <a name="get-resource-changes"></a>Pobierz zmiany zasobów
 
-Zasoby Pobierz zmienić za pomocą kurs limitem dziennego użycia, ponownej konfiguracji i nawet ponownego wdrażania.
-Zmiany mogą pochodzić z osoba lub zautomatyzowanego procesu. Większość zmian jest zgodne z projektem, ale czasami nie jest. Ostatnich 14 dni historii zmian wykres zasobów platformy Azure umożliwiają:
+Zasoby są zmieniane w trakcie codziennego użytkowania, ponownej konfiguracji i nawet ponownego wdrożenia.
+Zmiany mogą pochodzić od osoby lub przez proces zautomatyzowany. Większość zmian jest zaprojektowana, ale czasami nie jest. W przypadku historii zmian z ostatnich 14 dni usługa Azure Resource Graph umożliwia:
 
-- Znajdowanie wykrytych zmian we właściwości usługi Azure Resource Manager
-- Sprawdzanie, które właściwości uległy zmianie w wyniku zdarzenia zmiany
+- Znajdź, kiedy zostały wykryte zmiany we właściwości Azure Resource Manager.
+- Zobacz, jakie właściwości zostały zmienione w ramach tego zdarzenia zmiany.
 
-Wykrywanie zmian i szczegóły są cenne dla następujących przykładowe scenariusze:
+Wykrywanie zmian i szczegółowe informacje są przydatne dla następujących przykładowych scenariuszy:
 
-- Podczas zarządzania zdarzeniami w celu zrozumienia _potencjalnie_ powiązanych zmian. Wyszukać zdarzenia zmiany w określonym przedziale czasu i oceń szczegóły zmian.
-- Utrzymywanie bazą zarządzania konfiguracją, znane jako CMDB aktualne. Zamiast odświeżanie wszystkich zasobów i ich zestawy pełną właściwość z częstotliwością, zaplanowane, pobierać tylko co się zmieniło.
-- Zrozumienie, jakie inne właściwości mogły zostać zmienione podczas zasobem zmieniono stan zgodności. Ocena te dodatkowe właściwości może zapewnić wgląd w innych właściwości, które może być konieczne, można zarządzać za pomocą usługi Azure Policy definition.
+- Podczas zarządzania zdarzeniami w celu zrozumienia _potencjalnie_ powiązanych zmian. Wykonaj zapytanie o zdarzenia zmiany w określonym oknie czasu i Oceń szczegóły zmiany.
+- Przechowywanie bazy danych zarządzania konfiguracją, znanej jako CMDB, na bieżąco. Zamiast odświeżania wszystkich zasobów i ich pełnych zestawów właściwości zgodnie z zaplanowaną częstotliwością, należy uzyskać tylko te zmiany.
+- Informacje o innych właściwościach, które mogły zostać zmienione w przypadku zmiany stanu zgodności zasobu. Ocena tych dodatkowych właściwości może zapewnić wgląd w inne właściwości, które mogą być potrzebne do zarządzania za pośrednictwem definicji Azure Policy.
 
-W tym artykule pokazano, jak do zebrania tych informacji za pośrednictwem zestawu SDK wykres zasobów. Aby wyświetlić te informacje w witrynie Azure portal, zobacz usługi Azure Policy [historię zmian](../../policy/how-to/determine-non-compliance.md#change-history-preview) lub dziennik aktywności platformy Azure [historię zmian](../../../azure-monitor/platform/activity-log-view.md#azure-portal).
+W tym artykule pokazano, jak zbierać te informacje za poorednictwem zestawu SDK grafu zasobów. Aby wyświetlić te informacje w Azure Portal, zobacz [historię zmian](../../policy/how-to/determine-non-compliance.md#change-history-preview) Azure Policy lub [historię zmian](../../../azure-monitor/platform/activity-log-view.md#azure-portal)dziennika aktywności platformy Azure.
 
 > [!NOTE]
-> Szczegóły zmiany w wykresie zasobów są przeznaczone dla właściwości Resource Manager. Śledzenie zmian na maszynie wirtualnej, dla usługi Azure Automation [śledzenie zmian](../../../automation/automation-change-tracking.md) lub usługi Azure Policy [Konfiguracja gościa dla maszyn wirtualnych](../../policy/concepts/guest-configuration.md).
+> Szczegóły zmiany w grafie zasobów są przeznaczone dla Menedżer zasobów właściwości. Aby śledzić zmiany wewnątrz maszyny wirtualnej, zobacz Azure Automation [śledzenie zmian](../../../automation/automation-change-tracking.md) lub [konfiguracja gościa Azure Policy dla maszyn wirtualnych](../../policy/concepts/guest-configuration.md).
 
 > [!IMPORTANT]
-> Historia zmian w wykresie zasobów platformy Azure jest w publicznej wersji zapoznawczej.
+> Historia zmian w usłudze Azure Resource Graph jest w publicznej wersji zapoznawczej.
 
-## <a name="find-when-changes-were-detected"></a>Dowiedz się, gdy wykryto zmiany
+## <a name="find-when-changes-were-detected"></a>Znajdź, kiedy zostały wykryte zmiany
 
-Pierwszym krokiem podczas wyświetlania, co się zmieniło w zasobie jest można znaleźć zdarzenia zmiany powiązanych z tym zasobem w przedziale czasu. W tym kroku odbywa się za pośrednictwem **resourceChanges** punktu końcowego REST.
+Pierwszym krokiem w przypadku wyświetlenia zmiany w zasobie jest znalezienie zdarzeń zmiany związanych z tym zasobem w oknie czasu. Ten krok jest realizowany za pomocą punktu końcowego REST **resourceChanges** .
 
-**ResourceChanges** punktu końcowego wymaga dwóch parametrów w treści żądania:
+Punkt końcowy **resourceChanges** wymaga dwóch parametrów w treści żądania:
 
-- **resourceId**: Zasób platformy Azure do wyszukania zmian.
-- **Interwał**: Właściwość o _start_ i _zakończenia_ daty, kiedy mają być sprawdzane dla zdarzenia zmiany za pomocą **Zulu strefy czasowej (Z)** .
+- **ResourceID**: zasób platformy Azure, w którym mają zostać wyszukane zmiany.
+- **Interwał**: Właściwość z datą _początkową_ i _końcową_ dla sytuacji, w której ma zostać wyszukane zdarzenie zmiany przy użyciu **strefy czasowej Zulu (Z)** .
 
-Przykład treść żądania:
+Przykład treści żądania:
 
 ```json
 {
@@ -58,13 +57,13 @@ Przykład treść żądania:
 }
 ```
 
-Za pomocą powyższych treści żądania, identyfikator URI interfejsu API REST dla **resourceChanges** jest:
+W przypadku powyższej treści żądania identyfikator URI interfejsu API REST dla **resourceChanges** jest:
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChanges?api-version=2018-09-01-preview
 ```
 
-Odpowiedź wygląda następująco:
+Odpowiedź wygląda podobnie do tego przykładu:
 
 ```json
 {
@@ -90,19 +89,19 @@ Odpowiedź wygląda następująco:
 }
 ```
 
-Każdej wykrytej zdarzenia zmiany dla **resourceId** ma **changeId** unikatowy dla tego zasobu. Gdy **changeId** parametry mogą czasami zawierać inne właściwości, tylko ma musi być unikatowa. Rekord modyfikacji obejmuje czas, przed i po tym wykonano migawek.
-Zdarzenia zmiany wystąpił w pewnym momencie w tym oknie czasu.
+Każde wykryte zdarzenie zmiany dla **ResourceID** ma element **changeId** , który jest unikatowy dla tego zasobu. Ciąg **changeId** może czasami zawierać inne właściwości, dlatego jest tylko unikatowy. Rekord zmiany obejmuje czasy wykonania migawek przed i po.
+Zdarzenie zmiany wystąpiło w pewnym momencie w tym oknie.
 
-## <a name="see-what-properties-changed"></a>Zobacz, co zmieniło właściwości
+## <a name="see-what-properties-changed"></a>Zobacz, jakie właściwości zostały zmienione
 
-Za pomocą **changeId** z **resourceChanges** punktu końcowego, **resourceChangeDetails** punktu końcowego REST jest następnie używany do pobierania szczegółowych zdarzenia zmiany.
+Za pomocą **changeId** z punktu końcowego **resourceChanges** , punkt końcowy REST **resourceChangeDetails** jest następnie używany do uzyskiwania określonych szczegółowych zdarzeń zmiany.
 
-**ResourceChangeDetails** punktu końcowego wymaga dwóch parametrów w treści żądania:
+Punkt końcowy **resourceChangeDetails** wymaga dwóch parametrów w treści żądania:
 
-- **resourceId**: Zasób platformy Azure do wyszukania zmian.
-- **changeId**: Zdarzenie zmiany unikatowy dla **resourceId** zebrane z **resourceChanges**.
+- **ResourceID**: zasób platformy Azure, w którym mają zostać wyszukane zmiany.
+- **changeId**: unikatowe zdarzenie zmiany dla elementu **ResourceID** zebrane z **resourceChanges**.
 
-Przykład treść żądania:
+Przykład treści żądania:
 
 ```json
 {
@@ -111,13 +110,13 @@ Przykład treść żądania:
 }
 ```
 
-Za pomocą powyższych treści żądania, identyfikator URI interfejsu API REST dla **resourceChangeDetails** jest:
+W przypadku powyższej treści żądania identyfikator URI interfejsu API REST dla **resourceChangeDetails** jest:
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChangeDetails?api-version=2018-09-01-preview
 ```
 
-Odpowiedź wygląda następująco:
+Odpowiedź wygląda podobnie do tego przykładu:
 
 ```json
 {
@@ -219,12 +218,12 @@ Odpowiedź wygląda następująco:
 }
 ```
 
-**beforeSnapshot** i **afterSnapshot** Nadaj każdej czasu migawki i właściwości w tym czasie. Zmiana wystąpiło w pewnym momencie między te migawki. Patrząc w powyższym przykładzie, widać, że została zmieniona właściwość **supportsHttpsTrafficOnly**.
+**beforeSnapshot** i **afterSnapshot** każdy podaje czas trwania migawki i właściwości w tym czasie. Zmiana miała miejsce w pewnym momencie między tymi migawkami. W powyższym przykładzie widać, że właściwość, która została zmieniona, została **supportsHttpsTrafficOnly**.
 
-Aby programowo należy porównać wyniki, porównaj **zawartości** część każdej migawki w celu ustalenia różnic. Jeśli porównasz migawkę całego **sygnatura czasowa** zawsze jest wyświetlany jako różnica pomimo jest oczekiwany.
+Aby porównać wyniki programowo, należy porównać część **zawartości** każdej migawki, aby określić różnicę. W przypadku porównania całej migawki **sygnatura czasowa** zawsze będzie widoczna jako różnica, mimo że jest to oczekiwane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz język używany w [początkowego zapytania](../samples/starter.md).
-- Zobacz zaawansowane używa w [zaawansowanych zapytań](../samples/advanced.md).
-- Dowiedz się, jak [zapoznaj się z zasobami](../concepts/explore-resources.md).
+- Zobacz język używany w [zapytaniach początkowych](../samples/starter.md).
+- Zobacz zaawansowane zastosowania w [zaawansowanych zapytaniach](../samples/advanced.md).
+- Dowiedz się, jak [eksplorować zasoby](../concepts/explore-resources.md).

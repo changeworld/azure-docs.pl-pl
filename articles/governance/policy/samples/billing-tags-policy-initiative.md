@@ -1,22 +1,21 @@
 ---
-title: Przykład — inicjatywa zasad tagów rozliczeń
-description: Ta przykładowa definicja zasad wymaga określonych wartości tagów dotyczących centrum kosztu i nazwy produktu.
+title: Przykład — inicjatywa dotycząca zasad dotyczących rozliczeń
+description: Ten zestaw przykładowych definicji zasad wymaga określonych wartości tagów centrum kosztu i nazwy produktu.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 5b084bd5a1b34dc2ce8ac8abb2a4af03a22262d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f2190b5759c53d645c1d0150004271ba04669c94
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787342"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981401"
 ---
-# <a name="sample---billing-tags-policy-initiative"></a>Przykład — inicjatywa zasad tagów rozliczeń
+# <a name="sample---billing-tags-policy-initiative"></a>Przykład — inicjatywa dotycząca zasad dotyczących rozliczeń
 
-Ten zestaw zasad wymaga określonych wartości tagów centrum kosztu i nazwy produktu. Przy użyciu wbudowanych zasad określa wymagane tagi i wymusza ich stosowanie. Wymagane wartości tagów są określane przez Ciebie.
+Ten zestaw zasad wymaga określonych wartości tagów centrum kosztu i nazwy produktu. Używa wbudowanych zasad, aby zastosować i wymusić wymagane Tagi. Należy określić wymagane wartości dla tagów.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,7 +23,7 @@ Ten zestaw zasad wymaga określonych wartości tagów centrum kosztu i nazwy pro
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.json "Billing Tags Policy Initiative")]
 
-Możesz wdrożyć ten szablon [PowerShell](#deploy-with-powershell).
+Ten szablon można wdrożyć przy użyciu [programu PowerShell](#deploy-with-powershell).
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -39,7 +38,7 @@ $policyset= New-AzPolicySetDefinition -Name "multiple-billing-tags" -DisplayName
 New-AzPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentname> -Scope <scope>  -costCenterValue <required value for Cost Center tag> -productNameValue <required value for product Name tag>
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -49,7 +48,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="apply-tags-to-existing-resources"></a>Stosowanie tagów do istniejących zasobów
 
-Po przypisaniu zasad możesz uruchomić aktualizację wszystkich istniejących zasobów, aby wymusić stosowanie dodanych zasad tagów. Poniższy skrypt zachowuje wszelkie wcześniej istniejące tagi zasobów:
+Po przypisaniu zasad można wyzwolić aktualizację dla wszystkich istniejących zasobów, aby wymusić, że zostały dodane zasady tagu. Poniższy skrypt zachowuje wszystkie inne Tagi, które istniały w zasobach:
 
 ```azurepowershell-interactive
 $resources = Get-AzResource -ResourceGroupName 'ExampleGroup'
@@ -64,6 +63,6 @@ foreach ($r in $resources) {
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)
+- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 14e957986df7a114b8c865ee82e2ac447683dc2c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257188"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978222"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Rozwiązywanie problemów z błędami przy użyciu planów platformy Azure
 
@@ -34,7 +33,7 @@ Często przyczyną błędu może być artefakt, a nie plan jako całość. Jeśl
 
 ## <a name="general-errors"></a>Błędy ogólne
 
-### <a name="policy-violation"></a>Scenariusz Naruszenie zasad
+### <a name="policy-violation"></a>Scenariusz: naruszenie zasad
 
 #### <a name="issue"></a>Problem
 
@@ -47,11 +46,11 @@ Zasady mogą powodować konflikt z wdrożeniem z kilku powodów:
 - Tworzony zasób jest ograniczony przez zasady (zazwyczaj ograniczenia jednostki SKU lub lokalizacji)
 - Wdrożenie jest ustawieniem pól skonfigurowanych za pomocą zasad (wspólne ze znacznikami)
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Zmień plan, aby nie powodował konfliktu z zasadami w szczegółach błędu. Jeśli ta zmiana nie jest możliwa, alternatywna opcja polega na tym, że zakres przypisania zasad został zmieniony, w związku z czym plan nie jest już w konflikcie z zasadami.
 
-### <a name="escape-function-parameter"></a>Scenariusz Parametr strategii jest funkcją
+### <a name="escape-function-parameter"></a>Scenariusz: parametr strategii jest funkcją
 
 #### <a name="issue"></a>Problem
 
@@ -59,11 +58,11 @@ Parametry planu, które są funkcjami są przetwarzane przed przekazaniem do art
 
 #### <a name="cause"></a>Przyczyna
 
-Przekazywanie parametru planu, który używa funkcji, `[resourceGroup().tags.myTag]`na przykład, do artefaktu, powoduje przetworzony wynik funkcji ustawionej dla artefaktu zamiast funkcji dynamicznej.
+Przekazywanie parametru planu, który używa funkcji, takiej jak `[resourceGroup().tags.myTag]`, do artefaktu skutkuje przetworzonym wynikiem funkcji ustawionej dla artefaktu zamiast funkcji dynamicznej.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
-Aby przekazać funkcję przez parametr, należy wypróbować cały ciąg w `[` taki sposób, aby parametr strategii `[[resourceGroup().tags.myTag]`wyglądał następująco. Znak ucieczki powoduje, że plany traktują wartość jako ciąg podczas przetwarzania planu. Plany następnie umieszczają funkcję na artefaktie, umożliwiając jej dynamiczne działanie zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [składnia i wyrażenia w szablonach Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
+Aby przekazać funkcję przez parametr, należy wypróbować cały ciąg z `[`, aby parametr strategii wyglądał jak `[[resourceGroup().tags.myTag]`. Znak ucieczki powoduje, że plany traktują wartość jako ciąg podczas przetwarzania planu. Plany następnie umieszczają funkcję na artefaktie, umożliwiając jej dynamiczne działanie zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [składnia i wyrażenia w szablonach Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

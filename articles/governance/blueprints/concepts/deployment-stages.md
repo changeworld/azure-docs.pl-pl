@@ -1,67 +1,66 @@
 ---
-title: Etapy wdrażania strategii
-description: Dowiedz się, jak usługi planu platformy Azure przechodzi przez podczas wdrażania.
+title: Etapy wdrożenia planu
+description: Zapoznaj się z instrukcjami Azure Blueprint usług, które przechodzą przez proces wdrażania.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: d7000813b51fb9c9aae9a21cbded3ae0028e83f4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4645edde5163f1c8bca787416f5465e5a8f2d355
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684696"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978536"
 ---
-# <a name="stages-of-a-blueprint-deployment"></a>Etapy wdrażania strategii
+# <a name="stages-of-a-blueprint-deployment"></a>Etapy wdrożenia planu
 
-Po wdrożeniu planu pobiera szereg działań jest zajęta przez usługę Azure schematy wdrażać zasoby zdefiniowane w planie. Ten artykuł zawiera szczegółowe informacje o każdym kroku obejmuje.
+Gdy plan zostanie wdrożony, do wdrożenia zasobów zdefiniowanych w planie jest wykonywana seria akcji podejmowana przez usługę plany platformy Azure. Ten artykuł zawiera szczegółowe informacje o tym, co obejmuje każdy krok.
 
-Plan wdrożenia jest wyzwalany przez przypisanie planu do subskrypcji lub [aktualizowanie istniejącego przypisania](../how-to/update-existing-assignments.md). Podczas wdrażania schematy przyjmuje następujące ogólne kroki:
+Wdrożenie planu jest wyzwalane przez przypisanie planu do subskrypcji lub [zaktualizowanie istniejącego przypisania](../how-to/update-existing-assignments.md). Podczas wdrażania plany zajmują następujące czynności wysokiego poziomu:
 
 > [!div class="checklist"]
-> - Schematy udzielono praw właściciela
-> - Tworzony jest obiekt przypisanie planu
-> - Opcjonalne — plany tworzy **przypisany systemowo** tożsamości zarządzanej
-> - Tożsamość zarządzana wdraża artefakty planu
-> - Planu usługi i **przypisany systemowo** tożsamości zarządzanej prawami zostaną odwołane
+> - Plany przyznane praw właściciela
+> - Tworzony jest obiekt przypisania strategii
+> - Opcjonalne-plany tworzą tożsamość zarządzaną **przypisaną przez system**
+> - Tożsamość zarządzana wdraża artefakty strategii
+> - Uprawnienia do usługi strategii i zarządzanej tożsamości **przypisane do systemu** są odwoływane
 
-## <a name="blueprints-granted-owner-rights"></a>Schematy udzielono praw właściciela
+## <a name="blueprints-granted-owner-rights"></a>Plany przyznane praw właściciela
 
-Jednostki usługi Azure plany otrzymuje uprawnienia właściciela do przypisanych subskrypcji lub subskrypcji. Udzielone rola umożliwia schematy do tworzenia i późniejszego wycofania [przypisany systemowo tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md).
+Nazwa główna usługi planów platformy Azure otrzymuje prawa właściciela do przypisanej subskrypcji lub subskrypcji. Przyznana rola pozwala na tworzenie i późniejsze odwoływanie się do [tożsamości zarządzanej przypisanej do systemu](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-Prawa są udzielane automatycznie Jeśli przypisanie odbywa się za pośrednictwem portalu. Jednak jeśli przypisanie odbywa się za pośrednictwem interfejsu API REST, udzielanie uprawnień musi być z oddzielny interfejs API wywołanie. Identyfikator AppId planu platformy Azure jest `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ale nazwa główna usługi jest zależna od dzierżawcy. Użyj [interfejsu API usługi Azure Active Directory Graph](../../../active-directory/develop/active-directory-graph-api.md) i punkt końcowy REST [servicePrincipals](/graph/api/resources/serviceprincipal) można pobrać nazwy głównej usługi. Następnie przyznać plany usługi Azure _właściciela_ roli za pośrednictwem [Portal](../../../role-based-access-control/role-assignments-portal.md), [wiersza polecenia platformy Azure](../../../role-based-access-control/role-assignments-cli.md), [programu Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST Interfejs API](../../../role-based-access-control/role-assignments-rest.md), lub [szablonu usługi Resource Manager](../../../role-based-access-control/role-assignments-template.md).
+Prawa są przyznawane automatycznie, jeśli przypisanie odbywa się za pomocą portalu. Jednak jeśli przypisanie odbywa się za pomocą interfejsu API REST, przyznanie praw musi zostać wykonane przy użyciu oddzielnego wywołania interfejsu API. Identyfikator AppId Azure Blueprint jest `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ale jednostka usługi różni się w zależności od dzierżawy. Aby uzyskać nazwę główną usługi, użyj [Azure Active Directory interfejs API programu Graph](../../../active-directory/develop/active-directory-graph-api.md) i [serviceprincipals](/graph/api/resources/serviceprincipal) punktu końcowego. Następnie należy przydzielić roli _właściciela_ na platformę Azure za pomocą [portalu](../../../role-based-access-control/role-assignments-portal.md), [interfejsu](../../../role-based-access-control/role-assignments-rest.md) [wiersza polecenia platformy Azure](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)lub [szablonu Menedżer zasobów](../../../role-based-access-control/role-assignments-template.md).
 
-Plany usługi nie bezpośrednio wdrażania zasobów.
+Usługa plany nie wdraża bezpośrednio zasobów.
 
-## <a name="the-blueprint-assignment-object-is-created"></a>Tworzony jest obiekt przypisanie planu
+## <a name="the-blueprint-assignment-object-is-created"></a>Tworzony jest obiekt przypisania strategii
 
-Przypisuje planu subskrypcji użytkownika, grupy lub jednostki usługi. Obiekt przypisania nie istnieje na poziomie subskrypcji, której przypisano planu. Zasoby utworzone w ramach wdrożenia nie są wykonywane w kontekście wdrażanie jednostki.
+Użytkownik, Grupa lub jednostka usługi przypisuje plan do subskrypcji. Obiekt przypisania istnieje na poziomie subskrypcji, do którego przypisano plan. Zasoby utworzone przez wdrożenie nie są wykonywane w kontekście wdrożenia jednostki.
 
-Podczas tworzenia przypisanie planu, typ [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md) jest zaznaczone. Wartość domyślna to **przypisany systemowo** tożsamości zarządzanej. A **użytkownik przypisany** można wybrać tożsamość zarządzaną. Korzystając z **użytkownik przypisany** zarządzanych tożsamości, musi być zdefiniowane i uprawnień, przed utworzeniem przypisanie planu.
+Podczas tworzenia przypisania planu jest wybierany typ [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md) . Wartością domyślną jest tożsamość zarządzana **przypisana przez system** . Można wybrać tożsamość zarządzaną **przypisaną przez użytkownika** . W przypadku korzystania z tożsamości zarządzanej **przypisanej przez użytkownika** przed utworzeniem przypisania strategii należy zdefiniować i przyznać uprawnienia.
 
-## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Opcjonalne — plany tworzy przypisany systemowo tożsamości zarządzanej
+## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Opcjonalne-plany tworzą tożsamość zarządzaną przypisaną przez system
 
-Gdy [przypisany systemowo tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md) wybrano podczas przypisywania, schematy tworzy tożsamość i przydziela tożsamość zarządzaną [właściciela](../../../role-based-access-control/built-in-roles.md#owner) roli. Jeśli [uaktualnienia istniejącego przypisania](../how-to/update-existing-assignments.md), schematy korzysta z utworzonej wcześniej tożsamości zarządzanej.
+W przypadku wybrania [tożsamości zarządzanej przypisanej do systemu](../../../active-directory/managed-identities-azure-resources/overview.md) podczas przypisywania program planuje tożsamość i przyznaje zarządzanej tożsamości rolę [właściciela](../../../role-based-access-control/built-in-roles.md#owner) . Jeśli [istniejące przypisanie zostanie uaktualnione](../how-to/update-existing-assignments.md), plany korzystają z wcześniej utworzonej tożsamości zarządzanej.
 
-Tożsamość zarządzana związane z przypisanie planu służy do wdrażania lub ponownego wdrażania zasoby zdefiniowane w planie. Ten projekt umożliwia uniknięcie przypadkowo od wzajemnie zakłócać przypisania.
-Ten projekt obsługuje również [blokowania zasobów](./resource-locking.md) funkcji poprzez kontrolowanie zabezpieczeń wszystkich wdrożonych zasobów z planu.
+Zarządzana tożsamość związana z przypisaniem strategii służy do wdrażania lub ponownego wdrażania zasobów zdefiniowanych w planie. Ten projekt pozwala uniknąć nieumyślnego zakłócania przypisań.
+Ten projekt obsługuje również funkcję [blokowania zasobów](./resource-locking.md) , kontrolując zabezpieczenia poszczególnych wdrożonych zasobów z planu.
 
-## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>Tożsamość zarządzana wdraża artefakty planu
+## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>Tożsamość zarządzana wdraża artefakty strategii
 
-Tożsamość zarządzaną, a następnie uruchamiają wdrożeń usługi Resource Manager artefaktów w ramach planu na określonym [sekwencjonowania](./sequencing-order.md). Kolejność można dopasować do upewnij się, że artefakty zależne od innych artefaktów są wdrażane w odpowiedniej kolejności.
+Tożsamość zarządzana następnie wyzwala Menedżer zasobów wdrożenia artefaktów w ramach planu w zdefiniowanej [kolejności sekwencjonowania](./sequencing-order.md). Kolejność można dostosować, aby upewnić się, że artefakty zależne od innych artefaktów są wdrożone w odpowiedniej kolejności.
 
-Wystąpił błąd dostępu przez wdrażanie często jest wynikiem stopień udzielono dostępu do tożsamości zarządzanej. Plany usługi Zarządzanie cyklem życia zabezpieczeń **przypisany systemowo** tożsamości zarządzanej. Jednak użytkownik jest odpowiedzialny za zarządzanie prawami i cyklem życia **użytkownik przypisany** tożsamości zarządzanej.
+Niepowodzenie dostępu przez wdrożenie jest często wynikiem poziomu dostępu udzielonego tożsamości zarządzanej. Usługa plany zarządza cyklem życia zabezpieczeń zarządzanej tożsamości **przypisanej do systemu** . Jednak użytkownik jest odpowiedzialny za zarządzanie prawami i cyklem życia tożsamości zarządzanej **przypisanej przez użytkownika** .
 
-## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Plan usługi i przypisany systemowo tożsamość zarządzaną prawa zostaną odwołane
+## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Uprawnienia do usługi strategii i zarządzanej tożsamości przypisane do systemu są odwoływane
 
-Po zakończeniu wdrożenia schematy odwołuje praw **przypisany systemowo** tożsamości zarządzanej z subskrypcji. Następnie usługa plany odwołuje się swoich praw z subskrypcji. Usuwanie praw zapobiega schematy staje się właścicielem subskrypcji.
+Po zakończeniu wdrożeń plany odwołują prawa do zarządzanej tożsamości **przypisanej do systemu** z subskrypcji. Następnie usługa plany odwołuje swoje prawa z subskrypcji. Usunięcie praw uniemożliwia nietrwałego właściciela subskrypcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów](resource-locking.md)planu.
+- Dowiedz się, jak [aktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania strategii z [ogólnym rozwiązywaniem problemów](../troubleshoot/general.md).

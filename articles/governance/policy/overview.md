@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: b0c2d8060756c23cc69325ab88803d0423ba45b9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b8628d60110818fe64e5b09b400a1396213147b6
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002288"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980770"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Przegląd usługi Azure Policy
 
@@ -47,16 +46,16 @@ Jeśli żadna z wbudowanych ról nie ma wymaganych uprawnień, należy utworzyć
 
 Proces tworzenia i implementowania zasad w usłudze Azure Policy rozpoczyna się od utworzenia definicji zasad. Każda definicja zasad zawiera warunki, w jakich zasady są wymuszane. Zawiera także zdefiniowany efekt, który występuje w przypadku spełnienia warunków.
 
-Usługa Azure Policy oferuje kilka wbudowanych zasad, które są domyślnie dostępne. Przykład:
+Usługa Azure Policy oferuje kilka wbudowanych zasad, które są domyślnie dostępne. Na przykład:
 
-- **Wymagaj programu SQL Server w wersji 12.0**: sprawdza, czy wszystkie serwery SQL korzystają z wersji 12.0. Jej efektem jest odrzucanie wszystkich serwerów, które nie spełniają tego kryterium.
-- **Dozwolone jednostki SKU konta magazynu**: określa, czy wdrażane konto magazynu mieści się w zestawie rozmiarów jednostek SKU. Jej efektem jest odrzucanie wszystkich kont magazynu, które nie są zgodne z zestawem zdefiniowanych rozmiarów SKU.
-- **Dozwolone typy zasobów**: definiuje typy zasobów, które można wdrożyć. Jej efektem jest odrzucanie wszystkich zasobów, które nie należą do tej zdefiniowanej listy.
-- **Dozwolone lokalizacje**: Ogranicza lokalizacje dostępne dla nowych zasobów. Jej efekt jest używany do wymuszania wymagań dotyczących zgodności obszarów geograficznych.
-- **Dozwolone jednostki SKU maszyn wirtualnych**: określa zestaw jednostek SKU maszyn wirtualnych, które można wdrożyć.
-- **Zastosuj tag i jego wartość domyślną**: stosuje wymagany tag i jego wartość domyślną, jeśli nie zostaną określone przez żądanie wdrożenia.
-- **Wymuszaj tag i jego wartość**: wymusza wymagany tag i jego wartość na zasobie.
-- **Niedozwolone typy zasobów**: zapobiega wdrażaniu typów zasobów z listy.
+- **Wymagaj SQL Server 12,0**: sprawdza, czy wszystkie serwery SQL używają wersji 12,0. Jej efektem jest odrzucanie wszystkich serwerów, które nie spełniają tego kryterium.
+- **Dozwolone jednostki SKU konta magazynu**: określa, czy wdrożone konto magazynu znajduje się w zestawie rozmiarów jednostki SKU. Jej efektem jest odrzucanie wszystkich kont magazynu, które nie są zgodne z zestawem zdefiniowanych rozmiarów SKU.
+- **Dozwolony typ zasobu**: określa typy zasobów, które można wdrożyć. Jej efektem jest odrzucanie wszystkich zasobów, które nie należą do tej zdefiniowanej listy.
+- **Dozwolone lokalizacje**: ogranicza dostępne lokalizacje dla nowych zasobów. Jej efekt jest używany do wymuszania wymagań dotyczących zgodności obszarów geograficznych.
+- **Dozwolone jednostki SKU maszyny wirtualnej**: określa zestaw jednostek SKU maszyn wirtualnych, które można wdrożyć.
+- **Zastosuj tag i jego wartość domyślną**: stosuje wymagany tag i jego wartość domyślną, jeśli nie jest określony przez żądanie wdrożenia.
+- **Wymuś tag i jego wartość**: wymusza wymagany tag i jego wartość do zasobu.
+- **Niedozwolone typy zasobów**: uniemożliwiają wdrożenie listy typów zasobów.
 
 Aby móc zaimplementować te definicje zasad (wbudowane i niestandardowe), musisz je przypisać. Dowolną z tych zasad można przypisać za pośrednictwem witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
@@ -64,7 +63,7 @@ Ocena zasad odbywa się przy użyciu kilku różnych akcji, takich jak przypisan
 
 Aby dowiedzieć się więcej o strukturach definicji zasad, zapoznaj się z tematem [Policy Definition Structure](./concepts/definition-structure.md) (Struktura definicji zasad).
 
-## <a name="policy-assignment"></a>Przypisanie zasad
+## <a name="policy-assignment"></a>Przypisywanie zasad
 
 Przypisywanie zasad to definicja zasad, która została przypisana do określonego zakresu. Zakresem tym może być zarówno [grupa zarządzania](../management-groups/overview.md), jak i grupa zasobów. Termin *zakres* odnosi się do wszystkich grup zasobów, subskrypcji i grup zarządzania, do których przypisano definicję zasad. Przypisania zasad są dziedziczone przez wszystkie zasoby podrzędne. To rozwiązanie oznacza, że zastosowanie zasad do grupy zasobów powoduje zastosowanie ich również do zasobów w tej grupie zasobów. Z przypisania zasad można jednak wyłączyć zakres podrzędny.
 
@@ -107,7 +106,7 @@ Na przykład masz definicję inicjatywy **initiativeC** oraz definicje zasad **p
 | Zasady | Nazwa parametru |Typ parametru  |Uwaga |
 |---|---|---|---|
 | policyA | allowedLocations | tablica  |Ten parametr oczekuje listy ciągów dla wartości, ponieważ typ parametru został zdefiniowany jako tablica |
-| policyB | allowedSingleLocation |ciąg |Ten parametr oczekuje jednego słowa dla wartości, ponieważ typ parametru został zdefiniowany jako ciąg |
+| policyB | allowedSingleLocation |string |Ten parametr oczekuje jednego słowa dla wartości, ponieważ typ parametru został zdefiniowany jako ciąg |
 
 W tym scenariuszu podczas definiowania parametrów inicjatywy **initiativeC** dostępne są trzy opcje:
 

@@ -2,17 +2,16 @@
 title: Indeks przykładów zasad
 description: Indeks przykładów dla usługi Azure Policy. Kategorie obejmują między innymi nazewnictwo, tagi, usługę Key Vault, sieć, magazyn.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 03/19/2019
 ms.author: dacoulte
-ms.openlocfilehash: 140429cef7f63219a0d5cf82c6ebfb3731b0072b
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7d44e313f4f8dbb675d2c711bfec6a21ecdbb94e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979644"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980571"
 ---
 # <a name="azure-policy-samples"></a>Przykłady dla usługi Azure Policy
 

@@ -1,27 +1,26 @@
 ---
-title: Przykład — inspekcji, jeśli aplikacje nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
-description: Tej przykładowej konfiguracji gościa zasad inicjatywy i definicje inspekcji, jeśli określone aplikacje nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux.
+title: Próbkowanie — Inspekcja, jeśli aplikacje nie są zainstalowane na maszynach wirtualnych z systemem Linux
+description: Ta przykładowa inicjatywa konfiguracji gościa i definicje inspekcji, jeśli określone aplikacje nie są zainstalowane na maszynach wirtualnych z systemem Linux.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: eda5a2a6d2dae58f8da72deccbb89a34c7f21dae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204012"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977035"
 ---
-# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Przykład — inspekcji, jeśli określonych aplikacji nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
+# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Próbkowanie — Inspekcja, jeśli określone aplikacje nie są zainstalowane na maszynach wirtualnych z systemem Linux
 
-Tej inicjatywy konfiguracji gościa zasad tworzy zdarzenia inspekcji po określonych aplikacji nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux. Identyfikator tej inicjatywy wbudowanych `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
+Ta inicjatywa konfiguracji gościa tworzy zdarzenie inspekcji, gdy określone aplikacje nie są zainstalowane na maszynach wirtualnych z systemem Linux. Identyfikator tej inicjatywy wbudowanej to `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
 
 > [!IMPORTANT]
-> Wszystkich konfiguracji gościa inicjatywy składają się z **inspekcji** i **deployIfNotExists** definicji zasad. Przypisywanie tylko do jednej z definicji zasad spowodować, że konfiguracja gościa nie będą działać poprawnie.
+> Wszystkie inicjatywy konfiguracji gościa składają się z definicji zasad **inspekcji** i **deployIfNotExists** . Przypisanie tylko jednej z definicji zasad powoduje, że konfiguracja gościa nie będzie działała poprawnie.
 
-Można przypisać za pomocą tej przykładowej:
+Możesz przypisać ten przykład przy użyciu:
 
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
@@ -30,29 +29,29 @@ Można przypisać za pomocą tej przykładowej:
 
 ## <a name="components-of-the-initiative"></a>Składniki inicjatywy
 
-To [konfiguracji gościa](../concepts/guest-configuration.md) inicjatywy składają się następujące zasady:
+Ta inicjatywa [konfiguracji gościa](../concepts/guest-configuration.md) składa się z następujących zasad:
 
-- [Inspekcja](#audit-definition) -inspekcji, gdy aplikacje nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
-  - ID: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
-- [deployIfNotExists](#deployIfNotExists-definition) — wdrażanie rozszerzenia maszyny Wirtualnej do inspekcji, gdy aplikacje nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
-  - ID: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
+- [Inspekcja](#audit-definition) — Inspekcja, gdy aplikacje nie są zainstalowane na maszynach wirtualnych z systemem Linux
+  - Identyfikator: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
+- [deployIfNotExists](#deployIfNotExists-definition) — Wdróż rozszerzenie maszyny wirtualnej w celu przeprowadzenia inspekcji, gdy aplikacje nie są zainstalowane na maszynach wirtualnych systemu Linux
+  - Identyfikator: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
 
 ### <a name="initiative-definition"></a>Definicja inicjatywy
 
-Inicjatywy jest tworzony przez dołączenie **inspekcji** i **deployIfNotExists** definicje razem i [parametry inicjatywy](#initiative-parameters). Jest to definicji za pomocą pliku JSON.
+Inicjatywa jest tworzona przez dołączenie definicji **audytu** i **DeployIfNotExists** razem oraz [parametrów inicjatywy](#initiative-parameters). Jest to kod JSON definicji.
 
 [!code-json[initiative-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/azurepolicyset.json "Initiative definition (JSON)")]
 
 ### <a name="initiative-parameters"></a>Parametry inicjatywy
 
-|Name (Nazwa) |Typ |Opis |
+|Nazwa |Typ |Opis |
 |---|---|---|
-|applicationName |String |Nazwy aplikacji. Przykład: "python", "powershell" lub rozdzielaną przecinkami listę takich jak "python, programu powershell". Użyj \* dla dopasowanie z symbolami wieloznacznymi, takie jak "power\*". |
+|applicationName |String |Nazwy aplikacji. Przykład: "Python", "PowerShell" lub listę rozdzieloną przecinkami, taką jak "Python, PowerShell". Użyj \* do dopasowania symboli wieloznacznych, takich jak "potęga @ no__t-1". |
 
-Podczas tworzenia przypisania za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure wartości parametrów można przekazać jako kod JSON w ramach ciągu lub pliku przy użyciu opcji `-PolicyParameter` (program PowerShell) lub opcji `--params` (interfejs wiersza polecenia platformy Azure).
-Program PowerShell obsługuje także opcję `-PolicyParameterObject`, która wymaga przekazania do polecenia cmdlet tabeli skrótów Name/Value (Nazwa/Wartość), gdzie parametr **Name** oznacza nazwę parametru, a parametr **Value** oznacza pojedynczą wartość lub tablicę wartości przekazywaną podczas przypisywania.
+Podczas tworzenia przypisania za pośrednictwem programu PowerShell lub interfejsu wiersza polecenia platformy Azure wartości parametrów mogą być przekazane jako dane JSON w ciągu lub za pośrednictwem pliku przy użyciu `-PolicyParameter` (PowerShell) lub `--params` (interfejs wiersza polecenia platformy Azure).
+Program PowerShell obsługuje również `-PolicyParameterObject`, co wymaga przeprowadzenia przechodzenia do polecenia cmdlet nazwa/wartość Hashtable, gdzie **name** to nazwa parametru, a **wartość** jest pojedynczą wartością lub tablicą wartości przekazywanych podczas przypisywania.
 
-W tym przykładzie parametrze instalację aplikacji _python_ i _powershell_ podlega inspekcji.
+W tym przykładowym parametrze instalacja aplikacji _Python_ i _PowerShell_ jest przeprowadzana inspekcją.
 
 ```json
 {
@@ -62,74 +61,74 @@ W tym przykładzie parametrze instalację aplikacji _python_ i _powershell_ podl
 }
 ```
 
-Tylko **deployIfNotExists** definicji zasad sprawia, że użycie parametrów inicjatywy.
+Tylko definicja zasad **deployIfNotExists** korzysta z parametrów inicjatywy.
 
-### <a name="audit-definition"></a>Definicja danych inspekcji
+### <a name="audit-definition"></a>Definicja inspekcji
 
-Za pomocą pliku JSON definiowania reguły **inspekcji** definicji zasad.
+KOD JSON definiujący reguły definicji zasad **inspekcji** .
 
 [!code-json[audit-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/audit/azurepolicy.rules.json "audit policy rules (JSON)")]
 
 ### <a name="deployifnotexists-definition"></a>Definicja deployIfNotExists
 
-Za pomocą pliku JSON definiowania reguły **deployIfNotExists** definicji zasad.
+KOD JSON definiujący reguły definicji zasad **deployIfNotExists** .
 
 [!code-json[deployIfNotExists-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/deployIfNotExists/azurepolicy.rules.json "deployIfNotExists policy rules (JSON)")]
 
-**DeployIfNotExists** definicji zasad definiuje zasady została zweryfikowana w obrazy platformy Azure:
+Definicja zasad **deployIfNotExists** definiuje obrazy platformy Azure, na których zasady zostały zweryfikowane:
 
-|Wydawca |Oferta |Jednostka SKU |
+|Wydawca |Sprzedaży |Magazyn |
 |-|-|-|
-|OpenLogic |CentOS\* |Wszystkie regiony z wyjątkiem 6\* |
-|RedHat |RHEL |Wszystkie regiony z wyjątkiem 6\* |
-|RedHat |osa | Wszyscy |
-|credativ |Debian | Wszystkie regiony z wyjątkiem 7\* |
-|SUSE |SLES\* |Wszystkie regiony z wyjątkiem 11\* |
-|Kanoniczne| UbuntuServer |Wszystkie regiony z wyjątkiem 12\* |
-|microsoft-dsvm |linux-data-science-vm-ubuntu |Wszyscy |
-|microsoft-dsvm |azureml |Wszyscy |
-|cloudera |cloudera-centos-os |Wszystkie regiony z wyjątkiem 6\* |
-|cloudera |cloudera-altus-centos-os |Wszyscy |
-|microsoft-ads |linux\* |Wszyscy |
-|microsoft-aks |Wszyscy |Wszyscy |
-|AzureDatabricks |Wszyscy |Wszyscy |
-|qubole-inc |Wszyscy |Wszyscy |
-|datastax |Wszyscy |Wszyscy |
-|couchbase |Wszyscy |Wszyscy |
-|scalegrid |Wszyscy |Wszyscy |
-|Punkt kontrolny |Wszyscy |Wszyscy |
-|paloaltonetworks |Wszyscy |Wszyscy |
+|OpenLogic |CentOS @ no__t-0 |Wszystkie z wyjątkiem 6 @ no__t-0 |
+|RedHat |RHEL |Wszystkie z wyjątkiem 6 @ no__t-0 |
+|RedHat |OEM | Wszystkie |
+|credativ |Debian | Wszystkie z wyjątkiem 7 @ no__t-0 |
+|Szło |SLES @ no__t-0 |Wszystkie z wyjątkiem 11 @ no__t-0 |
+|Postaci| UbuntuServer |Wszystkie z wyjątkiem 12 @ no__t-0 |
+|Microsoft-dsvm |Linux-Data-nauka-VM-Ubuntu |Wszystkie |
+|Microsoft-dsvm |połączone |Wszystkie |
+|Cloudera |Cloudera — CentOS — OS |Wszystkie z wyjątkiem 6 @ no__t-0 |
+|Cloudera |Cloudera-Altus-CentOS-OS |Wszystkie |
+|Microsoft — ads |Linux @ no__t-0 |Wszystkie |
+|Microsoft-AKS |Wszystkie |Wszystkie |
+|AzureDatabricks |Wszystkie |Wszystkie |
+|qubole — Inc |Wszystkie |Wszystkie |
+|DataStax |Wszystkie |Wszystkie |
+|Couchbase |Wszystkie |Wszystkie |
+|scalegrid |Wszystkie |Wszystkie |
+|elementu |Wszystkie |Wszystkie |
+|paloaltonetworks |Wszystkie |Wszystkie |
 
-**Wdrożenia** część reguła przekazuje _installedApplication_ parametru, aby agent Configuration gościa na maszynie wirtualnej. Ta konfiguracja umożliwia agenta Aby wykonywać operacje sprawdzania poprawności i raportowanie zgodności z powrotem przez **inspekcji** definicji zasad.
+Część **wdrożenia** reguły przekazuje parametr _InstalledApplication_ do agenta konfiguracji gościa na maszynie wirtualnej. Ta konfiguracja umożliwia agentowi wykonywanie walidacji i zgłaszanie zgodności z powrotem przez definicję zasad **inspekcji** .
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Po **inspekcji** i **deployIfNotExists** definicje są tworzone w portalu, zaleca się ich do grupy [inicjatywy](../concepts/definition-structure.md#initiatives) przypisania.
+Po utworzeniu definicji **inspekcji** i **deployIfNotExists** w portalu zaleca się ich grupowanie do [inicjatywy](../concepts/definition-structure.md#initiatives) w celu przypisania.
 
 ### <a name="create-copy-of-audit-definition"></a>Utwórz kopię definicji inspekcji
 
-[![Wdrażanie przykładu zasad w usłudze Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
-[![wdrażanie przykładu zasad do klientów rządowych platformy Azure](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![Deploy przykładową zasadą do platformy azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[@no__t 4Deploy zasad na platformie Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 
-Za pomocą tych przycisków do wdrożenia w portalu jest tworzona kopia **inspekcji** definicji zasad.
-Bez sparowane **deployIfNotExists** definicji zasad konfiguracji gościa nie będzie działać poprawnie.
+Użycie tych przycisków do wdrożenia za pośrednictwem portalu spowoduje utworzenie kopii definicji zasad **inspekcji** .
+Bez sparowanej definicji zasad **DeployIfNotExists** konfiguracja gościa nie będzie działała poprawnie.
 
-### <a name="create-copy-of-deployifnotexists-definition"></a>Utwórz kopie deployIfNotExists definicji
+### <a name="create-copy-of-deployifnotexists-definition"></a>Utwórz kopię definicji deployIfNotExists
 
-[![Wdrażanie przykładu zasad w usłudze Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
-[![wdrażanie przykładu zasad do klientów rządowych platformy Azure](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![Deploy przykładową zasadą do platformy azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[@no__t 4Deploy zasad na platformie Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 
-Za pomocą tych przycisków do wdrożenia w portalu jest tworzona kopia **deployIfNotExists** definicji zasad. Bez sparowane **inspekcji** definicji zasad konfiguracji gościa nie będzie działać poprawnie.
+Użycie tych przycisków do wdrożenia za pośrednictwem portalu tworzy kopię definicji zasad **deployIfNotExists** . Bez sparowanej definicji zasad **inspekcji** konfiguracja gościa nie będzie działała prawidłowo.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-### <a name="deploy-with-azure-powershell"></a>Wdrażanie przy użyciu programu Azure PowerShell
+### <a name="deploy-with-azure-powershell"></a>Wdrażanie za pomocą Azure PowerShell
 
 #### <a name="copy-and-assign-the-initiative"></a>Kopiuj i przypisz inicjatywę
 
-Następujące kroki, Utwórz kopię tej inicjatywy, która zawiera wbudowane zasady dla obu **inspekcji** i **deployIfNotExists** i przypisanie inicjatywy do grupy zasobów.
+Te kroki umożliwiają utworzenie kopii inicjatywy zawierającej wbudowane zasady zarówno **inspekcji** , jak i **deployIfNotExists** , a także przypisuje inicjatywę do grupy zasobów.
 
 ```azurepowershell-interactive
 # Create the policy initiative (Subscription scope)
@@ -151,7 +150,7 @@ $saIdentity = $assignment.Identity.principalId
 $roleAssignment = New-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefinitionName 'Contributor'
 ```
 
-Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i poprzednią definicję:
+Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i definicję:
 
 ```azurepowershell-interactive
 # Remove the initiative assignment
@@ -164,9 +163,9 @@ Remove-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefi
 Remove-AzPolicySetDefinition -Id $initDef
 ```
 
-#### <a name="copy-and-assign-the-audit-definition"></a>Skopiuj i przypisywanie definicji inspekcji
+#### <a name="copy-and-assign-the-audit-definition"></a>Kopiowanie i przypisywanie definicji inspekcji
 
-Te kroki służą utworzeniu kopię **inspekcji** definicji i przypisz je do grupy zasobów. Ta definicja nie będzie działać poprawnie bez sparowane **deployIfNotExists** definicji również przypisane.
+Te kroki umożliwiają utworzenie kopii definicji **inspekcji** i przypisanie jej do grupy zasobów. Ta definicja nie będzie działała poprawnie bez przypisywania również skojarzonej definicji **deployIfNotExists** .
 
 ```azurepowershell-interactive
 # Create the policy definition (Subscription scope)
@@ -179,7 +178,7 @@ $scope = Get-AzResourceGroup -Name 'YourResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'guestconfig-installed-application-linux-audit-assignment' -DisplayName 'GuestConfig - Python and PowerShell apps on Linux' -Scope $scope.ResourceID -PolicyDefinition $definition
 ```
 
-Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i poprzednią definicję:
+Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i definicję:
 
 ```azurepowershell-interactive
 # Remove the policy definition
@@ -189,10 +188,10 @@ Remove-AzPolicyAssignment -Id $assignment.ResourceId
 Remove-AzPolicyDefinition -Id $definition
 ```
 
-#### <a name="copy-and-assign-the-deployifnotexists-definition"></a>Skopiuj i przypisywanie definicji deployIfNotExists
+#### <a name="copy-and-assign-the-deployifnotexists-definition"></a>Kopiowanie i przypisywanie definicji deployIfNotExists
 
-Te kroki służą utworzeniu kopię **deployIfNotExists** definicji i przypisz je do grupy zasobów.
-Ta definicja nie będzie działać poprawnie bez sparowane **inspekcji** definicji również przypisane.
+Te kroki umożliwiają utworzenie kopii definicji **deployIfNotExists** i przypisanie jej do grupy zasobów.
+Ta definicja nie będzie działała poprawnie bez przypisanej także sparowanej definicji **inspekcji** .
 
 ```azurepowershell-interactive
 # Create the policy definition (Subscription scope)
@@ -214,7 +213,7 @@ $saIdentity = $assignment.Identity.principalId
 $roleAssignment = New-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefinitionName 'Contributor'
 ```
 
-Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i poprzednią definicję:
+Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i definicję:
 
 ```azurepowershell-interactive
 # Remove the policy assignment
@@ -227,23 +226,23 @@ Remove-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefi
 Remove-AzPolicyDefinition -Id $definition
 ```
 
-### <a name="azure-powershell-explanation"></a>Objaśnienie dla programu Azure PowerShell
+### <a name="azure-powershell-explanation"></a>Azure PowerShell Wyjaśnij
 
-Skrypty służące do wdrażania i usuwania korzystają z następujących poleceń. Każde polecenie w poniższej tabeli stanowi link do dokumentacji polecenia:
+Skrypty wdrażania i usuwania używają następujących poleceń. Każde polecenie w poniższej tabeli zawiera linki do dokumentacji dotyczącej poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Tworzy inicjatywy usługi Azure Policy. |
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Tworzy definicję zasad platformy Azure. |
+| [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Tworzy inicjatywę Azure Policy. |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Tworzy definicję Azure Policy. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup) | Pobiera pojedynczą grupę zasobów. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Tworzy nowe przypisanie usługi Azure Policy, inicjatywy lub definicji. |
-| [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Zapewnia istniejącego przypisania roli do określonej jednostki. |
-| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Usuwa istniejące przypisanie zasad Azure Policy. |
-| [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Usuwa inicjatywy. |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Tworzy nowe przypisanie Azure Policy dla inicjatywy lub definicji. |
+| [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Nadaje istniejące przypisanie roli do określonego podmiotu zabezpieczeń. |
+| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Usuwa istniejące przypisanie Azure Policy. |
+| [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Usuwa inicjatywę. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-AzPolicyDefinition) | Usuwa definicję. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj dodatkowe [przykładów usługi Azure Policy](index.md).
-- Dowiedz się więcej o [konfiguracji gościa zasad platformy Azure](../concepts/guest-configuration.md).
-- Przegląd [struktura definicji usługi Azure Policy](../concepts/definition-structure.md).
+- Zapoznaj się z dodatkowymi [przykładami Azure Policy](index.md).
+- Dowiedz się więcej o [konfigurowaniu Azure Policy gościa](../concepts/guest-configuration.md).
+- Przejrzyj [strukturę Azure Policy definicji](../concepts/definition-structure.md).

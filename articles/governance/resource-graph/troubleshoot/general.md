@@ -1,18 +1,17 @@
 ---
-title: Rozwiązywanie typowych problemów
+title: Rozwiązywanie typowych błędów
 description: Dowiedz się, jak rozwiązywać problemy z badaniem zasobów platformy Azure za pomocą usługi Azure Resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 4cd4d89f276770cba401d7941a975fad8e49c8cd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000522"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976602"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Rozwiązywanie problemów z błędami przy użyciu grafu zasobów platformy Azure
 
@@ -24,7 +23,7 @@ Większość błędów jest wynikiem problemu podczas wykonywania zapytania przy
 
 ## <a name="general-errors"></a>Błędy ogólne
 
-### <a name="toomanysubscription"></a>Scenariusz Zbyt wiele subskrypcji
+### <a name="toomanysubscription"></a>Scenariusz: zbyt wiele subskrypcji
 
 #### <a name="issue"></a>Problem
 
@@ -61,7 +60,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>Scenariusz Nieobsługiwany nagłówek REST typu Content-Type
+### <a name="rest-contenttype"></a>Scenariusz: nieobsługiwany nagłówek REST typu Content-Type
 
 #### <a name="issue"></a>Problem
 
@@ -69,12 +68,12 @@ Klienci wysyłający zapytanie do interfejsu API REST usługi Azure Resource Gra
 
 #### <a name="cause"></a>Przyczyna
 
-Interfejs API REST usługi Azure Resource Graph obsługuje tylko `Content-Type` **aplikację/plik JSON**. Niektóre narzędzia lub agenci REST są domyślnie **tekstem/zwykłym**, co nie jest obsługiwane przez interfejs API REST.
+Interfejs API REST usługi Azure Resource Graph obsługuje tylko `Content-Type` **aplikacji/JSON**. Niektóre narzędzia lub agenci REST są domyślnie **tekstem/zwykłym**, co nie jest obsługiwane przez interfejs API REST.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Sprawdź, czy narzędzie lub Agent używany do wysyłania zapytań do grafu zasobów platformy Azure ma nagłówek `Content-Type` interfejsu API REST skonfigurowany dla **aplikacji/JSON**.
-### <a name="rest-403"></a>Scenariusz Brak uprawnień do odczytu do wszystkich subskrypcji na liście
+Sprawdź, czy narzędzie lub Agent używany do wysyłania zapytań do grafu zasobów platformy Azure ma nagłówek interfejsu API REST `Content-Type` skonfigurowany dla **aplikacji/JSON**.
+### <a name="rest-403"></a>Scenariusz: Brak uprawnień do odczytu do wszystkich subskrypcji na liście
 
 #### <a name="issue"></a>Problem
 
@@ -93,5 +92,5 @@ Uwzględnij co najmniej jedną subskrypcję na liście subskrypcji, do której k
 Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 
 - Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [forów platformy Azure](https://azure.microsoft.com/support/forums/).
-- Połącz się z kontem [@AzureSupport](https://twitter.com/azuresupport) — oficjalnym kontem platformy Microsoft Azure utworzonym w celu podniesienia jakości obsługi klientów przez połączenie społeczności platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
+- Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego konta Microsoft Azure w celu poprawy obsługi klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 - Jeśli potrzebujesz więcej pomocy, możesz obsłużyć zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**.

@@ -6,14 +6,13 @@ ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 520eded941f625bf90204213188ac1afc94d3111
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: cec8d224e52de25fe026a17d57144da3cd53fc5b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802584"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981677"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Wdrażanie przykładowej platformy wdrażania Microsoft Cloud dla platformy Azure Migrowanie planu strefy ładunkowej
 
@@ -27,13 +26,13 @@ Aby wdrożyć przykład strategii platformy Azure CAF Migrowanie planu strefy ł
 > - Oznacz swoją kopię przykładowej publikacji jako **opublikowaną**
 > - Przypisz swoją kopię planu do istniejącej subskrypcji
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free) .
 
 ## <a name="create-blueprint-from-sample"></a>Utwórz plan z przykładu
 
 Najpierw Zaimplementuj przykład strategii, tworząc nowy plan w środowisku przy użyciu przykładu jako starter.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Na stronie **pierwsze kroki** z lewej strony wybierz przycisk **Utwórz** w obszarze _Utwórz plan_.
 
@@ -43,7 +42,7 @@ Najpierw Zaimplementuj przykład strategii, tworząc nowy plan w środowisku prz
    - **Nazwa** planu Podaj nazwę kopii przykładowego planu strefy CAF migracji.
    - **Lokalizacja definicji** Użyj wielokropka i wybierz grupę zarządzania, w której ma zostać zapisana kopia przykładu.
 
-1. Wybierz kartę _artefakty_ w górnej części strony lub **Następny: Artefakty** w dolnej części strony.
+1. Wybierz kartę _artefakty_ w górnej części strony lub **Następny: artefakty** w dolnej części strony.
 
 1. Zapoznaj się z listą artefaktów, które składają się na przykład strategii. Wiele artefaktów ma parametry, które zostaną zdefiniowane w dalszej części. Wybierz pozycję **Zapisz wersję roboczą** po zakończeniu przeglądania przykładu planu.
 
@@ -51,7 +50,7 @@ Najpierw Zaimplementuj przykład strategii, tworząc nowy plan w środowisku prz
 
 Twoja kopia przykładu strategii została teraz utworzona w Twoim środowisku. Jest on tworzony w trybie **wersji roboczej** i musi być **opublikowany** , aby można go było przypisać i wdrożyć. Kopię przykładowej strategii można dostosować do środowiska i potrzeb, ale zmiana ta może zostać przeniesiona z przewodnika po CAF migracji strefy ładunkowej.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć kopię przykładowej strategii, a następnie wybierz ją.
 
@@ -61,7 +60,7 @@ Twoja kopia przykładu strategii została teraz utworzona w Twoim środowisku. J
 
 Po pomyślnym **opublikowaniu**kopii przykładowej strategii można ją przypisać do subskrypcji w grupie zarządzania, w której został on zapisany. Ten krok polega na tym, że parametry są dostarczane, aby każde wdrożenie kopii przykładowej strategii było unikatowe.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć kopię przykładowej strategii, a następnie wybierz ją.
 
@@ -69,18 +68,18 @@ Po pomyślnym **opublikowaniu**kopii przykładowej strategii można ją przypisa
 
 1. Podaj wartości parametrów dla przypisania planu:
 
-   - Ustawienia podstawowe
+   - Nazwie
      - **Subskrypcje**: Wybierz co najmniej jedną subskrypcję znajdującą się w grupie zarządzania, do której została zapisana kopia przykładu planu. W przypadku wybrania więcej niż jednej subskrypcji zostanie utworzone przypisanie dla każdego z nich przy użyciu wprowadzonych parametrów.
-     - **Nazwa przypisania**: Nazwa jest wstępnie wypełniana na podstawie nazwy planu.
+     - **Nazwa przypisania**: nazwa jest wstępnie wypełniona dla Ciebie na podstawie nazwy planu.
        Zmień stosownie do potrzeb lub pozostaw jako is.
      - **Lokalizacja**: Wybierz region, w którym ma zostać utworzona zarządzana tożsamość.
-     - Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii.
-       Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - Azure Blueprint używa tej tożsamości zarządzanej do wdrożenia wszystkich artefaktów w przypisanym planie.
+       Aby dowiedzieć się więcej, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Wersja definicji**planu: Wybierz **opublikowaną** wersję kopii przykładowej strategii.
     
-   - Zablokuj przypisanie
+   - Przypisanie blokady
 
-     Wybierz ustawienie blokowania planu dla danego środowiska. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../../concepts/resource-locking.md).
+     Wybierz ustawienie blokowania planu dla danego środowiska. Aby uzyskać więcej informacji, zobacz temat [plany blokowania zasobów](../../concepts/resource-locking.md).
 
    - Tożsamość zarządzana
 
@@ -108,11 +107,11 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 
 |Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Opis|
 |-|-|-|-|
-|Wdróż wirtualną strefę wyładunkowej|Szablon usługi Resource Manager|IPAddress_Space|**Zablokowane** — Podaj pierwsze dwa oktety, 10,0|
-|Wdróż Key Vault|Szablon usługi Resource Manager|KV — AccessPolicy|**Zablokowany** — Grupa lub identyfikator obiektu użytkownika, aby udzielić uprawnień do w Key Vault|
-|Wdróż Log Analytics|Szablon usługi Resource Manager|LogAnalytics_DataRetention|Dane z **zablokowanej** liczby dni zostaną zachowane w log Analytics|
-|Wdróż Log Analytics|Szablon usługi Resource Manager|LogAnalytics_Location|Region **zablokowany** używany podczas ustanawiania obszaru roboczego|
-|Wdróż Azure Migrate|Szablon usługi Resource Manager|Azure_Migrate_Location|**Zablokowane** — wybierz region do wdrożenia Azure Migrate|
+|Wdróż wirtualną strefę wyładunkowej|Szablon Menedżer zasobów|IPAddress_Space|**Zablokowane** — Podaj pierwsze dwa oktety, 10,0|
+|Wdróż Key Vault|Szablon Menedżer zasobów|KV — AccessPolicy|**Zablokowany** — Grupa lub identyfikator obiektu użytkownika, aby udzielić uprawnień do w Key Vault|
+|Wdróż Log Analytics|Szablon Menedżer zasobów|LogAnalytics_DataRetention|Dane z **zablokowanej** liczby dni zostaną zachowane w log Analytics|
+|Wdróż Log Analytics|Szablon Menedżer zasobów|LogAnalytics_Location|Region **zablokowany** używany podczas ustanawiania obszaru roboczego|
+|Wdróż Azure Migrate|Szablon Menedżer zasobów|Azure_Migrate_Location|**Zablokowane** — wybierz region do wdrożenia Azure Migrate|
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -121,10 +120,10 @@ Po przejrzeniu kroków w celu wdrożenia przykładu CAF migrowania strefy ładun
 > [!div class="nextstepaction"]
 > [CAF Migrowanie strefy ładunkowej — Omówienie](./index.md)
 
-Dodatkowe artykuły na temat strategii i sposobu ich używania:
+Dodatkowe artykuły o planach i sposobach ich użycia:
 
-- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
+- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów](../../concepts/resource-locking.md)planu.
+- Dowiedz się, jak [aktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).

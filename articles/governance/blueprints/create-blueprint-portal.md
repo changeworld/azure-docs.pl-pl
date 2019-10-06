@@ -6,15 +6,14 @@ ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: f4dc13717b65a53b90a68ac48a2281687c157edf
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338192"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978557"
 ---
-# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Szybki start: Definiowanie i Przypisywanie planu w portalu
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Szybki Start: Definiowanie i Przypisywanie planu w portalu
 
 Gdy dowiesz się, jak tworzyć i przypisywać plany, możesz definiować typowe wzorce, aby opracowywać konfiguracje do wielokrotnego użytku i szybko wdrażane na podstawie Azure Resource Manager szablonów, zasad, zabezpieczeń i innych. W ramach tego samouczka nauczysz się korzystać z planów platformy Azure w celu wykonywania niektórych typowych zadań związanych z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji. Te zadania obejmują:
 
@@ -44,7 +43,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. W polu **Lokalizacja definicji** wybierz wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md) lub subskrypcję, w której chcesz zapisać plan, a następnie wybierz **pozycję Wybierz**.
 
-1. Sprawdź, czy informacje są poprawne. Nie można później zmienić **nazwy** planu i **lokalizacji definicji** . Następnie wybierz pozycję **Next: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
+1. Sprawdź, czy informacje są poprawne. Nie można później zmienić **nazwy** planu i **lokalizacji definicji** . Następnie wybierz pozycję **Dalej: artefakty** w dolnej części strony lub kartę **artefakty** w górnej części strony.
 
 1. Dodaj przypisanie roli na poziomie subskrypcji:
 
@@ -59,7 +58,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
    ![Przypisanie roli dla artefaktu planu](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
-   > Większość artefaktów obsługuje parametry. Parametr, do którego przypisano wartość podczas tworzenia planu,jest parametrem statycznym. Jeśli parametr zostanie przypisany podczas przypisywania planu, jest to *parametr dynamiczny*. Aby uzyskać więcej informacji, zobacz [Parametry strategii](./concepts/parameters.md).
+   > Większość artefaktów obsługuje parametry. Parametr, do którego przypisano wartość podczas tworzenia planu, jest *parametrem statycznym*. Jeśli parametr zostanie przypisany podczas przypisywania planu, jest to *parametr dynamiczny*. Aby uzyskać więcej informacji, zobacz [Parametry strategii](./concepts/parameters.md).
 
 1. Dodaj przypisanie zasad na poziomie subskrypcji:
 
@@ -168,9 +167,9 @@ W obszarze [Utwórz plan](#create-a-blueprint)nie podano opisu lub Dodaj przypis
 
 1. Na liście planów kliknij prawym przyciskiem myszy wcześniej utworzoną, a następnie wybierz pozycję **Edytuj plan**.
 
-1. W polu **Opis strategii** podaj informacje o strategii i artefaktach, które ją tworzą. W tym przypadku wprowadź opis podobny do następującego: **Ten plan ustawia zasady tagów i przypisanie roli w ramach subskrypcji, tworzy grupy zasobów i wdraża szablon zasobu i przypisanie roli do tego elementu.**
+1. W polu **Opis strategii** podaj informacje o strategii i artefaktach, które ją tworzą. W takim przypadku wprowadź coś takiego jak: **ten plan ustawia zasady tagów i przypisanie roli w ramach subskrypcji, tworzy grupy zasobów i wdraża szablon zasobu i przypisanie roli do tego zasobu.**
 
-1. Wybierz opcję **Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
+1. Wybierz pozycję **Dalej: artefakty** w dolnej części strony lub kartę **artefakty** w górnej części strony.
 
 1. Dodaj przypisanie roli do grupy zasobów:
 
@@ -251,7 +250,7 @@ Po opublikowaniu planu można go przypisać do subskrypcji. Przypisz utworzony p
 
 1. Dla przypisania zasad na poziomie subskrypcji ustaw wartość **nazwa tagu** na **CostCenter** , a **wartością tagu** na **ContosoIT**.
 
-1. Wprzypadku obiektu Resources Podaj **nazwę** **StorageAccount** i **lokalizację** **Wschodnie stany USA 2** z listy rozwijanej.
+1. W przypadku obiektu **resources**Podaj **nazwę** **StorageAccount** i **lokalizację** **Wschodnie stany USA 2** z listy rozwijanej.
 
    > [!NOTE]
    > Dla każdego artefaktu dodanego w ramach grupy zasobów podczas definiowania planu, ten artefakt jest wcięty do dopasowania do grupy zasobów lub obiektu, w którym zostanie wdrożony.

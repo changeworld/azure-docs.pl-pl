@@ -1,22 +1,21 @@
 ---
-title: Przykład — uniemożliwianie używania tabeli tras zdefiniowanej przez użytkownika
-description: Te przykładowe definicje zasad uniemożliwiają wdrażanie sieci wirtualnych przy użyciu tabeli tras zdefiniowanej przez użytkownika.
+title: Przykład — brak tabeli tras zdefiniowanych przez użytkownika
+description: Ta przykładowa definicja zasad zabrania wdrażania sieci wirtualnych za pomocą tabeli tras zdefiniowanych przez użytkownika.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 330ffc8451f538e5765425522b37f83231d782c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 783ee6916b4ecfb792a7b86cdd84aee08de223f5
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60510177"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976917"
 ---
-# <a name="sample---no-user-defined-route-table"></a>Przykład — uniemożliwianie używania tabeli tras zdefiniowanej przez użytkownika
+# <a name="sample---no-user-defined-route-table"></a>Przykład — brak tabeli tras zdefiniowanych przez użytkownika
 
-Ta zasada uniemożliwia wdrażanie sieci wirtualnych przy użyciu tabeli tras zdefiniowanej przez użytkownika.
+Te zasady uniemożliwiają wdrożenie sieci wirtualnych za pomocą tabeli tras zdefiniowanych przez użytkownika.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,11 +23,11 @@ Ta zasada uniemożliwia wdrażanie sieci wirtualnych przy użyciu tabeli tras zd
 
 [!code-json[main](../../../../policy-templates/samples/Network/no-route-table-in-ER-Network/azurepolicy.json "No User Defined Route Table")]
 
-Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Wdrażanie przykładu zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fno-route-table-in-ER-Network%2Fazurepolicy.json)
+[@no__t — 1Deploy przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fno-route-table-in-ER-Network%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -41,7 +40,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -Pol
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -59,7 +58,7 @@ az policy definition create --name 'no-route-table-in-ER-Network' --display-name
 az policy assignment create --name <assignmentname> --scope <scope> --policy "no-route-table-in-ER-Network"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -67,6 +66,6 @@ Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualn
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)
+- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)

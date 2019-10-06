@@ -1,33 +1,32 @@
 ---
-title: Praca z dużymi zestawami danych
-description: Dowiedz się, jak pobrać i kontroli dużych zestawów danych podczas pracy z wykres zasobów platformy Azure.
+title: Pracuj z dużymi zestawami danych
+description: Zapoznaj się z tematem jak uzyskać i kontrolować duże zestawy danych podczas pracy z usługą Azure Resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786530"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980307"
 ---
-# <a name="working-with-large-azure-resource-data-sets"></a>Praca z zestawami danych w dużej ilości zasobów platformy Azure
+# <a name="working-with-large-azure-resource-data-sets"></a>Praca z dużymi zestawami danych zasobów platformy Azure
 
-Wykres zasobów platformy Azure jest przeznaczona dla pracę i pobieranie informacji na temat zasobów w środowisku platformy Azure. Wykres zasobów sprawia, że szybkie, pobieranie tych danych nawet wtedy, gdy podczas badania tysięcy rekordów. Wykres zasobów ma kilka opcji do pracy z tymi dużych zestawów danych.
+Usługa Azure Resource Graph została zaprojektowana do pracy z i uzyskiwania informacji o zasobach w środowisku platformy Azure. Wykres zasobów umożliwia szybkie pobieranie danych, nawet w przypadku wykonywania zapytań o tysiące rekordów. Wykres zasobów zawiera kilka opcji pracy z tymi dużymi zestawami danych.
 
-Aby uzyskać wskazówki na temat pracy z zapytaniami o wysokiej częstotliwości, zobacz [wskazówki dotyczące żądania ograniczone](./guidance-for-throttled-requests.md).
+Aby uzyskać wskazówki dotyczące pracy z kwerendami z dużą częstotliwością, zobacz [wskazówki dotyczące żądań ograniczających](./guidance-for-throttled-requests.md).
 
-## <a name="data-set-result-size"></a>Rozmiar wyników zestawu danych
+## <a name="data-set-result-size"></a>Rozmiar wyniku zestawu danych
 
-Domyślnie wykres zasobów ogranicza dowolne zapytanie zwraca tylko **100** rekordów. Ten formant użytkownika i usługa ochronę niezamierzone zapytań, które mogłyby spowodować dużych zestawów danych. W większości przypadków to zdarzenie występuje, ponieważ klient jest eksperymentowanie z zapytaniami do znalezienia i Filtruj zasoby w taki sposób, który odpowiada ich potrzebom. Ten formant jest inny niż w [górnej](/azure/kusto/query/topoperator) lub [limit](/azure/kusto/query/limitoperator) operatory języka Eksploratora danych usługi Azure, aby ograniczyć wyniki.
+Domyślnie wykres zasobów ogranicza wszelkie zapytania, aby zwracać tylko **100** rekordów. Ta kontrolka chroni zarówno użytkownika, jak i usługę przed niezamierzonymi zapytaniami, które spowodują powstanie dużych zestawów danych. To zdarzenie najczęściej występuje, gdy klient próbuje znaleźć i filtrować zasoby w taki sposób, aby odpowiadały one konkretnym potrzebom. Ta kontrolka różni się od użycia [górnego](/azure/kusto/query/topoperator) lub [ograniczającego](/azure/kusto/query/limitoperator) operatory języka Azure Eksplorator danych, aby ograniczyć wyniki.
 
 > [!NOTE]
-> Korzystając z **pierwszy**, zaleca się Uporządkuj wyników według co najmniej jedną kolumnę z `asc` lub `desc`. Bez sortowania, zwrócone wyniki są losowych i repeatable nie.
+> Przy **pierwszym**użyciu zaleca się kolejność wyników według co najmniej jednej kolumny z `asc` lub `desc`. Bez sortowania, zwracane wyniki są losowe i nie można ich powtarzać.
 
-Domyślny limit można zastąpić za pomocą wszystkich metod interakcji z wykresem zasobów. W poniższych przykładach pokazano, jak zmienić limit rozmiaru zestawu danych, aby _200_:
+Domyślny limit można zastąpić wszystkimi metodami współpracy z wykresem zasobów. W poniższych przykładach pokazano, jak zmienić limit rozmiaru zestawu danych na _200_:
 
 ```azurecli-interactive
 az graph query -q "project name | order by name asc" --first 200 --output table
@@ -37,20 +36,20 @@ az graph query -q "project name | order by name asc" --first 200 --output table
 Search-AzGraph -Query "project name | order by name asc" -First 200
 ```
 
-W [interfejsu API REST](/rest/api/azureresourcegraph/resources/resources), znajduje się kontrolka **$top** i jest częścią **QueryRequestOptions**.
+W [interfejsie API REST](/rest/api/azureresourcegraph/resources/resources)formant jest **$Top** i jest częścią **QueryRequestOptions**.
 
-Formant który jest _najbardziej restrykcyjne_ zostanie zarejestrowane. Na przykład, jeśli zapytanie używa **górnej** lub **limit** operatorów i spowodują więcej rekordów niż **pierwszy**, maksymalna liczba rekordów zwracane, może być taka sama jak **Pierwszy**. Podobnie jeśli **górnej** lub **limit** jest mniejszy niż **pierwszy**, rekord, w zwróconym zestawie będzie mniejsze wartości ustawionej przez **górnej** lub **limit**.
+Formant, który jest _najbardziej restrykcyjny_ , zostanie wygrany. Na przykład jeśli w zapytaniu jest używany operator **Top** lub **Limit** , a wynikiem będzie więcej rekordów niż **pierwsze**, Maksymalna liczba zwracanych rekordów będzie równa **pierwsze**. Podobnie, jeśli **górny** lub **Limit** jest mniejszy niż **pierwszy**, zwracany zestaw rekordów będzie mniejszą wartością skonfigurowaną przez wartość **Top** lub **Limit**.
 
 **Pierwszy** obecnie ma maksymalną dozwoloną wartość _5000_.
 
-## <a name="skipping-records"></a>Pomija rekordy
+## <a name="skipping-records"></a>Pomijanie rekordów
 
-Opcja dalej do pracy z dużymi zestawami danych jest **Pomiń** kontroli. Dzięki temu Twoje zapytanie, aby przeskoczyć nad lub pominąć zdefiniowanej liczby rekordów przed zwróceniem wyników. **Pomiń** jest przydatne w przypadku zapytań, które sortowanie wyników w znaczący sposób, w których celem jest pobrać teraz rekordów gdzieś w trakcie wykonywania zestawu wyników. Jeśli wyniki potrzebne znajdują się na końcu zwróconego zestawu danych, jest bardziej wydajne, korzysta z konfiguracji sortowania i zamiast tego Pobierz wyniki w górnej części zestawu danych.
+Następną opcją pracy z dużymi zestawami danych jest kontrolka **pomijania** . Ta kontrolka umożliwia kwerendy przeskoczenie lub pominięcie zdefiniowanej liczby rekordów przed zwróceniem wyników. **Pomijanie** jest przydatne w przypadku zapytań, które sortują wyniki w zrozumiały sposób, gdy celem jest uzyskanie rekordów w środku zestawu wyników. Jeśli wyniki są konieczne na końcu zwracanego zestawu danych, bardziej wydajne jest użycie innej konfiguracji sortowania i pobranie wyników z góry zestawu danych.
 
 > [!NOTE]
-> Korzystając z **Pomiń**, zaleca się Uporządkuj wyników według co najmniej jedną kolumnę z `asc` lub `desc`. Bez sortowania, zwrócone wyniki są losowych i repeatable nie.
+> W przypadku używania **pomijania**zaleca się kolejność wyników według co najmniej jednej kolumny z `asc` lub `desc`. Bez sortowania, zwracane wyniki są losowe i nie można ich powtarzać.
 
-W poniższych przykładach pokazano, jak pominąć pierwszy _10_ rekordów zapytanie spowoduje, zamiast uruchamiania zwracany wynik ustawione przy użyciu rekordu 11:
+W poniższych przykładach pokazano, jak pominąć pierwsze _10_ rekordów, a zamiast tego zostanie wyświetlony zwrócony zestaw wyników z 11 rekordu:
 
 ```azurecli-interactive
 az graph query -q "project name | order by name asc" --skip 10 --output table
@@ -60,16 +59,16 @@ az graph query -q "project name | order by name asc" --skip 10 --output table
 Search-AzGraph -Query "project name | order by name asc" -Skip 10
 ```
 
-W [interfejsu API REST](/rest/api/azureresourcegraph/resources/resources), znajduje się kontrolka **$skip** i jest częścią **QueryRequestOptions**.
+W [interfejsie API REST](/rest/api/azureresourcegraph/resources/resources)formant jest **$Skip** i jest częścią **QueryRequestOptions**.
 
-## <a name="paging-results"></a>Stronicowanie wyników
+## <a name="paging-results"></a>Wyniki stronicowania
 
-Gdy jest to konieczne, można przerwać zestawu do prezentowania mniejszych zestawów rekordów do przetwarzania wyników, lub ponieważ zestaw wyników przekracza maksymalną dozwoloną wartość _1000_ zwrócone rekordy, użyj stronicowania. [Interfejsu API REST](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** zawiera wartości, aby wskazać wyników, dzielone zestawu: **resultTruncated** i **$skipToken** .
-**resultTruncated** jest wartość logiczna, która informuje użytkownika, jeśli istnieją dodatkowe rekordy nie jest zwracana w odpowiedzi. Ten stan może być również zidentyfikować, kiedy **liczba** właściwość jest mniejsza niż **totalRecords** właściwości. **totalRecords** definiuje, ile rekordy, które pasujących do zapytania.
+Gdy konieczne jest przerwanie zestawu wyników w mniejszych zestawach rekordów do przetworzenia lub ponieważ zestaw wyników będzie przekroczyć maksymalną dozwoloną wartość _1000_ zwracanych rekordów, należy użyć stronicowania. [Interfejs API REST](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** udostępnia wartości wskazujące, że zestaw wyników został podzielony: **resultTruncated** i **$skipToken**.
+**resultTruncated** jest wartością logiczną, która informuje odbiorcę, jeśli w odpowiedzi nie zostały zwrócone dodatkowe rekordy. Ten stan można również zidentyfikować, gdy właściwość **Count** jest mniejsza niż Właściwość **totalRecords** . **totalRecords** definiuje liczbę rekordów, które pasują do zapytania.
 
-Gdy **resultTruncated** jest **true**, **$skipToken** właściwość jest ustawiona w odpowiedzi. Ta wartość jest używana przy użyciu tej samej wartości zapytania i subskrypcji do następnego zestawu rekordów pasujących do zapytania.
+Gdy **resultTruncated** ma **wartość true**, właściwość **$skipToken** jest ustawiana w odpowiedzi. Ta wartość jest używana z tymi samymi wartościami zapytania i subskrypcji w celu uzyskania następnego zestawu rekordów, które pasują do zapytania.
 
-W poniższych przykładach pokazano sposób **pominąć** pierwsze rekordy 3000 i wróć **pierwszy** 1000 rekordów, po pominięte przy użyciu wiersza polecenia platformy Azure i programu Azure PowerShell:
+W poniższych przykładach pokazano, jak **pominąć** pierwsze 3000 rekordów i zwrócić **pierwsze** 1000 rekordów po pominiętych za pomocą interfejsu wiersza polecenia platformy Azure i Azure PowerShell:
 
 ```azurecli-interactive
 az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
@@ -80,12 +79,12 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 ```
 
 > [!IMPORTANT]
-> Zapytanie musi **projektu** **identyfikator** pola w kolejności do dzielenia na strony do pracy. Jeśli brakuje zapytania, odpowiedź nie będzie zawierać **$skipToken**.
+> Zapytanie musi uwzględniać wartość pola **ID** **, aby** można było rozpocząć stronicowanie. Jeśli brakuje tego zapytania, odpowiedź nie będzie zawierać **$skipToken**.
 
-Aby uzyskać przykład, zobacz [następnej strony kwerendy](/rest/api/azureresourcegraph/resources/resources#next-page-query) w dokumentacji interfejsu API REST.
+Aby zapoznać się z przykładem, zobacz [następne zapytanie na stronie](/rest/api/azureresourcegraph/resources/resources#next-page-query) w dokumentacji interfejsu API REST.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz język używany w [początkowego zapytania](../samples/starter.md).
-- Zobacz zaawansowane używa w [zaawansowanych zapytań](../samples/advanced.md).
-- Dowiedz się, jak [zapoznaj się z zasobami](explore-resources.md).
+- Zobacz język używany w [zapytaniach początkowych](../samples/starter.md).
+- Zobacz zaawansowane zastosowania w [zaawansowanych zapytaniach](../samples/advanced.md).
+- Dowiedz się, jak [eksplorować zasoby](explore-resources.md).

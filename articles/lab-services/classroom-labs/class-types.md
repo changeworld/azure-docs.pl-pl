@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: c6a424ed6036016839f03f50f90ad5d911b05fad
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 0e8b203240b4b2d6b67534ab52a7cd4ccf5df571
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710002"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976601"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Przegląd typów klas — Azure Lab Services
 Azure Lab Services umożliwia szybkie Konfigurowanie środowisk laboratoryjnych w chmurze. Artykuły w tej sekcji zawierają wskazówki dotyczące konfigurowania kilku typów laboratoriów zajęć przy użyciu Azure Lab Services.
@@ -34,6 +34,13 @@ Można skonfigurować laboratorium do uczenia skryptów powłoki w systemie Linu
 Studenci korzystający z tych klas skryptów otrzymują maszynę wirtualną z systemem Linux, aby poznać podstawy systemu Linux, a także zapoznać się z obsługą skryptów powłoki bash. Na maszynie wirtualnej z systemem Linux jest włączona funkcja dostępu do pulpitu zdalnego z zainstalowanym edytorem tekstu w języku [regedit](https://help.gnome.org/users/gedit/stable/) i [Visual Studio Code](https://code.visualstudio.com/) .
 
 Aby uzyskać szczegółowe informacje na temat sposobu konfigurowania tego typu laboratorium, zobacz [Skrypty powłoki w systemie Linux](class-type-shell-scripting-linux.md).
+
+## <a name="ethical-hacking"></a>Działanie hakerskie etyczny 
+Można skonfigurować laboratorium dla klasy, która koncentruje się na dowodowych etycznej działanie hakerskie. Testowanie penetracji, metoda stosowana przez społeczność etyczną działanie hakerskie, występuje, gdy ktoś próbuje uzyskać dostęp do systemu lub sieci w celu zademonstrowania luk w zabezpieczeniach. 
+
+W klasie etycznej działanie hakerskie studenci mogą uczyć się nowoczesnych technik obrony przed lukami w zabezpieczeniach. Każdy student otrzymuje maszynę wirtualną hosta systemu Windows Server, która ma dwie zagnieżdżone maszyny wirtualne — jedną maszynę **wirtualną z** obrazem. [](https://www.kali.org/) Maszyna wirtualna Metasploitable jest używana na potrzeby wykorzystywania i Kali maszyny wirtualnej zapewnia dostęp do narzędzi wymaganych do wykonywania zadań śledczej.
+
+Aby uzyskać szczegółowe informacje na temat sposobu konfigurowania tego typu laboratorium, zobacz [Konfigurowanie laboratorium do uczenia klasy etycznej działanie hakerskie](class-type-ethical-hacking.md).
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły: 

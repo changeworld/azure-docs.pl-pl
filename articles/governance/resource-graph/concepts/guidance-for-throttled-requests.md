@@ -1,51 +1,50 @@
 ---
-title: Wskazówki dotyczące żądania ograniczone
-description: Naucz się tworzyć lepsze zapytania w celu uniknięcia żądań do usługi Azure Resource wykresu z ograniczane.
+title: Wskazówki dotyczące żądań z ograniczeniami
+description: Dowiedz się, jak tworzyć lepsze zapytania, aby uniknąć ograniczania żądań do grafu zasobów platformy Azure.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c644d230846d9c644c3845348431eef36c8279c8
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 85d68beb27ab27a2ada9acbf9482d35dec438c06
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276901"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980286"
 ---
-# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Wskazówki dotyczące żądania ograniczone w wykresie zasobów platformy Azure
+# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Wskazówki dotyczące żądań z ograniczeniami na wykresie zasobów platformy Azure
 
-Podczas tworzenia programowe i częste użycie danych wykresu zasobów platformy Azure, brany pod uwagę przewidzieć wpływ na sposób ograniczania wyników zapytania. Modyfikowanie danych w sposób, jest wymagany może pomóc uniknąć ograniczane oraz obsługi przepływu aktualne dane dotyczące zasobów platformy Azure organizacji.
+Podczas tworzenia programistycznego i częstego używania danych grafu zasobów platformy Azure należy zwrócić uwagę na to, jak ograniczanie wpływa na wyniki zapytań. Zmiana sposobu, w jaki dane są żądane, może pomóc Ci w tym, że Twoja organizacja nie ma ograniczenia i utrzymuje przepływ danych na temat zasobów platformy Azure.
 
-W tym artykule opisano cztery obszary i wzorce dotyczące tworzenia kwerend w wykresie zasobów platformy Azure:
+W tym artykule omówiono cztery obszary i wzorce związane z tworzeniem zapytań w usłudze Azure Resource Graph:
 
-- Omówienie ograniczania nagłówki
-- Przetwarzanie wsadowe, zapytania
-- Różnicowanie zapytań
-- Wpływ dzielenia na strony
+- Omówienie nagłówków ograniczania
+- Wsadowe zapytania
+- Rozłożenie zapytań
+- Wpływ na podział na strony
 
-## <a name="understand-throttling-headers"></a>Omówienie ograniczania nagłówki
+## <a name="understand-throttling-headers"></a>Omówienie nagłówków ograniczania
 
-Wykres zasobów platformy Azure przydziela limit przydziału liczby dla każdego użytkownika, w oparciu o przedział czasu. Na przykład użytkownik może wysłać co najwyżej 15 zapytań w ramach każdego okna 5-sekundowego bez ograniczane. Wartość limitu przydziału zależy od wielu czynników i może ulec zmianie.
+Wykres zasobów platformy Azure przydziela numer przydziału dla każdego użytkownika na podstawie przedziału czasu. Na przykład użytkownik może wysyłać maksymalnie 15 zapytań w każdym 5-drugim oknie bez ograniczania przepustowości. Wartość przydziału jest określana na podstawie wielu czynników i może ulec zmianie.
 
-W każdej odpowiedzi na kwerendę wykres zasobów Azure dodaje dwa nagłówki ograniczania przepustowości:
+W każdej odpowiedzi na zapytanie wykres zasobów platformy Azure dodaje dwa nagłówki ograniczania:
 
-- `x-ms-user-quota-remaining` (int): Pozostały limit przydziału zasobów dla użytkownika. Ta wartość jest mapowany na liczby zapytań.
-- `x-ms-user-quota-resets-after` (: mm: ss): Czas trwania dopóki nie zostanie zresetowane przez użytkownika limit przydziału użycia.
+- `x-ms-user-quota-remaining` (int): pozostały przydział zasobów dla użytkownika. Ta wartość jest mapowana na liczbę zapytań.
+- `x-ms-user-quota-resets-after` (hh: mm: SS): czas trwania do momentu zresetowania zużycia przydziału użytkownika.
 
-Aby zilustrować, jak działają nagłówki, Przyjrzyjmy się odpowiedzi na zapytanie zawiera nagłówek i wartości `x-ms-user-quota-remaining: 10` i `x-ms-user-quota-resets-after: 00:00:03`.
+Aby zilustrować, jak działają nagłówki, przyjrzyjmy się odpowiedzi kwerendy zawierającej nagłówek i wartości `x-ms-user-quota-remaining: 10` i `x-ms-user-quota-resets-after: 00:00:03`.
 
-- W następnym 3 sekundach co najwyżej 10 kwerendy mogą być składane, nie będzie ograniczona.
-- W 3 sekundach, wartości `x-ms-user-quota-remaining` i `x-ms-user-quota-resets-after` zostaną zresetowane do `15` i `00:00:05` odpowiednio.
+- W ciągu następnych 3 sekund można przesłać maksymalnie 10 zapytań bez ograniczenia przepustowości.
+- W ciągu 3 sekund wartości `x-ms-user-quota-remaining` i `x-ms-user-quota-resets-after` zostaną zresetowane do odpowiednio `15` i `00:00:05`.
 
-Aby wyświetlić przykład użycia nagłówki, aby _wycofywania_ dla żądań zapytań, zobacz przykład w [zapytania równolegle](#query-in-parallel).
+Aby zobaczyć przykład użycia nagłówków do _wycofywania_ na żądaniach zapytań, zobacz test in [Query in Parallel](#query-in-parallel).
 
-## <a name="batching-queries"></a>Przetwarzanie wsadowe, zapytania
+## <a name="batching-queries"></a>Wsadowe zapytania
 
-Przetwarzanie wsadowe, zapytania według subskrypcji, grupy zasobów lub poszczególnych zasobów jest bardziej wydajne niż przekształcają zapytania. Koszt przydziału większych zapytania często jest mniejszy niż koszt przydziału wiele zapytań małych, jak i docelowym. Rozmiar partii jest zalecane jest mniejsza niż _300_.
+Wsadowe zapytania według subskrypcji, grupy zasobów lub pojedynczego zasobu są wydajniejsze niż zapytania przekształcają. Koszt przydziału dla większego zapytania jest często mniejszy niż koszt przydziału dla wielu małych i przeznaczonych zapytań. Rozmiar wsadu zaleca się mniej niż _300_.
 
-- Przykład źle zoptymalizowane metody
+- Przykład niezoptymalizowanego podejścia
 
   ```csharp
   // NOT RECOMMENDED
@@ -66,7 +65,7 @@ Przetwarzanie wsadowe, zapytania według subskrypcji, grupy zasobów lub poszcze
   }
   ```
 
-- Przykład #1 zoptymalizowane podejścia przetwarzania wsadowego
+- Przykład #1 zoptymalizowanego podejścia wsadowego
 
   ```csharp
   // RECOMMENDED
@@ -89,7 +88,7 @@ Przetwarzanie wsadowe, zapytania według subskrypcji, grupy zasobów lub poszcze
   }
   ```
 
-- Przykład #2 zoptymalizowane podejścia przetwarzania wsadowego
+- Przykład #2 zoptymalizowanego podejścia wsadowego
 
   ```csharp
   // RECOMMENDED
@@ -113,23 +112,23 @@ Przetwarzanie wsadowe, zapytania według subskrypcji, grupy zasobów lub poszcze
   }
   ```
 
-## <a name="staggering-queries"></a>Różnicowanie zapytań
+## <a name="staggering-queries"></a>Rozłożenie zapytań
 
-Ze względu na sposób ograniczania są wymuszane, zaleca się samodzielnym zapytań. Oznacza to, że zamiast wysyłać 60 zapytania w tym samym czasie, przesunąć zapytania do czterech 5-sekundowego systemu windows:
+Ze względu na sposób wymuszonego ograniczania przepustowości zalecamy użycie zapytań. Oznacza to, że zamiast wysyłać zapytania 60 w tym samym czasie, rozkładając zapytania na cztery 5-sekundowe okna:
 
-- Harmonogram rozłożona inne niż zapytania
+- Nierozkładany harmonogram zapytań
 
   | Liczba zapytań         | 60  | 0    | 0     | 0     |
   |---------------------|-----|------|-------|-------|
-  | Interwał (s) | 0-5 | 5-10 | 10-15 | 15-20 |
+  | Przedział czasu (s) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-- Rozłożona harmonogram zapytania
+- Harmonogram zapytania rozłożonego
 
-  | Liczba zapytań         | 15  | 15   | 15    | 15    |
+  | Liczba zapytań         | 15000  | 15000   | 15000    | 15000    |
   |---------------------|-----|------|-------|-------|
-  | Interwał (s) | 0-5 | 5-10 | 10-15 | 15-20 |
+  | Przedział czasu (s) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Poniżej przedstawiono przykład uwzględnienie nagłówki ograniczania przepustowości podczas wykonywania zapytań względem grafu zasobów platformy Azure:
+Poniżej znajduje się przykład przestrzegania nagłówków ograniczania przy wysyłaniu zapytań do grafu zasobów platformy Azure:
 
 ```csharp
 while (/* Need to query more? */)
@@ -151,9 +150,9 @@ while (/* Need to query more? */)
 }
 ```
 
-### <a name="query-in-parallel"></a>Zapytania równoległe
+### <a name="query-in-parallel"></a>Równoległe zapytanie
 
-Mimo że zaleca się przetwarzanie wsadowe, za pośrednictwem przetwarzania równoległego, istnieją razy gdzie zapytań nie może łatwo partii. W takich przypadkach można zbadać wykres zasobów platformy Azure, wysyłając wielu zapytań w sposób równoległy. Poniżej znajduje się przykład jak _wycofywania_ oparte na ograniczanie nagłówków w takich scenariuszach:
+Mimo że przetwarzanie wsadowe jest zalecane w porównaniu z przetwarzanie równoległe, istnieją przypadki, w których zapytania nie mogą być łatwo przetwarzane. W takich przypadkach możesz chcieć zbadać Wykres zasobów platformy Azure, wysyłając jednocześnie wiele zapytań. Poniżej przedstawiono przykład sposobu _wycofywania_ na podstawie nagłówków ograniczania w takich scenariuszach:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
@@ -185,13 +184,13 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 }
 ```
 
-## <a name="pagination"></a>Paginacja
+## <a name="pagination"></a>Dzielenia na strony
 
-Ponieważ wykres zasobów platformy Azure zwraca maksymalnie 1000 wpisów w odpowiedzi na jedno zapytanie, może być konieczne [stronicowanie](./work-with-data.md#paging-results) zapytań w taki sposób, aby uzyskać pełny zestaw danych, czego szukasz. Jednak niektórzy klienci wykres zasobów platformy Azure obsługuje podział na strony inaczej niż inne.
+Ponieważ wykres zasobów platformy Azure zwraca co najwyżej 1000 wpisów w pojedynczej odpowiedzi na zapytanie, może być konieczne podział [zapytań na strony](./work-with-data.md#paging-results) , aby uzyskać kompletny zestaw danych, którego szukasz. Niektórzy klienci grafu zasobów platformy Azure obsługują jednak stronicowanie w inny sposób niż inne.
 
-- Zestaw SDK języka C#
+- C#ZESTAWIE
 
-  Korzystając z zestawu SDK ResourceGraph, będzie konieczna Obsługa dzielenia na strony, przekazując token pomijania zwracanych z poprzedniej odpowiedzi na zapytanie do następnego zapytania z podziałem na strony. W tym projekcie oznacza, że musisz Zbieraj wyniki z wszystkich wywołań z podziałem na strony i połączyć je na końcu. W przypadku każdego zapytania z podziałem na strony, które wysyłasz przyjmuje jeden przydział zapytania:
+  W przypadku korzystania z zestawu SDK ResourceGraph należy obsługiwać stronicowanie, przekazując token pomijania zwracanego z poprzedniej odpowiedzi zapytania do następnej kwerendy z podziałem na strony. Ten projekt oznacza, że należy zebrać wyniki ze wszystkich wywołań z podziałem na strony i połączyć je razem na końcu. W takim przypadku każde wysłane zapytanie z podziałem na strony ma jeden przydział zapytania:
 
   ```csharp
   var results = new List<object>();
@@ -214,9 +213,9 @@ Ponieważ wykres zasobów platformy Azure zwraca maksymalnie 1000 wpisów w odpo
   }
   ```
 
-- Wiersza polecenia platformy Azure / Azure PowerShell
+- Interfejs wiersza polecenia platformy Azure/Azure PowerShell
 
-  Korzystając z wiersza polecenia platformy Azure lub programu Azure PowerShell, zapytania, aby wykres zasobów platformy Azure są automatycznie z podziałem na strony można pobrać maksymalnie 5000 wpisów. Wyniki zapytania zwraca listę połączoną z wpisów z wszystkich wywołań z podziałem na strony. W takich przypadkach w zależności od liczby wpisów w wyniku zapytania pojedynczego zapytania z podziałem na strony może zużywać więcej niż jeden przydział zapytania. Na przykład w poniższym przykładzie pojedynczego uruchamiania zapytania może zużywać maksymalnie pięć przydział zapytania:
+  W przypadku korzystania z interfejsu wiersza polecenia platformy Azure lub Azure PowerShell zapytania do usługi Azure Resource Graph są automatycznie podzielone na strony, aby pobrać maksymalnie 5000 wpisów. Wyniki zapytania zwracają łączną listę wpisów ze wszystkich wywołań z podziałem na strony. W tym przypadku, w zależności od liczby wpisów w wyniku zapytania, pojedyncze zapytanie z podziałem na strony może zużywać więcej niż jeden przydział zapytania. Na przykład w poniższym przykładzie pojedynczy przebieg zapytania może zużywać do pięciu zasobów zapytania:
 
   ```azurecli-interactive
   az graph query -q 'project id, name, type' -top 5000
@@ -226,19 +225,19 @@ Ponieważ wykres zasobów platformy Azure zwraca maksymalnie 1000 wpisów w odpo
   Search-AzGraph -Query 'project id, name, type' -Top 5000
   ```
 
-## <a name="still-get-throttled"></a>Nadal ograniczona?
+## <a name="still-get-throttled"></a>Nadal masz ograniczone ograniczenia?
 
-Jeśli jesteś ograniczany po wykonywaniu powyższe zalecenia, skontaktuj się z zespołem pod adresem [ resourcegraphsupport@microsoft.com ](mailto:resourcegraphsupport@microsoft.com).
+Jeśli po wykonaniu powyższych zaleceń masz ograniczone ograniczenia, skontaktuj się z zespołem pod adresem [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com).
 
-Należy podać następujące dane:
+Podaj następujące informacje:
 
-- Wybrany sterownik przypadków użycia i biznesowych potrzebuje wyższy limit ograniczania przepustowości.
-- Jak wiele zasobów masz dostęp do? Ile są zwracane z pojedynczego zapytania?
-- Co to są typy zasobów możesz zainteresowani?
-- Co to jest Twoja wzorzec zapytania? X zapytań na sekundę Y itp.
+- W przypadku konkretnego limitu ograniczania przepustowości wymagane są wymagania dotyczące przypadków użycia i współpracy.
+- Ile zasobów masz dostęp? Ile z nich jest zwracanych z pojedynczego zapytania?
+- Jakie typy zasobów interesują Cię?
+- Co to jest Twój wzorzec zapytania? Zapytania X na sekundę (Y) itd.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz język używany w [początkowego zapytania](../samples/starter.md).
-- Zobacz zaawansowane używa w [zaawansowanych zapytań](../samples/advanced.md).
-- Dowiedz się, jak [zapoznaj się z zasobami](explore-resources.md).
+- Zobacz język używany w [zapytaniach początkowych](../samples/starter.md).
+- Zobacz zaawansowane zastosowania w [zaawansowanych zapytaniach](../samples/advanced.md).
+- Dowiedz się, jak [eksplorować zasoby](explore-resources.md).

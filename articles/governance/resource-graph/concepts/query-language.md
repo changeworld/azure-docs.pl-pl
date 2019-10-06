@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c6e35d688581d0839e12806117e63c7d71fbc459
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 54bb0b4f21752b91ceb9d4004c153ff4d95006aa
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231512"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976760"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informacje o języku zapytań grafu zasobów platformy Azure
 
@@ -24,18 +23,18 @@ Najlepszym sposobem na zapoznanie się z językiem zapytań używanym przez Graf
 
 Poniżej znajduje się lista obsługiwanych operatorów tabelarycznych na wykresie zasobów:
 
-- [count](/azure/kusto/query/countoperator)
+- [liczbą](/azure/kusto/query/countoperator)
 - [itp](/azure/kusto/query/distinctoperator)
 - [sunąć](/azure/kusto/query/extendoperator)
 - [granice](/azure/kusto/query/limitoperator)
 - [Porządkuj według](/azure/kusto/query/orderoperator)
-- [project](/azure/kusto/query/projectoperator)
+- [projektu](/azure/kusto/query/projectoperator)
 - [projekt — poza](/azure/kusto/query/projectawayoperator)
 - [Northwind](/azure/kusto/query/sampleoperator)
-- [sample-distinct](/azure/kusto/query/sampledistinctoperator)
+- [przykład — różne](/azure/kusto/query/sampledistinctoperator)
 - [Sortuj według](/azure/kusto/query/sortoperator)
 - [Podsumuj](/azure/kusto/query/summarizeoperator)
-- [take](/azure/kusto/query/takeoperator)
+- [czasochłonn](/azure/kusto/query/takeoperator)
 - [Do góry](/azure/kusto/query/topoperator)
 - [Góra — zagnieżdżone](/azure/kusto/query/topnestedoperator)
 - [Top-hitters](/azure/kusto/query/tophittersoperator)
@@ -45,18 +44,18 @@ Poniżej znajduje się lista obsługiwanych operatorów tabelarycznych na wykres
 
 Poniżej znajduje się lista obsługiwanych funkcji na wykresie zasobów:
 
-- [ago()](/azure/kusto/query/agofunction)
+- [temu ()](/azure/kusto/query/agofunction)
 - [buildschema()](/azure/kusto/query/buildschema-aggfunction)
 - [strcat()](/azure/kusto/query/strcatfunction)
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
 - [ToString ()](/azure/kusto/query/tostringfunction)
-- [zip()](/azure/kusto/query/zipfunction)
+- [zip ()](/azure/kusto/query/zipfunction)
 
 ## <a name="escape-characters"></a>Znaki ucieczki
 
-Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, muszą być opakowane lub wyprowadzane w zapytaniu lub nazwa właściwości jest interpretowane niepoprawnie i nie zapewniają oczekiwanych wyników.
+Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, muszą być opakowane lub wyprowadzane w zapytaniu lub nazwa właściwości jest interpretowana niepoprawnie i nie zapewnia oczekiwanych wyników.
 
-- `.`— Zawiń nazwę właściwości w taki sposób, aby:`['propertyname.withaperiod']`
+- `.` — zawiń nazwę właściwości w taki sposób: `['propertyname.withaperiod']`
   
   Przykładowe zapytanie, które zawija Właściwość _OData. Type_:
 
@@ -64,21 +63,21 @@ Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, mus
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$`— Znak ucieczki w nazwie właściwości. Używany znak ucieczki zależy od wykresu zasobów powłoki jest uruchamiany z.
+- `$` — znak ucieczki w nazwie właściwości. Używany znak ucieczki zależy od wykresu zasobów powłoki jest uruchamiany z.
 
-  - **bash** - `\`
+  - **bash** -  @ no__t-2
 
-    Przykładowe zapytanie, które wyprowadza  _\$typ_ właściwości w bash:
+    Przykładowe zapytanie, które wyprowadza Właściwość _\$type_ w bash:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** — nie `$` wyznaczania znaku ucieczki.
+  - **cmd** — nie należy wyznaczać znaku `$`.
 
-  - **PowerShell** - ``` ` ```
+  - @No__t **programu PowerShell**— 1 @ no__t-2
 
-    Przykładowe zapytanie, które określa  _\$typ_ właściwości w programie PowerShell:
+    Przykładowe zapytanie, które wyprowadza Właściwość _\$type_ w programie PowerShell:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
@@ -86,6 +85,6 @@ Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, mus
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz język używany w zapytaniach [początkowych](../samples/starter.md)
-- Zobacz zaawansowane zastosowania w [zaawansowanych](../samples/advanced.md) zapytaniach
-- Dowiedz się, jak [eksplorować zasoby](explore-resources.md)
+- Zobacz język używany w [zapytaniach początkowych](../samples/starter.md)
+- Zobacz zaawansowane zastosowania w [zaawansowanych zapytaniach](../samples/advanced.md)
+- Dowiedz się więcej na temat [eksplorowania zasobów](explore-resources.md)

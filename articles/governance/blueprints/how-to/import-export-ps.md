@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/03/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f7bc3610841bcc3c40435f077073ffa0d55acd93
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 30e734c99a87364acfba9a58d83fe9a377958607
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243180"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978441"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Importowanie i eksportowanie definicji planów przy użyciu programu PowerShell
 
@@ -25,7 +24,7 @@ Plany platformy Azure mogą być w pełni zarządzane za pomocą Azure Portal. W
   - Zautomatyzowane testowanie definicji planów w środowiskach testowych
   - Obsługa potoków ciągłej integracji i ciągłego wdrażania (CI/CD)
 
-Bez względu na to, że Zarządzanie definicjami planów w postaci kodu ma zalety. W tym artykule pokazano, jak używać `Import-AzBlueprintWithArtifact` poleceń `Export-AzBlueprintWithArtifact` i w module [AZ. plan](https://powershellgallery.com/packages/Az.Blueprint/) .
+Bez względu na to, że Zarządzanie definicjami planów w postaci kodu ma zalety. W tym artykule pokazano, jak używać poleceń `Import-AzBlueprintWithArtifact` i `Export-AzBlueprintWithArtifact` w module [AZ. plan](https://powershellgallery.com/packages/Az.Blueprint/) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,9 +41,9 @@ Jeśli nie jest jeszcze zainstalowana, postępuj zgodnie z instrukcjami w temaci
 Przed rozpoczęciem eksportowania i importowania planów Przyjrzyjmy się, jak pliki wchodzące w skład definicji strategii są strukturalne. Definicja planu powinna być przechowywana w jego własnym folderze.
 
 > [!IMPORTANT]
-> Jeśli żadna wartość nie jest przenoszona do parametru `Import-AzBlueprintWithArtifact` Name polecenia cmdlet, używana jest nazwa folderu, w którym jest przechowywana definicja planu.
+> Jeśli żadna wartość nie jest przenoszona do parametru **name** polecenia cmdlet `Import-AzBlueprintWithArtifact`, używana jest nazwa folderu, w którym jest przechowywana definicja planu.
 
-Wraz z definicją strategii, która musi mieć nazwę `blueprint.json`, są artefakty, które składają się z definicji planu. Każdy artefakt musi znajdować się w podfolderze o nazwie `artifacts`.
+Wraz z definicją planu, która musi mieć nazwę `blueprint.json`, są artefaktami, które składają się z definicji planu. Każdy artefakt musi znajdować się w podfolderze o nazwie `artifacts`.
 Ze sobą struktura definicji planu jako plików JSON w folderach powinna wyglądać następująco:
 
 ```text
@@ -64,16 +63,16 @@ Ze sobą struktura definicji planu jako plików JSON w folderach powinna wygląd
 
 Procedura eksportowania definicji planu jest prosta. Eksportowanie definicji strategii może być przydatne w przypadku udostępniania, wykonywania kopii zapasowej lub umieszczania w kontroli źródła.
 
-- **Plan** potrzeb
+- **Plan** [wymagany]
   - Określa definicję planu
-  - Użyj `Get-AzBlueprint` , aby uzyskać obiekt odwołania
-- **OutputPath** potrzeb
+  - Użyj `Get-AzBlueprint`, aby pobrać obiekt Reference
+- **OutputPath** [wymagane]
   - Określa ścieżkę, w której mają zostać zapisane pliki JSON definicji planu
   - Pliki wyjściowe znajdują się w podfolderze o nazwie definicji strategii
-- **Wersja** obowiązkowe
+- **Wersja** (opcjonalnie)
   - Określa wersję do wyprowadzenia **w przypadku, gdy** obiekt odwołania do strategii zawiera odwołania do więcej niż jednej wersji.
 
-1. Pobierz odwołanie do definicji planu w celu wyeksportowania z subskrypcji reprezentowanej `{subId}`jako:
+1. Pobierz odwołanie do definicji planu w celu wyeksportowania z subskrypcji reprezentowanej jako `{subId}`:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -82,7 +81,7 @@ Procedura eksportowania definicji planu jest prosta. Eksportowanie definicji str
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. Użyj polecenia `Export-AzBlueprintWithArtifact` cmdlet, aby wyeksportować określoną definicję strategii:
+1. Użyj polecenia cmdlet `Export-AzBlueprintWithArtifact`, aby wyeksportować określoną definicję strategii:
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
@@ -94,19 +93,19 @@ Po [wyeksportowaniu definicji](#export-your-blueprint-definition) planu lub zdef
 
 Aby zapoznać się z przykładami wbudowanych definicji planów, zobacz [Azure Blueprint repozytorium GitHub](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins).
 
-- **Nazwa** potrzeb
+- **Nazwa** [wymagane]
   - Określa nazwę nowej definicji planu
-- **InputPath** potrzeb
+- **InputPath** [wymagane]
   - Określa ścieżkę, z której ma zostać utworzona definicja planu
   - Musi być zgodna z [wymaganą strukturą folderu](#folder-structure-of-a-blueprint-definition)
-- **ManagementGroupId** obowiązkowe
+- **ManagementGroupId** (opcjonalnie)
   - Identyfikator grupy zarządzania, w której ma zostać zapisana definicja planu, jeśli nie jest to ustawienie domyślne bieżącego kontekstu
   - Należy określić wartość **ManagementGroupId** lub identyfikator **subskrypcji**
-- Identyfikator **subskrypcji** obowiązkowe
+- Identyfikator **subskrypcji** (opcjonalnie)
   - Identyfikator subskrypcji, w której ma zostać zapisana definicja planu, jeśli nie jest to bieżące ustawienie domyślne kontekstu
   - Należy określić wartość **ManagementGroupId** lub identyfikator **subskrypcji**
 
-1. Użyj polecenia `Import-AzBlueprintWithArtifact` cmdlet, aby zaimportować określoną definicję strategii:
+1. Użyj polecenia cmdlet `Import-AzBlueprintWithArtifact`, aby zaimportować określoną definicję strategii:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell

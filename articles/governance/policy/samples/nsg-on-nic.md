@@ -1,22 +1,21 @@
 ---
-title: Przykład — sieciowa grupa zabezpieczeń x na każdej karcie sieciowej
-description: Te przykładowe definicje zasad wymagają, aby dana sieciowa grupa zabezpieczeń była używana w każdym wirtualnym interfejsie sieciowym.
+title: Przykład-sieciowej grupy zabezpieczeń x na każdej karcie sieciowej
+description: Ta przykładowa definicja zasad wymaga, aby określona sieciowa Grupa zabezpieczeń była używana z każdym interfejsem sieci wirtualnej.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8880b23933b5a32c4c829d429ddc032c1c2ae057
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e529ce3dbb54a7ac7422d9c6dd6b727730d641bb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60536971"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981354"
 ---
-# <a name="sample---network-security-group-x-on-every-nic"></a>Przykład — Sieciowa grupa zabezpieczeń X na każdej karcie sieciowej
+# <a name="sample---network-security-group-x-on-every-nic"></a>Przykład — sieciowa Grupa zabezpieczeń X na każdej karcie sieciowej
 
-Te zasady wymagają, aby dana sieciowa grupa zabezpieczeń była używana w każdym wirtualnym interfejsie sieciowym. Należy określić identyfikator sieciowej grupy zabezpieczeń do użycia.
+Te zasady wymagają, aby określona sieciowa Grupa zabezpieczeń była używana z każdym interfejsem sieci wirtualnej. Należy określić identyfikator sieciowej grupy zabezpieczeń, która ma być używana.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,11 +23,11 @@ Te zasady wymagają, aby dana sieciowa grupa zabezpieczeń była używana w każ
 
 [!code-json[main](../../../../policy-templates/samples/Network/enforce-nsg-on-nic/azurepolicy.json "NSG X on every nic")]
 
-Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Wdrażanie przykładu zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fenforce-nsg-on-nic%2Fazurepolicy.json)
+[@no__t — 1Deploy przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fenforce-nsg-on-nic%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -41,7 +40,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -nsg
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -59,7 +58,7 @@ az policy definition create --name 'enforce-nsg-on-nic' --display-name 'NSG X on
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-nsg-on-nic"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -67,6 +66,6 @@ Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualn
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)
+- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)

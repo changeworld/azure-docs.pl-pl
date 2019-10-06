@@ -2,18 +2,17 @@
 title: Indeks przykładów strategii
 description: Indeks przykładów dotyczących zapewniania zgodności i standardowego środowiska do wdrażania za pomocą usługi Azure Blueprints.
 author: DCtheGeek
-manager: carmonm
 ms.service: blueprints
 ms.topic: sample
 ms.date: 09/24/2019
 ms.author: dacoulte
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d54d60728b9ad0cc72a6cbc81b380b2511d732a8
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: f5f29ec3aa5dd87a891d53847bf5a3be3a121e63
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219811"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978373"
 ---
 # <a name="azure-blueprints-samples"></a>Przykłady usługi Azure Blueprints
 

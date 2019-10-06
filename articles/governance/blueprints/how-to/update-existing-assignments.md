@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: e5697d00c2b0a869667d74e93c3ccae593bf200b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bf1fdca5476f66249eb5b73bbcbf5913142eb0d3
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231938"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978477"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak zaktualizować istniejące przypisanie strategii
 
@@ -38,7 +37,7 @@ Po przypisaniu planu można zaktualizować przypisanie. Istnieje kilka powodów,
 
    ![Zaktualizowano istniejący tryb blokowania przypisania](../media/update-existing-assignments/updated-assignment.png)
 
-1. Poznaj szczegółowe informacje o innych operacjach przypisywania przy użyciu listy rozwijanej. Tabela aktualizacji **zarządzanych zasobów** według wybranej operacji przypisania.
+1. Poznaj szczegółowe informacje o innych **operacjach przypisywania** przy użyciu listy rozwijanej. Tabela aktualizacji **zarządzanych zasobów** według wybranej operacji przypisania.
 
    ![Operacje przypisania planu](../media/update-existing-assignments/assignment-operations.png)
 
@@ -46,7 +45,7 @@ Po przypisaniu planu można zaktualizować przypisanie. Istnieje kilka powodów,
 
 Wdrożenie zaktualizowanych przypisań następuje po kilku ważnych regułach. Te reguły określają, co się dzieje z już wdrożonymi zasobami. Żądana zmiana i typ zasobu artefaktu, który jest wdrażany lub aktualizowany, decyduje o tym, które akcje są wykonywane.
 
-- Przydziały ról
+- Przypisania ról
   - W przypadku zmiany roli lub osoby przydzielonej roli (użytkownika, grupy lub aplikacji) zostanie utworzone nowe przypisanie roli. Wcześniej wdrożone przypisania ról są pozostawione w miejscu.
 - Przypisania zasad
   - W przypadku zmiany parametrów przypisania zasad istniejące przypisanie zostanie zaktualizowane.
@@ -67,7 +66,7 @@ Nie ma żadnego limitu, ile razy można zaktualizować przypisanie. W przypadku 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [cyklu życia](../concepts/lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md).

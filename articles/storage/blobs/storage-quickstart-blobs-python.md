@@ -7,14 +7,14 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d371026b932a0870798a32b3102102836962b78
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203922"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981223"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Python
+# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu języka Python
 
 W tym przewodniku szybki start użyjesz języka Python, aby przekazywać, pobierać i wyświetlać listę blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage. Obiekty blob są po prostu obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Obiekty blob w usłudze Azure Storage różnią się od udziałów plików, tabel bez schematu i kolejek komunikatów.  Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](/azure/storage/common/storage-introduction).
 
@@ -50,7 +50,7 @@ W aplikacji podaj nazwę konta magazynu i klucz konta, aby utworzyć obiekt `Blo
 
 1. Otwórz plik *example.py* w Eksploratorze rozwiązań w środowisku IDE.
 
-1. Zastąp wartości `accountkey`inazwą konta magazynu i kluczem: `accountname`
+1. Zastąp wartości `accountname` i `accountkey` nazwą konta magazynu i kluczem:
 
     ```python
     block_blob_service = BlockBlobService(
@@ -96,8 +96,8 @@ Przykładowy program tworzy plik testowy w folderze *dokumenty* , przekazuje pli
 
 1. Przed kontynuowaniem przejdź do folderu *dokumenty* i sprawdź, czy są dwa pliki.
 
-    * *QuickStart_\<uniwersalny — unikatowy identyfikator\>*
-    * *QuickStart_\<uniwersalnie unikatowy identyfikator\>_DOWNLOADED*
+    * *QuickStart_ @ no__t-1universally-Unique-Identifier @ no__t-2*
+    * *QuickStart_ @ no__t-1universally-Unique-Identifier @ no__t-2_DOWNLOADED*
 
 1. Możesz je otworzyć i sprawdzić, czy są takie same.
 
@@ -169,7 +169,7 @@ Istnieje kilka metod przekazywania, których można użyć z usługą Blob Stora
 
 ### <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Poniższy kod tworzy `generator` `list_blobs` dla metody. Kod przechodzi przez listę obiektów BLOB w kontenerze i drukuje ich nazwy do konsoli programu.
+Poniższy kod tworzy `generator` dla metody `list_blobs`. Kod przechodzi przez listę obiektów BLOB w kontenerze i drukuje ich nazwy do konsoli programu.
 
 ```python
 # List the blobs in the container.
@@ -182,7 +182,7 @@ for blob in generator:
 ### <a name="download-the-blobs"></a>Pobieranie obiektów blob
 
 
-Pobierz obiekty blob na dysk lokalny przy użyciu `get_blob_to_path` metody.
+Pobierz obiekty blob na dysk lokalny, używając metody `get_blob_to_path`.
 Poniższy kod pobiera wcześniej przekazany obiekt BLOB. System dołącza *_DOWNLOADED* do nazwy obiektu BLOB, aby można było zobaczyć oba pliki na dysku lokalnym.
 
 ```python

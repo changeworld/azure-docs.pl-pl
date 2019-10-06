@@ -1,29 +1,28 @@
 ---
-title: Przykład — Przeprowadzanie inspekcji magazynów usługi Key Vault pod kątem braku punktów końcowych sieci wirtualnej
-description: Te przykładowe definicje zasad przeprowadzają inspekcję magazynów usługi Key Vault w celu wykrycia wystąpień, które nie mają punktów końcowych usługi dla sieci wirtualnej.
+title: Przykładowe inspekcje magazynów kluczy dla punktów końcowych sieci wirtualnych
+description: Ta przykładowa definicja zasad przeprowadza inspekcję Key Vault magazynów w celu wykrywania wystąpień, które nie mają punktów końcowych usługi sieci wirtualnej.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: bc5ce4a6a2e52ed8d21de8db8da1f815293b61f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ccfba0eae8d3c51cf153f58d554dc09b574d3873
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506998"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976962"
 ---
-# <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Przykład — Magazyny usługi Key Vault niemające punktów końcowych sieci wirtualnej
+# <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Przykładowe magazyny Key Vault bez punktów końcowych sieci wirtualnej
 
-Te zasady umożliwiają przeprowadzenie inspekcji magazynów usługi Key Vault, które nie mają punktów końcowych sieci wirtualnej. Należy ich używać w celu wymuszenia wymagań dotyczących zabezpieczeń. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [punktów końcowych usługi dla sieci wirtualnej w usłudze Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
+Ta zasada przeprowadza inspekcję Key Vault magazynów, które nie mają punktów końcowych sieci wirtualnej. Użyj, aby wymusić wymagania dotyczące zabezpieczeń. Aby uzyskać więcej informacji, zobacz [punkty końcowe usługi sieci wirtualnej w Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
 
-Te przykładowe zasady możesz wdrożyć przy użyciu następujących narzędzi:
+Te przykładowe zasady można wdrożyć przy użyciu:
 
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
 - [Interfejs wiersza polecenia platformy Azure](#azure-cli)
-- [Interfejs API REST](#rest-api)
+- [INTERFEJS API REST](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,16 +30,16 @@ Te przykładowe zasady możesz wdrożyć przy użyciu następujących narzędzi:
 
 ### <a name="policy-definition"></a>Definicja zasad
 
-W pełni gotowa definicja zasad JSON używana przez interfejs API REST, przyciski „Wdróż na platformie Azure” i ręcznie w witrynie Azure Portal.
+Kompletna definicja zasad JSON, używana przez interfejs API REST, przyciski "wdróż na platformie Azure" i ręcznie w portalu.
 
 [!code-json[full](../../../../policy-templates/samples/KeyVault/audit-keyvault-vnet-rules/azurepolicy.json "KeyVault vnet rules")]
 
 > [!NOTE]
-> W przypadku ręcznego tworzenia zasad w witrynie Azure Portal użyj powyższych elementów **properties.parameters** i **properties.policyRule**. Połącz dwie sekcje za pomocą nawiasów klamrowych `{}`, aby utworzyć poprawny kod JSON.
+> W przypadku ręcznego tworzenia zasad w portalu Użyj części **właściwości. Parameters** i **Properties. Klasa policyrule** powyższych elementów. Zawiń dwie sekcje razem z nawiasami klamrowymi `{}`, aby uczynić prawidłowym kodem JSON.
 
 ### <a name="policy-rules"></a>Reguły zasad
 
-Kod JSON definiujący reguły zasad używany przez interfejs wiersza polecenia platformy Azure i program Azure PowerShell.
+KOD JSON definiujący reguły zasad używany przez interfejs wiersza polecenia platformy Azure i Azure PowerShell.
 
 [!code-json[rule](../../../../policy-templates/samples/KeyVault/audit-keyvault-vnet-rules/azurepolicy.rules.json "Policy rules (JSON)")]
 
@@ -50,14 +49,14 @@ Ta przykładowa definicja zasad nie ma zdefiniowanych parametrów.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![Wdrażanie przykładu zasad w usłudze Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
-[![wdrażanie przykładu zasad do klientów rządowych platformy Azure](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[![Deploy przykładową zasadą do platformy azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[@no__t 4Deploy zasad na platformie Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-### <a name="deploy-with-azure-powershell"></a>Wdrażanie przy użyciu programu Azure PowerShell
+### <a name="deploy-with-azure-powershell"></a>Wdrażanie za pomocą Azure PowerShell
 
 ```azurepowershell-interactive
 # Create the Policy Definition (Subscription scope)
@@ -70,9 +69,9 @@ $scope = Get-AzResourceGroup -Name 'YourResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'audit-keyvault-vnet-rules-assignment' -DisplayName 'Audit Key Vault Assignment' -Scope $scope.ResourceId -PolicyDefinition $definition
 ```
 
-### <a name="remove-with-azure-powershell"></a>Usuwanie przy użyciu programu Azure PowerShell
+### <a name="remove-with-azure-powershell"></a>Usuń z Azure PowerShell
 
-Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i poprzednią definicję:
+Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i definicję:
 
 ```azurepowershell-interactive
 # Remove the Policy Assignment
@@ -82,17 +81,17 @@ Remove-AzPolicyAssignment -Id $assignment.ResourceId
 Remove-AzPolicyDefinition -Id $definition.ResourceId
 ```
 
-### <a name="azure-powershell-explanation"></a>Objaśnienie dla programu Azure PowerShell
+### <a name="azure-powershell-explanation"></a>Azure PowerShell Wyjaśnij
 
-Skrypty służące do wdrażania i usuwania korzystają z następujących poleceń. Każde polecenie w poniższej tabeli stanowi link do dokumentacji polecenia:
+Skrypty wdrażania i usuwania używają następujących poleceń. Każde polecenie w poniższej tabeli zawiera linki do dokumentacji dotyczącej poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Tworzy nową definicję zasad Azure Policy. |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Tworzy nową definicję Azure Policy. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | Pobiera pojedynczą grupę zasobów. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
-| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Usuwa istniejące przypisanie zasad Azure Policy. |
-| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Usuwa istniejącą definicję zasad Azure Policy. |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Tworzy nowe przypisanie Azure Policy. W tym przykładzie udostępniamy definicję, ale może ona również podejmować inicjatywy. |
+| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Usuwa istniejące przypisanie Azure Policy. |
+| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Usuwa istniejącą definicję Azure Policy. |
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -111,9 +110,9 @@ scope=$(az group show --name 'YourResourceGroup')
 assignment=$(az policy assignment create --name 'audit-keyvault-vnet-rules-assignment' --display-name 'Audit Key Vault Assignment' --scope `echo $scope | jq '.id' -r` --policy `echo $definition | jq '.name' -r`)
 ```
 
-### <a name="remove-with-azure-cli"></a>Usuwanie za pomocą interfejsu wiersza polecenia platformy Azure
+### <a name="remove-with-azure-cli"></a>Usuń za pomocą interfejsu wiersza polecenia platformy Azure
 
-Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i poprzednią definicję:
+Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i definicję:
 
 ```azurecli-interactive
 # Remove the Policy Assignment
@@ -123,23 +122,23 @@ az policy assignment delete --name `echo $assignment | jq '.name' -r`
 az policy definition delete --name `echo $definition | jq '.name' -r`
 ```
 
-### <a name="azure-cli-explanation"></a>Objaśnienie dla interfejsu wiersza polecenia platformy Azure
+### <a name="azure-cli-explanation"></a>Wyjaśnienie interfejsu wiersza polecenia platformy Azure
 
 | Polecenie | Uwagi |
 |---|---|
-| [az policy definition create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Tworzy nową definicję zasad Azure Policy. |
-| [az group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Pobiera pojedynczą grupę zasobów. |
-| [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
-| [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Usuwa istniejące przypisanie zasad Azure Policy. |
-| [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Usuwa istniejącą definicję zasad Azure Policy. |
+| [AZ Policy Definition Create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Tworzy nową definicję Azure Policy. |
+| [AZ Group Show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Pobiera pojedynczą grupę zasobów. |
+| [AZ Policy przypisanie Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Tworzy nowe przypisanie Azure Policy. W tym przykładzie udostępniamy definicję, ale może ona również podejmować inicjatywy. |
+| [AZ Policy przypisanie Delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Usuwa istniejące przypisanie Azure Policy. |
+| [AZ Policy Definition Delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Usuwa istniejącą definicję Azure Policy. |
 
-## <a name="rest-api"></a>Interfejs API REST
+## <a name="rest-api"></a>INTERFEJS API REST
 
-Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API REST usługi Resource Manager, np. klient [ARMClient](https://github.com/projectkudu/ARMClient) lub program PowerShell.
+Istnieje kilka narzędzi, których można użyć do współpracy z interfejsem API REST Menedżer zasobów, na przykład [ARMClient](https://github.com/projectkudu/ARMClient) lub PowerShell.
 
 ### <a name="deploy-with-rest-api"></a>Wdrażanie przy użyciu interfejsu API REST
 
-- Utwórz definicję zasad (zakres subskrypcji). Użyj kodu JSON [definicji zasad](#policy-definition) w treści żądania.
+- Utwórz definicję zasad (zakres subskrypcji). Użyj formatu JSON [definicji zasad](#policy-definition) dla treści żądania.
 
   ```http
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/audit-keyvault-vnet-rules?api-version=2018-05-01
@@ -151,7 +150,7 @@ Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/YourResourceGroup/providers/Microsoft.Authorization/policyAssignments/audit-keyvault-vnet-rules-assignment?api-version=2018-05-01
   ```
 
-  Skorzystaj z następującego przykładowego kodu JSON w treści żądania:
+  W treści żądania należy użyć następującego przykładu JSON:
 
   ```json
   {
@@ -162,30 +161,30 @@ Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API
   }
   ```
 
-### <a name="remove-with-rest-api"></a>Usuwanie za pomocą interfejsu API REST
+### <a name="remove-with-rest-api"></a>Usuwanie przy użyciu interfejsu API REST
 
-- Usuwanie przypisania zasad
+- Usuń przypisanie zasad
 
   ```http
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/audit-keyvault-vnet-rules-assignment?api-version=2018-05-01
   ```
 
-- Usuwanie definicji zasad
+- Usuń definicję zasad
 
   ```http
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/audit-keyvault-vnet-rules?api-version=2018-05-01
   ```
 
-### <a name="rest-api-explanation"></a>Objaśnienie dla interfejsu API REST
+### <a name="rest-api-explanation"></a>Wyjaśnienie interfejsu API REST
 
 | Usługa | Grupa | Operacja | Uwagi |
 |---|---|---|---|
-| Zarządzanie zasobami | Definicje zasad | [Tworzenie](/rest/api/resources/policydefinitions/createorupdate) | Tworzy nową definicję zasad Azure Policy w ramach subskrypcji. Alternatywne rozwiązanie: [Tworzenie w grupie zarządzania](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
-| Zarządzanie zasobami | Przypisania zasad | [Tworzenie](/rest/api/resources/policyassignments/create) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
-| Zarządzanie zasobami | Przypisania zasad | [Usuwanie](/rest/api/resources/policyassignments/delete) | Usuwa istniejące przypisanie zasad Azure Policy. |
-| Zarządzanie zasobami | Definicje zasad | [Usuwanie](/rest/api/resources/policydefinitions/delete) | Usuwa istniejącą definicję zasad Azure Policy. Alternatywne rozwiązanie: [Usuwanie w grupie zarządzania](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Zarządzanie zasobami | Definicje zasad | [Create](/rest/api/resources/policydefinitions/createorupdate) | Tworzy nową definicję Azure Policy w ramach subskrypcji. Alternatywa: [Utwórz w grupie zarządzania](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Zarządzanie zasobami | Przypisania zasad | [Create](/rest/api/resources/policyassignments/create) | Tworzy nowe przypisanie Azure Policy. W tym przykładzie udostępniamy definicję, ale może ona również podejmować inicjatywy. |
+| Zarządzanie zasobami | Przypisania zasad | [Delete](/rest/api/resources/policyassignments/delete) | Usuwa istniejące przypisanie Azure Policy. |
+| Zarządzanie zasobami | Definicje zasad | [Delete](/rest/api/resources/policydefinitions/delete) | Usuwa istniejącą definicję Azure Policy. Alternatywa: [usuwanie w grupie zarządzania](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj dodatkowe [przykłady zasad Azure Policy](index.md)
-- Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md)
+- Zapoznaj się z dodatkowymi [przykładami Azure Policy](index.md)
+- Przegląd [struktury definicji Azure Policy](../concepts/definition-structure.md)

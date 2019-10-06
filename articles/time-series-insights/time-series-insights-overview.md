@@ -1,5 +1,5 @@
 ---
-title: 'Omówienie: Co to jest usługa Azure Time Series Insights? | Microsoft Docs'
+title: 'Przegląd: co to jest Azure Time Series Insights? | Microsoft Docs'
 description: Wprowadzenie do usługi Azure Time Series Insights — nowej usługi do analizy danych szeregów czasowych i obsługi rozwiązań IoT.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 706960f18080b4883735195b21ed05c3763e8617
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 0c832e272029dc110e156ef89deb908fec02f1b2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264495"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981195"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
@@ -31,18 +31,18 @@ Usługa Time Series Insights ma cztery kluczowe zadania:
 - Time Series Insights zapewnia wbudowaną wizualizację za pomocą Eksploratora Time Series Insights. 
 - Time Series Insights udostępnia usługę zapytań, zarówno w Eksploratorze Time Series Insights, jak i za pomocą interfejsów API, które można łatwo zintegrować, aby osadzić dane szeregów czasowych w aplikacjach niestandardowych.
 
-W przypadku tworzenia aplikacji do użytku wewnętrznego lub dla klientów zewnętrznych można użyć Time Series Insights jako zaplecza. Można jej użyć do indeksowania, przechowywania i agregowania danych szeregów czasowych. Aby utworzyć wizualizację niestandardową i środowisko użytkownika na górze, użyj [zestawu SDK klienta](tutorial-explore-js-client-lib.md). Time Series Insights jest również wyposażony w kilka [interfejsów API zapytań](how-to-shape-query-json.md) , aby umożliwić te niestandardowe scenariusze.
+W przypadku tworzenia aplikacji do użytku wewnętrznego lub dla klientów zewnętrznych można użyć Time Series Insights jako zaplecza. Można jej użyć do indeksowania, przechowywania i agregowania danych szeregów czasowych. Aby utworzyć wizualizację niestandardową i środowisko użytkownika na górze, użyj [zestawu SDK klienta](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Time Series Insights jest również wyposażony w kilka [interfejsów API zapytań](how-to-shape-query-json.md) , aby umożliwić te niestandardowe scenariusze.
 
 Dane szeregów czasowych przedstawiają, jak zasób lub proces zmienia się wraz z upływem czasu. Dane szeregów czasowych są indeksowane przez sygnatury czasowe, a czas jest najbardziej znaczącą osią, na której zorganizowane są takie dane. Dane szeregów czasowych są zwykle docierane w kolejności sekwencyjnej, więc jest traktowana jako INSERT, a nie aktualizacja bazy danych.
 
 Może być wyzwaniem do przechowywania, indeksowania, wykonywania zapytań, analizowania i wizualizowania danych szeregów czasowych w dużych woluminach.
 Azure Time Series Insights przechwytuje i zapisuje każde nowe zdarzenie jako wiersz, a zmiana jest efektywnie mierzona w czasie. W związku z tym możesz odszukać szczegółowe informacje od przeszłości, aby ułatwić prognozowanie przyszłych zmian.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 ### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>Dowiedz się więcej o Azure Time Series Insights, opartej na chmurze platformie IoT Analytics.</br>
 
-[![PLIKÓW](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
+[@no__t — 1VIDEO](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Podstawowe scenariusze
 
@@ -70,13 +70,13 @@ Azure Time Series Insights przechwytuje i zapisuje każde nowe zdarzenie jako wi
 
 - **Szybko Rozpocznij pracę**: Azure Time Series Insights nie wymaga przygotowania do przedniego danych, dzięki czemu możesz szybko połączyć się z milionami zdarzeń w centrum IoT Hub lub centrum zdarzeń. Po nawiązaniu połączenia możesz wizualizować dane czujników i korzystać z nich, aby szybko weryfikować Twoje rozwiązania IoT. Możesz korzystać z danych bez pisania kodu i nie musisz uczyć się nowego języka. Time Series Insights udostępnia szczegółową, niezależną powierzchnię zapytania dla zaawansowanych użytkowników, a następnie wskaż i kliknij eksplorację.
 
-- **Szczegółowe informacje**w czasie rzeczywistym: Time Series Insights mogą pozyskiwanie milionów zdarzeń czujników dziennie z opóźnieniem jednej minuty. Time Series Insights pomaga uzyskać wgląd w dane czujników. Korzystaj z nich, aby wypróbować trendy i anomalie, przeprowadzać analizy głównych przyczyn i uniknąć kosztownych przestojów. Wzajemna korelacja między danymi w czasie rzeczywistym i historycznymi ułatwia znalezienie ukrytych trendów w danych.
+- **Szczegółowe informacje**w czasie rzeczywistym: Time Series Insights mogą pozyskiwanie milionów zdarzeń czujników dziennie, z opóźnieniem jednej minuty. Time Series Insights pomaga uzyskać wgląd w dane czujników. Korzystaj z nich, aby wypróbować trendy i anomalie, przeprowadzać analizy głównych przyczyn i uniknąć kosztownych przestojów. Wzajemna korelacja między danymi w czasie rzeczywistym i historycznymi ułatwia znalezienie ukrytych trendów w danych.
 
 - **Tworzenie niestandardowych rozwiązań**: Osadź Azure Time Series Insights dane w istniejących aplikacjach. Można również tworzyć nowe niestandardowe rozwiązania przy użyciu Time Series Insights interfejsów API REST. Utwórz widoki spersonalizowane, które można udostępniać innym, aby umożliwić im eksplorowanie Twoich szczegółowych danych.
 
 - **Skalowalność**: usługa Time Series Insights obsługuje urządzenia IoT na dużą skalę. Umożliwia pozyskiwanie od 1 miliona do 100 milionów zdarzeń dziennie, które domyślnie są przechowywane przez 31 dni. Możesz wizualizować i analizować strumienie danych na żywo niemal w czasie rzeczywistym, obok danych historycznych.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
 Aby rozpocząć, wykonaj następujące kroki.
 

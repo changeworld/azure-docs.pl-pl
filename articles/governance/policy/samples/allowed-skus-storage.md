@@ -1,22 +1,21 @@
 ---
-title: Przykład — dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
-description: Te przykładowe definicje zasad wymagają, aby konta magazynu i maszyny wirtualne korzystały z zatwierdzonych jednostek SKU.
+title: Przykładowe jednostki SKU dozwolone dla kont magazynu i maszyn wirtualnych
+description: Ta przykładowa definicja zasad wymaga, aby konta magazynu i maszyny wirtualne korzystały z zatwierdzonych jednostek SKU.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e84462a930ffad202def1da1e2c923371dde9d58
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61333516"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980604"
 ---
-# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Przykład — dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
+# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Przykładowe jednostki SKU dozwolone dla kont magazynu i maszyn wirtualnych
 
-Te zasady wymagają, aby konta magazynu i maszyny wirtualne używały zatwierdzonych jednostek SKU. Używają wbudowanych zasad w celu zapewnienia zatwierdzonych jednostek SKU. Do Ciebie należy określenie tablicy z zatwierdzonymi jednostkami SKU maszyn wirtualnych i tablicy z zatwierdzonymi jednostkami SKU kont magazynu.
+Te zasady wymagają, aby konta magazynu i maszyny wirtualne korzystały z zatwierdzonych jednostek SKU. Program używa wbudowanych zasad, aby zapewnić zatwierdzone jednostki SKU. Należy określić tablicę jednostek SKU zatwierdzonych maszyn wirtualnych i tablicę zatwierdzonych jednostek SKU konta magazynu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,11 +23,11 @@ Te zasady wymagają, aby konta magazynu i maszyny wirtualne używały zatwierdzo
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.json "Allowed SKUs for Storage Accounts and Virtual Machines")]
 
-Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell).
+Ten szablon można wdrożyć przy użyciu [Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Wdrażanie przykładu zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[@no__t — 1Deploy przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -43,9 +42,9 @@ $policyset= New-AzPolicySetDefinition -Name "skus-for-multiple-types" -DisplayNa
 New-AzPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentName> -Scope <scope>  -LISTOFALLOWEDSKUS_1 <VM SKUs> -LISTOFALLOWEDSKUS_2 <Storage Account SKUs>
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
 
-Uruchom następujące polecenie, aby usunąć przypisanie zasad i definicję.
+Uruchom następujące polecenie, aby usunąć przypisanie i definicję zasad.
 
 ```azurepowershell-interactive
 Remove-AzPolicyAssignment -Name <assignmentName>
@@ -62,15 +61,15 @@ az policy set-definition create --name "skus-for-multiple-types" --display-name 
 az policy assignment create --name <assignmentName> --scope <scope> --policy-set-definition "skus-for-multiple-types" --params "{ 'LISTOFALLOWEDSKUS_1': { 'value': <VM SKU Array> }, 'LISTOFALLOWEDSKUS_2': { 'value': <Storage Account SKU Array> } }"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
 
-Uruchom następujące polecenie, aby usunąć przypisanie zasad i definicję.
+Uruchom następujące polecenie, aby usunąć przypisanie i definicję zasad.
 
 ```azurecli-interactive
 az policy assignment delete --name <assignmentName>
 az policy set-definition delete --name "skus-for-multiple-types"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)
+- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)

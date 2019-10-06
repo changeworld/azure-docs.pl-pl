@@ -6,28 +6,25 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a01cee2ba803a048e426507b57b96d0833743636
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 5326e765701a42323ea62df8d35128c4117b2ed9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181381"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981416"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy struktury przypisywania
 
 Przypisania zasad są używane przez Azure Policy do definiowania, które zasoby są przypisane podczas zasad lub inicjatyw. Przypisanie zasad pozwala określić wartości parametrów dla tej grupy zasobów w czasie przypisywania, dzięki czemu można ponownie użyć definicji zasad, które odnoszą się do tych samych właściwości zasobów z różnymi potrzebami zgodności.
 
-Schemat używany przez usługę Azure Policy można znaleźć tutaj: [https://docs.microsoft.com/azure/templates/microsoft.authorization/2019-01-01/policyassignments](/azure/templates/microsoft.authorization/2019-01-01/policyassignments)
-
-Aby utworzyć przypisanie zasad, należy użyć formatu JSON. Definicja zasad zawiera elementy dla:
+Aby utworzyć przypisanie zasad, należy użyć formatu JSON. Przypisanie zasad zawiera elementy dla:
 
 - Nazwa wyświetlana
-- description
+- opis
 - metadane
 - Tryb wymuszania
 - Definicja zasad
-- parameters
+- parametry
 
 Na przykład poniższy kod JSON przedstawia przypisanie zasad w trybie _DoNotEnforce_ z parametrami dynamicznymi:
 
@@ -55,7 +52,7 @@ Na przykład poniższy kod JSON przedstawia przypisanie zasad w trybie _DoNotEnf
 
 Wszystkie przykłady Azure Policy znajdują się na [Azure Policy próbkach](../samples/index.md).
 
-## <a name="display-name-and-description"></a>Nazwę wyświetlaną i opis
+## <a name="display-name-and-description"></a>Nazwa wyświetlana i opis
 
 Użyj **DisplayName** i **Description** , aby zidentyfikować przypisanie zasad i zapewnić kontekst do użycia z określonym zestawem zasobów. **Nazwa wyświetlana** ma maksymalną długość _128_ znaków i **Opis** ma maksymalną długość _512_ znaków.
 
@@ -66,17 +63,17 @@ Ten scenariusz jest często określany jako "What If" i wyrównany do bezpieczny
 
 Ta właściwość ma następujące wartości:
 
-|Tryb |Wartość JSON |Type |Koryguj ręcznie |Wpis dziennika aktywności |Opis |
+|Tryb |Wartość JSON |Typ |Koryguj ręcznie |Wpis dziennika aktywności |Opis |
 |-|-|-|-|-|-|
-|Włączono |Domyślny |ciąg |Tak |Tak |Efekt zasad jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
-|Wyłączone |DoNotEnforce |ciąg |Tak |Nie | Efekt zasad nie jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
+|Enabled |Domyślny |string |Tak |Tak |Efekt zasad jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
+|Wyłączone |DoNotEnforce |string |Tak |Nie | Efekt zasad nie jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
 
 Jeśli w definicji zasad lub inicjatywy nie określono **wymuszania** , używana jest wartość _Domyślna_ . [Zadania korygowania](../how-to/remediate-resources.md) można uruchamiać dla zasad [deployIfNotExists](./effects.md#deployifnotexists) , nawet jeśli ustawienie **wymuszania** ma wartość _DoNotEnforce_.
 
 ## <a name="policy-definition-id"></a>Identyfikator definicji zasad
 
 To pole musi zawierać pełną nazwę ścieżki definicji zasad lub definicji inicjatywy.
-`policyDefinitionId`jest ciągiem, a nie tablicą. Zaleca się, aby w zamian była często przypisywanych wielu zasad w celu użycia [inicjatywy](./definition-structure.md#initiatives) .
+`policyDefinitionId` to ciąg, a nie tablica. Zaleca się, aby w zamian była często przypisywanych wielu zasad w celu użycia [inicjatywy](./definition-structure.md#initiatives) .
 
 ## <a name="parameters"></a>Parametry
 
@@ -94,7 +91,7 @@ Dzięki temu projektowi można ponownie używać zasad lub definicji inicjatywy 
 }
 ```
 
-W tym przykładzie parametry wcześniej zdefiniowane w definicji zasad są `prefix` i. `suffix` Ten konkretny zestaw `prefix` przypisań zasad należy do `suffix` **działu** i do **-LC**. Ta sama definicja zasad jest wielokrotnego użytku z innym zestawem parametrów dla innego działu, zmniejszając duplikowanie i złożoność definicji zasad przy jednoczesnym zapewnianiu elastyczności.
+W tym przykładzie parametry wcześniej zdefiniowane w definicji zasad są `prefix` i `suffix`. Ten konkretny zestaw przypisań zasad `prefix` do **działu** i `suffix` do **-LC**. Ta sama definicja zasad jest wielokrotnego użytku z innym zestawem parametrów dla innego działu, zmniejszając duplikowanie i złożoność definicji zasad przy jednoczesnym zapewnianiu elastyczności.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146098"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981710"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Omówienie usługi Azure Plans
 
@@ -20,7 +19,7 @@ Usługę Azure Blueprints można porównać do planu, który pozwala inżynierow
 
 Usługa Blueprints umożliwia deklaratywne organizowanie i wdrażanie różnych szablonów zasobów i innych artefaktów, takich jak:
 
-- Przydziały ról
+- Przypisania ról
 - Przypisania zasad
 - Szablony usługi Azure Resource Manager
 - Grupy zasobów
@@ -52,9 +51,9 @@ Zasady mogą być dołączane jako jedne z wielu _artefaktów_ w definicji strat
 
 Strategia składa się z _artefaktów_. Usługa Blueprints obsługuje obecnie następujące zasoby jako artefakty:
 
-|Resource  | Opcje hierarchii| Opis  |
+|Zasób  | Opcje hierarchii| Opis  |
 |---------|---------|---------|
-|Grupy zasobów | Subscription | Umożliwia utworzenie nowej grupy zasobów do użytku przez inne artefakty w ramach strategii.  Te zastępcze grupy zasobów umożliwiają organizowanie zasobów dokładnie w taką strukturę, jaka jest pożądana. Udostępniają one ogranicznik zakresu na potrzeby uwzględnionych zasad i artefakty przypisania roli oraz szablony usługi Azure Resource Manager. |
+|Grupy zasobów | Subskrypcja | Umożliwia utworzenie nowej grupy zasobów do użytku przez inne artefakty w ramach strategii.  Te zastępcze grupy zasobów umożliwiają organizowanie zasobów dokładnie w taką strukturę, jaka jest pożądana. Udostępniają one ogranicznik zakresu na potrzeby uwzględnionych zasad i artefakty przypisania roli oraz szablony usługi Azure Resource Manager. |
 |Szablon usługi Azure Resource Manager | Subskrypcja, grupa zasobów | Szablony służą do tworzenia złożonych środowisk. Przykładowe środowiska: farma programu SharePoint, konfiguracja stanu usługi Azure Automation lub obszar roboczy usługi Log Analytics. |
 |Przypisanie zasad | Subskrypcja, grupa zasobów | Umożliwia przypisanie zasad lub inicjatywy do subskrypcji, do której przypisano strategię. Zasady lub inicjatywa muszą znajdować się w zakresie lokalizacji definicji strategii. Jeśli zasady lub inicjatywa mają parametry, są one przypisywane podczas tworzenia strategii bądź podczas jej przypisywania. |
 |Przypisanie roli | Subskrypcja, grupa zasobów | Dodawanie istniejącego użytkownika lub grupy do wbudowanej roli w celu zagwarantowania, że odpowiednie osoby zawsze będą mieć odpowiedni dostęp do zasobów. Przypisania ról mogą być definiowane dla całej subskrypcji lub mogą być zagnieżdżone w konkretnej grupie zasobów uwzględnionej w strategii. |
@@ -63,7 +62,7 @@ Strategia składa się z _artefaktów_. Usługa Blueprints obsługuje obecnie na
 
 Podczas tworzenia definicji strategii należy zdefiniować miejsce, w którym strategia zostanie zapisana. Strategie można zapisywać tylko w [grupie zarządzania](../management-groups/overview.md) lub subskrypcji, do której użytkownik ma dostęp jako **Współautor**. Jeśli lokalizacja znajduje się w grupie zarządzania, strategię można przypisać do dowolnej subskrypcji podrzędnej tej grupy zarządzania.
 
-### <a name="blueprint-parameters"></a>Parametry planu
+### <a name="blueprint-parameters"></a>Parametry strategii
 
 Usługa Blueprints może przekazywać parametry do zasad/inicjatywy lub szablonu usługi Azure Resource Manager.
 Podczas dodawania dowolnego _artefaktu_ do strategii autor decyduje o udostępnieniu zdefiniowanej wartości dla każdego przypisania strategii lub zezwoleniu, aby każde przypisanie strategii udostępniało wartość w czasie przypisywania. Dzięki tej elastyczności można zdefiniować wstępnie ustaloną wartość dla wszystkich zastosowań strategii lub umożliwić podjęcie decyzji w czasie przypisywania.
@@ -77,7 +76,7 @@ Aby uzyskać więcej informacji, zobacz [parametry strategii](./concepts/paramet
 
 Kiedy strategia jest tworzona po raz pierwszy, przyjmuje się, że jest w trybie **wersji roboczej**. Kiedy jest gotowa do przypisania, należy ją **opublikować**. Publikowanie wymaga zdefiniowania ciągu **wersji** (liter, cyfr i łączników o maksymalnej długości 20 znaków) wraz z opcjonalnymi **uwagami dotyczącymi zmian**. Dzięki zastosowaniu **wersji** przyszłe zmiany wprowadzone w strategii mogą być traktowane jako osobne wersje z możliwością ich przypisania. Obsługa wersji oznacza również, że różne **wersje** tej samej strategii można przypisać do jednej subskrypcji. Jeśli w strategii zostaną dokonane dodatkowe zmiany, **opublikowana** **wersja** będzie nadal istniała, podobnie jak **nieopublikowane zmiany**. Po zakończeniu wprowadzania zmian zaktualizowana strategia jest **publikowana** jako nowa unikatowa **wersja**, którą teraz również można przypisać.
 
-## <a name="blueprint-assignment"></a>Przypisanie strategii
+## <a name="blueprint-assignment"></a>Przypisywanie strategii
 
 Do istniejącej subskrypcji można przypisać każdą **opublikowaną** **wersję** planu (z maksymalną długością nazwy wynoszącą 90 znaków). W portalu domyślną **wersją** strategii jest ta, która została **opublikowana** jako ostatnia. Jeśli istnieją parametry artefaktów (lub parametry strategii), są one definiowane w procesie przypisania.
 
@@ -124,12 +123,12 @@ Jeśli te wbudowane role nie spełniają wymagań dotyczących zabezpieczeń, na
 
 Dla niektórych pól istnieją następujące ograniczenia:
 
-|Object|Pole|Dozwolone znaki|Maksymalnie z Długość|
+|Obiekt|Pole|Dozwolone znaki|Maksymalnie z Długość|
 |-|-|-|-|
-|Plan|Name|litery, cyfry, łączniki i kropki|48|
-|Plan|Version|litery, cyfry, łączniki i kropki|20|
-|Przypisanie strategii|Name|litery, cyfry, łączniki i kropki|90|
-|Artefakt planu|Name|litery, cyfry, łączniki i kropki|48|
+|Potrzeby|Nazwa|litery, cyfry, łączniki i kropki|48|
+|Potrzeby|Wersja|litery, cyfry, łączniki i kropki|20|
+|Przypisywanie strategii|Nazwa|litery, cyfry, łączniki i kropki|90|
+|Artefakt planu|Nazwa|litery, cyfry, łączniki i kropki|48|
 
 ## <a name="video-overview"></a>Omówienie wideo
 
