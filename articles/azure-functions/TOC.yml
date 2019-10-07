@@ -82,6 +82,8 @@
       href: functions-deployment-technologies.md
     - name: Zdarzenia i komunikaty
       items:
+        - name: Niezawodne przetwarzanie zdarzeń
+          href: functions-reliable-event-processing.md
         - name: Projektowanie pod kątem identycznych danych wejściowych
           href: functions-idempotent.md
     - name: Wyzwalacze i powiązania

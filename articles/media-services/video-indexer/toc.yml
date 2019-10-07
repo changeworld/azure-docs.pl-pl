@@ -9,6 +9,8 @@
   items:
     - name: Rozpoczęcie pracy
       href: video-indexer-get-started.md
+    - name: Zapraszanie użytkowników
+      href: invite-users.md
 - name: Samouczki
   items:
     - name: Korzystanie z interfejsu API usługi Video Indexer

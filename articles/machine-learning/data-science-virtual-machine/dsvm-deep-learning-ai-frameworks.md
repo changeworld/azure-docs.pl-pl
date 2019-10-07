@@ -2,7 +2,7 @@
 title: Głębokie uczenie & platformy AI
 titleSuffix: Azure Data Science Virtual Machine
 description: Dostępne platformy i narzędzia uczenia głębokiego na platformie Azure Data Science Virtual Machine.
-keywords: narzędzia do nauki dotyczące danych, maszyna wirtualna do nauki o danych, narzędzia do nauki o danych, nauka danych systemu Linux
+keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,12 +10,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: conceptual
 ms.date: 10/1/2019
-ms.openlocfilehash: fd38bf1f7741c4d610ef43a12d90533d4ac7b703
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: db95788b0f2c041157bdc16000d0328c042e86d5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802409"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973686"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Głębokie uczenie i platformy AI dla Data Science VM platformy Azure
 Poniżej wymieniono platformy uczenia głębokiego na DSVM.
@@ -42,7 +42,7 @@ Poniżej wymieniono platformy uczenia głębokiego na DSVM.
 
 |    |           |
 | ------------- | ------------- |
-| Obsługiwane wersje | 5,2 |
+| Obsługiwane wersje | 5.2 |
 | Obsługiwane wersje DSVM      | Linux (Ubuntu)     |
 | Jak jest on skonfigurowany/instalowany w DSVM?  | Moduł łańcucha jest instalowany w języku Python 3,5. |
 | Jak uruchomić go      | Terminal: Aktywuj środowisko Python 3,5, uruchom `python`, a następnie `import chainer`. <br/> * JupyterHub: [Połącz się z JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), a następnie przejdź do katalogu łańcucha, aby znaleźć przykładowe notesy.| 
@@ -52,7 +52,7 @@ Poniżej wymieniono platformy uczenia głębokiego na DSVM.
 |    |           |
 | ------------- | ------------- |
 | Obsługiwane wersje | 10.0.130|
-| Obsługiwane wersje DSVM      | Systemy Windows i Linux   |
+| Obsługiwane wersje DSVM      | System Windows i Linux   |
 | Jak jest on skonfigurowany/instalowany w DSVM?  |_NVIDIA-SMI_ jest dostępny w ścieżce systemowej.  |
 | Jak uruchomić go      | Otwórz wiersz polecenia (w systemie Windows) lub terminal (na komputerze z systemem Linux), a następnie uruchom polecenie _NVIDIA-SMI_. |
 
@@ -71,7 +71,7 @@ Poniżej wymieniono platformy uczenia głębokiego na DSVM.
 |    |           |
 | ------------- | ------------- |
 | Obsługiwane wersje | 2.2.4 |
-| Obsługiwane wersje DSVM      | Systemy Windows i Linux   |
+| Obsługiwane wersje DSVM      | System Windows i Linux   |
 | Jak jest on skonfigurowany/instalowany w DSVM?  | Keras jest zainstalowany w języku Python 3,6 w systemie Windows i w języku Python 3,5 w Linux |
 | Jak uruchomić go      | Aktywuj poprawne środowisko w terminalu, a następnie uruchom Język Python. |
 
@@ -80,9 +80,36 @@ Poniżej wymieniono platformy uczenia głębokiego na DSVM.
 |    |           |
 | ------------- | ------------- |
 | Obsługiwane wersje | 2.5.1 |
-| Obsługiwane wersje DSVM      | Systemy Windows i Linux   |
+| Obsługiwane wersje DSVM      | System Windows i Linux   |
 | Jak jest on skonfigurowany/instalowany w DSVM?  | CNTK jest zainstalowany w języku Python 3,6 w [systemie Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) i w języku Python 3,5 w systemie [Linux](./dsvm-languages.md#python-linux-edition) |
 | Jak uruchomić go      | Terminal: Aktywuj poprawne środowisko i uruchom Język Python. <br/>Jupyter: Połącz się z [Jupyter](provision-vm.md) lub [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), a następnie otwórz katalog CNTK dla przykładów. |
+
+## <a name="mxnethttpsmxnetapacheorg"></a>[MXNet](https://mxnet.apache.org/)
+|    |           |
+| ------------- | ------------- |
+| Obsługiwane wersje | 1.3.0 |
+| Obsługiwane wersje DSVM      | System Windows i Linux   |
+| Jak jest on skonfigurowany/instalowany w DSVM?  | MXNet jest zainstalowany w `C:\dsvm\tools\mxnet` w systemie Windows i `/dsvm/tools/mxnet` w Ubuntu. Powiązania języka Python są instalowane w języku Python 3,6 w [systemie Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) i w języku Python 3,5 on [Linux](./dsvm-languages.md#python-linux-edition)) powiązania R są również zawarte w Ubuntu DSVM. |
+| Jak uruchomić go      | Terminal: Aktywuj poprawne środowisko Conda, a następnie uruchom `import mxnet`. <br/>Jupyter: Połącz się z [Jupyter](provision-vm.md#access-the-dsvm) lub [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), a następnie otwórz katalog `mxnet` dla przykładów. |
+
+## <a name="mxnet-model-serverhttpsgithubcomawslabsmxnet-model-serverquick-start"></a>[Serwer modelu MXNet](https://github.com/awslabs/mxnet-model-server#quick-start)
+
+|    |           |
+| ------------- | ------------- |
+| Obsługiwane wersje | 1.0.1 |
+| Obsługiwane wersje DSVM      | System Windows i Linux   |
+| Jak jest on skonfigurowany/instalowany w DSVM?  | Serwer modelu MXNet jest zainstalowany w języku Python 3,6 w [systemie Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) i w języku Python 3,5 w systemie [Linux](./dsvm-languages.md#python-linux-edition). |
+| Jak uruchomić go      | Terminal: Uruchom `sudo systemctl stop jupyterhub`, aby najpierw zatrzymać usługę JupyterHub, ponieważ oba nasłuchują na tym samym porcie. Następnie aktywuj poprawne środowisko Conda i uruchom `mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
+
+## <a name="nvidia-system-management-interface-nvidia-smihttpsdevelopernvidiacomnvidia-system-management-interface"></a>[Interfejs zarządzania systemem NVidia (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface)
+
+|    |           |
+| ------------- | ------------- |
+| Obsługiwane wersje |  |
+| Obsługiwane wersje DSVM      | System Windows i Linux   |
+| Co to jest? | Narzędzie NVIDIA do wykonywania zapytań dotyczących aktywności procesora GPU |
+| Jak jest on skonfigurowany/instalowany w DSVM?  | `nvidia-smi` znajduje się na ścieżce systemowej. |
+| Jak uruchomić go      | Na maszynie wirtualnej **z procesorem GPU**Otwórz wiersz polecenia (w systemie Windows) lub terminal (na komputerze z systemem Linux), a następnie uruchom polecenie `nvidia-smi`. |
 
 ## <a name="pytorchhttpspytorchorg"></a>[PyTorch](https://pytorch.org/)
 

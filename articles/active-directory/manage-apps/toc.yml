@@ -241,6 +241,8 @@
           items:
             - name: Rozwiązywanie problemów z aprowizowaniem użytkowników
               href: application-provisioning-config-problem.md
+            - name: Stan kwarantanny
+              href: application-provisioning-quarantine-status.md
             - name: Dzienniki aprowizowania
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: Synchronizowanie atrybutu mapowania — aplikacja z galerii
@@ -357,6 +359,8 @@
           href: provisioning-agent-release-version-history.md
     - name: Serwer proxy aplikacji dla aplikacji lokalnych
       items:
+        - name: Serwer proxy aplikacji — często zadawane pytania
+          href: application-proxy-faq.md
         - name: Historia wersji serwera proxy aplikacji
           href: application-proxy-release-version-history.md
 - name: Zasoby

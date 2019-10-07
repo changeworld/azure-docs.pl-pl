@@ -85,7 +85,7 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: Wdrażanie aplikacji w usłudze Azure AD DS
+    - name: Wdrażanie aplikacji
       items:
         - name: Wdrażanie serwera proxy aplikacji usługi Azure AD
           href: deploy-azure-app-proxy.md
@@ -95,11 +95,17 @@
       items:
         - name: Typowe błędy
           href: troubleshoot.md
-        - name: Błędy dotyczące niezgodnych dzierżaw
+        - name: Problemy dotyczące dołączania do domeny
+          href: troubleshoot-domain-join.md
+        - name: Blokady kont
+          href: troubleshoot-account-lockout.md
+        - name: Problemy z logowaniem
+          href: troubleshoot-sign-in.md
+        - name: Rozwiązywanie błędów dotyczących niezgodnych dzierżaw
           href: mismatched-tenant-error.md
         - name: Wstrzymane domeny
           href: suspension.md
-        - name: Secure LDAP
+        - name: Problemy dotyczące protokołu Secure LDAP
           href: tshoot-ldaps.md
         - name: Znane problemy
           items:

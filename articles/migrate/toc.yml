@@ -77,20 +77,22 @@
     - name: Tworzenie oceny
       href: how-to-create-assessment.md
     - name: Ocena bazy danych programu SQL Server
-      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json&view=sql-server-2017'
+      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
     - name: Dostosowywanie oceny
       href: how-to-modify-assessment.md
     - name: Dodawanie narzędzi migracji
       href: how-to-migrate.md
-    - name: Ocena i migracja skali
-      items:
-        - name: Ocena dużej liczby maszyn wirtualnych VMware
-          href: scale-vmware-assessment.md
-        - name: Ocena dużej liczby maszyn wirtualnych funkcji Hyper-V
-          href: scale-hyper-v-assessment.md
-        - name: Automatyzowanie migracji dużej liczby maszyn wirtualnych
-          href: how-to-migrate-at-scale.md
-    - name: Przykłady migracji — seria Contoso
+    - name: Przygotowanie maszyn do migracji
+      href: prepare-for-migration.md
+- name: Ocena i migracja skali
+  items:
+    - name: Ocena dużej liczby maszyn wirtualnych VMware
+      href: scale-vmware-assessment.md
+    - name: Ocena dużej liczby maszyn wirtualnych funkcji Hyper-V
+      href: scale-hyper-v-assessment.md
+    - name: Automatyzowanie migracji dużej liczby maszyn wirtualnych
+      href: how-to-migrate-at-scale.md
+    - name: 'Przykłady migracji, seria Contoso'
       href: contoso-migration-overview.md
 - name: Rozwiązywanie problemów
   items:

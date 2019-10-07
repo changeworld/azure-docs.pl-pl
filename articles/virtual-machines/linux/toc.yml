@@ -143,6 +143,10 @@
       items:
         - name: Zabezpieczenia i zasady
           href: security-policy.md
+        - name: Usługa Azure Disk Encryption
+          href: disk-encryption-overview.md
+        - name: Wbudowane mechanizmy zabezpieczeń
+          href: virtual-machines-linux-security-controls.md
     - name: Stany i cykl życia
       href: states-lifecycle.md
     - name: Monitorowanie
@@ -151,8 +155,6 @@
       href: backup-recovery.md
     - name: Wytyczne dotyczące infrastruktury
       href: infrastructure-example.md
-    - name: Wbudowane mechanizmy zabezpieczeń
-      href: virtual-machines-linux-security-controls.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie maszyn wirtualnych
@@ -179,7 +181,29 @@
         - name: Dostęp just in time
           href: ../../security-center/security-center-just-in-time.md
         - name: Szyfrowanie
-          href: encrypt-disks.md
+          items:
+            - name: Scenariusze szyfrowania dysków dla systemu Linux
+              href: disk-encryption-linux.md
+            - name: Szyfrowanie maszyny wirtualnej za pomocą interfejsu wiersza polecenia platformy Azure
+              href: disk-encryption-cli-quickstart.md
+            - name: Szyfrowanie maszyny wirtualnej za pomocą programu Azure PowerShell
+              href: disk-encryption-powershell-quickstart.md
+            - name: Magazyn kluczy dla usługi Azure Disk Encryption
+              href: disk-encryption-key-vault.md
+            - name: Przykładowe skrypty szyfrowania dysków
+              href: disk-encryption-sample-scripts.md
+            - name: Rozwiązywanie problemów z szyfrowaniem dysków
+              href: disk-encryption-troubleshooting.md
+            - name: Często zadawane pytania o szyfrowanie dysków
+              href: disk-encryption-faq.md
+            - name: Szyfrowanie dysków — poprzednia wersja (AAD)
+              items:
+                - name: Omówienie
+                  href: disk-encryption-overview-aad.md
+                - name: Magazyn kluczy dla usługi Azure Disk Encryption
+                  href: disk-encryption-key-vault-aad.md
+                - name: Scenariusze szyfrowania dysków dla systemu Linux
+                  href: disk-encryption-linux-aad.md
         - name: Korzystanie z kontroli dostępu
           href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Korzystanie z zasad

@@ -191,6 +191,8 @@
       items:
         - name: Tworzenie jednostki usługi
           href: kubernetes-service-principal.md
+        - name: Korzystanie z tożsamości zarządzanych (wersja zapoznawcza)
+          href: use-managed-identity.md
         - name: Ograniczanie dostępu do pliku konfiguracji klastra
           href: control-kubeconfig-access.md
         - name: Zabezpieczanie ruchu związanego z zasobnikiem za pomocą zasad sieciowych
