@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9344feeadc5f4146c3b3f853082cd9255100af5c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: b5c24a2340775712f1105448b2aacfdc9a75f1a6
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949631"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001727"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory"></a>Standard scim aprowizacji użytkowników przy użyciu Azure Active Directory
 
-System do zarządzania tożsamościami między domenami (standard scim) jest standardowym protokołem i schematem, który ma na celu zwiększenie spójności w zakresie zarządzania tożsamościami w różnych systemach. Gdy aplikacja obsługuje punkt końcowy Standard scim do zarządzania użytkownikami, usługa aprowizacji użytkowników w usłudze Azure AD może wysyłać żądania, aby tworzyć, modyfikować lub usuwać przypisanych użytkowników i grupy do tego punktu końcowego.
+System do zarządzania tożsamościami między domenami ([Standard scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards)) jest standardowym protokołem i schematem, który ma na celu zwiększenie spójności w zakresie zarządzania tożsamościami w różnych systemach. Gdy aplikacja obsługuje punkt końcowy Standard scim do zarządzania użytkownikami, usługa aprowizacji użytkowników w usłudze Azure AD może wysyłać żądania, aby tworzyć, modyfikować lub usuwać przypisanych użytkowników i grupy do tego punktu końcowego.
 
 Wiele aplikacji, dla których usługa Azure AD obsługuje [wstępnie zintegrowane automatyczne Inicjowanie obsługi użytkowników](../saas-apps/tutorial-list.md) , standard scim jako środek do odbierania powiadomień o zmianach użytkownika.  Oprócz tych klientów mogą łączyć aplikacje obsługujące określony profil [specyfikacji protokołu standard scim 2,0](https://tools.ietf.org/html/rfc7644) przy użyciu ogólnej opcji integracji "bez galerii" w Azure Portal.
 
@@ -1340,10 +1340,10 @@ Zasoby grupy są identyfikowane przez identyfikator schematu, `urn:ietf:params:s
 | IsSoftDeleted |aktywne |
 | Nazwa |Nazwa |
 | Faks-numer telefonu |numer telefonu [typ EQ "Fax"]. wartość |
-| givenName |Nazwa. imię |
+| GivenName |Nazwa. imię |
 | Stanowiska |tytuły |
 | poczta |wiadomości e-mail [Type EQ "Work"]. Value |
-| mailNickname |externalId |
+| MailNickname |externalId |
 | Menedżera |Menedżera |
 | urządzenie |numer telefonu [typ EQ "Mobile"]. Value |
 | Obiektu |ID |
@@ -1361,7 +1361,7 @@ Zasoby grupy są identyfikowane przez identyfikator schematu, `urn:ietf:params:s
 | --- | --- |
 | Nazwa |externalId |
 | poczta |wiadomości e-mail [Type EQ "Work"]. Value |
-| mailNickname |Nazwa |
+| MailNickname |Nazwa |
 | elementy członkowskie |elementy członkowskie |
 | Obiektu |ID |
 | proxyAddresses |wiadomości e-mail [Type EQ "Other"]. Wartościami |

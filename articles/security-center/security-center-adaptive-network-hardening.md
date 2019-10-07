@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 28761b78b49ad0774594b45db4587c710fc7d810
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202771"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996726"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptacyjne Zabezpieczanie sieci w Azure Security Center
 Dowiedz się, jak konfigurować adaptacyjną ochronę sieci w Azure Security Center.
@@ -33,17 +33,17 @@ Załóżmy na przykład, że istniejąca reguła sieciowej grupy zabezpieczeń m
 ![Widok ograniczania funkcjonalności sieci](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 > [!NOTE]
-> Zalecenia dotyczące ograniczania przepustowości sieci są obsługiwane na następujących portach: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
+> Zalecenia z adaptacyjnymi ograniczeniami sieci są obsługiwane przez następujące porty: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Wyświetl alerty i reguły ograniczania przepustowości sieci
 
-1. W Security Center wybierz pozycję **Sieć** -> **adaptacyjne Zabezpieczanie sieci**. Sieci maszyn wirtualnych są wymienione na trzech oddzielnych kartach:
-   * **Zasoby w złej kondycji**: Maszyny wirtualne, które aktualnie mają zalecenia i alerty, które zostały wyzwolone przez uruchomienie adaptacyjnego algorytmu ograniczania przepustowości sieci. 
-   * **Dobra kondycja**: Maszyny wirtualne bez alertów i zaleceń.
-   * **Niezeskanowane zasoby**: Maszyny wirtualne, na których nie można uruchomić adaptacyjnego algorytmu ograniczania przepustowości sieci z jednego z następujących powodów:
-      * **Maszyny wirtualne są klasycznymi maszynami wirtualnymi**: Obsługiwane są tylko Azure Resource Manager maszyny wirtualne.
-      * **Za mało dostępnych danych**: Aby można było wygenerować dokładne zalecenia dotyczące ograniczania ruchu, Security Center wymaga co najmniej 30 dni danych ruchu.
-      * **Maszyna wirtualna nie jest chroniona przez Standard ASC**: Tylko maszyny wirtualne, które są ustawione na standardową warstwę cenową Security Center, kwalifikują się do tej funkcji.
+1. W Security Center wybierz pozycję **sieć** -> **adaptacyjna Funkcja ograniczania przepustowości sieci**. Sieci maszyn wirtualnych są wymienione na trzech oddzielnych kartach:
+   * **Zasoby w złej kondycji**: maszyny wirtualne, które aktualnie mają zalecenia i alerty, które zostały wyzwolone przez uruchomienie adaptacyjnego algorytmu ograniczania przepustowości sieci. 
+   * **Dobra kondycja**: maszyny wirtualne bez alertów i zaleceń.
+   * **Niezeskanowane zasoby**: maszyny wirtualne, na których algorytm ograniczania funkcjonalności sieci nie może zostać uruchomiony z jednego z następujących powodów:
+      * **Maszyny wirtualne są klasycznymi maszynami wirtualnymi**: obsługiwane są tylko Azure Resource Manager maszyny wirtualne.
+      * Brak **wystarczającej ilości danych**: w celu wygenerowania dokładnego zalecenia dotyczącego ograniczania ruchu, Security Center wymaga co najmniej 30 dni danych ruchu.
+      * **Maszyna wirtualna nie jest chroniona przez Standard ASC**: tylko maszyny wirtualne, które są ustawione na standardową warstwę cenową Security Center, kwalifikują się do tej funkcji.
 
      ![zasoby w złej kondycji](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -131,9 +131,9 @@ Można dodać regułę "Zezwalaj", która nie jest zalecana przez Security Cente
 
 ### Usuwanie reguły <a name ="delete-rule"></a>
 
-W razie potrzeby można usunąć zalecaną regułę. Na przykład można określić, że stosowanie sugerowanej reguły może blokować wiarygodny ruch.
+W razie potrzeby można usunąć zalecaną regułę dla bieżącej sesji. Na przykład można określić, że stosowanie sugerowanej reguły może blokować wiarygodny ruch.
 
-*Aby usunąć adaptacyjną zasadę ograniczania funkcjonalności sieci:*
+*Aby usunąć regułę adaptacyjnej ochrony sieci dla bieżącej sesji:*
 
 1. Na karcie **reguły** kliknij trzy kropki (...) na końcu wiersza reguły, a następnie kliknij pozycję **Usuń**.  
 

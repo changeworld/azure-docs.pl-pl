@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
+ms.lasthandoff: 10/07/2019
 ms.locfileid: "70736004"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Dokumentacja skryptów Azure Data Factory-JSON
@@ -1341,7 +1341,7 @@ Jeśli kopiujesz dane do indeksu Azure Search, ustaw **Typ ujścia** działania 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. | Scal (domyślnie)<br/>Przesyłane| Nie |
-| WriteBatchSize | Przekazuje dane do indeksu Azure Search, gdy rozmiar buforu osiągnie writeBatchSize. | od 1 do 1 000. Wartość domyślna to 1000. | Nie |
+| writeBatchSize | Przekazuje dane do indeksu Azure Search, gdy rozmiar buforu osiągnie writeBatchSize. | od 1 do 1 000. Wartość domyślna to 1000. | Nie |
 
 #### <a name="example"></a>Przykład
 
@@ -3729,7 +3729,7 @@ Aby zdefiniować połączoną usługę HDFS, ustaw **Typ** połączonej usługi 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | — typ |Właściwość Type musi mieć wartość: **HDFS** |Tak |
-| Adres URL |Adres URL systemu plików HDFS |Tak |
+| adres URL |Adres URL systemu plików HDFS |Tak |
 | authenticationType |Anonimowe lub Windows. <br><br> Aby skorzystać z **uwierzytelniania Kerberos** dla łącznika HDFS, zapoznaj się z tą sekcją, aby odpowiednio skonfigurować środowisko lokalne. |Tak |
 | Uż |Nazwa użytkownika dla uwierzytelniania systemu Windows. |Tak (w przypadku uwierzytelniania systemu Windows) |
 | hasło |Hasło do uwierzytelniania systemu Windows. |Tak (w przypadku uwierzytelniania systemu Windows) |
@@ -4440,7 +4440,7 @@ Aby zdefiniować połączoną usługę ODBC, ustaw **Typ** połączonej usługi 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | Parametry połączenia |Część poświadczeń braku dostępu do parametrów połączenia i opcjonalne zaszyfrowane poświadczenia. Zobacz przykłady w poniższych sekcjach. |Tak |
-| poświadczeń |Część poświadczeń dostępu do parametrów połączenia określona w formacie wartości właściwości specyficznej dla sterownika. Przykład: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |Nie |
+| Poświadczeń |Część poświadczeń dostępu do parametrów połączenia określona w formacie wartości właściwości specyficznej dla sterownika. Przykład: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |Nie |
 | authenticationType |Typ uwierzytelniania używany do nawiązywania połączenia z magazynem danych ODBC. Możliwe wartości to: Anonymous i Basic. |Tak |
 | uż |Określ nazwę użytkownika w przypadku korzystania z uwierzytelniania podstawowego. |Nie |
 | hasło |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. |Nie |
@@ -4716,7 +4716,7 @@ Aby zdefiniować połączoną usługę sieci Web, ustaw **Typ** połączonej us�
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| Adres URL |Adres URL źródła sieci Web |Tak |
+| adres URL |Adres URL źródła sieci Web |Tak |
 | authenticationType |Anonimowe. |Tak |
 
 

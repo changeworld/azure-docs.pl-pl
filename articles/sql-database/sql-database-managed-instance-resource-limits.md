@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: a360d836f1ef09b0bb87e2af39aeab0460034cd4
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 74fd8abbe78395a75d9c0a49eb717fb8ceecd11e
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71935621"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982790"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -49,7 +49,7 @@ Ilość miejsca OLTP w pamięci w [krytyczne dla działania firmy](sql-database-
 | --- | --- | --- |
 | 4 rdzeni wirtualnych  | 3,14 GB | |   
 | 8 rdzeni wirtualnych  | 6,28 GB | 8 GB |
-| 16 rdzeni wirtualnych | 15,77 GB | 20 GB |
+| 16 rdzeni wirtualnych | 15,77 GB | 20 GB |
 | 24 rdzeni wirtualnych | 25,25 GB | 36 GB |
 | 32 rdzeni wirtualnych | 37,94 GB | |
 | 40 rdzeni wirtualnych | 52,23 GB | |
@@ -58,12 +58,15 @@ Ilość miejsca OLTP w pamięci w [krytyczne dla działania firmy](sql-database-
 
 ## <a name="service-tier-characteristics"></a>Charakterystyki warstwy usług
 
-Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) i [krytyczne dla działania firmy](sql-database-service-tier-business-critical.md). Te warstwy zapewniają [różne możliwości](sql-database-service-tiers-general-purpose-business-critical.md), zgodnie z opisem w poniższej tabeli:
+Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) i [krytyczne dla działania firmy](sql-database-service-tier-business-critical.md). Te warstwy zapewniają [różne możliwości](sql-database-service-tiers-general-purpose-business-critical.md), zgodnie z opisem w poniższej tabeli.
 
-| **Funkcja** | **Ogólnego przeznaczenia** | **Krytyczne dla działania firmy** |
+> [!Important]
+> Krytyczne dla działania firmy warstwa usługi oferuje dodatkową wbudowaną kopię wystąpienia (replikę pomocniczą), która może być używana do obsługi obciążeń tylko do odczytu. Jeśli możesz oddzielić zapytania odczytu i zapisu oraz zapytania tylko do odczytu/analizy/raportowania, otrzymujesz dwa razy rdzeni wirtualnych i pamięć za tę samą cenę. Replika pomocnicza może potrwać kilka sekund za wystąpieniem podstawowym, więc jest przeznaczona do odciążania obciążeń raportowanie/analitycznych, które nie wymagają dokładnego stanu danych. W poniższej tabeli **zapytania tylko do odczytu** są zapytania, które są wykonywane w replice pomocniczej.
+
+| **Ona** | **Ogólnego przeznaczenia** | **Krytyczne dla działania firmy** |
 | --- | --- | --- |
-| Liczba rdzeni wirtualnych @ no__t-0 | Obliczenia: 8, 16, 24<br/>5 rdzeń: 4, 8, 16, 24, 32, 40, 64, 80 | Obliczenia: 8, 16, 24 <br/> 5 rdzeń: 4, 8, 16, 24, 32, 40, 64, 80 |
-| Maksymalna pamięć | Obliczenia: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń: 20,4 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. | Obliczenia: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń: 20,4 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. |
+| Liczba rdzeni wirtualnych @ no__t-0 | Obliczenia: 8, 16, 24<br/>5 rdzeń: 4, 8, 16, 24, 32, 40, 64, 80 | Obliczenia: 8, 16, 24 <br/> 5 rdzeń: 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Same liczba rdzeni wirtualnych jest przeznaczona dla zapytań tylko do odczytu. |
+| Maksymalna pamięć | Obliczenia: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń: 20,4 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. | Obliczenia: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń: 20,4 GB-408 GB (5.1 GB/rdzeń wirtualny) dla zapytań do odczytu i zapisu<br/>+ dodatkowe 20,4 GB – 408 GB (5.1 GB/rdzeń wirtualny) dla zapytań tylko do odczytu.<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. |
 | Maksymalny rozmiar magazynu wystąpienia (zarezerwowany) | -2 TB dla 4 rdzeni wirtualnych (tylko 5 rdzeń)<br/>-8 TB dla innych rozmiarów | Obliczenia: 1 TB <br/> 5 rdzeń <br/>-1 TB dla 4, 8, 16 rdzeni wirtualnych<br/>-2 TB przez 24 rdzeni wirtualnych<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalny rozmiar bazy danych | Do aktualnie dostępnego rozmiaru wystąpienia (maksymalnie 2 TB – 8 TB w zależności od liczby rdzeni wirtualnych). | Do aktualnie dostępnego rozmiaru wystąpienia (maksymalnie 1 TB — 4 TB w zależności od liczby rdzeni wirtualnych). |
 | Maksymalny rozmiar bazy danych tempDB | Ograniczone do 24 GB/rdzeń wirtualny (96 – 1 920 GB) i aktualnie dostępnego rozmiaru magazynu wystąpień.<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać więcej przestrzeni TempDB. | Do aktualnie dostępnego rozmiaru magazynu wystąpień. Rozmiar pliku dziennika bazy danych TempDB jest obecnie ograniczony do 24GB/rdzeń wirtualny. |
@@ -75,7 +78,7 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 | Limit przepływności zapisu dziennika (na wystąpienie) | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s |
 | Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[zwiększenie rozmiaru pliku w celu uzyskania lepszej wydajności operacji we/wy](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Nieograniczone. |
 | Opóźnienie operacji we/wy magazynu (w przybliżeniu) | 5-10 ms | 1-2 MS |
-| Przetwarzanie OLTP w pamięci | Brak obsługi | Dostępna |
+| Przetwarzanie OLTP w pamięci | Nieobsługiwane | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
 | Maksymalna liczba sesji | 30000 | 30000 |
 | [Repliki tylko do odczytu](sql-database-read-scale-out.md) | 0 | 1 (wliczone w cenę) |
 
@@ -132,9 +135,9 @@ W poniższej tabeli przedstawiono **domyślne limity** dla obsługiwanych typów
 |Typ subskrypcji| Maksymalna liczba podsieci wystąpienia zarządzanego | Maksymalna liczba jednostek rdzeń wirtualny * |
 | :---| :--- | :--- |
 |Płatność zgodnie z rzeczywistym użyciem|3|320|
-|CSP |8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
+|U |8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
 |Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie|3|320|
-|Tworzenie i testowanie (przedsiębiorstwo)|3|320|
+|Enterprise — tworzenie i testowanie|3|320|
 |EA|8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional i Platformy MSDN|2|32|
@@ -153,7 +156,7 @@ Aby zainicjować proces uzyskiwania większego przydziału:
    ![Pomoc i obsługa techniczna](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Na karcie podstawowe informacje o nowym żądaniu obsługi:
    - W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
-   - W polu **Subskrypcja** wybierz subskrypcję.
+   - W obszarze **subskrypcja**wybierz swoją subskrypcję.
    - W obszarze **Typ limitu przydziału**wybierz pozycję **SQL Database wystąpienie zarządzane**.
    - W przypadku **planu pomocy technicznej**wybierz plan pomocy technicznej.
 

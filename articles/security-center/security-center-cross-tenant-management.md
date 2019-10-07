@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie między dzierżawcami w Azure Security Center | Microsoft Docs
-description: " Dowiedz się, jak włączyć funkcję zbierania danych w usłudze Azure Security Center. "
+description: " Dowiedz się, jak włączyć zbieranie danych w Azure Security Center. "
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 178911390a4cb694171adf6c807369cab0c0499a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f7aa75601639bc0c5652010fb44b01dec0d2622b
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202357"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996943"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Zarządzanie między dzierżawcami w Security Center
 
@@ -45,15 +45,16 @@ Na górnym pasku menu kliknij ikonę filtru, a następnie wybierz subskrypcje, z
 
 Widoki i akcje są zasadniczo takie same. Oto kilka przykładów:
 
-- **Zarządzanie zasadami zabezpieczeń**: W jednym widoku można zarządzać stan zabezpieczeń wielu zasobów przy użyciu [zasad](tutorial-security-policy.md), podejmować działania z zaleceniami dotyczącymi zabezpieczeń oraz zbierać dane związane z zabezpieczeniami i zarządzać nimi.
-- **Ulepszanie bezpiecznego stan oceny i zgodności**: Widoczność między dzierżawcami umożliwia wyświetlenie ogólnych stan zabezpieczeń wszystkich dzierżawców oraz miejsce i sposób, w jaki najlepiej poprawić [bezpieczny wynik](security-center-secure-score.md) i [zgodność stan](security-center-compliance-dashboard.md) dla każdego z nich.
+- **Zarządzanie zasadami zabezpieczeń**: w jednym widoku Zarządzaj Stanami zabezpieczeń wielu zasobów przy użyciu [zasad](tutorial-security-policy.md), podejmuj działania z zaleceniami dotyczącymi zabezpieczeń, a następnie Zbieraj dane związane z zabezpieczeniami i zarządzaj nimi.
+- **Poprawa bezpiecznego oceny i zgodności stan**: widoczność między dzierżawcami umożliwia wyświetlenie ogólnych stan związanych z bezpieczeństwem wszystkich dzierżawców oraz, gdzie i jak najlepiej poprawić [bezpieczną ocenę](security-center-secure-score.md) i [zgodność stan](security-center-compliance-dashboard.md) dla każdego z nich.
 - **Skoryguj zalecenia**: Monitoruj i Koryguj [zalecenia](security-center-recommendations.md) dotyczące wielu zasobów z różnych dzierżawców jednocześnie. Następnie można natychmiast zaradzić sobie z lukami w zabezpieczeniach, które stwarzają największe ryzyko dla wszystkich dzierżawców.
-- **Zarządzanie alertami**: Wykrywaj [alerty](security-center-alerts-overview.md) w różnych dzierżawach. Wykonaj działania dotyczące zasobów, które są niezgodne z [krokami korygowania](security-center-managing-and-responding-alerts.md)akcji.
+- **Zarządzanie alertami**: wykrywanie [alertów](security-center-alerts-overview.md) w różnych dzierżawach. Wykonaj działania dotyczące zasobów, które są niezgodne z [krokami korygowania](security-center-managing-and-responding-alerts.md)akcji.
 
 - **Zarządzaj zaawansowanymi funkcjami obrony przed chmurą i nie tylko**: Zarządzaj różnymi usługami wykrywania zagrożeń i ochrony, takimi jak [dostęp do maszyn wirtualnych just-in-Time (JIT)](security-center-just-in-time.md), [adaptacyjne Zabezpieczanie sieci](security-center-adaptive-network-hardening.md), [adaptacyjne kontrolki aplikacji](security-center-adaptive-application.md)i nie tylko.
  
 ## <a name="next-steps"></a>Następne kroki
-W tym artykule wyjaśniono, jak zarządzanie przez wiele dzierżawców działa w Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
+W tym artykule wyjaśniono, jak zarządzanie przez wiele dzierżawców działa w Security Center. Aby dowiedzieć się więcej na temat Security Center, zobacz następujące tematy:
 
-* [Wzmocnij stan zabezpieczeń, korzystając z Azure Security Center](security-center-monitoring.md)— Dowiedz się, jak monitorować kondycję zasobów platformy Azure.
-* [Centrum zabezpieczeń Azure — często zadawane pytania](security-center-faq.md) — odpowiedzi na najczęstsze pytania dotyczące korzystania z usługi.
+* [Wzmocnij stan zabezpieczeń dzięki Azure Security Center](security-center-monitoring.md) — Dowiedz się, jak monitorować kondycję zasobów platformy Azure.
+* [Azure Security Center często zadawane](security-center-faq.md) pytania — Znajdź często zadawane pytania dotyczące korzystania z usługi.
+* [Dowiedz się więcej o usłudze Azure Lighthouse w scenariuszach dla przedsiębiorstw](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) — Odkryj, jak usługa Azure Lighthouse może uprościć zarządzanie różnymi dzierżawcami w przedsiębiorstwie, które korzystają z wielu dzierżawców usługi Azure AD.

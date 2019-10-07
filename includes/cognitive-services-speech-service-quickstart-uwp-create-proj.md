@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/19/2019
 ms.author: erhopf
 ms.openlocfilehash: 0140981a694a7a7cd8556f7139a90d0656679d7d
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 10/07/2019
 ms.locfileid: "70382163"
 ---
 Aby utworzyć projekt programu Visual Studio na potrzeby tworzenia platforma uniwersalna systemu Windows (platformy UWP), musisz skonfigurować opcje programistyczne programu Visual Studio, utworzyć projekt, wybrać architekturę docelową, skonfigurować funkcję przechwytywania audio i zainstalować zestaw Speech SDK.
@@ -23,7 +23,7 @@ Aby rozpocząć, upewnij się, że program Visual Studio jest poprawnie skonfigu
 
 1. Wybierz pozycję **Kontynuuj bez kodu** , aby przejść do środowiska IDE programu Visual Studio.
 
-1. Na pasku menu programu Visual Studio wybierz kolejno pozycje **Narzędzia** > **Pobierz narzędzia i funkcje** , aby otworzyć Instalator programu Visual Studio i wyświetlić okno dialogowe **Modyfikowanie** .
+1. Na pasku menu programu Visual Studio wybierz kolejno pozycje **narzędzia** > **Pobierz narzędzia i funkcje** , aby otworzyć Instalator programu Visual Studio i wyświetlić okno dialogowe **Modyfikowanie** .
 
    ![Karta obciążenia, modyfikowanie okna dialogowego, Instalator programu Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
 
@@ -59,14 +59,14 @@ Następnie utwórz projekt:
 
 1. W **wersji docelowej** (pierwsze pole listy rozwijanej) wybierz wartość identyczną lub późniejszą niż wartość w **wersji minimalnej**.
 
-1. Kliknij przycisk **OK**. Nastąpi powrót do środowiska IDE programu Visual Studio z nowym projektem utworzonym i widocznym w okienku **Eksplorator rozwiązań** .
+1. Wybierz **przycisk OK**. Nastąpi powrót do środowiska IDE programu Visual Studio z nowym projektem utworzonym i widocznym w okienku **Eksplorator rozwiązań** .
 
    ![projekt HelloWorld — Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-helloworld.png)
 
-Teraz wybierz architekturę platformy docelowej. Na pasku narzędzi programu Visual Studio Znajdź pole listy rozwijanej **platformy rozwiązania** . (Jeśli nie widzisz go, wybierz pozycję **Wyświetl** > **paski narzędzi** > **Standard** , aby wyświetlić pasek narzędzi zawierający **platformy rozwiązań**). Jeśli korzystasz z 64-bitowego systemu Windows, wybierz **x64** w polu listy rozwijanej. 64 — bit systemu Windows może również uruchamiać aplikacje 32-bitowe, więc możesz wybrać **x86** , jeśli wolisz.
+Teraz wybierz architekturę platformy docelowej. Na pasku narzędzi programu Visual Studio Znajdź pole listy rozwijanej **platformy rozwiązania** . (Jeśli go nie widzisz, wybierz pozycję **wyświetl** > **paski narzędzi** > **Standard** , aby wyświetlić pasek narzędzi zawierający **platformy rozwiązań**). Jeśli korzystasz z 64-bitowego systemu Windows, wybierz **x64** w polu listy rozwijanej. 64 — bit systemu Windows może również uruchamiać aplikacje 32-bitowe, więc możesz wybrać **x86** , jeśli wolisz.
 
 > [!NOTE]
-> Zestaw Speech SDK obsługuje wyłącznie procesory zgodne z technologią Intel. Procesory ARM nie są obecnie obsługiwane.
+> Zestaw Speech SDK obsługuje tylko procesory zgodne z technologią Intel. Procesory ARM nie są obecnie obsługiwane.
 
 ### <a name="set-up-audio-capture"></a>Konfigurowanie przechwytywania audio
 
@@ -80,9 +80,9 @@ Następnie Zezwól, aby projekt przechwycić dane wejściowe audio:
 
 1. Wybierz pole z możliwością **mikrofonu** .
 
-1. Na pasku menu wybierz kolejno opcje **plik** > **Zapisz pakiet. appxmanifest** , aby zapisać zmiany.
+1. Na pasku menu wybierz **plik** > **Save Package. appxmanifest** , aby zapisać zmiany.
 
-### <a name="install-the-speech-sdk"></a>Instalowanie zestawu SDK usługi Mowa
+### <a name="install-the-speech-sdk"></a>Instalowanie zestawu Speech SDK
 
 Na koniec zainstaluj [pakiet NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget)i odwołuje się do zestawu Speech SDK w projekcie:
 
@@ -90,13 +90,13 @@ Na koniec zainstaluj [pakiet NuGet zestawu Speech SDK](https://aka.ms/csspeech/n
 
 1. Wybierz pozycję **Przeglądaj**.
 
-   ![Zrzut ekranu okna dialogowego Zarządzaj pakietami dla rozwiązania](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
+   ![Zrzut ekranu przedstawiający okno dialogowe Zarządzanie pakietami dla rozwiązania](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
 1. W obszarze **Źródło pakietu**wybierz pozycję **NuGet.org**.
 
-1. W polu **wyszukiwania** wpisz `Microsoft.CognitiveServices.Speech`, a następnie wybierz ten pakiet po pojawieniu się w wynikach wyszukiwania.
+1. W polu **wyszukiwania** wprowadź `Microsoft.CognitiveServices.Speech`, a następnie wybierz ten pakiet po pojawieniu się w wynikach wyszukiwania.
 
-   ![Zrzut ekranu okna dialogowego Zarządzaj pakietami dla rozwiązania](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
+   ![Zrzut ekranu przedstawiający okno dialogowe Zarządzanie pakietami dla rozwiązania](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
 
 1. W okienku stan pakietu obok wyników wyszukiwania wybierz swój projekt **HelloWorld** .
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3f427726a128eed426a64bc533075ba0cdde9544
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7a0f1f7dd79be250370fa97096a0cbf6dfc7f637
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241079"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982852"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie Azure Backup Server
 
@@ -23,7 +23,7 @@ ms.locfileid: "71241079"
 >
 >
 
-> Dotyczy: SERWERA usługi MAB v3. (Serwera usługi MAB v2 nie jest już obsługiwany. Jeśli używasz wersji starszej niż serwera usługi MAB v3, przeprowadź uaktualnienie do najnowszej wersji.
+> Dotyczy: serwera usługi MAB v3. (Serwera usługi MAB v2 nie jest już obsługiwany. Jeśli używasz wersji starszej niż serwera usługi MAB v3, przeprowadź uaktualnienie do najnowszej wersji.
 
 W tym artykule wyjaśniono, jak przygotować środowisko do tworzenia kopii zapasowych obciążeń przy użyciu Microsoft Azure Backup Server (serwera usługi MAB). Za pomocą Azure Backup Server można chronić obciążenia aplikacji, takie jak maszyny wirtualne funkcji Hyper-V, Microsoft SQL Server, SharePoint Server, Microsoft Exchange i klienci z systemem Windows, z poziomu pojedynczej konsoli.
 
@@ -35,7 +35,7 @@ W tym artykule wyjaśniono, jak przygotować środowisko do tworzenia kopii zapa
 SERWERA usługi MAB wdrożone na maszynie wirtualnej platformy Azure mogą tworzyć kopie zapasowe maszyn wirtualnych na platformie Azure, ale powinny one znajdować się w tej samej domenie w celu włączenia operacji tworzenia kopii Proces tworzenia kopii zapasowej maszyny wirtualnej platformy Azure jest taki sam jak tworzenie kopii zapasowych maszyn wirtualnych w środowisku lokalnym, ale Wdrażanie serwera usługi MAB na platformie Azure ma pewne ograniczenia. Aby uzyskać więcej informacji o ograniczeniach, zobacz [program DPM jako maszynę wirtualną platformy Azure](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) .
 
 > [!NOTE]
-> Platforma Azure ma dwa modele wdrażania służące do tworzenia zasobów i pracy z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł zawiera informacje i procedury przywracania maszyn wirtualnych wdrożonych przy użyciu modelu Menedżer zasobów.
+> Platforma Azure ma dwa modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł zawiera informacje i procedury przywracania maszyn wirtualnych wdrożonych przy użyciu modelu Menedżer zasobów.
 >
 >
 
@@ -47,7 +47,7 @@ Pierwszym krokiem w celu uzyskania Azure Backup Server pracy jest skonfigurowani
 
 ### <a name="using-a-server-in-azure"></a>Korzystanie z serwera na platformie Azure
 
-W przypadku wybrania serwera do uruchamiania Azure Backup Server zaleca się rozpoczęcie od obrazu galerii systemu Windows Server 2016 Datacenter lub Windows Server 2019 centrum danych. W tym artykule opisano [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w Azure Portal, w](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)której znajduje się samouczek dotyczący rozpoczynania pracy z zalecaną maszyną wirtualną na platformie Azure, nawet jeśli wcześniej nie korzystano z platformy Azure. Zalecane minimalne wymagania dotyczące maszyny wirtualnej serwera: Standard_A4_v2 z czterema rdzeniami i 8 GB pamięci RAM.
+W przypadku wybrania serwera do uruchamiania Azure Backup Server zaleca się rozpoczęcie od obrazu galerii systemu Windows Server 2016 Datacenter lub Windows Server 2019 centrum danych. W tym artykule opisano [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w Azure Portal, w](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)której znajduje się samouczek dotyczący rozpoczynania pracy z zalecaną maszyną wirtualną na platformie Azure, nawet jeśli wcześniej nie korzystano z platformy Azure. Zalecanymi minimalnymi wymaganiami dla maszyny wirtualnej serwera (VM) powinna być: Standard_A4_v2 z czterema rdzeniami i 8 GB pamięci RAM.
 
 Ochrona obciążeń za pomocą Azure Backup Server ma wiele wszystkie szczegóły. W tym artykule [Zainstaluj program DPM jako maszynę wirtualną platformy Azure, a także](https://technet.microsoft.com/library/jj852163.aspx)Wyjaśnij te wszystkie szczegóły. Przed wdrożeniem maszyny zapoznaj się z tym artykułem całkowicie.
 
@@ -55,17 +55,17 @@ Ochrona obciążeń za pomocą Azure Backup Server ma wiele wszystkie szczegół
 
 Jeśli nie chcesz uruchamiać serwera podstawowego na platformie Azure, możesz uruchomić serwer programu na maszynie wirtualnej funkcji Hyper-V, maszynie wirtualnej VMware lub hoście fizycznym. Zalecane minimalne wymagania dotyczące sprzętu serwerowego są dwa rdzenie i 8 GB pamięci RAM. Obsługiwane systemy operacyjne są wymienione w poniższej tabeli:
 
-| System operacyjny | Platforma | SKU |
+| System operacyjny | Platforma | Magazyn |
 |:--- | --- |:--- |
-| Windows Server 2019 |64-bitowy |Standard, Datacenter, Essentials |
-| Windows Server 2016 i najnowsze dodatki Service Pack |64-bitowy |Standard, Datacenter, Essentials  |
+| System Windows Server 2019 |64-bitowe |Standard, Datacenter, Essentials |
+| Windows Server 2016 i najnowsze dodatki Service Pack |64-bitowe |Standard, Datacenter, Essentials  |
 
 
 Magazyn programu DPM można deduplikowany przy użyciu funkcji deduplikacji systemu Windows Server. Dowiedz się więcej na temat tego [, jak program DPM i Deduplikacja](https://technet.microsoft.com/library/dn891438.aspx) współpracują ze sobą w przypadku wdrożenia na maszynach wirtualnych funkcji Hyper
 
 > [!NOTE]
 > Azure Backup Server jest przeznaczony do działania na dedykowanym, wyznaczonym do tego celu serwerze. Nie można zainstalować Azure Backup Server na:
-> - Komputer działa jako kontroler domeny
+> - Komputer z systemem jako kontroler domeny
 > - Komputer, na którym jest zainstalowana rola serwera aplikacji
 > - Komputer, który jest serwerem zarządzania programu System Center Operations Manager
 > - Komputer, na którym jest uruchomiony program Exchange Server
@@ -77,45 +77,45 @@ Niezależnie od tego, czy dane kopii zapasowej są wysyłane do platformy Azure,
 
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
-### <a name="set-storage-replication"></a>Konfigurowanie replikacji magazynu
+### <a name="set-storage-replication"></a>Ustaw replikację magazynu
 
-Dla opcji replikacji magazynu można wybrać magazynowanie nadmiarowe geograficznie lub lokalnie. Domyślnie magazyny Recovery Services korzystają z magazynu geograficznie nadmiarowego. Jeśli magazyn jest magazynem podstawowym, pozostaw opcję magazynu ustawioną na magazyn Geograficznie nadmiarowy. Wybierz magazyn lokalnie nadmiarowy, jeśli chcesz skorzystać z tańszej, ale mniej trwałej opcji. Więcej informacji o opcjach magazynu [geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md) i [lokalnie nadmiarowego](../storage/common/storage-redundancy-lrs.md) można znaleźć w temacie [Azure Storage replication overview](../storage/common/storage-redundancy.md) (Omówienie replikacji usługi Azure Storage).
+Opcja replikacja magazynu pozwala wybrać magazyn Geograficznie nadmiarowy i Magazyn lokalnie nadmiarowy. Domyślnie magazyny Recovery Services korzystają z magazynu geograficznie nadmiarowego. Jeśli magazyn jest magazynem podstawowym, pozostaw opcję magazynu ustawioną na magazyn Geograficznie nadmiarowy. Wybierz pozycję Magazyn lokalnie nadmiarowy, jeśli chcesz skorzystać z tańszej opcji, która nie jest całkowicie trwała. Więcej informacji na temat opcji magazynu [geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md) i [lokalnie nadmiarowego](../storage/common/storage-redundancy-lrs.md) przechowywania można znaleźć w artykule [Omówienie replikacji usługi Azure Storage](../storage/common/storage-redundancy.md).
 
-Aby edytować ustawienia replikacji magazynu:
+Aby edytować ustawienie replikacji magazynu:
 
-1. W bloku **Magazyny usług Recovery Services** kliknij nowy magazyn. W sekcji **Ustawienia** kliknij pozycję **Właściwości**.
+1. W bloku **Recovery Services magazynów** kliknij nowy magazyn. W sekcji **Ustawienia** kliknij pozycję **Właściwości**.
 2. W obszarze **Właściwości**, w obszarze **Konfiguracja kopii zapasowej**, kliknij przycisk **Aktualizuj**.
 
 3. Wybierz typ replikacji magazynu i kliknij przycisk **Zapisz**.
 
-     ![Ustawianie konfiguracji przechowywania dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![Ustaw konfigurację magazynu dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="software-package"></a>Pakiet oprogramowania
 
 ### <a name="downloading-the-software-package"></a>Pobieranie pakietu oprogramowania
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
 2. Jeśli masz już otwarty magazyn Recovery Services, przejdź do kroku 3. Jeśli nie masz otwartego magazynu Recovery Services, ale znajdują się one w Azure Portal, w menu głównym kliknij przycisk **Przeglądaj**.
 
-   * Na liście zasobów wpisz **Usługi odzyskiwania**.
-   * Po rozpoczęciu pisania zawartość listy będzie filtrowana w oparciu o wpisywane dane. Po wyświetleniu pozycji **Magazyny Usług odzyskiwania** kliknij ją.
+   * Na liście zasobów wpisz **Recovery Services**.
+   * Po rozpoczęciu wpisywania lista zostanie odfiltrowana na podstawie danych wejściowych. Gdy widzisz **Recovery Services magazynów**, kliknij ją.
 
-     ![Tworzenie magazynu usługi Recovery Services — krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Utwórz magazyn Recovery Services krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
-     Zostanie wyświetlona lista magazynów Usług odzyskiwania.
-   * Wybierz magazyn z listy magazynów Usług odzyskiwania.
+     Zostanie wyświetlona lista magazynów Recovery Services.
+   * Z listy Recovery Services magazynów wybierz magazyn.
 
-     Zostanie otwarty pulpit nawigacyjny wybranego magazynu.
+     Zostanie otwarty wybrany pulpit nawigacyjny magazynu.
 
-     ![Otwarcie bloku magazynu](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+     ![Otwórz blok magazynu](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
 3. Domyślnie zostanie otwarty blok **Ustawienia** . Jeśli jest zamknięte, kliknij pozycję **Ustawienia** , aby otworzyć blok ustawienia.
 
-    ![Otwarcie bloku magazynu](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
+    ![Otwórz blok magazynu](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
 4. Kliknij pozycję **kopia zapasowa** , aby otworzyć Kreatora wprowadzenie.
 
     ![Wprowadzenie do kopii zapasowej](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-    W **wprowadzenie z** blokiem kopia zapasowa, który zostanie otwarty, **cele tworzenia kopii zapasowych** będą wybierane.
+    W **wprowadzenie z blokiem kopia zapasowa** , który zostanie otwarty, **cele tworzenia kopii zapasowych** będą wybierane.
 
     ![Tworzenie kopii zapasowych — cele domyślne — otwierane](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
@@ -146,7 +146,7 @@ Aby edytować ustawienia replikacji magazynu:
 
 ### <a name="extracting-the-software-package"></a>Wyodrębnianie pakietu oprogramowania
 
-Po pobraniu wszystkich plików kliknij przycisk **MicrosoftAzureBackupInstaller. exe**. Spowoduje to uruchomienie **Kreatora instalacji Microsoft Azure Backup** w celu wyodrębnienia plików instalacyjnych do lokalizacji określonej przez użytkownika. Kontynuuj pracę kreatora i kliknij przycisk Wyodrębnij , aby rozpocząć proces wyodrębniania.
+Po pobraniu wszystkich plików kliknij przycisk **MicrosoftAzureBackupInstaller. exe**. Spowoduje to uruchomienie **Kreatora instalacji Microsoft Azure Backup** w celu wyodrębnienia plików instalacyjnych do lokalizacji określonej przez użytkownika. Kontynuuj pracę kreatora i kliknij przycisk **Wyodrębnij** , aby rozpocząć proces wyodrębniania.
 
 > [!WARNING]
 > Do wyodrębnienia plików instalacyjnych wymagane jest co najmniej 4 GB wolnego miejsca.
@@ -180,15 +180,18 @@ Po zakończeniu procesu wyodrębniania zaznacz pole wyboru, aby uruchomić świe
 
     **Konfiguracja usługi SSRS w programie SQL 2017**
 
-    W przypadku korzystania z własnego wystąpienia programu SQL 2017 należy ręcznie skonfigurować usługi SSRS. Po skonfigurowaniu usług SSRS upewnij się, że właściwość IsInitialized usług SSRS ma *wartość true*. Gdy ta wartość jest równa true, serwera usługi MAB zakłada, że usługa SSRS jest już skonfigurowana i pominie konfigurację usług SSRS.
+    W przypadku korzystania z własnego wystąpienia programu SQL 2017 należy ręcznie skonfigurować usługi SSRS. Po skonfigurowaniu usług SSRS upewnij się, że właściwość *IsInitialized* usług SSRS ma *wartość true*. Gdy ta wartość jest równa true, serwera usługi MAB zakłada, że usługa SSRS jest już skonfigurowana i pominie konfigurację usług SSRS.
 
     W przypadku konfiguracji usług SSRS należy użyć następujących wartości: 
     - Konto usługi: "Użyj wbudowanego konta" powinno być usługą sieciową
-    - Adres URL usługi sieci Web: "Katalog wirtualny" powinien być ReportServer_<SQLInstanceName>
-    - Database DatabaseName powinien być ReportServer $<SQLInstanceName>
-    - Adres URL portalu sieci Web: "Katalog wirtualny" powinien być Reports_<SQLInstanceName>
+    - Adres URL usługi sieci Web: "katalog wirtualny" powinien być ReportServer_ @ no__t-0
+    - Baza danych: DatabaseName powinna być ReportServer $ <SQLInstanceName>
+    - Adres URL portalu sieci Web: "katalog wirtualny" powinien być Reports_ @ no__t-0
 
     [Dowiedz się więcej](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguracji usług SSRS.
+
+    > [!NOTE]
+    > Licencjonowanie SQL Server używane jako baza danych dla serwera usługi MAB podlega [warunkom usług online firmy Microsoft](https://www.microsoft.com/en-us/licensing/product-licensing/products) (ost). Zgodnie z elementem OST SQL Server powiązany z serwera usługi MAB może być używany tylko jako baza danych serwera usługi MAB.
 
 4. Podaj lokalizację instalacji plików serwera Microsoft Azure Backup i kliknij przycisk **dalej**.
 
@@ -235,7 +238,7 @@ SERWERA usługi MAB używa agenta ochrony programu System Center Data Protection
 
 W poniższych sekcjach opisano sposób aktualizowania agentów ochrony dla komputerów klienckich.
 
-1. W Konsola administratora serwera kopii zapasowej wybierz pozycję**agenci** **zarządzania** > .
+1. W konsola administratora serwera kopii zapasowej wybierz pozycję **zarządzanie** > **agentów**.
 
 2. W okienku wyświetlania wybierz komputery klienckie, dla których chcesz zaktualizować agenta ochrony.
 
@@ -246,7 +249,7 @@ W poniższych sekcjach opisano sposób aktualizowania agentów ochrony dla kompu
 
 3. Aby zainstalować zaktualizowanych agentów ochrony na wybranych komputerach, w okienku **Akcje** wybierz pozycję **Aktualizuj**.
 
-4. W przypadku komputera klienckiego, który nie jest połączony z siecią, dopóki komputer nie jest podłączony do sieci, w kolumnie **stan agenta** zostanie wyświetlony stan oczekiwanie na **aktualizację**.
+4. W przypadku komputera klienckiego, który nie jest połączony z siecią, dopóki komputer nie jest podłączony do sieci, w kolumnie **stan agenta** zostanie wyświetlony stan **oczekiwanie na aktualizację**.
 
    Gdy komputer kliencki jest połączony z siecią, w kolumnie **aktualizacje agenta** dla komputera klienckiego zostanie wyświetlony stan **Aktualizacja**.
 
@@ -270,7 +273,7 @@ Poniżej przedstawiono kroki, które należy wykonać, jeśli chcesz przenieść
 9. Z poziomu bazy danych SQL Przywróć DPMDB
 10. Z poziomu wiersza polecenia administratora na nowym dysku CD Server do Microsoft Azure Backup lokalizacji instalacji i folderu bin
 
-    Przykład ścieżki: C:\Windows\System32 > CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
+    Przykład ścieżki: C:\Windows\System32 > CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin @ no__t-0
 
 11. Do usługi Azure Backup, uruchom polecenie DPMSYNC-SYNC
 
@@ -278,38 +281,38 @@ Poniżej przedstawiono kroki, które należy wykonać, jeśli chcesz przenieść
 
 ## <a name="network-connectivity"></a>Łączność sieciowa
 
-Azure Backup Server wymaga łączności z usługą Azure Backup, aby produkt działał pomyślnie. Aby sprawdzić, czy komputer ma łączność z platformą Azure, użyj ```Get-DPMCloudConnection``` polecenia cmdlet w konsoli programu PowerShell w Azure Backup Server. Jeśli dane wyjściowe polecenia cmdlet mają wartość PRAWDA, połączenie istnieje, a w przeciwnym razie nie ma łączności.
+Azure Backup Server wymaga łączności z usługą Azure Backup, aby produkt działał pomyślnie. Aby sprawdzić, czy komputer ma łączność z platformą Azure, użyj polecenia cmdlet ```Get-DPMCloudConnection``` w konsoli programu PowerShell Azure Backup Server. Jeśli dane wyjściowe polecenia cmdlet mają wartość PRAWDA, połączenie istnieje, a w przeciwnym razie nie ma łączności.
 
 W tym samym czasie subskrypcja platformy Azure musi być w dobrej kondycji. Aby sprawdzić stan subskrypcji i zarządzać nią, zaloguj się do [portalu subskrypcji](https://account.windowsazure.com/Subscriptions).
 
 Po uzyskaniu informacji o stanie łączności z platformą Azure i subskrypcji platformy Azure Możesz użyć poniższej tabeli, aby dowiedzieć się, jak to miało wpływ na oferowane funkcje tworzenia kopii zapasowej/przywracania.
 
-| Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej na platformie Azure | Utwórz kopię zapasową na dysku | Przywróć z platformy Azure | Przywracanie z dysku |
+| Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej w systemie Azure | Utwórz kopię zapasową na dysku | Przywróć z platformy Azure | Przywróć z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Połączono |Aktywne |Dopuszczeni |Dopuszczeni |Dopuszczeni |Dopuszczeni |
-| Połączono |Wygaśnięcie |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
-| Połączono |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
-| Utracono łączność > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
-| Utracono łączność > 15 dni |Wygaśnięcie |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
-| Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
+| Łączona |Wyprzedzeni |Występować |Występować |Występować |Występować |
+| Łączona |Przeterminowanych |Zatrzymany |Zatrzymany |Występować |Występować |
+| Łączona |Anulowanie aprowizacji |Zatrzymany |Zatrzymany |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymany |
+| Utracono łączność > 15 dni |Wyprzedzeni |Zatrzymany |Zatrzymany |Występować |Występować |
+| Utracono łączność > 15 dni |Przeterminowanych |Zatrzymany |Zatrzymany |Występować |Występować |
+| Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymany |Zatrzymany |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymany |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie po utracie łączności
 
 Jeśli masz zaporę lub serwer proxy, który uniemożliwia dostęp do platformy Azure, musisz zezwolić na następujące adresy domeny w profilu zapory/serwera proxy:
 
 * `http://www.msftncsi.com/ncsi.txt`
-* \*.Microsoft.com
-* \*.WindowsAzure.com
-* \*. microsoftonline.com
-* \*. windows.net
+* \*. Microsoft.com
+* \*. WindowsAzure.com
+* @no__t — 0.microsoftonline.com
+* @no__t — 0.windows.net
 
 Po przywróceniu łączności z platformą Azure do maszyny Azure Backup Server operacje, które można wykonać, są określane przez stan subskrypcji platformy Azure. Powyższa tabela zawiera szczegółowe informacje o operacjach dozwolonych, gdy maszyna jest "połączona".
 
 ### <a name="handling-subscription-states"></a>Obsługa stanów subskrypcji
 
-Istnieje możliwość podjęcia subskrypcji platformy Azure ze stanu wygasłego lub *anulowania* aprowizacji do stanu *aktywnego* . Jednak ma to pewne konsekwencje dla zachowania produktu, gdy stan nie jest *aktywny*:
+Istnieje możliwość podjęcia subskrypcji platformy Azure ze stanu *wygasłego* lub *anulowania* aprowizacji do stanu *aktywnego* . Jednak ma to pewne konsekwencje dla zachowania produktu, gdy stan nie jest *aktywny*:
 
-* Cofnięcie aprowizacji subskrypcji powoduje utratę funkcjonalności przez okres anulowania aprowizacji. W przypadku włączania *aktywności*funkcja tworzenia kopii zapasowej/przywracania jest przywracana. Dane kopii zapasowej na dysku lokalnym można również pobrać, jeśli były utrzymywane w wystarczająco dużym okresie przechowywania. Jednak dane kopii zapasowej na platformie Azure są irretrievably utracone po przejściu subskrypcji w stan *anulowania* aprowizacji.
+* Cofnięcie aprowizacji subskrypcji powoduje utratę funkcjonalności przez *okres anulowania aprowizacji* . W przypadku włączania *aktywności*funkcja tworzenia kopii zapasowej/przywracania jest przywracana. Dane kopii zapasowej na dysku lokalnym można również pobrać, jeśli były utrzymywane w wystarczająco dużym okresie przechowywania. Jednak dane kopii zapasowej na platformie Azure są irretrievably utracone po przejściu subskrypcji w stan *anulowania* aprowizacji.
 * *Wygasła* subskrypcja powoduje utratę funkcjonalności, dopóki nie zostanie ponownie *uaktywniona* . Wszystkie kopie zapasowe zaplanowane na okres *ważności* subskrypcji nie zostaną uruchomione.
 
 ## <a name="upgrade-mabs"></a>SERWERA usługi MAB uaktualnienia

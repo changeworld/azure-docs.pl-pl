@@ -7,28 +7,28 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: b8aa87b871b86a8dab3b1984b638366a42708483
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: e2e051db00c9b8de5268e64be70ab99752bf7a55
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936893"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001416"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu szablonu Azure Resource Manager
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
 > * [Interfejs wiersza polecenia](create-cluster-database-cli.md)
-> * [Program PowerShell](create-cluster-database-powershell.md)
+> * [Narzędzia](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
-> * [Szablon usługi ARM](create-cluster-database-resource-manager.md)
+> * [Szablon ARM](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. 
+Azure Eksplorator danych to szybka i wysoce skalowalna usługa eksploracji danych dla danych dzienników i telemetrii. Aby korzystać z usługi Azure Eksplorator danych, należy najpierw utworzyć klaster i utworzyć co najmniej jedną bazę danych w tym klastrze. Następnie Pozyskaj (Załaduj) dane do bazy danych, tak aby można było uruchamiać zapytania względem tego programu. 
 
-W tym artykule opisano tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). W tym artykule przedstawiono sposób definiowania zasobów wdrożonych i sposobu definiowania parametrów, które są określone podczas wdrażania. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb. Aby uzyskać informacje na temat tworzenia szablonów, zobacz [Tworzenie szablonów Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates). Aby uzyskać składnię i właściwości JSON do użycia w szablonie, zobacz [typy zasobów Microsoft. Kusto](/azure/templates/microsoft.kusto/allversions).
+W tym artykule opisano tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). W tym artykule przedstawiono sposób definiowania zasobów wdrożonych i sposobu definiowania parametrów, które są określone podczas wdrażania. Możesz użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do swoich wymagań. Aby uzyskać informacje na temat tworzenia szablonów, zobacz [Tworzenie szablonów Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates). Aby uzyskać składnię i właściwości JSON do użycia w szablonie, zobacz [typy zasobów Microsoft. Kusto](/azure/templates/microsoft.kusto/allversions).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) .
 
 ## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>Szablon Azure Resource Manager na potrzeby tworzenia klastrów i baz danych
 
@@ -67,11 +67,11 @@ W tym artykule używany jest [istniejący szablon szybkiego startu](https://raw.
           "name": "[parameters('clusters_kustocluster_name')]",
           "type": "Microsoft.Kusto/clusters",
           "sku": {
-              "name": "D13_v2",
+              "name": "Standard_D13_v2",
               "tier": "Standard",
               "capacity": 2
           },
-          "apiVersion": "2019-09-07-preview",
+          "apiVersion": "2019-05-15",
           "location": "[parameters('location')]",
           "tags": {
             "Created By": "GitHub quickstart template"
@@ -80,7 +80,7 @@ W tym artykule używany jest [istniejący szablon szybkiego startu](https://raw.
       {
           "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
           "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2019-09-07-preview",
+          "apiVersion": "2019-05-15",
           "location": "[parameters('location')]",
           "dependsOn": [
               "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
@@ -102,11 +102,11 @@ Szablon Azure Resource Manager można wdrożyć za [pomocą Azure Portal](#use-t
 
 ### <a name="use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment"></a>Użyj Azure Portal, aby wdrożyć szablon i zweryfikować wdrożenie szablonu
 
-1. Aby utworzyć klaster i bazę danych, użyj następującego przycisku, aby rozpocząć wdrażanie. Kliknij prawym przyciskiem myszy i wybierz pozycję **Utwórz w nowym oknie**, aby wykonać pozostałe kroki w tym artykule.
+1. Aby utworzyć klaster i bazę danych, użyj następującego przycisku, aby rozpocząć wdrażanie. Kliknij prawym przyciskiem myszy i wybierz polecenie **Otwórz w nowym oknie**, aby móc wykonać pozostałe kroki opisane w tym artykule.
 
-    [![Wdrażanie na platformie Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-kusto-cluster-database/azuredeploy.json)
+    [@no__t — 1Deploy na platformę Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-kusto-cluster-database/azuredeploy.json)
 
-    Przycisk **Wdróż na platformie Azure** powoduje przejście do witryny Azure Portal w celu wypełnienia formularza wdrożenia.
+    Przycisk **Wdróż na platformie Azure** przenosi do Azure Portal, aby wypełnić formularz wdrożenia.
 
     ![Wdrażanie na platformie Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
@@ -136,7 +136,7 @@ Utworzenie klastra usługi Azure Eksplorator danych i bazy danych może potrwać
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. Wybierz przycisk **Kopiuj**, aby skopiować skrypt programu PowerShell.
+1. Wybierz pozycję **Kopiuj** , aby skopiować skrypt programu PowerShell.
 1. Kliknij prawym przyciskiem myszy konsolę powłoki, a następnie wybierz polecenie **Wklej**.
 Utworzenie klastra usługi Azure Eksplorator danych i bazy danych może potrwać kilka minut.
 
@@ -155,15 +155,15 @@ Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+## <a name="clean-up-resources"></a>Czyszczenie zasobów
 
-Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby, usuwając grupę zasobów. 
+Gdy zasoby platformy Azure nie są już potrzebne, Oczyść wdrożone zasoby, usuwając grupę zasobów. 
 
 ### <a name="clean-up-resources-using-the-azure-portal"></a>Czyszczenie zasobów przy użyciu Azure Portal
 
 Usuń zasoby z Azure Portal, wykonując czynności opisane w sekcji [Oczyszczanie zasobów](create-cluster-database-portal.md#clean-up-resources).
 
-### <a name="clean-up-resources-using-powershell"></a>Oczyszczanie zasobów przy użyciu programu PowerShell
+### <a name="clean-up-resources-using-powershell"></a>Czyszczenie zasobów przy użyciu programu PowerShell
 
 Jeśli Cloud Shell nadal jest otwarty, nie musisz kopiować/uruchamiać pierwszego wiersza (odczyt-Host).
 

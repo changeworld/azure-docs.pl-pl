@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 407148dadb774c72ef252ba0044655c2e219985f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963751"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001499"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Samouczek: Dodawanie parametrów do szablonu Menedżer zasobów
 
@@ -33,7 +33,7 @@ Na końcu poprzedniego samouczka szablon zawierał następujący kod JSON:
 
 Być może zauważono, że wystąpił problem z tym szablonem. Nazwa konta magazynu jest zakodowana na stałe. Tego szablonu można używać tylko do wdrożenia tego samego konta magazynu za każdym razem. Aby wdrożyć konto magazynu o innej nazwie, należy utworzyć nowy szablon, który oczywiście nie jest praktycznym sposobem automatyzacji wdrożeń.
 
-## <a name="make-template-reusable"></a>Tworzenie szablonu do ponownego użycia
+## <a name="make-your-template-reusable"></a>Tworzenie szablonu do ponownego użycia
 
 Aby można było ponownie używać szablonu, dodajmy parametr, który służy do przekazywania nazwy konta magazynu. Wyróżniony kod JSON w poniższym przykładzie pokazuje, co zmieniło się w szablonie. Parametr **storagename** jest identyfikowany jako ciąg. Maksymalna długość jest równa 24 znaków, aby zapobiec wszelkim nazwom, które są zbyt długie.
 
@@ -41,7 +41,7 @@ Skopiuj cały plik i Zastąp jego zawartość.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
-## <a name="deploy-template"></a>Wdróż szablon
+## <a name="deploy-the-template"></a>Wdróż szablon
 
 Wdróżmy szablon. Poniższy przykład wdraża szablon przy użyciu interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Zwróć uwagę, że podajesz nazwę konta magazynu jako jedną z wartości w poleceniu wdrożenia. Podaj nazwę konta magazynu o tej samej nazwie, która została użyta w poprzednim samouczku.
 
@@ -87,7 +87,7 @@ Poprzedni szablon zawsze wdrożono konto magazynu Standard_LRS. W zależności o
 
 Parametr **storageSKU** ma wartość domyślną. Ta wartość jest używana, gdy wartość nie jest określona podczas wdrażania. Zawiera również listę dozwolonych wartości. Te wartości są zgodne z wartościami, które są konieczne do utworzenia konta magazynu. Nie chcesz, aby użytkownicy szablonu mogli przekazać jednostki SKU, które nie działają.
 
-## <a name="redeploy-template"></a>Wdróż ponownie szablon
+## <a name="redeploy-the-template"></a>Wdróż ponownie szablon
 
 Wszystko jest gotowe do ponownego wdrożenia. Ponieważ domyślna jednostka SKU jest ustawiona na **Standard_LRS**, nie trzeba podawać wartości dla tego parametru.
 

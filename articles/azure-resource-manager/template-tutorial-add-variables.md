@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9fc6e57a7e002cd4ffcf62c7779fb2626ce9c839
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fb577c0c0f00da3735da98fc2e94f3610c9bd80d
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963800"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001472"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Samouczek: Dodawanie zmiennych do szablonu Menedżer zasobów
 
@@ -53,7 +53,7 @@ Parametr **storagePrefix** umożliwia przekazywanie prefiksu, który ułatwia id
 
 Na koniec należy zauważyć, że nazwa magazynu jest teraz ustawiona na zmienną zamiast parametru.
 
-## <a name="deploy-template"></a>Wdróż szablon
+## <a name="deploy-the-template"></a>Wdróż szablon
 
 Wdróżmy szablon. Wdrażanie tego szablonu jest łatwiejsze niż w przypadku poprzednich szablonów, ponieważ podano tylko prefiks nazwy magazynu.
 

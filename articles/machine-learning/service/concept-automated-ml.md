@@ -11,14 +11,14 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b38b359821d3d4926085fee8e412fbe06155739
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e9bc0cf3ab0d168a55ab04913bdc71eed5c5fced
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350615"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001235"
 ---
-# <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
+# <a name="what-is-automated-machine-learning"></a>Co to jest automatyczne Uczenie maszynowe?
 
 Zautomatyzowana Uczenie maszynowe, nazywana również automatycznym ML, to proces automatyzacji czasochłonnych, iteracyjnych zadań tworzenia modelu uczenia maszynowego. Umożliwia ona analitykom danych, specjalistom i deweloperom tworzenie modeli ML o wysokiej skalowalności, wydajności i produktywności, a jednocześnie zapewnia wysoką jakość modelu. Automatyczna ML jest oparta na przełomie od naszego [działu badawczego firmy Microsoft](https://arxiv.org/abs/1705.05355).
 
@@ -36,6 +36,14 @@ Analitycy danych, analitykowie i deweloperzy w różnych branżach mogą używa�
 + Oszczędność czasu i zasobów
 + Korzystanie z najlepszych rozwiązań dotyczących analizy danych
 + Zapewnianie problemu Agile — Rozwiązywanie problemów
+
+Typowe przypadki użycia:
++ [Wykrywanie oszustw](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)
++ [Przewidywania marketingowe](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing/auto-ml-classification-bank-marketing.ipynb)
++ [Prognozowanie popytu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
++ [Prognozowanie sprzedaży](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)
++ [Przewidywania wydajności](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance/auto-ml-regression-hardware-performance.ipynb)
++ [Przewidywanie trwałości materiału](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-concrete-strength/auto-ml-regression-concrete-strength.ipynb)
 
 ## <a name="how-automated-ml-works"></a>Jak działa zautomatyzowany ML
 
@@ -55,7 +63,7 @@ Korzystając z **Azure Machine Learning**, można projektować i uruchamiać zau
 
 Podczas uczenia Azure Machine Learning tworzy wiele potoków równoległych, które wypróbuje różne algorytmy i parametry. Zostanie ona zatrzymana po trafieniu kryteriów zakończenia zdefiniowanych w eksperymentie.
 
-Możesz również sprawdzić zarejestrowane informacje o uruchomieniu, które [zawierają metryki](how-to-understand-automated-ml.md) zebrane podczas uruchamiania. Uruchomienie szkoleniowe powoduje utworzenie serializowanego obiektu języka`.pkl` Python (plik) zawierającego model i przetwarzanie wstępne przetwarzania danych.
+Możesz również sprawdzić zarejestrowane informacje o uruchomieniu, które [zawierają metryki](how-to-understand-automated-ml.md) zebrane podczas uruchamiania. Uruchomienie szkolenia powoduje utworzenie serializowanego obiektu języka Python (plik `.pkl`), który zawiera model i przetwarzanie wstępne przetwarzania danych.
 
 Chociaż Kompilowanie modelu jest zautomatyzowane, można również [dowiedzieć się, jak ważne lub istotne funkcje są](how-to-configure-auto-train.md#explain) wygenerowane modele.
 
@@ -74,7 +82,7 @@ W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są wstęp
 
 W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są automatycznie skalowane lub znormalizowane w celu zapewnienia prawidłowego wykonywania algorytmów.  Podczas uczenia modelu jedna z następujących technik skalowania lub normalizacji zostanie zastosowana do każdego modelu.
 
-|Normalizacja skalowania&nbsp;&&nbsp;| Opis |
+|Skalowanie w @ no__t-0 @ no__t-1 @ no__t-2normalization| Opis |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Ujednolicenie funkcji przez usunięcie średniej i skalowania do wariancji jednostek  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Przekształca funkcje, przeskalowane każdą funkcję według minimalnej i maksymalnej wartości tej kolumny  |
@@ -88,9 +96,9 @@ W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są automa
 
 Dostępne są również dodatkowe zaawansowane procesy przetwarzania wstępnego i cechowania, takie jak brakujące wartości, które nie są przypisywaniem, kodowaniem i transformacjem. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-create-portal-experiments.md#preprocess). Włącz to ustawienie przy użyciu:
 
-+ Azure Portal: Zaznaczając pole wyboru **preprocesora** w **ustawieniach zaawansowanych** , [wykonując następujące kroki](how-to-create-portal-experiments.md).
++ Azure Portal: zaznacz pole wyboru **wstępnego przetwarzania** w **ustawieniach zaawansowanych** , [wykonując następujące kroki](how-to-create-portal-experiments.md).
 
-+ Zestaw SDK języka Python: Określanie `"preprocess": True` [dla klasy`AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
++ Zestaw SDK języka Python: Określanie `"preprocess": True` dla [klasy `AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
 
 ## <a name="time-series-forecasting"></a>Prognozowanie szeregów czasowych
@@ -154,7 +162,7 @@ Za pomocą Azure Machine Learning można użyć zautomatyzowanej ML do skompilow
 
 Zautomatyzowana ML jest również dostępna w innych rozwiązaniach firmy Microsoft, takich jak:
 
-|Integracje|Opis|
+|Integracji|Opis|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatyczny wybór modelu i szkolenia w aplikacjach .NET przy użyciu programu Visual Studio i Visual Studio Code ze ML.NET zautomatyzowanej ML (wersja zapoznawcza).|
 |[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Równolegle Skaluj swoje zautomatyzowane zadania szkoleniowe dotyczące platformy Spark w klastrach usługi HDInsight.|
@@ -165,7 +173,7 @@ Zautomatyzowana ML jest również dostępna w innych rozwiązaniach firmy Micros
 
 Zobacz przykłady i Dowiedz się, jak tworzyć modele przy użyciu automatycznego uczenia maszynowego:
 
-+ Postępuj [zgodnie z samouczkiem: Automatyczne uczenie modelu regresji przy użyciu automatycznego Machine Learning platformy Azure](tutorial-auto-train-models.md)
++ Postępuj zgodnie z [samouczkiem: automatyczne uczenie modelu regresji przy użyciu automatycznego Machine Learning platformy Azure](tutorial-auto-train-models.md)
 
 + Skonfiguruj ustawienia dla eksperymentu automatycznego szkolenia:
   + W interfejsie Azure Portal lub na stronie docelowej obszaru roboczego (wersja zapoznawcza) [wykonaj następujące kroki](how-to-create-portal-experiments.md).

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: beb2e6a16a303f633b36709fee2a60cca160d1b6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963807"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001542"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Samouczek: Dodawanie danych wyjściowych do szablonu Menedżer zasobów
 
@@ -49,7 +49,7 @@ Używa funkcji [Reference](resource-group-template-functions-resource.md#referen
 
 Na koniec zwraca właściwość **obiektu** z konta magazynu
 
-## <a name="deploy-template"></a>Wdróż szablon
+## <a name="deploy-the-template"></a>Wdróż szablon
 
 Wszystko jest gotowe do wdrożenia szablonu i przeszukania zwracanej wartości.
 
@@ -93,7 +93,7 @@ W danych wyjściowych polecenia Deployment zobaczysz obiekt podobny do:
 
 ## <a name="review-your-work"></a>Przejrzyj swoją służbę
 
-Wykonano wiele ostatnich sześciu samouczków. Poświęć chwilę na zapoznanie się z tym, co zostało zrobione. Utworzono szablon z parametrami, które są łatwe do dostarczenia. Szablon jest wielokrotnego użytku w różnych środowiskach, ponieważ umożliwia dostosowanie i dynamiczne tworzenie wymaganych wartości. Zwraca on informacje o koncie magazynu, którego można użyć w skrypcie.
+Wykonano wiele ostatnich sześciu samouczków. Poświęć chwilę na zapoznanie się z tym, co zostało zrobione. Utworzono szablon z parametrami, które są łatwe do dostarczenia. Szablon jest wielokrotnego użytku w różnych środowiskach, ponieważ umożliwia dostosowanie i dynamiczne tworzenie wymaganych wartości. Zwraca również informacje o koncie magazynu, których można użyć w skrypcie.
 
 Teraz przyjrzyjmy się grupie zasobów i historii wdrażania.
 

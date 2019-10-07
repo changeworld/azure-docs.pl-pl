@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie zasobami platformy Azure przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Użyj wiersza polecenia platformy Azure i usługi Azure Resource Manager do zarządzania zasobami.
+title: Zarządzanie zasobami platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: Zarządzanie zasobami za pomocą interfejsu wiersza polecenia platformy Azure i usługi Azure Resource manage.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,25 +8,25 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 3293d08f63cf573c7833fae5dd15bfe3119fd6c7
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 78dd51c023bc46ed09219acc3df7e4ee7006ac2b
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206517"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001550"
 ---
-# <a name="manage-azure-resources-by-using-azure-cli"></a>Zarządzanie zasobami platformy Azure przy użyciu wiersza polecenia platformy Azure
+# <a name="manage-azure-resources-by-using-azure-cli"></a>Zarządzanie zasobami platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure za pomocą [usługi Azure Resource Manager](resource-group-overview.md) do zarządzania zasobami platformy Azure. Aby zarządzać grupami zasobów, zobacz [Zarządzanie grup zasobów platformy Azure przy użyciu wiersza polecenia platformy Azure](./manage-resource-groups-cli.md).
+Dowiedz się, jak zarządzać zasobami platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure z [Azure Resource Manager](resource-group-overview.md) . Aby zarządzać grupami zasobów, zobacz [Zarządzanie grupami zasobów platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](./manage-resource-groups-cli.md).
 
 Inne artykuły dotyczące zarządzania zasobami:
 
-- [Zarządzanie zasobami platformy Azure przy użyciu witryny Azure portal](./manage-resources-portal.md)
-- [Zarządzanie zasobami platformy Azure przy użyciu programu Azure PowerShell](./manage-resources-powershell.md)
+- [Zarządzanie zasobami platformy Azure przy użyciu Azure Portal](./manage-resources-portal.md)
+- [Zarządzanie zasobami platformy Azure przy użyciu Azure PowerShell](./manage-resources-powershell.md)
 
-## <a name="deploy-resources-to-an-existing-resource-group"></a>Wdrażanie zasobów do istniejącej grupy zasobów
+## <a name="deploy-resources-to-an-existing-resource-group"></a>Wdrażanie zasobów w istniejącej grupie zasobów
 
-Wdrażaj zasoby platformy Azure bezpośrednio przy użyciu programu Azure PowerShell lub wdrażanie szablonu usługi Resource Manager do tworzenia zasobów platformy Azure.
+Zasoby platformy Azure można wdrażać bezpośrednio przy użyciu Azure PowerShell lub wdrożyć szablon Menedżer zasobów w celu utworzenia zasobów platformy Azure.
 
 ### <a name="deploy-a-resource"></a>Wdrażanie zasobu
 
@@ -45,7 +45,7 @@ az storage account show --resource-group $resourceGroupName --name $storageAccou
 
 ### <a name="deploy-a-template"></a>Wdrażanie szablonu
 
-Poniższy skrypt tworzy wdrażanie szablonu szybkiego startu, aby utworzyć konto magazynu. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie szablonów usługi Azure Resource Manager przy użyciu programu Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell).
+Poniższy skrypt tworzy szablon szybkiego startu, aby utworzyć konto magazynu. Aby uzyskać więcej informacji, zobacz [Szybki Start: tworzenie Azure Resource Manager szablonów przy użyciu Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell).
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -55,15 +55,15 @@ read location &&
 az group deployment create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia Azure](./resource-group-template-deploy-cli.md).
+Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](./resource-group-template-deploy-cli.md).
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Wdrażanie grupy zasobów i zasobów
 
-Można utworzyć grupę zasobów i wdrażania zasobów w grupie. Aby uzyskać więcej informacji, zobacz [Tworzenie grupy zasobów i wdrażanie zasobów](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+Można utworzyć grupę zasobów i wdrożyć zasoby w grupie. Aby uzyskać więcej informacji, zobacz [Tworzenie grupy zasobów i wdrażanie zasobów](./deploy-to-subscription.md#resource-group-and-resources).
 
-## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Wdrażanie zasobów na wiele grup zasobów lub subskrypcji
+## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Wdrażanie zasobów w wielu subskrypcjach lub grupach zasobów
 
-Zazwyczaj można wdrażać wszystkich zasobów w szablonie do pojedynczej grupy zasobów. Jednak istnieją scenariusze, w której chcesz wdrożyć zestaw zasobów ze sobą, ale umieścić je w różnych grupach zasobów lub subskrypcji. Aby uzyskać więcej informacji, zobacz [wdrażania zasobów platformy Azure do wielu grup zasobów lub subskrypcji](./resource-manager-cross-resource-group-deployment.md).
+Zwykle wszystkie zasoby w szablonie są wdrażane w jednej grupie zasobów. Istnieją jednak scenariusze, w których należy wspólnie wdrożyć zestaw zasobów, ale umieścić je w różnych grupach zasobów lub subskrypcjach. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów platformy Azure w wielu subskrypcjach lub grupach zasobów](./resource-manager-cross-resource-group-deployment.md).
 
 ## <a name="delete-resources"></a>Usuwanie zasobów
 
@@ -77,7 +77,7 @@ read storageAccountName &&
 az storage account delete --resource-group $resourceGroupName --name $storageAccountName 
 ```
 
-Aby uzyskać więcej informacji o jak usługi Azure Resource Manager porządkuje usuwania zasobów, zobacz [Usuwanie grupy zasobów usługi Azure Resource Manager](./resource-group-delete.md).
+Aby uzyskać więcej informacji na temat sposobu, w jaki Azure Resource Manager kolejności usuwania zasobów, zobacz [Azure Resource Manager Usuwanie grupy zasobów](./resource-group-delete.md).
 
 ## <a name="move-resources"></a>Przenoszenie zasobów
 
@@ -94,13 +94,13 @@ storageAccount=$(az resource show --resource-group $srcResourceGroupName --name 
 az resource move --destination-group $destResourceGroupName --ids $storageAccount
 ```
 
-Aby uzyskać więcej informacji, zobacz [Move resources to new resource group or subscription](resource-group-move-resources.md) (Przenoszenie zasobów do nowej grupy lub subskrypcji).
+Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).
 
-## <a name="lock-resources"></a>Blokowanie zasobów
+## <a name="lock-resources"></a>Zablokuj zasoby
 
-Zablokowanie uniemożliwia innym użytkownikom w organizacji przypadkowo usuwanie i modyfikowanie krytyczne zasoby, takie jak subskrypcji platformy Azure, grupę zasobów lub zasobu. 
+Blokowanie uniemożliwia innym użytkownikom w organizacji przypadkowe usuwanie lub modyfikowanie krytycznych zasobów, takich jak subskrypcja platformy Azure, Grupa zasobów lub zasób. 
 
-Poniższy skrypt blokuje konta magazynu, więc nie można usunąć konta.
+Poniższy skrypt blokuje konto magazynu, aby nie można było usunąć konta.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -110,7 +110,7 @@ read storageAccountName &&
 az lock create --name LockSite --lock-type CanNotDelete --resource-group $resourceGroupName --resource-name $storageAccountName --resource-type Microsoft.Storage/storageAccounts 
 ```
 
-Poniższy skrypt pobiera wszystkie blokady dla konta magazynu:
+Następujący skrypt pobiera wszystkie blokady dla konta magazynu:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -120,7 +120,7 @@ read storageAccountName &&
 az lock list --resource-group $resourceGroupName --resource-name $storageAccountName --resource-type Microsoft.Storage/storageAccounts --parent ""
 ```
 
-Poniższy skrypt usuwa blokadę konta magazynu:
+Następujący skrypt usuwa blokadę konta magazynu:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -131,19 +131,19 @@ lockId=$(az lock show --name LockSite --resource-group $resourceGroupName --reso
 az lock delete --ids $lockId
 ```
 
-Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
+Aby uzyskać więcej informacji, zobacz [blokowanie zasobów przy użyciu Azure Resource Manager](resource-group-lock-resources.md).
 
-## <a name="tag-resources"></a>Tagowanie zasobów
+## <a name="tag-resources"></a>Dodawanie tagów do zasobów
 
-Znakowanie pozwala logicznie organizowania swoją grupę zasobów i zasobów. Aby uzyskać informacje, zobacz [porządkowanie zasobów na platformie Azure za pomocą tagów](./resource-group-using-tags.md#azure-cli).
+Tagowanie pomaga w logicznym organizowaniu grupy zasobów i zasobów. Aby uzyskać więcej informacji, zobacz [Używanie tagów do organizowania zasobów platformy Azure](./resource-group-using-tags.md#azure-cli).
 
 ## <a name="manage-access-to-resources"></a>Zarządzanie dostępem do zasobów
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](../role-based-access-control/overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md).
+[Kontrola dostępu oparta na rolach (RBAC)](../role-based-access-control/overview.md) umożliwia zarządzanie dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu funkcji RBAC i interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby poznać usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](./resource-group-overview.md).
-- Aby dowiedzieć się składni szablonu usługi Resource Manager, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](./resource-group-authoring-templates.md).
-- Aby dowiedzieć się, jak opracowywać szablony, zobacz [samouczki krok po kroku](/azure/azure-resource-manager/).
-- Aby wyświetlić schematy szablonów usługi Azure Resource Manager, zobacz [odwołanie do szablonu](/azure/templates/).
+- Aby dowiedzieć się Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](./resource-group-overview.md).
+- Aby poznać składnię szablonu Menedżer zasobów, zobacz [Opis struktury i składni Azure Resource Manager szablonów](./resource-group-authoring-templates.md).
+- Aby dowiedzieć się, jak opracowywać szablony, zobacz [Samouczki krok po kroku](/azure/azure-resource-manager/).
+- Aby wyświetlić Azure Resource Manager Schematy szablonów, zobacz [Dokumentacja szablonu](/azure/templates/).

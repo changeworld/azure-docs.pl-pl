@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 7b266a21aabf37765de4f4f94cd3939cec697585
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: b87676e773c4b7714a3b5ef21a6be703e0e3761a
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058517"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001383"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopiowanie danych do i z SQL Server przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję Azure Data Factory:"]
@@ -26,7 +26,7 @@ ms.locfileid: "71058517"
 
 W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z i do bazy danych SQL Server. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik SQL Server jest obsługiwany dla następujących działań:
 
@@ -34,7 +34,7 @@ Ten łącznik SQL Server jest obsługiwany dla następujących działań:
 - [Działanie Lookup](control-flow-lookup-activity.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 
-Dane z bazy danych SQL Server można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Lub można skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do bazy danych SQL Server. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła lub ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z bazy danych SQL Server można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Lub można skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do bazy danych SQL Server. Listę magazynów danych obsługiwanych jako źródła lub ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 W SQL Server ten łącznik obsługuje:
 
@@ -58,22 +58,22 @@ W SQL Server ten łącznik obsługuje:
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika SQL Server Database.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
 Następujące właściwości są obsługiwane dla SQL Server połączonej usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi być ustawiona na wartość **SqlServer**. | Tak |
-| connectionString |Określ informacje o **ConnectionString** , które są konieczne do nawiązania połączenia z bazą danych SQL Server przy użyciu uwierzytelniania SQL lub uwierzytelniania systemu Windows. Zapoznaj się z poniższymi przykładami.<br/>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Można również umieścić hasło w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć `password` konfigurację z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
-| userName |Określ nazwę użytkownika, jeśli używasz uwierzytelniania systemu Windows. Przykładem jest **domainname\\username**. |Nie |
-| password |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Lub można [odwołać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Nie |
-| connectVia | To [środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, zostanie użyta domyślna usługa Azure Integration Runtime. |Nie |
+| — typ | Właściwość Type musi być ustawiona na wartość **SqlServer**. | Tak |
+| Parametry połączenia |Określ informacje o **ConnectionString** , które są konieczne do nawiązania połączenia z bazą danych SQL Server przy użyciu uwierzytelniania SQL lub uwierzytelniania systemu Windows. Zapoznaj się z poniższymi przykładami.<br/>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Można również umieścić hasło w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| Uż |Określ nazwę użytkownika, jeśli używasz uwierzytelniania systemu Windows. Przykładem jest **nazwa_domeny @ no__t-1username**. |Nie |
+| hasło |Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Lub można [odwołać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Nie |
+| Właściwością connectvia | To [środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, zostanie użyta domyślna usługa Azure Integration Runtime. |Nie |
 
 >[!TIP]
 >Jeśli wystąpi błąd z kodem błędu "UserErrorFailedToConnectToSqlServer" i komunikatem "limit sesji dla bazy danych to XXX i został osiągnięty," Dodaj `Pooling=false` do parametrów połączenia i spróbuj ponownie.
 
-**Przykład 1: Użyj uwierzytelniania SQL**
+**Przykład 1: korzystanie z uwierzytelniania SQL**
 
 ```json
 {
@@ -123,7 +123,7 @@ Następujące właściwości są obsługiwane dla SQL Server połączonej usług
 }
 ```
 
-**Przykład 3: Użyj uwierzytelniania systemu Windows**
+**Przykład 3: korzystanie z uwierzytelniania systemu Windows**
 
 ```json
 {
@@ -151,16 +151,16 @@ Następujące właściwości są obsługiwane dla SQL Server połączonej usług
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SQL Server.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SQL Server.
 
 Aby skopiować dane z i do bazy danych SQL Server, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość sqlservercollection. | Tak |
-| schema | Nazwa schematu. |Brak źródła tak dla ujścia  |
-| table | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
-| tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Brak źródła tak dla ujścia |
+| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość **Sqlservercollection**. | Tak |
+| schemat | Nazwa schematu. |Nie dla źródła, tak dla ujścia  |
+| tabela | Nazwa tabeli/widoku. |Nie dla źródła, tak dla ujścia  |
+| tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Nie dla źródła, tak dla ujścia |
 
 **Przykład**
 
@@ -193,15 +193,15 @@ Aby skopiować dane z SQL Server, ustaw typ źródła w działaniu Copy na **sql
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość sqlsource. | Tak |
-| sqlReaderQuery |Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `select * from MyTable`. |Nie |
-| sqlReaderStoredProcedureName |Ta właściwość jest nazwą procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. |Nie |
-| storedProcedureParameters |Te parametry dotyczą procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. |Nie |
+| — typ | Właściwość Type źródła działania Copy musi być ustawiona na wartość **sqlsource**. | Tak |
+| sqlReaderQuery |Użyj niestandardowego zapytania SQL, aby odczytać dane. Przykładem jest `select * from MyTable`. |Nie |
+| sqlReaderStoredProcedureName |Ta właściwość jest nazwą procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnia instrukcja SQL musi być instrukcją SELECT w procedurze składowanej. |Nie |
+| storedProcedureParameters |Te parametry dotyczą procedury składowanej.<br/>Dozwolone wartości to pary nazw lub wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. |Nie |
 
 **Punkty do uwagi:**
 
 - Jeśli **sqlReaderQuery** jest określony dla elementu **sqlsource**, działanie Copy uruchamia to zapytanie względem źródła SQL Server, aby uzyskać dane. Można również określić procedurę składowaną, określając **sqlReaderStoredProcedureName** i **storedProcedureParameters** , jeśli procedura składowana pobiera parametry.
-- Jeśli nie określisz opcji **sqlReaderQuery** ani **sqlReaderStoredProcedureName**, kolumny zdefiniowane w sekcji "Structure" w kodzie JSON zestawu danych są używane do konstruowania zapytania. Zapytanie `select column1, column2 from mytable` jest uruchamiane względem SQL Server. Jeśli definicja zestawu danych nie ma "struktury", wszystkie kolumny są wybierane z tabeli.
+- Jeśli nie określisz opcji **sqlReaderQuery** ani **sqlReaderStoredProcedureName**, kolumny zdefiniowane w sekcji "Structure" w kodzie JSON zestawu danych są używane do konstruowania zapytania. Zapytanie `select column1, column2 from mytable` działa względem SQL Server. Jeśli definicja zestawu danych nie ma "struktury", wszystkie kolumny są wybierane z tabeli.
 
 **Przykład: Użyj zapytania SQL**
 
@@ -299,17 +299,17 @@ Aby skopiować dane do SQL Server, ustaw typ ujścia w działaniu Copy na **sqls
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość sqlsink. | Tak |
+| — typ | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **sqlsink**. | Tak |
 | writeBatchSize |Liczba wierszy do wstawienia do tabeli SQL *na partię*.<br/>Dozwolone wartości to liczby całkowite dla liczby wierszy. Domyślnie Azure Data Factory dynamicznie określa odpowiedni rozmiar wsadu na podstawie rozmiaru wiersza. |Nie |
-| writeBatchTimeout |Ta właściwość określa czas oczekiwania na zakończenie operacji wstawiania wsadowego przed upływem limitu czasu.<br/>Dozwolone wartości są dla przedziału czasu. Przykładem jest "00:30:00" w ciągu 30 minut. |Nie |
+| writeBatchTimeout |Ta właściwość określa czas oczekiwania na zakończenie operacji wstawiania wsadowego przed upływem limitu czasu.<br/>Dozwolone wartości są dla przedziału czasu. Przykładem jest "00:30:00" w ciągu 30 minut. Jeśli wartość nie zostanie określona, limit czasu zostanie przyjmowana domyślnie jako "02:00:00". |Nie |
 | preCopyScript |Ta właściwość określa zapytanie SQL dla działania kopiowania, które ma zostać uruchomione przed zapisaniem danych w SQL Server. Jest on wywoływany tylko raz dla każdego przebiegu kopiowania. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. |Nie |
-| sqlWriterStoredProcedureName | Nazwa procedury składowanej, która definiuje sposób zastosowania danych źródłowych do tabeli docelowej. <br/>Ta procedura składowana jest *wywoływana na partię*. W przypadku operacji, które są uruchamiane tylko raz i nie mają niczego do wykonania z danymi źródłowymi, na przykład Usuń lub Obetnij `preCopyScript` , użyj właściwości. | Nie |
+| sqlWriterStoredProcedureName | Nazwa procedury składowanej, która definiuje sposób zastosowania danych źródłowych do tabeli docelowej. <br/>Ta procedura składowana jest *wywoływana na partię*. W przypadku operacji, które są uruchamiane tylko raz i nie mają niczego do wykonania z danymi źródłowymi, na przykład Usuń lub Obetnij, użyj właściwości `preCopyScript`. | Nie |
 | storedProcedureTableTypeParameterName |Nazwa parametru typu tabeli określona w procedurze składowanej.  |Nie |
 | sqlWriterTableType |Nazwa typu tabeli, która ma zostać użyta w procedurze składowanej. Działanie kopiowania sprawia, że dane są dostępne w tabeli tymczasowej z tym typem tabeli. Kod procedury składowanej może następnie scalić dane, które są kopiowane z istniejącymi danymi. |Nie |
-| storedProcedureParameters |Parametry procedury składowanej.<br/>Dozwolone wartości to pary nazw i wartości. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. | Nie |
-| tableOption | Określa, czy tabela ujścia ma być automatycznie tworzona, jeśli nie istnieje na podstawie schematu źródłowego. Funkcja autotworzenia tabeli nie jest obsługiwana, gdy obiekt ujścia określa procedurę przechowywaną lub kopię etapową skonfigurowaną w działaniu kopiowania. Dozwolone wartości to: `none` (domyślnie), `autoCreate`. |Nie |
+| storedProcedureParameters |Parametry procedury składowanej.<br/>Dozwolone wartości to pary nazw i wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. | Nie |
+| tableOption | Określa, czy tabela ujścia ma być automatycznie tworzona, jeśli nie istnieje na podstawie schematu źródłowego. Funkcja autotworzenia tabeli nie jest obsługiwana, gdy obiekt ujścia określa procedurę przechowywaną lub kopię etapową skonfigurowaną w działaniu kopiowania. Dozwolone wartości to: `none` (wartość domyślna), `autoCreate`. |Nie |
 
-**Przykład 1: Dołącz dane**
+**Przykład 1: Dołączanie danych**
 
 ```json
 "activities":[
@@ -342,7 +342,7 @@ Aby skopiować dane do SQL Server, ustaw typ ujścia w działaniu Copy na **sqls
 ]
 ```
 
-**Przykład 2: Wywołaj procedurę przechowywaną podczas kopiowania**
+**Przykład 2: wywoływanie procedury składowanej podczas kopiowania**
 
 Dowiedz się więcej szczegółowo od [wywołania procedury składowanej z ujścia bazy danych SQL](#invoke-a-stored-procedure-from-a-sql-sink).
 
@@ -386,9 +386,9 @@ Dowiedz się więcej szczegółowo od [wywołania procedury składowanej z ujśc
 
 Podczas kopiowania danych do SQL Server może być wymagane inne zachowanie zapisu:
 
-- [Dołącz](#append-data): Moje dane źródłowe mają tylko nowe rekordy.
-- [Upsert](#upsert-data): Moje dane źródłowe są wstawiane i aktualizowane.
-- [Zastąp](#overwrite-the-entire-table): Chcę ponownie załadować całą tabelę wymiarów za każdym razem.
+- [Dołącz](#append-data): moje dane źródłowe mają tylko nowe rekordy.
+- [Upsert](#upsert-data): moje dane źródłowe są wstawiane i aktualizowane.
+- [Zastąp](#overwrite-the-entire-table): chcę ponownie załadować całą tabelę wymiarów za każdym razem.
 - [Zapisz z logiką niestandardową](#write-data-with-custom-logic): Potrzebuję dodatkowego przetwarzania przed ostatnim wstawieniem do tabeli docelowej.
 
 Zapoznaj się z odpowiednimi sekcjami dotyczącymi konfigurowania programu w Azure Data Factory i najlepszych rozwiązaniach.
@@ -397,7 +397,7 @@ Zapoznaj się z odpowiednimi sekcjami dotyczącymi konfigurowania programu w Azu
 
 Dołączanie danych jest domyślnym zachowaniem tego łącznika SQL Server sink. Azure Data Factory wykonuje zbiorcze Wstawianie w celu wydajnego zapisu w tabeli. Można odpowiednio skonfigurować źródło i ujścia w działaniu kopiowania.
 
-### <a name="upsert-data"></a>Wykonywanie operacji upsert dla danych
+### <a name="upsert-data"></a>Upsert dane
 
 **Opcja 1:** Jeśli masz dużą ilość danych do skopiowania, użyj następującego podejścia, aby wykonać upsert: 
 
@@ -406,9 +406,9 @@ Dołączanie danych jest domyślnym zachowaniem tego łącznika SQL Server sink.
 
 Przykładowo w Azure Data Factory można utworzyć potok z **działaniem kopiowania** łańcucha z **działaniem procedury składowanej**. Dawniej kopiuje dane z magazynu źródłowego do tabeli tymczasowej bazy danych, na przykład **# #UpsertTempTable**, jako nazwę tabeli w zestawie danych. Następnie drugi wywołuje procedurę przechowywaną, aby scalić dane źródłowe z tabeli tymczasowej do tabeli docelowej i oczyścić tabelę tymczasową.
 
-![UPSERT](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
-W bazie danych Zdefiniuj procedurę składowaną z logiką scalania, taką jak Poniższy przykład, który jest wskazywany przez poprzednią aktywność procedury składowanej. Załóżmy, że element docelowy jest tabelą **marketingową** z trzema kolumnami: **ProfileID**, **stan**i **Kategoria**. Wykonaj upsert na podstawie kolumny **ProfileID** .
+W bazie danych Zdefiniuj procedurę składowaną z logiką scalania, taką jak Poniższy przykład, który jest wskazywany przez poprzednią aktywność procedury składowanej. Załóżmy, że element docelowy jest tabelą **marketingową** z trzema kolumnami: **ProfileID**, **State**i **Category**. Wykonaj upsert na podstawie kolumny **ProfileID** .
 
 ```sql
 CREATE PROCEDURE [dbo].[spMergeData]
@@ -501,37 +501,37 @@ Podczas kopiowania danych z i do SQL Server, następujące mapowania są używan
 | Typ danych SQL Server | Azure Data Factory typ danych pośrednich |
 |:--- |:--- |
 | bigint |Int64 |
-| binary |Byte[] |
+| binarny |Byte [] |
 | bit |Boolean |
-| char |String, Char[] |
-| date |DateTime |
-| Datetime |DateTime |
-| datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| char |String, Char [] |
+| Data |DataGodzina |
+| Datę |DataGodzina |
+| datetime2 |DataGodzina |
+| DateTimeOffset |DateTimeOffset |
+| Wartość dziesiętna |Wartość dziesiętna |
+| FILESTREAM — atrybut (varbinary (max)) |Byte [] |
 | Float |Double |
-| image |Byte[] |
+| obraz |Byte [] |
 | int |Int32 |
-| money |Decimal |
-| nchar |String, Char[] |
-| ntext |String, Char[] |
-| numeric |Decimal |
-| nvarchar |String, Char[] |
-| real |Single |
-| rowversion |Byte[] |
-| smalldatetime |DateTime |
+| finansowego |Wartość dziesiętna |
+| nchar |String, Char [] |
+| ntext |String, Char [] |
+| numeryczne |Wartość dziesiętna |
+| nvarchar |String, Char [] |
+| rzeczywiste |Single |
+| rowversion |Byte [] |
+| smalldatetime |DataGodzina |
 | smallint |Int16 |
-| smallmoney |Decimal |
-| sql_variant |Object |
-| text |String, Char[] |
-| time |TimeSpan |
-| timestamp |Byte[] |
+| smallmoney |Wartość dziesiętna |
+| sql_variant |Obiekt |
+| tekst |String, Char [] |
+| czas |Czasu |
+| znacznik czasu |Byte [] |
 | tinyint |Int16 |
-| uniqueidentifier |Guid |
-| varbinary |Byte[] |
-| varchar |String, Char[] |
-| xml |Xml |
+| uniqueidentifier |Ident |
+| liczby |Byte [] |
+| varchar |String, Char [] |
+| dokument |Xml |
 
 >[!NOTE]
 > W przypadku typów danych, które są mapowane na typ pośredni dziesiętny, obecnie Azure Data Factory obsługuje precyzję do 28. Jeśli masz dane wymagające dokładności większej niż 28, Rozważ przekonwertowanie na ciąg w zapytaniu SQL.
@@ -561,7 +561,7 @@ Aby uzyskać szczegółowe informacje na temat właściwości, sprawdź [działa
 3. W tym samym oknie kliknij dwukrotnie pozycję **TCP/IP** , aby uruchomić okno **właściwości protokołu TCP/IP** .
 4. Przejdź do karty **adresy IP** . Przewiń w dół, aby wyświetlić sekcję **IPAll** . Zapisz **port TCP**. Wartość domyślna to **1433**.
 5. Utwórz **regułę dla zapory systemu Windows** na komputerze, aby zezwolić na ruch przychodzący przez ten port. 
-6. **Sprawdź połączenie**: Aby nawiązać połączenie z SQL Server przy użyciu w pełni kwalifikowanej nazwy, użyj SQL Server Management Studio z innego komputera. Może to być na przykład `"<machine>.<domain>.corp.<company>.com,1433"`.
+6. **Sprawdź połączenie**: Aby nawiązać połączenie z SQL Server przy użyciu w pełni kwalifikowanej nazwy, użyj SQL Server Management Studio z innego komputera. Przykładem jest `"<machine>.<domain>.corp.<company>.com,1433"`.
 
 ## <a name="next-steps"></a>Następne kroki
 Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 40299b2ff9a20792cf25828051d2f937f3f1e9da
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: aab2535eb44ca5007859c71bf1f8142b26de7d14
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201269"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996743"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Zarządzanie danymi użytkowników w Azure Security Center
 Ten artykuł zawiera informacje o sposobach zarządzania danymi użytkownika w programie Azure Security Center. Zarządzanie danymi użytkownika obejmuje możliwość uzyskiwania dostępu do danych, ich usuwania lub eksportowania.
@@ -30,35 +30,35 @@ Użytkownik Security Center przypisany do roli czytelnik, właściciel, współa
 ## <a name="searching-for-and-identifying-personal-data"></a>Wyszukiwanie i identyfikowanie danych osobowych
 Użytkownik Security Center może przeglądać swoje dane osobowe za pomocą Azure Portal. Security Center przechowuje wyłącznie szczegóły dotyczące kontaktu z zabezpieczeniami, takie jak adresy e-mail i numery telefonów. Aby uzyskać więcej informacji, zobacz [szczegóły dotyczące kontaktu z zabezpieczeniami w Azure Security Center](security-center-provide-security-contact-details.md) .
 
-W Azure Portal użytkownik może wyświetlić dozwolone konfiguracje adresów IP za pomocą funkcji Security Center dostęp just in Time do maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Manage virtual machine access using just in time](security-center-just-in-time.md) (Zarządzanie dostępem maszyny wirtualnej przy użyciu funkcji „dokładnie na czas”).
+W Azure Portal użytkownik może wyświetlić dozwolone konfiguracje IP przy użyciu funkcji dostępu just in Time do maszyny wirtualnej Security Center. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem do maszyny wirtualnej za pomocą just in Time](security-center-just-in-time.md) .
 
 W Azure Portal użytkownik może wyświetlać alerty zabezpieczeń dostarczone przez Security Center, w tym adresy IP i szczegóły osoby atakującej. Aby uzyskać więcej informacji, zobacz temat [Zarządzanie alertami zabezpieczeń i reagowanie na nie w Azure Security Center](security-center-managing-and-responding-alerts.md) .
 
 ## <a name="classifying-personal-data"></a>Klasyfikowanie danych osobowych
 Nie ma potrzeby klasyfikowania danych osobowych znalezionych w funkcji kontaktu z zabezpieczeniami Security Center. Zapisane dane to adres e-mail (lub wiele adresów e-mail) i numer telefonu. [Dane kontaktowe](security-center-provide-security-contact-details.md) są weryfikowane przez Security Center.
 
-Nie trzeba klasyfikować adresów IP i numerów portów zapisanych przez Security Center funkcję [just in Time](security-center-just-in-time.md) .
+Nie trzeba klasyfikować adresów IP i numerów portów zapisanych przez funkcję [just in time](security-center-just-in-time.md) Security Center.
 
 Tylko użytkownik przypisany do roli administratora może klasyfikować dane osobowe, [wyświetlając alerty](security-center-managing-and-responding-alerts.md) w Security Center.
 
 ## <a name="securing-and-controlling-access-to-personal-data"></a>Zabezpieczanie i kontrola dostępu do danych osobowych
 Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może uzyskać dostęp do [danych kontaktowych zabezpieczeń](security-center-provide-security-contact-details.md).
 
-Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może uzyskać dostęp do swoich zasad [just in Time](security-center-just-in-time.md) .
+Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może uzyskać dostęp do swoich zasad [just-in-Time](security-center-just-in-time.md) .
 
 Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może wyświetlać [alerty](security-center-managing-and-responding-alerts.md).
 
 ## <a name="updating-personal-data"></a>Aktualizowanie danych osobowych
 Security Center użytkownik przypisany do roli właściciela, współautora lub administrator konta może aktualizować [dane kontaktu zabezpieczeń](security-center-provide-security-contact-details.md) za pośrednictwem Azure Portal.
 
-Użytkownik Security Center przypisany do roli właściciela, współautora lub administrator konta może zaktualizować swoje [zasady dotyczące just in Time](security-center-just-in-time.md).
+Użytkownik Security Center przypisany do roli właściciela, współautora lub administrator konta może zaktualizować swoje [zasady just-in-Time](security-center-just-in-time.md).
 
 Administrator konta nie może edytować zdarzeń alertów. [Zdarzenie alertu](security-center-managing-and-responding-alerts.md) jest uznawane za dane zabezpieczeń i jest tylko do odczytu.
 
 ## <a name="deleting-personal-data"></a>Usuwanie danych osobowych
 Security Center użytkownik przypisany do roli właściciela, współautora lub administrator konta może usunąć [dane kontaktu zabezpieczeń](security-center-provide-security-contact-details.md) za pośrednictwem Azure Portal.
 
-Użytkownik Security Center przypisany do roli właściciela, współautora lub administrator konta może usunąć [zasady just in Time w](security-center-just-in-time.md) ramach Azure Portal.
+Security Center użytkownik przypisany do roli właściciela, współautora lub administrator konta może usunąć [zasady just in Time](security-center-just-in-time.md) za pośrednictwem Azure Portal.
 
 Użytkownik Security Center nie może usunąć zdarzeń dotyczących alertów. Ze względu na wymagania dotyczące zabezpieczeń [zdarzenie alertu](security-center-managing-and-responding-alerts.md) jest uznawane za dane tylko do odczytu.
 
@@ -71,7 +71,7 @@ Użytkownik Security Center przypisany do roli czytelnik, właściciel, współa
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
   ```
 
-Użytkownik Security Center przypisany do roli administratora konta może eksportować [zasady just in Time](security-center-just-in-time.md) zawierające adresy IP według:
+Security Center użytkownik przypisany do roli administratora konta może eksportować [zasady just in Time](security-center-just-in-time.md) zawierające adresy IP według:
 
 - Wykonywanie kopii z Azure Portal
 - Wykonywanie wywołania interfejsu API REST platformy Azure, pobieranie protokołu HTTP:
@@ -97,7 +97,7 @@ Użytkownik Security Center może zrezygnować z usunięcia swoich [danych konta
 [Dane alertu](security-center-managing-and-responding-alerts.md) są uznawane za dane zabezpieczeń i są przechowywane przez okres dwóch lat.
 
 ## <a name="auditing-and-reporting"></a>Inspekcja i raportowanie
-Dzienniki inspekcji dotyczące kontaktu zabezpieczeń, just in Time i aktualizacje alertów są przechowywane w [dziennikach aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md).
+Dzienniki inspekcji dotyczące kontaktów zabezpieczeń, just-in-Time i aktualizacji alertów są przechowywane w [dziennikach aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat zarządzania danymi użytkownika, zobacz temat [Zarządzanie danymi użytkownika w badaniu Azure Security Center](security-center-investigation-user-data.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f78f7c37fafd7f0b29f76220206b9adfb62f52c9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: d0314e94e627a42ab55f9e91017acac0cdc8b541
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677747"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001623"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w Azure Monitor
 
@@ -27,7 +27,7 @@ Alert dziennika składa się z reguł przeszukiwania dzienników utworzonych dla
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Reguła alertu wyszukiwania w dzienniku — definicja i typy
 
-Reguły przechowywania dzienników są tworzone przez usługę Azure Alerts w celu automatycznego wykonywania określonych zapytań dotyczących dzienników w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, jest tworzony rekord alertu. Reguła może wtedy automatycznie uruchomić jedną lub więcej akcji przy użyciu [grup akcji](../../azure-monitor/platform/action-groups.md). Może być wymagana rola [współautor monitorowania platformy Azure](../../azure-monitor/platform/roles-permissions-security.md) służąca do tworzenia, modyfikowania i aktualizowania alertów dzienników. wraz z dostępem & praw wykonywania zapytań dla obiektów docelowych analiz w regule alertów lub kwerendzie alertu. Jeśli użytkownik nie ma dostępu do wszystkich obiektów docelowych analizy w regule alertu lub kwerendzie alertu — Tworzenie reguły może zakończyć się niepowodzeniem lub reguła alertu dziennika zostanie wykonana z częściowymi wynikami.
+Reguły przeszukiwania dzienników są tworzone przez alerty platformy Azure w celu automatycznego uruchamiania określonych zapytań dzienników w regularnych odstępach czasu.  Jeśli wyniki zapytania dziennika pasują do określonych kryteriów, zostaje utworzony rekord alertu. Reguła może następnie automatycznie uruchomić co najmniej jedną akcję przy użyciu [grup akcji](../../azure-monitor/platform/action-groups.md). Może być wymagana rola [współautor monitorowania platformy Azure](../../azure-monitor/platform/roles-permissions-security.md) służąca do tworzenia, modyfikowania i aktualizowania alertów dzienników. wraz z dostępem & praw wykonywania zapytań dla obiektów docelowych analiz w regule alertów lub kwerendzie alertu. Jeśli użytkownik nie ma dostępu do wszystkich obiektów docelowych analizy w regule alertu lub kwerendzie alertu — Tworzenie reguły może zakończyć się niepowodzeniem lub reguła alertu dziennika zostanie wykonana z częściowymi wynikami.
 
 Reguły przeszukiwania dzienników są definiowane przez następujące szczegóły:
 
@@ -37,7 +37,7 @@ Reguły przeszukiwania dzienników są definiowane przez następujące szczegó�
 
     Niektóre polecenia i kombinacje analityczne są niezgodne z użyciem w alertach dziennika; Aby uzyskać więcej szczegółów, [Rejestruj zapytania alertów w Azure monitor](../../azure-monitor/platform/alerts-log-query.md).
 
-- **Okres**.  Określa zakres czasu dla zapytania. Zapytanie zwraca tylko rekordy utworzone w tym zakresie czasu bieżącego. Przedział czasu ogranicza dane pobierane dla zapytania dziennika, aby zapobiec nadużyciu i obejść każde polecenie czasu (na przykład temu) używane w zapytaniu dziennika. <br>*Na przykład jeśli okres jest ustawiony na 60 minut, a zapytanie jest uruchamiane o godzinie 1:15 PM, do wykonania kwerendy dziennika jest zwracane tylko rekordy utworzone między 12:15 PM i 1:15 PM. Teraz, jeśli zapytanie dziennika używa polecenia czasu, takiego jak temu (7D), zapytanie dziennika zostanie uruchomione tylko dla danych między 12:15 PM i 1:15 PM-tak, jakby dane istniały tylko dla ostatnich 60 minut. I nie przez siedem dni dane określone w zapytaniu dziennika.*
+- **Okres**.  Określa zakres czasu dla zapytania. Zapytanie zwraca tylko rekordy, które zostały utworzone w tym zakresie bieżącego czasu. Przedział czasu ogranicza dane pobierane dla zapytania dziennika, aby zapobiec nadużyciu i obejść każde polecenie czasu (na przykład temu) używane w zapytaniu dziennika. <br>*Na przykład jeśli okres jest ustawiony na 60 minut, a zapytanie jest uruchamiane o godzinie 1:15 PM, do wykonania kwerendy dziennika jest zwracane tylko rekordy utworzone między 12:15 PM i 1:15 PM. Teraz, jeśli zapytanie dziennika używa polecenia czasu, takiego jak temu (7D), zapytanie dziennika zostanie uruchomione tylko dla danych między 12:15 PM i 1:15 PM-tak, jakby dane istniały tylko dla ostatnich 60 minut. I nie przez siedem dni dane określone w zapytaniu dziennika.*
 
 - **Częstotliwość**.  Określa, jak często zapytanie powinno być uruchamiane. Może mieć dowolną wartość z przedziału od 5 minut do 24 godzin. Wartość powinna być równa lub mniejsza niż przedział czasu.  Jeśli wartość jest większa niż przedział czasu, oznacza to, że zostaną pominięte rekordy ryzyka.<br>*Rozważmy na przykład przedział czasu 30 minut i częstotliwość 60 minut.  Jeśli zapytanie jest uruchamiane o godzinie 1:00, zwraca rekordy z przedziału od 12:30 do 1:00 PM.  Przy następnym uruchomieniu zapytania jest 2:00, gdy zwróci rekordy z zakresu od 1:30 do 2:00.  Wszystkie rekordy utworzone w zakresie od 1:00 do 1:30 nigdy nie zostaną ocenione.*
 
@@ -108,12 +108,12 @@ Rozważmy scenariusz, w którym chcesz otrzymywać alerty w przypadku, gdy dowol
 Zapytanie utworzy średnią wartość dla każdego komputera w odstępach 5-minutowych.  To zapytanie będzie uruchamiane co 5 minut w przypadku danych zbieranych w ciągu ostatnich 30 minut. Ponieważ wybrane pole grupy (agregowany) jest kolumną "Computer" — AggregatedValue jest podzielony na różne wartości "Computer" i średnie użycie procesora dla każdego komputera jest określony dla czasu, który jest 5 minut.  Przykładowy wynik zapytania dla (Powiedz) trzy komputery, będzie jak poniżej.
 
 
-|TimeGenerated [UTC] |Computer  |AggregatedValue  |
+|TimeGenerated [UTC] |Komputerem  |AggregatedValue  |
 |---------|---------|---------|
 |20xx-XX-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
 |20xx-XX-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
 |20xx-XX-xxT01:00:00Z     |   srv03.contoso.com      |    83     |
-|Przyciski ...     |   Przyciski ...      |    Przyciski ...     |
+|...     |   ...      |    ...     |
 |20xx-XX-xxT01:30:00Z     |   srv01.contoso.com      |    88     |
 |20xx-XX-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
 |20xx-XX-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
@@ -127,16 +127,25 @@ Ponieważ alert jest skonfigurowany do wyzwalania na podstawie łącznej liczby 
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Reguła alertu wyszukiwania w dzienniku — uruchamianie i stan
 
-Reguła alertu wyszukiwania dzienników działa na logice określonej przez użytkownika zgodnie z konfiguracją i używanej kwerendzie analizy niestandardowej. Ponieważ logika monitorowania, w tym dokładny warunek lub powód, dla których reguła alertów powinna być wyzwalana, jest hermetyzowana w kwerendzie analitycznej, która może się różnić w każdej regule alertu dziennika. Alerty platformy Azure nie mają ograniczonych informacji o konkretnym scenariuszu głównej przyczyny (lub), które są oceniane w przypadku spełnienia warunku progu reguły alertu przeszukiwania dzienników. W ten sposób alerty dzienników są określane jako Stany mniejsze. Reguły alertów dzienników będą nadal uruchamiane, o ile warunek alertu zostanie osiągnięty przez wynik niestandardowego zapytania analizy. Bez alertu każdy do rozpoznania, ponieważ logika dokładnej przyczyny niepowodzenia monitorowania jest zamaskowany w zapytaniu analitycznym dostarczonym przez użytkownika. Obecnie nie ma żadnego mechanizmu dla alertów Azure Monitor do rozstrzygania o rozwiązanym przyczynie głównej.
+Reguły alertów wyszukiwania w dzienniku działają tylko na logice skompilowanej w zapytaniu. System alertów nie ma żadnego innego kontekstu stanu systemu, Twojego zamiaru lub głównej przyczyny implikowanej przez zapytanie. W związku z tym alerty dzienników są określane jako Stany mniejsze. Warunki są oceniane jako "TRUE" lub "FALSE" przy każdym uruchomieniu.  Alert zostanie uruchomiony za każdym razem, gdy wynikiem oceny warunku alertu jest "TRUE", niezależnie od tego, że jest on wcześniej uruchamiany.    
 
-Pozwala nam zobaczyć to samo w praktycznym przykładzie. Przyjmijmy, że mamy regułę alertu dziennika o nazwie *contoso-log-alert*, zgodnie z konfiguracją w przykładzie podanym [dla liczby wyników dziennik alertu](#example-of-number-of-records-type-log-alert) , w którym zapytanie niestandardowego alertu zaprojektowano w celu wyszukania 500 kodu wyniku w dziennikach.
+Zobaczmy to zachowanie w działaniu z praktycznym przykładem. Załóżmy, że mamy regułę alertu dziennika o nazwie *contoso-log-alert*, która jest skonfigurowana tak, jak pokazano w przykładzie podanym w [przykładowym alertu dziennika typu liczba wyników](#example-of-number-of-records-type-log-alert). Warunek to niestandardowa kwerenda alertu zaprojektowana w celu wyszukania 500 kodu wyniku w dziennikach. Jeśli w dziennikach znaleziono co najmniej jeden kod wyniku 500, warunek alertu to true. 
 
-- O godzinie 1:05 PM, gdy usługa contoso-log-alert została wykonana przez alerty platformy Azure, wynik przeszukiwania dzienników zwraca rekordy o wartości zero z kodem wyniku 500. Ponieważ zero jest poniżej progu, a alert nie jest uruchamiany.
-- W następnej iteracji o godzinie 1:10 PM, gdy usługa contoso-log-alert została wykonana przez alerty platformy Azure, w wyniku przeszukiwania dzienników uzyskano pięć rekordów z kodem wyniku 500. Ponieważ pięć przekracza wartość progową, a alert jest uruchamiany ze skojarzonymi akcjami, które zostaną wyzwolone.
-- O godzinie 1:15 PM, gdy usługa contoso-log-alert została wykonana przez alerty platformy Azure, w wyniku przeszukiwania dzienników podane są dwa rekordy z kodem wyniku 500. Ponieważ dwa przekroczy wartość progową, a alert jest uruchamiany ze skojarzonymi akcjami wyzwalane.
-- Teraz w następnej iteracji o godzinie 1:20 PM 500, gdy usługa contoso-log-alert została wykonana przez usługę Azure alert Ponieważ zero jest poniżej progu, a alert nie jest uruchamiany.
+W każdym przedziale czasowym system alertów platformy Azure oblicza warunek dotyczący *alertu contoso-log*.
 
-Ale w powyższym przypadku, o godzinie 1:15 PM — alerty platformy Azure nie mogą określić, że podstawowe problemy występujące w 1:10 utrzymują się i jeśli wystąpią nowe błędy w sieci. Ponieważ zapytanie dostarczone przez użytkownika może uwzględniać wcześniejsze rekordy — alerty na platformie Azure. Ponieważ logika alertu jest hermetyzowana w zapytaniu alertu — dwa rekordy z kodem wyniku 500 o godzinie 1:15 PM mogą lub nie były już widoczne w 1:10 PM. W związku z tym po stronie przestroga, gdy contoso-log-alert zostanie wykonany o godzinie 1:15 PM, skonfigurowana akcja zostanie wyzwolona ponownie. Teraz o godzinie 1:20 PM, gdy nie są wyświetlane rekordy z 500 kod wyniku — alerty platformy Azure nie mogą mieć pewności, że przyczyna 500 kodu wynikowego w 1:10 PM i 1:15 PM są teraz rozwiązane, a Azure Monitor alerty mogą w ten sam sposób wywnioskować problemy z błędami. s ponownie. Z tego powodu firma Contoso-log-alert nie zostanie zmieniona na rozwiązany przez pulpit nawigacyjny alertów platformy Azure i/lub powiadomienia wysyłane z informacją o rozwiązywaniu alertu. Zamiast tego użytkownik, który rozumie dokładny warunek lub powód dla logiki osadzonej w zapytaniu analitycznym, może [oznaczyć alert jako zamknięty](alerts-managing-alert-states.md) zgodnie z wymaganiami.
+
+| Godzina    | Liczba rekordów zwracanych przez zapytanie przeszukiwania dzienników | Evalution warunku dziennika | Wynik 
+| ------- | ----------| ----------| ------- 
+| 1:05 PM | 0 rekordów | 0 nie jest > 0, więc FALSE |  Alert nie jest wyzwalany. Nie wywołano żadnych akcji.
+| 1:10 PM | 2 rekordy | 2 > 0  | Wyzwolone alerty i grupy akcji o nazwie. Stan alertu jest aktywny.
+| 1:15 PM | 5 rekordów | 5 > 0, tak więc prawda  | Wyzwolone alerty i grupy akcji o nazwie. Stan alertu jest aktywny.
+| 1:20 PM | 0 rekordów | 0 nie jest > 0, więc FALSE |  Alert nie jest wyzwalany. Nie wywołano żadnych akcji. Stan alertu pozostał aktywny.
+
+Jeśli na przykład użyto poprzedniego przypadku:
+
+W przypadku alertów platformy Azure na 1:15 PM nie można ustalić, czy podstawowe problemy występujące w 1:10 utrzymują się, a jeśli rekordy są nowymi awariami netto lub powtarzają się starsze błędy w lokalizacji 1:10PM. Zapytanie udostępnione przez użytkownika może lub nie może uwzględniać wcześniejszych rekordów, a system nie wie. System alertów platformy Azure jest zbudowany z błędem na stronie przestroga i wyzwala alert i skojarzone akcje ponownie o godzinie 1:15. 
+
+O godzinie 1:20 PM, gdy nie są wyświetlane rekordy z 500 kod wyniku, alerty platformy Azure nie mogą mieć pewności, że przyczyna 500 kodu wynikowego w 1:10 PM i 1:15 PM zostanie rozwiązany. Nie wiadomo, czy dla tych samych powodów wystąpią błędy 500. Z tego powodu *firma Contoso-log-alert* nie jest zmieniana na **rozwiązany** w pulpicie nawigacyjnym alertów platformy Azure i/lub powiadomienia nie są wysyłane z informacją o rozwiązaniu alertu. Tylko ty, który rozumie dokładny warunek lub powód dla logiki osadzonej w zapytaniu analitycznym, można [oznaczyć alert jako zamknięty](alerts-managing-alert-states.md) zgodnie z wymaganiami.
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Cennik i rozliczanie alertów dziennika
 

@@ -113,7 +113,7 @@
           href: security-center-identity-access.md
     - name: Stosowanie zabezpieczeń chmury
       items:
-        - name: Zarządzanie dostępem Just In Time
+        - name: Zarządzanie dostępem just in time
           href: security-center-just-in-time.md
         - name: Funkcje adaptacyjnego sterowania aplikacjami
           href: security-center-adaptive-application.md
@@ -147,6 +147,8 @@
   items:
     - name: Interfejsy API REST
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Informacje o wersji
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Wycofywanie funkcji i interfejsów API (lipiec 2019 r.)
       href: security-center-features-retirement-july2019.md
     - name: Rekomendacje i ocena ochrony punktu końcowego

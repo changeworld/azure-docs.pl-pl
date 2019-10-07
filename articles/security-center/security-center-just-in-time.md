@@ -8,19 +8,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 2abe917d1713bbc5f5844aced5e688baacc7d397
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: a6326b2ea9b4c2247df4f93eba904b7527666131
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202015"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996376"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem do maszyny wirtualnej przy użyciu funkcji just in Time
 
 Dostęp do maszyn wirtualnych w czasie just-in-Time (JIT) może służyć do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure, co pozwala ograniczyć narażenie na ataki, zapewniając łatwy dostęp do łączenia się z maszynami wirtualnymi w razie potrzeby.
 
 > [!NOTE]
-> Funkcja just in time jest dostępna w warstwie Standardowa Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+> Funkcja just in time jest dostępna w warstwie Standardowa Security Center. Zobacz [Cennik](security-center-pricing.md) , aby dowiedzieć się więcej o warstwach cenowych Security Center.
 
 
 > [!NOTE]
@@ -68,7 +68,7 @@ Z poziomu ASC można skonfigurować zasady JIT i zażądać dostępu do maszyny 
 
 ### Konfigurowanie dostępu JIT na maszynie wirtualnej w języku ASC<a name="jit-asc"></a>
 
-1. Otwórz pulpit nawigacyjny usługi **Security Center**.
+1. Otwórz pulpit nawigacyjny **Security Center** .
 
 2. W lewym okienku wybierz pozycję **dostęp just in Time do maszyny wirtualnej**.
 
@@ -82,7 +82,7 @@ Z poziomu ASC można skonfigurować zasady JIT i zażądać dostępu do maszyny 
 
     - **Skonfigurowane** — maszyny wirtualne, które zostały skonfigurowane do obsługi dostępu just in Time do maszyny wirtualnej. Przedstawione dane dotyczą ostatniego tygodnia i obejmują dla każdej maszyny wirtualnej liczbę zatwierdzonych żądań, datę ostatniego dostępu i godzinę ostatniego użytkownika.
     - **Zalecane** — maszyny wirtualne, które mogą obsługiwać dostęp do maszyny wirtualnej just-in-Time, ale nie zostały skonfigurowane do programu. Zalecamy włączenie kontroli dostępu just in Time do maszyn wirtualnych.
-    - **Brak zaleceń** — powody, dla których maszyna wirtualna może nie mieć zaleceń:
+    - **Brak powodów rekomendacji** , które mogą spowodować, że maszyna wirtualna nie jest zalecana:
       - Brak sieciowej grupy zabezpieczeń — rozwiązanie just in Time wymaga, aby sieciowej grupy zabezpieczeń.
       - Klasyczna maszyna wirtualna — Security Center dostęp do maszyny wirtualnej just in Time aktualnie obsługuje tylko maszyny wirtualne wdrożone za pośrednictwem Azure Resource Manager. Wdrożenie klasyczne nie jest obsługiwane przez rozwiązanie just-in-Time. 
       - Inne — maszyna wirtualna jest w tej kategorii, jeśli rozwiązanie just in time jest wyłączone w zasadach zabezpieczeń subskrypcji lub grupy zasobów lub jeśli maszyna wirtualna nie ma publicznego adresu IP i nie ma sieciowej grupy zabezpieczeń.
@@ -94,12 +94,12 @@ Z poziomu ASC można skonfigurować zasady JIT i zażądać dostępu do maszyny 
 5. Kliknij pozycję **Włącz JIT na maszynach wirtualnych**.
    -. Ten blok przedstawia porty domyślne zalecane przez Azure Security Center:
       - 22 — SSH
-      - 3389 - RDP
+      - 3389 — RDP
       - 5985 — WinRM 
       - 5986 — WinRM
 6. Możesz również skonfigurować porty niestandardowe:
 
-      1. Kliknij pozycję **Dodaj**. Zostanie otwarte okno **Dodaj konfigurację portu** .
+      1. Kliknij przycisk **Dodaj**. Zostanie otwarte okno **Dodaj konfigurację portu** .
       2. Dla każdego skonfigurowanego portu, zarówno domyślnego, jak i niestandardowego, można dostosować następujące ustawienia:
 
     - **Typ protokołu**— protokół, który jest dozwolony na tym porcie w przypadku zatwierdzenia żądania.
@@ -108,7 +108,7 @@ Z poziomu ASC można skonfigurować zasady JIT i zażądać dostępu do maszyny 
 
      3. Kliknij przycisk **OK**.
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Zapisz**.
 
 > [!NOTE]
 >Gdy dla maszyny wirtualnej jest włączony dostęp JIT dla maszyny wirtualnej, Azure Security Center tworzy reguły "Odmów wszystkim ruchem przychodzącym" dla wybranych portów w grupach zabezpieczeń sieci skojarzonych i z tą zaporą platformy Azure. Jeśli zostały utworzone inne reguły dla wybranych portów, istniejące reguły mają pierwszeństwo przed nowym regułą "odmowa całego ruchu przychodzącego". Jeśli nie ma żadnych istniejących reguł na wybranych portach, nowy reguły "Odrzuć cały ruch przychodzący" mają najwyższy priorytet w grupach zabezpieczeń sieci i zaporze platformy Azure.
@@ -118,7 +118,7 @@ Z poziomu ASC można skonfigurować zasady JIT i zażądać dostępu do maszyny 
 
 Aby zażądać dostępu do maszyny wirtualnej za pomocą funkcji ASC:
 
-1. W obszarze **dostęp just in Time do maszyny wirtualnej**wybierz kartę **skonfigurowane** .
+1. W obszarze **dostęp do maszyny wirtualnej just-in-Time**wybierz kartę **skonfigurowane** .
 
 2. W obszarze **maszyna wirtualna**kliknij maszyny wirtualne, dla których chcesz uzyskać dostęp. Spowoduje to umieszczenie znacznika wyboru obok maszyny wirtualnej.
 
@@ -127,7 +127,7 @@ Aby zażądać dostępu do maszyny wirtualnej za pomocą funkcji ASC:
 
     - Kolumna **szczegóły połączenia** zawiera informacje wymagane do nawiązania połączenia z maszyną wirtualną oraz otwarte porty.
 
-      ![Żądanie dostępu just in time](./media/security-center-just-in-time/request-just-in-time-access.png)
+      ![Żądaj dostępu just in Time](./media/security-center-just-in-time/request-just-in-time-access.png)
 
 3. Kliknij pozycję **Żądaj dostępu**. Zostanie otwarte okno **żądania dostępu** .
 
@@ -147,9 +147,9 @@ Istniejące zasady just in Time maszyny wirtualnej można zmienić, dodając i k
 Aby edytować istniejące zasady just in Time maszyny wirtualnej:
 1. Na karcie **Konfiguracja** w obszarze **maszyny wirtualne**wybierz maszynę wirtualną, do której chcesz dodać port, klikając trzy kropki w wierszu dla tej maszyny wirtualnej. 
 
-1. Wybierz pozycję **Edit** (Edytuj).
+1. Wybierz pozycję **Edytuj**.
 1. W obszarze **Konfiguracja dostępu JIT do maszyny wirtualnej**można edytować istniejące ustawienia już chronionego portu lub dodać nowy port niestandardowy. 
-  ![dostęp JIT do maszyny wirtualnej](./media/security-center-just-in-time/edit-policy.png)
+  @no__t — dostęp do maszyny wirtualnej 0jit @ no__t-1
 
 ## <a name="audit-jit-access-activity-in-asc"></a>Inspekcja aktywności dostępu JIT w ASC
 
@@ -206,8 +206,8 @@ W Azure Portal podczas próby nawiązania połączenia z maszyną wirtualną pla
 
   Wymagany jest dostęp z następującymi domyślnymi parametrami:
 
-  - **źródłowy adres IP**: "Any" (*) (nie można zmienić)
-  - **zakres czasu**: Trzy godziny (nie można zmienić) <!--Isn't this set in the policy-->
+  - **źródłowy adres IP**: "any" (*) (nie można zmienić)
+  - **zakres czasu**: trzy godziny (nie można zmienić) <!--Isn't this set in the policy-->
   - **numer portu** Port RDP 3389 dla Windows/port 22 dla systemu Linux (można go zmienić)
 
     > [!NOTE]
@@ -227,7 +227,7 @@ Funkcja dostępu just in Time do maszyny wirtualnej może być używana za pośr
 
 ## <a name="jit-vm-access-via-powershell"></a>Dostęp JIT do maszyny wirtualnej za pośrednictwem programu PowerShell
 
-Aby korzystać z rozwiązania dostępu just in Time do maszyny wirtualnej za pośrednictwem programu PowerShell, należy użyć oficjalnych poleceń cmdlet programu `Set-AzJitNetworkAccessPolicy`PowerShell Azure Security Center i w ten sposób.
+Aby korzystać z rozwiązania dostępu just in Time do maszyny wirtualnej za pośrednictwem programu PowerShell, należy użyć oficjalnych poleceń cmdlet programu PowerShell Azure Security Center, a w przypadku `Set-AzJitNetworkAccessPolicy`.
 
 Poniższy przykład ustawia zasady dostępu just-in-Time dla określonej maszyny wirtualnej i ustawia następujące elementy:
 
@@ -286,7 +286,7 @@ Aby uzyskać więcej informacji, zobacz dokumentację poleceń cmdlet programu P
 ## <a name="next-steps"></a>Następne kroki
 W tym artykule wyjaśniono, jak dostęp just in Time do maszyny wirtualnej w Security Center pomaga kontrolować dostęp do maszyn wirtualnych platformy Azure.
 
-Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat Security Center, zobacz następujące tematy:
 
 - [Ustawianie zasad zabezpieczeń](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów platformy Azure.
 - [Zarządzanie zaleceniami](security-center-recommendations.md) dotyczącymi zabezpieczeń — Dowiedz się, jak zalecenia ułatwiają ochronę zasobów platformy Azure.

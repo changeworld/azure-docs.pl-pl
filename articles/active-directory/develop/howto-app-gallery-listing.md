@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a97c10303a1ce74e53f46c21176c876faed307e7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: bd20928816a30ad2843ce6c876bd77152dcd69e1
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958657"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001738"
 ---
-# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
+# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji Azure Active Directory
 
 W tym artykule pokazano, jak wyświetlić listę aplikacji w galerii aplikacji Azure Active Directory (Azure AD), zaimplementować Logowanie jednokrotne (SSO) i zarządzać listą.
 
@@ -36,7 +36,7 @@ W tym artykule pokazano, jak wyświetlić listę aplikacji w galerii aplikacji A
 - Szybkie wyszukiwanie umożliwia znalezienie aplikacji w galerii.
 - Wszyscy klienci usługi Azure AD w wersji bezpłatna, podstawowa i Premium mogą korzystać z tej integracji.
 - Podzielni klienci mogą uzyskać samouczek konfigurowania krok po kroku.
-- Klienci korzystający z systemu do zarządzania tożsamościami w różnych domenach (standard scim) mogą korzystać z aprowizacji dla tej samej aplikacji.
+- Klienci korzystający z systemu do zarządzania tożsamościami w różnych domenach ([Standard scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) mogą korzystać z aprowizacji dla tej samej aplikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -122,7 +122,7 @@ Oto przepływ aplikacji żądanych przez klienta.
 
 ![Pokazuje przepływ aplikacji żądanych przez klienta](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Osi czasu
+## <a name="timelines"></a>osie czasu
 
 Oś czasu procesu tworzenia listy aplikacji SAML 2,0 lub WS-karmione w galerii wynosi od 7 do 10 dni roboczych.
 
