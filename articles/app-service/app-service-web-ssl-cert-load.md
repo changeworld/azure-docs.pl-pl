@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6820daf34e63fd48e83c645e7509a3256bc8435b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c8c270681794621b2a12671d4bcf350cd6cc4d8
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066990"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981111"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Użyj certyfikatu protokołu SSL w kodzie aplikacji w Azure App Service
 
@@ -44,11 +44,11 @@ Skopiuj odcisk palca certyfikatu i sprawdź, czy [certyfikat jest dostępny](#ma
 
 Certyfikaty publiczne są obsługiwane w formacie *CER* . Aby przekazać certyfikat publiczny, <a href="https://portal.azure.com" target="_blank">Azure Portal</a>i przejdź do swojej aplikacji.
 
-Kliknij pozycję >  **Ustawienia protokołu SSL** **Certyfikaty publiczne (. cer)**  > **Przekaż publiczny certyfikat** z lewej strony aplikacji.
+Kliknij pozycję **Ustawienia protokołu SSL** > **Certyfikaty publiczne (. cer)**  > **Przekaż certyfikat publiczny** od lewego nawigowania w aplikacji.
 
 W polu **Nazwa**wpisz nazwę certyfikatu. W polu **plik certyfikatu CER**wybierz plik CER.
 
-Kliknij pozycję **Przekaż**.
+Kliknij przycisk **Przekaż**.
 
 ![Przekaż certyfikat publiczny](./media/app-service-web-ssl-cert-load/private-cert-upload.png)
 
@@ -62,7 +62,7 @@ Po zaimportowaniu certyfikatu Skopiuj odcisk palca certyfikatu i sprawdź, czy [
 
 ## <a name="make-the-certificate-accessible"></a>Udostępnianie certyfikatu
 
-Aby użyć przekazanego lub zaimportowanego certyfikatu w kodzie aplikacji, zmień jego odcisk palca `WEBSITE_LOAD_CERTIFICATES` z ustawieniem aplikacji, uruchamiając następujące polecenie w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
+Aby użyć przekazanego lub zaimportowanego certyfikatu w kodzie aplikacji, zmień jego odcisk palca na ustawienie aplikacji `WEBSITE_LOAD_CERTIFICATES`, uruchamiając następujące polecenie w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -71,12 +71,12 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 Aby udostępnić wszystkie certyfikaty, ustaw wartość na `*`.
 
 > [!NOTE]
-> To ustawienie powoduje umieszczenie określonych certyfikatów w [bieżącym magazynie User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) w przypadku większości warstw cenowych, ale w warstwie **izolowanej** (tj. aplikacja działa w [App Service Environment](environment/intro.md)) umieszcza certyfikaty w [lokalnym Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) zachować.
+> To ustawienie powoduje umieszczenie określonych certyfikatów w [bieżącym magazynie User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) w przypadku większości warstw cenowych, ale jeśli aplikacja jest uruchomiona w warstwie **izolowanej** (tj. aplikacja działa w [App Service Environment](environment/intro.md)), może być konieczne zaewidencjonowanie [lokalnego Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) .
 >
 
 ![Konfiguruj ustawienie aplikacji](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 
-Po skończeniu kliknij przycisk **Zapisz**.
+Po zakończeniu kliknij przycisk **Zapisz**.
 
 Skonfigurowane certyfikaty są teraz gotowe do użycia przez Twój kod.
 
@@ -112,13 +112,13 @@ certStore.Close();
 
 Jeśli zachodzi potrzeba załadowania pliku certyfikatu z katalogu aplikacji, lepszym rozwiązaniem jest przekazanie go przy użyciu [FTPS](deploy-ftp.md) zamiast [git](deploy-local-git.md), na przykład. Należy zachować poufne dane, takie jak certyfikat prywatny, z kontroli źródła.
 
-Mimo że ładujesz plik bezpośrednio w kodzie .NET, biblioteka nadal weryfikuje, czy bieżący profil użytkownika jest załadowany. Aby załadować bieżący profil użytkownika, należy ustawić `WEBSITE_LOAD_USER_PROFILE` ustawienie aplikacji przy użyciu następującego polecenia w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+Mimo że ładujesz plik bezpośrednio w kodzie .NET, biblioteka nadal weryfikuje, czy bieżący profil użytkownika jest załadowany. Aby załadować bieżący profil użytkownika, ustaw dla ustawienia aplikacji `WEBSITE_LOAD_USER_PROFILE` następujące polecenie w <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 ```
 
-Po ustawieniu tego ustawienia Poniższy C# przykład ładuje certyfikat wywoływany `mycert.pfx` z `certs` katalogu repozytorium aplikacji.
+Po ustawieniu tego ustawienia Poniższy C# przykład ładuje certyfikat o nazwie `mycert.pfx` z katalogu `certs` repozytorium aplikacji.
 
 ```csharp
 using System;

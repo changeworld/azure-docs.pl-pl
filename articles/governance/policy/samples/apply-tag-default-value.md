@@ -1,29 +1,28 @@
 ---
-title: Przykład — stosowanie tagu i jego wartości domyślnej
-description: Ta przykładowa definicja zasad dołącza określoną nazwę i wartość tagu, jeśli nie podano tagu.
+title: Przykład — Zastosuj tag i jego wartość domyślną
+description: Ta przykładowa definicja zasad dołącza określoną nazwę i wartość tagu, jeśli ten tag nie jest podany.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: a9ad211ac1ef9889fcff9646f30fe306458c3538
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03c5c1de3713d2d7a2b2914b7b9bff9fa8b01320
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60549703"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977590"
 ---
-# <a name="sample---apply-tag-and-its-default-value"></a>Przykład — stosowanie tagu i jego wartości domyślnej
+# <a name="sample---apply-tag-and-its-default-value"></a>Przykład — Zastosuj tag i jego wartość domyślną
 
-Ta zasada dołącza określoną nazwę i wartość tagu, jeśli nie podano tagu. Należy określić nazwę i wartość tagu do zastosowania.
+Te zasady dołączają określoną nazwę i wartość tagu, jeśli ten tag nie jest podany. Należy określić nazwę i wartość tagu, który ma zostać zastosowany.
 
-Te przykładowe zasady możesz wdrożyć przy użyciu następujących narzędzi:
+Te przykładowe zasady można wdrożyć przy użyciu:
 
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
 - [Interfejs wiersza polecenia platformy Azure](#azure-cli)
-- [Interfejs API REST](#rest-api)
+- [INTERFEJS API REST](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,34 +30,34 @@ Te przykładowe zasady możesz wdrożyć przy użyciu następujących narzędzi:
 
 ### <a name="policy-definition"></a>Definicja zasad
 
-W pełni gotowa definicja zasad JSON używana przez interfejs API REST, przyciski „Wdróż na platformie Azure” i ręcznie w witrynie Azure Portal.
+Kompletna definicja zasad JSON, używana przez interfejs API REST, przyciski "wdróż na platformie Azure" i ręcznie w portalu.
 
 [!code-json[main](../../../../policy-templates/samples/built-in-policy/apply-default-tag-value/azurepolicy.json "Apply tag and its default value")]
 
 > [!NOTE]
-> W przypadku ręcznego tworzenia zasad w witrynie Azure Portal użyj powyższych elementów **properties.parameters** i **properties.policyRule**. Połącz dwie sekcje za pomocą nawiasów klamrowych `{}`, aby utworzyć poprawny kod JSON.
+> W przypadku ręcznego tworzenia zasad w portalu Użyj części **właściwości. Parameters** i **Properties. Klasa policyrule** powyższych elementów. Zawiń dwie sekcje razem z nawiasami klamrowymi `{}`, aby uczynić prawidłowym kodem JSON.
 
 ### <a name="policy-rules"></a>Reguły zasad
 
-Kod JSON definiujący reguły zasad używany przez interfejs wiersza polecenia platformy Azure i program Azure PowerShell.
+KOD JSON definiujący reguły zasad używany przez interfejs wiersza polecenia platformy Azure i Azure PowerShell.
 
 [!code-json[rule](../../../../policy-templates/samples/built-in-policy/apply-default-tag-value/azurepolicy.rules.json "Policy rules (JSON)")]
 
 ### <a name="policy-parameters"></a>Parametry zasad
 
-Kod JSON definiujący parametry zasad używany przez interfejs wiersza polecenia platformy Azure i program Azure PowerShell.
+KOD JSON definiujący parametry zasad używany przez interfejs wiersza polecenia platformy Azure i Azure PowerShell.
 
 [!code-json[parameters](../../../../policy-templates/samples/built-in-policy/apply-default-tag-value/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name (Nazwa) |Type |Pole |Opis |
+|Nazwa |Typ |Pole |Opis |
 |---|---|---|---|
-|tagName |String |tags |Nazwa tagu, na przykład costCenter|
-|tagValue |String |tags |Wartość tagu, na przykład headquarter|
+|identyczn |String |tagi |Nazwa tagu, taka jak costCenter|
+|tagValue |String |tagi |Wartość tagu, taka jak Headquarter|
 
-Podczas tworzenia przypisania za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure wartości parametrów można przekazać jako kod JSON w ramach ciągu lub pliku przy użyciu opcji `-PolicyParameter` (program PowerShell) lub opcji `--params` (interfejs wiersza polecenia platformy Azure).
-Program PowerShell obsługuje także opcję `-PolicyParameterObject`, która wymaga przekazania do polecenia cmdlet tabeli skrótów Name/Value (Nazwa/Wartość), gdzie parametr **Name** oznacza nazwę parametru, a parametr **Value** oznacza pojedynczą wartość lub tablicę wartości przekazywaną podczas przypisywania.
+Podczas tworzenia przypisania za pośrednictwem programu PowerShell lub interfejsu wiersza polecenia platformy Azure wartości parametrów mogą być przekazane jako dane JSON w ciągu lub za pośrednictwem pliku przy użyciu `-PolicyParameter` (PowerShell) lub `--params` (interfejs wiersza polecenia platformy Azure).
+Program PowerShell obsługuje również `-PolicyParameterObject`, co wymaga przeprowadzenia przechodzenia do polecenia cmdlet nazwa/wartość Hashtable, gdzie **name** to nazwa parametru, a **wartość** jest pojedynczą wartością lub tablicą wartości przekazywanych podczas przypisywania.
 
-W tym przykładowym parametrze jest zdefiniowany tag _tagName_ o wartości **costCenter** i tag _tagValue_ o wartości **headquarters**.
+W tym przykładowym parametrze jest zdefiniowana _TagName_ of **costCenter** i _tagValue_ elementu **Headquarter** .
 
 ```json
 {
@@ -73,14 +72,14 @@ W tym przykładowym parametrze jest zdefiniowany tag _tagName_ o wartości **cos
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![Wdrażanie przykładu zasad w usłudze Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
-[![wdrażanie przykładu zasad do klientów rządowych platformy Azure](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[![Deploy przykładową zasadą do platformy azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[@no__t 4Deploy zasad na platformie Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-### <a name="deploy-with-azure-powershell"></a>Wdrażanie przy użyciu programu Azure PowerShell
+### <a name="deploy-with-azure-powershell"></a>Wdrażanie za pomocą Azure PowerShell
 
 ```azurepowershell-interactive
 # Create the Policy Definition (Subscription scope)
@@ -96,9 +95,9 @@ $policyparam = '{ "tagName": { "value": "costCenter" }, "tagValue": { "value": "
 $assignment = New-AzPolicyAssignment -Name 'apply-default-tag-value' -DisplayName 'Apply tag and its default value Assignment' -Scope $scope.ResourceId -PolicyDefinition $definition -PolicyParameter $policyparam
 ```
 
-### <a name="remove-with-azure-powershell"></a>Usuwanie przy użyciu programu Azure PowerShell
+### <a name="remove-with-azure-powershell"></a>Usuń z Azure PowerShell
 
-Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i poprzednią definicję:
+Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i definicję:
 
 ```azurepowershell-interactive
 # Remove the Policy Assignment
@@ -108,17 +107,17 @@ Remove-AzPolicyAssignment -Id $assignment.ResourceId
 Remove-AzPolicyDefinition -Id $definition.ResourceId
 ```
 
-### <a name="azure-powershell-explanation"></a>Objaśnienie dla programu Azure PowerShell
+### <a name="azure-powershell-explanation"></a>Azure PowerShell Wyjaśnij
 
-Skrypty służące do wdrażania i usuwania korzystają z następujących poleceń. Każde polecenie w poniższej tabeli stanowi link do dokumentacji polecenia:
+Skrypty wdrażania i usuwania używają następujących poleceń. Każde polecenie w poniższej tabeli zawiera linki do dokumentacji dotyczącej poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Tworzy nową definicję zasad Azure Policy. |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Tworzy nową definicję Azure Policy. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | Pobiera pojedynczą grupę zasobów. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
-| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Usuwa istniejące przypisanie zasad Azure Policy. |
-| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Usuwa istniejącą definicję zasad Azure Policy. |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Tworzy nowe przypisanie Azure Policy. W tym przykładzie udostępniamy definicję, ale może ona również podejmować inicjatywy. |
+| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Usuwa istniejące przypisanie Azure Policy. |
+| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Usuwa istniejącą definicję Azure Policy. |
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -140,9 +139,9 @@ policyparam='{ "tagName": { "value": "costCenter" }, "tagValue": { "value": "hea
 assignment=$(az policy assignment create --name 'apply-default-tag-value' --display-name 'Apply tag and its default value Assignment' --scope `echo $scope | jq '.id' -r` --policy `echo $definition | jq '.name' -r` --params "$policyparam")
 ```
 
-### <a name="remove-with-azure-cli"></a>Usuwanie za pomocą interfejsu wiersza polecenia platformy Azure
+### <a name="remove-with-azure-cli"></a>Usuń za pomocą interfejsu wiersza polecenia platformy Azure
 
-Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i poprzednią definicję:
+Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i definicję:
 
 ```azurecli-interactive
 # Remove the Policy Assignment
@@ -152,23 +151,23 @@ az policy assignment delete --name `echo $assignment | jq '.name' -r`
 az policy definition delete --name `echo $definition | jq '.name' -r`
 ```
 
-### <a name="azure-cli-explanation"></a>Objaśnienie dla interfejsu wiersza polecenia platformy Azure
+### <a name="azure-cli-explanation"></a>Wyjaśnienie interfejsu wiersza polecenia platformy Azure
 
 | Polecenie | Uwagi |
 |---|---|
-| [az policy definition create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Tworzy nową definicję zasad Azure Policy. |
-| [az group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Pobiera pojedynczą grupę zasobów. |
-| [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
-| [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Usuwa istniejące przypisanie zasad Azure Policy. |
-| [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Usuwa istniejącą definicję zasad Azure Policy. |
+| [AZ Policy Definition Create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Tworzy nową definicję Azure Policy. |
+| [AZ Group Show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Pobiera pojedynczą grupę zasobów. |
+| [AZ Policy przypisanie Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Tworzy nowe przypisanie Azure Policy. W tym przykładzie udostępniamy definicję, ale może ona również podejmować inicjatywy. |
+| [AZ Policy przypisanie Delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Usuwa istniejące przypisanie Azure Policy. |
+| [AZ Policy Definition Delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Usuwa istniejącą definicję Azure Policy. |
 
-Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API REST usługi Resource Manager, np. klient [ARMClient](https://github.com/projectkudu/ARMClient) lub program PowerShell. Przykład wywołania interfejsu API REST z poziomu programu PowerShell można znaleźć w sekcji **Aliasy** w temacie [Struktura definicji zasad](../concepts/definition-structure.md#aliases).
+Istnieje kilka narzędzi, których można użyć do współpracy z interfejsem API REST Menedżer zasobów, na przykład [ARMClient](https://github.com/projectkudu/ARMClient) lub PowerShell. Przykład wywoływania interfejsu API REST z programu PowerShell można znaleźć w sekcji **aliasy** [struktury definicji zasad](../concepts/definition-structure.md#aliases).
 
-## <a name="rest-api"></a>Interfejs API REST
+## <a name="rest-api"></a>INTERFEJS API REST
 
 ### <a name="deploy-with-rest-api"></a>Wdrażanie przy użyciu interfejsu API REST
 
-- Utwórz definicję zasad (zakres subskrypcji). Użyj kodu JSON [definicji zasad](#policy-definition) w treści żądania.
+- Utwórz definicję zasad (zakres subskrypcji). Użyj formatu JSON [definicji zasad](#policy-definition) dla treści żądania.
 
   ```http
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/apply-default-tag-value?api-version=2016-12-01
@@ -180,7 +179,7 @@ Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/YourResourceGroup/providers/Microsoft.Authorization/policyAssignments/apply-default-tag-value-assignment?api-version=2017-06-01-preview
   ```
 
-  Skorzystaj z następującego przykładowego kodu JSON w treści żądania:
+  W treści żądania należy użyć następującego przykładu JSON:
 
   ```json
   {
@@ -199,30 +198,30 @@ Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API
   }
   ```
 
-### <a name="remove-with-rest-api"></a>Usuwanie za pomocą interfejsu API REST
+### <a name="remove-with-rest-api"></a>Usuwanie przy użyciu interfejsu API REST
 
-- Usuwanie przypisania zasad
+- Usuń przypisanie zasad
 
   ```http
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/apply-default-tag-value-assignment?api-version=2017-06-01-preview
   ```
 
-- Usuwanie definicji zasad
+- Usuń definicję zasad
 
   ```http
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/apply-default-tag-value?api-version=2016-12-01
   ```
 
-### <a name="rest-api-explanation"></a>Objaśnienie dla interfejsu API REST
+### <a name="rest-api-explanation"></a>Wyjaśnienie interfejsu API REST
 
 | Usługa | Grupa | Operacja | Uwagi |
 |---|---|---|---|
-| Zarządzanie zasobami | Definicje zasad | [Tworzenie](/rest/api/resources/policydefinitions/createorupdate) | Tworzy nową definicję zasad Azure Policy w ramach subskrypcji. Alternatywne rozwiązanie: [Tworzenie w grupie zarządzania](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
-| Zarządzanie zasobami | Przypisania zasad | [Tworzenie](/rest/api/resources/policyassignments/create) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
-| Zarządzanie zasobami | Przypisania zasad | [Usuwanie](/rest/api/resources/policyassignments/delete) | Usuwa istniejące przypisanie zasad Azure Policy. |
-| Zarządzanie zasobami | Definicje zasad | [Usuwanie](/rest/api/resources/policydefinitions/delete) | Usuwa istniejącą definicję zasad Azure Policy. Alternatywne rozwiązanie: [Usuwanie w grupie zarządzania](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Zarządzanie zasobami | Definicje zasad | [Create](/rest/api/resources/policydefinitions/createorupdate) | Tworzy nową definicję Azure Policy w ramach subskrypcji. Alternatywa: [Utwórz w grupie zarządzania](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Zarządzanie zasobami | Przypisania zasad | [Create](/rest/api/resources/policyassignments/create) | Tworzy nowe przypisanie Azure Policy. W tym przykładzie udostępniamy definicję, ale może ona również podejmować inicjatywy. |
+| Zarządzanie zasobami | Przypisania zasad | [Delete](/rest/api/resources/policyassignments/delete) | Usuwa istniejące przypisanie Azure Policy. |
+| Zarządzanie zasobami | Definicje zasad | [Delete](/rest/api/resources/policydefinitions/delete) | Usuwa istniejącą definicję Azure Policy. Alternatywa: [usuwanie w grupie zarządzania](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj dodatkowe [przykłady zasad Azure Policy](index.md)
-- Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md)
+- Zapoznaj się z dodatkowymi [przykładami Azure Policy](index.md)
+- Przegląd [struktury definicji Azure Policy](../concepts/definition-structure.md)

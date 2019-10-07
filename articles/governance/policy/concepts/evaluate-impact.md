@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: b24a0e9f3f557ea2ac425db7caeed63959d18dd8
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 2aee31d3e874f709d5ec30ed4ddc0ba0445d4130
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181407"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980760"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Oceń wpływ nowych zasad platformy Azure
 
@@ -26,7 +25,7 @@ Zalecanym podejściem do walidacji nowej definicji zasad jest wykonanie następu
 - Inspekcja istniejących zasobów
 - Inspekcja nowych lub zaktualizowanych żądań zasobów
 - Wdrażanie zasad w zasobach
-- Monitorowanie ciągłe
+- Ciągłe monitorowanie
 
 ## <a name="tightly-define-your-policy"></a>Ścisłe Definiowanie zasad
 
@@ -37,8 +36,8 @@ Z tego powodu definicje zasad powinny być ściśle zdefiniowane i skoncentrowan
 
 ## <a name="audit-existing-resources"></a>Inspekcja istniejących zasobów
 
-Przed rozpoczęciem zarządzania nowymi lub zaktualizowanymi zasobami przy użyciu nowej definicji zasad najlepiej sprawdzić, w jaki sposób ta metoda szacuje ograniczony podzbiór istniejących zasobów, takich jak testowa Grupa zasobów. Użyj
- [trybu wymuszania](./assignment-structure.md#enforcement-mode)_wyłączonego_ (DoNotEnforce) w przypisaniu zasad, aby zapobiec utworzeniu [efektu](./effects.md) wyzwalacza lub wpisów dziennika aktywności.
+Przed rozpoczęciem zarządzania nowymi lub zaktualizowanymi zasobami przy użyciu nowej definicji zasad najlepiej sprawdzić, w jaki sposób ta metoda szacuje ograniczony podzbiór istniejących zasobów, takich jak testowa Grupa zasobów. Użyj [trybu wymuszania](./assignment-structure.md#enforcement-mode)
+_wyłączone_ (DoNotEnforce) w przypisaniu zasad, aby zapobiec utworzeniu [efektu](./effects.md) wyzwalacza lub wpisów dziennika aktywności.
 
 Ten krok daje możliwość oceny wyników zgodności nowych zasad w istniejących zasobach bez wpływu na przepływ pracy. Sprawdź, czy żadne zgodne zasoby nie są oznaczone jako niezgodne (_fałszywie dodatnie_) i czy wszystkie zasoby, które powinny być niezgodne, są oznaczone jako poprawne.
 Gdy początkowy podzestaw zasobów zostanie zweryfikowany zgodnie z oczekiwaniami, wolno zwiększyć ocenę do wszystkich istniejących zasobów.

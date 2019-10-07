@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/30/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 18a22865f97dfa9868bb593cf3e3e461e02988eb
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 297c6a51c1f902cf7b5843b2dd47b658ebc705fd
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687095"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981003"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Zarządzanie przypisaniami przy użyciu programu PowerShell
 
@@ -20,20 +19,20 @@ Przypisanie planu można zarządzać przy użyciu modułu **AZ. plan** Azure Pow
 
 ## <a name="add-the-azblueprint-module"></a>Dodaj moduł AZ. plan
 
-Aby umożliwić Azure PowerShell zarządzania przypisaniami planu, należy dodać moduł. Ten moduł może być używany z lokalnie zainstalowanym programem PowerShell, [programem Azure Cloud Shell](https://shell.azure.com) lub [obrazem Docker programu Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Aby umożliwić Azure PowerShell zarządzania przypisaniami planu, należy dodać moduł. Tego modułu można używać z zainstalowanym lokalnie programem PowerShell z programem [Azure Cloud Shell](https://shell.azure.com)lub z [obrazem platformy Docker Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
 
 ### <a name="base-requirements"></a>Wymagania podstawowe
 
 Moduł plany platformy Azure wymaga następującego oprogramowania:
 
-- Azure PowerShell 1.5.0 lub wyższy. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/azure/install-az-ps).
-- Modułu PowerShellGet w wersji 2.0.1 lub nowszej. Jeśli jeszcze nie został on zainstalowany lub zaktualizowany, postępuj zgodnie z [tymi instrukcjami](/powershell/gallery/installing-psget).
+- Azure PowerShell 1.5.0 lub wyższy. Jeśli nie jest jeszcze zainstalowana, wykonaj [te instrukcje](/powershell/azure/install-az-ps).
+- PowerShellGet 2.0.1 lub nowszy. Jeśli nie jest zainstalowana lub zaktualizowana, wykonaj [te instrukcje](/powershell/gallery/installing-psget).
 
 ### <a name="install-the-module"></a>Instalowanie modułu
 
 Moduł planów dla programu PowerShell to **AZ. plan**.
 
-1. Za pomocą monitu **administracyjnego** programu PowerShell uruchom następujące polecenie:
+1. W **administracyjnym** wierszu polecenia programu PowerShell uruchom następujące polecenie:
 
    ```azurepowershell-interactive
    # Install the Blueprints module from PowerShell Gallery
@@ -381,8 +380,8 @@ Remove-AzBlueprintAssignment -InputObject $bpAssignment -SubscriptionId '{subId}
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj informacje na temat [cyklu życia strategii](../concepts/lifecycle.md).
+- Dowiedz się więcej o [cyklu życia](../concepts/lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md).
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów](../concepts/resource-locking.md)planu.
+- Rozwiązywanie problemów podczas przypisywania strategii z [ogólnym rozwiązywaniem problemów](../troubleshoot/general.md).

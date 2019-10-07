@@ -6,20 +6,19 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f048262003a3567175c40ebf4ee744c41e11b5f9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3814b5169a687a854cb977eee90fbf6c3fd45afe
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918709"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980978"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Rekomendacja zaleceń przykładowego planu testów usługi CIS Microsoft Azure
 
 W tym artykule szczegółowo przedstawiono sposób, w jaki plan platformy Azure Microsoft Azure fundacje planów testów porównawczych jest mapowany na zaleceń usługi CIS Microsoft Azure dotyczącej testów porównawczych. Aby uzyskać więcej informacji na temat zaleceń, zobacz artykuł dotyczący [testów usług CIS Microsoft Azure](https://www.cisecurity.org/benchmark/azure/).
 
 Poniżej przedstawiono mapowania zaleceń dotyczących usługi **CIS Microsoft Azure testy porównawcze 1.1.0** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania rekomendacji.
-Liczne zamapowane zalecenia są implementowane z inicjatywy [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz pozycję  **\[wersja zapoznawcza inspekcja w wersji zapoznawczej\] usługi CIS Microsoft Azure 1.1.0** .
+Liczne zamapowane zalecenia są implementowane z inicjatywy [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz **\[Preview @ no__t-2 inspekcji usługi CIS Microsoft Azure fundacje testy porównawcze w wersji testowej 1.1.0 i Wdróż określone rozszerzenia maszyny wirtualnej w celu obsługi funkcji inspekcji** wbudowanych w ramach zasad.
 
 > [!IMPORTANT]
 > Każda kontrolka poniżej jest skojarzona z co najmniej jedną definicją [Azure Policy](../../../policy/overview.md) . Te zasady mogą pomóc w [ocenie zgodności](../../../policy/how-to/get-compliance-data.md) z kontrolką; Niemniej jednak często nie jest to 1:1 ani kompletna zgodność między kontrolką a co najmniej jedną zasadą. W związku z tym **zgodność** w Azure Policy odnosi się tylko do samych zasad; nie gwarantuje to, że jest w pełni zgodne ze wszystkimi wymaganiami formantu. Ponadto Standard zgodności zawiera kontrolki, które nie są obecnie rozwiązywane przez żadną Azure Policy definicje. W związku z tym zgodność w Azure Policy jest tylko częściowym widokiem ogólnego stanu zgodności. Skojarzenia między kontrolkami i definicjami Azure Policy dla tego przykładowego planu zgodności mogą ulec zmianie z upływem czasu. Aby wyświetlić historię zmian, zobacz [historię zatwierdzeń usługi GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md).
@@ -127,7 +126,7 @@ Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , kt�
 
 Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która jest wyrównana do tego zalecenia CIS.
 
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4,5 Upewnij się, że ustawienie "typy wykrywania zagrożeń" ma wartość "All"
 
@@ -164,7 +163,7 @@ Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , kt�
 
 Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które są wyrównane z tym zaleceniem CIS.
 
-- Funkcja ochrony TDE serwera SQL powinna być zaszyfrowana za pomocą Twojego własnego klucza
+- Funkcja ochrony programu SQL Server TDE powinna być szyfrowana przy użyciu własnego klucza
 - Funkcja ochrony TDE wystąpienia zarządzanego SQL powinna być szyfrowana przy użyciu własnego klucza
 
 ## <a name="517-ensure-that-logging-for-azure-keyvault-is-enabled"></a>5.1.7 upewnij się, że rejestrowanie dla magazynu kluczy platformy Azure ma włączoną funkcję "Enabled"
@@ -201,7 +200,7 @@ Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , kt�
 
 Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która jest wyrównana do tego zalecenia CIS.
 
-- \[Wersja\]zapoznawcza: Access Control oparte na rolach (RBAC) powinny być używane w usługach Kubernetes Services
+- \[Preview @ no__t-1: Access Control oparte na rolach (RBAC) powinny być używane w usługach Kubernetes Services
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Upewnij się, że aplikacja internetowa przekierowuje cały ruch HTTP do protokołu HTTPS w Azure App Service
 
@@ -217,10 +216,10 @@ Po przejrzeniu mapowania kontroli w ramach planu porównawczego usługi CIS Micr
 > [Plan porównawczy usług CIS Microsoft Azure — omówienie](./index.md)
 > [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
 
-Dodatkowe artykuły na temat strategii i sposobu ich używania:
+Dodatkowe artykuły o planach i sposobach ich użycia:
 
-- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
+- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów](../../concepts/resource-locking.md)planu.
+- Dowiedz się, jak [aktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).

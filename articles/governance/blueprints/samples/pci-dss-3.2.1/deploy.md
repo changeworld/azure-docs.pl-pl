@@ -7,13 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 430cf7cde22cc8de337d33e1f083121503d084f5
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: f95f9a592085fd93fba5e6b11a1a75609eb70295
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802340"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980923"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Wdróż przykład planu PCI-DSS v 3.2.1
 
@@ -24,13 +23,13 @@ Aby wdrożyć przykład planów PCI-DSS w wersji 3.2.1, należy wykonać następ
 > - Oznacz swoją kopię przykładowej publikacji jako **opublikowaną**
 > - Przypisz swoją kopię planu do istniejącej subskrypcji
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free) .
 
 ## <a name="create-blueprint-from-sample"></a>Utwórz plan z przykładu
 
 Najpierw Zaimplementuj przykład strategii, tworząc nowy plan w środowisku przy użyciu przykładu jako starter.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Na stronie **pierwsze kroki** z lewej strony wybierz przycisk **Utwórz** w obszarze _Utwórz plan_.
 
@@ -38,10 +37,10 @@ Najpierw Zaimplementuj przykład strategii, tworząc nowy plan w środowisku prz
 
 1. Wprowadź _podstawy_ przykładu planu:
 
-   - **Nazwa**planu: Podaj nazwę kopii przykładowej strategii PCI-DSS v 3.2.1.
+   - **Nazwa**planu: Podaj nazwę kopii przykładu planu PCI-DSS w wersji 3.2.1.
    - **Lokalizacja definicji**: Użyj wielokropka i wybierz grupę zarządzania, w której ma zostać zapisana kopia przykładu.
 
-1. Wybierz kartę _artefakty_ w górnej części strony lub **Następny: Artefakty** w dolnej części strony.
+1. Wybierz kartę _artefakty_ w górnej części strony lub **Następny: artefakty** w dolnej części strony.
 
 1. Zapoznaj się z listą artefaktów, które składają się na przykład strategii. Wiele artefaktów ma parametry, które zostaną zdefiniowane w dalszej części. Wybierz pozycję **Zapisz wersję roboczą** po zakończeniu przeglądania przykładu planu.
 
@@ -49,7 +48,7 @@ Najpierw Zaimplementuj przykład strategii, tworząc nowy plan w środowisku prz
 
 Twoja kopia przykładu strategii została teraz utworzona w Twoim środowisku. Jest on tworzony w trybie **wersji roboczej** i musi być **opublikowany** , aby można go było przypisać i wdrożyć. Kopię przykładowej strategii można dostosować do środowiska i potrzeb, ale modyfikacja może ją przenieść z warstwy PCI-DSS v 3.2.1 Standard.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć kopię przykładowej strategii, a następnie wybierz ją.
 
@@ -59,7 +58,7 @@ Twoja kopia przykładu strategii została teraz utworzona w Twoim środowisku. J
 
 Po pomyślnym **opublikowaniu**kopii przykładowej strategii można ją przypisać do subskrypcji w grupie zarządzania, w której został on zapisany. Ten krok polega na tym, że parametry są dostarczane, aby każde wdrożenie kopii przykładowej strategii było unikatowe.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć kopię przykładowej strategii, a następnie wybierz ją.
 
@@ -67,17 +66,17 @@ Po pomyślnym **opublikowaniu**kopii przykładowej strategii można ją przypisa
 
 1. Podaj wartości parametrów dla przypisania planu:
 
-   - Ustawienia podstawowe
+   - Nazwie
 
      - **Subskrypcje**: Wybierz co najmniej jedną subskrypcję znajdującą się w grupie zarządzania, do której została zapisana kopia przykładu planu. W przypadku wybrania więcej niż jednej subskrypcji zostanie utworzone przypisanie dla każdego z nich przy użyciu wprowadzonych parametrów.
-     - **Nazwa przypisania**: Nazwa jest wstępnie wypełniana na podstawie nazwy planu.
+     - **Nazwa przypisania**: nazwa jest wstępnie wypełniona dla Ciebie na podstawie nazwy planu.
        Zmień stosownie do potrzeb lub pozostaw jako is.
-     - **Lokalizacja**: Wybierz region, w którym ma zostać utworzona zarządzana tożsamość. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Lokalizacja**: Wybierz region, w którym ma zostać utworzona zarządzana tożsamość. Azure Blueprint używa tej tożsamości zarządzanej do wdrożenia wszystkich artefaktów w przypisanym planie. Aby dowiedzieć się więcej, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Wersja definicji**planu: Wybierz **opublikowaną** wersję kopii przykładowej strategii.
 
-   - Zablokuj przypisanie
+   - Przypisanie blokady
 
-     Wybierz ustawienie blokowania planu dla danego środowiska. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../../concepts/resource-locking.md).
+     Wybierz ustawienie blokowania planu dla danego środowiska. Aby uzyskać więcej informacji, zobacz temat [plany blokowania zasobów](../../concepts/resource-locking.md).
 
    - Tożsamość zarządzana
 
@@ -98,9 +97,9 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 
 |Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Opis|
 |-|-|-|-|
-|\[Inspekcja w wersji zapoznawczej\] PCI v 3.2.1:2018 r kontrolki i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji|Przypisanie zasad|Lista typów zasobów | Inspekcja ustawień diagnostycznych dla wybranych typów zasobów. Wartość domyślna to wszystkie zasoby są wybrane| 
+|\[Preview @ no__t-1 Audit PCI v 3.2.1:2018 r Controls i Wdróż określone rozszerzenia maszyn wirtualnych do obsługi wymagań inspekcji|Przypisanie zasad|Lista typów zasobów | Inspekcja ustawień diagnostycznych dla wybranych typów zasobów. Wartość domyślna to wszystkie zasoby są wybrane| 
 |Dozwolone lokalizacje|Przypisanie zasad|Lista dozwolonych lokalizacji|Lista lokalizacji centrów danych dozwolonych dla każdego zasobu, który ma zostać wdrożony w programie. Ta lista jest dostosowywana do odpowiednich lokalizacji platformy Azure globalnie. Wybierz lokalizacje, które chcesz zezwolić.| 
-|Dozwolone lokalizacje grup zasobów|Przypisanie zasad |Dozwolona lokalizacja |Te zasady pozwalają ograniczyć lokalizacje, w których organizacja może tworzyć grupy zasobów w programie. Służy do wymuszania wymagań dotyczących zgodności obszarów geograficznych.| 
+|Dozwolone lokalizacje grup zasobów|Przypisanie zasad |Dozwolona lokalizacja |Te zasady pozwalają ograniczyć lokalizacje, w których organizacja może tworzyć grupy zasobów w programie. Użyj, aby wymusić wymagania dotyczące zgodności geograficznej.| 
 |Wdrażanie inspekcji na serwerach SQL|Przypisanie zasad|Dni przechowywania|Przechowywania danych w ciągu kilku dni. Wartość domyślna to 180, ale PCI wymaga 365.| 
 |Wdrażanie inspekcji na serwerach SQL|Przypisanie zasad|Nazwa grupy zasobów dla konta magazynu|Inspekcja zapisuje zdarzenia bazy danych w dzienniku inspekcji na koncie usługi Azure Storage (konto magazynu zostanie utworzone w każdym regionie, w którym zostanie utworzone SQL Server, które będzie współużytkowane przez wszystkie serwery w tym regionie).| 
 
@@ -109,13 +108,13 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 Po przejrzeniu kroków związanych z wdrożeniem przykładu planu PCI-DSS v 3.2.1 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej na temat mapowania przeglądu i kontroli:
 
 > [!div class="nextstepaction"]
-> [PCI-DSS v 3.2.1 plan — przegląd](./index.md)
+> [Plan PCI-DSS v 3.2.1 — omówienie](./index.md)
 > [PCI-DSS v 3.2.1 — Mapowanie formantów](./control-mapping.md)
 
-Dodatkowe artykuły na temat strategii i sposobu ich używania:
+Dodatkowe artykuły o planach i sposobach ich użycia:
 
-- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
+- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów](../../concepts/resource-locking.md)planu.
+- Dowiedz się, jak [aktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).

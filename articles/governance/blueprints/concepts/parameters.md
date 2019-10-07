@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: ee44d744c580dd9fbf20e7186b6e76fdc74cc5d0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2bb38e0698d7504ba1bb139ca1bd5e3b14e5cdd4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004089"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981071"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych planów za poorednictwem parametrów
 
@@ -32,7 +31,7 @@ Za pomocą interfejsu API REST, parametry można tworzyć na podstawie samego pl
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>Używanie parametrów secureString i secureobject
 
-Ponieważ _artefakt_ szablonu Menedżer zasobów obsługuje parametry typu **secureString** i Secureobject , plany platformy Azure wymagają, aby każdy z nich był połączony z Azure Key Vault.
+Ponieważ _artefakt_ szablonu Menedżer zasobów obsługuje parametry typu **secureString** i **secureobject** , plany platformy Azure wymagają, aby każdy z nich był połączony z Azure Key Vault.
 Ta miara zabezpieczeń zapobiega niebezpiecznemu wykorzystaniu wpisów tajnych wraz z planem i zachęcaniu do pracy z bezpiecznymi wzorcami. Plany platformy Azure wspierają ten środek zabezpieczeń, co umożliwia wykrywanie dołączania dowolnego bezpiecznego parametru w _artefaktie_szablonu Menedżer zasobów. Podczas przypisywania zostanie wyświetlony komunikat o następujących właściwościach Key Vault na wykryty bezpieczny parametr:
 
 - Identyfikator zasobu Key Vault
@@ -52,17 +51,17 @@ Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [Key Vault Omó
 
 ### <a name="static-parameters"></a>Parametry statyczne
 
-Wartość parametru zdefiniowana w definicji strategii jest nazywana parametrem statycznym, ponieważ każde użycie strategii spowoduje wdrożenie artefaktu przy użyciu tej wartości statycznej. W przykładzie grupy zasobów, gdy nie ma sensu nazwy grupy zasobów, może to mieć sens dla lokalizacji. Następnie każde przypisanie planu utworzy grupę zasobów, niezależnie od jej wywołania podczas przypisywania w tej samej lokalizacji. Ta elastyczność pozwala na selektywne Określanie, co jest wymagane, a co można zmienić podczas przypisywania.
+Wartość parametru zdefiniowana w definicji strategii jest nazywana **parametrem statycznym**, ponieważ każde użycie strategii spowoduje wdrożenie artefaktu przy użyciu tej wartości statycznej. W przykładzie grupy zasobów, gdy nie ma sensu nazwy grupy zasobów, może to mieć sens dla lokalizacji. Następnie każde przypisanie planu utworzy grupę zasobów, niezależnie od jej wywołania podczas przypisywania w tej samej lokalizacji. Ta elastyczność pozwala na selektywne Określanie, co jest wymagane, a co można zmienić podczas przypisywania.
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Ustawianie parametrów statycznych w portalu
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
-1. Wybierz pozycję **Definicje strategii** w lewej części strony.
+1. Wybierz pozycję **definicje** strategii ze strony po lewej stronie.
 
 1. Kliknij istniejący plan, a następnie kliknij pozycję **Edytuj plan** lub kliknij pozycję **+ Utwórz plan** i Wypełnij informacje na karcie **podstawy** .
 
-1. Kliknij pozycję **Next: Artefakty** lub kliknij kartę **artefakty** .
+1. Kliknij przycisk **Dalej: artefakty** lub kliknij kartę **artefakty** .
 
 1. Artefakty dodawane do planu, który ma opcje parametrów, są wyświetlane **parametry X z Y wypełnione** w kolumnie **Parameters** . Kliknij wiersz artefaktu, aby edytować parametry artefaktu.
 
@@ -74,16 +73,16 @@ Wartość parametru zdefiniowana w definicji strategii jest nazywana parametrem 
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Ustawianie parametrów statycznych z interfejsu API REST
 
-Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
+W każdym identyfikatorze URI interfejsu API REST istnieją zmienne, które są używane do zamiany na własne wartości:
 
-- `{YourMG}` — zastąp nazwą swojej grupy zarządzania
-- `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
+- `{YourMG}` — Zamień na nazwę grupy zarządzania
+- `{subscriptionId}` — Zastąp IDENTYFIKATORem subskrypcji
 
 ##### <a name="blueprint-level-parameter"></a>Parametr poziomu planu
 
 Podczas tworzenia strategii za pomocą interfejsu API REST można utworzyć [Parametry](#blueprint-parameters)strategii. W tym celu należy użyć następującego identyfikatora URI interfejsu API REST i formatu treści:
 
-- Identyfikator URI interfejsu API REST
+- IDENTYFIKATOR URI INTERFEJSU API REST
 
   ```http
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
@@ -116,7 +115,7 @@ Podczas tworzenia strategii za pomocą interfejsu API REST można utworzyć [Par
 Po utworzeniu parametru poziomu planu można go używać na artefaktach dodanych do tego planu.
 Poniższy przykład interfejsu API REST tworzy artefakt przypisania roli w planie i używa parametru poziomu planu.
 
-- Identyfikator URI interfejsu API REST
+- IDENTYFIKATOR URI INTERFEJSU API REST
 
   ```http
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2018-11-01-preview
@@ -139,9 +138,9 @@ W tym przykładzie właściwość **principalIds** używa parametru poziomu stra
 
 ##### <a name="artifact-level-parameter"></a>Parametr poziomu artefaktu
 
-Tworzenie **parametrów statycznych** w artefaktie jest podobne, ale przyjmuje wartość prostą zamiast używać `parameters()` funkcji. Poniższy przykład tworzy dwa parametry statyczne, **TagName** i **tagValue**. Wartość na każdej z nich jest podawana bezpośrednio i nie używa wywołania funkcji.
+Tworzenie **parametrów statycznych** w artefaktie jest podobne, ale przyjmuje wartość prostą zamiast używać funkcji `parameters()`. Poniższy przykład tworzy dwa parametry statyczne, **TagName** i **tagValue**. Wartość na każdej z nich jest podawana bezpośrednio i nie używa wywołania funkcji.
 
-- Identyfikator URI interfejsu API REST
+- IDENTYFIKATOR URI INTERFEJSU API REST
 
   ```http
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2018-11-01-preview
@@ -173,9 +172,9 @@ Przeciwieństwem parametru statycznego jest **parametr dynamiczny**. Ten paramet
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Ustawianie parametrów dynamicznych w portalu
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
-1. Wybierz pozycję **Definicje strategii** w lewej części strony.
+1. Wybierz pozycję **definicje** strategii ze strony po lewej stronie.
 
 1. Kliknij prawym przyciskiem myszy strategię, którą chcesz przypisać. Wybierz pozycję **Przypisz plan** lub kliknij plan, który chcesz przypisać, a następnie kliknij przycisk **Przypisz plan** .
 
@@ -185,9 +184,9 @@ Przeciwieństwem parametru statycznego jest **parametr dynamiczny**. Ten paramet
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Ustawianie parametrów dynamicznych z interfejsu API REST
 
-Ustawienie **parametrów dynamicznych** podczas przypisywania jest wykonywane przez bezpośrednie wprowadzenie wartości. Zamiast używać funkcji, takiej jak [Parametry ()](../reference/blueprint-functions.md#parameters), podana wartość jest odpowiednim ciągiem. Artefakty dla grupy zasobów są definiowane przy użyciu właściwości "Nazwa szablonu", **Nazwa**i **Lokalizacja** . Wszystkie inne parametry dla dołączonego artefaktu są zdefiniowane w parametrach z **\<\>** parą kluczy Name i **Value** . Jeśli plan jest skonfigurowany dla parametru dynamicznego, który nie jest dostarczany podczas przypisywania, przypisanie zakończy się niepowodzeniem.
+Ustawienie **parametrów dynamicznych** podczas przypisywania jest wykonywane przez bezpośrednie wprowadzenie wartości. Zamiast używać funkcji, takiej jak [Parametry ()](../reference/blueprint-functions.md#parameters), podana wartość jest odpowiednim ciągiem. Artefakty dla grupy zasobów są definiowane przy użyciu właściwości "Nazwa szablonu", **Nazwa**i **Lokalizacja** . Wszystkie inne parametry dla dołączonego artefaktu są zdefiniowane w **parametrach** z parą kluczy **@no__t 2name @ no__t-3** i **Value** . Jeśli plan jest skonfigurowany dla parametru dynamicznego, który nie jest dostarczany podczas przypisywania, przypisanie zakończy się niepowodzeniem.
 
-- Identyfikator URI interfejsu API REST
+- IDENTYFIKATOR URI INTERFEJSU API REST
 
   ```http
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
@@ -239,8 +238,8 @@ Ustawienie **parametrów dynamicznych** podczas przypisywania jest wykonywane pr
 ## <a name="next-steps"></a>Następne kroki
 
 - Zobacz listę [funkcji](../reference/blueprint-functions.md)strategii.
-- Uzyskaj informacje na temat [cyklu życia strategii](lifecycle.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).
+- Dowiedz się więcej o [cyklu życia](lifecycle.md)planu.
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów](resource-locking.md)planu.
+- Dowiedz się, jak [aktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania strategii z [ogólnym rozwiązywaniem problemów](../troubleshoot/general.md).

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: eb5de6bf42769e7fd04782fc52d93764d1d7a3d6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e341cc5beeb8e8362a848bb1e208ddf1dc773978
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093922"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976795"
 ---
-# <a name="integrate-cloud-foundry-with-azure"></a>Integracja usługi Cloud Foundry z platformą Azure
+# <a name="integrate-cloud-foundry-with-azure"></a>Integracja Cloud Foundry z platformą Azure
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) jest platformą PaaS działającą na platformie Cloud Providers IaaS. Oferuje spójne środowisko wdrażania aplikacji między dostawcami chmury. Można ją również zintegrować z różnymi usługami platformy Azure, korzystając z wysokiej jakości korporacyjnej, skalowalności i oszczędności kosztów.
 Istnieją [6 podsystemów Cloud Foundry](https://docs.cloudfoundry.org/concepts/architecture/), które mogą być elastycznie skalowane w trybie online, w tym: Routing, uwierzytelnianie, zarządzanie cyklem życia aplikacji, zarządzanie usługami, obsługa komunikatów i monitorowanie. Dla każdego podsystemu można skonfigurować Cloud Foundry do korzystania z usługi platformy Azure z korespondentem. 
@@ -47,10 +47,10 @@ Domyślnie usługa równoważenia obciążenia Azure w warstwie Podstawowa jest 
 ### <a name="azure-standard-load-balancer-"></a>Azure usługa Load Balancer w warstwie Standardowa *
 Azure Load Balancer to moduł równoważenia obciążenia warstwy 4. Służy do dystrybuowania ruchu między wystąpieniami usług w zestawie o zrównoważonym obciążeniu. Wersja Standard zapewnia [Zaawansowane funkcje](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) w wersji podstawowej. Na przykład 1. Maksymalny limit puli zaplecza jest wywoływany z 100 do 1000 maszyn wirtualnych.  2. Punkty końcowe obsługują teraz wiele zestawów dostępności zamiast jednego zestawu dostępności.  3. Dodatkowe funkcje, takie jak porty HA, bogatsze dane monitorowania i tak dalej. Jeśli przenosisz do strefy dostępności platformy Azure, wymagany jest standardowy moduł równoważenia obciążenia. W przypadku nowego wdrożenia zalecamy rozpoczęcie pracy z usługą Azure usługa Load Balancer w warstwie Standardowa. 
 
-## <a name="3-authentication"></a>3. Authentication 
+## <a name="3-authentication"></a>3. uwierzytelnianie 
 [Cloud Foundry konto użytkownika i uwierzytelnianie](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) to centralna usługa zarządzania tożsamościami dla CF i różnych składników. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) to usługa zarządzania tożsamościami w chmurze firmy Microsoft. Domyślnie architektura UAA jest używana na potrzeby uwierzytelniania Cloud Foundry. Jako zaawansowaną opcję architektura UAA obsługuje również usługę Azure AD jako zewnętrzny magazyn użytkowników. Użytkownicy usługi Azure AD mogą uzyskiwać dostęp do Cloud Foundry przy użyciu tożsamości LDAP bez konta Cloud Foundry. Wykonaj następujące kroki, aby [skonfigurować usługę Azure AD dla architektury UAA w PCF](https://docs.pivotal.io/p-identity/1-6/azure/index.html).
 
-## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. Magazyn danych dla systemu Cloud Foundry środowiska uruchomieniowego
+## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. magazyn danych dla systemu Cloud Foundry środowiska uruchomieniowego
 Cloud Foundry oferuje doskonałą rozszerzalność do korzystania z usług Azure elementu BlobStore lub Azure MySQL/PostgreSQL dla magazynu systemu w środowisku uruchomieniowym aplikacji.
 ### <a name="azure-blobstore-for-cloud-foundry-cloud-controller-blobstore"></a>Usługa Azure elementu BlobStore dla Cloud Foundry Cloud Controller elementu BlobStore
 Cloud Controller elementu BlobStore to krytyczny magazyn danych dla buildpacks, kropel, pakietów i pul zasobów. Domyślnie serwer systemu plików NFS jest używany na potrzeby elementu BlobStore kontrolera chmury. Aby uniknąć single point of failure, Użyj usługi Azure Blob Storage jako magazynu zewnętrznego. Zapoznaj się z [dokumentacją Cloud Foundryową](https://docs.cloudfoundry.org/deploying/common/cc-blobstore-config.html) dla tła i [opcje w obszarze Cloud Foundry pivotd](https://docs.pivotal.io/pivotalcf/2-0/customizing/azure.html).
@@ -62,12 +62,12 @@ Baza danych kontrolera chmury.  Kontroler chmury udostępnia punkty końcowe int
 #### <a name="uaadb"></a>UAADB 
 Baza danych dla konta użytkownika i uwierzytelniania. Przechowuje dane związane z uwierzytelnianiem użytkownika, na przykład zaszyfrowane nazwy użytkowników i hasła.
 
-Domyślnie może być używana lokalna baza danych systemu (MySQL). W przypadku wysokiej dostępności i skalowania korzystaj z usługi Azure Managed MySQL lub PostgreSQL Services. Poniżej przedstawiono instrukcje włączania [usługi Azure MySQL/PostgreSQL dla CCDB, UAADB i innych systemowych baz danych przy użyciu Cloud Foundry typu open source](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/configure-cf-external-databases-using-azure-mysql-postgres-service).
+Domyślnie może być używana lokalna baza danych systemu (MySQL). W przypadku wysokiej dostępności i skalowania korzystaj z usługi Azure Managed MySQL lub PostgreSQL Services. Poniżej przedstawiono instrukcje [włączania usługi Azure MySQL/PostgreSQL dla CCDB, UAADB i innych systemowych baz danych przy użyciu Cloud Foundry typu open source](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/configure-cf-external-databases-using-azure-mysql-postgres-service).
 
 ## <a name="5-open-service-broker"></a>5. Otwórz Service Broker
-Usługa Azure Service Broker oferuje spójny interfejs do zarządzania dostępem aplikacji do usług platformy Azure. Nowe [otwarte Service Broker dla projektu platformy Azure](https://github.com/Azure/open-service-broker-azure) stanowią pojedynczy i prosty sposób dostarczania usług do aplikacji w Cloud Foundry, OpenShift i Kubernetes. Aby uzyskać instrukcje dotyczące wdrażania w witrynie PCF, zobacz artykuł [Azure Open Service Broker for PCF](https://network.pivotal.io/products/azure-open-service-broker-pcf/) .
+Usługa Azure Service Broker oferuje spójny interfejs do zarządzania dostępem aplikacji do usług platformy Azure. Nowe [otwarte Service Broker dla projektu platformy Azure](https://github.com/Azure/open-service-broker-azure) stanowią pojedynczy i prosty sposób dostarczania usług do aplikacji w Cloud Foundry, OpenShift i Kubernetes. Aby uzyskać instrukcje dotyczące wdrażania w witrynie PCF, zobacz artykuł [Azure Open Service Broker for PCF](https://pivotal.io/platform/services-marketplace/data-management/microsoft-azure) .
 
-## <a name="6-metrics-and-logging"></a>6. Metryki i rejestrowanie
+## <a name="6-metrics-and-logging"></a>6. metryki i rejestrowanie
 Dysza usługi Azure Log Analytics jest składnikiem Cloud Foundry, który przekazuje metryki z [Cloud Foundry Loggregator Firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) do [dzienników Azure monitor](https://azure.microsoft.com/services/log-analytics/). Za pomocą dysz można zbierać, wyświetlać i analizować dane dotyczące kondycji systemu CF i wydajności w wielu wdrożeniach.
 Kliknij [tutaj](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) , aby dowiedzieć się, jak wdrożyć dyszę usługi Azure log Analytics w środowisku Cloud Foundry Open Source, a następnie uzyskać dostęp do danych z konsoli Dzienniki Azure monitor. 
 > [!NOTE]
@@ -75,10 +75,10 @@ Kliknij [tutaj](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-n
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="7-cost-saving"></a>7. Oszczędności kosztów
+## <a name="7-cost-saving"></a>7. oszczędności kosztów
 ### <a name="cost-saving-for-devtest-environments"></a>Oszczędność kosztów w środowiskach deweloperskich/testowych
 #### <a name="b-series-"></a>Seria B: *
-Chociaż serie maszyn wirtualnych w języku F i D były często zalecane dla Cloud Foundry środowiska produkcyjnego, nowy "szeregowy" [Seria B](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) oferuje nowe opcje. Maszyny wirtualne z serii B są idealnym rozwiązaniem w przypadku obciążeń, które nie wymagają pełnej wydajności procesora CPU, takich jak serwery sieci Web, małe bazy danych i środowiska deweloperskie i testowe. Te obciążenia zwykle mają wymagania dotyczące wydajności. Jest to $0.012/Hour (B1) w porównaniu do wartości $0,05/Hour (F1). Aby uzyskać szczegółowe informacje, zapoznaj się z pełną listą rozmiarów i [cen](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) [maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general) . 
+Chociaż serie maszyn wirtualnych w języku F i D były często zalecane dla Cloud Foundry środowiska produkcyjnego, nowy " [szeregowy" Seria B](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) oferuje nowe opcje. Maszyny wirtualne z serii B są idealnym rozwiązaniem w przypadku obciążeń, które nie wymagają pełnej wydajności procesora CPU, takich jak serwery sieci Web, małe bazy danych i środowiska deweloperskie i testowe. Te obciążenia zwykle mają wymagania dotyczące wydajności. Jest to $0.012/Hour (B1) w porównaniu do wartości $0,05/Hour (F1). Aby uzyskać szczegółowe informacje, zapoznaj się z pełną listą rozmiarów i [cen](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) [maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general) . 
 #### <a name="managed-standard-disk"></a>Zarządzany dysk standardowy: 
 Dyski w warstwie Premium są zalecane do niezawodnej wydajności w środowisku produkcyjnym.  W przypadku [dysku zarządzanego](https://azure.microsoft.com/services/managed-disks/)magazyn w warstwie Standardowa może również zapewniać podobną niezawodność z inną wydajnością. W przypadku obciążeń, które nie są zależne od wydajności, takich jak środowisko deweloperskie/testowe lub niekrytyczne, zarządzane dyski standardowe oferują alternatywną opcję z niższym kosztem.  
 ### <a name="cost-saving-in-general"></a>Ogólne oszczędności kosztów 

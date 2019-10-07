@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 05cc12f5416cbbbff470b40c870f41647ef37cd5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231927"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981012"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Zrozumienie sekwencji wdrożenia w planach platformy Azure
 
@@ -24,7 +23,7 @@ Plany platformy Azure używają **kolejności sekwencjonowania** w celu określe
 
 Przykłady JSON, które należy zastąpić własnymi wartościami, są zmienne:
 
-- `{YourMG}` — zastąp nazwą swojej grupy zarządzania
+- `{YourMG}` — Zamień na nazwę grupy zarządzania
 
 ## <a name="default-sequencing-order"></a>Domyślna kolejność sekwencjonowania
 
@@ -48,7 +47,7 @@ W ramach każdego artefaktu **grupy zasobów** następująca kolejność sekwenc
 
 Podczas redagowania dużych definicji planów może być konieczne utworzenie zasobów w określonej kolejności. Najbardziej typowym wzorcem użycia tego scenariusza jest, gdy definicja strategii zawiera kilka Azure Resource Manager szablonów. Plany obsługują ten wzorzec, umożliwiając zdefiniowanie kolejności sekwencjonowania.
 
-Kolejność jest realizowana przez zdefiniowanie `dependsOn` właściwości w formacie JSON. Ta właściwość obsługuje definicje strategii, dla grup zasobów i obiektów artefaktów. `dependsOn`jest tablicą ciągów nazw artefaktów, które należy utworzyć przed utworzeniem określonego artefaktu.
+Kolejność jest realizowana przez zdefiniowanie właściwości `dependsOn` w kodzie JSON. Ta właściwość obsługuje definicje strategii, dla grup zasobów i obiektów artefaktów. `dependsOn` to tablica ciągów nazw artefaktów, które należy utworzyć przed utworzeniem określonego artefaktu.
 
 > [!NOTE]
 > Podczas tworzenia obiektów strategii każdy zasób artefaktów pobiera swoją nazwę z nazwy pliku, jeśli jest używany program [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact), lub punkt końcowy adresu URL, jeśli używany jest [interfejs API REST](/rest/api/blueprints/artifacts/createorupdate).
@@ -56,7 +55,7 @@ Kolejność jest realizowana przez zdefiniowanie `dependsOn` właściwości w fo
 
 ### <a name="example---ordered-resource-group"></a>Przykładowa Grupa zasobów uporządkowana
 
-Ta przykładowa definicja planu ma grupę zasobów, która definiuje niestandardową kolejność sekwencjonowania, deklarując wartość `dependsOn`dla, wraz z grupą zasobów w warstwie Standardowa. W takim przypadku artefakt o nazwie **assignPolicyTags** zostanie przetworzony przed grupą zasobów Order **-RG** .
+Ta przykładowa definicja planu ma grupę zasobów, która definiuje niestandardową kolejność sekwencjonowania, deklarując wartość `dependsOn` wraz z grupą zasobów w warstwie Standardowa. W takim przypadku artefakt o nazwie **assignPolicyTags** zostanie przetworzony przed grupą zasobów Order **-RG** .
 **Standard-RG** będzie przetwarzany według domyślnej kolejności sekwencjonowania.
 
 ```json
@@ -147,6 +146,6 @@ Jeśli zależność artefaktu jest zadeklarowana, która nie zmienia kolejności
 
 - Dowiedz się więcej o [cyklu życia](lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).
+- Dowiedz się, jak używać [blokowania zasobów](resource-locking.md)planu.
+- Dowiedz się, jak [aktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania strategii z [ogólnym rozwiązywaniem problemów](../troubleshoot/general.md).

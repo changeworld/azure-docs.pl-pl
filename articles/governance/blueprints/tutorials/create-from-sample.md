@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 137764cba91ab94adef4719a0d34b6fb9e6efe29
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f3250052a7e26b5d8ef7cb1d411f9d9252089875
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232612"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980725"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Samouczek: Tworzenie środowiska na podstawie przykładu strategii
 
@@ -22,20 +21,20 @@ Poniższy samouczek korzysta z **grup zasobów z** przykładowym planem RBAC, ab
 
 > [!div class="checklist"]
 > - Utwórz nową definicję planu z przykładu
-> - Oznacz swoją kopię przykładowej publikacji jako opublikowaną
+> - Oznacz swoją kopię przykładowej publikacji jako **opublikowaną**
 > - Przypisz swoją kopię planu do istniejącej subskrypcji
 > - Sprawdzanie wdrożonych zasobów do przypisania
 > - Cofnij przypisanie planu w celu usunięcia blokad
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego samouczka jest wymagana subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Do ukończenia tego samouczka jest wymagana subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
 
 ## <a name="create-blueprint-definition-from-sample"></a>Utwórz definicję planu z przykładu
 
 Najpierw Zaimplementuj przykład strategii. Importowanie powoduje utworzenie nowego planu w środowisku na podstawie przykładu.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Na stronie **pierwsze kroki** z lewej strony wybierz przycisk **Utwórz** w obszarze _Utwórz plan_.
 
@@ -43,10 +42,10 @@ Najpierw Zaimplementuj przykład strategii. Importowanie powoduje utworzenie now
 
 1. Wprowadź _podstawy_ przykładu planu:
 
-   - **Nazwa**planu: Podaj nazwę kopii przykładu strategii. W tym samouczku zostanie użyta nazwa _2-RGS-with-role-_ przypisań.
+   - **Nazwa**planu: Podaj nazwę kopii przykładu strategii. W tym samouczku zostanie użyta nazwa _2-RGS-with-role-przypisań_.
    - **Lokalizacja definicji**: Użyj wielokropka i wybierz grupę zarządzania lub subskrypcję, w której ma zostać zapisana kopia przykładu.
 
-1. Wybierz kartę _artefakty_ w górnej części strony lub **Następny: Artefakty** w dolnej części strony.
+1. Wybierz kartę _artefakty_ w górnej części strony lub **Następny: artefakty** w dolnej części strony.
 
 1. Zapoznaj się z listą artefaktów, które składają się na przykład strategii. Ten przykład definiuje dwie grupy zasobów z nazwami wyświetlanymi _ProdRG_ i _PreProdRG_. Końcowa nazwa i lokalizacja każdej grupy zasobów są ustawiane podczas przypisywania planu. Do grupy zasobów _ProdRG_ jest przypisana rola _współautor_ , a grupa zasobów _PreProdRG_ jest przypisana do ról _właściciel_ i _czytelnicy_ . Role przypisane w definicji są statyczne, ale użytkownik, aplikacja lub Grupa, do której przypisano rolę, jest ustawiana podczas przypisywania strategii.
 
@@ -54,27 +53,27 @@ Najpierw Zaimplementuj przykład strategii. Importowanie powoduje utworzenie now
 
 W tym kroku zostanie utworzona kopia przykładowej definicji planu w wybranej grupie zarządzania lub subskrypcji. Zapisana definicja planu jest zarządzana jak każdy plan utworzony od podstaw. Przykład można zapisać do grupy zarządzania lub subskrypcji dowolną liczbę razy. Jednak każda kopia musi mieć unikatową nazwę.
 
-Po pomyślnym wyświetleniu powiadomienia portalu dotyczącego **zapisywania definicji** planu przejdź do następnego kroku.
+Po **pomyślnym** wyświetleniu powiadomienia portalu dotyczącego zapisywania definicji planu przejdź do następnego kroku.
 
 ## <a name="publish-the-sample-copy"></a>Publikowanie kopii przykładowej
 
 Twoja kopia przykładu strategii została teraz utworzona w Twoim środowisku. Jest on tworzony w trybie **wersji roboczej** i musi być **opublikowany** , aby można go było przypisać i wdrożyć. Kopię przykładowej strategii można dostosować do środowiska i wymagań. W tym samouczku nie wprowadzimy żadnych zmian.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć definicję strategii _dwurgs-with-role-przypisania_ , a następnie wybierz ją.
 
-1. Wybierz pozycję **Publikuj plan** w górnej części strony. W nowym okienku po prawej stronie Podaj **wersję** _1,0_ dla kopii przykładu planu. Ta właściwość jest przydatna w przypadku późniejszej modyfikacji. Podaj **informacje** o zmianach, takie jak "Pierwsza wersja opublikowana z grup zasobów przy użyciu przykładowego planu RBAC". Następnie wybierz pozycję **Publikuj** w dolnej części strony.
+1. Wybierz pozycję **Publikuj plan** w górnej części strony. W nowym okienku po prawej stronie Podaj **wersję** _1,0_ dla kopii przykładu planu. Ta właściwość jest przydatna w przypadku późniejszej modyfikacji. Podaj **Informacje o zmianach** , takie jak "Pierwsza wersja opublikowana z grup zasobów przy użyciu przykładowego planu RBAC". Następnie wybierz pozycję **Publikuj** w dolnej części strony.
 
 Ten krok umożliwia przypisanie planu do subskrypcji. Po opublikowaniu można nadal wprowadzać zmiany. Dodatkowe zmiany wymagają opublikowania z nową wartością **wersji** , aby śledzić różnice między różnymi wersjami tej samej definicji planu.
 
-Po pomyślnym wyświetleniu powiadomienia portalu **Publikowanie definicji** strategii przejdź do następnego kroku.
+Po **pomyślnym** wyświetleniu powiadomienia portalu publikowanie definicji strategii przejdź do następnego kroku.
 
 ## <a name="assign-the-sample-copy"></a>Przypisz przykładową kopię
 
-Po pomyślnym opublikowaniu kopii przykładowej strategiimożna ją przypisać do subskrypcji w grupie zarządzania, w której został on zapisany. Ten krok polega na tym, że parametry są dostarczane, aby każde wdrożenie kopii przykładowej strategii było unikatowe.
+Po pomyślnym **opublikowaniu**kopii przykładowej strategii można ją przypisać do subskrypcji w grupie zarządzania, w której został on zapisany. Ten krok polega na tym, że parametry są dostarczane, aby każde wdrożenie kopii przykładowej strategii było unikatowe.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć definicję strategii _dwurgs-with-role-przypisania_ , a następnie wybierz ją.
 
@@ -82,17 +81,17 @@ Po pomyślnym opublikowaniu kopii przykładowej strategiimożna ją przypisać d
 
 1. Podaj wartości parametrów dla przypisania planu:
 
-   - Ustawienia podstawowe
+   - Nazwie
 
      - **Subskrypcje**: Wybierz co najmniej jedną subskrypcję znajdującą się w grupie zarządzania, do której została zapisana kopia przykładu planu. W przypadku wybrania więcej niż jednej subskrypcji zostanie utworzone przypisanie dla każdego z nich przy użyciu wprowadzonych parametrów.
-     - **Nazwa przypisania**: Nazwa jest wstępnie wypełniana na podstawie nazwy definicji planu.
-     - **Lokalizacja**: Wybierz region, w którym ma zostać utworzona zarządzana tożsamość. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Nazwa przypisania**: nazwa jest wstępnie wypełniona dla Ciebie na podstawie nazwy definicji planu.
+     - **Lokalizacja**: Wybierz region, w którym ma zostać utworzona zarządzana tożsamość. Azure Blueprint używa tej tożsamości zarządzanej do wdrożenia wszystkich artefaktów w przypisanym planie. Aby dowiedzieć się więcej, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
        Na potrzeby tego samouczka wybierz pozycję _Wschodnie stany USA 2_.
      - **Wersja definicji**planu: Wybierz **opublikowaną** wersję _1,0_ kopii przykładowej definicji planu.
 
-   - Zablokuj przypisanie
+   - Przypisanie blokady
 
-     Wybierz tryb blokowania _tylko do odczytu_ . Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../concepts/resource-locking.md).
+     Wybierz tryb blokowania _tylko do odczytu_ . Aby uzyskać więcej informacji, zobacz temat [plany blokowania zasobów](../concepts/resource-locking.md).
 
    - Tożsamość zarządzana
 
@@ -100,33 +99,33 @@ Po pomyślnym opublikowaniu kopii przykładowej strategiimożna ją przypisać d
 
    - Parametry artefaktu
 
-     Parametry zdefiniowane w tej sekcji dotyczą artefaktu, w ramach którego jest zdefiniowany. Parametry te są [parametrami dynamicznymi](../concepts/parameters.md#dynamic-parameters) , ponieważ są one definiowane podczas przypisywania planu. Dla każdego artefaktu ustaw wartość parametru na wartości zdefiniowane w kolumnie **wartość** . W `{Your ID}`obszarze Wybierz swoje konto użytkownika platformy Azure.
+     Parametry zdefiniowane w tej sekcji dotyczą artefaktu, w ramach którego jest zdefiniowany. Parametry te są [parametrami dynamicznymi](../concepts/parameters.md#dynamic-parameters) , ponieważ są one definiowane podczas przypisywania planu. Dla każdego artefaktu ustaw wartość parametru na wartości zdefiniowane w kolumnie **wartość** . W przypadku `{Your ID}` wybierz swoje konto użytkownika platformy Azure.
 
-     |Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Value|Opis|
+     |Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Wartość|Opis|
      |-|-|-|-|-|
-     |Grupa zasobów ProdRG|Resource group|Name|ProductionRG|Definiuje nazwę pierwszej grupy zasobów.|
-     |Grupa zasobów ProdRG|Resource group|Location|Zachodnie stany USA 2|Ustawia lokalizację pierwszej grupy zasobów.|
-     |Współautor|Przypisanie roli|Użytkownik lub Grupa|{Identyfikator}|Definiuje użytkownika lub grupę, która ma udzielić przypisywania roli _współautor_ w ramach pierwszej grupy zasobów.|
-     |Grupa zasobów PreProdRG|Resource group|Name|PreProductionRG|Definiuje nazwę drugiej grupy zasobów.|
-     |Grupa zasobów PreProdRG|Resource group|Location|Zachodnie stany USA|Ustawia lokalizację drugiej grupy zasobów.|
-     |Właściciel|Przypisanie roli|Użytkownik lub Grupa|{Identyfikator}|Definiuje użytkownika lub grupę, która ma przyznawać przypisanie roli _właściciela_ w ramach drugiej grupy zasobów.|
+     |Grupa zasobów ProdRG|Grupa zasobów|Nazwa|ProductionRG|Definiuje nazwę pierwszej grupy zasobów.|
+     |Grupa zasobów ProdRG|Grupa zasobów|Lokalizacja|Zachodnie stany USA 2|Ustawia lokalizację pierwszej grupy zasobów.|
+     |Trybu|Przypisanie roli|Użytkownik lub Grupa|{Identyfikator}|Definiuje użytkownika lub grupę, która ma udzielić przypisywania roli _współautor_ w ramach pierwszej grupy zasobów.|
+     |Grupa zasobów PreProdRG|Grupa zasobów|Nazwa|PreProductionRG|Definiuje nazwę drugiej grupy zasobów.|
+     |Grupa zasobów PreProdRG|Grupa zasobów|Lokalizacja|Zachodnie stany USA|Ustawia lokalizację drugiej grupy zasobów.|
+     |Właociciela|Przypisanie roli|Użytkownik lub Grupa|{Identyfikator}|Definiuje użytkownika lub grupę, która ma przyznawać przypisanie roli _właściciela_ w ramach drugiej grupy zasobów.|
      |Czytelnicy|Przypisanie roli|Użytkownik lub Grupa|{Identyfikator}|Definiuje użytkownika lub grupę, która ma udzielić przypisywania roli _czytelnicy_ w ramach drugiej grupy zasobów.|
 
 1. Po wprowadzeniu wszystkich parametrów wybierz pozycję **Przypisz** w dolnej części strony.
 
 W tym kroku wdrożono określone zasoby i skonfiguruje wybrane **przypisanie blokady**. Zastosowanie blokad planów może potrwać do 30 minut.
 
-Po wyświetleniu powiadomienia portalu **przypisywanie definicji** planu powiodło się przejdź do następnego kroku.
+Po wyświetleniu powiadomienia portalu **przypisywanie definicji planu powiodło** się przejdź do następnego kroku.
 
 ## <a name="inspect-resources-deployed-by-the-assignment"></a>Inspekcja zasobów wdrożonych przez przypisanie
 
 Przypisanie planu tworzy i śledzi artefakty zdefiniowane w definicji strategii. Stan zasobów można zobaczyć na stronie przypisanie strategii i przez bezpośrednie przeszukanie zasobów.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Wybierz stronę **przypisane plany** po lewej stronie. Użyj filtrów, aby znaleźć przypisanie strategii _-dwa-RGS-with-role-przypisania_ , a następnie wybierz je.
 
-   Na tej stronie można zobaczyć, że przypisanie zakończyło się pomyślnie, a także listę utworzonych zasobów wraz z ich stanem blokady. Jeśli przypisanie zostało zaktualizowane, lista rozwijana **operacja** przypisywania zawiera szczegółowe informacje dotyczące wdrożenia każdej wersji definicji. Każdy utworzony zasób na liście można kliknąć i otworzyć stronę właściwości zasoby.
+   Na tej stronie można zobaczyć, że przypisanie zakończyło się pomyślnie, a także listę utworzonych zasobów wraz z ich stanem blokady. Jeśli przypisanie zostało zaktualizowane, lista rozwijana **operacja przypisywania** zawiera szczegółowe informacje dotyczące wdrożenia każdej wersji definicji. Każdy utworzony zasób na liście można kliknąć i otworzyć stronę właściwości zasoby.
 
 1. Wybierz grupę zasobów **ProductionRG** .
 
@@ -136,23 +135,23 @@ Przypisanie planu tworzy i śledzi artefakty zdefiniowane w definicji strategii.
 
    Tutaj widzimy, że Twoje konto ma przydzielone role _współautor_ względem zakresu _tego zasobu_. Przypisanie planu _przypisania 2-RGS-z-rolą_ ma rolę _właściciela_ , która została użyta do utworzenia grupy zasobów. Te uprawnienia są również używane do zarządzania zasobami ze skonfigurowanymi blokadami planów.
 
-1. Ze stron nadrzędnych Azure Portal wybierz pozycję **przypisanie — dwa-RGS-with-role-** przypisań, aby przejść do tyłu jednej strony, a następnie wybierz grupę zasobów **PreProductionRG** .
+1. Ze stron nadrzędnych Azure Portal wybierz pozycję **przypisanie — dwa-RGS-with-role-przypisań** , aby przejść do tyłu jednej strony, a następnie wybierz grupę zasobów **PreProductionRG** .
 
 1. Wybierz stronę **Kontrola dostępu (IAM)** po lewej stronie, a następnie kartę **przypisania ról** .
 
    W tym miejscu widzimy, że Twoje konto ma przyznane zarówno rolę _właściciela_ , jak i _czytelnika_ , zarówno w zakresie _tego zasobu_. Przypisanie planu ma także rolę _właściciela_ , taką jak pierwsza grupa zasobów.
 
-1. Wybierz kartę **Odmów** przypisań.
+1. Wybierz kartę **Odmów przypisań** .
 
    Przypisanie planu spowodowało utworzenie [przypisania odmowy](../../../role-based-access-control/deny-assignments.md) w wdrożonej grupie zasobów w celu wymuszenia trybu blokowania _tylko do odczytu_ . Przypisanie Odmów uniemożliwia komuś z odpowiednimi prawami na karcie _przypisania roli_ w celu podjęcia określonych działań. Przypisanie Odmów ma wpływ na _wszystkich podmiotów zabezpieczeń_.
 
 1. Zaznacz pozycję Odmów przypisania, a następnie wybierz stronę **odmowa uprawnień** po lewej stronie.
 
-   Przypisanie Odmów uniemożliwia wszystkie operacje z **\*** konfiguracją i akcjami, ale zezwala na  **\*** dostęp do odczytu przez wykluczenie/Read za pośrednictwem noactions.
+   Przypisanie Odmów uniemożliwia wszystkie operacje z konfiguracją **\*** i **akcją** , ale zezwala na dostęp do odczytu przez wykluczenie **\*/odczyt** za pośrednictwem **nonaruszone**.
 
 1. Ze stron nadrzędnych Azure Portal wybierz pozycję **Kontrola dostępu PreProductionRG (IAM)** . Następnie wybierz stronę **Przegląd** po lewej stronie, a następnie przycisk **Usuń grupę zasobów** . Wprowadź nazwę _PreProductionRG_ , aby potwierdzić usunięcie, a następnie wybierz pozycję **Usuń** w dolnej części okienka.
 
-   Wyświetlenie powiadomienia portalu **nie powiodło się usunięcie grupy zasobów PreProductionRG** . W przypadku, gdy konto ma uprawnienia do usuwania grupy zasobów, zostanie odmowa dostępu przez przypisanie planu. Należy pamiętać, że podczas przypisywania strategii zaznaczono tryb blokowania _tylko do odczytu_ . Blokada strategii uniemożliwia konto z uprawnieniami, nawet _właściciel_, od usunięcia zasobu. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../concepts/resource-locking.md).
+   Wyświetlenie powiadomienia portalu **nie powiodło się usunięcie grupy zasobów PreProductionRG** . W przypadku, gdy konto ma uprawnienia do usuwania grupy zasobów, zostanie odmowa dostępu przez przypisanie planu. Należy pamiętać, że podczas przypisywania strategii zaznaczono tryb blokowania _tylko do odczytu_ . Blokada strategii uniemożliwia konto z uprawnieniami, nawet _właściciel_, od usunięcia zasobu. Aby uzyskać więcej informacji, zobacz temat [plany blokowania zasobów](../concepts/resource-locking.md).
 
 Te kroki pokazują, że nasze zasoby zostały utworzone zgodnie z definicją, a blokady planów uniemożliwiły niepożądane usunięcie, nawet z konta z uprawnieniami.
 
@@ -161,7 +160,7 @@ Te kroki pokazują, że nasze zasoby zostały utworzone zgodnie z definicją, a 
 Ostatnim krokiem jest usunięcie przydziału planu i wdrożonych zasobów.
 Usunięcie przypisania nie powoduje usunięcia wdrożonych artefaktów.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Wybierz stronę **przypisane plany** po lewej stronie. Użyj filtrów, aby znaleźć przypisanie strategii _-dwa-RGS-with-role-przypisania_ , a następnie wybierz je.
 
@@ -177,19 +176,19 @@ Zabezpieczenia dla każdej grupy zasobów nadal mają wdrożone przypisania ról
 
 Gdy zostanie wyświetlone powiadomienie o **usunięciu przypisania** strategii, przejdź do następnego kroku.
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+## <a name="clean-up-resources"></a>Czyszczenie zasobów
 
 Po zakończeniu pracy z tym samouczkiem Usuń następujące zasoby:
 
 - _ProductionRG_ grupy zasobów
 - _PreProductionRG_ grupy zasobów
-- Definicja planu _dwa-RGS-with-role-_ przypisań
+- Definicja planu _dwa-RGS-with-role-przypisań_
 
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [cyklu życia](../concepts/lifecycle.md) planu
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md)
-- Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md)
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md)
+- Informacje na temat używania [parametrów statycznych i dynamicznych](../concepts/parameters.md)
+- Dowiedz się, jak używać [blokowania zasobów](../concepts/resource-locking.md) strategii
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../concepts/sequencing-order.md)
 - Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md)
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md)
+- Rozwiązywanie problemów podczas przypisywania strategii z [ogólnym rozwiązywaniem problemów](../troubleshoot/general.md)

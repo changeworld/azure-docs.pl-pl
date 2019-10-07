@@ -1,18 +1,17 @@
 ---
-title: Omówienie cyklu życia strategii
+title: Zapoznaj się z cyklem życia planu
 description: Dowiedz się więcej na temat cyklu życia i szczegółów dotyczących poszczególnych etapów.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/30/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 6112f6f2834f02cec970af886360844c5314150d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 154e66366d4a687e60d7bddd28278414e3a4ccd7
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678985"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981026"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Zapoznaj się z cyklem życia Azure Blueprint
 
@@ -46,18 +45,18 @@ Opublikuj plan za pomocą [Azure Portal](../create-blueprint-portal.md#publish-a
 
 ## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>Tworzenie i edytowanie nowej wersji planu
 
-Nie można zmienić opublikowanej wersji planu. Jednak nową wersję planu można dodać do istniejącego planu i zmodyfikować zgodnie z wymaganiami. Wprowadź zmiany w istniejącym planie, edytując je. Po zapisaniu nowych zmian plan ma teraz **nieopublikowane zmiany**. Te zmiany są nową wersją **projektu** planu.
+Nie można zmienić **opublikowanej** wersji planu. Jednak nową wersję planu można dodać do istniejącego planu i zmodyfikować zgodnie z wymaganiami. Wprowadź zmiany w istniejącym planie, edytując je. Po zapisaniu nowych zmian plan ma teraz **nieopublikowane zmiany**. Te zmiany są nową wersją **projektu** planu.
 
 Edytuj plan przy użyciu [Azure Portal](../create-blueprint-portal.md#edit-a-blueprint).
 
 ## <a name="publishing-a-new-version-of-the-blueprint"></a>Publikowanie nowej wersji planu
 
-Przed przypisaniem każdej edytowanej wersji strategii należy ją **opublikować** . Po dokonaniu nieopublikowanych **zmian** w planie, ale nie **opublikowanych**, przycisk **Publikuj plan** jest dostępny na stronie Edytuj plan. Jeśli przycisk nie jest widoczny, plan został już **opublikowany** i nie ma żadnych nieopublikowanych **zmian**.
+Przed przypisaniem każdej edytowanej wersji strategii należy ją **opublikować** . Po dokonaniu **nieopublikowanych zmian** w planie, ale nie **opublikowanych**, przycisk **Publikuj plan** jest dostępny na stronie Edytuj plan. Jeśli przycisk nie jest widoczny, plan został już **opublikowany** i nie ma żadnych **nieopublikowanych zmian**.
 
 > [!NOTE]
 > Jeden plan może mieć wiele **opublikowanych** wersji, które można przypisać do subskrypcji.
 
-Aby opublikować plan z nieopublikowanymi **zmianami**, wykonaj te same kroki w celu opublikowania nowego planu.
+Aby opublikować plan z **nieopublikowanymi zmianami**, wykonaj te same kroki w celu opublikowania nowego planu.
 
 ## <a name="deleting-a-specific-version-of-the-blueprint"></a>Usuwanie określonej wersji planu
 
@@ -66,7 +65,7 @@ Każda wersja planu jest unikatowym obiektem i może być indywidualnie **opubli
 > [!NOTE]
 > Nie można usunąć planu, który ma aktywne przypisania. Najpierw usuń przypisania, a następnie Usuń wersję, którą chcesz usunąć.
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
 
 1. Wybierz pozycję **definicje** strategii ze strony po lewej stronie, a następnie użyj opcji filtru, aby zlokalizować plan, dla którego chcesz usunąć wersję. Kliknij go, aby otworzyć stronę Edycja.
 
@@ -81,11 +80,11 @@ Można również usunąć podstawowe plany. Usunięcie podstawowego planu spowod
 > [!NOTE]
 > Nie można usunąć planu, który ma aktywne przypisania. Najpierw usuń przypisania, a następnie Usuń wersję, którą chcesz usunąć.
 
-Usuń plan z Azure Portalem [](../create-blueprint-portal.md#delete-a-blueprint) lub [interfejsem API REST](../create-blueprint-rest-api.md#delete-a-blueprint).
+Usuń plan z [Azure portalem](../create-blueprint-portal.md#delete-a-blueprint) lub [interfejsem API REST](../create-blueprint-rest-api.md#delete-a-blueprint).
 
-## <a name="assignments"></a>Przypisania
+## <a name="assignments"></a>Przypisani
 
-W trakcie cyklu życia można przypisać plan do subskrypcji. Po opublikowaniu trybu wersji planu ta wersja może byćprzypisana do subskrypcji. Ten cykl życia umożliwia korzystanie z wersji planu i aktywnie przypisywania podczas tworzenia nowszej wersji.
+W trakcie cyklu życia można przypisać plan do subskrypcji. Po **opublikowaniu**trybu wersji planu ta wersja może być przypisana do subskrypcji. Ten cykl życia umożliwia korzystanie z wersji planu i aktywnie przypisywania podczas tworzenia nowszej wersji.
 
 Gdy są przypisane wersje planów, ważne jest, aby zrozumieć, gdzie są przypisane, i z którymi parametrami zostały przypisane. Parametry mogą być statyczne lub dynamiczne. Aby dowiedzieć się więcej, zobacz [Parametry statyczne i dynamiczne](parameters.md).
 
@@ -97,7 +96,7 @@ Po przypisaniu planu można zaktualizować przypisanie. Istnieje kilka powodów,
 - Zmień wartość [parametrów dynamicznych](parameters.md#dynamic-parameters)
 - Uaktualnij przypisanie do nowszej **opublikowanej** wersji planu
 
-Aby dowiedzieć się, jak to zrobić, zobacz [aktualizowanie istniejących](../how-to/update-existing-assignments.md)przypisań.
+Aby dowiedzieć się, jak to zrobić, zobacz [aktualizowanie istniejących przypisań](../how-to/update-existing-assignments.md).
 
 ### <a name="unassigning-assignments"></a>Cofanie przypisania przypisań
 
@@ -110,10 +109,10 @@ Jeśli plan nie jest już wymagany, można go przypisać do grupy zarządzania l
 > [!NOTE]
 > Wszystkie zasoby wdrożone przez przypisanie planu pozostają na miejscu, ale nie są już chronione przez plany platformy Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów](resource-locking.md)planu.
+- Dowiedz się, jak [aktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania strategii z [ogólnym rozwiązywaniem problemów](../troubleshoot/general.md).

@@ -9,12 +9,12 @@ ms.date: 10/02/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 6144fd58a98376f9091fc7045d0e60e99feda709
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: a6f2b2875ea58ff89d59f577f7cb27d97e07b28e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841848"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981233"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Samouczek: Tworzenie środowiska Azure Time Series Insights
 
@@ -196,4 +196,4 @@ W tym samouczku przedstawiono sposób wykonywania tych instrukcji:
 Teraz, gdy wiesz już, jak utworzyć własne środowisko Time Series Insights, Dowiedz się, jak stworzyć aplikację sieci Web, która wykorzystuje dane ze środowiska Time Series Insights:
 
 > [!div class="nextstepaction"]
-> [Tworzenie Azure Time Series Insights jednostronicowej aplikacji sieci Web](tutorial-create-tsi-sample-spa.md)
+> [Zobacz przykłady wizualizacji zestawu SDK klienta hostowanego](https://tsiclientsample.azurewebsites.net/)

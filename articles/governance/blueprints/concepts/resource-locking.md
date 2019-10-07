@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 8d3cee73d8614c4aea2d2883cdcf2f049b1b8f67
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5c62fdb698dddf293d339904fd0c854052d636eb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232936"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981046"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania zasobów w planach platformy Azure
 
@@ -20,15 +19,15 @@ Tworzenie spójnych środowisk na dużą skalę jest naprawdę cenne, jeśli ist
 
 ## <a name="locking-modes-and-states"></a>Tryby blokowania i Stany
 
-Tryb blokowania ma zastosowanie do przypisania planu i ma trzy opcje: **Nie blokuj**, **tylko do odczytu**lub **nie usuwaj**. Tryb blokowania jest konfigurowany podczas wdrażania artefaktu podczas jego przypisywania. Inny tryb blokowania można ustawić, aktualizując przypisanie planu.
+Tryb blokowania ma zastosowanie do przypisania planu i ma trzy opcje: **nie blokuj**, **tylko do odczytu**lub nie **usuwaj**. Tryb blokowania jest konfigurowany podczas wdrażania artefaktu podczas jego przypisywania. Inny tryb blokowania można ustawić, aktualizując przypisanie planu.
 Nie można jednak zmienić trybów blokowania poza planami.
 
-Zasoby utworzone przez artefakty w przypisaniu planu mają cztery stany: **Nie zablokowano**, **tylko do odczytu**, **nie można edytować/usunąć**lub **nie można usunąć**. Każdy typ artefaktu może być w stanie niezablokowanym. Poniższa tabela może służyć do określenia stanu zasobu:
+Zasoby utworzone przez artefakty w przypisaniu planu mają cztery stany: **nie zablokowane**, **tylko do odczytu**, **nie można edytować/usuwać**ani **nie mogą go usunąć**. Każdy typ artefaktu może być w stanie **niezablokowanym** . Poniższa tabela może służyć do określenia stanu zasobu:
 
-|Tryb|Typ zasobu artefaktu|State|Opis|
+|Tryb|Typ zasobu artefaktu|Stan|Opis|
 |-|-|-|-|
 |Nie blokuj|*|Niezablokowane|Zasoby nie są chronione przez plany. Ten stan jest również używany w przypadku zasobów dodanych do elementu " **tylko do odczytu** " lub nie **usuwaj** artefaktu grupy zasobów spoza przypisania planu.|
-|Tylko do odczytu|Resource group|Nie można edytować/usunąć|Grupa zasobów jest tylko do odczytu i nie można modyfikować tagów w grupie zasobów. **Niezablokowane** zasoby mogą być dodawane, przenoszone, zmieniane lub usuwane z tej grupy zasobów.|
+|Tylko do odczytu|Grupa zasobów|Nie można edytować/usunąć|Grupa zasobów jest tylko do odczytu i nie można modyfikować tagów w grupie zasobów. **Niezablokowane** zasoby mogą być dodawane, przenoszone, zmieniane lub usuwane z tej grupy zasobów.|
 |Tylko do odczytu|Grupa niezasobów|Tylko do odczytu|Nie można zmienić zasobu w jakikolwiek sposób — brak zmian i nie można go usunąć.|
 |Nie usuwaj|*|Nie można usunąć|Zasoby można zmienić, ale nie można ich usunąć. **Niezablokowane** zasoby mogą być dodawane, przenoszone, zmieniane lub usuwane z tej grupy zasobów.|
 
@@ -57,8 +56,8 @@ Akcja Odmów [przypisania](../../../role-based-access-control/deny-assignments.m
 
 |Tryb |Uprawnienia. akcje |Uprawnienia. nonaruszone |Podmioty zabezpieczeń [i]. Wprowadź |ExcludePrincipals [i]. #C1 | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Tylko do odczytu |**\*** |**\*/read** |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
-|Nie usuwaj |**\*/** | |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
+|Tylko do odczytu |**\*** |**\*/odczyt** |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
+|Nie usuwaj |**\*/Usuń** | |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager buforuje Szczegóły przydziału roli przez maksymalnie 30 minut. W związku z tym odmowa akcji Odmów przypisań na zasoby strategii może nie być od razu całkowicie w pełni funkcjonalna. W tym czasie może być możliwe usunięcie zasobu przeznaczonego do ochrony przez blokady planu.
@@ -113,6 +112,6 @@ Jest to przykład treści żądania, która zawiera **excludedPrincipals**:
 - Postępuj zgodnie z samouczkiem [Ochrona nowych zasobów](../tutorials/protect-new-resources.md) .
 - Dowiedz się więcej o [cyklu życia](lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](sequencing-order.md).
+- Dowiedz się, jak [aktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania strategii z [ogólnym rozwiązywaniem problemów](../troubleshoot/general.md).

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: e16c40c6a4f3539aa286c4c2d0859459ca18a91c
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 9af29495fca4c8197040a5556de0ea6966b3d68d
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338367"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981441"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Opis Azure Policy usługi Azure Kubernetes Service
 
@@ -22,7 +21,7 @@ Rozszerzając korzystanie z [strażnika](https://github.com/open-policy-agent/ga
 > [!NOTE]
 > Azure Policy dla AKS jest w ograniczonej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby włączyć i używać Azure Policy dla AKS z klastrem AKS, wykonaj następujące czynności:
 
@@ -39,7 +38,7 @@ Przed zainstalowaniem dodatku Azure Policy lub włączenia jakichkolwiek funkcji
 
   1. Zarejestruj dostawców zasobów **Microsoft. ContainerService** i **Microsoft. PolicyInsights** . Aby uzyskać instrukcje, zobacz [dostawcy zasobów i ich typy](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
-  1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
+  1. Uruchom usługę Azure Policy w Azure Portal, klikając pozycję **wszystkie usługi**, a następnie wyszukując i wybierając pozycję **zasady**.
 
      ![Wyszukaj zasady w obszarze wszystkie usługi](../media/rego-for-aks/search-policy.png)
 
@@ -84,7 +83,7 @@ _Dodatek Azure Policy_ dla Kubernetes łączy usługę Azure Policy z kontrolere
 
 Przed zainstalowaniem dodatku w klastrze AKS należy zainstalować rozszerzenie wersji zapoznawczej. Ten krok jest realizowany przy użyciu interfejsu wiersza polecenia platformy Azure:
 
-1. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.62 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+1. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.62 lub nowszej. Uruchom `az --version`, aby znaleźć wersję. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 1. Klaster AKS musi mieć wersję _1,10_ lub nowszą. Aby sprawdzić poprawność wersji klastra AKS, użyj następującego skryptu:
 
@@ -154,7 +153,7 @@ Azure Policy struktura języka dla zarządzania AKS jest zgodna z istniejącymi 
 
 Jako część właściwości _szczegóły. Policy_ w definicji zasad, Azure Policy przekazuje identyfikator URI zasad rego do dodatku. Rego to język, w którym NIEPRZEZ i strażnik może zweryfikować lub zmodyfikować żądanie do klastra Kubernetes. Dzięki obsłudze istniejącej normy Kubernetes Management Azure Policy umożliwia ponowne użycie istniejących reguł i sparowanie ich z Azure Policy na potrzeby ujednoliconego środowiska raportowania zgodności z chmurą. Aby uzyskać więcej informacji, zobacz [co to jest rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
 
-## <a name="built-in-policies"></a>Wbudowane zasady
+## <a name="built-in-policies"></a>Zasady wbudowane
 
 Aby znaleźć wbudowane zasady zarządzania AKS przy użyciu Azure Portal, wykonaj następujące kroki:
 
@@ -219,8 +218,8 @@ Aby usunąć dodatek Azure Policy z klastra AKS, użyj Azure Portal lub interfej
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
-- Przejrzyj [strukturę definicji usługi Azure Policy](definition-structure.md).
-- Przejrzyj [wyjaśnienie działania zasad](effects.md).
+- Przejrzyj [strukturę definicji zasad](definition-structure.md).
+- Przejrzyj [Informacje o skutkach zasad](effects.md).
 - Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
 - Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).

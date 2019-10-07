@@ -6,15 +6,14 @@ ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: e6a43db764a3dbc001e132ef5e321f20aa36041f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241124"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981274"
 ---
-# <a name="explore-your-azure-resources-with-resource-graph"></a>Badanie zasobów platformy Azure przy użyciu usługi Resources Graph
+# <a name="explore-your-azure-resources-with-resource-graph"></a>Eksplorowanie zasobów platformy Azure za pomocą grafu zasobów
 
 Usługa Azure Resource Graph umożliwia szybkie eksplorowanie i odnajdywanie zasobów platformy Azure na dużą skalę. Zaprojektowana w celu uzyskania szybkich odpowiedzi to świetny sposób poznania środowiska oraz właściwości, które tworzą zasoby platformy Azure.
 
@@ -40,7 +39,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit
 ```
 
 > [!NOTE]
-> Polecenie cmdlet `Search-AzGraph` Azure PowerShell domyślnie zwraca **parametr PSCustomObject** . Aby dane wyjściowe wyglądały tak samo jak zwracane przez interfejs wiersza polecenia platformy Azure, `ConvertTo-Json` jest używane polecenie cmdlet. Wartość domyślna dla **głębokości** wynosi _2_. Ustawienie go na _100_ powinno spowodować przekonwertowanie wszystkich zwracanych poziomów.
+> Azure PowerShell `Search-AzGraph` polecenie cmdlet domyślnie zwraca **parametr PSCustomObject** . Aby dane wyjściowe wyglądały tak samo jak zwracane przez interfejs wiersza polecenia platformy Azure, jest używane polecenie cmdlet `ConvertTo-Json`. Wartość domyślna dla **głębokości** wynosi _2_. Ustawienie go na _100_ powinno spowodować przekonwertowanie wszystkich zwracanych poziomów.
 
 Wyniki JSON są strukturalne podobne do poniższego przykładu:
 
