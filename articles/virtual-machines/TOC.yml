@@ -1,19 +1,19 @@
 - name: Dokumentacja usługi Virtual Machines
   href: index.yml
 - name: Usługa Linux Virtual Machines na platformie Azure
-  href: linux/overview.md
+  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/'
 - name: Usługa Windows Virtual Machines na platformie Azure
-  href: windows/overview.md
+  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/'
 - name: Dokumentacja rozszerzeń maszyny wirtualnej
-  href: extensions/overview.md
+  href: ./extensions/overview.md
 - name: Obciążenia
   href: ./workloads/workloads.md
 - name: Klasyczne wdrożenia
   items:
     - name: Maszyny wirtualne z systemem Linux korzystające z klasycznego wdrożenia
-      href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
+      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/'
     - name: Maszyny wirtualne z systemem Windows korzystające z klasycznego wdrożenia
-      href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
+      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/'
 - name: Zasoby
   items:
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn

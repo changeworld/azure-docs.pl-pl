@@ -92,8 +92,6 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Dołączanie lub odłączanie galerii obrazów udostępnionych
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-            - name: Włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu
-              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Tworzenie i konfigurowanie laboratoriów na potrzeby zajęć (instruktor)
           items:
             - name: Tworzenie laboratoriów na potrzeby zajęć i zarządzanie nimi
@@ -112,6 +110,8 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: Ustawianie lub resetowanie haseł maszyn wirtualnych
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: Włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Łączenie się z maszynami wirtualnymi w laboratoriach na potrzeby zajęć (uczeń)
           items:
             - name: Dostęp do laboratoriów na potrzeby zajęć

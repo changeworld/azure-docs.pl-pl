@@ -43,11 +43,29 @@
     - name: Pozyskiwanie danych
       items:
         - name: Centrum zdarzeń
-          href: ingest-data-event-hub.md
+          items:
+            - name: Portal Azure
+              href: ingest-data-event-hub.md
+            - name: python
+              href: data-connection-event-hub-python.md
+            - name: 'C#'
+              href: data-connection-event-hub-csharp.md
         - name: Event Grid
-          href: ingest-data-event-grid.md
+          items:
+            - name: Portal Azure
+              href: ingest-data-event-grid.md
+            - name: python
+              href: data-connection-event-grid-python.md
+            - name: 'C#'
+              href: data-connection-event-grid-csharp.md
         - name: Usługa IoT Hub
-          href: ingest-data-iot-hub.md
+          items:
+            - name: Portal Azure
+              href: ingest-data-iot-hub.md
+            - name: python
+              href: data-connection-iot-hub-python.md
+            - name: 'C#'
+              href: data-connection-iot-hub-csharp.md
         - name: Pozyskiwanie jednym kliknięciem
           href: ingest-data-one-click.md
         - name: Pozyskiwanie danych za pośrednictwem przesyłania strumieniowego

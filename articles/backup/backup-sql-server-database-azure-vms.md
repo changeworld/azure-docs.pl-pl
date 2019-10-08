@@ -143,7 +143,7 @@ Jak odnajdywać bazy danych uruchomione na maszynie wirtualnej:
 
 ## <a name="configure-backup"></a>Konfigurowanie kopii zapasowych  
 
-1. W obszarze > cel ****kopii zapasowej**krok 2: Skonfiguruj kopię zapasową**, wybierz pozycję **Konfiguruj kopię zapasową**.
+1. W obszarze **cel kopii zapasowej** > **krok 2: Skonfiguruj kopię zapasową**, wybierz pozycję **Konfiguruj kopię zapasową**.
 
    ![Wybieranie pozycji Konfiguruj kopię zapasową](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
