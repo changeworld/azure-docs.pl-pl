@@ -1,77 +1,109 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentacja usługi Site Recovery
+### YamlMime:Landing
+title: Dokumentacja usługi Azure Site Recovery
+summary: Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii lokalnych maszyn i obciążeń na platformę Azure oraz maszyn wirtualnych platformy Azure do pomocniczego regionu świadczenia usługi Azure. Dzięki obsłudze replikacji na platformę Azure możesz orkiestrować przełączanie w tryb failover, gdy wystąpi awaria, i zapewnić dalszy dostęp do obciążeń i aplikacji na platformie Azure. Gdy lokalizacja główna stanie się ponownie dostępna, możesz przeprowadzić do niej powrót po awarii, zgodnie z potrzebami.
 metadata:
-  title: Dokumentacja usługi Azure Site Recovery — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
-  services: site-recovery
-  author: carmonmills
-  manager: carmonm
+  title: Dokumentacja usługi Azure Site Recovery
+  description: Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii lokalnych maszyn i obciążeń na platformę Azure oraz maszyn wirtualnych platformy Azure do pomocniczego regionu świadczenia usługi Azure. Dzięki obsłudze replikacji na platformę Azure możesz orkiestrować przełączanie w tryb failover, gdy wystąpi awaria, i zapewnić dalszy dostęp do obciążeń i aplikacji na platformie Azure. Gdy lokalizacja główna stanie się ponownie dostępna, możesz przeprowadzić do niej powrót po awarii, zgodnie z potrzebami.
   ms.service: site-recovery
   ms.topic: landing-page
-  ms.date: 11/27/2018
-  ms.author: carmonm
-abstract:
-  description: 'Usługa Azure Site Recovery organizuje odzyskiwanie po awarii i zarządza nim w przypadku maszyn wirtualnych platformy Azure, lokalnych maszyn wirtualnych i serwerów fizycznych. Dowiedz się, jak przeprowadzać replikację, przejście do trybu failover i powrót po awarii, zapoznając się z naszymi przewodnikami Szybki start i samouczkami.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: Szybkie konfigurowanie odzyskiwania po awarii w przypadku maszyny wirtualnej platformy Azure
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/site-recovery/media/index/portal.svg
-            text: Portal Azure
-            href: /azure/site-recovery/azure-to-azure-quickstart
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak skonfigurować odzyskiwanie po awarii w przypadku maszyn wirtualnych i serwerów fizycznych.'
-      - type: text
-        html: <h3>Azure–Azure</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="azure-to-azure-tutorial-enable-replication">Konfigurowanie odzyskiwania po awarii</a>
-          - html: <a href="azure-to-azure-tutorial-dr-drill">Uruchamianie próbnego odzyskiwania po awarii</a>
-          - html: <a href="azure-to-azure-tutorial-failover-failback">Uruchamianie trybu failover i powrotu po awarii</a>
-      - type: text
-        html: <h3>VMware</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Przygotowywanie platformy Azure</a>
-          - html: <a href="tutorial-prepare-on-premises-vmware">Przygotowywanie lokalnego wdrożenia oprogramowania VMware</a>
-          - html: <a href="tutorial-vmware-to-azure">Konfigurowanie odzyskiwania po awarii</a>
-          - html: <a href="tutorial-dr-drill-azure">Uruchamianie próbnego odzyskiwania po awarii</a>
-          - html: <a href="vmware-azure-tutorial-failover-failback">Uruchamianie trybu failover i powrotu po awarii</a>
-      - type: text
-        html: <h3>Funkcja Hyper-V</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Przygotowywanie platformy Azure</a>
-          - html: <a href="tutorial-prepare-on-premises-hyper-v">Przygotowywanie lokalnej funkcji Hyper-V</a>
-          - html: <a href="tutorial-hyper-v-to-azure">Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V</a>
-          - html: <a href="tutorial-hyper-v-vmm-to-azure">Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center VMM</a>
-          - html: <a href="tutorial-dr-drill-azure">Uruchamianie próbnego odzyskiwania po awarii</a>
-          - html: <a href="tutorial-hyper-v-to-azure-failover-failback">Uruchamianie trybu failover i powrotu po awarii</a>
-      - type: text
-        html: <h3>Migracja na platformę Azure</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Przygotowywanie platformy Azure</a>
-          - html: <a href="tutorial-migrate-on-premises-to-azure">Migrowanie maszyn lokalnych</a> lub <a href="tutorial-migrate-aws-to-azure">wystąpień usług AWS do platformy Azure</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: <p><a href="/powershell/module/az.recoveryservices/">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/site-recovery/">Dokumentacja interfejsu API REST</a></p>
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 10/07/2019
+  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
+  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 10/07/2019
+  ms.locfileid: "72001091"
+landingContent:
+- title: Informacje o usłudze Site Recovery
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Site Recovery?
+      url: ./site-recovery-overview.md
+    - text: Co nowego w usłudze Site Recovery
+      url: ./site-recovery-whats-new.md
+- title: Odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Wypróbuj odzyskiwanie po awarii dla maszyny wirtualnej platformy Azure
+      url: ./azure-to-azure-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure
+      url: ./azure-to-azure-tutorial-enable-replication.md
+    - text: Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
+      url: ./azure-to-azure-tutorial-migrate.md
+  - linkListType: learn
+    links:
+    - text: Architektura odzyskiwania po awarii maszyny wirtualnej platformy Azure
+      url: ./azure-to-azure-architecture.md
+    - text: Tabela obsługi replikacji Azure–Azure
+      url: ./azure-to-azure-support-matrix.md
+    - text: Często zadawane pytania
+      url: ./azure-to-azure-common-questions.md
+    - text: Informacje o przenoszeniu maszyn wirtualnych platformy Azure
+      url: ./azure-to-azure-move-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sieć na potrzeby odzyskiwania po awarii maszyny wirtualnej platformy Azure
+      url: ./azure-to-azure-about-networking.md
+    - text: Odzyskiwanie po awarii po migracji na platformę Azure
+      url: ./azure-to-azure-replicate-after-migration.md
+- title: Odzyskiwanie po awarii dla lokalnych maszyn wirtualnych
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Odzyskiwanie po awarii dla maszyn wirtualnych VMware
+      url: ./tutorial-prepare-azure.md
+    - text: Odzyskiwanie po awarii dla maszyn wirtualnych funkcji Hyper-V
+      url: ./tutorial-prepare-azure-for-hyperv.md
+    - text: Odzyskiwanie po awarii dla serwerów fizycznych
+      url: ./physical-azure-disaster-recovery.md
+  - linkListType: deploy
+    links:
+    - text: Tabela obsługi programu VMware
+      url: ./vmware-physical-azure-support-matrix.md
+    - text: Tabela obsługi funkcji Hyper-V
+      url: ./hyper-v-azure-support-matrix.md
+  - linkListType: learn
+    links:
+    - text: Architektura odzyskiwania po awarii programu VMware
+      url: ./vmware-azure-architecture.md
+    - text: Omówienie odzyskiwania po awarii programu VMware
+      url: ./vmware-azure-about-disaster-recovery.md
+    - text: Często zadawane pytania dotyczące odzyskiwania po awarii dla programu VMware
+      url: ./vmware-azure-common-questions.md
+    - text: Architektura odzyskiwania po awarii funkcji Hyper-V
+      url: ./hyper-v-azure-architecture.md
+  - linkListType: how-to-guide
+    links:
+    - text: Odzyskiwanie po awarii programu VMware w dużej skali
+      url: ./vmware-physical-large-deployment.md
+    - text: Planowanie pojemności programu VMware
+      url: ./site-recovery-plan-capacity-vmware.md
+    - text: Planowanie pojemności funkcji Hyper-V
+      url: ./hyper-v-deployment-planner-overview.md
+- title: Zarządzanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zarządzanie aktualizacjami usługi Site Recovery
+      url: service-updates-how-to.md
+    - text: Monitorowanie usługi Site Recovery
+      url: site-recovery-monitor-and-troubleshoot.md
+    - text: Monitorowanie usługi Site Recovery przy użyciu dzienników usługi Azure Monitor
+      url: monitor-log-analytics.md
+- title: Dołącz do społeczności
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Poproś o dodanie funkcji do usługi
+      url: https://feedback.azure.com/forums/256299-site-recovery
+    - text: Zadaj pytanie na forum
+      url: https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr
+    - text: Azure Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure/ct-p/Azure

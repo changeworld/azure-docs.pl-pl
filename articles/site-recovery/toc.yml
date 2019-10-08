@@ -371,7 +371,7 @@
               href: delete-vault.md
     - name: Odzyskiwanie po awarii dla aplikacji
       items:
-        - name: Konfigurowanie odzyskiwania po awarii na platformie Azure dla aplikacji lokalnych
+        - name: Informacje o odzyskiwaniu po awarii dla aplikacji lokalnych
           href: site-recovery-workload.md
         - name: Usługi Active Directory i DNS
           href: site-recovery-active-directory.md

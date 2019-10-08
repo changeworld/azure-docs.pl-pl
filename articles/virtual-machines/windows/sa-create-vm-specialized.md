@@ -142,7 +142,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>Pobierz klucze dostępu do magazynu
 Znajdź klucze dostępu dla konta magazynu źródłowego i docelowego. Aby uzyskać więcej informacji o kluczach dostępu, zobacz [Informacje o kontach usługi Azure Storage](../../storage/common/storage-create-storage-account.md).
 
-* **Portal**: Kliknij kolejno pozycje **wszystkie usługi** > **konta** > magazyn**klucze dostępu do***konta* > . Skopiuj klucz oznaczony jako **Klucz1**.
+* **Portal**: Kliknij kolejno pozycje **wszystkie usługi** > **konta** > magazyn**klucze dostępu do** *konta* > . Skopiuj klucz oznaczony jako **Klucz1**.
 * Program **PowerShell**: Skorzystaj z [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) , aby uzyskać klucz magazynu dla konta magazynu **mojekontomagazynu** w grupie zasobów. Skopiuj klucz o nazwie **Klucz1**.
 
 ```powershell

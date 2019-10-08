@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 704c1cdf95424bffa19e0946d13fa45d1b520753
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959952"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000496"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -110,7 +110,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do udziałów plików i fol
 
 Zobacz [Tworzenie certyfikatu](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) i tworzenie [kopii zapasowej certyfikatu](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql). 
  
-**Obejście**: skrypt dla certyfikatu lub klucza prywatnego, magazyn jako plik. SQL i tworzenie na podstawie danych binarnych:
+**Obejście**: zamiast tworzenia kopii zapasowej certyfikatu i przywracania kopii zapasowej [Pobierz zawartość binarną certyfikatu i klucz prywatny, Zapisz go jako plik. SQL i Utwórz na podstawie danych binarnych](https://docs.microsoft.com/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  

@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 8d094113107d8c49e34779cf8be62ecd71cb8cce
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 3bf90812abcef30b6bf300ba00ebd9f4186229cb
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937201"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000392"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Używanie danych referencyjnych do wyszukiwania w Stream Analytics
 
@@ -60,7 +60,7 @@ Azure Stream Analytics automatycznie skanuje w poszukiwaniu odświeżonych obiek
 > 
 > Wyjątkiem jest to, kiedy zadanie musi ponownie przetworzyć dane w czasie lub podczas pierwszego uruchomienia zadania. W czasie uruchamiania zadanie szuka najnowszego obiektu BLOB wygenerowanego przed określonym czasem rozpoczęcia zadania. W tym celu upewnij się, że podczas uruchamiania zadania istnieje zestaw danych referencyjnych, które **nie są puste** . Jeśli nie można go znaleźć, zadanie Wyświetla następującą diagnostykę: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) może służyć do organizowania zadania tworzenia zaktualizowanych obiektów BLOB wymaganych przez Stream Analytics do aktualizowania definicji danych referencyjnych. Data Factory to oparta na chmurze usługa integracji danych, która organizuje i automatyzuje przenoszenie i transformację danych. Data Factory obsługuje [łączenie z dużą liczbą magazynów danych opartych na chmurze i lokalnymi](../data-factory/copy-activity-overview.md) oraz szybkie przeniesienie danych zgodnie z regularnym określonym harmonogramem. Aby uzyskać więcej informacji i wskazówki krok po kroku dotyczące konfigurowania potoku Data Factory w celu wygenerowania danych referencyjnych dla Stream Analytics, które odświeżają zgodnie ze wstępnie zdefiniowanym harmonogramem, zapoznaj się z tym [przykładem](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)w witrynie GitHub.
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) może służyć do organizowania zadania tworzenia zaktualizowanych obiektów BLOB wymaganych przez Stream Analytics do aktualizowania definicji danych referencyjnych. Data Factory to oparta na chmurze usługa integracji danych, która organizuje i automatyzuje przenoszenie i transformację danych. Data Factory obsługuje [łączenie z dużą liczbą magazynów danych opartych na chmurze i lokalnymi](../data-factory/copy-activity-overview.md) oraz szybkie przeniesienie danych zgodnie z regularnym określonym harmonogramem. Aby uzyskać więcej informacji i wskazówki krok po kroku dotyczące konfigurowania potoku Data Factory w celu wygenerowania danych referencyjnych dla Stream Analytics, które odświeżają zgodnie ze wstępnie zdefiniowanym harmonogramem, zapoznaj się z tym [przykładem](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)w witrynie GitHub.
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>Porady dotyczące odświeżania danych referencyjnych obiektów BLOB
 

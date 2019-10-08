@@ -111,6 +111,14 @@
           href: acu.md
         - name: Limity przydziału procesorów wirtualnych
           href: quotas.md
+        - name: Wystąpienia zarezerwowane
+          items:
+            - name: Opłacanie maszyn wirtualnych z góry
+              href: prepay-reserved-vm-instances.md
+            - name: Co to są rezerwacje platformy Azure?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Elastyczność rozmiaru wystąpienia maszyny wirtualnej
+              href: reserved-vm-instance-size-flexibility.md
         - name: Wyniki testów porównawczych
           href: compute-benchmark-scores.md
     - name: Dystrybucje zatwierdzone
@@ -302,16 +310,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Tworzenie alertów dotyczących dzienników
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Zarządzanie kosztami
-      items:
-        - name: Opłacanie maszyn wirtualnych z góry — rezerwacje platformy Azure
-          href: prepay-reserved-vm-instances.md
-        - name: Opłacanie planów oprogramowania platformy Azure z góry
-          href: prepay-suse-software-charges.md
-        - name: Co to są rezerwacje platformy Azure?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Elastyczność rozmiaru wystąpienia maszyny wirtualnej
-          href: reserved-vm-instance-size-flexibility.md
     - name: Korzystanie z obrazów
       items:
         - name: Udostępnione galerie obrazów
@@ -378,8 +376,6 @@
           href: manage-availability.md
         - name: Tworzenie grupy umieszczania w pobliżu
           href: proximity-placement-groups.md
-        - name: Skalowanie w pionie
-          href: vertical-scaling-automation.md
         - name: Tworzenie maszyny wirtualnej w strefie dostępności
           href: create-cli-availability-zone.md
     - name: Korzystanie z narzędzi automatyzacji

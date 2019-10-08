@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc633780d8b816d8fc2e313bb1955a5719979efe
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ab48579c6eda085d77e2a6ab080b0a4a1ce806bd
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240868"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000334"
 ---
-# <a name="what-is-passwordless"></a>Co to jest logowanie bez hasła?
+# <a name="what-is-passwordless"></a>Co to jest bezhasło?
 
 Uwierzytelnianie wieloskładnikowe (MFA) to świetny sposób zabezpieczania organizacji, ale użytkownicy uzyskują sfrustrowani z dodatkową warstwą na potrzeby zapamiętywania haseł. Metody uwierzytelniania bez hasła są wygodniejsze, ponieważ hasło jest usuwane i zastępowane przez użytkownika.
 
 |   | Coś, czego masz | Coś lub wiesz |
 | --- | --- | --- |
-| Logowanie bez hasła | Telefon lub klucz zabezpieczeń | Biometryczna lub PIN |
+| Kończenie | Telefon lub klucz zabezpieczeń | Biometryczna lub PIN |
 
 Każda organizacja ma inne potrzeby związane z uwierzytelnianiem. Firma Microsoft obecnie oferuje funkcje Windows Hello dla naszych komputerów z systemem Windows. Dodajemy Microsoft Authenticator aplikację i klucze zabezpieczeń FIDO2 do rodziny bezhaseł.
 
@@ -52,20 +52,20 @@ Klucz zabezpieczeń **musi** implementować następujące funkcje i rozszerzenia
 | --- | --- | --- |
 | 1 | Klucz rezydentny | Ta funkcja umożliwia przenośny Klucz zabezpieczeń, w którym Twoje poświadczenia są przechowywane w kluczu zabezpieczeń. |
 | 2 | Numer PIN klienta | Ta funkcja umożliwia ochronę poświadczeń przy użyciu drugiego czynnika i ma zastosowanie do kluczy zabezpieczeń, które nie mają interfejsu użytkownika. |
-| 3 | hmac-secret | To rozszerzenie zapewnia możliwość zalogowania się na urządzeniu, gdy jest ono wyłączone lub w trybie samolotowym. |
+| 3 | HMAC-Secret | To rozszerzenie zapewnia możliwość zalogowania się na urządzeniu, gdy jest ono wyłączone lub w trybie samolotowym. |
 | 4 | Wiele kont na jednostkę UZALEŻNIONą | Ta funkcja zapewnia, że można użyć tego samego klucza zabezpieczeń dla wielu usług, takich jak konto Microsoft i Azure Active Directory. |
 
 Następujący dostawcy oferują klucze zabezpieczeń FIDO2 różnego rodzaju, które są znane jako zgodne ze środowiska paswordless. Firma Microsoft zachęca klientów do ocenienia właściwości zabezpieczeń tych kluczy, kontaktując się z dostawcą oraz FIDO Alliance.
 
-| Dostawca | Skontaktuj się z |
+| Dostawcy | Kontakt |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | INTERFEJSU | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
-| Ensurity | [https://ensurity.com/contact-us.html](https://ensurity.com/contact-us.html) |
+| Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
 
-Jeśli jesteś dostawcą i chcesz uzyskać dostęp do urządzenia na tej liście, skontaktuj się z [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)firmą.
+Jeśli jesteś dostawcą i chcesz uzyskać dostęp do urządzenia na tej liście, skontaktuj się z [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
 
 Klucze zabezpieczeń FIDO2 są świetną opcją dla przedsiębiorstw, które mają bardzo duże znaczenie dla bezpieczeństwa lub mają scenariusze lub pracowników, którzy nie chcą korzystać z telefonu jako drugiego czynnika.
 
@@ -75,8 +75,8 @@ Klucze zabezpieczeń FIDO2 są świetną opcją dla przedsiębiorstw, które maj
 - Administratorzy mogą kierować wszystkich użytkowników lub wybierać użytkowników/grupy w ramach ich dzierżawy dla każdej metody
 - Użytkownicy końcowi mogą rejestrować te metody uwierzytelniania bezhasło i zarządzać nimi w portalu konta
 - Użytkownicy końcowi mogą logować się przy użyciu tych metod uwierzytelniania bez hasła
-   - Aplikacja Microsoft Authenticator: Program będzie działać w scenariuszach, w których używane jest uwierzytelnianie usługi Azure AD, w tym wszystkie przeglądarki, podczas instalacji systemu Windows 10 (OOBE) oraz zintegrowane aplikacje mobilne w dowolnym systemie operacyjnym.
-   - Klucze zabezpieczeń: Program zacznie korzystać z ekranu blokady dla systemu Windows 10 w wersji 1809 lub nowszej oraz sieci Web w obsługiwanych przeglądarkach, takich jak Microsoft Edge.
+   - Aplikacja Microsoft Authenticator: będzie działać w scenariuszach, w których używane jest uwierzytelnianie usługi Azure AD, w tym między wszystkimi przeglądarkami, podczas instalacji systemu Windows 10 (OOBE) i zintegrowanych aplikacji mobilnych w dowolnym systemie operacyjnym.
+   - Klucze zabezpieczeń: będą działały na ekranie blokady systemu Windows 10 w wersji 1809 lub nowszej oraz w sieci Web w obsługiwanych przeglądarkach, takich jak Microsoft Edge.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -94,7 +94,8 @@
               href: concepts-connectivity-architecture.md
         - name: Ciągłość działalności biznesowej
           items:
-            - name: Omówienie
+            - name: Wprowadzenie do ciągłości działalności biznesowej
+              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
               href: concepts-business-continuity.md
             - name: Tworzenie kopii zapasowej i przywracanie
               href: concepts-backup.md

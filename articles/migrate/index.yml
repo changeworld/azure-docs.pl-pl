@@ -1,43 +1,91 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Migrate
+summary: Usługa Azure Migrate umożliwia migrację do chmury platformy Azure. Usługa Azure Migrate zapewnia centrum służące do odnajdywania, oceny i migracji obciążeń lokalnych na platformę Azure. W centrum są dostępne narzędzia usługi Azure Migrate oraz zintegrowane narzędzia od niezależnych dostawców oprogramowania.
 metadata:
-  title: Dokumentacja usługi Azure Migrate — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: 'Dowiedz się, jak ocenić maszyny lokalne pod kątem migracji na platformę Azure'
-  services: migration-planner
-  author: rayne-wiselman
-  manager: carmonm
-  ms.service: migration
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: Dokumentacja usługi Azure Migrate
+  description: Usługa Azure Migrate umożliwia migrację do chmury platformy Azure. Usługa Azure Migrate zapewnia centrum służące do odnajdywania, oceny i migracji obciążeń lokalnych na platformę Azure. W centrum są dostępne narzędzia usługi Azure Migrate oraz zintegrowane narzędzia od niezależnych dostawców oprogramowania.
+  ms.service: azure-migrate
   ms.topic: landing-page
-  ms.date: 11/22/2017
+  ms.collection: collection
+  author: rayne-wiselman
   ms.author: raynew
-abstract:
-  description: 'Usługa Azure Migrate ułatwia migrację do chmury platformy Azure. Usługa Azure Migrate to centrum do śledzenia odnajdywania, oceny i migracji obciążeń lokalnych oraz maszyn wirtualnych w chmurze. W centrum są dostępne narzędzia usługi Azure Migrate do oceny i migracji oraz zintegrowane narzędzia od niezależnych dostawców oprogramowania.'
-sections:
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak ocenić maszyny wirtualne programu VMware i migrować je na platformę Azure'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-vmware">Przygotowywanie maszyny wirtualnej środowiska VMware do oceny i migracji na platformę Azure</a>
-          - html: <a href="tutorial-assess-vmware">Ocena maszyn wirtualnych VMware do migracji na platformę Azure</a>
-          - html: <a href="tutorial-migrate-vmware">Migrowanie maszyn wirtualnych VMware na platformę Azure za pomocą migracji bez agentów</a>
-          - html: <a href="tutorial-migrate-vmware-agent">Migrowanie maszyn wirtualnych VMware na platformę Azure za pomocą migracji z użyciem agentów</a>
-      - type: paragraph
-        text: 'Dowiedz się, jak ocenić maszyny wirtualne funkcji Hyper-V i migrować je na platformę Azure'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-hyper-v">Przygotowywanie maszyny wirtualnej funkcji Hyper-V do oceny i migracji na platformę Azure</a>
-          - html: <a href="tutorial-assess-hyper-v">Ocena maszyn wirtualnych funkcji Hyper-V do migracji na platformę Azure</a>
-          - html: <a href="tutorial-migrate-hyper-v">Migrowanie maszyn wirtualnych funkcji Hyper-V na platformę Azure</a>
-      - type: paragraph
-        text: 'Dowiedz się, jak migrować serwery fizyczne, maszyny zwirtualizowane i maszyny wirtualne w chmurze na platformę Azure'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-migrate-physical-virtual-machines">Migrowanie serwerów fizycznych lub zwirtualizowanych na platformę Azure</a>
+  ms.date: 10/07/2019
+  ms.openlocfilehash: 494bb2f7ec6076bbc7b3b891cd0cb525ae53c5d1
+  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 10/07/2019
+  ms.locfileid: "72001137"
+landingContent:
+- title: Informacje o usłudze Azure Migrate
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Migrate?
+      url: ./migrate-services-overview.md
+    - text: Co nowego w usłudze Azure Migrate?
+      url: ./whats-new.md
+    - text: Często zadawane pytania
+      url: ./resources-faq.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Ocenianie maszyn wirtualnych programu VMware przy użyciu narzędzia do oceny serwera
+      url: ./tutorial-prepare-vmware.md
+    - text: Ocenianie maszyn wirtualnych funkcji Hyper-V przy użyciu narzędzia do oceny serwera
+      url: ./tutorial-prepare-hyper-v.md
+    - text: Migrowanie maszyn wirtualnych programu VMware za pomocą narzędzia do migracji serwera
+      url: ./server-migrate-overview.md
+    - text: Migrowanie maszyn wirtualnych funkcji Hyper-V za pomocą narzędzia do migracji serwera
+      url: ./tutorial-migrate-hyper-v.md
+    - text: Migrowanie serwerów fizycznych/maszyn wirtualnych za pomocą narzędzia do migracji serwera
+      url: ./tutorial-migrate-physical-virtual-machines.md
+- title: Rozpoczynanie wdrażania
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Przegląd najlepszych rozwiązań dotyczących oceny serwera
+      url: ./best-practices-assessment.md
+    - text: Dowiedz się więcej na temat wdrażania urządzeń usługi Azure Migrate
+      url: ./migrate-replication-appliance.md
+    - text: Przegląd tabeli obsługi usługi Azure Migrate
+      url: migrate-support-matrix.md
+    - text: Przegląd tabeli obsługi programu VMware
+      url: migrate-support-matrix-vmware.md
+    - text: Przegląd tabeli obsługi funkcji Hyper-V
+      url: migrate-support-matrix-hyper-v.md
+- title: Zarządzanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Dodawanie narzędzi migracji
+      url: ./how-to-migrate.md
+    - text: Skalowanie oceny programu VMware
+      url: ./scale-vmware-assessment.md
+    - text: Automatyzacja i skalowanie migracji
+      url: ./how-to-migrate-at-scale.md
+    - text: Rozwiązywanie problemów z oceną i migracją
+      url: ./troubleshooting-general.md
+- title: Dowiedz się więcej
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Architektura migracji z użyciem agentów programu VMware
+      url: ./agent-based-migration-architecture.md
+    - text: Architektura migracji funkcji Hyper-V
+      url: ./hyper-v-migration-architecture.md
+    - text: Dowiedz się więcej o ocenach
+      url: ./concepts-assessment-calculation.md
+    - text: Dowiedz się więcej o wizualizacjach zależności
+      url: ./concepts-dependency-visualization.md
+- title: Dołącz do społeczności
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Poproś o dodanie funkcji do usługi
+      url: https://feedback.azure.com/forums/907195-azure-migrate
+    - text: Zadaj pytanie na forum
+      url: https://social.msdn.microsoft.com/forums/azure/home?forum=AzureMigrate
+    - text: Azure Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure-Migration/bd-p/AzureMigration

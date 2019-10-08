@@ -198,6 +198,14 @@
           href: compute-benchmark-scores.md
         - name: Limity przydziału procesorów wirtualnych
           href: quotas.md
+        - name: Wystąpienia zarezerwowane
+          items:
+            - name: Opłacanie maszyn wirtualnych z góry
+              href: prepay-reserved-vm-instances.md
+            - name: Co to są rezerwacje platformy Azure?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Elastyczność rozmiaru wystąpienia maszyny wirtualnej
+              href: reserved-vm-instance-size-flexibility.md
     - name: Dedykowane hosty
       href: dedicated-hosts.md
     - name: Konserwacja i aktualizacje
@@ -359,14 +367,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Tworzenie alertów dotyczących dzienników
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Zarządzanie kosztami
-      items:
-        - name: Opłacanie maszyn wirtualnych z góry — rezerwacje platformy Azure
-          href: prepay-reserved-vm-instances.md
-        - name: Co to są rezerwacje platformy Azure?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Elastyczność rozmiaru wystąpienia maszyny wirtualnej
-          href: reserved-vm-instance-size-flexibility.md
     - name: Korzystanie z obrazów
       items:
         - name: Udostępnione obrazy
@@ -422,8 +422,6 @@
         - name: Tworzenie grupy umieszczania w pobliżu
           href: proximity-placement-groups.md
         - name: Skalowanie w pionie
-          href: vertical-scaling-automation.md
-        - name: Tworzenie maszyny wirtualnej w strefie dostępności
           items:
             - name: PowerShell
               href: create-powershell-availability-zone.md

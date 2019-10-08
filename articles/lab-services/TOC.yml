@@ -78,6 +78,8 @@
           href: classroom-labs/class-type-deep-learning-natural-processing.md
         - name: Skrypty powłoki w systemie Linux
           href: classroom-labs/class-type-shell-scripting-linux.md
+        - name: Etyczne działania hakerskie
+          href: classroom-labs/class-type-ethical-hacking.md
     - name: Laboratorium na potrzeby zajęć
       items:
         - name: Tworzenie i konfigurowanie kont laboratoriów (właściciel konta laboratorium)
@@ -90,6 +92,8 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Dołączanie lub odłączanie galerii obrazów udostępnionych
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
+            - name: Włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Tworzenie i konfigurowanie laboratoriów na potrzeby zajęć (instruktor)
           items:
             - name: Tworzenie laboratoriów na potrzeby zajęć i zarządzanie nimi

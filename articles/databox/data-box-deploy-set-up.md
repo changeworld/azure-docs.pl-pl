@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 528be96f95523089c78562814c292fb0f40849e1
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: b9d724a44a94ed13786391a235bb9967036f29dc
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240239"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338479"
 ---
 ::: zone target="docs"
 
@@ -53,7 +53,7 @@ Przed rozpoczęciem upewnij się, że:
     - Połączenie z siecią o dużej szybkości. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępne, można użyć połączenia danych 1 GbE, ale będzie miało to wpływ na szybkość kopiowania. 
 6. Należy mieć dostęp do płaskiej powierzchni, na której można umieścić urządzenie Data Box. Jeśli chcesz umieścić urządzenie na standardowej półce na stojaku, na stojaku centrum danych potrzebne jest gniazdo 7U. Urządzenie możesz umieścić na stojaku płasko lub pionowo.
 7. Należy zapewnić następujące kable w celu podłączenia urządzenia Data Box do komputera hosta.
-    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Urządzenie Data Box jest wyposażone w karty Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0, więc kable, które są zgodne z tym interfejsem, powinny działać. Na przykład do testowania użyto kabla CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M. Aby uzyskać więcej informacji, zobacz [listę obsługiwanych kabli i przełączników firmy Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Urządzenie Data Box jest wyposażone w karty Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0, więc kable, które są zgodne z tym interfejsem, powinny działać. Na przykład do testowania wewnętrznego użyto kabla CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M. Aby uzyskać więcej informacji, zobacz [listę obsługiwanych kabli i przełączników firmy Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Jeden kabel sieciowy RJ-45 CAT 6 (do użytku z interfejsem sieciowym MGMT)
     - Jeden kabel sieciowy RJ-45 CAT 6A lub RJ-45 CAT 6 (do użytku z interfejsem sieciowym DATA 3 skonfigurowanym odpowiednio dla przepływności 10 GB/s lub 1 GB/s)
 

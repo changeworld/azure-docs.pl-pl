@@ -1,22 +1,21 @@
 ---
-title: Przykład — zapewnianie używania tylko ruchu HTTPS dla konta magazynu
-description: Ta przykładowa definicja zasad wymaga używania ruchu HTTPS przez konta magazynu.
+title: Przykład — Zapewnij ruch HTTPS tylko dla konta magazynu
+description: Ta przykładowa definicja zasad wymaga, aby konta magazynu używały ruchu HTTPS.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 044091ab83d64676c011ea25c73c8bf00528a6b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 07694c7f6ca4590615c1f5530c19a530025c6add
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545371"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977093"
 ---
-# <a name="sample---ensure-https-traffic-only-for-storage-account"></a>Przykład — zapewnianie używania tylko ruchu HTTPS dla konta magazynu
+# <a name="sample---ensure-https-traffic-only-for-storage-account"></a>Przykład — Zapewnij ruch HTTPS tylko dla konta magazynu
 
-Ta zasada wymaga używania ruchu HTTPS przez konta magazynu.
+Te zasady wymagają, aby konta magazynu używały ruchu HTTPS.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,11 +23,11 @@ Ta zasada wymaga używania ruchu HTTPS przez konta magazynu.
 
 [!code-json[main](../../../../policy-templates/samples/Storage/https-traffic-only/azurepolicy.json "Ensure https traffic only for storage account")]
 
-Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Wdrażanie przykładu zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fhttps-traffic-only%2Fazurepolicy.json)
+[@no__t — 1Deploy przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fhttps-traffic-only%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -41,7 +40,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -Pol
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -59,7 +58,7 @@ az policy definition create --name 'https-traffic-only' --display-name 'Ensure h
 az policy assignment create --name <assignmentname> --scope <scope> --policy "https-traffic-only"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -67,6 +66,6 @@ Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualn
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)
+- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
