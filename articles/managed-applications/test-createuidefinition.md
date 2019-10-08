@@ -6,12 +6,12 @@ ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 54eb2df06df56c33e1a3cd74e7a4a93c07aab682
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 5a28acfeeda12ab999b16f71cbe789fefcea736f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575669"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028346"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Przetestuj interfejs portalu dla Azure Managed Applications
 
@@ -39,7 +39,7 @@ Po [utworzeniu pliku createUiDefinition. JSON](create-uidefinition-overview.md) 
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli formularz nie jest wyświetlany po wybraniu **wersji**zapoznawczej, może wystąpić błąd składniowy. Poszukaj czerwonego wskaźnika na prawym pasku przewijania i przejdź do niego.
+Jeśli formularz nie jest wyświetlany po wybraniu **wersji zapoznawczej**, może wystąpić błąd składniowy. Poszukaj czerwonego wskaźnika na prawym pasku przewijania i przejdź do niego.
 
 ![Pokaż błąd składniowy](./media/test-createuidefinition/show-syntax-error.png)
 
@@ -101,7 +101,7 @@ Jeśli portal zostanie zasunięty na ekran podsumowania, w sekcji dane wyjściow
 
 ## <a name="test-your-solution-files"></a>Testowanie plików rozwiązania
 
-Po zweryfikowaniu, że interfejs portalu działa zgodnie z oczekiwaniami, należy sprawdzić, czy plik createUiDefinition jest prawidłowo zintegrowany z plikiem mainTemplate. JSON. Test skryptu weryfikacji można uruchomić w celu przetestowania zawartości plików rozwiązania, w tym pliku createUiDefinition. Skrypt weryfikuje składnię JSON, wyszukuje wyrażenia regularne w polach tekstowych i sprawdza, czy wartości wyjściowe interfejsu portalu pasują do parametrów szablonu. Aby uzyskać informacje na temat uruchamiania tego skryptu, zobacz [run static Validation checks for templates](https://github.com/Azure/azure-quickstart-templates/tree/master/test/template-validation-tests).
+Po zweryfikowaniu, że interfejs portalu działa zgodnie z oczekiwaniami, należy sprawdzić, czy plik createUiDefinition jest prawidłowo zintegrowany z plikiem mainTemplate. JSON. Test skryptu weryfikacji można uruchomić w celu przetestowania zawartości plików rozwiązania, w tym pliku createUiDefinition. Skrypt weryfikuje składnię JSON, wyszukuje wyrażenia regularne w polach tekstowych i sprawdza, czy wartości wyjściowe interfejsu portalu pasują do parametrów szablonu. Aby uzyskać informacje na temat uruchamiania tego skryptu, zobacz [run static Validation checks for templates](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
 
 ## <a name="next-steps"></a>Następne kroki
 

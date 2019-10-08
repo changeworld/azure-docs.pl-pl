@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 07934e3c7d9f61ecb4153e6a169882509a81dc75
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fb401226e9697afb71dfa7a30f9814e07c3422c2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241043"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028079"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Zaawansowana ochrona przed zagrożeniami w usłudze Microsoft Defender przy użyciu Azure Security Center
 
@@ -28,19 +28,19 @@ Ta zmiana zapewnia kompleksowe możliwości dotyczące wykrywania i odpowiedzi p
 
 W przypadku korzystania z programu Microsoft Defender ATP uzyskasz następujące korzyści:
 
-- **Zaawansowane czujniki wykrywania po naruszeniu naruszeń**: Czujniki usługi Microsoft Defender ATP dla serwerów z systemem Windows zbierają ogromną gamę sygnałów z zachowaniem.
+- **Zaawansowane czujniki wykrywania po naruszeniu**oprogramowania: czujniki usługi Microsoft Defender ATP dla serwerów z systemem Windows zbierają ogromną gamę sygnałów z zachowaniem.
 
-- **Wykrywanie naruszeń po wykorzystaniu analiz, oparte na chmurze**: Usługa Microsoft Defender ATP szybko dostosowuje się do zmieniających się zagrożeń. Używa zaawansowanej analizy i danych Big Data. Usługa Microsoft Defender ATP jest wzmocniona możliwościami Intelligent Security Graph z sygnałami w systemach Windows, Azure i Office w celu wykrywania nieznanych zagrożeń. Zapewnia alerty funkcjonalne i umożliwia szybkie reagowanie na nie.
+- **Wykrywanie naruszeń oprogramowania oparte na analizie w chmurze**: Usługa Microsoft Defender ATP szybko dostosowuje się do zmieniających się zagrożeń. Używa zaawansowanej analizy i danych Big Data. Usługa Microsoft Defender ATP jest wzmocniona możliwościami Intelligent Security Graph z sygnałami w systemach Windows, Azure i Office w celu wykrywania nieznanych zagrożeń. Zapewnia alerty funkcjonalne i umożliwia szybkie reagowanie na nie.
 
 - **Analiza zagrożeń**: Usługa Microsoft Defender ATP generuje alerty po zidentyfikowaniu narzędzi, technik i procedur osoby atakującej. Używa on danych wygenerowanych przez program Microsoft Threat myśliwych i zespoły ds. zabezpieczeń, uzupełnione o analizy udostępniane przez partnerów.
 
 Następujące funkcje są teraz dostępne w Azure Security Center:
 
-- **Automatyczne**dołączanie: Czujnik usługi Microsoft Defender ATP jest automatycznie włączany dla serwerów z systemem Windows, które są dołączane do Azure Security Center.
+- **Automatyczne**dołączanie: czujnik usługi Microsoft Defender ATP jest automatycznie włączany dla serwerów z systemem Windows, które są dołączane do Azure Security Center.
 
-- **Pojedyncze okienko szkła**: W konsoli Azure Security Center są wyświetlane alerty ATP programu Microsoft Defender.
+- **Pojedyncze okienko szkła**: w konsoli Azure Security Center są wyświetlane alerty programu Microsoft Defender ATP.
 
-- **Szczegółowa badanie maszynowe**: Azure Security Center klienci mogą korzystać z konsoli programu Microsoft Defender ATP w celu przeprowadzenia szczegółowej analizy w celu odzyskania zakresu naruszenia.
+- **Szczegółowe badanie maszynowe**: Azure Security Center klienci mogą korzystać z konsoli programu Microsoft Defender ATP w celu przeprowadzenia szczegółowej analizy w celu odzyskania zakresu naruszenia.
 
 ![Azure Security Center, wyświetlanie listy alertów i ogólnych informacji o każdym alercie](media/security-center-wdatp/image1.png)
 
@@ -70,7 +70,7 @@ Aby dołączać serwery do Security Center, kliknij przycisk **Przejdź do Azure
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Włącz integrację z programem Microsoft Defender ATP
 
-Aby sprawdzić, czy integracja z usługą Microsoft Defender ATP jest włączona, wybierz pozycję Cennik usługi **Security Center** >  **& Ustawienia** > kliknij subskrypcję.
+Aby sprawdzić, czy integracja z usługą Microsoft Defender ATP jest włączona, wybierz**ustawienia & cennika** usługi **Security Center** >  > kliknij subskrypcję.
 W tym miejscu można zobaczyć aktualnie włączone integracje.
 
   ![Strona ustawień wykrywania zagrożeń Azure Security Center z włączoną integracją z usługą Microsoft Defender ATP](media/security-center-wdatp/enable-integrations.png)
@@ -107,13 +107,13 @@ Aby wygenerować niegroźny alert dotyczący testu Microsoft Defender ATP:
 
 3. Jeśli polecenie zakończy się pomyślnie, zobaczysz nowy Alert na pulpicie nawigacyjnym Azure Security Center i portalu Microsoft Defender ATP. Ten alert może potrwać kilka minut.
 
-4. Aby sprawdzić alert w Security Center, przejdź do **alertów** >  zabezpieczeń**podejrzany wiersz polecenia programu PowerShell**.
+4. Aby sprawdzić alert w Security Center, przejdź do **alertów zabezpieczeń** >  **podejrzany wiersz polecenia programu PowerShell**.
 
 5. W oknie badanie wybierz link, aby przejść do portalu usługi Microsoft Defender ATP.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Platformy i funkcje obsługiwane przez usługę Azure Security Center](security-center-os-coverage.md)
-- [Ustawianie zasad zabezpieczeń w Azure Security Center](tutorial-security-policy.md): Dowiedz się, jak skonfigurować zasady zabezpieczeń dla subskrypcji i grup zasobów platformy Azure.
-- [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md): Dowiedz się, jak zalecenia ułatwiają ochronę zasobów platformy Azure.
-- [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md): Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.
+- [Ustawianie zasad zabezpieczeń w Azure Security Center](tutorial-security-policy.md): informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów platformy Azure.
+- [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md): informacje na temat sposobu, w jaki zalecenia ułatwiają ochronę zasobów platformy Azure.
+- [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.

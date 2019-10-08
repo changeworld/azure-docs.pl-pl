@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d9b4cf755bbf2e225bee813510c083570b0f8064
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70280171"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028626"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Wskazówki dotyczące cen dla SQL Server maszyn wirtualnych platformy Azure
 
@@ -56,7 +56,7 @@ W przypadku nielekkiego obciążenia produkcyjnego należy użyć jednej z nast�
 
 | SQL Server Edition | Obciążenie |
 |-----|-----|
-| sieć Web | Małe witryny sieci Web |
+| Web | Małe witryny sieci Web |
 | Standardowa (Standard) | Małe i średnie obciążenia |
 | Enterprise | Duże lub krytyczne dla działalności obciążenia|
 
@@ -64,7 +64,7 @@ Dostępne są dwie opcje płacenia za SQL Server Licencjonowanie dla następują
 
 ## <a name="pay-per-usage"></a>Płatność za użycie
 
-**Płatność za użycie licencji na SQL Server** oznacza, że koszt korzystania z maszyny wirtualnej platformy Azure na sekundę jest uwzględniany w koszcie SQL Server licencji. Cennik dla różnych wersji SQL Server (Web, standard, Enterprise) można zobaczyć na stronie cennika maszyny wirtualnej platformy Azure dla [systemu Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) lub [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
+**Płatność za licencję SQL Server na użycie** (znana także jako **płatność zgodnie z rzeczywistym**użyciem) oznacza, że koszt usługi SQL Server na sekundę jest określany jako koszt na korzystanie z maszyny wirtualnej platformy Azure. Cennik dla różnych wersji SQL Server (Web, standard, Enterprise) można zobaczyć na stronie cennika maszyny wirtualnej platformy Azure dla [systemu Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) lub [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
 
 Koszt jest taki sam dla wszystkich wersji SQL Server (2012 SP3 do 2017). Koszt licencji na sekundę zależy od liczby procesorów wirtualnych vCPU maszyny wirtualnej.
 
@@ -74,7 +74,7 @@ Płatność SQL Server Licencjonowanie za użycie jest zalecana dla:
 
 - **Obciążenia z nieznanym okresem istnienia lub skalowaniem**. Na przykład aplikacja, która może nie być wymagana w ciągu kilku miesięcy lub która może wymagać większej lub mniejszej mocy obliczeniowej, zależy od popytu.
 
-Aby utworzyć maszynę wirtualną z systemem SQL Server 2017 przy użyciu jednego z tych obrazów opartych na wykorzystaniu do użycia, zobacz następujące linki:
+Aby utworzyć maszynę wirtualną z systemem SQL Server 2017 przy użyciu jednego z tych obrazów z opcją płatność zgodnie z rzeczywistym użyciem, zobacz następujące linki:
 
 | Platforma | Licencjonowane obrazy |
 |---|---|
@@ -139,7 +139,7 @@ Koszt licencjonowania SQL Server jest bezpośrednio związany z liczbą procesor
 
 Istnieją nowe rozmiary maszyn, które dobrze sprawdzają się w przypadku niektórych typów obciążeń SQL Server. Te maszyny zajmują dużo poziomów pamięci, magazynu i przepustowości we/wy, ale mają mniejszą liczbę rdzeni zwirtualizowanych. Rozważmy na przykład następujący przykład:
 
-| Rozmiar maszyny wirtualnej | Procesory wirtualne vCPU | Memory (Pamięć) | Maksymalna liczba dysków | Maksymalna przepływność we/wy | Koszty licencji SQL | Łączne koszty (obliczeniowe + Licencjonowanie) |
+| Rozmiar maszyny wirtualnej | Procesorów wirtualnych vCPU | Pamięć | Maksymalna liczba dysków | Maksymalna przepływność we/wy | Koszty licencji SQL | Łączne koszty (obliczeniowe + Licencjonowanie) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 operacji we/wy lub 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 operacji we/wy lub 768 MB/s | 75% Obniż | 57% Obniż |
@@ -151,7 +151,7 @@ W poprzednim przykładzie widać, że specyfikacje dla **Standard_DS14v2** i **S
 
 ### <a name="shut-down-your-vm-when-possible"></a>Zamknij maszynę wirtualną, gdy jest to możliwe
 
-Jeśli używasz wszelkich obciążeń, które nie działają w sposób ciągły, rozważ wyłączenie maszyny wirtualnej w nieaktywnych okresach. Płaci się wyłącznie za użyte zasoby.
+Jeśli używasz wszelkich obciążeń, które nie działają w sposób ciągły, rozważ wyłączenie maszyny wirtualnej w nieaktywnych okresach. Płacisz wyłącznie za użyte zasoby.
 
 Jeśli na przykład po prostu próbujesz wypróbować SQL Server na maszynie wirtualnej platformy Azure, nie chcesz naliczać opłat przez przypadkowe pozostawienie jej w tygodniach. Jednym z rozwiązań jest użycie [funkcji automatycznego zamykania](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
 

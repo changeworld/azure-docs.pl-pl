@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 026689b68244052c3ad7cb50cd90d7319b6760ef
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229419"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024609"
 ---
-# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Samouczek: Zbadaj zdarzenia za pomocą platformy Azure — wskaźnik
+# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Samouczek: badanie zdarzeń za pomocą platformy Azure — wskaźnik
 
 > [!IMPORTANT]
 > Wykres badania jest obecnie w publicznej wersji zapoznawczej.
@@ -31,7 +31,7 @@ ms.locfileid: "71229419"
 
 Ten samouczek ułatwia badanie zdarzeń za pomocą platformy Azure. Po nawiązaniu połączenia ze źródłami danych z platformą Azure — użytkownik chce otrzymywać powiadomienia o wystąpieniu podejrzanych sytuacji. Aby można było to zrobić, badanie wskaźnikowe platformy Azure umożliwia tworzenie zaawansowanych reguł alertów, które generują zdarzenia, które można przypisać i zbadać.
 
-W tym artykule omówiono:
+W tym artykule omówiono następujące zagadnienia:
 > [!div class="checklist"]
 > * Badanie zdarzeń
 > * Korzystanie z grafu badania
@@ -44,7 +44,7 @@ Po skonfigurowaniu reguły analitycznej można zbadać zdarzenie tylko w przypad
 
 ## <a name="how-to-investigate-incidents"></a>Jak zbadać zdarzenia
 
-1. Wybierz **zdarzenia**. Na ****  stronie incydenty są dostępne informacje o liczbie zdarzeń, liczbie otwartych, liczbie ustawionych **w toku**i liczbie zamkniętych. Dla każdego zdarzenia można zobaczyć czas jego wystąpienia i stan zdarzenia. Przyjrzyj się ważności, aby określić, które zdarzenia należy obsłużyć jako pierwsze.
+1. Wybierz **zdarzenia**. Na stronie **incydenty** są dostępne informacje o liczbie zdarzeń, liczbie otwartych, liczbie ustawionych **w toku**i liczbie zamkniętych. Dla każdego zdarzenia można zobaczyć czas jego wystąpienia i stan zdarzenia. Przyjrzyj się ważności, aby określić, które zdarzenia należy obsłużyć jako pierwsze.
 
     ![Wyświetl ważność zdarzenia](media/tutorial-investigate-cases/incident-severity.png)
 
@@ -70,22 +70,22 @@ Wykres badania umożliwia analitykom zaproszenie odpowiednich pytań dotyczącyc
   
 Wykres badania zawiera:
 
-- **Kontekst wizualny z danych pierwotnych**: Na żywo, Visual Graph wyświetla relacje jednostek wyodrębnione automatycznie z danych pierwotnych. Dzięki temu można łatwo wyświetlać połączenia między różnymi źródłami danych.
+- **Kontekst wizualny z danych pierwotnych**: na żywo, Visual Graph wyświetla relacje jednostek wyodrębnione automatycznie z danych pierwotnych. Dzięki temu można łatwo wyświetlać połączenia między różnymi źródłami danych.
 
-- **Odnajdywanie zakresu pełnego badania**: Rozszerz zakres badania przy użyciu wbudowanych zapytań eksploracji, aby wyrównać pełen zakres naruszenia.
+- **Odnajdywanie zakresu pełnego badania**: Rozszerz zakres badania przy użyciu wbudowanych zapytań eksploracji, aby przedstawić pełen zakres naruszenia.
 
-- **Wbudowane kroki badania**: Użyj wstępnie zdefiniowanych opcji eksploracji, aby upewnić się, że zażądasz odpowiednich pytań na początku zagrożenia.
+- **Wbudowane kroki badania**: Użyj wstępnie zdefiniowanych opcji eksploracji, aby upewnić się, że zażądasz odpowiednich pytań na potrzeby zagrożenia.
 
 Aby użyć grafu badania:
 
-1. Wybierz zdarzenie, a następnie wybierz pozycję **Zbadaj**. Spowoduje to przejście do grafu badania. Wykres przedstawia mapę ilustracyjnyą jednostek, które są bezpośrednio połączone z alertem, a każdy zasób jest podłączany w dalszej części.
+1. Wybierz zdarzenie, a następnie wybierz pozycję **Zbadaj**. Spowoduje to przejście do grafu badania. Wykres przedstawia mapę ilustracyjnyą jednostek, które są bezpośrednio połączone z alertem, a każdy zasób jest podłączany w dalszej części.
 
    > [!IMPORTANT] 
    > Po skonfigurowaniu reguły analitycznej można zbadać zdarzenie tylko w przypadku użycia pól mapowania jednostek. Wykres badania wymaga, aby oryginalne zdarzenie obejmowało jednostki.
 
-   ![Wyświetl mapę](media/tutorial-investigate-cases/map1.png)
+   ![Wyświetlanie mapy](media/tutorial-investigate-cases/map1.png)
 
-1. Wybierz jednostkę, aby otworzyć okienko **jednostki** , aby można było przejrzeć informacje o tej jednostce.
+1. Wybierz jednostkę, aby otworzyć okienko **jednostki** , aby można było przejrzeć informacje o tej jednostce.
 
     ![Wyświetl jednostki na mapie](media/tutorial-investigate-cases/map-entities.png)
   
@@ -95,9 +95,9 @@ Aby użyć grafu badania:
 
    Na przykład na komputerze można zażądać powiązanych alertów. W przypadku wybrania zapytania eksploracji uzyskane uprawniania są dodawane z powrotem do grafu. W tym przykładzie wybranie **powiązanych alertów** zwróciło następujące alerty do grafu:
 
-    ![Wyświetl pokrewne alerty](media/tutorial-investigate-cases/related-alerts.png)
+    ![Wyświetl powiązane alerty](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Dla każdej kwerendy eksploracji można wybrać opcję otwarcia nieprzetworzonych wyników zdarzeń i zapytania używanego w Log Analytics, wybierając pozycję **zdarzenia\>** .
+1. Dla każdej kwerendy eksploracji można wybrać opcję otwarcia nieprzetworzonych wyników zdarzeń i zapytania używanego w Log Analytics, wybierając pozycję **zdarzenia @ no__t-1**.
 
 1. Aby zrozumieć zdarzenie, wykres zawiera równoległą oś czasu.
 

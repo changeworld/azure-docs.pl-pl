@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 643539fb569cdefba8e04d1ac08e73055624d3ae
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "67446304"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025059"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Dodawanie uwierzytelniania do aplikacji interfejsu Xamarin Forms
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center jest inwestować w nowe i zintegrowane usługi centralne dla opracowywania aplikacji mobilnych. Deweloperzy mogą używaćusług kompilowania, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi wypychania. Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze. Wyewidencjonuj [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users) dzisiaj.
->
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
 W tym temacie pokazano, jak uwierzytelniać użytkowników aplikacji mobilnej App Service z poziomu aplikacji klienckiej. W tym samouczku dodasz uwierzytelnianie do projektu narzędzia Xamarin Forms Start przy użyciu dostawcy tożsamości obsługiwanego przez App Service. Po pomyślnym uwierzytelnieniu i autoryzacji aplikacji mobilnej zostanie wyświetlona wartość identyfikatora użytkownika i będzie można uzyskać dostęp do ograniczonych danych tabeli.
@@ -41,17 +41,17 @@ Jeśli nie używasz pobranego projektu szybkiego startu serwera, musisz dodać p
 
 ## <a name="redirecturl"></a>Dodaj aplikację do dozwolonych zewnętrznych adresów URL przekierowania
 
-Bezpieczne uwierzytelnianie wymaga zdefiniowania nowego schematu adresu URL dla aplikacji. Dzięki temu system uwierzytelniania może przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy w systemie adresu URL. Można jednak użyć dowolnego wybranego schematu adresów URL. Powinna być unikatowa dla aplikacji mobilnej. Aby włączyć przekierowanie po stronie serwera:
+Bezpieczne uwierzytelnianie wymaga zdefiniowania nowego schematu adresu URL dla aplikacji. Dzięki temu system uwierzytelniania może przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy _w systemie adresu_ URL. Można jednak użyć dowolnego wybranego schematu adresów URL. Powinna być unikatowa dla aplikacji mobilnej. Aby włączyć przekierowanie po stronie serwera:
 
 1. W [Azure Portal][8]wybierz App Service.
 
 2. Kliknij opcję menu **uwierzytelnianie/autoryzacja** .
 
-3. W polu **dozwolone adresy URL zewnętrznych**przekierowań `url_scheme_of_your_app://easyauth.callback`wprowadź wartość.  **Url_scheme_of_your_app** w tym ciągu to schemat adresu URL aplikacji mobilnej.  Powinna być zgodna ze specyfikacją normalnych adresów URL dla protokołu (używaj tylko liter i cyfr i zaczynać się od litery).  Należy zanotować ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnej przy użyciu schematu adresu URL w kilku miejscach.
+3. W polu **dozwolone adresy URL zewnętrznych przekierowań**wprowadź wartość `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu to schemat adresu URL aplikacji mobilnej.  Powinna być zgodna ze specyfikacją normalnych adresów URL dla protokołu (używaj tylko liter i cyfr i zaczynać się od litery).  Należy zanotować ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnej przy użyciu schematu adresu URL w kilku miejscach.
 
 4. Kliknij przycisk **OK**.
 
-5. Kliknij polecenie **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>Ograniczanie uprawnień do uwierzytelnionych użytkowników
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -63,10 +63,10 @@ Aby uwierzytelnić się za pomocą projektu Xamarin Forms, zdefiniuj Interfejs *
 
 Zaimplementuj Interfejs **IAuthenticate** dla każdej platformy obsługiwanej przez aplikację.
 
-1. W programie Visual Studio lub Xamarin Studio Otwórz App.cs z projektu z **przenośną** nazwą, która jest projektem biblioteki klas przenośnych, a następnie Dodaj następującą `using` instrukcję:
+1. W programie Visual Studio lub Xamarin Studio Otwórz App.cs z projektu z **przenośną** nazwą, która jest projektem biblioteki klas przenośnych, a następnie Dodaj następującą instrukcję `using`:
 
         using System.Threading.Tasks;
-2. W App.cs, Dodaj następującą `IAuthenticate` definicję interfejsu bezpośrednio `App` przed definicją klasy.
+2. W App.cs, Dodaj następującą definicję interfejsu `IAuthenticate` bezpośrednio przed definicją klasy `App`.
 
         public interface IAuthenticate
         {
@@ -86,11 +86,11 @@ Zaimplementuj Interfejs **IAuthenticate** dla każdej platformy obsługiwanej pr
             Clicked="loginButton_Clicked"/>
 
     Ten przycisk wyzwala uwierzytelnianie zarządzane przez serwer przy użyciu zaplecza aplikacji mobilnej.
-5. Otwórz todolist.XAML.cs z projektu biblioteki klas przenośnych, a następnie Dodaj następujące pole do `TodoList` klasy:
+5. Otwórz TodoList.xaml.cs z projektu biblioteki klas przenośnych, a następnie Dodaj następujące pole do klasy `TodoList`:
 
         // Track whether the user has authenticated.
         bool authenticated = false;
-6. Zastąp metodę onwyświetlaną następującym kodem:
+6. Zastąp metodę **Onwyświetlaną** następującym kodem:
 
         protected override async void OnAppearing()
         {
@@ -127,7 +127,7 @@ W tej sekcji pokazano, jak zaimplementować interfejs **IAuthenticate** w projek
 
 1. W programie Visual Studio lub Xamarin Studio kliknij prawym przyciskiem myszy projekt **Droid** , a następnie **Ustaw jako projekt startowy**.
 2. Naciśnij klawisz F5, aby uruchomić projekt w debugerze, a następnie sprawdź, czy zgłoszono nieobsługiwany wyjątek z kodem stanu 401 (nieautoryzowany) po uruchomieniu aplikacji. Tworzony jest kod 401, ponieważ dostęp do zaplecza jest ograniczony tylko do autoryzowanych użytkowników.
-3. Otwórz MainActivity.cs w projekcie systemu Android i Dodaj następujące `using` instrukcje:
+3. Otwórz MainActivity.cs w projekcie systemu Android i Dodaj następujące instrukcje `using`:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
@@ -171,7 +171,7 @@ W tej sekcji pokazano, jak zaimplementować interfejs **IAuthenticate** w projek
 
     Jeśli używasz dostawcy tożsamości innego niż Facebook, wybierz inną wartość dla [MobileServiceAuthenticationProvider][7].
 
-6. Zaktualizuj plik **pliku AndroidManifest. XML** , dodając następujący kod XML wewnątrz `<application>` elementu:
+6. Zaktualizuj plik **pliku AndroidManifest. XML** , dodając następujący kod XML wewnątrz elementu `<application>`:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
@@ -184,7 +184,7 @@ W tej sekcji pokazano, jak zaimplementować interfejs **IAuthenticate** w projek
     </activity>
     ```
     Zamień `{url_scheme_of_your_app}` na schemat adresu URL.
-7. Dodaj następujący kod do metody `LoadApplication()`OnCreate klasy **MAINS** przed wywołaniem do:
+7. Dodaj następujący kod do metody **OnCreate** klasy **MAINS** przed wywołaniem do `LoadApplication()`:
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
@@ -194,7 +194,7 @@ W tej sekcji pokazano, jak zaimplementować interfejs **IAuthenticate** w projek
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-**Aplikacja uległa awarii`Java.Lang.NoSuchMethodError: No static method startActivity`**
+**Aplikacja uległa awarii z `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
 W niektórych przypadkach konflikty w pakietach pomocy technicznej są wyświetlane jako ostrzeżenie w programie Visual Studio, ale aplikacja uległa awarii z powodu tego wyjątku w czasie wykonywania. W takim przypadku należy upewnić się, że wszystkie pakiety obsługi, do których odwołuje się w projekcie, mają tę samą wersję. [Pakiet NuGet usługi Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) ma zależność `Xamarin.Android.Support.CustomTabs` dla platformy Android, więc jeśli projekt używa nowszych pakietów dla pomocy technicznej, musisz bezpośrednio zainstalować ten pakiet w wymaganej wersji w celu uniknięcia konfliktów.
 
@@ -203,7 +203,7 @@ W tej sekcji pokazano, jak zaimplementować interfejs **IAuthenticate** w projek
 
 1. W programie Visual Studio lub Xamarin Studio kliknij prawym przyciskiem myszy projekt **iOS** , a następnie **Ustaw jako projekt startowy**.
 2. Naciśnij klawisz F5, aby uruchomić projekt w debugerze, a następnie sprawdź, czy zgłoszono nieobsługiwany wyjątek z kodem stanu 401 (nieautoryzowany) po uruchomieniu aplikacji. Odpowiedź 401 jest generowana, ponieważ dostęp do zaplecza jest ograniczony tylko do autoryzowanych użytkowników.
-3. Otwórz AppDelegate.cs w projekcie systemu iOS i Dodaj następujące `using` instrukcje:
+3. Otwórz AppDelegate.cs w projekcie systemu iOS i Dodaj następujące instrukcje `using`:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
@@ -271,14 +271,14 @@ W tej sekcji pokazano, jak zaimplementować interfejs **IAuthenticate** w projek
 
 1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt **platformy UWP** , a następnie **Ustaw jako projekt startowy**.
 2. Naciśnij klawisz F5, aby uruchomić projekt w debugerze, a następnie sprawdź, czy zgłoszono nieobsługiwany wyjątek z kodem stanu 401 (nieautoryzowany) po uruchomieniu aplikacji. Odpowiedź 401 dzieje się tak, ponieważ dostęp do zaplecza jest ograniczony tylko do autoryzowanych użytkowników.
-3. Otwórz MainPage.XAML.cs dla projektu aplikacji systemu Windows i Dodaj następujące `using` instrukcje:
+3. Otwórz MainPage.xaml.cs dla projektu aplikacji systemu Windows i Dodaj następujące instrukcje `using`:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
         using Windows.UI.Popups;
         using <your_Portable_Class_Library_namespace>;
 
-    Zamień `<your_Portable_Class_Library_namespace>` na przestrzeń nazw biblioteki klas przenośnych.
+    Zastąp `<your_Portable_Class_Library_namespace>` z przestrzenią nazw dla przenośnej biblioteki klas.
 4. Zaktualizuj klasę **MainPage** , aby zaimplementować interfejs **IAuthenticate** w następujący sposób:
 
         public sealed partial class MainPage : IAuthenticate
@@ -325,9 +325,9 @@ W tej sekcji pokazano, jak zaimplementować interfejs **IAuthenticate** w projek
         // Initialize the authenticator before loading the app.
         <your_Portable_Class_Library_namespace>.App.Init(this);
 
-    Zamień `<your_Portable_Class_Library_namespace>` na przestrzeń nazw biblioteki klas przenośnych.
+    Zastąp `<your_Portable_Class_Library_namespace>` z przestrzenią nazw dla przenośnej biblioteki klas.
 
-3. Jeśli używasz **platformy UWP**, Dodaj następujące przesłonięcie metody OnActivated do klasy **App** :
+3. Jeśli używasz **platformy UWP**, Dodaj następujące przesłonięcie metody **OnActivated** do klasy **App** :
 
        protected override void OnActivated(IActivatedEventArgs args)
        {

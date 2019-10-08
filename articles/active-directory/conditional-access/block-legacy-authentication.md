@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d227b4cf7090cdc3177c7045d6137f30a13f71b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f4e4dc33d670c5f6c5ebefa21ccf1a1ff941e913
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931950"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024581"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Instrukcje: Blokuj starsze uwierzytelnianie w usłudze Azure AD przy użyciu dostępu warunkowego   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Instrukcje: blokowanie starszego uwierzytelniania w usłudze Azure AD przy użyciu dostępu warunkowego   
 
 Aby zapewnić użytkownikom łatwy dostęp do aplikacji w chmurze, usługa Azure Active Directory (Azure AD) obsługuje szeroką gamę protokołów uwierzytelniania, w tym starsze uwierzytelnianie. Jednak starsze protokoły nie obsługują uwierzytelniania wieloskładnikowego (MFA). Uwierzytelnianie wieloskładnikowe jest w wielu środowiskach typowym wymaganiem do kradzieży tożsamości. 
 
@@ -44,7 +44,7 @@ Jak można uniemożliwić aplikacjom korzystającym ze starszego uwierzytelniani
 
 Zasady dostępu warunkowego są wymuszane po zakończeniu uwierzytelniania pierwszego. W związku z tym dostęp warunkowy nie jest przeznaczony jako pierwszy wiersz obrony przed scenariuszami, takimi jak ataki typu "odmowa usługi" (DoS), ale mogą korzystać z sygnałów z tych zdarzeń (na przykład poziomu ryzyka logowania, lokalizacji żądania itp.) w celu określenia dostępu.
 
-## <a name="implementation"></a>Implementacja
+## <a name="implementation"></a>Wdrażanie
 
 W tej sekcji opisano sposób konfigurowania zasad dostępu warunkowego w celu blokowania starszego uwierzytelniania. 
 
@@ -53,8 +53,8 @@ W tej sekcji opisano sposób konfigurowania zasad dostępu warunkowego w celu bl
 Przed zablokowaniem starszego uwierzytelniania w katalogu należy najpierw zrozumieć, czy użytkownicy mają aplikacje korzystające ze starszego uwierzytelniania i jak mają wpływ na ogólny katalog. Korzystając z dzienników logowania usługi Azure AD, można zrozumieć, czy używane jest starsze uwierzytelnianie.
 
 1. Przejdź do **Azure Portal** > **Azure Active Directory** > **logowania**.
-1. Dodaj kolumnę aplikacji klienckiej, jeśli nie jest ona wyświetlana po kliknięciu pozycji **kolumny** > **aplikacja kliencka**.
-1. **Dodaj filtry** > **aplikacje klienckie** > Zaznacz wszystkie opcje dla **innych klientów** i kliknij przycisk **Zastosuj**.
+1. Dodaj kolumnę aplikacji klienckiej, jeśli nie jest ona wyświetlana przez kliknięcie **kolumn** > **App Client**.
+1. **Dodaj filtry** > **aplikacji klienckiej** > Wybierz wszystkie opcje dla **innych klientów** i kliknij przycisk **Zastosuj**.
 
 Filtrowanie będzie zawierać tylko próby logowania, które zostały wykonane przez starsze protokoły uwierzytelniania. Kliknięcie każdej próby logowania spowoduje wyświetlenie dodatkowych szczegółów. Pole **aplikacji klienckiej** na karcie **Informacje podstawowe** wskazuje, który z starszych wersji protokołu uwierzytelniania był używany.
 
@@ -101,7 +101,7 @@ Aby uzyskać więcej informacji, zobacz [jak należy wdrożyć nowe zasady?](bes
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
 
-Blokowanie dostępu przy użyciu **innych klientów** blokuje również program Exchange Online PowerShell przy użyciu uwierzytelniania podstawowego.
+Blokowanie dostępu przy użyciu **innych klientów** blokuje również usługi Exchange Online PowerShell i Dynamics 365 przy użyciu uwierzytelniania podstawowego.
 
 Skonfigurowanie zasad dla **innych klientów** blokuje całą organizację od niektórych klientów, takich jak SPConnect. Ten blok jest spowodowany tym, że starsi klienci uwierzytelniają się w nieoczekiwany sposób. Problem nie dotyczy najważniejszych aplikacji pakietu Office, takich jak starsi klienci pakietu Office.
 

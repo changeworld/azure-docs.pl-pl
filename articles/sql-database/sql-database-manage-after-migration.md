@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845606"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028259"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowa usługa DBA w chmurze — zarządzanie bazami danych z jednym i pulą w puli w Azure SQL Database
 
@@ -64,9 +64,9 @@ Ciągłość działania i możliwości odzyskiwania po awarii umożliwiają kont
 
 Nie można tworzyć kopii zapasowych w usłudze Azure SQL DB, ponieważ nie jest to konieczne. SQL Database automatycznie tworzy kopie zapasowe baz danych, dzięki czemu nie trzeba już martwić się o planowanie i tworzenie kopii zapasowych oraz zarządzanie nimi. Platforma wykonuje pełną kopię zapasową co tydzień, różnicową kopię zapasową co kilka godzin i kopię zapasową dziennika co 5 minut, aby zapewnić wydajność odzyskiwania po awarii i niewielką utratę danych. Pierwsza pełna kopia zapasowa odbywa się zaraz po utworzeniu bazy danych. Te kopie zapasowe są dostępne przez pewien czas o nazwie "okres przechowywania" i różnią się w zależności od wybranej warstwy usług. SQL Database zapewnia możliwość przywracania do dowolnego punktu w czasie w tym okresie przechowywania przy użyciu funkcji [odzyskiwania do punktu w czasie (kopie)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Warstwa usług|Okres przechowywania w dniach|
+|Warstwa usługi|Okres przechowywania w dniach|
 |---|:---:|
-|Podstawowa|7|
+|Basic|7|
 |Standardowa (Standard)|35|
 |Premium|35|
 |||
@@ -85,7 +85,7 @@ Jeśli grupa autotrybu failover nie zostanie skonfigurowana, aplikacja musi akty
 
 W obszarze Podsumowanie tradycyjnego lokalnego SQL Server instalacji wymagały aktywnego zarządzania dostępnością przy użyciu funkcji takich jak klaster trybu failover, dublowanie bazy danych, replikacja transakcji lub wysyłanie dzienników oraz zarządzanie kopiami zapasowymi Ciągłość działania. Dzięki SQL Database platforma zarządza tymi elementami, dzięki czemu możesz skupić się na tworzeniu i optymalizowaniu aplikacji bazy danych i nie martw się o zarządzanie awarią. Można skonfigurować plany odzyskiwania i tworzenia kopii zapasowych oraz pracę z kilkoma kliknięciami Azure Portal (lub kilkoma poleceniami przy użyciu interfejsów API programu PowerShell).
 
-Aby dowiedzieć się więcej na temat odzyskiwania po awarii, zobacz: [Odzyskiwanie po awarii usługi Azure SQL DB 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
+Aby dowiedzieć się więcej na temat odzyskiwania po awarii, zobacz: [usługa Azure SQL DB — odzyskiwanie po awarii 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
 ## <a name="security-and-compliance"></a>Zabezpieczenia i zgodność z przepisami
 
@@ -130,7 +130,7 @@ Istnieje wiele technik do dyspozycji, których można użyć do uzyskania optyma
 
 Zapora uniemożliwia dostęp do serwera z zewnętrznej jednostki, zezwalając na dostęp tylko określonym podmiotom do serwera SQL Database. Domyślnie wszystkie połączenia i bazy danych wewnątrz serwera SQL Database są niedozwolone, z wyjątkiem połączeń przychodzących z innych usług platformy Azure. Za pomocą reguły zapory można otworzyć dostęp do serwera tylko do jednostek (na przykład na komputerze dewelopera), które zostały zatwierdzone przez zezwolenie na ten komputer za pomocą zapory. Pozwala także określić zakres adresów IP, które mają zezwalać na dostęp do serwera SQL Database. Na przykład adresy IP komputerów deweloperów w organizacji można dodać jednocześnie, określając zakres na stronie Ustawienia zapory.
 
-Reguły zapory można tworzyć na poziomie serwera lub na poziomie bazy danych. Reguły zapory adresów IP na poziomie serwera można utworzyć przy użyciu Azure Portal lub programu SSMS. Aby dowiedzieć się więcej na temat sposobu ustawiania reguły zapory na poziomie serwera i na poziomie bazy danych, zobacz: [Utwórz reguły zapory adresów IP w SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
+Reguły zapory można tworzyć na poziomie serwera lub na poziomie bazy danych. Reguły zapory adresów IP na poziomie serwera można utworzyć przy użyciu Azure Portal lub programu SSMS. Aby dowiedzieć się więcej na temat sposobu ustawiania reguły zapory na poziomie serwera i na poziomie bazy danych, zobacz: [Tworzenie reguł zapory adresów IP w SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Punkty końcowe usługi
 
@@ -152,11 +152,11 @@ Port 1433. SQL Database komunikuje się za pośrednictwem tego portu. Aby nawią
 
 #### <a name="sql-database-auditing"></a>Inspekcja SQL Database
 
-Za pomocą SQL Database można włączyć inspekcję w celu śledzenia zdarzeń bazy danych. [Inspekcja SQL Database](sql-database-auditing.md) rejestruje zdarzenia bazy danych i zapisuje je w pliku dziennika inspekcji na koncie usługi Azure Storage. Inspekcja jest szczególnie przydatna, jeśli zamierzasz uzyskać wgląd w potencjalne naruszenia zabezpieczeń i zasad, zachować zgodność z przepisami itp. Pozwala on definiować i konfigurować pewne kategorie zdarzeń, które są potrzebne do inspekcji, i na podstawie tego, że można uzyskać dostęp do wstępnie skonfigurowanych raportów i pulpitu nawigacyjnego, aby zapoznać się z omówieniem zdarzeń występujących w bazie danych. Zasady inspekcji można stosować zarówno na poziomie bazy danych, jak i na poziomie serwera. Przewodnik dotyczący sposobu włączania inspekcji dla serwera/bazy danych, zobacz: [Włącz inspekcję SQL Database](sql-database-security-tutorial.md#enable-security-features).
+Za pomocą SQL Database można włączyć inspekcję w celu śledzenia zdarzeń bazy danych. [Inspekcja SQL Database](sql-database-auditing.md) rejestruje zdarzenia bazy danych i zapisuje je w pliku dziennika inspekcji na koncie usługi Azure Storage. Inspekcja jest szczególnie przydatna, jeśli zamierzasz uzyskać wgląd w potencjalne naruszenia zabezpieczeń i zasad, zachować zgodność z przepisami itp. Pozwala on definiować i konfigurować pewne kategorie zdarzeń, które są potrzebne do inspekcji, i na podstawie tego, że można uzyskać dostęp do wstępnie skonfigurowanych raportów i pulpitu nawigacyjnego, aby zapoznać się z omówieniem zdarzeń występujących w bazie danych. Zasady inspekcji można stosować zarówno na poziomie bazy danych, jak i na poziomie serwera. Przewodnik dotyczący sposobu włączania inspekcji dla serwera/bazy danych, zobacz: [Włączanie inspekcji SQL Database](sql-database-security-tutorial.md#enable-security-features).
 
 #### <a name="threat-detection"></a>Wykrywanie zagrożeń
 
-Dzięki funkcji [wykrywania zagrożeń](sql-database-threat-detection.md)można korzystać z funkcji naruszenia zabezpieczeń lub naruszeń zasad, które są bardzo proste. Nie musisz być ekspertem ds. zabezpieczeń, aby rozwiązywać potencjalne zagrożenia lub naruszenia w systemie. Wykrywanie zagrożeń ma także pewne wbudowane funkcje, takie jak wykrywanie iniekcji SQL. Iniekcja SQL to próba zmiany lub złamania danych oraz w pełni typowy sposób ataku na aplikacje bazy danych. Wykrywanie zagrożeń uruchamia wiele zestawów algorytmów, które wykrywają potencjalne luki w zabezpieczeniach i ataki iniekcji SQL, a także nietypowe wzorce dostępu do baz danych (takie jak dostęp z nietypowej lokalizacji lub nieznanego podmiotu zabezpieczeń). Urzędy zabezpieczeń lub inni Wyznaczeni Administratorzy otrzymają powiadomienie e-mail w przypadku wykrycia zagrożenia w bazie danych. Każde powiadomienie zawiera szczegółowe informacje o podejrzanych działaniach i zaleceniach dotyczących dalszych badań i łagodzenia zagrożeń. Aby dowiedzieć się, jak włączyć wykrywanie zagrożeń, zobacz: [Włącz wykrywanie zagrożeń](sql-database-security-tutorial.md#enable-security-features).
+Dzięki funkcji [wykrywania zagrożeń](sql-database-threat-detection.md)można korzystać z funkcji naruszenia zabezpieczeń lub naruszeń zasad, które są bardzo proste. Nie musisz być ekspertem ds. zabezpieczeń, aby rozwiązywać potencjalne zagrożenia lub naruszenia w systemie. Wykrywanie zagrożeń ma także pewne wbudowane funkcje, takie jak wykrywanie iniekcji SQL. Iniekcja SQL to próba zmiany lub złamania danych oraz w pełni typowy sposób ataku na aplikacje bazy danych. Wykrywanie zagrożeń uruchamia wiele zestawów algorytmów, które wykrywają potencjalne luki w zabezpieczeniach i ataki iniekcji SQL, a także nietypowe wzorce dostępu do baz danych (takie jak dostęp z nietypowej lokalizacji lub nieznanego podmiotu zabezpieczeń). Urzędy zabezpieczeń lub inni Wyznaczeni Administratorzy otrzymają powiadomienie e-mail w przypadku wykrycia zagrożenia w bazie danych. Każde powiadomienie zawiera szczegółowe informacje o podejrzanych działaniach i zaleceniach dotyczących dalszych badań i łagodzenia zagrożeń. Aby dowiedzieć się, jak włączyć wykrywanie zagrożeń, zobacz: [Włączanie wykrywania zagrożeń](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Jak mogę chronić moje dane ogólnie na SQL Database
 
@@ -173,7 +173,7 @@ Aby chronić poufne dane w locie i w spoczynku, SQL Database zapewnia funkcję o
 |**Zakres szyfrowania**|Od końca do końca|Dane w spoczynku|
 |**Serwer bazy danych może uzyskać dostęp do poufnych danych**|Nie|Tak, ponieważ szyfrowanie jest przeznaczone dla danych przechowywanych w spoczynku|
 |**Dozwolone operacje T-SQL**|Porównanie równości|Wszystkie obszary powierzchni T-SQL są dostępne|
-|**Zmiany aplikacji wymagane do korzystania z tej funkcji**|Minimalny|Bardzo minimalne|
+|**Zmiany aplikacji wymagane do korzystania z tej funkcji**|Mniejsze|Bardzo minimalne|
 |**Stopień szczegółowości szyfrowania**|Poziom kolumny|Poziom bazy danych|
 ||||
 
@@ -181,7 +181,7 @@ Aby chronić poufne dane w locie i w spoczynku, SQL Database zapewnia funkcję o
 
 Każda aplikacja ma pewną liczbę poufnych danych w bazie danych, która musi być chroniona przez wszystkie osoby. Niektórzy pracownicy w organizacji muszą wyświetlać te dane, jednak inne nie powinny mieć możliwości wyświetlania tych danych. Jednym z przykładów jest wynagrodzenie pracownika. Menedżer powinien mieć dostęp do informacji o płacach dla ich bezpośrednich raportów, jednak indywidualni członkowie zespołu nie powinni mieć dostępu do informacji o płacach swoich elementów równorzędnych. Innym scenariuszem są deweloperzy danych, którzy mogą korzystać z poufnych danych podczas etapów tworzenia lub testowania, na przykład SSNs klientów. Te informacje nie muszą być ujawnione dla deweloperów. W takich przypadkach poufne dane muszą być maskowane lub nie być widoczne. SQL Database oferuje dwa takie podejścia, aby uniemożliwić nieautoryzowanym użytkownikom wyświetlanie poufnych danych:
 
-[Dynamiczne maskowanie danych](sql-database-dynamic-data-masking-get-started.md) to funkcja maskowania danych, która pozwala ograniczyć narażenie na dane poufne przez zamaskowanie ich dla użytkowników nieuprzywilejowanych w warstwie aplikacji. Należy zdefiniować regułę maskowania, która może utworzyć wzorzec maskowania (na przykład, aby wyświetlić tylko ostatnie cztery cyfry numeru PESEL identyfikatora Narodowego: XXX-XX-0000 i Oznacz większość z nich jako XS) i zidentyfikuj, którzy użytkownicy mają być wykluczeni z reguły maskowania. Maskowanie odbywa się na bieżąco i dostępne są różne funkcje maskowania dla różnych kategorii danych. Dynamiczne maskowanie danych pozwala na automatyczne wykrywanie poufnych danych w bazie danych i stosowanie maskowania.
+[Dynamiczne maskowanie danych](sql-database-dynamic-data-masking-get-started.md) to funkcja maskowania danych, która pozwala ograniczyć narażenie na dane poufne przez zamaskowanie ich dla użytkowników nieuprzywilejowanych w warstwie aplikacji. Definiujesz regułę maskowania, która może utworzyć wzorzec maskowania (na przykład, aby wyświetlić tylko ostatnie cztery cyfry numeru PESEL: XXX-XX-0000 i oznaczyć większość z nich jako XS) i określić, którzy użytkownicy mają być wykluczeni z reguły maskowania. Maskowanie odbywa się na bieżąco i dostępne są różne funkcje maskowania dla różnych kategorii danych. Dynamiczne maskowanie danych pozwala na automatyczne wykrywanie poufnych danych w bazie danych i stosowanie maskowania.
 
 [Zabezpieczenia na poziomie wiersza](/sql/relational-databases/security/row-level-security) umożliwiają kontrolowanie dostępu na poziomie wiersza. Oznacza to, że niektóre wiersze w tabeli bazy danych na podstawie użytkownika wykonującego zapytanie (członkostwo w grupie lub kontekst wykonywania) są ukryte. Ograniczenie dostępu odbywa się w warstwie bazy danych zamiast w warstwie aplikacji, aby uprościć logikę aplikacji. Rozpoczynając od utworzenia predykatu filtru, odfiltruj wiersze, które nie są uwidocznione, a następnie określ zasady zabezpieczeń, które będą miały dostęp do tych wierszy. Na koniec użytkownik końcowy uruchamia swoje zapytanie i, w zależności od uprawnień użytkownika, wyświetla te wiersze z ograniczeniami lub nie może ich zobaczyć wcale.
 
@@ -198,7 +198,7 @@ Istnieje dwukluczowa hierarchia w TDE — dane w każdej bazie danych użytkowni
 
 Domyślnie klucz główny dla Transparent Data Encryption jest zarządzany przez usługę SQL Database dla wygody. Jeśli Twoja organizacja ma kontrolę nad kluczem głównym, istnieje możliwość użycia Azure Key Vault] (SQL-Database-Always-Encrypted-Azure-Key-vault.md) jako magazynu kluczy. Korzystając z Azure Key Vault, organizacja zakłada kontrolę nad kontrolami, rotacją i uprawnieniami do obsługi kluczy. [Obracanie lub przełączanie typu klucza głównego TDE](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation) jest szybkie, ponieważ powoduje tylko ponowne zaszyfrowanie bazy danych szyfrowania danych. W przypadku organizacji z separacją ról między zabezpieczeniami i zarządzaniem danymi administrator zabezpieczeń może udostępnić klucz klucza głównego TDE w Azure Key Vault i podać identyfikator klucza Azure Key Vault do administratora bazy danych, który ma być używany przez program szyfrowanie na serwerze. Key Vault jest zaprojektowana tak, że firma Microsoft nie widzi ani nie wyodrębni kluczy szyfrowania. Możesz również centralnie zarządzać kluczami dla swojej organizacji.
 
-#### <a name="always-encrypted"></a>Zawsze szyfrowane
+#### <a name="always-encrypted"></a>Always Encrypted
 
 Istnieje również [dwukluczowa hierarchia](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) w Always Encrypted — kolumna danych poufnych jest szyfrowana za pomocą klucza szyfrowania AES 256-kolumnowego (CEK), który z kolei jest szyfrowany przy użyciu klucza głównego kolumny (CMK). Sterowniki klienta podane dla Always Encrypted nie mają ograniczeń dotyczących długości CMKs. Zaszyfrowana wartość CEK jest przechowywana w bazie danych, a CMK jest przechowywana w zaufanym magazynie kluczy, takim jak magazyn certyfikatów systemu Windows, Azure Key Vault lub sprzętowy moduł zabezpieczeń.
 
@@ -215,10 +215,10 @@ Na poniższym diagramie przedstawiono opcje magazynu kluczy dla kluczy głównyc
 Ruch sieciowy między organizacją a SQL Database będzie ogólnie kierowany przez sieć publiczną. Jeśli jednak zdecydujesz się zoptymalizować tę ścieżkę i zwiększyć jej bezpieczeństwo, możesz poszukać w usłudze Express Route. Usługa Express Route zasadniczo umożliwia rozbudowanie sieci firmowej na platformę Azure za pośrednictwem połączenia prywatnego. Dzięki temu nie możesz przejść przez publiczny Internet. Uzyskuje się również wyższe zabezpieczenia, niezawodność i optymalizację routingu, które tłumaczą się na mniejsze opóźnienia sieci i znacznie szybciej niż zwykle w przypadku korzystania z publicznej sieci Internet. Jeśli planujesz transfer znaczących fragmentów danych między organizacją i platformą Azure, korzystanie z usługi Express Route może przynieść korzyści z kosztów. Możesz wybrać spośród trzech różnych modeli łączności dla połączenia z organizacji do platformy Azure:
 
 - [Współpraca między lokacjami w chmurze](../expressroute/expressroute-connectivity-models.md#CloudExchange)
-- [Any-to-any](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [Dowolny z](../expressroute/expressroute-connectivity-models.md#IPVPN)
+- [Punkt-punkt](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-W przypadku usługi Express Route można także naliczać na maksymalnie 2 – limit przydziałów przepustowości, bez dodatkowych opłat. Istnieje również możliwość skonfigurowania łączności między regionami przy użyciu usługi Express Route. Aby wyświetlić listę dostawców połączeń usługi ER, zobacz: [Partnerzy tras ekspresowych i lokalizacje komunikacji równorzędnej](../expressroute/expressroute-locations.md). W poniższych artykułach szczegółowo opisano trasę Express:
+W przypadku usługi Express Route można także naliczać na maksymalnie 2 – limit przydziałów przepustowości, bez dodatkowych opłat. Istnieje również możliwość skonfigurowania łączności między regionami przy użyciu usługi Express Route. Aby wyświetlić listę dostawców połączeń usługi ER, zobacz: usługi [Express Route Partners i lokalizacje komunikacji równorzędnej](../expressroute/expressroute-locations.md). W poniższych artykułach szczegółowo opisano trasę Express:
 
 - [Wprowadzenie do trasy Express](../expressroute/expressroute-introduction.md)
 - [Wymagania wstępne](../expressroute/expressroute-prerequisites.md)
@@ -282,9 +282,9 @@ Można wykonać zapytanie dotyczące dynamicznego widoku zarządzania [sys. DM _
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL Analytics (wersja zapoznawcza) w dziennikach Azure Monitor
 
-[Dzienniki Azure monitor](../azure-monitor/insights/azure-sql.md) umożliwiają zbieranie i wizualizowanie najważniejszych metryk wydajności usługi Azure SQL na platformie Azure, które obsługują do 150 000 baz danych sql i 5 000 pul elastycznych SQL dla każdego obszaru roboczego. Można jej używać do monitorowania i odbierania powiadomień. Można monitorować metryki SQL Database i elastycznych pul w wielu subskrypcjach platformy Azure i elastycznych pulach i mogą służyć do identyfikowania problemów w każdej warstwie stosu aplikacji.
+[Dzienniki Azure monitor](../azure-monitor/insights/azure-sql.md) umożliwiają zbieranie i wizualizowanie najważniejszych metryk wydajności usługi Azure SQL Database, które obsługują do 150 000 baz danych sql i 5 000 pul elastycznych SQL na obszar roboczy. Można jej używać do monitorowania i odbierania powiadomień. Można monitorować metryki SQL Database i elastycznych pul w wielu subskrypcjach platformy Azure i elastycznych pulach i mogą służyć do identyfikowania problemów w każdej warstwie stosu aplikacji.
 
-### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Mi obserwowanie problemy z wydajnością: Jak SQL Database metodologia rozwiązywania problemów różni się od SQL Server
+### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Mi obserwowanie problemy z wydajnością: w jaki sposób metodologia rozwiązywania problemów SQL Database różni się od SQL Server
 
 Główna część technik rozwiązywania problemów, która powinna być używana do diagnozowania problemów z wydajnością zapytań i bazy danych, pozostaje taka sama. Gdy wszystkie te same aparaty SQL Server mają uprawnienia do chmury. Jednak platforma — usługa Azure SQL DB została wbudowana w "inteligencję". Może ułatwić rozwiązywanie problemów i diagnozowanie problemów z wydajnością. Może również wykonywać niektóre z tych działań naprawczych w Twoim imieniu, a w niektórych przypadkach automatycznie naprawiać je.
 
@@ -294,7 +294,7 @@ W przypadku rozwiązywania problemów z wydajnością ważne jest, aby określi�
 
 Ponadto jeśli zauważysz spadek ogólnej wydajności bazy danych, możesz monitorować dynamiczne widoki [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) i [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , aby zrozumieć użycie procesora CPU, operacji we/wy i pamięci. Może to mieć wpływ na wydajność, ponieważ baza danych jest Starved zasobów. Może być konieczna zmiana rozmiaru i/lub warstwy usługi na podstawie rosnących i zmniejszających się wymagań dotyczących obciążenia.
 
-Aby uzyskać kompleksowy zestaw zaleceń dotyczących dostrajania problemów z wydajnością, zobacz: [Dostosuj bazę danych](sql-database-performance-guidance.md#tune-your-database).
+Aby uzyskać kompleksowy zestaw zaleceń dotyczących dostrajania problemów z wydajnością, zobacz: [dostrajanie bazy danych](sql-database-performance-guidance.md#tune-your-database).
 
 ### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>Jak mogę upewnij się, że używam odpowiedniej warstwy usług i rozmiaru obliczeń
 
@@ -303,13 +303,13 @@ SQL Database oferuje różne warstwy usług w warstwach Podstawowa, standardowa 
 |**Warstwa usług**|**Typowe scenariusze przypadków użycia**|
 |---|---|
 |**Podstawowa**|Aplikacje z kilku użytkownikami i bazą danych, która nie ma wysokich wymagań dotyczących współbieżności, skalowania i wydajności. |
-|**Standardowa**|Aplikacje mające znaczące wymagania dotyczące współbieżności, skalowania i wydajności, powiązane z niskimi i średnimi wymaganiami we/wy. |
+|**Standard**|Aplikacje mające znaczące wymagania dotyczące współbieżności, skalowania i wydajności, powiązane z niskimi i średnimi wymaganiami we/wy. |
 |**Premium**|Aplikacje z dużą liczbą równoczesnych użytkowników, dużym procesorem CPU/pamięci i wysokimi wymaganiami we/wy. Duże współbieżność, Wysoka przepływność i wrażliwe na opóźnienia aplikacje mogą korzystać z poziomu Premium. |
 |||
 
 Aby mieć pewność, że korzystasz z odpowiedniego rozmiaru obliczeń, możesz monitorować użycie zasobów zapytania i bazy danych za pomocą jednego z powyższych metod w "Jak mogę monitorować wydajność i wykorzystanie zasobów w SQL Database". Należy się dowiedzieć, że zapytania/bazy danych stale działają na gorąco na procesorze CPU/pamięci itp. Możesz rozważyć skalowanie do wyższego rozmiaru. Podobnie, jeśli należy zauważyć, że nawet w godzinach szczytu nie będziesz używać zasobów tak samo, jak to możliwe. Rozważ przeskalowanie w dół od bieżącego rozmiaru obliczeń.
 
-Jeśli masz wzorzec aplikacji SaaS lub scenariusz konsolidacji bazy danych, rozważ użycie elastycznej puli do optymalizacji kosztów. Elastyczna Pula to doskonały sposób na osiągnięcie konsolidacji bazy danych i optymalizacji kosztów. Aby dowiedzieć się więcej o zarządzaniu wieloma bazami danych za pomocą puli elastycznej, zobacz: [Zarządzanie pulami i bazami danych](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
+Jeśli masz wzorzec aplikacji SaaS lub scenariusz konsolidacji bazy danych, rozważ użycie elastycznej puli do optymalizacji kosztów. Elastyczna Pula to doskonały sposób na osiągnięcie konsolidacji bazy danych i optymalizacji kosztów. Aby dowiedzieć się więcej o zarządzaniu wieloma bazami danych za pomocą puli elastycznej, zobacz: [zarządzanie pulami i bazami danych](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Jak często muszę uruchamiać testy integralności bazy danych dla mojej bazy danych
 
@@ -319,11 +319,11 @@ SQL Database używa niektórych inteligentnych technik, które umożliwiają obs
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>Jak mogę eksportować i importować dane jako pliki BACPAC z SQL Database
 
-- **Eksportuj**: Bazę danych Azure SQL Database można wyeksportować jako plik BACPAC z Azure Portal
+- **Eksport**: można wyeksportować bazę danych Azure SQL Database jako plik BACPAC z Azure Portal
 
-   ![Eksport bazy danych](./media/sql-database-export/database-export1.png)
+   ![eksport bazy danych](./media/sql-database-export/database-export1.png)
 
-- **Importuj**: Możesz również zaimportować dane jako plik BACPAC do bazy danych przy użyciu Azure Portal.
+- **Import**: można także zaimportować dane jako plik BACPAC do bazy danych przy użyciu Azure Portal.
 
    ![Importowanie bazy danych](./media/sql-database-import/import1.png)
 
@@ -332,7 +332,7 @@ SQL Database używa niektórych inteligentnych technik, które umożliwiają obs
 Możesz to osiągnąć na kilka sposobów:
 
 - **[Synchronizacja danych](sql-database-sync-data.md)** — ta funkcja ułatwia synchronizowanie danych dwukierunkowych między wieloma lokalnymi bazami danych SQL Server i SQL Database. Aby zsynchronizować z lokalnymi bazami danych SQL Server, należy zainstalować i skonfigurować agenta synchronizacji na komputerze lokalnym i otworzyć wychodzący port TCP 1433.
-- **[Replikacja transakcji](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** — z replikacją transakcji można synchronizować dane z lokalnego do usługi Azure SQL dB przy użyciu lokalnego wydawcy i usługi Azure SQL DB. Na razie tylko ta konfiguracja jest obsługiwana. Aby uzyskać więcej informacji na temat sposobu migrowania danych z lokalnego do platformy Azure SQL z minimalnym czasem przestoju, zobacz: [Korzystanie z replikacji transakcji](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
+- **[Replikacja transakcji](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** — z replikacją transakcji można synchronizować dane z lokalnego do usługi Azure SQL dB przy użyciu lokalnego wydawcy i usługi Azure SQL DB. Na razie tylko ta konfiguracja jest obsługiwana. Aby uzyskać więcej informacji na temat sposobu migrowania danych z lokalnego do platformy Azure SQL z minimalnym czasem przestoju, zobacz: [Korzystanie z replikacji transakcji](sql-database-single-database-migrate.md#method-2-use-transactional-replication) .
 
 ## <a name="next-steps"></a>Następne kroki
 

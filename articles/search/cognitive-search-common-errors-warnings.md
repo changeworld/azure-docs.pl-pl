@@ -9,19 +9,26 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: 18befbfb924129518ac32a7fdddaa9ee573840b0
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: b5a161e570489e6382f2226ab5dc9a1c34dc67df
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936486"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028324"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Typowe błędy i ostrzeżenia dotyczące potoku wzbogacenia AI w Azure Search
 
 Ten artykuł zawiera informacje i rozwiązania typowych błędów i ostrzeżeń, które mogą wystąpić podczas wzbogacania AI w Azure Search.
 
 ## <a name="errors"></a>Błędy
-Indeksowanie jest przerywane, gdy licznik błędów przekracza wartość ["maxfaileditems"](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). Poniższe sekcje mogą pomóc w rozwiązywaniu problemów, co umożliwia kontynuowanie indeksowania.
+Indeksowanie jest przerywane, gdy licznik błędów przekracza wartość ["maxFailedItems"](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
+
+Jeśli chcesz, aby indeksatory ignorował te błędy (i pominąć "dokumenty nieudane"), rozważ zaktualizowanie `maxFailedItems` i `maxFailedItemsPerBatch`, zgodnie z opisem w [tym miejscu](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers).
+
+> [!NOTE]
+> Każdy uszkodzony dokument wraz z jego kluczem dokumentu (jeśli jest dostępny) będzie wyświetlany jako błąd w stanie wykonywania indeksatora. Możesz użyć [interfejsu API indeksu](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) , aby ręcznie przekazać dokumenty w późniejszym momencie, jeśli ustawiono indeksator, aby tolerował błędy.
+
+Poniższe sekcje mogą pomóc w rozwiązywaniu problemów, co umożliwia kontynuowanie indeksowania.
 
 ### <a name="could-not-read-document"></a>Nie można odczytać dokumentu
 Indeksator nie mógł odczytać dokumentu ze źródła danych. Przyczyną może być:
@@ -51,6 +58,14 @@ Indeksator odczytuje dokument ze źródła danych, ale wystąpił problem podcza
 | Klucz dokumentu jest nieprawidłowy | Klucz dokumentu nie może mieć więcej niż 1024 znaków | Zmodyfikuj klucz dokumentu, aby spełniał wymagania dotyczące weryfikacji. |
 | Nie można zastosować mapowania pola do pola | Nie można zastosować funkcji mapowania `'functionName'` do pola `'fieldName'`. Tablica nie może mieć wartości null. Nazwa parametru: bajty | Dokładnie sprawdź [mapowania pól](search-indexer-field-mappings.md) zdefiniowane w indeksatorze i porównaj z danymi określonego pola dokumentu, który się nie powiódł. Może być konieczne zmodyfikowanie mapowań pól lub danych dokumentu. |
 | Nie można odczytać wartości pola | Nie można odczytać wartości kolumny `'fieldName'` przy indeksie `'fieldIndex'`. Wystąpił błąd poziomu transportu podczas otrzymywania wyników z serwera. (Dostawca: Dostawca TCP, błąd: 0 — istniejące połączenie zostało wymuszone przez hosta zdalnego). | Te błędy są zwykle spowodowane nieoczekiwanymi problemami z łącznością z usługą źródłową źródła danych. Spróbuj ponownie uruchomić dokument za pomocą indeksatora później. |
+
+### <a name="could-not-index-document"></a>Nie można indeksować dokumentu
+Dokument został odczytany i przetworzony, ale indeksator nie mógł go dodać do indeksu wyszukiwania. Przyczyną może być:
+
+| Przyczyna | Przykład | Działanie |
+| --- | --- | --- |
+| Pole zawiera termin, który jest zbyt duży | Termin w dokumencie jest większy niż [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Można uniknąć tego ograniczenia, upewniając się, że pole nie jest skonfigurowane jako możliwe do filtrowania, tworzenia i sortowania.
+| Dokument jest zbyt duży, aby można go było zindeksować | Dokument jest większy niż [Maksymalny rozmiar żądania interfejsu API](search-limits-quotas-capacity.md#api-request-limits) | [Jak indeksować duże zestawy danych](search-howto-large-index.md)
 
 ### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Dane wejściowe umiejętności "languageCode" zawierają następujące kody języka: "X, Y, Z", co najmniej jeden z nich jest nieprawidłowy.
 Co najmniej jedna wartość przeniesiona do opcjonalnego wejścia `languageCode` z poziomu umiejętności podrzędnej nie jest obsługiwana. Taka sytuacja może wystąpić, jeśli przekazujesz dane wyjściowe [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) do kolejnych umiejętności, a dane wyjściowe składają się z większej liczby języków niż jest to obsługiwane w tych umiejętnościach podrzędnych.
@@ -109,6 +124,18 @@ Jeśli wystąpi błąd przekroczenia limitu czasu z utworzoną niestandardową u
 ```
 
 Maksymalna wartość, którą można ustawić dla parametru `timeout` wynosi 230 sekund.  Jeśli niestandardowa umiejętność nie będzie działać spójnie w ciągu 230 sekund, możesz rozważyć zmniejszenie `batchSize` niestandardowej umiejętności, dzięki czemu będzie ona mogła przetwarzać mniejsze dokumenty w ramach jednego wykonania.  Jeśli ustawiono już `batchSize` do 1, należy ponownie napisać umiejętność, aby można było wykonać ją w mniej niż 230 sekund lub w inny sposób podzielić ją na wiele umiejętności niestandardowych, tak aby czas wykonywania dla każdej pojedynczej umiejętności niestandardowej wynosił maksymalnie 230 sekund. Zapoznaj się z dokumentacją dotyczącą [niestandardowych umiejętności](cognitive-search-custom-skill-web-api.md) , aby uzyskać więcej informacji.
+
+### <a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>Nie można "`MergeOrUpload`" | dokument "`Delete`" w indeksie wyszukiwania
+
+Dokument został odczytany i przetworzony, ale indeksator nie mógł go dodać do indeksu wyszukiwania. Przyczyną może być:
+
+| Przyczyna | Przykład | Działanie |
+| --- | --- | --- |
+| Termin w dokumencie jest większy niż [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Pole zawiera termin, który jest zbyt duży | Można uniknąć tego ograniczenia, upewniając się, że pole nie jest skonfigurowane jako możliwe do filtrowania, tworzenia i sortowania.
+| Dokument jest większy niż [Maksymalny rozmiar żądania interfejsu API](search-limits-quotas-capacity.md#api-request-limits) | Dokument jest zbyt duży, aby można go było zindeksować | [Jak indeksować duże zestawy danych](search-howto-large-index.md)
+| Problem z nawiązaniem połączenia z docelowym indeksem (który utrzymuje się po ponownych próbach), ponieważ usługa jest w innym załadowaniu, na przykład w przypadku wykonywania zapytań lub indeksowania. | Nie można ustanowić połączenia w celu zaktualizowania indeksu. Usługa wyszukiwania jest w dużym obciążeniu. | [Skalowanie w górę usługi wyszukiwania](search-capacity-planning.md)
+| Trwa poprawianie usługi wyszukiwania w ramach aktualizacji usługi lub jest ona w trakcie ponownej konfiguracji topologii. | Nie można ustanowić połączenia w celu zaktualizowania indeksu. Usługa wyszukiwania jest obecnie wyłączona/usługa wyszukiwania przechodzi do przejścia. | Skonfiguruj usługę z co najmniej 3 replikami na 99,9% dostępności na potrzeby [dokumentacji umowy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
+| Niepowodzenie w źródłowym zasobów obliczeniowych/sieciowych (rzadkich) | Nie można ustanowić połączenia w celu zaktualizowania indeksu. Wystąpił nieznany błąd. | Skonfiguruj indeksatory do [uruchomienia zgodnie z harmonogramem](search-howto-schedule-indexers.md) , aby przeprowadzić pobieranie z niepowodzenia.
 
 ##  <a name="warnings"></a>Ostrzeżeni
 Ostrzeżenia nie zatrzymują indeksowania, ale wskazują warunki, które mogą spowodować nieoczekiwane wyniki. Niezależnie od tego, czy podejmujesz akcję, czy nie zależą od danych i Twojego scenariusza.

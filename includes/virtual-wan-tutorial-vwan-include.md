@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/27/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b2549abd3a4f87de99efa9a916e39b99c6fc8747
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c1f83303c3f186b37c1c5c06e61c2263420c0cfa
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183134"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028046"
 ---
-1. Przejdź do strony wirtualne sieci WAN. Jest jednym ze sposobów, aby przejść do strony, aby przejść do **wszystkich usług**, a następnie wyszukaj wirtualne sieci WAN.
-1. Kliknij polecenie **+Dodaj**, aby otworzyć stronę **Tworzenie sieci WAN**.
-1. Na **tworzenie sieci WAN** strony, wypełnij następujące pola:
+1. Przejdź do strony wirtualna sieć WAN. W portalu kliknij pozycję **+Utwórz zasób**. W polu wyszukiwania wpisz **wirtualną sieć WAN** i wybierz pozycję Wprowadź.
+1. Z wyników wybierz pozycję **wirtualna sieć WAN** . Na stronie wirtualna sieć WAN kliknij pozycję **Utwórz**.
+1. Na stronie **Tworzenie sieci WAN** wypełnij następujące pola:
 
-   * **Nazwa** — wybierz nazwę sieci WAN.
+   * **Nazwa** — wpisz nazwę, która ma zostać wywołana w sieci WAN.
    * **Subskrypcja** — wybierz subskrypcję, która ma być używana.
    * **Grupa zasobów**— utwórz nową lub użyj istniejącej.
    * **Lokalizacja zasobu** — wybierz lokalizację zasobu z listy rozwijanej. Sieć WAN to zasób globalny i nie znajduje się w konkretnym regionie. Konieczne jest jednak wybranie regionu, aby łatwiej zarządzać utworzonym zasobem sieci WAN i go lokalizować.

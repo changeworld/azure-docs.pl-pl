@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 657c23ad410d7aade17b3153f02ba0138edf4250
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5146675b6eefd11fc1e6875ed9009ece92753ffb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825085"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028093"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Wdrażanie wtyczki CNI w usłudze Azure Virtual Network
 
@@ -95,10 +95,10 @@ Wykonaj następujące czynności, aby zainstalować wtyczkę na każdej maszynie
 1. [Pobierz i zainstaluj wtyczkę](#download-and-install-the-plug-in).
 2. Wstępnie przydziel na każdej maszynie wirtualnej pulę adresów IP sieci wirtualnej, zawierającą adresy IP, które zostaną przypisane do zasobników. Każda maszyna wirtualna ma prywatny adres IP podstawowej sieci wirtualnej na każdym interfejsie sieciowym. Pula adresów IP dla zasobników zostanie dodana jako adresy pomocnicze (*ipconfigs*) w interfejsie sieciowym maszyny wirtualnej przy użyciu jednej z następujących opcji:
 
-   - **Interfejs wiersza polecenia**: [przypisać wiele adresów IP przy użyciu wiersza polecenia platformy Azure](virtual-network-multiple-ip-addresses-cli.md)
-   - **Program PowerShell**: [przypisać wiele adresów IP przy użyciu programu PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portal**: [przypisać wiele adresów IP przy użyciu witryny Azure portal](virtual-network-multiple-ip-addresses-portal.md)
-   - **Szablon usługi Azure Resource Manager**: [przypisać wiele adresów IP przy użyciu szablonów](virtual-network-multiple-ip-addresses-template.md)
+   - **Interfejs wiersza polecenia**: [przypisywanie wielu adresów IP za pomocą interfejsu wiersza polecenia platformy Azure](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [przypisywanie wielu adresów IP przy użyciu programu PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portal**: [przypisywanie wielu adresów IP przy użyciu Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
+   - **Szablon Azure Resource Manager**: [przypisywanie wielu adresów IP przy użyciu szablonów](virtual-network-multiple-ip-addresses-template.md)
 
    Upewnij się, że dodano wystarczająco dużo adresów IP dla wszystkich zasobników, które chcesz uruchomić na maszynie wirtualnej.
 
@@ -157,12 +157,12 @@ Plik konfiguracji wtyczki CNI jest opisany w formacie JSON. Jego domyślna lokal
 
 #### <a name="settings-explanation"></a>Wyjaśnienie ustawień
 
-- **cniVersion**: Dodatki plug-in wtyczki Azure wirtualnych sieci CNI obsługi wersji 0.3.0 i 0.3.1 z [Specyfikacja CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md).
-- **name**: Nazwa sieci. Tę właściwość można ustawić na dowolną unikatową wartość.
-- **Typ**: Nazwa wtyczki sieci. Ustaw *sieci wirtualnej platformy azure*.
-- **Tryb**: Tryb działania. To pole jest opcjonalne. Jedynym obsługiwanym trybem jest tryb „bridge”. Aby uzyskać więcej informacji, zobacz [tryby operacyjne](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
-- **Mostek**: Nazwa most, która będzie służyć do łączenia z kontenerów w sieci wirtualnej. To pole jest opcjonalne. Jeśli pole zostanie pominięte, wtyczka automatycznie wybierze unikatową nazwę na podstawie indeksu interfejsu głównego.
-- **Typ usługi IPAM**: Nazwa wtyczki usługi IPAM. Zawsze ustawiony na wartość *azure-sieć wirtualna ipam*.
+- **cniVersion**: dodatki plug-in platformy Azure Virtual Network CNI obsługują wersje 0.3.0 i 0.3.1 [specyfikacji CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md).
+- **name**: nazwa sieci. Tę właściwość można ustawić na dowolną unikatową wartość.
+- **type**: nazwa wtyczki sieciowej. Ustaw tu wartość *azure-vnet*.
+- **mode**: tryb działania. To pole jest opcjonalne. Jedynym obsługiwanym trybem jest tryb „bridge”. Aby uzyskać więcej informacji, zobacz [Tryby operacyjne](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **bridge**: nazwa mostka, który będzie służył do łączenia z kontenerów w siecią wirtualną. To pole jest opcjonalne. Jeśli pole zostanie pominięte, wtyczka automatycznie wybierze unikatową nazwę na podstawie indeksu interfejsu głównego.
+- **ipam type**: nazwa wtyczki IPAM. Zawsze powinna być tu ustawiona wartość *azure-vnet-ipam*.
 
 ## <a name="download-and-install-the-plug-in"></a>Pobieranie i instalowanie wtyczki
 

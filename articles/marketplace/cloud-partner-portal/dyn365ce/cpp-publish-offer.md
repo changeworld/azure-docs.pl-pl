@@ -1,44 +1,21 @@
 ---
-title: Publikowanie Dynamics 365 Customer Engagement aplikacji oferty | Portal Azure Marketplace
-description: W tym artykule opisano proces i kroki do publikowania Dynamics 365 Customer Engagement aplikacji oferty w witrynie Marketplace usługi AppSource.
+title: Publikowanie oferty aplikacji Dynamics 365 dla programu Customer Engagement | Portal Azure Marketplace
+description: Artykuł z przestarzałych CPP, połączony z komputerem "w tym artykule opisano proces i kroki publikowania aplikacji Dynamics 365 for Customer Engagement w witrynie AppSource Marketplace".
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Dynamics 365 for Customer Engagement
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/28/2018
-ms.author: pabutler
-ms.openlocfilehash: 65df08d5fa2b7e4e7f6654f520f9caacc696f7c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-chjen
+ms.openlocfilehash: c1f38b046b9bd9bc9e7972656caf51d0ad1d8acc
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942312"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033924"
 ---
-# <a name="publish-a-dynamics-365-for-customer-engagement-offer"></a>Publikowanie Dynamics 365 Customer Engagement oferty
+# <a name="publish-a-dynamics-365-for-customer-engagement-offer"></a>Publikowanie oferty usługi Dynamics 365 dla programu Customer Engagement
 
-Po utworzeniu nowej oferty, podając informacje o **nowa oferta** strony, możesz opublikować ofertę. Wybierz **Publikuj** aby rozpocząć proces publikowania.
+[Portal Cloud partner](https://cloudpartner.azure.com/) nie obsługuje już tworzenia ofert programu Dynamics 365 Customer Engagement i zarządzania nimi. Zamiast tego ta funkcja została przeniesiona do [portalu Centrum partnerskiego](https://partner.microsoft.com/)firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej usługi Dynamics 365 na potrzeby zaangażowania klienta & oferty usługi powerapps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-
-Na poniższym diagramie przedstawiono główne kroki w procesie publikowania w celu skorzystania z oferty "Przejdź na żywo".
-
-  ![Kroki publikowania oferty](./media/offer-publishing-steps.png)
-
-## <a name="detailed-description-of-publishing-steps"></a>Szczegółowy opis kroków publikowania
-
-W poniższej tabeli opisano każdy krok publikowania, za pomocą szacowany czas (maksimum) do wykonania poszczególnych kroków.
-W poniższej tabeli opisano każdy krok publikowania. Szacowany czas do zakończenia każdego kroku jest również podana.
-
-
-|    Krok publikowania             |   Time      |   Opis                                                              |
-|  -------------------           | --------    | ---------------                                                            |
-| Weryfikowanie wymagań wstępnych         | 15 min   | Oferuje informacje i ofertę, ustawienia zostaną zweryfikowane.                        |
-| Certyfikacja                  | 1 tydzień | Oferty są analizowane przez zespół certyfikacji platformy Azure. Oferta jest skanowany w poszukiwaniu wirusów, złośliwego oprogramowania, bezpieczeństwo, zgodność i problemy z zabezpieczeniami. Oferta jest sprawdzenie spełnia kryteria kwalifikacyjne. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](./cpp-prerequisites.md). Ile opinii jest, że problem zostanie znaleziony. |
-| Tworzenie pakietów | 1 godzina  | Zasoby techniczne oferty są pakowane do użytku klienta i systemy potencjalnych klientów są konfigurowane i konfiguracji. |
-|  Wyloguj się wydawcy             |  -        | Wydawcy ostateczny Przegląd i potwierdzenie oferty przejdzie na żywo. Sprawdź, czy spełnia wszystkie wymagania dotyczące można wdrożyć swoją ofertę w wybranych subskrypcjach (w krokach informacji oferty).  Wybierz **Go Live** dzięki ofercie przejściem do następnego kroku. |
-| Tworzenie pakietów                 | 1 godzina | Zakończono oferty jest replikowana w regionach i systemów produkcyjnych w portalu marketplace. | 
-| Na żywo                           | 4 dni |Oferta jest zwolniony, replikowane do określonych regionów wymagane i udostępnione publicznie. |
-|  |  |  |
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Zezwalaj na maksymalnie 10 dni roboczych. proces publikowania zakończyć i udostępnieniu oferty. Po zakończeniu procesu publikowania, oferty, zostaną wyświetlone w [Microsoft AppSource Marketplace](https://appsource.microsoft.com/marketplace/apps/).
+Przed utworzeniem nowej oferty Dynamics 365 for Customer Engagement należy przeczytać temat [Tworzenie konta Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , a następnie otworzyć [komercyjny pulpit nawigacyjny Marketplace](https://partner.microsoft.com/dashboard/directory) z wybraną stroną **Przegląd** . Postępuj zgodnie z instrukcjami w temacie [Create a New Dynamics 365 for Customer Engagement & powerapps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) , aby utworzyć ofertę.

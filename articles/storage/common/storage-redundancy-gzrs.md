@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 99def93a20a365dd0ff5fc27e9c52909ee30bd83
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720357"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028138"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
@@ -53,7 +53,7 @@ Podczas tworzenia konta magazynu należy określić sposób replikowania danych 
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Korzystanie z usługi RA-GZRS w celu zapewnienia wysokiej dostępności
 
-Po włączeniu usługi RA-GZRS dla konta magazynu dane można odczytać z pomocniczego punktu końcowego oraz z podstawowego punktu końcowego dla konta magazynu. Pomocniczy punkt końcowy dołącza sufiks *— pomocniczy*@no__t — 1To nazwę konta. Na przykład jeśli podstawowy punkt końcowy Blob service to @ no__t-0, wówczas pomocniczy punkt końcowy to @ no__t-1. Klucze dostępu dla konta magazynu są takie same dla podstawowych i pomocniczych punktów końcowych.
+Po włączeniu usługi RA-GZRS dla konta magazynu dane można odczytać z pomocniczego punktu końcowego oraz z podstawowego punktu końcowego dla konta magazynu. Pomocniczy punkt końcowy dołącza sufiks *— pomocniczy* do nazwy konta. Na przykład jeśli podstawowy punkt końcowy Blob service to @ no__t-0, wówczas pomocniczy punkt końcowy to @ no__t-1. Klucze dostępu dla konta magazynu są takie same dla podstawowych i pomocniczych punktów końcowych.
 
 Aby skorzystać z funkcji RA-GZRS w przypadku awarii regionalnej, musisz zaprojektować aplikację z wyprzedzeniem, aby obsłużyć ten scenariusz. Aplikacja powinna odczytywać i zapisywać w podstawowym punkcie końcowym, ale przełączyć się do korzystania z pomocniczego punktu końcowego w przypadku, gdy region podstawowy stał się niedostępny. Aby uzyskać wskazówki dotyczące projektowania wysokiej dostępności za pomocą usługi RA-GZRS, zobacz [projektowanie wysoce dostępnych aplikacji przy użyciu usługi RA-GZRS lub RA-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
@@ -125,7 +125,7 @@ Należy pamiętać o następujących ograniczeniach migracji na żywo:
 - Twoje konto musi zawierać dane.
 - Dane można migrować tylko w tym samym regionie.
 - Tylko standardowe typy kont magazynu obsługują migrację na żywo. Konta magazynu w warstwie Premium muszą być migrowane ręcznie.
-- Migracja na żywo z konta GZRS lub RA-GZRS do konta LRS, GRS lub RA-GRS nie jest obsługiwana. Konieczne będzie ręczne przeniesienie danych na nowe lub istniejące konto magazynu.
+- Migracja na żywo z konta GZRS lub RA-GZRS do konta LRS, GRS lub RA-GRS nie jest obsługiwana. Konieczne będzie ręczne przeniesienie danych do nowego lub istniejącego konta magazynu.
 - Możesz zażądać migracji na żywo z usługi RA-GRS do RA-GZRS. Migrowanie z usługi RA-GRS do usługi GZRS nie jest jednak obsługiwane. W takim przypadku należy zażądać migracji na żywo do RA-GZRS, a następnie ręcznie przekonwertować konto magazynu, aby użyć GZRS.
 - Dyski zarządzane obsługują tylko LRS i nie można ich migrować do GZRS lub RA-GZRS. Aby uzyskać integrację z zestawami dostępności, zobacz [wprowadzenie do usługi Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
 - Można przechowywać migawki i obrazy dla SSD w warstwie Standardowa Managed Disks HDD w warstwie Standardowa magazynu i [wybierać między opcjami LRS, ZRS, GZRS i RA-GZRS](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -133,18 +133,18 @@ Należy pamiętać o następujących ograniczeniach migracji na żywo:
 
 Aby zażądać migracji na żywo, użyj [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). W portalu wybierz konto magazynu do migracji do GZRS lub RA-GZRS i wykonaj następujące instrukcje:
 
-1. Wybierz pozycję **nowe żądanie obsługi**.
-2. Wypełnij **podstawowe**informacje @no__t 1based na temat informacji o koncie. W @no__t **usługi**— 1section wybierz pozycję **zarządzanie kontem magazynu** and Określ konto, które ma zostać zmigrowane.
-3. Wybierz pozycję  **Dalej**.
-4. Określ następujące wartości **problemu** section:
+1. Wybierz pozycję **nowe żądanie obsługi**.
+2. Wypełnij **podstawowe** informacje na podstawie informacji o koncie. W sekcji **Usługa** wybierz pozycję **Zarządzanie kontem magazynu** i określ konto, które ma zostać zmigrowane.
+3. Wybierz opcję **Dalej**.
+4. Określ następujące wartości w sekcji **problem** :
     - **Ważność**: pozostaw wartość domyślną równą-is.
-    - **Typ problemu**: wybierz pozycję **migracja danych**.
-    - **Kategoria**: wybierz pozycję **MIGRUJ do (Ra-) GZRS w regionie**.
-    - **Title**: wpisz opisowy tytuł, na przykład **(Ra-) GZRS migracji konta**.
-    - **Szczegóły**: wpisz dodatkowe szczegóły w **szczegółach** box, na przykład "chcę przeprowadzić migrację do GZRS z [LRS, GRS] w regionie \_ @ no__t-4". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w regionie \_ @ no__t-1".
-5. Wybierz pozycję  **Dalej**.
-6. Sprawdź, czy informacje kontaktowe są poprawne na stronie **informacje kontaktowe** blade.
-7. Wybierz pozycję  **Utwórz**.
+    - **Typ problemu**: wybierz pozycję **migracja danych**.
+    - **Kategoria**: wybierz pozycję **MIGRUJ do (Ra-) GZRS w regionie**.
+    - **Title**: wpisz opisowy tytuł, na przykład **(Ra-) GZRS migracji konta**.
+    - **Szczegóły**: wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład "Chcę migrować do GZRS z [LRS, GRS] w regionie \_ @ no__t-3". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w regionie \_ @ no__t-1".
+5. Wybierz opcję **Dalej**.
+6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje kontaktowe** .
+7. Wybierz pozycję **Utwórz**.
 
 Przedstawiciel działu pomocy technicznej skontaktuje się z Tobą, aby zapewnić pomoc.
 

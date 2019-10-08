@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: c92dd48e81512b79fb72cbb751303504d1036594
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71982036"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028678"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Konfigurowanie laboratorium do uczenia się klasy działanie hakerskie etycznych 
 W tym artykule opisano sposób konfigurowania klasy, która koncentruje się na dowodowych etycznej działanie hakerskie. Testowanie penetracji, metoda stosowana przez społeczność etyczną działanie hakerskie, występuje, gdy ktoś próbuje uzyskać dostęp do systemu lub sieci w celu zademonstrowania luk w zabezpieczeniach. 
@@ -28,11 +28,11 @@ W klasie etycznej działanie hakerskie studenci mogą uczyć się nowoczesnych t
 Ten artykuł zawiera dwa główne sekcje. W pierwszej sekcji opisano, jak utworzyć laboratorium klasowe. Druga sekcja zawiera informacje na temat tworzenia maszyny szablonu z włączoną funkcją wirtualizacji zagnieżdżonej oraz wymaganych narzędzi i obrazów. W takim przypadku obraz Metasploitable i obraz systemu Linux w systemie Kali na maszynie z włączoną funkcją Hyper-V do obsługi obrazów.
 
 ## <a name="lab-configuration"></a>Konfiguracja laboratorium
-Aby skonfigurować to laboratorium, musisz mieć subskrypcję platformy Azure, aby rozpocząć pracę. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) . Po otrzymaniu subskrypcji platformy Azure Możesz utworzyć nowe konto laboratorium w Azure Lab Services lub użyć istniejącego konta. Zapoznaj się z poniższym samouczkiem dotyczącym tworzenia nowego konta laboratorium: [Samouczek dotyczący konfigurowania konta laboratorium](tutorial-setup-lab-account.md).
+Aby skonfigurować to laboratorium, musisz mieć subskrypcję platformy Azure, aby rozpocząć pracę. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/). Po otrzymaniu subskrypcji platformy Azure Możesz utworzyć nowe konto laboratorium w Azure Lab Services lub użyć istniejącego konta. Zapoznaj się z poniższym samouczkiem dotyczącym tworzenia nowego konta laboratorium: [Samouczek dotyczący konfigurowania konta laboratorium](tutorial-setup-lab-account.md).
 
 Postępuj zgodnie z [tym samouczkiem](tutorial-setup-classroom-lab.md) , aby utworzyć nowe laboratorium, a następnie Zastosuj następujące ustawienia:
 
-| Rozmiar maszyny wirtualnej | Obraz |
+| Rozmiar maszyny wirtualnej | Image (Obraz) |
 | -------------------- | ----- | 
 | Średni (Wirtualizacja zagnieżdżona) | System Windows Server 2019 Datacenter |
 
@@ -78,7 +78,7 @@ Kali to dystrybucja systemu Linux obejmująca narzędzia do testowania i inspekc
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Skonfiguruj zagnieżdżoną maszynę wirtualną przy użyciu obrazu Metasploitable  
 Obraz Rapid7 Metasploitable to obraz skonfigurowany do celów z lukami w zabezpieczeniach. Ten obraz będzie używany do testowania i znajdowania problemów. Poniższe instrukcje przedstawiają sposób użycia wstępnie utworzonego obrazu Metasploitable. Jeśli jednak jest wymagana nowsza wersja obrazu Metasploitable, zobacz [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3).
 
-1. Przejdź do [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html). Wypełnij formularz, aby pobrać obraz, a następnie wybierz przycisk **Prześlij** .
+1. Przejdź do strony [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html). Wypełnij formularz, aby pobrać obraz, a następnie wybierz przycisk **Prześlij** .
 1. Wybierz przycisk **Pobierz Metasploitable teraz** .
 1. Po pobraniu pliku zip Wyodrębnij plik zip i Zapamiętaj lokalizację.
 1. Przekonwertuj wyodrębniony plik VMDK na plik VHDX, aby można było używać go z funkcją Hyper-V. Aby to zrobić, Otwórz program PowerShell z uprawnieniami administracyjnymi i przejdź do folderu, w którym znajduje się plik VMDK, i wykonaj następujące instrukcje:
@@ -128,9 +128,13 @@ Szablon jest teraz aktualizowany i zawiera obrazy potrzebne do testowania dział
 ## <a name="cost"></a>Koszt  
 Jeśli chcesz oszacować koszt tego laboratorium, możesz użyć poniższego przykładu: 
  
-W przypadku klasy 25 studentów z upływem 20 godzin planowanego czasu zajęć i 10 godzin przydziału dla prac domowych lub przydziałów cena za laboratorium to: 25 studentów * (20 + 10) godz. * 55 jednostek laboratoryjnych * 0,01 USD za godzinę = 412,50. Aby uzyskać więcej informacji na temat cen, zobacz [Cennik usługi Azure Lab Services](https://azure.microsoft.com/pricing/details/lab-services/).
+W przypadku klasy 25 studentów z upływem 20 godzin planowanego czasu zajęć i 10 godzin przydziału dla prac domowych lub przydziałów, Cena za laboratorium to: 
 
-## <a name="conclusion"></a>Wniosek
+25 studentów * (20 + 10) godz. * 55 jednostek laboratoryjnych * 0,01 USD za godzinę = 412,50 USD. 
+
+Aby uzyskać więcej informacji na temat cen, zobacz [Cennik usługi Azure Lab Services](https://azure.microsoft.com/pricing/details/lab-services/).
+
+## <a name="conclusion"></a>Podsumowanie
 W tym artykule omówiono procedurę tworzenia laboratorium dla klasy działanie hakerskie etycznej. Obejmuje to kroki konfigurowania zagnieżdżonej wirtualizacji na potrzeby tworzenia dwóch maszyn wirtualnych w ramach maszyny wirtualnej hosta w celu przetestowania.
 
 ## <a name="next-steps"></a>Następne kroki

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: fdb34173e0ca52f57a004e3a5b4a076e423ff5bd
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 6d61b94a50716966ac0b3c75551ddd9d8e291965
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240100"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024460"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>Samouczek: Wykrywaj zagrożenia wbudowane
+# <a name="tutorial-detect-threats-out-of-the-box"></a>Samouczek: wykrywanie zagrożeń wbudowanych
 
 
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ ms.locfileid: "71240100"
 > Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Po [nawiązaniu połączenia ze źródłami](quickstart-onboard.md) danych z platformą Azure — użytkownik chce otrzymywać powiadomienia o wystąpieniu podejrzanych sytuacji. Aby można było to zrobić, wskaźnik na platformie Azure udostępnia gotowy do użycia wbudowane szablony. Te szablony zostały zaprojektowane przez zespół ekspertów ds. zabezpieczeń i analityków firmy Microsoft na podstawie znanych zagrożeń, typowych wektorów ataków oraz podejrzanych łańcuchów eskalacji działań. Po włączeniu tych szablonów zostaną automatycznie wyszukane wszystkie działania, które wyglądają podejrzanie w danym środowisku. Wiele szablonów można dostosować w taki sposób, aby wyszukiwać lub odfiltrować działania, zgodnie z potrzebami. Alerty wygenerowane przez te szablony spowodują utworzenie zdarzeń, które można przypisać i zbadać w danym środowisku.
+Po [nawiązaniu połączenia ze źródłami danych](quickstart-onboard.md)@no__t 1To na platformie Azure — chcesz otrzymywać powiadomienia o wystąpieniu podejrzanych sytuacji. Aby można było to zrobić, wskaźnik na platformie Azure udostępnia gotowy do użycia wbudowane szablony. Te szablony zostały zaprojektowane przez zespół ekspertów ds. zabezpieczeń i analityków firmy Microsoft na podstawie znanych zagrożeń, typowych wektorów ataków oraz podejrzanych łańcuchów eskalacji działań. Po włączeniu tych szablonów zostaną automatycznie wyszukane wszystkie działania, które wyglądają podejrzanie w danym środowisku. Wiele szablonów można dostosować w taki sposób, aby wyszukiwać lub odfiltrować działania, zgodnie z potrzebami. Alerty wygenerowane przez te szablony spowodują utworzenie zdarzeń, które można przypisać i zbadać w danym środowisku.
 
 Ten samouczek ułatwia wykrywanie zagrożeń przy użyciu platformy Azure — wskaźnik:
 
@@ -39,7 +39,7 @@ Ten samouczek ułatwia wykrywanie zagrożeń przy użyciu platformy Azure — ws
 
 ## <a name="about-out-of-the-box-detections"></a>Informacje o wykryciuch wbudowanych
 
-Aby wyświetlić wszystkie gotowe do użycia wykrycia, przejdź do pozycji **Analiza** , a następnie pozycję **Szablony reguł**. Ta karta zawiera wszystkie wbudowane reguły kontrolki Azure — wskaźnik.
+Aby wyświetlić wszystkie gotowe do użycia wykrycia, przejdź do pozycji **Analiza** , a następnie pozycję **Szablony reguł**. Ta karta zawiera wszystkie wbudowane reguły kontrolki Azure — wskaźnik.
 
    ![Używanie wbudowanych wykryć do znajdowania zagrożeń przy użyciu platformy Azure — wskaźnik](media/tutorial-detect-built-in/view-oob-detections.png)
 
@@ -58,7 +58,7 @@ Dostępne są następujące typy szablonów:
  
 1. Spowoduje to otwarcie Kreatora tworzenia reguły na podstawie wybranego szablonu. Wszystkie szczegóły są wypełniane, a dla **reguł zaplanowanych** lub **reguł zabezpieczeń firmy Microsoft**można dostosować logikę w celu lepszego dostosowania do organizacji lub utworzyć dodatkowe reguły na podstawie wbudowanego szablonu. Po wykonaniu kroków opisanych w Kreatorze tworzenia reguł i zakończeniu tworzenia reguły na podstawie szablonu Nowa reguła zostanie wyświetlona na karcie **aktywne reguły** .
 
-Aby uzyskać więcej informacji na temat pól w kreatorze, zobacz [samouczek: Tworzenie niestandardowych reguł analitycznych w celu wykrywania](tutorial-detect-threats-custom.md)podejrzanych zagrożeń.
+Aby uzyskać więcej informacji na temat pól w kreatorze, zobacz [Samouczek: Tworzenie niestandardowych reguł analitycznych w celu wykrywania podejrzanych zagrożeń](tutorial-detect-threats-custom.md).
 
 
 

@@ -6,14 +6,14 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710041"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024564"
 ---
-# <a name="add-storage-targets"></a>Dodaj cele magazynu
+# <a name="add-storage-targets"></a>Dodawanie lokalizacji docelowych magazynu
 
 *Cele magazynu* są magazynem zaplecza dla plików, do których dostęp jest uzyskiwany za pomocą wystąpienia pamięci podręcznej platformy Azure HPC. Można dodać magazyn systemu plików NFS (taki jak lokalny system sprzętowy) lub zapisać dane w usłudze Azure Blob.
 
@@ -37,13 +37,16 @@ Aby zdefiniować kontener obiektów blob platformy Azure, wprowadź te informacj
 
 ![zrzut ekranu przedstawiający stronę Dodawanie miejsca docelowego magazynu, wypełniony informacjami o nowym obiekcie docelowym usługi Azure Blob Storage](media/hpc-cache-add-blob.png)
 
-<!-- need to replace screenshot after note text is updated with both required RBAC roles -->
+<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **Nazwa docelowego magazynu** — Ustaw nazwę identyfikującą ten element docelowy magazynu w pamięci podręcznej platformy Azure HPC.
 * **Typ docelowy** — wybierz **obiekt BLOB**.
 * **Konto magazynu** — wybierz konto z kontenerem, którego ma dotyczyć odwołanie.
 
   Musisz autoryzować wystąpienie pamięci podręcznej, aby uzyskać dostęp do konta magazynu, zgodnie z opisem w temacie [Dodawanie ról dostępu](#add-the-access-control-roles-to-your-account).
+
+  Aby uzyskać informacje o rodzaju konta magazynu, którego można użyć, przeczytaj temat [wymagania dotyczące usługi BLOB Storage](hpc-cache-prereqs.md#blob-storage-requirements).
+
 * **Kontener magazynu** — wybierz kontener obiektów BLOB dla tego obiektu docelowego.
 
 * **Ścieżka do wirtualnej przestrzeni nazw** — Ustaw ścieżkę pliku dla klienta dla tego miejsca docelowego magazynu. Przeczytaj temat [Konfigurowanie zagregowanej przestrzeni nazw](hpc-cache-namespace.md) , aby dowiedzieć się więcej o funkcji wirtualnej przestrzeni nazw.
@@ -54,7 +57,7 @@ Po zakończeniu kliknij przycisk **OK** , aby dodać miejsce docelowe magazynu.
 
 Pamięć podręczna Azure HPC używa [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) do autoryzacji aplikacji pamięci podręcznej w celu uzyskania dostępu do konta magazynu dla obiektów docelowych usługi Azure Blob Storage.
 
-Właściciel konta magazynu musi jawnie dodać rolę współautor danych [współautor konta magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) i [obiektu blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) dla użytkownika "StorageCache Resource Provider".
+Właściciel konta magazynu musi jawnie dodać rolę współautor danych [współautor konta magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) i [obiektu blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) dla użytkownika "dostawca zasobów pamięci podręcznej usługi HPC".
 
 Można to zrobić wcześniej lub przez kliknięcie linku na stronie, w którym można dodać obiekt docelowy magazynu obiektów BLOB.
 
@@ -68,7 +71,10 @@ Procedura dodawania ról RBAC:
 
 1. W polu **Przypisz dostęp do** pozostaw wartość domyślną wybrana ("użytkownik, Grupa lub nazwa główna usługi").  
 
-1. W polu **Wybierz** Wyszukaj ciąg "storagecache".  Ten ciąg powinien być zgodny z jednym podmiotem zabezpieczeń o nazwie "dostawca zasobów pamięci podręcznej HPC". Kliknij ten podmiot zabezpieczeń, aby go wybrać.
+1. W polu **Wybierz** Wyszukaj ciąg "HPC".  Ten ciąg powinien być zgodny z jedną jednostką usługi o nazwie "dostawca zasobów pamięci podręcznej HPC". Kliknij ten podmiot zabezpieczeń, aby go wybrać.
+
+   > [!NOTE]
+   > Jeśli wyszukiwanie "HPC" nie działa, spróbuj użyć zamiast niego ciągu "storagecache". Użytkownicy, którzy dołączeli do wcześniejszej wersji zapoznawczej, muszą używać starszej nazwy dla nazwy głównej usługi.
 
 1. Kliknij przycisk **Zapisz** , aby dodać przypisanie roli do konta magazynu.
 
