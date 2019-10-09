@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948177"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035113"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Dostrajanie wydajności z uporządkowanym klastrowanym indeksem magazynu kolumn  
 
@@ -43,7 +43,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> W uporządkowanej tabeli WIK nowe dane, które wynikają z operacji ładowania DML lub danych, nie są automatycznie sortowane.  Użytkownicy mogą odbudować uporządkowaną WIK, aby posortować wszystkie dane w tabeli.  
+> W uporządkowanej tabeli WIK nowe dane, które wynikają z operacji ładowania DML lub danych, nie są automatycznie sortowane.  Użytkownicy mogą odbudować uporządkowaną WIK, aby posortować wszystkie dane w tabeli.  W Azure SQL Data Warehouse ponowne KOMPILOWAnie indeksu magazynu kolumn jest operacją offline.  W przypadku partycjonowanej tabeli ponowne KOMPILOWAnie wykonuje jedną partycję w danym momencie.  Dane w partycji, która jest ponownie skompilowana, są w trybie offline i niedostępne do momentu ukończenia odbudowy dla tej partycji. 
 
 ## <a name="query-performance"></a>Wydajność zapytań
 
@@ -84,11 +84,17 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ## <a name="data-loading-performance"></a>Wydajność ładowania danych
 
-Wydajność ładowania danych do uporządkowanej tabeli WIK jest podobna do ładowania danych do tabeli partycjonowanej.  
-Ładowanie danych do uporządkowanej tabeli WIK może zająć więcej czasu niż ładowanie danych do nieuporządkowanej tabeli WIK z powodu sortowania danych.  
+Wydajność ładowania danych do uporządkowanej tabeli WIK jest podobna do tabeli partycjonowanej.  Ładowanie danych do uporządkowanej tabeli WIK może trwać dłużej niż nieuporządkowana tabela WIK z powodu operacji sortowania danych, jednak kwerendy mogą działać szybciej, a następnie z uporządkowaną WIK.  
 
 Poniżej przedstawiono przykładowe porównanie wydajności ładowania danych do tabel z różnymi schematami.
-![Performance_comparison_data_loading @ no__t-1
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+
+
+Oto przykładowe porównanie wydajności zapytań między WIK i uporządkowaną WIK.
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/occi_query_performance.png)
+
  
 ## <a name="reduce-segment-overlapping"></a>Zmniejsz nakładające się segmenty
 
@@ -116,7 +122,7 @@ Tworzenie uporządkowanej WIK jest operacją offline.  W przypadku tabel bez par
 1.  Utwórz partycje w docelowej dużej tabeli (zwanej tabelą A).
 2.  Tworzenie pustej uporządkowanej tabeli WIK (zwanej tabelą B) za pomocą tej samej tabeli i schematu partycji co tabela A.
 3.  Przełącz jedną partycję z tabeli A na tabelę B.
-4.  Uruchom polecenie ALTER INDEX < Ordered_CCI_Index > Skompiluj ponownie w tabeli B w celu odbudowania partycji przełączonej.  
+4.  Uruchom polecenie ALTER INDEX < Ordered_CCI_Index > Rebuild PARTITION = < Partition_ID > w tabeli B w celu odbudowania partycji przełączonej.  
 5.  Powtórz kroki 3 i 4 dla każdej partycji w tabeli A.
 6.  Po przełączeniu wszystkich partycji z tabeli A do tabeli B i zostały one ponownie skompilowane, Porzuć tabelę A i Zmień nazwę tabeli B na tabelę A. 
 

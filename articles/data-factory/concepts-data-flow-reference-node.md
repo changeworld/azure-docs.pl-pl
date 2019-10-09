@@ -1,29 +1,29 @@
 ---
-title: Mapowanie węzeł odniesienia przepływu danych w usłudze Azure Data Factory
-description: Przepływ danych fabryki danych spowoduje dodanie węzła odniesienia sprzężenia, wyszukiwania, Unii
+title: Węzeł odwołania do przepływu danych mapowania Azure Data Factory
+description: Data Factory przepływ danych doda węzeł odwołania dla sprzężeń, wyszukiwań, Unii
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 626943143e8fa193f143e66d856d9b00e3589fb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ed17114cc0ce586c68c5b3e087acffdb82ea96c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61262704"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030494"
 ---
-# <a name="mapping-data-flow-reference-node"></a>Węzeł odwołania przepływu danych mapowania
+# <a name="mapping-data-flow-reference-node"></a>Mapowanie węzła odwołania przepływu danych
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Węzeł odwołania](media/data-flow/referencenode.png "węzeł odniesienia")
 
-Węzeł odniesienia jest automatycznie dodawany do kanwy, aby oznaczają, że węzeł, który jest dołączony do odwołuje się do innego istniejącego węzła na kanwie. Pomyśl o węźle odwołania w postaci wskaźnik lub odwołanie do innego Przekształcanie przepływu danych.
+(media/data-flow/referencenode.png "Węzeł") odwołania ![węzła odwołania]
 
-Na przykład: Jeśli dołączysz lub Unii więcej niż jeden strumień danych, Kanwa przepływ danych może dodać węzeł odniesienia, która odzwierciedla nazwę i ustawienia innego niż podstawowy przychodzącego strumienia.
+Węzeł odwołania jest automatycznie dodawany do kanwy, co oznacza, że węzeł, do którego jest dołączony, odwołuje się do innego istniejącego węzła na kanwie. Należy traktować węzeł odwołania jako wskaźnik lub odwołanie do innej transformacji przepływu danych.
 
-Węzeł odwołania nie przeniesiona lub usunięta. Kliknięcie pozwala modyfikować ustawienia przekształcenie pochodzące z węzłem.
+Na przykład: w przypadku sprzęgania lub złożenia więcej niż jednego strumienia danych Kanwa przepływu danych może dodać węzeł odwołania, który odzwierciedla nazwę i ustawienia niepodstawowego strumienia przychodzącego.
 
-Reguły interfejsu użytkownika, które kontrolują, gdy przepływ danych dodaje węzeł odniesienia są oparte na dostępne miejsce i pionowe odstępy między wierszami.
+Nie można przenieść ani usunąć węzła odwołania. Można jednak kliknąć w węźle, aby zmodyfikować ustawienia transformacji źródłowej.
+
+Reguły interfejsu użytkownika, które określają, kiedy przepływ danych dodaje węzeł odniesienia, są oparte na dostępne miejsce i odstępy w pionie między wierszami.

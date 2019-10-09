@@ -1,40 +1,40 @@
 ---
-title: Azure Data Factory mapowanie danych przepływu istnieje transformacji
-description: Jak sprawdzić, czy istniejące wiersze, używając mapowania fabryki danych, przepływy przy użyciu transformacji Exists
+title: Przekształcenie przepływu danych mapowania Azure Data Factory istnieje
+description: Sprawdzanie istniejących wierszy przy użyciu funkcji mapowania usługi Fabryka danych z przekształceniem EXISTS
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b98b7afb21f2f50d44ba93ed793b6efb20f75164
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b488a079b2da1bcf0dd064025ed251a1dc25213
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235957"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029392"
 ---
-# <a name="mapping-data-flow-exists-transformation"></a>Mapowanie przepływu danych istnieje transformacji
+# <a name="mapping-data-flow-exists-transformation"></a>Przekształcenie przepływu danych mapowania istnieje
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Przekształcenie Exists jest wiersz przekształcenia, które zatrzymuje się lub umożliwia wierszy w dane przepływają przez filtrowanie. Przekształcanie istnieje jest podobny do ```SQL WHERE EXISTS``` i ```SQL WHERE NOT EXISTS```. Po przekształceniu istnieje wiersze wynikowe ze strumienia danych albo będzie zawierać wszystkie wiersze, w których wartości kolumny ze źródła 1 istnieje w źródle 2 lub nie istnieją w źródle 2.
 
-![Istnieje ustawienia](media/data-flow/exists.png "istnieje 1")
+Transformacja EXISTS to transformacja filtru wierszy, która powoduje zatrzymanie lub umożliwienie przepływania wierszy w danych. Transformacja istnieje podobna do ```SQL WHERE EXISTS``` i ```SQL WHERE NOT EXISTS```. Po przekształceniu EXISTS wiersze ze strumienia danych będą obejmować wszystkie wiersze, w których wartości kolumn ze źródła 1 istnieją w źródle 2 lub nie istnieją w źródle 2.
 
-Wybierz drugie źródło swoje Exists, aby przepływ danych można porównać wartości z zakresu od 1 Stream względem Stream 2.
+![Istnieją ustawienia](media/data-flow/exists.png "1")
 
-Wybierz kolumnę, ze źródła 1 i 2 źródła wartości, którego chcesz wyszukać względem Exists, lub nie istnieje.
+Wybierz drugie źródło istnieje, aby przepływ danych mógł porównać wartości z strumienia 1 w strumieniu 2.
 
-## <a name="multiple-exists-conditions"></a>Wiele istnieje warunków
+Wybierz kolumnę ze źródła 1 i ze źródła 2, których wartości mają być sprawdzane, czy nie istnieją.
 
-Obok każdego wiersza w warunkach kolumny EXISTS znajdziesz + znak dostępnych po najechaniu kursorem na dotrzeć do wiersza. Pozwoli to dodać wiele wierszy dla warunków Exists. Każdy dodatkowy warunek jest "I".
+## <a name="multiple-exists-conditions"></a>Istnieje wiele warunków
+
+Obok każdego wiersza w warunkach kolumny istnieje znak + dostępny po umieszczeniu wskaźnika myszy nad wierszem REACH. Pozwoli to dodać wiele wierszy dla warunków istnienia. Każdy dodatkowy warunek jest "i".
 
 ## <a name="custom-expression"></a>Wyrażenie niestandardowe
 
-![Ustawienia niestandardowe istnieje](media/data-flow/exists1.png "istnieje niestandardowy")
+![Istnieją ustawienia]niestandardowe(media/data-flow/exists1.png "istnieją niestandardowe")
 
-Możesz kliknąć pozycję "Niestandardowe wyrażenie", aby zamiast tego utworzyć wyrażenie dowolnej postaci jako usługi nie istnieje lub nie istnieje warunek. Zaznaczenie tego pola wyboru pozwoli na typ w wyrażeniu jako warunek.
+Możesz kliknąć pozycję "wyrażenie niestandardowe", aby zamiast tego utworzyć wyrażenie o dowolnej postaci jako warunek istnieje lub nie istnieje. Zaznaczenie tego pola wyboru umożliwi wpisanie własnego wyrażenia jako warunku.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Podobne przekształcenia są [wyszukiwania](data-flow-lookup.md) i [Dołącz](data-flow-join.md).
+Podobne przekształcenia to [Wyszukiwanie](data-flow-lookup.md) i [sprzężenie](data-flow-join.md).

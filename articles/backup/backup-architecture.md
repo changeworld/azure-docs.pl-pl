@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e67e063ed37c706ba172703f0a5483d8d4f68ca
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881868"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035250"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup architektura i składniki
 
-Za pomocą [usługi Azure Backup](backup-overview.md) można tworzyć kopie zapasowe danych na platformie Microsoft Azure w chmurze. Ten artykuł zawiera podsumowanie architektury, składników i procesów Azure Backup. 
+Za pomocą [usługi Azure Backup](backup-overview.md) można tworzyć kopie zapasowe danych na platformie Microsoft Azure w chmurze. Ten artykuł zawiera podsumowanie architektury, składników i procesów Azure Backup.
 
 ## <a name="what-does-azure-backup-do"></a>Co robią Azure Backup?
 
@@ -27,15 +27,15 @@ Azure Backup kopii zapasowych danych, stanu komputera i obciążeń uruchomionyc
 Można utworzyć kopię zapasową maszyn i danych przy użyciu szeregu metod:
 
 - **Tworzenie kopii zapasowych maszyn lokalnych**:
-    - Można utworzyć kopię zapasową lokalnych maszyn z systemem Windows bezpośrednio na platformie Azure przy użyciu agenta Azure Backup Microsoft Azure Recovery Services (MARS). Maszyny z systemem Linux nie są obsługiwane.
-    - Można tworzyć kopie zapasowe maszyn lokalnych na serwerze kopii zapasowych (program System Center Data Protection Manager (DPM) lub Microsoft Azure Backup Server (serwera usługi MAB)). Następnie można wykonać kopię zapasową serwera kopii zapasowej w magazynie Recovery Services na platformie Azure.
+  - Można utworzyć kopię zapasową lokalnych maszyn z systemem Windows bezpośrednio na platformie Azure przy użyciu agenta Azure Backup Microsoft Azure Recovery Services (MARS). Maszyny z systemem Linux nie są obsługiwane.
+  - Można tworzyć kopie zapasowe maszyn lokalnych na serwerze kopii zapasowych — w programie System Center Data Protection Manager (DPM) lub Microsoft Azure Backup Server (serwera usługi MAB). Następnie można wykonać kopię zapasową serwera kopii zapasowej w magazynie Recovery Services na platformie Azure.
 
 - **Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure**:
-    - Możesz bezpośrednio tworzyć kopie zapasowe maszyn wirtualnych platformy Azure. Azure Backup instaluje rozszerzenie kopii zapasowej dla agenta maszyny wirtualnej platformy Azure uruchomionego na maszynie wirtualnej. To rozszerzenie tworzy kopię zapasową całej maszyny wirtualnej.
-    - Można utworzyć kopię zapasową określonych plików i folderów na maszynie wirtualnej platformy Azure, uruchamiając agenta MARS.
-    - Można utworzyć kopię zapasową maszyn wirtualnych platformy Azure w serwera usługi MAB, który działa na platformie Azure, a następnie utworzyć kopię zapasową serwera usługi MAB do magazynu Recovery Services.
+  - Możesz bezpośrednio tworzyć kopie zapasowe maszyn wirtualnych platformy Azure. Azure Backup instaluje rozszerzenie kopii zapasowej dla agenta maszyny wirtualnej platformy Azure uruchomionego na maszynie wirtualnej. To rozszerzenie tworzy kopię zapasową całej maszyny wirtualnej.
+  - Można utworzyć kopię zapasową określonych plików i folderów na maszynie wirtualnej platformy Azure, uruchamiając agenta MARS.
+  - Można utworzyć kopię zapasową maszyn wirtualnych platformy Azure w serwera usługi MAB, który działa na platformie Azure, a następnie utworzyć kopię zapasową serwera usługi MAB do magazynu Recovery Services.
 
-Dowiedz się więcej o możliwościach tworzenia [kopii zapasowych](backup-overview.md) i o [obsługiwanych scenariuszach tworzenia kopii zapasowych](backup-support-matrix.md).
+Dowiedz się więcej o [możliwościach tworzenia kopii zapasowych](backup-overview.md) i o [obsługiwanych scenariuszach tworzenia kopii zapasowych](backup-support-matrix.md).
 
 ## <a name="where-is-data-backed-up"></a>Gdzie są tworzone kopie zapasowe danych?
 
@@ -48,17 +48,17 @@ Recovery Services magazyny mają następujące funkcje:
 - Możesz monitorować elementy kopii zapasowej w magazynie, w tym maszyn wirtualnych platformy Azure i maszynach lokalnych.
 - Możesz zarządzać dostępem do magazynu za pomocą [kontroli dostępu opartej na rolach (RBAC) na](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)platformie Azure.
 - Określ sposób replikowania danych w magazynie w celu zapewnienia nadmiarowości:
-    - **Magazyn lokalnie nadmiarowy (LRS)** : Aby chronić przed awarią w centrum danych, możesz użyć LRS. LRS replikuje dane do jednostki skalowania magazynu. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-    - **Magazyn Geograficznie nadmiarowy (GRS)** : Aby chronić przed awarią całego regionu, możesz użyć GRS. GRS replikuje dane do regionu pomocniczego. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). 
-    - Domyślnie magazyny Recovery Services używają GRS. 
+  - **Magazyn lokalnie nadmiarowy (LRS)** : aby chronić przed awarią w centrum danych, można użyć LRS. LRS replikuje dane do jednostki skalowania magazynu. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Magazyn Geograficznie nadmiarowy (GRS)** : aby chronić przed awarią całego regionu, możesz użyć GRS. GRS replikuje dane do regionu pomocniczego. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - Domyślnie magazyny Recovery Services używają GRS.
 
 ## <a name="backup-agents"></a>Agenci kopii zapasowych
 
 Azure Backup udostępnia różnych agentów kopii zapasowych, w zależności od tego, jakiego typu maszyny jest tworzona kopia zapasowa:
 
-**Agent** | **Szczegóły** 
---- | --- 
-**Agent MARS** | <ul><li>Działa na pojedynczych lokalnych maszynach z systemem Windows Server, aby utworzyć kopię zapasową plików, folderów i stanu systemu.</li> <li>Działa na maszynach wirtualnych platformy Azure, aby utworzyć kopię zapasową plików, folderów i stanu systemu.</li> <li>Działa na serwerach DPM/serwera usługi MAB, aby utworzyć kopię zapasową lokalnego dysku magazynu programu DPM/serwera usługi MAB na platformie Azure.</li></ul> 
+**Agent** | **Szczegóły**
+--- | ---
+**Agent MARS** | <ul><li>Działa na pojedynczych lokalnych maszynach z systemem Windows Server, aby utworzyć kopię zapasową plików, folderów i stanu systemu.</li> <li>Działa na maszynach wirtualnych platformy Azure, aby utworzyć kopię zapasową plików, folderów i stanu systemu.</li> <li>Działa na serwerach DPM/serwera usługi MAB, aby utworzyć kopię zapasową lokalnego dysku magazynu programu DPM/serwera usługi MAB na platformie Azure.</li></ul>
 **Rozszerzenie maszyny wirtualnej platformy Azure** | Działa na maszynach wirtualnych platformy Azure w celu tworzenia kopii zapasowych w magazynie.
 
 ## <a name="backup-types"></a>Typy kopii zapasowych
@@ -67,9 +67,9 @@ W poniższej tabeli objaśniono różne typy kopii zapasowych i używane:
 
 **Typ kopii zapasowej** | **Szczegóły** | **Użycie**
 --- | --- | ---
-**Full** | Pełna kopia zapasowa zawiera całe źródło danych. Zwiększa przepustowość sieci niż różnicowe lub przyrostowe kopie zapasowe. | Używany do początkowej kopii zapasowej.
+**Szczegółowe** | Pełna kopia zapasowa zawiera całe źródło danych. Zwiększa przepustowość sieci niż różnicowe lub przyrostowe kopie zapasowe. | Używany do początkowej kopii zapasowej.
 **Różnicy** |  Różnicowa kopia zapasowa przechowuje bloki, które uległy zmianie od początkowej pełnej kopii zapasowej. Program używa mniejszej ilości sieci i magazynu i nie zachowuje nadmiarowych kopii niezmienionych danych.<br/><br/> Niewydajne, ponieważ bloki danych, które nie są zmieniane między nowszymi kopiami zapasowymi, są transferowane i przechowywane. | Nieużywane przez Azure Backup.
-**Interlini** | Przyrostowa kopia zapasowa przechowuje tylko te bloki danych, które uległy zmianie od czasu utworzenia poprzedniej kopii zapasowej. Wysoka wydajność magazynu i sieci. <br/><br/> Dzięki przyrostowym kopiom zapasowym nie trzeba uzupełniać z pełnymi kopiami zapasowymi. | Używane przez program DPM/serwera usługi MAB do tworzenia kopii zapasowych na dyskach i używane we wszystkich kopiach zapasowych na platformie Azure.
+**Interlini** | Przyrostowa kopia zapasowa przechowuje tylko te bloki danych, które uległy zmianie od czasu utworzenia poprzedniej kopii zapasowej. Wysoka wydajność magazynu i sieci. <br/><br/> Dzięki przyrostowym kopiom zapasowym nie trzeba uzupełniać z pełnymi kopiami zapasowymi. | Używane przez program DPM/serwera usługi MAB do tworzenia kopii zapasowych na dyskach i używane we wszystkich kopiach zapasowych na platformie Azure. Nieużywany do SQL Server kopii zapasowej.
 
 ## <a name="sql-server-backup-types"></a>SQL Server typy kopii zapasowych
 
@@ -88,7 +88,7 @@ Użycie magazynu, cel czasu odzyskiwania (RTO) i użycie sieci różnią się w 
 - Źródło danych A składa się z 10 bloków magazynu, A1-A10, których kopia zapasowa jest wykonywana miesięcznie.
 - Bloki A2, A3, A4 i A9 zmieniają się w trakcie pierwszego miesiąca, a blok A5 zmienia się w następnym miesiącu.
 - W przypadku różnicowych kopii zapasowych w drugim miesiącu kopia zapasowa zmieniono bloki a2, A3, A4 i A9. W trzecim miesiącu jest ponownie wykonywana kopia zapasowa tych samych bloków, a dodatkowo zmienionego bloku A5. Kopie zapasowe zmienionych bloków będą ciągle wykonywane aż do czasu wykonania kolejnej pełnej kopii zapasowej.
-- W przypadku przyrostowych kopii zapasowych w drugim miesiącu bloki a2, A3, A4 i A9 są oznaczane jako zmienione i transferowane. W trzecim miesiącu jest oznaczany i transferowany jedynie zmieniony blok A5. 
+- W przypadku przyrostowych kopii zapasowych w drugim miesiącu bloki a2, A3, A4 i A9 są oznaczane jako zmienione i transferowane. W trzecim miesiącu jest oznaczany i transferowany jedynie zmieniony blok A5.
 
 ![Obraz przedstawiający Porównanie metod tworzenia kopii zapasowej](./media/backup-architecture/backup-method-comparison.png)
 
@@ -98,35 +98,35 @@ Poniższa tabela zawiera podsumowanie obsługiwanych funkcji dla różnych typó
 
 **Funkcja** | **Lokalne maszyny z systemem Windows Server (bezpośrednie)** | **Maszyny wirtualne platformy Azure** | **Maszyny lub aplikacje z programem DPM/serwera usługi MAB**
 --- | --- | --- | ---
-Tworzenie kopii zapasowej w magazynie | ![Tak][green] | ![Yes][green] | ![Tak][green] 
-Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB, a następnie na platformie Azure | | | ![Tak][green] 
-Kompresuj dane wysyłane do kopii zapasowej | ![Tak][green] | Podczas przesyłania danych nie jest używana kompresja. Magazyn jest nieco nieznacznie napompowany, ale przywracanie jest szybsze.  | ![Tak][green] 
-Uruchom przyrostową kopię zapasową |![Yes][green] |![Yes][green] |![Yes][green] 
-Tworzenie kopii zapasowej deduplikowanych dysków | | | ![Częściowo][yellow]<br/><br/> W przypadku serwerów DPM/serwera usługi MAB wdrożonych tylko lokalnie. 
+Tworzenie kopii zapasowej w magazynie | ![Tak][green] | ![Tak][green] | ![Tak][green]
+Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB, a następnie na platformie Azure | | | ![Tak][green]
+Kompresuj dane wysyłane do kopii zapasowej | ![Tak][green] | Podczas przesyłania danych nie jest używana kompresja. Magazyn jest nieco nieznacznie napompowany, ale przywracanie jest szybsze.  | ![Tak][green]
+Uruchom przyrostową kopię zapasową |![Tak][green] |![Tak][green] |![Tak][green]
+Tworzenie kopii zapasowej deduplikowanych dysków | | | ![Częściowo][yellow]<br/><br/> W przypadku serwerów DPM/serwera usługi MAB wdrożonych tylko lokalnie.
 
 ![Klucz tabeli](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Architektura: Bezpośrednie tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
+## <a name="architecture-direct-backup-of-azure-vms"></a>Architektura: bezpośrednie tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
 
 1. Po włączeniu kopii zapasowej dla maszyny wirtualnej platformy Azure kopia zapasowa jest uruchamiana zgodnie z określonym harmonogramem.
 1. Podczas pierwszej kopii zapasowej, rozszerzenie kopii zapasowej jest instalowane na maszynie wirtualnej, jeśli maszyna wirtualna jest uruchomiona.
     - W przypadku maszyn wirtualnych z systemem Windows jest zainstalowane rozszerzenie VMSnapshot.
     - W przypadku maszyn wirtualnych z systemem Linux jest zainstalowane rozszerzenie VMSnapshot Linux.
-1. Rozszerzenie pobiera migawkę na poziomie magazynu. 
+1. Rozszerzenie pobiera migawkę na poziomie magazynu.
     - W przypadku maszyn wirtualnych z systemem Windows, które są uruchomione, Współrzędna usługi Kopia zapasowa z Usługa kopiowania woluminów w tle systemu Windows (VSS) w celu przetworzenia migawki maszyny wirtualnej spójnej na poziomie aplikacji. Domyślnie kopia zapasowa pobiera pełne kopie zapasowe usługi VSS. Jeśli kopia zapasowa nie może wykonać migawki spójnej na poziomie aplikacji, pobiera migawkę spójną na poziomie plików.
     - W przypadku maszyn wirtualnych z systemem Linux kopia zapasowa pobiera migawkę spójną na poziomie plików. W przypadku migawek spójnych z aplikacjami należy ręcznie dostosować skrypty poprzedzające i końcowe.
-    - Kopia zapasowa jest zoptymalizowana przez utworzenie kopii zapasowej każdego dysku maszyny wirtualnej równolegle. Dla każdego dysku, którego kopia zapasowa jest tworzona, Azure Backup odczytuje bloków na dysku i zapisuje tylko zmienione dane. 
-1. Po wykonaniu migawki dane są przesyłane do magazynu. 
+    - Kopia zapasowa jest zoptymalizowana przez utworzenie kopii zapasowej każdego dysku maszyny wirtualnej równolegle. Dla każdego dysku, którego kopia zapasowa jest tworzona, Azure Backup odczytuje bloków na dysku i zapisuje tylko zmienione dane.
+1. Po wykonaniu migawki dane są przesyłane do magazynu.
     - Kopiowane są tylko bloki danych, które uległy zmianie od momentu utworzenia ostatniej kopii zapasowej.
     - Dane nie są szyfrowane. Azure Backup można utworzyć kopie zapasowe maszyn wirtualnych platformy Azure, które zostały zaszyfrowane przy użyciu Azure Disk Encryption.
     - Dane migawki mogą nie być od razu kopiowane do magazynu. W godzinach szczytu kopia zapasowa może trwać kilka godzin. Łączny czas wykonywania kopii zapasowej maszyny wirtualnej będzie krótszy niż 24 godziny dla codziennych zasad tworzenia kopii zapasowych.
 1. Po wysłaniu danych do magazynu zostanie utworzony punkt odzyskiwania. Domyślnie migawki są zachowywane przez dwa dni przed ich usunięciem. Ta funkcja umożliwia przywracanie z tych migawek, a tym samym wycinanie czasów przywracania. Skraca czas wymagany do przekształcania i kopiowania danych z magazynu. Zobacz [Azure Backup możliwości przywracania natychmiastowego](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
 
-Maszyny wirtualne platformy Azure wymagają dostępu do Internetu dla poleceń sterowania. Jeśli wykonujesz kopię zapasową obciążeń wewnątrz maszyny wirtualnej (na przykład SQL Server kopie zapasowe bazy danych), dane zaplecza również wymagają dostępu do Internetu. 
+Maszyny wirtualne platformy Azure wymagają dostępu do Internetu dla poleceń sterowania. Jeśli wykonujesz kopię zapasową obciążeń wewnątrz maszyny wirtualnej (na przykład SQL Server kopie zapasowe bazy danych), dane zaplecza również wymagają dostępu do Internetu.
 
 ![Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure](./media/backup-architecture/architecture-azure-vm.png)
 
-## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architektura: Bezpośrednie tworzenie kopii zapasowych lokalnych maszyn z systemem Windows Server lub plików lub folderów maszyny wirtualnej platformy Azure
+## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architektura: bezpośrednie tworzenie kopii zapasowych lokalnych maszyn z systemem Windows Server lub plików lub folderów maszyny wirtualnej platformy Azure
 
 1. Aby skonfigurować ten scenariusz, należy pobrać i zainstalować agenta MARS na komputerze. Następnie wybierz, co chcesz zrobić z kopią zapasową, gdy kopie zapasowe będą wykonywane i jak długo będą przechowywane na platformie Azure.
 1. Początkowa kopia zapasowa jest uruchamiana zgodnie z ustawieniami kopii zapasowej.
@@ -140,7 +140,7 @@ Maszyny wirtualne platformy Azure wymagają dostępu do Internetu dla poleceń s
 
 ![Tworzenie kopii zapasowych lokalnych maszyn z systemem Windows Server przy użyciu agenta MARS](./media/backup-architecture/architecture-on-premises-mars.png)
 
-## <a name="architecture-back-up-to-dpmmabs"></a>Architektura: Tworzenie kopii zapasowych w programie DPM lub usłudze MABS
+## <a name="architecture-back-up-to-dpmmabs"></a>Architektura: Tworzenie kopii zapasowej w programie DPM/serwera usługi MAB
 
 1. Należy zainstalować agenta ochrony programu DPM lub serwera usługi MAB na maszynach, które mają być chronione. Następnie należy dodać maszyny do grupy ochrony programu DPM.
     - Aby chronić maszyny lokalne, serwer programu DPM lub serwera usługi MAB musi znajdować się w środowisku lokalnym.
@@ -157,15 +157,15 @@ Maszyny wirtualne platformy Azure wymagają dostępu do Internetu dla poleceń s
 Maszyny wirtualne platformy Azure używają dysków do przechowywania swoich systemów operacyjnych, aplikacji i danych. Każda maszyna wirtualna platformy Azure ma co najmniej dwa dyski: dysk systemu operacyjnego i dysk tymczasowy. Maszyny wirtualne platformy Azure mogą także mieć dyski danych dla danych aplikacji. Dyski są przechowywane jako wirtualne dyski twarde.
 
 - Wirtualne dyski twarde są przechowywane jako stronicowe obiekty blob na kontach magazynu w warstwie Standardowa lub Premium na platformie Azure:
-    - **Magazyn w warstwie Standardowa:** Niezawodna, tańsza Obsługa dysków dla maszyn wirtualnych korzystających z obciążeń, które nie są wrażliwe na opóźnienia. W przypadku magazynu w warstwie Standardowa można korzystać ze standardowych dysków SSD lub dysków twardych (dysk twardy).
-    - **Usługa Premium Storage:** Obsługa dysków o wysokiej wydajności. Używa dysków SSD w warstwie Premium.
+  - **Magazyn w warstwie Standardowa:** Niezawodna, tańsza Obsługa dysków dla maszyn wirtualnych korzystających z obciążeń, które nie są wrażliwe na opóźnienia. W przypadku magazynu w warstwie Standardowa można korzystać ze standardowych dysków SSD lub dysków twardych (dysk twardy).
+  - Usługa **Premium Storage:** Obsługa dysków o wysokiej wydajności. Używa dysków SSD w warstwie Premium.
 - Istnieją różne warstwy wydajności dla dysków:
-    - **HDD w warstwie Standardowa dysk:** Obsługiwane przez HDD i używane do oszczędnego magazynowania.
-    - **SSD w warstwie Standardowa dysk:** Łączy elementy dysków SSD Premium i standardowych dysków DYSKowych. Oferuje bardziej spójną wydajność i niezawodność niż dysk twardy, ale wciąż opłacalne.
-    - **SSD w warstwie Premium dysk:** Obsługiwane przez dysków SSD oraz zapewnia wysoką wydajność i małe opóźnienia dla maszyn wirtualnych, na których są uruchomione obciążenia intensywnie korzystające z operacji we/wy.
+  - **HDD w warstwie Standardowa dysk:** Obsługiwane przez HDD i używane do oszczędnego magazynowania.
+  - **SSD w warstwie Standardowa dysk:** Łączy elementy dysków SSD Premium i standardowych dysków DYSKowych. Oferuje bardziej spójną wydajność i niezawodność niż dysk twardy, ale wciąż opłacalne.
+  - **SSD w warstwie Premium dysk:** Obsługiwane przez dysków SSD oraz zapewnia wysoką wydajność i małe opóźnienia dla maszyn wirtualnych, na których są uruchomione obciążenia intensywnie korzystające z operacji we/wy.
 - Dyski mogą być zarządzane lub niezarządzane:
-    - **Dyski niezarządzane:** Tradycyjny typ dysków używanych przez maszyny wirtualne. Dla tych dysków utworzysz własne konto magazynu i określisz je podczas tworzenia dysku. Następnie należy poznać sposób maksymalizowania zasobów magazynu dla maszyn wirtualnych.
-    - **Dyski zarządzane:** Platforma Azure tworzy konta magazynu i zarządza nimi. Należy określić rozmiar dysku i warstwę wydajności, a platforma Azure utworzy dyski zarządzane. Podczas dodawania dysków i skalowania maszyn wirtualnych platforma Azure obsługuje konta magazynu.
+  - **Dyski niezarządzane:** Tradycyjny typ dysków używanych przez maszyny wirtualne. Dla tych dysków utworzysz własne konto magazynu i określisz je podczas tworzenia dysku. Następnie należy poznać sposób maksymalizowania zasobów magazynu dla maszyn wirtualnych.
+  - **Dyski zarządzane:** Platforma Azure tworzy konta magazynu i zarządza nimi. Należy określić rozmiar dysku i warstwę wydajności, a platforma Azure utworzy dyski zarządzane. Podczas dodawania dysków i skalowania maszyn wirtualnych platforma Azure obsługuje konta magazynu.
 
 Aby uzyskać więcej informacji o magazynie dyskowym i dostępnych typach dysków dla maszyn wirtualnych, zobacz następujące artykuły:
 
@@ -173,7 +173,7 @@ Aby uzyskać więcej informacji o magazynie dyskowym i dostępnych typach dyskó
 - [Azure Managed disks dla maszyn wirtualnych z systemem Linux](../virtual-machines/linux/managed-disks-overview.md)
 - [Dostępne typy dysków dla maszyn wirtualnych](../virtual-machines/windows/disks-types.md)
 
-### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Tworzenie kopii zapasowych i przywracanie maszyn wirtualnych platformy Azure przy użyciu usługi Premium Storage 
+### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Tworzenie kopii zapasowych i przywracanie maszyn wirtualnych platformy Azure przy użyciu usługi Premium Storage
 
 Można utworzyć kopię zapasową maszyn wirtualnych platformy Azure przy użyciu usługi Premium Storage z Azure Backup:
 
@@ -197,17 +197,15 @@ W przypadku przywracania maszyn wirtualnych z dyskami zarządzanymi można przyw
 - W trakcie procesu przywracania platforma Azure obsługuje dyski zarządzane. Jeśli używasz opcji konta magazynu, możesz zarządzać kontem magazynu, które zostało utworzone podczas procesu przywracania.
 - Jeśli przywracasz zaszyfrowaną zarządzaną maszynę wirtualną, przed rozpoczęciem procesu przywracania upewnij się, że klucze i wpisy tajne maszyny wirtualnej znajdują się w magazynie kluczy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z matrycą pomocy technicznej, aby [poznać obsługiwane funkcje i ograniczenia dotyczące scenariuszy tworzenia kopii zapasowych](backup-support-matrix.md).
 - Skonfiguruj kopię zapasową dla jednego z następujących scenariuszy:
-    - [Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md).
-    - [Bezpośrednie wykonywanie kopii zapasowych maszyn z systemem Windows](tutorial-backup-windows-server-to-azure.md) bez serwera kopii zapasowych.
-    - [Konfigurowanie usługi MABS](backup-azure-microsoft-azure-backup.md) na potrzeby kopii zapasowych na platformie Azure, a następnie wykonywanie kopii zapasowych obciążeń w usłudze MABS.
-    - [Konfigurowanie programu DPM](backup-azure-dpm-introduction.md) na potrzeby kopii zapasowych na platformie Azure, a następnie wykonywanie kopii zapasowych obciążeń w programie DPM.
-
+  - [Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md).
+  - [Bezpośrednie wykonywanie kopii zapasowych maszyn z systemem Windows](tutorial-backup-windows-server-to-azure.md) bez serwera kopii zapasowych.
+  - [Konfigurowanie usługi MABS](backup-azure-microsoft-azure-backup.md) na potrzeby kopii zapasowych na platformie Azure, a następnie wykonywanie kopii zapasowych obciążeń w usłudze MABS.
+  - [Konfigurowanie programu DPM](backup-azure-dpm-introduction.md) na potrzeby kopii zapasowych na platformie Azure, a następnie wykonywanie kopii zapasowych obciążeń w programie DPM.
 
 [green]: ./media/backup-architecture/green.png
 [yellow]: ./media/backup-architecture/yellow.png
 [red]: ./media/backup-architecture/red.png
-

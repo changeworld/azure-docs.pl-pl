@@ -1,39 +1,21 @@
 ---
-title: Utwórz Dynamics 365 Customer Engagement aplikacji oferty | Portal Azure Marketplace
-description: Jak utworzyć nowe Dynamics 365 Customer Engagement aplikacji oferty w witrynie Marketplace usługi AppSource.
+title: Tworzenie oferty aplikacji Dynamics 365 dla programu Customer Engagement | Portal Azure Marketplace
+description: Zaniechanie tego artykułu w programie CPP i wskazywanie na artykuł dotyczący komputera; "jak utworzyć nową ofertę aplikacji Dynamics 365 for Customer Engagement w witrynie AppSource Marketplace".
 services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/21/2018
-ms.author: pabutler
-ms.openlocfilehash: ebfef673102878e50f744081ec9b46fd4cd1796b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 1682abd3983d3e090b59e6452c4761913e29da3d
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942692"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034351"
 ---
-# <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Utwórz Dynamics 365 Customer Engagement aplikacji oferty
+# <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Tworzenie oferty aplikacji Dynamics 365 dla programu Customer Engagement
 
-W tej sekcji opisano, jak tworzyć i publikować Dynamics 365 Customer Engagement aplikacji oferty w portalu Marketplace usługi AppSource. Każdej oferty jest wyświetlany jako swoje własne jednostki w portalu marketplace i składa się z następujących grup zasobów i usługi pomocnicze: oferty, uzyskać szczegółowe informacje, pakiet informacji technicznych, marketingowych artefaktów, obsługuje informacji i opcjonalnie wersji testowej wymagania. 
+[Portal Cloud partner](https://cloudpartner.azure.com/) nie obsługuje już tworzenia ofert programu Dynamics 365 Customer Engagement i zarządzania nimi. Zamiast tego ta funkcja została przeniesiona do [portalu Centrum partnerskiego](https://partner.microsoft.com/)firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej usługi Dynamics 365 na potrzeby zaangażowania klienta & oferty usługi powerapps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-
-## <a name="new-offer-form"></a>Nowy formularz oferty
-
-Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. Na nowe oferty menu, wybierz **Dynamics 365 for Customer Engagement**:
-
-![Nowy element menu oferty for Dynamics 365 Customer Engagement aplikacji](./media/new-dyn365ce-menu-item.png)
-
-**Nowa oferta** formularza zostanie wyświetlone początkowej [ **oferują ustawienia** kartę](./cpp-offer-settings-tab.md).
-
-
-## <a name="next-steps"></a>Kolejne kroki
-
-**Nowa oferta** strona zawiera zbiór kart i pola formularza, które będziesz używać do tworzenia nowej oferty. W poniższych artykułach opisano sposób definiowania grup zasobów i informacje pomocnicze nowej oferty.
-
-* [Karta ustawień oferty](./cpp-offer-settings-tab.md)
-* [Karta informacji technicznych](./cpp-technical-info-tab.md)
-* [Karta Wersja testowa](./cpp-testdrive-tab.md)
-* [Karta szczegółów sklepu](./cpp-storefront-details-tab.md)
-* [Karta kontaktów](./cpp-contacts-tab.md)
+Przed utworzeniem nowej oferty Dynamics 365 for Customer Engagement należy przeczytać temat [Tworzenie konta Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , a następnie otworzyć [komercyjny pulpit nawigacyjny Marketplace](https://partner.microsoft.com/dashboard/directory) z wybraną stroną **Przegląd** . Postępuj zgodnie z instrukcjami w temacie [Create a New Dynamics 365 for Customer Engagement & powerapps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) , aby utworzyć ofertę.

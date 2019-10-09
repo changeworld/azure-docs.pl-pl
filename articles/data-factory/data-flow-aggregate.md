@@ -6,23 +6,23 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 778aefc05a9b12648e60d752a3c281cb18323125
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314226"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026980"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregowanie transformacji w strumieniu danych mapowania 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Przekształcenie agregowane polega na tym, że można zdefiniować agregacje kolumn w strumieniach danych. Korzystając z konstruktora wyrażeń, można definiować różne typy agregacji, takie jak SUM, MIN, MAX i COUNT, które mogą być pogrupowane według istniejących lub obliczanych kolumn.
 
 ## <a name="group-by"></a>Grupuj według
 Wybierz istniejącą kolumnę lub Utwórz nową kolumnę obliczaną, która ma być używana jako klauzula GROUP by dla agregacji. Aby użyć istniejącej kolumny, wybierz żądaną kolumnę z listy rozwijanej. Aby utworzyć nową kolumnę obliczaną, umieść kursor nad klauzulą i kliknij pozycję "kolumna obliczana". Spowoduje to otwarcie [konstruktora wyrażeń przepływu danych](concepts-data-flow-expression-builder.md). Po utworzeniu kolumny obliczanej wprowadź nazwę kolumny wyjściowej w polu "Nazwa jako". Jeśli chcesz dodać dodatkową klauzulę Group by, umieść kursor nad istniejącą klauzulą i kliknij przycisk "+".
 
-![Agregacja grupy transformacji według ustawień](media/data-flow/agg.png "Agregacja grupy transformacji według ustawień")
+![Agreguj grupę transformacji według ustawień](media/data-flow/agg.png "Agreguj grupę transformacji według ustawień")
 
 > [!NOTE]
 > Klauzula GROUP by jest opcjonalna w transformacji agregowanej.
@@ -30,7 +30,7 @@ Wybierz istniejącą kolumnę lub Utwórz nową kolumnę obliczaną, która ma b
 ## <a name="aggregate-column"></a>Kolumna agregująca 
 Wybierz kartę "agregacje", aby utworzyć wyrażenia agregacji. Możesz wybrać istniejącą kolumnę i zastąpić wartość agregacją lub utworzyć nowe pole z nową nazwą. Wyrażenie agregacji jest wprowadzane w polu po prawej stronie obok selektora nazw kolumn. Aby edytować wyrażenie, kliknij pole tekstowe, aby otworzyć program Expression Builder. Aby dodać dodatkową agregację, umieść kursor na istniejącym wyrażeniu i kliknij znak "+", aby utworzyć nową kolumnę agregacji lub [wzorzec kolumny](concepts-data-flow-column-pattern.md).
 
-![Zagregowane ustawienia agregacji transformacji](media/data-flow/agg2.png "Zagregowane ustawienia agregacji transformacji")
+Agregacja zagregowanych ![ustawień](media/data-flow/agg2.png "agregacji zagregowanych") ustawień agregacji
 
 > [!NOTE]
 > Każde wyrażenie agregacji musi zawierać co najmniej jedną funkcję agregującą.
@@ -42,7 +42,7 @@ Wybierz kartę "agregacje", aby utworzyć wyrażenia agregacji. Możesz wybrać 
 Przekształcenia agregowane są ściśle równoważne z kwerendami SELECT SQL Aggregate. Kolumny, które nie znajdują się w klauzuli Group by ani funkcjach agregujących, nie przepływają do danych wyjściowych przekształcenia agregowanego. Jeśli istnieją inne kolumny, które mają zostać uwzględnione w danych wyjściowych zagregowanych wierszy, należy wykonać jedną z:
 
 * Użyj funkcji agregującej, aby dołączyć tę dodatkową kolumnę, taką jak Last () lub First ()
-* Dołącz ponownie kolumny przed agregacją przy użyciu [wzorca](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)samosprzężenia.
+* Dołącz ponownie kolumny przed agregacją przy użyciu [wzorca samosprzężenia](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
 
 ## <a name="next-steps"></a>Następne kroki
 

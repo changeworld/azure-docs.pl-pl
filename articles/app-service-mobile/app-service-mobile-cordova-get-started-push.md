@@ -1,6 +1,6 @@
 ---
-title: Dodawanie powiadomień wypychanych do aplikacji Apache Cordova za pomocą funkcji Mobile Apps w usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Mobile Apps do wysyłania powiadomień wypychanych do aplikacji Apache Cordova.
+title: Dodawanie powiadomień wypychanych do aplikacji Apache Cordova za pomocą funkcji Mobile Apps Azure App Service | Microsoft Docs
+description: Dowiedz się, jak za pomocą Mobile Apps wysyłać powiadomienia wypychane do aplikacji Apache Cordova.
 services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
@@ -14,69 +14,69 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: e6755c3fb1fca342d94fdaa96c0dce614d762172
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8fe8485926e2c10b7fe58836196132f2881699a4
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443551"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025722"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Dodawanie powiadomień wypychanych do aplikacji Apache Cordova
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-push) już dziś.
->
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
 
-W ramach tego samouczka, możesz dodać powiadomienia wypychane do [Szybki Start Apache Cordova][5] projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
+W tym samouczku dowiesz się, jak dodać powiadomienia wypychane do projektu [Apache Cordova szybkiego startu][5] , aby Powiadomienie wypychane było wysyłane do urządzenia za każdym razem, gdy rekord zostanie wstawiony.
 
-Jeśli nie używasz pobrany projekt szybkiego startu serwera, należy pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz [pracować z zestawu SDK serwera zaplecza .NET dla aplikacji mobilnych][1].
+Jeśli nie korzystasz z pobranego projektu szybkiego startu, będzie potrzebny pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz artykuł [współpraca z zestawem SDK serwera zaplecza .NET dla Mobile Apps][1].
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku przyjęto założenie, iż aplikacji Apache Cordova, który został opracowany przy użyciu programu Visual Studio 2015. To urządzenie należy uruchomić na Emulator systemu Google Android, urządzenia z systemem Android, urządzenia Windows lub urządzenia z systemem iOS.
+W tym samouczku założono, że masz aplikację Apache Cordova, która została opracowana za pomocą programu Visual Studio 2015. To urządzenie powinno być uruchamiane w usłudze Google Emulator systemu Android, urządzeniu z systemem Android, urządzeniu z systemem Windows lub urządzeniu z systemem iOS.
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-* Komputer z programem [Visual Studio Community 2015][2] lub nowszej
+* KOMPUTER z programem [Visual Studio Community 2015][2] lub nowszym
 * [Visual Studio Tools for Apache Cordova][4]
 * [Aktywne konto platformy Azure][3]
-* Ukończone [Szybki Start Apache Cordova][5] projektu
-* (Android) A [konto Google][6] z ze zweryfikowanym adresem e-mail
-* (iOS) [Członkostwa w programie dla deweloperów firmy Apple][7] i urządzenia z systemem iOS (iOS Simulator nie obsługuje powiadomienia wypychane)
-* (Windows) A [konta dewelopera Microsoft Store][8] i urządzenia z systemem Windows 10
+* Zakończono projekt [szybkiego startu Apache Cordova][5]
+* Systemów [Konto Google][6] z zweryfikowanym adresem e-mail
+* Wykonane [Członkostwo w programie Apple Developer][7] i urządzenie z systemem iOS (symulator systemu iOS nie obsługuje powiadomień wypychanych)
+* Systemy [Konto dewelopera Microsoft Store][8] i urządzenie z systemem Windows 10
 
-## <a name="configure-hub"></a>Konfigurowanie Centrum powiadomień
+## <a name="configure-hub"></a>Konfigurowanie centrum powiadomień
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-[Obejrzyj film wideo przedstawiający kroki w tej sekcji][9].
+[Obejrzyj film wideo pokazujący kroki opisane w tej sekcji][9].
 
-## <a name="update-the-server-project"></a>Aktualizacja projektu serwera
+## <a name="update-the-server-project"></a>Aktualizowanie projektu serwera
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="add-push-to-app"></a>Modyfikowanie aplikacji Cordova
+## <a name="add-push-to-app"></a>Modyfikowanie aplikacji platformy Cordova
 
-Aby upewnić się, że projekt aplikacji Apache Cordova jest gotowy do obsługi powiadomień wypychanych, należy zainstalować wtyczki Cordova wypychania, a także żadnych usług powiadomień wypychanych specyficzne dla platformy.
+Aby upewnić się, że projekt aplikacji Apache Cordova jest gotowy do obsługi powiadomień wypychanych, zainstaluj wtyczkę wypychaną oprogramowania Cordova oraz wszystkie usługi wypychania dla konkretnych platform.
 
-#### <a name="update-the-cordova-version-in-your-project"></a>Zaktualizuj wersję Cordova w projekcie.
+#### <a name="update-the-cordova-version-in-your-project"></a>Zaktualizuj wersję oprogramowania Cordova w projekcie.
 
-Jeśli projekt używa wersji Apache Cordova, która jest starsza niż wersja 6.1.1, należy zaktualizować projekt klienta. Aby zaktualizować projekt, wykonaj następujące czynności:
+Jeśli projekt używa wersji Apache Cordova starszej niż wersja 6.1.1, zaktualizuj projekt klienta. Aby zaktualizować projekt, wykonaj następujące czynności:
 
 * Aby otworzyć projektanta konfiguracji, kliknij prawym przyciskiem myszy `config.xml`.
-* Wybierz **platform** kartę.
-* W **Cordova CLI** pola tekstowego, wybierz opcję **6.1.1**. 
-* Aby zaktualizować projekt, wybierz **kompilacji**, a następnie wybierz pozycję **Kompiluj rozwiązanie**.
+* Wybierz kartę **platformy** .
+* W polu tekstowym **Cordova CLI** wybierz pozycję **6.1.1**. 
+* Aby zaktualizować projekt, wybierz pozycję **kompilacja**, a następnie wybierz pozycję **Kompiluj rozwiązanie**.
 
-#### <a name="install-the-push-plugin"></a>Instalowanie wtyczki wypychania
+#### <a name="install-the-push-plugin"></a>Instalowanie wtyczki wypychanej
 
-Aplikacji Apache Cordova nie obsługują natywnie możliwości urządzeń lub sieci.  Te możliwości są udostępniane przez wtyczek, które są publikowane, albo na [npm][10] lub w witrynie GitHub. `phonegap-plugin-push` Wtyczka obsługuje powiadomienia wypychane w sieci.
+Aplikacje Apache Cordova nie obsługują natywnie możliwości urządzeń ani sieci.  Te funkcje są udostępniane przez wtyczki opublikowane w witrynie [npm][10] lub w witrynie GitHub. Wtyczka `phonegap-plugin-push` obsługuje powiadomienia wypychane w sieci.
 
-Wtyczka wypychania można zainstalować w jednym z następujących sposobów:
+Możesz zainstalować wtyczkę wypychaną w jeden z następujących sposobów:
 
 **W wierszu polecenia:**
 
@@ -86,32 +86,32 @@ Uruchom następujące polecenie:
 
 **Z poziomu programu Visual Studio:**
 
-1. W Eksploratorze rozwiązań Otwórz `config.xml` pliku. Następnie wybierz pozycję **wtyczek** > **niestandardowe**. Następnie wybierz pozycję **Git** jako źródła instalacji.
+1. W Eksplorator rozwiązań otwórz plik `config.xml`. Następnie wybierz pozycję **wtyczki** > **Custom**. Następnie wybierz pozycję **git** jako źródło instalacji.
 
 2. Wprowadź `https://github.com/phonegap/phonegap-plugin-push` jako źródło.
 
-    ![Otwórz plik config.xml w Eksploratorze rozwiązań][img1]
+    ![Otwórz plik config. XML w Eksplorator rozwiązań][img1]
 
 3. Wybierz strzałkę obok źródła instalacji.
 
-4. W **SENDER_ID**, jeśli masz już identyfikator liczbowych projektu dla projektu konsoli dewelopera Google, możesz dodać ją tutaj. W przeciwnym razie wprowadź wartość symbolu zastępczego, na przykład 777777. Jeśli są przeznaczone dla systemów Android, możesz zaktualizować tę wartość w pliku config.xml później.
+4. W programie **SENDER_ID**, jeśli masz już liczbowy identyfikator projektu dla projektu konsoli programu Google Developer, możesz dodać go tutaj. W przeciwnym razie wprowadź wartość symbolu zastępczego, na przykład 777777. Jeśli chcesz uzyskać system Android, możesz później zaktualizować tę wartość w pliku config. XML.
 
     >[!NOTE]
-    >Począwszy od wersji 2.0.0 google-services.json musi być zainstalowany w folderze głównym projektu, aby skonfigurować identyfikator nadawcy. Aby uzyskać więcej informacji, zobacz [dokumentacji instalacji.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
+    >W przypadku wersji 2.0.0 należy zainstalować plik Google-Services. JSON w folderze głównym projektu w celu skonfigurowania identyfikatora nadawcy. Aby uzyskać więcej informacji, zobacz [dokumentację instalacji.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
 
 5. Wybierz pozycję **Dodaj**.
 
-Wtyczka wypychania jest zainstalowany.
+Wtyczka wypychana jest teraz zainstalowana.
 
 #### <a name="install-the-device-plugin"></a>Instalowanie wtyczki urządzenia
 
-Postępuj zgodnie z tą samą procedurą, używane do zainstalowania wtyczki wypychania. Dodaj wtyczkę urządzenie z listy wtyczek Core. (Aby ją znaleźć, wybierz **wtyczek** > **Core**.) Należy tej wtyczki, aby uzyskać nazwę platformy.
+Postępuj zgodnie z tą samą procedurą, która została użyta do zainstalowania wtyczki wypychania. Dodaj wtyczkę urządzenia z listy Core plugins. (Aby go znaleźć, wybierz **wtyczki** > **rdzeń**). Ta wtyczka jest potrzebna do uzyskania nazwy platformy.
 
-#### <a name="register-your-device-when-the-application-starts"></a>Zarejestruj urządzenie podczas uruchamiania aplikacji 
+#### <a name="register-your-device-when-the-application-starts"></a>Rejestrowanie urządzenia podczas uruchamiania aplikacji 
 
-Początkowo zawiera niektóre minimalne kodu dla systemu Android. Później możesz zmodyfikować aplikację do uruchamiania w systemie iOS lub Windows 10.
+Początkowo zawieramy minimalny kod dla systemu Android. Później możesz zmodyfikować aplikację tak, aby była uruchamiana w systemie iOS lub Windows 10.
 
-1. Dodaj wywołanie do **registerForPushNotifications** podczas wywołania zwrotnego dla procesu logowania. Alternatywnie, można dodać go w dolnej części **onDeviceReady** metody:
+1. Dodaj wywołanie do **registerForPushNotifications** podczas wywołania zwrotnego dla procesu logowania. Alternatywnie możesz dodać go u dołu metody **onDeviceReady** :
 
     ```javascript
     // Log in to the service.
@@ -133,9 +133,9 @@ Początkowo zawiera niektóre minimalne kodu dla systemu Android. Później moż
         }, handleError);
     ```
 
-    Ten przykład przedstawia wywoływanie **registerForPushNotifications** po pomyślnym uwierzytelnieniu. Możesz wywołać `registerForPushNotifications()` tak często, jak jest wymagana.
+    Ten przykład pokazuje wywoływanie **registerForPushNotifications** po pomyślnym uwierzytelnieniu. Możesz wywoływać `registerForPushNotifications()` tak często, jak jest to wymagane.
 
-2. Dodaj nowy **registerForPushNotifications** metody w następujący sposób:
+2. Dodaj nową metodę **registerForPushNotifications** w następujący sposób:
 
     ```javascript
     // Register for push notifications. Requires that phonegap-plugin-push be installed.
@@ -181,25 +181,25 @@ Początkowo zawiera niektóre minimalne kodu dla systemu Android. Później moż
     pushRegistration.on('error', handleError);
     }
     ```
-3. (Android) W poprzednim kodzie Zastąp `Your_Project_ID` liczbowym identyfikator projektu dla aplikacji na podstawie [konsoli dewelopera Google][18].
+3. Systemów W poprzednim kodzie Zastąp `Your_Project_ID` IDENTYFIKATORem projektu liczbowego dla aplikacji z poziomu [konsoli dewelopera Google][18].
 
-## <a name="optional-configure-and-run-the-app-on-android"></a>(Opcjonalnie) Konfigurowanie i uruchamianie aplikacji w systemie Android
+## <a name="optional-configure-and-run-the-app-on-android"></a>Obowiązkowe Konfigurowanie i uruchamianie aplikacji w systemie Android
 
-Wypełnij tę sekcję, aby włączyć powiadomienia wypychane dla systemu Android.
+Wykonaj tę sekcję, aby włączyć powiadomienia wypychane dla systemu Android.
 
-#### <a name="enable-gcm"></a>Włączanie usługi Firebase Cloud Messaging
+#### <a name="enable-gcm"></a>Włącz obsługę komunikatów w chmurze Firebase
 
-Ponieważ początkowo są przeznaczone dla platformy systemu Android firmy Google, należy włączyć usługi Firebase Cloud Messaging.
+Ponieważ jako pierwszy chcesz korzystać z platformy Google Android, musisz włączyć obsługę komunikatów w chmurze Firebase.
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-#### <a name="configure-backend"></a>Konfigurowanie zaplecza aplikacji mobilnej na potrzeby wysyłania żądań push przy użyciu usługi FCM
+#### <a name="configure-backend"></a>Konfigurowanie zaplecza aplikacji mobilnej w celu wysyłania żądań push przy użyciu FCM
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
-#### <a name="configure-your-cordova-app-for-android"></a>Konfiguruj aplikację Cordova dla systemu Android
+#### <a name="configure-your-cordova-app-for-android"></a>Konfigurowanie aplikacji oprogramowania Cordova dla systemu Android
 
-Otwórz w aplikacji Cordova **pliku config.xml**. Następnie zastąp `Your_Project_ID` liczbowym identyfikator projektu dla aplikacji na podstawie [konsoli dewelopera Google][18].
+W aplikacji platformy Cordova Otwórz **plik config. XML**. Następnie zastąp `Your_Project_ID` IDENTYFIKATORem projektu liczbowego dla aplikacji z poziomu [konsoli dewelopera Google][18].
 
 ```xml
 <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
@@ -207,7 +207,7 @@ Otwórz w aplikacji Cordova **pliku config.xml**. Następnie zastąp `Your_Proje
 </plugin>
 ```
 
-Otwórz **index.js**. Następnie zaktualizuj kod, aby użyć swojego projektu liczbowych identyfikatora.
+Otwórz **index. js**. Następnie zaktualizuj kod, aby użyć identyfikatora projektu numerycznego.
 
 ```javascript
 pushRegistration = PushNotification.init({
@@ -217,69 +217,69 @@ pushRegistration = PushNotification.init({
 });
 ```
 
-#### <a name="configure-device"></a>Konfigurowanie urządzenia z systemem Android do debugowania USB
+#### <a name="configure-device"></a>Konfigurowanie urządzenia z systemem Android na potrzeby debugowania USB
 
-Zanim będzie można wdrożyć aplikację na urządzeniu z systemem Android, musisz włączyć debugowanie USB. Wykonaj następujące czynności na telefonie z systemem Android:
+Aby można było wdrożyć aplikację na urządzeniu z systemem Android, należy włączyć debugowanie USB. Na telefonie z systemem Android wykonaj następujące czynności:
 
-1. Przejdź do **ustawienia** > **informacje o telefonie**. Następnie wybierz przycisk **numer kompilacji** aż tryb dewelopera jest włączona (około siedem razy).
-2. Ponownie **ustawienia** > **opcje dewelopera**, Włącz **debugowanie USB**. Następnie nawiązać telefon z systemem Android programowanie komputera za pomocą kabla USB.
+1. Przejdź do pozycji **ustawienia** > **Informacje o telefonie**. Następnie naciśnij **numer kompilacji** , dopóki tryb dewelopera zostanie włączony (około siedem razy).
+2. Wróć do **ustawień** **opcji deweloperskich** > , Włącz **debugowanie USB**. Następnie podłącz telefon z systemem Android do komputera deweloperskiego przy użyciu kabla USB.
 
-Możemy przetestowane to przy użyciu na Google Nexus 5 X urządzenie z systemem Android 6.0 (Marshmallow). Jednak te techniki są wspólne w dowolnej nowoczesnej wydania systemu Android.
+Przetestowano to przy użyciu urządzenia Google Nexus pięciokrotną z systemem Android 6,0 (Marshmallow). Jednak te techniki są wspólne dla każdej nowoczesnej wersji systemu Android.
 
-#### <a name="install-google-play-services"></a>Zainstaluj usługi Google Play
+#### <a name="install-google-play-services"></a>Zainstaluj Usługi Google Play
 
-Wtyczka wypychania zależy od systemu Android usług Google Play dla powiadomień wypychanych.
+Wtyczka wypychana korzysta z Usługi Google Play systemu Android na potrzeby powiadomień wypychanych.
 
-1. W programie Visual Studio, wybierz **narzędzia** > **Android** > **Menedżer zestawów SDK**. Następnie rozwiń **dodatki** folderu. Zaznacz odpowiednie pola, aby upewnić się, każdy z następujących SDK jest zainstalowany:
+1. W programie Visual Studio wybierz kolejno pozycje **narzędzia** > **Android** > **Android SDK Manager**. Następnie rozwiń folder **Dodatki** . Zaznacz odpowiednie pola, aby upewnić się, że zainstalowano każdy z następujących zestawów SDK:
 
-   * System android 2.3 lub nowszy
-   * Google Repository w wersji 27 lub nowszej
-   * Usługi Google Play Services 9.0.2 lub nowszej
+   * System Android 2,3 lub nowszy
+   * Wersja 27 repozytorium Google lub nowsza
+   * Usługi Google Play 9.0.2 lub wyższy
 
-2. Wybierz **zainstalować pakiety**. Następnie poczekaj na zakończenie instalacji.
+2. Wybierz pozycję **Zainstaluj pakiety**. Następnie poczekaj na zakończenie instalacji.
 
-Bieżący wymaganych bibliotek są wyświetlane w [dokumentacji instalacji phonegap wtyczka push][19].
+Bieżące wymagane biblioteki są wymienione w [dokumentacji instalacji programu PhoneGap-plugin-push][19].
 
-#### <a name="test-push-notifications-in-the-app-on-android"></a>Testowych powiadomień push w aplikacji w systemie Android
+#### <a name="test-push-notifications-in-the-app-on-android"></a>Testowanie powiadomień wypychanych w aplikacji w systemie Android
 
-Możesz teraz testowych powiadomień wypychanych, uruchamiając aplikację, a następnie wstawianie elementów do tabeli TodoItem. Tak długo, jak w przypadku korzystania z tego samego zaplecza można przetestować z tego samego urządzenia lub drugiego urządzenia. Przetestuj aplikację Cordova na platformie systemu Android, w jednym z następujących sposobów:
+Teraz można testować powiadomienia wypychane, uruchamiając aplikację i wstawiając elementy w tabeli TodoItem. Możesz testować z tego samego urządzenia lub z drugiego urządzenia, o ile używasz tego samego zaplecza. Przetestuj aplikację Cordova na platformie Android w jeden z następujących sposobów:
 
-* *Na urządzeniu fizycznym:* Dołączanie urządzenia z systemem Android na komputerze dewelopera za pomocą kabla USB.  Zamiast **Emulator systemu Google Android**, wybierz opcję **urządzenia**. Visual Studio służy do wdrażania aplikacji na urządzeniu i uruchamia aplikację. Następnie można interakcji z aplikacją na urządzeniu.
+* *Na urządzeniu fizycznym:* Dołącz urządzenie z systemem Android do komputera deweloperskiego przy użyciu kabla USB.  Zamiast usługi **Google emulator systemu Android**wybierz pozycję **urządzenie**. Program Visual Studio wdraża aplikację na urządzeniu i uruchamia aplikację. Następnie można korzystać z aplikacji na urządzeniu.
 
-  Udostępnianie ekranu aplikacje, takie jak [Mobizen][20] mogą pomóc w rozwoju aplikacji dla systemu Android. Mobizen projektów dla systemu Android ekranu do przeglądarki sieci web na komputerze.
+  Aplikacje do udostępniania ekranu, takie jak [Mobizen][20] , mogą pomóc w tworzeniu aplikacji dla systemu Android. Mobizen projekty ekranu systemu Android do przeglądarki sieci Web na komputerze.
 
-* *W emulatorze systemu Android:* Istnieją dodatkowe czynności konfiguracyjne, które są wymagane, jeśli korzystasz z emulatora.
+* *Na emulatorze systemu Android:* Istnieją dodatkowe czynności konfiguracyjne, które są wymagane w przypadku korzystania z emulatora.
 
-    Upewnij się, że są wdrażane do urządzenia wirtualnego, który ma ustawioną jako docelową, interfejsy API Google, jak pokazano w programie Android Virtual Device (AVD) manager.
+    Upewnij się, że wdrażasz program na urządzeniu wirtualnym z interfejsem API firmy Google ustawionym jako element docelowy, jak pokazano w Menedżerze urządzeń wirtualnych z systemem Android (AVD).
 
-    ![Menedżer urządzeń wirtualnych dla systemu android](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
+    ![Menedżer urządzeń wirtualne systemu Android](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
 
-    Jeśli chcesz używać szybciej x86 emulatora, [zainstalować sterownik aparatu HAXM][11], a następnie skonfigurować emulator, aby go użyć.
+    Jeśli chcesz użyć szybszego emulatora x86, [Zainstaluj sterownik HAXM][11], a następnie skonfiguruj emulator, aby go używać.
 
-    Dodaj konto Google na urządzeniu z systemem Android, wybierając **aplikacje** > **ustawienia** > **Dodaj konto**. Następnie postępuj zgodnie z monitami.
+    Dodaj konto Google do urządzenia z systemem Android, wybierając pozycję **aplikacje** > **Ustawienia** > **Dodaj konto**. Następnie postępuj zgodnie z monitami.
 
-    ![Dodaj konto Google na urządzeniu z systemem Android](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
+    ![Dodawanie konta Google do urządzenia z systemem Android](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
-    Uruchom aplikację listy zadań jako przed i Wstaw nowy element todo. Tym razem ikonę powiadomień jest wyświetlany w obszarze powiadomień. Możesz otworzyć menu powiadomień, aby wyświetlić pełny tekst powiadomienia.
+    Uruchom aplikację todolist jako wcześniejszą i Wstaw nowy element do wykonania. Tym razem w obszarze powiadomień zostanie wyświetlona ikona powiadomienia. Możesz otworzyć szufladę powiadomień, aby wyświetlić pełny tekst powiadomienia.
 
-    ![Wyświetl powiadomienia](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
+    ![Wyświetl powiadomienie](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
 
-## <a name="optional-configure-and-run-on-ios"></a>(Opcjonalnie) Konfigurowanie i uruchamianie w systemie iOS
+## <a name="optional-configure-and-run-on-ios"></a>Obowiązkowe Konfigurowanie i uruchamianie w systemie iOS
 
-Ta sekcja dotyczy uruchamiania projektu Cordova na urządzeniach z systemem iOS. Jeśli nie pracujesz z urządzeń z systemem iOS, możesz pominąć tę sekcję.
+Ta sekcja służy do uruchamiania projektu Cordova na urządzeniach z systemem iOS. Jeśli nie pracujesz z urządzeniami z systemem iOS, możesz pominąć tę sekcję.
 
-#### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Zainstaluj i uruchom agenta kompilacji zdalnej dla systemu iOS w usłudze, Mac lub w chmurze
+#### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Instalowanie i uruchamianie zdalnego agenta kompilacji systemu iOS na komputerze Mac lub w chmurze
 
-Przed uruchomieniem aplikacji Cordova w systemie iOS przy użyciu programu Visual Studio, wykonaj kroki opisane w [przewodnik instalacyjne systemu iOS][12] do zainstalowania i uruchomienia agenta kompilacji zdalnej.
+Aby można było uruchomić aplikację Cordova w systemie iOS przy użyciu programu Visual Studio, wykonaj kroki opisane w [przewodniku Instalatora systemu iOS][12] w celu zainstalowania i uruchomienia zdalnego agenta kompilacji.
 
-Upewnij się, że możesz utworzyć aplikację dla systemu iOS. Kroki opisane w przewodniku instalacji są wymagane do tworzenia aplikacji dla systemu iOS w programie Visual Studio. Jeśli nie masz komputera Mac, można tworzyć dla systemu iOS przy użyciu agenta kompilacji zdalnej usługi, takie jak MacInCloud. Aby uzyskać więcej informacji, zobacz [uruchamianie aplikacji systemu iOS w chmurze][21].
+Upewnij się, że możesz skompilować aplikację dla systemu iOS. Kroki opisane w przewodniku Instalatora są wymagane do kompilowania aplikacji dla systemu iOS w programie Visual Studio. Jeśli nie masz komputera Mac, możesz skompilować dla systemu iOS za pomocą zdalnego agenta kompilacji w usłudze, takiej jak MacInCloud. Aby uzyskać więcej informacji, zobacz [Uruchamianie aplikacji systemu iOS w chmurze][21].
 
 > [!NOTE]
-> Środowisko Xcode 7 lub nowszy jest wymagany do Użyj wtyczki wypychane w systemie iOS.
+> Do korzystania z wtyczki wypychania w systemie iOS wymagany jest Xcode 7 lub nowszy.
 
-#### <a name="find-the-id-to-use-as-your-app-id"></a>Znajdowanie Identyfikatora do użycia jako Identyfikatora aplikacji
+#### <a name="find-the-id-to-use-as-your-app-id"></a>Znajdź identyfikator, który ma być używany jako identyfikator aplikacji
 
-Przed zarejestrowaniem aplikacji dla powiadomień wypychanych, otwartego pliku config.xml w swojej aplikacji Cordova, Znajdź `id` wartość w elemencie widget atrybutu, a następnie skopiuj go do późniejszego użycia. Następujący kod XML jest identyfikator `io.cordova.myapp7777777`.
+Przed zarejestrowaniem aplikacji do powiadomień wypychanych Otwórz plik config. XML w aplikacji oprogramowania Cordova, Znajdź wartość atrybutu `id` w elemencie widget, a następnie skopiuj ją do późniejszego użycia. W poniższym kodzie XML identyfikator jest `io.cordova.myapp7777777`.
 
 ```xml
 <widget defaultlocale="en-US" id="io.cordova.myapp7777777"
@@ -287,63 +287,63 @@ Przed zarejestrowaniem aplikacji dla powiadomień wypychanych, otwartego pliku c
     xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
 ```
 
-Tego identyfikatora należy użyć później, podczas tworzenia identyfikator aplikacji w portalu dla deweloperów firmy Apple. Jeżeli tworzysz inny identyfikator aplikacji w portalu dla deweloperów, należy wykonać kilka dodatkowych kroków w dalszej części tego samouczka. Identyfikator w elemencie widget musi odpowiadać identyfikator aplikacji w portalu dla deweloperów.
+Później Użyj tego identyfikatora podczas tworzenia identyfikatora aplikacji w portalu dla deweloperów firmy Apple. Jeśli utworzysz inny identyfikator aplikacji w portalu dla deweloperów, w dalszej części tego samouczka musisz wykonać kilka dodatkowych kroków. Identyfikator w elemencie widget musi być zgodny z IDENTYFIKATORem aplikacji w portalu dla deweloperów.
 
-#### <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Zarejestrować aplikację na potrzeby powiadomień wypychanych w portalu dla deweloperów firmy Apple
+#### <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Rejestrowanie aplikacji do powiadomień wypychanych w portalu dla deweloperów firmy Apple
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
 [Obejrzyj wideo przedstawiające podobne kroki](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-5-Set-up-apns-for-push)
 
-#### <a name="configure-azure-to-send-push-notifications"></a>Konfigurowanie platformy Azure, jak wysyłać powiadomienia wypychane
+#### <a name="configure-azure-to-send-push-notifications"></a>Konfigurowanie platformy Azure do wysyłania powiadomień wypychanych
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-#### <a name="verify-that-your-app-id-matches-your-cordova-app"></a>Sprawdź, czy Identyfikatora aplikacji odpowiada aplikacji Cordova
+#### <a name="verify-that-your-app-id-matches-your-cordova-app"></a>Sprawdź, czy identyfikator aplikacji jest zgodny z aplikacją Cordova
 
-Jeśli identyfikator aplikacji, który został utworzony w ramach Twojego konta dewelopera firmy Apple już zgodny z Identyfikatorem elementu widget w pliku config.xml, możesz pominąć ten krok. Jednak jeśli niezgodne identyfikatory, wykonaj następujące czynności:
+Jeśli identyfikator aplikacji utworzony na koncie dewelopera firmy Apple jest już zgodny z IDENTYFIKATORem elementu widget w pliku config. XML, możesz pominąć ten krok. Jeśli jednak identyfikatory nie są zgodne, wykonaj następujące czynności:
 
-1. Usuwanie folderu platforms z projektu.
-2. Usuń folder dodatków z projektu.
-3. Usuwanie folderu node_modules z projektu.
-4. Aktualizowanie atrybutu id elementu widget w pliku config.xml, aby użyć Identyfikatora aplikacji, który został utworzony w ramach Twojego konta dewelopera firmy Apple.
+1. Usuń folder platform z projektu.
+2. Usuń folder wtyczek z projektu.
+3. Usuń folder node_modules z projektu.
+4. Zaktualizuj atrybut ID elementu widget w pliku config. XML, aby użyć identyfikatora aplikacji utworzonego na koncie dewelopera firmy Apple.
 5. Ponownie skompiluj projekt.
 
-##### <a name="test-push-notifications-in-your-ios-app"></a>Testowych powiadomień push w aplikacji systemu iOS
+##### <a name="test-push-notifications-in-your-ios-app"></a>Testowanie powiadomień wypychanych w aplikacji systemu iOS
 
-1. W programie Visual Studio, upewnij się, że **iOS** jest wybrany jako cel wdrożenia. Następnie wybierz pozycję **urządzenia** do uruchamiania powiadomień wypychanych na urządzenia z systemem iOS połączone.
+1. W programie Visual Studio upewnij się, że dla elementu docelowego wdrożenia wybrano opcję **iOS** . Następnie wybierz pozycję **urządzenie** , aby uruchomić powiadomienia wypychane na podłączonym urządzeniu z systemem iOS.
 
-    Powiadomienia wypychane można uruchomić na urządzeniu z systemem iOS, który jest podłączony do komputera za pomocą programu iTunes. W narzędziu iOS Simulator nie obsługuje powiadomień wypychanych.
+    Powiadomienia wypychane można uruchomić na urządzeniu z systemem iOS, które jest podłączone do komputera za pomocą programu iTunes. Symulator systemu iOS nie obsługuje powiadomień wypychanych.
 
-2. Wybierz **Uruchom** przycisk lub **F5** w programie Visual Studio, aby skompilować projekt i uruchomić aplikację w urządzeniu z systemem iOS. Następnie wybierz pozycję **OK** do akceptowania powiadomień wypychanych.
+2. Wybierz przycisk **Uruchom** lub **F5** w programie Visual Studio, aby skompilować projekt i uruchomić aplikację na urządzeniu z systemem iOS. Następnie wybierz przycisk **OK** , aby zaakceptować powiadomienia wypychane.
 
    > [!NOTE]
-   > Aplikacja zażąda potwierdzenia dla powiadomień wypychanych przy pierwszym uruchomieniu.
+   > Aplikacja żąda potwierdzenia powiadomień wypychanych podczas pierwszego uruchomienia.
 
-3. W aplikacji wpisz zadania, a następnie wybierz znak plus **(+)** ikony.
-4. Sprawdź, czy Odebrano powiadomienie. Następnie wybierz pozycję **OK** aby odrzucić powiadomienie.
+3. W aplikacji wpisz zadanie, a następnie wybierz ikonę znaku plus **(+)** .
+4. Sprawdź, czy odebrano powiadomienie. Następnie wybierz przycisk **OK** , aby odrzucić powiadomienie.
 
-## <a name="optional-configure-and-run-on-windows"></a>(Opcjonalnie) Konfigurowanie i systemem Windows
+## <a name="optional-configure-and-run-on-windows"></a>Obowiązkowe Konfigurowanie i uruchamianie w systemie Windows
 
-W tej sekcji opisano sposób uruchamiania projektu aplikacji Apache Cordova na urządzeniach z systemem Windows 10 (PhoneGap wtyczki push jest obsługiwana w systemie Windows 10). Jeśli nie pracujesz z urządzeniami Windows, możesz pominąć tę sekcję.
+W tej sekcji opisano sposób uruchamiania projektu aplikacji Apache Cordova na urządzeniach z systemem Windows 10 (wtyczka wypychana PhoneGap jest obsługiwana w systemie Windows 10). Jeśli nie pracujesz z urządzeniami z systemem Windows, możesz pominąć tę sekcję.
 
-#### <a name="register-your-windows-app-for-push-notifications-with-wns"></a>Rejestrowanie aplikacji Windows dla usługi powiadomień wypychanych za pomocą usługi WNS
+#### <a name="register-your-windows-app-for-push-notifications-with-wns"></a>Rejestrowanie aplikacji systemu Windows na potrzeby powiadomień wypychanych za pomocą usługi WNS
 
-Aby użyć opcji Store w programie Visual Studio, wybierz Windows target z listy platformy rozwiązania, takie jak **Windows x64** lub **Windows x86**. (Należy unikać **Windows AnyCPU** dla powiadomień wypychanych.)
+Aby użyć opcji sklepu w programie Visual Studio, wybierz obiekt docelowy systemu Windows z listy platform rozwiązań, np. **Windows-x64** lub **Windows-x86**. (Unikaj używania powiadomień wypychanych w **systemie Windows** ).
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
 [Obejrzyj wideo przedstawiające podobne kroki][13]
 
-#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurowanie Centrum powiadomień w przypadku usługi WNS
+#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurowanie centrum powiadomień dla WNS
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-#### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>Konfiguruj aplikację Cordova do obsługi powiadomień wypychanych Windows
+#### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>Konfigurowanie aplikacji oprogramowania Cordova do obsługi powiadomień wypychanych systemu Windows
 
-Otwórz projektanta konfiguracji, kliknij prawym przyciskiem myszy **pliku config.xml**. Następnie wybierz pozycję **Projektant widoków**. Następnie wybierz pozycję **Windows** , a następnie wybierz pozycję **systemu Windows 10** w obszarze **wersji docelowej Windows**.
+Otwórz projektanta konfiguracji, klikając prawym przyciskiem myszy **plik config. XML**. Następnie wybierz pozycję **Projektant widoków**. Następnie wybierz kartę **Windows** , a następnie wybierz pozycję **Windows 10** w obszarze **wersja docelowa systemu Windows**.
 
-Aby zapewnić obsługę powiadomień wypychanych w swoich kompilacjach domyślne (debugowanie), należy otworzyć **build.json** pliku. Następnie skopiuj konfigurację "wersja" konfiguracji debugowania.
+Aby obsługiwać powiadomienia wypychane w ramach domyślnych (debugowania) kompilacji, Otwórz plik **Build. JSON** . Następnie skopiuj konfigurację "Release" do konfiguracji debugowania.
 
 ```json
 "windows": {
@@ -354,7 +354,7 @@ Aby zapewnić obsługę powiadomień wypychanych w swoich kompilacjach domyślne
 }
 ```
 
-Po aktualizacji **build.json** plik powinien zawierać następujący kod:
+Po aktualizacji plik **Build. JSON** powinien zawierać następujący kod:
 
 ```json
 "windows": {
@@ -369,24 +369,24 @@ Po aktualizacji **build.json** plik powinien zawierać następujący kod:
     }
 ```
 
-Tworzenie aplikacji i sprawdź, czy żadne błędy. Aplikację kliencką teraz należy zarejestrować odbieranie powiadomień z zaplecza funkcji Mobile Apps. W tej sekcji należy powtórzyć dla każdego projektu Windows w rozwiązaniu.
+Skompiluj aplikację i sprawdź, czy nie ma żadnych błędów. Twoja aplikacja kliencka powinna teraz rejestrować się w celu otrzymywania powiadomień z zaplecza Mobile Apps. Powtórz tę sekcję dla każdego projektu systemu Windows w rozwiązaniu.
 
-#### <a name="test-push-notifications-in-your-windows-app"></a>Testowych powiadomień push w aplikacji Windows
+#### <a name="test-push-notifications-in-your-windows-app"></a>Testowanie powiadomień wypychanych w aplikacji systemu Windows
 
-W programie Visual Studio, upewnij się, że platforma Windows jest wybrany jako cel wdrożenia, takich jak **Windows x64** lub **Windows x86**. Aby uruchomić aplikację na komputerze Windows 10, który jest hostem programu Visual Studio, wybierz opcję **komputera lokalnego**.
+W programie Visual Studio upewnij się, że platforma systemu Windows jest wybrana jako miejsce docelowe wdrożenia, na przykład **Windows-x64** lub **Windows-x86**. Aby uruchomić aplikację na komputerze z systemem Windows 10, na którym znajduje się program Visual Studio, wybierz pozycję **komputer lokalny**.
 
-1. Wybierz **Uruchom** przycisk, aby skompilować projekt i uruchomić aplikację.
+1. Wybierz przycisk **Run (Uruchom** ), aby skompilować projekt i uruchomić aplikację.
 
-2. W aplikacji wpisz nazwę nowego czynność do wykonania, a następnie wybierz znak plus **(+)** ikonę, aby ją dodać.
+2. W aplikacji wpisz nazwę nowego TodoItem, a następnie wybierz ikonę znaku plus **(+)** , aby ją dodać.
 
-Sprawdź, czy otrzyma powiadomienie po dodaniu elementu.
+Sprawdź, czy odebrano powiadomienie po dodaniu elementu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Przeczytaj o [usługi Notification Hubs][17] Aby dowiedzieć się więcej na temat powiadomień wypychanych.
-* Jeśli jeszcze tego nie zrobiono, należy kontynuować samouczek przez [Dodawanie uwierzytelniania][14] do swojej aplikacji Apache Cordova.
+* Przeczytaj informacje o [Notification Hubs][17] , aby dowiedzieć się więcej na temat powiadomień wypychanych.
+* Jeśli jeszcze tego nie zrobiono, Kontynuuj samouczek, [dodając uwierzytelnianie][14] do aplikacji Apache Cordova.
 
-Dowiedz się, jak korzystać z następujących zestawów SDK:
+Dowiedz się, jak używać następujących zestawów SDK:
 
 * [Zestaw Apache Cordova SDK][15]
 * [Zestaw ASP.NET Server SDK][1]

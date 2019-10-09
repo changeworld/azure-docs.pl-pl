@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: c81f4cacd4c93d681122f3c8cd692ca8645288af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 676a41b64b79be6b11c3ef22b34d3de0e37e2a92
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240087"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023794"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel"></a>Szybki start: Rozpoczynanie pracy z programem Azure Sentinel
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Szybki Start: Rozpoczynanie pracy z platformą Azure — wskaźnikiem
 
 
 
@@ -43,16 +43,16 @@ Aby wizualizować i uzyskać analizę tego, co dzieje się w środowisku, najpie
 
 Główna treść strony Przegląd zapewnia wgląd w informacje o stanie zabezpieczeń obszaru roboczego:
 
-- **Zdarzenia i alerty w czasie**: Wyświetla listę liczby zdarzeń oraz liczbę alertów, które zostały utworzone na podstawie tych zdarzeń. Jeśli widzisz, że najprawdopodobniej wystąpił nietypowy sposób, zobaczysz dla niego alerty — Jeśli coś się nie dzieje w przypadku wystąpienia w zdarzeniach, ale nie widzisz alertów, może to być przyczyną problemu.
+- **Zdarzenia i alerty w czasie**: zawiera listę liczby zdarzeń i liczby alertów, które zostały utworzone na podstawie tych zdarzeń. Jeśli widzisz, że najprawdopodobniej wystąpił nietypowy sposób, zobaczysz dla niego alerty — Jeśli coś się nie dzieje w przypadku wystąpienia w zdarzeniach, ale nie widzisz alertów, może to być przyczyną problemu.
 
-- **Potencjalne złośliwe zdarzenia**: W przypadku wykrycia ruchu ze źródeł, które są znane jako złośliwe, wskaźnik platformy Azure będzie ostrzegał o mapie. Jeśli widzisz kolor pomarańczowy, jest to ruch przychodzący: ktoś próbuje uzyskać dostęp do organizacji przy użyciu znanego złośliwego adresu IP. Jeśli zostanie wyświetlone działanie wychodzące (czerwone), oznacza to, że dane z sieci są przesyłane strumieniowo z organizacji do znanego złośliwego adresu IP.
+- **Potencjalnie złośliwe zdarzenia**: w przypadku wykrycia ruchu ze źródeł, które są znane jako złośliwe, wskaźnik na platformie Azure będzie ostrzegał o mapie. Jeśli widzisz kolor pomarańczowy, jest to ruch przychodzący: ktoś próbuje uzyskać dostęp do organizacji przy użyciu znanego złośliwego adresu IP. Jeśli zostanie wyświetlone działanie wychodzące (czerwone), oznacza to, że dane z sieci są przesyłane strumieniowo z organizacji do znanego złośliwego adresu IP.
 
    ![Mapa wskaźnikowa platformy Azure](./media/qs-get-visibility/map.png)
 
 
-- **Ostatnie zdarzenia**: Wyświetlanie ostatnich zdarzeń, ich ważności i liczby alertów skojarzonych ze zdarzeniem. Jeśli widzisz jako nagły szczyt w określonym typie alertu, może to oznaczać, że jest aktualnie uruchomiony aktywny atak. Na przykład w przypadku nagłego szczytu 20 zdarzeń typu Pass-the-hash z usługi Azure ATP istnieje możliwość, że ktoś aktualnie próbuje się zaatakować.
+- **Ostatnie zdarzenia**: Aby wyświetlić ostatnie incydenty, ich ważność oraz liczbę alertów skojarzonych ze zdarzeniem. Jeśli widzisz jako nagły szczyt w określonym typie alertu, może to oznaczać, że jest aktualnie uruchomiony aktywny atak. Na przykład w przypadku nagłego szczytu 20 zdarzeń typu Pass-the-hash z usługi Azure ATP istnieje możliwość, że ktoś aktualnie próbuje się zaatakować.
 
-- **Anomalie źródła danych**: Analitycy danych firmy Microsoft tworzą modele, które stale przeszukają dane ze źródeł danych pod kątem anomalii. Jeśli nie ma żadnych anomalii, nic nie zostanie wyświetlone. W przypadku wykrycia anomalii należy szczegółowo szczegółowe je, aby zobaczyć, co się stało. Na przykład kliknij pozycję skok w działaniu platformy Azure. Możesz kliknąć **Wykres** , aby zobaczyć, kiedy nastąpiło przekroczenie, a następnie odfiltrować działania, które wystąpiły w tym okresie, aby zobaczyć, co spowodowało skok.
+- **Anomalie źródła danych**: analityki danych firmy Microsoft utworzyły modele, które stale przeszukują dane ze źródeł danych pod kątem anomalii. Jeśli nie ma żadnych anomalii, nic nie zostanie wyświetlone. W przypadku wykrycia anomalii należy szczegółowo szczegółowe je, aby zobaczyć, co się stało. Na przykład kliknij pozycję skok w działaniu platformy Azure. Możesz kliknąć **Wykres** , aby zobaczyć, kiedy nastąpiło przekroczenie, a następnie odfiltrować działania, które wystąpiły w tym okresie, aby zobaczyć, co spowodowało skok.
 
    ![Mapa wskaźnikowa platformy Azure](./media/qs-get-visibility/anomolies.png)
 
@@ -63,7 +63,7 @@ Wbudowane skoroszyty zapewniają zintegrowane dane z połączonych źródeł dan
 1. W obszarze **Ustawienia**wybierz pozycję **skoroszyty**. W obszarze **zainstalowane**można zobaczyć wszystkie zainstalowane skoroszyty. W obszarze **wszystko**można zobaczyć całą galerię wbudowanych skoroszytów, które są dostępne do zainstalowania. 
 2. Wyszukaj konkretny skoroszyt, aby zobaczyć całą listę i opis poszczególnych ofert. 
 3. Przy założeniu, że używasz usługi Azure AD, aby rozpocząć korzystanie z platformy Azure, zalecamy zainstalowanie co najmniej następujących skoroszytów:
-   - **Usługa Azure AD**: Użyj jednego lub obu następujących elementów:
+   - **Azure AD**: Użyj jednego lub obu następujących elementów:
        - **Logowania za pomocą usługi Azure AD** analizują logowania w czasie, aby sprawdzić, czy występują anomalie. Te skoroszyty zawierają nieudane logowania w aplikacjach, urządzeniach i lokalizacjach, dzięki czemu możesz zauważyć, że w przypadku nietypowego działania wystąpią. Zwróć uwagę na wiele nieudanych logowań. 
        - **Dzienniki inspekcji usługi Azure AD** analizują działania administracyjne, takie jak zmiany użytkowników (Dodawanie, usuwanie itp.), tworzenie grup i modyfikacje.  
 
@@ -72,14 +72,14 @@ Wbudowane skoroszyty zapewniają zintegrowane dane z połączonych źródeł dan
       ![PAL Alto Dashboard](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Możesz dostosować skoroszyty, edytując przycisk ![](./media/qs-get-visibility/edit-query-button.png)głównej kwerendy. Możesz ![kliknąć przycisk](./media/qs-get-visibility/go-to-la-button.png) przycisk, aby przejść do log Analytics, [Aby edytować zapytanie](../azure-monitor/log-query/get-started-portal.md)w tym miejscu i można wybrać wielokropek (...) i wybrać opcję **Dostosuj dane kafelka**, co umożliwia edytowanie filtru czasu głównego lub usuwanie określone kafelki ze skoroszytu.
+Możesz dostosować skoroszyty, edytując główne zapytanie ![button @ no__t-1. Możesz kliknąć przycisk ![button @ no__t-1, aby przejść do [log Analytics, aby edytować zapytanie](../azure-monitor/log-query/get-started-portal.md)w tym miejscu, a następnie wybrać wielokropek (...) i wybrać opcję **Dostosuj dane kafelka**, co umożliwia edytowanie filtru czasu głównego lub usuwanie określonych kafelków z skoroszyt.
 
-Aby uzyskać więcej informacji na temat pracy z zapytaniami, zobacz [samouczek: Dane wizualne w Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+Aby uzyskać więcej informacji na temat pracy z zapytaniami, zobacz [Samouczek: dane wizualne w log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 ### <a name="add-a-new-tile"></a>Dodawanie nowego kafelka
 
 Jeśli chcesz dodać nowy kafelek, możesz dodać go do istniejącego skoroszytu, który został utworzony lub wbudowany arkusz kontrolny platformy Azure. 
-1. W log Analytics Utwórz kafelek przy użyciu instrukcji znalezionych w [samouczku: Dane wizualne w Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
+1. W Log Analytics Utwórz kafelek przy użyciu instrukcji znalezionych w [samouczku: dane wizualne w log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
 2. Po utworzeniu kafelka w obszarze **Przypnij**wybierz skoroszyt, w którym ma się pojawić kafelek.
 
 ## <a name="create-new-workbooks"></a>Utwórz nowe skoroszyty
@@ -122,11 +122,11 @@ Generuj wykrycia dla [źródeł danych połączonych z platformą Azure wskaźni
 
 Podczas tworzenia nowego wykrywania należy skorzystać z wbudowanych wykryć spreparowanych przez badaczy zabezpieczeń firmy Microsoft, które są dostosowane do połączonych źródeł danych.
 
-Aby wyświetlić wszystkie gotowe do użycia wykrycia, przejdź do pozycji **Analiza** , a następnie pozycję **Szablony reguł**. Ta karta zawiera wszystkie wbudowane reguły kontrolki Azure — wskaźnik.
+Aby wyświetlić wszystkie gotowe do użycia wykrycia, przejdź do pozycji **Analiza** , a następnie pozycję **Szablony reguł**. Ta karta zawiera wszystkie wbudowane reguły kontrolki Azure — wskaźnik.
 
    ![Używanie wbudowanych wykryć do znajdowania zagrożeń przy użyciu platformy Azure — wskaźnik](media/tutorial-detect-built-in/view-oob-detections.png)
 
-Aby uzyskać więcej informacji na temat uzyskiwania wbudowanych wykryć, zobacz [samouczek: Uzyskaj wbudowaną analizę](tutorial-detect-threats-built-in.md).
+Aby uzyskać więcej informacji na temat uzyskiwania gotowych wykryć, zobacz [Samouczek: uzyskiwanie wbudowanej analizy](tutorial-detect-threats-built-in.md).
  
 ## <a name="next-steps"></a>Następne kroki
 W tym przewodniku szybki start pokazano, jak rozpocząć korzystanie z platformy Azure. Przejdź do samouczka dotyczącego [sposobu wykrywania zagrożeń](tutorial-detect-threats-built-in.md).

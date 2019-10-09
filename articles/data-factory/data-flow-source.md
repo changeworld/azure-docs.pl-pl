@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 16bc4c2651d5571bce823aa9c69f823d7fede8af
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801621"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029216"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Przekształcanie źródła na potrzeby mapowania przepływu danych 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Transformacja źródła konfiguruje źródło danych dla przepływu danych. Podczas projektowania przepływów danych pierwszy krok zawsze skonfiguruje transformację źródłową. Aby dodać źródło, kliknij pole **Dodaj źródło** na kanwie przepływu danych.
 
@@ -28,8 +28,8 @@ Każda transformacja źródła jest skojarzona z dokładnie jednym Data Factory 
 Mapowanie przepływu danych odbywa się zgodnie z podejściem wyodrębniania, ładowania, przekształcania (ELT) i współdziała z *tymczasowymi* zestawami danych, które są wszystkie na platformie Azure. Obecnie następujące zestawy danych mogą być używane w transformacji źródłowej:
     
 * Azure Blob Storage
-* Azure Data Lake Storage Gen1
-* Azure Data Lake Storage Gen2
+* Azure Data Lake Storage 1. generacji
+* Usługa Azure Data Lake Storage 2. generacji
 * Azure SQL Data Warehouse
 * Azure SQL Database
 
@@ -39,9 +39,9 @@ Azure Data Factory ma dostęp do ponad 80 łączników natywnych. Aby dołączy�
 
 Po dodaniu źródła skonfiguruj go za pomocą karty **Ustawienia źródła** . W tym miejscu możesz wybrać lub utworzyć zestaw danych, do którego prowadzi punkty źródłowe. Możesz również wybrać opcje schematu i próbkowania dla danych.
 
-![Karta Ustawienia źródła](media/data-flow/source1.png "Karta Ustawienia źródła")
+Karta ![Ustawienia źródła]karty(media/data-flow/source1.png "ustawienia źródłowe")
 
-**Dryf schematu:** [Dryfowanie schematu](concepts-data-flow-schema-drift.md) to zdolność fabryki danych do natywnej obsługi elastycznych schematów w przepływach danych bez konieczności jawnego definiowania zmian w kolumnach.
+**Dryfowanie schematu:** [dryfowanie schematu](concepts-data-flow-schema-drift.md) to zdolność fabryki danych do natywnej obsługi elastycznych schematów w przepływach danych bez konieczności jawnego definiowania zmian w kolumnach.
 
 * Zaznacz pole **Zezwalaj na dryf schematu** , jeśli kolumny źródłowe będą często zmieniane. To ustawienie umożliwia przepływ wszystkich przychodzących pól źródłowych do przepływu przez przekształcenia do ujścia.
 
@@ -51,7 +51,7 @@ Po dodaniu źródła skonfiguruj go za pomocą karty **Ustawienia źródła** . 
 
 **Pomiń liczbę wierszy:** Pole Pomiń liczbę wierszy określa liczbę wierszy, które mają być ignorowane na początku zestawu danych.
 
-**Sond** Włącz próbkowanie, aby ograniczyć liczbę wierszy ze źródła. Użyj tego ustawienia, gdy testujesz lub przykładowe dane ze źródła do celów debugowania.
+**Próbkowanie:** Włącz próbkowanie, aby ograniczyć liczbę wierszy ze źródła. Użyj tego ustawienia, gdy testujesz lub przykładowe dane ze źródła do celów debugowania.
 
 Aby sprawdzić, czy źródło jest prawidłowo skonfigurowane, Włącz tryb debugowania i Pobierz Podgląd danych. Aby uzyskać więcej informacji, zobacz [tryb debugowania](concepts-data-flow-debug-mode.md).
 
@@ -62,7 +62,7 @@ Aby sprawdzić, czy źródło jest prawidłowo skonfigurowane, Włącz tryb debu
 
 Jeśli używasz zestawu danych opartego na plikach, takiego jak Azure Blob Storage lub Azure Data Lake Storage, karta **Opcje źródła** umożliwia zarządzanie sposobem odczytywania plików przez źródło.
 
-![Opcje źródła](media/data-flow/sourceOPtions1.png "Opcje źródła")
+![](media/data-flow/sourceOPtions1.png "Opcje") źródła opcji źródła
 
 **Ścieżka symboli wieloznacznych:** Użycie wzorca wieloznacznego spowoduje, że ADF będzie przełączać pętlę do każdego pasującego folderu i pliku w ramach pojedynczego przekształcenia źródła. Jest to efektywny sposób przetwarzania wielu plików w ramach pojedynczego przepływu. Dodaj wiele symboli wieloznacznych wzorców ze znakiem +, który pojawia się po umieszczeniu wskaźnika myszy na istniejącym wzorcu symboli wieloznacznych.
 
@@ -70,24 +70,24 @@ Z kontenera źródłowego wybierz serię plików, które pasują do wzorca. W ze
 
 Przykłady symboli wieloznacznych:
 
-* ```*```Reprezentuje dowolny zestaw znaków
-* ```**```Reprezentuje zagnieżdżanie katalogów cyklicznych
-* ```?```Zamienia jeden znak
-* ```[]```Dopasowuje jeden z więcej znaków w nawiasach
+* ```*``` reprezentuje dowolny zestaw znaków
+* ```**``` reprezentuje cykliczne zagnieżdżanie katalogów
+* ```?``` zastępuje jeden znak
+* ```[]``` dopasowuje jeden z więcej znaków w nawiasach
 
-* ```/data/sales/**/*.csv```Pobiera wszystkie pliki CSV w obszarze/Data/Sales
-* ```/data/sales/20??/**```Pobiera wszystkie pliki w 20-wieku
-* ```/data/sales/2004/*/12/[XY]1?.csv```Pobiera wszystkie pliki CSV w 2004 w grudniu, zaczynając od X lub Y poprzedzone znakiem dwucyfrowym
+* ```/data/sales/**/*.csv``` pobiera wszystkie pliki CSV w obszarze/Data/Sales
+* ```/data/sales/20??/**``` pobiera wszystkie pliki w 20-wieku
+* ```/data/sales/2004/*/12/[XY]1?.csv``` pobiera wszystkie pliki CSV w 2004 w grudniu, zaczynając od X lub Y poprzedzone przez dwucyfrowy numer
 
-**Ścieżka katalogu głównego partycji:** Jeśli masz partycjonowane foldery w źródle plików o ```key=value``` formacie (na przykład Year = 2019), możesz przypisać najwyższy poziom tego drzewa folderów partycji do nazwy kolumny w strumieniu danych przepływu danych.
+**Ścieżka katalogu głównego partycji:** Jeśli masz partycjonowane foldery w źródle plików o formacie ```key=value``` (na przykład Year = 2019), możesz przypisać najwyższy poziom tego drzewa folderów partycji do nazwy kolumny w strumieniu danych przepływu danych.
 
 Najpierw ustaw symbol wieloznaczny, aby uwzględnić wszystkie ścieżki, które są folderami partycjonowanymi oraz pliki liści, które chcesz odczytać.
 
-![Ustawienia pliku źródłowego partycji](media/data-flow/partfile2.png "Ustawienie pliku partycji")
+(media/data-flow/partfile2.png "Ustawienie pliku partycji") ![ustawień plików źródłowych partycji]
 
 Użyj ustawienia ścieżka katalogu głównego partycji, aby określić, jaki jest najwyższy poziom struktury folderów. Gdy przeglądasz zawartość danych za pośrednictwem wersji zapoznawczej, zobaczysz, że na AUTOMATYCZNYm ekranie zostaną dodane rozpoznane partycje znalezione na każdym z poziomów folderów.
 
-![Ścieżka katalogu głównego partycji](media/data-flow/partfile1.png "Podgląd ścieżki katalogu głównego partycji")
+![](media/data-flow/partfile1.png "Ścieżka katalogu głównego partycji") ścieżki głównej partycji
 
 **Lista plików:** To jest zestaw plików. Utwórz plik tekstowy, który zawiera listę plików ścieżek względnych do przetworzenia. Wskaż ten plik tekstowy.
 
@@ -120,32 +120,32 @@ W takim przypadku wszystkie pliki, które zostały objęte usługą/Data/Sales, 
 
 Wszystkie ustawienia źródła można określić jako wyrażenia przy użyciu [języka wyrażenia przekształcenia przepływu danych mapowania](data-flow-expression-functions.md). Aby dodać zawartość dynamiczną, kliknij lub umieść kursor wewnątrz pól w panelu ustawień. Kliknij hiperlink, aby **dodać zawartość dynamiczną**. Spowoduje to uruchomienie konstruktora wyrażeń, w którym można ustawić wartości dynamicznie przy użyciu wyrażeń, statycznych wartości literałów lub parametrów.
 
-![Parametry](media/data-flow/params6.png "Parametry")
+![Parametry parametrów](media/data-flow/params6.png "")
 
 ## <a name="sql-source-options"></a>Opcje źródła SQL
 
 Jeśli źródło jest w SQL Database lub SQL Data Warehouse, na karcie **Opcje źródła** są dostępne dodatkowe ustawienia specyficzne dla bazy danych SQL. 
 
-**Klawiatur** Wybierz, czy chcesz wskazać źródło w tabeli (równoważnej ```Select * from <table-name>```), czy wprowadzić niestandardowe zapytanie SQL.
+**Dane wejściowe:** Wybierz, czy chcesz wskazać źródło w tabeli (równoważnej ```Select * from <table-name>```), czy wprowadzić niestandardowe zapytanie SQL.
 
-**Zapytanie**: W przypadku wybrania zapytania w polu wejściowym wprowadź zapytanie SQL dla źródła. To ustawienie przesłania każdą tabelę, która została wybrana w zestawie danych. Klauzule **order by** nie są obsługiwane w tym miejscu, ale można ustawić pełną instrukcję SELECT FROM. Można również użyć funkcji tabeli zdefiniowanej przez użytkownika. **SELECT * FROM udfGetData ()** to format UDF w języku SQL, który zwraca tabelę. To zapytanie spowoduje utworzenie tabeli źródłowej, której można użyć w przepływie danych.
+**Zapytanie**: w przypadku wybrania zapytania w polu wejściowym wprowadź zapytanie SQL dla źródła. To ustawienie przesłania każdą tabelę, która została wybrana w zestawie danych. Klauzule **order by** nie są obsługiwane w tym miejscu, ale można ustawić pełną instrukcję SELECT FROM. Można również użyć funkcji tabeli zdefiniowanej przez użytkownika. **SELECT * FROM udfGetData ()** to format UDF w języku SQL, który zwraca tabelę. To zapytanie spowoduje utworzenie tabeli źródłowej, której można użyć w przepływie danych.
 
-**Rozmiar wsadu**: Wprowadź rozmiar partii, aby podzielić duże ilości danych na odczyt.
+**Rozmiar wsadu**: wprowadź rozmiar partii, aby podzielić duże ilości danych na odczyt.
 
-**Poziom izolacji**: Domyślne źródła SQL w mapowaniu przepływu danych są odczytywane jako niezatwierdzone. Poziom izolacji można zmienić tutaj na jedną z następujących wartości:
+**Poziom izolacji**: wartość domyślna dla źródeł SQL w mapowaniu przepływu danych jest odczytana. Poziom izolacji można zmienić tutaj na jedną z następujących wartości:
 * Odczytaj zatwierdzone
 * Odczytaj niezatwierdzone
 * Odczyt powtarzalny
 * Serializable
 * Brak (Ignoruj poziom izolacji)
 
-![Poziom izolacji](media/data-flow/isolationlevel.png "Poziom izolacji")
+(media/data-flow/isolationlevel.png "Poziom izolacji") ![poziomu izolacji]
 
-## <a name="projection"></a>Rzut
+## <a name="projection"></a>Projekcja
 
 Podobnie jak w przypadku schematów w zestawach danych, projekcja w źródle definiuje kolumny, typy i formaty dane z danych źródłowych. W przypadku większości typów zestawu danych, takich jak SQL i Parquet, projekcja w źródle jest stała, aby odzwierciedlała schemat zdefiniowany w zestawie danych. Jeśli pliki źródłowe nie są jednoznacznie wpisane (na przykład pliki w formacie Flat CSV, a nie pliki parquet), można zdefiniować typy danych dla każdego pola w transformacji źródłowej.
 
-![Ustawienia na karcie projekcja](media/data-flow/source3.png "Projekcja")
+![Ustawienia na](media/data-flow/source3.png "projekcji") karty projekcji
 
 Jeśli plik tekstowy nie ma zdefiniowanego schematu, wybierz pozycję **Wykryj typ danych** , aby Data Factory próbkować i wywnioskować typy danych. Wybierz opcję **Definiuj domyślny format** , aby automatycznie wykrywać domyślne formaty danych. 
 
@@ -155,7 +155,7 @@ Typy danych kolumny można modyfikować w transformacjach kolumn pochodnych w d�
 
 Na karcie **Optymalizacja** dla transformacji źródłowej może zostać wyświetlony typ partycji **źródłowej** . Ta opcja jest dostępna tylko wtedy, gdy źródło jest Azure SQL Database. Dzieje się tak, ponieważ Data Factory próbuje nawiązać połączenie równolegle, aby uruchamiać duże zapytania względem źródła SQL Database.
 
-![Ustawienia partycji źródłowej](media/data-flow/sourcepart3.png "partycjonowanie")
+(media/data-flow/sourcepart3.png "Partycjonowanie") ![ustawień partycji źródłowej]
 
 Nie ma potrzeby partycjonowania danych w źródle SQL Database, ale partycje są przydatne w przypadku dużych zapytań. Partycję można oprzeć na kolumnie lub zapytaniu.
 
@@ -167,7 +167,7 @@ Z tabeli źródłowej wybierz kolumnę do partycjonowania. Należy również ust
 
 Możesz wybrać opcję partycjonowania połączeń na podstawie zapytania. Wprowadź zawartość predykatu WHERE. Na przykład wprowadź Year > 1980.
 
-Aby uzyskać więcej informacji na temat optymalizacji w ramach mapowania przepływu danych, zobacz [Optymalizacja karty](concepts-data-flow-optimize-tab.md).
+Aby uzyskać więcej informacji na temat optymalizacji w ramach mapowania przepływu danych, zobacz [kartę Optymalizacja](concepts-data-flow-overview.md#optimize).
 
 ## <a name="next-steps"></a>Następne kroki
 

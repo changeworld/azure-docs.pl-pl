@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7996f564aaa78313304bf3bc11f549d24fce82a4
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: e84c3bfa5a5f43ec652f12d70718ab63bd7a19e5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963856"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029540"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Samouczek: Tworzenie i wdrażanie pierwszego szablonu Azure Resource Manager
 
@@ -22,7 +22,7 @@ Ten samouczek jest pierwszą częścią serii. W miarę postępów przez serię 
 
 Jeśli chcesz dowiedzieć się więcej na temat korzyści z używania szablonów i dlaczego należy zautomatyzować wdrażanie za pomocą szablonów, zobacz [Azure Resource Manager templates](template-deployment-overview.md).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) .
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="get-tools"></a>Pobierz narzędzia
 
@@ -36,7 +36,7 @@ Szablony są plikami JSON. Do tworzenia szablonów potrzebny jest dobry Edytor J
 
 Do wdrożenia szablonu wymagane są również Azure PowerShell lub interfejs wiersza polecenia platformy Azure. Instrukcje instalacji znajdują się w temacie:
 
-- [Zainstaluj Azure PowerShell](/powershell/azure/install-az-ps)
+- [Instalowanie programu Azure PowerShell](/powershell/azure/install-az-ps)
 - [Instalowanie interfejsu wiersza polecenia platformy Azure w systemie Windows](/cli/azure/install-azure-cli-windows)
 - [Instalowanie interfejsu wiersza polecenia platformy Azure w systemie Linux](/cli/azure/install-azure-cli-linux)
 
@@ -77,11 +77,11 @@ Teraz możesz zacząć uczenie się o szablonach.
 
 Gratulacje, utworzono pierwszy szablon.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Aby rozpocząć pracę z interfejsem wiersza polecenia Azure PowerShell/Azure, zaloguj się przy użyciu poświadczeń platformy Azure.
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
@@ -94,11 +94,11 @@ az login
 ```
 
 ---
-## <a name="create-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
 Podczas wdrażania szablonu należy określić grupę zasobów, która będzie zawierać zasoby. Przed uruchomieniem polecenia wdrożenia Utwórz grupę zasobów przy użyciu interfejsu wiersza polecenia platformy Azure lub Azure PowerShell. Wybierz karty w poniższej sekcji kodu, aby wybrać między Azure PowerShell i interfejsem wiersza polecenia platformy Azure.
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -116,11 +116,11 @@ az group create \
 
 ---
 
-## <a name="deploy-template"></a>Wdróż szablon
+## <a name="deploy-template"></a>Wdrażanie szablonu
 
 Aby wdrożyć szablon, użyj interfejsu wiersza polecenia platformy Azure lub Azure PowerShell. Użyj utworzonej grupy zasobów. Nadaj nazwę wdrożenia, aby można je było łatwo zidentyfikować w historii wdrażania. Dla wygody należy również utworzyć zmienną, która przechowuje ścieżkę do pliku szablonu. Ta zmienna ułatwia uruchamianie poleceń wdrażania, ponieważ nie trzeba ponownie wpisywać ścieżki przy każdym wdrożeniu.
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -133,7 +133,7 @@ New-AzResourceGroupDeployment `
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli
-templateFile="{provide-the-path-to-the-template-file}"
+$templateFile="{provide-the-path-to-the-template-file}"
 az group deployment create \
   --name blanktemplate \
   --resource-group myResourceGroup \
@@ -144,7 +144,7 @@ az group deployment create \
 
 Polecenie wdrożenia zwraca wyniki. Poszukaj `ProvisioningState`, aby sprawdzić, czy wdrożenie zakończyło się pomyślnie.
 
-# <a name="powershelltabazure-powershell"></a>[Narzędzia](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 ![Stan aprowizacji wdrożenia programu PowerShell](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
@@ -154,11 +154,11 @@ Polecenie wdrożenia zwraca wyniki. Poszukaj `ProvisioningState`, aby sprawdzić
 
 ---
 
-## <a name="verify-deployment"></a>Weryfikuj wdrożenie
+## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
 Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 
@@ -176,16 +176,16 @@ Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal
 
    ![Wyświetl podsumowanie wdrożenia](./media/template-tutorial-create-first-template/view-deployment-summary.png)
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
 
 Jeśli zatrzymasz teraz, możesz chcieć usunąć grupę zasobów.
 
-1. Z Azure Portal z menu po lewej stronie wybierz pozycję **Grupa zasobów** .
-2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy** .
+1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
 3. Wybierz nazwę grupy zasobów.
-4. W górnym menu wybierz pozycję **Usuń grupę zasobów** .
+4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 

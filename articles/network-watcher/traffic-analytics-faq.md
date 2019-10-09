@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: 45200e7620326dedcee92c579843e61bb07ff68e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b232df010190a95d12d5a57f076a4c1bf336cea4
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610255"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026581"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu często zadawane pytania
 
@@ -41,16 +41,16 @@ Aby możliwe było włączenie analizy ruchu, Twoje konto musi spełniać nastę
 - Twoje konto musi mieć jedną z następujących ról kontroli dostępu opartej na rolach (RBAC) w zakresie subskrypcji: właściciel, współautor, czytelnik lub współautor sieci.
 - Jeśli Twoje konto nie jest przypisane do jednej z wcześniej wymienionych ról, musi być przypisane do roli niestandardowej, do której przypisano następujące akcje na poziomie subskrypcji.
             
-    - Microsoft.Network/applicationGateways/read
-    - Microsoft.Network/connections/read
-    - Microsoft.Network/loadBalancers/read 
-    - Microsoft.Network/localNetworkGateways/read 
-    - Microsoft.Network/networkInterfaces/read 
-    - Microsoft.Network/networkSecurityGroups/read 
-    - Microsoft.Network/publicIPAddresses/read
-    - Microsoft.Network/routeTables/read
-    - Microsoft.Network/virtualNetworkGateways/read 
-    - Microsoft.Network/virtualNetworks/read
+    - Microsoft. Network/applicationGateways/odczyt
+    - Microsoft. Network/Connections/Read
+    - Microsoft. Network/loadBalancers/odczyt 
+    - Microsoft. Network/localNetworkGateways/odczyt 
+    - Microsoft. Network/networkInterfaces/odczyt 
+    - Microsoft. Network/networkSecurityGroups/odczyt 
+    - Microsoft. Network/adresów publicipaddress/odczyt
+    - Microsoft. Network/routeTables/odczyt
+    - Microsoft. Network/virtualNetworkGateways/odczyt 
+    - Microsoft. Network/virtualNetworks/odczyt
         
 Aby sprawdzić role przypisane do użytkownika w ramach subskrypcji:
 
@@ -67,11 +67,11 @@ Jeśli nie widzisz żadnych danych wyjściowych, skontaktuj się z administrator
 
 Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
 - Kanada Środkowa
-- Środkowo-zachodnie stany USA
-- East US
+- Zachodnio-środkowe stany USA
+- Wschodnie stany USA
 - Wschodnie stany USA 2
-- Środkowo-północne stany USA
-- Środkowo-południowe stany USA
+- Północno-środkowe stany USA
+- Południowo-środkowe stany USA
 - Środkowe stany USA
 - Zachodnie stany USA
 - Zachodnie stany USA 2
@@ -84,7 +84,7 @@ Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następ
 - Australia Wschodnia
 - Australia Południowo-Wschodnia 
 - Azja Wschodnia
-- Azja Południowo-Wschodnia
+- Azja Południowo-wschodnia
 - Korea Środkowa
 - Indie Środkowe
 - Indie Południowe
@@ -94,12 +94,12 @@ Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następ
 
 Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 - Kanada Środkowa
-- Środkowo-zachodnie stany USA
+- Zachodnio-środkowe stany USA
 - Zachodnie stany USA
 - Zachodnie stany USA 2
-- Środkowo-południowe stany USA
+- Południowo-środkowe stany USA
 - Środkowe stany USA
-- East US
+- Wschodnie stany USA
 - Wschodnie stany USA 2
 - Francja Środkowa
 - Europa Zachodnia
@@ -108,7 +108,7 @@ Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 - Australia Wschodnia
 - Australia Południowo-Wschodnia
 - Azja Wschodnia
-- Azja Południowo-Wschodnia 
+- Azja Południowo-wschodnia 
 - Korea Środkowa
 - Indie Środkowe
 - Japonia Wschodnia
@@ -143,15 +143,15 @@ Wybierz obsługiwany region. W przypadku wybrania nieobsługiwanego regionu zost
 Aby rejestrowanie przepływu działało prawidłowo, dostawca Microsoft. Insights musi być zarejestrowany. Jeśli nie masz pewności, czy dostawca Microsoft. Insights został zarejestrowany dla Twojej subskrypcji, Zastąp *ciąg XXXXX-XXXXX-XXXXXX-xxxx* w poniższym poleceniu i uruchom następujące polecenia w programie PowerShell:
 
 ```powershell-interactive
-**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Skonfigurowano rozwiązanie. Dlaczego nie widzę żadnych elementów na pulpicie nawigacyjnym?
 
 Po raz pierwszy pulpit nawigacyjny może potrwać do 30 minut. Rozwiązanie musi najpierw agregować wystarczającą ilość danych, aby uzyskać istotny wgląd w dane. Spowoduje to wygenerowanie raportów. 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Co zrobić, jeśli otrzymam następujący komunikat: "Nie można odnaleźć żadnych danych w tym obszarze roboczym dla wybranego interwału czasu. Spróbuj zmienić przedział czasu lub wybierz inny obszar roboczy. "?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Co zrobić, jeśli otrzymam następujący komunikat: "nie można odnaleźć żadnych danych w tym obszarze roboczym dla wybranego interwału czasu. Spróbuj zmienić przedział czasu lub wybierz inny obszar roboczy. "?
 
 Wypróbuj następujące opcje:
 - Zmień interwał czasu na górnym pasku.
@@ -160,7 +160,7 @@ Wypróbuj następujące opcje:
     
 Jeśli problemy będą się powtarzać, zgłoś wątpliwości na forum dotyczącego [głosu użytkownika](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Co zrobić, jeśli otrzymam następujący komunikat: "Analizowanie dzienników przepływu usługi sieciowej grupy zabezpieczeń po raz pierwszy. Ten proces może potrwać 20-30 minut. Sprawdź ponownie za jakiś czas. 2) Jeśli powyższy krok nie działa, a obszar roboczy jest objęty bezpłatną jednostką SKU, Sprawdź użycie obszaru roboczego tutaj, aby sprawdzić poprawność przydziału. w przeciwnym razie zapoznaj się z często zadawanymi pytaniami "?
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Co zrobić, jeśli otrzymam następujący komunikat: "analizowanie dzienników przepływu usługi sieciowej grupy zabezpieczeń po raz pierwszy. Ten proces może potrwać 20-30 minut. Sprawdź ponownie za jakiś czas. 2) Jeśli powyższy krok nie działa, a obszar roboczy jest objęty bezpłatną jednostką SKU, Sprawdź użycie obszaru roboczego tutaj, aby sprawdzić poprawność przydziału. w przeciwnym razie zapoznaj się z często zadawanymi pytaniami "?
 
 Ten komunikat może zostać wyświetlony, ponieważ:
 - Analiza ruchu był niedawno włączony i może nie mieć jeszcze zagregowanej ilości danych, aby uzyskać istotny wgląd w dane.
@@ -244,7 +244,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 Analiza ruchu jest naliczana. Pomiary opierają się na przetwarzaniu danych dzienników przepływów przez usługę i przechowywaniu powstałych ulepszonych dzienników w obszarze roboczym Log Analytics. 
 
-Na przykład zgodnie z planem [cenowym](https://azure.microsoft.com/pricing/details/network-watcher/), uwzględniając Region Zachodni środkowe stany USA, jeśli usługa Flow rejestruje dane przechowywane na koncie magazynu przetworzonym przez Analiza ruchu wynosi 10 GB, a ulepszone dzienniki pozyskane w log Analytics obszarze roboczym to 1 GB, odpowiednie opłaty są następujące: 10 x $2,3 + 1 x $2,76 = $25,76
+Na przykład zgodnie z [planem cenowym](https://azure.microsoft.com/pricing/details/network-watcher/), uwzględniając Region Zachodni środkowe stany USA, jeśli usługa Flow rejestruje dane przechowywane na koncie magazynu przetworzonym przez Analiza ruchu wynosi 10 GB, a ulepszone dzienniki pozyskane w log Analytics obszarze roboczym to 1 GB, odpowiednie opłaty są następujące: 10 x $2,3 + 1 x $2,76 = $25,76
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Jak często Analiza ruchu są przetwarzane dane?
 
@@ -266,72 +266,72 @@ Analiza ruchu nie ma wbudowaną obsługę alertów. Jednak ponieważ Analiza ruc
 
 Strona mapy geograficznej zawiera dwie główne sekcje:
     
-- **Transparent**: Transparent u góry mapy geograficznej zawiera przyciski umożliwiające wybranie filtrów dystrybucji ruchu (na przykład wdrożenie, ruch z krajów/regionów i złośliwe). Po wybraniu przycisku odpowiedni filtr jest stosowany na mapie. Jeśli na przykład wybierzesz aktywny przycisk, Mapa wyróżni aktywne centra danych we wdrożeniu.
-- **Mapa**: Poniżej transparentu sekcja map przedstawia rozkład ruchu między centrami danych platformy Azure a krajami/regionami.
+- **Transparent**: transparent w górnej części mapy geograficznej zawiera przyciski umożliwiające wybranie filtrów dystrybucji ruchu (na przykład wdrożenie, ruch z krajów/regionów i złośliwe). Po wybraniu przycisku odpowiedni filtr jest stosowany na mapie. Jeśli na przykład wybierzesz aktywny przycisk, Mapa wyróżni aktywne centra danych we wdrożeniu.
+- **Mapa**: poniżej transparentu sekcja mapy przedstawia rozkład ruchu między centrami danych platformy Azure a krajami/regionami.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Nawigacja przy użyciu klawiatury na banerze
     
 - Domyślnie wybór na stronie mapy geograficznej transparentu to filtr "Kontrolery domeny" platformy Azure.
-- Aby przejść do innego filtru, użyj `Tab` `Right arrow` albo klucza. Aby przenieść do tyłu, użyj `Shift+Tab` `Left arrow` albo klucza. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
-- Naciśnij `Enter` klawisz lub `Down` klawisz Strzałka, aby zastosować wybrany filtr. W oparciu o wybór i wdrożenie filtru są wyróżniane co najmniej jeden węzeł w sekcji map.
-- Aby przełączać się między transparentem `Ctrl+F6`i mapą, naciśnij klawisz.
+- Aby przejść do innego filtru, użyj `Tab` lub klucza `Right arrow`. Aby przejść do tyłu, użyj `Shift+Tab` lub klucza `Left arrow`. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
+- Naciśnij klawisz `Enter` lub klawisz Strzałka `Down`, aby zastosować wybrany filtr. W oparciu o wybór i wdrożenie filtru są wyróżniane co najmniej jeden węzeł w sekcji map.
+- Aby przełączać się między transparentem i mapą, naciśnij `Ctrl+F6`.
         
 ### <a name="keyboard-navigation-on-the-map"></a>Nawigacja przy użyciu klawiatury na mapie
     
-- Po wybraniu dowolnego filtru na transparencie i naciśnięciu `Ctrl+F6`fokus zostanie przeniesiony do jednego z wyróżnionych węzłów (centrum danych**platformy Azure** lub **kraju/regionu**) w widoku mapy.
-- Aby przejść do innych wyróżnionych węzłów na mapie, użyj albo `Tab` `Right arrow` klucza do przesunięcia do przodu. `Shift+Tab` Użyj`Left arrow` lub klawisza do przesuwania wstecznego.
-- Aby zaznaczyć dowolny wyróżniony węzeł w mapie, użyj `Enter` klawisza or. `Down arrow`
-- Po wybraniu takich węzłów fokus jest przenoszony do **pola narzędzia informacji** dla węzła. Domyślnie fokus jest przenoszony do przycisku zamknięty w **polu narzędzie informacji**. Aby dalej poruszać się wewnątrz widoku **pola** , `Right arrow` Użyj `Left arrow` klawiszy i, aby przenieść odpowiednio do przodu i do tyłu. Naciśnięcie klawisza `Enter` ma ten sam efekt, co wybranie priorytetowego przycisku w **polu narzędzie informacji**.
-- Po naciśnięciu `Tab` klawisza, gdy fokus znajduje się w **polu narzędzia informacji**, fokus jest przenoszony do punktów końcowych w tym samym kontynentie co wybrany węzeł. Użyj klawiszy `Left arrow` i, aby poruszać się za pomocą tych punktów końcowych. `Right arrow`
-- Aby przejść do innych punktów końcowych przepływów lub klastrów `Tab` kontynentu, użyj `Shift+Tab` do przenoszenia do przodu i do przenoszenia wstecznego.
-- Gdy fokus jest skierowany do **klastrów kontynentu**, użyj `Enter` klawiszy `Down` strzałek lub, aby wyróżnić punkty końcowe w ramach klastra kontynentu. Aby poruszać się za pomocą punktów końcowych i przycisku Zamknij w oknie informacje w klastrze kontynentu, `Right arrow` należy `Left arrow` odpowiednio użyć albo klawisza lub do przenoszenia do przodu i do tyłu. W dowolnym punkcie końcowym można użyć `Shift+L` , aby przełączyć się do linii połączenia z wybranego węzła do punktu końcowego. Możesz nacisnąć `Shift+L` ponownie, aby przejść do wybranego punktu końcowego.
+- Po wybraniu dowolnego filtra transparentu i naciśnięciu `Ctrl+F6` fokus jest przenoszony do jednego z wyróżnionych węzłów (**centrum danych platformy Azure** lub **kraju/regionu**) w widoku mapy.
+- Aby przejść do innych wyróżnionych węzłów na mapie, użyj `Tab` lub klucza `Right arrow` do przenoszenia dalej. Użyj `Shift+Tab` lub klucza `Left arrow` do przenoszenia z tyłu.
+- Aby wybrać dowolny wyróżniony węzeł w mapie, użyj klucza `Enter` lub `Down arrow`.
+- Po wybraniu takich węzłów fokus jest przenoszony do **pola narzędzia informacji** dla węzła. Domyślnie fokus jest przenoszony do przycisku zamknięty w **polu narzędzie informacji**. Aby dalej poruszać się wewnątrz widoku **pola** , użyj klawiszy `Right arrow` i `Left arrow` do przenoszenia odpowiednio do przodu i do tyłu. Naciśnięcie `Enter` ma ten sam efekt, co wybranie priorytetowego przycisku w **polu narzędzie informacji**.
+- Po naciśnięciu `Tab`, gdy fokus znajduje się w **polu narzędzia informacji**, fokus jest przenoszony do punktów końcowych w tym samym kontynentie co wybrany węzeł. Aby poruszać się za pomocą tych punktów końcowych, użyj klawiszy `Right arrow` i `Left arrow`.
+- Aby przejść do innych punktów końcowych przepływów lub klastrów kontynentu, użyj `Tab` do przenoszenia do przodu i `Shift+Tab` do przenoszenia wstecz.
+- Gdy fokus jest skierowany do **klastrów kontynentu**, użyj klawiszy strzałek `Enter` lub `Down`, aby wyróżnić punkty końcowe wewnątrz klastra kontynentu. Aby poruszać się przez punkty końcowe i przycisk Zamknij w polu informacje w klastrze kontynentu, należy odpowiednio użyć klucza `Right arrow` lub `Left arrow`. W dowolnym punkcie końcowym można użyć `Shift+L`, aby przełączyć się do linii połączenia z wybranego węzła do punktu końcowego. Możesz ponownie nacisnąć `Shift+L`, aby przejść do wybranego punktu końcowego.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Nawigacja przy użyciu klawiatury na dowolnym etapie
     
-- `Esc`zwija rozwinięty wybór.
-- Klucz wykonuje tę samą akcję co `Esc`. `Up arrow` Klucz wykonuje tę samą akcję co `Enter`. `Down arrow`
-- Użyj `Shift+Plus` , aby powiększyć `Shift+Minus` i pomniejszyć.
+- `Esc` zwija rozwinięte zaznaczenie.
+- Klucz `Up arrow` wykonuje tę samą akcję co `Esc`. Klucz `Down arrow` wykonuje tę samą akcję co `Enter`.
+- Użyj `Shift+Plus`, aby powiększyć, i `Shift+Minus`, aby pomniejszyć.
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Jak nawigować przy użyciu klawiatury w widoku topologia sieci wirtualnej?
 
 Na stronie topologia sieci wirtualnych znajdują się dwie główne sekcje:
     
-- **Transparent**: Transparent w górnej części topologii sieci wirtualnych udostępnia przyciski do wybierania filtrów dystrybucji ruchu (na przykład połączonych sieci wirtualnych, odłączonych sieci wirtualnych i publicznych adresów IP). Po wybraniu przycisku odpowiedni filtr jest stosowany w topologii. Jeśli na przykład wybierzesz aktywny przycisk, topologia podświetla aktywne sieci wirtualne w danym wdrożeniu.
-- **Topologia**: Poniżej transparentu sekcja topologia przedstawia rozkład ruchu między sieciami wirtualnymi.
+- **Transparent**: transparent w górnej części topologii sieci wirtualnych udostępnia przyciski do wybierania filtrów dystrybucji ruchu (na przykład połączonych sieci wirtualnych, odłączonych sieci wirtualnych i publicznych adresów IP). Po wybraniu przycisku odpowiedni filtr jest stosowany w topologii. Jeśli na przykład wybierzesz aktywny przycisk, topologia podświetla aktywne sieci wirtualne w danym wdrożeniu.
+- **Topologia**: poniżej transparentu sekcja topologia przedstawia rozkład ruchu między sieciami wirtualnymi.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Nawigacja przy użyciu klawiatury na banerze
     
 - Domyślnie wybór na stronie topologii sieci wirtualnych dla transparentu to filtr "Connected sieci wirtualnych".
-- Aby przejść do innego filtru, użyj `Tab` klawisza, aby przejść do przodu. Aby przejść do tyłu, użyj `Shift+Tab` klucza. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
-- Naciśnij `Enter` klawisz, aby zastosować wybrany filtr. W zależności od wyboru filtru i wdrożenia w sekcji topologia zostaną wyróżnione jeden lub wiele węzłów (Sieć wirtualna).
-- Aby przełączać się między transparentem a topologią, naciśnij klawisz `Ctrl+F6`.
+- Aby przejść do innego filtru, użyj klucza `Tab`, aby przejść do przodu. Aby przejść do tyłu, użyj klucza `Shift+Tab`. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
+- Naciśnij `Enter`, aby zastosować wybrany filtr. W zależności od wyboru filtru i wdrożenia w sekcji topologia zostaną wyróżnione jeden lub wiele węzłów (Sieć wirtualna).
+- Aby przełączać się między transparentem a topologią, naciśnij `Ctrl+F6`.
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Nawigacja przy użyciu klawiatury w topologii
     
-- Po wybraniu dowolnego filtru na transparencie i naciśnięciu `Ctrl+F6`fokus zostanie przeniesiony do jednego z wyróżnionych węzłów (**VNET**) w widoku topologii.
-- Aby przejść do innych wyróżnionych węzłów w widoku topologii, użyj `Shift+Right arrow` klawisza do przesunięcia do przodu. 
-- W zaznaczonych węzłach fokus jest przenoszony do **pola narzędzia informacji** dla węzła. Domyślnie fokus jest przenoszony do przycisku **więcej szczegółów** w **polu narzędzie informacji**. Aby dalej poruszać się wewnątrz widoku **pola** , użyj `Right arrow` klawiszy `Left arrow` i, aby przejść odpowiednio do przodu i do tyłu. Naciśnięcie klawisza `Enter` ma ten sam efekt, co wybranie priorytetowego przycisku w **polu narzędzie informacji**.
-- Po wybraniu takich węzłów można odwiedzać wszystkie jego połączenia, po jednym przez naciśnięcie `Shift+Left arrow` klawisza. Fokus jest przenoszony do **pola narzędzia informacji** tego połączenia. W dowolnym momencie fokus można przesunąć z powrotem do węzła, naciskając `Shift+Right arrow` ponownie.
+- Po wybraniu dowolnego filtra transparentu i naciśnięciu `Ctrl+F6` fokus jest przenoszony do jednego z wyróżnionych węzłów (**VNET**) w widoku topologii.
+- Aby przejść do innych wyróżnionych węzłów w widoku topologii, użyj klawisza `Shift+Right arrow` do przenoszenia dalej. 
+- W zaznaczonych węzłach fokus jest przenoszony do **pola narzędzia informacji** dla węzła. Domyślnie fokus jest przenoszony do przycisku **więcej szczegółów** w **polu narzędzie informacji**. Aby dalej poruszać się wewnątrz widoku **pola** , użyj klawiszy `Right arrow` i `Left arrow` do przenoszenia odpowiednio do przodu i do tyłu. Naciśnięcie `Enter` ma ten sam efekt, co wybranie priorytetowego przycisku w **polu narzędzie informacji**.
+- Po wybraniu takich węzłów można odwiedzać wszystkie połączenia, po jednym według jednego, naciskając klawisz `Shift+Left arrow`. Fokus jest przenoszony do **pola narzędzia informacji** tego połączenia. W dowolnym momencie fokus można przesunąć z powrotem do węzła, naciskając `Shift+Right arrow` ponownie.
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Jak nawigować przy użyciu klawiatury w widoku topologia podsieci?
 
 Na stronie topologia podsieci wirtualnych znajdują się dwie główne sekcje:
     
-- **Transparent**: Transparent w górnej części topologii podsieci wirtualnych zawiera przyciski umożliwiające wybranie filtrów dystrybucji ruchu (na przykład aktywnych, średnich i podsieci bramy). Po wybraniu przycisku odpowiedni filtr jest stosowany w topologii. Na przykład, jeśli wybierzesz aktywny przycisk, topologia podświetla aktywną podsieć wirtualną we wdrożeniu.
-- **Topologia**: Poniżej transparentu sekcja topologia przedstawia rozkład ruchu między podsieciami wirtualnymi.
+- **Transparent**: transparent w górnej części topologii podsieci wirtualnych zawiera przyciski umożliwiające wybranie filtrów dystrybucji ruchu (na przykład aktywnych, średnich i podsieci bramy). Po wybraniu przycisku odpowiedni filtr jest stosowany w topologii. Na przykład, jeśli wybierzesz aktywny przycisk, topologia podświetla aktywną podsieć wirtualną we wdrożeniu.
+- **Topologia**: poniżej transparentu sekcja topologia przedstawia rozkład ruchu między podsieciami wirtualnymi.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Nawigacja przy użyciu klawiatury na banerze
     
 - Domyślnie wybór na stronie topologii sieci wirtualnych dla transparentu to filtr "podsieci".
-- Aby przejść do innego filtru, użyj `Tab` klawisza, aby przejść do przodu. Aby przejść do tyłu, użyj `Shift+Tab` klucza. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
-- Naciśnij `Enter` klawisz, aby zastosować wybrany filtr. W oparciu o wybór i wdrożenie filtru, wyróżniono jeden lub wiele węzłów (podsieć) w sekcji topologia.
-- Aby przełączać się między transparentem a topologią, naciśnij klawisz `Ctrl+F6`.
+- Aby przejść do innego filtru, użyj klucza `Tab`, aby przejść do przodu. Aby przejść do tyłu, użyj klucza `Shift+Tab`. Nawigacja do przodu jest od lewej do prawej, a następnie od góry do dołu.
+- Naciśnij `Enter`, aby zastosować wybrany filtr. W oparciu o wybór i wdrożenie filtru, wyróżniono jeden lub wiele węzłów (podsieć) w sekcji topologia.
+- Aby przełączać się między transparentem a topologią, naciśnij `Ctrl+F6`.
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Nawigacja przy użyciu klawiatury w topologii
     
-- Po wybraniu dowolnego filtru na transparencie i naciśnięciu `Ctrl+F6`fokus zostanie przeniesiony do jednego z wyróżnionych węzłów (**podsieci**) w widoku topologii.
-- Aby przejść do innych wyróżnionych węzłów w widoku topologii, użyj `Shift+Right arrow` klawisza do przesunięcia do przodu. 
-- W zaznaczonych węzłach fokus jest przenoszony do **pola narzędzia informacji** dla węzła. Domyślnie fokus jest przenoszony do przycisku **więcej szczegółów** w **polu narzędzie informacji**. Aby dalej poruszać się wewnątrz widoku **pola** , `Right arrow` Użyj `Left arrow` klawiszy i, aby przenieść odpowiednio do przodu i do tyłu. Naciśnięcie klawisza `Enter` ma ten sam efekt, co wybranie priorytetowego przycisku w **polu narzędzie informacji**.
-- Po wybraniu takich węzłów można odwiedzać wszystkie jego połączenia, po jednym przez naciśnięcie `Shift+Left arrow` klawisza. Fokus jest przenoszony do **pola narzędzia informacji** tego połączenia. W dowolnym momencie fokus można przesunąć z powrotem do węzła, naciskając `Shift+Right arrow` ponownie.    
+- Po wybraniu dowolnego filtra transparentu i naciśnięciu `Ctrl+F6` fokus jest przenoszony do jednego z wyróżnionych węzłów (**podsieci**) w widoku topologii.
+- Aby przejść do innych wyróżnionych węzłów w widoku topologii, użyj klawisza `Shift+Right arrow` do przenoszenia dalej. 
+- W zaznaczonych węzłach fokus jest przenoszony do **pola narzędzia informacji** dla węzła. Domyślnie fokus jest przenoszony do przycisku **więcej szczegółów** w **polu narzędzie informacji**. Aby dalej poruszać się wewnątrz widoku **pola** , użyj klawiszy `Right arrow` i `Left arrow` do przenoszenia odpowiednio do przodu i do tyłu. Naciśnięcie `Enter` ma ten sam efekt, co wybranie priorytetowego przycisku w **polu narzędzie informacji**.
+- Po wybraniu takich węzłów można odwiedzać wszystkie jego połączenia, po jednym przez naciśnięcie klawisza `Shift+Left arrow`. Fokus jest przenoszony do **pola narzędzia informacji** tego połączenia. W dowolnym momencie fokus można przesunąć z powrotem do węzła, naciskając `Shift+Right arrow` ponownie.    
 

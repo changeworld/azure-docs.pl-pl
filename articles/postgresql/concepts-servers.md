@@ -1,69 +1,69 @@
 ---
-title: Pojęcia serwera w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: Ten artykuł zawiera zagadnienia i wytyczne dotyczące konfigurowania i zarządzanie usługą Azure Database for PostgreSQL — pojedynczy serwer.
+title: Koncepcje serwera w Azure Database for PostgreSQL — pojedynczy serwer
+description: Ten artykuł zawiera zagadnienia i wskazówki dotyczące konfigurowania Azure Database for PostgreSQL-pojedynczego serwera i zarządzania nim.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bc135e58d0fbabc809f3718915e9f4e35b8ed875
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd7c24489e8ac7b26cb703923ddf9cbb741cfd68
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067154"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029972"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL — pojedynczy serwer
-Ten artykuł zawiera zagadnienia i wytyczne do pracy z usługą Azure Database for PostgreSQL — pojedynczy serwer.
+W tym artykule przedstawiono zagadnienia i wytyczne dotyczące pracy z serwerem Azure Database for PostgreSQL-pojedynczym.
 
-## <a name="what-is-an-azure-database-for-postgresql-server"></a>Co to jest usługi Azure Database for postgresql w warstwie serwera?
-Serwer w usłudze Azure Database for PostgreSQL — opcji wdrożenia pojedynczego serwera to centralny punkt administracyjny dla wielu baz danych. Jest tego samego serwera PostgreSQL konstrukcja można zapoznać się z w środowisku lokalnym. W szczególności usługa PostgreSQL jest zarządzany, zapewnia gwarancje wydajności, uwidacznia dostępu i funkcje na poziomie serwera.
+## <a name="what-is-an-azure-database-for-postgresql-server"></a>Co to jest serwer Azure Database for PostgreSQL?
+Serwer w opcji wdrożenia Azure Database for PostgreSQL-Single Server jest centralnym punktem administracyjnym dla wielu baz danych. Jest to ta sama konstrukcja serwera PostgreSQL, która może być znana na świecie lokalnym. Usługa PostgreSQL jest zarządzana, zapewnia gwarancje wydajności, udostępnia dostęp i funkcje na poziomie serwera.
 
-Azure Database for postgresql w warstwie serwera:
+Serwer Azure Database for PostgreSQL:
 
 - Jest tworzony w ramach subskrypcji platformy Azure.
 - Jest zasobem nadrzędnym dla baz danych.
-- Zapewnia przestrzeń nazw dla baz danych.
-- To kontener z silną semantyką okresu istnienia — usuwanie serwera, a następnie usuwane zawartych baz danych.
-- Rozmieszcza zasoby w regionie.
-- Udostępnia punkt końcowy połączenia dla serwera i dostępu do bazy danych 
-- Określa zakres dla zasad zarządzania, które są stosowane do jego baz danych: logowania, zapory, użytkowników, ról, konfiguracji itp.
-- Jest dostępna w wielu wersji. Aby uzyskać więcej informacji, zobacz [obsługiwane wersje bazy danych postgresql w warstwie](concepts-supported-versions.md).
-- Jest otwarty przez użytkowników. Aby uzyskać więcej informacji, zobacz [rozszerzenia PostgreSQL](concepts-extensions.md).
+- Udostępnia przestrzeń nazw dla baz danych.
+- Jest kontenerem z semantyką silnego okresu istnienia — usuwa serwer i usuwa zawarte bazy danych.
+- Kolokacja zasobów w regionie.
+- Zapewnia punkt końcowy połączenia dla dostępu do serwera i bazy danych 
+- Zapewnia zakres zasad zarządzania, które mają zastosowanie do swoich baz danych: logowania, zapory, użytkowników, ról, konfiguracji itp.
+- Jest dostępny w wielu wersjach. Aby uzyskać więcej informacji, zobacz [obsługiwane wersje bazy danych PostgreSQL](concepts-supported-versions.md).
+- Jest rozszerzalny przez użytkowników. Aby uzyskać więcej informacji, zobacz [rozszerzenia PostgreSQL](concepts-extensions.md).
 
-W ramach usługi Azure Database dla serwera PostgreSQL można utworzyć jeden lub wiele baz danych. Można wybrać opcję utworzenia jednej bazy danych na serwer w celu wykorzystania wszystkich zasobów. Można też utworzyć wiele baz danych, współdzielących zasoby. Cennik jest strukturą poszczególnych serwerów, na podstawie konfiguracji ceny warstwy, rdzeni wirtualnych i magazynu (GB). Aby uzyskać więcej informacji, zobacz [warstw cenowych](./concepts-pricing-tiers.md).
+Na serwerze Azure Database for PostgreSQL można utworzyć jedną lub wiele baz danych. Można wybrać opcję utworzenia jednej bazy danych na serwer w celu wykorzystania wszystkich zasobów. Można też utworzyć wiele baz danych, współdzielących zasoby. Cennik ma strukturę na serwer, na podstawie konfiguracji warstwy cenowej, rdzeni wirtualnych i magazynu (GB). Aby uzyskać więcej informacji, zobacz [warstwy cenowe](./concepts-pricing-tiers.md).
 
-## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Jak połączyć i uwierzytelniania usługi Azure Database for postgresql w warstwie serwera?
-Następujące elementy zapewnić bezpieczny dostęp do bazy danych:
+## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Jak mogę połączyć się i uwierzytelnić na serwerze Azure Database for PostgreSQL?
+Następujące elementy pomagają zapewnić bezpieczny dostęp do bazy danych:
 
 |||
 |:--|:--|
-| **Uwierzytelnianie i autoryzacja** | Usługa Azure Database for postgresql w warstwie serwera obsługuje uwierzytelnianie za pomocą natywnego PostgreSQL. Można połączyć i uwierzytelniania z serwerem przy użyciu identyfikatora logowania administratora serwera. |
-| **Protokół** | Usługa obsługuje oparta na komunikatach protokół używany przez PostgreSQL. |
-| **TCP/IP** | Protokół jest obsługiwany za pośrednictwem protokołu TCP/IP, a także za pośrednictwem gniazd domeny systemu Unix. |
-| **Zapora** | Aby lepiej chronić swoje dane, reguła zapory uniemożliwia dostęp do serwera i jego baz danych do momentu określenia komputerów, które mają uprawnienia. Zobacz [— Azure Database for reguły zapory serwera PostgreSQL](concepts-firewall-rules.md). |
+| **Uwierzytelnianie i autoryzacja** | Serwer Azure Database for PostgreSQL obsługuje natywne uwierzytelnianie PostgreSQL. Można nawiązać połączenie i uwierzytelnić się na serwerze przy użyciu identyfikatora logowania administratora serwera. |
+| **Protokół** | Usługa obsługuje protokół oparty na komunikatach używany przez PostgreSQL. |
+| **TCP/IP** | Protokół jest obsługiwany za pośrednictwem protokołu TCP/IP i gniazd domen systemu UNIX. |
+| **Zapora** | Aby zapewnić ochronę danych, reguła zapory zapobiega wszystkim dostępowi do serwera i jego baz danych do momentu określenia komputerów, które mają uprawnienia. Zobacz [reguły zapory serwera Azure Database for PostgreSQL](concepts-firewall-rules.md). |
 
 ## <a name="managing-your-server"></a>Zarządzanie serwerem
-Można zarządzać — Azure Database dla serwerów MySQL za pomocą [witryny Azure portal](https://portal.azure.com) lub [wiersza polecenia platformy Azure](/cli/azure/postgres).
+Serwerami Azure Database for PostgreSQL można zarządzać przy użyciu [Azure Portal](https://portal.azure.com) lub [interfejsu wiersza polecenia platformy Azure](/cli/azure/postgres).
 
-Podczas tworzenia serwera, skonfigurowaniu poświadczeń dla użytkownika administracyjnego. Użytkownika administratora jest najwyższym użytkownika uprawnień, do którego masz na serwerze. Należy on do azure_pg_admin roli. Ta rola nie ma uprawnień administratora pełnego. 
+Podczas tworzenia serwera należy skonfigurować poświadczenia dla użytkownika administratora. Administrator jest użytkownikiem o najwyższym poziomie uprawnień na serwerze. Należy do roli azure_pg_admin. Ta rola nie ma pełnych uprawnień administratora. 
 
-Atrybut PostgreSQL administratora jest przypisywany do azure_superuser, która należy do zarządzanej usługi. Nie masz dostępu do tej roli.
+Atrybut PostgreSQL administratora jest przypisany do azure_superuser, który należy do usługi zarządzanej. Nie masz dostępu do tej roli.
 
-Azure Database for postgresql w warstwie serwera zawiera domyślne bazy danych: 
-- **postgres** — domyślna baza danych, można połączyć serwerowi po utworzeniu.
-- **azure_maintenance** — ta baza danych jest używany do oddzielania procesów, które zapewniają usługę zarządzaną od działań użytkownika. Nie masz dostępu do tej bazy danych.
-- **azure_sys** -Store kwerendy bazy danych. Ta baza danych nie są gromadzone dane, gdy Store zapytań jest wyłączony; to ustawienie domyślne. Aby uzyskać więcej informacji, zobacz [Przegląd Query Store](concepts-query-store.md).
+Serwer Azure Database for PostgreSQL ma domyślne bazy danych: 
+- **Postgres** — domyślna baza danych, z którą można nawiązać połączenie po utworzeniu serwera.
+- **azure_maintenance** — ta baza danych służy do rozdzielania procesów, które udostępniają usługę zarządzaną z akcji użytkownika. Nie masz dostępu do tej bazy danych.
+- **azure_sys** — baza danych dla magazynu zapytań. Ta baza danych nie zbiera danych, gdy magazyn zapytań jest wyłączony. jest to ustawienie domyślne. Aby uzyskać więcej informacji, zobacz temat [Omówienie magazynu zapytań](concepts-query-store.md).
 
 
 ## <a name="server-parameters"></a>Parametry serwera
-Parametry serwera postgresql w warstwie określają konfigurację serwera. W usłudze Azure Database for PostgreSQL listę parametrów można wyświetlać i edytować za pomocą witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. 
+Parametry serwera PostgreSQL określają konfigurację serwera. W Azure Database for PostgreSQL można wyświetlać i edytować listę parametrów przy użyciu Azure Portal lub interfejsu wiersza polecenia platformy Azure. 
 
-Jako usługa zarządzana dla programu Postgres konfigurowalne parametry w usłudze Azure Database for PostgreSQL są podzbiorem parametrów w lokalnym wystąpieniu Postgres (Aby uzyskać więcej informacji na temat parametrów Postgres, zobacz [dokumentacji PostgreSQL](https://www.postgresql.org/docs/9.6/static/runtime-config.html)). Usługi Azure Database for postgresql w warstwie serwera jest włączona z wartościami domyślnymi dla każdego parametru podczas ich tworzenia. Niektóre parametry, które wymagają serwera, uruchom ponownie, lub nie można skonfigurować dostęp administratora do zmiany zostały wprowadzone przez użytkownika.
+Jako usługa zarządzana dla Postgres, konfigurowalne parametry w Azure Database for PostgreSQL są podzbiorem parametrów w lokalnym wystąpieniu usługi Postgres (Aby uzyskać więcej informacji na temat Postgres parametrów, zobacz [dokumentację dotyczącą PostgreSQL](https://www.postgresql.org/docs/9.6/static/runtime-config.html)). Serwer Azure Database for PostgreSQL jest włączony z wartościami domyślnymi dla każdego parametru podczas tworzenia. Niektóre parametry, które wymagają ponownego uruchomienia serwera lub administratora dostępu do zmian, nie mogą zostać skonfigurowane przez użytkownika.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Aby zapoznać się z omówieniem usługi, zobacz [— Azure Database for postgresql — omówienie](overview.md).
-- Aby uzyskać informacje dotyczące określonego zasobu Przydziały i ograniczenia na podstawie Twojej **warstwy usług**, zobacz [warstwy usług](concepts-pricing-tiers.md).
-- Aby uzyskać informacje na temat łączenia się z usługą, zobacz [biblioteki połączeń dla usługi Azure Database for postgresql w warstwie](concepts-connection-libraries.md).
-- Wyświetlanie i edytowanie parametrów serwera za pomocą [witryny Azure portal](howto-configure-server-parameters-using-portal.md) lub [wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md).
+## <a name="next-steps"></a>Następne kroki
+- Aby zapoznać się z omówieniem usługi, zobacz [Azure Database for PostgreSQL Omówienie](overview.md).
+- Aby uzyskać informacje na temat konkretnych przydziałów zasobów i ograniczeń na podstawie **warstwy usług**, zobacz [warstwy usług](concepts-pricing-tiers.md).
+- Aby uzyskać informacje na temat nawiązywania połączenia z usługą, zobacz [biblioteki połączeń dla Azure Database for PostgreSQL](concepts-connection-libraries.md).
+- Wyświetlanie i edytowanie parametrów serwera za pomocą [Azure Portal](howto-configure-server-parameters-using-portal.md) lub [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md).

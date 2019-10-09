@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382485"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025518"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegowanie uprawnień rejestracji aplikacji w Azure Active Directory
 
@@ -61,10 +61,10 @@ W niektórych przypadkach aplikacje dla przedsiębiorstw utworzone za pomocą ga
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Aby przypisać właściciela do aplikacji dla przedsiębiorstw
 
-1. Zaloguj się do [swojej organizacji usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)przy użyciu konta uprawniającego do administratora aplikacji lub administratora aplikacji w chmurze w organizacji.
-1. Na [stronie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) rejestracje aplikacji organizacji wybierz aplikację, aby otworzyć stronę przegląd dla aplikacji.
-1. Wybierz pozycję **właściciele** , aby wyświetlić listę właścicieli aplikacji.
-1. Wybierz pozycję **Dodaj** , aby wybrać co najmniej jednego właściciela, który ma zostać dodany do aplikacji.
+1. Zaloguj się do [swojej organizacji usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)@no__t — 1with konto, które kwalifikuje się do administratora aplikacji lub administratora aplikacji w chmurze w organizacji.
+1. Na [stronie Rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) for organizacji wybierz aplikację, aby otworzyć stronę przegląd dla aplikacji.
+1. Wybierz pozycję **właściciele** , aby wyświetlić listę właścicieli aplikacji.
+1. Wybierz pozycję **Dodaj** , aby wybrać co najmniej jednego właściciela, który ma zostać dodany do aplikacji.
 
 > [!IMPORTANT]
 > Użytkownicy i podmioty usługi mogą być właścicielami rejestracji aplikacji. Tylko użytkownicy mogą być właścicielami aplikacji przedsiębiorstwa. Grupy nie mogą być przypisane jako właściciele jednego z nich.

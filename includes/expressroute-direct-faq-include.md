@@ -5,17 +5,17 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 07/09/2019
+ms.date: 10/07/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 43d1942b1413569d77c6c17fee9fff14dc83c924
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9c53aac47e965a6eba681008d6b6476142190ef8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362585"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72023087"
 ---
-### <a name="what-is-expressroute-direct"></a>Co to jest ExpressRoute Direct?
+### <a name="what-is-expressroute-direct"></a>Co to jest usługa ExpressRoute Direct?
 
 Usługa ExpressRoute Direct daje klientom możliwość łączenia się bezpośrednio z globalną siecią firmy Microsoft w skomunikowanych równorzędnie lokalizacjach strategicznie rozmieszczonych na całym świecie. Usługa ExpressRoute Direct oferuje łączność z dwoma procesorami (100 lub 10 GB/s), która obsługuje aktywne/aktywne połączenia na dużą skalę. 
 
@@ -33,12 +33,13 @@ Dostępne porty będą dynamiczne i będą dostępne dla programu PowerShell w c
 * Chicago
 * Dallas
 * Dublin
-* SRA Hongkong
+* Hongkong SAR
 * Londyn
+* Londyn2
 * Melbourne
 * New York City
-* Pert
-* San Antonio
+* Perth
+* Antonio San
 * Seattle
 * Seul
 * Dolina Krzemowa
@@ -56,7 +57,7 @@ ExpressRoute Direct będzie korzystać z tej samej [klasy korporacyjnej ExpressR
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Jakie scenariusze należy wziąć pod uwagę w przypadku ExpressRoute Direct?  
 
-ExpressRoute Direct zapewnia klientom bezpośrednie pary portów 100 lub 10 GB/s do szkieletu globalnego firmy Microsoft. Scenariusze, które pozwolą klientom z największą korzyścią, obejmują: Ogromne pozyskiwanie danych, izolacja fizyczna dla rynków regulowanych i dedykowana pojemność dla scenariusza wieloznacznych, takich jak renderowanie. 
+ExpressRoute Direct zapewnia klientom bezpośrednie pary portów 100 lub 10 GB/s do szkieletu globalnego firmy Microsoft. Scenariusze, które pozwolą klientom z największą korzyścią, obejmują: ogromne pozyskiwanie danych, izolację fizyczną dla rynków regulowanych i dedykowaną pojemność dla scenariusza z serii, takich jak renderowanie. 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Jaki jest model rozliczeń dla usługi ExpressRoute Direct? 
 

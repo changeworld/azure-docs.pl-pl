@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu programu dla zespołu | Microsoft Docs'
+title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) za pomocą programu obsługi | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i programu.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305937"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026964"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) za pomocą programu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Samouczek: integracja logowania jednokrotnego (SSO) Azure Active Directory z programem obsługi
 
 W tym samouczku dowiesz się, jak zintegrować program z usługą Azure Active Directory (Azure AD). W przypadku integrowania programu z usługą Azure AD można:
 
@@ -93,7 +93,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
 1. W sekcji **Konfigurowanie zestawu** , skopiuj odpowiednie adresy URL na podstawie wymagania.
 
@@ -104,10 +104,10 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij przycisk **Utwórz**.
 
@@ -119,7 +119,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **zespół**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -141,11 +141,11 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 3. Jeśli chcesz ręcznie skonfigurować program instalacyjny, Otwórz nowe okno przeglądarki sieci Web i zaloguj się do firmowej lokacji firmy jako administrator i wykonaj następujące czynności:
 
-4. W prawym górnym rogu strony kliknij pozycję **stałe** **Ustawienia uwierzytelniania** >  **Zarządzanie dostępem do**zabezpieczeń.>
+4. W prawym górnym rogu strony kliknij pozycję **zabezpieczenia ciągłe** > **Zarządzanie dostępem** > **Ustawienia uwierzytelniania**.
 
     ![Konfiguracja zespołu](./media/harness-tutorial/configure01.png)
 
-5. W sekcji **dostawcy logowania jednokrotnego** kliknij pozycję > **+ Dodaj dostawcę rejestracji jednokrotnej**protokołu **SAML**.
+5. W sekcji **dostawcy logowania jednokrotnego** kliknij pozycję **+ Dodaj dostawców rejestracji jednokrotnej** > **SAML**.
 
     ![Konfiguracja zespołu](./media/harness-tutorial/configure03.png)
 
@@ -157,7 +157,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. W polu tekstowym **Nazwa wyświetlana** wpisz nazwę wyświetlaną.
 
-    c. Kliknij pozycję **Wybierz plik** , aby przekazać plik XML metadanych Federacji pobrany z usługi Azure AD.
+    d. Kliknij pozycję **Wybierz plik** , aby przekazać plik XML metadanych Federacji pobrany z usługi Azure AD.
 
     d. Kliknij przycisk **Prześlij**.
 
@@ -169,11 +169,11 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do programu, musz�
 
 1. Zaloguj się, aby skorzystać z programu jako administrator.
 
-1. W prawym górnym rogu strony kliknij pozycję> **ciągły**  **dostęp do zasobów zarządzanie** > **użytkownikami**.
+1. W prawym górnym rogu strony kliknij pozycję **ciągłe zabezpieczenia** > **Zarządzanie dostępem** > **użytkowników**.
 
     ![Konfiguracja zespołu](./media/harness-tutorial/configure04.png)
 
-1. Po prawej stronie kliknij pozycję **+ Dodaj użytkownika**.
+1. Po prawej stronie kliknij pozycję **+ Dodaj użytkownika**.
 
     ![Konfiguracja zespołu](./media/harness-tutorial/configure05.png)
 
@@ -181,19 +181,19 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do programu, musz�
 
     ![Konfiguracja zespołu](./media/harness-tutorial/configure06.png)
 
-    a. W polu tekstowym **adresy e-mail wprowadź adres** e-mail użytkownika `B.simon@contoso.com`.
+    a. W polu tekstowym **adresy e-mail wprowadź adres** e-mail użytkownika, taki jak `B.simon@contoso.com`.
 
     b. Wybierz **grupy użytkowników**.
 
-    c. Kliknij przycisk **Submit** (Prześlij).
+    d. Kliknij przycisk **Prześlij**.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka zestaw w panelu dostępu należy automatycznie zalogować się do zestawu, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -1,49 +1,49 @@
 ---
-title: Konfigurowanie i dostęp do dzienników serwera for PostgreSQL — pojedynczy serwer przy użyciu wiersza polecenia platformy Azure
-description: W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w usłudze Azure Database for PostgreSQL — pojedynczy serwer przy użyciu wiersza polecenia wiersza polecenia platformy Azure.
+title: Konfigurowanie i uzyskiwanie dostępu do dzienników serwera dla PostgreSQL-pojedynczego serwera przy użyciu interfejsu wiersza polecenia platformy Azure
+description: W tym artykule opisano sposób konfigurowania i uzyskiwania dostępu do dzienników serwera w Azure Database for PostgreSQL-pojedynczym serwerze przy użyciu wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 4702db31ffeb15481584b9638f5be1aa640ff39e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb33debaa23ad8625b6ddc1cc63738b13bcd19e1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067209"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023627"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurowanie i dostęp do dzienników serwera przy użyciu wiersza polecenia platformy Azure
-Możesz pobrać dzienniki błędów serwera PostgreSQL za pomocą interfejsu wiersza polecenia (CLI platformy Azure). Jednak dostęp do dzienników transakcji nie jest obsługiwane. 
+# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurowanie i uzyskiwanie dostępu do dzienników serwera przy użyciu interfejsu wiersza polecenia platformy Azure
+Dzienniki błędów serwera PostgreSQL można pobrać przy użyciu interfejsu wiersza polecenia (Azure CLI). Jednak dostęp do dzienników transakcji nie jest obsługiwany. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do wykonania kroków w tym przewodniku, potrzebne są:
-- [Usługa Azure Database for postgresql w warstwie serwera](quickstart-create-server-database-azure-cli.md)
-- [Wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) narzędzie wiersza polecenia lub programu Azure Cloud Shell w przeglądarce
+Aby krokowo poprowadzić ten przewodnik, musisz:
+- [Serwer Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
+- Narzędzie wiersza polecenia [platformy Azure](/cli/azure/install-azure-cli) lub Azure Cloud Shell w przeglądarce
 
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania
-Można skonfigurować serwera dostępu do dzienników zapytań i dzienniki błędów. Dzienniki błędów może zawierać informacje odkurzający auto, połączenia i punktu kontrolnego.
+Serwer można skonfigurować tak, aby mógł uzyskiwać dostęp do dzienników zapytań i dzienników błędów. Dzienniki błędów mogą mieć informacje dotyczące autopróżni, połączeń i punktów kontrolnych.
 1. Włącz rejestrowanie.
-2. Aby włączyć rejestrowanie zapytań, zaktualizuj **dziennika\_instrukcji** i **dziennika\_min\_czas trwania\_instrukcji**.
-3. Zaktualizuj okres przechowywania.
+2. Aby włączyć rejestrowanie zapytań, zaktualizuj **Dziennik @ no__t-1statement** i **log @ no__t-3min @ no__t-4duration @ no__t-5statement**.
+3. Aktualizowanie okresu przechowywania.
 
 Aby uzyskać więcej informacji, zobacz [Dostosowywanie parametrów konfiguracji serwera](howto-configure-server-parameters-using-cli.md).
 
-## <a name="list-logs"></a>Lista dzienników
-Aby wyświetlić listę plików dziennika dostępne na serwerze, uruchom [az postgres server-logs list](/cli/azure/postgres/server-logs) polecenia.
+## <a name="list-logs"></a>Wyświetl listę dzienników
+Aby wyświetlić listę dostępnych plików dziennika dla serwera, uruchom polecenie [AZ Postgres Server-Logs list](/cli/azure/postgres/server-logs) .
 
-Możesz wyświetlić listę plików dziennika dla serwera **mydemoserver.postgres.database.azure.com** w grupie zasobów **myresourcegroup**. Następnie przekierowanie do listy plików dziennika do pliku tekstowego o nazwie **dziennika\_pliki\_lista.txt**.
+Możesz wyświetlić listę plików dziennika dla serwera **mydemoserver.Postgres.Database.Azure.com** w **obszarze Grupa zasobów**. Następnie należy skierować listę plików dziennika do pliku tekstowego o nazwie **log @ no__t-1files\_list.txt**.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>Pobierz dzienniki lokalnie z serwera
-Za pomocą [Pobierz az postgres server-logs](/cli/azure/postgres/server-logs) polecenia, możesz pobrać osobnych plikach dziennika dla serwera. 
+Za pomocą polecenia [AZ Postgres Server-Logs Download](/cli/azure/postgres/server-logs) można pobrać pojedyncze pliki dziennika dla serwera. 
 
-Skorzystaj z następującego przykładu, aby pobrać określonego pliku dziennika dla serwera **mydemoserver.postgres.database.azure.com** w grupie zasobów **myresourcegroup** do środowiska lokalnego.
+Użyj poniższego przykładu, aby pobrać określony plik dziennika dla serwera **mydemoserver.Postgres.Database.Azure.com** w **obszarze Grupa zasobów zasobu do** środowiska lokalnego.
 ```azurecli-interactive
 az postgres server-logs download --name 20170414-mydemoserver-postgresql.log --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="next-steps"></a>Kolejne kroki
-- Aby dowiedzieć się więcej na temat dzienników serwerów, zobacz [dzienników serwera w usłudze Azure Database for postgresql w warstwie](concepts-server-logs.md).
-- Aby uzyskać więcej informacji na temat parametrów serwera, zobacz [Dostosowywanie parametrów konfiguracji serwera przy użyciu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md).
+## <a name="next-steps"></a>Następne kroki
+- Aby dowiedzieć się więcej o dziennikach serwera, zobacz [Dzienniki serwera w Azure Database for PostgreSQL](concepts-server-logs.md).
+- Aby uzyskać więcej informacji na temat parametrów serwera, zobacz [Dostosowywanie parametrów konfiguracji serwera przy użyciu interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md).

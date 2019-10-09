@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: thweiss
-ms.openlocfilehash: f7d364eb5db5c6d6304944d490468edf8b5ebe2e
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 46d0124eb701b0c2d779a96c8efd50ba43e8fc07
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811667"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034454"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami indeksowania w Azure Cosmos DB
 
@@ -334,7 +334,7 @@ W Azure Cosmos DB zasady indeksowania można aktualizować przy użyciu dowolnej
 
 - z Azure Portal
 - Korzystanie z interfejsu wiersza polecenia platformy Azure
-- Przy użyciu programu PowerShell
+- przy użyciu programu PowerShell
 - Korzystanie z jednego z zestawów SDK
 
 [Aktualizacja zasad indeksowania](index-policy.md#modifying-the-indexing-policy) wyzwala transformację indeksu. Postęp tego przekształcenia może być również śledzony z zestawów SDK.
@@ -342,13 +342,13 @@ W Azure Cosmos DB zasady indeksowania można aktualizować przy użyciu dowolnej
 > [!NOTE]
 > Podczas aktualizowania zasad indeksowania zapisy do Azure Cosmos DB będą nieprzerwane. Podczas ponownego indeksowania zapytania mogą zwracać częściowe wyniki w miarę aktualizowania indeksu.
 
-## <a name="use-the-azure-portal"></a>Użyj Azure Portal
+## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
 Kontenery usługi Azure Cosmos przechowują swoje zasady indeksowania jako dokument JSON, który Azure Portal umożliwia bezpośrednie edytowanie.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
-1. Utwórz nowe konto usługi Azure Cosmos lub Wybierz istniejące konto.
+1. Utwórz nowe konto usługi Azure Cosmos lub wybierz istniejące.
 
 1. Otwórz okienko **Eksplorator danych** i wybierz kontener, w którym chcesz korzystać.
 
@@ -358,13 +358,13 @@ Kontenery usługi Azure Cosmos przechowują swoje zasady indeksowania jako dokum
 
 1. Po zakończeniu kliknij przycisk **Zapisz** .
 
-![Zarządzanie indeksowaniem przy użyciu Azure Portal](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+![Zarządzanie indeksowaniem przy użyciu witryny Azure Portal](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
-## <a name="use-the-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
+## <a name="use-the-azure-cli"></a>Używanie interfejsu wiersza polecenia platformy Azure
 
 Aby utworzyć kontener z niestandardowymi zasadami indeksowania, zobacz [Tworzenie kontenera z niestandardowymi zasadami indeksu przy użyciu interfejsu wiersza polecenia](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
 
-## <a name="use-powershell"></a>Korzystanie z programu PowerShell
+## <a name="use-powershell"></a>Używanie programu PowerShell
 
 Aby utworzyć kontener z niestandardowymi zasadami indeksowania, zobacz [Tworzenie kontenera z niestandardowymi zasadami indeksu przy użyciu programu PowerShell](manage-with-powershell.md#create-container-custom-index)
 
@@ -459,44 +459,34 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 Obiekt `DocumentCollection` z [zestawu Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (zobacz [ten przewodnik Szybki Start](create-sql-api-java.md) dotyczący użycia) udostępnia metody `getIndexingPolicy()` i `setIndexingPolicy()`. Obiekt `IndexingPolicy` manipulowanie umożliwia zmianę trybu indeksowania i Dodawanie lub usuwanie dołączonych i wykluczonych ścieżek.
 
-Pobierz szczegóły kontenera
-
 ```java
+// Retrieve the container's details
 Observable<ResourceResponse<DocumentCollection>> containerResponse = client.readCollection(String.format("/dbs/%s/colls/%s", "database", "container"), null);
 containerResponse.subscribe(result -> {
 DocumentCollection container = result.getResource();
 IndexingPolicy indexingPolicy = container.getIndexingPolicy();
-```
 
-Ustawianie spójności trybu indeksowania
-
-```java
+// Set the indexing mode to consistent
 indexingPolicy.setIndexingMode(IndexingMode.Consistent);
-```
 
-Dodaj dołączoną ścieżkę
+// Add an included path
 
-```java
 Collection<IncludedPath> includedPaths = new ArrayList<>();
 ExcludedPath includedPath = new IncludedPath();
-includedPath.setPath("/age/*");
+includedPath.setPath("/*");
 includedPaths.add(includedPath);
 indexingPolicy.setIncludedPaths(includedPaths);
-```
 
-Dodaj wykluczoną ścieżkę
+// Add an excluded path
 
-```java
 Collection<ExcludedPath> excludedPaths = new ArrayList<>();
 ExcludedPath excludedPath = new ExcludedPath();
 excludedPath.setPath("/name/*");
 excludedPaths.add(excludedPath);
 indexingPolicy.setExcludedPaths(excludedPaths);
-```
 
-Dodawanie indeksu przestrzennego
+// Add a spatial index
 
-```java
 Collection<SpatialSpec> spatialIndexes = new ArrayList<SpatialSpec>();
 Collection<SpatialType> collectionOfSpatialTypes = new ArrayList<SpatialType>();
 
@@ -508,20 +498,17 @@ spatialIndexes.add(spec);
 
 indexingPolicy.setSpatialIndexes(spatialIndexes);
 
-```
+// Add a composite index
 
-Dodawanie indeksu złożonego
-
-```java
 Collection<ArrayList<CompositePath>> compositeIndexes = new ArrayList<>();
 ArrayList<CompositePath> compositePaths = new ArrayList<>();
 
 CompositePath nameCompositePath = new CompositePath();
-nameCompositePath.setPath("/name/*");
+nameCompositePath.setPath("/name");
 nameCompositePath.setOrder(CompositePathSortOrder.Ascending);
 
 CompositePath ageCompositePath = new CompositePath();
-ageCompositePath.setPath("/age/*");
+ageCompositePath.setPath("/age");
 ageCompositePath.setOrder(CompositePathSortOrder.Descending);
 
 compositePaths.add(ageCompositePath);
@@ -529,12 +516,11 @@ compositePaths.add(nameCompositePath);
 
 compositeIndexes.add(compositePaths);
 indexingPolicy.setCompositeIndexes(compositeIndexes);
-```
 
-Aktualizowanie kontenera ze zmianami
+// Update the container with changes
 
-```java
  client.replaceCollection(container, null);
+});
 ```
 
 Aby śledzić postęp transformacji indeksu w kontenerze, należy przekazać obiekt `RequestOptions`, który żąda wypełnienia informacji o przydziale, a następnie pobrać wartość z nagłówka odpowiedzi `x-ms-documentdb-collection-index-transformation-progress`.
@@ -687,7 +673,7 @@ response = client.ReplaceContainer(containerPath, container)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przeczytaj więcej na temat indeksowania w następujących artykułach:
+Więcej informacji na temat indeksowania znajdziesz w następujących artykułach:
 
 - [Omówienie indeksowania](index-overview.md)
 - [Zasady indeksowania](index-policy.md)

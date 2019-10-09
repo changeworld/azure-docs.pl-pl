@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z funkcją oglądania według kolorów | Microsoft Docs'
+title: 'Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) przy użyciu narzędzia Obejrzyj według kolorów | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i oglądać kolory.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d0810c393cf9b6060f456c5ff01d03673b62a9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 6d8fdc8ba2337a3be49a4645e48a45120fb0ccec
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861302"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026091"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z oglądaniem przez kolory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) z czujki przez kolory
 
 W tym samouczku dowiesz się, jak zintegrować usługę Watch przez kolory z Azure Active Directory (Azure AD). Po zintegrowaniu oglądania przez kolory z usługą Azure AD można:
 
@@ -68,7 +68,7 @@ Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za 
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 1. **[Skonfiguruj kontrolowanie według kolorów Logowanie jednokrotne](#configure-watch-by-colors-sso)** — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
     1. **[Utwórz użytkownika testowego czujki według kolorów](#create-watch-by-colors-test-user)** , aby uzyskać odpowiednika B. Simon w Obejrzyj według kolorów, które są połączone z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
@@ -80,7 +80,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W sekcji **Podstawowa konfiguracja** SAML aplikacja została wstępnie skonfigurowana w trybie inicjalizacji **dostawcy tożsamości** , a wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **Zapisz** .
+1. W sekcji **Podstawowa konfiguracja SAML** aplikacja została wstępnie skonfigurowana w trybie inicjalizacji **dostawcy tożsamości** , a wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **Zapisz** .
 
 1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
@@ -88,17 +88,17 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** kliknij przycisk Kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
+    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij przycisk **Utwórz**.
 
@@ -110,7 +110,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **Obejrzyj według kolorów**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -132,7 +132,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 3. Jeśli chcesz ręcznie skonfigurować kontrolki przez kolory, Otwórz nowe okno przeglądarki sieci Web i zaloguj się w witrynie firmy Watch przez kolory jako administrator i wykonaj następujące czynności:
 
-4. W prawym górnym rogu strony kliknij pozycję **profil** > **Ustawienia** > konta**Logowanie jednokrotne (logowanie**jednokrotne).
+4. W prawym górnym rogu strony kliknij pozycję **profil** > **Ustawienia konta** >  Logowanie jednokrotne **(Logowanie jednokrotne)** .
 
     ![Konfiguracja czujki według kolorów](./media/watch-by-colors-tutorial/config01.png)
 
@@ -144,9 +144,9 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. W polu tekstowym **adres URL** wklej **adres URL metadanych Federacji**, który został skopiowany z Azure Portal.
 
-    c. Kliknij przycisk **Importuj**, a następnie następujące pola automatycznie wypełnią na stronie.
+    d. Kliknij przycisk **Importuj**, a następnie następujące pola automatycznie wypełnią na stronie.
 
-    d. Kliknij polecenie **Zapisz**.
+    d. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-watch-by-colors-test-user"></a>Tworzenie użytkownika testowego czujki przez kolory
 
@@ -156,7 +156,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w celu oglądania 
 
 1. Zaloguj się, aby obejrzeć kolory jako administrator zabezpieczeń.
 
-1. W prawym górnym rogu strony kliknij pozycję **Profile** > **Użytkownicy** > **Dodaj użytkownika**.
+1. W prawym górnym rogu strony kliknij pozycję **profil** > **Użytkownicy** > **Dodaj użytkownika**.
 
     ![Konfiguracja czujki według kolorów](./media/watch-by-colors-tutorial/config03.png)
 
@@ -168,21 +168,21 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w celu oglądania 
 
     b. W polu tekstowym **Last name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
 
-    c. W polu tekstowym **adres e-mail** wprowadź adres e-mail użytkownika, np `B.Simon@contoso.com`.
+    d. W polu tekstowym **adres e-mail** wprowadź adres e-mail użytkownika, taki jak `B.Simon@contoso.com`.
 
     d. W polu tekstowym **hasło** wprowadź hasło.
 
     e. Wybierz **uprawnienia konta** zgodnie z Twoją organizacją.
 
-    f. Kliknij polecenie **Zapisz**.
+    f. Kliknij przycisk **Save** (Zapisz).
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Obejrzyj według kolorów w panelu dostępu należy automatycznie zalogować się do opcji Obejrzyj według kolorów, dla których skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

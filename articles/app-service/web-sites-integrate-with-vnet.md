@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827581"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034727"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z usługą Azure Virtual Network
 W tym dokumencie opisano funkcję integracji Azure App Service sieci wirtualnej i sposób jej konfigurowania z aplikacjami w [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Usługa Azure Virtual Networks][VNETOverview] (sieci wirtualnych) umożliwia umieszczanie wielu zasobów platformy Azure w sieci bez obsługi Internetu.  
@@ -37,7 +37,7 @@ Istnieją dwa formy funkcji integracji sieci wirtualnej
 
 Aplikacja może jednocześnie korzystać z jednej formy funkcji integracji sieci wirtualnej. Następnie pytanie to funkcja, której należy użyć. Możesz użyć dowolnej dla wielu rzeczy. Jasne odróżniające są następujące:
 
-| Związane  | Rozwiązanie | 
+| Problem  | Rozwiązanie | 
 |----------|----------|
 | Chcesz uzyskać dostęp do adresu RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) w tym samym regionie | Integracja z regionalną siecią wirtualną |
 | Chcesz uzyskać dostęp do zasobów w klasycznej sieci wirtualnej lub sieci wirtualnej w innym regionie | Integracja sieci wirtualnej wymagana przez bramę |
@@ -59,10 +59,14 @@ Funkcja integracji sieci wirtualnej:
 Istnieje kilka rzeczy, które nie są obsługiwane przez integrację sieci wirtualnej, w tym:
 
 * Instalowanie dysku
-* Integracja z usługą AD 
-* NetBIOS
+* Integracja usługi AD 
+* NetBios
 
 ## <a name="regional-vnet-integration"></a>Integracja z regionalną siecią wirtualną 
+
+> [!NOTE]
+> Komunikacja równorzędna nie jest jeszcze dostępna dla App Service opartych na systemie Linux.
+>
 
 Gdy Integracja sieci wirtualnej jest używana z sieci wirtualnych w tym samym regionie, w którym znajduje się aplikacja, wymaga użycia delegowanej podsieci z co najmniej 32 adresem. Podsieci nie można używać dla żadnych innych elementów. Wywołania wychodzące wykonane z aplikacji zostaną nawiązane z adresów w podsieci delegowanej. W przypadku korzystania z tej wersji integracji sieci wirtualnej wywołania są nawiązywane z adresów w sieci wirtualnej. Użycie adresów w sieci wirtualnej umożliwia aplikacji:
 
@@ -142,8 +146,8 @@ Funkcja integracji sieci wirtualnej wymagana przez bramę:
 
 Ta funkcja nie obsługuje:
 * Korzystanie z aplikacji systemu Linux
-* Uzyskiwanie dostępu do zasobów w ramach ExpressRoute 
-* Uzyskiwanie dostępu do zasobów między punktami końcowymi usługi 
+* Uzyskiwanie dostępu do zasobów w usłudze ExpressRoute 
+* Uzyskiwanie dostępu do zasobów w obrębie punktów końcowych usługi 
 
 ### <a name="getting-started"></a>Wprowadzenie
 
@@ -230,7 +234,7 @@ Nie jest wymagana dodatkowa konfiguracja funkcji integracji regionalnej sieci wi
 > 
 > 
 
-## <a name="peering"></a>Komunikacji równorzędnej
+## <a name="peering"></a>Komunikacja równorzędna
 Jeśli używasz komunikacji równorzędnej z integracją regionalnej sieci wirtualnej, nie musisz wykonywać żadnych dodatkowych czynności konfiguracyjnych. 
 
 Jeśli jest używana brama wymagana Integracja sieci wirtualnej z usługą komunikacji równorzędnej, należy skonfigurować kilka dodatkowych elementów. Aby skonfigurować komunikację równorzędną do pracy z aplikacją:

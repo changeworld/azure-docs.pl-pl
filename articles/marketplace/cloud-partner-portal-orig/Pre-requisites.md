@@ -1,40 +1,22 @@
 ---
-title: Wymagania wstępne dotyczące danych aplikacji nadzoru
-description: Lista wymagań wstępnych dotyczących nadzorowaną aplikacji.
+title: Wymagania wstępne dotyczące nadzoru aplikacji
+description: Artykuł z przestarzałych CPP, połączony z komputerem was "lista wymagań wstępnych dotyczących nadzoru aplikacji".
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 0219d7e8a94dd6710c553f2133442867e39f6870
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: a92d32084dd36433fdc872db66f0f375a770bfda
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935542"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034433"
 ---
-# <a name="prerequisites-for-application-curation"></a>Wymagania wstępne dotyczące danych aplikacji nadzoru
+# <a name="prerequisites-for-application-curation"></a>Wymagania wstępne dotyczące nadzoru aplikacji
 
-Firma Microsoft wymaga określonych przeglądy w celu zweryfikowania, że są spełnione następujące wymagania:
+[Portal Cloud partner](https://cloudpartner.azure.com/) nie obsługuje już tworzenia i zarządzania Dynamics 365 dla ofert finansów i operacji. Zamiast tego ta funkcja została przeniesiona do [portalu Centrum partnerskiego](https://partner.microsoft.com/)firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej usługi Dynamics 365 dla operacji](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-- Partner\'s niestandardowy kod spełnia wytycznych firmy Microsoft.
-- Pakiet rozwiązania Microsoft Dynamics Lifecycle Services (LCS) można pomyślnie wdrożyć.
-- Transakcje mogą być wprowadzane.
-
-Obecnie partnerów musi pokazują, że te wymagania zostały spełnione testu wdrożenia, bo, a następnie Udostępnianie wyników z firmą Microsoft. Żaden kod nie zostanie wdrożony w środowisku klienta tej firmy Microsoft nie zostały\'t zweryfikowane. Partnerzy należy wykonać, z następującymi artefaktami Czytaj i testów:
-
-- Raport z analizy kodu (samochód)
-- Narzędzie do modelowania procesu biznesowego (BPM) i testowania skryptów
-- Nazwa projektu i opisu
-- Kopia zapasowa bazy danych biznesowych
-- Pakiety danych i przetwarzania danych pakietów (PDPs)
-- Metodologia
-- Pliki binarne (opcjonalnie)
-- Można wdrożyć pakietów.
-- Modele (kod i testy)
-- Marketing zawartości
-
-Aby uzyskać więcej informacji na temat wymagania techniczne i dotyczące procesów, zobacz [Weryfikuj aplikacje for Finance and Operations](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions).  Ponadto, jeśli jeszcze tego nie zrobiono, zapoznaj się [usługi Office 365, Dynamics 365, PowerApps i Power BI oferują Podręcznik publikowania](../appsource-offer-publishing-guide.md).
-
+Przed utworzeniem nowej oferty Dynamics 365 for Operations należy przeczytać artykuł [Tworzenie konta Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , a następnie otworzyć [pulpit nawigacyjny komercyjnej witryny Marketplace](https://partner.microsoft.com/dashboard/directory) z wybraną stroną **Przegląd** . Postępuj zgodnie z instrukcjami w temacie [Create a New Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) , aby utworzyć ofertę.

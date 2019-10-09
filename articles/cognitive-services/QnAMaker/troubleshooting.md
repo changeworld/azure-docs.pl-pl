@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 00d3d63ff1a5b4d5dab0534e039145b97091af87
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 51d21dca1d8a5223e67cb7ea8489800989cff55c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802166"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026033"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Rozwiązywanie problemów dotyczących QnA Maker
 
@@ -59,7 +59,7 @@ Wszystkie usunięcia są trwałe, w tym pary pytań i odpowiedzi, pliki, adresy 
 
 Istnieje możliwość, że QnA Maker nie może wypakować niektórych treści pytań i odpowiedzi (QnA) z prawidłowych adresów URL często zadawanych pytań. W takich przypadkach można wkleić zawartość QnA w pliku txt i sprawdzić, czy narzędzie może go pozyskać. Alternatywnie można dodać zawartość do bazy wiedzy za pomocą [portalu QNA Maker](https://qnamaker.ai).
 
-### <a name="how-large-a-knowledge-base-can-i-create"></a>Jak duża baza wiedzy można utworzyć?
+### <a name="how-large-a-knowledge-base-can-i-create"></a>Jak duże bazy wiedzy można tworzyć?
 
 Rozmiar bazy wiedzy zależy od jednostki SKU usługi Azure Search, którą wybierasz podczas tworzenia usługi QnA Maker. Przeczytaj [tutaj](./Tutorials/choosing-capacity-qnamaker-deployment.md) , aby uzyskać więcej szczegółów.
 
@@ -97,21 +97,21 @@ Domyślna wiadomość jest częścią ustawień w usłudze App Service.
 
 Aby uzyskać więcej informacji, zobacz [lokalizacje źródeł danych](./Concepts/data-sources-supported.md#data-source-locations) .
 
-### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Aktualizacje wprowadzone w bazie wiedzy nie są uwzględniane podczas publikowania. Dlaczego nie?
+### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Aktualizacje wprowadzone w bazie wiedzy nie są uwzględniane podczas publikowania. Dlaczego?
 
-Należy zapisać każdą operację edycji, niezależnie od tego, czy w tabeli Update, test lub ustawienia, aby można było ją opublikować. Pamiętaj, aby kliknąć przycisk **Zapisz i pouczenie** Button po każdej operacji edycji.
+Należy zapisać każdą operację edycji, niezależnie od tego, czy w tabeli Update, test lub ustawienia, aby można było ją opublikować. Pamiętaj, aby kliknąć przycisk **Zapisz i pouczenie** po każdej operacji edycji.
 
 ### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>Czy baza wiedzy obsługuje bogate dane czy multimedia?
 
-Baza wiedzy obsługuje funkcję promocji. Jednak funkcja autowyodrębniania z adresów URL ma ograniczoną możliwość konwersji na format HTML na Jeśli chcesz używać promocji o pełnej dopracowane, możesz zmodyfikować zawartość bezpośrednio w tabeli lub przekazać bazę wiedzy z zawartością rozbudowaną.
+Baza wiedzy obsługuje znaczniki markdown. Jednak funkcja autowyodrębniania z adresów URL ma ograniczoną możliwość konwersji na format HTML na Jeśli chcesz używać promocji o pełnej dopracowane, możesz zmodyfikować zawartość bezpośrednio w tabeli lub przekazać bazę wiedzy z zawartością rozbudowaną.
 
 Multimedia, takie jak obrazy i wideo, nie są w tej chwili obsługiwane.
 
-### <a name="does-qna-maker-support-non-english-languages"></a>Czy QnA Maker obsługuje języki inne niż angielskie?
+### <a name="does-qna-maker-support-non-english-languages"></a>Czy usługa QnA Maker obsługuje języki inne niż angielski?
 
 Zobacz więcej szczegółów dotyczących [obsługiwanych języków](./Overview/languages-supported.md).
 
-Jeśli masz zawartość z wielu języków, pamiętaj o utworzeniu oddzielnej usługi dla każdego języka.
+Jeśli masz zawartość w wielu językach, pamiętaj, aby utworzyć oddzielną usługę dla każdego języka.
 
 ## <a name="manage-service"></a>Zarządzanie usługą
 
@@ -161,7 +161,7 @@ Miejsce na dysku dla usługi App Service może być pełne. Procedura naprawy mi
 
 ## <a name="integrate-with-other-services-including-bots"></a>Integracja z innymi usługami, w tym botów
 
-### <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>Czy muszę używać bot Framework, aby używać QnA Maker?
+### <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>Czy do używania narzędzia QnA Maker potrzebna jest struktura botów?
 
 Nie, nie musisz używać [platformy bot](https://github.com/Microsoft/botbuilder-dotnet) z QNA Maker. QnA Maker jest jednak oferowany jako jeden z kilku szablonów w programie [Azure bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0). Usługa bot umożliwia szybkie inteligentne programowanie bot przy użyciu programu Microsoft bot Framework i działa w środowisku bez serwera.
 
@@ -185,7 +185,7 @@ Klucz punktu końcowego bazy wiedzy ma etykietę `QnAAuthkey` w usłudze ABS.
 
 Tak. w bazie wiedzy można wykonywać zapytania z dowolnej liczby klientów. Jeśli odpowiedź z bazy wiedzy wydaje się powolnić lub przekroczyć limit czasu, rozważ uaktualnienie warstwy usług dla usługi App Service skojarzonej z bazą wiedzy.
 
-### <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Jak mogę osadzić usługę QnA Maker w mojej witrynie sieci Web?
+### <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Jak osadzić usługę QnA Maker w witrynie internetowej?
 
 Wykonaj następujące kroki, aby osadzić usługę QnA Maker jako kontrolkę rozmowy w sieci Web w witrynie internetowej:
 

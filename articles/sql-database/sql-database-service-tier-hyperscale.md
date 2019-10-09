@@ -3,26 +3,26 @@ title: Omówienie funkcji preskalowanie Azure SQL Database | Microsoft Docs
 description: W tym artykule opisano warstwę usługi w modelu zakupów rdzeń wirtualny w Azure SQL Database i wyjaśniono, jak różni się ona od Ogólnego przeznaczenia i Krytyczne dla działania firmy warstw usług.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/06/2019
-ms.openlocfilehash: 1d70c5d86221213ae3f9a2d31fdf40857cb516be
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 10/01/2019
+ms.openlocfilehash: dc9acd4fc45de2599ac71427ec2676506071894b
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845659"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035065"
 ---
-# <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Skalowanie warstwy usług dla maksymalnie 100 TB
+# <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
 Azure SQL Database jest oparta na architekturze SQL Server Database Engine, która jest dostosowywana do środowiska chmury w celu zapewnienia dostępności 99,99% nawet w przypadku awarii infrastruktury. Istnieją trzy modele architektury, które są używane w Azure SQL Database:
 - Ogólnego przeznaczenia/Standard 
--  Hiperskala
+-  Hiperskalowanie
 -  Krytyczne dla działania firmy/Premium
 
 Warstwa usługi do skalowania w Azure SQL Database to najnowsza warstwa usługi w modelu zakupu opartego na rdzeń wirtualny. Ta warstwa usług jest wysoce skalowalną warstwą wydajności magazynu i obliczeń, która wykorzystuje architekturę platformy Azure do skalowania w poziomie magazynu i zasobów obliczeniowych dla Azure SQL Database znacznie przekraczające limity dostępne dla Ogólnego przeznaczenia i firmy Krytyczne warstwy usług.
@@ -51,9 +51,13 @@ Aby uzyskać więcej informacji na temat rozmiarów obliczeń dla warstwy usług
 
 ## <a name="who-should-consider-the-hyperscale-service-tier"></a>Kto powinien wziąć pod uwagę warstwę usługi do skalowania
 
-Warstwa usługi dla górnego skalowania jest przeznaczona głównie dla klientów, którzy mają duże bazy danych lokalnie i chcą modernizowania swoich aplikacji, przechodząc do chmury lub dla klientów, którzy znajdują się już w chmurze i są ograniczeni przez maksymalny rozmiar bazy danych ograniczenia (1-4 TB). Jest on również przeznaczony dla klientów, którzy poszukują wysokiej wydajności i wysokiej skalowalności magazynu i obliczeń.
+Warstwa usługi do skalowania jest przeznaczona dla większości obciążeń firmowych, ponieważ zapewnia dużą elastyczność i wysoką wydajność dzięki niezależnej skalowalnemu zasobom obliczeniowym i magazynu. Dzięki możliwości automatycznego skalowania magazynu do 100 TB jest to doskonały wybór dla klientów, którzy:
 
-Warstwa usługi do skalowania obsługuje wszystkie SQL Server obciążenia, ale jest ona głównie zoptymalizowana pod kątem OLTP. Warstwa usługi do skalowania obsługuje również obciążenia hybrydowe i analityczne (składnicy danych).
+- W przypadku dużych baz danych w środowisku lokalnym i chcesz przeprowadzić modernizację swoich aplikacji, przechodząc do chmury
+- Znajdują się już w chmurze i są ograniczone przez maksymalne ograniczenia rozmiaru bazy danych innych warstw usług (1-4 TB)
+- Mają mniejsze bazy danych, ale wymagają szybkiego skalowania w pionie i w poziomie, wysokiej wydajności, natychmiastowej kopii zapasowej i szybkiego przywracania bazy danych.
+
+Warstwa usługi do skalowania obsługuje szeroką gamę obciążeń SQL Server, od czystej OLTP do czystej analizy, ale jest głównie zoptymalizowana pod kątem obciążeń OLTP i transakcji hybrydowych i przetwarzania analitycznego (HTAP).
 
 > [!IMPORTANT]
 > Pule elastyczne nie obsługują warstwy usługi skalowania w górę.
@@ -80,27 +84,27 @@ Na poniższym diagramie przedstawiono różne typy węzłów w bazie danych w sk
 
 ![architektura](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
-Baza danych w ramach skalowania zawiera następujące różne typy węzłów:
+Baza danych wieloskali zawiera następujące różne typy składników:
 
-### <a name="compute-node"></a>Węzeł obliczeniowy
+### <a name="compute"></a>Wystąpienia obliczeniowe
 
 Węzeł obliczeniowy to miejsce, w którym działa silnik relacyjny, więc wszystkie elementy języka, przetwarzanie zapytań i tak dalej występują. Wszystkie interakcje użytkownika z bazą danych w ramach skalowania są wykonywane za pomocą tych węzłów obliczeniowych. Węzły obliczeniowe mają pamięć podręczną opartą na dyskach SSD (z etykietami RBPEX-odporny na błędy w powyższym diagramie), aby zminimalizować liczbę podróży w sieci wymaganych do pobrania strony danych. Istnieje jeden podstawowy węzeł obliczeniowy, w którym są przetwarzane wszystkie obciążenia odczytu i zapisu. Istnieje co najmniej jeden pomocniczy węzeł obliczeniowy działający jako węzły rezerwy aktywnej do pracy w trybie failover, a także działający jako węzeł obliczeniowy tylko do odczytu do odciążania obciążeń odczytu (Jeśli ta funkcja jest wymagana).
 
-### <a name="page-server-node"></a>Węzeł serwera stronicowania
+### <a name="page-server"></a>Serwer stronicowy
 
 Serwery stron to systemy reprezentujące skalowalny w poziomie aparat magazynu.  Każdy serwer stron jest odpowiedzialny za podzbiór stron w bazie danych.  W sposób nominalny każdy serwer stronicowania kontroluje między 128 GB i 1 TB danych. Żadne dane nie są udostępniane na więcej niż jednym serwerze stronicowania (poza replikami, które są przechowywane pod kątem nadmiarowości i dostępności). Zadaniem serwera stronicowania jest obsługiwanie stron bazy danych do węzłów obliczeniowych na żądanie i aktualizowanie stron jako transakcji, które aktualizują dane. Serwery stronicowania są aktualne przez odtworzenie rekordów dziennika z usługi log. Serwery stron obsługują również pamięć podręczną opartą na dyskach SSD w celu zwiększenia wydajności. Długoterminowe przechowywanie stron danych jest przechowywane w usłudze Azure Storage w celu zapewnienia dodatkowej niezawodności.
 
-### <a name="log-service-node"></a>Węzeł usługi log
+### <a name="log-service"></a>Usługa log
 
-Węzeł Usługa log akceptuje rekordy dziennika z podstawowego węzła obliczeniowego, utrzymuje je w trwałej pamięci podręcznej i przekazuje rekordy dziennika do pozostałych węzłów obliczeniowych (aby można było zaktualizować ich pamięć podręczną), a także odpowiednich serwerów stron, aby można było zaktualizować dane t etapie. W ten sposób wszystkie zmiany danych z podstawowego węzła obliczeniowego są propagowane za pośrednictwem usługi log do wszystkich pomocniczych węzłów obliczeniowych i serwerów stron. Na koniec rekordy dziennika są wypychane do długoterminowego przechowywania w usłudze Azure Storage, która jest nieskończonym repozytorium magazynu. Ten mechanizm eliminuje konieczność częstego obcinania dzienników. Usługa log ma również lokalną pamięć podręczną umożliwiającą przyspieszenie dostępu.
+Usługa log przyjmuje rekordy dziennika z podstawowej repliki obliczeniowej, utrzymuje je w trwałej pamięci podręcznej i przekazuje rekordy dziennika do pozostałych replik obliczeniowych (aby można było zaktualizować ich pamięć podręczną) oraz odpowiednie serwery stron, aby można było je zaktualizować. jeszcze. W ten sposób wszystkie zmiany danych z podstawowej repliki obliczeniowej są propagowane za pośrednictwem usługi log na wszystkie pomocnicze repliki obliczeniowe i serwery stron. Na koniec rekordy dziennika są wypychane do długoterminowego przechowywania w usłudze Azure Storage, co jest praktycznie nieskończonym repozytorium magazynu. Ten mechanizm eliminuje konieczność częstego obcinania dzienników. Usługa log ma również lokalną pamięć podręczną umożliwiającą przyspieszenie dostępu do rekordów dzienników.
 
-### <a name="azure-storage-node"></a>Węzeł usługi Azure Storage
+### <a name="azure-storage"></a>Azure Storage
 
-Węzeł usługi Azure Storage jest ostateczną lokalizacją docelową danych z serwerów stronicowania. Ten magazyn jest używany na potrzeby tworzenia kopii zapasowych, a także do replikacji między regionami platformy Azure. Kopie zapasowe składają się z migawek plików danych. Operacja przywracania jest szybka od tych migawek, a dane można przywrócić do dowolnego punktu w czasie.
+Usługa Azure Storage zawiera wszystkie pliki danych w bazie danych. Serwery stron zachowują aktualne pliki danych w usłudze Azure Storage. Ten magazyn jest używany na potrzeby tworzenia kopii zapasowych, a także do replikacji między regionami platformy Azure. Kopie zapasowe są implementowane przy użyciu migawek magazynu plików danych. Operacje przywracania przy użyciu migawek są szybkie, niezależnie od rozmiaru danych. Dane można przywrócić do dowolnego punktu w czasie w ramach okresu przechowywania kopii zapasowej bazy danych.
 
-## <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
+## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
 
-Kopie zapasowe są wykonywane na podstawie migawek plików, a tym samym prawie chwilowo. Rozdzielenie magazynu i obliczeń umożliwia wypchnięcie operacji tworzenia kopii zapasowej/przywracania do warstwy magazynowania w celu zmniejszenia obciążenia związanego z przetwarzaniem w podstawowym węźle obliczeniowym. W związku z tym kopia zapasowa dużej bazy danych nie ma wpływu na wydajność podstawowego węzła obliczeniowego. Analogicznie, przywracanie odbywa się przez skopiowanie migawki pliku, ponieważ nie jest to rozmiar operacji na danych. W przypadku przywracania w ramach tego samego konta magazynu operacja przywracania jest szybka.
+Kopie zapasowe są tworzone na podstawie migawek plików, a tym samym prawie chwilowo. Rozdzielenie magazynu i obliczeń umożliwia wypychanie operacji tworzenia kopii zapasowej/przywracania do warstwy magazynowania w celu zmniejszenia obciążenia związanego z przetwarzaniem w podstawowej replice obliczeniowej. W związku z tym kopia zapasowa bazy danych nie ma wpływu na wydajność podstawowego węzła obliczeniowego; Analogicznie, przywracanie odbywa się przez przywrócenie migawek plików, co nie jest rozmiarem operacji danych. Przywracanie jest operacją o stałym czasie, a nawet kilka baz danych można przywrócić w ciągu kilku minut, a nie godzin lub dni. Tworzenie nowych baz danych przez przywrócenie istniejącej kopii zapasowej obejmuje również korzystanie z tej funkcji: Tworzenie kopii bazy danych do celów deweloperskich i testowych, nawet w przypadku baz danych o rozmiarze terabajtów, jest doable w ciągu kilku minut.
 
 ## <a name="scale-and-performance-advantages"></a>Zalety skalowania i wydajności
 
@@ -110,7 +114,7 @@ Dzięki możliwości szybkiej zmiany w górę i w dół dodatkowych węzłów ob
 
 Bazę danych ze skalą można utworzyć przy użyciu [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Bazy danych ze skalowaniem są dostępne tylko przy użyciu [modelu zakupu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 
-Następujące polecenie T-SQL tworzy bazę danych w skali. W `CREATE DATABASE` instrukcji należy określić zarówno cel wersji, jak i usługi. Zapoznaj się z [limitami zasobów](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) , aby uzyskać listę prawidłowych celów usługi.
+Następujące polecenie T-SQL tworzy bazę danych w skali. W instrukcji `CREATE DATABASE` należy określić zarówno cel wersji, jak i usługi. Zapoznaj się z [limitami zasobów](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) , aby uzyskać listę prawidłowych celów usługi.
 
 ```sql
 -- Create a HyperScale Database
@@ -121,9 +125,9 @@ Spowoduje to utworzenie bazy danych w ramach skalowania na 5 rdzeń sprzęt z 4 
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>Migrowanie istniejącego Azure SQL Database do warstwy usługi w ramach skalowania
 
-Istniejące bazy danych Azure SQL można przenieść do skalowania przy użyciu [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). W tej chwili jest to jednokierunkowa migracja. Nie można przenieść baz danych ze skalowania do innej warstwy usług. Zalecamy wykonanie kopii produkcyjnych baz danych i migrację do funkcji wieloskalowania w celu sprawdzenia koncepcji (POCs).
+Istniejące bazy danych Azure SQL można przenieść do skalowania przy użyciu [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). W tej chwili jest to jednokierunkowa migracja. Nie można przenieść baz danych ze skalowania do innej warstwy usług, poza eksportowaniem i importowaniem danych. W przypadku dowodu koncepcji (POCs) zalecamy utworzenie kopii produkcyjnych baz danych i migrowanie kopii do obszaru skalowania. Migrowanie istniejącej bazy danych Azure SQL Database do warstwy skalowania jest rozmiarem operacji na danych.
 
-Następujące polecenie T-SQL przenosi bazę danych do warstwy usługi. W `ALTER DATABASE` instrukcji należy określić zarówno cel wersji, jak i usługi.
+Następujące polecenie T-SQL przenosi bazę danych do warstwy usługi. W instrukcji `ALTER DATABASE` należy określić zarówno cel wersji, jak i usługi.
 
 ```sql
 -- Alter a database to make it a HyperScale Database
@@ -133,17 +137,27 @@ GO
 
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Nawiązywanie połączenia z repliką w skali odczytu bazy danych
 
-W bazach danych `ApplicationIntent` w ramach skalowania argument w parametrach połączenia dostarczonych przez klienta wskazuje, czy połączenie jest kierowane do repliki zapisu, czy do repliki pomocniczej tylko do odczytu. Jeśli zestaw do `READONLY` i baza danych nie mają repliki pomocniczej, połączenie zostanie przekazane do repliki `ReadWrite` podstawowej i domyślnie zostanie zachowane. `ApplicationIntent`
+W przypadku baz danych w ramach skalowania `ApplicationIntent` argument w parametrach połączenia dostarczonych przez klienta wskazuje, czy połączenie jest kierowane do repliki zapisu, czy do repliki pomocniczej tylko do odczytu. Jeśli `ApplicationIntent` ustawiono na `READONLY`, a baza danych nie ma repliki pomocniczej, połączenie zostanie przekazane do repliki podstawowej i domyślnie zostanie użyte zachowanie `ReadWrite`.
 
 ```cmd
 -- Connection string with application intent
 Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
+
+Repliki pomocnicze w ramach skalowania są identyczne, przy użyciu tego samego celu poziomu usługi co replika podstawowa. Jeśli istnieje więcej niż jedna replika pomocnicza, obciążenie jest dystrybuowane między wszystkie dostępne pomocnicze. Każda replika pomocnicza jest aktualizowana niezależnie, więc różne repliki mogą mieć różne opóźnienia danych względem repliki podstawowej.
+
+## <a name="database-high-availability-in-hyperscale"></a>Wysoka dostępność bazy danych w ramach skalowania
+
+Podobnie jak w przypadku wszystkich innych warstw usług, funkcja Moja Skala gwarantuje trwałość danych dla zatwierdzonych transakcji niezależnie od dostępności repliki obliczeniowej. Zakres przestoju spowodowany przez replikę podstawową staje się niedostępny, zależy od typu trybu failover (zaplanowanego a nieplanowanego) oraz od obecności co najmniej jednej repliki pomocniczej. W planowanej pracy w trybie failover (tj. zdarzeniu konserwacji) system tworzy nową replikę podstawową przed zainicjowaniem trybu failover lub używa istniejącej repliki pomocniczej jako lokalizacji docelowej trybu failover. W przypadku nieplanowanego przejścia w tryb failover (tj. awaria sprzętowa repliki podstawowej) system używa repliki pomocniczej jako miejsca docelowego trybu failover, jeśli taki istnieje, lub tworzy nową replikę podstawową z puli dostępnej pojemności obliczeniowej. W tym drugim przypadku czas przestoju jest dłuższy z powodu dodatkowych kroków wymaganych do utworzenia nowej repliki podstawowej.
+
+Aby zapoznać się z umową SLA, zobacz [Umowa SLA dla Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/).
+
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Odzyskiwanie po awarii dla baz danych w ramach skalowania
+
 ### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Przywracanie bazy danych ze skalowaniem do innej lokalizacji geograficznej
 Jeśli trzeba przywrócić Azure SQL Database przeskalować bazę danych do regionu innego niż ten, w którym jest obecnie hostowana, w ramach operacji odzyskiwania po awarii lub przechodzenia do szczegółów, relokacji lub z innego powodu, podstawowa metoda polega na wykonaniu przywracania geograficznego bazy danych.  Obejmuje to dokładnie te same kroki jak w przypadku przywracania dowolnej innej bazy danych AZURE SQL w innym regionie:
 1. Utwórz serwer SQL Database w regionie docelowym, jeśli jeszcze nie masz odpowiedniego serwera.  Ten serwer powinien należeć do tej samej subskrypcji co oryginalny serwer (źródłowy).
-2. Postępuj zgodnie z instrukcjami w temacie dotyczącym [przywracania](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) geograficznego strony na przywracaniu baz danych Azure SQL z automatycznych kopii zapasowych.
+2. Postępuj zgodnie z instrukcjami w temacie dotyczącym [przywracania geograficznego](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) strony na przywracaniu baz danych Azure SQL z automatycznych kopii zapasowych.
 
 > [!NOTE]
 > Ze względu na to, że źródło i cel znajdują się w oddzielnych regionach, baza danych nie może współużytkować magazynu migawek ze źródłową bazą danych jako do przywracania geograficznego, co kończy się niezwykle szybko.  W przypadku przywracania geograficznego bazy danych w ramach skalowania jest to operacja o rozmiarze danych, nawet jeśli obiekt docelowy znajduje się w sparowanym regionie magazynu z replikacją geograficzną.  Oznacza to, że wykonanie operacji przywracania geograficznego będzie trwać proporcjonalnie do rozmiaru przywracanej bazy danych.  Jeśli obiekt docelowy znajduje się w sparowanym regionie, kopia będzie znajdować się w centrum danych, co będzie znacznie szybsze niż kopiowanie na dużą odległość przez Internet, ale nadal będzie kopiować wszystkie bity.
@@ -160,18 +174,18 @@ Warstwa skalowania Azure SQL Database jest obecnie dostępna w następujących r
 - Chiny Wschodnie 2
 - Chiny Północne 2
 - Azja Wschodnia
-- East US
+- Wschodnie stany USA
 - Wschodnie stany USA 2
 - Francja Środkowa
 - Japonia Wschodnia
 - Japonia Zachodnia
 - Korea Środkowa
 - Korea Południowa
-- Środkowo-północne stany USA
+- Północno-środkowe stany USA
 - Europa Północna
-- Północna Republika Południowej Afryki
-- Środkowo-południowe stany USA
-- Azja Południowo-Wschodnia
+- Republika Południowej Afryki (północ)
+- Południowo-środkowe stany USA
+- Azja Południowo-wschodnia
 - Południowe Zjednoczone Królestwo
 - Zachodnie Zjednoczone Królestwo
 - Europa Zachodnia
@@ -194,17 +208,17 @@ Aby poprosić o możliwość tworzenia baz danych w regionach, których nie ma n
 
 5. W obszarze **Typ limitu przydziału**wybierz pozycję **baza danych SQL**
 
-6. Kliknij pozycję **Next: Wiązani**
+6. Kliknij przycisk **Dalej: rozwiązania**
 
 1. Kliknij pozycję **Podaj szczegóły**
 
     ![Szczegóły problemu](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. Wybierz **typ przydziału SQL Database**: **Inne żądanie limitu przydziału**
+8. Wybierz **SQL Database typ przydziału**: **inne żądanie limitu przydziału**
 
 9. Wypełnij następujący szablon:
 
-    ![Szczegóły limitu przydziału](media/sql-database-service-tier-hyperscale/request-screen-3.png)
+    ![Szczegóły przydziału](media/sql-database-service-tier-hyperscale/request-screen-3.png)
 
     Podaj następujące informacje w szablonie
 
@@ -227,17 +241,15 @@ Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na p
 | Okienko zarządzanie kopiami zapasowymi dla serwera logicznego nie pokazuje przefiltrowanych baz danych z programu SQL Server  | Funkcja Moja Skala ma oddzielną metodę zarządzania kopiami zapasowymi, a w związku z tym ustawienia przechowywania kopii zapasowych długoterminowego przechowywania i punktu w czasie nie mają zastosowania/są unieważnione. W związku z tym bazy danych nie są wyświetlane w okienku zarządzanie kopią zapasową. |
 | Przywracanie do określonego momentu | Po przeprowadzeniu migracji bazy danych do warstwy usługi w warstwie skalowania Przywróć do punktu w czasie przed migracją nie jest obsługiwane.|
 | Przywracanie bazy danych bez skalowania do Hypserscale i na odwrót | Nie można przywrócić bazy danych w ramach skalowania do bazy danych bez skalowania ani przywracania bazy danych bez skalowania do bazy danych w skali.|
-| Jeśli plik bazy danych powiększa się podczas migracji ze względu na aktywne obciążenie i przekroczy 1 TB na granicę pliku, migracja kończy się niepowodzeniem | Środki zaradcze <br> — Jeśli to możliwe, należy przeprowadzić migrację bazy danych, gdy nie ma uruchomionego obciążenia aktualizacji.<br> -Spróbuj ponownie przeprowadzić migrację, dopóki nie zostanie przekroczona granica 1 TB podczas migracji.|
+| Jeśli baza danych ma co najmniej jeden plik danych o rozmiarze większym niż 1 TB, migracja nie powiedzie się | W niektórych przypadkach może być możliwe obejście tego problemu, zmniejszając duże ilości plików poniżej 1 TB. W przypadku migrowania bazy danych używanej podczas procesu migracji upewnij się, że żaden plik nie będzie większy niż 1 TB. Użyj następującego zapytania, aby określić rozmiar plików bazy danych. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Wystąpienie zarządzane | Azure SQL Database wystąpienie zarządzane nie jest obecnie obsługiwane w bazach danych. |
-| Elastyczne pule |  Pule elastyczne nie są obecnie obsługiwane z użyciem funkcji wieloskalowania SQL Database.|
-| Migracja do funkcji Moje skalowanie jest obecnie operacją jednokierunkową | Po przeprowadzeniu migracji bazy danych do warstwy usługi nie można migrować jej bezpośrednio na warstwę usług, która nie jest w skali. W obecnym czasie jedynym sposobem migrowania bazy danych z funkcji ze skalowaniem do nieze skalowania jest eksportowanie/importowanie przy użyciu pliku BACPAC.|
+| Pule elastyczne |  Pule elastyczne nie są obecnie obsługiwane z użyciem funkcji wieloskalowania SQL Database.|
+| Migracja do funkcji Moje skalowanie jest obecnie operacją jednokierunkową | Po przeprowadzeniu migracji bazy danych do warstwy usługi nie można migrować jej bezpośrednio na warstwę usług, która nie jest w skali. W obecnym czasie jedynym sposobem migrowania bazy danych z Azure Databricks Azure Data Factory funkcji ze skalowaniem do poziomu non-------------------------------------------|
 | Migracja baz danych z trwałymi obiektami w pamięci | Funkcja przeskalowania obsługuje tylko nietrwałe obiekty w pamięci (typy tabel, natywne SPs i funkcje).  Trwałe tabele w pamięci i inne obiekty muszą zostać porzucone i odtworzone jako obiekty nieznajdujące się w pamięci przed migracją bazy danych do warstwy usługi.|
 | Śledzenie zmian | Nie będzie można używać Change Tracking z bazami danych w ramach skalowania. |
 | Replikacja geograficzna  | Nie można jeszcze skonfigurować replikacji geograficznej na potrzeby Azure SQL Database skalowania.  Można wykonywać operacje przywracania geograficznego (Przywracanie bazy danych w innej lokalizacji geograficznej, na potrzeby odzyskiwania po awarii lub w innych celach) |
 | Integracja TDE/AKV | Szyfrowanie przezroczystej bazy danych przy użyciu Azure Key Vault (nazywanego też kluczem "Przenieś jako własne-Key" lub BYOK) nie jest jeszcze obsługiwane dla Azure SQL Database funkcji TDE, ale z kluczami zarządzanymi przez usługę jest w pełni obsługiwane. |
-|Funkcje inteligentnej bazy danych | 1. Tworzenie indeksu, usuwanie modeli doradców indeksu nie jest obsługiwane dla baz danych w skali. <br/>2. Problem ze schematem, DbParameterization — ostatnio dodani doradcy nie są obsługiwane w przypadku bazy danych w celu przeskalowania.|
-
-
+|Funkcje inteligentnej bazy danych | Z wyjątkiem opcji "Wymuś plan" wszystkie inne opcje dostrajania automatycznego nie są jeszcze obsługiwane w obszarze skalowanie: opcje mogą być dostępne, ale nie zostaną wykonane żadne zalecenia ani działania. |
 
 ## <a name="next-steps"></a>Następne kroki
 

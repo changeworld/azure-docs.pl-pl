@@ -1,51 +1,51 @@
 ---
-title: Mapowanie transformacji okna przepływu danych w usłudze Azure Data Factory
-description: Mapowanie transformacji okna przepływu danych w usłudze Azure Data Factory
+title: Przekształcenie okna przepływu danych mapowania Azure Data Factory
+description: Przekształcenie okna przepływu danych mapowania Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 6f3f06ff54fc76416ba63f4f09835897d546f8dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf58db14398026da62ed13c66be815be8fe166a2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61349968"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029908"
 ---
-# <a name="azure-data-factory-window-transformation"></a>Usługi Azure Data Factory okna transformacji
+# <a name="azure-data-factory-window-transformation"></a>Przekształcenie okna Azure Data Factory
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Przekształcenie okna jest na tym, gdzie określi okienkowych agregacje kolumn w strumienie danych. W Konstruktorze wyrażeń można zdefiniować różne typy agregacji, które są oparte na danych lub czas systemu windows (klauzuli SQL OVER) takich jak potencjalny klient, opóźnienie, NTILE, CUMEDIST, RANGI itp.). Nowe pole zostanie wygenerowany w danych wyjściowych, który zawiera tych agregacji. Możesz również uwzględnić opcjonalne grupowania według pola.
 
-![Opcje okna](media/data-flow/windows1.png "1 systemu windows")
+Przekształcenie okna polega na określeniu agregacji kolumn w strumieniach danych. W Konstruktorze wyrażeń można definiować różne typy agregacji oparte na danych lub czasie w systemie Windows (klauzula SQL OVER), takich jak ołów, LAG, NTILE, CUMEDIST, RANGa itp.). W danych wyjściowych zostaną wygenerowane nowe pole zawierające te agregacje. Można również dołączyć opcjonalne pola grupowe.
 
-## <a name="over"></a>Tryb failover
-Ustaw, partycjonowanie danych w kolumnach dla swoją transformację okna. Jest to równoważne SQL ```Partition By``` w klauzuli Over w języku SQL. Jeśli chcesz utworzyć obliczenia lub wyrażenie służące do partycjonowania można to zrobić, ustawiając kursor nad nazwa kolumny i wybierz pozycję "kolumna obliczana".
+![Opcje okna](media/data-flow/windows1.png "Windows 1")
 
-![Opcje okna](media/data-flow/windows4.png "windows 4")
+## <a name="over"></a>Potok
+Ustaw Partycjonowanie danych kolumn dla transformacji okna. Odpowiednikiem SQL jest ```Partition By``` w klauzuli over w SQL. Jeśli chcesz utworzyć obliczenia lub utworzyć wyrażenie, które ma być używane na potrzeby partycjonowania, możesz to zrobić, umieszczając kursor na nazwie kolumny i wybierając pozycję "kolumna obliczana".
 
-## <a name="sort"></a>Sortowanie
-Ustawia innej części klauzuli Over ```Order By```. Spowoduje to ustawienie kolejności sortowania danych. Wyrażenie wartości calculate można też utworzyć w tym pole kolumny sortowania.
+![Opcje okna](media/data-flow/windows4.png "Windows 4")
 
-![Opcje okna](media/data-flow/windows5.png "windows 5")
+## <a name="sort"></a>Sortuj
+Inną częścią klauzuli over jest ustawienie ```Order By```. Spowoduje to ustawienie kolejności sortowania danych. Można również utworzyć wyrażenie dla wartości obliczanej w tym polu kolumny w celu sortowania.
 
-## <a name="range-by"></a>Zakres przez
-Następnym etapem jest skonfigurowanie ramki okna jako niepowiązane lub powiązana. Aby ustawić ramki unbounded okna, ustaw suwak niepowiązane na obu końcach. Wybranie ustawienia między Unbounded i Current Row należy ustawić start przesunięcie i kończyć się wartości. Obie wartości będą dodatnie liczby całkowite. Względna numerów lub wartości można użyć z Twoich danych.
+![Opcje okna]w(media/data-flow/windows5.png "systemie Windows 5")
 
-Suwak okno ma dwie wartości, aby ustawić: wartości przed bieżący wiersz i wartości po elemencie bieżącego wiersza. Przesunięcie początkowe i końcowe dopasowuje dwa selektory na suwaku.
+## <a name="range-by"></a>Zakres według
+Następnie ustaw obramowanie okna jako niepowiązane lub ograniczone. Aby ustawić nieograniczone obramowanie okna, ustaw dla suwaka wartość Unbound na obu końcach. W przypadku wybrania ustawienia między niezwiązanym i bieżącym wierszem należy ustawić przesunięcie wartości początkowej i końcowej. Obie wartości będą dodatnimi liczbami całkowitymi. Możesz użyć względnych liczb lub wartości z danych.
 
-![Opcje okna](media/data-flow/windows6.png "windows 6")
+Suwak okna ma dwie wartości do ustawienia: wartości przed bieżącym wiersz i wartości po bieżącym wierszu. Przesunięcie początkowe i końcowe dopasowuje się do dwóch selektorów na suwaku.
+
+![Opcje okna](media/data-flow/windows6.png "Windows 6")
 
 ## <a name="window-columns"></a>Kolumny okna
-Na koniec użyj Konstruktor wyrażeń do definiowania agregacji, którą chcesz nawiązać za pomocą danych systemu windows, takich jak RANGĘ, COUNT, MIN, MAX, GĘSTĄ RANGĘ, potencjalny klient, opóźnienie, itp.
+Na koniec użyj konstruktora wyrażeń do definiowania agregacji, które mają być używane z oknami danych, takimi jak RANGa, liczba, MIN, MAX, GĘSTa RANGa, ołów, ZWŁOKa itd.
 
-![Opcje okna](media/data-flow/windows7.png "systemu windows 7")
+![Opcje okna](media/data-flow/windows7.png "systemu Windows 7")
 
-Poniżej przedstawiono pełną listę agregacji i funkcje analitycznych, które są dostępne do użycia w ADF przepływu wyrażenie język danych za pomocą Kreatora wyrażeń: https://aka.ms/dataflowexpressions.
+Pełna lista funkcji agregujących i analitycznych dostępnych do użycia w języku wyrażeń przepływu danych ADF za pośrednictwem konstruktora wyrażeń jest wymieniona tutaj: https://aka.ms/dataflowexpressions.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli szukasz prostych grupowania agregacji, należy użyć [przekształcenie agregacji](data-flow-aggregate.md)
+Jeśli szukasz prostej agregacji grupowej, użyj [przekształcenia agregacji](data-flow-aggregate.md)

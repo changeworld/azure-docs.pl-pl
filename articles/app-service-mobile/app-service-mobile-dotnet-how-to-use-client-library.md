@@ -1,6 +1,6 @@
 ---
-title: Praca z biblioteki klienta zarządzanego App Service Mobile Apps | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać biblioteki klienckiej platformy .NET dla usługi Azure App Service Mobile Apps za pomocą aplikacji Windows i Xamarin.
+title: Praca z zarządzaną biblioteką klienta App Service Mobile Apps | Microsoft Docs
+description: Dowiedz się, jak używać biblioteki klienckiej .NET na potrzeby Azure App Service Mobile Apps z aplikacjami Windows i Xamarin.
 services: app-service\mobile
 documentationcenter: ''
 author: elamalani
@@ -14,43 +14,42 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: af0a4af2bec29e68175d2e15203a02507f08bfeb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2abced3bd7f1afe5e447a60c73da26fa302ced98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446356"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027383"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak używać zarządzanego klienta usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-dotnet-how-to-use-client-library) już dziś.
->
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
-Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą biblioteki klienta zarządzanego dla aplikacji usługi Azure Mobile usługi aplikacji dla Windows i aplikacje platformy Xamarin. Jeśli jesteś nowym użytkownikiem funkcji Mobile Apps, należy rozważyć najpierw przeczytanie [szybkiego startu usługi Azure Mobile Apps][1] samouczka. W tym przewodniku skupimy się na zestawie SDK zarządzanego klienta. Aby dowiedzieć się więcej na temat zestawów SDK po stronie serwera dla aplikacji mobilnych, zajrzyj do dokumentacji [zestawem SDK .NET Server][2] or the
-[Node.js Server SDK][3].
+W tym przewodniku pokazano, jak wykonywać typowe scenariusze przy użyciu zarządzanej biblioteki klienta Azure App Service Mobile Apps dla aplikacji dla systemu Windows i platformy Xamarin. Jeśli dopiero zaczynasz Mobile Apps, należy rozważyć pierwsze zakończenie samouczka [szybkiego startu platformy Azure Mobile Apps][1] . W tym przewodniku koncentrujemy się na zarządzanym przez klienta zestawie SDK. Aby dowiedzieć się więcej na temat zestawów SDK po stronie serwera dla Mobile Apps, zapoznaj się z dokumentacją [zestawu SDK programu .NET Server][2] lub [zestawu SDK serwera Node. js][3].
 
 ## <a name="reference-documentation"></a>Dokumentacja referencyjna
-Dokumentacja referencyjna dla klienta usługi SDK znajduje się tutaj: [Dokumentacja usługi Azure klienta platformy .NET usług Mobile Apps][4].
-Możesz również znaleźć kilka przykładów klienta w [repozytorium GitHub Azure-Samples][5].
+Dokumentacja referencyjna dotycząca zestawu SDK klienta znajduje się tutaj: [odwołanie klienta platformy Azure Mobile Apps .NET][4].
+Kilka przykładów klienta można również znaleźć w [repozytorium Azure-Samples][5]w witrynie GitHub.
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
 Platforma .NET obsługuje następujące platformy:
 
-* Wersje platformy Xamarin Android API 19-24 (KitKat za pośrednictwem określić wersję Nougat)
-* Wersje platformy Xamarin iOS dla systemu iOS w wersji 8.0 lub nowszej
+* Wersje platformy Xamarin Android dla interfejsu API 19 do 24 (KitKat do Nougat)
+* Wersje platformy Xamarin iOS dla systemu iOS w wersji 8,0 lub nowszej
 * Platforma uniwersalna systemu Windows
-* Windows Phone 8.1
-* Windows Phone 8.0, z wyjątkiem aplikacji Silverlight
+* Windows Phone 8,1
+* Windows Phone 8,0 z wyjątkiem aplikacji Silverlight
 
-Uwierzytelnianie "serwera przepływ" używa widoku internetowego prezentowane interfejsu użytkownika.  Jeśli urządzenie nie jest w stanie przedstawić interfejsu użytkownika widoku sieci Web, potrzebne są inne metody uwierzytelniania.  Ten zestaw SDK nie nadaje się zatem Obejrzyj type lub podobnie urządzeń z ograniczeniami.
+Uwierzytelnianie "serwer-przepływ" używa widoku WebView dla prezentowanego interfejsu użytkownika.  Jeśli urządzenie nie może przedstawić interfejsu użytkownika WebView, są konieczne inne metody uwierzytelniania.  Ten zestaw SDK jest w tym przypadku nieodpowiedni do typu czujka lub urządzeń z ograniczeniami.
 
-## <a name="setup"></a>Instalacji i wymagania wstępne
-Przyjęto założenie, że możesz mieć już utworzonych i opublikowanych projektu zaplecza aplikacji mobilnej, która zawiera co najmniej jedna tabela.  W kodzie, używaną w tym temacie, nosi nazwę tabeli `TodoItem` i ma następujące kolumny: `Id`, `Text`, i `Complete`. Ta tabela jest tej samej tabeli utworzone po zakończeniu [szybkiego startu usługi Azure Mobile Apps][1].
+## <a name="setup"></a>Instalacja i wymagania wstępne
+Przyjęto założenie, że został już utworzony i opublikowany projekt zaplecza aplikacji mobilnej, który zawiera co najmniej jedną tabelę.  W kodzie użytym w tym temacie tabela ma nazwę `TodoItem` i zawiera następujące kolumny: `Id`, `Text` i `Complete`. Ta tabela jest tą samą tabelą utworzoną po zakończeniu [przewodnika Szybki Start dotyczącego usługi Azure Mobile Apps][1].
 
-Odpowiedni typ klienta wpisane w języku C# jest następującej klasy:
+Odpowiadający wpisany typ po stronie klienta w C# programie jest następującą klasą:
 
 ```csharp
 public class TodoItem
@@ -65,87 +64,85 @@ public class TodoItem
 }
 ```
 
-[JsonPropertyAttribute][6] służy do definiowania *PropertyName* mapowanie między polem klienta i pola w tabeli.
+[JsonPropertyAttribute][6] jest używany do definiowania mapowania *PropertyName* między polem klienta a polem tabeli.
 
-Informacje na temat tworzenia tabel w kodzie zaplecza funkcji Mobile Apps, zobacz [temat zestawu SDK serwera .NET][7]
-or the [Node.js Server SDK topic][8]. Jeśli utworzono zaplecza aplikacji mobilnej w witrynie Azure portal przy użyciu opcji szybkiego startu umożliwia także **łatwych tabel** w [Azure Portal].
+Aby dowiedzieć się, jak tworzyć tabele w zapleczu Mobile Apps, zobacz [temat zestaw SDK programu .NET Server][7] lub [temat zestaw SDK serwera Node. js][8]. Jeśli zaplecze aplikacji mobilnej zostały utworzone w Azure Portal przy użyciu przewodnika Szybki Start, możesz również użyć ustawienia **łatwe tabele** w [Azure Portal].
 
-### <a name="how-to-install-the-managed-client-sdk-package"></a>Instrukcje: Zainstaluj pakiet zestawu SDK klienta zarządzanego
-Użyj jednej z następujących metod instalacji pakietu SDK zarządzanego klienta usługi Mobile Apps z [NuGet][9]:
+### <a name="how-to-install-the-managed-client-sdk-package"></a>Instrukcje: Instalowanie pakietu zarządzanego zestawu SDK klienta
+Użyj jednej z następujących metod, aby zainstalować pakiet zarządzanego zestawu SDK klienta dla Mobile Apps z programu [NuGet][9]:
 
-* **Program Visual Studio** kliknij prawym przyciskiem myszy projekt, kliknij przycisk **Zarządzaj pakietami NuGet**, wyszukaj `Microsoft.Azure.Mobile.Client` pakietu, a następnie kliknij przycisk **zainstalować**.
-* **Program Xamarin Studio** kliknij prawym przyciskiem myszy projekt, kliknij przycisk **Dodaj** > **Dodaj pakiety NuGet**, wyszukaj `Microsoft.Azure.Mobile.Client` pakietu, a następnie kliknij przycisk **Dodaj pakiet** .
+* **Program Visual Studio** Kliknij prawym przyciskiem myszy projekt, kliknij polecenie **Zarządzaj pakietami NuGet**, wyszukaj pakiet `Microsoft.Azure.Mobile.Client`, a następnie kliknij przycisk **Instaluj**.
+* **Xamarin Studio** Kliknij prawym przyciskiem myszy projekt, kliknij polecenie **dodaj** > **Dodaj pakiety NuGet**, Wyszukaj pakiet `Microsoft.Azure.Mobile.Client`, a następnie kliknij przycisk **Dodaj pakiet**.
 
-W pliku głównym działaniu, pamiętaj, aby dodać następujące **przy użyciu** instrukcji:
+W głównym pliku działania Pamiętaj o dodaniu następującej instrukcji **using** :
 
 ```csharp
 using Microsoft.WindowsAzure.MobileServices;
 ```
 
 > [!NOTE]
-> Pamiętaj, że wszystkie pakiety dla pomocy technicznej, do których odwołuje się projekt systemu Android, muszą mieć tę samą wersję. Zestaw SDK ma `Xamarin.Android.Support.CustomTabs` zależność dla platformy systemu Android, więc jeśli projekt używa nowszej obsługi pakietów można konieczne zainstalowanie tego pakietu przy użyciu wymaganej wersji bezpośrednio w celu uniknięcia konfliktów.
+> Pamiętaj, że wszystkie pakiety dla pomocy technicznej, do których odwołuje się projekt systemu Android, muszą mieć tę samą wersję. Zestaw SDK ma zależność `Xamarin.Android.Support.CustomTabs` dla platformy Android, więc jeśli projekt używa nowszych pakietów obsługi, należy zainstalować ten pakiet bezpośrednio w wymaganej wersji, aby uniknąć konfliktów.
 
-### <a name="symbolsource"></a>Jak: Praca z symbole debugowania w programie Visual Studio
-Symbole dla przestrzeni nazw Microsoft.Azure.Mobile są dostępne na [SymbolSource][10] .  Refer to the
-[SymbolSource instructions][11] zintegrować SymbolSource z programem Visual Studio.
+### <a name="symbolsource"></a>Instrukcje: korzystanie z symboli debugowania w programie Visual Studio
+Symbole dla przestrzeni nazw Microsoft. Azure. Mobile są dostępne w witrynie [SymbolSource][10].  Zapoznaj się z [instrukcjami SymbolSource][11] , aby zintegrować SymbolSource z programem Visual Studio.
 
-## <a name="create-client"></a>Tworzenie klienta funkcji Mobile Apps
-Poniższy kod tworzy [MobileServiceClient][12] obiekt, który umożliwia dostęp do zaplecza aplikacji mobilnej.
+## <a name="create-client"></a>Tworzenie klienta Mobile Apps
+Poniższy kod tworzy obiekt [MobileServiceClient][12] , który jest używany w celu uzyskania dostępu do zaplecza aplikacji mobilnej.
 
 ```csharp
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-W poprzednim kodzie Zastąp `MOBILE_APP_URL` z adresem URL zaplecza aplikacji mobilnej, który znajduje się w bloku zaplecza aplikacji mobilnej w [Azure Portal]. Obiekt MobileServiceClient powinien być klasą pojedynczą.
+W poprzednim kodzie Zastąp wartość `MOBILE_APP_URL` adresem URL zaplecza aplikacji mobilnej, która znajduje się w bloku dla zaplecza aplikacji mobilnej w [Azure Portal]. Obiekt MobileServiceClient musi być klasą pojedynczą.
 
-## <a name="work-with-tables"></a>Praca z tabelami
-W poniższej sekcji przedstawiono sposób wyszukiwania i pobierania rekordów i modyfikować dane w tabeli.  Omówiono następujące tematy:
+## <a name="work-with-tables"></a>Pracuj z tabelami
+W poniższej sekcji opisano sposób wyszukiwania i pobierania rekordów oraz modyfikowania danych w tabeli.  Omówiono następujące tematy:
 
-* [Tworzenie odwołania do tabeli](#instantiating)
-* [Wykonywanie zapytań dotyczących danych](#querying)
-* [Filtruj dane zwrotne](#filtering)
+* [Utwórz odwołanie do tabeli](#instantiating)
+* [Dane zapytania](#querying)
+* [Filtrowanie zwróconych danych](#filtering)
 * [Sortuj zwrócone dane](#sorting)
 * [Zwróć dane na stronach](#paging)
-* [Wybrać określone kolumny](#selecting)
-* [Wyszukaj według identyfikatora](#lookingup)
-* [Obsługa zapytań bez typu](#untypedqueries)
+* [Wybierz określone kolumny](#selecting)
+* [Wyszukiwanie rekordu według identyfikatora](#lookingup)
+* [Postępowanie z niewpisanymi zapytaniami](#untypedqueries)
 * [Wstawianie danych](#inserting)
 * Aktualizowanie danych
 * [Usuwanie danych](#deleting)
-* [Rozwiązywanie konfliktów i optymistycznej współbieżności](#optimisticconcurrency)
-* [Powiązanie z interfejsu użytkownika Windows](#binding)
+* [Rozwiązywanie konfliktów i współbieżność optymistyczna](#optimisticconcurrency)
+* [Powiązanie z interfejsem użytkownika systemu Windows](#binding)
 * [Zmiana rozmiaru strony](#pagesize)
 
-### <a name="instantiating"></a>Jak: Tworzenie odwołania do tabeli
-Cały kod, który uzyskuje dostęp do lub modyfikuje dane w tabeli wewnętrznej bazy danych wywołuje funkcje na `MobileServiceTable` obiektu. Uzyskaj odwołanie do tabeli przez wywołanie metody [GetTable] metody w następujący sposób:
+### <a name="instantiating"></a>Instrukcje: Tworzenie odwołania do tabeli
+Cały kod, który uzyskuje dostęp do danych w tabeli zaplecza lub modyfikuje je w ramach obiektu `MobileServiceTable`. Uzyskaj odwołanie do tabeli, wywołując metodę [GetTable] w następujący sposób:
 
 ```csharp
 IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
 ```
 
-Zwrócony obiekt wykorzystuje model wpisane serializacji. Obsługiwane jest również model danych serializacji. Poniższy przykład [tworzy odwołanie do tabeli bez typu]:
+Zwrócony obiekt używa określonego modelu serializacji. Obsługiwany jest również niewpisany model serializacji. Poniższy przykład [tworzy odwołanie do tabeli bez typu]:
 
 ```csharp
 // Get an untyped table reference
 IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
 ```
 
-W zapytaniach bez typu należy określić podstawowy ciągu zapytania OData.
+W zapytaniach niez typem należy określić źródłowy ciąg zapytania OData.
 
-### <a name="querying"></a>Jak: Wykonywanie zapytań dotyczących danych z aplikacji mobilnej
-W tej sekcji opisano sposób wysyłania zapytań do zaplecza aplikacji mobilnej, która obejmuje następujące funkcje:
+### <a name="querying"></a>Instrukcje: wykonywanie zapytań dotyczących danych z aplikacji mobilnej
+W tej sekcji opisano, jak wystawiać zapytania do zaplecza aplikacji mobilnej, która obejmuje następujące funkcje:
 
-* [Filtruj dane zwrotne](#filtering)
+* [Filtrowanie zwróconych danych](#filtering)
 * [Sortuj zwrócone dane](#sorting)
 * [Zwróć dane na stronach](#paging)
-* [Wybrać określone kolumny](#selecting)
-* [Wyszukiwać dane według Identyfikatora](#lookingup)
+* [Wybierz określone kolumny](#selecting)
+* [Wyszukiwanie danych według identyfikatora](#lookingup)
 
 > [!NOTE]
-> Rozmiaru strony opartych na serwerze jest wymuszana, aby uniemożliwić wszystkie wiersze są zwracane.  Stronicowanie przechowuje żądania domyślnej dla dużych zestawów danych z niekorzystnego wpływu na usługi.  Aby zwrócić więcej niż 50 wierszy, użyj `Skip` i `Take` metodę, zgodnie z opisem w [zwracania danych na stronach](#paging).
+> Rozmiar strony oparty na serwerze jest wymuszany, aby zapobiec zwracaniu wszystkich wierszy.  Stronicowanie zachowuje domyślne żądania dla dużych zestawów danych, które nie mają negatywnego wpływu na usługę.  Aby zwrócić więcej niż 50 wierszy, użyj metody `Skip` i `Take`, jak opisano w [zwracanych danych na stronach](#paging).
 
-### <a name="filtering"></a>Jak: Filtruj dane zwrotne
-Poniższy kod ilustruje sposób filtrowania danych, umieszczając `Where` klauzuli w zapytaniu. Zwraca wszystkie elementy z `todoTable` którego `Complete` właściwości jest równa `false`. [Where] funkcja ma zastosowanie wiersz filtrowanie predykatu do wykonywania zapytań w odniesieniu do tabeli.
+### <a name="filtering"></a>Instrukcje: filtrowanie zwróconych danych
+Poniższy kod ilustruje sposób filtrowania danych, dołączając klauzulę `Where` w zapytaniu. Zwraca wszystkie elementy z `todoTable`, których właściwość `Complete` jest równa `false`. Funkcja [Miejscu] stosuje predykat filtrowania wierszy do zapytania względem tabeli.
 
 ```csharp
 // This query filters out completed TodoItems and items without a timestamp.
@@ -154,13 +151,13 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-Możesz wyświetlić identyfikator URI żądania wysłanego do zaplecza za pomocą oprogramowania do kontroli wiadomości, takich jak narzędzia deweloperskie przeglądarki lub [Fiddler]. W przypadku identyfikatora URI żądania, zwróć uwagę, zmodyfikowania ciągu kwerendy:
+Identyfikator URI żądania wysłanego do zaplecza można wyświetlić przy użyciu oprogramowania do inspekcji komunikatów, takiego jak narzędzia deweloperskie przeglądarki lub [Fiddler]. Jeśli sprawdzasz identyfikator URI żądania, Zauważ, że ciąg zapytania jest modyfikowany:
 
 ```csharp
 GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 ```
 
-To żądanie OData przetłumaczyć kwerendę SQL przez zestaw SDK serwera:
+To żądanie OData jest tłumaczone na zapytanie SQL przez zestaw SDK serwera:
 
 ```csharp
 SELECT *
@@ -168,7 +165,7 @@ SELECT *
     WHERE ISNULL(complete, 0) = 0
 ```
 
-Funkcja, która jest przekazywana do `Where` metoda może mieć dowolną liczbę warunków.
+Funkcja, która jest przenoszona do metody `Where` może mieć dowolną liczbę warunków.
 
 ```csharp
 // This query filters out completed TodoItems where Text isn't null
@@ -177,7 +174,7 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-W tym przykładzie będzie można przetłumaczyć w kwerendzie SQL przez zestaw SDK serwera:
+Ten przykład zostanie przetłumaczony na zapytanie SQL według zestawu SDK serwera:
 
 ```csharp
 SELECT *
@@ -186,7 +183,7 @@ SELECT *
           AND ISNULL(text, 0) = 0
 ```
 
-To zapytanie również może zostać podzielony na wiele klauzul:
+To zapytanie można również podzielić na wiele klauzul:
 
 ```csharp
 List<TodoItem> items = await todoTable
@@ -195,22 +192,22 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-Te dwie metody są równoważne i mogą być używane zamiennie.  Opcja wcześniejsze&mdash;z łączenia wielu predykaty w jednym zapytaniu&mdash;jest bardziej zwarty i zalecane.
+Dwie metody są równoważne i mogą być używane zamiennie.  Dawna opcja @ no__t-0oF łącząca wiele predykatów w jednym zapytaniu @ no__t-1Is bardziej zwarte i zalecane.
 
-`Where` Klauzuli obsługuje operacje, które można przetłumaczyć podzbiór protokołu OData. Operacje obejmują:
+Klauzula `Where` obsługuje operacje, które są tłumaczone na podzestaw OData. Operacje obejmują:
 
-* Operatory relacyjne (==,! =, <, < =, >, > =),
-* Operatory arytmetyczne (+, -, /, *, %),
-* Liczba precyzji (Math.Floor —, Math.Ceiling)
-* Funkcje ciągów (długość podciągu, Zastąp, IndexOf, StartsWith, EndsWith),
-* Właściwości daty (rok, miesiąc, dzień, godzina, minuta, sekunda),
-* Uzyskiwanie dostępu do właściwości obiektu, a
-* Wyrażeń, łącząc każdej z tych operacji.
+* Operatory relacyjne (= =,! =, <, < =, >, > =),
+* Operatory arytmetyczne (+,-,/, *,%),
+* Precyzja liczb (Math. Floor, Math. sufit),
+* Funkcje ciągów (długość, podciąg, Zastąp, IndexOf, StartsWith, EndsWith),
+* Właściwości daty (rok, miesiąc, dzień, godzina, minuta, sekunda)
+* Właściwości dostępu obiektu i
+* Wyrażenia łączące dowolne z tych operacji.
 
-Rozważając Server SDK obsługuje, można rozważyć [Dokumentacja usługi OData v3].
+Biorąc pod uwagę sposób obsługi zestawu SDK serwera, można rozważyć [Dokumentacja OData V3].
 
-### <a name="sorting"></a>Jak: Sortuj zwrócone dane
-Poniższy kod ilustruje sposób sortowania danych, umieszczając [OrderBy] lub [OrderByDescending] funkcji w zapytaniu. Zwraca elementy z `todoTable` posortowane rosnąco `Text` pola.
+### <a name="sorting"></a>Instrukcje: sortowanie zwracanych danych
+Poniższy kod ilustruje sposób sortowania danych przez dołączenie do zapytania funkcji [OrderBy] lub [OrderByDescending] . Zwraca elementy z `todoTable` posortowane rosnąco według pola `Text`.
 
 ```csharp
 // Sort items in ascending order by Text field
@@ -224,8 +221,8 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-### <a name="paging"></a>Jak: Zwróć dane na stronach
-Domyślnie zaplecze zwraca tylko 50 pierwszych wierszy. Możesz zwiększyć liczbę wierszy zwróconych przez wywołanie metody [Take] metody. Użyj `Take` wraz z [Skip] metodę, aby żądać określonych "page" całkowita zestawu danych zwróconych przez zapytanie. Następujące zapytanie po wykonaniu zwraca pierwszych trzech elementów w tabeli.
+### <a name="paging"></a>Instrukcje: Zwracanie danych na stronach
+Domyślnie zaplecze zwraca tylko pierwsze 50 wierszy. Można zwiększyć liczbę zwracanych wierszy, wywołując metodę [Czasochłonn] . Użyj `Take` wraz z metodą [Skocz] , aby zażądać określonej "strony" całkowitego zestawu danych zwróconego przez zapytanie. Następujące zapytanie, gdy wykonywane, zwraca trzy pierwsze elementy z tabeli.
 
 ```csharp
 // Define a filtered query that returns the top 3 items.
@@ -233,7 +230,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable.Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-Następujące zapytanie poprawione pomija pierwszych trzech wyników i zwraca wyniki następne trzy. To zapytanie tworzy drugi "page" dane, których rozmiar strony jest trzy elementy.
+Następujące poprawione zapytanie pomija pierwsze trzy wyniki i zwraca następne trzy wyniki. To zapytanie tworzy drugą "stronę" danych, gdzie rozmiar strony to trzy elementy.
 
 ```csharp
 // Define a filtered query that skips the top 3 items and returns the next 3 items.
@@ -241,22 +238,22 @@ MobileServiceTableQuery<TodoItem> query = todoTable.Skip(3).Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-[IncludeTotalCount] metoda żąda łączną liczbę dla *wszystkich* rekordy, które mogłyby zostały zwrócone, ignorowanie wszelkich klauzulę stronicowania/limitu:
+Metoda [IncludeTotalCount] żąda całkowitej liczby *wszystkich* rekordów, które zostałyby zwrócone, ignorując określoną klauzulę stronicowania/ograniczania:
 
 ```csharp
 query = query.IncludeTotalCount();
 ```
 
-W przypadku aplikacji rzeczywistych służy zapytania, podobnie jak w poprzednim przykładzie za pomocą kontroli pagera lub porównywalny interfejsu użytkownika do przechodzenia między stronami.
+W aplikacji Real World można używać zapytań podobnych do poprzedniego przykładu z kontrolką modułu stronicowania lub porównywalnym interfejsem użytkownika w celu nawigowania między stronami.
 
 > [!NOTE]
-> Aby zastąpić limit 50 wierszy w zaplecza aplikacji mobilnej, również należy zastosować [EnableQueryAttribute] publicznie metoda GET i określić zachowanie stronicowania. Po zastosowaniu do metody, poniżej maksymalny ustawiony zwrócone wiersze do 1000:
+> Aby zastąpić limit 50 wierszy w zapleczu aplikacji mobilnej, należy również zastosować [EnableQueryAttribute] do publicznej metody get i określić zachowanie stronicowania. Po zastosowaniu do metody, następujące ustawia maksymalną liczbę zwracanych wierszy do 1000:
 >
 > `[EnableQuery(MaxTop=1000)]`
 
 
-### <a name="selecting"></a>Jak: Wybrać określone kolumny
-Można określić, który zestaw właściwości do uwzględnienia w wynikach, dodając [Select] klauzuli do zapytania. Na przykład poniższy kod przedstawia, jak wybrać tylko jedno pole, a także jak należy wybierać i formatowanie wielu pól:
+### <a name="selecting"></a>Instrukcje: Wybieranie określonych kolumn
+Możesz określić zestaw właściwości do uwzględnienia w wynikach przez dodanie klauzuli [Wybierz] do zapytania. Na przykład poniższy kod pokazuje, jak wybrać tylko jedno pole, a także jak zaznaczyć i sformatować kilka pól:
 
 ```csharp
 // Select one field -- just the Text
@@ -272,7 +269,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<string> items = await query.ToListAsync();
 ```
 
-Wszystkie funkcje opisane w do tej pory są addytywne, dzięki czemu firma Microsoft może zachować łańcucha je. Każde wywołanie łańcuchowych ma wpływ na jeden z zapytania. Przykładem więcej:
+Wszystkie funkcje opisane do tej pory są dodatkiem, dzięki czemu możemy kontynuować łączenie się z nimi. Każde wywołanie łańcuchowe ma wpływ na więcej zapytań. Jeden przykład:
 
 ```csharp
 MobileServiceTableQuery<TodoItem> query = todoTable
@@ -283,35 +280,35 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<string> items = await query.ToListAsync();
 ```
 
-### <a name="lookingup"></a>Jak: Wyszukiwać dane według Identyfikatora
-[LookupAsync] funkcja może służyć do wyszukiwania obiektów z bazy danych za pomocą określonego identyfikatora.
+### <a name="lookingup"></a>Instrukcje: wyszukiwanie danych według identyfikatora
+Funkcja [LookupAsync] może służyć do wyszukiwania obiektów z bazy danych o określonym identyfikatorze.
 
 ```csharp
 // This query filters out the item with the ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
 TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
 ```
 
-### <a name="untypedqueries"></a>Jak: Wykonywanie zapytań bez typu
-Podczas wykonywania zapytania za pomocą obiektu tabeli bez typu, należy jawnie określić parametry zapytania OData, wywołując [ReadAsync], jak w poniższym przykładzie:
+### <a name="untypedqueries"></a>Instrukcje: wykonywanie zapytań nietypu
+Podczas wykonywania zapytania przy użyciu obiektu tabeli nietypu, należy jawnie określić ciąg zapytania OData, wywołując [ReadAsync], jak w poniższym przykładzie:
 
 ```csharp
 // Lookup untyped data using OData
 JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
 ```
 
-Możesz odzyskać wartości JSON, które można używać jak zbiór właściwości. Aby uzyskać więcej informacji na temat JToken i Newtonsoft Json.NET, zobacz [Json.NET] lokacji.
+Uzyskasz wartości JSON, których można użyć jak zbioru właściwości. Aby uzyskać więcej informacji na temat JToken i Newtonsoft Json.NET, zobacz witrynę [JSON.NET] .
 
-### <a name="inserting"></a>Jak: Wstawianie danych do zaplecza aplikacji mobilnej
-Wszystkie typy klientów musi zawierać element o nazwie **identyfikator**, która jest domyślnie ciągu. To **identyfikator** jest wymagane do wykonywania operacji CRUD i synchronizacji w trybie offline. Poniższy kod ilustruje sposób używania [InsertAsync] metodę, aby wstawić nowe wiersze do tabeli. Parametr zawiera dane, które ma zostać wstawiony jako obiekt .NET.
+### <a name="inserting"></a>Instrukcje: Wstawianie danych do zaplecza aplikacji mobilnej
+Wszystkie typy klientów muszą zawierać składową o nazwie **ID**, która jest domyślnie ciągiem. Ten **Identyfikator** jest wymagany do wykonywania operacji CRUD i synchronizacji w trybie offline. Poniższy kod ilustruje sposób używania metody [InsertAsync] do wstawiania nowych wierszy do tabeli. Parametr zawiera dane, które mają zostać wstawione jako obiekt .NET.
 
 ```csharp
 await todoTable.InsertAsync(todoItem);
 ```
 
-Jeśli nie są objęte niestandardowe wartość unikatowego Identyfikatora `todoItem` podczas wstawiania, identyfikator GUID jest generowany przez serwer.
-Możesz pobrać wygenerowany identyfikator, sprawdzając obiektu po wywołaniu zwraca.
+Jeśli unikatowa wartość identyfikatora niestandardowego nie jest uwzględniona w `todoItem` podczas wstawiania, na serwerze zostanie wygenerowany identyfikator GUID.
+Wygenerowany identyfikator można pobrać, sprawdzając obiekt po powrocie wywołania.
 
-Aby wstawić dane bez typu, mogą korzystać ze struktury Json.NET:
+Aby wstawić dane, które nie są typu, możesz skorzystać z Json.NET:
 
 ```csharp
 JObject jo = new JObject();
@@ -320,7 +317,7 @@ jo.Add("Complete", false);
 var inserted = await table.InsertAsync(jo);
 ```
 
-Oto przykład przy użyciu adresu e-mail jako identyfikator unikatowy ciąg:
+Oto przykład użycia adresu e-mail jako unikatowego identyfikatora ciągu:
 
 ```csharp
 JObject jo = new JObject();
@@ -330,28 +327,28 @@ jo.Add("Complete", false);
 var inserted = await table.InsertAsync(jo);
 ```
 
-### <a name="working-with-id-values"></a>Praca z wartościami Identyfikatora
-Mobile Apps obsługuje wartości unikatowego ciągu niestandardowych w tabeli **identyfikator** kolumny. Wartość ciągu umożliwia aplikacjom używanie wartości niestandardowe, takie jak adresy e-mail lub nazwy użytkownika dla identyfikatora.  Identyfikatory ciągu zapewniają następujące korzyści:
+### <a name="working-with-id-values"></a>Praca z wartościami identyfikatora
+Mobile Apps obsługuje unikatowe wartości ciągu niestandardowego dla kolumny **Identyfikator** tabeli. Wartość ciągu umożliwia aplikacjom używanie wartości niestandardowych, takich jak adresy e-mail lub nazwy użytkowników dla identyfikatora.  Identyfikatory ciągów zapewniają następujące korzyści:
 
-* Identyfikatory są generowane, bez konieczności szukania komunikacji dwustronnej w bazie danych.
+* Identyfikatory są generowane bez przeprowadzenia rundy do bazy danych.
 * Rekordy są łatwiejsze do scalenia z różnych tabel lub baz danych.
-* Wartości identyfikatorów można zintegrować lepiej za pomocą aplikacji logiki.
+* Wartości identyfikatorów można zintegrować z logiką aplikacji.
 
-Gdy wartość Identyfikatora ciągu nie jest ustawiona na wstawionego rekordu, zaplecza aplikacji mobilnej generuje unikatową wartość dla identyfikatora. Możesz użyć [Guid.NewGuid] metodę w celu wygenerowania własne wartości Identyfikatora klienta lub w wewnętrznej bazie danych.
+Jeśli wartość identyfikatora ciągu nie jest ustawiona w wstawionym rekordzie, zaplecze aplikacji mobilnej generuje unikatową wartość dla tego identyfikatora. Możesz użyć metody [GUID. NewGuid] , aby wygenerować własne wartości identyfikatora na kliencie lub w zapleczu.
 
 ```csharp
 JObject jo = new JObject();
 jo.Add("id", Guid.NewGuid().ToString("N"));
 ```
 
-### <a name="modifying"></a>Jak: Modyfikowanie danych w zaplecza aplikacji mobilnej
-Poniższy kod ilustruje sposób używania [UpdateAsync] metodę, aby zaktualizować istniejący rekord o tym samym identyfikatorze o nowe informacje. Parametr zawiera dane, które mają zostać zaktualizowane w obiekt .NET.
+### <a name="modifying"></a>Instrukcje: modyfikowanie danych w zapleczu aplikacji mobilnej
+Poniższy kod ilustruje sposób używania metody [UpdateAsync] do aktualizowania istniejącego rekordu o takim samym identyfikatorze z nowymi informacjami. Parametr zawiera dane, które mają zostać zaktualizowane jako obiekt .NET.
 
 ```csharp
 await todoTable.UpdateAsync(todoItem);
 ```
 
-Do aktualizowania danych bez typu, użytkownik może skorzystać z [Json.NET] w następujący sposób:
+Aby zaktualizować dane, które nie są typu, można skorzystać z [JSON.NET] w następujący sposób:
 
 ```csharp
 JObject jo = new JObject();
@@ -361,16 +358,16 @@ jo.Add("Complete", false);
 var inserted = await table.UpdateAsync(jo);
 ```
 
-`id` Należy określić pole, podczas wprowadzania aktualizacji. Używa wewnętrznej bazy danych `id` pola, aby zidentyfikować, które wiersza do zaktualizowania. `id` Pola można uzyskać z wynikiem `InsertAsync` wywołania. `ArgumentException` Jest wywoływane, jeśli próbujesz zaktualizować element bez podawania `id` wartość.
+Podczas wykonywania aktualizacji należy określić pole `id`. Zaplecze używa pola `id` w celu określenia wiersza do zaktualizowania. Pole `id` można uzyskać z wyniku wywołania `InsertAsync`. @No__t-0 jest zgłaszane w przypadku próby zaktualizowania elementu bez podawania wartości `id`.
 
-### <a name="deleting"></a>Jak: Usuń dane z zaplecza aplikacji mobilnej
-Poniższy kod ilustruje sposób używania [DeleteAsync] metodę, aby usunąć istniejącego wystąpienia. Wystąpienie jest identyfikowany przez `id` zestawie pól na `todoItem`.
+### <a name="deleting"></a>Instrukcje: usuwanie danych w zapleczu aplikacji mobilnej
+Poniższy kod ilustruje sposób używania metody [DeleteAsync] w celu usunięcia istniejącego wystąpienia. Wystąpienie jest identyfikowane przez pole `id` ustawione dla `todoItem`.
 
 ```csharp
 await todoTable.DeleteAsync(todoItem);
 ```
 
-Usuwanie danych bez typu, mogą korzystać ze struktury Json.NET w następujący sposób:
+Aby usunąć dane, które nie są typu, można skorzystać z Json.NET w następujący sposób:
 
 ```csharp
 JObject jo = new JObject();
@@ -378,14 +375,14 @@ jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
 await table.DeleteAsync(jo);
 ```
 
-Po wprowadzeniu żądanie usunięcia, należy określić identyfikator. Inne właściwości nie zostaną przekazane do usługi lub są ignorowane na usługę. Wynik `DeleteAsync` wywołanie jest zwykle `null`. Identyfikator Aby przekazać można uzyskać z wynikiem `InsertAsync` wywołania. A `MobileServiceInvalidOperationException` jest zgłaszany, gdy spróbujesz usunąć element bez określania `id` pola.
+Po wprowadzeniu żądania usunięcia należy określić identyfikator. Inne właściwości nie są przenoszone do usługi lub są ignorowane w usłudze. Wynik wywołania `DeleteAsync` jest zazwyczaj `null`. Identyfikator do przekazania można uzyskać z wyniku wywołania `InsertAsync`. W przypadku próby usunięcia elementu bez określenia pola `id` jest generowany `MobileServiceInvalidOperationException`.
 
-### <a name="optimisticconcurrency"></a>Jak: Używaj optymistycznej współbieżności na potrzeby rozwiązywania konfliktów
-Co najmniej dwóch klientów mogą zapisywać zmian do tego samego elementu w tym samym czasie. Bez wykrywanie konfliktów zapisana jako ostatnia spowodowałoby zastąpienie wszelkich poprzednich aktualizacji. **Mechanizmu kontroli optymistycznej współbieżności** zakłada, że każda transakcja zatwierdzić i dlatego nie korzysta z żadnych blokowanie zasobów.  Przed zatwierdzeniem transakcji, mechanizmu kontroli optymistycznej współbieżności sprawdza, czy nie inne transakcje nie zmienione dane. Jeśli dane zostały zmodyfikowane, przekazywanie transakcja zostanie wycofana.
+### <a name="optimisticconcurrency"></a>Instrukcje: użycie optymistycznej współbieżności do rozwiązywania konfliktów
+Co najmniej dwa komputery klienckie mogą zapisywać zmiany w tym samym elemencie w tym samym czasie. Bez wykrywania konfliktów Ostatni zapis spowoduje zastąpienie wszystkich poprzednich aktualizacji. **Optymistyczna kontrola współbieżności** zakłada, że każda transakcja może zostać zatwierdzona i w związku z tym nie używa żadnego blokowania zasobów.  Przed zatwierdzeniem transakcji optymistyczne kontrolki współbieżności sprawdzają, czy żadne inne transakcje nie spowodowały modyfikacji danych. Jeśli dane zostały zmodyfikowane, transakcja zatwierdzania jest wycofywana.
 
-Mobile Apps obsługuje mechanizmu kontroli optymistycznej współbieżności, śledzenie zmian przy użyciu każdego elementu `version` kolumny właściwości systemu, która jest zdefiniowana dla każdej tabeli w zaplecza aplikacji mobilnej. Przy każdym rekord zostanie zaktualizowany, aplikacje mobilne ustawia `version` właściwości dla tego rekordu na nową wartość. Podczas każdego żądania aktualizacji `version` właściwości rekordu uwzględnione w żądaniu jest porównywany z tej samej właściwości dla rekordu na serwerze. Jeśli wersja przekazany z żądania jest niezgodna z wewnętrznej bazy danych, a następnie generuje biblioteki klienckiej `MobileServicePreconditionFailedException<T>` wyjątku. Typ dołączone do tego wyjątku jest rekord z wewnętrznej bazy danych, zawierającą serwery wersję rekordu. Aplikacja może użycie tych informacji do określenia, czy można wykonać żądania aktualizacji ponownie z prawidłowymi `version` wartość z wewnętrznej bazy danych, aby zatwierdzić zmiany.
+Mobile Apps obsługuje optymistyczną kontrolę współbieżności, śledząc zmiany poszczególnych elementów za pomocą kolumny właściwości systemu `version` zdefiniowanej dla każdej tabeli w zapleczu aplikacji mobilnej. Za każdym razem, gdy rekord jest aktualizowany, Mobile Apps ustawia właściwość `version` dla tego rekordu na nową wartość. Podczas każdego żądania aktualizacji Właściwość `version` rekordu zawartego w żądaniu jest porównywana z tą samą właściwością rekordu na serwerze. Jeśli wersja przeniesiona z żądaniem nie jest zgodna z zapleczem, Biblioteka klienta zgłasza wyjątek `MobileServicePreconditionFailedException<T>`. Typ zawarty w wyjątku jest rekordem z zaplecza zawierającego wersje serwerów rekordu. Następnie aplikacja może użyć tych informacji, aby zdecydować, czy ponownie wykonać żądanie aktualizacji z poprawną wartością `version` z zaplecza, aby zatwierdzić zmiany.
 
-Definiowanie kolumny na klasie tabel dla `version` właściwości systemu, aby umożliwić optymistycznej współbieżności. Na przykład:
+Zdefiniuj kolumnę klasy tabeli dla właściwości systemu `version`, aby umożliwić optymistyczną współbieżność. Na przykład:
 
 ```csharp
 public class TodoItem
@@ -404,14 +401,14 @@ public class TodoItem
 }
 ```
 
-Aplikacje przy użyciu tabel bez typu Włącz optymistycznej współbieżności, ustawiając `Version` flagą `SystemProperties` tabeli w następujący sposób.
+Aplikacje korzystające z tabel nieopartych na typie, które umożliwiają optymistyczną współbieżność, ustawiając flagę `Version` na `SystemProperties` tabeli w następujący sposób.
 
 ```csharp
 //Enable optimistic concurrency by retrieving version
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 ```
 
-Oprócz włączenia optymistycznej współbieżności, należy również przechwytywać `MobileServicePreconditionFailedException<T>` wyjątków w kodzie podczas wywoływania [UpdateAsync].  Rozwiąż konflikt, stosując poprawny `version` zaktualizowanym rekordem i wywołania [UpdateAsync] z rekordem rozwiązane. Poniższy kod przedstawia sposób rozwiązania, gdy wykryto konflikt podczas zapisywania:
+Oprócz włączenia optymistycznej współbieżności, należy również przechwycić wyjątek `MobileServicePreconditionFailedException<T>` w kodzie podczas wywoływania [UpdateAsync].  Rozwiąż konflikt, stosując poprawną `version` do zaktualizowanego rekordu i Wywołaj [UpdateAsync] z rozwiązanym rekordem. Poniższy kod ilustruje sposób rozwiązywania konfliktu zapisu po wykryciu:
 
 ```csharp
 private async void UpdateToDoItem(TodoItem item)
@@ -469,10 +466,10 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps] tematu.
+Aby uzyskać więcej informacji, zobacz temat [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps] .
 
-### <a name="binding"></a>Jak: Powiąż dane funkcji Mobile Apps do interfejsu użytkownika Windows
-W tej sekcji przedstawiono sposób wyświetlania obiektów zwróconych danych za pomocą elementów interfejsu użytkownika w aplikacji Windows.  Poniższy przykład kodu tworzy powiązanie z źródła listy przy użyciu zapytania niezakończonych elementów. [MobileServiceCollection] tworzy kolekcję mobilnych aplikacji obsługującej powiązanie.
+### <a name="binding"></a>Instrukcje: powiązywanie danych Mobile Apps z interfejsem użytkownika systemu Windows
+W tej sekcji przedstawiono sposób wyświetlania zwracanych obiektów danych przy użyciu elementów interfejsu użytkownika w aplikacji systemu Windows.  Poniższy przykładowy kod wiąże się ze źródłem listy z zapytaniem dotyczącym niekompletnych elementów. [MobileServiceCollection] tworzy kolekcję powiązań obsługującą Mobile Apps.
 
 ```csharp
 // This query filters out completed TodoItems.
@@ -488,7 +485,7 @@ ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-Niektóre formanty w zarządzanym środowisku uruchomieniowym obsługują interfejs o nazwie [ISupportIncrementalLoading]. Ten interfejs umożliwia formantów zażądać dodatkowych danych, gdy użytkownik przewija widok. Brak wbudowanej obsługi dla tego interfejsu dla uniwersalnych aplikacji dla Windows za pośrednictwem [MobileServiceIncrementalLoadingCollection], który automatycznie obsługuje wywołania z kontrolki. Użyj `MobileServiceIncrementalLoadingCollection` w aplikacjach Windows w następujący sposób:
+Niektóre kontrolki w zarządzanym środowisku uruchomieniowym obsługują interfejs o nazwie [ISupportIncrementalLoading]. Ten interfejs umożliwia kontrolki żądanie dodatkowych danych podczas przewijania użytkownika. Istnieje Wbudowana obsługa tego interfejsu dla aplikacji uniwersalnych systemu Windows za pośrednictwem usługi [MobileServiceIncrementalLoadingCollection], która automatycznie obsługuje wywołania z kontrolek. Użyj `MobileServiceIncrementalLoadingCollection` w aplikacjach systemu Windows w następujący sposób:
 
 ```csharp
 MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
@@ -498,19 +495,19 @@ ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-Aby użyć nowej kolekcji dla aplikacji Windows Phone 8 i "Silverlight", użyj `ToCollection` metod rozszerzenia `IMobileServiceTableQuery<T>` i `IMobileServiceTable<T>`. Aby załadować dane, należy wywołać `LoadMoreItemsAsync()`.
+Aby użyć nowej kolekcji dla aplikacji Windows Phone 8 i "Silverlight", użyj metod rozszerzenia `ToCollection` w `IMobileServiceTableQuery<T>` i `IMobileServiceTable<T>`. Aby załadować dane, wywołaj `LoadMoreItemsAsync()`.
 
 ```csharp
 MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
 await items.LoadMoreItemsAsync();
 ```
 
-Gdy używasz kolekcji utworzonej przez wywołanie metody `ToCollectionAsync` lub `ToCollection`, Pobierz kolekcję, która może być powiązana z kontrolek interfejsu użytkownika.  Ta kolekcja jest obsługujących stronicowania.  Ponieważ kolekcja jest ładowanie danych z sieci, podczas ładowania czasami kończy się niepowodzeniem. Aby obsłużyć takie błędy, należy zastąpić `OnException` metody `MobileServiceIncrementalLoadingCollection` do obsługi wyjątków, wynikające z wywołania `LoadMoreItemsAsync`.
+Gdy używasz kolekcji utworzonej przez wywołanie `ToCollectionAsync` lub `ToCollection`, uzyskasz kolekcję, którą można powiązać z kontrolkami interfejsu użytkownika.  Ta kolekcja jest oparta na stronicowaniu.  Ponieważ kolekcja ładuje dane z sieci, ładowanie czasami kończy się niepowodzeniem. Aby obsłużyć takie niepowodzenia, Zastąp metodę `OnException` na `MobileServiceIncrementalLoadingCollection` w celu obsługi wyjątków wynikających z wywołań `LoadMoreItemsAsync`.
 
-Należy wziąć pod uwagę, jeśli tabela ma wiele pól, ale tylko mają być wyświetlane niektóre z nich w kontrolce. Można użyć wskazówki zawarte w poprzedniej sekcji "[wybrać określone kolumny](#selecting)" Aby wybrać określone kolumny do wyświetlenia w interfejsie użytkownika.
+Zastanów się, czy tabela zawiera wiele pól, ale w kontrolce chcesz wyświetlić tylko niektóre z nich. Aby wybrać konkretne kolumny, które mają być wyświetlane w interfejsie użytkownika, możesz użyć wskazówek w poprzedniej sekcji "[Wybierz konkretne kolumny](#selecting)".
 
 ### <a name="pagesize"></a>Zmień rozmiar strony
-Domyślnie usługa Azure Mobile Apps zwraca maksymalnie 50 elementów na żądanie.  Możesz zmienić rozmiar stronicowania przez zwiększenie maksymalnego rozmiaru strony na kliencie i serwerze.  Aby zwiększyć rozmiar żądanej strony, należy określić `PullOptions` przy użyciu `PullAsync()`:
+Usługa Azure Mobile Apps domyślnie zwraca maksymalnie 50 elementów dla żądania.  Rozmiar stronicowania można zmienić przez zwiększenie maksymalnego rozmiaru strony zarówno na kliencie, jak i na serwerze.  Aby zwiększyć żądany rozmiar strony, określ `PullOptions` podczas korzystania z `PullAsync()`:
 
 ```csharp
 PullOptions pullOptions = new PullOptions
@@ -519,21 +516,21 @@ PullOptions pullOptions = new PullOptions
     };
 ```
 
-Zakładając, że wprowadzono `PageSize` równy lub większy niż 100 na serwerze, żądanie zwraca elementy do 100.
+Przy założeniu, że `PageSize` jest równa lub większa niż 100 na serwerze, żądanie zwróci do 100 elementów.
 
-## <a name="#offlinesync"></a>Praca z tabelami w trybie Offline
-Tabele w trybie offline za pomocą danych lokalnych do magazynu do przechowywania bazy danych SQLite Aby używać w trybie offline.  Tabela wszystkie operacje są wykonywane na lokalnym serwerze bazy danych SQLite przechowywać zamiast magazynu zdalnego serwera.  Aby utworzyć tabelę w trybie offline, należy najpierw przygotować projektu:
+## <a name="#offlinesync"></a>Pracuj z tabelami trybu offline
+Tabele trybu offline używają lokalnego magazynu programu SQLite do przechowywania danych do użycia w trybie offline.  Wszystkie operacje na tabeli są wykonywane względem lokalnego magazynu oprogramowania SQLite zamiast zdalnego magazynu serwerów.  Aby utworzyć tabelę w trybie offline, najpierw przygotuj projekt:
 
-1. W programie Visual Studio, kliknij prawym przyciskiem myszy rozwiązanie > **Zarządzaj pakietami NuGet dla rozwiązania...** , a następnie wyszukaj i zainstaluj **Microsoft.Azure.Mobile.Client.SQLiteStore** pakiet NuGet dla wszystkich projektów w rozwiązaniu.
-2. (Opcjonalnie) Do obsługi urządzeń Windows, należy zainstalować jedną z następujących pakietów dla środowiska uruchomieniowego bazy danych SQLite:
+1. W programie Visual Studio kliknij prawym przyciskiem myszy rozwiązanie > **Zarządzanie pakietami NuGet dla rozwiązania...** , a następnie wyszukaj i zainstaluj pakiet NuGet **Microsoft. Azure. Mobile. Client. SQLiteStore** dla wszystkich projektów w rozwiązaniu.
+2. Obowiązkowe Aby zapewnić obsługę urządzeń z systemem Windows, zainstaluj jeden z następujących pakietów środowiska uruchomieniowego oprogramowania SQLite:
 
-   * **Środowisko wykonawcze Windows 8.1:** Zainstaluj [SQLite dla Windows 8.1][3].
-   * **Windows Phone 8.1:** Zainstaluj [SQLite dla Windows Phone 8.1][4].
-   * **Platforma Universal Windows** zainstalować [SQLite for Universal Windows][5].
-3. (Opcjonalnie). W przypadku urządzeń Windows, kliknij przycisk **odwołania** > **Dodaj odwołanie...** , rozwiń węzeł **Windows** folder > **rozszerzenia**, następnie włączyć odpowiednie **SQLite dla Windows** zestawu SDK oraz **2013 środowiska uruchomieniowego visual C++ dla Windows** zestawu SDK.
-    Nazwy zestawu SDK bazy danych SQLite różnią się nieco z każdej z platform Windows.
+   * **Windows 8.1 środowiska uruchomieniowego:** Zainstaluj program [SQLite dla Windows 8.1][3].
+   * **Windows Phone 8,1:** Zainstaluj program [SQLite dla Windows Phone 8,1][4].
+   * **Platforma uniwersalna systemu Windows** Zainstaluj program [SQLite dla uniwersalnego systemu Windows][5].
+3. (Opcjonalnie). W przypadku urządzeń z systemem Windows kliknij pozycję **odwołuje**się  > **Dodaj odwołanie...** , rozwiń węzeł **rozszerzenia**> folderu **systemu Windows** , a następnie Włącz odpowiedni zestaw **oprogramowania SQLite dla systemu Windows** SDK oraz **środowisko uruchomieniowe Visual C++ 2013 dla zestawu Windows** SDK.
+    Nazwy zestawów SDK oprogramowania SQLite różnią się nieco w zależności od platformy systemu Windows.
 
-Przed utworzeniem odwołania do tabeli, należy przygotować Magazyn lokalny:
+Aby można było utworzyć odwołanie do tabeli, należy przygotować magazyn lokalny:
 
 ```csharp
 var store = new MobileServiceSQLiteStore(Constants.OfflineDbPath);
@@ -543,21 +540,21 @@ store.DefineTable<TodoItem>();
 await this.client.SyncContext.InitializeAsync(store);
 ```
 
-Inicjowanie Store odbywa się normalnie, natychmiast, po utworzeniu klienta.  **OfflineDbPath** powinna być nazwa pliku odpowiedni do użytku na wszystkich platformach, które obsługujesz.  Jeśli ścieżka jest w pełni kwalifikowana (czyli zaczyna się ukośnikiem), zostanie użyta w tej ścieżce.  Jeśli ścieżka nie jest w pełni kwalifikowana, plik zostanie umieszczony w lokalizacji określonej platformy.
+Inicjowanie magazynu jest zwykle wykonywane natychmiast po utworzeniu klienta.  **OfflineDbPath** powinna być nazwą pliku odpowiednią do użycia na wszystkich obsługiwanych platformach.  Jeśli ścieżka jest w pełni kwalifikowaną ścieżką (oznacza to, że zaczyna się od ukośnika), ta ścieżka jest używana.  Jeśli ścieżka nie jest w pełni kwalifikowana, plik zostanie umieszczony w lokalizacji specyficznej dla platformy.
 
-* Dla systemów iOS i urządzenia z systemem Android ścieżka domyślna to folder "Pliki osobiste".
-* W przypadku urządzeń Windows ścieżka domyślna to folder "AppData" specyficzne dla aplikacji.
+* W przypadku urządzeń z systemem iOS i Android domyślną ścieżką jest folder "pliki osobiste".
+* W przypadku urządzeń z systemem Windows domyślną ścieżką jest folder "AppData" specyficzny dla aplikacji.
 
-Odwołania do tabeli można uzyskać za pomocą `GetSyncTable<>` metody:
+Odwołanie do tabeli można uzyskać za pomocą metody `GetSyncTable<>`:
 
 ```csharp
 var table = client.GetSyncTable<TodoItem>();
 ```
 
-Nie musisz uwierzytelnić się w trybie offline tabeli.  Wystarczy do uwierzytelniania, gdy komunikują się z usługą zaplecza.
+Nie musisz uwierzytelniać się w celu korzystania z tabeli trybu offline.  Musisz uwierzytelnić się tylko w przypadku komunikacji z usługą zaplecza.
 
-### <a name="syncoffline"></a>Synchronizacja Offline tabeli
-Domyślnie tabele w trybie offline nie są zsynchronizowane z wewnętrznej bazy danych.  Synchronizacja jest podzielona na dwie części.  Wypchnij zmiany oddzielnie pobierania nowych elementów.  Poniżej przedstawiono metody typowego synchronizacji:
+### <a name="syncoffline"></a>Synchronizowanie tabeli w trybie offline
+Tabele w trybie offline nie są domyślnie synchronizowane z zapleczem.  Synchronizacja jest podzielona na dwie części.  Można wypchnąć zmiany oddzielnie od pobierania nowych elementów.  Poniżej przedstawiono typową metodę synchronizacji:
 
 ```csharp
 public async Task SyncAsync()
@@ -605,68 +602,68 @@ public async Task SyncAsync()
 }
 ```
 
-Jeśli pierwszy argument `PullAsync` ma wartość null, a następnie synchronizacja przyrostowa nie jest używany.  Każda operacja synchronizacji umożliwia pobranie wszystkich rekordów.
+Jeśli pierwszy argument `PullAsync` ma wartość null, synchronizacja przyrostowa nie zostanie użyta.  Każda operacja synchronizacji pobiera wszystkie rekordy.
 
-Zestaw SDK wykonuje niejawne `PushAsync()` przed rekordów.
+Zestaw SDK wykonuje niejawną `PushAsync()` przed ściąganiem rekordów.
 
-Obsługa konfliktów ma miejsce na `PullAsync()` metody.  Poradzenie sobie z konfliktami w taki sam sposób jak tabele w trybie online.  Konflikt jest generowany podczas `PullAsync()` jest wywoływana zamiast podczas insert, update lub delete. Jeśli wystąpi konflikt wielu, są one połączone w MobileServicePushFailedException jednego.  Obsługuj osobno każdy błąd.
+Obsługa konfliktów odbywa się na metodzie `PullAsync()`.  Konflikty mogą być rozwiązywane w taki sam sposób jak w przypadku tabel online.  Konflikt jest tworzony, gdy zostanie wywołane `PullAsync()` zamiast podczas wstawiania, aktualizowania lub usuwania. W przypadku wystąpienia wielu konfliktów są one powiązane z jednym MobileServicePushFailedException.  Obsługa każdej awarii osobno.
 
-## <a name="#customapi"></a>Praca z niestandardowego interfejsu API
-Niestandardowy interfejs API umożliwia zdefiniowanie niestandardowe punkty końcowe, które udostępniają funkcje serwera, które nie mapowanie do wstawiania, aktualizowania, usuwania lub operacja odczytu. Korzystając z niestandardowego interfejsu API, może mieć większą kontrolę nad wiadomości, w tym odczytywanie i ustawiania nagłówków wiadomości HTTP oraz definiowania format treści wiadomości, innej niż JSON.
+## <a name="#customapi"></a>Współpraca z niestandardowym interfejsem API
+Niestandardowy interfejs API umożliwia Definiowanie niestandardowych punktów końcowych, które uwidaczniają funkcjonalność serwera, która nie jest mapowana na operację wstawiania, aktualizowania, usuwania lub odczytu. Korzystając z niestandardowego interfejsu API, można mieć większą kontrolę nad wiadomościami, w tym odczytywanie i Ustawianie nagłówków wiadomości HTTP i Definiowanie formatu treści wiadomości innego niż JSON.
 
-Wywoływanie niestandardowego interfejsu API, wywołując jedną z [InvokeApiAsync] metody na kliencie. Na przykład następujący wiersz kodu wysyła żądanie POST do **completeAll** interfejsu API zaplecza:
+Możesz wywołać niestandardowy interfejs API, wywołując jedną z metod [InvokeApiAsync] na kliencie. Na przykład poniższy wiersz kodu wysyła żądanie POST do interfejsu API **completeAll** w zapleczu:
 
 ```javascript
 var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Net.Http.HttpMethod.Post, null);
 ```
 
-Ta forma jest wywołaniem wpisanej metody i wymaga **MarkAllResult** zwracać typ jest zdefiniowany. Typizowane i nietypizowane metody są obsługiwane.
+Ten formularz jest typem wywołania metody i wymaga zdefiniowania typu zwracanego przez **MarkAllResult** . Obsługiwane są zarówno typy, jak i nietypu metody.
 
-Metoda InvokeApiAsync() dołącza "/ api /" interfejsu API, który chcesz wywołać, chyba że interfejsu API, który rozpoczyna się od "/".
+Metoda InvokeApiAsync () dołącza element "/API/" do interfejsu API, który ma zostać wywołany, chyba że interfejs API zaczyna się od znaku "/".
 Na przykład:
 
-* `InvokeApiAsync("completeAll",...)` wywołuje /api/completeAll do wewnętrznej bazy danych
-* `InvokeApiAsync("/.auth/me",...)` wywołuje /.auth/me do wewnętrznej bazy danych
+* `InvokeApiAsync("completeAll",...)` wywołań/api/completeAll w zapleczu
+* `InvokeApiAsync("/.auth/me",...)` wywołań/.auth/Me w zapleczu
 
-InvokeApiAsync umożliwia wywołanie dowolnego WebAPI, łącznie z tymi WebAPIs, które nie zostały zdefiniowane przy użyciu usługi Azure Mobile Apps.  Gdy używasz InvokeApiAsync(), odpowiednie nagłówki, włącznie z nagłówkami uwierzytelniania są wysyłane z żądaniem.
+Można użyć InvokeApiAsync do wywołania dowolnego WebAPI, w tym tych interfejsów API, które nie są zdefiniowane za pomocą usługi Azure Mobile Apps.  W przypadku używania InvokeApiAsync () odpowiednie nagłówki, w tym nagłówki uwierzytelniania, są wysyłane wraz z żądaniem.
 
 ## <a name="authentication"></a>Uwierzytelnianie użytkowników
-Mobile Apps obsługuje uwierzytelnianie i autoryzowanie użytkowników aplikacji za pomocą różnych dostawców tożsamości zewnętrznych: Facebook, Google, konta Microsoft, Twitter i Azure Active Directory. Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Tożsamość uwierzytelnionych użytkowników umożliwia również zaimplementować reguły autoryzacji w skryptów serwera. Aby uzyskać więcej informacji, zapoznaj się z samouczkiem [Dodawanie uwierzytelniania do aplikacji].
+Mobile Apps obsługuje uwierzytelnianie i Autoryzowanie użytkowników aplikacji przy użyciu różnych zewnętrznych dostawców tożsamości: Facebook, Google, konta Microsoft, Twitter i Azure Active Directory. Możesz ustawić uprawnienia dla tabel, aby ograniczyć dostęp do określonych operacji tylko do użytkowników uwierzytelnionych. Aby zaimplementować reguły autoryzacji w skryptach serwera, można także użyć tożsamości uwierzytelnionych użytkowników. Aby uzyskać więcej informacji, zapoznaj się z samouczkiem [Dodawanie uwierzytelniania do aplikacji].
 
-Obsługiwane są dwa przepływy uwierzytelniania: *zarządzanych przez klienta* i *serwer zarządzany* przepływu. Serwer zarządzany przepływu dają najprostszym proces uwierzytelniania opiera się na interfejs uwierzytelniania sieci web dostawcy. Przepływ zarządzanych przez klienta umożliwia lepszą integrację z funkcjami specyficznych dla urządzenia jak opiera się na zestawy SDK specyficzne dla urządzenia specyficzny dla dostawcy.
+Obsługiwane są dwa przepływy uwierzytelniania: przepływ zarządzany *przez klienta* i *serwer* . Przepływ zarządzany przez serwer zapewnia najprostsze środowisko uwierzytelniania, ponieważ opiera się on na interfejsie uwierzytelniania sieci Web dostawcy. Przepływ zarządzany przez klienta umożliwia dokładniejszą integrację z funkcjami specyficznymi dla konkretnego urządzenia, zależnie od specyficznych dla dostawcy zestawów SDK specyficznych dla urządzeń.
 
 > [!NOTE]
-> Zalecamy używanie przepływu zarządzanych przez klienta w aplikacjach produkcyjnych.
+> Zalecamy używanie przepływu zarządzanego przez klienta w aplikacjach produkcyjnych.
 
-Aby skonfigurować uwierzytelnianie, należy zarejestrować aplikację w usłudze przynajmniej jednego dostawcy tożsamości.  Dostawca tożsamości generuje identyfikator klienta i klucz tajny klienta aplikacji.  Te wartości są ustawiane następnie w kodzie zaplecza, aby umożliwić usłudze Azure App Service uwierzytelniania/autoryzacji.  Aby uzyskać więcej informacji, postępuj zgodnie z instrukcjami szczegółowe samouczka [Dodawanie uwierzytelniania do aplikacji].
+Aby skonfigurować uwierzytelnianie, należy zarejestrować aplikację z co najmniej jednym dostawcą tożsamości.  Dostawca tożsamości generuje identyfikator klienta i klucz tajny klienta dla aplikacji.  Te wartości są następnie ustawiane w zapleczu, aby umożliwić Azure App Service uwierzytelnianie/autoryzację.  Aby uzyskać więcej informacji, postępuj zgodnie ze szczegółowymi instrukcjami w samouczku [Dodawanie uwierzytelniania do aplikacji].
 
-W tej sekcji omówione są następujące tematy:
+W tej sekcji omówiono następujące tematy:
 
-* [Klient zarządzany uwierzytelniania](#clientflow)
-* [Serwer zarządzany uwierzytelniania](#serverflow)
+* [Uwierzytelnianie zarządzane przez klienta](#clientflow)
+* [Uwierzytelnianie zarządzane przez serwer](#serverflow)
 * [Buforowanie tokenu uwierzytelniania](#caching)
 
-### <a name="clientflow"></a>Klient zarządzany uwierzytelniania
-Aplikację można niezależnie skontaktować się z dostawcą tożsamości i następnie udostępnić zwrócony token podczas logowania z wewnętrzną bazą danych. Ten przepływ klienta pozwala zapewnić funkcji logowania jednokrotnego dla użytkowników bądź pobrać dodatkowe dane użytkownika od dostawcy tożsamości. Uwierzytelnianie przepływu klienta jest preferowany dla wiadomości przy użyciu przepływu serwera dostawcy tożsamości zestawu SDK zapewnia bardziej natywnego działania środowiska użytkownika i umożliwia dodatkowych dostosowań.
+### <a name="clientflow"></a>Uwierzytelnianie zarządzane przez klienta
+Twoja aplikacja może niezależnie skontaktować się z dostawcą tożsamości, a następnie podać zwracany token podczas logowania z zapleczem. Ten przepływ klienta umożliwia korzystanie z logowania jednokrotnego dla użytkowników lub pobieranie dodatkowych danych użytkownika od dostawcy tożsamości. Uwierzytelnianie przepływu klienta jest preferowane przy użyciu przepływu serwera, ponieważ zestaw SDK dostawcy tożsamości zapewnia bardziej natywny sposób działania środowiska użytkownika i umożliwia dodatkowe dostosowanie.
 
-Przykłady znajdują się następujące wzorce uwierzytelniania przepływ klienta:
+Przykłady są dostępne dla następujących wzorców uwierzytelniania w przepływie klienta:
 
-* [Biblioteki uwierzytelniania usługi Active Directory](#adal)
+* [Active Directory Authentication Library](#adal)
 * [Facebook lub Google](#client-facebook)
 
-#### <a name="adal"></a>Uwierzytelnianie użytkowników za pomocą biblioteki uwierzytelniania usługi Active Directory
-Active Directory Authentication Library (ADAL) można użyć do uwierzytelnienia użytkownika inicjowania z klienta przy użyciu uwierzytelniania usługi Azure Active Directory.
+#### <a name="adal"></a>Uwierzytelnianie użytkowników za pomocą Active Directory Authentication Library
+Za pomocą Active Directory Authentication Library (ADAL) można inicjować uwierzytelnianie użytkowników z poziomu klienta przy użyciu uwierzytelniania Azure Active Directory.
 
-1. Skonfiguruj zaplecza aplikacji mobilnej dla logowania jednokrotnego usługi AAD, wykonując [Jak skonfigurować usługi App Service dla logowania usługi Active Directory] samouczka. Upewnij się ukończyć opcjonalny krok rejestrowanie natywnej aplikacji klienckiej.
-2. W programie Visual Studio lub Xamarin Studio, otwórz projekt i Dodaj odwołanie do `Microsoft.IdentityModel.Clients.ActiveDirectory` pakietu NuGet. Podczas wyszukiwania, obejmują wersje wstępne.
-3. Dodaj następujący kod do aplikacji, zależnie od platformy, którego używasz. W poszczególnych usług wprowadź następujące elementy zastępcze:
+1. Skonfiguruj zaplecze aplikacji mobilnej na potrzeby logowania do usługi AAD, wykonując czynności opisane w samouczku [Jak skonfigurować App Service logowania Active Directory] . Pamiętaj, aby ukończyć opcjonalny krok rejestracji natywnej aplikacji klienckiej.
+2. W programie Visual Studio lub Xamarin Studio Otwórz projekt i Dodaj odwołanie do pakietu NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory`. Podczas wyszukiwania należy uwzględnić wersje wstępne.
+3. Dodaj następujący kod do aplikacji zgodnie z platformą, z której korzystasz. W każdym z nich należy wykonać następujące zamiany:
 
-   * Zastąp **INSERT-urzędu-tutaj** nazwą dzierżawy, w której aprowizowano aplikacji. Powinna być w formacie https://login.microsoftonline.com/contoso.onmicrosoft.com. Ta wartość może zostać skopiowany z karcie domeny w usłudze Azure Active Directory w [Azure Portal].
-   * Zastąp **INSERT zasobów — identyfikator — tutaj** z Identyfikatorem klienta dla zaplecza aplikacji mobilnej. Można uzyskać identyfikator klienta z **zaawansowane** karcie **ustawienia usługi Azure Active Directory** w portalu.
-   * Zastąp **INSERT klienta-ID — tutaj** z Identyfikatorem klienta został skopiowany z aplikacja kliencka macierzystego.
-   * Zastąp **INSERT PRZEKIEROWANIA-URI-tutaj** z witryny */.auth/login/done* punktu końcowego, przy użyciu schematu HTTPS. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done* .
+   * Zastąp **ciąg INSERT-Authority-** in nazwą dzierżawy, w której została zainicjowana aplikacja. Format powinien być https://login.microsoftonline.com/contoso.onmicrosoft.com. Tę wartość można skopiować z karty domena w Azure Active Directory w [Azure Portal].
+   * Zastąp wartość **INSERT-Resource-ID w tym miejscu** identyfikatorem klienta dla zaplecze aplikacji mobilnej. Identyfikator klienta można uzyskać z karty **Zaawansowane** w obszarze **Ustawienia Azure Active Directory** w portalu.
+   * Zastąp **ciąg INSERT-Client-ID w tym miejscu** identyfikatorem klienta skopiowanym z natywnej aplikacji klienckiej.
+   * Zastąp ciąg **INSERT-redirect-URI — tutaj** z punktem końcowym */.auth/login/done* Twojej witryny przy użyciu schematu https. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done* .
 
-     Następujący kod wymagane dla każdej platformy:
+     Kod wymagany dla każdej platformy:
 
      **Windows:**
 
@@ -769,8 +766,8 @@ Active Directory Authentication Library (ADAL) można użyć do uwierzytelnienia
      }
      ```
 
-#### <a name="client-facebook"></a>Logowanie jednokrotne przy użyciu tokenu z usług Facebook lub Google
-Korzystać z tego przepływu klienta, jak pokazano w tym fragmencie kodu dla usługi Facebook lub Google.
+#### <a name="client-facebook"></a>Logowanie jednokrotne przy użyciu tokenu z serwisu Facebook lub Google
+Możesz użyć przepływu klienta, jak pokazano w tym fragmencie kodu w serwisie Facebook lub Google.
 
 ```csharp
 var token = new JObject();
@@ -803,8 +800,8 @@ private async Task AuthenticateAsync()
 }
 ```
 
-### <a name="serverflow"></a>Serwer zarządzany uwierzytelniania
-Po zarejestrowaniu dostawcy tożsamości Wywołaj [LoginAsync] metody [MobileServiceClient] za pomocą [MobileServiceAuthenticationProvider] wartość dostawcy. Na przykład poniższy kod powoduje zainicjowanie logowania przepływ serwera za pomocą serwisu Facebook.
+### <a name="serverflow"></a>Uwierzytelnianie zarządzane przez serwer
+Po zarejestrowaniu dostawcy tożsamości Wywołaj metodę [LoginAsync] na [MobileServiceClient] przy użyciu wartości [MobileServiceAuthenticationProvider] dostawcy. Na przykład poniższy kod inicjuje logowanie przepływu serwera przy użyciu usługi Facebook.
 
 ```csharp
 private MobileServiceUser user;
@@ -832,12 +829,12 @@ private async System.Threading.Tasks.Task Authenticate()
 }
 ```
 
-Jeśli używasz dostawcy tożsamości innych niż usługi Facebook, zmień wartość [MobileServiceAuthenticationProvider] wartości dla dostawcy.
+Jeśli używasz dostawcy tożsamości innego niż Facebook, Zmień wartość [MobileServiceAuthenticationProvider] na wartość dla dostawcy.
 
-W przepływie serwera usługi Azure App Service zarządza przepływem uwierzytelniania OAuth, wyświetlając stronę logowania wybranego dostawcy.  Po powrocie dostawcy tożsamości usługi Azure App Service generuje token uwierzytelniania usługi App Service. [LoginAsync] metoda zwraca [MobileServiceUser], który zawiera oba [UserId] uwierzytelnionego użytkownika i [MobileServiceAuthenticationToken], jako tokenu web JSON (JWT). Ten token można zapisać w pamięci podręcznej i ponownie go używać, dopóki nie wygaśnie. Aby uzyskać więcej informacji, zobacz [buforowania tokenu uwierzytelniania](#caching).
+W przepływie serwera Program Azure App Service zarządza przepływem uwierzytelniania OAuth przez wyświetlenie strony logowania wybranego dostawcy.  Gdy dostawca tożsamości zwróci wartość, Azure App Service generuje token uwierzytelniania App Service. Metoda [LoginAsync] zwraca [MobileServiceUser], który zapewnia zarówno [Nazwa] uwierzytelnionego, jak i [MobileServiceAuthenticationToken], jako token sieci Web JSON (JWT). Ten token można zapisać w pamięci podręcznej i ponownie go używać, dopóki nie wygaśnie. Aby uzyskać więcej informacji, zobacz [buforowanie tokenu uwierzytelniania](#caching).
 
 ### <a name="caching"></a>Buforowanie tokenu uwierzytelniania
-W niektórych przypadkach można uniknąć wywołania metody logowania po pierwszym pomyślnym uwierzytelnieniu przez zapisanie tokenu uwierzytelniania od dostawcy.  Aplikacje Microsoft Store i platformy uniwersalnej systemu Windows mogą używać [PasswordVault] w pamięci podręcznej bieżącego tokenu uwierzytelniania po pomyślnym zalogowaniu, w następujący sposób:
+W niektórych przypadkach można uniknąć wywołania metody logowania po pierwszym pomyślnym uwierzytelnieniu przez zapisanie tokenu uwierzytelniania od dostawcy.  Aplikacje Microsoft Store i platformy UWP mogą używać [PasswordVault] do buforowania bieżącego tokenu uwierzytelniania po pomyślnym zalogowaniu się w następujący sposób:
 
 ```csharp
 await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
@@ -847,7 +844,7 @@ vault.Add(new PasswordCredential("Facebook", client.currentUser.UserId,
     client.currentUser.MobileServiceAuthenticationToken));
 ```
 
-Wartość Nazwa użytkownika jest przechowywana jako poświadczenie nazwy użytkownika i token jest przechowywany jako hasło. Na kolejnych rozruchów, możesz sprawdzić **PasswordVault** dla buforowanych poświadczeń. W poniższym przykładzie użyto buforowanych poświadczeń, gdy zostaną znalezione, a w przeciwnym razie próbuje uwierzytelnić się ponownie przy użyciu wewnętrznej bazy danych:
+Wartość identyfikatora użytkownika jest przechowywana jako nazwa użytkownika poświadczenia, a token jest przechowywany jako hasło. W kolejnych uruchomieniach możesz sprawdzić **PasswordVault** , aby uzyskać poświadczenia w pamięci podręcznej. W poniższym przykładzie podczas ich znajdowania są stosowane buforowane poświadczenia, a w przeciwnym razie próby uwierzytelnienia ponownie z zapleczem:
 
 ```csharp
 // Try to retrieve stored credentials.
@@ -865,16 +862,16 @@ else
 }
 ```
 
-Po zalogowaniu się użytkownika, musisz również usunąć przechowywanych poświadczeń w następujący sposób:
+Po wylogowaniu użytkownika należy również usunąć przechowywane poświadczenia w następujący sposób:
 
 ```csharp
 client.Logout();
 vault.Remove(vault.Retrieve("Facebook", client.currentUser.UserId));
 ```
 
-Użyj aplikacji Xamarin [Xamarin.Auth] interfejsów API, aby bezpiecznie przechowywać poświadczenia w **konta** obiektu. Aby uzyskać przykład użycia tych interfejsów API, zobacz [AuthStore.cs] pliku z kodem w [próbki do udostępniania zdjęć ContosoMoments](https://github.com/azure-appservice-samples/ContosoMoments).
+Aplikacje Xamarin używają interfejsów API platformy [Xamarin. auth] do bezpiecznego przechowywania poświadczeń w obiekcie **konta** . Przykład korzystania z tych interfejsów API można znaleźć w pliku [AuthStore.cs] Code w [próbce udostępniania zdjęć ContosoMoments](https://github.com/azure-appservice-samples/ContosoMoments).
 
-Gdy używasz uwierzytelniania zarządzanych przez klienta, można buforować tokenu dostępu za pośrednictwem swojego usługodawcy, takich jak Facebook lub Twitter. Ten token może dostarczyć żądanie nowego tokenu uwierzytelniania z wewnętrznej bazy danych, w następujący sposób:
+W przypadku korzystania z uwierzytelniania zarządzanego przez klienta można również buforować token dostępu uzyskany od dostawcy, takiego jak Facebook lub Twitter. Ten token może zostać dostarczony w celu zażądania nowego tokenu uwierzytelniania z zaplecza w następujący sposób:
 
 ```csharp
 var token = new JObject();
@@ -886,14 +883,14 @@ await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 ```
 
 ## <a name="pushnotifications"></a>Powiadomienia wypychane
-W poniższych tematach znajdziesz powiadomień wypychanych:
+W poniższych tematach omówiono powiadomienia wypychane:
 
-* [Rejestrowanie na potrzeby powiadomień wypychanych](#register-for-push)
+* [Zarejestruj się w celu otrzymywania powiadomień wypychanych](#register-for-push)
 * [Uzyskaj identyfikator SID pakietu Microsoft Store](#package-sid)
-* [Zarejestruj za pomocą szablonów dla wielu platform](#register-xplat)
+* [Rejestrowanie w szablonach dla wielu platform](#register-xplat)
 
-### <a name="register-for-push"></a>Jak: Rejestrowanie na potrzeby powiadomień wypychanych
-Klienckie aplikacje mobilne można zarejestrować odbieranie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs. Podczas rejestrowania, można uzyskać dojścia uzyskany z określonych platform wypychania powiadomień usługi platformy (PNS,). Po utworzeniu rejestracji, następnie podaj tę wartość, wraz z żadnych znaczników. Poniższy kod rejestruje aplikację Windows dla powiadomień wypychanych przy użyciu usługi powiadomień Windows (WNS):
+### <a name="register-for-push"></a>Instrukcje: rejestrowanie w celu otrzymywania powiadomień wypychanych
+Klient Mobile Apps umożliwia rejestrowanie powiadomień wypychanych za pomocą usługi Azure Notification Hubs. Podczas rejestrowania otrzymujesz uchwyt uzyskany z usługi powiadomień wypychanych (PNS) specyficznych dla platformy. Następnie należy podać tę wartość wraz ze wszystkimi tagami podczas tworzenia rejestracji. Poniższy kod rejestruje aplikację systemu Windows na potrzeby powiadomień wypychanych za pomocą usługi powiadomień systemu Windows (WNS):
 
 ```csharp
 private async void InitNotificationsAsync()
@@ -906,38 +903,38 @@ private async void InitNotificationsAsync()
 }
 ```
 
-Jeśli wypychasz do usługi WNS, a następnie należy [uzyskać identyfikator SID pakietu Microsoft Store](#package-sid).  Aby uzyskać więcej informacji na aplikacje systemu Windows, w tym jak zarejestrować do rejestracji szablonów, zobacz [Dodawanie powiadomień wypychanych do aplikacji].
+W przypadku wypychania do WNS należy [uzyskać Microsoft Store identyfikator SID pakietu](#package-sid).  Aby uzyskać więcej informacji o aplikacjach systemu Windows, w tym o sposobie rejestrowania rejestracji szablonów, zobacz [Dodawanie powiadomień wypychanych do aplikacji].
 
-Żądanie tagi z klienta nie jest obsługiwane.  Tag żądań dyskretnie są usuwane z rejestracji.
-Jeśli chcesz zarejestrować urządzenie przy użyciu tagów, należy utworzyć niestandardowy interfejs API, który używa interfejsu API centrów powiadomień w celu przeprowadzenia rejestracji w Twoim imieniu.  Wywoływanie niestandardowego interfejsu API, zamiast `RegisterNativeAsync()` metody.
+Żądanie tagów od klienta nie jest obsługiwane.  Żądania tagów zostały dyskretnie usunięte z rejestracji.
+Jeśli chcesz zarejestrować urządzenie ze znacznikami, Utwórz niestandardowy interfejs API, który używa interfejsu API Notification Hubs do przeprowadzenia rejestracji w Twoim imieniu.  Wywoływanie niestandardowego interfejsu API zamiast metody `RegisterNativeAsync()`.
 
-### <a name="package-sid"></a>Jak: Uzyskaj identyfikator SID pakietu Microsoft Store
-Identyfikator SID pakietu jest wymagany przez włączenie powiadomień wypychanych w aplikacji Microsoft Store.  Aby otrzymać identyfikator SID pakietu, należy zarejestrować aplikację w usłudze Microsoft Store.
+### <a name="package-sid"></a>Instrukcje: uzyskiwanie identyfikatora SID pakietu Microsoft Store
+Aby włączyć powiadomienia wypychane w aplikacjach Microsoft Store, wymagany jest identyfikator SID pakietu.  Aby odebrać identyfikator SID pakietu, zarejestruj swoją aplikację w Microsoft Store.
 
 Aby uzyskać tę wartość:
 
-1. W Eksploratorze rozwiązań w usłudze Visual Studio, kliknij prawym przyciskiem myszy projekt aplikacji Microsoft Store, kliknij przycisk **Store** > **Skojarz aplikację ze Store...** .
-2. W kreatorze kliknij pozycję **dalej**, zaloguj się przy użyciu swojego konta Microsoft, wpisz nazwę swojej aplikacji w **Zarezerwuj nazwę nowej aplikacji**, następnie kliknij przycisk **rezerwy**.
-3. Po pomyślnym utworzeniu rejestracji aplikacji, wybierz nazwę aplikacji, kliknij przycisk **dalej**, a następnie kliknij przycisk **skojarzyć**.
-4. Zaloguj się do [Centrum deweloperów Windows] przy użyciu Account firmy Microsoft. W obszarze **Moje aplikacje**, kliknij przycisk z rejestracji aplikacji utworzony.
-5. Kliknij przycisk **Zarządzanie aplikacjami** > **tożsamości aplikacji**, a następnie przewiń w dół, aby znaleźć Twoje **identyfikator SID pakietu**.
+1. W programie Visual Studio Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt aplikacji Microsoft Store, kliknij pozycję **zapisz** > **Skojarz aplikację ze sklepem...** .
+2. W Kreatorze kliknij przycisk **dalej**, zaloguj się przy użyciu konto Microsoft, wpisz nazwę aplikacji w polu **Zarezerwuj nową nazwę aplikacji**, a następnie kliknij pozycję **Zarezerwuj**.
+3. Po pomyślnym utworzeniu rejestracji aplikacji wybierz nazwę aplikacji, kliknij przycisk **dalej**, a następnie kliknij pozycję **Skojarz**.
+4. Zaloguj się do [Centrum deweloperów systemu Windows] przy użyciu konta Microsoft. W obszarze **Moje aplikacje**kliknij utworzoną rejestrację aplikacji.
+5. Kliknij pozycję **Zarządzanie aplikacjami** > **tożsamość aplikacji**, a następnie przewiń w dół, aby znaleźć **Identyfikator SID pakietu**.
 
-Wiele zastosowań identyfikator SID pakietu jej traktowała jako identyfikator URI, w którym to przypadku należy użyć *ms-app: / /* schemat. Zanotuj wersji pakietu utworzone przez złączenie tej wartości jako prefiks identyfikatora SID.
+Wiele użycia identyfikatora SID pakietu traktuje go jako identyfikator URI, w takim przypadku należy użyć *MS-App://* jako schematu. Zanotuj wersję identyfikatora SID pakietu utworzoną przez połączenie tej wartości jako prefiksu.
 
-Aplikacje platformy Xamarin wymagają dodatkowy kod, aby można było zarejestrować aplikacji uruchomionej na platformy iOS lub Android. Aby uzyskać więcej informacji zobacz temat dla danej platformy:
+Aplikacje Xamarin wymagają dodatkowego kodu, aby można było zarejestrować aplikację działającą na platformach z systemem iOS lub Android. Aby uzyskać więcej informacji, zobacz temat dotyczący Twojej platformy:
 
 * [Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md#add-push)
 * [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started-push.md#add-push-notifications-to-your-app)
 
-### <a name="register-xplat"></a>Jak: Rejestrowanie szablonów wypychania do wysyłania powiadomień dla wielu platform
-Aby zarejestrować szablony, użyj `RegisterAsync()` metody przy użyciu szablonów, w następujący sposób:
+### <a name="register-xplat"></a>Instrukcje: rejestrowanie szablonów wypychania do wysyłania powiadomień na wielu platformach
+Aby zarejestrować szablony, użyj metody `RegisterAsync()` z szablonami w następujący sposób:
 
 ```csharp
 JObject templates = myTemplates();
 MobileService.GetPush().RegisterAsync(channel.Uri, templates);
 ```
 
-Szablony powinny być `JObject` typów i może zawierać wiele szablonów w następującym formacie JSON:
+Szablony powinny mieć `JObject` typów i mogą zawierać wiele szablonów w następującym formacie JSON:
 
 ```csharp
 public JObject myTemplates()
@@ -962,19 +959,19 @@ public JObject myTemplates()
 }
 ```
 
-Metoda **RegisterAsync()** akceptuje także dodatkowej Kafelki:
+Metoda **RegisterAsync ()** również akceptuje kafelki pomocnicze:
 
 ```csharp
 MobileService.GetPush().RegisterAsync(string channelUri, JObject templates, JObject secondaryTiles);
 ```
 
-Wszystkie tagi są natychmiast usunięte podczas rejestracji dla zabezpieczeń. Aby dodać tagi do instalacji lub szablonów w ramach instalacji, zobacz [Praca z zestawem SDK serwera zaplecza platformy .NET usługi Azure Mobile Apps].
+Wszystkie Tagi są odrzucane podczas rejestracji w celu zabezpieczenia. Aby dodać tagi do instalacji lub szablonów w ramach instalacji, zobacz [Pracuj z zestawem SDK serwera zaplecza platformy .NET dla platformy Azure Mobile Apps].
 
-Aby wysyłać powiadomienia przy użyciu zarejestrowanych przy użyciu tych szablonów, zobacz [Interfejsy API centrów powiadomień].
+Aby wysyłać powiadomienia przy użyciu tych zarejestrowanych szablonów, zapoznaj się z [Interfejsy API Notification Hubs].
 
-## <a name="misc"></a>Tematy dodatkowe
-### <a name="errors"></a>Jak: Obsługa błędów
-Po wystąpieniu błędu w wewnętrznej bazie danych, klient SDK zgłasza `MobileServiceInvalidOperationException`.  Poniższy przykład pokazuje, jak obsłużyć wyjątek, który jest zwracany przez zaplecze:
+## <a name="misc"></a>Różne tematy
+### <a name="errors"></a>Instrukcje: obsługa błędów
+Po wystąpieniu błędu w zapleczu zestaw SDK klienta zgłasza `MobileServiceInvalidOperationException`.  Poniższy przykład pokazuje, jak obsłużyć wyjątek, który jest zwracany przez zaplecze:
 
 ```csharp
 private async void InsertTodoItem(TodoItem todoItem)
@@ -993,10 +990,10 @@ private async void InsertTodoItem(TodoItem todoItem)
 }
 ```
 
-Innym przykładem zajmowanie się warunki błędów można znaleźć w [Przykładowe pliki aplikacji mobilnych]. [LoggingHandler] przykładzie przedstawiono procedury obsługi delegata rejestrowania do rejestrowania żądań wysyłanych do zaplecza.
+Innym przykładem postępowania z warunkami błędów można znaleźć w [Przykład plików Mobile Apps]. Przykład [LoggingHandler] zapewnia procedurę obsługi delegowania rejestrowania w celu rejestrowania żądań wykonywanych w zapleczu.
 
-### <a name="headers"></a>Jak: Dostosowywanie nagłówków żądania
-Do obsługi danego scenariusza specyficzne dla aplikacji, może być konieczne dostosowanie komunikacji przy użyciu zaplecza aplikacji mobilnej. Na przykład można dodać niestandardowy nagłówek, aby każde wychodzące żądanie lub nawet zmienić kodów stanu odpowiedzi. Można używać niestandardowego [DelegatingHandler], jak w poniższym przykładzie:
+### <a name="headers"></a>Instrukcje: Dostosowywanie nagłówków żądań
+Aby zapewnić obsługę określonego scenariusza aplikacji, może być konieczne dostosowanie komunikacji z zapleczem aplikacji mobilnej. Na przykład możesz chcieć dodać nagłówek niestandardowy do każdego żądania wychodzącego, a nawet zmienić kody stanu odpowiedzi. Możesz użyć niestandardowego [DelegatingHandler], jak w poniższym przykładzie:
 
 ```csharp
 public async Task CallClientWithHandler()
@@ -1050,7 +1047,7 @@ public class MyHandler : DelegatingHandler
 [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 [Dodawanie powiadomień wypychanych do aplikacji]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Register your app to use a Microsoft account login]: ../app-service/configure-authentication-provider-microsoft.md
-[Jak skonfigurować usługi App Service dla logowania usługi Active Directory]: ../app-service/configure-authentication-provider-aad.md
+[Jak skonfigurować App Service logowania Active Directory]: ../app-service/configure-authentication-provider-aad.md
 
 <!-- Microsoft URLs. -->
 [MobileServiceCollection]: https://msdn.microsoft.com/library/azure/dn250636(v=azure.10).aspx
@@ -1069,28 +1066,28 @@ public class MyHandler : DelegatingHandler
 [OrderBy]: https://msdn.microsoft.com/library/azure/dn250572(v=azure.10).aspx
 [OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
-[Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
-[Select]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
-[Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[Czasochłonn]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
+[Wybierz]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
+[Skocz]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
-[UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[Where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
+[Nazwa]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
+[Miejscu]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
-[Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
+[GUID. NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
-[Centrum deweloperów Windows]: https://dev.windows.com/overview
+[Centrum deweloperów systemu Windows]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 [PasswordVault]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: https://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
-[Interfejsy API centrów powiadomień]: https://msdn.microsoft.com/library/azure/dn495101.aspx
-[Przykładowe pliki aplikacji mobilnych]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
+[Interfejsy API Notification Hubs]: https://msdn.microsoft.com/library/azure/dn495101.aspx
+[Przykład plików Mobile Apps]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
 [LoggingHandler]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files/blob/master/src/client/MobileAppsFilesSample/Helpers/LoggingHandler.cs#L63
 
 <!-- External URLs -->
-[Dokumentacja usługi OData v3]: https://www.odata.org/documentation/odata-version-3-0/
+[Dokumentacja OData V3]: https://www.odata.org/documentation/odata-version-3-0/
 [Fiddler]: https://www.telerik.com/fiddler
 [Json.NET]: https://www.newtonsoft.com/json
-[Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth/
+[Xamarin. auth]: https://components.xamarin.com/view/xamarin.auth/
 [AuthStore.cs]: https://github.com/azure-appservice-samples/ContosoMoments
 [ContosoMoments photo sharing sample]: https://github.com/azure-appservice-samples/ContosoMoments

@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: e938baa21f9d2351b3270f4fa2411bf8ecb547d4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: bac270dc0d49c0eaa8c01b030256aa9bb597db80
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972812"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029868"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorowanie wydajności Azure Database for MySQL przy użyciu magazynu zapytań
 
-**Dotyczy:** @no__t 1Azure Database for MySQL 5,7
+**Dotyczy:** Azure Database for MySQL 5,7
 
 > [!IMPORTANT]
 > Magazyn zapytań jest w wersji zapoznawczej.
@@ -37,14 +37,14 @@ Magazyn zapytań jest funkcją wyboru, dlatego nie jest domyślnie aktywna na se
 ### <a name="enable-query-store-using-the-azure-portal"></a>Włącz magazyn zapytań przy użyciu Azure Portal
 
 1. Zaloguj się do Azure Portal i wybierz swój serwer Azure Database for MySQL.
-1. Wybierz opcję **parametry serwera** in **Ustawienia** section menu.
+1. Wybierz opcję **parametry serwera** w sekcji **Ustawienia** w menu.
 1. Wyszukaj parametr query_store_capture_mode.
-1. Ustaw wartość wszystkie i **Zapisz**.
+1. Ustaw wartość wszystkie i **Zapisz**.
 
 Aby włączyć statystykę oczekiwania w magazynie zapytań:
 
 1. Wyszukaj parametr query_store_wait_sampling_capture_mode.
-1. Ustaw wartość wszystkie i **Zapisz**.
+1. Ustaw wartość wszystkie i **Zapisz**.
 
 Zaczekaj do 20 minut, aż pierwsza partia danych ma pozostać w bazie danych MySQL.
 
@@ -78,8 +78,8 @@ Poniżej przedstawiono kilka przykładów, w których można uzyskać więcej sz
 | **Uchwyceni** | **Akcja** |
 |---|---|
 |Duża blokada | Sprawdź teksty zapytania dla zaatakowanych zapytań i zidentyfikuj jednostki docelowe. Wyszukaj inne zapytania w magazynie zapytań, modyfikując tę samą jednostkę, która jest wykonywana często i/lub o dużym czasie trwania. Po zidentyfikowaniu tych zapytań Rozważ zmianę logiki aplikacji, aby zwiększyć współbieżność, lub użyj mniej restrykcyjnego poziomu izolacji. |
-|Duże oczekiwania we/wy | Znajdź zapytania z dużą liczbą odczytów fizycznych w magazynie zapytań. Jeśli są one zgodne z kwerendami o wysokim poziomie operacji we/wy, rozważ wprowadzenie indeksu w jednostce źródłowej, aby przeszukiwać zamiast skanów. Zmniejsza to obciążenie operacji we/wy dla zapytań. Sprawdź **zalecenia dotyczące wydajności**@no__t 1for serwera w portalu, aby sprawdzić, czy istnieją zalecenia dotyczące indeksów dla tego serwera, które optymalizują zapytania. |
-|Duża ilość pamięci | Znajdź zapytania zużywające najwięcej pamięci w magazynie zapytań. Te zapytania prawdopodobnie opóźnią dalsze postępy zapytań, których to dotyczy. Sprawdź **zalecenia dotyczące wydajności**@no__t 1for serwera w portalu, aby sprawdzić, czy istnieją zalecenia dotyczące indeksów, które optymalizują te zapytania.|
+|Duże oczekiwania we/wy | Znajdź zapytania z dużą liczbą odczytów fizycznych w magazynie zapytań. Jeśli są one zgodne z kwerendami o wysokim poziomie operacji we/wy, rozważ wprowadzenie indeksu w jednostce źródłowej, aby przeszukiwać zamiast skanów. Zmniejsza to obciążenie operacji we/wy dla zapytań. Sprawdź **zalecenia dotyczące wydajności** serwera w portalu, aby sprawdzić, czy istnieją zalecenia dotyczące indeksów dla tego serwera, które optymalizują zapytania. |
+|Duża ilość pamięci | Znajdź zapytania zużywające najwięcej pamięci w magazynie zapytań. Te zapytania prawdopodobnie opóźnią dalsze postępy zapytań, których to dotyczy. Sprawdź **zalecenia dotyczące wydajności** serwera w portalu, aby sprawdzić, czy istnieją zalecenia dotyczące indeksów, które optymalizują te zapytania.|
 
 ## <a name="configuration-options"></a>Opcje konfiguracji
 
@@ -108,7 +108,7 @@ Użyj [Azure Portal](howto-server-parameters.md)@no__t 1or [interfejsu wiersza
 
 ## <a name="views-and-functions"></a>Widoki i funkcje
 
-Wyświetlanie magazynu zapytań i zarządzanie nim przy użyciu następujących widoków i funkcji. Każda osoba w [roli publicznej Wybieranie uprawnienia](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) może używać tych widoków do wyświetlania danych w magazynie zapytań. Te widoki są dostępne tylko w programie **mysql**@no__t 1database.
+Wyświetlanie magazynu zapytań i zarządzanie nim przy użyciu następujących widoków i funkcji. Każda osoba w [roli publicznej Wybieranie uprawnienia](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) może używać tych widoków do wyświetlania danych w magazynie zapytań. Te widoki są dostępne tylko w bazie danych **MySQL** .
 
 Zapytania są znormalizowane przez przejrzenie ich struktury po usunięciu literałów i stałych. Jeśli dwa zapytania są identyczne z wyjątkiem wartości literału, będą miały ten sam skrót.
 

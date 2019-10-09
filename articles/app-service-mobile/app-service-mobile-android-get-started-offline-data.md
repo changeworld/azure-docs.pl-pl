@@ -1,6 +1,6 @@
 ---
-title: Włączanie synchronizacji offline dla aplikacji mobilnej platformy Azure (system Android)
-description: Dowiedz się, jak używać usługi App Service Mobile Apps do pamięci podręcznej i synchronizacji danych w trybie offline do aplikacji dla systemu Android
+title: Włączanie synchronizacji w trybie offline dla aplikacji mobilnej platformy Azure (Android)
+description: Dowiedz się, jak używać App Service Mobile Apps do buforowania i synchronizowania danych w trybie offline w aplikacji systemu Android
 documentationcenter: android
 author: elamalani
 manager: crdun
@@ -13,44 +13,44 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 3fe5b176d864fd4cdd1ff49d8c064495663aa3b0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0180e100432ac34b876af04ad99c9a5d189455c3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443577"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025463"
 ---
-# <a name="enable-offline-sync-for-your-android-mobile-app"></a>Włączanie synchronizacji offline dla aplikacji mobilnej systemu Android
+# <a name="enable-offline-sync-for-your-android-mobile-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji mobilnej systemu Android
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-offline-data) już dziś.
->
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
-Ten samouczek obejmuje funkcję synchronizacji w trybie offline z usługą Azure Mobile Apps dla systemu Android. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacją mobilną&mdash;wyświetlanie, dodawanie lub modyfikowanie danych&mdash;nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie jest w trybie online, zmiany te są synchronizowane za pomocą zdalnego wewnętrznej bazy danych.
+W tym samouczku omówiono funkcję synchronizacji w trybie offline w usłudze Azure Mobile Apps dla systemu Android. Synchronizacja w trybie offline umożliwia użytkownikom końcowym korzystanie z aplikacji mobilnej @ no__t-0viewing, Dodawanie lub modyfikowanie danych @ no__t-1even, gdy nie ma połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie przewróci do trybu online, te zmiany są synchronizowane ze zdalną zapleczem.
 
-Jeśli jest to Twój pierwszy kontakt z usługą Azure Mobile Apps, najpierw należy Ukończ samouczek [tworzenie aplikacji dla systemu Android]. Jeśli nie używasz projektu serwera pobranego — szybki start, należy dodać pakiety rozszerzeń dostępu do danych do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzeń serwera, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Jeśli jest to pierwsze środowisko pracy z usługą Azure Mobile Apps, należy najpierw zakończyć pracę z samouczkiem [Tworzenie aplikacji dla systemu Android]. Jeśli nie używasz pobranego projektu szybkiego startu serwera, musisz dodać pakiety rozszerzenia dostępu do danych do projektu. Aby uzyskać więcej informacji o pakietach rozszerzeń serwera, zobacz [Work with the .NET zaplecz Server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 Aby dowiedzieć się więcej na temat funkcji synchronizacji w trybie offline, zobacz temat [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps].
 
 ## <a name="update-the-app-to-support-offline-sync"></a>Aktualizowanie aplikacji w celu obsługi synchronizacji w trybie offline
-Synchronizacja w trybie offline, do odczytu i zapisu z *zsynchronizuj spis* (przy użyciu *IMobileServiceSyncTable* interfejs), który jest częścią **SQLite** bazy danych na urządzeniu.
+Synchronizacja w trybie offline umożliwia odczytywanie i zapisywanie z *tabeli synchronizacji* (przy użyciu interfejsu *IMobileServiceSyncTable* ), która jest częścią bazy danych programu **SQLite** na urządzeniu.
 
-Aby wypychanie i ściąganie zmian między wersjami urządzeń i usług Azure Mobile Services, należy użyć *kontekst synchronizacji* (*MobileServiceClient.SyncContext*), który można zainicjować z lokalnej bazy danych do przechowywania dane lokalnie.
+Aby wypchnąć i ściągnąć zmiany między urządzeniem i Mobile Services platformy Azure, należy użyć *kontekstu synchronizacji* (*MobileServiceClient. SyncContext*), który jest inicjowany z lokalną bazą danych w celu lokalnego przechowywania danych.
 
-1. W `TodoActivity.java`, komentarz definicja `mToDoTable` i usuń znaczniki komentarza wersja tabeli synchronizacji:
+1. W `TodoActivity.java` Dodaj komentarz do istniejącej definicji `mToDoTable` i Usuń komentarz z wersji tabeli synchronizacji:
    
         private MobileServiceSyncTable<ToDoItem> mToDoTable;
-2. W `onCreate` metody komentarz istniejących inicjowanie `mToDoTable` i usuń znaczniki komentarza tę definicję:
+2. W metodzie `onCreate` Dodaj komentarz do istniejącej inicjalizacji `mToDoTable` i Usuń komentarz z tej definicji:
    
         mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
-3. W `refreshItemsFromTable` komentarz definicję `results` i usuń znaczniki komentarza tę definicję:
+3. W `refreshItemsFromTable` Dodaj komentarz do definicji `results` i Usuń komentarz z tej definicji:
    
         // Offline Sync
         final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
-4. Komentarz definicję `refreshItemsFromMobileServiceTable`.
-5. Komentarz definicji `refreshItemsFromMobileServiceTableSyncTable`:
+4. Dodaj komentarz do definicji `refreshItemsFromMobileServiceTable`.
+5. Usuń komentarz z definicji `refreshItemsFromMobileServiceTableSyncTable`:
    
         private List<ToDoItem> refreshItemsFromMobileServiceTableSyncTable() throws ExecutionException, InterruptedException {
             //sync the data
@@ -59,7 +59,7 @@ Aby wypychanie i ściąganie zmian między wersjami urządzeń i usług Azure Mo
                     eq(val(false));
             return mToDoTable.read(query).get();
         }
-6. Komentarz definicji `sync`:
+6. Usuń komentarz z definicji `sync`:
    
         private AsyncTask<Void, Void, Void> sync() {
             AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
@@ -79,25 +79,25 @@ Aby wypychanie i ściąganie zmian między wersjami urządzeń i usług Azure Mo
         }
 
 ## <a name="test-the-app"></a>Testowanie aplikacji
-W tej sekcji Testowanie zachowania przy użyciu sieci Wi-Fi na, a następnie wyłącz sieci Wi-Fi, aby utworzyć scenariusz w trybie offline.
+W tej sekcji przetestujesz zachowanie przy użyciu sieci Wi-Fi w systemie, a następnie wyłączysz usługę Wi-Fi w celu utworzenia scenariusza w trybie offline.
 
-Podczas dodawania elementów danych są przechowywane w magazynie lokalnym SQLite, ale nie zostały zsynchronizowane z usługą mobilną, dopóki nie zostanie naciśnięty klawisz **Odśwież** przycisku. Inne aplikacje mogą mieć różne wymagania dotyczące po danych muszą być zsynchronizowane, ale dla celów demonstracyjnych w tym samouczku ma użytkownik jawnie wysłać żądanie.
+Po dodaniu elementów danych są one przechowywane w lokalnym magazynie oprogramowania SQLite, ale nie są synchronizowane z usługą mobilną do momentu naciśnięcia przycisku **Odśwież** . Inne aplikacje mogą mieć różne wymagania dotyczące sytuacji, w których dane wymagają synchronizacji, ale w celach demonstracyjnych ten samouczek ma jawnie żądanie użytkownika.
 
-Po naciśnięciu tego przycisku, rozpoczyna nowe zadanie w tle. Umieszcza ono najpierw wszystkie zmiany wprowadzone do magazynu lokalnego przy użyciu kontekstu synchronizacji, a następnie ściąga zmienione dane z platformy Azure do lokalnej tabeli.
+Po naciśnięciu tego przycisku zostanie uruchomione nowe zadanie w tle. Najpierw wypychanie wszystkich zmian wprowadzonych do lokalnego magazynu przy użyciu kontekstu synchronizacji, a następnie ściąga wszystkie zmienione dane z platformy Azure do tabeli lokalnej.
 
-### <a name="offline-testing"></a>Testowanie offline
-1. Umieść urządzenie lub symulator w *tryb samolotowy*. Spowoduje to utworzenie scenariusz w trybie offline.
-2. Dodaj *ToDo* elementy lub znacznik, niektóre elementy jako ukończone. Zamknij urządzenie lub symulator (lub wymuszanie zamknięcia aplikacji) i uruchom ponownie. Sprawdź, czy zmiany zostały utrwalone w urządzeniu, ponieważ są one przechowywane w magazynie lokalnym bazy danych SQLite.
-3. Wyświetlanie zawartości dotyczącej platformy Azure *TodoItem* tabeli za pomocą narzędzia SQL, takich jak *SQL Server Management Studio*, lub klienta REST, takie jak *Fiddler* lub  *Postman*. Sprawdź, czy nowe elementy *nie* zostały zsynchronizowane z serwerem
+### <a name="offline-testing"></a>Testowanie w trybie offline
+1. Umieść urządzenie lub symulator w *trybie samolotowym*. Spowoduje to utworzenie scenariusza w trybie offline.
+2. Dodaj elementy do *zrobienia* lub Oznacz niektóre elementy jako ukończone. Wyjdź z urządzenia lub symulatora (lub Wymuś zamknięcie aplikacji) i uruchom ponownie. Sprawdź, czy zmiany zostały utrwalone na urządzeniu, ponieważ są przechowywane w lokalnym magazynie oprogramowania SQLite.
+3. Zapoznaj się z zawartością tabeli usługi Azure *TodoItem* za pomocą narzędzia SQL, takiego jak *SQL Server Management Studio*, lub klienta REST, takiego jak *programu Fiddler* lub *Poster*. Sprawdź, czy nowe elementy *nie* zostały zsynchronizowane z serwerem
    
-       + Przypadku zaplecza Node.js, przejdź do [witryny Azure portal](https://portal.azure.com/), a w aplikacji mobilnej kliknij zaplecza **łatwych tabel** > **TodoItem** do wyświetlania zawartości `TodoItem`tabeli.
-       + Zaplecze platformy .NET, można wyświetlić w treści, albo za pomocą SQL narzędzia takie jak *SQL Server Management Studio*, lub klienta REST, takie jak *Fiddler* lub *Postman*.
-4. Włącz sieć Wi-Fi w urządzenia lub symulatora. Następnie naciśnij klawisz **Odśwież** przycisku.
-5. Wyświetl dane TodoItem ponownie w witrynie Azure portal. Teraz powinien pojawić się nowe i zmienione funkcje TodoItems.
+       + W przypadku zaplecza Node. js przejdź do [Azure Portal](https://portal.azure.com/), a w zaplecze aplikacji mobilnej kliknij pozycję **łatwe tabele** > **TodoItem** , aby wyświetlić zawartość tabeli `TodoItem`.
+       + W przypadku zaplecza platformy .NET Wyświetl zawartość tabeli przy użyciu narzędzia SQL, takiego jak *SQL Server Management Studio*, lub klienta REST, takiego jak *programu Fiddler* lub *Poster*.
+4. Włącz sieć Wi-Fi na urządzeniu lub symulatorze. Następnie naciśnij przycisk **Odśwież** .
+5. Ponownie Wyświetl dane TodoItem w Azure Portal. Nowe i zmienione TodoItems powinny teraz pojawić się.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 * [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]
-* [Cloud Cover: Synchronizacja offline w usługach Azure Mobile Services] \(Uwaga: wideo jest w usłudze Mobile Services, ale synchronizacja w trybie offline, działa w podobny sposób jak w usłudze Azure Mobile Apps\)
+* [Pokrycie w chmurze: synchronizacja w trybie offline na platformie azure Mobile Services] @no__t — 1note: film wideo znajduje się na Mobile Services, ale synchronizacja offline działa w podobny sposób na platformie Azure Mobile Apps @ no__t-2
 
 <!-- URLs. -->
 
@@ -105,6 +105,6 @@ Po naciśnięciu tego przycisku, rozpoczyna nowe zadanie w tle. Umieszcza ono na
 
 [Tworzenie aplikacji dla systemu Android]: app-service-mobile-android-get-started.md
 
-[Cloud Cover: Synchronizacja offline w usługach Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Pokrycie w chmurze: synchronizacja w trybie offline na platformie Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 

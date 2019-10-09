@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9acedc081166c84935e3abfde8401b55c64156a7
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174582"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026428"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą CakeHR
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą CakeHR
 
 W tym samouczku dowiesz się, jak zintegrować usługę CakeHR z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi CakeHR z usługą Azure AD można:
 
@@ -71,7 +71,7 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 1. **[Skonfiguruj Logowanie jednokrotne](#configure-cakehr-sso)** w usłudze CakeHR, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
     1. **[Utwórz użytkownika testowego CakeHR](#create-cakehr-test-user)** , aby dysponować odpowiednikiem B. Simon w CakeHR, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
@@ -108,12 +108,12 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -123,7 +123,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **CakeHR**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -137,11 +137,11 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 1. Otwórz nowe okno przeglądarki sieci Web i zaloguj się do firmowej witryny CakeHR jako administrator.
 
-2. W prawym górnym rogu strony kliknij pozycję **profil** , a następnie przejdź do obszaru **Ustawienia**.
+2. W prawym górnym rogu strony kliknij pozycję **profil** , a następnie przejdź do obszaru **Ustawienia**.
 
     ![Konfiguracja CakeHR](./media/cakehr-tutorial/config01.png)
 
-3. Na pasku menu po lewej stronie kliknij pozycję **Integrations** >protokołu **SAML SSO** i wykonaj następujące czynności:
+3. Z lewej strony paska menu kliknij pozycję **integrations** > **SAML SSO** i wykonaj następujące czynności:
 
      ![Konfiguracja CakeHR](./media/cakehr-tutorial/config02.png)
 
@@ -149,11 +149,11 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
      b. W polu tekstowym **adres URL uwierzytelniania** wklej wartość **adresu URL logowania**, który został skopiowany z Azure Portal.
 
-     c. W polu tekstowym **odcisk palca klucza (format SHA1)** wklej wartość **odcisku palca** , która została skopiowana z Azure Portal.
+     d. W polu tekstowym **odcisk palca klucza (format SHA1)** wklej wartość **odcisku palca** , która została skopiowana z Azure Portal.
 
      d. Zaznacz pole **Włącz logowanie jednokrotne** .
 
-     e. Kliknij pozycję **Zapisz**.
+     e. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-cakehr-test-user"></a>Utwórz użytkownika testowego CakeHR
 
@@ -163,7 +163,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze CakeHR,
 
 1. Zaloguj się do CakeHR jako administrator zabezpieczeń.
 
-2. Z lewej strony paska menu kliknij pozycję **Dodaj** **firmę** >.
+2. Na pasku menu po lewej stronie kliknij pozycję **firma** > **Dodaj**.
 
     ![Konfiguracja CakeHR](./media/cakehr-tutorial/config03.png)
 
@@ -173,17 +173,17 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze CakeHR,
 
     a. W polu tekstowym **pełna nazwa** wprowadź nazwę użytkownika, na przykład B. Simon.
 
-    b. W polu tekstowym **służbowy adres e-mail** wprowadź adres e-mail użytkownika `B.Simon@contoso.com`.
+    b. W polu tekstowym **służbowa poczta e-mail** wprowadź adres e-mail użytkownika, taki jak `B.Simon@contoso.com`.
 
-    c. Kliknij pozycję **Utwórz konto**.
+    d. Kliknij pozycję **Utwórz konto**.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka CakeHR w panelu dostępu należy automatycznie zalogować się do CakeHR, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

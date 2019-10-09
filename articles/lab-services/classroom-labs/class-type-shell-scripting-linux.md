@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 083a7e7ad4ac40a7782936e664a9136d0452e93d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 69fe370029cef391b8ee483ffdee5c588df41d58
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694679"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030662"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Konfigurowanie laboratorium do uczenia skryptów powłoki w systemie Linux
 W tym artykule opisano sposób konfigurowania laboratorium do uczenia skryptów powłoki w systemie Linux. Obsługa skryptów jest przydatną częścią administrowania systemem, która umożliwia administratorom uniknięcie powtarzających się zadań. W tym przykładowym scenariuszu Klasa obejmuje tradycyjne skrypty bash oraz ulepszone skrypty. Ulepszone skrypty to skrypty, które łączą bash polecenia i Ruby. Takie podejście umożliwia używanie języka Ruby do przekazywania danych wokół i bash poleceń w celu współdziałania z powłoką. 
@@ -83,7 +83,9 @@ W tej sekcji pokazano, jak zainstalować kilka edytorów tekstu. Program regedit
 ## <a name="cost"></a>Koszt 
 Jeśli chcesz oszacować koszt tego laboratorium, możesz użyć poniższego przykładu:
  
-W przypadku klasy 25 studentów z upływem 20 godzin planowanego czasu zajęć i 10 godzin przydziału dla prac domowych lub przydziałów cena za laboratorium to: 25 studentów * (20 + 10) godz. * 20 jednostek laboratoryjnych * 0,01 USD za godzinę = 150 USD
+W przypadku klasy 25 studentów z upływem 20 godzin planowanego czasu zajęć i 10 godzin przydziału dla prac domowych lub przydziałów, Cena za laboratorium to: 
+
+25 studentów * (20 + 10) godz. * 20 jednostek laboratoryjnych * 0,01 USD za godzinę = 150 USD
 
 Aby uzyskać więcej informacji na temat cen, można znaleźć w następującym dokumencie: [cennik Azure Lab Services](https://azure.microsoft.com/pricing/details/lab-services/).
 

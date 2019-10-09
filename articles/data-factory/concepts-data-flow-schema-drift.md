@@ -7,16 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 68c0da5a7fe2b02c6115a8c1bbc24feb95e12adb
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5eff92352251febca1d4e7033618372dc929d987
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003771"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029409"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Dryf schematu w mapowaniu przepływu danych
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Dryfowanie schematu to przypadek, w którym źródła często zmieniają metadane. Pola, kolumny i typy można dodawać, usuwać lub zmieniać na bieżąco. Bez obsługi dryfowania schematu przepływ danych jest narażony na zmiany nadrzędnego źródła danych. Typowe wzorce ETL kończą się niepowodzeniem, gdy przychodzące kolumny i pola są zmieniane, ponieważ mają one być powiązane z tymi nazwami źródłowymi.
 
@@ -34,7 +34,7 @@ Należy podjąć decyzję dotyczącą architektury w przepływie danych, aby akc
 
 W transformacji źródłowej, dryfowanie schematu jest zdefiniowane jako odczytane kolumny, które nie są zdefiniowane w schemacie zestawu danych. Aby włączyć dryfowanie schematu, zaznacz pole wyboru **Zezwalaj na dryfowanie schematu** w transformacji źródłowej.
 
-![Źródło dryfu schematu](media/data-flow/schemadrift001.png "Źródło dryfu schematu")
+(media/data-flow/schemadrift001.png "Źródło dryfowania schematu") ![źródła dryfu schematu]
 
 Po włączeniu dryfowania schematu wszystkie pola przychodzące są odczytywane ze źródła podczas wykonywania i przesyłane przez cały przepływ do ujścia. Domyślnie wszystkie nowo wykryte kolumny, znane jako *kolumny*przedzielone, docierają jako dane typu String. Jeśli chcesz, aby przepływ danych automatycznie wywnioskować typy danych z przewidzianymi kolumnami, zaznacz pole wyboru **wywnioskowanie typów kolumn** w ustawieniach źródłowych.
 
@@ -42,17 +42,17 @@ Po włączeniu dryfowania schematu wszystkie pola przychodzące są odczytywane 
 
 W transformacji ujścia, dryfowanie schematu jest zapisywane w przypadku zapisywania dodatkowych kolumn na podstawie elementów zdefiniowanych w schemacie danych ujścia. Aby włączyć dryfowanie schematu, zaznacz pole wyboru **Zezwalaj na dryfowanie** obiektów w transformację ujścia.
 
-![Ujścia schematu dryfu](media/data-flow/schemadrift002.png "Ujścia schematu dryfu")
+Ujścia schematu ![ujścia](media/data-flow/schemadrift002.png "dryfu") schematu
 
 Jeśli funkcja dryfowania schematu jest włączona, upewnij się, że suwak **automapowanie** na karcie Mapowanie jest włączony. Po tym suwaku wszystkie kolumny przychodzące są zapisywane w miejscu docelowym. W przeciwnym razie musisz użyć mapowania opartego na regułach, aby napisać kolumny przeznaczone.
 
-![Automapowanie ujścia](media/data-flow/automap.png "Automapowanie ujścia")
+Automapowanie(media/data-flow/automap.png "obiektu sink") ![automapowania]ujścia
 
 ## <a name="transforming-drifted-columns"></a>Przekształcanie kolumn z dryfem
 
 Gdy przepływ danych ma przelany kolumny, możesz uzyskać do nich dostęp przy użyciu następujących metod:
 
-* Użyj wyrażeń `byName` i, aby jawnie odwoływać się do kolumny według nazwy lub numeru pozycji. `byPosition`
+* Użyj wyrażeń `byPosition` i `byName`, aby jawnie odwoływać się do kolumny według nazwy lub numeru pozycji.
 * Dodaj wzorzec kolumny w kolumnie pochodnej lub transformację agregacji, aby dopasować ją do dowolnej kombinacji nazwy, strumienia, pozycji lub typu
 * Dodaj mapowanie oparte na regułach w transformację SELECT lub ujścia, aby dopasować kolumny przeznaczone do aliasów kolumn za pośrednictwem wzorca
 
@@ -62,11 +62,11 @@ Aby uzyskać więcej informacji na temat implementowania wzorców kolumn, zobacz
 
 Aby jawnie odwoływać się do kolumn z dryfem, można szybko generować mapowania dla tych kolumn za pośrednictwem szybkiej akcji podglądu danych. Gdy [tryb debugowania](concepts-data-flow-debug-mode.md) jest włączony, przejdź do karty Podgląd danych, a następnie kliknij przycisk **Odśwież** , aby pobrać Podgląd danych. Jeśli Fabryka danych wykryje, że istnieją kolumny mające Przedziały, można kliknąć pozycję **Mapuj** i wygenerować kolumnę pochodną, która pozwala na odwoływanie się do wszystkich kolumn w widoku schematu podrzędnych.
 
-![Przedryfowanie mapy](media/data-flow/mapdrifted1.png "Przedryfowanie mapy")
+![Mapowanie]przemapowanej(media/data-flow/mapdrifted1.png "mapy")
 
 W wygenerowanej transformacji kolumn pochodnych każda przeprowadzona kolumna jest mapowana na wykrytą nazwę i typ danych. W powyższym podglądzie danych kolumna "movieId" jest wykryta jako liczba całkowita. Po kliknięciu **mapowanej mapy** movieId jest zdefiniowany w kolumnie pochodnej jako `toInteger(byName('movieId'))` i uwzględniony w widokach schematu w transformacjach podrzędnych.
 
-![Przedryfowanie mapy](media/data-flow/mapdrifted2.png "Przedryfowanie mapy")
+![Mapowanie]przemapowanej(media/data-flow/mapdrifted2.png "mapy")
 
 ## <a name="next-steps"></a>Następne kroki
 W [języku wyrażeń przepływu danych](data-flow-expression-functions.md)znajdziesz dodatkowe możliwości dla wzorców kolumn i dryfu schematu, w tym "byName" i "byPosition".

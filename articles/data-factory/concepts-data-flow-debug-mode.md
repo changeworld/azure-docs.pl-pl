@@ -7,26 +7,26 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 925e52f9f62860d8cd0951b9e72af09cbb7800fc
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801706"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027803"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapowanie trybu debugowania przepływu danych
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-## <a name="overview"></a>Omówienie
+
+## <a name="overview"></a>Przegląd
 
 Tryb debugowania Azure Data Factory mapowania przepływu danych pozwala interaktywnie monitorować transformację kształtu danych podczas kompilowania i debugowania przepływów danych. Sesja debugowania może być używana zarówno w sesjach projektu przepływu danych, jak i podczas wykonywania debugowania przez potok przepływów danych. Aby włączyć tryb debugowania, użyj przycisku "Debugowanie przepływu danych" w górnej części powierzchni projektowej.
 
-![Suwak debugowania](media/data-flow/debugbutton.png "Suwak debugowania")
+(media/data-flow/debugbutton.png "Suwak") debugowania ![suwaka debugowania]
 
-Po włączeniu suwaka zostanie wyświetlony monit z pytaniem o wybór konfiguracji środowiska Integration Runtime, która ma być używana. Jeśli wybrano AutoResolveIntegrationRuntime, klaster zawierający osiem rdzeni obliczeń ogólnych z 60-minutowym czasem na żywo zostanie przypadany. Aby uzyskać więcej informacji na temat środowisk integracji przepływu danych, zobacz [wydajność przepływu danych](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime).
+Po włączeniu suwaka zostanie wyświetlony monit z pytaniem o wybór konfiguracji środowiska Integration Runtime, która ma być używana. Jeśli wybrano AutoResolveIntegrationRuntime, klaster zawierający osiem rdzeni obliczeń ogólnych z 60-minutowym czasem na żywo zostanie przypadany. Aby uzyskać więcej informacji na temat środowisk integracji przepływu danych, zobacz [wydajność przepływu danych](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime).
 
-![Debuguj wybór IR](media/data-flow/debugbutton2.png "Debuguj wybór IR")
+![Debuguj wybór środowiska IR](media/data-flow/debugbutton2.png "debugowanie zaznaczenia IR")
 
 Gdy tryb debugowania jest włączony, będziesz interaktywnie kompilować przepływ danych przy użyciu aktywnego klastra Spark. Sesja zostanie zamknięta po wyłączeniu debugowania w Azure Data Factory. Należy zwrócić uwagę na opłaty godzinowe naliczane przez Azure Databricks w czasie, gdy sesja debugowania jest włączona.
 
@@ -42,17 +42,17 @@ Po zakończeniu debugowania należy wyłączyć przełącznik debugowania, aby k
 
 Ustawienia debugowania można edytować, klikając pozycję "ustawienia debugowania" na pasku narzędzi kanwy przepływu danych. W tym miejscu możesz wybrać limit wierszy lub źródło pliku do użycia dla każdego z przekształceń źródłowych. Limity wierszy w tym ustawieniu są tylko dla bieżącej sesji debugowania. Możesz również wybrać połączoną usługę, która ma być używana dla źródła magazynu danych SQL. 
 
-![Ustawienia debugowania](media/data-flow/debug-settings.png "Ustawienia debugowania")
+![](media/data-flow/debug-settings.png "Ustawienia") debugowania ustawienia debugowania
 
 Jeśli masz parametry w przepływie danych lub w dowolnym z nich, do których istnieją odwołania, możesz określić wartości, które mają być używane podczas debugowania, wybierając kartę **Parametry** .
 
-![Parametry ustawień debugowania](media/data-flow/debug-settings2.png "Parametry ustawień debugowania")
+Parametry debugowania ![parametrów]ustawień(media/data-flow/debug-settings2.png "debugowania parametry")
 
 ## <a name="data-preview"></a>Podgląd danych
 
 Po zakończeniu debugowania na karcie Podgląd danych zostanie wystawiony dolny panel. Bez trybu debugowania w przepływie danych będzie zawierać tylko bieżące metadane z i z każdego przekształcenia na karcie Inspekcja. W podglądzie danych zostanie zbadana tylko liczba wierszy, które zostały ustawione jako limit w ustawieniach debugowania. Kliknij przycisk **Odśwież** , aby pobrać Podgląd danych.
 
-![Podgląd danych](media/data-flow/datapreview.png "Podgląd danych")
+(media/data-flow/datapreview.png "Podgląd danych") w ![wersji zapoznawczej]
 
 > [!NOTE]
 > Źródła plików ograniczają tylko te wiersze, które są widoczne, a nie odczytywane wiersze. W przypadku bardzo dużych zestawów danych zaleca się wykonanie małej części tego pliku i użycie jej do testowania. Można wybrać plik tymczasowy w ustawieniach debugowania dla każdego źródła, które jest typem zestawu danych.
@@ -67,15 +67,15 @@ Gdy Przekształć testy jednostkowe, istnieją lub przekształcenia wyszukiwania
 
 Gdy zobaczysz Podgląd danych, możesz wygenerować szybką transformację, aby rzutowanie, usunąć lub zmodyfikować kolumnę. Kliknij nagłówek kolumny, a następnie wybierz jedną z opcji na pasku narzędzi Podgląd danych.
 
-![Szybkie akcje](media/data-flow/quick-actions1.png "Szybkie akcje")
+![](media/data-flow/quick-actions1.png "Szybkie") akcje szybkich akcji
 
 Po wybraniu modyfikacji Podgląd danych zostanie natychmiast odświeżony. Kliknij przycisk **Potwierdź** w prawym górnym rogu, aby wygenerować nowe przekształcenie.
 
-![Szybkie akcje](media/data-flow/quick-actions2.png "Szybkie akcje")
+![](media/data-flow/quick-actions2.png "Szybkie") akcje szybkich akcji
 
 **Rzutowanie** i **Modify** wygenerują transformację kolumn pochodnych, a **usunięcie** spowoduje wygenerowanie transformacji SELECT.
 
-![Szybkie akcje](media/data-flow/quick-actions3.png "Szybkie akcje")
+![](media/data-flow/quick-actions3.png "Szybkie") akcje szybkich akcji
 
 > [!NOTE]
 > W przypadku edycji przepływu danych należy ponownie pobrać Podgląd danych przed dodaniem szybkiej transformacji.
@@ -84,7 +84,7 @@ Po wybraniu modyfikacji Podgląd danych zostanie natychmiast odświeżony. Klikn
 
 Wybranie kolumny na karcie Podgląd danych i kliknięcie pozycji **statystyki** na pasku narzędzi Podgląd danych spowoduje wyczyszczenie wykresu z prawej strony siatki danych z szczegółowymi statystykami dotyczącymi każdego pola. Azure Data Factory wykona Określanie na podstawie próbkowania danych, którego wykres ma być wyświetlany. Pola o dużej kardynalności będą domyślnie mieć wartości NULL/NOT NULL, podczas gdy kategorii i dane liczbowe o niskiej kardynalności będą wyświetlać wykresy słupkowe pokazujące częstotliwość wartości danych. Zobaczysz również maksymalną/len długość pól ciągów, minimalną/maksymalną wartość w polach liczbowych, standardowe dev, percentyly, liczniki i średnie.
 
-![Statystyki kolumn](media/data-flow/stats.png "Statystyki kolumn")
+(media/data-flow/stats.png "Statystyka") kolumn ![statystyk kolumn]
 
 ## <a name="next-steps"></a>Następne kroki
 

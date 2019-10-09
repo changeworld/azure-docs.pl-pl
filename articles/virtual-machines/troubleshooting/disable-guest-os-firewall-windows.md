@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086531"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030606"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Wyłączanie zapory systemu operacyjnego gościa na maszynie wirtualnej platformy Azure
 
@@ -33,7 +33,7 @@ Proces opisany w tym artykule jest przeznaczony do użycia jako obejście, aby m
 
 Jeśli maszyna wirtualna jest w trybie online i jest dostępna na innej maszynie wirtualnej w tej samej sieci wirtualnej, można wykonać te środki zaradcze przy użyciu innej maszyny wirtualnej.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Środki zaradcze 1: Niestandardowe rozszerzenie skryptu lub funkcja polecenia uruchamiania
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Ograniczenie 1: niestandardowe rozszerzenie skryptu lub funkcja uruchamiania polecenia
 
 Jeśli korzystasz z działającego agenta platformy Azure, możesz użyć [niestandardowego rozszerzenia skryptu](../extensions/custom-script-windows.md) lub funkcji [Run Commands](../windows/run-command.md) (tylko Menedżer zasobów VM), aby zdalnie uruchamiać następujące skrypty.
 
@@ -54,7 +54,7 @@ Jeśli korzystasz z działającego agenta platformy Azure, możesz użyć [niest
 >   ```
 >   Jednak zaraz po ponownym zastosowaniu zasad zostanie rozpoczęta Sesja zdalna. Nieodwracalna poprawka tego problemu polega na zmodyfikowaniu zasad, które są stosowane na tym komputerze.
 
-#### <a name="mitigation-2-remote-powershell"></a>Środki zaradcze 2: Zdalne środowisko PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Środki zaradcze 2: zdalne środowisko PowerShell
 
 1.  Połącz się z MASZYNą wirtualną znajdującą się w tej samej sieci wirtualnej co maszyna wirtualna, której nie można połączyć przy użyciu połączenia RDP.
 
@@ -72,7 +72,7 @@ Jeśli korzystasz z działającego agenta platformy Azure, możesz użyć [niest
 > [!Note]
 > Jeśli Zapora jest ustawiona za pomocą obiektu zasady grupy, ta metoda może nie zadziałać, ponieważ to polecenie zmienia tylko lokalne wpisy rejestru. Jeśli zasady są stosowane, ta zmiana zostanie zastąpiona. 
 
-#### <a name="mitigation-3-pstools-commands"></a>Środki zaradcze 3: Polecenia program PsTools
+#### <a name="mitigation-3-pstools-commands"></a>Środki zaradcze 3: program PsTools polecenia
 
 1.  Na maszynie wirtualnej Rozwiązywanie problemów Pobierz [program PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
@@ -86,13 +86,13 @@ Jeśli korzystasz z działającego agenta platformy Azure, możesz użyć [niest
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>Środki zaradcze 4: Rejestr zdalny 
+#### <a name="mitigation-4-remote-registry"></a>Łagodzenie 4: Rejestr zdalny 
 
 Wykonaj następujące kroki, aby użyć [rejestru zdalnego](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry).
 
-1.  Na maszynie wirtualnej Rozwiązywanie problemów Uruchom Edytor rejestru, a następnie przejdź do **pliku** > **Connect Network Registry**.
+1.  Na maszynie wirtualnej Rozwiązywanie problemów Uruchom Edytor rejestru, a następnie przejdź do **pliku** > **Połącz rejestr sieciowy**.
 
-2.  Otwórz gałąź \System *maszyny docelowej*i określ następujące wartości:
+2.  Otwórz gałąź \System *maszyny docelowej*i określ następujące wartości:
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -102,13 +102,13 @@ Wykonaj następujące kroki, aby użyć [rejestru zdalnego](https://support.micr
 
 3.  Uruchom ponownie usługę. Ponieważ nie można tego zrobić za pomocą rejestru zdalnego, należy użyć polecenia Usuń konsolę usługi.
 
-4.  Otwórz wystąpienie programu **Services. msc**.
+4.  Otwórz wystąpienie programu **Services. msc**.
 
 5.  Kliknij pozycję **usługi (lokalne)** .
 
 6.  Wybierz pozycję **Połącz z innym komputerem**.
 
-7.  Wprowadź **prywatny adres IP (DIP)**  maszyny wirtualnej problemu.
+7.  Wprowadź **prywatny adres IP (DIP)** maszyny wirtualnej problemu.
 
 8.  Uruchom ponownie lokalne zasady zapory.
 
@@ -118,9 +118,9 @@ Wykonaj następujące kroki, aby użyć [rejestru zdalnego](https://support.micr
 
 Jeśli masz sytuację, w której nie można nawiązać połączenia z maszyną wirtualną za pomocą żadnej metody, rozszerzenie niestandardowego skryptu zakończy się niepowodzeniem i będzie trzeba pracować w trybie OFFLINE, pracując bezpośrednio na dysku systemowym. W tym celu wykonaj następujące kroki:
 
-1.  [Dołącz dysk systemu do odzyskiwania maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Dołącz dysk systemowy do maszyny wirtualnej odzyskiwania](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania.
+2.  Uruchom Pulpit zdalny połączenie z maszyną wirtualną odzyskiwania.
 
 3.  Upewnij się, że dysk jest oflagowany jako online w konsoli Zarządzanie dyskami. Zanotuj literę dysku przypisaną do dołączonego dysku systemowego.
 
@@ -160,6 +160,6 @@ Jeśli masz sytuację, w której nie można nawiązać połączenia z maszyną w
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [Odłączanie dysku systemowego i ponowne utworzenie maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md).
+10. [Odłącz dysk systemowy i Utwórz ponownie maszynę wirtualną](troubleshoot-recovery-disks-portal-windows.md).
 
 11. Sprawdź, czy problem został rozwiązany.

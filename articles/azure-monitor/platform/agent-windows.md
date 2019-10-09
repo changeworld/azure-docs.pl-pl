@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6c8d25a9df49323866e99487ef6c648dede40ec4
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073975"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033958"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Podłącz komputery z systemem Windows do Azure Monitor
 
@@ -51,21 +51,25 @@ Przed zainstalowaniem agenta Log Analytics dla systemu Windows musisz mieć iden
 5. Skopiuj i wklej w ulubionym edytorze, **Identyfikator obszaru roboczego** i **klucz podstawowy**.    
    
 ## <a name="configure-agent-to-use-tls-12"></a>Konfigurowanie agenta do korzystania z protokołu TLS 1,2
-Aby skonfigurować użycie protokołu [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) do komunikacji między agentem systemu Windows a usługą log Analytics, można wykonać poniższe kroki, aby włączyć, zanim Agent zostanie zainstalowany na maszynie wirtualnej lub później.   
+Aby skonfigurować użycie protokołu [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) do komunikacji między agentem systemu Windows a usługą log Analytics, można wykonać poniższe kroki, aby włączyć, zanim Agent zostanie zainstalowany na maszynie wirtualnej lub później.
+
+>[!NOTE]
+>Jeśli konfigurujesz maszynę wirtualną z systemem Windows Server 2008 z dodatkiem SP2 x64 do korzystania z protokołu TLS 1,2, przed wykonaniem poniższych kroków należy najpierw zainstalować następującą [aktualizację obsługi podpisywania kodu SHA-2](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update) . 
+>
 
 1. Zlokalizuj następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Utwórz podklucz w obszarze **Protokoły** dla protokołu TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**
 3. Utwórz podklucz **klienta** w podkluczu wersji protokołu TLS 1,2 utworzonego wcześniej. Na przykład **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Client**.
 4. Utwórz następujące wartości DWORD w obszarze **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Client**:
 
-    * **Włączone** [Wartość = 1]
-    * **DisabledByDefault** [Wartość = 0]  
+    * **Włączone** [wartość = 1]
+    * **DisabledByDefault** [wartość = 0]  
 
 Skonfiguruj .NET Framework 4,6 lub nowszy, aby obsługiwać szyfrowanie Secure, tak jak domyślnie jest ono wyłączone. [Silne Kryptografia](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) korzysta z bezpieczniejszych protokołów sieciowych, takich jak TLS 1,2, i blokuje protokoły, które nie są bezpieczne. 
 
-1. Zlokalizuj następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**.  
+1. Zlokalizuj następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft @ no__t-1. NETFramework\v4.0.30319**.  
 2. Utwórz wartość DWORD **schusestrongcrypto we** w tym podkluczu o wartości **1**.  
-3. Zlokalizuj następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**.  
+3. Zlokalizuj następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft @ no__t-1. NETFramework\v4.0.30319**.  
 4. Utwórz wartość DWORD **schusestrongcrypto we** w tym podkluczu o wartości **1**. 
 5. Aby ustawienia zaczęły obowiązywać, należy ponownie uruchomić system. 
 
@@ -97,7 +101,7 @@ W poniższej tabeli przedstawiono określone parametry obsługiwane przez Instal
 
 |Opcje specyficzne dla MMA                   |Uwagi         |
 |---------------------------------------|--------------|
-| NOAPM=1                               | Opcjonalny parametr. Instaluje agenta programu bez programu .NET Application Performance Monitoring.|   
+| PARAMETR NOAPM = 1                               | Opcjonalny parametr. Instaluje agenta programu bez programu .NET Application Performance Monitoring.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = Skonfiguruj agenta do raportowania do obszaru roboczego                |
 |OPINSIGHTS_WORKSPACE_ID                | Identyfikator obszaru roboczego (GUID) dla obszaru roboczego do dodania                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Klucz obszaru roboczego używany do początkowego uwierzytelniania przy użyciu obszaru roboczego |
@@ -106,7 +110,7 @@ W poniższej tabeli przedstawiono określone parametry obsługiwane przez Instal
 |OPINSIGHTS_PROXY_USERNAME               | Nazwa użytkownika, aby uzyskać dostęp do uwierzytelnionego serwera proxy |
 |OPINSIGHTS_PROXY_PASSWORD               | Hasło dostępu do uwierzytelnionego serwera proxy |
 
-1. Do wyodrębnienia plików instalacyjnych agenta z wiersza `MMASetup-<platform>.exe /c` polecenia z podwyższonym poziomem uprawnień i pojawi się monit o ścieżkę, do której mają zostać wyodrębnione pliki.  Alternatywnie możesz określić ścieżkę, przekazując argumenty `MMASetup-<platform>.exe /c /t:<Full Path>`.  
+1. Aby wyodrębnić pliki instalacyjne agenta, w wierszu polecenia z podwyższonym poziomem uprawnień `MMASetup-<platform>.exe /c` i zostanie wyświetlony monit o podanie ścieżki, do której zostaną wyodrębnione pliki.  Alternatywnie możesz określić ścieżkę, przekazując argumenty `MMASetup-<platform>.exe /c /t:<Full Path>`.  
 2. Aby zainstalować agenta w trybie dyskretnym i skonfigurować go do raportowania do obszaru roboczego w chmurze komercyjnej platformy Azure, z folderu wyodrębnione pliki instalacyjne do wpisania: 
    
      ```dos
@@ -125,7 +129,7 @@ W poniższej tabeli przedstawiono określone parametry obsługiwane przez Instal
 
 Aby zainstalować agenta za pomocą Azure Automation DSC, można użyć następującego przykładowego skryptu.   Jeśli nie masz konta usługi Automation, zobacz artykuł Wprowadzenie do [Azure Automation](/azure/automation/) , aby poznać wymagania i kroki związane z tworzeniem konta usługi Automation wymaganego przed użyciem usługi Automation DSC.  Jeśli nie znasz Automation DSC, zapoznaj [się z tematem wprowadzenie do Automation DSC](../../automation/automation-dsc-getting-started.md).
 
-W poniższym przykładzie jest instalowany Agent 64-bitowy identyfikowany przez `URI` wartość. Możesz również użyć wersji 32-bitowej, zastępując wartość identyfikatora URI. Identyfikatory URI obu wersji są następujące:
+W poniższym przykładzie jest instalowany Agent 64-bitowy identyfikowany przez wartość `URI`. Możesz również użyć wersji 32-bitowej, zastępując wartość identyfikatora URI. Identyfikatory URI obu wersji są następujące:
 
 - Windows 64-bit Agent- https://go.microsoft.com/fwlink/?LinkId=828603
 - Windows 32-bit Agent- https://go.microsoft.com/fwlink/?LinkId=828604
@@ -134,11 +138,11 @@ W poniższym przykładzie jest instalowany Agent 64-bitowy identyfikowany przez 
 >[!NOTE]
 >Ta procedura i przykład skryptu nie obsługują uaktualniania agenta już wdrożonego na komputerze z systemem Windows.
 
-32-bitowe i 64-bitowe wersje pakietu agenta mają różne kody produktów i wydane nowe wersje mają również unikatową wartość.  Kod produktu jest identyfikatorem GUID, który jest identyfikatorem podmiotu zabezpieczeń aplikacji lub produktu i jest reprezentowany przez właściwość Instalator Windows **ProductCode** .  Wartość w skrypcie **MMAgent. ps1** musi odpowiadać kodowi produktu z pakietu Instalatora agenta 32-bitowego lub 64-bitowego. `ProductId`
+32-bitowe i 64-bitowe wersje pakietu agenta mają różne kody produktów i wydane nowe wersje mają również unikatową wartość.  Kod produktu jest identyfikatorem GUID, który jest identyfikatorem podmiotu zabezpieczeń aplikacji lub produktu i jest reprezentowany przez właściwość Instalator Windows **ProductCode** .  Wartość `ProductId` w skrypcie **MMAgent. ps1** musi być zgodna z kodem produktu z pakietu instalatora agenta 32-bitowego lub 64-bitowego.
 
 Aby bezpośrednio pobrać kod produktu z pakietu instalacji agenta, można użyć programu Orca. exe ze [składników Windows SDK, aby Instalator Windows deweloperów](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , którzy są składnikiem zestawu Windows Software Development Kit lub przy użyciu programu PowerShell po [ Przykładowy skrypt](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) pisany przez firmę Microsoft (MVP).  W obu przypadkach najpierw należy wyodrębnić plik **pliku MOMAgent. msi** z pakietu instalacyjnego MMASetup.  Jest to pokazane wcześniej w pierwszym kroku w sekcji [Instalowanie agenta przy użyciu wiersza polecenia](#install-the-agent-using-the-command-line).  
 
-1. Zaimportuj moduł xPSDesiredStateConfiguration DSC [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) z do Azure Automation.  
+1. Zaimportuj moduł xPSDesiredStateConfiguration DSC z [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
 2.  Utwórz Azure Automation zasobów zmiennych dla *OPSINSIGHTS_WS_ID* i *OPSINSIGHTS_WS_KEY*. Ustaw wartość *OPSINSIGHTS_WS_ID* na identyfikator obszaru roboczego log Analytics i ustaw wartość *OPSINSIGHTS_WS_KEY* na klucz podstawowy obszaru roboczego.
 3.  Skopiuj skrypt i Zapisz go jako MMAgent. ps1.
 
@@ -178,7 +182,7 @@ Aby bezpośrednio pobrać kod produktu z pakietu instalacji agenta, można uży�
 
     ```
 
-4. `ProductId` Zaktualizuj wartość w skrypcie o kod produktu wyodrębniony z najnowszej wersji pakietu instalacji agenta przy użyciu zalecanych wcześniej metod. 
+4. Zaktualizuj wartość `ProductId` w skrypcie o kod produktu wyodrębniony z najnowszej wersji pakietu instalacji agenta przy użyciu zalecanych wcześniej metod. 
 5. [Zaimportuj skrypt konfiguracyjny MMAgent. ps1](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) do konta usługi Automation. 
 5. [Przypisz komputer lub węzeł systemu Windows](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) do konfiguracji. W ciągu 15 minut węzeł sprawdza swoją konfigurację, a agent jest wypychany do węzła.
 
@@ -186,7 +190,7 @@ Aby bezpośrednio pobrać kod produktu z pakietu instalacji agenta, można uży�
 
 Po zakończeniu instalacji agenta Weryfikowanie jego pomyślnego połączenia i raportowanie można wykonać na dwa sposoby.  
 
-W **Panelu sterowania** na komputerze znajdź element **Microsoft Monitoring Agent**.  Po jego wybraniu na karcie **Azure Log Analytics** agent powinien wyświetlić następujący komunikat: **Microsoft Monitoring Agent pomyślnie nawiązał połączenie z usługą Microsoft Operations Management Suite.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+W **Panelu sterowania** na komputerze znajdź element **Microsoft Monitoring Agent**.  Wybierz go i na karcie **log Analytics Azure** Agent powinien wyświetlić komunikat z informacją: **Microsoft Monitoring Agent pomyślnie nawiązał połączenie z usługą Microsoft Operations Management Suite.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 Możesz również wykonać prostą kwerendę dziennika w Azure Portal.  
 
@@ -204,6 +208,6 @@ W zwróconych wynikach wyszukiwania powinny być widoczne rekordy pulsu dla komp
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się z tematem [Zarządzanie agentem log Analytics dla systemów Windows i Linux oraz](agent-manage.md) ich obsługiwanie, aby dowiedzieć się, jak ponownie skonfigurować, uaktualnić lub usunąć agenta z maszyny wirtualnej.
+- Zapoznaj się z tematem [Zarządzanie agentem log Analytics dla systemów Windows i Linux oraz ich obsługiwanie](agent-manage.md) , aby dowiedzieć się, jak ponownie skonfigurować, uaktualnić lub usunąć agenta z maszyny wirtualnej.
 
 - Sprawdź [Rozwiązywanie problemów z agentem systemu Windows,](agent-windows-troubleshoot.md) Jeśli wystąpią problemy podczas instalowania agenta lub zarządzania nim.

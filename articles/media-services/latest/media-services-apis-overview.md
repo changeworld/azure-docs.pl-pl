@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308338"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025638"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Programowanie przy użyciu interfejsów API Media Services v3
 
@@ -32,7 +32,7 @@ Aby uzyskać autoryzację w celu uzyskania dostępu do zasobów Media Services i
 * **Uwierzytelnianie jednostki usługi** — służy do uwierzytelniania usługi (na przykład: aplikacje sieci Web, aplikacje funkcji, Aplikacje logiki, interfejs API i mikrousługi). Aplikacje, które często używają tej metody uwierzytelniania, to aplikacje, które uruchamiają usługi demonów, usługi warstwy środkowej lub zaplanowane zadania. Na przykład w przypadku aplikacji sieci Web zawsze powinna być warstwą średnią, która łączy się z Media Services za pomocą nazwy głównej usługi.
 * **Uwierzytelnianie użytkownika** — służy do uwierzytelniania osoby korzystającej z aplikacji w celu współdziałania z zasobami Media Services. Aplikacja interaktywna powinna najpierw monitować użytkownika o podanie poświadczeń użytkownika. Przykładem jest aplikacja konsoli zarządzania używana przez autoryzowanych użytkowników do monitorowania zadań kodowania lub przesyłania strumieniowego na żywo.
 
-Interfejs API Media Services wymaga, aby użytkownik lub aplikacja dokonująca żądań interfejsu API REST mieli dostęp do zasobu konta Media Services i korzystała z roli **współautor** lub **właściciela** . Dostęp do interfejsu API można uzyskać przy użyciu roli **czytelnik** , ale będą dostępne tylko operacje **Get** lub **list**   . Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach dla kont Media Services](rbac-overview.md).
+Interfejs API Media Services wymaga, aby użytkownik lub aplikacja dokonująca żądań interfejsu API REST mieli dostęp do zasobu konta Media Services i korzystała z roli **współautor** lub **właściciela** . Dostęp do interfejsu API można uzyskać przy użyciu roli **czytelnik** , ale będą dostępne tylko operacje **Get** lub **list** . Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach dla kont Media Services](rbac-overview.md).
 
 Zamiast tworzyć jednostkę usługi, należy rozważyć użycie zarządzanych tożsamości dla zasobów platformy Azure w celu uzyskania dostępu do interfejsu API Media Services za pośrednictwem Azure Resource Manager. Aby dowiedzieć się więcej na temat tożsamości zarządzanych dla zasobów platformy Azure, zobacz [co to jest tożsamość zarządzana dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -75,7 +75,7 @@ Nazwy zasobów w usłudze Azure Media Services w wersji 3 (na przykład Zasoby, 
 
 Nazwy zasobów usługi Media Services nie mogą zawierać znaków „<”, „>”, „%”, „&”, „:”, „&#92;”, „?”, „/”, „*”, „+”, „.”, pojedynczych cudzysłowów ani żadnych znaków sterujących. Wszystkie inne znaki są dozwolone. Maksymalna długość nazwy zasobu to 260 znaków. 
 
-Aby uzyskać więcej informacji na temat nazewnictwa w usłudze Azure Resource Manager zobacz: [Wymagania dotyczące nazewnictwa](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) i [Konwencje nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Aby uzyskać więcej informacji na temat nazewnictwa w usłudze Azure Resource Manager, zobacz [Wymagania w zakresie nazewnictwa](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) i [Konwencje nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Nazwy plików/obiektów BLOB w obrębie elementu zawartości
 
@@ -83,7 +83,7 @@ Nazwy plików/obiektów BLOB w obrębie elementu zawartości muszą spełniać z
 
 ## <a name="long-running-operations"></a>Długotrwałe operacje
 
-Operacje oznaczone za pomocą `x-ms-long-running-operation` w Azure Media Services [pliku struktury Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) są długotrwałymi operacjami. 
+Operacje oznaczone `x-ms-long-running-operation` w [plikach struktury Azure Media Services Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) są długotrwałymi operacjami. 
 
 Aby uzyskać szczegółowe informacje o sposobie śledzenia asynchronicznych operacji platformy Azure, zobacz [asynchroniczne operacje](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
@@ -95,7 +95,7 @@ Media Services ma następujące długotrwałe operacje:
 * [Uruchom wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents/start)
 * [Zatrzymaj LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents/stop)
 
-  Użyj parametru `removeOutputsOnStop` , aby usunąć wszystkie skojarzone wyjście na żywo podczas zatrzymywania zdarzenia.  
+  Użyj parametru `removeOutputsOnStop`, aby usunąć wszystkie skojarzone wyjście na żywo podczas zatrzymywania zdarzenia.  
 * [Resetuj LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents/reset)
 * [Utwórz LiveOutput](https://docs.microsoft.com/rest/api/media/liveevents/create)
 * [Usuń LiveOutput](https://docs.microsoft.com/rest/api/media/liveevents/delete)
@@ -115,7 +115,7 @@ Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na ży
 > [!NOTE]
 > Nie ma gwarancji, że zestawy SDK Azure Media Services V3 są bezpieczne wątkowo. Podczas tworzenia aplikacji wielowątkowej należy dodać własną logikę synchronizacji wątków, aby chronić klienta lub użyć nowego obiektu AzureMediaServicesClient na wątek. Należy również zachować ostrożność w przypadku problemów z wielowątkowością wprowadzanych przez obiekty opcjonalne dostarczone przez kod klientowi (na przykład wystąpienie HttpClient w programie .NET).
 
-|SDK|Tematy pomocy|
+|SDK|Informacje ogólne|
 |---|---|
 |[Zestaw SDK platformy .NET](https://aka.ms/ams-v3-dotnet-sdk)|[Dokumentacja platformy .NET](https://aka.ms/ams-v3-dotnet-ref)|
 |[Zestaw SDK Java](https://aka.ms/ams-v3-java-sdk)|[Dokumentacja języka Java](https://aka.ms/ams-v3-java-ref)|
@@ -129,7 +129,7 @@ Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na ży
 - [EventGrid .NET SDK zawierający zdarzenia usługi Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definicje zdarzeń Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
 
-## <a name="azure-media-services-explorer"></a>Azure Media Services Explorer
+## <a name="azure-media-services-explorer"></a>Eksplorator usługi Azure Media Services
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) to narzędzie dostępne dla użytkowników systemu Windows, którzy chcą dowiedzieć się więcej o usłudze Media Services. Narzędzie AMSE to aplikacja Winforms/C# obsługująca przekazywanie, pobieranie, kodowanie oraz przesyłanie strumieniowe wideo na żądanie i na żywo zawartości za pomocą usługi Media Services. Narzędzie AMSE jest przeznaczone dla klientów, którzy chcą przetestować usługę Media Services bez konieczności pisania jakiegokolwiek kodu. Kod AMSE jest dostarczany jako zasób dla klientów, którzy chcą tworzyć aplikacje za pomocą usługi Media Services.
 

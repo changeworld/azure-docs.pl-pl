@@ -1,6 +1,6 @@
 ---
-title: Dodawanie powiadomień wypychanych do aplikacji systemu Android dzięki funkcji Mobile Apps | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Mobile Apps do wysyłania powiadomień wypychanych do aplikacji systemu Android.
+title: Dodawanie powiadomień wypychanych do aplikacji systemu Android za pomocą Mobile Apps | Microsoft Docs
+description: Dowiedz się, jak wysyłać powiadomienia wypychane do aplikacji systemu Android za pomocą Mobile Apps.
 services: app-service\mobile
 documentationcenter: android
 manager: crdun
@@ -14,37 +14,37 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 529aa8327d31cdda044178b6d03035b602744db2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3185447e4e465fe49849bb4280f2af9bbe852e19
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443657"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027688"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Dodawanie powiadomień wypychanych do aplikacji systemu Android
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-push) już dziś.
->
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W ramach tego samouczka, możesz dodać powiadomienia wypychane do [Android — szybki start] projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
+W tym samouczku dowiesz się, jak dodać powiadomienia wypychane do projektu [Android — szybki start] , aby Powiadomienie wypychane było wysyłane do urządzenia za każdym razem, gdy rekord zostanie wstawiony.
 
-Jeśli nie używasz projektu serwera pobranego — szybki start, należy pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Jeśli nie używasz pobranego projektu szybkiego startu serwera, potrzebujesz pakietu rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz temat [współpraca z zestawem SDK serwera zaplecza platformy .NET dla platformy Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Potrzebne są następujące elementy:
 
-* Środowisko IDE, w zależności od projektu zaplecza:
+* IDE, w zależności od zaplecza projektu:
 
-  * [Program android Studio](https://developer.android.com/sdk/index.html) Jeśli ta aplikacja ma zaplecza Node.js.
-  * [Program Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) lub nowszy, jeśli ta aplikacja ma zaplecza programu Microsoft .NET.
-* System android 2.3 lub nowszy, Google Repository w wersji 27 lub nowszej i sklepu Google Play Services 9.0.2 lub nowsze dla usługi Firebase Cloud Messaging.
-* Wykonaj [Android — szybki start].
+  * [Android Studio](https://developer.android.com/sdk/index.html) , jeśli ta aplikacja ma zaplecze Node. js.
+  * [Program Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) lub nowszy, jeśli ta aplikacja ma Microsoft .NET zapleczem.
+* System Android 2,3 lub nowszy, poprawka do usługi Google Repository 27 lub nowsza, a Usługi Google Play 9.0.2 lub nowsza dla usługi Firebase Cloud Messaging.
+* Zakończ pracę z [Android — szybki start].
 
 ## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>Tworzenie projektu obsługującego usługę Firebase Cloud Messaging
 
@@ -54,27 +54,27 @@ Potrzebne są następujące elementy:
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="configure-azure-to-send-push-notifications"></a>Konfigurowanie platformy Azure, jak wysyłać powiadomienia wypychane
+## <a name="configure-azure-to-send-push-notifications"></a>Konfigurowanie platformy Azure do wysyłania powiadomień wypychanych
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a name="enable-push-notifications-for-the-server-project"></a>Włącz powiadomienia wypychane dla server project
+## <a name="enable-push-notifications-for-the-server-project"></a>Włącz powiadomienia wypychane dla projektu serwera
 
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-google](../../includes/app-service-mobile-dotnet-backend-configure-push-google.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>Dodawanie powiadomień wypychanych do aplikacji
 
-W tej sekcji należy zaktualizować klienta aplikacji systemu Android do obsługi powiadomień wypychanych.
+Ta sekcja umożliwia zaktualizowanie aplikacji klienckiej systemu Android w celu obsługi powiadomień wypychanych.
 
-### <a name="verify-android-sdk-version"></a>Sprawdź wersję zestawu SDK systemu Android
+### <a name="verify-android-sdk-version"></a>Sprawdź wersję Android SDK
 
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-Następnym krokiem jest do zainstalowania usług Google Play. Usługi firebase Cloud Messaging ma niektóre minimalne interfejsu API poziomu wymagań dotyczących tworzenia i testowania, która **minSdkVersion** musi odpowiadać właściwości w manifeście.
+Następnym krokiem jest zainstalowanie Google Play usług. Obsługa komunikatów w chmurze Firebase ma pewne minimalne wymagania dotyczące poziomu interfejsu API na potrzeby tworzenia i testowania, które Właściwość **minSdkVersion** w manifeście musi być zgodna.
 
-Jeśli testujesz starsze urządzenia, zapoznaj się z [Dodawanie usługi Firebase do projektu systemu Android] ustalenie, jak mała można ustawić tę wartość i odpowiednio ją ustawić.
+Jeśli testujesz się przy użyciu starszego urządzenia, zapoznaj się z tematem [Dodawanie Firebase do projektu systemu Android] , aby określić, jak niski można ustawić tę wartość i ustawić ją odpowiednio.
 
-### <a name="add-firebase-cloud-messaging-to-the-project"></a>Dodawanie usługi Firebase Cloud Messaging dla projektu
+### <a name="add-firebase-cloud-messaging-to-the-project"></a>Dodawanie obsługi komunikatów w chmurze Firebase do projektu
 
 [!INCLUDE [Add Firebase Cloud Messaging](../../includes/app-service-mobile-add-firebase-cloud-messaging.md)]
 
@@ -82,19 +82,19 @@ Jeśli testujesz starsze urządzenia, zapoznaj się z [Dodawanie usługi Firebas
 
 [!INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
 
-## <a name="test-the-app-against-the-published-mobile-service"></a>Testowanie aplikacji opublikowanej usługi mobilnej
+## <a name="test-the-app-against-the-published-mobile-service"></a>Testowanie aplikacji względem opublikowanej usługi mobilnej
 
-Można przetestować aplikację, dołączając bezpośrednio telefonie z systemem Android za pomocą kabla USB lub za pomocą urządzenia wirtualnego w emulatorze.
+Możesz przetestować aplikację przez bezpośrednie dołączenie telefonu z systemem Android przy użyciu kabla USB lub przy użyciu urządzenia wirtualnego w emulatorze.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, w tym samouczku została zakończona, należy wziąć pod uwagę przejściem do jednej z następujących samouczków:
+Teraz po ukończeniu tego samouczka Rozważ przejście do jednego z następujących samouczków:
 
 * [Dodawanie uwierzytelniania do aplikacji systemu Android](app-service-mobile-android-get-started-users.md).
-  Dowiedz się, jak dodać uwierzytelnianie do projektu quickstart listy zadań na systemu Android przy użyciu dostawcy tożsamości obsługiwanych.
-* [Włączanie synchronizacji offline dla aplikacji systemu Android](app-service-mobile-android-get-started-offline-data.md).
-  Dowiedz się, jak dodać obsługę trybu offline do aplikacji przy użyciu zaplecze funkcji Mobile Apps. Synchronizacja w trybie offline, użytkownicy mogą wchodzić w interakcje z aplikacją mobilną&mdash;wyświetlanie, dodawanie lub modyfikowanie danych&mdash;nawet w przypadku braku połączenia sieciowego.
+  Dowiedz się, jak dodać uwierzytelnianie do projektu szybkiego startu todolist w systemie Android przy użyciu obsługiwanego dostawcy tożsamości.
+* [Włącz synchronizację w trybie offline dla aplikacji systemu Android](app-service-mobile-android-get-started-offline-data.md).
+  Dowiedz się, jak dodać obsługę offline do aplikacji przy użyciu zaplecza Mobile Apps. Dzięki synchronizacji w trybie offline użytkownicy mogą korzystać z aplikacji mobilnej @ no__t-0viewing, dodając lub modyfikując dane @ no__t-1even, gdy nie ma połączenia sieciowego.
 
 <!-- URLs -->
 [Android — szybki start]: app-service-mobile-android-get-started.md
-[Dodawanie usługi Firebase do projektu systemu Android]: https://firebase.google.com/docs/android/setup
+[Dodawanie Firebase do projektu systemu Android]: https://firebase.google.com/docs/android/setup

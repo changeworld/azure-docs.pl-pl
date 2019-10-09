@@ -8,20 +8,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/07/2019
 ms.author: makromer
-ms.openlocfilehash: 7db410e97046b6d251eb73e754e40eab09a2ee64
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.date: 10/07/2019
+ms.openlocfilehash: cbfa1acac34187263f8c4203e41bbe61d7e4c745
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981799"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030512"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktywność przepływu danych w Azure Data Factory
 
 Użyj działania przepływu danych do przekształcania i przenoszenia danych za pośrednictwem mapowania przepływów danych. Jeśli dopiero zaczynasz przepływy danych, zobacz [Mapowanie przepływu danych — omówienie](concepts-data-flow-overview.md)
-
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 ## <a name="syntax"></a>Składnia
 
@@ -56,7 +54,7 @@ Właściwość | Opis | Dozwolone wartości | Wymagane
 przepływu danych | Odwołanie do przepływu danych, który jest wykonywany | DataFlowReference | Tak
 integrationRuntime | Środowisko obliczeniowe, w którym działa przepływ danych | IntegrationRuntimeReference | Tak
 przemieszczanie. linkedService | Jeśli używasz źródła lub ujścia usługi SQL DW, konto magazynu używane na potrzeby przemieszczania podstawowego | LinkedServiceReference | Tylko wtedy, gdy przepływ danych odczytuje lub zapisuje dane do magazynu SQL
-przemieszczanie. folderPath | Jeśli używasz źródła lub ujścia usługi SQL DW, ścieżka folderu w ramach konta usługi BLOB Storage używanego do przemieszczania podstawowego | String | Tylko wtedy, gdy przepływ danych odczytuje lub zapisuje dane do magazynu SQL
+przemieszczanie. folderPath | Jeśli używasz źródła lub ujścia usługi SQL DW, ścieżka folderu w ramach konta usługi BLOB Storage używanego do przemieszczania podstawowego | Ciąg | Tylko wtedy, gdy przepływ danych odczytuje lub zapisuje dane do magazynu SQL
 
 (media/data-flow/activity-data-flow.png "Przepływ danych") wykonywania ![przepływu danych]
 
@@ -105,10 +103,10 @@ Działanie przepływu danych ma specjalne środowisko monitorowania, w którym m
 
 Zobacz aktywność przepływu sterowania obsługiwaną przez Data Factory: 
 
-- [Działanie if Condition](control-flow-if-condition-activity.md)
-- [Działanie wykonywania potoku](control-flow-execute-pipeline-activity.md)
+- [Działanie If Condition](control-flow-if-condition-activity.md)
+- [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
-- [Działanie pobierania metadanych](control-flow-get-metadata-activity.md)
+- [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 - [Aktywność sieci Web](control-flow-web-activity.md)
-- [Do działania do](control-flow-until-activity.md)
+- [Działanie Until](control-flow-until-activity.md)

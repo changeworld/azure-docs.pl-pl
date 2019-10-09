@@ -14,22 +14,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 7455ad33660a0af004a3a3ad982e929fc4b3031e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e3e82c971fee7f7dd95e6f9ef72631e8e82ebe7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851117"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025264"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Dodawanie powiadomień wypychanych do aplikacji systemu Windows
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center jest inwestować w nowe i zintegrowane usługi centralne dla opracowywania aplikacji mobilnych. Deweloperzy mogą używaćusług kompilowania, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi wypychania. Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze. Wyewidencjonuj [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push) dzisiaj.
->
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym samouczku dowiesz się, jak dodać powiadomienia wypychane do projektu [szybkiego startu systemu Windows](app-service-mobile-windows-store-dotnet-get-started.md) , aby Powiadomienie wypychane było wysyłane do urządzenia za każdym razem, gdy rekord zostanie wstawiony.
 
@@ -43,11 +43,11 @@ Jeśli nie używasz pobranego projektu szybkiego startu serwera, będzie potrzeb
 
 Musisz przesłać aplikację do Microsoft Store, a następnie skonfigurować projekt serwera do integracji z [usługami powiadomień systemu Windows (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) w celu wysyłania wypychania.
 
-1. W programie Visual Studio Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt aplikacji platformy UWP, kliknij pozycję **Zapisz** > **Skojarz aplikację ze sklepem...** .
+1. W programie Visual Studio Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt aplikacji platformy UWP, kliknij pozycję **przechowuj** > **Skojarz aplikację ze sklepem...** .
 
     ![Skojarz aplikację z Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
-2. W Kreatorze kliknij przycisk **dalej**, zaloguj się przy użyciu konto Microsoft, wpisz nazwę aplikacji w polu **Zarezerwuj nową nazwę aplikacji**, a następnie kliknij pozycję Zarezerwuj.
+2. W Kreatorze kliknij przycisk **dalej**, zaloguj się przy użyciu konto Microsoft, wpisz nazwę aplikacji w polu **Zarezerwuj nową nazwę aplikacji**, a następnie kliknij pozycję **Zarezerwuj**.
 3. Po pomyślnym utworzeniu rejestracji aplikacji wybierz nową nazwę aplikacji, kliknij przycisk **dalej**, a następnie kliknij pozycję **Skojarz**. Spowoduje to dodanie wymaganych informacji dotyczących rejestracji Microsoft Store do manifestu aplikacji.
 4. Przejdź do [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/) i zaloguj się przy użyciu konto Microsoft. Kliknij aplikację ze sklepu Windows skojarzoną w poprzednim kroku.
 5. Na stronie Rejestracja Zanotuj wartość w obszarze wpisy **tajne aplikacji** i **Identyfikator SID pakietu**, który będzie dalej używany do konfigurowania zaplecza aplikacji mobilnej.
@@ -65,7 +65,7 @@ Musisz przesłać aplikację do Microsoft Store, a następnie skonfigurować pro
 
 ## <a id="update-service"></a>Aktualizowanie serwera w celu wysyłania powiadomień wypychanych
 
-Wykonaj poniższą procedurę, która odpowiada typowi&mdash;projektu zaplecza [platformy .NET](#dotnet) lub [zaplecza Node. js](#nodejs).
+Wykonaj poniższą procedurę, która pasuje do typu projektu zaplecza @ no__t-0either [.NET](#dotnet) lub zaplecza [Node. js](#nodejs).
 
 ### <a name="dotnet"></a>Projekt zaplecza .NET
 
@@ -171,7 +171,7 @@ Wykonaj poniższą procedurę, która odpowiada typowi&mdash;projektu zaplecza [
 ## <a id="update-app"></a>Dodawanie powiadomień wypychanych do aplikacji
 Następnie aplikacja musi zarejestrować się w celu otrzymywania powiadomień wypychanych po rozpoczęciu. Po włączeniu uwierzytelniania upewnij się, że użytkownik loguje się przed próbą zarejestrowania się na potrzeby powiadomień wypychanych.
 
-1. Otwórz plik projektu **App.XAML.cs** i Dodaj następujące `using` instrukcje:
+1. Otwórz plik projektu **App.XAML.cs** i Dodaj następujące instrukcje `using`:
 
     ```csharp
     using System.Threading.Tasks;
@@ -194,7 +194,7 @@ Następnie aplikacja musi zarejestrować się w celu otrzymywania powiadomień w
 
     Ten kod pobiera identyfikator channeluri dla aplikacji z WNS, a następnie rejestruje ten identyfikator channeluri za pomocą aplikacji mobilnej App Service.
 
-3. W górnej części procedury obsługi zdarzeń OnStarted w programie **App.XAML.cs**Dodaj modyfikator **Async** do definicji metody i Dodaj następujące wywołanie do nowej metody **następującą initnotificationsasync** , jak w poniższym przykładzie:
+3. W górnej części procedury obsługi zdarzeń **OnStarted** w programie **App.XAML.cs**Dodaj modyfikator **Async** do definicji metody i Dodaj następujące wywołanie do nowej metody **następującą initnotificationsasync** , jak w poniższym przykładzie:
 
     ```csharp
     protected async override void OnLaunched(LaunchActivatedEventArgs e)
@@ -218,7 +218,7 @@ Następnie aplikacja musi zarejestrować się w celu otrzymywania powiadomień w
 Dowiedz się więcej o powiadomieniach wypychanych:
 
 * [Jak używać zarządzanego klienta usługi Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications) Szablony zapewniają elastyczność wysyłania wypchnięciów międzyplatformowych i zlokalizowanych powiadomień wypychanych. Dowiedz się, jak zarejestrować szablony.
-* [Diagnozuj problemy](../notification-hubs/notification-hubs-push-notification-fixer.md) z powiadomieniem wypychanym Istnieją różne przyczyny, dla których powiadomienia mogą zostać porzucone lub nie kończyć się na urządzeniach. W tym temacie pokazano, jak analizować i ustalić główną przyczynę niepowodzeń powiadomień wypychanych.
+* [Diagnozuj problemy z powiadomieniem wypychanym](../notification-hubs/notification-hubs-push-notification-fixer.md) Istnieją różne przyczyny, dla których powiadomienia mogą zostać porzucone lub nie kończyć się na urządzeniach. W tym temacie pokazano, jak analizować i ustalić główną przyczynę niepowodzeń powiadomień wypychanych.
 
 Rozważ przejście do jednego z następujących samouczków:
 

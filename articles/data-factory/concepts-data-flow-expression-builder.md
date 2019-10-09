@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9862866d5cddb227d9417ac15db6b8ea851507e6
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703409"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030296"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Konstruktor wyrażeń przepływu danych mapowania
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 W obszarze Azure Data Factory mapowanie przepływu danych znajdziesz pola wyrażeń, w których można wprowadzać wyrażenia do przekształcania danych. W tych polach używaj kolumn, pól, zmiennych, parametrów, funkcji w przepływie danych. Aby skompilować wyrażenie, użyj konstruktora wyrażeń, który jest uruchamiany przez kliknięcie w polu tekstowym wyrażenia wewnątrz transformacji. W przypadku wybrania kolumn do przekształcenia czasami widoczne są opcje "kolumna obliczana". Po kliknięciu tego przycisku zobaczysz również uruchomiony program Expression Builder.
 

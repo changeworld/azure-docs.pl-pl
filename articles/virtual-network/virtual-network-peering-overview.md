@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c488b96940cac03b9c392f0ac4bd1d32a15ba111
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077623"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035286"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
-Wirtualne sieci równorzędne umożliwiają bezproblemowe łączenie z platformy Azure [sieci wirtualnych](virtual-networks-overview.md). Po nawiązaniu połączenia równorzędnego sieci wirtualne są traktowane jako jedna sieć. Ruch między maszynami wirtualnymi w wirtualnych sieciach równorzędnych odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft — tak jak ruch między maszynami wirtualnymi w tej samej sieci wirtualnej tylko za pośrednictwem *prywatnych* adresów IP. Obsługiwane przez platformę Azure:
+Komunikacja równorzędna sieci wirtualnych umożliwia bezproblemowe łączenie [sieci wirtualnych](virtual-networks-overview.md)platformy Azure. Po nawiązaniu połączenia równorzędnego sieci wirtualne są traktowane jako jedna sieć. Ruch między maszynami wirtualnymi w wirtualnych sieciach równorzędnych odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft — tak jak ruch między maszynami wirtualnymi w tej samej sieci wirtualnej tylko za pośrednictwem *prywatnych* adresów IP. Obsługiwane przez platformę Azure:
 * Wirtualne sieci równorzędne — łączenie sieci wirtualnych w tym samym regionie świadczenia usługi Azure
 * Globalne wirtualne sieci równorzędne — łączenie sieci wirtualnych w różnych regionach świadczenia usługi Azure
 
@@ -63,7 +63,7 @@ Gdy sieci wirtualne są połączone za pomocą komunikacji równorzędnej, użyt
 
 ![przesyłanie w równorzędnych sieciach wirtualnych](./media/virtual-networks-peering-overview/figure04.png)
 
-Tranzyt przez bramę jest obsługiwana dla komunikacji równorzędnej sieci wirtualnych i globalnych wirtualnych sieci równorzędnych. Tranzyt przez bramę między sieciami wirtualnymi utworzonymi za pomocą różnych modeli wdrażania (Resource Manager i model klasyczny) jest obsługiwana tylko wtedy, gdy brama znajduje się w sieci wirtualnej (Resource Manager). Aby dowiedzieć się więcej na temat przesyłania danych za pomocą bramy, zobacz [Konfigurowanie bramy sieci VPN na potrzeby przesyłania danych w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Tranzyt bramy jest obsługiwany zarówno w przypadku komunikacji równorzędnej sieci wirtualnej, jak i globalnej komunikacji równorzędnej sieci wirtualnej. Tranzyt bramy między sieciami wirtualnymi utworzonymi za pomocą różnych modeli wdrażania (Menedżer zasobów i klasyczny) jest obsługiwany tylko wtedy, gdy Brama znajduje się w sieci wirtualnej (Menedżer zasobów). Aby dowiedzieć się więcej na temat przesyłania danych za pomocą bramy, zobacz [Konfigurowanie bramy sieci VPN na potrzeby przesyłania danych w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 W przypadku połączenia za pomocą komunikacji równorzędnej sieci wirtualnych współużytkujących jedno połączenie sługi Azure ExpressRoute ruch między nimi jest oparty na relacji komunikacji równorzędnej (to znaczy odbywa się za pośrednictwem sieci szkieletowej platformy Azure). Użytkownicy mogą nadal korzystać z bram lokalnych w poszczególnych sieciach wirtualnych, aby łączyć się z obwodem lokalnym. Można również użyć bramy współdzielonej i skonfigurować tranzyt dla łączności lokalnej.
 
@@ -78,7 +78,7 @@ Informacje na ten temat zawiera również artykuł [Troubleshooter for virtual n
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia
 
 Następujące ograniczenia mają zastosowanie tylko wtedy, gdy sieci wirtualne są globalnie połączone za pomocą sieci równorzędnych:
-- Zasoby w jednej sieci wirtualnej nie może komunikować się z adresu IP frontonu podstawowe wewnętrznego modułu równoważenia obciążenia globalne równorzędne sieci wirtualnych. Obsługa podstawowego modułu równoważenia obciążenia istnieje tylko w obrębie tego samego regionu. Obsługa standardowego modułu równoważenia obciążenia dla istnieje, wirtualnych sieci równorzędnych i globalnych wirtualnych sieci równorzędnych. Usługi, które używają podstawowego modułu równoważenia obciążenia, które nie będą działać przez globalnych wirtualnych sieci równorzędnych są udokumentowane [tutaj.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
+- Zasoby w jednej sieci wirtualnej nie mogą komunikować się z adresem IP frontonu podstawowego wewnętrznego modułu równoważenia obciążenia w wirtualnej sieci równorzędnej. Obsługa podstawowych Load Balancer istnieje tylko w tym samym regionie. Obsługa usługa Load Balancer w warstwie Standardowa istnieje zarówno dla sieci wirtualnej, jak i globalnej sieci równorzędnej. Usługi korzystające z podstawowego modułu równoważenia obciążenia, które nie będą działały w ramach globalnej komunikacji równorzędnej sieci wirtualnej, są udokumentowane w [tym miejscu.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
 Aby dowiedzieć się więcej na temat wymagań i ograniczeń, zobacz [Wymagania i ograniczenia dotyczące komunikacji równorzędnej między sieciami wirtualnymi](virtual-network-manage-peering.md#requirements-and-constraints). Aby dowiedzieć się więcej na temat limitów liczby komunikacji równorzędnych, które można utworzyć dla sieci wirtualnej, zobacz [Ograniczenia sieci platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
 
@@ -90,9 +90,9 @@ Aby uzyskać informacje dotyczące uprawnień wymaganych do utworzenia komunikac
 
 Istnieje nominalna opłata za ruch przychodzący i wychodzący w połączeniach wirtualnych sieciach równorzędnych. Aby uzyskać więcej informacji na temat cen wirtualnych sieci równorzędnych i globalnych wirtualnych sieci równorzędnych, zobacz [stronę cennika](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Tranzyt przez bramę jest właściwością komunikacji równorzędnej, która umożliwia korzystanie z bramy sieci VPN/ExpressRoute w równorzędnej sieci wirtualnej dla wielu lokalnych lub połączenia sieć wirtualna-sieć wirtualna sieć wirtualną. Ruchu przechodzącego przez z bramy zdalnej, w tym scenariuszu jest podlegają [opłaty za bramy sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/) lub brama usługi ExpressRoute opłaty i nie są naliczane [komunikacji równorzędnej w sieci vnet.](https://azure.microsoft.com/pricing/details/virtual-network) Na przykład jeśli zachodzi komunikacja równorzędna między ma bramę sieci VPN dla łączności lokalnej i Vnetc jest połączona z zachodzi komunikacja równorzędna między za pomocą odpowiednich właściwości skonfigurowane, ruch z Vnetc do lokalnego tylko za ruch wychodzący na cennik bramy sieci VPN lub ExpressRoute — cennik. Opłaty za wirtualne sieci równorzędne nie są naliczane. Dowiedz się, jak [skonfigurować tranzyt bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Tranzyt bramy to właściwość komunikacji równorzędnej, która umożliwia sieci wirtualnej korzystanie z bramy sieci VPN/ExpressRoute w sieci wirtualnej w komunikacji równorzędnej na potrzeby łączności między różnymi lokalizacjami lub połączeniami typu sieć wirtualna-sieć wirtualna. Aby uzyskać więcej informacji, zobacz opłaty [za bramę sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/) lub opłaty za bramę ExpressRoute oraz [opłaty za wirtualne sieci równorzędne.](https://azure.microsoft.com/pricing/details/virtual-network)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Równorzędne sieci wirtualne tworzy się między sieciami wirtualnymi utworzonymi za pomocą tych samych lub różnych modeli wdrażania istniejących w tej samej lub w różnych subskrypcjach. Ukończ samouczek dla jednego z następujących scenariuszy:
 

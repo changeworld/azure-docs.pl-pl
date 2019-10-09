@@ -1,56 +1,21 @@
 ---
-title: Dynamics 365 for Customer Engagement oferuje wymagania wstępne | Portal Azure Marketplace
-description: Wymagania wstępne dotyczące publikowania aplikacji systemu Azure oferują w portalu Azure Marketplace.
+title: Dynamics 365 for Customer Engagement — wymagania wstępne | Portal Azure Marketplace
+description: Artykuł z przestarzałych CPP, połączony z komputerem. Była "wymagania wstępne dotyczące publikowania oferty aplikacji platformy Azure w portalu Azure Marketplace"
 services: Dynamics 365 for Customer Engagement offer, Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 9cfec65843012e781c8a8dd06cbc4d1225b0dd36
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: a7d5edeed762da82b20b8bb4dbdd524be34fea3d
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67338892"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034297"
 ---
-# <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 Customer Engagement wstępnie wymaganych składników
+# <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 for Customer Engagement — wymagania wstępne
 
-W tym artykule opisano wymagania wstępne techniczne i biznesowe dotyczące publikowania Dynamics 365 Customer Engagement aplikacji oferty w witrynie Marketplace usługi AppSource.  Jeśli nie zostało to jeszcze zrobione, zapoznaj się z [usługi Office 365, Dynamics 365, PowerApps i Power BI oferują Podręcznik publikowania](../../appsource-offer-publishing-guide.md).
+[Portal Cloud partner](https://cloudpartner.azure.com/) nie obsługuje już tworzenia ofert programu Dynamics 365 Customer Engagement i zarządzania nimi. Zamiast tego ta funkcja została przeniesiona do [portalu Centrum partnerskiego](https://partner.microsoft.com/)firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej usługi Dynamics 365 na potrzeby zaangażowania klienta & oferty usługi powerapps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-
-## <a name="technical-requirements"></a>Wymagania techniczne
-
-Usługi Dynamics 365 Customer Engagement aplikacji musi być zgodna z [wytyczne przeglądu aplikacji Microsoft AppSource](https://smp-cdn-prod.azureedge.net/documents/AppsourceGuidelines/Microsoft%20AppSource%20app%20review%20guidelines_v5.pdf), która obejmuje następujące wymagania:
-
-
-|              Wymaganie             |        Opis           |
-|            ---------------           |      ---------------         |
-| Integracja z usługą Azure Active Directory   | Aplikacja musi zezwalać na usługi Azure Active Directory federacyjnego logowania jednokrotnego (AAD Federacyjna usługa rejestracji Jednokrotnej) za zgodą włączone. Aby uzyskać więcej informacji, zobacz [sposób uzyskiwania certyfikatu AppSource dla usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-get-appsource-certified). |
-| Integracja z usługami Microsoft Cloud (opcjonalnie) | W przypadku, gdy jest to wymagane, aplikację należy zintegrować z innych usług Microsoft Cloud, takich jak usługi Microsoft Power BI, Microsoft Flow lub Microsoft Azure, takich jak machine learning i cognitive services. |
-| Line-of-business fokus            |  Aplikacji należy skupić się na proces biznesowy dobrze zdefiniowanych lub wystawiania, przede wszystkim informacje skierowane do klientów biznesowych i użytkownicy mogą zalogować się przy użyciu poświadczeń służbowych (nazwa użytkownika i hasło).  |
-| Okres bezpłatnej wersji próbnej i wersja próbna |  Klient musi mieć możliwość bezpłatnego korzystania z aplikacji przez ograniczony czas: "Pobierz teraz" bezpłatnie aplikacji "bezpłatna wersja próbna" w określonym przedziale demonstrator "Wersja testowa" lub "kontakt ze mną" żądania opcji.  |
-| Lub z niewielką ilością bez konfiguracji                 | Aplikacja musi być łatwo i szybko skonfigurować i skonfigurować (nie rozwoju lub dostosowanie jest wymagane).  |
-| Obsługa klienta                     | Pomoc techniczna dla aplikacji mogą zawierać łącza pomocy technicznej, gdzie klienci mogą znaleźć Pomoc.  |
-| Dostępność/czas pracy                  | Aplikacja musi mieć czas działania co najmniej 99,9%. |
-|  |  |
-
-
-## <a name="business-requirements"></a>Wymagania biznesowe
-
-Wymagania biznesowe obejmują następujące obowiązki umowne stosowane w UE i prawne proceduralne:
-
-* Musi być zarejestrowana we [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) lub zostać zarejestrowane wydawcy chmury w witrynie Marketplace. Jeśli nie są zarejestrowane, postępuj zgodnie z instrukcjami [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher).  (Może również nawiązywać połączenie z [Dynamics 365 for Customer Engagement, zespół ds. dołączania](https://experience.dynamics.com/isvengage/)).
-
-    >[!NOTE]
-    >Zalogować się do portalu Cloud Partner, należy używać tego samego konta Microsoft Developer Center w rejestracji. Powinna mieć tylko jedno konto Microsoft, dla ofert portalu Azure Marketplace. To konto nie powinny być specyficzne dla poszczególnych usług lub oferty.
-
-* Ponieważ usługi AppSource nie oferuje opcji publikowania z włączoną commerce, należy użyć używanych bieżącego porządkowanie i rozliczeń infrastruktury bez dodatkowej inwestycji ani zmian.
-* Jesteś odpowiedzialny za wprowadzanie pomocy technicznej dostępne dla klientów w sposób rozsądny z komercyjnego punktu widzenia. Może to mieć wolne, płatną lub za pośrednictwem metody społeczności.
-* Jesteś odpowiedzialny za Licencjonowanie oprogramowania oraz wszystkie zależności oprogramowania innych firm.
-* Należy utworzyć skojarzone materiały marketingowe, np. nazwę aplikacji oficjalne, opis (format HTML), logo obrazy w formacie PNG (w pikselach 40 x 40, 90 x 90, 115 x 115 i 255 x 115) i warunki użytkowania i zasady zachowania poufności informacji.  
-
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Po zostały spełnione następujące wymagania, możesz [Utwórz ofertę platformy Dynamics 365 Customer Engagement](./cpp-create-offer.md) 
+Przed utworzeniem nowej oferty Dynamics 365 for Customer Engagement należy przeczytać temat [Tworzenie konta Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , a następnie otworzyć [komercyjny pulpit nawigacyjny Marketplace](https://partner.microsoft.com/dashboard/directory) z wybraną stroną **Przegląd** . Postępuj zgodnie z instrukcjami w temacie [Create a New Dynamics 365 for Customer Engagement & powerapps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) , aby utworzyć ofertę.

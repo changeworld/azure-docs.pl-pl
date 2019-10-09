@@ -6,45 +6,45 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 289f98fdc2f39449cdeede9ee46fb39847ae2cb5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774985"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029271"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Mapowanie wybierania przepływu danych
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Użyj tej transformacji dla selektywnej kolumny (zmniejszając liczbę kolumn), kolumn aliasów i nazw strumieni oraz Zmień kolejność kolumn.
 
 ## <a name="how-to-use-select-transformation"></a>Jak używać transformacji SELECT
 Wybranie przekształcenia pozwala na aliasowanie całego strumienia lub kolumn w tym strumieniu, przypisywanie różnych nazw (aliasów), a następnie odwoływanie się do tych nowych nazw później w przepływie danych. To przekształcenie jest przydatne w scenariuszach samosprzężenia. Sposobem implementacji samosprzężenia w przepływie danych ADF jest wykonanie strumienia, rozgałęzienie go przy użyciu "nowej gałęzi", a następnie natychmiastowe dodanie przekształcenia "Select". Ten strumień będzie teraz miał nową nazwę, której można użyć do dołączenia do oryginalnego strumienia, tworząc samosprzężenie:
 
-![] Samosprzężenie (media/data-flow/selfjoin.png "") Samosprzężenie
+Samoobsługowe ![samosprzężenie](media/data-flow/selfjoin.png "")
 
 Na powyższym diagramie wybór przekształceń znajduje się u góry. Jest to alias oryginalnego strumienia do "OrigSourceBatting". W wyróżnionym przekształceniu Join poniżej można zobaczyć, że używamy tego strumienia SELECT aliasu jako sprzężenia po prawej stronie, umożliwiając nam odwoływanie się do tego samego klucza zarówno w lewej & po prawej stronie sprzężenia wewnętrznego.
 
 Opcji wybierz można także użyć jako sposobu usuwania kolumn z przepływu danych. Jeśli na przykład masz 6 kolumn zdefiniowanych w ujścia, ale chcesz tylko wybrać konkretny 3 do przekształcenia, a następnie przetworzyć przepływ do ujścia, możesz wybrać tylko te 3 przy użyciu opcji Przekształć.
 
-![Wybierz transformację](media/data-flow/newselect1.png "Wybierz alias")
+![Wybieranie](media/data-flow/newselect1.png "aliasu") wybierz transformację
 
 ## <a name="options"></a>Opcje
 * Ustawieniem domyślnym dla opcji "Select" jest uwzględnianie wszystkich kolumn przychodzących i zachowywanie tych oryginalnych nazw. Strumień można aliasować przez ustawienie nazwy przekształcenia SELECT.
 * Aby określić alias poszczególnych kolumn, usuń zaznaczenie opcji "Zaznacz wszystko" i użyj mapowania kolumn u dołu.
 * Wybierz pozycję Pomiń duplikaty, aby wyeliminować zduplikowane kolumny z metadanych danych wejściowych lub wyjściowych.
 
-![Pomiń duplikaty](media/data-flow/select-skip-dup.png "Pomiń duplikaty")
+![Pomiń duplikaty](media/data-flow/select-skip-dup.png "pomijają duplikaty")
 
 * Po wybraniu opcji pomijania duplikatów wyniki będą widoczne na karcie Inspekcja. ADF będzie przechowywać pierwsze wystąpienie kolumny i zobaczysz, że wszystkie kolejne wystąpienia tej samej kolumny zostały usunięte z przepływu.
 
 > [!NOTE]
 > Aby wyczyścić reguły mapowania, naciśnij przycisk **Resetuj** .
 
-## <a name="mapping"></a>Mapowanie
+## <a name="mapping"></a>Zmianę
 Domyślnie wybranie przekształcenia spowoduje automatyczne zamapowanie wszystkich kolumn, które przechodzą przez wszystkie kolumny przychodzące do tej samej nazwy w danych wyjściowych. Nazwa strumienia wyjściowego ustawiona w obszarze Wybierz ustawienia spowoduje zdefiniowanie nowej nazwy aliasu dla strumienia. Jeśli zachowasz pozycję Wybierz dla opcji Automap, możesz odaliasować cały strumień ze wszystkimi kolumnami w ten sam sposób.
 
-![Wybieranie reguł przekształcania](media/data-flow/rule2.png "Mapowanie oparte na regułach")
+![Wybieranie reguły przekształcania](media/data-flow/rule2.png "— Mapowanie oparte na regułach")
 
 Jeśli chcesz, aby alias, usuwanie, zmienianie nazwy lub zmiana kolejności kolumn, musisz najpierw wyłączyć "Automap". Domyślnie zostanie wyświetlona domyślna reguła o nazwie "wszystkie kolumny wejściowe". Tę regułę można pozostawić w miejscu, jeśli zamierzasz zawsze zezwolić na mapowanie wszystkich kolumn przychodzących na taką samą nazwę w danych wyjściowych.
 

@@ -1,77 +1,77 @@
 ---
-title: Usługi Azure Data Factory danych przepływ sprzężenia transformacji
-description: Usługi Azure Data Factory danych przepływ sprzężenia transformacji
+title: Przekształcanie dołączania przepływu danych Azure Data Factory
+description: Przekształcanie dołączania przepływu danych Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348554"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029324"
 ---
-# <a name="mapping-data-flow-join-transformation"></a>Przekształcenie sprzężenie przepływu danych mapowania
+# <a name="mapping-data-flow-join-transformation"></a>Mapowanie transformacji przepływu danych
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Sprzężenia umożliwia łączenie danych z dwiema tabelami w przepływ danych. Kliknij przycisk na przekształcenie, które będą po lewej stronie relacji i Dodaj przekształcenie sprzężenie z przybornika. Wewnątrz przekształcenie sprzężenie wybierze inny strumień danych z przepływu danych, aby mieć prawo relacji.
 
-![Dołącz do przekształcania](media/data-flow/join.png "Join")
+Użyj sprzężenia, aby połączyć dane z dwóch tabel w przepływie danych. Kliknij transformację, która będzie lewą relacją i Dodaj transformację sprzężenia z przybornika. Wewnątrz transformacji sprzężenia wybierz inny strumień danych z przepływu danych, aby uzyskać odpowiednią relację.
 
-## <a name="join-types"></a>Dołącz do typów
+(media/data-flow/join.png "Dołącz do") ![przekształcenia transformacji]
 
-Wybierając typ sprzężenia jest wymagana dla transformacji sprzężenia.
+## <a name="join-types"></a>Typy sprzężeń
+
+Do przekształcenia sprzężenia jest wymagane wybranie typu sprzężenia.
 
 ### <a name="inner-join"></a>Sprzężenie wewnętrzne
 
-Sprzężenie wewnętrzne będzie przekazywał tylko wiersze spełniające warunki kolumny z obu tabel.
+Sprzężenie wewnętrzne przejdzie tylko do wierszy, które pasują do warunków kolumny w obu tabelach.
 
 ### <a name="left-outer"></a>Lewe zewnętrzne
 
-Wszystkie wiersze ze strumienia po lewej stronie, nie spełniają warunek sprzężenia są przekazywane, a kolumn wyjściowych z innej tabeli są ustawione na wartość NULL, oprócz wszystkich wierszy zwróconych przez sprzężenia wewnętrznego.
+Wszystkie wiersze ze strumienia po lewej stronie, które nie spełniają warunku sprzężenia, są przekazywane, a kolumny wyjściowe z innej tabeli są ustawione na wartość NULL oprócz wszystkich wierszy zwracanych przez sprzężenie wewnętrzne.
 
 ### <a name="right-outer"></a>Prawe zewnętrzne
 
-Wszystkie wiersze z prawego strumienia, które nie spełniają warunek sprzężenia są przekazywane, a kolumny danych wyjściowych, które odpowiadają drugiej tabeli są ustawione na wartość NULL, oprócz wszystkich wierszy zwróconych przez sprzężenia wewnętrznego.
+Wszystkie wiersze z odpowiedniego strumienia, które nie spełniają warunku sprzężenia, są przekazywane przez, a kolumny wyjściowe, które odpowiadają innej tabeli, są ustawione na wartość NULL, oprócz wszystkich wierszy zwracanych przez sprzężenie wewnętrzne.
 
-### <a name="full-outer"></a>Klauzule Full Outer
+### <a name="full-outer"></a>Pełny zewnętrzny
 
-Pełne zewnętrzne tworzy wszystkie kolumny i wiersze z obu stron o wartości NULL dla kolumny, które są nieobecne w drugiej tabeli.
+Pełny zewnętrzny produkuje wszystkie kolumny i wiersze z obu stron z wartościami NULL dla kolumn, które nie znajdują się w drugiej tabeli.
 
 ### <a name="cross-join"></a>Sprzężenie krzyżowe
 
-Określ iloczyn wektorowy dwóch strumieni z wyrażeniem. Możesz użyć tego, aby utworzyć niestandardowe sprzężenia.
+Określ iloczyn poprzeczny dwóch strumieni z wyrażeniem. Służy do tworzenia niestandardowych warunków sprzężenia.
 
 ## <a name="specify-join-conditions"></a>Określ warunki sprzężenia
 
-Warunek Left Join jest ze strumienia danych połączonych z lewej strony sprzężenia usługi. Warunek Right Join jest podłączony do sieci sprzężenia w dolnej części, która będzie bezpośrednich łącznika do innego strumienia lub odwołanie do innej usługi stream drugi strumienia danych.
+Warunek sprzężenia w lewo pochodzi ze strumienia danych połączonego z lewej strony sprzężenia. Warunek sprzężenia w prawo jest drugim strumieniem danych podłączonym do sprzężenia u dołu, który będzie bezpośrednim łącznikiem do innego strumienia lub odwołaniem do innego strumienia.
 
-Jest wymagane wprowadzenie co najmniej 1 warunki sprzężenia (1.n=czynniki). Mogą to być pola, które są albo wywoływane bezpośrednio, wybrania z menu rozwijanego lub wyrażenia.
+Musisz wprowadzić co najmniej 1 (1.. n) warunki sprzężenia. Mogą to być pola, do których odwołuje się bezpośrednio, wybrane z menu rozwijanego lub wyrażeń.
 
-## <a name="join-performance-optimizations"></a>Dołącz do optymalizacji wydajności
+## <a name="join-performance-optimizations"></a>Dołączanie optymalizacji wydajności
 
-W odróżnieniu od sprzężenia scalania w narzędzia, takie jak SSIS sprzężenia w przepływ danych ADF operacja nie jest obowiązkowe scalania sprzężenia. W związku z kluczami sprzężenia nie trzeba najpierw posortowane. Operacja Join odbędzie się Spark za pomocą opartego na operacji join optymalne platformie Spark usługi Databricks: Sprzężenia emisji / po stronie mapy:
+W przeciwieństwie do łączenia scalania w narzędziach takich jak SSIS, sprzężenie w przepływie danych ADF nie jest obowiązkową operacją scalania łączenia. W związku z tym klucze Join nie muszą być sortowane jako pierwsze. Operacja join zostanie wykonana na podstawie optymalnej operacji JOIN w usłudze Spark: sprzężenie po stronie emisji/mapy:
 
-![Dołącz do przekształcania zoptymalizować](media/data-flow/joinoptimize.png "Dołącz do optymalizacji")
+Optymalizacja sprzężenia ![Optymalizacja](media/data-flow/joinoptimize.png "sprzężenia")
 
-Jeśli zestaw danych można dopasować do pamięci węzła procesu roboczego usługi Databricks, firma Microsoft można zoptymalizować wydajność sprzężenia. Można również określić, partycjonowanie danych w operacji dołączania do tworzenia zestawów danych, który może lepiej mieści się w pamięci dla procesu roboczego.
+Jeśli zestaw danych może pasować do pamięci węzła procesu roboczego, możemy zoptymalizować wydajność przyłączania. Można również określić Partycjonowanie danych w operacji JOIN, aby utworzyć zestawy danych, które mogą być lepiej dopasowane do pamięci na proces roboczy.
 
 ## <a name="self-join"></a>Samosprzężenie
 
-Samosprzężenie warunków w przepływ danych ADF można osiągnąć za pomocą Wybierz przekształcenie do aliasu istniejącego strumienia. Najpierw należy utworzyć "Nową gałąź" ze strumienia, a następnie dodaj Select alias całego oryginalnego strumienia.
+Możesz uzyskać warunki samosprzężenia w przepływie danych ADF przy użyciu wybierz transformację do aliasu istniejącego strumienia. Najpierw utwórz "nowe rozgałęzienie" ze strumienia, a następnie Dodaj pozycję Wybierz, aby utworzyć alias całego oryginalnego strumienia.
 
-![Samosprzężenie](media/data-flow/selfjoin.png "samosprzężenie")
+Samoobsługowe ![samosprzężenie](media/data-flow/selfjoin.png "")
 
-Na powyższym diagramie Wybierz przekształcenie znajduje się na górze. Wszystkie wykonywanie operacji jest aliasowanie oryginalnego strumienia do "OrigSourceBatting". W wyróżnionych transformacji sprzężenia poniżej widać, że używamy tego strumienia wybierz aliasu jako sprzężenia po prawej stronie, może odwoływać się do tego samego klucza w lewej i prawej strony sprzężenia wewnętrznego.
+Na powyższym diagramie wybór przekształceń znajduje się u góry. Wszystko to wykonuje aliasowanie oryginalnego strumienia do "OrigSourceBatting". W wyróżnionym przekształceniu Join poniżej można zobaczyć, że używamy tego strumienia SELECT aliasu jako sprzężenia po prawej stronie, umożliwiając nam odwoływanie się do tego samego klucza zarówno w lewej & po prawej stronie sprzężenia wewnętrznego.
 
 ## <a name="composite-and-custom-keys"></a>Klucze złożone i niestandardowe
 
-Klucze złożone i niestandardowych można tworzyć na bieżąco wewnątrz przekształcania sprzężenia. Dodawanie wierszy i kolumn sprzężenia dodatkowe za pomocą znak plus (+) obok każdego wiersza w relacji. Albo obliczyć nową wartość klucza w Konstruktorze wyrażeń wartości sprzężenia na bieżąco.
+Możesz tworzyć niestandardowe i złożone klucze na bieżąco wewnątrz transformacji sprzężenia. Dodaj wiersze dla dodatkowych kolumn sprzężenia ze znakiem plus (+) obok każdego wiersza relacji. Lub Oblicz nową wartość klucza w Konstruktorze wyrażeń dla wartości sprzężenia na bieżąco.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po dołączeniu danych, możesz następnie [tworzenie nowych kolumn](data-flow-derived-column.md) i [ujście danych do docelowego magazynu danych](data-flow-sink.md).
+Po dołączeniu danych można [tworzyć nowe kolumny](data-flow-derived-column.md) i [odujścia danych do docelowego magazynu danych](data-flow-sink.md).

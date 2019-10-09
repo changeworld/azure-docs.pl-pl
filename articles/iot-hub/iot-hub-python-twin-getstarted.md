@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 565330528638bb6c8e0458a9761e2cf9fa4e3d2a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 729371ede8df3dc21f70bc5742de52f2be874507
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001474"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030003"
 ---
 # <a name="get-started-with-device-twins-python"></a>Rozpoczynanie pracy z usługą Device bliźniaczych reprezentacji (Python)
 
@@ -70,7 +70,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która dodaje met
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Dodaj następujący kod. Zamień `[IoTHub Connection String]` na parametry połączenia usługi IoT Hub skopiowane w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string). Zastąp `[Device Id]` wartość identyfikatorem urządzenia zarejestrowanym w temacie [Rejestrowanie nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
+4. Dodaj następujący kod. Zastąp `[IoTHub Connection String]` parametrami połączenia usługi IoT Hub skopiowanymi w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string). Zastąp `[Device Id]` IDENTYFIKATORem urządzenia zarejestrowanym w [Zarejestruj nowe urządzenie w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -171,7 +171,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która łączy si
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. Dodaj następujący kod. Zastąp wartość [](#register-a-new-device-in-the-iot-hub) symboluzastępczegoparametramipołączeniaurządzenia,którezostałyskopiowanepodczasrejestrowanianowegourządzeniawusłudzeIoT`[IoTHub Device Connection String]` Hub.
+4. Dodaj następujący kod. Zastąp wartość symbolu zastępczego `[IoTHub Device Connection String]` parametrami połączenia urządzenia, które zostały skopiowane podczas [rejestrowania nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -187,7 +187,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która łączy si
             print(patch)
 
     def iothub_client_init():
-        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+        client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
         return client
 
     def iothub_client_sample_run():

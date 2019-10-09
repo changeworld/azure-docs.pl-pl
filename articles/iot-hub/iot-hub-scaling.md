@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 8d7bb201a9d01725f933105a4a0beb85c82ca105
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203698"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023644"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybieranie odpowiedniej warstwy IoT Hub dla rozwiązania
 
@@ -35,11 +35,11 @@ Standardowa warstwa IoT Hub włącza wszystkie funkcje i jest wymagana dla wszys
 
 Na IoT Hub można wybrać tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w ramach warstwy. Można na przykład utworzyć IoT Hub z wieloma jednostkami S1, ale nie z różnymi jednostkami, takimi jak S1 i S2.
 
-| Możliwość | Warstwa Podstawowa | Warstwa Bezpłatna/standardowa |
+| Możliwość | Warstwa Basic | Warstwa Bezpłatna/standardowa |
 | ---------- | ---------- | ------------- |
 | [Dane telemetryczne z urządzenia do chmury](iot-hub-devguide-messaging.md) | Tak | Tak |
 | [Tożsamość dla urządzenia](iot-hub-devguide-identity-registry.md) | Tak | Tak |
-| [Routing komunikatów](iot-hub-devguide-messages-read-custom.md) i [integracja Event Grid](iot-hub-event-grid.md) | Tak | Tak |
+| [Routing komunikatów](iot-hub-devguide-messages-read-custom.md), [wzbogacanie komunikatów](iot-hub-message-enrichments-overview.md)i [integracja Event Grid](iot-hub-event-grid.md) | Tak | Tak |
 | [Protokoły HTTP, AMQP i MQTT](iot-hub-devguide-protocols.md) | Tak | Tak |
 | [Usługa Device Provisioning](../iot-dps/about-iot-dps.md) | Tak | Tak |
 | [Monitorowanie i Diagnostyka](iot-hub-monitor-resource-health.md) | Tak | Tak |
@@ -70,7 +70,7 @@ Konfiguracja partycji pozostaje niezmieniona podczas migracji z warstwy Podstawo
 
 Różnica w obsługiwanych możliwościach między warstwami podstawowa i Standardowa IoT Hub oznacza, że niektóre wywołania interfejsu API nie działają w przypadku centrów warstwy Podstawowa. W poniższej tabeli przedstawiono dostępne interfejsy API:
 
-| interfejs API | Warstwa Podstawowa | Warstwa Bezpłatna/standardowa |
+| API | Warstwa Basic | Warstwa Bezpłatna/standardowa |
 | --- | ---------- | ------------- |
 | [Usuń urządzenie](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Tak | Tak |
 | [Pobierz urządzenie](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Tak | Tak |

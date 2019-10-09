@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a740d8ee0eb50cfa01f36bd8f5590a58e1e6627
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 8f4ed6de5ff47efa441c371b80670c500f57c9bb
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931931"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034063"
 ---
 # <a name="time-series-model"></a>Model szeregów czasowych
 
@@ -25,7 +25,7 @@ Tradycyjnie dane zbierane z urządzeń IoT nie zawierają informacji kontekstowy
 
 Modele szeregów czasowych odgrywają istotną rolę w zapytaniach i nawigacji, ponieważ contextualizeją one urządzenia i jednostki niebędące urządzeniami. Dane, które są utrwalane w modelu szeregów czasowych, mają wpływ na obliczenia zapytań szeregów czasowych przez skorzystanie z formuł przechowywanych w nich.
 
-[![Omówienie modelu szeregów czasowych](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[@no__t — Omówienie modelu serii 1Time](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
 
 ## <a name="key-capabilities"></a>Najważniejsze możliwości
 
@@ -47,7 +47,7 @@ Te składniki są łączone w celu określenia modelu szeregów czasowych i orga
 
 ## <a name="time-series-model-types"></a>Typy modeli szeregów czasowych
 
-*Typy* modeli szeregów czasowych pomagają definiować zmienne lub formuły do wykonywania obliczeń. Typy są skojarzone z określonym wystąpieniem Time Series Insights. Typ może mieć co najmniej jednej zmiennej. Na przykład wystąpienie Time Series Insights może być typu *czujnik temperatury*, który składa się z *średniej temperatury*, temperatury *minimalnej*i *maksymalnej temperatury*. Tworzymy domyślny typ, gdy dane zaczynają przepływać do Time Series Insights. Typ domyślny można pobrać i zaktualizować z ustawień modelu. Typy domyślne mają zmienną, która zlicza liczbę zdarzeń.
+*Typy* modeli szeregów czasowych pomagają definiować zmienne lub formuły do wykonywania obliczeń. Typy są skojarzone z określonym wystąpieniem Time Series Insights. Typ może mieć co najmniej jedną zmienną. Na przykład wystąpienie Time Series Insights może być typu *czujnik temperatury*, który składa się z *średniej temperatury*, temperatury *minimalnej*i *maksymalnej temperatury*. Tworzymy domyślny typ, gdy dane zaczynają przepływać do Time Series Insights. Typ domyślny można pobrać i zaktualizować z ustawień modelu. Typy domyślne mają zmienną, która zlicza liczbę zdarzeń.
 
 ### <a name="time-series-model-type-json-example"></a>Przykład JSON typu modelu szeregów czasowych
 
@@ -82,7 +82,7 @@ Typy Time Series Insights mają zmienne, które są nazwanymi obliczeniami wzgl�
 
 Poniższa macierz działa jako legenda dla definicji zmiennych:
 
-[![Tabela definicji zmiennych typów](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
+[@no__t — tabela definicji zmiennej 1Type](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
 
 | Definicja | Opis |
 | --- | ---|
@@ -126,7 +126,7 @@ Rozważmy poniższy przykład, w którym hierarchia H1 ma *kompilację*, *piętr
 
 W zależności od *pól wystąpienia*atrybuty hierarchii i wartości są wyświetlane jak pokazano w poniższej tabeli:
 
-| Identyfikator szeregu czasowego | Pola wystąpienia |
+| Identyfikator szeregów czasowych | Pola wystąpienia |
 | --- | --- |
 | ID1 | "Building" = "1000", "piętro" = "10", "Pokój" = "55"  |
 | ID2 | "Building" = "1000", "Pokój" = "55" |
@@ -134,7 +134,7 @@ W zależności od *pól wystąpienia*atrybuty hierarchii i wartości są wyświe
 | ID4 | "Building" = "1000", "piętro" = "10"  |
 | ID5 | Nie ustawiono żadnego z "kompilowania", "piętra" ani "pokoju" |
 
-W powyższym przykładzie **ID1** i **ID4** są wyświetlane jako część hierarchii H1 w Eksploratorze Azure Time Series Insights, a pozostałe są klasyfikowane jako nienadrzędne *wystąpienia* , ponieważ nie są zgodne z określoną hierarchią danych.
+W powyższym przykładzie **ID1** i **ID4** są wyświetlane jako część hierarchii H1 w Eksploratorze Azure Time Series Insights, a pozostałe są klasyfikowane jako *nienadrzędne wystąpienia* , ponieważ nie są zgodne z określoną hierarchią danych.
 
 ## <a name="time-series-model-instances"></a>Wystąpienia modelu szeregów czasowych
 

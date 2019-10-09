@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: 74bff4059442c85cfcde589c5a6cc7ab36472881
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.date: 10/03/2019
+ms.openlocfilehash: cc225f4cae3935212844c19464afc716092e73ca
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147040"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035202"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Odczytywanie i zapisywanie danych w usłudze Azure SQL Database za pomocą klastra Spark
 
@@ -21,33 +21,33 @@ Dowiedz się, jak połączyć Klaster Apache Spark w usłudze Azure HDInsight z 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Azure HDInsight Spark klaster**.  Postępuj zgodnie z instrukcjami w temacie [Tworzenie klastra Apache Spark w usłudze HDInsight](apache-spark-jupyter-spark-sql.md).
+* Klaster Azure HDInsight Spark *.  Postępuj zgodnie z instrukcjami w temacie [Tworzenie klastra Apache Spark w usłudze HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* **Baza danych SQL Azure**. Postępuj zgodnie z instrukcjami w obszarze [Tworzenie bazy danych Azure SQL Database](../../sql-database/sql-database-get-started-portal.md). Upewnij się, że tworzysz bazę danych z przykładowym schematem **AdventureWorksLT** i danymi. Upewnij się również, że utworzono regułę zapory na poziomie serwera, aby umożliwić adres IP klienta dostępu do bazy danych SQL na serwerze. Instrukcje dotyczące dodawania reguły zapory są dostępne w tym samym artykule. Po utworzeniu usługi Azure SQL Database upewnij się, że są używane następujące wartości. Są one potrzebne do łączenia się z bazą danych z klastra Spark.
+* Baza danych SQL Azure. Postępuj zgodnie z instrukcjami w obszarze [Tworzenie bazy danych Azure SQL Database](../../sql-database/sql-database-get-started-portal.md). Upewnij się, że tworzysz bazę danych z przykładowym schematem **AdventureWorksLT** i danymi. Upewnij się również, że utworzono regułę zapory na poziomie serwera, aby umożliwić adres IP klienta dostępu do bazy danych SQL na serwerze. Instrukcje dotyczące dodawania reguły zapory są dostępne w tym samym artykule. Po utworzeniu usługi Azure SQL Database upewnij się, że są używane następujące wartości. Są one potrzebne do łączenia się z bazą danych z klastra Spark.
 
     * Nazwa serwera hostujący bazę danych SQL Azure.
     * Nazwa usługi Azure SQL Database.
     * Nazwa użytkownika/hasło administratora usługi Azure SQL Database.
 
-* **SQL Server Management Studio**. Postępuj zgodnie z instrukcjami wyświetlanymi w [programie SSMS, aby nawiązywać połączenia i wykonywać zapytania dotyczące danych](../../sql-database/sql-database-connect-query-ssms.md).
+* SQL Server Management Studio (SSMS). Postępuj zgodnie z instrukcjami wyświetlanymi w [programie SSMS, aby nawiązywać połączenia i wykonywać zapytania dotyczące danych](../../sql-database/sql-database-connect-query-ssms.md).
 
-## <a name="create-a-jupyter-notebook"></a>Tworzenie Jupyter Notebook 
+## <a name="create-a-jupyter-notebook"></a>Tworzenie Jupyter Notebook
 
-Zacznij od utworzenia [Jupyter Notebook](https://jupyter.org/) skojarzonej z klastrem Spark. Ten Notes służy do uruchamiania fragmentów kodu używanych w tym artykule. 
+Zacznij od utworzenia [Jupyter Notebook](https://jupyter.org/) skojarzonej z klastrem Spark. Ten Notes służy do uruchamiania fragmentów kodu używanych w tym artykule.
 
 1. W [Azure Portal](https://portal.azure.com/)Otwórz klaster.
 1. Wybierz pozycję **Jupyter Notes** poniżej **pulpitów nawigacyjnych klastra** po prawej stronie.  Jeśli nie widzisz **pulpitów nawigacyjnych klastra**, wybierz pozycję **Przegląd** z menu po lewej stronie. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
 
-    ![Jupyter Notes na Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Notes Jupyter na platformie Spark")
-   
+    ![Notes Jupyter Apache Spark w](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "notesie Jupyter") na platformie Spark
+
    > [!NOTE]  
    > Możesz również uzyskać dostęp do notesu Jupyter w klastrze Spark, otwierając następujący adres URL w przeglądarce. Zastąp ciąg **CLUSTERNAME** nazwą klastra:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
 1. W notesie Jupyter w prawym górnym rogu kliknij pozycję **Nowy**, a następnie kliknij pozycję **Spark** , aby utworzyć Notes Scala. Notesy Jupyter w klastrze usługi HDInsight Spark udostępniają również jądro **PySpark** dla aplikacji python2 oraz jądra **PySpark3** dla aplikacji python3. W tym artykule utworzymy Notes Scala.
-   
-    ![Jądra dla notesu Jupyter na platformie Spark](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Jądra dla notesu Jupyter na platformie Spark")
+
+    ![Jądra notesu Jupyter na jądrach platformy Spark](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "dla notesu Jupyter w usłudze Spark")
 
     Aby uzyskać informacje na temat tych jąder, zobacz [Use Jupyter notebooks kernels with Apache Spark clusters in HDInsight](apache-spark-jupyter-notebook-kernels.md) (Używanie jąder notesu Jupyter z klastrami Apache Spark w usłudze HDInsight).
 
@@ -59,7 +59,7 @@ Zacznij od utworzenia [Jupyter Notebook](https://jupyter.org/) skojarzonej z kla
     ![Wprowadzanie nazwy notesu](./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png "Wprowadzanie nazwy notesu")
 
 Teraz możesz rozpocząć tworzenie aplikacji.
-    
+
 ## <a name="read-data-from-azure-sql-database"></a>Odczytywanie danych z usługi Azure SQL Database
 
 W tej sekcji odczytujesz dane z tabeli (na przykład **tabeli SalesLT. Address**), która istnieje w bazie danych AdventureWorks.
@@ -76,7 +76,7 @@ W tej sekcji odczytujesz dane z tabeli (na przykład **tabeli SalesLT. Address**
 
     Naciśnij klawisze **SHIFT + ENTER**, aby uruchomić komórkę kodu.  
 
-1. Skorzystaj z poniższego fragmentu, aby utworzyć adres URL JDBC, który można przekazać do interfejsów API Spark Dataframe, tworzy `Properties` obiekt do przechowywania parametrów. Wklej ten fragment w komórce kodu i naciśnij klawisze **SHIFT + ENTER** , aby uruchomić.
+1. Użyj poniższego fragmentu, aby utworzyć adres URL JDBC, który można przekazać do interfejsów API Spark Dataframe. Kod tworzy obiekt `Properties` do przechowywania parametrów. Wklej ten fragment w komórce kodu i naciśnij klawisze **SHIFT + ENTER** , aby uruchomić.
 
        import java.util.Properties
 
@@ -92,10 +92,10 @@ W tej sekcji odczytujesz dane z tabeli (na przykład **tabeli SalesLT. Address**
 1. Teraz można wykonywać operacje na ramce Dataframe, na przykład pobierając schemat danych:
 
        sqlTableDF.printSchema
-   
+
     Zobaczysz dane wyjściowe podobne do następujących:
 
-    ![dane wyjściowe schematu](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "dane wyjściowe schematu")
+    (./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "dane wyjściowe schematu") ![wyjściowego schematu]
 
 1. Można również wykonywać operacje takie jak, pobierając 10 najważniejszych wierszy.
 
@@ -107,7 +107,7 @@ W tej sekcji odczytujesz dane z tabeli (na przykład **tabeli SalesLT. Address**
 
 ## <a name="write-data-into-azure-sql-database"></a>Zapisywanie danych w usłudze Azure SQL Database
 
-W tej sekcji używamy przykładowego pliku CSV dostępnego w klastrze, aby utworzyć tabelę w usłudze Azure SQL Database i wypełnić ją danymi. Przykładowy plik CSV (**HVAC. csv**) jest dostępny we wszystkich klastrach usługi HDInsight `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`w lokalizacji.
+W tej sekcji używamy przykładowego pliku CSV dostępnego w klastrze, aby utworzyć tabelę w usłudze Azure SQL Database i wypełnić ją danymi. Przykładowy plik CSV (**HVAC. csv**) jest dostępny we wszystkich klastrach usługi HDInsight w `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`.
 
 1. W nowym notesie Jupyter w komórce kodu wklej poniższy fragment kodu i Zastąp wartości symboli zastępczych wartościami dla bazy danych SQL Azure.
 
@@ -121,7 +121,7 @@ W tej sekcji używamy przykładowego pliku CSV dostępnego w klastrze, aby utwor
 
     Naciśnij klawisze **SHIFT + ENTER**, aby uruchomić komórkę kodu.  
 
-1. Poniższy fragment kodu kompiluje adres URL JDBC, który można przekazać do interfejsów API Spark Dataframe, `Properties` tworzy obiekt do przechowywania parametrów. Wklej ten fragment w komórce kodu i naciśnij klawisze **SHIFT + ENTER** , aby uruchomić.
+1. Poniższy fragment kodu kompiluje adres URL JDBC, który można przekazać do interfejsów API Spark Dataframe. Kod tworzy obiekt `Properties` do przechowywania parametrów. Wklej ten fragment w komórce kodu i naciśnij klawisze **SHIFT + ENTER** , aby uruchomić.
 
        import java.util.Properties
 
@@ -130,33 +130,35 @@ W tej sekcji używamy przykładowego pliku CSV dostępnego w klastrze, aby utwor
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")
 
-1. Poniższy fragment kodu umożliwia wyodrębnienie schematu danych w pliku HVAC. csv i użycie schematu do załadowania danych z woluminu CSV w ramce Dataframe `readDf`. Wklej ten fragment w komórce kodu i naciśnij klawisze **SHIFT + ENTER** , aby uruchomić.
+1. Poniższy fragment kodu służy do wyodrębniania schematu danych w pliku HVAC. csv i używania schematu do ładowania danych z woluminu CSV w ramce Dataframe `readDf`. Wklej ten fragment w komórce kodu i naciśnij klawisze **SHIFT + ENTER** , aby uruchomić.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-1. Użyj ramki Dataframe, `temphvactable`aby utworzyć tabelę tymczasową. `readDf` Następnie użyj tabeli tymczasowej, `hvactable_hive`aby utworzyć tabelę programu Hive.
+1. Użyj ramki danych `readDf`, aby utworzyć tabelę tymczasową `temphvactable`. Następnie użyj tabeli tymczasowej, aby utworzyć tabelę programu Hive, `hvactable_hive`.
 
        readDf.createOrReplaceTempView("temphvactable")
        spark.sql("create table hvactable_hive as select * from temphvactable")
 
-1. Na koniec Użyj tabeli Hive, aby utworzyć tabelę w usłudze Azure SQL Database. Poniższy fragment kodu jest `hvactable` tworzony w usłudze Azure SQL Database.
+1. Na koniec Użyj tabeli Hive, aby utworzyć tabelę w usłudze Azure SQL Database. Poniższy fragment kodu tworzy `hvactable` w usłudze Azure SQL Database.
 
        spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
 
-1. Nawiąż połączenie z bazą danych Azure SQL Database przy użyciu programu SSMS i `dbo.hvactable` Sprawdź, czy widzisz tam.
+1. Nawiąż połączenie z bazą danych Azure SQL Database przy użyciu programu SSMS i sprawdź, czy w tym miejscu jest wyświetlany `dbo.hvactable`.
 
     a. Uruchom program SSMS i Połącz się z usługą Azure SQL Database, dostarczając szczegóły połączenia, jak pokazano na poniższym zrzucie ekranu.
 
-    ![Nawiązywanie połączenia z usługą SQL Database za pomocą SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Nawiązywanie połączenia z usługą SQL Database za pomocą SSMS1")
+    ![Nawiązywanie połączenia z usługą SQL Database przy użyciu usługi SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "łączenie z bazą danych SQL przy użyciu usługi SSMS1")
 
-    b. Z Eksplorator obiektów rozwiń węzeł baza danych Azure SQL Database i tabelę, aby wyświetlić utworzony element **dbo. HVAC** .
+    b. W **Eksplorator obiektów**rozwiń bazę danych SQL Azure i węzeł tabeli, aby zobaczyć utworzoną tabelę **dbo. HVAC** .
 
-    ![Nawiązywanie połączenia z usługą SQL Database za pomocą SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Nawiązywanie połączenia z usługą SQL Database za pomocą SSMS2")
+    ![Nawiązywanie połączenia z usługą SQL Database przy użyciu usługi SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "łączenie z bazą danych SQL przy użyciu usługi SSMS2")
 
 1. Uruchom zapytanie w programie SSMS, aby zobaczyć kolumny w tabeli.
 
-        SELECT * from hvactable
+    ```sql
+    SELECT * from hvactable
+    ```
 
 ## <a name="stream-data-into-azure-sql-database"></a>Przesyłanie strumieniowe danych do usługi Azure SQL Database
 
@@ -164,7 +166,9 @@ W tej sekcji przesyłamy strumieniowo dane do tabeli **HVAC** , która została 
 
 1. W pierwszym kroku upewnij się, że w tabeli **HVAC**nie ma żadnych rekordów. Za pomocą programu SSMS Uruchom następujące zapytanie w tabeli.
 
-       TRUNCATE TABLE [dbo].[hvactable]
+    ```sql
+    TRUNCATE TABLE [dbo].[hvactable]
+    ```
 
 1. Tworzenie nowego notesu Jupyter w klastrze usługi HDInsight Spark. W komórce kodu wklej poniższy fragment kodu, a następnie naciśnij klawisze **SHIFT + ENTER**:
 
@@ -174,7 +178,7 @@ W tej sekcji przesyłamy strumieniowo dane do tabeli **HVAC** , która została 
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-1. Przesyłamy strumieniowo dane z pliku **HVAC. csv** do pliku HVAC. Plik HVAC. CSV jest dostępny w klastrze pod adresem `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`. W poniższym fragmencie kodu najpierw uzyskasz schemat danych do przesyłania strumieniowego. Następnie tworzymy ramkę danych przesyłania strumieniowego przy użyciu tego schematu. Wklej ten fragment w komórce kodu i naciśnij klawisze **SHIFT + ENTER** , aby uruchomić.
+1. Przesyłamy strumieniowo dane z pliku **HVAC. csv** do pliku HVAC. Plik HVAC. CSV jest dostępny w klastrze w `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`. W poniższym fragmencie kodu najpierw uzyskasz schemat danych do przesyłania strumieniowego. Następnie tworzymy ramkę danych przesyłania strumieniowego przy użyciu tego schematu. Wklej ten fragment w komórce kodu i naciśnij klawisze **SHIFT + ENTER** , aby uruchomić.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
@@ -182,7 +186,7 @@ W tej sekcji przesyłamy strumieniowo dane do tabeli **HVAC** , która została 
 
 1. Dane wyjściowe pokazują Schemat pliku **HVAC. csv**. Ten sam schemat jest również w formacie **HVAC** . W danych wyjściowych znajdują się kolumny w tabeli.
 
-    ![tabela schematu Apache Spark usługi HDInsight](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Schemat tabeli")
+    (./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "schemat tabeli programu") ![HDInsight Apache Spark schematu]tabeli
 
 1. Na koniec użyj poniższego fragmentu kodu, aby odczytać dane z pliku HVAC. csv i przesłać je strumieniowo do pliku **HVAC** w usłudze Azure SQL Database. Wklej ten fragment w komórce kodu, Zastąp wartości symboli zastępczych wartościami dla bazy danych SQL Azure, a następnie naciśnij klawisze **SHIFT + ENTER** , aby uruchomić.
 
@@ -227,7 +231,9 @@ W tej sekcji przesyłamy strumieniowo dane do tabeli **HVAC** , która została 
 
 1. Sprawdź, czy dane są przesyłane strumieniowo do środowiska **HVAC** , uruchamiając następujące zapytanie w SQL Server Management Studio (SSMS). Za każdym razem, gdy uruchamiasz zapytanie, pokazuje liczbę wierszy w tabeli.
 
-        SELECT COUNT(*) FROM hvactable
+    ```sql
+    SELECT COUNT(*) FROM hvactable
+    ```
 
 ## <a name="next-steps"></a>Następne kroki
 

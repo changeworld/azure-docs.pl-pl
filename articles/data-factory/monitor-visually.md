@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 99ae0139d7b12c0bfb87030d2b749b12834a4f96
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141096"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029143"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Wizualne monitorowanie fabryk danych platformy Azure
 Azure Data Factory to oparta na chmurze usługa integracji danych. Za jego pomocą można tworzyć oparte na danych przepływy pracy w chmurze służące do organizowania i automatyzowania przenoszenia i przekształcania danych. Za pomocą Azure Data Factory można:
@@ -45,12 +45,12 @@ Widok listy pokazuje Każde uruchomienie potoku dla potoków Data Factory. Zawie
 | Nazwa potoku | Nazwa potoku |
 | Akcje | Pojedyncza Akcja dostępna do wyświetlania uruchomień działań |
 | Uruchom uruchomienie | Data i godzina rozpoczęcia dla uruchomienia potoku (MM/DD/RRRR, gg: MM: SS AM/PM) |
-| Duration | Czas trwania uruchomienia (HH: MM: SS) |
+| Czas trwania | Czas trwania uruchomienia (HH: MM: SS) |
 | Wyzwolone przez | Wyzwalacz ręczny lub zaplanowany wyzwalacz |
-| State | **Zakończone niepowodzeniem**, **zakończone powodzeniem**lub **w toku** |
+| Stan | **Zakończone niepowodzeniem**, **zakończone powodzeniem**lub **w toku** |
 | Parametry | Parametry uruchomienia potoku (pary nazwa/wartość) |
 | Błąd | Błąd uruchomienia potoku (jeśli istnieje) |
-| Identyfikator uruchomienia | Identyfikator uruchomienia potoku |
+| Identyfikator przebiegu | Identyfikator uruchomienia potoku |
 
 ![Widok listy na potrzeby monitorowania przebiegów potoku](media/monitor-visually/pipeline-runs.png)
 
@@ -60,12 +60,12 @@ Widok listy pokazuje uruchomienia działania odpowiadające poszczególnym uruch
 | **Nazwa kolumny** | **Opis** |
 | --- | --- |
 | Nazwa działania | Nazwa działania w potoku |
-| Typ aktywności | Typ działania, na przykład **copy**, **HDInsightSpark**lub **HDInsightHive** |
+| Typ działania | Typ działania, na przykład **copy**, **HDInsightSpark**lub **HDInsightHive** |
 | Uruchom uruchomienie | Data i godzina rozpoczęcia uruchomienia działania (MM/DD/RRRR, HH: MM: SS AM/PM) |
-| Duration | Czas trwania uruchomienia (HH: MM: SS) |
-| State | **Zakończone niepowodzeniem**, **zakończone powodzeniem**lub **w toku** |
+| Czas trwania | Czas trwania uruchomienia (HH: MM: SS) |
+| Stan | **Zakończone niepowodzeniem**, **zakończone powodzeniem**lub **w toku** |
 | Dane wejściowe | Tablica JSON opisująca dane wejściowe działania |
-| Output | Tablica JSON opisująca dane wyjściowe działania |
+| Dane wyjściowe | Tablica JSON opisująca dane wyjściowe działania |
 | Błąd | Błąd uruchamiania działania (jeśli istnieje) |
 
 ![Widok listy dla uruchomionych działań monitorowania](media/monitor-visually/activity-runs.png)
@@ -90,7 +90,7 @@ Kolejność przebiegów potoku w OPISie/ASC według czasu rozpoczęcia przebiegu
 | --- | --- |
 | Nazwa potoku | Nazwa potoku. Opcje obejmują szybkie filtry dla **ostatnich 24 godzin**, **ubiegłych tygodni**i **ostatnich 30 dni**. Lub wybierz niestandardową datę i godzinę. |
 | Uruchom uruchomienie | Data i godzina rozpoczęcia uruchomienia potoku. |
-| Stan uruchomienia | Filtry przebiega według stanu: **Zakończone powodzeniem**, **zakończone niepowodzeniem**lub **w toku**. |
+| Stan uruchomienia | Filtry przebiega według stanu: **zakończone powodzeniem**, **zakończone niepowodzeniem**lub **w toku**. |
 
 ![Opcje filtrowania](media/monitor-visually/filter.png)
 
@@ -104,7 +104,7 @@ Zwiększ i zmniejsz szerokości kolumn w widoku listy, umieszczając kursor na n
 
 ## <a name="promote-user-properties-to-monitor"></a>Podnieś poziom właściwości użytkownika do monitorowania
 
-Każdą właściwość działania potoku można podwyższyć jako właściwość użytkownika, aby stała się ona jednostką, którą można monitorować. Na przykład można podwyższyć poziom właściwości źródłowej i **docelowej** działania kopiowania w potoku jako właściwości użytkownika. Możesz również wybrać pozycję **Generuj automatycznie** , aby wygenerować właściwości źródłowe i **docelowe** dla działania kopiowania.
+Każdą właściwość działania potoku można podwyższyć jako właściwość użytkownika, aby stała się ona jednostką, którą można monitorować. Na przykład można podwyższyć poziom właściwości **źródłowej** i **docelowej** działania kopiowania w potoku jako właściwości użytkownika. Możesz również wybrać pozycję **Generuj automatycznie** , aby wygenerować właściwości **źródłowe** i **docelowe** dla działania kopiowania.
 
 ![Tworzenie właściwości użytkownika](media/monitor-visually/monitor-user-properties-image1.png)
 
@@ -150,7 +150,7 @@ Długość paska informuje o czasie trwania potoku. Możesz również wybrać pa
 ![Czas trwania wykresu Gantta](media/monitor-visually/gantt3.png)
 
 ## <a name="guided-tours"></a>Przewodniki
-Wybierz ikonę **informacji** w lewym dolnym rogu. Następnie wybierz przewodniki instruktażowe, aby uzyskać instrukcje krok po kroku dotyczące monitorowania uruchomienia potoku i działania.
+Wybierz ikonę **informacji** w lewym dolnym rogu. Następnie wybierz przewodniki **instruktażowe** , aby uzyskać instrukcje krok po kroku dotyczące monitorowania uruchomienia potoku i działania.
 
 ![Przewodniki](media/monitor-visually/guided-tours.png)
 
@@ -161,7 +161,7 @@ Wybierz ikonę **opinii** , aby przekazać nam swoją opinię na temat różnych
 
 ## <a name="alerts"></a>Alerty
 
-Alerty dla obsługiwanych metryk można zgłaszać w Data Factory. Wybierz pozycję **Monitoruj** > **alerty & metryki** na stronie monitorowanie Data Factory, aby rozpocząć pracę.
+Alerty dla obsługiwanych metryk można zgłaszać w Data Factory. Wybierz pozycję **monitoruj** > **alerty & metryki** na stronie monitorowanie Data Factory, aby rozpocząć.
 
 ![Strona monitora fabryki danych](media/monitor-visually/alerts01.png)
 
@@ -169,9 +169,9 @@ Aby zapoznać się z wprowadzeniem do siedmiu minut i demonstracją tej funkcji,
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Monitor-your-Azure-Data-Factory-pipelines-proactively-with-alerts/player]
 
-### <a name="create-alerts"></a>Utwórz alerty
+### <a name="create-alerts"></a>Tworzenie alertów
 
-1.  Wybierz pozycję **Nowa reguła** alertu, aby utworzyć nowy Alert.
+1.  Wybierz pozycję **Nowa reguła alertu** , aby utworzyć nowy Alert.
 
     ![Przycisk reguły nowego alertu](media/monitor-visually/alerts02.png)
 

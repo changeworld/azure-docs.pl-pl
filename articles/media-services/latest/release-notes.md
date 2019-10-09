@@ -11,18 +11,18 @@ ms.workload: na
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 2d01828cb61937b45665e953a13795b5346a5f1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801391"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030535"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Informacje o wersji Azure Media Services v3
 
-Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedstawiono informacje o:
+Aby zachować aktualność najnowszych zmian, ten artykuł zawiera informacje na temat:
 
-* Zainstalowane najnowsze wersje
+* Najnowsze wersje
 * Znane problemy
 * Poprawki błędów
 * Przestarzałe funkcje
@@ -138,46 +138,46 @@ Moduł interfejsu wiersza polecenia 2,0 jest teraz dostępny dla [Azure Media Se
 ### <a name="new-commands"></a>Nowe polecenia
 
 - [AZ AMS Account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [AZ AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
 - [AZ AMS — zasób](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [AZ AMS Asset-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
 - [AZ AMS Content-Key-Policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
 - [zadanie AZ AMS](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
 - [AZ AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
 - [AZ AMS Live-Output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [AZ AMS Streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [AZ AMS Streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
 - [AZ AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) — umożliwia zarządzanie jednostkami zarezerwowanymi multimediów. Aby uzyskać więcej informacji, zobacz [skalowanie jednostek zarezerwowanych multimediów](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Nowe funkcje i istotne zmiany
 
 #### <a name="asset-commands"></a>Polecenia zasobów
 
-- ```--storage-account```i ```--container``` dodano argumenty.
-- Wartości domyślne dla czasu wygaśnięcia (teraz + 23h) i uprawnienia (odczyt) w ```az ams asset get-sas-url``` poleceniu.
+- dodano ```--storage-account``` i ```--container``` argumentów.
+- Domyślne wartości czasu wygaśnięcia (teraz + 23h) i uprawnienia (odczyt) w ```az ams asset get-sas-url``` polecenie zostało dodane.
 
 #### <a name="job-commands"></a>Polecenia zadań
 
-- ```--correlation-data```i ```--label``` dodano argumenty
-- ```--output-asset-names```Zmieniono nazwę ```--output-assets```na. Teraz akceptuje ona rozdzieloną spacjami listę elementów zawartości w formacie "assetname = Label". Element zawartości bez etykiety może być wysyłany w następujący sposób: "assetname =".
+- dodano argumenty ```--correlation-data``` i ```--label```
+- Nazwa ```--output-asset-names``` została zmieniona na ```--output-assets```. Teraz akceptuje ona rozdzieloną spacjami listę elementów zawartości w formacie "assetname = Label". Element zawartości bez etykiety może być wysyłany w następujący sposób: "assetname =".
 
 #### <a name="streaming-locator-commands"></a>Polecenia lokalizatora przesyłania strumieniowego
 
-- ```az ams streaming locator```polecenie podstawowe zostało zastąpione przez ```az ams streaming-locator```.
-- ```--streaming-locator-id```i ```--alternative-media-id support``` dodano argumenty.
-- ```--content-keys argument```argument został zaktualizowany.
-- ```--content-policy-name```Zmieniono nazwę ```--content-key-policy-name```na.
+- polecenie podstawowe ```az ams streaming locator``` zostało zastąpione ```az ams streaming-locator```.
+- dodano ```--streaming-locator-id``` i ```--alternative-media-id support``` argumentów.
+- Zaktualizowano argument ```--content-keys argument```.
+- Nazwa ```--content-policy-name``` została zmieniona na ```--content-key-policy-name```.
 
 #### <a name="streaming-policy-commands"></a>Polecenia zasad przesyłania strumieniowego
 
-- ```az ams streaming policy```polecenie podstawowe zostało zastąpione przez ```az ams streaming-policy```.
-- Obsługa parametrów szyfrowania została ```az ams streaming-policy create``` dodana.
+- polecenie podstawowe ```az ams streaming policy``` zostało zastąpione ```az ams streaming-policy```.
+- Obsługa parametrów szyfrowania w ```az ams streaming-policy create``` dodano.
 
 #### <a name="transform-commands"></a>Przekształcenia — polecenia
 
-- ```--preset-names```argument został zastąpiony przez ```--preset```. Teraz można jednocześnie ustawić 1 wartość wyjściową/ustawienie wstępne (aby dodać więcej informacji, które trzeba uruchomić ```az ams transform output add```). Ponadto można ustawić niestandardowe StandardEncoderPreset przez przekazanie ścieżki do niestandardowego kodu JSON.
-- ```az ams transform output remove```można wykonać, przekazując indeks danych wyjściowych do usunięcia.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```dodano argumenty w ```az ams transform create``` poleceniach i ```az ams transform output add``` .
+- argument ```--preset-names``` został zastąpiony ```--preset```. Teraz można jednocześnie ustawić 1 wartość wyjściową/ustawienie wstępne (aby dodać więcej ```az ams transform output add```). Ponadto można ustawić niestandardowe StandardEncoderPreset przez przekazanie ścieżki do niestandardowego kodu JSON.
+- ```az ams transform output remove``` można wykonać, przekazując indeks danych wyjściowych do usunięcia.
+- dodano argumenty ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` w poleceniach ```az ams transform create``` i ```az ams transform output add```.
 
 ## <a name="october-2018---ga"></a>Październik 2018 — GA
 
@@ -236,13 +236,13 @@ Można wyświetlić następujące ulepszenia Event Grid wsparcia:
 
 Obsługa szyfrowania CMAF i "cbcs" dla odtwarzaczy Apple HLS (iOS 11 +) i MPEG-PAUZ, które obsługują CMAF.
 
-### <a name="video-indexer"></a>Video Indexer
+### <a name="video-indexer"></a>Indeksator wideo
 
 Video Indexer wersja GA została ogłoszona w sierpniu. Aby uzyskać nowe informacje o aktualnie obsługiwanych funkcjach, zobacz [co to jest Video Indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 
-### <a name="plans-for-changes"></a>Plany dotyczące zmian
+### <a name="plans-for-changes"></a>Plany zmian
 
-#### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
+#### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure w wersji 2.0
  
 Dostępny jest moduł interfejsu wiersza polecenia platformy Azure 2,0 zawierający operacje na wszystkich funkcjach (w tym na żywo, Zasady kluczy zawartości, filtry kont/zasobów, zasady przesyłania strumieniowego). 
 
@@ -254,7 +254,7 @@ Jeśli utworzono zasoby lub filtry kont z zakresu od 09/28 do 10/12 przy użyciu
 
 ## <a name="may-2018---preview"></a>Maj 2018 — wersja zapoznawcza
 
-### <a name="net-sdk"></a>Zestaw SDK .NET
+### <a name="net-sdk"></a>Zestaw SDK dla platformy .NET
 
 Zestaw SDK platformy .NET zawiera następujące funkcje:
 
@@ -275,4 +275,5 @@ Zapoznaj się z artykułem [community Azure Media Services](media-services-commu
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Omówienie](media-services-overview.md)
+- [Omówienie](media-services-overview.md)
+- [Informacje o wersji Media Services V2](../previous/media-services-release-notes.md)

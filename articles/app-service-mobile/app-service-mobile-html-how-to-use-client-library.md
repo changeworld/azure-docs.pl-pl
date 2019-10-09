@@ -1,6 +1,6 @@
 ---
-title: Jak używać zestawu SDK języka JavaScript dla usługi Azure Mobile Apps
-description: Sposób użycia v usługi Azure Mobile Apps
+title: Jak używać zestawu SDK języka JavaScript dla platformy Azure Mobile Apps
+description: Jak używać programu v dla usługi Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: javascript
 author: elamalani
@@ -14,38 +14,38 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: d5aa2e326739a97ff3d518ec383f4cf14311ca74
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 410571320e5ffae9cf94c5035079e5b202190863
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446330"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027369"
 ---
-# <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Jak używać biblioteki klienckiej JavaScript dla usługi Azure Mobile Apps
+# <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Jak używać biblioteki klienckiej języka JavaScript dla platformy Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-html-how-to-use-client-library) już dziś.
->
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
-Tego przewodnika dowiesz się, aby wykonać typowe scenariusze za pomocą najnowszej [zestaw JavaScript SDK usługi Azure Mobile Apps]. Jeśli jesteś nowym użytkownikiem usługi Azure Mobile Apps, najpierw wykonaj [Azure mobilnych: aplikacje Szybki Start] tworzenie zaplecza i Utwórz tabelę. W tym przewodniku skupimy się na korzystanie z zaplecza aplikacji mobilnych w aplikacji sieci Web HTML/JavaScript.
+W tym przewodniku nauczysz się wykonywać typowe scenariusze przy użyciu najnowszego [Zestaw JavaScript SDK dla platformy Azure Mobile Apps]. Jeśli dopiero zaczynasz pracę z platformą Azure Mobile Apps, najpierw Ukończ [Szybki start Mobile Apps platformy Azure] , aby utworzyć zaplecze i utworzyć tabelę. W tym przewodniku koncentrujemy się na korzystaniu z zaplecza mobilnego w aplikacjach sieci Web w języku HTML/JavaScript.
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
-Ograniczona obsługa przeglądarek na bieżące i ostatnie wersje ważniejszymi przeglądarkami:  Google Chrome, Microsoft Edge, Microsoft Internet Explorer, and Mozilla Firefox.  Oczekujemy, że zestaw SDK do funkcji z dowolnej stosunkowo nowoczesnej przeglądarce.
+Ograniczamy obsługę przeglądarki do bieżących i ostatnich wersji głównych przeglądarek: Google Chrome, Microsoft Edge, Microsoft Internet Explorer i Mozilla Firefox.  Oczekujemy, że zestaw SDK będzie działał z każdą relatywnie nowoczesnym przeglądarką.
 
-Dystrybucji pakietu jako moduł uniwersalny język JavaScript obsługuje funkcje globalne, AMD, i formatuje CommonJS.
+Pakiet jest dystrybuowany jako moduł uniwersalny języka JavaScript, dlatego obsługuje formaty Globals, AMD i CommonJS.
 
-## <a name="Setup"></a>Instalacji i wymagania wstępne
-W tym przewodniku założono, że utworzono zaplecza za pomocą tabeli. W tym przewodniku założono, że tabela ma ten sam schemat, jak tabele w tych samouczkach.
+## <a name="Setup"></a>Instalacja i wymagania wstępne
+W tym przewodniku przyjęto założenie, że utworzono zaplecze z tabelą. W tym przewodniku przyjęto założenie, że tabela ma ten sam schemat co tabele w tych samouczkach.
 
-Instalowanie zestawu SDK języka JavaScript usługi Azure Mobile Apps może odbywać się za pośrednictwem `npm` polecenia:
+Instalowanie zestawu Azure Mobile Apps JavaScript SDK można wykonać za pomocą polecenia `npm`:
 
 ```
 npm install azure-mobile-apps-client --save
 ```
 
-Biblioteki może również służyć jako moduł ES2015 w środowiskach CommonJS, takie jak Browserify i Webpack i jako biblioteka AMD.  Na przykład:
+Biblioteka może być również używana jako moduł ES2015 w środowiskach CommonJS, takich jak Browserify i WebPack oraz jako biblioteka AMD.  Na przykład:
 
 ```javascript
 // For ECMAScript 5.1 CommonJS
@@ -54,7 +54,7 @@ var WindowsAzure = require('azure-mobile-apps-client');
 import * as WindowsAzure from 'azure-mobile-apps-client';
 ```
 
-Umożliwia także wstępnie skompilowanych wersji zestawu SDK, pobierając bezpośrednio z naszej sieci CDN:
+Możesz również użyć wstępnie skompilowanej wersji zestawu SDK, pobierając bezpośrednio z naszej sieci CDN:
 
 ```html
 <script src="https://zumo.blob.core.windows.net/sdk/azure-mobile-apps-client.min.js"></script>
@@ -62,53 +62,53 @@ Umożliwia także wstępnie skompilowanych wersji zestawu SDK, pobierając bezpo
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Jak: Uwierzytelnianie użytkowników
-Usługa Azure App Service obsługuje uwierzytelnianie i autoryzowanie użytkowników aplikacji za pomocą różnych dostawców tożsamości zewnętrznych: Facebook, Google, konta Microsoft i Twitter. Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Tożsamość uwierzytelnionych użytkowników umożliwia również zaimplementować reguły autoryzacji w skryptów serwera. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z uwierzytelnianiem] samouczka.
+## <a name="auth"></a>Instrukcje: uwierzytelnianie użytkowników
+Azure App Service obsługuje uwierzytelnianie i Autoryzowanie użytkowników aplikacji przy użyciu różnych zewnętrznych dostawców tożsamości: Facebook, Google, konto Microsoft i Twitter. Możesz ustawić uprawnienia dla tabel, aby ograniczyć dostęp do określonych operacji tylko do użytkowników uwierzytelnionych. Aby zaimplementować reguły autoryzacji w skryptach serwera, można także użyć tożsamości uwierzytelnionych użytkowników. Aby uzyskać więcej informacji, zobacz samouczek [wprowadzenie do uwierzytelniania] .
 
-Obsługiwane są dwa przepływy uwierzytelniania: przepływ serwera i klienta przepływu.  Przepływ serwera zapewnia najprostszą proces uwierzytelniania opiera się na interfejs uwierzytelniania sieci web dostawcy. Przepływ klienta pozwala na lepszą integrację z funkcjami specyficznych dla urządzenia, takich jak logowanie jednokrotne ponieważ opiera się na zestawy SDK specyficzne dla dostawcy.
+Obsługiwane są dwa przepływy uwierzytelniania: przepływ serwera i przepływ klienta.  Przepływ serwera zapewnia najprostsze środowisko uwierzytelniania, ponieważ opiera się on na interfejsie uwierzytelniania sieci Web dostawcy. Przepływ klienta umożliwia dokładniejszą integrację z funkcjami specyficznymi dla konkretnego urządzenia, takimi jak logowanie jednokrotne, w zależności od specyficznych dla dostawcy zestawów SDK.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Jak: Konfigurowanie usługi Mobile App Service dla adresy URL zewnętrznego przekierowania.
-Kilka typów aplikacji JavaScript Użyj możliwości sprzężenia zwrotnego do obsługi uwierzytelniania OAuth interfejsu użytkownika przepływów.  Te funkcje obejmują:
+### <a name="configure-external-redirect-urls"></a>Instrukcje: Konfigurowanie App Service mobilnego dla zewnętrznych adresów URL przekierowań.
+Kilka typów aplikacji JavaScript używa funkcji sprzężenia zwrotnego do obsługi przepływów interfejsu użytkownika OAuth.  Dostępne są następujące możliwości:
 
 * Uruchamianie usługi lokalnie
-* Ponowne ładowanie na żywo przy użyciu struktury Ionic
-* Przekierowywanie do usługi App Service do uwierzytelniania.
+* Używanie usługi Live reload z platformą jonową
+* Przekierowanie do App Service na potrzeby uwierzytelniania.
 
-Działająca lokalnie może powodować problemy, ponieważ domyślnie uwierzytelniania usługi App Service jest tylko skonfigurowane i umożliwiają dostęp z zapleczem aplikacji mobilnej. Aby zmienić ustawienia usługi App Service, aby włączyć uwierzytelnianie podczas uruchamiania lokalnego serwera, wykonaj następujące kroki:
+Uruchamianie lokalne może spowodować problemy, ponieważ domyślnie uwierzytelnianie App Service jest skonfigurowane tak, aby zezwalać na dostęp z zaplecza aplikacji mobilnej. Aby zmienić ustawienia App Service, należy wykonać następujące kroki, aby włączyć uwierzytelnianie w przypadku lokalnego uruchamiania serwera:
 
 1. Zaloguj się do witryny [Azure Portal].
 2. Przejdź do zaplecza aplikacji mobilnej.
-3. Wybierz **Eksploratora zasobów** w **narzędzia PROGRAMISTYCZNE** menu.
-4. Kliknij przycisk **Przejdź** otwarcie Eksploratora zasobów do zaplecza aplikacji mobilnej w nowej karcie lub w oknie.
-5. Rozwiń **config** > **authsettings** węzła dla aplikacji.
-6. Kliknij przycisk **Edytuj** przycisk, aby włączyć edytowanie zasobów.
-7. Znajdź **allowedExternalRedirectUrls** element, który powinien mieć wartość null. Dodaj swoje adresy URL w tablicy:
+3. Wybierz pozycję **Eksplorator zasobów** w menu **Narzędzia programistyczne** .
+4. Kliknij pozycję **Przejdź** , aby otworzyć Eksploratora zasobów dla zaplecza aplikacji mobilnej na nowej karcie lub w nowym oknie.
+5. Rozwiń węzeł **konfiguracji** > **authsettings** dla aplikacji.
+6. Kliknij przycisk **Edytuj** , aby włączyć edytowanie zasobu.
+7. Znajdź element **allowedExternalRedirectUrls** , który powinien mieć wartość null. Dodawanie adresów URL w tablicy:
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
 
-    Zastąp adresy URL w tablicy przy użyciu adresów URL usługi, czyli w tym przykładzie `http://localhost:3000` lokalnej usługi Node.js w próbce. Można także użyć `http://localhost:4400` usługi Ripple lub niektórych innych adresu URL, w zależności od sposobu skonfigurowania aplikacji.
-8. W górnej części strony kliknij **odczytu/zapisu**, następnie kliknij przycisk **umieścić** Aby zapisać zmiany.
+    Zastąp adresy URL w tablicy adresami URL usługi, w tym przykładzie `http://localhost:3000` dla lokalnej usługi przykładowej Node. js. W zależności od konfiguracji aplikacji można również użyć `http://localhost:4400` dla usługi Ripple lub innego adresu URL.
+8. W górnej części strony kliknij pozycję **Odczytaj/Zapisz**, a następnie kliknij pozycję **Umieść** , aby zapisać aktualizacje.
 
-Należy również dodać tych samych adresów URL sprzężenia zwrotnego do ustawień listy dozwolonych CORS:
+Należy również dodać te same adresy URL sprzężenia zwrotnego do ustawień CORS dozwolonych:
 
 1. Przejdź z powrotem do [Azure Portal].
 2. Przejdź do zaplecza aplikacji mobilnej.
-3. Kliknij przycisk **CORS** w **API** menu.
-4. Wprowadź każdy adres URL w pustych **dozwolone źródła** pola tekstowego.  Nowe pole tekstowe zostanie utworzony.
-5. Kliknij przycisk **ZAPISZ**
+3. Kliknij pozycję **CORS** w menu **interfejsu API** .
+4. Wprowadź każdy adres URL w polu tekstowym puste **dozwolone źródła** .  Zostanie utworzone nowe pole tekstowe.
+5. Kliknij przycisk **Zapisz**
 
-Po zaktualizowaniu wewnętrznej bazy danych będzie można korzystać z nowych sprzężenia zwrotnego adresów URL w aplikacji.
+Po aktualizacji zaplecza będziesz mieć możliwość użycia nowych adresów URL sprzężenia zwrotnego w aplikacji.
 
 <!-- URLs. -->
-[Azure mobilnych: aplikacje Szybki Start]: app-service-mobile-cordova-get-started.md
-[Rozpoczynanie pracy z uwierzytelnianiem]: app-service-mobile-cordova-get-started-users.md
+[Szybki start Mobile Apps platformy Azure]: app-service-mobile-cordova-get-started.md
+[Wprowadzenie do uwierzytelniania]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Azure Portal]: https://portal.azure.com/
-[Zestaw JavaScript SDK usługi Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
+[Zestaw JavaScript SDK dla platformy Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

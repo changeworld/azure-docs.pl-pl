@@ -1,55 +1,55 @@
 ---
-title: Mapowanie transformacji klucza zastępczy przepływu danych w usłudze Azure Data Factory
-description: Jak używać usługi Azure Data Factory mapowanie przepływu zastępczy klucza przekształcania danych do generowania wartości klucza sekwencyjne
+title: Przekształcenie klucza zastępczego przepływu danych mapowania Azure Data Factory
+description: Jak używać transformacji klucza zastępczego przepływu danych Azure Data Factory mapowania, aby generować sekwencyjne wartości klucza
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: eaa1c577f7e208400d3430222b006e0dbbd7956a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45e2d35a3b0a3f3c89913bbe70d7c43c17cbcee0
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61350624"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029181"
 ---
-# <a name="mapping-data-flow-surrogate-key-transformation"></a>Mapowanie transformacji klucza zastępczy przepływu danych
+# <a name="mapping-data-flow-surrogate-key-transformation"></a>Przekształcanie przekształcenia klucza zastępczego przepływu danych
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Użyj przekształcania klucz zastępczy, aby dodać zwiększającej się wartości inne niż firmy dowolnego wartość klucza do Twojego zestawu wierszy przepływu danych. Jest to przydatne podczas projektowania tabel wymiarów w modelu danych analitycznych schemat gwiazdy, gdzie każdy element członkowski w tabelach wymiarów musi mieć unikatowy klucz, który jest częścią klucza niebiznesowe metodologii Kimballa DW.
 
-![Zastępczych przekształcenia klucza](media/data-flow/surrogate.png "zastępczych Przekształcenie klucza")
+Użyj przekształcenia klucza dwuskładnikowego, aby dodać przyrostową wartość klucza niewspółpracującego do zestawu wierszy przepływu danych. Jest to przydatne podczas projektowania tabel wymiarów w modelu danych analitycznych schematu gwiazdy, gdzie każdy element członkowski w tabelach wymiarów musi mieć unikatowy klucz, który jest kluczem niebiznesowym, częścią metodologii Kimballa DW.
 
-"Kolumna klucza" jest nazwę, która zostanie nadana do nowej kolumny klucza zastępczy.
+Przekształcanie(media/data-flow/surrogate.png "klucza zastępczego") ![transformacji klucza]zastępczego
 
-"Wartość początkowa" to punkt początkowy wartość przyrostową.
+"Kolumna klucza" to nazwa, która zostanie nadana nowej kolumnie klucza zastępczego.
 
-## <a name="increment-keys-from-existing-sources"></a>Inkrementacja kluczy z istniejących źródeł
+"Wartość początkowa" jest punktem początkowym wartości przyrostowej.
 
-Jeśli chcesz uruchomić danej sekwencji z wartości znajdującą się w źródle, możesz użyć przekształcenie kolumny nie pochodzącej od razu po swoją transformację klucz zastępczy i dodać dwie wartości razem:
+## <a name="increment-keys-from-existing-sources"></a>Przyrostowe klawisze z istniejących źródeł
 
-![SK Dodaj Max](media/data-flow/sk006.png "zastępczy klucza przekształcania Dodaj maksymalna")
+Jeśli chcesz uruchomić sekwencję z wartości, która istnieje w źródle, możesz użyć przekształcenia kolumn pochodnych bezpośrednio po przekształceniu klucza zastępczego i dodać dwie wartości jednocześnie:
 
-Wartość klucza z poprzedniego maksymalna wartość początkową, istnieją dwie techniki, które są dostępne:
+![Sk Dodawanie maksymalnego](media/data-flow/sk006.png "przekształcenia klucza zastępczego Dodaj maksimum")
 
-### <a name="database-sources"></a>Źródłami bazy danych
+Aby obsłużyć wartość klucza z poprzednią maksymalną, istnieją dwie techniki, których można użyć:
 
-Za pomocą opcji "Query" wybierzesz MAX() ze źródła przy użyciu transformacji źródła:
+### <a name="database-sources"></a>Źródła bazy danych
 
-![Zastępczych klucza zapytania](media/data-flow/sk002.png "zastępczych zapytanie przekształcenia klucza")
+Użyj opcji "Query", aby wybrać wartość MAX () ze źródła przy użyciu transformacji źródłowej:
 
-### <a name="file-sources"></a>Plikowych źródeł
+(media/data-flow/sk002.png "Zapytanie o przekształcenie klucza zastępczego") ![zapytania klucza]zastępczego
 
-Jeśli Twoje poprzednie maksymalna wartość znajduje się w pliku, można użyć swoją transformację źródła wraz z przekształcenie agregacji i użyj funkcji wyrażenia MAX() można pobrać poprzednią wartość maksymalna:
+### <a name="file-sources"></a>Źródła plików
 
-![Plik klucza zastępczych](media/data-flow/sk008.png "zastępczych pliku klucza")
+Jeśli poprzednia maksymalna wartość znajduje się w pliku, można użyć transformacji źródłowej razem z transformację zagregowaną i użyć funkcji wyrażenia MAX (), aby uzyskać poprzednią wartość maksymalną:
 
-W obu przypadkach musisz dołączyć nowe dane przychodzące wraz z źródła zawierający poprzednią wartość maksymalna:
+(media/data-flow/sk008.png "Plik klucza zastępczego") ![pliku klucza zastępczego]
 
-![Zastępczych klucza sprzężenia](media/data-flow/sk004.png "zastępczych klucza sprzężenia")
+W obu przypadkach należy przyłączyć przychodzące nowe dane razem ze źródłem, które zawiera poprzednią wartość maksymalną:
 
-## <a name="next-steps"></a>Kolejne kroki
+![](media/data-flow/sk004.png "Sprzężenie zastępcze klawisza") Join
 
-Użyj tych przykładach [Dołącz](data-flow-join.md) i [kolumny nie pochodzącej ze](data-flow-derived-column.md) przekształcenia.
+## <a name="next-steps"></a>Następne kroki
+
+W poniższych przykładach użyto [sprzężeń](data-flow-join.md) i przekształceń [kolumn pochodnych](data-flow-derived-column.md) .

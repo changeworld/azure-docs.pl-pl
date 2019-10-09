@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9d85b5a72c2e37719348d61250d167eb9a5688a1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: e7dc1e6c1bb1ca81ada59cb3dae8fecbc6452b7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240021"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029790"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Łączenie danych z zapory aplikacji sieci Web firmy Microsoft
 
@@ -40,10 +40,10 @@ Po wdrożeniu i pobieraniu danych przez zaporę aplikacji sieci Web firmy Micros
     
 1. W portalu wskaźnikowym platformy Azure wybierz pozycję **Łączniki danych**.
 1. Na stronie łączniki danych wybierz kafelek **WAF** .
-1. Przejdź do [zasobu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) Application Gateway i wybierz pozycję WAF.
-    1. Wybierz pozycję **Ustawienia diagnostyczne**.
-    1. Wybierz pozycję **+ Dodaj ustawienie diagnostyczne** w tabeli.
-    1. Na stronie **Ustawienia diagnostyczne** wpisz **nazwę** i wybierz pozycję **Wyślij do log Analytics**.
+1. Przejdź do obszaru [Application Gateway resource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways)@no__t — 1AND wybierz WAF.
+    1. Wybierz pozycję **Ustawienia diagnostyczne**.
+    1. Wybierz pozycję **+ Dodaj ustawienie diagnostyczne** w tabeli.
+    1. Na stronie **Ustawienia diagnostyczne** wpisz **nazwę** i wybierz pozycję **Wyślij do log Analytics**.
     1. W obszarze **obszar roboczy log Analytics** wybierz obszar roboczy wskaźnik platformy Azure.
     1. Wybierz typy dzienników, które chcesz analizować. Zalecamy: ApplicationGatewayAccessLog i ApplicationGatewayFirewallLog.
 1. Aby użyć odpowiedniego schematu w Log Analytics dla alertów zapory aplikacji sieci Web firmy Microsoft, Wyszukaj pozycję **AzureDiagnostics**.

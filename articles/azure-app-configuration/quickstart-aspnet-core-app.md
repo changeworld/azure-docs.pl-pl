@@ -14,14 +14,14 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b4642ecfad17bf3e926e9efdec034bbe4aa6c20e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a2764c8e634fd8d827cba9fa7ec9cb61cc6c40af
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076306"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035299"
 ---
-# <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki start: Tworzenie aplikacji platformy ASP.NET Core używającej usługi Azure App Configuration
+# <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki Start: Tworzenie aplikacji ASP.NET Core przy użyciu konfiguracji aplikacji platformy Azure
 
 W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azure do aplikacji ASP.NET Core w celu scentralizowanego przechowywania i zarządzania ustawieniami aplikacji oddzielonymi od kodu. ASP.NET Core kompiluje pojedynczy obiekt konfiguracji oparty na kluczu wartości przy użyciu ustawień z co najmniej jednego źródła danych, które są określone przez aplikację. Te źródła danych są nazywane *dostawcami konfiguracji*. Ponieważ klient .NET Core konfiguracji aplikacji jest zaimplementowany jako ten dostawca, usługa będzie wyświetlana jak inne źródło danych.
 
@@ -34,9 +34,9 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz kolejno pozycje **Eksplorator** > konfiguracji **+ Utwórz** , aby dodać następujące pary klucz-wartość:
+6. Wybierz pozycję **Eksplorator konfiguracji** >  **+ Utwórz** , aby dodać następujące pary klucz-wartość:
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     |---|---|
     | TestApp:Settings:BackgroundColor | Biały |
     | TestApp:Settings:FontSize | 24 |
@@ -53,13 +53,13 @@ Aby utworzyć nowy projekt aplikacji sieci Web MVC ASP.NET Core, należy użyć 
 
 2. W nowym folderze Uruchom następujące polecenie, aby utworzyć nowy projekt aplikacji sieci Web ASP.NET Core MVC:
 
-        dotnet new mvc
+        dotnet new mvc --no-https
 
 ## <a name="add-secret-manager"></a>Dodawanie narzędzia Secret Manager
 
-Aby użyć Menedżera wpisów tajnych, `UserSecretsId` Dodaj element do pliku *. csproj* .
+Aby użyć Menedżera wpisów tajnych, Dodaj element `UserSecretsId` do pliku *csproj* .
 
-- Otwórz plik *. csproj* . `UserSecretsId` Dodaj element, jak pokazano tutaj. Możesz użyć tego samego identyfikatora GUID lub można zastąpić tę wartość własną. Zapisz plik.
+- Otwórz plik *. csproj* . Dodaj `UserSecretsId` elementu, jak pokazano poniżej. Możesz użyć tego samego identyfikatora GUID lub można zastąpić tę wartość własną. Zapisz plik.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -81,9 +81,9 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
 
 ## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
-1. Dodaj odwołanie do `Microsoft.Azure.AppConfiguration.AspNetCore` pakietu NuGet, uruchamiając następujące polecenie:
+1. Dodaj odwołanie do pakietu NuGet `Microsoft.Azure.AppConfiguration.AspNetCore`, uruchamiając następujące polecenie:
 
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
 
 2. Uruchom następujące polecenie, aby przywrócić pakiety dla projektu:
 
@@ -98,7 +98,7 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
     > [!IMPORTANT]
-    > Niektóre powłoki poobcinają parametry połączenia, chyba że są ujęte w cudzysłów. Upewnij się, że dane wyjściowe `dotnet user-secrets` polecenia pokazują wszystkie parametry połączenia. Jeśli tak nie jest, należy ponownie uruchomić polecenie, umieszczając parametry połączenia w cudzysłowie.
+    > Niektóre powłoki poobcinają parametry połączenia, chyba że są ujęte w cudzysłów. Upewnij się, że dane wyjściowe polecenia `dotnet user-secrets` pokazują wszystkie parametry połączenia. Jeśli tak nie jest, należy ponownie uruchomić polecenie, umieszczając parametry połączenia w cudzysłowie.
 
     Menedżer wpisów tajnych służy tylko do lokalnego testowania aplikacji sieci Web. Gdy aplikacja jest wdrażana w [Azure App Service](https://azure.microsoft.com/services/app-service/web), na przykład w celu przechowywania parametrów połączenia należy użyć **parametrów połączenia** w App Service, a nie za pomocą Menedżera Secret.
 
@@ -110,7 +110,7 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-5. Zaktualizuj metodę, aby użyć konfiguracji aplikacji przez `config.AddAzureAppConfiguration()` wywołanie metody. `CreateWebHostBuilder`
+5. Zaktualizuj metodę `CreateWebHostBuilder`, aby użyć konfiguracji aplikacji przez wywołanie metody `config.AddAzureAppConfiguration()`.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

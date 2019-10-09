@@ -1,6 +1,6 @@
 ---
-title: Dodaj indywidualnie licencjonowanych użytkowników do Licencjonowanie oparte na grupach — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak przeprowadzić migrację z licencji użytkownika do licencjonowania opartego na grupach, przy użyciu usługi Azure Active Directory
+title: Dodawanie indywidualnie licencjonowanych użytkowników do licencjonowania opartego na grupach — Azure Active Directory | Microsoft Docs
+description: Jak przeprowadzić migrację z licencji poszczególnych użytkowników do licencjonowania opartego na grupach przy użyciu Azure Active Directory
 services: active-directory
 keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
@@ -11,83 +11,79 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 09/26/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333f0ae0153073b57740446ecf47e36a1f9ce590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29ec9c05a7e7d594c64a450fe64e5bb0e0d1b7d0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192454"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034762"
 ---
-# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Jak przeprowadzić migrację użytkowników z licencjami poszczególnych grup licencjonowania
+# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Jak migrować użytkowników z licencjami indywidualnymi do grup na potrzeby licencjonowania
 
-Masz istniejące licencje wdrożone dla użytkowników w organizacji za pośrednictwem "bezpośredniego przypisania"; oznacza to za pomocą skryptów programu PowerShell lub innych narzędzi, aby przypisać licencje do poszczególnych użytkowników. Przed rozpoczęciem korzystania Licencjonowanie na podstawie grupy, aby zarządzać licencjami w organizacji, można użyć ten plan migracji można bezproblemowo zastąpić istniejące rozwiązania z licencjonowaniem opartym na grupie.
+Możesz mieć istniejące licencje wdrożone dla użytkowników w organizacjach za pośrednictwem "bezpośredniego przypisania"; oznacza to, że za pomocą skryptów programu PowerShell lub innych narzędzi do przypisywania licencji poszczególnych użytkowników. Przed rozpoczęciem korzystania z licencjonowania opartego na grupach w celu zarządzania licencjami w organizacji można użyć tego planu migracji, aby bezproblemowo zamienić istniejące rozwiązania na Licencjonowanie oparte na grupach.
 
-Ważne jest, aby pamiętać o to, że należy unikać sytuacji, w których migracja do Licencjonowanie na podstawie grupy spowoduje tymczasowo utraty ich aktualnie przypisanych licencji użytkowników. Każdy proces, który może spowodować usunięcie licencji należy unikać do usunięcia ryzyko utraty dostępu do usług i ich danych.
+Najważniejszym czynnikiem, które należy wziąć pod uwagę, jest uniknięcie sytuacji, w której migracja do licencjonowania opartego na grupach spowoduje tymczasowe utratę aktualnie przypisanych licencji. Wszelkie procesy, które mogą skutkować usunięciem licencji, powinny być nieuniknione w celu usunięcia ryzyka utraty dostępu do usług i ich danych.
 
-## <a name="recommended-migration-process"></a>Proces migracji zalecane
+## <a name="recommended-migration-process"></a>Zalecany proces migracji
 
-1. Masz istniejące usługi automation (na przykład programu PowerShell), zarządzanie przypisania licencji i usuwania dla użytkowników. Pozostaw będzie działać, ponieważ jest.
+1. Masz już istniejącą automatyzację (na przykład program PowerShell), która zarządza przypisaniem licencji i usuwaniem dla użytkowników. Pozostaw to działanie w systemie.
 
-2. Utwórz nową grupę licencji (lub zdecydować, które istniejących grup do użycia) i upewnij się, że wszystkie wymagane użytkownicy są dodawani jako członkowie.
+1. Utwórz nową grupę licencjonowania (lub Zdecyduj, które istniejące grupy mają być używane) i upewnij się, że wszyscy wymagani użytkownicy są dodawani jako członkowie.
 
-3. Przypisywanie licencji do tych grup; Celem powinno być w celu odzwierciedlenia takiego samego stanu licencjonowania, które istniejącej usługi automation (na przykład programu PowerShell) są stosowane do tych użytkowników.
+1. Przypisywanie wymaganych licencji do tych grup; Celem powinna być odzwierciedlenie tego samego stanu licencjonowania, który posiada istniejąca Automatyzacja (na przykład program PowerShell) dla tych użytkowników.
 
-4. Sprawdź, czy licencje zostały zastosowane do wszystkich użytkowników w tych grupach. Ta aplikacja może odbywać się sprawdzając stan przetwarzania dla każdej grupy i sprawdzając dzienniki inspekcji.
+1. Sprawdź, czy licencje zostały zastosowane do wszystkich użytkowników w tych grupach. Tę aplikację można wykonać, sprawdzając stan przetwarzania poszczególnych grup i sprawdzając dzienniki inspekcji.
 
-   - Możesz poszczególnych użytkowników w miejscu, analizując ich szczegóły licencji. Zostanie wyświetlony, mają te same licencje przypisane "bezpośrednio" i "dziedziczone" z grupy.
+   - Możesz sprawdzać poszczególnych użytkowników, przeglądając ich szczegóły licencji. Zobaczysz, że mają te same licencje przypisane "bezpośrednio" i "Odziedziczone" z grup.
 
-   - Można uruchomić skryptu programu PowerShell, aby [Sprawdź, jak są przypisywane licencje do użytkowników](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
+   - Można uruchomić skrypt programu PowerShell, aby [sprawdzić, w jaki sposób licencje są przypisane do użytkowników](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
 
-   - Po przypisaniu licencji produktu w tym samym użytkownikowi zarówno bezpośrednio i za pośrednictwem grupy, tylko jedna licencja jest wykorzystywane przez użytkownika. Dlatego żadne dodatkowe licencje są wymagane do przeprowadzenia migracji.
+   - Gdy ta sama licencja produktu jest przypisana do użytkownika zarówno bezpośrednio, jak i za pomocą grupy, użytkownik korzysta z tylko jednej licencji. Z tego powodu żadne dodatkowe licencje nie są wymagane do przeprowadzenia migracji.
 
-5. Upewnij się, że żadnych przypisań licencji nie powiodło się, sprawdzając w każdej grupie użytkowników w stanie błąd. Aby uzyskać więcej informacji, zobacz [rozpoznawanie i rozwiązywania problemów z licencją dla grupy](licensing-groups-resolve-problems.md).
+1. Sprawdź, czy żadne przypisania licencji nie powiodły się, sprawdzając każdą grupę dla użytkowników w stanie błąd. Aby uzyskać więcej informacji, zobacz [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy](licensing-groups-resolve-problems.md).
 
-6. Rozważ usunięcie oryginalnego przypisań bezpośrednich; Można to zrobić w stopniowo, "etapami", najpierw monitorować wyniki dla podzbioru użytkowników.
-
-   Można pozostawić oryginalny przypisań bezpośrednich, użytkownicy, ale gdy użytkownicy opuszczają ich grup licencji nadal zachowa oryginalnej licencji, który ma prawdopodobnie nie ma.
+Rozważ usunięcie oryginalnych przypisań bezpośrednich. Zalecamy jej stopniowe i monitorowanie wyników najpierw w podzbiorze użytkowników. Jeśli możesz opuścić oryginalne bezpośrednie przypisania dla użytkowników, ale gdy użytkownicy opuściją licencjonowane grupy, zachowają przypisane bezpośrednio licencje, które mogą nie być potrzebne.
 
 ## <a name="an-example"></a>Przykład
 
-Organizacja ma 1000 użytkowników jednocześnie. Wszyscy użytkownicy wymagają pakietu Enterprise Mobility + Security (EMS) licencji. 200 użytkownikom w dziale finansowym i wymagają licencji usługi Office 365 Enterprise E3. Obecnie organizacja ma uruchomiony lokalnie, dodawanie i usuwanie licencji użytkowników, jak długo będą pochodzić i przejdź skrypt programu PowerShell. Jednak organizacja chce Zamień skryptu oparte na grupach licencji, licencje mogą automatycznie zarządzane przez usługę Azure AD.
+Organizacja ma 1 000 użytkowników. Wszyscy użytkownicy wymagają licencji dla pakietu Office 365 Enterprise E3. Obecnie organizacja ma skrypt programu PowerShell uruchomiony w środowisku lokalnym, dodając i usuwając licencje od użytkowników. Jednak organizacja chce zastąpić skrypt przy użyciu licencjonowania opartego na grupach, dzięki czemu licencje mogą być zarządzane automatycznie przez usługę Azure AD.
 
-Poniżej przedstawiono, jak może wyglądać procesu migracji:
+Oto, jak może wyglądać proces migracji:
 
-1. W witrynie Azure portal, przypisać licencji pakietu EMS do **wszyscy użytkownicy** grupy w usłudze Azure AD. Przypisać licencję E3 **pracownicy działu finansowego** grupy zawierającej wszystkich wymaganych użytkowników.
+1. Za pomocą Azure Portal Przypisz licencję pakietu Office 365 E3 do grupy **Wszyscy użytkownicy** w usłudze Azure AD.
 
-2. Dla każdej grupy upewnij się, że przypisanie licencji zakończył się dla wszystkich użytkowników. Przejdź do bloku dla każdej grupy wybierz **licencji**i sprawdzić stan przetwarzania w górnej części **licencji** bloku.
+1. Upewnij się, że ukończono przypisanie licencji dla wszystkich użytkowników. Przejdź do strony przegląd dla grupy, wybierz pozycję **licencje**i sprawdź stan przetwarzania w górnej części bloku **licencje** .
 
-   - Wyszukaj "Licencję najnowsze zmiany zostały zastosowane do wszystkich użytkowników" Aby upewnić się, przetwarzanie zostało zakończone.
+   - Wyszukaj "najnowsze zmiany licencji zostały zastosowane do wszystkich użytkowników" w celu potwierdzenia przetworzenia.
 
-   - Poszukaj powiadomień u góry dotyczących wszystkich użytkowników, dla których licencji mogą nie zostały pomyślnie przypisane. Uruchomiliśmy już licencji dla niektórych użytkowników? Niektórzy użytkownicy mają licencję powodujące konflikt jednostek SKU, które uniemożliwiają dziedziczenie grupy licencji?
+   - Wyszukaj powiadomienie na temat informacji o użytkownikach, dla których licencje mogły nie zostać pomyślnie przypisane. Czy w przypadku niektórych użytkowników zabrakło licencji? Czy niektórzy użytkownicy mają sprzeczne plany licencji, które uniemożliwiają dziedziczenie licencji grupowych?
 
-3. Miejscu Sprawdź niektórych użytkowników, aby sprawdzić, czy mają one zarówno bezpośrednich i grupy licencji stosowane. Przejdź do bloku dla użytkownika, wybierz opcję **licencji**oraz zbadania stanu licencji.
+1. Sprawdź, czy niektórzy użytkownicy sprawdzają, czy mają zastosowane zarówno licencje bezpośrednie, jak i grupy. Przejdź do strony profilu użytkownika, wybierz pozycję **licencje**i przejrzyj stan licencji.
 
-   - Jest to stan oczekiwany użytkownika podczas migracji:
+   - Jest to oczekiwany stan użytkownika podczas migracji:
 
-      ![Stan oczekiwany użytkownika podczas migracji](./media/licensing-groups-migrate-users/expected-user-state.png)
+      ![oczekiwany stan użytkownika podczas migracji](./media/licensing-groups-migrate-users/expected-user-state.png)
 
-   Będzie to potwierdzenie, że użytkownik ma licencje dziedziczone i bezpośrednie. Widzimy, że oba **EMS** i **E3** są przypisane.
+     Jest to potwierdzenie, że użytkownik ma zarówno licencje bezpośrednie, jak i dziedziczone. Widzimy, że pakiet Office 365 E3 jest przypisany.
 
-   - Wybierz każdej licencji, aby wyświetlić szczegółowe informacje o usługach włączone. Może to służyć do sprawdzania, jeśli bezpośrednie i grupy licencji, Włącz dokładnie tych samych planów usługi dla użytkownika.
+   - Wybierz każdą licencję, aby zobaczyć, które usługi są włączone. Aby sprawdzić, czy licencje bezpośredniego i grupowe włączą dokładnie te same usługi dla użytkownika, wybierz pozycję **przypisania**.
 
-      ![Sprawdź planów usług dla użytkownika](./media/licensing-groups-migrate-users/check-service-plans.png)
+1. Po potwierdzeniu, że zarówno licencje bezpośrednie, jak i grupy są równoważne, można rozpocząć usuwanie bezpośrednich licencji od użytkowników. Można to przetestować, usuwając je dla poszczególnych użytkowników w portalu, a następnie uruchamiając skrypty automatyzacji, aby zostały usunięte zbiorczo. Oto przykład tego samego użytkownika z bezpośrednimi licencjami, które zostały usunięte za pośrednictwem portalu. Należy zauważyć, że stan licencji pozostaje niezmieniony, ale nie są już wyświetlane bezpośrednie przypisania.
 
-4. Po potwierdzeniu, że zarówno bezpośrednich, jak i grupy licencji są równoważne, można uruchomić, usunięcie bezpośrednie licencji użytkowników. Można testować tę aplikację, usuwając je dla poszczególnych użytkowników w portalu, a następnie uruchom skrypty automatyzacji, aby były usuwane w trybie zbiorczym. Oto przykład tego samego użytkownika z licencjami bezpośrednie usunięte za pośrednictwem portalu. Zwróć uwagę, stan licencji pozostaje niezmieniony, że firma Microsoft nie jest już wyświetlana przypisań bezpośrednich.
+   ![Potwierdź, że licencje bezpośrednie są usuwane](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
-   ![Upewnij się, że licencje bezpośredniego są usuwane](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="next-steps"></a>Kolejne kroki
+Dowiedz się więcej na temat innych scenariuszy zarządzania licencjami grupy:
 
-Aby dowiedzieć się, jak inne scenariusze dotyczące zarządzania licencjami za pomocą grup, przeczytaj
-
-* [Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
-* [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-change-licenses.md)
-* [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](licensing-group-advanced.md)
-* [Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-ps-examples.md)
+- [Co to jest Licencjonowanie oparte na grupach w Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+- [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
+- [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
+- [Jak migrować użytkowników między licencjami produktu przy użyciu licencjonowania opartego na grupach w programie Azure Active Directory](licensing-groups-change-licenses.md)
+- [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](licensing-group-advanced.md)
+- [Przykłady programu PowerShell dla licencjonowania opartego na grupach w Azure Active Directory](licensing-ps-examples.md)

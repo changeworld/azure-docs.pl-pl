@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ef060127840838778a00fdabd2d56b2ef23d6f4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3abc221295a90dfbf7e46e3bd5bff1c8c0937162
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082700"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035003"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników NVIDIA GPU na maszynach wirtualnych serii N z systemem Linux
 
@@ -98,7 +98,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS lub Red Hat Enterprise Linux
 
-1. Zaktualizuj jądro (zalecane). Jeśli nie zdecydujesz się na aktualizowanie jądra, upewnij się, że wersje programu `kernel-devel` i `dkms` są odpowiednie dla danego jądra.
+1. Zaktualizuj jądro (zalecane). Jeśli nie chcesz zaktualizować jądra, upewnij się, że wersje `kernel-devel` i `dkms` są odpowiednie dla jądra.
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -159,7 +159,7 @@ Jeśli sterownik jest zainstalowany, zostaną wyświetlone dane wyjściowe podob
 
 Łączność sieciową RDMA można włączyć na maszynach wirtualnych z serii N obsługujących funkcję RDMA, takich jak NC24r wdrożone w tym samym zestawie dostępności lub w pojedynczej grupie umieszczania w zestawie skalowania maszyn wirtualnych. Sieć RDMA obsługuje ruch MPI (Message Passing Interface) dla aplikacji uruchamianych z technologią Intel MPI 5. x lub nowszą. Dodatkowe wymagania są następujące:
 
-### <a name="distributions"></a>Dystrybucje
+### <a name="distributions"></a>Dystrybucji
 
 Wdrażaj maszyny wirtualne z serii N obsługujące RDMA przy użyciu jednego z obrazów w portalu Azure Marketplace, które obsługuje łączność RDMA na maszynach wirtualnych z serii N:
   
@@ -190,7 +190,7 @@ Aby zainstalować sterowniki siatki NVIDIA na maszynach wirtualnych z serii NV l
    
    sudo apt-get install linux-azure -y
    ```
-3. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem NVIDIA. (Użyj sterownika NVIDIA tylko na maszynach wirtualnych NV lub NVv2). W tym celu Utwórz plik `/etc/modprobe.d` o nazwie `nouveau.conf` z następującą zawartością:
+3. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem NVIDIA. (Użyj sterownika NVIDIA tylko na maszynach wirtualnych NV lub NVv2). W tym celu Utwórz plik w `/etc/modprobe.d` o nazwie `nouveau.conf` z następującą zawartością:
 
    ```
    blacklist nouveau
@@ -223,14 +223,14 @@ Aby zainstalować sterowniki siatki NVIDIA na maszynach wirtualnych z serii NV l
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
 
-8. Dodaj następujące elementy `/etc/nvidia/gridd.conf`:
+8. Dodaj następujące elementy do `/etc/nvidia/gridd.conf`:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE
    ```
    
-9. Usuń następujące z `/etc/nvidia/gridd.conf` nich, jeśli są obecne:
+9. Usuń następujące elementy z `/etc/nvidia/gridd.conf`, jeśli są obecne:
  
    ```
    FeatureType=0
@@ -240,7 +240,7 @@ Aby zainstalować sterowniki siatki NVIDIA na maszynach wirtualnych z serii NV l
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS lub Red Hat Enterprise Linux 
 
-1. Zaktualizuj jądro i DKMS (zalecane). Jeśli nie zdecydujesz się na aktualizowanie jądra, upewnij się, że wersje programu `kernel-devel` i `dkms` są odpowiednie dla danego jądra.
+1. Zaktualizuj jądro i DKMS (zalecane). Jeśli nie chcesz zaktualizować jądra, upewnij się, że wersje `kernel-devel` i `dkms` są odpowiednie dla jądra.
  
    ```bash  
    sudo yum update
@@ -254,7 +254,7 @@ Aby zainstalować sterowniki siatki NVIDIA na maszynach wirtualnych z serii NV l
    sudo yum install hyperv-daemons
    ```
 
-2. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem NVIDIA. (Użyj sterownika NVIDIA tylko na maszynach wirtualnych NV lub NV2). W tym celu Utwórz plik `/etc/modprobe.d` o nazwie `nouveau.conf` z następującą zawartością:
+2. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem NVIDIA. (Użyj sterownika NVIDIA tylko na maszynach wirtualnych NV lub NV2). W tym celu Utwórz plik w `/etc/modprobe.d` o nazwie `nouveau.conf` z następującą zawartością:
 
    ```
    blacklist nouveau
@@ -277,7 +277,7 @@ Aby zainstalować sterowniki siatki NVIDIA na maszynach wirtualnych z serii NV l
 
    ```
  
-4. Ponownie nawiąż połączenie z maszyną wirtualną `lspci` i uruchom polecenie. Sprawdź, czy karta NVIDIA M60 lub karty są widoczne jako urządzenia PCI.
+4. Ponownie nawiąż połączenie z maszyną wirtualną i uruchom polecenie `lspci`. Sprawdź, czy karta NVIDIA M60 lub karty są widoczne jako urządzenia PCI.
  
 5. Pobierz i zainstaluj sterownik siatki:
 
@@ -296,13 +296,13 @@ Aby zainstalować sterowniki siatki NVIDIA na maszynach wirtualnych z serii NV l
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
   
-8. Dodaj następujące elementy `/etc/nvidia/gridd.conf`:
+8. Dodaj następujące elementy do `/etc/nvidia/gridd.conf`:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. Usuń następujące z `/etc/nvidia/gridd.conf` nich, jeśli są obecne:
+9. Usuń następujące elementy z `/etc/nvidia/gridd.conf`, jeśli są obecne:
  
    ```
    FeatureType=0
@@ -321,7 +321,7 @@ Jeśli sterownik jest zainstalowany, zostaną wyświetlone dane wyjściowe podob
  
 
 ### <a name="x11-server"></a>Serwer X11
-Jeśli potrzebujesz serwera X11 dla połączeń zdalnych z maszyną wirtualną NV lub NVv2, zaleca się, aby [x11vnc](http://www.karlrunge.com/x11vnc/) , ponieważ umożliwia przyspieszenie sprzętowe grafiki. BusID urządzenia M60 należy dodać ręcznie do pliku konfiguracji X11 (zazwyczaj `etc/X11/xorg.conf`). `"Device"` Dodaj sekcję podobną do następującej:
+Jeśli potrzebujesz serwera X11 dla połączeń zdalnych z maszyną wirtualną NV lub NVv2, zaleca się, aby [x11vnc](http://www.karlrunge.com/x11vnc/) , ponieważ umożliwia przyspieszenie sprzętowe grafiki. BusID urządzenia M60 należy dodać ręcznie do pliku konfiguracji X11 (zazwyczaj `etc/X11/xorg.conf`). Dodaj sekcję `"Device"` podobną do następującej:
  
 ```
 Section "Device"
@@ -333,7 +333,7 @@ Section "Device"
 EndSection
 ```
  
-Ponadto zaktualizuj `"Screen"` sekcję, aby korzystać z tego urządzenia.
+Ponadto zaktualizuj sekcję `"Screen"`, aby korzystać z tego urządzenia.
  
 BusID dziesiętną można znaleźć, uruchamiając
 
@@ -357,11 +357,12 @@ else
 fi
 ```
 
-Następnie utwórz wpis dla skryptu aktualizacji w programie `/etc/rc.d/rc3.d` , aby skrypt był wywoływany jako element główny przy rozruchu.
+Następnie utwórz wpis dla skryptu aktualizacji w `/etc/rc.d/rc3.d`, aby skrypt był wywoływany jako element główny przy rozruchu.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-* Można ustawić tryb trwałości przy użyciu `nvidia-smi` , aby dane wyjściowe polecenia były szybsze, gdy zachodzi potrzeba zazapytania o karty. Aby ustawić tryb trwałości, wykonaj `nvidia-smi -pm 1`. Należy pamiętać, że jeśli maszyna wirtualna jest ponownie uruchamiana, ustawienie Tryb zostanie wysunięte. Zawsze możesz wykonać skrypty dla ustawienia Tryb, które ma być wykonywane po uruchomieniu.
+* Można ustawić tryb trwałości przy użyciu `nvidia-smi`, aby dane wyjściowe polecenia były szybsze, gdy zachodzi potrzeba zapytania o karty. Aby ustawić tryb trwałości, wykonaj `nvidia-smi -pm 1`. Należy pamiętać, że jeśli maszyna wirtualna jest ponownie uruchamiana, ustawienie Tryb zostanie wysunięte. Zawsze możesz wykonać skrypty dla ustawienia Tryb, które ma być wykonywane po uruchomieniu.
+* Jeśli sterowniki NVIDIA CUDA zostały zaktualizowane do najnowszej wersji i znajdowanie connectivcity RDMA nie działa, należy [ponownie zainstalować sterowniki RDMA](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) w celu reistablish łączności. 
 
 ## <a name="next-steps"></a>Następne kroki
 

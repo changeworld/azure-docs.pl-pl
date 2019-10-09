@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/2/2019
+ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5132581c3d79db88dabc3c20ac3b962226d8a12d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827100"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025833"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -45,6 +45,8 @@ Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania.
 
 ## <a name="14250"></a>1.4.25.0
 
+
+
 ### <a name="release-status"></a>Stan wydania
 9/28/2019: wydano do autouaktualnienia, aby wybrać dzierżawców. Niedostępne do pobrania.
 
@@ -56,12 +58,15 @@ W pewnych okolicznościach serwery, które były automatycznie uaktualnione do w
 
 ## <a name="14180"></a>1.4.18.0
 
+>[!WARNING]
+>Badamy przypadki, w których niektórzy klienci napotykają problem z istniejącymi przyłączonymi do niej urządzeniami hybrydowymi usługi Azure AD po uaktualnieniu do tej wersji programu Azure AD Connect. Radzimy klientom, którzy utworzyli sprzężenie hybrydowe usługi Azure AD, aby odroczyć uaktualnienie do tej wersji do momentu, w pełni zrozumiałe i skorygowane przyczyny problemu głównego. Więcej informacji będzie można uzyskać tak szybko, jak to możliwe.
+
 >[!IMPORTANT]
 >W tej wersji programu Azure AD Connect niektórzy klienci mogą zobaczyć, że niektóre lub wszystkie urządzenia z systemem Windows znikną z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te tożsamości urządzeń nie są używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [omówienie Azure AD Connect 1.4. XX. x Device disappearnce](reference-connect-device-disappearance.md)
 
 
 ### <a name="release-status"></a>Stan wydania
-9/25/2019: wydano do autouaktualnienia i pobrania
+9/25/2019: Usunięto z ręcznego pobierania, dopóki nie zostanie zakończone badanie zdarzenia.
 
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 - Nowe narzędzia do rozwiązywania problemów ułatwiają rozwiązywanie problemów z scenariuszami "użytkownik niesynchronizowany", "Grupa niezsynchronizowana" lub "członek grupy nie jest synchronizowany".

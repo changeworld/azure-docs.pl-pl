@@ -1,50 +1,50 @@
 ---
-title: Operator najlepsze rozwiązania — zaawansowane funkcje usługi scheduler w usłudze Azure Kubernetes usługi (AKS)
-description: Dowiedz się, operator klastra najlepsze rozwiązania dotyczące używania harmonogramu zaawansowane funkcje, takie jak nasłonecznieniem i tolerations, selektory węzła i koligacji lub koligację między pod i konfiguracji zapobiegającej koligacji w usłudze Azure Kubernetes Service (AKS)
+title: Najlepsze rozwiązania dla operatorów — zaawansowane funkcje harmonogramu w usłudze Azure Kubernetes Services (AKS)
+description: Zapoznaj się z najlepszymi rozwiązaniami operatora klastra dotyczącymi korzystania z zaawansowanych funkcji harmonogramu, takich jak przyrządy i tolerowanie, selektory węzłów i koligacja lub koligacja między innymi i ochrona w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614871"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026111"
 ---
-# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zaawansowanych funkcji harmonogramu w usłudze Azure Kubernetes Service (AKS)
 
-W przypadku zarządzania klastrów w usłudze Azure Kubernetes Service (AKS), często jest konieczne do izolowania obciążeń i zespołów. Harmonogram Kubernetes zapewnia zaawansowane funkcje umożliwiające kontrolowanie zasobników, które mogą być planowane na niektóre węzły lub sposób dystrybucji wielu zasobników, które aplikacje mogą odpowiednio w klastrze. 
+Podczas zarządzania klastrami w usłudze Azure Kubernetes Service (AKS) często trzeba izolować zespoły i obciążenia. Usługa Kubernetes Scheduler udostępnia zaawansowane funkcje, które umożliwiają kontrolowanie, które z nich można zaplanować na niektórych węzłach, lub jak aplikacje wieloskładnikowe mogą być odpowiednio dystrybuowane w klastrze. 
 
-Najlepsze rozwiązania dotyczące tej koncentruje się na Kubernetes zaawansowane funkcje planowania dla operatorów klastra. W tym artykule omówiono sposób wykonywania następujących zadań:
+Te najlepsze rozwiązania koncentrują się na zaawansowanych funkcjach planowania Kubernetes dla operatorów klastra. W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Użyj nasłonecznieniem oraz tolerations, aby ograniczyć zasobników, jakie mogą być planowane w węzłach
-> * Nadaj preferencji do zasobników do uruchamiania na niektóre węzły z selektory węzła lub koligacji węzłów
-> * Podziel od siebie lub grupy zasobników razem z koligację między zasobnika lub konfiguracji zapobiegającej koligacji
+> * Użyj przydziałów i tolerowania, aby ograniczyć liczbę elementów, które można zaplanować w węzłach
+> * Nadaj preferencjom, które mają być uruchamiane na niektórych węzłach przy użyciu selektorów węzłów lub koligacji węzłów
+> * Podział na siebie lub grupowanie z użyciem koligacji między
 
-## <a name="provide-dedicated-nodes-using-taints-and-tolerations"></a>Podaj przy użyciu nasłonecznieniem i tolerations węzły dedykowane
+## <a name="provide-dedicated-nodes-using-taints-and-tolerations"></a>Zapewnianie dedykowanych węzłów przy użyciu przydzielonych im i odtolerowaeń
 
-**Najważniejsze wskazówki** -ograniczania dostępu dla aplikacji intensywnie korzystających z zasobów, takich jak kontrolery ruch przychodzący do określonych węzłów. Aktualizowanie węzła zasoby dostępne dla obciążeń wymagających ich i nie zezwala na planowanie innych obciążeń w węzłach.
+**Wskazówki dotyczące najlepszych** rozwiązań — ograniczanie dostępu do aplikacji intensywnie korzystających z zasobów, takich jak kontrolery ruchu przychodzącego, do określonych węzłów. Przechowuj zasoby węzła dla obciążeń, które ich wymagają, i nie Zezwalaj na planowanie innych obciążeń w węzłach.
 
-Podczas tworzenia klastra usługi AKS możesz wdrożyć węzły z obsługą procesorów GPU lub dużej liczby wydajne procesory CPU. Węzły te są często używane do przetwarzania danych dużych obciążeń, takich jak usługi machine learning (ML) lub sztucznej inteligencji (AI). Ten typ sprzętu jest zwykle zasobem kosztowne węzła do wdrożenia, należy ograniczyć obciążeń, które mogą być planowane na tych węzłach. Zamiast tego możesz przeznaczyć niektóre węzły w klastrze, aby uruchomić usługami transferem danych przychodzących i zapobiec innych obciążeń.
+Podczas tworzenia klastra AKS można wdrożyć węzły z obsługą procesora GPU lub dużą liczbą zaawansowanych procesorów CPU. Te węzły są często używane do obciążeń przetwarzania dużych ilości danych, takich jak uczenie maszynowe (ML) lub Sztuczna inteligencja (AI). Ponieważ ten typ sprzętu jest zazwyczaj kosztownym zasobem węzła do wdrożenia, Ogranicz obciążenia, które można zaplanować w tych węzłach. Możesz zamiast tego chcieć przeznaczyć niektóre węzły w klastrze do uruchamiania usług przychodzących i uniemożliwić inne obciążenia.
 
-Ta obsługa dla różnych węzłów znajduje się za pomocą wielu pul węzłów. Klaster AKS zawiera co najmniej jedną pulę węzłów. Obsługa wielu pul węzłów w usłudze AKS jest obecnie w wersji zapoznawczej.
+Ta obsługa różnych węzłów jest zapewniana przy użyciu wielu pul węzłów. Klaster AKS zawiera co najmniej jedną pulę węzłów. Obsługa wielu pul węzłów w AKS jest obecnie w wersji zapoznawczej.
 
-Harmonogram Kubernetes nasłonecznieniem i umożliwia tolerations ograniczyć, jakie obciążenia mogą być uruchamiane w węzłach.
+Harmonogram Kubernetes może używać przyniesień i tolerowanych elementów w celu ograniczenia obciążeń, które mogą być uruchamiane w węzłach.
 
-* A **skażenia** jest stosowany do węzła, który wskazuje na nich można zaplanować tylko określonych zasobników.
-* A **toleration** jest następnie stosowane do zasobników, które umożliwia im *tolerować* zmiany barwy węzła.
+* Do **węzła jest stosowany** obiekt, który wskazuje na ich zaplanowanie tylko określonych zasobników.
+* **Tolerowana** jest następnie stosowana do elementu, który umożliwia im *tolerowanie* kształtu węzła.
 
-Podczas wdrażania zasobnika klaster AKS rozwiązania Kubernetes tylko planuje zasobników w węzłach, w którym toleration jest powiązana z zmiany barwy. Na przykład załóżmy, że masz pulę węzłów w klastrze AKS dla węzłów z procesorem GPU pomocy technicznej. Zdefiniuj nazwę, taką jak *procesora gpu*, następnie wartość do planowania. Jeśli ta wartość jest ustawiona na *NoSchedule*, harmonogram Kubernetes nie można zaplanować zasobników w węźle, jeśli Zasobnik nie zdefiniowano toleration odpowiednie.
+W przypadku wdrażania programu pod kątem klastra AKS, Kubernetes tylko planuje w węzłach, które są wyrównane z przydziałami. Załóżmy na przykład, że masz pulę węzłów w klastrze AKS dla węzłów z obsługą procesora GPU. Należy zdefiniować nazwę, na przykład *GPU*, a następnie wartość planowania. Jeśli ustawisz tę wartość na *NoSchedule*, usługa Kubernetes Scheduler nie będzie mogła zaplanować w węźle, czy nie zdefiniują odpowiednich wartości dopuszczalnych.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Za pomocą zmiany barwy zastosowane do węzłów należy zdefiniować toleration w specyfikacji zasobnik, która umożliwia planowanie w węzłach. W poniższym przykładzie zdefiniowano `sku: gpu` i `effect: NoSchedule` tolerować zmiany barwy zastosowany do węzła w poprzednim kroku:
+Po zastosowaniu przeznaczenie do węzłów należy zdefiniować tolerowanie w specyfikacji pod, która umożliwia planowanie w węzłach. W poniższym przykładzie zdefiniowano `sku: gpu` i `effect: NoSchedule`, aby tolerować przebarwienie zastosowane do węzła w poprzednim kroku:
 
 ```yaml
 kind: Pod
@@ -69,44 +69,44 @@ spec:
     effect: "NoSchedule"
 ```
 
-Podczas wdrażania tego zasobnika, takiej jak `kubectl apply -f gpu-toleration.yaml`, Kubernetes pomyślnie zaplanować zasobnik w węzłach o zmiany barwy stosowane. Ta izolacja logiczna pozwala kontrolować dostęp do zasobów w ramach klastra.
+Po wdrożeniu tego wdrożenia, na przykład przy użyciu `kubectl apply -f gpu-toleration.yaml`, Kubernetes można pomyślnie zaplanować na węzłach z zastosowaniem zmiany. Ta izolacja logiczna pozwala kontrolować dostęp do zasobów w klastrze.
 
-Po zastosowaniu nasłonecznieniem współpracować z Twojej aplikacji deweloperzy i właściciele umożliwia im do definiowania tolerations wymagane w bieżących wdrożeń.
+Po zastosowaniu przydziałów należy współpracować z programistami i właścicielami aplikacji, aby mogli definiować wymagane tolerowania w ich wdrożeniach.
 
-Aby uzyskać więcej informacji na temat nasłonecznieniem i tolerations zobacz [stosowanie nasłonecznieniem i tolerations][k8s-taints-tolerations].
+Aby uzyskać więcej informacji na temat zmian i odniesień, zobacz [stosowanie zmian i tolerowanych][k8s-taints-tolerations].
 
-Aby uzyskać więcej informacji na temat używania wielu pul węzłów w usłudze AKS, zobacz [tworzenie wielu pul węzłów klastra w usłudze AKS i zarządzanie nimi][use-multiple-node-pools].
+Aby uzyskać więcej informacji na temat używania wielu pul węzłów w AKS, zobacz [Tworzenie wielu pul węzłów i zarządzanie nimi w klastrze w AKS][use-multiple-node-pools].
 
-### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Zachowanie nasłonecznieniem i tolerations w usłudze AKS
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Zachowanie przyciągania i tolerowania w AKS
 
-Podczas uaktualniania pulę węzłów w usłudze AKS nasłonecznieniem i tolerations wykonaj wzorzec zestawu, są one stosowane do nowych węzłów:
+Po uaktualnieniu puli węzłów w AKS, jego przypisaniach i tolerowaniu stosują się do wzorca zestawu, gdy są one stosowane do nowych węzłów:
 
-- **Klastry domyślnej bez Obsługa skalowania maszyn wirtualnych**
-  - Załóżmy, że masz dwa węzły klastra - *Węzeł1* i *Węzeł2*. Podczas uaktualniania, dodatkowego węzła (*Węzeł3*) jest tworzony.
-  - Nasłonecznieniem z *Węzeł1* są stosowane do *Węzeł3*, następnie *Węzeł1* jest usuwany.
-  - Inny nowy węzeł zostanie utworzony (o nazwie *Węzeł1*, od czasu poprzedniego *Węzeł1* został usunięty) i *Węzeł2* nasłonecznieniem są stosowane do nowych *Węzeł1*. Następnie *Węzeł2* zostanie usunięty.
-  - W zasadzie *Węzeł1* staje się *Węzeł3*, i *Węzeł2* staje się *Węzeł1*.
+- **Klastry domyślne bez obsługi skalowania maszyn wirtualnych**
+  - Załóżmy, że masz klaster z dwoma węzłami — *Węzeł1* i *Węzeł2*. Podczas uaktualniania jest tworzony dodatkowy węzeł (*Węzeł3*).
+  - *Węzeł1* są stosowane do *Węzeł3*, a następnie *Węzeł1* jest usuwana.
+  - Tworzony jest inny nowy węzeł (o nazwie *Węzeł1*, ponieważ poprzedni *Węzeł1* został usunięty), a do nowego *Węzeł1*są stosowane *węzeł2y* . Następnie *Węzeł2* jest usuwany.
+  - W zasadzie *Węzeł1* staną się *Węzeł3*, a *Węzeł2* zostanie *Węzeł1*.
 
-- **Zestawy skalowania klastrów korzystających z maszyny wirtualnej** (obecnie dostępna w wersji zapoznawczej w usłudze AKS)
-  - Ponownie, załóżmy, że masz dwa węzły klastra - *Węzeł1* i *Węzeł2*. Możesz uaktualnić pulę węzłów.
-  - Dwa dodatkowe węzły są tworzone, *Węzeł3* i *Węzeł4*, a nasłonecznieniem są przekazywane na odpowiednio.
-  - Oryginalny *Węzeł1* i *Węzeł2* zostaną usunięte.
+- **Klastry korzystające z zestawów skalowania maszyn wirtualnych**
+  - Załóżmy, że masz klaster z dwoma węzłami — *Węzeł1* i *Węzeł2*. Należy uaktualnić pulę węzłów.
+  - Tworzone są dwa dodatkowe węzły, *Węzeł3* i *Węzeł4*, a ich przekazanie odbywa się odpowiednio.
+  - Oryginalne *Węzeł1* i *Węzeł2* są usuwane.
 
-Skalowanie puli węzeł w usłudze AKS nasłonecznieniem oraz tolerations nie mają przez projekt.
+W przypadku skalowania puli węzłów w AKS, zmiany czasu i tolerowania nie są przenoszone przez projektowanie.
 
-## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Zasobnik kontroli, tworzenie harmonogramów przy użyciu koligacji i selektorów węzła
+## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Kontrola pod planowaniem przy użyciu selektorów węzłów i koligacji
 
-**Najważniejsze wskazówki** — kontrolować planowania zasobników w węzłach za pomocą węzła selektorów, koligacji węzłów lub komunikacja między pod koligacji. Te ustawienia umożliwiają harmonogramu Kubernetes do logicznie izolowania obciążeń, takich jak przez sprzęt, w węźle.
+**Wskazówki dotyczące najlepszych** rozwiązań — Kontroluj planowanie zadań w węzłach przy użyciu selektorów węzłów, koligacji węzłów lub koligacji między innymi. Te ustawienia pozwalają usłudze Kubernetes Scheduler logicznie izolować obciążenia, na przykład przez sprzęt w węźle.
 
-Nasłonecznieniem i tolerations służą do logicznie izolowanie zasobów za pomocą twardych odcięcia — jeśli Zasobnik nie ma znaczenia zmiany barwy węzła, nie jest zaplanowane na węźle. Alternatywnym podejściu jest węzeł selektorów należy używać. Węzły, takie jak etykiety są do wskazywać magazyn SSD podłączonych lokalnie lub dużej ilości pamięci, a następnie zdefiniuj w specyfikacji zasobnika selektora węzła. Kubernetes następnie planuje tych zasobników w węźle dopasowania. W odróżnieniu od tolerations można zaplanować zasobników, bez pasującego selektor węzła w węzłach etykietami. Takie zachowanie umożliwia nieużywane zasoby w węzłach korzystać, ale daje priorytetu do zasobników, które definiują pasującego selektor węzła.
+Przydziały i tolerowania są używane do logicznego izolowania zasobów przy użyciu trwałego obcinania — Jeśli nie jest to tolerowane w węźle, nie jest ono zaplanowane w węźle. Alternatywnym rozwiązaniem jest użycie selektorów węzłów. Etykiety węzłów, takie jak wskazuje lokalnie podłączony magazyn SSD lub dużą ilość pamięci, a następnie definiują w selektorze węzła specyfikację. Kubernetes następnie planuje te zasobniki w zgodnym węźle. W przeciwieństwie do tolerowania, w przypadku węzłów z etykietami nie można zaplanować wydziałów bez pasującego selektora węzłów. Takie zachowanie zezwala na używanie nieużywanych zasobów w węzłach, ale daje priorytet dla tego samego zasobnika, który definiuje pasujący selektor węzła.
 
-Spójrzmy na przykład węzły z dużej ilości pamięci. Te węzły można nadać preferencji do zasobników, które żądają dużej ilości pamięci. Aby upewnić się, że nie znajdują się zasoby bezczynności, również zezwolić innym zasobników uruchomić.
+Spójrzmy na przykład węzłów z dużą ilością pamięci. Te węzły mogą dać preferencję do zasobników, które żądają dużej ilości pamięci. Aby upewnić się, że zasoby nie są bezczynne, zezwalają również na uruchamianie innych zasobów.
 
 ```console
 kubectl label node aks-nodepool1 hardware:highmem
 ```
 
-Specyfikacja zasobnik, który jest następnie dodaje `nodeSelector` do definiowania selektor węzła, zgodną z etykietą właściwością w węźle:
+Specyfikacja pod, następnie dodaje właściwość `nodeSelector`, aby zdefiniować selektor węzła, który jest zgodny z zestawem etykiet w węźle:
 
 ```yaml
 kind: Pod
@@ -128,15 +128,15 @@ spec:
       hardware: highmem
 ```
 
-Korzystając z tych opcji harmonogramu, pracy z Twojej aplikacji deweloperzy i właściciele umożliwia im poprawnie zdefiniować ich specyfikacje zasobników.
+Korzystając z tych opcji harmonogramu, Pracuj z programistami i właścicielami aplikacji, aby umożliwić im poprawne Definiowanie ich specyfikacji.
 
-Aby uzyskać więcej informacji o korzystaniu z węzła selektorów, zobacz [przypisywanie zasobników do węzłów][k8s-node-selector].
+Aby uzyskać więcej informacji na temat używania selektorów węzłów, zobacz [przypisywanie zasobników do węzłów][k8s-node-selector].
 
-### <a name="node-affinity"></a>Koligacja węzła
+### <a name="node-affinity"></a>Koligacja węzłów
 
-Selektor węzeł jest podstawowy sposób przypisać zasobników do danego węzła. Elastyczność jest dostępne za pośrednictwem *koligacji węzłów*. Za pomocą koligacji węzła należy zdefiniować, co się stanie, jeśli nie można dopasować zasobnik z węzłem. Możesz *wymagają* że Kubernetes harmonogram odpowiada zasobnik z etykietami hosta. Można też *Preferuj* dopasowanie, ale zezwalaj na zasobnik na zaplanowane na inny host, jeśli nie dopasowanie jest dostępna.
+Selektor węzła to podstawowy sposób przypisywania do danego węzła. Większa elastyczność jest dostępna przy użyciu *koligacji węzłów*. W przypadku koligacji węzłów należy określić, co się stanie, jeśli nie można dopasować elementu pod węzłem. Można *wymagać* , aby harmonogram Kubernetes był zgodny z hostem z etykietą. Lub można *preferować* dopasowanie, ale zezwolić na zaplanowanie pod innym hostem, jeśli nie jest zgodny.
 
-Poniższy przykład ustawia koligacji węzła *requiredDuringSchedulingIgnoredDuringExecution*. Ta koligacji wymaga harmonogramu Kubernetes węzła za pomocą odpowiadających im etykiet. Jeśli żaden węzeł nie jest dostępny, Zasobnik ma czekać na planowanie, aby kontynuować. Aby zezwolić na zasobnik być zaplanowane w innym węźle, można zamiast tego ustawić wartość na *preferredDuringScheduledIgnoreDuringExecution*:
+W poniższym przykładzie koligacja węzła jest ustawiana na *requiredDuringSchedulingIgnoredDuringExecution*. Ta koligacja wymaga, aby harmonogram Kubernetes używał węzła ze zgodną etykietą. Jeśli żaden węzeł nie jest dostępny, musi on oczekiwać na kontynuowanie planowania. Aby umożliwić planowanie pod innym węzłem, można ustawić wartość *preferredDuringScheduledIgnoreDuringExecution*:
 
 ```yaml
 kind: Pod
@@ -164,29 +164,29 @@ spec:
             values: highmem
 ```
 
-*IgnoredDuringExecution* część ustawienie wskazuje, jeśli węzeł etykiety zmiany, Zasobnik nie powinien wykluczona z węzła. Harmonogram Kubernetes używa tylko etykiety zaktualizowany węzeł dla nowych zasobników zaplanowane, a nie do zasobników już zaplanowane w węzłach.
+*IgnoredDuringExecution* część tego ustawienia wskazuje, że jeśli etykiety węzła zmienią się, nie powinno być wykluczone z węzła. Harmonogram Kubernetes używa tylko zaktualizowanych etykiet węzłów dla nowych, zaplanowanych w harmonogramie, a nie dla każdego z nich, które są już zaplanowane w węzłach.
 
-Aby uzyskać więcej informacji, zobacz [koligacji i antykoligację][k8s-affinity].
+Aby uzyskać więcej informacji, zobacz [koligacja i ochrona przed koligacją][k8s-affinity].
 
-### <a name="inter-pod-affinity-and-anti-affinity"></a>Koligację między zasobników i konfiguracji zapobiegającej koligacji
+### <a name="inter-pod-affinity-and-anti-affinity"></a>Koligacja między pod i ochrona przed koligacjami
 
-Jedno z podejść końcowe usługi scheduler Kubernetes do logicznie izolowania obciążeń używa koligację między zasobnika lub konfiguracji zapobiegającej koligacji. Ustawienia definiują tego zasobników *nie powinien* można zaplanować na węzeł, który ma istniejące odpowiadającego zasobnika lub, *powinien* zaplanowane. Domyślnie harmonogram Kubernetes próbuje zaplanować wielu zasobnikach w zestawie węzłów replik. Można zdefiniować bardziej szczegółowych reguł dotyczących tego zachowania.
+Jedno z ostatecznych podejścia do usługi Kubernetes Scheduler w celu logicznego izolowania obciążeń odbywa się przy użyciu koligacji Inter-lub-koligacji. Ustawienia definiują, że *nie należy* planować w węźle, który ma istniejące dopasowanie pod lub *należy* zaplanować. Domyślnie harmonogram Kubernetes próbuje zaplanować wiele zasobników w zestawie replik w różnych węzłach. Istnieje możliwość zdefiniowania bardziej szczegółowych reguł dotyczących tego zachowania.
 
-Dobrym przykładem jest aplikacja sieci web, która również korzysta z usługi Azure Cache dla usługi Redis. Reguły konfiguracji zapobiegającej koligacji zasobnika służy do żądania, że harmonogram Kubernetes dystrybuuje replik w węzłach. Koligacja reguły umożliwiają następnie upewnij się, że każdy składnik aplikacji sieci web jest zaplanowane na tym samym hoście jako odpowiedniej pamięci podręcznej. Rozkład zasobników w węzłach wygląda następująco:
+Dobrym przykładem jest aplikacja sieci Web, która również korzysta z pamięci podręcznej platformy Azure dla Redis. Za pomocą zasad ochrony przed koligacjami można zażądać, aby harmonogram Kubernetes dystrybuuje repliki między węzłami. Można następnie użyć reguł koligacji, aby upewnić się, że każdy składnik aplikacji sieci Web jest zaplanowany na tym samym hoście co odpowiednia pamięć podręczna. Rozkład liczby elementów w węzłach jest podobny do następującego:
 
 | **Węzeł 1** | **Węzeł 2** | **Węzeł 3** |
 |------------|------------|------------|
-| Aplikacja sieci Web 1   | Aplikacja sieci Web 2   | Aplikacja sieci Web 3   |
-| pamięć podręczna-1    | pamięć podręczna 2    | pamięć podręczna 3    |
+| webapp-1   | webapp-2   | webapp-3   |
+| pamięć podręczna 1    | pamięć podręczna 2    | pamięć podręczna — 3    |
 
-W tym przykładzie jest bardziej złożonym wdrożeniu, niż w przypadku selektorów węzła lub koligacji węzłów. Umożliwia wdrożenie kontrolę nad jak Kubernetes planuje zasobników w węzłach i logicznie można izolować zasoby. Aby uzyskać pełny przykład tej aplikacji sieci web za pomocą usługi Azure Cache, na przykład pamięci podręcznej Redis, zobacz [kolokacja zasobników, w tym samym węźle][k8s-pod-affinity].
+Ten przykład to bardziej złożone wdrożenie niż użycie selektorów węzłów lub koligacji węzłów. Wdrożenie zapewnia kontrolę nad sposobem, w jaki Kubernetes planuje się w węzłach i może logicznie izolować zasoby. Aby zapoznać się z kompletnym przykładem tej aplikacji sieci Web za pomocą usługi Azure cache for Redis, zobacz sekcję [dotyczącą obszaru kolokacji w tym samym węźle][k8s-pod-affinity].
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ten artykuł koncentruje się na zaawansowane funkcje usługi scheduler Kubernetes. Aby uzyskać więcej informacji na temat operacji klastra w usłudze AKS zobacz poniższe najlepsze rozwiązania:
+Ten artykuł koncentruje się na zaawansowanych funkcjach usługi Kubernetes Scheduler. Aby uzyskać więcej informacji na temat operacji klastra w programie AKS, zobacz następujące najlepsze rozwiązania:
 
-* [Izolację wielodostępu i klastra][aks-best-practices-scheduler]
-* [Podstawowe funkcje usługi scheduler rozwiązania Kubernetes][aks-best-practices-scheduler]
+* [Obsługa wielu dzierżawców i izolowania klastrów][aks-best-practices-scheduler]
+* [Podstawowe funkcje usługi Kubernetes Scheduler][aks-best-practices-scheduler]
 * [Uwierzytelnianie i autoryzacja][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

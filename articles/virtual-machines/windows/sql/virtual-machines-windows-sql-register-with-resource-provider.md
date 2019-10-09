@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2bf7118d1f4be065969312d1fb9b0cf77e820d48
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b0a7221107f05ff2239bd77cc18e7ffedc18efc1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262878"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023597"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Rejestrowanie SQL Server maszyny wirtualnej na platformie Azure przy użyciu dostawcy zasobów maszyny wirtualnej SQL
 
@@ -27,27 +27,32 @@ W tym artykule opisano sposób rejestrowania maszyny wirtualnej SQL Server na pl
 
 Wdrożenie SQL Server maszyny wirtualnej w portalu Azure Marketplace za pomocą Azure Portal automatycznie rejestruje maszynę wirtualną SQL Server przy użyciu dostawcy zasobów. Jeśli zdecydujesz się na samodzielne zainstalowanie SQL Server na maszynie wirtualnej platformy Azure zamiast wybierania obrazu z witryny Azure Marketplace lub w przypadku udostępnienia maszyny wirtualnej platformy Azure z niestandardowego dysku VHD z SQL Server, należy zarejestrować maszynę wirtualną SQL Server przy użyciu dostawcy zasobów dla :
 
-- **Uproszczenie zarządzania licencjami**: Zgodnie z postanowieniami produktu firmy Microsoft klienci muszą poinformować firmę Microsoft, gdy używają [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). Rejestracja przy użyciu dostawcy zasobów maszyny wirtualnej SQL upraszcza zarządzanie licencjami SQL Server i umożliwia szybkie identyfikowanie SQL Server maszyn wirtualnych przy użyciu Korzyść użycia hybrydowego platformy Azure w [portalu](virtual-machines-windows-sql-manage-portal.md) lub polecenia AZ CLI: 
+- **Uproszczenie zarządzania licencjami**: zgodnie z postanowieniami produktu firmy Microsoft klienci muszą poinformować firmę Microsoft, gdy używają [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). Rejestracja przy użyciu dostawcy zasobów maszyny wirtualnej SQL upraszcza zarządzanie licencjami SQL Server i umożliwia szybkie identyfikowanie SQL Server maszyn wirtualnych przy użyciu Korzyść użycia hybrydowego platformy Azure w [portalu](virtual-machines-windows-sql-manage-portal.md) lub polecenia AZ CLI: 
 
    ```azurecli-interactive
    $vms = az sql vm list | ConvertFrom-Json
    $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
    ```
 
-- **Zalety funkcji**: Zarejestrowanie SQL Server maszyny wirtualnej przy użyciu dostawcy zasobów odblokowuje [Automatyczne stosowanie poprawek](virtual-machines-windows-sql-automated-patching.md), [Automatyczne tworzenie kopii zapasowych](virtual-machines-windows-sql-automated-backup-v2.md)oraz możliwości monitorowania i zarządzania. Umożliwia również odblokowanie [licencjonowania](virtual-machines-windows-sql-ahb.md) i [wersji](virtual-machines-windows-sql-change-edition.md) . Wcześniej te funkcje były dostępne tylko w przypadku SQL Server obrazów maszyn wirtualnych z witryny Azure Marketplace.
+- **Zalety funkcji**: Rejestracja SQL SERVEREJ maszyny wirtualnej przy użyciu dostawcy zasobów odblokowuje [Automatyczne stosowanie poprawek](virtual-machines-windows-sql-automated-patching.md), [Automatyczne tworzenie kopii zapasowych](virtual-machines-windows-sql-automated-backup-v2.md)oraz możliwości monitorowania i zarządzania. Umożliwia również odblokowanie [licencjonowania](virtual-machines-windows-sql-ahb.md) i [wersji](virtual-machines-windows-sql-change-edition.md) . Wcześniej te funkcje były dostępne tylko w przypadku SQL Server obrazów maszyn wirtualnych z witryny Azure Marketplace.
 
-- **Bezpłatne zarządzanie**:  Rejestracja przy użyciu dostawcy zasobów maszyny wirtualnej SQL i wszystkie tryby zarządzania są całkowicie bezpłatne. Dostawca zasobów nie wiąże się z dodatkowymi kosztami ani z zmianami trybów zarządzania. 
+- **Bezpłatne zarządzanie**: Rejestracja przy użyciu dostawcy zasobów maszyny wirtualnej SQL i wszystkie tryby zarządzania są całkowicie bezpłatne. Dostawca zasobów nie wiąże się z dodatkowymi kosztami ani z zmianami trybów zarządzania. 
 
 Aby korzystać z dostawcy zasobów maszyny wirtualnej SQL, należy również zarejestrować dostawcę zasobów maszyny wirtualnej SQL w ramach subskrypcji. Można to zrobić za pomocą Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell. 
 
   > [!NOTE]
   > Nie istnieją żadne dodatkowe wymagania licencyjne związane z rejestracją u dostawcy zasobów. Rejestracja przy użyciu dostawcy zasobów maszyny wirtualnej SQL oferuje uproszczoną metodę w celu spełnienia wymagań powiadamiania firmy Microsoft o tym, że Korzyść użycia hybrydowego platformy Azure został włączony w miejscu zarządzania formularzami rejestracji licencjonowania dla każdego zasobu. 
 
+Aby uzyskać więcej informacji na temat korzyści z używania dostawcy zasobów maszyny wirtualnej SQL, zobacz następujące wideo [channel9](https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure?WT.mc_id=dataexposed-c9-niner) : 
+
+<iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Korzystanie z dostawcy zasobów maszyny wirtualnej SQL podczas samoinstalowania SQL Server na platformie Azure — wideo w witrynie Microsoft Channel 9"></iframe>
+
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby zarejestrować SQL Server maszynę wirtualną przy użyciu dostawcy zasobów, potrzebne są następujące elementy: 
 
-- [Subskrypcji platformy Azure](https://azure.microsoft.com/free/).
+- [Subskrypcja platformy Azure](https://azure.microsoft.com/free/).
 - [Maszyna wirtualna SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). 
 - Najnowsza wersja [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lub [programu PowerShell](/powershell/azure/new-azureps-module-az). 
 
@@ -60,8 +65,8 @@ Gdy wartość Lightweight jest określona podczas procesu rejestracji, dostawca 
 Zarejestrowanie się w trybie uproszczonym przy użyciu dostawcy zasobów maszyny wirtualnej SQL zapewni zgodność i umożliwi Elastyczne licencjonowanie, a także w miejscu SQL Server aktualizacji wersji. Wystąpienia klastra trybu failover i wdrożenia z obsługą wiele wystąpień mogą być rejestrowane przy użyciu dostawcy zasobów maszyny wirtualnej SQL tylko w trybie uproszczonym. W dowolnym momencie można [przeprowadzić uaktualnienie](#change-management-modes) do trybu pełnego zarządzania, ale spowoduje to ponowne uruchomienie usługi SQL Server. 
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-Użyj poniższego fragmentu kodu, aby zarejestrować się w dostawcy zasobów maszyny wirtualnej SQL, SQL Server Jeśli rozszerzenie IaaS jest już zainstalowane na maszynie wirtualnej. Musisz podać typ licencji SQL Server, która ma być zarejestrowana u dostawcy zasobów maszyny wirtualnej SQL: płatność zgodnie z rzeczywistym użyciem (`PAYG`) lub korzyść użycia hybrydowego platformy Azure (`AHUB`). 
+# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+Użyj poniższego fragmentu kodu, aby zarejestrować się w dostawcy zasobów maszyny wirtualnej SQL, SQL Server Jeśli rozszerzenie IaaS jest już zainstalowane na maszynie wirtualnej. Musisz podać typ licencji SQL Server, która ma być zarejestrowana u dostawcy zasobów maszyny wirtualnej SQL: płatność zgodnie z rzeczywistym użyciem (`PAYG`) lub Korzyść użycia hybrydowego platformy Azure (`AHUB`). 
 
 Zarejestruj maszynę wirtualną SQL Server przy użyciu następującego fragmentu kodu programu PowerShell:
 
@@ -117,14 +122,14 @@ Poniższa tabela zawiera szczegółowe informacje na temat akceptowalnych warto�
 
 | Parametr | Akceptowalne wartości                                 |
 | :------------------| :--------------------------------------- |
-| **sqlLicenseType** | `AHUB` lub `PAYG`                    |
+| **sqllicensetype** | `AHUB` lub `PAYG`                    |
 | **sqlImageOffer**  | `SQL2008-WS2008` lub `SQL2008R2-WS2008`|
 | &nbsp;             | &nbsp;                                   |
 
 
 Aby zarejestrować wystąpienie SQL Server 2008 lub 2008 R2 w wystąpieniu systemu Windows Server 2008, użyj następującego fragmentu kodu środowiska PowerShell lub polecenia AZ CLI:  
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
   ```powershell-interactive
      # Get the existing compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
@@ -150,7 +155,7 @@ Możesz sprawdzić, czy maszyna wirtualna SQL Server została już zarejestrowan
 
 ### <a name="azure-portal"></a>Azure Portal 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
 1. Przejdź do [SQL Server maszyn wirtualnych](virtual-machines-windows-sql-manage-portal.md).
 1. Z listy wybierz maszynę wirtualną z SQL Server. Jeśli maszyna wirtualna w SQL Server nie jest wymieniona w tym miejscu, prawdopodobnie nie została zarejestrowana w dostawcy zasobów maszyny wirtualnej SQL. 
 1. Wyświetl wartość w obszarze **stan**. Jeśli **stan** ma wartość **powodzenie**, maszyna wirtualna SQL Server została pomyślnie zarejestrowana w dostawcy zasobów maszyny wirtualnej SQL. 
@@ -159,7 +164,7 @@ Możesz sprawdzić, czy maszyna wirtualna SQL Server została już zarejestrowan
 
 ### <a name="command-line"></a>Wiersz polecenia
 
-Sprawdź bieżące SQL Server stanu rejestracji maszyny wirtualnej za pomocą polecenia AZ CLI lub PowerShell. `ProvisioningState`będzie wyświetlana `Succeeded` , jeśli rejestracja zakończyła się pomyślnie. 
+Sprawdź bieżące SQL Server stanu rejestracji maszyny wirtualnej za pomocą polecenia AZ CLI lub PowerShell. Jeśli rejestracja zakończyła się pomyślnie, `ProvisioningState` pokaże `Succeeded`. 
 
 # <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
 
@@ -169,7 +174,7 @@ Sprawdź bieżące SQL Server stanu rejestracji maszyny wirtualnej za pomocą po
  ```
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
 
   ```powershell-interactive
   Get-AzResource -ResourceName <vm_name> -ResourceGroupName <resource_group> `
@@ -205,7 +210,7 @@ Aby uaktualnić tryb agenta do pełnej:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Przejdź do zasobu [maszyny wirtualnej SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) . 
 1. Wybierz swoją SQL Server maszynę wirtualną, a następnie wybierz pozycję **Przegląd**. 
 1. W przypadku SQL Server maszyn wirtualnych z trybem noagent lub Lightweight IaaS wybierz opcję **jedyne typy licencji i aktualizacje wersji są dostępne w komunikacie rozszerzenia SQL IaaS** .
@@ -228,7 +233,7 @@ Uruchom następujący fragment kodu polecenia AZ CLI:
   az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
   ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
 
 Uruchom następujący fragment kodu programu PowerShell:
 
@@ -268,7 +273,7 @@ Poniższy fragment kodu spowoduje zarejestrowanie dostawcy zasobów maszyny wirt
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
 
 ```powershell-interactive
 # Register the new SQL VM resource provider to your subscription

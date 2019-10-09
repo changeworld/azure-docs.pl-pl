@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6cf03d1269cac5dcfa67c2d4778be3fce9ee63aa
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973372"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029020"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera programu Azure Functions PowerShell
 
@@ -434,6 +434,9 @@ Dostępne są następujące ustawienia umożliwiające zmianę sposobu pobierani
 | MDMaxBackgroundUpgradePeriod      | "7.00:00:00" (7 dni)     | Każdy proces roboczy programu PS inicjuje sprawdzanie uaktualnień modułu w galerii PS na początku procesu roboczego i każdy MDMaxBackgroundUpgradePeriod. Jeśli w galerii PS są dostępne nowe wersje modułów, zostaną one zainstalowane w systemie plików dostępnym dla procesów roboczych środowiska PS. Zmniejszenie tej wartości umożliwi aplikacji funkcji uzyskanie nowszych wersji modułów wcześniej, ale spowoduje również zwiększenie użycia zasobów aplikacji (we/wy sieci, procesora CPU, magazynu). Zwiększenie tej wartości spowoduje zmniejszenie użycia zasobów aplikacji, ale może również opóźnić dostarczenie nowej wersji modułu do aplikacji.      | 
 | MDNewSnapshotCheckPeriod          | "01:00:00" (1 godzina)       | Po zainstalowaniu nowych wersji modułu w systemie plików należy ponownie uruchomić każdy proces roboczy programu PS. Ponowne uruchomienie procesów roboczych programu PS może wpłynąć na dostępność aplikacji, ponieważ może to przerwać bieżące wywołania funkcji. Do momentu ponownego uruchomienia wszystkich procesów roboczych programu PS wywołania funkcji mogą używać starych lub nowych wersji modułu. Ponowne uruchomienie wszystkich procesów roboczych PS zakończy się w MDNewSnapshotCheckPeriod. Zwiększenie tej wartości spowoduje zmniejszenie częstotliwości przerw, ale może również wydłużyć czas, w którym wywołania funkcji używają starej lub nowej wersji modułu w sposób Niedeterministyczny. |
 | MDMinBackgroundUpgradePeriod      | "1,00:00:00" (1 dzień)     | Aby uniknąć nadmiernego przeprowadzania uaktualnień modułu podczas częstego ponownego uruchamiania procesów roboczych, sprawdzanie uaktualnień modułów nie zostanie wykonane, jeśli jakikolwiek proces roboczy został już zainicjowany w ostatnim MDMinBackgroundUpgradePeriod. |
+
+> [!NOTE]
+> Zarządzane zależności polegają na dostępie do www.powershellgallery.com modułów pobierania. Musisz upewnić się, że środowisko uruchomieniowe funkcji ma dostęp do tego adresu URL, dodając wymagane reguły zapory.
 
 Korzystanie z własnych modułów niestandardowych jest nieco inne niż w normalny sposób.
 

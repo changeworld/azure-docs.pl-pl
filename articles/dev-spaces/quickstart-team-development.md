@@ -10,16 +10,16 @@ ms.topic: quickstart
 description: Tworzenie zespołu Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 3509fd32e06117ce3709f110223b38ef0e0eed30
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 15833294e1dd5b75251ad54fa1f33bc4ed5e2c20
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815789"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035166"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Szybki Start: Programowanie zespołowe na Kubernetes przy użyciu Azure Dev Spaces
 
-W tym przewodniku dowiesz się, jak:
+Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
 - Skonfiguruj Azure Dev Spaces w zarządzanym klastrze Kubernetes na platformie Azure.
 - Wdróż dużą aplikację z wieloma mikrousługami w miejscu dev.
@@ -30,7 +30,7 @@ W tym przewodniku dowiesz się, jak:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
-- [Zainstalowano interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- [Zainstalowany interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Helm 2,13 lub nowszy](https://github.com/helm/helm/blob/master/docs/install.md).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Tworzenie klastra usługi Azure Kubernetes Service
@@ -41,8 +41,6 @@ Należy utworzyć klaster AKS w [obsługiwanym regionie][supported-regions]. Pon
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
-
-Klaster *MyAKS* jest również tworzony z jednym węzłem, przy użyciu rozmiaru *Standard_DS2_v2* i z wyłączonymi RBAC.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Włączanie Azure Dev Spaces w klastrze AKS
 
@@ -59,7 +57,7 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
 
 W tym artykule użyto [przykładowej aplikacji do udostępniania Azure dev Spaces roweru](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) do zademonstrowania przy użyciu Azure dev Spaces.
 
-Sklonuj aplikację z witryny GitHub i przejdź do jej katalogu:
+Klonowanie aplikacji z usługi GitHub i przechodzenie do jej katalogu:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
@@ -171,7 +169,7 @@ Upewnij się, że adresy URL wyświetlane przez polecenie `azds list-uris` mają
 
 Przejdź do usługi *bikesharingweb* dla obszaru tworzenia */azureuser2* dev, otwierając publiczny adres URL z polecenia `azds list-uris`. W powyższym przykładzie publiczny adres URL dla usługi *bikesharingweb* jest `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik. Upewnij się, że zobaczysz tekst *Hi Aurelia Briggs | Wyloguj się* u góry.
 
-## <a name="update-code"></a>Aktualizuj kod
+## <a name="update-code"></a>Aktualizowanie kodu
 
 Otwórz *BikeSharingWeb/Components/header. js* z edytorem tekstu i Zmień tekst w [elemencie span z nazwą klasy `userSignOut`](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16).
 
@@ -236,10 +234,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak Azure Dev Spaces ułatwiają tworzenie bardziej złożonych aplikacji w wielu kontenerach i jak można uprościć programowanie do współpracy, pracując z różnymi wersjami lub gałęziami kodu w różnych miejscach.
+Dowiedz się, jak usługa Azure Dev Spaces pomaga tworzyć bardziej złożone aplikacje w wielu kontenerach i jak można uprościć programowanie zespołowe przez pracę z różnymi wersjami lub gałęziami kodu w różnych obszarach.
 
 > [!div class="nextstepaction"]
-> [Praca z wieloma kontenerami i programowaniem zespołu](multi-service-nodejs.md)
+> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-nodejs.md)
 
 
 [supported-regions]: about.md#supported-regions-and-configurations

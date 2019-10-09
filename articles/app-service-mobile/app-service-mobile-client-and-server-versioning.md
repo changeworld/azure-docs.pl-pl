@@ -14,31 +14,35 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 7133e8bc7d04b3653b6b788347b7bc5176087f4c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 87c64a98d783d2604c985017fbce586ed51e5c9d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883478"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025425"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Przechowywanie wersji klienta i serwera w Mobile Apps i Mobile Services
+> [!NOTE]
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+
 Najnowsza wersja platformy Azure Mobile Services jest funkcją **Mobile Apps** Azure App Service.
 
 Zestawy SDK klienta i serwera Mobile Apps są pierwotnie oparte na Mobile Services, ale *nie* są ze sobą zgodne.
-Oznacza to, że należy użyć zestawu SDK klienta *Mobile Apps* z zestawem SDK *Mobile Apps* Server, podobnie jak w przypadku *Mobile Services*. Ten kontrakt jest wymuszany za pomocą specjalnej wartości nagłówka używanej przez zestawy SDK `ZUMO-API-VERSION`klienta i serwera.
+Oznacza to, że należy użyć zestawu SDK klienta *Mobile Apps* z zestawem SDK *Mobile Apps* Server, podobnie jak w przypadku *Mobile Services*. Ta umowa jest wymuszana za pomocą specjalnej wartości nagłówka używanej przez zestawy SDK klienta i serwera `ZUMO-API-VERSION`.
 
 Uwaga: zawsze, gdy ten dokument odwołuje się do *Mobile Services* zaplecza, nie musi być hostowany na Mobile Services. Teraz można migrować usługę mobilną do uruchamiania na App Service bez żadnych zmian w kodzie, ale usługa nadal będzie używać *Mobile Services* wersji zestawu SDK.
 
 ## <a name="header-specification"></a>Specyfikacja nagłówka
 Klucz `ZUMO-API-VERSION` może być określony w nagłówku HTTP lub ciągu zapytania. Wartość jest ciągiem wersji w postaci **x. y. z**.
 
-Przykład:
+Na przykład:
 
-POBIERZ https://service.azurewebsites.net/tables/TodoItem
+Pobierz https://service.azurewebsites.net/tables/TodoItem
 
-NAGŁÓWKA ZUMO-API-VERSION: 2.0.0
+NAGŁÓWKI: ZUMO-API-VERSION: 2.0.0
 
-POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
+@No__t POST-0
 
 ## <a name="opting-out-of-version-checking"></a>Rezygnacja z sprawdzania wersji
 Możesz zrezygnować z sprawdzania wersji, ustawiając wartość **true** dla ustawienia aplikacji **MS_SkipVersionCheck**. Określ ją w pliku Web. config lub w sekcji Ustawienia aplikacji Azure Portal.
@@ -50,7 +54,7 @@ Możesz zrezygnować z sprawdzania wersji, ustawiając wartość **true** dla us
 ### <a name="MobileAppsClients"></a>Zestawy SDK klienta *aplikacji* mobilnych
 Wprowadzono Sprawdzanie wersji, rozpoczynając od następujących wersji zestawu Client SDK dla **platformy Azure Mobile Apps**:
 
-| Platforma klienta | Version | Wartość nagłówka wersji |
+| Platforma klienta | Wersja | Wartość nagłówka wersji |
 | --- | --- | --- |
 | Klient zarządzany (Windows, Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
@@ -61,13 +65,13 @@ Sprawdzanie wersji jest zawarte w następujących wersjach zestawu SDK serwera:
 
 | Platforma serwera | SDK | Nagłówek zaakceptowanej wersji |
 | --- | --- | --- |
-| .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
-| Node.js |[azure-mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
+| .NET |[Microsoft. Azure. Mobile. Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
+| Node.js |[Azure-Mobile-Apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
 ### <a name="behavior-of-mobile-apps-backends"></a>Zachowanie Mobile Apps
 | ZUMO-API-VERSION | Wartość MS_SkipVersionCheck | Odpowiedź |
 | --- | --- | --- |
-| x. y. z lub null |Prawda |200 — OK |
+| x. y. z lub null |True |200 — OK |
 | Null |Nie określono wartości false/not |400 — Nieprawidłowe żądanie |
 | 1. x. y |Nie określono wartości false/not |400 — Nieprawidłowe żądanie |
 | 2.0.0-2. x. y |Nie określono wartości false/not |200 — OK |

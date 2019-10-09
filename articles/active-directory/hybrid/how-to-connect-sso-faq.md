@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12acf083e83d42ff3e8d6967d747f4bb2d93543
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960199"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025679"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblemowe logowanie jednokrotne: często zadawane pytania
 
@@ -96,7 +96,10 @@ Wykonaj następujące kroki na serwerze lokalnym, na którym jest uruchomiony pr
    1. Wywołaj `$creds = Get-Credential`. Po wyświetleniu monitu wprowadź poświadczenia administratora domeny dla zamierzonego lasu usługi AD.
 
    > [!NOTE]
-   > Używamy nazwy użytkownika administratora domeny, która została podana w formacie nazwy głównej użytkownika (UPN) (johndoe@contoso.com) lub w formacie contoso\johndoe lub contoso. com\johndoe (kwalifikowana nazwa konta), aby znaleźć zamierzony Las usługi AD. Jeśli używana jest kwalifikowana nazwa konta sam, używana jest część domeny nazwy użytkownika do [lokalizowania kontrolera domeny administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego używasz nazwy UPN, [przetłumaczmy ją na nazwę konta sam z kwalifikowaną domeną](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) .
+   >Należy podać nazwę użytkownika poświadczeń administratora domeny w formacie nazwy konta SAM (contoso\johndoe lub contoso. com\johndoe). Używamy części nazwy użytkownika do lokalizowania kontrolera domeny administratora domeny przy użyciu systemu DNS.
+
+   >[!NOTE]
+   >Użyte konto administratora domeny nie może być członkiem grupy Chronieni użytkownicy. Jeśli tak, operacja zakończy się niepowodzeniem.
 
    2. Wywołaj `Update-AzureADSSOForest -OnPremCredentials $creds`. To polecenie aktualizuje klucz odszyfrowujący protokołu Kerberos dla konta komputera `AZUREADSSOACC` w tym określonym lesie usługi AD i aktualizuje go w usłudze Azure AD.
    3. Powtórz powyższe kroki dla każdego lasu usługi AD, dla którego skonfigurowano funkcję.

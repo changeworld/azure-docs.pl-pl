@@ -1,49 +1,49 @@
 ---
-title: Mapowanie transformacji odnośnika przepływu danych w usłudze Azure Data Factory
-description: Mapowanie transformacji odnośnika przepływu danych w usłudze Azure Data Factory
+title: Przekształcenie przeszukiwania przepływu danych Azure Data Factory mapowania
+description: Przekształcenie przeszukiwania przepływu danych Azure Data Factory mapowania
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 197f5ba9d6921f4a9921b7074b9e05162d3e37b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef72b7aed12afd1cee47b11bc7584d1e53bf2af5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868121"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029347"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Mapowanie transformacji odnośnika przepływu danych w usłudze Azure Data Factory
+# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Przekształcenie przeszukiwania przepływu danych Azure Data Factory mapowania
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Użyj wyszukiwania, aby dodać dane referencyjne z innego źródła, aby przepływ danych. Przekształcenie wyszukiwania wymaga określonego źródła, wskazuje odwołanie do tabeli, która odpowiada na pola klucza.
 
-![Przekształcanie wyszukiwania](media/data-flow/lookup1.png "wyszukiwania")
+Użyj wyszukiwania, aby dodać dane referencyjne z innego źródła do przepływu danych. Transformacja wyszukiwania wymaga zdefiniowanego źródła wskazującego tabelę referencyjną i dopasowuje się do pól kluczy.
 
-Zaznacz pola klucza, które mają być zgodne na przychodzące pola strumienia i pola ze źródła odniesienia. Należy najpierw utworzono nowe źródło na kanwę projektu przepływu danych, aby użyć po prawej stronie do wyszukiwania.
+(media/data-flow/lookup1.png "Wyszukiwanie") ![transformacji wyszukiwania]
 
-W przypadku znalezienia dopasowania wynikowy wiersze i kolumny źródłowej odwołania zostaną dodane do przepływu danych. Możesz wybrać pola, które interesujące, który chcesz uwzględnić w obiektu Sink na końcu przepływu danych.
+Wybierz pola klucza, które chcesz dopasować między polami strumienia przychodzącego a polami ze źródła odwołania. Najpierw należy utworzyć nowe źródło na kanwie projektu przepływu danych do użycia jako po prawej stronie dla wyszukiwania.
 
-## <a name="match--no-match"></a>Zgodne / Brak dopasowania
+Gdy zostaną znalezione dopasowania, wyniki i kolumny ze źródła odwołania zostaną dodane do przepływu danych. Możesz wybrać, które pola zainteresowania mają być uwzględnione w zlewie na końcu przepływu danych.
 
-Po przekształceniu usługi wyszukiwania można użyć kolejnych przekształceń można sprawdzić wyniki każdego wiersza dopasowania za pomocą funkcji wyrażenia `isMatch()` może wprowadzać dalszych opcji w logice w oparciu o czy wyszukiwanie spowodowało dopasowanie wiersza lub nie.
+## <a name="match--no-match"></a>Dopasowanie/brak dopasowania
+
+Po przekształceniu wyszukiwania można użyć kolejnych przekształceń, aby sprawdzić wyniki każdego wiersza dopasowania przy użyciu funkcji wyrażenia `isMatch()`, aby dokonać dalszych wyborów w logice w zależności od tego, czy wyszukiwanie spowodowało dopasowanie wierszy, czy nie.
 
 ## <a name="optimizations"></a>Optymalizacje
 
-W usłudze Data Factory wykonania przepływu danych w środowiskach platformy Spark skalowanych w poziomie. Jeśli zestaw danych można dopasować do obszaru pamięci na węzeł procesu roboczego, firma Microsoft można zoptymalizować wydajność wyszukiwania.
+W Data Factory przepływy danych są wykonywane w skalowanych środowiskach Spark. Jeśli zestaw danych może pasować do przestrzeni pamięci węzła procesu roboczego, możemy zoptymalizować wydajność wyszukiwania.
 
-![Emisja sprzężenia](media/data-flow/broadcast.png "emisji, sprzężenia")
+(media/data-flow/broadcast.png "Sprzężenie emisji") ![sprzężenia]emisji
 
-### <a name="broadcast-join"></a>Sprzężenia emisji
+### <a name="broadcast-join"></a>Sprzężenie emisji
 
-Wybierz w lewo i/lub po prawej stronie emisji sprzężenie do żądania usługi ADF, aby wypchnąć cały zestaw danych z żadnej stronie relacji odnośników do pamięci.
+Wybierz pozycję sprzężenie emisji lewej i/lub prawej strony, aby zażądać podajnika APD w celu wypchnięcia całego zestawu danych z obu stron relacji wyszukiwania do pamięci.
 
 ### <a name="data-partitioning"></a>Partycjonowanie danych
 
-Można również określić, partycjonowanie danych, wybierając pozycję "Ustaw partycjonowania" na karcie Optymalizacja transformacji wyszukiwania do tworzenia zestawów danych, który może lepiej mieści się w pamięci dla procesu roboczego.
+Możesz również określić Partycjonowanie danych, wybierając pozycję "Ustaw partycjonowanie" na karcie Optymalizacja transformacji wyszukiwania, aby utworzyć zestawy danych, które mogą być lepiej dopasowane do pamięci na proces roboczy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dołącz do](data-flow-join.md) i [Exists](data-flow-exists.md) przekształcenia wykonywania podobnych zadań w ADF mapowanie przepływu danych. Przyjrzyj się te przekształcenia dalej.
+Przekształcenia [sprzężeń](data-flow-join.md) i [istniejących](data-flow-exists.md) są podobne do zadań w MAPOWANIU przepływów danych ADF. Zapoznaj się z tymi przekształceniami dalej.

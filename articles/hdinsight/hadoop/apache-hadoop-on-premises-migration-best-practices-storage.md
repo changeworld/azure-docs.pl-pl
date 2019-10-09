@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0acd4c2793c7c13fb687f591d01e6d8753f71bdc
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 9b246fe9b09f2939663b4fb74ee1da703264d533
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181144"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028926"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight
 
@@ -25,9 +25,9 @@ Strukturę katalogów lokalnego systemu plików Apache Hadoop (HDFS) można utwo
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Klastry usługi HDInsight mogą używać kontenera obiektów BLOB w usłudze Azure Storage jako domyślny system plików lub dodatkowy system plików. Konto magazynu w warstwie Standardowa jest obsługiwane w przypadku klastrów usługi HDInsight. Warstwa Premier nie jest obsługiwana. Domyślny kontener obiektów blob przechowuje informacje dotyczące klastra, takie jak dzienniki i historia zadań. Udostępnianie pojedynczego kontenera obiektów blob jako domyślnego systemu plików dla wielu klastrów nie jest obsługiwane.
+Klastry usługi HDInsight mogą używać kontenera obiektów BLOB w usłudze Azure Storage jako domyślny system plików lub dodatkowy system plików. Konto magazynu w warstwie Standardowa jest obsługiwane w przypadku klastrów usługi HDInsight. Warstwa Premier nie jest obsługiwana. Domyślny kontener obiektów blob przechowuje informacje dotyczące klastra, takie jak dzienniki i historia zadań. Udostępnianie jednego kontenera obiektów BLOB jako domyślnego systemu plików dla wielu klastrów nie jest obsługiwane.
 
-Konta magazynu zdefiniowane w procesie tworzenia i ich odpowiednie klucze są przechowywane w `%HADOOP_HOME%/conf/core-site.xml` węzłach klastra. Dostęp do nich można uzyskać również w sekcji "niestandardowa witryna podstawowa" w konfiguracji systemu plików HDFS w interfejsie użytkownika Ambari. Klucz konta magazynu jest domyślnie szyfrowany i w celu odszyfrowania kluczy przed przekazaniem do demonów Hadoop jest używany skrypt odszyfrowywania niestandardowego. Do zadań, w tym Hive, MapReduce, przesyłania strumieniowego Hadoop i trzody chlewnej, należy przenieść do nich opis kont magazynu i metadanych.
+Konta magazynu zdefiniowane w procesie tworzenia i ich odpowiednie klucze są przechowywane w `%HADOOP_HOME%/conf/core-site.xml` w węzłach klastra. Dostęp do nich można uzyskać również w sekcji "niestandardowa witryna podstawowa" w konfiguracji systemu plików HDFS w interfejsie użytkownika Ambari. Klucz konta magazynu jest domyślnie szyfrowany i w celu odszyfrowania kluczy przed przekazaniem do demonów Hadoop jest używany skrypt odszyfrowywania niestandardowego. Do zadań, w tym Hive, MapReduce, przesyłania strumieniowego Hadoop i trzody chlewnej, należy przenieść do nich opis kont magazynu i metadanych.
 
 Usługa Azure Storage może być replikowana geograficznie. Chociaż replikacja geograficzna umożliwia odzyskiwanie geograficzne i nadmiarowość danych, przełączenie w tryb failover do lokalizacji z replikacją geograficzną poważnie wpływa na wydajność i może pociągnąć za sobą dodatkowe koszty. Zalecenie polega na wybraniu replikacji geograficznej i tylko wtedy, gdy wartość danych jest cenny koszt dodatkowy.
 
@@ -42,7 +42,7 @@ Jeden z następujących formatów może służyć do uzyskiwania dostępu do dan
 
 [Cele dotyczące skalowalności i wydajności usługi Azure Storage](../../storage/common/storage-scalability-targets.md) zawierają listę bieżących limitów na kontach usługi Azure Storage. Jeśli wymagania aplikacji przekraczają tarcze skalowalności pojedynczego konta magazynu, aplikacja może zostać skompilowana w celu użycia wielu kont magazynu, a następnie partycjonowania obiektów danych na tych kontach magazynu.
 
-[](../../storage/storage-analytics.md)AnalitykamagazynuplatformyAzure dostarcza metryki dla wszystkich usług magazynu, a Azure Portal można skonfigurować metryki zbierania do wizualizacji za poorednictwem wykresów. Można utworzyć alerty w celu powiadomienia o osiągnięciu progów dla metryk zasobów magazynu.
+[Analityka magazynu platformy Azure](../../storage/storage-analytics.md)metryki @no__t 1provides dla wszystkich usług magazynu i Azure Portal można skonfigurować metryki zbierania, które mają być wizualizowane za poorednictwem wykresów. Można utworzyć alerty w celu powiadomienia o osiągnięciu progów dla metryk zasobów magazynu.
 
 Usługa Azure Storage oferuje [nietrwałe usuwanie obiektów BLOB](../../storage/blobs/storage-blob-soft-delete.md) , które ułatwiają odzyskiwanie danych po przypadkowej modyfikacji lub usunięciu przez aplikację lub innego użytkownika konta magazynu.
 
@@ -79,7 +79,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 - [Monitor, diagnose, and troubleshoot Microsoft Azure Storage (Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage)](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 - [Monitorowanie konta magazynu w witrynie Azure Portal](../../storage/common/storage-monitor-storage-account.md)
 
-### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
+### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. generacji
 
 Azure Data Lake Storage implementuje model kontroli dostępu do stylu systemu plików HDFS i POSIX. Zapewnia ona integrację pierwszej klasy z usługą AAD w celu zapewnienia precyzyjnej kontroli dostępu. Nie ma ograniczeń dotyczących rozmiaru danych, które mogą być przechowywane, lub zdolności do uruchamiania analizy równoległej.
 
@@ -88,29 +88,29 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 - [Tworzenie klastrów usługi HDInsight z Data Lake Storage przy użyciu Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Używanie Data Lake Storage z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
 
-### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
+### <a name="azure-data-lake-storage-gen2"></a>Usługa Azure Data Lake Storage 2. generacji
 
 Azure Data Lake Storage Gen2 to Najnowsza oferta magazynu. Łączy podstawowe możliwości od pierwszej generacji Azure Data Lake Storage za pomocą punktu końcowego systemu plików zgodnego z usługą Hadoop bezpośrednio zintegrowanego z platformą Azure Blob Storage. To ulepszenie umożliwia łączenie skalowalności i kosztów magazynu obiektów z niezawodnością i wydajnością zwykle skojarzoną tylko z lokalnymi systemami plików.
 
 ADLS Gen 2 jest oparta na [usłudze Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) i umożliwia interfejsowanie danych przy użyciu zarówno odmian systemu plików, jak i magazynu obiektów. Funkcje z [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), takie jak semantyka systemu plików, zabezpieczenia na poziomie plików i skalowanie, są połączone z niskimi kosztami magazynowymi, wysoką dostępnością/odzyskiwaniem po awarii i dużym ekosystemem z systemem [Azure BLOB Storage](../../storage/blobs/storage-blobs-introduction.md). W Data Lake Storage Gen2, wszystkie jakości magazynu obiektów pozostaną, dodając zalety interfejsu systemu plików zoptymalizowanego pod kątem obciążeń analitycznych.
 
-Podstawową funkcją Data Lake Storage Gen2 jest dodanie [hierarchicznej przestrzeni nazw](../../storage/data-lake-storage/namespace.md) do usługi BLOB Storage, która organizuje obiekty/pliki w hierarchii katalogów na potrzeby wykonywania dostępu do danych. Struktura hierarchiczna umożliwia wykonywanie operacji, takich jak zmiana nazwy lub usuwanie katalogu, aby były jednocyfrowymi operacjami metadanych w katalogu, a nie wyliczeniem i przetwarzaniem wszystkich obiektów, które współużytkują prefiks nazwy katalogu.
+Podstawową funkcją Data Lake Storage Gen2 jest dodanie [hierarchicznej przestrzeni nazw](../../storage/data-lake-storage/namespace.md) To usługi BLOB Storage, która organizuje obiekty/pliki w hierarchii katalogów na potrzeby wykonywania dostępu do danych. Struktura hierarchiczna umożliwia wykonywanie operacji, takich jak zmiana nazwy lub usuwanie katalogu, aby były jednocyfrowymi operacjami metadanych w katalogu, a nie wyliczeniem i przetwarzaniem wszystkich obiektów, które współużytkują prefiks nazwy katalogu.
 
-W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w zakresie wydajności, zarządzania i zabezpieczeń. Najważniejsze funkcje Azure Data Lake Storage (ADLS) Gen2 są następujące:
+W przeszłości Analiza oparta na chmurze musiała być naruszona w obszarach wydajności, zarządzania i zabezpieczeń. Najważniejsze funkcje Azure Data Lake Storage (ADLS) Gen2 są następujące:
 
-- **Dostęp zgodny**z usługą Hadoop: Azure Data Lake Storage Gen2 pozwala zarządzać danymi i uzyskiwać do nich dostęp tak samo jak w przypadku [rozproszony system plików Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [Sterownik](../../storage/data-lake-storage/abfs-driver.md) ABFS jest dostępny we wszystkich środowiskach Apache Hadoop, które znajdują się w [usłudze Azure HDInsight](../index.yml). Ten sterownik umożliwia dostęp do danych przechowywanych w Data Lake Storage Gen2.
+- **Dostęp zgodny**z usługą Hadoop: Azure Data Lake Storage Gen2 umożliwia zarządzanie danymi i uzyskiwanie do nich dostępu tak samo jak w przypadku [rozproszony system plików Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [Sterownik ABFS](../../storage/data-lake-storage/abfs-driver.md) Is dostępne we wszystkich środowiskach Apache Hadoop, które znajdują się w [usłudze Azure HDInsight](../index.yml). Ten sterownik umożliwia dostęp do danych przechowywanych w Data Lake Storage Gen2.
 
-- **Nadzbiór uprawnień systemu POSIX**: Model zabezpieczeń dla programu Data Lake Gen2 w pełni obsługuje uprawnienia list ACL i POSIX oraz pewną dodatkową szczegółowość Data Lake Storage Gen2. Ustawienia można skonfigurować za poorednictwem narzędzi administracyjnych lub platform, takich jak Hive i Spark.
+- **Nadzbiór uprawnień systemu POSIX**: model zabezpieczeń dla Data Lake Gen2 w pełni obsługuje uprawnienia ACL i POSIX oraz kilka dodatkowych postanowień dotyczących Data Lake Storage Gen2. Ustawienia można skonfigurować za poorednictwem narzędzi administracyjnych lub platform, takich jak Hive i Spark.
 
-- **Koszt ekonomiczny**: Data Lake Storage Gen2 funkcje magazynu kosztów i transakcji. Jako że dane są przenoszone przez cały cykl życia, stawki rozliczeń zmieniają się, aby zminimalizować koszty dzięki wbudowanym funkcjom, takim jak [cykl życiowy usługi Azure Blob Storage](../../storage/common/storage-lifecycle-management-concepts.md).
+- **Oszczędne**: Data Lake Storage Gen2 funkcje magazynu kosztów i transakcji. Jako że dane są przenoszone przez cały cykl życia, stawki rozliczeń zmieniają się, aby zminimalizować koszty dzięki wbudowanym funkcjom, takim jak [cykl życiowy usługi Azure Blob Storage](../../storage/common/storage-lifecycle-management-concepts.md).
 
-- **Współpracuje z narzędziami, strukturami i aplikacjami magazynu obiektów BLOB**: Data Lake Storage Gen2 nadal pracują z szeroką gamę narzędzi, platform i aplikacji, które już istnieją dla usługi BLOB Storage.
+- **Współpracuje z narzędziami, strukturami i aplikacjami usługi BLOB Storage**: Data Lake Storage Gen2 nadal pracuje z szeroką gamę narzędzi, platform i aplikacji, które już istnieją dla usługi BLOB Storage.
 
-- **Zoptymalizowany sterownik**: Sterownik systemu plików obiektów blob platformy Azure (ABFS) jest [zoptymalizowany pod kątem](../../storage/data-lake-storage/abfs-driver.md) analizy danych Big Data. Odpowiednie interfejsy API REST są nadane przez punkt końcowy systemu plików DFS, dfs.core.windows.net.
+- **Zoptymalizowany sterownik**: Sterownik systemu plików obiektów blob platformy Azure (ABFS) jest [zoptymalizowany pod kątem](../../storage/data-lake-storage/abfs-driver.md)analizy danych Big Data w @no__t 2for. Odpowiednie interfejsy API REST są nadane przez punkt końcowy systemu plików DFS, dfs.core.windows.net.
 
 Jeden z następujących formatów może służyć do uzyskiwania dostępu do danych przechowywanych w ADLS Gen2:
-- `abfs:///`: Uzyskaj dostęp do domyślnego Data Lake Storage klastra.
-- `abfs://file_system@account_name.dfs.core.windows.net`: Używane podczas komunikowania się z Data Lake Storageem innym niż domyślne.
+- `abfs:///`: dostęp do domyślnej Data Lake Storage klastra.
+- `abfs://file_system@account_name.dfs.core.windows.net`: używany podczas komunikacji z niedomyślnymi Data Lake Storage.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
@@ -163,29 +163,29 @@ Usługa HDInsight domyślnie ma pełny dostęp do danych na kontach usługi Azur
     |storage_container_name|Kontener na koncie magazynu, do którego ma zostać ograniczony dostęp.|
     |example_file_path|Ścieżka do pliku, który jest przekazywany do kontenera.|
 
-2. Plik SASToken.py zawiera `ContainerPermissions.READ + ContainerPermissions.LIST` uprawnienia i można go dostosować w zależności od przypadku użycia.
+2. Plik SASToken.py zawiera uprawnienia `ContainerPermissions.READ + ContainerPermissions.LIST` i można go dostosować w zależności od przypadku użycia.
 
-3. Wykonaj skrypt w następujący sposób:`python SASToken.py`
+3. Wykonaj skrypt w następujący sposób: `python SASToken.py`
 
-4. Po zakończeniu działania skryptu jest wyświetlany token sygnatury dostępu współdzielonego podobny do następującego:`sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
+4. Wyświetla token sygnatury dostępu współdzielonego podobny do następującego tekstu po zakończeniu działania skryptu: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
 
 5. Aby ograniczyć dostęp do kontenera z sygnaturą dostępu współdzielonego, Dodaj niestandardowy wpis do konfiguracji lokacja podstawowa dla klastra w obszarze Ambari HDFS config zaawansowane niestandardowe rdzeń-lokacja Dodaj właściwość.
 
 6. Użyj następujących wartości dla pól **klucza** i **wartości** :
 
-    **Klucz**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net`**Wartość**: KLUCZ sygnatury dostępu współdzielonego zwracany przez aplikację języka Python z kroku 4 powyżej.
+    **Klucz**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **wartość**: klucz sygnatury dostępu współdzielonego zwrócony przez aplikację języka Python z kroku 4 powyżej.
 
 7. Kliknij przycisk **Dodaj** , aby zapisać ten klucz i wartość, a następnie kliknij przycisk **Zapisz** , aby zapisać zmiany konfiguracji. Po wyświetleniu monitu Dodaj opis zmiany (na przykład "Dodawanie dostępu do magazynu SAS"), a następnie kliknij przycisk **Zapisz**.
 
-8. W interfejsie użytkownika sieci Web Ambari na liście po lewej stronie wybierz pozycję HDFS, a następnie wybierz pozycję **Uruchom ponownie wszystkie** z listy rozwijanej akcje usługi po prawej stronie. Po wyświetleniu monitu wybierz pozycję **Potwierdź ponowne uruchomienie wszystkich**.
+8. W interfejsie użytkownika sieci Web Ambari na liście po lewej stronie wybierz pozycję HDFS, a następnie wybierz pozycję **Uruchom ponownie wszystkie** z listy rozwijanej akcje usługi po prawej stronie. Po wyświetleniu monitu wybierz pozycję **Potwierdź ponowne uruchomienie wszystkich**.
 
 9. Powtórz ten proces dla MapReduce2 i PRZĘDZy.
 
 Istnieją trzy ważne kwestie dotyczące używania tokenów SAS na platformie Azure:
 
-1. Gdy tokeny SAS są tworzone z uprawnieniami "READ + LIST", użytkownicy, którzy uzyskują dostęp do kontenera obiektów blob z tokenem SAS, nie będą mogli "zapisywać ani usuwać" danych. Użytkownicy, którzy uzyskują dostęp do kontenera obiektów BLOB przy użyciu tego tokenu SAS i próbują wykonać operację zapisu lub usuwania `"This request is not authorized to perform this operation"`, otrzymają komunikat podobny do tego.
+1. Gdy tokeny SAS są tworzone z uprawnieniami "READ + LIST", użytkownicy, którzy uzyskują dostęp do kontenera obiektów blob z tokenem SAS, nie będą mogli "zapisywać ani usuwać" danych. Użytkownicy, którzy uzyskują dostęp do kontenera obiektów BLOB przy użyciu tego tokenu SAS i próbują wykonać operację zapisu lub usuwania, otrzymają komunikat, taki jak `"This request is not authorized to perform this operation"`.
 
-2. Gdy tokeny sygnatury dostępu współdzielonego są generowane z `READ + LIST + WRITE` uprawnieniami (w celu `hadoop fs -put` ograniczenia `DELETE` tylko), `\_COPYING\_` poleceniami, takimi jak pierwszy zapis do pliku, a następnie próba zmiany nazwy pliku. Ta operacja systemu plików HDFS jest `copy+delete` mapowana na WASB. Ponieważ nie podano uprawnienia, "Put" zakończy się niepowodzeniem. `DELETE` `\_COPYING\_` Operacja jest funkcją usługi Hadoop zaprojektowaną w celu zapewnienia pewnej kontroli współbieżności. Obecnie nie ma możliwości ograniczenia tylko operacji usuwania bez wpływu na operacje zapisu.
+2. Gdy tokeny sygnatury dostępu współdzielonego są generowane z uprawnieniami `READ + LIST + WRITE` (tylko w celu ograniczenia `DELETE`), polecenia takie jak `hadoop fs -put` najpierw zapisu w pliku `\_COPYING\_`, a następnie próbują zmienić nazwę pliku. Ta operacja systemu plików HDFS jest mapowana na `copy+delete` dla WASB. Ponieważ nie podano uprawnienia `DELETE`, "Put" zakończy się niepowodzeniem. Operacja `\_COPYING\_` jest funkcją usługi Hadoop, która zapewnia kontrolę współbieżności. Obecnie nie ma możliwości ograniczenia tylko operacji usuwania bez wpływu na operacje zapisu.
 
 3. Niestety, Dostawca poświadczeń usługi Hadoop i dostawca klucza odszyfrowywania (ShellDecryptionKeyProvider) obecnie nie działają z tokenami SAS i dlatego nie mogą być chronione przed widocznością.
 

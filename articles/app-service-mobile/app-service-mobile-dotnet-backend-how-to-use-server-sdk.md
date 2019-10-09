@@ -15,15 +15,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: d277786fd08e1448b3d5ccf4fd45055fe069e4c0
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 6481d95db27df9e0b957d61bef24a1cc40b243e7
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097774"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025335"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Praca z zestawem SDK serwera zaplecza platformy .NET na potrzeby usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
+
+> [!NOTE]
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 W tym temacie pokazano, jak używać zestawu SDK serwera zaplecza platformy .NET w scenariuszach Mobile Apps Azure App Service. Zestaw Azure Mobile Apps SDK ułatwia współpracę z klientami mobilnymi z poziomu aplikacji ASP.NET.
 
@@ -33,9 +37,9 @@ W tym temacie pokazano, jak używać zestawu SDK serwera zaplecza platformy .NET
 >
 
 ## <a name="reference-documentation"></a>Dokumentacja referencyjna
-Dokumentacja referencyjna dotycząca zestawu SDK serwera znajduje się tutaj: [Dokumentacja platformy Azure Mobile Apps .NET][1].
+Dokumentacja referencyjna dotycząca zestawu SDK serwera znajduje się tutaj: dokumentacja [platformy Azure Mobile Apps .NET][1].
 
-## <a name="create-app"></a>Jak: Tworzenie zaplecza aplikacji mobilnej platformy .NET
+## <a name="create-app"></a>Instrukcje: Tworzenie zaplecza aplikacji mobilnej platformy .NET
 Jeśli uruchamiasz nowy projekt, możesz utworzyć aplikację App Service przy użyciu [Azure Portal] lub programu Visual Studio. Możesz uruchomić aplikację App Service lokalnie lub opublikować projekt w aplikacji mobilnej App Service opartej na chmurze.
 
 Jeśli dodajesz możliwości mobilne do istniejącego projektu, zapoznaj się z sekcją [pobieranie i inicjowanie zestawu SDK](#install-sdk) .
@@ -51,7 +55,7 @@ Wróć do bloku *wprowadzenie* , w obszarze **Utwórz tabelę interfejsu API**wy
 
 Zainstaluj obciążenie platformy Azure za pośrednictwem Instalator programu Visual Studio, aby publikować w projekcie Mobile Apps platformy Azure z poziomu programu Visual Studio. Po zainstalowaniu zestawu SDK Utwórz aplikację ASP.NET, wykonując następujące czynności:
 
-1. Otwórz okno dialogowe **Nowy projekt** (z **pliku** > **Nowy** > **projekt..** .).
+1. Otwórz okno dialogowe **Nowy projekt** (z **pliku** > **Nowy** > **projekt...** ).
 2. Rozwiń **pozycję C# Wizualizacja** i wybierz pozycję **Sieć Web**.
 3. Wybierz pozycję **aplikacja sieci Web ASP.NET (.NET Framework)** .
 4. Wypełnij pole Nazwa projektu. Następnie kliknij przycisk **OK**.
@@ -64,26 +68,26 @@ Zainstaluj obciążenie platformy Azure za pośrednictwem Instalator programu Vi
 
 Zainstaluj [zestaw Azure SDK dla platformy .NET][4] (wersja 2.9.0 lub nowsza), aby utworzyć projekt usługi Azure Mobile Apps w programie Visual Studio. Po zainstalowaniu zestawu SDK Utwórz aplikację ASP.NET, wykonując następujące czynności:
 
-1. Otwórz okno dialogowe **Nowy projekt** (z **pliku** > **Nowy** > **projekt..** .).
-2. Rozwiń węzeł **Szablony** > **C#wizualizacji**i wybierz pozycję **Sieć Web**.
+1. Otwórz okno dialogowe **Nowy projekt** (z **pliku** > **Nowy** > **projekt...** ).
+2. Rozwiń węzeł **Szablony**@no__t-**1 C#Wizualizacja** i wybierz pozycję **Sieć Web**.
 3. Wybierz pozycję **Aplikacja internetowa platformy ASP.NET**.
 4. Wypełnij pole Nazwa projektu. Następnie kliknij przycisk **OK**.
 5. W obszarze *szablony ASP.NET 4.5.2*wybierz pozycję **aplikacja mobilna platformy Azure**. Sprawdź **host w chmurze** , aby utworzyć zaplecze mobilne w chmurze, w którym można opublikować ten projekt.
 6. Kliknij przycisk **OK**.
 
-## <a name="install-sdk"></a>Jak: Pobierz i Zainicjuj zestaw SDK
+## <a name="install-sdk"></a>Instrukcje: pobieranie i inicjowanie zestawu SDK
 Zestaw SDK jest dostępny w witrynie [NuGet.org]. Ten pakiet zawiera podstawowe funkcje wymagane do rozpoczęcia korzystania z zestawu SDK. Aby zainicjować zestaw SDK, należy wykonać akcje na obiekcie **HttpConfiguration** .
 
 ### <a name="install-the-sdk"></a>Instalacja zestawu SDK
-Aby zainstalować zestaw SDK, kliknij prawym przyciskiem myszy projekt serwera w programie Visual Studio, wybierz polecenie Zarządzaj pakietami **NuGet**, Wyszukaj pozycję [Microsoft.Azure.Mobile.Server] , a następnie kliknij przycisk **Instaluj**.
+Aby zainstalować zestaw SDK, kliknij prawym przyciskiem myszy projekt serwera w programie Visual Studio, wybierz polecenie Zarządzaj pakietami **NuGet**, Wyszukaj pozycję [Microsoft. Azure. Mobile. Server] , a następnie kliknij przycisk **Instaluj**.
 
 ### <a name="server-project-setup"></a>Inicjowanie projektu serwera
-Projekt serwera zaplecza platformy .NET jest zainicjowany podobnie jak w przypadku innych projektów ASP.NET, poprzez dołączenie klasy uruchomieniowej OWIN. Upewnij się, że pakiet `Microsoft.Owin.Host.SystemWeb`NuGet został przywoływany. Aby dodać tę klasę w programie Visual Studio, kliknij prawym przyciskiem myszy na projekt serwera, a następnie wybierz **Dodaj** >
-**nowy element**, następnie **Web** > **Ogólne** > **Klasa początkowa OWIN**.  Klasa jest generowana przy użyciu następującego atrybutu:
+Projekt serwera zaplecza platformy .NET jest zainicjowany podobnie jak w przypadku innych projektów ASP.NET, poprzez dołączenie klasy uruchomieniowej OWIN. Upewnij się, że przywoływano pakiet NuGet `Microsoft.Owin.Host.SystemWeb`. Aby dodać tę klasę w programie Visual Studio, kliknij prawym przyciskiem myszy projekt serwera i wybierz polecenie **dodaj** >
+**nowy element**, a następnie @no__t **sieci Web**-4**Ogólne** > **Owin klasy startowej**.  Klasa jest generowana przy użyciu następującego atrybutu:
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
-W metodzie klasy uruchomieniowej Owin Użyj obiektu HttpConfiguration, aby skonfigurować środowisko Mobile Apps platformy Azure. `Configuration()`
+W metodzie `Configuration()` klasy uruchomieniowej OWIN Użyj obiektu **HttpConfiguration** , aby skonfigurować środowisko Mobile Apps platformy Azure.
 W poniższym przykładzie jest inicjowany projekt serwera bez dodatkowych funkcji:
 
     // in OWIN startup class
@@ -98,7 +102,7 @@ W poniższym przykładzie jest inicjowany projekt serwera bez dodatkowych funkcj
         app.UseWebApi(config);
     }
 
-Aby włączyć poszczególne funkcje, należy wywołać metody rozszerzania obiektu **MobileAppConfiguration** przed wywołaniem **ApplyTo**. Na przykład poniższy kod dodaje trasy domyślne do wszystkich kontrolerów interfejsu API, które mają atrybut `[MobileAppController]` podczas inicjalizacji:
+Aby włączyć poszczególne funkcje, należy wywołać metody rozszerzania obiektu **MobileAppConfiguration** przed wywołaniem **ApplyTo**. Na przykład poniższy kod dodaje trasy domyślne do wszystkich kontrolerów interfejsu API, które mają atrybut `[MobileAppController]` podczas inicjowania:
 
     new MobileAppConfiguration()
         .MapApiControllers()
@@ -120,31 +124,31 @@ Serwer szybki start z Azure Portal wywołuje **UseDefaultConfiguration ()** . Te
 
 Używane metody rozszerzające są następujące:
 
-* `AddMobileAppHomeController()`udostępnia domyślną stronę główną usługi Azure Mobile Apps.
-* `MapApiControllers()`oferuje niestandardowe możliwości interfejsu API dla kontrolerów WebAPI z `[MobileAppController]` atrybutem.
-* `AddTables()`zapewnia mapowanie `/tables` punktów końcowych na kontrolery tabel.
-* `AddTablesWithEntityFramework()`jest zwięzły do mapowania `/tables` punktów końcowych przy użyciu kontrolerów opartych na Entity Framework.
-* `AddPushNotifications()`zapewnia prostą metodę rejestrowania urządzeń dla Notification Hubs.
-* `MapLegacyCrossDomainController()`udostępnia standardowe nagłówki CORS na potrzeby programowania lokalnego.
+* `AddMobileAppHomeController()` udostępnia domyślną stronę główną platformy Azure Mobile Apps.
+* `MapApiControllers()` udostępnia niestandardowe możliwości interfejsu API dla kontrolerów WebAPI z atrybutem `[MobileAppController]`.
+* `AddTables()` umożliwia mapowanie punktów końcowych `/tables` na kontrolery tabeli.
+* `AddTablesWithEntityFramework()` to krótkie mapowanie punktów końcowych `/tables` przy użyciu kontrolerów opartych na Entity Framework.
+* `AddPushNotifications()` zapewnia prostą metodę rejestrowania urządzeń dla Notification Hubs.
+* `MapLegacyCrossDomainController()` udostępnia standardowe nagłówki CORS na potrzeby lokalnego tworzenia.
 
 ### <a name="sdk-extensions"></a>Rozszerzenia zestawu SDK
 Następujące pakiety rozszerzeń oparte na pakiecie NuGet udostępniają różne funkcje mobilne, które mogą być używane przez aplikację. Rozszerzenia są włączane podczas inicjowania przy użyciu obiektu **MobileAppConfiguration** .
 
-* [Microsoft.Azure.Mobile.Server.Quickstart] obsługuje konfigurację Mobile Apps podstawowa. Dodano do konfiguracji przez wywołanie metody rozszerzenia **UseDefaultConfiguration** podczas inicjacji. To rozszerzenie obejmuje następujące rozszerzenia: Powiadomienia, uwierzytelnianie, jednostki, tabele, wiele domen i pakiety domowe. Ten pakiet jest używany przez Mobile Apps Szybki Start dostępny w Azure Portal.
+* [Microsoft. Azure. Mobile. Server. Szybki Start] obsługuje konfigurację Mobile Apps podstawowa. Dodano do konfiguracji przez wywołanie metody rozszerzenia **UseDefaultConfiguration** podczas inicjacji. To rozszerzenie obejmuje następujące rozszerzenia: powiadomienia, uwierzytelnianie, jednostki, tabele, wiele domen i pakiety domowe. Ten pakiet jest używany przez Mobile Apps Szybki Start dostępny w Azure Portal.
 * [Microsoft. Azure. Mobile. Server. Home](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) implementuje domyślną *stronę aplikacji mobilnej* dla katalogu głównego witryny sieci Web. Dodaj do konfiguracji, wywołując metodę rozszerzenia **AddMobileAppHomeController** .
-* [Microsoft. Azure. Mobile. Server. Tables](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) zawiera klasy umożliwiające pracę z danymi i konfiguracjami potoku danych. Dodaj do konfiguracji, wywołując metodę rozszerzenia addtables.
+* [Microsoft. Azure. Mobile. Server. Tables](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) zawiera klasy umożliwiające pracę z danymi i konfiguracjami potoku danych. Dodaj do konfiguracji, wywołując metodę rozszerzenia **Addtables** .
 * [Microsoft. Azure. Mobile. Server. Entity](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) umożliwia Entity Framework dostęp do danych w SQL Database. Dodaj do konfiguracji, wywołując metodę rozszerzenia **AddTablesWithEntityFramework** .
-* [Microsoft.Azure.Mobile.Server.Authentication] umożliwia uwierzytelnianie i Konfigurowanie oprogramowania Owin używanego do weryfikowania tokenów. Dodaj do konfiguracji, wywołując **AddAppServiceAuthentication** i **IAppBuilder**. Metody rozszerzenia **UseAppServiceAuthentication** .
-* [Microsoft.Azure.Mobile.Server.Notifications] Włącza powiadomienia wypychane i definiuje punkt końcowy rejestracji wypychanej. Dodaj do konfiguracji, wywołując metodę rozszerzenia **AddPushNotifications** .
+* [Microsoft. Azure. Mobile. Server. Authentication] umożliwia uwierzytelnianie i Konfigurowanie oprogramowania Owin używanego do weryfikowania tokenów. Dodaj do konfiguracji, wywołując **AddAppServiceAuthentication** i **IAppBuilder**. Metody rozszerzenia **UseAppServiceAuthentication** .
+* [Microsoft. Azure. Mobile. Server. Notifications] Włącza powiadomienia wypychane i definiuje punkt końcowy rejestracji wypychanej. Dodaj do konfiguracji, wywołując metodę rozszerzenia **AddPushNotifications** .
 * [Microsoft. Azure. Mobile. Server. CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) tworzy kontroler, który obsługuje dane do starszych przeglądarek sieci Web z aplikacji mobilnej. Dodaj do konfiguracji, wywołując metodę rozszerzenia **MapLegacyCrossDomainController** .
-* [Microsoft.Azure.Mobile.Server.Login] udostępnia metodę AppServiceLoginHandler. istoken (), która jest metodą statyczną używaną podczas niestandardowych scenariuszy uwierzytelniania.
+* [Microsoft. Azure. Mobile. Server. Login] udostępnia metodę AppServiceLoginHandler. istoken (), która jest metodą statyczną używaną podczas niestandardowych scenariuszy uwierzytelniania.
 
-## <a name="publish-server-project"></a>Jak: Opublikuj projekt serwera
+## <a name="publish-server-project"></a>Instrukcje: publikowanie projektu serwera
 W tej sekcji przedstawiono sposób publikowania projektu zaplecza .NET z programu Visual Studio. Możesz również wdrożyć projekt zaplecza za pomocą [narzędzia Git](../app-service/deploy-local-git.md) lub dowolnej innej dostępnej metody.
 
 1. W programie Visual Studio Skompiluj ponownie projekt, aby przywrócić pakiety NuGet.
 2. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt, a następnie kliknij pozycję **Publikuj**. Przy pierwszym publikowaniu należy zdefiniować profil publikowania. Jeśli masz już zdefiniowany profil, możesz go zaznaczyć i kliknąć przycisk **Publikuj**.
-3. Jeśli zostanie wyświetlony monit o wybranie elementu docelowego publikowania, kliknij przycisk **Microsoft Azure App Service** > **dalej**, a następnie (w razie potrzeby) Zaloguj się przy użyciu poświadczeń platformy Azure.
+3. Jeśli zostanie wyświetlony monit o wybranie elementu docelowego publikowania, kliknij **Microsoft Azure App Service** > **dalej**, a następnie (w razie potrzeby) Zaloguj się przy użyciu poświadczeń platformy Azure.
    Program Visual Studio pobiera i bezpiecznie przechowuje ustawienia publikowania bezpośrednio z platformy Azure.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-1.png)
@@ -159,14 +163,14 @@ W tej sekcji przedstawiono sposób publikowania projektu zaplecza .NET z program
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-## <a name="define-table-controller"></a>Jak: Zdefiniuj kontroler tabeli
+## <a name="define-table-controller"></a>Instrukcje: Definiowanie kontrolera tabeli
 Zdefiniuj kontroler tabeli, aby udostępnić tabelę SQL klientom mobilnym.  Konfigurowanie kontrolera tabeli wymaga wykonania trzech kroków:
 
 1. Utwórz klasę obiektu Transfer danych (DTO).
 2. Skonfiguruj odwołanie do tabeli w klasie typu Mobile DbContext.
 3. Utwórz kontroler tabeli.
 
-Obiekt Transfer danych (DTO) to zwykły C# obiekt, który dziedziczy po `EntityData`elemencie.  Na przykład:
+Obiekt Transfer danych (DTO) to zwykły C# obiekt, który dziedziczy po `EntityData`.  Na przykład:
 
     public class TodoItem : EntityData
     {
@@ -174,7 +178,7 @@ Obiekt Transfer danych (DTO) to zwykły C# obiekt, który dziedziczy po `EntityD
         public bool Complete {get; set;}
     }
 
-DTO jest używany do definiowania tabeli w bazie danych SQL.  Aby utworzyć wpis bazy danych, Dodaj `DbSet<>` właściwość do kontekstu DbContext, którego używasz.  W domyślnym szablonie projektu dla usługi Azure Mobile Apps jest wywoływana `Models\MobileServiceContext.cs`DbContext:
+DTO jest używany do definiowania tabeli w bazie danych SQL.  Aby utworzyć wpis bazy danych, Dodaj `DbSet<>` właściwość do kontekstu DbContext, którego używasz.  W domyślnym szablonie projektu dla usługi Azure Mobile Apps, DbContext jest wywoływana `Models\MobileServiceContext.cs`:
 
     public class MobileServiceContext : DbContext
     {
@@ -197,28 +201,28 @@ DTO jest używany do definiowania tabeli w bazie danych SQL.  Aby utworzyć wpis
 
 Jeśli masz zainstalowany zestaw Azure SDK, możesz teraz utworzyć kontroler tabeli szablonów w następujący sposób:
 
-1. Kliknij prawym przyciskiem myszy folder controllers, a następnie wybierz pozycję **Dodaj** > **kontroler.** ...
+1. Kliknij prawym przyciskiem myszy folder controllers i wybierz polecenie **Dodaj**kontroler  >  **.** ...
 2. Wybierz opcję **kontroler tabeli Mobile Apps Azure** , a następnie kliknij przycisk **Dodaj**.
 3. W oknie dialogowym **Dodawanie kontrolera** :
    * Z listy rozwijanej **Klasa modelu** wybierz nowy DTO.
-   * Z listy rozwijanej DbContext wybierz klasę usługi mobilnej DbContext.
+   * Z listy rozwijanej **DbContext** wybierz klasę usługi mobilnej DbContext.
    * Nazwa kontrolera zostanie utworzona.
-4. Kliknij przycisk **Dodaj**.
+4. Kliknij pozycję **Add** (Dodaj).
 
 Projekt szybkiego startu serwera zawiera przykład dla prostego **TodoItemController**.
 
-### <a name="adjust-pagesize"></a>Jak: Dostosuj rozmiar stronicowania tabeli
-Domyślnie usługa Azure Mobile Apps zwraca rekordy 50 dla żądania.  Stronicowanie gwarantuje, że klient programu nie wiąże się z zbyt długim wątkiem interfejsu użytkownika ani z serwerem, zapewniając dobry komfort pracy użytkownika. Aby zmienić rozmiar stronicowania tabeli, zwiększ wartość po stronie serwera "dozwolony rozmiar zapytania" i rozmiar strony klienta po stronie serwera "dozwolony rozmiar zapytania" jest dostosowywany przy użyciu `EnableQuery` atrybutu:
+### <a name="adjust-pagesize"></a>Instrukcje: Dostosowywanie rozmiaru stronicowania tabeli
+Domyślnie usługa Azure Mobile Apps zwraca rekordy 50 dla żądania.  Stronicowanie gwarantuje, że klient programu nie wiąże się z zbyt długim wątkiem interfejsu użytkownika ani z serwerem, zapewniając dobry komfort pracy użytkownika. Aby zmienić rozmiar stronicowania tabeli, zwiększ wartość po stronie serwera "dozwolony rozmiar zapytania" i rozmiar strony klienta po stronie serwera "dozwolony rozmiar zapytania" jest dostosowywany przy użyciu atrybutu `EnableQuery`:
 
     [EnableQuery(PageSize = 500)]
 
 Upewnij się, że wartość PageSize jest taka sama lub większa od rozmiaru żądanego przez klienta.  Szczegółowe informacje na temat zmiany rozmiaru strony klienta znajdują się w dokumentacji porady klienta.
 
-## <a name="how-to-define-a-custom-api-controller"></a>Instrukcje: Definiowanie niestandardowego kontrolera interfejsu API
-Niestandardowy kontroler interfejsu API zapewnia najbardziej podstawowe funkcje zaplecza aplikacji mobilnej przez udostępnienie punktu końcowego. Można zarejestrować kontroler interfejsu API specyficzny dla urządzeń przenośnych przy użyciu atrybutu [MobileAppController]. Ten `MobileAppController` atrybut rejestruje trasę, konfiguruje serializator JSON Mobile Apps i włącza [Sprawdzanie wersji klienta](app-service-mobile-client-and-server-versioning.md).
+## <a name="how-to-define-a-custom-api-controller"></a>Instrukcje: definiowanie niestandardowego kontrolera interfejsu API
+Niestandardowy kontroler interfejsu API zapewnia najbardziej podstawowe funkcje zaplecza aplikacji mobilnej przez udostępnienie punktu końcowego. Można zarejestrować kontroler interfejsu API specyficzny dla urządzeń przenośnych przy użyciu atrybutu [MobileAppController]. Atrybut `MobileAppController` rejestruje trasę, konfiguruje serializator JSON Mobile Apps i włącza [Sprawdzanie wersji klienta](app-service-mobile-client-and-server-versioning.md).
 
-1. W programie Visual Studio kliknij prawym przyciskiem myszy folder controllers, a następnie kliknij pozycję **Dodaj** > **kontroler**, wybierz **pusty kontroler&mdash;sieci Web API 2** i kliknij przycisk **Dodaj**.
-2. Podaj **nazwę kontrolera**, na `CustomController`przykład, a następnie kliknij przycisk **Dodaj**.
+1. W programie Visual Studio kliknij prawym przyciskiem myszy folder controllers, a następnie kliknij pozycję **Dodaj** **kontroler** > , wybierz pozycję **Web API 2 Controller @ no__t-4Empty** , a następnie kliknij przycisk **Dodaj**.
+2. Podaj **nazwę kontrolera**, taką jak `CustomController`, i kliknij przycisk **Dodaj**.
 3. W nowym pliku klasy kontrolera Dodaj następującą instrukcję using:
 
         using Microsoft.Azure.Mobile.Server.Config;
@@ -235,39 +239,39 @@ Niestandardowy kontroler interfejsu API zapewnia najbardziej podstawowe funkcje 
             .MapApiControllers()
             .ApplyTo(config);
 
-Można również użyć `UseDefaultConfiguration()` metody rozszerzenia `MapApiControllers()`zamiast. Klienci, którzy nie mają zastosowanych **MobileAppControllerAttribute** , nadal mogą uzyskać dostęp do wszystkich kontrolerów, ale mogą nie być prawidłowo używani przez klientów przy użyciu dowolnego zestawu SDK klienta aplikacji mobilnej.
+Można również użyć metody rozszerzenia `UseDefaultConfiguration()` zamiast `MapApiControllers()`. Klienci, którzy nie mają zastosowanych **MobileAppControllerAttribute** , nadal mogą uzyskać dostęp do wszystkich kontrolerów, ale mogą nie być prawidłowo używani przez klientów przy użyciu dowolnego zestawu SDK klienta aplikacji mobilnej.
 
-## <a name="how-to-work-with-authentication"></a>Instrukcje: Pracuj z uwierzytelnianiem
+## <a name="how-to-work-with-authentication"></a>Instrukcje: korzystanie z uwierzytelniania
 Usługa Azure Mobile Apps używa App Service uwierzytelniania/autoryzacji do zabezpieczania zaplecza mobilnego.  W tej sekcji przedstawiono sposób wykonywania następujących zadań związanych z uwierzytelnianiem w projekcie serwera zaplecza platformy .NET:
 
 * [Instrukcje: Dodawanie uwierzytelniania do projektu serwera](#add-auth)
-* [Instrukcje: Używanie uwierzytelniania niestandardowego dla aplikacji](#custom-auth)
-* [Instrukcje: Pobierz informacje o uwierzytelnionym użytkowniku](#user-info)
-* [Instrukcje: Ograniczanie dostępu do danych dla autoryzowanych użytkowników](#authorize)
+* [Instrukcje: korzystanie z uwierzytelniania niestandardowego dla aplikacji](#custom-auth)
+* [Instrukcje: pobieranie informacji o uwierzytelnionym użytkowniku](#user-info)
+* [Instrukcje: ograniczanie dostępu do danych dla autoryzowanych użytkowników](#authorize)
 
-### <a name="add-auth"></a>Jak: Dodawanie uwierzytelniania do projektu serwera
-Możesz dodać uwierzytelnianie do projektu serwera, rozszerzając obiekt **MobileAppConfiguration** i konfigurując oprogramowanie pośredniczące Owin. Instalując pakiet [Microsoft.Azure.Mobile.Server.Quickstart] i Wywołaj metodę rozszerzenia **UseDefaultConfiguration** , możesz przejść do kroku 3.
+### <a name="add-auth"></a>Instrukcje: Dodawanie uwierzytelniania do projektu serwera
+Możesz dodać uwierzytelnianie do projektu serwera, rozszerzając obiekt **MobileAppConfiguration** i konfigurując oprogramowanie pośredniczące Owin. Instalując pakiet [Microsoft. Azure. Mobile. Server. Szybki Start] i Wywołaj metodę rozszerzenia **UseDefaultConfiguration** , możesz przejść do kroku 3.
 
-1. W programie Visual Studio Zainstaluj pakiet [Microsoft.Azure.Mobile.Server.Authentication] .
+1. W programie Visual Studio Zainstaluj pakiet [Microsoft. Azure. Mobile. Server. Authentication] .
 2. W pliku projektu Startup.cs Dodaj następujący wiersz kodu na początku metody **konfiguracji** :
 
         app.UseAppServiceAuthentication(config);
 
     Ten składnik pośredniczący OWIN sprawdza poprawność tokenów wystawionych przez skojarzoną bramę App Service.
-3. `[Authorize]` Dodaj atrybut do dowolnych kontrolerów lub metod, które wymagają uwierzytelniania.
+3. Dodaj atrybut `[Authorize]` do dowolnych kontrolerów lub metod, które wymagają uwierzytelniania.
 
 Aby dowiedzieć się, jak uwierzytelniać klientów w zapleczu Mobile Apps, zobacz [Dodawanie uwierzytelniania do aplikacji](app-service-mobile-ios-get-started-users.md).
 
-### <a name="custom-auth"></a>Jak: Używanie uwierzytelniania niestandardowego dla aplikacji
+### <a name="custom-auth"></a>Instrukcje: korzystanie z uwierzytelniania niestandardowego dla aplikacji
 > [!IMPORTANT]
 > Aby włączyć uwierzytelnianie niestandardowe, należy najpierw włączyć uwierzytelnianie App Service bez wybierania dostawcy App Service w Azure Portal. Spowoduje to włączenie zmiennej środowiskowej WEBSITE_AUTH_SIGNING_KEY, gdy jest hostowany.
 > 
 > 
-> Jeśli nie chcesz używać jednego z App Service dostawcy uwierzytelniania/autoryzacji, możesz zaimplementować własny system logowania. Zainstaluj pakiet [Microsoft.Azure.Mobile.Server.Login] , aby pomóc w generowaniu tokenu uwierzytelniania.  Podaj własny kod służący do weryfikowania poświadczeń użytkownika. Można na przykład zaewidencjonować hasła z zasolonymi i skrótami w bazie danych. W poniższym `isValidAssertion()` przykładzie metoda (zdefiniowana w innym miejscu) jest odpowiedzialna za te kontrole.
+> Jeśli nie chcesz używać jednego z App Service dostawcy uwierzytelniania/autoryzacji, możesz zaimplementować własny system logowania. Zainstaluj pakiet [Microsoft. Azure. Mobile. Server. Login] , aby pomóc w generowaniu tokenu uwierzytelniania.  Podaj własny kod służący do weryfikowania poświadczeń użytkownika. Można na przykład zaewidencjonować hasła z zasolonymi i skrótami w bazie danych. W poniższym przykładzie metoda `isValidAssertion()` (zdefiniowana w innym miejscu) jest odpowiedzialna za te kontrole.
 
-Uwierzytelnianie niestandardowe jest uwidaczniane przez utworzenie ApiController i udostępnianie `register` i `login` akcje. Klient powinien użyć niestandardowego interfejsu użytkownika, aby zebrać informacje od użytkownika.  Informacje są następnie przesyłane do interfejsu API przy użyciu standardowego wywołania POST protokołu HTTP. Gdy serwer zweryfikuje potwierdzenie, token zostanie wystawiony przy użyciu `AppServiceLoginHandler.CreateToken()` metody.  ApiController **nie powinien** używać `[MobileAppController]` atrybutu.
+Uwierzytelnianie niestandardowe jest uwidaczniane przez utworzenie ApiController i udostępnienie `register` i `login` akcji. Klient powinien użyć niestandardowego interfejsu użytkownika, aby zebrać informacje od użytkownika.  Informacje są następnie przesyłane do interfejsu API przy użyciu standardowego wywołania POST protokołu HTTP. Gdy serwer zweryfikuje potwierdzenie, token zostanie wystawiony przy użyciu metody `AppServiceLoginHandler.CreateToken()`.  ApiController **nie powinien** używać atrybutu `[MobileAppController]`.
 
-Przykładowa `login` akcja:
+Przykład `login` akcji:
 
         public IHttpActionResult Post([FromBody] JObject assertion)
         {
@@ -299,20 +303,20 @@ W poprzednim przykładzie LoginResult i LoginResultUser są obiektami możliwymi
             }
         }
 
-Metoda obejmuje *odbiorców* i parametr wystawcy. `AppServiceLoginHandler.CreateToken()` Oba te parametry są ustawiane na adres URL katalogu głównego aplikacji przy użyciu schematu HTTPS. Podobnie należy ustawić *secretKey* jako wartość klucza podpisywania aplikacji. Nie należy rozpowszechniać klucza podpisywania na kliencie, ponieważ może służyć do mennic kluczy i personifikacji użytkowników. Możesz uzyskać klucz podpisywania, który jest hostowany w App Service, odwołując się do zmiennej środowiskowej *klucza podpisywania\_\_uwierzytelniania\_witryny sieci Web* . Jeśli jest to konieczne w lokalnym kontekście debugowania, postępuj zgodnie z instrukcjami w sekcji [debugowanie lokalne z uwierzytelnianiem](#local-debug) w celu pobrania klucza i zapisania go jako ustawienia aplikacji.
+Metoda `AppServiceLoginHandler.CreateToken()` obejmuje *odbiorców* i parametr *wystawcy* . Oba te parametry są ustawiane na adres URL katalogu głównego aplikacji przy użyciu schematu HTTPS. Podobnie należy ustawić *secretKey* jako wartość klucza podpisywania aplikacji. Nie należy rozpowszechniać klucza podpisywania na kliencie, ponieważ może służyć do mennic kluczy i personifikacji użytkowników. Możesz uzyskać klucz podpisywania, który jest hostowany w App Service, odwołując się do *witryny sieci Web @ no__t-1AUTH @ no__t-2SIGNING @ no__t-3KEY* . Jeśli jest to konieczne w lokalnym kontekście debugowania, postępuj zgodnie z instrukcjami w sekcji [debugowanie lokalne z uwierzytelnianiem](#local-debug) w celu pobrania klucza i zapisania go jako ustawienia aplikacji.
 
 Wystawiony token może również obejmować inne oświadczenia i datę wygaśnięcia.  W minimalnym stopniu wystawiony token musi zawierać zastrzeżenie subject (**Sub**).
 
-Można obsługiwać standardową metodę klienta `loginAsync()` przez przeciążanie trasy uwierzytelniania.  Jeśli klient wywoła `client.loginAsync('custom');` się w celu zalogowania, musi mieć `/.auth/login/custom`wartość.  Możesz ustawić trasę dla niestandardowego kontrolera uwierzytelniania przy użyciu `MapHttpRoute()`:
+Można obsługiwać standardową metodę klienta `loginAsync()`, przeciążąc trasę uwierzytelniania.  Jeśli klient wywoła `client.loginAsync('custom');` w celu zalogowania, trasa musi być `/.auth/login/custom`.  Możesz ustawić trasę dla niestandardowego kontrolera uwierzytelniania przy użyciu `MapHttpRoute()`:
 
     config.Routes.MapHttpRoute("custom", ".auth/login/custom", new { controller = "CustomAuth" });
 
 > [!TIP]
-> `loginAsync()` Użycie podejścia gwarantuje, że token uwierzytelniania jest dołączany do każdego kolejnego wywołania usługi.
+> Użycie podejścia `loginAsync()` zapewnia, że token uwierzytelniania jest dołączany do każdego kolejnego wywołania usługi.
 >
 >
 
-### <a name="user-info"></a>Jak: Pobierz informacje o uwierzytelnionym użytkowniku
+### <a name="user-info"></a>Instrukcje: pobieranie informacji o uwierzytelnionym użytkowniku
 Po uwierzytelnieniu użytkownika przez App Service można uzyskać dostęp do przypisanego identyfikatora użytkownika i innych informacji w kodzie zaplecza platformy .NET. Informacje o użytkowniku mogą służyć do podejmowania decyzji dotyczących autoryzacji w zapleczu. Poniższy kod uzyskuje identyfikator użytkownika skojarzony z żądaniem:
 
     // Get the SID of the current user.
@@ -347,9 +351,9 @@ Poniższy kod wywołuje metodę rozszerzenia **GetAppServiceIdentityAsync** , ab
         var fbInfo = await resp.Content.ReadAsStringAsync();
     }
 
-Dodaj instrukcję `System.Security.Principal` using, aby podać metodę rozszerzenia **GetAppServiceIdentityAsync** .
+Dodaj instrukcję using dla `System.Security.Principal`, aby zapewnić metodę rozszerzenia **GetAppServiceIdentityAsync** .
 
-### <a name="authorize"></a>Jak: Ograniczanie dostępu do danych dla autoryzowanych użytkowników
+### <a name="authorize"></a>Instrukcje: ograniczanie dostępu do danych dla autoryzowanych użytkowników
 W poprzedniej sekcji pokazano, jak pobrać identyfikator użytkownika uwierzytelnionego użytkownika. Można ograniczyć dostęp do danych i innych zasobów na podstawie tej wartości. Na przykład dodanie kolumny userId do tabel i filtrowanie wyników zapytania według identyfikatora użytkownika jest prostym sposobem na ograniczenie zwracanych danych tylko do autoryzowanych użytkowników. Poniższy kod zwraca wiersze danych tylko wtedy, gdy identyfikator SID jest zgodny z wartością w kolumnie UserId w tabeli TodoItem:
 
     // Get the SID of the current user.
@@ -359,13 +363,13 @@ W poprzedniej sekcji pokazano, jak pobrać identyfikator użytkownika uwierzytel
     // Only return data rows that belong to the current user.
     return Query().Where(t => t.UserId == sid);
 
-Metoda zwraca obiekt `IQueryable` , który może być manipulowany przez LINQ w celu obsługi filtrowania. `Query()`
+Metoda `Query()` zwraca `IQueryable`, które mogą być manipulowane przez LINQ w celu obsługi filtrowania.
 
 ## <a name="how-to-add-push-notifications-to-a-server-project"></a>Instrukcje: Dodawanie powiadomień wypychanych do projektu serwera
 Dodaj powiadomienia wypychane do projektu serwera, rozszerzając obiekt **MobileAppConfiguration** i tworząc klienta Notification Hubs.
 
-1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt serwera, kliknij polecenie **Zarządzaj pakietami NuGet**, Wyszukaj `Microsoft.Azure.Mobile.Server.Notifications`, a następnie kliknij przycisk **Instaluj**.
-2. Powtórz ten krok, aby zainstalować `Microsoft.Azure.NotificationHubs` pakiet, który zawiera Notification Hubsą bibliotekę kliencką.
+1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt serwera i kliknij pozycję **Zarządzaj pakietami NuGet**, wyszukaj pozycję `Microsoft.Azure.Mobile.Server.Notifications`, a następnie kliknij pozycję **Zainstaluj**.
+2. Powtórz ten krok, aby zainstalować pakiet `Microsoft.Azure.NotificationHubs`, który zawiera Notification Hubs bibliotekę kliencką.
 3. W App_Start/Startup. MobileApp. cs i Dodaj wywołanie metody rozszerzenia **AddPushNotifications ()** podczas inicjowania:
 
         new MobileAppConfiguration()
@@ -390,7 +394,7 @@ Dodaj powiadomienia wypychane do projektu serwera, rozszerzając obiekt **Mobile
 
 Za pomocą klienta Notification Hubs można teraz wysyłać powiadomienia wypychane do zarejestrowanych urządzeń. Aby uzyskać więcej informacji, zobacz [Dodawanie powiadomień wypychanych do aplikacji](app-service-mobile-ios-get-started-push.md). Aby dowiedzieć się więcej na temat Notification Hubs, zobacz [Omówienie usługi Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md).
 
-## <a name="tags"></a>Jak: Włącz wypchnięcie skierowane przy użyciu tagów
+## <a name="tags"></a>Instrukcje: Włączanie wypychania skierowanego przy użyciu tagów
 Notification Hubs umożliwia wysyłanie skierowanych powiadomień do określonych rejestracji przy użyciu tagów. Automatycznie tworzone są kilka tagów:
 
 * Identyfikator instalacji identyfikuje określone urządzenie.
@@ -412,7 +416,7 @@ Wszystkie Tagi dostarczone przez klienta podczas rejestracji powiadomień wypych
 
 Zapoznaj się z przykładem [Dodawanie tagów powiadomień wypychanych do klienta][5] w App Service Mobile Apps zakończono przykładowego przewodnika Szybki Start.
 
-## <a name="push-user"></a>Jak: Wysyłanie powiadomień wypychanych do uwierzytelnionego użytkownika
+## <a name="push-user"></a>Instrukcje: wysyłanie powiadomień wypychanych do uwierzytelnionego użytkownika
 Gdy uwierzytelniony użytkownik rejestruje się w celu otrzymywania powiadomień wypychanych, tag identyfikatora użytkownika jest automatycznie dodawany do rejestracji. Za pomocą tego tagu można wysyłać powiadomienia wypychane do wszystkich urządzeń zarejestrowanych przez tę osobę. Poniższy kod pobiera identyfikator SID użytkownika wysyłającego żądanie i wysyła powiadomienie wypychane szablonu do każdej rejestracji urządzenia dla tej osoby:
 
     // Get the current user SID and create a tag for the current user.
@@ -428,7 +432,7 @@ Gdy uwierzytelniony użytkownik rejestruje się w celu otrzymywania powiadomień
 
 Podczas rejestrowania powiadomień wypychanych z poziomu uwierzytelnionego klienta upewnij się, że przed próbą rejestracji zostanie wykonane uwierzytelnianie. Aby uzyskać więcej informacji, zobacz [wypychanie do użytkowników][6] w App Service Mobile Apps zakończono przykładowego przewodnika Szybki Start dla zaplecza platformy .NET.
 
-## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>Instrukcje: Debugowanie i rozwiązywanie problemów z zestawem SDK programu .NET Server
+## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>Instrukcje: debugowanie i rozwiązywanie problemów z zestawem SDK programu .NET Server
 Azure App Service oferuje kilka technik debugowania i rozwiązywania problemów dla aplikacji ASP.NET:
 
 * [Monitorowanie Azure App Service](../app-service/web-sites-monitor.md)
@@ -456,7 +460,7 @@ Możesz uruchomić aplikację lokalnie, aby przetestować zmiany przed opublikow
 
 Aplikacja mobilna oparta na chmurze musi mieć skonfigurowaną App Service uwierzytelnianie/autoryzację, a klient musi mieć punkt końcowy w chmurze określony jako alternatywny Host logowania. Zapoznaj się z dokumentacją platformy klienckiej, wykonując określone kroki.
 
-Upewnij się, że zaplecze mobilne ma zainstalowany [Microsoft.Azure.Mobile.Server.Authentication] . Następnie w klasie uruchomieniowej Owin aplikacji Dodaj następujące elementy, po `MobileAppConfiguration` zastosowaniu `HttpConfiguration`do:
+Upewnij się, że zaplecze mobilne ma zainstalowany [Microsoft. Azure. Mobile. Server. Authentication] . Następnie w klasie uruchomieniowej OWIN aplikacji Dodaj następujące polecenie po `MobileAppConfiguration` do `HttpConfiguration`:
 
         app.UseAppServiceAuthentication(new AppServiceAuthenticationOptions()
         {
@@ -472,7 +476,7 @@ Aby uzyskać klucz podpisywania:
 1. Przejdź do aplikacji w ramach [Azure Portal]
 2. Kliknij pozycję **Narzędzia**, **kudu**, **Przejdź**.
 3. W witrynie zarządzania kudu kliknij pozycję **środowisko**.
-4. Znajdź wartość *klucza podpisywania\_\_uwierzytelniania\_witryny sieci Web*.
+4. Znajdź wartość dla *witryny sieci Web @ no__t-1AUTH @ no__t-2SIGNING @ no__t-3KEY*.
 
 Użyj klucza podpisywania dla parametru *authSigningKey* w konfiguracji aplikacji lokalnej.  Zaplecze mobilnej jest teraz wyposażone w sprawdzanie poprawności tokenów podczas uruchamiania lokalnego, który klient uzyskuje token z punktu końcowego opartego na chmurze.
 
@@ -484,9 +488,9 @@ Użyj klucza podpisywania dla parametru *authSigningKey* w konfiguracji aplikacj
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
 [Azure Portal]: https://portal.azure.com
 [NuGet.org]: https://www.nuget.org/
-[Microsoft.Azure.Mobile.Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
-[Microsoft.Azure.Mobile.Server.Quickstart]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
-[Microsoft.Azure.Mobile.Server.Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
-[Microsoft.Azure.Mobile.Server.Login]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
-[Microsoft.Azure.Mobile.Server.Notifications]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
+[Microsoft. Azure. Mobile. Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
+[Microsoft. Azure. Mobile. Server. Szybki Start]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
+[Microsoft. Azure. Mobile. Server. Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
+[Microsoft. Azure. Mobile. Server. Login]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
+[Microsoft. Azure. Mobile. Server. Notifications]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx

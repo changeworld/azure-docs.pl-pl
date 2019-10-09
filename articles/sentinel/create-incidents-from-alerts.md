@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1acef92ed5de86d4526d8b5c4bcf338b341c50f7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241270"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029766"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatycznie twórz zdarzenia z alertów zabezpieczeń firmy Microsoft
 
@@ -35,7 +35,7 @@ Należy [połączyć rozwiązania zabezpieczeń firmy Microsoft](connect-data-so
 
 Skorzystaj z wbudowanych reguł dostępnych na platformie Azure — wskaźnik wyboru, aby wybrać połączone rozwiązania zabezpieczeń firmy Microsoft, które mają być automatycznie tworzone w czasie rzeczywistym. Możesz również edytować reguły, aby zdefiniować bardziej szczegółowe opcje filtrowania, które alerty wygenerowane przez rozwiązanie zabezpieczeń firmy Microsoft powinny tworzyć zdarzenia na platformie Azure. Na przykład możesz wybrać opcję automatycznego tworzenia zdarzeń ze wskaźnikiem na platformie Azure na podstawie alertów o wysokiej ważności Azure Security Center.
 
-1. W Azure Portal w obszarze wskaźnik platformy Azure wybierz pozycję **Analiza**.
+1. W Azure Portal w obszarze wskaźnik platformy Azure wybierz pozycję **Analiza**.
 
 1. Wybierz kartę **Szablony reguł** , aby wyświetlić wszystkie wbudowane reguły analityczne.
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: d7a9f365c9e2b6039451375f4ad50a7ce04cdd5b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076323"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029735"
 ---
-# <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Szybki start: Dodawanie flag funkcji do aplikacji ASP.NET Core
+# <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Szybki Start: Dodawanie flag funkcji do aplikacji ASP.NET Core
 
 W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azure do aplikacji sieci Web ASP.NET Core, aby utworzyć kompleksową implementację zarządzania funkcjami. Za pomocą usługi konfiguracji aplikacji można centralnie przechowywać wszystkie flagi funkcji i kontrolować ich Stany. 
 
@@ -36,11 +36,11 @@ Biblioteki zarządzania funkcjami platformy .NET Core poszerzają platformę Dzi
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz pozycję **Menedżer** > funkcji **+ Dodaj** , aby dodać następujące flagi funkcji:
+6. Wybierz pozycję **Menedżer funkcji** >  **+ Dodaj** , aby dodać następujące flagi funkcji:
 
-    | Klucz | State |
+    | Klucz | Stan |
     |---|---|
-    | Wersja beta | Wyłączone |
+    | Beta | Wyłączone |
 
 ## <a name="create-an-aspnet-core-web-app"></a>Tworzenie aplikacji internetowej ASP.NET Core
 
@@ -51,7 +51,7 @@ Aby utworzyć nowy projekt aplikacji sieci Web MVC ASP.NET Core, należy użyć 
 1. W nowym folderze Uruchom następujące polecenie, aby utworzyć nowy projekt aplikacji sieci Web ASP.NET Core MVC:
 
    ```    
-   dotnet new mvc
+   dotnet new mvc --no-https
    ```
 
 ## <a name="add-secret-manager"></a>Dodawanie narzędzia Secret Manager
@@ -59,7 +59,7 @@ Aby utworzyć nowy projekt aplikacji sieci Web MVC ASP.NET Core, należy użyć 
 Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.microsoft.com/aspnet/core/security/app-secrets) . Narzędzie Secret Manager przechowuje dane poufne do pracy programistycznej poza drzewem projektu. Takie podejście zapobiega przypadkowemu ujawnieniu wpisów tajnych aplikacji w kodzie źródłowym.
 
 1. Otwórz plik *. csproj* .
-1. `UserSecretsId` Dodaj element, jak pokazano w poniższym przykładzie, i Zastąp jego wartość własnym, który zazwyczaj jest identyfikatorem GUID:
+1. Dodaj element `UserSecretsId`, jak pokazano w poniższym przykładzie, i Zastąp jego wartość własnym, który zazwyczaj jest identyfikatorem GUID:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -81,7 +81,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 
 ## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
-1. Dodaj odwołanie do `Microsoft.Azure.AppConfiguration.AspNetCore` `Microsoft.FeatureManagement.AspNetCore` i pakiety NuGet, uruchamiając następujące polecenia:
+1. Dodaj odwołanie do `Microsoft.Azure.AppConfiguration.AspNetCore` i pakietów NuGet `Microsoft.FeatureManagement.AspNetCore`, uruchamiając następujące polecenia:
 
     ```
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
@@ -96,7 +96,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 
 1. Dodaj wpis tajny o nazwie **ConnectionStrings:AppConfig** do narzędzia Secret Manager.
 
-    Ten wpis tajny zawiera parametry połączenia w celu uzyskania dostępu do magazynu konfiguracji aplikacji. Zastąp `<your_connection_string>` wartość w poniższym poleceniu parametrami połączenia dla magazynu konfiguracji aplikacji.
+    Ten wpis tajny zawiera parametry połączenia w celu uzyskania dostępu do magazynu konfiguracji aplikacji. Zastąp wartość `<your_connection_string>` w poniższym poleceniu parametrami połączenia dla magazynu konfiguracji aplikacji.
 
     To polecenie należy wykonać w tym samym katalogu, w którym znajduje się plik *csproj*.
 
@@ -114,7 +114,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-1. Zaktualizuj metodę, aby użyć konfiguracji aplikacji przez `config.AddAzureAppConfiguration()` wywołanie metody. `CreateWebHostBuilder`
+1. Zaktualizuj metodę `CreateWebHostBuilder`, aby użyć konfiguracji aplikacji przez wywołanie metody `config.AddAzureAppConfiguration()`.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -136,7 +136,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     using Microsoft.FeatureManagement;
     ```
 
-1. Zaktualizuj metodę, aby dodać obsługę flagi funkcji przez `services.AddFeatureManagement()` wywołanie metody. `ConfigureServices` Opcjonalnie możesz dołączyć dowolny filtr, który ma być używany z flagami funkcji przez `services.AddFeatureFilter<FilterType>()`wywołanie:
+1. Zaktualizuj metodę `ConfigureServices` w celu dodania obsługi flagi funkcji przez wywołanie metody `services.AddFeatureManagement()`. Opcjonalnie możesz dołączyć dowolny filtr, który ma być używany z flagami funkcji przez wywołanie `services.AddFeatureFilter<FilterType>()`:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -145,7 +145,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     }
     ```
 
-1. `Configure` Zaktualizuj metodę, aby dodać oprogramowanie pośredniczące, aby umożliwić odświeżanie wartości flagi funkcji w cyklicznym interwale, podczas gdy aplikacja sieci Web ASP.NET Core nadal otrzymuje żądania.
+1. Zaktualizuj metodę `Configure`, aby dodać oprogramowanie pośredniczące, aby umożliwić odświeżanie wartości flagi funkcji w cyklicznym interwale, podczas gdy aplikacja sieci Web ASP.NET Core nadal otrzymuje żądania.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -200,7 +200,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Otwórz *_Layout. cshtml* w*udostępnionym* `<nav>` katalogu *widoki*\\i Zastąp kod paska pod `<body>`  >  `<header>` następującym kodem:
+1. Otwórz *_Layout. cshtml* w *widokach*\\*udostępniony* katalog i Zastąp kod kreskowy `<nav>` w obszarze `<body>` @ no__t-6 @ no__t-7 następującym kodem:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -259,15 +259,15 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 
     ![Lokalne uruchamianie aplikacji z przewodnika Szybki start](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **wszystkie zasoby**, a następnie wybierz wystąpienie magazynu konfiguracji aplikacji utworzone w ramach przewodnika Szybki Start.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Wybierz pozycję **wszystkie zasoby**, a następnie wybierz wystąpienie magazynu konfiguracji aplikacji utworzone w ramach przewodnika Szybki Start.
 
 1. Wybierz pozycję **Menedżer funkcji**, a następnie Zmień stan klucza **beta** **na:**
 
-    | Klucz | State |
+    | Klucz | Stan |
     |---|---|
-    | Wersja beta | Włączone |
+    | Beta | Włączone |
 
-1. Uruchom ponownie aplikację, przełączając się z powrotem do wiersza `Ctrl-C` polecenia i naciskając klawisz `dotnet` , aby anulować uruchomiony proces, `dotnet run`a następnie ponownie uruchomić program.
+1. Uruchom ponownie aplikację, przełączając się z powrotem do wiersza polecenia i naciskając `Ctrl-C`, aby anulować uruchomiony proces `dotnet`, a następnie ponownie uruchomić `dotnet run`.
 
 1. Odśwież stronę przeglądarki, aby zobaczyć nowe ustawienia konfiguracji.
 

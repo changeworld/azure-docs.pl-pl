@@ -1,6 +1,6 @@
 ---
-title: Dodawanie uwierzytelniania w systemie Android w usłudze Mobile Apps | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać funkcji Mobile Apps w usłudze Azure App Service do uwierzytelniania użytkowników aplikacji systemu Android za pomocą różnych dostawców tożsamości, m.in. Google, Facebook, Twitter i Microsoft.
+title: Dodawanie uwierzytelniania w systemie Android przy użyciu Mobile Apps | Microsoft Docs
+description: Dowiedz się, jak używać funkcji Mobile Apps Azure App Service do uwierzytelniania użytkowników aplikacji systemu Android za pomocą różnych dostawców tożsamości, w tym Google, Facebook, Twitter i Microsoft.
 services: app-service\mobile
 documentationcenter: android
 author: elamalani
@@ -14,64 +14,64 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: f138911510db4e6839ff96317fa6004e449e58be
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 789bb45ddef8d5ca0205e96298491ebee02698d6
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443599"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025491"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Dodawanie uwierzytelniania do aplikacji systemu Android
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-users) już dziś.
->
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="summary"></a>Podsumowanie
-W tym samouczku dodasz uwierzytelnianie do projektu quickstart listy zadań w systemie Android przy użyciu dostawcy tożsamości obsługiwanych. Ten samouczek opiera się na [Rozpoczynanie pracy z usługą Mobile Apps] — samouczek, należy najpierw wykonać.
+W tym samouczku dodasz uwierzytelnianie do projektu szybkiego startu todolist w systemie Android przy użyciu obsługiwanego dostawcy tożsamości. Ten samouczek jest oparty na samouczku [wprowadzenie do Mobile Apps] , który należy wykonać w pierwszej kolejności.
 
-## <a name="register"></a>Rejestrowanie aplikacji do uwierzytelniania i konfigurowanie usługi Azure App Service
+## <a name="register"></a>Zarejestruj aplikację pod kątem uwierzytelniania i skonfiguruj Azure App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Dodawanie aplikacji do adresów URL dozwolonych zewnętrznego przekierowania
+## <a name="redirecturl"></a>Dodaj aplikację do dozwolonych zewnętrznych adresów URL przekierowania
 
-Bezpieczne uwierzytelnianie wymaga, zdefiniuj nowy schemat adresu URL dla aplikacji. Dzięki temu system uwierzytelniania przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy schemat adresu URL _appname_ w całym. Można jednak użyć dowolnego wybranego schematu URL. Powinien on być unikatowy dla twojej aplikacji mobilnej. Aby włączyć przekierowywanie po stronie serwera:
+Bezpieczne uwierzytelnianie wymaga zdefiniowania nowego schematu adresu URL dla aplikacji. Dzięki temu system uwierzytelniania może przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy _w systemie adresu_ URL. Można jednak użyć dowolnego wybranego schematu adresów URL. Powinna być unikatowa dla aplikacji mobilnej. Aby włączyć przekierowanie po stronie serwera:
 
-1. W [Azure Portal], wybierz swoją usługę aplikacji.
+1. W [Azure Portal]wybierz App Service.
 
-2. Kliknij przycisk **uwierzytelniania / autoryzacji** opcji menu.
+2. Kliknij opcję menu **uwierzytelnianie/autoryzacja** .
 
-3. W **dozwolone zewnętrzne adresy URL przekierowania**, wprowadź `appname://easyauth.callback`.  _Appname_ w tym ciągu jest schemat adresu URL aplikacji mobilnej.  Powinien on być zgodny z normalnej Specyfikacja adresu URL dla protokołu (litery użytkowania i tylko cyfry oraz rozpoczynać się literą).  Należy zapamiętać, ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnych za pomocą schemat adresu URL w kilku miejscach.
+3. W polu **dozwolone adresy URL zewnętrznych przekierowań**wprowadź wartość `appname://easyauth.callback`.  Nazwa _użytkownika w tym_ ciągu to schemat adresu URL aplikacji mobilnej.  Powinna być zgodna ze specyfikacją normalnych adresów URL dla protokołu (używaj tylko liter i cyfr i zaczynać się od litery).  Należy zanotować ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnej przy użyciu schematu adresu URL w kilku miejscach.
 
 4. Kliknij przycisk **OK**.
 
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 
-## <a name="permissions"></a>Ogranicz uprawnienia do uwierzytelnionych użytkowników
+## <a name="permissions"></a>Ograniczanie uprawnień do uwierzytelnionych użytkowników
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-* W programie Android Studio, otwórz projekt, należy wykonać czynności opisane z samouczkiem dotyczącym [Rozpoczynanie pracy z usługą Mobile Apps]. Z **Uruchom** menu, kliknij przycisk **uruchamianie aplikacji**i sprawdź, czy wystąpił nieobsługiwany wyjątek, kod stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji.
+* W Android Studio Otwórz projekt, który został ukończony przy użyciu samouczka Rozpoczynanie [Wprowadzenie do Mobile Apps]. W menu **Uruchom** kliknij pozycję **Uruchom aplikację**, a następnie sprawdź, czy po uruchomieniu aplikacji został zgłoszony nieobsługiwany wyjątek z kodem stanu 401 (nieautoryzowany).
 
-     Ten wyjątek spowodowany aplikacja próbuje uzyskać dostęp zaplecze jako użytkownik nieuwierzytelniony do ale *TodoItem* tabeli teraz wymaga uwierzytelnienia.
+     Ten wyjątek występuje, ponieważ aplikacja próbuje uzyskać dostęp do zaplecza jako nieuwierzytelniony użytkownik, ale tabela *TodoItem* wymaga teraz uwierzytelniania.
 
-Następnie należy zaktualizować aplikację do uwierzytelniania kont użytkowników przed zażądaniem zasoby z zaplecze funkcji Mobile Apps.
+Następnie zaktualizujesz aplikację w celu uwierzytelniania użytkowników przed zażądaniem zasobów z Mobile Apps zaplecza.
 
 ## <a name="add-authentication-to-the-app"></a>Dodawanie uwierzytelniania do aplikacji
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
 
 
-## <a name="cache-tokens"></a>Tokeny uwierzytelniania na komputerze klienckim pamięci podręcznej
+## <a name="cache-tokens"></a>Buforuj tokeny uwierzytelniania na kliencie
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
-Teraz, gdy została zakończona w tym samouczku uwierzytelnianie podstawowe, należy wziąć pod uwagę przejściem do jednej z następujących samouczków:
+## <a name="next-steps"></a>Następne kroki
+Po ukończeniu tego samouczka dotyczącego uwierzytelniania podstawowego Rozważ przejście do jednego z następujących samouczków:
 
 * [Dodawanie powiadomień wypychanych do aplikacji systemu Android](app-service-mobile-android-get-started-push.md).
-  Dowiedz się, jak skonfigurować swoje zaplecze funkcji Mobile Apps do wysyłania powiadomień wypychanych przy użyciu usługi Azure notification hubs.
-* [Włączanie synchronizacji offline dla aplikacji systemu Android](app-service-mobile-android-get-started-offline-data.md).
-  Dowiedz się, jak dodać obsługę trybu offline do aplikacji przy użyciu zaplecze funkcji Mobile Apps. Synchronizacja w trybie offline, użytkownicy mogą wchodzić w interakcje z aplikacją mobilną&mdash;wyświetlanie, dodawanie lub modyfikowanie danych&mdash;nawet w przypadku braku połączenia sieciowego.
+  Dowiedz się, jak skonfigurować zaplecze Mobile Apps, aby użyć centrów powiadomień platformy Azure do wysyłania powiadomień wypychanych.
+* [Włącz synchronizację w trybie offline dla aplikacji systemu Android](app-service-mobile-android-get-started-offline-data.md).
+  Dowiedz się, jak dodać obsługę offline do aplikacji przy użyciu zaplecza Mobile Apps. Dzięki synchronizacji w trybie offline użytkownicy mogą korzystać z aplikacji mobilnej @ no__t-0viewing, dodając lub modyfikując dane @ no__t-1even, gdy nie ma połączenia sieciowego.
 
 <!-- Anchors. -->
 [Register your app for authentication and configure Mobile Services]: #register
@@ -83,5 +83,5 @@ Teraz, gdy została zakończona w tym samouczku uwierzytelnianie podstawowe, nal
 
 
 <!-- URLs. -->
-[Rozpoczynanie pracy z usługą Mobile Apps]: app-service-mobile-android-get-started.md
+[Wprowadzenie do Mobile Apps]: app-service-mobile-android-get-started.md
 [Azure Portal]: https://portal.azure.com/

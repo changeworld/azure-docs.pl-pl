@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: 4af269faab21207e1a754e309cac16e5e0a94b69
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.date: 10/01/2019
+ms.openlocfilehash: af2e8826c40fb0d16844b6c67f151b0affbf3efd
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164339"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034988"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Wybierz spośród warstw usług rdzeń wirtualny i Przeprowadź migrację z warstw usług DTU
 
 Model zakupu oparty na wirtualnym rdzeniu (rdzeń wirtualny) umożliwia niezależne skalowanie zasobów obliczeniowych i magazynu, dopasowanie wydajności lokalnej i optymalizację cen. Umożliwia również wybranie generacji sprzętu:
 
-- **Obliczenia**: Do 24 procesorów logicznych opartych na procesorach Intel E5-2673 v3 (Haswell) 2,4 GHz, rdzeń wirtualny = 1 PP (rdzeń fizyczny), 7 GB na rdzeń wirtualny, podłączonym SSD
-- **5 rdzeń**: Do 80 procesorów logicznych opartych na procesorze Intel E5-2673 v4 (Broadwell) 2,3 GHz, rdzeń wirtualny = 1 LP (Hyper-Thread), 5,1 GB na rdzeń wirtualny do obliczeń zainicjowanych i nawet 24 GB na rdzeń wirtualny w przypadku obliczeń bezserwerowych, Fast eNVM SSD
+- **Obliczenia**: do 24 procesorów logicznych opartych na procesorze Intel E5-2673 v3 (Haswell) 2,4 GHz, rdzeń wirtualny = 1 PP (rdzeń fizyczny), 7 GB na rdzeń wirtualny, PODŁĄCZONYm SSD
+- **5 rdzeń**: do 80 procesorów logicznych opartych na procesorze Intel E5-2673 v4 (Broadwell) 2,3 GHz, rdzeń wirtualny = 1 LP (Hyper-Thread), 5,1 GB na rdzeń wirtualny w przypadku obliczeń zainicjowanych i do 24 GB na rdzeń wirtualny w przypadku obliczeń bezserwerowych, Fast eNVM SSD
 
 Sprzęt obliczenia zapewnia znacznie większą ilość pamięci na rdzeń wirtualny. Jednak sprzęt 5 rdzeń umożliwia skalowanie zasobów obliczeniowych znacznie więcej.
 
@@ -36,20 +36,20 @@ Sprzęt obliczenia zapewnia znacznie większą ilość pamięci na rdzeń wirtua
 
 Model zakupu oparty na rdzeń wirtualny oferuje trzy warstwy usług: ogólnego przeznaczenia, skalowania i działania krytyczne dla działania firmy. Te warstwy usług są zróżnicowane przez różne rozmiary obliczeń, projekty o wysokiej dostępności, metody izolacji błędów, typy i rozmiary magazynu oraz zakresy operacji we/wy.
 
-Należy oddzielnie skonfigurować wymagane przechowywanie i okres przechowywania kopii zapasowych. Aby ustawić okres przechowywania kopii zapasowych, Otwórz Azure Portal, przejdź do serwera (nie bazy danych), a następnie przejdź do pozycji **Zarządzanie kopiami zapasowymi** > **Konfiguracja** > **przywracania punktu w czasie w programie Configuration** > **7 — 35 dni**.
+Należy oddzielnie skonfigurować wymagane przechowywanie i okres przechowywania kopii zapasowych. Aby ustawić okres przechowywania kopii zapasowych, Otwórz Azure Portal, przejdź do serwera (nie bazy danych), a następnie przejdź do pozycji **Zarządzaj kopiami zapasowymi** > **Konfigurowanie zasad** > **punkt w czasie w konfiguracji przywracania** > **7-35 dni**.
 
 W poniższej tabeli opisano różnice między tymi trzema warstwami:
 
 ||**Zastosowania ogólne**|**Krytyczne dla działania firmy**|**Hiperskali**|
 |---|---|---|---|
-|Najlepsza dla|Większość obciążeń firmowych. Oferuje zorientowane na budżety, zrównoważone i skalowalne Opcje obliczeniowe i magazynowe.|Aplikacje biznesowe o wysokich wymaganiach we/wy. Oferuje największą odporność na błędy przy użyciu kilku izolowanych replik.|Większość obciążeń firmowych z wysoce skalowalnym magazynem i wymaganiami dotyczącymi skali odczytu.|
-|Wystąpienia obliczeniowe|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych<br/>**Obliczenia**bezserwerowe:<br/>5 rdzeń 0,5 – 16 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych|
-|Memory (Pamięć)|**Zainicjowane obliczenie**:<br/>Obliczenia 7 GB na rdzeń wirtualny<br/>5 rdzeń 5,1 GB na rdzeń wirtualny<br/>**Obliczenia**bezserwerowe:<br/>5 rdzeń Do 24 GB na rdzeń wirtualny|**Zainicjowane obliczenie**:<br/>Obliczenia 7 GB na rdzeń wirtualny<br/>5 rdzeń 5,1 GB na rdzeń wirtualny |**Zainicjowane obliczenie**:<br/>Obliczenia 7 GB na rdzeń wirtualny<br/>5 rdzeń 5,1 GB na rdzeń wirtualny|
-|Magazyn|Używa magazynu zdalnego.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Obliczenia**bezserwerowe:<br/>5 GB — 3 TB<br/>**Wystąpienie zarządzane**: 32 GB — 8 TB |Używa lokalnego magazynu SSD.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
-|Przepływność we/wy (przybliżona)|**Pojedyncza baza danych i Pula elastyczna**: 500 operacji we/wy na sekundę na 40000 rdzeń wirtualny maksymalnej liczby operacji we/wy na sekundę.<br/>**Wystąpienie zarządzane**: Zależy od [rozmiaru pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji we/wy na rdzeń do 200 000 maksymalnej liczby IOPS|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia.|
-|Dostępność|1 replika, brak replik w skali odczytu|3 repliki, 1 replika w [skali odczytu](sql-database-read-scale-out.md),<br/>Strefa — nadmiarowa wysoka dostępność (HA)|1 replika odczytu i zapisu oraz 0-4 [replik w skali odczytu](sql-database-read-scale-out.md)|
+|Najlepsze dla|Oferuje zorientowane na budżety Opcje obliczeniowe i magazynowe.|Aplikacje OLTP o wysokim współczynniku transakcji i niskim opóźnieniu we/wy. Oferuje największą odporność na błędy i szybkie przełączanie w tryb failover przy użyciu wielu replik synchronicznie zaktualizowanych.|Większość obciążeń firmowych. Skalowanie automatyczne rozmiaru magazynu o rozmiarze do 100 TB, płynne skalowanie w pionie i w poziomie, szybkie przywracanie bazy danych.|
+|Wystąpienia obliczeniowe|**Zainicjowane obliczenie**:<br/>Obliczenia: od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń: od 2 do 80 rdzeni wirtualnych<br/>**Obliczenia bezserwerowe**:<br/>5 rdzeń: 0,5 – 16 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia: od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń: od 2 do 80 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia: od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń: od 2 do 80 rdzeni wirtualnych|
+|Pamięć|**Zainicjowane obliczenie**:<br/>Obliczenia: 7 GB na rdzeń wirtualny<br/>5 rdzeń: 5,1 GB na rdzeń wirtualny<br/>**Obliczenia bezserwerowe**:<br/>5 rdzeń: do 24 GB na rdzeń wirtualny|**Zainicjowane obliczenie**:<br/>Obliczenia: 7 GB na rdzeń wirtualny<br/>5 rdzeń: 5,1 GB na rdzeń wirtualny |**Zainicjowane obliczenie**:<br/>Obliczenia: 7 GB na rdzeń wirtualny<br/>5 rdzeń: 5,1 GB na rdzeń wirtualny|
+|Usługa Storage|Używa magazynu zdalnego.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Obliczenia bezserwerowe**:<br/>5 GB — 3 TB<br/>**Wystąpienie zarządzane**: 32 GB – 8 TB |Używa lokalnego magazynu SSD.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
+|Przepływność we/wy (przybliżona)|**Pojedyncza baza danych i Pula elastyczna**: 500 operacji we/wy na sekundę rdzeń wirtualny do 40000 maksymalnej liczby IOPS.<br/>**Wystąpienie zarządzane**: zależy od [rozmiaru pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji we/wy na rdzeń do 200 000 maksymalnej liczby IOPS|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia.|
+|Dostępność|1 replika, brak replik w skali odczytu|3 repliki, 1 [replika w skali odczytu](sql-database-read-scale-out.md),<br/>Strefa — nadmiarowa wysoka dostępność (HA)|1 replika odczytu i zapisu oraz 0-4 [replik w skali odczytu](sql-database-read-scale-out.md)|
 |Tworzenie kopii zapasowych|[Magazyn Geograficznie nadmiarowy do odczytu (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|Tworzenie kopii zapasowych opartych na migawce w magazynie zdalnym platformy Azure. Przywraca używanie tych migawek do szybkiego odzyskiwania. Kopie zapasowe są natychmiast i nie wpływają na wydajność obliczeń we/wy. Przywracanie odbywa się szybko i nie jest operacją o rozmiarze danych (w minutach, a nie w godzinach lub dniach).|
-|W pamięci|Nieobsługiwane|Obsługiwane|Nieobsługiwane|
+|W pamięci|Brak obsługi|Obsługiwane|Brak obsługi|
 |||
 
 > [!NOTE]
@@ -57,9 +57,9 @@ W poniższej tabeli opisano różnice między tymi trzema warstwami:
 
 - Aby uzyskać więcej informacji na temat limitów zasobów rdzeń wirtualny, zobacz [limity zasobów rdzeń wirtualny w ramach jednej bazy danych](sql-database-vcore-resource-limits-single-databases.md) i [limitów zasobów rdzeń wirtualny w wystąpieniu zarządzanym](sql-database-managed-instance.md#vcore-based-purchasing-model).
 - Aby uzyskać więcej informacji o warstwach usług ogólnego przeznaczenia i krytycznych dla firmy, zobacz [Ogólne zastosowania i najważniejsze usługi dla działalności biznesowej](sql-database-service-tiers-general-purpose-business-critical.md).
-- Aby uzyskać więcej informacji na temat warstwy usługi na potrzeby skalowania w modelu zakupu opartego na rdzeń wirtualny, zobacz podskalowanie [warstwy usług](sql-database-service-tier-hyperscale.md).  
+- Aby uzyskać więcej informacji na temat warstwy usługi na potrzeby skalowania w modelu zakupu opartego na rdzeń wirtualny, zobacz [podskalowanie warstwy usług](sql-database-service-tier-hyperscale.md).  
 
-## <a name="azure-hybrid-benefit"></a>Korzyści użycia hybrydowego platformy Azure
+## <a name="azure-hybrid-benefit"></a>Korzyść użycia hybrydowego platformy Azure
 
 W warstwie obliczeniowej z zainicjowaną obsługą modelu zakupu opartego na rdzeń wirtualny można wymienić istniejące licencje dla obniżonych stawek na SQL Database przy użyciu [korzyść użycia hybrydowego platformy Azure do SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Ta korzyść platformy Azure umożliwia oszczędzanie do 30 procent na Azure SQL Database przy użyciu lokalnych licencji SQL Server z programem Software Assurance.
 
@@ -109,17 +109,17 @@ W poniższej tabeli przedstawiono wskazówki dotyczące określonych scenariuszy
 
 |Bieżąca warstwa usługi|Docelowa warstwa usługi|Typ migracji|Akcje użytkownika|
 |---|---|---|---|
-|Standardowa (Standard)|Ogólnego przeznaczenia|Linię|Można migrować w dowolnej kolejności, ale trzeba zapewnić odpowiednie rozmiary rdzeń wirtualny *|
+|Standardowa (Standard)|Zastosowania ogólne|Linię|Można migrować w dowolnej kolejności, ale trzeba zapewnić odpowiednie rozmiary rdzeń wirtualny *|
 |Premium|Krytyczne dla działania firmy|Linię|Można migrować w dowolnej kolejności, ale trzeba zapewnić odpowiednie rozmiary rdzeń wirtualny *|
 |Standardowa (Standard)|Krytyczne dla działania firmy|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
-|Krytyczne dla działania firmy|Standardowa (Standard)|Zmień na starszą wersję|Najpierw należy zmigrować podstawowe|
-|Premium|Ogólnego przeznaczenia|Zmień na starszą wersję|Najpierw należy zmigrować podstawowe|
-|Ogólnego przeznaczenia|Premium|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
-|Krytyczne dla działania firmy|Ogólnego przeznaczenia|Zmień na starszą wersję|Najpierw należy zmigrować podstawowe|
-|Ogólnego przeznaczenia|Krytyczne dla działania firmy|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
+|Krytyczne dla działania firmy|Standardowa (Standard)|Zmiana na starszą lub mniej zaawansowaną wersję|Najpierw należy zmigrować podstawowe|
+|Premium|Zastosowania ogólne|Zmiana na starszą lub mniej zaawansowaną wersję|Najpierw należy zmigrować podstawowe|
+|Zastosowania ogólne|Premium|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
+|Krytyczne dla działania firmy|Zastosowania ogólne|Zmiana na starszą lub mniej zaawansowaną wersję|Najpierw należy zmigrować podstawowe|
+|Zastosowania ogólne|Krytyczne dla działania firmy|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
 ||||
 
-\*Co 100 DTU w warstwie Standardowa wymaga co najmniej 1 rdzeń wirtualny, a każdy 125 DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny.
+\* co 100 DTU w warstwie Standardowa wymaga co najmniej 1 rdzeń wirtualny, a każdy 125 DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny.
 
 ### <a name="migrate-failover-groups"></a>Migrowanie grup trybu failover
 
@@ -129,7 +129,7 @@ Migracja grup trybu failover z wieloma bazami danych wymaga pojedynczej migracji
 
 Pomocniczą bazę danych replikacji geograficznej (geograficzną) można utworzyć tylko przy użyciu tej samej warstwy usług, która została użyta dla podstawowej bazy danych. W przypadku baz danych o wysokim współczynniku generowania dzienników zalecamy utworzenie pomocniczej lokalizacji geograficznej z tym samym rozmiarem obliczeniowym co podstawowy.
 
-Jeśli tworzysz geograficzną lokację w puli elastycznej dla pojedynczej podstawowej bazy danych, upewnij się, że `maxVCore` ustawienie dla puli odpowiada rozmiarowi obliczeniowemu podstawowej bazy danych. Jeśli tworzysz geograficzną lokację główną w innej puli elastycznej, zalecamy, aby pule miały te same `maxVCore` ustawienia.
+Jeśli tworzysz geograficzną lokację w puli elastycznej dla pojedynczej podstawowej bazy danych, upewnij się, że ustawienie `maxVCore` puli jest zgodne z rozmiarem obliczeniowym podstawowej bazy danych. Jeśli tworzysz geograficzną lokację główną w innej puli elastycznej, zalecamy, aby pule miały te same ustawienia `maxVCore`.
 
 ### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Użycie kopii bazy danych w celu przekonwertowania bazy danych opartej na jednostkach DTU na bazę danych opartą na rdzeń wirtualny
 

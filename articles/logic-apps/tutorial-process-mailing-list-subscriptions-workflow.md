@@ -11,14 +11,14 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: 734a6be81a8052b2894f4c27b165bb8dc4f14caf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fb92e882607575e99ae800bd9c6d7c36b5d89d8e
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171623"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034546"
 ---
-# <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Samouczek: Tworzenie zautomatyzowanych przepływów pracy opartych na zatwierdzaniu przy użyciu Azure Logic Apps
+# <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Samouczek: tworzenie automatycznych przepływów pracy opartych na zatwierdzaniu przy użyciu Azure Logic Apps
 
 W tym samouczku pokazano, jak utworzyć [aplikację logiki](../logic-apps/logic-apps-overview.md) , która automatyzuje przepływ pracy oparty na zatwierdzaniu. Ta aplikacja logiki przetwarza żądania subskrypcji dla listy adresowej zarządzanej przez usługę [MailChimp](https://mailchimp.com/) . Ta aplikacja logiki monitoruje konto e-mail pod kątem tych żądań, wysyła te żądania do zatwierdzenia i dodaje zatwierdzone elementy członkowskie do listy adresowej.
 
@@ -35,7 +35,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pracy:
 
-![Ukończona aplikacja logiki wysokiego poziomu](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-overview.png)
+![Omówienie ukończonej aplikacji logiki wysokiego poziomu](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-overview.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -51,26 +51,26 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu po
 
 ## <a name="create-your-logic-app"></a>Tworzenie aplikacji logiki
 
-1. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** >  > **aplikacja logiki**.
+1. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** > **integracja** > **aplikacji logiki**.
 
-   ![Tworzenie aplikacji logiki](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app.png)
+   ![Tworzenie nowego zasobu aplikacji logiki](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
 
 1. W obszarze **Tworzenie aplikacji logiki** wprowadź następujące informacje na temat aplikacji logiki. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
-   ![Podawanie informacji na temat aplikacji logiki](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
+   ![Podaj informacje o aplikacji logiki](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
-   | Właściwość | Value | Opis |
+   | Właściwość | Wartość | Opis |
    |----------|-------|-------------|
-   | **Nazwa** | LA-MailingList | Nazwa aplikacji logiki, która może zawierać tylko litery`-`, cyfry, łączniki (), podkreślenia (`_`), nawiasy (`(`, `)`) i kropki (`.`). W tym przykładzie zastosowano "LA-MailingList". |
+   | **Nazwa** | LA-MailingList | Nazwa aplikacji logiki, która może zawierać tylko litery, cyfry, łączniki (`-`), podkreślenia (`_`), nawiasy (`(`, `)`) i kropki (`.`). W tym przykładzie zastosowano "LA-MailingList". |
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |
    | **Grupa zasobów** | LA-MailingList-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md), która jest używana do organizowania powiązanych zasobów. W tym przykładzie zastosowano "LA-MailingList-RG". |
-   | **Location** | Zachodnie stany USA | Region tnie, w którym mają być przechowywane informacje o aplikacji logiki. W tym przykładzie zastosowano "zachodnie stany USA". |
+   | **Lokalizacja** | Zachodnie stany USA | Region tnie, w którym mają być przechowywane informacje o aplikacji logiki. W tym przykładzie zastosowano "zachodnie stany USA". |
    | **Log Analytics** | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. |
    ||||
 
-1. Po wdrożeniu aplikacji przez platformę Azure na pasku narzędzi platformy Azure wybierz pozycję **powiadomienia** > **Przejdź do pozycji zasób** dla wdrożonej aplikacji logiki.
+1. Po wdrożeniu aplikacji przez platformę Azure na pasku narzędzi platformy Azure wybierz pozycję **powiadomienia** > **Przejdź do zasobu** dla wdrożonej aplikacji logiki.
 
-   ![Przejdź do zasobu](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app.png)
+   ![Przejdź do nowego zasobu aplikacji logiki](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 
    Możesz też znaleźć i wybrać aplikację logiki, wpisując nazwę w polu wyszukiwania.
 
@@ -99,22 +99,22 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
       ![Określanie folderu, interwału i częstotliwości sprawdzania wiadomości e-mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | Właściwość | Value | Opis |
+      | Właściwość | Wartość | Opis |
       |----------|-------|-------------|
       | **Folder** | `Inbox` | Folder poczty e-mail do monitorowania |
-      | **Interval** | `1` | Liczba interwałów do odczekania między sprawdzaniami |
+      | **Interwał** | `1` | Liczba interwałów do odczekania między sprawdzaniami |
       | **Częstotliwość** | `Hour` | Jednostka czasu cyklu |
       ||||
 
    1. Teraz Dodaj kolejną właściwość do wyzwalacza, aby można było filtrować według wiersza tematu wiadomości e-mail. Otwórz **listę Dodaj nowy parametr**, a następnie wybierz właściwość **Filtr podmiotu** .
 
-      ![Dodaj nowy parametr](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
+      ![Dodaj właściwość "subject Filter" do wyzwalacza](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
 
       Aby uzyskać więcej informacji na temat właściwości tego wyzwalacza, zobacz [informacje dotyczące łącznika programu Outlook pakietu Office 365](https://docs.microsoft.com/connectors/office365/) lub [informacje dotyczące łącznika Outlook.com](https://docs.microsoft.com/connectors/outlook/).
 
-   1. Po wyświetleniu właściwości w wyzwalaczu wprowadź następujący tekst:`subscribe-test-members-ML`
+   1. Po wyświetleniu właściwości w wyzwalaczu wprowadź następujący tekst: `subscribe-test-members-ML`
 
-      ![Wprowadź textAdd nowego parametru filtru podmiotu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
+      ![Wprowadź tekst dla właściwości "subject Filter"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
 
 1. Aby na razie ukryć szczegóły wyzwalacza, kliknij pasek tytułu wyzwalacza.
 
@@ -130,7 +130,7 @@ Teraz, gdy wyzwalacz jest gotowy, dodaj [akcję](../logic-apps/logic-apps-overvi
 
 1. W obszarze wyzwalacza wybierz pozycję **nowy krok**. 
 
-1. W obszarze **Wybierz akcję**, w polu wyszukiwania wpisz `approval` jako filtr. Z listy Akcje wybierz akcję **Wyślij wiadomość e-mail** dotyczącą zatwierdzenia dla dostawcy poczty e-mail. 
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź `approval` jako filtr. Z listy Akcje wybierz akcję **Wyślij wiadomość e-mail** dotyczącą zatwierdzenia dla dostawcy poczty e-mail. 
 
    W tym przykładzie jest stosowana akcja programu Outlook pakietu Office 365:
 
@@ -140,10 +140,10 @@ Teraz, gdy wyzwalacz jest gotowy, dodaj [akcję](../logic-apps/logic-apps-overvi
 
    ![Wyślij właściwości wiadomości e-mail dotyczącej zatwierdzenia](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
-   | Właściwość | Value | Opis |
+   | Właściwość | Wartość | Opis |
    |----------|-------|-------------|
-   | **To** | <*your-email-address*> | Adres e-mail osoby zatwierdzającej. Do celów testowych możesz użyć własnego adresu e-mail. W tym przykładzie jest użyty fikcyjnysophia.owen@fabrikam.comadres e-mail "". |
-   | **Subject** | `Approve member request for test-members-ML` | Opisowy temat wiadomości e-mail |
+   | **Do** | <*your-email-address*> | Adres e-mail osoby zatwierdzającej. Do celów testowych możesz użyć własnego adresu e-mail. W tym przykładzie jest użyty fikcyjny adres e-mail "sophia.owen@fabrikam.com". |
+   | **Temat** | `Approve member request for test-members-ML` | Opisowy temat wiadomości e-mail |
    | **Opcje użytkownika** | `Approve, Reject` | Opcje odpowiedzi, które osoba zatwierdzająca może wybrać. Domyślnie osoba zatwierdzająca może wybrać opcję "Zatwierdź" lub "Odrzuć" jako odpowiedź. |
    ||||
 
@@ -161,13 +161,13 @@ Następnie Dodaj warunek, aby sprawdzić, czy wybrana odpowiedź osoby zatwierdz
 
 1. W obszarze **Wybierz akcję**wybierz pozycję **wbudowane**. W polu wyszukiwania wprowadź `condition` jako filtr. Z listy Akcje wybierz akcję **warunek** .
 
-   ![Wybierz pozycję "warunek"](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition.png)
+   ![Znajdź i wybierz akcję "Condition"](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition-action.png)
 
 1. Zmień nazwę warunku na lepszy opis.
 
    1. Na pasku tytułu warunku wybierz przycisk **wielokropka** ( **...** ), > **zmienić nazwę**.
 
-      ![Zmienianie nazwy warunku](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition.png)
+      ![Opis zmiany nazwy warunku](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition-description.png)
 
    1. Zmień nazwę warunku na następujący opis: `If request approved`
 
@@ -177,15 +177,15 @@ Następnie Dodaj warunek, aby sprawdzić, czy wybrana odpowiedź osoby zatwierdz
 
    1. Z wyświetlonej listy zawartość dynamiczna w obszarze **wysyłanie wiadomości e-mail z potwierdzeniem**wybierz właściwość **SelectedOption** .
 
-      ![W obszarze „Wysyłanie wiadomości e-mail dotyczącej zatwierdzenia” wybierz pozycję „SelectedOption” (zaznaczona opcja)](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
+      ![Z listy zawartości dynamicznej wybierz pozycję "SelectedOption"](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
 
    1. W środkowym polu porównania wybierz operator **is równe** .
 
-   1. W polu **Wybierz wartość** z prawej strony warunku wprowadź następujący tekst:`Approve`
+   1. W polu **Wybierz wartość** z prawej strony warunku wprowadź następujący tekst: `Approve`
 
       Gdy wszystko będzie gotowe, warunek będzie wyglądać podobnie do tego przykładu:
 
-      ![Ukończony warunek](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
+      ![Gotowy warunek dla zaakceptowanego przykładu](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
 
 1. Zapisz aplikację logiki.
 
@@ -197,7 +197,7 @@ Teraz Dodaj akcję, która powoduje dodanie zatwierdzonego elementu członkowski
 
 1. W gałęzi warunku w **przypadku wartości true** wybierz pozycję **Dodaj akcję**.
 
-1. W obszarze **Wybierz akcję**wprowadź `mailchimp` wartość jako filtr, a następnie wybierz akcję **Dodaj członka do listy** .
+1. W obszarze **Wybierz akcję**wprowadź `mailchimp` jako filtr, a następnie wybierz akcję **Dodaj element członkowski do listy** .
 
    ![Wybierz akcję "Dodaj członka do listy"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -207,7 +207,7 @@ Teraz Dodaj akcję, która powoduje dodanie zatwierdzonego elementu członkowski
 
    ![Podawanie informacji dla pozycji „Dodawanie elementu członkowskiego do listy”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | Właściwość | Wymagany | Value | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
    | **Identyfikator listy** | Tak | `test-members-ML` | Nazwa listy adresowej MailChimp. W tym przykładzie zastosowano "test-Members-ML". |
    | **Stan** | Tak | `subscribed` | Wybierz stan subskrypcji dla nowego elementu członkowskiego. Ten przykład używa "subskrybujd". <p>Aby uzyskać więcej informacji, zobacz [Zarządzanie subskrybentami za pomocą interfejsu API MailChimp](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
@@ -238,11 +238,11 @@ Następnie dodaj warunek, który pozwoli sprawdzić, czy nowy element członkows
 
    1. W środkowym polu porównania wybierz operator **is równe** .
 
-   1. W polu **Wybierz wartość** z prawej strony warunku wprowadź następujący tekst:`subscribed`
+   1. W polu **Wybierz wartość** z prawej strony warunku wprowadź następujący tekst: `subscribed`
 
       Gdy wszystko będzie gotowe, warunek będzie wyglądać podobnie do tego przykładu:
 
-      ![Ukończony warunek](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
+      ![Zakończono warunek dla zasubskrybowanego przykładu](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
 
 Następnie skonfiguruj wiadomości e-mail, które mają być wysyłane, gdy dołączenie zatwierdzonego elementu członkowskiego do listy adresowej zakończy się powodzeniem lub niepowodzeniem.
 
@@ -250,7 +250,7 @@ Następnie skonfiguruj wiadomości e-mail, które mają być wysyłane, gdy doł
 
 1. W **przypadku pomyślnego stanu Dodawanie elementu członkowskiego** w gałęzi w **przypadku wartości true** wybierz pozycję **Dodaj akcję**.
 
-   ![W gałęzi "w przypadku wartości true" dla warunku wybierz pozycję "Dodaj akcję"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
+   ![W gałęzi "w przypadku wartości true" Wybierz pozycję "Dodaj akcję"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
 1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź `outlook send email` jako filtr, a następnie wybierz akcję **Wyślij wiadomość e-mail** .
 
@@ -262,11 +262,11 @@ Następnie skonfiguruj wiadomości e-mail, które mają być wysyłane, gdy doł
 
    ![Podaj informacje dla wiadomości e-mail z informacją o powodzeniu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | Właściwość | Wymagany | Value | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | **To** | Tak | <*your-email-address*> | Adres e-mail, na który ma być wysłana wiadomość e-mail z informacją o powodzeniu. Do celów testowych możesz użyć własnego adresu e-mail. |
-   | **Subject** | Tak | <*subject-for-success-email*> | Temat wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>`Success! Member added to "test-members-ML": ` <p>Z listy zawartość dynamiczna w obszarze **Dodawanie elementu członkowskiego do listy**wybierz właściwość **adres e-mail** . |
-   | **Body** | Tak | <*body-for-success-email*> | Treść wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>`New member has joined "test-members-ML":` <p>Z listy zawartość dynamiczna wybierz właściwość **adres e-mail** . <p>W następnym wierszu wprowadź następujący tekst:`Member opt-in status: ` <p> Z listy zawartość dynamiczna w obszarze **Dodawanie elementu członkowskiego do listy**wybierz właściwość **stan** . |
+   | **Do** | Tak | <*your-email-address*> | Adres e-mail, na który ma być wysłana wiadomość e-mail z informacją o powodzeniu. Do celów testowych możesz użyć własnego adresu e-mail. |
+   | **Temat** | Tak | <*subject-for-success-email*> | Temat wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>`Success! Member added to "test-members-ML": ` <p>Z listy zawartość dynamiczna w obszarze **Dodawanie elementu członkowskiego do listy**wybierz właściwość **adres e-mail** . |
+   | **Treść** | Tak | <*body-for-success-email*> | Treść wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>`New member has joined "test-members-ML":` <p>Z listy zawartość dynamiczna wybierz właściwość **adres e-mail** . <p>W następnym wierszu wprowadź następujący tekst: `Member opt-in status: ` <p> Z listy zawartość dynamiczna w obszarze **Dodawanie elementu członkowskiego do listy**wybierz właściwość **stan** . |
    |||||
 
 1. Zapisz aplikację logiki.
@@ -275,7 +275,7 @@ Następnie skonfiguruj wiadomości e-mail, które mają być wysyłane, gdy doł
 
 1. W **przypadku pomyślnego stanu Dodawanie elementu członkowskiego** w gałęzi w **przypadku wartości false** wybierz pozycję **Dodaj akcję**.
 
-   ![W gałęzi "w przypadku wartości false" dla warunku wybierz pozycję "Dodaj akcję"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
+   ![W gałęzi "w przypadku wartości false" Wybierz pozycję "Dodaj akcję"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
 1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź `outlook send email` jako filtr, a następnie wybierz akcję **Wyślij wiadomość e-mail** .
 
@@ -287,18 +287,18 @@ Następnie skonfiguruj wiadomości e-mail, które mają być wysyłane, gdy doł
 
    ![Podaj informacje dla wiadomości e-mail z informacją o niepowodzeniu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | Właściwość | Wymagany | Value | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | **To** | Tak | <*your-email-address*> | Adres e-mail, na który ma być wysłana wiadomość e-mail z informacją o niepowodzeniu. Do celów testowych możesz użyć własnego adresu e-mail. |
-   | **Subject** | Tak | <*subject-for-failure-email*> | Temat wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>`Failed, member not added to "test-members-ML": ` <p>Z listy zawartość dynamiczna w obszarze **Dodawanie elementu członkowskiego do listy**wybierz właściwość **adres e-mail** . |
-   | **Body** | Tak | <*body-for-failure-email*> | Treść wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>`Member might already exist. Check your MailChimp account.` |
+   | **Do** | Tak | <*your-email-address*> | Adres e-mail, na który ma być wysłana wiadomość e-mail z informacją o niepowodzeniu. Do celów testowych możesz użyć własnego adresu e-mail. |
+   | **Temat** | Tak | <*subject-for-failure-email*> | Temat wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>`Failed, member not added to "test-members-ML": ` <p>Z listy zawartość dynamiczna w obszarze **Dodawanie elementu członkowskiego do listy**wybierz właściwość **adres e-mail** . |
+   | **Treść** | Tak | <*body-for-failure-email*> | Treść wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>`Member might already exist. Check your MailChimp account.` |
    |||||
 
 1. Zapisz aplikację logiki. 
 
 Następnie przetestuj aplikację logiki, która powinna wyglądać następująco:
 
-![Ukończona aplikacja logiki](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-complete.png)
+![Przykład gotowego przepływu pracy aplikacji logiki](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-completed.png)
 
 ## <a name="run-your-logic-app"></a>Uruchamianie aplikacji logiki
 
@@ -312,11 +312,11 @@ Następnie przetestuj aplikację logiki, która powinna wyglądać następująco
 
 1. Jeśli adres e-mail subskrybenta nie istnieje na liście adresowej, aplikacja logiki dodaje adres e-mail tej osoby i wysyła do Ciebie wiadomość e-mail podobną do przykładowej:
 
-   ![Wiadomość e-mail z informacją o powodzeniu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-success.png)
+   ![Przykładowa pomyślna subskrypcja poczty e-mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-success.png)
 
    Jeśli aplikacja logiki nie może dodać subskrybenta, otrzymasz wiadomość e-mail podobną do przykładowej:
 
-   ![Wiadomość e-mail z informacją o niepowodzeniu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-failed.png)
+   ![Przykładowa wiadomość e-mail — subskrypcja zakończona niepowodzeniem](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-failed.png)
 
    Jeśli nie dostaniesz żadnych wiadomości e-mail, sprawdź folder wiadomości-śmieci. Filtr wiadomości-śmieci Twojej poczty e-mail może przekierowywać tego rodzaju wiadomości. W przeciwnym razie, jeśli nie masz pewności, czy aplikacja logiki została poprawnie uruchomiona, zobacz [Troubleshoot your logic app (Rozwiązywania problemów z aplikacją logiki)](../logic-apps/logic-apps-diagnosing-failures.md).
 
@@ -328,7 +328,7 @@ Jeśli przykładowa aplikacja logiki nie jest już potrzebna, Usuń grupę zasob
 
 1. W menu głównym platformy Azure przejdź do pozycji **Grupy zasobów** i wybierz grupę zasobów aplikacji logiki.
 
-1. W menu Grupa zasobów wybierz pozycję **Przegląd** > **Usuń grupę zasobów**. 
+1. W menu Grupa zasobów wybierz pozycję **przegląd** > **Usuń grupę zasobów**. 
 
    ![„Omówienie” > „Usuń grupę zasobów”](./media/tutorial-process-mailing-list-subscriptions-workflow/delete-resource-group.png)
 

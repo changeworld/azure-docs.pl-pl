@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 05bb8b75fb09f3b8df0a6775874e72bdb04fc65e
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5e05acf515aacaada96bd6e493c1a2bf24d7c5ab
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937542"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030766"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Poznanie danych wyjściowych z Azure Stream Analytics
 
@@ -119,7 +119,7 @@ Potrzebujesz kilku parametrów, aby skonfigurować strumienie danych z centrów 
 | Format serializacji zdarzeń | Format serializacji danych wyjściowych. Obsługiwane są kod JSON, CSV i Avro. |
 | Encoding | W przypadku plików CSV i JSON jedynym obsługiwanym formatem kodowania jest UTF-8. |
 | Ogranicznik | Dotyczy tylko serializacji woluminu CSV. Stream Analytics obsługuje wiele ograniczników do serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, spacja, tabulator i pionowy pasek. |
-| Format | Dotyczy tylko serializacji JSON. **Linia rozdzielona** określa, że dane wyjściowe są formatowane przy użyciu każdego obiektu JSON oddzielonego przez nowy wiersz. **Tablica** określa, że dane wyjściowe są formatowane jako tablica obiektów JSON. Ta tablica jest zamykana tylko wtedy, gdy zadanie zostało zatrzymane lub Stream Analytics zostało przeniesione do następnego przedziału czasu. Ogólnie rzecz biorąc, zalecane jest użycie kodu JSON rozdzielonego wierszem, ponieważ nie wymaga żadnej specjalnej obsługi, gdy plik wyjściowy jest nadal w trakcie zapisywania. |
+| Format | Dotyczy tylko serializacji JSON. **Linia rozdzielona** określa, że dane wyjściowe są formatowane przy użyciu każdego obiektu JSON oddzielonego przez nowy wiersz. **Tablica** określa, że dane wyjściowe są formatowane jako tablica obiektów JSON. Ta tablica jest zamykana tylko wtedy, gdy zadanie zostało zatrzymane lub Stream Analytics zostało przeniesione do następnego przedziału czasu. Ogólnie rzecz biorąc, zalecane jest użycie kodu JSON rozdzielonego wierszem, ponieważ nie wymaga żadnej specjalnej obsługi, gdy plik wyjściowy jest nadal w trakcie zapisywania. Aby uzyskać więcej informacji, zobacz sekcję [wyjściowy rozmiar wsadu](#output-batch-size) . |
 | Kolumny właściwości | Opcjonalny. Kolumny oddzielone przecinkami, które muszą być dołączone jako właściwości użytkownika wiadomości wychodzącej zamiast ładunku. Więcej informacji na temat tej funkcji znajduje się w sekcji [właściwości metadanych niestandardowych dla danych wyjściowych](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI
@@ -158,7 +158,7 @@ Z Stream Analytics | Aby Power BI
 -----|-----
 bigint | Int64
 nvarchar (max) | Ciąg
-datetime | datę
+datetime | Datę
 float | Double
 Rejestruj tablicę | Typ ciągu, stała wartość "IRecord" lub "IArray"
 
@@ -168,12 +168,12 @@ Stream Analytics wnioskuje schemat modelu danych na podstawie pierwszego zestawu
 Należy unikać zapytania `SELECT *`, aby zapobiec dynamicznej aktualizacji schematu w wierszach. Oprócz potencjalnego wpływu na wydajność może to spowodować niepewność czasu trwania dla wyników. Wybierz dokładne pola, które mają być wyświetlane na pulpicie nawigacyjnym Power BI. Ponadto wartości danych powinny być zgodne z wybranym typem danych.
 
 
-Poprzedni/bieżący | Int64 | Ciąg | datę | Double
+Poprzedni/bieżący | Int64 | Ciąg | Datę | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | Ciąg | Ciąg | Double
 Double | Double | Ciąg | Ciąg | Double
 Ciąg | Ciąg | Ciąg | Ciąg | Ciąg 
-datę | Ciąg | Ciąg |  datę | Ciąg
+Datę | Ciąg | Ciąg |  Datę | Ciąg
 
 ## <a name="table-storage"></a>Table Storage
 

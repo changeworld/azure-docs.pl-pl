@@ -1,57 +1,57 @@
 ---
-title: Usługi Azure Data Factory mapowanie danych przepływu, monitorowanie wizualne
-description: Wizualnego monitorowania przepływu danych w usługi Azure Data Factory
+title: Monitorowanie wizualizacji przepływu danych Azure Data Factory mapowania
+description: Jak wizualnie monitorować Azure Data Factory przepływy danych
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 90aa6261aebb9d1f7da89c101854bad8061dd6ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/07/2019
+ms.openlocfilehash: 41b4b7cd911bad40055fcf527c186f8de9466cdc
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269047"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030224"
 ---
-# <a name="monitor-data-flows"></a>Monitor przepływu danych
+# <a name="monitor-data-flows"></a>Monitorowanie przepływów danych
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Po zakończeniu kompilowania i debugowania przepływu danych, należy zaplanować przepływ danych w celu wykonania zgodnie z harmonogramem w ramach potoku. Można zaplanować potok z usługi Azure Data Factory przy użyciu wyzwalaczy. Możesz też Wyzwól teraz opcję Konstruktor potoku fabryki danych platformy Azure do wykonywania pojedynczej — uruchom wykonywanie do przetestowanie przepływu danych w ramach potoku.
 
-Podczas wykonywania potoku, będzie można monitorowania potoku i działaniami, zawartych w potoku, w tym działania przepływu danych. Kliknij ikonę w lewym panelu, interfejs użytkownika usługi Azure Data Factory. Zostanie wyświetlony ekran podobny do przedstawionego poniżej. Wyróżnione ikony umożliwi można przejść do działania w potoku, w tym działania przepływu danych.
+Po zakończeniu kompilowania i debugowania przepływu danych należy zaplanować przepływ danych zgodnie z harmonogramem w kontekście potoku. Potoku można zaplanować z Azure Data Factory przy użyciu wyzwalaczy. Można też użyć opcji Wyzwól teraz z konstruktora potoku Azure Data Factory, aby wykonać pojedyncze uruchomienie w celu przetestowania przepływu danych w kontekście potoku.
 
-<img src="media/data-flow/mon001.png" width="800">
+Podczas wykonywania potoku będzie można monitorować potok i wszystkie działania zawarte w potoku, w tym działanie przepływu danych. Kliknij ikonę monitora w okienku interfejsu użytkownika z lewej strony Azure Data Factory. Zobaczysz ekran podobny do przedstawionego poniżej. Wyróżnione ikony umożliwią przechodzenie do działań w potoku, w tym działania przepływu danych.
 
-Zostanie wyświetlony statystyki, w tym poziom jako inculding dobrze, czas wykonywania i stan. Identyfikator uruchomienia na poziomie działania różni się że Uruchom IDENTYFIKATORA na poziomie potoku. Identyfikator uruchomienia na poprzednim poziomie jest dla potoku. Klikając okularów zapewni szczegółowe informacje szczegółowe na wykonywanie przepływu danych.
+(media/data-flow/mon001.png "Monitorowanie przepływu danych") ![monitorowania przepływu danych]
 
-<img src="media/data-flow/mon002.png" width="800">
+Na tym poziomie będą widoczne statystyki, a także czasy i Stany uruchomienia. Identyfikator przebiegu na poziomie działania różni się od identyfikatora przebiegu na poziomie potoku. Identyfikator uruchomienia na poprzednim poziomie dotyczy potoku. Kliknięcie okularów przekaże szczegółowe informacje o wykonywaniu przepływu danych.
 
-Jeśli jesteś w węźle graficzny widok monitorowania, zobaczysz uproszczonej wersji tylko do wyświetlania grafu przepływu danych.
+(media/data-flow/mon002.png "Monitorowanie przepływu danych") ![monitorowania przepływu danych]
 
-<img src="media/data-flow/mon003.png" width="800">
+Gdy jesteś w widoku monitorowanie węzła graficznego, zobaczysz uproszczoną wersję widoku wykresu przepływu danych.
 
-## <a name="view-data-flow-execution-plans"></a>Plany wykonywania przepływu danych w widoku
+(media/data-flow/mon003.png "Monitorowanie przepływu danych") ![monitorowania przepływu danych]
 
-Gdy przepływ danych jest wykonywana w usłudze Databricks, usługi Azure Data Factory określa optymalny kod ścieżki entirity przepływu danych w oparciu. Ponadto ścieżki wykonywania może wystąpić w różnych węzłach skalowalnego w poziomie i partycji danych. W związku z tym monitorowania wykresu reprezentuje projekt przepływu, biorąc pod uwagę ścieżki wykonywania przekształceń. Po kliknięciu na poszczególnych węzłach, zobaczysz "grupowania", które reprezentują kod, który został wykonany ze sobą w klastrze. Chronometraż i liczby wyświetlanych reprezentują te grupy, w przeciwieństwie do poszczególnych kroków w projekcie.
+## <a name="view-data-flow-execution-plans"></a>Wyświetlanie planów wykonywania przepływu danych
 
-<img src="media/data-flow/mon004.png" width="800"> 
+Gdy przepływ danych jest wykonywany w platformie Spark, Azure Data Factory określa optymalne ścieżki kodu na podstawie całości przepływu danych. Ponadto ścieżki wykonywania mogą wystąpić w różnych węzłach skalowalnych w poziomie i partycjach danych. W związku z tym wykres monitorowania reprezentuje projekt przepływu, biorąc pod uwagę ścieżkę wykonywania transformacji. Po kliknięciu poszczególnych węzłów zobaczysz "grupowania", które reprezentują kod, który został wykonany razem w klastrze. Czasy i liczby, które zobaczysz, reprezentują te grupy, w przeciwieństwie do poszczególnych kroków w projekcie.
 
-* Po kliknięciu wolnym miejscu w oknie monitorowania statystyki w dolnym okienku zostanie wyświetlona czasu i liczby wierszy dla każdego obiektu Sink i przekształcenia, które doprowadziły do ujścia danych pochodzenie transformacji.
+(media/data-flow/mon004.png "Monitorowanie przepływu danych") ![monitorowania przepływu danych]
 
-* Po wybraniu pojedyncze przekształcenia, otrzymają dodatkowe opinie w panelu po prawej stronie, pokazujący partycji statystyki, liczba kolumn, skośność (jak to dane równomiernie między partycjami), a kurtoza (jak spikey jest danych).
+* Po kliknięciu obszaru Otwórz w oknie monitorowanie, statystyki w dolnym okienku będą wyświetlały chronometraż i liczby wierszy dla każdego ujścia oraz przekształcenia, które doprowadziły do danych ujścia na potrzeby transformacji.
 
-* Po kliknięciu obiektu Sink w widoku węzłów zobaczysz pochodzenie kolumny. Istnieją trzy sposoby czy kolumny są zbierane przez cały przepływ danych, aby trafić w ujścia. Oto one:
+* Po wybraniu poszczególnych przekształceń otrzymasz dodatkową opinię na temat panelu po prawej stronie, w którym znajdują się statystyki partycji, liczby kolumn, skośność (jak równomiernie są dystrybuowane dane między partycjami) i kurtoza (jak są to dane).
 
-  * Obliczane: Możesz użyć kolumny do przetwarzania warunkowego lub w wyrażeniu w przepływie danych, ale nie przejście do ujścia
-  * Pochodne: Kolumna jest nową kolumnę, która wygenerowała w przepływie, czyli nie była obecna w źródle
-  * Zamapowane: Kolumny pochodzi ze źródła i czy mapowania go do pola obiektu sink
+* Po kliknięciu w obszarze zlewu w widoku węzła zostanie wyświetlona kolumna elementy zależne. Istnieją trzy różne metody, w których kolumny są gromadzone w całym przepływie danych pod kątem terenu. Oto one:
+
+  * Obliczono: używasz kolumny na potrzeby przetwarzania warunkowego lub w obrębie wyrażenia w przepływie danych, ale nie należy go wystawić w ujścia
+  * Pochodny: kolumna jest nową kolumną wygenerowaną w przepływie, tj. nie znajdowała się w źródle
+  * Zamapowana: kolumna pochodzi ze źródła i mapuje ją do pola ujścia
   
-## <a name="monitor-icons"></a>Ikony monitora
+## <a name="monitor-icons"></a>Monitoruj ikony
 
-Ta ikona oznacza, że przekształcania danych została już zostały zbuforowane w klastrze, więc chronometrażu i ścieżki wykonywania zostały uwzględnione:
+Ta ikona oznacza, że dane przekształcenia zostały już zapisane w pamięci podręcznej, więc czasy i ścieżki wykonywania zostały wzięte pod uwagę:
 
-<img src="media/data-flow/mon005.png" width="800"> 
+(media/data-flow/mon004.png "Monitorowanie przepływu danych") ![monitorowania przepływu danych]
 
-Zobaczysz również zielone koło ikony w transformacji. Reprezentują one liczbę ujścia, które dane będą przepływać do.
+W transformację zobaczysz również zielone ikony koła. Reprezentują one liczbę zlewów, do których przepływa dane.

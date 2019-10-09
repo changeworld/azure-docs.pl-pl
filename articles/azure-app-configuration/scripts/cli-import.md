@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0df8e19d3c6f0680f1eb1b0157c3bee5c9841e4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd1e54fc6cfbf254da010c03dfaa859a0ee8213c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234405"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029815"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importowanie do magazynu usługi Azure App Configuration
 
@@ -41,7 +41,7 @@ Należy najpierw zainstalować rozszerzenie interfejsu wiersza polecenia usługi
 #!/bin/bash
 
 # Import key-values from a file
-az appconfig kv import --name myTestAppConfigStore --file ~/Import.json
+az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import.json
 ```
 
 [!INCLUDE [cli-script-cleanup](../../../includes/cli-script-clean-up.md)]
@@ -52,9 +52,9 @@ Ten skrypt używa poniższych poleceń do importowania magazynu konfiguracji apl
 
 | Polecenie | Uwagi |
 |---|---|
-| [az appconfig import](/cli/azure/ext/appconfig/appconfig) | Importuje do zasobu magazynu konfiguracji aplikacji. |
+| [az appconfig import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | Importuje do zasobu magazynu konfiguracji aplikacji. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

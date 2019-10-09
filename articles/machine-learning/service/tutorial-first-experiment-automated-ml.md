@@ -1,5 +1,5 @@
 ---
-title: Utwórz pierwszy zautomatyzowany eksperyment uczenia maszynowego
+title: Utwórz pierwszy zautomatyzowany eksperyment klasyfikacji ML
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak wyszkolić i wdrożyć model klasyfikacji przy użyciu automatycznego uczenia maszynowego na stronie docelowej obszaru roboczego Azure Machine Learning (wersja zapoznawcza).
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350505"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035669"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 
@@ -26,7 +26,7 @@ Dzięki zautomatyzowanej usłudze Machine Learning można zautomatyzować czasoc
 W tym samouczku dowiesz się, jak wykonywać następujące zadania:
 
 > [!div class="checklist"]
-> * Tworzenie obszaru roboczego usługi Azure Machine Learning.
+> * Utwórz obszar roboczy Azure Machine Learning.
 > * Uruchom zautomatyzowany eksperyment uczenia maszynowego.
 > * Wyświetl szczegóły eksperymentu.
 > * Wdróż model.
@@ -66,14 +66,14 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
 
 1. Wybierz pozycję **Utwórz eksperyment**. 
 
-1. Wprowadź nazwę tego eksperymentu:`my-1st-automl-experiment`
+1. Wprowadź tę nazwę eksperymentu: `my-1st-automl-experiment`
 
 1. Wybierz pozycję **Utwórz nowe obliczenie** i skonfiguruj obiekt docelowy obliczeń. Obiekt docelowy obliczeń to lokalne lub oparte na chmurze środowisko zasobów używane do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Na potrzeby tego eksperymentu używamy obliczeń opartych na chmurze. 
 
    Pole | Opis | Wartość dla samouczka
    ----|---|---
-   Nazwa obliczeń |Unikatowa nazwa identyfikująca kontekst obliczeniowy.|automl — obliczenia
-   Rozmiar&nbsp;maszyny&nbsp;wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia.|Standard_DS12_V2
+   Nazwa obliczeniowa |Unikatowa nazwa identyfikująca kontekst obliczeniowy.|automl — obliczenia
+   Virtual @ no__t-0machine @ no__t-1size| Wybierz rozmiar maszyny wirtualnej dla obliczenia.|Standard_DS12_V2
    Minimalna/Maksymalna liczba węzłów (w ustawieniach zaawansowanych)| Aby profilować dane, musisz określić co najmniej jeden węzeł.|Minimalna liczba węzłów: 1<br>Maksymalna liczba węzłów: 6
 
    >[!NOTE]
@@ -101,9 +101,9 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
         
         Pole|Opis| Wartość dla samouczka
         ---|---|---
-        Format pliku|Definiuje układ i typ danych przechowywanych w pliku.| Rozdzielane
-        Ogranicznik|Jeden lub więcej znaków do określenia granicy między @ no__t-0 oddzielnych, niezależnych regionów w postaci zwykłego tekstu lub innych strumieni danych. |Przecinek
-        Kodowanie|Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.| UTF-8
+        Format pliku|Definiuje układ i typ danych przechowywanych w pliku.| Lista
+        Ogranicznik|Jeden lub więcej znaków do określenia granicy między @ no__t-0 oddzielnych, niezależnych regionów w postaci zwykłego tekstu lub innych strumieni danych. |Pliku
+        Encoding|Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.| UTF-8
         Nagłówki kolumn| Wskazuje, w jaki sposób nagłówki zestawu danych (jeśli istnieją) będą traktowane.| Wszystkie pliki mają te same nagłówki
         Pomiń wiersze | Wskazuje, ile (jeśli istnieją) wiersze są pomijane w zestawie danych.| Brak
     
@@ -118,10 +118,10 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
    >[!NOTE]
    > W tym samouczku nie ustawisz oceny metryki lub maksymalnej liczby rdzeni na wartość progową iteracji. Nie można natomiast blokować algorytmów.
    
-   Ustawienia&nbsp;zaawansowane|Opis|Wartość&nbsp;dla&nbsp;samouczka
+   Advanced @ no__t — 0settings|Opis|Value @ no__t-0for @ no__t-1tutorial
    ------|---------|---
    Metryka podstawowa| Metryka oceny, według której będzie mierzony algorytm uczenia maszynowego.|AUC_weighted
-   Kryteria wyjścia| Jeśli kryteria są spełnione, zadanie szkolenia zostanie zatrzymane. |Czas&nbsp;zadania&nbsp;szkoleniowego: 5 <br> <br> Maksymalna&nbsp;liczba#iteracji10&nbsp;&nbsp;&#58;
+   Kryteria wyjścia| Jeśli kryteria są spełnione, zadanie szkolenia zostanie zatrzymane. |Szkolenia @ no__t-0job @ no__t-1Time: 5 <br> <br> Max @ no__t-0 @ no__t-1 @ no__t-2oF @ no__t-3iterations&#58;10
    Przetwarzania wstępnego| Umożliwia przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Obejmuje to automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych.| Włączenie
    Typ walidacji | Wybierz typ krzyżowej walidacji.|K — złożenie krzyżowego sprawdzania poprawności
    Liczba walidacji | Liczba testów. | 2 walidacje krzyżowe 
@@ -156,7 +156,7 @@ W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy mod
 
 1. Wypełnij okienko **Wdróż najlepszy model** w następujący sposób:
 
-    Pole| Value
+    Pole| Wartość
     ----|----
     Nazwa wdrożenia| My-automl-Deploy
     Opis wdrożenia| Moje pierwsze zautomatyzowane wdrożenie eksperymentu w usłudze Machine Learning
@@ -200,5 +200,5 @@ W tym samouczku zautomatyzowanym uczenia maszynowego została użyta Strona doce
 + Aby uzyskać więcej informacji na temat metryk i wykresów klasyfikacji, zobacz artykuł [Omówienie automatycznego uczenia maszynowego](how-to-understand-automated-ml.md#classification) .
 
 >[!NOTE]
-> Ten zestaw danych marketingu dla [banku jest udostępniany w ramach Creative Commons Attribution (CCO: Domena publiczna)](https://creativecommons.org/publicdomain/zero/1.0/). Wszystkie prawa do poszczególnych treści bazy danych są licencjonowane w ramach [licencji na zawartość bazy danych](https://creativecommons.org/publicdomain/zero/1.0/) i dostępne w witrynie [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Ten zestaw danych był początkowo dostępny w [bazie danych Machine Learning UCI](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
+> Ten zestaw danych marketingu dla banku jest udostępniany w ramach [licencji Creative Commons Attribution (CCO: Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/). Wszystkie prawa do poszczególnych treści bazy danych są licencjonowane w ramach [licencji na zawartość bazy danych](https://creativecommons.org/publicdomain/zero/1.0/) i dostępne w witrynie [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Ten zestaw danych był początkowo dostępny w [bazie danych Machine Learning UCI](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
 > [Moro et al., 2014] S. Moro, P. Cortez i P. Rita. Oparte na danych podejście do przewidywania sukcesu telemarketingu bankowego. Systemy pomocy technicznej, Elsevier, 62:22-31 czerwca 2014.

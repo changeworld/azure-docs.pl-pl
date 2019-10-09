@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: a3817b3e9f62a863f3fea9305ef169db2eb84491
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 48f7066f2db96165daa104dcf32fe8e2e2cd55cf
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637942"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025230"
 ---
 # <a name="getting-started"> </a>Informacje o funkcji Mobile Apps w usłudze Azure App Service
 
 > [!NOTE]
-> Visual Studio App Center jest inwestować w nowe i zintegrowane usługi centralne dla opracowywania aplikacji mobilnych. Deweloperzy mogą używaćusług kompilowania, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi wypychania. Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze. Wyewidencjonuj [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-value-prop) dzisiaj.
->
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 Usługa Azure App Service to oferta w pełni zarządzanej [platformy jako usługi](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) dla profesjonalnych deweloperów. Usługa ta oferuje bogaty zestaw funkcji na potrzeby scenariuszy internetowych, mobilnych i dotyczących integracji. 
 
@@ -36,19 +36,19 @@ Funkcja Mobile Apps usługi Azure App Service oferuje deweloperom w przedsiębio
 ## <a name="why-mobile-apps"></a>Dlaczego warto korzystać z usługi Mobile Apps?
 Przy użyciu funkcji Mobile Apps można:
 
-* **Kompilować aplikacje natywne i międzyplatformowe**: bez względu na to, czy kompilujesz natywne aplikacje dla systemów iOS, Android i Windows, czy też międzyplatformowe aplikacje platform Xamarin lub Cordova (PhoneGap), możesz korzystać z usługi App Service za pośrednictwem natywnych zestawów SDK.
-* **Nawiązywać połączenia z systemami przedsiębiorstwa**: dzięki funkcji Mobile Apps można w ciągu kilku minut dodać opcję logowania firmowego oraz nawiązywać połączenia z zasobami przedsiębiorstwa lokalnie lub w chmurze.
-* **Kompilować aplikacje gotowe do działania w trybie offline z opcją synchronizacji danych**: aby personel mobilny mógł pracować wydajniej, należy skompilować aplikacje działające w trybie offline, a następnie po nawiązaniu łączności za pomocą usługi Mobile Apps synchronizować w tle dane z dowolnych źródeł danych przedsiębiorstwa lub interfejsów API oprogramowania jako usługi (SaaS).
-* **Wypychać powiadomienia do milionów użytkowników w ciągu sekund**: można kontaktować się z klientami dzięki błyskawicznym powiadomieniom wypychanym z dowolnego urządzenia, spersonalizowanym zgodnie z ich potrzebami i wysyłanym w odpowiednim czasie.
+* **Kompilować aplikacje natywne i międzyplatformowe** — bez względu na to, czy kompilujesz natywne aplikacje dla systemów iOS, Android i Windows, czy też międzyplatformowe aplikacje platform Xamarin lub Cordova (PhoneGap), możesz korzystać z usługi App Service za pośrednictwem natywnych zestawów SDK.
+* **Nawiązywać połączenia z systemami przedsiębiorstwa** — dzięki funkcji Mobile Apps można w ciągu kilku minut dodać opcję logowania firmowego oraz nawiązywać połączenia z zasobami przedsiębiorstwa lokalnie lub w chmurze.
+* **Kompilować aplikacje gotowe do działania w trybie offline z opcją synchronizacji danych** — aby personel mobilny mógł pracować wydajniej, należy skompilować aplikacje działające w trybie offline, a następnie po nawiązaniu łączności za pomocą usługi Mobile Apps synchronizować w tle dane z dowolnych źródeł danych przedsiębiorstwa lub interfejsów API oprogramowania jako usługi (SaaS).
+* **Wypychać powiadomienia do milionów użytkowników w ciągu sekund** — można kontaktować się z klientami dzięki błyskawicznym powiadomieniom wypychanym z dowolnego urządzenia, spersonalizowanym zgodnie z ich potrzebami i wysyłanym w odpowiednim czasie.
 
 ## <a name="mobile-apps-features"></a>Funkcje Mobile Apps
 Następujące funkcje są ważnymi elementami tworzenia aplikacji mobilnych z obsługą chmury:
 
-* **Uwierzytelnianie i autoryzacja**: obsługa dostawców tożsamości, obejmująca usługę Azure Active Directory na potrzeby uwierzytelniania w przedsiębiorstwie, a także dostawców sieci społecznościowych, takich jak Facebook, Google, Twitter i konta Microsoft. Funkcja Mobile Apps udostępnia usługę OAuth 2.0 dla każdego dostawcy. Można również zintegrować zestaw SDK dla dostawcy tożsamości, aby korzystać z funkcji specyficznych dla tego dostawcy.
+* **Uwierzytelnianie i autoryzacja** — obsługa dostawców tożsamości, obejmująca usługę Azure Active Directory na potrzeby uwierzytelniania w przedsiębiorstwie, a także dostawców sieci społecznościowych, takich jak Facebook, Google, Twitter i konta Microsoft. Funkcja Mobile Apps udostępnia usługę OAuth 2.0 dla każdego dostawcy. Można również zintegrować zestaw SDK dla dostawcy tożsamości, aby korzystać z funkcji specyficznych dla tego dostawcy.
 
     Dowiedz się więcej na temat [funkcji uwierzytelniania].
 
-* **Dostęp do danych**: funkcja Mobile Apps oferuje współpracujące z urządzeniami przenośnymi źródło danych OData v3 połączone z usługą Azure SQL Database lub lokalnym serwerem SQL. Ponieważ ta usługa może opierać się na platformie Entity Framework, możesz łatwo zintegrować ją z innymi dostawcami danych NoSQL i SQL, w tym [Azure Table Storage], MongoDB i [Usługi Azure Cosmos DB], a także dostawcami interfejsów API SaaS, takimi jak Office 365 i Salesforce.com.
+* **Dostęp do danych**: funkcja Mobile Apps oferuje współpracujące z urządzeniami przenośnymi źródło danych OData v3 połączone z usługą Azure SQL Database lub lokalnym serwerem SQL. Ponieważ ta usługa może opierać się na platformie Entity Framework, możesz łatwo zintegrować ją z innymi dostawcami danych NoSQL i SQL, w tym [Azure Table Storage], MongoDB i [Azure Cosmos DB], a także dostawcami interfejsów API SaaS, takimi jak Office 365 i Salesforce.com.
 
 * **Synchronizacja w trybie offline**: zestawy SDK klientów ułatwiają tworzenie niezawodnych i dynamicznych aplikacji mobilnych, które korzystają z zestawu danych w trybie offline. Ten zestaw danych można automatycznie zsynchronizować z danymi zaplecza, uwzględniając obsługę rozwiązywania konfliktów.
 
@@ -88,13 +88,13 @@ Poniższe funkcje platformy są przydatne w przypadku witryn produkcyjnych aplik
 Aby rozpocząć pracę z funkcją Mobile Apps w usłudze Azure App Service, wykonaj kroki samouczka z [wprowadzeniem]. Samouczek zawiera podstawowe informacje na temat tworzenia wybranego klienta i zaplecza mobilnego. Obejmuje on również zagadnienia, takie jak integrowanie uwierzytelniania, synchronizacji w trybie offline i powiadomień wypychanych. Kroki samouczka można wykonać wielokrotnie, jeden raz dla każdej aplikacji klienta.
 
 Aby uzyskać więcej informacji o funkcji Mobile Apps, zapoznaj się z naszą [mapą nauki].
-Aby uzyskać więcej informacji o platformie Azure App Service, zobacz temat [Usługa Azure App Service].
+Aby uzyskać więcej informacji o platformie Azure App Service, zobacz temat [Azure App Service].
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [wprowadzeniem]: app-service-mobile-ios-get-started.md
 [Azure Table storage]:../cosmos-db/table-storage-how-to-use-dotnet.md
-[Usługi Azure Cosmos DB]: ../cosmos-db/sql-api-get-started.md
+[Azure Cosmos DB]: ../cosmos-db/sql-api-get-started.md
 [funkcji uwierzytelniania]: ./app-service-mobile-auth.md
 [funkcji związanych z danymi]: ./app-service-mobile-offline-data-sync.md
 [funkcji powiadomień wypychanych]: ../notification-hubs/notification-hubs-push-notification-overview.md
@@ -111,4 +111,4 @@ Aby uzyskać więcej informacji o platformie Azure App Service, zobacz temat [Us
 [ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
 [środowiska usługi App Service]: ../app-service/environment/intro.md
 [mapą nauki]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
-[Usługa Azure App Service]: ../app-service/overview.md
+[Azure App Service]: ../app-service/overview.md

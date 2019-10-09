@@ -1,6 +1,6 @@
 ---
-title: Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.Android | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Azure App Service i usługi Azure Notification Hubs wysyłać powiadomienia wypychane do aplikacji platformy Xamarin.Android
+title: Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin. Android | Microsoft Docs
+description: Dowiedz się, jak używać Azure App Service i usługi Azure Notification Hubs do wysyłania powiadomień wypychanych do aplikacji platformy Xamarin. Android
 services: app-service\mobile
 documentationcenter: xamarin
 author: elamalani
@@ -14,71 +14,71 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: cff0845b555f25fce438f3389e1f97cda0450bc3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f71dc2cde2790f60641462a705a1147b4ace3128
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447123"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027162"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.Android
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center jest inwestujemy w nowe i zintegrowane usługi decydujące znaczenie dla aplikacji mobilnych. Deweloperzy mogą używać **kompilacji**, **testu** i **dystrybucji** usług do konfigurowania potoku ciągłej integracji i ciągłego dostarczania. Gdy aplikacja jest wdrażana, deweloperzy mogą monitorować stan i użycie ich przy użyciu aplikacji **Analytics** i **diagnostyki** usług i angażuj użytkowników za pomocą **wypychania** Usługa. Deweloperzy mogą również wykorzystać **uwierzytelniania** do uwierzytelniania użytkowników i **danych** usługę, aby utrwalić i synchronizowanie danych aplikacji w chmurze. Zapoznaj się z [platformy App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-android-get-started-push) już dziś.
->
+> Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi centralne do tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług **kompilowania**, **testowania** i **dystrybucji** , aby skonfigurować ciągłą integrację i potok dostarczania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie swojej aplikacji przy użyciu usług **analizy** i **diagnostyki** oraz angażować się z użytkownikami za pomocą usługi **wypychania** . Deweloperzy mogą również korzystać z **uwierzytelniania** w celu uwierzytelniania użytkowników i usługi **danych** w celu utrwalania i synchronizowania danych aplikacji w chmurze.
+> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
 
-W ramach tego samouczka, możesz dodać powiadomienia wypychane do [Szybki Start platformy Xamarin.Android](app-service-mobile-windows-store-dotnet-get-started.md) projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
+W tym samouczku dowiesz się, jak dodać powiadomienia wypychane do projektu [szybkiego startu platformy Xamarin. Android](app-service-mobile-windows-store-dotnet-get-started.md) , aby Powiadomienie wypychane było wysyłane do urządzenia za każdym razem, gdy rekord zostanie wstawiony.
 
-Jeśli nie używasz pobrany projekt szybkiego startu server, konieczne będzie pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) przewodnik.
+Jeśli nie korzystasz z pobranego projektu szybkiego startu serwera, będzie potrzebny pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz Przewodnik dotyczący [pracy z zestawem SDK serwera zaplecza platformy .NET dla platformy Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Ten samouczek wymaga instalacji:
 
-* Aktywne konto Google. Możesz zasubskrybować konto Google na [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
-* [Usługa Google Cloud Messaging składnik klienta](https://components.xamarin.com/view/GCMClient/).
+* Aktywne konto Google. Konto Google można zarejestrować pod adresem [accounts.Google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
+* [Google Cloud Messaging składnik klienta](https://components.xamarin.com/view/GCMClient/).
 
-## <a name="configure-hub"></a>Konfigurowanie Centrum powiadomień
+## <a name="configure-hub"></a>Konfigurowanie centrum powiadomień
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a id="register"></a>Włączanie usługi Firebase Cloud Messaging
+## <a id="register"></a>Włącz obsługę komunikatów w chmurze Firebase
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-## <a name="configure-azure-to-send-push-requests"></a>Konfigurowanie platformy Azure na potrzeby wysyłania żądań wypychania
+## <a name="configure-azure-to-send-push-requests"></a>Skonfiguruj platformę Azure do wysyłania żądań push
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a id="update-server"></a>Aktualizuj projekt serwera do wysyłania powiadomień wypychanych
+## <a id="update-server"></a>Aktualizowanie projektu serwera w celu wysyłania powiadomień wypychanych
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a id="configure-app"></a>Konfigurowanie projektu klienta dla powiadomień wypychanych
+## <a id="configure-app"></a>Konfigurowanie projektu klienta na potrzeby powiadomień wypychanych
 
 [!INCLUDE [mobile-services-xamarin-android-push-configure-project](../../includes/mobile-services-xamarin-android-push-configure-project.md)]
 
-## <a id="add-push"></a>Dodaj kod powiadomienia wypychane do aplikacji
+## <a id="add-push"></a>Dodawanie kodu powiadomień wypychanych do aplikacji
 
 [!INCLUDE [app-service-mobile-xamarin-android-push-add-to-app](../../includes/app-service-mobile-xamarin-android-push-add-to-app.md)]
 
-## <a name="test"></a>Testowych powiadomień push w aplikacji
+## <a name="test"></a>Testowanie powiadomień wypychanych w aplikacji
 
-Aby przetestować aplikację, należy za pomocą urządzenia wirtualnego w emulatorze. Istnieją dodatkowe czynności konfiguracyjne wymagane podczas uruchamiania w emulatorze.
+Aplikację można przetestować przy użyciu urządzenia wirtualnego w emulatorze. W przypadku korzystania z emulatora wymagane są dodatkowe czynności konfiguracyjne.
 
-1. Wirtualne urządzenie musi mieć ustawioną jako docelową w programie Android Virtual Device (AVD) manager interfejsy API Google.
+1. Urządzenie wirtualne musi mieć interfejs API usługi Google ustawiony jako element docelowy w Menedżerze urządzeń wirtualnych z systemem Android (AVD).
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
 
-2. Dodaj konto Google na urządzeniu z systemem Android, klikając **aplikacje** > **ustawienia** > **Dodaj konto**, następnie postępuj zgodnie z monitami.
+2. Dodaj konto Google do urządzenia z systemem Android, klikając pozycję **aplikacje** > **Ustawienia** > **Dodaj konto**, a następnie postępuj zgodnie z monitami.
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
 
-3. Uruchom aplikację listy zadań jako przed i Wstaw nowy element todo. Tym razem ikonę powiadomień jest wyświetlany w obszarze powiadomień. Możesz otworzyć menu powiadomień, aby wyświetlić pełny tekst powiadomienia.
+3. Uruchom aplikację todolist jako wcześniejszą i Wstaw nowy element do wykonania. Tym razem w obszarze powiadomień zostanie wyświetlona ikona powiadomienia. Możesz otworzyć szufladę powiadomień, aby wyświetlić pełny tekst powiadomienia.
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/android-notifications.png)
 

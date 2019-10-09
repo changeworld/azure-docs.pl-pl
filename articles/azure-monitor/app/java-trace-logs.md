@@ -12,19 +12,22 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 99a18125fa5ce07a46fcc1af554fd03746ebf110
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299247"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038155"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Eksplorowanie dzienników śledzenia Java w Application Insights
 Jeśli używasz programu Logback lub Log4J (w wersji 1.2 lub 2.0) do śledzenia, dzienniki śledzenia mogą być automatycznie wysyłane do Application Insights, w którym można eksplorować i wyszukiwać.
 
+> [!TIP]
+> Musisz tylko raz ustawić klucz Instrumentacji Application Insights dla aplikacji. Jeśli używasz platformy, takiej jak źródło Java, być może klucz został już zarejestrowany w innym miejscu w konfiguracji aplikacji.
+
 ## <a name="using-the-application-insights-java-agent"></a>Korzystanie z Application Insights agenta Java
 
-Aby automatycznie przechwytywać dzienniki, można skonfigurować Application Insights agenta Java przez włączenie tej funkcji w `AI-Agent.xml` pliku:
+Można skonfigurować Application Insights agenta Java do automatycznego przechwytywania dzienników, włączając funkcję w pliku `AI-Agent.xml`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -65,7 +68,7 @@ Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
     </dependencies>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -92,7 +95,7 @@ Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
 ```
 
 #### <a name="if-youre-using-gradle"></a>Jeśli używasz narzędzia Gradle...
-Jeśli projekt jest już skonfigurowany do korzystania z Gradle dla kompilacji, Dodaj jeden z następujących wierszy do `dependencies` grupy w pliku Build. Gradle:
+Jeśli projekt jest już skonfigurowany do korzystania z Gradle dla kompilacji, Dodaj jeden z następujących wierszy do grupy `dependencies` w pliku Build. Gradle:
 
 Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
 
@@ -103,7 +106,7 @@ Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v2.0**
+**Log4J v 2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
@@ -118,11 +121,11 @@ Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
 #### <a name="otherwise-"></a>W innym przypadku...
 Postępuj zgodnie z instrukcjami, aby ręcznie zainstalować Application Insights Java SDK, Pobierz plik JAR (po nadejściu na stronie Maven Central kliknij link "Jar" w sekcji pobierania) dla odpowiedniego dołączania i Dodaj pobrany plik JAR dołączonego do projektu.
 
-| Logger | Do pobrania | Biblioteka |
+| Rejestratora | Pobierz | Biblioteka |
 | --- | --- | --- |
-| Logback |[Logback Dołącz do jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
-| Log4J v2.0 |[Log4J v2 — plik JAR](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
-| Log4j v1.2 |[Log4J v 1.2 dołączanie jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+| Logback |[Logback Dołącz do jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |ApplicationInsights-Logging-logback |
+| Log4J v 2.0 |[Log4J v2 — plik JAR](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |ApplicationInsights-Logging-log4j2 |
+| Log4J v 1.2 |[Log4J v 1.2 dołączanie jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |ApplicationInsights-Logging-log4j1_2 |
 
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>Dodawanie dołączania do struktury rejestrowania
@@ -141,7 +144,7 @@ Aby rozpocząć pobieranie śladów, Scal odpowiedni fragment kodu z plikiem kon
     </root>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 

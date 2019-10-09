@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z dokumentami w dokumentach Microsoft Docs'
+title: 'Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z dokumentami w dokumentach Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i dokumentów.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf25ce318415a8aa36bca8d4cd7380e4e8e67ca
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743455"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035701"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z dokumentami
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Samouczek: integracja logowania jednokrotnego (SSO) Azure Active Directory z dokumentami
 
 W tym samouczku dowiesz się, jak zintegrować dokumenty z usługą Azure Active Directory (Azure AD). Podczas integrowania dokumentów z usługą Azure AD można:
 
@@ -85,6 +85,8 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    
+    d. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `http://netdocuments.com/VAULT`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu adresu URL logowania i adresu URL odpowiedzi. Identyfikator repozytorium to wartość rozpoczynająca się od **urzędu certyfikacji** , po którym następuje 8 kodów znaków skojarzonych z repozytorium dokumentów. Aby uzyskać więcej informacji, możesz sprawdzić dokument dotyczący [obsługi tożsamości federacyjnych w dokumentach](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) . Możesz też skontaktować się z [zespołem pomocy technicznej klienta](https://support.netdocuments.com/hc/) , aby uzyskać te wartości, jeśli masz problemy z konfiguracją przy użyciu powyższych informacji. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -95,7 +97,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
 1. W sekcji **Konfigurowanie dokumentów** sieci skopiuj odpowiednie adresy URL na podstawie wymagania.
 
@@ -106,10 +108,10 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij przycisk **Utwórz**.
 
@@ -121,7 +123,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **dokumenty**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -139,7 +141,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 3. Kliknij przycisk **Dodaj i Usuń użytkowników i grupy**.
    
-    ![Repozytorium](./media/netdocuments-tutorial/ic795047.png "Repozytorium")
+    ![](./media/netdocuments-tutorial/ic795047.png "Repozytorium") repozytorium
 
 4. Kliknij pozycję **Konfiguruj zaawansowane opcje uwierzytelniania**.
     
@@ -147,13 +149,13 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 5. W oknie dialogowym **Tożsamość federacyjna** wykonaj następujące czynności:
    
-    ![Tożsamość federacyjna](./media/netdocuments-tutorial/ic795049.png "Tożsamość federacyjna")
+    (./media/netdocuments-tutorial/ic795049.png "Tożsamość federacyjna") ![tożsamości federacyjnej]
    
     a. Jako **Typ federacyjnego serwera tożsamości**wybierz **Active Directory Federation Services**.
    
     b. Kliknij pozycję **Wybierz plik**, aby przekazać pobrany plik metadanych pobrany z Azure Portal.
    
-    c. Kliknij przycisk **OK**.
+    d. Kliknij przycisk **OK**.
 
 ### <a name="create-netdocuments-test-user"></a>Tworzenie użytkownika testowego
 
@@ -170,22 +172,22 @@ W przypadku dokumentów, Inicjowanie obsługi jest zadaniem ręcznym.
 
 3. Kliknij przycisk **Dodaj i Usuń użytkowników i grupy**.
    
-    ![Repozytorium](./media/netdocuments-tutorial/ic795047.png "Repozytorium")
+    ![](./media/netdocuments-tutorial/ic795047.png "Repozytorium") repozytorium
 
 4. W polu tekstowym **adres e-mail** wpisz adres e-mail prawidłowego konta Azure Active Directory, które chcesz udostępnić, a następnie kliknij przycisk **Dodaj użytkownika**.
    
-    ![Adres e-mail](./media/netdocuments-tutorial/ic795053.png "Adres e-mail")
+    ![](./media/netdocuments-tutorial/ic795053.png "Adres") e-mail
    
     >[!NOTE]
     >Właściciel konta Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim staną się aktywne. Do aprowizacji Azure Active Directory kont użytkowników można używać innych narzędzi do tworzenia kont użytkowników i interfejsów API dostarczonych przez dokumenty.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka dokumenty w panelu dostępu należy automatycznie zalogować się do dokumentów, dla których skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

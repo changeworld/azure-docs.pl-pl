@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Riskware | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Riskware.
+title: 'Samouczek: integracja Azure Active Directory z usługą potencjalnie szkodliwe oprogramowanie | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i potencjalnie szkodliwe oprogramowanie.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b2bfbed33433521fd086d474ea4b754f5435f5e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092923"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027119"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Riskware
+# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Samouczek: integracja Azure Active Directory z usługą potencjalnie szkodliwe oprogramowanie
 
-W tym samouczku dowiesz się, jak zintegrować Riskware w usłudze Azure Active Directory (Azure AD).
-Integrowanie Riskware z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę potencjalnie szkodliwe oprogramowanie z usługą Azure Active Directory (Azure AD).
+Integracja potencjalnie szkodliwe oprogramowanie z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Riskware.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do Riskware (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi potencjalnie szkodliwe oprogramowanie.
+* Możesz pozwolić użytkownikom na automatyczne logowanie do potencjalnie szkodliwe oprogramowanie (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Riskware, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą potencjalnie szkodliwe oprogramowanie, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Riskware logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja z włączonym logowaniem jednokrotnym w potencjalnie szkodliwe oprogramowanie
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Riskware **SP** jednokrotne logowanie inicjowane przez
+* Potencjalnie szkodliwe oprogramowanie obsługuje logowanie jednokrotne w usłudze **SP**
 
-## <a name="adding-riskware-from-the-gallery"></a>Dodawanie Riskware z galerii
+## <a name="adding-riskware-from-the-gallery"></a>Dodawanie potencjalnie szkodliwe oprogramowanie z galerii
 
-Aby skonfigurować integrację Riskware w usłudze Azure AD, należy dodać Riskware z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu potencjalnie szkodliwe oprogramowanie z usługą Azure AD, musisz dodać potencjalnie szkodliwe oprogramowanie z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Riskware z galerii, wykonaj następujące czynności:**
+**Aby dodać potencjalnie szkodliwe oprogramowanie z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Aby skonfigurować integrację Riskware w usłudze Azure AD, należy dodać Risk
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Riskware**, wybierz opcję **Riskware** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **potencjalnie szkodliwe oprogramowanie**, wybierz pozycję **potencjalnie szkodliwe oprogramowanie** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-    ![Riskware na liście wyników](common/search-new-app.png)
+    ![Potencjalnie szkodliwe oprogramowanie na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Riskware w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Riskware musi zostać ustanowione.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą potencjalnie szkodliwe oprogramowanie na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w potencjalnie szkodliwe oprogramowanie.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Riskware, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi potencjalnie szkodliwe oprogramowanie, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Riskware logowania jednokrotnego](#configure-riskware-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Riskware](#create-riskware-test-user)**  — aby odpowiednikiem Britta Simon w Riskware połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie](#configure-riskware-single-sign-on)** jednokrotne w usłudze potencjalnie szkodliwe oprogramowanie, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego potencjalnie szkodliwe oprogramowanie](#create-riskware-test-user)** , aby uzyskać odpowiednik Britta Simon w potencjalnie szkodliwe oprogramowanie, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Riskware, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą potencjalnie szkodliwe oprogramowanie, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Riskware** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **potencjalnie szkodliwe oprogramowanie** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,34 +103,34 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Riskware, wykonaj n
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Riskware domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+    ![Potencjalnie szkodliwe oprogramowanie domenę i adresy URL Logowanie jednokrotne](common/sp-identifier.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
     
-    | Środowisko| Wzorzec URL|
+    | Środowisko| Wzorzec adresu URL|
     |--|--|
     | Testowanie akceptacyjne przez użytkowników|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
-    | PRODUKCYJNE| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
+    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
+    | PREZENTOWAN| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
-    b. W **identyfikator jednostki** pole tekstowe, wpisz adres URL:
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL:
     
-    | Środowisko| Wzorzec URL|
+    | Środowisko| Wzorzec adresu URL|
     |--|--|
     | Testowanie akceptacyjne przez użytkowników| `https://riskcloud.net/uat` |
-    | PRODUKCYJNE| `https://riskcloud.net/prod` |
-    | DEMO| `https://riskcloud.net/demo` |
+    | PROD| `https://riskcloud.net/prod` |
+    | PREZENTOWAN| `https://riskcloud.net/demo` |
     |||
 
     > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Riskware](mailto:support@pansoftware.com.au) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem obsługi klienta potencjalnie szkodliwe oprogramowanie](mailto:support@pansoftware.com.au) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. Na **Konfigurowanie Riskware** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie potencjalnie szkodliwe oprogramowanie** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -138,52 +138,52 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Riskware, wykonaj n
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-riskware-single-sign-on"></a>Konfigurowanie Riskware logowanie jednokrotne
+### <a name="configure-riskware-single-sign-on"></a>Konfigurowanie logowania jednokrotnego potencjalnie szkodliwe oprogramowanie
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy Riskware jako administrator.
+1. W innym oknie przeglądarki sieci Web Zaloguj się do firmowej witryny potencjalnie szkodliwe oprogramowanie jako administrator.
 
-1. W prawym górnym rogu, kliknij polecenie **konserwacji** aby otworzyć stronę konserwacji.
+1. W prawym górnym rogu kliknij pozycję **konserwacja** , aby otworzyć stronę konserwacja.
 
-    ![Obsługa konfiguracji Riskware](./media/riskware-tutorial/tutorial_riskware_maintain.png)
+    ![Obsługa konfiguracji potencjalnie szkodliwe oprogramowanie](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
-1. Na stronie konserwacji, kliknij przycisk **uwierzytelniania**.
+1. Na stronie obsługa kliknij pozycję **uwierzytelnianie**.
 
-    ![Authen Riskware konfiguracji](./media/riskware-tutorial/tutorial_riskware_authen.png)
+    ![Potencjalnie szkodliwe oprogramowanie konfiguracja AUTHEN](./media/riskware-tutorial/tutorial_riskware_authen.png)
 
-1. W **konfiguracji uwierzytelniania** strony, wykonaj następujące czynności:
+1. Na stronie **konfiguracja uwierzytelniania** wykonaj następujące czynności:
 
-    ![Authenconfig Riskware konfiguracji](./media/riskware-tutorial/tutorial_riskware_config.png)
+    ![Potencjalnie szkodliwe oprogramowanie konfiguracja authenconfig](./media/riskware-tutorial/tutorial_riskware_config.png)
 
-    a. Wybierz **typu** jako **SAML** do uwierzytelniania.
+    a. Wybierz **Typ** jako **SAML** na potrzeby uwierzytelniania.
 
-    b. W **kodu** polu tekstowym wpisz swój kod, takich jak AZURE_UAT.
+    b. W polu tekstowym **kod** wpisz swój kod, taki jak AZURE_UAT.
 
-    c. W **opis** polu tekstowym wpisz opis takich jak AZURE konfiguracji logowania jednokrotnego.
+    d. W polu tekstowym **Opis** wpisz swój opis, taki jak konfiguracja platformy Azure na potrzeby rejestracji jednokrotnej.
 
-    d. W **pojedynczego logowania na stronie** pola tekstowego, Wklej **adres URL logowania** wartości, które zostały skopiowane z witryny Azure portal.
+    d. W polu tekstowym **na stronie logowania** jednokrotnego wklej wartość **adresu URL logowania** , która została skopiowana z Azure Portal.
 
-    e. W **Wyloguj strony** pola tekstowego, Wklej **adres URL wylogowania** wartości, które zostały skopiowane z witryny Azure portal.
+    e. W polu tekstowym **Wyrejestruj stronę** , wklej wartość **adresu URL wylogowania** , która została skopiowana z Azure Portal.
 
-    f. W **pola formularza wpis** polu tekstowym wpisz nazwę pola, które jest obecny w odpowiedzi na wpis, zawierający SAML, takich jak SAMLResponse
+    f. W **polu tekstowym pole formularza post** wpisz nazwę pola znajdującą się w odpowiedzi post, która zawiera element SAML like SAMLResponse
 
-    g. W **nazwa tagu tożsamości XML** atrybutu typu, który zawiera unikatowy identyfikator w odpowiedzi SAML, takich jak NameID polu tekstowym.
+    g. W polu tekstowym **nazwa tagu tożsamości XML** , atrybut typu, który zawiera unikatowy identyfikator w odpowiedzi SAML, np. NameID.
 
-    h. Otwórz pobrany **Xml metadanych** skopiuj certyfikat z pliku metadanych z witryny Azure portal w programie Notatnik i wklej go w **certyfikatu** textbox
+    h. Otwórz pobrany **plik XML metadanych** z Azure Portal w Notatniku, Skopiuj certyfikat z pliku metadanych i wklej go do pola tekstowego **certyfikatu**
 
-    i. W **adres URL klienta** pola tekstowego, Wklej wartość **adres URL odpowiedzi**, którego można uzyskać z zespołem pomocy technicznej.
+    i. W polu tekstowym **adres URL klienta** wklej wartość **adresu URL odpowiedzi**, którą otrzymujesz od zespołu pomocy technicznej.
 
-    j. W **wystawcy** pola tekstowego, Wklej wartość **identyfikator**, którego można uzyskać z zespołem pomocy technicznej.
+    j. W polu tekstowym **wystawca** wklej wartość **identyfikatora**, którą otrzymujesz od zespołu pomocy technicznej.
 
     > [!Note]
-    > Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Riskware](mailto:support@pansoftware.com.au) do uzyskania tych wartości.
+    > Skontaktuj się z [zespołem obsługi klienta potencjalnie szkodliwe oprogramowanie](mailto:support@pansoftware.com.au) , aby uzyskać te wartości
 
-    k. Wybierz **wpisu użyj** pola wyboru.
+    k. Zaznacz pole wyboru **Użyj wpisu** .
 
-    l. Wybierz **żądania języka SAML użyj** pola wyboru.
+    l. Zaznacz pole wyboru **Użyj żądania SAML** .
 
-    m. Kliknij pozycję **Zapisz**.
+    m. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -203,24 +203,24 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`  
+    b. W polu **Nazwa użytkownika** wpisz `brittasimon@yourcompanydomain.extension`  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Riskware.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi potencjalnie szkodliwe oprogramowanie.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Riskware**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **potencjalnie szkodliwe oprogramowanie**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Riskware**.
+2. Na liście Aplikacje wybierz pozycję **potencjalnie szkodliwe oprogramowanie**.
 
-    ![Link Riskware na liście aplikacji](common/all-applications.png)
+    ![Link potencjalnie szkodliwe oprogramowanie na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -236,64 +236,64 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-riskware-test-user"></a>Tworzenie użytkownika testowego Riskware
+### <a name="create-riskware-test-user"></a>Utwórz użytkownika testowego potencjalnie szkodliwe oprogramowanie
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Riskware, musi być obsługiwana w Riskware. W Riskware Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze potencjalnie szkodliwe oprogramowanie, muszą one być obsługiwane w usłudze potencjalnie szkodliwe oprogramowanie. W potencjalnie szkodliwe oprogramowanie, Inicjowanie obsługi jest zadaniem ręcznym.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do Riskware jako Administrator zabezpieczeń.
+1. Zaloguj się do potencjalnie szkodliwe oprogramowanie jako administrator zabezpieczeń.
 
-1. W prawym górnym rogu, kliknij polecenie **konserwacji** aby otworzyć stronę konserwacji. 
+1. W prawym górnym rogu kliknij pozycję **konserwacja** , aby otworzyć stronę konserwacja. 
 
-    ![Przechowuje Riskware konfiguracji](./media/riskware-tutorial/tutorial_riskware_maintain.png)
+    ![Potencjalnie szkodliwe oprogramowanie konfiguracja](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
-1. Na stronie konserwacji, kliknij przycisk **osób**.
+1. Na stronie obsługa kliknij pozycję **osoby**.
 
-    ![Konfiguracja Riskware osoby](./media/riskware-tutorial/tutorial_riskware_people.png)
+    ![Potencjalnie szkodliwe oprogramowanie osoby konfiguracji](./media/riskware-tutorial/tutorial_riskware_people.png)
 
-1. Wybierz **szczegóły** kartę i wykonaj następujące czynności:
+1. Wybierz kartę **szczegóły** i wykonaj następujące czynności:
 
-    ![Szczegóły konfiguracji Riskware](./media/riskware-tutorial/tutorial_riskware_details.png)
+    ![Szczegóły konfiguracji potencjalnie szkodliwe oprogramowanie](./media/riskware-tutorial/tutorial_riskware_details.png)
 
-    a. Wybierz **typ osoby** , takich jak pracownika.
+    a. Wybierz **Typ osoby** podobnej do pracownika.
 
-    b. W **imię** polu tekstowym Wprowadź imię użytkownika, takich jak **Britta**.
+    b. W polu tekstowym **imię i nazwisko** , wprowadź imię użytkownika, np. **Britta**.
 
-    c. W **nazwisko** polu tekstowym Wprowadź nazwisko użytkownika, takich jak **Simon**.
+    d. W polu tekstowym **nazwisko** Wprowadź nazwisko użytkownika, np. **Simon**.
 
-1. Na **zabezpieczeń** karcie, wykonaj następujące czynności:
+1. Na karcie **zabezpieczenia** wykonaj następujące czynności:
 
-    ![Riskware konfiguracji zabezpieczeń](./media/riskware-tutorial/tutorial_riskware_security.png)
+    ![Potencjalnie szkodliwe oprogramowanie zabezpieczeń konfiguracji](./media/riskware-tutorial/tutorial_riskware_security.png)
 
-    a. W obszarze **uwierzytelniania** zaznacz **uwierzytelniania** trybu, który ma ustawienia, takie jak konfiguracji platformy AZURE dla logowania jednokrotnego.
+    a. W obszarze **uwierzytelnianie** wybierz tryb **uwierzytelniania** , który został skonfigurowany tak, jak konfiguracja platformy Azure na potrzeby logowania jednokrotnego.
 
-    b. W obszarze **szczegóły logowania** sekcji w **identyfikator użytkownika** polu tekstowym wprowadź adres e-mail użytkownika, takich jak `brittasimon@contoso.com`.
+    b. W obszarze **szczegóły logowania** w polu tekstowym **Identyfikator użytkownika** wprowadź adres e-mail użytkownika, taki jak `brittasimon@contoso.com`.
 
-    c. W **hasło** polu tekstowym Wprowadź hasło użytkownika.
+    d. W polu tekstowym **hasło** wprowadź hasło użytkownika.
 
-1. Na **organizacji** karcie, wykonaj następujące czynności:
+1. Na karcie **organizacja** wykonaj następujące czynności:
 
-    ![Konfiguracja Riskware organizacji](./media/riskware-tutorial/tutorial_riskware_org.png)
+    ![Organizacja konfiguracji potencjalnie szkodliwe oprogramowanie](./media/riskware-tutorial/tutorial_riskware_org.png)
 
-    a. Wybierz opcję jako **Level1** organizacji.
+    a. Wybierz opcję jako organizację **Level1** .
 
-    b. W obszarze **podstawowy obszar roboczy osoby** sekcji w **lokalizacji** polu tekstowym wpisz swoją lokalizację.
+    b. W obszarze **obszar roboczy osoby głównej** , w polu tekstowym **Lokalizacja** wpisz swoją lokalizację.
 
-    c. W obszarze **pracowników** zaznacz **stanu** dorywczy, takich jak.
+    d. W obszarze **Pracownik** wybierz pozycję **Stan pracownika** , np.
 
-    d. Kliknij pozycję **Zapisz**.
+    d. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Riskware w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Riskware, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka potencjalnie szkodliwe oprogramowanie w panelu dostępu należy automatycznie zalogować się do potencjalnie szkodliwe oprogramowanie, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

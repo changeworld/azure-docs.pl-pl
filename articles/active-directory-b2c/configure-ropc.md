@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: ca17d049d988b2bc8b60249d99c03f70c555d3fb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679314"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023739"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure AD B2C
 
@@ -25,7 +25,7 @@ Przepływ poświadczeń hasła właściciela zasobu (ROPC) to standardowy przep�
 
 W Azure Active Directory B2C (Azure AD B2C) obsługiwane są następujące opcje:
 
-- **Klient natywny**: interakcja użytkownika podczas uwierzytelniania występuje, gdy kod jest uruchamiany na urządzeniu po stronie użytkownika. Urządzenie może być aplikacją mobilną, która działa w natywnym systemie operacyjnym, takim jak Android lub działa w przeglądarce, takiej jak JavaScript.
+- **Klient natywny**: interakcja użytkownika podczas uwierzytelniania występuje, gdy kod jest uruchamiany na urządzeniu po stronie użytkownika. Urządzenie może być aplikacją mobilną, która działa w natywnym systemie operacyjnym, takim jak Android i iOS.
 - **Publiczny przepływ klienta**: tylko poświadczenia użytkownika zebrane przez aplikację są wysyłane w wywołaniu interfejsu API. Poświadczenia aplikacji nie są wysyłane.
 - **Dodawanie nowych oświadczeń**: zawartość tokenu identyfikatora można zmienić, aby dodać nowe oświadczenia.
 

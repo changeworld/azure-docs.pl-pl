@@ -1,101 +1,101 @@
 ---
-title: Sprzedawcy Insights — często zadawane pytania
-description: Często zadawane pytania dotyczące funkcji sprzedawcy szczegółowe informacje o portalu Cloud Partner.
+title: Często zadawane pytania dotyczące sprzedającego
+description: Często zadawane pytania dotyczące funkcji wglądu w dane sprzedawcy w portal Cloud Partner.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2719b6b47225576f2eadeb5e5b40b3aa7b39444d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 059ec175a48cdcdec6214a6581452ec0536bf566
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943095"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030440"
 ---
-<a name="seller-insights-faq"></a>Sprzedawcy Insights — często zadawane pytania
+<a name="seller-insights-faq"></a>Często zadawane pytania dotyczące sprzedającego
 ===================
 
-Ten artykuł zawiera wskazówki dotyczące typowych procedur użytkownika w ramach i pytania dotyczące usługi Insights sprzedawcy.
+Ten artykuł zawiera wskazówki dotyczące typowych procedur użytkownika w ramach programu oraz pytań dotyczących informacji o sprzedawcy.
 
 
-<a name="find-definitions-for-the-values-in-the-downloaded-transaction-file"></a>Zawiera definicje dla wartości w pliku pobranego transakcji
+<a name="find-definitions-for-the-values-in-the-downloaded-transaction-file"></a>Znajdź definicje wartości w pobranym pliku transakcji
 ------------------------------------------------------------------
 
-Definicje metryk wartości w pliku transakcji znajdują się w artykule [definicje Insights sprzedawcy](./si-insights-definitions-v4.md).
+Definicje wartości metryk w pliku transakcji znajdują się w [definicjach szczegółowych](./si-insights-definitions-v4.md)informacji o sprzedawcy artykułu.
 
 
-<a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Zobacz szczegóły klienta transakcji, dla których zostały I czy została zapłacona
+<a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Zobacz szczegóły klienta transakcji, dla których zostały opłacone
 -------------------------------------------------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan informacje dotyczące wypłat**i Zastosuj filtr, aby wyświetlić tylko wartości "Płatne Out". Pojawi się następujące kolumny zawierające szczegóły klienta: **Nazwa firmy**, **klienta poczty E-mail**, **kraju klienta**, **stanu klienta**, i **kod pocztowy klienta**.
+Po pobraniu transakcji z modułu wypłaty Znajdź kolumnę **status wypłaty**i Zastosuj filtr, aby wyświetlić tylko wartość "płatne". Zostaną wyświetlone następujące kolumny zawierające szczegóły klienta: **Nazwa firmy**, **adres E-mail klienta**, **kraj klienta**, **Stan klienta**i **Kod pocztowy klienta**.
 
 
-<a name="calculate-my-open-accounts-receivable"></a>Oblicz Moje Otwórz odbiorców
+<a name="calculate-my-open-accounts-receivable"></a>Oblicz rozliczenia moich otwartych kont
 -------------------------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan informacje dotyczące wypłat**i Zastosuj filtr, aby wyświetlić tylko wartości "Nadchodzące informacje dotyczące wypłat" i "Nie jest gotowy do informacje dotyczące wypłat." Następnie Suma kolumnę z etykietą **kwoty wypłata (PC)** .
+Po pobraniu transakcji z modułu wypłaty Znajdź kolumnę **status wypłaty**i Zastosuj filtr, aby wyświetlić tylko wartość "nadchodzące wypłaty" i "nie gotowość do wypłaty". Następnie Sumuj kolumnę z etykietą **Kwota wypłaty (komputer)** .
 
 
-<a name="calculate-revenue-by-customer-usage-period"></a>Oblicz przychód według okresu użycia klienta
+<a name="calculate-revenue-by-customer-usage-period"></a>Oblicz przychód według okresu użytkowania przez klienta
 ------------------------------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan transakcji**i wartość "Płatne" filtru.   Dla każdej transakcji wymienionej kolumnę z etykietą **kwoty wypłata (PC)**  reprezentuje zostały zapłaconej kwoty.  Aby oszacować okres użycia skojarzony z transakcją, można użyć kolumny **Data obciążenia**, który jest bliskie zbliżenia ostatni dzień użycia okres, do której stosują się transakcji.
+Po pobraniu transakcji z modułu wypłaty Znajdź kolumnę z etykietą **stan transakcji**i przefiltruj wartość "płatne".   Dla każdej transakcji wymienionej w kolumnie **Kwota wypłaty (komputer)** przedstawia kwotę, która została zapłacona.  Aby oszacować okres użycia związany z transakcją, należy użyć **daty opłaty**kolumny, która jest bliskim przybliżeniu ostatniego dnia użycia dla okresu, do którego jest stosowana transakcja.
 
 
-<a name="calculate-your-bad-debt"></a>Oblicz zadłużenia niewłaściwe
+<a name="calculate-your-bad-debt"></a>Oblicz zły dług
 ---------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **ostateczny stan kolekcji**i Zastosuj filtr tylko do wyświetlania wartości "Write wyłączone." Następnie Suma kolumnę z etykietą **kwoty wypłata (PC)** .
+Po pobraniu transakcji z modułu wypłaty Znajdź w kolumnie etykietę **stan końcowy kolekcji**i Zastosuj filtr, aby wyświetlić tylko wartość "Odpisz". Następnie Sumuj kolumnę z etykietą **Kwota wypłaty (komputer)** .
 
 
-<a name="view-payout-or-customer-contact-information"></a>Wyświetl informacje dotyczące wypłat lub klienta informacje kontaktowe
+<a name="view-payout-or-customer-contact-information"></a>Wyświetlanie wypłat lub informacji kontaktowych klienta
 -------------------------------------------
 
-Zaloguj się jako użytkownik mający rolę "owner" i nie rolę "Współautor". Rolę właściciela, zostaną wyświetlone informacje informacje dotyczące wypłat i klientów. Możesz dowiedzieć się więcej na temat ról użytkownika w artykule [Zarządzanie użytkownikami](./cloud-partner-portal-manage-users.md).
+Zaloguj się jako użytkownik z rolą "Owner", a nie z rolą "Współautor". Tylko rola właściciela zobaczy wypłatę i informacje o kliencie. Więcej informacji o rolach użytkownika można znaleźć w artykule [Zarządzanie użytkownikami](./cloud-partner-portal-manage-users.md).
 
 
-<a name="calculate-my-advance-payouts"></a>Oblicz Moje wypłaty zaawansowane
+<a name="calculate-my-advance-payouts"></a>Oblicz moje wypłaty z góry
 ----------------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **typu transakcji**i Zastosuj filtr, aby wyświetlić tylko wartości "Opłat". Następnie odszukaj kolumnę z etykietą **ostateczny stan kolekcji**i Zastosuj filtr, aby wyświetlić tylko wartości "W toku". Na koniec suma **kwoty wypłata (PC)** kolumn do obliczania postępu wszystkich płatnych użytkownikowi przed kolekcji z klienta.
+Po pobraniu transakcji z modułu wypłaty Znajdź kolumnę z etykietą **Typ transakcji**i Zastosuj filtr, aby wyświetlić tylko wartość "opłata". Następnie zlokalizuj kolumnę z etykietą **stan końcowy kolekcji**i Zastosuj filtr, aby wyświetlić tylko wartość "w toku". Na koniec należy zsumować kolumnę **Kwota wypłaty (komputer)** , aby obliczyć wszystkie zaliczki płatne dla Ciebie przed pobraniem od klienta.
 
 
-<a name="calculate-customer-refunds"></a>Oblicz zwroty klienta
+<a name="calculate-customer-refunds"></a>Obliczanie zwrotów klienta
 --------------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **ostateczny stan kolekcji**i Zastosuj filtr, aby wyświetlić tylko wartości "Zwrot". Suma **dodatkowy kwotę (PC)** kolumn do obliczania zwrotów przetwarzane dla swoich klientów.
+Po pobraniu transakcji z modułu wypłaty Znajdź w kolumnie etykietę **stan końcowy kolekcji**i Zastosuj filtr, aby wyświetlić tylko wartość "zwrot". Aby obliczyć wszystkie zwroty, które zostały przetworzone dla klientów, należy zsumować wartość w kolumnie **opłata (komputer)** .
 
 
-<a name="identify-which-transactions-involved-a-microsoft-channel-partner"></a>Identyfikowanie transakcji związane z partnerem firmy Microsoft kanału
+<a name="identify-which-transactions-involved-a-microsoft-channel-partner"></a>Określ, które transakcje mają być partnerem kanału firmy Microsoft
 ----------------------------------------------------------------
 
-Wszystkie transakcje w kolumnie **typu licencji Azure** filtrowania do wyświetlania wartości "Przedsiębiorstwa za pośrednictwem odsprzedawcy" i "Cloud Solution Provider" obejmują kanału partnera firmy Microsoft. Aby uzyskać więcej informacji dotyczących partnera, możesz znaleźć ich **nazwa odsprzedawcy** i **adres E-mail** pobierania modułu informacje dotyczące wypłat i pobieranie modułu klienta.
+Wszystkie transakcje w kolumnie **Typ licencji platformy Azure** , które są filtrowane w celu wyświetlenia wartości "przedsiębiorstwo przez odsprzedawcę" i "dostawca rozwiązań w chmurze" obejmują partnera usługi Microsoft Channel. Aby uzyskać więcej informacji na temat partnera, możesz znaleźć **nazwę odsprzedawcy** i **adres e-mail odsprzedawcy** w ramach pobierania modułu wypłaty i pobrać moduł klienta.
 
 
-<a name="identify-trial-usage-and-trial-conversions"></a>Identyfikowanie próbnego użycia i konwersji z wersji próbnej
+<a name="identify-trial-usage-and-trial-conversions"></a>Identyfikowanie użycia wersji próbnej i konwersji wersji próbnej
 ------------------------------------------
 
-Kolejność, użycia i informacje dotyczące wypłat modułu pliki do pobrania zawierają teraz **wersji próbnej Data zakończenia** ułatwiające zrozumienie, kiedy okres próbny zakończył się dla tej konkretnej kolejności, jeśli ma to zastosowanie. Aby zobaczyć próbnego użycia i zamówienia, zlokalizuj **typ rozliczeń jednostki SKU** kolumny w plikach do pobrania i Zastosuj filtr, aby wyświetlić tylko wartości "Wersja próbna." Aby wyświetlić konwersji z wersji próbnej, zlokalizuj **wersji próbnej Data zakończenia** kolumny w plikach do pobrania i Zastosuj porządkuje filtru w celu wyświetlenia tylko, gdy **wersji próbnej Data zakończenia** osiągnęła bieżącą datę i **anulować data** kolumna jest pusta lub późniejsza niż **Data końcowa wersja próbna**.
+Pobrania modułu zamówienie, użycie i wypłata zawierają teraz **datę zakończenia** okresu próbnego, aby pomóc zrozumieć, kiedy okres próbny zakończył się w danej kolejności, jeśli ma to zastosowanie. Aby zobaczyć użycie wersji próbnej i zamówień, Znajdź kolumnę **Typ rozliczenia jednostki SKU** w plikach do pobrania i Zastosuj filtr, aby wyświetlić tylko wartość "wersja próbna". Aby wyświetlić konwersje wersji próbnej, odszukaj kolumnę **Data zakończenia okresu próbnego** w plikach do pobrania i Zastosuj filtr, aby wyświetlić tylko zamówienia, gdy **Data zakończenia okresu próbnego** przypada na datę dzisiejszą, a kolumna " **Data anulowania** " jest pusta lub późniejsza niż **Data zakończenia okresu próbnego**.
 
 
-<a name="when-is-my-monthly-payout-calculated"></a>Kiedy są obliczane Moje miesięczne informacje dotyczące wypłat
+<a name="when-is-my-monthly-payout-calculated"></a>Kiedy naliczana jest Miesięczna wypłata
 ------------------------------------
 
-Twoje wypłaty wydania do Ciebie przez 15 dnia każdego miesiąca dla wszystkich kwot gotowe, aby uzyskać informacje dotyczące wypłat przez ostatni dzień poprzedniego miesiąca kalendarzowego. Trzeciego dnia miesiąca, firma Microsoft obliczania kwoty wypłata poprzedniego miesiąca i zaktualizuj wszystkie transakcje odpowiednie opłaty w pobranego pliku z "Nadchodzące informacje dotyczące wypłat" w **stan informacje dotyczące wypłat** kolumny. Tych transakcji pozostanie w tym stanie do momentu żądanie płatności są wysyłane do konta bankowego co ich **stan informacje dotyczące wypłat** zostanie zaktualizowany do "Płatnych limit" i "Informacje dotyczące wypłat daty" zostanie zaktualizowane w celu wyświetlenia daty, możemy przesłane żądanie płatności bank.
+Twoje wypłaty są wystawiane przez 15. każdego miesiąca na wszystkie kwoty gotowe do wypłaty przez ostatni dzień kalendarzowy poprzedniego miesiąca. W trzecim dniu miesiąca firma Microsoft obliczy kwotę wypłaty w poprzednim miesiącu i zaktualizuje wszystkie stosowne transakcje opłat w ramach pobierania o "nadchodzącej wypłatach" w kolumnie **stan wypłaty** . Te transakcje będą znajdować się w tym stanie do momentu wysłania żądania płatności do konta bankowego, po upływie którego **stan wypłaty** zostanie zaktualizowany do "płatne" i "data wypłaty" zostanie zaktualizowana o datę przesłania żądania płatności do rachunk.
 
 
-<a name="calculate-customer-acquisition-and-loss"></a>Obliczanie zdobywanie klientów i strat
+<a name="calculate-customer-acquisition-and-loss"></a>Obliczanie pozyskania i utraty klienta
 ---------------------------------------
 
-Możesz zobaczyć datę, kiedy klienta najpierw zakupionych w jednej z ofert, znajdując **nabyte data** kolumny do pobrania klient. Podobnie, można zobaczyć datę, po upływie którego już nie mieli oni dowolnej oferty, które zostały opublikowane przez Ciebie, znajdując **Data utraty** kolumny do pobrania klient.
+Zobaczysz datę, kiedy klient kupił jedną z ofert, przenosząc kolumnę **Data pozyskaną** w pobraniu przez klienta. Podobnie, można zobaczyć datę, po której nie ma już żadnej oferty opublikowanej przez użytkownika przez znalezienie kolumny **Data utracony** w pobraniu przez klienta.
 
 
-<a name="finding-more-help"></a>Znajdowania dodatkowej pomocy
+<a name="finding-more-help"></a>Znajdowanie większej pomocy
 -----------------
 
-- [Definicje Insights sprzedawcy](./si-insights-definitions-v4.md) — zawiera definicje metryki i dane
+- [Definicje](./si-insights-definitions-v4.md) informacji o sprzedawcy — Znajdowanie definicji metryk i danych
 
-- [Wprowadzenie do usługi Insights sprzedawcy](./si-getting-started.md) — wprowadzenie do funkcji sprzedawcy szczegółowych informacji.
+- Wprowadzenie do usługi [Informacje o sprzedawcy](./si-getting-started.md) — wprowadzenie do funkcji informacje o sprzedawcy.
 

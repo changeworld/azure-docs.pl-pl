@@ -1,6 +1,6 @@
 ---
-title: Obsługiwana wersja testowa | Portal Azure Marketplace
-description: Jak skonfigurować Zachowaj wersję testową hostowane witryny Marketplace
+title: Hostowany dysk testowy | Portal Azure Marketplace
+description: Jak skonfigurować dysk testowy hostowany w portalu Marketplace
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
@@ -8,48 +8,48 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: b8f9ca96ac9386037460ad5c1c9f56fe7b9c2e18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67d8421b2e545c951dcbc3280a306514e4b14897
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939997"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030057"
 ---
 # <a name="hosted-test-drive"></a>Hostowana wersja testowa
 
-Testowej hostowanych eliminuje złożoność konfiguracji w ramach hostingu firmy Microsoft i obsługa usługi przeprowadzające użytkownika wersji testowej aprowizacji i cofania aprowizacji. Ten artykuł jest przeznaczony dla wydawców z opisem oferty w usłudze AppSource lub tworzysz nową i chcesz zaoferować wersję testową hostowanej, która łączy się z usługą Dynamics 365 for Customer Engagement, Dynamics 365 for Finance oraz Operations lub Dynamics 365 Business Central wystąpienie.
+Hostowany dysk testowy eliminuje złożoność instalacji przez hosting firmy Microsoft i utrzymuje usługę, która przeprowadza testowanie i cofa obsługę administracyjną użytkowników. Ten artykuł jest przeznaczony dla wydawców, którzy mają swoją ofertę na AppSource lub kompilują nowe i chcą oferować hostowaną stację testową, która łączy się z usługą Dynamics 365 dla zaangażowania klienta, Dynamics 365 dla finansów i operacji, lub Dynamics 365 Business Central np.
 
-## <a name="how-to-publish-a-test-drive"></a>Jak opublikować wersję testową
+## <a name="how-to-publish-a-test-drive"></a>Jak opublikować dysk testowy
 
-Przejdź do istniejącej oferty, lub Utwórz nową ofertę.
+Przejdź do istniejącej oferty lub Utwórz nową ofertę.
 
-Z menu po stronie, wybierz opcję wersji testowej.
+Wybierz opcję dysk testowy z menu po stronie.
 
-Wybierz \'tak\' dla \'włączyć wersję testową\' opcji.
+Wybierz opcję \'Yes @ no__t-1 dla \'Enable test @ no__t-3.
 
-Podaj następujące pola \'szczegóły\' sekcji.
+Podaj następujące pola w sekcji \'Details @ no__t-1.
 
-- **Opis**: Zawiera omówienie programu wersji testowej. Ten tekst jest wyświetlany użytkownikowi podczas wersji testowej jest aprowizowana. To pole obsługuje HTML, jeśli chcesz zapewnić sformatowaną zawartość.
-- **Podręcznik użytkownika**: Przekaż Podręcznik użytkownika szczegółowe (plik PDF typu), która umożliwia użytkownikom wersji testowej zrozumieć sposób korzystania z aplikacji.
-- **Testowanie dysku demonstracyjny materiał wideo dotyczący**: Opcjonalnie Przekaż film wideo przedstawiający aplikację.
+- **Opis**: Podaj przegląd dysku testowego. Ten tekst będzie widoczny dla użytkownika podczas aprowizacji dysku testowego. To pole obsługuje kod HTML, jeśli chcesz wprowadzić sformatowaną zawartość.
+- **Podręcznik użytkownika**: Przekaż szczegółowy podręcznik użytkownika (plik typu. PDF), który pomaga testować, jak użytkownicy mogą dowiedzieć się, jak korzystać z aplikacji.
+- **Film wideo z pokazem dla wersji testowej**: Opcjonalnie Przekaż wideo, które prezentują Twoją aplikację.
 
-AppSource Udziel uprawnień do aprowizacja i anulowanie aprowizacji użytkowników wersji testowej w Twojej dzierżawie, korzystając z instrukcji znajdujących się [tutaj](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md).
+Udziel uprawnienia AppSource do aprowizacji i anulowania aprowizacji użytkowników w dzierżawie przy użyciu instrukcji znajdujących się w [tym miejscu](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md).
 
-W tym kroku spowoduje wygenerowanie \'identyfikator aplikacji usługi Azure AD\' i \'klucz aplikacji usługi Azure AD\' wartości wymienione poniżej.
+W tym kroku zostanie wygenerowany \'Azure usługi AD identyfikator @ no__t-1 i \'Azure AD App Key @ no__t-3 wartości wymienione poniżej.
 
-Podaj następujące pola \'konfiguracji technicznej\' sekcji:
+Podaj następujące pola w sekcji \'Technical Configuration @ no__t-1:
 
-- **Typ wersji testowej**: Wybierz \'Hosted firmy Microsoft (np. Dynamics 365 for Customer Engagement) "opcji. Oznacza to, że firma Microsoft hosta i obsługa usługi przeprowadzające użytkownika wersji testowej aprowizacji i cofania aprowizacji.
-- **Wersji testowych maksymalnej liczby równoczesnych**: Ustawienie to pole liczby równoczesnych użytkowników, które mogą mieć aktywne wersji testowej w dowolnym czasie. Każdy użytkownik zużyje licencją Dynamics podczas ich wersji testowej jest aktywny, więc należy upewnić się, że masz co najmniej następującą liczbę licencji Dynamics dostępne dla użytkowników wersji testowej. Zalecanej wartości wynoszącej 3 – 5.
-- **Dysk czas trwania testu (godziny)** : Ustaw to pole do liczby godzin wersji testowej zostanie uaktywniona dla użytkowników. Po tym wiele godzin użytkownik będzie można anulować aprowizację z dzierżawy. Zalecana wartość 2 – 24 godzin w zależności od złożoności aplikacji. Użytkownik może zażądać zawsze innej wersji testowej, gdyby zabrakło czasu i chcesz ponownie uzyskać dostęp w wersji testowej.
-- **Adres URL wystąpienia**: Podaj adres URL, który użytkownika wersji testowej początkowo nastąpi przejście po uruchomieniu wersji testowej. Zazwyczaj jest to adres URL wystąpienia usługi Dynamics 365, która aplikacja ma i przykładowe dane są zainstalowane na urządzeniu. Przykładowa wartość: https:\//testdrive.crm.dynamics.com
-- **Identyfikator dzierżawy usługi Azure AD**: Podaj identyfikator dzierżawy platformy Azure dla wystąpienia usługi Dynamics 365. Do pobierania tej wartości, zaloguj się do witryny Azure portal i przejdź do \'usługi Azure Active Directory\'  - \> wybierz właściwości z menu bloku -\> skopiuj nazwę katalogu. Przykładowa wartość: 72f988bf-86f1-41af-91ab-2d7cd0111234
-- **Identyfikator aplikacji w usłudze Azure AD**: Identyfikator aplikacji usługi Azure AD został utworzony w kroku 7. \ Przykładowa wartość: 53852862-a2ae-4e43-9461-faa49650a096
-- **Klucz aplikacji w usłudze Azure AD**: Tajny aplikacji usługi AD Azure utworzone w kroku 7. \ Przykładowa wartość: IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
-- **Nazwa dzierżawy usługi Azure AD**: Podaj nazwę dzierżawy platformy Azure dla wystąpienia usługi Dynamics 365. Użyj formatu \<tenantname.\> onmicrosoft.com. Przykładowa wartość: testdrive.onmicrosoft.com
-- **Adres URL interfejsu API sieci Web wystąpienia**: Podaj adres URL interfejsu API sieci Web dla wystąpienia usługi Dynamics 365. Tę wartość można pobrać, logując się do swojego wystąpienia programu Microsoft Dynamics 365 i przechodząc do ustawienia -\> dostosowania —\> zasoby dla deweloperów —\> wystąpienia interfejsu API sieci Web (kopia tego adresu URL). Przykładowa wartość: https:\//testdrive.crm.dynamics.com/api/data/v9.0 
-- **Nazwa roli**: Podaj nazwę roli zabezpieczeń niestandardowej Dynamics 365 utworzone dla wersji testowej. Jest to rola, która zostanie przypisana do użytkowników podczas ich wersji testowej. Przykładowa wartość: testdriverole
+- **Typ dysku testowego**: wybierz opcję \'Microsoft Hosted (przykład Dynamics 365 dla zaangażowania klienta). Oznacza to, że firma Microsoft będzie hostować i obsługiwać usługę, która przeprowadza testowanie i cofa obsługę administracyjną użytkowników.
+- **Maksymalna liczba współbieżnych dysków testowych**: Ustaw to pole na liczbę równoczesnych użytkowników, którzy mogą mieć aktywny dysk testowy w danym momencie. Każdy użytkownik będzie korzystał z licencji usługi Dynamics, gdy ich dysk testowy jest aktywny, więc należy upewnić się, że masz co najmniej następującą liczbę licencji usługi Dynamics dostępnych dla użytkowników na dysku testowym. Zalecana wartość 3-5.
+- **Czas trwania dysku testowego (w godzinach)** : Ustaw dla tego pola liczbę godzin, przez które użytkownicy będą aktywni. Po upływie tylu godzin użytkownik zostanie wydzierżawiony z dzierżawy. Zalecana wartość 2-24 godzin w zależności od złożoności aplikacji. Użytkownik może zawsze zażądać innego dysku testowego, jeśli są one nieaktualne i chcą ponownie uzyskać dostęp do dysku testowego.
+- **Adres URL wystąpienia**: Podaj adres URL, do którego użytkownik na dysku testowym będzie początkowo przechodził po uruchomieniu testu. Jest to zazwyczaj adres URL wystąpienia programu Dynamics 365, na którym zainstalowano aplikację i przykładowe dane. Przykładowa wartość: https: \//testdrive. CRM. Dynamics. com
+- **Identyfikator dzierżawy usługi Azure AD**: podaj identyfikator dzierżawy platformy Azure dla wystąpienia usługi Dynamics 365. Aby pobrać tę wartość, zaloguj się do Azure Portal i przejdź do \'Azure Active Directory @ no__t-1 @ no__t-2 @ no__t-3 wybierz właściwości z bloku menu-\> Skopiuj identyfikator katalogu. Przykładowa wartość: 72f988bf-86f1-41AF-91ab-2d7cd0111234
+- **Identyfikator aplikacja usługi Azure AD**: Identyfikator aplikacja usługi Azure AD utworzonego w kroku 7. \ przykładowa wartość: 53852862-a2ae-4e43-9461-faa49650a096
+- **Klucz aplikacja usługi Azure AD**: wpis tajny dla aplikacja usługi Azure AD utworzonego w kroku 7. \ przykładowa wartość: IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk =
+- **Nazwa dzierżawy usługi Azure AD**: Podaj nazwę dzierżawy platformy Azure dla wystąpienia usługi Dynamics 365. Użyj formatu \<tenantname. \>onmicrosoft.com. Przykładowa wartość: testdrive.onmicrosoft.com
+- **Adres URL internetowego interfejsu API wystąpienia**: Podaj adres URL internetowego interfejsu API dla wystąpienia usługi Dynamics 365. Możesz pobrać tę wartość, logując się do wystąpienia systemu Microsoft Dynamics 365 i przechodząc do ustawienia-\> dostosowania — \> Developer Resources-\> wystąpienie internetowego interfejsu API (Skopiuj ten adres URL). Przykładowa wartość: https: \//testdrive. CRM. Dynamics. com/API/Data/v 9.0 
+- **Nazwa roli**: Podaj nazwę niestandardowej roli zabezpieczeń Dynamics 365 utworzonej dla dysku testowego. Jest to rola, która zostanie przypisana do użytkowników na ich dysku testowym. Przykładowa wartość: testdriverole
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Gdy będzie gotowe **publikowania** oferty, po aplikacji został przekazany certyfikacji, będziesz mieć **Podgląd** oferty. Uruchom wersję testową w interfejsie użytkownika, a następnie sprawdź, czy wersji testowych działają prawidłowo. Gdy masz doświadczenie z ofertą użytkownika (wersja zapoznawcza), nadszedł czas na **emisji na żywo!**
+Gdy aplikacja jest gotowa do **opublikowania** oferty, po przekazaniu certyfikatu przez aplikację uzyskasz **Podgląd** oferty. Uruchom test w interfejsie użytkownika i sprawdź, czy dyski testowe działają prawidłowo. Gdy będziesz mieć doświadczenie z ofertą wersji zapoznawczej, teraz możesz **przejść na żywo** .

@@ -1,35 +1,35 @@
 ---
-title: Dzienniki wolnych zapytań dostępu w usłudze Azure Database for MySQL przy użyciu wiersza polecenia platformy Azure
-description: W tym artykule opisano, jak dostęp do dzienników wolnych zapytań w usłudze Azure Database for MySQL przy użyciu wiersza polecenia platformy Azure.
+title: Uzyskiwanie dostępu do dzienników wolnych zapytań w Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure
+description: W tym artykule opisano, jak uzyskać dostęp do dzienników wolnych zapytań w Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: e6d25a4d8b470580626cab4a84f9d912a3f79f75
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0ab4162d11642ec7df53040bd744711002227497
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612642"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030639"
 ---
-# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurowanie i dostęp do dzienników wolnych zapytań przy użyciu wiersza polecenia platformy Azure
-Azure Database for MySQL — dzienniki wolnych zapytań można pobrać przy użyciu wiersza polecenia platformy Azure, narzędzie wiersza polecenia platformy Azure.
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurowanie i uzyskiwanie dostępu do dzienników wolnych zapytań za pomocą interfejsu wiersza polecenia platformy Azure
+Możesz pobrać Azure Database for MySQL dzienników wolnych zapytań za pomocą interfejsu wiersza polecenia platformy Azure, narzędzia wiersza poleceń platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do wykonania kroków w tym przewodniku, potrzebne są:
-- [Azure Database dla serwera MySQL](quickstart-create-mysql-server-database-using-azure-cli.md)
-- [Wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lub usługi Azure Cloud Shell w przeglądarce
+Aby krokowo poprowadzić ten przewodnik, musisz:
+- [Serwer Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-cli.md)
+- [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lub Azure Cloud Shell w przeglądarce
 
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania
-Można skonfigurować serwer do dostępu do dzienników wolnych zapytań MySQL, wykonując następujące czynności:
-1. Włącz rejestrowanie wolnych zapytań, ustawiając **powolne\_zapytania\_dziennika** parametru na wartość ON.
-2. Dostosuj inne parametry, takie jak **długie\_zapytania\_czasu** i **dziennika\_powolne\_administratora\_instrukcji**.
+Serwer można skonfigurować tak, aby mógł uzyskać dostęp do dziennika wolnych zapytań programu MySQL, wykonując następujące czynności:
+1. Włącz rejestrowanie wolnych zapytań, ustawiając parametr **"wolno @ no__t-1query @ no__t-2log** " na wartość włączone.
+2. Dostosuj inne parametry, takie jak **Long @ no__t-1query @ no__t-2time** i **log @ no__t-4slow @ no__t-5admin @ no__t-6statements**.
 
-Aby dowiedzieć się, jak można ustawić wartości tych parametrów, za pomocą wiersza polecenia platformy Azure, zobacz [jak konfigurować parametry serwera](howto-configure-server-parameters-using-cli.md).
+Aby dowiedzieć się, jak ustawić wartości tych parametrów za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [How to configure Server Parameters](howto-configure-server-parameters-using-cli.md).
 
-Na przykład następujące polecenie interfejsu wiersza polecenia platformy włącza w dzienniku wolnych zapytań, ustawia długi czas wykonywania zapytania na 10 sekund i następnie wyłącza rejestrowanie instrukcji powolne administratora. Na koniec Wyświetla listę opcji konfiguracji do przejrzenia.
+Na przykład następujące polecenie interfejsu wiersza polecenia włącza dziennik wolnych zapytań, ustawia długi czas zapytania na 10 sekund, a następnie wyłącza rejestrowanie powolnej instrukcji administratora. Na koniec wyświetla listę opcji konfiguracji dla przeglądu.
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 az mysql server configuration set --name long_query_time --resource-group myresourcegroup --server mydemoserver --value 10
@@ -37,20 +37,20 @@ az mysql server configuration set --name log_slow_admin_statements --resource-gr
 az mysql server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="list-logs-for-azure-database-for-mysql-server"></a>Dzienniki listy dla usługi Azure Database dla serwera MySQL
-Aby wyświetlić listę plików dziennika dostępnych wolnych zapytań serwera, uruchom [az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) polecenia.
+## <a name="list-logs-for-azure-database-for-mysql-server"></a>Wyświetlanie listy dzienników dla Azure Database for MySQL Server
+Aby wyświetlić listę dostępnych wolnych plików dziennika zapytań dla serwera, uruchom polecenie [AZ MySQL Server-Logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) .
 
-Możesz wyświetlić listę plików dziennika dla serwera **mydemoserver.mysql.database.azure.com** w grupie zasobów **myresourcegroup**. Następnie przekierowanie do listy plików dziennika do pliku tekstowego o nazwie **dziennika\_pliki\_lista.txt**.
+Możesz wyświetlić listę plików dziennika dla serwera **mydemoserver.MySQL.Database.Azure.com** w **obszarze Grupa zasobów**. Następnie należy skierować listę plików dziennika do pliku tekstowego o nazwie **log @ no__t-1files\_list.txt**.
 ```azurecli-interactive
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>Pobierz dzienniki z serwera
-Za pomocą [Pobierz az mysql server-logs](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) polecenia, możesz pobrać osobnych plikach dziennika dla serwera. 
+Za pomocą polecenia [AZ MySQL Server-Logs Download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) można pobrać pojedyncze pliki dziennika dla serwera. 
 
-Skorzystaj z następującego przykładu, aby pobrać określonego pliku dziennika dla serwera **mydemoserver.mysql.database.azure.com** w grupie zasobów **myresourcegroup** do środowiska lokalnego.
+Użyj poniższego przykładu, aby pobrać określony plik dziennika dla serwera **mydemoserver.MySQL.Database.Azure.com** w **obszarze Grupa zasobów zasobu do** środowiska lokalnego.
 ```azurecli-interactive
 az mysql server-logs download --name 20170414-mydemoserver-mysql.log --resource-group myresourcegroup --server mydemoserver
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-- Dowiedz się więcej o [wolnych zapytań dzienników w usłudze Azure Database for MySQL](concepts-server-logs.md).
+- Dowiedz się więcej o [wolnych dziennikach zapytań w Azure Database for MySQL](concepts-server-logs.md).

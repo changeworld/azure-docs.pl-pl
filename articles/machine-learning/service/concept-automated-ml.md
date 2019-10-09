@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: e9bc0cf3ab0d168a55ab04913bdc71eed5c5fced
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
-ms.translationtype: HT
+ms.openlocfilehash: e80d79c16b0748e25e549365001990fb014b5f14
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001235"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030542"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczne Uczenie maszynowe?
 
@@ -37,13 +37,12 @@ Analitycy danych, analitykowie i deweloperzy w różnych branżach mogą używa�
 + Korzystanie z najlepszych rozwiązań dotyczących analizy danych
 + Zapewnianie problemu Agile — Rozwiązywanie problemów
 
-Typowe przypadki użycia:
-+ [Wykrywanie oszustw](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)
-+ [Przewidywania marketingowe](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing/auto-ml-classification-bank-marketing.ipynb)
-+ [Prognozowanie popytu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-+ [Prognozowanie sprzedaży](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)
-+ [Przewidywania wydajności](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance/auto-ml-regression-hardware-performance.ipynb)
-+ [Przewidywanie trwałości materiału](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-concrete-strength/auto-ml-regression-concrete-strength.ipynb)
+W poniższej tabeli przedstawiono typowe zautomatyzowane przypadki użycia. 
+
+Klasyfikacja| Ubytk | Prognozowanie szeregów czasowych
+---|---|---
+[Wykrywanie oszustw](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)|[Prognoza wydajności procesora CPU](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance/auto-ml-regression-hardware-performance.ipynb) |[Prognozowanie popytu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
+[Przewidywania marketingowe](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing/auto-ml-classification-bank-marketing.ipynb)|[Przewidywanie trwałości materiału](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-concrete-strength/auto-ml-regression-concrete-strength.ipynb)|[Prognozowanie sprzedaży](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)
 
 ## <a name="how-automated-ml-works"></a>Jak działa zautomatyzowany ML
 
@@ -162,7 +161,7 @@ Za pomocą Azure Machine Learning można użyć zautomatyzowanej ML do skompilow
 
 Zautomatyzowana ML jest również dostępna w innych rozwiązaniach firmy Microsoft, takich jak:
 
-|Integracji|Opis|
+|Integracje|Opis|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatyczny wybór modelu i szkolenia w aplikacjach .NET przy użyciu programu Visual Studio i Visual Studio Code ze ML.NET zautomatyzowanej ML (wersja zapoznawcza).|
 |[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Równolegle Skaluj swoje zautomatyzowane zadania szkoleniowe dotyczące platformy Spark w klastrach usługi HDInsight.|

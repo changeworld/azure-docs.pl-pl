@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: d86976ad191ffffa343ad7a94b8171759ad102c3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 9a564bf7f633903c58a5719327216baee2df6550
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338353"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026157"
 ---
 Udostępniona Galeria obrazów to usługa, która ułatwia tworzenie struktury i organizacji na całym zarządzanym obrazie. Udostępnione Galerie obrazów zapewniają następujące:
 
@@ -31,7 +31,7 @@ Jeśli masz dużą liczbę zarządzanych obrazów, które chcesz zachować i chc
 
 Funkcja galerii obrazów udostępnionych ma wiele typów zasobów:
 
-| Resource | Opis|
+| Zasób | Opis|
 |----------|------------|
 | **Obraz zarządzany** | Podstawowy obraz, który może być używany samodzielnie lub do tworzenia **wersji obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie uogólnionych maszyn wirtualnych. Obraz zarządzany jest specjalnym typem dysku VHD, który może służyć do tworzenia wielu maszyn wirtualnych i może być teraz używany do utworzenia wersji obrazu udostępnionego. |
 | **Galeria obrazów** | Podobnie jak w przypadku portalu Azure Marketplace, **Galeria obrazów** jest repozytorium do zarządzania i udostępniania obrazów, ale ty kontrolujesz, kto ma dostęp. |
@@ -40,19 +40,17 @@ Funkcja galerii obrazów udostępnionych ma wiele typów zasobów:
 
 <br>
 
-
 ![Ilustracja przedstawiająca sposób, w jaki można mieć wiele wersji obrazu w galerii](./media/shared-image-galleries/shared-image-gallery.png)
 
-## <a name="image-definitions"></a>Definicje obrazów
+## <a name="image-definitions"></a>Definicje obrazu
 
 Definicje obrazów są logiczną grupą dla wersji obrazu. Definicja obrazu zawiera informacje na temat przyczyny utworzenia obrazu, jego systemu operacyjnego oraz informacji o korzystaniu z obrazu. Definicja obrazu jest taka sama jak w przypadku planu dla wszystkich szczegółów dotyczących tworzenia określonego obrazu. Nie można wdrożyć maszyny wirtualnej na podstawie definicji obrazu, ale z wersji obrazu utworzonej na podstawie definicji.
 
-
 Istnieją trzy parametry dla każdej definicji obrazu, które są używane w połączeniu **wydawcy**, **oferty** i **jednostki SKU**. Są one używane do znajdowania konkretnej definicji obrazu. Możesz mieć wersje obrazów, które współdzielą jeden lub dwa, ale nie wszystkie trzy wartości.  Na przykład poniżej przedstawiono trzy definicje obrazów i ich wartości:
 
-|Definicja obrazu|Wydawca|Oferta|Numer SKU|
+|Definicja obrazu|Publisher|Oferta|Jednostka SKU|
 |---|---|---|---|
-|myImage1|Contoso|Finanse|Zaplecze|
+|myImage1|Contoso|Finanse|Danych|
 |myImage2|Contoso|Finanse|Frontonu|
 |myImage3|Testowanie|Finanse|Frontonu|
 
@@ -70,25 +68,21 @@ Poniżej znajdują się inne parametry, które można ustawić w definicji obraz
 * Minimalne i maksymalne zalecenia dotyczące vCPU i pamięci — Jeśli obraz ma zalecenia vCPU i pamięci, możesz dołączyć te informacje do definicji obrazu.
 * Niedozwolone typy dysków — można podać informacje o wymaganiach dotyczących magazynu dla maszyny wirtualnej. Na przykład jeśli obraz nie jest odpowiedni dla standardowych dysków DYSKowych, należy dodać je do listy nie Zezwalaj.
 
-
 ## <a name="regional-support"></a>Obsługa regionalna
 
 Regiony źródłowe są wymienione w poniższej tabeli. Wszystkie regiony publiczne mogą być regionami docelowymi, ale w celu replikowania do Australii Środkowej i Australii środkowej 2 trzeba mieć subskrypcję listy dozwolonych. Aby zażądać listy dozwolonych, przejdź do: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-
 | Regiony źródłowe |
 |---------------------|-----------------|------------------|-----------------|
-| Australia Środkowa   | Central US EUAP | Korea Środkowa    | Środkowo-zachodnie stany USA |
+| Australia Środkowa   | Środkowe stany USA — EUAP | Korea Środkowa    | Zachodnio-środkowe stany USA |
 | Australia Środkowa 2 | Azja Wschodnia       | Korea Południowa      | Europa Zachodnia     |
-| Australia Wschodnia      | East US         | Środkowo-północne stany USA | Indie Zachodnie      |
+| Australia Wschodnia      | Wschodnie stany USA         | Północno-środkowe stany USA | Indie Zachodnie      |
 | Australia Południowo-Wschodnia | Wschodnie stany USA 2       | Europa Północna     | Zachodnie stany USA         |
-| Brazylia Południowa        | East US 2 EUAP  | Środkowo-południowe stany USA | Zachodnie stany USA 2       |
+| Brazylia Południowa        | Wschodnie stany USA 2 — EUAP  | Południowo-środkowe stany USA | Zachodnie stany USA 2       |
 | Kanada Środkowa      | Francja Środkowa  | Indie Południowe      | Chiny Wschodnie      |
-| Kanada Wschodnia         | Francja Południowa    | Azja Południowo-Wschodnia   | Chiny Wschodnie 2    |
+| Kanada Wschodnia         | Francja Południowa    | Azja Południowo-wschodnia   | Chiny Wschodnie 2    |
 | Indie Środkowe       | Japonia Wschodnia      | Południowe Zjednoczone Królestwo         | Chiny Północne     |
 | Środkowe stany USA          | Japonia Zachodnia      | Zachodnie Zjednoczone Królestwo          | Chiny Północne 2   |
-
-
 
 ## <a name="limits"></a>Limity 
 
@@ -99,10 +93,8 @@ Istnieją limity dla każdej subskrypcji dotyczące wdrażania zasobów przy uż
 
 Aby uzyskać więcej informacji, zobacz [Sprawdzanie użycia zasobów względem limitów](https://docs.microsoft.com/azure/networking/check-usage-against-limits) na potrzeby przykładów sprawdzania bieżącego użycia.
  
-
 ## <a name="scaling"></a>Skalowanie
 Udostępniona Galeria obrazów pozwala określić liczbę replik, które mają być przechowywane na platformie Azure. Pomaga to w scenariuszach wdrażania wielu maszyn wirtualnych, ponieważ wdrożenia maszyn wirtualnych można rozmieścić w różnych replikach, co zmniejsza prawdopodobieństwo ograniczenia przetwarzania wystąpienia z powodu przeciążenia pojedynczej repliki.
-
 
 Korzystając z galerii obrazów udostępnionych, można teraz wdrożyć do 1 000 wystąpień maszyn wirtualnych w zestawie skalowania maszyn wirtualnych (do maksymalnie 600 z obrazami zarządzanymi). Repliki obrazów zapewniają lepszą wydajność, niezawodność i spójność wdrożenia.  Można ustawić inną liczbę replik w każdym regionie docelowym na podstawie potrzeb skali dla regionu. Ponieważ każda replika to głęboka kopia obrazu, to ułatwia skalowanie wdrożeń liniowo z każdą dodatkową repliką. Wiemy, że nie ma żadnych dwóch obrazów ani regionów, poniżej przedstawiono ogólne wytyczne dotyczące korzystania z replik w regionie:
 
@@ -111,10 +103,7 @@ Korzystając z galerii obrazów udostępnionych, można teraz wdrożyć do 1 000
 
 Zawsze zalecamy przeprowadzenie aprowizacji liczby replik ze względu na takie czynniki jak rozmiar obrazu, zawartość i typ systemu operacyjnego.
 
-
 ![Ilustracja przedstawiająca sposób skalowania obrazów](./media/shared-image-galleries/scaling.png)
-
-
 
 ## <a name="make-your-images-highly-available"></a>Zapewnianie wysokiej dostępności obrazów
 
@@ -124,7 +113,6 @@ Możesz również wybrać typ konta dla każdego regionu docelowego. Domyślnym 
 
 ![Ilustracja przedstawiająca ZRS](./media/shared-image-galleries/zrs.png)
 
-
 ## <a name="replication"></a>Replikacja
 Udostępniona Galeria obrazów umożliwia również automatyczne replikowanie obrazów do innych regionów platformy Azure. Każda udostępniona wersja obrazu może być replikowana do różnych regionów, w zależności od tego, co jest sensowne dla Twojej organizacji. Przykładem jest zawsze replikowanie najnowszego obrazu w wielu regionach, a wszystkie starsze wersje są dostępne tylko w 1 regionie. Może to pomóc w zapisaniu kosztów magazynu dla udostępnionych wersji obrazu. 
 
@@ -132,15 +120,14 @@ Regiony, w których jest replikowana wersja udostępnionego obrazu, mogą zosta�
 
 ![Ilustracja przedstawiająca sposób replikowania obrazów](./media/shared-image-galleries/replication.png)
 
-
-## <a name="access"></a>Access
+## <a name="access"></a>Dostęp
 
 Jako Galeria obrazów udostępnionych, definicja obrazu i wersja obrazu są wszystkie zasoby, które można udostępniać przy użyciu wbudowanych kontrolek kontroli RBAC platformy Azure. Za pomocą RBAC można udostępniać te zasoby innym użytkownikom, podmiotom usługi i grupom. Możesz nawet udostępnić dostęp osobom spoza dzierżawy, w ramach której zostały utworzone. Gdy użytkownik ma dostęp do udostępnionej wersji obrazu, może wdrożyć maszynę wirtualną lub zestaw skalowania maszyn wirtualnych.  Oto macierz udostępniania, która pomaga zrozumieć, do czego użytkownik uzyskuje dostęp:
 
-| Udostępnione użytkownikowi     | Shared Image Gallery | Definicja obrazu | Wersja graficzna |
+| Udostępnione użytkownikowi     | Galeria obrazów udostępnionych | Definicja obrazu | Wersja obrazu |
 |----------------------|----------------------|--------------|----------------------|
-| Shared Image Gallery | Tak                  | Yes          | Tak                  |
-| Definicja obrazu     | Nie                   | Yes          | Tak                  |
+| Galeria obrazów udostępnionych | Tak                  | Tak          | Tak                  |
+| Definicja obrazu     | Nie                   | Tak          | Tak                  |
 
 Zalecamy udostępnianie na poziomie galerii w celu uzyskania najlepszego środowiska. Nie zaleca się udostępniania poszczególnych wersji obrazu. Aby uzyskać więcej informacji na temat RBAC, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -170,7 +157,6 @@ Wersja obrazu:
 - Wyklucz z najnowszych
 - Data zakończenia okresu istnienia
 
-
 ## <a name="sdk-support"></a>Obsługa zestawu SDK
 
 Następujące zestawy SDK obsługują Tworzenie udostępnionych galerii obrazów:
@@ -192,9 +178,25 @@ Możesz utworzyć zasób udostępnionej galerii obrazów przy użyciu szablonów
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania 
 
-**PYTANIE** Jak można wyświetlić listę wszystkich udostępnionych zasobów galerii obrazów w ramach subskrypcji? 
- 
- A. Aby wyświetlić listę wszystkich udostępnionych zasobów galerii obrazów między subskrypcjami, do których masz dostęp na Azure Portal, wykonaj następujące czynności:
+* [Jak można wyświetlić listę wszystkich udostępnionych zasobów galerii obrazów w ramach subskrypcji?](#how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions) 
+* [Czy mogę przenieść istniejący obraz do galerii obrazów udostępnionych?](#can-i-move-my-existing-image-to-the-shared-image-gallery)
+* [Czy mogę utworzyć wersję obrazu z wyspecjalizowanego dysku?](#can-i-create-an-image-version-from-a-specialized-disk)
+* [Czy mogę przenieść zasób udostępnionej galerii obrazów do innej subskrypcji po jej utworzeniu?](#can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created)
+* [Czy można replikować moje wersje obrazów między chmurami, takimi jak Azure Chiny 21Vianet czy Azure (Niemcy) czy Azure Government Cloud?](#can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud)
+* [Czy można replikować wersje obrazów między subskrypcjami?](#can-i-replicate-my-image-versions-across-subscriptions)
+* [Czy mogę udostępniać wersje obrazów w dzierżawach usługi Azure AD?](#can-i-share-image-versions-across-azure-ad-tenants)
+* [Jak długo trwa replikowanie wersji obrazów w regionach docelowych?](#how-long-does-it-take-to-replicate-image-versions-across-the-target-regions)
+* [Jaka jest różnica między regionem źródłowym a regionem docelowym?](#what-is-the-difference-between-source-region-and-target-region)
+* [Jak mogę określić regionu źródłowego podczas tworzenia wersji obrazu?](#how-do-i-specify-the-source-region-while-creating-the-image-version)
+* [Jak mogę określić liczbę replik wersji obrazu, które mają zostać utworzone w każdym regionie?](#how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region)
+* [Czy można utworzyć galerię obrazów udostępnionych w innej lokalizacji niż ta dla definicji obrazu i wersji obrazu?](#can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version)
+* [Jakie są opłaty za korzystanie z galerii obrazów udostępnionych?](#what-are-the-charges-for-using-the-shared-image-gallery)
+* [Jakiej wersji interfejsu API należy użyć do utworzenia galerii obrazów udostępnionych i definicji obrazu i wersji obrazu?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
+* [Jakiej wersji interfejsu API należy użyć do utworzenia udostępnionej maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych z wersji obrazu?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+
+### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Jak można wyświetlić listę wszystkich udostępnionych zasobów galerii obrazów w ramach subskrypcji?
+
+Aby wyświetlić listę wszystkich udostępnionych zasobów galerii obrazów między subskrypcjami, do których masz dostęp na Azure Portal, wykonaj następujące czynności:
 
 1. Otwórz [portal Azure](https://portal.azure.com).
 1. Przejdź do pozycji **wszystkie zasoby**.
@@ -209,60 +211,53 @@ Możesz utworzyć zasób udostępnionej galerii obrazów przy użyciu szablonów
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
    ```
 
-
-**PYTANIE** Czy mogę przenieść istniejący obraz do galerii obrazów udostępnionych?
+### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Czy mogę przenieść istniejący obraz do galerii obrazów udostępnionych?
  
- A. Tak. Istnieją 3 scenariusze na podstawie typów obrazów, które mogą mieć.
+Tak. Istnieją 3 scenariusze na podstawie typów obrazów, które mogą mieć.
 
  Scenariusz 1. Jeśli masz obraz zarządzany, możesz utworzyć definicję obrazu i wersję obrazu.
 
  Scenariusz 2. Jeśli masz niezarządzany obraz uogólniony, możesz utworzyć z niego obraz zarządzany, a następnie utworzyć definicję obrazu i wersję obrazu. 
 
- Scenariusz 3. Jeśli masz dysk VHD w lokalnym systemie plików, musisz przekazać dysk VHD, utworzyć obraz zarządzany, a następnie utworzyć definicję obrazu i wersję obrazu oraz z niego.
+ Scenariusz 3. Jeśli masz dysk VHD w lokalnym systemie plików, musisz przekazać dysk VHD, utworzyć obraz zarządzany, a następnie utworzyć definicję obrazu i wersję z obrazu.
 - Jeśli wirtualny dysk twardy jest maszyną wirtualną z systemem Windows, zobacz [przekazywanie uogólnionego wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
 - Jeśli wirtualny dysk twardy jest przeznaczony dla maszyny wirtualnej z systemem Linux, zobacz [przekazywanie wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
+### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Czy mogę utworzyć wersję obrazu z wyspecjalizowanego dysku?
 
-**PYTANIE** Czy mogę utworzyć wersję obrazu z wyspecjalizowanego dysku?
+Nie, obecnie nie obsługujemy wyspecjalizowanych dysków jako obrazów. Jeśli masz wyspecjalizowany dysk, musisz [utworzyć maszynę wirtualną na podstawie wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) , dołączając wyspecjalizowany dysk do nowej maszyny wirtualnej. Gdy masz działającą maszynę wirtualną, musisz postępować zgodnie z instrukcjami, aby utworzyć obraz zarządzany na podstawie [maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) lub [maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)z systemem Linux. Gdy masz uogólniony zarządzany obraz, możesz rozpocząć proces, aby utworzyć udostępniony obraz opisu i wersję obrazu.
 
- A. Nie, obecnie nie obsługujemy wyspecjalizowanych dysków jako obrazów. Jeśli masz wyspecjalizowany dysk, musisz [utworzyć maszynę wirtualną na podstawie wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) , dołączając wyspecjalizowany dysk do nowej maszyny wirtualnej. Gdy masz działającą maszynę wirtualną, musisz postępować zgodnie z instrukcjami, aby utworzyć obraz zarządzany na podstawie [maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) lub [maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)z systemem Linux. Gdy masz uogólniony zarządzany obraz, możesz rozpocząć proces, aby utworzyć udostępniony obraz opisu i wersję obrazu.
+### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Czy mogę przenieść zasób udostępnionej galerii obrazów do innej subskrypcji po jej utworzeniu?
 
- 
-**PYTANIE** Czy po utworzeniu można przenieść zasób udostępnionej galerii obrazów do innej subskrypcji?
+Nie, nie można przenieść zasobu udostępnionej galerii obrazów do innej subskrypcji. Jednak będzie można replikować wersje obrazu w galerii do innych regionów zgodnie z wymaganiami.
 
- A. Nie, nie można przenieść zasobu udostępnionej galerii obrazów do innej subskrypcji. Jednak będzie można replikować wersje obrazu w galerii do innych regionów zgodnie z wymaganiami.
+### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Czy można replikować moje wersje obrazów między chmurami, takimi jak Azure Chiny 21Vianet czy Azure (Niemcy) czy Azure Government Cloud?
 
-**PYTANIE** Czy można replikować moje wersje obrazów między chmurami — Chiny firmy 21Vianet, platforma Azure (Niemcy) i usługa Azure Government Cloud? 
+Nie, nie można replikować wersji obrazu w chmurach.
 
- A. Nie, nie można replikować wersji obrazu w chmurach.
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Czy można replikować wersje obrazów między subskrypcjami? 
 
-**PYTANIE** Czy można replikować wersje obrazów między subskrypcjami? 
+Nie, możesz replikować wersje obrazów między regionami w ramach subskrypcji i używać ich w innych subskrypcjach za pośrednictwem RBAC.
 
- A. Nie, możesz replikować wersje obrazów między regionami w ramach subskrypcji i używać ich w innych subskrypcjach za pośrednictwem RBAC.
+### <a name="can-i-share-image-versions-across-azure-ad-tenants"></a>Czy mogę udostępniać wersje obrazów w dzierżawach usługi Azure AD? 
 
-**PYTANIE** Czy mogę udostępniać wersje obrazów w dzierżawach usługi Azure AD? 
+Tak, możesz użyć RBAC, aby udostępnić osobom w dzierżawach. Jednak aby udostępnić je na dużą skalę, zobacz "udostępnianie obrazów galerii w ramach dzierżawców platformy Azure" przy użyciu [programu PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) lub [interfejsu wiersza polecenia](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
- A. Tak, możesz użyć RBAC, aby udostępnić osobom w dzierżawach. Jednak aby udostępnić je na dużą skalę, zobacz "udostępnianie obrazów galerii w ramach dzierżawców platformy Azure" przy użyciu [programu PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) lub [interfejsu wiersza polecenia](../articles/virtual-machines/linux/share-images-across-tenants.md).
+### <a name="how-long-does-it-take-to-replicate-image-versions-across-the-target-regions"></a>Jak długo trwa replikowanie wersji obrazów w regionach docelowych?
 
+Czas replikacji wersji obrazu jest w całości zależny od rozmiaru obrazu i liczby regionów, do których jest replikowana. Jednak najlepszym rozwiązaniem jest zapewnienie małego obrazu, a regiony źródłowe i docelowe zamykają się w celu uzyskania najlepszych wyników. Stan replikacji można sprawdzić przy użyciu flagi-ReplicationStatus.
 
-**PYTANIE** Jak długo trwa replikowanie wersji obrazów w regionach docelowych?
+### <a name="what-is-the-difference-between-source-region-and-target-region"></a>Jaka jest różnica między regionem źródłowym a regionem docelowym?
 
- A. Czas replikacji wersji obrazu jest w całości zależny od rozmiaru obrazu i liczby regionów, do których jest replikowana. Jednak najlepszym rozwiązaniem jest zapewnienie małego obrazu, a regiony źródłowe i docelowe zamykają się w celu uzyskania najlepszych wyników. Stan replikacji można sprawdzić przy użyciu flagi-ReplicationStatus.
+Region źródłowy to region, w którym zostanie utworzona wersja obrazu, a regiony docelowe to regiony, w których będzie przechowywana kopia wersji obrazu. Dla każdej wersji obrazu można mieć tylko jeden region źródłowy. Upewnij się również, że lokalizacja regionu źródłowego została przekazana jako jeden z regionów docelowych podczas tworzenia wersji obrazu.
 
+### <a name="how-do-i-specify-the-source-region-while-creating-the-image-version"></a>Jak mogę określić regionu źródłowego podczas tworzenia wersji obrazu?
 
-**PYTANIE** Jaka jest różnica między regionem źródłowym a regionem docelowym?
+Podczas tworzenia wersji obrazu można użyć znacznika **--Location** w interfejsie wiersza polecenia i tagu **lokalizacji** w programie PowerShell, aby określić region źródłowy. Upewnij się, że zarządzany obraz, którego używasz jako obrazu podstawowego, aby utworzyć wersję obrazu, znajduje się w tej samej lokalizacji co lokalizacja, w której ma zostać utworzona wersja obrazu. Upewnij się również, że lokalizacja regionu źródłowego została przekazana jako jeden z regionów docelowych podczas tworzenia wersji obrazu.  
 
- A. Region źródłowy to region, w którym zostanie utworzona wersja obrazu, a regiony docelowe to regiony, w których będzie przechowywana kopia wersji obrazu. Dla każdej wersji obrazu można mieć tylko jeden region źródłowy. Upewnij się również, że lokalizacja regionu źródłowego została przekazana jako jeden z regionów docelowych podczas tworzenia wersji obrazu.  
+### <a name="how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region"></a>Jak mogę określić liczbę replik wersji obrazu, które mają zostać utworzone w każdym regionie?
 
-
-**PYTANIE** Jak mogę określić regionu źródłowego podczas tworzenia wersji obrazu?
-
- A. Podczas tworzenia wersji obrazu można użyć znacznika **--Location** w interfejsie wiersza polecenia i tagu **lokalizacji** w programie PowerShell, aby określić region źródłowy. Upewnij się, że zarządzany obraz, którego używasz jako obrazu podstawowego, aby utworzyć wersję obrazu, znajduje się w tej samej lokalizacji co lokalizacja, w której ma zostać utworzona wersja obrazu. Upewnij się również, że lokalizacja regionu źródłowego została przekazana jako jeden z regionów docelowych podczas tworzenia wersji obrazu.  
-
-
-**PYTANIE** Jak mogę określić liczbę replik wersji obrazu, które mają zostać utworzone w każdym regionie?
-
- A. Istnieją dwa sposoby, w których można określić liczbę replik wersji obrazu, które mają zostać utworzone w każdym regionie:
+Istnieją dwa sposoby, w których można określić liczbę replik wersji obrazu, które mają zostać utworzone w każdym regionie:
  
 1. Liczba replik regionalnych, która określa liczbę replik, które chcesz utworzyć na region. 
 2. Typowa liczba replik, która jest wartością domyślną dla poszczególnych regionów w przypadku, gdy nie określono liczby replik regionalnych. 
@@ -273,16 +268,18 @@ Jeśli liczba replik regionalnych nie jest określona dla każdej lokalizacji, d
 
 Aby określić wspólną liczbę replik w interfejsie wiersza polecenia, użyj argumentu **--Replica-Count** w poleceniu `az sig image-version create`.
 
+### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Czy można utworzyć galerię obrazów udostępnionych w innej lokalizacji niż ta dla definicji obrazu i wersji obrazu?
 
-**PYTANIE** Czy można utworzyć galerię obrazów udostępnionych w innej lokalizacji niż ta, w której chcę utworzyć definicję obrazu i wersję obrazu?
+Tak, jest to możliwe. Jednak najlepszym rozwiązaniem jest utrzymywanie w tej samej lokalizacji grupy zasobów, galerii obrazów udostępnionych, definicji obrazu i wersji obrazu.
 
- A. Tak, jest to możliwe. Jednak najlepszym rozwiązaniem jest utrzymywanie w tej samej lokalizacji grupy zasobów, galerii obrazów udostępnionych, definicji obrazu i wersji obrazu.
+### <a name="what-are-the-charges-for-using-the-shared-image-gallery"></a>Jakie są opłaty za korzystanie z galerii obrazów udostępnionych?
 
+Nie są naliczane opłaty za korzystanie z usługi Shared Image Gallery, z wyjątkiem opłat za magazyn do przechowywania wersji obrazów i opłat za wychodzące sieci na potrzeby replikowania wersji obrazu z regionu źródłowego do regionów docelowych.
 
-**PYTANIE** Jakie są opłaty za korzystanie z galerii obrazów udostępnionych?
+### <a name="what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version"></a>Jakiej wersji interfejsu API należy użyć do utworzenia galerii obrazów udostępnionych i definicji obrazu i wersji obrazu?
 
- A. Nie są naliczane opłaty za korzystanie z usługi Shared Image Gallery, z wyjątkiem opłat za magazyn do przechowywania wersji obrazów i opłat za wychodzące sieci na potrzeby replikowania wersji obrazu z regionu źródłowego do regionów docelowych.
+Aby współpracować z udostępnionymi galeriami obrazów, definicjami obrazów i wersjami obrazów, zalecamy korzystanie z interfejsu API w wersji 2018-06-01. Magazyn strefowo nadmiarowy (ZRS) wymaga wersji 2019-03-01 lub nowszej.
 
-**PYTANIE** Jakiej wersji interfejsu API należy użyć do tworzenia galerii obrazów udostępnionych, definicji obrazu, wersji obrazu i maszyny wirtualnej/VMSS z wersji obrazu?
+### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Jakiej wersji interfejsu API należy użyć do utworzenia udostępnionej maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych z wersji obrazu?
 
- A. W przypadku wdrożeń maszyny wirtualnej i zestawu skalowania maszyn wirtualnych przy użyciu wersji obrazu zalecamy użycie interfejsu API w wersji 2018-04-01 lub nowszej. Aby współpracować z udostępnionymi galeriami obrazów, definicjami obrazów i wersjami obrazów, zalecamy korzystanie z interfejsu API w wersji 2018-06-01. Magazyn strefowo nadmiarowy (ZRS) wymaga wersji 2019-03-01 lub nowszej.
+W przypadku wdrożeń maszyny wirtualnej i zestawu skalowania maszyn wirtualnych przy użyciu wersji obrazu zalecamy użycie interfejsu API w wersji 2018-04-01 lub nowszej.
