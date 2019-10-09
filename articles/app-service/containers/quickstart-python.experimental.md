@@ -14,16 +14,18 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ffa202a717c75462cd2d715a7883756d49f5a9f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+experimental: false
+experiment_id: 1e304dc9-5add-4b
+ms.openlocfilehash: d6e062145474b8479db749627b56163106f088d8
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972098"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024929"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji w języku Python w Azure App Service w systemie Linux
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. Ten przewodnik Szybki Start przedstawia sposób wdrażania aplikacji w języku Python na podstawie wbudowanego obrazu w języku Python w App Service w systemie Linux przy użyciu [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+W tym przewodniku szybki start wdrożono prostą aplikację w języku Python do [App Service w systemie Linux](app-service-linux-intro.md), która zapewnia wysoce skalowalną, samoobsługową usługę hostingu w Internecie. Korzystając z interfejsu wiersza polecenia platformy Azure ( [CLI](/cli/azure/install-azure-cli)) za pośrednictwem interakcyjnego, opartego na przeglądarce Azure Cloud Shell, można wykonać kroki opisane w sekcji Korzystanie z komputera Mac, Linux lub Windows.
 
 ![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-python/hello-world-in-browser.png)
 
@@ -120,7 +122,7 @@ Przykładowy kod w języku Python jest uruchamiany w usłudze App Service dla sy
 
 **Gratulacje!** Udało Ci się wdrożyć pierwszą własną aplikację w języku Python w usłudze App Service w systemie Linux.
 
-## <a name="update-locally-and-redeploy-the-code"></a>Lokalne aktualizowanie i ponowne wdrażanie kodu
+## <a name="update-and-redeploy-the-code"></a>Aktualizowanie i ponowne wdrażanie kodu
 
 W usłudze Cloud Shell wpisz `code application.py`, aby otworzyć edytor usługi Cloud Shell.
 

@@ -10,31 +10,31 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 910974eac6a67c9c9fe68c502f2876ef68bb94eb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034308"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028522"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Uruchamianie prognoz wsadowych w dużych zestawach danych przy użyciu potoków Azure Machine Learning
 
 W tym artykule dowiesz się, jak wykonać prognozowanie dużej ilości danych asynchronicznie przy użyciu potoków ML z Azure Machine Learning.
 
-Funkcja prognozowanie wsadowe (lub ocenianie partii) zapewnia ekonomiczną ocenę i niezrównaną przepływność dla aplikacji asynchronicznych. Potoki prognoz usługi Batch można skalować do wykonania wnioskowania pod kątem terabajtów danych produkcyjnych. Funkcja przewidywania wsadowe jest zoptymalizowana pod kątem wysokiej przepływności, nieprawidłowych prognoz i zapamiętania dla dużej ilości danych.
+Funkcja prognozowanie wsadowe (lub ocenianie partii) zapewnia ekonomiczną ocenę i niezrównaną przepływność dla aplikacji asynchronicznych. Potoki przewidywania wsadowe mogą być skalowane w celu przeprowadzenia wnioskowania na terabajty danych produkcyjnych. Funkcja przewidywania wsadowe jest zoptymalizowana pod kątem wysokiej przepływności, nieprawidłowych prognoz i zapamiętania dla dużej ilości danych.
 
 >[!TIP]
 > Jeśli system wymaga przetwarzania o małym opóźnieniu (w celu szybkiego przetworzenia pojedynczego dokumentu lub małego zestawu dokumentów), należy użyć [oceny czasu rzeczywistego](how-to-consume-web-service.md) zamiast przewidywania wsadowego.
 
-W poniższych krokach utworzysz [potok uczenia maszynowego](concept-ml-pipelines.md) w celu zarejestrowania wstępnie przeszkolonego modelu przetwarzania obrazów ([od rozpoczęcia do V3](https://arxiv.org/abs/1512.00567)). Następnie korzystasz z wstępnie nauczonego modelu, aby wykonywać wsadowe oceny na obrazach dostępnych na koncie usługi Azure Blob Storage. Tych obrazów, używane do oceniania są tagować obrazy z [sieci ImageNet](http://image-net.org/) zestawu danych.
+W poniższych krokach utworzysz [potok uczenia maszynowego](concept-ml-pipelines.md) w celu zarejestrowania wstępnie przeszkolonego modelu przetwarzania obrazów ([od rozpoczęcia do V3](https://arxiv.org/abs/1512.00567)). Następnie korzystasz z wstępnie nauczonego modelu, aby wykonywać wsadowe oceny na obrazach dostępnych na koncie usługi Azure Blob Storage. Obrazy używane do oceniania są obrazami nieoznaczonymi z zestawu danych [ImageNet](http://image-net.org/) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
-- Konfigurowanie środowiska deweloperskiego, aby zainstalować zestaw SDK usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning](how-to-configure-environment.md).
+- Skonfiguruj środowisko programistyczne, aby zainstalować zestaw SDK Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego dla Azure Machine Learning](how-to-configure-environment.md).
 
-- Utwórz obszar roboczy usługi Azure Machine Learning, w którym będą przechowywane wszystkie zasoby potoku. Użyj poniższego kodu, lub aby wyświetlić więcej opcji, zobacz [utworzyć plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
+- Utwórz obszar roboczy Azure Machine Learning, w którym będą przechowywane wszystkie zasoby potoku. Możesz użyć poniższego kodu lub aby uzyskać więcej opcji, zobacz [Tworzenie pliku konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
 
   ```python
   from azureml.core import Workspace
@@ -46,20 +46,20 @@ W poniższych krokach utworzysz [potok uczenia maszynowego](concept-ml-pipelines
                         )
   ```
 
-## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów w machine learning
+## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów uczenia maszynowego
 
 Poniższe kroki umożliwiają skonfigurowanie zasobów potrzebnych do uruchomienia potoku:
 
-- Dostęp do magazynu danych, który ma już wstępnie przetrenowane modelu, etykiet danych wejściowych i obrazów, który będzie oceniać (to jest już skonfigurowany dla siebie).
-- Skonfiguruj Magazyn danych, aby przechowywać swoje dane wyjściowe.
--  `DataReference`Skonfiguruj obiekty w taki sposób, aby wskazywały dane w poprzednich magazynach danych.
-- Skonfiguruj obliczeniowych maszyn lub klastry którym kroki potok będzie uruchamiany.
+- Uzyskaj dostęp do magazynu danych, który ma już przedstawiony model, etykiety wejściowe i obrazy do oceny (jest to już skonfigurowane dla Ciebie).
+- Skonfiguruj magazyn danych, aby przechowywać dane wyjściowe.
+- Skonfiguruj wartość @ no__t-0 @ no__t-1objects, aby wskazywała dane w poprzednich magazynach danych.
+- Skonfiguruj maszyny obliczeniowe lub klastry, w których zostaną uruchomione kroki potoku.
 
 ### <a name="access-the-datastores"></a>Dostęp do magazynów danych
 
-Najpierw uzyskać dostęp do magazynu danych, zawierający model, etykiety i obrazy.
+Najpierw uzyskaj dostęp do magazynu danych z modelem, etykietami i obrazami.
 
-Użyj publicznego kontenera obiektów BLOB o nazwie *SampleData*w koncie *pipelinedata* , które zawiera obrazy z zestawu oceny ImageNet. Nazwa magazynu danych dla tego publicznego kontenera jest *images_datastore*. Zarejestruj ten magazyn danych przy użyciu obszaru roboczego:
+Użyj publicznego kontenera obiektów BLOB o nazwie *SampleData*w koncie *pipelinedata* , które zawiera obrazy z zestawu oceny ImageNet. Nazwa magazynu danych dla tego kontenera publicznego to *images_datastore*. Zarejestruj ten magazyn danych za pomocą swojego obszaru roboczego:
 
 ```python
 from azureml.core import Datastore
@@ -77,17 +77,17 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 
 Następnie skonfiguruj, aby użyć domyślnego magazynu danych dla danych wyjściowych.
 
-Podczas tworzenia obszaru roboczego [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) i  [Magazyn obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)są domyślnie dołączone do obszaru roboczego. Azure Files jest domyślnym magazynem danych dla obszaru roboczego, ale można również użyć magazynu obiektów BLOB jako magazynu danych. Aby uzyskać więcej informacji, zobacz [Opcje usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Podczas tworzenia obszaru roboczego [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)@no__t 1And [magazynu obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) are dołączonego do obszaru roboczego domyślnie. Azure Files jest domyślnym magazynem danych dla obszaru roboczego, ale można również użyć magazynu obiektów BLOB jako magazynu danych. Aby uzyskać więcej informacji, zobacz [Opcje usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 ```python
 def_data_store = ws.get_default_datastore()
 ```
 
-### <a name="configure-data-references"></a>Konfigurowanie odwołania do danych
+### <a name="configure-data-references"></a>Konfigurowanie odwołań do danych
 
-Teraz odwołują się do danych w potoku jako dane wejściowe do kroków potoku.
+Teraz odwołują się do danych w potoku jako dane wejściowe kroków potoku.
 
-Źródło danych w potoku jest reprezentowany przez [element DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) obiektu.  `DataReference`Obiektwskazujedane,któreznajdująsięwlubsądostępne z, magazynu danych. `DataReference` Potrzebne są obiekty dla katalogu używanego na potrzeby obrazów wejściowych, katalog, w którym jest przechowywany przedmieszczony model, katalog dla etykiet i katalog wyjściowy.
+Źródło danych w potoku jest reprezentowane przez element [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) object. @ No__t-0 @ no__t-1object wskazuje dane, które znajdują się w lub są dostępne z, magazynu danych. Potrzebujesz `DataReference` @ no__t-1objects dla katalogu używanego na potrzeby obrazów wejściowych, katalogu, w którym jest przechowywany wstępnie przemieszczony model, katalog dla etykiet i katalog wyjściowy.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -112,7 +112,7 @@ output_dir = PipelineData(name="scores",
                           output_path_on_compute="batchscoring/results")
 ```
 
-### <a name="set-up-compute-target"></a>Konfigurowanie obliczeniowego elementu docelowego
+### <a name="set-up-compute-target"></a>Skonfiguruj cel obliczeń
 
 W Azure Machine Learning, *obliczenia* (lub *element docelowy obliczeń*) odnoszą się do maszyn lub klastrów wykonujących kroki obliczeniowe w potoku uczenia maszynowego. Na przykład można utworzyć Azure Machine Learning obliczeń z klasą [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) .
 
@@ -148,13 +148,13 @@ else:
         timeout_in_minutes=20)
 ```
 
-## <a name="prepare-the-model"></a>Przygotowanie modelu
+## <a name="prepare-the-model"></a>Przygotuj model
 
-Zanim użyjesz pretrained modelu, należy pobrać modelu i zarejestruj je przy użyciu obszaru roboczego.
+Aby można było korzystać z preszkolenego modelu, należy pobrać model i zarejestrować go w obszarze roboczym.
 
-### <a name="download-the-pretrained-model"></a>Pobierz pretrained modelu
+### <a name="download-the-pretrained-model"></a>Pobieranie modelu przedniego
 
-Pobierz modelu przetwarzania obrazów wstępnie przetrenowane (InceptionV3) z <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Następnie wyodrębnij go do `models` podfolderu.
+Pobierz wstępnie przemieszczony model przetwarzania obrazów (InceptionV3) z <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Następnie wyodrębnij go do podfolderu `models`.
 
 ```python
 import os
@@ -171,7 +171,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-### <a name="register-the-model"></a>Zarejestruj model
+### <a name="register-the-model"></a>Rejestrowanie modelu
 
 Poniżej przedstawiono sposób rejestrowania modelu:
 
@@ -188,12 +188,12 @@ model = Model.register(
     workspace=ws)
 ```
 
-## <a name="write-your-scoring-script"></a>Napisz skrypt oceniania
+## <a name="write-your-scoring-script"></a>Napisz swój skrypt oceniania
 
 >[!Warning]
 >Poniższy kod jest tylko przykładem zawartym w [batch_score. PR](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) używanym przez [przykładowy Notes](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb). Musisz utworzyć własny skrypt oceniania dla Twojego scenariusza.
 
-`batch_score.py` Skrypt pobiera obrazy wejściowe *dataset_path*, wstępnie przetrenowane modeli w *model_dir,* i generuje *label.txt wyniki* do *output_dir*.
+Skrypt `batch_score.py` pobiera obrazy wejściowe w *dataset_path*, modele wstępnie nauczenia w *model_dir* i wyprowadza *Results-Label. txt* do *OUTPUT_DIR*.
 
 ```python
 # Snippets from a sample scoring script
@@ -243,11 +243,11 @@ def main(_):
         shutil.copy(out_filename, "./outputs/")
 ```
 
-## <a name="build-and-run-the-batch-scoring-pipeline"></a>Kompilowanie i uruchamianie zadania wsadowego oceniania potoku
+## <a name="build-and-run-the-batch-scoring-pipeline"></a>Kompilowanie i uruchamianie potoku oceniania partii
 
 ### <a name="prepare-the-run-environment"></a>Przygotuj środowisko uruchomieniowe
 
-Określenie zależności conda skryptu. Ten obiekt będzie potrzebny później, podczas tworzenia kroku potoku.
+Określ zależności Conda dla skryptu. Ten obiekt będzie potrzebny później, podczas tworzenia kroku potoku.
 
 ```python
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
@@ -265,9 +265,9 @@ amlcompute_run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
 amlcompute_run_config.environment.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameter-for-your-pipeline"></a>Określ parametr do potoku
+### <a name="specify-the-parameter-for-your-pipeline"></a>Określ parametr potoku
 
-Utwórz parametr potoku przy użyciu obiektu [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) z wartością domyślną.
+Utwórz parametr potoku za pomocą [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) object z wartością domyślną.
 
 ```python
 from azureml.pipeline.core.graph import PipelineParameter
@@ -276,9 +276,9 @@ batch_size_param = PipelineParameter(
     default_value=20)
 ```
 
-### <a name="create-the-pipeline-step"></a>Tworzenie etap potoku
+### <a name="create-the-pipeline-step"></a>Tworzenie kroku potoku
 
-Utwórz krok potoku przy użyciu skryptu, konfiguracji środowiska i parametrów. Określ obliczeniowego elementu docelowego już dołączone do obszaru roboczego jako element docelowy wykonywania skryptu. Użyj [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) do tworzenie etap potoku.
+Utwórz krok potoku przy użyciu skryptu, konfiguracji środowiska i parametrów. Określ miejsce docelowe obliczeń, które zostało już dołączone do obszaru roboczego jako element docelowy wykonywania skryptu. Użyj [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) , aby utworzyć krok potoku.
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep

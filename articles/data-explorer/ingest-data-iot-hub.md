@@ -7,20 +7,25 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: ef66e6a69b6d33b16a558293fe29b8adf51cd137
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
-ms.translationtype: HT
+ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996759"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028471"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Pozyskiwanie danych z IoT Hub na platformie Azure Eksplorator danych (wersja zapoznawcza)
 
-Azure Eksplorator danych to szybka i wysoce skalowalna usługa eksploracji danych dla danych dzienników i telemetrii. Usługa Azure Eksplorator danych oferuje pozyskiwanie (ładowanie danych) z IoT Hub, platformy przesyłania strumieniowego danych Big Data i usługi pozyskiwania IoT.
+> [!div class="op_single_selector"]
+> * [Portal](ingest-data-iot-hub.md)
+> * [C#](data-connection-iot-hub-csharp.md)
+> * [Python](data-connection-iot-hub-python.md)
+
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Eksplorator danych oferuje pozyskiwanie (ładowanie danych) z IoT Hub, platformy przesyłania strumieniowego danych Big Data i usługi pozyskiwania IoT.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) .
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
 * Utwórz [klaster testowy i bazę danych](create-cluster-database-portal.md) z nazwą bazy danych *TestDB*.
 
@@ -36,23 +41,23 @@ Azure Eksplorator danych to szybka i wysoce skalowalna usługa eksploracji danyc
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="create-a-target-table-in-azure-data-explorer"></a>Tworzenie tabeli docelowej na platformie Azure Eksplorator danych
+## <a name="create-a-target-table-in-azure-data-explorer"></a>Tworzenie tabeli docelowej w usłudze Azure Data Explorer
 
 Teraz utworzysz tabelę na platformie Azure Eksplorator danych, do której będą wysyłane dane centra IoT Hub. Należy utworzyć tabelę w klastrze i w bazie danych, która została zainicjowana w [**wymaganiach wstępnych**](#prerequisites).
 
-1. W Azure Portal przejdź do klastra, a następnie wybierz pozycję **zapytanie**.
+1. W witrynie Azure Portal przejdź do klastra, a następnie wybierz pozycję **Zapytanie**.
 
     ![Zapytanie ADX w portalu](media/ingest-data-iot-hub/adx-initiate-query.png)
 
-1. Skopiuj następujące polecenie do okna i wybierz polecenie **Uruchom** , aby utworzyć tabelę (Tester), która będzie odbierać dane pozyskiwane.
+1. Skopiuj poniższe polecenie w oknie, a następnie wybierz pozycję **Uruchom**, aby utworzyć tabelę (TestTable), w której będą umieszczane pozyskiwane dane.
 
     ```Kusto
     .create table TestTable (temperature: real, humidity: real)
     ```
     
-    ![Uruchom Tworzenie zapytania](media/ingest-data-iot-hub/run-create-query.png)
+    ![Uruchamianie zapytania create](media/ingest-data-iot-hub/run-create-query.png)
 
-1. Skopiuj następujące polecenie do okna i wybierz pozycję **Uruchom** , aby zmapować przychodzące dane JSON do nazw kolumn i typów danych tabeli (testów).
+1. Skopiuj poniższe polecenie w oknie, a następnie wybierz pozycję **Uruchom**, aby zamapować przychodzące dane w formacie JSON na nazwy kolumn i typy danych tabeli (TestTable).
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"humidity","path":"$.humidity","datatype":"real"},{"column":"temperature","path":"$.temperature","datatype":"real"}]'
@@ -66,15 +71,15 @@ Teraz nawiążesz połączenie z IoT Hubą z usługi Azure Eksplorator danych. P
 
 1. W obszarze utworzony klaster wybierz pozycję **bazy danych** , a następnie wybierz bazę danych, która została utworzona **TestDB**.
     
-    ![Wybierz testową bazę danych](media/ingest-data-iot-hub/select-database.png)
+    ![Wybieranie testowej bazy danych](media/ingest-data-iot-hub/select-database.png)
 
-1. Wybierz pozycję pozyskiwanie **danych** i **Dodaj połączenie danych**. Następnie wypełnij formularz poniższymi informacjami. Po zakończeniu wybierz pozycję **Utwórz** .
+1. Wybierz kolejno pozycje **Pozyskiwanie danych** i **Dodaj połączenie danych**. Następnie wypełnij formularz, używając poniższych informacji. Po zakończeniu wybierz pozycję **Utwórz** .
 
     ![Połączenie IoT Hub](media/ingest-data-iot-hub/iot-hub-connection.png)
 
     **Źródło danych**:
 
-    **Konfigurowania** | **Opis pola**
+    **Ustawienie** | **Opis pola**
     |---|---|
     | Nazwa połączenia danych | Nazwa połączenia, które chcesz utworzyć na platformie Azure Eksplorator danych
     | IoT Hub | Nazwa IoT Hub |
@@ -88,12 +93,12 @@ Teraz nawiążesz połączenie z IoT Hubą z usługi Azure Eksplorator danych. P
     **Tabela docelowa**:
 
     Dostępne są dwie opcje routingu pozyskiwanych danych: *statyczne* i *dynamiczne*. 
-    W tym artykule należy używać routingu statycznego, w którym można określić nazwę tabeli, format danych i mapowanie. W związku z tym Zostaw **moje dane zawiera niewybrane informacje o routingu** .
+    W tym artykule należy używać routingu statycznego, w którym można określić nazwę tabeli, format danych i mapowanie. W związku z tym pozostaw pole **Moje dane zawierają informacje o routingu** niezaznaczone.
 
-     **Konfigurowania** | **Sugerowana wartość** | **Opis pola**
+     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | tabela | *Testy* | Tabela utworzona w **TestDB**. |
-    | Format danych | *KODU* | Obsługiwane formaty to Avro, CSV, JSON, WIELOWIERSZOWY kod JSON, PSV, SOHSV, SCSV, TSV, TSVE i TXT. |
+    | Tabela | *TestTable* | Tabela utworzona w **TestDB**. |
+    | Format danych | *JSON* | Obsługiwane formaty to Avro, CSV, JSON, WIELOWIERSZOWY kod JSON, PSV, SOHSV, SCSV, TSV, TSVE i TXT. |
     | Mapowanie kolumn | *TestMapping* | [Mapowanie](/azure/kusto/management/mappings) utworzone w **TestDB**, które mapuje przychodzące dane JSON do nazw kolumn i typów danych **TestDB**. Wymagane dla notacji JSON, wielowierszowego kodu JSON i AVRO oraz opcjonalne dla innych formatów.|
     | | |
 
@@ -103,31 +108,31 @@ Teraz nawiążesz połączenie z IoT Hubą z usługi Azure Eksplorator danych. P
 
 ## <a name="generate-sample-data-for-testing"></a>Generuj przykładowe dane do testowania
 
-Aplikacja symulowanego urządzenia nawiązuje połączenie z punktem końcowym specyficznym dla urządzenia w centrum IoT Hub i wysyła symulowaną telemetrię temperatury i wilgotności.
+Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym dla urządzenia w centrum IoT i wysyła symulowane dane telemetryczne dotyczące temperatury oraz wilgotności.
 
-1. Pobierz przykładowy C# projekt z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip i Wyodrębnij archiwum zip.
+1. Pobierz przykładowy projekt C# z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip i wyodrębnij archiwum ZIP.
 
-1. W oknie terminalu lokalnego przejdź do folderu głównego przykładowego C# projektu. Następnie przejdź do folderu **IoT-hub\Quickstarts\simulated-Device** .
+1. W lokalnym oknie terminalu przejdź do folderu głównego przykładowego projektu C#. Następnie przejdź do folderu **iot-hub\Quickstarts\simulated-device**.
 
-1. Otwórz plik **SimulatedDevice.cs** w wybranym edytorze tekstu.
+1. Otwórz plik **SimulatedDevice.cs** w wybranym edytorze.
 
-    Zastąp wartość zmiennej `s_connectionString` parametrami połączenia urządzenia, [Aby zarejestrować urządzenie w IoT Hub](#register-a-device-to-the-iot-hub). Następnie Zapisz zmiany w pliku **SimulatedDevice.cs** .
+    Zastąp wartość zmiennej `s_connectionString` parametrami połączenia urządzenia, [Aby zarejestrować urządzenie w IoT Hub](#register-a-device-to-the-iot-hub). Następnie zapisz zmiany w pliku **SimulatedDevice.cs**.
 
-1. W oknie terminalu lokalnego Uruchom następujące polecenia, aby zainstalować wymagane pakiety dla aplikacji symulowanego urządzenia:
+1. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane pakiety dla aplikacji urządzenia symulowanego:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. W oknie terminalu lokalnego Uruchom następujące polecenie, aby skompilować i uruchomić aplikację symulowanego urządzenia:
+1. W lokalnym oknie terminalu uruchom następujące polecenia, aby utworzyć i uruchomić aplikację urządzenia symulowanego:
 
     ```cmd/sh
     dotnet run
     ```
 
-    Poniższy zrzut ekranu przedstawia dane wyjściowe w postaci symulowanej aplikacji urządzenia, która wysyła telemetrię do centrum IoT:
+    Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie wysyłania przez aplikację urządzenia symulowanego danych telemetrycznych do centrum IoT:
 
-    ![Uruchamianie symulowanego urządzenia](media/ingest-data-iot-hub/simulated-device.png)
+    ![Uruchamianie urządzenia symulowanego](media/ingest-data-iot-hub/simulated-device.png)
 
 ## <a name="review-the-data-flow"></a>Przeglądanie przepływu danych
 
@@ -137,14 +142,14 @@ Za pomocą aplikacji generującej dane można teraz zobaczyć przepływ danych z
 
     ![Metryki IoT Hub](media/ingest-data-iot-hub/iot-hub-metrics.png)
 
-1. Aby sprawdzić, ile komunikatów zostało wprowadzonych do bazy danych do tej pory, uruchom następujące zapytanie w bazie danych testów.
+1. Aby sprawdzić, ile komunikatów zostało przekazanych do tej pory do bazy danych, uruchom poniższe zapytanie w testowej bazie danych.
 
     ```Kusto
     TestTable
     | count
     ```
 
-1. Aby wyświetlić zawartość komunikatów, uruchom następujące zapytanie:
+1. Aby sprawdzić zawartość komunikatów, uruchom następujące zapytanie:
 
     ```Kusto
     TestTable
@@ -155,22 +160,22 @@ Za pomocą aplikacji generującej dane można teraz zobaczyć przepływ danych z
     ![Pokaż wyniki pozyskiwanych danych](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]
-    > * Usługa Azure Eksplorator danych ma zasady agregacji (wsadowe) do pozyskiwania danych, zaprojektowane w celu optymalizacji procesu pozyskiwania. Zasady są domyślnie skonfigurowane do 5 minut lub 500 MB danych, dzięki czemu mogą wystąpić opóźnienia. Zobacz temat [zasady tworzenia wsadowego](/azure/kusto/concepts/batchingpolicy) dla opcji agregacji. 
+    > * W systemie Azure Data Explorer istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania. Zasady są domyślnie skonfigurowane do 5 minut lub 500 MB danych, dzięki czemu mogą wystąpić opóźnienia. Zobacz temat [zasady tworzenia wsadowego](/azure/kusto/concepts/batchingpolicy) dla opcji agregacji. 
     > * Skonfiguruj tabelę do obsługi przesyłania strumieniowego i Usuń opóźnienie w czasie odpowiedzi. Zobacz [zasady przesyłania strumieniowego](/azure/kusto/concepts/streamingingestionpolicy). 
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli nie planujesz ponownie używać IoT Hub, wyczyść polecenie **test-Hub-RG**, aby uniknąć ponoszenia kosztów.
 
-1. W Azure Portal wybierz pozycję **grupy zasobów** po lewej stronie, a następnie wybierz utworzoną grupę zasobów.  
+1. W witrynie Azure Portal wybierz **grupy zasobów** daleko po lewej stronie, a następnie wybierz utworzoną grupę zasobów.  
 
-    Jeśli menu po lewej stronie jest zwinięte, wybierz pozycję ![Przycisk rozwijania](media/ingest-data-event-hub/expand.png) , aby je rozwinąć.
+    Jeśli menu po lewej stronie jest zwinięte, wybierz ![przycisk Rozwiń,](media/ingest-data-event-hub/expand.png) aby je rozwinąć.
 
-   ![Wybierz grupę zasobów do usunięcia](media/ingest-data-event-hub/delete-resources-select.png)
+   ![Wybieranie grupy zasobów do usunięcia](media/ingest-data-event-hub/delete-resources-select.png)
 
-1. W obszarze **test-zasób-Grupa**wybierz pozycję **Usuń grupę zasobów**.
+1. W obszarze **test-resource-group** wybierz pozycję **Usuń grupę zasobów**.
 
-1. W nowym oknie wpisz nazwę grupy zasobów do usunięcia (*test-Hub-RG*), a następnie wybierz pozycję **Usuń**.
+1. W nowym oknie wpisz nazwę grupy zasobów do usunięcia (*test-hub-rg*), a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

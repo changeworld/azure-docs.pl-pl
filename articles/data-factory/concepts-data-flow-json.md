@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 69dce46052c18eec7c3f1fa2082907ed62b367d6
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 37db3e153e8dfcbc1120fcb1f6d2f77187edc78e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703346"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029669"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Mapowanie obsługi JSON przepływu danych
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ## <a name="creating-json-structures-in-expression-editor"></a>Tworzenie struktur JSON w edytorze wyrażeń
 ### <a name="derived-column-transformation"></a>Transformacja kolumn pochodnych
@@ -77,7 +77,7 @@ Jeśli to wyrażenie zostało wprowadzone dla kolumny o nazwie "complexColumn", 
 ```
 
 ## <a name="source-format-options"></a>Opcje formatu źródła
-### <a name="default"></a>Domyślny
+### <a name="default"></a>Domyślne
 ```
 { "json": "record 1" }
 { "json": "record 2" }
@@ -145,7 +145,7 @@ File3.json
 ```
 
 ## <a name="higher-order-functions"></a>Funkcje wyższego rzędu
-## <a name="filter"></a>filtr
+## <a name="filter"></a>filtru
 Filtruje elementy z tablicy, które nie spełniają podanego predykatu. Filtr oczekuje odwołania do jednego elementu w funkcji predykatu jako #item.
 
 ### <a name="examples"></a>Przykłady
@@ -173,7 +173,7 @@ reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-## <a name="sort"></a>sort
+## <a name="sort"></a>Porządku
 Sortuje tablicę przy użyciu podanej funkcji predykatu. Funkcja Sort oczekuje odwołania do dwóch kolejnych elementów w funkcji Expression jako #item1 i #item2.
 
 ### <a name="examples"></a>Przykłady
@@ -185,7 +185,7 @@ sort(['a3', 'b2', 'c1'],
         iif(#item1 >= #item2, 1, -1)) => ['a3', 'b2', 'c1']
 ```
 
-## <a name="contains"></a>zawiera
+## <a name="contains"></a>wyświetlana
 Zwraca wartość true, jeśli dowolny element w podanej tablicy ma wartość true w podanym predykacie. Zawiera oczekiwane odwołanie do jednego elementu w funkcji predykatu jako #item.
 
 ### <a name="examples"></a>Przykłady

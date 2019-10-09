@@ -1,6 +1,6 @@
 ---
-title: Node.js (MEAN.js) z bazą danych MongoDB — usługa Azure App Service | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uruchomić aplikację środowiska Node.js działającą na platformie Azure z użyciem połączenia z bazą danych usługi Cosmos DB i parametrów połączenia usługi MongoDB. MEAN.js jest używany w tym samouczku.
+title: Node. js (średnia js) z MongoDB-Azure App Service | Microsoft Docs
+description: Dowiedz się, jak uruchomić aplikację środowiska Node.js działającą na platformie Azure z użyciem połączenia z bazą danych usługi Cosmos DB i parametrów połączenia usługi MongoDB. W samouczku użyto ŚREDNIka. js.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 361e921af65b33ac0a7a8d12e28db1cb305b0fa1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0b9b10542b861b49e83ff9704912a569cdca7616
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138917"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024919"
 ---
-# <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Samouczek: tworzenie aplikacji środowiska Node.js i usługi MongoDB na platformie Azure
+# <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Samouczek: Tworzenie aplikacji node. js i MongoDB na platformie Azure
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć aplikację w usłudze App Service w systemie _Linux_, zobacz [Tworzenie aplikacji środowiska Node.js i usługi MongoDB w usłudze Azure App Service dla systemu Linux](./containers/tutorial-nodejs-mongodb-app.md).
@@ -129,7 +129,7 @@ W tym kroku utworzysz bazę danych MongoDB na platformie Azure. Aplikacja wdroż
 
 W przypadku bazy danych MongoDB w tym samouczku jest używana baza danych [Azure Cosmos DB](/azure/documentdb/). Usługa Cosmos DB obsługuje połączenia klienckie usługi MongoDB.
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
@@ -310,7 +310,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://<app_name>.scm.azurewebsites.net/<app_name>.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 ``` 
 
 Możesz zauważyć, że w procesie wdrażania środowisko [Gulp](https://gulpjs.com/) jest uruchamiane po wykonaniu polecenia `npm install`. Usługa App Service nie uruchamia zadań Gulp ani Grunt podczas wdrażania, dlatego w katalogu głównym tego przykładowego repozytorium znajdują się 2 dodatkowe pliki włączające tę funkcję: 
@@ -464,7 +464,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-Po ukończeniu operacji `git push` przejdź do aplikacji platformy Azure i wypróbuj nowe funkcje.
+Po zakończeniu operacji `git push` przejdź do aplikacji platformy Azure i wypróbuj nowe funkcje.
 
 ![Zmiany w modelu i bazie danych opublikowane na platformie Azure](media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Node.js (MEAN.js) z bazą danych MongoDB w systemie Linux — usługa Azure App Service | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uruchomić aplikację środowiska Node.js w usłudze Azure App Service w systemie Linux z użyciem połączenia z bazą danych usługi Cosmos DB i parametrów połączenia usługi MongoDB. MEAN.js jest używany w tym samouczku.
+title: Node. js (średnia js) z MongoDB w systemie Linux — Azure App Service | Microsoft Docs
+description: Dowiedz się, jak uruchomić aplikację środowiska Node.js w usłudze Azure App Service w systemie Linux z użyciem połączenia z bazą danych usługi Cosmos DB i parametrów połączenia usługi MongoDB. W samouczku użyto ŚREDNIka. js.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3a5f6b5b1f66542a534c9016c5d9d60a1273975f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: cf145e04ca0e0ddf336521e72f6dc230dc8fc86b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117574"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024953"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji środowiska Node.js i usługi MongoDB w usłudze Azure App Service w systemie Linux
 
@@ -123,7 +123,7 @@ Aby w dowolnym momencie zatrzymać środowisko Node.js, naciśnij w terminalu kl
 
 W tym kroku utworzysz konto bazy danych przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Aplikacja wdrożona na platformie Azure używa tej bazy danych w chmurze.
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
@@ -131,7 +131,7 @@ W tym kroku utworzysz konto bazy danych przy użyciu interfejsu API usługi Azur
 
 W usłudze Cloud Shell utwórz konto usługi Cosmos DB za pomocą polecenia [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create).
 
-W poniższym poleceniu Wstaw unikatową nazwę usługi Cosmos DB  *\<cosmosdb-name >* symbol zastępczy. Ta nazwa jest używana jako część punktu końcowego usługi Cosmos DB, `https://<cosmosdb-name>.documents.azure.com/`, więc musi być unikatowa w obrębie wszystkich kont usługi Cosmos DB na platformie Azure. Nazwa może zawierać tylko małe litery, cyfry oraz znak łącznika (-) i musi się składać z 3–50 znaków.
+W poniższym poleceniu Zastąp unikatową nazwę Cosmos DB dla symbolu zastępczego *\<cosmosdb-name >* . Ta nazwa jest używana jako część punktu końcowego usługi Cosmos DB, `https://<cosmosdb-name>.documents.azure.com/`, więc musi być unikatowa w obrębie wszystkich kont usługi Cosmos DB na platformie Azure. Nazwa może zawierać tylko małe litery, cyfry oraz znak łącznika (-) i musi się składać z 3–50 znaków.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -188,7 +188,7 @@ Skopiuj wartość `primaryMasterKey`. Ta informacja będzie potrzebna w następn
 
 W lokalnym repozytorium MEAN.js utwórz w folderze _config/env/_ plik o nazwie _local-production.js_. Plik _gitignore_ skonfigurowano w celu przechowywania tego pliku poza repozytorium.
 
-Skopiuj do niego poniższy kod. Pamiętaj zastąpić dwa  *\<cosmosdb-name >* symbole zastępcze za pomocą usługi Cosmos DB, nazwa bazy danych i Zastąp  *\<klucza podstawowego wzorca >* symbolu zastępczego z kluczem możesz skopiowany w poprzednim kroku.
+Skopiuj do niego poniższy kod. Zastąp dwa symbole zastępcze *\<cosmosdb-name >* nazwą bazy danych Cosmos DB i Zastąp symbol zastępczy *\<primary-master-Key >* kluczem skopiowanym w poprzednim kroku.
 
 ```javascript
 module.exports = {
@@ -259,13 +259,13 @@ Domyślnie w projekcie MEAN.js plik _config/env/local-production.js_ jest przech
 
 Aby określić ustawienia aplikacji, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell.
 
-W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `MONGODB_URI` w aplikacji platformy Azure. Zastąp  *\<Nazwa aplikacji >*,  *\<cosmosdb-name >*, i  *\<klucza podstawowego wzorca >* symbole zastępcze.
+W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `MONGODB_URI` w aplikacji platformy Azure. Zastąp *\<APP-name >* , *\<cosmosdb-name >* i *@no__t 5primary-Master-Key >* symbolami zastępczymi.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
 ```
 
-W kodzie Node.js można [dostęp do tego ustawienia aplikacji](configure-language-nodejs.md#access-environment-variables) z `process.env.MONGODB_URI`tak samo, jak dostęp do dowolnej zmiennej środowiskowej.
+W kodzie Node. js masz [dostęp do tego ustawienia aplikacji](configure-language-nodejs.md#access-environment-variables) z `process.env.MONGODB_URI`, podobnie jak w przypadku dostępu do dowolnej zmiennej środowiskowej.
 
 W lokalnym repozytorium MEAN.js otwórz plik _config/env/production.js_ (nie _config/env/local-production.js_), w którym znajduje się konfiguracja specyficzna dla środowiska produkcyjnego. Domyślna aplikacja MEAN.js jest już skonfigurowana do używania utworzonej zmiennej środowiskowej `MONGODB_URI`.
 
@@ -297,7 +297,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://<app-name>.scm.azurewebsites.net/<app-name>.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 ```
 
 Możesz zauważyć, że w procesie wdrażania środowisko [Gulp](https://gulpjs.com/) jest uruchamiane po wykonaniu polecenia `npm install`. Usługa App Service nie uruchamia zadań Gulp ani Grunt podczas wdrażania, dlatego w katalogu głównym tego przykładowego repozytorium znajdują się 2 dodatkowe pliki włączające tę funkcję:
@@ -305,7 +305,7 @@ Możesz zauważyć, że w procesie wdrażania środowisko [Gulp](https://gulpjs.
 - _deployment_ — ten plik informuje usługę App Service, aby uruchomiła skrypt `bash deploy.sh` jako skrypt wdrożenia niestandardowego.
 - _deploy.sh_ — skrypt wdrożenia niestandardowego. Jeśli przejrzysz plik, zauważysz, że uruchamia on polecenie `gulp prod` po poleceniach `npm install` i `bower install`.
 
-Korzystając z tego podejścia, możesz dodać dowolny krok do wdrożenia opartego na usłudze Git. Jeśli w dowolnym momencie ponownie uruchomisz aplikację platformy Azure, usługa App Service nie uruchomi ponownie tych zadań automatyzacji. Aby uzyskać więcej informacji, zobacz [Uruchom Grunt/Bower/Gulp](configure-language-nodejs.md#run-gruntbowergulp).
+Korzystając z tego podejścia, możesz dodać dowolny krok do wdrożenia opartego na usłudze Git. Jeśli w dowolnym momencie ponownie uruchomisz aplikację platformy Azure, usługa App Service nie uruchomi ponownie tych zadań automatyzacji. Aby uzyskać więcej informacji, zobacz [Run grunt/Bower/Gulp](configure-language-nodejs.md#run-gruntbowergulp).
 
 ### <a name="browse-to-the-azure-app"></a>Przechodzenie do aplikacji platformy Azure
 
@@ -428,7 +428,7 @@ NODE_ENV=production node server.js
 
 Przejdź do adresu `http://localhost:8443` w przeglądarce i upewnij się, że użytkownik jest zalogowany.
 
-Wybierz pozycję **Administrator > Zarządzaj artykułami** i dodaj artykuł, wybierając przycisk **+**.
+Wybierz pozycję **Administrator > Zarządzaj artykułami** i dodaj artykuł, wybierając przycisk **+** .
 
 Zostanie wyświetlone nowe pole tekstowe `Comment`.
 
@@ -486,9 +486,9 @@ Które czynności umiesz wykonać:
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)
+> [Samouczek: mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)
 
 Lub zapoznaj się z innymi zasobami:
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie aplikacji Node.js](configure-language-nodejs.md)
+> [Konfigurowanie aplikacji node. js](configure-language-nodejs.md)
