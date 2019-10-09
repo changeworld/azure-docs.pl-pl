@@ -34,6 +34,8 @@
           href: sql-database-server-level-firewall-rule.md
         - name: Konfigurowanie publicznego punktu końcowego w wystąpieniu zarządzanym
           href: sql-database-managed-instance-public-endpoint-configure.md
+        - name: Konfigurowanie typów połączeń w wystąpieniu zarządzanym
+          href: sql-database-managed-instance-connection-type.md
         - name: Połączenie maszyny wirtualnej klienta z wystąpieniem zarządzanym
           href: sql-database-managed-instance-configure-vm.md
         - name: Połączenie punkt-lokacja z wystąpieniem zarządzanym

@@ -134,8 +134,7 @@
           href: resource-group-linked-templates.md
         - name: Tworzenie wielu wystąpień
           href: resource-group-create-multiple.md
-        - name: Tworzenie grup zasobów i zasobów w subskrypcji
-          displayName: subscription level deployment
+        - name: Zasoby na poziomie subskrypcji
           href: deploy-to-subscription.md
     - name: Wdrażanie szablonów
       items:
