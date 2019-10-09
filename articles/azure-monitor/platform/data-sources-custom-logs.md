@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327462"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177620"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Niestandardowe dzienniki w Azure Monitor
 
@@ -30,7 +30,7 @@ Pliki dziennika do zebrania muszą być zgodne z następującymi kryteriami.
 
 - Dziennik musi mieć pojedynczy wpis na wiersz lub użyć sygnatury czasowej pasującej do jednego z następujących formatów na początku każdego wpisu.
 
-    RRRR-MM-DD GG: MM: SS<br>M/D/RRRR HH: MM: SS AM/PM<br>PN DD, rrrr HH: MM: SS<br />yyMMdd HH: mm: SS<br />ddMMyy HH: mm: SS<br />MMM d hh: mm: SS<br />DD/MMM/rrrr: gg: mm: SS ZZZ<br />yyyy-MM-ddTHH:mm:ssK
+    RRRR-MM-DD GG: MM: SS<br>M/D/RRRR HH: MM: SS AM/PM<br>PN DD, rrrr HH: MM: SS<br />yyMMdd HH: mm: SS<br />ddMMyy HH: mm: SS<br />MMM d hh: mm: SS<br />DD/MMM/rrrr: gg: mm: SS ZZZ<br />RRRR-MM-DDTgg: mm: ssK
 
 - Plik dziennika nie może zezwalać na cykliczne rejestrowanie ani obracanie dzienników, w którym plik jest zastępowany nowymi wpisami.
 - Plik dziennika musi używać kodowania ASCII lub UTF-8.  Inne formaty, takie jak UTF-16, nie są obsługiwane.
@@ -58,13 +58,13 @@ Kreator dziennika niestandardowego działa w Azure Portal i umożliwia zdefiniow
 
 1. W Azure Portal wybierz pozycję **log Analytics obszary robocze** > obszarze roboczym > **Ustawienia zaawansowane**.
 2. Kliknij pozycję **dane** > **dzienniki niestandardowe**.
-3. Domyślnie wszystkie zmiany konfiguracji są automatycznie przekazywane do wszystkich agentów. W przypadku agentów systemu Linux plik konfiguracji jest wysyłany do programu zbierającego dane.
+3. Domyślnie wszystkie zmiany konfiguracji są automatycznie wypychane do wszystkich agentów. W przypadku agentów systemu Linux plik konfiguracji jest wysyłany do programu zbierającego dane.
 4. Kliknij przycisk **Dodaj +** , aby otworzyć Kreatora dziennika niestandardowego.
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>Krok 2. Przekazywanie i analizowanie przykładowego dziennika
 Zacznij od przekazania przykładu dziennika niestandardowego.  Kreator przeanalizuje i wyświetli wpisy w tym pliku, aby sprawdzić poprawność.  Azure Monitor użyje ogranicznika, który określisz, aby zidentyfikować każdy rekord.
 
-**Nowy wiersz** jest domyślnym ogranicznikiem i jest używany dla plików dziennika, które mają pojedynczy wpis na wiersz.  Jeśli wiersz rozpoczyna się od daty i godziny w jednym z dostępnych formatów, można określić ogranicznik sygnatury czasowej , który obsługuje wpisy obejmujące więcej niż jeden wiersz.
+**Nowy wiersz** jest domyślnym ogranicznikiem i jest używany dla plików dziennika, które mają pojedynczy wpis na wiersz.  Jeśli wiersz rozpoczyna się od daty i godziny w jednym z dostępnych formatów, można określić ogranicznik **sygnatury czasowej** , który obsługuje wpisy obejmujące więcej niż jeden wiersz.
 
 Jeśli jest używany ogranicznik sygnatury czasowej, właściwość TimeGenerated każdego rekordu przechowywanego w Azure Monitor zostanie wypełniona datą/godziną określoną dla tego wpisu w pliku dziennika.  Jeśli jest używany nowy ogranicznik wiersza, TimeGenerated jest wypełniany datą i godziną, która Azure Monitor zebrania wpisu.
 
@@ -81,12 +81,12 @@ Na przykład aplikacja może utworzyć plik dziennika codziennie o dacie zawarte
 
 Poniższa tabela zawiera przykłady prawidłowych wzorców do określenia różnych plików dziennika.
 
-| Opis | Path |
+| Opis | Ścieżka |
 |:--- |:--- |
 | Wszystkie pliki w *C:\LOGS* z rozszerzeniem txt w agencie systemu Windows |C:\Logs @ no__t-0\*.txt |
-| Wszystkie pliki w *C:\LOGS* o nazwie rozpoczynającej się od nazwy log i. txt w agencie systemu Windows |C:\Logs\log\*.txt |
+| Wszystkie pliki w *C:\LOGS* o nazwie rozpoczynającej się od nazwy log i. txt w agencie systemu Windows |C:\Logs\ log\*.txt |
 | Wszystkie pliki w */var/log/Audit* z rozszerzeniem txt w agencie systemu Linux |/var/log/Audit/*. txt |
-| Wszystkie pliki w */var/log/Audit* o nazwie rozpoczynającej się od pliku log i rozszerzenia. txt w agencie systemu Linux |/var/log/audit/log\*.txt |
+| Wszystkie pliki w */var/log/Audit* o nazwie rozpoczynającej się od pliku log i rozszerzenia. txt w agencie systemu Linux |/var/log/Audit/log\*.txt |
 
 1. Wybierz pozycję Windows lub Linux, aby określić format ścieżki, który chcesz dodać.
 2. Wpisz ścieżkę i kliknij przycisk **+** .
@@ -129,7 +129,7 @@ Niestandardowe rekordy dziennika mają typ o podanej nazwie dziennika i właści
 | TimeGenerated |Data i godzina zebrania rekordu przez Azure Monitor.  Jeśli w dzienniku jest wykorzystywany ogranicznik oparty na czasie, to jest to czas uzyskany od wpisu. |
 | SourceSystem |Typ agenta, z którego zebrano rekord. <br> OpsManager — Agent systemu Windows, bezpośrednie połączenie lub System Center Operations Manager <br> Linux — Wszyscy agenci systemu Linux |
 | RawData |Pełny tekst zebranego wpisu. Najprawdopodobniej chcesz [przeanalizować te dane do poszczególnych właściwości](../log-query/parse-text.md). |
-| ManagementGroupName |Nazwa grupy zarządzania dla agentów programu System Center Operations Manager.  Dla innych agentów jest to AOI -\<identyfikator obszaru roboczego\> |
+| ManagementGroupName |Nazwa grupy zarządzania dla agentów programu System Center Operations Manager.  W przypadku innych agentów jest to AOI-\<workspace ID @ no__t-1 |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Przykładowe wskazówki dotyczące dodawania dziennika niestandardowego
@@ -172,8 +172,8 @@ Dzienniki niestandardowe są przydatne, jeśli dane są zgodne z kryteriami na l
 W przypadkach, gdy dane nie mogą być zbierane z dziennikami niestandardowymi, należy wziąć pod uwagę następujące alternatywne strategie:
 
 - Użyj skryptu niestandardowego lub innej metody, aby zapisać dane do [zdarzeń systemu Windows](data-sources-windows-events.md) lub [dziennika](data-sources-syslog.md) systemowego, które są zbierane przez Azure monitor. 
-- Wyślij dane bezpośrednio do Azure Monitor przy użyciu [interfejsu API modułu zbierającego dane http](data-collector-api.md). Przykład używania elementów Runbook w Azure Automation jest dostępny w temacie [zbieranie danych dziennika w Azure monitor za pomocą Azure Automation elementu Runbook](runbook-datacollect.md).
+- Wyślij dane bezpośrednio do Azure Monitor przy użyciu [interfejsu API modułu zbierającego dane http](data-collector-api.md). 
 
 ## <a name="next-steps"></a>Następne kroki
 * Zobacz [Analizowanie danych tekstowych w Azure monitor](../log-query/parse-text.md) , aby poznać metody analizowania każdego zaimportowanego wpisu dziennika do wielu właściwości.
-* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
+* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań.

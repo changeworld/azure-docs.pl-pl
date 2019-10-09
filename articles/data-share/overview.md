@@ -1,19 +1,19 @@
 ---
 title: Co to jest wersja zapoznawcza usługi Azure Data Share
-description: Omówienie usługi Azure Data Share w wersji zapoznawczej
+description: Dowiedz się, jak po prostu i bezpiecznie udostępniać dane wielu klientom i partnerom przy użyciu wersji zapoznawczej usługi Azure Data Share.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 11f32b1f1349ef0f9826f95832648e6949cc2f8c
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6ba6e9df7b3fd2992891f4b085581c51fe900744
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421387"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169071"
 ---
-# <a name="what-is-azure-data-share-preview"></a>Co to jest Azure Data Share (wersja zapoznawcza)?
+# <a name="what-is-azure-data-share-preview"></a>Co to jest wersja zapoznawcza usługi Azure Data Share?
 
 W dzisiejszym świecie dane są wyświetlane jako kluczowy zasób strategiczny, który wiele organizacji musi po prostu i bezpiecznie udostępnić klientom i partnerom. Istnieje wiele sposobów, w których obecnie klienci wykonują te czynności, w tym za pośrednictwem protokołu FTP, poczty e-mail i interfejsów API, aby nazwać kilka. Organizacje mogą łatwo utracić śledzenie osób, w których udostępnili swoje dane. Udostępnianie danych przy użyciu protokołu FTP lub w ramach infrastruktury interfejsu API jest często kosztowne do aprowizacji i administrowania. Istnieją narzuty związane z zarządzaniem za pomocą tych metod udostępniania na dużą skalę. 
 
@@ -25,7 +25,7 @@ Dostawca danych może zachować kontrolę nad sposobem obsługi ich danych, okre
 
 Udział danych platformy Azure ułatwia zwiększenie wglądu w dane, ułatwiając łączenie danych od innych firm w celu wzbogacania scenariuszy analizy i AI. Łatwo twórz, Przetwarzaj i analizuj dane udostępniane za pomocą udziału danych platformy Azure. 
 
-Dostawca danych i odbiorca danych muszą mieć subskrypcję platformy Azure, aby udostępniać i odbierać dane. Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Dostawca danych i odbiorca danych muszą mieć subskrypcję platformy Azure, aby udostępniać i odbierać dane. Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="scenarios-for-azure-data-share"></a>Scenariusze dotyczące udziału danych platformy Azure
 
@@ -45,7 +45,7 @@ Dostawcy danych mogą oferować klientom danych przyrostowe aktualizacje danych,
 
 Gdy odbiorca danych akceptuje udział danych, może odbierać dane na koncie magazynu. Na przykład jeśli dostawca danych udostępnia dane za pomocą usługi Azure Blob Storage, odbiorca danych może odbierać te dane w Azure Data Lake Store. 
 
-## <a name="key-capabilities"></a>Najważniejsze możliwości
+## <a name="key-capabilities"></a>Kluczowe możliwości
 
 Udział danych platformy Azure umożliwia dostawcom danych:
 
@@ -73,7 +73,7 @@ Udział danych platformy Azure umożliwia użytkownikom danych:
 
 Wszystkie najważniejsze możliwości wymienione powyżej są obsługiwane za pośrednictwem platformy Azure lub interfejsów API REST. Aby uzyskać więcej informacji na temat korzystania z usługi Azure Data Share za pośrednictwem interfejsów API REST, zapoznaj się z dokumentacją referencyjną. 
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 Udział danych platformy Azure wykorzystuje podstawowe zabezpieczenia oferowane przez platformę Azure w celu ochrony danych przechowywanych i przesyłanych. Dane są szyfrowane w spoczynku, gdzie są obsługiwane przez podstawowy mechanizm magazynu. Dane są również szyfrowane podczas przesyłania. Metadane dotyczące udziału danych są również szyfrowane w czasie spoczynku i podczas przesyłania. 
 

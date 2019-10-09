@@ -7,7 +7,7 @@ author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: dsc
+keywords: DSC
 ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 38a302545f2dd46a8123816a41c97ae26ee4c260
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0625e3ac14e28cb4d43313bf1d9bc8b7afa08b1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092506"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176706"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Przekaż poświadczenia do procedury obsługi usługi Azure DSCExtension
 
@@ -83,11 +83,11 @@ $vm | Update-AzVM
 
 Uruchomienie tego kodu powoduje wpisanie prośby o poświadczenie. Po podaniu poświadczeń zostanie ono krótko zapisane w pamięci. Po opublikowaniu poświadczenia za pomocą polecenia cmdlet **Set-AzVMDscExtension** poświadczenia są przesyłane za pośrednictwem protokołu HTTPS do maszyny wirtualnej. Na maszynie wirtualnej platforma Azure przechowuje poświadczenia zaszyfrowane na dysku przy użyciu lokalnego certyfikatu maszyny wirtualnej. Poświadczenie jest z chwilą odszyfrowywane w pamięci, a następnie ponownie szyfrowane w celu przekazania go do DSC.
 
-Ten proces różni się od [używania bezpiecznych konfiguracji bez obsługi rozszerzenia](/powershell/dsc/securemof). Środowisko platformy Azure umożliwia bezpieczne przesyłanie danych konfiguracji za pośrednictwem certyfikatów. W przypadku korzystania z programu obsługi rozszerzeń DSC nie trzeba podawać **$CertificatePath** ani **$CertificateID**/  **$Thumbprint** wpisów w **ConfigurationData**.
+Ten proces różni się od [używania bezpiecznych konfiguracji bez obsługi rozszerzenia](/powershell/scripting/dsc/pull-server/securemof). Środowisko platformy Azure umożliwia bezpieczne przesyłanie danych konfiguracji za pośrednictwem certyfikatów. W przypadku korzystania z programu obsługi rozszerzeń DSC nie trzeba podawać **$CertificatePath** ani **$CertificateID**/  **$Thumbprint** w **ConfigurationData**.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj [się z wprowadzeniem do procedury obsługi rozszerzenia usługi Azure DSC](dsc-overview.md).
 - Zapoznaj się z [szablonem Azure Resource Manager dla rozszerzenia DSC](dsc-template.md).
-- Aby uzyskać więcej informacji na temat programu PowerShell DSC, przejdź do [centrum dokumentacji programu PowerShell](/powershell/dsc/overview).
+- Aby uzyskać więcej informacji na temat programu PowerShell DSC, przejdź do [centrum dokumentacji programu PowerShell](/powershell/scripting/dsc/overview/overview).
 - Aby uzyskać więcej funkcji, którymi można zarządzać za pomocą programu PowerShell DSC i więcej zasobów DSC, przejrzyj [galerię programu PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).

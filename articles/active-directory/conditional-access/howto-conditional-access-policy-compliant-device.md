@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da1a5f54e5e989f661770d518a6753b831b59bd4
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 1963d0ad741099fcb6602beb58f62b0eabf01aa0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990512"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170063"
 ---
-# <a name="conditional-access-require-compliant-devices"></a>Dostęp warunkowy: Wymaganie zgodnych urządzeń
+# <a name="conditional-access-require-compliant-devices"></a>Dostęp warunkowy: Wymagaj zgodnych urządzeń
 
 Organizacje, które wdrożyły Microsoft Intune mogą korzystać z informacji zwróconych z urządzeń w celu identyfikowania urządzeń spełniających wymagania dotyczące zgodności, takich jak:
 
@@ -33,19 +33,19 @@ Te informacje o zgodności z zasadami są przekazywane do usługi Azure AD, gdzi
 
 Poniższe kroki pomogą utworzyć zasady dostępu warunkowego, aby wymagać, aby urządzenia uzyskujące dostęp do zasobów były oznaczone jako zgodne z zasadami zgodności usługi Intune w organizacji.
 
-1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
 1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
 1. Wybierz pozycję **nowe zasady**.
 1. Nadaj zasadom nazwę. Firma Microsoft zaleca, aby organizacje utworzyły znaczący Standard nazw swoich zasad.
 1. W obszarze **przypisania**wybierz pozycję **Użytkownicy i grupy**
-   1. Wobszarze Dołączanie wybierz pozycję **Wszyscy użytkownicy**.
-   1. Wobszarze Wyklucz wybierz pozycję **Użytkownicy i grupy** , a następnie wybierz opcję dostęp awaryjny lub konta w ramach swojej organizacji. 
-   1. Wybierz pozycję **Done** (Gotowe).
-1. W obszarze **aplikacje w chmurze lub akcje** > **Dołącz**wybierz pozycję **wszystkie aplikacje w chmurze**.
-   1. Jeśli musisz wykluczyć określone aplikacje z zasad, możesz je wybrać z karty Wyklucz w obszarze **Wybierz wykluczone aplikacje w chmurze** i wybierz **pozycję Wybierz**.
-   1. Wybierz pozycję **Done** (Gotowe).
-1. W obszarze **Kontrola** > dostępu wybierz pozycję **Wymagaj, aby urządzenie było oznaczone jako zgodne**.
-   1. Wybierz **wybierz**.
+   1. W obszarze **dołączanie**wybierz pozycję **Wszyscy użytkownicy**.
+   1. W obszarze **Wyklucz**wybierz pozycję **Użytkownicy i grupy** , a następnie wybierz opcję dostęp awaryjny lub konta w ramach swojej organizacji. 
+   1. Wybierz pozycję **gotowe**.
+1. W obszarze **aplikacje lub akcje w chmurze** > **Dołącz**wybierz pozycję **wszystkie aplikacje w chmurze**.
+   1. Jeśli musisz wykluczyć określone aplikacje z zasad, możesz je wybrać z karty **Wyklucz** w obszarze **Wybierz wykluczone aplikacje w chmurze** i wybierz **pozycję Wybierz**.
+   1. Wybierz pozycję **gotowe**.
+1. W obszarze **Kontrola dostępu** > **Przydziel**, wybierz pozycję **Wymagaj, aby urządzenie było oznaczone jako zgodne**.
+   1. Wybierz pozycję **Wybierz**.
 1. Potwierdź ustawienia i ustaw opcję **Włącz zasady** na **włączone**.
 1. Wybierz pozycję **Utwórz** , aby utworzyć zasady.
 

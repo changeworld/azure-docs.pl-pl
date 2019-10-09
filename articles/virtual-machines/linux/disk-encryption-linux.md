@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7f8c029c5ceff0865b060cf8edc794454d6c282
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0a1515144f340938cddfd5ca9f2ac4803bcb3f77
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828478"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174719"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scenariusze Azure Disk Encryption na maszynach wirtualnych z systemem Linux
 
@@ -36,7 +36,7 @@ We wszystkich przypadkach należy [wykonać migawkę](snapshot-copy-managed-disk
 
 ## <a name="install-tools-and-connect-to-azure"></a>Instalowanie narzędzi i nawiązywanie połączenia z platformą Azure
 
-Azure Disk Encryption można włączać i zarządzać nimi za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure) i [Azure PowerShell](/azure/new-azureps-module-az). Aby to zrobić, należy zainstalować narzędzia lokalnie i połączyć się z subskrypcją platformy Azure.
+Azure Disk Encryption można włączać i zarządzać nimi za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure) i [Azure PowerShell](/powershell/azure/new-azureps-module-az). Aby to zrobić, należy zainstalować narzędzia lokalnie i połączyć się z subskrypcją platformy Azure.
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -66,7 +66,7 @@ az account set --subscription "<subscription name or ID>"
 Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z interfejsem wiersza polecenia platformy Azure 2,0](/cli/azure/get-started-with-azure-cli). 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell AZ module](/azure/new-azureps-module-az) udostępnia zestaw poleceń cmdlet, które używają modelu [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) do zarządzania zasobami platformy Azure. Możesz użyć jej w przeglądarce z [Azure Cloud Shell](../../cloud-shell/overview.md)lub zainstalować ją na komputerze lokalnym, korzystając z instrukcji w temacie [Install the Azure PowerShell module](/powershell/azure/install-az-ps). 
+[Azure PowerShell AZ module](/powershell/azure/new-azureps-module-az) udostępnia zestaw poleceń cmdlet, które używają modelu [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) do zarządzania zasobami platformy Azure. Możesz użyć jej w przeglądarce z [Azure Cloud Shell](../../cloud-shell/overview.md)lub zainstalować ją na komputerze lokalnym, korzystając z instrukcji w temacie [Install the Azure PowerShell module](/powershell/azure/install-az-ps). 
 
 Jeśli masz już zainstalowany lokalnie, upewnij się, że korzystasz z najnowszej wersji zestawu SDK Azure PowerShell, aby skonfigurować Azure Disk Encryption. Pobierz najnowszą wersję [Azure PowerShell wydania](https://github.com/Azure/azure-powershell/releases).
 
@@ -202,7 +202,7 @@ W poniższej tabeli wymieniono Menedżer zasobów parametry szablonu dla istniej
 | liczba woluminów | Typ woluminu, na którym jest wykonywana operacja szyfrowania. Prawidłowe wartości to _system operacyjny_, _dane_i _wszystkie_. 
 | forceUpdateTag | Przekazuj unikatową wartość, taką jak identyfikator GUID za każdym razem, gdy operacja musi zostać wymuszona. |
 | resizeOSDisk | Należy zmienić rozmiar partycji systemu operacyjnego w celu zajmowania całego wirtualnego dysku twardego systemu operacyjnego przed podziałem woluminu systemowego. |
-| Przeniesienie | Lokalizacja dla wszystkich zasobów. |
+| lokalizacja | Lokalizacja dla wszystkich zasobów. |
 
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Korzystanie z funkcji EncryptFormatAll w przypadku dysków z danymi na maszynach wirtualnych z systemem Linux

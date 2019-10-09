@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: analizowanie obrazu zdalnego — REST, cURL'
+title: 'Szybki Start: analizowanie obrazu zdalnego — REST, zwinięcie'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start przeprowadzisz analizę obrazu zdalnego za pomocą interfejsu API przetwarzania obrazów i biblioteki cURL.
+description: W tym przewodniku szybki start przeanalizujesz obraz zdalny przy użyciu interfejs API przetwarzania obrazów z zwinięciem.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,45 +11,45 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0c52bf9b62026caec54a09acd10a52f89ca98d52
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 4f03ae62e2a455a5a5101bef45cf2d78100248f4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138020"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177310"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Szybki start: Analizowanie obrazu zdalnego przy użyciu interfejsu API REST przetwarzanie obrazów i zwinięcie
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Szybki Start: analizowanie obrazu zdalnego przy użyciu interfejsu API REST przetwarzanie obrazów i zwinięcie
 
-W tym przewodniku szybki start przeanalizuje się zdalnie przechowywany obraz w celu wyodrębnienia funkcji wizualnych przy użyciu interfejsu API REST przetwarzanie obrazów. Metoda [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) umożliwia wyodrębnienie elementów wizualnych na podstawie zawartości obrazu.
+W tym przewodniku szybki start przeanalizuje się zdalnie przechowywany obraz w celu wyodrębnienia funkcji wizualnych przy użyciu interfejsu API REST przetwarzanie obrazów. Za pomocą metody [analizy obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) można wyodrębnić funkcje wizualne na podstawie zawartości obrazu.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Musisz mieć bibliotekę [cURL](https://curl.haxx.se/windows).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. 
+- Musisz mieć [zwinięcie](https://curl.haxx.se/windows).
+- Musisz mieć klucz subskrypcji dla przetwarzanie obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. 
 
-## <a name="create-and-run-the-sample-command"></a>Tworzenie i uruchamianie przykładowego polecenia
+## <a name="create-and-run-the-sample-command"></a>Utwórz i uruchom przykładowe polecenie
 
-Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
+Aby utworzyć i uruchomić przykład, wykonaj następujące czynności:
 
-1. Skopiuj następujące polecenie do edytora tekstów.
-1. W razie potrzeby wprowadź w poleceniu następujące zmiany:
+1. Skopiuj następujące polecenie do edytora tekstu.
+1. W razie konieczności wprowadź następujące zmiany w poleceniu:
     1. Zastąp wartość `<subscriptionKey>` kluczem subskrypcji.
     1. Zastąp pierwszą część adresu URL żądania (`westcentralus`) tekstem w adresie URL własnego punktu końcowego.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-    1. Opcjonalnie, zmień parametr języka w adresie URL żądania (`language=en`), aby używać innego obsługiwanego języka.
-    1. Opcjonalnie, zmień adres URL obrazu w treści żądania (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) na adres URL innego obrazu do analizy.
+    1. Opcjonalnie Zmień parametr Language w adresie URL żądania (`language=en`), aby użyć innego obsługiwanego języka.
+    1. Opcjonalnie można zmienić adres URL obrazu w treści żądania (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) na adres URL innego obrazu do przeanalizowania.
 1. Otwórz okno wiersza polecenia.
-1. Wklej polecenie z edytora tekstów w oknie wiersza polecenia, a następnie uruchom polecenie.
+1. Wklej polecenie z edytora tekstu do okna wiersza polecenia, a następnie uruchom polecenie.
 
 ```bash
-curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
+curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
 ```
 
-## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
+## <a name="examine-the-response"></a>Badanie odpowiedzi
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa aplikacja analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
+Pomyślna odpowiedź jest zwracana w formacie JSON. Przykładowa aplikacja analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
 
 ```json
 {
@@ -109,7 +109,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z interfejsem API przetwarzania obrazów używanym do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Eksploruj interfejs API przetwarzania obrazów używany do analizowania obrazu, wykrywania osobistości i punktów orientacyjnych, tworzenia miniatury oraz wyodrębniania tekstu napisanego i odręcznego. Aby szybko eksperymentować z interfejs API przetwarzania obrazów, wypróbuj [konsolę testowania Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Eksplorowanie interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

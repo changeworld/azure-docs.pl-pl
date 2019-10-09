@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0d06006e72405a53361d0551cf773488ec809762
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fa29ea3d2f6edbbb016ce5c0c74415a5e765e85a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963821"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177553"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Samouczek: używanie plików parametrów do wdrożenia szablonu Menedżer zasobów
 
@@ -53,7 +53,7 @@ Ten plik jest plikiem parametrów dla środowiska produkcyjnego. Zwróć uwagę,
 
 Użyj interfejsu wiersza polecenia platformy Azure lub Azure PowerShell, aby wdrożyć szablon.
 
-Jako ostatni test szablonu Utwórzmy dwie nowe grupy zasobów. Jeden dla środowiska deweloperskiego i dla środowiska produkcyjnego.
+Jako ostatni test szablonu Utwórzmy dwie nowe grupy zasobów. Jeden dla środowiska deweloperskiego i jeden dla środowiska produkcyjnego.
 
 Po pierwsze wdrożenie zostanie wdrożone w środowisku deweloperskim.
 
@@ -83,7 +83,7 @@ az group deployment create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
-  --parameters @azuredeploy.parameters.dev.json
+  --parameters azuredeploy.parameters.dev.json
 ```
 
 ---
@@ -114,14 +114,14 @@ az group deployment create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
-  --parameters @azuredeploy.parameters.prod.json
+  --parameters azuredeploy.parameters.prod.json
 ```
 
 ---
 
-## <a name="verify-deployment"></a>Weryfikuj wdrożenie
+## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
-Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
+Możesz zweryfikować wdrożenie, przeeksplorowanie grup zasobów z Azure Portal.
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com).
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2019
 ms.author: kumud
-ms.openlocfilehash: 9bf44aa5ab18f94ec91650548dc13360ce1b1f3d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5fa340fc3c839d74f292f551b73184ea4df1c0f1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71938501"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72175947"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Dodawanie lub usuwanie delegowania podsieci
 
@@ -45,6 +45,12 @@ W tej sekcji utworzysz sieć wirtualną i podsieć, która zostanie później de
     | Zakres adresów podsieci | Wprowadź *10.0.0.0/24*. |
     |||
 1. Pozostaw resztę jako domyślną, a następnie wybierz pozycję **Utwórz**.
+
+## <a name="permissons"></a>Uprawnień
+
+Jeśli nie utworzysz podsieci, którą chcesz delegować do usługi platformy Azure, musisz mieć następujące uprawnienia: `Microsoft.Network/virtualNetworks/subnets/write`.
+
+Wbudowana rola [współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) zawiera również niezbędne uprawnienia.
 
 ## <a name="delegate-a-subnet-to-an-azure-service"></a>Delegowanie podsieci do usługi platformy Azure
 

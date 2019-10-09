@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 6249a3c1c8ea3be02ca802d6be7e720bd900f675
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907870"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178092"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurowanie mapowania sieci i adresowania IP dla sieci wirtualnych
 
@@ -33,7 +33,7 @@ Mapuj sieci w następujący sposób:
 3. W obszarze **Dodawanie mapowania sieci**wybierz lokalizację źródłową i docelową. W naszym przykładzie źródłowa maszyna wirtualna jest uruchomiona w regionie Azja Wschodnia i jest replikowana do regionu Azja Południowo-Wschodnia.
 
     ![Wybierz źródło i cel](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
-3. Teraz Utwórz mapowanie sieci w przeciwieństwie do katalogu. W naszym przykładzie Źródło będzie teraz miało Azja Południowo-Wschodnia, a element docelowy zostanie Azja Wschodnia.
+3. Teraz Utwórz mapowanie sieci w odwrotnym kierunku. W naszym przykładzie Źródło będzie teraz miało Azja Południowo-Wschodnia, a element docelowy zostanie Azja Wschodnia.
 
     ![Okienko Dodawanie mapowania sieci — wybierz lokalizację źródłową i docelową dla sieci docelowej](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
@@ -67,13 +67,13 @@ Podsieć docelowej maszyny wirtualnej jest wybierana na podstawie nazwy podsieci
 
 Adres IP dla każdej karty sieciowej na docelowej maszynie wirtualnej jest konfigurowany w następujący sposób:
 
-- **DHCP**: Jeśli karta sieciowa źródłowej maszyny wirtualnej używa protokołu DHCP, karta sieciowa docelowej maszyny wirtualnej jest również ustawiona do korzystania z protokołu DHCP.
-- **Statyczny adres IP**: Jeśli karta sieciowa źródłowej maszyny wirtualnej używa statycznego adresowania IP, docelowa karta sieciowa maszyny wirtualnej będzie również używać statycznego adresu IP.
+- **DHCP**: Jeśli karta sieciowa ŹRÓDŁOWEJ maszyny wirtualnej używa protokołu DHCP, karta sieciowa docelowej maszyny wirtualnej jest również ustawiona do korzystania z protokołu DHCP.
+- **Statyczny adres IP**: Jeśli karta sieciowa ŹRÓDŁOWEJ maszyny wirtualnej używa statycznego adresowania IP, docelowa karta sieciowa maszyny wirtualnej będzie również używać statycznego adresu IP.
 
 
-## <a name="ip-address-assignment-during-failover"></a>Przypisywanie adresów IP podczas przełączania do trybu failover
+## <a name="ip-address-assignment-during-failover"></a>Przypisanie adresu IP podczas pracy w trybie failover
 
-**Źródłowa i docelowa podsieć** | **Szczegóły**
+**Źródłowa i docelowa podsieć** | **Uzyskać**
 --- | ---
 Ta sama przestrzeń adresowa | Adres IP źródłowej karty sieciowej maszyny wirtualnej jest ustawiony jako docelowy adres IP karty sieciowej maszyny wirtualnej.<br/><br/> Jeśli adres nie jest dostępny, następny dostępny adres IP jest ustawiany jako element docelowy.
 
@@ -83,7 +83,7 @@ Inna przestrzeń adresowa<br/><br/> Następny dostępny adres IP w podsieci doce
 
 ## <a name="ip-address-assignment-during-test-failover"></a>Przypisanie adresu IP podczas testowego przełączania do trybu failover
 
-**Sieć docelowa** | **Szczegóły**
+**Sieć docelowa** | **Uzyskać**
 --- | ---
 Sieć docelowa jest siecią wirtualną trybu failover | -Docelowy adres IP jest statyczny, ale nie jest to ten sam adres IP, który jest zarezerwowany dla trybu failover.<br/><br/>  -Przypisany adres jest następnym dostępnym adresem od końca zakresu podsieci.<br/><br/> Na przykład: Jeśli źródłowy adres IP to 10.0.0.19, a sieć trybu failover używa zakresu 10.0.0.0/24, wówczas Następny adres IP przypisany do docelowej maszyny wirtualnej to 10.0.0.254.
 Sieć docelowa nie jest siecią wirtualną trybu failover | -Docelowy adres IP będzie statyczny przy użyciu tego samego adresu IP zarezerwowanych dla trybu failover.<br/><br/>  — Jeśli ten sam adres IP jest już przypisany, adres IP jest następną dostępną na końcu zakresu podsieci.<br/><br/> Na przykład: Jeśli źródłowy statyczny adres IP to 10.0.0.19, a tryb failover znajduje się w sieci, która nie jest siecią trybu failover, z zakresem 10.0.0.0/24, docelowy statyczny adres IP będzie 10.0.0.0.19, jeśli jest dostępny, a w przeciwnym razie będzie 10.0.0.254.

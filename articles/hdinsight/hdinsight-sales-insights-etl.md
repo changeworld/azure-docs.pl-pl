@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: 07714575bb4adfccf5d72a093874852c1bfebcc8
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: b9bcaf4b7497e8beba377eb7e47a44a6eb061299
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843784"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178008"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Samouczek: Tworzenie kompleksowego potoku danych w celu uzyskania szczegółowych informacji o sprzedaży
 
@@ -175,7 +175,7 @@ Aby sprawdzić, czy potoki zostały uruchomione, można wykonać jedną z nastę
 - Przejdź do sekcji **monitorowanie** w fabryce danych za pomocą portalu.
 - W Eksplorator usługi Azure Storage przejdź do konta magazynu Data Lake Storage generacji 2. Przejdź do systemu plików `files`, a następnie przejdź do folderu `transformed` i sprawdź jego zawartość, aby sprawdzić, czy potok zakończył się pomyślnie.
 
-Aby uzyskać inne metody przekształcania danych za pomocą usługi HDInsight, zobacz [ten artykuł na temat korzystania z Jupyter Notebook](/spark/apache-spark-load-data-run-query.md).
+Aby uzyskać inne metody przekształcania danych za pomocą usługi HDInsight, zobacz [ten artykuł na temat korzystania z Jupyter Notebook](/azure/hdinsight/spark/apache-spark-load-data-run-query).
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Utwórz tabelę w klastrze zapytań interaktywnych, aby wyświetlić dane na Power BI
 

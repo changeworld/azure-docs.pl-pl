@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828232"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173405"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bezserwerowe (wersja zapoznawcza)
 
@@ -326,7 +326,7 @@ Załóżmy, że cena jednostkowa obliczeń to $0.000073/rdzeń wirtualny/s.  Nas
 
 ## <a name="available-regions"></a>Dostępne regiony
 
-Warstwa obliczeń bezserwerowych jest dostępna na całym świecie, z wyjątkiem następujących regionów: Australia Środkowa, Chiny Wschodnie, Chiny Północne, Francja Południowa, Niemcy środkowe, Niemcy północny, Indie Zachodnie, Korea Południowa, Zachodnia Republika Południowej Afryki, Północne Zjednoczone Królestwo, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo i zachodnie Środkowe stany USA.
+Warstwa obliczeń bezserwerowych jest dostępna na całym świecie, z wyjątkiem następujących regionów: Chiny Wschodnie, Chiny Północne, Niemcy środkowe, Niemcy Północno-środkowe, Północne Zjednoczone Królestwo, Południowe Zjednoczone Królestwo 2, zachodnie stany USA i US Gov środkowe (Iowa).
 
 ## <a name="next-steps"></a>Następne kroki
 

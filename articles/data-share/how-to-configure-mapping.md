@@ -1,41 +1,41 @@
 ---
-title: Konfigurowanie mapowania zestawu danych
-description: Konfigurowanie mapowania zestawu danych
+title: Konfigurowanie mapowania zestawu danych w wersji zapoznawczej usługi Azure Data Share
+description: Informacje o konfigurowaniu mapowania zestawu danych dla odebranego udziału przy użyciu usługi Azure Data Share Preview.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 581e1eef5f1d64e68a6501f56ce60218281c605d
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 035235116240bdc6de3bc689c2430fee018b202d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789243"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169137"
 ---
-# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Jak skonfigurować mapowanie zestawu danych odebranych udziału w udostępnianie danych platformy Azure w wersji zapoznawczej
+# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Jak skonfigurować mapowanie zestawu danych dla odebranego udziału w wersji zapoznawczej udziału danych platformy Azure
 
-W tym artykule wyjaśniono, jak skonfigurować mapowanie zestawu danych dla udziału odebranych przy użyciu udziału danych platformy Azure w wersji zapoznawczej. Należy to zrobić, jeśli zaakceptować zaproszenie udostępniania danych, ale postanowił wybrać "Zaakceptuj i skonfigurować później". W przeciwnym razie może po prostu chcesz zmienić docelowe konto magazynu dla odebranych danych. 
+W tym artykule opisano sposób konfigurowania mapowania zestawu danych dla odebranego udziału przy użyciu usługi Azure Data Share Preview. Należy to zrobić, Jeśli zaakceptujesz zaproszenie do udziału danych, ale wybrano opcję "Akceptuj i skonfiguruj później". W przeciwnym razie możesz po prostu chcieć zmienić docelowe konto magazynu dla odebranych danych. 
 
-## <a name="navigate-to-a-received-data-share"></a>Przejdź do udziału odebranych danych
+## <a name="navigate-to-a-received-data-share"></a>Przejdź do odebranego udziału danych
 
-W usłudze udostępnianie danych platformy Azure, przejdź do udziału odebranych i wybierz **szczegóły** kartę. 
+W usłudze udział danych platformy Azure przejdź do otrzymanego udziału i wybierz kartę **szczegóły** . 
 
-![Mapowanie zestawu danych](./media/dataset-mapping.png "mapowanie zestawu danych") 
+(./media/dataset-mapping.png "Mapowanie zestawu danych") ![mapowania zestawu danych] 
 
-Zaznacz pole obok zestawu danych, o których chcesz przypisać do miejsca docelowego, a następnie kliknij przycisk **+ mapy do obiektu docelowego**. Może być konieczne mapowania pierwsze, jeśli zostały już skonfigurowane docelowe konto magazynu i chcesz zmienić mapowanie do innego konta magazynu. 
+Zaznacz pole wyboru obok zestawu danych, do którego chcesz przypisać miejsce docelowe, a następnie kliknij pozycję **+ Mapuj, aby określić element docelowy**. Może być konieczne odwzorowanie najpierw, jeśli skonfigurowano już docelowe konto magazynu i chcesz zmienić mapowanie na inne konto magazynu. 
 
-![Mapuj do docelowych](./media/dataset-map-target.png "mapy do obiektu docelowego") 
+![Mapuj na mapowanie docelowe](./media/dataset-map-target.png "do") celu 
 
 ## <a name="select-a-new-storage-account"></a>Wybierz nowe konto magazynu 
 
-Wybierz konto magazynu, chcieliby znajdą się w danych. Należy pamiętać, że wszelkie dane, które już istnieje w żadnym wcześniej mapowane kont magazynu nie zostaną automatycznie przeniesione do nowego konta magazynu.
+Wybierz konto magazynu, w którym chcesz umieścić dane. Należy pamiętać, że wszystkie dane, które już istnieją na żadnym wcześniej mapowanym koncie magazynu, nie będą automatycznie przenoszone na nowe konto magazynu.
 
-![Docelowe konto magazynu](./media/map-target.png "docelowy magazyn") 
+![Docelowy](./media/map-target.png "magazyn docelowy") konta magazynu 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak uruchomić, udostępnianie danych, w dalszym ciągu [udostępnianie danych](share-your-data.md) samouczka.
+Aby dowiedzieć się, jak zacząć udostępniać dane, przejdź do samouczka [udostępnianie danych](share-your-data.md) .
 
 
 

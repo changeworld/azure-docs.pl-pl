@@ -1,17 +1,17 @@
 ---
 title: Jak monitorować wersję zapoznawczą usługi Azure Data Share
-description: Jak monitorować wersję zapoznawczą usługi Azure Data Share
+description: Dowiedz się, jak monitorować stan zaproszenia, udostępniać subskrypcje i historię migawek w wersji zapoznawczej usługi Azure Data Share.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: fbc6847dd86b7687d477b2bae0deab1389dc8491
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 22c95f1ac541e1288494ed85cc9654d42780ea60
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827058"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169118"
 ---
 # <a name="monitor-azure-data-share-preview"></a>Monitorowanie wersji zapoznawczej udziału danych platformy Azure 
 

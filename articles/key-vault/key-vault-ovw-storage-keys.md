@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 8b9478dda83b85e937faa8915fa5e9b77660f194
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 62faf33dc8b3690036407972e12633e741a85d78
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203620"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176748"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Zarządzanie kluczami konta magazynu przy użyciu Key Vault i interfejsu wiersza polecenia platformy Azure
 
@@ -41,11 +41,11 @@ Dzierżawa usługi Azure AD udostępnia każdą zarejestrowaną aplikację z jed
 
 Key Vault to aplikacja firmy Microsoft, która jest wstępnie zarejestrowana we wszystkich dzierżawach usługi Azure AD. Key Vault jest zarejestrowany w ramach tego samego identyfikatora aplikacji w każdej chmurze platformy Azure.
 
-| dzierżaw | Chmura | Identyfikator aplikacji |
+| Dzierżaw | Chmura | Identyfikator aplikacji |
 | --- | --- | --- |
-| Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Azure — publiczna | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Inne  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Usługa Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Usługa Azure AD | Usługa Azure Public | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Inne  | Ile | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -57,7 +57,7 @@ Aby ukończyć ten przewodnik, należy najpierw wykonać następujące czynnośc
       
 ## <a name="manage-storage-account-keys"></a>Zarządzanie kluczami konta magazynu
 
-### <a name="connect-to-your-azure-account"></a>Nawiąż połączenie z kontem platformy Azure
+### <a name="connect-to-your-azure-account"></a>Nawiązywanie połączenia z kontem platformy Azure
 
 Uwierzytelnij sesję interfejsu wiersza polecenia platformy Azure za pomocą polecenia [AZ login](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) .
 
@@ -70,7 +70,7 @@ az login
 Użyj interfejsu wiersza polecenia platformy Azure [AZ role Create](/cli/azure/role/assignment?view=azure-cli-latest) , aby nadać Key Vault dostęp do konta magazynu. Podaj następujące wartości parametrów polecenia:
 
 - `--role`: Przekaż rolę RBAC roli usługi operatora kluczy konta magazynu. Ta rola ogranicza zakres dostępu do konta magazynu. W przypadku klasycznego konta magazynu należy zamiast tego przekazać "rolę usługi operatora klucza klasycznego konta magazynu".
-- `--assignee-object-id`: Przekaż wartość "93c27d83-f79b-4cb2-8dd4-4aa716542e74", która jest IDENTYFIKATORem obiektu dla Key Vault w chmurze publicznej platformy Azure. (Aby uzyskać identyfikator obiektu Key Vault w chmurze Azure Government, zobacz [Identyfikator aplikacji nazwy głównej usługi](#service-principal-application-id)).
+- `--assignee-object-id`: przekaż wartość "93c27d83-f79b-4cb2-8dd4-4aa716542e74", czyli identyfikator obiektu dla Key Vault w chmurze publicznej platformy Azure. (Aby uzyskać identyfikator obiektu Key Vault w chmurze Azure Government, zobacz [Identyfikator aplikacji nazwy głównej usługi](#service-principal-application-id)).
 - `--scope`: Przekaż identyfikator zasobu konta magazynu, który znajduje się w postaci `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`. Aby znaleźć identyfikator subskrypcji, użyj polecenia [AZ Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) usługi Azure CLI, Aby znaleźć nazwę konta magazynu i grupę zasobów konta magazynu, użyj polecenia [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) usługi Azure CLI.
 
 ```azurecli-interactive
@@ -79,11 +79,11 @@ az role assignment create --role "Storage Account Key Operator Service Role" --a
 
 ### <a name="create-a-key-vault-managed-storage-account"></a>Tworzenie konta magazynu zarządzanego Key Vault
 
- Utwórz konto magazynu zarządzanego przez usługę Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure AZ datamagazyn [Storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) polecenie. Ustaw okres regeneracji wynoszący 90 dni. Po 90 dniach Key Vault ponownie generuje `key1` i zamienia klucz aktywny z `key2` na `key1`. `key1`jest następnie oznaczany jako klucz aktywny. Podaj następujące wartości parametrów polecenia:
+ Utwórz konto magazynu zarządzanego przez usługę Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure AZ datamagazyn [Storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) polecenie. Ustaw okres regeneracji wynoszący 90 dni. Po 90 dniach Key Vault regeneruje `key1` i zamienia klucz aktywny z `key2` na `key1`. `key1` jest następnie oznaczany jako klucz aktywny. Podaj następujące wartości parametrów polecenia:
 
-- `--vault-name`: Przekaż nazwę magazynu kluczy. Aby znaleźć nazwę magazynu kluczy, użyj polecenia [AZ Key list](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) .
-- `-n`: Przekaż nazwę konta magazynu. Aby znaleźć nazwę konta magazynu, użyj polecenia [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) usługi Azure CLI.
-- `--resource-id`: Przekaż identyfikator zasobu konta magazynu, który znajduje się w postaci `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`. Aby znaleźć identyfikator subskrypcji, użyj interfejsu wiersza polecenia platformy Azure [AZ Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) polecenie; Aby znaleźć nazwę konta magazynu i grupę zasobów konta magazynu, użyj polecenia [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) usługi Azure CLI.
+- `--vault-name`: przekaż nazwę magazynu kluczy. Aby znaleźć nazwę magazynu kluczy, użyj polecenia [AZ Key list](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) .
+- `-n`: przekaż nazwę konta magazynu. Aby znaleźć nazwę konta magazynu, użyj polecenia [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) usługi Azure CLI.
+- `--resource-id`: Przekaż identyfikator zasobu konta magazynu, który znajduje się w postaci `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`. Aby znaleźć identyfikator subskrypcji, użyj polecenia [AZ Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) usługi Azure CLI, Aby znaleźć nazwę konta magazynu i grupę zasobów konta magazynu, użyj polecenia [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) usługi Azure CLI.
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -91,18 +91,18 @@ az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountNa
 
 ## <a name="shared-access-signature-tokens"></a>Tokeny sygnatury dostępu współdzielonego
 
-Możesz również poproszenie Key Vault o generowanie tokenów sygnatury dostępu współdzielonego. Sygnatury dostępu współdzielonego zapewnia delegowany dostęp do zasobów na koncie magazynu. Możesz udzielić klientom dostępu do zasobów na koncie magazynu bez udostępniania kluczy konta. Sygnatura dostępu współdzielonego zapewnia bezpieczny sposób udostępniania zasobów magazynu bez naruszania kluczy konta.
+Możesz również poproszenie Key Vault o generowanie tokenów sygnatury dostępu współdzielonego. Sygnatura dostępu współdzielonego zapewnia delegowany dostęp do zasobów na koncie magazynu. Możesz udzielić klientom dostępu do zasobów na koncie magazynu bez udostępniania kluczy konta. Sygnatura dostępu współdzielonego zapewnia bezpieczny sposób udostępniania zasobów magazynu bez naruszania kluczy konta.
 
 Polecenia w tej sekcji pełnią następujące czynności:
 
-- Ustaw definicję `<YourSASDefinitionName>`sygnatury dostępu współdzielonego konta. Definicja jest ustawiana na Key Vault zarządzanym koncie `<YourStorageAccountName>` magazynu w magazynie `<YourKeyVaultName>`kluczy.
+- Ustaw definicję sygnatury dostępu współdzielonego konta `<YourSASDefinitionName>`. Definicja jest ustawiana na Key Vault zarządzanym koncie magazynu `<YourStorageAccountName>` w magazynie kluczy `<YourKeyVaultName>`.
 - Utwórz token sygnatury dostępu współdzielonego konta dla usług obiektów blob, plików, tabel i kolejek. Token jest tworzony dla usług, kontenerów i obiektów typu zasób. Token jest tworzony ze wszystkimi uprawnieniami, za pośrednictwem protokołu HTTPS i z określonymi datami rozpoczęcia i zakończenia.
-- Ustaw Key Vault zarządzaną definicję sygnatury dostępu współdzielonego magazynu w magazynie. Definicja zawiera identyfikator URI szablonu utworzonego tokenu sygnatury dostępu współdzielonego. Definicja zawiera typ `account` sygnatury dostępu współdzielonego i jest ważna przez N dni.
+- Ustaw Key Vault zarządzaną definicję sygnatury dostępu współdzielonego magazynu w magazynie. Definicja zawiera identyfikator URI szablonu utworzonego tokenu sygnatury dostępu współdzielonego. Definicja ma typ sygnatury dostępu współdzielonego `account` i jest ważna przez N dni.
 - Sprawdź, czy sygnatura dostępu współdzielonego została zapisana w magazynie kluczy jako wpis tajny.
 
 ### <a name="create-a-shared-access-signature-token"></a>Tworzenie tokenu sygnatury dostępu współdzielonego
 
-Utwórz definicję sygnatury dostępu współdzielonego przy użyciu interfejsu wiersza polecenia platformy Azure [AZ Storage account Generate-SAS](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas) . Ta operacja wymaga `storage` uprawnień i `setsas` .
+Utwórz definicję sygnatury dostępu współdzielonego przy użyciu interfejsu wiersza polecenia platformy Azure [AZ Storage account Generate-SAS](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas) . Ta operacja wymaga uprawnień `storage` i `setsas`.
 
 
 ```azurecli-interactive
@@ -114,11 +114,11 @@ Po pomyślnym uruchomieniu operacji skopiuj dane wyjściowe.
 "se=2020-01-01&sp=***"
 ```
 
-Te dane wyjściowe będą przekazywane do `--template-id` parametru w następnym kroku.
+Te dane wyjściowe będą przekazywane do parametru `--template-id` w następnym kroku.
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Generowanie definicji sygnatury dostępu współdzielonego
 
-Aby utworzyć definicję sygnatury dostępu współdzielonego, użyj interfejsu wiersza polecenia platformy Azure [AZ the Storage sygnatur SAS-Definition Create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) , przekazując dane wyjściowe z poprzedniego kroku do `--template-id` parametru.  Możesz podać wybraną nazwę `-n` parametru.
+Aby utworzyć definicję sygnatury dostępu współdzielonego, użyj interfejsu wiersza polecenia platformy Azure [AZ datastorage magazynu SAS-Definition Create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) , przekazując dane wyjściowe z poprzedniego kroku do parametru `--template-id`.  Możesz podać wybraną nazwę parametru `-n`.
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>
@@ -141,13 +141,13 @@ Wpis tajny odpowiadający definicji sygnatury dostępu współdzielonego będzie
     "id": "https://<YourKeyVaultName>.vault.azure.net/secrets/<YourStorageAccountName>-<YourSASDefinitionName>",
 ```
 
-Teraz możesz użyć polecenia [AZ typu Secret show klucza](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) i `id` właściwości, aby wyświetlić zawartość tego klucza tajnego.
+Teraz możesz użyć polecenia [AZ typu Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) , a `id` właściwość, aby wyświetlić zawartość tego klucza tajnego.
 
 ```azurecli-interactive
 az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
 ```
 
-W danych wyjściowych tego polecenia zostanie wyświetlony ciąg`value`definicji sygnatury dostępu współdzielonego.
+Dane wyjściowe tego polecenia będą pokazywały ciąg definicji sygnatury dostępu współdzielonego jako @ no__t-0.
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 941a218dbda2c27a598e5a53f2b947184ee78085
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121220"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169685"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie open source — często zadawane pytania dotyczące Web Apps na platformie Azure
 
@@ -33,13 +33,13 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 Aby włączyć rejestrowanie w języku PHP:
 
 1. Zaloguj się do [witryny sieci Web kudu](https://*yourwebsitename*.scm.azurewebsites.net).
-2. W górnym menu wybierz kolejno polecenia **Debuguj konsolę** > **cmd**.
+2. W górnym menu wybierz kolejno opcje **Debuguj konsolę** > **cmd**.
 3. Wybierz folder **witryny** .
 4. Wybierz folder **wwwroot** .
-5. Wybierz ikonę, a następnie wybierz pozycję **nowy plik.** **+**
+5. Wybierz ikonę **+** , a następnie wybierz pozycję **nowy plik**.
 6. Ustaw nazwę pliku na **. User. ini**.
 7. Wybierz ikonę ołówka obok **pliku. User. ini**.
-8. W pliku Dodaj następujący kod:`log_errors=on`
+8. W pliku Dodaj następujący kod: `log_errors=on`
 9. Wybierz pozycję **Zapisz**.
 10. Wybierz ikonę ołówka obok pozycji **wp-config. php**.
 11. Zmień tekst na następujący kod:
@@ -78,7 +78,7 @@ Aby zmienić wersję aplikacji node. js, można użyć jednej z następujących 
   Proces wdrażania kontroli źródła platformy Azure obejmuje następujące kroki:
   1. Przenosi zawartość do aplikacji sieci Web platformy Azure.
   2. Tworzy domyślny skrypt wdrażania, jeśli w folderze głównym aplikacji sieci Web nie ma żadnego pliku (Deploy. cmd,. Deployment Files).
-  3. Uruchamia skrypt wdrażania, w którym tworzy plik programu iisnode. yml w przypadku podawania wersji Node. js w pliku Package. JSON > aparacie`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Uruchamia skrypt wdrażania, w którym tworzy plik programu iisnode. yml w przypadku podawania wersji Node. js w pliku Package. JSON > aparat `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Plik programu iisnode. yml ma następujący wiersz kodu:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -113,7 +113,7 @@ Aby uzyskać informacje na temat instalowania programu Django, zobacz [wdrażani
 
 W witrynie Azure Marketplace i wdrożeniach niestandardowych:
 
-* Lokalizacja folderu: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
+* Lokalizacja folderu: D:\home\site\wwwroot\bin\apache-Tomcat-8.0.33\logs
 * Interesujące pliki:
     * catalina. *rrrr-mm-dd*. log
     * Menedżer hosta. *rrrr-mm-dd*. log
@@ -144,7 +144,7 @@ Aby rozwiązać ten problem:
 
 1. Usuń plik JAR sqljdbc* z folderu App/lib.
 2. Jeśli używasz niestandardowego serwera sieci Web Tomcat lub Azure Marketplace Tomcat, Skopiuj ten plik jar do folderu Tomcat lib.
-3. W przypadku włączania języka Java z poziomu Azure Portal (wybierz pozycję **Java 1,8** > **Tomcat Server**) Skopiuj plik JAR sqljdbc. * w folderze, który jest równoległy do aplikacji. Następnie Dodaj następujące ustawienie ścieżki klasy do pliku Web. config:
+3. W przypadku włączania języka Java z poziomu Azure Portal (wybierz pozycję **java 1,8** > **Tomcat Server**) Skopiuj plik JAR sqljdbc. * w folderze, który jest równoległy do aplikacji. Następnie Dodaj następujące ustawienie ścieżki klasy do pliku Web. config:
 
     ```xml
     <httpPlatform>
@@ -187,24 +187,24 @@ App Service nie ma wbudowanej funkcji poczty e-mail. Aby uzyskać bardziej przyd
 
 Jeśli ostatnio przeprowadzono migrację do platformy Azure, usługa WordPress może przekierować do starego adresu URL domeny. Jest to spowodowane ustawieniem w bazie danych MySQL.
 
-WordPress kolega + to rozszerzenie witryny platformy Azure, którego można użyć do zaktualizowania adresu URL przekierowania bezpośrednio w bazie danych programu. Aby uzyskać więcej informacji o korzystaniu z usługi WordPress kolega +, zobacz [Narzędzia WordPress i migracja MySQL przy użyciu oprogramowania WordPress kolega +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+WordPress kolega + to rozszerzenie witryny platformy Azure, którego można użyć do zaktualizowania adresu URL przekierowania bezpośrednio w bazie danych programu. Aby uzyskać więcej informacji o korzystaniu z usługi WordPress kolega +, zobacz [Narzędzia WordPress i migracja MySQL przy użyciu oprogramowania WordPress kolega +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
-Alternatywnie, jeśli wolisz ręcznie zaktualizować adres URL przekierowania przy użyciu zapytań SQL lub phpMyAdmin, zobacz [WordPress: Przekierowywanie do nieprawidłowego](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/)adresu URL.
+Alternatywnie, jeśli wolisz ręcznie zaktualizować adres URL przekierowania przy użyciu zapytań SQL lub PHPMyAdmin, zobacz [WordPress: przekierowywanie do nieprawidłowego adresu URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Jak mogę zmienić hasła logowania WordPress?
 
-Jeśli zapomniano hasła logowania WordPress, możesz go zaktualizować za pomocą oprogramowania WordPress kolega +. Aby zresetować hasło, zainstaluj rozszerzenie WordPress kolega + Azure Site, a następnie wykonaj kroki opisane w temacie [Narzędzia WordPress i migracja MySQL przy użyciu oprogramowania WordPress kolega +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+Jeśli zapomniano hasła logowania WordPress, możesz go zaktualizować za pomocą oprogramowania WordPress kolega +. Aby zresetować hasło, zainstaluj rozszerzenie WordPress kolega + Azure Site, a następnie wykonaj kroki opisane w temacie [Narzędzia WordPress i migracja MySQL przy użyciu oprogramowania WordPress kolega +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Nie mogę zalogować się do platformy WordPress. Jak mogę rozwiązać ten problem?
 
-Jeśli przed niedawno zainstalowaniem wtyczki okaże się, że zablokowano, możesz mieć wadliwą wtyczkę. WordPress kolega + to rozszerzenie witryny platformy Azure, które może pomóc w wyłączaniu wtyczek w WordPress. Aby uzyskać więcej informacji, zobacz [Narzędzia WordPress i migracja MySQL przy użyciu oprogramowania WordPress kolega +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+Jeśli przed niedawno zainstalowaniem wtyczki okaże się, że zablokowano, możesz mieć wadliwą wtyczkę. WordPress kolega + to rozszerzenie witryny platformy Azure, które może pomóc w wyłączaniu wtyczek w WordPress. Aby uzyskać więcej informacji, zobacz [Narzędzia WordPress i migracja MySQL przy użyciu oprogramowania WordPress kolega +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>Jak mogę zmigrować moją bazę danych WordPress?
 
 Istnieje wiele opcji migrowania bazy danych MySQL połączonej z witryną sieci Web WordPress:
 
 * Deweloperzy: Użyj [wiersza polecenia lub phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* Nie deweloperzy: Korzystanie z platformy [WordPress kolega +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)
+* Inni niż deweloperzy: korzystanie z oprogramowania [WordPress kolega +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Jak mogę zwiększyć bezpieczeństwo platformy WordPress?
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 31d9307d23d308192b362d9570911c86a7dd8372
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: eb9d803bcc9667c26acecbfd098a3022b7421478
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051839"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177644"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Łączenie platformy Azure z narzędziami narzędzia ITSM przy użyciu łącznik zarządzania usługami IT
 
@@ -30,7 +30,7 @@ Usługi platformy Azure, takie jak Log Analytics i Azure Monitor, udostępniają
 
 ITSMC obsługuje połączenia z następującymi narzędziami narzędzia ITSM:
 
--   ServiceNow
+-   Usługi ServiceNow
 -   System Center Service Manager
 -   Provance
 -   Cherwell
@@ -64,7 +64,7 @@ Aby można było utworzyć połączenie, należy dodać rozwiązanie łącznik I
 3. W sekcji **obszar roboczy pakietu OMS** wybierz obszar roboczy usługi Azure log Analytics, w którym chcesz zainstalować rozwiązanie.
    >[!NOTE]
    > * W ramach trwającego przejścia z Microsoft Operations Management Suite (OMS) do Azure Monitor, obszary robocze OMS są teraz określane jako Log Analytics obszary robocze.
-   > * Łącznik ITSM można zainstalować tylko w obszarach roboczych Log Analytics w następujących regionach: Wschodnie stany USA, Europa Zachodnia, Azja Południowo-Wschodnia, Australia Południowo-Wschodnia, zachodnio-środkowe stany USA, Japonia Wschodnia, Południowe Zjednoczone Królestwo, Indie Środkowe, Kanada środkowa.
+   > * Łącznik ITSM można zainstalować tylko w Log Analytics obszarach roboczych w następujących regionach: Wschodnie stany USA, Europa Zachodnia, Azja Południowo-Wschodnia, Australia Południowo-Wschodnia, zachodnie stany USA, Japonia Wschodnia, Południowe Zjednoczone Królestwo, Indie Środkowe, Kanada środkowa.
 
 4. W sekcji **Ustawienia obszaru roboczego pakietu OMS** wybierz pozycję zasoby, w której chcesz utworzyć zasób rozwiązania.
 
@@ -86,18 +86,18 @@ Aby można było utworzyć połączenie, konieczne będzie przygotowanie narzęd
 W zależności od produktu narzędzia ITSM, z którym nawiązujesz połączenie, wykonaj następujące czynności:
 
 - [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
-- [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
+- [Usługi ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
 - [Provance](../../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
 - [Cherwell](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Po jego narzędzi Narzędzia ITSM wykonaj następujące kroki, aby utworzyć połączenie:
 
-1. Przejdź do pozycji **wszystkie zasoby**i Znajdź pozycję Servicedesk **(YourWorkspaceName)** .
+1. Przejdź do pozycji **wszystkie zasoby**i Znajdź pozycję **Servicedesk (YourWorkspaceName)** .
 2. W obszarze **źródła danych obszaru roboczego** w lewym okienku kliknij pozycję **połączenia narzędzia ITSM**.
-   ![Połączenia narzędzia ITSM](media/itsmc-overview/itsm-connections.png)
+   ![ITSM połączenia @ no__t-1
 
    Na tej stronie zostanie wyświetlona lista połączeń.
-3. Kliknij przycisk **Dodaj połączenie**.
+3. Kliknij pozycję **Dodaj połączenie**.
 
    ![Dodaj połączenie narzędzia ITSM](media/itsmc-overview/add-new-itsm-connection.png)
 
@@ -110,7 +110,7 @@ Po jego narzędzi Narzędzia ITSM wykonaj następujące kroki, aby utworzyć po�
    ![Odświeżanie połączenia](media/itsmc-overview/itsmc-connections-refresh.png)
 
 
-## <a name="using-the-solution"></a>Użycie rozwiązania
+## <a name="using-the-solution"></a>Korzystanie z rozwiązania
    Korzystając z rozwiązania łącznik ITSM, można tworzyć elementy robocze na podstawie alertów platformy Azure, alertów Log Analytics i rekordów dziennika Log Analytics.
 
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Tworzenie narzędzia ITSM elementów roboczych na podstawie alertów platformy Azure
@@ -119,7 +119,7 @@ Po utworzeniu połączenia z usługą narzędzia ITSM można tworzyć elementy r
 
 Grupy akcji umożliwiają modularne i wielokrotne użycie metody wyzwalania akcji dla alertów platformy Azure. Za pomocą grup akcji można korzystać z alertów metryk, alertów dziennika aktywności i alertów usługi Azure Log Analytics w programie Azure Portal.
 
-Użyj poniższej procedury:
+Wykonaj następującą procedurę:
 
 1. W Azure Portal kliknij pozycję **Monitoruj**.
 2. W lewym okienku kliknij pozycję **grupy akcji**. Zostanie wyświetlone okno **Dodaj grupę akcji** .
@@ -143,7 +143,7 @@ Podczas tworzenia/edytowania reguły alertu platformy Azure Użyj grupy akcji, k
 
 > [!NOTE]
 >
-> Aby uzyskać informacje na temat cen akcji narzędzia ITSM, zobacz [stronę](https://azure.microsoft.com/pricing/details/monitor/) z cennikiem dla grup akcji.
+> Aby uzyskać informacje na temat cen akcji narzędzia ITSM, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/) dla grup akcji.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Wizualizuj i analizuj dane zdarzenia i żądania zmiany
@@ -164,7 +164,7 @@ Jeśli używasz rozwiązania Service Map, możesz wyświetlić elementy pomocy t
 
 ![Ekran Log Analytics](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Więcej informacji: [Mapa usługi](../../azure-monitor/insights/service-map.md)
+Więcej informacji: [Service map](../../azure-monitor/insights/service-map.md)
 
 
 ## <a name="additional-information"></a>Dodatkowe informacje
@@ -178,23 +178,23 @@ Poniższe informacje przedstawiają przykłady danych zebranych przez ITSMC:
 >
 > W zależności od typu elementu pracy zaimportowanego do Log Analytics, **ServiceDesk_CL** zawiera następujące pola:
 
-**Element roboczy:** **Zdarzenia**  
-ServiceDeskWorkItemType_s="Incident"
+**Element roboczy:** **zdarzenia**  
+ServiceDeskWorkItemType_s = "zdarzenie"
 
 **Pola**
 
 - ServiceDeskConnectionName
-- Identyfikator pomocy technicznej
-- State
-- Pilność
+- Identyfikator działu obsługi
+- Stan
+- Uwagę
 - Wpływ
-- Priority
-- Podwyższenie poziomu
+- Priorytet
+- Eskalacji
 - Utworzone przez
 - Rozwiązane przez
 - Zamknięte przez
-- Source
-- Przypisano do
+- Obiekt źródłowy
+- Przypisane do
 - Kategoria
 - Tytuł
 - Opis
@@ -202,31 +202,31 @@ ServiceDeskWorkItemType_s="Incident"
 - Data zamknięcia
 - Data rozwiązania
 - Data ostatniej modyfikacji
-- Computer
+- Komputerem
 
 
-**Element roboczy:** **Żądania zmiany**
+**Element roboczy:** **żądania zmiany**
 
-ServiceDeskWorkItemType_s="ChangeRequest"
+ServiceDeskWorkItemType_s = "ChangeRequest"
 
 **Pola**
 - ServiceDeskConnectionName
-- Identyfikator pomocy technicznej
+- Identyfikator działu obsługi
 - Utworzone przez
 - Zamknięte przez
-- Source
-- Przypisano do
+- Obiekt źródłowy
+- Przypisane do
 - Tytuł
-- Type
+- Typ
 - Kategoria
-- State
-- Podwyższenie poziomu
+- Stan
+- Eskalacji
 - Stan konfliktu
-- Pilność
-- Priority
+- Uwagę
+- Priorytet
 - Ryzyko
 - Wpływ
-- Przypisano do
+- Przypisane do
 - Data utworzenia
 - Data zamknięcia
 - Data ostatniej modyfikacji
@@ -236,17 +236,17 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Data rozpoczęcia pracy
 - Data zakończenia pracy
 - Opis
-- Computer
+- Komputerem
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Dane wyjściowe dla zdarzenia usługi ServiceNow
 
 | Pole Log Analytics | Pole usługi ServiceNow |
 |:--- |:--- |
-| ServiceDeskId_s| Number |
-| IncidentState_s | State |
-| Urgency_s |Pilność |
+| ServiceDeskId_s| Wartość liczbowa |
+| IncidentState_s | Stan |
+| Urgency_s |Uwagę |
 | Impact_s |Wpływ|
-| Priority_s | Priority |
+| Priority_s | Priorytet |
 | CreatedBy_s | Otwarte przez |
 | ResolvedBy_s | Rozwiązane przez|
 | ClosedBy_s  | Zamknięte przez |
@@ -255,25 +255,25 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Category_s | Kategoria |
 | Title_s|  Krótki opis |
 | Description_s|  Uwagi |
-| CreatedDate_t|  Otwierano |
-| ClosedDate_t| Zamknięte|
-| ResolvedDate_t|Rozwiązane|
-| Computer  | Element konfiguracji |
+| CreatedDate_t|  Otworzyć |
+| ClosedDate_t| napis|
+| ResolvedDate_t|Klienta|
+| Komputerem  | Element konfiguracji |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Dane wyjściowe żądania zmiany usługi ServiceNow
 
 | Log Analytics | Pole usługi ServiceNow |
 |:--- |:--- |
-| ServiceDeskId_s| Number |
+| ServiceDeskId_s| Wartość liczbowa |
 | CreatedBy_s | Żądane przez |
 | ClosedBy_s | Zamknięte przez |
 | AssignedTo_s | Przypisane do  |
 | Title_s|  Krótki opis |
-| Type_s|  Type |
+| Type_s|  Typ |
 | Category_s|  Kategoria |
-| CRState_s|  State|
-| Urgency_s|  Pilność |
-| Priority_s| Priority|
+| CRState_s|  Stan|
+| Urgency_s|  Uwagę |
+| Priority_s| Priorytet|
 | Risk_s| Ryzyko|
 | Impact_s| Wpływ|
 | RequestedDate_t  | Żądane w dniu |
@@ -283,7 +283,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | WorkStartDate_t  | Rzeczywista data rozpoczęcia |
 | WorkEndDate_t | Rzeczywista data zakończenia|
 | Description_s | Opis |
-| Computer  | Element konfiguracji |
+| Komputerem  | Element konfiguracji |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>Rozwiązywanie problemów z połączeniami narzędzia ITSM
@@ -296,8 +296,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 2. Jeśli dane z usługi ServiceNow nie są synchronizowane do Log Analytics, upewnij się, że wystąpienie usługi ServiceNow nie jest w stanie uśpienia. Wystąpienia dev usługi ServiceNow czasami przechodzą w stan uśpienia, gdy jest on bezczynny przez długi czas. W przeciwnym razie Zgłoś problem.
 3. Jeśli alerty Log Analytics wyzwalane, ale elementy robocze nie są tworzone w produkcie narzędzia ITSM lub elementy konfiguracji nie są tworzone/połączone z elementami roboczymi lub innymi informacjami ogólnymi, należy poszukać w następujących miejscach:
-   -  ITSMC: Rozwiązanie pokazuje podsumowanie połączeń/elementów roboczych/komputerów itp. Kliknij kafelek ze **stanem łącznika**, który przeprowadzi Cię przez **Wyszukiwanie** przy użyciu odpowiedniego zapytania. Aby uzyskać więcej informacji, zobacz rekordy dziennika z LogType_S jako błąd.
-   - Strona przeszukiwania **dzienników** : Wyświetl błędy/powiązane informacje bezpośrednio przy użyciu `*`zapytania`*`ServiceDeskLog_CL.
+   -  ITSMC: rozwiązanie pokazuje podsumowanie połączeń/elementów roboczych/komputerów itp. Kliknij kafelek ze **stanem łącznika**, który przeprowadzi Cię przez **Wyszukiwanie** przy użyciu odpowiedniego zapytania. Aby uzyskać więcej informacji, zobacz rekordy dziennika z LogType_S jako błąd.
+   - Strona **przeszukiwania dzienników** : Wyświetl błędy/powiązane informacje bezpośrednio przy użyciu zapytania `*`ServiceDeskLog_CL @ no__t-2.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Rozwiązywanie problemów z wdrażaniem aplikacji sieci Web Service Manager
 1.  W przypadku problemów z wdrażaniem aplikacji sieci Web upewnij się, że masz wystarczające uprawnienia w ramach subskrypcji wymienionej do tworzenia/wdrażania zasobów.
@@ -307,7 +307,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="contact-us"></a>Skontaktuj się z nami
 
-W przypadku zapytań lub informacji zwrotnych dotyczących łącznik zarządzania usługami IT skontaktuj się z [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)nami pod adresem.
+W przypadku dowolnych zapytań lub informacji zwrotnych dotyczących łącznik zarządzania usługami IT skontaktuj się z nami pod adresem [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com).
 
 ## <a name="next-steps"></a>Następne kroki
 [Dodaj narzędzia ITSM produkty/usługi do łącznik zarządzania usługami IT](../../azure-monitor/platform/itsmc-connections.md).

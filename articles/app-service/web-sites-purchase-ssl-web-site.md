@@ -15,12 +15,12 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 9569928882bcaaa1d2406c9af1b2197c2ba6e93d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001204"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177516"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla Azure App Service
 
@@ -34,7 +34,7 @@ W tym samouczku pokazano, jak zabezpieczyć [aplikację App Serviceową](https:/
 
 Aby wykonać następujące czynności:
 
-- [Utwórz aplikację usługi App Service](/azure/app-service/)
+- [Tworzenie aplikacji App Service](/azure/app-service/)
 - [Mapowanie nazwy domeny do aplikacji](app-service-web-tutorial-custom-domain.md) lub [kupowanie i Konfigurowanie na platformie Azure](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
@@ -45,14 +45,14 @@ Uruchom App Service kolejność certyfikatów na <a href="https://portal.azure.c
 
 ![Tworzenie certyfikatu](./media/app-service-web-purchase-ssl-web-site/createssl.png)
 
-Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu kliknij pozycję **Gotowe**.
+Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu kliknij przycisk **Utwórz**.
 
 | Ustawienie | Opis |
 |-|-|
-| Name | Przyjazna nazwa certyfikatu App Service. |
-| Sama nazwa hosta w domenie | W tym miejscu określ domenę główną. Wystawiony certyfikat zabezpiecza *zarówno* domenę główną, jak i `www` poddomenę. W wystawionym certyfikacie pole Common Name (nazwa pospolita) zawiera domenę główną, a pole Alternatywna nazwa `www` podmiotu zawiera domenę. Aby zabezpieczyć tylko każdą poddomenę, określ w pełni kwalifikowaną nazwę domeny podrzędnej domeny (na przykład `mysubdomain.contoso.com`).|
-| Subscription | Centrum danych, w którym hostowana jest aplikacja internetowa. |
-| Resource group | Grupa zasobów, która zawiera certyfikat. Możesz na przykład użyć nowej grupy zasobów lub wybrać tę samą grupę zasobów co App Service aplikacji. |
+| Nazwa | Przyjazna nazwa certyfikatu App Service. |
+| Nazwa hosta z wydaną domeną | W tym miejscu określ domenę główną. Wystawiony certyfikat zabezpiecza *zarówno* domenę główną, jak i poddomenę `www`. W wystawionym certyfikacie pole Common Name (nazwa pospolita) zawiera domenę główną, a pole Alternatywna nazwa podmiotu zawiera domenę `www`. Aby zabezpieczyć tylko dowolna poddomena, określ w pełni kwalifikowaną nazwę domeny podrzędnej domeny (na przykład `mysubdomain.contoso.com`).|
+| Ramach | Centrum danych, w którym jest hostowana aplikacja sieci Web. |
+| Grupa zasobów | Grupa zasobów, która zawiera certyfikat. Możesz na przykład użyć nowej grupy zasobów lub wybrać tę samą grupę zasobów co App Service aplikacji. |
 | Jednostka SKU certyfikatu | Określa typ certyfikatu do utworzenia, czy certyfikat standardowy czy [certyfikat wieloznaczny](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Postanowienia prawne | Kliknij, aby potwierdzić, że zgadzasz się z postanowieniami prawnymi. Certyfikaty są uzyskiwane z GoDaddy. |
 
@@ -60,28 +60,28 @@ Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu k
 
 Po zakończeniu procesu zakupu certyfikatu należy wykonać kilka dodatkowych kroków, aby można było rozpocząć korzystanie z tego certyfikatu. 
 
-Na stronie [Certyfikaty App Service](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) wybierz certyfikat, a następnie kliknij pozycję **Konfiguracja** > **certyfikatu krok 1. Magazyn**.
+Na stronie [certyfikaty App Service](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) wybierz certyfikat, a następnie kliknij pozycję **Konfiguracja certyfikatu** > **krok 1: Magazyn**.
 
 ![Wstaw obraz gotowy do przechowania w KV](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) to usługa platformy Azure, która pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Jest to magazyn wybrany dla App Service certyfikatów.
 
-Na stronie **stan Key Vault** kliknij pozycję **Key Vault repozytorium** , aby utworzyć nowy magazyn, lub wybierz istniejący magazyn. Jeśli zdecydujesz się utworzyć nowy magazyn, Skorzystaj z poniższej tabeli, aby skonfigurować magazyn, a następnie kliknij przycisk Utwórz. Zobacz, aby utworzyć nowe Key Vault w ramach tej samej subskrypcji i grupy zasobów.
+Na stronie **stan Key Vault** kliknij pozycję **Key Vault repozytorium** , aby utworzyć nowy magazyn, lub wybierz istniejący magazyn. Jeśli zdecydujesz się utworzyć nowy magazyn, Skorzystaj z poniższej tabeli, aby skonfigurować magazyn, a następnie kliknij przycisk **Utwórz**.
 
 | Ustawienie | Opis |
 |-|-|
-| Name | Unikatowa nazwa, która składa się z znaków alfanumerycznych i kresek. |
-| Resource group | Zgodnie z zaleceniem wybierz tę samą grupę zasobów co certyfikat App Service. |
-| Location | Wybierz tę samą lokalizację, w której znajduje się aplikacja App Service. |
+| Nazwa | Unikatowa nazwa, która składa się z znaków alfanumerycznych i kresek. |
+| Grupa zasobów | Zgodnie z zaleceniem wybierz tę samą grupę zasobów co certyfikat App Service. |
+| Lokalizacja | Wybierz tę samą lokalizację, w której znajduje się aplikacja App Service. |
 | Warstwa cenowa | Aby uzyskać więcej informacji, zobacz [Azure Key Vault szczegóły cennika](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zasady dostępu| Definiuje aplikacje i dozwolony dostęp do zasobów magazynu. Można skonfigurować ją później, wykonując czynności opisane w sekcji [Udziel kilku aplikacjom dostępu do magazynu kluczy](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Dostęp do sieci wirtualnej | Ogranicz dostęp do magazynu do określonych sieci wirtualnych platformy Azure. Można skonfigurować ją później, wykonując czynności opisane w sekcji [konfigurowanie Azure Key Vault zapór i sieci wirtualnych](../key-vault/key-vault-network-security.md) |
+| Dostęp Virtual Network | Ogranicz dostęp do magazynu do określonych sieci wirtualnych platformy Azure. Można skonfigurować ją później, wykonując czynności opisane w sekcji [konfigurowanie Azure Key Vault zapór i sieci wirtualnych](../key-vault/key-vault-network-security.md) |
 
 Po wybraniu magazynu zamknij stronę **repozytorium Key Vault** . Opcja **magazynu** powinna zawierać zielony znacznik wyboru dla sukcesu. Pozostaw otwartą stronę w następnym kroku.
 
-## <a name="verify-domain-ownership"></a>Weryfikowanie własności domeny
+## <a name="verify-domain-ownership"></a>Weryfikuj własność domeny
 
-Na stronie **Konfiguracja certyfikatu** , która została użyta w ostatnim kroku, kliknij **pozycję krok 2: Sprawdź**.
+Na tej samej stronie **konfiguracji certyfikatu** , która została użyta w ostatnim kroku, kliknij pozycję **krok 2. Weryfikacja**.
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -97,15 +97,15 @@ Wybierz **App Service weryfikację**. Ponieważ domena została już zmapowana d
 
 ## <a name="bind-certificate-to-app"></a>Powiąż certyfikat z aplikacją
 
-W **[Azure Portal](https://portal.azure.com/)** z menu po lewej stronie wybierz pozycję **App Services** >  **\<your_ App >** .
+W **[Azure Portal](https://portal.azure.com/)** z menu po lewej stronie wybierz pozycję **App Services** >  **@no__t — 5your_ App >** .
 
-W lewym panelu nawigacyjnym aplikacji wybierz pozycję >  **Ustawienia protokołu SSL** **Importuj** **Certyfikaty prywatne (pfx)**  > certyfikat usługi App Service.
+W lewym panelu nawigacyjnym aplikacji wybierz pozycję **Ustawienia protokołu SSL** > **Certyfikaty prywatne (pfx)**  > **zaimportować certyfikat usługi App Service**.
 
 ![Wstaw obraz certyfikatu importu](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
 Wybierz certyfikat, który został właśnie zakupiony.
 
-Po zaimportowaniu certyfikatu należy powiązać go z zamapowanej nazwy domeny w aplikacji. Wybierz pozycję **powiązania** > **Dodaj powiązanie SSL**. 
+Po zaimportowaniu certyfikatu należy powiązać go z zamapowanej nazwy domeny w aplikacji. Wybierz **powiązania** > **Dodaj powiązanie SSL**. 
 
 ![Wstaw obraz certyfikatu importu](./media/app-service-web-purchase-ssl-web-site/AddBinding.png)
 
@@ -113,19 +113,19 @@ Skorzystaj z poniższej tabeli, aby skonfigurować powiązanie w oknie dialogowy
 
 | Ustawienie | Opis |
 |-|-|
-| Nazwa hosta | Nazwa domeny, dla której ma zostać dodane powiązanie SSL. |
+| Nazw | Nazwa domeny, dla której ma zostać dodane powiązanie SSL. |
 | Odcisk palca certyfikatu prywatnego | Certyfikat do powiązania. |
-| Typ SSL | <ul><li>**SNI SSL** — można dodać wiele powiązań SSL opartych na SNI. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](https://wikipedia.org/wiki/Server_Name_Indication).</li><li>**Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Po skonfigurowaniu powiązania postępuj zgodnie z instrukcjami w sekcji ponowne [Mapowanie rekordu dla połączenie SSL z adresu IP](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
+| Typ protokołu SSL | <ul><li>**SNI SSL** — można dodać wiele powiązań SSL opartych na SNI. Ta opcja zezwala wielu certyfikatom SSL na zabezpieczanie wielu domen na tym samym adresie IP. Większość nowoczesnych przeglądarek (w tym Internet Explorer, Chrome, Firefox i Opera) obsługuje SNI (Znajdź bardziej kompleksową pomoc techniczną dotyczącą przeglądarki w [oznaczanie nazwy serwera](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**Protokół SSL oparty na** protokole IP — można dodać tylko jedno wiązanie SSL oparte na adresie IP. Ta opcja zezwala na zabezpieczenie dedykowanego publicznego adresu IP tylko jednemu certyfikatowi SSL. Po skonfigurowaniu powiązania postępuj zgodnie z instrukcjami w sekcji ponowne [Mapowanie rekordu dla połączenie SSL z adresu IP](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
 
 ## <a name="verify-https-access"></a>Weryfikuj dostęp do protokołu HTTPS
 
-Aby sprawdzić, czy certyfikat został prawidłowo skonfigurowany, należy odwiedzić swoją aplikację `HTTPS://<domain_name>`. `HTTP://<domain_name>`
+Aby sprawdzić, czy certyfikat został prawidłowo skonfigurowany, należy odwiedzić aplikację przy użyciu `HTTPS://<domain_name>` zamiast `HTTP://<domain_name>`.
 
-## <a name="rekey-certificate"></a>Wymiana klucza certyfikatu
+## <a name="rekey-certificate"></a>Certyfikat ponownego tworzenia kluczy
 
 Jeśli uważasz, że zabezpieczenia klucza prywatnego certyfikatu zostały naruszone, możesz naruszyć certyfikat. Na stronie [certyfikaty App Service](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) wybierz certyfikat, a następnie wybierz pozycję Wymień **i zsynchronizuj** po lewej stronie nawigacyjnej.
 
-Kliknij pozycję wykluczaj, aby uruchomić proces. Ten proces może potrwać 1-10 minut.
+Kliknij **pozycję** wykluczaj, aby uruchomić proces. Ten proces może potrwać 1-10 minut.
 
 ![Wstaw obraz klucza ponownego tworzenia kluczy SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
@@ -151,7 +151,7 @@ Po zakończeniu operacji odnawiania kliknij pozycję **Synchronizuj**. Operacja 
 > [!NOTE]
 > Jeśli nie klikniesz przycisku **Synchronizuj**, App Service automatycznie zsynchronizuje certyfikat w ciągu 48 godzin.
 
-## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
+## <a name="automate-with-scripts"></a>Automatyzacja za pomocą skryptów
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -163,7 +163,7 @@ Po zakończeniu operacji odnawiania kliknij pozycję **Synchronizuj**. Operacja 
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-* [Enforce HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
-* [Enforce TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
+* [Wymuszanie protokołu HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
+* [Wymuś protokół TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Użyj certyfikatu protokołu SSL w kodzie aplikacji w Azure App Service](app-service-web-ssl-cert-load.md)
-* [FAQ: App Service certyfikaty](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Często zadawane pytania: certyfikaty App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

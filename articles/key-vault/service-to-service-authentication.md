@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 0f8c8900782ec8beb9f9b11c8fe7f7651901c343
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6996a5965454dfd5997f0c0404e0c348c68b626f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958992"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177470"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Uwierzytelnianie między usługami Azure Key Vault przy użyciu platformy .NET
 
@@ -87,7 +87,7 @@ Aby użyć interfejsu wiersza polecenia platformy Azure:
 
 1. Zaloguj się do Azure Portal: *AZ login* , aby zalogować się do platformy Azure.
 
-1. Sprawdź dostęp, wprowadzając *AZ Account Get-Access-token*. Jeśli wystąpi błąd, sprawdź, czy odpowiednia wersja interfejsu wiersza polecenia platformy Azure jest prawidłowo zainstalowana.
+1. Sprawdź dostęp, wprowadzając *AZ Account Get-Access-token--resource https://vault.azure.net* . Jeśli wystąpi błąd, sprawdź, czy odpowiednia wersja interfejsu wiersza polecenia platformy Azure jest prawidłowo zainstalowana.
 
    Jeśli interfejs wiersza polecenia platformy Azure nie jest zainstalowany w katalogu domyślnym, może zostać wyświetlony komunikat o błędzie, który `AzureServiceTokenProvider` nie może znaleźć ścieżki interfejsu wiersza polecenia platformy Azure. Użyj zmiennej środowiskowej **AzureCLIPath** , aby zdefiniować folder instalacyjny interfejsu wiersza polecenia platformy Azure. `AzureServiceTokenProvider` dodaje katalog określony w zmiennej środowiskowej **AzureCLIPath** do zmiennej środowiskowej **Path** , gdy jest to konieczne.
 

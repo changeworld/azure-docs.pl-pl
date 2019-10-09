@@ -6,6 +6,16 @@
       href: resource-group-overview.md
     - name: Omówienie szablonu
       href: template-deployment-overview.md
+- name: Szybki start
+  items:
+    - name: Tworzenie szablonów — portal
+      href: resource-manager-quickstart-create-templates-use-the-portal.md
+    - name: Tworzenie szablonów — program VS Code
+      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+    - name: Tworzenie szablonów — program Visual Studio
+      href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+    - name: Tworzenie szablonów — IntelliJ IDEA
+      href: resource-manager-quickstart-create-templates-use-intellij.md
 - name: Samouczki
   items:
     - name: Początkujący
@@ -32,14 +42,6 @@
           href: template-tutorial-use-parameter-file.md
     - name: Zaawansowane
       items:
-        - name: Tworzenie szablonów — portal
-          href: resource-manager-quickstart-create-templates-use-the-portal.md
-        - name: Tworzenie szablonów — program VS Code
-          href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-        - name: Tworzenie szablonów — program Visual Studio
-          href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
-        - name: Tworzenie szablonów — IntelliJ IDEA
-          href: resource-manager-quickstart-create-templates-use-intellij.md
         - name: Dokumentacja dotycząca korzystania z szablonów
           href: resource-manager-tutorial-create-encrypted-storage-accounts.md
         - name: Tworzenie wielu wystąpień

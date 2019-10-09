@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53c93b4e0184468ddee75613b48b887c9d07f751
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 0564763b05dd44eb908ec00f98a97e9d4970099f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963793"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177585"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Samouczek: korzystanie z wyeksportowanego szablonu z Azure Portal
 
@@ -46,13 +46,13 @@ Ten szablon działa dobrze w przypadku wdrażania kont magazynu, ale możesz chc
     - **Nazwa**: Wprowadź nazwę planu usługi App Service.
     - **System operacyjny**: wybierz pozycję **Linux**.
     - **Region**: Wybierz lokalizację platformy Azure. Na przykład **środkowe stany USA**.
-    - **Warstwa cenowa**: aby zaoszczędzić koszty, Zmień jednostkę SKU na **podstawową**.
+    - **Warstwa cenowa**: aby zaoszczędzić koszty, Zmień jednostkę SKU na **podstawową B1** (w obszarze Tworzenie/testowanie).
 
     ![Portal szablonu Menedżer zasobów szablonu eksportu](./media/template-tutorial-export-template/resource-manager-template-export.png)
 1. Wybierz pozycję **Przejrzyj i Utwórz**.
 1. Wybierz pozycję **Utwórz**. Utworzenie zasobu trwa kilka chwil.
 
-## <a name="export-template"></a>Eksportuj szablon
+## <a name="export-the-template"></a>Eksportowanie szablonu
 
 1. Wybierz pozycję **Przejdź do zasobu**.
 
@@ -62,7 +62,7 @@ Ten szablon działa dobrze w przypadku wdrażania kont magazynu, ale możesz chc
 
     ![Szablon eksportu Menedżer zasobów szablonu](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
 
-   Funkcja eksportowania szablonu Pobiera bieżący stan zasobu i generuje szablon w celu jego wdrożenia. Eksportowanie szablonu może być pomocne w szybkim wykorzystaniu kodu JSON potrzebnego do wdrożenia zasobu.
+   Funkcja eksportowania szablonu Pobiera bieżący stan zasobu i generuje szablon w celu jego wdrożenia. Eksportowanie szablonu może być przydatnym sposobem na szybkie pobranie kodu JSON potrzebnego do wdrożenia zasobu.
 
 1. Skopiuj definicję **Microsoft. Web/dopuszczalna** i definicję parametru do szablonu.
 
@@ -71,7 +71,7 @@ Ten szablon działa dobrze w przypadku wdrażania kont magazynu, ale możesz chc
 > [!IMPORTANT]
 > Zwykle wyeksportowany szablon jest bardziej szczegółowy niż podczas tworzenia szablonu. Na przykład obiekt SKU w wyeksportowanym szablonie ma pięć właściwości. Ten szablon działa, ale można tylko użyć właściwości **Nazwa** . Możesz rozpocząć od wyeksportowanego szablonu, a następnie zmodyfikować go w taki sposób, aby odpowiadał Twoim wymaganiom.
 
-## <a name="revise-existing-template"></a>Popraw istniejący szablon
+## <a name="revise-the-existing-template"></a>Popraw istniejący szablon
 
 Wyeksportowany szablon zapewnia większość potrzebnych danych JSON, ale należy go dostosować do szablonu. Należy zwrócić szczególną uwagę na różnice między parametrami i zmiennymi między szablonem i wyeksportowanym szablonem. Oczywiście proces eksportowania nie wie o parametry i zmienne, które zostały już zdefiniowane w szablonie.
 
@@ -81,7 +81,7 @@ Skopiuj cały plik i Zastąp jego zawartość.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
 
-## <a name="deploy-template"></a>Wdróż szablon
+## <a name="deploy-the-template"></a>Wdróż szablon
 
 Użyj interfejsu wiersza polecenia platformy Azure lub Azure PowerShell, aby wdrożyć szablon.
 

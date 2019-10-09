@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c8c882d819771473db2cf1c91fb39912883d144d
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 8b6ff50f7254a51bcdf37ecb0afd8f0041a2c5da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963744"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177563"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Samouczek: Dodawanie tagów do szablonu Menedżer zasobów
 
@@ -35,15 +35,15 @@ Po wdrożeniu tych zasobów może być konieczne śledzenie kosztów i znajdowan
 
 ## <a name="add-tags"></a>Dodaj Tagi
 
-Oznacz zasoby, aby dodać wartości, które ułatwiają identyfikację ich użycia. Na przykład można dodać tagi, które oznaczają środowisko i projekt. Można dodać tagi, które identyfikują centrum kosztów lub zespół, który jest właścicielem zasobu. Dodaj wszystkie wartości, które mają sens dla organizacji.
+Oznacz zasoby, aby dodać wartości, które ułatwiają identyfikację ich użycia. Na przykład można dodać tagi, które wyświetlają środowisko i projekt. Można dodać tagi, które identyfikują centrum kosztów lub zespół, który jest właścicielem zasobu. Dodaj wszystkie wartości, które mają sens dla organizacji.
 
 Poniższy przykład wyróżnia zmiany w szablonie. Skopiuj cały plik i Zastąp jego zawartość.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
-## <a name="deploy-template"></a>Wdróż szablon
+## <a name="deploy-the-template"></a>Wdróż szablon
 
-Czas na wdrożenie szablonu i przeszukanie zwracanej wartości.
+Czas na wdrożenie szablonu i sprawdzenie wyników.
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 

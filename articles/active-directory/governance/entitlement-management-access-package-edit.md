@@ -16,25 +16,25 @@ ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 864a6476ad894952a2ef877d534ffe8a86e07819
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326378"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170022"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Edytuj istniejący pakiet dostępu i Zarządzaj nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
 
 > [!IMPORTANT]
 > Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ta wersja zapoznawcza jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane lub mogą mieć ograniczone możliwości.
+> Aby uzyskać więcej informacji, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)zapoznawczych Microsoft Azure.
 
 Pakiet dostępu umożliwia jednorazowe skonfigurowanie zasobów i zasad, które automatycznie zarządzają dostępem do czasu życia pakietu dostępu. Jako Menedżer pakietów programu Access można w dowolnym momencie zmienić zasoby w pakiecie dostępu bez konieczności aprowizacji dostępu użytkownika do nowych zasobów lub usuwania ich dostępu z poprzednich zasobów. Zasady można także aktualizować w dowolnym momencie, jednak zmiany zasad mają wpływ tylko na nowe dostępy.
 
 W tym artykule opisano sposób edytowania istniejących pakietów dostępu i zarządzania nimi.
 
-## <a name="add-resource-roles"></a>Dodaj role zasobów
+## <a name="add-resource-roles"></a>Dodawanie ról zasobów
 
 Rola zasobu to kolekcja uprawnień skojarzonych z zasobem. Aby udostępnić zasoby użytkownikom do żądania, należy dodać role zasobów do pakietu dostępu. Można dodawać role zasobów dla grup, zespołów, aplikacji i witryn programu SharePoint.
 
@@ -73,15 +73,15 @@ Aby uzyskać więcej informacji, zobacz [porównywanie grup](/office365/admin/cr
 
     ![Dostęp do pakietu — Dodawanie ról zasobów — Wybieranie grup](./media/entitlement-management-access-package-edit/group-select.png)
 
-1. Kliknij przycisk **wybierz**.
+1. Kliknij przycisk **Wybierz**.
 
     Po wybraniu grupy lub zespołu w kolumnie **podtyp** zostanie wystawiona jedna z następujących podtypów:
 
     |  |  |
     | --- | --- |
-    | Bezpieczeństwo | Służy do udzielania dostępu do zasobów. |
-    | Dystrybucja | Służy do wysyłania powiadomień do grupy osób. |
-    | O365 | Grupa pakietu Office 365, która nie jest włączona dla zespołów. Używany do współpracy między użytkownikami i spoza niej. |
+    | Zabezpieczenia | Służy do udzielania dostępu do zasobów. |
+    | Mieszczenie | Służy do wysyłania powiadomień do grupy osób. |
+    | Usłudze | Grupa pakietu Office 365, która nie jest włączona dla zespołów. Używany do współpracy między użytkownikami i spoza niej. |
     | Zespół | Grupa pakietu Office 365, dla której włączono zespoły. Używany do współpracy między użytkownikami i spoza niej. |
 
 1. Na liście **rola** wybierz pozycję **właściciel** lub **członek**.
@@ -90,7 +90,7 @@ Aby uzyskać więcej informacji, zobacz [porównywanie grup](/office365/admin/cr
 
     ![Dostęp do pakietu — Dodawanie roli zasobów dla grupy lub zespołu](./media/entitlement-management-access-package-edit/group-role.png)
 
-1. Kliknij pozycję **Dodaj**.
+1. Kliknij przycisk **Dodaj**.
 
     Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu automatycznie staną się członkami tej grupy lub zespołu po dodaniu.
 
@@ -115,13 +115,13 @@ Oto kilka kwestii, które należy wziąć pod uwagę podczas wybierania aplikacj
 
     ![Dostęp do pakietu — Dodawanie ról zasobów — Wybieranie aplikacji](./media/entitlement-management-access-package-edit/application-select.png)
 
-1. Kliknij przycisk **wybierz**.
+1. Kliknij przycisk **Wybierz**.
 
 1. Z listy **rola** wybierz rolę aplikacji.
 
     ![Dostęp do pakietu — Dodawanie roli zasobów dla aplikacji](./media/entitlement-management-access-package-edit/application-role.png)
 
-1. Kliknij pozycję **Dodaj**.
+1. Kliknij przycisk **Dodaj**.
 
     Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu będą automatycznie mieli dostęp do tej aplikacji po dodaniu.
 
@@ -135,13 +135,13 @@ Usługa Azure AD może automatycznie przypisywać użytkownikom dostęp do witry
 
     ![Dostęp do pakietu — Dodawanie ról zasobów — Wybieranie witryn usługi SharePoint Online](./media/entitlement-management-access-package-edit/sharepoint-site-select.png)
 
-1. Kliknij przycisk **wybierz**.
+1. Kliknij przycisk **Wybierz**.
 
 1. Na liście **rola** wybierz rolę witryny usługi SharePoint Online.
 
     ![Dostęp do pakietu — Dodawanie roli zasobów dla witryny usługi SharePoint Online](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-1. Kliknij pozycję **Dodaj**.
+1. Kliknij przycisk **Dodaj**.
 
     Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu będą automatycznie mieli dostęp do tej witryny usługi SharePoint Online, gdy zostanie ona dodana.
 
@@ -309,7 +309,7 @@ Większość użytkowników w katalogu może zalogować się do portalu My Acces
 
 Ważne jest, aby skopiować całe łącze portalu dostępu, gdy wyśle je do wewnętrznego partnera biznesowego. Gwarantuje to, że partner uzyska dostęp do portalu Twojego katalogu w celu zgłoszenia żądania. 
 
-Link rozpocznie się z "dostępem do", zawiera wskazówkę katalogu i kończy się identyfikatorem pakietu dostępu. Upewnij się, że link zawiera wszystkie następujące elementy:
+Link rozpocznie się z "dostępem do", zawiera wskazówkę katalogu i kończy się IDENTYFIKATORem pakietu dostępu. Upewnij się, że link zawiera wszystkie następujące elementy:
 
  `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -367,5 +367,4 @@ W obszarze Zarządzanie prawami usługa Azure AD będzie przetwarzać zmiany zbi
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dodawanie właściciela katalogu lub Menedżera pakietów programu Access](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Proces żądania i powiadomienia e-mail](entitlement-management-process.md)

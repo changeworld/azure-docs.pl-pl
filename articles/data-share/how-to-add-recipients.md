@@ -1,17 +1,17 @@
 ---
 title: Dodawanie adresatów w wersji zapoznawczej udziału danych platformy Azure
-description: Dodawanie adresatów do istniejącego udziału danych
+description: Dowiedz się, jak dodać odbiorców do istniejącego udziału danych w wersji zapoznawczej usługi Azure Data Share.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e496f67616f7ebcf4c086c8d01680b95f9cafcf8
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 1deda63f7f440116eaf47c41fa00c8b5f7566dcf
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320317"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169165"
 ---
 # <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share-preview"></a>Jak dodać odbiorcę do istniejącego udziału danych w wersji zapoznawczej usługi Azure Data Share
 
@@ -21,7 +21,7 @@ Aby uzyskać informacje na temat dodawania odbiorców podczas tworzenia udziału
 
 ## <a name="navigate-to-a-sent-data-share"></a>Przejdź do wysłanego udziału danych
 
-W wersji zapoznawczej usługi Azure Data Share przejdź do wysłanego udziału i wybierz kartę **zaproszenia** . W tym miejscu znajdują się wszyscy adresaci zaproszeń do tego udziału danych. Aby dodać nowe konto, kliknij przycisk **Dodaj adresata**.
+W wersji zapoznawczej usługi Azure Data Share przejdź do wysłanego udziału i wybierz kartę **zaproszenia** . w tym miejscu znajdują się wszyscy adresaci zaproszeń do tego udziału danych. Aby dodać nowe konto, kliknij przycisk **Dodaj adresata**.
 
 ![Dodaj odbiorcę](./media/how-to/how-to-add-recipients/add-recipient.png)
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/04/2019
-ms.openlocfilehash: c56e6e004fe7f63725b5f6f4b9c71f60cc7b91ed
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5f98cb29bd61c674ef7d7e6af781760fe81a5085
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829114"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177894"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Używanie Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure 
 
@@ -26,7 +26,7 @@ Azure Data Factory zapewnia wydajny, niezawodny i ekonomiczny mechanizm migracji
 > [!div class="checklist"]
 > * Wydajność 
 > * Odporność kopiowania
-> * Bezpieczeństwo sieci
+> * Zabezpieczenia sieci
 > * Architektura rozwiązania wysokiego poziomu 
 > * Najlepsze rozwiązania w zakresie implementacji  
 
@@ -44,13 +44,13 @@ Na powyższym obrazie przedstawiono sposób osiągnięcia doskonałej szybkości
 - Pojedyncze działanie kopiowania odczytuje i zapisuje dane w magazynie danych przy użyciu wielu wątków. 
 - Przepływ sterowania ADF można uruchomić równolegle wiele działań kopiowania, na przykład przy użyciu [dla każdej pętli](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
 
-## <a name="resilience"></a>Odporność
+## <a name="resilience"></a>Odporności
 
 W ramach pojedynczego uruchomienia działania kopiowania moduł ADF ma wbudowany mechanizm ponawiania prób, dlatego może obsłużyć określony poziom przejściowych błędów w magazynach danych lub w sieci źródłowej. 
 
 Podczas kopiowania binarnego z S3 do obiektów blob i z S3 do ADLS Gen2, funkcja ADF automatycznie wykonuje punkty kontrolne.  Jeśli uruchomienie działania kopiowania nie powiodło się lub upłynął limit czasu przy kolejnej ponowieniu próby (Pamiętaj o ponowieniu liczby > 1), kopiowanie zostanie wznowione od ostatniego punktu awarii zamiast od początku. 
 
-## <a name="network-security"></a>Bezpieczeństwo sieci 
+## <a name="network-security"></a>Zabezpieczenia sieci 
 
 Domyślnie usługa ADF przesyła dane z usługi Amazon S3 do platformy Azure Blob Storage lub Azure Data Lake Storage Gen2 przy użyciu szyfrowanego połączenia za pośrednictwem protokołu HTTPS.  Protokół HTTPS zapewnia szyfrowanie danych podczas przesyłania i uniemożliwia podsłuchiwanie i ataki typu man-in-the-middle. 
 
@@ -81,7 +81,7 @@ Migruj dane za pośrednictwem prywatnego linku:
 ### <a name="authentication-and-credential-management"></a>Zarządzanie uwierzytelnianiem i poświadczeniami 
 
 - Aby uwierzytelnić konto usługi Amazon S3, należy użyć [klucza dostępu dla konta usługi IAM](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties). 
-- Aby nawiązać połączenie z usługą Azure Blob Storage, obsługiwane są wiele typów uwierzytelniania.  Korzystanie z [tożsamości zarządzanych dla zasobów platformy Azure](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) jest zdecydowanie zalecane: Wbudowana na podstawie automatycznie zarządzanego podajnika APD w usłudze Azure AD umożliwia konfigurowanie potoków bez podawania poświadczeń w definicji połączonej usługi.  Alternatywnie można uwierzytelnić się w usłudze Azure Blob Storage przy użyciu [nazwy głównej usługi](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [sygnatury dostępu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)współdzielonego lub [klucza konta magazynu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
+- Aby nawiązać połączenie z usługą Azure Blob Storage, obsługiwane są wiele typów uwierzytelniania.  Korzystanie z [tożsamości zarządzanych dla zasobów platformy Azure](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) jest zdecydowanie zalecane: Wbudowana na podstawie automatycznie zarządzanego podajnika APD w usłudze Azure AD umożliwia konfigurowanie potoków bez podawania poświadczeń w definicji połączonej usługi.  Alternatywnie można uwierzytelnić się w usłudze Azure Blob Storage przy użyciu [nazwy głównej usługi](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)lub [klucza konta magazynu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
 - Do łączenia się z Azure Data Lake Storage Gen2 są również obsługiwane wiele typów uwierzytelniania.  Korzystanie z [tożsamości zarządzanych dla zasobów platformy Azure](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) jest zdecydowanie zalecane, ale można również użyć [nazwy głównej usługi](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) lub [klucza konta magazynu](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) . 
 - Jeśli nie używasz tożsamości zarządzanych dla zasobów platformy Azure, [przechowywanie poświadczeń w Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) jest zdecydowanie zalecane, aby ułatwić centralne zarządzanie kluczami i ich obracanie bez konieczności modyfikowania połączonych usług ADF.  Jest to również jedno z [najlepszych rozwiązań dotyczących](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)ciągłej integracji/ciągłego wdrażania. 
 
@@ -136,8 +136,7 @@ Oto Szacowana cena oparta na powyższych założeniach:
 
 ![Cennik — tabela](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
-
-### <a name="additional-references"></a>Dodatkowa dokumentacja 
+### <a name="additional-references"></a>Dodatkowe informacje 
 - [Łącznik prostego usługi magazynu Amazon](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
 - [Łącznik usługi Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Łącznik Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
@@ -149,6 +148,10 @@ Oto Szacowana cena oparta na powyższych założeniach:
 - [Przyrostowo Kopiuj plik na podstawie nazwy pliku podzielonego na partycje](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
 - [Kopiuj nowe i zmienione pliki w oparciu o LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [Strona cennika ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+
+## <a name="template"></a>Formularza
+
+Oto [szablon](solution-template-migration-s3-azure.md) do rozpoczęcia migracji petabajtów danych składających się z setek milionów plików z usługi Amazon S3 do Azure Data Lake Storage Gen2.
 
 ## <a name="next-steps"></a>Następne kroki
 

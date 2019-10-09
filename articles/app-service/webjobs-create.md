@@ -12,16 +12,16 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 748f49a3f6f36617271a1497ccac6c63821a7693
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 53f808570a298c8e576b6df7b4654196ffc56813
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024646"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177506"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Uruchamianie zadań w tle za pomocą zadań WebJob w Azure App Service
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 WebJobs to funkcja [Azure App Service](https://docs.microsoft.com/azure/app-service/) , która umożliwia uruchamianie programu lub skryptu w tym samym kontekście co aplikacja internetowa, aplikacja interfejsu API lub aplikacja mobilna. Nie ma dodatkowych opłat za korzystanie z zadań WebJob.
 
 > [!IMPORTANT]
@@ -38,7 +38,7 @@ Azure Functions zapewnia inny sposób uruchamiania programów i skryptów. Aby u
 W poniższej tabeli opisano różnice między *ciągłymi* i *wyzwalanymi* zadaniami WebJob.
 
 
-|Ciągłe  |Wyzwalane  |
+|Staż  |Wyzwalane  |
 |---------|---------|
 | Uruchamiany natychmiast po utworzeniu zadania WebJob. Aby zachować zadanie od końca, program lub skrypt zwykle wykonuje swoją pracę wewnątrz pętli nieskończonej. Jeśli zadanie zakończy się, możesz uruchomić je ponownie. | Uruchamiany tylko w przypadku wyzwolenia ręcznie lub zgodnie z harmonogramem. |
 | Działa na wszystkich wystąpieniach, na których działa aplikacja sieci Web. Opcjonalnie możesz ograniczyć zadanie WebJob do jednego wystąpienia. |Działa w ramach jednego wystąpienia, które wybierze platformę Azure do równoważenia obciążenia.|
@@ -79,12 +79,12 @@ when making changes in one don't forget the other two.
 
    ![Dodawanie strony zadania WebJob](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | Ustawienie      | Wartość przykładowa   | Opis  |
+   | Ustawienie      | Przykładowa wartość   | Opis  |
    | ------------ | ----------------- | ------------ |
    | **Nazwa** | myContinuousWebJob | Nazwa, która jest unikatowa w ramach aplikacji App Service. Musi zaczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_". |
    | **Przekazywanie plików** | ConsoleApp. zip | Plik *. zip* , który zawiera plik wykonywalny lub skrypt, a także wszystkie pliki pomocnicze potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików wykonywalnych i skryptów są wymienione w sekcji [obsługiwane typy plików](#acceptablefiles) . |
-   | **Typ** | Ciągłe | [Typy zadań WebJob](#webjob-types) zostały opisane wcześniej w tym artykule. |
-   | **Skalowanie** | Wiele wystąpień | Dostępne tylko w przypadku ciągłych zadań WebJob. Określa, czy program lub skrypt jest uruchamiany we wszystkich wystąpieniach, czy tylko w jednym wystąpieniu. Opcja uruchamiania na wielu wystąpieniach nie ma zastosowania do [warstw cenowych](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)bezpłatna lub współdzielona. | 
+   | **Wprowadź** | Staż | [Typy zadań WebJob](#webjob-types) zostały opisane wcześniej w tym artykule. |
+   | **Zasięgu** | Wiele wystąpień | Dostępne tylko w przypadku ciągłych zadań WebJob. Określa, czy program lub skrypt jest uruchamiany we wszystkich wystąpieniach, czy tylko w jednym wystąpieniu. Opcja uruchamiania na wielu wystąpieniach nie ma zastosowania do [warstw cenowych](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)bezpłatna lub współdzielona. | 
 
 4. Kliknij przycisk **OK**.
 
@@ -117,12 +117,12 @@ when making changes in one don't forget the other two.
 
    ![Dodawanie strony zadania WebJob](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | Ustawienie      | Wartość przykładowa   | Opis  |
+   | Ustawienie      | Przykładowa wartość   | Opis  |
    | ------------ | ----------------- | ------------ |
    | **Nazwa** | myTriggeredWebJob | Nazwa, która jest unikatowa w ramach aplikacji App Service. Musi zaczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_".|
    | **Przekazywanie plików** | ConsoleApp. zip | Plik *. zip* , który zawiera plik wykonywalny lub skrypt, a także wszystkie pliki pomocnicze potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików wykonywalnych i skryptów są wymienione w sekcji [obsługiwane typy plików](#acceptablefiles) . |
-   | **Typ** | Wyzwalane | [Typy zadań WebJob](#webjob-types) zostały opisane wcześniej w tym artykule. |
-   | **Wyzwalacze** | Ręczna | |
+   | **Wprowadź** | Wyzwalane | [Typy zadań WebJob](#webjob-types) zostały opisane wcześniej w tym artykule. |
+   | **Wyzwalacze** | Ręcznie | |
 
 4. Kliknij przycisk **OK**.
 
@@ -155,12 +155,12 @@ when making changes in one don't forget the other two.
 
    ![Dodawanie strony zadania WebJob](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | Ustawienie      | Wartość przykładowa   | Opis  |
+   | Ustawienie      | Przykładowa wartość   | Opis  |
    | ------------ | ----------------- | ------------ |
    | **Nazwa** | myScheduledWebJob | Nazwa, która jest unikatowa w ramach aplikacji App Service. Musi zaczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_". |
    | **Przekazywanie plików** | ConsoleApp. zip | Plik *. zip* , który zawiera plik wykonywalny lub skrypt, a także wszystkie pliki pomocnicze potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików wykonywalnych i skryptów są wymienione w sekcji [obsługiwane typy plików](#acceptablefiles) . |
-   | **Typ** | Wyzwalane | [Typy zadań WebJob](#webjob-types) zostały opisane wcześniej w tym artykule. |
-   | **Wyzwalacze** | Zaplanowana | Aby planowanie działało niezawodne, Włącz funkcję zawsze włączone. Opcję zawsze włączone są dostępne tylko w warstwach cenowych podstawowa, standardowa i Premium.|
+   | **Wprowadź** | Wyzwalane | [Typy zadań WebJob](#webjob-types) zostały opisane wcześniej w tym artykule. |
+   | **Wyzwalacze** | Regular | Aby planowanie działało niezawodne, Włącz funkcję zawsze włączone. Opcję zawsze włączone są dostępne tylko w warstwach cenowych podstawowa, standardowa i Premium.|
    | **Wyrażenie CRONUS** | 0 0/20 * * * * | [Wyrażenia CRONUS](#ncrontab-expressions) są opisane w następnej sekcji. |
 
 4. Kliknij przycisk **OK**.
@@ -171,7 +171,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="ncrontab-expressions"></a>Wyrażenia NCRONTAB
 
-Możesz wprowadzić [wyrażenie NCRONRAB](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) w portalu lub dołączyć plik `settings.job` w katalogu głównym pliku WebJob *. zip* , jak w poniższym przykładzie:
+Możesz wprowadzić [wyrażenie NCRONTAB](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) w portalu lub dołączyć plik `settings.job` w katalogu głównym pliku WebJob *. zip* , jak w poniższym przykładzie:
 
 ```json
 {

@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: wyodrębnianie tekstu drukowanego (OCR) — REST, C#'
+title: 'Szybki Start: Wyodrębnianie tekstu drukowanego (OCR) — REST,C#'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst drukowany przy użyciu interfejsu API przetwarzania obrazów i języka C#.
+description: W tym przewodniku szybki start wyodrębnisz drukowany tekst z obrazu przy użyciu interfejs API przetwarzania obrazów C#.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2aae6239219e0a99b102a3491d8b55acadacbd31
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ba0003de0d14827d7bd96298ba591eb3b1e95f44
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138073"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177321"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Szybki start: Wyodrębnij drukowany tekst (OCR) przy użyciu interfejsu API REST przetwarzanie obrazów iC#
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Szybki Start: Wyodrębnij drukowany tekst (OCR) przy użyciu interfejsu API REST przetwarzanie obrazów iC#
 
-W tym przewodniku Szybki start wyodrębnisz tekst drukowany z obrazu za pomocą optycznego rozpoznawania znaków (OCR) przy użyciu interfejsu API REST przetwarzania obrazów. Funkcja [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) pozwala wykrywać na obrazie tekst drukowany i wyodrębniać rozpoznane znaki do strumienia znaków, którego mogą używać komputery.
+W tym przewodniku Szybki Start zostanie wyodrębniony drukowany tekst z użyciem optycznego rozpoznawania znaków (OCR) z obrazu za pomocą interfejsu API REST przetwarzanie obrazów. Za pomocą funkcji [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) można wykrywać drukowany tekst w obrazie i wyodrębniać rozpoznane znaki do strumienia znaków do użycia maszynowego.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Musisz mieć program [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) lub nowszy.
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` nazwane `COMPUTER_VISION_ENDPOINT`i.
+- Wymagany jest [program Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) lub nowszy.
+- Musisz mieć klucz subskrypcji dla przetwarzanie obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi o nazwach odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
-## <a name="create-and-run-the-sample-application"></a>Tworzenie i uruchamianie przykładowej aplikacji
+## <a name="create-and-run-the-sample-application"></a>Utwórz i uruchom przykładową aplikację
 
-Aby utworzyć próbkę w programie Visual Studio, wykonaj następujące czynności:
+Aby utworzyć przykład w programie Visual Studio, wykonaj następujące czynności:
 
-1. Utwórz nowe rozwiązanie Visual Studio w programie Visual Studio przy użyciu szablonu aplikacji konsoli na potrzeby środowiska Visual C#.
-1. Zainstaluj pakiet NuGet Newtonsoft.Json.
-    1. W menu kliknij pozycję **Narzędzia**, a następnie **Menedżer pakietów NuGet** i **Zarządzaj pakietami NuGet rozwiązania**.
-    1. Kliknij kartę **Przeglądaj**, a następnie w polu **Wyszukiwanie** wpisz ciąg „Newtonsoft.Json”.
-    1. Gdy zostanie wyświetlona pozycja **Newtonsoft.Json**, wybierz ją, a następnie kliknij kolejno pole wyboru obok nazwy projektu i pozycję **Zainstaluj**.
+1. Utwórz nowe rozwiązanie programu Visual Studio w programie Visual Studio przy użyciu szablonu C# aplikacji konsolowej Visual.
+1. Zainstaluj pakiet NuGet Newtonsoft. JSON.
+    1. W menu kliknij pozycję **Narzędzia**, wybierz pozycję **Menedżer pakietów NuGet**, a następnie **Zarządzaj pakietami NuGet dla rozwiązania**.
+    1. Kliknij kartę **Przeglądaj** , a następnie w polu **wyszukiwania** wpisz "Newtonsoft. JSON".
+    1. Wybierz **Newtonsoft. JSON** , gdy zostanie wyświetlony, a następnie kliknij pole wyboru obok nazwy projektu i **Zainstaluj**.
 1. Uruchom program.
-1. Gdy pojawi się monit, wprowadź ścieżkę do obrazu lokalnego.
+1. W wierszu polecenia wprowadź ścieżkę do obrazu lokalnego.
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -59,7 +59,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the OCR method endpoint
-        const string uriBase = endpoint + "vision/v2.0/ocr";
+        const string uriBase = endpoint + "vision/v2.1/ocr";
 
         static void Main()
         {
@@ -159,9 +159,9 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
+## <a name="examine-the-response"></a>Badanie odpowiedzi
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa aplikacja analizuje i wyświetla pomyślną odpowiedź w oknie konsoli, podobnie jak w poniższym przykładzie:
+Pomyślna odpowiedź jest zwracana w formacie JSON. Przykładowa aplikacja analizuje i wyświetla pomyślną odpowiedź w oknie konsoli, podobnie jak w poniższym przykładzie:
 
 ```json
 {
@@ -241,7 +241,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z podstawową aplikacją dla systemu Windows, w której zastosowano interfejs API przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie.
+Poznaj podstawową aplikację systemu Windows, która używa przetwarzanie obrazów do wykonywania optycznego rozpoznawania znaków (OCR). Twórz inteligentne, przycięte miniatury; Dodatkowo wykrywaj, Kategoryzuj, Otaguj i opisuj funkcje wizualne, w tym twarze, w obrazie.
 
 > [!div class="nextstepaction"]
-> [Samouczek dla języka C# dotyczący interfejsu API przetwarzania obrazów](../Tutorials/CSharpTutorial.md)
+> [Samouczek C# interfejs API przetwarzania obrazów](../Tutorials/CSharpTutorial.md)

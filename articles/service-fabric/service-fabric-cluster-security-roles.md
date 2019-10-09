@@ -1,6 +1,6 @@
 ---
-title: 'Zabezpieczenia klastra usługi Service Fabric: role klienta | Dokumentacja firmy Microsoft'
-description: W tym artykule opisano role dwóch klientów i uprawnienia dostarczane do ról.
+title: 'Service Fabric zabezpieczenia klastra: role klienta | Microsoft Docs'
+description: W tym artykule opisano dwie role klienta i uprawnienia udostępniane role.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,97 +13,97 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: ed000dc4be1ae45382d688d4a596ec745c69d0bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 38656d286cae631cb5def0e0c8b171268e4cf428
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711162"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167264"
 ---
-# <a name="role-based-access-control-for-service-fabric-clients"></a>Kontrola dostępu oparta na rolach dla klientów usługi Service Fabric
-Usługa Azure Service Fabric obsługuje dwa typy kontroli dostępu do różnych klientów, które są podłączone do klastra usługi Service Fabric: administratora i użytkownika. Kontrola dostępu pozwala administrator klastra ograniczyć dostęp do pewnych operacji klastra dla różnych grup użytkowników, dzięki czemu klaster jest bardziej bezpieczne.  
+# <a name="role-based-access-control-for-service-fabric-clients"></a>Kontrola dostępu oparta na rolach dla klientów Service Fabric
+Usługa Azure Service Fabric obsługuje dwa różne typy kontroli dostępu dla klientów, którzy są połączeni z klastrem Service Fabric: administrator i użytkownik. Kontrola dostępu pozwala administratorowi klastra ograniczyć dostęp do niektórych operacji klastra dla różnych grup użytkowników, co sprawia, że klaster jest bezpieczniejszy.  
 
-**Administratorzy** mają pełny dostęp do możliwości zarządzania (w tym możliwości odczytu/zapisu). Domyślnie **użytkowników** tylko mają dostęp do odczytu do możliwości zarządzania (na przykład, zapytanie możliwości) i możliwość usuwania aplikacji i usług.
+**Administratorzy** mają pełny dostęp do możliwości zarządzania (w tym możliwości odczytu i zapisu). Domyślnie **Użytkownicy** mają dostęp tylko do odczytu do funkcji zarządzania (na przykład możliwości zapytania) i możliwość rozpoznawania aplikacji i usług.
 
-Należy określić role dwóch klientów (administratora i klientów) w czasie tworzenia klastra, podając oddzielnych certyfikatów dla każdego. Zobacz [zabezpieczeń klastra usługi Service Fabric](service-fabric-cluster-security.md) Aby uzyskać szczegółowe informacje na temat tworzenia bezpiecznego klastra usługi Service Fabric.
+Podczas tworzenia klastra należy określić dwie role klienta (administrator i klient), dostarczając oddzielne certyfikaty dla każdego z nich. Aby uzyskać szczegółowe informacje na temat konfigurowania bezpiecznego klastra Service Fabric, zobacz [Service Fabric zabezpieczenia klastra](service-fabric-cluster-security.md) .
 
 ## <a name="default-access-control-settings"></a>Domyślne ustawienia kontroli dostępu
-Typ kontroli dostępu administratora ma pełny dostęp do wszystkich interfejsów API FabricClient. Może wykonywać żadnych operacji odczytu i zapisu na klastrze usługi Service Fabric, w tym następujące operacje:
+Typ kontroli dostępu administratora ma pełny dostęp do wszystkich interfejsów API FabricClient. Może wykonywać wszelkie operacje odczytu i zapisu w klastrze Service Fabric, w tym następujące operacje:
 
-### <a name="application-and-service-operations"></a>Aplikacji i operacje usługi
-* **CreateService**: Tworzenie usługi                             
-* **CreateServiceFromTemplate**: tworzenie za pomocą szablonu usługi                             
-* **UpdateService**: Usługa aktualizacji                             
-* **Funkcja DeleteService**: usuwanie usługi                             
-* **ProvisionApplicationType**: aprowizacji typu aplikacji                             
-* **Operacji CreateApplication**: tworzenie aplikacji                               
-* **DeleteApplication**: usuwanie aplikacji                             
-* **UpgradeApplication**: uruchamia się lub przerywania uaktualnień aplikacji                             
-* **UnprovisionApplicationType**: cofnięcie aprowizacji typu aplikacji                             
-* **MoveNextUpgradeDomain**: wznawianie uaktualnień aplikacji za pomocą domeny aktualizacji jawne                             
-* **ReportUpgradeHealth**: wznawianie uaktualnień aplikacji za pomocą Bieżący postęp uaktualniania                             
-* **ReportHealth**: raportowania kondycji                             
-* **PredeployPackageToNode**: przedwdrożeniowe interfejsu API                            
-* **CodePackageControl**: ponowne uruchamianie pakiety kodu                             
+### <a name="application-and-service-operations"></a>Operacje aplikacji i usług
+* Moje **usługi**: Tworzenie usługi                             
+* **CreateServiceFromTemplate**: Tworzenie usługi z szablonu                             
+* **Elementu updateservice**: aktualizacje usługi                             
+* **DeleteService**: Usuwanie usługi                             
+* **ProvisionApplicationType**: Obsługa typu aplikacji                             
+* Moja **aplikacja**: Tworzenie aplikacji                               
+* **Operacji deleteapplication**: Usuwanie aplikacji                             
+* **UpgradeApplication**: uruchamianie lub przerywanie uaktualnień aplikacji                             
+* **UnprovisionApplicationType**: anulowanie aprowizacji typu aplikacji                             
+* **MoveNextUpgradeDomain**: wznawianie uaktualnień aplikacji za pomocą jawnej domeny aktualizacji                             
+* **ReportUpgradeHealth**: wznawianie uaktualnień aplikacji z aktualnym postępem uaktualniania                             
+* **ReportHealth**: kondycja raportowania                             
+* **PredeployPackageToNode**: interfejs API preinstalacji                            
+* **CodePackageControl**: ponowne uruchamianie pakietów kodu                             
 * **RecoverPartition**: odzyskiwanie partycji                             
 * **RecoverPartitions**: odzyskiwanie partycji                             
-* **RecoverServicePartitions**: odzyskiwanie partycje usługi                             
-* **RecoverSystemPartitions**: odzyskiwanie partycji usług systemowych                             
+* **RecoverServicePartitions**: odzyskiwanie partycji usługi                             
+* **RecoverSystemPartitions**: odzyskiwanie partycji usługi systemowej                             
 
 ### <a name="cluster-operations"></a>Operacje klastra
-* **ProvisionFabric**: Plik MSI i/lub klastra manifestu, inicjowanie obsługi administracyjnej                             
-* **UpgradeFabric**: uruchamianie Uaktualnianie klastra                             
-* **UnprovisionFabric**: Plik MSI i/lub klastra manifestu, cofnięcie aprowizacji                         
-* **MoveNextFabricUpgradeDomain**: wznawianie Uaktualnianie klastra za pomocą domeny aktualizacji jawne                             
-* **ReportFabricUpgradeHealth**: wznawianie Uaktualnianie klastra za pomocą Bieżący postęp uaktualniania                             
-* **StartInfrastructureTask**: Uruchamianie zadań związanych z infrastrukturą                             
-* **FinishInfrastructureTask**: Kończenie zadań związanych z infrastrukturą                             
-* **InvokeInfrastructureCommand**: infrastruktura zadań zarządzania poleceń                              
+* **ProvisionFabric**: Inicjowanie obsługi manifestu MSI i/lub klastra                             
+* **UpgradeFabric**: uruchamianie uaktualnień klastra                             
+* **UnprovisionFabric**: Inicjowanie obsługi administracyjnej manifestu MSI i/lub klastra                         
+* **MoveNextFabricUpgradeDomain**: wznawianie uaktualnień klastra z jawną domeną aktualizacji                             
+* **ReportFabricUpgradeHealth**: wznawianie uaktualnień klastra z bieżącym postępem uaktualniania                             
+* **StartInfrastructureTask**: Uruchamianie zadań infrastruktury                             
+* **FinishInfrastructureTask**: Kończenie zadań infrastruktury                             
+* **InvokeInfrastructureCommand**: polecenia zarządzania zadaniami infrastruktury                              
 * **ActivateNode**: aktywowanie węzła                             
-* **DeactivateNode**: dezaktywowanie węzła                             
-* **DeactivateNodesBatch**: dezaktywowanie wiele węzłów                             
-* **RemoveNodeDeactivations**: Przywracanie dezaktywacji na wielu węzłach                             
+* **Operacja deactivatenode**: dezaktywowanie węzła                             
+* **DeactivateNodesBatch**: dezaktywowanie wielu węzłów                             
+* **RemoveNodeDeactivations**: wycofywanie dezaktywacji na wielu węzłach                             
 * **GetNodeDeactivationStatus**: Sprawdzanie stanu dezaktywacji                             
-* **NodeStateRemoved**: raportowanie stanu węzła usunięte                             
-* **ReportFault**: raportowanie błędów                             
-* **Operację FileContent**: obraz transfer plików klienta magazynu (zewnętrznie w stosunku do klastra)                             
-* **FileDownload**: obrazów (zewnętrzna do klastra) Rozpoczęcie pobierania pliku klienta magazynu                             
-* **InternalList**: obraz magazynu klienta pliku operacja wygenerowania listy (wewnętrzny)                             
-* **Usuń**: operacja usunięcia klienta magazynu obrazów                              
-* **Przekaż**: operacji wysyłania klienta magazynu obrazów                             
+* **Elementu nodestateremoved**: Usunięto stan węzła raportowania                             
+* **ReportFault**: błąd raportowania                             
+* **FileContent**: transfer plików klienta magazynu obrazów (zewnętrzny do klastra)                             
+* **FileDownload**: inicjacja pobrania pliku klienta magazynu obrazu (zewnętrzna dla klastra)                             
+* **InternalList**: operacja listy plików klienta magazynu obrazów (wewnętrzna)                             
+* **Usuwanie**: operacja usunięcia klienta magazynu obrazu                              
+* **Przekazywanie**: operacja przekazania klienta magazynu obrazu                             
 * **NodeControl**: uruchamianie, zatrzymywanie i ponowne uruchamianie węzłów                             
-* **MoveReplicaControl**: przenoszenie repliki z jednego węzła do innego                             
+* **MoveReplicaControl**: przeniesienie replik z jednego węzła do innego                             
 
-### <a name="miscellaneous-operations"></a>Inne operacje
-* **Polecenie ping**: ping klienta                             
-* **Zapytanie**: wszystkie zapytania dozwolone
-* **NameExists**: sprawdza obecność identyfikatora URI nazewnictwa                             
+### <a name="miscellaneous-operations"></a>Różne operacje
+* **Ping**: polecenie ping klienta                             
+* **Zapytanie**: wszystkie zapytania są dozwolone
+* **NameExists**: sprawdzanie nazw identyfikatorów URI                             
 
-Typ kontroli dostępu użytkowników jest domyślnie ograniczony do następujących czynności: 
+Typ kontroli dostępu użytkownika jest domyślnie ograniczony do następujących operacji: 
 
-* **EnumerateSubnames**: nazw identyfikatora URI, wyliczenie                             
-* **EnumerateProperties**: nazw właściwości, wyliczenie                             
-* **PropertyReadBatch**: operacje odczytu dla nazw właściwości                             
-* **GetServiceDescription**: powiadomień dotyczących usług długich sondowania i odczytywanie ich opisy usług                             
-* **ResolveService**: usługa oparta na zgodne rozwiązania                             
-* **ResolveNameOwner**: rozpoznawania nazw właściciela identyfikatora URI                             
-* **ResolvePartition**: rozpoznawanie usług systemowych                             
-* **ServiceNotifications**: powiadomień dotyczących usług opartych na zdarzeniach                             
-* **GetUpgradeStatus**: sondowania stanu uaktualnienia aplikacji                             
-* **GetFabricUpgradeStatus**: sondowania stanu uaktualnienia klastra                             
-* **InvokeInfrastructureQuery**: wykonywanie zapytań zadań związanych z infrastrukturą                             
-* **Lista**: operacja wygenerowania listy plików klienta magazynu obrazów                             
-* **ResetPartitionLoad**: resetowanie obciążenia w przypadku pojedynczej jednostki trybu failover                             
-* **ToggleVerboseServicePlacementHealthReporting**: przełączanie, raportowanie stanu umieszczania pełne usługi                             
+* **EnumerateSubnames**: Wyliczenie identyfikatorów URI nazw                             
+* **EnumerateProperties**: Wyliczanie właściwości nazw                             
+* **PropertyReadBatch**: nadawanie nazw operacji odczytu właściwości                             
+* **GetServiceDescription**: powiadomienia o usłudze Long-sondowania i odczytywanie opisów usługi                             
+* **ResolveService**: Rozpoznawanie usługi opartej na skardze                             
+* **ResolveNameOwner**: Rozpoznawanie właściciela identyfikatora URI nazwy                             
+* **ResolvePartition**: Rozpoznawanie usług systemowych                             
+* **Servicenotifications**: powiadomienia dotyczące usługi oparte na zdarzeniach                             
+* **GetUpgradeStatus**: sondowanie stanu uaktualnienia aplikacji                             
+* **GetFabricUpgradeStatus**: sondowanie stanu uaktualnienia klastra                             
+* **InvokeInfrastructureQuery**: wykonywanie zapytań dotyczących zadań infrastruktury                             
+* **Lista**: operacja listy plików klienta magazynu obrazów                             
+* **ResetPartitionLoad**: Resetowanie obciążenia dla jednostki trybu failover                             
+* **ToggleVerboseServicePlacementHealthReporting**: przełączanie pełnych raportów o kondycji umieszczania usług                             
 
-Kontrola dostępu administracyjnego ma także dostęp do poprzednich operacji.
+Kontrola dostępu administratora ma również dostęp do poprzednich operacji.
 
 ## <a name="changing-default-settings-for-client-roles"></a>Zmiana ustawień domyślnych dla ról klienta
-W pliku manifestu klastra można podać możliwości administratora do klienta, jeśli to konieczne. Ustawienia domyślne można zmienić, przechodząc do **ustawień sieci szkieletowej** opcji podczas [Tworzenie klastra](service-fabric-cluster-creation-via-portal.md)i określeniu poprzednich ustawień w **nazwa**,  **Administrator**, **użytkownika**, i **wartość** pola.
+W pliku manifestu klastra w razie potrzeby można udostępnić klientom funkcje administracyjne. Ustawienia domyślne można zmienić, przechodząc do opcji **Ustawienia sieci szkieletowej** podczas [tworzenia klastra](service-fabric-cluster-creation-via-portal.md)i podając powyższe ustawienia w polach **Nazwa**, **administrator**, **użytkownik**i **wartość** .
 
-## <a name="next-steps"></a>Kolejne kroki
-[Zabezpieczenia klastra usługi Service Fabric](service-fabric-cluster-security.md)
+## <a name="next-steps"></a>Następne kroki
+[Service Fabric zabezpieczenia klastra](service-fabric-cluster-security.md)
 
-[Tworzenie klastra usługi Service Fabric](service-fabric-cluster-creation-via-portal.md)
+[Service Fabric tworzenia klastra](service-fabric-cluster-creation-via-portal.md)
 

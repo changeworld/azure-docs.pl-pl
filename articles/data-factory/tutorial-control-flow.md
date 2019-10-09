@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: 5b9be86b0a3d17c9c325b565979fccbec92f5733
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: d8ea5a507cc110c92bb74491c3376f7b671638d9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815878"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176006"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i łączenie łańcuchów w potoku Data Factory
 
@@ -38,7 +38,7 @@ W tym samouczku przedstawiono sposób wykonywania następujących zadań:
 > * Uruchamianie uruchomienia potoku
 > * Monitorowanie uruchomień potoku i działania
 
-Ten samouczek używa zestawu .NET SDK. Można użyć innych mechanizmów do współpracy z Azure Data Factory. Aby uzyskać Data Factory przewodników Szybki Start, zobacz [5-minutowe Przewodniki Szybki Start](https://docs.microsoft.com/azure/data-factory/#5-minute-quickstarts).
+Ten samouczek używa zestawu .NET SDK. Można użyć innych mechanizmów do współpracy z Azure Data Factory. Aby uzyskać Data Factory przewodników Szybki Start, zobacz [5-minutowe Przewodniki Szybki Start](/azure/data-factory/quickstart-create-data-factory-portal).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/20/2019
 ms.author: magoedte
-ms.openlocfilehash: fa3c8b8cee0b8621a6a2800655f62a3d339f67c3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 24eb8440ed4746b51b92ce371b5d58b8d55de9a3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211985"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177606"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Projektowanie wdrożenia dzienników Azure Monitor
 
@@ -32,7 +32,7 @@ Obszar roboczy Log Analytics zawiera następujące informacje:
 
 * Lokalizacja geograficzna magazynu danych.
 * Izolacja danych przez przyznanie różnym użytkownikom praw dostępu zgodnie z naszymi zalecanymi strategiami projektowania.
-* Zakres konfiguracji ustawień, takich jak [warstwa cenowa](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [przechowywanie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)i [pułapy danych](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap).
+* Zakres konfiguracji ustawień, takich jak [warstwa cenowa](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [przechowywanie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)i [pułapy danych](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume).
 
 Ten artykuł zawiera szczegółowe omówienie zagadnień dotyczących projektowania i migracji, Omówienie kontroli dostępu oraz zrozumienie implementacji projektu, które zalecamy dla organizacji IT.
 
@@ -43,14 +43,14 @@ Ten artykuł zawiera szczegółowe omówienie zagadnień dotyczących projektowa
 Określenie liczby potrzebnych obszarów roboczych ma wpływ na co najmniej jedno z następujących wymagań:
 
 * Jesteś firmą globalną i potrzebujesz danych dzienników przechowywanych w określonych regionach w celu zachowania poufności danych lub jej zgodności.
-* Korzystasz z platformy Azure i chcesz uniknąć naliczania opłat za transfer danych wychodzących przez umieszczenie obszaru roboczego w tym samym regionie co zarządzane przez niego zasoby platformy Azure.
+* Korzystasz z platformy Azure i chcesz uniknąć naliczania opłat za transfer danych wychodzących przez posiadanie obszaru roboczego w tym samym regionie co zarządzane przez niego zasoby platformy Azure.
 * Zarządzasz wieloma wydziałami lub grupami biznesowymi, a każdy z nich ma wyświetlać własne dane, ale nie dane od innych. Ponadto nie istnieje wymóg biznesowy dla skonsolidowanego działu krzyżowego ani widoku grupy biznesowej.
 
 Obecnie organizacje IT są modelowane zgodnie z scentralizowanym, zdecentralizowanym lub mieszanym hybrydem obu struktur. W związku z tym następujące modele wdrażania obszarów roboczych są często używane do mapowania na jedną z następujących struktur organizacyjnych:
 
-* **Scentralizowane**: Wszystkie dzienniki są przechowywane w centralnym obszarze roboczym i zarządzane przez jednego zespołu, z Azure Monitor zapewniający zróżnicowany dostęp dla poszczególnych zespołów. W tym scenariuszu można łatwo zarządzać, przeszukiwać zasoby i rejestrować je między sobą. Obszar roboczy może znacząco wzrosnąć w zależności od ilości danych zbieranych z wielu zasobów w ramach subskrypcji, z dodatkowym narzutem administracyjnym w celu utrzymania kontroli dostępu do różnych użytkowników.
-* **Zdecentralizowane**: Każdy zespół ma własny obszar roboczy utworzony w grupie zasobów, której są właścicielami i którymi zarządza, a dane dziennika są segregowane według poszczególnych zasobów. W tym scenariuszu obszar roboczy może być zabezpieczony, a kontrola dostępu jest spójna z dostępem do zasobów, ale trudno jest rejestrować krzyżowe dzienniki. Użytkownicy, którzy potrzebują szerokiego wglądu w wiele zasobów, nie mogą analizować danych w zrozumiały sposób.
-* **Hybrydowe**: Wymagania dotyczące zgodności inspekcji zabezpieczeń bardziej komplikują ten scenariusz, ponieważ w wielu organizacjach jednocześnie wdrożono oba modele wdrażania. Często wynika to z skomplikowanej, kosztownej i trudnej do utrzymania konfiguracji z przerwyami w dziennikach.
+* **Scentralizowany**: wszystkie dzienniki są przechowywane w centralnym obszarze roboczym i zarządzane przez jednego zespołu, z Azure monitor zapewniający zróżnicowany dostęp dla poszczególnych zespołów. W tym scenariuszu można łatwo zarządzać, przeszukiwać zasoby i rejestrować je między sobą. Obszar roboczy może znacząco wzrosnąć w zależności od ilości danych zbieranych z wielu zasobów w ramach subskrypcji, z dodatkowym narzutem administracyjnym w celu utrzymania kontroli dostępu do różnych użytkowników.
+* **Zdecentralizowane**: każdy zespół ma własny obszar roboczy utworzony w grupie zasobów, której są właścicielami i którymi zarządza, a dane dziennika są segregowane według poszczególnych zasobów. W tym scenariuszu obszar roboczy może być zabezpieczony, a kontrola dostępu jest spójna z dostępem do zasobów, ale trudno jest rejestrować krzyżowe dzienniki. Użytkownicy, którzy potrzebują szerokiego wglądu w wiele zasobów, nie mogą analizować danych w zrozumiały sposób.
+* **Hybrydowe**: wymagania dotyczące zgodności inspekcji zabezpieczeń bardziej komplikują ten scenariusz, ponieważ wiele organizacji jednocześnie implementuje oba modele wdrażania. Często wynika to z skomplikowanej, kosztownej i trudnej do utrzymania konfiguracji z przerwyami w dziennikach.
 
 Korzystając z Log Analytics agentów do zbierania danych, należy zrozumieć następujące kwestie w celu zaplanowania wdrożenia agenta:
 
@@ -69,7 +69,7 @@ Za pomocą kontroli dostępu opartej na rolach (RBAC) można przyznać użytkown
 
 Dane, do których użytkownik ma dostęp, są określane przez kombinację czynników, które są wymienione w poniższej tabeli. Każdy z nich został opisany w poniższych sekcjach.
 
-| współczynnik | Opis |
+| 1U | Opis |
 |:---|:---|
 | [Tryb dostępu](#access-mode) | Metoda wykorzystywana przez użytkownika w celu uzyskania dostępu do obszaru roboczego.  Definiuje zakres dostępnych danych i tryb kontroli dostępu, który został zastosowany. |
 | [Tryb kontroli dostępu](#access-control-mode) | Ustawienie w obszarze roboczym, które określa, czy uprawnienia są stosowane na poziomie obszaru roboczego czy zasobu. |
@@ -82,11 +82,11 @@ Dane, do których użytkownik ma dostęp, są określane przez kombinację czynn
 
 Użytkownicy mają dwie opcje uzyskiwania dostępu do danych:
 
-* **Obszar roboczy — kontekst**: Możesz wyświetlić wszystkie dzienniki w obszarze roboczym, do którego masz uprawnienia. Zapytania w tym trybie są ograniczone do wszystkich danych we wszystkich tabelach w obszarze roboczym. Jest to tryb dostępu używany do uzyskiwania dostępu do dzienników z obszarem roboczym jako zakres, na przykład po wybraniu opcji **dzienniki** z menu **Azure monitor** w Azure Portal.
+* **Obszar roboczy — kontekst**: można wyświetlić wszystkie dzienniki w obszarze roboczym, do którego masz uprawnienia. Zapytania w tym trybie są ograniczone do wszystkich danych we wszystkich tabelach w obszarze roboczym. Jest to tryb dostępu używany do uzyskiwania dostępu do dzienników z obszarem roboczym jako zakres, na przykład po wybraniu opcji **dzienniki** z menu **Azure monitor** w Azure Portal.
 
     ![Log Analytics kontekstu z obszaru roboczego](./media/design-logs-deployment/query-from-workspace.png)
 
-* **Kontekst zasobu**: Podczas uzyskiwania dostępu do obszaru roboczego dla określonego zasobu, grupy zasobów lub subskrypcji, na przykład po wybraniu opcji **dzienniki** z menu zasobów w Azure Portal, można wyświetlić dzienniki tylko dla zasobów we wszystkich tabelach, do których masz dostęp. Zapytania w tym trybie są ograniczone do danych skojarzonych z tym zasobem. Ten tryb umożliwia również szczegółową kontrolę RBAC.
+* **Kontekst zasobu**: w przypadku uzyskiwania dostępu do obszaru roboczego dla określonego zasobu, grupy zasobów lub subskrypcji, na przykład po wybraniu opcji **dzienniki** z menu zasobów w Azure Portal, można wyświetlić dzienniki tylko dla zasobów we wszystkich tabelach, które posiadasz dostęp do programu. Zapytania w tym trybie są ograniczone do danych skojarzonych z tym zasobem. Ten tryb umożliwia również szczegółową kontrolę RBAC.
 
     ![Log Analytics kontekstu z zasobu](./media/design-logs-deployment/query-from-resource.png)
 
@@ -115,13 +115,13 @@ Poniższa tabela zawiera podsumowanie trybów dostępu:
 
 *Tryb kontroli dostępu* jest ustawieniem w każdym obszarze roboczym, który definiuje sposób określania uprawnień dla obszaru roboczego.
 
-* **Wymagaj uprawnień obszaru roboczego**: Ten tryb kontroli nie zezwala na szczegółową RBAC. Aby użytkownik mógł uzyskać dostęp do obszaru roboczego, muszą mieć przyznane uprawnienia do obszaru roboczego lub do określonych tabel.
+* **Wymagaj uprawnień obszaru roboczego**: ten tryb kontroli nie zezwala na szczegółową kontrolę RBAC. Aby użytkownik mógł uzyskać dostęp do obszaru roboczego, muszą mieć przyznane uprawnienia do obszaru roboczego lub do określonych tabel.
 
     Jeśli użytkownik uzyskuje dostęp do obszaru roboczego po trybie kontekstu obszaru roboczego, ma dostęp do wszystkich danych w dowolnej tabeli, do której udzielono dostępu. Jeśli użytkownik uzyskuje dostęp do obszaru roboczego po trybie kontekstu zasobów, ma dostęp tylko do danych dla tego zasobu w dowolnej tabeli, do której udzielono dostępu.
 
     Jest to ustawienie domyślne dla wszystkich obszarów roboczych utworzonych przed marcem 2019.
 
-* **Użyj uprawnień zasobu lub obszaru roboczego**: Ten tryb kontroli zezwala na szczegółową RBAC. Użytkownikom można udzielić dostępu tylko do danych skojarzonych z zasobami, które mogą być wyświetlane przez przypisanie `read` uprawnienia platformy Azure. 
+* **Użyj uprawnień zasobu lub obszaru roboczego**: ten tryb kontroli zezwala na szczegółową kontrolę RBAC. Użytkownikom można udzielić dostępu tylko do danych skojarzonych z zasobami, które mogą wyświetlać, przypisując uprawnienie Azure `read`. 
 
     Gdy użytkownik uzyskuje dostęp do obszaru roboczego w trybie kontekstu obszaru roboczego, mają zastosowanie uprawnienia obszaru roboczego. Gdy użytkownik uzyskuje dostęp do obszaru roboczego w trybie kontekstu zasobów, sprawdzane są tylko uprawnienia do zasobów, a uprawnienia obszaru roboczego są ignorowane. Włącz funkcję RBAC dla użytkownika, usuwając je z uprawnień obszaru roboczego i zezwalając na ich rozpoznanie.
 
@@ -145,7 +145,7 @@ Operation
 ``` 
 
 
-## <a name="recommendations"></a>Zalecenia
+## <a name="recommendations"></a>Mając
 
 ![Przykład projektu kontekstu zasobów](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 

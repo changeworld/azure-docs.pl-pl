@@ -16,23 +16,23 @@ ms.date: 09/24/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1283549ce78535757b7ba42eaf7054538f0c9784
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a99aa766ed4e6cacbe22933db226b2037d3e736d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326341"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170010"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Tworzenie nowego pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
 
 > [!IMPORTANT]
 > Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ta wersja zapoznawcza jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane lub mogą mieć ograniczone możliwości.
+> Aby uzyskać więcej informacji, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)zapoznawczych Microsoft Azure.
 
 Pakiet dostępu umożliwia jednorazowe skonfigurowanie zasobów i zasad, które automatycznie zarządzają dostępem do czasu życia pakietu dostępu. W tym artykule opisano sposób tworzenia nowego pakietu dostępu.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Wszystkie pakiety dostępu muszą być umieszczone w kontenerze o nazwie wykaz. Katalog definiuje zasoby, które można dodać do pakietu dostępu. Jeśli nie określisz katalogu, pakiet dostępu zostanie umieszczony w katalogu ogólnym. Obecnie nie można przenieść istniejącego pakietu dostępu do innego katalogu.
 
@@ -46,7 +46,7 @@ Na poniższym diagramie przedstawiono proces wysokiego poziomu służący do two
 
 **Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika lub właściciel katalogu
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com).
 
 1. Kliknij **Azure Active Directory** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -56,7 +56,7 @@ Na poniższym diagramie przedstawiono proces wysokiego poziomu służący do two
 
 1. Kliknij pozycję **nowy pakiet dostępu**.
 
-## <a name="basics"></a>Ustawienia podstawowe
+## <a name="basics"></a>Nazwie
 
 Na karcie **podstawowe** można nadać pakietowi dostępu nazwę i określić katalog, w którym ma zostać utworzony pakiet dostępu.
 
@@ -126,5 +126,3 @@ Na karcie **Przegląd i tworzenie** możesz przejrzeć ustawienia i sprawdzić, 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Edytowanie istniejącego pakietu dostępu i zarządzanie nim](entitlement-management-access-package-edit.md)
-- [Dodawanie właściciela katalogu lub Menedżera pakietów programu Access](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [Tworzenie wykazu i zarządzanie nim](entitlement-management-catalog-create.md)

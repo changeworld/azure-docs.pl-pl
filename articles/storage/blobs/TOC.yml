@@ -745,10 +745,12 @@
               href: /dotnet/api/overview/azure/storage/management
         - name: Java
           items:
-            - name: 'Obiekty blob, kolejki, tabele i pliki (v7)'
-              href: /java/api/overview/azure/storage/client?view=azure-java-stable
-            - name: Zestaw Blob SDK (v10)
-              href: /java/api/overview/azure/storage/client?view=azure-java-preview
+            - name: 'Obiekty blob, kolejki i pliki (wersja 12.x — zapoznawcza)'
+              href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
+            - name: 'Obiekty blob, kolejki i pliki (wersja 8)'
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+            - name: Dostawca zasobów magazynu
+              href: /java/api/overview/azure/storage/management
         - name: REST
           items:
             - name: 'Obiekty blob, kolejki, tabele i pliki'

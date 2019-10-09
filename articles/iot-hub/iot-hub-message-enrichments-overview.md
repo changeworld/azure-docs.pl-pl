@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873194"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177990"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Wzbogacanie komunikatów dla komunikatów IoT Hub między urządzeniami a chmurą (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Wzbogacanie komunikatów ma trzy kluczowe elementy:
 
 **Klucz** jest ciągiem. Klucz może zawierać tylko znaki alfanumeryczne lub znaki specjalne: Łącznik (`-`), podkreślenie (`_`) i kropka (`.`).
 
-Może to być dowolny z następujących przykładów:
+Może **to** być dowolny z następujących przykładów:
 
 * Dowolny ciąg statyczny. Wartości dynamiczne, takie jak warunki, logika, operacje i funkcje, są niedozwolone. Na przykład jeśli tworzysz aplikację SaaS, która jest używana przez kilku klientów, można przypisać identyfikator do każdego klienta i udostępnić ten identyfikator w aplikacji. Gdy aplikacja zostanie uruchomiona, IoT Hub będzie sygnaturą komunikatów telemetrycznych urządzenia z identyfikatorem klienta, dzięki czemu można przetwarzać komunikaty inaczej dla każdego klienta.
 
@@ -90,7 +90,7 @@ Ta funkcja jest dostępna w wersji zapoznawczej i jest dostępna we wszystkich r
 
 Zapoznaj się z tymi artykułami, aby uzyskać więcej informacji na temat routingu komunikatów do IoT Hub:
 
-* [Samouczek dotyczący ulepszeń komunikatów](tutorial-message-enrichments.md)
+* [Samouczek wzbogacania komunikatów](tutorial-message-enrichments.md)
 
 * [Używanie routingu komunikatów IoT Hub do wysyłania komunikatów z urządzenia do chmury do różnych punktów końcowych](iot-hub-devguide-messages-d2c.md)
 

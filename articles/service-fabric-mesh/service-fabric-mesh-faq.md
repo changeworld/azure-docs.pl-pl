@@ -1,53 +1,53 @@
 ---
-title: Często zadawane pytania dotyczące usługi Azure Service Fabric siatki | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o najczęściej zadawanych pytań i odpowiedzi dla usługi Azure Service Fabric siatki.
+title: Często zadawane pytania dotyczące siatki Service Fabric Azure | Microsoft Docs
+description: Zapoznaj się z często zadawanymi pytaniami i odpowiedziami dotyczącymi usługi Azure Service Fabric siatką.
 services: service-fabric-mesh
 keywords: ''
 author: chackdan
-ms.author: chackdan
+ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: edd30dc8799ae9e5410ebc862574d632d09b9483
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143288"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168680"
 ---
-# <a name="commonly-asked-service-fabric-mesh-questions"></a>Często zadawane pytania usługi Service Fabric siatki
+# <a name="commonly-asked-service-fabric-mesh-questions"></a>Często zadawane pytania dotyczące Service Fabric siatki
 
-Usługa Azure Service Fabric Mesh to w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynem i siecią. W tym artykule znajdują się odpowiedzi na często zadawane pytania.
+Siatka Service Fabric platformy Azure to w pełni zarządzana usługa, która umożliwia deweloperom wdrażanie aplikacji mikrousług bez konieczności zarządzania maszynami wirtualnymi, magazynem lub siecią. W tym artykule znajdują się odpowiedzi na często zadawane pytania.
 
-## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Jak zgłosić problem lub Zadaj pytanie?
+## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Jak mogę zgłosić problem lub zadać pytanie?
 
-Zadawaj pytania, uzyskuj odpowiedzi od inżynierów firmy Microsoft i zgłaszania problemów w [repozytorium GitHub service-fabric siatki preview](https://aka.ms/sfmeshissues).
+Zadawaj pytania, uzyskuj odpowiedzi od inżynierów firmy Microsoft i Zgłoś problemy w [usłudze Service-Fabric-siatkowe repozytorium GitHub](https://aka.ms/sfmeshissues).
 
-## <a name="quota-and-cost"></a>Limit przydziału i kosztów
+## <a name="quota-and-cost"></a>Przydział i koszt
 
-### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Jaki jest koszt uczestniczenia w wersji zapoznawczej?
+### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Jaki jest koszt uczestnictwa w wersji zapoznawczej?
 
-Obecnie nie będą naliczane opłaty, w przypadku wdrożenia aplikacji lub kontenerów w wersji zapoznawczej siatki. Obserwuj aktualizacji w maju do włączenia na potrzeby rozliczeń. Jednak firma Microsoft zachęca do usuwania zasobów, wdrażania i nie pozostawić je systemem aktywnie podczas testów.
+Obecnie nie są naliczane opłaty za wdrażanie aplikacji lub kontenerów w wersji zapoznawczej siatki. Obejrzyj aktualizacje w programie, aby umożliwić korzystanie z rozliczeń. Zachęcamy jednak do usunięcia wdrożonych zasobów, które nie opuszczają ich działania, o ile nie zostaną aktywnie przetestowane.
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Czy istnieje limit przydziału liczby rdzeni i pamięci RAM?
 
-Tak. Przydziały dla każdej subskrypcji są:
+Tak. Przydziały dla każdej subskrypcji są następujące:
 
 - Liczba aplikacji: 5
-- Liczba rdzeni na aplikacji: 12
-- Całkowita ilość pamięci RAM na aplikację: 48 GB
+- Rdzenie na aplikację: 12
+- Łączna ilość pamięci RAM na aplikację: 48 GB
 - Punkty końcowe sieci i transferu danych przychodzących: 5
-- Woluminy systemu Azure, które można dołączyć: 10
+- Woluminy platformy Azure, które można dołączyć: 10
 - Liczba replik usługi: 3
-- Największy kontenera, które można wdrożyć jest ograniczony do 4 rdzeni i 16 GB pamięci RAM.
-- Częściowe rdzeni można przydzielić do kontenerów w przyrostach o rozmiarze 0,5 rdzenia, maksymalnie 6 rdzeni.
+- Największy kontener, który można wdrożyć, jest ograniczony do 4 rdzeni i 16GB pamięci RAM.
+- Można przydzielić rdzenie częściowe do kontenerów z przyrostem 0,5 rdzeni, maksymalnie 6 rdzeni.
 
-### <a name="how-long-can-i-leave-my-application-deployed"></a>Jak długo można pozostawić Moja aplikacja wdrożona?
+### <a name="how-long-can-i-leave-my-application-deployed"></a>Jak długo mogę pozostawić aplikację wdrożoną?
 
-Firma Microsoft ma obecnie ograniczony okres istnienia aplikacji do dwóch dni. Jest to w celu optymalnego wykorzystania wolnych rdzeni przydzielonych do wersji zapoznawczej. W rezultacie tylko mogła działać danego wdrożenia stale w ciągu 48 godzin, po tym czasie zostanie on zamknięty.
+Obecnie ograniczono okres istnienia aplikacji na dwa dni. Jest to w celu zmaksymalizowania używania bezpłatnych rdzeni przyznanych do wersji zapoznawczej. W związku z tym można uruchamiać tylko danego wdrożenia w sposób ciągły przez 48 godzin, po upływie którego czas zostanie zamknięty.
 
-Jeśli tak się dzieje się tak zdarzyć, można sprawdzić, czy system zamknij go, uruchamiając `az mesh app show` polecenia w interfejsie wiersza polecenia platformy Azure. Zaznacz, aby sprawdzić, czy zwraca `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Jeśli zobaczysz ten problem, możesz sprawdzić, czy system zamknie go, uruchamiając polecenie `az mesh app show` w interfejsie wiersza polecenia platformy Azure. Sprawdź, czy zwraca `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Na przykład: 
 
@@ -75,88 +75,88 @@ Na przykład:
 }
 ```
 
-Aby usunąć grupę zasobów, użyj `az group delete <nameOfResourceGroup>` polecenia.
+Aby usunąć grupę zasobów, użyj polecenia `az group delete <nameOfResourceGroup>`.
 
 ## <a name="deployments"></a>Wdrożenia
 
 ### <a name="what-container-images-are-supported"></a>Jakie obrazy kontenerów są obsługiwane?
 
-Jeśli tworzysz na komputerze aktualizacji Windows Fall Creators Update (wersja 1709), można używać tylko obrazy platformy docker systemu Windows w wersji 1709.
+W przypadku tworzenia aplikacji na komputerze z aktualizacją programu Windows Update Creators (wersja 1709) można używać tylko obrazów platformy Docker systemu Windows w wersji 1709.
 
-Jeśli tworzysz w systemie Windows 10 kwietnia 2018 r. Zaktualizuj maszynę (w wersji 1803), możesz użyć Windows w wersji 1709 lub obrazów platformy docker w wersji 1803 Windows.
+W przypadku tworzenia aplikacji na komputerze z aktualizacją 2018 (wersja 1803) z systemem Windows 10 kwietnia można użyć obrazów platformy Docker systemu Windows w wersji 1709 lub 1803 Windows.
 
-Następujące obrazy systemu operacyjnego kontener może służyć do wdrożenia usług:
+Następujące obrazy systemu operacyjnego kontenera mogą służyć do wdrażania usług:
 
-- Windows — windowsservercore i nanoserver
-    - Windows Server 1709
-    - System Windows Server w wersji 1803
-    - Windows Server 1809
-    - Windows Server 2019 LTSC
+- Windows-windowsservercore i nanoserver
+    - System Windows Server 1709
+    - System Windows Server 1803
+    - System Windows Server 1809
+    - LTSC systemu Windows Server 2019
 - Linux
-    - Nie znane ograniczenia
+    - Brak znanych ograniczeń
 
 > [!NOTE]
-> Narzędzia dla siatki programu Visual Studio nie obsługuje jeszcze wdrażania systemu Windows Server 2019 i kontenery 1809.
+> Narzędzia programu Visual Studio dla siatki nie obsługują jeszcze wdrażania w kontenerach z systemem Windows Server 2019 i 1809.
 
-### <a name="what-types-of-applications-can-i-deploy"></a>Jakie typy aplikacji można wdrożyć? 
+### <a name="what-types-of-applications-can-i-deploy"></a>Jakie typy aplikacji można wdrażać? 
 
-Możesz wdrożyć niczego, który jest uruchamiany w kontenerach, które mieszczą się w ograniczenia umieścić w zasobu aplikacji (zobacz wyżej, aby uzyskać więcej informacji na limity przydziału). Jeśli zostanie wykryte, że używasz siatki dla obciążeń niedozwolony lub nadużywanie systemu (czyli wyszukiwania), następnie firma Microsoft zastrzega sobie prawo do zakończenia wdrożeń i listy blokowania subskrypcji z uruchomionych w usłudze. Skontaktuj się z nami, jeśli masz jakiekolwiek pytania na temat uruchamiania określonego obciążenia. 
+Można wdrożyć wszystkie elementy działające w kontenerach, które mieszczą się w ograniczeniach umieszczonych w zasobie aplikacji (Zobacz powyżej, aby uzyskać więcej informacji na temat przydziałów). W przypadku wykrycia, że używasz siatki do uruchamiania niedozwolonych obciążeń lub nadużycie systemu (tj. wyszukiwania), zastrzegamy sobie prawo do zakończenia wdrożeń i listy blokowania się, że subskrypcja nie zostanie uruchomiona w usłudze. Skontaktuj się z nami, jeśli masz jakieś pytania dotyczące uruchamiania określonego obciążenia. 
 
-## <a name="developer-experience-issues"></a>Problemy z środowisko dla deweloperów
+## <a name="developer-experience-issues"></a>Problemy dotyczące środowiska deweloperskiego
 
 ### <a name="dns-resolution-from-a-container-doesnt-work"></a>Rozpoznawanie nazw DNS z kontenera nie działa
 
-Wychodzące zapytania DNS z kontenera w usłudze DNS w sieci szkieletowej usługi mogą nie działać w pewnych okolicznościach. To jest badana. Aby uniknąć:
+Wychodzące zapytania DNS z kontenera do usługi DNS Service Fabric mogą kończyć się niepowodzeniem w pewnych okolicznościach. Trwa badanie. Aby wyeliminować:
 
-- Korzystanie z usługi Windows Fall Creators update (wersja 1709) lub nowszego jako obraz podstawowy kontenera.
-- Jeśli sama nazwa usługi nie rozwiąże problemu, spróbuj w pełni kwalifikowana nazwa: ServiceName.ApplicationName.
-- W pliku platformy Docker dla usługi, dodać `EXPOSE <port>` w przypadku, gdy jest to port są udostępnianie usługi w. Na przykład:
+- Użyj aktualizacji Windows Update Creators (wersja 1709) lub nowszej jako obrazu podstawowego kontenera.
+- Jeśli sama nazwa usługi nie działa, spróbuj użyć w pełni kwalifikowanej nazwy: ServiceName. ApplicationName.
+- W pliku platformy Docker dla usługi Dodaj `EXPOSE <port>`, gdzie Port to port, na którym jest uwidaczniana usługa. Na przykład:
 
 ```Dockerfile
 EXPOSE 80
 ```
 
-### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>DNS nie działać tak samo, jak klastrów usługi Service Fabric rozwoju i siatka
+### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>System DNS nie działa tak samo, jak w przypadku Service Fabric klastrów programistycznych i siatki
 
-Konieczne może być inaczej w lokalnego klastra projektowego niż w Azure siatki odwoływać się do usługi.
+Może zajść konieczność odwołująca się do usług w inny sposób w lokalnym klastrze projektowym niż w sieci Azure.
 
-W przypadku lokalnego klastra projektowego `{serviceName}.{applicationName}`. W Azure Service Fabric siatki `{servicename}`. 
+W lokalnym klastrze deweloperskim Użyj `{serviceName}.{applicationName}`. Na platformie Azure Service Fabric siatka Użyj `{servicename}`. 
 
-Azure siatki aktualnie nie obsługuje rozpoznawanie nazw DNS w aplikacjach.
+Siatka Azure nie obsługuje obecnie rozpoznawania nazw DNS między aplikacjami.
 
-Aby uzyskać innych znanych problemach DNS z systemem klaster projektowy usługi Service Fabric w systemie Windows 10 zobacz: [Debugowanie kontenerów Windows](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) i [znane problemy z usługą DNS](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
+Inne znane problemy z usługą DNS dotyczące uruchamiania Service Fabric klastra projektowego w systemie Windows 10 można znaleźć w temacie: [debugowanie kontenerów systemu Windows](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) i [znanych problemów z usługą DNS](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
 
-### <a name="networking"></a>Networking
+### <a name="networking"></a>Obsługa sieci
 
-Sieć ServiceFabric translatora adresów Sieciowych może zniknąć podczas korzystania z tą aplikacją na komputerze lokalnym. Aby zdiagnozować, czy to się stało, uruchom następujące polecenie w wierszu polecenia:
+Translator adresów sieciowych usługi servicefabric może zniknąć podczas korzystania z aplikacji na komputerze lokalnym. Aby zdiagnozować, czy ten wystąpił, uruchom następujące polecenie w wierszu polecenia:
 
-`docker network ls` i zwróć uwagę, czy `servicefabric_nat` znajduje się na liście.  W przeciwnym razie następnie uruchom następujące polecenie: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls` i sprawdź, czy na liście znajduje się `servicefabric_nat`.  Jeśli nie, uruchom następujące polecenie: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
-Spowoduje to rozwiązać problem, nawet jeśli aplikacja została już wdrożona lokalnie, jak i w złej kondycji.
+Spowoduje to rozwiązanie problemu, nawet jeśli aplikacja została już wdrożona lokalnie i w złej kondycji.
 
 ### <a name="issues-running-multiple-apps"></a>Problemy z uruchamianiem wielu aplikacji
 
-Może wystąpić dostępności procesora CPU i limity zostanie naprawiony we wszystkich aplikacjach. Aby uniknąć:
+W przypadku wszystkich aplikacji mogą wystąpić problemy z dostępnością procesora CPU i ograniczeniami. Aby wyeliminować:
 - Utwórz klaster z pięcioma węzłami.
-- Ogranicz użycie procesora CPU w usługach w aplikacji, które zostało wdrożone. Na przykład w pliku service.yaml Twojej usługi, należy zmienić `cpu: 1.0` do `cpu: 0.5`
+- Zmniejsz użycie procesora CPU w usługach w ramach wdrożonej aplikacji. Na przykład w pliku Service. YAML usługi Zmień wartość `cpu: 1.0` na `cpu: 0.5`
 
-Nie można wdrożyć wiele aplikacji do klastra z jednym węzłem. Aby uniknąć:
-- W przypadku wdrażania wielu aplikacji w lokalnym klastrze, należy użyć klastra z pięcioma węzłami.
-- Usuń aplikacje, które nie są obecnie testy.
+Nie można wdrożyć wielu aplikacji w klastrze z jednym węzłem. Aby wyeliminować:
+- W przypadku wdrażania wielu aplikacji w klastrze lokalnym należy użyć pięciu węzłów klastra.
+- Usuń aplikacje, które nie są obecnie testowane.
 
-### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>Narzędzi programu VS ma ograniczoną obsługę kontenerów Windows
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>Narzędzia VS mają ograniczoną obsługę kontenerów systemu Windows
 
-Narzędzia programu Visual Studio obsługuje tylko wdrażanie kontenerów Windows przy użyciu podstawowej wersji systemu operacyjnego Windows Server w wersji 1709 i 1803 już dziś. 
+Narzędzia Visual Studio obsługują tylko wdrażanie kontenerów systemu Windows z podstawową wersją systemu operacyjnego Windows Server 1709 i 1803. 
 
-## <a name="feature-gaps-and-other-known-issues"></a>Funkcja luki i innych znanych problemach
+## <a name="feature-gaps-and-other-known-issues"></a>Luki w funkcjach i inne znane problemy
 
-### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>Po wdrożeniu aplikacji, zasobów sieciowych skojarzonych z nim nie ma adresu IP
+### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>Po wdrożeniu aplikacji, skojarzony z nią zasób sieciowy nie ma adresu IP
 
-Istnieje znany problem, w której adres IP nie stanie się dostępna natychmiast. Sprawdź stan zasobów sieciowych w ciągu kilku minut, aby wyświetlić skojarzony adres IP.
+Istnieje znany problem, w którym adres IP nie staje się dostępny natychmiast. Sprawdź stan zasobu sieciowego za kilka minut, aby wyświetlić skojarzony adres IP.
 
-### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Moja aplikacja zakończy się niepowodzeniem, dostęp do zasobów sieci prawo/woluminu
+### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Aplikacja nie może uzyskać dostępu do odpowiedniego zasobu sieci/woluminu
 
-W modelu aplikacji aby można było uzyskać dostęp do skojarzonego zasobu należy użyć pełny identyfikator zasobu sieci i woluminy. Oto przykład z przykładu szybkiego startu:
+W modelu aplikacji użyj pełnego identyfikatora zasobu dla sieci i woluminów, aby móc uzyskać dostęp do skojarzonego zasobu. Oto przykład instrukcji szybkiego startu:
 
 ```json
 "networkRefs": [
@@ -166,10 +166,10 @@ W modelu aplikacji aby można było uzyskać dostęp do skojarzonego zasobu nale
 ]
 ```
 
-### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Gdy I skalowanie w poziomie, wszystkie moje kontenerów jest narażony, łącznie z uruchamianiem tych
+### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Po skalowaniu w poziomie wszystkie moje kontenery podlegają zmianom, w tym uruchamiania
 
-Jest to błąd, a zastosowana poprawka.
+Jest to usterka, a poprawka jest implementowana.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usługi Service Fabric siatki, przeczytaj [Przegląd](service-fabric-mesh-overview.md).
+Aby dowiedzieć się więcej na temat Service Fabric siatki, zapoznaj się z [omówieniem](service-fabric-mesh-overview.md).

@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 587e7a82e2a9cde8ff6d08274928ab22aa969061
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 85a1de992be7b5bbdcec8fd415f60ae10190c11a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309623"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170042"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Szybki start: Dodawanie logowania z firmą Microsoft do aplikacji sieci Web w języku Python
+# <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Szybki Start: Dodawanie logowania z firmą Microsoft do aplikacji sieci Web w języku Python
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -37,48 +37,48 @@ Po ukończeniu tego przewodnika aplikacja będzie akceptować logowania do osobi
 Do uruchomienia tego przykładu potrzebne są:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) lub [Python 3 +](https://www.python.org/downloads/release/python-364/)
-- [Kolba](http://flask.pocoo.org/), [podsesja](https://pythonhosted.org/Flask-Session/), [żądania](https://2.python-requests.org/en/master/)
+- [Kolba](http://flask.pocoo.org/), [podsesja](https://pythonhosted.org/Flask-Session/), [żądania](https://requests.kennethreitz.org//en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python) 
 - Dzierżawa usługi Azure Active Directory (Azure AD). Aby uzyskać więcej informacji na temat uzyskiwania dzierżawy usługi Azure AD, zobacz [jak uzyskać dzierżawę usługi Azure AD.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
 
 > [!div renderon="docs"]
 >
-> ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
+> ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji szybkiego startu
 >
 > Dostępne są dwie opcje uruchomienia aplikacji szybkiego startu: Express (opcja 1) i ręczna (opcja 2)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: Zarejestruj i automatycznie Skonfiguruj aplikację, a następnie Pobierz przykład kodu
 >
 > 1. Przejdź do [Rejestracje aplikacji Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 > 1. Wybierz pozycję **Nowa rejestracja**.
-> 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
+> 1. Wprowadź nazwę aplikacji i wybierz pozycję **zarejestruj**.
 > 1. Postępuj zgodnie z instrukcjami, aby pobrać i automatycznie skonfigurować nową aplikację.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: Zarejestruj i ręcznie skonfiguruj aplikację oraz przykład kodu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
+> #### <a name="step-1-register-your-application"></a>Krok 1. rejestrowanie aplikacji
 >
-> Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
+> Aby zarejestrować aplikację i ręcznie dodać informacje o rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 >
-> 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-> 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
+> 1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta służbowego lub konto Microsoft prywatnego.
+> 1. Jeśli Twoje konto zapewnia dostęp do więcej niż jednej dzierżawy, wybierz swoje konto w prawym górnym rogu, a następnie ustaw sesję portalu na żądaną dzierżawę usługi Azure AD.
 > 1. Przejdź do strony Microsoft Identity Platform for Developers [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) .
 > 1. Wybierz pozycję **Nowa rejestracja**.
-> 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
->      - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `python-webapp`.
->      - W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
->      - Z listy rozwijanej w sekcji **Identyfikator URI przekierowania** Wybierz platformę **sieci Web** , a następnie ustaw wartość na `http://localhost:5000/getAToken`.
->      - Wybierz pozycję **Zarejestruj**. Na stronie **Przegląd** aplikacji Zanotuj wartość **identyfikatora aplikacji (klienta)** do późniejszego użycia.
+> 1. Gdy zostanie wyświetlona strona **zarejestruj aplikację** , wprowadź informacje o rejestracji aplikacji:
+>      - W sekcji **Nazwa** wprowadź zrozumiałą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `python-webapp`.
+>      - W obszarze **obsługiwane typy kont**wybierz pozycję **konta w dowolnym katalogu organizacyjnym i osobiste konta Microsoft**.
+>      - W sekcji **Identyfikator URI przekierowania** , na liście rozwijanej Wybierz platformę **sieci Web** , a następnie ustaw wartość na `http://localhost:5000/getAToken`.
+>      - Wybierz pozycję **zarejestruj**. Na stronie **Przegląd** aplikacji Zanotuj wartość **identyfikatora aplikacji (klienta)** do późniejszego użycia.
 > 1. W menu po lewej stronie wybierz pozycję **certyfikaty & wpisy tajne** i kliknij pozycję **Nowy wpis tajny klienta** w sekcji wpisy **tajne klienta** :
 >
 >      - Wpisz opis klucza (dla wpisu tajnego aplikacji wystąpienia).
 >      - Wybierz kluczowy czas trwania wynoszący **1 rok**.
 >      - Po kliknięciu przycisku **Dodaj**zostanie wyświetlona wartość klucza.
->      - Skopiuj wartość klucza. Będzie potrzebny później.
+>      - Skopiuj wartość klucza. Będzie on potrzebny później.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: konfigurowanie aplikacji w witrynie Azure Portal
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1. Konfigurowanie aplikacji w Azure Portal
 >
 > Aby uzyskać przykładowy kod dla tego przewodnika Szybki Start, należy wykonać następujące czynności:
 >
@@ -86,17 +86,17 @@ Do uruchomienia tego przykładu potrzebne są:
 > 1. Utwórz klucz tajny klienta.
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Wprowadź tę zmianę automatycznie]()
+> > [Wprowadź tę zmianę dla mnie]()
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Already configured](media/quickstart-v2-aspnet-webapp/green-check.png) (Już skonfigurowano) Twoja aplikacja została skonfigurowana za pomocą tego atrybutu
+> > ![Already skonfigurowany @ no__t-1 aplikacja jest skonfigurowana z tym atrybutem
 
-#### <a name="step-2-download-your-project"></a>Krok 2: pobieranie projektu
+#### <a name="step-2-download-your-project"></a>Krok 2. Pobieranie projektu
 
 [Pobierz przykład kodu](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
-#### <a name="step-3-configure-the-application"></a>Krok 3: Konfigurowanie aplikacji
+#### <a name="step-3-configure-the-application"></a>Krok 3. Konfigurowanie aplikacji
 
-1. Wyodrębnij plik zip do folderu lokalnego bliższego folderowi głównemu, na przykład **C:\Azure-Samples**
+1. Wyodrębnij plik zip do folderu lokalnego bliżej folderu głównego — na przykład **C:\Azure-Samples**
 1. Jeśli używasz zintegrowanego środowiska programistycznego, Otwórz przykład w ulubionym środowisku IDE (opcjonalnie).
 1. Otwórz plik **app_config. PR** , który znajduje się w folderze głównym i Zamień na następujący fragment kodu:
 
@@ -108,10 +108,10 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 > [!div renderon="docs"]
 > Gdzie:
 >
-> - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
-> - `Enter_the_Client_Secret_Here`-jest **kluczem tajnym klienta** utworzonym w **certyfikatach & wpisy tajne** dla zarejestrowanej aplikacji.
+> - `Enter_the_Application_Id_here` — to identyfikator aplikacji dla zarejestrowanej aplikacji.
+> - `Enter_the_Client_Secret_Here` — jest **kluczem tajnym klienta** utworzonym w **certyfikatach & wpisy tajne** dla zarejestrowanej aplikacji.
 
-#### <a name="step-4-run-the-code-sample"></a>Krok 4: Uruchamianie przykładu kodu
+#### <a name="step-4-run-the-code-sample"></a>Krok 4. Uruchamianie przykładu kodu
 
 1. Konieczne będzie zainstalowanie biblioteki języka Python MSAL, struktury kolby, sesji do zarządzania sesjami po stronie serwera i żądań przy użyciu funkcji PIP w następujący sposób:
 
@@ -130,6 +130,6 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 Dowiedz się więcej na temat aplikacji sieci Web, które logują użytkowników, a następnie wywołujących interfejsy API sieci Web:
 
 > [!div class="nextstepaction"]
-> [Scenariusz: Aplikacje sieci Web, które logują użytkowników](scenario-web-app-sign-user-overview.md)
+> [Scenariusz: aplikacje sieci Web, które logują użytkowników](scenario-web-app-sign-user-overview.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

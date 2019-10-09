@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: f6e2fedf3f2f8384d4a6062852888c312e8285a1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212870"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173495"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Dodawanie Azure Automation elementów Runbook do planów odzyskiwania
 
@@ -51,10 +51,10 @@ Po uruchomieniu skryptu wprowadza kontekst planu odzyskiwania do elementu Runboo
 | GroupID |Identyfikuje numer grupy w planie odzyskiwania, gdy plan jest uruchomiony. |
 | VmMap |Tablica wszystkich maszyn wirtualnych w grupie. |
 | Klucz VMMap |Unikatowy klucz (GUID) dla każdej maszyny wirtualnej. |
-| SubscriptionId |Identyfikator subskrypcji platformy Azure, w której utworzono maszynę wirtualną. |
-| ResourceGroupName | Nazwa grupy zasobów, w której znajduje się maszyna wirtualna.
+| Identyfikator |Identyfikator subskrypcji platformy Azure, w której utworzono maszynę wirtualną. |
+| resourceGroupName | Nazwa grupy zasobów, w której znajduje się maszyna wirtualna.
 | CloudServiceName |Nazwa usługi w chmurze platformy Azure, w której została utworzona maszyna wirtualna. |
-| RoleName |Nazwa maszyny wirtualnej platformy Azure. |
+| Role |Nazwa maszyny wirtualnej platformy Azure. |
 | RecoveryPointId|Sygnatura czasowa odzyskiwania maszyny wirtualnej. |
 
 W poniższym przykładzie przedstawiono zmienną kontekstową:
@@ -99,11 +99,11 @@ Blog Aman Sharma w usłudze w [chmurze zbierających](http://harvestingclouds.co
 
 - Jeśli dopiero zaczynasz Azure Automation, możesz [zarejestrować się](https://azure.microsoft.com/services/automation/) i [pobrać przykładowe skrypty](https://azure.microsoft.com/documentation/scripts/).
 - Upewnij się, że konto usługi Automation ma następujące moduły:
-    - AzureRM.profile
-    - AzureRM.Resources
-    - AzureRM.Automation
-    - AzureRM.Network
-    - AzureRM.Compute
+    - AzureRM. profile
+    - AzureRM. resources
+    - AzureRM. Automation
+    - AzureRM. Network
+    - AzureRM. COMPUTE
 
     Wszystkie moduły powinny być zgodne z wersjami. Najprostszym sposobem jest zawsze korzystanie z najnowszych wersji wszystkich modułów.
 
@@ -112,14 +112,14 @@ Blog Aman Sharma w usłudze w [chmurze zbierających](http://harvestingclouds.co
 ## <a name="customize-the-recovery-plan"></a>Dostosowywanie planu odzyskiwania
 
 1. W magazynie wybierz pozycję **plany odzyskiwania (Site Recovery)**
-2. Aby utworzyć plan odzyskiwania, kliknij pozycję **+ plan odzyskiwania**. [Dowiedz się więcej](/site-recovery-create-recovery-plans.md). Jeśli masz już plan odzyskiwania, wybierz go, aby go otworzyć.
+2. Aby utworzyć plan odzyskiwania, kliknij pozycję **+ plan odzyskiwania**. [Dowiedz się więcej](site-recovery-create-recovery-plans.md). Jeśli masz już plan odzyskiwania, wybierz go, aby go otworzyć.
 3. Na stronie plan odzyskiwania kliknij przycisk **Dostosuj**.
 
     ![Kliknij przycisk Dostosuj](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Kliknij przycisk wielokropka (...) obok **pozycji Grupa 1: Rozpocznij**Dodawanie > **akcji post**.
+2. Kliknij przycisk wielokropka (...) obok pozycji **Grupa 1: Start** > **Dodaj akcję post**.
 3. W obszarze **Wstaw akcję**Sprawdź, czy jest wybrany **skrypt** , a następnie określ nazwę skryptu (**Hello World**).
-4. Określ konto usługi Automation i wybierz element Runbook. Aby zapisać skrypt, kliknij przycisk **OK**. Skrypt zostanie dodany do **grupy 1: Kroki po kroku**.
+4. Określ konto usługi Automation i wybierz element Runbook. Aby zapisać skrypt, kliknij przycisk **OK**. Skrypt zostanie dodany do **grupy 1: kroki po kroku**.
 
 
 ## <a name="reuse-a-runbook-script"></a>Ponowne używanie skryptu elementu Runbook
@@ -251,7 +251,7 @@ Możesz użyć tego samego skryptu dla różnych planów odzyskiwania. Wprowadź
 
 Aby wdrożyć przykładowe skrypty na koncie usługi Automation, kliknij przycisk **Wdróż na platformie Azure** .
 
-[![Wdrażanie na platformie Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[@no__t — 1Deploy na platformę Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 Ten film wideo zapewnia inny przykład. Przedstawiono w nim sposób odzyskiwania dwuwarstwowej aplikacji WordPress na platformę Azure:
 

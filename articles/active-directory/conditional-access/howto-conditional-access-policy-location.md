@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b31fc3aed0d412646d9924e87170dffcd5145409
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: c782c8bb2807017053375b45560685acf78161e7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576604"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169966"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Dostęp warunkowy: Blokuj dostęp według lokalizacji
 
@@ -24,7 +24,7 @@ Z warunkiem lokalizacji w polu dostęp warunkowy można kontrolować dostęp do 
 
 ## <a name="define-locations"></a>Definiuj lokalizacje
 
-1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
 1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
 1. Wybierz pozycję **Nowa lokalizacja**.
 1. Nadaj lokalizacji nazwę.
@@ -37,20 +37,20 @@ Więcej informacji o warunku lokalizacji w dostępie warunkowym można znaleźć
 
 ## <a name="create-a-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego
 
-1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
 1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
 1. Wybierz pozycję **nowe zasady**.
 1. Nadaj zasadom nazwę. Firma Microsoft zaleca, aby organizacje utworzyły znaczący Standard nazw swoich zasad.
 1. W obszarze **przypisania**wybierz pozycję **Użytkownicy i grupy**
-   1. Wobszarze Dołączanie wybierz pozycję **Wszyscy użytkownicy**.
-   1. Wybierz pozycję **Done** (Gotowe).
-1. W obszarze **aplikacje lub akcje** > w chmurze wybierz pozycję **wszystkie aplikacje w chmurze**, a następnie wybierz pozycję **gotowe**.
-1. W obszarze**Lokalizacja** **warunków** > .
-   1. Ustaw wartość **tak**
+   1. W obszarze **dołączanie**wybierz pozycję **Wszyscy użytkownicy**.
+   1. Wybierz pozycję **gotowe**.
+1. W obszarze **aplikacje lub akcje w chmurze** > **Dołącz**wybierz pozycję **wszystkie aplikacje w chmurze**, a następnie wybierz pozycję **gotowe**.
+1. W obszarze **warunki** > **Lokalizacja**.
+   1. Ustaw **wartość** **tak**
    1. **Dołącz** **wybrane lokalizacje**
    1. Wybierz zablokowaną lokalizację utworzoną dla swojej organizacji.
-   1. Kliknij pozycjęgotowe > gotowe. > 
-1. W obszarze**blok** **kontroli** > dostępu, a następnie wybierz pozycję **Wybierz**.
+   1. Kliknij pozycję **wybierz** > **gotowe** > **gotowe**.
+1. W obszarze **Kontrola dostępu**@no__t**blok**i wybierz pozycję **Wybierz**.
 1. Potwierdź ustawienia i ustaw opcję **Włącz zasady** na **włączone**.
 1. Wybierz pozycję **Utwórz** , aby utworzyć zasady.
 

@@ -7,57 +7,57 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 05/06/2019
-ms.openlocfilehash: f4023fa84215a0319669de0d812d8306b62278e3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5194cf51fd7f1debeba76edb48e8377919ae448a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073271"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177962"
 ---
-# <a name="what-is-azure-database-for-postgresql"></a>Co to jest usługa Azure Database for PostgreSQL?
-Usługa Azure Database for PostgreSQL jest usługą relacyjnej bazy danych w chmurze firmy Microsoft utworzoną dla deweloperów. Jest on oparty na wersji społecznościowej typu open source [PostgreSQL](https://www.postgresql.org/) aparat bazy danych i jest dostępny w dwie opcje wdrożenia: Pojedynczy serwer i na dużą skalę (Citus) (wersja zapoznawcza).
+# <a name="what-is-azure-database-for-postgresql"></a>Co to jest Azure Database for PostgreSQL?
+Azure Database for PostgreSQL to usługa relacyjnej bazy danych w chmurze firmy Microsoft skompilowanej dla deweloperów. Jest on oparty na wersji społecznościowej aparatu bazy danych [PostgreSQL](https://www.postgresql.org/) typu open source i jest dostępny w dwóch opcjach wdrażania: Single Server i (wersja zapoznawcza).
 
 ## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL — pojedynczy serwer
-Opcję wdrożenia pojedynczego serwera, która zapewnia:
+Opcja wdrożenia pojedynczego serwera oferuje następujące funkcje:
 
-- Wbudowana wysoka dostępność bez dodatkowych kosztów (99,99% SLA)
-- Przewidywalna wydajność dzięki płatnościom zgodnym z rzeczywistym użyciem
-- Skalowanie pionowe zgodnie z potrzebami w ciągu kilku sekund
-- Monitorowanie i alerty, aby szybko ocenić wpływ skalowania
-- Zabezpieczenia zapewniające ochronę przesyłanych oraz magazynowanych poufnych danych
-- Automatyczne tworzenie kopii zapasowych i funkcja przywracania do punktu w czasie do 35 dni
-- Mechanizmy zabezpieczeń i zgodności klasy korporacyjnej
+- Wbudowana wysoka dostępność bez dodatkowych kosztów (99,99% umowy SLA)
+- Przewidywalna wydajność przy użyciu cen z płatnością zgodnie z rzeczywistym użyciem
+- Skalowanie w pionie w ciągu kilku sekund
+- Monitorowanie i alerty pozwalające szybko ocenić wpływ skalowania
+- Zabezpieczanie w celu ochrony poufnych danych w czasie spoczynku i ruchowo
+- Automatyczne kopie zapasowe i przywracanie do punktu w czasie przez maksymalnie 35 dni
+- Bezpieczeństwo i zgodność klasy korporacyjnej
 
-Wszystkie powyższe możliwości prawie w ogóle nie wymagają administracji i są udostępniane bez żadnych dodatkowych kosztów. Umożliwiają one pozwala skupić się na szybkie opracowywanie aplikacji i skracaniu czasu wejścia na rynek, a nie trzeba spędzać całych oszczędzi cenny czas i zasoby do zarządzania maszynami wirtualnymi i infrastrukturą. Można kontynuować do tworzenia aplikacji przy użyciu narzędzi typu open source i dowolnie wybranej platformie bez konieczności uczenia się nowych umiejętności.
+Wszystkie te możliwości wymagają niemal braku administracji, a wszystkie są udostępniane bez dodatkowych kosztów. Umożliwiają one skoncentrowanie się na szybkim tworzeniu aplikacji i skróceniu czasu wprowadzenia na rynek, a nie poświęcają zbyt wiele czasu na zarządzanie maszynami wirtualnymi i infrastrukturą. Możesz kontynuować opracowywanie aplikacji przy użyciu wybranych przez siebie narzędzi typu "open source", bez konieczności uczenia się nowych umiejętności.
 
-Opcję wdrożenia pojedynczego serwera, która oferuje trzy warstwy cenowe: Podstawowa, Ogólnego przeznaczenia i Zoptymalizowane pod kątem pamięci. Każda warstwa oferuje inne możliwości w zakresie zasobów, aby wspierać obciążenia bazy danych. Możesz utworzyć swoją pierwszą aplikację na podstawie małej bazy danych za jedynie kilka dolarów miesięcznie, a następnie dostosować skalowanie do potrzeb rozwiązania. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów. Zapłacisz tylko za potrzebne zasoby i tylko wtedy, gdy będą używane. Aby uzyskać szczegółowe informacje, zobacz  [Warstwy cenowe](concepts-pricing-tiers.md).
+Opcja wdrożenia pojedynczego serwera oferuje trzy warstwy cenowe: podstawowe, Ogólnego przeznaczenia i zoptymalizowane pod kątem pamięci. Każda warstwa oferuje różne możliwości zasobów do obsługi obciążeń bazy danych. Możesz utworzyć swoją pierwszą aplikację na małej bazie danych za kilka dolarów miesięcznie, a następnie dostosować skalę, aby spełniała potrzeby rozwiązania. Dynamiczna skalowalność umożliwia bazie danych przezroczyste reagowanie na szybko zmieniające się wymagania dotyczące zasobów. Płacisz tylko za potrzebne zasoby i tylko wtedy, gdy ich potrzebujesz. Aby uzyskać szczegółowe informacje, zobacz [warstwy cenowe](concepts-pricing-tiers.md) .
 
-## <a name="azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
-Opcja (Citus) na dużą skalę w poziomie skaluje zapytania na wielu komputerach za pomocą fragmentowania. Silnik zapytania parallelizes przychodzące zapytania SQL na tych serwerach szybszych odpowiedzi na dużych zestawach danych. Służy ona aplikacje, które wymagają większej skalowalności i wydajności, zazwyczaj obciążeń, które są zbliża się do — lub już przekracza — 100 GB danych.
+## <a name="azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL-Citus (wersja zapoznawcza)
+Opcja Citus) w poziomie skaluje zapytania na wielu maszynach przy użyciu fragmentowania. Aparat zapytań parallelizes przychodzące zapytania SQL między tymi serwerami w celu przyspieszenia odpowiedzi w dużych zestawach danych. Obsługuje ona aplikacje, które wymagają większej skali i wydajności, zazwyczaj obciążeń, które zbliżają się do--lub już przekraczają--100 GB danych.
 
-Opcja wdrażania w Hiperskali (Citus) zapewnia:
+Opcja wdrożenia Citus (preskaling) oferuje następujące funkcje:
 
-- Skalowanie na wiele komputerów za pomocą dzielenia na fragmenty w poziomie
-- Przetwarzania równoległego zapytań na tych serwerach szybszych odpowiedzi na dużych zestawach danych
-- Niezrównane możliwości obsługi dla aplikacji wielodostępnych, analiza operacyjna w czasie rzeczywistym i obciążeniami transakcyjnymi wysokiej przepływności
+- Skalowanie w poziomie na wielu maszynach przy użyciu fragmentowania
+- Przetwarzanie równoległe zapytania na tych serwerach w celu uzyskania szybszych odpowiedzi w dużych zestawach danych
+- Doskonała pomoc techniczna dla aplikacji wielodostępnych, analizy operacyjnej w czasie rzeczywistym oraz obciążeń transakcyjnych o wysokiej przepływności
 
-Aplikacje opracowane dla PostgreSQL można uruchamiania rozproszonych zapytań w Hiperskali (Citus) ze standardem [biblioteki połączeń](./concepts-connection-libraries.md) i minimalnych zmianach.
+Aplikacje skompilowane dla PostgreSQL mogą uruchamiać zapytania rozproszone na potrzeby tworzenia i skalowania (Citus) przy użyciu standardowych [bibliotek połączeń](./concepts-connection-libraries.md) i minimalnych zmian.
 
-Należy zauważyć, że na dużą skalę (Citus) w publicznej wersji zapoznawczej i w związku z tym jeszcze nie oferuje umowy SLA.
+Należy pamiętać, że funkcja Citus jest dostępna w publicznej wersji zapoznawczej, w związku z czym nie oferuje jeszcze umowy SLA.
 
 ## <a name="data-security"></a>Bezpieczeństwo danych
-Azure Database for PostgreSQL podtrzymuje usługi Azure database tradycje zabezpieczeń danych. Ma funkcje, które ograniczania dostępu, ochrony danych magazynowanych i magazynowanych i monitorowania aktywności. Odwiedź [Centrum zaufania Azure](https://azure.microsoft.com/overview/trusted-cloud/), aby uzyskać informacje o zabezpieczeniach platformy Azure.
+Azure Database for PostgreSQL utrzymuje tradycję zabezpieczeń danych usług Azure Database Services. Zawiera funkcje, które ograniczają dostęp, chronią i obniżają dane oraz ułatwiają monitorowanie aktywności. Odwiedź [Centrum zaufania Azure](https://azure.microsoft.com/overview/trusted-cloud/) , aby uzyskać informacje o zabezpieczeniach platformy platformy Azure.
 
-Usługa Azure Database for PostgreSQL używa szyfrowania magazynu dla magazynowanych danych i jest zgodna ze standardem FIPS 140-2. Dane, w tym kopie zapasowe, są szyfrowane na dysku. Usługa korzysta z szyfrowania AES 256-bitowy, zawarte w szyfrowaniu magazynu platformy Azure, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć. Domyślnie usługa Azure Database for postgresql w warstwie wymaga bezpiecznych połączeń dla danych magazynowanych, zarówno w sieci, jak i między aplikacją bazy danych i klientów.
+Usługa Azure Database for PostgreSQL używa zatwierdzonego modułu kryptograficznego FIPS 140-2 do szyfrowania magazynu danych w spoczynku. Dane, w tym kopie zapasowe, są szyfrowane na dysku z wyjątkiem plików tymczasowych tworzonych podczas wykonywania zapytań. Usługa używa szyfru AES 256-bit zawartego w szyfrowaniu usługi Azure Storage, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć. Domyślnie usługa Azure Database for PostgreSQL wymaga bezpiecznego połączenia danych w ruchu między sieciami i między bazą danych a aplikacją kliencką.
 
 ## <a name="contacts"></a>Kontakty
-Przypadku jakichkolwiek pytań lub sugestie dotyczące pracy z usługą Azure Database for PostgreSQL, Wyślij wiadomość e-mail do usługi Azure Database dla PostgreSQL zespołu ([ @Ask Azure DB dla PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Ten adres jest pytania ogólne zamiast biletami pomocy technicznej.
+Aby dowiedzieć się więcej na temat pytań lub sugestii dotyczących pracy z Azure Database for PostgreSQL, Wyślij wiadomość e-mail do zespołu Azure Database for PostgreSQL ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Ten adres jest przeznaczony dla ogólnych pytań zamiast biletów pomocy technicznej.
 
-Ponadto należy wziąć pod uwagę następujące punkty kontaktu, zgodnie z potrzebami:
-- Skontaktuj się z pomocą techniczną platformy Azure lub rozwiązać problem z Twoim kontem [bilet w witrynie Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Aby przekazać opinię lub poprosić o nowe funkcje, utwórz wpis w platformie [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
+Ponadto należy wziąć pod uwagę następujące kwestie dotyczące kontaktu:
+- Aby skontaktować się z pomocą techniczną platformy Azure lub rozwiązać problem związany z Twoim kontem, należy wysłać [bilet z Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Aby przekazać opinię lub zażądać nowych funkcji, Utwórz wpis za pośrednictwem usługi [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
-## <a name="next-steps"></a>Kolejne kroki
-- Odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/postgresql/) zawierającą porównania kosztów i kalkulatory.
-- Zacznij od utworzenia pierwszej bazy danych Azure database for PostgreSQL [pojedynczego serwera](./quickstart-create-server-database-portal.md) lub [na dużą skalę (Citus) (wersja zapoznawcza)](./quickstart-create-hyperscale-portal.md)
-- Skompiluj pierwszą aplikację w języku Python, PHP, Ruby, C\#, Java, Node.js: [Biblioteki połączeń](./concepts-connection-libraries.md)
+## <a name="next-steps"></a>Następne kroki
+- Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/postgresql/) , aby obporównania kosztów i kalkulatory.
+- Zacznij od utworzenia pierwszej Azure Database for PostgreSQL [pojedynczego serwera](./quickstart-create-server-database-portal.md) lub [przedskalowania (Citus) (wersja zapoznawcza)](./quickstart-create-hyperscale-portal.md)
+- Tworzenie pierwszej aplikacji w języku Python, PHP, Ruby, C @ no__t-0, Java, Node. js: [biblioteki połączeń](./concepts-connection-libraries.md)

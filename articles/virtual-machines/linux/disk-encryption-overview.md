@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c85d17e88016e5e9067d4be86e1cd290b4b12a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 053c52d7d1a0282d72ad76408b77c96aa3b0e3e4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948184"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174700"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption dla maszyn wirtualnych z systemem Linux 
 
@@ -32,7 +32,7 @@ Podstawowe informacje o Azure Disk Encryption dla systemu Linux można uzyskać 
 
 ### <a name="supported-vm-sizes"></a>Obsługiwane rozmiary maszyn wirtualnych
 
-Maszyny wirtualne z systemem Linux są dostępne w [różnych rozmiarach](sizes.md). Azure Disk Encryption nie jest dostępna na [podstawowych maszynach wirtualnych serii A](/pricing/details/virtual-machines/series/)lub na maszynach wirtualnych, które nie spełniają minimalnych wymagań dotyczących pamięci:
+Maszyny wirtualne z systemem Linux są dostępne w [różnych rozmiarach](sizes.md). Azure Disk Encryption nie jest dostępna na [podstawowych maszynach wirtualnych serii A](https://azure.microsoft.com/pricing/details/virtual-machines/series/)lub na maszynach wirtualnych, które nie spełniają minimalnych wymagań dotyczących pamięci:
 
 | Maszyna wirtualna | Minimalne wymagania dotyczące pamięci |
 |--|--|
@@ -44,7 +44,7 @@ Po zakończeniu procesu szyfrowania dysku systemu operacyjnego na maszynach wirt
 
 Azure Disk Encryption jest również dostępna dla maszyn wirtualnych z magazynem w warstwie Premium. 
 
-### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
+### <a name="supported-operating-systems"></a>Supported operating systems
 
 Azure Disk Encryption jest obsługiwane w podzestawie [dystrybucji systemu Linux z zatwierdzona przez platformę Azure](endorsed-distros.md), które jest samym podzbiorem wszystkich możliwych dystrybucji serwerów z systemem Linux.
 
@@ -61,20 +61,20 @@ Dystrybucje serwera z systemem Linux, które nie są zatwierdzone przez platform
 | RHEL | 7,6 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7,5 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7,4 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
-| RHEL | 7.3 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
-| RHEL | 7.2 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
-| RHEL | 6.8 | Dysk danych (patrz Uwaga poniżej) |
-| RHEL | 6.7 | Dysk danych (patrz Uwaga poniżej) |
+| RHEL | 7,3 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 7,2 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 6,8 | Dysk danych (patrz Uwaga poniżej) |
+| RHEL | 6,7 | Dysk danych (patrz Uwaga poniżej) |
 | CentOS | 7,7 | System operacyjny i dysk z danymi |
 | CentOS | 7,6 | System operacyjny i dysk z danymi |
 | CentOS | 7,5 | System operacyjny i dysk z danymi |
 | CentOS | 7,4 | System operacyjny i dysk z danymi |
-| CentOS | 7.3 | System operacyjny i dysk z danymi |
+| CentOS | 7,3 | System operacyjny i dysk z danymi |
 | CentOS | 7.2 n | System operacyjny i dysk z danymi |
-| CentOS | 6.8 | Dysk z danymi |
-| openSUSE | 42,3 | Dysk z danymi |
-| SLES | 12 — SP4 | Dysk z danymi |
-| SLES | 12 — SP3 | Dysk z danymi |
+| CentOS | 6,8 | Dysk danych |
+| openSUSE | 42,3 | Dysk danych |
+| SLES | 12 — SP4 | Dysk danych |
+| SLES | 12 — SP3 | Dysk danych |
 
 > [!NOTE]
 > Nowa implementacja elementu ADE jest obsługiwana w przypadku systemu operacyjnego RHEL i dysku danych dla obrazów z opcją płatność zgodnie z rzeczywistym użyciem. ADE nie jest obecnie obsługiwane w przypadku obrazów RHEL z własnymi subskrypcjami (BYOS). 

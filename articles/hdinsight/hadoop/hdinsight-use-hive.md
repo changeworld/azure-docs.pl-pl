@@ -1,58 +1,57 @@
 ---
 title: Co to jest Apache Hive i HiveQL — Azure HDInsight
-description: Apache Hive jest system magazynu danych dla usługi Apache Hadoop. Można tworzyć zapytania — dane przechowywane w gałęzi przy użyciu HiveQL, które podobnie do języka Transact-SQL. W tym dokumencie Dowiedz się, jak używać technologii Hive i HiveQL z usługi Azure HDInsight.
-keywords: hiveql, co to jest hive i hadoop hiveql, jak wykorzystać technologię hive, Dowiedz się, hive, co to jest gałąź
+description: Apache Hive to system magazynu danych dla Apache Hadoop. Możesz wykonywać zapytania dotyczące danych przechowywanych w usłudze Hive przy użyciu HiveQL, który przypomina język Transact-SQL. W tym dokumencie dowiesz się, jak używać usługi Hive i HiveQL w usłudze Azure HDInsight.
+keywords: hiveql, co to jest Hive, Hadoop hiveql, jak używać Hive, uczenie się Hive, co to jest Hive
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.openlocfilehash: ea8f14a7013a937ddd77baf0f50b8dca09cabad6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/04/2019
+ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076326"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167346"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
 
-[Apache Hive](https://hive.apache.org/) to system magazynu danych dla usługi Apache Hadoop. Gałąź umożliwia dane podsumowań, zapytań i analizy danych. Zapytania programu hive są zapisywane w HiveQL, który jest językiem zapytań, podobnych do bazy danych SQL.
+[Apache Hive](https://hive.apache.org/) to system magazynu danych dla Apache Hadoop. Funkcja Hive umożliwia tworzenie podsumowań danych, wykonywanie zapytań oraz analizowanie danych. Zapytania Hive są zapisywane w HiveQL, który jest językiem zapytań podobnym do bazy danych SQL.
 
-Gałąź pozwala na strukturę projektu w dużej mierze pozbawionych struktury danych. Po zdefiniowaniu struktury, można użyć HiveQL do wykonywania zapytań o dane bez znajomości języka Java lub MapReduce.
+Program Hive umożliwia tworzenie struktury projektu na danych o dużej strukturze. Po zdefiniowaniu struktury można użyć HiveQL do wykonywania zapytań dotyczących danych bez znajomości języka Java lub MapReduce.
 
-HDInsight zawiera kilka typów klastra, są one dostrojone dla konkretnych obciążeń. Następujące typy klastrów są najczęściej używane dla zapytań programu Hive:
+Usługa HDInsight udostępnia kilka typów klastrów, które są dostrajane pod kątem określonych obciążeń. Następujące typy klastrów są najczęściej używane w przypadku zapytań Hive:
 
-* __Zapytanie interakcyjne__: Klaster Hadoop, która zapewnia [niskim opóźnieniu analitycznego przetwarzania (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkcji, aby skrócić czas odpowiedzi dla zapytań interakcyjnych. Aby uzyskać więcej informacji, zobacz [Start z zapytaniem interakcyjnym w HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentu.
+* __Zapytanie interaktywne__: klaster usługi Hadoop zapewniający funkcjonalność [przetwarzania analitycznego o małym opóźnieniu (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) w celu skrócenia czasów odpowiedzi dla interaktywnych zapytań. Aby uzyskać więcej informacji, zobacz temat [Rozpoczynanie pracy z interaktywną kwerendą w](../interactive-query/apache-interactive-query-get-started.md) dokumencie usługi HDInsight.
 
-* __Hadoop__: Klaster Hadoop jest ona dostrojona dla obciążeń przetwarzania wsadowego. Aby uzyskać więcej informacji, zobacz [Start z usługą Apache Hadoop w HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) dokumentu.
+* __Hadoop__: klaster usługi Hadoop dostosowany do obciążeń przetwarzania wsadowego. Aby uzyskać więcej informacji, zobacz artykuł [Rozpoczynanie pracy z Apache Hadoop w usłudze HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .
 
-* __Spark__: Platforma Apache Spark ma wbudowaną funkcję do pracy z programu Hive. Aby uzyskać więcej informacji, zobacz [rozpoczynać platformy Apache Spark w HDInsight](../spark/apache-spark-jupyter-spark-sql.md) dokumentu.
+* __Platforma Spark__: Apache Spark ma wbudowaną funkcję pracy z programem Hive. Aby uzyskać więcej informacji, zobacz artykuł [Rozpoczynanie pracy z Apache Spark w usłudze HDInsight](../spark/apache-spark-jupyter-spark-sql.md) .
 
-* __HBase__: HiveQL może służyć do zapytania o dane przechowywane w bazy danych Apache HBase. Aby uzyskać więcej informacji, zobacz [rozpoczynać bazy danych Apache HBase na HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) dokumentu.
+* __HBase__: HiveQL może służyć do wykonywania zapytań dotyczących danych przechowywanych w usłudze Apache HBase. Aby uzyskać więcej informacji, zobacz artykuł [Rozpoczynanie pracy z programem Apache HBase w usłudze HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) .
 
-## <a name="how-to-use-hive"></a>Jak wykorzystać technologię Hive
+## <a name="how-to-use-hive"></a>Jak używać programu Hive
 
-Skorzystaj z poniższej tabeli, aby odnaleźć różne sposoby korzystanie z programu Hive z HDInsight:
+Skorzystaj z poniższej tabeli, aby poznać różne sposoby używania programu Hive z usługą HDInsight:
 
-| **Ta metoda** Jeśli chcesz... | ... **interaktywne** zapytań | ...**partii** przetwarzania | ...from to **system operacyjny klienta** |
+| **Użyj tej metody** , jeśli chcesz... | ... zapytania **interaktywne** | ... przetwarzanie **wsadowe** | ... z tego **systemu operacyjnego klienta** |
 |:--- |:---:|:---:|:--- |:--- |
-| [Narzędzia HDInsight tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux, Unix, Mac OS X lub Windows |
-| [Narzędzia HDInsight tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
-| [Widok programu hive](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Wszelkie (opartych na przeglądarce) |
-| [Klient z usługi beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, Unix, Mac OS X lub Windows |
-| [Interfejs API REST](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, Unix, Mac OS X lub Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
-
+| [Narzędzia HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux, UNIX, Mac OS X lub Windows |
+| [Narzędzia HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
+| [Widok Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Dowolny (oparty na przeglądarce) |
+| [Klient z usługi Beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, UNIX, Mac OS X lub Windows |
+| [INTERFEJS API REST](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, UNIX, Mac OS X lub Windows |
+| [Program Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
 ## <a name="hiveql-language-reference"></a>Dokumentacja języka HiveQL
 
-Dokumentacja języka HiveQL jest dostępna w [Podręcznik języka](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+Dokumentacja języka HiveQL jest dostępna w [podręczniku języka](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
 
-## <a name="hive-and-data-structure"></a>Struktura gałęzi i danych
+## <a name="hive-and-data-structure"></a>Struktura Hive i dane
 
-Gałąź rozumie sposób pracy z danymi ze strukturą lub o połowicznej strukturze. Na przykład pliki tekstowe gdy pola są rozdzielone według określonych znaków. Poniższa instrukcja HiveQL tworzy tabelę danych rozdzielonych spacjami:
+Program Hive zrozumie, jak korzystać z danych ze strukturą i z częściową strukturą. Na przykład pliki tekstowe, w których pola są rozdzielane przez określone znaki. Poniższa instrukcja HiveQL tworzy tabelę z danymi rozdzielanymi spacjami:
 
 ```hiveql
 CREATE EXTERNAL TABLE log4jLogs (
@@ -67,53 +66,53 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive obsługuje też niestandardowy **serializator/deserializers (SerDe)** złożonego lub nieregularnie strukturalnych danych. Aby uzyskać więcej informacji, zobacz [jak używać niestandardowego SerDe JSON z HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) dokumentu.
+Program Hive obsługuje również niestandardowe **serializatory/deserializatory (elementu SERDE)** na potrzeby złożonych lub nieregularnej struktury danych. Aby uzyskać więcej informacji, zobacz artykuł [jak korzystać z NIESTANDARDOWEGO JSON elementu SERDE with HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) .
 
-Aby uzyskać więcej informacji na temat formatów plików obsługiwanych przez program Hive, zobacz [(ręczne) języka https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+Aby uzyskać więcej informacji na temat formatów plików obsługiwanych przez program Hive, zobacz [Podręcznik języka (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
-### <a name="hive-internal-tables-vs-external-tables"></a>Tabele wewnętrzne vs zewnętrznych tabel programu hive
+### <a name="hive-internal-tables-vs-external-tables"></a>Wewnętrzne tabele programu Hive a tabele zewnętrzne
 
-Istnieją dwa rodzaje tabel, które można utworzyć przy użyciu technologii Hive:
+Istnieją dwa typy tabel, które można utworzyć przy użyciu programu Hive:
 
-* __Wewnętrzny__: Dane są przechowywane w magazynie danych programu Hive. Magazyn danych znajduje się w `/hive/warehouse/` na domyślny magazyn dla klastra.
+* __Wewnętrzne__: dane są przechowywane w magazynie danych programu Hive. Magazyn danych znajduje się w lokalizacji `/hive/warehouse/` w domyślnym magazynie klastra.
 
-    Korzystanie z tabel wewnętrznych, gdy występuje jeden z następujących warunków:
+    Użyj tabel wewnętrznych, gdy są spełnione jeden z następujących warunków:
 
     * Dane są tymczasowe.
-    * Chcesz, aby gałąź do zarządzania cyklem życia tabeli i danych.
+    * Program Hive ma zarządzać cyklem życia tabeli i danych.
 
-* __Zewnętrzne__: Dane są przechowywane poza w magazynie danych. Dane mogą być przechowywane na jeden z magazynów dostępnych przez klaster.
+* __Zewnętrzne__: dane są przechowywane poza magazynem danych. Dane mogą być przechowywane w dowolnym magazynie dostępnym w klastrze.
 
-    Użyj tabel zewnętrznych, gdy występuje jeden z następujących warunków:
+    Użyj tabel zewnętrznych, gdy są spełnione jeden z następujących warunków:
 
-    * Dane, jest również używane poza Hive. Na przykład pliki danych są aktualizowane przez inny proces (co oznacza, że nie blokuje pliki.)
-    * Dane muszą pozostać w lokalizacji podstawowej, nawet po upuszczenie w tabeli.
-    * Należy lokalizacjach niestandardowych, takich jak konta magazynu innego niż domyślny.
-    * Program niż gałąź zarządza format danych, lokalizacja itp.
+    * Dane są również używane poza programem Hive. Na przykład pliki danych są aktualizowane przez inny proces (bez blokowania plików).
+    * Dane muszą pozostać w źródłowej lokalizacji, nawet po porzucenie tabeli.
+    * Potrzebujesz niestandardowej lokalizacji, takiej jak konto magazynu innego niż domyślne.
+    * Program inny niż Hive zarządza formatem danych, lokalizacją itp.
 
-Aby uzyskać więcej informacji, zobacz [Hive wewnętrznych i zewnętrznych wprowadzenie tabel](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) wpis w blogu.
+Aby uzyskać więcej informacji, zobacz wpis w blogu dotyczący [wewnętrznej i zewnętrznej tabeli programu Hive](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) .
 
 ## <a name="user-defined-functions-udf"></a>Funkcje zdefiniowane przez użytkownika (UDF)
 
-Można również rozszerzać hive za pośrednictwem **funkcje zdefiniowane przez użytkownika (UDF)** . Funkcji zdefiniowanej przez użytkownika, można zaimplementować funkcje lub logikę, która nie jest łatwo modelowane w HiveQL. Przykład użycia funkcji zdefiniowanych przez użytkownika za pomocą technologii Hive na ten temat można znaleźć w następujących dokumentach:
+Gałąź Hive można również rozszerzyć za poorednictwem **funkcji zdefiniowanych przez użytkownika (UDF)** . System UDF umożliwia implementację funkcji lub logiki, która nie jest łatwo modelowana w HiveQL. Przykład użycia UDF z programem Hive można znaleźć w następujących dokumentach:
 
-* [Apache Hive za pomocą funkcji zdefiniowanej przez użytkownika języka Java](../hadoop/apache-hadoop-hive-java-udf.md)
+* [Używanie funkcji zdefiniowanej przez użytkownika w języku Java z Apache Hive](../hadoop/apache-hadoop-hive-java-udf.md)
 
-* [Apache Hive za pomocą funkcji zdefiniowanej przez użytkownika języka Python](../hadoop/python-udf-hdinsight.md)
+* [Używanie funkcji zdefiniowanej przez użytkownika w języku Python z Apache Hive](../hadoop/python-udf-hdinsight.md)
 
-* [Użyj C# funkcji zdefiniowanej przez użytkownika za pomocą technologii Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Używanie funkcji C# zdefiniowanej przez użytkownika z Apache Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Jak dodać niestandardowe Apache Hive funkcji zdefiniowanej przez użytkownika do HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Jak dodać niestandardową Apache Hive funkcję zdefiniowaną przez użytkownika do usługi HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
-* [Przykład Apache Hive funkcji zdefiniowanej przez użytkownika, aby przekonwertować formaty daty/godziny na gałąź znacznik czasu:](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
+* [Przykład Apache Hive funkcji zdefiniowanej przez użytkownika w celu przekonwertowania formatów daty/godziny na sygnaturę czasową Hive](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
 ## <a id="data"></a>Przykładowe dane
 
-Gałąź w HDInsight jest dostarczany wstępnie załadowane z wewnętrznej tabeli o nazwie `hivesampletable`. HDInsight udostępnia również przykładowy zbiory danych, które mogą być używane z programu Hive. Te zestawy danych są przechowywane w `/example/data` i `/HdiSamples` katalogów. Te katalogi istnieje w domyślny magazyn dla klastra.
+Gałąź Hive w usłudze HDInsight jest wstępnie załadowana z tabelą wewnętrzną o nazwie `hivesampletable`. Usługa HDInsight udostępnia również przykładowe zestawy danych, które mogą być używane z programem Hive. Te zestawy danych są przechowywane w katalogach `/example/data` i `/HdiSamples`. Te katalogi istnieją w domyślnym magazynie klastra.
 
-## <a id="job"></a>Przykładowe zapytanie programu Hive
+## <a id="job"></a>Przykładowe zapytanie Hive
 
-Poniższe instrukcje HiveQL projektu kolumn na `/example/data/sample.log` pliku:
+Następujące kolumny HiveQL instrukcje projektu do pliku `/example/data/sample.log`:
 
 ```hiveql
 DROP TABLE log4jLogs;
@@ -127,32 +126,31 @@ CREATE EXTERNAL TABLE log4jLogs (
     t7 string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
-SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
-    WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
+    WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log'
     GROUP BY t4;
 ```
 
-W poprzednim przykładzie instrukcje HiveQL, wykonaj następujące czynności:
+W poprzednim przykładzie instrukcje HiveQL wykonują następujące czynności:
 
+* `DROP TABLE`: Jeśli tabela już istnieje, usuń ją.
 
-* `DROP TABLE`: Jeśli tabela już istnieje, należy go usunąć.
+* `CREATE EXTERNAL TABLE`: tworzy nową tabelę **zewnętrzną** w usłudze Hive. Tabele zewnętrzne przechowują wyłącznie definicję tabeli w programie Hive. Dane pozostaną w oryginalnej lokalizacji i w oryginalnym formacie.
 
-* `CREATE EXTERNAL TABLE`: Tworzy nową **zewnętrznych** tabeli programu Hive. Tabele zewnętrzne przechowywać wyłącznie w definicji tabeli programu Hive. Danych pozostanie w oryginalnej lokalizacji i w oryginalnym formacie.
+* `ROW FORMAT`: informuje Hive, jak dane są formatowane. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
 
-* `ROW FORMAT`: Informuje, Hive, w jaki sposób dane są sformatowane. W tym przypadku pola w każdym dzienniku są oddzielone spacją.
+* `STORED AS TEXTFILE LOCATION`: informuje gałąź, w której są przechowywane dane (katalog `example/data`) i jest przechowywana jako tekst. Dane mogą znajdować się w jednym pliku lub rozłożyć na wiele plików w katalogu.
 
-* `STORED AS TEXTFILE LOCATION`: Informuje, Hive, w którym przechowywane są dane ( `example/data` katalogu) i które są przechowywane jako tekst. Dane mogą być w jednym pliku lub rozkładają się na wiele plików w katalogu.
+* `SELECT`: wybiera liczbę wszystkich wierszy, w których kolumna **T4** zawiera wartość **[Error]** . Ta instrukcja zwraca wartość **3** , ponieważ istnieją trzy wiersze, które zawierają tę wartość.
 
-* `SELECT`: Wybiera liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]** . Ta instrukcja zwraca wartość **3** ponieważ istnieją trzy wiersze, które zawierają tę wartość.
-
-* `INPUT__FILE__NAME LIKE '%.log'` -Hive podejmie próbę zastosowania schematu do wszystkich plików w katalogu. W tym przypadku katalog zawiera pliki, które nie pasuje do schematu. Aby zapobiec odzyskiwanie danych w wynikach, ta instrukcja każe Hive, firma Microsoft z plików kończy się rozszerzeniem tylko powinna zwrócić dane. log.
+* `INPUT__FILE__NAME LIKE '%.log'`-Hive próbuje zastosować schemat do wszystkich plików w katalogu. W takim przypadku katalog zawiera pliki, które nie są zgodne ze schematem. Aby zapobiec utracie danych bezużytecznych w wyniku, ta instrukcja informuje gałąź, że będziemy zwracać tylko dane z plików kończących się na. log.
 
 > [!NOTE]  
-> Jeśli potrzebujesz danych bazowych do zaktualizowania za pomocą zewnętrznego źródła, należy używać tabel zewnętrznych. Na przykład proces przekazywania danych lub operacji MapReduce.
+> Tabele zewnętrzne powinny być używane, gdy oczekuje się, że dane podstawowe mają być aktualizowane przez zewnętrzne źródło. Na przykład proces automatycznego przekazywania danych lub operacja MapReduce.
 >
-> Usunięcie tabeli zewnętrznej jest **nie** usuwania danych, usuwa tylko w definicji tabeli.
+> Porzucanie tabeli zewnętrznej **nie powoduje usunięcia danych** , tylko usuwa definicję tabeli.
 
-Aby utworzyć **wewnętrzny** tabeli zamiast zewnętrznych, za pomocą języka HiveQL następujące:
+Aby utworzyć **wewnętrzną** tabelę zamiast zewnętrznej, użyj następującego HiveQL:
 
 ```hiveql
 CREATE TABLE IF NOT EXISTS errorLogs (
@@ -169,55 +167,55 @@ SELECT t1, t2, t3, t4, t5, t6, t7
     FROM log4jLogs WHERE t4 = '[ERROR]';
 ```
 
-Te instrukcje, wykonaj następujące czynności:
+Te instrukcje wykonują następujące czynności:
 
-* `CREATE TABLE IF NOT EXISTS`: Jeśli tabela nie istnieje, należy go utworzyć. Ponieważ **zewnętrznych** — słowo kluczowe nie jest używany, ta instrukcja tworzy wewnętrznej tabeli. Tabela jest przechowywany w magazynie danych programu Hive i jest całkowicie zarządzana przez Hive.
+* `CREATE TABLE IF NOT EXISTS`: Jeśli tabela nie istnieje, utwórz ją. Ponieważ **zewnętrzne** słowo kluczowe nie jest używane, ta instrukcja tworzy tabelę wewnętrzną. Tabela jest przechowywana w magazynie danych programu Hive i jest w pełni zarządzana przez program Hive.
 
-* `STORED AS ORC`: Przechowuje dane w formacie zoptymalizowane pod kątem wiersz kolumnowych (ORC). ORC jest wysoce zoptymalizowane i wydajne formatu do przechowywania danych programu Hive.
+* `STORED AS ORC`: przechowuje dane w formacie ORC (zoptymalizowany wiersz kolumnowy). ORC to wysoce zoptymalizowany i wydajny format służący do przechowywania danych programu Hive.
 
-* `INSERT OVERWRITE ... SELECT`: Wybiera wiersze z **log4jLogs** tabelę, która zawiera **[Błąd]** , a następnie wstawia dane do **przesłano** tabeli.
+* `INSERT OVERWRITE ... SELECT`: wybiera wiersze z tabeli **log4jLogs** , która zawiera wartość **[Error]** , a następnie wstawia dane do tabeli **errorLogs** .
 
 > [!NOTE]  
-> W przeciwieństwie do tabel zewnętrznych porzucenie wewnętrznej tabeli spowoduje również usunięcie danych bazowych.
+> W przeciwieństwie do tabel zewnętrznych, porzucanie tabeli wewnętrznej powoduje również usunięcie danych źródłowych.
 
-## <a name="improve-hive-query-performance"></a>Poprawić wydajność zapytań technologii Hive
+## <a name="improve-hive-query-performance"></a>Poprawianie wydajności zapytań Hive
 
 ### <a id="usetez"></a>Apache Tez
 
-[Apache Tez](https://tez.apache.org) to struktura, która umożliwia aplikacji intensywnie korzystających z danych, takich jak Hive, umożliwia bardziej wydajne uruchamianie na dużą skalę. Tez jest domyślnie włączona.  [Apache Hive w aplikacji Tez dokumentów projektowych](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) zawiera szczegółowe informacje na temat opcji wdrażania i dostrajania konfiguracji.
+[Apache tez](https://tez.apache.org) to struktura, która umożliwia aplikacjom intensywnie korzystające z dużych ilości danych, takich jak Hive, wydajne działanie na dużą skalę. Tez jest domyślnie włączona.  [Apache Hive w dokumentach projektowania tez](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) zawiera szczegółowe informacje o wyborach implementacji i konfiguracjach dostrajania.
 
-### <a name="low-latency-analytical-processing-llap"></a>Małe opóźnienia przetwarzania analitycznego (LLAP)
+### <a name="low-latency-analytical-processing-llap"></a>Przetwarzanie analityczne o małym opóźnieniu (LLAP)
 
-[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) (czasem nazywane Live Long and Process) to nowa funkcja programu Hive w wersji 2.0 umożliwiająca wewnątrzpamięciowa pamięć podręczna zapytań. LLAP sprawia, że zapytania programu Hive, które znacznie szybciej, maksymalnie [26 x szybciej niż Hive 1.x w niektórych przypadkach](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
+[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) (czasami znany jako Live Long i Process) to nowa funkcja w programie Hive 2,0, która umożliwia buforowanie zapytań w pamięci. LLAP sprawia, że zapytania Hive znacznie szybsze, do [26x szybciej niż w przypadku programu Hive 1. x w niektórych przypadkach](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 
-HDInsight udostępnia LLAP w typ klastra zapytania interakcyjnego. Aby uzyskać więcej informacji, zobacz [Start z zapytaniem interakcyjnym](../interactive-query/apache-interactive-query-get-started.md) dokumentu.
+Usługa HDInsight udostępnia LLAP w typie klastra zapytań interaktywnych. Aby uzyskać więcej informacji, zobacz dokument [Rozpoczynanie pracy z interakcyjnym zapytaniem](../interactive-query/apache-interactive-query-get-started.md) .
 
 ## <a name="scheduling-hive-queries"></a>Planowanie zapytań programu Hive
 
-Istnieje kilka usług, które mogą służyć do uruchamiania zapytań programu Hive w ramach przepływu pracy zaplanowane lub na żądanie.
+Istnieje kilka usług, za pomocą których można uruchamiać zapytania Hive w ramach przepływu pracy zaplanowanego lub na żądanie.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Usługa Azure Data Factory umożliwia HDInsight jako część potoku usługi fabryka danych. Aby uzyskać więcej informacji na temat korzystania z programu Hive w potoku, zobacz [przekształcania danych za pomocą działania programu Hive w usłudze Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md) dokumentu.
+Azure Data Factory umożliwia korzystanie z usługi HDInsight w ramach potoku Data Factory. Aby uzyskać więcej informacji na temat korzystania z usługi Hive z potoku, zobacz dokument [Przekształcanie danych przy użyciu działania programu Hive w Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md) .
 
-### <a name="hive-jobs-and-sql-server-integration-services"></a>Zadania programu hive i SQL Server Integration Services
+### <a name="hive-jobs-and-sql-server-integration-services"></a>Zadania Hive i SQL Server Integration Services
 
-SQL Server Integration Services (SSIS) służy do uruchamiania zadań Hive. Pakiety Azure Feature Pack dla usług SSIS zawiera następujące składniki, współpracujących z zadań Hive HDInsight.
+Do uruchomienia zadania Hive można użyć SQL Server Integration Services (SSIS). Pakiet Azure Feature Pack dla usług SSIS zawiera następujące składniki, które działają z zadaniami Hive w usłudze HDInsight.
 
-* [Zadanie usługi Azure HDInsight Hive](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Zadanie Hive usługi Azure HDInsight](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Menedżer połączeń w usłudze Azure subskrypcji](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Menedżer połączeń subskrypcji platformy Azure](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-Aby uzyskać więcej informacji, zobacz [pakiety Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) dokumentacji.
+Aby uzyskać więcej informacji, zobacz dokumentację [pakietu Feature Pack platformy Azure](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) .
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
-Apache Oozie jest systemem przepływu pracy i koordynacji, który zarządza zadaniami na platformie Hadoop. Aby uzyskać więcej informacji na temat korzystania z technologii Oozie z technologią Hive, zobacz [Użyj Apache Oozie, aby zdefiniować i uruchomić przepływ pracy](../hdinsight-use-oozie-linux-mac.md) dokumentu.
+Apache Oozie to przepływ pracy i system koordynacji, który zarządza zadaniami usługi Hadoop. Aby uzyskać więcej informacji o korzystaniu z Oozie z usługą Hive, zobacz artykuł [Używanie platformy Apache Oozie do definiowania i uruchamiania dokumentu przepływu pracy](../hdinsight-use-oozie-linux-mac.md) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, kiedy znasz już gałąź jest i jak z niej korzystać z usługą Hadoop w HDInsight, użyj następujących linków, aby poznać inne sposoby pracy z usługi Azure HDInsight.
+Teraz, gdy wiesz już, co to jest gałąź i jak używać jej z usługą Hadoop w usłudze HDInsight, Skorzystaj z poniższych linków, aby poznać inne sposoby pracy z usługą Azure HDInsight.
 
-* [Przekazywanie danych do HDInsight](../hdinsight-upload-data.md)
-* [Funkcje (UDF) zdefiniowane przez użytkownika języka Python korzystanie z programu Apache Hive i Apache Pig w HDInsight](./python-udf-hdinsight.md)
-* [Korzystanie z zadań MapReduce z usługą HDInsight](hdinsight-use-mapreduce.md)
+* [Przekazywanie danych do usługi HDInsight](../hdinsight-upload-data.md)
+* [Używanie funkcji języka Python zdefiniowanej przez użytkownika (UDF) z Apache Hive i Apache chlewnej w usłudze HDInsight](./python-udf-hdinsight.md)
+* [Używanie zadań MapReduce z usługą HDInsight](hdinsight-use-mapreduce.md)
