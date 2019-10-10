@@ -44,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: Informacje o usłudze ExpressRoute Global Reach
       href: expressroute-global-reach.md
+    - name: Informacje o szyfrowaniu w usłudze ExpressRoute
+      href: expressroute-about-encryption.md
     - name: Łączenie platformy Azure z chmurą publiczną
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Współdziałanie łączności z zapleczem
@@ -121,6 +123,8 @@
           href: expressroute-howto-erdirect.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: expressroute-howto-expressroute-direct-cli.md
+    - name: Konfigurowanie rozwiązania MACsec pod kątem portów usługi ExpressRoute Direct
+      href: expressroute-howto-macsec.md
     - name: Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft
       items:
         - name: Azure Portal

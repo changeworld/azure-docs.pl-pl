@@ -57,8 +57,10 @@
       href: tutorial-global-distribution-sql-api.md
 - name: Przykłady
   items:
-    - name: Przykłady dla platformy .NET
+    - name: Przykłady zestawów SDK dla platformy .NET V2
       href: sql-api-dotnet-samples.md
+    - name: Przykłady zestawów SDK dla platformy .NET V3
+      href: sql-api-dotnet-v3sdk-samples.md
     - name: Przykłady w języku Java
       href: sql-api-java-samples.md
     - name: Asynchroniczne przykłady w języku Java
@@ -1022,6 +1024,8 @@
           href: odbc-driver.md
     - name: Migracja danych do usługi Cosmos DB
       items:
+        - name: Opcje migracji danych do usługi Cosmos DB
+          href: cosmosdb-migrationchoices.md
         - name: Migrowanie do interfejsu API SQL przy użyciu rozwiązania Striim
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: Migrowanie do interfejsu API Cassandra przy użyciu rozwiązania Striim

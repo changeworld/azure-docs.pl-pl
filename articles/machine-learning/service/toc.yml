@@ -137,23 +137,6 @@
           href: how-to-train-with-datasets.md
     - name: Szkolenie modeli
       items:
-        - name: Konfigurowanie środowisk szkoleniowych
-          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
-          href: how-to-set-up-training-targets.md
-        - name: Uczenie za pomocą narzędzi do szacowania
-          items:
-            - name: Tworzenie estymatorów na potrzeby trenowania
-              href: how-to-train-ml-models.md
-            - name: Korzystanie z biblioteki Scikit-learn
-              href: how-to-train-scikit-learn.md
-            - name: Korzystanie z biblioteki TensorFlow
-              href: how-to-train-tensorflow.md
-            - name: Używanie biblioteki Keras
-              href: how-to-train-keras.md
-            - name: Korzystanie z biblioteki PyTorch
-              href: how-to-train-pytorch.md
-            - name: Korzystanie z platformy Chainer
-              href: how-to-train-chainer.md
         - name: Korzystanie z interfejsu wizualnego
           displayName: sample visual interface experiments
           items:
@@ -175,25 +158,29 @@
             - name: Przewidywanie opóźnień lotów
               displayName: 'classification, studio'
               href: how-to-ui-sample-classification-predict-flight-delay.md
-        - name: Dostrajanie hiperparametrów
-          displayName: parameter
-          href: how-to-tune-hyperparameters.md
-        - name: Używanie usługi Key Vault podczas trenowania
-          displayName: secrets keyvault
-          href: how-to-use-secrets-in-runs.md
-    - name: Śledzenie i monitorowanie eksperymentów
-      items:
-        - name: 'Uruchamianie, monitorowanie i anulowanie przebiegów'
-          displayName: 'cancel, fail, status, child run'
-          href: how-to-manage-runs.md
-        - name: Rejestrowanie metryk dla przebiegów treningowych
-          href: how-to-track-experiments.md
-        - name: Śledzenie eksperymentów za pomocą platformy MLflow
-          displayName: 'log, monitor, metrics'
-          href: how-to-use-mlflow.md
-        - name: Wizualizacja przebiegów za pomocą narzędzia TensorBoard
-          displayName: 'log, monitor, metrics'
-          href: how-to-monitor-tensorboard.md
+        - name: Używanie narzędzi do szacowania w uczeniu maszynowym
+          items:
+            - name: Tworzenie estymatorów na potrzeby trenowania
+              href: how-to-train-ml-models.md
+            - name: Konfigurowanie środowisk szkoleniowych
+              displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+              href: how-to-set-up-training-targets.md
+            - name: Dostrajanie hiperparametrów
+              displayName: parameter
+              href: how-to-tune-hyperparameters.md
+            - name: Używanie usługi Key Vault podczas trenowania
+              displayName: secrets keyvault
+              href: how-to-use-secrets-in-runs.md
+        - name: Scikit-learn
+          href: how-to-train-scikit-learn.md
+        - name: TensorFlow
+          href: how-to-train-tensorflow.md
+        - name: Keras
+          href: how-to-train-keras.md
+        - name: PyTorch
+          href: how-to-train-pytorch.md
+        - name: Chainer
+          href: how-to-train-chainer.md
     - name: Automatyzacja uczenia maszynowego
       displayName: 'automl, auto ml'
       items:
@@ -210,6 +197,19 @@
           href: how-to-auto-train-forecast.md
         - name: Opis wykresów i metryk
           href: how-to-understand-automated-ml.md
+    - name: Śledzenie i monitorowanie eksperymentów
+      items:
+        - name: 'Uruchamianie, monitorowanie i anulowanie przebiegów'
+          displayName: 'cancel, fail, status, child run'
+          href: how-to-manage-runs.md
+        - name: Rejestrowanie metryk dla przebiegów treningowych
+          href: how-to-track-experiments.md
+        - name: Śledzenie eksperymentów za pomocą platformy MLflow
+          displayName: 'log, monitor, metrics'
+          href: how-to-use-mlflow.md
+        - name: Wizualizacja przebiegów za pomocą narzędzia TensorBoard
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
     - name: Wdrażanie i obsługa modeli
       items:
         - name: Gdzie i jak wdrażać modele

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentacja usługi Custom Vision
-summary: Usługa Azure Custom Vision to usługa poznawcza umożliwiająca tworzenie, wdrażanie i ulepszanie własnych klasyfikatorów obrazów. Klasyfikator obrazów to usługa sztucznej Inteligencji, która stosuje etykiety (reprezentujące klasy) do obrazów zgodnie z ich cechami wizualnymi.
+summary: Usługa Custom Vision to usługa poznawcza umożliwiająca tworzenie, wdrażanie i ulepszanie własnych klasyfikatorów obrazów. Klasyfikator obrazów to usługa sztucznej Inteligencji, która stosuje etykiety (reprezentujące klasy) do obrazów zgodnie z ich cechami wizualnymi.
 metadata:
   title: Dokumentacja usługi Custom Vision
-  description: Usługa Azure Custom Vision to usługa poznawcza umożliwiająca tworzenie, wdrażanie i ulepszanie własnych klasyfikatorów obrazów. Klasyfikator obrazów to usługa sztucznej Inteligencji, która stosuje etykiety (reprezentujące klasy) do obrazów zgodnie z ich cechami wizualnymi.
+  description: Usługa Custom Vision to usługa poznawcza umożliwiająca tworzenie, wdrażanie i ulepszanie własnych klasyfikatorów obrazów. Klasyfikator obrazów to usługa sztucznej Inteligencji, która stosuje etykiety (reprezentujące klasy) do obrazów zgodnie z ich cechami wizualnymi.
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 931f67bd0f5c73426781da39ded3bcfff0a8dea3
-  ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+  ms.openlocfilehash: 5be5dcd64345de32e37413932869574391573c60
+  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71211979"
+  ms.lasthandoff: 10/09/2019
+  ms.locfileid: "72176172"
 landingContent:
 - title: Informacje o usłudze Custom Vision
   linkLists:

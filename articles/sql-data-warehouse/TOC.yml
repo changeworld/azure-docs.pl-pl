@@ -151,6 +151,10 @@
               href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
             - name: Zestaw na potrzeby sesji
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql
+            - name: Sprawdzanie rozmiaru pamięci podręcznej
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest'
+            - name: Czyszczenie pamięci podręcznej
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest'
         - name: Tabele
           items:
             - name: Omówienie

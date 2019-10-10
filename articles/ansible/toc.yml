@@ -1,89 +1,111 @@
-items:
 - name: Dokumentacja rozwiązania Ansible na platformie Azure
   href: ./index.yml
 - name: Omówienie
   items:
-  - name: Informacje o rozwiązaniu Ansible na platformie Azure
-    href: ./ansible-overview.md
+    - name: Informacje o rozwiązaniu Ansible na platformie Azure
+      href: ./ansible-overview.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Wdrażanie szablonu rozwiązania Ansible
-    href: ./ansible-deploy-solution-template.md
-  - name: Instalowanie rozwiązania Ansible na maszynie wirtualnej z systemem Linux
-    href: /azure/virtual-machines/linux/ansible-install-configure
-    maintainContext: true
-  - name: Tworzenie maszyny wirtualnej z systemem Linux
-    href: /azure/virtual-machines/linux/ansible-create-vm
-    maintainContext: true
-  - name: Zarządzanie maszyną wirtualną z systemem Linux
-    href: /azure/virtual-machines/linux/ansible-manage-linux-vm
-    maintainContext: true
-  - name: Uruchamianie elementu playbook w usłudze Cloud Shell
-    href: ./ansible-run-playbook-in-cloudshell.md
   expanded: true
+  items:
+    - name: Wdrażanie szablonu rozwiązania Ansible w systemie CentOS
+      href: ./ansible-deploy-solution-template.md
+    - name: Instalowanie rozwiązania Ansible na maszynach wirtualnych z systemem Linux
+      href: /azure/virtual-machines/linux/ansible-install-configure
+      maintainContext: true
+    - name: Uruchamianie podręczników w usłudze Cloud Shell
+      href: ./ansible-run-playbook-in-cloudshell.md
+    - name: Praca z maszynami wirtualnymi z systemem Linux
+      expanded: true
+      items:
+        - name: Konfigurowanie maszyn wirtualnych z systemem Linux
+          href: /azure/virtual-machines/linux/ansible-create-vm
+          maintainContext: true
+        - name: Zarządzanie maszynami wirtualnymi z systemem Linux
+          href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+          maintainContext: true
 - name: Samouczki
   items:
-  - name: AKS
-    items:
-    - name: Tworzenie i konfigurowanie klastrów usługi AKS
-      href: ./ansible-create-configure-aks.md
-  - name: App Service
-    items:
-    - name: Tworzenie i konfigurowanie usługi Azure Web Apps
-      href: ./ansible-create-configure-azure-web-apps.md
-    - name: Skalowanie usługi Azure Web Apps
-      href: ./ansible-scale-azure-web-apps.md
-  - name: Application Gateway
-    items:
-    - name: Tworzenie i konfigurowanie usługi Azure Application Gateway
-      href: ./ansible-create-configure-application-gateway.md
-  - name: Bazy danych
-    items:
-    - name: Tworzenie i konfigurowanie usługi Azure DB dla MySQL
-      href: ./ansible-create-configure-mysql.md
-  - name: Spis dynamiczny
-    items:
-    - name: Zarządzanie spisami dynamicznymi
-      href: ./ansible-manage-azure-dynamic-inventories.md
-  - name: Sieć wirtualna
-    items:
-    - name: Tworzenie i konfigurowanie tabel tras
-      href: ./ansible-create-configure-route-table.md
-  - name: Zestaw skalowania maszyn wirtualnych
-    items:
-    - name: Tworzenie i konfigurowanie zestawu skalowania maszyn wirtualnych
-      href: ./ansible-create-configure-vmss.md
-    - name: Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych
-      href: ./ansible-deploy-app-vmss.md
-    - name: Autoskalowanie zestawu skalowania maszyn wirtualnych
-      href: ./ansible-auto-scale-vmss.md
+    - name: Azure Application Gateway
+      items:
+        - name: Zarządzanie ruchem internetowym
+          href: ./ansible-create-configure-application-gateway.md
+    - name: Azure App Service
+      items:
+        - name: Konfigurowanie aplikacji
+          href: ./ansible-create-configure-azure-web-apps.md
+        - name: Skalowanie aplikacji
+          href: ./ansible-scale-azure-web-apps.md
+    - name: Azure DevTest Labs
+      items:
+        - name: Konfigurowanie laboratoriów
+          href: ./ansible-devtest-labs-configure.md
+    - name: Azure Kubernetes Service (AKS)
+      items:
+        - name: Konfigurowanie klastrów usługi AKS
+          href: ./ansible-create-configure-aks.md
+        - name: Konfigurowanie sieci wtyczki Azure CNI
+          href: ./ansible-aks-configure-cni-networking.md
+        - name: Konfigurowanie sieci wtyczki kubenet
+          href: ./ansible-aks-configure-kubenet-networking.md
+        - name: Konfigurowanie ról RBAC w klastrze usługi AKS
+          href: ./ansible-aks-configure-rbac.md
+    - name: Azure HDInsight
+      items:
+        - name: Konfigurowanie klastrów
+          href: ./ansible-azure-hdinsight-configure.md
+    - name: Azure Service Bus
+      items:
+        - name: Konfigurowanie kolejek
+          href: ./ansible-service-bus-queue-configure.md
+        - name: Konfigurowanie tematów
+          href: ./ansible-service-bus-topic-configure.md
+    - name: Database (Baza danych)
+      items:
+        - name: Konfigurowanie usługi Azure Database for MySQL
+          href: ./ansible-create-configure-mysql.md
+        - name: Konfigurowanie kont usługi Azure Cosmos DB
+          href: ./ansible-data-cosmos-configure.md
+        - name: Konfigurowanie usługi Azure Cache for Redis
+          href: ./ansible-data-cache-for-redis-configure.md
+    - name: Spis dynamiczny
+      items:
+        - name: Zarządzanie zasobami platformy Azure
+          href: ./ansible-manage-azure-dynamic-inventories.md
+    - name: Zestawy skalowania maszyn wirtualnych
+      items:
+        - name: Konfigurowanie
+          href: ./ansible-create-configure-vmss.md
+        - name: Wdrażanie
+          href: ./ansible-deploy-app-vmss.md
+        - name: Automatyczne skalowanie
+          href: ./ansible-auto-scale-vmss.md
+        - name: Aktualizowanie niestandardowego obrazu
+          href: ./ansible-vmss-update-image.md
+    - name: Sieć wirtualna
+      items:
+        - name: Konfigurowanie komunikacji równorzędnej
+          href: ./ansible-vnet-peering-configure.md
+        - name: Konfigurowanie tabel tras
+          href: ./ansible-create-configure-route-table.md
+- name: Przykłady
+  items:
+    - name: Laboratoria Ansible dla platformy Azure
+      href: 'https://github.com/microsoft/ansiblelabs'
+    - name: Przykłady podręczników platformy Azure rozwiązania Ansible
+      href: 'https://github.com/Azure-Samples/ansible-playbooks'
 - name: Dokumentacja
   items:
-  - name: Role elementu playbook
-    items:
-    - name: azure_module
-      href: https://galaxy.ansible.com/Azure/azure_modules/
-    - name: azure_preview_module
-      href: https://galaxy.ansible.com/Azure/azure_preview_modules
-  - name: Wydania i funkcje
-    href: ./ansible-matrix.md
-  - name: Azure Container Instances
-    href: https://docs.ansible.com/ansible/latest/azure_rm_containerinstance_module.html
-  - name: Azure Functions
-    href: https://docs.ansible.com/ansible/latest/azure_rm_functionapp_module.html
-  - name: Moduły równoważenia obciążenia
-    href: https://docs.ansible.com/ansible/latest/azure_rm_loadbalancer_module.html
-  - name: Maszyny wirtualne
-    href: https://docs.ansible.com/ansible/latest/azure_rm_virtualmachine_module.html
-  - name: Wszystkie moduły dla platformy Azure
-    href: https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure
+    - name: Role elementu playbook
+      items:
+        - name: azure_module
+          href: 'https://galaxy.ansible.com/Azure/azure_modules/'
+        - name: azure_preview_module
+          href: 'https://galaxy.ansible.com/Azure/azure_preview_modules'
+    - name: Wydania i funkcje
+      href: ./ansible-matrix.md
+    - name: Wszystkie moduły dla platformy Azure
+      href: 'https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure'
 - name: Narzędzia
   items:
-  - name: Rozszerzenie programu Visual Studio Code dla rozwiązania Ansible
-    href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: a3f1dcf9c7672938b35ba5615c8d901cbd1d1332
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226642"
+    - name: Rozszerzenie programu Visual Studio Code dla rozwiązania Ansible
+      href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'
