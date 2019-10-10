@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrażać aplikacji dla systemów Linux i Windows wystąpień maszyn wirtualnych w zestawie skalowania
+title: Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych platformy Azure | Microsoft Docs
+description: Dowiedz się, jak wdrażać aplikacje w wystąpieniach maszyn wirtualnych z systemem Linux i Windows w zestawie skalowania
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,46 +15,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 996006c60e754437f8f863c7e7a72c929ed77f2c
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618629"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166204"
 ---
-# <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Wdrażanie aplikacji na zestawach skalowania maszyn wirtualnych
+# <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych
 
-Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W tym artykule przedstawiono sposoby tworzenia niestandardowego obrazu maszyny Wirtualnej dla wystąpień w skalowania zestawu lub skryptów instalacji automatycznie są uruchamiane w istniejących wystąpieniach maszyn wirtualnych. Poznasz również sposób zarządzania aplikacji lub aktualizacji systemu operacyjnego w zestawie skalowania.
+Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W tym artykule przedstawiono sposoby tworzenia niestandardowego obrazu maszyny wirtualnej dla wystąpień w zestawie skalowania lub automatycznego uruchamiania skryptów instalacji na istniejących wystąpieniach maszyn wirtualnych. Dowiesz się również, jak zarządzać aktualizacjami aplikacji lub systemu operacyjnego w zestawie skalowania.
 
 
-## <a name="build-a-custom-vm-image"></a>Tworzenie niestandardowego obrazu maszyny Wirtualnej
-Korzystając z jednego z obrazów platformy Azure do tworzenia wystąpień w zestawie skalowania, żadne dodatkowe oprogramowanie jest zainstalowane lub skonfigurowane. Można zautomatyzować instalację tych składników, jednak dodającego do czasu potrzebnego do aprowizacji wystąpienia maszyny Wirtualnej, aby zestawami skalowania. Jeśli zastosujesz wiele zmian konfiguracji do wystąpień maszyn wirtualnych, brak zarządzania obciążenie za pomocą tych konfiguracji skryptów i zadań.
+## <a name="build-a-custom-vm-image"></a>Tworzenie niestandardowego obrazu maszyny wirtualnej
+W przypadku tworzenia wystąpień w zestawie skalowania przy użyciu jednego z obrazów platformy Azure żadne dodatkowe oprogramowanie nie jest instalowane ani konfigurowane. Instalację tych składników można zautomatyzować, jednak dodanie do czasu potrzebnego do aprowizacji wystąpień maszyn wirtualnych w zestawach skalowania. W przypadku zastosowania wielu zmian konfiguracji wystąpień maszyn wirtualnych istnieje obciążenie związane z zarządzaniem za pomocą tych skryptów i zadań konfiguracyjnych.
 
-Aby ograniczyć Zarządzanie konfiguracją i raz, aby aprowizować maszynę Wirtualną, możesz utworzyć niestandardowego obrazu maszyny Wirtualnej, który jest gotowy do uruchomienia zaraz zostanie zainicjowane wystąpienie aplikacji w zestawie skalowania. Aby uzyskać więcej informacji na temat tworzenia i używania niestandardowego obrazu maszyny Wirtualnej o skali zestawu, zobacz następujące samouczki:
+Aby zmniejszyć liczbę zarządzania konfiguracją i czas na zainicjowanie obsługi maszyny wirtualnej, możesz utworzyć niestandardowy obraz maszyny wirtualnej, który jest gotowy do uruchomienia aplikacji, gdy tylko wystąpienie zostanie udostępnione w zestawie skalowania. Aby uzyskać więcej informacji na temat tworzenia i używania niestandardowego obrazu maszyny wirtualnej z zestawem skalowania, zobacz następujące samouczki:
 
 - [Interfejs wiersza polecenia platformy Azure](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
-## <a name="already-provisioned"></a>Instalowanie aplikacji przy użyciu rozszerzenia niestandardowego skryptu
-Rozszerzenie niestandardowego skryptu pobiera i wykonuje skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalowania oprogramowania lub każdego innego zadania związanego z konfiguracją lub zarządzaniem. Skrypty można pobrać z usługi Azure Storage lub GitHub bądź można je dostarczyć do witryny Azure Portal w czasie wykonywania rozszerzenia. Aby uzyskać więcej informacji na temat tworzenia i używania niestandardowego obrazu maszyny Wirtualnej o skali zestawu, zobacz następujące samouczki:
+## <a name="already-provisioned"></a>Instalowanie aplikacji z rozszerzeniem niestandardowego skryptu
+Rozszerzenie niestandardowego skryptu pobiera i wykonuje skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalowania oprogramowania lub każdego innego zadania związanego z konfiguracją lub zarządzaniem. Skrypty można pobrać z usługi Azure Storage lub GitHub bądź można je dostarczyć do witryny Azure Portal w czasie wykonywania rozszerzenia. Aby uzyskać więcej informacji na temat tworzenia i używania niestandardowego obrazu maszyny wirtualnej z zestawem skalowania, zobacz następujące samouczki:
 
 - [Interfejs wiersza polecenia platformy Azure](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
 - [Szablon usługi Azure Resource Manager](tutorial-install-apps-template.md)
 
 
-## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalowanie aplikacji do Windows maszyny Wirtualnej przy użyciu programu PowerShell DSC
-[Program PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) to platforma zarządzania, aby zdefiniować konfigurację komputerów docelowych. Konfiguracje DSC definiują, co należy zainstalować na komputerze oraz sposób konfigurowania hosta. Aparat lokalnego Configuration Manager (LCM) działa w każdym węźle docelowym, która przetwarza żądane akcje na podstawie konfiguracji wypychanie.
+## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalowanie aplikacji na maszynie wirtualnej z systemem Windows przy użyciu programu PowerShell DSC
+[Konfiguracja żądanego stanu programu PowerShell (DSC)](/powershell/scripting/dsc/overview/overview) to platforma zarządzania służąca do definiowania konfiguracji maszyn docelowych. Konfiguracje DSC definiują, co należy zainstalować na komputerze i jak skonfigurować hosta. Lokalny aparat Configuration Manager (LCM) działa na każdym węźle docelowym, który przetwarza żądane akcje w oparciu o wypychaną konfigurację.
 
-Rozszerzenie DSC programu PowerShell umożliwia dostosowanie wystąpień maszyn wirtualnych w zestawie przy użyciu programu PowerShell skalowania. Poniższy przykład:
+Rozszerzenie DSC programu PowerShell umożliwia dostosowywanie wystąpień maszyn wirtualnych w zestawie skalowania przy użyciu programu PowerShell. Poniższy przykład:
 
-- Powoduje, że wystąpień maszyn wirtualnych, aby pobrać pakiet DSC z usługi GitHub — *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
-- Ustawia rozszerzenie do uruchomienia skryptu install- `configure-http.ps1`
-- Pobiera informacje o zestawu skalowania z [Get AzVmss](/powershell/module/az.compute/get-azvmss)
-- Stosuje rozszerzenie do wystąpień maszyn wirtualnych za pomocą [AzVmss aktualizacji](/powershell/module/az.compute/update-azvmss)
+- Powoduje, że wystąpienia maszyn wirtualnych pobierają pakiet DSC z usługi GitHub- *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- Ustawia rozszerzenie do uruchamiania skryptu instalacji — `configure-http.ps1`
+- Pobiera informacje o zestawie skalowania za pomocą [Get-AzVmss](/powershell/module/az.compute/get-azvmss)
+- Stosuje rozszerzenie do wystąpień maszyny wirtualnej za pomocą [Update-AzVmss](/powershell/module/az.compute/update-azvmss)
 
-Rozszerzenie DSC jest stosowany do *myScaleSet* wystąpień maszyn wirtualnych w grupie zasobów o nazwie *myResourceGroup*. Wprowadź własne nazwy w następujący sposób:
+Rozszerzenie DSC jest stosowane do wystąpień maszyn wirtualnych *myScaleSet* w grupie zasobów o nazwie Moja *resourceName*. Wprowadź własne nazwy w następujący sposób:
 
 ```powershell
 # Define the script for your Desired Configuration to download and run
@@ -88,17 +88,17 @@ Update-AzVmss `
     -VirtualMachineScaleSet $vmss
 ```
 
-Jeśli zasady uaktualniania na zestaw skalowania jest *ręczne*, zaktualizować wystąpień maszyn wirtualnych za pomocą [AzVmssInstance aktualizacji](/powershell/module/az.compute/update-azvmssinstance). To polecenie cmdlet ma zastosowanie do konfiguracji zestawu skalowania zaktualizowane do wystąpień maszyn wirtualnych i instaluje aplikację.
+Jeśli zasady uaktualniania zestawu skalowania są *Ręczne*, zaktualizuj wystąpienia maszyn wirtualnych za pomocą funkcji [Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance). To polecenie cmdlet stosuje zaktualizowaną konfigurację zestawu skalowania do wystąpień maszyn wirtualnych i instaluje aplikację.
 
 
-## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Instalowanie aplikacji na Maszynę wirtualną systemu Linux przy użyciu pakietu cloud-init
+## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Instalowanie aplikacji na maszynie wirtualnej z systemem Linux przy użyciu funkcji Cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest uruchamiany w trakcie początkowego rozruchu, więc do zastosowania konfiguracji nie są wymagane żadne dodatkowe kroki ani agenci.
 
 Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie używa się poleceń **apt-get install** lub **yum install** do zainstalowania pakietu. Zamiast tego możesz zdefiniować listę pakietów do zainstalowania. Pakiet cloud-init automatycznie używa natywnego narzędzia do zarządzania pakietami dla wybranej dystrybucji.
 
-Aby uzyskać więcej informacji, w tym przykładzie *cloud-init.txt* plików, zobacz [używać pakietu cloud-init do dostosowywania maszyn wirtualnych platformy Azure](../virtual-machines/linux/using-cloud-init.md).
+Aby uzyskać więcej informacji, w tym przykład pliku *Cloud-init. txt* , zobacz [use Cloud-init do dostosowywania maszyn wirtualnych platformy Azure](../virtual-machines/linux/using-cloud-init.md).
 
-Aby utworzyć zestaw skalowania i przy użyciu pliku cloud-init, Dodaj `--custom-data` parametr [tworzenie az vmss](/cli/azure/vmss) polecenia i podaj nazwę pliku cloud-init. Poniższy przykład tworzy zestaw skalowania o nazwie *myScaleSet* w *myResourceGroup* i konfiguruje wystąpień maszyn wirtualnych przy użyciu pliku o nazwie *cloud-init.txt*. Wprowadź własne nazwy w następujący sposób:
+Aby utworzyć zestaw skalowania i użyć pliku Cloud-init, należy dodać parametr `--custom-data` do polecenia [AZ VMSS Create](/cli/azure/vmss) i określić nazwę pliku Cloud-init. Poniższy przykład tworzy zestaw skalowania o nazwie *myScaleSet* w liście *zasobów* i konfiguruje wystąpienia maszyn wirtualnych przy użyciu pliku o nazwie *Cloud-init. txt*. Wprowadź własne nazwy w następujący sposób:
 
 ```azurecli
 az vmss create \
@@ -112,11 +112,11 @@ az vmss create \
 ```
 
 
-### <a name="install-applications-with-os-updates"></a>Instalowanie aplikacji za pomocą aktualizacji systemu operacyjnego
-Po udostępnieniu nowej wersji systemu operacyjnego można użyć lub utworzyć obraz niestandardowy i [wdrażania uaktualnień systemu operacyjnego](virtual-machine-scale-sets-upgrade-scale-set.md) skalowania zestawu. Każde wystąpienie maszyny Wirtualnej została uaktualniona do najnowszego obrazu, który określisz. Za pomocą niestandardowego obrazu i aplikacji, wstępnie zainstalowane rozszerzenie niestandardowego skryptu lub programu PowerShell DSC aby aplikacja automatycznie dostępny podczas wykonywania uaktualnienia. Może być konieczne planowanie konserwacji aplikacji podczas wykonywania tego procesu, aby upewnić się, że nie istnieją żadne wersji problemy ze zgodnością.
+### <a name="install-applications-with-os-updates"></a>Instalowanie aplikacji z aktualizacjami systemu operacyjnego
+Gdy dostępne są nowe wersje systemu operacyjnego, można użyć lub utworzyć nowy obraz niestandardowy i [wdrożyć uaktualnienia systemu operacyjnego](virtual-machine-scale-sets-upgrade-scale-set.md) w zestawie skalowania. Każde wystąpienie maszyny wirtualnej zostanie uaktualnione do najnowszego obrazu, który określisz. Możesz użyć niestandardowego obrazu z wstępnie zainstalowaną aplikacją, rozszerzeniem niestandardowego skryptu lub DSC programu PowerShell, aby aplikacja była automatycznie dostępna podczas przeprowadzania uaktualnienia. Może być konieczne zaplanowanie konserwacji aplikacji podczas wykonywania tego procesu, aby upewnić się, że nie występują problemy ze zgodnością wersji.
 
-Jeśli używasz niestandardowego obrazu maszyny Wirtualnej z aplikacją wstępnie zainstalowane aktualizacje aplikacji może być zintegrowany z potoku wdrożenia w celu tworzenia nowych obrazów i wdrażania uaktualnień systemu operacyjnego w zestawie skalowania. Takie podejście umożliwia potoku, aby wczytać najnowsze kompilacje aplikacji, Utwórz i Zweryfikuj obrazu maszyny Wirtualnej, a następnie uaktualnić wystąpienia maszyny Wirtualnej w zestawie skalowania. Aby uruchomić potok wdrażania, który kompiluje i wdraża aktualizacje aplikacji w niestandardowych obrazów maszyn wirtualnych, można wykonać następujące akcje [Tworzenie obrazu usługi Packer i wdrażanie dzięki usługom DevOps platformy Azure](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset), lub użyj innej platformy, takie jak [Spinnaker](https://www.spinnaker.io/) lub [Jenkins](https://jenkins.io/).
+W przypadku korzystania z niestandardowego obrazu maszyny wirtualnej z wstępnie zainstalowaną aplikacją można zintegrować aktualizacje aplikacji z potokiem wdrożenia w celu utworzenia nowych obrazów i wdrożenia uaktualnień systemu operacyjnego w zestawie skalowania. Takie podejście umożliwia potokowi pobranie najnowszych kompilacji aplikacji, utworzenie i zweryfikowanie obrazu maszyny wirtualnej, a następnie uaktualnienie wystąpień maszyn wirtualnych w zestawie skalowania. Aby uruchomić potok wdrożenia, który kompiluje i wdraża aktualizacje aplikacji w niestandardowych obrazach maszyn wirtualnych, można [utworzyć obraz programu pakujący i wdrożyć go przy użyciu Azure DevOps Services](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)lub użyć innej platformy, takiej jak [Spinnaker](https://www.spinnaker.io/) lub [Jenkins](https://jenkins.io/).
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Podczas tworzenia i wdrażania aplikacji na Twoje zestawy skalowania można przejrzeć [Omówienie projektowania zestawu skalowania](virtual-machine-scale-sets-design-overview.md). Aby uzyskać więcej informacji na temat zarządzania zestawu skalowania, zobacz [Użyj programu PowerShell do zarządzania zestaw skalowania](virtual-machine-scale-sets-windows-manage.md).
+## <a name="next-steps"></a>Następne kroki
+Podczas kompilowania i wdrażania aplikacji w zestawach skalowania można przejrzeć [projekt zestawu skalowania](virtual-machine-scale-sets-design-overview.md). Aby uzyskać więcej informacji na temat zarządzania zestawem skalowania, zobacz [Używanie programu PowerShell do zarządzania zestawem skalowania](virtual-machine-scale-sets-windows-manage.md).

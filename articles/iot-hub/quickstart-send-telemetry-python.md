@@ -10,14 +10,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: a08719d322f044bbf1ced8103af5e4e23ed948c9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 0e4cafee26d9d3345d9099c3c9fc048fb982ada5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998479"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166411"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie ich przy użyciu aplikacji zaplecza (Python)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Szybki Start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub i odczytywanie ich z użyciem aplikacji zaplecza (Python)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -51,25 +51,25 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
     **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
-    **MyPythonDevice**: jest to nazwa nadana dla zarejestrowanego urządzenia. Użyj elementu MyPythonDevice w pokazany sposób. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz również używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
+    **MyPythonDevice**: jest to nazwa urządzenia, które jest rejestrowany. Zaleca się użycie **MyPythonDevice** , jak pokazano. W przypadku wybrania innej nazwy dla urządzenia należy również użyć tej nazwy w tym artykule i zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
     ```
 
-1. Uruchom następujące polecenia w Azure Cloud Shell, aby uzyskać _Parametry połączenia urządzenia_ dla zarejestrowanego urządzenia:
+1. Uruchom następujące polecenie w Azure Cloud Shell, aby uzyskać _Parametry połączenia urządzenia_ dla zarejestrowanego urządzenia:
 
     **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
     Zanotuj parametry połączenia urządzenia, które wyglądają następująco:
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    Użyjesz tej wartości w dalszej części tego przewodnika Szybki start.
+    Ta wartość zostanie użyta w dalszej części przewodnika Szybki Start.
 
 ## <a name="send-simulated-telemetry"></a>Wysyłanie symulowanych danych telemetrycznych
 
@@ -79,7 +79,7 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym
 
 1. Otwórz plik **SimulatedDevice.py** w wybranym edytorze tekstów.
 
-    Zastąp wartość zmiennej `CONNECTION_STRING` parametrami połączenia urządzenia zanotowanymi w poprzednim kroku. Następnie zapisz zmiany w pliku **SimulatedDevice.py**.
+    Zastąp wartość zmiennej `CONNECTION_STRING` parametrami połączenia urządzenia, które zostały wykonane wcześniej. Następnie Zapisz zmiany w **SimulatedDevice.py**.
 
 1. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki dla aplikacji urządzenia symulowanego:
 
@@ -105,7 +105,7 @@ Rozszerzenie interfejsu wiersza polecenia usługi IoT Hub może połączyć się
 Uruchom następujące polecenia w usłudze Azure Cloud Shell, zastępując ciąg `YourIoTHubName` nazwą swojego centrum IoT:
 
 ```azurecli-interactive
-az iot hub monitor-events --hub-name YourIoTHubName --device-id MyPythonDevice 
+az iot hub monitor-events --hub-name {YourIoTHubName} --device-id MyPythonDevice 
 ```
 
 Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie odbierania przez rozszerzenie danych telemetrycznych wysyłanych przez urządzenie symulowane do centrum:
@@ -118,9 +118,9 @@ Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie odbierania przez r
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start skonfigurowano centrum IoT, zarejestrowano urządzenie, wysłano dane telemetryczne do centrum przy użyciu aplikacji Python oraz odczytano dane telemetryczne z centrum przy użyciu prostej aplikacji zaplecza.
+W tym przewodniku szybki start skonfigurujesz Centrum IoT, zarejestrowano urządzenie, wysłało symulowane dane telemetryczne do koncentratora przy użyciu aplikacji języka Python, a następnie odczytuje dane telemetryczne z centrum przy użyciu prostej aplikacji zaplecza.
 
 Aby dowiedzieć się, jak kontrolować urządzenie symulowane z poziomu aplikacji zaplecza, przejdź do następnego przewodnika Szybki start.
 
 > [!div class="nextstepaction"]
-> [Szybki start: Sterowanie urządzeniem połączonym z centrum IoT Hub](quickstart-control-device-python.md)
+> [Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT](quickstart-control-device-python.md)

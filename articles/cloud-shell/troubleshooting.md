@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z usługi Azure Cloud Shell z | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z usługi Azure Cloud Shell
+title: Rozwiązywanie problemów Azure Cloud Shell | Microsoft Docs
+description: Azure Cloud Shell rozwiązywania problemów
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,98 +14,98 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 91dc87cd6bda93663fb4b4eae3d498ae56ba4b3e
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199463"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169598"
 ---
-# <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów z & ograniczenia dotyczące usługi Azure Cloud Shell
+# <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów & ograniczenia Azure Cloud Shell
 
-Następujące rozwiązania znanych problemów w usłudze Azure Cloud Shell:
+Znane rozwiązania dotyczące rozwiązywania problemów w Azure Cloud Shell obejmują:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="general-troubleshooting"></a>Rozwiązywanie ogólnych
+## <a name="general-troubleshooting"></a>Ogólne rozwiązywanie problemów
 
-### <a name="early-timeouts-in-firefox"></a>Wczesne przekroczeń limitu czasu w przeglądarce FireFox
+### <a name="early-timeouts-in-firefox"></a>Wczesne przekroczenia limitu czasu w programie FireFox
 
-- **Szczegóły**: Usługa cloud Shell korzysta z otwartych websocket, przekazać dane wejściowe i wyjściowe do przeglądarki. FireFox ma wstępnie zdefiniowanych zasad, które można zamknąć websocket przedwcześnie powoduje wczesne przekroczeń limitu czasu w usłudze Cloud Shell.
-- **Rozpoznawanie**: Otwórz przeglądarkę FireFox i przejdź do "o: config" w polu adres URL. Wyszukaj "network.websocket.timeout.ping.request" i zmień wartość z zakresu od 0 do 10.
+- **Szczegóły**: Cloud Shell korzysta z otwartego protokołu WebSocket do przekazywania danych wejściowych/wyjściowych do przeglądarki. W programie FireFox istnieją wstępnie zdefiniowane zasady, które mogą zamknąć protokół WebSocket przedwcześnie wydający wczesne przekroczenia limitu czasu w Cloud Shell.
+- **Rozwiązanie**: Otwórz przeglądarkę Firefox i przejdź do strony "about: config" w polu adresu URL. Wyszukaj ciąg "Network. WebSocket. Timeout. ping. Request" i zmień wartość z 0 na 10.
 
-### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Wyłączanie usługi Cloud Shell w sieci zablokowane w środowisku
+### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Wyłączanie Cloud Shell w zablokowanym środowisku sieciowym
 
-- **Szczegóły**: Administratorzy mogą chcieć wyłączyć dostęp do usługi Cloud Shell dla swoich użytkowników. Usługa cloud Shell korzysta z uprawnieniami do `ux.console.azure.com` domeny, która może nastąpić odmowa, zatrzymanie dostęp do usługi Cloud Shell punkty wejścia, m.in. portal.azure.com shell.azure.com, Visual Studio rozszerzenie Azure Account Code i witryny docs.microsoft.com.
-- **Rozpoznawanie**: Ograniczanie dostępu do `ux.console.azure.com` za pośrednictwem ustawień sieci do danego środowiska. Ikona usługi Cloud Shell będą nadal istnieć w witrynie portal.azure.com, ale nie zostanie pomyślnie połączyć się z usługą.
+- **Szczegóły**: Administratorzy mogą chcieć wyłączyć dostęp do Cloud Shell dla swoich użytkowników. Cloud Shell wykorzystuje dostęp do domeny `ux.console.azure.com`, którą można odmówić, zatrzymywać dowolny dostęp do punktu wejścia Cloud Shell, w tym portal.azure.com, shell.azure.com, Visual Studio Code rozszerzenia konta platformy Azure i docs.microsoft.com.
+- **Rozwiązanie**: Ogranicz dostęp do `ux.console.azure.com` za pośrednictwem ustawień sieciowych do środowiska. Ikona Cloud Shell nadal istnieje w portal.azure.com, ale nie nawiąże połączenia z usługą.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Okno dialogowe magazynu — błąd: 403 RequestDisallowedByPolicy
 
-- **Szczegóły**: Podczas tworzenia konta magazynu w usłudze Cloud Shell jest niepowodzeniem z powodu usługa Azure policy, umieszczone przez administratora. Komunikat o błędzie będzie obejmować: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **Rozpoznawanie**: Skontaktuj się z administratorem platformy Azure, aby usunąć lub zaktualizować zasad platformy Azure, odmawianie tworzenia magazynu.
+- **Szczegóły**: podczas tworzenia konta magazynu za pomocą Cloud Shell, nie powiedzie się z powodu zasady platformy Azure umieszczonej przez administratora. Komunikat o błędzie będzie zawierać następujące: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Rozwiązanie**: skontaktuj się z administratorem platformy Azure, aby usunąć lub zaktualizować zasady platformy Azure odrzucające tworzenie magazynu.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Okno dialogowe magazynu — błąd: 400 DisallowedOperation
 
-- **Szczegóły**: Korzystając z subskrypcji usługi Azure Active Directory, nie można utworzyć magazynu.
-- **Rozpoznawanie**: Użyj subskrypcji platformy Azure umożliwia tworzenie zasobów magazynu. Subskrypcje usługi Azure AD nie są możliwe do tworzenia zasobów platformy Azure.
+- **Szczegóły**: w przypadku korzystania z subskrypcji Azure Active Directory nie można utworzyć magazynu.
+- **Rozwiązanie**: Użyj subskrypcji platformy Azure, która może tworzyć zasoby magazynu. Subskrypcje usługi Azure AD nie mogą tworzyć zasobów platformy Azure.
 
-### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminal dane wyjściowe — błąd: Nie można połączyć z terminalu: nie można ustanowić protokołu websocket. Naciśnij klawisz `Enter` celu ponownego nawiązania połączenia.
-- **Szczegóły**: Usługa cloud Shell wymaga możliwość nawiązania połączenia protokołu websocket w infrastrukturze Cloud Shell.
-- **Rozpoznawanie**: Sprawdź zostały skonfigurowane ustawienia sieciowe umożliwiające wysyłanie żądań protokołu https i żądań protokołu websocket z domenami w *. console.azure.com.
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Dane wyjściowe terminalu — błąd: nie można nawiązać połączenia z terminalem: nie można ustanowić protokołu WebSocket. Naciśnij `Enter`, aby ponownie nawiązać połączenie.
+- **Szczegóły**: Cloud Shell wymaga możliwości nawiązania połączenia protokołu WebSocket z infrastrukturą Cloud Shell.
+- **Rozwiązanie**: Sprawdź, czy ustawienia sieciowe zostały skonfigurowane w taki sposób, aby umożliwiały wysyłanie żądań HTTPS i żądań protokołu WebSocket do domen w lokalizacji *. Console.Azure.com.
 
-### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>Ustaw połączenie usługi Cloud Shell umożliwiającą używanie protokołu TLS 1.2
- - **Szczegóły**: Aby określić wersję protokołu TLS dla połączenia do usługi Cloud Shell, należy ustawić określone ustawienia przeglądarki.
- - **Rozpoznawanie**: Przejdź do ustawień zabezpieczeń przeglądarki i zaznacz pole wyboru "Użyj TLS 1.2".
+### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>Ustaw połączenie Cloud Shell, aby obsługiwało korzystanie z protokołu TLS 1,2
+ - **Szczegóły**: Aby zdefiniować wersję protokołu TLS dla połączenia do Cloud Shell, należy ustawić ustawienia specyficzne dla przeglądarki.
+ - **Rozwiązanie**: Przejdź do ustawień zabezpieczeń przeglądarki i zaznacz pole wyboru obok pozycji "Użyj protokołu TLS 1,2".
 
-## <a name="bash-troubleshooting"></a>Rozwiązywanie problemów z programu bash
+## <a name="bash-troubleshooting"></a>Rozwiązywanie problemów z bash
 
-### <a name="cannot-run-the-docker-daemon"></a>Nie można uruchomić demona platformy docker
+### <a name="cannot-run-the-docker-daemon"></a>Nie można uruchomić demona platformy Docker
 
-- **Szczegóły**: Usługa cloud Shell korzysta z kontenera hostowania środowiska powłoki, w wyniku uruchamianie demona jest niedozwolone.
-- **Rozpoznawanie**: Korzystanie z [maszyny platformy docker](https://docs.docker.com/machine/overview/), która jest instalowana domyślnie do zarządzania kontenerami platformy docker ze zdalnym hoście platformy Docker.
+- **Szczegóły**: Cloud Shell korzysta z kontenera do hostowania środowiska powłoki, w związku z czym demon jest niedozwolony.
+- **Rozwiązanie**: Użyj [maszyny platformy Docker](https://docs.docker.com/machine/overview/), która jest instalowana domyślnie, aby zarządzać kontenerami platformy Docker ze zdalnego hosta platformy Docker.
 
-## <a name="powershell-troubleshooting"></a>Rozwiązywanie problemów z programu PowerShell
+## <a name="powershell-troubleshooting"></a>Rozwiązywanie problemów z programem PowerShell
 
-### <a name="gui-applications-are-not-supported"></a>Aplikacje graficznego interfejsu użytkownika nie są obsługiwane.
+### <a name="gui-applications-are-not-supported"></a>Aplikacje graficznego interfejsu użytkownika nie są obsługiwane
 
-- **Szczegóły**: Jeśli użytkownik uruchamia aplikację graficznego interfejsu użytkownika, monit nie zwraca. Na przykład gdy jeden sklonować prywatne repozytorium GitHub, które ma włączone uwierzytelnianie dwuskładnikowe, ukończenia uwierzytelniania dwuskładnikowego zostanie wyświetlone okno dialogowe.
-- **Rozpoznawanie**: Zamknij i Otwórz powłokę.
+- **Szczegóły**: Jeśli użytkownik uruchamia aplikację z graficznym interfejsem użytkownika, monit nie zostanie zwrócony. Na przykład, gdy jeden klonuje prywatne repozytorium GitHub z włączonym dwuskładnikowym uwierzytelnianiem, zostanie wyświetlone okno dialogowe umożliwiające ukończenie uwierzytelniania dwuskładnikowego.
+- **Rozwiązanie**: Zamknij i ponownie Otwórz powłokę.
 
-### <a name="troubleshooting-remote-management-of-azure-vms"></a>Rozwiązywanie problemów z zdalnego zarządzania maszynami wirtualnymi platformy Azure
+### <a name="troubleshooting-remote-management-of-azure-vms"></a>Rozwiązywanie problemów z zdalne zarządzanie maszynami wirtualnymi platformy Azure
 > [!NOTE]
-> Maszyny wirtualne platformy Azure musi mieć publiczny połączonego z adresu IP.
+> Maszyny wirtualne platformy Azure muszą mieć publiczny adres IP.
 
-- **Szczegóły**: Ze względu na domyślne ustawienia zapory Windows w przypadku usługi WinRM, użytkownik może zostać wyświetlony następujący błąd: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Rozpoznawanie**:  Uruchom `Enable-AzVMPSRemoting` włączyć wszystkie aspekty komunikacji zdalnej programu PowerShell na komputerze docelowym.
+- **Szczegóły**: ze względu na domyślne ustawienia zapory systemu Windows dla usługi WinRM użytkownik może zobaczyć następujący błąd: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
+- **Rozwiązanie**: Uruchom `Enable-AzVMPSRemoting`, aby włączyć wszystkie aspekty komunikacji zdalnej programu PowerShell na maszynie docelowej.
 
-### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` nie wpływa na wynik na dysku platformy Azure
+### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` nie aktualizuje wyniku na dysku platformy Azure
 
-- **Szczegóły**: Domyślnie, aby zoptymalizować środowisko użytkownika, wyniki `dir` jest buforowana na dysku platformy Azure.
-- **Rozpoznawanie**: Po utworzenia, aktualizacji lub usunięcia zasobu platformy Azure Uruchom `dir -force` niezaktualizowanie na dysku platformy Azure.
+- **Szczegóły**: domyślnie aby zoptymalizować środowisko użytkownika, wyniki `dir` są zapisywane w pamięci podręcznej na dysku platformy Azure.
+- **Rozwiązanie**: po utworzeniu, aktualizacji lub usunięciu zasobu platformy Azure uruchom polecenie `dir -force`, aby zaktualizować wyniki na dysku platformy Azure.
 
 ## <a name="general-limitations"></a>Ogólne ograniczenia
 
-Usługa Azure Cloud Shell ma następujące znane ograniczenia:
+Azure Cloud Shell ma następujące znane ograniczenia:
 
-### <a name="system-state-and-persistence"></a>Stan systemu i stan trwały
+### <a name="system-state-and-persistence"></a>Stan i trwałość systemu
 
-Komputer który udostępnia sesję usługi Cloud Shell jest tymczasowy i zostanie odtworzony po sesji jest nieaktywny przez 20 minut. Usługa cloud Shell wymaga udziału plików platformy Azure ma zostać zainstalowany. W rezultacie Twoja subskrypcja musi umożliwiać konfigurowania zasobów magazynu w celu dostępu do usługi Cloud Shell. Inne zagadnienia to:
+Komputer, na którym jest dostępna sesja Cloud Shell, jest tymczasowy i jest odtwarzany po upływie 20 minut aktywności. Cloud Shell wymaga zainstalowania udziału plików platformy Azure. W związku z tym subskrypcja musi mieć możliwość skonfigurowania zasobów magazynu w celu uzyskania dostępu do Cloud Shell. Inne zagadnienia obejmują:
 
-- Usługa storage zainstalowany tylko modyfikacji w ramach `clouddrive` katalogu są zachowywane. W powłoce Bash Twoje `$HOME` katalogu również utrwalone.
-- Udziały plików platformy Azure można instalować tylko z poziomu usługi [przypisane region](persisting-shell-storage.md#mount-a-new-clouddrive).
-  - W powłoce Bash, uruchom `env` można znaleźć w danym regionie, Ustaw jako `ACC_LOCATION`.
-- Usługa pliki systemu Azure obsługuje tylko lokalnie nadmiarowym i kontami usługi storage geograficznie nadmiarowy.
+- W przypadku zainstalowanego magazynu utrwalane są tylko modyfikacje znajdujące się w katalogu `clouddrive`. W bash katalog `$HOME` jest również utrwalany.
+- Udziały plików platformy Azure można instalować tylko z poziomu [przypisanego regionu](persisting-shell-storage.md#mount-a-new-clouddrive).
+  - W bash Uruchom `env`, aby znaleźć swój region ustawiony jako `ACC_LOCATION`.
+- Azure Files obsługuje tylko Magazyn lokalnie nadmiarowy i konta magazynu geograficznie nadmiarowego.
 
-### <a name="browser-support"></a>Obsługa przeglądarek
+### <a name="browser-support"></a>Obsługa przeglądarki
 
-Usługa cloud Shell obsługuje najnowsze wersje następujących przeglądarek:
+Cloud Shell obsługuje najnowsze wersje następujących przeglądarek:
 
 - Microsoft Edge
-- Microsoft Internet Explorer
+- Program Microsoft Internet Explorer
 - Google Chrome
 - Mozilla Firefox
 - Apple Safari
-  - Safari w trybie prywatnym nie jest obsługiwane.
+  - Przeglądarka Safari w trybie prywatnym nie jest obsługiwana.
 
 ### <a name="copy-and-paste"></a>Kopiowanie i wklejanie
 
@@ -113,57 +113,57 @@ Usługa cloud Shell obsługuje najnowsze wersje następujących przeglądarek:
 
 ### <a name="usage-limits"></a>Limity użycia
 
-Usługa cloud Shell jest przeznaczony dla przypadków użycia interaktywne. W rezultacie wszystkie sesje nieinterakcyjnych długotrwałych zostaną zakończone bez ostrzeżenia.
+Cloud Shell jest przeznaczony dla interaktywnych przypadków użycia. W efekcie wszystkie długotrwałe sesje nieinterakcyjne zostaną zakończone bez ostrzeżenia.
 
 ### <a name="user-permissions"></a>Uprawnienia użytkowników
 
-Uprawnienia są ustawiane jako zwykli użytkownicy bez dostępu "sudo". Żadnej instalacji spoza Twojej `$Home` katalogu nie jest trwały.
+Uprawnienia są ustawiane jako regularni użytkownicy bez dostępu sudo. Jakakolwiek instalacja poza katalogiem `$Home` nie jest utrwalona.
 
-## <a name="bash-limitations"></a>Ograniczenia funkcji bash
+## <a name="bash-limitations"></a>Ograniczenia bash
 
-### <a name="editing-bashrc"></a>Edytowanie .bashrc
+### <a name="editing-bashrc"></a>Edytowanie. bashrc
 
-Uwaga należy podjąć, gdy Edycja .bashrc w ten sposób może spowodować nieoczekiwane błędy w usłudze Cloud Shell.
+Należy zachować ostrożność podczas edytowania. bashrc, co może spowodować nieoczekiwane błędy w Cloud Shell.
 
-## <a name="powershell-limitations"></a>Ograniczenia dotyczące programu PowerShell
+## <a name="powershell-limitations"></a>Ograniczenia programu PowerShell
 
-### <a name="preview-version-of-azuread-module"></a>Wersję zapoznawczą modułu Azure AD
+### <a name="preview-version-of-azuread-module"></a>Wersja zapoznawcza modułu AzureAD
 
-Obecnie `AzureAD.Standard.Preview`, wersję zapoznawczą modułu .NET Standard na podstawie, jest dostępna. Ten moduł dostarcza taką samą funkcjonalność jak `AzureAD`.
+Obecnie dostępna jest `AzureAD.Standard.Preview` — wersja zapoznawcza modułu .NET Standard-based. Ten moduł zapewnia te same funkcje co `AzureAD`.
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer` Moduł funkcji
+### <a name="sqlserver-module-functionality"></a>Funkcja modułu `SqlServer`
 
-`SqlServer` Modułu uwzględnione w usłudze Cloud Shell zapewnia tylko w wersji wstępnej obsługę programu PowerShell Core. W szczególności `Invoke-SqlCmd` nie jest jeszcze dostępna.
+Moduł `SqlServer` zawarty w Cloud Shell ma tylko wstępne wsparcie dla programu PowerShell Core. W szczególności `Invoke-SqlCmd` nie jest jeszcze dostępna.
 
-### <a name="default-file-location-when-created-from-azure-drive"></a>Domyślna lokalizacja pliku po utworzeniu z dysku platformy Azure
+### <a name="default-file-location-when-created-from-azure-drive"></a>Domyślna lokalizacja pliku podczas tworzenia z dysku platformy Azure
 
-Za pomocą poleceń cmdlet programu PowerShell, użytkownicy nie mogą tworzyć pliki w obszarze dysk platformy Azure. Podczas tworzenia nowych plików przy użyciu innych narzędzi, takich jak vim lub nano, pliki są zapisywane w `$HOME` domyślnie.
+Przy użyciu poleceń cmdlet programu PowerShell użytkownicy nie mogą tworzyć plików na dysku platformy Azure. Gdy użytkownicy tworzą nowe pliki przy użyciu innych narzędzi, takich jak vim lub nano, pliki są domyślnie zapisywane do `$HOME`.
 
-### <a name="tab-completion-can-throw-psreadline-exception"></a>Uzupełnianie po naciśnięciu tabulatora może zgłosić wyjątek PSReadline
+### <a name="tab-completion-can-throw-psreadline-exception"></a>Ukończenie karty może zgłosić wyjątek PSReadline
 
-Jeśli ustawiono trybu edycji PSReadline użytkownika Emacs, użytkownik próbuje wyświetlić wszystkie możliwości za pośrednictwem uzupełniania po naciśnięciu tabulatora i wielkość okna jest zbyt mała, aby wyświetlić wszystkie możliwości, PSReadline zgłosi nieobsługiwany wyjątek.
+Jeśli użytkownik PSReadline EditMode ma ustawioną wartość Emacs:, użytkownik próbuje wyświetlić wszystkie możliwości za pośrednictwem karty, a rozmiar okna jest zbyt mały, aby wyświetlić wszystkie możliwości, PSReadline zgłosi nieobsłużony wyjątek.
 
-### <a name="large-gap-after-displaying-progress-bar"></a>Duży odstęp po wyświetleniu paska postępu
+### <a name="large-gap-after-displaying-progress-bar"></a>Duża przerwa po wyświetleniu paska postępu
 
-Jeśli polecenie lub akcji użytkownika jest wyświetlany pasek takie karty postępu ukończenia podczas w `Azure:` dysków jest możliwe, że kursor nie jest prawidłowo i przerwa pojawia się, gdzie poprzednio pasek postępu.
+Jeśli akcja polecenia lub użytkownika wyświetla pasek postępu, na przykład kartę kończącą się na dysku `Azure:`, możliwe jest, że kursor nie jest prawidłowo ustawiony i pojawia się przerwy, gdzie pasek postępu był wcześniej.
 
-### <a name="random-characters-appear-inline"></a>Wyświetlane losowo wybranych znaków w tekście
+### <a name="random-characters-appear-inline"></a>Znaki losowe pojawiają się w tekście
 
-Kody sekwencji pozycja kursora, na przykład `5;13R`, może być wyświetlany w danych wejściowych użytkownika. Można ręcznie usunąć znaki.
+Kody sekwencji położenia kursora, na przykład `5;13R`, mogą pojawić się w danych wejściowych użytkownika. Znaki można usunąć ręcznie.
 
-## <a name="personal-data-in-cloud-shell"></a>Dane osobowe w usłudze Cloud Shell
+## <a name="personal-data-in-cloud-shell"></a>Dane osobowe w Cloud Shell
 
-Usługa Azure Cloud Shell poważnie traktuje informacje osobiste, dane przechwytywane i przechowywane w usłudze Azure Cloud Shell służą do zapewniania ustawień domyślnych do własnych potrzeb, takich jak niedawno używanych powłoki, preferowany rozmiar czcionki, typ czcionki preferowanych i pliku szczegóły udziału Chmura, ponownie dysk. Powinien zostać wyeksportować lub usunąć te dane, użyj poniższych instrukcji.
+Azure Cloud Shell poważnie potraktuje dane osobowe, dane przechwycone i przechowywane przez usługę Azure Cloud Shell są używane do zapewnienia ustawień domyślnych dla środowiska, takich jak ostatnio używane powłoki, preferowany rozmiar czcionki, preferowany typ czcionki oraz szczegóły dotyczące udziału plików Ten dysk w chmurze. Czy chcesz wyeksportować lub usunąć te dane, wykonaj następujące instrukcje.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>Eksportowanie
-W celu **wyeksportować** ustawienia użytkownika usługi Cloud Shell zapisuje dla Ciebie, takie jak preferowana powłoki, rozmiar czcionki i typ czcionki, uruchom następujące polecenia.
+### <a name="export"></a>Eksportuj
+W celu **wyeksportowania** ustawień użytkownika Cloud Shell zapisywanych danych, takich jak preferowana powłoka, rozmiar czcionki i typ czcionki, uruchom następujące polecenia.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Uruchom usługę Azure Cloud Shell")](https://shell.azure.com)
-2. Uruchom następujące polecenia powłoki Bash lub programu PowerShell:
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell uruchamiania")](https://shell.azure.com)
+2. Uruchom następujące polecenia w programie bash lub PowerShell:
 
-Bash:
+Bash
 
   ```
   token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
@@ -177,16 +177,16 @@ Program PowerShell:
   ((Invoke-WebRequest -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}).Content | ConvertFrom-Json).properties | Format-List
 ```
 
-### <a name="delete"></a>Usuwanie
-W celu **Usuń** ustawień użytkownika w usłudze Cloud Shell zapisuje dla Ciebie, takie jak preferowana powłoki, rozmiar czcionki i typ czcionki, uruchom następujące polecenia. Przy następnym uruchomieniu usługi Cloud Shell użytkownik jest proszony o dołączyć udziału plików ponownie. 
+### <a name="delete"></a>Usuń
+Aby **usunąć** ustawienia użytkownika Cloud Shell zapisywanych danych, takich jak preferowana powłoka, rozmiar czcionki i typ czcionki, uruchom następujące polecenia. Przy następnym uruchomieniu Cloud Shell zostanie wyświetlony monit o ponowne dołączenie udziału plików. 
 
 >[!Note]
-> Jeśli usuniesz ustawień użytkownika, nie można usunąć rzeczywistego udziału plików platformy Azure. Przejdź do usługi Azure Files, aby ukończyć tę akcję.
+> Po usunięciu ustawień użytkownika rzeczywisty udział Azure Files nie zostanie usunięty. Przejdź do Azure Files, aby zakończyć tę akcję.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Uruchom usługę Azure Cloud Shell")](https://shell.azure.com)
-2. Uruchom następujące polecenia powłoki Bash lub programu PowerShell:
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell uruchamiania")](https://shell.azure.com)
+2. Uruchom następujące polecenia w programie bash lub PowerShell:
 
-Bash:
+Bash
 
   ```
   token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
@@ -199,3 +199,5 @@ Program PowerShell:
   $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
   Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
   ```
+## <a name="azure-government-limitations"></a>Ograniczenia Azure Government
+Azure Cloud Shell w Azure Government jest dostępny tylko w Azure Portal.

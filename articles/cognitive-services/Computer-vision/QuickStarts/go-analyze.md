@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8b762b712d9a68cb75f9642d93b899a4990ae129
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cd867300aabde3b7f8b77819ab3b5fb24b0e37fd
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141406"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177280"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>Szybki start: Analizowanie obrazu zdalnego przy użyciu interfejsu API REST przetwarzanie obrazów za pomocą języka go
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>Szybki Start: analizowanie obrazu zdalnego przy użyciu interfejsu API REST przetwarzanie obrazów za pomocą języka go
 
 W tym przewodniku Szybki start przeprowadzisz analizę przechowywanego zdalnie obrazu w celu wyodrębnienia elementów wizualnych przy użyciu interfejsu API REST przetwarzania obrazów. Metoda [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) umożliwia wyodrębnienie elementów wizualnych na podstawie zawartości obrazu.
 
@@ -27,7 +27,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć zainstalowany język [Go](https://golang.org/dl/).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` nazwane `COMPUTER_VISION_ENDPOINT`i.
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi o nazwach odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
@@ -64,7 +64,7 @@ func main() {
         log.Fatal("\n\nSet the COMPUTER_VISION_ENDPOINT environment variable.\n" +
             "**Restart your shell or IDE for changes to take effect.**")
     }
-    const uriBase = endpoint + "vision/v2.0/analyze"
+    const uriBase = endpoint + "vision/v2.1/analyze"
     const imageUrl =
         "https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg"
 
@@ -176,7 +176,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z interfejsem API przetwarzania obrazów używanym do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania celebrytów i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

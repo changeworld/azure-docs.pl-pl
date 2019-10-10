@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 953558e34d41184f75d72baf5982e84eb51b1781
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e9b2967905bc927432d1ca4606bc2b2ba2ac4108
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694874"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177355"
 ---
 # <a name="http-features"></a>Funkcje HTTP
 
@@ -210,6 +210,38 @@ Jeśli którykolwiek z tych ograniczeń ma wpływ na przypadek użycia, rozważ 
 > Jeśli jesteś deweloperem platformy .NET, możesz zastanawiać się, dlaczego ta funkcja używa typów **DurableHttpRequest** i **DurableHttpResponse** zamiast wbudowanych typów .NET **HttpRequestMessage** i **HttpResponseMessage** .
 >
 > Ten wybór projektu jest zamierzony. Główną przyczyną jest to, że typy niestandardowe pomagają zapewnić, że użytkownicy nie będą wprowadzać nieprawidłowych założeń dotyczących obsługiwanych zachowań wewnętrznego klienta HTTP. Typy specyficzne dla Durable Functions umożliwiają również uproszczenie projektowania interfejsu API. Mogą również łatwiej udostępnić dostępne specjalne funkcje, takie jak [integracja tożsamości zarządzanej](#managed-identities) i [wzorzec klienta sondowania](#http-202-handling). 
+
+### <a name="extensibility-net-only"></a>Rozszerzalność (tylko platforma .NET)
+
+Dostosowanie zachowania wewnętrznego klienta protokołu HTTP aranżacji jest możliwe przy użyciu [Azure Functions iniekcja zależności .NET](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection). Ta możliwość może być przydatna do wprowadzania małych zmian w zachowaniu. Może być również przydatna do testowania jednostkowego klienta HTTP przez wstrzyknięcie obiektów makiety.
+
+Poniższy przykład demonstruje użycie iniekcji zależności, aby wyłączyć weryfikację certyfikatu SSL dla funkcji programu Orchestrator, które wywołują zewnętrzne punkty końcowe HTTP.
+
+```csharp
+public class Startup : FunctionsStartup
+{
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        // Register own factory
+        builder.Services.AddSingleton<
+            IDurableHttpMessageHandlerFactory,
+            MyDurableHttpMessageHandlerFactory>();
+    }
+}
+
+public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFactory
+{
+    public HttpMessageHandler CreateHttpMessageHandler()
+    {
+        // Disable SSL certificate validation (not recommended in production!)
+        return new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+        };
+    }
+}
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

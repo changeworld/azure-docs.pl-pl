@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: a3d0d6077da4df9a7f0d1b246c9752d38488a175
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.author: atsenthi
+ms.openlocfilehash: c37ee8177ba31ac8a5da90fef175a6fbd63a6d75
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963816"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167600"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Uaktualnianie aplikacji Service Fabric: Tematy zaawansowane
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>Dodawanie lub usuwanie typów usług podczas uaktualniania aplikacji
@@ -29,12 +29,12 @@ Podobnie typy usług można usunąć z aplikacji w ramach uaktualnienia. Jednak 
 
 ## <a name="manual-upgrade-mode"></a>Tryb uaktualniania ręcznego
 > [!NOTE]
-> W przypadku wszystkich uaktualnień Service Fabric zalecany jest monitorowany tryb uaktualniania.
+> W przypadku wszystkich uaktualnień Service Fabric zalecany jest *monitorowany* tryb uaktualniania.
 > Tryb uaktualniania *UnmonitoredManual* powinien być uwzględniany tylko w przypadku uaktualnień zakończonych niepowodzeniem lub wstrzymane. 
 >
 >
 
-W trybie monitorowanym Service Fabric stosuje zasady kondycji, aby upewnić się, że aplikacja jest w dobrej kondycji w miarę postępu uaktualniania. Jeśli zasady kondycji zostały naruszone, uaktualnienie jest zawieszone lub automatycznie wycofywane w zależności od określonej *FailureAction*.
+W trybie *monitorowanym* Service Fabric stosuje zasady kondycji, aby upewnić się, że aplikacja jest w dobrej kondycji w miarę postępu uaktualniania. Jeśli zasady kondycji zostały naruszone, uaktualnienie jest zawieszone lub automatycznie wycofywane w zależności od określonej *FailureAction*.
 
 W trybie *UnmonitoredManual* administrator aplikacji ma całkowitą kontrolę nad postępem uaktualniania. Ten tryb jest przydatny w przypadku stosowania niestandardowych zasad oceny kondycji lub przeprowadzania niekonwencjonalnych uaktualnień w celu obejścia całkowitego monitorowania kondycji (np. aplikacja jest już w utracie danych). Uaktualnienie uruchomione w tym trybie zostanie zawieszone po ukończeniu każdego UDu i musi zostać jawnie wznowione przy użyciu polecenia [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps). Gdy uaktualnienie zostanie wstrzymane i będzie gotowe do wznowienia przez użytkownika, jego stan uaktualnienia zostanie wyświetlony *RollforwardPending* (zobacz [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
 
@@ -128,7 +128,7 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 Podczas gdy uaktualnienia można przekazywać w jednym z trzech trybów (*monitorowane*, *UnmonitoredAuto*lub *UnmonitoredManual*), można je wycofać tylko w trybie *UnmonitoredAuto* lub *UnmonitoredManual* . Wycofywanie w trybie *UnmonitoredAuto* działa tak samo jak w przypadku przenoszonej do przodu z wyjątkiem, że wartość domyślna *UpgradeReplicaSetCheckTimeout* jest różna — zobacz [Parametry uaktualnienia aplikacji](service-fabric-application-upgrade-parameters.md). Wycofywanie w trybie *UnmonitoredManual* działa tak samo jak w przypadku przenoszonego do przodu — wycofywanie zostanie zawieszone po ukończeniu każdego ud i musi zostać jawnie wznowione przy użyciu [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) , aby kontynuować wycofywania.
 
-Wycofywanie może być wyzwalane automatycznie w przypadku naruszenia zasad kondycji uaktualnienia w trybie monitorowanym z FailureAction *wycofania* (zobacz [Parametry uaktualnienia aplikacji](service-fabric-application-upgrade-parameters.md)) lub jawnie przy użyciu [ Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
+Wycofywanie może być wyzwalane automatycznie w przypadku naruszenia zasad kondycji uaktualnienia w trybie *monitorowanym* z *FailureAction* *wycofania* (zobacz [Parametry uaktualnienia aplikacji](service-fabric-application-upgrade-parameters.md)) lub jawnie przy użyciu [ Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
 
 W trakcie wycofywania wartość *UpgradeReplicaSetCheckTimeout* i tryb można nadal zmieniać w dowolnym momencie za pomocą polecenia [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps).
 

@@ -1,6 +1,6 @@
 ---
 title: Wersja zapoznawcza wdrożenia usługi Azure Service Fabric Docker Compose
-description: Usługa Azure Service Fabric akceptuje format Docker Compose, aby ułatwić organizowanie istniejących kontenerów przy użyciu Service Fabric. Ta funkcja jest obecnie w wersji zapoznawczej.
+description: Usługa Azure Service Fabric akceptuje format Docker Compose, aby ułatwić organizowanie istniejących kontenerów przy użyciu Service Fabric. Ta pomoc techniczna jest obecnie dostępna w wersji zapoznawczej.
 services: service-fabric
 documentationcenter: .net
 author: athinanthny
@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: de02c9a8580527ab708418aa266f1b56411fb95b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: 726d04cdfbc21c21a52945f11d3b5097978c5d1d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599574"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168830"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Obsługa wdrażania Docker Compose w usłudze Azure Service Fabric (wersja zapoznawcza)
 
-Platforma Docker używa pliku [Docker-Compose. yml](https://docs.docker.com/compose) do definiowania aplikacji wielokontenerowych. Aby ułatwić klientom zaznajomionym z platformą Docker w celu organizowania istniejących aplikacji kontenera w usłudze Azure Service Fabric, w tej platformie dodaliśmy obsługę wersji zapoznawczej dla Docker Compose wdrożenia w sposób natywny. Service Fabric może akceptować wersję 3 lub nowszą `docker-compose.yml` plików. 
+Platforma Docker używa pliku [Docker-Compose. yml](https://docs.docker.com/compose) do definiowania aplikacji wielokontenerowych. Aby ułatwić klientom zaznajomionym z platformą Docker w celu organizowania istniejących aplikacji kontenera w usłudze Azure Service Fabric, w tej platformie dodaliśmy obsługę wersji zapoznawczej dla Docker Compose wdrożenia w sposób natywny. Service Fabric może akceptować wersję 3 lub nowszą plików `docker-compose.yml`. 
 
 Ponieważ ta obsługa jest dostępna w wersji zapoznawczej, obsługiwane są tylko podzbiór dyrektyw redagowania. Na przykład uaktualnienia aplikacji nie są obsługiwane. Można jednak zawsze usuwać i wdrażać aplikacje zamiast uaktualniać je.
 
@@ -35,10 +35,10 @@ Aby użyć tej wersji zapoznawczej, należy utworzyć klaster z wersją 5,7 lub 
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Wdróż plik Docker Compose na Service Fabric
 
-Następujące polecenia tworzą aplikację Service Fabric (o nazwie `fabric:/TestContainerApp`), którą można monitorować i zarządzać nią jak każda inna aplikacja Service Fabric. Można użyć określonej nazwy aplikacji na potrzeby zapytań dotyczących kondycji.
+Następujące polecenia tworzą aplikację Service Fabric (o nazwie `fabric:/TestContainerApp`), którą można monitorować i zarządzać jak dowolną inną aplikacją Service Fabric. Można użyć określonej nazwy aplikacji na potrzeby zapytań dotyczących kondycji.
 Service Fabric rozpoznaje wartość "Deploymentname" jako identyfikator wdrożenia redagowania.
 
-### <a name="use-powershell"></a>Korzystanie z programu PowerShell
+### <a name="use-powershell"></a>Używanie programu PowerShell
 
 Utwórz Service Fabric Tworzenie wdrożenia z pliku Docker-Compose. yml, uruchamiając następujące polecenie w programie PowerShell:
 
@@ -46,7 +46,7 @@ Utwórz Service Fabric Tworzenie wdrożenia z pliku Docker-Compose. yml, urucham
 New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName`i `RegistryPassword` zapoznaj się z nazwą użytkownika i hasłem rejestru kontenerów. Po zakończeniu wdrażania możesz sprawdzić jego stan przy użyciu następującego polecenia:
+`RegistryUserName` i `RegistryPassword` zapoznaj się z nazwą użytkownika i hasłem rejestru kontenerów. Po zakończeniu wdrażania możesz sprawdzić jego stan przy użyciu następującego polecenia:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp
@@ -146,9 +146,9 @@ W sekcji Porty określ protokół http lub https, który będzie używany przez 
 
 ## <a name="servicednsname-computation"></a>Obliczenia ServiceDnsName
 
-Jeśli nazwa usługi określona w pliku redagowania to w pełni kwalifikowana nazwa domeny (to oznacza, że zawiera kropkę [.]), nazwa DNS zarejestrowana przez Service Fabric to `<ServiceName>` (łącznie z kropką). W przeciwnym razie każdy segment ścieżki w nazwie aplikacji staje się etykietą domeny w nazwie DNS usługi, a pierwszy segment ścieżki staje się etykietą domeny najwyższego poziomu.
+Jeśli nazwa usługi określona w pliku redagowania to w pełni kwalifikowana nazwa domeny (to oznacza, że zawiera kropkę [.]), nazwa DNS zarejestrowana przez Service Fabric jest `<ServiceName>` (łącznie z kropką). W przeciwnym razie każdy segment ścieżki w nazwie aplikacji staje się etykietą domeny w nazwie DNS usługi, a pierwszy segment ścieżki staje się etykietą domeny najwyższego poziomu.
 
-Na przykład, jeśli określona nazwa aplikacji jest `fabric:/SampleApp/MyComposeApp` `<ServiceName>.MyComposeApp.SampleApp` zarejestrowana nazwa DNS.
+Na przykład jeśli określona nazwa aplikacji ma `fabric:/SampleApp/MyComposeApp`, `<ServiceName>.MyComposeApp.SampleApp` byłaby zarejestrowana nazwa DNS.
 
 ## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Utwórz wdrożenie (definicję wystąpienia), a Service Fabric model aplikacji (definicja typu)
 

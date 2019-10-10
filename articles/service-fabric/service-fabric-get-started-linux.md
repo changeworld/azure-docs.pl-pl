@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: atsenthi
+ms.openlocfilehash: 6471d3f58fbe0e19910f39e9527f193d00a228be
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828506"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170620"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Przygotowywanie środowiska projektowego w systemie Linux
 > [!div class="op_single_selector"]
@@ -178,7 +178,7 @@ sudo yum install servicefabricsdkcommon
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Niejawne z rozwiązania npm | najnowsza |
+Ubuntu | 2.0.0 | AzulJDK 1,8 | Niejawne z rozwiązania npm | najnowsza |
 RHEL | - | OpenJDK 1.8 | Niejawne z rozwiązania npm | najnowsza |
 
 ## <a name="set-up-a-local-cluster"></a>Tworzenie klastra lokalnego
@@ -272,7 +272,7 @@ Wtyczkę środowiska Eclipse dla usługi Service Fabric można zainstalować z p
 > 
 > W systemie Ubuntu zaleca się instalowanie bezpośrednio z witryny środowiska Eclipse, a nie za pomocą instalatora pakietu (`apt` lub `apt-get`). Gwarantuje to uzyskanie najnowszej wersji środowiska Eclipse. Można zainstalować środowisko Eclipse IDE for Java Developers lub Java EE Developers.
 
-1. W środowisku Eclipse upewnij się, że masz zainstalowaną wersję Eclipse Neon lub nowszą oraz zestaw Buildship 2.2.1 lub nowszy. Sprawdź wersje zainstalowanych składników, wybierając kolejno pozycje **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji). Kompilację można zaktualizować przy użyciu instrukcji w [przezaćmieniu do kompilacji: Zaćmienie dodatków plug-in][buildship-update]dla Gradle.
+1. W środowisku Eclipse upewnij się, że masz zainstalowaną wersję Eclipse Neon lub nowszą oraz zestaw Buildship 2.2.1 lub nowszy. Sprawdź wersje zainstalowanych składników, wybierając kolejno pozycje **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji). Kompilację można zaktualizować, korzystając z instrukcji zamieszczonych w [Przezaćmieniu: zaćmienie dla Gradle][buildship-update].
 
 2. Aby zainstalować wtyczkę usługi Service Fabric, wybierz pozycję **Help** > **Install New Software** (Pomoc > Zainstaluj nowe oprogramowanie).
 
@@ -286,7 +286,7 @@ Wtyczkę środowiska Eclipse dla usługi Service Fabric można zainstalować z p
 
 6. Wykonaj kroki instalacji. Następnie zaakceptuj umowę licencyjną użytkownika oprogramowania.
 
-Jeśli wtyczka usługi Service Fabric Eclipse jest już zainstalowana, upewnij się, że używasz najnowszej wersji. Sprawdź, wybierając kolejno pozycje **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji). Następnie wyszukaj usługę Service Fabric na liście zainstalowanych wtyczek. Wybierz pozycję **Update** (Zaktualizuj), jeśli jest dostępna nowsza wersja.
+Jeśli wtyczka usługi Service Fabric Eclipse jest już zainstalowana, upewnij się, że używasz najnowszej wersji. Sprawdź, wybierając kolejno pozycje **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji). Następnie wyszukaj Service Fabric na liście zainstalowanych wtyczek. Wybierz pozycję **Aktualizuj** , jeśli jest dostępna nowsza wersja.
 
 Aby uzyskać więcej informacji, zobacz artykuł [Wtyczka usługi Service Fabric na potrzeby tworzenia aplikacji Java w środowisku Eclipse](service-fabric-get-started-eclipse.md).
 
@@ -324,7 +324,7 @@ Aby usunąć zestawy Service Fabric SDK, uruchom poniższe polecenia.
     npm uninstall -g generator-azuresfguest
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Create and deploy your first Service Fabric Java application on Linux using Yeoman](service-fabric-create-your-first-linux-application-with-java.md) (Tworzenie i wdrażanie pierwszej aplikacji Java usługi Service Fabric w systemie Linux przy użyciu programu Yeoman)
 * [Create and deploy your first Service Fabric Java application on Linux using Service Fabric Plugin for Eclipse](service-fabric-get-started-eclipse.md) (Tworzenie i wdrażanie pierwszej aplikacji Java usługi Service Fabric w systemie Linux przy użyciu wtyczki usługi Service Fabric dla środowiska Eclipse)

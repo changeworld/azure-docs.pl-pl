@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947614"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177767"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -197,7 +197,7 @@ Aby ustawić identyfikator URI przekierowania:
 
 Przed udostępnieniem narzędzi diagnostycznych użytkownikom upewnij się, że mają one następujące uprawnienia:
 
-- Użytkownicy potrzebują dostępu do odczytu usługi log Analytics. Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z rolami, uprawnieniami i zabezpieczeniami przy użyciu Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+- Użytkownicy potrzebują dostępu do odczytu usługi log Analytics. Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z rolami, uprawnieniami i zabezpieczeniami przy użyciu Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
 -  Użytkownicy muszą również mieć dostęp do odczytu dla dzierżawy pulpitu wirtualnego systemu Windows (rola czytnika usług pulpitu zdalnego). Aby uzyskać więcej informacji, zobacz [delegowany dostęp w programie Virtual Desktop systemu Windows](delegated-access-virtual-desktop.md).
 
 Należy również nadać użytkownikom następujące informacje:

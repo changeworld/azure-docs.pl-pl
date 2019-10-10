@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wyodrębnianie tekstu drukowanego — REST, JavaScript'
+title: 'Szybki Start: Wyodrębnianie wydrukowanych tekstu — REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst drukowany przy użyciu interfejsu API przetwarzania obrazów i języka JavaScript.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 443dedd23b6b4c2dd2514a3f7080bdeb30522a14
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 67cc44984aa1e2af30a70583b6d40ffd0f9cb9e4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137807"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176503"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>Szybki start: Wyodrębnij drukowany tekst (OCR) przy użyciu interfejsu API REST przetwarzanie obrazów i języka JavaScript
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>Szybki Start: Wyodrębnij drukowany tekst (OCR) przy użyciu interfejsu API REST przetwarzanie obrazów i języka JavaScript
 
 W tym przewodniku Szybki start dowiesz się, jak wyodrębnić tekst drukowany z obrazu za pomocą optycznego rozpoznawania znaków (OCR) przy użyciu interfejsu API REST przetwarzania obrazów. Metoda [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) pozwala wykrywać na obrazie tekst drukowany i wyodrębniać rozpoznane znaki do strumienia znaków, którego mogą używać komputery.
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` nazwane `COMPUTER_VISION_ENDPOINT`i.
+Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi o nazwach odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
@@ -36,7 +36,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 1. Opcjonalnie zastąp wartość `value` atrybutu dla kontrolki `inputImage` adresem URL innego obrazu, który chcesz analizować.
 1. Zapisz kod jako plik z rozszerzeniem `.html`. Na przykład `get-printed-text.html`.
 1. Otwórz okno przeglądarki.
-1. W przeglądarce przeciągnij plik i upuść go w oknie przeglądarki.
+1. W przeglądarce przeciągnij i upuść plik w oknie przeglądarki.
 1. Po wyświetleniu strony sieci Web w przeglądarce wybierz przycisk **Read image** (Odczytaj obraz).
 
 ```html
@@ -58,7 +58,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
         let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
         if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
         
-        var uriBase = endpoint + "vision/v2.0/ocr";
+        var uriBase = endpoint + "vision/v2.1/ocr";
 
         // Request parameters.
         var params = {

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ff539311139d7e9823a2d7db2f5d8ee56f9231b6
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 59708be1de53ab231ccb6dc89bd56c795734fccc
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338660"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176818"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure?
 
@@ -76,7 +76,7 @@ Pozostałe role wbudowane umożliwiają zarządzanie określonymi zasobami platf
 
 Platforma Azure zawiera operacje na danych, które umożliwiają udzielenie dostępu do danych w ramach obiektu. Jeśli na przykład użytkownik ma uprawnienie do odczytu na koncie magazynu, może odczytywać obiekty blob lub komunikaty na tym koncie magazynu. Aby uzyskać więcej informacji, zobacz [Omówienie definicji ról dla zasobów platformy Azure](role-definitions.md).
 
-### <a name="scope"></a>Scope
+### <a name="scope"></a>Zakres
 
 *Zakres* to zestaw zasobów, w ramach którego jest przydzielany dostęp. Podczas przypisywania roli możesz dodatkowo ograniczyć dozwolone czynności, określając zakres. Jest to przydatne na przykład wówczas, gdy chcesz przypisać użytkownikowi rolę [współautora witryny internetowej](built-in-roles.md#website-contributor), ale tylko w jednej grupie zasobów.
 
@@ -136,7 +136,7 @@ Poniżej przedstawiono główne kroki wykorzystywane przez kontrolę dostępu op
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Szybki start: Wyświetlanie informacji o dostępie użytkownika do zasobów platformy Azure przy użyciu witryny Azure Portal](check-access.md)
+- [Szybki Start: wyświetlanie dostępu użytkownika do zasobów platformy Azure przy użyciu Azure Portal](check-access.md)
 - [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](role-assignments-portal.md)
 - [Understand the different roles in Azure (Omówienie ról na platformie Azure)](rbac-and-directory-admin-roles.md)
-- [Wdrożenie rozwiązania Enterprise Cloud: zarządzanie dostępem do zasobów na platformie Azure](/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access)
+- [Enterprise Cloud Adoption: Resource access management in Azure (Wdrożenie rozwiązania Enterprise Cloud: zarządzanie dostępem do zasobów na platformie Azure)](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 4e4a2b1df178d884e02ab5029f2e76a0376a7653
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: fc8cc4834997033203376cd33670cc907e2911e7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71846565"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170296"
 ---
-# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Ogólne rozwiązywanie problemów z wydajnością dla maszyny wirtualnej platformy Azure z systemem Linux lub Windows
+# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Rozwiązywanie ogólnych problemów z wydajnością dla maszyny wirtualnej platformy Azure z systemem Linux lub Windows
 
 W tym artykule opisano ogólne Rozwiązywanie problemów z wydajnością maszyny wirtualnej za pośrednictwem monitorowania i poszanowania wąskich gardeł oraz możliwe Korygowanie problemów, które mogą wystąpić.
 
@@ -28,7 +28,7 @@ W tym artykule opisano ogólne Rozwiązywanie problemów z wydajnością maszyny
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Monitorowanie maszyn wirtualnych IAAS platformy Azure
 
-Aby monitorować maszynę wirtualną gościa, należy użyć monitorowania maszyn wirtualnych platformy Azure, które będzie powiadamiać o określonych warunkach zasobów wysokiego poziomu. Aby sprawdzić, czy włączono diagnostykę maszyny wirtualnej, zobacz [Omówienie dzienników zasobów platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#change-settings-for-an-existing-resource). Jeśli zobaczysz następujące polecenie, najprawdopodobniej nie masz włączonej diagnostyki:
+Aby monitorować maszynę wirtualną gościa, należy użyć monitorowania maszyn wirtualnych platformy Azure, które będzie powiadamiać o określonych warunkach zasobów wysokiego poziomu. Aby sprawdzić, czy włączono diagnostykę maszyny wirtualnej, zobacz [Omówienie dzienników zasobów platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs). Jeśli zobaczysz następujące polecenie, najprawdopodobniej nie masz włączonej diagnostyki:
 
 ![Monitorowanie nie jest włączone](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -72,7 +72,7 @@ Aby określić, czy masz jakieś wąskie gardła zasobów, Przejrzyj dane. Jeśl
 1. Edytuj Graf.
 2. Ustaw zakres czasu.
 3. Następnie należy dodać w liczniku: procent użycia procesora CPU gościa
-4. Pisał.
+4. Zapisz zmiany.
 
 ### <a name="cpu-observe-trends"></a>Trendy dotyczące procesora CPU
 
@@ -175,7 +175,7 @@ Korzystając z tej metryki, nie można określić, który obiekt BLOB powoduje o
 
 Aby ustalić, czy zbliżasz się do limitu liczby operacji we/wy, przejdź do diagnostyki konta magazynu i sprawdź TotalRequests, aby sprawdzić, czy dojdziesz do 20000 TotalRequests. Zidentyfikuj zmianę wzorca, niezależnie od tego, czy widzisz limit po raz pierwszy, czy ten limit występuje w określonym czasie.
 
-#### <a name="references"></a>Odwołania
+#### <a name="references"></a>Informacje
 
 * [Elementy docelowe skalowalności dla dysków maszyny wirtualnej](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
 
@@ -207,7 +207,7 @@ Jeśli masz poufną aplikację, która wymaga dużej przepływności, dokonaj mi
 
 W tych artykułach omówiono konkretne scenariusze:
 
-* [Migrowanie do usługi Azure Premium Storage](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+* [Migracja do usługi Azure Premium Storage](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
 
 * [Korzystanie z usługi Azure Premium Storage z usługą SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
 

@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
-ms.author: chackdan
-ms.openlocfilehash: 165dc95681b75e98d91c66b490e15c2e96608299
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: pepogors
+ms.openlocfilehash: 7e14a027f17c15c83a4ce25a211ef6106f2d2eaa
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098935"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170601"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Tworzenie kontenera Service Fabric z systemem Apache Tomcat Server w systemie Linux
 Apache Tomcat to popularne wdrożenie typu "open source" technologii Java serwletu i Java Server. W tym artykule opisano sposób tworzenia kontenera za pomocą platformy Apache Tomcat i prostej aplikacji sieci Web, wdrażania kontenera w klastrze Service Fabric z systemem Linux i nawiązywania połączenia z aplikacją sieci Web.  
@@ -61,13 +61,13 @@ Postępuj zgodnie z instrukcjami w tej sekcji, aby utworzyć obraz platformy Doc
    Zobacz [odwołanie pliku dockerfile](https://docs.docker.com/engine/reference/builder/) , aby uzyskać więcej informacji.
 
 
-4. `docker build` Uruchom polecenie, aby utworzyć obraz z uruchomioną aplikacją sieci Web:
+4. Uruchom polecenie `docker build`, aby utworzyć obraz uruchamiający aplikację sieci Web:
 
    ```bash
    docker build . -t tomcattest
    ```
 
-   To polecenie kompiluje nowy obraz przy użyciu instrukcji z pliku dockerfile, nazywania (-t tagowania) obrazu `tomcattest`. Aby skompilować obraz kontenera, podstawowy obraz jest najpierw pobierany z usługi Docker Hub, a aplikacja zostanie dodana do niej. 
+   To polecenie kompiluje nowy obraz przy użyciu instrukcji w pliku dockerfile, nazewnictwo (-t znakowanie) obrazu `tomcattest`. Aby skompilować obraz kontenera, podstawowy obraz jest najpierw pobierany z usługi Docker Hub, a aplikacja zostanie dodana do niej. 
 
    Po zakończeniu działania polecenia budowania uruchom polecenie `docker images`, aby wyświetlić informacje o nowym obrazie:
 
@@ -84,11 +84,11 @@ Postępuj zgodnie z instrukcjami w tej sekcji, aby utworzyć obraz platformy Doc
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name`nazwa kontenera, więc można odwołać się do niego przy użyciu przyjaznej nazwy, a nie jej identyfikatora.
-   * `-p`Określa mapowanie portów między kontenerem i systemem operacyjnym hosta. 
+   * `--name` nazywa kontener, dlatego można odwoływać się do niego przy użyciu przyjaznej nazwy, a nie jej identyfikatora.
+   * `-p` Określa mapowanie portów między kontenerem i systemem operacyjnym hosta. 
 
    > [!Note]
-   > Port otwarty za pomocą `-p` parametru powinien być portem, na którym aplikacja Tomcat nasłuchuje żądań. W bieżącym przykładzie istnieje łącznik skonfigurowany w pliku *ApacheTomcat/conf/Server. XML* do nasłuchiwania na porcie 8080 dla żądań HTTP. Ten port jest mapowany na port 8080 na hoście. 
+   > Port otwarty z parametrem `-p` powinien być portem, na którym aplikacja Tomcat nasłuchuje żądań. W bieżącym przykładzie istnieje łącznik skonfigurowany w pliku *ApacheTomcat/conf/Server. XML* do nasłuchiwania na porcie 8080 dla żądań HTTP. Ten port jest mapowany na port 8080 na hoście. 
 
    Aby dowiedzieć się więcej o innych parametrach, zobacz [dokumentację platformy Docker](https://docs.docker.com/engine/reference/commandline/run/).
 
@@ -110,7 +110,7 @@ Postępuj zgodnie z instrukcjami w tej sekcji, aby utworzyć obraz platformy Doc
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>Wypchnij obraz Tomcat do rejestru kontenerów
 Po zweryfikowaniu, że obraz Tomcat jest uruchamiany w kontenerze na komputerze deweloperskim, wypchnij go do repozytorium w rejestrze kontenerów. W tym artykule użyto Azure Container Registry do przechowywania obrazu, ale wraz z modyfikacją kroków można użyć dowolnego wybranego rejestru kontenerów. W tym artykule przyjęto, że nazwa rejestru to " *Registry* ", a pełna nazwa rejestru to myregistry.azurecr.IO. Zmień je odpowiednio do danego scenariusza. 
 
-1. Uruchom `docker login` , aby zalogować się do rejestru kontenerów przy użyciu [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
+1. Uruchom `docker login`, aby zalogować się do rejestru kontenerów przy użyciu [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
 
    Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Możesz też zalogować się przy użyciu nazwy użytkownika i hasła do rejestru.
 
@@ -140,10 +140,10 @@ Teraz, gdy obraz Tomcat został wypchnięci do rejestru kontenerów, można skom
    ```
    Po wyświetleniu monitu wprowadź następujące wartości:
 
-   * Nadaj nazwę aplikacji: ServiceFabricTomcat
+   * Nazwij aplikację: ServiceFabricTomcat
    * Nazwa usługi aplikacji: TomcatService
-   * Wprowadź nazwę obrazu: Podaj adres URL obrazu kontenera w rejestrze kontenerów; na przykład myregistry.azurecr.io/samples/tomcattest.
-   * Polecenia: Pozostaw to pole puste. Ponieważ ten obraz ma zdefiniowany punkt wejścia obciążenia, nie musisz jawnie określić poleceń wejściowych (są to polecenia uruchamiane wewnątrz kontenera, które zapewnią działanie kontenera po uruchomieniu).
+   * Wprowadź nazwę obrazu: Podaj adres URL obrazu kontenera w rejestrze kontenerów. na przykład myregistry.azurecr.io/samples/tomcattest.
+   * Polecenia: pozostaw to pole puste. Ponieważ ten obraz ma zdefiniowany punkt wejścia obciążenia, nie musisz jawnie określić poleceń wejściowych (są to polecenia uruchamiane wewnątrz kontenera, które zapewnią działanie kontenera po uruchomieniu).
    * Liczba wystąpień aplikacji kontenera gościa: 1
 
    ![Generator Yeoman usługi Service Fabric dla kontenerów](./media/service-fabric-get-started-tomcat/yo-generator.png)
@@ -161,7 +161,7 @@ Teraz, gdy obraz Tomcat został wypchnięci do rejestru kontenerów, można skom
    </Resources>
    ```
 
-11. W manifeście aplikacji (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest. XML*) pod tagiem **ServiceManifestImport** Dodaj następujący kod XML. Zastąp wartości AccountName i **Password** w tagu **RepositoryCredentials** nazwą rejestru kontenera i hasłem wymaganym do zalogowania się do niego.
+11. W manifeście aplikacji (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest. XML*) pod tagiem **ServiceManifestImport** Dodaj następujący kod XML. Zastąp wartości **AccountName** i **Password** w tagu **RepositoryCredentials** nazwą rejestru kontenera i hasłem wymaganym do zalogowania się do niego.
 
    ```xml
    <Policies>
@@ -191,7 +191,7 @@ Teraz, gdy obraz Tomcat został wypchnięci do rejestru kontenerów, można skom
      ```bash
      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
      ```
-     W poprzednim poleceniu Zastąp `your-certificate.pem` wartość nazwą pliku certyfikatu klienta. W środowiskach deweloperskich i testowych certyfikat klastra jest często używany jako certyfikat klienta. Jeśli certyfikat nie jest podpisany z podpisem własnym, Pomiń `-no-verify` ten parametr. 
+     W poprzednim poleceniu Zastąp `your-certificate.pem` nazwą pliku certyfikatu klienta. W środowiskach deweloperskich i testowych certyfikat klastra jest często używany jako certyfikat klienta. Jeśli certyfikat nie jest podpisany z podpisem własnym, Pomiń parametr `-no-verify`. 
        
      Certyfikaty klastra są zwykle pobierane lokalnie jako pliki PFX. Jeśli nie masz jeszcze certyfikatu w formacie PEM, możesz uruchomić następujące polecenie, aby utworzyć plik PEM z pliku PFX:
 
@@ -210,8 +210,8 @@ Teraz, gdy obraz Tomcat został wypchnięci do rejestru kontenerów, można skom
 
    Po uruchomieniu skryptu instalacji Otwórz przeglądarkę i przejdź do Service Fabric Explorer:
     
-   * W klastrze lokalnym Użyj opcji `http://localhost:19080/Explorer` (Zastąp *localhost* jako prywatny adres IP maszyny wirtualnej, jeśli używasz Vagrant na Mac OS X).
-   * W zabezpieczonym klastrze platformy Azure Użyj `https://PublicIPorFQDN:19080/Explorer`programu. 
+   * W klastrze lokalnym Użyj `http://localhost:19080/Explorer` (Zastąp *localhost* jako prywatny adres IP maszyny wirtualnej, jeśli używany jest program Vagrant on Mac OS X).
+   * W zabezpieczonym klastrze platformy Azure Użyj `https://PublicIPorFQDN:19080/Explorer`. 
     
    Rozwiń węzeł **aplikacje** i zwróć uwagę, że istnieje teraz wpis dla typu aplikacji, **ServiceFabricTomcatType**i drugiego dla pierwszego wystąpienia tego typu. Aby aplikacja mogła zostać całkowicie wdrożona, może upłynąć kilka minut.
 

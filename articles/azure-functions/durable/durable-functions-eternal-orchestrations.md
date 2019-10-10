@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: dbe51eddcf748843fd90cc533063fd25e7c282fd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d96229bb5e3d288915b64e5a7ce29a8651f2a181
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933380"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177382"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Eternal aranżacji w Durable Functions (Azure Functions)
 
@@ -28,10 +28,10 @@ Zgodnie z opisem w temacie [historia aranżacji](durable-functions-orchestration
 
 Zamiast używać nieskończonych pętli, funkcja programu Orchestrator resetuje swój stan przez wywołanie metody [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) . Ta metoda przyjmuje jeden parametr możliwy do serializacji JSON, który staje się nowym danymi wejściowymi dla następnej generacji funkcji programu Orchestrator.
 
-Gdy `ContinueAsNew` jest wywoływana, wystąpienie enqueues komunikat do samego siebie przed opuszczeniem. Komunikat uruchamia ponownie wystąpienie z nową wartością wejściową. Ten sam identyfikator wystąpienia jest zachowywany, ale historia funkcji programu Orchestrator jest efektywnie obcinana.
+Po wywołaniu `ContinueAsNew` wystąpienie enqueues komunikat do samego siebie przed opuszczeniem. Komunikat uruchamia ponownie wystąpienie z nową wartością wejściową. Ten sam identyfikator wystąpienia jest zachowywany, ale historia funkcji programu Orchestrator jest efektywnie obcinana.
 
 > [!NOTE]
-> Usługa trwałych zadań obsługuje ten sam identyfikator wystąpienia, ale wewnętrznie tworzy nowy *Identyfikator wykonania* dla funkcji programu Orchestrator, która jest resetowana przez `ContinueAsNew`. Ten identyfikator wykonania zwykle nie jest ujawniany zewnętrznie, ale może być przydatne podczas debugowania wykonywania aranżacji.
+> Usługa trwałych zadań obsługuje ten sam identyfikator wystąpienia, ale wewnętrznie tworzy nowy *Identyfikator wykonania* dla funkcji programu Orchestrator, który jest resetowany przez `ContinueAsNew`. Ten identyfikator wykonania zwykle nie jest ujawniany zewnętrznie, ale może być przydatne podczas debugowania wykonywania aranżacji.
 
 ## <a name="periodic-work-example"></a>Przykład pracy okresowej
 
@@ -77,7 +77,7 @@ Różnica między tym przykładem a funkcją wyzwalaną czasomierzem oznacza, ż
 Użyj metody [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) , aby rozpocząć aranżację Eternal. Nie różni się to od wyzwalania żadnej innej funkcji aranżacji.  
 
 > [!NOTE]
-> Jeśli trzeba upewnić się, że jest uruchomiona pojedyncza aranżacja Eternal, ważne jest, aby zachować to `id` samo wystąpienie podczas uruchamiania aranżacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie wystąpieniami](durable-functions-instance-management.md).
+> Jeśli musisz upewnić się, że Eternal aranżacja jest uruchomiona, ważne jest, aby zachować to samo wystąpienie `id` podczas uruchamiania aranżacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie wystąpieniami](durable-functions-instance-management.md).
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -87,14 +87,14 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 {
     string instanceId = "StaticId";
     // Null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
-    await client.StartNewAsync("Periodic_Cleanup_Loop"), instanceId, null); 
+    await client.StartNewAsync("Periodic_Cleanup_Loop", instanceId, null); 
     return client.CreateCheckStatusResponse(request, instanceId);
 }
 ```
 
 ## <a name="exit-from-an-eternal-orchestration"></a>Wyjdź z aranżacji Eternal
 
-Jeśli funkcja programu Orchestrator musi zostać ostatecznie zakończona, wszystko, czego potrzebujesz, *nie* jest wywoływana `ContinueAsNew` i pozwól na zakończenie działania funkcji.
+Jeśli funkcja programu Orchestrator musi zostać ostatecznie ukończona, to wszystko, czego potrzebujesz, *nie* wywołaj `ContinueAsNew` i pozwól na zakończenie działania funkcji.
 
 Jeśli funkcja programu Orchestrator jest w pętli nieskończonej i musi zostać zatrzymana, należy użyć metody [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) , aby ją zatrzymać. Aby uzyskać więcej informacji, zobacz [Zarządzanie wystąpieniami](durable-functions-instance-management.md).
 

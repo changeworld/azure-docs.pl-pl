@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: d749e1355e69ad93c8c211474043f88127ec76f0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599387"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168805"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric tryby sieci kontenera
 
-Klaster Service Fabric platformy Azure dla usług kontenerów domyślnie używa trybu sieci **NAT** . Gdy więcej niż jedna usługa kontenera nasłuchuje na tym samym porcie, a tryb NAT jest używany, mogą wystąpić błędy wdrażania. Aby obsługiwać wiele usług kontenerów nasłuchujących na tym samym porcie, Service Fabric oferuje tryb otwartej sieci (wersje 5,7 i nowsze). W trybie otwartym każda usługa kontenera ma wewnętrzny, dynamicznie przypisany adres IP, który obsługuje wiele usług nasłuchujących na tym samym porcie.  
+Klaster Service Fabric platformy Azure dla usług kontenerów domyślnie używa trybu sieci **NAT** . Gdy więcej niż jedna usługa kontenera nasłuchuje na tym samym porcie, a tryb NAT jest używany, mogą wystąpić błędy wdrażania. Aby obsługiwać wiele usług kontenerów nasłuchujących na tym samym porcie, Service Fabric oferuje tryb **otwartej** sieci (wersje 5,7 i nowsze). W trybie otwartym każda usługa kontenera ma wewnętrzny, dynamicznie przypisany adres IP, który obsługuje wiele usług nasłuchujących na tym samym porcie.  
 
 Jeśli masz jedną usługę kontenera ze statycznym punktem końcowym w manifeście usługi, możesz tworzyć i usuwać nowe usługi przy użyciu trybu otwartego bez błędów wdrażania. Ten sam plik Docker-Compose. yml może być również używany z mapowaniami portów statycznych do tworzenia wielu usług.
 
@@ -200,17 +200,17 @@ Po ponownym uruchomieniu lub przeniesieniu usługi kontenera do innego węzła w
  
 3. W przypadku klastrów systemu Windows należy skonfigurować regułę sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) platformy Azure otwierającą port UDP/53 dla sieci wirtualnej przy użyciu następujących wartości:
 
-   |Ustawienie |Value | |
+   |Ustawienie |Wartość | |
    | --- | --- | --- |
-   |Priority |2000 | |
-   |Name (Nazwa) |Custom_Dns  | |
-   |Source |VirtualNetwork | |
-   |Miejsce docelowe | VirtualNetwork | |
+   |Priorytet |2000 | |
+   |Nazwa |Custom_Dns  | |
+   |Źródło |VirtualNetwork | |
+   |Cel | VirtualNetwork | |
    |Usługa | DNS (UDP/53) | |
-   |Action | Allow  | |
+   |Działanie | Zezwól  | |
    | | |
 
-4. Określ tryb sieci w manifeście aplikacji dla każdej usługi: `<NetworkConfig NetworkType="Open">`. **Otwórz** tryb sieci wyniki w usłudze przy użyciu dedykowanego adresu IP. Jeśli tryb nie jest określony, domyślnie jest używany tryb **translatora adresów sieciowych** . W poniższym przykładzie `NodeContainerServicePackage1` manifestu usługi i `NodeContainerServicePackage2` mogą nasłuchiwać każdego nasłuchiwania na tym samym porcie (obie usługi nasłuchują `Endpoint1`na). W przypadku określenia trybu otwierania sieci należy `PortBinding` określić konfiguracje.
+4. Określ tryb sieci w manifeście aplikacji dla każdej usługi: `<NetworkConfig NetworkType="Open">`. **Otwórz** tryb sieci wyniki w usłudze przy użyciu dedykowanego adresu IP. Jeśli tryb nie jest określony, domyślnie jest używany tryb **translatora adresów sieciowych** . W poniższym przykładzie manifestu usługi `NodeContainerServicePackage1` i `NodeContainerServicePackage2` mogą nasłuchiwać każdego nasłuchiwania na tym samym porcie (obie usługi nasłuchują na `Endpoint1`). W przypadku określenia trybu otwartej sieci nie można określić konfiguracji `PortBinding`.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

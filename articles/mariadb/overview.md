@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 08/13/2019
-ms.openlocfilehash: 2a23cf4edef268c4690806117b3dac588848a420
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 46ba972c489326157cbdea19a1363a30e18f72b8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973481"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177977"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Czym jest usługa Azure Database for MariaDB?
 
@@ -55,7 +55,7 @@ Umowa SLA o czołowej w branży dostępności 99,99% dla platformy Azure jest ob
 
 Usługi baz danych platformy Azure mają tradycje zabezpieczeń danych, które usługa Azure Database for MariaDB podtrzymuje. Usługa Azure Database for MariaDB udostępnia funkcje ograniczania dostępu, ochrony przesyłanych i magazynowanych danych oraz monitorowania aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/en-us/trustcenter/security), aby uzyskać informacje o zabezpieczeniach platformy Azure.
 
-Usługa Azure Database for MariaDB używa szyfrowania magazynu dla magazynowanych danych i jest zgodna ze standardem FIPS 140-2. Dane, w tym dane kopii zapasowej, są szyfrowane na dysku. (Pliki tymczasowe tworzone przez aparat podczas uruchamiania zapytań nie są szyfrowane na dysku). Usługa używa szyfru AES 256-bitowego, która jest uwzględniona w szyfrowaniu usługi Azure Storage. Klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
+Usługa Azure Database for MariaDB używa zatwierdzonego modułu kryptograficznego FIPS 140-2 do szyfrowania magazynu danych w spoczynku. Dane, w tym kopie zapasowe, są szyfrowane na dysku z wyjątkiem plików tymczasowych tworzonych podczas wykonywania zapytań. Usługa korzysta z 256-bitowego szyfru AES zawartego w szyfrowaniu usługi Azure Storage. Klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
 
 Domyślnie usługa Azure Database for MariaDB wymaga [zabezpieczeń połączenia SSL](./concepts-ssl-connection-security.md) dla danych przesyłanych przez sieć. Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją. Opcjonalnie możesz wyłączyć wymaganie protokołu SSL dla połączeń z usługą bazy danych, jeśli Twoja aplikacja kliencka nie obsługuje łączności SSL.
 

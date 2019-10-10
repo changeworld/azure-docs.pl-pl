@@ -7,16 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: d5094fb01c9640704f02c5128c64edfd31d77f20
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: c009084c4623391c299239feb5f95d7c2b4d2061
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018807"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170131"
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Przykłady dla platformy Node.js w usłudze Azure Cosmos DB
 > [!div class="op_single_selector"]
-> * [Przykłady dla platformy .NET](sql-api-dotnet-samples.md)
+> * [Przykłady zestawu SDK dla platformy .NET V2](sql-api-dotnet-samples.md)
+> * [Przykłady zestawu SDK dla platformy .NET v3](sql-api-dotnet-v3sdk-samples.md)
 > * [Przykłady kodu Java](sql-api-java-samples.md)
 > * [Przykłady asynchronicznego kodu Java](sql-api-async-java-samples.md)
 > * [Przykłady dla platformy Node.js](sql-api-nodejs-samples.md)
@@ -34,7 +35,7 @@ Przykładowe rozwiązania do wykonywania operacji CRUD i innych typowych działa
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Możesz [aktywować korzyści subskrybenta programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): W ramach subskrypcji programu Visual Studio co miesiąc otrzymasz środki, które możesz przeznaczyć na płatne usługi platformy Azure.
+- Możesz [aktywować korzyści subskrybenta programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): w ramach subskrypcji programu Visual Studio co miesiąc otrzymasz środki, które można przeznaczyć na płatne usługi platformy Azure.
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -49,7 +50,7 @@ Potrzebujesz również [zestawu SDK dla języka JavaScript](sql-api-sdk-node.md)
 
 Plik [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) pokazuje, jak wykonać operacje CRUD w bazie danych. Aby dowiedzieć się więcej na temat baz danych usługi Azure Cosmos przed uruchomieniem poniższych przykładów, zobacz [Praca z bazami danych, kontenerami i elementami](databases-containers-items.md) . 
 
-| Zadanie | Dokumentacja interfejsu API |
+| Zadanie | Dokumentacja interfejsów API |
 | --- | --- |
 | [Tworzenie bazy danych, jeśli nie istnieje](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts#L12-L14) |[Databases.createIfNotExists](/javascript/api/@azure/cosmos/databases?view=azure-node-latest#createifnotexists-databaserequest--requestoptions-) |
 | [Wyświetlanie listy baz danych na koncie](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts#L16-L18) |[Databases.readAll](/javascript/api/@azure/cosmos/databases?view=azure-node-latest#readall-feedoptions-) |
@@ -60,7 +61,7 @@ Plik [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/s
 
 Plik [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) pokazuje, jak wykonywać operacje CRUD w kontenerze. Aby dowiedzieć się więcej na temat kolekcji usługi Azure Cosmos przed uruchomieniem poniższych przykładów, zobacz [Praca z bazami danych, kontenerami i elementami](databases-containers-items.md) . 
 
-| Zadanie | Dokumentacja interfejsu API |
+| Zadanie | Dokumentacja interfejsów API |
 | --- | --- |
 | [Tworzenie kontenera, jeśli nie istnieje](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts#L14-L15) |[Containers.createIfNotExists](/javascript/api/@azure/cosmos/containers?view=azure-node-latest#createifnotexists-containerrequest--requestoptions-) |
 | [Wyświetlanie listy kontenerów dla konta](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts#L17-L21) |[Containers.readAll](/javascript/api/@azure/cosmos/containers?view=azure-node-latest#readall-feedoptions-) |
@@ -71,7 +72,7 @@ Plik [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/
 
 Plik [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) pokazuje, jak wykonać operacje CRUD na elemencie. Aby dowiedzieć się więcej o dokumentach usługi Azure Cosmos przed uruchomieniem poniższych przykładów, zobacz [Praca z bazami danych, kontenerami i elementami](databases-containers-items.md) . 
 
-| Zadanie | Dokumentacja interfejsu API |
+| Zadanie | Dokumentacja interfejsów API |
 | --- | --- |
 | [Tworzenie elementów](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts#L18-L21) |[Items.create](/javascript/api/@azure/cosmos/items?view=azure-node-latest#create-t--requestoptions-) |
 | [Odczytywanie wszystkich elementów w kontenerze](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts#L23-L28) |[Items.readAll](/javascript/api/@azure/cosmos/items?view=azure-node-latest#readall-feedoptions-) |
@@ -98,7 +99,7 @@ Plik [IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samp
 
 Plik [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) w projekcie [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) pokazuje sposób wykonywania poniższych zadań. Aby dowiedzieć się więcej na temat programowania po stronie serwera w Azure Cosmos DB przed uruchomieniem poniższych przykładów, zobacz artykuł dotyczący [procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika](stored-procedures-triggers-udfs.md) . 
 
-| Zadanie | Dokumentacja interfejsu API |
+| Zadanie | Dokumentacja interfejsów API |
 | --- | --- |
 | [Tworzenie procedury składowanej](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/upsert.js) |[StoredProcedures.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/storedprocedures?view=azure-node-latest) |
 | [Wykonywanie procedury składowanej](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/index.ts) |[StoredProcedure.execute](https://docs.microsoft.com/javascript/api/%40azure/cosmos/storedprocedure?view=azure-node-latest) |

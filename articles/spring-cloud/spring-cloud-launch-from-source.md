@@ -1,34 +1,38 @@
 ---
-title: Uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego
+title: 'Szybki Start: uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego'
 description: Dowiedz się, jak uruchomić aplikację w chmurze ze sprężyną Azure bezpośrednio z poziomu kodu źródłowego
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 9/27/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a161b38ab6d23ad86df1ef7e843640276ba486bf
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038810"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170529"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego
 
 Chmura sprężynowa platformy Azure umożliwia uruchamianie aplikacji bezpośrednio z kodu źródłowego Java lub z wstępnie skompilowanego systemu JAR. Ten artykuł przeprowadzi Cię przez wymagane kroki.
 
-## <a name="initial-requirements"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
+
+>[!Note]
+> Przed rozpoczęciem pracy z tym przewodnikiem Szybki Start upewnij się, że Twoja subskrypcja platformy Azure ma dostęp do chmury wiosennej platformy Azure.  Jako usługa w wersji zapoznawczej prosimy o skontaktowanie się z nami, aby można było dodać subskrypcję do listy dozwolonych.  Jeśli chcesz poznać możliwości chmury Azure wiosennej, [Wypełnij ten formularz](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+).
 
 Przed rozpoczęciem upewnij się, że Twoja subskrypcja platformy Azure ma wymagane zależności:
 
-1. [Zainstaluj oprogramowanie Git](https://git-scm.com/)
+1. [Instalowanie usługi git](https://git-scm.com/)
 2. [Zainstaluj program JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 3. [Zainstaluj Maven 3,0 lub nowszy](https://maven.apache.org/download.cgi)
-4. [Zainstalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+4. [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Zarejestruj się w celu uzyskania subskrypcji platformy Azure](https://azure.microsoft.com/free/)
 
 > [!TIP]
-> Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule.  Zawiera ona popularne narzędzia platformy Azure preinstalowane, w tym najnowsze wersje usług git, JDK, Maven i interfejsu wiersza polecenia platformy Azure. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Więcej informacji na temat Azure Cloud Shell można znaleźć w [dokumentacji](../cloud-shell/overview.md) .
+> Azure Cloud Shell to bezpłatna interaktywna powłoka, za pomocą której można wykonać kroki opisane w tym artykule.  Zawiera ona popularne narzędzia platformy Azure preinstalowane, w tym najnowsze wersje usług git, JDK, Maven i interfejsu wiersza polecenia platformy Azure. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Więcej informacji na temat Azure Cloud Shell można znaleźć w [dokumentacji](../cloud-shell/overview.md) .
 
 ## <a name="install-the-azure-cli-extension"></a>Instalowanie rozszerzenia interfejsu wiersza polecenia platformy Azure
 
@@ -132,7 +136,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
+W tym przewodniku szybki start przedstawiono sposób wykonywania tych instrukcji:
 
 > [!div class="checklist"]
 > * Inicjowanie obsługi administracyjnej wystąpienia usługi

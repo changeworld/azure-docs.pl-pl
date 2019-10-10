@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
-ms.author: chackdan
-ms.openlocfilehash: f929ca1cd0fe6f2a94864ae3eb4df28e7b1927db
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.author: pepogors
+ms.openlocfilehash: cec134f9e71f86cd0ed17912f1a3c76adc9a4164
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200463"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167318"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy węzłów usługi Azure Service Fabric i zestawy skalowania maszyn wirtualnych
 [Zestawy skalowania maszyn wirtualnych](/azure/virtual-machine-scale-sets) to zasób obliczeniowy platformy Azure. Zestawy skalowania umożliwiają wdrażanie kolekcji maszyn wirtualnych jako zestawu i zarządzanie nimi. Każdy typ węzła zdefiniowany w klastrze Service Fabric platformy Azure konfiguruje oddzielną skalę.  Środowisko uruchomieniowe Service Fabric zainstalowane na każdej maszynie wirtualnej w zestawie skalowania za pomocą rozszerzenia maszyny wirtualnej Microsoft. Azure. servicefabric. Można niezależnie skalować każdy typ węzła w górę lub w dół, zmieniać jednostkę SKU systemu operacyjnego działającą w każdym węźle klastra, mieć otwarte różne zestawy portów i korzystać z różnych metryk pojemności.
@@ -34,7 +34,7 @@ Jak pokazano na powyższym rysunku, wystąpienia zestawu skalowania rozpoczynaj�
 W przypadku skalowania w górę zestawu skalowania jest tworzone nowe wystąpienie. Nowa nazwa wystąpienia zestawu skalowania jest zwykle nazwą zestawu skalowania i kolejnym numerem wystąpienia. W naszym przykładzie jest to BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Moduły równoważenia obciążenia zestawu skalowania mapy z typami węzłów i zestawami skalowania
-Jeśli klaster został wdrożony w Azure Portal lub użyto przykładowego szablonu Azure Resource Manager, zostanie wyświetlona lista wszystkich zasobów w grupie zasobów. Moduły równoważenia obciążenia są widoczne dla każdego zestawu skalowania lub typu węzła. Nazwa usługi równoważenia obciążenia używa następującego formatu: **Nazwa&gt;typuwęzłaLB.&lt;** Przykładem jest LB-sfcluster4doc-0, jak pokazano na poniższym rysunku:
+Jeśli klaster został wdrożony w Azure Portal lub użyto przykładowego szablonu Azure Resource Manager, zostanie wyświetlona lista wszystkich zasobów w grupie zasobów. Moduły równoważenia obciążenia są widoczne dla każdego zestawu skalowania lub typu węzła. Nazwa usługi równoważenia obciążenia używa następującego formatu: **lb-&lt;node type name @ no__t-2**. Przykładem jest LB-sfcluster4doc-0, jak pokazano na poniższym rysunku:
 
 ![Zasoby][Resources]
 
@@ -79,17 +79,17 @@ Poniżej przedstawiono opisy właściwości:
 | --- | --- | --- | --- |
 | name | string | --- | Unikatowa nazwa rozszerzenia |
 | type | "ServiceFabricLinuxNode" lub "ServiceFabricWindowsNode" | --- | Identyfikuje Service Fabric systemu operacyjnego |
-| autoUpgradeMinorVersion | true lub false | --- | Włącz autouaktualnienie wersji pomocniczych w środowisku uruchomieniowym SF |
-| publisher | Microsoft.Azure.ServiceFabric | --- | Nazwa wydawcy Service Fabricego w zakresie |
+| Włączoną flagą autoupgrademinorversion | prawda lub FAŁSZ | --- | Włącz autouaktualnienie wersji pomocniczych w środowisku uruchomieniowym SF |
+| dawc | Microsoft. Azure. servicefabric | --- | Nazwa wydawcy Service Fabricego w zakresie |
 | clusterEndpont | string | --- | URI: PORT do punktu końcowego zarządzania |
 | nodeTypeRef | string | --- | Nazwa nodeType |
-| durabilityLevel | bronze, silver, gold, platinum | --- | czas, w którym można wstrzymać niezmienne infrastruktury platformy Azure |
-| enableParallelJobs | true lub false | --- | Włącz funkcję COMPUTE ParallelJobs, na przykład Usuń maszynę wirtualną i ponownie uruchom maszynę wirtualną w zestawie skalowania równoległego |
+| durabilityLevel | brąz, Silver, Gold, Platinum | --- | czas, w którym można wstrzymać niezmienne infrastruktury platformy Azure |
+| enableParallelJobs | prawda lub FAŁSZ | --- | Włącz funkcję COMPUTE ParallelJobs, na przykład Usuń maszynę wirtualną i ponownie uruchom maszynę wirtualną w zestawie skalowania równoległego |
 | nicPrefixOverride | string | --- | Prefiks podsieci, taki jak "10.0.0.0/24" |
-| commonNames | string[] | --- | Typowe nazwy zainstalowanych certyfikatów klastra |
+| commonNames | ciąg [] | --- | Typowe nazwy zainstalowanych certyfikatów klastra |
 | x509StoreName | string | --- | Nazwa magazynu, w którym znajduje się zainstalowany certyfikat klastra |
 | typeHandlerVersion | 1.1 | --- | Wersja rozszerzenia. 1,0 klasycznej wersji rozszerzenia zaleca się uaktualnienie do 1,1 |
-| dataPath | string | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
+| Ścieżka datapath | string | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
 
 ## <a name="next-steps"></a>Następne kroki
 * Zobacz [Omówienie funkcji "wdróż gdziekolwiek" i porównanie z klastrami zarządzanymi przez platformę Azure](service-fabric-deploy-anywhere.md).

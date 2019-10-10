@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1aad2284c0f64c92efaefe3f9145d95c4aabec67
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839452"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174765"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps obsługiwane style mapy
 Azure Maps obsługuje kilka różnych wbudowanych stylów mapy, zgodnie z poniższym opisem.
@@ -34,7 +34,7 @@ Mapa **drogowa** to standardowa mapa, która wyświetla drogi, naturalne i sztuc
 Styl mapy **puste** i **blank_accessible** zapewniają pustą kanwę, na której można wizualizować dane. Styl **blank_accessible** będzie w dalszym ciągu dostarczać aktualizacje czytnika ekranu z informacjami o lokalizacji, w której znajduje się mapa, nawet jeśli mapa podstawowa nie jest wyświetlana.
 
 > [!Note]
-> W zestawie SDK sieci Web można zmienić kolor tła mapy poprzez ustawienie stylu CSS `background-color` elementu map DIV.
+> W zestawie SDK sieci Web można zmienić kolor tła mapy, ustawiając styl CSS `background-color` stylu elementu DIV mapy.
 
 **Odpowiednie interfejsy API:**
 * Kontrolka mapy zestawu SDK sieci Web
@@ -96,3 +96,11 @@ nastąpi **odcień drogi** jest Azure Maps głównym stylem, który został uko�
 * [Kafelek mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Kontrolka mapy zestawu SDK sieci Web
 * Kontrolka mapy systemu Android
+
+
+## <a name="next-steps"></a>Następne kroki
+
+Dowiedz się więcej na temat sposobu ustawiania stylu mapy w Azure Maps:
+
+> [!div class="nextstepaction"]
+> [Wybieranie stylu mapy](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)

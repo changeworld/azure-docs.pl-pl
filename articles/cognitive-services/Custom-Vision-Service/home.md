@@ -1,5 +1,5 @@
 ---
-title: Co to jest usługa Azure Custom Vision?
+title: Co to jest usługa Custom Vision?
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak za pomocą usługi Custom Vision kompilować klasyfikatory obrazów niestandardowych w chmurze platformy Azure.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 033b0317b1738e24e4ac9c9ae2150b015cc5a8e5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e455a42945ba4d6ce334d557b7390c3c50e7ff9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560963"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177827"
 ---
-# <a name="what-is-azure-custom-vision"></a>Co to jest usługa Azure Custom Vision?
+# <a name="what-is-custom-vision"></a>Co to jest usługa Custom Vision?
 
-Azure Custom Vision to usługa poznawczej, która umożliwia tworzenie, wdrażanie i ulepszanie własnych klasyfikatorów obrazów. Klasyfikator obrazów to usługa sztucznej Inteligencji, która stosuje etykiety (reprezentujące _klasy_) do obrazów zgodnie z ich cechami wizualnymi. W odróżnieniu od usługi [przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) usługa Custom Vision umożliwia określenie etykiet do stosowania.
+Custom Vision to usługa poznawczej, która umożliwia tworzenie, wdrażanie i ulepszanie własnych klasyfikatorów obrazów. Klasyfikator obrazów to usługa sztucznej Inteligencji, która stosuje etykiety (reprezentujące _klasy_) do obrazów zgodnie z ich cechami wizualnymi. W odróżnieniu od usługi [przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) usługa Custom Vision umożliwia określenie etykiet do stosowania.
 
 ## <a name="what-it-does"></a>Wyniki działania
 

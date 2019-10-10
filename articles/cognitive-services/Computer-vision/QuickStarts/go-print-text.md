@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wyodrębnianie tekstu drukowanego — REST, Go'
+title: 'Szybki Start: Wyodrębnij drukowany tekst — REST, przejdź'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst drukowany przy użyciu interfejsu API przetwarzania obrazów i języka Go.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 177ed7043f88ba678036d1d7b5bed5abef8baa1b
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 97ef0464655e55a84f4e5cc51171d00debd294d3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141383"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177255"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Szybki start: Wyodrębnij drukowany tekst (OCR) za pomocą interfejsu API REST przetwarzanie obrazów with go
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Szybki Start: Wyodrębnianie wydrukowanego tekstu (OCR) przy użyciu interfejsu API REST przetwarzanie obrazów za pomocą języka go
 
 W tym przewodniku Szybki start dowiesz się, jak wyodrębnić tekst drukowany z obrazu za pomocą optycznego rozpoznawania znaków (OCR) przy użyciu interfejsu API REST przetwarzania obrazów. Metoda [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) pozwala wykrywać na obrazie tekst drukowany i wyodrębniać rozpoznane znaki do strumienia znaków, którego mogą używać komputery.
 
@@ -27,7 +27,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć zainstalowany język [Go](https://golang.org/dl/).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` nazwane `COMPUTER_VISION_ENDPOINT`i.
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi o nazwach odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
@@ -64,7 +64,7 @@ func main() {
         log.Fatal("\n\nSet the COMPUTER_VISION_ENDPOINT environment variable.\n" +
             "**Restart your shell or IDE for changes to take effect.**")
     }
-    const uriBase = endpoint + "vision/v2.0/ocr"
+    const uriBase = endpoint + "vision/v2.1/ocr"
     const imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" +
         "Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png"
 
@@ -219,7 +219,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z interfejsem API przetwarzania obrazów używanym do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania celebrytów i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Zobacz, jak działa interfejs API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

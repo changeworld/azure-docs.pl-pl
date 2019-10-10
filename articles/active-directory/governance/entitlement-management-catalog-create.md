@@ -1,5 +1,5 @@
 ---
-title: Tworzenie wykazu i zarządzanie nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza) — Azure Active Directory
+title: Tworzenie wykazu zasobów i zarządzanie nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza) — Azure Active Directory
 description: Dowiedz się, jak utworzyć nowy kontener zasobów i pakiety dostępu w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
 services: active-directory
 documentationCenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1654e0a8cd11ac1c7a2f4ef0667d0e99187c2374
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a1a6d7901368d19cf5ca8221bc00f426980e6f48
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618315"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169939"
 ---
-# <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Tworzenie wykazu i zarządzanie nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
+# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Tworzenie wykazu zasobów i zarządzanie nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
 
 > [!IMPORTANT]
 > Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
@@ -36,11 +36,9 @@ Katalog jest kontenerem zasobów i pakietów dostępu. Katalog można utworzyć,
 
 **Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika lub twórca katalogu
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. Kliknij **Azure Active Directory** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
-
-1. W menu po lewej stronie kliknijpozycję wykazy.
+1. W menu po lewej stronie kliknij pozycję **wykazy**.
 
     ![Wykazy zarządzania uprawnieniami w Azure Portal](./media/entitlement-management-catalog-create/catalogs.png)
 
@@ -66,17 +64,19 @@ Aby uwzględnić zasoby w pakiecie dostępu, zasoby muszą znajdować się w wyk
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję wykazy, a następnie otwórz wykaz, do którego chcesz dodać zasoby.
+1. W menu po lewej stronie kliknij pozycję **wykazy** , a następnie otwórz wykaz, do którego chcesz dodać zasoby.
 
 1. W menu po lewej stronie kliknij pozycję **zasoby**.
 
 1. Kliknij pozycję **Dodaj zasoby**.
 
-1. Kliknij typ zasobu: **Grupy**, **aplikacje**lub **witryny programu SharePoint**.
+1. Kliknij typ zasobu: **grupy i zespoły**, **aplikacje**lub **witryny programu SharePoint**.
 
     Jeśli nie widzisz zasobu, który chcesz dodać lub nie możesz dodać zasobu, upewnij się, że masz wymaganą rolę w katalogu usługi Azure AD i rolę zarządzania uprawnieniami. Może być konieczne, aby ktoś z wymaganymi rolami dodał zasób do katalogu. Aby uzyskać więcej informacji, zobacz [wymagane role do dodawania zasobów do wykazu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
 1. Wybierz co najmniej jeden zasób typu, który chcesz dodać do wykazu.
+
+    ![Dodawanie zasobów do wykazu](./media/entitlement-management-catalog-create/catalog-add-resources.png)
 
 1. Po zakończeniu kliknij przycisk **Dodaj**.
 
@@ -90,13 +90,33 @@ Zasoby można usunąć z wykazu. Zasób może zostać usunięty z wykazu tylko w
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję wykazy, a następnie otwórz wykaz, z którego chcesz usunąć zasoby.
+1. W menu po lewej stronie kliknij pozycję **wykazy** , a następnie otwórz wykaz, z którego chcesz usunąć zasoby.
 
 1. W menu po lewej stronie kliknij pozycję **zasoby**.
 
 1. Wybierz zasoby, które chcesz usunąć.
 
 1. Kliknij przycisk **Usuń** (lub kliknij przycisk wielokropka ( **...** ), a następnie kliknij pozycję **Usuń zasób**).
+
+## <a name="add-additional-catalog-owners"></a>Dodawanie dodatkowych właścicieli katalogu
+
+Użytkownik, który utworzył wykaz, zostaje pierwszym właścicielem katalogu. Aby delegować Zarządzanie wykazem, należy dodać użytkowników do roli właściciela katalogu. Pozwala to na udostępnianie obowiązków związanych z zarządzaniem katalogiem. 
+
+Wykonaj następujące kroki, aby przypisać użytkownika do roli właściciela katalogu:
+
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika lub właściciel katalogu
+
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+
+1. W menu po lewej stronie kliknij pozycję **wykazy** , a następnie otwórz wykaz, do którego chcesz dodać administratorów.
+
+1. W menu po lewej stronie kliknij pozycję **role i Administratorzy**.
+
+    ![Role i Administratorzy katalogu](./media/entitlement-management-shared/catalog-roles-administrators.png)
+
+1. Kliknij pozycję **Dodaj właścicieli** , aby wybrać członków dla tych ról.
+
+1. Kliknij pozycję **Wybierz** , aby dodać tych członków.
 
 ## <a name="edit-a-catalog"></a>Edytowanie katalogu
 
@@ -106,13 +126,13 @@ Można edytować nazwę i opis wykazu. Użytkownicy zobaczą te informacje w szc
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję wykazy, a następnie otwórz wykaz, który chcesz edytować.
+1. W menu po lewej stronie kliknij pozycję **wykazy** , a następnie otwórz wykaz, który chcesz edytować.
 
 1. Na stronie **Przegląd** wykazu kliknij pozycję **Edytuj**.
 
 1. Edytuj nazwę lub opis wykazu.
 
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 ## <a name="delete-a-catalog"></a>Usuwanie wykazu
 
@@ -122,7 +142,7 @@ Katalog można usunąć, ale tylko wtedy, gdy nie ma żadnych pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję wykazy, a następnie otwórz wykaz, który chcesz usunąć.
+1. W menu po lewej stronie kliknij pozycję **wykazy** , a następnie otwórz wykaz, który chcesz usunąć.
 
 1. Na stronie **Przegląd**wykazu kliknij pozycję **Usuń**.
 
@@ -130,5 +150,4 @@ Katalog można usunąć, ale tylko wtedy, gdy nie ma żadnych pakietów dostępu
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dodaj twórcę katalogu](entitlement-management-delegate.md#add-a-catalog-creator)
-- [Tworzenie pakietu dostępu i zarządzanie nim](entitlement-management-access-package-create.md)
+- [Delegowanie dostępu ładu do menedżerów pakietów](entitlement-management-delegate-managers.md)

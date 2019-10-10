@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z uaktualnieniami aplikacji | Dokumentacja firmy Microsoft
-description: W tym artykule omówiono niektóre typowe problemy dotyczące uaktualniania aplikacji usługi Service Fabric i ich rozwiązania.
+title: Rozwiązywanie problemów z uaktualnieniami aplikacji | Microsoft Docs
+description: W tym artykule opisano niektóre typowe problemy związane z uaktualnianiem Service Fabric aplikacji i sposobami ich rozwiązywania.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,41 +13,41 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: e393eb92e11dc8dc296f1dc5f1c0036566c285c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: f5df528c7e46a5cb2a5df98f0088a451eb08cd6a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60616021"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167532"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Rozwiązywanie problemów z uaktualnieniami aplikacji
 
-W tym artykule omówiono niektóre typowe problemy dotyczące uaktualniania aplikacji usługi Azure Service Fabric i ich rozwiązania.
+W tym artykule omówiono niektóre typowe problemy związane z uaktualnianiem aplikacji Service Fabric platformy Azure i sposobami ich rozwiązywania.
 
-## <a name="troubleshoot-a-failed-application-upgrade"></a>Rozwiązywanie problemów z uaktualnienia aplikacji nie powiodło się
+## <a name="troubleshoot-a-failed-application-upgrade"></a>Rozwiązywanie problemów z uaktualnieniem aplikacji zakończonych niepowodzeniem
 
-Jeśli uaktualnienie nie powiedzie się, dane wyjściowe **Get ServiceFabricApplicationUpgrade** polecenia zawiera dodatkowe informacje dotyczące debugowania błędu.  Poniższa lista określa, jak można uzyskać dodatkowe informacje:
+Gdy uaktualnienie nie powiedzie się, dane wyjściowe polecenia **Get-ServiceFabricApplicationUpgrade** zawierają dodatkowe informacje dotyczące debugowania błędu.  Poniższa lista określa, jak można używać dodatkowych informacji:
 
-1. Określ typ awarii.
-2. Zidentyfikuj przyczynę błędu.
-3. Izolowanie co najmniej jednego składnika Niepowodzenie w celu bliższego zbadania problemu.
+1. Zidentyfikuj typ błędu.
+2. Zidentyfikuj przyczynę niepowodzenia.
+3. Izolowanie co najmniej jednego składnika niemożliwego do dalszej analizy.
 
-Te informacje są dostępne w przypadku, gdy Usługa Service Fabric wykrywa błąd, niezależnie od tego, czy **FailureAction** wycofać lub zawiesić uaktualnienia.
+Te informacje są dostępne, gdy Service Fabric wykryje awarię bez względu na to, czy **FailureAction** ma wycofać lub wstrzymać uaktualnienie.
 
-### <a name="identify-the-failure-type"></a>Identyfikator typu błędu
+### <a name="identify-the-failure-type"></a>Zidentyfikuj typ błędu
 
-W danych wyjściowych **Get ServiceFabricApplicationUpgrade**, **FailureTimestampUtc** identyfikuje znacznik czasu (w formacie UTC) wykryto Niepowodzenie uaktualniania przez usługę Service Fabric i  **FailureAction** zostało wyzwolone. **FailureReason** identyfikuje jeden z trzech możliwych przyczyn wysokiego poziomu błędu:
+W danych wyjściowych polecenia **Get-ServiceFabricApplicationUpgrade** **FailureTimestampUtc** identyfikuje sygnaturę czasową (w formacie UTC), w której wykryto Niepowodzenie uaktualnienia Service Fabric a **FailureAction** zostało wyzwolone. **Failurereason** identyfikuje jedną z trzech potencjalnych przyczyn niepowodzenia:
 
-1. UpgradeDomainTimeout — wskazuje, czy określonej domeny uaktualnienia trwało zbyt długo i **UpgradeDomainTimeout** wygasł.
-2. OverallUpgradeTimeout — wskazuje, czy ogólnej uaktualnienia trwało zbyt długo, aby zakończyć i **UpgradeTimeout** wygasł.
-3. Test kondycji — wskazuje, że po uaktualnieniu domena aktualizacji aplikacji pozostaje złej kondycji, zgodnie z zasadami określonej kondycji i **HealthCheckRetryTimeout** wygasł.
+1. UpgradeDomainTimeout — wskazuje, że określona domena uaktualnienia trwała zbyt długo i **UpgradeDomainTimeout** wygasła.
+2. OverallUpgradeTimeout — wskazuje, że całkowite uaktualnienie trwało zbyt długo i **UpgradeTimeout** wygasło.
+3. HealthCheck — wskazuje, że po uaktualnieniu domeny aktualizacji aplikacja pozostawała w złej kondycji zgodnie z określonymi zasadami kondycji i **HealthCheckRetryTimeout** wygasła.
 
-Te wpisy tylko wyświetlana w danych wyjściowych podczas uaktualniania nie powiedzie się i rozpoczyna się wycofywanie. Dalsze informacje są wyświetlane w zależności od typu błędu.
+Te wpisy są wyświetlane tylko w danych wyjściowych, gdy uaktualnienie nie powiedzie się i rozpocznie wycofywanie. Dalsze informacje są wyświetlane w zależności od typu błędu.
 
-### <a name="investigate-upgrade-timeouts"></a>Badanie uaktualnienia przekroczeń limitu czasu
+### <a name="investigate-upgrade-timeouts"></a>Zbadaj limity czasu uaktualniania
 
-Limit czasu, które błędy są najczęściej spowodowane przez problemy z dostępnością usługi uaktualniania. Dane wyjściowe poniżej tego akapitu jest typowy dla uaktualnień, gdzie usługa replik lub wystąpień nie można uruchomić w nowej wersji kodu. **UpgradeDomainProgressAtFailure** pola przechwytuje migawkę żadnych oczekujących działań uaktualnienia w chwili awarii.
+Błędy przekroczenia limitu czasu uaktualniania są najczęściej spowodowane przez problemy z dostępnością usług. Dane wyjściowe poniższego akapitu są typowymi uaktualnieniami, w których nie można uruchomić replik usług lub wystąpień w nowej wersji kodu. Pole **UpgradeDomainProgressAtFailure** przechwytuje migawkę oczekujących uaktualnień w momencie wystąpienia błędu.
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
@@ -85,19 +85,19 @@ ForceRestart                   : False
 UpgradeReplicaSetCheckTimeout  : 00:00:00
 ```
 
-W tym przykładzie uaktualnienie nie powiodło się w domenie uaktualnienia *MYUD1* i dwie partycje (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* i *4b43f4d8-b26b-424e-9307-7a7a62e79750*) zostały zatrzymane. Partycje zostały zablokowane, ponieważ nie można umieścić replikami podstawowymi środowiska uruchomieniowego (*WaitForPrimaryPlacement*) na węzłach docelowych *Węzeł1* i *Węzeł4*.
+W tym przykładzie uaktualnienie nie powiodło się po uaktualnieniu domeny *MYUD1* i dwie partycje (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* i *4b43f4d8-b26b-424e-9307-7a7a62e79750*) zostały zablokowane. Partycje zostały zablokowane, ponieważ środowisko uruchomieniowe nie mogło umieścić replik podstawowych (*WaitForPrimaryPlacement*) na węzłach docelowych *Węzeł1* i *Węzeł4*.
 
-**Get-ServiceFabricNode** polecenie służy do Sprawdź, że te dwa węzły znajdują się w domenie uaktualnienia *MYUD1*. *UpgradePhase* mówi *PostUpgradeSafetyCheck*, co oznacza, że kontrole bezpieczeństwa występują po wszystkich węzłów w domenie uaktualnień została zakończona, uaktualnianie. Te informacje wskazuje na potencjalny problem z nową wersją kodu aplikacji. Najbardziej typowe problemy z błędów usługi open lub przenoszenia do ścieżek kodu podstawowego.
+Polecenia **Get-ServiceFabricNode** można użyć do sprawdzenia, czy te dwa węzły znajdują się w uaktualnieniu domeny *MYUD1*. *UpgradePhase* mówi *PostUpgradeSafetyCheck*, co oznacza, że te kontrole bezpieczeństwa są wykonywane po zakończeniu uaktualniania wszystkich węzłów w domenie uaktualnienia. Wszystkie te informacje wskazują potencjalny problem z nową wersją kodu aplikacji. Najczęstsze problemy to błędy usługi w ramach otwartych lub podwyższania poziomu podstawowych ścieżek kodu.
 
-*UpgradePhase* z *PreUpgradeSafetyCheck* oznacza, że wystąpiły problemy, przygotowanie domeny uaktualnień, przed zostało ono wykonane. Najczęściej spotykanych problemów w tym przypadku są błędy usługi Zamknij lub obniżania poziomu od ścieżki głównej kodu.
+*UpgradePhase* *PreUpgradeSafetyCheck* oznacza, że wystąpiły problemy podczas przygotowywania domeny uaktualnienia przed wykonaniem. Najczęstszymi problemami w tym przypadku są błędy usługi w pobliżu i obniżanie poziomu podstawowych ścieżek kodu.
 
-Bieżący **UpgradeState** jest *RollingBackCompleted*, dzięki czemu oryginalne uaktualniania należy wykonać przy użyciu wycofywania **FailureAction**, który automatycznie walcowane Utwórz kopię uaktualnienia w przypadku awarii. W przypadku oryginalnej uaktualniania ręcznego **FailureAction**, a następnie uaktualnienie będzie zamiast tego jest w stanie wstrzymania, aby zezwolić na żywo debugowania aplikacji.
+Bieżącym **UpgradeStateem** jest *RollingBackCompleted*, dlatego oryginalne uaktualnienie musi zostać wykonane przy użyciu **FailureAction**wycofywania, które jest automatycznie wycofywane po awarii. Jeśli pierwotne uaktualnienie zostało wykonane z użyciem ręcznego **FailureAction**, uaktualnienie będzie miało miejsce w stanie wstrzymania, aby umożliwić debugowanie na żywo aplikacji.
 
-W rzadkich przypadkach **UpgradeDomainProgressAtFailure** pole może być puste, jeśli uaktualnienie ogólną upłynie limit czasu tak samo, jak system zakończy wszystkie prace dla bieżąca domena uaktualnienia. W takim przypadku spróbuj zwiększyć **UpgradeTimeout** i **UpgradeDomainTimeout** uaktualnienia wartości parametrów i ponów uaktualnienie.
+W rzadkich przypadkach pole **UpgradeDomainProgressAtFailure** może być puste, jeśli ogólne uaktualnienie kończy się w przypadku zakończenia całego działania systemu dla bieżącej domeny uaktualnienia. W takim przypadku spróbuj zwiększyć wartości parametrów uaktualnienia **UpgradeTimeout** i **UpgradeDomainTimeout** i ponów próbę uaktualnienia.
 
 ### <a name="investigate-health-check-failures"></a>Zbadaj błędy sprawdzania kondycji
 
-Błędy sprawdzania kondycji mogą być wywoływane przez różne problemy, które mogą wystąpić po zakończeniu wszystkich węzłów w domenie uaktualnienia, uaktualniania i przekazywania wszystkich kontroli bezpieczeństwa. Dane wyjściowe poniżej tego akapitu jest typowy dla uaktualnienie niepowodzenia kontroli kondycji nie powiodło się. **UnhealthyEvaluations** pola przechwytuje migawkę kontrole kondycji, które nie powiodły się w czasie uaktualniania zgodnie z określonym [zasad dotyczących kondycji](service-fabric-health-introduction.md).
+Błędy sprawdzania kondycji mogą być wyzwalane przez różne problemy, które mogą wystąpić po zakończeniu uaktualniania wszystkich węzłów w domenie uaktualnienia i przekazaniu wszystkich kontroli bezpieczeństwa. Dane wyjściowe poniższego akapitu są typowymi błędami uaktualniania z powodu niepowodzeń kontroli kondycji. Pole **UnhealthyEvaluations** przechwytuje migawkę kontroli kondycji, które zakończyły się niepowodzeniem w czasie uaktualniania zgodnie z określonymi [zasadami kondycji](service-fabric-health-introduction.md).
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
@@ -153,23 +153,23 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ```
 
-Pierwsze badanie błędy sprawdzania kondycji wymaga zrozumienia model kondycji usługi Service Fabric. Jednak takie szczegółowe informacje, nawet jeśli nie widać, że dwie usługi są w złej kondycji: *Service fabric: / DemoApp/Svc3* i *Service fabric: / DemoApp/Svc2*, wraz z raportami kondycji błędu ("InjectedFault" w tym przypadku). W tym przykładzie dwie z czterech usługi jest w złej kondycji, która jest poniżej wartości docelowej domyślnej 0% złej kondycji (*MaxPercentUnhealthyServices*).
+Badanie błędów sprawdzania kondycji najpierw wymaga poznania modelu kondycji Service Fabric. Jednak nawet bez dokładnej wiedzy można zobaczyć, że dwie usługi są w złej kondycji: *Sieć szkieletowa:/DemoApp/Svc3* i *Sieć szkieletowa:/DemoApp/Svc2*, wraz z raportami kondycji błędów ("InjectedFault" w tym przypadku). W tym przykładzie dwa z czterech usług są w złej kondycji, które są poniżej domyślnego obiektu docelowego o wartości 0% w złej kondycji (*MaxPercentUnhealthyServices*).
 
-Uaktualnianie została zawieszona z chwilą niepowodzenie, określając **FailureAction** podręcznika podczas uruchamiania uaktualniania. Ten tryb pozwala nam badanie system na żywo w stanie niepowodzenia, przed podjęciem dalszych działań.
+Uaktualnienie zostało wstrzymane w przypadku niepowodzenia, określając **FailureAction** ręcznie podczas uruchamiania uaktualnienia. Ten tryb umożliwia zbadanie systemu na żywo w stanie niepowodzenia przed podjęciem dalszych działań.
 
-### <a name="recover-from-a-suspended-upgrade"></a>Odzyskiwanie z wstrzymane uaktualnienia
+### <a name="recover-from-a-suspended-upgrade"></a>Odzyskaj po wstrzymanym uaktualnieniu
 
-Przy użyciu wycofywania **FailureAction**, nie jest wymagane, ponieważ uaktualnienie automatyczne wycofanie na niepowodzenie. Za pomocą ręcznego **FailureAction**, dostępnych jest kilka opcji odzyskiwania:
+W przypadku wycofania **FailureAction**nie jest wymagana odzyskanie, ponieważ uaktualnienie jest automatycznie wycofywane po awarii. W przypadku ręcznego **FailureAction**istnieje kilka opcji odzyskiwania:
 
-1.  wyzwalacz wycofywania
-2. Przejdź przez pozostałą część uaktualnienia ręcznie
-3. Wznów monitorowanych uaktualnienia
+1.  Wyzwalanie wycofywania
+2. Wykonaj pozostałą część uaktualnienia ręcznie
+3. Wznów monitorowane uaktualnienie
 
-**Start ServiceFabricApplicationRollback** polecenia można w dowolnym momencie można uruchomić, wycofywanie aplikacji. Gdy polecenie jest zwracane pomyślnie, żądanie rollback został zarejestrowany w systemie i uruchamia dostępna wkrótce.
+Polecenie **Start-ServiceFabricApplicationRollback** może być używane w dowolnym momencie do uruchomienia wycofywania aplikacji. Gdy polecenie zwróci się pomyślnie, żądanie wycofania zostało zarejestrowane w systemie i rozpocznie się wkrótce.
 
-**ServiceFabricApplicationUpgrade Wznów** polecenie może służyć do przejdź przez pozostałą część uaktualnienia ręcznie, jedną domenę uaktualnienia w danym momencie. W tym trybie bezpieczeństwa tylko testy są wykonywane przez system. Nie ma więcej kontroli kondycji są wykonywane. To polecenie może być tylko używane podczas *UpgradeState* pokazuje *RollingForwardPending*, co oznacza, że bieżąca domena uaktualnienia zakończył uaktualnianie, ale następny nie została uruchomiona (oczekiwanie).
+Polecenie **Resume-ServiceFabricApplicationUpgrade** może służyć do przechodzenia przez pozostałą część uaktualnienia ręcznie, jednej domeny uaktualnienia w danym momencie. W tym trybie tylko kontrole bezpieczeństwa są wykonywane przez system. Nie przeprowadzono więcej kontroli kondycji. Tego polecenia można używać tylko wtedy, gdy *UpgradeState* pokazuje *RollingForwardPending*, co oznacza, że bieżąca domena uaktualnienia zakończyła się uaktualnieniem, ale Następna nie została uruchomiona (oczekująca).
 
-**ServiceFabricApplicationUpgrade aktualizacji** polecenia można wznowić monitorowanych uaktualnienia z obu bezpieczeństwa i kontrole kondycji wykonywane.
+Polecenie **Update-ServiceFabricApplicationUpgrade** może służyć do wznowienia monitorowanego uaktualnienia z wykonywanymi kontrolami bezpieczeństwa i kondycji.
 
 ```powershell
 Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
@@ -193,50 +193,50 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ```
 
-Uaktualnianie będzie kontynuowane z domeny uaktualnień, w której ostatnio została zawieszona i użycia, Uaktualnij takie same parametry i zasady dotyczące kondycji jako przed. Jeśli to konieczne, wszystkie parametry uaktualniania oraz zasady dotyczące kondycji pokazano w powyższym danych wyjściowych można zmienić w tym samym poleceniu po wznowieniu działania uaktualnienia. W tym przykładzie uaktualnienie zostało wznowione w trybie monitorowania za pomocą parametrów i zasady dotyczące kondycji, bez zmian.
+Uaktualnienie jest kontynuowane z domeny uaktualnienia, w której został on ostatnio wstrzymany, i Użyj tych samych parametrów uaktualnienia i zasad dotyczących kondycji co poprzednio. W razie konieczności wszystkie parametry uaktualnienia i zasady dotyczące kondycji pokazane w powyższych danych wyjściowych można zmienić w tym samym poleceniu po wznowieniu uaktualniania. W tym przykładzie uaktualnienie zostało wznowione w trybie monitorowania z parametrami i zasadami kondycji, które nie uległy zmianie.
 
-## <a name="further-troubleshooting"></a>Dodatkowe informacje o rozwiązywaniu
+## <a name="further-troubleshooting"></a>Dalsze Rozwiązywanie problemów
 
-### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Usługi Service Fabric nie jest następujące zasady dotyczące kondycji określony
+### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Service Fabric nie jest zgodna z określonymi zasadami kondycji
 
-Możliwe przyczyny 1:
+Możliwa przyczyna 1:
 
-Usługa Service Fabric wykonuje translację wszystkich wartości procentowych na rzeczywistą liczbę jednostek (na przykład replik, partycji i usługi) dla oceny kondycji i zawsze zaokrągla w górę do całej jednostki. Na przykład jeśli maksymalną *MaxPercentUnhealthyReplicasPerPartition* wynosi 21% wiąże się z pięciu replik, a następnie zezwala na maksymalnie dwie repliki w złej kondycji usługi Service Fabric (czyli`Math.Ceiling (5*0.21)`). Zatem zasady dotyczące kondycji należy ustawić odpowiednio.
+Service Fabric tłumaczy wszystkie wartości procentowe na rzeczywistą liczbę jednostek (na przykład repliki, partycje i usługi) na potrzeby oceny kondycji i zawsze zaokrągla do całych jednostek. Jeśli na przykład maksymalna *MaxPercentUnhealthyReplicasPerPartition* wynosi 21%, a istnieje pięć replik, Service Fabric może mieć do dwóch replik w złej kondycji (czyli `Math.Ceiling (5*0.21)`). W związku z tym należy odpowiednio ustawić zasady kondycji.
 
-Możliwe przyczyny 2:
+Możliwa przyczyna 2:
 
-Zasady dotyczące kondycji są określane w przeliczeniu na wartości procentowe łączna liczba usług oraz wystąpień usługi nie odnoszą się. Na przykład, przed uaktualnieniem, jeśli aplikacja ma cztery usługi wystąpień, A, B, C i D, w przypadku, gdy usługa D jest w złej kondycji, ale z większego wpływu na aplikację. Chcemy zignorować znane usługi w złej kondycji D podczas uaktualniania i ustaw dla parametru *MaxPercentUnhealthyServices* do 25%, zakładając, że tylko A, B i C muszą być w dobrej kondycji.
+Zasady dotyczące kondycji są określane w postaci wartości procentowej łącznej liczby usług i nie określonych wystąpień usługi. Na przykład przed uaktualnieniem, jeśli aplikacja ma cztery wystąpienia usługi A, B, C i D, gdzie usługa D jest w złej kondycji, ale ma niewielki wpływ na aplikację. Podczas uaktualniania chcemy zignorować znaną usługę w złej kondycji i ustawić parametr *MaxPercentUnhealthyServices* na 25%, przy założeniu, że tylko a, B i C muszą być w dobrej kondycji.
 
-Jednak podczas uaktualniania, D może stać się dobrej kondycji podczas C staje się nieprawidłowy. Uaktualnienie będzie nadal się powieść, ponieważ tylko 25% usługi jest w złej kondycji. Jednak może to spowodować nieprzewidziane błędy z powodu C jest nieoczekiwanie złej kondycji, zamiast D. W takiej sytuacji D powinny być modelowane jako typu innej usługi, a, B i C. Ponieważ zasady dotyczące kondycji są określone dla typów usług, można zastosować progi różną wartość procentową w złej kondycji z różnymi usługami. 
+Jednak podczas uaktualniania D może stać się w dobrej kondycji, a C staje się zła. Uaktualnienie nadal powiedzie się, ponieważ tylko 25% usług jest w złej kondycji. Jednak może to spowodować nieoczekiwane błędy z powodu nieprawidłowej kondycji C, a nie D. W takiej sytuacji D należy modelować jako inny typ usługi z, B i C. Ponieważ zasady dotyczące kondycji są określone dla każdego typu usługi, do różnych usług można zastosować różne progi procentu w złej kondycji. 
 
-### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Nie określono zasadę dla uaktualnienie aplikacji, ale nadal nieudanego uaktualnienia dla niektóre błędy przekroczenia limitu czasu, które nigdy nie została określona
+### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Nie określono zasad dotyczących kondycji na potrzeby uaktualniania aplikacji, ale uaktualnienie nadal kończy się niepowodzeniem przez niektóre przekroczenia limitu czasu, które nigdy nie zostały określone
 
-Gdy zasady dotyczące kondycji nie są podane na żądanie uaktualnienia są pobierane z *ApplicationManifest.xml* bieżącej wersji aplikacji. Na przykład jeśli aplikacja X wykonujesz uaktualnienie z wersji 1.0 do wersji 2.0, zasady dotyczące kondycji aplikacji określona dla w wersji 1.0 są używane. Jeśli zasady kondycję różnych powinien być używany do uaktualnienia, zasad musi być określona jako część wywołania interfejsu API uaktualniania aplikacji. Zasady, określony jako część wywołania interfejsu API są stosowane tylko wtedy podczas uaktualniania. Po zakończeniu uaktualniania zasady określone w *ApplicationManifest.xml* są używane.
+Gdy zasady dotyczące kondycji nie są dostarczane do żądania uaktualnienia, są pobierane z *ApplicationManifest. XML* bieżącej wersji aplikacji. Na przykład Jeśli uaktualniasz aplikację X z wersji 1,0 do wersji 2,0, używane są zasady dotyczące kondycji aplikacji określone dla programu w wersji 1,0. Jeśli dla uaktualnienia należy zastosować różne zasady dotyczące kondycji, należy określić zasady w ramach wywołania interfejsu API uaktualniania aplikacji. Zasady określone jako część wywołania interfejsu API są stosowane tylko podczas uaktualniania. Po zakończeniu uaktualniania są używane zasady określone w *ApplicationManifest. XML* .
 
-### <a name="incorrect-time-outs-are-specified"></a>Podano niepoprawny przekroczeń limitu czasu
+### <a name="incorrect-time-outs-are-specified"></a>Określono nieprawidłowe limity czasu
 
-Może mieć zastanawiasz się informacji na temat efektów niespójnie ustawione limity czasu. Na przykład masz *UpgradeTimeout* to mniej niż *UpgradeDomainTimeout*. Odpowiedzią jest zwracany jest błąd. Błędy są zwracane, jeśli *UpgradeDomainTimeout* jest mniejsza niż suma *HealthCheckWaitDuration* i *HealthCheckRetryTimeout*, lub jeśli  *UpgradeDomainTimeout* jest mniejsza niż suma *HealthCheckWaitDuration* i *HealthCheckStableDuration*.
+Być może zastanawiasz się, co się stanie, gdy limity czasu są ustawione niespójnie. Na przykład może być *UpgradeTimeout* , który jest mniejszy niż *UpgradeDomainTimeout*. Odpowiedź polega na tym, że zwracany jest błąd. Błędy są zwracane, jeśli wartość *UpgradeDomainTimeout* jest mniejsza niż suma wartości *HealthCheckWaitDuration* i *HealthCheckRetryTimeout*, lub jeśli *UpgradeDomainTimeout* jest mniejsza niż suma wartości *HealthCheckWaitDuration* i *HealthCheckStableDuration*.
 
-### <a name="my-upgrades-are-taking-too-long"></a>Moje uaktualnień trwa zbyt długo
+### <a name="my-upgrades-are-taking-too-long"></a>Moje uaktualnienia zajmują zbyt dużo czasu
 
-Czas dla uaktualnienie ukończyć zależy od tego, kontroli kondycji i określić limity czasu. Kontrole kondycji oraz przekroczeń limitu czasu są zależą od tego, jak długo trwa kopiowanie, wdrażanie i stabilizacja aplikacji. Trwa zbyt agresywne z przekroczeń limitu czasu może oznaczać bardziej uaktualnienia nie powiodło się, tak więc zaleca się konserwatywnie począwszy od dłuższego limitu czasu.
+Czas na zakończenie uaktualniania zależy od sprawdzania kondycji i określonych limitów czasu. Sprawdzanie kondycji i limity czasu są zależne od tego, jak długo trwa kopiowanie, wdrażanie i stabilizację aplikacji. Zbyt agresywne w przypadku przekroczenia limitu czasu może oznaczać więcej nieudanych uaktualnień, dlatego zalecamy rozpoczęcie bardziej ostrożnie z dłuższymi przekroczeniem limitu czasu.
 
-Poniżej przedstawiono szybki odświeżacz interakcję limitów czasu w czasie uaktualniania:
+Poniżej znajduje się szybki odświeżacz, w jaki sposób czas pracy z czasem uaktualniania zależy od czasu.
 
-Uaktualnienia dla domeny uaktualnienia nie można ukończyć szybciej niż *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
+Uaktualnienia dla domeny uaktualnienia nie mogą zakończyć się krócej niż *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
 
-Niepowodzenia uaktualnienia nie może być szybsza niż *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
+Niepowodzenie uaktualniania nie może wystąpić szybciej niż *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
 
-Podczas uaktualniania do domeny uaktualnienia jest ograniczona przez *UpgradeDomainTimeout*.  Jeśli *HealthCheckRetryTimeout* i *HealthCheckStableDuration* są różna od zera i kondycję aplikacji utrzymuje przełączając się, a następnie Uaktualnianie końcu przekroczy limit czasu na *UpgradeDomainTimeout*. *UpgradeDomainTimeout* odlicza dół uaktualnienia dla rozpoczyna się w bieżącej domenie uaktualnienia.
+Czas uaktualnienia dla domeny uaktualnienia jest ograniczony przez *UpgradeDomainTimeout*.  Jeśli *HealthCheckRetryTimeout* i *HealthCheckStableDuration* są zarówno niezerowe, jak i kondycja aplikacji nadal przełączają się z powrotem i do przodu, uaktualnienie jest ostatecznie przemnożone na *UpgradeDomainTimeout*. *UpgradeDomainTimeout* rozpoczyna zliczanie w dół po rozpoczęciu uaktualniania bieżącej domeny uaktualnienia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Uaktualnienie z aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu Visual Studio.
+[Uaktualnianie aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi Cię przez proces uaktualniania aplikacji przy użyciu programu Visual Studio.
 
-[Uaktualnienie z aplikacji przy użyciu programu Powershell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu PowerShell.
+[Uaktualnianie aplikacji przy użyciu programu PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi Cię przez proces uaktualniania aplikacji przy użyciu programu PowerShell.
 
-Kontrolować, jak uaktualnić aplikację przy użyciu [parametry uaktualniania](service-fabric-application-upgrade-parameters.md).
+Kontroluj sposób uaktualniania aplikacji przy użyciu [parametrów uaktualnienia](service-fabric-application-upgrade-parameters.md).
 
-Uzyskania uaktualnień aplikacji zgodnych poznanie sposobu używania [serializacja danych](service-fabric-application-upgrade-data-serialization.md).
+Aby uaktualnić aplikacje, należy się upewnić, jak używać [serializacji danych](service-fabric-application-upgrade-data-serialization.md).
 
-Dowiedz się, jak korzystać z zaawansowanych funkcji podczas uaktualniania aplikacji, odwołując się do [Tematy zaawansowane](service-fabric-application-upgrade-advanced.md).
+Dowiedz się, jak korzystać z zaawansowanych funkcji podczas uaktualniania aplikacji, odwołując się do [zaawansowanych tematów](service-fabric-application-upgrade-advanced.md).

@@ -7,16 +7,16 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: afbde512ecb5a38eac38d6f5db614d92cd44c908
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937418"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168993"
 ---
 # <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Zarządzanie ograniczeniami kontekstu zabezpieczeń na platformie Azure Red Hat OpenShift 
 
-Ograniczenia kontekstu zabezpieczeń (SCCs) umożliwiają administratorom klastra kontrolowanie uprawnień dla zasobników. Aby dowiedzieć się więcej na temat tego typu interfejsu API, zobacz [dokumentację architektury dla SCCs](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). Możesz zarządzać SCCs w swoim wystąpieniu jako normalnymi obiektami interfejsu API za pomocą interfejsu wiersza polecenia.
+Ograniczenia kontekstu zabezpieczeń (SCCs) umożliwiają administratorom klastra kontrolowanie uprawnień dla zasobników. Aby dowiedzieć się więcej na temat tego typu interfejsu API, zobacz [dokumentację architektury dla SCCs](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). Możesz zarządzać SCCs w swoim wystąpieniu jako normalnymi obiektami interfejsu API za pomocą interfejsu wiersza polecenia.
 
 ## <a name="list-security-context-constraints"></a>Wyświetl listę ograniczeń kontekstu zabezpieczeń
 

@@ -1,18 +1,18 @@
 ---
 title: Rozwiązywanie problemów z podglądem udziału danych platformy Azure
-description: Dowiedz się, jak rozwiązywać problemy w wersji zapoznawczej usługi Azure Data Share
+description: Dowiedz się, jak rozwiązywać problemy z zaproszeniami i błędami podczas tworzenia lub otrzymywania udziałów danych za pomocą usługi Azure Data Share Preview.
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 62b386f4648074bbf1f002e162151253e5b43bc9
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320290"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169227"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Rozwiązywanie typowych problemów w wersji zapoznawczej usługi Azure Data Share
 
@@ -41,9 +41,9 @@ Jeśli nadal nie możesz zobaczyć zaproszenia do udziału danych, skontaktuj si
 
 ## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Błąd podczas tworzenia lub otrzymywania nowego udziału danych
 
-Porn Operacja zwróciła nieprawidłowy kod stanu "nieprawidłowego żądania" "
+"Błąd: operacja zwróciła nieprawidłowy kod stanu" nieprawidłowego żądania ""
 
-Porn AuthorizationFailed"
+"Błąd: AuthorizationFailed"
 
 "Błąd: przypisanie roli do konta magazynu"
 

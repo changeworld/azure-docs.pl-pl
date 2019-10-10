@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 7b395bd6024beb52b9263ac4fe655b5328a8e662
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 10/09/2019
 ms.locfileid: "70933153"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions typy i funkcje (Azure Functions)
@@ -40,7 +40,7 @@ W przeciwieństwie do funkcji programu Orchestrator, funkcje działania nie są 
 > [!NOTE]
 > Ponieważ funkcje działania gwarantują tylko *jednokrotne* wykonanie, zalecamy, aby logika funkcji działania *idempotentne* się zawsze wtedy, gdy jest to możliwe.
 
-Użyj [wyzwalacza działania](durable-functions-bindings.md#activity-trigger) , aby zdefiniować funkcję działania. Funkcje programu .NET otrzymują [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Można również powiązać wyzwalacz z dowolnym innym obiektem serializacji JSON, aby przekazać dane wejściowe do funkcji. W języku JavaScript można uzyskać dostęp do danych wejściowych za `<activity trigger binding name>` pośrednictwem właściwości [ `context.bindings` obiektu](../functions-reference-node.md#bindings). Do funkcji działania można przekazywać tylko jedną wartość. Aby przekazać wiele wartości, należy użyć krotek, tablic lub typów złożonych.
+Użyj [wyzwalacza działania](durable-functions-bindings.md#activity-trigger) , aby zdefiniować funkcję działania. Funkcje programu .NET otrzymują [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Można również powiązać wyzwalacz z dowolnym innym obiektem serializacji JSON, aby przekazać dane wejściowe do funkcji. W języku JavaScript można uzyskać dostęp do danych wejściowych za pomocą właściwości `<activity trigger binding name>` [obiektu `context.bindings`](../functions-reference-node.md#bindings). Do funkcji działania można przekazywać tylko jedną wartość. Aby przekazać wiele wartości, należy użyć krotek, tablic lub typów złożonych.
 
 > [!NOTE]
 > Funkcję działania można wyzwolić tylko przy użyciu funkcji programu Orchestrator.

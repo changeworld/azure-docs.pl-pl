@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 570bf7968b3d6fac44dc770a7fda1e0784dbdcf9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 7d7e69e8ad0c5b14ac7ed8b941a7949f4f675812
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886720"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176770"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Kontrolki zabezpieczeń dla usługi Azure Virtual Machine Scale Sets
 
@@ -43,14 +43,14 @@ W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w usługę Az
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| Tak |  |
-| Authorization| Tak |  |
+| Uwierzytelnianie| Tak |  |
+| Autoryzacja| Tak |  |
 
 ## <a name="data-protection"></a>Ochrona danych
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: Klucze zarządzane przez firmę Microsoft | Tak | Zobacz [jak szyfrować maszynę wirtualną z systemem Linux na platformie Azure](/azure/virtual-machines/linux/encrypt-disks) i [szyfrować dyski wirtualne na maszynie wirtualnej z systemem Windows](/azure/virtual-machines/windows/encrypt-disks). |
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | Tak | Zobacz [jak szyfrować maszynę wirtualną z systemem Linux na platformie Azure](/azure/virtual-machines/linux/disk-encryption-linux) i [szyfrować dyski wirtualne na maszynie wirtualnej z systemem Windows](/azure/virtual-machines/windows/encrypt-disks). |
 | Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Usługa Azure Virtual Machines obsługuje szyfrowanie [ExpressRoute](/azure/expressroute) i wirtualne. Zobacz [szyfrowanie w trakcie przesyłania na maszynach wirtualnych](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Tak | Klucze zarządzane przez klienta to obsługiwany scenariusz szyfrowania platformy Azure; Zobacz [Omówienie usługi Azure Encryption](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
 | Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |

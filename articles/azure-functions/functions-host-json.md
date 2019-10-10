@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5a4bc05e0a0b0b6a2c1b859caea2aadc12b8e0e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3ae75dc988ad70871efa45eb8c61db15804922ee
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096402"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176582"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x  
 
@@ -25,7 +25,7 @@ ms.locfileid: "70096402"
 Plik metadanych *hosta. JSON* zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje aplikacji funkcji. W tym artykule wymieniono ustawienia, które są dostępne dla środowiska uruchomieniowego w wersji 2.  
 
 > [!NOTE]
-> Ten artykuł jest przeznaczony dla Azure Functions 2. x.  Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](functions-host-json-v1.md).
+> Ten artykuł jest przeznaczony dla Azure Functions 2. x.  Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md).
 
 Inne opcje konfiguracji aplikacji funkcji są zarządzane w [ustawieniach aplikacji](functions-app-settings.md).
 
@@ -89,11 +89,11 @@ W poniższych przykładowych plikach *hosta. JSON* dostępne są wszystkie możl
 
 W poniższych sekcjach tego artykułu opisano każdą właściwość najwyższego poziomu. Wszystkie są opcjonalne, o ile nie wskazano inaczej.
 
-## <a name="aggregator"></a>aggregator
+## <a name="aggregator"></a>agregatora
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
-## <a name="applicationinsights"></a>applicationInsights
+## <a name="applicationinsights"></a>ApplicationInsights
 
 To ustawienie jest elementem podrzędnym [rejestrowania](#logging).
 
@@ -117,6 +117,9 @@ Kontroluje [funkcję próbkowania w Application Insights](./functions-monitoring
 |---------|---------|---------| 
 |isEnabled|true|Włącza lub wyłącza próbkowanie.| 
 |maxTelemetryItemsPerSecond|5|Próg, w którym rozpoczyna się próbkowanie.| 
+|EnableLiveMetrics |true|Włącza zbieranie metryk na żywo.|
+|EnableDependencyTracking|true|Włącza śledzenie zależności.|
+|EnablePerformanceCountersCollection|true|Włącza Zbieranie liczników wydajności kudu.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -134,7 +137,7 @@ Ustawienia konfiguracji można znaleźć w temacie [wyzwalacze i powiązania cen
 
 Właściwość zwracająca obiekt, który zawiera wszystkie ustawienia specyficzne dla powiązania, takie jak [http](#http) i [eventHub](#eventhub).
 
-## <a name="functions"></a>— funkcje
+## <a name="functions"></a>functions
 
 Lista funkcji uruchomionych przez hosta zadań. Pusta tablica oznacza uruchamianie wszystkich funkcji. Przeznaczone do użytku tylko w przypadku [uruchamiania lokalnego](functions-run-local.md). W aplikacjach funkcji na platformie Azure zamiast tego należy wykonać kroki opisane w temacie [Jak wyłączyć funkcje w Azure Functions](disable-function.md) , aby wyłączyć określone funkcje zamiast używać tego ustawienia.
 
@@ -149,7 +152,7 @@ Lista funkcji uruchomionych przez hosta zadań. Pusta tablica oznacza uruchamian
 Wskazuje czas trwania dla wszystkich funkcji. Jest on zgodny z formatem ciągu TimeSpan. W planie zużycia bezserwerowego prawidłowy zakres to od 1 sekundy do 10 minut, a wartość domyślna to 5 minut.  
 W przypadku planu dedykowanego (App Service) nie ma żadnego całkowitego limitu i domyślnie zależy od wersji środowiska uruchomieniowego: 
 + Wersja 1. x: wartość domyślna to *null*, co oznacza brak limitu czasu.   
-+ Wersja 2. x: wartość domyślna to 30 minut. Wartość `-1` wskazuje nieograniczone wykonanie.
++ Wersja 2. x: wartość domyślna to 30 minut. Wartość `-1` wskazuje wykonanie nieograniczone.
 
 ```json
 {
@@ -175,9 +178,9 @@ Ustawienia konfiguracji dla [monitora kondycji hosta](https://github.com/Azure/a
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|enabled|true|Określa, czy funkcja jest włączona. | 
+|dostępny|true|Określa, czy funkcja jest włączona. | 
 |healthCheckInterval|10 sekund|Przedział czasu między okresowymi kontrolami kondycji w tle. | 
-|healthCheckWindow|2 minuty|Przedział czasu, który jest używany w połączeniu `healthCheckThreshold` z ustawieniem.| 
+|healthCheckWindow|2 minuty|Przedział czasu, który jest używany w połączeniu z ustawieniem `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maksymalna liczba przypadków, w których Sprawdzenie kondycji może zakończyć się niepowodzeniem przed zainicjowaniem odtwarzania hosta.| 
 |counterThreshold|0,80|Próg, w którym licznik wydajności będzie traktowany jako w złej kondycji.| 
 
@@ -187,7 +190,7 @@ Ustawienia konfiguracji można znaleźć w tematach [wyzwalacze i powiązania HT
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="logging"></a>rejestrować
+## <a name="logging"></a>Rejestrować
 
 Steruje zachowaniem rejestrowania aplikacji funkcji, w tym Application Insights.
 
@@ -209,10 +212,10 @@ Steruje zachowaniem rejestrowania aplikacji funkcji, w tym Application Insights.
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
-|fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania plików jest włączony.  Dostępne opcje `never`to `always`, `debugOnly`,. |
-|logLevel|Nie dotyczy|Obiekt, który definiuje filtrowanie kategorii dzienników dla funkcji w aplikacji. Wersja 2. x jest zgodna z układem ASP.NET Core dla filtrowania kategorii dzienników. Pozwala to na filtrowanie rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dzienników](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji ASP.NET Core. |
-|console|Nie dotyczy| [console](#console) ustawień rejestrowania. |
-|applicationInsights|Nie dotyczy| Ustawienie [applicationInsights](#applicationinsights) . |
+|fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania plików jest włączony.  Dostępne opcje to `never`, `always`, `debugOnly`. |
+|logLevel|nd.|Obiekt, który definiuje filtrowanie kategorii dzienników dla funkcji w aplikacji. Wersja 2. x jest zgodna z układem ASP.NET Core dla filtrowania kategorii dzienników. Pozwala to na filtrowanie rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dzienników](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji ASP.NET Core. |
+|console|nd.| Ustawienie rejestrowania [konsoli](#console) . |
+|ApplicationInsights|nd.| Ustawienie [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
@@ -268,11 +271,11 @@ Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej
 |listenerLockPeriod|00:01:00|Okres, w którym są wykonywane blokady odbiornika.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Przedział czasu używany do odzyskiwania blokady odbiornika, jeśli nie można uzyskać blokady odbiornika podczas uruchamiania.| 
 |lockAcquisitionTimeout|00:01:00|Maksymalny czas, przez jaki środowisko uruchomieniowe podejmie próbę uzyskania blokady.| 
-|lockAcquisitionPollingInterval|Nie dotyczy|Interwał między kolejnymi próbami przejęcia blokady.| 
+|lockAcquisitionPollingInterval|nd.|Interwał między kolejnymi próbami przejęcia blokady.| 
 
 ## <a name="version"></a>version
 
-Ciąg `"version": "2.0"` wersji jest wymagany dla aplikacji funkcji, która jest przeznaczona dla środowiska uruchomieniowego v2.
+Ciąg wersji `"version": "2.0"` jest wymagany dla aplikacji funkcji, która jest przeznaczona dla środowiska uruchomieniowego v2.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
@@ -286,7 +289,7 @@ Zestaw [udostępnionych katalogów kodu](functions-reference-csharp.md#watched-d
 
 ## <a name="manageddependency"></a>managedDependency
 
-Zależność zarządzana to funkcja w wersji zapoznawczej, która jest obecnie obsługiwana tylko w przypadku funkcji opartych na programie PowerShell. Umożliwia automatyczne zarządzanie zależnościami przez usługę. Gdy właściwość enabled ma wartość true, plik Requirements [. psd1](functions-reference-powershell.md#dependency-management) zostanie przetworzony. Zależności zostaną zaktualizowane, gdy zostaną wydane jakiekolwiek wersje pomocnicze.
+Zależność zarządzana to funkcja w wersji zapoznawczej, która jest obecnie obsługiwana tylko w przypadku funkcji opartych na programie PowerShell. Umożliwia automatyczne zarządzanie zależnościami przez usługę. Gdy właściwość enabled ma wartość true, plik [Requirements. psd1](functions-reference-powershell.md#dependency-management) zostanie przetworzony. Zależności zostaną zaktualizowane, gdy zostaną wydane jakiekolwiek wersje pomocnicze.
 
 ```json
 {

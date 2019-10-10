@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 65cf71140d1706b8607e721ac323b1a97ae272fa
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: f69348f1a56845716d8d862f2926774cbc537cf0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898444"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177432"
 ---
 # <a name="application-gateway-configuration-overview"></a>Przegląd konfiguracji Application Gateway
 
@@ -20,7 +20,7 @@ Usługa Azure Application Gateway obejmuje kilka składników, które można sko
 
 ![Wykres przepływu składników Application Gateway](./media/configuration-overview/configuration-overview1.png)
 
-Ten obraz przedstawia aplikację, która ma trzy detektory. Pierwsze dwa są odbiornikami wielolokacjowymi dla `http://acme.com/*` i `http://fabrikam.com/*`, odpowiednio. Oba nasłuchują na porcie 80. Trzecia to podstawowy odbiornik, który ma kompleksowe SSL (SSL).
+Ten obraz przedstawia aplikację, która ma trzy detektory. Pierwsze dwa są odbiornikami z wiele witryn dla `http://acme.com/*` i `http://fabrikam.com/*`. Oba nasłuchują na porcie 80. Trzecia to podstawowy odbiornik, który ma kompleksowe SSL (SSL).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -50,7 +50,7 @@ Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) są obsługiwane w 
 
 - Należy uwzględnić wyjątki dla ruchu przychodzącego na portach 65503-65534 dla jednostki SKU Application Gateway V1 oraz portów 65200-65535 dla jednostki SKU w wersji 2. Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure. Te porty są chronione (zablokowane) przez certyfikaty platformy Azure. Jednostki zewnętrzne, w tym klienci tych bram, nie mogą inicjować zmian w tych punktach końcowych bez odpowiednich certyfikatów.
 
-- Nie można zablokować wychodzącej łączności z Internetem. Domyślne reguły ruchu wychodzącego w sieciowej grupy zabezpieczeń umożliwiają łączność z Internetem. Zalecamy:
+- Nie można zablokować wychodzącej łączności z Internetem. Domyślne reguły ruchu wychodzącego w sieciowej grupy zabezpieczeń umożliwiają łączność z Internetem. Zalecamy wykonanie następujących czynności:
 
   - Nie usuwaj domyślnych reguł dla ruchu wychodzącego.
   - Nie należy tworzyć innych reguł wychodzących, które odrzucają wychodzące połączenia z Internetem.
@@ -61,7 +61,7 @@ Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) są obsługiwane w 
 
 W tym scenariuszu należy użyć sieciowych grup zabezpieczeń w podsieci Application Gateway. W tej kolejności należy umieścić następujące ograniczenia w podsieci:
 
-1. Zezwalaj na ruch przychodzący ze źródłowego zakresu adresów IP/IP.
+1. Zezwalaj na ruch przychodzący ze źródłowego zakresu adresów IP i IP oraz do całej podsieci Application Gateway lub do określonego skonfigurowanego prywatnego adresu IP frontonu. SIECIOWEJ grupy zabezpieczeń nie działa w publicznym adresie IP.
 2. Zezwalaj na żądania przychodzące ze wszystkich źródeł do portów 65503-65534 dla jednostki SKU Application Gateway V1 oraz portów 65200-65535 dla wersji 2 jednostki SKU na potrzeby komunikacji w celu zapewnienia [kondycji wewnętrznej bazy](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)danych. Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure. Te porty są chronione (zablokowane) przez certyfikaty platformy Azure. Bez odpowiednich certyfikatów jednostki zewnętrzne nie mogą inicjować zmian w tych punktach końcowych.
 3. Zezwalaj na wychodzące sondy Azure Load Balancer (tag*AzureLoadBalancer* ) i ruchu przychodzącego sieci wirtualnej (tag*VirtualNetwork* ) w [sieciowej grupie zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview).
 4. Blokuj cały ruch przychodzący za pomocą reguły Odmów.
@@ -87,11 +87,11 @@ Publiczny adres IP nie jest wymagany dla wewnętrznego punktu końcowego, który
 
 Obsługiwany jest tylko 1 publiczny adres IP lub 1 prywatny adres IP. Adres IP frontonu jest wybierany podczas tworzenia bramy aplikacji.
 
-- W przypadku publicznego adresu IP można utworzyć nowy publiczny adres IP lub użyć istniejącego publicznego adresu IP w tej samej lokalizacji, w której znajduje się Brama aplikacji. Jeśli utworzysz nowy publiczny adres IP, nie można później zmienić typu adresu IP, który został wybrany (statyczny lub dynamiczny). Aby uzyskać więcej informacji, zobacz statyczny i [dynamiczny publiczny adres IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
+- W przypadku publicznego adresu IP można utworzyć nowy publiczny adres IP lub użyć istniejącego publicznego adresu IP w tej samej lokalizacji, w której znajduje się Brama aplikacji. Jeśli utworzysz nowy publiczny adres IP, nie można później zmienić typu adresu IP, który został wybrany (statyczny lub dynamiczny). Aby uzyskać więcej informacji, zobacz [statyczny i dynamiczny publiczny adres IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 
 - Dla prywatnego adresu IP można określić prywatny adres IP z podsieci, w której jest tworzona Brama aplikacji. Jeśli nie określisz go, zostanie automatycznie wybrany dowolny adres IP z podsieci. Aby uzyskać więcej informacji, zobacz [Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
-Adres IP frontonu jest skojarzony z odbiornikiem,który sprawdza przychodzące żądania w adresie IP frontonu.
+Adres IP frontonu jest skojarzony z *odbiornikiem*, który sprawdza przychodzące żądania w adresie IP frontonu.
 
 ## <a name="listeners"></a>Odbiorniki
 
@@ -121,7 +121,7 @@ Wybierz adres IP frontonu, który ma zostać skojarzony z tym odbiornikiem. Odbi
 
 Wybierz port frontonu. Wybierz istniejący port lub Utwórz nowy. Wybierz dowolną wartość z [dozwolonego zakresu portów](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Można użyć nie tylko dobrze znanych portów, na przykład 80 i 443, ale dowolnego dozwolonego niestandardowego portu, który jest odpowiedni. Port może być używany na potrzeby odbiorników publicznych lub odbiorników prywatnych.
 
-### <a name="protocol"></a>Protocol
+### <a name="protocol"></a>Protocol (Protokół)
 
 Wybierz pozycję HTTP lub HTTPS:
 
@@ -177,7 +177,7 @@ Podczas tworzenia bramy aplikacji przy użyciu Azure Portal należy utworzyć re
 
 Podczas tworzenia reguły wybiera się między [ *podstawową* a *opartą na ścieżce*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
 
-- Wybierz pozycję podstawowa, jeśli chcesz przesłać dalej wszystkie żądania na skojarzonym odbiorniku (na *przykład<i></i>blog.\*contoso.com/)* do jednej puli zaplecza.
+- Wybierz pozycję podstawowa, jeśli chcesz przesłać dalej wszystkie żądania na skojarzonym odbiorniku (na *przykład<i></i>blog. contoso.com/\*)* do jednej puli zaplecza.
 - Wybierz pozycję oparta na ścieżce, jeśli chcesz kierować żądania z określonych ścieżek URL do określonych pul zaplecza. Wzorzec ścieżki jest stosowany tylko do ścieżki adresu URL, a nie do parametrów zapytania.
 
 #### <a name="order-of-processing-rules"></a>Kolejność reguł przetwarzania
@@ -212,19 +212,19 @@ Dla reguły opartej na ścieżce Dodaj wiele ustawień protokołu HTTP zaplecza,
 
 ### <a name="redirection-setting"></a>Ustawienie przekierowania
 
-W przypadku skonfigurowania przekierowania dla podstawowej reguły wszystkie żądania na skojarzonym odbiorniku są przekierowywane do obiektu docelowego. To jest przekierowanie *globalne* . Jeśli przekierowanie jest skonfigurowane dla reguły opartej na ścieżce, przekierowywane są tylko żądania w określonym obszarze witryny. Przykładem jest obszar koszyka zakupów, który jest oznaczany przez */Cart/\** . Jest to przekierowanie *oparte na ścieżce* .
+W przypadku skonfigurowania przekierowania dla podstawowej reguły wszystkie żądania na skojarzonym odbiorniku są przekierowywane do obiektu docelowego. To jest przekierowanie *globalne* . Jeśli przekierowanie jest skonfigurowane dla reguły opartej na ścieżce, przekierowywane są tylko żądania w określonym obszarze witryny. Przykładem jest obszar koszyka zakupów, który jest oznaczany przez */cart/\** . Jest to przekierowanie *oparte na ścieżce* .
 
 Aby uzyskać więcej informacji na temat przekierowań, zobacz [Omówienie przekierowania Application Gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
 
 #### <a name="redirection-type"></a>Typ przekierowania
 
-Wybierz wymagany typ przekierowania: *Stałe (301)* , *tymczasowe (307)* , *znaleziono (302)* lub *Zobacz inne (303)* .
+Wybierz wymagany typ przekierowania: *trwały (301)* , *tymczasowy (307)* , *znaleziono (302)* lub *Zobacz inne (303)* .
 
-#### <a name="redirection-target"></a>Miejsce docelowe przekierowania
+#### <a name="redirection-target"></a>Cel przekierowania
 
 Wybierz inny odbiornik lub lokację zewnętrzną jako cel przekierowania.
 
-##### <a name="listener"></a>Odbiornik
+##### <a name="listener"></a>Odbiornika
 
 Wybierz odbiornik jako miejsce docelowe przekierowania, aby przekierować ruch z jednego odbiornika do innego na bramie. To ustawienie jest wymagane, jeśli chcesz włączyć przekierowywanie HTTP-to-HTTPS. Przekierowuje ruch z odbiornika źródłowego, który sprawdza przychodzące żądania HTTP do odbiornika docelowego, który sprawdza przychodzące żądania HTTPS. Można również dołączyć ciąg zapytania i ścieżkę z oryginalnego żądania w żądaniu, które jest przekazywane do docelowego przekierowania.
 
@@ -258,11 +258,11 @@ Brama aplikacji kieruje ruch do serwerów zaplecza przy użyciu konfiguracji okr
 
 Ta funkcja jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym serwerze. Pliki cookie zarządzane przez bramę umożliwiają usłudze Application Gateway bezpośredni ruch z sesji użytkownika do tego samego serwera w celu przetworzenia. Jest to ważne, gdy stan sesji jest zapisywany lokalnie na serwerze na potrzeby sesji użytkownika. Jeśli aplikacja nie może obsłużyć koligacji opartej na plikach cookie, nie można użyć tej funkcji. Aby go użyć, należy się upewnić, że klienci obsługują pliki cookie.
 
-### <a name="connection-draining"></a>Opróżnianie połączenia
+### <a name="connection-draining"></a>Opróżnianie połączeń
 
-Opróżnianie połączeń pomaga bezpiecznie usunąć członków puli zaplecza podczas aktualizacji planowanych usług. To ustawienie można zastosować do wszystkich elementów członkowskich puli zaplecza podczas tworzenia reguły. Gwarantuje to, że wszystkie wystąpienia wyrejestrowania puli zaplecza nie odbierają żadnych nowych żądań. W międzyczasie istniejące żądania mogą zakończyć się w skonfigurowanym limicie czasu. Opróżnianie połączeń dotyczy wystąpień zaplecza, które są jawnie usuwane z puli zaplecza przez wywołanie interfejsu API. Dotyczy to również wystąpień zaplecza, które są zgłaszane jako w złej kondycji przez sondy kondycji.
+Opróżnianie połączeń pomaga bezpiecznie usunąć członków puli zaplecza podczas aktualizacji planowanych usług. To ustawienie można zastosować do wszystkich elementów członkowskich puli zaplecza podczas tworzenia reguły. Gwarantuje to, że wszystkie wystąpienia wyrejestrowania puli zaplecza nie odbierają żadnych nowych żądań. W międzyczasie istniejące żądania mogą zakończyć się w skonfigurowanym limicie czasu. Opróżnianie połączeń dotyczy wystąpień zaplecza, które są jawnie usuwane z puli zaplecza przez wywołanie interfejsu API. Dotyczy to również wystąpień zaplecza, które są zgłaszane jako w złej *kondycji* przez sondy kondycji.
 
-### <a name="protocol"></a>Protocol
+### <a name="protocol"></a>Protocol (Protokół)
 
 Application Gateway obsługuje zarówno protokół HTTP, jak i HTTPS w przypadku żądań routingu do serwerów zaplecza. W przypadku wybrania protokołu HTTP ruch do serwerów zaplecza jest niezaszyfrowany. Jeśli nieszyfrowana komunikacja nie jest akceptowalna, wybierz pozycję HTTPS.
 
@@ -303,14 +303,14 @@ To ustawienie umożliwia skonfigurowanie opcjonalnej niestandardowej ścieżki p
 
 Jest to skrót interfejsu użytkownika, który wybiera dwa wymagane ustawienia dla zaplecza Azure App Service. Umożliwia **wybranie nazwy hosta z adresu zaplecza**i utworzenie nowej sondy niestandardowej. (Aby uzyskać więcej informacji, zobacz sekcję [Wybieranie nazwy hosta z ustawienia adres zaplecza w](#pick) tym artykule). Zostanie utworzona nowa sonda, a nagłówek sondy jest wybierany z adresu członka zaplecza.
 
-### <a name="use-custom-probe"></a>Użyj niestandardowej sondy
+### <a name="use-custom-probe"></a>Użyj sondy niestandardowej
 
-To ustawienie kojarzy [](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe) niestandardową sondę z USTAWIENIEM protokołu HTTP. Można skojarzyć tylko jedną sondę niestandardową z ustawieniem protokołu HTTP. Jeśli nie utworzysz jawnie niestandardowej sondy, do monitorowania kondycji zaplecza służy [sonda domyślna](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings) . Zalecamy utworzenie niestandardowej sondy do większej kontroli nad monitorowaniem kondycji zaplecza.
+To ustawienie kojarzy [niestandardową sondę](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe) z USTAWIENIEM protokołu HTTP. Można skojarzyć tylko jedną sondę niestandardową z ustawieniem protokołu HTTP. Jeśli nie utworzysz jawnie niestandardowej sondy, do monitorowania kondycji zaplecza służy [sonda domyślna](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings) . Zalecamy utworzenie niestandardowej sondy do większej kontroli nad monitorowaniem kondycji zaplecza.
 
 > [!NOTE]
 > Niestandardowa Sonda nie monitoruje kondycji puli zaplecza, chyba że odpowiednie ustawienie protokołu HTTP jest jawnie skojarzone z odbiornikiem.
 
-### <a id="pick"/></a>Wybierz nazwę hosta z adresu zaplecza
+### <a id="pick"/> @ no__t-1Pick nazwa hosta z adresu zaplecza
 
 Ta funkcja dynamicznie ustawia nagłówek *hosta* w żądaniu na nazwę hosta puli zaplecza. Używa adresu IP lub nazwy FQDN.
 

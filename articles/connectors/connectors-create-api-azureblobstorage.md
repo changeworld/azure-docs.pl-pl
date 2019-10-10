@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 98a811508d5fa65135c224536b668145ea0808d0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703255"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176064"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Tworzenie obiektów BLOB w usłudze Azure Blob Storage i zarządzanie nimi za pomocą Azure Logic Apps
 
@@ -24,10 +24,11 @@ W tym artykule pokazano, jak można uzyskać dostęp do plików przechowywanych 
 
 Załóżmy, że masz narzędzie, które jest aktualizowane w witrynie sieci Web systemu Azure. który działa jako wyzwalacz aplikacji logiki. Po wystąpieniu tego zdarzenia aplikacja logiki może aktualizować jakiś plik w kontenerze magazynu obiektów blob, który jest akcją w aplikacji logiki.
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> Usługa Logic Apps nie może bezpośrednio uzyskać dostępu do kont usługi Azure Storage, które mają [reguły zapory](../storage/common/storage-network-security.md) i istnieją w tym samym regionie. Aplikacje logiki mogą jednak uzyskiwać dostęp do kont usługi Azure Storage, które istnieją w innym regionie, ponieważ publiczny adres IP jest używany do komunikacji między regionami. Wystarczy upewnić się, że [wychodzące adresy IP są dozwolone dla łączników zarządzanych w Twoim regionie](../logic-apps/logic-apps-limits-and-config.md#outbound). Można też użyć bardziej zaawansowanych opcji w tym miejscu:
->
+> Usługa Logic Apps nie może bezpośrednio uzyskać dostępu do kont usługi Azure Storage, które mają [reguły zapory](../storage/common/storage-network-security.md) i istnieją w tym samym regionie. Jeśli jednak zezwolisz na [wychodzące adresy IP dla łączników zarządzanych w Twoim regionie](../logic-apps/logic-apps-limits-and-config.md#outbound), usługa Logic Apps będzie mogła uzyskać dostęp do kont magazynu w innym regionie, z wyjątkiem sytuacji, gdy używasz łącznika usługi Azure Table Storage lub łącznika usługi Azure queue storage. Aby uzyskać dostęp do Table Storage lub Queue Storage, można nadal używać wyzwalacza HTTP i akcji. 
+> W przeciwnym razie możesz użyć bardziej zaawansowanych opcji tutaj:
+> 
 > * Utwórz [środowisko usługi integracji](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), które może łączyć się z zasobami w sieci wirtualnej platformy Azure.
 >
 > * W przypadku korzystania z warstwy dedykowanej dla API Management można skorzystać z interfejsu API usługi Storage, korzystając z API Management i zezwalając na te adresy IP w ramach zapory. W zasadzie należy dodać sieć wirtualną platformy Azure używaną przez API Management do ustawienia zapory dla konta magazynu. Następnie można użyć akcji API Management lub akcji HTTP do wywołania interfejsów API usługi Azure Storage. Jednak w przypadku wybrania tej opcji musisz samodzielnie obsłużyć proces uwierzytelniania. Aby uzyskać więcej informacji, zobacz [prosta architektura integracji przedsiębiorstwa](https://aka.ms/aisarch).

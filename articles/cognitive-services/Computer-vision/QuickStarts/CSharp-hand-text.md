@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wyodrębnij tekst drukowany i rozpisanych ręcznie,C#'
+title: 'Szybki Start: Wyodrębnianie wydrukowanych i odręcznych tekstu — RESTC#'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start wyodrębnisz drukowany i odręczny tekst z obrazu przy użyciu C#interfejs API przetwarzania obrazów z.
 services: cognitive-services
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7340105e6d64900b769e2601032b04eb7a91e6e1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ca1c1ebee6f2c1a47ee651f9c0d4ea5c62dec8d3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138108"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176913"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Szybki start: Wyodrębnij tekst drukowany i odręczny przy użyciu interfejsu API REST przetwarzanie obrazów iC#
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Szybki Start: Wyodrębnianie wydrukowanych i odręcznych tekstu przy użyciu interfejsu API REST przetwarzanie obrazów iC#
 
 W tym przewodniku Szybki Start zostanie wyodrębniony drukowany i/lub odręczny tekst z obrazu za pomocą interfejsu API REST przetwarzanie obrazów. Przy użyciu metod operacji odczytu i [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) możesz wykryć tekst w obrazie i wyodrębnić rozpoznane znaki do strumienia znaków, który można odczytać. Interfejs API określi model rozpoznawania, który ma być używany dla każdego wiersza tekstu, aby obsługiwał obrazy zarówno w postaci tekstu, jak i w postaci odręcznej.
 
 > [!IMPORTANT]
-> Metoda [odczytywania wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) jest uruchamiana asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego Metoda Read zwraca identyfikator URI w `Operation-Location` polu nagłówka odpowiedzi. Następnie można użyć tego identyfikatora URI, który reprezentuje metodę [wyniku operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
+> Metoda [odczytywania wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) jest uruchamiana asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego Metoda Read zwraca identyfikator URI w polu nagłówka odpowiedzi `Operation-Location`. Następnie można użyć tego identyfikatora URI, który reprezentuje metodę [wyniku operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Wymagany jest [program Visual Studio 2015 lub nowszy](https://visualstudio.microsoft.com/downloads/).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` nazwane `COMPUTER_VISION_ENDPOINT`i.
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi o nazwach odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample-application"></a>Tworzenie i uruchamianie przykładowej aplikacji
 
@@ -63,7 +63,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the Batch Read method endpoint
-        const string uriBase = endpoint + "vision/v2.0/read/core/asyncBatchAnalyze";
+        const string uriBase = endpoint + "vision/v2.1/read/core/asyncBatchAnalyze";
 
         static void Main()
         {

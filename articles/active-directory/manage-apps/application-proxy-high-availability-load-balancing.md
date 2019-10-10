@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 10/08/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5f814eac095770990ecbc0c4b01d2e0cc6f931
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667197"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169803"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Wysoka dostępność i równoważenie obciążenia łączników i aplikacji serwera proxy aplikacji
 
@@ -81,16 +81,16 @@ W niektórych sytuacjach (takich jak Inspekcja, równoważenie obciążenia itp.
 
 ## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>Najlepsze rozwiązania dotyczące równoważenia obciążenia między wieloma serwerami aplikacji
 Gdy grupa łączników przypisana do aplikacji serwera proxy aplikacji ma dwa lub więcej łączników, a uruchomiona jest aplikacja sieci Web zaplecza na wielu serwerach (farmie serwerów), wymagana jest właściwa strategia równoważenia obciążenia. Dobrą strategią jest zagwarantowanie, że serwery będą odbierać żądania klientów równomiernie i uniemożliwiają użycie serwerów w farmie serwerów.
-### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Scenariusz 1: Aplikacja zaplecza nie wymaga trwałości sesji
+### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Scenariusz 1: aplikacja zaplecza nie wymaga trwałości sesji
 Najprostszym scenariuszem jest to, że aplikacja sieci Web zaplecza nie wymaga lepkość sesji (trwałości sesji). Każde żądanie od użytkownika może być obsługiwane przez dowolne wystąpienie aplikacji zaplecza w farmie serwerów. Możesz użyć modułu równoważenia obciążenia warstwy 4 i skonfigurować go bez koligacji. Niektóre opcje obejmują Równoważenie obciążenia sieciowego firmy Microsoft i Azure Load Balancer lub moduł równoważenia obciążenia od innego dostawcy. Alternatywnie można skonfigurować usługę DNS z działaniem okrężnym.
-### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Scenariusz 2: Aplikacja zaplecza wymaga trwałości sesji
+### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Scenariusz 2: aplikacja zaplecza wymaga trwałości sesji
 W tym scenariuszu aplikacja sieci Web zaplecza wymaga lepkość sesji (trwałości sesji) podczas sesji uwierzytelnionej. Wszystkie żądania od użytkownika muszą być obsługiwane przez wystąpienie aplikacji zaplecza, które działa na tym samym serwerze w farmie serwerów.
 Ten scenariusz może być bardziej skomplikowany, ponieważ klient zazwyczaj nawiązuje wiele połączeń z usługą serwera proxy aplikacji. Żądania przez różne połączenia mogą pojawić się na różnych łącznikach i serwerach w farmie. Ponieważ każdy łącznik używa własnego adresu IP do komunikacji, moduł równoważenia obciążenia nie może zapewnić lepkość sesji na podstawie adresu IP łączników. Koligacja źródłowego adresu IP nie może być używana.
 Poniżej przedstawiono kilka opcji scenariusza 2:
 
-- Option 1: Zapodstawową trwałość sesji w pliku cookie sesji ustawionym przez moduł równoważenia obciążenia. Ta opcja jest zalecana, ponieważ umożliwia równomierne rozłożenie obciążenia między serwerami zaplecza. Wymaga modułu równoważenia obciążenia warstwy 7 z tą możliwością, który może obsłużyć ruch HTTP i zakończyć połączenie SSL. Możesz użyć usługi Azure Application Gateway (koligacja sesji) lub modułu równoważenia obciążenia od innego dostawcy.
+- Opcja 1: oparcie trwałości sesji w pliku cookie sesji ustawionych przez moduł równoważenia obciążenia. Ta opcja jest zalecana, ponieważ umożliwia równomierne rozłożenie obciążenia między serwerami zaplecza. Wymaga modułu równoważenia obciążenia warstwy 7 z tą możliwością, który może obsłużyć ruch HTTP i zakończyć połączenie SSL. Możesz użyć usługi Azure Application Gateway (koligacja sesji) lub modułu równoważenia obciążenia od innego dostawcy.
 
-- Opcja 2: Podstawę trwałości sesji dla pola nagłówka X-forwardd-for. Ta opcja wymaga modułu równoważenia obciążenia warstwy 7 z tą możliwością, która może obsługiwać ruch HTTP i przerywa połączenie SSL.  
+- Opcja 2: oparcie trwałości sesji w polu X-forwardd-for. Ta opcja wymaga modułu równoważenia obciążenia warstwy 7 z tą możliwością, która może obsługiwać ruch HTTP i przerywa połączenie SSL.  
 
 - Opcja 3: Skonfiguruj aplikację zaplecza, aby nie wymagała trwałości sesji.
 
@@ -98,7 +98,8 @@ Zapoznaj się z dokumentacją dostawcy oprogramowania, aby poznać wymagania dot
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Włącz serwer Proxy aplikacji](application-proxy-add-on-premises-application.md)
+- [Włącz serwer proxy aplikacji](application-proxy-add-on-premises-application.md)
 - [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Włącz dostęp warunkowy](application-proxy-integrate-with-sharepoint-server.md)
-- [Rozwiązywanie problemów z serwerem Proxy aplikacji](application-proxy-troubleshoot.md)
+- [Rozwiązywanie problemów z serwerem proxy aplikacji](application-proxy-troubleshoot.md)
+- [Dowiedz się, jak architektura usługi Azure AD obsługuje wysoką dostępność](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

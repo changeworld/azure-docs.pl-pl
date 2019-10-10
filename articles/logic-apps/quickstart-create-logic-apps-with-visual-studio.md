@@ -12,12 +12,12 @@ ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: 194004362449f2f59a53d45e18e8dd72a29cc79a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 47b7609fe111ecbe41a161bfbff1f7225ad66357
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029587"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165917"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Szybki Start: Tworzenie zautomatyzowanych zadań, procesów i przepływów pracy przy użyciu Azure Logic Apps — Visual Studio
 
@@ -58,6 +58,8 @@ W tym przewodniku szybki start utworzysz tę samą aplikację logiki przy użyci
   
     Możesz pobrać i zainstalować narzędzia Azure Logic Apps Tools bezpośrednio z witryny Visual Studio Marketplace lub dowiedzieć się, [jak zainstalować to rozszerzenie z poziomu programu Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
     Upewnij się, że po zakończeniu instalacji program Visual Studio zostanie ponownie uruchomiony.
+
+* Aby współpracować z różnymi środowiskami platformy Azure, takimi jak Azure Government, można zainstalować i używać rozszerzenia [selektora środowiska platformy Azure](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) , które ułatwia przełączanie się między środowiskami. Aby uzyskać więcej informacji, zobacz [wprowadzenie do rozszerzenia środowiska Azure Environment Selector Visual Studio](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/).
 
 * Dostęp do Internetu podczas korzystania z osadzonego Projektanta aplikacji logiki
 

@@ -13,20 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38cc8fd4e063896bbd8843a54f0a01058462c618
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c59a0b40065be1554e79186227cd2e90d68e7222
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901453"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174205"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Pobieranie listy użytkowników (wersja zapoznawcza) w portalu Azure Active Directory
 
 Azure Active Directory (Azure AD) obsługuje operacje importowania użytkowników zbiorczych (tworzenia).
-
-## <a name="bulk-download-service-limits"></a>Limity usługi pobierania zbiorczego
-
-Każde działanie zbiorcze służące do tworzenia listy użytkowników może być uruchamiane przez maksymalnie jedną godzinę. Umożliwia to utworzenie i pobranie listy dla co najmniej 500 000 użytkowników.
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 
@@ -35,7 +31,7 @@ Aby pobrać listę użytkowników z centrum administracyjnego usługi Azure AD, 
 ## <a name="to-download-a-list-of-users"></a>Aby pobrać listę użytkowników
 
 1. [Zaloguj się do swojej organizacji usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora użytkownika w organizacji.
-1. W usłudze Azure AD wybierz opcję **Użytkownicy** > **pobierają użytkowników**.
+1. W usłudze Azure AD wybierz pozycję **użytkownicy** > **Pobierz użytkowników**.
 1. Na stronie **pobieranie użytkowników** wybierz pozycję **Rozpocznij** , aby wyświetlić plik CSV z listą właściwości profilu użytkownika. W przypadku wystąpienia błędów można pobrać i wyświetlić plik wyników na stronie wyników operacji zbiorczej. Plik zawiera przyczynę każdego błędu.
 
    ![Wybierz, gdzie chcesz wyświetlić listę użytkowników, których chcesz pobrać](./media/users-bulk-download/bulk-download.png)
@@ -45,6 +41,10 @@ Aby pobrać listę użytkowników z centrum administracyjnego usługi Azure AD, 
 Stan oczekujących żądań zbiorczych można zobaczyć na stronie **wyników operacji zbiorczej (wersja zapoznawcza)** .
 
    ![Sprawdź stan przekazywania na stronie wyników operacji zbiorczych](./media/users-bulk-download/bulk-center.png)
+
+## <a name="bulk-download-service-limits"></a>Limity usługi pobierania zbiorczego
+
+Każde działanie zbiorcze służące do tworzenia listy użytkowników może być uruchamiane przez maksymalnie jedną godzinę. Umożliwia to utworzenie i pobranie listy dla co najmniej 500 000 użytkowników.
 
 ## <a name="next-steps"></a>Następne kroki
 

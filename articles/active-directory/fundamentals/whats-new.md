@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2598ce01c749574833d53133ed3aced184e71737
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 616a637df20e43c20faadaf3db9243c28f94de34
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694602"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174728"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co nowego w Azure Active Directory?
 
@@ -137,7 +137,7 @@ Do modułu AzureADPreview dodano nowe polecenia cmdlet, które ułatwiają Defin
 **Kategoria usługi:** Różnych  
 **Możliwość produktu:** Katalogi
 
-Firma Microsoft udostępniła zaktualizowaną wersję Azure AD Connect dla klientów korzystających z aktualizacji. Ta nowa wersja zawiera kilka nowych funkcji, ulepszeń i poprawek błędów. Aby uzyskać więcej informacji o tej nowej wersji, zobacz [Azure AD Connect: historia](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#14x0)wersji.
+Firma Microsoft udostępniła zaktualizowaną wersję Azure AD Connect dla klientów korzystających z aktualizacji. Ta nowa wersja zawiera kilka nowych funkcji, ulepszeń i poprawek błędów. Aby uzyskać więcej informacji o tej nowej wersji, zobacz [Azure AD Connect: historia](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#14250)wersji.
 
 ---
 
@@ -165,7 +165,7 @@ Od 1 lipca 2019 firma Microsoft zatrzymała ofertę serwera usługi MFA dla nowy
 
 ---
 
-## <a name="august-2019"></a>2019 sierpnia
+## <a name="august-2019"></a>Sierpień 2019
 
 ### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>Zaplanuj zmianę: zaniechanie Power BI pakietów zawartości
 
@@ -390,7 +390,7 @@ Aby uzyskać więcej informacji, zobacz [powiadomienia o zmianach w usłudze Azu
 
 ---
 
-## <a name="july-2019"></a>Lipiec 2019
+## <a name="july-2019"></a>Lipiec 2019 r.
 
 ### <a name="plan-for-change-application-proxy-service-update-to-support-only-tls-12"></a>Zaplanuj zmianę: Aktualizacja usługi proxy aplikacji do obsługi tylko protokołu TLS 1,2
 
@@ -487,7 +487,7 @@ Teraz można zautomatyzować tworzenie, aktualizowanie i usuwanie kont użytkown
 
 - [Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-provisioning-tutorial)
 
-- [Smartsheet](https://docs.microsoft.com/azure/active-directory/saas-apps/smartsheet-provisioning-tutorial)
+- [Narzędzia Smartsheet](https://docs.microsoft.com/azure/active-directory/saas-apps/smartsheet-provisioning-tutorial)
 
 Aby uzyskać więcej informacji o tym, jak lepiej zabezpieczyć organizację przy użyciu funkcji automatycznego inicjowania obsługi kont użytkowników, zobacz [Automatyzowanie aprowizacji użytkowników do aplikacji SaaS przy użyciu usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
 
@@ -591,7 +591,7 @@ Teraz można zautomatyzować tworzenie, aktualizowanie i usuwanie kont użytkown
 
 - [Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-provisioning-tutorial)
 
-- [Smartsheet](https://docs.microsoft.com/azure/active-directory/saas-apps/smartsheet-provisioning-tutorial)
+- [Narzędzia Smartsheet](https://docs.microsoft.com/azure/active-directory/saas-apps/smartsheet-provisioning-tutorial)
 
 Aby uzyskać więcej informacji o tym, jak lepiej zabezpieczyć organizację przy użyciu funkcji automatycznego inicjowania obsługi kont użytkowników, zobacz [Automatyzacja aprowizacji użytkowników w aplikacjach SaaS za pomocą usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
@@ -647,7 +647,7 @@ Aby uzyskać więcej informacji o tych aktualizacjach, zobacz [filtrowanie dzien
 
 ---
 
-## <a name="june-2019"></a>Czerwiec 2019
+## <a name="june-2019"></a>Czerwiec 2019 r.
 
 ### <a name="new-riskdetections-api-for-microsoft-graph-public-preview"></a>Nowy interfejs API riskDetections dla Microsoft Graph (publiczna wersja zapoznawcza)
 

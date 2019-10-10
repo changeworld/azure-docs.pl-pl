@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wyodrębnienie tekstu drukowanego - REST, Python'
+title: 'Szybki Start: Wyodrębnianie wydrukowanych tekstu — REST, Python'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst drukowany przy użyciu interfejsu API przetwarzania obrazów i języka Python.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7ae005fe4bc822346e69d23c013cd597b7645c7e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cbc1fc01663dd2425f5cf3481a936d94f6f7cd71
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137533"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177122"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Szybki start: Wyodrębnij drukowany tekst (OCR) przy użyciu interfejsu API REST przetwarzanie obrazów i języka Python
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Szybki Start: Wyodrębnianie wydruku tekstu (OCR) przy użyciu interfejsu API REST przetwarzanie obrazów i języka Python
 
 W tym przewodniku Szybki start dowiesz się, jak wyodrębnić tekst drukowany z obrazu za pomocą optycznego rozpoznawania znaków (OCR) przy użyciu interfejsu API REST przetwarzania obrazów. Metoda [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) pozwala wykrywać na obrazie tekst drukowany i wyodrębniać rozpoznane znaki do strumienia znaków, którego mogą używać komputery.
 
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` nazwane `COMPUTER_VISION_ENDPOINT`i.
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi o nazwach odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
@@ -62,7 +62,7 @@ else:
 if 'COMPUTER_VISION_ENDPOINT' in os.environ:
     endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-ocr_url = endpoint + "vision/v2.0/ocr"
+ocr_url = endpoint + "vision/v2.1/ocr"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" + \
@@ -117,7 +117,7 @@ response = requests.post(ocr_url, headers=headers, params=params, data = image_d
 
 ## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa strona internetowa analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa strona sieci Web analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
 
 ```json
 {

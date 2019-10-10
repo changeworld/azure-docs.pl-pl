@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 4f2aa4b848172ab8b6a7e74de7dc1bc5f80639a1
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.author: atsenthi
+ms.openlocfilehash: cae701e34c3934e8ba8a289e7804e8852f6b5288
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335643"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167384"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Planowanie pojemności dla aplikacji Service Fabric
 W tym dokumencie przedstawiono sposób oszacowania ilości zasobów (procesor CPU, pamięć RAM, magazyn dyskowy) potrzebnych do uruchamiania aplikacji Service Fabric platformy Azure. Często wymagania dotyczące zasobów mogą ulec zmianie w czasie. Zwykle wymaga to kilku zasobów podczas opracowywania lub testowania usługi, a następnie wymaga większej ilości zasobów podczas pracy w środowisku produkcyjnym, a aplikacja rośnie w popularności. Podczas projektowania aplikacji należy wziąć pod uwagę długoterminowe wymagania i wprowadzić opcje, które umożliwiają skalowanie usługi w celu sprostania wysokim zapotrzebowaniem klienta.
@@ -59,7 +59,7 @@ Teraz w oparciu o wszystkie te informacje, arkusz kalkulacyjny pokazuje, że mo�
 
 ![Arkusz kalkulacyjny dla obliczeń kosztów][Image1]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zapoznaj się z [partycjonowaniem Service Fabric usługach][10] , aby dowiedzieć się więcej na temat partycjonowania usługi.
 
 <!--Image references-->

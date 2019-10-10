@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 417ff7ac345b9a83b3d3f4c50e9fd141d74bc99c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103546"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177064"
 ---
 # <a name="call-the-computer-vision-api"></a>Wywoływanie interfejsu API przetwarzania obrazów
 
@@ -31,7 +31,7 @@ W tym artykule przedstawiono sposób wywoływania interfejs API przetwarzania ob
 - Obsługiwane metody wejściowe: plik binarny RAW obrazu w postaci aplikacji/strumienia oktetowego lub adresu URL obrazu
 - Obsługiwane formaty plików obrazów: JPEG, PNG, GIF i BMP
 - Rozmiar pliku obrazu: 4 MB lub mniej
-- Wymiary obrazu: 50 &times; 50 pikseli lub więcej
+- Wymiary obrazu: 50 @no__t – 0 50 pikseli lub więcej
   
 W przykładach w tym artykule przedstawiono następujące funkcje:
 
@@ -40,8 +40,8 @@ W przykładach w tym artykule przedstawiono następujące funkcje:
 
 Funkcje te oferują następujące opcje:
 
-- **Opcja 1**: Analiza w zakresie — analizowanie tylko określonego modelu
-- **Opcja 2**: Rozszerzona analiza — analizowanie w celu zapewnienia dodatkowych informacji przy użyciu [taksonomii 86-kategorii](../Category-Taxonomy.md)
+- **Opcja 1**: Analiza z zakresem — analizowanie tylko określonego modelu
+- **Opcja 2**: rozszerzona analiza — analizowanie w celu zapewnienia dodatkowych informacji przy użyciu [taksonomii 86-kategorii](../Category-Taxonomy.md)
   
 ## <a name="authorize-the-api-call"></a>Autoryzowanie wywołania interfejsu API
 
@@ -56,7 +56,7 @@ Klucz subskrypcji można przekazać, wykonując jedną z następujących czynno�
 * Przekaż go za pomocą ciągu zapytania, jak w poniższym przykładzie interfejs API przetwarzania obrazów:
 
   ```
-  https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+  https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
   ```
 
 * Określ ją w nagłówku żądania HTTP:
@@ -80,10 +80,10 @@ Podstawowym sposobem wykonania wywołania interfejs API przetwarzania obrazów j
 
 W przypadku określonego obrazu Pobierz Tagi i opis przy użyciu jednej z następujących opcji:
 
-### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Option 1: Pobierz listę tagów i opis
+### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Opcja 1: Pobieranie listy tagów i opis
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
 
 ```csharp
@@ -100,19 +100,19 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 }
 ```
 
-### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>Opcja 2: Pobierz tylko listę tagów lub tylko opis
+### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>Opcja 2: Pobieranie listy tylko tagów lub tylko opis
 
 W przypadku tylko tagów Uruchom polecenie:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/tag?subscription-key=<Your subscription key>
 var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
 ```
 
 Aby uzyskać tylko opis, uruchom polecenie:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/describe?subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
   imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
@@ -121,25 +121,25 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 
 ## <a name="get-domain-specific-analysis-celebrities"></a>Pobierz analizę specyficzną dla domeny (osobistości)
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Option 1: Analiza w zakresie — analizowanie tylko określonego modelu
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Opcja 1: Analiza z zakresem — analizowanie tylko określonego modelu
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
 ```
 
 Dla tej opcji wszystkie pozostałe parametry zapytania {visualFeatures, details} są nieprawidłowe. Jeśli chcesz wyświetlić wszystkie obsługiwane modele, użyj kodu:
 
 ```
-GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models 
+GET https://westus.api.cognitive.microsoft.com/vision/v2.1/models 
 var models = await visionClient.ListModelsAsync();
 ```
 
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>Opcja 2: Rozszerzona analiza — analizowanie w celu zapewnienia dodatkowych informacji przy użyciu taksonomii 86-kategorii
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>Opcja 2: rozszerzona analiza — analizowanie w celu zapewnienia dodatkowych informacji przy użyciu taksonomii 86-kategorii
 
 W przypadku aplikacji, w których chcesz uzyskać ogólną analizę obrazu oprócz szczegółów z jednego lub kilku modeli specyficznych dla domeny, należy zwiększyć interfejs API w wersji 1 za pomocą parametru zapytania models.
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=celebrities
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=celebrities
 ```
 
 Po wywołaniu tej metody należy najpierw wywołać klasyfikatora [kategorii 86](../Category-Taxonomy.md) . Jeśli którakolwiek z kategorii jest zgodna ze znanym lub zgodnym modelem, wystąpi drugie przejście do klasyfikatora. Na przykład jeśli "Szczegóły = wszystkie" lub "Szczegóły" zawierają "osobistości", wywoływany jest model osobistości po wywołaniu klasyfikatora kategorii 86. Wynik zawiera kategorię Category (kategoria). W przeciwieństwie do opcji 1, ta metoda zwiększa opóźnienie dla użytkowników, którzy interesują osobistości.
@@ -177,9 +177,9 @@ Oto przykład:
 }
 ```
 
-Pole | Type | Zawartość
+Pole | Typ | Zawartość
 ------|------|------|
-`Tags`  | `object` | Obiekt najwyższego poziomu dla tablicy tagów.
+Tagi  | `object` | Obiekt najwyższego poziomu dla tablicy tagów.
 tags[].Name | `string`  | Słowo kluczowe ze klasyfikatora tagów.
 tags[].Score    | `number`  | Wynik pewności z zakresu od 0 do 1.
 description  | `object` | Obiekt najwyższego poziomu opisu.
@@ -189,7 +189,7 @@ description.captions[].confidence   | `number`  | Wynik pewności dla frazy.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Pobieranie i poznawanie danych wyjściowych w formacie JSON dla modeli specyficznych dla domeny
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Option 1: Analiza w zakresie — analizowanie tylko określonego modelu
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Opcja 1: Analiza z zakresem — analizowanie tylko określonego modelu
 
 Wyjście jest tablicą tagów, jak pokazano w następującym przykładzie:
 
@@ -208,7 +208,7 @@ Wyjście jest tablicą tagów, jak pokazano w następującym przykładzie:
 }
 ```
 
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>Opcja 2: Ulepszona analiza — Analizuj, aby zapewnić dodatkowe szczegóły przy użyciu taksonomii "86-Categories"
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>Opcja 2: rozszerzona analiza — analizowanie w celu zapewnienia dodatkowych informacji przy użyciu taksonomii "86-Categories"
 
 W przypadku modeli specyficznych dla domeny przy użyciu opcji 2 (rozszerzona analiza) typ zwracany kategorii jest rozszerzony, jak pokazano w następującym przykładzie:
 
@@ -239,9 +239,9 @@ W przypadku modeli specyficznych dla domeny przy użyciu opcji 2 (rozszerzona an
 
 Pole kategorie jest listą co najmniej jednej [kategorii 86](../Category-Taxonomy.md) w oryginalnej taksonomii. Kategorie kończące się znakiem podkreślenia są zgodne z tą kategorią i jej elementami podrzędnymi (na przykład "people_" lub "people_group" dla modelu osobistości).
 
-Pole   | Type  | Zawartość
+Pole   | Typ  | Zawartość
 ------|------|------|
-kategorie | `object`   | Obiekt najwyższego poziomu.
+categories | `object`   | Obiekt najwyższego poziomu.
 categories[].name    | `string` | Nazwa z listy Taksonomia kategorii 86.
 categories[].score  | `number`  | Wynik pewności z zakresu od 0 do 1.
 categories[].detail  | `object?`      | Obowiązkowe Obiekt szczegółowy.

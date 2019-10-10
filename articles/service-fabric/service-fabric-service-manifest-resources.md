@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 82b6e701a5f76aa4c2cea78417ca9bcbeeb10308
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.author: atsenthi
+ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927692"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170454"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Określanie zasobów w manifeście usługi
 ## <a name="overview"></a>Przegląd
@@ -29,7 +29,7 @@ Manifest usługi umożliwia deklarowanie/zmianę zasobów używanych przez usłu
 Gdy zasób punktu końcowego jest zdefiniowany w manifeście usługi, Service Fabric przypisuje porty z zakresu portów aplikacji zastrzeżonej, gdy port nie jest jawnie określony. Na przykład poszukaj w punkcie końcowym *ServiceEndpoint1* określonym we fragmencie kodu manifestu dostarczonym po tym akapicie. Ponadto usługi mogą również zażądać określonego portu w zasobie. Do replik usługi uruchomionych w różnych węzłach klastra można przypisać różne numery portów, natomiast repliki usługi uruchomionej w tym samym węźle współużytkują port. Repliki usług mogą następnie używać tych portów w razie potrzeby replikacji i nasłuchiwania żądań klientów.
 
 > [!WARNING] 
-> Przez projektowanie portów statycznych nie należy nakładać się na zakres portów aplikacji określony w ClusterManifest. Jeśli określisz port statyczny, przypisz go poza zakresem portów aplikacji, w przeciwnym razie spowoduje to konflikty portów. Za pomocą programu Release 6.5 ZASTOSUJESZ pakietu CU2 zostanie **wyświetlone ostrzeżenie** o kondycji, gdy wykryjesz taki konflikt, ale zezwolisz na synchronizację wdrożenia z przesłanym zachowaniem 6,5. Jednak firma Microsoft może uniemożliwić wdrożenie aplikacji z następnych głównych wersji.
+> Przez projektowanie portów statycznych nie należy nakładać się na zakres portów aplikacji określony w ClusterManifest. Jeśli określisz port statyczny, przypisz go poza zakresem portów aplikacji, w przeciwnym razie spowoduje to konflikty portów. Za pomocą programu Release 6.5 ZASTOSUJESZ pakietu CU2 zostanie **wyświetlone ostrzeżenie o kondycji** , gdy wykryjesz taki konflikt, ale zezwolisz na synchronizację wdrożenia z przesłanym zachowaniem 6,5. Jednak firma Microsoft może uniemożliwić wdrożenie aplikacji z następnych głównych wersji.
 >
 
 ```xml
@@ -56,7 +56,7 @@ W przypadku wielu pakietów kodu w jednym pakiecie usługi, w sekcji **punkty ko
 Zapoznaj się z tematem [konfigurowanie Reliable Services stanowych](service-fabric-reliable-services-configuration.md) , aby dowiedzieć się więcej na temat odwołań do punktów końcowych z pliku ustawień pakietu konfiguracji (Settings. xml).
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Przykład: Określanie punktu końcowego HTTP dla usługi
-Poniższy manifest usługi definiuje jeden zasób punktu końcowego TCP i dwa zasoby punktu końcowego HTTP w &lt;elemencie&gt; Resources.
+Poniższy manifest usługi definiuje jeden zasób punktu końcowego TCP i dwa zasoby punktu końcowego HTTP w elemencie &lt;Resources @ no__t-1.
 
 Punkty końcowe HTTP są automatycznie listą ACL pochodzącą przez Service Fabric.
 
@@ -196,7 +196,7 @@ W poniższej tabeli Dodaj następujące parametry:
   </Parameters>
 ```
 
-Podczas wdrażania aplikacji można przekazać te wartości jako elementu applicationparameters.  Przykład:
+Podczas wdrażania aplikacji można przekazać te wartości jako elementu applicationparameters.  Na przykład:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -218,4 +218,4 @@ Jeśli w określonym elemencie servicemanifest
 
 A wartość PORT1 i Protocol1 dla parametrów aplikacji ma wartość null lub jest pusta. Port jest nadal ustalany przez servicefabric. Protokół będzie TCP.
 
-Załóżmy, że określono nieprawidłową wartość. Podobnie jak w przypadku portu określono wartość ciągu "foo" zamiast int.  Polecenie New-ServiceFabricApplication zakończy się niepowodzeniem z powodu błędu: Parametr override o nazwie "ServiceEndpoint1" w sekcji "ResourceOverrides" jest nieprawidłowy. Określona wartość to "foo", a wymagane jest "int".
+Załóżmy, że określono nieprawidłową wartość. Podobnie jak w przypadku portu określono wartość ciągu "foo" zamiast int.  Polecenie New-ServiceFabricApplication nie powiedzie się z powodu błędu: parametr override o nazwie "ServiceEndpoint1" atrybutu "PORT1" w sekcji "ResourceOverrides" jest nieprawidłowy. Określona wartość to "foo", a wymagane jest "int".

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 6df6bb5c0be4bf1779541a815bd933965024809f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960403"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176688"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozszerzenie DSC dla systemu Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
 Konfiguracja żądanego stanu (DSC) to platforma zarządzania, która umożliwia zarządzanie infrastrukturą IT i programistyczną przy użyciu konfiguracji jako kodu.
 
-> ! Zwróć uwagę na to, że rozszerzenie DSC dla systemu Linux i [rozszerzenie maszyny wirtualnej Azure monitor dla systemu Linux](/virtual-machines/extensions/oms-linux) aktualnie stanowią konflikt i nie są obsługiwane w konfiguracji równoległej.  Oznacza to, że nie należy używać obu rozwiązań jednocześnie na tej samej maszynie wirtualnej.
+> ! Zwróć uwagę na to, że rozszerzenie DSC dla systemu Linux i [rozszerzenie maszyny wirtualnej Azure monitor dla systemu Linux](/azure/virtual-machines/extensions/oms-linux) aktualnie stanowią konflikt i nie są obsługiwane w konfiguracji równoległej.  Oznacza to, że nie należy używać obu rozwiązań jednocześnie na tej samej maszynie wirtualnej.
 
 Rozszerzenie DSCForLinux jest publikowane i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta OMI i DSC na maszynach wirtualnych platformy Azure. Rozszerzenie DSC może również wykonywać następujące akcje
 
@@ -41,9 +41,9 @@ Rozszerzenie DSCForLinux jest publikowane i obsługiwane przez firmę Microsoft.
 
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenie DSC Linux obsługuje wszystkie [dystrybucje systemu Linux zatwierdzone na platformie Azure](/virtual-machines/linux/endorsed-distros) z wyjątkiem:
+Rozszerzenie DSC Linux obsługuje wszystkie [dystrybucje systemu Linux zatwierdzone na platformie Azure](/azure/virtual-machines/linux/endorsed-distros) z wyjątkiem:
 
-| Mieszczenie | Wersja |
+| Dystrybucja | Wersja |
 |---|---|
 | Debian | wszystkie wersje |
 | Ubuntu| 18,04 |
@@ -274,7 +274,7 @@ $publicConfig = '{
 }'
 ```
 
-## <a name="template-deployment"></a>Template deployment
+## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
 Rozszerzenia maszyny wirtualnej platformy Azure można wdrażać za pomocą szablonów Azure Resource Manager. Szablony są idealnym rozwiązaniem podczas wdrażania co najmniej jednej maszyny wirtualnej, która wymaga konfiguracji po wdrożeniu, takiej jak dołączanie do Azure Automation. 
 
@@ -305,7 +305,7 @@ Aby poznać najnowszą wersję rozszerzenia, uruchom polecenie:
 $ azure vm extension list
 ```
 
-#### <a name="212-resource-manager"></a>2.1.2. Menedżer zasobów
+#### <a name="212-resource-manager"></a>2.1.2. Resource Manager
 Aby przełączyć się do trybu Azure Resource Manager, możesz uruchomić:
 ```
 $ azure config mode arm
@@ -425,7 +425,7 @@ W niektórych przypadkach rozszerzenie DSC systemu Linux nie może zainstalować
 
 
 
-### <a name="support"></a>Obsługa
+### <a name="support"></a>Pomoc techniczna
 
 Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/community/). Alternatywnie możesz zaplikować zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
 

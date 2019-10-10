@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 80ac20fd2dc7bfe3fea6a58a6df94e3f7b99a700
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: 496d47c88636b11375d97cc4bc50efd9d468d645
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599223"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170462"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Zaimportuj plik certyfikatu do kontenera działającego na Service Fabric
 
-Usługi kontenera można zabezpieczyć, określając certyfikat. Service Fabric udostępnia mechanizm dla usług wewnątrz kontenera w celu uzyskania dostępu do certyfikatu zainstalowanego na węzłach w klastrze z systemem Windows lub Linux (wersja 5,7 lub nowsza). Certyfikat należy zainstalować w magazynie certyfikatów w obszarze LocalMachine na wszystkich węzłach klastra. Klucz prywatny odpowiadający certyfikatowi musi być dostępny, dostępny i włączony do eksportu systemu Windows. Informacje o certyfikacie znajdują się w manifeście aplikacji pod `ContainerHostPolicies` tagiem, jak pokazano w poniższym fragmencie kodu:
+Usługi kontenera można zabezpieczyć, określając certyfikat. Service Fabric udostępnia mechanizm dla usług wewnątrz kontenera w celu uzyskania dostępu do certyfikatu zainstalowanego na węzłach w klastrze z systemem Windows lub Linux (wersja 5,7 lub nowsza). Certyfikat należy zainstalować w magazynie certyfikatów w obszarze LocalMachine na wszystkich węzłach klastra. Klucz prywatny odpowiadający certyfikatowi musi być dostępny, dostępny i włączony do eksportu systemu Windows. Informacje o certyfikacie znajdują się w manifeście aplikacji pod tagiem `ContainerHostPolicies`, jak pokazano w poniższym fragmencie kodu:
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -48,7 +48,7 @@ Alternatywnie, jeśli masz już certyfikaty w wymaganym formularzu i chcesz uzys
   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
  ```
 
-Usługa kontenera lub proces jest odpowiedzialny za Importowanie plików certyfikatów do kontenera. Aby zaimportować certyfikat, można użyć `setupentrypoint.sh` skryptów lub wykonać niestandardowy kod w procesie kontenera. Oto przykładowy kod C# dotyczący importowania pliku PFX:
+Usługa kontenera lub proces jest odpowiedzialny za Importowanie plików certyfikatów do kontenera. Aby zaimportować certyfikat, można użyć skryptów `setupentrypoint.sh` lub wykonać kod niestandardowy w procesie kontenera. Oto przykładowy kod C# dotyczący importowania pliku PFX:
 
 ```csharp
 string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");

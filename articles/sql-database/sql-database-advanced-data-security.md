@@ -6,27 +6,27 @@ ms.service: sql-database
 ms.subservice: security
 ms.devlang: ''
 ms.topic: conceptual
-author: monhaber
-ms.author: v-mohabe
+author: rkarlin
+ms.author: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: b8fc82ca8f4b42adf595680541042ef38efe1470
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dc302d5435234b8cad9d79b5d626056e4d1e2cf2
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569544"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170375"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Zaawansowane zabezpieczenia danych dla Azure SQL Database
 
 Zaawansowane zabezpieczenia danych to ujednolicony pakiet zaawansowanych funkcji zabezpieczeń SQL. Obejmuje ona funkcje odnajdywania i klasyfikowania poufnych danych, umieszczania i łagodzenia potencjalnych luk w zabezpieczeniach bazy danych oraz wykrywania nietypowych działań, które mogą wskazywać na zagrożenie dla bazy danych. Zapewnia ona pojedynczą lokalizację, w której można włączać te możliwości i zarządzać nimi.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Usługa Advanced Data Security (ADS) oferuje zestaw zaawansowanych funkcji zabezpieczeń SQL, takich jak funkcja odnajdywania danych & klasyfikacji, oceny luk w zabezpieczeniach i zaawansowanej ochrony przed zagrożeniami.
 
-- [Klasyfikacja & odnajdywania danych](sql-database-data-discovery-and-classification.md) (obecnie w wersji zapoznawczej) oferuje funkcje wbudowane w Azure SQL Database na potrzeby odnajdywania, klasyfikowania i etykietowania & ochrony poufnych danych w bazach danych. Za jej pomocą można zapewniać wgląd w stan klasyfikacji bazy danych oraz śledzić dostęp do danych poufnych w bazie danych i poza jej granicami.
-- [Ocena luk](sql-vulnerability-assessment.md) w zabezpieczeniach to prosta konfiguracja usługi, która umożliwia odnajdywanie, śledzenie i rozwiązywanie problemów z potencjalnymi lukami w zabezpieczeniach bazy danych. Zapewnia wgląd w stan zabezpieczeń i zapewnia kroki, które można wykonać w celu rozwiązania problemów z zabezpieczeniami oraz zwiększenia bezpieczeństwa bazy danych.
+- [Klasyfikacja & odnajdywania danych](sql-database-data-discovery-and-classification.md) (obecnie w wersji zapoznawczej) oferuje funkcje wbudowane w Azure SQL Database do odnajdywania, klasyfikowania i etykietowania & ochrony poufnych danych w bazach danych. Za jej pomocą można zapewniać wgląd w stan klasyfikacji bazy danych oraz śledzić dostęp do danych poufnych w bazie danych i poza jej granicami.
+- [Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md) to prosta konfiguracja usługi, która umożliwia odnajdywanie, śledzenie i rozwiązywanie problemów z potencjalnymi lukami w zabezpieczeniach bazy danych. Zapewnia wgląd w stan zabezpieczeń i zapewnia kroki, które można wykonać w celu rozwiązania problemów z zabezpieczeniami oraz zwiększenia bezpieczeństwa bazy danych.
 - [Zaawansowana ochrona przed zagrożeniami](sql-database-threat-detection-overview.md) wykrywa anomalie działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do bazy danych lub jej wykorzystania. Stale monitoruje Twoją bazę danych pod kątem podejrzanych działań i zapewnia natychmiastowe alerty zabezpieczeń dotyczące potencjalnych luk w zabezpieczeniach, ataków polegających na wstrzyknięciu kodu SQL oraz anomalii we wzorcach dostępu do bazy danych. Alerty zaawansowanej ochrony przed zagrożeniami zapewniają szczegółowe informacje o podejrzanych działaniach i zalecaną akcję dotyczącą sposobu badania i łagodzenia zagrożeń.
 
 Aby włączyć wszystkie te funkcje, Włącz opcję SQL AD. Jednym kliknięciem można włączyć usługi AD dla wszystkich baz danych na serwerze SQL Database lub w zarządzanym wystąpieniu. Włączanie ustawień ADS lub zarządzanie nimi wymaga przynależności do roli [programu SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) , roli administratora bazy danych SQL lub roli administratora programu SQL Server. 
@@ -42,24 +42,24 @@ Poniższe kroki ułatwiają rozpoczęcie pracy z usługą ADS.
 Włącz reklamy, przechodząc do opcji **Zaawansowane zabezpieczenia danych** w obszarze nagłówek **zabezpieczeń** dla serwera SQL Database lub zarządzanego wystąpienia. Aby włączyć usługi AD dla wszystkich baz danych na serwerze bazy danych lub wystąpieniu zarządzanym, kliknij pozycję **Włącz zaawansowane zabezpieczenia danych na serwerze**.
 
 > [!NOTE]
-> Konto magazynu jest automatycznie tworzone i konfigurowane do przechowywania wyników skanowania **oceny luk** w zabezpieczeniach. Jeśli już włączono usługi AD dla innego serwera w tej samej grupie zasobów i regionie, używane jest istniejące konto magazynu.
+> Konto magazynu jest automatycznie tworzone i konfigurowane do przechowywania wyników skanowania **oceny luk w zabezpieczeniach** . Jeśli już włączono usługi AD dla innego serwera w tej samej grupie zasobów i regionie, używane jest istniejące konto magazynu.
 
 ![Włącz reklamy](./media/sql-advanced-protection/enable_ads.png) 
 
 > [!NOTE]
 > Koszt reklam jest wyrównany przy użyciu cen warstwy Standardowa Azure Security Center na węzeł, gdzie węzeł jest całym serwerem SQL Database lub wystąpieniem zarządzanym. W ten sposób płacisz tylko raz na ochronę wszystkich baz danych na serwerze bazy danych lub wystąpieniu zarządzanym za pomocą reklam. Możesz bezpłatnie wypróbować reklamy, korzystając z bezpłatnej wersji próbnej.
 
-## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. Rozpoczęcie klasyfikowania danych, śledzenie luk w zabezpieczeniach i badanie alertów dotyczących zagrożeń
+## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. Rozpocznij klasyfikowanie danych, śledzenie luk w zabezpieczeniach i badanie alertów dotyczących zagrożeń
 
-Kliknij kartę **& odnajdywania danych** , aby zobaczyć zalecane poufne kolumny do klasyfikowania i klasyfikowania danych za pomocą etykiet trwałych. Kliknij kartę **Ocena luk** w zabezpieczeniach, aby wyświetlić i zarządzać skanowaniem i raportami luk w zabezpieczeniach oraz śledzić schemacie zabezpieczeń. Jeśli alerty zabezpieczeń zostały odebrane, kliknij kartę **Zaawansowana ochrona przed zagrożeniami** , aby wyświetlić szczegóły alertów i wyświetlić skonsolidowany raport dotyczący wszystkich alertów w ramach subskrypcji platformy Azure za pośrednictwem strony alerty zabezpieczeń Azure Security Center.
+Kliknij kartę **& odnajdywania danych** , aby zobaczyć zalecane poufne kolumny do klasyfikowania i klasyfikowania danych za pomocą etykiet trwałych. Kliknij kartę **Ocena luk w zabezpieczeniach** , aby wyświetlić i zarządzać skanowaniem i raportami luk w zabezpieczeniach oraz śledzić schemacie zabezpieczeń. Jeśli alerty zabezpieczeń zostały odebrane, kliknij kartę **Zaawansowana ochrona przed zagrożeniami** , aby wyświetlić szczegóły alertów i wyświetlić skonsolidowany raport dotyczący wszystkich alertów w ramach subskrypcji platformy Azure za pośrednictwem strony alerty zabezpieczeń Azure Security Center.
 
-## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>3. Zarządzanie ustawieniami reklam na serwerze SQL Database lub zarządzanym wystąpieniem
+## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>3. Zarządzanie ustawieniami reklamy na serwerze SQL Database lub zarządzanym wystąpieniem
 
 Aby wyświetlić ustawienia reklam i zarządzać nimi, przejdź do pozycji **Zaawansowane zabezpieczenia danych** w obszarze nagłówek **zabezpieczenia** dla serwera SQL Database lub wystąpienia zarządzanego. Na tej stronie można włączać lub wyłączać reklamy oraz modyfikować ustawienia oceny luk w zabezpieczeniach i zaawansowanej ochrony przed zagrożeniami dla całego serwera SQL Database lub wystąpienia zarządzanego.
 
 ![Ustawienia serwera](./media/sql-advanced-protection/server_settings.png) 
 
-## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Zarządzanie ustawieniami reklam dla bazy danych SQL
+## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Zarządzanie ustawieniami usługi AD dla bazy danych SQL
 
 Aby zastąpić ustawienia reklamy dla konkretnej bazy danych, zaznacz pole wyboru **Włącz zaawansowane zabezpieczenia danych na poziomie bazy danych** . Tej opcji należy używać tylko w przypadku, gdy istnieje szczególny wymóg otrzymywania osobnych alertów dotyczących zaawansowanej ochrony przed zagrożeniami lub oceny luk w zabezpieczeniach dla pojedynczej bazy danych zamiast alertów i otrzymanych wyników dla wszystkich baz danych w serwer bazy danych lub wystąpienie zarządzane.
 
@@ -71,9 +71,9 @@ Zaawansowane ustawienia zabezpieczeń danych dla serwera bazy danych lub wystąp
 
 ![Ustawienia bazy danych](./media/sql-advanced-protection/database_settings.png) 
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 
 - Dowiedz się więcej na temat [klasyfikacji & odnajdywania danych](sql-database-data-discovery-and-classification.md) 
-- Dowiedz się więcej na temat [oceny luk](sql-vulnerability-assessment.md) w zabezpieczeniach 
+- Dowiedz się więcej na temat [oceny luk w zabezpieczeniach](sql-vulnerability-assessment.md) 
 - Dowiedz się więcej na temat [zaawansowanej ochrony przed zagrożeniami](sql-database-threat-detection.md)
 - Dowiedz się więcej o [usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

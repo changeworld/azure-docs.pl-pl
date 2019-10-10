@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Konfigurowanie protokołu HTTPS w domenie niestandardowej Azure CDN | Microsoft Docs
-description: W tym samouczku dowiesz się, jak włączyć i wyłączyć protokół HTTPS w domenie niestandardowej punktu końcowego Azure CDN.
+title: Samouczek — konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak włączać i wyłączać protokół HTTPS w domenie niestandardowej punktu końcowego usługi Azure CDN.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,42 +15,42 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5506e4e4bb41725fd8791d3c6e47bb0b94584923
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959435"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177762"
 ---
-# <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Samouczek: Konfigurowanie protokołu HTTPS w domenie niestandardowej Azure CDN
+# <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN
 
-W tym samouczku pokazano, jak włączyć protokół HTTPS dla domeny niestandardowej skojarzonej z punktem końcowym Azure CDN. Korzystając z protokołu HTTPS w domenie niestandardowej (na przykład https: \//www. contoso. com), upewnij się, że poufne dane są bezpiecznie dostarczane za pośrednictwem szyfrowania TLS/SSL, gdy zostanie on wysłany przez Internet. Gdy przeglądarka sieci Web jest połączona z witryną sieci Web za pośrednictwem protokołu HTTPS, sprawdza certyfikat zabezpieczeń witryny sieci Web i weryfikuje, czy jest wystawiona przez uprawniony urząd certyfikacji. Ten proces zapewnia zabezpieczenia i chroni aplikacje sieci Web przed atakami.
+Ten samouczek pokazuje, jak włączyć protokół HTTPS dla domeny niestandardowej, którą skojarzono z punktem końcowym usługi Azure CDN. Dzięki użyciu protokołu HTTPS w domenie niestandardowej (na przykład https:\//www.contoso.com) zyskujesz pewność, że poufne dane są bezpiecznie dostarczane za pośrednictwem szyfrowania TLS/SSL, gdy są wysyłane przez Internet. Gdy przeglądarka internetowa łączy się z witryną internetową za pośrednictwem protokołu HTTPS, sprawdza, czy certyfikat zabezpieczeń witryny internetowej jest poprawny i czy został wystawiony przez autentyczny urząd certyfikacji. Ten proces zapewnia bezpieczeństwo i chroni aplikacje internetowe przed atakami.
 
-Azure CDN domyślnie obsługuje protokół HTTPS na nazwie hosta punktu końcowego usługi CDN. Jeśli na przykład utworzysz punkt końcowy usługi CDN (np. https: \//contoso. azureedge. NET), protokół HTTPS jest automatycznie włączony.  
+Domyślnie usługa Azure CDN obsługuje protokół HTTPS w obrębie nazwy hosta punktu końcowego usługi CDN. Na przykład w przypadku tworzenia punktu końcowego usługi CDN (takiego jak https:\//contoso.azureedge.net) protokół HTTPS jest włączany automatycznie.  
 
-Niektóre atrybuty klucza niestandardowej funkcji HTTPS są następujące:
+Niektóre z kluczowych atrybutów niestandardowej funkcji HTTPS to:
 
-- Bez dodatkowych kosztów: nie ma kosztów nabycia lub odnowienia certyfikatu ani dodatkowych kosztów związanych z ruchem HTTPS. Płacisz tylko za GB ruchu wychodzącego z sieci CDN.
+- Brak dodatkowych kosztów: nie ma kosztów nabycia ani odnowienia certyfikatu ani dodatkowego kosztu związanego z ruchem protokołu HTTPS. Płacisz tylko za ruch wychodzący z sieci CDN (GB).
 
-- Proste włączenie: Inicjowanie obsługi jednego kliknięcia jest dostępne w [Azure Portal](https://portal.azure.com). Aby włączyć tę funkcję, można także użyć interfejsu API REST lub innych narzędzi programistycznych.
+- Proste włączanie: w witrynie [Azure Portal](https://portal.azure.com) jest dostępna aprowizacja przy użyciu jednego kliknięcia. Aby włączyć tę funkcję, można użyć interfejsu API REST lub innych narzędzi dla deweloperów.
 
-- Dostępne jest pełne zarządzanie certyfikatami: wszystkie zamówienia i zarządzanie nimi są obsługiwane przez użytkownika. Certyfikaty są automatycznie inicjowane i odnawiane przed wygaśnięciem, co eliminuje ryzyko przerwania działania usługi ze względu na wygaśnięcie certyfikatu.
+- Dostępne jest kompletne zarządzanie certyfikatami: użytkownik obsługuje wszystkie operacje nabywania certyfikatów i zarządzania nimi. Certyfikaty są automatycznie aprowizowane i odnawiane przed wygaśnięciem ważności, co powoduje wyeliminowanie ryzyka przerwania działania usługi z powodu wygaśnięcia ważności certyfikatu.
 
-Z tego samouczka dowiesz się, jak wykonywać następujące czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> - Włącz protokół HTTPS w domenie niestandardowej.
-> - Korzystanie z certyfikatu zarządzanego przez sieć CDN 
-> - Korzystanie z własnego certyfikatu
+> - Włączanie protokołu HTTPS w domenie niestandardowej
+> - Używanie certyfikatu zarządzanego przez usługę CDN 
+> - Używanie własnego certyfikatu
 > - Weryfikowanie domeny
-> - Wyłącz protokół HTTPS w domenie niestandardowej.
+> - Wyłączanie protokołu HTTPS w domenie niestandardowej
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
-Przed wykonaniem kroków opisanych w tym samouczku należy najpierw utworzyć profil usługi CDN i co najmniej jeden punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie profilu Azure CDN i punktu końcowego](cdn-create-new-endpoint.md).
+Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć profil usługi CDN i co najmniej jeden punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz [Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN](cdn-create-new-endpoint.md).
 
-Ponadto należy skojarzyć Azure CDN domeną niestandardową w punkcie końcowym usługi CDN. Aby uzyskać więcej informacji, zobacz [Samouczek: Dodawanie domeny niestandardowej do punktu końcowego Azure CDN](cdn-map-content-to-custom-domain.md) 
+Ponadto należy skojarzyć domenę niestandardową usługi Azure CDN w punkcie końcowym usługi CDN. Aby uzyskać więcej informacji, zobacz [Samouczek: dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md) 
 
 > [!IMPORTANT]
 > Certyfikaty zarządzane przez usługę CDN nie są dostępne dla domen głównych lub nadrzędnych. Jeśli Azure CDN domena niestandardowa jest domeną katalogu głównego lub wierzchołka, należy użyć funkcji Przenieś własny certyfikat. 
@@ -59,120 +59,122 @@ Ponadto należy skojarzyć Azure CDN domeną niestandardową w punkcie końcowym
 ---
 
 ## <a name="ssl-certificates"></a>Certyfikaty SSL
-Aby włączyć protokół HTTPS w celu bezpiecznego dostarczania zawartości w Azure CDN domenie niestandardowej, należy użyć certyfikatu SSL. Możesz wybrać użycie certyfikatu zarządzanego przez Azure CDN lub użyć własnego certyfikatu.
+Aby włączyć funkcję HTTPS w celu bezpiecznego dostarczania zawartości w domenie niestandardowej usługi Azure CDN, należy użyć certyfikatu SSL. Możesz użyć certyfikatu zarządzanego przez usługę Azure CDN lub własnego certyfikatu.
 
 
-# <a name="option-1-default-enable-https-with-a-cdn-managed-certificatetaboption-1-default-enable-https-with-a-cdn-managed-certificate"></a>[Opcja 1 (domyślnie): Włączanie protokołu HTTPS przy użyciu certyfikatu zarządzanego przez sieć CDN](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
+# <a name="option-1-default-enable-https-with-a-cdn-managed-certificatetaboption-1-default-enable-https-with-a-cdn-managed-certificate"></a>[Opcja 1 (domyślna): włączanie funkcji HTTPS przy użyciu certyfikatu zarządzanego przez usługę Azure CDN](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
 
-W przypadku korzystania z certyfikatu zarządzanego przez sieć CDN funkcja HTTPS można włączyć za pomocą zaledwie kilku kliknięć. Azure CDN całkowicie obsługuje zadania zarządzania certyfikatami, takie jak zaopatrzenie i odnawianie. Po włączeniu tej funkcji proces rozpocznie się natychmiast. Jeśli domena niestandardowa jest już zamapowana na punkt końcowy usługi CDN, dalsze akcje nie są wymagane. Azure CDN przetworzy kroki i zakończy żądanie automatycznie. Jeśli jednak domena niestandardowa jest mapowana w innym miejscu, należy użyć poczty e-mail do zweryfikowania własności domeny.
+W przypadku korzystania z certyfikatu zarządzanego przez usługę Azure CDN można włączyć funkcję HTTPS za pomocą kilku kliknięć. Usługa Azure CDN w pełni obsługuje zadania zarządzania certyfikatami, takie jak nabywanie i odnawianie. Po włączeniu funkcji proces rozpocznie się automatycznie. Jeśli domena niestandardowa jest już zmapowana na punkt końcowy CDN, żadne dalsze działania nie są wymagane. Usługa Azure CDN przetworzy kroki i wykona żądanie automatycznie. Jeśli jednak domena niestandardowa jest zmapowana w innej lokalizacji, należy użyć widomości e-mail, aby zweryfikować własność domeny.
 
 Aby włączyć protokół HTTPS w domenie niestandardowej, wykonaj następujące kroki:
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do **normy Azure CDN firmy Microsoft**, **Azure CDN Standard from Akamai**, **Azure CDN Standard from Verizon** lub **Azure CDN Premium from Verizon** profile.
+1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do profilu usługi **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Akamai**, **Azure CDN Standard from Verizon** lub **Azure CDN Premium from Verizon**.
 
 2. Na liście punktów końcowych usługi CDN wybierz punkt końcowy zawierający domenę niestandardową.
 
     ![Lista punktów końcowych](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
 
-    Zostanie wyświetlona strona **punkt końcowy** .
+    Zostanie wyświetlona strona **Punkt końcowy**.
 
 3. Na liście domen niestandardowych wybierz domenę niestandardową, dla której chcesz włączyć protokół HTTPS.
 
     ![Lista domen niestandardowych](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
-    Zostanie wyświetlona strona **domena niestandardowa** .
+    Zostanie wyświetlona strona **Domena niestandardowa**.
 
-4. W obszarze Typ zarządzania certyfikatami wybierz opcję zarządzane przez usługę **CDN**.
+4. W obszarze typu zarządzania certyfikatem wybierz pozycję **Zarządzany przez usługę CDN**.
 
-5. Wybierz pozycję **włączone** , aby włączyć protokół https.
+5. Wybierz pozycję **Wł.** , aby włączyć protokół HTTPS.
 
     ![Stan protokołu HTTPS domeny niestandardowej](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
-6. [Sprawdź poprawność domeny](#validate-the-domain).
+6. Przejdź do kroku [Weryfikowanie domeny](#validate-the-domain).
 
 
-# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[Opcja 2: Włączanie protokołu HTTPS przy użyciu własnego certyfikatu](#tab/option-2-enable-https-with-your-own-certificate)
+# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[Opcja 2: włączanie funkcji HTTPS przy użyciu własnego certyfikatu](#tab/option-2-enable-https-with-your-own-certificate)
 
 > [!IMPORTANT]
 > Ta opcja jest dostępna tylko w przypadku **Azure CDN firmy Microsoft** i **Azure CDN z profilów Verizon** . 
 >
  
-Aby włączyć funkcję HTTPS, można użyć własnego certyfikatu. Ten proces odbywa się za pomocą integracji z usługą Azure Key Vault, co umożliwia bezpieczne przechowywanie certyfikatów. Azure CDN używa tego mechanizmu bezpiecznego do uzyskania certyfikatu i wymaga kilku dodatkowych kroków. Podczas tworzenia certyfikatu SSL należy go utworzyć z dozwolonym urzędem certyfikacji. W przeciwnym razie, jeśli używasz niedozwolonego urzędu certyfikacji, żądanie zostanie odrzucone. Aby uzyskać listę dozwolonych urzędów certyfikacji, zobacz [dozwolone urzędy certyfikacji na potrzeby włączania niestandardowego protokołu HTTPS w Azure CDN](cdn-troubleshoot-allowed-ca.md). W przypadku **Azure CDN z Verizon**każdy prawidłowy urząd certyfikacji zostanie zaakceptowany. 
+Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces odbywa się dzięki integracji z usługą Azure Key Vault, umożliwiającą bezpieczne przechowywanie certyfikatów. Ten bezpieczny mechanizm, używany w usłudze Azure CDN do pobrania certyfikatu, wymaga wykonania kilku dodatkowych czynności. Tworząc certyfikat SSL, musisz korzystać z dozwolonego urzędu certyfikacji (CA). W przeciwnym razie, jeśli skorzystasz z niedozwolonego urzędu certyfikacji, żądanie zostanie odrzucone. Aby uzyskać listę dozwolonych urzędów certyfikacji, zobacz [dozwolone urzędy certyfikacji na potrzeby włączania niestandardowego protokołu HTTPS w Azure CDN](cdn-troubleshoot-allowed-ca.md). W przypadku **Azure CDN z Verizon**każdy prawidłowy urząd certyfikacji zostanie zaakceptowany. 
 
-### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Przygotuj swoje konto i certyfikat magazynu kluczy platformy Azure
+### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Przygotowywanie certyfikatu i konta usługi Azure Key Vault
  
-1. Azure Key Vault: musisz mieć uruchomione konto Azure Key Vault w ramach tej samej subskrypcji, co profil Azure CDN i punkty końcowe usługi CDN, dla których chcesz włączyć niestandardowy protokół HTTPS. Utwórz konto Azure Key Vault, jeśli go nie masz.
+1. Usługa Azure Key Vault: musisz mieć konto usługi Azure Key Vault uruchomione w ramach tej samej subskrypcji co profil usługi Azure CDN i punkty końcowe CDN, dla których chcesz włączyć niestandardowy protokół HTTPS. Utwórz konto usługi Azure Key Vault, jeśli go nie masz.
  
-2. Azure Key Vault certyfikaty: Jeśli masz już certyfikat, możesz przekazać go bezpośrednio do konta Azure Key Vault lub można utworzyć nowy certyfikat bezpośrednio za pośrednictwem Azure Key Vault z jednego z urzędów certyfikacji partnera, który Azure Key Vault integruje się z usługą. 
+2. Certyfikaty usługi Azure Key Vault: jeśli masz już certyfikat, możesz przekazać go bezpośrednio na konto usługi Azure Key Vault lub utworzyć nowy certyfikat bezpośrednio za pomocą usługi Azure Key Vault za pośrednictwem jednego z partnerskich urzędów certyfikacji, z którymi zintegrowana jest usługa Azure Key Vault. 
 
-### <a name="register-azure-cdn"></a>Zarejestruj Azure CDN
+### <a name="register-azure-cdn"></a>Rejestrowanie usługi Azure CDN
 
-Zarejestruj Azure CDN jako aplikację w Azure Active Directory za pomocą programu PowerShell.
+Rejestrowanie usługi Azure CDN jako aplikacji w usłudze Azure Active Directory za pomocą programu PowerShell.
 
-1. W razie konieczności zainstaluj [Azure PowerShell](/powershell/azure/install-az-ps) na komputerze lokalnym.
+1. W razie potrzeby zainstaluj program [Azure PowerShell](/powershell/azure/install-az-ps) na maszynie lokalnej.
 
 2. W programie PowerShell uruchom następujące polecenie:
 
      `New-AzADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
 
-    ![Rejestrowanie Azure CDN w programie PowerShell](./media/cdn-custom-ssl/cdn-register-powershell.png)
+    ![Rejestrowanie usługi Azure CDN za pomocą programu PowerShell](./media/cdn-custom-ssl/cdn-register-powershell.png)
               
 
-### <a name="grant-azure-cdn-access-to-your-key-vault"></a>Udzielanie Azure CDN dostępu do magazynu kluczy
+### <a name="grant-azure-cdn-access-to-your-key-vault"></a>Udzielanie usłudze Azure CDN dostępu do magazynu kluczy
  
-Przyznaj Azure CDN uprawnienia dostępu do certyfikatów (wpisów tajnych) na koncie Azure Key Vault.
+Udziel usłudze Azure CDN uprawnień dostępu do certyfikatów (wpisów tajnych) na koncie usługi Azure Key Vault.
 
-1. Na koncie magazynu kluczy w obszarze Ustawienia wybierz pozycję **zasady dostępu**, a następnie wybierz pozycję **Dodaj nowe** , aby utworzyć nowe zasady.
+1. Na koncie magazynu kluczy w obszarze USTAWIENIA wybierz pozycję **Zasady dostępu**, a następnie wybierz pozycję **Dodaj nową**, aby utworzyć nową zasadę.
 
-    ![Utwórz nowe zasady dostępu](./media/cdn-custom-ssl/cdn-new-access-policy.png)
+    ![Dodawanie nowej zasady dostępu](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-2. W obszarze **Wybierz podmiot zabezpieczeń**Wyszukaj pozycję **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**i wybierz pozycję **Microsoft. Azure. CDN**. Kliknij przycisk **Wybierz**.
+2. W oknie **Wybierz podmiot zabezpieczeń** wyszukaj ciąg **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** i wybierz pozycję **Microsoft.Azure.Cdn**. Kliknij pozycję **Wybierz**.
 
     ![Ustawienia zasad dostępu](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
 3. Wybierz pozycję **uprawnienia certyfikatów**, a następnie zaznacz pola wyboru dla opcji **Pobierz** i **Wyświetl** , aby umożliwić usłudze CDN wykonywanie tych uprawnień w celu uzyskania i wyświetlenia listy certyfikatów.
 
-4. Wybierz **przycisk OK**. 
+4. Wybierz pozycję **uprawnienia tajne**, a następnie zaznacz pola wyboru dla opcji **Pobierz** i **Wyświetl** , aby umożliwić usłudze CDN wykonywanie tych uprawnień w celu uzyskania i wyświetlenia wpisów tajnych.
 
-    Azure CDN może teraz uzyskiwać dostęp do tego magazynu kluczy i certyfikatów (Secret) przechowywanych w tym magazynie kluczy.
+5. Kliknij przycisk **OK**. 
+
+    Usługa Azure CDN ma teraz dostęp do tego magazynu kluczy i certyfikatów (kluczy tajnych), które są przechowywane w tym magazynie kluczy.
  
-### <a name="select-the-certificate-for-azure-cdn-to-deploy"></a>Wybierz certyfikat do Azure CDN do wdrożenia
+### <a name="select-the-certificate-for-azure-cdn-to-deploy"></a>Wybieranie certyfikatu do wdrożenia dla usługi Azure CDN
  
-1. Wróć do portalu Azure CDN i wybierz punkt końcowy usługi CDN, w którym chcesz włączyć niestandardowy protokół HTTPS. 
+1. Wróć do portalu usługi Azure CDN, a następnie wybierz profil i punkt końcowy CDN, dla którego chcesz włączyć niestandardowy protokół HTTPS. 
 
 2. Na liście domen niestandardowych wybierz domenę niestandardową, dla której chcesz włączyć protokół HTTPS.
 
-    Zostanie wyświetlona strona **domena niestandardowa** .
+    Zostanie wyświetlona strona **Domena niestandardowa**.
 
-3. W obszarze Typ zarządzania certyfikatami wybierz pozycję **Użyj mojego własnego certyfikatu**. 
+3. W obszarze Typ zarządzania certyfikatami wybierz pozycję **Użyj własnego certyfikatu**. 
 
-    ![Konfigurowanie certyfikatu](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
+    ![Konfigurowanie własnego certyfikatu](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
 
-4. Wybierz magazyn kluczy, certyfikat (Secret) i wersję certyfikatu.
+4. Wybierz magazyn kluczy, certyfikat (klucz tajny) i wersję certyfikatu.
 
-    Azure CDN wyświetla następujące informacje: 
-    - Konta magazynu kluczy dla identyfikatora subskrypcji. 
-    - Certyfikaty (Secret) w wybranym magazynie kluczy. 
+    Usługa Azure CDN wyświetli następujące informacje: 
+    - Konta magazynów kluczy dla Twojego identyfikatora subskrypcji. 
+    - Certyfikaty (klucze tajne) dla wybranego magazynu kluczy. 
     - Dostępne wersje certyfikatów. 
  
-5. Wybierz pozycję **włączone** , aby włączyć protokół https.
+5. Wybierz pozycję **Wł.** , aby włączyć protokół HTTPS.
   
-6. W przypadku korzystania z własnego certyfikatu Walidacja domeny nie jest wymagana. [Poczekaj na propagację](#wait-for-propagation).
+6. Jeśli używasz własnego certyfikatu, walidacja domeny nie jest wymagana. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation).
 
 ---
 
 ## <a name="validate-the-domain"></a>Weryfikowanie domeny
 
-Jeśli masz już domenę niestandardową, która jest zamapowana na niestandardowy punkt końcowy z rekordem CNAME lub używasz własnego certyfikatu, Kontynuuj  
-[Domena niestandardowa jest zamapowana na punkt końcowy usługi CDN](#custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record). W przeciwnym razie, Jeśli wpis rekordu CNAME dla punktu końcowego już nie istnieje lub zawiera poddomenę cdnverify, przechodzenie do [domeny niestandardowej nie jest zamapowana na punkt końcowy usługi CDN](#custom-domain-is-not-mapped-to-your-cdn-endpoint).
+Jeśli używasz już domeny niestandardowej mapowanej na niestandardowy punkt końcowy z rekordu CNAME lub własnego certyfikatu, przejdź do sekcji  
+[Domena niestandardowa została zamapowana do punktu końcowego usługi CDN](#custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record). W przeciwnym razie, jeśli wpis rekordu CNAME dla punktu końcowego już nie istnieje lub zawiera domenę podrzędną cdnverify, przejdź do sekcji [Domena niestandardowa nie została zamapowana na punkt końcowy usługi CDN](#custom-domain-is-not-mapped-to-your-cdn-endpoint).
 
-### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>Domena niestandardowa jest zamapowana na punkt końcowy usługi CDN przez rekord CNAME
+### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>Domena niestandardowa została zamapowana na punkt końcowy usługi CDN według rekordu CNAME
 
-Po dodaniu domeny niestandardowej do punktu końcowego został utworzony rekord CNAME w tabeli DNS rejestratora domen, aby zamapować go na nazwę hosta punktu końcowego usługi CDN. Jeśli ten rekord CNAME nadal istnieje i nie zawiera poddomeny cdnverify, urząd certyfikacji DigiCert używa go do automatycznego weryfikowania własności domeny niestandardowej. 
+Po dodaniu domeny niestandardowej do punktu końcowego utworzono rekord CNAME w tabeli DNS rejestratora domen w celu zamapowania go na nazwę hosta punktu końcowego usługi CDN. Jeśli ten rekord CNAME nadal istnieje i nie zawiera domeny podrzędnej cdnverify, urząd certyfikacji DigiCert użyje go automatycznie do zweryfikowania prawa własności do domeny niestandardowej. 
 
 Jeśli używasz własnego certyfikatu, walidacja domeny nie jest wymagana.
 
-Rekord CNAME powinien mieć następujący format, gdzie *name* to niestandardowa nazwa domeny i *wartość* jest nazwą hosta punktu końcowego usługi CDN:
+Rekord CNAME powinien mieć następujący format, gdzie *Nazwa* to nazwa domeny niestandardowej, a *Wartość* to nazwa hosta punktu końcowego usługi CDN:
 
 | Nazwa            | Typ  | Wartość                 |
 |-----------------|-------|-----------------------|
@@ -180,14 +182,14 @@ Rekord CNAME powinien mieć następujący format, gdzie *name* to niestandardowa
 
 Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz [Tworzenie rekordu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
-Jeśli rekord CNAME ma poprawny format, DigiCert automatycznie weryfikuje swoją niestandardową nazwę domeny i tworzy dedykowany certyfikat dla nazwy domeny. DigitCert nie wyśle Ci weryfikacyjnej wiadomości e-mail i nie będzie trzeba zatwierdzać Twojego żądania. Certyfikat jest ważny przez jeden rok i zostanie przedłużony do autoodnawiania przed jego wygaśnięciem. [Poczekaj na propagację](#wait-for-propagation). 
+Jeśli rekord CNAME na poprawny format, firma DigiCert weryfikuje nazwę domeny niestandardowej i tworzy dedykowany certyfikat dla nazwy domeny. Firma DigitCert nie wysyła weryfikacyjnej wiadomości e-mail i nie trzeba zatwierdzać swojego żądania. Certyfikat jest ważny przez jeden rok i jest automatycznie odnawiany przed wygaśnięciem. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation). 
 
 Automatyczna weryfikacja zwykle trwa kilka godzin. Jeśli nie widzisz zweryfikowanej domeny w ciągu 24 godzin, Otwórz bilet pomocy technicznej.
 
 >[!NOTE]
->Jeśli masz rekord autoryzacji urzędu certyfikacji (CAA) z dostawcą usługi DNS, musi on zawierać DigiCert jako prawidłowy adres klienta. Rekord CAA umożliwia właścicielom domeny Określanie z dostawcami DNS, które urzędy certyfikacji są autoryzowane do wystawiania certyfikatów dla swojej domeny. Jeśli urząd certyfikacji otrzyma zamówienie dla certyfikatu dla domeny, która ma rekord CAA i że urząd certyfikacji nie jest wymieniony jako autoryzowany wystawca, nie można wystawić certyfikatu dla tej domeny lub poddomeny. Informacje o zarządzaniu rekordami CAA można znaleźć w temacie [Manage CAA Records](https://support.dnsimple.com/articles/manage-caa-record/). Aby uzyskać CAA, zobacz [CAA rekordu pomocnika](https://sslmate.com/caa/).
+>Jeśli u swojego dostawcy DNS masz rekord autoryzacji urzędu certyfikacji (CAA, Certificate Authority Authorization), musi on zawierać firmę DigiCert jako prawidłowy urząd certyfikacji. Rekord CAA umożliwia właścicielom domen określanie za pomocą dostawców DNS, które urzędy certyfikacji będą upoważnione do wystawiania certyfikatów dla danej domeny. Jeśli urząd certyfikacji otrzymuje zamówienie na certyfikat dla domeny, która ma rekord CAA, a ten urząd certyfikacji nie jest wymieniony jako autoryzowany wystawca, nie może wystawić certyfikatu dla tej domeny ani domeny podrzędnej. Informacje o zarządzaniu rekordami CAA można znaleźć w temacie [Manage CAA records (Zarządzanie rekordami CAA)](https://support.dnsimple.com/articles/manage-caa-record/). Informacje o narzędziu obsługi rekordów CAA można znaleźć w temacie [CAA Record Helper (Pomocnik rekordów CAA)](https://sslmate.com/caa/).
 
-### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Domena niestandardowa nie jest zamapowana na punkt końcowy usługi CDN
+### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Domena niestandardowa nie została zamapowana do punktu końcowego usługi CDN
 
 >[!NOTE]
 >Jeśli używasz **Azure CDN z Akamai**, należy skonfigurować następujący rekord CNAME, aby włączyć automatyczne sprawdzanie poprawności domeny. "_acme-Challenge. &lt;custom domena nazwa hosta @ no__t-1-> CNAME-> &lt;custom domena hostname&gt;.ak-acme-challenge.azureedge.net"
@@ -196,55 +198,55 @@ Jeśli wpis rekordu CNAME zawiera poddomenę cdnverify, postępuj zgodnie z pozo
 
 DigiCert wysyła wiadomość e-mail weryfikacyjną na następujące adresy e-mail. Sprawdź, czy możesz zatwierdzić bezpośrednio z jednego z następujących adresów:
 
-Administrator @ @no__t -0your-Domain-Name. com @ no__t-1  
-Administrator @ @no__t -0your-Domain-Name. com @ no__t-1  
-webmaster @ @no__t -0your-Domain-Name. com @ no__t-1  
-hostmaster @ @no__t -0your-Domain-Name. com @ no__t-1  
-postmaster @ @no__t -0your-Domain-Name. com @ no__t-1  
+admin@&lt;nazwa-domeny.com&gt;  
+administrator@&lt;nazwa-domeny.com&gt;  
+webmaster@&lt;nazwa-domeny.com&gt;  
+hostmaster@&lt;nazwa-domeny.com&gt;  
+postmaster@&lt;nazwa-domeny.com&gt;  
 
-Wiadomość e-mail powinna zostać odebrana w ciągu kilku minut, podobnie jak w poniższym przykładzie, z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, Dodaj verification@digicert.com do jego dozwolonych. Jeśli nie otrzymasz wiadomości e-mail w ciągu 24 godzin, skontaktuj się z pomocą techniczną firmy Microsoft.
+W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, dodaj verification@digicert.com do jego listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.
     
-![Adres e-mail weryfikacji domeny](./media/cdn-custom-ssl/domain-validation-email.png)
+![Wiadomość e-mail dotycząca weryfikacji domeny](./media/cdn-custom-ssl/domain-validation-email.png)
 
-Po kliknięciu linku zatwierdzania nastąpi przekierowanie do następującego formularza zatwierdzania w trybie online: 
+Po kliknięciu linku zatwierdzania następuje przekierowanie do następującego formularza zatwierdzania online: 
     
 ![Formularz weryfikacji domeny](./media/cdn-custom-ssl/domain-validation-form.png)
 
-Postępuj zgodnie z instrukcjami w formularzu; dostępne są dwie opcje weryfikacji:
+Postępuj zgodnie z instrukcjami w formularzu. Dostępne są dwie opcje weryfikacji:
 
-- Możesz zatwierdzić wszystkie przyszłe zamówienia umieszczone za pomocą tego samego konta dla tej samej domeny głównej; na przykład contoso.com. Ta metoda jest zalecana, jeśli planujesz dodać dodatkowe domeny niestandardowe dla tej samej domeny głównej.
+- Możesz zatwierdzać wszystkie przyszłe zamówienia składane za pośrednictwem tego samego konta dla tej samej domeny głównej; na przykład contoso.com. Takie podejście jest zalecane, jeśli zamierzasz dodawać kolejne domeny niestandardowe dla tej samej domeny głównej.
 
-- Możesz zatwierdzić tylko określoną nazwę hosta używaną w tym żądaniu. Dodatkowe zatwierdzenie jest wymagane w przypadku kolejnych żądań.
+- Możesz zatwierdzać tylko nazwę określonego hosta używaną w tym żądaniu. W przypadku kolejnych żądań będzie wymagane dodatkowe zatwierdzanie.
 
-Po zatwierdzeniu DigiCert kończy Tworzenie certyfikatu dla niestandardowej nazwy domeny. Certyfikat jest ważny przez jeden rok i zostanie przedłużony do jego wygaśnięcia przed jego wygaśnięciem.
+Po zatwierdzeniu firma DigiCert kończy tworzenie certyfikatu dla niestandardowej nazwy domeny. Certyfikat jest ważny przez jeden rok i jest automatycznie odnawiany przed wygaśnięciem.
 
-## <a name="wait-for-propagation"></a>Poczekaj na propagację
+## <a name="wait-for-propagation"></a>Oczekiwanie na propagację
 
-Po sprawdzeniu poprawności nazwy domeny może upłynąć do 6-8 godzin, aby można było aktywować funkcję HTTPS domeny niestandardowej. Po zakończeniu procesu niestandardowy stan protokołu HTTPS w Azure Portal jest ustawiony na **włączone** , a cztery kroki operacji w oknie dialogowym domeny niestandardowej są oznaczane jako ukończone. Domena niestandardowa jest teraz gotowa do korzystania z protokołu HTTPS.
+Po zweryfikowaniu nazwy domeny aktywowanie funkcji protokołu HTTPS domeny niestandardowej może potrwać 6–8 godzin. Po ukończeniu procesu stan niestandardowego protokołu HTTPS w witrynie Azure Portal jest ustawiony na **Włączono**, a cztery kroki operacji w oknie dialogowym domeny niestandardowej są oznaczane jako ukończone. Domena niestandardowa jest teraz gotowa do korzystania z protokołu HTTPS.
 
-![Włącz okno dialogowe HTTPS](./media/cdn-custom-ssl/cdn-enable-custom-ssl-complete.png)
+![Okno dialogowe włączania protokołu HTTPS](./media/cdn-custom-ssl/cdn-enable-custom-ssl-complete.png)
 
 ### <a name="operation-progress"></a>Postęp operacji
 
-W poniższej tabeli przedstawiono postęp operacji, która występuje po włączeniu protokołu HTTPS. Po włączeniu protokołu HTTPS cztery kroki operacji pojawiają się w oknie dialogowym Domena niestandardowa. W miarę jak każdy krok zostanie uaktywniony, dodatkowe szczegóły podetapu pojawią się pod krokiem w miarę postępu. Nie wszystkie z tych podetapów zostaną wykonane. Po pomyślnym ukończeniu kroku obok niego pojawi się zielony znacznik wyboru. 
+W poniższej tabeli przedstawiono postęp operacji w przypadku włączania protokołu HTTPS. Po włączeniu protokołu HTTPS w oknie dialogowym domeny niestandardowej są wyświetlane cztery kroki operacji. W miarę uaktywniania kolejnych kroków pod każdym wykonywanym aktualnie krokiem są wyświetlane szczegóły dodatkowego kroku podrzędnego. Nie wszystkie kroki podrzędne zostaną wykonane. Po pomyślnym ukończeniu kroku obok niego zostanie wyświetlony zielony znacznik wyboru. 
 
-| Krok operacji | Szczegóły podkroku operacji | 
+| Krok operacji | Szczegóły kroku podrzędnego operacji | 
 | --- | --- |
-| 1 przesyłane żądanie | Przesyłanie żądania |
+| 1 Przesyłanie żądania | Przesyłanie żądania |
 | | Trwa przesyłanie żądania HTTPS. |
 | | Żądanie HTTPS zostało pomyślnie przesłane. |
-| 2 weryfikacja domeny | Domena jest weryfikowana automatycznie, jeśli rekord CNAME jest mapowany na punkt końcowy usługi CDN. W przeciwnym razie żądanie weryfikacji zostanie wysłane do wiadomości e-mail wymienionej w rekordzie rejestracji domeny (WHOIS rejestratorze). Sprawdź domenę najszybciej, jak to możliwe. |
+| 2 Walidacja domeny | Domena jest automatycznie weryfikowana, jeśli rekord CNAME został zamapowany na punkt końcowy usługi CDN. W przeciwnym razie żądanie weryfikacji zostanie wysłane na adres e-mail z listy w rekordzie rejestracji domeny (rejestrator WHOIS). Jak najszybciej zweryfikuj domenę. |
 | | Własność domeny została pomyślnie zweryfikowana. |
-| | Żądanie weryfikacji własności domeny wygasło (klient nie odpowiedział w ciągu 6 dni). Protokół HTTPS nie zostanie włączony w domenie. * |
-| | Żądanie weryfikacji własności domeny zostało odrzucone przez klienta. Protokół HTTPS nie zostanie włączony w domenie. * |
-| 3 Inicjowanie obsługi certyfikatów | Urząd certyfikacji aktualnie wystawia certyfikat wymagany do włączenia protokołu HTTPS w domenie. |
-| | Certyfikat został wystawiony i jest obecnie wdrażany w sieci CDN. Może to potrwać do 6 godzin. |
+| | Żądanie weryfikacji własności domeny wygasło (prawdopodobnie klient nie odpowiedział w ciągu 6 dni). Protokół HTTPS nie zostanie włączony w domenie. * |
+| | Żądanie weryfikacji własności klienta zostało odrzucone przez klienta. Protokół HTTPS nie zostanie włączony w domenie. * |
+| 3 Aprowizowanie certyfikatu | Trwa wystawianie przez urząd certyfikacji certyfikatu wymaganego do włączenia obsługi protokołu HTTPS w domenie. |
+| | Certyfikat został wystawiony i trwa jego wdrażanie w sieci CDN. Może to potrwać do 6 godzin. |
 | | Certyfikat został pomyślnie wdrożony w sieci CDN. |
-| 4 ukończone | Obsługa protokołu HTTPS została pomyślnie włączona w domenie. |
+| 4 Ukończenie | Obsługa protokołu HTTPS została pomyślnie włączona w domenie. |
 
-\* ten komunikat nie jest wyświetlany, chyba że wystąpił błąd. 
+\* Ten komunikat jest wyświetlany tylko w przypadku wystąpienia błędu. 
 
-Jeśli wystąpi błąd przed przesłaniem żądania, zostanie wyświetlony następujący komunikat o błędzie:
+Jeśli przed przesłaniem żądania wystąpi błąd, zostanie wyświetlony następujący komunikat o błędzie:
 
 <code>
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
@@ -252,65 +254,65 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 
 
-## <a name="clean-up-resources---disable-https"></a>Czyszczenie zasobów — wyłączanie protokołu HTTPS
+## <a name="clean-up-resources---disable-https"></a>Oczyszczanie zasobów — wyłączanie protokołu HTTPS
 
-W powyższych krokach włączono protokół HTTPS w domenie niestandardowej. Jeśli nie chcesz już używać domeny niestandardowej z protokołem HTTPS, możesz wyłączyć protokół HTTPS, wykonując następujące czynności:
+W poprzednich krokach protokół HTTPS został włączony w domenie niestandardowej. Jeśli nie chcesz już używać domeny niestandardowej z protokołem HTTPS, możesz wyłączyć protokół HTTPS, wykonując poniższe kroki:
 
-### <a name="disable-the-https-feature"></a>Wyłącz funkcję HTTPS 
+### <a name="disable-the-https-feature"></a>Wyłączanie funkcji protokołu HTTPS 
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do **normy Azure CDN firmy Microsoft**, **Azure CDN Standard from Verizon** lub **Azure CDN Premium from Verizon** profile.
+1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do profilu usługi **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Verizon** lub **Azure CDN Premium from Verizon**.
 
 2. Na liście punktów końcowych kliknij punkt końcowy zawierający domenę niestandardową.
 
-3. Kliknij domenę niestandardową, dla której chcesz wyłączyć protokół HTTPS.
+3. Kliknij domenę niestandardową, w której chcesz wyłączyć protokół HTTPS.
 
     ![Lista domen niestandardowych](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-4. Kliknij przycisk **Wyłącz** , aby wyłączyć protokół https, a następnie kliknij przycisk **Zastosuj**.
+4. Kliknij pozycję **Wył.** , aby wyłączyć protokół HTTPS, a następnie kliknij pozycję **Zastosuj**.
 
-    ![Niestandardowe okno dialogowe HTTPS](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
+    ![Okno niestandardowego protokołu HTTPS](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
-### <a name="wait-for-propagation"></a>Poczekaj na propagację
+### <a name="wait-for-propagation"></a>Oczekiwanie na propagację
 
-Po wyłączeniu funkcji HTTPS domeny niestandardowej może upłynąć do 6-8 godzin. Po zakończeniu procesu niestandardowy stan protokołu HTTPS w Azure Portal jest ustawiony na **wyłączony** , a trzy kroki operacji w oknie dialogowym domeny niestandardowej są oznaczane jako ukończone. Domena niestandardowa nie może już korzystać z protokołu HTTPS.
+Po wyłączeniu funkcji protokołu HTTPS w domenie niestandardowej wprowadzenie tej zmiany może potrwać 6–8 godzin. Po ukończeniu procesu stan niestandardowego protokołu HTTPS w witrynie Azure Portal jest ustawiony na **Wyłączono**, a trzy kroki operacji w oknie dialogowym domeny niestandardowej są oznaczane jako ukończone. Domena niestandardowa nie może już używać protokołu HTTPS.
 
-![Wyłącz okno dialogowe HTTPS](./media/cdn-custom-ssl/cdn-disable-custom-ssl-complete.png)
+![Okno dialogowe wyłączania protokołu HTTPS](./media/cdn-custom-ssl/cdn-disable-custom-ssl-complete.png)
 
 #### <a name="operation-progress"></a>Postęp operacji
 
-W poniższej tabeli przedstawiono postęp operacji, która występuje po wyłączeniu protokołu HTTPS. Po wyłączeniu protokołu HTTPS w oknie dialogowym domeny niestandardowej zostaną wyświetlone trzy kroki operacji. W miarę jak każdy krok zostanie uaktywniony, w tym kroku zostaną wyświetlone dodatkowe szczegóły. Po pomyślnym ukończeniu kroku obok niego pojawi się zielony znacznik wyboru. 
+W poniższej tabeli przedstawiono postęp operacji w przypadku wyłączenia protokołu HTTPS. Po wyłączeniu protokołu HTTPS w oknie dialogowym domeny niestandardowej są wyświetlane trzy kroki operacji. W miarę uaktywniania kolejnych kroków pod każdym krokiem są wyświetlane dodatkowe szczegóły. Po pomyślnym ukończeniu kroku obok niego zostanie wyświetlony zielony znacznik wyboru. 
 
 | Postęp operacji | Szczegóły operacji | 
 | --- | --- |
-| 1 przesyłane żądanie | Przesyłanie żądania |
-| 2 anulowanie obsługi certyfikatu | Usuwanie certyfikatu |
-| 3 zakończone | Usunięto certyfikat |
+| 1 Przesyłanie żądania | Przesyłanie żądania |
+| 2 Anulowanie aprowizacji certyfikatu | Usuwanie certyfikatu |
+| 3 Kończenie | Certyfikat został usunięty |
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-1. *Kto jest dostawcą certyfikatów i jakiego typu certyfikat jest używany?*
+1. *Kto jest dostawcą certyfikatów i jaki typ certyfikatu jest używany?*
 
-    W przypadku obu **Azure CDN z Verizon** i **Azure CDN firmy Microsoft**w domenie niestandardowej jest używany dedykowany/pojedynczy certyfikat dostarczany przez DigiCert. 
+    Zarówno w przypadku **usługi Azure CDN od firmy Verizon**, jak i **usługi Azure CDN od firmy Microsoft**, dla domeny niestandardowej jest używany dedykowany/pojedynczy certyfikat dostarczony przez firmę Digicert. 
 
-2. *Czy korzystasz z protokołu IP lub SNI TLS/SSL?*
+2. *Czy używasz protokołu TLS/SSL opartego na protokole IP, czy z rozszerzeniem SNI?*
 
-    Obie **Azure CDN od Verizon** i **Azure CDN standard firmy Microsoft** używają SNI TLS/SSL.
+    Zarówno usługa **Azure CDN od firmy Verizon**, jak i **usługa Azure CDN Standard od firmy Microsoft**, używają protokołu TLS/SSL z rozszerzeniem SNI.
 
-3. *Co zrobić, jeśli nie otrzymam wiadomości e-mail weryfikujących domenę z DigiCert?*
+3. *Co zrobić, jeśli nie otrzymam wiadomości e-mail weryfikującej domenę od firmy DigiCert?*
 
-    Jeśli masz wpis CNAME dla domeny niestandardowej, która wskazuje bezpośrednio na nazwę hosta punktu końcowego (i nie używasz nazwy domeny podrzędnej cdnverify), nie otrzymasz wiadomości e-mail weryfikującej domenę. Walidacja odbywa się automatycznie. W przeciwnym razie, jeśli nie masz wpisu CNAME i nie otrzymasz wiadomości e-mail w ciągu 24 godzin, skontaktuj się z pomocą techniczną firmy Microsoft.
+    Jeśli masz wpis CNAME dla domeny niestandardowej, który wskazuje bezpośrednio na nazwę hosta punktu końcowego (i nie używasz nazwy domeny podrzędnej cdnverify), nie otrzymasz wiadomości e-mail weryfikującej domenę. Walidacja będzie wykonywana automatycznie. W przeciwnym razie, jeśli nie masz wpisu CNAME i nie otrzymasz wiadomości e-mail w ciągu 24 godzin, skontaktuj się z działem pomocy technicznej firmy Microsoft.
 
-4. *Czy jest używany certyfikat sieci SAN mniej bezpieczny niż certyfikat dedykowany?*
+4. *Czy używanie certyfikatu SAN jest mniejsze bezpieczne niż certyfikatu dedykowanego?*
     
-    Certyfikat sieci SAN jest zgodny z tym samym wzorcem szyfrowania i zabezpieczeń, co certyfikat dedykowany. Wszystkie wystawione certyfikaty SSL używają algorytmu SHA-256, aby zwiększyć bezpieczeństwo serwera.
+    Certyfikat SAN działa zgodnie z tymi samymi standardami szyfrowania i zabezpieczeń, co certyfikat dedykowany. Wszystkie wystawiane certyfikaty SSL używają algorytmu SHA-256, który pozwala na stosowanie rozszerzonych zabezpieczeń serwerów.
 
-5. *Czy potrzebuję rekordu autoryzacji urzędu certyfikacji z moim dostawcą DNS?*
+5. *Czy muszę mieć rekord autoryzacji urzędu certyfikacji z moim dostawcą DNS?*
 
-    Nie. rekord autoryzacji urzędu certyfikacji nie jest obecnie wymagany. Jeśli jednak go masz, musi on zawierać DigiCert jako prawidłowy urząd certyfikacji.
+    Nie, rekord autoryzacji urzędu certyfikacji nie jest obecnie wymagany. Jeśli jednak istnieje, musi zawierać firmę DigiCert jako prawidłowy urząd certyfikacji.
 
 6. *20 czerwca 2018 Azure CDN od Verizon uruchomione przy użyciu dedykowanego certyfikatu z opcją SNI TLS/SSL. Co się stanie z moją istniejącą domeną niestandardową przy użyciu certyfikatu alternatywnej nazwy podmiotu (SAN) i protokołu TLS/SSL opartego na protokole IP?*
 
-    Istniejące domeny zostaną stopniowo migrowane do pojedynczego certyfikatu w nadchodzących miesiącach, jeśli firma Microsoft analizuje tylko SNI żądania klientów w aplikacji. Jeśli firma Microsoft wykryje niektóre żądania klienta inne niż SNI do aplikacji, domeny będą przechowywane w certyfikacie sieci SAN przy użyciu protokołu TLS/SSL opartego na protokole IP. W każdym przypadku nie będzie przerwy w świadczeniu usługi ani pomoc techniczną dla żądań klientów, bez względu na to, czy te żądania są SNI czy SNI.
+    Istniejące domeny będą stopniowo migrowane do pojedynczego certyfikatu w ciągu najbliższych miesięcy, jeśli analiza przeprowadzona przez firmę Microsoft określi, że żądania skierowane do Twojej aplikacji wykonują tylko klienci SNI. Jeśli firma Microsoft wykryje żądania skierowane do aplikacji inne niż korzystające z rozszerzenia SNI, Twoje domeny będą w dalszym ciągu korzystać z certyfikatu SAN i protokołu TLS/SSL opartego na protokole IP. W każdym przypadku dostęp do Twojej usługi będzie odbywał się bez przestojów, a żądania klientów będą obsługiwane niezależnie od tego, czy korzystają z rozszerzenia SNI.
 
 7. *Jak działają odnowienia certyfikatów przy użyciu pakietu do przenoszenia własnego certyfikatu?*
 
@@ -318,17 +320,17 @@ W poniższej tabeli przedstawiono postęp operacji, która występuje po wyłąc
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób wykonywania tych instrukcji:
+W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> - Włącz protokół HTTPS w domenie niestandardowej.
-> - Korzystanie z certyfikatu zarządzanego przez sieć CDN 
-> - Korzystanie z własnego certyfikatu
-> - Sprawdź poprawność domeny.
-> - Wyłącz protokół HTTPS w domenie niestandardowej.
+> - Włączanie protokołu HTTPS w domenie niestandardowej
+> - Używanie certyfikatu zarządzanego przez usługę CDN 
+> - Używanie własnego certyfikatu
+> - Weryfikowanie domeny
+> - Wyłączanie protokołu HTTPS w domenie niestandardowej
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak skonfigurować buforowanie w punkcie końcowym usługi CDN.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Ustawianie reguł buforowania Azure CDN](cdn-caching-rules-tutorial.md)
+> [Samouczek: ustawianie reguł buforowania usługi Azure CDN](cdn-caching-rules-tutorial.md)
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3992ea29d3d81262b5d9b8b126c8fca54feca67d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d70a2aa6ad0e092fc6df9f5792029dc759345321
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026385"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169792"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -214,18 +214,19 @@ Użytkownicy z tą rolą mają dostęp do wszystkich funkcji administracyjnych w
 
 ### <a name="global-readerglobal-reader-permissions"></a>[Czytnik globalny](#global-reader-permissions)
 
-Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjne w ramach usług Microsoft 365, ale nie mogą podejmować działań związanych z zarządzaniem. Global Reader to odpowiedni dla administratora globalnego tylko do odczytu. Przypisywanie globalnego czytnika zamiast administratora globalnego do planowania, inspekcji lub badań. Używaj globalnego czytnika w połączeniu z innymi ograniczonymi rolami administratora, takimi jak administrator programu Exchange, aby ułatwić wykonywanie zadań bez wywoływania roli administratora globalnego. Global Reader współpracuje z nowym centrum administracyjnym Microsoft 365, centrum administracyjnym programu Exchange, centrum administracyjnym zespołów, Centrum zabezpieczeń, centrum zgodności, centrum administracyjnym usługi Azure AD i centrum administracyjnym zarządzania urządzeniami. 
+Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjne w ramach usług Microsoft 365, ale nie mogą podejmować działań związanych z zarządzaniem. Global Reader to odpowiedni dla administratora globalnego tylko do odczytu. Przypisywanie globalnego czytnika zamiast administratora globalnego do planowania, inspekcji lub badań. Używaj globalnego czytnika w połączeniu z innymi ograniczonymi rolami administratora, takimi jak administrator programu Exchange, aby ułatwić wykonywanie zadań bez przypisywania roli administratora globalnego. Global Reader współpracuje z centrum administracyjnym Microsoft 365, centrum administracyjnym programu Exchange, centrum administracyjnym zespołów, Centrum zabezpieczeń, centrum zgodności, centrum administracyjnym usługi Azure AD i centrum administracyjnym zarządzania urządzeniami.
 
 > [!NOTE]
-> Rola czytnika globalnego ma teraz następujące ograniczenia —
->* Centrum administracyjne programu SharePoint — centrum administracyjne programu SharePoint nie obsługuje roli czytnika globalnego. W przeciwnym razie nie zobaczysz "SharePoint" w lewym okienku w obszarze centra administracyjne w [centrum administracyjnym M365](https://admin.microsoft.com/Adminportal/Home#/homepage). Jeśli przejdziesz do protokołu https://{Nazwa dzierżawy} — admin.sharepoint.com, otrzymasz odmowę dostępu. 
+> Globalna rola czytnika ma teraz kilka ograniczeń —
+>
+>* Centrum administracyjne programu SharePoint — centrum administracyjne programu SharePoint nie obsługuje roli czytnika globalnego. Nie zobaczysz "SharePoint" w lewym okienku w obszarze centra administracyjne w [Microsoft 365 centrum administracyjnym](https://admin.microsoft.com/Adminportal/Home#/homepage), a w przypadku próby przejścia do *protokołu https://{Nazwa organizacji usługi Azure AD}-admin.SharePoint.com*zostanie wyświetlony dostęp zabroniony.
 >* [Portal usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) — globalny czytnik nie może odczytać trybu aprowizacji aplikacji dla przedsiębiorstw.
->* [Centrum administracyjne M365](https://admin.microsoft.com/Adminportal/Home#/homepage) — globalny czytnik nie może odczytać żądań skrytki cusomter. Nie znajdziesz karty żądania skrytki klienta w obszarze Pomoc techniczna w lewym okienku Centrum administracyjnego M365.
->* [M365 Security Center](https://security.microsoft.com/homepage) — Global Reader nie może odczytać etykiet czułości i przechowywania. W lewym okienku w obszarze Klasyfikacja w M365 Security Center nie znajdziesz etykiet czułości, etykiet przechowywania oraz kart analitycznych etykiet.
->* [Centrum administracyjne zespołów](https://admin.teams.microsoft.com) — globalny czytnik nie może odczytać cyklu życia zespołów, raportów & analiz wywołań, zarządzania urządzeniami z obsługą protokołu IP i wykazu aplikacji.
->* [Privileged Access Management (PAM)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) nie obsługuje czytnika globalnego.
-> 
-> Obsługa tych funkcji będzie przekroczyć czas.
+>* [Centrum administracyjne M365](https://admin.microsoft.com/Adminportal/Home#/homepage) — globalny czytnik nie może odczytać żądań skrytki klienta. Nie znajdziesz karty **żądania skrytki klienta** w obszarze **Pomoc techniczna** w lewym okienku Centrum administracyjnego M365.
+>* [M365 Security Center](https://security.microsoft.com/homepage) — czytnik globalny nie może odczytać etykiet czułości i przechowywania. W lewym okienku Centrum zabezpieczeń M365 nie znajdziesz **etykiet czułości**, **etykiet przechowywania**oraz kart **analitycznych etykiet** .
+>* [Centrum administracyjne zespołów](https://admin.teams.microsoft.com) — globalny czytnik nie może odczytywać **zespołów cykl życia**, **Analiza & raporty**, **Zarządzanie urządzeniami telefonicznymi IP** i **wykaz aplikacji**.
+>* [Privileged Access Management (PAM)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) nie obsługuje roli czytnika globalnego.
+>
+> Te funkcje są obecnie opracowywane.
 >
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Zapraszający gościa](#guest-inviter-permissions)

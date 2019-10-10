@@ -5,19 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 05/28/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 90c6d40103bc9a20f7af28c76d0183f7a3fb04a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02ced43f8c3fc7c83359b78362e8ad0feeab3070
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304559"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168411"
 ---
-### <a name="initiator"></a>Initiator
+>[!NOTE]
+>Podczas pracy z zasadami domyślnymi platforma Azure może działać jako inicjator i obiekt odpowiadający podczas instalacji tunelu IPsec. Brak obsługi platformy Azure jako obiektu odpowiadającego.
+>
 
-W poniższych sekcjach wymieniono kombinacji zasad obsługiwanych, gdy platforma Azure to inicjatora dla tunelu.
+### <a name="initiator"></a>Inicjując
+
+W poniższych sekcjach wymieniono obsługiwane kombinacje zasad, gdy platforma Azure jest inicjatorem tunelu.
 
 **Faza 1**
 
@@ -26,16 +30,16 @@ W poniższych sekcjach wymieniono kombinacji zasad obsługiwanych, gdy platforma
 * AES_128, SHA1, DH_GROUP_2
 * AES_128, SHA_256, DH_GROUP_2
 
-**Phase-2**
+**Faza 2**
 
 * GCM_AES_256, GCM_AES_256, PFS_NONE
 * AES_256, SHA_1, PFS_NONE
 * AES_256, SHA_256, PFS_NONE
 * AES_128, SHA_1, PFS_NONE
 
-### <a name="responder"></a>Obiekt odpowiadający
+### <a name="responder"></a>Odbiorczy
 
-W poniższych sekcjach wymieniono kombinacji zasad obsługiwanych, gdy platforma Azure to obiekt odpowiadający w trybie dla tunelu.
+W poniższych sekcjach wymieniono obsługiwane kombinacje zasad, gdy platforma Azure jest obiektem odpowiadającym dla tunelu.
 
 **Faza 1**
 
@@ -44,7 +48,7 @@ W poniższych sekcjach wymieniono kombinacji zasad obsługiwanych, gdy platforma
 * AES_128, SHA1, DH_GROUP_2
 * AES_128, SHA_256, DH_GROUP_2
 
-**Phase-2**
+**Faza 2**
 
 * GCM_AES_256, GCM_AES_256, PFS_NONE
 * AES_256, SHA_1, PFS_NONE

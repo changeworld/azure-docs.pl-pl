@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3799496d13259c943847625a2cf6a39a8edb1d35
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 5933fdd9932bd8c13ab0f231d677ce06112662ed
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207244"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169776"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów według zadania administratora w Azure Active Directory
 
@@ -35,7 +35,7 @@ Konfigurowanie właściwości grupy łączników | Administrator aplikacji |
 Utwórz rejestrację aplikacji, gdy możliwość jest wyłączona dla wszystkich użytkowników | Deweloper aplikacji | Administrator aplikacji w chmurze, administrator aplikacji
 Utwórz grupę łączników | Administrator aplikacji | 
 Usuń grupę łączników | Administrator aplikacji | 
-Wyłącz serwer proxy aplikacji | Administrator aplikacji | 
+Wyłączanie serwera proxy aplikacji | Administrator aplikacji | 
 Pobierz usługę łącznika | Administrator aplikacji | 
 Odczytaj całą konfigurację | Administrator aplikacji | 
 
@@ -64,8 +64,8 @@ Odczytaj dzienniki inspekcji B2C | Administrator globalny ([Zobacz dokumentację
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Konfigurowanie znakowania firmowego | Administrator globalny | 
-Odczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Konfigurowanie oznaczenia marką firmy | Administrator globalny | 
+Odczytaj całą konfigurację | Czytelnicy katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
 ## <a name="company-properties"></a>Właściwości firmy
 
@@ -73,7 +73,7 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie właściwości firmy | Administrator globalny | 
 
-## <a name="connect"></a>Połącz
+## <a name="connect"></a>Łączenie
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -99,14 +99,14 @@ Wyświetlanie metryk i alertów | Reader ([Zobacz dokumentację](https://docs.mi
 Wyświetl metryki i alerty usługi synchronizacji | Reader ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
 
 
-## <a name="custom-domain-names"></a>Nazwy domen niestandardowych
+## <a name="custom-domain-names"></a>Niestandardowe nazwy domen
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Zarządzanie domenami | Administrator globalny | 
-Odczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Odczytaj całą konfigurację | Czytelnicy katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
-## <a name="domain-services"></a>Domain Services
+## <a name="domain-services"></a>Usługi domenowe
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -118,8 +118,8 @@ Odczytaj całą konfigurację | Czytelnik w ramach subskrypcji platformy Azure z
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Wyłączanie urządzenia | Administrator urządzeń w chmurze | 
-Włączanie urządzenia | Administrator urządzeń w chmurze | 
+Wyłącz urządzenie | Administrator urządzenia w chmurze | 
+Włącz urządzenie | Administrator urządzenia w chmurze | 
 Odczytaj konfigurację podstawową | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Odczytaj klucze funkcji BitLocker | Czytelnik zabezpieczeń | Administrator haseł, administrator zabezpieczeń
 
@@ -133,7 +133,7 @@ Wyrażanie zgody na uprawnienia aplikacji do Microsoft Graph lub grafu usługi A
 Wyrażanie zgody na aplikacje uzyskujące dostęp do danych | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Tworzenie aplikacji dla przedsiębiorstw | Administrator aplikacji w chmurze | Administrator aplikacji
 Zarządzanie serwerem proxy aplikacji | Administrator aplikacji | 
-Zarządzaj ustawieniami użytkownika | Administrator globalny | 
+Zarządzanie ustawieniami użytkownika | Administrator globalny | 
 Przegląd dostępu do odczytu grupy lub aplikacji | Czytelnik zabezpieczeń | Administrator zabezpieczeń, administrator użytkowników
 Odczytaj całą konfigurację | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Aktualizowanie przypisań aplikacji dla przedsiębiorstw | Właściciel aplikacji przedsiębiorstwa ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
@@ -146,7 +146,7 @@ Aktualizowanie właściwości logowania jednokrotnego | Właściciel aplikacji p
 ## <a name="entitlement-management"></a>Zarządzanie upoważnieniami
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Dodawanie zasobów do wykazu | Administrator użytkownika | Za pomocą zarządzania uprawnieniami można delegować to zadanie do właściciela katalogu ([Zobacz dokumentację](../governance/entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager))
+Dodawanie zasobów do wykazu | Administrator użytkowników | Za pomocą zarządzania uprawnieniami można delegować to zadanie do właściciela katalogu ([Zobacz dokumentację](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners))
 Dodawanie witryn usługi SharePoint Online do wykazu | Administrator globalny
 
 
@@ -154,20 +154,20 @@ Dodawanie witryn usługi SharePoint Online do wykazu | Administrator globalny
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie licencji | Administrator użytkownika | 
-Utwórz grupę | Administrator użytkownika | 
-Tworzenie, aktualizowanie i usuwanie przeglądu dostępu do grupy lub aplikacji | Administrator użytkownika | 
-Zarządzanie wygaśnięciem grupy | Administrator użytkownika | 
+Przypisywanie licencji | Administrator użytkowników | 
+Utwórz grupę | Administrator użytkowników | 
+Tworzenie, aktualizowanie i usuwanie przeglądu dostępu do grupy lub aplikacji | Administrator użytkowników | 
+Zarządzanie wygaśnięciem grupy | Administrator użytkowników | 
 Zarządzenie ustawieniami grup | Administrator globalny | 
-Odczytaj wszystkie konfiguracje (z wyjątkiem ukrytych członkostw) | Odczytywanie katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Odczytaj wszystkie konfiguracje (z wyjątkiem ukrytych członkostw) | Czytelnicy katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Odczytaj ukryte członkostwo | Członek grupy | Właściciel grupy, administrator haseł, administrator serwera Exchange, administrator programu SharePoint, administrator zespołów, administrator użytkowników
 Odczytuj członkostwo grup z ukrytym członkostwem | Administrator pomocy technicznej | Administrator użytkowników, Administratorzy zespołów
-Odwołaj licencję | Administrator licencji | Administrator użytkownika
-Aktualizowanie członkostwa w grupie | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
-Aktualizowanie właścicieli grup | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
-Aktualizuj właściwości grupy | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
+Odwołaj licencję | Administrator licencji | Administrator użytkowników
+Aktualizowanie członkostwa w grupie | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
+Aktualizowanie właścicieli grup | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
+Aktualizuj właściwości grupy | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>Ochrona tożsamości
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -182,13 +182,13 @@ Odczytaj całą konfigurację | Czytelnik zabezpieczeń |
 Odczytuj wszystkie wykrycia ryzyka | Czytelnik zabezpieczeń | 
 Przeczytaj luki | Czytelnik zabezpieczeń | 
 
-## <a name="licenses"></a>Licencje
+## <a name="licenses"></a>Liczba
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie licencji | Administrator licencji | Administrator użytkownika
-Odczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Odwołaj licencję | Administrator licencji | Administrator użytkownika
+Przypisywanie licencji | Administrator licencji | Administrator użytkowników
+Odczytaj całą konfigurację | Czytelnicy katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Odwołaj licencję | Administrator licencji | Administrator użytkowników
 Wypróbuj lub Kup subskrypcję | Administrator rozliczeń | 
 
 
@@ -232,7 +232,7 @@ Odczytaj raport działania | Administrator globalny |
 Odczytaj całą konfigurację | Administrator globalny | 
 Odczytaj stan serwera | Administrator globalny |  
 
-## <a name="organizational-relationships"></a>Relacje w organizacji
+## <a name="organizational-relationships"></a>Relacje organizacyjne
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -262,7 +262,7 @@ Konfigurowanie ustawień roli | Administrator ról uprzywilejowanych |
 Wyświetl działanie inspekcji | Czytelnik zabezpieczeń | 
 Wyświetlanie członkostw ról | Czytelnik zabezpieczeń | 
 
-## <a name="roles-and-administrators"></a>Role i administratorzy
+## <a name="roles-and-administrators"></a>Role i Administratorzy
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -316,7 +316,7 @@ Odczytuj ryzykowne logowania | Czytelnik zabezpieczeń |
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Odrzuć wszystkie zdarzenia | Administrator zabezpieczeń | 
+Odrzucanie wszystkich zdarzeń. | Administrator zabezpieczeń | 
 Odczytaj całą konfigurację | Czytelnik zabezpieczeń | 
 Odczytuj użytkowników oflagowanych w celu ryzyka | Czytelnik zabezpieczeń | 
 
@@ -325,21 +325,21 @@ Odczytuj użytkowników oflagowanych w celu ryzyka | Czytelnik zabezpieczeń |
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Dodawanie użytkownika do roli katalogu | Administrator ról uprzywilejowanych | 
-Dodaj użytkownika do grupy | Administrator użytkownika | 
-Przypisywanie licencji | Administrator licencji | Administrator użytkownika
-Utwórz użytkownika-gościa | Osoba zapraszająca gości | Administrator użytkownika
-Tworzenie użytkownika | Administrator użytkownika | 
-Usuwanie użytkowników | Administrator użytkownika | 
-Unieważnianie tokenów odświeżania ograniczonych administratorów (zobacz dokumentację) | Administrator użytkownika | 
-Unieważnij tokeny odświeżania nie będących administratorami (zobacz dokumentację) | Administrator haseł | Administrator użytkownika
+Dodaj użytkownika do grupy | Administrator użytkowników | 
+Przypisywanie licencji | Administrator licencji | Administrator użytkowników
+Utwórz użytkownika-gościa | Zapraszający gościa | Administrator użytkowników
+Tworzenie użytkownika | Administrator użytkowników | 
+Usuwanie użytkowników | Administrator użytkowników | 
+Unieważnianie tokenów odświeżania ograniczonych administratorów (zobacz dokumentację) | Administrator użytkowników | 
+Unieważnij tokeny odświeżania nie będących administratorami (zobacz dokumentację) | Administrator haseł | Administrator użytkowników
 Unieważnianie tokenów odświeżania uprzywilejowanych administratorów (zobacz dokumentację) | Administrator globalny | 
 Odczytaj konfigurację podstawową | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
-Resetowanie hasła dla ograniczonych administratorów (zobacz dokumentację) | Administrator użytkownika | 
-Zresetuj hasło niebędących administratorami (zobacz dokumentację) | Administrator haseł | Administrator użytkownika
+Resetowanie hasła dla ograniczonych administratorów (zobacz dokumentację) | Administrator użytkowników | 
+Zresetuj hasło niebędących administratorami (zobacz dokumentację) | Administrator haseł | Administrator użytkowników
 Resetowanie hasła administratorów uprzywilejowanych | Administrator globalny | 
-Odwołaj licencję | Administrator licencji | Administrator użytkownika
-Aktualizuj wszystkie właściwości z wyjątkiem nazwy głównej użytkownika | Administrator użytkownika | 
-Aktualizowanie głównej nazwy użytkownika dla ograniczonych administratorów (zobacz dokumentację) | Administrator użytkownika | 
+Odwołaj licencję | Administrator licencji | Administrator użytkowników
+Aktualizuj wszystkie właściwości z wyjątkiem nazwy głównej użytkownika | Administrator użytkowników | 
+Aktualizowanie głównej nazwy użytkownika dla ograniczonych administratorów (zobacz dokumentację) | Administrator użytkowników | 
 Zaktualizuj Właściwość głównej nazwy użytkownika dla administratorów uprzywilejowanych (zobacz dokumentację) | Administrator globalny | 
 Aktualizowanie ustawień użytkownika | Administrator globalny | 
 

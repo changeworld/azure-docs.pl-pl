@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
 ms.date: 08/13/2019
-ms.openlocfilehash: 03fe0b091939b3281d0cc0cb5e35bf055fb307e1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: f193dceaf26361fececde9df9df6769e2a971543
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970370"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178109"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co to jest usługa Azure Database for MySQL?
 
@@ -50,7 +50,7 @@ Umowa dotycząca poziomu usług (SLA) o czołowej w branży dostępności 99,99%
 ## <a name="secure-your-data"></a>Zabezpieczanie danych
 Usługi Azure Database Services mają tradycję zabezpieczeń danych, która Azure Database for MySQL się z funkcjami, które ograniczają dostęp, chronią i obniżają dane oraz ułatwiają monitorowanie aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/en-us/trustcenter/security), aby uzyskać informacje o zabezpieczeniach platformy Azure.
 
-Usługa Azure Database for MySQL używa szyfrowania magazynu dla danych w trybie spoczynku i jest zgodna ze standardem FIPS 140-2. Dane, w tym kopie zapasowe, są szyfrowane na dysku (z wyjątkiem plików tymczasowych utworzonych przez aparat podczas uruchamiania zapytań). Usługa korzysta z 256-bitowego szyfru AES zawartego w szyfrowaniu magazynu platformy Azure, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
+Usługa Azure Database for MySQL używa zatwierdzonego modułu kryptograficznego FIPS 140-2 do szyfrowania magazynu danych w spoczynku. Dane, w tym kopie zapasowe, są szyfrowane na dysku z wyjątkiem plików tymczasowych tworzonych podczas wykonywania zapytań. Usługa korzysta z 256-bitowego szyfru AES zawartego w szyfrowaniu magazynu platformy Azure, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
 
 Domyślnie usługa Azure Database for MySQL jest skonfigurowana tak, aby wymagała [zabezpieczeń połączeń SSL](./concepts-ssl-connection-security.md) na potrzeby ruchu danych w sieci. Wymuszanie połączeń SSL między serwerem bazy danych a aplikacjami klienckimi ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją. Opcjonalnie możesz wyłączyć wymaganie protokołu SSL dla połączeń z usługą bazy danych, jeśli Twoja aplikacja kliencka nie obsługuje łączności SSL.
 

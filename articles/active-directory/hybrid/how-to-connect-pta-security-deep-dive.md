@@ -1,8 +1,8 @@
 ---
-title: Azure uwierzytelnianie przekazujących w usłudze Active Directory security szczegółowe informacje | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak uwierzytelnianie przekazywane usługi Azure Active Directory (Azure AD) zapewnia ochronę kont lokalnych
+title: Azure Active Directory głębokiego uwierzytelniania przekazywanie szczegółowe | Microsoft Docs
+description: W tym artykule opisano sposób uwierzytelniania przekazywanego przez usługę Azure Active Directory (Azure AD) na kontach lokalnych
 services: active-directory
-keywords: Azure AD Connect uwierzytelniania przekazywanego, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
+keywords: Azure AD Connect uwierzytelniania przekazywanego, instalacji Active Directory, wymaganych składników usługi Azure AD, logowania jednokrotnego, logowania jednokrotnego
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -15,207 +15,208 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348102"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174439"
 ---
-# <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Usługa Azure uwierzytelnianie przekazujących w usłudze Active Directory security szczegółowe dane
+# <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory głębokiego uwierzytelniania przekazującego zabezpieczeń szczegółowe
 
-Ten artykuł zawiera bardziej szczegółowy opis sposobu działania uwierzytelnianie przekazywane usługi Azure Active Directory (Azure AD). Koncentruje się ona na aspekty zabezpieczeń tej funkcji. Ten artykuł jest przeznaczony dla zabezpieczeń i administratorów IT, dyrektor zgodności i specjaliści ds. bezpieczeństwa i innym specjalistom IT, którzy są odpowiedzialni za bezpieczeństwo informatyczne i zgodności w małych i średnich wielkości organizacji lub dla dużych przedsiębiorstw.
+Ten artykuł zawiera bardziej szczegółowy opis sposobu działania uwierzytelniania przekazywanego przez usługę Azure Active Directory (Azure AD). Koncentruje się na aspektach zabezpieczeń funkcji. Ten artykuł dotyczy zabezpieczeń i administratorów systemów INFORMATYCZNych, dyrektorów ds. zgodności i zabezpieczeń oraz innych informatyków, którzy są odpowiedzialni za bezpieczeństwo IT i zgodność z niewielkimi i średnimi organizacjami lub dużymi przedsiębiorstwami.
 
-Tematy, które zostały rozwiązane obejmują:
-- Szczegółowe informacje techniczne na temat sposobu instalowania i rejestrowania agentów uwierzytelniania.
-- Szczegółowe informacje techniczne dotyczące szyfrowania hasła podczas logowania użytkownika.
-- Zabezpieczenia kanały między lokalną agentów uwierzytelniania i usługi Azure AD.
-- Szczegółowe informacje techniczne dotyczące zachowania agentów uwierzytelniania pod względem zabezpieczeń.
+Tematy poświęcone:
+- Szczegółowe informacje techniczne na temat instalowania i rejestrowania agentów uwierzytelniania.
+- Szczegółowe informacje techniczne na temat szyfrowania haseł podczas logowania użytkownika.
+- Zabezpieczenia kanałów między lokalnymi agentami uwierzytelniania i usługą Azure AD.
+- Szczegółowe informacje techniczne na temat sposobu utrzymywania bezpiecznego działania agentów uwierzytelniania.
 - Inne tematy związane z zabezpieczeniami.
 
-## <a name="key-security-capabilities"></a>Kluczowych funkcji zabezpieczeń
+## <a name="key-security-capabilities"></a>Kluczowe możliwości zabezpieczeń
 
-Poniżej przedstawiono kluczowych aspektów zabezpieczeń tej funkcji:
-- Jest on oparty na bezpieczną architekturę wielodostępnych, która zapewnia izolację żądań logowania między dzierżawami.
-- Hasłami lokalnymi nigdy nie są przechowywane w chmurze w dowolnej postaci.
-- Agentów uwierzytelniania w środowisku lokalnym, który nasłuchuje i reagowanie na nie, żądania weryfikacji hasła należy tylko połączenia wychodzące z sieci. Nie jest wymagane do zainstalowania tych agentów uwierzytelniania w sieci obwodowej. Najlepszym rozwiązaniem jest traktowanie wszystkich serwerach z uruchomionym agentów uwierzytelniania w jak warstwy 0 systemów (zobacz [odwołania](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
-- Tylko standardowe porty (80 i 443) są używane dla komunikacji wychodzącej z agentów uwierzytelniania w usłudze Azure AD. Nie ma potrzeby otwierania portów przychodzących na zaporze. 
-  - Port 443 jest używany dla wszystkich uwierzytelnionych komunikacji wychodzącej.
-  - Port 80 jest używana tylko w przypadku pobierania list odwołania certyfikatów (CRL), aby upewnić się, że żaden z certyfikatów używanych przez tę funkcję zostały odwołane.
-  - Aby uzyskać pełną listę wymagań sieci, zobacz [uwierzytelnianie przekazywane usługi Azure Active Directory: Szybki start](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
-- Hasła podanych przez użytkownika podczas logowania są szyfrowane w chmurze, zanim agentów uwierzytelniania w środowisku lokalnym akceptujesz na weryfikację pod kątem usługi Active Directory.
-- Kanał HTTPS między usługą Azure AD i lokalnego agenta uwierzytelniania są zabezpieczane przy użyciu wzajemnego uwierzytelniania.
-- Chroni Twoje konta użytkownika poprzez bezproblemowe współdziałanie z [zasady dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md), łącznie z uwierzytelniania Multi-Factor Authentication (MFA) [blokowanie uwierzytelniania starszych](../conditional-access/conditions.md) i [ Filtrowanie siłowego złamania hasła](../authentication/howto-password-smart-lockout.md).
+Oto kluczowe aspekty zabezpieczeń tej funkcji:
+- Jest on oparty na bezpiecznej architekturze z wieloma dzierżawcami, która zapewnia izolację żądań logowania między dzierżawcami.
+- Hasła lokalne nigdy nie są przechowywane w chmurze w żadnej postaci.
+- Agenci uwierzytelniania lokalnego, którzy nasłuchują i odpowiadają na żądania weryfikacji haseł, umożliwiają tylko połączenia wychodzące z sieci. Nie jest wymagane, aby zainstalować tych agentów uwierzytelniania w sieci obwodowej (DMZ). Najlepszym rozwiązaniem jest traktowanie wszystkich serwerów, na których są uruchomione agenci uwierzytelniania jako systemy warstwy 0 (zobacz [odwołanie](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+- Do komunikacji wychodzącej z agentów uwierzytelniania do usługi Azure AD są używane tylko porty standardowe (80 i 443). Nie trzeba otwierać portów przychodzących w zaporze. 
+  - Port 443 jest używany do całej uwierzytelnionej komunikacji wychodzącej.
+  - Port 80 jest używany tylko do pobierania list odwołania certyfikatów (CRL), aby upewnić się, że żaden z certyfikatów używanych przez tę funkcję nie został odwołany.
+  - Aby zapoznać się z pełną listą wymagań sieci, zobacz [Azure Active Directory uwierzytelniania przekazywanego: Szybki Start](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
+- Hasła zapewniane przez użytkowników podczas logowania są szyfrowane w chmurze przed zaakceptowaniem przez agentów lokalnego uwierzytelniania do walidacji w odniesieniu do Active Directory.
+- Kanał HTTPS między usługą Azure AD a agentem uwierzytelniania lokalnego jest zabezpieczony przy użyciu wzajemnego uwierzytelniania.
+- Chroni Twoje konta użytkowników, bezproblemowo korzystając z [zasad dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md), w tym Multi-Factor Authentication (MFA), [blokując starsze uwierzytelnianie](../conditional-access/conditions.md) i przez [odfiltrowanie ataków z hasłami](../authentication/howto-password-smart-lockout.md)bezprawnego.
 
-## <a name="components-involved"></a>Składniki zaangażowane
+## <a name="components-involved"></a>Uwzględnione składniki
 
-Ogólne szczegółowe informacje o operacyjne, usługa Azure AD i bezpieczeństwo danych, zobacz [Centrum zaufania](https://azure.microsoft.com/support/trust-center/). Użyj uwierzytelniania przekazującego, podczas logowania użytkownika obejmuje następujące składniki:
-- **Tokenu Zabezpieczającego usług Azure AD**: Bezstanowa Usługa tokenu zabezpieczającego (STS) przetwarza żądań logowania, która wystawia tokeny zabezpieczające do przeglądarki, klientów lub usług, zgodnie z potrzebami użytkowników.
-- **Azure Service Bus**: Zapewnia, że komunikacji w chmurze z obsługą wiadomości przedsiębiorstwa i komunikację przekaźniki pomoże Ci połączyć rozwiązania lokalne z chmurą.
-- **Azure AD Connect Agent uwierzytelniania**: Składnik w środowisku lokalnym, który odbiera i odpowiada na żądania weryfikacji hasła.
-- **Azure SQL Database**: Przechowuje informacje dotyczące agentów uwierzytelniania Twojej dzierżawy, w tym do kluczy szyfrowania i metadanych.
-- **Active Directory**: Lokalne usługi Active Directory, w którym są przechowywane kont użytkowników i haseł.
+Aby uzyskać ogólne informacje na temat działania, usługi i bezpieczeństwa danych usługi Azure AD, zobacz [Centrum zaufania](https://azure.microsoft.com/support/trust-center/). Poniższe składniki są używane w przypadku korzystania z uwierzytelniania przekazywanego podczas logowania użytkownika:
+- **Azure AD STS**: bezstanowa usługa tokenu zabezpieczającego (STS), która przetwarza żądania logowania i wystawia tokeny zabezpieczające dla przeglądarek, klientów lub usług użytkowników, zgodnie z potrzebami.
+- **Azure Service Bus**: zapewnia komunikację w chmurze z obsługą komunikatów w przedsiębiorstwie i przekaźnikiem komunikacji, która ułatwia łączenie rozwiązań lokalnych z chmurą.
+- **Agent uwierzytelniania Azure AD Connect**: składnik lokalny, który nasłuchuje i reaguje na żądania weryfikacji hasła.
+- **Azure SQL Database**: zawiera informacje o agentach uwierzytelniania dzierżawy, w tym ich metadanych i kluczy szyfrowania.
+- **Active Directory**: lokalna Active Directory, w której są przechowywane konta użytkowników i ich hasła.
 
-## <a name="installation-and-registration-of-the-authentication-agents"></a>Instalowaniem i rejestrowaniem agentów uwierzytelniania
+## <a name="installation-and-registration-of-the-authentication-agents"></a>Instalacja i rejestracja agentów uwierzytelniania
 
-Agentów uwierzytelniania są zainstalowane i zarejestrowane w usłudze Azure AD po użytkownik albo:
-   - [Włącz uwierzytelnianie przekazywane za pośrednictwem usługi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-2-enable-the-feature)
+Agenci uwierzytelniania są instalowani i zarejestrowani w usłudze Azure AD, gdy:
+   - [Włącz uwierzytelnianie przekazywane za Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-2-enable-the-feature)
    - [Dodaj więcej agentów uwierzytelniania, aby zapewnić wysoką dostępność żądań logowania](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-4-ensure-high-availability) 
    
-Rozpoczynanie pracy Agent uwierzytelniania obejmuje trzy główne etapy:
+Pobieranie działającego agenta uwierzytelniania obejmuje trzy główne etapy:
 
 1. Instalacja agenta uwierzytelniania
 2. Rejestracja agenta uwierzytelniania
 3. Inicjowanie agenta uwierzytelniania
 
-W poniższych sekcjach omówiono te etapy szczegółowo.
+W poniższych sekcjach szczegółowo omówiono te etapy.
 
 ### <a name="authentication-agent-installation"></a>Instalacja agenta uwierzytelniania
 
-Tylko administratorzy globalni można zainstalować agenta uwierzytelniania (przy użyciu usługi Azure AD Connect lub autonomiczne) na serwerze w środowisku lokalnym. Instalacja dodaje dwa nowe wpisy, aby **Panelu sterowania** > **programy** > **programy i funkcje** listy:
-- Agent uwierzytelniania aplikacji. Ta aplikacja działa przy użyciu [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) uprawnień.
-- Aplikacja aktualizatora, która służy do automatycznej aktualizacji agenta uwierzytelniania. Ta aplikacja działa przy użyciu [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) uprawnień.
+Tylko Administratorzy globalni mogą instalować agenta uwierzytelniania (przy użyciu Azure AD Connect lub autonomicznego) na serwerze lokalnym. Instalacja dodaje dwa nowe wpisy do **Panelu sterowania** > **programy** >  listy**programów i funkcji** :
+- Sama aplikacja agenta uwierzytelniania. Ta aplikacja działa z uprawnieniami [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) .
+- Aplikacja Aktualizator, która służy do autoaktualizacji agenta uwierzytelniania. Ta aplikacja jest uruchamiana z uprawnieniami [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) .
 
 ### <a name="authentication-agent-registration"></a>Rejestracja agenta uwierzytelniania
 
-Po zainstalowaniu agenta uwierzytelniania, musi się zarejestrować w usłudze Azure AD. Usługa Azure AD przypisuje każdego agenta uwierzytelniania tożsamości cyfrowej, unikatową certyfikatu, który można użyć do bezpiecznej komunikacji z usługą Azure AD.
+Po zainstalowaniu agenta uwierzytelniania należy zarejestrować się w usłudze Azure AD. Usługa Azure AD przypisuje każdemu agentowi uwierzytelniania unikatowy certyfikat cyfrowy, który może być używany do bezpiecznej komunikacji z usługą Azure AD.
 
-Procedura rejestracji także wiąże agenta uwierzytelniania z dzierżawą. Dzięki temu usługa Azure AD wie, że tego określonego agenta uwierzytelniania jest jedynym kontem z uprawnieniami do obsługi żądań weryfikacji haseł dla dzierżawy. Czynności te należy powtórzyć dla każdego nowego agenta uwierzytelniania, należy zarejestrować.
+Procedura rejestracji wiąże także agenta uwierzytelniania z dzierżawcą. Dzięki temu usługa Azure AD wie, że ten określony Agent uwierzytelniania jest jedynym autoryzowanym do obsługi żądań weryfikacji hasła dla dzierżawy. Ta procedura jest powtarzana dla każdego nowego zarejestrowanego agenta uwierzytelniania.
 
-Agentów uwierzytelniania wykonaj następujące kroki, aby zarejestrować się z usługą Azure AD:
+Agenci uwierzytelniania używają następujących kroków, aby zarejestrować się w usłudze Azure AD:
 
 ![Rejestracja agenta](./media/how-to-connect-pta-security-deep-dive/pta1.png)
 
-1. Usługa Azure AD po raz pierwszy żąda, czy administrator globalny zalogować się do usługi Azure AD przy użyciu swoich poświadczeń. Podczas logowania Agent uwierzytelniania uzyskuje token dostępu, której można użyć w imieniu administratora globalnego.
-2. Agent uwierzytelniania następnie generowana jest para kluczy: klucz publiczny i klucz prywatny.
-    - Pary kluczy jest generowana za pomocą standardowych szyfrowania RSA 2048-bitowych.
-    - Klucz prywatny pozostaje na lokalnym serwerze, w którym znajduje się Agent uwierzytelniania.
-3. Agent uwierzytelniania sprawia, że żądanie "rejestracja" do usługi Azure AD przy użyciu protokołu HTTPS za pomocą następujących składników, które są zawarte w żądaniu:
-    - Token dostępu, uzyskaną w kroku 1.
-    - Klucz publiczny, wygenerowany w kroku 2.
-    - Żądanie podpisania certyfikatu (CSR lub żądanie certyfikatu). Dotyczy to żądanie certyfikatu tożsamości cyfrowej, za pomocą usługi Azure AD jako jego urzędu certyfikacji (CA).
-4. Usługa Azure AD sprawdza poprawność tokenu dostępu w żądaniu rejestracji i sprawdza, czy żądanie pochodzi z administratorem globalnym.
-5. Następnie usługa Azure AD podpisuje i wysyła certyfikat tożsamości cyfrowej agenta uwierzytelniania.
+1. Usługa Azure AD najpierw żąda, aby administrator globalny zalogować się do usługi Azure AD przy użyciu swoich poświadczeń. Podczas logowania Agent uwierzytelniania uzyskuje token dostępu, który może być używany w imieniu administratora globalnego.
+2. Następnie Agent uwierzytelniania generuje parę kluczy: klucz publiczny i klucz prywatny.
+    - Para kluczy jest generowana przy użyciu standardowego RSA 2048-bitowego szyfrowania.
+    - Klucz prywatny pozostaje na serwerze lokalnym, na którym znajduje się Agent uwierzytelniania.
+3. Agent uwierzytelniania wysyła żądanie rejestracji do usługi Azure AD za pośrednictwem protokołu HTTPS, z następującymi składnikami uwzględnionymi w żądaniu:
+    - Token dostępu uzyskany w kroku 1.
+    - Klucz publiczny wygenerowany w kroku 2.
+    - Żądanie podpisania certyfikatu (CSR lub żądanie certyfikatu). To żądanie dotyczy certyfikatu tożsamości cyfrowej z usługą Azure AD jako urzędu certyfikacji.
+4. Usługa Azure AD weryfikuje token dostępu w żądaniu rejestracji i weryfikuje, czy żądanie pochodzi od administratora globalnego.
+5. Usługa Azure AD następnie podpisuje i wyśle certyfikat tożsamości cyfrowej z powrotem do agenta uwierzytelniania.
     - Główny urząd certyfikacji w usłudze Azure AD jest używany do podpisywania certyfikatu. 
 
       > [!NOTE]
-      > Ten urząd certyfikacji jest _nie_ w Windows zaufane główne urzędy certyfikacji są przechowywane.
-    - Urząd certyfikacji jest używany tylko przez funkcję uwierzytelniania przekazywanego. Urząd certyfikacji jest używany tylko do podpisania obsługi podczas rejestracji agenta uwierzytelniania.
-    -  Żadna z usługi Azure AD, użyj tego urzędu certyfikacji.
-    - Podmiot certyfikatu (nazwa wyróżniająca lub DN) jest ustawiona na Twoim identyfikatorem dzierżawy. Ta nazwa Wyróżniająca jest identyfikatorem GUID, który unikatowo identyfikuje dzierżawy. Ta nazwa Wyróżniająca zakresów certyfikatu do użytku tylko z Twojej dzierżawy.
-6. Usługa Azure AD przechowuje klucz publiczny agenta uwierzytelniania w usłudze Azure SQL database tylko usługi Azure AD z dostępem do.
-7. Certyfikat (wydany w kroku 5) jest przechowywany na serwerze w środowisku lokalnym, w magazynie certyfikatów Windows (w szczególności w [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) lokalizacji). Jest on używany przez agenta uwierzytelniania i aplikacje Updater.
+      > Ten urząd certyfikacji _nie_ znajduje się w magazynie zaufanych głównych urzędów certyfikacji systemu Windows.
+    - Urząd certyfikacji jest używany tylko przez funkcję uwierzytelniania przekazywanego. Urząd certyfikacji jest używany tylko do podpisywania tych przedstawicieli w trakcie rejestracji agenta uwierzytelniania.
+    -  Żadna z pozostałych usług Azure AD nie korzysta z tego urzędu certyfikacji.
+    - Podmiot certyfikatu (nazwa wyróżniająca lub DN) ma ustawiony identyfikator dzierżawy. Ta nazwa wyróżniająca jest identyfikatorem GUID, który jednoznacznie identyfikuje dzierżawcę. Ta nazwa DN zakresów certyfikatu do użycia tylko z dzierżawcą.
+6. Usługa Azure AD przechowuje klucz publiczny agenta uwierzytelniania w bazie danych SQL Azure, do której ma dostęp tylko usługa Azure AD.
+7. Certyfikat (wydany w kroku 5) jest przechowywany na serwerze lokalnym w magazynie certyfikatów systemu Windows (w zależności od lokalizacji [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) ). Jest on używany zarówno przez agenta uwierzytelniania, jak i aplikacje Aktualizator.
 
 ### <a name="authentication-agent-initialization"></a>Inicjowanie agenta uwierzytelniania
 
-Po uruchomieniu agenta uwierzytelniania po raz pierwszy po rejestracji lub po serwera ponowne uruchomienie, musi w jakiś sposób do bezpiecznego komunikowania się z usługą Azure AD i zacznij akceptować żądania weryfikacji hasła.
+Gdy zostanie uruchomiony Agent uwierzytelniania po raz pierwszy po rejestracji lub po ponownym uruchomieniu serwera, musi on bezpiecznie komunikować się z usługą Azure AD i rozpocząć akceptowanie żądań weryfikacji hasła.
 
 ![Inicjowanie agenta](./media/how-to-connect-pta-security-deep-dive/pta2.png)
 
-Poniżej przedstawiono, jak są inicjowane agentów uwierzytelniania:
+Oto jak są inicjowane agenci uwierzytelniania:
 
-1. Agent uwierzytelniania sprawia, że żądanie bootstrap ruchu wychodzącego do usługi Azure AD. 
-    - To żądanie jest wykonywane za pośrednictwem portu 443 i znajduje się nad uwierzytelnionego wzajemnie kanału protokołu HTTPS. Żądanie używa tego samego certyfikatu, który został wystawiony podczas rejestracji agenta uwierzytelniania.
-2. Usługa Azure AD odpowie na żądanie, zapewniając klucza dostępu do kolejki usługi Azure Service Bus, która jest unikatowa dla dzierżawy i który jest identyfikowany przez identyfikatora dzierżawy.
-3. Agent uwierzytelniania sprawia, że trwałe wychodzące połączenia HTTPS (za pośrednictwem portu 443) kolejki. 
-    - Agent uwierzytelniania jest teraz gotowy do pobrania i obsługi żądań sprawdzenie poprawności hasła.
+1. Agent uwierzytelniania wykonuje wychodzące żądanie Bootstrap do usługi Azure AD. 
+    - To żądanie jest realizowane za pośrednictwem portu 443 i znajduje się za pośrednictwem wzajemnie uwierzytelnionego kanału HTTPS. Żądanie używa tego samego certyfikatu, który został wystawiony podczas rejestracji agenta uwierzytelniania.
+2. Usługa Azure AD reaguje na żądanie, dostarczając klucz dostępu do kolejki Azure Service Bus, która jest unikatowa dla dzierżawy i jest identyfikowana przez identyfikator dzierżawy.
+3. Agent uwierzytelniania wykonuje stałe wychodzące połączenie HTTPS (przez port 443) do kolejki. 
+    - Agent uwierzytelniania jest teraz gotowy do pobierania i obsługi żądań weryfikacji haseł.
 
-Jeśli masz wielu agentów uwierzytelniania zarejestrowany w dzierżawie usługi, a następnie procedura inicjowania zapewnia, że każdy z nich łączy się z tej samej kolejki usługi Service Bus. 
+Jeśli w dzierżawie zarejestrowano wielu agentów uwierzytelniania, procedura inicjowania zapewnia, że każda z nich nawiązuje połączenie z tą samą kolejką Service Bus. 
 
 ## <a name="process-sign-in-requests"></a>Przetwarzanie żądań logowania 
 
-Na poniższym diagramie przedstawiono, jak uwierzytelnianie przekazywane przetwarza żądania logowania użytkownika.
+Na poniższym diagramie pokazano, jak uwierzytelnianie przekazywane przetwarza żądania logowania użytkownika.
 
 ![Proces logowania](./media/how-to-connect-pta-security-deep-dive/pta3.png)
 
-Uwierzytelnianie przekazywane obsługuje żądania logowania użytkownika w następujący sposób: 
+Uwierzytelnianie przekazywane obsługuje żądanie logowania użytkownika w następujący sposób: 
 
-1. Użytkownik próbuje uzyskać dostęp do aplikacji, na przykład [aplikacji Outlook Web App](https://outlook.office365.com/owa).
-2. Jeśli użytkownik nie jest już zalogowany, aplikacja przekierowuje przeglądarki do strony logowania usługi Azure AD.
-3. Współpracuje Usługa tokenu Zabezpieczającego usług Azure AD z tyłu **logowania użytkownika** strony.
-4. Użytkownik musi wprowadzić swoją nazwę użytkownika do **logowania użytkownika** strony, a następnie wybiera **dalej** przycisku.
-5. Użytkownik wprowadza swoje hasło w **logowania użytkownika** strony, a następnie wybiera **logowania** przycisku.
-6. Nazwa użytkownika i hasło są przesyłane do usługi Azure AD usługi STS w żądaniu POST protokołu HTTPS.
-7. Usługa Azure AD usługi STS pobiera kluczy publicznych dla wszystkich agentów uwierzytelniania zarejestrowany w dzierżawie usługi z bazy danych Azure SQL i szyfruje hasło za ich pomocą.
-    - Generuje "N" zaszyfrowane wartości haseł dla agentów uwierzytelniania "N" zarejestrowany w dzierżawie.
-8. Usługa Azure AD usługi STS umieszcza żądania weryfikacji hasła, która składa się z nazwy użytkownika i wartości zaszyfrowane hasło do kolejki usługi Service Bus, przeznaczony dla Twojej dzierżawy.
-9. Ponieważ zainicjowane agentów uwierzytelniania są trwale dołączona do kolejki usługi Service Bus, pobiera jeden z dostępnych agentów uwierzytelniania żądania weryfikacji hasła.
-10. Agent uwierzytelniania lokalizuje wartość zaszyfrowane hasło, która jest specyficzne dla swojego klucza publicznego przy użyciu identyfikatora i odszyfrowuje je, korzystając z kluczem prywatnym.
-11. Agent uwierzytelniania podejmie próbę zweryfikowania nazwy użytkownika i hasła w usłudze Active Directory w środowisku lokalnym za pomocą [Win32 API funkcji LogonUser](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) z **dwLogonType** parametr wartość **LOGON32_LOGON_NETWORK**. 
-    - Ten interfejs API jest ten sam interfejs API, który jest używany przez usługi Active Directory Federation Services (AD FS) do logowania użytkowników w federacyjnym scenariuszu logowania.
-    - Ten interfejs API zależy od rozdzielczości standardowej procesu w systemie Windows Server do zlokalizowania kontrolera domeny.
-12. Agent uwierzytelniania odbiera wynik z usługi Active Directory, takie jak powodzenie, nazwa użytkownika lub hasło są niepoprawne lub hasło wygasło.
+1. Użytkownik próbuje uzyskać dostęp do aplikacji, na przykład [programu Outlook Web App](https://outlook.office365.com/owa).
+2. Jeśli użytkownik nie jest jeszcze zalogowany, aplikacja przekierowuje przeglądarkę do strony logowania usługi Azure AD.
+3. Usługa Azure AD STS reaguje z powrotem na stronę **logowania użytkownika** .
+4. Użytkownik wprowadza swoją nazwę użytkownika na stronie **logowania użytkownika** , a następnie wybiera przycisk **dalej** .
+5. Użytkownik wprowadza hasło do strony **logowania użytkownika** , a następnie wybiera przycisk **Zaloguj** .
+6. Nazwa użytkownika i hasło są przesyłane do usługi Azure AD STS w żądaniu POST protokołu HTTPS.
+7. Usługa Azure AD STS pobiera klucze publiczne dla wszystkich agentów uwierzytelniania zarejestrowanych w dzierżawie z usługi Azure SQL Database i szyfruje hasło przy użyciu tych funkcji.
+    - Tworzy "N" zaszyfrowane wartości haseł dla agentów uwierzytelniania "N" zarejestrowanych w dzierżawie.
+8. Usługa Azure AD STS umieszcza żądanie weryfikacji hasła, które składa się z nazwy użytkownika i zaszyfrowanej wartości hasła, do kolejki Service Bus określonej dla Twojej dzierżawy.
+9. Ponieważ zainicjowane agenci uwierzytelniania są trwale połączeni z kolejką Service Bus, jeden z dostępnych agentów uwierzytelniania pobiera żądanie weryfikacji hasła.
+10. Agent uwierzytelniania lokalizuje wartość hasła szyfrowanego, która jest specyficzna dla swojego klucza publicznego, przy użyciu identyfikatora i odszyfrowuje ją przy użyciu klucza prywatnego.
+11. Agent uwierzytelniania próbuje sprawdzić poprawność nazwy użytkownika i hasła do Active Directory lokalnego przy użyciu [interfejsu API Win32 funkcji LogonUser](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) z parametrem **dwLogonType** ustawionym na **LOGON32_LOGON_NETWORK**. 
+    - Ten interfejs API jest tym samym interfejsem API, który jest używany przez Active Directory Federation Services (AD FS) do logowania użytkowników w federacyjnym scenariuszu logowania.
+    - Ten interfejs API opiera się na standardowym procesie rozpoznawania w systemie Windows Server w celu zlokalizowania kontrolera domeny.
+12. Agent uwierzytelniania otrzymuje wynik z Active Directory, na przykład nieprawidłowe, nazwa użytkownika lub hasło, lub hasło wygasło.
 
    > [!NOTE]
-   > Jeśli Agent uwierzytelniania zakończy się niepowodzeniem podczas procesu logowania, zupełnie żądanie logowania zostało porzucone. Istnieje nie ręcznie wyłączyć logowania żądań od jednego agenta uwierzytelniania do innego agenta uwierzytelniania serwera lokalnego. Agenci komunikować się tylko w chmurze, a nie ze sobą.
-13. Agent uwierzytelniania przekazuje wynik do tokenu Zabezpieczającego usług AD systemu Azure za pośrednictwem kanału wychodzącego HTTPS uwierzytelnionego wzajemnie za pośrednictwem portu 443. Wzajemne uwierzytelnianie przy użyciu certyfikatu wystawionego wcześniej do agenta uwierzytelniania, podczas rejestracji.
-14. Usługi Azure AD usługi STS sprawdza, czy ten wynik jest skorelowane z określonego żądania logowania w dzierżawie.
-15. Usługa Azure AD usługi STS będzie kontynuowane przy użyciu procedura logowania, zgodnie z konfiguracją. Na przykład jeśli sprawdzenie poprawności hasła zakończyło się pomyślnie, użytkownika może być wezwaniem uwierzytelniania wieloskładnikowego lub przekierowany z powrotem do aplikacji.
+   > Jeśli Agent uwierzytelniania zakończy się niepowodzeniem w trakcie procesu logowania, cała prośba o zalogowanie zostanie porzucona. Nie są dostępne żadne żądania logowania z jednego agenta uwierzytelniania do innego agenta uwierzytelniania w środowisku lokalnym. Ci agenci komunikują się tylko z chmurą, a nie ze sobą.
+   
+13. Agent uwierzytelniania przekazuje wynik z powrotem do usługi Azure AD STS za pośrednictwem wychodzącego wzajemnie uwierzytelnionego kanału HTTPS na porcie 443. Uwierzytelnianie wzajemne używa certyfikatu wystawionego wcześniej dla agenta uwierzytelniania podczas rejestracji.
+14. Usługa Azure AD STS weryfikuje, czy ten wynik jest skorelowany z konkretnym żądaniem logowania w dzierżawie.
+15. Usługa Azure AD STS kontynuuje działanie zgodnie z konfiguracją. Na przykład jeśli sprawdzanie poprawności hasła zakończyło się pomyślnie, użytkownik może zakwestionować Multi-Factor Authentication lub przekierować z powrotem do aplikacji.
 
-## <a name="operational-security-of-the-authentication-agents"></a>Bezpieczeństwo działania agentów uwierzytelniania
+## <a name="operational-security-of-the-authentication-agents"></a>Bezpieczeństwo operacyjne agentów uwierzytelniania
 
-Aby upewnić się, że uwierzytelnianie przekazywane pozostanie bezpieczne pod względem usługi Azure AD okresowo odnawia agentów uwierzytelniania certyfikatów. Usługa Azure AD wyzwala odnowienia. Odnowienie nie są zarządzane przez agentów uwierzytelniania, samodzielnie.
+Aby zapewnić, że uwierzytelnianie przekazywane pozostaje bezpieczne, usługa Azure AD okresowo odnawia certyfikaty agentów uwierzytelniania. Usługa Azure AD wyzwala odnowienia. Odnowienia nie podlegają samym agentom uwierzytelniania.
 
-![Bezpieczeństwo działania](./media/how-to-connect-pta-security-deep-dive/pta4.png)
+![Zabezpieczenia operacyjne](./media/how-to-connect-pta-security-deep-dive/pta4.png)
 
-Aby odnowić relacji zaufania agenta uwierzytelniania w usłudze Azure AD:
+Aby odnowić zaufanie agenta uwierzytelniania za pomocą usługi Azure AD:
 
-1. Agent uwierzytelniania okresowo wysyła pakiet usługi ping usługi Azure AD co kilka godzin, aby sprawdzić, czy jest może odnowić swój certyfikat. Certyfikat zostanie odnowiony 30 dni przed jego wygaśnięciem.
-    - To sprawdzenie odbywa się za pośrednictwem uwierzytelnionego wzajemnie kanału protokołu HTTPS i używa tego samego certyfikatu, który został wystawiony podczas rejestracji.
-2. Jeśli usługa wskazuje, że nadszedł czas na odnowienie, Agent uwierzytelniania generuje nową parę kluczy: klucz publiczny i klucz prywatny.
-    - Te klucze są generowane przy użyciu standardowych szyfrowania RSA 2048-bitowego szyfrowania.
-    - Klucz prywatny nigdy nie opuszcza na lokalnym serwerze.
-3. Agent uwierzytelniania następnie żąda "odnawiania certyfikatów" do usługi Azure AD przy użyciu protokołu HTTPS za pomocą następujących składników, które są zawarte w żądaniu:
-    - Istniejącego certyfikatu, które są pobierane z lokalizacji CERT_SYSTEM_STORE_LOCAL_MACHINE w magazynie certyfikatów Windows. Istnieje nie administrator globalny zaangażowane w tej procedurze, więc nie ma żadnych token dostępu potrzebne w imieniu administratora globalnego.
-    - Klucz publiczny, wygenerowany w kroku 2.
-    - Żądanie podpisania certyfikatu (CSR lub żądanie certyfikatu). Dotyczy to żądanie nowego certyfikatu tożsamości cyfrowej, za pomocą usługi Azure AD jako jego urzędu certyfikacji.
-4. Usługa Azure AD weryfikuje istniejącego certyfikatu w żądanie odnowienia certyfikatu. Następnie sprawdza, czy żądanie pochodzi z agenta uwierzytelniania, zarejestrowanych w dzierżawie.
-5. Jeśli istniejący certyfikat jest nadal ważny, usługa Azure AD następnie podpisuje nowego certyfikatu tożsamości cyfrowej i wystawia nowy certyfikat agenta uwierzytelniania. 
-6. Jeśli istniejący certyfikat wygasł, usługi Azure AD Usuwa agenta uwierzytelniania z Twojej dzierżawy listę zarejestrowanych agentów uwierzytelniania. Administrator globalny musi ręcznie zainstalować i zarejestrować nowego agenta uwierzytelniania.
-    - Użyj usługi Azure AD głównego urzędu certyfikacji do podpisywania certyfikatu.
-    - Ustaw swój identyfikator dzierżawy, identyfikator GUID, który unikatowo identyfikuje dzierżawy podmiot certyfikatu (nazwy wyróżniającej lub nazwy domeny). Nazwa Wyróżniająca zakresów certyfikat, który ma tylko dzierżawy.
-6. Usługa Azure AD przechowuje nowego klucza publicznego agenta uwierzytelniania programu w bazie danych Azure SQL, to tylko ma dostęp do. Również powoduje unieważnienie starego klucza publicznego skojarzonego z agentem uwierzytelniania.
-7. Nowy certyfikat (pojawiły się w kroku 5) jest następnie przechowywany w magazynie certyfikatów Windows na serwerze (w szczególności w [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) lokalizacji).
-    - Ponieważ procedurę odnowienia zaufania występuje nieinteraktywnego (bez obecności administrator globalny), Agent uwierzytelniania nie ma już dostępu do aktualizowania istniejącego certyfikatu w lokalizacji CERT_SYSTEM_STORE_LOCAL_MACHINE. 
+1. Agent uwierzytelniania okresowo wysyła polecenie ping do usługi Azure AD co kilka godzin, aby sprawdzić, czy czas odnawiania certyfikatu. Certyfikat jest odnawiany na 30 dni przed jego wygaśnięciem.
+    - To sprawdzenie odbywa się za pośrednictwem wzajemnie uwierzytelnionego kanału HTTPS i używa tego samego certyfikatu, który został wystawiony podczas rejestracji.
+2. Jeśli usługa wskazuje, że czas odnawiania, Agent uwierzytelniania generuje nową parę kluczy: klucz publiczny i klucz prywatny.
+    - Klucze te są generowane przy użyciu standardowego RSA 2048-bitowego szyfrowania.
+    - Klucz prywatny nigdy nie opuszcza serwera lokalnego.
+3. Następnie Agent uwierzytelniania wysyła żądanie "odnowienia certyfikatu" do usługi Azure AD za pośrednictwem protokołu HTTPS z następującymi składnikami uwzględnionymi w żądaniu:
+    - Istniejący certyfikat pobrany z lokalizacji CERT_SYSTEM_STORE_LOCAL_MACHINE w magazynie certyfikatów systemu Windows. W tej procedurze nie ma żadnego administratora globalnego, dlatego nie jest wymagany token dostępu w imieniu administratora globalnego.
+    - Klucz publiczny wygenerowany w kroku 2.
+    - Żądanie podpisania certyfikatu (CSR lub żądanie certyfikatu). To żądanie dotyczy nowego certyfikatu tożsamości cyfrowej z usługą Azure AD jako urzędu certyfikacji.
+4. Usługa Azure AD weryfikuje istniejący certyfikat w żądaniu odnowienia certyfikatu. Następnie sprawdza, czy żądanie pochodzi od agenta uwierzytelniania zarejestrowanego w dzierżawie.
+5. Jeśli istniejący certyfikat jest nadal ważny, usługa Azure AD następnie podpisuje nowy certyfikat tożsamości cyfrowej i wystawia nowy certyfikat z powrotem do agenta uwierzytelniania. 
+6. Jeśli istniejący certyfikat wygasł, usługa Azure AD usunie agenta uwierzytelniania z listy zarejestrowanych agentów uwierzytelniania. Następnie Administrator globalny musi ręcznie zainstalować i zarejestrować nowego agenta uwierzytelniania.
+    - Aby podpisać certyfikat, użyj głównego urzędu certyfikacji usługi Azure AD.
+    - Ustaw podmiot certyfikatu (nazwę wyróżniającą lub DN) na identyfikator dzierżawy, identyfikator GUID, który jednoznacznie identyfikuje dzierżawcę. Nazwa DN zakresy certyfikatu tylko dla dzierżawy.
+6. Usługa Azure AD przechowuje nowy klucz publiczny agenta uwierzytelniania w bazie danych Azure SQL Database, do której ma dostęp. Unieważnia także stary klucz publiczny skojarzony z agentem uwierzytelniania.
+7. Nowy certyfikat (wydany w kroku 5) jest następnie przechowywany na serwerze w magazynie certyfikatów systemu Windows (w zależności od lokalizacji [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) ).
+    - Ponieważ procedura odnawiania zaufania nie jest interaktywna (bez obecności administratora globalnego), Agent uwierzytelniania nie ma już dostępu do aktualizowania istniejącego certyfikatu w lokalizacji CERT_SYSTEM_STORE_LOCAL_MACHINE. 
     
    > [!NOTE]
-   > Ta procedura nie powoduje usunięcia sam certyfikat z lokalizacji CERT_SYSTEM_STORE_LOCAL_MACHINE.
-8. Nowy certyfikat jest używany do uwierzytelniania z tego punktu w. Każdy z kolejnych odnowienia certyfikatu zastępuje certyfikat w lokalizacji CERT_SYSTEM_STORE_LOCAL_MACHINE.
+   > Ta procedura nie usuwa samego certyfikatu z lokalizacji CERT_SYSTEM_STORE_LOCAL_MACHINE.
+8. Nowy certyfikat jest używany do uwierzytelniania z tego punktu w systemie. Każde kolejne odnowienie certyfikatu zastępuje certyfikat w lokalizacji CERT_SYSTEM_STORE_LOCAL_MACHINE.
 
-## <a name="auto-update-of-the-authentication-agents"></a>Automatyczna aktualizacja agentów uwierzytelniania
+## <a name="auto-update-of-the-authentication-agents"></a>Autoaktualizacja agentów uwierzytelniania
 
-Aplikacja aktualizatora automatycznie aktualizuje agenta uwierzytelniania, po wydaniu nowej wersji (za pomocą poprawki lub ulepszenia wydajności). Aplikacja aktualizatora nie obsługuje wszystkie żądania weryfikacji hasła dla Twojej dzierżawy.
+Aplikacja Aktualizator automatycznie aktualizuje agenta uwierzytelniania, gdy zostanie wydana nowa wersja (z poprawkami błędów lub ulepszeniami wydajności). Aplikacja Aktualizator nie obsługuje żadnych żądań weryfikacji hasła dla Twojej dzierżawy.
 
-Usługa Azure AD obsługuje nową wersję oprogramowania jako zalogowany **pakietu Instalatora Windows (MSI)** . Plik MSI jest podpisany przy użyciu [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) z SHA256 algorytmu skrótu. 
+Usługa Azure AD obsługuje nową wersję oprogramowania jako podpisany **Instalator Windows pakiet (msi)** . Plik MSI jest podpisany przy użyciu [technologii Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) z SHA256 jako algorytmem Digest. 
 
-![Automatyczna aktualizacja](./media/how-to-connect-pta-security-deep-dive/pta5.png)
+![Aktualizuj aktualizację](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
-Aby automatycznie Aktualizuj agenta uwierzytelniania:
+Aby zaktualizować agenta uwierzytelniania:
 
-1. Polecenia ping aplikacja aktualizatora usługi Azure AD do sprawdzania, czy jest nowa wersja agenta uwierzytelniania programu na godzinę. 
-    - To sprawdzenie odbywa się za pośrednictwem uwierzytelnionego wzajemnie kanału protokołu HTTPS przy użyciu tego samego certyfikatu, który został wystawiony podczas rejestracji. Agent uwierzytelniania i aktualizacji współdzielą certyfikat przechowywany na serwerze.
-2. Jeśli dostępna jest nowa wersja, usługa Azure AD zwraca podpisanego pliku MSI do aktualizacji.
-3. Aktualizacji sprawdza, czy plik MSI jest podpisany przez firmę Microsoft.
-4. Aktualizator uruchamiany plik MSI. Ta akcja obejmuje następujące czynności:
+1. Aplikacja Aktualizator wysyła polecenie ping do usługi Azure AD co godzinę, aby sprawdzić, czy jest dostępna nowa wersja agenta uwierzytelniania. 
+    - To sprawdzenie odbywa się za pośrednictwem wzajemnie uwierzytelnionego kanału HTTPS za pomocą tego samego certyfikatu, który został wystawiony podczas rejestracji. Agent uwierzytelniania i Aktualizator korzystają z certyfikatu przechowywanego na serwerze.
+2. Jeśli nowa wersja jest dostępna, usługa Azure AD zwraca podpisany plik MSI z powrotem do Aktualizator.
+3. Aktualizator sprawdza, czy plik MSI jest podpisany przez firmę Microsoft.
+4. Aktualizator uruchamia plik MSI. Ta akcja obejmuje następujące kroki:
 
    > [!NOTE]
-   > Aktualizacji uruchamiany przy użyciu [systemu lokalnego](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) uprawnień.
+   > Aktualizator jest uruchamiany z uprawnieniami [systemu lokalnego](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) .
 
-    - Zatrzymuje usługę agenta uwierzytelniania
+    - Powoduje zatrzymanie usługi agenta uwierzytelniania
     - Instaluje nową wersję agenta uwierzytelniania na serwerze
-    - Uruchamia ponownie usługę Agent uwierzytelniania
+    - Ponownie uruchamia usługę agenta uwierzytelniania.
 
 >[!NOTE]
->W przypadku wielu agentów uwierzytelniania zarejestrowany w dzierżawie usługi Azure AD nie odnawiać swoje certyfikaty lub je zaktualizować w tym samym czasie. Zamiast tego usługa Azure AD ma jedną pojedynczo, aby zapewnić wysoką dostępność żądań logowania.
+>Jeśli w dzierżawie zarejestrowano wielu agentów uwierzytelniania, usługa Azure AD nie odnawia certyfikatów ani nie aktualizuje ich w tym samym czasie. Zamiast tego usługa Azure AD robi to pojedynczo, aby zapewnić wysoką dostępność żądań logowania.
 >
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
-- [Szybki start](how-to-connect-pta-quick-start.md): Rozpocznij pracę na uwierzytelnianie przekazywane usługi AD platformy Azure.
-- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://aka.ms/adfstoptadpdownload) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
-- [Blokada Smart](../authentication/howto-password-smart-lockout.md): Konfigurowanie funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
-- [Jak działa](how-to-connect-pta-how-it-works.md): Poznaj podstawy działania uwierzytelniania przekazywanego usługi AD platformy Azure.
-- [Często zadawane pytania dotyczące](how-to-connect-pta-faq.md): Znajdź odpowiedzi na często zadawane pytania.
-- [Rozwiązywanie problemów z](tshoot-connect-pass-through-authentication.md): Dowiedz się, jak rozwiązać typowe problemy przy użyciu funkcji uwierzytelniania przekazywanego.
-- [Bezproblemowe logowanie Jednokrotne usługi Azure AD](how-to-connect-sso.md): Dowiedz się więcej na temat tej dodatkowej funkcji.
+## <a name="next-steps"></a>Następne kroki
+- [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md): informacje o scenariuszach, które są obsługiwane i które nie są.
+- [Szybki Start](how-to-connect-pta-quick-start.md): Rozpoczynanie pracy z uwierzytelnianiem przekazywanym usługi Azure AD.
+- [Migrowanie z AD FS do uwierzytelniania przekazywanego](https://aka.ms/adfstoptadpdownload) — szczegółowy przewodnik migracji z AD FS (lub innych technologii federacyjnych) do uwierzytelniania przekazywanego.
+- [Inteligentna blokada](../authentication/howto-password-smart-lockout.md): Skonfiguruj funkcję inteligentnego blokowania w dzierżawie, aby chronić konta użytkowników.
+- [Jak to działa](how-to-connect-pta-how-it-works.md): Poznaj podstawowe informacje na temat sposobu działania uwierzytelniania przekazywanego przez usługę Azure AD.
+- [Często zadawane pytania](how-to-connect-pta-faq.md): Znajdź odpowiedzi na często zadawane pytania.
+- [Rozwiązywanie problemów](tshoot-connect-pass-through-authentication.md): informacje na temat rozwiązywania typowych problemów z funkcją uwierzytelniania przekazywanego.
+- [Bezproblemowe logowanie jednokrotne w usłudze Azure AD](how-to-connect-sso.md): Dowiedz się więcej o tej funkcji uzupełniającej.

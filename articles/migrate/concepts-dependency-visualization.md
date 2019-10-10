@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202899"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178136"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
@@ -28,7 +28,7 @@ Wizualizacja zależności w ramach oceny serwera umożliwia tworzenie grup o wys
 
 - Upewnij się, że [utworzono](how-to-add-tool-first-time.md) projekt Azure Migrate.
 - Jeśli projekt został już utworzony, upewnij się, że [dodano](how-to-assess.md) Azure Migrate: Narzędzie do oceny serwera.
-- Upewnij się, że maszyny zostały odnalezione w Azure Migrate; w tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Server Assessment. [Dowiedz się więcej](migrate-appliance.md).
+- Upewnij się, że maszyny zostały odnalezione w Azure Migrate; w tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Ocena serwera. [Dowiedz się więcej](migrate-appliance.md).
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 
@@ -36,7 +36,7 @@ Azure Migrate używa rozwiązania [Service map](../operations-management-suite/o
 - Aby można było korzystać z wizualizacji zależności, należy skojarzyć obszar roboczy Log Analytics, nowy lub istniejący, z projektem Azure Migrate.
 - Obszar roboczy można utworzyć lub dołączyć tylko w ramach tej samej subskrypcji, w której jest tworzony projekt Azure Migrate.
 - Aby dołączyć obszar roboczy Log Analytics do projektu:
-    1. Na karcie **serwery** w **Azure Migrate: Kafelek Ocena** serwera, kliknij przycisk **Przegląd**.
+    1. Na karcie **serwery** , w **Azure Migrate: kafelek Ocena serwera** , kliknij przycisk **Przegląd**.
     2. W obszarze **Przegląd**kliknij strzałkę w dół, aby rozwinąć **podstawowe**elementy.
     3. W **obszarze roboczym pakietu OMS**kliknij pozycję **wymaga konfiguracji**.
     4. W obszarze **Konfiguruj obszar roboczy**Określ, czy chcesz utworzyć nowy obszar roboczy, czy użyć istniejącego:
@@ -51,7 +51,7 @@ Azure Migrate używa rozwiązania [Service map](../operations-management-suite/o
   > Po dołączeniu obszaru roboczego do projektu nie można go później zmienić.
 
   > [!NOTE]
-  > Azure Migrate obecnie obsługuje tworzenie obszaru roboczego pakietu OMS w regionach Wschodnie stany USA, Azja Południowo-Wschodnia i Europa Zachodnia. Jeśli obszar roboczy jest tworzony poza Azure Migrate w innym regionie, nie można go skojarzyć z Azure Migrate projektem. 
+  > Azure Migrate obecnie obsługuje tworzenie i kojarzenie Log Analytics obszarów roboczych, które znajdują się w regionach Wschodnie stany USA, Azja Południowo-Wschodnia i Europa Zachodnia. Jeśli obszar roboczy jest tworzony poza Azure Migrate w nieobsługiwanym regionie, nie można go skojarzyć z Azure Migrate projektem. 
 
 - Skojarzony obszar roboczy jest otagowany za pomocą **projektu migracji**kluczy i **nazwy projektu**wartości, którego można użyć do wyszukiwania w Azure Portal.
 - Aby przejść do obszaru roboczego skojarzonego z projektem, możesz przejść do sekcji **podstawowe** strony **Przegląd** projektu i uzyskać dostęp do obszaru roboczego

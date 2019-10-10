@@ -8,19 +8,19 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07612d325929468e3919b543d9b4ae0ad268036a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: d2eeada500de0f174178234ab92b51bcf16b3502
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71938474"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176729"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Przygotowywanie maszyn lokalnych do migracji na platformę Azure
 
 W tym artykule opisano sposób przygotowania maszyny lokalnej i opartej na chmurze przed rozpoczęciem migrowania ich do platformy Azure za pomocą [migracji Azure Migrate Server](migrate-services-overview.md#azure-migrate-server-migration).
 
 
-W tym artykule opisano:
+W tym artykule opisano następujące zagadnienia:
 > [!div class="checklist"]
 > * Sprawdź ograniczenia migracji.
 > * Sprawdź wymagania systemu operacyjnego i ograniczenia dotyczące obsługi.
@@ -44,7 +44,7 @@ W tym artykule opisano:
 
 ## <a name="check-whats-supported"></a>Sprawdź, co jest obsługiwane
 
-- W przypadku maszyn wirtualnych VMware Migracja serwera Azure Migrate obsługuje [migrację bezagentową lub opartą na agencie](/server-migrate-overview.md). Sprawdź wymagania/obsługę maszyn wirtualnych VMware na potrzeby migracji [bez agentów](migrate-support-matrix-vmware.md#migration---limitations) i [opartych na agentach](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) .
+- W przypadku maszyn wirtualnych VMware Migracja serwera Azure Migrate obsługuje [migrację bezagentową lub opartą na agencie](server-migrate-overview.md). Sprawdź wymagania/obsługę maszyn wirtualnych VMware na potrzeby migracji [bez agentów](migrate-support-matrix-vmware.md#migration---limitations) i [opartych na agentach](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) .
 - Sprawdź [wymagania dotyczące migracji i obsługę](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) maszyn wirtualnych funkcji Hyper-V.
 - Sprawdź [wymagania dotyczące migracji i obsługę](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) lokalnych maszyn fizycznych lub innych zwirtualizowanych serwerów. Wymagania te są podobne do wymagań dotyczących maszyn wirtualnych VMware.
 

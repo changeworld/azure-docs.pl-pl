@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812718"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170068"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Foodee na potrzeby automatycznego aprowizacji użytkowników
 
@@ -75,13 +75,13 @@ Aby skonfigurować Foodee automatycznej aprowizacji użytkowników przy użyciu 
 
 Aby dodać Foodee z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:
 
-1. W [Azure Portal](https://portal.azure.com)w lewym okienku wybierz pozycję **Azure Active Directory**.
+1. W [witrynie Azure Portal](https://portal.azure.com) w okienku po lewej stronie wybierz pozycję **Azure Active Directory**.
 
     ![Azure Active Directory polecenie](common/select-azuread.png)
 
-1. Wybierz pozycję **aplikacje dla przedsiębiorstw**@no__t — 1**wszystkie aplikacje**.
+1. Wybierz pozycję **Aplikacje dla przedsiębiorstw** > **Wszystkie aplikacje**.
 
-    ![Okienko aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![Okienko Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja** w górnej części okienka.
 
@@ -118,11 +118,11 @@ Skonfiguruj automatyczne Inicjowanie obsługi użytkowników dla Foodee w usłud
 
 1. W obszarze **poświadczenia administratora**wykonaj następujące czynności:
 
-   a. W polu **adres URL dzierżawy** wprowadź wcześniej pobraną wartość **https://concierge.food.ee/scim/v2** .
+   a. W polu **adres URL dzierżawy** wprowadź wcześniej pobraną wartość **https: \//Concierge. żywność. ee/Standard scim/v2** .
 
    b. W polu **token Secret** wprowadź wcześniej pobraną wartość **tokenu interfejsu API** .
    
-   s. Aby upewnić się, że usługa Azure AD może nawiązać połączenie z usługą Foodee, wybierz pozycję **Testuj połączenie**. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi Foodee ma uprawnienia administratora, a następnie spróbuj ponownie.
+   d. Aby upewnić się, że usługa Azure AD może nawiązać połączenie z usługą Foodee, wybierz pozycję **Testuj połączenie**. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi Foodee ma uprawnienia administratora, a następnie spróbuj ponownie.
 
     ![Link połączenia testowego](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -168,10 +168,10 @@ Poprzednia operacja uruchamia początkową synchronizację użytkowników lub gr
 
 Możesz użyć bieżącej sekcji **stanu** , aby monitorować postęp i postępować zgodnie z raportem dotyczącym aktywności aprowizacji. Raport opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w systemie Foodee. Aby uzyskać więcej informacji, zobacz [Sprawdzanie stanu aprowizacji użytkowników](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Aby zapoznać się z dziennikami aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

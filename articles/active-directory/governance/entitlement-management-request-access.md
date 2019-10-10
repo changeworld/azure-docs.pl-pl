@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c8a96a4557a500bd4726b8df44ada5df328b7c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2aaa58d3027fecdbfdf594e5712cbdbd758380a7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290886"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169822"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Zażądaj dostępu do pakietu dostępu w usłudze Azure AD uprawnień do zarządzania (wersja zapoznawcza)
 
@@ -38,9 +38,9 @@ Menedżer pakietów dostępu może skonfigurować zasady, aby wymagać zatwierdz
 
 Pierwszym krokiem jest zalogowanie się w portalu do mojego dostępu, w którym można zażądać dostępu do pakietu dostępu.
 
-**Rola wymagana wstępnie:** Żądający
+**Rola wymagana wstępnie:** Obiektu żądającego
 
-1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Link rozpocznie się z "dostępem do", obejmuje wskazówkę katalogu i kończy się identyfikatorem pakietu dostępu podobnym do poniższego:
+1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Link rozpocznie się z "dostępem do", obejmuje wskazówkę katalogu i kończy się IDENTYFIKATORem pakietu dostępu podobnym do poniższego:
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -54,7 +54,7 @@ Pierwszym krokiem jest zalogowanie się w portalu do mojego dostępu, w którym 
 
 Po znalezieniu pakietu dostępu w portalu dostępu można przesłać żądanie.
 
-**Rola wymagana wstępnie:** Żądający
+**Rola wymagana wstępnie:** Obiektu żądającego
 
 1. Znajdź na liście pakiet dostępu.  W razie potrzeby można wyszukać, wpisując ciąg wyszukiwania, a następnie wybierając pozycję **Nazwa**, **wykaz**lub filtr **zasobów** .
 
@@ -83,7 +83,7 @@ Po znalezieniu pakietu dostępu w portalu dostępu można przesłać żądanie.
 
 W przypadku przesyłania żądania dostępu, gdy żądanie jest nadal w stanie **oczekiwania na zatwierdzenie** , można anulować żądanie.
 
-**Rola wymagana wstępnie:** Żądający
+**Rola wymagana wstępnie:** Obiektu żądającego
 
 1. W portalu mój dostęp po lewej stronie kliknij pozycję **historia żądań** , aby wyświetlić listę żądań i stan.
 
@@ -99,7 +99,7 @@ W przypadku przesyłania żądania dostępu, gdy żądanie jest nadal w stanie *
 
 Jeśli żądasz dostępu do pakietu dostępu z wieloma zasadami, które mają zastosowanie, może zostać wyświetlony monit o wybranie zasad. Na przykład Menedżer pakietów dostępu może skonfigurować pakiet dostępu z dwiema zasadami dla dwóch grup pracowników wewnętrznych. Pierwsze zasady mogą zezwalać na dostęp przez 60 dni i wymagać zatwierdzenia. Drugie zasady mogą zezwalać na dostęp przez 2 dni i nie wymagać zatwierdzania. Jeśli wystąpi ten scenariusz, należy wybrać zasady, które mają być używane.
 
-**Rola wymagana wstępnie:** Żądający
+**Rola wymagana wstępnie:** Obiektu żądającego
 
 ## <a name="next-steps"></a>Następne kroki
 

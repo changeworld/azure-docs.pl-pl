@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 10/07/2019
 ms.author: juliako
-ms.openlocfilehash: 2d01828cb61937b45665e953a13795b5346a5f1b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 34d68974366eb17704b4ea1291bd1d29a0eea95a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030535"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168633"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Informacje o wersji Azure Media Services v3
 
@@ -36,16 +36,38 @@ Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące migracji dotyczą
 
 ## <a name="september-2019"></a>2019 września
 
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="live-linear-encoding-of-live-events"></a>Kodowanie liniowe na żywo zdarzeń na żywo
+
 Media Services v3 zapowiedźuje Podgląd 24 godzin x 365 dni aktywnego kodowania zdarzeń na żywo.
- 
+
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>Wycofanie procesorów multimediów
+
+Ogłaszamy przestarzałe *Azure Media Indexer* i *Azure Media Indexer 2 wersji zapoznawczej*. Procesor multimediów [Azure Media Indexer](../previous/media-services-index-content.md) zostanie wycofany 1 października 2020. [Azure Media Indexer 2 wersji zapoznawczej](../previous/media-services-process-content-with-indexer2.md) procesorów multimediów zostanie wycofana 1 stycznia 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje te starsze procesory nośników.
+
+Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer i Azure Media Indexer 2 do Azure Media Services Video Indexer](../previous/migrate-indexer-v1-v2.md).
+
 ## <a name="august-2019"></a>2019 sierpnia
 
-### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Para regionalna w Republice Południowej Afryki jest otwarta dla Media Services 
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Para regionalna w Republice Południowej Afryki jest otwarta dla Media Services 
 
 Media Services jest teraz dostępna w regionach Północna Republika Południowej Afryki i Zachodnia Republika Południowej Afryki.
 
 Aby uzyskać więcej informacji, zobacz [chmury i regiony, w których istnieje Media Services v3](azure-clouds-regions.md).
 
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>Wycofanie procesorów multimediów
+
+Ogłaszamy przestarzałe procesory nośników z *systemami Windows Azure Media Encoder* (WAME) i *Azure Media Encoder* (azwa), które są wycofywane z 30 listopada 2019.
+
+Aby uzyskać szczegółowe informacje, zobacz [Migrowanie WAME do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) i [Migrowanie azwa do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+ 
 ## <a name="july-2019"></a>Lipiec 2019
 
 ### <a name="content-protection"></a>Ochrona zawartości

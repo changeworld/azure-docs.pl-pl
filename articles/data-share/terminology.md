@@ -1,17 +1,17 @@
 ---
 title: Terminologia dotycząca udziału danych platformy Azure
-description: Terminologia dotycząca udziału danych platformy Azure
+description: Poznaj typowe terminy używane do opisywania zasobów używanych w wersji zapoznawczej udziału danych platformy Azure (dostawca danych, odbiorca danych, udział danych, subskrypcja udostępniania, migawka, zaproszenie, odbiorca).
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844704"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166269"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Pojęcia dotyczące usługi Azure Data Share w wersji zapoznawczej 
 
@@ -21,7 +21,7 @@ W wersji zapoznawczej usługi Azure Data Share wprowadzono nową terminologię z
 
 Dostawca danych jest organizacją, która udostępnia dane klientom. Zazwyczaj dostawca danych może być właścicielem lub Curator danych. Dostawcy danych chcą udostępniać dane różnych typów. Niektóre przykłady danych, które mogą być udostępniane dostawcy danych, obejmują dane pierwotne, takie jak punkt sprzedaży lub dane szeregów czasowych. Dostawca danych może również chcieć udostępnić wstępnie przetworzone, nadzorowane dane, które już zawierają analizę i szczegółowe informacje. 
 
-## <a name="data-consumer"></a>Użytkownik danych 
+## <a name="data-consumer"></a>Odbiorca danych 
 
 Odbiorca danych to organizacja, która otrzymuje dane od dostawcy danych. Odbiorca danych może chcieć przyłączyć dane udostępnione do swoich danych w celu uzyskania szczegółowych informacji. W niektórych przypadkach odbiorca danych może odbierać dane, które zostały już przetworzone. 
 
@@ -35,7 +35,7 @@ Subskrypcja udziału jest tworzona, gdy odbiorca danych akceptuje zaproszenie do
 
 Odbiorca danych może sprawdzić, czy ma aktywną subskrypcję udziałów, przechodząc do **odebranych udziałów** i wyświetlając stan odebranych udziałów. 
 
-## <a name="snapshot"></a>Snapshot
+## <a name="snapshot"></a>Migawka
 
 Migawkę można utworzyć przez odbiorcę danych po zaakceptowaniu zaproszenia udziału danych. Po zaakceptowaniu zaproszenia mogą wyzwalać pełną migawkę danych, które są do nich udostępniane. Migawka jest kopią danych w punkcie w czasie, w którym odbiorca danych wygenerował migawkę. 
 
@@ -55,7 +55,7 @@ Dostawca danych może zaprosić wielu odbiorców do swojego udziału danych. Mo�
 
 Dostawca danych może usunąć zaproszenie po jego wysłaniu, jeśli nie zostało ono zaakceptowane. Jeśli dostawca danych usunie zaproszenie i nie zostało jeszcze zaakceptowane, konsument danych nie będzie mógł go zaakceptować. 
 
-Zaproszenia można wysyłać do 5 razy dziennie. 
+Zaproszenia można wysyłać do pięciu razy dziennie. 
 
 ## <a name="recipient"></a>Adresat
 

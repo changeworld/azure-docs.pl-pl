@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 02c27faa4ac45165747d5eb450e75f666ba7d013
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 62d2a2533bf7b5b0e9e98d09c34583e55403753f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703472"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174758"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -131,7 +131,7 @@ Azure Logic Apps obsługuje operacje zapisu, w tym wstawienia i aktualizacje, za
 
 Poniżej znajdują się limity dotyczące pojedynczego żądania HTTP lub wywołania łącznika synchronicznego:
 
-#### <a name="timeout"></a>Limit czasu
+#### <a name="timeout"></a>limit czasu
 
 Niektóre operacje łączników powodują wywołania asynchroniczne lub Nasłuchuj żądań elementu webhook, dlatego limit czasu dla tych operacji może być dłuższy niż te limity. Aby uzyskać więcej informacji, zobacz szczegóły techniczne dla określonego łącznika oraz [wyzwalacze i akcje przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
@@ -275,7 +275,7 @@ Adresy IP używane przez Azure Logic Apps dla wywołań przychodzących i wychod
 
 * W przypadku aplikacji logiki, które działają w środowisku usługi integracji (ISE), upewnij się, że [te porty są otwarte](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
-* Usługa Logic Apps nie może bezpośrednio uzyskać dostępu do kont usługi Azure Storage, które mają [reguły zapory](../storage/common/storage-network-security.md) i istnieją w tym samym regionie. Aplikacje logiki mogą jednak uzyskiwać dostęp do kont usługi Azure Storage, które istnieją w innym regionie, ponieważ publiczny adres IP jest używany do komunikacji między regionami. Wystarczy upewnić się, że [wychodzące adresy IP są dozwolone dla łączników zarządzanych w Twoim regionie](../logic-apps/logic-apps-limits-and-config.md#outbound). Można też użyć bardziej zaawansowanych opcji w tym miejscu:
+* Usługa Logic Apps nie może bezpośrednio uzyskać dostępu do kont usługi Azure Storage, które mają [reguły zapory](../storage/common/storage-network-security.md) i istnieją w tym samym regionie. Jeśli jednak zezwolisz na [wychodzące adresy IP dla łączników zarządzanych w Twoim regionie](../logic-apps/logic-apps-limits-and-config.md#outbound), usługa Logic Apps będzie mogła uzyskać dostęp do kont magazynu w innym regionie, z wyjątkiem sytuacji, gdy używasz łącznika usługi Azure Table Storage lub łącznika usługi Azure queue storage. Aby uzyskać dostęp do Table Storage lub Queue Storage, można nadal używać wyzwalacza HTTP i akcji. W przeciwnym razie możesz użyć bardziej zaawansowanych opcji tutaj:
 
   * Utwórz [środowisko usługi integracji](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), które może łączyć się z zasobami w sieci wirtualnej platformy Azure.
 
@@ -290,7 +290,7 @@ Adresy IP używane przez Azure Logic Apps dla wywołań przychodzących i wychod
 
 ### <a name="inbound-ip-addresses---logic-apps-service-only"></a>Przychodzące adresy IP — tylko usługa Logic Apps
 
-| okolicy | PRZEGLĄD |
+| Okolicy | PRZEGLĄD |
 |--------|----|
 | Australia Wschodnia | 13.75.153.66, 52.187.231.161, 104.210.89.222, 104.210.89.244 |
 | Australia Południowo-Wschodnia | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
@@ -326,7 +326,7 @@ Adresy IP używane przez Azure Logic Apps dla wywołań przychodzących i wychod
 
 ### <a name="outbound-ip-addresses---logic-apps-service--managed-connectors"></a>Wychodzące adresy IP — łączniki zarządzane & usługi Logic Apps Service
 
-| okolicy | Adres IP Logic Apps | Adres IP łączników zarządzanych |
+| Okolicy | Adres IP Logic Apps | Adres IP łączników zarządzanych |
 |--------|---------------|-----------------------|
 | Australia Wschodnia | 13.75.149.4, 52.187.226.96, 52.187.226.139, 52.187.227.245, 52.187.229.130, 52.187.231.184, 104.210.90.241, 104.210.91.55 | 13.70.72.192 - 13.70.72.207, 13.72.243.10 |
 | Australia Południowo-Wschodnia | 13.70.159.205, 13.73.114.207, 13.77.3.139, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75, 52.189.222.77 | 13.77.50.240 - 13.77.50.255, 13.70.136.174 |

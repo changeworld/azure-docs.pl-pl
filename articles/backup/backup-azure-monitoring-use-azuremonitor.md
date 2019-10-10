@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Monitoruj Azure Backup z Azure Monitor'
+title: 'Azure Backup: monitorowanie Azure Backup za pomocą Azure Monitor'
 description: Monitoruj Azure Backup obciążenia i twórz niestandardowe alerty przy użyciu Azure Monitor.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: ffc245402965cdcd62bb210d79bd95db5444f964
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: ba2288ecebbeda97b3cd9c24ae930be6af193ab8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954622"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177715"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu Azure Monitor
 
@@ -59,8 +59,8 @@ Gdy dane są w obszarze roboczym Log Analytics, [Wdróż szablon GitHub](https:/
 
 Po wdrożeniu szablonu rozwiązanie do monitorowania i raportowania w Azure Backup będzie widoczne w obszarze Podsumowanie obszaru roboczego. Aby przejść do podsumowania, wykonaj jedną z następujących ścieżek:
 
-- **Azure monitor**: W sekcji **szczegółowe informacje** wybierz pozycję **więcej** , a następnie wybierz odpowiedni obszar roboczy.
-- **Log Analytics obszary robocze**: Wybierz odpowiedni obszar roboczy, a następnie w obszarze **Ogólne**wybierz pozycję **Podsumowanie obszaru roboczego**.
+- **Azure monitor**: w sekcji **Insights** wybierz pozycję **więcej** , a następnie wybierz odpowiedni obszar roboczy.
+- **Log Analytics obszary robocze**: wybierz odpowiedni obszar roboczy, a następnie w obszarze **Ogólne**wybierz pozycję **Podsumowanie obszaru roboczego**.
 
 ![Kafelki monitorowania Log Analytics i raportowania](media/backup-azure-monitoring-laworkspace/la-azurebackup-overview-dashboard.png)
 
@@ -246,9 +246,9 @@ Można wyświetlić wszystkie alerty utworzone na podstawie dzienników aktywno�
 
 Mimo że można otrzymywać powiadomienia za pośrednictwem dzienników aktywności, zdecydowanie zalecamy używanie Log Analytics, a nie dzienników aktywności do monitorowania w odpowiedniej skali. Oto dlaczego:
 
-- **Ograniczone scenariusze**: Powiadomienia za pomocą dzienników aktywności dotyczą tylko kopii zapasowych maszyn wirtualnych platformy Azure. Powiadomienia muszą zostać skonfigurowane dla każdego magazynu Recovery Services.
-- **Dopasowanie definicji**: Działanie zaplanowanej kopii zapasowej nie jest zgodne z najnowszą definicją dzienników aktywności. Zamiast tego jest on wyrównany do [dzienników diagnostycznych](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs). To wyrównanie powoduje nieoczekiwane skutki, gdy dane przepływają przez kanał dziennika aktywności są zmieniane.
-- **Problemy z kanałem dziennika aktywności**: W Recovery Services magazynach dzienniki aktywności, które są pompy Azure Backup podążają za nowym modelem. Niestety ta zmiana ma wpływ na generowanie dzienników aktywności w Azure Government, na platformie Azure (Niemcy) i na platformie Azure (Chiny). Jeśli użytkownicy tych usług w chmurze tworzą lub konfigurują alerty z dzienników aktywności w Azure Monitor, alerty nie zostaną wyzwolone. Ponadto w przypadku wszystkich regionów publicznych platformy Azure, jeśli użytkownik [zbiera Recovery Services dzienników aktywności w obszarze roboczym log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), te dzienniki nie będą wyświetlane.
+- **Ograniczone scenariusze**: powiadomienia za pomocą dzienników aktywności dotyczą tylko kopii zapasowych maszyn wirtualnych platformy Azure. Powiadomienia muszą zostać skonfigurowane dla każdego magazynu Recovery Services.
+- **Dopasowanie definicji**: działanie zaplanowanej kopii zapasowej nie jest zgodne z najnowszą definicją dzienników aktywności. Zamiast tego jest on wyrównany do [dzienników diagnostycznych](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace). To wyrównanie powoduje nieoczekiwane skutki, gdy dane przepływają przez kanał dziennika aktywności są zmieniane.
+- **Problemy z kanałem dziennika aktywności**: w magazynach Recovery Services, dzienniki aktywności, które są pompy Azure Backup podążają za nowym modelem. Niestety ta zmiana ma wpływ na generowanie dzienników aktywności w Azure Government, na platformie Azure (Niemcy) i na platformie Azure (Chiny). Jeśli użytkownicy tych usług w chmurze tworzą lub konfigurują alerty z dzienników aktywności w Azure Monitor, alerty nie zostaną wyzwolone. Ponadto w przypadku wszystkich regionów publicznych platformy Azure, jeśli użytkownik [zbiera Recovery Services dzienników aktywności w obszarze roboczym log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), te dzienniki nie będą wyświetlane.
 
 Użyj Log Analytics obszaru roboczego do monitorowania i generowania alertów na dużą skalę dla wszystkich obciążeń chronionych przez Azure Backup.
 

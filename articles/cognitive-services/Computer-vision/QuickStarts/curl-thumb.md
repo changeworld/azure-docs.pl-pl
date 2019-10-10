@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0d430f7c9a6e9d59b20cd1420b65f70d9c6994d5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 350bc95e08aa994e4cb70db6bf1f08d53bbec5a3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141435"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177300"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Szybki start: Generowanie miniatury przy użyciu interfejsu API REST przetwarzanie obrazów i zwinięcie
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Szybki Start: generowanie miniatury przy użyciu interfejsu API REST przetwarzanie obrazów i zwinięcie
 
 W tym przewodniku szybki start utworzysz miniaturę obrazu przy użyciu interfejsu API REST przetwarzanie obrazów. Należy określić wymaganą wysokość i szerokość, która może się różnić w zależności od aspektu obrazu wejściowego. Przetwarzanie obrazów korzysta z inteligentnego przycinania, aby inteligentnie identyfikować obszar zainteresowania i generować współrzędne przycinania wokół tego regionu.
 
@@ -38,7 +38,7 @@ Aby uruchomić przykład, wykonaj następujące kroki:
 1. Skopiuj następujący kod do edytora.
 1. Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji.
 1. Zastąp ciąg `<File>` ścieżką i nazwę pliku, aby zapisać miniaturę.
-1. Zmień adres URL żądania (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0`), aby użyć lokalizacji, w której uzyskano klucze subskrypcji, jeśli jest to konieczne.
+1. Zmień adres URL żądania (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`), aby użyć lokalizacji, w której uzyskano klucze subskrypcji, jeśli jest to konieczne.
 1. Opcjonalnie możesz zmienić obraz (`{\"url\":\"...`) do analizy.
 1. Otwórz okno polecenia na komputerze z zainstalowanym programem cURL.
 1. Wklej kod w oknie, a następnie uruchom polecenie.
@@ -61,7 +61,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 1. Wklej polecenie z edytora tekstów w oknie wiersza polecenia, a następnie uruchom polecenie.
 
     ```bash
-    curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
+    curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.1/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
     ```
 
 ## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi

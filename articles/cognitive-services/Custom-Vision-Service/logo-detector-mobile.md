@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: używanie detektora niestandardowego logo do rozpoznawania usług platformy Azure — Custom Vision'
+title: 'Samouczek: Używanie niestandardowego detektora logo do rozpoznawania usług platformy Azure — Custom Vision'
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku zostanie przedstawiona przykładowa aplikacja, która używa usługi Azure Custom Vision jako części scenariusza wykrywania logo. Dowiedz się, jak usługa Custom Vision wraz z innymi składnikami jest używana do dostarczenia całościowej aplikacji.
+description: W ramach tego samouczka utworzysz przykładową aplikację, która używa Custom Vision w ramach scenariusza wykrywania logo. Dowiedz się, jak usługa Custom Vision wraz z innymi składnikami jest używana do dostarczenia całościowej aplikacji.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b48d82354a8e733db5ddd0c86e34bab1fa9caa8d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261970"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177786"
 ---
-# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Samouczek: rozpoznawanie logo usług platformy Azure na obrazach z kamery
+# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Samouczek: Rozpoznawanie logo usługi platformy Azure w obrazach aparatu fotograficznego
 
-W tym samouczku poznasz przykładową aplikację, która używa usługi Azure Custom Vision jako części większego scenariusza. Aplikacja sztucznej inteligencji aprowizacji wizualnej, aplikacja Xamarin.Forms dla platform mobilnych, analizuje obrazy logo usług platformy Azure z kamery, a następnie wdraża rzeczywiste usługi na koncie użytkownika platformy Azure. Tutaj dowiesz się, jak używa ona usługi Custom Vision we współpracy z innymi składnikami w celu dostarczenia przydatnej całościowej aplikacji. Możesz samodzielnie uruchomić cały scenariusz aplikacji lub wykonać tylko Custom Vision część instalacji i zbadać, w jaki sposób aplikacja korzysta z niej.
+W tym samouczku przedstawiono przykładową aplikację, która używa Custom Vision w ramach większego scenariusza. Aplikacja sztucznej inteligencji aprowizacji wizualnej, aplikacja Xamarin.Forms dla platform mobilnych, analizuje obrazy logo usług platformy Azure z kamery, a następnie wdraża rzeczywiste usługi na koncie użytkownika platformy Azure. Tutaj dowiesz się, jak używa ona usługi Custom Vision we współpracy z innymi składnikami w celu dostarczenia przydatnej całościowej aplikacji. Możesz samodzielnie uruchomić cały scenariusz aplikacji lub wykonać tylko Custom Vision część instalacji i zbadać, w jaki sposób aplikacja korzysta z niej.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -49,7 +49,7 @@ Zaloguj się do [witryny internetowej usługi Custom Vision](https://customvisio
 
 ## <a name="upload-and-tag-images"></a>Przekazywanie i tagowanie obrazów
 
-Następnie wytrenuj algorytm wykrywania logo, przekazując obrazy logo usług platformy Azure i tagując je ręcznie. Repozytorium AIVisualProvision zawiera zbiór obrazów do szkolenia, którego można użyć. W witrynie internetowej naciśnij przycisk **Add images (Dodaj obrazy)** znajdujący się na karcie **Training Images (Obrazy treningowe)** . Następnie przejdź do folderu **Documents/Images/Training_DataSet** repozytorium. Konieczne będzie ręczne tagowanie logo na każdym obrazie, jeśli więc tylko testujesz ten projekt, możesz chcieć przekazać tylko podzbiór obrazów. Przekaż co najmniej 15 wystąpień każdego tagu, który ma być używany.
+Następnie wytrenuj algorytm wykrywania logo, przekazując obrazy logo usług platformy Azure i tagując je ręcznie. Repozytorium AIVisualProvision zawiera zbiór obrazów do szkolenia, którego można użyć. W witrynie sieci Web wybierz przycisk **Dodaj obrazy** na karcie **obrazy szkoleniowe** . Następnie przejdź do folderu **Documents/images/Training_DataSet** w repozytorium. Konieczne będzie ręczne tagowanie logo na każdym obrazie, jeśli więc tylko testujesz ten projekt, możesz chcieć przekazać tylko podzbiór obrazów. Przekaż co najmniej 15 wystąpień każdego tagu, który ma być używany.
 
 Po przekazaniu obrazów treningowych wybierz pierwszy z nich na ekranie. Zostanie wyświetlone okno tagowania. Narysuj pola i przypisz tagi do każdego logo na każdym obrazie. 
 
@@ -65,7 +65,7 @@ Po otagowaniu obrazu przejdź w prawo, aby otagować następny. Po zakończeniu 
 
 W okienku po lewej stronie ustaw przełącznik **Tags (Tagi)** w pozycji **Tagged (Otagowane)** , aby wyświetlić swoje obrazy. Następnie kliknij zielony przycisk w górnej części strony, aby wytrenować model. Algorytm będzie szkolić, aby rozpoznać te same Tagi w nowych obrazach. Przetestuje to również model na niektórych Twoich istniejących obrazach w celu wygenerowania ocen dokładności.
 
-![Witryna internetowa usługi Custom Vision na karcie Training Images (Obrazy szkoleniowe). Na tym zrzucie ekranu oznaczono przycisk Train (Trenuj)](media/azure-logo-tutorial/train-model.png)
+![Custom Vision witrynie sieci Web na karcie obrazy szkoleniowe. Na tym zrzucie ekranu przycisk uczenia jest wyróżniony](media/azure-logo-tutorial/train-model.png)
 
 ## <a name="get-the-prediction-url"></a>Pobieranie adresu URL prognozy
 
@@ -101,7 +101,7 @@ Następnie otwórz plik *Source\VisualProvision\AppSettings.cs* i wpisz poprawne
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
 Aplikacja wymaga konta nazwy głównej usługi platformy Azure do wdrażania usług w Twojej subskrypcji platformy Azure. Nazwa główna usługi służy do delegowania określonych uprawnień do aplikacji za pomocą kontroli dostępu opartej na rolach. Aby dowiedzieć się więcej, zobacz [przewodnik po jednostkach usług](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
 
@@ -160,7 +160,7 @@ Wykonaj następujące kroki, aby uruchomić aplikację:
     
     ![Ekran aplikacji przedstawiający pola na poświadczenia jednostki usługi](media/azure-logo-tutorial/app-credentials.png)
 
-1. Na następnym ekranie wybierz z listy rozwijanej swoją subskrypcję platformy Azure. (To menu powinno zawierać wszystkie subskrypcje, do których jednostka usługi ma dostęp). Naciśnij przycisk **Continue (Kontynuuj)** . W tym momencie aplikacja może wyświetlić monit o udzielenie dostępu do aparatu i magazynu zdjęć urządzenia. Udziel uprawnień dostępu.
+1. Na następnym ekranie wybierz z listy rozwijanej swoją subskrypcję platformy Azure. (To menu powinno zawierać wszystkie subskrypcje, do których dana jednostka usługi ma dostęp). Wybierz przycisk **Kontynuuj** . W tym momencie aplikacja może wyświetlić monit o udzielenie dostępu do aparatu i magazynu zdjęć urządzenia. Udziel uprawnień dostępu.
 
     ![Ekran aplikacji przedstawiający pole listy rozwijanej dla docelowej subskrypcji platformy Azure](media/azure-logo-tutorial/app-az-subscription.png)
 

@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fcbb284a0807ef88c5f40a7c8b65398d45bf73d7
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 917fa87a0cd0f7b0615a5139a7c15311f866739a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232136"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176969"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Jak skonfigurować aplikację App Service do korzystania z logowania Google
+# <a name="configure-your-app-service-app-to-use-google-login"></a>Skonfiguruj aplikację App Service, aby używała logowania Google
+
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 W tym temacie opisano sposób konfigurowania Azure App Service do korzystania z usługi Google jako dostawcy uwierzytelniania.
@@ -29,31 +30,35 @@ W tym temacie opisano sposób konfigurowania Azure App Service do korzystania z 
 Aby wykonać procedurę opisaną w tym temacie, musisz mieć konto Google, które ma zweryfikowany adres e-mail. Aby utworzyć nowe konto Google, przejdź do strony [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
 
 ## <a name="register"> </a>Zarejestruj swoją aplikację w usłudze Google
-1. Aby utworzyć identyfikator klienta i klucz tajny klienta, należy zapoznać się z dokumentacją Google w temacie [Logowanie w usłudze Google dla aplikacji po stronie serwera](https://developers.google.com/identity/sign-in/web/server-side-flow) . w tym celu należy użyć następujących informacji (nie trzeba wprowadzać żadnych zmian w kodzie):
-    - W przypadku **autoryzowanych źródeł języka JavaScript**Użyj `https://<app-name>.azurewebsites.net` nazwy aplikacji w polu  *\<nazwa aplikacji >* .
-    - Aby uzyskać **Autoryzowany identyfikator URI przekierowania**, użyj `https://<app-name>.azurewebsites.net/.auth/login/google/callback`elementu.
-1. Po utworzeniu identyfikatora klienta i wpisów tajnych klienta Skopiuj ich wartości.
+
+1. Aby utworzyć identyfikator klienta i klucz tajny klienta, postępuj zgodnie z dokumentacją Google w temacie [Logowanie do aplikacji po stronie serwera](https://developers.google.com/identity/sign-in/web/server-side-flow) . Nie ma potrzeby wprowadzania żadnych zmian w kodzie. Po prostu Użyj następujących informacji:
+    - W przypadku **autoryzowanych źródeł języka JavaScript**Użyj `https://<app-name>.azurewebsites.net` z nazwą aplikacji w *\<app-Name >* .
+    - Aby uzyskać **Autoryzowany identyfikator URI przekierowania**, użyj `https://<app-name>.azurewebsites.net/.auth/login/google/callback`.
+1. Skopiuj identyfikator aplikacji i wartości klucza tajnego aplikacji.
 
     > [!IMPORTANT]
-    > Klucz tajny klienta jest ważnym poświadczeniem zabezpieczeń. Nie należy udostępniać tego klucza tajnego nikomu ani rozpowszechniać go w aplikacji klienckiej.
-
+    > Wpis tajny aplikacji jest ważnym poświadczeniem zabezpieczeń. Nie należy udostępniać tego klucza tajnego nikomu ani rozpowszechniać go w aplikacji klienckiej.
 
 ## <a name="secrets"> </a>Dodawanie informacji Google do aplikacji
-1. W [Azure Portal]przejdź do aplikacji App Service. Z menu po lewej stronie wybierz pozycję **uwierzytelnianie/autoryzacja**.
-2. Jeśli funkcja uwierzytelniania/autoryzacji nie jest włączona, Przełącz przełącznik na wartość **włączone**.
-3. Kliknij pozycję **Google**. Wklej wartości identyfikatora aplikacji i klucza tajnego aplikacji, które zostały uzyskane wcześniej, i opcjonalnie Włącz wszystkie zakresy wymagane przez aplikację. Następnie kliknij przycisk **OK**.
 
-   App Service zapewnia uwierzytelnianie, ale nie ogranicza dostępu do zawartości witryny i interfejsów API. Aby uzyskać więcej informacji, zobacz [Autoryzuj lub Odmów użytkownikom](app-service-authentication-how-to.md#authorize-or-deny-users).
-4. Obowiązkowe Aby ograniczyć dostęp do witryny tylko do użytkowników uwierzytelnionych przez firmę Google, ustaw **akcję do wykonania, gdy żądanie nie zostanie uwierzytelnione** do firmy **Google**. Wymaga to uwierzytelnienia wszystkich żądań, a wszystkie nieuwierzytelnione żądania są przekierowywane do usługi Google w celu uwierzytelnienia.
+1. W [Azure Portal]przejdź do aplikacji App Service.
+1. Wybierz pozycję **ustawienia** > **uwierzytelnianie/autoryzacja**i upewnij się, że **App Service uwierzytelnianie** jest **włączone**.
+1. Wybierz pozycję **Google**, a następnie wklej wartości w polu Identyfikator aplikacji i klucz tajny aplikacji, które zostały uzyskane wcześniej. Włącz wszystkie zakresy wymagane przez aplikację.
+1. Kliknij przycisk **OK**.
 
-    > [!NOTE]
-    > Ograniczenie dostępu w ten sposób dotyczy wszystkich wywołań aplikacji, które mogą nie być odpowiednie dla aplikacji, które chcą korzystać z publicznie dostępnej strony głównej, tak jak w przypadku aplikacji jednostronicowych. W przypadku takich aplikacji **Zezwalanie na żądania anonimowe (nie akcja)** może być preferowane, z aplikacją ręcznie rozpoczynającą logowanie, zgodnie z opisem w [tym miejscu](overview-authentication-authorization.md#authentication-flow).
-    
-5. Kliknij polecenie **Zapisz**.
+   App Service zapewnia uwierzytelnianie, ale nie ogranicza uprawnień dostępu do zawartości i interfejsów API witryny. Aby uzyskać więcej informacji, zobacz [Autoryzuj lub Odmów użytkownikom](app-service-authentication-how-to.md#authorize-or-deny-users).
+
+1. Obowiązkowe Aby ograniczyć dostęp do witryny tylko do użytkowników uwierzytelnionych przez firmę Google, należy ustawić **akcję podejmowaną, gdy żądanie nie zostanie uwierzytelnione** do firmy **Google**. Po ustawieniu tej funkcji aplikacja wymaga uwierzytelnienia wszystkich żądań. Przekierowuje także wszystkie nieuwierzytelnione żądania do usługi Google w celu uwierzytelnienia.
+
+    > [!CAUTION]
+    > Ograniczenie dostępu w ten sposób dotyczy wszystkich wywołań aplikacji, które mogą nie być pożądane dla aplikacji, które mają publicznie dostępną stronę główną, tak jak w przypadku aplikacji jednostronicowych. W przypadku takich aplikacji **Zezwalanie na żądania anonimowe (żadna akcja)** może być preferowana, aby aplikacja ręcznie uruchamiała sam uwierzytelnienie. Aby uzyskać więcej informacji, zobacz temat [przepływ uwierzytelniania](overview-authentication-authorization.md#authentication-flow).
+
+1. Wybierz pozycję **Zapisz**.
 
 Teraz można przystąpić do uwierzytelniania w aplikacji za pomocą usługi Google.
 
-## <a name="related-content"> </a>Powiązana zawartość
+## <a name="related-content"> </a>Następne kroki
+
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Anchors. -->

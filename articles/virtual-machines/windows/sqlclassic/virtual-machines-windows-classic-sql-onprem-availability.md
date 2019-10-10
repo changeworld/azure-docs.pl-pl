@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 28819bc9d2eaf7d4b595bed59bcd1df8741b62a5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 48848fbacdc0e205604bb163aa36bdafcd175b0b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101844"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173542"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Rozszerzone zawsze włączone grupy dostępności na platformę Azure
 Zawsze włączone grupy dostępności zapewniają wysoką dostępność dla grup baz danych, dodając repliki pomocnicze. Te repliki umożliwiają przechodzenie w tryb failover baz danych w przypadku awarii. Ponadto mogą służyć do odciążania obciążeń odczytu lub zadań tworzenia kopii zapasowych.
@@ -33,21 +33,21 @@ W tym samouczku założono, że masz następujące elementy:
 * Łączność między siecią lokalną a siecią wirtualną platformy Azure. Aby uzyskać więcej informacji na temat tworzenia tej sieci wirtualnej, zobacz [Tworzenie połączenia typu lokacja-lokacja przy użyciu Azure Portal (klasyczne)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
 
 > [!IMPORTANT] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Menedżer zasobów i klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 ## <a name="add-azure-replica-wizard"></a>Kreator dodawania repliki platformy Azure
 W tej sekcji pokazano, jak za pomocą **Kreatora dodawania repliki systemu Azure** rozłożyć rozwiązanie zawsze włączone grupy dostępności w celu uwzględnienia replik platformy Azure.
 
 > [!IMPORTANT]
-> **Kreator dodawania repliki platformy Azure** obsługuje tylko maszyny wirtualne utworzone przy użyciu klasycznego modelu wdrażania. Nowe wdrożenia maszyn wirtualnych powinny używać nowszego modelu Menedżer zasobów. Jeśli używasz maszyn wirtualnych z Menedżer zasobów, musisz ręcznie dodać pomocniczą replikę platformy Azure przy użyciu języka Transact-SQL commmands (nie pokazano tutaj). Ten Kreator nie będzie działał w Menedżer zasobów scenariuszu.
+> **Kreator dodawania repliki platformy Azure** obsługuje tylko maszyny wirtualne utworzone przy użyciu klasycznego modelu wdrażania. Nowe wdrożenia maszyn wirtualnych powinny używać nowszego modelu Menedżer zasobów. Jeśli używasz maszyn wirtualnych z Menedżer zasobów, musisz ręcznie dodać pomocniczą replikę platformy Azure przy użyciu poleceń języka Transact-SQL (nie pokazano tutaj). Ten Kreator nie będzie działał w Menedżer zasobów scenariuszu.
 
-1. W obszarze SQL Server Management Studio rozwiń węzeł zawsze włączone**grupy** > dostępności **o wysokiej dostępności** >  **[nazwa grupy dostępności]** .
-2. Kliknij prawym przyciskiem myszy pozycję **repliki dostępności**, a następnie kliknij polecenie **Dodaj**replikę.
+1. W obszarze SQL Server Management Studio rozwiń węzeł **zawsze o wysokiej dostępności** > **grupy dostępności** >  **[nazwa grupy dostępności]** .
+2. Kliknij prawym przyciskiem myszy pozycję **repliki dostępności**, a następnie kliknij polecenie **Dodaj replikę**.
 3. Domyślnie zostanie wyświetlony **Kreator dodawania repliki do grupy dostępności** . Kliknij przycisk **Dalej**.  Jeśli wybrano opcję **nie pokazuj tej strony ponownie** w dolnej części strony podczas poprzedniego uruchomienia tego kreatora, ten ekran nie zostanie wyświetlony.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
 4. Konieczne będzie połączenie ze wszystkimi istniejącymi replikami pomocniczymi. Możesz kliknąć przycisk **Połącz...** obok każdej repliki lub kliknij pozycję **Połącz wszystko...** w dolnej części ekranu. Po uwierzytelnieniu kliknij przycisk **dalej** , aby przejść do następnego ekranu.
-5. Na stronie **Określanie replik** w górnej części ekranu znajduje się wiele kart: **Repliki**, **punkty końcowe**, **Preferencje tworzenia kopii zapasowych**i **odbiornik**. Na karcie **repliki** kliknij pozycję **Dodaj replikę Azure..** . Aby uruchomić Kreatora dodawania repliki platformy Azure.
+5. Na stronie **Określanie replik** w górnej części ekranu znajduje się wiele kart: **repliki**, **punkty końcowe**, **Preferencje tworzenia kopii zapasowych**i **odbiornik**. Na karcie **repliki** kliknij pozycję **Dodaj replikę Azure..** . Aby uruchomić Kreatora dodawania repliki platformy Azure.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
 6. Jeśli wcześniej zainstalowano program, wybierz istniejący certyfikat zarządzania Azure z lokalnego magazynu certyfikatów systemu Windows. Wybierz lub wprowadź identyfikator subskrypcji platformy Azure, jeśli został on użyty wcześniej. Możesz kliknąć pozycję Pobierz, aby pobrać i zainstalować certyfikat zarządzania platformy Azure i pobrać listę subskrypcji przy użyciu konta platformy Azure.

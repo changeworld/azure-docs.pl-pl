@@ -1,6 +1,6 @@
 ---
-title: Integrowanie danych i automatyzowanie przepływów pracy — Azure Logic Apps
-description: Kompiluj rozwiązania umożliwiające integrację danych i Automatyzowanie zadań, przepływów pracy i procesów w całym przedsiębiorstwie lub organizacji na potrzeby integracji systemu, integracji aplikacji przedsiębiorstwa (EAI) i aranżacji.
+title: Automatyzowanie zadań związanych z integracją w przedsiębiorstwie — Azure Logic Apps
+description: Poznaj automatyzację przepływów pracy, które integrują aplikacje, dane, usługi i systemy z minimalnym kodem integracji przedsiębiorstwa przy użyciu Azure Logic Apps.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/29/2018
-ms.openlocfilehash: fdcf3d7bc0111530307a4bf30a437ab70c71bf83
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 85e2216e39658fde42f298dabc38c737621d6be4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981748"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178025"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Przegląd — co to jest Azure Logic Apps?
 

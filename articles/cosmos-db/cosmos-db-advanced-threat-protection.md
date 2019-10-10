@@ -1,18 +1,18 @@
 ---
 title: Zaawansowana ochrona przed zagrożeniami dla Azure Cosmos DB
 description: Dowiedz się, jak Azure Cosmos DB zapewnia szyfrowanie danych w stanie spoczynku i sposób ich implementacji.
-author: monhaber
+author: rkarlin
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: v-mohabe
+ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2b12d639e734502113b6afdd7250fca6a520c687
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123902"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176022"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Zaawansowana ochrona przed zagrożeniami dla Azure Cosmos DB
 
@@ -31,7 +31,7 @@ W przypadku pełnego badania alertów zabezpieczeń zaleca się włączenie [rej
 
 ### <a name="set-up-atp-using-the-portal"></a>Konfigurowanie usługi ATP przy użyciu portalu
 
-1. Uruchom Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com/).
+1. Uruchom Azure Portal w [https://portal.azure.com](https://portal.azure.com/).
 
 2. Z poziomu konta Azure Cosmos DB z menu **Ustawienia** wybierz pozycję **Zabezpieczenia zaawansowane**.
 

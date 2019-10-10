@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: aahi
-ms.openlocfilehash: e2149c7db20939a739380dc2df0e21b6a62ed916
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 9fc05ab42c75bac1f8e192dd4fe20bb142881479
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955361"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176905"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Jak uzyskać stronę za pośrednictwem wyników z interfejsy API wyszukiwania Bing
 
@@ -73,7 +73,7 @@ Host: api.cognitive.microsoft.com
 ## <a name="next-steps"></a>Następne kroki
 
 * [Jakie są wyszukiwanie w sieci Web Bing interfejsy API?](bing-api-comparison.md)
-* [interfejs API wyszukiwania w sieci Web Bing odwołanie wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-referenc)
+* [interfejs API wyszukiwania w sieci Web Bing odwołanie wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
 * [interfejs API wyszukiwania niestandardowego Bing odwołanie wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
 * [interfejs API wyszukiwania wiadomości Bing odwołanie wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
 * [interfejs API wyszukiwania wideo Bing odwołanie wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)

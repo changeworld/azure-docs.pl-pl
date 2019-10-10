@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Zawartość specyficzna dla domeny — REST, Python'
+title: 'Szybki Start: zawartość specyficzna dla domeny — REST, Python'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start użyjesz modeli domeny do rozpoznania znanych osobistości i charakterystycznych elementów krajobrazu na obrazie przy użyciu interfejsu API przetwarzania obrazów oraz języka Python.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 24fc695a2f832374a109b11ee6a87813146f13ed
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 06bffb1339edddf14d3eccaf989707369ac54393
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137611"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177112"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Szybki start: korzystanie z modelu domeny w funkcji przetwarzania obrazów przy użyciu interfejsu API REST i języka Python
 
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` nazwane `COMPUTER_VISION_ENDPOINT`i.
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi o nazwach odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-landmarks-sample"></a>Tworzenie i uruchamianie przykładowego kodu do rozpoznawania elementów krajobrazu
 
@@ -61,7 +61,7 @@ else:
 if 'COMPUTER_VISION_ENDPOINT' in os.environ:
     endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-landmark_analyze_url = endpoint + "vision/v2.0/models/landmarks/analyze"
+landmark_analyze_url = endpoint + "vision/v2.1/models/landmarks/analyze"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/f/f6/" + \
@@ -90,7 +90,7 @@ _ = plt.title(landmark_name, size="x-large", y=-0.1)
 
 ## <a name="examine-the-response-for-the-landmarks-sample"></a>Sprawdzanie odpowiedzi w przypadku przykładowego kodu do rozpoznawania elementów krajobrazu
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa strona internetowa analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa strona sieci Web analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
 
 ```json
 {
@@ -136,7 +136,7 @@ from io import BytesIO
 subscription_key = "<Subscription Key>"
 assert subscription_key
 
-vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
+vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.1/"
 
 celebrity_analyze_url = vision_base_url + "models/celebrities/analyze"
 
@@ -167,7 +167,7 @@ _ = plt.title(celebrity_name, size="x-large", y=-0.1)
 
 ## <a name="examine-the-response-for-the-celebrities-sample"></a>Sprawdzanie odpowiedzi w przypadku przykładowego kodu do rozpoznawania osobistości
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa strona internetowa analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa strona sieci Web analizuje i wyświetla pomyślną odpowiedź w oknie wiersza polecenia, podobnie jak w poniższym przykładzie:
 
 
 ```json

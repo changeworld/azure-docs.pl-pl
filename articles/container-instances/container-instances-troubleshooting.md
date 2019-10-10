@@ -9,35 +9,35 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 7c4812a63137dc2efc5eab2cb3b9e136a5465e78
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 28a391fded422b00508e006bfd613d6c98d82f17
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300457"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166470"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w Azure Container Instances
 
-W tym artykule pokazano, jak rozwiązywać typowe problemy związane z zarządzaniem kontenerami i ich wdrażaniem Azure Container Instances. Zobacz również [często zadawane pytania](container-instances-faq.md). 
+W tym artykule pokazano, jak rozwiązywać typowe problemy związane z zarządzaniem kontenerami i ich wdrażaniem Azure Container Instances. Zobacz również [często zadawane pytania](container-instances-faq.md).
 
 Jeśli potrzebujesz dodatkowej pomocy technicznej, zobacz dostępne opcje **pomocy i obsługi** w [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="naming-conventions"></a>Konwencje nazewnictwa
 
-Podczas definiowania specyfikacji kontenera niektóre parametry wymagają przestrzegania ograniczeń nazewnictwa. Poniżej znajduje się tabela z określonymi wymaganiami dotyczącymi właściwości grupy kontenerów. Aby uzyskać więcej informacji na temat konwencji nazewnictwa [][azure-name-restrictions] platformy Azure, zobacz Konwencje nazewnictwa w centrum architektury platformy Azure.
+Podczas definiowania specyfikacji kontenera niektóre parametry wymagają przestrzegania ograniczeń nazewnictwa. Poniżej znajduje się tabela z określonymi wymaganiami dotyczącymi właściwości grupy kontenerów. Aby uzyskać więcej informacji na temat konwencji nazewnictwa platformy Azure, zobacz [konwencje nazewnictwa][azure-name-restrictions] w centrum architektury platformy Azure.
 
-| Scope | Długość | Wielkość liter | Prawidłowe znaki | Sugerowany wzorzec | Przykład |
+| Zakres | Długość | Wielkość liter | Prawidłowe znaki | Sugerowany wzorzec | Przykład |
 | --- | --- | --- | --- | --- | --- |
 | Nazwa grupy kontenerów | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik wszędzie z wyjątkiem pierwszego lub ostatniego znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Nazwa kontenera | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik wszędzie z wyjątkiem pierwszego lub ostatniego znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Porty kontenerów | Od 1 do 65535 |Integer |Liczba całkowita z zakresu od 1 do 65535 |`<port-number>` |`443` |
+| Porty kontenerów | Od 1 do 65535 |Liczba całkowita |Liczba całkowita z zakresu od 1 do 65535 |`<port-number>` |`443` |
 | Etykieta nazwy DNS | 5-63 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik wszędzie z wyjątkiem pierwszego lub ostatniego znaku |`<name>` |`frontend-site1` |
 | Zmienna środowiskowa | 1-63 |Bez uwzględniania wielkości liter |Znaki alfanumeryczne i znaki podkreślenia (_) wszędzie z wyjątkiem pierwszego lub ostatniego znaku |`<name>` |`MY_VARIABLE` |
 | Nazwa woluminu | 5-63 |Bez uwzględniania wielkości liter |Małe litery i cyfry oraz łączniki wszędzie z wyjątkiem pierwszego lub ostatniego znaku. Nie może zawierać dwóch kolejnych łączników. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>Wersja systemu operacyjnego obrazu nie jest obsługiwana
 
-Jeśli określisz obraz, który Azure Container Instances nie obsługuje, `OsVersionNotSupported` zwracany jest błąd. Ten błąd jest podobny do poniższego, `{0}` gdzie jest nazwą obrazu, który próbujesz wdrożyć:
+W przypadku określenia obrazu, który Azure Container Instances nie obsługuje, zwracany jest błąd `OsVersionNotSupported`. Ten błąd jest podobny do poniższego, gdzie `{0}` jest nazwą obrazu, który próbujesz wdrożyć:
 
 ```json
 {
@@ -52,7 +52,7 @@ Ten błąd jest najczęściej spotykany podczas wdrażania obrazów systemu Wind
 
 ## <a name="unable-to-pull-image"></a>Nie można ściągnąć obrazu
 
-Jeśli Azure Container Instances początkowo nie można ściągnąć obrazu, ponawia próbę przez pewien czas. Jeśli operacja ściągania obrazu nie powiedzie się, ACI ostatecznie kończy pracę wdrożenia i może zostać wyświetlony `Failed to pull image` błąd.
+Jeśli Azure Container Instances początkowo nie można ściągnąć obrazu, ponawia próbę przez pewien czas. Jeśli operacja ściągnięcia obrazu nie powiedzie się, ACI ostatecznie kończy się niepowodzeniem wdrożenia i może zostać wyświetlony błąd `Failed to pull image`.
 
 Aby rozwiązać ten problem, Usuń wystąpienie kontenera i spróbuj ponownie wykonać wdrożenie. Upewnij się, że obraz istnieje w rejestrze i że wpisano poprawną nazwę obrazu.
 
@@ -89,7 +89,7 @@ Jeśli nie można ściągnąć obrazu, zdarzenia takie jak następujące są wy�
 
 ## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontener ciągle opuszcza i uruchamia ponownie (bez długotrwałego procesu)
 
-Grupy kontenerów domyślnie mają [zasady ponownego uruchamiania](container-instances-restart-policy.md) **zawsze**, dlatego kontenery w grupie kontenerów zawsze są ponownie uruchamiane po ich zakończeniu. Może być konieczne jej zmianę na **OnFailure** lub **nigdy** , jeśli zamierzasz uruchomić kontenery oparte na zadaniach. Jeśli określisz wartość OnFailure i nadal widzisz ciągłe ponowne uruchomienia, może wystąpić problem z aplikacją lub skryptem wykonywanym w kontenerze.
+Grupy kontenerów domyślnie mają [zasady ponownego uruchamiania](container-instances-restart-policy.md) **zawsze**, dlatego kontenery w grupie kontenerów zawsze są ponownie uruchamiane po ich zakończeniu. Może być konieczne jej zmianę na **OnFailure** lub **nigdy** , jeśli zamierzasz uruchomić kontenery oparte na zadaniach. Jeśli określisz wartość **OnFailure** i nadal widzisz ciągłe ponowne uruchomienia, może wystąpić problem z aplikacją lub skryptem wykonywanym w kontenerze.
 
 W przypadku uruchamiania grup kontenerów bez długotrwałych procesów mogą pojawić się powtórzone wyjścia i ponowne uruchomienia z obrazami, takimi jak Ubuntu lub Alpine. Łączenie za pośrednictwem programu [exec](container-instances-exec.md) nie będzie działało, ponieważ kontener nie ma żadnego procesu utrzymywania aktywności. Aby rozwiązać ten problem, należy dodać polecenie uruchomienia podobne do następującego w przypadku wdrożenia grupy kontenerów w celu zachowania uruchomionego kontenera.
 
@@ -104,7 +104,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
  --command-line "ping -t localhost"
 ```
 
-Interfejs API Container Instances i Azure Portal zawiera `restartCount` właściwość. Aby sprawdzić liczbę ponownych uruchomień dla kontenera, w interfejsie wiersza polecenia platformy Azure można użyć polecenie [AZ Container show][az-container-show] . W poniższych przykładowych danych wyjściowych (które zostały obcięte dla zwięzłości) można zobaczyć `restartCount` właściwość na końcu danych wyjściowych.
+Interfejs API Container Instances i Azure Portal zawiera właściwość `restartCount`. Aby sprawdzić liczbę ponownych uruchomień dla kontenera, w interfejsie wiersza polecenia platformy Azure można użyć polecenie [AZ Container show][az-container-show] . W poniższych przykładowych danych wyjściowych (które zostały obcięte dla zwięzłości) można zobaczyć Właściwość `restartCount` na końcu danych wyjściowych.
 
 ```json
 ...
@@ -160,7 +160,7 @@ Obrazy systemu Windows mają [dodatkowe uwagi](#cached-images).
 
 Jeśli uruchamianie kontenera trwa zbyt długo, ale ostatecznie zakończy się powodzeniem, Zacznij od przejrzenia rozmiaru obrazu kontenera. Ponieważ Azure Container Instances pobiera obraz kontenera na żądanie, wyświetlany czas uruchamiania jest bezpośrednio związany z jego rozmiarem.
 
-Rozmiar obrazu kontenera można wyświetlić, korzystając `docker images` z polecenia w interfejsie CLI platformy Docker:
+Rozmiar obrazu kontenera można wyświetlić, korzystając z polecenia `docker images` w interfejsie CLI platformy Docker:
 
 ```console
 $ docker images
@@ -168,7 +168,7 @@ REPOSITORY                                    TAG       IMAGE ID        CREATED 
 mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 months ago    67.6MB
 ```
 
-Klucz służący do zachowywania rozmiaru obrazów jest zapewniany, że końcowy obraz nie zawiera żadnych elementów, które nie są wymagane w czasie wykonywania. Jednym ze sposobów wykonania tej czynności są [kompilacje][docker-multi-stage-builds]wieloetapowe. Kompilacje wieloetapowe ułatwiają zapewnienie, że obraz końcowy zawiera tylko te artefakty, które są potrzebne dla aplikacji, a nie do żadnej dodatkowej zawartości, która była wymagana w czasie kompilacji.
+Klucz służący do zachowywania rozmiaru obrazów jest zapewniany, że końcowy obraz nie zawiera żadnych elementów, które nie są wymagane w czasie wykonywania. Jednym ze sposobów wykonania tej czynności są [kompilacje wieloetapowe][docker-multi-stage-builds]. Kompilacje wieloetapowe ułatwiają zapewnienie, że obraz końcowy zawiera tylko te artefakty, które są potrzebne dla aplikacji, a nie do żadnej dodatkowej zawartości, która była wymagana w czasie kompilacji.
 
 ### <a name="image-location"></a>Lokalizacja obrazu
 
@@ -176,7 +176,7 @@ Innym sposobem zmniejszenia wpływu pobierania obrazu na czas uruchamiania konte
 
 ### <a name="cached-images"></a>Obrazy w pamięci podręcznej
 
-Azure Container Instances używa mechanizmu buforowania w celu skrócenia czasu uruchamiania kontenera dla obrazów opartych na typowych [obrazach podstawowych systemu Windows](container-instances-faq.md#what-windows-base-os-images-are-supported), w `servercore:1809`tym `nanoserver:1809`, `servercore:ltsc2019`i. Często używane obrazy systemu Linux, `ubuntu:1604` takie `alpine:3.6` jak i, są również buforowane. Aby uzyskać aktualną listę buforowanych obrazów i tagów, użyj interfejsu API [listy buforowanych obrazów][list-cached-images] .
+Azure Container Instances używa mechanizmu buforowania w celu skrócenia czasu uruchamiania kontenera dla obrazów opartych na typowych [obrazach podstawowych systemu Windows](container-instances-faq.md#what-windows-base-os-images-are-supported), w tym `nanoserver:1809`, `servercore:ltsc2019` i `servercore:1809`. Często używane obrazy systemu Linux, takie jak `ubuntu:1604` i `alpine:3.6`, są również buforowane. Aby uzyskać aktualną listę buforowanych obrazów i tagów, użyj interfejsu API [listy buforowanych obrazów][list-cached-images] .
 
 > [!NOTE]
 > Korzystanie z obrazów opartych na systemie Windows Server 2019 w Azure Container Instances jest w wersji zapoznawczej.
@@ -204,9 +204,9 @@ Azure Container Instances nie ujawnia bezpośredniego dostępu do podstawowej in
 
 ## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Adres IP grupy kontenerów może nie być dostępny ze względu na niezgodne porty
 
-Azure Container Instances nie obsługuje jeszcze mapowania portów, takiego jak zwykła konfiguracja platformy Docker. Jeśli okaże się, że adres IP grupy kontenerów nie jest dostępny, jeśli uważasz, że jest to konieczne, upewnij się, że skonfigurowano obraz kontenera do nasłuchiwania na tych samych portach, `ports` które zostały ujawnione w grupie kontenerów z właściwością.
+Azure Container Instances nie obsługuje jeszcze mapowania portów, takiego jak zwykła konfiguracja platformy Docker. Jeśli okaże się, że adres IP grupy kontenerów nie jest dostępny, gdy sądzisz, że jest to konieczne, upewnij się, że skonfigurowano obraz kontenera do nasłuchiwania na tych samych portach, które zostały ujawnione w grupie kontenerów za pomocą właściwości `ports`.
 
-Jeśli chcesz potwierdzić, że Azure Container Instances może nasłuchiwać na porcie skonfigurowanym w obrazie kontenera, przetestuj wdrożenie `aci-helloworld` obrazu, który udostępnia port. Uruchom `aci-helloworld` również aplikację, aby nasłuchiwać na porcie. `aci-helloworld`akceptuje opcjonalną zmienną `PORT` środowiskową, aby zastąpić domyślny port 80, na którym nasłuchuje. Na przykład, aby przetestować port 9000:
+Jeśli chcesz potwierdzić, że Azure Container Instances może nasłuchiwać na porcie skonfigurowanym w obrazie kontenera, przetestuj wdrożenie obrazu `aci-helloworld`, który uwidacznia port. Uruchom również aplikację `aci-helloworld`, aby nasłuchiwać na porcie. `aci-helloworld` akceptuje opcjonalną zmienną środowiskową `PORT` w celu przesłonięcia domyślnego portu 80, na którym nasłuchuje. Na przykład, aby przetestować port 9000:
 
 1. Skonfiguruj grupę kontenerów, aby udostępnić port 9000 i przekazać numer portu jako wartość zmiennej środowiskowej:
     ```azurecli
@@ -215,11 +215,11 @@ Jeśli chcesz potwierdzić, że Azure Container Instances może nasłuchiwać na
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Znajdź adres IP grupy kontenerów w danych wyjściowych `az container create`polecenia. Poszukaj wartości **IP**. 
+1. Znajdź adres IP grupy kontenerów w danych wyjściowych polecenia `az container create`. Poszukaj wartości **IP**. 
 1. Po pomyślnym zainicjowaniu kontenera przejdź do adresu IP i portu aplikacji kontenera w przeglądarce, na przykład: `192.0.2.0:9000`. 
 
     Powinna zostać wyświetlona wartość "Witamy w Azure Container Instances!" komunikat wyświetlany przez aplikację internetową.
-1. Po zakończeniu pracy z kontenerem usuń go przy użyciu `az container delete` polecenia:
+1. Po zakończeniu pracy z kontenerem usuń go za pomocą polecenia `az container delete`:
 
     ```azurecli
     az container delete --resource-group myResourceGroup --name mycontainer
@@ -230,7 +230,7 @@ Jeśli chcesz potwierdzić, że Azure Container Instances może nasłuchiwać na
 Dowiedz się, jak [pobrać dzienniki kontenerów i zdarzenia](container-instances-get-logs.md) w celu ułatwienia debugowania kontenerów.
 
 <!-- LINKS - External -->
-[azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
+[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore

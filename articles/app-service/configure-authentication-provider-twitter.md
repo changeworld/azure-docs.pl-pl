@@ -14,51 +14,60 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f7154da76b41198c208d02b8c563ba26ff8101a1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 02008b7dc1609a5f28ac6ba2a582933a96428198
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983597"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176954"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Jak skonfigurować aplikację App Service do korzystania z logowania do usługi Twitter
+# <a name="configure-your-app-service-app-to-use-twitter-login"></a>Skonfiguruj aplikację App Service, aby korzystała z logowania do usługi Twitter
+
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-W tym temacie opisano sposób konfigurowania Azure App Service do korzystania z usługi Twitter jako dostawcy uwierzytelniania.
+W tym artykule przedstawiono sposób konfigurowania Azure App Service do korzystania z usługi Twitter jako dostawcy uwierzytelniania.
 
-Aby wykonać procedurę opisaną w tym temacie, musisz mieć konto w usłudze Twitter z zweryfikowanym adresem e-mail i numerem telefonu. Aby utworzyć nowe konto w usłudze Twitter, przejdź do <a href="https://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">Twitter.com</a>.
+Aby wykonać procedurę opisaną w tym artykule, musisz mieć konto w usłudze Twitter z zweryfikowanym adresem e-mail i numerem telefonu. Aby utworzyć nowe konto w usłudze Twitter, przejdź do [Twitter.com].
 
 ## <a name="register"> </a>Rejestrowanie aplikacji w usłudze Twitter
-1. Zaloguj się do [Azure Portal]i przejdź do swojej aplikacji. Skopiuj **adres URL**. Zostanie ona użyta do skonfigurowania aplikacji usługi Twitter.
-2. Przejdź do witryny sieci Web [Deweloperzy usługi Twitter] , zaloguj się przy użyciu poświadczeń konta w usłudze Twitter, a następnie kliknij pozycję **Utwórz nową aplikację**.
-3. Wpisz **nazwę** i **Opis** nowej aplikacji. Wklej **adres URL** aplikacji do wartości **witryny sieci Web** . Następnie w polu **adres URL wywołania zwrotnego**wpisz adres url aplikacji App Service i dołącz ścieżkę `/.auth/login/twitter/callback`. Na przykład `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Upewnij się, że używasz schematu HTTPS.
-4. W dolnej części strony Przeczytaj i zaakceptuj warunki. Następnie kliknij pozycję **Utwórz aplikację w usłudze Twitter**. Zostaną wyświetlone szczegóły aplikacji.
-5. Kliknij kartę **Ustawienia** , zaznacz pole wyboru **Zezwalaj tej aplikacji na używanie do logowania się przy użyciu usługi Twitter**, a następnie kliknij przycisk **Aktualizuj ustawienia**.
-6. Wybierz kartę **klucze i tokeny dostępu** . Zanotuj wartości **klucza klienta (klucz interfejsu API)** i klucz **tajny klienta (wpis tajny interfejsu API)** .
-   
+
+1. Zaloguj się do [Azure Portal] i przejdź do swojej aplikacji. Skopiuj **adres URL**. Zostanie ona użyta do skonfigurowania aplikacji usługi Twitter.
+1. Przejdź do witryny sieci Web [Deweloperzy usługi Twitter] i zaloguj się przy użyciu poświadczeń konta w usłudze Twitter, a następnie wybierz pozycję **Utwórz nową aplikację**.
+1. Wprowadź **nazwę** i **Opis** nowej aplikacji. Wklej **adres URL** aplikacji do pola **Witryna sieci Web** . W polu **adres URL wywołania zwrotnego** wprowadź adres URL aplikacji App Service i dołącz ścieżkę `/.auth/login/aad/callback`. Na przykład `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Upewnij się, że używasz schematu HTTPS.
+1. W dolnej części strony Przeczytaj i zaakceptuj warunki. Wybierz pozycję **Utwórz aplikację w usłudze Twitter**. Zostaną wyświetlone szczegóły aplikacji.
+1. Wybierz kartę **Ustawienia** , zaznacz opcję **Zezwól tej aplikacji na używanie do logowania się przy użyciu usługi Twitter**, a następnie wybierz pozycję **Ustawienia aktualizacji**.
+1. Wybierz kartę **klucze i tokeny dostępu** .
+
+   Zanotuj te wartości:
+   - Klucz klienta (klucz interfejsu API)
+   - Wpis tajny klienta (klucz tajny interfejsu API)
+
    > [!NOTE]
    > Wpis tajny klienta jest ważnym poświadczeniem zabezpieczeń. Nie należy udostępniać tego klucza tajnego nikomu ani rozpowszechniać go wraz z Twoją aplikacją.
-   > 
-   > 
 
 ## <a name="secrets"> </a>Dodawanie informacji usługi Twitter do aplikacji
-1. W [Azure Portal]przejdź do swojej aplikacji. Kliknij przycisk **Ustawienia**, a następnie pozycję **uwierzytelnianie/autoryzacja**.
-2. Jeśli funkcja uwierzytelniania/autoryzacji nie jest włączona, Przełącz przełącznik na wartość **włączone**.
-3. Kliknij pozycję **Twitter**. Wklej wartości identyfikatora aplikacji i klucza tajnego aplikacji, które zostały uzyskane wcześniej. Następnie kliknij przycisk **OK**.
-   
-   ![][1]
-   
-   Domyślnie usługa App Service zapewnia uwierzytelnianie, ale nie ogranicza uprawnień dostępu do zawartości i interfejsów API witryny. Musisz autoryzować użytkowników w kodzie aplikacji.
-4. Obowiązkowe Aby ograniczyć dostęp do witryny tylko do użytkowników uwierzytelnionych przez serwis Twitter, ustaw **akcję do wykonania, gdy żądanie nie zostanie uwierzytelnione** do usługi **Twitter**. Wymaga to uwierzytelnienia wszystkich żądań, a wszystkie nieuwierzytelnione żądania są przekierowywane do usługi Twitter w celu uwierzytelnienia.
 
-> [!NOTE]
-> Ograniczenie dostępu w ten sposób dotyczy wszystkich wywołań aplikacji, które mogą nie być odpowiednie dla aplikacji, które chcą korzystać z publicznie dostępnej strony głównej, tak jak w przypadku aplikacji jednostronicowych. W przypadku takich aplikacji **Zezwalanie na żądania anonimowe (nie akcja)** może być preferowane, z aplikacją ręcznie rozpoczynającą logowanie, zgodnie z opisem w [tym miejscu](overview-authentication-authorization.md#authentication-flow).
+1. Przejdź do aplikacji w [Azure Portal].
+1. Wybierz pozycję **ustawienia** > **uwierzytelnianie/autoryzacja**i upewnij się, że **App Service uwierzytelnianie** jest **włączone**.
+1. Wybierz pozycję **Twitter**.
+1. Wklej wartości `API Key` i `API Secret`, które zostały uzyskane wcześniej.
+1. Kliknij przycisk **OK**.
 
-5. Kliknij polecenie **Zapisz**.
+   ![Zrzut ekranu ustawień usługi Twitter aplikacji mobilnych][1]
+
+   Domyślnie App Service zapewnia uwierzytelnianie, ale nie ogranicza uprawnień dostępu do zawartości i interfejsów API witryny. Musisz autoryzować użytkowników w kodzie aplikacji.
+
+1. Obowiązkowe Aby ograniczyć dostęp do witryny tylko do użytkowników uwierzytelnionych przez serwis Twitter, ustaw **akcję do wykonania, gdy żądanie nie zostanie uwierzytelnione** do usługi **Twitter**. Po ustawieniu tej funkcji aplikacja wymaga uwierzytelnienia wszystkich żądań. Przekierowuje także wszystkie nieuwierzytelnione żądania do usługi Twitter w celu uwierzytelnienia.
+
+   > [!CAUTION]
+   > Ograniczenie dostępu w ten sposób dotyczy wszystkich wywołań aplikacji, które mogą nie być pożądane dla aplikacji, które mają publicznie dostępną stronę główną, tak jak w przypadku aplikacji jednostronicowych. W przypadku takich aplikacji **Zezwalanie na żądania anonimowe (żadna akcja)** może być preferowana, aby aplikacja ręcznie uruchamiała sam uwierzytelnienie. Aby uzyskać więcej informacji, zobacz temat [przepływ uwierzytelniania](overview-authentication-authorization.md#authentication-flow).
+
+1. Wybierz pozycję **Zapisz**.
 
 Możesz teraz przystąpić do uwierzytelniania w aplikacji za pomocą usługi Twitter.
 
-## <a name="related-content"> </a>Powiązana zawartość
+## <a name="related-content"> </a>Następne kroki
+
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->
@@ -69,5 +78,6 @@ Możesz teraz przystąpić do uwierzytelniania w aplikacji za pomocą usługi Tw
 <!-- URLs. -->
 
 [Deweloperzy usługi Twitter]: https://go.microsoft.com/fwlink/p/?LinkId=268300
+[twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
 [Azure Portal]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

@@ -1,6 +1,6 @@
 ---
-title: Samouczek dotyczący uaktualniania aplikacji usługi Service Fabric | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono proces wdrażania aplikacji usługi Service Fabric, zmiana kodu i wprowadza uaktualnienie przy użyciu programu Visual Studio.
+title: Samouczek dotyczący uaktualniania aplikacji Service Fabric | Microsoft Docs
+description: W tym artykule omówiono środowisko wdrażania aplikacji Service Fabric, zmiany kodu i wdrażania uaktualnienia przy użyciu programu Visual Studio.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,76 +13,76 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 8fe0bf9c8827b7248195f89377176fd834845e32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 5e693a219c4a430f742ebd27878518ebb99ce5da
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615155"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167373"
 ---
-# <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Samouczek uaktualniania aplikacji usługi Service Fabric za pomocą programu Visual Studio
+# <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Samouczek uaktualniania aplikacji Service Fabric przy użyciu programu Visual Studio
 > [!div class="op_single_selector"]
 > * [Program PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
-> * [Program Visual Studio](service-fabric-application-upgrade-tutorial.md)
+> * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
 
 <br/>
 
-Usługa Azure Service Fabric upraszcza proces uaktualniania aplikacji w chmurze, zapewniając uaktualniane są tylko zmienione usługi i że kondycji aplikacji jest monitorowana przez cały proces uaktualniania. Powoduje także automatyczne wycofanie aplikacji do poprzedniej wersji, w razie napotkania problemów. Uaktualnienia aplikacji usługi Service Fabric są *żadnych przestojów*, ponieważ można uaktualnić aplikację bez przerw w dostępności. W tym samouczku opisano, jak wykonać uaktualnienie stopniowe z programu Visual Studio.
+Usługa Azure Service Fabric upraszcza proces uaktualniania aplikacji w chmurze, zapewniając uaktualnienie tylko zmienionych usług, a kondycja aplikacji jest monitorowana przez cały proces uaktualniania. Powoduje również automatyczne wycofanie aplikacji do poprzedniej wersji w przypadku wystąpienia problemów. Service Fabric uaktualnienia aplikacji mają *zero przestojów*, ponieważ aplikacja może zostać uaktualniona bez przestojów. W tym samouczku opisano, jak przeprowadzić uaktualnienie stopniowe z programu Visual Studio.
 
-## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>Krok 1: Tworzenie i publikowanie przykładowej obiektów wizualnych
-Najpierw pobierz [obiektów wizualnych](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) aplikacji z usługi GitHub. Następnie tworzyć i publikować aplikację, klikając prawym przyciskiem myszy projekt aplikacji **VisualObjects**i wybierając polecenie **Publikuj** polecenia w elemencie menu usługi Service Fabric.
+## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>Krok 1. Kompilowanie i publikowanie przykładowych obiektów wizualnych
+Najpierw pobierz aplikację [obiekty wizualne](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) z usługi GitHub. Następnie Skompiluj i Opublikuj aplikację, klikając prawym przyciskiem myszy projekt aplikacji, **VisualObjects**i wybierając polecenie **Publikuj** w elemencie menu Service Fabric.
 
-![Menu kontekstowe dla aplikacji usługi Service Fabric][image1]
+![Menu kontekstowe dla aplikacji Service Fabric][image1]
 
-Wybranie **publikowania** wyświetlenie wyskakującego okienka, a użytkownik może ustawić **docelowy profil** do **PublishProfiles\Local.xml**. Okno powinno wyglądać następująco przed kliknięciem przycisku **Publikuj**.
+Wybranie pozycji **Publikuj** powoduje wyświetlenie okna podręcznego i można ustawić **profil docelowy** na **PublishProfiles\Local.XML**. Okno powinno wyglądać podobnie do poniższego przed kliknięciem przycisku **Publikuj**.
 
-![Publikowanie aplikacji usługi Service Fabric][image2]
+![Publikowanie aplikacji Service Fabric][image2]
 
-Teraz możesz kliknąć pozycję **Publikuj** w oknie dialogowym. Możesz użyć [narzędzia Service Fabric Explorer, aby wyświetlić klaster i aplikacja](service-fabric-visualizing-your-cluster.md). Aplikacja obiektów wizualnych ma usługi sieci web, które możesz przejść do, wpisując [ http://localhost:8081/visualobjects/ ](http://localhost:8081/visualobjects/) na pasku adresu przeglądarki.  Powinien zostać wyświetlony 10 zmiennoprzecinkowy obiektów wizualnych poruszanie się na ekranie.
+Teraz możesz kliknąć przycisk **Publikuj** w oknie dialogowym. [Aby wyświetlić klaster i aplikację](service-fabric-visualizing-your-cluster.md), można użyć Service Fabric Explorer. Aplikacja obiektów wizualnych ma usługę sieci Web, do której można przejść, wpisując [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) na pasku adresu przeglądarki.  Powinny być widoczne 10 obiektów wizualizacji przenoszonych wokół ekranu.
 
-**UWAGA:** Jeśli wdrażana `Cloud.xml` profilu (usługi Azure Service Fabric), aplikacja powinna być dostępna na **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/** . Upewnij się, że masz `8081/TCP` skonfigurowany w module równoważenia obciążenia (Znajdź modułu równoważenia obciążenia w tej samej grupie zasobów, gdy wystąpienie usługi Service Fabric).
+**Uwaga:** W przypadku wdrażania w profilu `Cloud.xml` (Azure Service Fabric) aplikacja powinna następnie być dostępna przy użyciu **protokołu http://{Servicefabricname}. { Region}. cloudapp. Azure. com: 8081/visualobjects/** . Upewnij się, że w Load Balancer skonfigurowano `8081/TCP` (Znajdź Load Balancer w tej samej grupie zasobów co wystąpienie Service Fabric).
 
-## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: Aktualizacja przykładu obiektów wizualnych
-Może się okazać, że z wersją, która została wdrożona w kroku 1, obiektów wizualnych nie Obróć. Teraz uaktualnić tę aplikację do jednego gdzie również obrócić obiektów wizualnych.
+## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2. Aktualizacja przykładu obiektów wizualnych
+Można zauważyć, że w wersji, która została wdrożona w kroku 1, obiekty wizualne nie są obracane. Uaktualnimy tę aplikację do jednego miejsca, w którym obiekty wizualne również są obracane.
 
-Wybierz projekt VisualObjects.ActorService w ramach rozwiązania VisualObjects, a następnie otwórz **VisualObjectActor.cs** pliku. W tym pliku, przejdź do metody `MoveObject`, komentarz `visualObject.Move(false)`i usuń znaczniki komentarza `visualObject.Move(true)`. Ta zmiana kodu obraca obiekty po uaktualnieniu usługi.  **Możesz teraz utworzyć (nie ponowną kompilację) rozwiązanie**, które kompilacje zmodyfikowane projekty. Jeśli wybierzesz *ponowna kompilacja*, musisz zaktualizować wersje dla wszystkich projektów.
+Wybierz projekt VisualObjects. ActorService w ramach rozwiązania VisualObjects i Otwórz plik **VisualObjectActor.cs** . W tym pliku przejdź do metody `MoveObject`, Dodaj komentarz do `visualObject.Move(false)` i Usuń komentarz `visualObject.Move(true)`. Ta zmiana kodu powoduje obrócenie obiektów po uaktualnieniu usługi.  **Teraz można skompilować (nie ponownie skompilować) rozwiązanie**, które kompiluje zmodyfikowane projekty. W przypadku wybrania opcji *Kompiluj ponownie wszystkie*należy zaktualizować wersje dla wszystkich projektów.
 
-Musimy również wersja naszej aplikacji. Aby wprowadzić zmiany wersji po kliknięciu prawym przyciskiem myszy **VisualObjects** projektu, można użyć programu Visual Studio **Edytuj wersje manifestu** opcji. Wybranie tej opcji wyświetlenie okna dialogowego wersje edition w następujący sposób:
+Potrzebujemy również wersji naszej aplikacji. Aby zmienić wersję po kliknięciu prawym przyciskiem myszy projektu **VisualObjects** , można użyć opcji **Edytuj wersje manifestu** programu Visual Studio. Wybranie tej opcji powoduje wyświetlenie okna dialogowego z wersjami w następujący sposób:
 
-![Przechowywanie wersji, okno dialogowe][image3]
+![Okno dialogowe obsługa wersji][image3]
 
-Zaktualizuj wersje zmodyfikowane projekty i ich pakiety kodu wraz z aplikacji do wersji 2.0.0. Po dokonaniu zmian manifestu powinien wyglądać podobnie do następującej (pogrubienie fragmenty pokazują zmiany):
+Zaktualizuj wersje zmodyfikowanych projektów i ich pakietów kodu wraz z aplikacją do wersji 2.0.0. Po wprowadzeniu zmian manifest powinien wyglądać podobnie do następującego (pogrubione fragmenty pokazują zmiany):
 
-![Aktualizacja wersji][image4]
+![Aktualizowanie wersji][image4]
 
-Narzędzia programu Visual Studio można wykonać automatyczne zbiorcze wersje po wybraniu **automatycznie Aktualizuj wersje aplikacji i usług**. Jeśli używasz [SemVer](http://www.semver.org), musisz zaktualizować kod i/lub konfiguracji pakietu wersji autonomicznej, czy opcja jest zaznaczona.
+Narzędzia Visual Studio Tools mogą wykonywać automatyczne pakiety zbiorcze wersji, wybierając opcję **automatycznie Aktualizuj wersje aplikacji i usług**. Jeśli używasz [SemVer](http://www.semver.org), musisz zaktualizować kod i/lub wersję pakietu konfiguracyjnego, jeśli ta opcja jest zaznaczona.
 
-Zapisz zmiany i sprawdź teraz **Uaktualnij aplikację** pole.
+Zapisz zmiany i sprawdź, czy jest to pole **Uaktualnij aplikację** .
 
-## <a name="step-3--upgrade-your-application"></a>Krok 3:  Uaktualnianie aplikacji
-Zapoznaj się z [parametry uaktualniania aplikacji](service-fabric-application-upgrade-parameters.md) i [procesu uaktualniania](service-fabric-application-upgrade.md) uzyskać dobre zrozumienie różnych parametry uaktualniania, limity czasu i kryterium kondycji, które mogą być stosowane. W tym przewodniku kryterium oceny kondycji usługi jest domyślnie ustawiona (tryb niemonitorowane). Te ustawienia można skonfigurować, wybierając **Konfigurowanie ustawień uaktualniania** , a następnie zmodyfikowanie parametrów, zgodnie z potrzebami.
+## <a name="step-3--upgrade-your-application"></a>Krok 3. Uaktualnianie aplikacji
+Zapoznaj się z [parametrami uaktualniania aplikacji](service-fabric-application-upgrade-parameters.md) i [procesem uaktualniania](service-fabric-application-upgrade.md) , aby poznać różne parametry uaktualniania, limity czasu i kryterium kondycji, które mogą być stosowane. W tym instruktażu kryterium oceny kondycji usługi jest ustawione na wartość domyślną (niemonitorowany tryb). Te ustawienia można skonfigurować, wybierając pozycję **Konfiguruj ustawienia uaktualnienia** , a następnie modyfikując parametry zgodnie z potrzebami.
 
-Teraz jesteśmy gotowi do rozpoczęcia uaktualnienia aplikacji, wybierając **Publikuj**. Ta opcja uaktualnienia aplikacji w wersji 2.0.0, w którym obracanie obiektów. Usługa Service Fabric uaktualniania jednej domeny aktualizacji jednocześnie (niektóre obiekty są aktualizowane w pierwszej kolejności, a następnie przez inne osoby), a usługa jest nadal dostępny podczas uaktualniania. Dostęp do usługi mogą zostać sprawdzone za pośrednictwem sieci klienta (przeglądarki).  
+Teraz wszystko jest ustawione, aby rozpocząć uaktualnianie aplikacji, wybierając pozycję **Publikuj**. Ta opcja uaktualnia aplikację do wersji 2.0.0, w której obiekty są obracane. Service Fabric uaktualnia jedną domenę aktualizacji w danym momencie (niektóre obiekty są aktualizowane jako pierwsze, a następnie inne), a usługa pozostanie dostępna podczas uaktualniania. Dostęp do usługi można sprawdzić za pomocą klienta (przeglądarki).  
 
-Teraz kontynuowane uaktualnienia aplikacji, można go monitorować przy użyciu narzędzia Service Fabric Explorer za pomocą **uaktualnienia w toku** kartę w aplikacji.
+Teraz, gdy uaktualnienie aplikacji będzie kontynuowane, można je monitorować za pomocą Service Fabric Explorer przy użyciu karty **uaktualnienia w toku** w aplikacjach.
 
-W ciągu kilku minut powinny zostać uaktualnione wszystkich domen aktualizacji (ukończono), a następnie w oknie danych wyjściowych programu Visual Studio należy również podać uaktualnienia lokacji. I powinna zauważyć, że *wszystkich* obiektów wizualnych w oknie przeglądarki są teraz obracanie!
+W ciągu kilku minut wszystkie domeny aktualizacji powinny zostać uaktualnione (ukończono), a okno danych wyjściowych programu Visual Studio powinno również spowodować ukończenie uaktualnienia. I należy się dowiedzieć, że *wszystkie* obiekty wizualizacji w oknie przeglądarki są teraz obracane!
 
-Możesz chcieć spróbuj zmienić wersje i przenoszenie z wersji 2.0.0 do wersji 3.0.0 w charakterze ćwiczenia, lub nawet w wersji 2.0.0 do wersji 1.0.0. Poeksperymentuj z limitów czasu i zasad dotyczących kondycji z siebie uczynić je znasz. W przypadku wdrażania w klastrze platformy Azure, w przeciwieństwie do klastra lokalnego, parametry używane może być mogą się różnić. Firma Microsoft zaleca konserwatywnie Ustaw limity czasu.
+Możesz spróbować zmienić wersje i przenieść z wersji 2.0.0 do wersji 3.0.0 jako ćwiczenie, a nawet z wersji 2.0.0 z powrotem do wersji 1.0.0. Twórz aplikacje, korzystając z limitów czasu i zasad dotyczących kondycji, aby je znać. W przypadku wdrażania w klastrze platformy Azure, w przeciwieństwie do klastra lokalnego, używane parametry mogą być różne. Zalecane jest, aby ustawić limity czasu.
 
-## <a name="next-steps"></a>Kolejne kroki
-[Uaktualnianie aplikacji przy użyciu programu PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu PowerShell.
+## <a name="next-steps"></a>Następne kroki
+[Uaktualnianie aplikacji przy użyciu programu PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi Cię przez proces uaktualniania aplikacji przy użyciu programu PowerShell.
 
-Kontrolowanie sposobu uaktualnieniu aplikacji przy użyciu [parametry uaktualniania](service-fabric-application-upgrade-parameters.md).
+Kontroluj sposób uaktualniania aplikacji przy użyciu [parametrów uaktualnienia](service-fabric-application-upgrade-parameters.md).
 
-Uzyskania uaktualnień aplikacji zgodnych poznanie sposobu używania [serializacja danych](service-fabric-application-upgrade-data-serialization.md).
+Aby uaktualnić aplikacje, należy się upewnić, jak używać [serializacji danych](service-fabric-application-upgrade-data-serialization.md).
 
-Dowiedz się, jak korzystać z zaawansowanych funkcji podczas uaktualniania aplikacji, odwołując się do [Tematy zaawansowane](service-fabric-application-upgrade-advanced.md).
+Dowiedz się, jak korzystać z zaawansowanych funkcji podczas uaktualniania aplikacji, odwołując się do [zaawansowanych tematów](service-fabric-application-upgrade-advanced.md).
 
-Rozwiązywanie typowych problemów podczas uaktualniania aplikacji korzystając z procedury opisanej w [Rozwiązywanie problemów z uaktualnieniami aplikacji](service-fabric-application-upgrade-troubleshooting.md).
+Rozwiązywanie typowych problemów dotyczących uaktualnień aplikacji, w odniesieniu do kroków w [temacie Troubleshooting Upgrades Applications](service-fabric-application-upgrade-troubleshooting.md).
 
 [image1]: media/service-fabric-application-upgrade-tutorial/upgrade7.png
 [image2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png

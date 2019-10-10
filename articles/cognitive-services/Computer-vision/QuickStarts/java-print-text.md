@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wyodrębnianie tekstu drukowanego — REST, Java'
+title: 'Szybki Start: Wyodrębnianie wydrukowanych tekstu — REST, Java'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst drukowany przy użyciu interfejsu API przetwarzania obrazów i języka Java.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 73d5effa3341337f3238c49c17a2227942af4958
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cf7924c3201a362403b59ec1ad883cefe6a3cf9a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141349"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176533"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Szybki start: Wyodrębnij drukowany tekst (OCR) przy użyciu interfejsu API REST przetwarzanie obrazów i środowiska Java
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Szybki Start: Wyodrębnianie wydruku tekstu (OCR) przy użyciu interfejsu API REST przetwarzanie obrazów i środowiska Java
 
 W tym przewodniku Szybki start dowiesz się, jak wyodrębnić tekst drukowany z obrazu za pomocą optycznego rozpoznawania znaków (OCR) przy użyciu interfejsu API REST przetwarzania obrazów. Metoda [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) pozwala wykrywać na obrazie tekst drukowany i wyodrębniać rozpoznane znaki do strumienia znaków, którego mogą używać komputery.
 
@@ -27,7 +27,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć zainstalowaną platformę [Java&trade; i zestaw Standard Edition Development Kit 7 lub 8](https://aka.ms/azure-jdks) (JDK 7 lub 8).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` nazwane `COMPUTER_VISION_ENDPOINT`i.
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi o nazwach odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample-application"></a>Tworzenie i uruchamianie przykładowej aplikacji
 
@@ -53,7 +53,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
    import org.json.JSONObject;
    ```
 
-1. Zastąp `Main` klasę publiczną poniższym kodem.
+1. Zastąp klasę publiczną `Main` poniższym kodem.
 1. Opcjonalnie zastąp wartość `imageToAnalyze` adresem URL innego obrazu, z którego chcesz wyodrębnić tekst drukowany.
 1. Zapisz, a następnie skompiluj projekt języka Java.
 1. Jeśli używasz środowiska IDE, uruchom klasę `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
@@ -70,7 +70,7 @@ public class Main {
     String endpoint = ("COMPUTER_VISION_ENDPOINT");
 
     private static final String uriBase = endpoint + 
-            "vision/v2.0/ocr";
+            "vision/v2.1/ocr";
 
     private static final String imageToAnalyze =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" +

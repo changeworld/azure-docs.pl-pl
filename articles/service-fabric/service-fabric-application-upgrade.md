@@ -1,6 +1,6 @@
 ---
-title: Uaktualnianie aplikacji usługi Service Fabric | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera wprowadzenie do uaktualniania aplikacji usługi Service Fabric, w tym wybierając tryby uaktualnienia i przeprowadzanie kontroli kondycji.
+title: Uaktualnianie aplikacji Service Fabric | Microsoft Docs
+description: Ten artykuł zawiera wprowadzenie do uaktualniania aplikacji Service Fabric, w tym wybierania trybów uaktualniania i przeprowadzania kontroli kondycji.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,75 +13,75 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: e2b407733bcab7bc854e8e3703e53eb474f3425b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 3c50ee149f5bcdda6cbb697830945cdc7f7a15f4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615074"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167288"
 ---
 # <a name="service-fabric-application-upgrade"></a>Uaktualnianie aplikacji usługi Service Fabric
-Aplikacja usługi Azure Service Fabric jest kolekcja usług. Podczas uaktualniania usługi Service Fabric porównuje nowy [manifest aplikacji](service-fabric-application-and-service-manifests.md) za pomocą poprzedniej wersji i ustala, usługi w aplikacji wymagają aktualizacji. Usługa Service Fabric porównuje wersji liczb w usłudze manifesty z numerami wersji w poprzedniej wersji. Jeśli usługa nie została zmieniona, czy usługa nie jest uaktualniany.
+Aplikacja Service Fabric platformy Azure to zbiór usług. Podczas uaktualniania Service Fabric porównuje nowy [manifest aplikacji](service-fabric-application-and-service-manifests.md) z poprzednią wersją i określa, które usługi w aplikacji wymagają aktualizacji. Service Fabric porównuje numery wersji w manifestach usługi z numerami wersji w poprzedniej wersji. Jeśli usługa nie uległa zmianie, ta usługa nie zostanie uaktualniona.
 
-## <a name="rolling-upgrades-overview"></a>Omówienie uaktualnienia stopniowego
-W stopniowego uaktualnienia aplikacji uaktualnienia odbywa się etapami. Na każdym etapie uaktualnienia jest stosowany do podzbioru węzłów w klastrze o nazwie domeny aktualizacji. W rezultacie aplikacja pozostaje dostępna całego procesu uaktualniania. Podczas uaktualniania klastra może zawierać kombinację starej i nowej wersji.
+## <a name="rolling-upgrades-overview"></a>Przegląd stopniowego uaktualniania
+W przypadku stopniowego uaktualniania aplikacji uaktualnienie jest wykonywane w etapach. Na każdym etapie uaktualnienie jest stosowane do podzbioru węzłów w klastrze, zwanego domeną aktualizacji. W związku z tym aplikacja pozostaje dostępna podczas uaktualniania. Podczas uaktualniania klaster może zawierać kombinację starych i nowych wersji.
 
-Z tego powodu dwie wersje musi być w przód i Wstecz zgodne. Jeśli nie są zgodne, administrator aplikacji jest odpowiedzialny za przemieszczania uaktualnienia fazy w celu zapewnienia dostępności. W przypadku uaktualniania fazy pierwszym krokiem jest uaktualniany do pośredniego wersję aplikacji, która jest zgodna z poprzednią wersją. Drugim krokiem jest uaktualnienie wersji ostatecznej, dzieli zgodności z wersją przed aktualizacją, ale jest zgodna z wersją pośrednich.
+Z tego powodu te dwie wersje muszą mieć wartość Prześlij dalej i zgodność z poprzednimi wersjami. Jeśli nie są zgodne, administrator aplikacji jest odpowiedzialny za przygotowanie uaktualnienia wielofazowego w celu utrzymania dostępności. W przypadku uaktualniania z wieloma fazami pierwszy krok jest uaktualniany do pośredniej wersji aplikacji, która jest zgodna z poprzednią wersją. Drugim krokiem jest uaktualnienie końcowej wersji, która przerywa zgodność z wersją sprzed aktualizacji, ale jest zgodna z wersją pośrednią.
 
-Domeny aktualizacji są określone w manifeście klastra, po skonfigurowaniu klastra. Domeny aktualizacji nie otrzymywać aktualizacje w określonej kolejności. Domena aktualizacji to jednostka logiczna wdrażania aplikacji. Domeny aktualizacji umożliwiają usług, które mają pozostać w wysokiej dostępności, podczas uaktualniania.
+Domeny aktualizacji są określone w manifeście klastra podczas konfigurowania klastra. Domeny aktualizacji nie odbierają aktualizacji w określonej kolejności. Domena aktualizacji jest jednostką logiczną wdrożenia aplikacji. Aktualizowanie domen pozwala usługom zachować wysoką dostępność podczas uaktualniania.
 
-Uaktualnienia stopniowego nie są możliwe, jeśli uaktualnianie jest stosowany do wszystkich węzłów w klastrze, co jest wymagane, gdy aplikacja ma tylko jedną domenę aktualizacji. To podejście nie jest zalecane, ponieważ usługa ulegnie awarii, a nie jest dostępna w czasie uaktualniania. Ponadto platforma Azure nie zapewnia żadnej gwarancji, gdy klaster jest skonfigurowany przy użyciu tylko jedna domena aktualizacji.
+Uaktualnienia inne niż stopniowe są możliwe, Jeśli uaktualnienie jest stosowane do wszystkich węzłów w klastrze, w przypadku gdy aplikacja ma tylko jedną domenę aktualizacji. Ta metoda nie jest zalecana, ponieważ usługa nie działa i jest niedostępna w momencie uaktualnienia. Ponadto platforma Azure nie zapewnia żadnych gwarancji, gdy klaster jest skonfigurowany tylko do jednej domeny aktualizacji.
 
-Po zakończeniu uaktualniania, wszystkie usługi i replicas(instances) może pozostać w tej samej wersji — czyli Jeśli uaktualnienie zakończy się powodzeniem, zostaną one zaktualizowane do nowej wersji; Jeśli uaktualnienie nie powiedzie się i jest wycofana, ich będzie z powrotem obniżyć do starej wersji.
+Po zakończeniu uaktualniania wszystkie usługi i repliki (wystąpienia) byłyby w tej samej wersji — i. e. Jeśli uaktualnienie zakończy się pomyślnie, zostaną zaktualizowane do nowej wersji; Jeśli uaktualnienie nie powiedzie się i zostanie wycofane, zostałyby przywrócone do starej wersji.
 
-## <a name="health-checks-during-upgrades"></a>Kontrole kondycji podczas uaktualniania
-W przypadku uaktualnienia zasady dotyczące kondycji, które muszą być ustawione lub mogą zostać użyte wartości domyślne. Uaktualnienie jest określane jako pomyślne, po uaktualnieniu wszystkich domen aktualizacji w ramach określonego limitu czasu i wszystkich domen aktualizacji uważa, że działa prawidłowo.  Domeny aktualizacji w dobrej kondycji oznacza o tym, że domena aktualizacji jest przekazywany kontrole kondycji określonym w zasadach kondycji. Na przykład zasad kondycji może uzasadniają, że wszystkie usługi w ramach wystąpienia aplikacji musi być *dobrej kondycji*, zdefiniowaną kondycji przez usługę Service Fabric.
+## <a name="health-checks-during-upgrades"></a>Kontrole kondycji podczas uaktualnień
+W przypadku uaktualnienia należy ustawić zasady kondycji (lub użyć wartości domyślnych). Uaktualnienie jest uznawane za pomyślne, gdy wszystkie domeny aktualizacji zostaną uaktualnione w określonym przedziale czasu, a wszystkie domeny aktualizacji są uważane za w dobrej kondycji.  Domena aktualizacji w dobrej kondycji oznacza, że domena aktualizacji przekazała wszystkie kontrole kondycji określone w zasadach dotyczących kondycji. Na przykład zasady dotyczące kondycji mogą spowodować, że wszystkie usługi w ramach wystąpienia aplikacji muszą mieć *dobrą kondycję*, ponieważ kondycja jest definiowana przez Service Fabric.
 
-Zasady dotyczące kondycji i kontrole podczas uaktualniania przez usługę Service Fabric są niezależne od usług i aplikacji. Oznacza to, że są wykonywane żadne testy specyficzne dla usługi.  Na przykład usługa może być wymagane przepływności, ale usługi Service Fabric nie ma informacji, aby sprawdzić przepływności. Zapoznaj się [artykuły kondycji](service-fabric-health-introduction.md) dla testów, które są wykonywane. Kontrole wykonywane podczas testów uaktualniania dołączenia do tego, czy pakiet aplikacji zostały skopiowane poprawnie, czy wystąpienie zostało uruchomione i tak dalej.
+Zasady i kontrole kondycji podczas uaktualniania Service Fabric to usługi i aplikacje niezależny od. Oznacza to, że nie są wykonywane żadne testy specyficzne dla usługi.  Na przykład usługa może mieć wymaganą przepływność, ale Service Fabric nie ma informacji do sprawdzenia przepływności. Zapoznaj się z [artykułami dotyczącymi kondycji](service-fabric-health-introduction.md) , które są wykonywane. Sprawdzenia wykonywane podczas uaktualniania obejmują testy dotyczące tego, czy pakiet aplikacji został skopiowany prawidłowo, czy wystąpienie zostało uruchomione i tak dalej.
 
-Kondycja aplikacji jest agregacją jednostki podrzędne aplikacji. Krótko mówiąc Usługa Service Fabric ocenia kondycję aplikacji za pomocą kondycji, który jest zgłaszany w aplikacji. Oblicza również kondycję wszystkich usług dla aplikacji w ten sposób. Dodatkowo usługi Service Fabric ocenia kondycję usług aplikacji przez agregowanie ich elementy podrzędne, takie jak repliki usługi kondycji. Po spełnieniu zasad dotyczących kondycji aplikacji, można kontynuować uaktualniania. Naruszenia zasad dotyczących kondycji uaktualnienia aplikacji nie powiedzie się.
+Kondycja aplikacji jest agregacją jednostek podrzędnych aplikacji. W skrócie Service Fabric szacuje kondycję aplikacji za pomocą kondycji raportowanej w aplikacji. Sprawdza również kondycję wszystkich usług dla aplikacji w ten sposób. Service Fabric dalszej ocenie kondycji usług aplikacji przez agregowanie kondycji ich elementów podrzędnych, takich jak replika usługi. Po spełnieniu zasad dotyczących kondycji aplikacji można przeprowadzić uaktualnienie. Jeśli zasady kondycji zostaną naruszone, uaktualnienie aplikacji zakończy się niepowodzeniem.
 
-## <a name="upgrade-modes"></a>Tryby uaktualnienia
-Tryb, w którym firma Microsoft zaleca dla uaktualnienie aplikacji jest monitorowane trybu, który jest powszechnie używany tryb. Tryb monitorowanych przeprowadza uaktualnienie w jedna domena aktualizacji, a jeśli kontroli kondycji wszystkich — dostęp próbny (zgodnie z zasadami określone), przechodzi do następnej domeny aktualizacji automatycznie.  Kontrole kondycji zakończyć się niepowodzeniem i/lub Osiągnięto limity czasu, uaktualnienia albo zostanie wycofana w domenie aktualizacji, czy tryb jest zmieniany na niemonitorowanej ręcznie. Można skonfigurować uaktualnienia można wybrać jedną z tych dwóch trybów uaktualnienia nie powiodło się. 
+## <a name="upgrade-modes"></a>Tryby uaktualniania
+Tryb, który zalecamy w przypadku uaktualniania aplikacji jest trybem monitorowanym, który jest najczęściej używanym trybem. Tryb monitorowany wykonuje uaktualnienie w jednej domenie aktualizacji, a jeśli wszystkie testy kondycji są przekazywane (zgodnie z określonymi zasadami), automatycznie przechodzi do następnej domeny aktualizacji.  Jeśli sprawdzanie kondycji zakończy się niepowodzeniem i/lub przekroczenia limitu czasu, uaktualnienie jest wycofywane dla domeny aktualizacji lub tryb zostanie zmieniony na niemonitorowany. Uaktualnienie można skonfigurować tak, aby wybrać jeden z tych dwóch trybów dla nieudanych uaktualnień. 
 
-Niemonitorowane ręcznego trybu wymaga ręcznej interwencji po każdym uaktualnieniu w domenie usługi aktualizacji, aby rozpocząć uaktualnianie na następnej domeny aktualizacji. Są wykonywane żadne testy kondycji usługi Service Fabric. Administrator wykonuje sprawdzanie kondycji lub stanu przed rozpoczęciem uaktualniania w następnej domeny aktualizacji.
+Niemonitorowany tryb ręczny wymaga ręcznej interwencji po każdym uaktualnieniu w domenie aktualizacji, aby rozpocząć uaktualnianie do następnej domeny aktualizacji. Nie są wykonywane żadne kontrole kondycji Service Fabric. Administrator przeprowadza Sprawdzanie kondycji lub stanu przed rozpoczęciem uaktualniania w następnej domenie aktualizacji.
 
-## <a name="upgrade-default-services"></a>Uaktualnianie usług domyślnych
-Niektóre domyślne parametry usługi zdefiniowane w [manifest aplikacji](service-fabric-application-and-service-manifests.md) także zostaną uaktualnione w ramach uaktualniania aplikacji. Parametry usługi, obsługujące zmieniany przy użyciu [ServiceFabricService aktualizacji](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) można zmienić w ramach uaktualnienia. Zachowanie zmiana domyślnych usług podczas uaktualniania aplikacji jest następujący:
+## <a name="upgrade-default-services"></a>Uaktualnij domyślne usługi
+Niektóre domyślne parametry usługi zdefiniowane w [manifeście aplikacji](service-fabric-application-and-service-manifests.md) mogą być również uaktualniane w ramach uaktualnienia aplikacji. Tylko parametry usługi, które obsługują zmiany za pomocą [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) , mogą zostać zmienione w ramach uaktualnienia. Zachowanie zmian domyślnych usług podczas uaktualniania aplikacji jest następujące:
 
-1. Domyślne usługi w nowy manifest aplikacji, które jeszcze nie istnieje w klastrze są tworzone.
-2. Domyślne usługi, które istnieją w manifestach poprzedniej i nowej aplikacji zostaną zaktualizowane. Parametry domyślnej usługi w nowy manifest aplikacji zastąpić parametry istniejącej usługi. Uaktualnianie aplikacji spowoduje wycofanie automatycznie, jeśli aktualizacja usługi domyślnej nie powiedzie się.
-3. Domyślne usługi, które nie istnieją w nowy manifest aplikacji są usuwane, jeśli nie istnieją w klastrze. **Należy pamiętać, że usunięcie domyślnej usługi spowoduje usunięcie wszystkie te usługi w stan i nie można cofnąć.**
+1. Tworzone są domyślne usługi w manifeście nowej aplikacji, które nie istnieją jeszcze w klastrze.
+2. Domyślne usługi, które znajdują się w poprzednich i nowych manifestach aplikacji, są aktualizowane. Parametry usługi domyślnej w nowym manifeście aplikacji zastępują parametry istniejącej usługi. Uaktualnienie aplikacji zostanie automatycznie wycofane, jeśli aktualizacja usługi domyślnej nie powiedzie się.
+3. Usługi domyślne, które nie istnieją w nowym manifeście aplikacji, są usuwane, jeśli istnieją w klastrze. **Należy pamiętać, że usunięcie usługi domyślnej spowoduje usunięcie jej stanu i nie można jej cofnąć.**
 
-Podczas uaktualniania aplikacji zostanie wycofana, domyślne parametry usługi są przywracane do jego stare wartości przed Uaktualnianie zostało rozpoczęte, ale usunięto usługi nie może być ponownie utworzony przy użyciu ich poprzedni stan.
+Po wycofaniu uaktualnienia aplikacji domyślne parametry usługi są przywracane do starych wartości przed rozpoczęciem uaktualniania, ale nie można ponownie utworzyć usuniętych usług przy użyciu starego stanu.
 
 > [!TIP]
-> [Parametr EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) ustawienia konfiguracji klastra musi być *true* Aby włączyć reguły 2) i 3) powyżej (aktualizacja usługi domyślnej i usuwanie). Ta funkcja jest obsługiwana w usłudze Service Fabric w wersji 5.5.
+> Ustawienie konfiguracji klastra [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) musi mieć *wartość true* , aby włączyć reguły 2) i 3) powyżej (domyślna aktualizacja i usuwanie usługi). Ta funkcja jest obsługiwana w Service Fabric wersja 5,5.
 
-## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Uaktualnianie wieloma aplikacjami za pomocą punktów końcowych HTTPS
-Należy zachować ostrożność nie należy używać **tego samego portu** dotyczy to różnych wystąpień tej samej aplikacji przy użyciu protokołu HTTP**S**. Przyczyną jest to, że usługi Service Fabric nie będzie można uaktualnić certyfikatu dla jednego z wystąpień aplikacji. Na przykład, jeśli chcesz, aby aplikacja 1 lub aplikacji 2 zarówno uaktualnić ich cert 1 do 2 certyfikatów. W przypadku uaktualniania usługi Service Fabric może wyczyściliśmy rejestracji certyfikatu 1 w pliku http.sys nawet, jeśli inna aplikacja nadal jest używany. Aby tego uniknąć, Usługa Service Fabric wykrywa, że nie jest już inne wystąpienie aplikacji zarejestrowanych na tym porcie za pomocą certyfikatu (z powodu sterownik http.sys), a nie operacji.
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Uaktualnianie wielu aplikacji za pomocą punktów końcowych HTTPS
+Należy zachować ostrożność, aby nie używać tego **samego portu** dla różnych wystąpień tej samej aplikacji podczas korzystania z protokołu HTTP**S**. Przyczyną jest to, że Service Fabric nie będzie można uaktualnić certyfikatu dla jednego z wystąpień aplikacji. Na przykład jeśli aplikacja 1 lub aplikacja 2 chcą uaktualnić certyfikat 1 do certyfikatu 2. Po uaktualnieniu program Service Fabric mógł oczyścić rejestrację certyfikatu 1 za pomocą protokołu HTTP. sys, nawet jeśli inna aplikacja nadal używa tego programu. Aby temu zapobiec, Service Fabric wykryje, że na porcie jest już zarejestrowane inne wystąpienie aplikacji z certyfikatem (z powodu pliku http. sys) i operacja kończy się niepowodzeniem.
 
-Dlatego usługi Service Fabric nie obsługuje uaktualniania w dwóch różnych usług za pomocą **tego samego portu** w różne wystąpienia aplikacji. Innymi słowy nie można użyć tego samego certyfikatu na różne usługi, w tym samym porcie. Musisz mieć certyfikat udostępnione w tym samym porcie, musisz upewnić się, że usługi są umieszczane na różnych maszynach z ograniczeniami dotyczącymi umieszczania. Lub należy wziąć pod uwagę przy użyciu dynamicznych portów usługi Service Fabric, jeśli jest to możliwe dla każdej usługi w każdym wystąpieniu aplikacji. 
+Dlatego Service Fabric nie obsługuje uaktualniania dwóch różnych usług przy użyciu tego **samego portu** w różnych wystąpieniach aplikacji. Innymi słowy, nie można używać tego samego certyfikatu w różnych usługach na tym samym porcie. Jeśli musisz mieć współużytkowany certyfikat na tym samym porcie, musisz się upewnić, że usługi są umieszczone na różnych komputerach z ograniczeniami umieszczania. Lub Rozważ użycie Service Fabric portów dynamicznych, jeśli jest to możliwe dla każdej usługi w każdym wystąpieniu aplikacji. 
 
-Jeśli widzisz uaktualnienia kończyć się niepowodzeniem przy użyciu protokołu https, wystąpił błąd, ostrzeżenie z informacją "Interfejsu API serwera HTTP Windows nie obsługuje wielu certyfikatów dla aplikacji, które współdzielą port".
+Jeśli zobaczysz, że uaktualnienie nie powiedzie się, zostanie wyświetlone ostrzeżenie informujące o błędzie "interfejs API serwera HTTP systemu Windows nie obsługuje wielu certyfikatów dla aplikacji, które współużytkują port".
 
 ## <a name="application-upgrade-flowchart"></a>Schemat blokowy uaktualniania aplikacji
-Schemat blokowy poniżej tego akapitu pomóc Ci zrozumieć proces uaktualniania aplikacji usługi Service Fabric. W szczególności przepływu w tym artykule opisano sposób limity czasu, w tym *HealthCheckStableDuration*, *HealthCheckRetryTimeout*, i *UpgradeHealthCheckInterval*, pomoc Kontrolka podczas uaktualniania w jedna domena aktualizacji jest uznawany za sukces lub niepowodzenie.
+Schemat blokowy następujący po tym akapicie może pomóc w zrozumieniu procesu uaktualniania aplikacji Service Fabric. W szczególności przepływ opisuje sposób, w jaki przekroczenia limitu czasu, w tym *HealthCheckStableDuration*, *HealthCheckRetryTimeout*i *UpgradeHealthCheckInterval*, kontrolują, kiedy uaktualnienie w jednej domenie aktualizacji jest uznawane za pomyślne lub Wystąpił błąd.
 
-![Proces uaktualniania aplikacji usługi Service Fabric][image]
+![Proces uaktualniania dla aplikacji Service Fabric][image]
 
-## <a name="next-steps"></a>Kolejne kroki
-[Uaktualnienie z aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu Visual Studio.
+## <a name="next-steps"></a>Następne kroki
+[Uaktualnianie aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi Cię przez proces uaktualniania aplikacji przy użyciu programu Visual Studio.
 
-[Uaktualnienie z aplikacji przy użyciu programu PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu PowerShell.
+[Uaktualnianie aplikacji przy użyciu programu PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi Cię przez proces uaktualniania aplikacji przy użyciu programu PowerShell.
 
-Kontrolować, jak uaktualnić aplikację przy użyciu [parametry uaktualniania](service-fabric-application-upgrade-parameters.md).
+Kontroluj sposób uaktualniania aplikacji przy użyciu [parametrów uaktualnienia](service-fabric-application-upgrade-parameters.md).
 
-Uzyskania uaktualnień aplikacji zgodnych poznanie sposobu używania [serializacja danych](service-fabric-application-upgrade-data-serialization.md).
+Aby uaktualnić aplikacje, należy się upewnić, jak używać [serializacji danych](service-fabric-application-upgrade-data-serialization.md).
 
-Dowiedz się, jak korzystać z zaawansowanych funkcji podczas uaktualniania aplikacji, odwołując się do [Tematy zaawansowane](service-fabric-application-upgrade-advanced.md).
+Dowiedz się, jak korzystać z zaawansowanych funkcji podczas uaktualniania aplikacji, odwołując się do [zaawansowanych tematów](service-fabric-application-upgrade-advanced.md).
 
-Rozwiązywanie typowych problemów podczas uaktualniania aplikacji korzystając z procedury opisanej w [Rozwiązywanie problemów z uaktualnieniami aplikacji](service-fabric-application-upgrade-troubleshooting.md).
+Rozwiązywanie typowych problemów dotyczących uaktualnień aplikacji, w odniesieniu do kroków w [temacie Troubleshooting Upgrades Applications](service-fabric-application-upgrade-troubleshooting.md).
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/09/2019
-ms.author: chackdan
-ms.openlocfilehash: 2d13364093776028f96b75c5bfef252e2fdfc790
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: pepogors
+ms.openlocfilehash: 334ccbf64e32655b5e78ac6564abb65996ac53da
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679396"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167406"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności klastra Service Fabric
 W przypadku każdego wdrożenia produkcyjnego planowanie wydajności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę w ramach tego procesu.
@@ -29,7 +29,7 @@ W przypadku każdego wdrożenia produkcyjnego planowanie wydajności jest ważny
 * Charakterystyka niezawodności i trwałości klastra
 
 > [!NOTE]
-> Podczas planowania należy w minimalny sposób przejrzeć wszystkie niedozwolone wartości zasad uaktualniania. Ma to na celu upewnienie się, że odpowiednio ustawisz odpowiednie wartości, a następnie w celu zmniejszenia liczby ponownych prób spalania klastra z powodu niezmienionych ustawień konfiguracji systemu. 
+> Podczas planowania należy w minimalny sposób przejrzeć wszystkie **niedozwolone** wartości zasad uaktualniania. Ma to na celu upewnienie się, że odpowiednio ustawisz odpowiednie wartości, a następnie w celu zmniejszenia liczby ponownych prób spalania klastra z powodu niezmienionych ustawień konfiguracji systemu. 
 > 
 
 Powiadom nas o każdej z tych elementów.
@@ -62,7 +62,7 @@ Usługi systemowe Service Fabric (na przykład usługa Menedżera klastra lub us
 * **Minimalny rozmiar maszyn wirtualnych** dla typu węzła podstawowego jest określany na podstawie wybranej **warstwy trwałości** . Domyślna warstwa trwałości to brązowy. Aby uzyskać więcej informacji [, zobacz charakterystyki trwałości klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) .  
 * **Minimalna liczba maszyn wirtualnych** dla typu węzła podstawowego jest określana na podstawie wybranej **warstwy niezawodności** . Domyślna warstwa niezawodności to Silver. Aby uzyskać więcej informacji [, zobacz Charakterystyka niezawodności klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) .  
 
-Z szablonu Azure Resource Manager typ węzła podstawowego jest konfigurowany przy użyciu `isPrimary` atrybutu w obszarze [definicja typu węzła](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
+Z szablonu Azure Resource Manager typ węzła podstawowego jest skonfigurowany z atrybutem `isPrimary` w obszarze [definicja typu węzła](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
 
 ### <a name="non-primary-node-type"></a>Typ węzła innego niż podstawowy
 
@@ -78,7 +78,7 @@ Warstwa trwałości służy do wskazywania, że system ma uprawnienia do program
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Złoty             | 5                              | Jednostki SKU w całym węźle przeznaczone dla pojedynczego klienta (na przykład L32s, GS5, G5, DS15_v2, D15_v2) | Może zostać opóźnione do zatwierdzenia przez klaster Service Fabric | Można wstrzymywać przez 2 godziny na UD w celu dodatkowego czasu na odzyskanie replik przed wcześniejszymi błędami |
 | Srebrny           | 5                              | Maszyny wirtualne jednego rdzenia lub nowszego z co najmniej 50 GB lokalnego dysku SSD                      | Może zostać opóźnione do zatwierdzenia przez klaster Service Fabric | Nie może być opóźniony przez dowolny znaczny okres czasu                                                    |
-| Brązowy           | 1                              | Maszyny wirtualne z co najmniej 50 GB lokalnego dysku SSD                                              | Nie zostanie opóźniony przez klaster Service Fabric           | Nie może być opóźniony przez dowolny znaczny okres czasu                                                    |
+| Bron           | 1                              | Maszyny wirtualne z co najmniej 50 GB lokalnego dysku SSD                                              | Nie zostanie opóźniony przez klaster Service Fabric           | Nie może być opóźniony przez dowolny znaczny okres czasu                                                    |
 
 > [!WARNING]
 > Typy węzłów działające z trwałością Bronze nie uzyskują _żadnych uprawnień_. Oznacza to, że zadania infrastruktury mające wpływ na obciążenia bezstanowe nie zostaną zatrzymane ani opóźnione, co może wpłynąć na Twoje obciążenia. Używaj tylko Bronze dla typów węzłów, które uruchamiają tylko obciążenia bezstanowe. W przypadku obciążeń produkcyjnych zaleca się używanie srebra lub wyższej. 
@@ -108,9 +108,9 @@ Należy stosować trwałość Srebrna lub złota dla wszystkich typów węzłów
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Zalecenia operacyjne dla typu węzła, który został ustawiony na poziom trwałości Silver lub Gold.
 
 - Przechowuj klaster i aplikacje przez cały czas i upewnij się, że aplikacje odpowiadają na wszystkie [zdarzenia cyklu życia repliki usługi](service-fabric-reliable-services-lifecycle.md) (takie jak replika w kompilacji jest zablokowana) w odpowiednim czasie.
-- Wprowadzanie bezpieczniejszych sposobów zmiany jednostki SKU maszyny wirtualnej (skalowanie w górę/w dół): Zmiana jednostki SKU maszyny wirtualnej w zestawie skalowania maszyn wirtualnych wymaga wykonania kilku kroków i kwestii. Oto proces, który można wykonać, aby uniknąć typowych problemów.
+- Wdrażaj bezpieczniejsze metody zmiany jednostki SKU maszyny wirtualnej (skalowanie w górę/w dół): Zmiana jednostki SKU maszyny wirtualnej zestawu skalowania maszyn wirtualnych wymaga kilku kroków i kwestii. Oto proces, który można wykonać, aby uniknąć typowych problemów.
     - **Dla typów węzłów innych niż podstawowe:** Zaleca się utworzenie nowego zestawu skalowania maszyn wirtualnych, zmodyfikowanie ograniczenia umieszczania usługi w celu uwzględnienia nowego typu węzła i zestawu skalowania maszyn wirtualnych, a następnie zredukowanie liczby wystąpień starego zestawu skalowania maszyn wirtualnych do zera, jednego węzła w danym momencie (jest to konieczne. Upewnij się, że usuwanie węzłów nie ma wpływu na niezawodność klastra.
-    - **Dla typu węzła podstawowego:** Jeśli wybrana jednostka SKU maszyny wirtualnej ma pojemność i chcesz zmienić ją na większą jednostkę SKU maszyny wirtualnej, postępuj zgodnie z naszymi wskazówkami dotyczącymi skalowania w [pionie dla typu węzła podstawowego](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type). 
+    - **Dla typu węzła podstawowego:** Jeśli wybrana jednostka SKU maszyny wirtualnej ma pojemność i chcesz zmienić ją na większą jednostkę SKU maszyny wirtualnej, postępuj zgodnie z naszymi wskazówkami dotyczącymi [skalowania w pionie dla typu węzła podstawowego](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type). 
 
 - Należy zachować minimalną liczbę pięciu węzłów dla dowolnego zestawu skalowania maszyn wirtualnych z włączonym poziomem trwałości Gold lub Silver.
 - Każdy zestaw skalowania maszyn wirtualnych z poziomem trwałości Silver lub Gold musi być mapowany na własny typ węzła w klastrze Service Fabric. Mapowanie wielu zestawów skalowania maszyn wirtualnych na jeden typ węzła uniemożliwi prawidłowe działanie koordynacji między klastrem Service Fabric i infrastrukturą platformy Azure.
@@ -142,7 +142,7 @@ Poniżej przedstawiono zalecenia dotyczące wyboru warstwy niezawodności.  Licz
 | **Liczba węzłów klastra** | **Warstwa niezawodności** |
 | --- | --- |
 | 1 |Nie określaj parametru warstwy niezawodności system oblicza |
-| 3 |Brązowy |
+| 3 |Bron |
 | 5 lub 6|Srebrny |
 | 7 lub 8 |Złoty |
 | 9 i w górę |Platyn |
@@ -153,7 +153,7 @@ Poniżej przedstawiono wskazówki dotyczące planowania pojemności typu węzła
 
 - **Liczba wystąpień maszyn wirtualnych do uruchamiania dowolnych obciążeń produkcyjnych na platformie Azure:** Należy określić minimalny rozmiar typu węzła podstawowego wynoszący 5 i warstwę niezawodności Silver.  
 - **Liczba wystąpień maszyn wirtualnych do uruchomienia obciążeń testowych na platformie Azure** Można określić minimalny rozmiar typu węzła podstawowego wynoszący 1 lub 3. Klaster z jednym węzłem, działa z konfiguracją specjalną, dlatego skalowanie w poziomie tego klastra nie jest obsługiwane. Klaster z jednym węzłem nie ma niezawodności i dlatego w szablonie Menedżer zasobów musisz usunąć lub nie określić, że konfiguracja (Nieustawienie wartości konfiguracji jest za mało). W przypadku skonfigurowania klastra z jednym węzłem skonfigurowanego za pośrednictwem portalu, konfiguracja jest automatycznie traktowana. Jeden i trzy klastry węzłów nie są obsługiwane w przypadku uruchamiania obciążeń produkcyjnych. 
-- **JEDNOSTKA SKU MASZYNY WIRTUALNEJ:** Typ węzła podstawowego to miejsce, w którym uruchamiane są usługi systemowe, więc wybrana dla niego jednostka SKU maszyny wirtualnej musi uwzględniać ogólne obciążenie szczytowe, które planujesz umieścić w klastrze. Poniżej przedstawiono analogowe przedstawienie znaczenia, co tu znaczy — jako "płuc" można myśleć o typie węzła podstawowego, a tym samym jest to, co zapewnia tlen do mózgów, a więc mózg nie pobiera wystarczającej ilości tlenu. 
+- **jednostka SKU maszyny wirtualnej:** Typ węzła podstawowego to miejsce, w którym uruchamiane są usługi systemowe, więc wybrana dla niego jednostka SKU maszyny wirtualnej musi uwzględniać ogólne obciążenie szczytowe, które planujesz umieścić w klastrze. Poniżej przedstawiono analogowe przedstawienie znaczenia, co tu znaczy — jako "płuc" można myśleć o typie węzła podstawowego, a tym samym jest to, co zapewnia tlen do mózgów, a więc mózg nie pobiera wystarczającej ilości tlenu. 
 
 Ponieważ wymagania dotyczące pojemności klastra są określane przez obciążenie, które planujesz uruchomić w klastrze, nie możemy zapewnić jakościowej wskazówki dotyczącej konkretnego obciążenia, jednak poniżej przedstawiono szerokie wskazówki ułatwiające rozpoczęcie pracy
 
@@ -168,17 +168,17 @@ W przypadku obciążeń produkcyjnych:
 - Maszyny wirtualne o niskim priorytecie nie są obsługiwane.
 
 > [!WARNING]
-> Zmiana rozmiaru jednostki SKU maszyny wirtualnej węzła podstawowego w uruchomionym klastrze, jest operacją skalowania i udokumentowana w dokumentacji skalowania w [poziomie zestawu skalowania maszyn wirtualnych](virtual-machine-scale-set-scale-node-type-scale-out.md) .
+> Zmiana rozmiaru jednostki SKU maszyny wirtualnej węzła podstawowego w uruchomionym klastrze, jest operacją skalowania i udokumentowana w dokumentacji [skalowania w poziomie zestawu skalowania maszyn wirtualnych](virtual-machine-scale-set-scale-node-type-scale-out.md) .
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>Wskazówki dotyczące typu węzła innego niż podstawowe w przypadku obciążeń stanowych
 
-Te wskazówki dotyczą obciążeń stanowych przy użyciu niezawodnych kolekcji usługi Service Fabric [lub](service-fabric-choose-framework.md) niezawodnych aktorów, które są uruchamiane w typie węzła innego niż podstawowy.
+Te wskazówki dotyczą obciążeń stanowych przy użyciu [niezawodnych kolekcji usługi Service Fabric lub niezawodnych aktorów](service-fabric-choose-framework.md) , które są uruchamiane w typie węzła innego niż podstawowy.
 
 **Liczba wystąpień maszyn wirtualnych:** W przypadku obciążeń produkcyjnych, które są stanowe, zalecane jest uruchomienie ich z minimalną i docelową liczbą replik wynoszącą 5. Oznacza to, że w stanie stałym się z repliką (z zestawu replik) w każdej domenie błędów i domenie uaktualnienia. Cała koncepcja warstwy niezawodności dla typu węzła podstawowego umożliwia określenie tego ustawienia dla usług systemowych. To samo zagadnienie dotyczy również usług stanowych.
 
 W przypadku obciążeń produkcyjnych minimalny zalecany rozmiar typu węzła innego niż podstawowy to 5, jeśli używasz obciążeń stanowych.
 
-**JEDNOSTKA SKU MASZYNY WIRTUALNEJ:** Jest to typ węzła, w którym działają usługi aplikacji, więc wybrana dla niego jednostka SKU maszyny wirtualnej musi uwzględniać szczytowe obciążenie, które planujesz umieścić w każdym węźle. Wymagania dotyczące pojemności typu węzła są określane przez obciążenie, które planujesz uruchomić w klastrze, dlatego nie możemy zapewnić jakościową wskazówkę dotyczącą konkretnego obciążenia, ale poniżej przedstawiono szerokie wskazówki ułatwiające rozpoczęcie pracy
+**jednostka SKU maszyny wirtualnej:** Jest to typ węzła, w którym działają usługi aplikacji, więc wybrana dla niego jednostka SKU maszyny wirtualnej musi uwzględniać szczytowe obciążenie, które planujesz umieścić w każdym węźle. Wymagania dotyczące pojemności typu węzła są określane przez obciążenie, które planujesz uruchomić w klastrze, dlatego nie możemy zapewnić jakościową wskazówkę dotyczącą konkretnego obciążenia, ale poniżej przedstawiono szerokie wskazówki ułatwiające rozpoczęcie pracy
 
 Dla obciążeń produkcyjnych 
 
@@ -193,7 +193,7 @@ Te wskazówki dotyczące obciążeń bezstanowych, które są uruchamiane w rama
 
 **Liczba wystąpień maszyn wirtualnych:** W przypadku obciążeń produkcyjnych, które są bezstanowe, minimalny obsługiwany typ węzła innego niż podstawowy to 2. Dzięki temu można uruchamiać dwa bezstanowe wystąpienia aplikacji i zezwalać usłudze na przegranie utraconego wystąpienia maszyny wirtualnej. 
 
-**JEDNOSTKA SKU MASZYNY WIRTUALNEJ:** Jest to typ węzła, w którym działają usługi aplikacji, więc wybrana dla niego jednostka SKU maszyny wirtualnej musi uwzględniać szczytowe obciążenie, które planujesz umieścić w każdym węźle. Wymagania dotyczące pojemności typu węzła są określane przez obciążenie planowane do uruchomienia w klastrze. Nie możemy zapewnić jakościowej wskazówki dotyczącej konkretnego obciążenia.  Oto szerokie wskazówki ułatwiające rozpoczęcie pracy.
+**jednostka SKU maszyny wirtualnej:** Jest to typ węzła, w którym działają usługi aplikacji, więc wybrana dla niego jednostka SKU maszyny wirtualnej musi uwzględniać szczytowe obciążenie, które planujesz umieścić w każdym węźle. Wymagania dotyczące pojemności typu węzła są określane przez obciążenie planowane do uruchomienia w klastrze. Nie możemy zapewnić jakościowej wskazówki dotyczącej konkretnego obciążenia.  Oto szerokie wskazówki ułatwiające rozpoczęcie pracy.
 
 Dla obciążeń produkcyjnych 
 
