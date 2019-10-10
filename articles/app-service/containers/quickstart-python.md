@@ -1,6 +1,6 @@
 ---
 title: Tworzenie aplikacji w języku Python w systemie Linux — Azure App Service | Microsoft Docs
-description: Wdróż swoją pierwszą aplikację Hello World w języku Python w Azure App Service w systemie Linux w ciągu kilku minut.
+description: Wdróż swoją pierwszą aplikację Hello World w języku Python w usłudze Azure App Service w systemie Linux w ciągu kilku minut.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.author: cephalin
 experimental: true
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: ed7e0df77abb39c07bea8946381247539afb3134
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 253e2e5015c2cb7a71386b88b4d86ac6bff6a0fe
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177027"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242458"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji w języku Python w Azure App Service w systemie Linux
 
@@ -32,11 +32,11 @@ W tym przewodniku szybki start wdrożono prostą aplikację w języku Python do 
 
 Aby ukończyć ten przewodnik Szybki Start:
 
-* <a href="https://www.python.org/downloads/" target="_blank">Zainstaluj Język Python 3,7</a>
-* <a href="https://git-scm.com/" target="_blank">Instalowanie usługi git</a>
+* <a href="https://www.python.org/downloads/" target="_blank">Instalacja języka Python 3.7</a>
+* <a href="https://git-scm.com/" target="_blank">Zainstaluj oprogramowanie Git</a>
 * Subskrypcja platformy Azure. Jeśli jeszcze tego nie zrobiono, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
-## <a name="download-the-sample-locally"></a>Pobierz przykład lokalnie
+## <a name="download-the-sample-locally"></a>Pobieranie przykładu na maszynę lokalną
 
 W oknie terminalu uruchom następujące polecenia, aby sklonować przykładową aplikację na maszynę lokalną, a następnie przejdź do katalogu przy użyciu przykładowego kodu.
 
@@ -45,34 +45,41 @@ git clone https://github.com/Azure-Samples/python-docs-hello-world
 cd python-docs-hello-world
 ```
 
-Repozytorium zawiera *Application.py*, które informuje App Service, że repozytorium zawiera aplikację z kolbą. Aby uzyskać więcej informacji, zobacz temat [proces uruchamiania kontenera i dostosowania](how-to-configure-python.md).
+Repozytorium zawiera plik *application.py*, który informuje usługę App Service o tym, które repozytorium zawiera aplikację Flask. Aby uzyskać więcej informacji, zobacz [Proces uruchamiania kontenera i dostosowania](how-to-configure-python.md).
 
-## <a name="run-the-app-locally"></a>Uruchamianie aplikacji lokalnie
+## <a name="run-the-app-locally"></a>Lokalne uruchamianie aplikacji
 
-Uruchom aplikację lokalnie, aby zobaczyć, jak powinna wyglądać podczas wdrażania na platformie Azure. Otwórz okno terminalu i Użyj poniższych poleceń, aby zainstalować wymagane zależności i uruchomić wbudowany serwer programistyczny. 
+Uruchom aplikację lokalnie, aby zobaczyć, jak powinna ona wyglądać, gdy wdrożysz ją na platformie Azure. Otwórz okno terminala i użyj poleceń poniżej, aby zainstalować wymagane zależności i uruchomić wbudowany serwer wdrożeniowy. 
 
 ```bash
-# In Bash
+# In Bash (for Linux or Mac)
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 FLASK_APP=application.py flask run
-
+```
+```powershell
+# In Powershell (for Windows)
+py -3 -m venv env
+env\scripts\activate
+pip install -r requirements.txt
+Set-Item Env:FLASK_APP ".\application.py"
+flask run
 ```
 
 Otwórz przeglądarkę internetową i przejdź do przykładowej aplikacji w `http://localhost:5000/`.
 
-Zobaczysz **Hello World!** komunikat z przykładowej aplikacji wyświetlanej na stronie.
+Na stronie zostanie wyświetlony komunikat **Hello World!** z przykładowej aplikacji.
 
-![Przykładowa aplikacja uruchamiana lokalnie](media/quickstart-python/hello-world-in-browser.png)
+![Przykładowa aplikacja działająca w środowisku lokalnym](media/quickstart-python/hello-world-in-browser.png)
 
-W oknie terminalu naciśnij **kombinację klawiszy CTRL + C** , aby wyjść z serwera sieci Web.
+W oknie terminalu naciśnij kombinację klawiszy **Ctrl + C**, aby zamknąć serwer sieci Web.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="download-the-sample"></a>Pobierz przykład
 
-W Cloud Shell Utwórz katalog szybkiego startu, a następnie przejdź do niego.
+W usłudze Cloud Shell utwórz katalog Szybki start, a następnie przejdź do niego.
 
 ```bash
 mkdir quickstart
@@ -80,13 +87,13 @@ mkdir quickstart
 cd $HOME/quickstart
 ```
 
-Następnie uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplikacji do katalogu szybkiego startu.
+Uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplikacji na komputer lokalny.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
 
-W trakcie działania są wyświetlane informacje podobne do następującego przykładu:
+Podczas wykonywania polecenie wyświetli informacje podobne do następującego przykładu:
 
 ```bash
 Cloning into 'python-docs-hello-world'...
@@ -96,7 +103,7 @@ Unpacking objects: 100% (43/43), done.
 Checking connectivity... done.
 ```
 
-## <a name="create-a-web-app"></a>tworzenie aplikacji internetowej
+## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 Przejdź do katalogu, który zawiera przykładowy kod, i uruchom polecenie `az webapp up`.
 
@@ -108,7 +115,7 @@ cd python-docs-hello-world
 az webapp up -n <app-name>
 ```
 
-Wykonanie tego polecenia może potrwać kilka minut. W trakcie działania są wyświetlane informacje podobne do następującego przykładu:
+Wykonanie tego polecenia może potrwać kilka minut. Podczas wykonywania polecenie wyświetli informacje podobne do następującego przykładu:
 
 ```json
 The behavior of this command has been altered by the following extension: webapp
@@ -137,33 +144,33 @@ All done.
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
-## <a name="browse-to-the-app"></a>Przejdź do aplikacji
+## <a name="browse-to-the-app"></a>Przechodzenie do aplikacji
 
-Przejdź do wdrożonej aplikacji przy użyciu przeglądarki sieci Web.
+Przejdź do wdrożonej aplikacji za pomocą przeglądarki sieci Web.
 
 ```bash
 http://<app-name>.azurewebsites.net
 ```
 
-Przykładowy kod w języku Python jest uruchamiany w App Service w systemie Linux przy użyciu wbudowanego obrazu.
+Przykładowy kod w języku Python jest uruchamiany w usłudze App Service dla systemu Linux z wbudowanym obrazem.
 
 ![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-python/hello-world-in-browser.png)
 
-**Nabycia!** Twoja pierwsza aplikacja w języku Python została wdrożona w celu App Service w systemie Linux.
+**Gratulacje!** Udało Ci się wdrożyć pierwszą własną aplikację w języku Python w usłudze App Service w systemie Linux.
 
-## <a name="update-locally-and-redeploy-the-code"></a>Aktualizuj lokalnie i ponownie Wdróż kod
+## <a name="update-locally-and-redeploy-the-code"></a>Lokalne aktualizowanie i ponowne wdrażanie kodu
 
 W Cloud Shell wprowadź `code application.py`, aby otworzyć Edytor Cloud Shell.
 
-![Application.py kodu](media/quickstart-python/code-applicationpy.png)
+![Kod application.py](media/quickstart-python/code-applicationpy.png)
 
- Wprowadź niewielką zmianę w tekście w wywołaniu `return`:
+ Wprowadź niewielką zmianę w tekście w wywołaniu metody `return`:
 
 ```python
 return "Hello Azure!"
 ```
 
-Zapisz zmiany i Zamknij Edytor. Za pomocą polecenia `^S` Zapisz i `^Q`, aby wyjść.
+Zapisz zmiany i zamknij edytor. Użyj polecenia `^S` w celu zapisania i polecenia `^Q` w celu zamknięcia programu.
 
 Wdróż ponownie aplikację przy użyciu [`az webapp up`](/cli/azure/webapp#az-webapp-up) polecenia. Zastąp nazwę aplikacji `<app-name>` i określ lokalizację dla `<location-name>` (przy użyciu jednej z wartości podanych w [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) polecenie).
 
@@ -171,21 +178,21 @@ Wdróż ponownie aplikację przy użyciu [`az webapp up`](/cli/azure/webapp#az-w
 az webapp up -n <app-name> -l <location-name>
 ```
 
-Po zakończeniu wdrażania przejdź z powrotem do okna przeglądarki otwartego w kroku **Przejdź do aplikacji** , a następnie Odśwież stronę.
+Po zakończeniu wdrożenia przejdź z powrotem do okna przeglądarki otwartego w kroku **przechodzenia do aplikacji**, a następnie odśwież stronę.
 
-![Zaktualizowana Przykładowa aplikacja działająca na platformie Azure](media/quickstart-python/hello-azure-in-browser.png)
+![Zaktualizowana przykładowa aplikacja działająca na platformie Azure](media/quickstart-python/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-app"></a>Zarządzanie nową aplikacją platformy Azure
 
-Przejdź do <a href="https://portal.azure.com" target="_blank">Azure Portal</a> , aby zarządzać utworzoną aplikacją.
+Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją.
 
-Z menu po lewej stronie wybierz pozycję **App Services**, a następnie wybierz nazwę aplikacji platformy Azure.
+W lewym menu wybierz pozycję **App Services**, a następnie wybierz nazwę swojej aplikacji platformy Azure.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/quickstart-python/app-service-list.png)
 
-Zobaczysz stronę omówienia swojej aplikacji. W tym miejscu można wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
+Zostanie wyświetlona strona omówienia aplikacji. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
 
-![Strona App Service w Azure Portal](media/quickstart-python/app-service-detail.png)
+![Strona usługi App Service w witrynie Azure Portal](media/quickstart-python/app-service-detail.png)
 
 Menu po lewej stronie zawiera różne strony służące do konfigurowania aplikacji. 
 

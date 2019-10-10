@@ -15,8 +15,6 @@
       href: quickstart-download-audit-report.md
     - name: Konfigurowanie nazwanych lokalizacji
       href: quickstart-configure-named-locations.md
-    - name: Instalowanie pakietu zawartości usługi Power BI
-      href: quickstart-install-power-bi-content-pack.md
     - name: Przekierowywanie dzienników do konta magazynu
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: Samouczki
@@ -58,8 +56,6 @@
           href: howto-troubleshoot-sign-in-errors.md
         - name: Korygowanie użytkowników oflagowanych w związku z ryzykiem
           href: howto-remediate-users-flagged-for-risk.md
-        - name: Używanie pakietu zawartości usługi Power BI w raportach usługi Azure AD
-          href: howto-power-bi-content-pack.md
         - name: Konfigurowanie wymagań wstępnych dla interfejsu API raportowania
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Jak używać skoroszytów usługi Azure AD
@@ -86,8 +82,6 @@
           href: troubleshoot-missing-data-download.md
         - name: Nie można uzyskać dostępu do interfejsów API programu Graph do raportowania
           href: troubleshoot-graph-api.md
-        - name: Błędy w pakiecie zawartości usługi Power BI
-          href: troubleshoot-content-pack.md
 - name: Dokumentacja
   expanded: true
   items:

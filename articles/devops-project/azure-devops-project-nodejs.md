@@ -1,6 +1,6 @@
 ---
 title: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Node. js za pomocą Azure DevOps Projects
-description: DevOps Projects ułatwia rozpoczęcie pracy z platformą Azure. Ułatwia ona uruchamianie aplikacji w wybranym przez siebie usłudze Azure w kilku prostych krokach.
+description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Umożliwia uruchomienie aplikacji w wybranej usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 monikerRange: vsts
-ms.openlocfilehash: 9fc276626d2a863f7f2e53cd7312ab8b3be513dd
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 11edeb35119e2c598fd83fd89c65ba4dc4679650
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815779"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256104"
 ---
 #  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>Szybki Start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania w Azure Pipelines dla środowiska Node. js z Azure DevOps Projects
 
-Azure DevOps Projects przedstawia uproszczone środowisko tworzenia zasobów platformy Azure i konfiguruje potok ciągłej integracji (CI) i ciągłe dostarczanie (CD) dla aplikacji node. js w programie Azure Pipelines.  
+Usługa Azure DevOps Projects oferuje prosty sposób na utworzenie zasobów platformy Azure i skonfigurowanie potoku ciągłej integracji/ciągłego wdrażania dla aplikacji Node.js w usłudze Azure Pipelines.  
 
-Jeśli nie masz subskrypcji platformy Azure, możesz skorzystać z jednej bezpłatnej [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
+Jeśli nie masz subskrypcji platformy Azure, możesz uzyskać ją bezpłatnie za pośrednictwem programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="sign-in-to-the-azure-portal"></a>Zaloguj się do Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w programie Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. DevOps Projects również tworzy zasoby platformy Azure w ramach wybranej subskrypcji platformy Azure.
+Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure w wybranej subskrypcji platformy Azure.
 
-1. Zaloguj się do [Microsoft Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Microsoft Azure](https://portal.azure.com).
 
-1. W lewym okienku wybierz pozycję **Utwórz zasób**, a następnie wyszukaj **DevOps projects**. 
+1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**, a następnie wyszukaj pozycję **DevOps Projects**. 
 
-    ![Uruchamianie konfiguracji ciągłego dostarczania](_img/azure-devops-project-nodejs/fullbrowser.png)
+    ![Utwórz zasób konfiguracji ciągłego dostarczania](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-## <a name="select-a-sample-application-and-azure-service"></a>Wybierz przykładową aplikację i usługę platformy Azure
+## <a name="select-a-sample-application-and-azure-service"></a>Wybieranie przykładowej aplikacji i usługi platformy Azure
 
-1. Wybierz przykładową aplikację Node. js.  
-    Przykłady dla środowiska Node. js obejmują wybór kilku platform aplikacji.
+1. Wybierz przykładową aplikację środowiska Node.js.  
+    Przykłady środowiska Node.js obejmują kilka struktur aplikacji do wyboru.
 
-1. Domyślną platformą przykładową jest Express. js. Pozostaw ustawienie domyślne, a następnie wybierz przycisk **dalej**.  
-    **Aplikacja sieci Web w systemie Windows** jest domyślnym miejscem docelowym wdrożenia.  Wybrana wcześniej struktura aplikacji określa typ docelowego wdrożenia usługi platformy Azure dostępnego tutaj.  
+1. Domyślna struktura przykładowej aplikacji to struktura Express.js. Pozostaw ustawienie domyślne, a następnie wybierz pozycję **Dalej**.  
+    Domyślnym celem wdrożenia jest funkcja **Web App on Windows**.  Wybrana poprzednio struktura aplikacji decyduje o dostępnym w tym miejscu typie celu wdrożenia usługi platformy Azure.  
 
-2. Pozostaw domyślną usługę, a następnie wybierz pozycję **dalej**.
+2. Pozostaw usługę domyślną, a następnie wybierz pozycję **Dalej**.
  
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurowanie usługi Azure DevOps i subskrypcji platformy Azure 
 
@@ -55,104 +55,104 @@ DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w progra
 
     a. Wprowadź nazwę dla projektu.
 
-    b. Wybierz swoją subskrypcję i lokalizację platformy Azure, wprowadź nazwę aplikacji, a następnie wybierz pozycję **gotowe**.  
-    Po kilku minutach DevOps Projects pulpit nawigacyjny zostanie wyświetlony w Azure Portal. Przykładowa aplikacja jest skonfigurowana w repozytorium w organizacji usługi Azure DevOps, a aplikacja jest wdrażana na platformie Azure. Ten pulpit nawigacyjny zapewnia wgląd w repozytorium kodu, potok ciągłej integracji/ciągłego wdrażania oraz aplikację na platformie Azure.
+    b. Wybierz swoją subskrypcję platformy Azure i lokalizację, wprowadź nazwę aplikacji, a następnie wybierz pozycję **Gotowe**.  
+    Po kilku minutach w witrynie Azure Portal zostanie wyświetlony pulpit nawigacyjny usługi DevOps Projects. Aplikacja przykładowa zostanie skonfigurowana w repozytorium w organizacji usługi Azure DevOps, skompilowana i wdrożona na platformie Azure. Ten pulpit nawigacyjny zapewnia wgląd w repozytorium kodu, potok ciągłej integracji/ciągłego wdrażania i aplikację na platformie Azure.
      
-3. Wybierz pozycję **Przeglądaj** , aby wyświetlić uruchomioną aplikację.
+3. Wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
 
-    ![Widok pulpitu nawigacyjnego](_img/azure-devops-project-nodejs/dashboardnopreview.png) 
+    ![Widok pulpitu nawigacyjnego potoku CI/CD](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
     
-DevOps Projects automatycznie skonfigurować wyzwalacz tworzenia i zwalniania elementu konfiguracji.  Teraz możesz przystąpić do współpracy z zespołem w aplikacji node. js z procesem ciągłej integracji/ciągłego wdrażania, który automatycznie wdraża najnowszą pracę w witrynie sieci Web.
+Usługa DevOps Projects automatycznie skonfigurowała wyzwalacz kompilacji i wydania ciągłej integracji.  Możesz teraz rozpocząć pracę w zespole nad aplikacją Node.js w ramach procesu ciągłej integracji/ciągłego wdrażania, który umożliwia automatyczne wdrożenie najnowszej wersji w witrynie internetowej.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Zatwierdzanie zmian kodu i wykonywanie ciągłej integracji/ciągłego wdrażania
 
-DevOps Projects tworzy repozytorium Git w usłudze Azure Repos lub GitHub. Wykonaj następujące kroki, aby wyświetlić repozytorium i wprowadzić zmiany w kodzie aplikacji.
+Usługa DevOps Projects tworzy repozytorium Git w usłudze Azure Repos lub GitHub. Aby wyświetlić repozytorium i wprowadzić zmiany w kodzie aplikacji, wykonaj poniższe czynności.
 
-1. Z lewej strony pulpitu nawigacyjnego DevOps Projects wybierz link do gałęzi głównej.  
-To łącze powoduje otwarcie widoku nowo utworzonego repozytorium git.
+1. Z lewej strony pulpitu nawigacyjnego usługi DevOps Projects wybierz link dla gałęzi master.  
+Ten link otwiera widok nowo utworzonego repozytorium Git.
 
 1. Aby wyświetlić adres URL klonowania repozytorium, wybierz pozycję **Klonuj** w prawym górnym rogu przeglądarki.   
-    Repozytorium git można sklonować w ulubionym środowisku IDE. W następnych kilku krokach można użyć przeglądarki sieci Web, aby wprowadzić zmiany w kodzie i zatwierdzić je bezpośrednio w gałęzi głównej.
+    Możesz sklonować repozytorium Git w wybranym środowisku IDE. W kolejnych kilku krokach użyjesz przeglądarki internetowej, aby dokonać zmian w kodzie i zatwierdzić je bezpośrednio w gałęzi master.
 
-1. Po lewej stronie przeglądarki przejdź do pliku **views/index. Pug** .
+1. Przejdź do pliku **views/index.pug** z lewej strony okna przeglądarki.
 
-1. Wybierz pozycję **Edytuj**, a następnie wprowadź zmiany do nagłówka H2.  
+1. Wybierz pozycję **Edytuj** i wprowadź zmianę w nagłówku h2.  
     Na przykład wprowadź od razu rozpocząć **pracę z Azure DevOps projects** lub wprowadź inne zmiany.
 
-1. Wybierz pozycję **Zatwierdź**, a następnie Zapisz zmiany.
+1. Wybierz pozycję **Zatwierdź**, a następnie zapisz zmiany.
 
-1. W przeglądarce przejdź do pulpitu nawigacyjnego DevOps Projects.   
-Teraz powinna zostać wyświetlona kompilacja w toku. Wprowadzone zmiany są automatycznie kompilowane i wdrażane za pośrednictwem potoku ciągłej integracji/ciągłego dostarczania.
+1. W przeglądarce przejdź do pulpitu nawigacyjnego usługi DevOps Projects.   
+W tym momencie powinna być widoczna trwająca kompilacja. Wprowadzone zmiany są automatycznie kompilowane i wdrażane za pośrednictwem potoku ciągłej integracji/ciągłego wdrażania.
 
-## <a name="examine-the-azure-cicd-pipeline"></a>Badanie potoku CI/CD platformy Azure
+## <a name="examine-the-azure-cicd-pipeline"></a>Sprawdzanie potoku ciągłej integracji/ciągłego wdrażania platformy Azure
 
-W poprzednim kroku DevOps Projects automatycznie skonfigurować pełny potok ciągłej integracji/ciągłego dostarczania. Przejrzyj i Dostosuj potok zgodnie z wymaganiami. Wykonaj następujące kroki, aby zaznajomić się z potokami kompilacji i wydania.
+W poprzednim kroku usługa DevOps Projects automatycznie skonfigurowała pełny potok ciągłej integracji/ciągłego wdrażania. Możesz przeglądać i dostosowywać potok według potrzeb. Wykonaj poniższe kroki, aby zapoznać się z potokami kompilacji i wydania.
 
-1. W górnej części pulpitu nawigacyjnego DevOps Projects wybierz pozycję **potoki kompilacji**.  
-To łącze powoduje otwarcie karty przeglądarki i potoku kompilacji dla nowego projektu.
+1. U góry pulpitu nawigacyjnego usługi DevOps Projects wybierz pozycję **Potoki kompilacji**.  
+Ten link otwiera kartę przeglądarki i potok kompilacji dla nowego projektu.
 
-1. Wskaż pole **stan** , a następnie wybierz przycisk wielokropka (...).  
-    Ta akcja powoduje otwarcie menu, w którym można rozpocząć kilka działań, takich jak kolejkowanie nowej kompilacji, wstrzymywanie kompilacji i edytowanie potoku kompilacji.
+1. Wskaż pole **Stan** i wybierz symbol wielokropka (...).  
+    Ta akcja powoduje otwarcie menu, w którym możesz uruchomić kilka działań, takich jak dodawanie nowej kompilacji do kolejki, wstrzymywanie kompilacji i edytowanie potoku kompilacji.
 
-1. Wybierz pozycję **Edytuj**.
+1. Wybierz pozycję **Edit** (Edytuj).
 
-1. W tym okienku można przejrzeć różne zadania dla potoku kompilacji.  
-Kompilacja wykonuje różne zadania, takie jak pobieranie źródeł z repozytorium git, przywracanie zależności i publikowanie danych wyjściowych, które są używane do wdrożeń.
+1. W tym okienku możesz zapoznać się z różnymi zadaniami w potoku kompilacji.  
+W ramach kompilacji są wykonywane różne zadania, takie jak pobieranie kodu źródłowego z repozytorium Git, przywracanie zależności i publikowanie danych wyjściowych używanych do wdrożenia.
 
-1. W górnej części potoku kompilacji wybierz nazwę potoku kompilacji.
+1. W górnej części potoku kompilacji wybierz jego nazwę.
 
-1. Zmień nazwę potoku kompilacji na coś bardziej opisowego, wybierz pozycję **zapisz & kolejkę**, a następnie wybierz pozycję **Zapisz**.
+1. Zmień nazwę potoku kompilacji na bardziej opisową, wybierz pozycję **Zapisz i dodaj do kolejki**, a następnie wybierz pozycję **Zapisz**.
 
-1. W obszarze Nazwa potoku kompilacji wybierz pozycję **historia**.   
-W okienku **historia** zobaczysz dziennik inspekcji ostatnich zmian dla kompilacji.  Azure Pipelines śledzi wszelkie zmiany wprowadzone w potoku kompilacji i umożliwia porównanie wersji.
+1. W obszarze nazwy potoku kompilacji wybierz pozycję **Historia**.   
+W okienku **Historia** zostanie wyświetlony dziennik inspekcji zmian ostatnio wprowadzonych w kompilacji.  Usługa Azure Pipelines śledzi wszelkie zmiany wprowadzone do potoku kompilacji i pozwala na porównanie wersji.
 
-1. Wybierz pozycję **wyzwalacze**.   
- DevOps Projects automatycznie utworzył wyzwalacz CI i każde zatwierdzenie w repozytorium uruchamia nową kompilację.  Opcjonalnie możesz dołączać lub wykluczać gałęzie z procesu CI elementu konfiguracji.
+1. Wybierz pozycję **Wyzwalacze**.   
+ Usługa DevOps Projects automatycznie utworzyła wyzwalacz ciągłej integracji — każde zatwierdzenie w repozytorium uruchamia nową kompilację.  Opcjonalnie możesz zdecydować się dołączyć gałęzie do procesu ciągłej integracji lub je wykluczyć.
 
-1. Wybierz pozycję **przechowywanie**.   
-W zależności od scenariusza można określić zasady, aby zachować lub usunąć określoną liczbę kompilacji.
+1. Wybierz pozycję **Przechowywanie**.   
+W zależności od scenariusza możesz określić zasady przechowywania lub usuwania pewnej liczby kompilacji.
 
-1. Wybierz pozycję **kompilacja i wydanie**, a następnie wybierz pozycję **wersje**.  
- DevOps Projects tworzy potok wydania do zarządzania wdrożeniami na platformie Azure.
+1. Wybierz pozycję **Kompilacja i wydanie**, a następnie wybierz pozycję **Wydania**.  
+ Usługa DevOps Projects tworzy potok wydania w celu zarządzania wdrożeniami na platformie Azure.
 
-1. Po lewej stronie wybierz wielokropek (...) obok potoku wydania, a następnie wybierz pozycję **Edytuj**.  
-Potok wydania definiuje proces wydania.
+1. Po lewej stronie wybierz symbol wielokropka (...) obok potoku wydania, a następnie wybierz pozycję **Edytuj**.  
+Potok wydania definiuje proces tworzenia wydania.
 
-12. W obszarze **artefakty**wybierz pozycję **Usuń**.  
-    Potok kompilacji, który został sprawdzony w poprzednich krokach, generuje dane wyjściowe używane dla artefaktu. 
+12. W obszarze **Artefakty** wybierz polecenie **Porzuć**.  
+    Potok kompilacji przedstawiony w poprzednich krokach generuje dane wyjściowe używane na potrzeby artefaktu. 
 
-1. Obok ikony **upuszczania** wybierz **wyzwalacz ciągłego wdrażania**.  
-Ten potok wersji ma włączony wyzwalacz CD, który uruchamia wdrożenie za każdym razem, gdy jest dostępny nowy artefakt kompilacji. Opcjonalnie można wyłączyć wyzwalacz, aby wdrożenia wymagały ręcznego wykonania. 
-
-
-1. Po lewej stronie wybierz pozycję **zadania**.   
-Zadania są działaniami wykonywanymi przez proces wdrażania. W tym przykładzie utworzono zadanie do wdrożenia w Azure App Service.
+1. Obok ikony **Porzuć** wybierz pozycję **Wyzwalacz ciągłego wdrażania**.  
+Ten potok wydania ma włączony wyzwalacz ciągłego wdrażania, który przeprowadza wdrożenie za każdym razem, gdy jest dostępny nowy artefakt kompilacji. Opcjonalnie możesz wyłączyć wyzwalacz. Wtedy wdrożenia będą wymagać ręcznego wykonania. 
 
 
-1. Po prawej stronie wybierz pozycję **Wyświetl wersje**.  
+1. Po lewej stronie wybierz pozycję **Zadania**.   
+Zadania to działania wykonywane w procesie wdrażania. W tym przykładzie zostało utworzone zadanie w celu wdrożenia w usłudze Azure App Service.
+
+
+1. Po prawej stronie wybierz pozycję **Wyświetl wydania**.  
 Ten widok przedstawia historię wersji.
 
-1. Wybierz wielokropek (...) obok jednej z wersji, a następnie wybierz pozycję **Otwórz**.  
-Istnieje kilka menu do eksplorowania, takich jak podsumowanie wydania, skojarzone elementy robocze i testy.
+1. Wybierz symbol wielokropka (...) obok jednego z wydań i wybierz pozycję **Otwórz**.  
+Dostępnych jest kilka menu, z którymi możesz się zapoznać, na przykład podsumowanie wydań, skojarzone elementy robocze i testy.
 
-1. Wybierz pozycję **zatwierdzenia**.   
-Ten widok przedstawia zatwierdzenia kodu, które są skojarzone z określonym wdrożeniem.
+1. Wybierz pozycję **Zatwierdzenia**.   
+Ten widok przedstawia zatwierdzenia kodu skojarzone z konkretnym wdrożeniem.
 
-1. Wybierz pozycję **dzienniki**.  
-Dzienniki zawierają przydatne informacje o procesie wdrażania. Mogą być wyświetlane zarówno podczas wdrażania, jak i po nim.
+1. Wybierz pozycję **Dzienniki**.  
+Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Mogą być wyświetlane zarówno podczas wdrożeń, jak i po nich.
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Możesz usunąć Azure App Service i inne powiązane zasoby, które zostały utworzone, gdy nie są już potrzebne. Użyj funkcji **usuwania** na pulpicie nawigacyjnym DevOps Projects.
+Gdy usługa Azure App Service i inne utworzone powiązane zasoby nie będą już potrzebne, możesz je usunąć. Użyj funkcji **Usuń** na pulpicie nawigacyjnym usługi DevOps Projects.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po skonfigurowaniu procesu ciągłej integracji/ciągłego tworzenia potoków kompilacji i wydania zostały utworzone automatycznie. Można modyfikować te potoki kompilacji i wydań, aby zaspokoić potrzeby zespołu. Aby dowiedzieć się więcej na temat potoku ciągłej integracji/ciągłego wdrażania, zobacz:
+Podczas konfigurowania procesu ciągłej integracji/ciągłego wdrażania zostały automatycznie utworzone potoki kompilacji i wydania. Możesz zmodyfikować potoki kompilacji i wydania, aby dopasować je do potrzeb swojego zespołu. Aby dowiedzieć się więcej na temat potoku ciągłej integracji/ciągłego wdrażania, zobacz:
 
 > [!div class="nextstepaction"]
-> [Dostosuj proces CD](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Dostosowywanie procesu ciągłego wdrażania](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
-## <a name="videos"></a>Wideo
+## <a name="videos"></a>Filmy
 
 > [!VIDEO https://www.youtube.com/embed/3etwjubReJs]

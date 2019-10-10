@@ -1,94 +1,94 @@
 ---
-title: Często zadawane pytania — vFXT Avere dla platformy Azure
-description: Często zadawane pytania dotyczące Avere vFXT dla platformy Azure
+title: Często zadawane pytania — avere vFXT for Azure
+description: Często zadawane pytania dotyczące avere vFXT dla platformy Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: v-erkell
-ms.openlocfilehash: 47a4b38d39c52992b51284776ec34cb9491020e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rohogue
+ms.openlocfilehash: f42a9cf5aaa3256865bcf388aa5bd422664c73dd
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595412"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255411"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure — często zadawane pytania
 
-Ten artykuł zawiera odpowiedzi na pytania, które mogą pomóc w podjęciu decyzji, czy vFXT Avere dla platformy Azure jest odpowiedni dla Twoich potrzeb. Ona zapewnia podstawowe informacje o Avere vFXT i wyjaśniono, jak działa z innymi składnikami platformy Azure i produkty z zewnętrznych dostawców. 
+W tym artykule znajdują się odpowiedzi na pytania, które mogą pomóc w określeniu, czy avere vFXT for Azure są odpowiednie dla Twoich potrzeb. Zawiera podstawowe informacje o avere vFXT i wyjaśniono, jak współpracuje z innymi składnikami platformy Azure i produktami spoza dostawców. 
 
 ## <a name="general"></a>Ogólne 
 
 ### <a name="what-is-avere-vfxt-for-azure"></a>Co to jest system Avere vFXT for Azure?
 
-VFXT Avere dla platformy Azure jest systemem plików o wysokiej wydajności, który buforuje dane usługi active w zasoby obliczeniowe platformy Azure na potrzeby wydajnego przetwarzania obciążeń o znaczeniu krytycznym.
+Avere vFXT for Azure to system plików o wysokiej wydajności, który umożliwia buforowanie aktywnych danych na platformie Azure w celu wydajnego przetwarzania krytycznych obciążeń.
 
-### <a name="is-avere-vfxt-a-storage-solution"></a>To Avere vFXT rozwiązanie do magazynowania?
+### <a name="is-avere-vfxt-a-storage-solution"></a>Czy avere vFXT rozwiązanie do magazynowania?
 
-Nie. Avere vFXT to system plików *pamięci podręcznej* które dołącza do środowiska pamięci masowej, takich jak usługi EMC lub NetApp NAS lub kontenera obiektów blob platformy Azure. Avere vFXT ujednolica dane żądania od klientów, a jego buforuje dane, które służy do zwiększenia wydajności na dużą skalę i wraz z upływem czasu. VFXT Avere, sam nie przechowuje danych. Go nie ma informacji o ilości przechowywanych związanych z nim danych.
+Nie. Avere vFXT to *pamięć podręczna* systemu plików, która jest dołączana do środowisk magazynu, takich jak serwer nas EMC lub NetApp lub kontener obiektów blob platformy Azure. Avere vFXT usprawnia żądania danych od klientów i buforuje dane, które służy do zwiększenia wydajności w skali i w miarę upływu czasu. Avere vFXT nie przechowuje danych. Nie zawiera on informacji o ilości przechowywanych danych.
 
-### <a name="is-avere-vfxt-a-tiering-solution"></a>To Avere vFXT warstw rozwiązanie?
+### <a name="is-avere-vfxt-a-tiering-solution"></a>Czy avere vFXT rozwiązanie do obsługi warstw?
 
-Avere vFXT nie automatycznie warstwy danych między warstwami gorąca i chłodna.  
+Avere vFXT nie automatycznie warstwuje danych między gorącą i chłodną warstwą.  
 
-### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>Jak sprawdzić, czy środowisko jest odpowiednia dla Avere vFXT?
+### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>Jak mogę wiedzieć, czy środowisko jest odpowiednie dla avere vFXT?
 
-Najlepszym sposobem zastanów się, to pytanie jest zadać, "Jest podlega buforowaniu, obciążenie?" Oznacza to, że obciążenie ma wysoki współczynnik odczyt zapis Przykładem jest 80/20 lub 70/30 operacji odczytu/zapisu.
+Najlepszym sposobem na zadawanie tego pytania jest "czy obciążenie buforowaniem?". Oznacza to, czy obciążenie ma wysoki współczynnik odczytu i zapisu? Przykładem jest 80/20 lub 70/30 odczyt/zapis.
 
-Należy wziąć pod uwagę Avere vFXT dla platformy Azure, jeśli masz opartych na plikach potoku analitycznego, który jest uruchamiany w wielu maszyn wirtualnych platformy Azure i spełnia co najmniej jeden z następujących warunków:
+Rozważ avere vFXT dla platformy Azure, jeśli masz potok analityczny oparty na plikach, który działa na dużej liczbie maszyn wirtualnych platformy Azure, i spełnia co najmniej jeden z następujących warunków:
 
-* Ogólna działa wolno lub niespójna z powodu długie czasy dostępu (dziesiątki milisekund lub sekund w zależności od wymagań). Ten czas oczekiwania jest nieodpowiednia dla klienta.
+* Ogólna wydajność jest niska lub niespójna z powodu długich czasów dostępu do pliku (dziesiątki milisekund lub sekund, w zależności od wymagań). To opóźnienie jest nieakceptowalne dla klienta.
 
-* Dane potrzebne do przetwarzania znajduje się na końcu koniec środowiska sieci WAN, a następnie trwale przenoszenie danych jest niepraktyczne. Dane mogą być w innym regionie platformy Azure lub w centrum danych klienta.
+* Dane wymagane do przetworzenia są zlokalizowane na dalekiej końcu środowiska sieci WAN i ciągłe przeniesienie danych jest niepraktyczne. Dane mogą znajdować się w innym regionie świadczenia usługi Azure lub w centrum danych klienta.
 
-* Znaczna liczba klientów żądania danych — na przykład w klastrze o wysokiej wydajności obliczeń (HPC). Dużą liczbą jednoczesnych żądań może zwiększyć opóźnienie.
+* Znaczna liczba klientów żądających danych — na przykład w klastrze obliczeniowym o wysokiej wydajności (HPC). Duża liczba równoczesnych żądań może zwiększyć opóźnienia.
 
-* Użytkownik chce przeprowadzić ich bieżącego potoku ", w jakim są" w usłudze Azure virtual machines i wymaga na podstawie POSIX udostępnionego magazynu (lub buforowanie) rozwiązanie w przypadku skalowalności. Za pomocą Avere vFXT dla platformy Azure, nie trzeba Przekształcanie potoku pracy do macierzystych wywołań do usługi Azure Blob storage.
+* Klient chce uruchomić swój bieżący potok "zgodnie z oczekiwaniami" w usłudze Azure Virtual Machines i musi mieć rozwiązanie magazynu udostępnionego (lub buforowanie) oparte na systemie POSIX w celu zapewnienia skalowalności. Za pomocą programu avere vFXT for Azure nie trzeba reprojektować potoku służbowego, aby wykonywać natywne wywołania usługi Azure Blob Storage.
 
-* Aplikacji HPC opiera się na klientach NFSv3. (W niektórych sytuacjach może korzystać klienci SMB 2.1, ale wydajność jest ograniczona).
+* Aplikacja HPC jest oparta na klientach NFSv3. (W niektórych przypadkach może korzystać z klientów SMB 2,1, ale wydajność jest ograniczona).
 
-Poniższy diagram ułatwia odpowiedź na to pytanie. Im bliżej przepływu pracy jest prawym górnym rogu, tym bardziej prawdopodobne jest, że Avere buforowania rozwiązanie jest odpowiednie dla danego środowiska.
+Poniższy diagram upraszcza odpowiedź na to pytanie. Bliżej tego przepływu pracy znajduje się w prawym górnym rogu, tym bardziej prawdopodobnie rozwiązanie buforowania avere jest odpowiednie dla danego środowiska.
 
-![Diagram przedstawiający, że odczycie zadań ładowania z tysięcy klientów są lepsze dopasowane do Avere vFXT](media/avere-vfxt-fit-assessment.png)
+![Diagram przedstawiający duże obciążenia z tysiącami klientów są lepiej dopasowane do avere vFXT](media/avere-vfxt-fit-assessment.png)
 
-### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>W jakich skalowania klientów jest Avere rozwiązania vFXT sensu najbardziej?
+### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>Na czym polega skalowanie klientów w ramach rozwiązania avere vFXT?
 
-Rozwiązanie pamięci podręcznej vFXT Avere został opracowany pod kątem obsługi setek, tysięcy lub dziesiątki tysięcy rdzeni obliczeniowych. Jeśli masz kilka komputerów z systemem pracy światła, Avere vFXT nie jest odpowiednim rozwiązaniem.
+Rozwiązanie pamięci podręcznej avere vFXT jest stworzone z myślą o obsłudze setek, tysięcy lub dziesiątych tysięcy rdzeni obliczeniowych. Jeśli masz kilka maszyn z działającą jasnym działaniem, avere vFXT nie jest odpowiednim rozwiązaniem.
 
-Typowe klientów vFXT Avere uruchamiania wymagających obciążeń, zaczynając od około 1000 rdzeni procesora CPU. Te środowiska mogą być wynosi 50 000 rdzeni lub więcej. Ponieważ Avere vFXT jest skalowalna, można dodać węzły do obsługi tych obciążeń, wraz z ich potrzebami wymagać więcej przepływności lub więcej operacji We/Wy.
+Typowi klienci avere vFXT uruchamiają wysokie obciążenia, zaczynając od około 1 000 rdzeni procesora. Te środowiska mogą mieć maksymalnie 50 000 rdzeni. Ponieważ avere vFXT jest skalowalny, można dodać węzły do obsługi tych obciążeń w miarę ich wzrostu, aby wymagać większej przepływności lub większej liczby operacji we/wy na sekundę.
 
-### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Jak dużo danych można przechowywać w środowisku vFXT Avere
+### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Ile danych może być avere środowiska vFXT?
 
-Avere vFXT jest pamięć podręczna. W szczególności nie to przechowywania danych. Używa kombinacji pamięci RAM i dysków SSD do przechowywania buforowanych danych. Dane są trwale przechowywane w systemie magazynu zaplecza (na przykład system NetApp NAS lub kontenera obiektów blob). Avere vFXT system nie ma informacji o ilości przechowywanych związanych z nim danych. Avere vFXT buforuje tylko podzbiór danych żądaną przez klientów.  
+Avere vFXT jest pamięcią podręczną. Nie jest to jednak przeznaczone do przechowywania danych. Używa kombinacji pamięci RAM i dysków SSD do przechowywania danych w pamięci podręcznej. Dane są trwale przechowywane w systemie magazynu zaplecza (na przykład NetApp system NAS lub kontener obiektów BLOB). System avere vFXT nie zawiera informacji o ilości przechowywanych za nią danych. Avere vFXT tylko buforuje podzbiór danych, do których żąda klient.  
 
 ### <a name="what-regions-are-supported"></a>Jakie regiony są obsługiwane?
 
-VFXT Avere dla platformy Azure jest obsługiwane we wszystkich regionach z wyjątkiem regionów suwerenne (China, Niemcy). Upewnij się, że region, którego chcesz użyć może obsługiwać dużą liczbę rdzeni obliczeniowych oraz wystąpień maszyn wirtualnych, potrzebne do utworzenia klastra vFXT Avere.
+Avere vFXT for Azure są obsługiwane we wszystkich regionach z wyjątkiem suwerennych regionów (Chiny, Niemcy). Upewnij się, że region, który ma być używany, może obsługiwać dużą liczbę rdzeni obliczeniowych i wystąpień maszyn wirtualnych, które są potrzebne do utworzenia klastra avere vFXT.
 
-### <a name="how-do-i-get-help-with-avere-vfxt"></a>Jak uzyskać pomoc dotyczącą Avere vFXT?
+### <a name="how-do-i-get-help-with-avere-vfxt"></a>Jak mogę uzyskać pomoc dotyczącą avere vFXT?
 
-Grupy wsparcia wyspecjalizowane oferuje pomoc dotyczącą Avere vFXT dla platformy Azure. Postępuj zgodnie z instrukcjami w [Uzyskaj pomoc dotyczącą systemu](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) otworzyć bilet pomocy technicznej w witrynie Azure portal. 
+Wyspecjalizowana Grupa wsparcia oferuje pomoc dotyczącą programu avere vFXT for Azure. Postępuj zgodnie z instrukcjami w temacie [Uzyskaj pomoc](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) dotyczącą systemu, aby otworzyć bilet pomocy technicznej z Azure Portal. 
 
-### <a name="is-avere-vfxt-highly-available"></a>Avere vFXT ma wysoką dostępność?
+### <a name="is-avere-vfxt-highly-available"></a>Czy avere vFXT o wysokiej dostępności?
 
-Tak, Avere vFXT działa wyłącznie jako rozwiązania wysokiej dostępności.
+Tak, avere vFXT działa wyłącznie jako rozwiązanie o wysokiej dostępności.
 
-### <a name="does-avere-vfxt-for-azure-also-support-other-cloud-services"></a>VFXT Avere dla platformy Azure również obsługuje inne usługi w chmurze?
+### <a name="does-avere-vfxt-for-azure-also-support-other-cloud-services"></a>Czy program avere vFXT for Azure obsługuje również inne usługi w chmurze?
 
-Tak, klienci mogą używać więcej niż jednego dostawcę chmury z klastrem vFXT Avere. Obsługuje standardowe przedziały AWS S3, standardowa zasobników Google Cloud Services i kontenerów obiektów blob platformy Azure. 
+Tak, klienci mogą używać więcej niż jednego dostawcy chmury z klastrem avere vFXT. Obsługuje ona zasobniki standardowe AWS S3, zasobniki w warstwie Standardowa Google Cloud Services i kontenery obiektów blob platformy Azure. 
 
 > [!NOTE] 
-> Opłata oprogramowania dotyczą vFXT Avere w usługach AWS i Google Cloud, ale nie z platformą Azure.
+> Opłata za oprogramowanie ma zastosowanie do korzystania z avere vFXT w AWS lub Google Cloud, ale nie na platformie Azure.
 
-## <a name="technical-compute"></a>Technical Preview: Wystąpienia obliczeniowe
+## <a name="technical-compute"></a>Techniczne: obliczenia
 
-### <a name="can-you-describe-what-an-avere-vfxt-environment-looks-like"></a>Może wystarczy opisać jakiego środowiska vFXT Avere "wygląda"?
+### <a name="can-you-describe-what-an-avere-vfxt-environment-looks-like"></a>Czy można opisać, jak wygląda środowisko avere vFXT "?
 
-Avere vFXT to urządzenie klastrowanego z wielu maszyn wirtualnych platformy Azure. Biblioteka języka Python obsługuje tworzenie klastra, usuwanie i modyfikowanie. Odczyt [co to jest vFXT Avere dla platformy Azure?](avere-vfxt-overview.md) Aby dowiedzieć się więcej. 
+Avere vFXT to urządzenie klastrowane wykonane z wielu maszyn wirtualnych platformy Azure. Biblioteka języka Python obsługuje tworzenie, usuwanie i modyfikowanie klastra. Przeczytaj artykuł [co to jest avere vFXT for Azure?](avere-vfxt-overview.md) aby dowiedzieć się więcej. 
 
-### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Jakiego rodzaju maszyn wirtualnych platformy Azure czy Avere vFXT jest uruchomiony?  
+### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Na jakich typach maszyn wirtualnych platformy Azure jest avere vFXT?  
 
-VFXT Avere klastra Azure używa maszyn wirtualnych Microsoft Azure E32s_v3. 
+Avere vFXT dla klastra platformy Azure Microsoft Azure używa E32s_v3 maszyn wirtualnych. 
 
 <!-- ### Can I mix and match virtual machine types for my cluster?
 
@@ -100,195 +100,195 @@ Yes, there is a migration path to move from one VM type to the other. [Open a su
 
 -->
 
-### <a name="does-the-avere-vfxt-environment-scale"></a>Środowisko vFXT Avere skalowany?
+### <a name="does-the-avere-vfxt-environment-scale"></a>Czy skalowanie środowiska avere vFXT?
 
-Klaster vFXT Avere może być tak małej, jak trzy węzły maszyny wirtualnej lub wynosi 24 węzłów. Aby uzyskać pomoc dotyczącą planowania, jeśli uważasz, że potrzebujesz więcej niż dziewięciu węzłów klastra, skontaktuj się z działem pomocy technicznej platformy Azure. Większą liczbę węzłów wymaga większej architekturze wdrożenia.
+Klaster avere vFXT może być tak mały jak trzy węzły maszyny wirtualnej lub maksymalnie 24 węzły. Skontaktuj się z pomocą techniczną platformy Azure, aby uzyskać pomoc dotyczącą planowania, jeśli uważasz, że potrzebujesz klastra z więcej niż dziewięcioma węzłami. Większa liczba węzłów wymaga większej architektury wdrożenia.
 
-### <a name="does-the-avere-vfxt-environment-autoscale"></a>Czy w środowisku vFXT Avere "automatycznego skalowania"?
+### <a name="does-the-avere-vfxt-environment-autoscale"></a>Czy środowisko avere vFXT "Automatyczne skalowanie"?
 
-Nie. Skalowanie rozmiaru klastra w górę i w dół, ale dodawania lub usuwania węzłów klastra jest to krok wykonywany ręcznie.
+Nie. Rozmiar klastra można skalować w górę i w dół, ale Dodawanie lub usuwanie węzłów klastra jest krokiem ręcznym.
 
-### <a name="can-i-run-the-avere-vfxt-cluster-as-a-virtual-machine-scale-set"></a>Można uruchomić klaster vFXT Avere jako zestaw skalowania maszyn wirtualnych?
+### <a name="can-i-run-the-avere-vfxt-cluster-as-a-virtual-machine-scale-set"></a>Czy można uruchomić klaster avere vFXT jako zestaw skalowania maszyn wirtualnych?
 
-Avere vFXT nie obsługuje wdrażania zestawu skalowania maszyn wirtualnych. Kilka dostępność wbudowanej obsługi mechanizmów są przeznaczone tylko dla niepodzielnych maszyn wirtualnych z uczestnictwa w klastrze.  
+Avere vFXT nie obsługuje wdrożenia zestawu skalowania maszyn wirtualnych. Niektóre wbudowane mechanizmy obsługi dostępności są przeznaczone tylko dla niepodzielnych maszyn wirtualnych uczestniczących w klastrze.  
 
-### <a name="can-i-run-the-avere-vfxt-cluster-on-low-priority-vms"></a>Klaster vFXT Avere można uruchomić na maszynach wirtualnych o niskim priorytecie?
+### <a name="can-i-run-the-avere-vfxt-cluster-on-low-priority-vms"></a>Czy można uruchomić klaster avere vFXT na maszynach wirtualnych o niskim priorytecie?
 
-Nie, system wymaga podstawowej stabilne zestawy maszyn wirtualnych.
+Nie, system wymaga podstawowego stabilnego zestawu maszyn wirtualnych.
 
-### <a name="can-i-run-the-avere-vfxt-cluster-in-containers"></a>Można uruchomić klaster vFXT Avere w kontenerach?
+### <a name="can-i-run-the-avere-vfxt-cluster-in-containers"></a>Czy można uruchomić klaster avere vFXT w kontenerach?
 
-Nie, Avere vFXT musi zostać wdrożony jako aplikacja niezależne.
+Nie, avere vFXT musi być wdrożony jako aplikacja niezależna.
 
-### <a name="do-the-avere-vfxt-vms-count-against-my-compute-quota"></a>Czy vFXT Avere liczby maszyn wirtualnych przed Moje przydział usługi compute?
+### <a name="do-the-avere-vfxt-vms-count-against-my-compute-quota"></a>Czy liczba maszyn wirtualnych avere vFXT jest liczona względem limitu przydziału obliczeń?
 
-Tak. Upewnij się, że masz wystarczającego limitu przydziału w regionie w celu obsługi klastra.  
+Tak. Upewnij się, że masz wystarczający przydział w regionie, aby obsługiwać klaster.  
 
-### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>Można uruchomić Avere vFXT maszyn klastra w różnych strefach dostępności?
+### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>Czy można uruchamiać maszyny klastrowe avere vFXT w różnych strefach dostępności?
 
-Nie. Model o wysokiej dostępności w vFXT Avere aktualnie nie obsługuje poszczególnych Avere vFXT elementów członkowskich klastra znajduje się w różnych strefach dostępności.
+Nie. Model wysokiej dostępności w programie avere vFXT obecnie nie obsługuje pojedynczych członków klastra avere vFXT znajdujących się w różnych strefach dostępności.
 
-### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Czy można sklonować maszyny wirtualne vFXT Avere?
+### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Czy można klonować maszyny wirtualne avere vFXT?
 
-Nie, musisz podać obsługiwanych skrypt w języku Python do dodawania lub usuwania węzłów w klastrze vFXT Avere. Aby uzyskać więcej informacji, przeczytaj [Zarządzanie klastrem vFXT Avere](avere-vfxt-manage-cluster.md).  
+Nie, musisz użyć obsługiwanego skryptu języka Python, aby dodać lub usunąć węzły w klastrze avere vFXT. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Zarządzanie klastrem avere vFXT](avere-vfxt-manage-cluster.md).  
 
-### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Czy istnieje "Maszyny Wirtualnej" w wersji oprogramowania, które można uruchomić w własnego środowiska lokalnego?
+### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Czy istnieje wersja "VM" oprogramowania, którą można uruchomić w środowisku lokalnym?
 
-Nie, system jest oferowany jako klastrowane urządzenia i testowane na typach określonej maszyny wirtualnej. To ograniczenie pomaga klientom, o których należy unikać tworzenia systemu, który nie spełnia wymagań o wysokiej wydajności typowego przepływu pracy vFXT Avere. 
+Nie, system jest oferowany jako urządzenie klastrowane i testowany na określonych typach maszyn wirtualnych. To ograniczenie pomaga klientom uniknąć tworzenia systemu, który nie obsługuje wymagań o wysokiej wydajności typowego przepływu pracy avere vFXT. 
 
-## <a name="technical-disks"></a>Technical Preview: Dyski
+## <a name="technical-disks"></a>Techniczne: dyski
 
-### <a name="what-types-of-disks-are-supported-for-the-azure-vms"></a>Jakich typów dysków są obsługiwane dla maszyn wirtualnych platformy Azure?
+### <a name="what-types-of-disks-are-supported-for-the-azure-vms"></a>Jakie typy dysków są obsługiwane przez maszyny wirtualne platformy Azure?
 
-VFXT Avere dla platformy Azure można używać konfiguracji dysków SSD premium 1 TB lub 4 TB. Konfiguracja dysków SSD premium może być wdrożony jako wielu dysków zarządzanych.
+Avere vFXT for Azure może korzystać z 1 TB lub 4 TB konfiguracji dysków SSD w warstwie Premium. Konfigurację dysku SSD w warstwie Premium można wdrożyć jako wiele dysków zarządzanych.
 
-### <a name="does-the-cluster-support-unmanaged-disks"></a>Klaster obsługuje dyski niezarządzane?
+### <a name="does-the-cluster-support-unmanaged-disks"></a>Czy klaster obsługuje dyski niezarządzane?
 
 Nie, klaster wymaga dysków zarządzanych.
 
-### <a name="does-the-system-support-local-attached-ssds"></a>Czy system obsługuje lokalny SSD (dołączone)?
+### <a name="does-the-system-support-local-attached-ssds"></a>Czy system obsługuje lokalne (dołączone) dysków SSD?
 
-VFXT Avere dla platformy Azure nie obsługuje obecnie lokalne dyski SSD. Dyskach używanych na potrzeby Avere vFXT musi być w stanie zamknięcia i ponownego uruchomienia, ale można zakończyć tylko lokalne dołączone dyski SSD w tej konfiguracji.
+Program avere vFXT for Azure nie obsługuje obecnie lokalnego dysków SSD. Dyski używane do avere vFXT muszą być w stanie zamknąć i uruchomić ponownie, ale lokalna dołączona dysków SSD w tej konfiguracji może zostać przerwana.
 
-### <a name="does-the-system-support-ultra-ssds"></a>Czy system obsługuje ultra SSD?
+### <a name="does-the-system-support-ultra-ssds"></a>Czy system obsługuje Ultra dysków SSD?
 
-Nie, system obsługuje tylko konfiguracje dysków SSD — wersja premium.
+Nie, system obsługuje tylko konfiguracje SSD w warstwie Premium.
 
-### <a name="can-i-detach-my-premium-ssds-and-reattach-them-later-to-preserve-cache-contents-between-use"></a>Można odłączyć Moje dyski SSD w warstwie premium i ponownie podłącz je później, aby zachować zawartość pamięci podręcznej między użycia?
+### <a name="can-i-detach-my-premium-ssds-and-reattach-them-later-to-preserve-cache-contents-between-use"></a>Czy mogę odłączyć moją dysków SSD Premium i ponownie dołączyć je później, aby zachować zawartość pamięci podręcznej między użyciem?
 
-Odłączenie i ponowne dołączenie dysków SSD jest obsługiwany. Zawartość metadanych lub pliku źródłowego, być może zmieniono między zastosowań, które mogą spowodować problemy z integralnością danych.
+Odłączanie i ponowne dołączanie dysków SSD nie jest obsługiwane. Metadane lub zawartość pliku w źródle mogły ulec zmianie między użyciem, co może spowodować problemy z integralnością danych.
 
-### <a name="does-the-system-encrypt-the-cache"></a>Czy system szyfruje pamięci podręcznej?
+### <a name="does-the-system-encrypt-the-cache"></a>Czy system szyfruje pamięć podręczną?
 
-Dane są rozkładane na dyskach, ale nie są szyfrowane. Jednak same dyski mogą być szyfrowane. Aby uzyskać więcej informacji, zobacz [bezpiecznego i użyj zasad na maszynach wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption).
+Dane są rozłożone na dyski, ale nie są szyfrowane. Dyski mogą jednak być szyfrowane. Aby uzyskać więcej informacji, zobacz [bezpieczne i Używanie zasad na maszynach wirtualnych na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption).
 
-## <a name="technical-networking"></a>Technical Preview: Networking
+## <a name="technical-networking"></a>Techniczne: sieć
 
-### <a name="what-network-is-recommended"></a>Zaleca się, jakie sieci?
+### <a name="what-network-is-recommended"></a>Jaka sieć jest zalecana?
 
-Jeśli używasz magazynu lokalnego przy użyciu Avere vFXT, powinny mieć 1 GB/s lub lepszą połączenia sieciowego. Jeśli masz niewielką ilość danych i chcesz skopiować dane do chmury przed uruchomieniem zadania, połączenie sieci VPN może być wystarczająca. 
+Jeśli używasz lokalnego magazynu z programem avere vFXT, musisz mieć co najmniej 1 GB/s lub lepsze połączenie sieciowe. Jeśli masz niewielką ilość danych i chcesz skopiować dane do chmury przed uruchomieniem zadań, łączność sieci VPN może być wystarczająca. 
 
 > [!TIP] 
-> Jest wolniejsze połączenia sieciowego, tym wolniej początkowej odczyty zimnych. Odczyty powolne zwiększyć opóźnienie procesu roboczego. 
+> Wolniejsze łącze sieciowe to wolniejsze, początkowe odczyty zimne. Wolne odczyty zwiększają opóźnienia potoku pracy. 
 
-### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Można uruchomić Avere vFXT w innej sieci wirtualnej niż Mój klaster obliczeniowy?
+### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Czy można uruchomić avere vFXT w innej sieci wirtualnej niż mój klaster obliczeniowy?
 
-Tak, możesz utworzyć systemu vFXT Avere w innej sieci wirtualnej. Odczyt [Planowanie systemu vFXT Avere](avere-vfxt-deploy-plan.md) Aby uzyskać szczegółowe informacje.
+Tak, możesz utworzyć system avere vFXT w innej sieci wirtualnej. Aby uzyskać szczegółowe informacje, przeczytaj artykuł [Planowanie systemu avere vFXT](avere-vfxt-deploy-plan.md) .
 
-### <a name="does-avere-vfxt-require-its-own-subnet"></a>Avere vFXT wymaga własnej podsieci?
+### <a name="does-avere-vfxt-require-its-own-subnet"></a>Czy avere vFXT wymaga własnej podsieci?
 
-Tak. Avere vFXT działa wyłącznie jako klaster o wysokiej dostępności (HA) i wymaga wielu adresów IP do działania. Jeśli klaster znajduje się we własnej podsieci, można uniknąć ryzyka konflikty adresów IP, co może powodować problemy instalację i normalnych operacji. W podsieci klastra mogą być zawarte w istniejącej sieci wirtualnej, tak długo, jak brak adresu IP adresów nakładają się na siebie.
+Tak. Avere vFXT działa wyłącznie jako klaster wysokiej dostępności (HA) i wymaga wielu adresów IP do działania. Jeśli klaster znajduje się w własnej podsieci, unika się ryzyka konfliktów adresów IP, co może spowodować problemy z instalacją i normalną operacją. Podsieć klastra może znajdować się w istniejącej sieci wirtualnej, o ile żadne adresy IP nie nakładają się na siebie.
 
-### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Czy można uruchamiać Avere vFXT InfiniBand?
+### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Czy można uruchomić avere vFXT na InfiniBand?
 
-Nie, Avere vFXT używa Ethernet/adresu IP tylko.
+Nie, avere vFXT używa tylko sieci Ethernet/IP.
 
-### <a name="how-do-i-access-my-on-premises-nas-environment-from-avere-vfxt"></a>Jak dostęp do mojego lokalnego środowiska NAS z Avere vFXT?
+### <a name="how-do-i-access-my-on-premises-nas-environment-from-avere-vfxt"></a>Jak mogę dostęp do lokalnego środowiska NAS z avere vFXT?
 
-Środowisko vFXT Avere jest jak każdej innej maszyny Wirtualnej platformy Azure, w tym, że wymaga on trasowane dostęp za pośrednictwem bramy sieci lub sieci VPN do klientów centrum danych (i z powrotem). Należy rozważyć użycie połączenia usługi Azure ExpressRoute, jeśli jest dostępna w danym środowisku.
+Środowisko avere vFXT jest podobne do wszystkich innych maszyn wirtualnych platformy Azure, które wymagają dostępu kierowanego za pośrednictwem bramy sieci lub sieci VPN do centrum danych klienta (i z powrotem). Rozważ użycie łączności z usługą Azure ExpressRoute, jeśli jest ona dostępna w Twoim środowisku.
 
-### <a name="what-are-the-bandwidth-requirements-for-avere-vfxt"></a>Jakie są wymagania dotyczące przepustowości dla Avere vFXT?
+### <a name="what-are-the-bandwidth-requirements-for-avere-vfxt"></a>Jakie są wymagania dotyczące przepustowości dla avere vFXT?
 
-Ogólną przepustowość wymagana jest zależna od dwa czynniki: 
+Ogólne wymagania dotyczące przepustowości są zależne od dwóch czynników: 
 
-* Ilość żądana ze źródła danych 
-* System klienta tolerancja opóźnienia podczas początkowego ładowania danych  
+* Ilość danych żądanych ze źródła 
+* Tolerancja systemu klienta na czas oczekiwania podczas początkowego ładowania danych  
 
-Wrażliwy na opóźnienia w środowiskach należy używać rozwiązania fiber z szybkość łącza minimalna 1 GB/s. Usługa ExpressRoute, jeśli jest ona dostępna.  
+W przypadku środowisk z uwzględnieniem opóźnień należy użyć rozwiązania Fiber z minimalną szybkością łącza wynoszącą 1 GB/s. Użyj ExpressRoute, jeśli jest dostępny.  
 
-### <a name="can-i-run-avere-vfxt-with-public-ip-addresses"></a>Można uruchomić Avere vFXT z publicznych adresów IP?
+### <a name="can-i-run-avere-vfxt-with-public-ip-addresses"></a>Czy można uruchamiać avere vFXT z publicznymi adresami IP?
 
-Nie, Avere vFXT ma działać w środowisku sieciowym zabezpieczony za pomocą najlepszych rozwiązań.  
+Nie, avere vFXT jest przeznaczony do działania w środowisku sieciowym zabezpieczonym przy użyciu najlepszych rozwiązań.  
 
-### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Czy można ograniczyć dostęp do Internetu, z sieci wirtualnej dla mojego klastra? 
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Czy mogę ograniczyć dostęp do Internetu z sieci wirtualnej mojego klastra? 
 
-Ogólnie rzecz biorąc można skonfigurować dodatkowe zabezpieczenia w Twojej sieci wirtualnej, zgodnie z potrzebami, ale pewne ograniczenia może zakłócać działanie klastra.
+Ogólnie rzecz biorąc, w razie potrzeby można skonfigurować dodatkowe zabezpieczenia w sieci wirtualnej, ale niektóre ograniczenia mogą zakłócać działanie klastra.
 
-Na przykład ograniczając ruch wychodzący do Internetu z sieci wirtualnej powoduje problemy, dla klastra, chyba że dodasz regułę, która wyraźnie zezwala na dostęp do AzureCloud. Ta sytuacja jest opisana w [uzupełniające dokumentacji w serwisie GitHub](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
+Na przykład ograniczenie wychodzącego dostępu do Internetu z sieci wirtualnej powoduje problemy z klastrem, chyba że zostanie dodana również reguła, która jawnie zezwala na dostęp do AzureCloud. Ta sytuacja została opisana w [dodatkowej dokumentacji w witrynie GitHub](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
 
-Aby uzyskać pomoc dotyczącą zabezpieczeń dostosowane, skontaktuj się z działem pomocy technicznej zgodnie z opisem w [Uzyskaj pomoc dotyczącą systemu](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt).
+Aby uzyskać pomoc dotyczącą niestandardowych zabezpieczeń, skontaktuj się z pomocą techniczną zgodnie z opisem w artykule [Uzyskaj pomoc](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)dotyczącą systemu.
 
-## <a name="technical-back-end-storage-core-filers"></a>Technical Preview: Magazynu zaplecza (filtrach core)
+## <a name="technical-back-end-storage-core-filers"></a>Techniczne: Magazyn zaplecza (podstawowe pliki)
 
-### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Ile filtrach core obsługuje się w jednym środowisku vFXT Avere?
+### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Ilu plików głównych obsługuje pojedynczy avere środowiska vFXT?
 
-Klaster vFXT Avere obsługuje do 20 filtrach core. 
+Klaster avere vFXT obsługuje maksymalnie 20 plików podstawowych. 
 
-### <a name="how-does-the-avere-vfxt-environment-store-data"></a>Jak w środowisku vFXT Avere są przechowywane dane?
+### <a name="how-does-the-avere-vfxt-environment-store-data"></a>Jak środowisko avere vFXT przechowuje dane?
 
-Avere vFXT nie jest magazynem. Jest pamięci podręcznej, która odczytuje i zapisuje dane z wielu celów magazynu o nazwie podstawowej filtrach. Dane przechowywane na dyski SSD w warstwie premium w Avere vFXT jest przejściowy i ostatecznie jest opróżniany do magazynu filtr core zaplecza.
+Avere vFXT nie jest magazynem. Jest to pamięć podręczna, która odczytuje i zapisuje dane z wielu miejsc docelowych o nazwie plików podstawowych. Dane przechowywane na dyskach SSD w warstwie Premium w avere vFXT są przejściowe i ostatecznie opróżniane do magazynu podstawowej bazy danych zaplecza.
 
-### <a name="which-core-filers-does-avere-vfxt-support"></a>Które filtrach core obsługuje Avere vFXT?
+### <a name="which-core-filers-does-avere-vfxt-support"></a>Które podstawowe pliki avere vFXT obsługują?
 
-Ogólnie rzecz biorąc vFXT Avere dla platformy Azure obsługuje następujące systemy jak wygląda podstawowe: 
+Ogólnie rzecz biorąc, avere vFXT for Azure obsługuje następujące systemy jako pliki podstawowe: 
 
-* Firmy Dell EMC Isilon (OneFS 7.1, 7.2, 8.0 i 8.1) 
-* NetApp ONTAP (klastra trybu 9.4, 9.3, do 9.2, 9.1P1, 8.0 8.3) i (tryb 7 7.* 8.0 8.3) 
+* Dell EMC Isilon (OneFS 7,1, 7,2, 8,0 i 8,1) 
+* NetApp ONTAP (tryb klastrowany 9,4, 9,3, 9,2, 9.1 P1, 8.0-8.3) i (7-Mode 7. *, 8.0-8.3) 
 
   > [!NOTE] 
-  > Usługa Azure Files NetApp aktualnie nie jest obsługiwana. 
+  > Azure NetApp Files obecnie nie jest obsługiwana. 
 
-* Kontenery obiektów blob platformy Azure (tylko magazyn lokalnie nadmiarowy) 
+* Kontenery obiektów blob platformy Azure (tylko Magazyn lokalnie nadmiarowy) 
 * Zasobniki AWS S3 
-* Usługa Google Cloud przedziałów
+* Przedziały chmury Google
 
-### <a name="why-doesnt-avere-vfxt-support-all-nfs-filers"></a>Dlaczego Avere vFXT nie obsługuje wszystkich filtrach systemu plików NFS
+### <a name="why-doesnt-avere-vfxt-support-all-nfs-filers"></a>Dlaczego avere vFXT nie obsługuje wszystkich plików NFS?
 
-Mimo, że wszystkie platformy systemu plików NFS spełniać te same standardy IETF, w praktyce każda implementacja ma swój własny Osobliwości. Te informacje mają wpływ na sposób interakcji Avere vFXT w systemie magazynu. Obsługiwane systemy są najczęściej używanych platform w witrynie marketplace.
+Mimo że wszystkie platformy NFS spełniają te same standardy IETF, w praktyce Każda implementacja ma własne osobliwości. Te szczegóły wpływają na to, jak avere vFXT współdziała z systemem magazynu. Obsługiwane systemy to najczęściej używane platformy w portalu Marketplace.
 
-### <a name="does-avere-vfxt-support-private-object-storage-such-as-swiftstack"></a>Avere vFXT obsługuje obiektu prywatnego magazynu (na przykład SwiftStack)?
+### <a name="does-avere-vfxt-support-private-object-storage-such-as-swiftstack"></a>Czy avere vFXT obsługuje magazyn obiektów prywatnych (na przykład SwiftStack)?
 
-Avere vFXT nie obsługuje obiektu prywatnego magazynu.
+Avere vFXT nie obsługuje prywatnego magazynu obiektów.
 
-### <a name="how-can-i-get-a-specific-storage-product-under-support"></a>Jak uzyskać produkt określonego magazynu w ramach pomocy technicznej?
+### <a name="how-can-i-get-a-specific-storage-product-under-support"></a>Jak można uzyskać określony produkt magazynujący w obszarze Pomoc techniczna?
 
-Obsługa opiera się na ilości żądanie, w tym polu. W przypadku wystarczającej liczby żądań na podstawie przychód pozwalające obsługiwać rozwiązanie NAS teraz przyjrzymy się go. Wysyłanie żądań za pośrednictwem pomocy technicznej platformy Azure.
+Pomoc techniczna jest zależna od ilości popytu w polu. Jeśli masz wystarczającą liczbę żądań opartych na przychodach do obsługi rozwiązania NAS, rozważmy ją. Wysyłaj żądania przez pomoc techniczną platformy Azure.
 
-### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>Jako filtr core można używać usługi Azure Blob storage?
+### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>Czy mogę użyć magazynu obiektów blob platformy Azure jako podstawowego pliku?
 
-Tak, vFXT Avere dla platformy Azure można użyć bloku kontenera obiektów blob jako filtr core chmury.  
+Tak, avere vFXT for Azure może używać kontenera blokowych obiektów BLOB jako podstawowego pliku w chmurze.  
 
-### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>Jakie są wymagania dotyczące konta magazynu dla filtr podstawowych obiektów blob?
+### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>Jakie są wymagania dotyczące konta magazynu dla podstawowego pliku obiektu BLOB?
 
-Twoje konto magazynu musi być ogólnego przeznaczenia w wersji 2 (GPv2) konta i skonfigurowana dla tylko magazyn lokalnie nadmiarowy. Magazyn geograficznie nadmiarowy i Magazyn strefowo nadmiarowy nie są obsługiwane.
+Konto magazynu musi być kontem ogólnego przeznaczenia w wersji 2 (GPv2) i być skonfigurowane wyłącznie do lokalnego nadmiarowego magazynu. Magazyn Geograficznie nadmiarowy i magazyn strefowo nadmiarowy nie są obsługiwane.
 
-### <a name="can-i-use-archive-blob-storage"></a>Można użyć usługa archive blob storage?
+### <a name="can-i-use-archive-blob-storage"></a>Czy można używać archiwum BLOB Storage?
 
-Nie. Umowy poziomu usług (SLA) w przypadku usługi archive storage nie jest zgodny z katalogu w czasie rzeczywistym i potrzeby dostępu do pliku systemu vFXT Avere. 
+Nie. Umowa dotycząca poziomu usług (SLA) dla magazynu archiwum nie jest zgodna z wymaganiami dotyczącymi dostępu do katalogów i plików w czasie rzeczywistym w systemie avere vFXT. 
 
-### <a name="can-i-use-cool-blob-storage"></a>Czy można używać chłodnego magazynu obiektów blob?
+### <a name="can-i-use-cool-blob-storage"></a>Czy można używać chłodnego magazynu obiektów BLOB?
 
-Możesz korzystać z warstwy chłodna, ale należy pamiętać, że szybkość przeprowadzania operacji będzie znacznie wyższa. 
+Można użyć warstwy chłodna, ale należy zauważyć, że częstotliwość operacji będzie znacznie wyższa. 
 
-### <a name="how-do-i-encrypt-the-blob-container"></a>Jak zaszyfrować kontenera obiektów blob?
+### <a name="how-do-i-encrypt-the-blob-container"></a>Jak mogę zaszyfrować kontenera obiektów BLOB?
 
-Możesz skonfigurować szyfrowanie obiektów blob na platformie Azure (preferowany) lub na poziomie Avere vFXT core filtr.  
+Szyfrowanie obiektów BLOB można skonfigurować na platformie Azure (preferowany) lub na poziomie podstawowego pliku avere vFXT.  
 
-### <a name="can-i-use-my-own-encryption-key-for-a-blob-core-filer"></a>Do filtr podstawowych obiektów blob można używać własnego klucza szyfrowania?
+### <a name="can-i-use-my-own-encryption-key-for-a-blob-core-filer"></a>Czy mogę użyć własnego klucza szyfrowania dla pliku obiektu BLOB Core?
 
-Domyślnie dane są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft dla usługi Azure Blob, tabel i kolejek magazynu, a także usługi Azure Files. Możesz użyć własnego klucza szyfrowania dla magazynu obiektów Blob i plików platformy Azure. Jeśli zdecydujesz się używać Avere vFXT szyfrowania, należy użyć klucz generowany Avere i zapisz go lokalnie. 
+Domyślnie dane są szyfrowane za pomocą kluczy zarządzanych przez firmę Microsoft dla obiektów blob, tabel i kolejek platformy Azure, a także Azure Files. Możesz przenieść własny klucz do szyfrowania dla usługi BLOB Storage i Azure Files. Jeśli zdecydujesz się używać szyfrowania avere vFXT, musisz użyć klucza wygenerowanego przez avere i zapisać go lokalnie. 
 
 ## <a name="purchasing"></a>Zakupy
 
-### <a name="how-do-i-get-avere-vfxt-for-azure-licensing"></a>Jak uzyskać Avere vFXT licencjonowania platformy Azure?
+### <a name="how-do-i-get-avere-vfxt-for-azure-licensing"></a>Jak mogę pobrać avere vFXT dla licencjonowania platformy Azure?
 
-Pobieranie vFXT Avere licencja na usługę Azure jest łatwe w portalu Azure Marketplace. Załóż konto platformy Azure, a następnie postępuj zgodnie z instrukcjami wyświetlanymi w [wdrożenie klastra vFXT Avere](avere-vfxt-deploy.md) do utworzenia klastra vFXT Avere. 
+Uzyskanie licencji na usługę avere vFXT for Azure jest łatwe w portalu Azure Marketplace. Utwórz konto platformy Azure, a następnie postępuj zgodnie z instrukcjami w temacie [wdrażanie klastra avere vFXT](avere-vfxt-deploy.md) , aby utworzyć klaster avere vFXT. 
 
-### <a name="how-much-does-avere-vfxt-cost"></a>Jaki jest koszt vFXT Avere?
+### <a name="how-much-does-avere-vfxt-cost"></a>Ile kosztuje avere vFXT?
 
-Na platformie Azure ma bez dodatkowych opłat licencyjnych do korzystania z klastrów vFXT Avere. Klienci są zobowiązani do przechowywania i inne opłaty za użycie platformy Azure.
+Na platformie Azure nie ma dodatkowej opłaty licencyjnej za używanie klastrów avere vFXT. Klienci są odpowiedzialni za przechowywanie i inne opłaty za użycie platformy Azure.
 
-### <a name="can-avere-vfxt-vms-be-run-as-low-priority"></a>Można uruchomić maszyny wirtualne vFXT Avere jako — niski priorytet?
+### <a name="can-avere-vfxt-vms-be-run-as-low-priority"></a>Czy maszyny wirtualne vFXT avere można uruchamiać jako niski priorytet?
 
-Nie, "zawsze włączona" wymagają Avere vFXT klastrów usługi. Klastry można wyłączyć, gdy nie jest potrzebny. 
+Nie, klastry avere vFXT wymagają usługi "Always On". Klastry mogą być wyłączone, gdy nie jest to możliwe. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć pracę z Avere vFXT dla platformy Azure, przeczytaj następujące artykuły, aby dowiedzieć się, jak planować i wdrażać własny system:
+Aby rozpocząć pracę z programem avere vFXT for Azure, przeczytaj następujące artykuły, aby dowiedzieć się, jak planować i wdrażać własny system:
 
-* [Planowanie systemu vFXT Avere](avere-vfxt-deploy-plan.md)
+* [Planowanie systemu Avere vFXT](avere-vfxt-deploy-plan.md)
 * [Omówienie wdrażania](avere-vfxt-deploy-overview.md)
-* [Przygotowywanie do utworzenia klastra vFXT Avere](avere-vfxt-prereqs.md)
+* [Przygotowywanie do utworzenia klastra avere vFXT](avere-vfxt-prereqs.md)
 * [Wdrażanie klastra Avere vFXT](avere-vfxt-deploy.md)
 
-Aby dowiedzieć się więcej o możliwościach i zastosowań Avere vFXT, odwiedź stronę [vFXT Avere dla platformy Azure](https://azure.microsoft.com/services/storage/avere-vfxt/).
+Aby dowiedzieć się więcej o możliwościach i przypadkach użycia programu avere vFXT, odwiedź stronę [avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/).

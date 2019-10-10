@@ -1,21 +1,21 @@
 ---
-title: Przykład — Zezwalanie na niestandardowy obraz maszyny wirtualnej z grupy zasobów
-description: Ta przykładowa definicja zasad wymaga, aby obrazy niestandardowe były pobierane z zatwierdzonej grupy zasobów.
+title: Przykład — Zezwalaj na niestandardowy obraz maszyny wirtualnej z grupy zasobów
+description: Te przykładowe definicje zasad wymagają, aby niestandardowe obrazy pochodziły z zatwierdzonej grupy zasobów.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: c109f870736274f82bf4e165f890d49237c22cbc
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: eba5a576212317bd2cb92856bc1065e9e5a89c8c
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977818"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255834"
 ---
-# <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>Przykład — Zezwalanie na niestandardowy obraz maszyny wirtualnej z grupy zasobów
+# <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>Przykład — zezwalanie na korzystanie z niestandardowego obrazu maszyny wirtualnej pochodzącego z grupy zasobów
 
-Ta przykładowa zasada wymaga, aby obrazy niestandardowe były pobierane z zatwierdzonej grupy zasobów. Należy określić nazwę zatwierdzonej grupy zasobów.
+Te przykładowe zasady wymagają, aby niestandardowe obrazy pochodziły z zatwierdzonej grupy zasobów. Należy określić nazwę zatwierdzonej grupy zasobów.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Ta przykładowa zasada wymaga, aby obrazy niestandardowe były pobierane z zatwi
 
 [!code-json[main](../../../../policy-templates/samples/compute/custom-image-from-rg/azurepolicy.json "Allow custom VM image from a Resource Group")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -40,7 +40,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -res
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -58,7 +58,7 @@ az policy definition create --name 'custom-image-from-rg' --display-name 'Allow 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "custom-image-from-rg"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -68,4 +68,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

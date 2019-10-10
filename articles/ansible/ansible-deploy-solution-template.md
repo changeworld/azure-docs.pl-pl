@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki Start — wdrażanie szablonu rozwiązania Ansible na platformie Azure CentOS | Dokumentacja firmy Microsoft
-description: W tym przewodniku Szybki Start Dowiedz się, jak wdrożyć szablon rozwiązania Ansible na maszynie wirtualnej CentOS hostowanych na platformie Azure, wraz z narzędzia skonfigurowane do pracy z platformą Azure.
+title: Szybki Start — Wdrażanie szablonu rozwiązania rozwiązania ansible dla platformy Azure do usługi CentOS
+description: W tym przewodniku szybki start dowiesz się, jak wdrożyć szablon rozwiązania rozwiązania ansible na maszynie wirtualnej CentOS hostowanej na platformie Azure wraz z narzędziami skonfigurowanymi do pracy z platformą Azure.
 keywords: ansible, azure, devops, szablon rozwiązania, maszyna wirtualna, tożsamości zarządzane dla zasobów platformy azure, centos, red hat
 ms.topic: quickstart
 ms.service: ansible
@@ -8,14 +8,14 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 58f28d5cf7d31a3fbddc8e1ca18be4dbcf617f61
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ababe9eb1f680378e882970df2d0b008287a7c4
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231004"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241712"
 ---
-# <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Szybki start: Wdrażanie szablonu rozwiązania Ansible platformy Azure w systemie CentOS
+# <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Szybki Start: Wdrażanie szablonu rozwiązania rozwiązania ansible dla platformy Azure w usłudze CentOS
 
 Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożliwić skonfigurowanie wystąpienia rozwiązania Ansible na maszynie wirtualnej z systemem CentOS wraz z rozwiązaniem Ansible oraz zestawem narzędzi skonfigurowanych pod kątem pracy na platformie Azure. Narzędzia te zawierają następujące składniki:
 
@@ -27,13 +27,13 @@ Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożl
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 
-## <a name="deploy-the-ansible-solution-template"></a>Wdrażanie szablonu rozwiązania Ansible
+## <a name="deploy-the-ansible-solution-template"></a>Wdróż szablon rozwiązania rozwiązania ansible
 
 1. Przejdź do [szablonu rozwiązania Ansible w witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/en-%20%20us/marketplace/apps/azure-oss.ansible?tab=Overview).
 
 1. Wybierz pozycję **POBIERZ TERAZ**.
 
-1. Zostanie wyświetlone okno, w którym są wyszczególnione warunki użytkowania, zasady ochrony prywatności oraz zasady korzystania z witryny Azure Marketplace. Wybierz **nadal**.
+1. Zostanie wyświetlone okno, w którym są wyszczególnione warunki użytkowania, zasady ochrony prywatności oraz zasady korzystania z witryny Azure Marketplace. Wybierz przycisk **Kontynuuj**.
 
 1. Zostanie wyświetlona witryna Azure Portal oraz strona rozwiązania Ansible, na której opisano szablon rozwiązania. Wybierz pozycję **Utwórz**.
 
@@ -86,7 +86,7 @@ Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożl
 
 1. Na stronie grupy zasobów sprawdź adres IP Twojego hosta rozwiązania Ansible i zaloguj się, aby zarządzać zasobami platformy Azure przy użyciu rozwiązania Ansible.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Szybki start: Konfigurowanie maszyny wirtualnej systemu Linux na platformie Azure za pomocą rozwiązania Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Szybki Start: Konfigurowanie maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu rozwiązania ansible](/azure/virtual-machines/linux/ansible-create-vm)

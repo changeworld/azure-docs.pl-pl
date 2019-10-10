@@ -1,26 +1,26 @@
 ---
-title: Jakie obciążenia można chronić za pomocą usługi Azure Site Recovery? | Microsoft Docs
+title: Informacje o odzyskiwaniu po awarii dla aplikacji lokalnych przy użyciu Azure Site Recovery
 description: W tym artykule opisano obciążenia, które można chronić za pomocą funkcji odzyskiwania po awarii w usłudze Azure Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ad989a28e150635637a477d07803107a9fefff63
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232190"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255563"
 ---
-# <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Jakie obciążenia można chronić za pomocą usługi Azure Site Recovery?
+# <a name="about-disaster-recovery-for-on-premises-apps"></a>Informacje o odzyskiwaniu po awarii dla aplikacji lokalnych
 
-W tym artykule opisano obciążenia i aplikacje, które można chronić przed odzyskiwaniem po awarii za pomocą usługi [Azure Site Recovery](site-recovery-overview.md) .
+W tym artykule opisano obciążenia lokalne i aplikacje, które można chronić przed odzyskiwaniem po awarii za pomocą usługi [Azure Site Recovery](site-recovery-overview.md) .
 
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Organizacje wymagają strategii zapewniającej ciągłość biznesową i odzyskiwanie po awarii (BCDR, Business Continuity and Disaster Recovery), w ramach której obciążenia i dane pozostają bezpieczne i dostępne podczas planowanych lub nieplanowanych przestojów oraz możliwie jak najszybciej są przywracane do normalnych warunków roboczych.
 
@@ -45,17 +45,17 @@ Usługa Site Recovery może replikować dowolną aplikację uruchomioną na obs�
 
 | **Obciążenie** |**Replikacja maszyn wirtualnych platformy Azure na platformę Azure** |**Replikacja maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej** | **Replikacja maszyn wirtualnych funkcji Hyper-V do platformy Azure** | **Replikacja maszyn wirtualnych VMware do lokacji dodatkowej** | **Replikacja maszyn wirtualnych VMware do platformy Azure** |
 | --- | --- | --- | --- | --- |---|
-| Active Directory, DNS |T |T |T |T |T|
-| Aplikacje internetowe (IIS, SQL) |T |T |T |T |T|
-| System Center Operations Manager |T |T |T |T |T|
-| Program SharePoint |T |T |T |T |T|
+| Active Directory, DNS |Tak |Tak |Tak |Tak |Tak|
+| Aplikacje internetowe (IIS, SQL) |Tak |Tak |Tak |Tak |Tak|
+| System Center Operations Manager |Tak |Tak |Tak |Tak |Tak|
+| Sharepoint |Tak |Tak |Tak |Tak |Tak|
 | SAP<br/><br/>Replikacja lokacji SAP do platformy Azure, bez klastra |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft)|
-| Exchange (bez grupy DAG) |T |T |T |T |T|
-| Pulpit zdalny/VDI |T |T |T |T |T|
+| Exchange (bez grupy DAG) |Tak |Tak |Tak |Tak |Tak|
+| Pulpit zdalny/VDI |Tak |Tak |Tak |Tak |Tak|
 | Linux (system operacyjny i aplikacje) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft)|
-| Dynamics AX |T |T |T |T |T|
-| Serwer plików systemu Windows |T |T |T |T |T|
-| Citrix XenApp i XenDesktop |T|ND |T |ND |T |
+| Dynamics AX |Tak |Tak |Tak |Tak |Tak|
+| Serwer plików systemu Windows |Tak |Tak |Tak |Tak |Tak|
+| Citrix XenApp i XenDesktop |Tak|ND |Tak |ND |Tak |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replikacja usługi Active Directory i DNS
 Usługa Active Directory i infrastruktura DNS są istotne dla większości aplikacji firmowych. Podczas odzyskiwania po awarii należy zabezpieczyć i odzyskać te składniki infrastruktury przed odzyskaniem obciążeń i aplikacji.
@@ -103,9 +103,9 @@ Usługi pulpitu zdalnego zapewniają infrastrukturę pulpitu wirtualnego (VDI), 
 
 | **RDS** |**Replikacja maszyn wirtualnych platformy Azure na platformę Azure** | **Replikacja maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej** | **Replikacja maszyn wirtualnych funkcji Hyper-V do platformy Azure** | **Replikacja maszyn wirtualnych VMware do lokacji dodatkowej** | **Replikacja maszyn wirtualnych VMware do platformy Azure** | **Replikacja serwerów fizycznych do lokacji dodatkowej** | **Replikacja serwerów fizycznych do platformy Azure** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **Pulpit wirtualny w puli (niezarządzany)** |Nie|Yes |Nie |Yes |Nie |Yes |Nie |
-| **Pulpit wirtualny w puli (zarządzany i bez dysku UPD)** |Nie|Yes |Nie |Yes |Nie |Yes |Nie |
-| **Zdalne aplikacje i sesje pulpitu (bez dysku UPD)** |Tak|Yes |Yes |Yes |Yes |Yes |Tak |
+| **Pulpit wirtualny w puli (niezarządzany)** |Nie|Tak |Nie |Tak |Nie |Tak |Nie |
+| **Pulpit wirtualny w puli (zarządzany i bez dysku UPD)** |Nie|Tak |Nie |Tak |Nie |Tak |Nie |
+| **Zdalne aplikacje i sesje pulpitu (bez dysku UPD)** |Tak|Tak |Tak |Tak |Tak |Tak |Tak |
 
 [Konfigurowanie funkcji odzyskiwania po awarii ona potrzeby usługi RDS za pomocą usługi Azure Site Recovery](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure).
 

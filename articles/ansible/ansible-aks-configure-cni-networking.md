@@ -1,32 +1,32 @@
 ---
-title: Samouczek — Konfigurowanie sieci wtyczki Azure CNI w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania Ansible | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą rozwiązania Ansible w celu skonfigurowania wtyczki kubenet sieci w klastrze usługi Azure Kubernetes Service (AKS)
-keywords: ansible, azure, metodyki devops, bash, cloudshell, element playbook, aks, kontener, aks, kubernetes
+title: Samouczek — Konfigurowanie sieci Azure CNI w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania ansible
+description: Informacje dotyczące konfigurowania sieci korzystającą wtyczki kubenet w klastrze usługi Azure Kubernetes Service (AKS) za pomocą rozwiązania ansible
+keywords: rozwiązania ansible, Azure, DevOps, bash, cloudshell, element PlayBook, AKS, kontener, AKS, Kubernetes
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 2d43b1ffbb7910b16c81df2ff5b21e67dbcb0193
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 04da0e8fb06d0a32c8e8bdc39d7722fc1c3fcdba
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231359"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242028"
 ---
-# <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Samouczek: Konfigurowanie wtyczki Azure CNI sieci w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania Ansible
+# <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Samouczek: Konfigurowanie sieci Azure CNI w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-Za pomocą usługi AKS, można wdrożyć klaster przy użyciu następujących modeli sieci:
+Za pomocą AKS można wdrożyć klaster przy użyciu następujących modeli sieci:
 
-- [Sieć z wtyczki Kubenet](/azure/aks/configure-kubenet) -zasobów sieciowych zwykle są tworzone i konfigurowane jako klaster AKS jest wdrażany.
-- [Sieć Azure CNI](/azure/aks/configure-azure-cni) — klaster AKS jest podłączony do istniejących zasobów sieci wirtualnej (VNET) i konfiguracji.
+- [Korzystającą wtyczki kubenet Networking](/azure/aks/configure-kubenet) — zasoby sieciowe są zwykle tworzone i konfigurowane jako wdrożony klaster AKS.
+- [Azure CNI Networking](/azure/aks/configure-azure-cni) — klaster AKS jest połączony z istniejącymi zasobami sieci wirtualnej (VNET) i konfiguracją.
 
-Aby uzyskać więcej informacji na temat sieci do aplikacji w usłudze AKS, zobacz [sieci pojęcia związane z aplikacjami w usłudze AKS](/azure/aks/concepts-network).
+Aby uzyskać więcej informacji na temat sieci do aplikacji w AKS, zobacz [pojęcia dotyczące sieci dla aplikacji w AKS](/azure/aks/concepts-network).
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -43,10 +43,10 @@ Aby uzyskać więcej informacji na temat sieci do aplikacji w usłudze AKS, zoba
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Tworzenie sieci wirtualnej i podsieci
 
-Przykładowy kod elementu playbook w tej sekcji służy do:
+Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
 - Tworzenie sieci wirtualnej
-- Utwórz podsieć w sieci wirtualnej
+- Tworzenie podsieci w sieci wirtualnej
 
 Zapisz następujący podręcznik jako `vnet.yml`:
 
@@ -69,9 +69,9 @@ Zapisz następujący podręcznik jako `vnet.yml`:
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Tworzenie klastra AKS w sieci wirtualnej
 
-Przykładowy kod elementu playbook w tej sekcji służy do:
+Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
-- Tworzenie klastra AKS w ramach sieci wirtualnej.
+- Utwórz klaster AKS w sieci wirtualnej.
 
 Zapisz następujący podręcznik jako `aks.yml`:
 
@@ -106,21 +106,21 @@ Zapisz następujący podręcznik jako `aks.yml`:
   register: aks
 ```
 
-Poniżej przedstawiono ważne uwagi należy wziąć pod uwagę podczas pracy z elementu playbook próbki:
+Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
 
-- Użyj `azure_rm_aks_version` modułu, aby znaleźć obsługiwanej wersji.
-- `vnet_subnet_id` Podsieć utworzona w poprzedniej sekcji.
-- Element playbook ładuje `ssh_key` z `~/.ssh/id_rsa.pub`. Jeśli zmodyfikujesz go tak, użyj formacie jednowierszowym — począwszy od "ssh-rsa" (bez cudzysłowu).
-- `client_id` i `client_secret` wartości są ładowane z `~/.azure/credentials`, która jest domyślny plik poświadczeń. Możesz ustawić te wartości z usługą główną lub załadować te wartości ze zmiennych środowiskowych:
+- Użyj modułu `azure_rm_aks_version`, aby znaleźć obsługiwaną wersję.
+- @No__t-0 to podsieć utworzona w poprzedniej sekcji.
+- Element PlayBook ładuje `ssh_key` z `~/.ssh/id_rsa.pub`. Jeśli zmodyfikujesz go, użyj formatu jednowierszowego — rozpoczynając od "SSH-RSA" (bez cudzysłowów).
+- Wartości `client_id` i `client_secret` są ładowane z `~/.azure/credentials`, czyli domyślnego pliku poświadczeń. Można ustawić te wartości jako nazwę główną usługi lub załadować te wartości ze zmiennych środowiskowych:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
     client_secret: "{{ lookup('env', 'AZURE_SECRET') }}"
     ```
 
-## <a name="run-the-sample-playbook"></a>Uruchamianie elementu playbook próbki
+## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowej element PlayBook
 
-Przykładowy kod elementu playbook w tej sekcji służy do testowania różnych funkcji, które przedstawiono w tym samouczku.
+Przykładowy kod element PlayBook w tej sekcji jest używany do testowania różnych funkcji przedstawionych w tym samouczku.
 
 Zapisz następujący podręcznik jako `aks-azure-cni.yml`:
 
@@ -150,19 +150,19 @@ Zapisz następujący podręcznik jako `aks-azure-cni.yml`:
            var: aks
 ```
 
-Poniżej przedstawiono ważne uwagi należy wziąć pod uwagę podczas pracy z elementu playbook próbki:
+Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
 
-- Zmiana `aksansibletest` wartość, aby nazwa grupy zasobów.
-- Zmiana `aksansibletest` wartość nazwy usługi AKS.
-- Zmiana `eastus` wartość Twojej lokalizacji grupy zasobów.
+- Zmień wartość `aksansibletest` na nazwę grupy zasobów.
+- Zmień wartość `aksansibletest` na nazwę AKS.
+- Zmień wartość `eastus` na lokalizację grupy zasobów.
 
-Uruchom element playbook przy użyciu polecenia playbook rozwiązania ansible:
+Uruchom element PlayBook za pomocą polecenia rozwiązania ansible-element PlayBook:
 
 ```bash
 ansible-playbook aks-azure-cni.yml
 ```
 
-Po uruchomieniu elementu playbook, zobaczysz dane wyjściowe podobne do następujących wyników:
+Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
 
 ```Output
 PLAY [localhost] 
@@ -248,11 +248,11 @@ localhost                  : ok=9    changed=4    unreachable=0    failed=0    s
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
 
-Przykładowy kod elementu playbook w tej sekcji służy do:
+Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
-- Usuń grupę zasobów, o których mowa w `vars` sekcji.
+- Usuń grupę zasobów, do której odwołuje się sekcja `vars`.
 
 Zapisz następujący podręcznik jako `cleanup.yml`:
 
@@ -269,18 +269,18 @@ Zapisz następujący podręcznik jako `cleanup.yml`:
             force: yes
 ```
 
-Poniżej przedstawiono ważne uwagi należy wziąć pod uwagę podczas pracy z elementu playbook próbki:
+Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
 
-- Zastąp `{{ resource_group_name }}` nazwą grupy zasobów.
-- Zostaną usunięte wszystkie zasoby w określonej grupie zasobów.
+- Zastąp symbol zastępczy `{{ resource_group_name }}` nazwą grupy zasobów.
+- Wszystkie zasoby w określonej grupie zasobów zostaną usunięte.
 
-Uruchom element playbook przy użyciu polecenia playbook rozwiązania ansible:
+Uruchom element PlayBook za pomocą polecenia rozwiązania ansible-element PlayBook:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Skonfiguruj usługę Azure Active Directory w usłudze AKS za pomocą rozwiązania Ansible](./ansible-aks-configure-rbac.md)
+> [Samouczek: Konfigurowanie Azure Active Directory w AKS za pomocą rozwiązania ansible](./ansible-aks-configure-rbac.md)

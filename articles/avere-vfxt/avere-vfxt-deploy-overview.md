@@ -1,73 +1,73 @@
 ---
-title: Omówienie wdrażania — vFXT Avere dla platformy Azure
-description: Omówienie wdrażania Avere vFXT dla platformy Azure
+title: Przegląd wdrożenia — avere vFXT dla platformy Azure
+description: Omówienie wdrażania avere vFXT dla platformy Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 88305e5d877f5bc3cc7ebb116f69b0f49f162b79
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 9684b230b8790e36cd7442c65481c0c71ce185d6
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409918"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255426"
 ---
-# <a name="avere-vfxt-for-azure---deployment-overview"></a>VFXT Avere dla platformy Azure — Omówienie wdrożenia
+# <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT for Azure — omówienie wdrożenia
 
-Ten artykuł zawiera omówienie kroki niezbędne do uzyskania vFXT Avere klastra platformy Azure i uruchomione.
+Ten artykuł zawiera omówienie kroków niezbędnych do uzyskania avere vFXT dla klastra platformy Azure.
 
-Niektóre zadania są wymagane, przed i po utworzeniu klastra vFXT w portalu Azure Marketplace. Wyczyść sensie rozpoczęcia do zakończenia procesu o pomoże Ci nakład pracy wymagany zakres. 
+Przed utworzeniem klastra vFXT z poziomu portalu Azure Marketplace potrzebne są kilka zadań. Wyraźne zrozumienie procesu rozpoczęcia do zakończenia pomoże Ci określić zakres potrzebnego nakładu pracy. 
 
 ## <a name="deployment-steps"></a>Kroki wdrażania
 
-Po [planowania systemu](avere-vfxt-deploy-plan.md), możesz rozpocząć tworzenie Avere vFXT klastra. 
+Po [zaplanowaniu systemu](avere-vfxt-deploy-plan.md)możesz rozpocząć tworzenie klastra avere vFXT. 
 
-Szablon usługi Azure Resource Manager w witrynie Azure Marketplace zbiera niezbędne informacje i automatycznie wdraża całego klastra. 
+Szablon Azure Resource Manager w portalu Azure Marketplace zbiera niezbędne informacje i automatycznie wdraża cały klaster. 
 
-Po skonfigurowaniu i uruchomieniu klastra vFXT warto wiedzieć, jak połączyć klientów i, jeśli to konieczne, jak przenieść dane do nowego kontenera magazynu obiektów Blob.  
+Po uruchomieniu klastra vFXT i dowiesz się, jak połączyć klientów z nim i w razie potrzeby jak przenieść dane do nowego kontenera magazynu obiektów BLOB.  
 
-Poniżej przedstawiono omówienie wszystkich kroków.
+Poniżej przedstawiono przegląd wszystkich kroków.
 
 1. Konfigurowanie wymagań wstępnych 
 
-   Przed utworzeniem maszyny Wirtualnej, należy utworzyć nową subskrypcję dla projektu vFXT Avere, skonfiguruj własności subskrypcji, sprawdź limity przydziału i poprosić o zwiększenie, jeśli potrzebne i zaakceptuj postanowienia dotyczące korzystania z oprogramowania vFXT Avere. Odczyt [przed rozpoczęciem tworzenia Avere vFXT](avere-vfxt-prereqs.md) szczegółowe informacje.
+   Przed utworzeniem maszyny wirtualnej należy utworzyć nową subskrypcję dla projektu avere vFXT, skonfigurować własność subskrypcji, sprawdzić przydziały i zażądać zwiększenia w razie potrzeby, a następnie zaakceptować warunki korzystania z oprogramowania vFXT avere. Aby uzyskać szczegółowe instrukcje, zapoznaj [się z artykułem przygotowywanie do utworzenia avere vFXT](avere-vfxt-prereqs.md) .
 
-1. Tworzenie klastra vFXT Avere 
+1. Tworzenie klastra avere vFXT 
 
-   Użyj portalu Azure Marketplace, aby utworzyć vFXT Avere klastra platformy Azure. Szablon służy do zbierania wymaganych informacji i wykonuje skrypty w celu utworzenia produktu końcowego.
+   Skorzystaj z portalu Azure Marketplace, aby utworzyć avere vFXT dla klastra platformy Azure. Szablon zbiera wymagane informacje i wykonuje skrypty w celu utworzenia produktu końcowego.
 
-   Tworzenie klastra obejmuje następujące kroki, które są wszystkie wykonywane tylko przez szablon witryny marketplace: 
+   Tworzenie klastra obejmuje te kroki, które są wykonywane przez szablon Marketplace: 
 
-   * Tworzenie nowej sieci infrastruktury i grup zasobów, jeśli to konieczne
+   * Tworzenie nowej infrastruktury sieciowej i grup zasobów, w razie konieczności
    * Tworzenie *kontrolera klastra*  
 
-     Kontroler klastra jest prostą maszynę Wirtualną, która znajduje się w tej samej sieci wirtualnej jako klaster vFXT Avere i ma niestandardowe oprogramowanie wymagane do tworzenia i zarządzania klastrem. Kontroler tworzy vFXT węzłów i formularze klastra i zapewnia również interfejs wiersza polecenia do zarządzania klastrem jego okres istnienia.
+     Kontroler klastra jest prostą MASZYNą wirtualną, która znajduje się w tej samej sieci wirtualnej co klaster avere vFXT i ma niestandardowe oprogramowanie, które jest konieczne do utworzenia klastra i zarządzania nim. Kontroler tworzy węzły vFXT i tworzą klaster, a także udostępnia interfejs wiersza polecenia do zarządzania klastrem w trakcie jego istnienia.
 
-     Jeśli tworzysz nową sieć wirtualną podczas wdrażania kontrolera sieci ma publiczny adres IP. Oznacza to, że kontroler może służyć jako host skok do łączenia się z klastrem z spoza sieci wirtualnej.
+     Jeśli podczas wdrażania zostanie utworzona nowa sieć wirtualna, kontroler będzie miał publiczny adres IP. Oznacza to, że kontroler może działać jako host skoku do łączenia się z klastrem spoza sieci wirtualnej.
 
-   * Tworzenie klastra maszyn wirtualnych węzła
+   * Tworzenie maszyn wirtualnych węzłów klastra
 
-   * Skonfigurowanie węzła klastra maszyny wirtualne w celu utworzenia klastra
+   * Konfigurowanie maszyn wirtualnych węzłów klastra w celu utworzenia klastra
 
-   * Opcjonalnie, tworzeniu nowego kontenera obiektów Blob i skonfigurowania go jako magazynu zaplecza dla klastra
+   * Opcjonalnie można utworzyć nowy kontener obiektów blob i skonfigurować go jako magazyn zaplecza dla klastra
 
 1. Konfigurowanie klastra 
 
-   Nawiązać Avere vFXT konfiguracji interfejsu (Panel sterowania Avere) aby dostosować ustawienia klastra. Zgoda na obsługę monitorowania i Dodaj systemie magazynu, korzystając z centrum danych w środowisku lokalnym.
+   Połącz się z interfejsem avere vFXT Configuration Interface (avere Panel sterowania), aby dostosować ustawienia klastra. Zezwól na monitorowanie pomocy technicznej i Dodaj system magazynu, jeśli używasz lokalnego centrum danych.
 
-   * [Dostęp do klastra vFXT](avere-vfxt-cluster-gui.md)
+   * [Uzyskiwanie dostępu do klastra vFXT](avere-vfxt-cluster-gui.md)
    * [Włącz obsługę](avere-vfxt-enable-support.md)
-   * [Konfigurowanie magazynu](avere-vfxt-add-storage.md) (jeśli jest to konieczne)
+   * [Konfigurowanie magazynu](avere-vfxt-add-storage.md) (w razie konieczności)
 
 1. Instalowanie klientów
 
-   Postępuj zgodnie z wytycznymi podanymi w [instalacji klastra vFXT Avere](avere-vfxt-mount-clients.md) informacje na temat równoważenia obciążenia oraz jak komputerów klienckich należy zainstalować klastra.
+   Postępuj zgodnie z wytycznymi w temacie [Instalowanie klastra avere vFXT](avere-vfxt-mount-clients.md) , aby dowiedzieć się więcej na temat równoważenia obciążenia i sposobu instalowania klastra przez komputery klienckie.
 
-1. Dodawanie danych (jeśli jest to konieczne)
+1. Dodaj dane (w razie konieczności)
 
-   Ponieważ Avere vFXT jest skalowalna pamięć podręczna wielu klientów, najlepszym sposobem, aby przenieść dane do nowego kontenera magazynu zaplecza jest ze strategią kopiowanie wielu klientów, wielowątkowy plik. Odczyt [przenoszenia danych do klastra vFXT](avere-vfxt-data-ingest.md) Aby uzyskać szczegółowe informacje.
+   Ponieważ avere vFXT to skalowalna pamięć podręczna z obsługą kilku klientów, najlepszym sposobem przenoszenia danych do nowego kontenera magazynu zaplecza jest wielowątkowa strategia kopiowania plików wielowątkowych. Aby uzyskać szczegółowe informacje, przeczytaj artykuł [dotyczący przeniesienia danych do klastra vFXT](avere-vfxt-data-ingest.md) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W dalszym ciągu [przed rozpoczęciem tworzenia Avere vFXT](avere-vfxt-prereqs.md) do wykonania zadań wstępne dotyczące wdrażania Avere vFXT dla platformy Azure. 
+Kontynuuj [Przygotowywanie do utworzenia avere vFXT](avere-vfxt-prereqs.md) , aby wykonać wstępne zadania wdrożenia vFXT avere dla platformy Azure. 

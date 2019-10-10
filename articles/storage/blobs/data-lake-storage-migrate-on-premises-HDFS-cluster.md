@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: ff23b27b73918734e10a481cbe9b1f77519b8764
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 508c67f73bc0e11330b5772b1c1ba3f9bee5e231
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847259"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255675"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Używanie Azure Data Box do migrowania danych z lokalnego magazynu systemu plików HDFS do usługi Azure Storage
 
@@ -63,7 +63,7 @@ Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów 
 
      ![Okno dialogowe uzyskiwanie dostępu do konta magazynu i przekazywanie danych](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. Dodaj punkt końcowy oraz adres IP urządzenie Data Box lub Data Box Heavy węzła do `/etc/hosts` każdego węzła.
+3. Dodaj punkt końcowy oraz adres IP urządzenie Data Box lub Data Box Heavy węzła, aby `/etc/hosts` w każdym węźle.
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
@@ -71,13 +71,13 @@ Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów 
 
     Jeśli używasz innego mechanizmu dla systemu DNS, upewnij się, że można rozpoznać urządzenie Data Box punkt końcowy.
 
-4. Ustaw zmienną `azjars` Shell na lokalizację `hadoop-azure` plików jar i `azure-storage` . Te pliki można znaleźć w katalogu instalacji usługi Hadoop.
+4. Ustaw zmienną powłoki `azjars` do lokalizacji plików jar `hadoop-azure` i `azure-storage`. Te pliki można znaleźć w katalogu instalacji usługi Hadoop.
 
-    Aby określić, czy te pliki istnieją, użyj następującego polecenia: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`. Zastąp `<hadoop_install_dir>` symbol zastępczy ścieżką do katalogu, w którym zainstalowano Hadoop. Upewnij się, że używasz w pełni kwalifikowanych ścieżek.
+    Aby określić, czy te pliki istnieją, użyj następującego polecenia: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`. Zastąp symbol zastępczy `<hadoop_install_dir>` ścieżką do katalogu, w którym została zainstalowana usługa Hadoop. Upewnij się, że używasz w pełni kwalifikowanych ścieżek.
 
     Przykłady:
 
-    `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar``azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
+    `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
 5. Utwórz kontener magazynu, który ma być używany do kopiowania danych. Należy również określić katalog docelowy jako część tego polecenia. Może to być w tym momencie fikcyjny katalog docelowy.
 
@@ -88,13 +88,13 @@ Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów 
     -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Zastąp `<blob_service_endpoint>` symbol zastępczy nazwą punktu końcowego usługi BLOB Service.
+    * Zastąp symbol zastępczy `<blob_service_endpoint>` nazwą punktu końcowego usługi BLOB Service.
 
-    * Zastąp `<account_key>` symbol zastępczy kluczem dostępu do konta.
+    * Zastąp symbol zastępczy `<account_key>` kluczem dostępu do konta.
 
-    * Zastąp `<container-name>` symbol zastępczy nazwą kontenera.
+    * Zastąp symbol zastępczy `<container-name>` nazwą kontenera.
 
-    * Zastąp `<destination_directory>` symbol zastępczy nazwą katalogu, do którego chcesz skopiować dane.
+    * Zastąp symbol zastępczy `<destination_directory>` nazwą katalogu, do którego chcesz skopiować dane.
 
 6. Uruchom polecenie list, aby upewnić się, że kontener i katalog zostały utworzone.
 
@@ -105,11 +105,11 @@ Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów 
     -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-   * Zastąp `<blob_service_endpoint>` symbol zastępczy nazwą punktu końcowego usługi BLOB Service.
+   * Zastąp symbol zastępczy `<blob_service_endpoint>` nazwą punktu końcowego usługi BLOB Service.
 
-   * Zastąp `<account_key>` symbol zastępczy kluczem dostępu do konta.
+   * Zastąp symbol zastępczy `<account_key>` kluczem dostępu do konta.
 
-   * Zastąp `<container-name>` symbol zastępczy nazwą kontenera.
+   * Zastąp symbol zastępczy `<container-name>` nazwą kontenera.
 
 7. Skopiuj dane z usługi Hadoop HDFS do urządzenie Data Box Storage BLOB do utworzonego wcześniej kontenera. Jeśli nie można odnaleźć katalogu, do którego ma zostać skopiowane, polecenie zostanie automatycznie utworzone.
 
@@ -123,21 +123,21 @@ Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów 
            wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Zastąp `<blob_service_endpoint>` symbol zastępczy nazwą punktu końcowego usługi BLOB Service.
+    * Zastąp symbol zastępczy `<blob_service_endpoint>` nazwą punktu końcowego usługi BLOB Service.
 
-    * Zastąp `<account_key>` symbol zastępczy kluczem dostępu do konta.
+    * Zastąp symbol zastępczy `<account_key>` kluczem dostępu do konta.
 
-    * Zastąp `<container-name>` symbol zastępczy nazwą kontenera.
+    * Zastąp symbol zastępczy `<container-name>` nazwą kontenera.
 
-    * Zastąp `<exlusion_filelist_file>` symbol zastępczy nazwą pliku, który zawiera listę wykluczeń plików.
+    * Zastąp symbol zastępczy `<exlusion_filelist_file>` nazwą pliku, który zawiera listę wykluczeń plików.
 
-    * Zastąp `<source_directory>` symbol zastępczy nazwą katalogu zawierającego dane, które chcesz skopiować.
+    * Zastąp symbol zastępczy `<source_directory>` nazwą katalogu zawierającego dane, które chcesz skopiować.
 
-    * Zastąp `<destination_directory>` symbol zastępczy nazwą katalogu, do którego chcesz skopiować dane.
+    * Zastąp symbol zastępczy `<destination_directory>` nazwą katalogu, do którego chcesz skopiować dane.
 
-    Opcja służy do `hadoop-azure*.jar` udostępniania `azure-storage*.jar` plików`distcp`zależnychi. `-libjars` Może to być spowodowane niektórymi klastrami.
+    Opcja `-libjars` umożliwia udostępnienie `hadoop-azure*.jar` oraz zależnych plików `azure-storage*.jar` do `distcp`. Może to być spowodowane niektórymi klastrami.
 
-    Poniższy przykład pokazuje, `distcp` jak polecenie jest używane do kopiowania danych.
+    Poniższy przykład pokazuje, jak polecenie `distcp` służy do kopiowania danych.
 
     ```
      hadoop distcp \
@@ -151,7 +151,7 @@ Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów 
   
     Aby zwiększyć szybkość kopiowania:
 
-    * Spróbuj zmienić liczbę odwzorów. (W powyższym `m` przykładzie zastosowano funkcję = 4 mapowania).
+    * Spróbuj zmienić liczbę odwzorów. (W powyższym przykładzie są wykorzystywane `m` = 4 mapowania.)
 
     * Spróbuj uruchomić wiele `distcp` równolegle.
 
@@ -167,7 +167,7 @@ Wykonaj następujące kroki, aby przygotować i dostarczyć urządzenie Data Box
 
 3. Zamknij urządzenie i Usuń kable.
 
-4. Zaplanuj pobranie przy użyciu zasilacza UPS.
+4. Zaplanuj odbiór przez firmę UPS.
 
     * Aby uzyskać urządzenie Data Box urządzeń, zobacz artykuł [dostarczanie urządzenie Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
 
@@ -194,23 +194,23 @@ Dane można kopiować przy użyciu Azure Data Factory lub przy użyciu klastra H
     hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
     ```
 
-    * Zastąp symbole `<dest_account>` zastępcze inazwamiźródłowychidocelowychkontmagazynu.`<source_account>`
+    * Zastąp symbole zastępcze `<source_account>` i `<dest_account>` nazwami źródłowych i docelowych kont magazynu.
 
-    * Zastąp symbole `<dest_container>` zastępcze inazwamikontenerówźródłowychidocelowych.`<source_container>`
+    * Zastąp symbole zastępcze `<source_container>` i `<dest_container>` nazwami kontenerów źródłowych i docelowych.
 
-    * Zastąp symbole `<dest_path>` zastępcze iścieżkamikataloguźródłowegoidocelowego.`<source_path>`
+    * Zastąp symbole zastępcze `<source_path>` i `<dest_path>` ścieżkami katalogu źródłowego i docelowego.
 
-    * Zastąp `<source_account_key>` symbol zastępczy kluczem dostępu do konta magazynu zawierającego dane.
+    * Zastąp symbol zastępczy `<source_account_key>` kluczem dostępu do konta magazynu zawierającego dane.
 
     To polecenie kopiuje dane i metadane z konta magazynu do konta magazynu Data Lake Storage Gen2.
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Tworzenie nazwy głównej usługi dla konta Azure Data Lake Storage Gen2
 
-Aby utworzyć nazwę główną usługi, zobacz [How to: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Aby utworzyć jednostkę usługi, zobacz [How to: Use the Portal, aby utworzyć aplikację usługi Azure AD i nazwę główną usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 * Wykonując kroki opisane w sekcji [Przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) tego artykułu, upewnij się, że przypisano rolę **Współautor danych obiektu blob magazynu** do jednostki usługi.
 
-* Podczas wykonywania kroków opisanych w sekcji [pobieranie wartości dla logowania w](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) artykule, identyfikator aplikacji i klucz tajny klienta w pliku tekstowym. Wkrótce będą potrzebne.
+* Podczas wykonywania kroków opisanych w sekcji [pobieranie wartości dla logowania w](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) artykule Zapisz identyfikator aplikacji i klucz tajny klienta w pliku tekstowym. Wkrótce będą potrzebne.
 
 ### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>Generuj listę skopiowanych plików z ich uprawnieniami
 
@@ -228,7 +228,7 @@ To polecenie generuje listę skopiowanych plików z ich uprawnieniami.
 
 ### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Wygeneruj listę tożsamości i zamapuj je na Azure Active Directory (Dodaj) tożsamości
 
-1. `copy-acls.py` Pobierz skrypt. Zobacz sekcję [pobieranie skryptów pomocnika i skonfiguruj węzeł brzegowy, aby uruchomić je w](#download-helper-scripts) tym artykule.
+1. Pobierz skrypt `copy-acls.py`. Zobacz sekcję [pobieranie skryptów pomocnika i skonfiguruj węzeł brzegowy, aby uruchomić je w](#download-helper-scripts) tym artykule.
 
 2. Uruchom to polecenie, aby wygenerować listę unikatowych tożsamości.
 
@@ -237,11 +237,11 @@ To polecenie generuje listę skopiowanych plików z ich uprawnieniami.
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   Ten skrypt generuje plik o nazwie `id_map.json` , który zawiera tożsamości, które są potrzebne do mapowania na tożsamości oparte na dodawaniu.
+   Ten skrypt generuje plik o nazwie `id_map.json`, który zawiera tożsamości, które są potrzebne do mapowania na tożsamości oparte na DODAWANiu.
 
-3. `id_map.json` Otwórz plik w edytorze tekstu.
+3. Otwórz plik `id_map.json` w edytorze tekstu.
 
-4. Dla każdego obiektu JSON, który pojawia się w pliku, zaktualizuj `target` atrybut nazwy głównej użytkownika usługi AAD (UPN) lub objectid (OID) przy użyciu odpowiedniej zamapowanej tożsamości. Po zakończeniu Zapisz plik. Ten plik będzie potrzebny w następnym kroku.
+4. Dla każdego obiektu JSON, który pojawia się w pliku, zaktualizuj atrybut `target` nazwy głównej użytkownika usługi AAD (UPN) lub identyfikatora obiektu ObjectId (OID) przy użyciu odpowiedniej zamapowanej tożsamości. Po zakończeniu Zapisz plik. Ten plik będzie potrzebny w następnym kroku.
 
 ### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Zastosuj uprawnienia do skopiowanych plików i Zastosuj mapowania tożsamości
 
@@ -253,11 +253,11 @@ Uruchom to polecenie, aby zastosować uprawnienia do danych skopiowanych na kont
 
 * Zastąp symbol zastępczy `<storage-account-name>` nazwą konta magazynu.
 
-* Zastąp `<container-name>` symbol zastępczy nazwą kontenera.
+* Zastąp symbol zastępczy `<container-name>` nazwą kontenera.
 
-* Zastąp symbole `<client-secret>` zastępcze iidentyfikatoraplikacjiorazklucztajnyklientazebranepodczastworzeniajednostkiusługi.`<application-id>`
+* Zastąp symbole zastępcze `<application-id>` i `<client-secret>` IDENTYFIKATORem aplikacji i kluczem tajnym klienta zebranym podczas tworzenia jednostki usługi.
 
-## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Dodatek Dzielenie danych na wiele urządzeń urządzenie Data Box
+## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Dodatek: dzielenie danych między wieloma urządzenie Data Box urządzeniami
 
 Przed przeniesieniem danych na urządzenie urządzenie Data Box należy pobrać niektóre skrypty pomocnika, upewnić się, że dane są zorganizowane tak, aby mieściły się na urządzeniu urządzenie Data Box i wykluczyć zbędne pliki.
 
@@ -303,7 +303,7 @@ Jeśli rozmiar danych przekracza rozmiar pojedynczego urządzenia urządzenie Da
 
 Jeśli dane nie przekroczą rozmiaru pojedynczego urządzenia urządzenie Data Box, można przejdź do następnej sekcji.
 
-1. Mając podwyższony poziom uprawnień, `generate-file-list` Uruchom pobrany skrypt, postępując zgodnie ze wskazówkami w poprzedniej sekcji.
+1. Mając podwyższony poziom uprawnień, Uruchom pobrany skrypt `generate-file-list`, postępując zgodnie ze wskazówkami w poprzedniej sekcji.
 
    Oto opis parametrów poleceń:
 

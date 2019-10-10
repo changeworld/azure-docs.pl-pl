@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e4f0f81c5f135e885fe06d4fb4fa67514e8781b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8d202cb0cc2d073326a5bcc8fb0d540c232afa98
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988158"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240892"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrowanie dzienników Azure Active Directory z usługą ArcSight przy użyciu Azure Monitor
 
@@ -36,7 +36,7 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 * Centrum zdarzeń platformy Azure, które zawiera dzienniki aktywności usługi Azure AD. Dowiedz się, jak [przesyłać strumieniowo dzienniki aktywności do centrum zdarzeń](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
 * Skonfigurowane wystąpienie ArcSight dziennika systemu SmartConnector demona (SmartConnector) lub ArcSight Load Balancer. Jeśli zdarzenia są wysyłane do ArcSight Load Balancer, są w związku z tym wysyłane do SmartConnector przez Load Balancer.
 
-Pobierz i Otwórz [Przewodnik konfiguracji dla usługi ArcSight SmartConnector dla Azure monitor centrum zdarzeń](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf). Ten przewodnik zawiera kroki, które należy wykonać, aby zainstalować i skonfigurować ArcSight SmartConnector dla Azure Monitor. 
+Pobierz i Otwórz [Przewodnik konfiguracji dla usługi ArcSight SmartConnector dla Azure monitor centrum zdarzeń](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf). Ten przewodnik zawiera kroki, które należy wykonać, aby zainstalować i skonfigurować ArcSight SmartConnector dla Azure Monitor. 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>Integrowanie dzienników usługi Azure AD z usługą ArcSight
 
@@ -53,7 +53,7 @@ Pobierz i Otwórz [Przewodnik konfiguracji dla usługi ArcSight SmartConnector d
     * Ustawienia aplikacji z wdrożenia są utrwalane w ustawieniach aplikacji w aplikacjach funkcji platformy Azure. 
     * Nowa grupa zasobów dla ArcSight jest tworzona na platformie Azure z aplikacją usługi Azure AD dla łącznika ArcSight i kont magazynu zawierających zamapowane pliki w formacie CEF.
 
-4. Na koniec wykonaj kroki po wdrożeniu w konfiguracjach po wdrożeniu przewodnika konfiguracji. W tej sekcji wyjaśniono, jak przeprowadzić dodatkową konfigurację, jeśli korzystasz z planu App Service, aby zapobiec przejściu aplikacji funkcji po upływie limitu czasu, skonfigurować przesyłanie strumieniowe dzienników diagnostycznych z centrum zdarzeń i zaktualizować demona dziennika systemu w systemie. SmartConnector certyfikat magazynu kluczy, aby skojarzyć go z nowo utworzonym kontem magazynu.
+4. Na koniec wykonaj kroki po wdrożeniu w **konfiguracjach po wdrożeniu** przewodnika konfiguracji. W tej sekcji wyjaśniono, jak przeprowadzić dodatkową konfigurację, jeśli korzystasz z planu App Service, aby zapobiec przejściu aplikacji funkcji po upływie limitu czasu, skonfigurować przesyłanie strumieniowe dzienników diagnostycznych z centrum zdarzeń i zaktualizować demona dziennika systemu w systemie. SmartConnector certyfikat magazynu kluczy, aby skojarzyć go z nowo utworzonym kontem magazynu.
 
 5. W przewodniku konfiguracji wyjaśniono również, jak dostosować właściwości łącznika na platformie Azure oraz jak uaktualnić i odinstalować łącznik. Znajduje się w nim także sekcja ulepszenia wydajności, w tym uaktualnienie do [planu zużycia na platformie Azure](https://azure.microsoft.com/pricing/details/functions) i konfigurowanie ArcSight Load Balancer, jeśli obciążenie zdarzenia jest większe niż to, co może obsłużyć jeden demon w systemie SmartConnector.
 

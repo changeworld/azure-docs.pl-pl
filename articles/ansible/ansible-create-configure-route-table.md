@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Konfigurowanie tabel tras platformy Azure za pomocą rozwiązania Ansible | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzenie, zmienianie i usuwanie tabel tras platformy Azure za pomocą rozwiązania Ansible
+title: Samouczek — Konfigurowanie tabel tras platformy Azure przy użyciu rozwiązania ansible
+description: Dowiedz się, jak tworzyć, zmieniać i usuwać tabele tras platformy Azure przy użyciu rozwiązania ansible
 keywords: ansible, azure, devops, bash, playbook, networking, route, route table
 ms.topic: tutorial
 ms.service: ansible
@@ -8,24 +8,24 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 846ff510603c0ed0888ec92ece8b86fad0354c19
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 14753af58a179ddf4011cb29c7ed08faab62875c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230890"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241780"
 ---
-# <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Samouczek: Konfigurowanie tabel tras platformy Azure za pomocą rozwiązania Ansible
+# <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Samouczek: Konfigurowanie tabel tras platformy Azure przy użyciu rozwiązania ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-28-note.md)]
 
-Platforma Azure automatycznie kieruje ruchem między podsieciami platformy Azure, sieciami wirtualnymi i sieciami lokalnymi. Jeśli potrzebujesz większej kontroli nad routingu w danym środowisku, można utworzyć [tabeli tras](/azure/virtual-network/virtual-networks-udr-overview). 
+Platforma Azure automatycznie kieruje ruchem między podsieciami platformy Azure, sieciami wirtualnymi i sieciami lokalnymi. Jeśli potrzebujesz większej kontroli nad routingiem środowiska, możesz utworzyć [tabelę tras](/azure/virtual-network/virtual-networks-udr-overview). 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> Utwórz tabelę tras Utwórz sieć wirtualną i podsieć kojarzenie tabeli tras z podsiecią usuwanie skojarzenia tabelę tras z podsiecią, tworzenie i usuwanie kieruje zapytania tabeli tras, usuwanie tabeli tras
+> Tworzenie tabeli tras tworzenie sieci wirtualnej i podsieci kojarzenie tabeli tras z podsiecią Usuń skojarzenie tabeli tras z podsieci tworzenie i usuwanie tras kwerenda tabeli tras Usuwanie tabeli tras
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +34,7 @@ Platforma Azure automatycznie kieruje ruchem między podsieciami platformy Azure
 
 ## <a name="create-a-route-table"></a>Tworzenie tabeli tras
 
-Kod elementu playbook w tej sekcji tworzy tabelę tras. Aby uzyskać informacji na temat limitów tabeli tras, zobacz [limity platformy Azure](/azure/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
+Kod element PlayBook w tej sekcji tworzy tabelę tras. Aby uzyskać informacje na temat limitów tabel tras, zobacz [limity platformy Azure](/azure/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
 
 Zapisz następujący podręcznik jako `route_table_create.yml`:
 
@@ -50,7 +50,7 @@ Zapisz następujący podręcznik jako `route_table_create.yml`:
         resource_group: "{{ resource_group }}"
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_table_create.yml
@@ -58,25 +58,25 @@ ansible-playbook route_table_create.yml
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Kojarzenie tabeli tras z podsiecią
 
-Kod elementu playbook w tej sekcji:
+Kod element PlayBook w tej sekcji:
 
 * Tworzy sieć wirtualną
 * Tworzy podsieć w sieci wirtualnej
 * Kojarzy tabelę tras z podsiecią
 
-Tabele tras nie są skojarzone z sieciami wirtualnymi. Przeciwnie tabele tras są skojarzone z podsiecią sieci wirtualnej.
+Tabele tras nie są skojarzone z sieciami wirtualnymi. Zamiast tego tabele tras są skojarzone z podsiecią sieci wirtualnej.
 
-Tabeli wirtualnej sieci i trasy musi współistnieć w tej samej lokalizacji platformy Azure i subskrypcji.
+Sieć wirtualna i tabela tras muszą współistnieć w tej samej lokalizacji i subskrypcji platformy Azure.
 
-Podsieci i tabel tras relacją jeden do wielu. Można zdefiniować podsieci bez tabeli tras skojarzone lub tabeli tras. Tabele tras może być skojarzony z Brak, jeden lub wiele podsieci. 
+Podsieci i tabele tras mają relację "jeden do wielu". Podsieć może być zdefiniowana bez skojarzonej tabeli tras lub jednej tabeli tras. Tabele tras można kojarzyć z brakmi, jedną lub wieloma podsieciami. 
 
 Ruch z podsieci jest kierowany na podstawie:
 
-- trasy zdefiniowane tabele tras
-- [Trasy domyślne](/azure/virtual-network/virtual-networks-udr-overview#default)
-- propagowane trasy z sieci lokalnej
+- Trasy zdefiniowane w tabelach tras
+- [trasy domyślne](/azure/virtual-network/virtual-networks-udr-overview#default)
+- trasy propagowane z sieci lokalnej
 
-Sieć wirtualna muszą być podłączone do bramy sieci wirtualnej platformy Azure. Brama może być ExpressRoute lub sieci VPN, jeśli przy użyciu protokołu BGP z bramą sieci VPN.
+Sieć wirtualna musi być połączona z bramą sieci wirtualnej platformy Azure. Brama może być ExpressRoute lub sieci VPN w przypadku używania protokołu BGP z bramą sieci VPN.
 
 Zapisz następujący podręcznik jako `route_table_associate.yml`:
 
@@ -107,7 +107,7 @@ Zapisz następujący podręcznik jako `route_table_associate.yml`:
         route_table: "{ route_table_name }"
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_table_associate.yml
@@ -115,9 +115,9 @@ ansible-playbook route_table_associate.yml
 
 ## <a name="dissociate-a-route-table-from-a-subnet"></a>Usuwanie skojarzenia tabeli tras z podsiecią
 
-Kod elementu playbook w tej sekcji dissociates tabelę tras z podsiecią.
+Kod element PlayBook w tej sekcji tworzy skojarzenie tabeli tras z podsieci.
 
-Usuwanie skojarzenia tabelę tras z podsiecią, ustawić `route_table` podsieci do `None`. 
+Przy skojarzeniu tabeli tras z podsieci ustaw wartość `route_table` dla podsieci na `None`. 
 
 Zapisz następujący podręcznik jako `route_table_dissociate.yml`:
 
@@ -136,7 +136,7 @@ Zapisz następujący podręcznik jako `route_table_dissociate.yml`:
         address_prefix_cidr: "10.1.0.0/24"
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_table_dissociate.yml
@@ -144,7 +144,7 @@ ansible-playbook route_table_dissociate.yml
 
 ## <a name="create-a-route"></a>Tworzenie trasy
 
-Kod elementu playbook w tej sekcji trasy w tabeli tras. 
+Kod element PlayBook w tej sekcji jest trasą w tabeli tras. 
 
 Zapisz następujący podręcznik jako `route_create.yml`:
 
@@ -164,12 +164,12 @@ Zapisz następujący podręcznik jako `route_create.yml`:
         route_table_name: "{{ route_table_name }}"
 ```
 
-Przed uruchomieniem elementu playbook, zobacz następujące uwagi:
+Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
 
-* `virtual_network_gateway` jest zdefiniowany jako `next_hop_type`. Aby uzyskać więcej informacji na temat jak platforma Azure wybiera trasy, zobacz [Omówienie routingu](/azure/virtual-network/virtual-networks-udr-overview).
-* `address_prefix` jest zdefiniowany jako `10.1.0.0/16`. Nie można zduplikować prefiksu w ramach tabeli tras.
+* `virtual_network_gateway` jest zdefiniowany jako `next_hop_type`. Aby uzyskać więcej informacji na temat sposobu wybierania tras przez platformę Azure, zobacz [Omówienie routingu](/azure/virtual-network/virtual-networks-udr-overview).
+* `address_prefix` jest zdefiniowany jako `10.1.0.0/16`. Nie można zduplikować prefiksu w tabeli tras.
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_create.yml
@@ -177,7 +177,7 @@ ansible-playbook route_create.yml
 
 ## <a name="delete-a-route"></a>Usuwanie trasy
 
-Kod elementu playbook w tej sekcji usuwa trasę z tabeli tras.
+Kod element PlayBook w tej sekcji usuwa trasę z tabeli tras.
 
 Zapisz następujący podręcznik jako `route_delete.yml`:
 
@@ -196,15 +196,15 @@ Zapisz następujący podręcznik jako `route_delete.yml`:
         state: absent
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_delete.yml
 ```
 
-## <a name="get-route-table-information"></a>Pobieranie informacji o tabeli tras
+## <a name="get-route-table-information"></a>Pobierz informacje o tabeli tras
 
-Kod elementu playbook w tej sekcji używa modułu Ansible `azure_rm_routetable_facts` można pobrać informacji o tabeli tras.
+Kod element PlayBook w tej sekcji używa modułu rozwiązania ansible `azure_rm_routetable_facts` do pobierania informacji o tabeli tras.
 
 Zapisz następujący podręcznik jako `route_table_facts.yml`:
 
@@ -224,7 +224,7 @@ Zapisz następujący podręcznik jako `route_table_facts.yml`:
          var: query.route_tables[0]
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_table_facts.yml
@@ -232,11 +232,11 @@ ansible-playbook route_table_facts.yml
 
 ## <a name="delete-a-route-table"></a>Usuwanie tabeli tras
 
-Kod elementu playbook w tej sekcji tabeli tras.
+Kod element PlayBook w tej sekcji a tabeli tras.
 
-Po usunięciu tabeli tras wszystkich jego tras również zostaną usunięte.
+Po usunięciu tabeli tras wszystkie jej trasy również są usuwane.
 
-Nie można usunąć tabeli tras, jeśli jest ona skojarzona z podsiecią. [Usuń skojarzenie tabeli tras z dowolnej podsieci](#dissociate-a-route-table-from-a-subnet) przed podjęciem próby wykonania można usunąć tabeli tras. 
+Nie można usunąć tabeli tras, jeśli jest ona skojarzona z podsiecią. Usuń [skojarzenie tabeli tras z dowolnych podsieci](#dissociate-a-route-table-from-a-subnet) przed podjęciem próby usunięcia tabeli tras. 
 
 Zapisz następujący podręcznik jako `route_table_delete.yml`:
 
@@ -253,12 +253,12 @@ Zapisz następujący podręcznik jako `route_table_delete.yml`:
         state: absent
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook route_table_delete.yml
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
 > [Rozwiązanie Ansible na platformie Azure](/azure/ansible/)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5819a6c6d73b2ee51fc72d2b56d99b0efb3ea0be
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058340"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241124"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — bezpieczny dostęp do serwera interfejsu API przy użyciu zakresów autoryzowanych adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -77,7 +77,7 @@ Podczas konfigurowania zakresów autoryzowanych adresów IP serwera interfejsu A
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Przegląd zakresów adresów IP autoryzowanych serwerów interfejsu API
 
-Serwer interfejsu API Kubernetes to sposób ujawniania podstawowych interfejsów API Kubernetes. Ten składnik zapewnia interakcję z narzędziami do zarządzania, `kubectl` takimi jak lub pulpitem nawigacyjnym Kubernetes. AKS zapewnia jednodostępny wzorzec klastra z dedykowanym serwerem interfejsu API. Domyślnie serwer interfejsu API ma przypisany publiczny adres IP i należy kontrolować dostęp przy użyciu kontroli dostępu opartej na rolach (RBAC).
+Serwer interfejsu API Kubernetes to sposób ujawniania podstawowych interfejsów API Kubernetes. Ten składnik zapewnia interakcję z narzędziami do zarządzania, takimi jak `kubectl` lub pulpit nawigacyjny Kubernetes. AKS zapewnia jednodostępny wzorzec klastra z dedykowanym serwerem interfejsu API. Domyślnie serwer interfejsu API ma przypisany publiczny adres IP i należy kontrolować dostęp przy użyciu kontroli dostępu opartej na rolach (RBAC).
 
 Aby zabezpieczyć dostęp do dostępnego publicznie AKS kontroli/serwera interfejsu API, można włączyć i używać autoryzowanych zakresów adresów IP. Te autoryzowane zakresy adresów IP zezwalają na komunikowanie się z serwerem interfejsu API tylko zdefiniowanym zakresom IP. Żądanie wysłane do serwera interfejsu API z adresu IP, który nie jest częścią tych autoryzowanych zakresów adresów IP, jest blokowane. Należy nadal używać RBAC, aby autoryzować użytkowników i akcje, które żądają.
 
@@ -228,7 +228,7 @@ Aby włączyć zakres adresów IP autoryzowanych przez serwer interfejsu API, na
 
 Użyj polecenia [AZ AKS Update][az-aks-update] i określ *zakresy--API-Server-autoryzowane-IP-* allows, aby zezwolić. Te zakresy adresów IP są zwykle zakresami adresów używanymi przez sieci lokalne. Dodaj publiczny adres IP własnej zapory platformy Azure uzyskany w poprzednim kroku, na przykład *20.42.25.196/32*.
 
-Poniższy przykład umożliwia włączenie zakresów adresów IP autoryzowanych serwerów interfejsu API w klastrze o nazwie *myAKSCluster* w grupie zasobów o nazwie Moja *resourceName*. Zakresy adresów IP do autoryzacji to *20.42.25.196/32* (publiczny adres IP zapory platformy Azure), a następnie *172.0.0.0/16* i *168.10.0.0/18*:
+Poniższy przykład umożliwia włączenie zakresów adresów IP autoryzowanych serwerów interfejsu API w klastrze o nazwie *myAKSCluster* w grupie zasobów o nazwie Moja *resourceName*. Zakresy adresów IP do autoryzowania to *20.42.25.196/32* (publiczny adres IP zapory platformy Azure), a następnie *172.0.0.0/16* (zakres adresów/węzłów) i *168.10.0.0/18* (servicecidr):
 
 ```azurecli-interactive
 az aks update \
@@ -236,6 +236,13 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
+
+> [!NOTE]
+> Należy dodać te zakresy do listy dozwolonych:
+> - Publiczny adres IP zapory
+> - CIDR usługi
+> - Zakres adresów dla podsieci, z węzłami i zestawami
+> - Każdy zakres reprezentujący sieci, z których będziesz administrować klastrem
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Aktualizowanie lub wyłączanie autoryzowanych zakresów adresów IP
 

@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 9bea8da4f0d694be3a39a8f5dfaca8e54ce2773d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931245"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255664"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Jak używać Azure Monitor skoroszytów dla raportów Azure Active Directory
 
@@ -49,6 +49,13 @@ Aby używać skoroszytów monitorowania, potrzebne są:
 
 - [Obszar roboczy log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
+- [Dostęp](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) do obszaru roboczego usługi log Analytics
+- Poniższe role w Azure Active Directory (Jeśli uzyskujesz dostęp do Log Analytics za poorednictwem portalu Azure Active Directory)
+    - Administrator zabezpieczeń
+    - Czytelnik zabezpieczeń
+    - Czytelnik raportu
+    - Administrator globalny
+
 ## <a name="roles"></a>Role
 Aby zarządzać skoroszytami, musisz mieć jedną z następujących ról oraz mieć [dostęp do podstawowego](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) obszaru roboczego log Analytics:
 -   Administrator globalny
@@ -62,7 +69,7 @@ Aby zarządzać skoroszytami, musisz mieć jedną z następujących ról oraz mi
 
 Aby uzyskać dostęp do skoroszytów:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 2. W okienku nawigacji po lewej stronie wybierz pozycję **Azure Active Directory**.
 
@@ -72,7 +79,7 @@ Aby uzyskać dostęp do skoroszytów:
 
 4. Wybierz raport lub szablon lub na pasku narzędzi wybierz pozycję **Otwórz**. 
 
-    ![Wybierz przycisk Otwórz](./media/howto-use-azure-monitor-workbooks/42.png)
+    ![Wybierz pozycję Otwórz](./media/howto-use-azure-monitor-workbooks/42.png)
 
 
 ## <a name="sign-in-analysis"></a>Analiza logowania
@@ -85,13 +92,13 @@ Ten skoroszyt zawiera następujące trendy dotyczące logowania:
 
 - Powodzenie
 
-- Oczekuje akcja użytkownika
+- Akcja oczekującego użytkownika
 
 - Niepowodzenie
 
 Każdy trend można filtrować według następujących kategorii:
 
-- Zakres czasu
+- Przedział czasu
 
 - Aplikacje
 
@@ -102,7 +109,7 @@ Każdy trend można filtrować według następujących kategorii:
 
 Dla każdego trendu otrzymujesz podział według następujących kategorii:
 
-- Location
+- Lokalizacja
 
     ![Logowania według lokalizacji](./media/howto-use-azure-monitor-workbooks/45.png)
 
@@ -125,7 +132,7 @@ Ten skoroszyt zawiera następujące trendy dotyczące logowania:
 
 Każdy trend można filtrować według następujących kategorii:
 
-- Zakres czasu
+- Przedział czasu
 
 - Aplikacje
 
@@ -149,7 +156,7 @@ Aby uzyskać dostęp do skoroszytu w przypadku logowania za pomocą [zasad dost�
 
 Ten skoroszyt zawiera trendy dotyczące wyłączonych logowań. Każdy trend można filtrować według następujących kategorii:
 
-- Zakres czasu
+- Przedział czasu
 
 - Aplikacje
 
@@ -186,7 +193,7 @@ Ten skoroszyt zawiera następujące wyłączane trendy dotyczące logowania:
 
 Każdy trend można filtrować według następujących kategorii:
 
-- Zakres czasu
+- Przedział czasu
 
 - Aplikacje
 
@@ -208,7 +215,7 @@ Za pomocą skoroszytu **analizy błędów logowania** można rozwiązywać probl
 
 - Logowania
 - Zasady dostępu warunkowego
-- Starsze uwierzytelnianie 
+- Starsza wersja uwierzytelniania 
 
 
 Aby uzyskać dostęp do logowania za pomocą danych dostępu warunkowego, w sekcji **Rozwiązywanie problemów** wybierz pozycję **logowania przy użyciu starszego uwierzytelniania**. 
@@ -226,7 +233,7 @@ Ten skoroszyt zawiera następujące trendy dotyczące logowania:
 
 Każdy trend można filtrować według następujących kategorii:
 
-- Zakres czasu
+- Przedział czasu
 
 - Aplikacje
 

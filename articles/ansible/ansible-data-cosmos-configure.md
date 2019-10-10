@@ -1,32 +1,32 @@
 ---
-title: Samouczek — Konfigurowanie konta usługi Azure Cosmos DB za pomocą rozwiązania Ansible | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć i skonfigurować usługi Azure Cosmos DB za pomocą rozwiązania Ansible
-keywords: ansible, azure, devops, bash, playbook, cosmo db, database
+title: Samouczek — Konfigurowanie kont Azure Cosmos DB przy użyciu rozwiązania ansible
+description: Dowiedz się, jak utworzyć i skonfigurować Azure Cosmos DB przy użyciu programu rozwiązania ansible
+keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, Cosmo DB, baza danych
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 06d416358c1886f09b0b2336cc1ea53ce89947ae
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 82cb29cfe3aeb7b6ca43fceca4c900b2eeb148c2
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230803"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242073"
 ---
-# <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Samouczek: Konfiguruj konta usługi Azure Cosmos DB za pomocą rozwiązania Ansible
+# <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Samouczek: Konfigurowanie kont Azure Cosmos DB przy użyciu rozwiązania ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Usługa Azure Cosmos DB](/azure/cosmos-db/) usługa bazy danych, która obsługuje kilka typów bazy danych. Bazy danych należą do dokumentów, pary klucz wartość, szerokokolumnowe i wykres. Za pomocą rozwiązania Ansible, możesz zautomatyzować wdrażanie i konfigurowanie zasobów w danym środowisku.
+[Azure Cosmos DB](/azure/cosmos-db/) to usługa bazy danych, która obsługuje kilka typów baz danych. Typy tych baz danych obejmują: dokument, klucz-wartość, szeroką kolumnę i Graf. Za pomocą rozwiązania ansible można zautomatyzować wdrażanie i konfigurację zasobów w środowisku.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Tworzenie konta
-> * Pobieranie kluczy konta
+> * Pobierz klucze konta
 > * Usuń konto
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -35,9 +35,9 @@ ms.locfileid: "65230803"
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-random-postfix"></a>Tworzenie losowego przyrostka
+## <a name="create-a-random-postfix"></a>Tworzenie losowego przyrostku
 
-Fragment kodu z elementu playbook przykładowy tworzy losowe odwrotnej notacji. Przyrostkowa jest używany jako część nazwy konta usługi Azure Cosmos DB.
+Przykładowy fragment kodu element PlayBook tworzy losowy przyrostek. Przyrostk jest używany jako część nazwy konta Azure Cosmos DB.
 
 ```yml
   - hosts: localhost
@@ -50,7 +50,7 @@ Fragment kodu z elementu playbook przykładowy tworzy losowe odwrotnej notacji. 
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów 
 
-Fragment kodu z elementów playbook przykładowy tworzy grupę zasobów platformy Azure. Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
+Przykładowy fragment kodu element PlayBook tworzy grupę zasobów platformy Azure. Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
 ```yml
   - name: Create a resource group
@@ -61,7 +61,7 @@ Fragment kodu z elementów playbook przykładowy tworzy grupę zasobów platform
 
 ## <a name="create-virtual-network-and-subnet"></a>Tworzenie sieci wirtualnej i podsieci
 
-Poniższy kod tworzy sieć wirtualną i podsieć dla usługi Azure Cosmos DB:
+Poniższy kod tworzy sieć wirtualną i podsieć dla konta Azure Cosmos DB:
 
 ```yml
   - name: Create virtual network
@@ -83,9 +83,9 @@ Poniższy kod tworzy sieć wirtualną i podsieć dla usługi Azure Cosmos DB:
       address_prefix_cidr: "10.1.0.0/24"
 ```
 
-## <a name="create-an-azure-cosmos-db-account"></a>Utwórz konto usługi Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
 
-Poniższy kod tworzy konto usługi Cosmos DB:
+Poniższy kod tworzy konto Cosmos DB:
 
 ```yml
   - name: Create instance of Cosmos DB Account
@@ -110,11 +110,11 @@ Poniższy kod tworzy konto usługi Cosmos DB:
       enable_automatic_failover: yes
 ```
 
-Tworzenie konta potrwa kilka minut.
+Tworzenie konta może potrwać kilka minut.
 
-## <a name="retrieve-the-keys"></a>Pobieranie kluczy
+## <a name="retrieve-the-keys"></a>Pobierz klucze
 
-Poniższy kod pobiera kluczy do użycia w aplikacji.
+Poniższy kod pobiera klucze do użycia w aplikacji.
 
 ```yml
   - name: Get Cosmos DB Account facts with keys
@@ -129,9 +129,9 @@ Poniższy kod pobiera kluczy do użycia w aplikacji.
       var: output
 ```
 
-## <a name="delete-the-azure-cosmos-db-account"></a>Usuwanie konta usługi Azure Cosmos DB
+## <a name="delete-the-azure-cosmos-db-account"></a>Usuwanie konta Azure Cosmos DB
 
-Na koniec ostatni fragment kodu pokazuje, jak można usunąć konta usługi Azure Cosmos DB.
+Na koniec ostatni fragment kodu przedstawia sposób usuwania konta Azure Cosmos DB.
 
 ```yml
   - name: Delete instance of Cosmos DB Account
@@ -141,10 +141,10 @@ Na koniec ostatni fragment kodu pokazuje, jak można usunąć konta usługi Azur
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Pobierz Podręcznik próbki
+## <a name="get-the-sample-playbook"></a>Pobierz przykładową element PlayBook
 
-Istnieją dwa sposoby pobrania Podręcznik pełny przykład:
-- [Pobierz Podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) i zapisać go w celu `cosmosdb.yml`.
+Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
+- [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) i Zapisz go w `cosmosdb.yml`.
 - Utwórz nowy plik o nazwie `cosmosdb.yml` i skopiuj do niego następującą zawartość:
 
 ```yml
@@ -229,15 +229,15 @@ Istnieją dwa sposoby pobrania Podręcznik pełny przykład:
         state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Uruchamianie elementu playbook próbki
+## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowej element PlayBook
 
-W tej sekcji Uruchamianie elementu playbook, aby przetestować różne funkcje przedstawione w tym artykule.
+W tej sekcji należy uruchomić element PlayBook w celu przetestowania różnych funkcji przedstawionych w tym artykule.
 
-Przed uruchomieniem elementu playbook, należy wprowadzić następujące zmiany:
-- W `vars` sekcji i Zastąp `{{ resource_group_name }}` nazwą grupy zasobów.
-- Upewnij się, że "cosmosdbaccount_name zawiera tylko małe litery oraz jest globalnie unikatowa.
+Przed uruchomieniem element PlayBook wprowadź następujące zmiany:
+- W sekcji `vars` Zastąp symbol zastępczy `{{ resource_group_name }}` nazwą grupy zasobów.
+- Upewnij się, że element "cosmosdbaccount_name zawiera tylko małe litery i jest unikatowy globalnie.
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook cosmosdb.yml
@@ -245,9 +245,9 @@ ansible-playbook cosmosdb.yml
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
 
-Zapisz poniższy kod jako `cleanup.yml`:
+Zapisz następujący kod jako `cleanup.yml`:
 
 ```yml
 - hosts: localhost
@@ -261,13 +261,13 @@ Zapisz poniższy kod jako `cleanup.yml`:
         state: absent
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
 > [Rozwiązanie Ansible na platformie Azure](/azure/ansible/)

@@ -1,74 +1,74 @@
 ---
-title: Przenoszenie danych do Avere vFXT dla platformy Azure
-description: Jak dodawać dane do nowego woluminu magazynu do użycia z Avere vFXT dla platformy Azure
+title: Przeniesienie danych do avere vFXT dla platformy Azure
+description: Jak dodać dane do nowego woluminu magazynu do użycia z avere vFXT dla platformy Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: f4696d9e2d45e99089c9a723024067bf3b2aabcc
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410123"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255435"
 ---
-# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Przenoszenie danych do klastra vFXT — równoległego pozyskiwania 
+# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Przeniesienie danych do klastra vFXT — pozyskiwanie danych równoległych 
 
-Po utworzeniu nowego klastra vFXT pierwsze zadanie może być do przenoszenia danych do nowego woluminu magazynu. Jednak jeśli w zwykły sposób przenoszenia danych jest wykonywane polecenie prostą kopię z jednego klienta, zostanie wyświetlony ekran podobny wydajności kopiowania powolne. Jednowątkowe kopiowania nie jest dobra opcja w przypadku kopiowania danych do magazynu w klastrze vFXT Avere wewnętrznej bazy danych.
+Po utworzeniu nowego klastra vFXT pierwsze zadanie może polegać na przeniesieniu danych do nowego woluminu magazynu. Jeśli jednak zwykła Metoda przeniesienia danych jest wydawana proste polecenie kopiowania z jednego klienta, prawdopodobnie zostanie wyświetlona powolna wydajność kopiowania. Kopiowanie jednowątkowe nie jest dobrym rozwiązaniem w przypadku kopiowania danych do magazynu zaplecza avere vFXT klastra.
 
-Ponieważ klaster vFXT Avere jest skalowalna wielu klientów pamięci podręcznej, to najszybszy i najbardziej efektywny sposób kopiowania danych do niego jest z wieloma klientami. Ta technika parallelizes pozyskiwanie pomiarów dotyczących plików i obiektów.
+Ponieważ klaster avere vFXT to skalowalna pamięć podręczna z wieloma klientami, najszybszą i najbardziej wydajną metodą kopiowania danych do niej jest wiele klientów. Ta technika parallelizes pozyskiwanie plików i obiektów.
 
-![Diagram przedstawiający wielu klientów wielowątkowych przenoszenia danych: W lewym górnym rogu ikonę magazynu sprzętu lokalnego ma wiele strzałki pochodzących z niego. Strzałki wskazują cztery komputery klienckie. Z każdego komputera klienckiego trzy strzałki wskazują Avere vFXT. Skieruj wiele strzałki Avere vFXT, do usługi Blob storage.](media/avere-vfxt-parallel-ingest.png) 
+![Diagram przedstawiający wiele klientów, przenoszenie danych wielowątkowych: w lewym górnym rogu ikona lokalnego magazynu sprzętu ma wiele strzałek. Strzałki wskazują cztery komputery klienckie. Z każdego komputera klienckiego trzy strzałki wskazują na avere vFXT. Z avere vFXT, wiele strzałek wskazuje na usługi BLOB Storage.](media/avere-vfxt-parallel-ingest.png) 
 
-``cp`` Lub ``copy`` poleceń, które są często używane do korzystania z na przesyłanie danych z jednego magazynu systemu do drugiego to procesy jednowątkowe kopiować tylko jeden plik jednocześnie. Oznacza to, że serwer plików jest wprowadzane tylko jeden plik jednocześnie — czyli do marnowania zasobów klastra.
+Polecenia ``cp`` lub ``copy``, które są często używane do transferowania danych z jednego systemu magazynu do innego, to procesy jednowątkowe, które kopiującą tylko jeden plik jednocześnie. Oznacza to, że serwer plików pobiera tylko jeden plik w czasie, który jest odpadami zasobów klastra.
 
-W tym artykule opisano Strategie tworzenia wielu klientów, wielowątkowe kopiowania systemu, aby przenieść dane do klastra vFXT Avere pliku. Wyjaśniono pojęcia transferu plików i punkty decyzyjne, które mogą służyć do wydajne danych kopiowania za pomocą wielu poleceń prostą kopię i klientów.
+W tym artykule opisano strategie tworzenia wieloskładnikowego systemu kopiowania plików wielowątkowych do przenoszenia danych do klastra vFXT avere. Objaśniono w nim koncepcje transferu plików i punkty decyzyjne, które mogą być używane do wydajnego kopiowania danych przy użyciu wielu klientów i prostych poleceń kopiowania.
 
-Objaśniono także niektóre narzędzia, które mogą pomóc. ``msrsync`` Narzędzie może służyć do częściowo zautomatyzować proces dzielenia zestawu danych do zasobników i za pomocą polecenia rsync. ``parallelcp`` Innego narzędzia, która odczytuje katalog źródłowy jest skrypt i problemy poleceń kopiowania.  
+Wyjaśniono również niektóre narzędzia, które mogą pomóc. Narzędzie ``msrsync`` może służyć do częściowo automatyzowania procesu dzielenia zestawu danych na przedziały i używania poleceń rsync. Skrypt ``parallelcp`` jest innym narzędziem, które odczytuje Katalog źródłowy i automatycznie wystawia polecenia kopiowania.  
 
 Kliknij link, aby przejść do sekcji:
 
-* [Ręczne kopiowanie przykładowych](#manual-copy-example) — szczegółowe wyjaśnienia, za pomocą polecenia Kopiuj
-* [Przykład częściowo automatyczna (msrsync)](#use-the-msrsync-utility-to-populate-cloud-volumes) 
-* [Przykład równoległych kopii](#use-the-parallel-copy-script)
+* [Przykład ręcznego kopiowania](#manual-copy-example) — dokładne wyjaśnienie przy użyciu poleceń kopiowania
+* [Przykład częściowo zautomatyzowany (msrsync)](#use-the-msrsync-utility-to-populate-cloud-volumes) 
+* [Przykład kopiowania równoległego](#use-the-parallel-copy-script)
 
-## <a name="data-ingestor-vm-template"></a>Szablon maszyny Wirtualnej systemem zbierania danych
+## <a name="data-ingestor-vm-template"></a>Szablon maszyny wirtualnej pozyskiwania danych
 
-Szablon usługi Resource Manager jest dostępna w witrynie GitHub, aby automatycznie utworzyć Maszynę wirtualną za pomocą narzędzi pozyskiwania danych równoległych wymienionych w tym artykule. 
+Szablon Menedżer zasobów jest dostępny w witrynie GitHub, aby automatycznie utworzyć maszynę wirtualną z narzędziami pozyskiwania danych równoległych wymienionymi w tym artykule. 
 
-![Diagram przedstawiający kilka strzałkami z magazynu obiektów blob, Magazyn sprzętu i źródła plików platformy Azure. Strzałki wskazują "danych dużych możliwościach skalowania maszyny wirtualnej" i z tego miejsca wielu strzałki wskazują Avere vFXT](media/avere-vfxt-ingestor-vm.png)
+![Diagram przedstawiający wiele strzałek z magazynu obiektów blob, magazynu sprzętu i źródeł plików platformy Azure. Strzałki wskazują na "maszynę wirtualną pozyskiwania danych" i z niej wiele strzałek wskazują na avere vFXT](media/avere-vfxt-ingestor-vm.png)
 
-Danych dużych możliwościach skalowania maszyn wirtualnych stanowi część samouczka, gdzie nowo utworzonej maszyny Wirtualnej instaluje Avere vFXT klastra i pobierania jej uruchamiania skryptu z klastra. Odczyt [Bootstrap danych dużych możliwościach skalowania maszyn wirtualnych](https://github.com/Azure/Avere/blob/master/docs/data_ingestor.md) Aby uzyskać szczegółowe informacje.
+Maszyna wirtualna pozyskiwania danych jest częścią samouczka, w którym nowo utworzona maszyna wirtualna instaluje klaster avere vFXT i pobiera jego skrypt Bootstrap z klastra. Aby uzyskać szczegółowe informacje [, przeczytaj maszynę wirtualną ładowania początkowego](https://github.com/Azure/Avere/blob/master/docs/data_ingestor.md) .
 
 ## <a name="strategic-planning"></a>Planowanie strategiczne
 
-Podczas kompilowania strategii w celu kopiowania danych w sposób równoległy, należy zrozumieć kompromisów w rozmiar pliku, liczba plików i katalog głębi.
+Podczas kompilowania strategii w celu równoległego kopiowania danych należy zrozumieć wady dotyczące wielkości plików, liczby plików i głębokości katalogów.
 
-* W przypadku małych plików Metryka zainteresowań jest plików na sekundę.
-* Kiedy pliki są duże (10MiBi lub nowszej), metryka zainteresowania wskazuje bajtów na sekundę.
+* Gdy pliki są małe, Metryka jest równa plików na sekundę.
+* Gdy pliki są duże (10MiBi lub większe), Metryka jest równa bajty na sekundę.
 
-Każdy proces kopiowania ma poziom przepływności i szybkości przesłanych plików, która może być mierzone na podstawie czasu długość polecenia Kopiuj i uwzględniając rozmiar pliku i liczba plików. Wyjaśnienie sposobu mierzenia stawki wykracza poza zakres tego dokumentu, ale konieczne jest zrozumienie, czy użytkownik będzie można zajmujących się małych lub dużych plików.
+Każdy proces kopiowania ma stawkę przepływności i szybkość transferu plików, która może być mierzona przez chronometraż czasu polecenia kopiowania i współczynnik rozmiaru pliku i liczby plików. Wyjaśnienie, jak zmierzyć stawki, wykracza poza zakres tego dokumentu, ale jest to konieczne, aby zrozumieć, czy będziesz mieć do czynienia z małymi lub dużymi plikami.
 
-## <a name="manual-copy-example"></a>Ręczne kopiowanie przykładowych 
+## <a name="manual-copy-example"></a>Przykład kopiowania ręcznego 
 
-Można ręcznie utworzyć kopię wielowątkowych na komputerze klienckim, uruchamiając jednocześnie więcej niż jednego polecenia kopiowania w tle względem wstępnie zdefiniowanych zestawów pliki lub ścieżki.
+Można ręcznie utworzyć kopię wielowątkową na kliencie, uruchamiając więcej niż jedno polecenie kopiowania jednocześnie w tle względem wstępnie zdefiniowanych zestawów plików lub ścieżek.
 
-Linux/UNIX ``cp`` polecenie zawiera argument ``-p`` zachować prawo własności i mtime metadanych. Dodanie tego argumentu do poniższych poleceń jest opcjonalne. (Dodanie argument zwiększa liczbę wywołań systemu plików wysłanych z klienta w systemie docelowym plików do modyfikacji metadanych).
+Polecenie ``cp`` z systemem Linux/UNIX zawiera argument ``-p`` w celu zachowania własności i metadanych mtime. Dodanie tego argumentu do poniższych poleceń jest opcjonalne. (Dodanie argumentu zwiększa liczbę wywołań systemu plików wysyłanych z klienta do docelowego systemu plików na potrzeby modyfikacji metadanych).
 
-Ten prosty przykład kopiuje dwa pliki w sposób równoległy:
+Ten prosty przykład kopiuje jednocześnie dwa pliki:
 
 ```bash
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Po wykonaniu tego polecenia `jobs` polecenia pokażą, że dwa wątki są uruchomione.
+Po wydaniu tego polecenia `jobs` polecenie pokazuje, że dwa wątki są uruchomione.
 
-### <a name="predictable-filename-structure"></a>Struktura przewidywalne, nazwa_pliku 
+### <a name="predictable-filename-structure"></a>Prognozowana struktura nazw plików 
 
-Jeśli Twojej nazwy plików są przewidywalne, można użyć wyrażenia do tworzenia wątków równoległych kopii. 
+Jeśli nazwy plików są przewidywalne, można użyć wyrażeń do tworzenia równoległych wątków kopiowania. 
 
-Na przykład, jeśli Twój katalog zawiera 1000 plików, które są numerowane od `0001` do `1000`, można użyć następujących wyrażeń do utworzenia dziesięć wątków równoległych na każdym skopiuj 100 plików:
+Na przykład, jeśli katalog zawiera 1000 plików, które są numerowane sekwencyjnie od `0001` do `1000`, można użyć następujących wyrażeń, aby utworzyć dziesięć równoległych wątków, dla których każda kopia 100 plików ma:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -83,11 +83,11 @@ cp /mnt/source/file8* /mnt/destination1/ & \
 cp /mnt/source/file9* /mnt/destination1/
 ```
 
-### <a name="unknown-filename-structure"></a>Nieznana nazwa pliku, struktura
+### <a name="unknown-filename-structure"></a>Nieznana struktura nazwy pliku
 
-Jeśli Twoja struktura nazewnictwa plików nie jest przewidywalne, pliki można grupować wg nazwy katalogów. 
+Jeśli struktura nazewnictwa plików nie jest przewidywalna, można grupować pliki według nazw katalogów. 
 
-W tym przykładzie zbiera całe katalogi do wysłania do ``cp`` polecenia są uruchamiane w tle:
+Ten przykład zbiera całe katalogi do wysłania do poleceń ``cp`` uruchamianych jako zadania w tle:
 
 ```bash
 /root
@@ -99,7 +99,7 @@ W tym przykładzie zbiera całe katalogi do wysłania do ``cp`` polecenia są ur
 |-/dir1d
 ```
 
-Po zebraniu są pliki, można uruchomić osobną kopię polecenia, aby rekursywnie skopiować podkatalogów i ich cała zawartość:
+Po zebraniu plików można uruchomić polecenia kopiowania równoległego w celu rekursywnego skopiowania podkatalogów i całej zawartości:
 
 ```bash
 cp /mnt/source/* /mnt/destination/
@@ -112,9 +112,9 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ### <a name="when-to-add-mount-points"></a>Kiedy należy dodać punkty instalacji
 
-Po użytkownik ma wystarczającej liczby wątków równoległych na przechodząc względem punktu instalacji systemu plików jednym miejscu, nastąpi punktu, w których dodanie większej liczby wątków nie zapewnia wyższą przepływność. (Przepływność będzie mierzone w plikach na sekundę lub bajtów na sekundę, w zależności od typu danych.) Lub co gorsza, nadmiernie wątkowości może czasami powodować spadek przepustowości.  
+Po dodaniu wystarczającej liczby równoległych wątków do jednego docelowego punktu instalacji systemu plików będzie dostępny punkt, w którym Dodawanie kolejnych wątków nie zapewnia większej przepływności. (Przepływność będzie mierzona w plikach/s lub bajtach na sekundę, w zależności od typu danych). Lub gorsze, nadmierne wątki może czasami spowodować spadek przepływności.  
 
-W takiej sytuacji można dodać punktów instalacji po stronie klienta z innymi adresami IP vFXT klastra przy użyciu tej samej ścieżki instalacji zdalnej systemu plików:
+W takim przypadku można dodać punkty instalacji po stronie klienta do innych adresów IP klastra vFXT przy użyciu tej samej ścieżki instalacji zdalnej systemu plików:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -123,9 +123,9 @@ W takiej sytuacji można dodać punktów instalacji po stronie klienta z innymi 
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Dodawanie klienta instalacji wskazuje umożliwia rozwidlenie wyłącza polecenia dodatkowych kopii do dodatkowych `/mnt/destination[1-3]` punkty instalacji, dodatkowo osiągnięcia równoległości.  
+Dodanie punktów instalacji po stronie klienta umożliwia utworzenie rozwidlenia dodatkowych poleceń kopiowania do dodatkowych punktów instalacji `/mnt/destination[1-3]`, osiągając dalsze równoległości.  
 
-Na przykład jeśli pliki są bardzo duże, można zdefiniować polecenia kopiowania, aby stosować różne docelowej ścieżki, wysyłając więcej poleceń równolegle z klienta, wykonywania kopii.
+Na przykład, jeśli pliki są bardzo duże, możesz zdefiniować polecenia kopiowania, aby użyć odrębnych ścieżek docelowych, a następnie wysłać więcej poleceń równolegle od klienta wykonującego kopię.
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -139,11 +139,11 @@ cp /mnt/source/file7* /mnt/destination2/ & \
 cp /mnt/source/file8* /mnt/destination3/ & \
 ```
 
-W powyższym przykładzie wszystkie trzy docelowe punkty instalacji są jest objęte procesami kopiowania plików klienta.
+W powyższym przykładzie wszystkie trzy docelowe punkty instalacji są wskazywane przez procesy kopiowania plików przez klienta.
 
 ### <a name="when-to-add-clients"></a>Kiedy należy dodać klientów
 
-Ponadto po osiągnięto możliwości klienta, dodawanie większej liczby wątków kopiowania dodatkowych punktów instalacji nie przyniesie wszelkie dodatkowe pliki na sekundę lub zwiększa się liczba bajtów/s. W takiej sytuacji można wdrożyć innego klienta za pomocą tego samego zestawu punktów instalacji, uruchomionych swoje własne zestawy procesami kopiowania plików. 
+Na koniec po osiągnięciu możliwości klienta dodanie większej liczby wątków kopiowania lub dodatkowych punktów instalacji nie spowoduje wzrostu jakichkolwiek dodatkowych plików/s lub bajtów/s. W takiej sytuacji można wdrożyć innego klienta z tym samym zestawem punktów instalacji, na których będą uruchomione własne zestawy procesów kopiowania plików. 
 
 Przykład:
 
@@ -165,11 +165,11 @@ Client4: cp -R /mnt/source/dir2/dir2d /mnt/destination/dir2/ &
 Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 ```
 
-### <a name="create-file-manifests"></a>Utwórz plik manifestów
+### <a name="create-file-manifests"></a>Tworzenie manifestów plików
 
-Po zrozumienia metod powyżej (wielu kopii wątków na docelowym, wielu miejsc docelowych na klienta, wielu klientów na system plików źródłowych dostępnych sieci), należy wziąć pod uwagę tego zalecenia: Tworzenie pliku manifestów, a następnie używać ich za pomocą polecenia kopiowania na wielu klientach.
+Po zrozumieniu powyższych metod (wiele wątków kopiowania na miejsce docelowe, wielu miejsc docelowych na klienta, wielu klientów na dostęp do sieci), należy wziąć pod uwagę następujące zalecenia: Kompiluj manifesty plików, a następnie użyj ich razem z kopią polecenia na wielu klientach.
 
-W tym scenariuszu UNIX ``find`` polecenie, aby utworzyć manifesty plików lub katalogów:
+W tym scenariuszu do tworzenia manifestów plików lub katalogów służy polecenie UNIX ``find``:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -184,9 +184,9 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Przekierować tego wyniku do pliku: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Przekieruj ten wynik do pliku: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
-Następnie można wykonać iterację manifestu, liczba plików i określić rozmiary podkatalogów, za pomocą polecenia powłoki BASH:
+Następnie można wykonać iterację w manifeście przy użyciu poleceń BASH do zliczania plików i określania rozmiarów podkatalogów:
 
 ```bash
 ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l`    `du -sh ${i}`"; done
@@ -225,56 +225,56 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-Na koniec należy tworzyć polecenia kopiowania rzeczywistego pliku do klientów.  
+Na koniec należy porównać do klientów rzeczywiste polecenia kopiowania plików.  
 
-Jeśli klienci znajdują się cztery, użyj tego polecenia:
+Jeśli masz czterech klientów, użyj tego polecenia:
 
 ```bash
 for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 ```
 
-Jeśli masz pięć komputerów klienckich, należy użyć podobny do poniższego:
+Jeśli masz pięć klientów, użyj podobnej do tego:
 
 ```bash
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-Oraz sześć... Ekstrapolację zgodnie z potrzebami.
+I przez sześć.... Ekstrapolacja w razie konieczności.
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Zostanie wyświetlony *N* pliki wynikowe, po jednym dla każdej usługi *N* klientów, które zawiera nazwy ścieżek do katalogów poziomu czterech uzyskane w ramach danych wyjściowych z `find` polecenia. 
+Otrzymasz *n* pliki wynikowe, po jednym dla każdego z *N* klientów, którzy mają nazwy ścieżek do katalogów o poziomie do czterech uzyskanych jako część danych wyjściowych polecenia `find`. 
 
-Umożliwia tworzenie polecenia Kopiuj każdego pliku:
+Użyj każdego pliku do skompilowania polecenia COPY:
 
 ```bash
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-Powyżej zapewni *N* pliki każdego za pomocą polecenia Kopiuj w każdym wierszu, który można uruchomić jako skrypt powłoki BASH na komputerze klienckim. 
+Powyższe dane będą zawierać *N* plików, z których każda zawiera polecenie copy w poszczególnych wierszach, które można uruchomić jako skrypt bash na kliencie. 
 
-Celem jest do równoległego uruchamiania wielu wątków z tych skryptów równolegle na klienta na wielu klientach.
+Celem jest jednoczesne uruchamianie wielu wątków tych skryptów na kliencie równolegle na wielu klientach.
 
-## <a name="use-the-msrsync-utility-to-populate-cloud-volumes"></a>Użyj narzędzia msrsync do wypełniania woluminy chmury
+## <a name="use-the-msrsync-utility-to-populate-cloud-volumes"></a>Używanie narzędzia msrsync do wypełniania woluminów w chmurze
 
-``msrsync`` Narzędzie również służy do przenoszenia danych do filtr rdzeni wewnętrznej bazy danych, dla klastra Avere. To narzędzie jest przeznaczone do optymalizacji przepustowości, uruchamiając wiele równoległych ``rsync`` procesów. Jest on dostępny w witrynie GitHub pod https://github.com/jbd/msrsync.
+Narzędzie ``msrsync`` służy również do przenoszenia danych do podstawowego pliku datazaplecza dla klastra avere. To narzędzie służy do optymalizowania użycia przepustowości przez uruchomienie wielu równoległych procesów ``rsync``. Jest on dostępny w witrynie GitHub pod adresem https://github.com/jbd/msrsync.
 
-``msrsync`` dzieli się katalog źródłowy w oddzielnych "zasobniki", a następnie uruchamia poszczególnych ``rsync`` procesów na każdego przedziału.
+``msrsync`` dzieli Katalog źródłowy na oddzielne "zasobniki", a następnie uruchamia poszczególne procesy ``rsync`` dla każdego przedziału.
 
-Wstępnego testowania za pomocą 4 rdzeniową maszynę Wirtualną wykazało uzyskania najlepszej wydajności, korzystając z 64 procesów. Użyj ``msrsync`` opcji ``-p`` można ustawić liczbę procesów 64.
+Testowanie wstępne przy użyciu maszyny wirtualnej z czterema rdzeniami wykazało najlepszą wydajność podczas korzystania z 64 procesów. Użyj opcji ``msrsync`` ``-p``, aby ustawić liczbę procesów na 64.
 
-Należy pamiętać, że ``msrsync`` mogą zapisywać wyłącznie do i z woluminów lokalnych. Źródłowe i docelowe muszą być dostępne jako instaluje lokalnych w sieci wirtualnej klastra.
+Należy pamiętać, że ``msrsync`` może zapisywać tylko na woluminach lokalnych i z nich. Źródło i miejsce docelowe muszą być dostępne jako instalacje lokalne w sieci wirtualnej klastra.
 
-Aby użyć msrsync do wypełniania woluminie chmury platformy Azure z klastrem Avere, wykonaj następujące instrukcje:
+Aby użyć msrsync do wypełniania woluminu w chmurze platformy Azure z klastrem avere, wykonaj następujące instrukcje:
 
-1. Zainstaluj msrsync i jego wymagania wstępne (rsync i języka Python w wersji 2.6 lub nowszej)
-1. Określ, całkowita liczba plików i katalogów do skopiowania.
+1. Zainstaluj msrsync i jej wymagania wstępne (rsync i Python 2,6 lub nowsze)
+1. Określ łączną liczbę plików i katalogów, które mają zostać skopiowane.
 
-   Na przykład, użyj narzędzia Avere ``prime.py`` z argumentami ```prime.py --directory /path/to/some/directory``` (dostępne pobierając adresu url https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py).
+   Na przykład użyj narzędzia avere ``prime.py`` z argumentami ```prime.py --directory /path/to/some/directory``` (dostępne przez pobieranie adresu URL https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py).
 
-   Jeśli nie używa ``prime.py``, można obliczyć liczbę elementów za pomocą Gnu ``find`` narzędzie w następujący sposób:
+   Jeśli nie korzystasz z ``prime.py``, możesz obliczyć liczbę elementów za pomocą narzędzia GNU ``find`` w następujący sposób:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -282,23 +282,23 @@ Aby użyć msrsync do wypełniania woluminie chmury platformy Azure z klastrem A
    find <path> |wc -l                 # (counts both)
    ```
 
-1. Dzielenie liczby elementów przez 64, aby określić liczbę elementów na proces. Użyj następującego numeru przy użyciu ``-f`` opcję, aby ustawić rozmiar zasobników, po uruchomieniu polecenia.
+1. Podziel liczbę elementów na 64, aby określić liczbę elementów w procesie. Użyj tej liczby z opcją ``-f``, aby ustawić rozmiar zasobników po uruchomieniu polecenia.
 
-1. Wykonaj polecenie msrsync, aby skopiować pliki:
+1. Wydaj polecenie msrsync w celu skopiowania plików:
 
    ```bash
    msrsync -P --stats -p64 -f<ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   Na przykład to polecenie zostało zaprojektowane, aby przenieść pliki 11 000 w procesach 64 z /test/source-repository /mnt/vfxt/repository:
+   Na przykład to polecenie jest przeznaczone do przenoszenia plików 11 000 w procesach 64 z/test/Source-Repository do/mnt/vfxt/Repository:
 
    ``mrsync -P --stats -p64 -f170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository``
 
-## <a name="use-the-parallel-copy-script"></a>Użyj skryptu osobną kopię
+## <a name="use-the-parallel-copy-script"></a>Użyj skryptu kopiowania równoległego
 
-``parallelcp`` Skrypt może być również przydatne w przypadku przenoszenia danych do magazynu w klastrze vFXT wewnętrznej bazy danych. 
+Skrypt ``parallelcp`` może być również przydatny do przeniesienia danych do magazynu zaplecza klastra vFXT. 
 
-Poniższy skrypt spowoduje dodanie pliku wykonywalnego `parallelcp`. (Ten skrypt jest przeznaczony dla systemu Ubuntu; w przypadku korzystania z innego punktów dystrybucji, należy zainstalować ``parallel`` oddzielnie.)
+Poniższy skrypt doda plik wykonywalny `parallelcp`. (Ten skrypt jest przeznaczony dla Ubuntu; w przypadku korzystania z innej dystrybucji należy zainstalować ``parallel`` osobno).
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
@@ -350,14 +350,14 @@ find \$SOURCE_DIR -mindepth 1 ! -type d -print0 | sed -z "s/\$SOURCE_DIR\///" | 
 EOM
 ```
 
-### <a name="parallel-copy-example"></a>Przykład równoległych kopii
+### <a name="parallel-copy-example"></a>Przykład kopiowania równoległego
 
-W tym przykładzie użyto równoległe Kopiuj skrypt, aby skompilować ``glibc`` przy użyciu plików źródłowych z Avere klastra. 
+W tym przykładzie użyto skryptu kopiowania równoległego do kompilowania ``glibc`` przy użyciu plików źródłowych z klastra avere. 
 <!-- xxx what is stored where? what is 'the avere cluster mount point'? xxx -->
 
-Pliki źródłowe są przechowywane w punkcie instalacji Avere klastra, a pliki obiektów są przechowywane na lokalnym dysku twardym.
+Pliki źródłowe są przechowywane w punkcie instalacji klastra avere, a pliki obiektów są przechowywane na lokalnym dysku twardym.
 
-Ten skrypt używa równoległe Kopiuj skrypt powyżej. Opcja ``-j`` jest używana z ``parallelcp`` i ``make`` uzyskanie przetwarzania równoległego.
+Ten skrypt używa skryptu kopiowania równoległego powyżej. Opcja ``-j`` jest używana z ``parallelcp`` i ``make`` do uzyskania przetwarzanie równoległe.
 
 ```bash
 sudo apt-get update

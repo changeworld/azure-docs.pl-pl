@@ -1,21 +1,21 @@
 ---
-title: Samouczek — Konfigurowanie kolejki w usłudze Azure Service Bus za pomocą rozwiązania Ansible | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą rozwiązania Ansible, można utworzyć kolejki usługi Azure Service Bus
-keywords: ansible, azure, devops, bash, playbook, service bus, queue
+title: Samouczek — Konfigurowanie kolejek w Azure Service Bus przy użyciu rozwiązania ansible
+description: Dowiedz się, jak utworzyć kolejkę Azure Service Bus za pomocą rozwiązania ansible
+keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, Service Bus, Queue
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 6efc11106fae18beac43ab1896733ab6bfc64dad
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a48796c2177a8b5b818553bf8aa0ff36f712d4e0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230773"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241398"
 ---
-# <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Samouczek: Konfigurowanie kolejki w usłudze Azure Service Bus za pomocą rozwiązania Ansible
+# <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Samouczek: Konfigurowanie kolejek w Azure Service Bus przy użyciu rozwiązania ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
@@ -26,22 +26,22 @@ ms.locfileid: "65230773"
 > [!div class="checklist"]
 >
 > * Tworzenie kolejki
-> * Utwórz plicy sygnatury dostępu Współdzielonego
-> * Pobieranie informacji dotyczących przestrzeni nazw
-> * Pobieranie informacji z kolejki
-> * Odwołaj kolejki zasad sygnatury dostępu Współdzielonego
+> * Tworzenie plicy sygnatury dostępu współdzielonego
+> * Pobierz informacje o przestrzeni nazw
+> * Pobierz informacje o kolejce
+> * Odwołaj zasady dotyczące kolejki SAS
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-the-service-bus-queue"></a>Tworzenie kolejki usługi Service Bus
+## <a name="create-the-service-bus-queue"></a>Tworzenie kolejki Service Bus
 
-Element playbook przykładowy kod umożliwia utworzenie następujących zasobów:
+Przykładowy kod element PlayBook tworzy następujące zasoby:
 - Grupa zasobów platformy Azure
-- Przestrzeń nazw magistrali usług w grupie zasobów
-- Kolejki usługi Service Bus z przestrzenią nazw
+- Service Bus przestrzeni nazw w grupie zasobów
+- Kolejka Service Bus z przestrzenią nazw
 
 Zapisz następujący podręcznik jako `servicebus_queue.yml`:
 
@@ -72,17 +72,17 @@ Zapisz następujący podręcznik jako `servicebus_queue.yml`:
           var: queue
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue.yml
 ```
 
-## <a name="create-the-sas-policy"></a>Tworzenie zasad sygnatury dostępu Współdzielonego
+## <a name="create-the-sas-policy"></a>Tworzenie zasad SAS
 
-A [sygnatury dostępu współdzielonego (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) mechanizm autoryzacji opartej na oświadczeniach przy użyciu tokenów. 
+[Sygnatura dostępu współdzielonego (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) jest mechanizmem autoryzacji opartym na oświadczeniach przy użyciu tokenów. 
 
-Przykładowy kod zawarty w podręczniku dotyczącym tworzy dwie zasady sygnatury dostępu Współdzielonego dla kolejki usługi Service Bus przy użyciu różnych uprawnień.
+Przykładowy kod element PlayBook tworzy dwie zasady sygnatury dostępu współdzielonego dla kolejki Service Bus z różnymi uprawnieniami.
 
 Zapisz następujący podręcznik jako `servicebus_queue_policy.yml`:
 
@@ -106,18 +106,18 @@ Zapisz następujący podręcznik jako `servicebus_queue_policy.yml`:
           var: policy
 ```
 
-Przed uruchomieniem elementu playbook, zobacz następujące uwagi:
-- `rights` Wartość reprezentuje uprawnień, użytkownik ma z kolejką. Określ jedną z następujących wartości: `manage`, `listen`, `send`, lub `listen_send`.
+Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
+- Wartość `rights` reprezentuje uprawnienia, które użytkownik dysponuje z kolejką. Określ jedną z następujących wartości: `manage`, `listen`, `send` lub `listen_send`.
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue_policy.yml
 ```
 
-## <a name="retrieve-namespace-information"></a>Pobieranie informacji dotyczących przestrzeni nazw
+## <a name="retrieve-namespace-information"></a>Pobierz informacje o przestrzeni nazw
 
-Przykładowy kod zawarty w podręczniku dotyczącym kwerendy informacji dotyczących przestrzeni nazw.
+Przykładowy kod element PlayBook wysyła zapytanie do informacji o przestrzeni nazw.
 
 Zapisz następujący podręcznik jako `servicebus_namespace_info.yml`:
 
@@ -139,18 +139,18 @@ Zapisz następujący podręcznik jako `servicebus_namespace_info.yml`:
           var: ns
 ```
 
-Przed uruchomieniem elementu playbook, zobacz następujące uwagi:
-- `show_sas_policies` Wartość wskazuje, czy ma być wyświetlana zasady sygnatury dostępu Współdzielonego w ramach określonego obszaru nazw. Domyślna wartość to `False` w celu uniknięcia obciążenie dodatkowe sieci.
+Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
+- Wartość `show_sas_policies` wskazuje, czy mają być wyświetlane zasady sygnatury dostępu współdzielonego w ramach określonego obszaru nazw. Domyślnie wartość jest `False`, aby uniknąć dodatkowych obciążeń sieci.
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
 ```
 
-## <a name="retrieve-queue-information"></a>Pobieranie informacji z kolejki
+## <a name="retrieve-queue-information"></a>Pobierz informacje o kolejce
 
-Przykładowe zapytania kod zawarty w podręczniku dotyczącym kolejki informacji. 
+Przykładowy kod element PlayBook zapytań informacje o kolejce. 
 
 Zapisz następujący podręcznik jako `servicebus_queue_info.yml`:
 
@@ -174,18 +174,18 @@ Zapisz następujący podręcznik jako `servicebus_queue_info.yml`:
           var: queue
 ```
 
-Przed uruchomieniem elementu playbook, zobacz następujące uwagi:
-- `show_sas_policies` Wartość wskazuje, czy ma być wyświetlana zasady sygnatury dostępu Współdzielonego w ramach określonej kolejki. Domyślnie ta wartość jest równa `False` w celu uniknięcia obciążenie dodatkowe sieci.
+Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
+- Wartość `show_sas_policies` wskazuje, czy mają być pokazywane zasady sygnatury dostępu współdzielonego w ramach określonej kolejki. Domyślnie ta wartość jest ustawiona na `False`, aby uniknąć dodatkowych obciążeń sieci.
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue_info.yml
 ```
 
-## <a name="revoke-the-queue-sas-policy"></a>Odwołaj kolejki zasad sygnatury dostępu Współdzielonego
+## <a name="revoke-the-queue-sas-policy"></a>Odwołaj zasady dotyczące kolejki SAS
 
-Przykładowy kod zawarty w podręczniku dotyczącym Usuwa kolejkę zasad sygnatury dostępu Współdzielonego.
+Przykładowy kod element PlayBook usuwa zasady sygnatury dostępu współdzielonego kolejki.
 
 Zapisz następujący podręcznik jako `servicebus_queue_policy_delete.yml`:
 
@@ -206,7 +206,7 @@ Zapisz następujący podręcznik jako `servicebus_queue_policy_delete.yml`:
           state: absent
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue_policy_delete.yml
@@ -214,9 +214,9 @@ ansible-playbook servicebus_queue_policy_delete.yml
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
 
-Zapisz poniższy kod jako `cleanup.yml`:
+Zapisz następujący kod jako `cleanup.yml`:
 
 ```yml
 ---
@@ -244,12 +244,12 @@ Zapisz poniższy kod jako `cleanup.yml`:
           force_delete_nonempty: yes
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
-> [Samouczek: Konfigurowanie tematu w usłudze Azure Service Bus za pomocą rozwiązania Ansible](ansible-service-bus-topic-configure.md)
+> [Samouczek: Konfigurowanie tematu w Azure Service Bus przy użyciu rozwiązania ansible](ansible-service-bus-topic-configure.md)

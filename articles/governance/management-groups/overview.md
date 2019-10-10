@@ -1,5 +1,5 @@
 ---
-title: Organizowanie zasobów przy użyciu grup zarządzania platformy Azure — nadzór na platformie Azure
+title: Organizowanie zasobów przy użyciu grup zarządzania — Zarządzanie platformą Azure
 description: Dowiedz się więcej na temat grup zarządzania, sposobu działania ich uprawnień i korzystania z nich.
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: dba6334815f0c86a800b38ad09487f719857f993
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: aa4c5a7bfe7333c02fe79612b828df5680b83b26
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71341109"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254720"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -90,7 +90,7 @@ Na przykład można przypisać do grupy zarządzania rolę RBAC Współautor mas
 
 Na poniższym wykresie przedstawiono listę ról i obsługiwane akcje na grupach zarządzania.
 
-| Nazwa roli RBAC             | Create | Zmiana nazwy | Przenoszenie** | Usuwanie | Przypisywanie dostępu | Przypisz zasady | Odczyt  |
+| Nazwa roli RBAC             | Create | Zmiana nazwy | Przenoszenie** | Usuń | Przypisywanie dostępu | Przypisywanie zasad | Odczyt  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Właściciel                       | X      | X      | X      | X      | X             | X             | X     |
 |Współautor                 | X      | X      | X      | X      |               |               | X     |
@@ -100,8 +100,8 @@ Na poniższym wykresie przedstawiono listę ról i obsługiwane akcje na grupach
 |Współautor zasad zasobów |        |        |        |        |               | X             |       |
 |Administrator dostępu użytkowników   |        |        |        |        | X             | X             |       |
 
-*: Role Współautor grupy zarządzania i Czytelnik grupy zarządzania zezwalają użytkownikom na wykonywanie tych akcji tylko dla zakresu grupy zarządzania.  
-**: Przypisania ról w głównej grupie zarządzania nie są wymagane, aby przenieść subskrypcję lub grupę zarządzania do tej grupy lub z niej.  Aby uzyskać szczegółowe informacje o przenoszeniu elementów w hierarchii, zobacz [Zarządzanie zasobami przy użyciu grup zarządzania](manage.md).
+*: role Współautor grupy zarządzania i Czytelnik grupy zarządzania zezwalają użytkownikom na wykonywanie tych akcji tylko dla zakresu grupy zarządzania.  
+\* *: Przypisania roli w głównej grupie zarządzania nie są wymagane do przeniesienia subskrypcji lub grupy zarządzania do i z niej.  Aby uzyskać szczegółowe informacje o przenoszeniu elementów w hierarchii, zobacz [Zarządzanie zasobami przy użyciu grup zarządzania](manage.md).
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>Definicja i przypisanie niestandardowej roli RBAC
 

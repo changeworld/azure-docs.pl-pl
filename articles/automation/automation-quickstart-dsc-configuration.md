@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2c01172bf22fb286f790543b02a4c1e482b05fe7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d5eca6ffce8390b2f8b4deae589d43f40897756d
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850564"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243460"
 ---
 # <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Skonfiguruj maszynę wirtualną z konfiguracją żądanego stanu
 
@@ -30,7 +30,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 * Konto usługi Azure Automation. Aby uzyskać instrukcje dotyczące tworzenia konta Uruchom jako usługi Azure Automation, zobacz [Konto Uruchom jako platformy Azure](automation-sec-configure-azure-runas-account.md).
 * Maszyna wirtualna usługi Azure Resource Manager (nie klasycznej) z systemem Red Hat Enterprise Linux, CentOS lub Oracle Linux. Aby uzyskać instrukcje dotyczące tworzenia maszyny wirtualnej, zobacz [Create your first Linux virtual machine in the Azure portal](../virtual-machines/linux/quick-create-portal.md) (Tworzenie pierwszej maszyny wirtualnej systemu Linux w witrynie Azure Portal)
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 
 ## <a name="onboard-a-virtual-machine"></a>Dołączanie maszyny wirtualnej
@@ -42,7 +42,7 @@ Istnieje wiele różnych metod dołączania maszyny i włączania konfiguracji �
 2. Kliknij pozycję **Dodaj**, aby otworzyć stronę wybierania maszyny wirtualnej.
 3. Znajdź maszynę wirtualną, dla której chcesz włączyć DSC. Aby znaleźć określoną maszynę wirtualną, możesz użyć opcji pola wyszukiwania i filtra.
 4. Kliknij maszynę wirtualną, a następnie wybierz pozycję **Połącz**
-5. Wybierz ustawienia DSC odpowiednie dla maszyny wirtualnej. Jeśli konfiguracja została już przygotowana, możesz określić to jako *Nazwa konfiguracji węzła*. Możesz ustawić [tryb konfiguracji](https://docs.microsoft.com/powershell/dsc/metaconfig), aby sterować zachowaniem konfiguracji maszyny.
+5. Wybierz ustawienia DSC odpowiednie dla maszyny wirtualnej. Jeśli konfiguracja została już przygotowana, możesz określić to jako *Nazwa konfiguracji węzła*. Możesz ustawić [tryb konfiguracji](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig), aby sterować zachowaniem konfiguracji maszyny.
 6. Kliknij przycisk **OK**.
 
 ![Dołączanie maszyny wirtualnej platformy Azure do konfiguracji DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -64,7 +64,7 @@ Moduły zawierają zasoby DSC i wiele z nich znajduje się na [galerii programu 
 
 Ta opcja szybkiego startu używa konfiguracji DSC, która konfiguruje programy Apache HTTP Server, MySQL i PHP na maszynie.
 
-Aby uzyskać informacje o konfiguracjach DSC, zobacz [Konfiguracje DSC](https://docs.microsoft.com/powershell/dsc/configurations).
+Aby uzyskać informacje o konfiguracjach DSC, zobacz [Konfiguracje DSC](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations).
 
 W edytorze tekstów wpisz poniższe i zapisz go lokalnie, jako `LAMPServer.ps1`.
 
@@ -108,7 +108,7 @@ Aby zaimportować konfigurację:
 
 ## <a name="compile-a-configuration"></a>Kompilacja konfiguracji
 
-Konfiguracja DSC musi zostać skompilowana do konfiguracji węzła (dokument MOF) przed przypisaniem do węzła. Kompilacja weryfikuje konfigurację i pozwala na wprowadzanie wartości parametrów. Aby dowiedzieć się więcej na temat kompilacji konfiguracji, zobacz: [Kompilowanie konfiguracji w usłudze Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
+Konfiguracja DSC musi zostać skompilowana do konfiguracji węzła (dokument MOF) przed przypisaniem do węzła. Kompilacja weryfikuje konfigurację i pozwala na wprowadzanie wartości parametrów. Aby uzyskać więcej informacji na temat kompilacji konfiguracji, zobacz: [Compiling Configurations in Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile) (Kompilowanie konfiguracji w DSC usługi Azure Automation)
 
 Aby skompilować konfigurację:
 
@@ -142,7 +142,7 @@ W tym przewodniku Szybki Start maszyna wirtualna systemu Linux została dołącz
 > [!div class="nextstepaction"]
 > [Continuous deployment to a VM using DSC and Chocolatey](./automation-dsc-cd-chocolatey.md) (Ciągłe wdrażanie na maszynie wirtualnej za pomocą DSC i Chocolatey)
 
-* Aby dowiedzieć się więcej na temat konfiguracji DSC programu PowerShell, zobacz [PowerShell Desired State Configuration Overview](https://docs.microsoft.com/powershell/dsc/overview) (Omówienie środowiska PowerShell żądanego stanu konfiguracji).
+* Aby dowiedzieć się więcej na temat konfiguracji DSC programu PowerShell, zobacz [PowerShell Desired State Configuration Overview](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) (Omówienie środowiska PowerShell żądanego stanu konfiguracji).
 * Aby dowiedzieć się więcej o zarządzaniu Konfiguracją DSC usługi Automation z programem PowerShell, zobacz [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/) (Program Azure PowerShell)
 * Aby dowiedzieć się, jak przekazywać raporty DSC do dzienników usługi Azure Monitor w celu raportowania i przekazywania alertów, zobacz [Przekazywanie raportów DSC do dzienników usługi Azure Monitor](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
 

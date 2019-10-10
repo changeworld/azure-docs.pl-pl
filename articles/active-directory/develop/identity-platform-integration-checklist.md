@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f7e9b738a55248678a207f0b298ef65e6c2761a4
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145657"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240150"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Najlepsze rozwiązania i zalecenia dotyczące platformy tożsamości firmy Microsoft
 
@@ -31,7 +31,7 @@ Jeśli dopiero zaczynasz, zapoznaj się z [dokumentacją platformy tożsamości 
 
 Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektywnie zintegrowana z [platformą tożsamości firmy Microsoft](https://docs.microsoft.com/azure/active-directory/develop/).
 
-## <a name="basics"></a>Ustawienia podstawowe
+## <a name="basics"></a>Podstawy
 
 |   |   |
 |---|---|
@@ -43,7 +43,7 @@ Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektyw
 |---|---|
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Upewnij się, że informacje skojarzone z kontem używanym do rejestrowania aplikacji i zarządzania nimi są aktualne. |
 
-## <a name="branding"></a>Znakowanie
+## <a name="branding"></a>Znakowania
 
 |   |   |
 |---|---|
@@ -56,11 +56,11 @@ Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektyw
 |---|---|
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Podaj linki do warunków użytkowania i zasad zachowania poufności informacji aplikacji. |
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 |   |   |
 |---|---|
-| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zarządzaj identyfikatorami URI przekierowania: <ul><li>Zachować własność wszystkich identyfikatorów URI przekierowania i zachować Aktualności rekordów DNS.</li><li>Nie używaj symboli wieloznacznych (*) w identyfikatorach URI.</li><li>W przypadku usługi Web Apps upewnij się, że wszystkie identyfikatory URI są bezpieczne i szyfrowane (na przykład przy użyciu schematów https).</li><li>W przypadku klientów publicznych Użyj identyfikatorów URI przekierowania specyficznych dla platformy, jeśli są odpowiednie (głównie dla systemów iOS i Android). W przeciwnym razie Użyj identyfikatorów URI przekierowania z dużą ilością losowości, aby zapobiec kolizjom podczas wywoływania z powrotem do aplikacji.</li><li>Jeśli aplikacja jest używana przez izolowanego agenta sieci Web, można użyć https://login.microsoftonline.com/common/oauth2/nativeclient programu.</li><li>Regularnie Przeglądaj i przycinaj wszystkie nieużywane lub niepotrzebne identyfikatory URI przekierowań.</li></ul> |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zarządzaj identyfikatorami URI przekierowania: <ul><li>Zachować własność wszystkich identyfikatorów URI przekierowania i zachować Aktualności rekordów DNS.</li><li>Nie używaj symboli wieloznacznych (*) w identyfikatorach URI.</li><li>W przypadku usługi Web Apps upewnij się, że wszystkie identyfikatory URI są bezpieczne i szyfrowane (na przykład przy użyciu schematów https).</li><li>W przypadku klientów publicznych Użyj identyfikatorów URI przekierowania specyficznych dla platformy, jeśli są odpowiednie (głównie dla systemów iOS i Android). W przeciwnym razie Użyj identyfikatorów URI przekierowania z dużą ilością losowości, aby zapobiec kolizjom podczas wywoływania z powrotem do aplikacji.</li><li>Jeśli Twoja aplikacja jest używana przez izolowanego agenta sieci Web, możesz użyć https://login.microsoftonline.com/common/oauth2/nativeclient.</li><li>Regularnie Przeglądaj i przycinaj wszystkie nieużywane lub niepotrzebne identyfikatory URI przekierowań.</li></ul> |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli Twoja aplikacja jest zarejestrowana w katalogu, Zminimalizuj i ręcznie Monitoruj listę właścicieli rejestracji aplikacji. |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie włączaj obsługi [niejawnego przepływu OAuth2](v2-oauth2-implicit-grant-flow.md) , chyba że jest to wymagane jawnie. Zapoznaj się z prawidłowym [scenariuszem](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant). |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przenieś poza nazwę użytkownika/hasło. Nie używaj [przepływu poświadczeń hasła właściciela zasobu (ROPC)](v2-oauth-ropc.md), który bezpośrednio obsługuje hasła użytkowników. Ten przepływ wymaga wysokiego stopnia zaufania i zagrożeń użytkownika i powinien być używany tylko wtedy, gdy inne, bezpieczniejsze, nie można używać przepływów. Ten przepływ jest nadal wymagany w niektórych scenariuszach (na przykład DevOps), ale uważaj, że jego użycie spowoduje nałożenie ograniczeń dotyczących aplikacji.  Aby uzyskać bardziej nowoczesne podejścia, Przeczytaj [przepływy uwierzytelniania i scenariusze aplikacji](authentication-flows-app-scenarios.md).|
@@ -87,7 +87,7 @@ Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektyw
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | [Zapoznaj się z](application-consent-experience.md) tematem zgody i skonfiguruj fragmenty monitu o zgodę aplikacji, aby użytkownicy końcowi i administratorzy mieli wystarczającą ilość informacji, aby określić, czy ufają aplikacji. |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zminimalizuj, ile razy użytkownik musi wprowadzić poświadczenia logowania podczas korzystania z aplikacji, próbując przeprowadzić uwierzytelnianie dyskretne (dyskretny token) przed interaktywnymi przepływami. |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie używaj "Prompt = zgody" przy każdym logowaniu. Należy używać monitu = wyrażanie zgody, jeśli określono, że należy zażądać zgody na dodatkowe uprawnienia (na przykład jeśli zmieniono wymagane uprawnienia aplikacji). |
-| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli ma to zastosowanie, Wzbogacaj aplikację o dane użytkownika. Aby to zrobić, użyj [interfejsu API Microsoft Graph](https://developer.microsoft.com/graph) . Narzędzie [Eksplorator grafów](https://developer.microsoft.com/graph/graph-explorer) ułatwiające rozpoczęcie pracy. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli ma to zastosowanie, Wzbogacaj aplikację o dane użytkownika. Korzystanie z [interfejsu API Microsoft Graph](https://developer.microsoft.com/graph) to prosty sposób. Narzędzie [Eksplorator grafów](https://developer.microsoft.com/graph/graph-explorer) ułatwiające rozpoczęcie pracy. |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zarejestruj pełny zestaw uprawnień wymaganych przez aplikację, aby administratorzy mogli łatwo udzielić zgody na dostęp do swojej dzierżawy. Używaj [przyrostowej zgody](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) w czasie wykonywania, aby ułatwić użytkownikom zrozumienie, Dlaczego aplikacja żąda uprawnień, które mogą mieć problemy lub mylić użytkowników, gdy są żądane podczas pierwszego uruchomienia. |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zaimplementuj [czyste środowisko logowania](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut)jednokrotnego. Jest to ochrona prywatności i wymagania dotyczące zabezpieczeń oraz zapewnia dobre środowisko użytkownika. |
 
@@ -98,7 +98,7 @@ Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektyw
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przetestuj [zasady dostępu warunkowego](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut) , które mogą mieć wpływ na możliwość korzystania z aplikacji przez użytkowników. |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przetestuj swoją aplikację ze wszystkimi możliwymi kontami, które planujesz obsługiwać (na przykład konta służbowe, osobiste konta Microsoft, konta podrzędne i suwerenne konta). |
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 Uzyskaj szczegółowe informacje na temat wersji 2.0:
 

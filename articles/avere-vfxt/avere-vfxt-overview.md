@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 724352ae9f7c66dfeab293473ea79438e3b36254
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rohogue
+ms.openlocfilehash: 70ae20daa81ab52d4054dcd4bea3c9432a5ceaeb
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409437"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256177"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Co to jest system Avere vFXT for Azure? 
 
@@ -19,8 +19,8 @@ System Avere vFXT for Azure to rozwiązanie pamięci podręcznej systemu plików
 
 System Avere vFXT obsługuje następujące typowe scenariusze obliczeniowe: 
 
-* Architektura chmur hybrydowych: VFXT Avere dla platformy Azure może współpracować z systemu magazynu sprzętu, która zapewnia korzyści z obliczeń bez konieczności natychmiastowego przenoszenia plików w chmurze. 
-* Rozszerzanie możliwości chmury: VFXT Avere dla platformy Azure może pomóc przenieść dane do chmury dla pojedynczego projektu, lub metodą "lift and shift" całego przepływu pracy trwałe. 
+* Architektura chmury hybrydowej: system Avere vFXT for Azure może współpracować ze sprzętowym systemem magazynowania, co zapewnia korzyści z używania chmury obliczeniowej bez konieczności przenoszenia plików. 
+* Przenoszenie obsługi dużego ruchu do chmury: system Avere vFXT for Azure może ułatwić przenoszenie danych do chmury na potrzeby pojedynczego projektu lub przeprowadzenie migracji całego przepływu na stałe do chmury pracy metodą „lift and shift”. 
 
 ![diagram przedstawiający szczegółowe informacje o systemie Avere vFXT w ramach subskrypcji platformy Azure podłączonym do magazynu obiektów blob i lokalnego centrum danych](media/avere-vfxt-hybrid.png)
 
@@ -67,12 +67,12 @@ System Avere vFXT używa następujących zasobów platformy Azure:
 
 |Składnik platformy Azure|   |
 |----------|-----------|
-|Maszyny wirtualne|co najmniej 3 E32s_v3|
+|Maszyny wirtualne|3 lub więcej E32s_v3|
 |Magazyn SSD w warstwie Premium|200 GB na system operacyjny i od 1 TB do 4 TB miejsca obszaru pamięci podręcznej na węzeł |
 |Konto magazynu (opcjonalnie) |v2|
 |Magazyn zaplecza danych (opcjonalnie) | Jeden pusty kontener obiektów blob magazynu lokalnie nadmiarowego |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Oto kilka linków z informacjami dotyczącymi tworzenia własnego wdrożenia systemu Avere vFXT. 
 

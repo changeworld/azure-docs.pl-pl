@@ -1,17 +1,17 @@
 ---
-title: Tworzenie zasad dla właściwości tablicy zasobów platformy Azure
+title: Tworzenie zasad dla właściwości tablicy zasobów
 description: Dowiedz się, jak utworzyć parametry tablicy, utworzyć reguły dla wyrażeń języka tablicy, oszacować alias [*] i dołączyć elementy do istniejącej tablicy z regułami definicji Azure Policy.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: e5b90eb975d0d495723a70095b447d37e051fc0b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978033"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255814"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Tworzenie zasad dla właściwości tablicy zasobów platformy Azure
 
@@ -186,14 +186,14 @@ Poniższe wyniki są wynikiem kombinacji warunku i przykładową regułę zasad 
 
 |Warunek |Wynik |Wyjaśnienie |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_ , a efekt nie jest wyzwalany. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Wartość |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_ , a efekt nie jest wyzwalany. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Efekt zasad |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_ i zostanie wyzwolony efekt. |
 |`"not":{<field>,"Equals":"127.0.0.1"}` |Efekt zasad |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
 |`"not":{<field>,"Equals":"10.0.4.1"}` |Efekt zasad |Oba elementy tablicy są oceniane jako false (10.0.4.1 = = 127.0.0.1 i 10.0.4.1 = = 192.168.1.1), więc warunek **Equals** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
 |`"not":{<field>,"notEquals":"127.0.0.1" }` |Efekt zasad |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_. Operator logiczny ma wartość false (**nie** _true_), więc efekt nie zostanie wyzwolony. |
-|`{<field>,"Equals":"127.0.0.1"}` |Nothing |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Oba elementy tablicy są oceniane jako false (10.0.4.1 = = 127.0.0.1 i 10.0.4.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Wartość |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_. Operator logiczny ma wartość false (**nie** _true_), więc efekt nie zostanie wyzwolony. |
+|`{<field>,"Equals":"127.0.0.1"}` |Wartość |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
+|`{<field>,"Equals":"10.0.4.1"}` |Wartość |Oba elementy tablicy są oceniane jako false (10.0.4.1 = = 127.0.0.1 i 10.0.4.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
 
 ## <a name="the-append-effect-and-arrays"></a>Efekt dołączania i tablice
 
@@ -207,8 +207,8 @@ Aby uzyskać więcej informacji, zobacz [przykłady dołączania](../concepts/ef
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
-- Zapoznaj się ze [strukturą definicji Azure Policy](../concepts/definition-structure.md).
-- Przejrzyj [Informacje o skutkach zasad](../concepts/effects.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
+- Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
 - Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](remediate-resources.md).
 - Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

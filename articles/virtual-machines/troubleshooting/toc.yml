@@ -56,11 +56,11 @@
     - name: Rozwiązywanie problemów z protokołem SSH
       href: troubleshoot-ssh-connection.md
     - name: Rozwiązywanie problemów z błędami systemu plików
-      href: 'https://support.microsoft.com/help/3213321'
+      href: linux-recovery-cannot-start-file-system-errors.md
     - name: Rozwiązywanie problemów z rozruchem związanych z jądrem
       href: 'https://support.microsoft.com/help/4091524'
     - name: Rozwiązywanie problemów z błędami tabeli fstab
-      href: 'https://support.microsoft.com/help/3206699'
+      href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: Szczegółowe rozwiązywanie problemów z protokołem RDP
       href: detailed-troubleshoot-ssh-connection.md
 - name: Typowe komunikaty o błędach

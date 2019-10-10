@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: c9b6f6cf52d71451d2e1de27d0637eeb749b1e0b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 55ded9a733baaac7fbc78621bd625d57d1d37ad1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349065"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255475"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Korzystanie ze standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ Podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują moduł r
 * Definiowanie jednostki SKU modułu równoważenia obciążenia można wykonać tylko podczas tworzenia klastra AKS. Nie można zmienić jednostki SKU modułu równoważenia obciążenia po utworzeniu klastra AKS.
 * W pojedynczym klastrze można używać tylko jednej jednostki SKU modułu równoważenia obciążenia.
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Grupa zasobów platformy Azure to logiczna grupa przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi. Podczas tworzenia grupy zasobów użytkownik jest proszony o określenie lokalizacji. Ta lokalizacja wskazuje, gdzie są przechowywane metadane grupy zasobów, a także czy zasoby są uruchamiane na platformie Azure, jeśli nie określisz innego regionu podczas tworzenia zasobów. Utwórz grupę zasobów za pomocą polecenia [AZ Group Create][az-group-create] .
 
@@ -145,7 +145,7 @@ Sprawdź, czy właściwość *loadBalancerSku* jest wyświetlana jako *standardo
 
 Aby użyć modułu równoważenia obciążenia w klastrze, należy utworzyć manifest usługi z typem usługi *równoważenia*obciążenia. Aby wyświetlić pracę modułu równoważenia obciążenia, należy utworzyć kolejny manifest z przykładową aplikacją do uruchomienia w klastrze. Ta przykładowa aplikacja jest udostępniana za pomocą modułu równoważenia obciążenia i można ją przeglądać za pomocą przeglądarki.
 
-Utwórz manifest o nazwie `sample.yaml` , jak pokazano w następującym przykładzie:
+Utwórz manifest o nazwie `sample.yaml`, jak pokazano w następującym przykładzie:
 
 ```yaml
 apiVersion: apps/v1
@@ -221,7 +221,7 @@ spec:
           value: "azure-vote-back"
 ```
 
-Powyższy manifest konfiguruje dwa wdrożenia: *Azure-głosowa — przód* i *Azure — zagłosuj na spód*. Aby skonfigurować wdrożenie z dowolnego *głosu z platformy Azure* w celu udostępnienia przy użyciu modułu równoważenia obciążenia, Utwórz manifest `standard-lb.yaml` o nazwie, jak pokazano w następującym przykładzie:
+Powyższy manifest konfiguruje dwa wdrożenia: *Azure-głosowa — przód* i *Azure — zagłosuj na spód*. Aby skonfigurować wdrożenie z dowolnego *głosu z platformy Azure* w celu udostępnienia przy użyciu modułu równoważenia obciążenia, Utwórz manifest o nazwie `standard-lb.yaml`, jak pokazano w następującym przykładzie:
 
 ```yaml
 apiVersion: v1
@@ -245,7 +245,7 @@ kubectl apply -f sample.yaml
 kubectl apply -f standard-lb.yaml
 ```
 
-Moduł równoważenia obciążenia *standardowej* jednostki SKU jest teraz skonfigurowany do udostępniania przykładowej aplikacji. Aby wyświetlić publiczny adres IP modułu równoważenia obciążenia, zobacz szczegóły usługi *Azure — z przodu* przy użyciu [polecenia kubectl][kubectl-get] . Publiczny adres IP modułu równoważenia obciążenia jest wyświetlany w kolumnie *External-IP* . Zmiana adresu IP z *\<oczekującej\>* na rzeczywisty zewnętrzny adres IP może potrwać minutę lub dwa, jak pokazano w następującym przykładzie:
+Moduł równoważenia obciążenia *standardowej* jednostki SKU jest teraz skonfigurowany do udostępniania przykładowej aplikacji. Aby wyświetlić publiczny adres IP modułu równoważenia obciążenia, zobacz szczegóły usługi *Azure — z przodu* przy użyciu [polecenia kubectl][kubectl-get] . Publiczny adres IP modułu równoważenia obciążenia jest wyświetlany w kolumnie *External-IP* . Zmiana adresu IP z *\<pending @ no__t-2* na rzeczywisty zewnętrzny adres IP może potrwać minutę lub dwa, jak pokazano w następującym przykładzie:
 
 ```
 $ kubectl get service azure-vote-front
@@ -256,10 +256,10 @@ azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP  
 
 Przejdź do publicznego adresu IP w przeglądarce i sprawdź, czy zobaczysz przykładową aplikację. W powyższym przykładzie publiczny adres IP to `52.179.23.131`.
 
-![Obraz przedstawiający przechodzenie do aplikacji Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Obraz przedstawiający przechodzenie do aplikacji Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 > [!NOTE]
-> Można również skonfigurować usługę równoważenia obciążenia jako wewnętrzną i nie ujawniać publicznego adresu IP. Aby skonfigurować moduł równoważenia obciążenia jako wewnętrzny, należy dodać `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` jako adnotację do usługi *modułu równoważenia* . Możesz zobaczyć przykład manifestu YAML oraz więcej szczegółów dotyczących wewnętrznego modułu równoważenia [obciążenia.][internal-lb-yaml]
+> Można również skonfigurować usługę równoważenia obciążenia jako wewnętrzną i nie ujawniać publicznego adresu IP. Aby skonfigurować moduł równoważenia obciążenia jako wewnętrzny, Dodaj `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` jako adnotację do usługi *równoważenia obciążenia* . Możesz zobaczyć przykład manifestu YAML oraz więcej szczegółów dotyczących wewnętrznego modułu równoważenia [obciążenia.][internal-lb-yaml]
 
 ## <a name="optional---scale-the-number-of-managed-public-ips"></a>Opcjonalne — skalowanie liczby zarządzanych publicznych adresów IP
 
@@ -276,7 +276,7 @@ az aks update \
 
 Powyższy przykład ustawia liczbę zarządzanych publicznych adresów IP z *2* dla klastra *MyAKSCluster* w ramach *zasobu*. 
 
-Aby ustawić początkową liczbę zarządzanych publicznych adresów IP, które są używane podczas tworzenia klastra `--load-balancer-managed-outbound-ip-count` , można również użyć parametru *modułu równoważenia obciążenia-Managed-IP-Count* . Domyślna liczba zarządzanych publicznych adresów IP wychodzących to 1.
+Aby ustawić początkową liczbę zarządzanych publicznych adresów IP w trakcie tworzenia klastra, można również użyć parametru *modułu równoważenia obciążenia-Managed-IP-Count* , dołączając parametr `--load-balancer-managed-outbound-ip-count` i ustawiając go na żądaną wartość. Domyślna liczba zarządzanych publicznych adresów IP wychodzących to 1.
 
 ## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>Opcjonalne — Podaj własne publiczne adresy IP lub prefiksy dla ruchu wychodzącego
 

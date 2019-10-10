@@ -25,6 +25,8 @@
       href: powershell-create-instance.md
 - name: Pojęcia
   items:
+    - name: Podstawy administracji
+      href: administration-concepts.md
     - name: Typowe scenariusze wdrażania
       href: scenarios.md
     - name: Jak działa synchronizacja usługi Azure AD DS

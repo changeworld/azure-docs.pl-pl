@@ -1,59 +1,59 @@
 ---
-title: Filtr Edge FXT Azure Microsoft — omówienie
-description: W tym artykule opisano filtr Edge FXT Azure hybrydowego magazynu w pamięci podręcznej, aktywne archiwum i rozwiązanie akceleratora dostępu do plików do obliczeń o wysokiej wydajności
+title: Przegląd Microsoft Azure FXT Edge
+description: Opisuje pamięć podręczną magazynu hybrydowego usługi Azure FXT Edge, aktywny plik archiwum i akcelerator dostępu do plików dla obliczeń o wysokiej wydajności
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: overview
 ms.date: 07/01/2019
-ms.author: v-erkell
-ms.openlocfilehash: 58d4a2a52757b6ace1059fcccf379df3de5fd75c
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: acf35015ff7851f7ea2a2527852be2573512e35d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542905"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254838"
 ---
-# <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Co to jest filtr Edge FXT Azure hybrydowego magazynu w pamięci podręcznej?
+# <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Co to jest pamięć podręczna magazynu hybrydowego usługi Azure FXT Edge?
 
-Usługa Azure filtr Edge FXT jest hybrydowy magazyn w pamięci podręcznej urządzenia, która zapewnia dostęp szybkie pliku i archiwum aktywnych zadań obliczeń o wysokiej wydajności (HPC).
+Usługa Azure FXT Edge to hybrydowe urządzenie magazynujące magazynu, które zapewnia szybki dostęp do plików i aktywne Archiwum dla zadań obliczeniowych o wysokiej wydajności (HPC).
 
-Współpracuje z wielu źródeł danych, czy przechowywane w lokalnym centrum danych, zdalnie i w chmurze. Filtr Edge FXT Azure może zapewnić ujednolicony obszar nazw dla danych w systemach różnych magazynowania.
+Współpracuje z wieloma źródłami danych, niezależnie od tego, czy są przechowywane w lokalnym centrum danych, zdalnie czy w chmurze. Usługa Azure FXT Edge może zapewnić ujednoliconą przestrzeń nazw dla danych w różnych systemach magazynowania.
 
-Co najmniej trzech urządzeń sprzętowych filtr Edge FXT współpracują ze sobą jako klastrowany system plików zapewnienie pamięci podręcznej. Aby uzyskać szczegółowe informacje dotyczące zakupu wymaganego sprzętu skontaktuj się z przedstawicielem handlowym firmy Microsoft. 
+Trzy lub więcej urządzeń sprzętowych plików FXT Edge współpracują ze sobą jako klastrowany system plików, aby zapewnić pamięć podręczną. Aby uzyskać szczegółowe informacje na temat kupowania wymaganego sprzętu, skontaktuj się z przedstawicielem firmy Microsoft. 
 
-Aby dowiedzieć się więcej, przeczytaj arkusz danych i informacji o produktu na [filtr Edge FXT Azure](https://azure.microsoft.com/services/fxt-edge-filer/).
+Aby dowiedzieć się więcej, zapoznaj się z informacjami o produkcie i arkuszem danych w [usłudze Azure FXT Edge](https://azure.microsoft.com/services/fxt-edge-filer/).
 
 ## <a name="use-cases"></a>Przypadki zastosowań
 
-Filtr Edge FXT Azure zwiększa wydajność, najlepszym rozwiązaniem dla przepływów pracy, takie jak te:
+Plik usługi Azure FXT Edge zwiększa produktywność w zakresie przepływów pracy takich jak:
 
-* Przepływ pracy dostępu odczycie pliku 
+* Przepływ pracy dostępu do pliku z dużym dostępem do odczytu 
 * Protokoły NFSv3 lub SMB2
-* Obliczenia farm 1000 do 100 000 rdzeni procesora CPU
+* Farmy obliczeniowe z 1000 do 100 000 rdzeni procesora CPU
 
-### <a name="nas-optimization-and-scaling"></a>NAS optymalizacji i skalowania
+### <a name="nas-optimization-and-scaling"></a>Optymalizacja i skalowanie serwera NAS
 
-Pamięć podręczna Azure FXT krawędzi filtr służy do wygładzania dostęp do istniejących systemów firm NetApp i Dell EMC Isilon NAS. Możesz również dodać obiektów Blob platformy Azure lub innych magazyn w chmurze w celu zapewnienia skalowalności, bez konieczności przerabiać procesy dostępu do danych po stronie klienta. 
+Pamięć podręczna plików usługi Azure FXT Edge umożliwia bezproblemowe dostęp do istniejących systemów NetApp i Dell EMC Isilon NAS. Możesz również dodać obiekt blob platformy Azure lub inny magazyn w chmurze, aby zapewnić skalowalność bez konieczności ponownego wykonywania procesów dostępu do danych po stronie klienta. 
 
-### <a name="wan-caching"></a>Buforowanie w sieci WAN
+### <a name="wan-caching"></a>Buforowanie sieci WAN
 
-Filtr krawędzi w usłudze Azure FXT może służyć do obsługi dostępu do plików szybkie z użytkownicy zaawansowani gdy danych, które są im potrzebne są przechowywane w innym miejscu. Zapewniają dostęp przy zachowaniu tworzenia kopii zapasowych i innych systemach zarządzania danymi w centrum danych scentralizowany. 
+Plik usługi Azure FXT Edge może służyć do obsługi szybkiego dostępu do plików od użytkowników zaawansowanych, gdy potrzebne dane są przechowywane w innym miejscu. Zapewnianie dostępu podczas utrzymywania kopii zapasowych i innych systemów zarządzania danymi w scentralizowanym centrum danych. 
 
-### <a name="active-archive-in-azure-blob"></a>Aktywne archiwum w usłudze Azure Blob
+### <a name="active-archive-in-azure-blob"></a>Aktywne Archiwum w obiekcie blob platformy Azure
 
-Rozwiń centrum danych do magazynu w chmurze za pomocą filtr Edge FXT Azure jako punkt dostępu. 
+Rozszerz swoje centrum danych do magazynu w chmurze za pomocą usługi Azure FXT Edge jako punktu dostępu. 
 
 ## <a name="features"></a>Funkcje 
 
 Dostępne są dwa modele sprzętu. 
 
-| Modelowanie | DRAM | NVMe SSD | Porty sieciowe | 
+| Model | PAMIĘCI | NVMe SSD | Porty sieciowe | 
 |-------|------|----------|---------------|
-| FXT 6600 | 1536 GB | 25,6 TB | 6 x 25Gb/10Gb + 2 x 1Gb |
-| FXT 6400 | 768 GB | 12,8 TB | 6 x 25Gb/10Gb + 2 x 1Gb |
+| FXT 6600 | 1536 GB | 25,6 TB | 6 x 25 GB/10Gb + 2 x 1 GB |
+| FXT 6400 | 768 GB | 12,8 TB | 6 x 25 GB/10Gb + 2 x 1 GB |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Kontynuować zapoznawanie się filtr Edge FXT platformy Azure, czytając [specyfikacje](fxt-specs.md) lub [samouczek instalacji](fxt-install.md).
-* Dowiedz się, jak kupić filtr Edge FXT platformy Azure na [stronę produktu Azure FXT krawędzi filtr](https://azure.microsoft.com/services/fxt-edge-filer/).
+* Zapoznaj się z samouczkiem dotyczącym usługi Azure FXT Edge, odczytując [specyfikacje](fxt-specs.md) lub [Samouczek instalacji](fxt-install.md).
+* Dowiedz się, jak kupić usługę Azure FXT Edge na [stronie produktu usługi Azure FXT Edge](https://azure.microsoft.com/services/fxt-edge-filer/).

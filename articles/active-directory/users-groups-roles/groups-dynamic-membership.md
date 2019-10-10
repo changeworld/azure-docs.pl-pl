@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673424"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241169"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -43,7 +43,7 @@ Poniżej przedstawiono kilka przykładów zaawansowanych reguł lub składni, dl
 - Reguła z więcej niż pięcioma wyrażeniami
 - Reguła bezpośrednich podwładnych
 - Ustawianie [pierwszeństwa operatorów](groups-dynamic-membership.md#operator-precedence)
-- [Reguły z wyrażeniami złożonymi](groups-dynamic-membership.md#rules-with-complex-expressions); na przykład`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Reguły z wyrażeniami złożonymi](groups-dynamic-membership.md#rules-with-complex-expressions); na przykład `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Konstruktor reguł może nie być w stanie wyświetlić niektórych reguł skonstruowanych w polu tekstowym. Gdy Konstruktor reguł nie może wyświetlić reguły, może zostać wyświetlony komunikat. Konstruktor reguł nie zmienia obsługiwanej składni, walidacji lub przetwarzania reguł grupy dynamicznej w dowolny sposób.
@@ -70,7 +70,7 @@ Reguła członkostwa, która automatycznie wypełnia grupę użytkownikami lub u
 
 - Właściwość
 - Operator
-- Value
+- Wartość
 
 Kolejność części w wyrażeniu jest ważna, aby uniknąć błędów składniowych.
 
@@ -78,56 +78,56 @@ Kolejność części w wyrażeniu jest ważna, aby uniknąć błędów składnio
 
 Istnieją trzy typy właściwości, których można użyć do skonstruowania reguły członkostwa.
 
-- Boolean
-- String
+- Wartość logiczna
+- Ciąg
 - Kolekcja ciągów
 
 Poniżej przedstawiono właściwości użytkownika, których można użyć do utworzenia jednego wyrażenia.
 
 ### <a name="properties-of-type-boolean"></a>Właściwości typu Boolean
 
-| properties | Dozwolone wartości | Sposób użycia |
+| Właściwości | Dozwolone wartości | Użycie |
 | --- | --- | --- |
-| accountEnabled |PRAWDA FAŁSZ |User. accountEnabled-EQ true |
+| AccountEnabled |PRAWDA FAŁSZ |User. accountEnabled-EQ true |
 | dirSyncEnabled |PRAWDA FAŁSZ |User. dirSyncEnabled-EQ true |
 
 ### <a name="properties-of-type-string"></a>Właściwości typu String
 
-| properties | Dozwolone wartości | Sposób użycia |
+| Właściwości | Dozwolone wartości | Użycie |
 | --- | --- | --- |
 | city |Dowolna wartość ciągu lub wartość *null* |(User. City-EQ "wartość") |
-| trzeciego |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
-| companyName | Dowolna wartość ciągu lub wartość *null* | (User. NazwaFirmy-EQ "wartość") |
-| Dział |Dowolna wartość ciągu lub wartość *null* |(User. Department-EQ "wartość") |
+| Trzeciego |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
+| CompanyName | Dowolna wartość ciągu lub wartość *null* | (User. NazwaFirmy-EQ "wartość") |
+| department |Dowolna wartość ciągu lub wartość *null* |(User. Department-EQ "wartość") |
 | displayName |Dowolna wartość ciągu |(User. displayName-EQ "value") |
-| employeeId |Dowolna wartość ciągu |(User. IDPracownika-EQ "value")<br>(User. IDPracownika-ne *null*) |
+| IDPracownika |Dowolna wartość ciągu |(User. IDPracownika-EQ "value")<br>(User. IDPracownika-ne *null*) |
 | facsimileTelephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. facsimileTelephoneNumber-EQ "wartość") |
-| givenName |Dowolna wartość ciągu lub wartość *null* |(User. podaną wartośćname-EQ ") |
-| Stanowisko |Dowolna wartość ciągu lub wartość *null* |(User. stanowiska-EQ "wartość") |
-| poczta |Dowolna wartość ciągu lub wartość *null* (adres SMTP użytkownika) |(User. mail-EQ "wartość") |
+| GivenName |Dowolna wartość ciągu lub wartość *null* |(User. podaną wartośćname-EQ ") |
+| Stanowiska |Dowolna wartość ciągu lub wartość *null* |(User. stanowiska-EQ "wartość") |
+| mail (poczta) |Dowolna wartość ciągu lub wartość *null* (adres SMTP użytkownika) |(User. mail-EQ "wartość") |
 | mailNickName |Dowolna wartość ciągu (alias poczty użytkownika) |(User. mailNickName-EQ "wartość") |
-| Telefon komórkowy |Dowolna wartość ciągu lub wartość *null* |(User. Mobile-EQ "wartość") |
-| Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
+| urządzenie |Dowolna wartość ciągu lub wartość *null* |(User. Mobile-EQ "wartość") |
+| Obiektu |Identyfikator GUID obiektu użytkownika |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Lokalny identyfikator zabezpieczeń (SID) dla użytkowników, którzy zostali zsynchronizowani z lokalnego do chmury. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Brak DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Dowolna wartość ciągu lub wartość *null* |(User. physicalDeliveryOfficeName-EQ "wartość") |
-| postalCode |Dowolna wartość ciągu lub wartość *null* |(User. KodPocztowy-EQ "value") |
+| Pocztowy |Dowolna wartość ciągu lub wartość *null* |(User. KodPocztowy-EQ "value") |
 | preferredLanguage |Kod ISO 639-1 |(User. preferredLanguage-EQ "pl-US") |
 | sipProxyAddress |Dowolna wartość ciągu lub wartość *null* |(User. sipProxyAddress-EQ "wartość") |
 | state |Dowolna wartość ciągu lub wartość *null* |(User. State-EQ "value") |
-| Adres |Dowolna wartość ciągu lub wartość *null* |(User. streetAddress-EQ "wartość") |
-| nazwisko |Dowolna wartość ciągu lub wartość *null* |(User. nazwisko-EQ "wartość") |
-| telephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. teletelefon-EQ "wartość") |
+| streetAddress |Dowolna wartość ciągu lub wartość *null* |(User. streetAddress-EQ "wartość") |
+| surname |Dowolna wartość ciągu lub wartość *null* |(User. nazwisko-EQ "wartość") |
+| TelephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. teletelefon-EQ "wartość") |
 | usageLocation |Dwubajtowy kod kraju |(User. usageLocation-EQ "US") |
 | userPrincipalName |Dowolna wartość ciągu |(User. userPrincipalName-EQ "alias@domain") |
 | userType |Gość elementu członkowskiego *ma wartość null* |(User. UserType-EQ "member") |
 
 ### <a name="properties-of-type-string-collection"></a>Właściwości kolekcji ciągów typu
 
-| properties | Dozwolone wartości | Sposób użycia |
+| Właściwości | Dozwolone wartości | Użycie |
 | --- | --- | --- |
 | otherMails |Dowolna wartość ciągu |(User. otherMails-zawiera "alias@domain") |
-| proxyAddresses |SMTP: alias@domainalias@domain |(User. proxyAddresses-zawiera "SMTP: alias@domain") |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-zawiera "SMTP: alias@domain") |
 
 Aby uzyskać właściwości używane dla reguł urządzeń, zobacz [reguły dotyczące urządzeń](#rules-for-devices).
 
@@ -142,10 +142,10 @@ W poniższej tabeli wymieniono wszystkie obsługiwane operatory i ich składnię
 | Nie zaczyna się od |-notStartsWith |
 | Rozpoczyna się od |-startsWith |
 | Nie zawiera |-notContains |
-| zawiera |-zawiera |
+| Contains |-zawiera |
 | Niezgodne |-notMatch |
-| Dopasowanie |-dopasowanie |
-| W | -in |
+| Spełnić |-dopasowanie |
+| Podczas | -in |
 | Nie w | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>Używanie operatorów-in i-notIn
@@ -178,15 +178,15 @@ Wartości używane w wyrażeniu mogą składać się z kilku typów, w tym:
 
 * Ciągi
 * Wartość logiczna — prawda, FAŁSZ
-* numery
+* Numery
 * Tablice — tablica liczbowa, tablica ciągów
 
 Podczas określania wartości w wyrażeniu ważne jest używanie poprawnej składni w celu uniknięcia błędów. Niektóre wskazówki dotyczące składni:
 
 * Podwójne cudzysłowy są opcjonalne, chyba że wartość jest ciągiem.
 * W operacjach typu String i wyrażeń regularnych nie jest rozróżniana wielkość liter.
-* Gdy wartość ciągu zawiera podwójne cudzysłowy, oba cudzysłowy powinny być wyprowadzane przy \` użyciu znaku, na przykład user. Department-EQ \`"Sales\`" jest poprawną składnią, gdy "Sales" jest wartością.
-* Można również przeprowadzać sprawdzanie wartości null, używając wartości null jako wartości, na przykład `user.department -eq null`.
+* Gdy wartość ciągu zawiera podwójne cudzysłowy, dla obu cudzysłowów należy użyć znaku ucieczki \`, na przykład user. Department-EQ \` "Sales @ no__t-2" jest poprawną składnią, gdy wartość jest równa "Sales".
+* Możesz także przeprowadzić sprawdzanie wartości null, używając wartości null jako wartości, na przykład `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Użycie wartości null
 
@@ -249,10 +249,10 @@ Reguła członkostwa może składać się z złożonych wyrażeń, w których w�
 
 Właściwości wielowartościowe to kolekcje obiektów tego samego typu. Mogą służyć do tworzenia reguł członkostwa przy użyciu-any i-All operatorów logicznych.
 
-| properties | Wartości | Sposób użycia |
+| Właściwości | Wartości | Użycie |
 | --- | --- | --- |
 | assignedPlans | Każdy obiekt w kolekcji uwidacznia następujące właściwości ciągu: capabilityStatus, Service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-and assignedPlan. capabilityStatus-EQ "Enabled") |
-| proxyAddresses| SMTP: alias@domainalias@domain | (User. proxyAddresses-any (\_ -zawiera "contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any (\_-zawiera "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>Używanie operatorów-any i-All
 
@@ -283,7 +283,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 Składnia podkreślenia (\_) dopasowuje wystąpienia określonej wartości w jednej z wielowartościowych właściwości kolekcji ciągów do dodawania użytkowników lub urządzeń do grupy dynamicznej. Jest używana z operatorami-any lub-ALL.
 
-Oto przykład użycia podkreślenia (\_) w regule, aby dodać członków na podstawie User. ProxyAddress (działa tak samo dla User. otherMails). Ta reguła dodaje do grupy dowolnego użytkownika z adresem serwera proxy, który zawiera "contoso".
+Oto przykład użycia podkreślenia (\_) w regule, aby dodać członków na podstawie użytkownika. proxyAddress (działa tak samo dla User. otherMails). Ta reguła dodaje do grupy dowolnego użytkownika z adresem serwera proxy, który zawiera "contoso".
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -342,7 +342,7 @@ Atrybuty rozszerzenia i niestandardowe właściwości rozszerzenia są obsługiw
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Niestandardowe właściwości rozszerzenia są synchronizowane z lokalnej usługi AD systemu Windows Server lub z połączonej aplikacji SaaS i mają format `user.extension_[GUID]__[Attribute]`, gdzie:
+Niestandardowe właściwości rozszerzenia są synchronizowane z lokalnej usługi AD systemu Windows Server lub z połączonej aplikacji SaaS i mają format `user.extension_[GUID]_[Attribute]`, gdzie:
 
 * [GUID] jest unikatowym identyfikatorem w usłudze Azure AD dla aplikacji, która utworzyła właściwość w usłudze Azure AD
 * [Attribute] jest nazwą właściwości, która została utworzona
@@ -350,10 +350,10 @@ Niestandardowe właściwości rozszerzenia są synchronizowane z lokalnej usług
 Przykładem reguły korzystającej z niestandardowej właściwości rozszerzenia jest:
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
+user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-Nazwę właściwości niestandardowej można znaleźć w katalogu, wykonując zapytania dotyczące właściwości użytkownika przy użyciu Eksploratora grafów i wyszukując nazwę właściwości. Ponadto można teraz wybrać łącze **Pobierz niestandardowe właściwości rozszerzenia** w konstruktorze reguły dynamicznej grupy użytkowników, aby wprowadzić unikatowy identyfikator aplikacji i otrzymać pełną listę niestandardowych właściwości rozszerzenia, które będą używane podczas tworzenia reguły członkostwa dynamicznego. Tej listy można odświeżać w taki sposób, aby uzyskać nowe właściwości rozszerzenia niestandardowego dla danej aplikacji.
+Nazwę właściwości niestandardowej można znaleźć w katalogu, wykonując zapytania dotyczące właściwości użytkownika przy użyciu Eksploratora grafów i wyszukując nazwę właściwości. Ponadto można teraz wybrać łącze **Pobierz niestandardowe właściwości rozszerzenia** w konstruktorze reguły dynamicznej grupy użytkowników, aby wprowadzić unikatowy identyfikator aplikacji i otrzymać pełną listę niestandardowych właściwości rozszerzenia, które będą używane podczas tworzenia reguły członkostwa dynamicznego. Tę listę można również odświeżyć, aby uzyskać nowe niestandardowe właściwości rozszerzenia dla tej aplikacji.
 
 ## <a name="rules-for-devices"></a>Reguły dla urządzeń
 
@@ -368,10 +368,10 @@ Można użyć następujących atrybutów urządzeń.
 
  Atrybut urządzenia  | Wartości | Przykład
  ----- | ----- | ----------------
- accountEnabled | PRAWDA FAŁSZ | (Device. accountEnabled-EQ true)
+ AccountEnabled | PRAWDA FAŁSZ | (Device. accountEnabled-EQ true)
  displayName | Dowolna wartość ciągu |(Device. displayName-EQ "Rob iPhone")
  deviceOSType | Dowolna wartość ciągu | (Device. deviceOSType-EQ "iPad") — lub (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-zawiera "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
- deviceOSVersion | Dowolna wartość ciągu | (device.deviceOSVersion -eq "9.1")
+ deviceOSVersion | Dowolna wartość ciągu | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | prawidłowa nazwa kategorii urządzeń | (Device. deviceCategory-EQ "BYOD")
  deviceManufacturer | Dowolna wartość ciągu | (Device. deviceManufacturer-EQ "Samsung")
  deviceModel | Dowolna wartość ciągu | (Device. deviceModel-EQ "iPad Air")
@@ -380,7 +380,7 @@ Można użyć następujących atrybutów urządzeń.
  isrootd | PRAWDA FAŁSZ | (Device. isrootd-EQ true)
  managementtype | MDM (dla urządzeń przenośnych)<br>Komputer PC (dla komputerów zarządzanych przez agenta komputera usługi Intune) | (Device. managementtype-EQ "MDM")
  deviceId | prawidłowy identyfikator urządzenia usługi Azure AD | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- Identyfikator obiektu | prawidłowy identyfikator obiektu usługi Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ Obiektu | prawidłowy identyfikator obiektu usługi Azure AD |  (Device. objectId-EQ 76ad43c9-32c5-45e8-A272-7b58b58f596d ")
  systemLabels | dowolny ciąg zgodny z właściwością urządzenia usługi Intune w celu tagowania nowoczesnych urządzeń w miejscu pracy | (Device. systemLabels-zawiera "M365Managed")
 
 > [!Note]  

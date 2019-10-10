@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 37ebe2f0c5cbbaca712e69ab4484379ecf0f4830
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67333386"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72237420"
 ---
-| Resource | Domyślny/maksymalny limit |
+| Zasób | Domyślny/maksymalny limit |
 | --- | --- |
 | Zasoby usług frontonu platformy Azure na subskrypcję | 100 |
 | Hosty frontonu, w tym domeny niestandardowe na zasób | 100 |
@@ -24,7 +24,7 @@ ms.locfileid: "67333386"
 | Zaplecza na pulę zaplecza | 100 |
 | Wzorce ścieżek zgodne z regułą routingu | 25 |
 | Niestandardowe reguły zapory aplikacji sieci Web według zasad | 10 |
-| Zasady zapory aplikacji sieci Web dla zasobu | 100 |
+| Zasady zapory aplikacji sieci Web na subskrypcję | 100 |
 | Warunki dopasowania zapory aplikacji sieci Web na regułę niestandardową | 10 |
 | Zakresy adresów IP zapory aplikacji sieci Web na warunek dopasowania | 600 |
 | Wartości parametrów zapory aplikacji sieci Web na warunek dopasowania | 10 |
@@ -53,4 +53,5 @@ ms.locfileid: "67333386"
 | **Przesyłane** |  Nie ma żadnego limitu, o ile każde przesłanie CTE jest mniejsze niż 2 GB. | Rozmiar nie może być większy niż 2 GB. |
 
 ### <a name="other-limits"></a>Inne limity
-- Maksymalny rozmiar adresu URL — 8 192 bajtów — określa maksymalną długość nieprzetworzonego adresu URL (schemat + nazwa hosta + port + ścieżka + ciąg zapytania w adresie URL) — maksymalny rozmiar ciągu zapytania — 4 096 bajtów — określa maksymalną długość ciągu zapytania w bajtach.
+- Maksymalny rozmiar adresu URL — 8 192 bajtów — określa maksymalną długość nieprzetworzonego adresu URL (schemat + nazwa hosta + port + ścieżka + ciąg zapytania w adresie URL)
+- Maksymalny rozmiar ciągu zapytania — 4 096 bajtów — określa maksymalną długość ciągu zapytania w bajtach.

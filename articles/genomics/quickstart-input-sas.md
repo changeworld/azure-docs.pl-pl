@@ -1,7 +1,7 @@
 ---
-title: Przesyłanie przepływu pracy przy użyciu sygnatury dostępu współdzielonego — Microsoft Genomics
-titleSuffix: Azure
-description: Tego artykułu przyjęto założenie, mieć zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
+title: Przepływ pracy korzystający z sygnatur dostępu współdzielonego
+titleSuffix: Microsoft Genomics
+description: W tym artykule pokazano, jak przesłać przepływ pracy do usługi Microsoft Genomics przy użyciu sygnatur dostępu współdzielonego (SAS) zamiast kluczy konta magazynu.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657098"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248583"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Przesyłanie przepływu pracy do usługi Microsoft Genomics przy użyciu sygnatury dostępu współdzielonego zamiast klucza konta magazynu 
 
-W tym artykule przedstawiono sposób przesyłania przepływu pracy do usługi Microsoft Genomics przy użyciu pliku config.txt zawierającego [(SAS). sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) zamiast kluczy konta magazynu. Ta funkcja może być przydatna, jeśli występują obawy związane z bezpieczeństwem dotyczące klucza konta magazynu widocznego w pliku config.txt. 
+W tym artykule pokazano, jak przesłać przepływ pracy do usługi Microsoft Genomics przy użyciu pliku config. txt zawierającego [sygnatury dostępu współdzielonego (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) zamiast kluczy konta magazynu. Ta funkcja może być przydatna, jeśli występują obawy związane z bezpieczeństwem dotyczące klucza konta magazynu widocznego w pliku config.txt. 
 
-W tym artykule założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli zostało pomyślnie przesłane przepływu pracy przy użyciu podanych przykładowych danych, można przystąpić do kontynuować z tego artykułu. 
+W tym artykule założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli przepływ pracy został pomyślnie przesłany przy użyciu dostarczonych przykładowych danych, możesz kontynuować pracę z tym artykułem. 
 
 ## <a name="what-is-a-sas"></a>Co to jest sygnatura dostępu współdzielonego?
 [Sygnatura dostępu współdzielonego (SAS, shared access signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) zapewnia delegowany dostęp do zasobów w ramach konta magazynu. Za pomocą sygnatury dostępu współdzielonego możesz udzielić dostępu do zasobów w ramach konta magazynu bez udostępniania kluczy konta. Jest to najbardziej istotna kwestia związana z używaniem sygnatur dostępu współdzielonego w aplikacjach — są one bezpiecznym sposobem udostępniania zasobów magazynu bez narażania kluczy konta.
@@ -33,21 +33,21 @@ Identyfikator URI dla tokenu sygnatury dostępu współdzielonego na poziomie us
 Dla każdego przepływu pracy przesyłanego do usługi Microsoft Genomics wymagane są co najmniej dwa tokeny sygnatur dostępu współdzielonego — jeden dla każdego pliku wejściowego i jeden dla kontenera danych wyjściowych.
 
 Sygnatura dostępu współdzielonego dla plików wejściowych powinna mieć następujące właściwości:
-1.  Zakres (konto, kontener, obiekt blob): obiekt blob
-2.  Wygaśnięcie: 48 godz. od teraz
-3.  Uprawnienia: odczyt
+ - Zakres (konto, kontener, obiekt blob): obiekt blob
+ - Wygaśnięcie: 48 godzin od teraz
+ - Uprawnienia: odczyt
 
 Sygnatura dostępu współdzielonego dla kontenera danych wyjściowych powinna mieć następujące właściwości:
-1.  Zakres (konto, kontener, obiekt blob): kontener
-2.  Wygaśnięcie: 48 godz. od teraz
-3.  Uprawnienia: odczyt, zapis, usuwanie
+ - Zakres (konto, kontener, obiekt blob): kontener
+ - Wygaśnięcie: 48 godzin od teraz
+ - Uprawnienia: odczyt, zapis, usuwanie
 
 
 ## <a name="create-a-sas-for-the-input-files-and-the-output-container"></a>Tworzenie sygnatury dostępu współdzielonego dla plików wejściowych i kontenera danych wyjściowych
 Istnieją dwa sposoby na utworzenie tokenu sygnatury dostępu współdzielonego: za pomocą eksploratora usługi Azure Storage lub programowo.  W przypadku pisania kodu można samodzielnie utworzyć sygnaturę dostępu współdzielonego lub użyć zestawu SDK usługi Azure Storage w preferowanym przez siebie języku.
 
 
-### <a name="set-up-create-a-sas-using-azure-storage-explorer"></a>Konfiguracja: Tworzenie sygnatury dostępu współdzielonego za pomocą Eksploratora usługi Azure Storage
+### <a name="set-up-create-a-sas-using-azure-storage-explorer"></a>Konfigurowanie: tworzenie sygnatury dostępu współdzielonego za pomocą eksploratora usługi Azure Storage
 
 [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) to narzędzie do zarządzania zasobami, które są przechowywane w usłudze Azure Storage.  Więcej informacji o sposobie używania eksploratora usługi Azure Storage można znaleźć [tutaj](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
@@ -56,7 +56,7 @@ Zakres sygnatury dostępu współdzielonego dla plików wejściowych powinien by
  ![Eksplorator magazynu sygnatur dostępu współdzielonego usługi Genomics](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Eksplorator magazynu sygnatur dostępu współdzielonego usługi Genomics")
 
 
-### <a name="set-up-create-a-sas-programmatically"></a>Konfiguracja: Programistyczne tworzenie sygnatury dostępu Współdzielonego
+### <a name="set-up-create-a-sas-programmatically"></a>Konfiguracja: programowe tworzenie SAS
 
 Aby utworzyć sygnaturę dostępu współdzielonego przy użyciu zestawu SDK usługi Azure Storage, zapoznaj się z istniejącą dokumentacją w kilku językach, w tym [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) i [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
 

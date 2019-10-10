@@ -1,34 +1,34 @@
 ---
-title: Samouczek — Konfigurowanie sieci wirtualnej platformy Azure komunikację równorzędną za pomocą rozwiązania Ansible | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą rozwiązania Ansible do łączenia sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnej.
-keywords: rozwiązanie ansible, azure, metodyki devops, bash, elementu playbook, sieć, komunikacja równorzędna
+title: Samouczek — Konfigurowanie komunikacji równorzędnej sieci wirtualnej platformy Azure za pomocą rozwiązania ansible
+description: Dowiedz się, jak używać programu rozwiązania ansible do łączenia sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych.
+keywords: rozwiązania ansible, Azure, DevOps, bash, element PlayBook, sieci, Komunikacja równorzędna
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: f51e7c857a22a362a3d295fbe087c54b25f85780
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 180bdff48a2ace4dfee1d1cb10eb75a33d360f4c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230757"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241236"
 ---
-# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Samouczek: Skonfiguruj sieć wirtualną platformy Azure komunikację równorzędną za pomocą rozwiązania Ansible
+# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Samouczek: Konfigurowanie komunikacji równorzędnej sieci wirtualnej platformy Azure za pomocą rozwiązania ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Komunikacja równorzędna sieci wirtualnych (VNet)](/azure/virtual-network/virtual-network-peering-overview) pozwala na bezproblemowe łączenie dwóch sieci wirtualnych platformy Azure. Po nawiązaniu komunikacji równorzędnej, dwie sieci wirtualne są traktowane jako jedna do celów związanych z łącznością. 
+[Komunikacja równorzędna sieci wirtualnych (VNET)](/azure/virtual-network/virtual-network-peering-overview) umożliwia bezproblemowe łączenie dwóch sieci wirtualnych platformy Azure. Po nawiązaniu połączenia równorzędnego dwie sieci wirtualne są wyświetlane jako jedna do celów związanych z łącznością. 
 
-Ruch odbywa się między maszynami wirtualnymi w tej samej sieci wirtualnej przy użyciu prywatnych adresów IP. Podobnie ruch między maszynami wirtualnymi w równorzędnych sieci wirtualnych odbywa się za pośrednictwem infrastruktury sieci szkieletowej firmy Microsoft. W rezultacie maszyny wirtualne w różnych sieciach wirtualnych mogą komunikować się ze sobą.
+Ruch jest kierowany między maszynami wirtualnymi w tej samej sieci wirtualnej za pośrednictwem prywatnych adresów IP. Podobnie ruch między maszynami wirtualnymi w równorzędnej sieci wirtualnej jest kierowany za pośrednictwem infrastruktury szkieletowej firmy Microsoft. W związku z tym maszyny wirtualne w różnych sieciach wirtualnych mogą komunikować się ze sobą.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Tworzenie dwóch sieci wirtualnych
-> * Komunikacja równorzędna dwóch sieci wirtualnych
+> * Równorzędne dwie sieci wirtualne
 > * Usuwanie komunikacji równorzędnej między dwiema sieciami
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -36,13 +36,13 @@ Ruch odbywa się między maszynami wirtualnymi w tej samej sieci wirtualnej przy
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-two-resource-groups"></a>Utworzyć dwie grupy zasobów
+## <a name="create-two-resource-groups"></a>Utwórz dwie grupy zasobów
 
 Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Przykładowy kod elementu playbook w tej sekcji służy do:
+Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
-- Utworzyć dwie grupy zasobów 
+- Utwórz dwie grupy zasobów 
 
 ```yml
   - name: Create a resource group
@@ -57,10 +57,10 @@ Przykładowy kod elementu playbook w tej sekcji służy do:
 
 ## <a name="create-the-first-virtual-network"></a>Tworzenie pierwszej sieci wirtualnej
 
-Przykładowy kod elementu playbook w tej sekcji służy do:
+Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
 - Tworzenie sieci wirtualnej
-- Utwórz podsieć w sieci wirtualnej
+- Tworzenie podsieci w sieci wirtualnej
 
 ```yml
   - name: Create first virtual network
@@ -78,10 +78,10 @@ Przykładowy kod elementu playbook w tej sekcji służy do:
 
 ## <a name="create-the-second-virtual-network"></a>Tworzenie drugiej sieci wirtualnej
 
-Przykładowy kod elementu playbook w tej sekcji służy do:
+Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
 - Tworzenie sieci wirtualnej
-- Utwórz podsieć w sieci wirtualnej
+- Tworzenie podsieci w sieci wirtualnej
 
 ```yml
   - name: Ceate second virtual network
@@ -97,12 +97,12 @@ Przykładowy kod elementu playbook w tej sekcji służy do:
       virtual_network: "{{ vnet_name2 }}"
 ```
 
-## <a name="peer-the-two-virtual-networks"></a>Komunikacja równorzędna dwóch sieci wirtualnych
+## <a name="peer-the-two-virtual-networks"></a>Równorzędne dwie sieci wirtualne
 
-Przykładowy kod elementu playbook w tej sekcji służy do:
+Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
-- Inicjowanie, wirtualne sieci równorzędne
-- Komunikacja równorzędna dwóch utworzone wcześniej sieciami wirtualnymi
+- Inicjowanie komunikacji równorzędnej sieci wirtualnej
+- Dwie wcześniej utworzone sieci wirtualne
 
 ```yml
   - name: Initial vnet peering
@@ -128,11 +128,11 @@ Przykładowy kod elementu playbook w tej sekcji służy do:
       allow_forwarded_traffic: true
 ```
 
-## <a name="delete-the-virtual-network-peering"></a>Usuwanie komunikacji równorzędnej sieci wirtualnej
+## <a name="delete-the-virtual-network-peering"></a>Usuń komunikację równorzędną sieci wirtualnej
 
-Przykładowy kod elementu playbook w tej sekcji służy do:
+Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
-- Usuwanie komunikacji równorzędnej między tymi dwoma utworzone wcześniej sieciami wirtualnymi
+- Usuń komunikację równorzędną między dwiema utworzonymi wcześniej sieciami wirtualnymi
 
 ```yml
   - name: Delete vnet peering
@@ -143,11 +143,11 @@ Przykładowy kod elementu playbook w tej sekcji służy do:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Pobierz Podręcznik próbki
+## <a name="get-the-sample-playbook"></a>Pobierz przykładową element PlayBook
 
-Istnieją dwa sposoby pobrania Podręcznik pełny przykład:
+Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
 
-- [Pobierz Podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) i zapisać go w celu `vnet_peering.yml`.
+- [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) i Zapisz go w `vnet_peering.yml`.
 - Utwórz nowy plik o nazwie `vnet_peering.yml` i skopiuj do niego następującą zawartość:
 
 ```yml
@@ -229,21 +229,21 @@ Istnieją dwa sposoby pobrania Podręcznik pełny przykład:
       state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Uruchamianie elementu playbook próbki
+## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowej element PlayBook
 
-Przykładowy kod elementu playbook w tej sekcji służy do testowania różnych funkcji, które przedstawiono w tym samouczku.
+Przykładowy kod element PlayBook w tej sekcji jest używany do testowania różnych funkcji przedstawionych w tym samouczku.
 
-Poniżej przedstawiono ważne uwagi należy wziąć pod uwagę podczas pracy z elementu playbook próbki:
+Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
 
-- W `vars` sekcji i Zastąp `{{ resource_group_name }}` nazwą grupy zasobów.
+- W sekcji `vars` Zastąp symbol zastępczy `{{ resource_group_name }}` nazwą grupy zasobów.
 
-Uruchom element playbook przy użyciu polecenia playbook rozwiązania ansible:
+Uruchom element PlayBook za pomocą polecenia rozwiązania ansible-element PlayBook:
 
 ```bash
 ansible-playbook vnet_peering.yml
 ```
 
-Po uruchomieniu elementu playbook, zobaczysz dane wyjściowe podobne do następujących wyników:
+Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
 
 ```Output
 PLAY [localhost] 
@@ -292,11 +292,11 @@ localhost                  : ok=12   changed=9    unreachable=0    failed=0    s
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
 
-Przykładowy kod elementu playbook w tej sekcji służy do:
+Przykładowy kod element PlayBook w tej sekcji jest używany do:
 
-- Usuwanie grupy zasobów utworzonej wcześniej
+- Usuń dwie utworzone wcześniej grupy zasobów
 
 Zapisz następujący podręcznik jako `cleanup.yml`:
 
@@ -319,19 +319,19 @@ Zapisz następujący podręcznik jako `cleanup.yml`:
         state: absent
 ```
 
-Poniżej przedstawiono ważne uwagi należy wziąć pod uwagę podczas pracy z elementu playbook próbki:
+Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
 
-- Zastąp `{{ resource_group_name-1 }}` utworzony symbol zastępczy nazwą pierwszej grupy zasobów.
-- Zastąp `{{ resource_group_name-2 }}` utworzony symbol zastępczy nazwą grupy zasobów, do drugiego.
-- Zostaną usunięte wszystkie zasoby w dwóch grupach określonego zasobu.
+- Zastąp symbol zastępczy `{{ resource_group_name-1 }}` nazwą pierwszej utworzonej grupy zasobów.
+- Zastąp symbol zastępczy `{{ resource_group_name-2 }}` nazwą drugiej utworzonej grupy zasobów.
+- Wszystkie zasoby w ramach dwóch określonych grup zasobów zostaną usunięte.
 
-Uruchom element playbook przy użyciu polecenia playbook rozwiązania ansible:
+Uruchom element PlayBook za pomocą polecenia rozwiązania ansible-element PlayBook:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
 > [Rozwiązanie Ansible na platformie Azure](/azure/ansible/)

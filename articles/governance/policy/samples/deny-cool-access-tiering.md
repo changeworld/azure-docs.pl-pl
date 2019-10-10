@@ -1,21 +1,21 @@
 ---
-title: Przykład — Odmów dostępu do chłodnych warstw dla kont magazynu
-description: Ta przykładowa definicja zasad zabrania korzystania z warstw dostępu chłodnego dla kont usługi BLOB Storage.
+title: Przykład — brak warstwy dostępu chłodnego na koncie magazynu
+description: Te przykładowe definicje zasad uniemożliwiają użycie warstwy dostępu Chłodna dla kont usługi Blob Storage.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 21ee0e62e300b5807e3a38a0834c3365ab123dad
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a686126d0f164df2df224ced2e16f03a0a9bb283
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977231"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255802"
 ---
-# <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Przykład — Odmów dostępu do chłodnych warstw dla kont magazynu
+# <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Przykład — Uniemożliwianie użycia warstwy dostępu Chłodna dla kont magazynu
 
-Te zasady uniemożliwiają korzystanie z warstw dostępu chłodnego dla kont usługi BLOB Storage.
+Ta zasada uniemożliwia użycie warstwy dostępu Chłodna dla kont usługi Blob Storage.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Te zasady uniemożliwiają korzystanie z warstw dostępu chłodnego dla kont us�
 
 [!code-json[main](../../../../policy-templates/samples/Storage/storage-account-access-tier/azurepolicy.json "Deny cool access tiering for storage accounts")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -40,7 +40,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -Pol
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -58,7 +58,7 @@ az policy definition create --name 'storage-account-access-tier' --display-name 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "storage-account-access-tier"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -68,4 +68,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

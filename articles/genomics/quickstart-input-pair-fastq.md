@@ -1,7 +1,7 @@
 ---
-title: Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ — Microsoft Genomics
-titleSuffix: Azure
-description: W tym artykule przyjęto założenie, mieć zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
+title: Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ
+titleSuffix: Microsoft Genomics
+description: W tym artykule pokazano, jak przesłać przepływ pracy do usługi Microsoft Genomics, jeśli pliki wejściowe są pojedynczymi parami plików FASTQ.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: 2662a8f52c58a39916e5789fa9ed7fadd91216c0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3806b165e5abb661e53c6a315650d025fd42e17f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60333676"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248557"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>Przesyłanie przepływu pracy przy użyciu plików wejściowych FASTQ w usłudze Microsoft Genomics
 
-W tym artykule przedstawiono sposób przesyłania przepływu pracy do usługi Microsoft Genomics, jeśli pliki wejściowe to jedna para plików FASTQ. W tym temacie założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli zostało pomyślnie przesłane przepływu pracy przy użyciu podanych przykładowych danych, można przystąpić do kontynuować z tego artykułu. 
+W tym artykule pokazano, jak przesłać przepływ pracy do usługi Microsoft Genomics, jeśli pliki wejściowe są pojedynczymi parami plików FASTQ. W tym temacie założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli przepływ pracy został pomyślnie przesłany przy użyciu dostarczonych przykładowych danych, możesz kontynuować pracę z tym artykułem. 
 
-## <a name="set-up-upload-your-fastq-files-to-azure-storage"></a>Konfiguracja: Przekazywanie plików FASTQ do usługi Azure storage
+## <a name="set-up-upload-your-fastq-files-to-azure-storage"></a>Konfiguracja: przekazywanie plików FASTQ do magazynu platformy Azure
 Załóżmy, że mamy dwa pliki, *reads_1.fq.gz* i *reads_2.fq.gz*, oraz że zostały one przekazane do konta magazynu *myaccount* na platformie Azure jako obiekty **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads_1<span></span>.fq<span></span>.gz<span></span>** oraz **https://<span></span>myaccount.blob.core.<span></span>windows<span></span>.net/<span></span>inputs/<span></span>reads_2.fq<span></span>.gz<span></span>** . Masz adres URL interfejsu API i klucz dostępu. Chcesz uzyskać dane wyjściowe w lokalizacji **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** .
 
 
@@ -81,5 +81,5 @@ output_storage_account_container: outputs
 
 Prześlij plik `config.txt` przy użyciu tego wywołania: `msgen submit -f config.txt`
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przekazano parę plików FASTQ do usługi Azure Storage oraz przesłano przepływ pracy do usługi Microsoft Genomics za pośrednictwem klienta `msgen` Python. Aby dowiedzieć się więcej o przesyłaniu przepływów pracy i innych poleceniach, za pomocą usługi Microsoft Genomics, zobacz nasze [— często zadawane pytania](frequently-asked-questions-genomics.md). 
+## <a name="next-steps"></a>Następne kroki
+W tym artykule przekazano parę plików FASTQ do usługi Azure Storage oraz przesłano przepływ pracy do usługi Microsoft Genomics za pośrednictwem klienta `msgen` Python. Aby dowiedzieć się więcej o przesyłaniu przepływów pracy i innych poleceniach, których możesz użyć w połączeniu z usługą Microsoft Genomics, zobacz nasze [często zadawane pytania](frequently-asked-questions-genomics.md). 

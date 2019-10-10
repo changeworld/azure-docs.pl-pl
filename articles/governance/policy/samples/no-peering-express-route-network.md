@@ -1,21 +1,21 @@
 ---
-title: Przykład — brak komunikacji równorzędnej sieci z siecią Express Route Network
-description: Ta przykładowa definicja zasad uniemożliwia skojarzenie komunikacji równorzędnej z siecią w określonej grupie zasobów.
+title: Przykład — brak komunikacji równorzędnej sieci z usługą Express Route
+description: Ta przykładowa definicja zasad uniemożliwia skojarzenie sieci równorzędnych z siecią znajdującą się w określonej grupie zasobów.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 21149cb1dce03b358d4fc36e0038ea8c5267b3d1
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 7cd3dde826e79bc38f257d0c8b58e4faf0bef3d4
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980446"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255710"
 ---
-# <a name="sample---no-network-peering-to-express-route-network"></a>Przykład — brak komunikacji równorzędnej sieci z siecią Express Route Network
+# <a name="sample---no-network-peering-to-express-route-network"></a>Przykład — brak sieciowej komunikacji równorzędnej z siecią usługi Express Route
 
-Te zasady uniemożliwiają skojarzenie komunikacji równorzędnej z siecią w określonej grupie zasobów. Służy do zapobiegania nawiązywaniu połączenia z centralną zarządzaną infrastrukturą sieciową. Należy określić nazwę grupy zasobów, aby uniemożliwić skojarzenie.
+Te zasady uniemożliwiają skojarzenie sieci równorzędnej z siecią znajdującą się w określonej grupie zasobów. Pozwalają one zapobiegać nawiązywaniu połączeń z centralnie zarządzaną infrastrukturą sieci. Należy określić nazwę grupy zasobów, aby uniemożliwić skojarzenie.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Te zasady uniemożliwiają skojarzenie komunikacji równorzędnej z siecią w ok
 
 [!code-json[main](../../../../policy-templates/samples/Network/no-network-peerings-to-er-network/azurepolicy.json "No network peering to ER network")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -40,7 +40,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -res
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -58,7 +58,7 @@ az policy definition create --name 'no-network-peerings-to-er-network' --display
 az policy assignment create --name <assignmentname> --scope <scope> --policy "no-network-peerings-to-er-network"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -68,4 +68,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

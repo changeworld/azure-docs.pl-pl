@@ -1,17 +1,17 @@
 ---
-title: Próbkowanie — Inspekcja, jeśli aplikacje nie są zainstalowane na maszynach wirtualnych z systemem Linux
+title: Przykład — Inspekcja brakujących aplikacji na maszynach wirtualnych z systemem Linux
 description: Ta przykładowa inicjatywa konfiguracji gościa i definicje inspekcji, jeśli określone aplikacje nie są zainstalowane na maszynach wirtualnych z systemem Linux.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4d4f4c1102c4409d891bb20b54788dc8ed40ee
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977035"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255748"
 ---
 # <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Próbkowanie — Inspekcja, jeśli określone aplikacje nie są zainstalowane na maszynach wirtualnych z systemem Linux
 
@@ -46,10 +46,10 @@ Inicjatywa jest tworzona przez dołączenie definicji **audytu** i **DeployIfNot
 
 |Nazwa |Typ |Opis |
 |---|---|---|
-|applicationName |String |Nazwy aplikacji. Przykład: "Python", "PowerShell" lub listę rozdzieloną przecinkami, taką jak "Python, PowerShell". Użyj \* do dopasowania symboli wieloznacznych, takich jak "potęga @ no__t-1". |
+|ApplicationName |Ciąg |Nazwy aplikacji. Przykład: "Python", "PowerShell" lub listę rozdzieloną przecinkami, taką jak "Python, PowerShell". Użyj \* do dopasowania symboli wieloznacznych, takich jak "potęga @ no__t-1". |
 
-Podczas tworzenia przypisania za pośrednictwem programu PowerShell lub interfejsu wiersza polecenia platformy Azure wartości parametrów mogą być przekazane jako dane JSON w ciągu lub za pośrednictwem pliku przy użyciu `-PolicyParameter` (PowerShell) lub `--params` (interfejs wiersza polecenia platformy Azure).
-Program PowerShell obsługuje również `-PolicyParameterObject`, co wymaga przeprowadzenia przechodzenia do polecenia cmdlet nazwa/wartość Hashtable, gdzie **name** to nazwa parametru, a **wartość** jest pojedynczą wartością lub tablicą wartości przekazywanych podczas przypisywania.
+Podczas tworzenia przypisania za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure wartości parametrów można przekazać jako kod JSON w ramach ciągu lub pliku przy użyciu opcji `-PolicyParameter` (program PowerShell) lub opcji `--params` (interfejs wiersza polecenia platformy Azure).
+Program PowerShell obsługuje także opcję `-PolicyParameterObject`, która wymaga przekazania do polecenia cmdlet tabeli skrótów Name/Value (Nazwa/Wartość), gdzie parametr **Name** oznacza nazwę parametru, a parametr **Value** oznacza pojedynczą wartość lub tablicę wartości przekazywaną podczas przypisywania.
 
 W tym przykładowym parametrze instalacja aplikacji _Python_ i _PowerShell_ jest przeprowadzana inspekcją.
 
@@ -77,27 +77,27 @@ KOD JSON definiujący reguły definicji zasad **deployIfNotExists** .
 
 Definicja zasad **deployIfNotExists** definiuje obrazy platformy Azure, na których zasady zostały zweryfikowane:
 
-|Wydawca |Sprzedaży |Magazyn |
+|Publisher |Oferta |JSZ |
 |-|-|-|
 |OpenLogic |CentOS @ no__t-0 |Wszystkie z wyjątkiem 6 @ no__t-0 |
-|RedHat |RHEL |Wszystkie z wyjątkiem 6 @ no__t-0 |
-|RedHat |OEM | Wszystkie |
+|Redhat |RHEL |Wszystkie z wyjątkiem 6 @ no__t-0 |
+|Redhat |OEM | Wszystko |
 |credativ |Debian | Wszystkie z wyjątkiem 7 @ no__t-0 |
 |Szło |SLES @ no__t-0 |Wszystkie z wyjątkiem 11 @ no__t-0 |
-|Postaci| UbuntuServer |Wszystkie z wyjątkiem 12 @ no__t-0 |
-|Microsoft-dsvm |Linux-Data-nauka-VM-Ubuntu |Wszystkie |
-|Microsoft-dsvm |połączone |Wszystkie |
+|Canonical| UbuntuServer |Wszystkie z wyjątkiem 12 @ no__t-0 |
+|Microsoft-dsvm |Linux-Data-nauka-VM-Ubuntu |Wszystko |
+|Microsoft-dsvm |połączone |Wszystko |
 |Cloudera |Cloudera — CentOS — OS |Wszystkie z wyjątkiem 6 @ no__t-0 |
-|Cloudera |Cloudera-Altus-CentOS-OS |Wszystkie |
-|Microsoft — ads |Linux @ no__t-0 |Wszystkie |
-|Microsoft-AKS |Wszystkie |Wszystkie |
-|AzureDatabricks |Wszystkie |Wszystkie |
-|qubole — Inc |Wszystkie |Wszystkie |
-|DataStax |Wszystkie |Wszystkie |
-|Couchbase |Wszystkie |Wszystkie |
-|scalegrid |Wszystkie |Wszystkie |
-|elementu |Wszystkie |Wszystkie |
-|paloaltonetworks |Wszystkie |Wszystkie |
+|Cloudera |Cloudera-Altus-CentOS-OS |Wszystko |
+|Microsoft — ads |Linux @ no__t-0 |Wszystko |
+|Microsoft-AKS |Wszystko |Wszystko |
+|AzureDatabricks |Wszystko |Wszystko |
+|qubole — Inc |Wszystko |Wszystko |
+|DataStax |Wszystko |Wszystko |
+|Couchbase |Wszystko |Wszystko |
+|scalegrid |Wszystko |Wszystko |
+|Elementu |Wszystko |Wszystko |
+|paloaltonetworks |Wszystko |Wszystko |
 
 Część **wdrożenia** reguły przekazuje parametr _InstalledApplication_ do agenta konfiguracji gościa na maszynie wirtualnej. Ta konfiguracja umożliwia agentowi wykonywanie walidacji i zgłaszanie zgodności z powrotem przez definicję zasad **inspekcji** .
 
@@ -120,11 +120,11 @@ Bez sparowanej definicji zasad **DeployIfNotExists** konfiguracja gościa nie b�
 
 Użycie tych przycisków do wdrożenia za pośrednictwem portalu tworzy kopię definicji zasad **deployIfNotExists** . Bez sparowanej definicji zasad **inspekcji** konfiguracja gościa nie będzie działała prawidłowo.
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Program Azure PowerShell
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-### <a name="deploy-with-azure-powershell"></a>Wdrażanie za pomocą Azure PowerShell
+### <a name="deploy-with-azure-powershell"></a>Wdrażanie przy użyciu programu Azure PowerShell
 
 #### <a name="copy-and-assign-the-initiative"></a>Kopiuj i przypisz inicjatywę
 
@@ -150,7 +150,7 @@ $saIdentity = $assignment.Identity.principalId
 $roleAssignment = New-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefinitionName 'Contributor'
 ```
 
-Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i definicję:
+Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i poprzednią definicję:
 
 ```azurepowershell-interactive
 # Remove the initiative assignment
@@ -178,7 +178,7 @@ $scope = Get-AzResourceGroup -Name 'YourResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'guestconfig-installed-application-linux-audit-assignment' -DisplayName 'GuestConfig - Python and PowerShell apps on Linux' -Scope $scope.ResourceID -PolicyDefinition $definition
 ```
 
-Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i definicję:
+Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i poprzednią definicję:
 
 ```azurepowershell-interactive
 # Remove the policy definition
@@ -213,7 +213,7 @@ $saIdentity = $assignment.Identity.principalId
 $roleAssignment = New-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefinitionName 'Contributor'
 ```
 
-Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i definicję:
+Uruchom następujące polecenia, aby usunąć poprzednie przypisanie i poprzednią definicję:
 
 ```azurepowershell-interactive
 # Remove the policy assignment
@@ -226,9 +226,9 @@ Remove-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefi
 Remove-AzPolicyDefinition -Id $definition
 ```
 
-### <a name="azure-powershell-explanation"></a>Azure PowerShell Wyjaśnij
+### <a name="azure-powershell-explanation"></a>Objaśnienie dla programu Azure PowerShell
 
-Skrypty wdrażania i usuwania używają następujących poleceń. Każde polecenie w poniższej tabeli zawiera linki do dokumentacji dotyczącej poleceń:
+Skrypty służące do wdrażania i usuwania korzystają z następujących poleceń. Każde polecenie w poniższej tabeli stanowi link do dokumentacji polecenia:
 
 | Polecenie | Uwagi |
 |---|---|
@@ -237,7 +237,7 @@ Skrypty wdrażania i usuwania używają następujących poleceń. Każde polecen
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup) | Pobiera pojedynczą grupę zasobów. |
 | [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Tworzy nowe przypisanie Azure Policy dla inicjatywy lub definicji. |
 | [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Nadaje istniejące przypisanie roli do określonego podmiotu zabezpieczeń. |
-| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Usuwa istniejące przypisanie Azure Policy. |
+| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Usuwa istniejące przypisanie zasad Azure Policy. |
 | [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Usuwa inicjatywę. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-AzPolicyDefinition) | Usuwa definicję. |
 
