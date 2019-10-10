@@ -196,6 +196,8 @@
               href: disk-encryption-cli-quickstart.md
             - name: Szyfrowanie maszyny wirtualnej za pomocą programu Azure PowerShell
               href: disk-encryption-powershell-quickstart.md
+            - name: Szyfrowanie maszyny wirtualnej za pomocą witryny Azure Portal
+              href: disk-encryption-portal-quickstart.md
             - name: Magazyn kluczy dla usługi Azure Disk Encryption
               href: disk-encryption-key-vault.md
             - name: Przykładowe skrypty szyfrowania dysków

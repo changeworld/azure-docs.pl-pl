@@ -1,48 +1,57 @@
 ---
-title: Mapowanie transformacji wiersza polecenia Alter przepływu danych w usłudze Azure Data Factory
-description: Jak zaktualizować docelowej bazy danych przy użyciu Azure danych fabryki mapowanie przepływu Alter wiersz przekształcania danych
+title: Przekształcenie zmiany wiersza Azure Data Factory mapowania przepływu danych
+description: Jak zaktualizować obiekt docelowy bazy danych przy użyciu Azure Data Factory mapowanie zmian w przekształceniu wierszy
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: f0ac5bb36079983b10e4d86cc776bd4e5ee6817d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: e2cd69d5977b8ad1d9be2a71a006579fe3abfd23
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65520145"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971255"
 ---
-# <a name="azure-data-factory-alter-row-transformation"></a>Przekształcenie wiersza polecenia Alter fabryki danych platformy Azure
+# <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory zmodyfikować przekształcenia wierszy
 
-Przekształcenie wiersza polecenia Alter umożliwia ustawianie zasad insert, usuwanie, aktualizacja i upsert w wierszach. Można dodać warunki jeden do wielu jako wyrażenia. Każda z tych warunków może spowodować w wiersz lub wiersze wstawione, zaktualizowane, usunięty lub upsert. Wiersz polecenia ALTER może tworzyć akcje zarówno DDL i DML względem bazy danych.
+Użyj przekształcenia ALTER Row, aby ustawić zasady wstawiania, usuwania, aktualizacji i upsert w wierszach. Możesz dodać warunki "jeden do wielu" jako wyrażenia. Warunki te należy określić w kolejności priorytetu, ponieważ każdy wiersz zostanie oznaczony przy użyciu zasad odpowiadających pierwszemu wyrażeniu. Każdy z tych warunków może spowodować Wstawianie, aktualizowanie, usuwanie lub upserted wierszy (lub wierszy). Polecenie ALTER Row może generować do bazy danych zarówno akcje DDL & DML.
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Zmień ustawienia wiersza](media/data-flow/alter-row1.png "zmienić ustawienia wiersza")
+![Zmień ustawienia wiersza](media/data-flow/alter-row1.png "Zmień ustawienia wiersza")
 
 > [!NOTE]
-> Przekształcenia wiersza polecenia ALTER będzie działać tylko w odniesieniu do bazy danych ujścia przepływu danych. Akcje, które można przypisać do wierszy (insert, update, delete, upsert) nie występuje podczas sesji debugowania. Należy dodać zadanie wykonania przepływu danych do potoku i wprowadź w życie alter zasady wierszy w tabelach bazy danych za pomocą potoku debugowania lub wyzwalaczy.
+> Przekształcenia ALTER Row będą działać tylko w ujściach bazy danych w przepływie danych. Akcje przypisane do wierszy (INSERT, Update, DELETE, upsert) nie będą wykonywane podczas sesji debugowania. Należy dodać zadanie wykonywania przepływu danych do potoku i użyć debugowania potoku lub wyzwalaczy w celu wymuszenia zasad ALTER Row w tabelach bazy danych.
+
+## <a name="indicate-a-default-row-policy"></a>Wskazywanie domyślnych zasad wiersza
+
+Tworzenie przekształcenia ALTER Row i Określanie zasad wiersza z warunkiem `true()`. Każdy wiersz, który nie spełnia żadnych wcześniej zdefiniowanych wyrażeń, zostanie oznaczony dla określonych zasad wiersza. Domyślnie każdy wiersz, który nie spełnia żadnego wyrażenia warunkowego, zostanie oznaczony jako dla `Insert`.
+
+![Zmień wiersz o jedną zasadę](media/data-flow/alter-row4.png "Zmień wiersz o jedną zasadę")
+
+> [!NOTE]
+> Aby oznaczyć wszystkie wiersze z jedną zasadą, można utworzyć warunek dla tych zasad i określić warunek jako `true()`.
 
 ## <a name="view-policies"></a>Wyświetl zasady
 
-Przełącz tryb debugowania przepływu danych do włączone, a następnie Wyświetl wyniki zasad wiersza polecenia alter w okienku podglądu danych. Wykonywanie wiersza polecenia alter w trybie debugowania przepływu danych nie przyniesie DDL i DML akcji względem urządzenie docelowe. Aby uzyskać te akcje, które występują, należy wykonać przepływ danych wewnątrz działania wykonywania przepływu danych w potoku.
+Włącz tryb debugowania przepływu danych, aby wyświetlić wyniki zasad ALTER Row w okienku Podgląd danych. Wykonanie polecenia ALTER Row w trybie debugowania przepływu danych nie spowoduje utworzenia akcji DDL ani DML względem obiektu docelowego. Aby te akcje były wykonywane, należy wykonać przepływ danych wewnątrz działania wykonywania przepływu danych w ramach potoku.
 
-![Zmiany zasad wiersz](media/data-flow/alter-row3.png "zmienić zasady wiersza")
+![Zasady ALTER Row](media/data-flow/alter-row3.png "Zasady ALTER Row")
 
-Pozwoli to sprawdzić i wyświetlić stan każdego wiersza w oparciu o warunkach. Istnieją ikona reprezentuje dla każdego wstawiania, aktualizowania, usuwania i upsert akcję, która odbędzie się przepływ danych, wskazujący akcję, która będzie miała miejsce podczas wykonywania przepływu danych w potoku.
+Pozwoli to sprawdzić i wyświetlić stan każdego wiersza w oparciu o Twoje warunki. Istnieje ikona reprezentuje dla każdej akcji INSERT, Update, DELETE i Upsert, która będzie miała miejsce w przepływie danych, wskazująca, która akcja będzie wykonywana po wykonaniu przepływu danych w potoku.
 
 ## <a name="sink-settings"></a>Ustawienia ujścia
 
-Musisz mieć bazę danych będący ujściem typu dla wiersza polecenia Alter do pracy. Ustawienia ujścia musi ustawić każdej akcji, które mają być dozwolone.
+Aby zmiana wiersza działała, musisz mieć typ ujścia bazy danych. W ustawieniach ujścia należy ustawić wszystkie akcje odpowiadające warunkom zmiany wiersza, które mają być dozwolone.
 
-![ALTER ujścia wiersz](media/data-flow/alter-row2.png "Alter ujścia wiersza")
+![Zmień ujścia wierszy](media/data-flow/alter-row2.png "Zmień ujścia wierszy")
 
-Domyślne zachowanie w przepływ danych ADF bazy danych ujścia jest aby wstawić wiersze. Jeśli chcesz zezwolić na aktualizacje, wykonuje operację UPSERT i usuwa także, możesz również sprawdzić te pola w ujściu, aby zezwolić na akcje.
+Domyślnym zachowaniem w przepływie danych ADF z ujściami bazy danych jest wstawianie wierszy. Jeśli chcesz zezwolić na aktualizacje, upserts i usunięcia, należy również zaznaczyć te pola w zlewie, aby zezwolić na wykonywanie akcji.
 
 > [!NOTE]
-> Jeśli Twoje wstawiania, aktualizacji lub wykonuje operację UPSERT zmodyfikować schematu tabeli docelowej w ujściu, przepływ danych zakończy się niepowodzeniem. Aby zmodyfikować schemat docelowy w bazie danych, należy wybrać opcję "Utwórz tabelę" w ujściu. To spowoduje drop i ponowne utworzenie tabeli za pomocą nowych definicji schematu.
+> Jeśli Wstaw, aktualizacje lub upserts modyfikują schemat tabeli docelowej w ujścia, przepływ danych zakończy się niepowodzeniem. Aby zmodyfikować schemat docelowy w bazie danych, należy wybrać opcję "Utwórz ponownie tabelę" w zlewie. Spowoduje to usunięcie i ponowne utworzenie tabeli przy użyciu nowej definicji schematu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po przekształceniu wiersza polecenia Alter, możesz chcieć [ujście danych do docelowego magazynu danych](data-flow-sink.md).
+Po przekształceniu zmiany wiersza możesz chcieć [zaujścia danych do docelowego magazynu danych](data-flow-sink.md).

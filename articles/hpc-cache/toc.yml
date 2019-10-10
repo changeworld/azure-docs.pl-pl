@@ -36,3 +36,5 @@
   items:
     - name: Otwieranie biletu pomocy technicznej
       href: hpc-cache-support-ticket.md
+    - name: Odzyskiwanie sprawności po awarii regionalnej
+      href: hpc-region-recovery.md

@@ -80,6 +80,8 @@
           items:
             - name: Narzędzie do kopiowania danych
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+    - name: Przekształcanie danych przy użyciu przepływu danych mapowania
+      href: tutorial-data-flow.md
     - name: Przekształcanie danych w chmurze
       items:
         - name: HDInsight Spark
@@ -143,7 +145,7 @@
       href: concepts-integration-runtime.md
     - name: Przepływy danych mapowania
       items:
-        - name: Pojęcia związane z przepływem danych mapowania
+        - name: Omówienie przepływu danych mapowania
           href: concepts-data-flow-overview.md
         - name: Tryb debugowania
           href: concepts-data-flow-debug-mode.md
@@ -151,8 +153,6 @@
           href: concepts-data-flow-json.md
         - name: Odchylenia od schematu
           href: concepts-data-flow-schema-drift.md
-        - name: Okienko inspekcji
-          href: concepts-data-flow-inspect-pane.md
         - name: Wzorce kolumn
           href: concepts-data-flow-column-pattern.md
         - name: Monitorowanie przepływu danych
@@ -161,12 +161,8 @@
           href: concepts-data-flow-performance.md
         - name: Przenoszenie węzłów
           href: concepts-data-flow-move-nodes.md
-        - name: Karta optymalizacji
-          href: concepts-data-flow-optimize-tab.md
         - name: Konstruktor wyrażeń
           href: concepts-data-flow-expression-builder.md
-        - name: Odwoływanie się do węzłów
-          href: concepts-data-flow-reference-node.md
         - name: Język wyrażeń
           href: data-flow-expression-functions.md
     - name: Role i uprawnienia
@@ -390,6 +386,8 @@
     - name: Przekształcanie danych
       href: transform-data.md
       items:
+        - name: Działanie wykonywania przepływu danych
+          href: control-flow-execute-data-flow-activity.md
         - name: Działanie funkcji platformy Azure
           href: control-flow-azure-function-activity.md
         - name: Działanie niestandardowe
@@ -424,8 +422,6 @@
       items:
         - name: Działanie dołączania zmiennej
           href: control-flow-append-variable-activity.md
-        - name: Działanie wykonywania przepływu danych
-          href: control-flow-execute-data-flow-activity.md
         - name: Działanie wykonywania potoku
           href: control-flow-execute-pipeline-activity.md
         - name: Filtruj aktywność
