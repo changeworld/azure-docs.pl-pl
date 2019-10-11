@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: vashan
-ms.openlocfilehash: 9825ef1426a1c93f94b502c396fbaab1f86a924e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 95a313b3c6995d55b86561c685641b447edae127
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263506"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240937"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatyczne uaktualnienia obrazu systemu operacyjnego dla zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -56,15 +56,15 @@ Obecnie obsługiwane są tylko niektóre obrazy platformy systemu operacyjnego. 
 
 Następujące jednostki SKU są obecnie obsługiwane (i więcej jest dodawanych okresowo):
 
-| Wydawca               | Oferta systemu operacyjnego      |  Numer SKU               |
+| Publisher               | Oferta systemu operacyjnego      |  Jednostka SKU               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
-| Nieautoryzowana fala (OpenLogic)  | CentOS        | 7.5                |
+| Nieautoryzowana fala (OpenLogic)  | CentOS        | 7,5                |
 | CoreOS                  | CoreOS        | Stable             |
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
 | Microsoft Corporation   | WindowsServer | 2016 — centrum danych    |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-Smalldisk |
+| Microsoft Corporation   | WindowsServer | 2016 — Datacenter-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2016 — Datacenter-with-Containers |
 | Microsoft Corporation   | WindowsServer | 2019 — centrum danych |
 | Microsoft Corporation   | WindowsServer | 2019 — Datacenter-Smalldisk |
@@ -111,15 +111,15 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 }
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
-Użyj polecenia cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Poniższy przykład służy do konfigurowania automatycznych uaktualnień zestawu skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *zasobów*:
+### <a name="azure-powershell"></a>Program Azure PowerShell
+Za pomocą polecenia cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss) Skonfiguruj automatyczne uaktualnianie obrazu systemu operacyjnego dla zestawu skalowania. Poniższy przykład służy do konfigurowania automatycznych uaktualnień zestawu skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *zasobów*:
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
-### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
-Użyj [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Użyj interfejsu wiersza polecenia platformy Azure 2.0.47 lub nowszego. Poniższy przykład służy do konfigurowania automatycznych uaktualnień zestawu skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *zasobów*:
+### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure w wersji 2.0
+Użyj [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) , aby skonfigurować automatyczne uaktualnienia obrazu systemu operacyjnego dla zestawu skalowania. Użyj interfejsu wiersza polecenia platformy Azure 2.0.47 lub nowszego. Poniższy przykład służy do konfigurowania automatycznych uaktualnień zestawu skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *zasobów*:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -215,14 +215,14 @@ Wywołanie GET zwraca właściwości podobne do następujących przykładowych d
 }
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 Użyj polecenia cmdlet [Get-AzVmss](/powershell/module/az.compute/get-azvmss) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Poniższy przykład zawiera szczegółowe informacje dotyczące sposobu przeglądania stanu uaktualnienia systemu operacyjnego dla zestawu skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *zasobów*:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
-### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
+### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure w wersji 2.0
 Aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania, użyj [AZ VMSS Get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) . Użyj interfejsu wiersza polecenia platformy Azure 2.0.47 lub nowszego. Poniższy przykład zawiera szczegółowe informacje dotyczące sposobu przeglądania stanu uaktualnienia systemu operacyjnego dla zestawu skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *zasobów*:
 
 ```azurecli-interactive
@@ -238,12 +238,12 @@ Dostępne wersje obrazu dla automatycznych obsługiwanych jednostek SKU uaktualn
 GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2018-10-01`
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 ```azurepowershell-interactive
 Get-AzVmImage -Location "westus" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "16.04-LTS"
 ```
 
-### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
+### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure w wersji 2.0
 ```azurecli-interactive
 az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServer" --sku "16.04-LTS" --all
 ```
@@ -263,14 +263,14 @@ Użyj wywołania interfejsu API [uruchamiania systemu operacyjnego](/rest/api/co
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 Użyj polecenia cmdlet [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *Grupa:*
 
 ```azurepowershell-interactive
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
+### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure w wersji 2.0
 Użyj [AZ VMSS krocząc-upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Użyj interfejsu wiersza polecenia platformy Azure 2.0.47 lub nowszego. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *Grupa:*
 
 ```azurecli-interactive
