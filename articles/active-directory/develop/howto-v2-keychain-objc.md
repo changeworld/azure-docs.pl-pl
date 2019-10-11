@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e85fc5e6e907e32c0ad67af339c48cf84ef4764
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269040"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264182"
 ---
-# <a name="configure-keychain"></a>Konfigurowanie łańcucha kluczy
+# <a name="configure-keychain"></a>Konfigurowanie pęku kluczy
 
-Gdy [Biblioteka uwierzytelniania firmy Microsoft dla systemu iOS i macOS](msal-overview.md) (MSAL) w użytkowniku lub odświeża token, próbuje buforować tokeny w łańcuchu kluczy. Przez buforowanie tokenów w pęku kluczy, MSAL może zapewnić dyskretne Logowanie jednokrotne między wieloma aplikacjami dystrybuowanymi przez ten sam program Apple Developer. Logowanie jednokrotne jest realizowane za pośrednictwem funkcji grup dostępu łańcucha kluczy (zobacz [dokumentację firmy Apple](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc))
+Gdy [Biblioteka uwierzytelniania firmy Microsoft dla systemu iOS i macOS](msal-overview.md) (MSAL) w użytkowniku lub odświeża token, próbuje buforować tokeny w łańcuchu kluczy. Tokeny buforowania w łańcuchu kluczy umożliwiają MSAL zapewnianie dyskretnego logowania jednokrotnego między wieloma aplikacjami dystrybuowanymi przez ten sam program Apple Developer. Logowanie jednokrotne jest realizowane za pośrednictwem funkcji grup dostępu łańcucha kluczy. Aby uzyskać więcej informacji, zobacz [dokumentację elementów łańcucha kluczy](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)firmy Apple.
 
 W tym artykule opisano sposób konfigurowania uprawnień aplikacji, dzięki czemu MSAL może zapisywać buforowane tokeny w systemach iOS i macOS pęku kluczy.
 
@@ -34,21 +34,21 @@ W tym artykule opisano sposób konfigurowania uprawnień aplikacji, dzięki czem
 
 ### <a name="ios"></a>iOS
 
-MSAL w systemie iOS domyślnie `com.microsoft.adalcache` używa grupy dostępu. Jest to grupa dostępu współdzielonego używana przez zestawy SDK MSAL i Azure AD Authentication Library (ADAL) i zapewnia najlepszą obsługę logowania jednokrotnego między wieloma aplikacjami z tego samego wydawcy.
+MSAL w systemie iOS domyślnie używa grupy dostępu `com.microsoft.adalcache`. Jest to grupa dostępu współdzielonego używana przez zestawy SDK MSAL i Azure AD Authentication Library (ADAL) i zapewnia najlepszą obsługę logowania jednokrotnego między wieloma aplikacjami z tego samego wydawcy.
 
-W `com.microsoft.adalcache` systemie iOS Dodaj grupę pęku kluczy do uprawnienia do aplikacji w Xcode w obszarze **Ustawienia** > projektu**funkcje** > **udostępnianie łańcucha kluczy**
+W systemie iOS Dodaj grupę pęku kluczy `com.microsoft.adalcache` do uprawnienia aplikacji w XCode w obszarze **Ustawienia projektu** > **możliwości** >  funkcja**udostępniania łańcucha kluczy**
 
 ### <a name="macos"></a>macOS
 
-MSAL na macOS domyślnie `com.microsoft.identity.universalstorage` używa grupy dostępu.
+MSAL on macOS domyślnie używa grupy dostępu `com.microsoft.identity.universalstorage`.
 
-Ze względu na ograniczenia macOS pęku kluczy `access group` , MSAL nie jest bezpośrednio przetłumaczyć na atrybut grupy dostępu pęku kluczy (zobacz [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) na macOS 10,14 i wcześniejszych. Jednak zachowuje się podobnie z perspektywy rejestracji jednokrotnej, zapewniając, że wiele aplikacji dystrybuowanych przez tego samego deweloperów firmy Apple może mieć dyskretne Logowanie jednokrotne.
+Ze względu na ograniczenia macOS pęku kluczy, MSAL `access group` nie są bezpośrednio tłumaczone na atrybut grupy dostępu pęku kluczy (zobacz [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) na macOS 10,14 i wcześniejszych. Jednak zachowuje się podobnie z perspektywy rejestracji jednokrotnej, zapewniając, że wiele aplikacji dystrybuowanych przez tego samego deweloperów firmy Apple może mieć dyskretne Logowanie jednokrotne.
 
 Na macOS 10,15 (macOS Catalina), MSAL używa atrybutu grupy dostępu pęku kluczy, aby uzyskać dyskretne Logowanie jednokrotne, podobnie jak w przypadku systemu iOS.
 
 ## <a name="custom-keychain-access-group"></a>Niestandardowa Grupa dostępu pęku kluczy
 
-Jeśli chcesz użyć innej grupy dostępu łańcucha kluczy, możesz przekazać grupę niestandardową podczas tworzenia `MSALPublicClientApplicationConfig` przed utworzeniem `MSALPublicClientApplication`, w następujący sposób:
+Jeśli chcesz użyć innej grupy dostępu łańcucha kluczy, możesz przekazać grupę niestandardową podczas tworzenia `MSALPublicClientApplicationConfig` przed utworzeniem `MSALPublicClientApplication` w następujący sposób:
 
 Cel-C:
 

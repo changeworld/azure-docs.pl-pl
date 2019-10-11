@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: b365c914db0ce43da5dac4c5b889c854c0ea0639
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cbdf4f203204df2d26eb7c908167c1e1ca10d0ab
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827404"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264321"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące Azure Container Registry
 
@@ -39,7 +39,7 @@ Tak. Zapoznaj się z dokumentacją z [TwistLock](https://www.twistlock.com/2016/
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Jak mogę skonfigurować Kubernetes z Azure Container Registry?
 
-Zapoznaj się z dokumentacją dotyczącą [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) i kroków [usługi Azure Kubernetes Service](container-registry-auth-aks.md).
+Zapoznaj się z dokumentacją dotyczącą [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) i kroków [usługi Azure Kubernetes Service](../aks/cluster-container-registry-integration.md).
 
 ### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>Jak mogę uzyskać poświadczenia administratora dla rejestru kontenerów?
 
@@ -97,7 +97,7 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 Propagowanie zmian reguł zapory zajmuje trochę czasu. Po zmianie ustawień zapory poczekaj kilka minut przed zweryfikowaniem tej zmiany.
 
 
-## <a name="registry-operations"></a>Operacje na rejestrze
+## <a name="registry-operations"></a>Operacje rejestru
 
 - [Jak mogę dostęp do usługi Docker Registry HTTP API v2?](#how-do-i-access-docker-registry-http-api-v2)
 - [Jak mogę usunąć wszystkie manifesty, do których nie odwołują się żadne Tagi w repozytorium?](#how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository)
@@ -416,7 +416,7 @@ Jeśli używasz przeglądarki Microsoft Edge/IE, możesz zobaczyć maksymalnie 1
 Przeglądarka może nie być w stanie wysłać żądania pobrania repozytoriów lub tagów na serwer. Mogą istnieć różne przyczyny, takie jak:
 
 * Brak łączności sieciowej
-* Zapory
+* Zapora
 * Bloki usługi AD
 * Błędy DNS
 

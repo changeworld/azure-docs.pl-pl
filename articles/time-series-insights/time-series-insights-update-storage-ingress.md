@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98baa8d3f951a8922bcd1f40449fa26840f3a3c4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9af53728ee038a6511c434aeedfdb9afdab6d04b
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051473"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273871"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Magazyn danych i ruch przychodzący w wersji zapoznawczej Azure Time Series Insights
 
@@ -25,16 +25,16 @@ W tym artykule opisano zmiany w usłudze Data Storage i transfer danych przychod
 
 Azure Time Series Insights zasady transferu danych przychodzących określają, skąd mają być pochodzące dane źródłowe i w jakim formacie.
 
-[![Omówienie modelu szeregów czasowych](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
+[@no__t — Omówienie modelu serii 1Time](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
 
 ### <a name="ingress-policies"></a>Zasady dotyczące transferu danych przychodzących
 
 Wersja zapoznawcza Time Series Insights obsługuje te same źródła zdarzeń i typy plików, które Time Series Insights obecnie obsługiwane:
 
-- [Azure IoT Hub](../iot-hub/about-iot-hub.md)
-- [Azure Event Hubs](../event-hubs/event-hubs-about.md)
+- [IoT Hub platformy Azure](../iot-hub/about-iot-hub.md)
+- [Event Hubs platformy Azure](../event-hubs/event-hubs-about.md)
   
-Azure Time Series Insights obsługuje dane JSON przesłane za pomocą usługi Azure IoT Hub lub Azure Event Hubs. Aby zoptymalizować dane JSON IoT, Dowiedz się, [jak kształtować kod JSON](./time-series-insights-send-events.md#json).
+Azure Time Series Insights obsługuje dane JSON przesłane za pomocą usługi Azure IoT Hub lub Azure Event Hubs. Aby zoptymalizować dane JSON IoT, Dowiedz się, [jak kształtować kod JSON](./time-series-insights-send-events.md#supported-json-shapes).
 
 ### <a name="data-storage"></a>Magazyn danych
 
@@ -56,7 +56,7 @@ Time Series Insights w wersji zapoznawczej indeksuje dane przy użyciu strategii
 > * W trakcie korzystania z wersji zapoznawczej oczekiwano dłuższego czasu, zanim dane zostaną udostępnione.
 > * W przypadku wystąpienia jakichkolwiek znaczących opóźnień należy skontaktować się z nami.
 
-### <a name="scale"></a>Skalowanie
+### <a name="scale"></a>Skala
 
 Wersja zapoznawcza Time Series Insights obsługuje początkową skalę ruchu przychodzącego do 1 megabajtów na sekundę (MB/s) na środowisko. Trwa Ulepszona obsługa skalowania. Planujemy zaktualizować naszą dokumentację, aby odzwierciedlić te ulepszenia.
 
@@ -89,15 +89,15 @@ Time Series Insights tworzy i przechowuje kopie obiektów BLOB w następujących
     * Minimalna sygnatura czasowa zdarzenia w obiekcie blob dla obiektów BLOB partycjonowanych według identyfikatora szeregów czasowych.
 
 > [!NOTE]
-> * `<YYYY>`mapuje do 4-cyfrowego reprezentacji.
-> * `<MM>`mapuje na 2-cyfrowy reprezentację miesiąca.
-> * `<YYYYMMDDHHMMSSfff>`mapuje na reprezentację sygnatury czasowej z`YYYY`4-cyfrowym rokiem ()`MM`, 2-cyfrowym miesiącem`DD`(), 2-cyfrowym`HH`dniem (), 2-cyfrową godziną (), 2`SS`-cyfrową minutą`MM`(), 2-cyfrową drugą () i 3-cyfrową milisekundy`fff`().
+> * `<YYYY>` mapuje na reprezentację z 4 cyframi.
+> * `<MM>` mapuje na 2-cyfrowy reprezentację miesiąca.
+> * `<YYYYMMDDHHMMSSfff>` mapuje na reprezentację sygnatury czasowej z 4-cyfrowym rokiem (`YYYY`), 2-cyfrowy miesiąc (`MM`), 2-cyfrowy dzień (`DD`), 2-cyfrowy czas (`HH`), 2-cyfrowy minuta (`MM`), 2-Cyfrowa sekunda (`SS`) i 3-cyfrowy milisekundy (`fff`).
 
 Zdarzenia Time Series Insights są mapowane do zawartości pliku Parquet w następujący sposób:
 
 * Każde zdarzenie jest mapowane na jeden wiersz.
 * Wbudowana kolumna **sygnatur czasowych** z sygnaturą czasową zdarzenia. Właściwość sygnatury czasowej nigdy nie ma wartości null. Wartość domyślna jest ustawiana na czas, w którym znajduje się **Źródło zdarzenia** , jeśli właściwość timestamp nie jest określona w źródle zdarzenia. Sygnatura czasowa jest w formacie UTC. 
-* Wszystkie inne właściwości, które są mapowane na `_string` kolumny kończące się od (String), `_bool` ( `_datetime` wartość logiczna), ( `_double` DateTime) i (Double), w zależności od typu właściwości.
+* Wszystkie inne właściwości, które są zamapowane na kolumny końcowe z `_string` (ciąg), `_bool` (wartość logiczna), `_datetime` (DateTime) i `_double` (Double), w zależności od typu właściwości.
 * Jest to schemat mapowania dla pierwszej wersji formatu pliku, do którego odwołuje się jako **V = 1**. W miarę rozwoju tej funkcji nazwa zostanie zwiększona do wartości **V = 2**, **v = 3**i tak dalej.
 
 ## <a name="azure-storage"></a>Azure Storage
@@ -129,8 +129,8 @@ Możesz chcieć uzyskać dostęp do danych przechowywanych w Eksploratorze Time 
 
 Dostęp do danych można uzyskać na trzy sposoby:
 
-* W Eksploratorze Time Series Insights w wersji zapoznawczej: dane można eksportować jako plik CSV z Eksploratora Time Series Insights Preview. Aby uzyskać więcej informacji, zobacz [Time Series Insights Explorer w wersji](./time-series-insights-update-explorer.md)zapoznawczej.
-* Z poziomu interfejsów API programu Time Series Insights Preview: punkt końcowy interfejsu API można `/getRecorded`uzyskać pod adresem. Aby dowiedzieć się więcej na temat tego interfejsu API, zobacz [zapytanie szeregów czasowych](./time-series-insights-update-tsq.md).
+* W Eksploratorze Time Series Insights w wersji zapoznawczej: dane można eksportować jako plik CSV z Eksploratora Time Series Insights Preview. Aby uzyskać więcej informacji, zobacz [Time Series Insights Explorer w wersji zapoznawczej](./time-series-insights-update-explorer.md).
+* Z poziomu interfejsów API programu Time Series Insights Preview: punkt końcowy interfejsu API można uzyskać pod adresem `/getRecorded`. Aby dowiedzieć się więcej na temat tego interfejsu API, zobacz [zapytanie szeregów czasowych](./time-series-insights-update-tsq.md).
 * Bezpośrednio z konta usługi Azure Storage (poniżej).
 
 #### <a name="from-an-azure-storage-account"></a>Z konta usługi Azure Storage
@@ -171,8 +171,8 @@ Partycja fizyczna to blokowy obiekt BLOB, który jest przechowywany na koncie ma
 
 Partycja logiczna to partycja w partycji fizycznej, w której przechowywane są wszystkie dane skojarzone z jedną wartością klucza partycji. Time Series Insights w wersji zapoznawczej logicznie dzieli każdy obiekt BLOB na podstawie dwóch właściwości:
 
-* **Identyfikator szeregów czasowych**: Klucz partycji dla wszystkich danych Time Series Insights w strumieniu zdarzeń i modelu.
-* **Sygnatura czasowa**: Czas oparty na początkowej operacji wejściowej.
+* **Identyfikator szeregów czasowych**: klucz partycji dla wszystkich danych Time Series Insights w ramach strumienia zdarzeń i modelu.
+* **Sygnatura czasowa**: czas oparty na początkowej operacji wejściowej.
 
 Wersja zapoznawcza Time Series Insights zapewnia wykonywanie kwerend opartych na tych dwóch właściwościach. Te dwie właściwości również zapewniają najbardziej efektywną metodę dostarczania danych Time Series Insights szybko.
 

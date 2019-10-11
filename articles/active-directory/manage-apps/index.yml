@@ -5,19 +5,19 @@ metadata:
   title: Dokumentacja zarządzania aplikacjami
   description: Usługa Azure Active Directory zapewnia bezpieczny i bezproblemowy dostęp do aplikacji lokalnych i działających w chmurze. Do tego zwalnia z konieczności zarządzania hasłami. Wystarczy, że użytkownicy zalogują się raz, i mogą uzyskiwać dostęp do usługi Office 365 oraz tysięcy innych aplikacji. Z naszych przewodników Szybki start, samouczków i wskazówek dowiesz się, jak wdrażać aplikacje i zarządzać nimi.
   ms.service: active-directory
-  ms.subservice: manage-apps
+  ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/16/2019
+  ms.date: 10/10/2019
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: acb99eab233836f46c1e1dfe4c857fb2e80ed3de
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 0d7081a35a143abf1ae068ce7344e0e50e240eaa
+  ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70127550"
+  ms.lasthandoff: 10/11/2019
+  ms.locfileid: "72264129"
 landingContent:
 - title: Informacje o zarządzaniu aplikacjami
   linkLists:

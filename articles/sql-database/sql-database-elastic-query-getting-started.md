@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 12/18/2018
-ms.openlocfilehash: cc59d7cb1ce09aad834130818e5af533719e04c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/10/2019
+ms.openlocfilehash: 4e896fae0d8459629c58dfd0bbdfbb32b90b1cac
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568607"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264236"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Raportowanie w skalowanych bazach danych w chmurze (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ Pobierz i uruchom [przykład wprowadzenie do narzędzi Elastic Database](sql-dat
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Tworzenie Menedżera mapy fragmentu za pomocą przykładowej aplikacji
 W tym miejscu utworzysz Menedżera mapy fragmentu wraz z kilkoma fragmentów, a następnie wstawiasz dane do fragmentów. Jeśli masz już Instalatora fragmentów z danymi podzielonej na fragmenty, możesz pominąć poniższe kroki i przejść do następnej sekcji.
 
-1. Kompiluj i uruchamiaj przykładową aplikację **wprowadzenie do Elastic Database Tools** . Postępuj zgodnie z instrukcjami do kroku 7 w sekcji [pobieranie i uruchamianie przykładowej aplikacji](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). Na końcu kroku 7 zostanie wyświetlony następujący wiersz polecenia:
+1. Utwórz i uruchom przykładową aplikację **wprowadzenie do Elastic Database Tools** , wykonując kroki opisane w sekcji artykułu [pobieranie i uruchamianie przykładowej aplikacji](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1). Po zakończeniu wszystkich kroków zobaczysz następujący wiersz polecenia:
 
     ![wiersz polecenia][1]
 2. W oknie wiersza polecenia wpisz "1" i naciśnij klawisz **Enter**. Spowoduje to utworzenie Menedżera mapy fragmentu i dodanie dwóch fragmentów do serwera. Następnie wpisz "3" i naciśnij klawisz **Enter**; Powtarzaj akcję cztery razy. Spowoduje to wstawienie przykładowych wierszy danych w fragmentów.
@@ -62,13 +62,13 @@ Są one używane do nawiązywania połączenia z menedżerem map fragmentu i fra
 1. Otwórz SQL Server Management Studio lub SQL Server narzędzia danych w programie Visual Studio.
 2. Nawiąż połączenie z bazą danych ElasticDBQuery i wykonaj następujące polecenia T-SQL:
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
+        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    nazwy "username" i "Password" powinny być takie same jak informacje logowania używane w kroku 6 [pobierania i uruchamiania przykładowej aplikacji](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) w temacie [wprowadzenie do narzędzi elastycznych baz danych](sql-database-elastic-scale-get-started.md).
+    nazwy "username" i "Password" powinny być takie same jak informacje logowania używane w kroku 3 sekcji [pobieranie i uruchamianie przykładowej aplikacji](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) w artykule **wprowadzenie do narzędzi Elastic Database** .
 
 ### <a name="external-data-sources"></a>Zewnętrzne źródła danych
 Aby utworzyć zewnętrzne źródło danych, wykonaj następujące polecenie w bazie danych ElasticDBQuery:
@@ -109,7 +109,7 @@ Zobaczysz, że zapytanie agreguje wyniki ze wszystkich fragmentów i daje nastę
 ## <a name="import-elastic-database-query-results-to-excel"></a>Importuj wyniki zapytania Elastic Database do programu Excel
  Wyniki z zapytania można zaimportować do pliku programu Excel.
 
-1. Launch Excel 2013.
+1. Uruchom program Excel 2013.
 2. Przejdź do wstążki **dane** .
 3. Kliknij **z innych źródeł** i kliknij pozycję **z SQL Server**.
 
@@ -128,13 +128,13 @@ Za korzystanie z funkcji zapytania Elastic Database nie ma dodatkowych opłat.
 
 Aby uzyskać informacje o cenach, zobacz [szczegóły cennika SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z omówieniem zapytania elastycznego, zobacz [Omówienie zapytania elastycznego](sql-database-elastic-query-overview.md).
 * Aby zapoznać się z pionowym samouczkiem partycjonowania, zobacz [Rozpoczynanie pracy z kwerendą między bazami danych (partycjonowanie pionowe)](sql-database-elastic-query-getting-started-vertical.md).
 * Aby poznać składnię i przykładowe zapytania dotyczące danych partycjonowanych pionowo, zobacz [wykonywanie zapytań dotyczących partycjonowanych danych w pionie.](sql-database-elastic-query-vertical-partitioning.md)
 * Aby poznać składnię i przykładowe zapytania dla danych z podziałem na partycje, zobacz [wykonywanie zapytań o dane partycjonowane w poziomie.](sql-database-elastic-query-horizontal-partitioning.md)
-* Zapoznaj się z artykułem [\_Sp Execute \_Remote](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję języka Transact-SQL w ramach jednego zdalnego Azure SQL Database lub zestawu baz danych służących jako fragmentów w poziomym schemacie partycjonowania.
+* Zobacz [SP @ no__t-1execute \_remote](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję języka Transact-SQL w ramach pojedynczego Azure SQL Database zdalnego lub zestawu baz danych służących jako fragmentów w poziomym schemacie partycjonowania.
 
 
 <!--Image references-->

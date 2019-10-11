@@ -215,8 +215,6 @@
               href: azure-ad-integration.md
         - name: Używanie kontroli dostępu opartej na rolach w usłudze Kubernetes w integracji z usługą Azure AD
           href: azure-ad-rbac.md
-        - name: Uwierzytelnianie przy użyciu rekordu ACR
-          href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true
     - name: Monitorowanie i rejestrowanie
       items:

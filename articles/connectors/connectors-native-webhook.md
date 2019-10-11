@@ -1,6 +1,6 @@
 ---
-title: Tworzenie zadania oparte na zdarzeniach i przepływów pracy w usłudze Azure Logic Apps
-description: Wyzwalanie, wstrzymywania i wznawiania automatycznych zadań, procesów i przepływów pracy opartych na zdarzenia zachodzące w punkcie końcowym za pomocą usługi Azure Logic Apps
+title: Zaczekaj i Odpowiedz na zdarzenia — Azure Logic Apps
+description: Automatyzowanie przepływów pracy wyzwalających, wstrzymuje i wznawiane na podstawie zdarzeń w punkcie końcowym usługi przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,136 +8,139 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: c2658df185d4836210c496d2c46a00a3541257a2
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 36b0ea7233b449584bd83450b45276da5baa135b
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541344"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264344"
 ---
-# <a name="automate-event-based-tasks-and-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Automatyzowanie zadań opartych na zdarzeniach i przepływów pracy przy użyciu elementów webhook protokołu HTTP w usłudze Azure Logic Apps
+# <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Tworzenie i uruchamianie zautomatyzowanych przepływów zadań opartych na zdarzeniach za pomocą elementów webhook protokołu HTTP w Azure Logic Apps
 
-Za pomocą [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanego łącznika element Webhook protokołu HTTP, możesz zautomatyzować przepływy pracy, które oczekiwania i uruchomienia w oparciu o na określonych zdarzeń, które odbywa się na punkt końcowy HTTP lub HTTPS, tworząc aplikacje logiki. Na przykład można utworzyć aplikację logiki, która monitoruje punktu końcowego usługi przez oczekiwania dla określonego zdarzenia przed wyzwalania przepływu pracy i uruchamianie określonych akcji, a nie regularne sprawdzanie lub *sondowania* tego punktu końcowego.
+Dzięki [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanemu łącznikowi elementu WEBHOOK protokołu HTTP można zautomatyzować przepływy pracy, które oczekują i uruchamiają się w oparciu o określone zdarzenia, które wystąpiły w punkcie końcowym http lub HTTPS przez tworzenie aplikacji logiki. Można na przykład utworzyć aplikację logiki, która monitoruje punkt końcowy usługi przez oczekiwanie na określone zdarzenie przed wyzwoleniem przepływu pracy i uruchomieniem określonych akcji zamiast regularnego sprawdzania lub *sondowania* tego punktu końcowego.
 
-Poniżej przedstawiono niektóre opartego na zdarzeniach — przepływ pracy — przykład:
+Oto przykładowe przepływy pracy oparte na zdarzeniach:
 
-* Poczekaj, aż element zostanie dostarczona z [usługi Azure Event Hub](https://github.com/logicappsio/EventHubAPI) przed wyzwoleniem przebiegu aplikacji logiki.
-* Oczekiwanie na zatwierdzenie przed kontynuowaniem przepływu pracy.
+* Poczekaj na dostarczenie elementu z [centrum zdarzeń platformy Azure](https://github.com/logicappsio/EventHubAPI) przed wyzwoleniem uruchomienia aplikacji logiki.
+* Poczekaj na zatwierdzenie przed kontynuowaniem przepływu pracy.
 
-## <a name="how-do-webhooks-work"></a>Jak działają elementów webhook?
+## <a name="how-do-webhooks-work"></a>Jak działają elementy webhook?
 
-Wyzwalacza elementu webhook protokołu HTTP jest oparty na zdarzeniach, które nie są zależne od sprawdzania lub regularnie sondowania dla nowych elementów. Po zapisaniu aplikacji logiki, która rozpoczyna się od wyzwalacza elementu webhook lub po zmianie aplikacji logiki z wyłączonego na włączony wyzwalacza elementu webhook *subskrybuje* do określonej usługi lub punktu końcowego, rejestrując *adresów URL wywołania zwrotnego* od danej usługi lub punktu końcowego. Wyzwalacz jest następnie czeka na zatwierdzenie tej usługi lub punkt końcowy do wywołania adresu URL, który uruchamiania aplikacji logiki. Podobnie jak [wyzwalacza żądania](connectors-native-reqres.md), aplikacja logiki jest uruchamiany natychmiast po określonym zdarzenie. Wyzwalacz *anulowań subskrypcji* z usługi lub punktu końcowego Usuń wyzwalacz i zapisywanie aplikacji logiki lub gdy zmienią się Twoja aplikacja logiki z włączony na wyłączony.
+Wyzwalacz elementu webhook protokołu HTTP to oparte na zdarzeniach, które nie zależą od regularnego sprawdzania i sondowania dla nowych elementów. Po zapisaniu aplikacji logiki, która rozpoczyna się od wyzwalacza elementu webhook lub zmiany aplikacji logiki z wyłączone na włączone, wyzwalacz elementu webhook *subskrybuje* określoną usługę lub punkt końcowy przez zarejestrowanie *adresu URL wywołania zwrotnego* z tą usługą lub punktem końcowym. Wyzwalacz czeka, aż usługa lub punkt końcowy wywoła adres URL, co spowoduje uruchomienie aplikacji logiki. Podobnie jak w przypadku [wyzwalacza żądania](connectors-native-reqres.md)aplikacja logiki jest uruchamiana natychmiast po wystąpieniu określonego zdarzenia. Wyzwalacz *anulował subskrypcję* usługi lub punktu końcowego w przypadku usunięcia wyzwalacza i zapisania aplikacji logiki lub zmiany aplikacji logiki z włączone na wyłączone.
 
-Akcja elementu webhook protokołu HTTP jest również oparte na zdarzeniach i *subskrybuje* do określonej usługi lub punktu końcowego, rejestrując *adresów URL wywołania zwrotnego* od danej usługi lub punktu końcowego. Ta akcja elementu webhook wstrzymuje przepływ pracy aplikacji logiki i będzie czekać na usługi lub punkt końcowy wywołania adresu URL przed wznawia aplikacji logiki, które są uruchomione. Akcja aplikacji logiki *anulowań subskrypcji* z usługi lub punktu końcowego w następujących przypadkach:
+Akcja elementu webhook protokołu HTTP jest również oparta na zdarzeniach i *subskrybuje* określoną usługę lub punkt końcowy przez zarejestrowanie *adresu URL wywołania zwrotnego* za pomocą tej usługi lub punktu końcowego. Akcja elementu webhook wstrzymuje przepływ pracy aplikacji logiki i czeka, aż usługa lub punkt końcowy wywoła adres URL przed wznowieniem działania aplikacji logiki. Aplikacja logiki akcji *anuluje subskrypcję* usługi lub punktu końcowego w następujących przypadkach:
 
-* Po pomyślnym zakończeniu działania elementu webhook
-* Jeśli przebieg aplikacji logiki jest anulowane podczas oczekiwania na odpowiedź
-* Przed logiki aplikacji upłynie limit czasu
+* Po pomyślnym zakończeniu akcji elementu webhook
+* Jeśli uruchomienie aplikacji logiki zostało anulowane podczas oczekiwania na odpowiedź
+* Przed upływem limitu czasu aplikacji logiki
 
-Na przykład usługi Office 365 Outlook łącznika [ **Wyślij wiadomość e-mail dotyczącą zatwierdzenia** ](connectors-create-api-office365-outlook.md) akcji znajduje się przykład akcji elementu webhook, która wynika z tego wzorca. Ten wzorzec można rozszerzyć na dowolną usługę przy użyciu akcji elementu webhook.
+Na przykład akcja [**Wyślij wiadomość e-mail**](connectors-create-api-office365-outlook.md) dotyczącą zatwierdzenia przez łącznik programu Outlook pakietu Office 365 to przykład akcji elementu webhook, która następuje po tym wzorcu. Ten wzorzec można przyciągnąć do dowolnej usługi za pomocą akcji elementu webhook.
 
-Aby uzyskać więcej informacji zobacz następujące tematy:
+> [!NOTE]
+> Logic Apps wymusza Transport Layer Security (TLS) 1,2 podczas otrzymywania wywołania z powrotem do wyzwalacza lub akcji elementu webhook protokołu HTTP. Jeśli widzisz błędy uzgadniania protokołu SSL, upewnij się, że korzystasz z protokołu TLS 1,2.
 
-* [Parametry wyzwalacza elementu Webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
-* [Elementy Webhook i subskrypcje](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
-* [Tworzenie niestandardowych interfejsów API, który obsługuje element webhook](../logic-apps/logic-apps-create-api-app.md)
+Aby uzyskać więcej informacji, zobacz następujące tematy:
+
+* [Parametry wyzwalacza elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [Elementy webhook i subskrypcje](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
+* [Tworzenie niestandardowych interfejsów API, które obsługują element webhook](../logic-apps/logic-apps-create-api-app.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Adres URL dla już wdrożonej punktu końcowego lub interfejsu API obsługującego element webhook subskrybowanie i anulowanie subskrypcji wzorzec [wyzwalaczy elementu webhook w usłudze logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers) lub [Akcje elementu webhook w usłudze logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-actions) odpowiednio
+* Adres URL już wdrożonego punktu końcowego lub interfejsu API, który obsługuje wzorzec elementu webhook i subskrypcja anulowania subskrypcji dla [wyzwalaczy elementu webhook w usłudze Logic Apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers) lub [akcji elementu webhook w usłudze Logic Apps](../logic-apps/logic-apps-create-api-app.md#webhook-actions) zgodnie z potrzebami
 
-* Podstawową wiedzę na temat o [jak tworzyć aplikacje logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-* Aplikacja logiki gdzie chcesz poczekać dla określonych zdarzeń w punkcie końcowym docelowego. Można uruchomić za pomocą wyzwalacza elementu Webhook protokołu HTTP, [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji elementu Webhook protokołu HTTP, należy uruchomić swoją aplikację logiki z dowolnego wyzwalacza, który ma. W tym przykładzie użyto wyzwalacza HTTP w pierwszym kroku.
+* Aplikacja logiki, w której chcesz czekać na określone zdarzenia w docelowym punkcie końcowym. Aby rozpocząć pracę z wyzwalaczem elementu webhook protokołu HTTP, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji elementu webhook protokołu HTTP, uruchom aplikację logiki z dowolnym wyzwalaczem, który chcesz. Ten przykład używa wyzwalacza HTTP jako pierwszego kroku.
 
-## <a name="add-an-http-webhook-trigger"></a>Dodawanie wyzwalacza elementu Webhook protokołu HTTP
+## <a name="add-an-http-webhook-trigger"></a>Dodawanie wyzwalacza elementu webhook protokołu HTTP
 
-Ten wyzwalacz wbudowanych rejestruje adres URL wywołania zwrotnego z określonej usługi i oczekuje za daną usługę, możesz wysłać żądanie HTTP POST do tego adresu URL. Gdy to zdarzenie występuje, aktywuje się i natychmiast uruchamia aplikację logiki.
+Ten wbudowany wyzwalacz rejestruje adres URL wywołania zwrotnego z określoną usługą i czeka, aż ta usługa wyśle żądanie HTTP POST do tego adresu URL. Gdy to zdarzenie wystąpi, wyzwala i natychmiast uruchamia aplikację logiki.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Otwórz swoje pustej aplikacji logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
 
-1. W projektancie w polu wyszukiwania wprowadź "element webhook protokołu http" jako filtr. Z **wyzwalaczy** listy wybierz **element Webhook protokołu HTTP** wyzwalacza.
+1. W projektancie w polu wyszukiwania wprowadź ciąg "http webhook" jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **http elementu webhook** .
 
-   ![Wybieranie wyzwalacza elementu Webhook protokołu HTTP](./media/connectors-native-webhook/select-http-webhook-trigger.png)
+   ![Wybierz wyzwalacz elementu webhook protokołu HTTP](./media/connectors-native-webhook/select-http-webhook-trigger.png)
 
-   Ten przykład zmienia nazwę wyzwalacza "Wyzwalacza elementu Webhook protokołu HTTP", aby ten krok ma bardziej opisowe nazwy. Ponadto w przykładzie dodano później akcję element Webhook protokołu HTTP, a następnie obie nazwy muszą być unikatowe.
+   Ten przykład zmienia nazwę wyzwalacza na "wyzwalacz elementu webhook protokołu HTTP" tak, aby krok miał bardziej opisową nazwę. Ponadto przykład później dodaje akcję elementu webhook protokołu HTTP i obie nazwy muszą być unikatowe.
 
-1. Podaj wartości dla [parametry wyzwalacza elementu Webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) chcesz użyć dla subskrypcji i anulować wywołań, na przykład:
+1. Podaj wartości [parametrów wyzwalacza elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) , które mają być używane dla wywołań subskrybowania i anulowania subskrypcji, na przykład:
 
-   ![Wprowadź parametry wyzwalacza elementu Webhook protokołu HTTP](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
+   ![Wprowadź parametry wyzwalacza elementu webhook protokołu HTTP](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-1. Aby dodać inne dostępne parametry, otwórz **dodano nowy parametr** listy i wybierz parametry, które mają.
+1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
 
-   Aby uzyskać więcej informacji na temat dostępnych typów uwierzytelniania dla elementu Webhook protokołu HTTP, zobacz [uwierzytelniania HTTP wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Aby uzyskać więcej informacji na temat typów uwierzytelniania dostępnych dla elementu webhook protokołu HTTP, zobacz temat [uwierzytelnianie wyzwalaczy i akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
-1. Kontynuuj tworzenie przepływu pracy aplikacji logiki, za pomocą akcji, które są uruchamiane po aktywowaniu wyzwalacza.
+1. Kontynuuj tworzenie przepływu pracy aplikacji logiki przy użyciu akcji uruchamianych podczas uruchamiania wyzwalacza.
 
-1. Gdy skończysz, to zrobione, pamiętaj, aby zapisać aplikację logiki. Na pasku narzędzi Projektanta wybierz **Zapisz**.
+1. Gdy skończysz, pamiętaj, aby zapisać aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
-   Trwa zapisywanie aplikacji logiki wywołuje punkt końcowy subskrypcji i rejestruje adres URL wywołania zwrotnego do wyzwalania tej aplikacji logiki.
+   Zapisanie aplikacji logiki wywołuje punkt końcowy subskrypcji i rejestruje adres URL wywołania zwrotnego dla wyzwalania tej aplikacji logiki.
 
-1. Teraz, gdy Usługa docelowa wysyła `HTTP POST` żądanie do adresu URL wywołania zwrotnego generowane aplikację logiki i zawiera żadnych danych, który jest przekazywany za pomocą żądania.
+1. Teraz za każdym razem, gdy usługa docelowa wysyła żądanie `HTTP POST` do adresu URL wywołania zwrotnego, uruchamiana jest aplikacja logiki i zawiera wszystkie dane przesyłane przez żądanie.
 
-## <a name="add-an-http-webhook-action"></a>Dodawanie akcji elementu Webhook protokołu HTTP
+## <a name="add-an-http-webhook-action"></a>Dodaj akcję elementu webhook protokołu HTTP
 
-Ta akcja wbudowanych rejestruje adres URL wywołania zwrotnego z określonej usługi wstrzymuje przepływ pracy aplikacji logiki i czeka na tę usługę, możesz wysłać żądanie HTTP POST do tego adresu URL. Gdy to zdarzenie występuje, wznawia działanie akcji uruchamiania aplikacji logiki.
+Ta wbudowana akcja rejestruje adres URL wywołania zwrotnego z określoną usługą, wstrzymuje przepływ pracy aplikacji logiki i czeka na wysłanie przez tę usługę żądania HTTP POST do tego adresu URL. Po tym zdarzeniu akcja wznawia działanie aplikacji logiki.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-   W tym przykładzie użyto wyzwalacza elementu Webhook protokołu HTTP jako pierwszy krok.
+   Ten przykład używa wyzwalacza elementu webhook protokołu HTTP jako pierwszego kroku.
 
-1. W obszarze danego kroku, w której chcesz dodać akcję element Webhook protokołu HTTP, wybierz **nowy krok**.
+1. W kroku, w którym chcesz dodać akcję elementu webhook protokołu HTTP, wybierz pozycję **nowy krok**.
 
-   Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między krokami. Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
 
-1. W projektancie w polu wyszukiwania wprowadź "element webhook protokołu http" jako filtr. Z **akcje** listy wybierz **element Webhook protokołu HTTP** akcji.
+1. W projektancie w polu wyszukiwania wprowadź ciąg "http webhook" jako filtr. Z listy **Akcje** wybierz akcję **element webhook protokołu HTTP** .
 
-   ![Wybierz akcję element Webhook protokołu HTTP](./media/connectors-native-webhook/select-http-webhook-action.png)
+   ![Wybierz akcję elementu webhook protokołu HTTP](./media/connectors-native-webhook/select-http-webhook-action.png)
 
-   Ten przykład zmienia nazwę akcji "Akcja elementu Webhook protokołu HTTP", aby krok polega na bardziej opisową nazwę.
+   Ten przykład zmienia nazwę akcji na "akcja elementu webhook protokołu HTTP" tak, aby krok miał bardziej opisową nazwę.
 
-1. Podaj wartości dla elementu Webhook protokołu HTTP, parametry akcji, które są podobne do [parametry wyzwalacza elementu Webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger) chcesz użyć dla subskrypcji i anulować wywołań, na przykład:
+1. Podaj wartości parametrów akcji elementu webhook protokołu HTTP, które są podobne do [parametrów wyzwalacza elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger) , które mają być używane dla wywołań subskrybowania i anulowania subskrypcji, na przykład:
 
-   ![Wprowadź parametry akcji elementu Webhook protokołu HTTP](./media/connectors-native-webhook/http-webhook-action-parameters.png)
+   ![Wprowadź parametry akcji elementu webhook protokołu HTTP](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   Podczas wykonywania aplikacji logiki wywołuje punkt końcowy subskrypcji, podczas uruchamiania tej akcji. Aplikacja logiki następnie wstrzymuje przepływ pracy i czeka na docelową usługę do wysłania `HTTP POST` żądania na adres URL wywołania zwrotnego. Jeśli akcja zakończy się pomyślnie, akcja anulowań subskrypcji z punktu końcowego i wznowieniu działania aplikacji logiki uruchamiania przepływu pracy.
+   Podczas wykonywania, aplikacja logiki wywołuje punkt końcowy subskrypcji podczas wykonywania tej akcji. Aplikacja logiki wstrzymuje przepływ pracy i czeka na wysłanie żądania `HTTP POST` do adresu URL wywołania zwrotnego przez usługę docelową. Jeśli akcja zostanie zakończona pomyślnie, Akcja anuluje subskrypcję z punktu końcowego, a aplikacja logiki wznowi działanie przepływu pracy.
 
-1. Aby dodać inne dostępne parametry, otwórz **dodano nowy parametr** listy i wybierz parametry, które mają.
+1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
 
-   Aby uzyskać więcej informacji na temat dostępnych typów uwierzytelniania dla elementu Webhook protokołu HTTP, zobacz [uwierzytelniania HTTP wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Aby uzyskać więcej informacji na temat typów uwierzytelniania dostępnych dla elementu webhook protokołu HTTP, zobacz temat [uwierzytelnianie wyzwalaczy i akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
-1. Gdy skończysz, pamiętaj, aby zapisać aplikację logiki. Na pasku narzędzi Projektanta wybierz **Zapisz**.
+1. Po zakończeniu Pamiętaj, aby zapisać aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Aby uzyskać więcej informacji o parametrach akcji i wyzwalaczy, które są podobne do siebie nawzajem, zobacz [parametrów elementu Webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger).
+Aby uzyskać więcej informacji na temat parametrów wyzwalacza i akcji, które są podobne do siebie, zobacz [Parametry elementu webhook protokołu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger).
 
 ### <a name="output-details"></a>Szczegóły danych wyjściowych
 
-Poniżej przedstawiono więcej informacji na temat danych wyjściowych z wyzwalacza elementu Webhook protokołu HTTP lub akcji, która zwraca te informacje:
+Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacza lub akcji elementu webhook protokołu HTTP, które zwracają następujące informacje:
 
 | Nazwa właściwości | Typ | Opis |
 |---------------|------|-------------|
-| Nagłówki | object | Nagłówki w żądaniu |
-| Treść | object | Obiekt JSON | Obiekt z zawartości treści z żądania |
-| Kod stanu: | int | Kod stanu z żądania |
+| Nagłówka | obiekt | Nagłówki żądania |
+| jednostce | obiekt | Obiekt JSON | Obiekt z zawartością treści z żądania |
+| kod stanu | int | Kod stanu z żądania |
 |||
 
 | Kod stanu | Opis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Zaakceptowane |
-| 400 | Nieprawidłowe żądanie |
+| 202 | Przyjmować |
+| 400 | Złe żądanie |
 | 401 | Brak autoryzacji |
-| 403 | Zabroniony |
-| 404 | Nie można odnaleźć |
+| 403 | Forbidden |
+| 404 | Nie znaleziono |
 | 500 | Wewnętrzny błąd serwera. Wystąpił nieznany błąd. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

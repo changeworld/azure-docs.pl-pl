@@ -1,45 +1,44 @@
 ---
-title: Skonfiguruj reguły niestandardowe v2 zapory aplikacji sieci Web przy użyciu programu Azure PowerShell
-description: Informacje o sposobie konfigurowania zapory aplikacji sieci Web w wersji 2 reguły niestandardowe przy użyciu programu Azure PowerShell
+title: Konfigurowanie niestandardowych reguł zapory aplikacji sieci Web v2 przy użyciu Azure PowerShell
+description: Informacje o konfigurowaniu niestandardowych reguł zapory aplikacji sieci Web w wersji 2 przy użyciu Azure PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f4d2fd7342e0efe95a1bc69e0dba77692053cf14
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9e50b47e22f5760c213cd0cafad82ecca592dec8
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164750"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263746"
 ---
-# <a name="configure-web-application-firewall-v2--with-a-custom-rule-using-azure-powershell"></a>Konfigurowanie zapory aplikacji sieci Web w wersji 2 przy użyciu reguły niestandardowej przy użyciu programu Azure PowerShell
+# <a name="configure-web-application-firewall-v2-custom-rules-by-using-azure-powershell"></a>Konfigurowanie niestandardowych reguł zapory aplikacji sieci Web v2 przy użyciu Azure PowerShell
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Reguły niestandardowe umożliwiają tworzenie własnych reguł obliczone dla każdego żądania, które przechodzą przez zaporę aplikacji sieci Web (WAF) w wersji 2. Te reguły trzymaj wyższy priorytet niż pozostałe reguły zestawów reguł zarządzanego. Niestandardowe reguły mają akcję (zezwalania lub blokowania), warunek dopasowania i operatora w celu umożliwienia pełnego dostosowania.
+Za pomocą reguł niestandardowych można utworzyć własne reguły, które są oceniane dla każdego żądania, które przechodzą przez zaporę aplikacji sieci Web (WAF). Reguły te mają wyższy priorytet niż pozostałe reguły w zarządzanych zestawach reguł. Aby zezwolić na pełne dostosowanie, reguły niestandardowe mają akcję (do zezwalania lub blokowania), warunek dopasowania i operatora.
 
-W tym artykule utworzono v2 brama aplikacji zapory aplikacji internetowych, które używa reguły niestandardowej. Bloki niestandardową regułę ruchu, jeśli nagłówek żądania zawiera agenta użytkownika *evilbot*.
+W tym artykule opisano tworzenie Application Gateway platformy Azure w wersji 2, która używa reguły niestandardowej. Reguła niestandardowa blokuje ruch, jeśli nagłówek żądania zawiera *Evilbot*User-Agent.
 
-Aby zobaczyć więcej przykładów reguły niestandardowej, zobacz [tworzenia i używania reguł zapory aplikacji sieci web niestandardowego](create-custom-waf-rules.md)
+Aby wyświetlić więcej przykładów niestandardowych reguł, zobacz [Tworzenie i używanie niestandardowych reguł zapory aplikacji sieci Web](create-custom-waf-rules.md).
 
-Chcąc wykonywania programu PowerShell platformy Azure, w tym artykule w jednym skrypcie ciągłe, Kopiuj, Wklej i uruchom, zobacz [przykładów programu Azure Application Gateway PowerShell](powershell-samples.md).
+Aby uruchomić kod Azure PowerShell w tym artykule w jednym ciągłym skrypcie, który można skopiować, wkleić i uruchomić, zobacz [przykłady dla programu PowerShell w usłudze Azure Application Gateway](powershell-samples.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+* [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-### <a name="azure-powershell-module"></a>Moduł programu Azure PowerShell
+* Potrzebny jest moduł Azure PowerShell. Jeśli zdecydujesz się zainstalować program Azure PowerShell i używać go lokalnie, ten skrypt wymaga Azure PowerShell module w wersji 2.1.0 lub nowszej. Wykonaj następujące czynności:
 
-Jeśli zdecydujesz się zainstalować i korzystać z programu Azure PowerShell lokalnie, ten skrypt wymaga modułu Wersja 2.1.0 programu Azure PowerShell lub nowszej.
-
-1. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `Get-Module -ListAvailable Az`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
-2. Aby utworzyć połączenie z platformą Azure, uruchom polecenie `Connect-AzAccount`.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+  1. Aby znaleźć wersję, uruchom `Get-Module -ListAvailable Az`. Jeśli musisz przeprowadzić uaktualnienie, zobacz [Install Azure PowerShell module](/powershell/azure/install-az-ps).
+  2. Aby utworzyć połączenie z platformą Azure, uruchom `Connect-AzAccount`.
 
 ## <a name="example-script"></a>Przykładowy skrypt
 
-### <a name="set-up-variables"></a>Ustawianie zmiennych
+### <a name="set-up-variables"></a>Konfigurowanie zmiennych
+
+Uruchom następujący kod:
 
 ```azurepowershell
 $rgname = "CustomRulesTest"
@@ -51,11 +50,15 @@ $appgwName = "WAFCustomRules"
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
+Uruchom następujący kod:
+
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
 ```
 
-### <a name="create-a-vnet"></a>Tworzenie sieci wirtualnej
+### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
+
+Uruchom następujący kod:
 
 ```azurepowershell
 $sub1 = New-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -AddressPrefix "10.0.0.0/24"
@@ -68,12 +71,16 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
 
 ### <a name="create-a-static-public-vip"></a>Tworzenie statycznego publicznego adresu VIP
 
+Uruchom następujący kod:
+
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-frontend-port"></a>Utwórz port w puli i frontonu
+### <a name="create-a-pool-and-front-end-port"></a>Tworzenie puli i portu frontonu
+
+Uruchom następujący kod:
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -88,7 +95,9 @@ $pool = New-AzApplicationGatewayBackendAddressPool -Name "pool1" `
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 80
 ```
 
-### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Utwórz odbiornik, ustawienie protokołu http, reguły i automatycznego skalowania
+### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Tworzenie odbiornika, ustawienia protokołu HTTP, reguły i automatycznego skalowania
+
+Uruchom następujący kod:
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Http `
@@ -105,7 +114,9 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 ```
 
-### <a name="create-the-custom-rule-and-apply-it-to-waf-policy"></a>Utwórz regułę niestandardową i zastosować je do zasad zapory aplikacji sieci Web
+### <a name="create-the-custom-rule-and-apply-it-to-waf-policy"></a>Utwórz regułę niestandardową i Zastosuj ją do zasad WAF
+
+Uruchom następujący kod:
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector User-Agent
@@ -119,7 +130,9 @@ $wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafPolicy -ResourceGro
 $wafConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-### <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
+### <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
+
+Uruchom następujący kod:
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
@@ -132,6 +145,6 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
    -FirewallPolicy $wafPolicy
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej na temat zapory aplikacji sieci Web](waf-overview.md)
+[Dowiedz się więcej o zaporze aplikacji sieci Web](waf-overview.md)

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 78dd51c023bc46ed09219acc3df7e4ee7006ac2b
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 6b8adad033aeeb334c57970035e65bf706beef5a
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001550"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274258"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Zarządzanie zasobami platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -26,7 +26,7 @@ Inne artykuły dotyczące zarządzania zasobami:
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>Wdrażanie zasobów w istniejącej grupie zasobów
 
-Zasoby platformy Azure można wdrażać bezpośrednio przy użyciu Azure PowerShell lub wdrożyć szablon Menedżer zasobów w celu utworzenia zasobów platformy Azure.
+Zasoby platformy Azure można wdrażać bezpośrednio przy użyciu interfejsu wiersza polecenia platformy Azure lub wdrożyć szablon Menedżer zasobów w celu utworzenia zasobów platformy Azure.
 
 ### <a name="deploy-a-resource"></a>Wdrażanie zasobu
 
@@ -94,9 +94,9 @@ storageAccount=$(az resource show --resource-group $srcResourceGroupName --name 
 az resource move --destination-group $destResourceGroupName --ids $storageAccount
 ```
 
-Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).
+Aby uzyskać więcej informacji, zobacz [Move resources to new resource group or subscription](resource-group-move-resources.md) (Przenoszenie zasobów do nowej grupy lub subskrypcji).
 
-## <a name="lock-resources"></a>Zablokuj zasoby
+## <a name="lock-resources"></a>Blokowanie zasobów
 
 Blokowanie uniemożliwia innym użytkownikom w organizacji przypadkowe usuwanie lub modyfikowanie krytycznych zasobów, takich jak subskrypcja platformy Azure, Grupa zasobów lub zasób. 
 
@@ -131,15 +131,15 @@ lockId=$(az lock show --name LockSite --resource-group $resourceGroupName --reso
 az lock delete --ids $lockId
 ```
 
-Aby uzyskać więcej informacji, zobacz [blokowanie zasobów przy użyciu Azure Resource Manager](resource-group-lock-resources.md).
+Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 
-## <a name="tag-resources"></a>Dodawanie tagów do zasobów
+## <a name="tag-resources"></a>Tagowanie zasobów
 
 Tagowanie pomaga w logicznym organizowaniu grupy zasobów i zasobów. Aby uzyskać więcej informacji, zobacz [Używanie tagów do organizowania zasobów platformy Azure](./resource-group-using-tags.md#azure-cli).
 
 ## <a name="manage-access-to-resources"></a>Zarządzanie dostępem do zasobów
 
-[Kontrola dostępu oparta na rolach (RBAC)](../role-based-access-control/overview.md) umożliwia zarządzanie dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu funkcji RBAC i interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md).
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](../role-based-access-control/overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu funkcji RBAC i interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

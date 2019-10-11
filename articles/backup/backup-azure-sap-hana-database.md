@@ -7,27 +7,27 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 50fbd0a2169fb120424d76e786a6269243eeb3e1
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067101"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273955"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Tworzenie kopii zapasowej bazy danych SAP HANA na platformie Azure
 
 [Azure Backup](backup-overview.md) obsługuje tworzenie kopii zapasowych baz danych SAP HANA na platformie Azure.
 
 > [!NOTE]
-> Ta funkcja jest obecnie w publicznej wersji zapoznawczej. Obecnie nie jest ona gotowa do produkcji i nie ma gwarantowanej umowy SLA.
+> Ta funkcja jest obecnie dostępna w publicznej wersji zapoznawczej. Obecnie nie jest ona gotowa do produkcji i nie ma gwarantowanej umowy SLA.
 
 ## <a name="scenario-support"></a>Obsługa scenariuszy
 
-**Pomoc techniczna** | **Szczegóły**
+**Pomocy** | **Uzyskać**
 --- | ---
-**Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia, Australia Wschodnia <br> Brazylia Południowa <br> Kanada środkowa, Kanada Wschodnia <br> Azja Wschodnia Południowe, Azja Wschodnia <br> Wschodnie stany USA, Wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, środkowe stany USA, Południowo-środkowe stany USA<br> Indie Środkowe, Indie Południowe <br> Japonia, część wschodnia; Japonia, część zachodnia<br> Korea Środkowa, Korea Południowa <br> Europa Północna, Europa Zachodnia <br> Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo
+**Obsługiwane Georegiony** | Australia Południowo-Wschodnia, Australia Wschodnia <br> Brazylia Południowa <br> Kanada środkowa, Kanada Wschodnia <br> Azja Wschodnia Południowe, Azja Wschodnia <br> Wschodnie stany USA, Wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, środkowe stany USA, Południowo-środkowe stany USA<br> Indie Środkowe, Indie Południowe <br> Japonia Wschodnia, Japonia Zachodnia<br> Korea środkowa, Korea Południowa <br> Europa Północna, Europa Zachodnia <br> Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo
 **Obsługiwane systemy operacyjne maszyn wirtualnych** | SLES 12 z dodatkiem SP2 lub dodatkiem SP3.
-**Obsługiwane wersje platformy HANA** | SDC na platformie HANA 1. x, MDC w systemie HANA 2. x < = SPS04 Rev 42
+**Obsługiwane wersje platformy HANA** | SDC na platformie HANA 1. x, MDC w systemie HANA 2. x < = SPS04 Rev 43
 
 ### <a name="current-limitations"></a>Bieżące ograniczenia
 
@@ -40,7 +40,7 @@ ms.locfileid: "71067101"
 - Można utworzyć kopię zapasową dzienników bazy danych co 15 minut. Kopie zapasowe dzienników zaczynają przepływać dopiero po pomyślnym wykonaniu pełnej kopii zapasowej bazy danych.
 - Możesz tworzyć pełne i różnicowe kopie zapasowe. Przyrostowa kopia zapasowa nie jest obecnie obsługiwana.
 - Nie można zmodyfikować zasad tworzenia kopii zapasowych po zastosowaniu ich do SAP HANA kopii zapasowych. Jeśli chcesz utworzyć kopię zapasową przy użyciu różnych ustawień, Utwórz nowe zasady lub Przypisz inne zasady.
-  - Aby utworzyć nowe zasady, w magazynie kliknij pozycje **zasady** > **Tworzenie kopii zapasowych** > i**Dodaj** > **SAP HANA na maszynie wirtualnej platformy Azure**, a następnie określ ustawienia zasad.
+  - Aby utworzyć nowe zasady, w magazynie kliknij pozycję **zasady** > **zasady tworzenia kopii zapasowych** >  **+ Dodaj**@no__t 5**SAP HANA na maszynie wirtualnej platformy Azure**i określ ustawienia zasad.
   - Aby przypisać inne zasady, we właściwościach maszyny wirtualnej z uruchomioną bazą danych kliknij nazwę bieżącej zasady. Następnie na stronie **zasady tworzenia kopii zapasowych** możesz wybrać inne zasady do użycia w ramach kopii zapasowej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -95,13 +95,13 @@ Dołączanie do publicznej wersji zapoznawczej w następujący sposób:
 
     ![Odnajdź SAP HANA bazy danych](./media/backup-azure-sap-hana-database/hana-discover.png)
 
-## <a name="configure-backup"></a>Konfigurowanie kopii zapasowych  
+## <a name="configure-backup"></a>Konfiguruj kopię zapasową  
 
 Teraz Włącz tworzenie kopii zapasowej.
 
 1. W kroku 2 kliknij pozycję **Konfiguruj kopię zapasową**.
 2. W obszarze **Wybierz elementy do utworzenia kopii zapasowej**wybierz wszystkie bazy danych, które mają być chronione > **OK**.
-3. W obszarze >  **zasady tworzenia kopii**zapasowych**Wybierz pozycję Zasady tworzenia kopii**zapasowych, Utwórz nowe zasady tworzenia kopii zapasowych baz danych, zgodnie z poniższymi instrukcjami.
+3. W obszarze **zasady tworzenia kopii zapasowych** > **Wybierz pozycję Zasady tworzenia kopii**zapasowych, Utwórz nowe zasady tworzenia kopii zapasowych baz danych, zgodnie z poniższymi instrukcjami.
 4. Po utworzeniu zasad w menu **kopia zapasowa** kliknij pozycję **Włącz kopię zapasową**.
 5. Śledź postęp konfiguracji kopii zapasowej w obszarze **powiadomienia** portalu.
 
@@ -110,31 +110,31 @@ Teraz Włącz tworzenie kopii zapasowej.
 Zasady tworzenia kopii zapasowych definiują, kiedy są tworzone kopie zapasowe, oraz czas ich przechowywania.
 
 - Zasady są tworzone na poziomie magazynu.
-- Wiele magazynów może korzystać z tych samych zasad kopii zapasowych, ale do każdego magazynu należy zastosować zasady kopii zapasowych.
+- Wiele magazynów może korzystać z tych samych zasad tworzenia kopii zapasowych, ale do każdego magazynu należy zastosować zasady tworzenia kopii zapasowych.
 
 Określ ustawienia zasad w następujący sposób:
 
-1. W polu **Nazwa zasad** wprowadź nazwę nowych zasad.
-2. W obszarze **Zasady pełnej kopii zapasowej** wybierz opcję **Częstotliwość tworzenia kopii zapasowej** (**Codziennie** lub **Co tydzień**).
+1. W polu **Nazwa zasad**wprowadź nazwę nowych zasad.
+2. W obszarze **zasady pełnej kopii zapasowej**wybierz **częstotliwość tworzenia kopii zapasowych**, wybierz opcję **codziennie** lub **co tydzień**.
    - **Codziennie**: Wybierz godzinę i strefę czasową, w której rozpoczyna się zadanie tworzenia kopii zapasowej.
    
        - Należy uruchomić pełną kopię zapasową. Nie można wyłączyć tej opcji.
-       - Kliknij pozycję **Pełna kopia zapasowa**, aby wyświetlić zasady.
-       - Nie można tworzyć różnicowych kopii zapasowych w przypadku codziennego tworzenia pełnych kopii zapasowych.
+       - Kliknij pozycję **pełna kopia zapasowa** , aby wyświetlić zasady.
+       - Nie można tworzyć różnicowych kopii zapasowych na potrzeby codziennych pełnych kopii zapasowych.
        
    - **Co tydzień**: Wybierz dzień tygodnia, godzinę i strefę czasową, w której jest uruchamiane zadanie tworzenia kopii zapasowej.
 3. W obszarze **Zakres przechowywania**Skonfiguruj ustawienia przechowywania dla pełnej kopii zapasowej.
     - Domyślnie wszystkie opcje są zaznaczone. Wyczyść limity zakresu przechowywania, których nie chcesz używać, i ustaw te, które chcesz wykonać.
     - Minimalny okres przechowywania dla dowolnego typu kopii zapasowej (pełny/różnicowa/log) wynosi siedem dni.
-    - Punkty odzyskiwania są oznaczone do przechowywania na podstawie ich zakresu przechowywania. Jeśli na przykład wybierzesz codzienne tworzenie pełnej kopii zapasowej, każdego dnia będzie wyzwalana tylko jedna pełna kopia zapasowa.
+    - Punkty odzyskiwania są znakowane do przechowywania na podstawie ich zakresu przechowywania. Na przykład w przypadku wybrania codziennej pełnej kopii zapasowej każdego dnia jest wyzwalana tylko jedna pełna kopia zapasowa.
     - Kopia zapasowa dla określonego dnia jest otagowana i zachowywana na podstawie tygodniowego zakresu przechowywania i ustawienia.
-    - Miesięczne i roczne zakresy przechowywania zachowują się w podobny sposób.
+    - Zakresy przechowywania miesięczne i roczne działają w podobny sposób.
 
 4. W menu **pełne zasady tworzenia kopii zapasowej** kliknij przycisk **OK** , aby zaakceptować ustawienia.
 5. Wybierz pozycję **różnicowa kopia zapasowa** , aby dodać zasady różnicowe.
-6. W obszarze **Zasady różnicowej kopii zapasowej** wybierz pozycję **Włącz**, aby otworzyć kontrolki częstotliwości i przechowywania.
-    - Można wyzwalać maksymalnie jedną różnicową kopię zapasową dziennie.
-    - Różnicowe kopie zapasowe mogą być przechowywane przez maksymalnie 180 dni. Jeśli potrzebujesz dłuższego okresu przechowywania, musisz użyć pełnych kopii zapasowych.
+6. W obszarze **zasady różnicowych kopii zapasowych**wybierz pozycję **Włącz** , aby otworzyć kontrolki częstotliwość i przechowywanie.
+    - Co więcej, można wyzwolić jedną różnicową kopię zapasową dziennie.
+    - Różnicowe kopie zapasowe można przechowywać przez maksymalnie 180 dni. Jeśli potrzebujesz już przechowywania, musisz użyć pełnych kopii zapasowych.
 
     > [!NOTE]
     > Przyrostowe kopie zapasowe nie są obecnie obsługiwane. 
@@ -167,7 +167,7 @@ Jeśli chcesz utworzyć lokalną kopię zapasową bazy danych, której kopia zap
 
 1. Poczekaj na zakończenie wszystkich pełnych lub dzienników kopii zapasowych bazy danych. Sprawdź stan w SAP HANA Studio.
 2. Wyłącz kopie zapasowe dzienników i ustaw wykaz kopii zapasowych w systemie plików dla odpowiedniej bazy danych.
-3. Aby to zrobić, kliknij dwukrotnie pozycję**Konfiguracja** >  **systemdb** > **Wybierz pozycję Filtr bazy danych** >  **(log)** .
+3. Aby to zrobić, kliknij dwukrotnie pozycję **systemdb** > **Configuration** > **SELECT Database** > **Filter (log)** .
 4. Ustaw wartość opcji **enable_auto_log_backup** na **nie**.
 5. Ustaw **log_backup_using_backint** na **wartość false**.
 6. Utwórz pełną kopię zapasową bazy danych ad hoc.

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uczenie modelu i wyodrębnianie danych formularza przy użyciu narzędzia do rozpoznawania formularzy'
+title: 'Szybki Start: uczenie modelu i wyodrębnianie danych formularza przy użyciu narzędzia do rozpoznawania formularzy'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem do uczenia modelu i wyodrębnienia danych z formularzy.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b889be6f881894b2666ed47304f6b61e7c776474
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073705"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264368"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki start: Uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST z zwinięciem
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki Start: uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST z zwinięciem
 
 W tym przewodniku szybki start użyjesz interfejsu API REST usługi Azure Forms rozpoznającego z zwinięciem, aby przeszkolić i wypróbować formularze w celu wyodrębnienia par klucz-wartość i tabel.
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
 - Dostęp do programu rozpoznawania formularzy z ograniczonym dostępem. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) .
 - zainstalowano [zwinięcie](https://curl.haxx.se/windows/) .
-- Zestaw składający się z co najmniej pięciu form tego samego typu. Te dane będą używane do uczenia modelu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż dane do katalogu głównego kontenera magazynu obiektów BLOB na koncie usługi Azure Storage.
+- Zestaw składający się z co najmniej pięciu form tego samego typu. Te dane będą używane do uczenia modelu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż pliki szkoleniowe do katalogu głównego kontenera magazynu obiektów BLOB na koncie usługi Azure Storage.
 
 ## <a name="create-a-form-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania formularza
 
@@ -38,15 +38,15 @@ Najpierw będziesz potrzebować zestawu danych szkoleniowych w obiekcie blob us�
 
 Aby przeprowadzić uczenie modelu aparatu rozpoznawania formularzy przy użyciu dokumentów w kontenerze obiektów blob platformy Azure, Wywołaj interfejs API **uczenia** , uruchamiając następujące polecenie. Przed uruchomieniem polecenia wprowadź następujące zmiany:
 
-1. Zamień `<Endpoint>` na punkt końcowy uzyskany za pomocą klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
-1. Zamień `<subscription key>` na klucz subskrypcji skopiowany z poprzedniego kroku.
-1. Zamień `<SAS URL>` na adres URL sygnatury dostępu współdzielonego (SAS) kontenera magazynu obiektów blob platformy Azure. Aby pobrać adres URL SAS, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontener i wybierz polecenie **Pobierz sygnaturę dostępu współdzielonego**. Upewnij się, że uprawnienia do **odczytu** i **listy** są zaznaczone, a następnie kliknij przycisk **Utwórz**. Następnie skopiuj wartość z sekcji **URL** . Powinna mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Zastąp `<Endpoint>` punktem końcowym uzyskanym z kluczem subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
+1. Zastąp `<subscription key>` kluczem subskrypcji skopiowanym z poprzedniego kroku.
+1. Zastąp wartość `<SAS URL>` adresem URL sygnatury dostępu współdzielonego (SAS) kontenera usługi Azure Blob Storage. Aby pobrać adres URL SAS, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontener i wybierz polecenie **Pobierz sygnaturę dostępu współdzielonego**. Upewnij się, że uprawnienia do **odczytu** i **listy** są zaznaczone, a następnie kliknij przycisk **Utwórz**. Następnie skopiuj wartość z sekcji **URL** . Powinna mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Otrzymasz `200 (Success)` odpowiedź z następującym wyjściem JSON:
+Otrzymasz odpowiedź `200 (Success)` z następującym wyjściem JSON:
 
 ```json
 {
@@ -87,16 +87,16 @@ Otrzymasz `200 (Success)` odpowiedź z następującym wyjściem JSON:
 }
 ```
 
-Zwróć uwagę `"modelId"` na wartość. Będzie ona potrzebna w poniższych krokach.
+Zwróć uwagę na wartość `"modelId"`. Będzie ona potrzebna w poniższych krokach.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Wyodrębnij pary klucz-wartość i tabele z formularzy
 
 Następnie analizujesz dokument i wyodrębniasz z niego pary klucz-wartość i tabele. Wywołaj interfejs API **analizy modelu** , uruchamiając poniższe polecenie. Przed uruchomieniem polecenia wprowadź następujące zmiany:
 
-1. Zamień `<Endpoint>` na punkt końcowy uzyskany z klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
-1. Zamień `<modelID>` na identyfikator modelu otrzymany w poprzedniej sekcji.
-1. Zamień `<path to your form>` na ścieżkę pliku formularza (na przykład C:\temp\file.PDF).
-1. Zamień `<file type>` na typ pliku. Obsługiwane typy: `application/pdf`, `image/jpeg`, `image/png`.
+1. Zastąp `<Endpoint>` punktem końcowym uzyskanym z klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
+1. Zastąp `<modelID>` IDENTYFIKATORem modelu, który został odebrany w poprzedniej sekcji.
+1. Zastąp `<path to your form>` ścieżką pliku formularza (na przykład C:\temp\file.PDF). W tym przewodniku szybki start można użyć plików w folderze **testowym** [zestawu danych przykładowych](https://go.microsoft.com/fwlink/?linkid=2090451).
+1. Zastąp `<file type>` typem pliku. Obsługiwane typy: `application/pdf`, `image/jpeg`, `image/png`.
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
 
 

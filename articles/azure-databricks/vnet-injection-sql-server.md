@@ -1,6 +1,6 @@
 ---
-title: Zapytanie SQL Server Linux narzędziem w sieci wirtualnej z notesu usługi Azure Databricks
-description: W tym artykule opisano sposób wdrażania usługi Azure Databricks z siecią wirtualną, znany także jako iniekcji sieci wirtualnej.
+title: Tworzenie zapytań dotyczących kontenera Docker SQL Server Linux przy użyciu Azure Databricks
+description: W tym artykule opisano sposób wdrażania Azure Databricks w sieci wirtualnej, znanej również jako iniekcja wirtualna.
 services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
@@ -8,106 +8,106 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 345e07fac30f4ad0c8e9918cb8a1ff0fb8aeb811
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60770793"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273984"
 ---
-# <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Samouczek: Zapytanie SQL Server Linux narzędziem w sieci wirtualnej z notesu usługi Azure Databricks
+# <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Samouczek: wykonywanie zapytania dotyczącego kontenera Docker SQL Server Linux w sieci wirtualnej z notesu Azure Databricks
 
-Ten samouczek omawia sposób integracji usługi Azure Databricks przy użyciu kontenera platformy Docker do programu SQL Server systemu Linux w sieci wirtualnej. 
+W tym samouczku przedstawiono sposób integrowania Azure Databricks z kontenerem platformy Docker SQL Server Linux w sieci wirtualnej. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Wdrażanie obszaru roboczego usługi Azure Databricks z siecią wirtualną
-> * Zainstaluj maszynę wirtualną systemu Linux w sieci publicznej
+> * Wdrażanie obszaru roboczego Azure Databricks w sieci wirtualnej
+> * Zainstaluj maszynę wirtualną z systemem Linux w sieci publicznej
 > * Zainstaluj platformę Docker
-> * Zainstaluj program Microsoft SQL Server w kontenerze platformy docker dla systemu Linux
-> * Zapytania programu SQL Server przy użyciu sterownika JDBC z notesu usługi Databricks
+> * Zainstaluj Microsoft SQL Server w kontenerze platformy Docker systemu Linux
+> * Wykonywanie zapytań dotyczących SQL Server przy użyciu JDBC z notesu datakostks
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Tworzenie [obszaru roboczego usługi Databricks w sieci wirtualnej](quickstart-create-databricks-workspace-vnet-injection.md).
+* Utwórz [obszar roboczy datacegły w sieci wirtualnej](quickstart-create-databricks-workspace-vnet-injection.md).
 
-* Zainstaluj [Ubuntu dla Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab).
+* Zainstaluj program [Ubuntu dla systemu Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab).
 
 * Pobierz program [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-## <a name="create-a-linux-virtual-machine"></a>Tworzenie maszyny wirtualnej z systemem Linux
+## <a name="create-a-linux-virtual-machine"></a>Utwórz maszynę wirtualną z systemem Linux
 
-1. W witrynie Azure portal wybierz ikonę **maszyn wirtualnych**. Następnie wybierz **+ Dodaj**.
+1. W Azure Portal wybierz ikonę **Virtual Machines**. Następnie wybierz pozycję **+ Dodaj**.
 
     ![Dodaj nową maszynę wirtualną platformy Azure](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
-2. Na **podstawy** karcie Wybierz Ubuntu Server 16.04 LTS. Zmień rozmiar maszyny Wirtualnej na B1ms, która ma jeden procesorów VCPU i 2 GB pamięci RAM. Minimalne wymagania dla kontenera systemu Linux platformy Docker z serwerem SQL wynosi 2 GB. Wybierz administratora, nazwa użytkownika i hasło.
+2. Na karcie **podstawowe** wybierz pozycję Ubuntu Server 16,04 LTS. Zmień rozmiar maszyny wirtualnej na B1ms, która ma jedną procesorów wirtualnych vCPU i 2 GB pamięci RAM. Minimalne wymaganie dla kontenera Docker SQL Server systemu Linux to 2 GB. Wybierz nazwę użytkownika i hasło administratora.
 
-    ![Podstawowe informacje o karcie nową konfigurację maszyny wirtualnej](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
+    ![Karta podstawy nowej konfiguracji maszyny wirtualnej](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
-3. Przejdź do **sieć** kartę. Wybierz sieć wirtualną i podsieci publicznej, która obejmuje usługi Azure Databricks w klastrze. Wybierz **przeglądu + Utwórz**, następnie **Utwórz** wdrożyć maszynę wirtualną.
+3. Przejdź do karty **Sieć** . Wybierz sieć wirtualną i podsieć publiczną obejmującą klaster Azure Databricks. Wybierz pozycję **Przegląd + Utwórz**, a następnie pozycję **Utwórz** , aby wdrożyć maszynę wirtualną.
 
-    ![Karta Sieć w nowej konfiguracji maszyny wirtualnej](./media/vnet-injection-sql-server/create-virtual-machine-networking.png)
+    ![Karta Sieć nowej konfiguracji maszyny wirtualnej](./media/vnet-injection-sql-server/create-virtual-machine-networking.png)
 
-4. Po zakończeniu wdrożenia przejdź do maszyny wirtualnej. Zwróć uwagę, publiczny adres IP i sieci wirtualnej/podsieci **Przegląd**. Wybierz **publiczny adres IP**
+4. Po zakończeniu wdrażania przejdź do maszyny wirtualnej. Zwróć uwagę na publiczny adres IP i sieć wirtualną/podsieć w **przeglądzie**. Wybierz **publiczny adres IP**
 
     ![Omówienie maszyny wirtualnej](./media/vnet-injection-sql-server/virtual-machine-overview.png)
 
-5. Zmiana **przypisania** do **statyczne** i wprowadź **etykiety nazwy DNS**. Wybierz **Zapisz**i uruchom ponownie maszynę wirtualną.
+5. Zmień **przypisanie** na **static** i wprowadź **etykietę nazwy DNS**. Wybierz pozycję **Zapisz**, a następnie uruchom ponownie maszynę wirtualną.
 
-    ![Publiczna konfiguracja adresu IP](./media/vnet-injection-sql-server/virtual-machine-staticip.png)
+    ![Konfiguracja publicznego adresu IP](./media/vnet-injection-sql-server/virtual-machine-staticip.png)
 
-6. Wybierz **sieć** karcie **ustawienia**. Należy zauważyć, że sieciowej grupy zabezpieczeń, który został utworzony podczas wdrażania usługi Azure Databricks jest skojarzony z maszyną wirtualną. Wybierz **Dodaj regułę portu wejściowego**.
+6. Wybierz kartę **Sieć** w obszarze **Ustawienia**. Zwróć uwagę, że sieciowa Grupa zabezpieczeń, która została utworzona podczas wdrażania Azure Databricks, jest skojarzona z maszyną wirtualną. Wybierz pozycję **Dodaj regułę portu wejściowego**.
 
-7. Dodaj zasadę, aby otworzyć port 22 dla protokołu SSH. Użyj następujących ustawień:
+7. Dodaj regułę, aby otworzyć port 22 dla protokołu SSH. Użyj następujących ustawień:
     
     |Ustawienie|Sugerowana wartość|Opis|
     |-------|---------------|-----------|
-    |source|Adresy IP|Adresy IP określa, że ruch przychodzący z określonego źródła, adres IP będzie dozwolony lub odrzucany przez tę regułę.|
-    |Źródłowe adresy IP|< adres ip\>|Wprowadź swój publiczny adres IP. Swój publiczny adres IP można znaleźć, odwiedzając [bing.com](https://www.bing.com/) i wyszukując **"Mój adres IP"** .|
-    |Zakresy portów źródłowych|*|Zezwalać na ruch z dowolnego portu.|
-    |Miejsce docelowe|Adresy IP|Adresy IP określa, że ruch wychodzący do określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
-    |Docelowe adresy IP|< publiczny adres ip swojej maszyny wirtualnej\>|Wprowadź publiczny adres IP maszyny wirtualnej. Można je znaleźć na **Przegląd** strony maszyny wirtualnej.|
-    |Docelowe zakresy portów|22|Otwórz port 22 dla protokołu SSH.|
+    |Źródło|Adresy IP|Adresy IP określają, że ruch przychodzący z określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |Źródłowe adresy IP|< publicznego adresu IP @ no__t-0|Wprowadź publiczny adres IP. Publiczny adres IP można znaleźć, odwiedzając [Bing.com](https://www.bing.com/) i wyszukując pozycję **"mój adres IP"** .|
+    |Zakresy portów źródłowych|*|Zezwalaj na ruch z dowolnego portu.|
+    |Cel|Adresy IP|Adresy IP określają, że ruch wychodzący dla określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |Docelowe adresy IP|< publicznego adresu IP maszyny wirtualnej @ no__t-0|Wprowadź publiczny adres IP maszyny wirtualnej. Ten temat można znaleźć na stronie **Przegląd** swojej maszyny wirtualnej.|
+    |Zakresy portów docelowych|22|Otwórz port 22 dla protokołu SSH.|
     |Priorytet|290|Nadaj regule priorytet.|
-    |Name (Nazwa)|ssh-databricks-tutorial-vm|Nadaj regule nazwę.|
+    |Nazwa|SSH-datakostki — samouczek — VM|Nadaj regule nazwę.|
 
 
-    ![Dodawanie reguły zabezpieczeń dla ruchu przychodzącego dla portu 22](./media/vnet-injection-sql-server/open-port.png)
+    ![Dodaj regułę zabezpieczeń dla ruchu przychodzącego dla portu 22](./media/vnet-injection-sql-server/open-port.png)
 
-8. Dodaj zasadę, aby otworzyć port 1433 dla programu SQL z następującymi ustawieniami:
+8. Dodaj regułę, aby otworzyć port 1433 dla SQL z następującymi ustawieniami:
 
     |Ustawienie|Sugerowana wartość|Opis|
     |-------|---------------|-----------|
-    |source|Adresy IP|Adresy IP określa, że ruch przychodzący z określonego źródła, adres IP będzie dozwolony lub odrzucany przez tę regułę.|
-    |Źródłowe adresy IP|10.179.0.0/16|Wprowadź zakres adresów sieci wirtualnej.|
-    |Zakresy portów źródłowych|*|Zezwalać na ruch z dowolnego portu.|
-    |Miejsce docelowe|Adresy IP|Adresy IP określa, że ruch wychodzący do określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
-    |Docelowe adresy IP|< publiczny adres ip swojej maszyny wirtualnej\>|Wprowadź publiczny adres IP maszyny wirtualnej. Można je znaleźć na **Przegląd** strony maszyny wirtualnej.|
-    |Docelowe zakresy portów|1433|Otwórz port 22 dla programu SQL Server.|
+    |Źródło|Adresy IP|Adresy IP określają, że ruch przychodzący z określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |Źródłowe adresy IP|10.179.0.0/16|Wprowadź zakres adresów dla sieci wirtualnej.|
+    |Zakresy portów źródłowych|*|Zezwalaj na ruch z dowolnego portu.|
+    |Cel|Adresy IP|Adresy IP określają, że ruch wychodzący dla określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |Docelowe adresy IP|< publicznego adresu IP maszyny wirtualnej @ no__t-0|Wprowadź publiczny adres IP maszyny wirtualnej. Ten temat można znaleźć na stronie **Przegląd** swojej maszyny wirtualnej.|
+    |Zakresy portów docelowych|1433|Otwórz port 22 dla SQL Server.|
     |Priorytet|300|Nadaj regule priorytet.|
-    |Name (Nazwa)|sql-databricks-tutorial-vm|Nadaj regule nazwę.|
+    |Nazwa|SQL — datakostki — samouczek — VM|Nadaj regule nazwę.|
 
     ![Dodaj regułę zabezpieczeń dla ruchu przychodzącego dla portu 1433](./media/vnet-injection-sql-server/open-port2.png)
 
-## <a name="run-sql-server-in-a-docker-container"></a>Uruchom program SQL Server w kontenerze platformy Docker
+## <a name="run-sql-server-in-a-docker-container"></a>Uruchamianie SQL Server w kontenerze platformy Docker
 
-1. Otwórz [Ubuntu dla Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab), lub innego narzędzia, która umożliwi Ci SSH z maszyną wirtualną. Przejdź do maszyny wirtualnej w witrynie Azure portal i wybierz pozycję **Connect** można pobrać polecenia SSH, musisz połączyć.
+1. Otwórz program [Ubuntu dla systemu Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab)lub inne narzędzie, które umożliwi użycie protokołu SSH do maszyny wirtualnej. Przejdź do maszyny wirtualnej w Azure Portal a następnie wybierz pozycję **Połącz** , aby pobrać polecenie SSH.
 
     ![Nawiązywanie połączenia z maszyną wirtualną](./media/vnet-injection-sql-server/vm-ssh-connect.png)
 
-2. Wprowadź polecenie w terminalu systemu Ubuntu, a następnie wprowadź hasło administratora, utworzonej podczas konfigurowania maszyny wirtualnej.
+2. Wprowadź polecenie w terminalu Ubuntu i wprowadź hasło administratora, które zostało utworzone podczas konfigurowania maszyny wirtualnej.
 
-    ![Ubuntu terminala protokołu SSH logowania](./media/vnet-injection-sql-server/vm-login-terminal.png)
+    ![Logowanie przy użyciu protokołu SSH terminalu Ubuntu](./media/vnet-injection-sql-server/vm-login-terminal.png)
 
-3. Użyj następującego polecenia, aby zainstalować platformę Docker na maszynie wirtualnej.
+3. Użyj poniższego polecenia, aby zainstalować platformę Docker na maszynie wirtualnej.
 
     ```bash
     sudo apt-get install docker.io
     ```
 
-    Sprawdź instalację platformy docker za pomocą następującego polecenia:
+    Sprawdź instalację platformy Docker przy użyciu następującego polecenia:
 
     ```bash
     sudo docker --version
@@ -119,13 +119,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     sudo docker pull mcr.microsoft.com/mssql/server:2017-latest
     ```
 
-    Sprawdź obrazów.
+    Sprawdź obrazy.
 
     ```bash
     sudo docker images
     ```
 
-5. Uruchom obraz kontenera.
+5. Uruchom kontener z obrazu.
 
     ```bash
     sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Password1234' -p 1433:1433 --name sql1  -d mcr.microsoft.com/mssql/server:2017-latest
@@ -139,11 +139,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="create-a-sql-database"></a>Tworzenie bazy danych SQL
 
-1. Otwórz program SQL Server Management Studio i Połącz z serwerem przy użyciu nazwy serwera i uwierzytelnianie SQL. Logowanie username jest **SA** , a hasło to hasło w poleceniu platformy Docker. To hasło w przykładzie polecenia `Password1234`.
+1. Otwórz SQL Server Management Studio i nawiąż połączenie z serwerem przy użyciu nazwy serwera i uwierzytelniania SQL. Nazwa użytkownika logowania to **sa** , a hasło to hasło ustawione w poleceniu Docker. Hasło w przykładowym poleceniu jest `Password1234`.
 
-    ![Połączenia z serwerem SQL przy użyciu programu SQL Server Management Studio](./media/vnet-injection-sql-server/ssms-login.png)
+    ![Nawiązywanie połączenia z SQL Server przy użyciu SQL Server Management Studio](./media/vnet-injection-sql-server/ssms-login.png)
 
-2. Po pomyślnym nawiązaniu połączenia, wybierz **nowe zapytanie** wprowadź poniższy fragment kodu do tworzenia bazy danych, tabeli i wstawianie niektóre rekordy w tabeli.
+2. Po pomyślnym nawiązaniu połączenia wybierz pozycję **nowe zapytanie** , a następnie wprowadź Poniższy fragment kodu, aby utworzyć bazę danych, tabelę i wstawić kilka rekordów w tabeli.
 
     ```SQL
     CREATE DATABASE MYDB;
@@ -157,29 +157,29 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     GO
     ```
 
-    ![Zapytanie, aby utworzyć bazę danych programu SQL Server](./media/vnet-injection-sql-server/create-database.png)
+    ![Zapytanie w celu utworzenia bazy danych SQL Server](./media/vnet-injection-sql-server/create-database.png)
 
-## <a name="query-sql-server-from-azure-databricks"></a>Zapytanie SQL Server z usługi Azure Databricks
+## <a name="query-sql-server-from-azure-databricks"></a>SQL Server zapytań od Azure Databricks
 
-1. Przejdź do obszaru roboczego usługi Azure Databricks i sprawdź, czy klaster jest utworzony jako część wymagań wstępnych. Następnie wybierz **tworzenie notesu**. Nadaj nazwę, wybierz opcję Notes *Python* jako język, a następnie wybierz utworzony klaster.
+1. Przejdź do obszaru roboczego Azure Databricks i sprawdź, czy klaster został utworzony w ramach wymagań wstępnych. Następnie wybierz pozycję **Utwórz Notes**. Nadaj notesowi nazwę, wybierz opcję *Python* jako język i wybierz utworzony klaster.
 
-    ![Nowe ustawienia notesu usługi Databricks](./media/vnet-injection-sql-server/create-notebook.png)
+    ![Nowe ustawienia notesu dla nowych kostek](./media/vnet-injection-sql-server/create-notebook.png)
 
-2. Użyj następującego polecenia, aby wykonać polecenie ping wewnętrzny adres IP maszyny wirtualnej programu SQL Server. Polecenie ping zostanie pomyślnie zakończona. Jeśli nie, sprawdź, czy kontener jest uruchomiony i przejrzyj konfiguracji Sieciowej grupy zabezpieczeń sieci.
+2. Użyj poniższego polecenia, aby wysłać polecenie ping do wewnętrznego adresu IP maszyny wirtualnej SQL Server. To polecenie ping powinno zakończyć się pomyślnie. Jeśli nie, sprawdź, czy kontener jest uruchomiony, i sprawdź konfigurację sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń).
 
     ```python
     %sh
     ping 10.179.64.4
     ```
 
-    Można również użyć polecenia nslookup, aby zapoznać się z.
+    Możesz również użyć polecenia nslookup, aby przejrzeć.
 
     ```python
     %sh
     nslookup databricks-tutorial-vm.westus2.cloudapp.azure.com
     ```
 
-3. Po użytkownik został pomyślnie za pomocą polecenia ping programu SQL Server, można tworzyć zapytania bazy danych i tabel. Uruchom python następujący kod:
+3. Po pomyślnym wysłaniu polecenia ping do SQL Server można wysłać zapytanie do bazy danych i tabel. Uruchom następujący kod w języku Python:
 
     ```python
     jdbcHostname = "10.179.64.4"
@@ -195,14 +195,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń grupę zasobów, obszar roboczy usługi Azure Databricks i wszystkie powiązane zasoby. Usunięcie zadania pozwala uniknąć niepotrzebnych rozliczeń. Jeśli planujesz używać obszaru roboczego usługi Azure Databricks w przyszłości, możesz zatrzymać klaster i uruchomić ponownie później. Jeśli nie zamierzasz nadal korzystać z tego obszaru roboczego usługi Azure Databricks, należy usunąć wszystkie zasoby utworzone w ramach tego samouczka wykonując następujące kroki:
+Gdy grupa zasobów, obszar roboczy Azure Databricks i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. Usunięcie zadania pozwala uniknąć niepotrzebnych rozliczeń. Jeśli planujesz użyć obszaru roboczego Azure Databricks w przyszłości, możesz zatrzymać klaster i ponownie uruchomić go później. Jeśli nie chcesz nadal korzystać z tego obszaru roboczego Azure Databricks, Usuń wszystkie zasoby utworzone w tym samouczku, wykonując następujące czynności:
 
-1. W menu po lewej stronie w witrynie Azure portal, kliknij **grup zasobów** a następnie kliknij nazwę utworzoną grupę zasobów.
+1. W menu po lewej stronie w Azure Portal kliknij pozycję **grupy zasobów** , a następnie kliknij nazwę utworzonej grupy zasobów.
 
-2. Na stronie grupy zasobów, wybierz **Usuń**, wpisz nazwę zasobu do usunięcia w polu tekstowym, a następnie wybierz pozycję **Usuń** ponownie.
+2. Na stronie grupy zasobów wybierz pozycję **Usuń**, wpisz nazwę zasobu do usunięcia w polu tekstowym, a następnie ponownie wybierz pozycję **Usuń** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przejdź do następnego artykułu, aby dowiedzieć się, jak wyodrębnianie, przekształcanie i ładowanie danych za pomocą usługi Azure Databricks.
+Przejdź do następnego artykułu, aby dowiedzieć się, jak wyodrębnić, przekształcić i załadować dane przy użyciu Azure Databricks.
 > [!div class="nextstepaction"]
-> [Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych za pomocą usługi Azure Databricks](databricks-extract-load-sql-data-warehouse.md)
+> [Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu Azure Databricks](databricks-extract-load-sql-data-warehouse.md)

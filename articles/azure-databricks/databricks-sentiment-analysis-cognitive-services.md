@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks'
+title: Użyj Azure Databricks do analizy tonacji
 description: Dowiedz się, jak używać Azure Databricks z interfejsem API Event Hubs i Cognitive Services do uruchamiania analizy tonacji na danych przesyłanych strumieniowo w czasie niemal rzeczywistym.
 services: azure-databricks
 author: lenadroid
@@ -9,14 +9,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 9718a6e394c7628cdf7bb62b2dafea2f3d59a3ca
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 1d8b3aad3104f07f8f6499c88f00328c95047816
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "68619461"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274217"
 ---
-# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Samouczek: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks
+# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Samouczek: Analiza tonacji na strumieniu danych wykonywana przy użyciu usługi Azure Databricks
 
 W tym samouczku dowiesz się, jak przy użyciu usługi Azure Databricks przeprowadzać analizę tonacji na strumieniu danych w czasie niemal rzeczywistym. Konfiguracja systemu pozyskiwania danych jest oparta na usłudze Azure Event Hubs. Do przesyłania komunikatów z usługi Event Hubs do usługi Azure Databricks służy łącznik Spark Event Hubs. Na koniec korzystasz z interfejsów API usługi poznawczej do uruchamiania analizy tonacji na danych przesyłanych strumieniowo.
 
@@ -57,7 +57,7 @@ Aby spełnić te wymagania, wystarczy wykonać kroki opisane w artykule [Create 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+Zaloguj się do [portalu Azure](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
@@ -115,7 +115,7 @@ Aby otrzymywać strumień tweetów, musisz utworzyć aplikację w usłudze Twitt
 
 1. W przeglądarce sieci Web przejdź do usługi [Twitter dla deweloperów](https://developer.twitter.com/en/apps), a następnie wybierz pozycję **Utwórz aplikację**. Może zostać wyświetlony komunikat informujący o konieczności zastosowania konta dewelopera usługi Twitter. Możesz to zrobić bezpłatnie, a po zatwierdzeniu aplikacji powinna zostać wyświetlona wiadomość e-mail z potwierdzeniem. Zatwierdzenie konta dewelopera może potrwać kilka dni.
 
-    ![Potwierdzenie konta dewelopera usługi Twitter](./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "Potwierdzenie konta dewelopera usługi Twitter")
+    Potwierdzenie ![konta dewelopera usługi Twitter]na koncie(./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "dewelopera usługi Twitter")
 
 2. Na stronie **Create an application (Tworzenie aplikacji)** podaj szczegóły nowej aplikacji, a następnie wybierz pozycję **Create your Twitter application (Utwórz aplikację usługi Twitter)** .
 
@@ -135,9 +135,9 @@ W tym samouczku tweety są wysyłane do usługi Event Hubs za pomocą interfejs�
 
 1. W obszarze roboczym Azure Databricks wybierz pozycję **klastry**, a następnie wybierz istniejący klaster Spark. W menu klaster wybierz polecenie **biblioteki** , a następnie kliknij przycisk **Instaluj nowe**.
 
-   ![Okno dialogowe Dodawanie biblioteki](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Dodaj klaster lokalizowania biblioteki")
+   Okno ![dialogowe Dodawanie biblioteki](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Dodaj klaster lokalizowania biblioteki")
 
-   ![Okno dialogowe Dodawanie biblioteki](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Dodaj nową bibliotekę Zainstaluj nowe")
+   ![Dodawanie biblioteki — okno dialogowe](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Dodaj nową bibliotekę Zainstaluj nowe")
 
 2. Na stronie Nowa biblioteka dla opcji **Source** SELECT **Maven**. W polu **koordynuj**kliknij pozycję **pakiety wyszukiwania** dla pakietu, który chcesz dodać. Oto współrzędne Maven bibliotek używanych w tym samouczku:
 
@@ -146,13 +146,13 @@ W tym samouczku tweety są wysyłane do usługi Event Hubs za pomocą interfejs�
 
      ![Podawanie współrzędnych Maven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Podawanie współrzędnych Maven")
 
-     ![Podaj współrzędne Maven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Przeszukaj współrzędne Maven")
+     ![Udostępnianie](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "współrzędnych Maven wyszukiwania") Maven
 
 3. Wybierz pozycję **Zainstaluj**.
 
 4. W menu klaster upewnij się, że obie biblioteki są zainstalowane i prawidłowo dołączone.
 
-    ![Sprawdź biblioteki](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "Sprawdź biblioteki")
+    ![Sprawdzanie]bibliotek(./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "Sprawdź biblioteki")
 
 6. Powtórz te kroki dla pakietu Twitter: `twitter4j-core:4.0.7`.
 
@@ -160,7 +160,7 @@ W tym samouczku tweety są wysyłane do usługi Event Hubs za pomocą interfejs�
 
 W tym samouczku użyjemy [interfejsów API usługi Azure Cognitive Services analiza tekstu](../cognitive-services/text-analytics/overview.md) do uruchamiania analizy tonacji na strumieniu tweetów niemal w czasie rzeczywistym. Przed użyciem interfejsów API należy utworzyć konto usługi Azure Cognitive Services na platformie Azure i pobrać klucz dostępu, aby użyć interfejsów API analiza tekstu.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 2. Wybierz pozycję **+ Utwórz zasób**.
 
@@ -614,7 +614,7 @@ Powinny pojawić się dane wyjściowe podobne do następującego fragmentu kodu:
 
 Wartość bliższa **1** w kolumnie **Opinia** sugeruje zadowolenie z korzystania z platformy Azure. Wartość bliższa **0** sugeruje, że użytkownicy napotkali problemy podczas pracy z platformą Microsoft Azure.
 
-To wszystko! Za pomocą usługi Azure Databricks udało się przesłać strumień danych do usługi Azure Event Hubs, pobrać go przy użyciu łącznika usługi Event Hubs, a następnie przeprowadzić analizę tonacji na tym strumieniu w czasie niemal rzeczywistym.
+Gotowe. Za pomocą usługi Azure Databricks udało się przesłać strumień danych do usługi Azure Event Hubs, pobrać go przy użyciu łącznika usługi Event Hubs, a następnie przeprowadzić analizę tonacji na tym strumieniu w czasie niemal rzeczywistym.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

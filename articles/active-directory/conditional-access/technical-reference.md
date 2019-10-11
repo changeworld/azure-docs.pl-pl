@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162431"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274190"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory informacje o ustawieniach dostępu warunkowego
 
@@ -55,24 +55,23 @@ Zasady dostępu warunkowego można przypisać do następujących aplikacji w chm
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- Rejestracja w usłudze Microsoft Intune
+- Rejestracja Microsoft Intune
 - Microsoft Planner
 - Microsoft PowerApps
 - Wyszukiwanie w usłudze Bing firmy Microsoft
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
-- Office 365 Exchange Online
+- Pakiet Office 365 Exchange Online
 - Pakiet Office 365 SharePoint Online
 - Usługa Yammer pakietu Office 365
 - Office Delve
-- Office Sway
+- Pakiet Office Sway
 - Outlook Groups
 - Usługa Power BI
 - Project Online
 - Skype dla firm Online
 - Wirtualna sieć prywatna (VPN)
-- Visual Studio App Center
 - Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender
 
 ### <a name="other-applications"></a>Inne aplikacje
@@ -82,7 +81,7 @@ Oprócz aplikacji w chmurze firmy Microsoft można przypisać zasady dostępu wa
 - Aplikacje połączone z usługą Azure AD
 - Wstępnie zintegrowana aplikacja federacyjna oprogramowania jako usługi (SaaS)
 - Aplikacje korzystające z logowania jednokrotnego (SSO) hasła
-- Line-of-business aplikacji
+- Aplikacje biznesowe
 - Aplikacje korzystające z usługi Azure serwer proxy aplikacji usługi Azure AD
 
 ## <a name="device-platform-condition"></a>Warunek platformy urządzenia
@@ -103,7 +102,7 @@ W przypadku zablokowania starszego uwierzytelniania przy użyciu warunku **other
 
 W zasadach dostępu warunkowego można skonfigurować warunek [aplikacje klienckie](conditions.md#client-apps) , aby powiązać zasady z aplikacją kliencką, która zainicjowała próbę dostępu. Ustaw warunek aplikacje klienckie na udzielenie lub zablokowanie dostępu podczas próby dostępu z następujących typów aplikacji klienckich:
 
-- Browser
+- Przeglądarka
 - Aplikacje mobilne i aplikacje klasyczne
 
 ![Kontrola dostępu do aplikacji klienckich](./media/technical-reference/03.png)
@@ -116,11 +115,11 @@ W zasadach dostępu warunkowego można wybrać **przeglądarki** jako aplikację
 
 To ustawienie działa ze wszystkimi przeglądarkami. Jednak w celu spełnienia zasad dotyczących urządzeń, takich jak zgodne wymagania dotyczące urządzeń, obsługiwane są następujące systemy operacyjne i przeglądarki:
 
-| OS                     | Przeglądarki                                        |
+| System operacyjny                     | Browser                                        |
 | :--                    | :--                                             |
 | Windows 10             | Microsoft Edge, Internet Explorer, Chrome       |
-| Windows 8 / 8.1        | Internet Explorer, Chrome                       |
-| Windows 7              | Internet Explorer, Chrome                       |
+| Windows 8/8,1        | Internet Explorer, program Chrome                       |
+| Windows 7              | Internet Explorer, program Chrome                       |
 | iOS                    | Microsoft Edge, Intune Managed Browser, Safari  |
 | Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
 | Windows Phone          | Microsoft Edge, Internet Explorer               |
@@ -143,19 +142,19 @@ Aby automatycznie wdrożyć to rozszerzenie w przeglądarkach programu Chrome, U
 
 |    |    |
 | --- | --- |
-| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
-| Type | REG_SZ (ciąg) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.Google.com/Service/UPDATE2/CRX |
+| Ścieżka | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Nazwa | 1 |
+| Typ | REG_SZ (ciąg) |
+| Dane | ppnbnpeolgkicgegkbkbjmhlideopiji; https @ no__t-0//clients2. Google. com/Service/UPDATE2/CRX |
 
 Aby uzyskać pomoc techniczną dla programu Chrome w **Windows 8.1 i 7**, Utwórz następujący klucz rejestru:
 
 |    |    |
 | --- | --- |
-| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
-| Type | REG_SZ (ciąg) |
-| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| Ścieżka | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Nazwa | 1 |
+| Typ | REG_SZ (ciąg) |
+| Dane | {"wzorzec": "https://device.login.microsoftonline.com", "filter": {"WYSTAWCa": {"CN": "MS-Organization-Access"}}} |
 
 Te przeglądarki obsługują uwierzytelnianie urządzeń, co pozwala na identyfikację i weryfikację urządzenia względem zasad. Sprawdzenie urządzenia kończy się niepowodzeniem, jeśli przeglądarka działa w trybie prywatnym.
 
@@ -170,7 +169,7 @@ To ustawienie ma wpływ na próby dostępu wykonane z następujących aplikacji 
 | Aplikacje klienckie | Usługa docelowa | Platforma |
 | --- | --- | --- |
 | Aplikacja Dynamics CRM | Dynamics CRM | Windows 10, Windows 8.1, iOS i Android |
-| Aplikacja poczty/kalendarza/osoby, Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania)| Office 365 Exchange Online | Windows 10 |
+| Aplikacja poczty/kalendarza/osoby, Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania)| Pakiet Office 365 Exchange Online | Windows 10 |
 | Zasady usługi MFA i lokalizacji dla aplikacji. Zasady oparte na urządzeniach nie są obsługiwane.| Wszystkie aplikacje my App Service| Systemy Android i iOS |
 | Usługi Microsoft Teams — kontroluje wszystkie usługi obsługujące Microsoft Teams i wszystkie jej aplikacje klienckie — Windows Desktop, iOS, Android, WP i klient sieci Web | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android i macOS |
 | Aplikacje pakietu Office 2016, pakiet Office 2013 (z nowoczesnego uwierzytelniania), klient synchronizacji usługi OneDrive (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Pakiet Office 365 SharePoint Online | Windows 8.1, Windows 7 |
@@ -180,11 +179,11 @@ To ustawienie ma wpływ na próby dostępu wykonane z następujących aplikacji 
 | Aplikacje mobilne pakietu Office | Pakiet Office 365 SharePoint Online | Android, iOS |
 | Aplikacja Yammera pakietu Office | Usługa Yammer pakietu Office 365 | Windows 10, iOS, Android |
 | Outlook 2019 | Pakiet Office 365 SharePoint Online | Windows 10, macOS |
-| Outlook 2016 (Office for macOS) | Office 365 Exchange Online | macOS |
-| Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania), Skype dla firm (z nowoczesnego uwierzytelniania) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
-| Aplikacja mobilna Outlook | Office 365 Exchange Online | Android, iOS |
+| Outlook 2016 (Office for macOS) | Pakiet Office 365 Exchange Online | macOS |
+| Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania), Skype dla firm (z nowoczesnego uwierzytelniania) | Pakiet Office 365 Exchange Online | Windows 8.1, Windows 7 |
+| Aplikacja mobilna Outlook | Pakiet Office 365 Exchange Online | Android, iOS |
 | Aplikacja Power BI | usługa Power BI | Windows 10, Windows 8.1, Windows 7, Android i iOS |
-| Skype dla firm | Office 365 Exchange Online| Android, IOS |
+| Skype dla firm | Pakiet Office 365 Exchange Online| Android, IOS |
 | Aplikacja Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS i Android |
 
 ## <a name="support-for-legacy-authentication"></a>Obsługa starszego uwierzytelniania
@@ -208,7 +207,7 @@ To ustawienie dotyczy następujących aplikacji klienckich:
 - Microsoft Cortana
 - Microsoft Dynamics 365
 - Microsoft Edge
-- Program Microsoft Excel
+- Microsoft Excel
 - Microsoft Flow
 - Microsoft Intune Managed Browser
 - Microsoft Invoicing
@@ -216,7 +215,7 @@ To ustawienie dotyczy następujących aplikacji klienckich:
 - Microsoft Launcher
 - Microsoft OneDrive
 - Microsoft OneNote
-- Program Microsoft Outlook
+- Microsoft Outlook
 - Microsoft Planner
 - Microsoft PowerApps
 - Microsoft Power BI
@@ -247,7 +246,7 @@ To ustawienie dotyczy następujących aplikacji klienckich:
 
 - Microsoft Cortana
 - Microsoft OneDrive
-- Program Microsoft Outlook
+- Microsoft Outlook
 - Microsoft Planner
 
 **Uwagi**

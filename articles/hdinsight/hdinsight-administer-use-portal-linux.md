@@ -2,18 +2,18 @@
 title: Zarządzanie klastrami Apache Hadoop w usłudze HDInsight przy użyciu Azure Portal
 description: Dowiedz się, jak tworzyć klastry usługi Azure HDInsight i zarządzać nimi przy użyciu Azure Portal.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: dfe531f8b298be1d90df45f57918f87744912949
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/04/2019
+ms.openlocfilehash: 4cf979c99c596abff075eb38f3358c6389a6b07e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077062"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264288"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop w usłudze HDInsight przy użyciu Azure Portal
 
@@ -26,14 +26,17 @@ Za pomocą [Azure Portal](https://portal.azure.com)można zarządzać klastrami 
 Istniejący klaster Apache Hadoop w usłudze HDInsight.  Zobacz [Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="getting-started"></a>Wprowadzenie
+
 Zaloguj się do witryny [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="showClusters"></a>Wyświetlanie listy i wyświetlanie klastrów
+
 Na stronie **Klastry usługi HDInsight** zostaną wystawione istniejące klastry.  Z poziomu portalu:
 1. W menu po lewej stronie wybierz pozycję **wszystkie usługi** .
 2. Wybierz pozycję **Klastry usługi HDInsight** w obszarze **Analiza**.
 
 ## <a name="homePage"></a>Strona główna klastra 
+
 Wybierz nazwę klastra na stronie [**Klastry usługi HDInsight**](#showClusters) .  Spowoduje to otwarcie widoku **przeglądu** , który wygląda podobnie do poniższego obrazu:
 
 ![Azure Portal podstawowe informacje o klastrze usługi HDInsight](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
@@ -42,19 +45,20 @@ Wybierz nazwę klastra na stronie [**Klastry usługi HDInsight**](#showClusters)
 
 | Element| Opis |
 |---|---|
-|Przenieś|Przenosi klaster do innej grupy zasobów lub innej subskrypcji.|
-|Usuwanie|Usuwa klaster. |
+|Move|Przenosi klaster do innej grupy zasobów lub innej subskrypcji.|
+|Usuń|Usuwa klaster. |
 |Odśwież|Odświeża widok.|
 
 **Menu po lewej:**  
+
   - **Menu w lewym górnym rogu**
 
     | Element| Opis |
     |---|---|
-    |Omówienie|Zawiera ogólne informacje o klastrze.|
+    |Przegląd|Zawiera ogólne informacje o klastrze.|
     |Dziennik aktywności|Pokaż i zbadaj dzienniki aktywności.|
     |Kontrola dostępu (IAM)|Korzystanie z przypisań ról.  Zobacz [Korzystanie z przypisań ról w celu zarządzania dostępem do zasobów subskrypcji platformy Azure](../role-based-access-control/role-assignments-portal.md).|
-    |`Tags`|Pozwala ustawić pary klucz/wartość, aby zdefiniować niestandardową taksonomię usług w chmurze. Na przykład możesz utworzyć klucz o nazwie **projekt**, a następnie użyć wspólnej wartości dla wszystkich usług skojarzonych z określonym projektem.|
+    |Tagi|Pozwala ustawić pary klucz/wartość, aby zdefiniować niestandardową taksonomię usług w chmurze. Na przykład możesz utworzyć klucz o nazwie **projekt**, a następnie użyć wspólnej wartości dla wszystkich usług skojarzonych z określonym projektem.|
     |Diagnozowanie i rozwiązywanie problemów|Wyświetl informacje dotyczące rozwiązywania problemów.|
     |Szybki start|Wyświetla informacje, które ułatwiają rozpoczęcie pracy z usługą HDInsight.|
     |Narzędzia|Informacje pomocy dotyczące narzędzi związanych z usługą HDInsight.|
@@ -66,15 +70,15 @@ Wybierz nazwę klastra na stronie [**Klastry usługi HDInsight**](#showClusters)
     |Rozmiar klastra|Sprawdź, Zwiększ i zmniejsz liczbę węzłów procesu roboczego klastra. Zobacz [skalowanie klastrów](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Limity przydziału|Wyświetl używane i dostępne rdzenie dla subskrypcji.|
     |SSH + logowanie do klastra|Zawiera instrukcje dotyczące łączenia się z klastrem przy użyciu połączenia Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
-    |Usługa Data Lake Storage 1. generacji|Skonfiguruj Data Lake Storage Gen1 dostępu.  Zobacz [Szybki start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
+    |Data Lake Storage 1. generacji|Skonfiguruj Data Lake Storage Gen1 dostępu.  Zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
     |Konta magazynu|Wyświetlanie kont magazynu i kluczy. Konta magazynu są konfigurowane podczas procesu tworzenia klastra.|
     |Aplikacje|Dodawanie/usuwanie aplikacji usługi HDInsight.  Zobacz [Instalowanie niestandardowych aplikacji usługi HDInsight](hdinsight-apps-install-custom-applications.md).|
-    |Działania skryptu|Uruchom skrypty bash w klastrze. Zobacz [Dostosowywanie klastrów usługi HDInsight opartych na systemie Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).|
+    |Akcje skryptu|Uruchom skrypty bash w klastrze. Zobacz [Dostosowywanie klastrów usługi HDInsight opartych na systemie Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).|
     |Zewnętrzne magazyny metadanych|Wyświetl [Apache Hive](https://hive.apache.org/) i [Apache Oozie](https://oozie.apache.org/) magazynu metadanych. Magazyny metadanych można skonfigurować tylko podczas procesu tworzenia klastra.|
     |Partner usługi HDInsight|Dodaj/Usuń bieżącego partnera usługi HDInsight.|
     |Właściwości|Wyświetl [właściwości klastra](#properties).|
     |Blokady|Dodaj blokadę, aby uniemożliwić modyfikowanie lub usuwanie klastra.|
-    |Eksportuj szablon|Wyświetl i Eksportuj szablon Azure Resource Manager dla klastra. Obecnie można eksportować tylko zależne konto usługi Azure Storage. Zobacz [Tworzenie klastrów Apache Hadoop opartych na systemie Linux w usłudze HDInsight przy użyciu szablonów Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).|
+    |Eksportowanie szablonu|Wyświetl i Eksportuj szablon Azure Resource Manager dla klastra. Obecnie można eksportować tylko zależne konto usługi Azure Storage. Zobacz [Tworzenie klastrów Apache Hadoop opartych na systemie Linux w usłudze HDInsight przy użyciu szablonów Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).|
 
   - **Menu monitorowanie**
 
@@ -83,13 +87,13 @@ Wybierz nazwę klastra na stronie [**Klastry usługi HDInsight**](#showClusters)
     |Alerty|Zarządzanie alertami i akcjami.|
     |Metryki|Monitoruj metryki klastra w dziennikach Azure Monitor.|
     |Ustawienia diagnostyki|Ustawienia, w których mają być przechowywane metryki diagnostyki.|
-    |Operations Management Suite|Monitoruj klaster w usłudze Azure Operations Management Suite (OMS) i dziennikach Azure Monitor.|
+    |Azure Monitor|Monitoruj klaster w Azure Monitor.|
 
   - **Menu Pomoc techniczna i rozwiązywanie problemów**
 
     | Element| Opis |
     |---|---|
-    |Kondycja zasobu|Zobacz [Omówienie usługi Azure Resource Health](../service-health/resource-health-overview.md).|
+    |Resource Health|Zobacz [Omówienie usługi Azure Resource Health](../service-health/resource-health-overview.md).|
     |Nowe żądanie pomocy technicznej|Umożliwia utworzenie biletu pomocy technicznej w ramach pomocy technicznej firmy Microsoft.|
 
 ## <a name="properties"></a>Właściwości klastra
@@ -98,17 +102,17 @@ Na [stronie głównej klastra](#homePage)w obszarze **Ustawienia** wybierz pozyc
 
 |Element | Opis |
 |---|---|
-|NAZWA HOSTA|Nazwa klastra.|
+|NAZW|Nazwa klastra.|
 |ADRES URL KLASTRA|Adres URL interfejsu sieci Web Ambari.|
 |Prywatny punkt końcowy|Prywatny punkt końcowy klastra.|
 |Secure Shell (SSH)|Nazwa użytkownika i hosta, które mają być używane podczas uzyskiwania dostępu do klastra za pośrednictwem protokołu SSH.|
-|STAN|Jeden z: Przerwane, zaakceptowane, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, operacyjne, uruchomione, Error, usuwanie, usunięte, TimedOut, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued lub ClusterCustomization.|
+|STAN|Jedno z: przerwane, zaakceptowane, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, operacyjne, uruchomione, Error, usuwanie, usunięte, TimedOut, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued lub ClusterCustomization.|
 |REGION|Lokalizacja platformy Azure. Aby zapoznać się z listą obsługiwanych lokalizacji platformy Azure, zobacz pole listy rozwijanej **region** w [cenniku usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).|
 |DATA UTWORZENIA|Data wdrożenia klastra.|
-|SYSTEM OPERACYJNY|**System Windows** lub **Linux**.|
+|System operacyjny|**System Windows** lub **Linux**.|
 |TYP|Hadoop, HBase, burza, Spark.|
-|Version|Zobacz [wersje usługi HDInsight](hdinsight-component-versioning.md).|
-|SUBSKRYPCJA|Nazwa subskrypcji.|
+|Wersja|Zobacz [wersje usługi HDInsight](hdinsight-component-versioning.md).|
+|RAMACH|Nazwa subskrypcji.|
 |DOMYŚLNE ŹRÓDŁO DANYCH|Domyślny system plików klastra.|
 |Rozmiary węzłów procesu roboczego|Wybrany rozmiar maszyny wirtualnej węzłów procesu roboczego.|
 |Rozmiar węzła głównego|Wybrany rozmiar maszyny wirtualnej węzłów głównych.|
@@ -125,6 +129,7 @@ Na [stronie głównej klastra](#homePage):
 3. Postępuj zgodnie z instrukcjami podanymi na nowej stronie.
 
 ## <a name="delete-clusters"></a>Usuwanie klastrów
+
 Usunięcie klastra nie powoduje usunięcia domyślnego konta magazynu ani żadnych połączonych kont magazynu. Klaster można utworzyć ponownie, używając tych samych kont magazynu i tych samych metadanych. Zalecamy używanie nowego domyślnego kontenera obiektów BLOB podczas ponownego tworzenia klastra.
 
 Na [stronie głównej klastra](#homePage):
@@ -146,15 +151,15 @@ Aby uzyskać pełne informacje, zobacz [skalowanie klastrów usługi HDInsight](
 
 ## <a name="pauseshut-down-clusters"></a>Wstrzymywanie/zamykanie klastrów
 
-Większość zadań usługi Hadoop to zadania wsadowe, które są uruchamiane tylko sporadycznie. W przypadku większości klastrów usługi Hadoop klaster nie jest używany do przetwarzania. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany.
-Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
+Większość zadań usługi Hadoop to zadania wsadowe, które są uruchamiane tylko sporadycznie. W przypadku większości klastrów usługi Hadoop klaster jest w dużym stopniu nieużywany do przetwarzania. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, dzięki czemu można bezpiecznie usunąć klaster, gdy nie jest używany.
+Opłata jest naliczana również za klaster usługi HDInsight, nawet wtedy, gdy nie jest używana. Ze względu na to, że opłaty za klaster są dużo razy większe niż opłaty za magazyn, sprawia to, że należy usunąć klastry, gdy nie są używane.
 
 Istnieje wiele sposobów programowania procesu:
 
-* Azure Data Factory użytkownika. Aby utworzyć połączone usługi HDInsight na żądanie, zobacz [Tworzenie klastrów Apache Hadoop opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) .
-* Użyj Azure PowerShell.  Zobacz [Analizowanie danych dotyczących opóźnień lotów](./interactive-query/interactive-query-tutorial-analyze-flight-data.md).
-* Użyj interfejsu wiersza polecenia platformy Azure. Zobacz [Zarządzanie klastrami usługi Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md).
-* Użyj zestawu .NET SDK usługi HDInsight. Zobacz [przesyłanie Apache Hadoop zadań](hadoop/submit-apache-hadoop-jobs-programmatically.md).
+- Azure Data Factory użytkownika. Aby utworzyć połączone usługi HDInsight na żądanie, zobacz [Tworzenie klastrów Apache Hadoop opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) .
+- Użyj Azure PowerShell.  Zobacz [Analizowanie danych dotyczących opóźnień lotów](./interactive-query/interactive-query-tutorial-analyze-flight-data.md).
+- Użyj interfejsu wiersza polecenia platformy Azure. Zobacz [Zarządzanie klastrami usługi Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md).
+- Użyj zestawu .NET SDK usługi HDInsight. Zobacz [przesyłanie Apache Hadoop zadań](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Aby uzyskać informacje o cenach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/). Aby usunąć klaster z portalu, zobacz [usuwanie klastrów](#delete-clusters)
 
@@ -178,6 +183,7 @@ Na [stronie głównej klastra](#homePage):
 Aby uzyskać więcej informacji, zobacz [Zarządzanie klastrami usługi HDInsight za pomocą interfejsu użytkownika sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="change-passwords"></a>Zmień hasła
+
 Klaster HDInsight An może mieć dwa konta użytkowników. Konto użytkownika klastra usługi HDInsight (konto użytkownika HTTP) i konto użytkownika SSH są tworzone podczas procesu tworzenia. Za pomocą portalu można zmienić hasło konta użytkownika klastra i akcje skryptu, aby zmienić konto użytkownika SSH.
 
 ### <a name="change-the-cluster-user-password"></a>Zmiana hasła użytkownika klastra
@@ -194,6 +200,7 @@ Na [stronie głównej klastra](#homePage):
 Hasło zostanie zmienione we wszystkich węzłach w klastrze.
 
 ### <a name="change-the-ssh-user-password"></a>Zmiana hasła użytkownika SSH
+
 1. Za pomocą edytora tekstów Zapisz następujący tekst jako plik o nazwie **ChangePassword.sh**.
 
     > [!IMPORTANT]  
@@ -211,38 +218,43 @@ Hasło zostanie zmienione we wszystkich węzłach w klastrze.
 4. Na stronie **Akcje skryptu** wybierz pozycję **Prześlij nowy**.
 5. Na stronie **Prześlij akcję skryptu** wprowadź następujące informacje:
 
-   | Pole | Value |
+   | Pole | Wartość |
    | --- | --- |
    | Typ skryptu | Z listy rozwijanej wybierz pozycję **— niestandardowa** .|
-   | Name |"Zmień hasło ssh" |
-   | Identyfikator URI skryptu powłoki systemowej |Identyfikator URI pliku changepassword.sh |
-   | Typy węzłów: (Kierownik, proces roboczy, Nimbus, Nadzorca, dozorcy itp.) |✓ dla wszystkich typów węzłów na liście |
+   | Nazwa |"Zmień hasło ssh" |
+   | Identyfikator URI skryptu bash |Identyfikator URI pliku changepassword.sh |
+   | Typy węzłów: (kierownik, proces roboczy, Nimbus, Nadzorca, dozorcy itp.) |✓ dla wszystkich typów węzłów na liście |
    | Parametry |Wprowadź nazwę użytkownika SSH, a następnie nowe hasło. Między nazwą użytkownika i hasłem powinna być jedna spacja. |
    | Utrwalaj tę akcję skryptu... |Nie zaznaczaj tego pola. |
 
 6. Wybierz pozycję **Utwórz** , aby zastosować skrypt. Po zakończeniu działania skryptu można nawiązać połączenie z klastrem przy użyciu protokołu SSH z nowym hasłem.
 
 ## <a name="grantrevoke-access"></a>Udzielanie/odwoływanie dostępu
+
 Klastry HDInsight mają następujące usługi sieci Web HTTP (wszystkie te usługi mają RESTful punkty końcowe):
 
-* ODBC
-* JDBC
-* Ambari
-* Oozie
-* Templeton
+- ODBC
+- JDBC
+- Ambari
+- Oozie
+- Templeton
 
 Domyślnie te usługi są przyznawane na potrzeby dostępu. Możesz odwołać/udzielić dostępu przy użyciu [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access).
 
 ## <a name="find-the-subscription-id"></a>Znajdowanie identyfikatora subskrypcji
+
 Każdy klaster jest powiązany z subskrypcją platformy Azure.  Identyfikator subskrypcji platformy Azure jest widoczny na [stronie głównej klastra](#homePage).
 
 ## <a name="find-the-resource-group"></a>Znajdowanie grupy zasobów
+
 W trybie Azure Resource Manager każdy klaster usługi HDInsight jest tworzony z grupą Azure Resource Manager. Grupa Menedżer zasobów jest widoczna na [stronie głównej klastra](#homePage).
 
 ## <a name="find-the-storage-accounts"></a>Znajdowanie kont magazynu
+
 Klastry HDInsight wykorzystują konto usługi Azure Storage lub Azure Data Lake Storage do przechowywania danych. Każdy klaster usługi HDInsight może mieć jedno domyślne konto magazynu i wiele połączonych kont magazynu. Aby wyświetlić listę kont magazynu, na [stronie głównej klastra](#homePage) w obszarze **Ustawienia**wybierz pozycję **konta magazynu**.
 
 ## <a name="monitor-jobs"></a>Monitorowanie zadań
+
 Zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md#monitoring).
 
 ## <a name="cluster-size"></a>Rozmiar klastra
@@ -254,18 +266,18 @@ Kafelek **rozmiar klastra** ze [strony głównej klastra](#homePage) zawiera lic
 
 ## <a name="connect-to-a-cluster"></a>Łączenie z klastrem
 
-* [Korzystanie z Apache Hive z usługą HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
-* [Używanie protokołu SSH z usługą HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Korzystanie z Apache Hive z usługą HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
+- [Używanie protokołu SSH z usługą HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono podstawowe funkcje administracyjne. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
-* [Administrowanie usługą HDInsight przy użyciu Azure PowerShell](hdinsight-administer-use-powershell.md)
-* [Administrowanie usługą HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md)
-* [Tworzenie klastrów usługi HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
-* [Szczegółowe informacje na temat korzystania z interfejsu API REST usługi Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [Używanie Apache Hive w usłudze HDInsight](hadoop/hdinsight-use-hive.md)
-* [Korzystanie z programu Apache Sqoop w usłudze HDInsight](hadoop/hdinsight-use-sqoop.md)
-* [Używanie funkcji języka Python zdefiniowanej przez użytkownika (UDF) z Apache Hive i Apache chlewnej w usłudze HDInsight](hadoop/python-udf-hdinsight.md)
-* [Która wersja Apache Hadoop znajduje się w usłudze Azure HDInsight?](hdinsight-component-versioning.md)
+- [Administrowanie usługą HDInsight przy użyciu Azure PowerShell](hdinsight-administer-use-powershell.md)
+- [Administrowanie usługą HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md)
+- [Tworzenie klastrów usługi HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
+- [Szczegółowe informacje na temat korzystania z interfejsu API REST usługi Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)
+- [Używanie Apache Hive w usłudze HDInsight](hadoop/hdinsight-use-hive.md)
+- [Korzystanie z programu Apache Sqoop w usłudze HDInsight](hadoop/hdinsight-use-sqoop.md)
+- [Używanie funkcji języka Python zdefiniowanej przez użytkownika (UDF) z Apache Hive i Apache chlewnej w usłudze HDInsight](hadoop/python-udf-hdinsight.md)
+- [Która wersja Apache Hadoop znajduje się w usłudze Azure HDInsight?](hdinsight-component-versioning.md)

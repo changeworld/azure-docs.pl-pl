@@ -8,12 +8,12 @@ ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 3843eb2e906e3fb8d390e509e17117b7849ac220
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 42d2dae148b83687ff06d4ed321a881bcb9e7ae0
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244699"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273927"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy
 
@@ -33,12 +33,34 @@ Aby skonfigurować ustawienia serwera proxy dla AzCopy, należy ustawić zmienn�
 | System operacyjny | Polecenie  |
 |--------|-----------|
 | **Windows** | W wierszu polecenia Użyj: `set https_proxy=<proxy IP>:<proxy port>`<br> W programie PowerShell Użyj: `$env:https_proxy="<proxy IP>:<proxy port>"`|
-| **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **System** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 Obecnie AzCopy nie obsługuje serwerów proxy, które wymagają uwierzytelniania przy użyciu protokołu NTLM lub Kerberos.
 
-## <a name="optimize-throughput"></a>Optymalizowanie przepływności
+## <a name="optimize-performance"></a>Optymalizacja wydajności
+
+Możesz przeprowadzić test wydajności, a następnie użyć poleceń i zmiennych środowiskowych, aby znaleźć optymalną kompromis między wydajnością i użyciem zasobów.
+
+### <a name="run-benchmark-tests"></a>Uruchamianie testów porównawczych
+
+Test testu porównawczego wydajności dla określonych kontenerów obiektów BLOB można uruchomić w celu wyświetlenia ogólnych statystyk wydajności i problemów z wąskimi gardłami wydajności. 
+
+> [!NOTE]
+> W bieżącej wersji ta funkcja jest dostępna tylko dla kontenerów Blob Storage.
+
+Użyj poniższego polecenia, aby uruchomić test porównawczy wydajności.
+
+|    |     |
+|--------|-----------|
+| **Obowiązuje** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Przykład** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/'` |
+
+To polecenie uruchamia wzorzec wydajności przez przekazywanie danych testowych do określonego miejsca docelowego. Dane testowe są generowane w pamięci, przekazane do miejsca docelowego, a następnie usuwane z lokalizacji docelowej po zakończeniu testu. Można określić, ile plików ma być generowanych i jakie rozmiary mają być używane przez opcjonalne parametry polecenia.
+
+Aby wyświetlić szczegółowe wskazówki dotyczące tego polecenia, wpisz `azcopy bench -h`, a następnie naciśnij klawisz ENTER.
+
+### <a name="optimize-throughput"></a>Optymalizowanie przepływności
 
 Możesz użyć flagi `cap-mbps`, aby umieścić górny limit szybkości danych przepływności. Na przykład następujące polecenie powoduje wypróbowanie przepustowości dla `10` megabitów (MB) na sekundę.
 
@@ -46,33 +68,30 @@ Możesz użyć flagi `cap-mbps`, aby umieścić górny limit szybkości danych p
 azcopy cap-mbps 10
 ```
 
-Przepływność może ulec zmniejszeniu podczas przesyłania małych plików. Przepustowość można zwiększyć, ustawiając zmienną środowiskową `AZCOPY_CONCURRENCY_VALUE`. Ta zmienna określa liczbę równoczesnych żądań, które mogą wystąpić.  Jeśli komputer ma mniej niż 5 procesorów CPU, wartość tej zmiennej jest ustawiana na `32`. W przeciwnym razie wartość domyślna jest równa 16 pomnożona przez liczbę procesorów CPU. Maksymalna wartość domyślna tej zmiennej to `300`, ale można ręcznie ustawić tę wartość na wyższą lub niższą.
+Przepływność może ulec zmniejszeniu podczas przesyłania małych plików. Przepustowość można zwiększyć, ustawiając zmienną środowiskową `AZCOPY_CONCURRENCY_VALUE`. Ta zmienna określa liczbę równoczesnych żądań, które mogą wystąpić.  
+
+Jeśli komputer ma mniej niż 5 procesorów CPU, wartość tej zmiennej jest ustawiana na `32`. W przeciwnym razie wartość domyślna jest równa 16 pomnożona przez liczbę procesorów CPU. Maksymalna wartość domyślna tej zmiennej to `3000`, ale można ręcznie ustawić tę wartość na wyższą lub niższą. 
 
 | System operacyjny | Polecenie  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **System** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej.  Jeśli wartość jest pusta, zmienna `AZCOPY_CONCURRENCY_VALUE` jest ustawiona na wartość domyślną `300`.
+Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, można odczytać, która wartość jest używana, przeglądając początek dowolnego pliku dziennika AzCopy. W tym miejscu są raportowane wybrane wartości i powód, w którym została wybrana.
 
-## <a name="change-the-location-of-the-log-files"></a>Zmień lokalizację plików dziennika
+Przed ustawieniem tej zmiennej zalecamy uruchomienie testu porównawczego. Proces testu porównawczego zgłosi zalecaną wartość współbieżności. Alternatywnie, jeśli warunki i ładunki sieciowe różnią się, należy ustawić tę zmienną na słowo `AUTO` zamiast do określonej liczby. Spowoduje to, że AzCopy będzie zawsze uruchamiać ten sam proces dostrajania automatycznego, którego używa w testach porównawczych.
 
-Domyślnie pliki dziennika znajdują się w katalogu `%USERPROFILE%\.azcopy` w systemie Windows lub w katalogu `$HOME\\.azcopy` na komputerach Mac i Linux. Tę lokalizację można zmienić, jeśli zachodzi taka potrzeba przy użyciu tych poleceń.
+### <a name="optimize-memory-use"></a>Optymalizuj użycie pamięci
+
+Ustaw zmienną środowiskową `AZCOPY_BUFFER_GB`, aby określić maksymalną ilość pamięci systemowej, która ma być używana podczas pobierania i przekazywania plików.
+Ta wartość jest wyrażana w gigabajtach (GB).
 
 | System operacyjny | Polecenie  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
-| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
-
-Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, dzienniki są zapisywane w domyślnej lokalizacji.
-
-## <a name="change-the-default-log-level"></a>Zmień domyślny poziom dziennika
-
-Domyślnie poziom dziennika AzCopy jest ustawiony na `INFO`. Jeśli chcesz zmniejszyć szczegółowość dziennika w celu zaoszczędzenia miejsca na dysku, Zastąp to ustawienie przy użyciu opcji ``--log-level``. 
-
-Dostępne poziomy dziennika: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` i `FATAL`.
+| **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
+| **System** | `export AZCOPY_BUFFER_GB=<value>` |
+| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ## <a name="troubleshoot-issues"></a>Rozwiązywanie problemów
 
@@ -80,7 +99,7 @@ AzCopy tworzy dziennik i planowanie plików dla każdego zadania. Możesz użyć
 
 Dzienniki będą zawierać stan niepowodzenia (`UPLOADFAILED`, `COPYFAILED` i `DOWNLOADFAILED`), pełną ścieżkę i przyczynę niepowodzenia.
 
-Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE\\.azcopy` w katalogu systemu Windows lub `$HOME\\.azcopy` na komputerach Mac i Linux.
+Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE$\.azcopy` w katalogu systemu Windows lub `$HOME$\.azcopy` na komputerach Mac i w systemie Linux, ale można je zmienić w razie potrzeby.
 
 > [!IMPORTANT]
 > Podczas przesyłania żądania do pomoc techniczna firmy Microsoft (lub rozwiązywania problemu związanego z jakąkolwiek osobą trzecią) należy udostępnić redagowane wersję polecenia, które chcesz wykonać. Gwarantuje to, że SYGNATURa dostępu współdzielonego nie zostanie przypadkowo udostępniona z każdy. Wersję redagowane można znaleźć na początku pliku dziennika.
@@ -95,7 +114,7 @@ Następujące polecenie spowoduje wyświetlenie wszystkich błędów o stanie `U
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 ```
 
-**Linux**
+**System**
 
 ```
 grep UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -129,3 +148,45 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
 Po wznowieniu zadania AzCopy przegląda plik planu zadań. Plik planu zawiera listę wszystkich plików, które zostały zidentyfikowane do przetwarzania podczas pierwszego utworzenia zadania. Po wznowieniu zadania AzCopy podejmie próbę przetransferowania wszystkich plików wymienionych w pliku planu, który nie został jeszcze przeniesiony.
+
+## <a name="change-the-location-of-the-plan-and-log-files"></a>Zmień lokalizację planu i plików dziennika
+
+Domyślnie pliki planu i dziennika znajdują się w katalogu `%USERPROFILE$\.azcopy` w systemie Windows lub w katalogu `$HOME$\.azcopy` na komputerach Mac i Linux. Można zmienić tę lokalizację.
+
+### <a name="change-the-location-of-plan-files"></a>Zmień lokalizację plików planu
+
+Użyj dowolnego z tych poleceń.
+
+| System operacyjny | Polecenie  |
+|--------|-----------|
+| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **System** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+
+Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, Zaplanuj pliki są zapisywane w domyślnej lokalizacji.
+
+### <a name="change-the-location-of-log-files"></a>Zmień lokalizację plików dziennika
+
+Użyj dowolnego z tych poleceń.
+
+| System operacyjny | Polecenie  |
+|--------|-----------|
+| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **System** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+
+Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, dzienniki są zapisywane w domyślnej lokalizacji.
+
+## <a name="change-the-default-log-level"></a>Zmień domyślny poziom dziennika
+
+Domyślnie poziom dziennika AzCopy jest ustawiony na `INFO`. Jeśli chcesz zmniejszyć szczegółowość dziennika w celu zaoszczędzenia miejsca na dysku, Zastąp to ustawienie przy użyciu opcji ``--log-level``. 
+
+Dostępne poziomy dzienników to: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` i `FATAL`.
+
+## <a name="remove-plan-and-log-files"></a>Usuń pliki planu i dziennika
+
+Jeśli chcesz usunąć wszystkie pliki planu i dziennika z komputera lokalnego, aby zaoszczędzić miejsce na dysku, użyj polecenia `azcopy jobs clean`.
+
+Aby usunąć pliki planu i dziennika skojarzone tylko z jednym zadaniem, użyj `azcopy jobs rm <job-id>`. Zastąp symbol zastępczy `<job-id>` w tym przykładzie identyfikatorem zadania zadania.
+
+

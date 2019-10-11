@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 780e639ad6e1ee721820749da2df9ea6efa07bd6
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300696"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273727"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
@@ -71,7 +71,7 @@ Teraz można skonfigurować model szeregów czasowych środowiska Time Series In
 
 Model jest dynamiczny, więc można go skompilować w dowolnym momencie. Aby szybko rozpocząć pracę, skompiluj ją i przekaż przed wypchnięciem danych do Time Series Insights. Aby skompilować model, zobacz [Korzystanie z modelu szeregów czasowych](./time-series-insights-update-how-to-tsm.md).
 
-W przypadku wielu klientów model szeregów czasowych jest mapowany na istniejący model zasobów lub system ERP. Jeśli nie masz istniejącego modelu, zapewnione zostanie wbudowane środowisko użytkownika umożliwiające szybkie [](https://github.com/Microsoft/tsiclient) rozpoczęcie pracy. Aby Envision, jak może pomóc model, zobacz [przykładowe środowisko demonstracyjne](https://insights.timeseries.azure.com/preview/demo).
+W przypadku wielu klientów model szeregów czasowych jest mapowany na istniejący model zasobów lub system ERP. Jeśli nie masz istniejącego modelu, [zapewnione](https://github.com/Microsoft/tsiclient) zostanie wbudowane środowisko użytkownika umożliwiające szybkie rozpoczęcie pracy. Aby Envision, jak może pomóc model, zobacz [przykładowe środowisko demonstracyjne](https://insights.timeseries.azure.com/preview/demo).
 
 ## <a name="shape-your-events"></a>Kształtowanie zdarzeń
 
@@ -82,7 +82,7 @@ Dobrym regułą dla elementu kciuk:
 * Przechowuj metadane w modelu szeregów czasowych.
 * Tryb szeregów czasowych, pola wystąpień i zdarzenia obejmują tylko niezbędne informacje, takie jak identyfikator szeregów czasowych lub sygnatura czasowa.
 
-Aby uzyskać więcej informacji, zobacz [Shape Events](./time-series-insights-send-events.md#json).
+Aby uzyskać więcej informacji, zobacz [Shape Events](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

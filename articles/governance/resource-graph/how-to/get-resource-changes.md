@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 13e2a848f9d178fc6554062c324c951102e1343b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244117"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274206"
 ---
 # <a name="get-resource-changes"></a>Uzyskiwanie zmian zasobów
 
@@ -30,6 +30,7 @@ Wykrywanie zmian i szczegółowe informacje są przydatne dla następujących pr
 - Informacje o innych właściwościach, które mogły zostać zmienione w przypadku zmiany stanu zgodności zasobu. Ocena tych dodatkowych właściwości może zapewnić wgląd w inne właściwości, które mogą być potrzebne do zarządzania za pośrednictwem definicji Azure Policy.
 
 W tym artykule pokazano, jak zbierać te informacje za poorednictwem zestawu SDK grafu zasobów. Aby wyświetlić te informacje w Azure Portal, zobacz [historię zmian](../../policy/how-to/determine-non-compliance.md#change-history-preview) Azure Policy lub [historię zmian](../../../azure-monitor/platform/activity-log-view.md#azure-portal)dziennika aktywności platformy Azure.
+Aby uzyskać szczegółowe informacje o zmianach w aplikacjach z warstwy infrastruktury we wszystkich sposobach wdrażania aplikacji, zobacz [Korzystanie z analizy zmian aplikacji (wersja zapoznawcza)](../../../azure-monitor/app/change-analysis.md) w Azure monitor.
 
 > [!NOTE]
 > Szczegóły zmiany w grafie zasobów są przeznaczone dla Menedżer zasobów właściwości. Aby śledzić zmiany wewnątrz maszyny wirtualnej, zobacz Azure Automation [śledzenie zmian](../../../automation/automation-change-tracking.md) lub [konfiguracja gościa Azure Policy dla maszyn wirtualnych](../../policy/concepts/guest-configuration.md).

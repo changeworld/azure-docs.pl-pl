@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 3e0bdd42ea19b7029d3f3df4ff9a5a275aec0271
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 51caf34d0030fd404cd7f7c1868a0e2945c75b35
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936695"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264426"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -56,7 +56,7 @@ Istnieją dwa podejścia do rozwiązania tego zagadnienia: użycie domyślnego m
 
 Przy [pobieraniu próbkowania](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)zestawu SDK ASP.NET wolumin danych jest dostosowywany automatycznie, aby zachować w ramach określonego maksymalnego natężenia ruchu dla domyślnego monitorowania Application Insights. Jeśli aplikacja tworzy niską ilość danych telemetrycznych, na przykład podczas debugowania lub z powodu niskiego użycia, elementy nie zostaną porzucone przez procesor próbkowania, o ile ilość poniżej skonfigurowanych zdarzeń na sekundę. W przypadku aplikacji o dużym nasileniu, z domyślnym progiem 5 zdarzeń na sekundę, próbkowanie adaptacyjne ograniczy liczbę codziennych zdarzeń do 432 000. Przy użyciu typowego średniego rozmiaru zdarzenia o wartości 1 KB odpowiada to 13,4 GB danych telemetrycznych na każdy węzeł obsługujący aplikację (ponieważ próbkowanie jest wykonywane lokalnie dla każdego węzła). 
 
-W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, można zastosować [próbkowanie pozyskiwania) [https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling ], które próbki, gdy dane są receved przez Application Insights na podstawie procentowej ilości danych do zachowania lub [próbkowania o stałej szybkości dla ASP.NET, ASP.NET Core i Java witryny internetowe](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) umożliwiające zmniejszenie ruchu wysyłanego z serwera sieci Web i przeglądarek sieci Web
+W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, można zastosować [próbkowanie](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) pozyskiwania próbek, gdy dane są receved przez Application Insights na podstawie procentowej ilości danych do zachowania lub [próbkowania o stałej szybkości dla ASP.NET, ASP.NET Core i Java witryny internetowe](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) umożliwiające zmniejszenie ruchu wysyłanego z serwera sieci Web i przeglądarek sieci Web
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Dowiedz się, co zbiera podobne odbiorcy
 
@@ -183,7 +183,7 @@ Aby zmienić przechowywanie, z zasobu Application Insights przejdź na stronę *
 
 ![Dostosuj dzienny limit ilości danych telemetrycznych](./media/pricing/pricing-005.png)
 
-Przechowywanie można również [ustawić za pomocą ARM](https://docs.microsoft.com/azure/azure-monitor/app/powershell) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja jest udostępniana tylko przez ARM. 
+Przechowywanie można także [ustawić programowo przy użyciu programu PowerShell](https://docs.microsoft.com/azure/azure-monitor/app/powershell/set-the-data-retention) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja przeczyszczania jest dostępna tylko za pośrednictwem ARM i powinna być używana z najwyższą starannością. 
 
 Gdy rozliczenia zaczynają obowiązywać dłużej niż w grudniu 2019, opłaty za dane przechowywane dłużej niż 90 dni będą naliczane zgodnie z tą samą stawką, w której jest naliczana opłata za przechowywanie danych Log Analytics Azure. Dowiedz się więcej na [stronie cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). Bądź na bieżąco z zmiennym postępem przechowywania w ramach [tej sugestii](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 

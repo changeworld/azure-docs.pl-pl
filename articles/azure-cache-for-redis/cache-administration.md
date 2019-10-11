@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: eb6773d1547499fcd3a73aebf8f17ec61b6dc06a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: bb7b9a41523ab1b1addbf37cb7b463f12a72a814
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827599"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263656"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak administrować usługą Azure cache for Redis
 W tym temacie opisano sposób wykonywania zadań administracyjnych, takich jak [Ponowne uruchamianie](#reboot) i [Planowanie aktualizacji](#schedule-updates) pamięci podręcznej platformy Azure dla wystąpień Redis.
@@ -48,17 +48,11 @@ Wpływ na aplikacje klienckie różni się w zależności od tego, które węzł
 * **Zarówno główny, jak i podrzędny** — po ponownym uruchomieniu obu węzłów pamięci podręcznej wszystkie dane są tracone w pamięci podręcznej i połączenia z pamięcią podręczną kończą się niepowodzeniem, dopóki węzeł podstawowy nie powróci do trybu online. Jeśli skonfigurowano [trwałość danych](cache-how-to-premium-persistence.md), najnowsza kopia zapasowa zostanie przywrócona, gdy pamięć podręczna wróci do trybu online, ale wszystkie zapisy pamięci podręcznej, które wystąpiły po ostatniej kopii zapasowej, zostaną utracone.
 * **Węzły pamięci podręcznej Premium z włączoną obsługą klastrowania** — po ponownym uruchomieniu co najmniej jednego węzła pamięci podręcznej Premium z włączoną obsługą klastrowania zachowanie dla wybranych węzłów jest takie samo jak w przypadku ponownego uruchomienia odpowiedniego węzła lub węzłów nieklastrowanej pamięci podręcznej.
 
-> [!IMPORTANT]
-> Dla wszystkich warstw cenowych jest teraz dostępny ponowny rozruch.
-> 
-> 
-
 ## <a name="reboot-faq"></a>Często zadawane pytania dotyczące ponownego uruchamiania
 * [Który węzeł należy ponownie uruchomić w celu przetestowania mojej aplikacji?](#which-node-should-i-reboot-to-test-my-application)
 * [Czy mogę ponownie uruchomić pamięć podręczną, aby wyczyścić połączenia klienckie?](#can-i-reboot-the-cache-to-clear-client-connections)
 * [Czy po ponownym uruchomieniu utracisz dane z mojej pamięci podręcznej?](#will-i-lose-data-from-my-cache-if-i-do-a-reboot)
 * [Czy mogę uruchomić ponownie pamięć podręczną przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
-* [Jakie warstwy cenowe mogą korzystać z funkcji ponownego uruchamiania?](#what-pricing-tiers-can-use-the-reboot-functionality)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>Który węzeł należy ponownie uruchomić w celu przetestowania mojej aplikacji?
 Aby przetestować odporność aplikacji przed awarią podstawowego węzła pamięci podręcznej, należy ponownie uruchomić węzeł **główny** . Aby przetestować odporność aplikacji przed awarią węzła pomocniczego, należy ponownie uruchomić węzeł **podrzędny** . Aby przetestować odporność aplikacji przed całkowitą awarią pamięci podręcznej, należy ponownie uruchomić **oba** węzły.
@@ -79,23 +73,18 @@ W przypadku ponownego uruchomienia tylko jednego z węzłów dane nie są zwykle
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Czy mogę uruchomić ponownie pamięć podręczną przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania?
 Tak, aby uzyskać instrukcje dotyczące programu PowerShell, zobacz [Aby ponownie uruchomić pamięć podręczną platformy Azure dla Redis](cache-howto-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
-### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>Jakie warstwy cenowe mogą korzystać z funkcji ponownego uruchamiania?
-Dla wszystkich warstw cenowych jest dostępny ponowny rozruch.
-
 ## <a name="schedule-updates"></a>Zaplanuj aktualizacje
 Blok **harmonogram aktualizacji** umożliwia wyznaczenie okna obsługi dla wystąpienia pamięci podręcznej. Po określeniu okna obsługi wszystkie aktualizacje serwera Redis są wykonywane w tym oknie. 
 
 > [!NOTE] 
 > Okno obsługi ma zastosowanie tylko do aktualizacji serwera Redis, a nie do aktualizacji lub aktualizacji platformy Azure dla systemu operacyjnego maszyn wirtualnych, które obsługują pamięć podręczną.
-> 
-> 
+>
 
 ![Zaplanuj aktualizacje](./media/cache-administration/redis-schedule-updates.png)
 
 Aby określić okno obsługi, sprawdź wymagane dni i określ czas rozpoczęcia okna obsługi dla każdego dnia, a następnie kliknij przycisk **OK**. Należy pamiętać, że czas okna obsługi jest w formacie UTC. 
 
 Ustawienie domyślne i minimalne okno obsługi aktualizacji to pięć godzin. Ta wartość nie może być konfigurowalna z Azure Portal, ale można ją skonfigurować w programie PowerShell przy użyciu parametru `MaintenanceWindow` polecenia cmdlet [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) . Aby uzyskać więcej informacji, zobacz mogę zarządzać zaplanowanymi aktualizacjami przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania?
-
 
 ## <a name="schedule-updates-faq"></a>Zaplanuj często zadawane pytania dotyczące aktualizacji
 * [Kiedy aktualizacje są wykonywane, jeśli nie używam funkcji Zaplanuj aktualizacje?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

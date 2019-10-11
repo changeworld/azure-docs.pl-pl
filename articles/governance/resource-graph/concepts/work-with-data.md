@@ -1,17 +1,17 @@
 ---
-title: Pracuj z dużymi zestawami danych
+title: Praca z dużymi zestawami danych
 description: Zapoznaj się z tematem jak uzyskać i kontrolować duże zestawy danych podczas pracy z usługą Azure Resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/01/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0ecd0ea997520947b766912f834de2a0c2e64429
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980307"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274237"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Praca z dużymi zestawami danych zasobów platformy Azure
 
@@ -61,14 +61,14 @@ Search-AzGraph -Query "project name | order by name asc" -Skip 10
 
 W [interfejsie API REST](/rest/api/azureresourcegraph/resources/resources)formant jest **$Skip** i jest częścią **QueryRequestOptions**.
 
-## <a name="paging-results"></a>Wyniki stronicowania
+## <a name="paging-results"></a>Stronicowanie wyników
 
 Gdy konieczne jest przerwanie zestawu wyników w mniejszych zestawach rekordów do przetworzenia lub ponieważ zestaw wyników będzie przekroczyć maksymalną dozwoloną wartość _1000_ zwracanych rekordów, należy użyć stronicowania. [Interfejs API REST](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** udostępnia wartości wskazujące, że zestaw wyników został podzielony: **resultTruncated** i **$skipToken**.
 **resultTruncated** jest wartością logiczną, która informuje odbiorcę, jeśli w odpowiedzi nie zostały zwrócone dodatkowe rekordy. Ten stan można również zidentyfikować, gdy właściwość **Count** jest mniejsza niż Właściwość **totalRecords** . **totalRecords** definiuje liczbę rekordów, które pasują do zapytania.
 
 Gdy **resultTruncated** ma **wartość true**, właściwość **$skipToken** jest ustawiana w odpowiedzi. Ta wartość jest używana z tymi samymi wartościami zapytania i subskrypcji w celu uzyskania następnego zestawu rekordów, które pasują do zapytania.
 
-W poniższych przykładach pokazano, jak **pominąć** pierwsze 3000 rekordów i zwrócić **pierwsze** 1000 rekordów po pominiętych za pomocą interfejsu wiersza polecenia platformy Azure i Azure PowerShell:
+W poniższych przykładach pokazano, jak **pominąć** pierwsze 3000 rekordów i zwrócić **pierwsze** 1000 rekordów po pominięciu tych rekordów przy użyciu interfejsu wiersza polecenia platformy Azure i Azure PowerShell:
 
 ```azurecli-interactive
 az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
@@ -82,6 +82,90 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 > Zapytanie musi uwzględniać wartość pola **ID** **, aby** można było rozpocząć stronicowanie. Jeśli brakuje tego zapytania, odpowiedź nie będzie zawierać **$skipToken**.
 
 Aby zapoznać się z przykładem, zobacz [następne zapytanie na stronie](/rest/api/azureresourcegraph/resources/resources#next-page-query) w dokumentacji interfejsu API REST.
+
+## <a name="formatting-results"></a>Formatowanie wyników
+
+Wyniki zapytania grafu zasobów są dostępne w dwóch formatach, _Table_ i _ObjectArray_. Format jest konfigurowany przy użyciu parametru **resultFormat** jako części opcji żądania. Format _tabeli_ jest wartością domyślną dla **resultFormat**.
+
+Wyniki z interfejsu wiersza polecenia platformy Azure są domyślnie dostępne w formacie JSON. Wyniki w Azure PowerShell są domyślnie **parametr PSCustomObject** , ale można je szybko przekonwertować na format JSON przy użyciu polecenia cmdlet `ConvertTo-Json`. W przypadku innych zestawów SDK wyniki zapytania można skonfigurować w celu wygenerowania danych wyjściowych w formacie _ObjectArray_ .
+
+### <a name="format---table"></a>Format — tabela
+
+Format domyślny _tabeli_zwraca wyniki w formacie JSON zaprojektowanym do wyróżnienia wartości projektu kolumny i wiersza właściwości zwracanych przez zapytanie. Ten format ściśle przypomina dane zdefiniowane w tabeli strukturalnej lub arkuszu kalkulacyjnym z określonymi kolumnami, a następnie każdy wiersz reprezentuje dane wyrównane do tych kolumn.
+
+Oto przykład wyniku zapytania z formatowaniem _tabeli_ :
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": {
+        "columns": [{
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "type",
+                "type": "string"
+            },
+            {
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "name": "subscriptionId",
+                "type": "string"
+            }
+        ],
+        "rows": [
+            [
+                "veryscaryvm2-nsg",
+                "microsoft.network/networksecuritygroups",
+                "eastus",
+                "11111111-1111-1111-1111-111111111111"
+            ]
+        ]
+    },
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+### <a name="format---objectarray"></a>Format — ObjectArray
+
+Format _ObjectArray_ zwraca również wyniki w formacie JSON. Jednak ten projekt jest wyrównany do pary klucz/wartość wspólnych w formacie JSON, gdzie kolumny i dane wierszy są dopasowane w grupach tablic.
+
+Oto przykład wyniku zapytania z formatowaniem _ObjectArray_ :
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": [{
+        "name": "veryscaryvm2-nsg",
+        "type": "microsoft.network/networksecuritygroups",
+        "location": "eastus",
+        "subscriptionId": "11111111-1111-1111-1111-111111111111"
+    }],
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+Poniżej przedstawiono kilka przykładów ustawiania **resultFormat** do używania formatu _ObjectArray_ :
+
+```csharp
+var requestOptions = new QueryRequestOptions( resultFormat: ResultFormat.ObjectArray);
+var request = new QueryRequest(subscriptions, "limit 1", options: requestOptions);
+```
+
+```python
+request_options = QueryRequestOptions(
+    result_format=ResultFormat.object_array
+)
+request = QueryRequest(query="limit 1", subscriptions=subs_list, options=request_options)
+response = client.resources(request)
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

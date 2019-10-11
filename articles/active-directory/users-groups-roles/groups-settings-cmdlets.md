@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0f2d3f8d8d2298ec00532205e359ed6f8dbc87a
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 18fbaad8ce15ab4eb9a08d5edc273098e7fb372e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315693"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263964"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy
 Ten artykuł zawiera instrukcje dotyczące używania poleceń cmdlet programu PowerShell w usłudze Azure Active Directory (Azure AD) do tworzenia i aktualizowania grup. Ta zawartość dotyczy tylko grup pakietu Office 365 (nazywanych czasami grupami ujednoliconymi). 
@@ -28,7 +28,7 @@ Ten artykuł zawiera instrukcje dotyczące używania poleceń cmdlet programu Po
 > [!IMPORTANT]
 > Niektóre ustawienia wymagają licencji na Azure Active Directory — wersja Premium P1. Aby uzyskać więcej informacji, zobacz tabela [ustawień szablonu](#template-settings) .
 
-Aby uzyskać więcej informacji na temat zapobiegania tworzeniu grup zabezpieczeń przez użytkowników niebędących administratorami `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` , ustaw zgodnie z opisem w [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
+Aby uzyskać więcej informacji na temat zapobiegania tworzeniu grup zabezpieczeń przez użytkowników niebędących administratorami, ustaw wartość @ no__t-0 zgodnie z opisem w temacie [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 
 Ustawienia grup pakietu Office 365 są konfigurowane przy użyciu obiektu Settings i obiektu SettingsTemplate. Początkowo nie widzisz żadnych obiektów Settings w katalogu, ponieważ katalog jest skonfigurowany z ustawieniami domyślnymi. Aby zmienić ustawienia domyślne, należy utworzyć nowy obiekt ustawień przy użyciu szablonu ustawień. Szablony ustawień są definiowane przez firmę Microsoft. Istnieje kilka różnych szablonów ustawień. Aby skonfigurować ustawienia grupy pakietu Office 365 dla katalogu, należy użyć szablonu o nazwie "Group. Unified". Aby skonfigurować ustawienia grupy pakietu Office 365 dla pojedynczej grupy, użyj szablonu o nazwie "Group. Unified. Guest". Ten szablon służy do zarządzania dostępem gościa do grupy programu Office 365. 
 
@@ -50,11 +50,12 @@ Pamiętaj, aby odinstalować starszą wersję modułu Azure Active Directory Pow
   
    ``` PowerShell
    Install-Module AzureADPreview
+   ```
+   
+## <a name="create-settings-at-the-directory-level"></a>Tworzenie ustawień na poziomie katalogu
+Te kroki umożliwiają utworzenie ustawień na poziomie katalogu, które mają zastosowanie do wszystkich grup pakietu Office 365 w katalogu. Polecenie cmdlet Get-AzureADDirectorySettingTemplate jest dostępne tylko w [module programu Azure AD PowerShell w wersji zapoznawczej dla programu Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
-## Create settings at the directory level
-These steps create settings at directory level, which apply to all Office 365 groups in the directory. The Get-AzureADDirectorySettingTemplate cmdlet is available only in the [Azure AD PowerShell Preview module for Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
-
-1. In the DirectorySettings cmdlets, you must specify the ID of the SettingsTemplate you want to use. If you do not know this ID, this cmdlet returns the list of all settings templates:
+1. W poleceniach cmdlet obiektów directorysettings należy określić identyfikator SettingsTemplate, który ma być używany. Jeśli nie znasz tego identyfikatora, to polecenie cmdlet zwróci listę wszystkich szablonów ustawień:
   
    ```powershell
    Get-AzureADDirectorySettingTemplate
@@ -112,21 +113,21 @@ Oto ustawienia zdefiniowane w grupie. ujednolicone SettingsTemplate. O ile nie w
 
 | **Ustawienie** | **Opis** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>Wpisz: Boolean<li>Wartooć Prawda |Flaga oznaczająca, czy dla użytkowników niebędących administratorami jest dozwolone tworzenie grup pakietu Office 365. To ustawienie nie wymaga licencji na Azure Active Directory — wersja Premium P1.|
-|  <ul><li>GroupCreationAllowedGroupId<li>Wpisz: String<li>Wartość domyślna: "" |Identyfikator GUID grupy zabezpieczeń, do której członkowie mogą tworzyć grupy pakietu Office 365, nawet gdy EnableGroupCreation = = false. |
-|  <ul><li>UsageGuidelinesUrl<li>Wpisz: String<li>Wartość domyślna: "" |Łącze do wytycznych dotyczących użycia grup. |
-|  <ul><li>ClassificationDescriptions<li>Wpisz: String<li>Wartość domyślna: "" | Rozdzielana przecinkami lista opisów klasyfikacji. Wartość ClassificationDescriptions jest prawidłowa tylko w tym formacie:<br>$setting ["ClassificationDescriptions"] = "Klasyfikacja: Opis, klasyfikacja: Opis"<br>gdzie Klasyfikacja dopasowuje ciągi w ClassificationList.|
-|  <ul><li>DefaultClassification<li>Wpisz: String<li>Wartość domyślna: "" | Klasyfikacja, która ma być używana jako Klasyfikacja domyślna dla grupy, jeśli żadna nie została określona.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Wpisz: String<li>Wartość domyślna: "" | Ciąg o maksymalnej długości 64 znaków, który definiuje konwencję nazewnictwa skonfigurowaną dla grup pakietu Office 365. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup pakietu Office 365](groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Wpisz: String<li>Wartość domyślna: "" | Ciąg wyrażeń rozdzielonych przecinkami, których użytkownicy nie będą mogli używać w nazwach grup lub aliasach. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup pakietu Office 365](groups-naming-policy.md). |
-| <ul><li>EnableMSStandardBlockedWords<li>Wpisz: Boolean<li>Wartooć False | Nie używaj
-|  <ul><li>AllowGuestsToBeGroupOwner<li>Wpisz: Boolean<li>Wartooć False | Wartość logiczna wskazująca, czy użytkownik-Gość może być właścicielem grup. |
-|  <ul><li>AllowGuestsToAccessGroups<li>Wpisz: Boolean<li>Wartooć Prawda | Wartość logiczna wskazująca, czy użytkownik-Gość może mieć dostęp do zawartości grup pakietu Office 365.  To ustawienie nie wymaga licencji na Azure Active Directory — wersja Premium P1.|
-|  <ul><li>GuestUsageGuidelinesUrl<li>Wpisz: String<li>Wartość domyślna: "" | Adres URL linku do wskazówek dotyczących użycia gościa. |
-|  <ul><li>AllowAddGuests<li>Wpisz: Boolean<li>Wartooć Prawda | Wartość logiczna wskazująca, czy można dodawać Gości do tego katalogu.|
-|  <ul><li>ClassificationList<li>Wpisz: String<li>Wartość domyślna: "" |Rozdzielana przecinkami lista prawidłowych wartości klasyfikacji, które mogą być stosowane do grup pakietu Office 365. |
+|  <ul><li>EnableGroupCreation<li>Typ: wartość logiczna<li>Wartość domyślna: prawda |Flaga oznaczająca, czy dla użytkowników niebędących administratorami jest dozwolone tworzenie grup pakietu Office 365. To ustawienie nie wymaga licencji na Azure Active Directory — wersja Premium P1.|
+|  <ul><li>GroupCreationAllowedGroupId<li>Typ: ciąg<li>Wartość domyślna: "" |Identyfikator GUID grupy zabezpieczeń, do której członkowie mogą tworzyć grupy pakietu Office 365, nawet gdy EnableGroupCreation = = false. |
+|  <ul><li>UsageGuidelinesUrl<li>Typ: ciąg<li>Wartość domyślna: "" |Łącze do wytycznych dotyczących użycia grup. |
+|  <ul><li>ClassificationDescriptions<li>Typ: ciąg<li>Wartość domyślna: "" | Rozdzielana przecinkami lista opisów klasyfikacji. Wartość ClassificationDescriptions jest prawidłowa tylko w tym formacie:<br>$setting ["ClassificationDescriptions"] = "Klasyfikacja: Opis, klasyfikacja: Opis"<br>gdzie Klasyfikacja dopasowuje ciągi w ClassificationList.|
+|  <ul><li>DefaultClassification<li>Typ: ciąg<li>Wartość domyślna: "" | Klasyfikacja, która ma być używana jako Klasyfikacja domyślna dla grupy, jeśli żadna nie została określona.|
+|  <ul><li>PrefixSuffixNamingRequirement<li>Typ: ciąg<li>Wartość domyślna: "" | Ciąg o maksymalnej długości 64 znaków, który definiuje konwencję nazewnictwa skonfigurowaną dla grup pakietu Office 365. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup pakietu Office 365](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Typ: ciąg<li>Wartość domyślna: "" | Ciąg wyrażeń rozdzielonych przecinkami, których użytkownicy nie będą mogli używać w nazwach grup lub aliasach. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup pakietu Office 365](groups-naming-policy.md). |
+| <ul><li>EnableMSStandardBlockedWords<li>Typ: wartość logiczna<li>Wartość domyślna: "false" | Nie używaj
+|  <ul><li>AllowGuestsToBeGroupOwner<li>Typ: wartość logiczna<li>Wartość domyślna: FAŁSZ | Wartość logiczna wskazująca, czy użytkownik-Gość może być właścicielem grup. |
+|  <ul><li>AllowGuestsToAccessGroups<li>Typ: wartość logiczna<li>Wartość domyślna: prawda | Wartość logiczna wskazująca, czy użytkownik-Gość może mieć dostęp do zawartości grup pakietu Office 365.  To ustawienie nie wymaga licencji na Azure Active Directory — wersja Premium P1.|
+|  <ul><li>GuestUsageGuidelinesUrl<li>Typ: ciąg<li>Wartość domyślna: "" | Adres URL linku do wskazówek dotyczących użycia gościa. |
+|  <ul><li>AllowAddGuests<li>Typ: wartość logiczna<li>Wartość domyślna: prawda | Wartość logiczna wskazująca, czy można dodawać Gości do tego katalogu.|
+|  <ul><li>ClassificationList<li>Typ: ciąg<li>Wartość domyślna: "" |Rozdzielana przecinkami lista prawidłowych wartości klasyfikacji, które mogą być stosowane do grup pakietu Office 365. |
 
-## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Przykład: Skonfiguruj zasady gościa dla grup na poziomie katalogu
+## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Przykład: Konfigurowanie zasad gościa dla grup na poziomie katalogu
 1. Pobierz wszystkie szablony ustawień:
    ```powershell
    Get-AzureADDirectorySettingTemplate
@@ -283,7 +284,7 @@ Ten krok powoduje usunięcie ustawień na poziomie katalogu, które mają zastos
 ## <a name="cmdlet-syntax-reference"></a>Dokumentacja składni poleceń cmdlet
 Więcej Azure Active Directory dokumentacji programu PowerShell można znaleźć w [Azure Active Directory poleceniach cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-## <a name="additional-reading"></a>Materiały uzupełniające
+## <a name="additional-reading"></a>Dodatkowy odczyt
 
 * [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

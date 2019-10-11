@@ -98,7 +98,7 @@
             - name: Uwierzytelnianie w usłudze Azure Container Instances
               href: container-registry-auth-aci.md
             - name: Uwierzytelnianie w usłudze Azure Kubernetes Service (AKS)
-              href: container-registry-auth-aks.md
+              href: ../aks/cluster-container-registry-integration.md
         - name: Role i uprawnienia
           href: container-registry-roles.md
         - name: Zaufanie do zawartości

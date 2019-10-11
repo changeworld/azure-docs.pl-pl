@@ -1,5 +1,5 @@
 ---
-title: Dostęp do usługi Azure Blob Storage z Azure Databricks przy użyciu samouczka Azure Key Vault
+title: Dostęp do usługi BLOB Storage przy użyciu magazynu kluczy — Azure Databricks
 description: W tym samouczku opisano, jak uzyskać dostęp do usługi Azure Blob Storage z Azure Databricks przy użyciu wpisów tajnych przechowywanych w magazynie kluczy.
 author: mamccrea
 ms.author: mamccrea
@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 45c5be8b203daf21697f3cb6dad4ecadb6449339
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 1e44a1f1be6dcadac937d641e00c99994af0c651
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976526"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274078"
 ---
-# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Samouczek: Dostęp do usługi Azure Blob Storage z Azure Databricks przy użyciu Azure Key Vault
+# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Samouczek: uzyskiwanie dostępu do usługi Azure Blob Storage z Azure Databricks przy użyciu Azure Key Vault
 
 W tym samouczku opisano, jak uzyskać dostęp do usługi Azure Blob Storage z Azure Databricks przy użyciu wpisów tajnych przechowywanych w magazynie kluczy.
 
@@ -32,15 +32,15 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 > [!Note]
 > Tego samouczka nie można przeprowadzić za pomocą **subskrypcji bezpłatnej wersji próbnej platformy Azure**.
-> Jeśli masz bezpłatne konto, przejdź do swojego profilu i Zmień subskrypcję na **płatność zgodnie z rzeczywistym**użyciem. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Następnie [Usuń limit wydatków](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)i poproś o [zwiększenie limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) dla procesorów wirtualnych vCPU w Twoim regionie. Podczas tworzenia obszaru roboczego Azure Databricks możesz wybrać warstwę cenową **wersji próbnej (Premium-14-Days Free dBu)** , aby umożliwić dostęp do obszaru roboczego bezpłatnie Azure Databricks DBU przez 14 dni.
+> Jeśli masz bezpłatne konto, przejdź do swojego profilu i Zmień subskrypcję na **płatność zgodnie z rzeczywistym**użyciem. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Następnie [Usuń limit wydatków](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)i [Poproś o zwiększenie limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) dla procesorów wirtualnych vCPU w Twoim regionie. Podczas tworzenia obszaru roboczego Azure Databricks możesz wybrać warstwę cenową **wersji próbnej (Premium-14-Days Free dBu)** , aby umożliwić dostęp do obszaru roboczego bezpłatnie Azure Databricks DBU przez 14 dni.
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Tworzenie konta magazynu i kontenera obiektów BLOB
 
-1. W Azure Portal wybierz pozycję **Utwórz** > **Magazyn**zasobów. Następnie wybierz pozycję **konto magazynu**.
+1. W Azure Portal wybierz pozycję **Utwórz zasób** > **Magazyn**. Następnie wybierz pozycję **konto magazynu**.
 
    ![Znajdź zasób konta usługi Azure Storage](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
 
@@ -74,12 +74,12 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 3. Na stronie **Tworzenie magazynu kluczy** wprowadź następujące informacje i Zachowaj wartości domyślne dla pozostałych pól:
 
-   |Właściwość|Description|
+   |Właściwość|Opis|
    |--------|-----------|
-   |Name (Nazwa)|Unikatowa nazwa magazynu kluczy.|
-   |Subscription|Wybierz subskrypcję.|
-   |Resource group|Wybierz grupę zasobów lub Utwórz nową.|
-   |Location|Wybierz lokalizację.|
+   |Nazwa|Unikatowa nazwa magazynu kluczy.|
+   |Subskrypcja|wybierz subskrypcję.|
+   |Grupa zasobów|Wybierz grupę zasobów lub Utwórz nową.|
+   |Lokalizacja|Wybierz lokalizację.|
 
    ![Właściwości magazynu kluczy Azure](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
 
@@ -91,11 +91,11 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 5. Na stronie **Tworzenie wpisu tajnego** podaj następujące informacje i Zachowaj wartości domyślne dla pozostałych pól:
 
-   |Właściwość|Value|
+   |Właściwość|Wartość|
    |--------|-----------|
-   |Opcje przekazywania|Ręczne|
-   |Name (Nazwa)|Przyjazna nazwa klucza konta magazynu.|
-   |Value|Klucz1 z konta magazynu.|
+   |Opcje przekazywania|Ręczna|
+   |Nazwa|Przyjazna nazwa klucza konta magazynu.|
+   |Wartość|Klucz1 z konta magazynu.|
 
    ![Właściwości nowego wpisu tajnego magazynu kluczy](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
@@ -114,9 +114,9 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
    |Właściwość  |Opis  |
    |---------|---------|
    |Nazwa obszaru roboczego     | Podaj nazwę obszaru roboczego usługi Databricks.        |
-   |Subscription     | Z listy rozwijanej wybierz subskrypcję platformy Azure.        |
-   |Resource group     | Wybierz tę samą grupę zasobów, która zawiera Twój Magazyn kluczy. |
-   |Location     | Wybierz tę samą lokalizację, w której znajduje się Azure Key Vault. W przypadku wszystkich dostępnych regionów zobacz [usługi platformy Azure dostępne według regionów](https://azure.microsoft.com/regions/services/).        |
+   |Subskrypcja     | Z listy rozwijanej wybierz subskrypcję platformy Azure.        |
+   |Grupa zasobów     | Wybierz tę samą grupę zasobów, która zawiera Twój Magazyn kluczy. |
+   |Lokalizacja     | Wybierz tę samą lokalizację, w której znajduje się Azure Key Vault. W przypadku wszystkich dostępnych regionów zobacz [usługi platformy Azure dostępne według regionów](https://azure.microsoft.com/regions/services/).        |
    |Warstwa cenowa     |  Wybierz warstwę **Standardowa** lub **Premium**. Aby uzyskać więcej informacji o tych warstwach, zobacz [stronę usługi Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
    ![Właściwości obszaru roboczego datakosteks](./media/store-secrets-azure-key-vault/create-databricks-service.png)
@@ -166,7 +166,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
    ```
 
    * **Nazwa instalacji** jest ścieżką DBFS reprezentującą lokalizację kontenera BLOB Storage lub folderu wewnątrz kontenera (określonego w źródle).
-   * **conf-Key** może być albo `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net``fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
+   * **conf-Key** może mieć wartość `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` lub `fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
    * **SCOPE-Name** to nazwa zakresu tajnego utworzonego w poprzedniej sekcji. 
    * **Key-Name** to nazwa klucza tajnego utworzonego dla klucza konta magazynu w magazynie kluczy.
 
@@ -211,4 +211,4 @@ Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń całą grupę zasobów
 
 Przejdź do następnego artykułu, aby dowiedzieć się, jak zaimplementować środowisko datakostki sieci wirtualnej z włączonym punktem końcowym usługi dla Cosmos DB.
 > [!div class="nextstepaction"]
-> [Samouczek: Implementowanie Azure Databricks za pomocą punktu końcowego Cosmos DB](service-endpoint-cosmosdb.md)
+> [Samouczek: implementowanie Azure Databricks przy użyciu punktu końcowego Cosmos DB](service-endpoint-cosmosdb.md)

@@ -8,20 +8,20 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 311a9fc887db399cb16d6cbb2bcec665a7ddfce7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240116"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274420"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Użyj Key Vault odwołań dla App Service i Azure Functions (wersja zapoznawcza)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Użyj Key Vault odwołań dla App Service i Azure Functions
 
 > [!NOTE] 
-> Obecnie odwołania Key Vault są dostępne w wersji zapoznawczej i nie są obecnie obsługiwane przez plany zużycia systemu Linux.
+> Odwołania Key Vault nie są obecnie dostępne w planach zużycia systemu Linux.
 
 W tym temacie przedstawiono sposób pracy z wpisami tajnymi Azure Key Vault w App Service lub Azure Functions aplikacji bez konieczności wprowadzania jakichkolwiek zmian w kodzie. [Azure Key Vault](../key-vault/key-vault-overview.md) to usługa zapewniająca scentralizowane zarządzanie kluczami tajnymi z pełną kontrolą nad zasadami dostępu i historią inspekcji.
 
@@ -52,7 +52,7 @@ Odwołanie Key Vault ma postać `@Microsoft.KeyVault({referenceString})`, gdzie 
 > | Magazynname =_magazynname_; Secretname =_secretname_; Wersjawpisutajnego =_wersjawpisutajnego_ | Nazwa **magazynu** powinna być nazwą zasobu Key Vault. **Wpis tajny** musi być nazwą docelowego wpisu tajnego. **Wersjawpisutajnego** powinna być wersją klucza tajnego do użycia. |
 
 > [!NOTE] 
-> W bieżącej wersji zapoznawczej wymagania są wymagane. W przypadku rotacji kluczy tajnych należy zaktualizować wersję w konfiguracji aplikacji.
+> Wersje są obecnie wymagane. W przypadku rotacji kluczy tajnych należy zaktualizować wersję w konfiguracji aplikacji.
 
 Na przykład kompletne odwołanie będzie wyglądać następująco:
 
@@ -192,7 +192,9 @@ Jeśli odwołanie nie zostanie prawidłowo rozwiązane, zamiast tego zostanie u�
 
 Najczęściej jest to spowodowane niepoprawną konfiguracją [zasad dostępu Key Vault](#granting-your-app-access-to-key-vault). Jednak może być również przyczyną, że wpis tajny nie jest już istniejący lub błąd składniowy w samej odwołaniu.
 
-Jeśli składnia jest poprawna, można wyświetlić inne przyczyny błędu, sprawdzając bieżący stan rozwiązania przy użyciu wbudowanego detektora.
+Jeśli składnia jest poprawna, można wyświetlić inne przyczyny błędu, sprawdzając bieżący stan rozwiązania w portalu. Przejdź do ustawień aplikacji i wybierz pozycję "Edytuj" dla odnośnego odwołania. Na stronie Konfiguracja ustawienia powinny być widoczne informacje o stanie, w tym wszelkie błędy. Brak tych informacji oznacza, że Składnia odwołania jest nieprawidłowa.
+
+Możesz również użyć jednego z wbudowanych detektorów, aby uzyskać dodatkowe informacje.
 
 ### <a name="using-the-detector-for-app-service"></a>Używanie narzędzia wykrywania dla App Service
 

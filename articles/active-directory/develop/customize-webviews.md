@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1b7417de8de6fb063de18fe670ef474a3b486d0
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 0dd5be3944bdff459f6d920b358ae08efedcc431
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269079"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264205"
 ---
-# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Instrukcje: Dostosuj przeglądarki i WebViews dla systemu iOS/macOS
+# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Instrukcje: Dostosowywanie przeglądarek i WebViews dla systemu iOS/macOS
 
-Do uwierzytelniania interakcyjnego jest wymagana przeglądarka sieci Web. W systemie iOS Biblioteka Microsoft Authentication Library (MSAL) domyślnie używa domyślnej przeglądarki sieci Web (która może pojawić się na swojej aplikacji) w celu uwierzytelniania interakcyjnego w celu logowania użytkowników. Korzystanie z przeglądarki systemowej ma znaczną zaletę udostępniania stanu logowania jednokrotnego (SSO) innym aplikacjom i aplikacjom sieci Web.
+Do uwierzytelniania interakcyjnego jest wymagana przeglądarka sieci Web. W systemie iOS Biblioteka Microsoft Authentication Library (MSAL) domyślnie używa domyślnej przeglądarki sieci Web (która może pojawić się na swojej aplikacji) w celu uwierzytelniania interakcyjnego w celu logowania użytkowników. Korzystanie z przeglądarki systemu umożliwia udostępnianie stanu logowania jednokrotnego (SSO) innym aplikacjom i aplikacjom sieci Web.
 
 Możesz zmienić środowisko, dostosowując konfigurację do innych opcji wyświetlania zawartości sieci Web, takich jak:
 
@@ -40,24 +40,24 @@ Dla systemów iOS i macOS:
 
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-MSAL dla macOS obsługuje `WKWebView`tylko.
+MSAL dla macOS obsługuje tylko `WKWebView`.
 
 ## <a name="system-browsers"></a>Przeglądarki systemu
 
-W przypadku systemu `ASWebAuthenticationSession`iOS `SFAuthenticationSession`,, `SFSafariViewController` i są uważane za przeglądarki systemowe. Ogólnie rzecz biorąc, przeglądarki systemu udostępniają pliki cookie i inne dane witryny sieci Web za pomocą aplikacji Przeglądarka Safari.
+Dla systemów iOS, `ASWebAuthenticationSession`, `SFAuthenticationSession` i `SFSafariViewController` są uważane za przeglądarki systemowe. Ogólnie rzecz biorąc, przeglądarki systemu udostępniają pliki cookie i inne dane witryny sieci Web za pomocą aplikacji Przeglądarka Safari.
 
-Domyślnie program MSAL dynamicznie wykrywa wersję systemu iOS i wybiera zalecaną przeglądarkę systemową dostępną w tej wersji. W systemie iOS 12 jest to możliwe `ASWebAuthenticationSession`. 
+Domyślnie program MSAL dynamicznie wykrywa wersję systemu iOS i wybiera zalecaną przeglądarkę systemową dostępną w tej wersji. W systemie iOS 12 będzie `ASWebAuthenticationSession`. 
 
-| Version | Przeglądarka sieci Web |
+| Wersja | Przeglądarka sieci Web |
 |:-------------:|:-------------:|
 | System iOS 12 + | ASWebAuthenticationSession |
 | System iOS 11 | SFAuthenticationSession |
-| iOS 10 | SFSafariViewController |
+| System iOS 10 | SFSafariViewController |
 
 Deweloperzy mogą również wybrać inną przeglądarkę systemową dla aplikacji MSAL:
 
-- `SFAuthenticationSession`jest wersją `ASWebAuthenticationSession`systemu iOS 11.
-- `SFSafariViewController`jest bardziej ogólnego przeznaczenia i udostępnia interfejs do przeglądania sieci Web i może służyć również do celów logowania. W systemach iOS 9 i 10 pliki cookie i inne dane witryny sieci Web są udostępniane za pomocą przeglądarki Safari — ale nie w systemie iOS 11 i nowszych.
+- `SFAuthenticationSession` to wersja systemu iOS 11 `ASWebAuthenticationSession`.
+- `SFSafariViewController` to bardziej ogólny cel i udostępnia interfejs do przeglądania sieci Web i może być używany również do celów logowania. W systemach iOS 9 i 10 pliki cookie i inne dane witryny sieci Web są udostępniane za pomocą przeglądarki Safari — ale nie w systemie iOS 11 i nowszych.
 
 ## <a name="in-app-browser"></a>Przeglądarka w aplikacji
 
@@ -67,7 +67,7 @@ Deweloperzy mogą również wybrać inną przeglądarkę systemową dla aplikacj
 
 Przeglądarka, z której korzystasz, ma wpływ na środowisko logowania jednokrotnego ze względu na sposób udostępniania plików cookie. W poniższej tabeli zestawiono obsługę logowania jednokrotnego dla każdej przeglądarki.
 
-| Technologia    | Typ przeglądarki  | dostępność systemu iOS | dostępność macOS | Udostępnia pliki cookie i inne dane  | Dostępność MSAL | SSO |
+| Technologia    | Typ przeglądarki  | dostępność systemu iOS | dostępność macOS | Udostępnia pliki cookie i inne dane  | Dostępność MSAL | ZWRÓCIŁ |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
 | [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | System | iOS12 i w górę | macOS 10,15 i up | Tak | tylko system iOS | wystąpienia z/Safari
 | [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | System | iOS11 i w górę | ND | Tak | tylko system iOS |  wystąpienia z/Safari
@@ -79,7 +79,7 @@ Przeglądarka, z której korzystasz, ma wpływ na środowisko logowania jednokro
 
 ## <a name="change-the-default-browser-for-the-request"></a>Zmień domyślną przeglądarkę dla żądania
 
-Możesz użyć przeglądarki w aplikacji lub konkretnej przeglądarki systemu w zależności od wymagań środowiska użytkownika, zmieniając następującą właściwość w programie `MSALWebviewParameters`:
+Możesz użyć przeglądarki w aplikacji lub konkretnej przeglądarki systemu w zależności od wymagań środowiska użytkownika, zmieniając następującą właściwość w `MSALWebviewParameters`:
 
 ```objc
 @property (nonatomic) MSALWebviewType webviewType;
@@ -87,13 +87,13 @@ Możesz użyć przeglądarki w aplikacji lub konkretnej przeglądarki systemu w 
 
 ## <a name="change-per-interactive-request"></a>Zmień na żądanie interaktywne
 
-Każde żądanie można skonfigurować w celu przesłaniania domyślnej przeglądarki, zmieniając `MSALInteractiveTokenParameters.webviewParameters.webviewType` właściwość przed przekazaniem jej `acquireTokenWithParameters:completionBlock:` do interfejsu API.
+Każde żądanie można skonfigurować w celu przesłaniania domyślnej przeglądarki, zmieniając właściwość `MSALInteractiveTokenParameters.webviewParameters.webviewType` przed przekazaniem jej do interfejsu API `acquireTokenWithParameters:completionBlock:`.
 
-Ponadto MSAL obsługuje przekazywanie w niestandardowym `WKWebView` przez `MSALInteractiveTokenParameters.webviewParameters.customWebView` ustawienie właściwości.
+Ponadto MSAL obsługuje przekazywanie w niestandardowym `WKWebView` przez ustawienie właściwości `MSALInteractiveTokenParameters.webviewParameters.customWebView`.
 
 Na przykład:
 
-Objective-C
+Obiektowy C
 ```objc
 UIViewController *myParentController = ...;
 WKWebView *myCustomWebView = ...;

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: d2099de9ad909b23b79a92a831d7730b1cf126e3
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b11f88cbb29016032cbf536a2c970573eda82152
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311635"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72262865"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Uwierzytelnianie za pomocą Azure Container Registry z Azure Container Instances
 
@@ -23,9 +23,9 @@ Ten artykuł zawiera informacje na temat tworzenia i konfigurowania jednostki us
 
 ## <a name="when-to-use-a-service-principal"></a>Kiedy używać nazwy głównej usługi
 
-Należy używać nazwy głównej usługi do uwierzytelniania z ACI w **scenariuszach**bezobsługowych, takich jak aplikacje lub usługi, które tworzą wystąpienia kontenerów w sposób zautomatyzowany lub w inny sposób nienadzorowany.
+Należy używać nazwy głównej usługi do uwierzytelniania z ACI w **scenariuszach bezobsługowych**, takich jak aplikacje lub usługi, które tworzą wystąpienia kontenerów w sposób zautomatyzowany lub w inny sposób nienadzorowany.
 
-Na przykład jeśli masz zautomatyzowany skrypt, który działa nocnie i tworzy [wystąpienie kontenera opartego](../container-instances/container-instances-restart-policy.md) na zadaniach, aby przetworzyć niektóre dane, można użyć jednostki usługi z uprawnieniami tylko do ściągania w celu uwierzytelnienia w rejestrze. Następnie można obrócić poświadczenia jednostki usługi lub całkowicie odwołać swój dostęp bez wpływu na inne usługi i aplikacje.
+Na przykład jeśli masz zautomatyzowany skrypt, który działa nocnie i tworzy [wystąpienie kontenera opartego na zadaniach](../container-instances/container-instances-restart-policy.md) , aby przetworzyć niektóre dane, można użyć jednostki usługi z uprawnieniami tylko do ściągania w celu uwierzytelnienia w rejestrze. Następnie można obrócić poświadczenia jednostki usługi lub całkowicie odwołać swój dostęp bez wpływu na inne usługi i aplikacje.
 
 Nazwy główne usług należy również stosować, gdy [użytkownik administrator](container-registry-authentication.md#admin-account) rejestru jest wyłączony.
 
@@ -33,7 +33,7 @@ Nazwy główne usług należy również stosować, gdy [użytkownik administrato
 
 ## <a name="authenticate-using-the-service-principal"></a>Uwierzytelnianie przy użyciu nazwy głównej usługi
 
-Aby uruchomić kontener w Azure Container Instances przy użyciu nazwy głównej usługi, określ jej identyfikator `--registry-username`i hasło dla. `--registry-password`
+Aby uruchomić kontener w Azure Container Instances przy użyciu nazwy głównej usługi, określ jej identyfikator dla `--registry-username` i jego hasło dla `--registry-password`.
 
 ```azurecli-interactive
 az container create \
@@ -57,7 +57,7 @@ Powyższe przykładowe skrypty dla interfejsu wiersza polecenia platformy Azure 
 Poniższe artykuły zawierają dodatkowe informacje na temat pracy z jednostkami usługi i ACR:
 
 * [Uwierzytelnianie Azure Container Registry przy użyciu jednostek usługi](container-registry-auth-service-principal.md)
-* [Uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
+* [Uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

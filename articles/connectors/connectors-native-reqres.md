@@ -9,15 +9,15 @@ ms.author: estfan
 ms.reviewers: klam, LADocs
 manager: carmonm
 ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
-ms.topic: article
-ms.date: 09/06/2019
+ms.topic: conceptual
+ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 6062ca1ce09eb243825b1fb9ae4ecb3d5ac95d1a
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122711"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264353"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Odbieraj przychodzące wywołania HTTPS i odpowiadaj na nie przy użyciu Azure Logic Apps
 
@@ -27,7 +27,8 @@ Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowaneg
 * Wyzwalanie przepływu pracy po wystąpieniu zewnętrznego zdarzenia elementu webhook.
 * Odbieraj i odpowiadaj na wywołanie HTTPS z innej aplikacji logiki.
 
-Wyzwalacz żądania obsługuje *tylko* protokół https. Aby zamiast tego wychodzące wywołania HTTP lub HTTPS, użyj wbudowanego [wyzwalacza http lub akcji](../connectors/connectors-native-http.md).
+> [!NOTE]
+> Wyzwalacz żądania obsługuje *tylko* Transport Layer Security (TLS) 1,2 dla wywołań przychodzących. Wywołania wychodzące nadal obsługują protokoły TLS 1,0, 1,1 i 1,2. Jeśli widzisz błędy uzgadniania protokołu SSL, upewnij się, że korzystasz z protokołu TLS 1,2.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -41,7 +42,7 @@ Wyzwalacz żądania obsługuje *tylko* protokół https. Aby zamiast tego wychod
 
 Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcowy HTTPS, który może odbierać *tylko* przychodzące żądania HTTPS. Po wystąpieniu tego zdarzenia wyzwalacz uruchamia i uruchamia aplikację logiki. Aby uzyskać więcej informacji na temat podstawowej definicji JSON wyzwalacza i sposobu wywoływania tego wyzwalacza, zobacz [Typ wyzwalacza żądania](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) oraz [przepływy pracy wywołania, wyzwalacza lub zagnieżdżania z punktami końcowymi http w Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Tworzenia pustej aplikacji logiki.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Tworzenia pustej aplikacji logiki.
 
 1. Gdy zostanie otwarty projektant aplikacji logiki, w polu wyszukiwania wprowadź ciąg "żądanie HTTP" jako filtr. Z listy Wyzwalacze wybierz wyzwalacz **po odebraniu żądania HTTP** , który jest pierwszym krokiem w przepływie pracy aplikacji logiki.
 
@@ -107,7 +108,7 @@ Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcow
    }
    ```
 
-   Po wprowadzeniu schematu JSON Projektant wyświetla przypomnienie, aby dołączyć `Content-Type` nagłówek do żądania i ustawić `application/json`wartość tego nagłówka. Aby uzyskać więcej informacji, zobacz temat [Obsługa typów zawartości](../logic-apps/logic-apps-content-type.md).
+   Po wprowadzeniu schematu JSON Projektant wyświetla przypomnienie, aby uwzględnić nagłówek `Content-Type` w żądaniu i ustawić wartość tego nagłówka na `application/json`. Aby uzyskać więcej informacji, zobacz temat [Obsługa typów zawartości](../logic-apps/logic-apps-content-type.md).
 
    ![Przypomnienie o uwzględnieniu nagłówka "Content-Type"](./media/connectors-native-reqres/include-content-type.png)
 
@@ -152,7 +153,7 @@ Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcow
 
    | Nazwa właściwości | Nazwa właściwości JSON | Wymagane | Opis |
    |---------------|--------------------|----------|-------------|
-   | **— Metoda** | `method` | Nie | Metoda, która musi być używana przez żądanie przychodzące do wywoływania aplikacji logiki |
+   | **Metoda** | `method` | Nie | Metoda, która musi być używana przez żądanie przychodzące do wywoływania aplikacji logiki |
    | **Ścieżka względna** | `relativePath` | Nie | Ścieżka względna parametru, który może zostać zaakceptowany przez adres URL punktu końcowego aplikacji logiki |
    |||||
 
@@ -168,7 +169,7 @@ Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcow
 
    Na przykład można odpowiedzieć na żądanie, [dodając akcję odpowiedzi](#add-response), której można użyć do zwrócenia dostosowanej odpowiedzi i opisanej w dalszej części tego tematu.
 
-   Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną minutę. Przy założeniu, że przepływ pracy aplikacji logiki zawiera akcję odpowiedzi, jeśli aplikacja logiki nie zwróci odpowiedzi po upływie tego czasu, aplikacja logiki zwróci `504 GATEWAY TIMEOUT` obiekt wywołujący. W przeciwnym razie, jeśli aplikacja logiki nie zawiera akcji odpowiedzi, aplikacja logiki natychmiast zwróci `202 ACCEPTED` odpowiedź do obiektu wywołującego.
+   Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną minutę. Przy założeniu, że przepływ pracy aplikacji logiki zawiera akcję odpowiedzi, jeśli aplikacja logiki nie zwróci odpowiedzi po upływie tego czasu, aplikacja logiki zwróci `504 GATEWAY TIMEOUT` do obiektu wywołującego. W przeciwnym razie, jeśli aplikacja logiki nie zawiera akcji odpowiedzi, aplikacja logiki natychmiast zwróci odpowiedź `202 ACCEPTED` do obiektu wywołującego.
 
 1. Gdy skończysz, Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**. 
 
@@ -184,8 +185,8 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 
 | Nazwa właściwości JSON | Typ danych | Opis |
 |--------------------|-----------|-------------|
-| `headers` | Object | Obiekt JSON, który opisuje nagłówki z żądania |
-| `body` | Object | Obiekt JSON, który opisuje zawartość treści z żądania |
+| `headers` | Obiekt | Obiekt JSON, który opisuje nagłówki z żądania |
+| `body` | Obiekt | Obiekt JSON, który opisuje zawartość treści z żądania |
 ||||
 
 <a name="add-response"></a>
@@ -194,7 +195,7 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 
 Możesz użyć akcji odpowiedzi, aby odpowiedzieć na ładunek (dane) do przychodzącego żądania HTTPS, ale tylko w aplikacji logiki, która jest wyzwalana przez żądanie HTTPS. Akcję odpowiedzi można dodać w dowolnym momencie w przepływie pracy. Aby uzyskać więcej informacji na temat podstawowej definicji JSON dla tego wyzwalacza, zobacz [Typ akcji odpowiedź](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
-Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną minutę. Przy założeniu, że przepływ pracy aplikacji logiki zawiera akcję odpowiedzi, jeśli aplikacja logiki nie zwróci odpowiedzi po upływie tego czasu, aplikacja logiki zwróci `504 GATEWAY TIMEOUT` obiekt wywołujący. W przeciwnym razie, jeśli aplikacja logiki nie zawiera akcji odpowiedzi, aplikacja logiki natychmiast zwróci `202 ACCEPTED` odpowiedź do obiektu wywołującego.
+Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną minutę. Przy założeniu, że przepływ pracy aplikacji logiki zawiera akcję odpowiedzi, jeśli aplikacja logiki nie zwróci odpowiedzi po upływie tego czasu, aplikacja logiki zwróci `504 GATEWAY TIMEOUT` do obiektu wywołującego. W przeciwnym razie, jeśli aplikacja logiki nie zawiera akcji odpowiedzi, aplikacja logiki natychmiast zwróci odpowiedź `202 ACCEPTED` do obiektu wywołującego.
 
 1. W Projektancie aplikacji logiki w kroku, w którym chcesz dodać akcję odpowiedzi, wybierz pozycję **nowy krok**.
 
@@ -214,7 +215,7 @@ Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną mi
 
    W niektórych polach kliknięcie wewnątrz nich spowoduje otwarcie listy zawartości dynamicznej. Następnie można wybrać tokeny reprezentujące dostępne dane wyjściowe z poprzednich kroków w przepływie pracy. Właściwości ze schematu określonego w poprzednim przykładzie pojawiają się teraz na liście zawartości dynamicznej.
 
-   Na przykład dla pola **nagłówki** Dołącz `Content-Type` jako nazwę klucza i ustaw wartość klucza na `application/json` jak wspomniano wcześniej w tym temacie. Dla pola **treść** możesz wybrać pozycję wyzwalanie danych wyjściowych z listy zawartości dynamicznej.
+   Na przykład dla pola **nagłówki** uwzględnij `Content-Type` jako nazwę klucza i ustaw wartość klucza na `application/json` jak wspomniano wcześniej w tym temacie. Dla pola **treść** możesz wybrać pozycję wyzwalanie danych wyjściowych z listy zawartości dynamicznej.
 
    ![Szczegóły akcji odpowiedzi](./media/connectors-native-reqres/response-details.png)
 
@@ -228,7 +229,7 @@ Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną mi
    |---------------|--------------------|----------|-------------|
    | **Kod stanu** | `statusCode` | Tak | Kod stanu do zwrócenia w odpowiedzi |
    | **Nagłówki** | `headers` | Nie | Obiekt JSON, który opisuje jeden lub więcej nagłówków do uwzględnienia w odpowiedzi |
-   | **Body** | `body` | Nie | Treść odpowiedzi |
+   | **Treść** | `body` | Nie | Treść odpowiedzi |
    |||||
 
 1. Aby określić dodatkowe właściwości, takie jak schemat JSON dla treści odpowiedzi, Otwórz listę **Dodaj nowy parametr** i wybierz parametry, które chcesz dodać.
