@@ -1,17 +1,17 @@
 ---
-title: Przykłady — strategia SWIFT CSP-CSCF v2020 — omówienie
-description: Omówienie przykładowej strategii SWIFT CSP-CSCF v2020.
+title: Przykład — strategia SWIFT CSP-CSCF v2020 — omówienie
+description: Omówienie przykładowej strategii SWIFT CSP-CSCF v2020. Ten przykład strategii pomaga klientom ocenić określone mechanizmy kontroli SWIFT CSP-CSCF.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 5fa0e9e70ea08928fab3bf67a696a1e493d47999
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 73d89240f31f73ec980b19c75ff31e8702b8c112
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980895"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248808"
 ---
 # <a name="overview-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Omówienie przykładowej strategii SWIFT CSP-CSCF v2020
 

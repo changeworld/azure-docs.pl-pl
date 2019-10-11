@@ -25,7 +25,7 @@
       items:
         - name: Tworzenie klastra Kubernetes za pomocą usługi AKS
           href: terraform-create-k8s-cluster-with-tf-and-aks.md
-        - name: Tworzenie klastra Kubernetes z usługą Application Gateway jako kontrolerem ruchu przychodzącego za pomocą usługi AKS
+        - name: Tworzenie kontrolera ruchu przychodzącego usługi Application Gateway w usłudze AKS
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Infrastruktura
       items:

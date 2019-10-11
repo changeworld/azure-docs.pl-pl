@@ -1,0 +1,97 @@
+### YamlMime:Landing
+title: Azure SQL Data Warehouse
+summary: Dowiedz się, jak używać usługi Azure SQL Data Warehouse, która łączy relacyjne bazy danych SQL z masowym przetwarzaniem równoległym (MPP). Samouczki i inna dokumentacja przedstawiają sposób projektowania, ładowania i analizowania danych oraz zarządzania nimi przy użyciu magazynu danych.
+metadata:
+  title: Azure SQL Data Warehouse
+  description: description
+  services: sql-data-warehouse
+  ms.service: sql-data-warehouse
+  ms.subservice: design
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 10/03/2019
+  ms.openlocfilehash: ffb90d5d15b83570511c3f70b39f9f83f000ab35
+  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 10/10/2019
+  ms.locfileid: "72245851"
+landingContent:
+- title: Informacje o usłudze Azure SQL Data Warehouse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest SQL Data Warehouse?
+      url: sql-data-warehouse-overview-what-is.md
+  - linkListType: architecture
+    links:
+    - text: SQL Data Warehouse — architektura MPP
+      url: massively-parallel-processing-mpp-architecture.md
+    - text: Wskazówki i najlepsze rozwiązania dotyczące magazynu danych
+      url: cheat-sheet.md
+- title: Wprowadzenie
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Tworzenie bazy danych w usłudze SQL Data Warehouse
+      url: create-data-warehouse-portal.md
+- title: Ładowanie danych
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Projektowanie strategii ładowania danych PolyBase
+      url: design-elt-data-loading.md
+    - text: Najlepsze rozwiązania dotyczące ładowania danych
+      url: guidance-for-loading-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ładowanie danych z usługi Azure Data Lake Storage
+      url: sql-data-warehouse-load-from-azure-data-lake-store.md
+  - linkListType: tutorial
+    links:
+    - text: Ładowanie danych usługi Azure Blob Storage
+      url: load-data-from-azure-blob-storage-using-polybase.md
+- title: Dostosowywanie wydajności
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Najlepsze rozwiązania dotyczące usługi SQL Data Warehouse
+      url: sql-data-warehouse-best-practices.md
+    - text: Dostosowywanie uporządkowanego klastrowanego indeksu magazynu kolumn
+      url: performance-tuning-ordered-cci.md
+    - text: Używanie zmaterializowanego widoku na potrzeby dostosowywania obciążenia
+      url: performance-tuning-materialized-views.md
+  - linkListType: how-to-guide
+    links:
+    - text: Analizowanie obciążenia
+      url: analyze-your-workload.md
+- title: Monitorowanie usługi SQL Data Warehouse i zarządzanie nią
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Dowiedz się, jak monitorować usługę SQL Data Warehouse i zarządzać nią
+      url: sql-data-warehouse-overview-manageability-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: Monitor your workload using DMVs
+      url: sql-data-warehouse-manage-monitor.md
+    - text: Monitorowanie znaczenia obciążenia i zarządzanie nim
+      url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+- title: Zabezpieczanie usługi SQL Data Warehouse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Zapoznaj się z podstawowymi informacjami na temat zabezpieczania usługi SQL Data Warehouse
+      url: sql-data-warehouse-overview-manage-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie uwierzytelniania usługi Azure Active Directory
+      url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+- title: Zasoby
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Obejrzyj najnowsze klipy wideo dotyczące usługi Azure SQL Data Warehouse
+      url: sql-data-warehouse-videos.md
