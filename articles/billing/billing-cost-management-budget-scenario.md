@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 8ff402299b26637473f3fb762a3320255ea4df64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bc35ba74acb2ce807597230fee0685606a93a775
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719909"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958359"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Zarządzanie kosztami przy użyciu budżetów platformy Azure
 
@@ -272,7 +272,7 @@ Grupy akcji to jedyny punkt końcowy, który zostanie zintegrowany z budżetem. 
 Podczas tworzenia grupy akcji wskażesz aplikację logiki utworzoną wcześniej w tym samouczku.
 
 1.  Jeśli jeszcze nie zalogowano się do witryny [Azure Portal](https://portal.azure.com/), zaloguj się i wybierz pozycję **wszystkie usługi** > **Monitor**.
-2.  Wybierz pozycję **Grupy akcji** z sekcji **Ustawienie**.
+2.  Wybierz pozycję **Alerty**, a następnie wybierz pozycję **Zarządzaj akcjami**.
 3.  Wybierz pozycję **Dodaj grupę akcji** w bloku **Grupy akcji**.
 4.  Dodaj i zweryfikuj następujące elementy:
     - Nazwa grupy akcji

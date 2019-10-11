@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b8faf3801a2217e6ef7040a7c2b67c7e6fad8e60
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ea3fc21891f1e4d4e744449032a4b2cfcdfbb2f0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709604"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177533"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Śledzenie salda środków na korzystanie z platformy Azure dla umowy klienta firmy Microsoft
 
 Saldo środków na korzystanie z platformy Azure dla umowy klienta firmy Microsoft można sprawdzić w witrynie Azure Portal. Należności za używanie niektórych produktów są regulowane za pomocą środków.
 
-Opłaty są naliczane w przypadku korzystania z produktów, do których nie stosuje się środków, lub jeśli użycie tych produktów przekroczy saldo środków. Aby uzyskać więcej informacji, zobacz Produkty nieobjęte środkami na korzystanie z platformy Azure.(#products-that-arent-covered-by-azure-credits).
+Opłaty są naliczane w przypadku korzystania z produktów, do których nie stosuje się środków, lub jeśli użycie tych produktów przekroczy saldo środków. Aby uzyskać więcej informacji, zobacz [Produkty nieobjęte środkami na korzystanie z platformy Azure](#products-that-arent-covered-by-azure-credits).
 
 Ten artykuł dotyczy konta rozliczeniowego związanego z umową klienta firmy Microsoft. [Sprawdź, czy masz dostęp do umowy klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 

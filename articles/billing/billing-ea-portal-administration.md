@@ -4,16 +4,16 @@ description: W tym artykule opisano typowe zadania wykonywane przez administrato
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/25/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308106"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035207"
 ---
 # <a name="azure-ea-portal-administration"></a>Administracja przy użyciu witryny Azure EA Portal
 
@@ -87,10 +87,11 @@ Inne zagadnienia, które należy wziąć pod uwagę przed przeniesieniem konta:
 - Zatwierdzenie od administratora umowy EA jest wymagane w przypadku rejestracji docelowej i źródłowej
   - W niektórych przypadkach firma Microsoft może zażądać dodatkowego zatwierdzenia od administratora umowy EA z rejestracji źródłowej
 - Jeśli przeniesienie konta nie spełnia Twoich wymagań, rozważ przeniesienie rejestracji.
-- Przeniesienie konta powoduje przeniesienie wszystkich usług, subskrypcji, kont, działów i całej struktury rejestracji, w tym wszystkich administratorów działu umów EA.
-- Po przeniesieniu konta stan rejestracji źródłowej jest ustawiany na _Przeniesione_. Przeniesione konto jest dostępne wyłącznie dla celów raportowania użycia historycznego.
-- Do rejestracji ze stanem Przeniesiona nie można dodawać ról ani subskrypcji. Stan uniemożliwia dodatkowe użycie w odniesieniu do rejestracji.
-- Pozostałe saldo zobowiązania pieniężnego w umowie źródłowej zostanie utracone, łącznie z przyszłymi okresami.
+- Przenoszenie kont powoduje przeniesienie wszystkich usług i subskrypcji powiązanych z określonymi kontami.
+- Po zakończeniu przenoszenia przeniesione konto będzie widoczne jako nieaktywne w ramach rejestracji źródłowej.
+- Przeniesienie konta może być antydatowane do dowolnej daty od dnia rozpoczęcia rejestracji docelowej.
+- Data zakończenia widoczna na koncie będzie odpowiadać efektywnej dacie przeniesienia w rejestracji źródłowej oraz dacie rozpoczęcia w rejestracji docelowej.
+- Wszelkie użycie konta przed efektywną datą przeniesienia pozostanie w ramach rejestracji źródłowej.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Przenoszenie rejestracji przedsiębiorstwa do nowej rejestracji
