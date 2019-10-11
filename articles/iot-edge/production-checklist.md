@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 36465f016eeb066c0e12f6434deb98fd7b10966a
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958752"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244040"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania IoT Edge w środowisku produkcyjnym
 
@@ -177,9 +177,11 @@ Ta lista kontrolna jest punktem początkowym dla reguł zapory:
    | mcr.microsoft.com  | 443 | Rejestr kontenerów firmy Microsoft |
    | global.azure-devices-provisioning.net  | 443 | Dostęp do punktu dystrybucji (opcjonalnie) |
    | @no__t — 0.azurecr.io | 443 | Rejestry kontenerów osobistych i innych firm |
-   | \*.blob.core.windows.net | 443 | Pobieranie różnic obrazów | 
+   | \*.blob.core.windows.net | 443 | Pobieranie Azure Container Registry różnic obrazu z magazynu obiektów BLOB  | 
    | @no__t — 0.azure-devices.net | 5671, 8883, 443 | Dostęp IoT Hub |
    | @no__t — 0.docker.io  | 443 | Dostęp do centrum platformy Docker (opcjonalnie) |
+
+Niektóre z tych reguł zapory są dziedziczone z Azure Container Registry. Aby uzyskać więcej informacji, zobacz [Konfigurowanie reguł dostępu do usługi Azure Container Registry za zaporą](../container-registry/container-registry-firewall-access-rules.md).
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurowanie komunikacji za pomocą serwera proxy
 

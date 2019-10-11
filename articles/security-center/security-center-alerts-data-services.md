@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: 763349c11a7777bfc807a60e1806c3bb4010245e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7e45dffd15cdf2acf15c7d46ed0cf42fc5997a6a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202582"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244571"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Wykrywanie zagrożeń dla usług danych w Azure Security Center
 
@@ -23,13 +23,13 @@ ms.locfileid: "71202582"
 
 * [Azure SQL Database i Azure SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
-* [Usługi Azure Cosmos DB](#cosmos-db)
+* [Azure Cosmos DB](#cosmos-db)
 
 ## SQL Database i SQL Data Warehouse<a name="data-sql"></a>
 
-Wykrywanie zagrożeń SQL identyfikuje anomalie działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. Security Center analizuje dzienniki inspekcji SQL i działa natywnie w aparacie SQL.
+Wykrywanie zagrożeń SQL identyfikuje anomalie działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. 
 
-|Alerty|Opis|
+|Alert|Opis|
 |---|---|
 |**Luka w zabezpieczeniach dla iniekcji SQL**|Aplikacja wygenerowała błędną instrukcję SQL w bazie danych. Może to wskazywać na ewentualną lukę w zabezpieczeniach ataków iniekcji SQL. Istnieją dwie możliwe przyczyny błędnej instrukcji. Usterka w kodzie aplikacji mogła skonstruować błędną instrukcję języka SQL. Lub kod aplikacji lub procedury składowane nie oczyszczają danych wejściowych użytkownika podczas konstruowania nieprawidłowej instrukcji SQL, która może zostać wykorzystana do iniekcji SQL.|
 |**Potencjalna iniekcja SQL**|Nastąpiło aktywne wykorzystanie oprogramowania w odniesieniu do zidentyfikowanych aplikacji narażonych na wstrzyknięcie kodu SQL. Oznacza to, że osoba atakująca próbuje wstrzyknąć złośliwe instrukcje SQL, korzystając z kodu aplikacji lub procedur składowanych.|
@@ -51,7 +51,7 @@ Security Center analizuje dzienniki diagnostyczne żądań odczytu, zapisu i usu
 
 > [!div class="mx-tableFixed"]
 
-|Alerty|Opis|
+|Alert|Opis|
 |---|---|
 |**Anomalia nietypowego dostępu do lokalizacji**|Przykładowa analiza ruchu w sieci wykryła nietypową komunikację wychodzącą Remote Desktop Protocol (RDP) pochodzącą z zasobu we wdrożeniu. To działanie jest uznawane za nietypowe w przypadku tego środowiska. Może wskazywać na to, że zabezpieczenia zostały naruszone, i jest teraz używane do odprowadzenia ataku zewnętrznego punktu końcowego RDP. Należy zauważyć, że ten typ działania może spowodować, że adres IP zostanie oflagowany jako złośliwy przez jednostki zewnętrzne.|
 |**Anomalia dostępu do aplikacji**|Wskazuje, że nietypowa aplikacja uzyskuje dostęp do tego konta magazynu. Potencjalną przyczyną jest to, że osoba atakująca uzyskuje dostęp do konta magazynu przy użyciu nowej aplikacji.|
@@ -73,7 +73,7 @@ Aby uzyskać więcej informacji na temat alertów dotyczących magazynu, zobacz 
 
 Następujące alerty są generowane przez nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do kont Azure Cosmos DB lub ich wykorzystania:
 
-|Alerty|Opis|
+|Alert|Opis|
 |---|---|
 |**Dostęp z nietypowej lokalizacji**|Wskazuje, że w wzorcu dostępu wprowadzono zmianę dla konta Azure Cosmos DB. Ktoś uzyskał dostęp do tego konta z nieznanego adresu IP w porównaniu z ostatnio używanymi działaniami. Osoba atakująca uzyskała dostęp do konta lub uzyskała dostęp do niego z nowej i nietypowej lokalizacji geograficznej. Przykładem tej ostatniej usługi jest zdalna konserwacja z nowej aplikacji lub dewelopera.|
 |**Nietypowe eksfiltracji danych**|Wskazuje, że wystąpił zmiana wzorca wyodrębniania danych z konta Azure Cosmos DB. Ktoś wyodrębnił nietypową ilość danych w porównaniu do ostatnich działań. Osoba atakująca mogła wyodrębnić znaczną ilość danych z bazy danych Azure Cosmos DB (na przykład eksfiltracji danych lub wyciek lub nieautoryzowany transfer danych). Lub uprawniony użytkownik lub aplikacja wykryła nietypową ilość danych z kontenera (na przykład dla działania tworzenia kopii zapasowej konserwacji).|

@@ -1,17 +1,17 @@
 ---
 title: Przykład-ISO 27001 — mapowanie kontroli
-description: Kontrolowanie mapowania przykładowej strategii ISO 27001 do Azure Policy.
+description: Sterowanie mapowaniem przykładu planu ISO 27001. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 46dab6207fdb46fb7c6b9102ca91a12b2c411f6c
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: f381cb2beff0dd828e7ab1e5661857d826c49ecf
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978281"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248867"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu ISO 27001
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 144137109f97a8c2049430ed1e05117ea6c95d7f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d1c2f8b06d333be23f25a2d150c23269bf84cd2e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564405"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242829"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Sprawdzanie tekstu względem listy terminów niestandardowych w języku C#
 
@@ -40,7 +40,7 @@ Aby użyć usług Content Moderator za pomocą interfejsu API REST lub zestawu S
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Dodaj nowy projekt **Aplikacja konsoli (.NET Framework)** do swojego rozwiązania.
+1. Dodaj nowy projekt **Aplikacja konsoli (.NET Framework)** do rozwiązania.
 
 1. Nazwij projekt **TermLists**. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
 
@@ -59,8 +59,7 @@ Dodaj następujące instrukcje `using`.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -68,7 +67,7 @@ using System.IO;
 using System.Threading;
 ```
 
-### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
+### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usług Content Moderator
 
 Dodaj następujący kod, aby utworzyć klienta usługi Content Moderator dla Twojej subskrypcji.
 
@@ -447,6 +446,6 @@ Deleting term list with ID 252.
 Press ENTER to close the application.
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Pobierz zestaw [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.
+Pobierz zestaw [SDK Content Moderator dla platformy.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.

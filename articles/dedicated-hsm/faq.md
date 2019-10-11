@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania — sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące różnych tematów dotyczących sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej
+title: Często zadawane pytania — dedykowany moduł HSM platformy Azure | Microsoft Docs
+description: Często zadawane pytania dotyczące różnych tematów w dedykowanym module HSM platformy Azure
 services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
@@ -13,64 +13,64 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 5/8/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b79ed7ea3113f097f767ad7ff8bdc47b4e4916eb
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 338977c236ebb8f1b800eb6c28747a010e708300
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883572"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244213"
 ---
 # <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
-Znajdź odpowiedzi na często zadawane pytania dotyczące programu Microsoft Azure w wersji dedykowanej sprzętowego modułu zabezpieczeń.
+Znajdź odpowiedzi na często zadawane pytania dotyczące Microsoft Azure dedykowanego modułu HSM.
 
 ## <a name="the-basics"></a>Podstawowe informacje
 
-### <a name="q-what-is-a-hardware-security-module-hsm"></a>Pyt.: Co to jest sprzętowy moduł zabezpieczeń (HSM)?
+### <a name="q-what-is-a-hardware-security-module-hsm"></a>P: co to jest sprzętowy moduł zabezpieczeń (HSM)?
 
-Sprzętowego modułu zabezpieczeń (HSM) to fizyczne urządzenie obliczeniowe używane do ochrony i zarządzanie kluczami kryptograficznymi. Kluczy przechowywanych w sprzętowych modułach zabezpieczeń może służyć do operacji kryptograficznych. Materiał klucza, bezpiecznie pozostaje odporne na uszkodzenia, manipulacji sprzętowych modułów. Dopuszcza tylko w ramach sprzętowego modułu zabezpieczeń uwierzytelnianie i autoryzowanie aplikacji do używania kluczy. Dane dotyczące klucza nigdy nie opuszczają granic zabezpieczeń modułu HSM.
+Sprzętowy moduł zabezpieczeń (HSM) to fizyczne urządzenie obliczeniowe służące do zabezpieczania kluczy kryptograficznych i zarządzania nimi. Klucze przechowywane w sprzętowych modułów zabezpieczeń mogą być używane na potrzeby operacji kryptograficznych. Materiał klucza pozostaje bezpieczny w odpornych na uszkodzenia modułach sprzętowych. Moduł HSM zezwala tylko uwierzytelnionym i autoryzowanym aplikacjom na używanie kluczy. Dane dotyczące klucza nigdy nie opuszczają granic zabezpieczeń modułu HSM.
 
-### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>Pyt.: Co to jest oferta dedykowanego modułu HSM platformy Azure?
+### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>P: co to jest oferta dedykowanego modułu HSM platformy Azure?
 
-Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń jest oparte na chmurze Usługa udostępniająca sprzętowych modułów zabezpieczeń hostowana w centrach danych platformy Azure, które były bezpośrednio podłączone do sieci wirtualnej klienta. Te moduły HSM są urządzenia sieciowe dedykowane (firmy firmy Gemalto SafeNet sieciowych przez moduł HSM 7 Model A790). Są one wdrażane bezpośrednio do klientów przestrzeń prywatnych adresów IP i firmy Microsoft nie ma dostępu do usług kryptograficznych funkcji sprzętowych modułów zabezpieczeń. Tylko klient ma pełną administracyjnych i kryptograficznych kontrolę nad tymi urządzeniami. Klienci są odpowiedzialni za zarządzanie urządzeniem i będą oni mogli uzyskać Dzienniki aktywności pełnej bezpośrednio ze swoich urządzeń. Dedykowanych sprzętowych modułów zabezpieczeń pomóc klientom spełniają wymagania zgodności/prawne, takie jak FIPS 140-2 Level 3, HIPAA, PCI-DSS i eIDAS i wiele innych.
+Dedykowany moduł HSM platformy Azure to usługa oparta na chmurze, która udostępnia sprzętowych modułów zabezpieczeń hostowane w centrach danych platformy Azure, które są połączone bezpośrednio z siecią wirtualną klienta. Te sprzętowych modułów zabezpieczeń są dedykowanymi urządzeniami sieciowymi (firmy Gemalto SafeNet Network HSM 7 model A790). Są one wdrażane bezpośrednio w prywatnej przestrzeni adresów IP klientów, a firma Microsoft nie ma dostępu do funkcji kryptograficznych sprzętowych modułów zabezpieczeń. Tylko klient ma pełną kontrolę administracyjną i kryptograficzną na tych urządzeniach. Klienci są odpowiedzialni za zarządzanie urządzeniem i mogą uzyskać pełne dzienniki aktywności bezpośrednio z urządzeń. Dedykowany sprzętowych modułów zabezpieczeń pomagają klientom spełnić wymagania dotyczące zgodności/przepisów, takie jak FIPS 140-2 Level 3, HIPAA, PCI-DSS i eIDAS i wiele innych.
 
-### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>Pyt.: Jaki sprzęt jest używany dla dedykowanych przez moduł HSM?
+### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>P: jaki sprzęt jest używany do dedykowanego modułu HSM?
 
-Firma Microsoft połączyła się z usługą firmy Gemalto w celu dostarczenia dedykowanej usługi modułu HSM platformy Azure. Określone urządzenie, używany jest [SafeNet Luna sieciowych przez moduł HSM 7 Model A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). To urządzenie nie tylko zapewnia FIPS 140-2 Level 3 zweryfikowany w oprogramowania układowego, ale oferuje także o małych opóźnieniach, o wysokiej wydajności i dużej pojemności za pośrednictwem 10 partycji. 
+Firma Microsoft połączyła się z usługą firmy Gemalto w celu dostarczenia dedykowanej usługi modułu HSM platformy Azure. Określone urządzenie to [SafeNet Luna Network HSM 7 model A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). To urządzenie nie tylko udostępnia zweryfikowane oprogramowanie układowe FIPS 140-2 Level 3, ale oferuje również małe opóźnienia, wysoką wydajność i wysoką pojemność za pośrednictwem 10 partycji. 
 
-### <a name="q-what-is-an-hsm-used-for"></a>Pyt.: Do czego są używane moduły HSM?
+### <a name="q-what-is-an-hsm-used-for"></a>P: co to jest moduł HSM?
 
 Moduły HSM służą do przechowywania kluczy kryptograficznych używanych na potrzeby funkcji kryptograficznych, takich jak protokół Secure Socket Layer (SSL), szyfrowanie danych, infrastruktura kluczy publicznych (PKI, Public Key Infrastructure), zarządzanie prawami cyfrowymi (DRM, Digital Rights Management) i podpisywanie dokumentów.
 
-### <a name="q-how-does-dedicated-hsm-work"></a>Pyt.: W jaki sposób działa dedykowany moduł HSM?
+### <a name="q-how-does-dedicated-hsm-work"></a>P: jak działa dedykowany moduł HSM?
 
-Klienci mogą aprowizować sprzętowych modułów zabezpieczeń w określonych regionach przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Klient określa, jakie sieci wirtualnej, sprzętowe moduły zabezpieczeń spowoduje nawiązanie połączenia i po aprowizacji modułów HSM będą dostępne w wyznaczonym podsieci w przypisanych adresów IP w prywatnej przestrzeni adresowej IP klienta. Następnie klienci mogą się łączyć sprzętowych modułów zabezpieczeń do zarządzania urządzeniem przy użyciu protokołu SSH i administrowanie, konfigurowanie połączeń klienckich przez moduł HSM, zainicjować modułów HSM, tworzenie partycji, zdefiniuj i przypisz ról, takich jak urzędnika partycji, ds. usług kryptograficznych i kryptograficznych użytkownika. Następnie klient użyje firmy Gemalto udostępniane przez moduł HSM narzędzia/zestawu SDK/oprogramowanie klienckie do wykonywania operacji kryptograficznych z poziomu ich aplikacji.
+Klienci mogą inicjować obsługę sprzętowych modułów zabezpieczeń w określonych regionach przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Klient określa sieć wirtualną, z którą zostanie nawiązane połączenie sprzętowych modułów zabezpieczeń i po zainicjowaniu obsługi sprzętowych modułów zabezpieczeń będzie dostępna w wyznaczonej podsieci przy użyciu przypisanych adresów IP w prywatnej przestrzeni adresów IP klienta. Następnie klienci mogą łączyć się z usługą sprzętowych modułów zabezpieczeń za pomocą protokołu SSH w celu zarządzania urządzeniami i ich administrowania, konfigurowania połączeń klienta HSM, inicjowania sprzętowych modułów zabezpieczeń, tworzenia partycji, definiowania i przypisywania ról, takich jak oficer partycji, oficer kryptograficzny i użytkownik kryptograficzny. Następnie klient będzie używać firmy Gemalto dostarczonych narzędzi klienta/zestawu SDK/oprogramowania modułu HSM do wykonywania operacji kryptograficznych z ich aplikacji.
 
-### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>Pyt.: Jakie oprogramowanie jest dostarczane z dedykowaną usługą HSM?
+### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>P: jakie oprogramowanie jest dostarczane z dedykowaną usługą HSM?
 
-Firmy Gemalto dostarcza całe oprogramowanie dla urządzenia sprzętowego modułu zabezpieczeń po aprowizacji przez firmę Microsoft. Oprogramowanie jest dostępne pod adresem [portal obsługi klienta firmy Gemalto](https://supportportal.gemalto.com/csm/). Klienci korzystający z usługi w wersji dedykowanej sprzętowego modułu zabezpieczeń są wymagane do zarejestrowania dla firmy Gemalto obsługuje i ma identyfikator klienta, umożliwiająca dostęp i pobierania odpowiedniego oprogramowania. Oprogramowanie klienckie obsługiwana jest wersja 7.2, która jest zgodna z trybem FIPS 140-2 Level 3 zweryfikowane-wersja oprogramowania układowego 7.0.3. 
+Firmy Gemalto udostępnia wszystkie programy dla urządzenia HSM po udostępnieniu go firmie Microsoft. Oprogramowanie jest dostępne w [portalu obsługi klienta firmy Gemalto](https://supportportal.gemalto.com/csm/). Klienci korzystający z dedykowanej usługi HSM muszą zostać zarejestrowani do obsługi firmy Gemalto i mają identyfikator klienta, który umożliwia dostęp i pobieranie odpowiedniego oprogramowania. Obsługiwane oprogramowanie klienckie jest w wersji 7,2, która jest zgodna z zweryfikowaną wersją oprogramowania układowego FIPS 140-2 Level 3 7.0.3. 
 
-### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>Pyt.: Czy dedykowany moduł HSM platformy Azure oferuje uwierzytelnianie oparte na hasłach i PED?
+### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>P: czy dedykowany moduł HSM platformy Azure oferuje uwierzytelnianie oparte na hasłach i PED?
 
 W tej chwili dedykowany moduł HSM platformy Azure udostępnia tylko sprzętowych modułów zabezpieczeń z uwierzytelnianiem opartym na hasłach.
 
-### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>Pyt.: Czy dedykowany Host modułu HSM platformy Azure sprzętowych modułów zabezpieczeń dla mnie?
+### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>P: czy usługa Azure dedykowany Host HSM sprzętowych modułów zabezpieczeń dla mnie?
 
 Firma Microsoft oferuje firmy Gemalto SafeNet Luna Network HSM za pośrednictwem dedykowanej usługi HSM i nie może hostować żadnych urządzeń udostępnianych przez klienta.
 
-### <a name="q-does-azure-dedicated-hsm-support-payment-pinetf-features"></a>Pyt.: Czy dedykowany moduł HSM platformy Azure obsługuje funkcje płatności (PIN/ETF)?
+### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>P: czy dedykowany moduł HSM platformy Azure obsługuje funkcje płatności (PIN/EFT)?
 
-Dedykowana usługa HSM platformy Azure używa urządzeń SafeNet Luna Network HSM 7 (model A790). Te urządzenia nie obsługują funkcji specyficznych dla modułu HSM (np. numeru PIN lub ETF) lub certyfikatów. Jeśli chcesz, aby usługa dedykowanego modułu HSM platformy Azure obsługiwała sprzętowych modułów zabezpieczeń płatności w przyszłości, Przekaż opinię do przedstawiciela konta Microsoft.
+Dedykowana usługa HSM platformy Azure używa urządzeń SafeNet Luna Network HSM 7 (model A790). Te urządzenia nie obsługują funkcji specyficznych dla modułu HSM (np. numeru PIN lub EFT) lub certyfikatów. Jeśli chcesz, aby usługa dedykowanego modułu HSM platformy Azure obsługiwała sprzętowych modułów zabezpieczeń płatności w przyszłości, Przekaż opinię do przedstawiciela konta Microsoft.
 
-### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>Pyt.: Które regiony platformy Azure są dostępne w ramach dedykowanego modułu HSM?
+### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>P: które regiony platformy Azure są dostępne w ramach dedykowanego modułu HSM?
 
 Począwszy od dnia 2019 marca, dedykowany moduł HSM jest dostępny w 14 regionach wymienionych poniżej. Dalsze regiony są planowane i można je omówić za pośrednictwem przedstawiciela konta Microsoft.
 
-* East US
+* Wschodnie stany USA
 * Wschodnie stany USA 2
 * Zachodnie stany USA
-* Środkowo-południowe stany USA
-* Azja Południowo-Wschodnia
+* Południowo-środkowe stany USA
+* Azja Południowo-wschodnia
 * Azja Wschodnia
 * Europa Północna
 * Europa Zachodnia
@@ -83,219 +83,219 @@ Począwszy od dnia 2019 marca, dedykowany moduł HSM jest dostępny w 14 regiona
 
 ## <a name="interoperability"></a>Współdziałanie
 
-### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>Pyt.: Jak moja aplikacja nawiązuje połączenie z dedykowanym modułem HSM?
+### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>P: jak moja aplikacja nawiązuje połączenie z dedykowanym modułem HSM?
 
-Udostępniane przez moduł HSM narzędzia/zestawu SDK/oprogramowanie klienckie firmy Gemalto służy do wykonywania operacji kryptograficznych z poziomu aplikacji. Oprogramowanie jest dostępne pod adresem [portal obsługi klienta firmy Gemalto](https://supportportal.gemalto.com/csm/). Klienci korzystający z usługi w wersji dedykowanej sprzętowego modułu zabezpieczeń są wymagane do zarejestrowania dla firmy Gemalto obsługuje i ma identyfikator klienta, umożliwiająca dostęp i pobierania odpowiedniego oprogramowania.
+Do wykonywania operacji kryptograficznych z aplikacji należy używać firmy Gemalto dostarczonych/SDK/oprogramowania klienta modułu HSM. Oprogramowanie jest dostępne w [portalu obsługi klienta firmy Gemalto](https://supportportal.gemalto.com/csm/). Klienci korzystający z dedykowanej usługi HSM muszą zostać zarejestrowani do obsługi firmy Gemalto i mają identyfikator klienta, który umożliwia dostęp i pobieranie odpowiedniego oprogramowania.
 
-### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>Pyt.: Czy aplikacja może połączyć się z dedykowanym modułem HSM z innej sieci wirtualnej w regionie lub w różnych regionach?
+### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>P: czy aplikacja może połączyć się z dedykowanym modułem HSM z innej sieci wirtualnej w regionie lub w różnych regionach?
 
-Tak, musisz użyć [komunikacja równorzędna sieci wirtualnych](../virtual-network/virtual-network-peering-overview.md) w regionie w celu ustanowienia połączenia między sieciami wirtualnymi. Łączność między regionami, należy użyć [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Tak, aby nawiązać łączność między sieciami wirtualnymi, należy użyć [komunikacji równorzędnej](../virtual-network/virtual-network-peering-overview.md) sieci wirtualnych w obrębie regionu. W przypadku łączności między regionami należy użyć [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-### <a name="q-can-i-synchronize-dedicated-hsm-with-on-premises-hsms"></a>Pyt.: Czy można synchronizować dedykowany moduł HSM z lokalnym sprzętowych modułów zabezpieczeń?
+### <a name="q-can-i-synchronize-dedicated-hsm-with-on-premises-hsms"></a>P: Czy można synchronizować dedykowany moduł HSM z lokalnym sprzętowych modułów zabezpieczeń?
 
-Tak, można synchronizować lokalne sprzętowych modułów zabezpieczeń z dedykowanego sprzętowego modułu zabezpieczeń. [Protokół Point-to-Point sieci VPN lub punkt lokacja](../vpn-gateway/vpn-gateway-about-vpngateways.md) łączność, może służyć do nawiązywania łączności z Twoją siecią lokalną.
+Tak, możesz synchronizować lokalne sprzętowych modułów zabezpieczeń z dedykowanym modułem HSM. Połączenie [sieci VPN typu punkt-punkt lub punkt-lokacja](../vpn-gateway/vpn-gateway-about-vpngateways.md) może służyć do nawiązywania połączeń z siecią lokalną.
 
-### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>Pyt.: Czy mogę szyfrować dane używane przez inne usługi platformy Azure przy użyciu kluczy przechowywanych w dedykowanym module HSM?
+### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>P: Czy można szyfrować dane używane przez inne usługi platformy Azure przy użyciu kluczy przechowywanych w dedykowanym module HSM?
 
-Nie. Azure w wersji dedykowanej Moduły HSM są dostępne jedynie z wewnątrz sieci wirtualnej.
+Nie. Dedykowany sprzętowych modułów zabezpieczeń platformy Azure są dostępne tylko w sieci wirtualnej.
 
-### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>Pyt.: Czy mogę zaimportować klucze z istniejącego lokalnego modułu HSM do dedykowanego modułu HSM?
+### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>P: Czy można zaimportować klucze z istniejącego lokalnego modułu HSM do dedykowanego modułu HSM?
 
-Tak, jeśli masz lokalne sprzętowych modułów zabezpieczeń firmy Gemalto SafeNet. Istnieje wiele metod. Zapoznaj się z dokumentacją sprzętowego modułu zabezpieczeń firmy Gemalto.
+Tak, jeśli korzystasz z lokalnego firmy Gemalto SafeNet sprzętowych modułów zabezpieczeń. Istnieje wiele metod. Zapoznaj się z dokumentacją modułu HSM firmy Gemalto.
 
-### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>Pyt.: Jakie systemy operacyjne są obsługiwane przez dedykowane oprogramowanie klienckie modułu HSM?
+### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>P: jakie systemy operacyjne są obsługiwane przez dedykowane oprogramowanie klienckie modułu HSM?
 
 * Windows, Linux, Solaris, AIX, HP-UX, FreeBSD
-* Wirtualnej VMware, HyperV, Xen, KVM
+* Wirtualne: VMware, HyperV, Xen, KVM
 
-### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>Pyt.: Jak mogę skonfigurować moją aplikację kliencką w celu utworzenia konfiguracji o wysokiej dostępności z wieloma partycjami z wielu sprzętowych modułów zabezpieczeń?
+### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>P: Jak mogę skonfigurować moją aplikację kliencką w celu utworzenia konfiguracji o wysokiej dostępności z wieloma partycjami z wielu sprzętowych modułów zabezpieczeń?
 
-Aby uzyskać wysoką dostępność, należy skonfigurować konfigurację aplikacji klienta przez moduł HSM do używania partycji z każdego modułu HSM. Zapoznaj się z dokumentacją oprogramowania sprzętowego modułu zabezpieczeń firmy Gemalto klienta.
+Aby zapewnić wysoką dostępność, należy skonfigurować konfigurację aplikacji klienta HSM do używania partycji z każdego modułu HSM. Zapoznaj się z dokumentacją oprogramowania klienckiego modułu HSM firmy Gemalto.
 
-### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>Pyt.: Jakie mechanizmy uwierzytelniania są obsługiwane przez dedykowany moduł HSM?
+### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>P: jakie mechanizmy uwierzytelniania są obsługiwane przez dedykowany moduł HSM?
 
-Urządzenia SafeNet sieciowych przez moduł HSM 7 (model A790) korzysta z platformy Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń i obsługują uwierzytelniania opartego na hasłach.
+Dedykowany moduł HSM platformy Azure używa urządzeń SafeNet Network HSM 7 (model A790) i obsługują uwierzytelnianie oparte na hasłach.
 
-### <a name="q-what-sdks-apis-client-software-is-available-to-use-with-dedicated-hsm"></a>Pyt.: Jakie zestawy SDK, interfejsy API i oprogramowanie klienckie są dostępne do użycia w dedykowanym module HSM?
+### <a name="q-what-sdks-apis-client-software-is-available-to-use-with-dedicated-hsm"></a>P: jakie zestawy SDK, interfejsy API i oprogramowanie klienckie są dostępne do użycia w dedykowanym module HSM?
 
-PKCS nr 11, języka Java (JCA/JCE), CAPI firmy Microsoft i CNG, OpenSSL
+PKCS # 11, Java (JCA/JCE), Microsoft CAPI i CNG, OpenSSL
 
-### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>Pyt.: Czy można importować/migrować klucze z Luna 5/6 sprzętowych modułów zabezpieczeń do platformy Azure dedykowane sprzętowych modułów zabezpieczeń?
+### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>P: Czy można zaimportować/zmigrować klucze z Luna 5/6 sprzętowych modułów zabezpieczeń do platformy Azure dedykowanej sprzętowych modułów zabezpieczeń?
 
 Tak. Zapoznaj się z przewodnikiem migracji firmy Gemalto. 
 
-## <a name="using-your-hsm"></a>Za pomocą modułu HSM
+## <a name="using-your-hsm"></a>Korzystanie z modułu HSM
 
-### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>Pyt.: Jak mogę zdecydować, czy używać Azure Key Vault czy dedykowanego modułu HSM platformy Azure?
+### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>P: Jak mogę decydować, czy używać Azure Key Vault czy dedykowanego modułu HSM platformy Azure?
 
-Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń jest odpowiednim wyborem dla przedsiębiorstw migracji do aplikacji platformy Azure w środowisku lokalnym, które używają sprzętowych modułów zabezpieczeń. Dedykowanych sprzętowych modułów zabezpieczeń istnieje możliwość przeprowadzania migracji aplikacji przy minimalnych zmianach. Jeśli operacje kryptograficzne są wykonywane w kodzie aplikacji działających w maszynie Wirtualnej platformy Azure lub aplikacji sieci Web, mogą używać dedykowanego sprzętowego modułu zabezpieczeń. Ogólnie rzecz biorąc, porządnie zapakowane oprogramowania uruchamianego w modelach IaaS (infrastruktura jako usługa), obsługujących sprzętowych modułów zabezpieczeń magazynu kluczy można użyć dedykować modułu HSM, takich jak Application gateway lub traffic manager dla bez kluczy protokołu SSL usług AD CS (usługi certyfikatów Active Directory), lub podobne narzędzia infrastruktury kluczy publicznych, narzędzia/aplikacje używane do podpisywania dokumentów, podpisywanie kodu lub SQL Server (IaaS), skonfigurowano funkcję TDE (przezroczyste szyfrowanie baz danych), za pomocą klucza głównego w module HSM za pomocą dostawcy EKM (rozszerzonego zarządzania kluczami). Usługa Azure Key Vault jest odpowiedni dla aplikacji "urodzonych w chmury" lub szyfrowania na scenariusze rest, w którym dane klientów są przetwarzane przez PaaS (platforma jako usługa) lub scenariuszy SaaS (oprogramowanie jako usługa), takie jak klucz klienta usługi Office 365, Azure Information Protection , Usługa azure Disk Encryption, szyfrowanie usługi Azure Data Lake Store przy użyciu zarządzanych przez klienta klucza szyfrowania usługi Azure Storage za pomocą klienta zarządzane klucza i SQL Azure za pomocą klienta zarządzanego klucza.
+Dedykowany moduł HSM platformy Azure to odpowiedni wybór dla przedsiębiorstw przeprowadzających migrację do aplikacji lokalnych platformy Azure korzystających z sprzętowych modułów zabezpieczeń. Dedykowany sprzętowych modułów zabezpieczeń to opcja migracji aplikacji z minimalnymi zmianami. Jeśli operacje kryptograficzne są wykonywane w kodzie aplikacji działającym na maszynie wirtualnej lub w aplikacji sieci Web platformy Azure, mogą korzystać z dedykowanego modułu HSM. Ogólnie rzecz biorąc, aplikacje opakowane w dół działające w modelach IaaS (infrastruktura jako usługa), które obsługują sprzętowych modułów zabezpieczeń jako magazyn kluczy mogą korzystać z dedykowanego modułu HSM, takiego jak Application Gateway lub Traffic Manager, dla protokołów SSL, ADCS (Active Directory usługi certyfikatów) lub podobne narzędzia infrastruktury PKI, narzędzia/aplikacje służące do podpisywania dokumentów, podpisywania kodu lub SQL Server (IaaS) skonfigurowane z TDE (przezroczyste szyfrowanie bazy danych) z kluczem głównym w module HSM przy użyciu dostawcy EKM (Extensible Key Management). Azure Key Vault jest odpowiednie dla aplikacji w chmurze lub do szyfrowania w środowiskach REST, w których dane klientów są przetwarzane przez PaaS (platforma jako usługa) lub SaaS (oprogramowanie jako usługa), takie jak klucz klienta pakietu Office 365, Azure Information Protection , Azure Disk Encryption, Azure Data Lake Store szyfrowanie z kluczem zarządzanym przez klienta, szyfrowanie usługi Azure Storage za pomocą klucza zarządzanego przez klienta oraz usługę Azure SQL z kluczem zarządzanym przez klienta.
 
-### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>Pyt.: Jakie scenariusze użycia najlepiej pasują do dedykowanego modułu HSM platformy Azure?
+### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>P: jakie scenariusze użycia najlepiej pasują do dedykowanego modułu HSM platformy Azure?
 
-Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń jest najbardziej odpowiednie dla scenariuszy migracji. Oznacza to, że w przypadku migracji aplikacji lokalnych na platformę Azure, które już używają sprzętowych modułów zabezpieczeń. Zapewnia to możliwość prostego Migrowanie na platformę Azure przy minimalnych zmianach w aplikacji. Jeśli operacje kryptograficzne są wykonywane w kodzie aplikacji działających w maszynie Wirtualnej platformy Azure lub aplikacji sieci Web, mogą być używane przez sprzętowy moduł zabezpieczeń w wersji dedykowanej. Ogólnie rzecz biorąc porządnie zapakowane oprogramowania uruchamianego w modelach IaaS (infrastruktura jako usługa), obsługujących sprzętowych modułów zabezpieczeń magazynu kluczy można użyć dedykować modułu HSM, takich jak:
+Dedykowany moduł HSM platformy Azure jest najbardziej odpowiedni dla scenariuszy migracji. Oznacza to, że w przypadku migrowania aplikacji lokalnych na platformę Azure, która już korzysta z usługi sprzętowych modułów zabezpieczeń. Zapewnia to niską opcję migracji na platformę Azure przy minimalnych zmianach w aplikacji. Jeśli operacje kryptograficzne są wykonywane w kodzie aplikacji działającym na maszynie wirtualnej platformy Azure lub w aplikacji sieci Web, można użyć dedykowanego modułu HSM. Ogólnie rzecz biorąc, aplikacje opakowane w sposób pozostały działające w modelach IaaS (infrastruktura jako usługa), które obsługują sprzętowych modułów zabezpieczeń jako magazyn kluczy mogą korzystać z dedykowanego modułu HSM, takiego jak:
 
-* Application gateway lub traffic manager dla protokołu SSL bez kluczy
-* Usług AD CS (usługi certyfikatów Active Directory)
-* Podobne narzędzia infrastruktury kluczy publicznych
+* Application Gateway lub Traffic Manager dla klucza bez protokołu SSL
+* ADCS (Active Directory usługi certyfikatów)
+* Podobne narzędzia infrastruktury PKI
 * Narzędzia/aplikacje używane do podpisywania dokumentów
 * Podpisywanie kodu
-* Program SQL Server (IaaS) skonfigurowano funkcję TDE (przezroczyste szyfrowanie baz danych), za pomocą klucza głównego w module HSM za pomocą dostawcy EKM (rozszerzonego zarządzania kluczami)
+* SQL Server (IaaS) skonfigurowany z TDE (przezroczystą szyfrowanie bazy danych) z kluczem głównym w module HSM przy użyciu dostawcy EKM (Extensible Key Management)
 
-### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>Pyt.: Czy dedykowanego modułu HSM można używać wraz z kluczem klienta usługi Office 365, usługą Azure Information Protection, usługą Azure Data Lake Store, usługą Disk Encryption, szyfrowaniem usługi Azure Storage lub szyfrowaniem TDE Azure SQL?
+### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>P: można używać dedykowanego modułu HSM z kluczem klienta pakietu Office 365, Azure Information Protection, Azure Data Lake Store, szyfrowania dysku, szyfrowania usługi Azure Storage i Azure SQL TDE?
 
-Nie. Dedykowany przez moduł HSM jest aprowizowany bezpośrednio w prywatnej przestrzeni adresowej IP klienta dlatego nie jest dostępny dla innych usług platformy Azure lub programu Microsoft.
+Nie. Dedykowany moduł HSM jest udostępniany bezpośrednio w prywatnej przestrzeni adresów IP klienta, dlatego nie jest on dostępny przez inne platformy Azure ani usługi firmy Microsoft.
 
-## <a name="administration-access-and-control"></a>Administracja, dostępu i kontroli
+## <a name="administration-access-and-control"></a>Administracja, dostęp i kontrola
 
-### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>Pyt.: Czy klient uzyskuje pełną kontrolę wyłączną na sprzętowych modułów zabezpieczeń za pomocą dedykowanego sprzętowych modułów zabezpieczeńu?
+### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>P: czy klient uzyskuje pełną kontrolę wyłączną na sprzętowych modułów zabezpieczeń za pomocą dedykowanego sprzętowych modułów zabezpieczeńu?
 
-Tak. Każdego urządzenia sprzętowego modułu zabezpieczeń jest pełni dedykowanego jednego pojedynczego klienta, i nikt inny nie ma kontroli administracyjnej po aprowizacji i zmieniono hasło administratora.
+Tak. Każde urządzenie HSM jest w pełni przeznaczone dla jednego klienta, a nikt nie ma kontroli administracyjnej po zainicjowaniu aprowizacji i zmianie hasła administratora.
 
-### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>Pyt.: Jaki poziom dostępu ma firma Microsoft dla mojego modułu HSM?
+### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>P: jaki poziom dostępu ma firma Microsoft dla mojego modułu HSM?
 
-Microsoft nie ma dowolną kontrolkę kryptograficznych lub administracyjnych w ramach sprzętowego modułu zabezpieczeń. Firma Microsoft jeszcze monitor poziom dostępu za pośrednictwem portu szeregowego połączenia, aby pobierać podstawowe dane telemetryczne, np. temperaturę, jak i składnika kondycji. Dzięki temu firma Microsoft zapewni powiadomień z wyprzedzeniem o problemów z kondycją. W razie potrzeby klient może wyłączyć to konto.
+Firma Microsoft nie ma żadnej kontroli administracyjnej ani kryptograficznej nad modułem HSM. Firma Microsoft ma dostęp do poziomu monitora za pośrednictwem połączenia portu szeregowego w celu pobrania podstawowych danych telemetrycznych, takich jak temperatura i kondycja składnika. Dzięki temu firma Microsoft może udostępniać aktywne powiadomienia o problemach z kondycją. W razie potrzeby klient może wyłączyć to konto.
 
-### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>Pyt.: Co to jest konto "tenantadmin" używane przez firmę Microsoft, chcę, aby użytkownik administratora miał wartość "admin" w usłudze SafeNet sprzętowych modułów zabezpieczeń?
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>P: co to jest konto "tenantadmin" używane przez firmę Microsoft, które jest używane przez użytkownika administratora w usłudze SafeNet sprzętowych modułów zabezpieczeń?
 
 Urządzenie HSM jest dostarczane z domyślnym użytkownikiem administratora z normalnym hasłem domyślnym. Firma Microsoft nie chciała używać domyślnych haseł, gdy wszystkie urządzenia znajdują się w puli oczekującej na zainicjowanie obsługi przez klientów. Nie spełnia to rygorystycznych wymagań w zakresie zabezpieczeń. Z tego powodu ustawimy silne hasło, które jest odrzucane w czasie aprowizacji. Ponadto podczas aprowizacji należy utworzyć nowego użytkownika w roli administratora o nazwie "tenantadmin". Ten użytkownik ma domyślne hasło i klienci zmieniają ten sposób jako pierwszą akcję podczas pierwszego logowania na nowo zainicjowanym urządzeniu. Ten proces zapewnia wysoki poziom bezpieczeństwa i utrzymuje nasze obietnice związane z wyłączną kontrolą administracyjną dla naszych klientów. Należy zauważyć, że użytkownik "tenantadmin" może być używany do resetowania hasła użytkownika administratora, jeśli klient woli korzystać z tego konta. 
 
-### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Pyt.: Czy w dedykowanym module HSM może być Microsoft lub każda osoba z kluczami dostępu do firmy Microsoft?
+### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>P: czy w dedykowanym module HSM można korzystać z firmy Microsoft lub osób z kluczami dostępu firmy Microsoft?
 
-Nie. Microsoft nie ma dostępu do kluczy przechowywanych w klienta przydzielony dedykowany przez moduł HSM.
+Nie. Firma Microsoft nie ma dostępu do kluczy przechowywanych w dedykowanym module HSM przydzielonym przez klienta.
 
-### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>Pyt.: Czy mogę uaktualnić oprogramowanie/oprogramowanie układowe na sprzętowych modułów zabezpieczeń przydzielonym do mnie?
+### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>P: Czy mogę uaktualnić oprogramowanie/oprogramowanie układowe na sprzętowych modułów zabezpieczeń przydzielonym do mnie?
 
-Aby uzyskać najlepszą pomoc techniczną, firma Microsoft zaleca z uaktualniania oprogramowania i oprogramowania układowego w ramach sprzętowego modułu zabezpieczeń. Jednak klient ma pełną kontrolę administracyjną tym uaktualniania oprogramowania i oprogramowania układowego w przypadku określonych funkcji w wersji oprogramowania układowego w różnych. Przed wprowadzeniem zmian należy rozumieć konsekwencje, zgodnie z tym można, na przykład efekt FIPS zweryfikować stan. 
+Aby uzyskać najlepszą pomoc techniczną, firma Microsoft zdecydowanie zaleca się, aby nie uaktualnić oprogramowania/oprogramowania układowego w module HSM. Jednak klient ma pełną kontrolę administracyjną, w tym uaktualnienie oprogramowania/oprogramowania układowego, jeśli określone funkcje są wymagane z różnych wersji oprogramowania układowego. Przed wprowadzeniem zmian należy zrozumieć konsekwencje, jak może to mieć wpływ na stan zweryfikowane przez FIPS. 
 
-### <a name="q-how-do-i-manage-dedicated-hsm"></a>Pyt.: Jak mogę zarządzać dedykowanym modułem HSM?
+### <a name="q-how-do-i-manage-dedicated-hsm"></a>P: Jak mogę zarządzać dedykowanym modułem HSM?
 
-Możesz zarządzać dedykowanych sprzętowych modułów zabezpieczeń, uzyskując dostęp do nich przy użyciu protokołu SSH.
+Można zarządzać dedykowanymi sprzętowych modułów zabezpieczeńami, uzyskując dostęp do nich przy użyciu protokołu SSH.
 
-### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>Pyt.: Jak mogę zarządzać partycjami w dedykowanym module HSM?
+### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>P: Jak mogę zarządzać partycjami w dedykowanym module HSM?
 
-Oprogramowanie klienckie sprzętowego modułu zabezpieczeń firmy Gemalto służy do zarządzania sprzętowych modułów zabezpieczeń oraz partycji.
+Oprogramowanie klienckie firmy Gemalto HSM służy do zarządzania sprzętowych modułów zabezpieczeń i partycjami.
 
-### <a name="q-how-do-i-monitor-my-hsm"></a>Pyt.: Jak mogę monitorować mój moduł HSM?
+### <a name="q-how-do-i-monitor-my-hsm"></a>P: Jak mogę Monitoruj mój moduł HSM?
 
-Klient ma pełny dostęp do dzienników aktywności przez moduł HSM za pośrednictwem usługi syslog i SNMP. Klienta należy ustawić serwera syslog lub serwer SNMP, aby odbierać dzienniki lub zdarzeń z modułów HSM.
+Klient ma pełny dostęp do dzienników aktywności modułu HSM za pośrednictwem dziennika systemowego i protokołu SNMP. Klient będzie musiał skonfigurować serwer dziennika systemu lub serwer SNMP w celu odbierania dzienników lub zdarzeń z sprzętowych modułów zabezpieczeń.
 
-### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>Pyt.: Czy mogę uzyskać pełny dziennik dostępu wszystkich operacji modułu HSM z dedykowanego modułu HSM?
+### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>P: Czy można uzyskać pełny dziennik dostępu wszystkich operacji modułu HSM z dedykowanego modułu HSM?
 
-Tak. Możesz wysłać dzienniki z urządzenia przez moduł HSM do serwera syslog
+Tak. Dzienniki z urządzenia HSM można wysyłać do serwera dziennika systemowego
 
 ## <a name="high-availability"></a>Wysoka dostępność
 
-### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Pyt.: Czy jest możliwe skonfigurowanie wysokiej dostępności w tym samym regionie lub w wielu regionach?
+### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>P: czy jest możliwe skonfigurowanie wysokiej dostępności w tym samym regionie lub w wielu regionach?
 
-Tak. Konfiguracja wysokiej dostępności i konfiguracji są wykonywane w oprogramowaniu klienckim przez moduł HSM, które są dostarczane przez firmy Gemalto. Sprzętowych modułów zabezpieczeń z tej samej sieci wirtualnej lub innych sieci wirtualnych w tym samym regionie lub w różnych regionach lub lokalnych sprzętowych modułów zabezpieczeń podłączonych do sieci wirtualnej przy użyciu sieci VPN typu lokacja-lokacja lub punktu typu punkt-punkt można dodać do tej samej konfiguracji wysokiej dostępności. Należy zauważyć, że to synchronizuje tylko materiał klucza i nie konkretne elementy konfiguracji, takie jak role.
+Tak. Konfiguracja wysokiej dostępności i konfiguracja odbywają się w oprogramowaniu klienckim modułu HSM udostępnianym przez firmy Gemalto. Sprzętowych modułów zabezpieczeń z tej samej sieci wirtualnej lub innych sieci wirtualnych w tym samym regionie lub w różnych regionach lub lokalnych sprzętowych modułów zabezpieczeń podłączonych do sieci wirtualnej przy użyciu sieci VPN typu lokacja-lokacja lub punktu typu punkt-punkt można dodać do tej samej konfiguracji wysokiej dostępności. Należy zauważyć, że to synchronizuje tylko materiał klucza i nie konkretne elementy konfiguracji, takie jak role.
 
-### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Pyt.: Czy mogę dodać sprzętowych modułów zabezpieczeń z sieci lokalnej do grupy o wysokiej dostępności przy użyciu sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej
+### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>P: Czy można dodać sprzętowych modułów zabezpieczeń z sieci lokalnej do grupy o wysokiej dostępności przy użyciu dedykowanego modułu HSM platformy Azure?
 
-Tak. Muszą spełniać wymagania wysokiej dostępności dla SafeNet Luna sieciowych przez moduł HSM 7.
+Tak. Muszą spełniać wymagania dotyczące wysokiej dostępności dla SafeNet Luna Network HSM 7.
 
-### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Pyt.: Czy mogę dodać Luna 5/6 sprzętowych modułów zabezpieczeń z sieci lokalnej do grupy o wysokiej dostępności przy użyciu sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej
+### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>P: Czy można dodać Luna 5/6 sprzętowych modułów zabezpieczeń z sieci lokalnych do grupy o wysokiej dostępności z dedykowanym modułem HSM platformy Azure?
 
 Nie.
 
-### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>Pyt.: Ile sprzętowych modułów zabezpieczeń można dodać do tej samej konfiguracji wysokiej dostępności z jednej pojedynczej aplikacji?
+### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>P: ile sprzętowych modułów zabezpieczeń można dodać do tej samej konfiguracji wysokiej dostępności z jednej pojedynczej aplikacji?
 
 16 członków grupy HA ma w niepełnym zakresie testy z wysoką przepustowością.
 
 ## <a name="support"></a>Pomoc techniczna
 
-### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>Pyt.: Co to jest umowa SLA dla dedykowanej usługi HSM?
+### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>P: Jaka jest umowa SLA dla dedykowanej usługi HSM?
 
-Dla dedykowanej usługi HSM nie jest dostępna żadna konkretna gwarancja czasu przestoju. Microsoft zapewni poziomu dostępu do sieci na urządzeniu i dlatego stosowanie standardowych umów SLA sieci platformy Azure.
+Dla dedykowanej usługi HSM nie jest dostępna żadna konkretna gwarancja czasu przestoju. Firma Microsoft zapewnia dostęp na poziomie sieci do urządzenia, a tym samym stosuje się standardowe umowy SLA sieci platformy Azure.
 
-### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>Pyt.: Jak sprzętowych modułów zabezpieczeń używany w dedykowanym module HSM platformy Azure?
+### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>P: w jaki sposób sprzętowych modułów zabezpieczeń jest używany w dedykowanym module HSM platformy Azure?
 
-Centra danych platformy Azure są sterowane rozbudowane zabezpieczeniom fizycznym i procedurach. Oprócz tego dedykowanych sprzętowych modułów zabezpieczeń znajdują się w obszarze dalsze ograniczony dostęp do centrum danych. Te obszary mają dodatkowe fizyczne metody kontroli dostępu i kamery nadzoru w celu zwiększenia poziomu bezpieczeństwa.
+Centra danych platformy Azure mają rozległe i proceduralne mechanizmy kontroli zabezpieczeń. Oprócz tego dedykowanych sprzętowych modułów zabezpieczeń są hostowane w bardziej ograniczonym obszarze dostępu centrum danych. Te obszary mają dodatkowe fizyczne mechanizmy kontroli dostępu i kamery wideo w celu zwiększenia bezpieczeństwa.
 
-### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>Pyt.: Co się stanie w przypadku naruszenia zabezpieczeń lub zdarzenia naruszenia sprzętu?
+### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>P: co się stanie w przypadku naruszenia zabezpieczeń lub zdarzenia naruszenia sprzętu?
 
-Dedykowana usługa sprzętowego modułu zabezpieczeń używa urządzenia SafeNet sieciowych przez moduł HSM 7. Następujące urządzenia obsługują wykrywania manipulacji fizycznymi i logicznymi. Jeśli nigdy nie jest zdarzeniem odporne Moduły HSM są automatycznie zeroized.
+Dedykowana usługa HSM używa urządzeń SafeNet Network HSM 7. Te urządzenia obsługują wykrywanie włamania fizycznego i logicznego. Jeśli kiedykolwiek dojdzie do naruszenia zdarzenia, sprzętowych modułów zabezpieczeń są automatycznie zerowane.
 
-### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>Pyt.: Jak mogę upewnić się, że klucze w sprzętowych modułów zabezpieczeń dedykowane nie zostaną utracone z powodu błędu lub złośliwego ataku z niejawnym testerem?
+### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>P: Jak mogę upewnij się, że klucze w sprzętowych modułów zabezpieczeń dedykowane nie zostaną utracone z powodu błędu lub złośliwego ataku z niejawnym testerem?
 
-Zdecydowanie zaleca się używać urządzenia kopii zapasowej przez moduł HSM do środowiska lokalnego do wykonywania zwykłych okresowych kopii zapasowych z modułów HSM do odzyskiwania po awarii. Należy połączyć urządzenia kopii zapasowej przez sprzętowy moduł zabezpieczeń stacji roboczej w środowisku lokalnym przy użyciu połączenia sieci VPN peer-to-peer lub lokacja lokacja.
+Zdecydowanie zaleca się używanie lokalnego urządzenia do tworzenia kopii zapasowych modułu HSM do regularnego wykonywania kopii zapasowej sprzętowych modułów zabezpieczeń na potrzeby odzyskiwania po awarii. Konieczne będzie użycie połączenia sieci VPN typu peer-to-peer lub typu lokacja-lokacja z lokalną stacją roboczą podłączoną do urządzenia z kopią zapasową modułu HSM.
 
-### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>Pyt.: Jak mogę uzyskać pomoc techniczną dla dedykowanego modułu HSM?
+### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>P: Jak mogę uzyskać pomoc techniczną dla dedykowanego modułu HSM?
 
 Pomoc techniczna jest świadczona przez firmę Microsoft i firmy Gemalto.  Jeśli masz problem z dostępem do sprzętu lub sieci, Zgłoś żądanie pomocy technicznej w firmie Microsoft i jeśli masz problem z konfiguracją modułu HSM, programowaniem oprogramowania i aplikacji, Zgłoś żądanie pomocy technicznej za pomocą firmy Gemalto. Jeśli masz nieokreślony problem, Zgłoś żądanie pomocy technicznej z firmą Microsoft, a następnie firmy Gemalto je w razie potrzeby. 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>Pyt.: Jak mogę uzyskać oprogramowania klienckiego, dokumentacji i dostępu do wskazówek dotyczących integracji dla modułu HSM SafeNet Luna 7?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>P: Jak mogę uzyskać oprogramowania klienckiego, dokumentacji i dostępu do wskazówek dotyczących integracji dla modułu HSM SafeNet Luna 7?
 
 Po zarejestrowaniu się w usłudze zostanie dostarczony identyfikator firmy Gemalto klienta, który umożliwia rejestrację w portalu obsługi klienta firmy Gemalto. Umożliwi to dostęp do całego oprogramowania i dokumentacji oraz włączanie żądań pomocy technicznej bezpośrednio z firmy Gemalto.
 
-### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>Pyt.: Jeśli znaleziono lukę w zabezpieczeniach, a poprawka jest wydana przez firmy Gemalto, która jest odpowiedzialna za uaktualnianie/poprawianie systemu operacyjnego/oprogramowania układowego?
+### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>P: Jeśli znaleziono lukę w zabezpieczeniach, a poprawka jest wydana przez firmy Gemalto, która jest odpowiedzialna za uaktualnianie/poprawianie systemu operacyjnego/oprogramowania układowego?
 
-Microsoft nie ma możliwości podłączenia do sprzętowych modułów zabezpieczeń przydzielone do klientów. Klienci, należy uaktualnić i stosowanie poprawek do ich sprzętowych modułów zabezpieczeń.
+Firma Microsoft nie ma możliwości łączenia się z usługą sprzętowych modułów zabezpieczeń przydzieloną klientom. Klienci muszą uaktualnić i poprawić ich sprzętowych modułów zabezpieczeń.
 
-### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>Pyt.: Co zrobić w przypadku konieczności ponownego uruchomienia modułu HSM?
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>P: co zrobić, jeśli chcę uruchomić ponownie moduł HSM?
 
 Moduł HSM ma opcję ponownego uruchamiania wiersza polecenia, jednak często występują problemy z ponownym uruchamianiem. z tego powodu zaleca się ponowne uruchomienie, które powoduje zgłoszenie żądania pomocy technicznej z firmą Microsoft w celu fizycznego ponownego uruchomienia urządzenia. 
 
-## <a name="cryptography-and-standards"></a>Standardy i kryptografii
+## <a name="cryptography-and-standards"></a>Kryptografia i standardy
 
-### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>Pyt.: Czy bezpieczne przechowywanie kluczy szyfrowania dla najważniejszych danych jest w dedykowanym module HSM?
+### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>P: Czy można bezpiecznie przechowywać klucze szyfrowania dla najważniejszych danych w dedykowanym module HSM?
 
-Tak, przez sprzętowy moduł zabezpieczeń w wersji dedykowanej obsługuje urządzenia SafeNet sieciowych przez moduł HSM 7, czy korzystanie ze standardem FIPS 140-2 poziom 3 prawidłowe sprzętowych modułów zabezpieczeń. 
+Tak, dedykowane zasady dotyczące modułu HSM SafeNetą urządzenia modułu HSM 7, które korzystają z zweryfikowanych sprzętowych modułów zabezpieczeń poziomu 2 trybu FIPS 140-2. 
 
-### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>Pyt.: Jakie klucze kryptograficzne i algorytmy są obsługiwane przez dedykowany moduł HSM?
+### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>P: jakie klucze kryptograficzne i algorytmy są obsługiwane przez dedykowany moduł HSM?
 
-Dedykowane urządzenia przepisami SafeNet sieciowych przez moduł HSM 7 usługi sprzętowego modułu zabezpieczeń. Obsługują one szeroką gamę typów kluczy kryptograficznych i algorytmy, w tym: Pełna obsługa Suite B
+Dedykowane zasady usługi HSM SafeNet Network module HSM 7. Obsługują one szeroką gamę typów kluczy kryptograficznych i algorytmy, w tym: Pełna obsługa Suite B
 
-* Asymetryczny:
+* Szyfrowanie
   * RSA
   * DSA
-  * Grupa Diffie'ego Hellmana
-  * Krzywej eliptycznej
-  * Kryptografia (ECDSA ECDH, Ed25519, ECIES) za pomocą nazwanych, zdefiniowanych przez użytkownika i krzywych Brainpool, KCDSA
-* Symetryczne:
-  * USŁUGA GCM AES
+  * Diffie-Hellmana
+  * Krzywa eliptyczna
+  * Kryptografia (ECDSA, ECDH, Ed25519, ECIES) z nazwanymi, zdefiniowanymi przez użytkownika i Brainpool krzywych, KCDSA
+* Symetrycznego
+  * AES — GCM
   * Potrójny algorytm DES
   * DES
-  * ARIA, INICJATORA
-  * RC2
+  * ARIA, INICJATOR
+  * WERSJI
   * RC4
   * RC5
   * CAST
-  * Skrót/algorytm skrótu/HMAC: SHA-1, SHA-2, SM3
-  * Wyprowadzanie klucza: Tryb licznika SP800-108
+  * Skrót/skrót komunikatu/HMAC: SHA-1, SHA-2, SM3
+  * Wyprowadzanie klucza: SP800-108 — tryb licznika
   * Zawijanie kluczy: SP800-38F
-  * Generowanie liczb losowych: FIPS 140-2 — zatwierdzone DRBG (tryb SP 800-90), zgodne z BSI DRG. 4
+  * Generowanie liczb losowych: FIPS 140-2 zatwierdzone DRBG (tryb SP 800-90), zgodne z BSI DRG. 4
 
-### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>Pyt.: Czy dedykowany poziom modułu HSM 140-2 na poziomie 3 został sprawdzony?
+### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>P: czy dedykowany poziom modułu HSM FIPS 140-2 na poziomie 3 został sprawdzony?
 
-Tak. Dedykowana usługa HSM Inicjuje obsługę urządzenia SafeNet sieciowych przez moduł HSM 7, czy korzystanie ze standardem FIPS 140-2 poziom 3 prawidłowe sprzętowych modułów zabezpieczeń.
+Tak. Dedykowane zasady usługi HSM SafeNetą urządzenia modułu HSM 7, które korzystają z zweryfikowanej sprzętowych modułów zabezpieczeń poziomu 2 trybu FIPS 140-2.
 
-### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>Pyt.: Co należy zrobić, aby upewnić się, że działa dedykowany moduł HSM w trybie zweryfikowanego poziomu 3 FIPS 140-2?
+### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>P: co należy zrobić, aby upewnić się, że działa dedykowany moduł HSM w trybie sprawdzania poprawności poziomu 3 FIPS 140-2?
 
-Usługę HSM w wersji dedykowanej obsługuje urządzenia SafeNet Luna sieciowych przez moduł HSM 7. Użyj tych urządzeń ze standardem FIPS 140-2 poziom 3 zweryfikować sprzętowych modułów zabezpieczeń. Konfiguracja domyślna wdrożone, systemu operacyjnego i oprogramowania układowego są również zweryfikowane w trybie FIPS. Nie trzeba podejmować żadnych działań ze standardem FIPS 140-2 Level 3 zgodności.
+Dedykowana usługa HSM ma postanowienia SafeNet Luna Network HSM 7. Te urządzenia korzystają z zweryfikowanych sprzętowych modułów zabezpieczeń poziomu 3 FIPS 140-2. Domyślna wdrożona konfiguracja, system operacyjny i oprogramowanie układowe są również zweryfikowane w trybie FIPS. Nie trzeba podejmować żadnych działań w przypadku zgodności ze standardem FIPS 140-2 Level 3.
 
-### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>Pyt.: Jak klient zabezpiecza, gdy moduł HSM jest anulowanie aprowizacji materiału klucza jest wyczyszczone?
+### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>P: jak klient zapewnia, że gdy moduł HSM jest niezainicjowany, cały materiał klucza jest wyczyszczony?
 
-Przed zażądaniem anulowania obsługi, klient musi zeroized modułem HSM, za pomocą dostępne narzędzia klienckie sprzętowego modułu zabezpieczeń firmy Gemalto.
+Przed zażądaniem anulowania aprowizacji klient musi mieć zero modułów HSM przy użyciu firmy Gemalto dostarczonych narzędzi klienta modułu HSM.
 
-## <a name="performance-and-scale"></a>Wydajność i skalowanie
+## <a name="performance-and-scale"></a>Wydajność i skala
 
-### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>Pyt.: Ile operacji kryptograficznych jest obsługiwanych na sekundę z dedykowanym modułem HSM?
+### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>P: ile operacji kryptograficznych jest obsługiwanych na sekundę z dedykowanym modułem HSM?
 
-Dedykowane urządzenia przepisami SafeNet sieciowych przez moduł HSM 7 sprzętowego modułu zabezpieczeń (model A790). Poniżej przedstawiono podsumowanie maksymalną wydajność niektórych operacji: 
+Dedykowane wymagania dotyczące modułu HSM SafeNet Network HSM 7 (model A790). Oto podsumowanie maksymalnej wydajności niektórych operacji: 
 
-* RSA-2048: 10 000 transakcji na sekundę
-* ECC P256: 20 000 transakcji na sekundę
+* RSA-2048:10 000 transakcji na sekundę
+* P256 ECC: 20 000 transakcji na sekundę
 * AES-GCM: 17 000 transakcji na sekundę
 
-### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>Pyt.: Ile partycji można utworzyć w dedykowanym module HSM?
+### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>P: ile partycji można utworzyć w dedykowanym module HSM?
 
 A790 użyty model SafeNet Luna HSM 7 obejmuje licencję na 10 partycji w kosztach usługi. Na urządzeniu obowiązuje limit 100 partycji i dodanie partycji do tego limitu spowoduje policzenie dodatkowych kosztów licencjonowania i wymaga instalacji nowego pliku licencji na urządzeniu.
 
-### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>Pyt.: Ile kluczy można obsługiwać w dedykowanym module HSM?
+### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>P: ile kluczy może być obsługiwanych w dedykowanym module HSM?
 
 Maksymalna liczba kluczy jest funkcją dostępnej pamięci. A790 używany model SafeNet Luna 7 ma 32MB pamięci. Poniższe liczby są również stosowane do par kluczy, jeśli są używane klucze asymetryczne.
 
-* SZYFROWANIA RSA 2048 - 19,000
-* ECC P256 - 91,000
+* RSA-2048-19 000
+* ECC-P256-91 000
 
-Pojemność różnią się w zależności od określonych kluczowych atrybutów w szablonie generowania kluczy i liczby partycji.
+Pojemność zależy od określonych atrybutów klucza ustawionych w szablonie generowania klucza i liczby partycji.

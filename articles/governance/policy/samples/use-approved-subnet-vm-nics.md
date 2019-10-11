@@ -1,21 +1,21 @@
 ---
-title: Przykład — używanie zatwierdzonej podsieci dla interfejsów sieci maszyn wirtualnych
-description: Ta przykładowa definicja zasad wymaga, aby interfejsy sieciowe używały zatwierdzonej podsieci.
+title: Przykład — używanie zatwierdzonej podsieci dla kart sieciowych maszyn wirtualnych
+description: Ta przykładowa definicja zasad wymaga używania zatwierdzonej podsieci przez interfejsy sieciowe.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f3f7b6cf54665157bc13ea7e86b384647da44be4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: eec463c4f547f99d598747364bbfe952e762e292
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981300"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254671"
 ---
-# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Przykład — używanie zatwierdzonej podsieci dla interfejsów sieci maszyn wirtualnych
+# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Przykład — Używanie zatwierdzonej podsieci dla interfejsów sieciowych maszyny wirtualnej
 
-Te zasady wymagają, aby interfejsy sieciowe używały zatwierdzonej podsieci. Należy określić identyfikator zatwierdzonej podsieci.
+Ta zasada wymaga używania zatwierdzonej podsieci przez interfejsy sieciowe. Należy określić identyfikator zatwierdzonej podsieci.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Te zasady wymagają, aby interfejsy sieciowe używały zatwierdzonej podsieci. N
 
 [!code-json[main](../../../../policy-templates/samples/Network/vm-creation-in-approved-subnet/azurepolicy.json "Use approved subnet for VM network interfaces")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -40,7 +40,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -sub
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -58,7 +58,7 @@ az policy definition create --name 'vm-creation-in-approved-subnet' --display-na
 az policy assignment create --name <assignmentname> --scope <scope> --policy "vm-creation-in-approved-subnet"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -68,4 +68,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

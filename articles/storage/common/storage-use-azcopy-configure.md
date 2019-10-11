@@ -8,12 +8,12 @@ ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 8a96c5b2d39967c8ee82f48e880bac9270a58c36
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3843eb2e906e3fb8d390e509e17117b7849ac220
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844817"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244699"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy
 
@@ -28,11 +28,11 @@ AzCopy to narzędzie wiersza polecenia, które służy do kopiowania obiektów b
 
 ## <a name="configure-proxy-settings"></a>Konfigurowanie ustawień serwera proxy
 
-Aby skonfigurować ustawienia serwera proxy dla AzCopy, należy ustawić `https_proxy` zmienną środowiskową. Jeśli uruchomisz program AzCopy w systemie Windows, AzCopy automatycznie wykryje ustawienia proxy, więc nie trzeba używać tego ustawienia w systemie Windows. Jeśli zdecydujesz się używać tego ustawienia w systemie Windows, spowoduje to przesłonięcie automatycznego wykrywania.
+Aby skonfigurować ustawienia serwera proxy dla AzCopy, należy ustawić zmienną środowiskową `https_proxy`. Jeśli uruchomisz program AzCopy w systemie Windows, AzCopy automatycznie wykryje ustawienia proxy, więc nie trzeba używać tego ustawienia w systemie Windows. Jeśli zdecydujesz się używać tego ustawienia w systemie Windows, spowoduje to przesłonięcie automatycznego wykrywania.
 
 | System operacyjny | Polecenie  |
 |--------|-----------|
-| **Windows** | W wierszu polecenia Użyj:`set https_proxy=<proxy IP>:<proxy port>`<br> W programie PowerShell Użyj:`$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | W wierszu polecenia Użyj: `set https_proxy=<proxy IP>:<proxy port>`<br> W programie PowerShell Użyj: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
@@ -40,13 +40,13 @@ Obecnie AzCopy nie obsługuje serwerów proxy, które wymagają uwierzytelniania
 
 ## <a name="optimize-throughput"></a>Optymalizowanie przepływności
 
-Możesz użyć `cap-mbps` flagi, aby umieścić górną granicę współczynnika danych przepływności. Na przykład następujące polecenie powoduje wypróbowanie przepływności do `10` megabitów (MB) na sekundę.
+Możesz użyć flagi `cap-mbps`, aby umieścić górny limit szybkości danych przepływności. Na przykład następujące polecenie powoduje wypróbowanie przepustowości dla `10` megabitów (MB) na sekundę.
 
 ```azcopy
 azcopy cap-mbps 10
 ```
 
-Przepływność może ulec zmniejszeniu podczas przesyłania małych plików. Można zwiększyć przepływność przez ustawienie `AZCOPY_CONCURRENCY_VALUE` zmiennej środowiskowej. Ta zmienna określa liczbę równoczesnych żądań, które mogą wystąpić.  Jeśli komputer ma mniej niż 5 procesorów CPU, wartość tej zmiennej jest ustawiana na `32`. W przeciwnym razie wartość domyślna jest równa 16 pomnożona przez liczbę procesorów CPU. Maksymalna wartość domyślna tej zmiennej to `300`, ale można ręcznie ustawić tę wartość na wyższą lub niższą.
+Przepływność może ulec zmniejszeniu podczas przesyłania małych plików. Przepustowość można zwiększyć, ustawiając zmienną środowiskową `AZCOPY_CONCURRENCY_VALUE`. Ta zmienna określa liczbę równoczesnych żądań, które mogą wystąpić.  Jeśli komputer ma mniej niż 5 procesorów CPU, wartość tej zmiennej jest ustawiana na `32`. W przeciwnym razie wartość domyślna jest równa 16 pomnożona przez liczbę procesorów CPU. Maksymalna wartość domyślna tej zmiennej to `300`, ale można ręcznie ustawić tę wartość na wyższą lub niższą.
 
 | System operacyjny | Polecenie  |
 |--------|-----------|
@@ -54,11 +54,11 @@ Przepływność może ulec zmniejszeniu podczas przesyłania małych plików. Mo
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Użyj, `azcopy env` aby sprawdzić bieżącą wartość tej zmiennej.  Jeśli wartość jest pusta, `AZCOPY_CONCURRENCY_VALUE` zmienna jest ustawiona na `300`wartość domyślną.
+Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej.  Jeśli wartość jest pusta, zmienna `AZCOPY_CONCURRENCY_VALUE` jest ustawiona na wartość domyślną `300`.
 
 ## <a name="change-the-location-of-the-log-files"></a>Zmień lokalizację plików dziennika
 
-Domyślnie pliki dziennika znajdują się w `%USERPROFILE\\.azcopy` katalogu w systemie Windows lub `$HOME\\.azcopy` w katalogu na komputerach Mac i Linux. Tę lokalizację można zmienić, jeśli zachodzi taka potrzeba przy użyciu tych poleceń.
+Domyślnie pliki dziennika znajdują się w katalogu `%USERPROFILE%\.azcopy` w systemie Windows lub w katalogu `$HOME\\.azcopy` na komputerach Mac i Linux. Tę lokalizację można zmienić, jeśli zachodzi taka potrzeba przy użyciu tych poleceń.
 
 | System operacyjny | Polecenie  |
 |--------|-----------|
@@ -66,28 +66,28 @@ Domyślnie pliki dziennika znajdują się w `%USERPROFILE\\.azcopy` katalogu w s
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-Użyj, `azcopy env` aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, dzienniki są zapisywane w domyślnej lokalizacji.
+Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, dzienniki są zapisywane w domyślnej lokalizacji.
 
 ## <a name="change-the-default-log-level"></a>Zmień domyślny poziom dziennika
 
-Domyślnie poziom dziennika AzCopy jest ustawiony na `INFO`. Jeśli chcesz zmniejszyć szczegółowość dziennika w celu zaoszczędzenia miejsca na dysku, Zastąp to ustawienie przy użyciu ``--log-level`` opcji. 
+Domyślnie poziom dziennika AzCopy jest ustawiony na `INFO`. Jeśli chcesz zmniejszyć szczegółowość dziennika w celu zaoszczędzenia miejsca na dysku, Zastąp to ustawienie przy użyciu opcji ``--log-level``. 
 
-Dostępne poziomy dziennika to: `DEBUG`, `INFO`, `WARNING` `ERROR` `FATAL`, ,i.`PANIC`
+Dostępne poziomy dziennika: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` i `FATAL`.
 
 ## <a name="troubleshoot-issues"></a>Rozwiązywanie problemów
 
 AzCopy tworzy dziennik i planowanie plików dla każdego zadania. Możesz użyć dzienników, aby zbadać i rozwiązać ewentualne potencjalne problemy. 
 
-Dzienniki będą zawierać stan niepowodzeń (`UPLOADFAILED`, `COPYFAILED`, i `DOWNLOADFAILED`), pełną ścieżkę i przyczynę niepowodzenia.
+Dzienniki będą zawierać stan niepowodzenia (`UPLOADFAILED`, `COPYFAILED` i `DOWNLOADFAILED`), pełną ścieżkę i przyczynę niepowodzenia.
 
-Domyślnie pliki dziennika i planu znajdują się w `%USERPROFILE\\.azcopy` katalogu w systemie Windows lub `$HOME\\.azcopy` w katalogu na komputerach Mac i Linux.
+Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE\\.azcopy` w katalogu systemu Windows lub `$HOME\\.azcopy` na komputerach Mac i Linux.
 
 > [!IMPORTANT]
 > Podczas przesyłania żądania do pomoc techniczna firmy Microsoft (lub rozwiązywania problemu związanego z jakąkolwiek osobą trzecią) należy udostępnić redagowane wersję polecenia, które chcesz wykonać. Gwarantuje to, że SYGNATURa dostępu współdzielonego nie zostanie przypadkowo udostępniona z każdy. Wersję redagowane można znaleźć na początku pliku dziennika.
 
 ### <a name="review-the-logs-for-errors"></a>Przejrzyj dzienniki pod kątem błędów
 
-Następujące polecenie spowoduje wyświetlenie wszystkich błędów o `UPLOADFAILED` stanie `04dc9ca9-158f-7945-5933-564021086c79` z dziennika:
+Następujące polecenie spowoduje wyświetlenie wszystkich błędów o stanie `UPLOADFAILED` z dziennika `04dc9ca9-158f-7945-5933-564021086c79`:
 
 **Windows (program PowerShell)**
 

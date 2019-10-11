@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: c291a914ae9e76ce548df2a52523d60b69f0a7b0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bc20af10e2e5b2ceb26c1cc891a8f69eb44e5740
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882711"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242883"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Definiowanie i używanie zadań moderowania (.NET)
 
-Zadanie moderowania służy jako rodzaj otoki dla funkcji moderowania zawartości, przepływów pracy i przeglądów. Ten przewodnik zawiera informacje i przykłady kodu ułatwiające rozpoczęcie pracy z zestawem [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
+Zadanie moderowania służy jako rodzaj otoki dla funkcji moderowania zawartości, przepływów pracy i przeglądów. Ten przewodnik zawiera informacje i przykłady kodu ułatwiające rozpoczęcie pracy z [zestawem SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
 
 - Uruchamianie zadania moderowania w celu skanowania i tworzenia przeglądów dla użytkowników pełniących rolę moderatorów
 - Pobieranie stanu przeglądu oczekującego
@@ -67,8 +67,7 @@ Zmodyfikuj program za pomocą instrukcji.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -76,7 +75,7 @@ using System.IO;
 using System.Threading;
 ```
 
-### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
+### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usług Content Moderator
 
 Dodaj następujący kod, aby utworzyć klienta usługi Content Moderator dla Twojej subskrypcji.
 
@@ -243,9 +242,9 @@ using (TextWriter writer = new StreamWriter(OutputFile, false))
 > [!NOTE]
 > Klucz usługi Content Moderator ma limit szybkości wyrażany w żądaniach na sekundę (RPS). Po przekroczeniu tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429.
 >
-> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
+> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
-## <a name="run-the-program-and-review-the-output"></a>Uruchamianie program i przeglądanie danych wyjściowych
+## <a name="run-the-program-and-review-the-output"></a>Uruchamianie programu i przeglądanie danych wyjściowych
 
 Zobaczysz w konsoli dane wyjściowe podobne do następujących:
 
@@ -324,4 +323,4 @@ Zobaczysz odpowiedź podobną do następującej:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Pobierz zestaw [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.
+Pobierz zestaw [SDK Content Moderator dla platformy.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.

@@ -1,6 +1,6 @@
 ---
 title: Szybki Start — Konfigurowanie kompleksowego szyfrowania SSL przy użyciu usługi Azure Application Gateway — Azure Portal | Microsoft Docs
-description: Dowiedz się, jak za pomocą Azure Portal utworzyć Application Gateway platformy Azure z kompleksowym szyfrowaniem SSL.
+description: Dowiedz się, jak używać Azure Portal do tworzenia bramy aplikacji z kompleksowym szyfrowaniem SSL.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 4/30/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: a37b313bd808ee0441d84ac92050b087eba7ac9d
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ba31b5ebf83edcd08060a2acc3b5639a521e2729
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097180"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243667"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>Konfigurowanie kompleksowego protokołu SSL przy użyciu Application Gateway z portalem
 
-W tym artykule pokazano, jak za pomocą Azure Portal skonfigurować kompleksowe szyfrowanie SSL przy użyciu jednostki SKU bramy aplikacji w wersji 1.  
+W tym artykule opisano, jak używać Azure Portal do konfigurowania kompleksowego szyfrowania SSL (SSL) za pośrednictwem jednostki SKU systemu Azure Application Gateway v1.
 
 > [!NOTE]
 > Jednostka SKU Application Gateway v2 wymaga zaufanych certyfikatów głównych do włączenia konfiguracji kompleksowej.
@@ -26,19 +26,21 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby skonfigurować kompleksowe połączenie SSL z Application Gateway, wymagany jest certyfikat dla bramy, a certyfikaty są wymagane dla serwerów zaplecza. Certyfikat bramy służy do wyprowadzania klucza symetrycznego zgodnie ze specyfikacją protokołu SSL. Klucz symetryczny jest następnie używany do szyfrowania i odszyfrowywania ruchu wysyłanego do bramy. Aby kompleksowe szyfrowanie SSL było możliwe, w bramie aplikacji musi być dozwolony prawidłowy serwer zaplecza. W tym celu Przekaż certyfikat publiczny serwerów zaplecza, nazywany również certyfikatami uwierzytelniania (v1) lub zaufanymi certyfikatami głównymi (v2), do Application Gateway. Dodanie certyfikatu zapewnia, że Application Gateway komunikuje się tylko ze znanymi wystąpieniami zaplecza. Pozwala to na zapewnienie kompleksowej komunikacji.
+Aby skonfigurować kompleksowe połączenie SSL z bramą aplikacji, wymagany jest certyfikat dla bramy. Certyfikaty są również wymagane dla serwerów zaplecza. Certyfikat bramy służy do uzyskiwania klucza symetrycznego w zgodności ze specyfikacją protokołu SSL. Klucz symetryczny jest następnie używany do szyfrowania i odszyfrowywania ruchu wysyłanego do bramy. 
+
+Aby kompleksowe szyfrowanie SSL było możliwe, w bramie aplikacji musi być dozwolony prawidłowy serwer zaplecza. Aby umożliwić ten dostęp, Przekaż certyfikat publiczny serwerów zaplecza, nazywany również certyfikatami uwierzytelniania (v1) lub zaufanymi certyfikatami głównymi (v2), do bramy aplikacji. Dodanie certyfikatu zapewnia, że Brama aplikacji komunikuje się tylko ze znanymi wystąpieniami zaplecza. Ta konfiguracja zabezpiecza kompleksową komunikację.
 
 Aby dowiedzieć się więcej, zobacz Kończenie [protokołu SSL i kompleksowy protokół SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview).
 
 ## <a name="create-a-new-application-gateway-with-end-to-end-ssl"></a>Tworzenie nowej bramy aplikacji z kompleksowym protokołem SSL
 
-Aby utworzyć nową bramę aplikacji z kompleksowym szyfrowaniem SSL, należy najpierw włączyć Kończenie protokołu SSL podczas tworzenia nowej bramy aplikacji. Spowoduje to włączenie szyfrowania SSL na potrzeby komunikacji między klientem a bramą aplikacji. Następnie należy dozwolonych certyfikaty serwerów zaplecza w ustawieniach protokołu HTTP, aby umożliwić szyfrowanie SSL komunikacji między bramą aplikacji a serwerami zaplecza, co zapewnia kompleksowe szyfrowanie SSL.
+Aby utworzyć nową bramę aplikacji z kompleksowym szyfrowaniem SSL, należy najpierw włączyć Kończenie protokołu SSL podczas tworzenia nowej bramy aplikacji. Ta akcja umożliwia szyfrowanie SSL na potrzeby komunikacji między klientem a bramą aplikacji. Następnie należy umieścić na liście bezpiecznych adresatów certyfikaty dla serwerów zaplecza w ustawieniach protokołu HTTP. Ta konfiguracja umożliwia szyfrowanie SSL komunikacji między bramą aplikacji a serwerami zaplecza. Ma to na celu kompleksowe szyfrowanie SSL.
 
 ### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>Włącz Kończenie protokołu SSL podczas tworzenia nowej bramy aplikacji
 
-Zapoznaj się z tym artykułem, aby dowiedzieć się, jak [włączyć Kończenie protokołu SSL podczas tworzenia nowej bramy aplikacji](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+Aby dowiedzieć się więcej, zobacz [Włączanie zakończenia protokołu SSL podczas tworzenia nowej bramy aplikacji](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
-### <a name="add-authenticationroot-certificate-of-back-end-servers"></a>Dodaj uwierzytelnianie/certyfikat główny serwerów zaplecza
+### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>Dodawanie uwierzytelniania/certyfikatów głównych serwerów zaplecza
 
 1. Wybierz pozycję **Wszystkie zasoby**, a następnie wybierz pozycję **myAppGateway**.
 
@@ -46,48 +48,49 @@ Zapoznaj się z tym artykułem, aby dowiedzieć się, jak [włączyć Kończenie
 
 3. Wybierz pozycję **appGatewayBackendHttpSettings**.
 
-4. W obszarze **Protokół**wybierz pozycję **https**. Zostanie wyświetlone okienko **certyfikatów uwierzytelniania zaplecza lub zaufanych certyfikatów głównych** . 
+4. W obszarze **Protokół**wybierz pozycję **https**. Zostanie wyświetlone okienko **certyfikatów uwierzytelniania zaplecza lub zaufanych certyfikatów głównych** .
 
-5. Wybierz pozycję **Utwórz nowy**.
+5. Wybierz pozycję**Utwórz nowy**.
 
-6. Wprowadź odpowiednią **nazwę**.
+6. W polu **Nazwa** wprowadź odpowiednią nazwę.
 
-7. Wybierz plik certyfikatu przy użyciu pola **Przekaż certyfikat CER** .
+7. Wybierz plik certyfikatu w polu **Przekaż certyfikat CER** .
 
-   W przypadku bram aplikacji Standard i WAF (v1) należy przekazać klucz publiczny certyfikatu serwera wewnętrznej bazy danych w formacie CER.
+   W przypadku bram aplikacji Standard i WAF (v1) należy przekazać klucz publiczny certyfikatu serwera zaplecza w formacie CER.
 
-   ![addcert](./media/end-to-end-ssl-portal/addcert.png)
+   ![Dodawanie certyfikatu](./media/end-to-end-ssl-portal/addcert.png)
 
-   W przypadku bram aplikacji Standard_v2 i WAF_v2 należy przekazać **certyfikat główny** certyfikatu serwera wewnętrznej bazy danych w formacie CER. Jeśli certyfikat zaplecza został wystawiony przez dobrze znany urząd certyfikacji, możesz zaznaczyć pole wyboru Użyj certyfikatu dobrze znanego urzędu certyfikacji i nie ma potrzeby przekazywania certyfikatu.
+   W przypadku bram aplikacji Standard_v2 i WAF_v2 należy przekazać certyfikat główny certyfikatu serwera zaplecza w formacie CER. Jeśli certyfikat zaplecza jest wystawiany przez dobrze znany urząd certyfikacji, można zaznaczyć pole wyboru **Użyj dobrego certyfikatu urzędu certyfikacji** , a następnie nie trzeba przekazywać certyfikatu.
 
-   ![addtrustedrootcert](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
+   ![Dodaj zaufany certyfikat główny](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
-   ![rootcert](./media/end-to-end-ssl-portal/trustedrootcert.png)
+   ![Certyfikat główny](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
 8. Wybierz pozycję **Zapisz**.
 
-## <a name="enable-end-to-end-ssl-for-existing-application-gateway"></a>Włączanie kompleksowego protokołu SSL dla istniejącej bramy aplikacji
+## <a name="enable-end-to-end-ssl-for-an-existing-application-gateway"></a>Włączanie kompleksowego protokołu SSL dla istniejącej bramy aplikacji
 
-Aby skonfigurować istniejącą bramę aplikacji z kompleksowym szyfrowaniem SSL, należy najpierw włączyć zakończenie protokołu SSL w odbiorniku. Spowoduje to włączenie szyfrowania SSL na potrzeby komunikacji między klientem a bramą aplikacji. Następnie należy dozwolonych certyfikaty serwerów zaplecza w ustawieniach protokołu HTTP, aby umożliwić szyfrowanie SSL komunikacji między bramą aplikacji a serwerami zaplecza, co zapewnia kompleksowe szyfrowanie SSL.
+Aby skonfigurować istniejącą bramę aplikacji z kompleksowym szyfrowaniem SSL, należy najpierw włączyć zakończenie protokołu SSL w odbiorniku. Ta akcja umożliwia szyfrowanie SSL na potrzeby komunikacji między klientem i bramą aplikacji. Następnie należy umieścić te certyfikaty dla serwerów zaplecza w ustawieniach protokołu HTTP na liście bezpiecznych adresatów. Ta konfiguracja umożliwia szyfrowanie SSL komunikacji między bramą aplikacji a serwerami zaplecza. Ma to na celu kompleksowe szyfrowanie SSL.
 
-Musisz użyć odbiornika z protokołem HTTPS i certyfikatem, aby włączyć Kończenie protokołu SSL. Z tego względu można wybrać opcję użycia istniejącego odbiornika z protokołem HTTPS i certyfikatem lub utworzyć nowy odbiornik. W przypadku wybrania pierwszego z nich można zignorować poniższe kroki, aby **włączyć Kończenie protokołu SSL w istniejącej bramie aplikacji** i bezpośrednio przenieść je do sekcji **Dodawanie uwierzytelniania/zaufanych certyfikatów głównych dla serwerów zaplecza** . W przypadku wybrania tej opcji należy wykonać następujące czynności.
+Musisz użyć odbiornika z protokołem HTTPS i certyfikatem do włączenia kończenia protokołu SSL. Możesz użyć istniejącego odbiornika, który spełnia te warunki, lub utworzyć nowy odbiornik. Jeśli wybierzesz poprzednią opcję, możesz zignorować następujące polecenie "Włącz zakończenie protokołu SSL w istniejącej bramie aplikacji" i przejść bezpośrednio do sekcji "Dodawanie uwierzytelniania/zaufanych certyfikatów głównych dla serwerów zaplecza".
 
-### <a name="enable-ssl-termination-in-existing-application-gateway"></a>Włącz zakończenie protokołu SSL w istniejącej bramie aplikacji
+W przypadku wybrania tej opcji należy zastosować kroki opisane w poniższej procedurze.
+### <a name="enable-ssl-termination-in-an-existing-application-gateway"></a>Włączanie zakończenia protokołu SSL w istniejącej bramie aplikacji
 
 1. Wybierz pozycję **Wszystkie zasoby**, a następnie wybierz pozycję **myAppGateway**.
 
-2. Wybierz pozycję detektory z menu po lewej stronie.
+2. Wybierz pozycję **detektory** z menu po lewej stronie.
 
-3. Wybierz odbiornik **podstawowy** i **wiele witryn** zgodnie z wymaganiami.
+3. W zależności od potrzeb wybierz opcję odbiornik **podstawowy** lub **wiele witryn** .
 
 4. W obszarze **Protokół**wybierz pozycję **https**. Zostanie wyświetlone okienko dla **certyfikatu** .
 
-5. Przekaż certyfikat PFX, który ma zostać użyty do zakończenia protokołu SSL między bramą klienta i aplikacji.
+5. Przekaż certyfikat PFX, którego zamierzasz użyć do zakończenia protokołu SSL między klientem a bramą aplikacji.
 
    > [!NOTE]
-   > Do celów testowych można użyć certyfikatu z podpisem własnym. ale nie jest to zalecane w przypadku obciążeń produkcyjnych, ponieważ są one trudniejsze do zarządzania i nie są całkowicie bezpieczne. Dowiedz się, jak [utworzyć certyfikat z](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate)podpisem własnym.
+   > Do celów testowych można użyć certyfikatu z podpisem własnym. Nie jest to jednak zalecane w przypadku obciążeń produkcyjnych, ponieważ są one trudniejsze do zarządzania i nie są całkowicie bezpieczne. Aby uzyskać więcej informacji, zobacz [Tworzenie certyfikatu z](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate)podpisem własnym.
 
-6. Dodaj inne wymagane ustawienia dla **odbiornika** zgodnie z wymaganiami.
+6. Dodaj inne wymagane ustawienia dla **odbiornika**, w zależności od wymagań.
 
 7. Wybierz opcję **OK**, aby zapisać.
 
@@ -95,25 +98,25 @@ Musisz użyć odbiornika z protokołem HTTPS i certyfikatem, aby włączyć Koń
 
 1. Wybierz pozycję **Wszystkie zasoby**, a następnie wybierz pozycję **myAppGateway**.
 
-2. Wybierz pozycję **Ustawienia http** z menu po lewej stronie. Można dozwolonych certyfikaty w istniejącym ustawieniu HTTP zaplecza lub utworzyć nowe ustawienie HTTP. W poniższym kroku dozwolonychmy certyfikat dla domyślnego ustawienia HTTP, **appGatewayBackendHttpSettings**.
+2. Wybierz pozycję **Ustawienia http** z menu po lewej stronie. Certyfikaty można umieścić w istniejącym ustawieniu HTTP zaplecza na liście bezpiecznych adresatów lub utworzyć nowe ustawienie protokołu HTTP. (W następnym kroku certyfikat dla domyślnego ustawienia HTTP, **appGatewayBackendHttpSettings**, zostanie dodany do listy bezpiecznych adresatów).
 
 3. Wybierz pozycję **appGatewayBackendHttpSettings**.
 
 4. W obszarze **Protokół**wybierz pozycję **https**. Zostanie wyświetlone okienko **certyfikatów uwierzytelniania zaplecza lub zaufanych certyfikatów głównych** . 
 
-5. Wybierz pozycję **Utwórz nowy**.
+5. Wybierz pozycję**Utwórz nowy**.
 
-6. Wprowadź odpowiednią **nazwę**.
+6. W polu **Nazwa** wprowadź odpowiednią nazwę.
 
-7. Wybierz plik certyfikatu przy użyciu pola **Przekaż certyfikat CER** .
+7. Wybierz plik certyfikatu w polu **Przekaż certyfikat CER** .
 
-   W przypadku bram aplikacji Standard i WAF (v1) należy przekazać klucz publiczny certyfikatu serwera wewnętrznej bazy danych w formacie CER.
+   W przypadku bram aplikacji Standard i WAF (v1) należy przekazać klucz publiczny certyfikatu serwera zaplecza w formacie CER.
 
-   ![addcert](./media/end-to-end-ssl-portal/addcert.png)
+   ![Dodawanie certyfikatu](./media/end-to-end-ssl-portal/addcert.png)
 
-   W przypadku bram aplikacji Standard_v2 i WAF_v2 należy przekazać **certyfikat główny** certyfikatu serwera wewnętrznej bazy danych w formacie CER. Jeśli certyfikat zaplecza został wystawiony przez dobrze znany urząd certyfikacji, możesz zaznaczyć pole wyboru Użyj certyfikatu dobrze znanego urzędu certyfikacji i nie ma potrzeby przekazywania certyfikatu.
+   W przypadku bram aplikacji Standard_v2 i WAF_v2 należy przekazać certyfikat główny certyfikatu serwera zaplecza w formacie CER. Jeśli certyfikat zaplecza jest wystawiony przez dobrze znany urząd certyfikacji, można zaznaczyć pole wyboru **Użyj certyfikatu dobrze znanego urzędu certyfikacji** , a następnie nie trzeba przekazywać certyfikatu.
 
-   ![addtrustedrootcert](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
+   ![Dodaj zaufany certyfikat główny](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
 8. Wybierz pozycję **Zapisz**.
 

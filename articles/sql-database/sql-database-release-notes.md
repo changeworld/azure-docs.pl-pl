@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 90be253a4763aebd31b663aa0e765c187c8bff92
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266423"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249383"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji SQL Database
 
@@ -24,7 +24,7 @@ W tym artykule wymieniono SQL Database funkcje, które są obecnie dostępne w p
 
 ### <a name="single-databasetabsingle-database"></a>[Pojedyncza baza danych](#tab/single-database)
 
-| Cecha | Szczegóły |
+| Funkcja | Szczegóły |
 | ---| --- |
 | [Prywatny link do platformy Azure](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Łącze prywatne upraszcza architekturę sieci i zabezpiecza połączenie między punktami końcowymi na platformie Azure, zachowując dane w sieci platformy Azure i eliminując ekspozycję z Internetu. Łącze prywatne pozwala też tworzyć i renderować własne usługi na platformie Azure. |
 | Szybsze odzyskiwanie bazy danych przy użyciu pojedynczych baz danych i pul elastycznych | Aby uzyskać więcej informacji, zobacz [przyspieszone odzyskiwanie bazy danych](sql-database-accelerated-database-recovery.md).|
@@ -44,10 +44,11 @@ W tym artykule wymieniono SQL Database funkcje, które są obecnie dostępne w p
 
 ### <a name="managed-instancetabmanaged-instance"></a>[Wystąpienie zarządzane](#tab/managed-instance)
 
-| Cecha | Szczegóły |
+| Funkcja | Szczegóły |
 | ---| --- |
+| <a href="/azure/sql-database/sql-database-managed-instance-connectivity-architecture#service-aided-subnet-configuration-public-preview-in-east-us-and-west-us">Konfiguracja podsieci z obsługą usług</a> | Bezpieczny i wygodny sposób zarządzania konfiguracją podsieci. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Pule wystąpień</a> | Wygodny i ekonomiczny sposób migracji mniejszych wystąpień SQL do chmury. |
-| <a href="https://aka.ms/managed-instance-tde-byok">Transparent Data Encryption (TDE) z Bring Your Own Key (BYOK)</a> |Aby uzyskać więcej informacji [, zobacz Usługa Azure SQL transparent Data Encryption z kluczami zarządzanymi przez klienta w programie Azure Key Vault: Obsługa](transparent-data-encryption-byok-azure-sql.md)Bring Your Own Key.|
+| <a href="https://aka.ms/managed-instance-tde-byok">Transparent Data Encryption (TDE) z Bring Your Own Key (BYOK)</a> |Aby uzyskać więcej informacji, zobacz temat [usługa Azure SQL transparent Data Encryption z kluczami zarządzanymi przez klienta w programie Azure Key Vault: obsługa Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md).|
 | <a href="https://aka.ms/managed-instance-aadlogins">Nazwy główne serwera usługi Azure AD na poziomie wystąpienia (logowania)</a> | Utwórz nazwy logowania na poziomie serwera przy użyciu instrukcji <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN from External Provider</a> . |
 | [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) | Replikowanie zmian z tabel do innych baz danych umieszczonych w wystąpieniach zarządzanych, pojedynczych bazach danych lub wystąpieniach SQL Server lub aktualizowanie tabel w przypadku zmiany niektórych wierszy w innych wystąpieniach zarządzanych lub wystąpieniu SQL Server. Aby uzyskać więcej informacji, zobacz [Konfigurowanie replikacji w Azure SQL Database bazie danych wystąpienia zarządzanego](replication-with-sql-database-managed-instance.md). |
 | Wykrywanie zagrożeń |Aby uzyskać więcej informacji, zobacz [Konfigurowanie wykrywania zagrożeń w Azure SQL Database wystąpienia zarządzanego](sql-database-managed-instance-threat-detection.md).|
@@ -73,7 +74,7 @@ W modelu wdrażania wystąpienia zarządzanego w H1 2019 są włączone następu
   - Skonfiguruj wystąpienia do korzystania z [publicznych punktów końcowych](sql-database-managed-instance-public-endpoint-configure.md), połączenia [zastąpień serwera proxy](sql-database-connectivity-architecture.md#connection-policy) w celu uzyskania lepszej wydajności sieci, <a href="https://aka.ms/four-cores-sql-mi-update">4 rdzeni wirtualnych na generowanie sprzętu 5 rdzeń</a> lub <a href="https://aka.ms/managed-instance-configurable-backup-retention">Skonfiguruj przechowywanie kopii zapasowych do 35 dni</a> w przypadku przywracania do punktu w czasie. Długoterminowe przechowywanie kopii zapasowych (do 10 lat) nadal nie jest włączone, aby można było użyć <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">kopii zapasowych tylko do kopiowania</a> jako alternatywy.
   - Nowe funkcje umożliwiają <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">przeprzywracanie geograficznej bazy danych do innego centrum danych przy użyciu programu PowerShell</a>, [zmiana nazwy bazy danych](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [usunięcie klastra wirtualnego](sql-database-managed-instance-delete-virtual-cluster.md).
   - Nowa [rola współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) wbudowanego wystąpienia umożliwia rozdzielenie cła (SOD) z zasadami zabezpieczeń i zgodności z normami przedsiębiorstwa.
-  - Wystąpienie zarządzane jest dostępne w następujących Azure Government regionach do GA (US Gov Teksas, US Gov Arizona), a także w Chiny Północne 2 i Chiny Wschodnie 2. Jest ona również dostępna w następujących regionach publicznych: Australia Środkowa, Australia Środkowa 2, Brazylia Południowa, Francja Południowa, Europa Zachodnia, Południowe Zjednoczone Emiraty Arabskie, Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki.
+  - Wystąpienie zarządzane jest dostępne w następujących Azure Government regionach do GA (US Gov Teksas, US Gov Arizona), a także w Chiny Północne 2 i Chiny Wschodnie 2. Jest ona również dostępna w następujących regionach publicznych: Australia Środkowa, Australia Środkowa 2, Brazylia Południowa, Francja Południowa, Europa Środkowa, Płn. Zjednoczone Emiraty Arabskie, Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki.
 
 ## <a name="fixed-known-issues"></a>Naprawione znane problemy
 

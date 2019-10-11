@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 991cfb54dc511c284c5f5d0cf1807d5dd42b34ea
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: eb15aa3c6dbe0f4db62a2029a3c97b4475ab53a2
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978073"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255888"
 ---
 # <a name="understand-azure-policy-effects"></a>Zrozumienie efektów Azure Policy
 
@@ -20,11 +20,11 @@ Każda definicja zasad w Azure Policy ma jeden efekt. Ten efekt określa, co si�
 Te efekty są obecnie obsługiwane w definicji zasad:
 
 - [Łączono](#append)
-- [Wizyjn](#audit)
+- [Inspekcja](#audit)
 - [AuditIfNotExists](#auditifnotexists)
 - [Pozbawić](#deny)
 - [DeployIfNotExists](#deployifnotexists)
-- [Wyłączony](#disabled)
+- [Disabled (Wyłączone)](#disabled)
 - [EnforceRegoPolicy](#enforceregopolicy) (wersja zapoznawcza)
 - [Zmodyfikować](#modify)
 
@@ -41,11 +41,14 @@ Gdy dostawca zasobów zwróci kod sukcesu, **AuditIfNotExists** i **DeployIfNotE
 
 Obecnie nie ma żadnych kolejności oceny dla efektu **EnforceRegoPolicy** .
 
-## <a name="disabled"></a>Wyłączone
+## <a name="disabled"></a>Disabled (Wyłączony)
 
 Ten efekt jest przydatny do testowania sytuacji lub w przypadku, gdy definicja zasad ma sparametryzowane skutki. Ta elastyczność umożliwia wyłączenie pojedynczego przypisania zamiast wyłączania wszystkich przypisań zasad.
 
-## <a name="append"></a>Łączono
+Alternatywą dla wyłączonego efektu jest **wymuszmode** , który jest ustawiony w przypisaniu zasad.
+Gdy **wymuszanie** jest _wyłączone_, nadal są oceniane zasoby. Rejestrowanie, takie jak dzienniki aktywności, i efekt zasad nie wystąpi. Aby uzyskać więcej informacji, zobacz [Tryb wymuszania przypisywania zasad](./assignment-structure.md#enforcement-mode).
+
+## <a name="append"></a>Append
 
 Dołączanie służy do dodawania dodatkowych pól do żądanego zasobu podczas tworzenia lub aktualizowania. Typowym przykładem jest określenie dozwolonych adresów IP dla zasobu magazynu.
 
@@ -94,7 +97,7 @@ Przykład 2: pojedyncze pary **pól/wartości** przy użyciu [aliasu](definition
 }
 ```
 
-## <a name="modify"></a>Zmodyfikować
+## <a name="modify"></a>Modyfikuj
 
 Modyfikowanie służy do dodawania, aktualizowania lub usuwania tagów w zasobie podczas tworzenia lub aktualizowania. Typowym przykładem jest aktualizowanie tagów w zasobach, takich jak costCenter. Zasady modyfikowania powinny mieć zawsze ustawioną wartość `mode` _._ Istniejące niezgodne zasoby można skorygować przy użyciu [zadania korygowania](../how-to/remediate-resources.md).
 Pojedyncza reguła modyfikowania może zawierać dowolną liczbę operacji.
@@ -117,7 +120,7 @@ Właściwość **Details** efektu Modyfikuj ma wszystkie właściwości, które 
   - Zdefiniowana rola musi obejmować wszystkie operacje przyznane do roli [współautor](../../../role-based-access-control/built-in-roles.md#contributor) .
 - **operacje** [wymagane]
   - Tablica wszystkich operacji tagów do wykonania na pasujących zasobach.
-  - Aœciwoœci
+  - Właściwości:
     - **operacja** [wymagana]
       - Definiuje akcję, która ma zostać podjęta względem pasującego zasobu. Dostępne opcje to: _addOrReplace_, _Add_, _Remove_. _Dodaj_ zachowania podobne do efektu [dołączania](#append) .
     - **pole** [wymagane]
@@ -161,7 +164,7 @@ Właściwość **Operation** ma następujące opcje:
 |Operacja |Opis |
 |-|-|
 |addOrReplace |Dodaje zdefiniowany tag i wartość do zasobu, nawet jeśli tag już istnieje z inną wartością. |
-|Dodaj |Dodaje zdefiniowany tag i wartość do zasobu. |
+|Dodawanie |Dodaje zdefiniowany tag i wartość do zasobu. |
 |Usuń |Usuwa zdefiniowany tag z zasobu. |
 
 ### <a name="modify-examples"></a>Modyfikuj przykłady
@@ -234,7 +237,7 @@ Przykład: użycie efektu Odmów.
 }
 ```
 
-## <a name="audit"></a>Wizyjn
+## <a name="audit"></a>Inspekcja
 
 Inspekcja służy do tworzenia zdarzenia ostrzegawczego w dzienniku aktywności podczas oceniania niezgodnego zasobu, ale nie zatrzymuje żądania.
 
@@ -513,7 +516,7 @@ Każde przypisanie jest oceniane indywidualnie. W związku z tym nie istnieje mo
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
-- Zapoznaj się ze [strukturą definicji Azure Policy](definition-structure.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](definition-structure.md).
 - Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
 - Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).

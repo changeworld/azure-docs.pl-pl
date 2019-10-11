@@ -4,18 +4,18 @@ description: Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszyna
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
-keywords: Azure Backup; SQL;
+keywords: Azure Backup; Server
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: d5f3b98048cb04eab15479c3a9f5d27f16df1f3a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 242eaf06b9cd0b3783a626ab13eb0cb92300652f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309752"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249067"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszynach wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -194,7 +194,7 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 AM      Daily                                    False                True
 ```
 
-## <a name="enable-backup"></a>Włącz kopię zapasową
+## <a name="enable-backup"></a>Włącz tworzenie kopii zapasowej
 
 ### <a name="registering-the-sql-vm"></a>Rejestrowanie maszyny wirtualnej SQL
 
@@ -261,7 +261,7 @@ Ponieważ instrukcja ma tworzyć kopie zapasowe wszystkich przyszłych baz danyc
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
-Enable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -Policy $targetPolicy -VaultId $targetvault.ID
+Enable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -Policy $NewSQLPolicy -VaultId $targetvault.ID
 ```
 
 Po podaniu opcji autoochrony zapytanie do maszyny w celu pobrania nowo dodanej baz danych odbywa się jako zaplanowane zadanie w tle co 8 godzin.
@@ -510,7 +510,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Usuń dane kopii zapasowej
+#### <a name="delete-backup-data"></a>Usuwanie danych kopii zapasowej
 
 Aby całkowicie usunąć przechowywane dane kopii zapasowej w magazynie, po prostu Dodaj flagę "-RemoveRecoveryPoints"/Przełącz do [polecenia "Disable" ochrony](#retain-data).
 

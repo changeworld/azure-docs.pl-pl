@@ -5,21 +5,21 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 904dbed711a0ae4d072ea888e7bd83211e68ab16
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 650e45ca9092b9c81b2127eb995a0297745410a4
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178672"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244139"
 ---
 # <a name="expressroute-encryption"></a>Szyfrowanie ExpressRoute
  
 ExpressRoute obsługuje kilka technologii szyfrowania w celu zapewnienia poufności i integralności danych przechodzących między siecią i siecią firmy Microsoft.
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>Szyfrowanie punkt-punkt przez MACsec — często zadawane pytania
-MACsec jest [standardem IEEE](https://1.ieee802.org/security/802-1ae/). Szyfruje dane na poziomie kontroli dostępu do nośnika (MAC) lub 2. Można użyć MACsec do szyfrowania fizycznych linków między urządzeniami sieciowymi i urządzeniami sieciowymi firmy Microsoft w przypadku łączenia się z firmą Microsoft za pośrednictwem ExpressRoute Direct. MACsec jest domyślnie wyłączona w portach bezpośrednie ExpressRoute. Możesz wprowadzić własny klucz MACsec na potrzeby szyfrowania i zapisać go w Azure Key Vault. Należy określić, kiedy należy obrócić klucz. Zobacz inne często zadawane pytania poniżej.
+MACsec jest [standardem IEEE](https://1.ieee802.org/security/802-1ae/). Szyfruje dane na poziomie kontroli dostępu do nośnika (MAC) lub 2. Można użyć MACsec do szyfrowania fizycznych linków między urządzeniami sieciowymi i urządzeniami sieciowymi firmy Microsoft w przypadku łączenia się z firmą Microsoft za pośrednictwem [ExpressRoute Direct](expressroute-erdirect-about.md). MACsec jest domyślnie wyłączona w portach bezpośrednie ExpressRoute. Możesz wprowadzić własny klucz MACsec na potrzeby szyfrowania i zapisać go w [Azure Key Vault](../key-vault/key-vault-overview.md). Należy określić, kiedy należy obrócić klucz. Zobacz inne często zadawane pytania poniżej.
 ### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>Czy mogę włączyć MACsec w ramach obwodu ExpressRoute obsługiwanego przez dostawcę ExpressRoute?
 Nie. MACsec szyfruje cały ruch na fizycznym łączu z kluczem należącym do jednej jednostki (np. Klient). W związku z tym jest dostępny tylko w ExpressRoute bezpośredniej.
 ### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>Czy mogę zaszyfrować niektóre obwody usługi ExpressRoute na portach bezpośrednich ExpressRoute i pozostawić inne obwody na tych samych portach, które nie są szyfrowane? 
@@ -27,9 +27,11 @@ Nie. Po włączeniu MACsec cały ruch związany z kontrolą sieci, na przykład 
 ### <a name="when-i-enabledisable-macsec-or-update-macsec-key-will-my-on-premises-network-lose-connectivity-to-microsoft-over-expressroute"></a>Gdy włączam/wyłączam MACsec lub aktualizować klucz MACsec, Sieć lokalna utraci łączność z firmą Microsoft przez ExpressRoute?
 Tak. W przypadku konfiguracji MACsec obsługuje tylko tryb klucza wstępnego. Oznacza to, że należy zaktualizować klucz na urządzeniach i w firmie Microsoft (za pośrednictwem naszego interfejsu API). Ta zmiana nie jest niepodzielna, więc utracisz łączność, gdy występuje niezgodność klucza między obiema stronami. Zdecydowanie zalecamy zaplanowanie okna obsługi dla zmiany konfiguracji. Aby zminimalizować czas przestoju, Zalecamy zaktualizowanie konfiguracji na jednym z linków ExpressRoute bezpośrednio po przełączeniu ruchu sieciowego do drugiego łącza.  
 ### <a name="will-traffic-continue-to-flow-if-theres-a-mismatch-in-macsec-key-between-my-devices-and-microsofts"></a>Czy ruch będzie nadal przepływać, jeśli wystąpi niezgodność klucza MACsec między urządzeniami i firmą Microsoft?
-Nie. Jeśli MACsec jest skonfigurowany i wystąpi niezgodność klucza, utracisz łączność z firmą Microsoft. Innymi słowy, nie powrócimy do nieszyfrowanego połączenia, ponieważ uwidaczniasz dane. 
+Nie. Jeśli MACsec jest skonfigurowany i występuje niezgodność kluczy, utracisz łączność z firmą Microsoft. Innymi słowy, nie powrócimy do nieszyfrowanego połączenia, ponieważ uwidaczniasz dane. 
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Czy włączenie MACsec na ExpressRoute bezpośrednie obniża wydajność sieci?
 MACsec szyfrowanie i odszyfrowywanie odbywa się na sprzęcie na routerach, z których korzystamy. Po naszej stronie nie ma wpływu na wydajność. Należy jednak skontaktować się z dostawcą sieci dla używanych urządzeń i sprawdzić, czy MACsec ma dowolną wydajność.
+### <a name="which-cipher-suites-are-supported-for-encryption"></a>które mechanizmy szyfrowania są obsługiwane na potrzeby szyfrowania?
+Obsługujemy AES128 (GCM – AES – 128) i AES256 (GCM – AES – 256).
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Kompleksowe szyfrowanie przy użyciu protokołu IPsec — często zadawane pytania
 Protokół IPsec jest [standardem IETF](https://tools.ietf.org/html/rfc6071). Szyfruje dane na poziomie protokołu internetowego (IP) lub w warstwie sieciowej 3. Za pomocą protokołu IPsec można szyfrować kompleksowe połączenie między siecią lokalną a siecią wirtualną (VNET) na platformie Azure. Zobacz inne często zadawane pytania poniżej.

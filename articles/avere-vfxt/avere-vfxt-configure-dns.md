@@ -1,54 +1,53 @@
 ---
-title: Avere vFXT DNS - Azure
-description: Konfigurowanie serwera DNS dla działanie okrężne Równoważenie obciążenia za pomocą Avere vFXT dla platformy Azure
+title: Avere vFXT DNS — Azure
+description: Konfigurowanie serwera DNS na potrzeby równoważenia obciążenia z działaniem okrężnym z avere vFXT dla platformy Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 9fd9eaf1e62d063026e0e656346baaaade87064f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: c28189bf227a6a81ae9e72e889a0dc598cd7949e
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410337"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256265"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Konfiguracja DNS klastra Avere
 
-W tej sekcji opisano podstawowe informacje dotyczące konfigurowania systemu DNS dla swojej Avere vFXT klastra równoważenia obciążenia. 
+W tej sekcji objaśniono podstawowe informacje dotyczące konfigurowania systemu DNS na potrzeby równoważenia obciążenia klastra avere vFXT. 
 
-W tym dokumencie *nie obejmuje* instrukcje dotyczące konfigurowania i zarządzania serwerem DNS w środowisku platformy Azure. 
+Ten dokument nie *zawiera* instrukcji dotyczących KONFIGUROWANIA serwera DNS i zarządzania nim w środowisku platformy Azure. 
 
-Zamiast przy użyciu działania okrężnego systemu DNS, równoważenia obciążenia w klastrze vFXT na platformie Azure, należy wziąć pod uwagę przy użyciu metod ręcznych do przypisywania adresów IP równomiernie między klientami w przypadku, gdy są zainstalowane. Opisano kilka metod w [instalacji klastra Avere](avere-vfxt-mount-clients.md). 
+Zamiast korzystać z usługi DNS w trybie okrężnym do równoważenia obciążenia klastra vFXT na platformie Azure, należy rozważyć użycie metod ręcznych w celu przypisywania adresów IP nawet wśród klientów po ich zainstalowaniu. Kilka metod opisano w temacie [Instalowanie klastra avere](avere-vfxt-mount-clients.md). 
 
-Zachowaj te rzeczy, należy pamiętać, przy podejmowaniu decyzji, czy należy użyć serwera DNS: 
+Należy pamiętać o tym, czy należy używać serwera DNS: 
 
-* Jeśli system jest uzyskiwać dostęp tylko klientów systemu plików NFS, przy użyciu systemu DNS nie jest wymagane — istnieje możliwość określić wszystkie adresy sieciowe przy użyciu numeryczne adresy IP. 
+* Jeśli system jest dostępny tylko dla klientów NFS, korzystanie z systemu DNS nie jest wymagane — można określić wszystkie adresy sieciowe przy użyciu liczbowych adresów IP. 
 
-* Jeśli system obsługuje dostęp protokołu SMB (CIFS), DNS jest wymagane, ponieważ należy określić domenę DNS dla serwera usługi Active Directory.
+* Jeśli system obsługuje dostęp do protokołu SMB (CIFS), wymagany jest system DNS, ponieważ należy określić domenę DNS dla serwera Active Directory.
 
-* Serwer DNS jest wymagany, jeśli chcesz korzystać z uwierzytelniania Kerberos.
+* System DNS jest wymagany, aby można było używać uwierzytelniania Kerberos.
 
 ## <a name="load-balancing"></a>Równoważenie obciążenia
 
-Rozłożenie obciążenia ogólną, należy skonfigurować swoją domenę DNS na potrzeby dystrybucji obciążenia z działaniem okrężnym adresów IP ukierunkowane na klienta.
+Aby rozpowszechnić ogólne obciążenie, należy skonfigurować domenę DNS tak, aby korzystała z dystrybucji obciążenia z działaniem okrężnym dla adresów IP skierowanych na klienta.
 
 ## <a name="configuration-details"></a>Szczegóły konfiguracji
 
-Gdy klienci uzyskują dostęp do klastra, RRDNS automatycznie równoważy ich żądania między wszystkie dostępne interfejsy.
+Gdy klienci uzyskują dostęp do klastra, usługa RRDNS automatycznie równoważy swoje żądania między wszystkimi dostępnymi interfejsami.
 
-Aby uzyskać optymalną wydajność należy skonfigurować serwer DNS do obsługi adresów klastra ukierunkowane na klienta, jak pokazano na poniższym diagramie.
+W celu uzyskania optymalnej wydajności Skonfiguruj serwer DNS, aby obsługiwał adresy klastra dostępne dla klientów, jak pokazano na poniższym diagramie.
 
-Vserver klastra jest wyświetlany po lewej stronie, a adresy IP są wyświetlane w Centrum i po prawej stronie. Skonfiguruj każdy punkt dostępu klienta, a rekordy i wskaźniki, jak pokazano.
+Vserver klastra jest pokazywany po lewej stronie, a adresy IP są wyświetlane w centrum i po prawej stronie. Skonfiguruj każdy punkt dostępu klienta zawierający rekordy i wskaźniki, jak pokazano.
 
-![Diagram DNS okrężnego klastra Avere](media/avere-vfxt-rrdns-diagram.png) 
-<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
+Diagram DNS @no__t 0Avere-Robin klastra no__t-1<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
-Każdy klient dostępnego adresu IP musi mieć unikatową nazwę do użytku wewnętrznego przez klaster. (W tym diagramie adresów IP klienta są nazywane vs1 — klient - IP-* w celu uściślenia, ale w środowisku produkcyjnym należy prawdopodobnie używać coś bardziej zwięzły, takich jak klient *.)
+Każdy adres IP skierowany na klienta musi mieć unikatową nazwę do użytku wewnętrznego w klastrze. (Na tym diagramie adresy IP klientów mają nazwę VS1-Client-IP-* dla jasności, ale w środowisku produkcyjnym należy raczej używać czegoś bardziej zwięzłego, takiego jak klient *).
 
-Klienci instalacji klastra przy użyciu nazwy vserver jako argument serwera. 
+Klienci instalują klaster przy użyciu nazwy vserver jako argumentu serwera. 
 
-Modyfikowanie serwera DNS ``named.conf`` plik, aby ustawić kolejność cyklicznych zapytań do usługi vserver. Ta opcja zapewnia wszystkie dostępne wartości to cyklom za pośrednictwem. Dodaj instrukcję, jak pokazano poniżej:
+Zmodyfikuj plik ``named.conf`` serwera DNS, aby ustawić kolejność cykliczną dla zapytań do vserver. Ta opcja zapewnia, że wszystkie dostępne wartości są przetwarzane przez. Dodaj następującą instrukcję:
 
 ```
 options {
@@ -58,7 +57,7 @@ options {
 };
 ```
 
-Następujące polecenia nsupdate podać przykład poprawnie konfigurowania systemu DNS:
+Następujące polecenia nsupdate umożliwiają poprawne skonfigurowanie usługi DNS:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -74,12 +73,12 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>Ustawienia DNS klastra
 
-Określ serwer DNS, który korzysta z klastra vFXT w **klastra** > **administracyjnych sieci** strony ustawień. Ustawienia na tej stronie, obejmują:
+Określ serwer DNS, którego używa klaster vFXT na stronie ustawień**sieci administracyjnej**  >  w **klastrze**. Ustawienia na tej stronie obejmują:
 
 * Adres serwera DNS
 * Nazwa domeny DNS
 * Domeny wyszukiwania DNS
 
-Odczyt [ustawienia DNS](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) w przewodniku po konfiguracji klastra Avere Aby uzyskać więcej informacji o korzystaniu z tej strony.
+Aby uzyskać więcej informacji na temat korzystania z tej strony, Przeczytaj [Ustawienia DNS](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) w przewodniku konfigurowania klastra avere.
 
 

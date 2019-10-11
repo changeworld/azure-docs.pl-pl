@@ -1,41 +1,41 @@
 ---
-title: Dostęp do panelu sterowania vFXT Avere - Azure
-description: Jak łączyć się z klastrem vFXT i oparte na przeglądarce Avere Panelu sterowania skonfigurować Avere vFXT
+title: Dostęp do panelu sterowania avere vFXT — Azure
+description: Jak nawiązać połączenie z klastrem vFXT i panelem sterowania avere w przeglądarce w celu skonfigurowania vFXT avere
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 830be92d37f304598cca05c3ac80973158c38a59
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: 098ed98c1680fa2ea38c377e9e34719ba778b175
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439984"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255031"
 ---
 # <a name="access-the-vfxt-cluster"></a>Dostęp do klastra vFXT
 
-Aby zmienić ustawienia i monitorować Avere vFXT klastra, za pomocą Panelu sterowania Avere. Panel sterowania Avere jest oparty na przeglądarce interfejs graficzny do klastra.
+Aby zmienić ustawienia i monitorować klaster avere vFXT, użyj panelu sterowania avere. Avere Panel sterowania jest interfejsem graficznym opartym na przeglądarce.
 
-Ponieważ klaster vFXT znajduje się w prywatnej sieci wirtualnej, należy utworzyć tunel SSH lub użyć innej metody, aby osiągnąć adres IP zarządzania klastra. Istnieją dwa podstawowe kroki: 
+Ponieważ klaster vFXT znajduje się w prywatnej sieci wirtualnej, należy utworzyć tunel SSH lub użyć innej metody w celu uzyskania dostępu do adresu IP zarządzania klastrem. Istnieją dwa podstawowe kroki: 
 
-1. Utwórz połączenie między tą stacją roboczą a prywatna sieć wirtualna 
-1. Ładowanie Panelu sterowania klastra w przeglądarce sieci web 
+1. Tworzenie połączenia między stacją roboczą a prywatną siecią wirtualną 
+1. Załaduj Panel sterowania klastra w przeglądarce internetowej 
 
 > [!NOTE] 
-> W tym artykule założono, że zostało ustawione na publiczny adres IP na kontrolerze klastra lub w innej maszyny Wirtualnej w sieci wirtualnej klastra. W tym artykule opisano sposób użycia tej maszyny Wirtualnej na hoście dostęp do klastra. Jeśli używasz sieci VPN lub usługi ExpressRoute dla dostępu do sieci wirtualnej, przejdź do [nawiązywanie połączenia z Panelu sterowania Avere](#connect-to-the-avere-control-panel-in-a-browser).
+> W tym artykule przyjęto założenie, że został ustawiony publiczny adres IP na kontrolerze klastra lub na innej maszynie wirtualnej w sieci wirtualnej klastra. W tym artykule opisano sposób korzystania z tej maszyny wirtualnej jako hosta w celu uzyskania dostępu do klastra. W przypadku korzystania z sieci VPN lub ExpressRoute na potrzeby dostępu przez sieć wirtualną Pomiń, aby [nawiązać połączenie z panelem sterowania avere](#connect-to-the-avere-control-panel-in-a-browser).
 
-Przed połączeniem, upewnij się, że pary kluczy publiczny/prywatny SSH użytą podczas tworzenia kontrolera klastra jest zainstalowany na komputerze lokalnym. Przeczytaj dokumentację klucze SSH [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) lub [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Jeśli potrzebujesz pomocy. (Jeśli używasz hasła, zamiast klucza publicznego, użytkownik zostanie wyświetlony monit wprowadź go po nawiązaniu połączenia.) 
+Przed połączeniem upewnij się, że para klucz publiczny/prywatny SSH użyta podczas tworzenia kontrolera klastra jest zainstalowana na komputerze lokalnym. Zapoznaj się z dokumentacją kluczy SSH dla [systemu Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) lub [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) , jeśli potrzebujesz pomocy. (Jeśli użyto hasła zamiast klucza publicznego, po nawiązaniu połączenia zostanie wyświetlony monit o wprowadzenie go). 
 
 ## <a name="create-an-ssh-tunnel"></a>Tworzenie tunelu SSH 
 
-Możesz utworzyć tunel SSH w wierszu polecenia z opartej na systemie Linux lub systemie klienta systemu Windows 10. 
+Tunel SSH można utworzyć z wiersza polecenia systemu klienckiego opartego na systemie Linux lub Windows 10. 
 
-Użyj polecenia za pomocą tego formularza tunelowania SSH: 
+Użyj polecenia tunelowania SSH w tej postaci: 
 
-ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
+SSH-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username*\@*controller_public_IP*
 
-To polecenie łączy się adres IP zarządzania klastra za pośrednictwem adresu IP kontrolera klastra.
+To polecenie nawiązuje połączenie z adresem IP zarządzania klastrem za pomocą adresu IP kontrolera klastra.
 
 Przykład:
 
@@ -43,26 +43,26 @@ Przykład:
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 ```
 
-Uwierzytelnianie odbywa się automatyczne, jeśli publiczny klucz SSH został użyty do utworzenia klastra i dopasowany klucz jest zainstalowany w systemie klienta. Jeśli użyto hasła, system wyświetli monit o jego wprowadzenie.
+Uwierzytelnianie jest wykonywane automatycznie, jeśli do utworzenia klastra użyto klucza publicznego SSH, a odpowiedni klucz jest zainstalowany w systemie klienta. Jeśli użyto hasła, system wyświetli monit o jego wprowadzenie.
 
-## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Łączenie do panelu sterowania Avere w przeglądarce
+## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Łączenie z panelem sterowania avere w przeglądarce
 
-Ten krok używa przeglądarki sieci web do łączenia z uruchomionymi w klastrze vFXT narzędzie do konfiguracji.
+Ten krok powoduje użycie przeglądarki sieci Web w celu nawiązania połączenia z narzędziem konfiguracji uruchomionym w klastrze vFXT.
 
-* Dla połączenia tunelu SSH, otwórz przeglądarkę internetową i przejdź do `https://127.0.0.1:8443`. 
+* W przypadku połączenia tunelowego SSH Otwórz przeglądarkę internetową i przejdź do `https://127.0.0.1:8443`. 
 
-  Masz połączenie z klastrem adresu IP podczas tworzenia tunelu, więc wystarczy użyć adresu IP hosta lokalnego w przeglądarce. Jeśli używany jest port lokalny inny niż 8443, należy użyć numeru portu.
+  Podczas tworzenia tunelu nawiązano połączenie z adresem IP klastra, więc wystarczy użyć adresu IP localhost w przeglądarce. Jeśli użyto portu lokalnego innego niż 8443, zamiast tego należy użyć numeru portu.
 
-* Jeśli dotrzeć do klastra przy użyciu sieci VPN lub usługi ExpressRoute, przejdź na adres IP klastra zarządzania w przeglądarce. Przykład: ``https://203.0.113.51``
+* Jeśli używasz sieci VPN lub ExpressRoute do uzyskiwania dostępu do klastra, przejdź do adresu IP zarządzania klastrem w przeglądarce. Przykład: ``https://203.0.113.51``
 
-W zależności od przeglądarki, konieczne może być kliknij **zaawansowane** i sprawdź, czy jest bezpieczne przejść do strony.
+W zależności od przeglądarki może być konieczne kliknięcie przycisku **Zaawansowane** i upewnienie się, że jest bezpiecznie, aby przechodzić do strony.
 
-Wprowadź nazwę użytkownika `admin` i hasło administracyjne podaną podczas tworzenia klastra.
+Wprowadź nazwę użytkownika `admin` i hasło administracyjne podane podczas tworzenia klastra.
 
-![Zrzut ekranu przedstawiający Avere Zaloguj się na stronie wypełniane przy użyciu nazwy użytkownika administratora i hasła](media/avere-vfxt-gui-login.png)
+![Zrzut ekranu przedstawiający stronę logowania avere z nazwą użytkownika admin i hasłem](media/avere-vfxt-gui-login.png)
 
-Kliknij przycisk **logowania** lub naciśnij klawisz enter na klawiaturze.
+Kliknij przycisk **Zaloguj** lub naciśnij klawisz Enter na klawiaturze.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy uzyskujesz dostęp do klastra, należy włączyć [obsługuje](avere-vfxt-enable-support.md).
+Teraz, gdy masz dostęp do klastra, Włącz [obsługę](avere-vfxt-enable-support.md).

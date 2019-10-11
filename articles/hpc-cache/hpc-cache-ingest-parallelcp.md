@@ -5,17 +5,17 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 852b4e692a4316c7701c8c179039104bee561949
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.author: rohogue
+ms.openlocfilehash: 4899f946cb358693c969def3fa740af64675d934
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180957"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254513"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC cache (wersja zapoznawcza) — Metoda skryptu kopiowania równoległego
 
-Ten artykuł zawiera instrukcje dotyczące tworzenia ``parallelcp`` skryptu i używania go do przenoszenia danych do kontenera magazynu obiektów BLOB do użycia z pamięcią podręczną platformy Azure HPC.
+Ten artykuł zawiera instrukcje dotyczące tworzenia skryptu ``parallelcp`` i używania go do przenoszenia danych do kontenera magazynu obiektów BLOB do użycia z pamięcią podręczną platformy Azure HPC.
 
 Aby dowiedzieć się więcej na temat przenoszenia danych do magazynu obiektów BLOB w pamięci podręcznej platformy Azure HPC, przeczytaj artykuł [przenoszenie danych do usługi Azure Blob Storage dla pamięci podręcznej Azure HPC](hpc-cache-ingest.md).
 
@@ -75,11 +75,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Przykład kopiowania równoległego
 
-W tym przykładzie użyto skryptu kopiowania równoległego do ``glibc`` kompilowania przy użyciu plików źródłowych w pamięci podręcznej platformy Azure HPC.
+W tym przykładzie użyto skryptu kopiowania równoległego do kompilowania ``glibc`` przy użyciu plików źródłowych w pamięci podręcznej platformy Azure HPC.
 
 Pliki źródłowe są buforowane w punkcie instalacji pamięci podręcznej platformy Azure HPC, a pliki obiektów są przechowywane na lokalnym dysku twardym.
 
-Ten przykład używa skryptu kopiowania równoległego z opcją ``-j`` i ``make`` do uzyskania przetwarzanie równoległe.
+Ten przykład używa skryptu kopiowania równoległego z opcją ``-j`` i ``make`` w celu uzyskania przetwarzanie równoległe.
 
 ```bash
 sudo apt-get update

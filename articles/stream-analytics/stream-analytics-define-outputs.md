@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: d867cceb3e7261f658e2406617144c9150e36f2a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 20da8abff943e71deb5d5ec8b7bd6411c176e2e3
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173436"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244551"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Poznanie danych wyjściowych z Azure Stream Analytics
 
@@ -104,7 +104,7 @@ W przypadku korzystania z usługi BLOB Storage jako danych wyjściowych w nastę
 
 ## <a name="event-hubs"></a>Centra zdarzeń
 
-Usługa [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) jest wysoce skalowalnym pozyskiwaniem zdarzeń publikowania/subskrybowania. Może zbierać miliony zdarzeń na sekundę. Jednym z nich jest użycie centrum zdarzeń jako danych wyjściowych, gdy dane wyjściowe zadania Stream Analytics staną się danymi wejściowymi innego zadania przesyłania strumieniowego.
+Usługa [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) jest wysoce skalowalnym pozyskiwaniem zdarzeń publikowania/subskrybowania. Może zbierać miliony zdarzeń na sekundę. Jednym z nich jest użycie centrum zdarzeń jako danych wyjściowych, gdy dane wyjściowe zadania Stream Analytics staną się danymi wejściowymi innego zadania przesyłania strumieniowego. Aby uzyskać informacje o maksymalnym rozmiarze wiadomości i optymalizacji rozmiaru partii, zobacz sekcję [wyjściowy rozmiar wsadu](#output-batch-size) .
 
 Potrzebujesz kilku parametrów, aby skonfigurować strumienie danych z centrów zdarzeń jako dane wyjściowe.
 
@@ -119,7 +119,7 @@ Potrzebujesz kilku parametrów, aby skonfigurować strumienie danych z centrów 
 | Format serializacji zdarzeń | Format serializacji danych wyjściowych. Obsługiwane są kod JSON, CSV i Avro. |
 | Encoding | W przypadku plików CSV i JSON jedynym obsługiwanym formatem kodowania jest UTF-8. |
 | Ogranicznik | Dotyczy tylko serializacji woluminu CSV. Stream Analytics obsługuje wiele ograniczników do serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, spacja, tabulator i pionowy pasek. |
-| Format | Dotyczy tylko serializacji JSON. **Linia rozdzielona** określa, że dane wyjściowe są formatowane przy użyciu każdego obiektu JSON oddzielonego przez nowy wiersz. **Tablica** określa, że dane wyjściowe są formatowane jako tablica obiektów JSON. Ta tablica jest zamykana tylko wtedy, gdy zadanie zostało zatrzymane lub Stream Analytics zostało przeniesione do następnego przedziału czasu. Ogólnie rzecz biorąc, zalecane jest użycie kodu JSON rozdzielonego wierszem, ponieważ nie wymaga żadnej specjalnej obsługi, gdy plik wyjściowy jest nadal w trakcie zapisywania. Aby uzyskać więcej informacji, zobacz sekcję [wyjściowy rozmiar wsadu](#output-batch-size) . |
+| Format | Dotyczy tylko serializacji JSON. **Linia rozdzielona** określa, że dane wyjściowe są formatowane przy użyciu każdego obiektu JSON oddzielonego przez nowy wiersz. **Tablica** określa, że dane wyjściowe są formatowane jako tablica obiektów JSON.  |
 | Kolumny właściwości | Opcjonalny. Kolumny oddzielone przecinkami, które muszą być dołączone jako właściwości użytkownika wiadomości wychodzącej zamiast ładunku. Więcej informacji na temat tej funkcji znajduje się w sekcji [właściwości metadanych niestandardowych dla danych wyjściowych](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI

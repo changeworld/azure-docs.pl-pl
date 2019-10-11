@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET | Microsoft Docs'
+title: 'Szybki Start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET | Microsoft Docs'
 description: Wprowadzenie do biblioteki klienta aparatu rozpoznawania formularzy dla platformy .NET.
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: fc0964508f3031efd91db827524042bf0577ab5e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057657"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242509"
 ---
-# <a name="quickstart-form-recognizer-client-library-for-net"></a>Szybki start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET
+# <a name="quickstart-form-recognizer-client-library-for-net"></a>Szybki Start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET
 
 Wprowadzenie do biblioteki klienta aparatu rozpoznawania formularzy dla platformy .NET. Aparat rozpoznawania formularzy jest usługą poznawczej, która korzysta z technologii uczenia maszynowego do identyfikowania i wyodrębniania par klucz/wartość oraz danych tabeli z dokumentów formularzy. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Wykonaj następujące kroki, aby zainstalować pakiet SDK i wypróbować przykładowy kod dla podstawowych zadań.
 
@@ -28,13 +28,14 @@ Biblioteka klienta aparatu rozpoznawania w programie .NET umożliwia:
 * [Pobieranie listy modeli niestandardowych](#get-a-list-of-custom-models)
 * [Usuwanie modelu niestandardowego](#delete-a-custom-model)
 
-[](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | Pakiet[kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer)[](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/) źródłowego biblioteki dokumentacji referencyjnej (NuGet) | 
+[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [pakiet (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/).
+* Dostęp do programu rozpoznawania formularzy z ograniczonym dostępem. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) .
+* Obiekt BLOB usługi Azure Storage zawierający zestaw danych szkoleniowych. Zapoznaj się z tematem [Tworzenie zestawu danych szkoleniowych dla modelu niestandardowego](../build-training-data-set.md) w celu uzyskania wskazówek i opcji tworzenia danych szkoleniowych. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start.
 * Bieżąca wersja [platformy .NET Core](https://dotnet.microsoft.com/download/dotnet-core).
-* Obiekt BLOB usługi Azure Storage zawierający zestaw danych szkoleniowych. Zapoznaj się z tematem [Tworzenie zestawu danych szkoleniowych dla modelu niestandardowego](../build-training-data-set.md) w celu uzyskania wskazówek i opcji tworzenia danych szkoleniowych. 
 
 ## <a name="setting-up"></a>Konfigurowanie
 
@@ -46,7 +47,7 @@ Po otrzymaniu klucza z subskrypcji próbnej lub zasobu [Utwórz zmienną środow
 
 ### <a name="create-a-new-c-application"></a>Utwórz nową C# aplikację
 
-W oknie konsoli (na przykład cmd, PowerShell lub bash) Użyj `dotnet new` polecenia, aby utworzyć nową aplikację konsolową o nazwie. `formrecognizer-quickstart` To polecenie tworzy prosty projekt "Hello world" C# z pojedynczym plikiem źródłowym: _Program.cs_. 
+W oknie konsoli (na przykład cmd, PowerShell lub bash) Użyj polecenia `dotnet new`, aby utworzyć nową aplikację konsolową o nazwie `formrecognizer-quickstart`. To polecenie tworzy prosty projekt "Hello world" C# z pojedynczym plikiem źródłowym: _program.cs_. 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -90,7 +91,7 @@ Jeśli używasz środowiska IDE programu Visual Studio, Biblioteka kliencka jest
 
 Poniższe klasy obsługują główne funkcje zestawu SDK aparatu rozpoznawania formularzy.
 
-|Name|Opis|
+|Nazwa|Opis|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Ta klasa jest wymagana dla wszystkich funkcji aparatu rozpoznawania formularzy. Tworzysz wystąpienie z informacjami o subskrypcji i używasz ich do tworzenia wystąpień innych klas.|
 |[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Ta klasa jest używana do uczenia niestandardowego modelu aparatu rozpoznawania formularzy przy użyciu własnych danych wejściowych szkoleniowych. |
@@ -126,7 +127,7 @@ Przed zdefiniowaniem jakichkolwiek metod Dodaj następujące definicje zmiennych
 
 ## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
 
-Poniżej metody Zdefiniuj zadanie, `Main`do którego odwołuje się. `Main` W tym miejscu można uwierzytelnić obiekt klienta przy użyciu zdefiniowanych powyżej zmiennych subskrypcji. Pozostałe metody zostaną zdefiniowane później.
+Poniżej metody `Main` Zdefiniuj zadanie, do którego odwołuje się `Main`. W tym miejscu można uwierzytelnić obiekt klienta przy użyciu zdefiniowanych powyżej zmiennych subskrypcji. Pozostałe metody zostaną zdefiniowane później.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
@@ -173,7 +174,7 @@ Jeśli chcesz usunąć niestandardowy model z konta, użyj następującej metody
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Uruchom aplikację, wywołując `dotnet run` polecenie z katalogu aplikacji.
+Uruchom aplikację, wywołując polecenie `dotnet run` z katalogu aplikacji.
 
 ```console
 dotnet run

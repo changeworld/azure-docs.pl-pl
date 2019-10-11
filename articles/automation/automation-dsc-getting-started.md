@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 55950892bec71fdff50cdd0e0b1aae107d845739
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f943aac4a91217983963fac6f8d0b2b3ba6895a1
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169734"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243625"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Wprowadzenie do konfiguracji stanu Azure Automation
 
-W tym artykule opisano sposób wykonywania najczęstszych zadań z konfiguracją stanu Azure Automation, takich jak tworzenie, importowanie i kompilowanie konfiguracji, dołączanie maszyn w celu zarządzania i wyświetlania raportów. Aby zapoznać się z omówieniem konfiguracji stanu Azure Automation, zobacz [Konfiguracja stanu Azure Automation — Omówienie](automation-dsc-overview.md). Aby zapoznać się z dokumentacją konfiguracji żądanego stanu (DSC), zobacz [Omówienie konfiguracji żądanego stanu programu Windows PowerShell](/powershell/dsc/overview).
+W tym artykule opisano sposób wykonywania najczęstszych zadań z konfiguracją stanu Azure Automation, takich jak tworzenie, importowanie i kompilowanie konfiguracji, dołączanie maszyn w celu zarządzania i wyświetlania raportów. Aby zapoznać się z omówieniem konfiguracji stanu Azure Automation, zobacz [Konfiguracja stanu Azure Automation — Omówienie](automation-dsc-overview.md). Aby zapoznać się z dokumentacją konfiguracji żądanego stanu (DSC), zobacz [Omówienie konfiguracji żądanego stanu programu Windows PowerShell](/powershell/scripting/dsc/overview/overview).
 
 Ten artykuł zawiera przewodnik krok po kroku dotyczący korzystania z konfiguracji stanu Azure Automation. Jeśli chcesz, aby przykładowe środowisko zostało już skonfigurowane, nie wykonując kroków opisanych w tym artykule, możesz użyć następującego szablonu Menedżer zasobów: [Azure Automation szablonu węzła zarządzanego](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Ten szablon konfiguruje Azure Automation środowisko konfiguracji stanu, w tym maszynę wirtualną platformy Azure, która jest zarządzana przez Azure Automationą konfigurację stanu.
 
@@ -26,12 +26,12 @@ Ten artykuł zawiera przewodnik krok po kroku dotyczący korzystania z konfigura
 
 Aby wykonać przykłady opisane w tym artykule, wymagane są następujące elementy:
 
-- Konto Azure Automation. Aby uzyskać instrukcje dotyczące tworzenia Azure Automation konta Uruchom jako, zobacz [konto Uruchom jako platformy Azure](automation-sec-configure-azure-runas-account.md).
-- Maszyna wirtualna Azure Resource Manager (nieklasyczna) z [obsługiwanym systemem operacyjnym](automation-dsc-overview.md#operating-system-requirements). Aby uzyskać instrukcje dotyczące tworzenia maszyny wirtualnej, zobacz [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+- Konto usługi Azure Automation. Aby uzyskać instrukcje dotyczące tworzenia konta Uruchom jako usługi Azure Automation, zobacz [Konto Uruchom jako platformy Azure](automation-sec-configure-azure-runas-account.md).
+- Maszyna wirtualna Azure Resource Manager (nieklasyczna) z [obsługiwanym systemem operacyjnym](automation-dsc-overview.md#operating-system-requirements). Aby uzyskać instrukcje dotyczące tworzenia maszyny wirtualnej, zobacz [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w witrynie Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 ## <a name="creating-a-dsc-configuration"></a>Tworzenie konfiguracji DSC
 
-Można utworzyć prostą [konfigurację DSC](/powershell/dsc/configurations) , która zapewnia obecność lub brak funkcji systemu Windows **serwera sieci Web** (IIS), w zależności od sposobu przypisywania węzłów.
+Można utworzyć prostą [konfigurację DSC](/powershell/scripting/dsc/configurations/configurations) , która zapewnia obecność lub brak funkcji systemu Windows **serwera sieci Web** (IIS), w zależności od sposobu przypisywania węzłów.
 
 1. Uruchom [programu vscode](https://code.visualstudio.com/docs) (lub dowolny edytor tekstu).
 1. Wpisz następujący tekst:
@@ -61,13 +61,13 @@ Można utworzyć prostą [konfigurację DSC](/powershell/dsc/configurations) , k
     ```
 1. Zapisz plik jako `TestConfig.ps1`.
 
-Ta konfiguracja wywołuje jeden zasób w każdym bloku węzła, [zasób WindowsFeature](/powershell/dsc/windowsfeatureresource), który zapewnia obecność lub brak funkcji **serwera sieci Web** .
+Ta konfiguracja wywołuje jeden zasób w każdym bloku węzła, [zasób WindowsFeature](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource), który zapewnia obecność lub brak funkcji **serwera sieci Web** .
 
 ## <a name="importing-a-configuration-into-azure-automation"></a>Importowanie konfiguracji do Azure Automation
 
 Następnie należy zaimportować konfigurację do konta usługi Automation.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. Na stronie **konto usługi Automation** wybierz pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **konfiguracje** , a następnie kliknij pozycję **+ Dodaj**.
@@ -81,7 +81,7 @@ Następnie należy zaimportować konfigurację do konta usługi Automation.
 
 Po zaimportowaniu konfiguracji można wyświetlić ją w Azure Portal.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. Na stronie **konto usługi Automation** wybierz pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **konfiguracje** , a następnie kliknij pozycję **TestConfig** (jest to nazwa konfiguracji zaimportowanej w poprzedniej procedurze).
@@ -94,9 +94,9 @@ Po zaimportowaniu konfiguracji można wyświetlić ją w Azure Portal.
 ## <a name="compiling-a-configuration-in-azure-automation"></a>Kompilowanie konfiguracji w Azure Automation
 
 Aby można było zastosować żądany stan do węzła, Konfiguracja DSC definiująca ten stan musi być skompilowana do co najmniej jednej konfiguracji węzła (dokument MOF) i umieszczona na serwerze Automation DSC ściągania. Aby uzyskać bardziej szczegółowy opis kompilowania konfiguracji w konfiguracji stanu Azure Automation, zobacz [Kompilowanie konfiguracji w Azure Automation konfiguracja stanu](automation-dsc-compile.md).
-Aby uzyskać więcej informacji na temat kompilowania konfiguracji, zobacz [konfiguracje DSC](/powershell/dsc/configurations).
+Aby uzyskać więcej informacji na temat kompilowania konfiguracji, zobacz [konfiguracje DSC](/powershell/scripting/dsc/configurations/configurations).
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. Na stronie **konto usługi Automation** kliknij pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **konfiguracje** , a następnie kliknij pozycję **TestConfig** (nazwę wcześniej zaimportowanej konfiguracji).
@@ -111,7 +111,7 @@ Aby uzyskać więcej informacji na temat kompilowania konfiguracji, zobacz [konf
 
 Po rozpoczęciu kompilacji można wyświetlić ją na kafelku **zadania kompilacji** na stronie **Konfiguracja** . Na kafelku **zadania kompilacji** są wyświetlane zadania uruchomione, ukończone i zakończone niepowodzeniem. Po otwarciu strony zadania kompilacji zostaną wyświetlone informacje o tym zadaniu, w tym o napotkanych błędach lub ostrzeżeniach, parametrach wejściowych używanych w konfiguracji i dziennikach kompilacji.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. Na stronie **konto usługi Automation** kliknij pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **konfiguracje** , a następnie kliknij pozycję **TestConfig** (nazwę wcześniej zaimportowanej konfiguracji).
@@ -125,7 +125,7 @@ Po rozpoczęciu kompilacji można wyświetlić ją na kafelku **zadania kompilac
 
 Pomyślne zakończenie zadania kompilacji powoduje utworzenie co najmniej jednej nowej konfiguracji węzła. Konfiguracja węzła to dokument MOF, który jest wdrażany na serwerze ściągania i gotowy do ściągnięcia i zastosowania przez co najmniej jeden węzeł. Konfiguracje węzłów można wyświetlić na koncie usługi Automation na stronie **Konfiguracja stanu (DSC)** . Konfiguracja węzła ma nazwę z formą *ConfigurationName*. *Węzełname*.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. W bloku **konto usługi Automation** kliknij pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **skompilowane konfiguracje** .
@@ -138,7 +138,7 @@ Konfiguracja stanu Azure Automation służy do zarządzania maszynami wirtualnym
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>Aby dołączyć maszynę wirtualną Azure Resource Manager do zarządzania według konfiguracji stanu Azure Automation
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. W bloku **konto usługi Automation** kliknij pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** na karcie **węzły** kliknij pozycję **+ Dodaj**.
@@ -164,7 +164,7 @@ Platforma Azure uruchamia proces dołączania maszyny wirtualnej. Po zakończeni
 
 Listę wszystkich komputerów, które zostały dołączone do zarządzania na koncie usługi Automation, można wyświetlić na karcie **węzły** na stronie **Konfiguracja stanu (DSC)** .
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. W bloku **konto usługi Automation** kliknij pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **węzły** .
@@ -173,7 +173,7 @@ Listę wszystkich komputerów, które zostały dołączone do zarządzania na ko
 
 Za każdym razem, gdy Azure Automation konfiguracja stanu wykonuje kontrolę spójności w zarządzanym węźle, węzeł wysyła raport o stanie z powrotem do serwera ściągania. Te raporty można wyświetlić na stronie dla tego węzła.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. W bloku **konto usługi Automation** kliknij pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **węzły** . W tym miejscu można zobaczyć przegląd stanu konfiguracji i szczegółów dla każdego węzła.
@@ -195,7 +195,7 @@ W bloku dla pojedynczego raportu można zobaczyć następujące informacje o sta
 - Nazwa, adres IP i tryb konfiguracji węzła.
 
 Możesz również kliknąć pozycję **Wyświetl raport nieprzetworzony** , aby wyświetlić rzeczywiste dane wysyłane przez węzeł do serwera programu.
-Aby uzyskać więcej informacji na temat korzystania z tych danych, zobacz [Korzystanie z serwera raportów DSC](/powershell/dsc/reportserver).
+Aby uzyskać więcej informacji na temat korzystania z tych danych, zobacz [Korzystanie z serwera raportów DSC](/powershell/scripting/dsc/pull-server/reportserver).
 
 Po dołączeniu węzła do pierwszego raportu może upłynąć trochę czasu. Po dołączeniu węzła może być konieczne odczekanie do 30 minut na pierwszy raport.
 
@@ -203,7 +203,7 @@ Po dołączeniu węzła do pierwszego raportu może upłynąć trochę czasu. Po
 
 Węzeł można przypisać do innej konfiguracji węzła niż ta, która została początkowo przypisana.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. W bloku **konto usługi Automation** kliknij pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **węzły** .
@@ -220,7 +220,7 @@ Węzeł można przypisać do innej konfiguracji węzła niż ta, która została
 
 Jeśli nie chcesz już zarządzać węzłem Azure Automation DSC, możesz go wyrejestrować.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. W bloku **konto usługi Automation** kliknij pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **węzły** .
@@ -233,6 +233,6 @@ Jeśli nie chcesz już zarządzać węzłem Azure Automation DSC, możesz go wyr
 
 - [Przegląd konfiguracji stanu Azure Automation](automation-dsc-overview.md)
 - [Dołączanie maszyn w celu zarządzania przez Azure Automation konfigurację stanu](automation-dsc-onboarding.md)
-- [Przegląd konfiguracji żądanego stanu programu Windows PowerShell](/powershell/dsc/overview)
+- [Przegląd konfiguracji żądanego stanu programu Windows PowerShell](/powershell/scripting/dsc/overview/overview)
 - [Polecenia cmdlet konfiguracji stanu Azure Automation](/powershell/module/azurerm.automation/#automation)
 - [Cennik konfiguracji stanu Azure Automation](https://azure.microsoft.com/pricing/details/automation/)

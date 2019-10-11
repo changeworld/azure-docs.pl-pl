@@ -1,5 +1,5 @@
 ---
-title: Przykłady — plan CAF Foundation — kroki wdrażania
+title: Przykład — plan CAF Foundation — kroki wdrażania
 description: Wdróż kroki przykładu planu CAF Foundation.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 544e5e5eb9884a91fde3898464aa7ce839658a80
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 8dab466c9d45f1c06ddce955c097af40fbba44d8
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981690"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243955"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Wdróż platformę wdrażania Microsoft Cloud dla przykładowego planu usługi Azure Foundation
 
@@ -23,13 +23,13 @@ Aby wdrożyć przykład strategii Microsoft Cloud wdrażania platformy Azure (CA
 > - Oznacz swoją kopię przykładowej publikacji jako **opublikowaną**
 > - Przypisz swoją kopię planu do istniejącej subskrypcji
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free) .
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
 ## <a name="create-blueprint-from-sample"></a>Utwórz plan z przykładu
 
 Najpierw Zaimplementuj przykład strategii, tworząc nowy plan w środowisku przy użyciu przykładu jako starter.
 
-1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Na stronie **pierwsze kroki** z lewej strony wybierz przycisk **Utwórz** w obszarze _Utwórz plan_.
 
@@ -48,7 +48,7 @@ Najpierw Zaimplementuj przykład strategii, tworząc nowy plan w środowisku prz
 
 Twoja kopia przykładu strategii została teraz utworzona w Twoim środowisku. Jest on tworzony w trybie **wersji roboczej** i musi być **opublikowany** , aby można go było przypisać i wdrożyć. Kopię przykładowej strategii można dostosować do środowiska i potrzeb, ale modyfikacja może ją przenieść z planu CAF Foundation.
 
-1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć kopię przykładowej strategii, a następnie wybierz ją.
 
@@ -58,7 +58,7 @@ Twoja kopia przykładu strategii została teraz utworzona w Twoim środowisku. J
 
 Po pomyślnym **opublikowaniu**kopii przykładowej strategii można ją przypisać do subskrypcji w grupie zarządzania, w której został on zapisany. Ten krok polega na tym, że parametry są dostarczane, aby każde wdrożenie kopii przykładowej strategii było unikatowe.
 
-1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć kopię przykładowej strategii, a następnie wybierz ją.
 
@@ -66,24 +66,24 @@ Po pomyślnym **opublikowaniu**kopii przykładowej strategii można ją przypisa
 
 1. Podaj wartości parametrów dla przypisania planu:
 
-   - Nazwie
+   - Podstawy
        - **Subskrypcje**: Wybierz co najmniej jedną subskrypcję znajdującą się w grupie zarządzania, do której została zapisana kopia przykładu planu. W przypadku wybrania więcej niż jednej subskrypcji zostanie utworzone przypisanie dla każdego z nich przy użyciu wprowadzonych parametrów.
      - **Nazwa przypisania**: nazwa jest wstępnie wypełniona dla Ciebie na podstawie nazwy planu.
        Zmień stosownie do potrzeb lub pozostaw jako is.
      - **Lokalizacja**: Wybierz region, w którym ma zostać utworzona zarządzana tożsamość.
-     - Azure Blueprint używa tej tożsamości zarządzanej do wdrożenia wszystkich artefaktów w przypisanym planie.
-       Aby dowiedzieć się więcej, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii.
+       Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Wersja definicji**planu: Wybierz **opublikowaną** wersję kopii przykładowej strategii.
 
    - Przypisanie blokady
 
-     Wybierz ustawienie blokowania planu dla danego środowiska. Aby uzyskać więcej informacji, zobacz temat [plany blokowania zasobów](../../concepts/resource-locking.md).
+     Wybierz ustawienie blokowania planu dla danego środowiska. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../../concepts/resource-locking.md).
 
    - Tożsamość zarządzana
 
      Wybierz opcję Domyślna _przypisana przez system_ lub opcję tożsamości _przypisanej do użytkownika_ .
 
-   - Parametry planu
+   - Parametry strategii
 
      Parametry zdefiniowane w tej sekcji są używane przez wiele artefaktów w definicji strategii w celu zapewnienia spójności.
 
@@ -106,13 +106,13 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 
 |Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Opis|
 |-|-|-|-|
-|Dozwolone jednostki SKU konta magazynu|Przypisanie zasad|Policy_Allowed-StorageAccount-SKU|Jednostka SKU używana na kontach magazynu dzienników diagnostycznych|
-|Dozwolone jednostki SKU maszyny wirtualnej|Przypisanie zasad|Policy_Allowed-VM-SKU|Dozwolone jednostki SKU maszyny wirtualnej|
-|Dołącz TAG CostCenter do grup zasobów|Przypisanie zasad|Policy_CostCenter_Tag|Dołącz TAG CostCenter i jego wartość z grupy zasobów|
-|Typy zasobów, których nie chcesz zezwalać w danym środowisku|Przypisanie zasad|Zasady _Allowed — typy zasobów|Które zasoby platformy Azure, które mają być dozwolone w danym środowisku|
-|Wdróż Key Vault|Szablon Menedżer zasobów|KV — AccessPolicy|**Zablokowany** — Grupa usługi Azure AD lub @no__t użytkownika — 1, aby przyznać uprawnienia w usłudze Key Vault|
-|Wdróż Log Analytics|Szablon Menedżer zasobów|LogAnalytics_DataRetention|Dane z **zablokowanej** liczby dni zostaną zachowane w log Analytics|
-|Wdróż Log Analytics|Szablon Menedżer zasobów|LogAnalytics_Location|Region **zablokowany** używany podczas ustanawiania obszaru roboczego|
+|Dozwolone jednostki SKU konta magazynu|Przypisywanie zasad|Policy_Allowed-StorageAccount-SKU|Jednostka SKU używana na kontach magazynu dzienników diagnostycznych|
+|Dozwolone jednostki SKU maszyny wirtualnej|Przypisywanie zasad|Policy_Allowed-VM-SKU|Dozwolone jednostki SKU maszyny wirtualnej|
+|Dołącz TAG CostCenter do grup zasobów|Przypisywanie zasad|Policy_CostCenter_Tag|Dołącz TAG CostCenter i jego wartość z grupy zasobów|
+|Typy zasobów, których nie chcesz zezwalać w danym środowisku|Przypisywanie zasad|Zasady _Allowed — typy zasobów|Które zasoby platformy Azure, które mają być dozwolone w danym środowisku|
+|Wdróż Key Vault|Szablon usługi Resource Manager|KV — AccessPolicy|**Zablokowany** — Grupa usługi Azure AD lub @no__t użytkownika — 1, aby przyznać uprawnienia w usłudze Key Vault|
+|Wdróż Log Analytics|Szablon usługi Resource Manager|LogAnalytics_DataRetention|Dane z **zablokowanej** liczby dni zostaną zachowane w log Analytics|
+|Wdróż Log Analytics|Szablon usługi Resource Manager|LogAnalytics_Location|Region **zablokowany** używany podczas ustanawiania obszaru roboczego|
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -121,10 +121,10 @@ Po przejrzeniu kroków związanych z wdrażaniem przykładu planu CAF Foundation
 > [!div class="nextstepaction"]
 > [Plan CAF Foundation — Omówienie](./index.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
-- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów](../../concepts/resource-locking.md)planu.
-- Dowiedz się, jak [aktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).

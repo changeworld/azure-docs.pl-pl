@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8c9f8b3733a4b2491c4199f041ba6b24efbb0224
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e3b36eae4f6dc4343828a38fa4ffe3920a83f589
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881895"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242870"
 ---
 # <a name="create-human-reviews-net"></a>Tworzenie przeglądów ludzkich (.NET)
 
-Przegląda i wyświetla zawartość dla moderatorów ludzkich do oceny. Gdy użytkownik ukończy przegląd, wyniki są wysyłane do określonego punktu końcowego wywołania zwrotnego. Ten przewodnik zawiera informacje i przykłady kodu ułatwiające rozpoczęcie pracy z zestawem [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
+Przegląda i wyświetla zawartość dla moderatorów ludzkich do oceny. Gdy użytkownik ukończy przegląd, wyniki są wysyłane do określonego punktu końcowego wywołania zwrotnego. Ten przewodnik zawiera informacje i przykłady kodu ułatwiające rozpoczęcie pracy z [zestawem SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
 
 - Tworzenie zestawu przeglądów dla moderatorów-ludzi
 - Uzyskiwanie stanu istniejących przeglądów dla moderatorów-ludzi
@@ -59,8 +59,7 @@ Zmodyfikuj program za pomocą instrukcji.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -68,7 +67,7 @@ using System.IO;
 using System.Threading;
 ```
 
-### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
+### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usług Content Moderator
 
 Dodaj następujący kod, aby utworzyć klienta usługi Content Moderator dla Twojej subskrypcji.
 
@@ -157,7 +156,7 @@ Dodaj następującą klasę do klasy **Program**. Użyj tej klasy do skojarzenia
 > [!NOTE]
 > Klucz usługi Content Moderator ma limit liczby żądań na sekundę (RPS), a w razie przekroczenia tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429.
 >
-> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
+> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
 #### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Dodaj następujące stałe do klasy **program** w program.cs
 

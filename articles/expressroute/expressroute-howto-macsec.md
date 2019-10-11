@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4e07274f7abf87360c054edd3fe0ade1c09907a7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: eeaa709b88ca795d906fe3688301b4cd7d8c726e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178594"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244134"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>Konfigurowanie MACsec na portach Direct ExpressRoute
 
@@ -130,6 +130,9 @@ Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
 W tym momencie MACsec jest wyłączona na portach Direct ExpressRoute po stronie firmy Microsoft.
+
+### <a name="test-connectivity"></a>Testowanie łączności
+Po skonfigurowaniu MACsec (łącznie z aktualizacją klucza MACsec) na portach bezpośrednich ExpressRoute [Sprawdź](expressroute-troubleshooting-expressroute-overview.md) , czy sesje protokołu BGP obwodów są uruchomione. Jeśli nie masz jeszcze żadnego obwodu na portach, najpierw utwórz go i skonfiguruj prywatną komunikację równorzędną Azure lub komunikację równorzędną firmy Microsoft. Jeśli MACsec jest błędnie skonfigurowana, w tym niezgodność klucza MACsec między urządzeniami sieciowymi i urządzeniami sieciowymi firmy Microsoft, rozpoznawanie protokołu ARP nie jest widoczne w przypadku warstwy 2 i BGP dla warstwy 3. Jeśli wszystko jest prawidłowo skonfigurowane, trasy protokołu BGP są anonsowane prawidłowo w obu kierunkach i przepływie danych aplikacji odpowiednio do ExpressRoute.
 
 ## <a name="next-steps"></a>Następne kroki
 1. [Tworzenie obwodu ExpressRoute w usłudze ExpressRoute Direct](expressroute-howto-erdirect.md)

@@ -1,36 +1,36 @@
 ---
-title: Dodatkowe linki dotyczące vFXT Avere dla platformy Azure
-description: Łącza do dodatkowych informacji na temat Avere vFXT dla platformy Azure
+title: Dodatkowe linki dotyczące avere vFXT dla platformy Azure
+description: Linki do dodatkowych informacji na temat avere vFXT dla platformy Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: v-erkell
-ms.openlocfilehash: 2efbe7ddc39b8bde76ee4a135f3f44af0864a374
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: c8ac08e3d03e8eb525cad7d73bece40c515e31a1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515598"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256291"
 ---
 # <a name="additional-documentation"></a>Dodatkowa dokumentacja
 
-Ten artykuł zawiera linki do dodatkowej dokumentacji dotyczącej interfejsu zarządzania Avere Panelu sterowania i Tematy pokrewne. 
+Ten artykuł zawiera linki do dodatkowej dokumentacji dotyczącej interfejsu zarządzania avere panelu sterowania i tematów pokrewnych. 
 
-## <a name="avere-cluster-documentation"></a>Dokumentacja usługi Avere klastra
+## <a name="avere-cluster-documentation"></a>Dokumentacja klastra avere
 
-Dodatkową dokumentację klastra Avere można znaleźć w witrynie sieci Web w <https://azure.github.io/Avere/>. Te dokumenty mogą pomóc zrozumieć możliwości klastra i konfigurowania jej ustawień. 
+Dodatkową dokumentację dotyczącą klastrów avere można znaleźć w witrynie sieci Web pod adresem <https://azure.github.io/Avere/>. Te dokumenty mogą pomóc zrozumieć możliwości klastra i sposób konfigurowania jego ustawień. 
 
-* [Przewodnik tworzenia klastra FXT](<https://azure.github.io/Avere/#fxt_cluster>) jest przeznaczony dla klastrów składają się z węzłami sprzętu fizycznego, ale niektóre informacje w dokumencie jest odpowiednie w przypadku klastrów vFXT także. W szczególności nowi Administratorzy klastra vFXT może być korzystne odczytywanie następujące sekcje:
-  * [Dostosowywanie pomocy technicznej i monitorowania ustawień](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) wyjaśnia, jak dostosować ustawienia przekazywania pomocy technicznej i Włącz monitorowanie zdalne. 
-  * [Konfigurowanie VServers i globalne Namespace](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) zawiera informacje o tworzeniu nazw ukierunkowane na klienta.
-  * [Konfigurowanie usługi DNS dla klastra Avere](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) wyjaśnia, jak skonfigurować usługę DNS okrężnego.
-  * [Dodawanie magazynu zaplecza](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) dokumenty, jak dodać filtrach core.
+* [Przewodnik tworzenia klastra FXT](<https://azure.github.io/Avere/#fxt_cluster>) jest przeznaczony dla klastrów składających się z fizycznych węzłów sprzętowych, ale niektóre informacje zawarte w dokumencie dotyczą również klastrów vFXT. W szczególności nowe Administratorzy klastrów vFXT mogą skorzystać z odczytania tych sekcji:
+  * [Dostosowanie ustawień obsługi i monitorowania](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) wyjaśnia, jak dostosować obsługę ustawień przekazywania i włączyć zdalne monitorowanie. 
+  * [Konfigurowanie VServers i globalna przestrzeń nazw](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) zawiera informacje o tworzeniu przestrzeni nazw dla klienta.
+  * [Konfigurowanie systemu DNS dla klastra avere](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) objaśnia sposób konfigurowania usługi DNS w trybie okrężnym.
+  * [Dodawanie dokumentów magazynu zaplecza](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) jak dodać podstawowe pliki.
 
-* [Przewodnik konfiguracji klastra](<https://azure.github.io/Avere/#operations>) jest pełną dokumentację ustawień i opcji Avere klastra. Klaster vFXT korzysta z podzbioru tych opcji, ale większość tych samych stron konfiguracji mają zastosowanie.
+* [Przewodnik konfiguracji klastra](<https://azure.github.io/Avere/#operations>) to kompletne odwołanie do ustawień i opcji klastra avere. Klaster vFXT używa podzestawu tych opcji, ale większość z tych samych stron konfiguracji ma zastosowanie.
 
-* [Przewodnik pulpit nawigacyjny](<https://azure.github.io/Avere/#operations>) wyjaśnia, jak używać klastra funkcje Avere Panelu sterowania.
+* [Przewodnik po pulpicie nawigacyjnym](<https://azure.github.io/Avere/#operations>) wyjaśnia, jak używać funkcji monitorowania klastra w panelu sterowania avere.
 
-## <a name="vfxt-creation-and-management-documentation"></a>Dokumentacja vFXT tworzenie i zarządzanie nimi
+## <a name="vfxt-creation-and-management-documentation"></a>Dokumentacja tworzenia i zarządzania vFXT
 
-Pełnego przewodnika przy użyciu vfxt.py, tworzenie klastra w chmurze i narzędzia zarządzania znajduje się w witrynie GitHub: [Zarządzanie klastrem przy użyciu vfxt.py w chmurze](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).  
+Pełny przewodnik po użyciu narzędzia vfxt.py, tworzenia i zarządzania klastrem w chmurze znajduje się w witrynie GitHub: [Zarządzanie klastrem w chmurze za pomocą usługi vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).  

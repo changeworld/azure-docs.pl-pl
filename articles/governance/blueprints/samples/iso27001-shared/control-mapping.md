@@ -1,17 +1,17 @@
 ---
 title: Przykład-ISO 27001 usługi udostępnione — Mapowanie formantów
-description: Sterowanie mapowaniem przykładu usługi udostępnionej ISO 27001 do Azure Policy i RBAC.
+description: Sterowanie mapowaniem przykładu usługi udostępnionej ISO 27001. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 9ec44b4207cb3489205a646429f7fdd5ff2f3f90
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0a09de82375546f8d320686d9291466ae12d78c2
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981570"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248922"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Sterowanie mapowaniem przykładu usługi Shared Services ISO 27001
 
@@ -125,7 +125,7 @@ Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną kon
 - Inspekcja włączania tylko bezpiecznych połączeń z Redis Cache
 - Inspekcja bezpiecznego transferu na konta magazynu
 - Przeprowadź inspekcję ustawienia właściwości ClusterProtectionLevel na EncryptAndSign w Service Fabric
-- Stan przezroczystego szyfrowania danych inspekcji
+- Inspekcja stanu przezroczystego szyfrowania danych
 - Należy włączyć Transparent Data Encryption baz danych SQL
 
 ## <a name="a1241-event-logging"></a>A. 12.4.1 Rejestrowanie zdarzeń
@@ -137,7 +137,7 @@ Dzienniki diagnostyczne zapewniają wgląd w operacje wykonywane w ramach zasob�
 - \[Preview @ no__t-1: Inspekcja wdrożenia Agent zależności w VMSS — obraz maszyny wirtualnej (OS) nie został wystawiony
 - \[Preview @ no__t-1: Inspekcja wdrożenia agenta Log Analytics — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
 - \[Preview @ no__t-1: Inspekcja wdrożenia agenta Log Analytics w VMSS — obraz maszyny wirtualnej (OS) nie został wystawiony
-- Inspekcja ustawień diagnostycznych
+- Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
 - Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 
@@ -149,7 +149,7 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 - \[Preview @ no__t-1: Inspekcja wdrożenia Agent zależności w VMSS — obraz maszyny wirtualnej (OS) nie został wystawiony
 - \[Preview @ no__t-1: Inspekcja wdrożenia agenta Log Analytics — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
 - \[Preview @ no__t-1: Inspekcja wdrożenia agenta Log Analytics w VMSS — obraz maszyny wirtualnej (OS) nie został wystawiony
-- Inspekcja ustawień diagnostycznych
+- Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
 - Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 
@@ -161,7 +161,7 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 - \[Preview @ no__t-1: Inspekcja wdrożenia Agent zależności w VMSS — obraz maszyny wirtualnej (OS) nie został wystawiony
 - \[Preview @ no__t-1: Inspekcja wdrożenia agenta Log Analytics — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
 - \[Preview @ no__t-1: Inspekcja wdrożenia agenta Log Analytics w VMSS — obraz maszyny wirtualnej (OS) nie został wystawiony
-- Inspekcja ustawień diagnostycznych
+- Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
 - Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 
@@ -211,10 +211,10 @@ Po przejrzeniu mapowania kontroli usługi udostępnionej ISO 27001 zapoznaj się
 > [Plan usług udostępnionych iso 27001 — omówienie](./index.md)
 > [ISO 27001 usługi udostępnione — etapy wdrażania](./deploy.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
-- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów](../../concepts/resource-locking.md)planu.
-- Dowiedz się, jak [aktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).

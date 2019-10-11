@@ -1,6 +1,6 @@
 ---
-title: Ogranicza platformy Azure krawędź pola danych | Dokumentacja firmy Microsoft
-description: W tym artykule opisano limity systemu i zalecane rozmiary dla usługi Azure Data Box Edge.
+title: Limity Azure Data Box Edge | Microsoft Docs
+description: Opisuje limity systemowe i zalecane rozmiary dla Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,41 +8,41 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: b454b563cdb870ca8f07a45b796dc6b1e272502d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9adfc1ef355c31f0bfeeb6c3b194d62426b7b9b3
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924602"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244312"
 ---
-# <a name="azure-data-box-edge-limits"></a>Limity krawędź pola danych platformy Azure
+# <a name="azure-data-box-edge-limits"></a>Limity Azure Data Box Edge
 
-Te limity wziąć pod uwagę wdrażania i obsługi rozwiązania do krawędzi ramki danych platformy Azure firmy Microsoft.
+Te limity należy wziąć pod uwagę podczas wdrażania i obsługi rozwiązania Data Box Edge Microsoft Azure.
 
-## <a name="data-box-edge-service-limits"></a>Limity usługi krawędź pola danych
+## <a name="data-box-edge-service-limits"></a>Limity usługi Data Box Edge
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="data-box-edge-device-limits"></a>Limity urządzeń krawędź pola danych
+## <a name="data-box-edge-device-limits"></a>Data Box Edge limitów urządzeń
 
-W poniższej tabeli opisano limity dla urządzenia usługi Edge pola danych.
+W poniższej tabeli opisano limity dotyczące urządzenia Data Box Edge.
 
 | Opis | Wartość |
 |---|---|
-|Nie. pliki na urządzenie |100 milionów |
-|Nie. akcji na urządzenie |24 |
+|Nie. plików na urządzenie |100 000 000 |
+|Nie. udziałów na urządzenie |24 |
 |Nie. udziałów na kontener |1 |
-|Maksymalny rozmiar pliku zapisywane do udziału| 5 TB |
+|Maksymalny rozmiar pliku zapisany w udziale| 5 TB |
 
-## <a name="azure-storage-limits"></a>Limity usługi Azure storage
+## <a name="azure-storage-limits"></a>Limity usługi Azure Storage
 
 [!INCLUDE [data-box-edge-gateway-storage-limits](../../includes/data-box-edge-gateway-storage-limits.md)]
 
-## <a name="data-upload-caveats"></a>Przekazywanie danych do zastrzeżenia
+## <a name="data-upload-caveats"></a>Zastrzeżenia przekazywania danych
 
 [!INCLUDE [data-box-edge-gateway-storage-data-upload-caveats](../../includes/data-box-edge-gateway-storage-data-upload-caveats.md)]
 
-## <a name="azure-storage-account-size-and-object-size-limits"></a>Rozmiar konta magazynu platformy Azure i obiekt ograniczeń rozmiarów
+## <a name="azure-storage-account-size-and-object-size-limits"></a>Limity rozmiaru i rozmiaru obiektu usługi Azure Storage
 
 [!INCLUDE [data-box-edge-gateway-storage-acct-limits](../../includes/data-box-edge-gateway-storage-acct-limits.md)]
 
@@ -51,6 +51,6 @@ W poniższej tabeli opisano limity dla urządzenia usługi Edge pola danych.
 
 [!INCLUDE [data-box-edge-gateway-storage-object-limits](../../includes/data-box-edge-gateway-storage-object-limits.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Przygotowywanie do wdrażania usługi Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
+- [Przygotowywanie do wdrażania usługi Azure Data Box Edge](data-box-edge-deploy-prep.md)

@@ -1,37 +1,37 @@
 ---
-title: VFXT Avere dla projektów demonstrację platformy Azure
-description: linki do samouczków pokaz kodu, które Avere vFXT
+title: Avere vFXT dla projektów demonstracyjnych na platformie Azure
+description: linki do samouczków pokazu kodu dla avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 42a2055b9a49d6d9f8f4930cb3704fe581f41724
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: d812c472d16f23148b929a2ba60f29663c0145a1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409995"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256257"
 ---
-# <a name="avere-vfxt-demo-projects"></a>Avere vFXT pokaz projektów
+# <a name="avere-vfxt-demo-projects"></a>Projekty demonstracyjne avere vFXT
 
-Samouczki przykładowe znajdują się na [GitHub](https://github.com/Azure/Avere). Te małe projekty pokazują kluczowe funkcje i zastosowań Avere vFXT dla platformy Azure. 
+Przykładowe samouczki są dostępne w serwisie [GitHub](https://github.com/Azure/Avere). Te małe projekty przedstawiają kluczowe funkcje i przypadki użycia dla avere vFXT dla platformy Azure. 
 
 ## <a name="video-rendering"></a>Renderowanie wideo
 
-* [Renderowanie przy użyciu usługi Azure Batch i Avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) -60-minutową prezentację, który demonstruje, jak za pomocą Autodesk Maya usługi Azure Batch i klaster vFXT Avere do generowania filmu animowanego
+* [Renderowanie przy użyciu Azure Batch i avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) — demonstracja 60-minutowa, która demonstruje, jak używać Autodesk Maya z Azure Batch oraz z klastrem avere vFXT do generowania animowanego filmu
 
-* [Dlaczego warto używać Avere vFXT renderowanie?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -Demonstracji, który porównuje czas renderowania z NAS z lub bez Avere vFXT klastra 
+* [Dlaczego warto używać avere vFXT do renderowania?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -Demonstracja porównująca czasy renderowania z serwera NAS z klastrem avere vFXT i bez niego 
 
 
 ## <a name="high-performance-computing"></a>Obliczenia o wysokiej wydajności
 
-* [Najlepsze rozwiązania dotyczące czasu rozruchu poprawy Azure maszyn wirtualnych (VM)](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) — czas do odtworzenia test przy użyciu vFXT Avere dla platformy Azure w celu rozruchu szybkie wdrażanie tysięcy klientów obliczeń
+* [Najlepsze rozwiązania dotyczące ulepszania czasu rozruchu maszyn wirtualnych platformy Azure](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) — powtarzalny test użycia avere VFXT dla platformy Azure w celu skrócenia czasu uruchamiania podczas szybkiego nanoszenia tysięcy klientów obliczeniowych
 
-## <a name="vfxt-performance"></a>vFXT wydajności 
+## <a name="vfxt-performance"></a>vFXT wydajność 
 
-* [Mierzenie wydajności vFXT z vdbench](https://github.com/Azure/Avere/blob/master/docs/vdbench.md) — Instalator podstawowy test, aby wygenerować małych i średnich obciążeń, aby przetestować vFXT podsystemów pamięci i dysku
+* [Mierzenie wydajności vFXT za pomocą vdbench](https://github.com/Azure/Avere/blob/master/docs/vdbench.md) -a podstawowego Instalatora testów do generowania małych i średnich obciążeń w celu przetestowania pamięci vFXT i podsystemów dysków
 
-## <a name="client-setup"></a>Instalacja klienta
+## <a name="client-setup"></a>Konfiguracja klienta
 
-* [Stacja robocza systemu Windows 10, do Avere vFXT](https://github.com/Azure/Avere/blob/master/docs/windows_10_avere_vfxt_mounted_workstation.md) — pokazuje, jak skonfigurować stacji roboczej Windows i zainstalować go w klastrze vFXT Avere
+* [Windows 10 Workstation for avere vFXT](https://github.com/Azure/Avere/blob/master/docs/windows_10_avere_vfxt_mounted_workstation.md) — pokazuje, jak skonfigurować stację roboczą z systemem Windows i zainstalować ją w klastrze avere vFXT

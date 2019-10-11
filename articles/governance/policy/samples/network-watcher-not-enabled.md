@@ -1,21 +1,21 @@
 ---
-title: Próbkowanie — Inspekcja, jeśli Network Watcher nie jest włączona dla regionu
-description: Ta przykładowa definicja zasad przeprowadza inspekcję, jeśli obserwator sieci nie jest włączony dla określonego regionu
+title: Próbkowanie — Inspekcja regionów bez Network Watcher
+description: Te przykładowe definicje zasad przeprowadzają inspekcję stanu włączenia usługi Network Watcher w danym regionie
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 94d4bbd70c21713fa366907b3fe8cec8543350eb
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 3c93fb72be82c1a89ea4420f4b8d34bb98785376
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981369"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254773"
 ---
-# <a name="sample---audit-if-network-watcher-is-not-enabled-for-region"></a>Próbkowanie — Inspekcja, jeśli Network Watcher nie jest włączona dla regionu
+# <a name="sample---audit-if-network-watcher-is-not-enabled-for-region"></a>Przykład — przeprowadzanie inspekcji stanu włączenia usługi Network Watcher w danym regionie
 
-Ta zasada przeprowadza inspekcję, jeśli Network Watcher nie jest włączona dla określonego regionu. Należy określić nazwę regionu, aby sprawdzić, czy Network Watcher jest włączona.
+Te zasady przeprowadzają inspekcję stanu włączenia usługi Network Watcher w danym regionie. Należy określić nazwę regionu, aby sprawdzić, czy usługa Network Watcher jest włączona.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Ta zasada przeprowadza inspekcję, jeśli Network Watcher nie jest włączona dl
 
 [!code-json[main](../../../../policy-templates/samples/Network/audit-network-watcher-existence/azurepolicy.json "Audit if Network Watcher is not enabled for region")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -40,7 +40,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -loc
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -58,7 +58,7 @@ az policy definition create --name 'audit-network-watcher-existence' --display-n
 az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-network-watcher-existence"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -68,4 +68,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

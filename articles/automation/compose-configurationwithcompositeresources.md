@@ -10,34 +10,34 @@ ms.author: robreed
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e153186a3917be3aa94cb663dec58bc3db46aae9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d9d16d9d9967af5bf8f9e13406e13d5637325f52
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850413"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243365"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Tworzenie konfiguracji DSC w Azure Automation konfiguracji stanu (DSC) przy użyciu zasobów złożonych
 
-Gdy zasób musi być zarządzany z więcej niż jedną konfiguracją konfiguracja konfiguracji stanu (DSC), najlepszą ścieżką jest użycie [zasobów złożonych](/powershell/dsc/authoringresourcecomposite). Zasób złożony jest zagnieżdżoną i sparametryzowana konfiguracją używaną jako zasób DSC w innej konfiguracji. Pozwala to na tworzenie złożonych konfiguracji, jednocześnie umożliwiając zarządzanie i kompilowanie bazowych zasobów złożonych (Konfiguracja sparametryzowane).
+Gdy zasób musi być zarządzany z więcej niż jedną konfiguracją konfiguracja konfiguracji stanu (DSC), najlepszą ścieżką jest użycie [zasobów złożonych](/powershell/scripting/dsc/resources/authoringresourcecomposite). Zasób złożony jest zagnieżdżoną i sparametryzowana konfiguracją używaną jako zasób DSC w innej konfiguracji. Pozwala to na tworzenie złożonych konfiguracji, jednocześnie umożliwiając zarządzanie i kompilowanie bazowych zasobów złożonych (Konfiguracja sparametryzowane).
 
 Azure Automation umożliwia [Importowanie i kompilowanie zasobów złożonych](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources).
 Gdy zasoby złożone zostały zaimportowane na konto usługi Automation, można użyć funkcji tworzenia **konfiguracji** na stronie **Konfiguracja stanu (DSC)** .
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>Redagowanie konfiguracji z zasobów złożonych
 
-Aby można było przypisać konfigurację z zasobów złożonych w Azure Portal, należy ją utworzyć. Można to zrobić, korzystając z **konfiguracji redagowania** na stronie **Konfiguracja stanu (DSC)** , a także na kartach **konfiguracje** lub skompilowane **konfiguracje** .
+Aby można było przypisać konfigurację z zasobów złożonych w Azure Portal, należy ją utworzyć. Można to zrobić, korzystając z **konfiguracji redagowania** na stronie **Konfiguracja stanu (DSC)** , a także na kartach **konfiguracje** lub **skompilowane konfiguracje** .
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. Na stronie **konto usługi Automation** wybierz pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **konfiguracje** lub **skompilowane konfiguracje** , a następnie kliknij pozycję **Utwórz konfigurację** w menu w górnej części strony.
 1. Na etapie **podstawowe** Podaj nową nazwę konfiguracji (wymagana) i kliknij w dowolnym miejscu w wierszu każdego zasobu złożonego, który ma zostać uwzględniony w nowej konfiguracji, a następnie kliknij przycisk **dalej** lub kliknij krok **kod źródłowy** . W przypadku następujących kroków wybieramy zasoby złożone **PSExecutionPolicy** i **RenameAndDomainJoin** .
-   ![Zrzut ekranu przedstawiający podstawowe kroki strony Konfiguracja redagowania](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
+   ![Screenshot podstawowe kroki strony Konfiguracja redagowania @ no__t-1
 1. Krok **kod źródłowy** pokazuje, jak wygląda pozłożona konfiguracja wybranych zasobów złożonych. Można zobaczyć scalanie wszystkich parametrów i sposób przekazywania ich do zasobu złożonego. Po zakończeniu przeglądania nowego kodu źródłowego kliknij przycisk **dalej** lub kliknij etap **parametrów** .
-   ![Zrzut ekranu przedstawiający krok kod źródłowy na stronie redagowanie konfiguracji](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
+   ![Screenshot kroku kodu źródłowego strony redagowanie konfiguracji @ no__t-1
 1. W kroku **Parametry** , parametr, który został uwidoczniony każdy zasób złożony, aby można było je udostępnić. Jeśli parametr ma opis, zostanie wyświetlony obok pola parametru. Jeśli pole jest parametrem typu **PSCredential** , lista rozwijana do skonfigurowania zawiera listę obiektów **poświadczeń** na bieżącym koncie usługi Automation. Dostępna jest również opcja **+ Add a Credential** . Po podaniu wszystkich wymaganych parametrów kliknij przycisk **Zapisz i skompiluj**.
-   ![Zrzut ekranu przedstawiający krok parametrów na stronie Konfiguracja redagowania](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
+   ![Screenshot kroku o parametrach strony konfiguracji redagowania @ no__t-1
 
 Po zapisaniu nowej konfiguracji zostanie ona przesłana do kompilacji. Stan zadania kompilacji można wyświetlić jak każda zaimportowana konfiguracja. Aby uzyskać więcej informacji, zobacz [Wyświetlanie zadania kompilacji](automation-dsc-getting-started.md#viewing-a-compilation-job).
 

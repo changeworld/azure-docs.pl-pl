@@ -1,17 +1,17 @@
 ---
-title: Dowiedz się, jak przeprowadzić inspekcję zawartości maszyny
+title: Dowiedz się, jak przeprowadzić inspekcję zawartości maszyn wirtualnych
 description: Dowiedz się, jak Azure Policy używa konfiguracji gościa do inspekcji ustawień w ramach maszyny platformy Azure.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: ac8d4d2519ce918a943cfe1e93ed2c5c7afd9a47
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978059"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255851"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Opis konfiguracji gościa Azure Policy
 
@@ -75,11 +75,11 @@ Klient konfiguracji gościa sprawdza nową zawartość co 5 minut. Po odebraniu 
 
 W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych na obrazach platformy Azure:
 
-|Wydawca|Nazwa|Wersje|
+|Publisher|Nazwa|Wersje|
 |-|-|-|
-|Postaci|Serwer Ubuntu|14,04, 16,04, 18,04|
+|Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |Credativ|Debian|8, 9|
-|Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
+|Microsoft|Oprogramowanie Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
 |Microsoft|Klient systemu Windows|Windows 10|
 |OpenLogic|CentOS|7,3, 7,4, 7,5|
 |Red Hat|Red Hat Enterprise Linux|7,4, 7,5|
@@ -179,8 +179,8 @@ Przykłady konfiguracji gościa zasad są dostępne w następujących lokalizacj
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
-- Zapoznaj się ze [strukturą definicji Azure Policy](definition-structure.md).
-- Przejrzyj [Informacje o skutkach zasad](effects.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](definition-structure.md).
+- Przejrzyj [wyjaśnienie działania zasad](effects.md).
 - Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
 - Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).

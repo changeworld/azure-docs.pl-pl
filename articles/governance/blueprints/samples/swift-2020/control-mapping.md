@@ -1,17 +1,17 @@
 ---
 title: Przykład — SWIFT CSP-CSCF V2020 — Mapowanie formantów
-description: Kontroluj mapowanie SWIFT przykładowego planu CSP-CSCF V2020 do Azure Policy.
+description: Kontrolowanie mapowania SWIFT przykładowego planu CSP-CSCF V2020. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 50c278cd22d8901560a83561f38084622bc86865
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a326a5b323999e97b4d015403e36eb97dfc8483f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980910"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248824"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Sterowanie mapowaniem SWIFT programu CSP-CSCF V2020 plan
 
@@ -66,9 +66,9 @@ Platforma Azure implementuje funkcję [kontroli dostępu opartej na rolach](../.
 
 ## <a name="22-and-27-security-attributes"></a>2,2 i 2,7 atrybuty zabezpieczeń
 
-Funkcja odnajdywania i klasyfikowania danych Advanced Data Security dla Azure SQL Database zapewnia możliwości odnajdywania, klasyfikowania, etykietowania i ochrony poufnych danych w bazach danych. Może służyć do zapewnienia widoczności w stanie klasyfikacji bazy danych i śledzenia dostępu do poufnych danych w bazie danych i poza jej obramowaniem. Zaawansowane zabezpieczenia danych mogą pomóc w zapewnieniu informacji związanych z odpowiednimi atrybutami zabezpieczeń w organizacji. Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) do monitorowania i wymuszania korzystania z zaawansowanych zabezpieczeń danych w programie SQL Server. 
+Funkcja odnajdywania i klasyfikowania danych Advanced Data Security dla Azure SQL Database zapewnia możliwości odnajdywania, klasyfikowania, etykietowania i ochrony poufnych danych w bazach danych. Za jej pomocą można zapewniać wgląd w stan klasyfikacji bazy danych oraz śledzić dostęp do danych poufnych w bazie danych i poza jej granicami. Zaawansowane zabezpieczenia danych mogą pomóc w zapewnieniu informacji związanych z odpowiednimi atrybutami zabezpieczeń w organizacji. Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) do monitorowania i wymuszania korzystania z zaawansowanych zabezpieczeń danych w programie SQL Server. 
 
-- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
+- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 
 ## <a name="22-27-41-and-61-remote-access--automated-monitoring--control"></a>2,2, 2,7, 4,1 i 6,1 dostępu zdalnego | Zautomatyzowane monitorowanie/kontrola
@@ -96,8 +96,8 @@ Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics ob
 
 Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które monitorują konfiguracje inspekcji i rejestrowania zdarzeń. Monitorowanie tych konfiguracji może zapewnić wskaźnik awarii systemu inspekcji lub błędnej konfiguracji i pomóc w podejmowaniu działań naprawczych.
 
-- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
-- Inspekcja ustawień diagnostycznych
+- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Przeprowadzanie inspekcji ustawienia diagnostyki
 - Wdróż inspekcję w programie SQL Server
 
 ## <a name="13-and-64-audit-review-analysis-and-reporting--central-review-and-analysis"></a>Przegląd, analiza i raportowanie inspekcji 1,3 i 6,4 | Przegląd i analiza Centralna
@@ -119,9 +119,9 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 - \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Linux
 - \[Preview @ no__t-1: Wdróż agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
 - \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Windows
-- Inspekcja ustawień diagnostycznych
+- Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
-- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
+- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Wdrażanie inspekcji na serwerach SQL
 - Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń
@@ -189,7 +189,7 @@ Ten plan pomaga wymusić silne hasła, przypisując definicje [Azure Policy](../
 
 Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacji przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują luki w zabezpieczeniach systemu operacyjnego, luki w zabezpieczeniach SQL i luki w zabezpieczeniach maszyn wirtualnych w programie Azure Security Center. Azure Security Center udostępnia funkcje raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym. Ten plan przypisuje również definicje zasad, które przeprowadzają inspekcję i wymuszanie zaawansowanych zabezpieczeń danych na serwerach SQL. Zaawansowane zabezpieczenia danych obejmują ocenę luk w zabezpieczeniach i zaawansowane funkcje ochrony przed zagrożeniami, które ułatwiają zrozumienie luk w zabezpieczeniach wdrożonych zasobów.
 
-- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
+- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Luki w zabezpieczeniach konfiguracji zabezpieczeń w zestawach skalowania maszyn wirtualnych należy skorygować
 - Luki w zabezpieczeniach baz danych SQL należy skorygować 
@@ -238,7 +238,7 @@ Ten plan pomaga chronić poufne i integralność przesyłanych informacji przez 
 
 Ten plan pomaga wymusić zasady korzystania z formantów cryptograph, aby chronić informacje przechowywane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które wymuszają określone kontrolki cryptograph i inspekcji używają słabych ustawień kryptograficznych. Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną konfigurację kryptograficzną, może pomóc w podejmowaniu działań naprawczych w celu zapewnienia, że zasoby są skonfigurowane zgodnie z zasadami zabezpieczeń informacji. Definicje zasad przypisane przez ten plan wymagają szyfrowania dla kont usługi Data Lake Storage; Wymagaj przezroczystego szyfrowania danych w bazach danych SQL; i Przeprowadź inspekcję braku szyfrowania dla baz danych SQL, dysków maszyny wirtualnej i zmiennych konta usługi Automation.
 
-- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
+- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Wdróż przezroczyste szyfrowanie danych SQL DB
 - Należy włączyć Transparent Data Encryption baz danych SQL
@@ -278,7 +278,7 @@ Ten plan ułatwia monitorowanie systemu przez inspekcjonowanie i wymuszanie reje
 - \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Linux
 - \[Preview @ no__t-1: Wdróż agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
 - \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Windows
-- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
+- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Zaawansowane ustawienia zabezpieczeń danych dla programu SQL Server powinny zawierać adres e-mail, aby otrzymywać alerty zabezpieczeń
 - Dzienniki diagnostyczne w Azure Stream Analytics powinny być włączone
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
@@ -303,10 +303,10 @@ Po przejrzeniu mapowania kontrolki SWIFT planu CSP-CSCF V2020, odwiedź następu
 > [SWIFT CSP-CSCF V2020 plan-Overview](./index.md)
 > [SWIFT CSP-CSCF V2020 plan-Deploy kroki](./deploy.md)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
-- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów](../../concepts/resource-locking.md)planu.
-- Dowiedz się, jak [aktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).

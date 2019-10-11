@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: ed231bc05d58a40c93cea74081c027e5b49f5306
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982839"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254510"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Obsługiwane funkcje dostępne w Azure Security Center
 
 > [!NOTE]
->Niektóre funkcje są dostępne tylko w warstwie Standardowa. Jeśli nie masz jeszcze konta w usłudze Security Center Standard, dostępny jest bezpłatny okres próbny. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Security Center](https://azure.microsoft.com/pricing/details/security-center/) .
+>Niektóre funkcje są dostępne tylko w warstwie Standardowa. Jeśli nie masz jeszcze konta w usłudze Security Center Standard, dostępny jest bezpłatny okres próbny. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 W poniższych sekcjach przedstawiono Security Center funkcje, które są dostępne dla [obsługiwanych platform](security-center-os-coverage.md).
 
@@ -39,45 +39,45 @@ W poniższych sekcjach przedstawiono Security Center funkcje, które są dostęp
 |----|----|----|----|----|----|----|----|
 |**Środowisko**|**Azure**||**Poza platformą Azure**|**Azure**||**Poza platformą Azure**||
 ||**Maszyna wirtualna**|**Zestaw skalowania maszyn wirtualnych**||**Maszyna wirtualna**|**Zestaw skalowania maszyn wirtualnych**|
-|Alerty wykrywania zagrożeń analizy zachowań maszyn wirtualnych|✔|✔|✔|✔ (w obsługiwanych wersjach)|✔ (w obsługiwanych wersjach)|✔|Zalecenia (bezpłatne) wykrywanie zagrożeń (wersja standardowa)|
-|Alerty dotyczące wykrywania zagrożeń opartych na sieci|✔|✔|X|✔|✔|X|Standardowa|
-|Integracja z programem Microsoft Defender ATP|✔ (w obsługiwanych wersjach)|✔ (w obsługiwanych wersjach)|✔|X|X|X|Standardowa|
-|Brakujące poprawki|✔|✔|✔|✔|✔|✔|Zwolniony|
-|Konfiguracje zabezpieczeń|✔|✔|✔|✔|✔|✔|Zwolniony|
-|Ocena programu Endpoint Protection|✔|✔|✔|X|X|X|Zwolniony|
-|Dostęp do maszyny wirtualnej just in Time|✔|X|X|✔|X|X|Standardowa|
-|Adaptacyjne kontrole aplikacji|✔|X|✔|✔|X|✔|Standardowa|
-|Monitorowanie integralności plików|✔|✔|✔|✔|✔|✔|Standardowa|
-|Ocena szyfrowania dysku|✔|✔|X|✔|✔|X|Zwolniony|
-|Wdrożenie innych firm|✔|X|X|✔|X|X|Zwolniony|
-|Ocena sieciowej grupy zabezpieczeń|✔|✔|X|✔|✔|X|Zwolniony|
-|Wykrywanie zagrożeń bezplikowych|✔|✔|✔|X|X|X|Standardowa|
-|Mapa sieci|✔|✔|X|✔|✔|X|Standardowa|
-|Adaptacyjne ograniczanie sieci|✔|X|X|✔|X|X|Standardowa|
-|Adaptacyjne kontrolki sieci|✔|✔|X|✔|✔|X|Standardowa|
-|& Raporty dotyczące pulpitu nawigacyjnego zgodności z przepisami|✔|✔|✔|✔|✔|✔|Standardowa|
-|Zalecenia i wykrywanie zagrożeń w kontenerach IaaS hostowanych przez platformę Docker|X|X|X|✔|✔|✔|Standardowa|
+|[Integracja z programem Microsoft Defender ATP](https://docs.microsoft.com/azure/security-center/security-center-wdatp)|✔ (w obsługiwanych wersjach)|✔ (w obsługiwanych wersjach)|✔|X|X|X|Standardowa (Standard)|
+|[Alerty wykrywania zagrożeń analizy zachowań maszyn wirtualnych](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas)|✔|✔|✔|✔ (w obsługiwanych wersjach)|✔ (w obsługiwanych wersjach)|✔|Zalecenia (bezpłatne) wykrywanie zagrożeń (wersja standardowa)|
+|[Alerty wykrywania zagrożeń bezplikowych](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas#fileless-attack-detection-)|✔|✔|✔|X|X|X|Standardowa (Standard)|
+|[Alerty dotyczące wykrywania zagrożeń opartych na sieci](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer#azure-network-layer)|✔|✔|X|✔|✔|X|Standardowa (Standard)|
+|[Dostęp do maszyny wirtualnej just in Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|✔|X|X|✔|X|X|Standardowa (Standard)|
+|[Monitorowanie integralności plików](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)|✔|✔|✔|✔|✔|✔|Standardowa (Standard)|
+|[Kontrolki adaptacyjne aplikacji](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)|✔|X|✔|✔|X|✔|Standardowa (Standard)|
+|[Mapa sieci](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations#network-map)|✔|✔|X|✔|✔|X|Standardowa (Standard)|
+|[Adaptacyjne ograniczanie sieci](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)|✔|X|X|✔|X|X|Standardowa (Standard)|
+|Adaptacyjne kontrolki sieci|✔|✔|X|✔|✔|X|Standardowa (Standard)|
+|[& Raporty dotyczące pulpitu nawigacyjnego zgodności z przepisami](https://docs.microsoft.com/azure/security-center/security-center-compliance-dashboard)|✔|✔|✔|✔|✔|✔|Standardowa (Standard)|
+|Zalecenia i wykrywanie zagrożeń w kontenerach IaaS hostowanych przez platformę Docker|X|X|X|✔|✔|✔|Standardowa (Standard)|
+|Brak oceny poprawek systemu operacyjnego|✔|✔|✔|✔|✔|✔|Bezpłatnie|
+|Ocena niezgodności konfiguracji zabezpieczeń|✔|✔|✔|✔|✔|✔|Bezpłatnie|
+|[Ocena programu Endpoint Protection](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|Bezpłatnie|
+|Ocena szyfrowania dysku|✔|✔|X|✔|✔|X|Bezpłatnie|
+|Ocena luk w zabezpieczeniach innych firm|✔|X|X|✔|X|X|Bezpłatnie|
+|[Ocena zabezpieczeń sieci]()|✔|✔|X|✔|✔|X|Bezpłatnie|
 
 ### Obsługiwane rozwiązania programu Endpoint Protection<a name="endpoint-supported"></a>
 
 Poniższa tabela zawiera macierz:
 
  - Czy można użyć Azure Security Center, aby zainstalować każde rozwiązanie.
- - Security Center można odnaleźć rozwiązań programu Endpoint Protection. Jeśli jedno z tych rozwiązań programu Endpoint Protection zostanie wykryte, Security Center nie zaleca się instalowania go.
+ - Security Center można odnaleźć rozwiązań programu Endpoint Protection. Jeśli zostanie odnalezione rozwiązanie programu Endpoint Protection z tej listy, Security Center nie zaleca się instalowania go.
 
 Aby uzyskać informacje o tym, kiedy są generowane zalecenia dla każdej z tych ochrony, zobacz [Endpoint Protection oceny i rekomendacji](security-center-endpoint-protection.md).
 
-| Program Endpoint Protection| Platformy | Instalacja Security Center | Odnajdywanie Security Center |
+| Ochrona punktów końcowych| Platformy | Instalacja usługi Security Center | Odnajdywanie usługi Security Center |
 |------|------|-----|-----|
-| Windows Defender (oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft)| Windows Server 2016| Nie, wbudowana w system operacyjny| Tak |
-| System Center Endpoint Protection (oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft) | Windows Server 2012 R2, 2012, 2008 R2 (Zobacz uwagi poniżej) | Za pośrednictwem rozszerzenia | Tak |
+| Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Tak |
+| System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (Zobacz uwagi poniżej) | Za pomocą rozszerzenia | Tak |
 | Trend Micro — wszystkie wersje * | Rodzina systemów Windows Server  | Nie | Tak |
-| Symantec v 12.1.1100 +| Rodzina systemów Windows Server  | Nie | Tak |
-| McAfee v10 + | Rodzina systemów Windows Server  | Nie | Tak |
-| McAfee v10 + | Rodzina serwerów z systemem Linux  | Nie | Tak **\*** |
+| Symantec — w wersji co najmniej 12.1.1100| Rodzina systemów Windows Server  | Nie | Tak |
+| McAfee — w wersji co najmniej 10 | Rodzina systemów Windows Server  | Nie | Tak |
+| McAfee — w wersji co najmniej 10 | Rodzina serwerów z systemem Linux  | Nie | Tak **\*** |
 | Sophos V9 +| Rodzina serwerów z systemem Linux  | Nie | Tak **\***  |
 
- **\*** Stan pokrycia i dane pomocnicze są obecnie dostępne tylko w obszarze roboczym Log Analytics skojarzonym z chronionymi subskrypcjami i nie są odzwierciedlone w portalu Azure Security Center.
+ **\*** Stan pokrycia i dane pomocnicze są obecnie dostępne tylko w obszarze roboczym Log Analytics skojarzonym z chronionymi subskrypcjami. Nie jest to odzwierciedlone w portalu Azure Security Center.
 
 > [!NOTE]
 >
@@ -95,29 +95,29 @@ Następujące zasoby PaaS są obsługiwane przez Azure Security Center:
 |PostGreSQL|✔| ✔|
 |MySQL|✔| ✔|
 |CosmosDB|X| ✔|
-|Blob Storage|✔| ✔|
-|Konto magazynu|✔| POTRĄCON|
+|Magazyn obiektów Blob|✔| ✔|
+|Konto magazynu|✔| Nie dotyczy|
 |Usługa App Service|✔| ✔|
 |Funkcja|✔| X|
 |Usługa w chmurze|✔| X|
-|Environment|✔| POTRĄCON|
-|Podsieci|✔| POTRĄCON|
-|10/100/1000|✔| POTRĄCON|
-|SIECIOWEJ grupy zabezpieczeń|✔| POTRĄCON|
-|Ramach|✔ * *| ✔|
-|Konto wsadowe|✔| X|
+|VNet|✔| Nie dotyczy|
+|Podsieć|✔| Nie dotyczy|
+|Karta sieciowa|✔| Nie dotyczy|
+|Sieciowa grupa zabezpieczeń|✔| Nie dotyczy|
+|Subskrypcja|✔ * *| ✔|
+|Konto usługi Batch|✔| X|
 |Konto usługi Service Fabric|✔| X|
 |Konto usługi Automation|✔| X|
 |Moduł równoważenia obciążenia|✔| X|
-|Wyszukaj|✔| X|
+|Search|✔| X|
 |Przestrzeń nazw usługi Service Bus|✔| X|
 |Stream Analytics|✔| X|
 |Przestrzeń nazw centrum zdarzeń|✔| X|
 |Aplikacje logiki|✔| X|
-|Redis|✔| POTRĄCON|
+|Redis|✔| Nie dotyczy|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
-|Magazyn kluczy|✔| X|
+|Key Vault|✔| X|
 
 \* te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej.
 

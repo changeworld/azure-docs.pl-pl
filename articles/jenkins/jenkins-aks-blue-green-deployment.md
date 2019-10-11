@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania
+title: Wdrażanie w usłudze Azure Kubernetes za pomocą Jenkins i wzorca wdrażania Blue/Green
 description: Dowiedz się, w jaki sposób przeprowadzić wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania.
 ms.service: jenkins
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, wdrażanie niebieskie zielone, ciągłe dostarczanie, cd
@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/11/2018
-ms.openlocfilehash: 93f2ac284931ba664e0965e537e515c824e6f7a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/09/2019
+ms.openlocfilehash: de9088333f69a22246fe5873d6e09ddb7ba3044a
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60642136"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249404"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania
 
@@ -147,7 +147,7 @@ Niebieskie/zielone wdrożenie można skonfigurować w usłudze AKS ręcznie lub 
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Zaktualizuj nazwy DNS dla publicznego i testowych punktów końcowych. Podczas tworzenia klastra Kubernetes tworzona jest również [dodatkowa grupa zasobów](https://github.com/Azure/AKS/issues/3), a jej nazwa jest tworzona za pomocą wzorca nazewnictwa **MC_&lt;nazwa-grupy-zasobów>_&lt;nazwa-klastra-kubernetes>_&lt;lokalizacja>**.
+1. Zaktualizuj nazwy DNS dla publicznego i testowych punktów końcowych. Podczas tworzenia klastra Kubernetes tworzona jest również [dodatkowa grupa zasobów](https://github.com/Azure/AKS/issues/3), a jej nazwa jest tworzona za pomocą wzorca nazewnictwa **MC_&lt;nazwa-grupy-zasobów> _&lt;nazwa-klastra-kubernetes>_ &lt;lokalizacja>** .
 
     Znajdź publiczne adresy IP w grupie zasobów.
 
@@ -259,7 +259,7 @@ W tej sekcji zobaczysz, jak przygotować serwer Jenkins do uruchomienia kompilac
 
 ## <a name="run-the-job"></a>Uruchamianie zadania
 
-1. Upewnij się, że możesz pomyślnie uruchomić projekt w środowisku lokalnym. Oto kroki tej procedury: [Run project on local machine](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it) (Uruchamianie projektu na komputerze lokalnym).
+1. Upewnij się, że możesz pomyślnie uruchomić projekt w środowisku lokalnym. Instrukcja znajduje się w sekcji [Run project on local machine](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it) (Uruchamianie projektu na komputerze lokalnym).
 
 1. Uruchom zadanie serwera Jenkins. Podczas pierwszego uruchomienia zadania serwer Jenkins wdraża aplikację z listą zadań do wykonania w niebieskim środowisku, które domyślnie jest środowiskiem nieaktywnym. 
 
@@ -288,7 +288,7 @@ az group delete -y --no-wait -n <your-resource-group-name>
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W ramach tego samouczka wyjaśniono, w jaki sposób można przeprowadzić wdrażanie w usłudze AKS przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania. Aby dowiedzieć się więcej na temat dostawcy serwera Jenkins na platformie Azure, przejdź do witryny usługi Jenkins na platformie Azure.
 

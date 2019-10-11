@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 5b72753054881d992d01f3f50926a7f023def337
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: bcde469ba4a376b278295d9c14c9ae12e434e3d5
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969592"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244244"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Utwórz nową ofertę Dynamics 365 dla operacji
 
@@ -86,7 +86,7 @@ Wybierz jedną z następujących opcji:
 
 ## <a name="connect-lead-management"></a>Zarządzanie potencjalnymi klientami
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
 Aby uzyskać więcej informacji, zobacz temat [Zarządzanie potencjalnymi klientami](./commercial-marketplace-get-customer-leads.md) .
 

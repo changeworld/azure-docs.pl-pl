@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Hostowanie interfejsu API RESTful z mechanizmem CORS — Azure App Service'
+title: 'Samouczek: hostowanie interfejsu API RESTful z mechanizmem CORS-Azure App Service'
 description: Dowiedz się, w jaki sposób usługa Azure App Service umożliwia hostowanie interfejsów API RESTful z obsługą mechanizmu CORS.
 services: app-service\api
 documentationcenter: dotnet
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 137b569820ea7394b6a3beb24129c905a2efd123
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: f13b390047ea4d8280b106f3b02a8f18944a6f99
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743876"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255178"
 ---
-# <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Samouczek: Hostowanie interfejsu API RESTful z mechanizmem CORS w usłudze Azure App Service
+# <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Samouczek: hostowanie interfejsu API RESTful z mechanizmem CORS w usłudze Azure App Service
 
 Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Usługa App Service ma dodatkowo wbudowaną obsługę mechanizmu [współużytkowania zasobów między źródłami (CORS, Cross-Origin Resource Sharing)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) dla interfejsów API RESTful. Ten samouczek pokazuje, w jaki sposób wdrożyć aplikację interfejsu API platformy ASP.NET Core w usłudze App Service z obsługą mechanizmu CORS. Aplikacja zostanie skonfigurowana przy użyciu narzędzi wiersza polecenia i wdrożona za pomocą narzędzia Git. 
 
@@ -58,7 +58,7 @@ Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium.
 git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-To repozytorium zawiera aplikację utworzoną na podstawie następującego samouczka: [ASP.NET Core Web API help pages using Swagger (Strony pomocy internetowego interfejsu API platformy ASP.NET Core dotyczące korzystania z programu Swagger)](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Używa ona generatora struktury Swagger, aby obsłużyć [interfejs użytkownika struktury Swagger](https://swagger.io/swagger-ui/) oraz punkt końcowy JSON struktury Swagger.
+To repozytorium zawiera aplikację utworzoną na podstawie następującego samouczka: [ASP.NET Core Web API help pages using Swagger (Strony pomocy internetowego interfejsu API platformy ASP.NET Core korzystające ze struktury Swagger)](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Używa ona generatora struktury Swagger, aby obsłużyć [interfejs użytkownika struktury Swagger](https://swagger.io/swagger-ui/) oraz punkt końcowy JSON struktury Swagger.
 
 ### <a name="run-the-application"></a>Uruchamianie aplikacji
 
@@ -72,7 +72,7 @@ dotnet run
 
 Przejdź do adresu `http://localhost:5000/swagger` w przeglądarce, aby przetestować interfejs użytkownika struktury Swagger.
 
-![Interfejs API platformy ASP.NET Core uruchomiony lokalnie](./media/app-service-web-tutorial-rest-api/local-run.png)
+![Interfejs API platformy ASP.NET Core uruchomiony lokalnie](./media/app-service-web-tutorial-rest-api/azure-app-service-local-swagger-ui.png)
 
 Przejdź do adresu `http://localhost:5000/api/todo`, aby wyświetlić listę zadań w formacie JSON.
 
@@ -90,7 +90,7 @@ W tym kroku wdrożysz aplikację .NET Core połączoną z bazą danych SQL Datab
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -98,7 +98,7 @@ W tym kroku wdrożysz aplikację .NET Core połączoną z bazą danych SQL Datab
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-### <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
+### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
@@ -136,7 +136,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 Przejdź do adresu `http://<app_name>.azurewebsites.net/swagger` w przeglądarce, aby przetestować interfejs użytkownika struktury Swagger.
 
-![Interfejs API platformy ASP.NET Core uruchomiony w usłudze Azure App Service](./media/app-service-web-tutorial-rest-api/azure-run.png)
+![Interfejs API platformy ASP.NET Core uruchomiony w usłudze Azure App Service](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
 Przejdź do adresu `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json`, aby wyświetlić plik _swagger.json_ wdrożonego interfejsu API.
 
@@ -158,9 +158,9 @@ W lokalnym oknie terminala ponownie uruchom aplikację przykładową.
 dotnet run
 ```
 
-Przejdź do aplikacji przeglądarki pod adresem `http://localhost:5000`. Otwórz okno narzędzi programistycznych w przeglądarce (`Ctrl`+`Shift`+`i` w przeglądarce Chrome dla systemu Windows) i sprawdź kartę **Konsola**. Powinien teraz być widoczny komunikat o błędzie `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+Przejdź do aplikacji przeglądarki pod adresem `http://localhost:5000`. Otwórz okno narzędzia deweloperskie w przeglądarce (`Ctrl` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 w programie Chrome dla systemu Windows) i sprawdź kartę **konsola** . Powinien pojawić się komunikat o błędzie `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
-![Błąd mechanizmu CORS w kliencie przeglądarki](./media/app-service-web-tutorial-rest-api/cors-error.png)
+![Błąd mechanizmu CORS w kliencie przeglądarki](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
 Ze względu na niezgodność domeny aplikacji przeglądarki (`http://localhost:5000`) i zdalnego zasobu (`http://<app_name>.azurewebsites.net`) oraz z uwagi na fakt, że interfejs API usługi App Service nie wysyła nagłówka `Access-Control-Allow-Origin`, przeglądarka uniemożliwiła ładowanie zawartości między domenami w aplikacji przeglądarki.
 
@@ -177,13 +177,13 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 W parametrze `properties.cors.allowedOrigins` możesz określić więcej niż jeden adres URL klienta (`"['URL1','URL2',...]"`). Możesz również włączyć adresy URL wszystkich klientów za pomocą wartości `"['*']"`.
 
 > [!NOTE]
-> Jeśli Twoja aplikacja wymaga wysyłania poświadczeń, takich jak pliki cookie lub tokeny uwierzytelniania, przeglądarka może wymagać nagłówka `ACCESS-CONTROL-ALLOW-CREDENTIALS` w odpowiedzi. Aby włączyć tę opcję w usłudze App Service, należy ustawić parametr `properties.cors.supportCredentials` na wartość `true` w pliku config mechanizmu CORS. Włączenie tej opcji nie jest możliwe, gdy parametr `allowedOrigins` zawiera wartość `'*'`.
+> Jeśli Twoja aplikacja wymaga wysyłania poświadczeń, takich jak pliki cookie lub tokeny uwierzytelniania, przeglądarka może wymagać nagłówka `ACCESS-CONTROL-ALLOW-CREDENTIALS` w odpowiedzi. Aby włączyć tę funkcję w App Service, ustaw `properties.cors.supportCredentials` na `true` w konfiguracji CORS. Nie można go włączyć, jeśli `allowedOrigins` zawiera `'*'`.
 
 ### <a name="test-cors-again"></a>Ponowne testowanie mechanizmu CORS
 
 Odśwież aplikację przeglądarki pod adresem `http://localhost:5000`. Komunikat o błędzie w oknie **Konsola** zniknął i możesz wyświetlić dane z wdrożonego interfejsu API oraz z nich korzystać. Zdalny interfejs API obsługuje teraz mechanizm CORS w aplikacji przeglądarki uruchomionej lokalnie. 
 
-![Powodzenie mechanizmu CORS w kliencie przeglądarki](./media/app-service-web-tutorial-rest-api/cors-success.png)
+![Powodzenie mechanizmu CORS w kliencie przeglądarki](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-success.png)
 
 Gratulacje. Używasz interfejsu API w usłudze Azure App Service z obsługą mechanizmu CORS.
 
@@ -211,4 +211,4 @@ Które czynności umiesz wykonać:
 Przejdź do następnego samouczka, aby dowiedzieć się, jak uwierzytelniać i autoryzować użytkowników.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Kompleksowe uwierzytelnianie i autoryzacja użytkowników](app-service-web-tutorial-auth-aad.md)
+> [Samouczek: kompleksowe uwierzytelnianie i autoryzacja użytkowników](app-service-web-tutorial-auth-aad.md)

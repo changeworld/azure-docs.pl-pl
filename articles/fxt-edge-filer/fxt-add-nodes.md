@@ -1,116 +1,116 @@
 ---
-title: Konfiguracja klastra filtr Edge FXT Azure Microsoft — Dodawanie węzłów
-description: Jak dodać węzły do pamięci podręcznej z magazynu Azure FXT krawędzi filtr
+title: Konfiguracja klastra Microsoft Azure FXT Edge — Dodawanie węzłów
+description: Jak dodać węzły do pamięci podręcznej magazynu usługi Azure FXT Edge
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: d84b98b4ab936bbb6978144eb2e89b5e19df7069
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: 85ab9aaa3e184af7aa71a31eb3d8de1a20639c2a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543214"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254925"
 ---
 # <a name="tutorial-add-cluster-nodes"></a>Samouczek: Dodawanie węzłów klastra 
 
-Nowy klaster filtr Edge FXT Azure jest tworzony z tylko jednym węzłem. Należy dodać co najmniej dwa dodatkowe węzły, a następnie włączyć wysoką dostępność, przed wykonaniem innych konfiguracji. 
+Nowy klaster usługi Azure FXT Edge jest tworzony z tylko jednym węzłem. Przed wykonaniem innej konfiguracji należy dodać co najmniej dwa węzły i włączyć wysoką dostępność. 
 
-W tym samouczku opisano sposób dodawania węzłów klastra i włączanie funkcji wysokiej dostępności (HA). 
+W tym samouczku wyjaśniono, jak dodać węzły klastra i włączyć funkcję wysokiej dostępności (HA). 
 
 Z tego samouczka dowiesz się: 
 
 > [!div class="checklist"]
 > * Jak dodać węzły do klastra FXT
-> * Jak włączyć wysokiej dostępności
+> * Jak włączyć wysoką dostępność
 
-Kroki opisane w tym samouczku zająć około 45 minut.
+Wykonanie kroków opisanych w tym samouczku zajmie około 45 minut.
 
-Przed rozpoczęciem tego samouczka, Włącz węzły, które chcesz dodać i [ich hasła początkowego](fxt-node-password.md). 
+Przed rozpoczęciem pracy z tym samouczkiem Włącz w węzłach, które chcesz dodać, i [Ustaw ich początkowe hasła](fxt-node-password.md). 
 
-## <a name="1-load-the-cluster-nodes-page"></a>1. Ładowanie strony węzłów klastra
+## <a name="1-load-the-cluster-nodes-page"></a>1. Załaduj stronę węzłów klastra
 
-Otwórz Panel sterowania klastra w przeglądarce sieci web, a następnie zaloguj się jako administrator. (Szczegółowe instrukcje znajdują się w artykule omówienie, w obszarze [otwarcie strony ustawień](fxt-cluster-create.md#open-the-settings-pages).)
+Otwórz Panel sterowania klastra w przeglądarce internetowej i zaloguj się jako administrator. (Szczegółowe instrukcje znajdują się w artykule Omówienie, w obszarze [Otwórz strony ustawień](fxt-cluster-create.md#open-the-settings-pages)).
 
-W Panelu sterowania przedstawiono **pulpit nawigacyjny** karcie po jego otwarciu. 
+Panel sterowania pokazuje kartę **pulpit nawigacyjny** , gdy zostanie otwarta. 
 
-![Pulpit nawigacyjny w Panelu sterowania (najpierw tabulacji)](media/fxt-cluster-config/dashboard-1-node.png)
+![Pulpit nawigacyjny panelu sterowania (pierwsza karta)](media/fxt-cluster-config/dashboard-1-node.png)
 
-Ta ilustracja przedstawia pulpitu nawigacyjnego nowo utworzony klaster z jednym węzłem.
+Ten obraz przedstawia pulpit nawigacyjny nowo utworzonego klastra z pojedynczym węzłem.
 
-## <a name="2-locate-the-node-to-add"></a>2. Odszukaj węzeł, aby dodać
+## <a name="2-locate-the-node-to-add"></a>2. Zlokalizuj węzeł do dodania
 
-Aby dodać węzły, kliknij przycisk **ustawienia** kartę i wybierz polecenie **węzłów FXT** strony w **klastra** sekcji.
+Aby dodać węzły, kliknij kartę **Ustawienia** , a następnie wybierz stronę **węzły FXT** w sekcji **klaster** .
 
-![Ustawienia Panelu sterowania karcie (druga karta) z klastrem > węzły FXT załadowany](media/fxt-cluster-config/settings-fxt-nodes.png)
+![Karta Ustawienia panelu sterowania (druga karta) z załadowanymi węzłami FXT > klastra](media/fxt-cluster-config/settings-fxt-nodes.png)
 
-**Węzłów FXT — odłączyć** listy węzłów FXT Wyświetla wszystkie nieprzypisane (większość centrów danych ma tylko kilka. Znajdź węzły FXT, które chcesz dodać do klastra.
+Lista **węzły FXT-unjoind** zawiera wszystkie nieprzypisane węzły FXT (większość centrów danych ma tylko kilka. Znajdź węzły FXT, które chcesz dodać do klastra.
 
 > [!Tip] 
-> Jeśli nie można odnaleźć węzła chcesz na **Unjoined** listy, należy sprawdzić, czy spełnia następujące wymagania:
+> Jeśli nie możesz znaleźć węzła na liście **przyłączonych** , sprawdź, czy spełnia on następujące wymagania:
 > 
-> * Zostanie włączone i miał [główny ustawiania haseł](fxt-node-password.md).
-> * Jest połączona z siecią, w których masz dostęp. Jeśli używasz sieci VLAN, musi być w tej samej sieci VLAN co klaster.
-> * Może zostać wykryte przy użyciu protokołu usługi Bonjour. 
+> * Jest on włączony i ma [ustawiony hasło główne](fxt-node-password.md).
+> * Jest on połączony z siecią, do której można uzyskać dostęp. Jeśli używasz sieci VLAN, musi ona znajdować się w tej samej sieci VLAN co klaster.
+> * Można go wykryć przy użyciu protokołu Bonjour. 
 >
->   Niektóre ustawienia zapory blokować porty TCP/UDP, używane przez usługi Bonjour, co uniemożliwi systemowi operacyjnemu FXT automatycznie wykryć węzłów.
+>   Niektóre ustawienia zapory blokują porty TCP/UDP używane przez Bonjour, co uniemożliwia systemowi operacyjnemu FXT automatyczne wykrywanie węzłów.
 > 
-> Jeśli węzeł, który chcesz dodać, nie ma na liście, wypróbuj następujące rozwiązania: 
+> Jeśli węzeł, który chcesz dodać, nie znajduje się na liście, wypróbuj następujące rozwiązania: 
 > 
-> * Kliknij przycisk **odnajdywania ręcznego** przycisk, aby je znaleźć przy użyciu adresu IP.
+> * Kliknij przycisk **odnajdywanie ręczne** , aby znaleźć go według adresu IP.
 > 
-> * Ręczne przypisywanie adresów IP tymczasowych. To jest rzadkie, ale mogą być wymagane, jeśli używasz sieci VLAN oznakowane i węzły nie znajdują się na odpowiedniej sieci lub sieci nie zezwala na własnym przypisanych adresów IP. Postępuj zgodnie z instrukcjami w starszej wersji tego dokumentu, aby [ręcznie ustawić statyczny adres IP](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
+> * Ręcznie Przypisz tymczasowe adresy IP. Jest to rzadki przypadek, ale może być konieczne, jeśli używasz oznakowanych sieci VLAN, a węzły nie znajdują się w poprawnej sieci lub sieć nie zezwala na samodzielne adresy IP. Postępuj zgodnie z instrukcjami w starszej wersji tego dokumentu, aby [ręcznie ustawić statyczny adres IP](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
 
-Nazwa węzła, adres IP, wersja oprogramowania i stanu uprawnień są wyświetlane na liście. Zazwyczaj **stan** kolumny albo jest wyświetlany komunikat "Chce dołączyć do" lub w tym artykule opisano problem systemu lub sprzętu, który sprawia, że węzeł nie kwalifikuje się do dołączenia do klastra.
+Nazwa węzła, adres IP, wersja oprogramowania i stan uprawnień są wyświetlane na liście. Zazwyczaj w kolumnie **stan** znajduje się komunikat "Przyłączanie" lub opisywanie problemu systemowego lub sprzętowego, który sprawia, że węzeł nie kwalifikuje się do dołączenia do klastra.
 
-**Akcje** kolumna zawiera przyciski umożliwiające Dodaj węzeł do klastra lub zaktualizować swoje oprogramowanie. Przycisk Aktualizuj automatycznie instaluje wersję oprogramowania, która jest zgodna węzłów w klastrze.
+Kolumna **Akcje** zawiera przyciski umożliwiające dodanie węzła do klastra lub zaktualizowanie jego oprogramowania. Przycisk Aktualizuj automatycznie instaluje wersję oprogramowania zgodną z węzłami znajdującymi się już w klastrze.
 
-Wszystkie węzły w klastrze, należy użyć tej samej wersji systemu operacyjnego, ale nie jest potrzebny do aktualizacji oprogramowania przed dodaniem węzła. Po kliknięciu **Zezwalaj na sprzężenie** przycisku procesu dołączania klastra automatycznie sprawdza i instaluje oprogramowanie systemu operacyjnego, która jest zgodna z wersją w klastrze.
+Wszystkie węzły w klastrze muszą korzystać z tej samej wersji systemu operacyjnego, ale nie trzeba aktualizować oprogramowania przed dodaniem węzła. Po kliknięciu przycisku **Zezwól na przyłączenie** proces dołączania do klastra automatycznie sprawdza i instaluje oprogramowanie systemu operacyjnego zgodne z wersją w klastrze.
 
-Aby dowiedzieć się więcej na temat opcji na tej stronie, przeczytaj [ **klastra** > **węzłów FXT** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) w przewodniku po konfiguracji klastra.
+Aby dowiedzieć się więcej na temat opcji na tej stronie, przeczytaj artykuł [ **klaster** > **węzły FXT** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) w podręczniku konfiguracji klastra.
 
-## <a name="3-click-the-allow-to-join-button"></a>3. Kliknij przycisk "Zezwalaj na Join" 
+## <a name="3-click-the-allow-to-join-button"></a>3. kliknij przycisk "Zezwól na przyłączenie" 
 
-Kliknij przycisk **Zezwalaj Dołącz*** znajdujący się w **akcje** kolumny węzła, który chcesz dodać.
+Kliknij przycisk **Zezwól na przyłączenie*** w kolumnie **Akcje** dla węzła, który chcesz dodać.
 
-Po kliknięciu przycisku, stan węzła mogą ulec zmianie, zgodnie z jego oprogramowanie jest aktualizowane w ramach przygotowania do dodawania go do klastra. 
+Po kliknięciu przycisku stan węzła może ulec zmianie, ponieważ jego oprogramowanie zostało zaktualizowane w celu dodania go do klastra. 
 
-Na poniższym obrazie przedstawiono węzła, który jest w trakcie procesu przyłączania do klastra (najprawdopodobniej, stają się coraz aktualizacji systemu operacyjnego, przed dodaniem). Przyciski nie są wyświetlane w **akcje** kolumny dla węzłów, które są właśnie dodawany do klastra.
+Poniższy obraz przedstawia węzeł, który jest w trakcie dołączania do klastra (najprawdopodobniej jest to przed dodaniem aktualizacji systemu operacyjnego). W kolumnie **Akcje** nie są wyświetlane żadne przyciski dla węzłów, które są dodawane do klastra.
 
-![jeden wiersz w tabeli węzła, przedstawiający nazwę węzła, adres IP, wersja oprogramowania, komunikat "Dozwolone do dołączenia do" i puste ostatniej kolumnie](media/fxt-cluster-config/node-join-in-process.png)
+![jeden wiersz tabeli węzła, pokazujący nazwę węzła, adres IP, wersję oprogramowania, komunikat "dozwolony do przyłączenia" i pustą ostatnią kolumnę](media/fxt-cluster-config/node-join-in-process.png)
 
-Po kilku chwilach nowego węzła powinna występować na liście węzłów klastra w górnej części **węzłów FXT** strona ustawień. 
+Po kilku chwilach nowy węzeł powinien pojawić się na liście węzłów klastra w górnej części strony ustawień **węzłów FXT** . 
 
-Powtórz tę procedurę, aby dodać inne węzły do klastra. Nie trzeba czekać na jeden węzeł zakończyć, dołączenie do klastra przed uruchomieniem innego.
+Powtórz ten proces, aby dodać inne węzły do klastra. Nie musisz czekać, aż jeden węzeł zakończy dołączenie do klastra przed rozpoczęciem kolejnego.
 
-## <a name="enable-high-availability"></a>Włączanie wysokiej dostępności
+## <a name="enable-high-availability"></a>Włącz wysoką dostępność
 
-Po dodaniu drugiego węzła do klastra, może pojawić się komunikat ostrzegawczy, w Panelu sterowania pulpitu nawigacyjnego, który funkcji wysokiej dostępności nie jest skonfigurowane. 
+Po dodaniu drugiego węzła do klastra na pulpicie nawigacyjnym panelu sterowania może zostać wyświetlony komunikat ostrzegawczy informujący o tym, że funkcja wysokiej dostępności nie jest skonfigurowana. 
 
-Wysoka dostępność (HA) umożliwia węzłów klastra w celu kompensacji dla siebie, jeśli ulegnie awarii jednej. Wysokiej dostępności nie jest włączona domyślnie.
+Wysoka dostępność (HA) umożliwia węzłom klastra kompensację pod względem siebie, jeśli jeden z nich ulegnie awarii. HA nie jest domyślnie włączona.
 
-![Karta pulpitu nawigacyjnego z komunikatem "klaster ma więcej niż jeden węzeł, ale o wysokiej dostępności nie jest włączone..." w tabeli warunków](media/fxt-cluster-config/no-ha-2-nodes.png)
+![Karta pulpitu nawigacyjnego z komunikatem "klaster ma więcej niż jeden węzeł, ale HA nie jest włączona..." w tabeli warunków](media/fxt-cluster-config/no-ha-2-nodes.png)
 
 > [!Note] 
-> Nie należy włączać wysokiej dostępności, dopóki nie uzyskasz co najmniej trzy węzły w klastrze.
+> Nie włączaj HA do momentu, gdy w klastrze nie ma co najmniej trzech węzłów.
 
-Wykonaj poniższą procedurę, aby włączyć funkcję wysokiej dostępności: 
+Wykonaj następującą procedurę, aby włączyć HA: 
 
-1. Obciążenia **wysokiej dostępności** strony w **klastra** części **ustawienia** kartę.
+1. Załaduj stronę **wysoka dostępność** w sekcji **klaster** na karcie **Ustawienia** .
 
-   ![Strona konfiguracji o wysokiej dostępności (klastrowania > wysokiej dostępności). Pole wyboru "Włącz HA" znajduje się na górze i przycisk Prześlij znajduje się na dole.](media/fxt-cluster-config/enable-ha.png)
+   ![Strona konfiguracji HA (> o wysokiej dostępności w klastrze). Pole wyboru "Włącz HA" znajduje się u góry, a przycisk Prześlij znajduje się u dołu.](media/fxt-cluster-config/enable-ha.png)
 
-2. Kliknij pole wyboru o nazwie **włączenia zaświadczanie o kondycji** i kliknij przycisk **przesyłania** przycisku. 
+2. Kliknij pole z etykietą **Włącz ha** i kliknij przycisk **Prześlij** . 
 
-Zostanie wyświetlony alert na **pulpit nawigacyjny** aby upewnić się, że włączono wysokiej dostępności.
+Na **pulpicie nawigacyjnym** zostanie wyświetlony alert z informacją o tym, że jest włączona opcja ha.
 
-![Pulpit nawigacyjny tabeli przedstawiający komunikat "HA jest teraz całkowicie skonfigurowałeś"](media/fxt-cluster-config/ha-configured-alert.png)
+![Tabela pulpitów nawigacyjnych pokazująca komunikat "HA jest teraz w pełni skonfigurowany"](media/fxt-cluster-config/ha-configured-alert.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po dodaniu wszystkich węzłów w klastrze, należy kontynuować instalację, konfigurując klastra długoterminowego przechowywania.
+Po dodaniu wszystkich węzłów w klastrze Kontynuuj instalację, konfigurując magazyn długoterminowy klastra.
 
 > [!div class="nextstepaction"]
-> [Dodawanie magazynu zaplecza i konfigurowanie wirtualnej przestrzeni nazw](fxt-add-storage.md)
+> [Dodaj magazyn zaplecza i skonfiguruj wirtualną przestrzeń nazw](fxt-add-storage.md)

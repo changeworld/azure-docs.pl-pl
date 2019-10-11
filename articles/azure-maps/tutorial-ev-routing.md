@@ -1,6 +1,6 @@
 ---
-title: Routing pojazdu elektrycznego przy użyciu Azure Notebooks (Python) | Microsoft Docs
-description: Routing EV przy użyciu Azure Maps interfejsów API routingu i Azure Notebooks.
+title: Kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python) | Microsoft Docs
+description: Roześlij pojazdy elektryczne przy użyciu Azure Maps interfejsów API routingu i Azure Notebooks.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/01/2019
@@ -9,81 +9,91 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: c4b46bc952782fc7c9b56d6f0c049fe17b63d0f2
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 9cc7fc1ba8c7f55700505ea8fca0dea4f836e333
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71836337"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243298"
 ---
-# <a name="electric-vehicle-routing-using-azure-notebooks-python"></a>Elektryczne Routing pojazdu przy użyciu Azure Notebooks (Python)
+# <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python)
 
-Azure Maps to portfolio interfejsów API usług geoprzestrzennych natywnie zintegrowanych z platformą Azure, które umożliwiają deweloperom, firmom i dostawcom oprogramowania Tworzenie aplikacji obsługujących lokalizację oraz rozwiązań IoT, mobilności, logistycznych i śledzenia zasobów. Interfejsy API REST Azure Maps mogą być wywoływane z języków, takich jak Python i R, aby umożliwić analizę danych geoprzestrzennych i scenariusze uczenia maszynowego. Azure Maps oferuje niezawodny zestaw [interfejsów API routingu](https://docs.microsoft.com/rest/api/maps/route) , który umożliwia użytkownikom obliczanie tras między kilkoma punktami danych w oparciu o różne warunki, takie jak typ pojazdu lub dostępny obszar. W tym samouczku przedstawiono scenariusz, w którym można uzyskać pomoc dotyczącą sterownika pojazdu elektrycznego, którego pojazd jest niski, aby znaleźć najbliższą możliwą stację ładowania w odniesieniu do czasu dysku.
+Azure Maps to portfolio interfejsów API usług geoprzestrzennych, które są natywnie zintegrowane z platformą Azure. Korzystając z tych interfejsów API, deweloperzy, przedsiębiorstwa i dostawcy oprogramowania mogą tworzyć aplikacje obsługujące lokalizacje i rozwiązania IoT, mobilności, logistyki i śledzenia zasobów. 
 
-W tym samouczku wykonasz następujące instrukcje:
+Interfejsy API REST Azure Maps mogą być wywoływane z języków takich jak Python i R, aby umożliwić analizę danych geoprzestrzennych i scenariusze uczenia maszynowego. Azure Maps oferuje niezawodny zestaw [interfejsów API routingu](https://docs.microsoft.com/rest/api/maps/route) , które umożliwiają użytkownikom obliczanie tras między kilkoma punktami danych. Obliczenia są zależne od różnych warunków, takich jak typ pojazdu lub dostępny obszar. 
+
+W tym samouczku przedstawiono scenariusz, w którym można uzyskać pomoc dotyczącą sterownika, którego obciążenie baterii pojazdu elektrycznego jest niskie, aby znaleźć najbliższą możliwą stację ładowania na podstawie czasu dysku z lokalizacji pojazdu.
+
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
-> * Tworzenie i uruchamianie Jupyter Notebook na [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) w chmurze
-> * Wywoływanie interfejsów API REST Azure Maps w języku Python
+> * Utwórz i uruchom Notes Jupyter na [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) w chmurze.
+> * Wywołaj interfejsy API REST Azure Maps w języku Python.
 > * Wyszukaj osiągalny zakres oparty na modelu zużycia pojazdu elektrycznego.
-> * Wyszukaj stacje opłat za pojazdy elektryczne w dostępnym zakresie (lub isochrone).
+> * Wyszukaj stacje opłat za pojazdy elektryczne w dostępnym zakresie lub isochrone.
 > * Renderuj dostępną granicę zakresu i stacje ładowania na mapie.
-> * Znajdź i Wizualizuj trasę do najbliższej stacji naładowania pojazdu elektrycznego na podstawie czasu.
+> * Znajdź i Wizualizuj trasę do najbliższej stacji naładowania pojazdu elektrycznego na podstawie czasu dysku.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-Aby wykonać kroki opisane w tym samouczku, musisz najpierw utworzyć konto Azure Maps i uzyskać klucz podstawowy (klucz subskrypcji). Postępuj zgodnie z instrukcjami w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) , aby utworzyć subskrypcję konta usługi Azure Maps z warstwą cenową S1, a następnie wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby uzyskać podstawowy klucz subskrypcji dla konta.
+Aby ukończyć ten samouczek, musisz najpierw utworzyć konto Azure Maps i uzyskać klucz podstawowy (klucz subskrypcji). 
+
+Aby utworzyć subskrypcję konta Azure Maps w warstwie cenowej S1, postępuj zgodnie z instrukcjami podanymi w temacie [Zarządzanie kontem usługi Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account). 
+
+Aby uzyskać podstawowy klucz subskrypcji dla konta, postępuj zgodnie z instrukcjami w temacie [wyszukiwanie pobliskich punktów zainteresowania przy użyciu Azure Maps](./tutorial-search-location.md#getkey) .
 
 ## <a name="create-an-azure-notebook"></a>Tworzenie notesu platformy Azure
 
-Aby wykonać czynności opisane w tym samouczku, należy utworzyć projekt notesu platformy Azure i pobrać i uruchomić plik notesu Jupyter. Plik notesu zawiera kod języka Python, który implementuje scenariusz w tym samouczku. Wykonaj poniższe kroki, aby utworzyć projekt notesu platformy Azure i przekazać do niego dokument notesu Jupyter.
+Aby wykonać czynności opisane w tym samouczku, należy utworzyć projekt notesu platformy Azure i pobrać i uruchomić plik notesu Jupyter. Plik notesu zawiera kod języka Python, który implementuje scenariusz w tym samouczku. Aby utworzyć projekt notesu platformy Azure i przekazać do niego dokument notesu Jupyter, wykonaj następujące czynności:
 
-1. Przejdź do [Azure Notebooks](https://notebooks.azure.com) i zaloguj się. Aby uzyskać więcej informacji, zobacz [Szybki Start](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
-2. Na stronie Twój profil publiczny wybierz pozycję **Moje projekty** w górnej części strony.
+1. Przejdź do [Azure Notebooks](https://notebooks.azure.com) i zaloguj się. Aby uzyskać więcej informacji, zobacz [Szybki Start: Logowanie i Ustawianie identyfikatora użytkownika](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. W górnej części strony profilu publicznego wybierz pozycję **Moje projekty**.
 
-    ![mój projekt](./media/tutorial-ev-routing/myproject.png)
+    ![Przycisk moje projekty](./media/tutorial-ev-routing/myproject.png)
 
-3. Na stronie **Moje projekty** wybierz pozycję **Nowy projekt**.
+1. Na stronie **Moje projekty** wybierz pozycję **Nowy projekt**.
  
-   ![Nowy projekt](./media/tutorial-ev-routing/create-project.png)
+   ![Przycisk Nowy projekt](./media/tutorial-ev-routing/create-project.png)
 
-4. W wyświetlonym oknie podręcznym **Utwórz nowy projekt** Wprowadź poniższe informacje, a następnie kliknij pozycję **Utwórz**:
-    * Nazwa projektu
-    * Identyfikator projektu
+1. W okienku **Utwórz nowy projekt** wprowadź nazwę projektu i identyfikator projektu.
  
-    ![Utwórz projekt](./media/tutorial-ev-routing/create-project-window.png)
+    ![Okienko Utwórz nowy projekt](./media/tutorial-ev-routing/create-project-window.png)
 
-5. Po utworzeniu projektu Pobierz [plik dokumentu notesu Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) z [repozytorium Jupyter Notebook Azure Maps](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook). 
+1. Wybierz pozycję **Utwórz**.
 
-6. Wybierz projekt z listy projekty na stronie **Moje projekty** i kliknij przycisk **Przekaż** , aby przekazać plik dokumentu notesu Jupyter. Przekaż plik z komputera, a następnie kliknij przycisk **gotowe**.
+1. Po utworzeniu projektu Pobierz [plik dokumentu notesu Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) z [repozytorium Azure Maps Jupyter notesu](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook). 
+
+1. Na liście projekty na stronie **Moje projekty** wybierz projekt, a następnie wybierz pozycję **Przekaż** , aby przekazać plik dokumentu notesu Jupyter. 
 
     ![Przekaż Notes](./media/tutorial-ev-routing/upload-notebook.png)
 
-7. Po pomyślnym przekazaniu plik zostanie wyświetlony na stronie Twojego projektu. Kliknij plik notesu, aby otworzyć go jako Jupyter Notebook.
+1. Przekaż plik z komputera, a następnie wybierz pozycję **gotowe**.
 
-Aby lepiej zrozumieć funkcje zaimplementowane w pliku notesu, zalecamy uruchomienie kodu w notesie po jednej komórce w danym momencie. Możesz uruchomić kod w każdej komórce, klikając przycisk **Run (Uruchom** ) w górnej części aplikacji Notes.
+1. Po pomyślnym zakończeniu przekazywania plik zostanie wyświetlony na stronie Twojego projektu. Wybierz plik, aby otworzyć go jako Notes Jupyter.
 
-  ![Wykonane](./media/tutorial-ev-routing/run.png)
+W celu lepszego zrozumienia funkcji zaimplementowanych w pliku notesu zalecamy uruchomienie kodu w notesie po jednej komórce naraz. Kod można uruchomić w każdej komórce, wybierając przycisk Run ( **Uruchom** ) w górnej części aplikacji Notes.
+
+  ![Przycisk Uruchom](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Zainstaluj pakiety na poziomie projektu
 
-Aby można było uruchomić kod w notesie, konieczne będzie zainstalowanie pakietów na poziomie projektu. Wykonaj poniższe kroki, aby zainstalować wymagane pakiety:
+Aby uruchomić kod w notesie, zainstaluj pakiety na poziomie projektu, wykonując następujące czynności:
 
-1. Pobierz plik ["Requirements. txt"](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [repozytorium Azure Maps Jupyter Notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) i przekaż go do projektu.
-2. Na pulpicie nawigacyjnym projektu wybierz pozycję **Ustawienia projektu**. 
-3. W wyświetlonym oknie podręcznym wybierz **kartę środowisko**, a następnie wybierz pozycję **Dodaj**.
-4. W obszarze **czynności konfiguracyjne środowiska** 
-    * W pierwszej kontrolce listy rozwijanej wybierz pozycję **Requirements. txt**.
-    * W drugiej kontrolce listy rozwijanej wybierz plik "Requirements. txt".
-    * W trzeciej kontrolce listy rozwijanej wybierz wersję 3,6 języka Python jako wersję języka Python.
-7. Wybierz pozycję **Zapisz**.
+1. Pobierz plik [*Requirements. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [repozytorium Azure Maps Jupyter Notes](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), a następnie Przekaż go do projektu.
+1. Na pulpicie nawigacyjnym projektu wybierz pozycję **Ustawienia projektu**. 
+1. W okienku **Ustawienia projektu** wybierz kartę **środowisko** , a następnie wybierz pozycję **Dodaj**.
+1. W obszarze **czynności konfiguracyjne środowiska**wykonaj następujące czynności:   
+    a. Z pierwszej listy rozwijanej wybierz pozycję **Requirements. txt**.  
+    b. Z drugiej listy rozwijanej wybierz plik *Requirements. txt* .  
+    d. Z trzeciej listy rozwijanej wybierz **wersję 3,6 języka Python** jako wersję.
+1. Wybierz pozycję **Zapisz**.
 
     ![Zainstaluj pakiety](./media/tutorial-ev-routing/install-packages.png)
 
-## <a name="load-required-modules-and-frameworks"></a>Załaduj wymagane moduły i platformy
+## <a name="load-the-required-modules-and-frameworks"></a>Załaduj wymagane moduły i struktury
 
-Uruchom Poniższy skrypt, aby załadować wszystkie wymagane moduły i struktury.
+Aby załadować wszystkie wymagane moduły i struktury, uruchom następujący skrypt:
 
 ```python
 import time
@@ -92,11 +102,13 @@ import urllib.parse
 from IPython.display import Image, display
 ```
 
-## <a name="request-for-reachable-range-boundary"></a>Wniosek o dostępną granicę zakresu
+## <a name="request-the-reachable-range-boundary"></a>Żądaj granicy dostępnego zakresu
 
-W naszym scenariuszu firma dostarczająca pakiet ma pewne pojazdy elektryczne w ich flotie. W ciągu dnia należy ponownie naliczać pojazdy elektryczne bez konieczności powrotu do hurtowni danych. Za każdym razem, gdy bieżąca pozostała opłata za pojazd elektryczny jest mniejsza niż godzina (pojazd elektryczny jest niski), musimy wyszukać zestaw stacji ładowania, które znajdują się w dostępnym zakresie i uzyskać informacje o granicach dla tego zakresu. Ze względu na to, że firma preferuje używanie tras zrównoważonych przez ekonomię i szybkość, żądany element routetype ma wartość "ekonomiczna". Poniższy skrypt wywołuje [interfejs API pobierania zakresu tras](https://docs.microsoft.com/rest/api/maps/route/getrouterange) usługi routingu Azure Maps z parametrami modelu zużycia pojazdu i analizuje odpowiedź w celu utworzenia obiektu wielokąta w formacie GEOJSON reprezentującego maksymalny osiągalny zakres samochodu .
+W naszym scenariuszu firma dostarczająca pakiet ma pojazdy elektryczne w swojej flotie. W ciągu dnia należy ponownie naliczać pojazdy elektryczne bez konieczności powrotu do hurtowni danych. Za każdym razem, gdy bieżąca pozostała opłata spadnie do mniej niż godziny (oznacza to, że bateria jest niska), Wyszukaj zestaw stacji ładowania, które znajdują się w dostępnym zakresie, i uzyskaj informacje o granicach dla tego zakresu. 
 
-Uruchom skrypt w komórce poniżej, aby uzyskać granice dla dostępnego zakresu pojazdu elektrycznego.
+Ze względu na to, że firma preferuje używanie tras wymagających zrównoważenia ekonomicznego i szybkości, żądany element routetype jest *ekologiczny*. Następujący skrypt wywołuje [interfejs API zakresu pobierania tras](https://docs.microsoft.com/rest/api/maps/route/getrouterange) usługi routingu Azure Maps przy użyciu parametrów dla modelu zużycia pojazdu. Skrypt następnie analizuje odpowiedź w celu utworzenia obiektu wielokąta w formacie GEOJSON, który reprezentuje maksymalny osiągalny zakres.
+
+Aby określić granice dostępnego zakresu dla pojazdu elektrycznego, uruchom skrypt w następującej komórce:
 
 ```python
 subscriptionKey = "Your Azure Maps primary subscription key"
@@ -113,7 +125,7 @@ routeType="eco"
 constantSpeedConsumptionInkWhPerHundredkm="50,8.2:130,21.3"
 
 
-# Get bounds for the electric vehicle's reachable range.
+# Get boundaries for the electric vehicle's reachable range.
 routeRangeResponse = await (await session.get("https://atlas.microsoft.com/route/range/json?subscription-key={}&api-version=1.0&query={}&travelMode={}&vehicleEngineType={}&currentChargeInkWh={}&maxChargeInkWh={}&timeBudgetInSec={}&routeType={}&constantSpeedConsumptionInkWhPerHundredkm={}"
                                               .format(subscriptionKey,str(currentLocation[0])+","+str(currentLocation[1]),travelMode, vehicleEngineType, currentChargeInkWh, maxChargeInkWh, timeBudgetInSec, routeType, constantSpeedConsumptionInkWhPerHundredkm))).json()
 
@@ -138,14 +150,16 @@ boundsData = {
              }
 ```
 
-## <a name="search-electric-vehicle-charging-stations-within-reachable-range"></a>Wyszukaj stacje naładowania pojazdu elektrycznego w dostępnym zakresie
+## <a name="search-for-electric-vehicle-charging-stations-within-the-reachable-range"></a>Wyszukaj stacje opłat za pojazdy elektryczne w dostępnym zakresie
 
-Gdy mamy dostęp do dostępnego zakresu (isochrone) dla pojazdu elektrycznego, możemy wyszukać w tym zakresie stacje opłat. Poniższy skrypt wywołuje funkcję Azure Maps [post Search w interfejsie API geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) , aby wyszukać stacje połączeń pojazdów elektrycznych w granicach maksymalnego osiągalnego zakresu samochodu, a następnie przeanalizować odpowiedź na tablicę osiągalnych lokalizacji.
+Po ustaleniu dostępnego zakresu (isochrone) dla pojazdu elektrycznego można wyszukać stacje ładowania w tym zakresie. 
 
-Uruchom następujący skrypt, aby wyszukać stacje opłat za pojazdy elektryczne w ramach dostępnego zakresu.
+Poniższy skrypt wywołuje Azure Maps [post Search w interfejsie API geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry). Wyszukuje ona stacje naładowania pojazdu elektrycznego w granicach maksymalnego osiągalnego zakresu samochodu, a następnie analizuje odpowiedź do tablicy osiągalnych lokalizacji.
+
+Aby wyszukać stacje opłat za pojazdy elektryczne w dostępnym zakresie, uruchom następujący skrypt:
 
 ```python
-# Search for EV stations within reachable range.
+# Search for electric vehicle stations within reachable range.
 searchPolyResponse = await (await session.post(url = "https://atlas.microsoft.com/search/geometry/json?subscription-key={}&api-version=1.0&query=electric vehicle station&idxSet=POI&limit=50".format(subscriptionKey), json = boundsData)).json() 
 
 reachableLocations = []
@@ -155,11 +169,11 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Przekaż osiągalny zakres i punkty ładowania do usługi danych Azure Maps
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Przekaż osiągalny zakres i punkty ładowania do usługi danych Azure Maps
 
-Aby wizualizować stacje ładowania i granice maksymalnego osiągalnego zakresu pojazdu elektrycznego na mapie, musimy przekazać dane graniczne i pobrać dane stacji jako obiekty GEOJSON do usługi danych Azure Maps przy użyciu [interfejsu API przekazywania danych ](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). 
+Chcesz wizualizować na mapie, aby uzyskać maksymalną osiągalny zakres pojazdu elektrycznego. W tym celu Przekaż dane graniczne i Nalicz stacje dane jako obiekty GEOJSON do Azure Maps usługi danych przy użyciu [interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). 
 
-Uruchom poniższe dwie komórki, aby przekazać dane dotyczące granicy i ładowania punktów do usługi danych Azure Maps.
+Aby przekazać dane dotyczące granicy i ładowania do usługi danych Azure Maps, uruchom następujące dwie komórki:
 
 ```python
 rangeData = {
@@ -178,7 +192,7 @@ rangeData = {
   ]
 }
 
-# Upload range data to Azure Maps data service.
+# Upload the range data to Azure Maps Data Service.
 uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -207,7 +221,7 @@ poiData = {
   ]
 }
 
-# Upload EV charging stations data to Azure Maps data service.
+# Upload the electric vehicle charging station data to Azure Maps Data Service.
 uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -221,12 +235,12 @@ while True:
 poiUdid = getPoiUdid["udid"]
 ```
 
-## <a name="render-charging-stations-and-reachable-range-on-map"></a>Renderuj stacje ładowania i osiągalny zakres na mapie
+## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>Renderowanie stacji ładowania i dostępnego zakresu na mapie
 
-Po przekazaniu danych do usługi danych zostanie uruchomiony następujący skrypt służący do wywołania Azure Maps [Get Image Service](https://docs.microsoft.com/rest/api/maps/render/getmapimage) w celu renderowania punktów ładowania i maksymalnej dostępnej granicy na obrazie mapy statycznej.
+Po przekazaniu danych do usługi danych Wywołaj Azure Maps [Get Image Service](https://docs.microsoft.com/rest/api/maps/render/getmapimage) , aby renderować punkty ładowania i maksymalną osiągalną granicę na obrazie mapy statycznej, uruchamiając następujący skrypt:
 
 ```python
-# Get bounds for bounding box.
+# Get boundaries for the bounding box.
 def getBounds(polyBounds):
     maxLon = max(map(lambda x: x[0], polyBounds))
     minLon = min(map(lambda x: x[0], polyBounds))
@@ -234,7 +248,7 @@ def getBounds(polyBounds):
     maxLat = max(map(lambda x: x[1], polyBounds))
     minLat = min(map(lambda x: x[1], polyBounds))
     
-    # Buffer the bounding box by 10% to account for the pixel size of pins at the ends of the route.
+    # Buffer the bounding box by 10 percent to account for the pixel size of pins at the ends of the route.
     lonBuffer = (maxLon-minLon)*0.1
     minLon -= lonBuffer
     maxLon += lonBuffer
@@ -252,7 +266,7 @@ pins = "custom|an15 53||udid-{}||https://raw.githubusercontent.com/Azure-Samples
 
 encodedPins = urllib.parse.quote(pins, safe='')
 
-# Render range and EV charging points on the map.
+# Render the range and electric vehicle charging points on the map.
 staticMapResponse =  await session.get("https://atlas.microsoft.com/map/static/png?api-version=1.0&subscription-key={}&pins={}&path={}&bbox={}&zoom=12".format(subscriptionKey,encodedPins,path,str(minLon)+", "+str(minLat)+", "+str(maxLon)+", "+str(maxLat)))
 
 poiRangeMap = await staticMapResponse.content.read()
@@ -260,14 +274,16 @@ poiRangeMap = await staticMapResponse.content.read()
 display(Image(poiRangeMap))
 ```
 
-![zakres lokalizacji](./media/tutorial-ev-routing/location-range.png)
+![Mapa pokazująca zakres lokalizacji](./media/tutorial-ev-routing/location-range.png)
 
 
-## <a name="find-the-optimal-charging-station-to-stop"></a>Znajdź optymalną stację ładowania do zatrzymania
+## <a name="find-the-optimal-charging-station"></a>Znajdowanie optymalnej stacji ładowania
 
-Po wybraniu wszystkich potencjalnych stacji ładowania w osiągalnym zakresie chcemy wiedzieć, które z tych stacji można osiągnąć w minimalnym czasie. Poniższy skrypt wywołuje Azure Maps [interfejsu API routingu macierzy](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) , zwracając dla danej lokalizacji pojazdu czas podróży i odległość do każdej podanej lokalizacji stacji naliczania opłat. Skrypt w następnej komórce analizuje odpowiedź w celu uzyskania lokalizacji dla najbliższej dostępnej stacji ładowania w odniesieniu do czasu.
+Po ustaleniu wszystkich potencjalnych stacji ładowania do dostępnego zakresu należy wiedzieć, które z nich można osiągnąć w minimalnym czasie. 
 
-Uruchom następującą komórkę, aby znaleźć najbliższą osiągalną stację ładowania, którą można osiągnąć w minimalnym czasie.
+Poniższy skrypt wywołuje [interfejs API routingu Azure Maps Matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview), który zwraca dla określonej lokalizacji pojazdu czas podróży i odległość do każdej stacji ładowania. Skrypt w następnej komórce analizuje odpowiedź w celu zlokalizowania najbliższej dostępnej stacji ładowania w odniesieniu do czasu.
+
+Aby znaleźć najbliższą osiągalną stację ładowania, którą można osiągnąć w czasie najmniejszej ilości czasu, uruchom skrypt w następującej komórce:
 
 ```python
 locationData = {
@@ -281,7 +297,7 @@ locationData = {
             }
          }
 
-# Get the travel time and distance to every given charging station location.
+# Get the travel time and distance to each specified charging station.
 searchPolyRes = await (await session.post(url = "https://atlas.microsoft.com/route/matrix/json?subscription-key={}&api-version=1.0&routeType=shortest&waitForResults=true".format(subscriptionKey), json = locationData)).json()
 
 distances = []
@@ -294,14 +310,14 @@ minDistLoc.extend([reachableLocations[minDistIndex][1], reachableLocations[minDi
 closestChargeLoc = ",".join(str(i) for i in minDistLoc)
 ```
 
-## <a name="calculate-route-to-the-closest-charging-station"></a>Oblicz trasę do najbliższej stacji ładowania
+## <a name="calculate-the-route-to-the-closest-charging-station"></a>Oblicz trasę do najbliższej stacji ładowania
 
-Teraz, gdy znaleźliśmy najbliższą stację ładowania, następnie wywołamy [interfejs API wskazówek dotyczących trasy](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) , aby zażądać szczegółowej trasy z bieżącej lokalizacji pojazdu elektrycznego do stacji ładowania.
+Po znalezieniu najbliższej stacji ładowania można wywołać [interfejs API wskazówek dotyczących trasy](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) , aby zażądać szczegółowej trasy z bieżącej lokalizacji pojazdu elektrycznego do stacji ładowania.
 
-Uruchom skrypt w poniższej komórce, aby uzyskać trasę, i Przeanalizuj odpowiedź, aby utworzyć obiekt GEOJSON reprezentujący trasę.
+Aby uzyskać trasę do stacji ładowania i przeanalizować odpowiedź w celu utworzenia obiektu GEOJSON, który reprezentuje trasę, uruchom skrypt w następującej komórce:
 
 ```python
-# Get route from current location to the closest charging station. 
+# Get the route from the electric vehicle's current location to the closest charging station. 
 routeResponse = await (await session.get("https://atlas.microsoft.com/route/directions/json?subscription-key={}&api-version=1.0&query={}:{}".format(subscriptionKey, str(currentLocation[0])+","+str(currentLocation[1]), closestChargeLoc))).json()
 
 route = []
@@ -318,12 +334,12 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Wizualizacja trasy
 
-W celu wizualizacji trasy najpierw przekażemy dane trasy jako obiekt GEOJSON do usługi danych Azure Maps przy użyciu [interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)Azure Maps. Następnie Wywołaj usługę renderowania, [Pobierz interfejs API obrazu mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage) w celu renderowania trasy na mapie i wizualizacji.
+Aby ułatwić wizualizację trasy, należy najpierw przekazać dane trasy jako obiekt GEOJSON do Azure Maps usługi danych przy użyciu [interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)Azure Maps. Następnie należy wywołać usługę renderowania, [uzyskać interfejs API obrazu mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage), aby renderować trasę na mapie i wizualizować ją.
 
-Uruchom następujący skrypt, aby uzyskać obraz dla renderowanej trasy na mapie.
+Aby uzyskać obraz dla renderowanej trasy na mapie, uruchom następujący skrypt:
 
 ```python
-# Upload route data to Azure data service.
+# Upload the route data to Azure Maps Data Service.
 routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -345,11 +361,11 @@ path = "lc0f6dd9|lw6||udid-{}".format(udid)
 pins = "default|codb1818||{} {}|{} {}".format(str(currentLocation[1]),str(currentLocation[0]),destination[1],destination[0])
 
 
-# Get bounds for bounding box.
+# Get boundaries for the bounding box.
 minLat, maxLat = (float(destination[0]),currentLocation[0]) if float(destination[0])<currentLocation[0] else (currentLocation[0], float(destination[0]))
 minLon, maxLon = (float(destination[1]),currentLocation[1]) if float(destination[1])<currentLocation[1] else (currentLocation[1], float(destination[1]))
 
-#Buffer the bounding box by 10% to account for the pixel size of pins at the ends of the route.
+# Buffer the bounding box by 10 percent to account for the pixel size of pins at the ends of the route.
 lonBuffer = (maxLon-minLon)*0.1
 minLon -= lonBuffer
 maxLon += lonBuffer
@@ -358,7 +374,7 @@ latBuffer = (maxLat-minLat)*0.1
 minLat -= latBuffer
 maxLat += latBuffer
 
-# Render route on the map.
+# Render the route on the map.
 staticMapResponse = await session.get("https://atlas.microsoft.com/map/static/png?api-version=1.0&subscription-key={}&&path={}&pins={}&bbox={}&zoom=16".format(subscriptionKey,path,pins,str(minLon)+", "+str(minLat)+", "+str(maxLon)+", "+str(maxLat)))
 
 staticMapImage = await staticMapResponse.content.read()
@@ -367,13 +383,13 @@ await session.close()
 display(Image(staticMapImage))
 ```
 
-![Szlak](./media/tutorial-ev-routing/route.png)
+![Mapa pokazująca trasę](./media/tutorial-ev-routing/route.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób bezpośredniego Azure Maps wywoływania interfejsów API REST i wizualizacji danych Azure Maps przy użyciu języka Python.
 
-Aby poznać Azure Maps interfejsów API używanych w tym samouczku, zobacz:
+Aby poznać Azure Maps interfejsów API, które są używane w tym samouczku, zobacz:
 
 * [Pobierz zakres tras](https://docs.microsoft.com/rest/api/maps/route/getrouterange)
 * [Opublikuj wyszukiwanie w geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
@@ -382,10 +398,6 @@ Aby poznać Azure Maps interfejsów API używanych w tym samouczku, zobacz:
 * [Macierz po trasie](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)
 * [Pobierz wskazówki dotyczące trasy](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-Aby uzyskać pełną listę Azure Maps interfejsów API REST, zobacz:
+Aby uzyskać pełną listę Azure Maps interfejsów API REST, zobacz [Azure Maps interfejsów API REST](https://docs.microsoft.com/azure/azure-maps/#reference).
 
-* [Interfejsy API REST Azure Maps](https://docs.microsoft.com/azure/azure-maps/#reference)
-
-Aby dowiedzieć się więcej na temat Azure Notebooks, zobacz:
-
-* [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)
+Aby dowiedzieć się więcej na temat Azure Notebooks, zobacz [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

@@ -1,106 +1,113 @@
 ---
 title: Tworzenie sklepu z bazami danych przy użyciu Azure Search REST
-description: Utwórz Azure Search magazyn wiedzy na potrzeby utrwalania wzbogacania z potoku wyszukiwania poznawczego przy użyciu interfejsu API REST i programu Poster.
+description: Użyj interfejsu API REST i programu Poster, aby utworzyć Azure Search magazyn wiedzy na potrzeby utrwalania wzbogacania z potoku wyszukiwania poznawczego.
 author: lobrien
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: 26dc66474eecffd7f5a34bcfcaf93fd49f59606c
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: b67f0cf60d279c7bc52b4114d29c37847f5c57f1
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936498"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244463"
 ---
-# <a name="create-an-azure-search-knowledge-store-using-rest"></a>Tworzenie Azure Search sklepu z bazami danych przy użyciu usługi REST
+# <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>Tworzenie Azure Search sklepu z bazami danych przy użyciu usługi REST
 
-Magazyn wiedzy to funkcja w Azure Search, która utrzymuje dane wyjściowe z potoku wzbogacania AI na potrzeby późniejszej analizy lub przetwarzania podrzędnego. Potok wzbogacony AI akceptuje pliki obrazów lub pliki tekstowe bez struktury, indeksuje je przy użyciu Azure Search, stosuje wzbogacenia AI z Cognitive Services (takich jak analiza obrazów i przetwarzanie języka naturalnego), a następnie zapisuje wyniki w sklepie z bazami danych na platformie Azure Chowan. Można następnie użyć narzędzi takich jak Power BI lub Eksplorator usługi Storage do eksplorowania sklepu z bazami danych.
+Funkcja magazynu wiedzy w Azure Search utrzymuje dane wyjściowe z potoku wzbogacenia AI do późniejszej analizy lub innego przetwarzania podrzędnego. Potok wzbogacony AI akceptuje pliki obrazów lub pliki tekstowe bez struktury, indeksuje je za pomocą Azure Search, stosuje wzbogacenia AI z platformy Azure Cognitive Services (takie jak analiza obrazu i przetwarzanie języka naturalnego), a następnie zapisuje wyniki w bazie wiedzy przechowywanie w usłudze Azure Storage. Aby eksplorować informacje o sklepie z bazami danych, można użyć narzędzi takich jak Power BI lub Eksplorator usługi Storage w Azure Portal.
 
-W tym artykule zostanie użyty interfejs API REST do pozyskiwania, indeksowania i stosowania wzbogacania AI do zestawu przeglądów hotelu. Przeglądy hotelu są importowane do usługi Azure Blob Storage, a wyniki są zapisywane jako magazyn wiedzy na platformie Azure Table Storage.
+W tym artykule opisano korzystanie z interfejsu API REST w celu pozyskiwania, indeksowania i stosowania wzbogacania systemu AI do zestawu przeglądów hotelowych. Przeglądy hotelu są importowane do usługi Azure Blob Storage. Wyniki są zapisywane jako magazyn wiedzy w usłudze Azure Table Storage.
 
-Po utworzeniu sklepu z bazami danych możesz uzyskać informacje na temat uzyskiwania dostępu do tego sklepu merytorycznego za pomocą [Eksplorator usługi Storage](knowledge-store-view-storage-explorer.md) lub [Power BI](knowledge-store-connect-power-bi.md).
+Po utworzeniu sklepu z informacjami można dowiedzieć się, jak uzyskać dostęp do sklepu z bazami danych przy użyciu [Eksplorator usługi Storage](knowledge-store-view-storage-explorer.md) lub [Power BI](knowledge-store-connect-power-bi.md).
 
-## <a name="1---create-services"></a>1 — Tworzenie usług
+## <a name="create-services"></a>Tworzenie usług
 
-+ [Utwórz usługę Azure Search](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi.
+Utwórz następujące usługi:
 
-+ [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych i sklepu z bazami informacji. Twoje konto magazynu musi używać tej samej lokalizacji (na przykład US-zachodni) dla usługi Azure Search. *Rodzaj konta* musi być *StorageV2 (ogólnego przeznaczenia w wersji 2)* (domyślnie) lub *magazynu (ogólnego przeznaczenia w wersji 1)* .
+- Utwórz [usługę Azure Search](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi.
 
-+ Zalecane: [publikowanie aplikacji klasycznej](https://www.getpostman.com/) na potrzeby wysyłania żądań do Azure Search. Za pomocą interfejsu API REST można korzystać z dowolnego narzędzia, które może pracować z żądaniami HTTP i odpowiedziami. Program Poster jest dobrym rozwiązaniem do eksplorowania interfejsów API REST i zostanie użyty w tym artykule. Ponadto [kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) tego artykułu zawiera kolekcję żądań post. 
+- Utwórz [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , aby przechowywać przykładowe dane i magazyn wiedzy. Twoje konto magazynu musi używać tej samej lokalizacji (na przykład US-zachodni) dla usługi Azure Search. Wartością dla **rodzaju konta** musi być **StorageV2 (ogólnego przeznaczenia w wersji 2)** (wartość domyślna) lub **Storage (ogólnego przeznaczenia w wersji 1)** .
 
-## <a name="2---store-the-data"></a>2 — Przechowywanie danych
+- Zalecane: Pobierz [aplikację komputerową programu Poster](https://www.getpostman.com/) na potrzeby wysyłania żądań do Azure Search. Za pomocą interfejsu API REST można korzystać z dowolnego narzędzia, które może pracować z żądaniami i odpowiedziami HTTP. Na potrzeby eksplorowania interfejsów API REST jest dobrym rozwiązaniem. W tym artykule używamy programu Poster. Ponadto [kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) tego artykułu zawiera kolekcję żądań. 
+
+## <a name="store-the-data"></a>Przechowywanie danych
 
 Załaduj plik CSV przeglądów hotelu do magazynu obiektów blob platformy Azure, aby uzyskać do niego dostęp za pomocą indeksatora Azure Search i przechodzącego przez potok wzbogacania AI.
 
-### <a name="create-an-azure-blob-container-with-the-data"></a>Tworzenie kontenera obiektów blob platformy Azure z danymi
+### <a name="create-a-blob-container-by-using-the-data"></a>Tworzenie kontenera obiektów BLOB przy użyciu danych
 
-1. [Pobierz dane z przeglądu hotelu zapisane w pliku CSV (HotelReviews_Free. csv)](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Te dane pochodzą z programu Kaggle.com i zawierają opinie klientów dotyczące hoteli.
-1. [Zaloguj się do Azure Portal](https://portal.azure.com)i przejdź do konta usługi Azure Storage.
-1. [Utwórz kontener obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). Aby utworzyć kontener, na lewym pasku nawigacyjnym dla konta magazynu kliknij pozycję **obiekty blob**, a następnie kliknij pozycję **+ kontener** na pasku poleceń.
-1. Dla nowej **nazwy**kontenera wprowadź `hotel-reviews`.
-1. Wybierz dowolny **poziom dostępu publicznego**. Użyto domyślnej.
-1. Kliknij przycisk **OK** , aby utworzyć kontener obiektów blob platformy Azure.
-1. Otwórz nowy kontener `hotels-review`, kliknij przycisk **Przekaż**, a następnie wybierz plik **HotelReviews-Free. csv** , który został pobrany w pierwszym kroku.
+1. Pobierz [dane z przeglądu hotelu](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) zapisane w pliku CSV (HotelReviews_Free. csv). Te dane pochodzą z programu Kaggle.com i zawierają opinie klientów dotyczące hoteli.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do konta usługi Azure Storage.
+1. Utwórz [kontener obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). Aby utworzyć kontener, w menu po lewej stronie dla konta magazynu wybierz pozycję **obiekty blob**, a następnie wybierz pozycję **kontener**.
+1. Dla nowej **nazwy**kontenera wprowadź w obszarze **przeglądy hotelowe**.
+1. W obszarze **poziom dostępu publicznego**wybierz dowolną wartość. Użyto domyślnej.
+1. Wybierz **przycisk OK** , aby utworzyć kontener obiektów BLOB.
+1. Otwórz nowy kontener **hoteli-Recenzja** , wybierz pozycję **Przekaż**, a następnie wybierz plik HotelReviews-Free. csv, który został pobrany w pierwszym kroku.
 
     ![Przekazywanie danych](media/knowledge-store-create-portal/upload-command-bar.png "przekazywanie przeglądów hotelu")
 
-1. Kliknij przycisk **Przekaż** , aby ZAIMPORTOWAĆ plik CSV do usługi Azure Blob Storage. Zostanie wyświetlony nowy kontener.
+1. Wybierz pozycję **Przekaż** , aby ZAIMPORTOWAĆ plik CSV do usługi Azure Blob Storage. Zostanie wyświetlony nowy kontener:
 
-    ![Tworzenie kontenera obiektów blob platformy Azure](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Tworzenie kontenera obiektów blob platformy Azure")
+    ![Tworzenie kontenera obiektów BLOB](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Tworzenie kontenera obiektów BLOB")
 
-## <a name="3---configure-postman"></a>3 — Konfigurowanie wpisu
+## <a name="configure-postman"></a>Konfigurowanie programu Postman
 
-Pobierz [kod źródłowy kolekcji Poster](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) i zaimportuj go do programu do publikowania przy użyciu **pliku, zaimportuj...** . Przejdź do karty **kolekcje** i kliknij przycisk **...** , a następnie wybierz pozycję **Edytuj**. 
+Zainstaluj i skonfiguruj program ogłaszający.
 
-![Aplikacja programu Poster pokazująca nawigację](media/knowledge-store-create-rest/postman-edit-menu.png "do menu Edycja w programie Poster")
+### <a name="download-and-install-postman"></a>Pobierz i zainstaluj program Poster
 
-W oknie dialogowym Edytowanie wyników przejdź do karty **zmienne** . 
+1. Pobierz [kod źródłowy kolekcji Poster](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json).
+1. Wybierz pozycję **plik** > **Import** , aby zaimportować kod źródłowy do programu Poster.
+1. Wybierz kartę **kolekcje** , a następnie wybierz przycisk **...** (wielokropek).
+1. Wybierz pozycję **Edit** (Edytuj). 
+   
+   ![Aplikacja programu Poster pokazująca nawigację](media/knowledge-store-create-rest/postman-edit-menu.png "Przejdź do menu Edycja w programie Poster")
+1. W oknie dialogowym **Edycja** wybierz kartę **zmienne** . 
 
-Karta **zmienne** umożliwia dodanie wartości, które program Poster będzie zamieniany w każdym momencie napotkanym w podwójnych nawiasach klamrowych. Na przykład, program Poster zamieni symbol `{{admin-key}}` z "bieżącą wartość" `admin-key`. Program pocztowy wprowadzi te podstawie w adresach URL, nagłówkach, treści żądania i tak dalej. 
+Na karcie **zmienne** można dodawać wartości, które zaswapki są księgowane w każdym momencie napotkania określonej zmiennej wewnątrz podwójnych nawiasów klamrowych. Na przykład, program Poster zastępuje symbol `{{admin-key}}` bieżącą wartością ustawioną dla `admin-key`. Program ogłaszający tworzy podstawienie w adresach URL, nagłówkach, treści żądania i tak dalej. 
 
-Wartość `admin-key` znajduje się na karcie **klucze** Search Service. Należy zmienić `search-service-name` i `storage-account-name` na wartości wybrane w [kroku 1](#1---create-services). Ustaw wartość `storage-connection-string` na karcie **klucze dostępu** konta magazynu. Inne wartości, które można pozostawić bez zmian.
+Aby uzyskać wartość `admin-key`, przejdź do usługi Azure Search i wybierz kartę **klucze** . Zmień `search-service-name` i `storage-account-name` na wartości wybrane w obszarze [Tworzenie usług](#create-services). Ustaw wartość `storage-connection-string` przy użyciu wartości na karcie **klucze dostępu** konta magazynu. Można pozostawić wartości domyślne dla innych wartości.
 
 ![Karta zmienne aplikacji po wprowadzeniu](media/knowledge-store-create-rest/postman-variables-window.png "")
 
 
 | Zmienna    | Gdzie uzyskać |
 |-------------|-----------------|
-| `admin-key` | Search Service, karta **klucze**              |
-| `api-version` | Pozostaw jako "2019-05-06 — wersja zapoznawcza" |
-| `datasource-name` | Pozostaw "przeglądy hotelowe — DS" | 
-| `indexer-name` | Pozostaw jako "Hotel-Recenzje-IXR" | 
-| `index-name` | Pozostaw jako "Hotel-Recenzje-IX" | 
-| `search-service-name` | Search Service, nazwa główna. Adres URL jest `https://{{search-service-name}}.search.windows.net` | 
-| `skillset-name` | Pozostaw jako "Hotel-Recenzje-SS" | 
-| `storage-account-name` | Konto magazynu, główna nazwa | 
-| `storage-connection-string` | Konto magazynu, karta **klucze dostępu** , **Parametry połączenia** Klucz1 | 
-| `storage-container-name` | Pozostaw "Recenzje w hotelu" | 
+| `admin-key` | Na karcie **klucze** usługi Azure Search.  |
+| `api-version` | Pozostaw jako **2019-05-06 — wersja zapoznawcza**. |
+| `datasource-name` | Pozostaw jako **Hotel-Recenzje — ds**. | 
+| `indexer-name` | Pozostaw jako **Hotel-Recenzje — IXR**. | 
+| `index-name` | Pozostaw jako **Hotel-Recenzje-IX**. | 
+| `search-service-name` | Główna nazwa usługi Azure Search. Adres URL jest `https://{{search-service-name}}.search.windows.net`. | 
+| `skillset-name` | Pozostaw jako **Hotel-Recenzje — SS**. | 
+| `storage-account-name` | Główna nazwa konta magazynu. | 
+| `storage-connection-string` | Na koncie magazynu na karcie **klucze dostępu** wybierz pozycję **Klucz1** > **Parametry połączenia**. | 
+| `storage-container-name` | Pozostaw jako **hotelowe przeglądy**. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Przeglądanie kolekcji żądań w programie Poster
 
-Tworzenie sklepu z bazami informacji wymaga, aby wystawić cztery żądania HTTP: 
+Podczas tworzenia sklepu z bazami danych należy wydać cztery żądania HTTP: 
 
-1. Żądanie PUT, aby utworzyć indeks. Ten indeks zawiera dane używane i zwracane przez Azure Search.
-1. Żądanie POST, aby utworzyć źródło danych. To źródło danych łączy zachowanie Azure Search z kontem magazynu danych i magazynu informacji. 
-1. Żądanie PUT umożliwiające utworzenie zestawu umiejętności. Zestawu umiejętności określa wzbogacenia zastosowane do danych i strukturę magazynu wiedzy.
-1. Żądanie PUT umożliwiające utworzenie indeksatora. Uruchomienie indeksatora odczytuje dane, stosuje zestawu umiejętności i przechowuje wyniki. Należy uruchomić to żądanie jako ostatnie.
+- **Umieść żądanie utworzenia indeksu**: ten indeks zawiera dane, których Azure Search używa i zwraca.
+- **Opublikuj żądanie utworzenia źródła danych**: to źródło danych łączy zachowanie Azure Search z kontem magazynu danych i magazynu informacji. 
+- **Umieść żądanie utworzenia zestawu umiejętności**: zestawu umiejętności określa wzbogacenia, które są stosowane do danych i struktury sklepu wiedzy.
+- **Umieść żądanie utworzenia indeksatora**: uruchomienie indeksatora odczytuje dane, stosuje zestawu umiejętności i przechowuje wyniki. Należy uruchomić to żądanie jako ostatnie.
 
-[Kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) zawiera kolekcję ogłoszeń obejmującą te cztery żądania. Aby wydać żądania, przejdź do karty żądania w programie Poster i Dodaj nagłówki żądania `api-key` i `Content-Type`. Ustaw wartość `api-key` na `{{admin-key}}`. Ustaw wartość `Content-type` na `application/json`. 
+[Kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) zawiera kolekcję programu Poster, która ma cztery żądania. Aby wystawić żądania, w programie Poster wybierz kartę dla żądania. Następnie Dodaj nagłówki żądania `api-key` i `Content-Type`. Ustaw wartość `api-key` na `{{admin-key}}`. Ustaw wartość `Content-type` na `application/json`. 
 
-> [!div class="mx-imgBorder"]
-> ![Screenshot przedstawiający interfejs autora dla nagłówków @ no__t-1
+![Zrzut ekranu przedstawiający interfejs autora dla nagłówków](media/knowledge-store-create-rest/postman-headers-ui.png)
 
 > [!Note]
-> Musisz ustawić nagłówki `api-key` i `Content-type` we wszystkich żądaniach. Jeśli zmienna jest rozpoznawana przez program Poster, będzie ona renderowana w pomarańczowym tekście, jak w przypadku `{{admin-key}}` na zrzucie ekranu. Jeśli zmienna jest błędna, zostanie wyrenderowana w kolorze czerwonym.
+> Należy ustawić nagłówki `api-key` i `Content-type` we wszystkich żądaniach. Jeśli program Poster rozpoznaje zmienną, zmienna pojawia się w kolorze pomarańczowym, podobnie jak w przypadku `{{admin-key}}` na poprzednim zrzucie ekranu. Jeśli zmienna jest błędna, pojawia się na czerwono.
 >
 
-## <a name="4---create-an-azure-search-index"></a>4 — Tworzenie indeksu Azure Search
+## <a name="create-an-azure-search-index"></a>Tworzenie indeksu usługi Azure Search
 
-Należy utworzyć indeks Azure Search, aby reprezentować dane, na których interesuje Cię wyszukiwanie, filtrowanie i wykonywanie ulepszeń. Indeks można utworzyć, wydając żądanie PUT `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Po zazastąpieniu symboli ujętych w nawiasy klamrowe, na przykład `{{search-service-name}}`, `{{index-name}}` i `{{api-version}}` wartościami określonymi w [kroku 3](#3---configure-postman). Jeśli używasz innego narzędzia do wystawiania poleceń REST, musisz samodzielnie zastąpić te zmienne.
+Utwórz indeks Azure Search, aby reprezentować dane, które interesują się wyszukiwaniem, filtrowaniem i stosowaniem ulepszeń. Utwórz indeks, wydając żądanie PUT, aby `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Program pocztowy zastępuje symbole, które są ujęte w podwójne nawiasy klamrowe (takie jak `{{search-service-name}}`, `{{index-name}}` i `{{api-version}}`) wartościami ustawionymi w [konfiguracji](#configure-postman)programu. Jeśli używasz innego narzędzia do wystawiania poleceń REST, musisz samodzielnie zastąpić te zmienne.
 
-Określ strukturę indeksu Azure Search w treści żądania. Po ustawieniu nagłówków `api-key` i `Content-type` w programie Poster przejdź do okienka **Body** żądania. Powinien zostać wyświetlony następujący plik JSON, ale jeśli nie, wybierz **RAW** i **JSON (Application/JSON)** i wklej następujący kod jako treść:
+Ustaw strukturę indeksu Azure Search w treści żądania. Po ustawieniu nagłówków `api-key` i `Content-type` w programie Poster przejdź do okienka **Body** żądania. Powinien zostać wyświetlony poniższy kod JSON. Jeśli nie, wybierz pozycję **Raw** > **JSON (Application/JSON)** , a następnie wklej następujący kod jako treść:
 
 ```JSON
 {
@@ -135,15 +142,15 @@ Określ strukturę indeksu Azure Search w treści żądania. Po ustawieniu nagł
 
 ```
 
-Zobaczysz, że ta definicja indeksu jest kombinacją danych, które chcesz przedstawić użytkownikowi (nazwa hotelu, zawartość, Data itd.), metadanych wyszukiwania i danych ulepszeń AI (tonacji, frazy kluczowe i język).
+Ta definicja indeksu jest kombinacją danych, które chcesz przedstawić użytkownikowi (nazwa hotelu, zawartość do przeglądu, Data), metadane wyszukiwania i dane ulepszeń AI (tonacji, frazy kluczowe i język).
 
-Naciśnij przycisk **Wyślij** , aby wydać żądanie Put. Powinien zostać wyświetlony komunikat o stanie `201 - Created`. Jeśli zostanie wyświetlony inny stan, w okienku **treść** zostanie wyświetlona odpowiedź JSON z komunikatem o błędzie. 
+Wybierz pozycję **Wyślij** , aby wydać żądanie Put. Powinien zostać wyświetlony stan `201 - Created`. Jeśli zobaczysz inny stan, w okienku **treść** Wyszukaj odpowiedź JSON, która zawiera komunikat o błędzie. 
 
-## <a name="5---create-the-datasource"></a>5 — Tworzenie źródła danych
+## <a name="create-the-datasource"></a>Tworzenie źródła danych
 
-Teraz musisz połączyć Azure Search z danymi hotelu zapisanymi w [kroku 2](#2---store-the-data). Tworzenie źródła danych jest wykonywane z WPISem do `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. Ponownie musisz ustawić `api-key` i `Content-Type` nagłówków zgodnie z podanymi wcześniej. 
+Następnie połącz Azure Search z danymi hotelu zapisanymi w [sklepie](#store-the-data). Aby utworzyć źródło danych, Wyślij żądanie POST do `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. Należy ustawić `api-key` i `Content-Type` nagłówków zgodnie z wcześniejszym opisem. 
 
-W programie Poster Otwórz żądanie "Utwórz źródło danych". Przejdź do okienka **treść** , który powinien mieć następujący kod:
+W programie Poster przejdź do żądania **Create DataSource** , a następnie do okienka **Body (treść** ). Powinien zostać wyświetlony następujący kod:
 
 ```json
 {
@@ -155,18 +162,17 @@ W programie Poster Otwórz żądanie "Utwórz źródło danych". Przejdź do oki
 }
 ```
 
-Naciśnij przycisk **Wyślij** , aby wydać żądanie post. 
+Wybierz pozycję **Wyślij** , aby wydać żądanie post. 
 
-## <a name="6---create-the-skillset"></a>6 — Tworzenie zestawu umiejętności 
+## <a name="create-the-skillset"></a>Tworzenie zestawu umiejętności 
 
-Następnym krokiem jest określenie zestawu umiejętności, który określa ulepszenia do zastosowania oraz magazyn wiedzy, w którym będą przechowywane wyniki. W programie Poster Otwórz kartę "Tworzenie zestawu umiejętności". To żądanie wysyła do `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`.
-Ustaw nagłówki `api-key` i `Content-type` tak samo jak wcześniej. 
+Następnym krokiem jest określenie zestawu umiejętności, który określa ulepszenia do zastosowania oraz magazyn wiedzy, w którym będą przechowywane wyniki. W programie Poster wybierz kartę **Tworzenie zestawu umiejętności** . To żądanie wysyła do `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`. Ustaw nagłówki `api-key` i `Content-type` tak jak wcześniej. 
 
-Istnieją dwa duże obiekty najwyższego poziomu: `"skills"` i `"knowledgeStore"`. Każdy obiekt w obiekcie `"skills"` jest usługą wzbogacania. Każda usługa wzbogacania ma `"inputs"` i `"outputs"`. Zwróć uwagę, jak `LanguageDetectionSkill` zawiera dane wyjściowe `targetName` z `"Language"`. Wartość tego węzła jest używana przez większość innych umiejętności jako dane wejściowe, ze źródłem jako `document/Language`. Ta możliwość używania danych wyjściowych z jednego węzła jako dane wejściowe do innego jest jeszcze bardziej oczywista w `ShaperSkill`, która określa, jak dane będą przepływać do tabel w sklepie z bazami wiedzy.
+Istnieją dwa duże obiekty najwyższego poziomu: `skills` i `knowledgeStore`. Każdy obiekt w obiekcie `skills` jest usługą wzbogacania. Każda usługa wzbogacania ma `inputs` i `outputs`. @No__t-0 zawiera dane wyjściowe `targetName` z `Language`. Wartość tego węzła jest używana przez większość innych umiejętności jako dane wejściowe. Źródło jest `document/Language`. Możliwość używania danych wyjściowych z jednego węzła jako dane wejściowe do innego jest jeszcze bardziej oczywista w `ShaperSkill`, która określa, jak dane są przesyłane do tabel w sklepie z bazami danych.
 
-Obiekt `"knowledge_store"` nawiązuje połączenie z kontem magazynu za pośrednictwem zmiennej post `{{storage-connection-string}}`. Następnie zawiera zestaw mapowań między rozszerzonym dokumentem a tabelami i kolumnami, które będą dostępne w samym sklepie merytorycznym. 
+Obiekt `knowledge_store` nawiązuje połączenie z kontem magazynu za pośrednictwem zmiennej post `{{storage-connection-string}}`. `knowledge_store` zawiera zestaw mapowań między rozszerzonym dokumentem i tabelami oraz kolumnami w sklepie z bazami danych. 
 
-Aby wygenerować zestawu umiejętności, umieść żądanie, naciskając przycisk **Wyślij** w programie Poster.
+Aby wygenerować zestawu umiejętności, wybierz przycisk **Wyślij** w ogłoszeniu w celu umieszczenia żądania:
 
 ```json
 {
@@ -294,13 +300,13 @@ Aby wygenerować zestawu umiejętności, umieść żądanie, naciskając przycis
 }
 ```
 
-## <a name="7---create-the-indexer"></a>7\. Tworzenie indeksatora
+## <a name="create-the-indexer"></a>Tworzenie indeksatora
 
-Ostatnim krokiem jest utworzenie indeksatora, który faktycznie odczytuje dane i aktywuje zestawu umiejętności. W programie Poster przejdź do żądania "Utwórz indeksator" i przejrzyj treść. Jak widać, definicja indeksatora odwołuje się do kilku innych już utworzonych zasobów — źródła danych, indeksu i zestawu umiejętności. 
+Ostatnim krokiem jest utworzenie indeksatora. Indeksator odczytuje dane i aktywuje zestawu umiejętności. W obszarze Ogłoś wybierz żądanie **utworzenia indeksatora** , a następnie przejrzyj treść. Definicja indeksatora odwołuje się do kilku innych już utworzonych zasobów: źródła danych, indeksu i zestawu umiejętności. 
 
-Obiekt `"parameters/configuration"` kontroluje sposób pozyskiwania danych przez indeksator. W takim przypadku dane wejściowe znajdują się w jednym dokumencie z wierszem nagłówka i wartościami rozdzielonymi przecinkami. Klucz dokumentu jest unikatowym identyfikatorem dokumentu, który przed kodowaniem jest adresem URL dokumentu źródłowego. Na koniec wartości wyjściowe zestawu umiejętności, takie jak kod języka, tonacji i kluczowe frazy, są mapowane do odpowiednich lokalizacji w dokumencie. Zwróć uwagę, że gdy istnieje jedna wartość dla `Language`, `Sentiment` jest stosowana do każdego elementu w tablicy `pages`. `Keyphrases` jest sama tablicą i jest również stosowana do każdego elementu w tablicy `pages`.
+Obiekt `parameters/configuration` kontroluje sposób pozyskiwania danych przez indeksator. W takim przypadku dane wejściowe znajdują się w jednym dokumencie zawierającym wiersz nagłówka i wartości rozdzielane przecinkami. Klucz dokumentu jest unikatowym identyfikatorem dla dokumentu. Przed kodowaniem klucz dokumentu jest adresem URL dokumentu źródłowego. Na koniec zestawu umiejętności wartości wyjściowe, takie jak kod języka, tonacji i kluczowe frazy, są mapowane na ich lokalizacje w dokumencie. Chociaż istnieje jedna wartość dla `Language`, `Sentiment` jest stosowana do każdego elementu w tablicy `pages`. `Keyphrases` to tablica, która również jest stosowana do każdego elementu w tablicy `pages`.
 
-Po ustawieniu nagłówków `api-key` i `Content-type` i potwierdzeniu, że treść żądania jest podobna do kodu źródłowego, który następuje po naciśnięciu przycisku **Wyślij** w programie Poster. Po przeniesieniu żądania do `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` zostanie wysłane żądanie. Azure Search utworzy i uruchomi indeksator. 
+Po ustawieniu nagłówków `api-key` i `Content-type` i upewnieniu się, że treść żądania jest podobna do poniższego kodu źródłowego, wybierz pozycję **Wyślij** w programie Poster. Po wysłaniu żądania PUT do `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Azure Search tworzy i uruchamia indeksator. 
 
 ```json
 {
@@ -331,22 +337,22 @@ Po ustawieniu nagłówków `api-key` i `Content-type` i potwierdzeniu, że treś
 }
 ```
 
-## <a name="8---run-the-indexer"></a>8 — uruchamianie indeksatora 
+## <a name="run-the-indexer"></a>Uruchamianie indeksatora 
 
-W Azure Portal przejdź do **omówienia** Search Service i wybierz kartę **indeksatory** . kliknij pozycję **Hotele-Recenzje-IXR** utworzone w poprzednim kroku. Jeśli indeksator nie został jeszcze uruchomiony, naciśnij przycisk Run ( **Uruchom** ). Zadanie indeksowania może zgłosić pewne ostrzeżenia dotyczące rozpoznawania języka, ponieważ dane obejmują pewne przeglądy w językach, które nie są jeszcze obsługiwane przez umiejętności poznawcze. 
+W Azure Portal przejdź do strony **Przegląd** usługi Azure Search. Wybierz kartę **indeksatory** , a następnie wybierz pozycję **Hotele-Recenzje-IXR**. Jeśli indeksator nie został jeszcze uruchomiony, wybierz pozycję **Uruchom**. Zadanie indeksowania może zgłosić pewne ostrzeżenia dotyczące rozpoznawania języka. Dane obejmują pewne przeglądy, które są zapisywane w językach, które nie są jeszcze obsługiwane przez umiejętności poznawcze. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy dane zostały wzbogacone za pomocą usług poznawczych, a wyniki są zorganizowane w sklepie z bazami danych, można użyć Eksplorator usługi Storage lub Power BI do eksplorowania wzbogaconego zestawu.
+Po dodaniu danych przy użyciu Cognitive Services i zaprezentowania wyników w sklepie z bazami informacji można użyć Eksplorator usługi Storage lub Power BI do eksplorowania wzbogaconego zestawu danych.
 
-Aby dowiedzieć się, jak eksplorować ten magazyn wiedzy przy użyciu Eksplorator usługi Storage, zobacz następujący przewodnik.
+Aby dowiedzieć się, jak eksplorować ten magazyn wiedzy przy użyciu Eksplorator usługi Storage, zobacz ten przewodnik:
 
 > [!div class="nextstepaction"]
 > [Wyświetl z Eksplorator usługi Storage](knowledge-store-view-storage-explorer.md)
 
-Aby dowiedzieć się, jak połączyć ten magazyn wiedzy z Power BI, zobacz następujący przewodnik.
+Aby dowiedzieć się, jak połączyć ten magazyn wiedzy z Power BI, zobacz ten przewodnik:
 
 > [!div class="nextstepaction"]
 > [Łączenie z usługą Power BI](knowledge-store-connect-power-bi.md)
 
-Jeśli chcesz powtórzyć to ćwiczenie lub spróbować użyć innego instruktażu do wzbogacania, Usuń usługę *Hotel-Recenzje-idxr* indeksator. Usunięcie indeksatora resetuje bezpłatny dzienny licznik transakcji z powrotem do zera.
+Jeśli chcesz powtórzyć to ćwiczenie lub spróbować użyć innego instruktażu do wzbogacania, Usuń usługę **Hotel-Recenzje-idxr** indeksator. Usunięcie indeksatora resetuje bezpłatny dzienny licznik transakcji do zera.

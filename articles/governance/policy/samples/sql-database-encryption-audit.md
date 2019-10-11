@@ -1,21 +1,21 @@
 ---
-title: Przykładowe — Inspekcja przezroczystego szyfrowania danych dla SQL Database
-description: Ta przykładowa definicja zasad przeprowadza inspekcję, jeśli w usłudze SQL Database nie włączono przezroczystego szyfrowania danych.
+title: Przykład — Przeprowadź inspekcję przezroczystego szyfrowania danych w programie SQL
+description: Te przykładowe definicje zasad sprawdzają, czy usługa SQL Database nie ma włączonego przezroczystego szyfrowania danych.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: de7819f43b2d0ce4d6d047b324db94d3e5f85eec
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4027ad28b6589872dd2f52961710c4db95a257e7
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981323"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254795"
 ---
-# <a name="sample---audit-sql-database-encryption"></a>Próbkowanie — Inspekcja szyfrowania bazy danych SQL
+# <a name="sample---audit-sql-database-encryption"></a>Przykład — Inspekcja szyfrowania w usłudze SQL Database
 
-Ta wbudowana Inspekcja zasad, jeśli usługa SQL Database nie ma włączonej przezroczystego szyfrowania danych.
+Te wbudowane zasady sprawdzają, czy usługa SQL Database nie ma włączonego przezroczystego szyfrowania danych.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Ta wbudowana Inspekcja zasad, jeśli usługa SQL Database nie ma włączonej prz
 
 [!code-json[main](../../../../policy-templates/samples/SQL/audit-sql-db-tde-status/azurepolicy.json "Audit TDE for SQL Database")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli). Aby uzyskać wbudowane zasady, użyj identyfikatora `17k78e20-9358-41c9-923c-fb736d382a12`.
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli). Aby uzyskać dostęp do wbudowanych zasad, użyj identyfikatora `17k78e20-9358-41c9-923c-fb736d382a12`.
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -39,7 +39,7 @@ $definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/poli
 New-AzPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition -Scope <scope>
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć przypisanie zasad.
 
@@ -55,7 +55,7 @@ Remove-AzPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
 az policy assignment create --scope <scope> --name "SQL TDE Audit" --policy 17k78e20-9358-41c9-923c-fb736d382a12
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć przypisanie zasad.
 
@@ -65,4 +65,4 @@ az policy assignment delete --name "SQL TDE Audit" --resource-group myResourceGr
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

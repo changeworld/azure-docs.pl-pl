@@ -1,111 +1,106 @@
 ---
-title: Zadania dla poszczególnych współautora w procesie nauki o danych zespołu
-description: Zarys zadania dla poszczególnych współautorem projektu zespołowego do nauki o danych.
+title: Zadania dla pojedynczego współautora w procesie nauki danych zespołu
+description: Szczegółowy przewodnik dotyczący zadań dla pojedynczego współautora w projekcie zespołowym analizy danych.
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6a52907fa6c0e2483479031fbb3d1ad68a121d95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b64d9669c11f15de5e6bd616ff7a79f59b748363
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043356"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244256"
 ---
-# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Zadania dla poszczególnych współautora w procesie nauki o danych zespołu
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Zadania dla pojedynczego współautora w procesie nauki danych zespołu
 
-W tym temacie wymieniono zadania, które jest pojedynczy Współautor oczekiwano dla swojego zespołu do nauki o danych. Celem jest zapewnienie środowiska zespół współpracowników, standardowego na [zespołu danych dla celów naukowych](overview.md) (TDSP). Konspekt ról pracowników i ich skojarzone zadania, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu dla [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
+W tym temacie opisano zadania wykonywane przez *pojedynczego współautor* w celu skonfigurowania projektu w [procesie nauki o danych zespołowych](overview.md) (przetwarzania TDSP). Celem jest praca w środowisku zespołu współpracy, które jest zgodne z przetwarzania TDSP. PRZETWARZANIA TDSP zaprojektowano tak, aby pomóc w ulepszaniu współpracy i uczenia zespołu. Aby zapoznać się z zarysem ról pracowników i skojarzonych z nimi zadań, które są obsługiwane przez zespół ds. analizy danych w przetwarzania TDSP, zobacz temat [role i zadania zespołowego procesu nauki danych](roles-tasks.md).
 
-Zadania poszczególnych uczestników projektu (analitykom danych), aby skonfigurować środowisko przetwarzania TDSP dla projektu są przedstawione w następujący sposób: 
+Na poniższym diagramie przedstawiono zadania, które zostały ukończone przez poszczególnych współautorów (analityków danych) w celu skonfigurowania środowiska zespołu. Aby uzyskać instrukcje dotyczące wykonywania projektu analizy danych w ramach przetwarzania TDSP, zobacz [wykonywanie projektów analizy danych](project-execution.md). 
 
-![1](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
+![Zadania poszczególnych współautorów](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
 
-- **GroupUtilities** to repozytorium, że jest utrzymywanie grupy, aby udostępniać przydatne narzędzia w całej grupie. 
-- **TeamUtilities** jest repozytorium, którego Twój zespół jest utrzymanie specjalnie dla Twojego zespołu. 
+- **ProjectRepository** to repozytorium, którego zespół projektu utrzymuje do udostępniania szablonów i zasobów projektu.
+- **TeamUtilities** to repozytorium narzędzi, które zespół utrzymuje w odniesieniu do zespołu. 
+- **GroupUtilities** to repozytorium, w którym Twoja grupa udostępnia przydatne narzędzia w całej grupie. 
 
-Aby uzyskać instrukcje na temat sposobu wykonywania projektu nauki o danych, w ramach przetwarzania TDSP, zobacz [wykonywania danych do analizy projektów](project-execution.md). 
+> [!NOTE] 
+> W tym artykule wykorzystano Azure Repos i Data Science Virtual Machine (DSVM) w celu skonfigurowania środowiska przetwarzania TDSP, ponieważ jest to sposób implementacji przetwarzania TDSP w firmie Microsoft. Jeśli Twój zespół korzysta z innych platform hostingowych lub deweloperskich, poszczególne zadania współautora są takie same, ale sposób ich wykonania może być różny.
 
->[AZURE.NOTE] Firma Microsoft opisano kroki niezbędne do skonfigurowania środowiska TDSP środowisko pracy dla zespołu za pomocą DevOps platformy Azure w poniższych instrukcjach. Firma Microsoft umożliwia określenie sposobu wykonywania tych zadań, za pomocą DevOps platformy Azure, ponieważ jest to, jak wygląda implementacja przetwarzania TDSP w firmie Microsoft. Jeśli innej platformie hosting kodu jest używany dla tej grupy, zadania, które muszą zostać wykonane przez lider zespołu, zazwyczaj nie należy zmieniać. Ale sposobem wykonania tych zadań ma być inna.
+## <a name="prerequisites"></a>Wymagania wstępne
 
+W tym samouczku przyjęto założenie, że następujące zasoby i uprawnienia zostały skonfigurowane przez [Menedżera grupy](group-manager-tasks.md), [lidera zespołu](team-lead-tasks.md)i [Lider projektu](project-lead-tasks.md):
 
-## <a name="repositories-and-directories"></a>Repozytoria i katalogi
+- **Organizacja** usługi Azure DevOps dla Twojej jednostki analizy danych
+- **Repozytorium projektu** skonfigurowane przez Twój projekt prowadzi do udostępniania szablonów i zasobów projektu
+- Repozytoria **GroupUtilities** i **TeamUtilities** zostały skonfigurowane przez Menedżera grupy i lidera zespołu, jeśli ma zastosowanie
+- Usługa Azure **File Storage** skonfigurowana dla zasobów udostępnionych dla zespołu lub projektu, jeśli ma zastosowanie
+- **Uprawnienia** do klonowania z i wypychania do repozytorium projektu 
 
-Ten samouczek używa skrócone nazwy dla repozytoriów i katalogów. Nazwy te ułatwiają wykonaj operacje między repozytoria i katalogi. Ten zapis (**R** dla repozytoriów Git i **D** dla katalogi lokalne na maszyny wirtualnej DSVM) jest używany w następujących sekcjach:
+Aby klonować repozytoria i modyfikować zawartość na komputerze lokalnym lub DSVM lub zainstalować usługę Azure File Storage w DSVM, potrzebne są następujące elementy:
 
-- **R2**: Repozytorium GroupUtilities w usłudze Git, który Menedżer grupy został skonfigurowany na serwerze grupy DevOps platformy Azure.
-- **R4**: Repozytorium TeamUtilities w usłudze Git, który skonfigurował Twoje lider zespołu.
-- **R5**: Repozytorium projektu w usłudze Git, który został skonfigurowany przez użytkownika kierownika projektu.
-- **D2**: Sklonowany katalog lokalny z R2.
-- **D4**: Sklonowany katalog lokalny z R4.
-- **D5**: Sklonowany katalog lokalny z R5.
+- Subskrypcja platformy Azure.
+- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zapoznaj się z [dodatkiem platformy i narzędzia](platforms-and-tools.md#appendix).
+- Jeśli chcesz użyć DSVM, system Windows lub Linux DSVM utworzony i skonfigurowany na platformie Azure. Aby uzyskać więcej informacji i instrukcje, zapoznaj się z [dokumentacją Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
+- W przypadku systemu Windows DSVM na komputerze zainstalowano program [git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . W pliku *README.MD* przewiń w dół do sekcji **pobieranie i instalacja** , a następnie wybierz **najnowszy Instalator**. Pobierz instalatora *exe* ze strony Instalatora i uruchom go. 
+- W przypadku systemu Linux DSVM klucz publiczny skonfigurowany na DSVM i dodany do usługi Azure DevOps. Aby uzyskać więcej informacji i instrukcje, zobacz sekcję **Tworzenie klucza publicznego SSH** w [dodatku platformy i narzędzia](platforms-and-tools.md#appendix). 
+- Informacje o usłudze Azure File Storage dla dowolnego magazynu plików platformy Azure, który trzeba zainstalować w DSVM. 
 
+## <a name="clone-repositories"></a>Klonowanie repozytoriów
 
-## <a name="step-0-prerequisites"></a>Step-0: Wymagania wstępne
+Aby lokalnie korzystać z repozytoriów i wypchnąć zmiany do współużytkowanego zespołu i repozytoriów projektu, należy najpierw skopiować lub *sklonować* repozytoria na komputerze lokalnym. 
 
-Wymagania wstępne są spełnione, wykonując zadania przydzielone do swojego przełożonego grupy opisane w temacie [menedżera grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md). Aby podsumować zapotrzebowanie w tym miejscu, następujące wymagania muszą zostać spełnione przed przystąpieniem do wykonywania zadań kierownik zespołu: 
-- Menedżer grupy został skonfigurowany **GroupUtilities** repozytorium (jeśli istnieje). 
-- Skonfigurował Twoje lider zespołu **TeamUtilities** repozytorium (jeśli istnieje).
-- Twojego kierownika projektu skonfigurował repozytorium projektu. 
-- Dodano Cię do repozytorium projektu przez Twojego kierownika projektu z uprawnieniami do klonowania z i wypchnięcia z powrotem do repozytorium projektu.
+1. W usłudze Azure DevOps przejdź do strony podsumowania projektu zespołu przy *użyciu protokołu https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/\<team name >* , na przykład **https: \//dev. Azure. com/DataScienceUnit/Webteam**.
+   
+1. Wybierz pozycję **repozytoria** w lewym okienku nawigacji, a w górnej części strony wybierz repozytorium, które chcesz sklonować.
+   
+1. Na stronie repozytorium wybierz pozycję **Klonuj** w prawym górnym rogu.
+   
+1. W oknie dialogowym **klonowanie repozytorium** wybierz opcję **https** dla połączenia HTTP lub **SSH** dla połączenia SSH, a następnie skopiuj adres URL klonowania w **wierszu polecenia** do Schowka.
+   
+   ![Klonowanie repozytorium](./media/project-ic-tasks/clone.png)
+   
+1. Na komputerze lokalnym lub DSVM Utwórz następujące katalogi:
+   
+   - Dla systemu Windows: **C:\GitRepos**
+   - Dla systemu Linux: **$Home/gitrepos**
+   
+1. Przejdź do utworzonego katalogu.
+   
+1. W narzędziu git bash Uruchom polecenie `git clone <clone URL>` dla każdego repozytorium, które chcesz sklonować. 
+   
+   Na przykład następujące polecenie klonuje repozytorium **TeamUtilities** do katalogu *Webteam* na komputerze lokalnym. 
+   
+   **Połączenie HTTPS:**
+   
+   ```bash
+   git clone https://DataScienceUnit@dev.azure.com/DataScienceUnit/MyTeam/_git/TeamUtilities
+   ```
+   
+   **Połączenie SSH:**
+   
+   ```bash
+   git clone git@ssh.dev.azure.com:v3/DataScienceUnit/MyTeam/TeamUtilities
+   ```
+   
+1. Upewnij się, że w lokalnym katalogu projektu można zobaczyć foldery sklonowanych repozytoriów.
+   
+   ![Trzy lokalne foldery repozytorium](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
 
-Druga Strona, **TeamUtilities** repozytorium, wymagań wstępnych jest opcjonalna w zależności od tego, czy Twój zespół ma repozytorium narzędzia specyficzne dla zespołu. Jeśli dowolne inne trzy wstępnie wymagane składniki nie zostanie zakończone, skontaktuj się z Twojej lider zespołu, Twoje Kierownik projektu lub ich delegatów, aby ustawić go tak, postępując zgodnie z instrukcjami dotyczącymi [lider zespołu zadań dla zespołu do nauki o danych](team-lead-tasks.md) lub [ Zadania potencjalnych klientów dla zespołu do nauki o danych w projekcie](project-lead-tasks.md).
+## <a name="mount-azure-file-storage-to-your-dsvm"></a>Instalowanie usługi Azure File Storage na DSVM
 
-- Git musi być zainstalowany na tym komputerze. Jeśli używasz maszyny wirtualnej do nauki o danych (DSVM) wstępnie zainstalowane narzędzia Git, i jest gotowe. W przeciwnym razie zobacz [dodatku platformami i narzędziami](platforms-and-tools.md#appendix).  
-- Jeśli używasz **Windows DSVM**, musisz mieć [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) zainstalowana na tym komputerze. W pliku README.md, przewiń w dół do **Pobierz i zainstaluj** sekcji, a następnie kliknij przycisk *najnowszą wersję Instalatora*. Spowoduje to przejście do najnowszych strony Instalatora. Pobierz Instalator .exe, w tym miejscu i uruchom go. 
-- Jeśli używasz **Linux maszyny wirtualnej DSVM**, utworzyć klucz publiczny SSH na maszyny wirtualnej DSVM i dodać go do grupy usług DevOps platformy Azure. Aby uzyskać więcej informacji na temat protokołu SSH, zobacz **utworzyć publiczny klucz SSH** sekcji [dodatku platformami i narzędziami](platforms-and-tools.md#appendix). 
-- Jeśli potencjalny klient projekt i/lub zespół utworzył niektóre usługi Azure file storage, który chcesz zainstalować maszyny wirtualnej DSVM, należy uzyskać informacje o magazynu plików platformy Azure z nich. 
+Jeśli Twój zespół lub projekt ma udostępnione zasoby w usłudze Azure File Storage, zainstaluj magazyn plików na komputerze lokalnym lub DSVM. Postępuj zgodnie z instrukcjami w obszarze [Instalowanie usługi Azure File Storage na komputerze lokalnym lub DSVM](team-lead-tasks.md#mount-azure-file-storage-on-your-local-machine-or-dsvm).
 
-## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>Krok 1-3: Grupa klonów, zespół i repozytoria projektu na komputerze lokalnym
+## <a name="next-steps"></a>Następne kroki
 
-Ta sekcja zawiera instrukcje dotyczące kończenia zadań pierwszych trzech poszczególnych uczestników projektu: 
+Poniżej znajdują się linki do szczegółowych opisów innych ról i zadań zdefiniowanych przez proces nauka danych zespołu:
 
-- Klonuj **GroupUtilities** repozytorium R2 D2
-- Klonuj **TeamUtilities** repozytorium R4 – D4 
-- Klonuj **projektu** repozytorium R5 D5.
-
-Na komputerze lokalnym Utwórz katalog ***C:\GitRepos*** (dla Windows) lub ***$home/GitRepos*** (forLinux), a następnie przejdź do tego katalogu. 
-
-Uruchom jeden z następujących poleceń (odpowiednio dla swojego systemu operacyjnego), aby sklonować swoje **GroupUtilities**, **TeamUtilities**, i **projektu** repozytoria do katalogów na użytkownika komputer lokalny: 
-
-**Windows**
-    
-    git clone <the URL of the GroupUtilities repository>
-    git clone <the URL of the TeamUtilities repository>
-    git clone <the URL of the Project repository>
-    
-![2](./media/project-ic-tasks/project-ic-2-clone-three-repo-to-ic.png)
-
-Upewnij się, że trzy foldery w katalogu projektu.
-
-![3](./media/project-ic-tasks/project-ic-3-three-repo-cloned-to-ic.png)
-
-**Linux**
-    
-    git clone <the SSH URL of the GroupUtilities repository>
-    git clone <the SSH URL of the TeamUtilities repository>
-    git clone <the SSH URL of the Project repository>
-
-![4](./media/project-ic-tasks/project-ic-4-clone-three-repo-to_ic-linux.png)
-
-Upewnij się, że trzy foldery w katalogu projektu.
-
-![5](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
-
-## <a name="step-4-5-mount-azure-file-storage-to-your-dsvm-optional"></a>Krok 4-5: Instalowanie usługi Azure file storage, aby maszyny wirtualnej DSVM (opcjonalnie)
-
-Do instalacji usługi Azure file storage do maszyny wirtualnej DSVM, należy zapoznać się z instrukcjami w sekcji 4 [zadań kierownik zespołu dla zespołu do nauki o danych](team-lead-tasks.md)
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Poniżej podano linki do bardziej szczegółowy opis ról i zadań zdefiniowanych przez zespół danych dla celów naukowych:
-
-- [Menedżer grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md)
-- [Zadania kierownik zespołu dla zespołu do nauki o danych](team-lead-tasks.md)
-- [Zadania potencjalnych klientów dla zespołu do nauki o danych w projekcie](project-lead-tasks.md)
-- [Poszczególnych uczestników projektu dla zespołu do nauki o danych](project-ic-tasks.md)
+- [Zadania Menedżera grupy dla zespołu ds. analizy danych](group-manager-tasks.md)
+- [Zadania lidera zespołu dla zespołu ds. analizy danych](team-lead-tasks.md)
+- [Zadania lidera projektu dla zespołu ds. analizy danych](project-lead-tasks.md)
 

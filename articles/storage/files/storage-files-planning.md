@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 075eaaa188307e4320337ef21fd0875942e9e7e7
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327672"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249353"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
-[Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ Azure Files jest w pełni zarządzany, wdrażanie go w scenariuszach produkcyjnych jest znacznie łatwiejsze niż Wdrażanie serwera plików lub urządzenia NAS oraz zarządzanie nim. Ten artykuł dotyczy tematów, które należy wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
+[Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ Azure Files jest w pełni zarządzany, wdrażanie go w scenariuszach produkcyjnych jest znacznie łatwiejsze niż Wdrażanie serwera plików lub urządzenia NAS oraz zarządzanie nim. Ten artykuł dotyczy tematów, które należy wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
 
 ## <a name="management-concepts"></a>Pojęcia związane z zarządzaniem
 
@@ -24,15 +24,15 @@ ms.locfileid: "71327672"
 
 ![Struktura plików](./media/storage-files-introduction/files-concepts.png)
 
-* **Konto magazynu**: Cały dostęp do usługi Azure Storage odbywa się za pomocą konta magazynu. Aby uzyskać szczegółowe informacje na temat pojemności konta magazynu, zobacz [Cele dotyczące skalowalności i wydajności](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* **Konto magazynu**: cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Aby uzyskać szczegółowe informacje na temat pojemności konta magazynu, zobacz [Cele dotyczące skalowalności i wydajności](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-* **Udział**: Udział File Storage to udział plików SMB na platformie Azure. Wszystkie pliki i katalogi muszą być tworzone w udziale nadrzędnym. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików, do całkowitej pojemności udziału plików. W przypadku standardowych udziałów plików całkowita pojemność jest równa 5 TiB (GA) lub 100 TiB (wersja zapoznawcza) dla udziałów plików w warstwie Premium, łączna pojemność to 100 TiB.
+* **Udział**: udział usługi File Storage jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi muszą być tworzone w udziale nadrzędnym. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików, do całkowitej pojemności udziału plików. W przypadku standardowych udziałów plików całkowita pojemność jest równa 5 TiB (GA) lub 100 TiB (wersja zapoznawcza) dla udziałów plików w warstwie Premium, łączna pojemność to 100 TiB.
 
-* **Katalog**: Opcjonalna hierarchia katalogów.
+* **Katalog**: opcjonalna hierarchia katalogów.
 
-* **Plik**: Plik w udziale. Plik może mieć maksymalnie 1 TiB rozmiar.
+* **Plik**: plik w udziale. Plik może mieć maksymalnie 1 TiB rozmiar.
 
-* **Format adresu URL**: W przypadku żądań skierowanych do udziału plików platformy Azure przy użyciu protokołu REST plików można używać adresów przy użyciu następującego formatu adresu URL:
+* **Format adresu URL**: w przypadku żądań skierowanych do udziału plików platformy Azure z PROTOKOŁem REST plików pliki są adresowane przy użyciu następującego formatu adresu URL:
 
     ```
     https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
@@ -42,15 +42,15 @@ ms.locfileid: "71327672"
 
 Azure Files oferuje dwie wbudowane, wygodne metody dostępu do danych, których można używać oddzielnie lub w połączeniu ze sobą, aby uzyskać dostęp do danych:
 
-1. **Bezpośredni dostęp do chmury**: Każdy udział plików platformy Azure można zainstalować w [systemie Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md)i/lub [Linux](storage-how-to-use-files-linux.md) przy użyciu standardowego protokołu bloku komunikatów serwera (SMB) lub za pośrednictwem interfejsu API REST plików. W przypadku protokołu SMB operacje odczytu i zapisu do plików w udziale są wprowadzane bezpośrednio w udziale plików na platformie Azure. Aby można było zainstalować program przy użyciu maszyny wirtualnej na platformie Azure, klient SMB w systemie operacyjnym musi obsługiwać co najmniej protokół SMB 2,1. Aby zainstalować lokalnie, na przykład na stacji roboczej użytkownika, klient SMB obsługiwany przez stację roboczą musi obsługiwać co najmniej protokół SMB 3,0 (z szyfrowaniem). Oprócz protokołu SMB nowe aplikacje lub usługi mogą bezpośrednio uzyskiwać dostęp do udziału plików za pośrednictwem usługi File REST, co zapewnia łatwy i skalowalny interfejs programowania aplikacji na potrzeby tworzenia oprogramowania.
-2. **Azure File Sync**: Dzięki Azure File Sync udziały mogą być replikowane do serwerów z systemem Windows lokalnie lub na platformie Azure. Użytkownicy będą mieli dostęp do udziału plików za pomocą systemu Windows Server, na przykład za pomocą udziału SMB lub NFS. Jest to przydatne w scenariuszach, w których dane będą dostępne i modyfikowane daleko od centrum danych platformy Azure, na przykład w scenariuszu oddziału. Dane mogą być replikowane między wieloma punktami końcowymi systemu Windows Server, takimi jak między wieloma biurami oddziałów. Na koniec dane mogą być warstwami Azure Files, w taki sposób, że wszystkie dane są nadal dostępne za pośrednictwem serwera, ale serwer nie ma pełnej kopii danych. Zamiast tego dane są bezproblemowo wywoływane po otwarciu przez użytkownika.
+1. **Bezpośredni dostęp do chmury**: dowolny udział plików platformy Azure można zainstalować w [systemie Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md)i/lub [Linux](storage-how-to-use-files-linux.md) przy użyciu standardowego protokołu bloku komunikatów serwera (SMB) lub za pośrednictwem interfejsu API REST plików. W przypadku protokołu SMB operacje odczytu i zapisu do plików w udziale są wprowadzane bezpośrednio w udziale plików na platformie Azure. Aby można było zainstalować program przy użyciu maszyny wirtualnej na platformie Azure, klient SMB w systemie operacyjnym musi obsługiwać co najmniej protokół SMB 2,1. Aby zainstalować lokalnie, na przykład na stacji roboczej użytkownika, klient SMB obsługiwany przez stację roboczą musi obsługiwać co najmniej protokół SMB 3,0 (z szyfrowaniem). Oprócz protokołu SMB nowe aplikacje lub usługi mogą bezpośrednio uzyskiwać dostęp do udziału plików za pośrednictwem usługi File REST, co zapewnia łatwy i skalowalny interfejs programowania aplikacji na potrzeby tworzenia oprogramowania.
+2. **Azure File Sync**: z Azure File Sync, udziały mogą być replikowane do serwerów z systemem Windows lokalnie lub na platformie Azure. Użytkownicy będą mieli dostęp do udziału plików za pomocą systemu Windows Server, na przykład za pomocą udziału SMB lub NFS. Jest to przydatne w scenariuszach, w których dane będą dostępne i modyfikowane daleko od centrum danych platformy Azure, na przykład w scenariuszu oddziału. Dane mogą być replikowane między wieloma punktami końcowymi systemu Windows Server, takimi jak między wieloma biurami oddziałów. Na koniec dane mogą być warstwami Azure Files, w taki sposób, że wszystkie dane są nadal dostępne za pośrednictwem serwera, ale serwer nie ma pełnej kopii danych. Zamiast tego dane są bezproblemowo wywoływane po otwarciu przez użytkownika.
 
 W poniższej tabeli przedstawiono sposób, w jaki użytkownicy i aplikacje mogą uzyskiwać dostęp do udziału plików platformy Azure:
 
-| | Bezpośredni dostęp do chmury | Azure File Sync |
+| | Bezpośredni dostęp do chmury | Usługa Azure File Sync |
 |------------------------|------------|-----------------|
 | Jakich protokołów należy używać? | Azure Files obsługuje protokół SMB 2,1, protokół SMB 3,0 i interfejs API REST plików. | Uzyskaj dostęp do udziału plików platformy Azure za pomocą dowolnego obsługiwanego protokołu w systemie Windows Server (SMB, NFS, FTPS itp.) |  
-| Gdzie działa Twoje obciążenie? | **Na platformie Azure**: Azure Files oferuje bezpośredni dostęp do danych. | **W środowisku lokalnym z powolnej sieci**: Klienci z systemami Windows, Linux i macOS mogą instalować lokalny udział plików systemu Windows jako szybką pamięć podręczną udziału plików platformy Azure. |
+| Gdzie działa Twoje obciążenie? | **Na platformie Azure**: Azure Files oferuje bezpośredni dostęp do danych. | **W środowisku lokalnym z powolnej sieci**: klienci z systemami Windows, Linux i macOS mogą instalować lokalny udział plików systemu Windows jako szybką pamięć podręczną udziału plików platformy Azure. |
 | Jakiego poziomu listy kontroli dostępu potrzebujesz? | Poziom udziału i pliku. | Udostępnianie, plik i poziom użytkownika. |
 
 ## <a name="data-security"></a>Bezpieczeństwo danych
@@ -61,7 +61,7 @@ Azure Files zawiera kilka wbudowanych opcji zapewniających bezpieczeństwo dany
     * Klienci, którzy obsługują szyfrowanie SMB 3,0, wysyłają i odbierają dane za pośrednictwem zaszyfrowanego kanału.
     * Klienci nieobsługujący protokołu SMB 3,0 z szyfrowaniem mogą komunikować się wewnątrz centrum danych za pośrednictwem protokołu SMB 2,1 lub SMB 3,0 bez szyfrowania. Klienci protokołu SMB nie mogą komunikować się między centrami danych za pośrednictwem protokołu SMB 2,1 ani protokołu SMB 3,0 bez szyfrowania.
     * Klienci mogą komunikować się za pośrednictwem pliku HTTP lub HTTPS.
-* Szyfrowanie w spoczynku ([Azure szyfrowanie usługi Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Szyfrowanie usługi Storage (SSE) jest włączona dla wszystkich kont magazynu. Dane przechowywane w usłudze REST są szyfrowane za pomocą w pełni zarządzanych kluczy. Szyfrowanie w czasie spoczynku nie zwiększa kosztów magazynu ani nie zmniejsza wydajności. 
+* Szyfrowanie w spoczynku ([Azure szyfrowanie usługi Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): funkcja szyfrowanie usługi Storage (SSE) jest włączona dla wszystkich kont magazynu. Dane przechowywane w usłudze REST są szyfrowane za pomocą w pełni zarządzanych kluczy. Szyfrowanie w czasie spoczynku nie zwiększa kosztów magazynu ani nie zmniejsza wydajności. 
 * Opcjonalne wymaganie szyfrowanych danych podczas przesyłania: w przypadku wybrania Azure Files odrzuca dostęp do danych za pośrednictwem nieszyfrowanych kanałów. Dozwolone są tylko protokołu HTTPS i SMB 3,0 z połączeniami szyfrowania.
 
     > [!Important]  
@@ -90,7 +90,7 @@ Udziały plików w warstwie Premium są obsługiwane przez dyski półprzewodnik
 
 Azure Backup jest dostępny dla udziałów plików w warstwie Premium, a usługa Azure Kubernetes obsługuje udziały plików w warstwie Premium w wersji 1,13 i nowszych.
 
-Jeśli chcesz dowiedzieć się, jak utworzyć udział plików w warstwie Premium, zobacz nasz artykuł w temacie: [Jak utworzyć konto magazynu plików platformy Azure w warstwie Premium](storage-how-to-create-premium-fileshare.md).
+Jeśli chcesz dowiedzieć się, jak utworzyć udział plików w warstwie Premium, zobacz nasz artykuł w temacie: [jak utworzyć konto magazynu plików w warstwie Premium platformy Azure](storage-how-to-create-premium-fileshare.md).
 
 Obecnie nie można bezpośrednio konwertować między standardowym udziałem plików a udziałem plików w warstwie Premium. Jeśli chcesz przełączyć się do jednej z warstw, musisz utworzyć nowy udział plików w tej warstwie i ręcznie skopiować dane z oryginalnego udziału do utworzonego nowego udziału. Można to zrobić przy użyciu dowolnego Azure Files obsługiwanych narzędzi do kopiowania, takich jak Robocopy lub AzCopy.
 
@@ -126,12 +126,12 @@ W poniższej tabeli przedstawiono kilka przykładów tych wzorów dla rozmiarów
 |---------|---------|---------|---------|---------|
 |100         | 100     | Do 300     | 66   | 44   |
 |500         | 500     | Do 1 500   | 90   | 60   |
-|1,024       | 1,024   | Do 3 072   | 122   | 81   |
+|1 024       | 1 024   | Do 3 072   | 122   | 81   |
 |5 120       | 5 120   | Do 15 360  | 368   | 245   |
 |10 240      | 10 240  | Do 30 720  | 675 | 450   |
 |33 792      | 33 792  | Do 100 000 | 2 088 | 1 392   |
-|51 200      | 51 200  | Do 100 000 | 3,132 | 2 088   |
-|102 400     | 100,000 | Do 100 000 | 6 204 | 4 136   |
+|51 200      | 51 200  | Do 100 000 | 3 132 | 2 088   |
+|102 400     | 100 000 | Do 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > Wydajność udziałów plików zależy od ograniczeń sieci maszynowych, dostępnej przepustowości sieci, rozmiarów we/wy, równoległości, między wieloma innymi czynnikami. Aby osiągnąć maksymalną skalę wydajności, należy rozłożyć obciążenie na wiele maszyn wirtualnych. Zapoznaj się [z przewodnikiem rozwiązywania problemów](storage-troubleshooting-files-performance.md) w przypadku niektórych typowych problemów z wydajnością i obejść.
@@ -184,7 +184,7 @@ GRS replikuje dane do innego centrum danych w regionie pomocniczym, ale dane te 
 
 W przypadku konta magazynu z włączonym GRS wszystkie dane są najpierw replikowane przy użyciu magazynu lokalnie nadmiarowego (LRS). Aktualizacja jest najpierw zatwierdzana do lokalizacji podstawowej i replikowana przy użyciu LRS. Aktualizacja jest następnie replikowana asynchronicznie do regionu pomocniczego za pomocą GRS. Gdy dane są zapisywane w lokalizacji dodatkowej, są również replikowane w tej lokalizacji przy użyciu LRS.
 
-Zarówno region podstawowy, jak i pomocniczy zarządzają replikami w osobnych domenach błędów i uaktualniania domen w ramach jednostki skalowania magazynu. Jednostka skali magazynu jest podstawową jednostką replikacji w centrum danych. Replikacja na tym poziomie jest zapewniana przez LRS; Aby uzyskać więcej informacji, [zobacz Magazyn lokalnie nadmiarowy (LRS): Low-cost data redundancy for Azure Storage](../common/storage-redundancy-lrs.md) (Magazyn lokalnie nadmiarowy: nadmiarowość danych o niskich kosztach dla usługi Azure Storage).
+Zarówno region podstawowy, jak i pomocniczy zarządzają replikami w osobnych domenach błędów i uaktualniania domen w ramach jednostki skalowania magazynu. Jednostka skali magazynu jest podstawową jednostką replikacji w centrum danych. Replikacja na tym poziomie jest zapewniana przez LRS; Aby uzyskać więcej informacji, zobacz [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](../common/storage-redundancy-lrs.md).
 
 Przed wybraniem opcji replikacji należy pamiętać o następujących kwestiach:
 
@@ -211,18 +211,18 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |Region |Obsługiwana nadmiarowość |Obsługuje istniejące konta magazynu |Obsługa portalu * |
 |-------|---------|---------|---------|
 |Australia Wschodnia |LRS     |Nie    |Tak|
-|Australia Południowo-Wschodnia|LRS     |Nie    |Jeszcze nie|
-|Indie Środkowe  |LRS     |Nie    |Jeszcze nie|
-|Azja Wschodnia      |LRS     |Nie    |Jeszcze nie|
-|East US        |LRS     |Nie    |Jeszcze nie|
-|Francja Środkowa |LRS, ZRS|Nie    |LRS — tak, ZRS — jeszcze nie|
+|Australia Południowo-Wschodnia|LRS |Nie    |Tak|
+|Indie Środkowe  |LRS     |Nie    |Tak|
+|Azja Wschodnia      |LRS     |Nie    |Tak|
+|Wschodnie stany USA        |LRS     |Nie    |Tak|
+|Francja Środkowa |LRS, ZRS|Nie    |Tak|
 |Francja Południowa   |LRS     |Nie    |Tak|
 |Europa Północna   |LRS     |Nie    |Jeszcze nie|
-|Indie Południowe    |LRS     |Nie    |Jeszcze nie|
-|Azja Południowo-Wschodnia |LRS, ZRS|Nie    |Tak|
-|Środkowo-zachodnie stany USA|LRS     |Nie    |Jeszcze nie|
+|Indie Południowe    |LRS     |Nie    |Tak|
+|Azja Południowo-wschodnia |LRS, ZRS|Nie    |Tak|
+|Zachodnio-środkowe stany USA|LRS     |Nie    |Tak|
 |Europa Zachodnia    |LRS, ZRS|Nie    |Tak|
-|Zachodnie stany USA        |LRS     |Nie    |Jeszcze nie|
+|Zachodnie stany USA        |LRS     |Nie    |Tak|
 |Zachodnie stany USA 2      |LRS, ZRS|Nie    |Tak|
 
 
@@ -255,7 +255,7 @@ Aby sprawdzić stan rejestracji, możesz uruchomić następujące polecenie:
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Zaktualizowanie stanu do zarejestrowanego może potrwać do 15minut. Po zarejestrowaniustanu powinno być możliwe korzystanie z tej funkcji.
+Zaktualizowanie stanu do **zarejestrowanego**może potrwać do 15 minut. Po **zarejestrowaniu**stanu powinno być możliwe korzystanie z tej funkcji.
 
 ### <a name="use-larger-file-shares"></a>Użyj większych udziałów plików
 
@@ -271,8 +271,8 @@ Istnieje możliwość synchronizacji wielu udziałów plików platformy Azure z 
 
 Istnieje wiele łatwych opcji przesyłania zbiorczego danych z istniejącego udziału plików, takiego jak lokalny udział plików, do Azure Files. Oto kilka popularnych (niewyczerpująca lista):
 
-* **Azure File Sync**: W ramach pierwszej synchronizacji między udziałem plików platformy Azure ("punktem końcowym w chmurze") a przestrzenią nazw katalogu systemu Windows ("punkt końcowy serwera") Azure File Sync będzie replikowana wszystkie dane z istniejącego udziału plików do Azure Files.
-* **[Importowanie/Eksportowanie na platformie Azure](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Usługa Azure Import/Export umożliwia bezpieczne przesyłanie dużych ilości danych do udziału plików platformy Azure przez wysyłanie dysków twardych do centrum danych platformy Azure. 
+* **Azure File Sync**: w ramach pierwszej synchronizacji między udziałem plików platformy Azure ("punktem końcowym w chmurze") a przestrzenią nazw katalogu systemu Windows ("punkt końcowy serwera"), Azure File Sync będzie replikowana wszystkie dane z istniejącego udziału plików do Azure Files.
+* **[Azure import/](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** Export: usługa Azure Import/Export umożliwia bezpieczne przesyłanie dużych ilości danych do udziału plików platformy Azure przez dostarczenie dysków twardych do centrum danych platformy Azure. 
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy to dobrze znane narzędzie do kopiowania, które jest dostarczane z systemami Windows i Windows Server. Robocopy może służyć do transferowania danych do Azure Files przez zainstalowanie udziału plików lokalnie, a następnie użycie zainstalowanej lokalizacji jako miejsca docelowego w poleceniu Robocopy.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych do i z Azure Files, a także do usługi Azure Blob Storage przy użyciu prostych poleceń z optymalną wydajnością.
 

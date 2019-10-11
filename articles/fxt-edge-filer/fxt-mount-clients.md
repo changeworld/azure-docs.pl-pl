@@ -1,113 +1,113 @@
 ---
-title: Zainstaluj klientów w klastrze filtr Edge FXT Azure firmy Microsoft
-description: Jak komputery klienckie systemu plików NFS można zainstalować filtr Edge FXT Azure storage hybrydowe z pamięci podręcznej
+title: Instalowanie klientów w klastrze plików Microsoft Azure FXT Edge
+description: Jak komputery klienckie NFS mogą instalować hybrydową pamięć podręczną magazynu usługi Azure FXT Edge
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 5471bf4041275d5988414def99dd2130f51fbb80
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.author: rohogue
+ms.openlocfilehash: ac1263b352e7fdde57dfee6515a8b22400f22b06
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828032"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256029"
 ---
-# <a name="tutorial-mount-the-cluster"></a>Samouczek: Zainstaluj klaster
+# <a name="tutorial-mount-the-cluster"></a>Samouczek: Instalowanie klastra
 
-Tym samouczku pokazano, jak zainstalować klientów systemu plików NFS w klastrze filtr Edge FXT platformy Azure. Klienci Zainstaluj ścieżki wirtualnej przestrzeni nazw, które przypisane po dodaniu magazynu zaplecza. 
+W tym samouczku przedstawiono sposób instalowania klientów NFS w klastrze plików usługi Azure FXT Edge. Klienci instalują ścieżki wirtualnego obszaru nazw przypisane podczas dodawania magazynu zaplecza. 
 
-W tym samouczku pokazano: 
+Ten samouczek uczy się: 
 
 > [!div class="checklist"]
-> * Strategie klientów równoważenia obciążenia z zakresu adresów IP ukierunkowane na klienta
-> * Jak utworzyć ścieżkę instalacji z Rozgałęzienie ukierunkowane na klienta IP adres i przestrzeni nazw
-> * Argumenty, które do użycia w poleceniu instalacji
+> * Strategie równoważenia obciążenia dla klientów w zakresie adresów IP dostępnych dla klientów
+> * Jak utworzyć ścieżkę instalacji z rozgałęzienia adresu IP i przestrzeni nazw dla klienta
+> * Argumenty, które mają być używane w poleceniu instalacji
 
-Ten samouczek zajmuje około 45 minut.
+Ukończenie tego samouczka zajmuje około 45 minut.
 
-## <a name="steps-to-mount-the-cluster"></a>Instrukcje instalacji klastra
+## <a name="steps-to-mount-the-cluster"></a>Procedura instalacji klastra
 
-Wykonaj następujące kroki, aby połączyć z komputerów klienckich do klastra usługi Azure FXT krawędzi filtr.
+Wykonaj następujące kroki, aby połączyć komputery klienckie z klastrem plików usługi Azure FXT Edge.
 
-1. Zdecyduj, jak Równoważenie obciążenia ruchu klientów między węzły klastra. Odczyt [Równoważenie obciążenia klienta](#balance-client-load)poniżej, aby uzyskać szczegółowe informacje. 
-1. Zidentyfikuj klastra adresów IP i Rozgałęzienie ścieżek do zainstalowania.
-1. Określ ścieżkę ukierunkowane na klienta do instalacji.
-1. Problem [polecenie instalacji](#use-recommended-mount-command-options), z odpowiednimi argumentami.
+1. Zdecyduj, jak równoważyć obciążenie ruchu klienckiego między węzłami klastra. Aby uzyskać szczegółowe informacje, przeczytaj temat [równoważenie obciążenia klienta](#balance-client-load)poniżej. 
+1. Określ adres IP i ścieżkę rozgałęzienia klastra do zainstalowania.
+1. Określ ścieżkę dodaną do klienta dla instalacji.
+1. Wydaj [polecenie instalacji](#use-recommended-mount-command-options)z odpowiednimi argumentami.
 
-## <a name="balance-client-load"></a>Równoważenie obciążenia klienta
+## <a name="balance-client-load"></a>Równoważ obciążenie klienta
 
-Aby ułatwić równoważenie żądań klientów między wszystkie węzły w klastrze, należy zainstalować klientów do pełnego zakresu adresów IP ukierunkowane na klienta. Istnieje kilka sposobów, aby zautomatyzować to zadanie.
+Aby zapewnić zrównoważenie żądań klientów między wszystkimi węzłami w klastrze, należy zainstalować klientów do pełnego zakresu adresów IP skierowanych na klienta. Istnieje kilka sposobów automatyzacji tego zadania.
 
-Aby uzyskać informacje dotyczące działania okrężnego DNS równoważenia obciążenia dla klastra, przeczytaj [Konfigurowanie serwera DNS dla klastra filtr Edge FXT Azure](fxt-configure-network.md#configure-dns-for-load-balancing). Aby użyć tej metody, musisz utrzymywać serwer DNS, które nie zostały wyjaśnione w tych artykułach.
+Aby dowiedzieć się więcej na temat równoważenia obciążenia DNS w przypadku działania okrężnego dla klastra, przeczytaj temat [Konfigurowanie systemu DNS dla klastra usługi Azure FXT Edge](fxt-configure-network.md#configure-dns-for-load-balancing). Aby użyć tej metody, należy zachować serwer DNS, co nie jest wyjaśnione w tych artykułach.
 
-Prostszą metodę niż w przypadku małych instalacji jest używanie skryptu do przypisywania adresów IP w całym zakresie w momencie instalacji klienta. 
+Prostsza Metoda dla małych instalacji polega na użyciu skryptu do przypisywania adresów IP w całym zakresie w czasie instalacji klienta. 
 
-Inne metody równoważenia obciążenia może być odpowiednie dla dużych lub złożonych systemów. Zapoznaj się z Microsoft reprezentatywny lub Otwórz [żądania pomocy technicznej](fxt-support-ticket.md) Aby uzyskać pomoc. (Równoważenie obciążenia azure jest obecnie *nieobsługiwane* z filtr Edge FXT platformy Azure.)
+Inne metody równoważenia obciążenia mogą być odpowiednie w przypadku dużych lub złożonych systemów. Skontaktuj się z przedstawicielem firmy Microsoft lub Otwórz [żądanie pomocy technicznej](fxt-support-ticket.md) , aby uzyskać pomoc. (Azure Load Balancer nie jest obecnie *obsługiwana* w przypadku usługi Azure FXT Edge.)
 
 ## <a name="create-the-mount-command"></a>Utwórz polecenie instalacji 
 
-Z komputera klienckiego z ``mount`` polecenie mapuje serwera wirtualnego (vserver) w klastrze Azure FXT krawędzi filtr do ścieżki w lokalnym systemie plików. 
+Z poziomu klienta polecenie ``mount`` mapuje serwer wirtualny (vserver) w klastrze usługi Microsoft Azure FXT Edge do ścieżki w lokalnym systemie plików. 
 
 Format jest ``mount <FXT cluster path> <local path> {options}``
 
-Istnieją trzy elementy do polecenia instalacji: 
+Istnieją trzy elementy polecenia instalacji: 
 
-* Ścieżka klastra — kombinacją adresów IP i nazw Rozgałęzienie ścieżek opisanych poniżej
-* Ścieżka lokalna — ścieżka na komputerze klienckim 
-* Opcje polecenia - instalacji (wymienione w [zaleca użycie opcji polecenia instalacji](#use-recommended-mount-command-options))
+* ścieżka klastra — kombinacja ścieżki adresu IP i przestrzeni nazw opisana poniżej
+* ścieżka lokalna — ścieżka na kliencie 
+* Opcje polecenia instalacji — (wymienione w [opcji Użyj zalecanych poleceń instalacji](#use-recommended-mount-command-options))
 
-### <a name="create-the-cluster-path"></a>Tworzenie ścieżki klastra
+### <a name="create-the-cluster-path"></a>Utwórz ścieżkę klastra
 
-Ścieżka klastra jest kombinacją vserver *adresu IP* oraz ścieżkę do *przestrzeni nazw połączeń*. Połączenie przestrzeni nazw jest ścieżką wirtualną zdefiniowane kiedy użytkownik [dodano system magazynowania](fxt-add-storage.md#create-a-junction).
+Ścieżka klastra jest kombinacją *adresu IP* vserver oraz ścieżki do *rozgałęzienia przestrzeni nazw*. Rozgałęzienie przestrzeni nazw jest ścieżką wirtualną zdefiniowaną podczas [dodawania systemu magazynu](fxt-add-storage.md#create-a-junction).
 
-Na przykład, jeśli użyto ``/fxt/files`` jako ścieżki obszaru nazw, instalująca klientów *adres_IP*: / fxt/pliki do ich punktu instalacji lokalnej. 
+Na przykład jeśli użyto ``/fxt/files`` jako ścieżki przestrzeni nazw, klienci będą instalować *adres_IP*:/FXT/Files do ich lokalnego punktu instalacji. 
 
-!["Dodaj nowe połączenie" okno dialogowe z plikami/avere/w polu Ścieżka przestrzeni nazw](media/fxt-mount/fxt-junction-example.png)
+![Okno dialogowe "Dodawanie nowego połączenia" z/avere/Files w polu Ścieżka przestrzeni nazw](media/fxt-mount/fxt-junction-example.png)
 
-Adres IP jest jeden z adresów IP ukierunkowane na klienta, które są zdefiniowane dla vserver. Można znaleźć w zakresie ukierunkowane na klienta adresów IP w dwóch miejscach w klastrze Panelu sterowania:
+Adres IP jest jednym z adresów IP skierowanych do klienta zdefiniowanych dla vserver. Zakres adresów IP dostępnych dla klientów można znaleźć w dwóch miejscach w panelu sterowania klastra:
 
-* **VServers** tabeli (karta pulpitu nawigacyjnego) — 
+* Tabela **VServers** (karta Pulpit nawigacyjny) — 
 
-  ![Karta pulpitu nawigacyjnego z wybraną w tabeli danych pod wykresem kartą VServer i sekcja adresu IP w kółkach w Panelu sterowania](media/fxt-mount/fxt-ip-addresses-dashboard.png)
+  ![Karta Pulpit nawigacyjny panelu sterowania z kartą VServer wybraną w tabeli dane pod wykresem i sekcją adres IP w kółku](media/fxt-mount/fxt-ip-addresses-dashboard.png)
 
-* **Klient sieci skierowany** strony Ustawienia - 
+* Strona ustawień **sieci dołączona do klienta** — 
 
-  ![Ustawienia > VServer > strony konfiguracji klienta sieci skierowany w kółku sekcji zakres adresów w tabeli dla konkretnego vserver](media/fxt-mount/fxt-ip-addresses-settings.png)
+  ![Ustawienia > VServer > stronie konfiguracji sieci przeznaczonej dla klientów z okręgiem wokół sekcji Zakres adresów tabeli dla określonego vserver](media/fxt-mount/fxt-ip-addresses-settings.png)
 
-Połącz, adres IP i ścieżki przestrzeni nazw w celu utworzenia klastra ścieżkę dla polecenia instalowania. 
+Połącz adres IP i ścieżkę przestrzeni nazw, aby utworzyć ścieżkę klastra dla polecenia instalacji. 
 
 Przykładowe polecenie instalacji klienta: ``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
 
 ### <a name="create-the-local-path"></a>Utwórz ścieżkę lokalną
 
-Ścieżka lokalna dla polecenia instalowania zależy od użytkownika. Można ustawić dowolną strukturę ścieżki, które mają w ramach wirtualnej przestrzeni nazw. Projektowanie przestrzeni nazw i ścieżkę lokalną, odpowiednim dla przepływu pracy klienta. 
+Ścieżka lokalna polecenia instalacji jest do Ciebie. Możesz ustawić dowolną strukturę ścieżki, która ma być częścią wirtualnej przestrzeni nazw. Zaprojektuj przestrzeń nazw i ścieżkę lokalną, która jest wygodna dla przepływu pracy klienta. 
 
-Aby uzyskać więcej informacji na temat nazw ukierunkowane na klienta, zapoznaj się z przewodnikiem konfiguracji klastra [Przegląd przestrzeni nazw](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html).
+Aby uzyskać więcej informacji na temat przestrzeni nazw klienta, zapoznaj się z tematem [przestrzeń nazw](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)przewodnika po konfiguracji klastra.
 
-Oprócz ścieżek, obejmują [opcje polecenia instalacji](#use-recommended-mount-command-options) opisane poniżej, w przypadku instalowania poszczególnych klientów.
+Oprócz ścieżek należy uwzględnić [Opcje polecenia instalacji](#use-recommended-mount-command-options) opisane poniżej podczas instalowania każdego klienta.
 
-### <a name="use-recommended-mount-command-options"></a>Użyj opcji polecenia instalacji zalecanych
+### <a name="use-recommended-mount-command-options"></a>Użyj zalecanych opcji polecenia instalacji
 
-W celu zapewnienia instalacji klienta bezproblemowe, należy przekazać te ustawienia i argumenty polecenia instalacji: 
+Aby zapewnić bezproblemowe Instalowanie klienta, należy przekazać te ustawienia i argumenty w poleceniu instalacji: 
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 | Wymagane ustawienia | |
 --- | --- 
-``hard`` | Instalacji miękkich klastrowi filtr Edge FXT platformy Azure są skojarzone z błędów aplikacji i możliwej utracie danych. 
-``proto=netid`` | Ta opcja obsługuje odpowiednią obsługę błędów sieciowych systemu plików NFS.
+``hard`` | Instalacje miękkie do klastra usługi Azure FXT Edge są skojarzone z niepowodzeńmi aplikacji i możliwymi utratą danych. 
+``proto=netid`` | Ta opcja obsługuje odpowiednią obsługę błędów sieci NFS.
 ``mountproto=netid`` | Ta opcja obsługuje odpowiednią obsługę błędów sieci dla operacji instalacji.
-``retry=n`` | Ustaw ``retry=30`` w celu uniknięcia błędów przejściowych instalacji. (Inną wartość jest zalecane w instaluje pierwszego planu).
+``retry=n`` | Ustaw ``retry=30``, aby uniknąć błędów instalacji przejściowej. (W instalacjach na pierwszym planie zalecana jest inna wartość).
 
-| Preferowanych ustawień  | |
+| Ustawienia preferowane  | |
 --- | --- 
-``nointr``            | Jeśli klienci korzystają z starszych jądra systemu operacyjnego (przed kwietnia 2008), które obsługują tę opcję, można go użyć. Opcja "Grupa" jest ustawieniem domyślnym.
+``nointr``            | Jeśli klienci korzystają ze starszych jądra systemu operacyjnego (przed 2008 kwietnia), które obsługują tę opcję, użyj go. Opcja "intr" jest domyślna.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po zainstalowano klientów, można przetestować przepływ pracy i rozpoczynanie pracy z klastrem.
+Po zainstalowaniu klientów można testować przepływ pracy i rozpocząć pracę z klastrem.
 
-Jeśli musisz przenieść dane do nowego filtr core chmury, uwzględniające pozyskiwać zaletą struktury pamięci podręcznej przy użyciu danych równoległych. Niektóre strategie zostały opisane w [przenoszenia danych do klastra vFXT](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest). (VFXT Avere dla platformy Azure jest oparte na chmurze produktu, korzystającej z technologii buforowania w bardzo podobny do filtr Edge FXT platformy Azure).
+Jeśli musisz przenieść dane do nowego pliku w chmurze, skorzystaj ze struktury pamięci podręcznej, używając funkcji pozyskiwania danych równoległych. Niektóre strategie zostały opisane w artykule [przeniesienie danych do klastra vFXT](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest). (Avere vFXT for Azure to produkt oparty na chmurze, który korzysta z technologii pamięci podręcznej, podobnie jak w przypadku usługi Azure FXT Edge.)
 
-Odczyt [filtr Edge FXT Azure Monitor stanu sprzętu](fxt-monitor.md) w przypadku konieczności rozwiązywania wszelkich problemów sprzętowych. 
+Przeczytaj artykuł [monitorowanie stanu sprzętu usługi Azure FXT Edge](fxt-monitor.md) w przypadku konieczności rozwiązywania problemów ze sprzętem. 

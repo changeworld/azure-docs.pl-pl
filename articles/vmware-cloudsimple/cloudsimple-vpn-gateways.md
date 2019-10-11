@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8b7b02c164021ac084dccf5663122620b2af1b15
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972887"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244764"
 ---
 # <a name="vpn-gateways-overview"></a>Bramy sieci VPN — Omówienie
 
@@ -49,7 +49,7 @@ Połączenie sieci VPN typu lokacja-lokacja używa następujących domyślnych p
 |-----------|------------|------------|------------|
 | Wersja IKE | IKEv1 | IKEv1 | IKEv1 |
 | Szyfrowanie | AES 128 | AES 256 | AES 256 |
-| Algorytm wyznaczania wartości skrótu| SHA 256 | SHA 256 | SHA 1 |
+| Algorytm wyznaczania wartości skrótu| SHA 256 | SHA 256 | AGENT SHA 1 |
 | Grupa Diffie-Hellmana (Grupa DH) | 2 | 2 | 2 |
 | Czas życia | 28 800 sekund | 28 800 sekund | 28 800 sekund |
 | Rozmiar danych | 4 GB | 4 GB | 4 GB |
@@ -59,10 +59,14 @@ Połączenie sieci VPN typu lokacja-lokacja używa następujących domyślnych p
 | Parametr | Wniosek 1 | Propozycja 2 | Propozycja 3 |
 |-----------|------------|------------|------------|
 | Szyfrowanie | AES 128 | AES 256 | AES 256 |
-| Algorytm wyznaczania wartości skrótu| SHA 256 | SHA 256 | SHA 1 |
+| Algorytm wyznaczania wartości skrótu| SHA 256 | SHA 256 | AGENT SHA 1 |
 | Doskonałe utajnienie przekazywania dalej (Grupa PFS) | Brak | Brak | Brak |
 | Czas życia | 1 800 sekund | 1 800 sekund | 1 800 sekund |
 | Rozmiar danych | 4 GB | 4 GB | 4 GB |
+
+
+> [!IMPORTANT]
+> Na urządzeniu sieci VPN ustaw wartość opcji ograniczania TCP = 1200. Lub jeśli urządzenia sieci VPN nie obsługują funkcji ograniczania, można zamiast tego ustawić jednostkę MTU w interfejsie tunelu na 1240 bajtów.
 
 ## <a name="point-to-site-vpn-gateway"></a>Brama sieci VPN typu punkt-lokacja
 

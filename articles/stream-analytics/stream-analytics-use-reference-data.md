@@ -7,13 +7,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 3bf90812abcef30b6bf300ba00ebd9f4186229cb
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.date: 10/8/2019
+ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000392"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244860"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Używanie danych referencyjnych do wyszukiwania w Stream Analytics
 
@@ -21,7 +21,7 @@ Dane referencyjne (nazywane również tabelami odnośników) to zbiór danych, k
 
 Stream Analytics obsługuje magazyn obiektów blob platformy Azure i Azure SQL Database jako warstwę magazynu dla danych referencyjnych. Możesz również przekształcić i/lub skopiować dane referencyjne do usługi BLOB Storage z Azure Data Factory, aby korzystać z [dowolnej liczby magazynów danych opartych na chmurze i lokalnych](../data-factory/copy-activity-overview.md).
 
-## <a name="azure-blob-storage"></a>Magazyn obiektów blob platformy Azure
+## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 Dane referencyjne są modelowane jako sekwencja obiektów BLOB (zdefiniowanych w konfiguracji wejściowej) w kolejności rosnącej daty/godziny określonej w nazwie obiektu BLOB. Obsługuje on **tylko** Dodawanie do końca sekwencji przy użyciu daty/godziny **większej** niż określona przez ostatni obiekt BLOB w sekwencji.
 
@@ -31,7 +31,7 @@ Aby skonfigurować dane referencyjne, musisz najpierw utworzyć dane wejściowe 
 
 |**Nazwa właściwości**  |**Opis**  |
 |---------|---------|
-|Alias wejściowy   | Przyjazna nazwa, która zostanie użyta w zapytaniu zadania, aby odwołać się do tego danych wejściowych.   |
+|Alias danych wejściowych   | Przyjazna nazwa, która zostanie użyta w zapytaniu zadania, aby odwołać się do tego danych wejściowych.   |
 |Konto magazynu   | Nazwa konta magazynu, w którym znajdują się obiekty blob. Jeśli znajduje się w tej samej subskrypcji co zadanie Stream Analytics, możesz wybrać ją z listy rozwijanej.   |
 |Klucz konta magazynu   | Klucz tajny skojarzony z kontem magazynu. Ta wartość zostanie wypełniona automatycznie, jeśli konto magazynu znajduje się w tej samej subskrypcji co zadanie Stream Analytics.   |
 |Kontener magazynu   | Kontenery zapewniają logiczne grupowanie obiektów BLOB przechowywanych w Blob service Microsoft Azure. Po przekazaniu obiektu BLOB do Blob service należy określić kontener dla tego obiektu BLOB.   |
@@ -39,7 +39,7 @@ Aby skonfigurować dane referencyjne, musisz najpierw utworzyć dane wejściowe 
 |Format daty [opcjonalnie]   | Jeśli używasz {Date} w określonym wzorcu ścieżki, możesz wybrać format daty, w którym obiekty blob są zorganizowane z listy rozwijanej obsługiwanych formatów.<BR>Przykład: RRRR/MM/DD, MM/DD/RRRR itd.   |
 |Format czasu [opcjonalnie]   | Jeśli użyto {Time} w określonym wzorcu ścieżki, można wybrać format czasu, w którym obiekty blob są zorganizowane z listy rozwijanej obsługiwanych formatów.<BR>Przykład: gg, HH/mm lub HH-mm.  |
 |Format serializacji zdarzeń   | Aby upewnić się, że zapytania działają w oczekiwany sposób, Stream Analytics należy wiedzieć, który format serializacji jest używany w przypadku przychodzących strumieni danych. W przypadku danych referencyjnych obsługiwane formaty to CSV i JSON.  |
-|Kody   | W tym momencie jedynym obsługiwanym formatem kodowania jest UTF-8.  |
+|Encoding   | W tym momencie jedynym obsługiwanym formatem kodowania jest UTF-8.  |
 
 ### <a name="static-reference-data"></a>Statyczne dane referencyjne
 
@@ -60,7 +60,7 @@ Azure Stream Analytics automatycznie skanuje w poszukiwaniu odświeżonych obiek
 > 
 > Wyjątkiem jest to, kiedy zadanie musi ponownie przetworzyć dane w czasie lub podczas pierwszego uruchomienia zadania. W czasie uruchamiania zadanie szuka najnowszego obiektu BLOB wygenerowanego przed określonym czasem rozpoczęcia zadania. W tym celu upewnij się, że podczas uruchamiania zadania istnieje zestaw danych referencyjnych, które **nie są puste** . Jeśli nie można go znaleźć, zadanie Wyświetla następującą diagnostykę: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) może służyć do organizowania zadania tworzenia zaktualizowanych obiektów BLOB wymaganych przez Stream Analytics do aktualizowania definicji danych referencyjnych. Data Factory to oparta na chmurze usługa integracji danych, która organizuje i automatyzuje przenoszenie i transformację danych. Data Factory obsługuje [łączenie z dużą liczbą magazynów danych opartych na chmurze i lokalnymi](../data-factory/copy-activity-overview.md) oraz szybkie przeniesienie danych zgodnie z regularnym określonym harmonogramem. Aby uzyskać więcej informacji i wskazówki krok po kroku dotyczące konfigurowania potoku Data Factory w celu wygenerowania danych referencyjnych dla Stream Analytics, które odświeżają zgodnie ze wstępnie zdefiniowanym harmonogramem, zapoznaj się z tym [przykładem](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)w witrynie GitHub.
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) może służyć do organizowania zadania tworzenia zaktualizowanych obiektów BLOB wymaganych przez Stream Analytics do aktualizowania definicji danych referencyjnych. Fabryka danych Azure to usługa integracji danych oparta na chmurze, która organizuje i automatyzuje operacje przenoszenia oraz przekształcania danych. Data Factory obsługuje [łączenie z dużą liczbą magazynów danych opartych na chmurze i lokalnymi](../data-factory/copy-activity-overview.md) oraz szybkie przeniesienie danych zgodnie z regularnym określonym harmonogramem. Aby uzyskać więcej informacji i wskazówki krok po kroku dotyczące konfigurowania potoku Data Factory w celu wygenerowania danych referencyjnych dla Stream Analytics, które odświeżają zgodnie ze wstępnie zdefiniowanym harmonogramem, zapoznaj się z tym [przykładem](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)w witrynie GitHub.
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>Porady dotyczące odświeżania danych referencyjnych obiektów BLOB
 
@@ -90,9 +90,9 @@ Można użyć [Azure SQL Database wystąpienia zarządzanego](https://docs.micro
 
 |**Nazwa właściwości**|**Opis**  |
 |---------|---------|
-|Alias wejściowy|Przyjazna nazwa, która zostanie użyta w zapytaniu zadania, aby odwołać się do tego danych wejściowych.|
-|Ramach|Wybierz subskrypcję|
-|Baza danych|Azure SQL Database, który zawiera dane referencyjne. Dla Azure SQL Database wystąpienia zarządzanego wymagane jest określenie portu 3342. Na przykład *sampleserver. Public. Database. Windows. NET, 3342*|
+|Alias danych wejściowych|Przyjazna nazwa, która zostanie użyta w zapytaniu zadania, aby odwołać się do tego danych wejściowych.|
+|Subskrypcja|Wybierz subskrypcję|
+|Database (Baza danych)|Azure SQL Database, który zawiera dane referencyjne. Dla Azure SQL Database wystąpienia zarządzanego wymagane jest określenie portu 3342. Na przykład *sampleserver. Public. Database. Windows. NET, 3342*|
 |Nazwa użytkownika|Nazwa użytkownika skojarzona z Azure SQL Database.|
 |Hasło|Hasło skojarzone z Twoim Azure SQL Database.|
 |Odświeżaj okresowo|Ta opcja pozwala wybrać częstotliwość odświeżania. Wybranie opcji "włączone" pozwoli określić częstotliwość odświeżania w DD: HH: MM.|

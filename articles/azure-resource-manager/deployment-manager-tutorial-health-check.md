@@ -5,17 +5,17 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.date: 05/31/2019
+ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2bdff6195a0dcf93bfc3a596189b062bf4f3ab12
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095828"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254976"
 ---
-# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Samouczek: Korzystanie z kontroli kondycji w usłudze Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
+# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Samouczek: korzystanie z kontroli kondycji w usłudze Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
 
 Dowiedz się, jak zintegrować kontrolę kondycji w [usłudze Azure Menedżer wdrażania](./deployment-manager-overview.md). Ten samouczek jest oparty na samouczku [Korzystanie z Menedżer wdrażania platformy Azure z szablonami Menedżer zasobów](./deployment-manager-tutorial.md) . Przed przeprowadzeniem tej czynności należy wykonać ten samouczek.
 
@@ -56,13 +56,13 @@ W środowisku produkcyjnym zwykle używany jest jeden lub więcej dostawców mon
 
 Poniższe dwa pliki są używane do wdrażania funkcji platformy Azure. Nie musisz pobierać tych plików, aby przejść przez samouczek.
 
-* Szablon Menedżer zasobów znajdujący się [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json)pod adresem. Ten szablon zostanie wdrożony w celu utworzenia funkcji platformy Azure.
-* Plik zip kodu [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip)źródłowego usługi Azure Functions. Ten plik zip jest wywoływany przez szablon Menedżer zasobów.
+* Szablon Menedżer zasobów zlokalizowany w [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Ten szablon zostanie wdrożony w celu utworzenia funkcji platformy Azure.
+* Plik zip kodu źródłowego funkcji platformy Azure, [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Ten plik zip jest wywoływany przez szablon Menedżer zasobów.
 
 Aby wdrożyć funkcję platformy Azure, wybierz **ją** , aby otworzyć usługę Azure Cloud Shell, a następnie wklej następujący skrypt do okna powłoki.  Aby wkleić kod, kliknij prawym przyciskiem myszy okno powłoki, a następnie wybierz polecenie **Wklej**.
 
 > [!IMPORTANT]
-> **projectName** w skrypcie programu PowerShell służy do generowania nazw usług platformy Azure, które są wdrożone w tym samouczku. Różne usługi platformy Azure mają różne wymagania dotyczące nazw. Aby upewnić się, że wdrożenie zakończyło się pomyślnie, wybierz nazwę o długości mniejszej niż 12 znaków i cyfr.
+> **projectName** w skrypcie programu PowerShell służy do generowania nazw usług platformy Azure, które są wdrożone w tym samouczku. Użyj tej samej wartości **namePrefix** , która została użyta w [Menedżer wdrażania na platformie Azure przy użyciu szablonów Menedżer zasobów](./deployment-manager-tutorial.md) dla projectName.  Różne usługi platformy Azure mają różne wymagania dotyczące nazw. Aby upewnić się, że wdrożenie zakończyło się pomyślnie, wybierz nazwę o długości mniejszej niż 12 znaków i cyfr.
 > Zapisz kopię nazwy projektu. Ten sam projectName jest używany w samouczku.
 
 ```azurepowershell-interactive
@@ -71,7 +71,7 @@ $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 $resourceGroupName = "${projectName}rg"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json" -projectName $projectName
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
 Aby sprawdzić i przetestować funkcję platformy Azure:
@@ -83,14 +83,14 @@ Aby sprawdzić i przetestować funkcję platformy Azure:
 
     ![Azure Menedżer wdrażania Health Check — funkcja Azure Function](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
-1. **Wybierz&lt;/> uzyskać adres URL funkcji**.
+1. Wybierz pozycję **&lt;/> Pobierz adres URL funkcji**.
 1. Wybierz pozycję **Kopiuj** , aby skopiować adres URL do Schowka.  Adres URL jest podobny do:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Zastąp `{healthStatus}` adres URL kodem stanu. W tym samouczku użyjesz **złej kondycji** w celu przetestowania scenariusza w złej kondycji i użyj zdrowego lub **ostrzeżenia** , aby przetestować ten scenariusz. Utwórz dwa adresy URL, jeden ze stanem złej kondycji, a drugi ze stanem kondycji. Przykłady:
+    Zastąp `{healthStatus}` w adresie URL kodem stanu. W tym samouczku użyjesz **złej kondycji** w celu przetestowania scenariusza w złej kondycji i Użyj **zdrowego** lub **ostrzeżenia** , aby przetestować ten scenariusz. Utwórz dwa adresy URL, jeden ze stanem złej kondycji, a drugi ze stanem kondycji. Przykłady:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
@@ -107,9 +107,9 @@ Aby sprawdzić i przetestować funkcję platformy Azure:
 
 ## <a name="revise-the-rollout-template"></a>Popraw szablon wdrożenia
 
-Ta sekcja zawiera informacje na temat sposobu dołączania kroku sprawdzania kondycji do szablonu wdrożenia. Nie musisz tworzyć własnego pliku CreateADMRollout. JSON, aby ukończyć ten samouczek. Zmieniony szablon wdrożenia jest udostępniany na koncie magazynu, które jest używane w kolejnych sekcjach.
+Ta sekcja zawiera informacje na temat sposobu dołączania kroku sprawdzania kondycji do szablonu wdrożenia.
 
-1. Otwórz plik **CreateADMRollout. JSON**. Ten plik JSON jest częścią pobierania.  Zobacz [Wymagania wstępne](#prerequisites).
+1. Otwórz plik **CreateADMRollout. JSON** , który został utworzony przy [użyciu usługi Azure Menedżer wdrażania z szablonami Menedżer zasobów](./deployment-manager-tutorial.md). Ten plik JSON jest częścią pobierania.  Zobacz [Wymagania wstępne](#prerequisites).
 1. Dodaj dwa dodatkowe parametry:
 
     ```json
@@ -187,7 +187,7 @@ Ta sekcja zawiera informacje na temat sposobu dołączania kroku sprawdzania kon
     ],
     ```
 
-1. Zaktualizuj **stepGroups** , aby uwzględnić krok sprawdzania kondycji. **HealthCheckStep** jest wywoływana w **postDeploymentSteps** of **stepGroup2**. **stepGroup3** i **stepGroup4** są wdrażane tylko wtedy, gdy kondycja jest w dobrej kondycji lub *Ostrzeżenie*.
+1. Zaktualizuj **stepGroups** , aby uwzględnić krok sprawdzania kondycji. **HealthCheckStep** jest wywoływana w **postDeploymentSteps** of **stepGroup2**. **stepGroup3** i **stepGroup4** są wdrażane tylko wtedy, gdy kondycja jest w dobrej *kondycji* lub *Ostrzeżenie*.
 
     ```json
     "stepGroups": [
@@ -233,26 +233,21 @@ Ta sekcja zawiera informacje na temat sposobu dołączania kroku sprawdzania kon
 
 ## <a name="deploy-the-topology"></a>Wdrażanie topologii
 
-Aby uprościć samouczek, szablon topologii i artefakty są udostępniane w następujących lokalizacjach, dzięki czemu nie musisz przygotowywać własnej kopii. Jeśli chcesz użyć własnych, postępuj zgodnie z instrukcjami podanymi [w samouczku: Użyj Menedżer wdrażania platformy Azure z szablonami](./deployment-manager-tutorial.md)Menedżer zasobów.
+Uruchom Poniższy skrypt programu PowerShell, aby wdrożyć topologię. Potrzebne są te same **CreateADMServiceTopology. JSON** i **CreateADMServiceTopology. Parameters. JSON** , które były używane w [usłudze Azure Menedżer wdrażania z szablonami Menedżer zasobów](./deployment-manager-tutorial.md).
 
-* Szablon topologii: https\/:/armtutorials.blob.Core.Windows.NET/admtutorial/ADMTemplates/CreateADMServiceTopology.JSON
-* Magazyn artefaktów: https\/:/armtutorials.blob.Core.Windows.NET/admtutorial/ArtifactStore
-
-Aby wdrożyć topologię, wybierz **ją** , aby otworzyć usługę Cloud Shell, a następnie wklej skrypt programu PowerShell.
-
-```azurepowershell-interactive
+```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$filePath = Read-Host -Prompt "Enter the file path to the downloaded tutorial files"
+
 $resourceGroupName = "${projectName}rg"
-$artifactLocation = "https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore?st=2019-05-06T03%3A57%3A31Z&se=2020-05-07T03%3A57%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=gOh%2Bkhi693rmdxiZFQ9xbKZMU1kbLJDqXw7EP4TaGlI%3D" | ConvertTo-SecureString -AsPlainText -Force
+
 
 # Create the service topology
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMServiceTopology.json" `
-    -namePrefix $projectName `
-    -azureResourceLocation $location `
-    -artifactSourceSASLocation $artifactLocation
+    -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
+    -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
 ```
 
 Sprawdź, czy topologia usługi oraz podstawowe zasoby zostały utworzone pomyślnie, korzystając z witryny Azure Portal:
@@ -263,38 +258,24 @@ Opcja **Pokaż ukryte typy** musi być zaznaczona, aby wyświetlić zasoby.
 
 ## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>Wdróż wdrożenie ze stanem złej kondycji
 
-Aby uprościć samouczek, poprawiony szablon wdrożenia jest udostępniany w następujących lokalizacjach, aby nie trzeba było przygotowywać własnej kopii. Jeśli chcesz użyć własnych, postępuj zgodnie z instrukcjami podanymi [w samouczku: Użyj Menedżer wdrażania platformy Azure z szablonami](./deployment-manager-tutorial.md)Menedżer zasobów.
-
-* Szablon topologii: https\/:/armtutorials.blob.Core.Windows.NET/admtutorial/ADMTemplatesHC/CreateADMRollout.JSON
-* Magazyn artefaktów: https\/:/armtutorials.blob.Core.Windows.NET/admtutorial/ArtifactStore
-
-Użyj adresu URL stanu złej kondycji utworzonego w temacie [Tworzenie symulatora usługi sprawdzania kondycji](#create-a-health-check-service-simulator). Aby uzyskać **managedIdentityID**, zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity).
+Użyj adresu URL stanu złej kondycji utworzonego w temacie [Tworzenie symulatora usługi sprawdzania kondycji](#create-a-health-check-service-simulator). Potrzebujesz poprawionego pliku **CreateADMServiceTopology. JSON** oraz tego samego pliku **CreateADMServiceTopology. Parameters. JSON** , który został użyty w [systemie Azure Menedżer wdrażania z szablonami Menedżer zasobów](./deployment-manager-tutorial.md).
 
 ```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$managedIdentityID = Read-Host -Prompt "Enter a user-assigned managed identity"
 $healthCheckUrl = Read-Host -Prompt "Enter the health check Azure function URL"
 $healthCheckAuthAPIKey = $healthCheckUrl.Substring($healthCheckUrl.IndexOf("?code=")+6, $healthCheckUrl.Length-$healthCheckUrl.IndexOf("?code=")-6)
 $healthCheckUrl = $healthCheckUrl.Substring(0, $healthCheckUrl.IndexOf("?"))
 
-$resourceGroupName = "${projectName}rg"
-$artifactLocation = "https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore?st=2019-05-06T03%3A57%3A31Z&se=2020-05-07T03%3A57%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=gOh%2Bkhi693rmdxiZFQ9xbKZMU1kbLJDqXw7EP4TaGlI%3D" | ConvertTo-SecureString -AsPlainText -Force
-
 # Create the rollout
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json" `
-    -namePrefix $projectName `
-    -azureResourceLocation $location `
-    -artifactSourceSASLocation $artifactLocation `
-    -managedIdentityID $managedIdentityID `
+    -TemplateFile "$filePath\ADMTemplates\CreateADMRollout.json" `
+    -TemplateParameterFile "$filePath\ADMTemplates\CreateADMRollout.Parameters.json" `
     -healthCheckUrl $healthCheckUrl `
     -healthCheckAuthAPIKey $healthCheckAuthAPIKey
 ```
 
 > [!NOTE]
-> `New-AzResourceGroupDeployment`jest wywołaniem asynchronicznym. Komunikat o powodzeniu oznacza, że wdrożenie zostało pomyślnie rozpoczęte. Aby zweryfikować wdrożenie, użyj `Get-AZDeploymentManagerRollout`programu.  Zobacz następną procedurę.
+> `New-AzResourceGroupDeployment` to wywołanie asynchroniczne. Komunikat o powodzeniu oznacza, że wdrożenie zostało pomyślnie rozpoczęte. Aby zweryfikować wdrożenie, użyj `Get-AZDeploymentManagerRollout`.  Zobacz następną procedurę.
 
 Aby sprawdzić postęp wdrażania przy użyciu następującego skryptu programu PowerShell:
 

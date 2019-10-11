@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: c330afb2c5d315b3d386d1477669f1aab2f6e6f9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 908d681b271aa8acdb0898676c33d396461d8f9a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972079"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255207"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej
 
@@ -25,12 +25,23 @@ W tym artykule opisano, co jest obsługiwane w przypadku korzystania z usługi [
 > [!NOTE]
 > Replikacja lokalnych maszyn wirtualnych programu VMware i serwerów fizycznych jest udostępniana przez program InMage Scout. Usługa InMage Scout jest dołączona do subskrypcji usługi Azure Site Recovery.
 
+## <a name="end-of-support-announcement"></a>Anons końca pomocy technicznej
+Site Recovery scenariusz replikacji między lokalnymi centrami danych programu VMware lub fizycznymi centrami danych zbliża się do końca wsparcia.
+
+- Od sierpnia 2018 scenariusza nie można skonfigurować w magazynie Recovery Services i nie można pobrać oprogramowania InMage Scout z magazynu. Istniejące wdrożenia będą obsługiwane.
+- - W grudniu 31 2020 scenariusz nie będzie obsługiwany.
+Istniejący partnerzy mogą dołączać nowych klientów do scenariusza do momentu zakończenia pomocy technicznej.
+- W okresie 2018 i 2019 zostaną wydane dwie aktualizacje:
+
+    - Update 7: Rozwiązywanie problemów z konfiguracją sieci i zgodnością oraz zapewnia obsługę protokołu TLS 1,2.
+    - Update 8: dodaje obsługę systemów operacyjnych Linux RHEL/CentOS 7.3/7.4/7.5 i dla SUSE 12
+    - Po aktualizacji 8 nie zostaną wydane żadne dalsze aktualizacje. Zostanie ograniczona obsługa poprawek dla systemów operacyjnych dodanych w Update 8 i poprawki błędów na podstawie najlepszego nakładu pracy.
 
 ## <a name="host-servers"></a>Serwery hosta
 
 **System operacyjny** | **Szczegóły**
 --- | ---
-vCenter Server | vCenter 5,5, 6,0 i 6,5<br/><br/> W przypadku uruchomienia 6,0 lub 6,5 należy zauważyć, że obsługiwane są tylko funkcje 5,5.
+Serwer vCenter | vCenter 5,5, 6,0 i 6,5<br/><br/> W przypadku uruchomienia 6,0 lub 6,5 należy zauważyć, że obsługiwane są tylko funkcje 5,5.
 
 
 ## <a name="replicated-vm-support"></a>Obsługa zreplikowanej maszyny wirtualnej
@@ -39,8 +50,8 @@ Poniższa tabela zawiera podsumowanie obsługi systemu operacyjnego dla maszyn r
 
 **System operacyjny** | **Szczegóły**
 --- | ---
-Windows Server | 64-bitowy system Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z co najmniej dodatkiem SP1.
-Linux | Red Hat Enterprise Linux 6.7, 6.8, 6.9, 7.1, 7.2 <br/><br/> Centos 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2 <br/><br/> Oracle Enterprise Linux 6,4, 6,5, 6,8, uruchamianie jądra zgodnego z systemem Red Hat lub nieprzerwane wydanie jądra 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4 
+Oprogramowanie Windows Server | 64-bitowy system Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z co najmniej dodatkiem SP1.
+Linux | Red Hat Enterprise Linux 6,7, 6,8, 6,9, 7,1, 7,2 <br/><br/> CentOS 6,5, 6,6, 6,7, 6,8, 6,9, 7,0, 7,1, 7,2 <br/><br/> Oracle Enterprise Linux 6,4, 6,5, 6,8, uruchamianie jądra zgodnego z systemem Red Hat lub nieprzerwane wydanie jądra 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 z dodatkiem SP3, 11 SP4 
 
 
 ## <a name="linux-machine-storage"></a>Magazyn maszyny z systemem Linux
@@ -68,7 +79,7 @@ Maszyna wirtualna gościa — system Windows/Linux — statyczny adres IP | Tak
 Maszyna wirtualna gościa — wiele kart sieciowych | Tak
 
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Usługa Storage
 
 ### <a name="host-storage"></a>Magazyn hosta
 
@@ -76,7 +87,7 @@ Maszyna wirtualna gościa — wiele kart sieciowych | Tak
 --- | --- 
 NFS | Tak 
 SMB 3.0 | ND 
-SAN (ISCSI) | Tak 
+SIEĆ SAN (ISCSI) | Tak 
 Wiele ścieżek (MPIO) | Tak 
 
 ### <a name="guest-or-physical-server-storage"></a>Magazyn Gości lub serwer fizyczny
@@ -84,7 +95,7 @@ Wiele ścieżek (MPIO) | Tak
 **Konfiguracja** | **Obsługiwane** 
 --- | --- 
 VMDK | Tak 
-VHD/VHDX | ND 
+DYSK VHD/VHDX | ND 
 Maszyna wirtualna generacji 2 | ND 
 Udostępniony dysk klastra | Tak 
 Zaszyfrowany dysk | Nie 

@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: ea23331ebc75b5ede22c9f7357a9e0de12d819e2
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: 3257cf92c628650fc50e0a36ec37fcab920aba2f
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299969"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254570"
 ---
 # <a name="mount-the-azure-hpc-cache-preview"></a>Instalowanie pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
 
@@ -25,7 +25,7 @@ Polecenie instalacji składa się z dwóch elementów:
 ![zrzut ekranu strony Przegląd wystąpienia pamięci podręcznej platformy Azure HPC z wyróżnionym polem wyboru na liście adresy instalacji w prawym dolnym rogu](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
-> Adresy instalacji pamięci podręcznej są zgodne z interfejsami sieciowymi w podsieci pamięci podręcznej. W grupie zasobów te karty sieciowe są wyświetlane z nazwami kończącymi `-cluster-nic-` się na i numerami. Nie zmieniaj ani nie usuwaj tych interfejsów lub pamięć podręczna stanie się niedostępna.
+> Adresy instalacji pamięci podręcznej są zgodne z interfejsami sieciowymi w podsieci pamięci podręcznej. W grupie zasobów te karty sieciowe są wyświetlane z nazwami kończącymi się `-cluster-nic-` i liczbą. Nie zmieniaj ani nie usuwaj tych interfejsów lub pamięć podręczna stanie się niedostępna.
 
 Ścieżki wirtualnych przestrzeni nazw są wyświetlane na stronie **miejsce docelowe magazynu** . Kliknij nazwę obiektu docelowego magazynu, aby wyświetlić jego szczegóły, w tym zagregowane ścieżki przestrzeni nazw, z którymi są skojarzone.
 
@@ -45,7 +45,7 @@ root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -orw,tcp
 root@test-client:/tmp# 
 ```
 
-Po pomyślnym wykonaniu tego polecenia zawartość eksportu magazynu powinna być widoczna w ``hpccache`` katalogu na kliencie.
+Po pomyślnym wykonaniu tego polecenia zawartość eksportu magazynu powinna być widoczna w katalogu ``hpccache`` na kliencie.
 
 > [!NOTE] 
 > Klienci muszą mieć dostęp do sieci wirtualnej i podsieci, która znajduje się w pamięci podręcznej. Można na przykład utworzyć maszyny wirtualne klienta w tej samej sieci wirtualnej lub użyć punktu końcowego, bramy lub innego rozwiązania w sieci wirtualnej w celu uzyskania dostępu spoza zewnątrz. Należy pamiętać, że żadne inne elementy nie mogą być hostowane w podsieci pamięci podręcznej.
@@ -61,7 +61,7 @@ W przypadku niezawodnego instalowania klienta należy przekazać te ustawienia i
 ``hard`` | Instalacje miękkie do pamięci podręcznej platformy Azure HPC są skojarzone z niepowodzeńmi aplikacji i możliwymi utratą danych. 
 ``proto=netid`` | Ta opcja obsługuje odpowiednią obsługę błędów sieci NFS.
 ``mountproto=netid`` | Ta opcja obsługuje odpowiednią obsługę błędów sieci dla operacji instalacji.
-``retry=n`` | Ustaw ``retry=30`` , aby uniknąć błędów instalacji przejściowej. (W instalacjach na pierwszym planie zalecana jest inna wartość).
+``retry=n`` | Ustaw ``retry=30``, aby uniknąć błędów instalacji przejściowej. (W instalacjach na pierwszym planie zalecana jest inna wartość).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -5,14 +5,14 @@ author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 3cf17f6e391608af9d17591a81c579a1db779a6a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 94f21e973063dc627ef1424ca5393dd85aedd671
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967810"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248838"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Access Control oparte na rolach (RBAC) na platformie Azure w celu kontrolowania praw dostępu do tworzenia i zarządzania żądaniami obsługi
 
@@ -20,7 +20,7 @@ ms.locfileid: "68967810"
 Support request tworzenia w Azure Portal, [Portal.Azure.com](https://portal.azure.com)korzysta z modelu RBAC platformy Azure, aby zdefiniować, kto może tworzyć żądania pomocy technicznej i zarządzać nimi.
 Dostęp jest udzielany przez przypisanie odpowiedniej roli RBAC użytkownikom, grupom i aplikacjom w określonym zakresie, co może być subskrypcją, grupą zasobów lub zasobem.
 
-Oto przykład: Jako właściciel grupy zasobów z uprawnieniami do odczytu w zakresie subskrypcji można zarządzać wszystkimi zasobami w ramach grupy zasobów, takich jak witryny sieci Web, maszyny wirtualne i podsieci.
+Oto przykład: jako właściciel grupy zasobów z uprawnieniami do odczytu w zakresie subskrypcji można zarządzać wszystkimi zasobami w ramach grupy zasobów, takich jak witryny sieci Web, maszyny wirtualne i podsieci.
 Jednak podczas próby utworzenia żądania obsługi dla zasobu maszyny wirtualnej wystąpi następujący błąd
 
 ![Błąd subskrypcji](./media/create-manage-support-requests-using-access-control/subscription-error.png)
@@ -79,7 +79,7 @@ Chcesz udzielić dostępu do swojego elementu równorzędnego, Jan, możliwość
 
 4. Kliknij przycisk OK, aby wykonać operację.
 
-    ![Dodawanie uprawnień dostępu](./media/create-manage-support-requests-using-access-control/add-access.png)
+    ![Dodawanie dostępu](./media/create-manage-support-requests-using-access-control/add-access.png)
 
 5. Teraz zobaczysz użytkownika z nowo dodaną rolą niestandardową "pracownikiem żądania pomocy technicznej" w ramach subskrypcji, dla której jesteś właścicielem.
 
@@ -91,7 +91,7 @@ Chcesz udzielić dostępu do swojego elementu równorzędnego, Jan, możliwość
 
     ![Nowe żądanie pomocy technicznej](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Kliknięcie pozycji "wszystkie żądania pomocy technicznej" Jan może zobaczyć listę żądań pomocy technicznej utworzonych dla tego ![widoku Szczegóły przypadku subskrypcji](./media/create-manage-support-requests-using-access-control/case-details-view.png)
+8. Kliknięcie pozycji "wszystkie żądania obsługi" Jan może zobaczyć listę żądań pomocy technicznej utworzonych dla tej subskrypcji ![Case szczegóły widoku @ no__t-1
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Usuń dostęp do żądania obsługi w Azure Portal
 

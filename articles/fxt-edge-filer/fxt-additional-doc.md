@@ -1,35 +1,35 @@
 ---
-title: Filtr Edge FXT Microsoft Azure — dodatkowej dokumentacji
-description: Dokumenty referencyjne dodatkowe instalacji filtr Edge FXT platformy Azure
+title: Microsoft Azure FXT Edge — dodatkowa dokumentacja
+description: Dodatkowe dokumenty referencyjne na temat instalacji usługi Azure FXT Edge
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 6b04537da7c26cdeff6cac9f262e138c29bee37a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: e3205827f9603545b0a99b064a53e50fc94c374e
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453868"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254903"
 ---
 # <a name="additional-documentation"></a>Dodatkowa dokumentacja 
 
-Niektóre zasoby spoza tej witryny sieci Web z witryny docs.microsoft.com może pomóc w i Praca z pamięci podręcznej usługi Microsoft Azure FXT krawędzi filtr hybrydowych.
+Niektóre zasoby spoza tej witryny sieci Web docs.microsoft.com mogą pomóc w zrozumieniu i pracy z usługą hybrydowej pamięci podręcznej plików Microsoft Azure FXT Edge.
 
-## <a name="avere-vfxt-for-azure-cache-documentation"></a>VFXT Avere dokumentacji pamięć podręczna systemu Azure
+## <a name="avere-vfxt-for-azure-cache-documentation"></a>Dokumentacja usługi avere vFXT for Azure cache
 
-[VFXT Avere dla platformy Azure](https://docs.microsoft.com/azure/avere-vfxt/) to podobne produkt pamięci podręcznej klastra, który używa wirtualnych węzłów w systemie Microsoft Azure. Jest tworzona przy użyciu witryny Azure portal, ale używa tego samego oprogramowania konfiguracji panel sterowania jako pamięci podręcznej sprzętu filtr Edge FXT platformy Azure. 
+[Avere vFXT for Azure](https://docs.microsoft.com/azure/avere-vfxt/) to podobny produkt pamięci podręcznej klastra, który używa węzłów wirtualnych w Microsoft Azure. Jest on tworzony przy użyciu Azure Portal, ale używa tego samego oprogramowania konfiguracji panelu sterowania co pamięć podręczna sprzętowego pliku usługi Azure FXT Edge. 
 
-## <a name="legacy-hardware-documentation"></a>Dokumentacja sprzętu starszej wersji 
+## <a name="legacy-hardware-documentation"></a>Dokumentacja starszego sprzętu 
 
-Ta technologia był wcześniej używany w produktach Avere systemów. Dokumentacja użytkownika na potrzeby tych starszych produktów znajduje się na [witryna internetowa z dokumentacją starsza wersja Avere](https://azure.github.io/Avere/). 
+Ta technologia była wcześniej używana w produktach z systemów avere. Dokumentacja użytkownika dla tych starszych produktów jest dostępna w [witrynie sieci Web avere starszej dokumentacji](https://azure.github.io/Avere/). 
 
-W szczególności te dokumenty może być przydatne szczegóły:
+Dokumenty te mogą mieć przydatne szczegóły:
 
-* [Przewodnik po konfiguracji klastra](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) — zawiera przegląd informacji o typowych zadaniach konfiguracji i zarządzania klastrem i zawiera szczegółowe wyjaśnienia ze strony ustawień klastra 
+* [Przewodnik konfiguracji klastra](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) — zawiera przegląd informacji o typowych zadaniach związanych z konfiguracją klastra i zarządzaniem nim oraz szczegółowe wyjaśnienia stron ustawień klastra 
 
-* [Pulpit nawigacyjny przewodnik](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) -omówiono funkcje w Panelu sterowania **pulpit nawigacyjny** kartę
+* [Przewodnik po pulpicie nawigacyjnym](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) — Omówienie funkcji karty **pulpit nawigacyjny** panelu sterowania
 
-* [Przewodnik po utworzeniu klastra FXT](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) — Przewodnik tworzenia klastra z poprzednim produktów
+* [Przewodnik tworzenia klastra FXT](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) — Przewodnik tworzenia klastra z poprzednich produktów
 

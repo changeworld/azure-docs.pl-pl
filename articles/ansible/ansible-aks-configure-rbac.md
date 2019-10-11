@@ -1,63 +1,63 @@
 ---
-title: Samouczek — konfigurowania ról kontroli dostępu opartej na rolach w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania Ansible | Dokumentacja firmy Microsoft
-description: Informacje o sposobie konfigurowania funkcji RBAC w klastrze usługi Azure Kubernetes Service(AKS) za pomocą rozwiązania Ansible
-keywords: ansible, azure, metodyki devops, bash, cloudshell, element playbook, aks, kontener, aks, kubernetes, usługi azure active directory, rbac
+title: Samouczek — Konfigurowanie ról kontroli dostępu opartej na rolach (RBAC) w usłudze Azure Kubernetes Service (AKS) przy użyciu rozwiązania ansible
+description: Dowiedz się, jak używać rozwiązania ansible do konfigurowania RBAC w klastrze usługi Azure Kubernetes Service (AKS)
+keywords: rozwiązania ansible, Azure, DevOps, bash, cloudshell, element PlayBook, AKS, kontener, AKS, Kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: eae23806ee1b4e2dac1d3410e32c3242e89d4be8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 36a6f5ade7a60a989d2e80f2405aaa2d1d50b756
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719816"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242337"
 ---
-# <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Samouczek: Konfigurowania ról kontroli dostępu opartej na rolach w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania Ansible
+# <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Samouczek: Konfigurowanie ról kontroli dostępu opartej na rolach (RBAC) w usłudze Azure Kubernetes Service (AKS) przy użyciu rozwiązania ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-AKS, może być skonfigurowana do używania [usługi Azure Active Directory (AD)](/azure/active-directory/) do uwierzytelniania użytkowników. Po skonfigurowaniu używasz token uwierzytelniania usługi Azure AD do logowania do klastra usługi AKS. RBAC mogą być oparte na tożsamości użytkownika lub członkostwa w grupie katalogu.
+AKS można skonfigurować do korzystania z [Azure Active Directory (AD)](/azure/active-directory/) do uwierzytelniania użytkowników. Po skonfigurowaniu programu Użyj tokenu uwierzytelniania usługi Azure AD, aby zalogować się do klastra AKS. Kontrola RBAC może być oparta na tożsamości użytkownika lub członkostwie w grupie katalogów.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Tworzenie klastra AKS z obsługą usługi AD systemu Azure
-> * Skonfiguruj rolę RBAC w klastrze
+> * Tworzenie klastra AKS z obsługą usługi Azure AD
+> * Konfigurowanie roli RBAC w klastrze
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Zainstaluj bibliotekę firmę Red Hat OpenShift** - `pip install openshift`
+- **Instalowanie biblioteki RedHat OpenShift** -  @ no__t-2
 
-## <a name="configure-azure-ad-for-aks-authentication"></a>Konfigurowanie usługi Azure AD do uwierzytelniania w usłudze AKS
+## <a name="configure-azure-ad-for-aks-authentication"></a>Konfigurowanie uwierzytelniania usługi Azure AD for AKS
 
-Podczas konfigurowania usługi Azure AD do uwierzytelniania usługi AKS, są skonfigurowane dwie aplikacje usługi Azure AD. Musi być zakończona przez administratora dzierżawy usługi Azure. Aby uzyskać więcej informacji, zobacz [integracji usługi Azure Active Directory za pomocą usługi AKS](/azure/aks/aad-integration#create-the-server-application). 
+Podczas konfigurowania uwierzytelniania usługi Azure AD for AKS są konfigurowane dwie aplikacje usługi Azure AD. Ta operacja musi zostać wykonana przez administratora dzierżawy platformy Azure. Aby uzyskać więcej informacji, zobacz [integrowanie Azure Active Directory z AKS](/azure/aks/aad-integration#create-the-server-application). 
 
-Od administratora dzierżawy usługi Azure Pobierz następujące wartości:
+Z poziomu administratora dzierżawy platformy Azure Uzyskaj następujące wartości:
 
 - Klucz tajny aplikacji serwera
 - Identyfikator aplikacji serwera
 - Identyfikator aplikacji klienta 
 - Identyfikator dzierżawy
 
-Te wartości są wymagane, można uruchomić elementu playbook próbki.  
+Te wartości są konieczne do uruchomienia przykładowej element PlayBook.  
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
-W tej sekcji utworzysz usłudze AKS za pomocą [aplikacji usługi Azure AD](#configure-azure-ad-for-aks-authentication).
+W tej sekcji utworzysz AKS z [aplikacją usługi Azure AD](#configure-azure-ad-for-aks-authentication).
 
-Poniżej przedstawiono ważne uwagi należy wziąć pod uwagę podczas pracy z elementu playbook próbki:
+Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
 
-- Element playbook ładuje `ssh_key` z `~/.ssh/id_rsa.pub`. Jeśli zmodyfikujesz go tak, użyj formacie jednowierszowym — począwszy od "ssh-rsa" (bez cudzysłowu).
-- `client_id` i `client_secret` wartości są ładowane z `~/.azure/credentials`, która jest domyślny plik poświadczeń. Możesz ustawić te wartości z usługą główną lub załadować te wartości ze zmiennych środowiskowych:
+- Element PlayBook ładuje `ssh_key` z `~/.ssh/id_rsa.pub`. Jeśli zmodyfikujesz go, użyj formatu jednowierszowego — rozpoczynając od "SSH-RSA" (bez cudzysłowów).
+- Wartości `client_id` i `client_secret` są ładowane z `~/.azure/credentials`, czyli domyślnego pliku poświadczeń. Można ustawić te wartości jako nazwę główną usługi lub załadować te wartości ze zmiennych środowiskowych:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -119,29 +119,29 @@ Zapisz następujący podręcznik jako `aks-create.yml`:
       dest: "aks-{{ name }}-kubeconfig"
 ```
 
-## <a name="get-the-azure-ad-object-id"></a>Pobierz identyfikator obiektu usługi Azure AD
+## <a name="get-the-azure-ad-object-id"></a>Pobieranie identyfikatora obiektu usługi Azure AD
 
-Aby utworzyć powiązanie RBAC, należy najpierw uzyskać identyfikator obiektów usługi Azure AD. 
+Aby utworzyć powiązanie RBAC, należy najpierw uzyskać identyfikator obiektu usługi Azure AD. 
 
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. W polu wyszukiwania w górnej części strony, wprowadź `Azure Active Directory`. 
+1. W polu wyszukiwania w górnej części strony wprowadź `Azure Active Directory`. 
 
 1. Kliknij pozycję `Enter` (Dalej).
 
-1. W **Zarządzaj** menu, wybierz opcję **użytkowników**.
+1. W menu **Zarządzaj** wybierz pozycję **Użytkownicy**.
 
-1. W polu Nazwa wyszukiwania dla swojego konta.
+1. W polu Nazwa Wyszukaj swoje konto.
 
-1. W **nazwa** kolumnę, wybierz łącze do Twojego konta.
+1. W kolumnie **Nazwa** wybierz link do swojego konta.
 
-1. W **tożsamości** sekcji, skopiuj **obiektu o identyfikatorze**.
+1. W sekcji **tożsamość** Skopiuj **Identyfikator obiektu**.
 
-    ![Skopiuj identyfikator obiektu usługi Azure AD](./media/ansible-aks-configure-rbac/ansible-aad-object-id.png)
+    ![Skopiuj identyfikator obiektu usługi Azure AD.](./media/ansible-aks-configure-rbac/ansible-aad-object-id.png)
 
-## <a name="create-rbac-binding"></a>Utwórz powiązanie RBAC
+## <a name="create-rbac-binding"></a>Tworzenie powiązania RBAC
 
-W tej sekcji utworzysz powiązania roli lub powiązania roli klastra w usłudze AKS. 
+W tej sekcji utworzysz powiązanie roli lub powiązanie roli klastra w AKS. 
 
 Zapisz następujący podręcznik jako `kube-role.yml`:
 
@@ -160,9 +160,9 @@ subjects:
   name: <your-aad-account>
 ```
 
-Zastąp `&lt;your-aad-account>` symbolu zastępczego z dzierżawą usługi Azure AD [obiektu o identyfikatorze](#get-the-azure-ad-object-id).
+Zastąp symbol zastępczy `&lt;your-aad-account>` [identyfikatorem obiektu](#get-the-azure-ad-object-id)dzierżawy usługi Azure AD.
 
-Zapisz poniższy element playbook — który wdraża Twojej nowej roli usługi AKS — jako `aks-kube-deploy.yml`:
+Zapisz następujący element PlayBook — który wdraża nową rolę do AKS-as `aks-kube-deploy.yml`:
 
 ```yml
 - name: Apply role to AKS
@@ -171,9 +171,9 @@ Zapisz poniższy element playbook — który wdraża Twojej nowej roli usługi A
       kubeconfig: "aks-{{ name }}-kubeconfig"
 ```
 
-## <a name="run-the-sample-playbook"></a>Uruchamianie elementu playbook próbki
+## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowej element PlayBook
 
-W tej sekcji przedstawiono pełny przykład elementu playbook, który wywołuje zadania tworzenia w tym artykule. 
+W tej sekcji znajduje się kompletna Przykładowa element PlayBook, która wywołuje zadania utworzone w tym artykule. 
 
 Zapisz następujący podręcznik jako `aks-rbac.yml`:
 
@@ -202,32 +202,32 @@ Zapisz następujący podręcznik jako `aks-rbac.yml`:
        include_tasks: aks-kube-deploy.yml
 ```
 
-W `vars` sekcji, zastąp symbole zastępcze następujących informacji z usługi Azure AD:
+W sekcji `vars` Zastąp następujące symbole zastępcze informacjami o usłudze Azure AD:
 
 - `<client id>`
 - `<server id>`
 - `<server secret>`
 - `<tenant id>`
 
-Uruchamianie przy użyciu elementu playbook pełną `ansible-playbook` polecenia:
+Uruchom kompletną element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook aks-rbac.yml
 ```
 
-## <a name="verify-the-results"></a>Sprawdź wyniki
+## <a name="verify-the-results"></a>Weryfikowanie wyników
 
-W tej sekcji możesz użyć narzędzia kubectl węzłów, w tym artykule.
+W tej sekcji użyjesz polecenia kubectl listę węzłów tworzonych w tym artykule.
 
-Wprowadź następujące polecenie w wierszu terminalu:
+Wprowadź następujące polecenie w wierszu polecenia terminalu:
 
 ```bash
 kubectl --kubeconfig aks-aksansibletest-kubeconfig-user get nodes
 ```
 
-Polecenie nastąpi bezpośrednie przekierowanie do strony uwierzytelniania. Zaloguj się przy użyciu konta platformy Azure.
+Polecenie przekieruje Cię do strony uwierzytelniania. Zaloguj się przy użyciu konta platformy Azure.
 
-Po uwierzytelnieniu kubectl zawiera listę węzłów w podobny sposób następujący format:
+Po uwierzytelnieniu polecenia kubectl wyświetla listę węzłów w podobny sposób, aby uzyskać następujące wyniki:
 
 ```txt
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XXXXXXXX to authenticate.
@@ -239,9 +239,9 @@ aks-nodepool1-33413200-2   Ready    agent   49m   v1.12.6
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
 
-Zapisz poniższy kod jako `cleanup.yml`:
+Zapisz następujący kod jako `cleanup.yml`:
 
 ```yml
 ---
@@ -261,7 +261,7 @@ Zapisz poniższy kod jako `cleanup.yml`:
             path: "aks-{{ name }}-kubeconfig"
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

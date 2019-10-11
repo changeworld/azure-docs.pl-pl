@@ -1,228 +1,228 @@
 ---
-title: Samouczek na temat instalowania urządzenia fizycznego filtr Edge FXT platformy Azure | Dokumentacja firmy Microsoft
-description: Jak rozpakować, stojaku i Podłączanie kabli składnik urządzenia fizycznego pamięć podręczna programu Microsoft Azure FXT krawędzi filtr hybrydowego magazynu
+title: Samouczek dotyczący instalowania urządzenia fizycznego usługi Azure FXT Edge | Microsoft Docs
+description: Jak rozpakować, stojak i obmontować składnik urządzenia fizycznego w pamięci podręcznej magazynu hybrydowego Microsoft Azure FXT Edge
 services: ''
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: v-erkell
-ms.openlocfilehash: ed9eca88e5ccc386b25acb95fa729a3cfb95cbd0
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: 0f3c7b01ee9d4a62ec0d563af55f2086894081be
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543436"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256045"
 ---
-# <a name="tutorial-install-azure-fxt-edge-filer"></a>Samouczek: Zainstaluj filtr Edge FXT platformy Azure 
+# <a name="tutorial-install-azure-fxt-edge-filer"></a>Samouczek: Instalowanie usługi Azure FXT Edge 
 
-W tym samouczku opisano sposób instalowania węzeł sprzęt na potrzeby pamięci podręcznej Azure FXT krawędzi filtr hybrydowego magazynu. Należy zainstalować co najmniej trzy węzły sprzętu, aby utworzyć klaster usługi Azure FXT krawędzi filtr.
+W tym samouczku opisano sposób instalowania węzła sprzętowego dla hybrydowej pamięci podręcznej magazynu usługi Azure FXT Edge. Należy zainstalować co najmniej trzy węzły sprzętu, aby utworzyć klaster usługi Azure FXT Edge.
 
-Procedura instalacji obejmuje Rozpakowywanie i stojaka, instalowanie urządzenia i podłączenie kabla ramię zarządzania (CMA) oraz przedniej osłony. Oddzielne samouczku wyjaśniono, dołączający kable i Podłączanie zasilania. 
+Procedura instalacji obejmuje Rozpakowanie i zamontowanie w stojaku urządzenia, a następnie dołączenie ramienia zarządzania kablem (CMA) i z przodu. W oddzielnym samouczku wyjaśniono, jak dołączyć kable sieciowe i podłączyć moc. 
 
-Trwa około godzinę instalacji węzła filtr Edge FXT platformy Azure. 
+Zainstalowanie węzła pliku usługi Azure FXT Edge trwa około godziny. 
 
-Ten samouczek obejmuje następujące kroki konfiguracji: 
+Ten samouczek obejmuje następujące kroki instalacji: 
 
 > [!div class="checklist"]
 > * Rozpakowywanie urządzenia
 > * Instalowanie urządzenia w stojaku
-> * Zainstaluj przedniej osłony (opcjonalnie)
+> * Zainstaluj przednią ramkę (opcjonalnie)
 
 ## <a name="installation-prerequisites"></a>Wymagania wstępne instalacji 
 
-Przed rozpoczęciem upewnij się, że centrum danych i stojaka, które będą używane następujące funkcje:
+Przed rozpoczęciem upewnij się, że używane centrum danych i stojak są następujące:
 
-* 1U dostępne miejsce w stojaku gdzie zamierzasz zainstalować na urządzeniu.
-* Zasilania Sieciowego i chłodzenie systemów spełniających potrzeby filtr Edge FXT platformy Azure. (Odczytu [możliwości i specyfikacje termiczny](fxt-specs.md#power-and-thermal-specifications) pomocy planowania i zmiany rozmiaru instalacji.)  
+* Dostępne miejsce 1U w stojaku, w którym ma zostać zainstalowane urządzenie.
+* Zasilacz sieciowy i systemy chłodzenia, które spełniają potrzeby usługi Azure FXT Edge. (Aby uzyskać pomoc w planowaniu i zmianie rozmiarów instalacji), należy zapoznać się [z](fxt-specs.md#power-and-thermal-specifications) tematem.  
 
   > [!NOTE] 
-  > Do w pełni korzystać z dwóch jednostek dostaw nadmiarowe zasilanie (PSUs), należy użyć jednostki dystrybucji zasilania na dwa obwody inną gałąź podczas dołączania Przywrócenie zasilania sieciowego. Odczyt [Podłącz kable zasilania](fxt-network-power.md#connect-power-cables) Aby uzyskać szczegółowe informacje.  
+  > Aby w pełni wykorzystać dwie nadmiarowe jednostki zasilacza (PSUs), należy użyć jednostek dystrybucji zasilania w dwóch różnych obwodach gałęzi podczas dołączania zasilania sieciowego. Aby uzyskać szczegółowe informacje, Przeczytaj [łącza do kabli zasilających](fxt-network-power.md#connect-power-cables) .  
 
-## <a name="unpack-the-hardware-node"></a>Rozpakowywanie węzła sprzętu 
+## <a name="unpack-the-hardware-node"></a>Rozpakowywanie węzła sprzętowego 
 
-Każdy węzeł filtr Edge FXT Azure jest dostarczany w jednym polu. Wykonaj następujące kroki, aby rozpakować urządzenie.
+Każdy węzeł usługi Azure FXT Edge jest dostarczany w jednym polu. Wykonaj te kroki, aby rozpakować urządzenie.
 
 1. Umieść pudełko na płaskiej, poziomej powierzchni.
 
 2. Sprawdź, czy na pudełku i na piance opakowaniowej znajdują się naderwania, zarysowania, przecięcia, uszkodzenia od wody lub inne widoczne uszkodzenia. Jeśli pudełko lub opakowanie jest poważnie uszkodzone, nie należy go otwierać. Skontaktuj się z pomocą techniczną firmy Microsoft, która pomoże Ci ustalić, czy urządzenie znajduje się w dobrym stanie umożliwiającym prawidłowe działanie.
 
 3. Rozpakuj zawartość pudełka. Upewnij się, że zawiera on następujące elementy:
-   * Jedno urządzenie FXT pojedynczego obudowy
+   * Jedno urządzenie FXT z jednym obudową
    * dwa przewody zasilania,
-   * Jedną ramką frontonu i klucz
-   * Szyny jeden zestaw zestawu
-   * Jeden kabel ramię zarządzania (CMA)
-   * Broszury instrukcje instalacji CMA
-   * Broszury instrukcje instalacji stojak
-   * Broszury bezpieczeństwa, środowiska i informacje prawne
+   * Jedna zewnętrzna osłona i klucz
+   * Jeden zestaw szyn
+   * Jedna ARM zarządzania kablem (CMA)
+   * Książeczka instrukcji instalacji CMA
+   * Broszura z instrukcjami dotyczącymi instalacji stojaka
+   * Broszura dotycząca bezpieczeństwa, środowiska i informacji prawnych
 
-Jeśli nie masz wszystkie elementy na liście, skontaktuj się z dostawcą urządzenia pomocy technicznej. 
+Jeśli nie odebrano wszystkich elementów na liście, skontaktuj się z dostawcą urządzenia, aby uzyskać pomoc techniczną. 
 
-Upewnij się, że urządzenie ma wystarczająco dużo czasu, aby osiągnąć ten sam temperatury jako miejsca przed zainstalowaniem go, lub jego włączeniem. Jeśli zauważysz kondensacji na dowolną część urządzenia, poczekaj co najmniej 24 godziny przed rozpoczęciem instalacji.
+Upewnij się, że urządzenie miało wystarczająco dużo czasu, aby osiągnąć tę samą temperaturę co pomieszczenie przed zainstalowaniem jej lub włączenia. Jeśli zauważysz kondensację na dowolnej części urządzenia, odczekaj co najmniej 24 godziny przed zainstalowaniem programu.
 
 Następnym krokiem jest zamontowanie urządzenia na stojaku.
 
 ## <a name="rack-the-device"></a>Montowanie urządzenia na stojaku
 
-Urządzenie Azure FXT krawędzi filtr musi być zainstalowane w standardowym stelażu 19-calowy. 
+Urządzenie usługi Azure FXT Edge musi być zainstalowane w standardowym stojaku z 19 cala. 
 
-Pamięć podręczna magazynu dla hybrydowych filtr Edge FXT Azure składa się z trzech lub więcej urządzeń filtr Edge FXT platformy Azure. Powtórz kroki instalacji stojak dla każdego urządzenia, które jest częścią systemu. 
+Hybrydowa pamięć podręczna magazynu usługi Azure FXT Edge składa się z trzech lub większej liczby urządzeń usługi Azure FXT Edge. Powtórz kroki instalacji stojaka dla każdego urządzenia, które jest częścią systemu. 
 
-### <a name="rack-install-prerequisites"></a>Stojak instalowanie wstępnie wymaganego oprogramowania
+### <a name="rack-install-prerequisites"></a>Wymagania wstępne instalacji stojaka
 
-* Przed rozpoczęciem zapoznaj się z instrukcjami bezpieczeństwa broszura bezpieczeństwa, środowiska i informacji prawnych, dostarczanej z Twoim urządzeniem.
+* Przed rozpoczęciem należy zapoznać się z instrukcjami dotyczącymi bezpieczeństwa, środowiska i karnetu informacji o przepisach, które zostały dostarczone z urządzeniem.
 
   > [!NOTE]
-  > Zawsze należy używać dwie osoby, podczas podnoszenia węźle, w tym przypadku zainstaluj go w stojaku, lub usuń go w stojaku. 
+  > Należy zawsze używać dwóch osób podczas podnoszenia węzła, w tym podczas instalowania go w stojaku lub usuwania z stojaka. 
 
-* Określ typ instalacji szyny używane z stelażu urządzenia. 
-  * Dziura kwadratowym lub round przystawki stojakami znajduje się w instrukcji niewymagająca szyny.
-  * Stojaki wątków dziura znajduje się w instrukcji tooled szyny. 
+* Określ typ instalacji szyny używanej w stojaku sprzętowym. 
+  * W przypadku stojaków z przystawką kwadratową lub okrągłą należy postępować zgodnie z instrukcjami dotyczącymi szyny.
+  * W przypadku stojaków z gwintowanym otworem postępuj zgodnie z instrukcjami dotyczącymi szyny dla wątków. 
   
-    Tooled szyny Instalowanie konfiguracji należy podać osiem śruby: typ 10 32, 12 – 24, M5 lub M6. Główny średnica śruby musi być mniejsza niż 10 mm (0,4").
+    W przypadku konfiguracji z zainstalowaniem szyny dla narzędzia należy dostarczyć osiem wkrętów, typu 10-32, 12-24, M5 lub M6. Średnica głowy ramion musi być mniejsza niż 10 mm (0,4 ").
 
-### <a name="identify-the-rail-kit-contents"></a>Zidentyfikować jej zawartość zestawu szyny
+### <a name="identify-the-rail-kit-contents"></a>Zidentyfikuj zawartość zestawu szyn
 
-Znajdź składniki do zainstalowania zestawu kit szyny:
+Znajdź składniki służące do instalowania zestawu szyny:
 
-1. II ReadyRails Dell A7 w dwóch przedłużanie szyny zestawy (1)
-1. Utworzenie punktu zaczepienia i pętli taśm (2)
+1. Dwa zestawy szynowe firmy Dell ReadyRails II (1)
+1. Dwa punkty zaczepienia i pętle pętli (2)
 
-![Rysowanie numerowane szyny zestaw treści](media/fxt-install/identify-rail-kit-contents-400.png)
+![Numerowany rysunek zawartości zestawu szynowego](media/fxt-install/identify-rail-kit-contents-400.png)
 
-### <a name="rail-assembly---tool-less-rails-square-hole-or-round-hole-racks"></a>Zestaw szyny - rails niewymagająca (dziura kwadratowy lub stojakami round dziura)
+### <a name="rail-assembly---tool-less-rails-square-hole-or-round-hole-racks"></a>Zestawienie szynowe — szyny bez narzędzia (Stojaki kwadratowe lub okrągłe otwory)
 
-W przypadku stojaków za pomocą przystawki kwadratowym lub round luk w wykonaj tę procedurę, aby utworzyć i zainstalować szyny. 
+W przypadku stojaków z przystawką kwadratowych lub okrągłych otworów postępuj zgodnie z tą procedurą, aby połączyć i zainstalować szyny. 
 
-1. Umieść elementy end szyny lewy i prawy etykietą **FRONTONU** skierowany do wewnątrz. Umieść każdy element end jej miejsca w otwory na przedniej stronie stopka stelażu pionowym. (1)
+1. Umieść piony po lewej i prawej stronie z etykietą od **przodu** do wewnątrz. Umieść każdy element końcowy tak, aby znajdował się w dziurach z lewej strony kołnierza stojaka pionowego. jedno
 
-2. Wyrównuje każdej części zakończenia w dolnym i górnym otworów tor w miejscu, aby go zainstalować. (2)
+2. Wyrównaj każdy element końcowy w dolnej i górnej części regału w miejscu, w którym chcesz go zainstalować. dwóch
 
-3. Angażowanie zaplecza szyny dopóki nie jest w pełni stanowisk na listwie stelażu pionowym i kliknięć zatrzaśnięcia w miejscu. Powtórz te kroki, aby ustawić położenie i stanowisko element frontonu na listwie stelażu pionowym. (3)
+3. Zaangażuj wewnętrzną końcówkę szyny do momentu, w którym w pełni nastąpi montaż w pionie i zamknie. Powtórz te kroki, aby pomieścić i umieścić element frontonu na kołnierzu pionowym. r.3
 
 > [!TIP]
-> Aby usunąć rails, ściąganie zatrzaśnięcia przycisku wersji na element end punkt środkowy (4) i Wyjmij urządzenie każdego szyny.
+> Aby usunąć szyny, należy ściągnąć przycisk Zwolnij do końca częściowego punktu środkowego (4) i odłączać każdą kolejkę.
 
-![Diagram instalacji i usuwania narzędzi platformy rails, za pomocą kroków](media/fxt-install/installing-removing-tool-less-rails-400.png)
+![Diagram instalacji i usuwania szyn z mniejszą ilością narzędzi, z numerami kroków](media/fxt-install/installing-removing-tool-less-rails-400.png)
 
-### <a name="rail-assembly---tooled-rails-threaded-hole-racks"></a>Zestaw szyny - tooled rails (Zhierarchizowany dziura stojakami)
+### <a name="rail-assembly---tooled-rails-threaded-hole-racks"></a>Szyny oparte na zestawie szynowym (Stojaki z gwintowanym otworem)
 
-W przypadku stojakami z wątków luki wykonaj tę procedurę, aby utworzyć i zainstalować szyny.
+W przypadku stojaków z otworami gwintowanych należy wykonać tę procedurę, aby połączyć i zainstalować szyny.
 
-1. Usuń numery PIN z przodu i do tyłu wymiar z śrubokręta przebijaka. (1)
-1. Ściąganie i Obróć podzespołów zatrzaśnięcia kolei, aby usunąć je z nawiasów instalowania. (2)
-1. Dołączanie po lewej stronie i bezpośrednio instalowanie platformy rails, aby przy użyciu dwóch par śruby stopka frontonu stojak pionowy. (3)
-1. Przesuń wstecz lewy i prawy nawiasy kwadratowe przekazywania względem stopka tylnej stojak pionowych i dołącz je przy użyciu dwóch par śruby. (4)
+1. Usuń numery PIN z nawiasów montażowych przednich i tylnych z płaskim śrubokrętem. jedno
+1. Pobierz i obróć podzestawy zamków szyny, aby usunąć je z nawiasów montażowych. dwóch
+1. Dołącz do lewej i prawej szynę montażową do czołowych pionowych kołnierzy stojaków przy użyciu dwóch par wkrętów. r.3
+1. Przesuń w lewo i w prawo nawiasy klamrowe w przód do tylnej krawędzi pionowej i Dołącz je przy użyciu dwóch par wkrętów. czwart
 
-![Diagram instalacji i usuwania tooled rails za pomocą kroków](media/fxt-install/installing-removing-tooled-rails-400.png)
+![Diagram instalacji i usuwania szyn z narzędziami z numerami kroków](media/fxt-install/installing-removing-tooled-rails-400.png)
 
-### <a name="install-the-system-in-the-rack"></a>Zainstaluj system w stojaku
+### <a name="install-the-system-in-the-rack"></a>Instalowanie systemu w stojaku
 
-Wykonaj następujące kroki, aby zainstalować urządzenia filtr Edge FXT platformy Azure w stojaku.
+Wykonaj następujące kroki, aby zainstalować urządzenie usługi Azure FXT Edge w stojaku.
 
-1. Ściągnij rails wewnętrzny slajdów ze stojaka, do momentu ich blokowanie w miejscu. (1)
-1. Znajdź standoff tylnej szyny na każdej stronie urządzenia i zmniejszyć ich do tyłu gniazd "j" zestawów slajdów. (2) 
-1. Obróć urządzenie w dół, aż wszystkie standoffs szyny są umieszczone w gnieździe "j". (3)
-1. Wypchnij urządzenia do wewnątrz do momentu dźwigni blokady kliknij w miejscu.
-1. Naciśnij przycisk blokady wersji slajdów na obie platformy rails (4) i przesuń urządzenia w stojaku.
+1. Ciągnij wewnętrzne slajdy z stojaka do momentu zablokowania ich na miejscu. jedno
+1. Znajdź Standoff szyny tylnej na każdej stronie urządzenia i Obniż je do tylnych gniazd J na zestawach slajdów. dwóch 
+1. Obróć urządzenie w dół do momentu, aż wszystkie standoffs szyny zostaną przyłączone do miejsca J-gnieździe. r.3
+1. Wypchnij urządzenie do wewnątrz do momentu kliknięcia dźwigni blokady.
+1. Naciśnij przyciski blokady przesuń w dół na szynach (4) i przesuń urządzenie do stojaka.
 
-![Zainstaluj system w schematu blokowego przy użyciu kroków](media/fxt-install/installing-system-rack-400.png)
+![Zainstaluj system na diagramie stojaków z numerami kroków](media/fxt-install/installing-system-rack-400.png)
 
-### <a name="remove-the-system-from-the-rack"></a>Usuwanie systemu stojaku
+### <a name="remove-the-system-from-the-rack"></a>Usuń system z stojaka
 
-Aby usunąć urządzenie z stojaku, wykonaj poniższą procedurę. 
+Aby usunąć urządzenie z stojaka, wykonaj poniższą procedurę. 
 
-1. Znajdź dźwigni blokadę na stronach rails wewnętrzny (1).
-2. Uzyskaj dostęp do każdego suwaka obracając do jego wersji pozycji (2).
-3. Mocno niejasny boki systemu, a następnie przeciągnij ją do przodu, aż standoffs szyny znajdują się na początku gniazd "j". Przenoszenie system w górę i w kierunku od stojaku i umieść go na poziomie powierzchni (3).
+1. Znajdź dźwignie blokady po bokach szyn wewnętrznych (1).
+2. Odblokuj każdą dźwignię, obracając ją w jej pozycji wydania (2).
+3. Opanujesz boki systemu i ściągaj je do przodu, aż do momentu, gdy kolejka standoffs nie znajduje się na wierzchu miejsc J. Unieś system z stojakiem i umieść go na powierzchni poziomej (3).
 
-![Ilustracja usuwanie systemu z perspektywy regału sprzętowego, za pomocą kroków](media/fxt-install/removing-system-rack-400.png)
+![Ilustracja przedstawiająca Usuwanie systemu z stojaka z ponumerowanymi krokami](media/fxt-install/removing-system-rack-400.png)
 
-### <a name="engage-the-slam-latch"></a>Angażowanie zatrzaśnięcia slam
+### <a name="engage-the-slam-latch"></a>Korzystanie z zamka Slam
 
-1. Połączonego z przodu, zlokalizuj zatrzaśnięcia slam (1) po obu stronach systemu.
-2. Zamków angażować się automatycznie, ponieważ system jest przesunięta w stojaku. 
+1. Po lewej stronie Znajdź zatrzask Slam (1) po obu stronach systemu.
+2. Zatrzaśnięcia odbywa się automatycznie, gdy system jest wypychany do stojaka. 
 
-Aby zwolnić zamków, podczas usuwania systemu, wyciągnij je w górę (2).
+Aby zwolnić zamki podczas usuwania systemu, wyciągnij je (2).
 
-Opcjonalnie śruby twarde instalacji znajdują się do zabezpieczania systemu w stojaku, wydanie lub w innych środowiskach niestabilny. Znajdź śrubę w ramach każdego zatrzaśnięcia i zwiększyć ich z #2 krzyżakowy (3).
+W celu zabezpieczenia systemu w stojaku na potrzeby przesyłania lub w innych środowiskach niestabilnych są udostępniane opcjonalne wtyczki twarde instalacji. Znajdź złączenie w każdym zatrzasku i zwiększ je za pomocą #2 śrubokrętu (3).
 
-![Ilustracja interesujące i zwalniania zatrzaśnięcia slam numerowane](media/fxt-install/engaging-releasing-slam-latch-400.png)
+![Ponumerowana ilustracja atrakcyjności i zwalniania zamka Slam](media/fxt-install/engaging-releasing-slam-latch-400.png)
 
-### <a name="install-the-cable-management-arm"></a>Zainstaluj ramię zarządzania kabel 
+### <a name="install-the-cable-management-arm"></a>Instalowanie ARM zarządzania kablem 
 
-Opcjonalny kabel ramię zarządzania (CMA) jest dostarczany z FXT filtr Edge. Drukowane instrukcje instalacji znajdują się w pakiecie. 
+Opcjonalna ARM zarządzania kablem (CMA) jest udostępniana z programem FXT Edge. Instrukcje dotyczące instalacji są dostępne w pakiecie. 
 
-1. Rozpakowywanie i zidentyfikować składników zestawu ramię zarządzania kabel:
-   * Na pasku CMA (1)
+1. Rozpakuj i zidentyfikuj składniki zestawu ARM zarządzania kablem:
+   * CMA (1)
    * CMA (2)
-   * Tie kabel nylonu zawija (3)
-   * Nawiasy kwadratowe załącznika CMA (4)
+   * Zawijanie kabli światłowodowych (3)
+   * CMA — nawiasy kwadratowe (4)
    * Kabel wskaźnika stanu (5) 
 
    > [!TIP] 
-   > Aby zabezpieczyć CMA do wydania w stojaku, pętli zawija tie wokół zarówno koszyki, jak i na pasku zadań i ich mocno cinch. Zabezpieczanie CMA w ten sposób spowoduje również zabezpieczeniu systemu w środowiskach niestabilny.
+   > Aby zabezpieczyć CMA do wysłania w stojaku, należy zapętlić, aby powiązać ją z koszykami i cinch. Zabezpieczenie CMA w ten sposób spowoduje również zabezpieczenie systemu w środowiskach niestabilnych.
 
-   ![Ilustracja części CMA](media/fxt-install/cma-kit-400.png)
+   ![Ilustracja przedstawiająca części CMA](media/fxt-install/cma-kit-400.png)
 
-2. Zainstaluj CMA na pasku zadań.
+2. Zainstaluj zasobnik CMA.
 
-   Na pasku CMA zapewnia obsługę i działa jako podtrzymującą dla CMA. 
+   Zasobnik CMA zapewnia pomoc techniczną i pełni rolę dla CMA. 
 
-   1. Wyrównaj i prezentować każdej stronie zasobnik w nawiasach kwadratowych odbiornika na wewnętrzne krawędzie szyny. 
-   1. Wypchnij zasobnik do przodu do momentu kliknięcia go w miejscu. (1)
-   1. Aby usunąć zasobnik, zmieścić przyciski wersji zatrzaśnięcia kierunku środka i ściąganie zasobnik poza nawiasy odbiorcy (2).
+   1. Wyrównaj i Zaangażuj każdą stronę paska z nawiasami odbiorczymi na wewnętrznych krawędziach szyn. 
+   1. Wypchnij zasobnik do przodu do momentu kliknięcia na miejscu. jedno
+   1. Aby usunąć ten pasek, należy pozbyć się przycisków zatrzasków w kierunku centrum i wyciągnąć z nich zasobnik z nawiasami odbiorczymi (2).
 
-   ![Ilustracja CMA zasobnik instalacji](media/fxt-install/cma-tray-install-400.png)
+   ![Ilustracja przedstawiająca instalację zasobnika CMA](media/fxt-install/cma-tray-install-400.png)
 
-3. Zainstaluj CMA nawiasy załącznika. 
+3. Zainstaluj nawiasy klamrowe CMA. 
 
    > [!NOTE]
    >
-   > * Możesz dołączyć CMA po prawej stronie lub w lewo, instalowania kolej, w zależności od tego, w jaki sposób planujesz kable trasy z systemu. 
-   > * Dla wygody należy zainstalować CMA po stronie odwrotnej do źródła zasilania (po stronie A). Jeśli jest zainstalowany na stronie B, CMA muszą zostać przerwane, aby usunąć zewnętrzne zasilacz. 
-   > * Zawsze usunąć zasobnik dostarcza zasilania. 
+   > * Możesz dołączyć CMA do prawej lub lewej szyny montażowej, w zależności od tego, w jaki sposób ma zostać rozesłane kable z systemu. 
+   > * Dla wygody Zainstaluj CMA po stronie przeciwległej do zasilaczy (bok A). Jeśli jest zainstalowana na stronie B, CMA musi zostać rozłączona, aby usunąć zasilacz zewnętrzny. 
+   > * Zawsze usuwaj zasobnik przed usunięciem zasilaczy. 
 
-   ![Ilustracja CMA nawiasu instalacji](media/fxt-install/cma-bracket-l-r-install-400.png)
+   ![Ilustracja przedstawiająca instalację CMAego nawiasu](media/fxt-install/cma-bracket-l-r-install-400.png)
 
-   1. Wybierz odpowiednie nawiasu załącznika CMA dla strony, w którym chcesz zainstalować CMA (po stronie B lub po stronie A).
-   1. Zainstaluj CMA nawiasu załącznika z odpowiedniego A strony lub oznaczenia po stronie B tyłu szyny slajdów.
-   1. Wyrównaj luki w nawias z pinterest na szynie slajdów. Wypchnij nawias w dół, dopóki nie blokuje go w miejscu. 
+   1. Wybierz odpowiedni CMAy wspornik dla strony, w której chcesz zainstalować CMA (strona B lub bok A).
+   1. Zainstaluj CMAy nawiasy kwadratowe z odpowiednimi znakami A lub po lewej stronie.
+   1. Wyrównaj otwory w nawiasach przy użyciu numerów PIN na szynie. Wypchnij nawias w dół do momentu jego zablokowania. 
 
 4. Zainstaluj CMA.
 
-   1. Tyłu systemu mieszczą się zatrzaśnięcia na frontonie CMA na najbardziej wewnętrzny nawias zestawu slajdów do czasu zatrzaśnięcia angażuje (1). 
-   1. Dopasuj zatrzaśnięcia na końcu nawiasu prowadzące do czasu zatrzaśnięcia angażuje (2). 
-   1. Aby usunąć CMA, należy odłączyć zarówno zamków, naciskając klawisz przyciski wersji CMA w górnej części obudowy zatrzaśnięcia wewnętrznych i zewnętrznych (3).
+   1. W tylnej części systemu dopasowuje zatrzaśnięcie na frontonie CMAy w wewnętrznym nawiasie montażowym zestawu slajdu do momentu, gdy zamkzy zaangażują (1). 
+   1. Dopasowuje inne zatrzaśnięcie na końcu zewnętrznego nawiasu, aż do chwili zatrzaska (2). 
+   1. Aby usunąć CMA, nie należy naciskać obydwu zamków, naciskając przyciski wydania CMA w górnej części obudowy zamków wewnętrznych i zewnętrznych (3).
 
-   ![Ilustracja głównej CMA instalacji](media/fxt-install/cma-install-400.png)
+   ![Ilustracja przedstawiająca podstawową instalację CMA](media/fxt-install/cma-install-400.png)
 
-   CMA można obracać od systemu pod kątem dostępu i usług. Na końcu zawiasowych przenoszenie CMA od zasobnik do wyjmij go (1) urządzenie. Po jej zakończeniu unseated do zasobnika typu swing CMA od systemu, (2).
+   CMA można obrócić do systemu w celu uzyskania dostępu i usługi. Na zawiasie, unieś CMA z tacy, aby nie nawiązać z nią miejsca (1). Po odłączeniu od zasobnika CMA od systemu (2).
 
-   ![Ilustracja CMA obracać otwarte na potrzeby usługi](media/fxt-install/cma-swing-over-tray-400.png)
+   ![Ilustracja CMA obrócona dla usługi](media/fxt-install/cma-swing-over-tray-400.png)
 
-## <a name="install-the-front-bezel-optional"></a>Zainstaluj przedniej osłony (opcjonalnie)
+## <a name="install-the-front-bezel-optional"></a>Zainstaluj przednią ramkę (opcjonalnie)
 
-W tej sekcji opisano sposób instalowania i usuwania przedniej osłony (czołowej) dla sprzętu filtr Edge FXT platformy Azure. 
+W tej sekcji wyjaśniono, jak zainstalować i usunąć ramkę frontu (Faceplate) dla sprzętu usługi Azure FXT Edge. 
 
-Aby zainstalować przedniej osłony: 
+Aby zainstalować przednią ramkę: 
 
-1. Zlokalizuj i Usuń klucz ramką, który jest dostarczany w pakiecie osłony. 
-1. Wyrównaj ramką z przodu obudowy i Wstaw numerów PIN, po prawej stronie osłony do otworów na listwie instalacji stojak po prawej stronie węzła. 
-1. Dopasuj lewy koniec ramką na obudowie. Naciśnij klawisz ramka, do momentu kliknięcia przycisków, które po lewej stronie w miejscu.
-1. Zablokuj ramką przy użyciu klucza.
+1. Zlokalizuj i Usuń klucz osłony, który znajduje się w pakiecie z osłoną. 
+1. Wyrównaj ramkę do przodu obudowy i Wstaw pinezki po prawej stronie osłony do otworów w stojaku po prawej stronie węzła. 
+1. Dopasowuje lewy koniec okna do obudowy. Naciskaj ramkę do momentu kliknięcia przycisku po lewej stronie.
+1. Zablokuj ramkę kluczem.
 
-Aby usunąć przedniej osłony: 
-1. Odblokuj ramką przy użyciu klucza osłony.
-1. Naciśnij przycisk wersji po lewej stronie i ściąganie z lewego końca ramką od obudowy.
-1. Odpięcie prawym końcu, a następnie usuń osłony.
+Aby usunąć ramkę przednią: 
+1. Odblokuj ramkę przy użyciu klawisza.
+1. Naciśnij przycisk Zwolnij po lewej stronie i przeciągnij lewy koniec osłony z obudowy.
+1. Odpinaj prawy koniec i Usuń ramkę.
    
-   ![Obraz przedstawiający przycisk wersji po lewej stronie ramką i sposobach jego usuwania przez pobieranie na zewnątrz z lewej strony](media/fxt-install/remove-bezel-edited-600.png)
+   ![Obraz przedstawiający przycisk Zwolnij znajdujący się po lewej stronie i jak go usunąć, pobierając na zewnątrz od lewej strony](media/fxt-install/remove-bezel-edited-600.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po rozpakowane i urządzenia mają kontynuować instalację, dołączanie kable sieciowe i łączenie zasilacza filtr Edge FXT platformy Azure.
+Po rozpakowaniu urządzenia i przełączeniu go do programu Kontynuuj instalację, dołączając kable sieciowe i łącząc zasilanie z gniazdem zasilania z usługą Azure FXT Edge.
 
 > [!div class="nextstepaction"]
-> [Podłącz portów sieciowych i podać zasilania](fxt-network-power.md)
+> [Okablowanie portów sieciowych i zasilanie](fxt-network-power.md)

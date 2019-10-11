@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6ec258bc52513772716fa8fe1078653575c923f3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5a0d462f08e88ae4d26e1c684cfaf772910d2220
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882023"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242846"
 ---
 # <a name="create-video-reviews-using-net"></a>Tworzenie recenzji wideo przy użyciu platformy .NET
 
@@ -51,7 +51,7 @@ Do wideo potrzebny jest punkt końcowy przesyłania strumieniowego, dzięki czem
 
 ![Miniatura pokazu wideo](images/ams-video-demo-view.PNG)
 
-- Skopiuj **adres URL** na tej [Azure Media Services](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) stronie demonstracyjnej dla adresu URL manifestu.
+- Skopiuj **adres URL** na tej [Azure Media Services stronie DEMONSTRACYJNEJ](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) dla adresu URL manifestu.
 
 Dla ramek wideo (obrazów) Użyj następujących obrazów:
 
@@ -86,8 +86,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 ```
 
@@ -166,7 +165,7 @@ Utwórz recenzję wideo za pomocą **ContentModeratorClient. Reviews. CreateVide
 **CreateVideoReviews** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien mieć wartość "Application/JSON". 
 1. Nazwa zespołu Content Moderator.
-1. Obiekt **>\<IList CreateVideoReviewsBodyItem** . Każdy obiekt **CreateVideoReviewsBodyItem** reprezentuje przegląd wideo. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
+1. Obiekt **> IList @ no__t-1CreateVideoReviewsBodyItem** . Każdy obiekt **CreateVideoReviewsBodyItem** reprezentuje przegląd wideo. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
 
 **CreateVideoReviewsBodyItem** ma kilka właściwości. Należy ustawić co najmniej następujące właściwości:
 - **Zawartość**. Adres URL filmu wideo, który ma zostać sprawdzony.
@@ -174,7 +173,7 @@ Utwórz recenzję wideo za pomocą **ContentModeratorClient. Reviews. CreateVide
 - **Stan**. Ustaw wartość na "unopublikowałd". Jeśli go nie ustawisz, zostanie on ustawiony jako "Oczekujący", co oznacza, że przegląd wideo jest publikowany i oczekuje na weryfikację przez człowieka. Po opublikowaniu recenzji wideo nie można już dodawać do niej ramek wideo, transkrypcji ani moderowania transkrypcji.
 
 > [!NOTE]
-> **CreateVideoReviews** zwraca ciąg IList\<>. Każdy z tych ciągów zawiera identyfikator dla recenzji wideo. Identyfikatory te są identyfikatorami GUID i nie są takie same jak wartość właściwości **identyfikatorze** . 
+> **CreateVideoReviews** zwraca wartość IList @ no__t-1string >. Każdy z tych ciągów zawiera identyfikator dla recenzji wideo. Identyfikatory te są identyfikatorami GUID i nie są takie same jak wartość właściwości **identyfikatorze** . 
 
 Dodaj następującą definicję metody do VideoReviews przestrzeni nazw, programu klasy.
 
@@ -214,7 +213,7 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 > [!NOTE]
 > Klucz usługi Content Moderator ma limit liczby żądań na sekundę (RPS), a w razie przekroczenia tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429.
 >
-> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
+> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
 ## <a name="add-video-frames-to-the-video-review"></a>Dodawanie klatek wideo do recenzji wideo
 
@@ -224,18 +223,18 @@ Dodawaj klatki wideo do recenzji wideo przy użyciu **ContentModeratorClient. Re
 1. Ciąg zawierający typ MIME, który powinien mieć wartość "Application/JSON".
 1. Nazwa zespołu Content Moderator.
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
-1. Obiekt **>\<IList VideoFrameBodyItem** . Każdy obiekt **VideoFrameBodyItem** reprezentuje ramkę wideo.
+1. Obiekt **> IList @ no__t-1VideoFrameBodyItem** . Każdy obiekt **VideoFrameBodyItem** reprezentuje ramkę wideo.
 
 **VideoFrameBodyItem** ma następujące właściwości:
 - **Sygnatura czasowa**. Ciąg zawierający w sekundach czas w filmie wideo, z którego zrobiono klatkę wideo.
 - **FrameImage**. Adres URL ramki wideo.
-- **Metadanych**. > IList\<VideoFrameBodyItemMetadataItem. **VideoFrameBodyItemMetadataItem** to po prostu para klucz/wartość. Prawidłowe klucze obejmują:
+- **Metadanych**. > 0VideoFrameBodyItemMetadataItem. **VideoFrameBodyItemMetadataItem** to po prostu para klucz/wartość. Prawidłowe klucze obejmują:
 - **reviewRecommended**. Ma wartość true, jeśli zalecamy przeglądanie ramki wideo przez człowieka.
 - **adultScore**. Wartość z przedziału od 0 do 1, która ocenia ważność zawartości dla dorosłych w ramce wideo.
-- **A** Prawda, jeśli film wideo zawiera zawartość dla dorosłych.
+- **a**. Prawda, jeśli film wideo zawiera zawartość dla dorosłych.
 - **racyScore**. Wartość z przedziału od 0 do 1, która ocenia ważność zawartości erotycznej w ramce wideo.
 - **r**. Ma wartość true, jeśli ramka wideo zawiera zawartość erotycznej.
-- **ReviewerResultTags**. > IList\<VideoFrameBodyItemReviewerResultTagsItem. **VideoFrameBodyItemReviewerResultTagsItem** to po prostu para klucz/wartość. Aplikacja może używać tych tagów do organizowania ramek wideo.
+- **ReviewerResultTags**. > 0VideoFrameBodyItemReviewerResultTagsItem. **VideoFrameBodyItemReviewerResultTagsItem** to po prostu para klucz/wartość. Aplikacja może używać tych tagów do organizowania ramek wideo.
 
 > [!NOTE]
 > Ten przewodnik Szybki Start generuje losowo wartości właściwości **adultScore** i **racyScore** . W aplikacji produkcyjnej można uzyskać te wartości z [usługi moderowania wideo](video-moderation-api.md)wdrożonej jako usługa Azure Media.
@@ -550,7 +549,7 @@ Press any key to close the application.
 
 ## <a name="check-out-your-video-review"></a>Zapoznaj się z przeglądem wideo
 
-Na koniec zobaczysz recenzję wideo na koncie narzędzia Content moderator recenzja na ekranie **Przejrzyj**>**wideo** .
+Na koniec zobaczysz recenzję wideo na koncie narzędzia do Content Moderatorego przeglądu na ekranie **recenzja**>**wideo** .
 
 ![Przegląd wideo dla moderatorów ludzkich](images/ams-video-review.PNG)
 
@@ -558,6 +557,6 @@ Na koniec zobaczysz recenzję wideo na koncie narzędzia Content moderator recen
 
 Pobierz [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych Content moderator przewodników szybki start dla platformy .NET.
 
-Dowiedz się, [](video-transcript-moderation-review-tutorial-dotnet.md) jak dodać moderowanie transkrypcji do przeglądu wideo. 
+Dowiedz się, jak dodać [moderowanie transkrypcji](video-transcript-moderation-review-tutorial-dotnet.md) do przeglądu wideo. 
 
 Zapoznaj się z szczegółowym samouczkiem dotyczącym tworzenia [kompletnego rozwiązania do moderowania wideo](video-transcript-moderation-review-tutorial-dotnet.md).

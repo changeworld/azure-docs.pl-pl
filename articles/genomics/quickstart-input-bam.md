@@ -1,7 +1,7 @@
 ---
-title: Przesyłanie przepływu pracy przy użyciu danych wejściowych — plik BAM Microsoft Genomics
-titleSuffix: Azure
-description: W tym artykule przyjęto założenie, mieć zainstalowanego klienta msgen i pomyślnie uruchomił przykładowe dane za pośrednictwem usługi.
+title: Przesyłanie przepływu pracy przy użyciu danych wejściowych plików BAM
+titleSuffix: Microsoft Genomics
+description: W tym artykule pokazano, jak przesłać przepływ pracy do usługi Microsoft Genomics, jeśli plik wejściowy jest pojedynczym plikiem BAM.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: 329ac374edbffa65a1b654a05a4934828f25d5de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780846"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249162"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>Przesyłanie przepływu pracy przy użyciu pliku wejściowego BAM
 
-W tym artykule przedstawiono sposób przesyłania przepływu pracy do usługi Microsoft Genomics, jeśli plik wejściowy to pojedynczy plik BAM. W tym temacie założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli zostało pomyślnie przesłane przepływu pracy przy użyciu podanych przykładowych danych, można przystąpić do kontynuować z tego artykułu. 
+W tym artykule pokazano, jak przesłać przepływ pracy do usługi Microsoft Genomics, jeśli plik wejściowy jest pojedynczym plikiem BAM. W tym temacie założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli przepływ pracy został pomyślnie przesłany przy użyciu dostarczonych przykładowych danych, możesz kontynuować pracę z tym artykułem. 
 
-## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Konfiguracja: Przekazywanie pliku BAM do usługi Azure storage
+## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Konfiguracja: przekazywanie pliku BAM do magazynu platformy Azure
 Załóżmy, że mamy jeden plik BAM, *reads.bam*, oraz że przekazano go do konta magazynu *myaccount* na platformie Azure jako obiekt **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>** . Masz adres URL interfejsu API i klucz dostępu. Chcesz uzyskać dane wyjściowe w lokalizacji **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** .
 
 
@@ -81,5 +81,5 @@ output_storage_account_container: outputs
 
 Prześlij plik `config.txt` przy użyciu tego wywołania: `msgen submit -f config.txt`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule przekazano plik BAM do usługi Azure Storage oraz przesłano przepływ pracy do usługi Microsoft Genomics za pośrednictwem klienta `msgen` Python. Aby uzyskać dodatkowe informacje o przesyłaniu przepływów pracy i innych poleceniach, których możesz użyć wraz z usługą Microsoft Genomics, zobacz [często zadawane pytania](frequently-asked-questions-genomics.md). 

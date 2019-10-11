@@ -1,34 +1,34 @@
 ---
-title: Samouczek — konfigurowanie klastrów usługi Azure Kubernetes Service (AKS) w systemie Azure za pomocą rozwiązania Ansible | Dokumentacja firmy Microsoft
+title: Samouczek — konfigurowanie klastrów usługi Azure Kubernetes Service (AKS) na platformie Azure przy użyciu rozwiązania ansible
 description: Dowiedz się, jak za pomocą rozwiązania Ansible tworzyć klastry usługi Azure Kubernetes Service i zarządzać nimi na platformie Azure
-keywords: ansible, azure, metodyki devops, bash, cloudshell, element playbook, aks, kontener, aks, kubernetes
+keywords: rozwiązania ansible, Azure, DevOps, bash, cloudshell, element PlayBook, AKS, kontener, AKS, Kubernetes
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1467afce60038e086daace72947c1ab21569865a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9b70a9c364768322a3eae6ef5b92c87b6839c540
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231332"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242085"
 ---
-# <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Samouczek: Konfigurowanie klastrów usługi Azure Kubernetes Service (AKS) w systemie Azure za pomocą rozwiązania Ansible
+# <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Samouczek: Konfigurowanie klastrów usługi Azure Kubernetes Service (AKS) na platformie Azure przy użyciu rozwiązania ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-AKS, może być skonfigurowana do używania [usługi Azure Active Directory (AD)](/azure/active-directory/) do uwierzytelniania użytkowników. Po skonfigurowaniu używasz token uwierzytelniania usługi Azure AD do logowania do klastra usługi AKS. RBAC mogą być oparte na tożsamości użytkownika lub członkostwa w grupie katalogu.
+AKS można skonfigurować do korzystania z [Azure Active Directory (AD)](/azure/active-directory/) do uwierzytelniania użytkowników. Po skonfigurowaniu programu Użyj tokenu uwierzytelniania usługi Azure AD, aby zalogować się do klastra AKS. Kontrola RBAC może być oparta na tożsamości użytkownika lub członkostwie w grupie katalogów.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Tworzenie klastra AKS
-> * Konfigurowanie klastra usługi AKS
+> * Konfigurowanie klastra AKS
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,7 +38,7 @@ AKS, może być skonfigurowana do używania [usługi Azure Active Directory (AD)
 
 ## <a name="create-a-managed-aks-cluster"></a>Tworzenie zarządzanego klastra usługi AKS
 
-Element playbook przykładowy tworzy grupę zasobów i klaster usługi AKS w taki sposób, w grupie zasobów.
+Przykład element PlayBook tworzy grupę zasobów i klaster AKS w grupie zasobów.
 
 Zapisz następujący podręcznik jako `azure_create_aks.yml`:
 
@@ -79,19 +79,19 @@ Zapisz następujący podręcznik jako `azure_create_aks.yml`:
         Environment: Production
 ```
 
-Przed uruchomieniem elementu playbook, zobacz następujące uwagi:
+Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
 
-- Pierwsza sekcja w ramach `tasks` definiuje grupę zasobów o nazwie `myResourceGroup` w ramach `eastus` lokalizacji.
-- Druga sekcja w ramach `tasks` definiuje klaster AKS, o nazwie `myAKSCluster` w ramach `myResourceGroup` grupy zasobów.
+- Pierwsza sekcja w `tasks` definiuje grupę zasobów o nazwie `myResourceGroup` w lokalizacji `eastus`.
+- Druga sekcja w `tasks` definiuje klaster AKS o nazwie `myAKSCluster` w grupie zasobów `myResourceGroup`.
 - Dla symbolu zastępczego `your_ssh_key` wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od „ssh-rsa” (bez cudzysłowu).
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook azure_create_aks.yml
 ```
 
-Uruchamianie elementu playbook zostaną wyświetlone wyniki podobne do następujących danych wyjściowych:
+Uruchomienie element PlayBook pokazuje wyniki podobne do następujących:
 
 ```Output
 PLAY [Create AKS] 
@@ -111,7 +111,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="scale-aks-nodes"></a>Skalowanie węzłów usługi AKS
 
-Przykładowy podręcznik w poprzedniej sekcji definiuje dwa węzły. Liczba węzłów można dostosować, modyfikując `count` wartość w `agent_pool_profiles` bloku.
+Przykładowy podręcznik w poprzedniej sekcji definiuje dwa węzły. Można dostosować liczbę węzłów, modyfikując wartość `count` w bloku `agent_pool_profiles`.
 
 Zapisz następujący podręcznik jako `azure_configure_aks.yml`:
 
@@ -146,17 +146,17 @@ Zapisz następujący podręcznik jako `azure_configure_aks.yml`:
             vm_size: Standard_D2_v2
 ```
 
-Przed uruchomieniem elementu playbook, zobacz następujące uwagi:
+Przed uruchomieniem element PlayBook zapoznaj się z następującymi uwagami:
 
 - Dla symbolu zastępczego `your_ssh_key` wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od „ssh-rsa” (bez cudzysłowu).
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook azure_configure_aks.yml
 ```
 
-Uruchamianie elementu playbook zostaną wyświetlone wyniki podobne do następujących danych wyjściowych:
+Uruchomienie element PlayBook pokazuje wyniki podobne do następujących:
 
 ```Output
 PLAY [Scale AKS cluster] 
@@ -173,7 +173,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0
 
 ## <a name="delete-a-managed-aks-cluster"></a>Usuwanie zarządzanego klastra usługi AKS
 
-Przykładowy element playbook usuwa klaster usługi AKS.
+Przykład element PlayBook usuwa klaster AKS.
 
 Zapisz następujący podręcznik jako `azure_delete_aks.yml`:
 
@@ -193,13 +193,13 @@ Zapisz następujący podręcznik jako `azure_delete_aks.yml`:
       state: absent
   ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 
 ```bash
 ansible-playbook azure_delete_aks.yml
 ```
 
-Uruchamianie elementu playbook zostaną wyświetlone wyniki podobne do następujących danych wyjściowych:
+Uruchomienie element PlayBook pokazuje wyniki podobne do następujących:
 
 ```Output
 PLAY [Delete a managed Azure Container Services (AKS) cluster] 
@@ -213,7 +213,7 @@ PLAY RECAP
 localhost                  : ok=2    changed=1    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Skalowanie aplikacji w usłudze Azure Kubernetes Service (AKS)](/azure/aks/tutorial-kubernetes-scale)
+> [Samouczek: skalowanie aplikacji w usłudze Azure Kubernetes Service (AKS)](/azure/aks/tutorial-kubernetes-scale)

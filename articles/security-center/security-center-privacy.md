@@ -13,26 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: aab2535eb44ca5007859c71bf1f8142b26de7d14
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 0d05650ff349cb9e9750b0cefe0de217a986b32a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996743"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254612"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Zarządzanie danymi użytkowników w Azure Security Center
 Ten artykuł zawiera informacje o sposobach zarządzania danymi użytkownika w programie Azure Security Center. Zarządzanie danymi użytkownika obejmuje możliwość uzyskiwania dostępu do danych, ich usuwania lub eksportowania.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może uzyskać dostęp do danych klienta w ramach tego narzędzia. Zobacz [wbudowane role dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md) , aby dowiedzieć się więcej na temat ról czytelnik, właściciel i współautor. Zobacz [administratorów subskrypcji platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md) , aby dowiedzieć się więcej o roli administratora konta.
+Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może uzyskać dostęp do danych klienta w ramach tego narzędzia. Aby dowiedzieć się więcej o roli administratora konta, zobacz [wbudowane role dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md) , aby dowiedzieć się więcej na temat ról czytelnik, właściciel i współautor. Zobacz [administratorzy subskrypcji platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md).
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Wyszukiwanie i identyfikowanie danych osobowych
-Użytkownik Security Center może przeglądać swoje dane osobowe za pomocą Azure Portal. Security Center przechowuje wyłącznie szczegóły dotyczące kontaktu z zabezpieczeniami, takie jak adresy e-mail i numery telefonów. Aby uzyskać więcej informacji, zobacz [szczegóły dotyczące kontaktu z zabezpieczeniami w Azure Security Center](security-center-provide-security-contact-details.md) .
+Użytkownik Security Center może przeglądać swoje dane osobowe za pomocą Azure Portal. Security Center przechowuje wyłącznie szczegóły dotyczące kontaktu z zabezpieczeniami, takie jak adresy e-mail i numery telefonów. Aby uzyskać więcej informacji, zobacz [Podaj szczegóły kontaktu zabezpieczeń w Azure Security Center](security-center-provide-security-contact-details.md).
 
-W Azure Portal użytkownik może wyświetlić dozwolone konfiguracje IP przy użyciu funkcji dostępu just in Time do maszyny wirtualnej Security Center. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem do maszyny wirtualnej za pomocą just in Time](security-center-just-in-time.md) .
+W Azure Portal użytkownik może wyświetlić dozwolone konfiguracje IP przy użyciu funkcji dostępu just in Time do maszyny wirtualnej Security Center. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem do maszyn wirtualnych przy użyciu just-in-Time](security-center-just-in-time.md).
 
-W Azure Portal użytkownik może wyświetlać alerty zabezpieczeń dostarczone przez Security Center, w tym adresy IP i szczegóły osoby atakującej. Aby uzyskać więcej informacji, zobacz temat [Zarządzanie alertami zabezpieczeń i reagowanie na nie w Azure Security Center](security-center-managing-and-responding-alerts.md) .
+W Azure Portal użytkownik może wyświetlać alerty zabezpieczeń dostarczone przez Security Center, w tym adresy IP i szczegóły osoby atakującej. Aby uzyskać więcej informacji, zobacz [Zarządzanie alertami zabezpieczeń i reagowanie na nie w Azure Security Center](security-center-managing-and-responding-alerts.md).
 
 ## <a name="classifying-personal-data"></a>Klasyfikowanie danych osobowych
 Nie ma potrzeby klasyfikowania danych osobowych znalezionych w funkcji kontaktu z zabezpieczeniami Security Center. Zapisane dane to adres e-mail (lub wiele adresów e-mail) i numer telefonu. [Dane kontaktowe](security-center-provide-security-contact-details.md) są weryfikowane przez Security Center.
@@ -60,12 +60,12 @@ Security Center użytkownik przypisany do roli właściciela, współautora lub 
 
 Security Center użytkownik przypisany do roli właściciela, współautora lub administrator konta może usunąć [zasady just in Time](security-center-just-in-time.md) za pośrednictwem Azure Portal.
 
-Użytkownik Security Center nie może usunąć zdarzeń dotyczących alertów. Ze względu na wymagania dotyczące zabezpieczeń [zdarzenie alertu](security-center-managing-and-responding-alerts.md) jest uznawane za dane tylko do odczytu.
+Użytkownik Security Center nie może usunąć zdarzeń alertów. Ze względów bezpieczeństwa [zdarzenie alertu](security-center-managing-and-responding-alerts.md) jest uznawane za dane tylko do odczytu.
 
 ## <a name="exporting-personal-data"></a>Eksportowanie danych osobowych
 Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może eksportować [dane kontaktowe dotyczące zabezpieczeń](security-center-provide-security-contact-details.md) , wykonując następujące działania:
 
-- Wykonywanie kopii z Azure Portal
+- Kopiowanie z Azure Portal
 - Wykonywanie wywołania interfejsu API REST platformy Azure, pobieranie protokołu HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
@@ -73,7 +73,7 @@ Użytkownik Security Center przypisany do roli czytelnik, właściciel, współa
 
 Security Center użytkownik przypisany do roli administratora konta może eksportować [zasady just in Time](security-center-just-in-time.md) zawierające adresy IP według:
 
-- Wykonywanie kopii z Azure Portal
+- Kopiowanie z Azure Portal
 - Wykonywanie wywołania interfejsu API REST platformy Azure, pobieranie protokołu HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
@@ -81,13 +81,13 @@ Security Center użytkownik przypisany do roli administratora konta może ekspor
 
 Administrator konta może wyeksportować szczegóły alertu:
 
-- Wykonywanie kopii z Azure Portal
+- Kopiowanie z Azure Portal
 - Wykonywanie wywołania interfejsu API REST platformy Azure, pobieranie protokołu HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-Aby uzyskać więcej informacji, zobacz [otrzymywanie alertów zabezpieczeń (pobieranie kolekcji)](https://msdn.microsoft.com/library/mt704050.aspx) .
+Aby uzyskać więcej informacji, zobacz [Uzyskiwanie alertów zabezpieczeń (Get Collection)](https://msdn.microsoft.com/library/mt704050.aspx).
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Ograniczanie użycia danych osobowych do profilowania lub marketingu bez zgody
 Użytkownik Security Center może zrezygnować z usunięcia swoich [danych kontaktowych o zabezpieczeniach](security-center-provide-security-contact-details.md).

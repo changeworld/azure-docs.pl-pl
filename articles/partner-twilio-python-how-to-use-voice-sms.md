@@ -12,12 +12,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
-ms.openlocfilehash: 3b9022dd2b5998f95179ee3dfabe6706b55036bc
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: edbc9eef6b5f0af2e70152b66228cdf09ef31110
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636011"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242183"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Jak używać Twilio do obsługi głosu i SMS w języku Python
 W tym przewodniku pokazano, jak wykonywać typowe zadania programistyczne za pomocą usługi interfejsu API Twilio na platformie Azure. Omówione scenariusze obejmują wykonywanie połączeń telefonicznych i wysyłanie wiadomości SMS. Aby uzyskać więcej informacji na temat Twilio i używania programów Voice i SMS w aplikacjach, zobacz sekcję [następne kroki](#NextSteps) .
@@ -40,21 +40,21 @@ Interfejs API Twilio jest interfejsem API RESTful, który zapewnia funkcje głos
 Kluczowe aspekty interfejsu API Twilio są czasownikami Twilio i Twilio Markup Language (TwiML).
 
 ### <a id="Verbs"></a>Zlecenia Twilio
-Interfejs API korzysta z czasowników Twilio; na przykład **&lt;czasownik powiedzie&gt;** nakazuje Twilio audibly dostarczenie komunikatu w wywołaniu.
+Interfejs API korzysta z czasowników Twilio; na przykład czasownik **&lt;Say @ no__t-2** instruuje Twilio, aby audibly dostarczą komunikat w wywołaniu.
 
 Poniżej znajduje się lista zleceń Twilio. Zapoznaj się z innymi zleceniami i możliwościami za pośrednictwem [dokumentacji języka Twilio Markup][twiml]Language.
 
-* Wybierz:  **&lt;&gt;** Łączy obiekt wywołujący z innym telefonem.
-* Zbierz:  **&lt;&gt;** Zbiera liczby cyfr wprowadzone na klawiaturze telefonicznej.
-* Rozłączanie:  **&lt;&gt;** Przerywa wywołanie.
-* Wstrzymaj:  **&lt;&gt;** Czeka w trybie cichym przez określoną liczbę sekund.
-* Odtwórz:  **&lt;&gt;** Odtwarza plik audio.
-* **&lt;Queue&gt;** : Dodaj do kolejki obiektów wywołujących.
-* Rekord:  **&lt;&gt;** Rejestruje głos obiektu wywołującego i zwraca adres URL pliku, który zawiera nagranie.
-* Przekierowanie:  **&lt;&gt;** Przenosi kontrolę nad wywołaniem lub wiadomością SMS do TwiML pod innym adresem URL.
-* Odrzuć:  **&lt;&gt;** Odrzuca przychodzące wywołanie numeru Twilio bez rozliczeń.
-* Załóżmy:  **&lt;&gt;** Konwertuje tekst na mowę, która jest wykonywana w wywołaniu.
-* **WiadomośćSMS&gt;: &lt;** Wysyła wiadomość SMS.
+* **&lt;Dial @ no__t-2**: łączy obiekt wywołujący z innym numerem telefonu.
+* **&lt;Gather @ no__t-2**: zbiera cyfry numeryczne wprowadzone na klawiaturze telefonu.
+* **&lt;Hangup @ no__t-2**: przerywa wywołanie.
+* **&lt;Pause @ no__t-2**: czeka w trybie cichym przez określoną liczbę sekund.
+* **&lt;Play @ no__t-2**: odtwarza plik audio.
+* **&lt;Queue @ no__t-2**: Dodaj do kolejki obiektów wywołujących.
+* **&lt;Record @ no__t-2**: rejestruje głos obiektu wywołującego i zwraca adres URL pliku, który zawiera nagranie.
+* **&lt;Redirect @ no__t-2**: przenosi kontrolę nad wywołaniem lub wiadomością SMS na TwiML pod innym adresem URL.
+* **&lt;Reject @ no__t-2**: odrzuca przychodzące wywołanie do numeru Twilio bez rozliczania.
+* **&lt;Say @ no__t-2**: konwertuje tekst na mowę, która jest wykonywana w wywołaniu.
+* **&lt;Sms @ no__t-2**: wysyła wiadomość SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML to zestaw instrukcji opartych na języku XML opartych na zleceniach Twilio, które informują Twilio o sposobie przetwarzania wywołania lub wiadomości SMS.
@@ -66,31 +66,31 @@ Na przykład następujące TwiML spowodują przekonwertowanie tekstu **Hello Wor
       <Say>Hello World</Say>
     </Response>
 
-Gdy aplikacja wywołuje interfejs API Twilio, jeden z parametrów interfejsu API jest adresem URL, który zwraca odpowiedź TwiML. W celach programistycznych można użyć adresów URL dostarczonych przez Twilio w celu zapewnienia odpowiedzi TwiML używanych przez aplikacje. Możesz również hostować własne adresy URL, aby generować odpowiedzi TwiML, a inna opcja to użycie `TwiMLResponse` obiektu.
+Gdy aplikacja wywołuje interfejs API Twilio, jeden z parametrów interfejsu API jest adresem URL, który zwraca odpowiedź TwiML. W celach programistycznych można użyć adresów URL dostarczonych przez Twilio w celu zapewnienia odpowiedzi TwiML używanych przez aplikacje. Do tworzenia odpowiedzi TwiML można także hostować własne adresy URL, a inna opcja to użycie obiektu `TwiMLResponse`.
 
 Aby uzyskać więcej informacji na temat czasowników Twilio, ich atrybutów i TwiML, zobacz [TwiML][twiml]. Aby uzyskać dodatkowe informacje o interfejsie API Twilio, zobacz [TWILIO API][twilio_api].
 
 ## <a id="CreateAccount"></a>Utwórz konto Twilio
-Gdy wszystko będzie gotowe do uzyskania konta Twilio, zarejestruj się na wypróbie [Twilio][try_twilio]. Możesz zacząć korzystać z bezpłatnego konta i później uaktualnić swoje konto.
+Gdy wszystko będzie gotowe do uzyskania konta Twilio, zarejestruj się na [Wypróbie Twilio][try_twilio]. Możesz zacząć korzystać z bezpłatnego konta i później uaktualnić swoje konto.
 
 Gdy zarejestrujesz się w celu korzystania z konta usługi Twilio, otrzymasz identyfikator SID konta i token uwierzytelniania. Oba te elementy będą konieczne do wykonywania wywołań interfejsu API Twilio. Aby zapobiec nieautoryzowanemu dostępowi do konta, Zachowaj bezpieczny token uwierzytelniania. Identyfikator SID konta i token uwierzytelniania są widoczne w [konsoli programu Twilio][twilio_console], odpowiednio w polach **identyfikatory SID konta** i **token uwierzytelniania**.
 
 ## <a id="create_app"></a>Tworzenie aplikacji w języku Python
-Aplikacja języka Python korzystająca z usługi Twilio i działająca na platformie Azure nie jest inna niż jakakolwiek inna aplikacja w języku Python, która korzysta z usługi Twilio. Chociaż usługi Twilio są oparte na architekturze REST i mogą być wywoływane z poziomu języka Python na kilka sposobów, ten artykuł koncentruje się na sposobach używania usług Twilio Services z [biblioteką Twilio dla języka Python z usługi GitHub][twilio_python]. Aby uzyskać więcej informacji o korzystaniu z biblioteki Twilio dla języka [https://www.twilio.com/docs/libraries/python][twilio_lib_docs]Python, zobacz.
+Aplikacja języka Python korzystająca z usługi Twilio i działająca na platformie Azure nie jest inna niż jakakolwiek inna aplikacja w języku Python, która korzysta z usługi Twilio. Chociaż usługi Twilio są oparte na architekturze REST i mogą być wywoływane z poziomu języka Python na kilka sposobów, ten artykuł koncentruje się na sposobach używania usług Twilio Services z [biblioteką Twilio dla języka Python z usługi GitHub][twilio_python]. Aby uzyskać więcej informacji o korzystaniu z biblioteki Twilio dla języka Python, zobacz [https://www.twilio.com/docs/libraries/python][twilio_lib_docs].
 
 Najpierw [Skonfiguruj nową maszynę wirtualną platformy Azure z systemem Linux] [azure_vm_setup] do działania jako host dla nowej aplikacji sieci Web w języku Python. Po uruchomieniu maszyny wirtualnej należy uwidocznić aplikację na porcie publicznym, zgodnie z poniższym opisem.
 
 ### <a name="add-an-incoming-rule"></a>Dodawanie reguły przychodzącej
   1. Przejdź do strony [Network Security Group] [azure_nsg].
   2. Wybierz grupę zabezpieczeń sieci zgodną z maszyną wirtualną.
-  3. Dodaj regułę i wychodzące **reguły** dla **portu 80**. Pamiętaj, aby zezwolić na ruch przychodzący z dowolnego adresu.
+  3. Dodaj **regułę i wychodzące reguły** dla **portu 80**. Pamiętaj, aby zezwolić na ruch przychodzący z dowolnego adresu.
 
 ### <a name="set-the-dns-name-label"></a>Ustawianie etykiety nazwy DNS
   1. Przejdź do strony [Publiczne adresy IP] [azure_ips].
   2. Wybierz publiczny adres IP, który odnosi się do Twojej maszyny wirtualnej.
   3. W sekcji **Konfiguracja** Ustaw **etykietę nazwa DNS** . W przypadku tego przykładu będzie wyglądać podobnie do tej *etykiety*. centralus.cloudapp.Azure.com
 
-Po nawiązaniu połączenia za pośrednictwem protokołu SSH z maszyną wirtualną można zainstalować dowolnie wybraną platformę sieci Web (dwie najbardziej dobrze znane w [](http://flask.pocoo.org/) języku Python i [Django](https://www.djangoproject.com)). Każdą z nich można zainstalować tylko przez uruchomienie `pip install` polecenia.
+Po nawiązaniu połączenia za pośrednictwem protokołu SSH z maszyną wirtualną można zainstalować dowolnie wybraną platformę sieci Web (dwie najbardziej dobrze znane w języku [Python i](http://flask.pocoo.org/) [Django](https://www.djangoproject.com)). Każdą z nich można zainstalować tylko przez uruchomienie polecenia `pip install`.
 
 Należy pamiętać, że skonfigurowano maszynę wirtualną tak, aby zezwalała na ruch tylko na porcie 80. Upewnij się, że aplikacja ma być skonfigurowana do używania tego portu.
 
@@ -101,19 +101,19 @@ Aplikację można skonfigurować tak, aby korzystała z biblioteki Twilio dla j�
    
         $ pip install twilio
 
-    -LUB-
+    — Lub —
 
-* Pobierz bibliotekę Twilio dla języka Python z usługi GitHub[https://github.com/twilio/twilio-python][twilio_python]() i zainstaluj ją w następujący sposób:
+* Pobierz bibliotekę Twilio dla języka Python z usługi GitHub ([https://github.com/twilio/twilio-python][twilio_python]) i zainstaluj ją w następujący sposób:
 
         $ python setup.py install
 
-Po zainstalowaniu biblioteki Twilio dla języka Python można ją następnie `import` w plikach w języku Python:
+Po zainstalowaniu biblioteki Twilio dla języka Python możesz ją `import` w plikach w języku Python:
 
         import twilio
 
-Aby uzyskać więcej informacji, zobacz [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.rst).
+Aby uzyskać więcej informacji, zobacz [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md).
 
-## <a id="howto_make_call"></a>Jak: Utwórz połączenie wychodzące
+## <a id="howto_make_call"></a>Instrukcje: wykonywanie wywołania wychodzącego
 Poniżej pokazano, jak wykonać połączenie wychodzące. Ten kod używa również witryny dostarczonej przez Twilio do zwrócenia odpowiedzi Twilio Markup Language (TwiML). Przed uruchomieniem kodu Zastąp wartości dla numerów telefonów **from_number** i **to_number** i upewnij się, że zweryfikowano numer telefonu **from_number** dla konta Twilio.
 
     from urllib.parse import urlencode
@@ -149,8 +149,8 @@ Poniżej pokazano, jak wykonać połączenie wychodzące. Ten kod używa równie
 
 Jak wspomniano, ten kod używa witryny dostarczonej przez Twilio do zwrócenia odpowiedzi TwiML. Zamiast tego możesz użyć własnej lokacji, aby zapewnić odpowiedź TwiML; Aby uzyskać więcej informacji, zobacz artykuł [jak zapewnić odpowiedzi TwiML z własnej witryny sieci Web](#howto_provide_twiml_responses).
 
-## <a id="howto_send_sms"></a>Jak: Wyślij wiadomość SMS
-Poniżej przedstawiono sposób wysyłania wiadomości SMS przy użyciu `TwilioRestClient` klasy. Numer **from_number** jest dostarczany przez Twilio dla kont próbnych do wysyłania wiadomości SMS. Przed uruchomieniem kodu należy zweryfikować numer **to_number** dla konta Twilio.
+## <a id="howto_send_sms"></a>Instrukcje: wysyłanie wiadomości SMS
+Poniżej przedstawiono sposób wysyłania wiadomości SMS przy użyciu klasy `TwilioRestClient`. Numer **from_number** jest dostarczany przez Twilio dla kont próbnych do wysyłania wiadomości SMS. Przed uruchomieniem kodu należy zweryfikować numer **to_number** dla konta Twilio.
 
     # Import the Twilio Python Client.
     from twilio.rest import TwilioRestClient
@@ -171,8 +171,8 @@ Poniżej przedstawiono sposób wysyłania wiadomości SMS przy użyciu `TwilioRe
                                      from_=from_number,
                                      body=message)
 
-## <a id="howto_provide_twiml_responses"></a>Jak: Udostępnianie odpowiedzi TwiML z własnej witryny sieci Web
-Gdy aplikacja inicjuje wywołanie interfejsu API Twilio, Twilio wyśle żądanie do adresu URL, który powinien zwrócić odpowiedź TwiML. Powyższy przykład używa adresu URL [https://twimlets.com/message][twimlet_message_url]podanego przez Twilio. (Podczas gdy TwiML jest przeznaczony do użytku przez Twilio, można wyświetlić go w przeglądarce. Na [https://twimlets.com/message][twimlet_message_url] przykład kliknij, aby wyświetlić pusty [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] `<Response>` element; w innym przykładzie kliknij `<Response>` , aby wyświetlić element, który zawiera `<Say>` element.)
+## <a id="howto_provide_twiml_responses"></a>Instrukcje: udostępnianie odpowiedzi TwiML z własnej witryny sieci Web
+Gdy aplikacja inicjuje wywołanie interfejsu API Twilio, Twilio wyśle żądanie do adresu URL, który powinien zwrócić odpowiedź TwiML. Powyższy przykład używa adresu URL podanego przez Twilio [https://twimlets.com/message][twimlet_message_url]. (Podczas gdy TwiML jest przeznaczony do użytku przez Twilio, można wyświetlić go w przeglądarce. Na przykład kliknij [https://twimlets.com/message][twimlet_message_url] , aby zobaczyć pusty element `<Response>`; w innym przykładzie kliknij [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] , aby zobaczyć element `<Response>` zawierający element `<Say>`.)
 
 Zamiast polegać na adresie URL podanego przez Twilio, można utworzyć własną lokację, która zwraca odpowiedzi HTTP. Lokację można utworzyć w dowolnym języku, który zwraca odpowiedzi XML; w tym temacie założono, że przy użyciu języka Python utworzysz TwiML.
 
@@ -193,7 +193,7 @@ Z Django:
         xml = '<Response><Say>Hello world.</Say></Response>'
         return HttpResponse(xml, content_type='text/xml')
 
-Jak widać w powyższym przykładzie, odpowiedź TwiML jest po prostu dokumentem XML. Biblioteka Twilio dla języka Python zawiera klasy, które wygenerują TwiML. Poniższy przykład tworzy równoważną odpowiedź, jak pokazano powyżej, ale używa `twiml` modułu w bibliotece Twilio dla języka Python:
+Jak widać w powyższym przykładzie, odpowiedź TwiML jest po prostu dokumentem XML. Biblioteka Twilio dla języka Python zawiera klasy, które wygenerują TwiML. Poniższy przykład tworzy równoważną odpowiedź, jak pokazano powyżej, ale używa modułu `twiml` w bibliotece Twilio dla języka Python:
 
     from twilio import twiml
 
@@ -201,9 +201,9 @@ Jak widać w powyższym przykładzie, odpowiedź TwiML jest po prostu dokumentem
     response.say("Hello world.")
     print(str(response))
 
-Aby uzyskać więcej informacji na temat TwiML [https://www.twilio.com/docs/api/twiml][twiml_reference], zobacz.
+Aby uzyskać więcej informacji na temat TwiML, zobacz [https://www.twilio.com/docs/api/twiml][twiml_reference].
 
-Po skonfigurowaniu aplikacji w języku Python w celu zapewnienia odpowiedzi TwiML Użyj adresu URL aplikacji jako adresu URL przekazaną do `client.calls.create` metody. Na przykład jeśli masz aplikację sieci Web o nazwie **MyTwiML** wdrożoną w usłudze hostowanej na platformie Azure, możesz użyć jej adresu URL jako elementu webhook, jak pokazano w następującym przykładzie:
+Po skonfigurowaniu aplikacji w języku Python w celu zapewnienia odpowiedzi TwiML Użyj adresu URL aplikacji jako adresu URL przesłanego do metody `client.calls.create`. Na przykład jeśli masz aplikację sieci Web o nazwie **MyTwiML** wdrożoną w usłudze hostowanej na platformie Azure, możesz użyć jej adresu URL jako elementu webhook, jak pokazano w następującym przykładzie:
 
     from twilio.rest import TwilioRestClient
 
@@ -222,7 +222,7 @@ Po skonfigurowaniu aplikacji w języku Python w celu zapewnienia odpowiedzi TwiM
                                url=url)
     print(call.sid)
 
-## <a id="AdditionalServices"></a>Jak: Korzystanie z dodatkowych usług Twilio
+## <a id="AdditionalServices"></a>Instrukcje: korzystanie z dodatkowych usług Twilio Services
 Oprócz przykładów przedstawionych tutaj Twilio oferuje interfejsy API oparte na sieci Web, których można użyć do korzystania z dodatkowych funkcji Twilio z aplikacji platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [dokumentację interfejsu API Twilio][twilio_api].
 
 ## <a id="NextSteps"></a>Następne kroki

@@ -1,21 +1,21 @@
 ---
-title: Próbki — dozwolone jednostki SKU SQL DB
-description: Ta przykładowa definicja zasad wymaga, aby bazy danych SQL korzystały z zatwierdzonej jednostki SKU.
+title: Przykład — dozwolone jednostki SKU usługi SQL DB
+description: Ta przykładowa definicja zasad wymaga, aby bazy danych SQL używały zatwierdzonych jednostek SKU. Nowe zasoby, które nie spełniają wymagań, są odrzucane.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4d20986e6bb3f9dc8e1d19a141716bdc66abd13e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 812ba137bad052e9ee784504151d2a52f99fb9a8
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977712"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244191"
 ---
 # <a name="sample---allowed-sql-database-skus"></a>Przykład — dozwolone jednostki SKU bazy danych SQL
 
-Te zasady wymagają, aby bazy danych SQL korzystały z zatwierdzonej jednostki SKU. Należy określić tablicę dozwolonych identyfikatorów jednostek SKU lub tablicę dozwolonych nazw jednostek SKU.
+Ta zasada wymaga, aby bazy danych SQL używały zatwierdzonych jednostek SKU. Należy określić tablicę identyfikatorów dozwolonych jednostek SKU lub tablicę nazw dozwolonych jednostek SKU.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Te zasady wymagają, aby bazy danych SQL korzystały z zatwierdzonej jednostki S
 
 [!code-json[main](../../../../policy-templates/samples/SQL/sql-db-skus/azurepolicy.json "Allowed SQL DB SKUs")]
 
-Ten szablon można wdrożyć za pomocą [Azure Portal](#deploy-with-the-portal)za pomocą [programu PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -40,7 +40,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -lis
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenie programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -58,7 +58,7 @@ az policy definition create --name 'sql-db-skus' --display-name 'Allowed SQL DB 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "sql-db-skus"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenie interfejsu wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
@@ -68,4 +68,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów na [Azure Policy przykładach](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

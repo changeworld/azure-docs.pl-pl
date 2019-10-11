@@ -16,12 +16,12 @@ ums.workload: na
 ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0820ca227a4d0e8c71ed3f35cd8fa2841163d38f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e7f3a9bc9aade5f8ade857e9c2f14f8e9898a7da
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727644"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244675"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrowanie dzienników inspekcji Azure Active Directory
 
@@ -74,7 +74,7 @@ Możesz również otworzyć [żądanie pomocy technicznej](../../azure-supportab
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat Azure Log Integration, zobacz:
 
-* [Microsoft Azure log Integration dla dzienników platformy Azure](https://www.microsoft.com/download/details.aspx?id=53324): Ta strona Centrum pobierania zawiera szczegółowe informacje, wymagania systemowe i instrukcje dotyczące instalacji Azure Log Integration.
-* [Wprowadzenie do Azure log Integration](azure-log-integration-overview.md): W tym artykule przedstawiono, jak Azure Log Integration, jej najważniejszych możliwości i jak działa.
-* [Azure log Integration często zadawane pytania](azure-log-integration-faq.md): W tym artykule znajdują się odpowiedzi na pytania dotyczące Azure Log Integration.
-* [Nowe funkcje dla Diagnostyka Azure i dzienników inspekcji platformy Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Ten wpis w blogu przedstawia dzienniki inspekcji platformy Azure i inne funkcje, które ułatwiają wgląd w operacje zasobów platformy Azure.
+* [Microsoft Azure log Integration dla dzienników platformy Azure](https://azure.microsoft.com/services/monitor/): Strona Centrum pobierania zawiera szczegółowe informacje, wymagania systemowe i instrukcje dotyczące instalacji Azure log Integration.
+* [Wprowadzenie do Azure log Integration](azure-log-integration-overview.md): w tym artykule przedstawiono Azure log Integration, jego kluczowe możliwości i sposób działania.
+* [Azure log Integration często zadawane pytania](azure-log-integration-faq.md): w tym artykule znajdują się odpowiedzi na pytania dotyczące Azure log Integration.
+* [Nowe funkcje dla Diagnostyka Azure i dzienników inspekcji platformy Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Ten wpis w blogu zawiera wprowadzenie do dzienników inspekcji platformy Azure i innych funkcji, które ułatwiają uzyskiwanie szczegółowych informacji na temat operacji zasobów platformy Azure.

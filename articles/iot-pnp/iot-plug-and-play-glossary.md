@@ -3,18 +3,18 @@ title: Słownik terminów — IoT Plug and Play Preview | Microsoft Docs
 description: Pojęcia — słownik typowych terminów dotyczących programu IoT Plug and Play w wersji zapoznawczej.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 08/29/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a5c9d2d54fcce1179e43c38027db23c3d7e557e8
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858833"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249302"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Słownik terminów dotyczących usługi IoT Plug and Play w wersji zapoznawczej
 
@@ -97,6 +97,7 @@ Parametry połączenia hermetyzują informacje wymagane do nawiązania połącze
 
 - Parametry połączenia urządzeń umożliwiają [urządzeniom Plug and Play IoT](#iot-plug-and-play-device) łączenie się z punktami końcowymi dostępnymi dla urządzeń w centrum IoT. Kod klienta na urządzeniu używa parametrów połączenia w celu nawiązania bezpiecznego połączenia z usługą IoT Hub.
 - IoT Hub parametry połączenia umożliwiają bezpieczne łączenie rozwiązań i narzędzi zaplecza z punktami końcowymi dostępnymi do usługi w usłudze IoT Hub. Te rozwiązania i narzędzia umożliwiają zarządzanie usługą IoT Hub i podłączonymi do niej urządzeniami.
+- Parametry połączenia repozytorium modelu firmy umożliwiają bezpieczne łączenie rozwiązań i narzędzi zaplecza z [repozytorium modelu firmy](#company-model-repository). Te rozwiązania i narzędzia zużywają [modele możliwości urządzeń](#device-capability-model) i [interfejsy](#interface) w repozytorium lub zarządzają nimi.
 
 ## <a name="device-capability-model"></a>Model możliwości urządzenia
 
@@ -142,7 +143,7 @@ Język służący do opisywania modeli i interfejsów dla [urządzeń Plug and P
 
 Trasa skonfigurowana w [Centrum IoT Hub](#azure-iot-hub) w celu dostarczania [cyfrowych sznurów wydarzeń](#digital-twin-change-events) do punktów końcowych, takich jak Kolejka Service Bus.
 
-## <a name="interface"></a>Interface
+## <a name="interface"></a>Interfejsu
 
 Interfejs opisuje powiązane funkcje, które są implementowane przez [urządzenie IoT Plug and Play](#iot-plug-and-play-device) lub pojedyncze [sznurki cyfrowe](#digital-twin). Można ponownie użyć interfejsów w różnych [modelach możliwości urządzeń](#device-capability-model).
 

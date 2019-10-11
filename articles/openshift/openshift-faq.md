@@ -8,18 +8,18 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203539"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249213"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift — często zadawane pytania
 
 W tym artykule opisano często zadawane pytania dotyczące Microsoft Azure Red Hat OpenShift.
 
-## <a name="how-do-i-get-started"></a>Jak rozpocząć?
+## <a name="how-do-i-get-started"></a>Jak rozpocząć pracę?
 
 Przed rozpoczęciem korzystania z usługi Azure Red Hat OpenShift należy zakupić co najmniej 4 zastrzeżone aplikacje usługi Azure Red Hat OpenShift.
 
@@ -39,7 +39,7 @@ Nie. Można jednak połączyć klaster usługi Azure Red Hat OpenShift z istniej
 
 ## <a name="what-cluster-operations-are-available"></a>Jakie operacje klastra są dostępne?
 
-Można skalować w górę lub w dół liczbę węzłów obliczeniowych. Po utworzeniu nie są dozwolone `Microsoft.ContainerService/openShiftManagedClusters` żadne inne modyfikacje zasobu. Maksymalna liczba węzłów obliczeniowych jest ograniczona do 20.
+Można skalować w górę lub w dół liczbę węzłów obliczeniowych. Żadne inne modyfikacje nie są dozwolone dla zasobu `Microsoft.ContainerService/openShiftManagedClusters` po utworzeniu. Maksymalna liczba węzłów obliczeniowych jest ograniczona do 20.
 
 ## <a name="what-virtual-machine-sizes-can-i-use"></a>Jakie rozmiary maszyn wirtualnych można użyć?
 
@@ -59,11 +59,11 @@ Nie, nie w bieżącym czasie.
 
 ## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Czy rejestr platformy Docker jest dostępny zewnętrznie, aby można było używać narzędzi takich jak Jenkins?
 
-Rejestr platformy Docker jest dostępny z `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` tego miejsca, ale nie podano silnej gwarancji trwałości magazynu. Możesz również użyć [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
+Rejestr platformy Docker jest dostępny z `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` jednak nie podano silnej gwarancji trwałości magazynu. Możesz również użyć [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
 
 ## <a name="is-cross-namespace-networking-supported"></a>Czy obsługa sieci między przestrzenią nazw jest obsługiwana?
 
-Administratorzy klienta i indywidualnego projektu mogą dostosowywać sieci obejmujące wiele przestrzeni nazw (w tym odrzucanie ich) dla `NetworkPolicy` poszczególnych projektów przy użyciu obiektów.
+Administratorzy klientów i poszczególnych projektów mogą dostosowywać sieci obejmujące wiele przestrzeni nazw (w tym odrzucanie ich) dla poszczególnych projektów przy użyciu obiektów `NetworkPolicy`.
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>Czy administrator może zarządzać użytkownikami i przydziałami?
 
@@ -71,7 +71,7 @@ Tak. Administrator Red Hat OpenShift systemu Azure może zarządzać użytkownik
 
 ## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Czy mogę ograniczyć klaster tylko do określonych użytkowników usługi Azure AD?
 
-Tak. Można ograniczyć, którzy użytkownicy usługi Azure AD mogą logować się do klastra przez skonfigurowanie aplikacji usługi Azure AD. Aby uzyskać szczegółowe informacje [, zobacz How to: Ograniczanie aplikacji do zestawu użytkowników](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+Tak. Można ograniczyć, którzy użytkownicy usługi Azure AD mogą logować się do klastra przez skonfigurowanie aplikacji usługi Azure AD. Aby uzyskać szczegółowe informacje, zobacz [How to: ograniczanie aplikacji do zestawu użytkowników](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Czy klaster może zawierać węzły obliczeniowe w wielu regionach świadczenia usługi Azure?
 
@@ -85,15 +85,15 @@ Nie. Wszystkie zasoby, w tym główny klaster, są uruchamiane w ramach subskryp
 
 Tak. Możesz użyć OSBA z platformą Azure Red Hat OpenShift. Aby uzyskać więcej informacji, zobacz [otwórz Service Broker dla platformy Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) .
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Próbuję nawiązać połączenie równorzędne w sieci wirtualnej w innej subskrypcji, ale `Failed to get vnet CIDR` pojawia się błąd.
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Próbuję nawiązać połączenie równorzędne w sieci wirtualnej w innej subskrypcji, ale pobieranie `Failed to get vnet CIDR` błędu.
 
-Upewnij się, że w subskrypcji z siecią wirtualną zarejestrowano `Microsoft.ContainerService` dostawcę`az provider register -n Microsoft.ContainerService --wait` 
+Upewnij się, że w subskrypcji z siecią wirtualną zarejestrowano dostawcę `Microsoft.ContainerService` z `az provider register -n Microsoft.ContainerService --wait` 
 
 ## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Co to jest proces konserwacji w systemie Red Hat OpenShift (ARO) systemu Azure?
 
 Istnieją trzy typy czynności konserwacyjnych: uaktualnienia, tworzenie kopii zapasowych i przywracanie danych etcd oraz Konserwacja inicjowana przez dostawcę chmury.
 
-+ Uaktualnienia obejmują uaktualnienia oprogramowania i CVEs. Korygowanie CVE występuje po uruchomieniu przez uruchomienie `yum update` i umożliwia natychmiastowe ograniczenie problemu.  Równolegle zostanie utworzona nowa kompilacja obrazu dla przyszłego tworzenia klastra.
++ Uaktualnienia obejmują uaktualnienia oprogramowania i CVEs. Korygowanie CVE występuje przy uruchamianiu, uruchamiając `yum update` i umożliwia natychmiastowe ograniczenie problemu.  Równolegle zostanie utworzona nowa kompilacja obrazu dla przyszłego tworzenia klastra.
 
 + Tworzenie kopii zapasowych danych etcd i zarządzanie nimi to zautomatyzowany proces, który może wymagać przestoju klastra w zależności od akcji. Jeśli baza danych etcd jest przywracana z kopii zapasowej, będzie przestoje. Wykonujemy kopie zapasowe etcd co godzinę i zachowuję ostatnie 6 godzin wykonywania kopii zapasowych.
 
@@ -129,9 +129,9 @@ Nie jest on szyfrowany na poziomie etcd. Opcja włączenia tej opcji nie jest ob
 
 Dziennik systemowy, dzienniki platformy Docker, dziennik i dmesg są obsługiwane przez usługę zarządzaną i nie są dostępne dla klientów.
 
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Jak klient może uzyskać dostęp do metryk, takich jak procesor CPU/pamięć na poziomie węzła, aby podjąć działania w celu skalowania, debugowania problemów itp. Nie można uruchomić `kubectl top` programu w klastrze ARO.
+## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Jak klient może uzyskać dostęp do metryk, takich jak procesor CPU/pamięć na poziomie węzła, aby podjąć działania w celu skalowania, debugowania problemów itp. Nie można uruchomić `kubectl top` w klastrze ARO.
 
-`kubectl top`nie jest dostępny w systemie Red Hat OpenShift. Wymaga ona źródła metryk zapasowych, Heapster (przestarzałe) lub metryk — serwera (inkubacji lub alfa), nie są uwzględniane w stosie monitorowania OpenShift.
+`kubectl top` nie jest dostępna w Red Hat OpenShift. Wymaga ona źródła metryk zapasowych, Heapster (przestarzałe) lub metryk — serwera (inkubacji lub alfa), nie są uwzględniane w stosie monitorowania OpenShift.
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Co to jest domyślna konfiguracja usługi Scheduler pod kątem wypróbowania?
 
@@ -189,9 +189,9 @@ Można to osiągnąć za pomocą integracji z usługą Azure AD. 
 
 Każdy klaster usługi Azure Red Hat OpenShift jest przeznaczony dla danego klienta i przebywa w ramach subskrypcji klienta. 
 
-## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>Można wybrać dowolne rozwiązanie magazynu trwałego. LICENCJA? 
+## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Czy można wybrać dowolne trwałe rozwiązanie magazynu, takie jak OCS? 
 
-Dwie klasy magazynu są dostępne do wyboru z: Dysk platformy Azure i plik platformy Azure.
+Do wyboru są dostępne dwie klasy magazynu: dysk platformy Azure i plik platformy Azure.
 
 ## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Jak jest aktualizowany klaster (w tym główne i pomocnicze z powodu luk w zabezpieczeniach)?
 

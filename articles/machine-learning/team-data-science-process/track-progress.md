@@ -1,52 +1,53 @@
 ---
-title: Śledzenie postępu projekty do nauki o danych — danych zespołu dla celów naukowych
-description: Jak menedżerowie grupy do nauki o danych, zespół dzierżawy i projektu potencjalnych klientów można śledzić postęp projektu nauki o danych.
+title: Śledzenie postępu projektów procesów naukowych dotyczących danych zespołu
+description: Jak Menedżerowie grupy analizy danych, liderzy zespołu i potencjalni klienci projektu mogą śledzić postęp projektu analizy danych.
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 09/26/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7745a53084f4477f7b736ea9d130ffd3eed771f4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28bd3e558294c000ba65a1c60fe227bbae7e82dd
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60252569"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244060"
 ---
-# <a name="tracking-the-progress-of-data-science-projects"></a>Śledzenie postępu projekty do nauki o danych
+# <a name="track-the-progress-of-data-science-projects"></a>Śledzenie postępu projektów analizy danych
 
-Menedżerowie grupy do nauki o danych, zespołów i potencjalnych klientów projektu musisz śledzić postęp projektów, pracy, jaka została przeprowadzona na nich i przez kogo i pozostaje na listy zadań do wykonania. 
+Menedżerowie grupy nauki o danych, liderzy zespołu i potencjalni klienci projektu mogą śledzić postęp swoich projektów, takich jak wykonane prace, osoby, które pozostały do pracy. 
 
-## <a name="azure-devops-dashboards"></a>Pulpitów nawigacyjnych DevOps platformy Azure
-Jeśli używasz DevOps platformy Azure jest możliwe do tworzenia pulpitów nawigacyjnych, aby śledzić działania i elementy robocze skojarzone z danym projektem Agile. 
+## <a name="azure-devops-dashboards"></a>Pulpity nawigacyjne usługi Azure DevOps
 
-Aby uzyskać więcej informacji na temat sposobu tworzenia i dostosowywania pulpitów nawigacyjnych i widżetów na DevOps platformy Azure zobacz następujące zestawy instrukcji:
+Jeśli używasz usługi Azure DevOps, możesz tworzyć pulpity nawigacyjne w celu śledzenia działań i elementów roboczych skojarzonych z danym projektem Agile. Aby uzyskać więcej informacji na temat pulpitów nawigacyjnych, zobacz [pulpity nawigacyjne, raporty i widżety](/azure/devops/report/dashboards/).
 
-- [Dodaj i Zarządzaj pulpitów nawigacyjnych](https://docs.microsoft.com/azure/devops/report/dashboards/dashboards)
-- [Dodawanie widgetów do pulpitu nawigacyjnego](https://docs.microsoft.com/azure/devops/report/dashboards/add-widget-to-dashboard).
+Aby uzyskać instrukcje dotyczące sposobu tworzenia i dostosowywania pulpitów nawigacyjnych i widżetów w usłudze Azure DevOps, zobacz następujące przewodniki szybki start:
+
+- [Dodawanie pulpitów nawigacyjnych i zarządzanie nimi](/azure/devops/report/dashboards/dashboards)
+- [Dodawanie widżetów do pulpitu nawigacyjnego](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
 ## <a name="example-dashboard"></a>Przykładowy pulpit nawigacyjny
 
-Poniżej przedstawiono prosty przykład pulpitu nawigacyjnego, przeznaczonego do śledzenia działania sprintu projektu nauki o danych Agile, a także liczba zatwierdzeń repozytoriów skojarzone. **Góry z lewej** panelu pokazuje:
+Oto prosty przykładowy pulpit nawigacyjny, który śledzi działania przebiegu projektu analizy danych Agile, łącznie z liczbą zatwierdzeń skojarzonych z repozytoriami. 
 
-- Odliczanie do zera dla bieżącego sprintu 
-- Liczba zatwierdzeń dla każdego repozytorium w ciągu ostatnich 7 dni
-- element roboczy pod kątem określonych użytkowników. 
+- Kafelek **odliczanie** pokazuje liczbę dni, które pozostaną w bieżącym przebiegu. 
 
-Pozostałe panele Pokaż zbiorczego diagramu przepływu (CFD), raport dotyczący wypalenia i burnup dla projektu:
+- Dwa **kafelki kodu** pokazują liczbę zatwierdzeń w dwóch repozytoriach projektu dla ostatnich siedmiu dni. 
 
-- **Lewym dolnym**:  CFD ilość pracy w danym stanie pokazujący zatwierdzonych w kolorze szarym zatwierdzone w kolorze niebieskim i wykonywane w kolorze zielonym.
-- **Górnego prawego**: raport dotyczący wypalenia wykresu pracy od lewej do kompletne i pozostały czas).
-- **Na dole z prawej**: burnup wykresu pracy, który został wykonany w porównaniu z łączną ilość pracy.
+- **Elementy robocze dla projektu klienta przetwarzania TDSP** przedstawia wyniki zapytania dla wszystkich elementów roboczych i ich stanu. 
 
-![pulpit nawigacyjny](./media/track-progress/dashboard.png)
+- **Skumulowany Diagram przepływu** (CFD) pokazuje liczbę zamkniętych i aktywnych elementów roboczych.
 
-Opis sposobu tworzenia tych wykresach można zobaczyć przewodników Szybki Start i samouczków w [pulpity nawigacyjne](https://docs.microsoft.com/azure/devops/report/dashboards/).
- 
-## <a name="next-steps"></a>Kolejne kroki
+- **Wykres postępu** pokazuje pracę w dalszym ciągu z pozostałą godziną w przebiegu.
 
-Wskazówki, które przedstawiają wszystkie kroki procesu **konkretnych scenariuszy** znajdują się także. Wymieniono i połączone z opisami miniatur w [przykładowe przewodniki](walkthroughs.md) artykułu. One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
+- **Wykres burnup** pokazuje ukończoną pracę w porównaniu do łącznej ilości pracy w przebiegu.
+
+![Pulpit nawigacyjny](./media/track-progress/dashboard.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+[Instruktaże wykonujące analizy danych zespołowych](walkthroughs.md) — instruktaże pokazujące wszystkie kroki procesu dla konkretnych scenariuszy, z linkami i opisami miniatur. Połączone scenariusze ilustrują sposób łączenia narzędzi i usług w chmurze i lokalnych z przepływami pracy lub potokami w celu tworzenia inteligentnych aplikacji. 

@@ -7,12 +7,12 @@ ms.date: 9/20/2019
 ms.topic: conceptual
 ms.service: azure-functions
 manager: gwallace
-ms.openlocfilehash: fa35e5bea7b0d7f2435a8ad31b9195d2fd35a45c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 0ff41eb511ad4513fc9bf5a2ded7ef47b08d12ab
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181264"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243309"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Szacowanie kosztów planu zużycia
 
@@ -59,13 +59,13 @@ Podczas szacowania ogólnych kosztów aplikacji funkcji i powiązanych usług U�
 
 Następujące zachowania funkcji mogą mieć wpływ na czas wykonywania:
 
-+ **Wyzwalacze i powiązania**: Czas potrzebny do odczytu danych wejściowych i zapisu danych wyjściowych do [powiązań funkcji](functions-triggers-bindings.md) jest liczony jako czas wykonywania. Na przykład, gdy funkcja używa powiązania danych wyjściowych do zapisywania komunikatu w kolejce usługi Azure Storage, czas wykonywania obejmuje czas potrzebny do zapisania komunikatu w kolejce, który jest uwzględniany w obliczaniu kosztu funkcji. 
++ **Wyzwalacze i powiązania**: czas potrzebny do odczytu danych wejściowych z i zapisu danych wyjściowych do [powiązań funkcji](functions-triggers-bindings.md) jest liczony jako czas wykonywania. Na przykład, gdy funkcja używa powiązania danych wyjściowych do zapisywania komunikatu w kolejce usługi Azure Storage, czas wykonywania obejmuje czas potrzebny do zapisania komunikatu w kolejce, który jest uwzględniany w obliczaniu kosztu funkcji. 
 
-+ **Wykonywanie asynchroniczne**: Czas oczekiwania funkcji na wyniki żądania asynchronicznego (`await` w programie C#) jest liczony jako czas wykonywania. Obliczenia GB i s są oparte na godzinie rozpoczęcia i zakończenia funkcji oraz użycia pamięci w tym okresie. Co dzieje się w tym czasie w odniesieniu do działania procesora CPU nie jest uwzględniane w obliczeniach. Przy użyciu [Durable Functions](durable/durable-functions-overview.md)można obniżyć koszty podczas operacji asynchronicznych. Za czas spędzony w funkcjach programu Orchestrator nie są naliczane opłaty.
++ **Wykonywanie asynchroniczne**: czas oczekiwania funkcji na wyniki żądania asynchronicznego (`await` w C#) jest liczony jako czas wykonywania. Obliczenia GB i s są oparte na godzinie rozpoczęcia i zakończenia funkcji oraz użycia pamięci w tym okresie. Co dzieje się w tym czasie w odniesieniu do działania procesora CPU nie jest uwzględniane w obliczeniach. Przy użyciu [Durable Functions](durable/durable-functions-overview.md)można obniżyć koszty podczas operacji asynchronicznych. Za czas spędzony w funkcjach programu Orchestrator nie są naliczane opłaty.
 
 ## <a name="view-execution-data"></a>Wyświetl dane wykonania
 
-Na [fakturze](/billing/billing-download-azure-invoice.md)można wyświetlić dane związane z kosztami **całkowitych wykonań — funkcje** i **czas wykonywania**, a także rzeczywiste koszty rozliczane. Te dane faktury są jednak miesięczną sumą dla przeszłego okresu faktury. 
+Na [fakturze](/azure/billing/billing-download-azure-invoice)można wyświetlić dane związane z kosztami **całkowitych wykonań — funkcje** i **czas wykonywania**, a także rzeczywiste koszty rozliczane. Te dane faktury są jednak miesięczną sumą dla przeszłego okresu faktury. 
 
 Aby lepiej zrozumieć wpływ kosztów funkcji, możesz użyć Azure Monitor, aby wyświetlić metryki związane z kosztami, które są obecnie generowane przez aplikacje funkcji. Aby uzyskać te dane, można użyć narzędzia [Azure monitor Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) w [Azure Portal] lub interfejsie API REST.
 
@@ -73,7 +73,7 @@ Aby lepiej zrozumieć wpływ kosztów funkcji, możesz użyć Azure Monitor, aby
 
 Użyj [Eksploratora metryk Azure monitor](../azure-monitor/platform/metrics-getting-started.md) , aby wyświetlić dane dotyczące kosztów dla aplikacji funkcji planu zużycia w formacie graficznym. 
 
-1. W górnej części [Azure Portal] w **usługach wyszukiwania, zasobach i witrynie docs** `monitor` Wyszukaj i wybierz pozycję **monitor** w obszarze **usługi**.
+1. W górnej części [Azure Portal] w **usługach wyszukiwania, zasobach i** dokumentach wyszukiwania `monitor` i wybierz pozycję **Monitoruj** w obszarze **usługi**.
 
 1. Po lewej stronie wybierz pozycję **metryki** > **Wybierz zasób**, a następnie użyj ustawień poniżej obrazu, aby wybrać aplikację funkcji.
 
@@ -82,10 +82,10 @@ Użyj [Eksploratora metryk Azure monitor](../azure-monitor/platform/metrics-gett
       
     |Ustawienie  |Sugerowana wartość  |Opis  |
     |---------|---------|---------|
-    | Subscription    |  Twoja subskrypcja  | Subskrypcja z aplikacją funkcji.  |
-    | Resource group     | Twoja grupa zasobów  | Grupa zasobów zawierająca aplikację funkcji.   |
+    | Subskrypcja    |  Twoja subskrypcja  | Subskrypcja z aplikacją funkcji.  |
+    | Grupa zasobów     | Twoja grupa zasobów  | Grupa zasobów zawierająca aplikację funkcji.   |
     | Typ zasobu     |  App Services | Aplikacje funkcji są wyświetlane jako wystąpienia App Services w monitorze. |
-    | Resource     |  Aplikacja funkcji  | Aplikacja funkcji do monitorowania.        |
+    | Zasób     |  Aplikacja funkcji  | Aplikacja funkcji do monitorowania.        |
 
 1. Wybierz pozycję **Zastosuj** , aby wybrać aplikację funkcji jako zasób do monitorowania.
 
@@ -101,13 +101,13 @@ Wykres otrzymany zawiera sumy dla obu metryk wykonywania w wybranym zakresie cza
 
 Ponieważ liczba jednostek wykonywania jest znacznie większa niż Liczba wykonań, wykres pokazuje tylko jednostki wykonywania.
 
-Ten wykres przedstawia łączną liczbę 1 110 000 000 `Function Execution Units` zużytych w ciągu dwóch godzin, mierzoną w megabajtach (MB). Aby przekonwertować na GB sekund, Podziel na 1024000. W tym przykładzie aplikacja funkcji wykorzystana `1110000000 / 1024000 = 1083.98` GB-sekund. Możesz posłużyć się tą wartością i pomnożyć przez bieżącą cenę czasu wykonywania na[stronie]cennika [funkcji Functions], która zapewnia koszt tych dwóch godzin, przy założeniu, że już użyto bezpłatnych zasiłków czasu wykonywania. 
+Ten wykres przedstawia łączną liczbę 1 110 000 000 `Function Execution Units` zużytych w ciągu dwóch godzin (w MEGABAJTach). Aby przekonwertować na GB sekund, Podziel na 1024000. W tym przykładzie aplikacja funkcji wykorzystana `1110000000 / 1024000 = 1083.98` GB-sekund. Możesz posłużyć się tą wartością i pomnożyć przez bieżącą cenę czasu wykonywania na[stronie]cennika [funkcji Functions], która zapewnia koszt tych dwóch godzin, przy założeniu, że już użyto bezpłatnych zasiłków czasu wykonywania. 
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 [Interfejs wiersza polecenia platformy Azure](/cli/azure/) zawiera polecenie do pobierania metryk. Interfejsu wiersza polecenia można użyć z lokalnego środowiska poleceń lub bezpośrednio z portalu przy użyciu [Azure Cloud Shell](../cloud-shell/overview.md). Na przykład następujące polecenie [AZ monitor Metric list](/cli/azure/monitor/metrics#az-monitor-metrics-list) zwraca dane godzinowe w tym samym okresie użytym wcześniej.
 
-Pamiętaj, aby zastąpić `<AZURE_SUBSCRIPTON_ID>` identyfikatorem subskrypcji platformy Azure, na którym działa polecenie.
+Pamiętaj, aby zastąpić `<AZURE_SUBSCRIPTON_ID>` IDENTYFIKATORem subskrypcji platformy Azure, na którym działa polecenie.
 
 ```azurecli-interactive
 az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption --metric FunctionExecutionUnits,FunctionExecutionCount --aggregation Total --interval PT1H --start-time 2019-09-11T21:46:00Z --end-time 2019-09-11T23:18:00Z
@@ -192,7 +192,7 @@ To polecenie zwraca ładunek JSON, który wygląda podobnie do następującego p
   ]
 }
 ```
-Ta konkretna odpowiedź pokazuje `2019-09-11T21:46` `2019-09-11T23:18`, że w przypadku, gdy aplikacja zużywa 1110000000 MB-milisekundy (1083,98 GB-s).
+Ta konkretna odpowiedź pokazuje, że od `2019-09-11T21:46` do `2019-09-11T23:18`, podczas którego aplikacja zużywa 1110000000 MB-milisekundy (1083,98 GB-s).
 
 ## <a name="determine-memory-usage"></a>Określanie użycia pamięci
 
@@ -210,14 +210,14 @@ performanceCounters
 
 Wyniki wyglądają podobnie jak w poniższym przykładzie:
 
-| Sygnatura czasowa \[UTC\]          | name          | value       |
+| Sygnatura czasowa \[UTC @ no__t-1          | name          | wartość       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 AM | Bajty prywatne | 209 932 288 |
-| 9/12/2019, 1:06:14\.994 AM | Bajty prywatne | 212 189 184 |
-| 9/12/2019, 1:06:30\.010 AM | Bajty prywatne | 231 714 816 |
-| 9/12/2019, 1:07:15\.040 AM | Bajty prywatne | 210 591 744 |
-| 9/12/2019, 1:12:16\.285 AM | Bajty prywatne | 216 285 184 |
-| 9/12/2019, 1:12:31\.376 AM | Bajty prywatne | 235 806 720 |
+| 9/12/2019, 1:05:14 @ no__t-0947 AM | Bajty prywatne | 209 932 288 |
+| 9/12/2019, 1:06:14 @ no__t-0994 AM | Bajty prywatne | 212 189 184 |
+| 9/12/2019, 1:06:30 @ no__t-0,010 AM | Bajty prywatne | 231 714 816 |
+| 9/12/2019, 1:07:15 @ no__t-0040 AM | Bajty prywatne | 210 591 744 |
+| 9/12/2019, 1:12:16 @ no__t-0285 AM | Bajty prywatne | 216 285 184 |
+| 9/12/2019, 1:12:31 @ no__t-0376 AM | Bajty prywatne | 235 806 720 |
 
 ## <a name="function-level-metrics"></a>Metryki na poziomie funkcji
 
@@ -232,9 +232,9 @@ customMetrics
 
 | name                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16\.087                     |
-| QueueTrigger MaxDurationMs | 90\.249                     |
-| QueueTrigger MinDurationMs | 8\.522                      |
+| QueueTrigger AvgDurationMs | 16 @ no__t — 0087                     |
+| QueueTrigger MaxDurationMs | 90 @ no__t-0249                     |
+| QueueTrigger MinDurationMs | 8 @ no__t — 0522                      |
 
 ## <a name="next-steps"></a>Następne kroki
 

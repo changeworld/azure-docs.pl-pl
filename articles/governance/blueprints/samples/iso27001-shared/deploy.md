@@ -1,17 +1,17 @@
 ---
 title: Przykład — ISO 27001 udostępnione usługi plan — wdrażanie kroków
-description: Wdróż kroki z przykładu plan usług udostępnionych ISO 27001.
+description: Wdróż kroki dla przykładu planu usług udostępnionych ISO 27001, w tym szczegóły parametru artefaktu strategii.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: a55fccd8942e9bbdee4611120ffcab48fe4a8c62
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 184bc87dc74cd67115b82b5be1a939c8286ed54f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978293"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248962"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Wdróż przykład strategii usług udostępnionych ISO 27001
 

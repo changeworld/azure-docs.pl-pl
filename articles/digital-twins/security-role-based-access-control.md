@@ -8,16 +8,16 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e89a8f98d92e92fa8afe93340576b14ff1dd5051
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949020"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249196"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Kontrola dostępu oparta na rolach w usłudze Azure Digital bliźniaczych reprezentacji
 
-Usługa Azure Digital bliźniaczych reprezentacji umożliwia precyzyjne sterowanie dostępem do określonych danych, zasobów i akcji w grafie przestrzennym. Odbywa się to za pośrednictwem szczegółowego zarządzania rolami i uprawnieniami o nazwie kontroli dostępu opartej na rolach (RBAC). RBAC składa się z _ról_ i _przypisań ról_. Role identyfikują poziom uprawnień. Przypisania ról kojarzą rolę z użytkownikiem lub urządzeniem.
+Usługa Azure Digital bliźniaczych reprezentacji umożliwia precyzyjne sterowanie dostępem do określonych danych, zasobów i akcji w grafie przestrzennym. Odbywa się to za pośrednictwem szczegółowego zarządzania rolami i uprawnieniami o nazwie [kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC). RBAC składa się z _ról_ i _przypisań ról_. Role identyfikują poziom uprawnień. Przypisania ról kojarzą rolę z użytkownikiem lub urządzeniem.
 
 Przy użyciu RBAC można udzielić uprawnienia do:
 
@@ -84,3 +84,5 @@ Aby udzielić uprawnień do adresata, Utwórz przypisanie roli. Aby odwołać up
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się więcej na temat tworzenia przypisań ról bliźniaczych reprezentacji cyfrowych platformy Azure i zarządzania nimi, zobacz [Tworzenie przypisań ról i zarządzanie nimi](./security-create-manage-role-assignments.md).
+
+- Przeczytaj więcej [na temat RBAC na platformie Azure](https://docs.microsoft.com/azure/role-based-access-control/).

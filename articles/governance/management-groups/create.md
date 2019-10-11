@@ -1,17 +1,17 @@
 ---
-title: Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure — zarządzanie platformą Azure
+title: Tworzenie grup zarządzania w celu organizowania zasobów — zarządzanie platformą Azure
 description: Dowiedz się, jak utworzyć grupy zarządzania platformy Azure, aby zarządzać wieloma zasobami przy użyciu portalu, Azure PowerShell i interfejsu wiersza polecenia platformy Azure.
 author: rthorn17
 ms.service: governance
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 92ab550aa76adc39863a6557d3959b4538bc9a63
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 17154ea72a49ff48a482b1149eeecf0229fcccd7
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980790"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254695"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grup zarządzania dla organizacji zasobów i zarządzania nimi
 
@@ -25,7 +25,7 @@ Grupę zarządzania można utworzyć przy użyciu portalu, programu PowerShell l
 
 ### <a name="create-in-portal"></a>Utwórz w portalu
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
 1. Wybierz pozycję **wszystkie usługi** > **Zarządzanie i nadzór**.
 
@@ -96,7 +96,7 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
-- [Jak zmienić, usunąć lub zarządzać grupami zarządzania](manage.md)
-- [Przegląd grup zarządzania w module zasobów Azure PowerShell](/powershell/module/az.resources#resources)
-- [Przeglądanie grup zarządzania w interfejsie API REST](/rest/api/resources/managementgroups)
-- [Przeglądanie grup zarządzania w interfejsie wiersza polecenia platformy Azure](/cli/azure/account/management-group)
+- [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
+- [Grupy zarządzania w module zasobów programu Azure PowerShell](/powershell/module/az.resources#resources)
+- [Grupy zarządzania w interfejsie API REST](/rest/api/resources/managementgroups)
+- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](/cli/azure/account/management-group)

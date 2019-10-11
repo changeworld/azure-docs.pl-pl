@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3e2781229974ed872d477579d6c738822f910df6
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677868"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243511"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -59,7 +59,7 @@ Aktualizacje oprogramowania można wdrożyć i zainstalować na komputerach, kt�
 
 Zaplanowane wdrożenie określa, które komputery docelowe otrzymują odpowiednie aktualizacje, jawnie określając komputery lub wybierając [grupę komputerów](../azure-monitor/platform/computer-groups.md) opartą na przeszukiwaniu dzienników określonego zestawu komputerów lub [kwerendzie platformy Azure](#azure-machines) Umożliwia to dynamiczne Wybieranie maszyn wirtualnych platformy Azure na podstawie określonych kryteriów. Te grupy różnią się od [konfiguracji zakresu](../azure-monitor/insights/solution-targeting.md), która jest używana tylko do określania, które maszyny otrzymują pakiety administracyjne, które umożliwiają rozwiązanie.
 
-Należy również określić harmonogram zatwierdzania i ustawiania okresu czasu, w którym można zainstalować aktualizacje. Ten okres czasu jest określany w oknie obsługi. Dziesięć minut okna obsługi jest zarezerwowane dla ponownych uruchomień, jeśli jest wymagane ponowne uruchomienie komputera i wybrano odpowiednią opcję ponownego uruchamiania. Jeśli stosowanie poprawek trwa dłużej niż oczekiwano, a w oknie obsługi jest mniej niż dziesięć minut, ponowne uruchomienie nie zostanie wykonane.
+Należy również określić harmonogram zatwierdzania i ustawiania okresu czasu, w którym można zainstalować aktualizacje. Ten okres czasu jest określany w oknie obsługi. Dwadzieścia minut okna obsługi jest zarezerwowane do ponownego uruchomienia, jeśli jest wymagany ponowny rozruch i wybrano odpowiednią opcję ponownego uruchomienia. Jeśli stosowanie poprawek trwa dłużej niż oczekiwano, a w oknie obsługi jest mniej niż dwadzieścia minut, ponowne uruchomienie nie zostanie przeprowadzone.
 
 Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation. Nie można wyświetlić tych elementów Runbook, a elementy Runbook nie wymagają żadnej konfiguracji. Po utworzeniu wdrożenia aktualizacji wdrożenie aktualizacji tworzy harmonogram, który uruchamia główny element Runbook aktualizacji w określonym czasie dla uwzględnionych komputerów. Główny element Runbook uruchamia podrzędny element Runbook na każdym agencie, aby zainstalować wymagane aktualizacje.
 

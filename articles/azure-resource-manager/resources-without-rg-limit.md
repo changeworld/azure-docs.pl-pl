@@ -4,14 +4,14 @@ description: Wyświetla listę typów zasobów platformy Azure, które mogą mie
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973318"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249137"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Zasoby nieograniczone do 800 wystąpień na grupę zasobów
 
@@ -32,14 +32,14 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
-* botServices — skontaktuj się z pomocą techniczną, aby zwiększyć limit.
+* botServices — domyślnie ograniczone do 800 wystąpień. Ten limit można zwiększyć, kontaktując się z pomocą techniczną.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * dysku
 * images
-* migawki
-* virtualMachines
+* Migawki
+* VirtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -128,7 +128,7 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* Adresów publicipaddress — skontaktuj się z pomocą techniczną, aby zwiększyć limit.
+* Adresów publicipaddress — domyślnie ograniczone do 800 wystąpień. Ten limit można zwiększyć, kontaktując się z pomocą techniczną.
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -139,7 +139,7 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
-* workspaceCollections — skontaktuj się z pomocą techniczną, aby zwiększyć limit.
+* workspaceCollections — domyślnie ograniczone do 800 wystąpień. Ten limit można zwiększyć, kontaktując się z pomocą techniczną.
 
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
