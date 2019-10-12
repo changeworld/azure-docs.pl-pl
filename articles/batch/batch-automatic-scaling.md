@@ -13,13 +13,13 @@ ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 10/08/2019
 ms.author: lahugh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bdea67d682bab335de02e55f5864460e3daefb95
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
-ms.translationtype: MT
+ms.custom: H1Hack27Feb2017,fasttrack-edit
+ms.openlocfilehash: 9c02db01d7b95f3178d73602089b30029fb0db9f
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254943"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274832"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz automatyczną formułę skalowania węzłów obliczeniowych w puli usługi Batch
 
@@ -107,6 +107,11 @@ Można pobrać i ustawić wartości tych zmiennych zdefiniowanych przez usługę
 | $TargetDedicatedNodes |Docelowa liczba dedykowanych węzłów obliczeniowych w puli. Liczba węzłów dedykowanych jest określona jako element docelowy, ponieważ pula może nie zawsze osiągnąć żądaną liczbę węzłów. Na przykład jeśli docelowa liczba węzłów jest modyfikowana przez ocenę skalowania automatycznego przed osiągnięciem początkowej docelowej puli, Pula może nie dotrzeć do miejsca docelowego. <br /><br /> Pula w ramach konta utworzonego przy użyciu konfiguracji usługi Batch może nie osiągnąć swojego celu, jeśli element docelowy przekracza węzeł konta usługi Batch lub przydział podstawowy. Pula w ramach konta utworzonego przy użyciu konfiguracji subskrypcji użytkownika może nie osiągnąć swojego celu, jeśli wartość docelowa przekroczy współużytkowany przydział rdzeni dla subskrypcji.|
 | $TargetLowPriorityNodes |Docelowa liczba węzłów obliczeniowych o niskim priorytecie dla puli. Liczba węzłów o niskim priorytecie jest określana jako element docelowy, ponieważ pula może nie zawsze osiągnąć żądaną liczbę węzłów. Na przykład jeśli docelowa liczba węzłów o niskim priorytecie jest modyfikowana przez ocenę skalowania automatycznego przed osiągnięciem początkowej docelowej puli, Pula może nie dotrzeć do miejsca docelowego. Pula może być również nieosiągalna, jeśli element docelowy przekracza węzeł konta wsadowego lub przydział podstawowy. <br /><br /> Aby uzyskać więcej informacji na temat węzłów obliczeniowych o niskim priorytecie, zobacz [Korzystanie z maszyn wirtualnych o niskim priorytecie w usłudze Batch (wersja zapoznawcza)](batch-low-pri-vms.md). |
 | $NodeDeallocationOption |Akcja wykonywana po usunięciu węzłów obliczeniowych z puli. Możliwe wartości:<ul><li>**requeue**--wartość domyślna. Natychmiast kończy zadania i umieszcza je z powrotem w kolejce zadań, aby zostały ponownie zaplanowane. Ta akcja zapewnia, że docelowa liczba węzłów jest możliwie najszybsza, ale może być mniej wydajna, ponieważ wszystkie uruchomione zadania zostaną przerwane i trzeba będzie je ponownie uruchomić, transakcję już wykonanej pracy. <li>**Przerwij**— kończy zadania natychmiast i usuwa je z kolejki zadań.<li>**taskcompletion**--czeka na zakończenie działania aktualnie wykonywanych zadań, a następnie usuwa węzeł z puli. Użyj tej opcji, aby uniknąć przerywania i ponownie kolejkowania zadań w trakcie wykonywania zadań. <li>**retaineddata**--czeka na oczyszczenie wszystkich lokalnych danych zadań przechowywanych w węźle przed usunięciem węzła z puli.</ul> |
+
+> [!NOTE]
+> Zmienną `$TargetDedicatedNodes` można także określić przy użyciu aliasu `$TargetDedicated`. Podobnie zmienna `$TargetLowPriorityNodes` może być określona przy użyciu aliasu `$TargetLowPriority`. Jeśli zarówno w pełni nazwana zmienna, jak i jej alias są ustawiane przez formułę, pierwszeństwo ma wartość przypisana do pełnej nazwanej zmiennej.
+>
+>
 
 Możesz uzyskać wartości tych zmiennych zdefiniowanych przez usługę, aby wprowadzić zmiany, które są oparte na metrykach usługi Batch:
 

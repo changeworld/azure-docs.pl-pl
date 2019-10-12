@@ -1,7 +1,7 @@
 ---
 title: Wstępnie utworzone modele — LUIS
 titleSuffix: Azure Cognitive Services
-description: Wstępnie utworzone modele zawierają domen, intencji, wypowiedzi i jednostek. Można Rozpocznij tworzenie aplikacji przy użyciu wbudowanych domeny lub później dodać domenę odpowiednie do Twojej aplikacji.
+description: Wbudowane modele zapewniają domeny, intencje, wyrażenia długości i jednostki. Możesz uruchomić aplikację z prezbudowaną domeną lub później dodać odpowiednią domenę do aplikacji.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,58 +11,58 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: b072e265204bba3caa1388576008d5e41adcc33d
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: b88801ded3dea7c7514ff117361feba3e95444ed
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619713"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264389"
 ---
-# <a name="prebuilt-domain-intent-and-entity-models"></a>Wstępnie utworzone modele domenę, intencji i jednostki
+# <a name="prebuilt-domain-intent-and-entity-models"></a>Wstępnie skompilowane domeny, intencje i modele jednostek
 
-Wstępnie utworzone modele zawierają domen, intencji, wypowiedzi i jednostek. Można Rozpocznij tworzenie aplikacji przy użyciu wbudowanych domeny lub później dodać domenę odpowiednie do Twojej aplikacji. 
+Wbudowane modele zapewniają domeny, intencje, wyrażenia długości i jednostki. Możesz uruchomić aplikację z prezbudowaną domeną lub później dodać odpowiednią domenę do aplikacji. 
 
-## <a name="types-of-prebuilt-models"></a>Typy wstępnie utworzone modele
+## <a name="types-of-prebuilt-models"></a>Typy wstępnie skompilowanych modeli
 
-Istnieją 3 typy wstępnie utworzone modele, które zapewnia usługi LUIS. Każdy model można dodać do aplikacji w dowolnym momencie. 
+Dostępne są 3 typy wstępnie skompilowanych modeli LUIS. Każdy model można dodać do aplikacji w dowolnym momencie. 
 
 |Typ modelu|Zawiera|
 |--|--|
-|Domain|Intencji wypowiedzi, jednostki|
-|Intencje|Intencji, wypowiedzi|
+|Domain|Intencje, wyrażenia długości, jednostki|
+|Intencje|Intencje, wyrażenia długości|
 |Jednostki|Tylko jednostki| 
 
-## <a name="prebuilt-domains"></a>Ze wstępnie utworzonych domen
+## <a name="prebuilt-domains"></a>Wstępnie utworzone domeny
 
-Language Understanding (LUIS) oferuje *ze wstępnie utworzonych domen*, które są wstępnie utworzone zestawy [intencji](luis-how-to-add-intents.md) i [jednostek](luis-concept-entity-types.md) współpracujące ze sobą dla domen lub typowe kategorie aplikacje klienckie. 
+Language Understanding (LUIS) zapewnia *prebudowane domeny*, które są wstępnie skompilowanymi zestawami [zamiar](luis-how-to-add-intents.md) i [jednostek](luis-concept-entity-types.md) , które współpracują ze sobą w przypadku domen lub wspólnych kategorii aplikacji klienckich. 
 
-Ze wstępnie utworzonych domen są przeszkolony i chcesz dodać do aplikacji usługi LUIS. Intencje i podmioty, w domenie wbudowanych są w pełni konfigurowalne po dodaniu ich do swojej aplikacji. 
+Wstępnie skompilowane domeny są przeszkolone i gotowe do dodania do aplikacji LUIS. Intencje i jednostki we wstępnie skompilowanej domenie są w pełni dostosowywane po dodaniu ich do aplikacji. 
 
-W przypadku uruchomienia Dostosowywanie wstępnie całej domeny, Usuń intencje i podmioty, nie trzeba używać twojej aplikacji. Do zestawu, który zapewnia wbudowane domeny, można dodać niektórych opcjami lub jednostki. Na przykład, jeśli używasz **zdarzenia** wbudowanych domeny dla aplikacji sportowych zdarzeń, można dodać jednostki dla zespołów, dyscyplin sportowych. Po uruchomieniu [dostarczanie wypowiedzi](luis-how-to-add-example-utterances.md) do usługi LUIS, zawierają postanowienia, które są specyficzne dla aplikacji. Usługa LUIS uczy się rozpoznawać je i dostosowanie intencje i podmioty do potrzeb swojej aplikacji, w domenie wbudowanych. 
+Jeśli zaczniesz Dostosowywanie całej wbudowanej domeny, Usuń intencje i jednostki, których aplikacja nie musi używać. Możesz również dodać do zestawu, które zapewnią, że wbudowana domena już zapewnia. Na przykład w przypadku korzystania z domeny prekompilowanej **zdarzeń** dla aplikacji zdarzeń sportowych można dodać jednostki dla zespołów sportowych. Po rozpoczęciu [udostępniania wyrażenia długości](luis-how-to-add-example-utterances.md) do Luis Uwzględnij warunki specyficzne dla aplikacji. LUIS uczy się rozpoznawać te i elementy, które prekonstruują wbudowane domeny i jednostki do potrzeb Twojej aplikacji. 
 
 > [!TIP]
-> Intencje i podmioty, w domenie wbudowanych najlepiej działają razem. Zaleca się połączyć intencje i podmioty w tej samej domenie, jeśli jest to możliwe.
-> Domena wstępnie utworzone narzędzia ma intencji, które można dostosować do użytku w każdej domenie. Na przykład można dodać `Utilities.Repeat` do swojej aplikacji i szkolenie go rozpoznać, niezależnie od działań użytkownika może być ma zostać powtórzony w aplikacji. 
+> Intencje i jednostki we wstępnie skompilowanej domenie działają najlepiej wspólnie. Lepszym rozwiązaniem jest połączenie intencji i jednostek z tej samej domeny, jeśli jest to możliwe.
+> Prebudowana domena narzędzi jest zamiarem, który można dostosować do użycia w dowolnej domenie. Można na przykład dodać do aplikacji `Utilities.Repeat` i wyszkolić rozpoznawanie dowolnego działania, które użytkownik może chcieć powtórzyć w aplikacji. 
 
-### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Zmiana zachowania intencji ze wstępnie utworzonych domen
+### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Zmiana zachowania prekompilowanego zamiaru domeny
 
-Może się okazać, że wbudowanych domena zawiera cel, który jest podobny do intencji, które chcesz mieć w swojej aplikacji usługi LUIS, ale chcesz, aby zachowywać się inaczej. Na przykład **miejsc** udostępnia wstępnie utworzonych domen `MakeReservation` intencji składania rezerwacji restauracji, ale ma aplikację do używania z tym przeznaczeniem aby rezerwację hoteli. W takiej sytuacji możesz zmodyfikować zachowanie tym przeznaczeniem dostarczając wypowiedzi użytkownikowi usługi LUIS więcej o tworzeniu rezerwacji hotelowych i etykietowania je przy użyciu `MakeReservation` intencji, tak więc LUIS może być retrained rozpoznawanie `MakeReservation` intencji w żądaniu, aby zarezerwować hotelu .
+Może się okazać, że wbudowana domena zawiera zamiar, która jest podobna do zamiaru, który ma być używany w aplikacji LUIS, ale ma być zachowywać się inaczej. **Na przykład** prebudowana domena udostępnia zamiaru `MakeReservation` do tworzenia rezerwacji w restauracji, ale chcesz, aby Twoja aplikacja korzystała z tego celu do tworzenia rezerwacji hotelowych. W takim przypadku można zmodyfikować zachowanie tego zamiaru, dostarczając wyrażenia długości do LUIS o sposobie rezerwacji hotelowych i etykietowania ich przy użyciu zamiaru `MakeReservation`, dlatego LUIS można ponownie przeszkolić, aby rozpoznać zamiar `MakeReservation` w żądaniu rezerwacji hotelu.
 
-Znajduje się pełna lista ze wstępnie utworzonych domen w [odwołania ze wstępnie utworzonych domen](./luis-reference-prebuilt-domains.md).
+Pełną listę wstępnie skompilowanych domen można znaleźć w [dokumentacji prekompilowanych domen](./luis-reference-prebuilt-domains.md).
 
-## <a name="prebuilt-intents"></a>Wstępnie utworzone intencji
+## <a name="prebuilt-intents"></a>Prebudowane intencje
 
-Usługa LUIS udostępnia wstępnie intencje i ich wypowiedzi. Można dodać intencji bez dodawania całą domenę. Dodawanie intencji jest proces dodawania intencji i jego wypowiedzi. Można modyfikować zarówno nazwę metody konwersji, jak i na liście wypowiedź.  
+LUIS zapewnia prebudowane intencje i ich wyrażenia długości. Intencje mogą być dodawane bez dodawania całej domeny. Dodanie zamiaru to proces dodawania zamiaru i jego wyrażenia długości. Można modyfikować zarówno nazwę zamierzenia, jak i listę wypowiedź.  
 
-## <a name="prebuilt-entities"></a>Wstępnie utworzonych jednostek
+## <a name="prebuilt-entities"></a>Wstępnie utworzone jednostki
 
-Usługa LUIS zawiera zestaw wstępnie utworzonych jednostek rozpoznawania typowe rodzaje informacji, takich jak daty, godziny, numery, pomiarów i waluty. Obsługa wstępnie utworzone jednostki jest zależna od kultury aplikacją usługi LUIS. Aby uzyskać pełną listę wstępnie utworzone jednostki, które obsługuje usługi LUIS, w tym pomoc od kultury, zobacz [odwołania do wstępnie utworzone jednostki](./luis-reference-prebuilt-entities.md).
+LUIS zawiera zestaw wstępnie utworzonych jednostek do rozpoznawania wspólnych typów informacji, takich jak daty, godziny, liczby, pomiary i waluta. Wbudowana obsługa jednostek jest różna w zależności od kultury aplikacji LUIS. Aby uzyskać pełną listę wstępnie utworzonych jednostek, które obsługuje LUIS, w tym obsługę według kultury, zobacz [prekompilowane odwołanie do jednostki](./luis-reference-prebuilt-entities.md).
 
-Gdy wstępnie utworzone jednostki znajduje się w aplikacji, jej prognozy są uwzględnione w opublikowanej aplikacji. Działanie wstępnie utworzonych jednostek jest wstępnie przeszkolonych i **nie** można modyfikować. Wykonaj następujące kroki, aby zobaczyć, jak działa wstępnie utworzone jednostki:
+Gdy wbudowana jednostka jest dołączona do aplikacji, jej przewidywania są zawarte w opublikowanej aplikacji. Zachowanie wbudowanych jednostek jest wstępnie nauczone i **nie można** go modyfikować. 
 
 > [!NOTE]
-> **BUILTIN.DateTime** jest przestarzała. Zastępuje się wyrazami [ **builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md), która umożliwia rozpoznawanie daty i zakresy czasu, a także Rozpoznawanie niejednoznacznych daty i godziny.
+> **element wbudowany. DateTime** jest przestarzały. Jest on zastępowany przez element [**wbudowany. datetimeV2**](luis-reference-prebuilt-datetimev2.md), który zapewnia rozpoznawanie zakresów dat i godzin, a także ulepszone rozpoznawanie niejednoznacznych dat i godzin.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [Dodaj ze wstępnie utworzonych jednostek](luis-prebuilt-entities.md) do swojej aplikacji.
+Dowiedz się, jak [dodać wstępnie utworzone jednostki](luis-prebuilt-entities.md) do aplikacji.

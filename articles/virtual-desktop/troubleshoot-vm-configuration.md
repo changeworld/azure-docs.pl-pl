@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4c684a2db02b7587b6d81eaf2f034540250fc001
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 167d880f82314fc3b5ade299442f04d62b5dacb9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841291"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274494"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej hosta sesji
 
@@ -296,13 +296,13 @@ Jeśli używany system operacyjny to Microsoft Windows 10, wykonaj poniższe ins
 
 16. Po zakończeniu działania poleceń cmdlet Uruchom ponownie maszynę wirtualną z nieprawidłowym stosem Side-by-side.
 
-## <a name="remote-licensing-model-isnt-configured"></a>Model licencjonowania zdalnego nie jest skonfigurowany
+## <a name="remote-desktop-licensing-mode-isnt-configured"></a>Tryb licencjonowania Pulpit zdalny nie jest skonfigurowany
 
 Jeśli zalogujesz się do wielosesyjnego systemu Windows 10 Enterprise przy użyciu konta administracyjnego, możesz otrzymać powiadomienie informujące o tym, że Pulpit zdalny tryb licencjonowania nie jest skonfigurowany, Usługi pulpitu zdalnego przestanie działać w ciągu X dni. Na serwerze brokera połączeń użyj Menedżer serwera, aby określić tryb licencjonowania Pulpit zdalny ".
 
 W przypadku upływu limitu czasu zostanie wyświetlony komunikat o błędzie "Sesja zdalna została rozłączona, ponieważ dla tego komputera nie ma Pulpit zdalny licencji dostępu klienta".
 
-Jeśli zostanie wyświetlony jeden z tych komunikatów, należy otworzyć Edytor zasady grupy i ręcznie skonfigurować tryb licencjonowania na **użytkownika**. Proces konfiguracji ręcznej jest inny w zależności od wersji systemu Windows 10 Enterprise wielosesyjnej, której używasz. W poniższych sekcjach wyjaśniono, jak sprawdzić numer wersji i co należy zrobić dla każdego z nich.
+Jeśli zobaczysz jeden z tych komunikatów, oznacza to, że obraz nie ma zainstalowanych najnowszych aktualizacji systemu Windows lub że Pulpit zdalny tryb licencjonowania na **użytkownika**. Usuń konfigurację, która ustawia te zasady, a następnie wykonaj kroki, aby zidentyfikować wersję wielosesyjną systemu Windows 10 Enterprise i zainstalować odpowiednią aktualizację.  
 
 >[!NOTE]
 >Pulpit wirtualny systemu Windows wymaga tylko licencji dostępu klienta RDS (CAL), gdy pula hostów zawiera hosty sesji systemu Windows Server. Aby dowiedzieć się, jak skonfigurować RDS CAL, zobacz [Licencjonowanie wdrożenia usług pulpitu zdalnego z licencjami dostępu klienta](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
@@ -322,50 +322,11 @@ Teraz, gdy znasz numer wersji, przejdź do odpowiedniej sekcji.
 
 ### <a name="version-1809"></a>Wersja 1809
 
-Jeśli numer wersji jest taki sam jak "1809", można przeprowadzić uaktualnienie do wielu sesji systemu Windows 10 Enterprise, wersja 1903 lub ponownie wdrożyć pulę hostów przy użyciu najnowszego obrazu.
-
-Aby przeprowadzić uaktualnienie do systemu Windows 10 w wersji 1903:
-
-1. Jeśli jeszcze tego nie zrobiono, Pobierz i zainstaluj [aktualizację systemu Windows 10 maja 2019](https://support.microsoft.com/help/4028685/windows-10-get-the-update).
-2. Zaloguj się na komputerze przy użyciu konta administratora.
-3. Uruchom **gpedit. msc** , aby otworzyć Edytor zasady grupy.
-4. W obszarze Konfiguracja komputera przejdź do **pozycji Szablony administracyjne** > **Windows Components** > **usługi pulpitu zdalnego** > **pulpit zdalny Host sesji** > **Licencjonowanie**.
-5. Wybierz pozycję **Ustaw tryb licencjonowania pulpit zdalny**.
-6. W otwartym oknie, najpierw wybierz opcję **włączone**, a następnie w obszarze Opcje Określ tryb licencjonowania dla serwera hosta sesji usług pulpitu zdalnego na **użytkownika**, jak pokazano na poniższej ilustracji.
-    
-    ![Zrzut ekranu przedstawiający okno "Ustawianie trybu licencjonowania Pulpit zdalny" skonfigurowany zgodnie z instrukcjami w kroku 6.](media/group-policy-editor-per-user.png)
-
-7. Wybierz przycisk **Zastosuj**.
-8. Kliknij przycisk **OK**.
-9.  Uruchom ponownie komputer.
-
-Aby ponownie wdrożyć pulę hostów przy użyciu najnowszego obrazu:
-
-1. Postępuj zgodnie z instrukcjami w temacie [Tworzenie puli hostów przy użyciu witryny Azure Marketplace](create-host-pools-azure-marketplace.md) , dopóki nie zostanie wyświetlony monit o wybranie wersji systemu operacyjnego obrazu. Możesz wybrać opcję wiele sesji systemu Windows 10 Enterprise z lub bez ProPlus usługi Office 365.
-2. Zaloguj się na komputerze przy użyciu konta administratora.
-3. Uruchom **gpedit. msc** , aby otworzyć Edytor zasady grupy.
-4. W obszarze Konfiguracja komputera przejdź do **pozycji Szablony administracyjne** > **Windows Components** > **usługi pulpitu zdalnego** > **pulpit zdalny Host sesji** > **Licencjonowanie**.
-5. Wybierz pozycję **Ustaw tryb licencjonowania pulpit zdalny**.
-6. W otwartym oknie, najpierw wybierz opcję **włączone**, a następnie w obszarze Opcje Określ tryb licencjonowania dla serwera hosta sesji usług pulpitu zdalnego dla **danego użytkownika**.
-7. Wybierz przycisk **Zastosuj**.
-8. Kliknij przycisk **OK**.
-9.  Uruchom ponownie komputer.
+Jeśli numer wersji jest taki sam, jak "1809", zainstaluj [aktualizację KB4516077](https://support.microsoft.com/help/4516077).
 
 ### <a name="version-1903"></a>Wersja 1903
 
-Jeśli numer wersji to "1903", postępuj zgodnie z następującymi instrukcjami:
-
-1. Zaloguj się na komputerze przy użyciu konta administratora.
-2. Uruchom **gpedit. msc** , aby otworzyć Edytor zasady grupy.
-3. W obszarze Konfiguracja komputera przejdź do **pozycji Szablony administracyjne** > **Windows Components** > **usługi pulpitu zdalnego** > **pulpit zdalny Host sesji** > **Licencjonowanie**.
-4. Wybierz pozycję **Ustaw tryb licencjonowania pulpit zdalny**.
-6. W otwartym oknie, najpierw wybierz opcję **włączone**, a następnie w obszarze Opcje Określ tryb licencjonowania dla serwera hosta sesji usług pulpitu zdalnego na **użytkownika**, jak pokazano na poniższej ilustracji.
-    
-    ![Zrzut ekranu przedstawiający okno "Ustawianie trybu licencjonowania Pulpit zdalny" skonfigurowany zgodnie z instrukcjami w kroku 6.](media/group-policy-editor-per-user.png)
-
-7. Wybierz przycisk **Zastosuj**.
-8. Kliknij przycisk **OK**.
-9.  Uruchom ponownie komputer.
+Jeśli numer wersji jest taki sam, jak "1903", zainstaluj [aktualizację KB4517211](https://support.microsoft.com/help/4517211).
 
 ## <a name="next-steps"></a>Następne kroki
 
