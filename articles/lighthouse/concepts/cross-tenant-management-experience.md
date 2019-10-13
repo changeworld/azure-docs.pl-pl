@@ -4,15 +4,15 @@ description: Zarządzanie zasobami delegowanymi przez platformę Azure umożliwi
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 09/25/2019
+ms.date: 10/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: ab0362af9a3eec698150c135fd98283c9db2c833
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: HT
+ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286609"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300986"
 ---
 # <a name="cross-tenant-management-experiences"></a>Środowiska zarządzania wieloma dzierżawami
 
@@ -58,6 +58,7 @@ Obecnie środowisko zarządzania między dzierżawcami obsługuje następujące 
 - Wyświetlanie alertów dotyczących delegowanych subskrypcji w Azure Portal lub programowo przy użyciu wywołań interfejsu API REST, z możliwością wyświetlania alertów we wszystkich subskrypcjach
 - Wyświetl szczegóły dziennika aktywności dla delegowanych subskrypcji
 - Log Analytics: wykonywanie zapytań dotyczących danych ze zdalnych obszarów roboczych klientów w wielu dzierżawcach
+- Tworzenie alertów w dzierżawach klientów, które wyzwalają automatyzację, taką jak Azure Automation elementów Runbook lub Azure Functions, w dzierżawie dostawcy usług za pomocą elementów webhook
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -65,7 +66,7 @@ Obecnie środowisko zarządzania między dzierżawcami obsługuje następujące 
 - Tworzenie i edytowanie definicji zasad w ramach delegowanej subskrypcji
 - Przypisywanie definicji zasad zdefiniowanych przez klienta w ramach delegowanej subskrypcji
 - Klienci widzą zasady utworzone przez dostawcę usług wraz ze wszystkimi utworzonymi przez siebie zasadami
-- Może skorygować przydziały deployIfNotExists w dzierżawach klientów, jeśli klient skonfigurował zarządzaną tożsamość i *roleDefinitionIds* dla tego przypisania zasad
+- Może [skorygować deployIfNotExists lub zmodyfikować przypisania w ramach dzierżawy klienta](../how-to/deploy-policy-remediation.md)
 
 [Wykres zasobów platformy Azure](https://docs.microsoft.com/azure/governance/resource-graph/):
 
