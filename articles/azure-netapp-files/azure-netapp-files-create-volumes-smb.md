@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: bd00c04ecfc211ae4ed410e886c0fe6553bea241
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827507"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300528"
 ---
-# <a name="create-an-smb-volume-for-azure-netapp-files"></a>Tworzenie woluminu SMB dla Azure NetApp Files
+# <a name="create-an-smb-volume-for-azure-netapp-files"></a>Tworzenie woluminu SMB dla usługi Azure NetApp Files
 
-Azure NetApp Files obsługuje woluminy NFS i SMBv3. Zużycie pojemności woluminu odniesie się do pojemności zainicjowanej przez pulę. W tym artykule pokazano, jak utworzyć wolumin SMBv3. Jeśli chcesz utworzyć wolumin systemu plików NFS, zobacz [Tworzenie woluminu NFS dla Azure NetApp Files](azure-netapp-files-create-volumes.md). 
+Azure NetApp Files obsługuje woluminy NFS i SMBv3. Użycie pojemności woluminu jest liczone jako użycie aprowizowanej pojemności puli. W tym artykule pokazano, jak utworzyć wolumin SMBv3. Jeśli chcesz utworzyć wolumin systemu plików NFS, zobacz [Tworzenie woluminu NFS dla Azure NetApp Files](azure-netapp-files-create-volumes.md). 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem 
-Należy już skonfigurować pulę pojemności.   
+Potrzebujesz skonfigurowanej puli pojemności.   
 [Konfigurowanie puli pojemności](azure-netapp-files-set-up-capacity-pool.md)   
-Podsieć musi być delegowana do Azure NetApp Files.  
-[Delegowanie podsieci do Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+Podsieć musi być delegowana do usługi Azure NetApp Files.  
+[Delegowanie podsieci do usługi Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="requirements-for-active-directory-connections"></a>Wymagania dotyczące Active Directory połączeń
 
@@ -40,16 +40,16 @@ Podsieć musi być delegowana do Azure NetApp Files.
 * Odpowiednie porty muszą być otwarte na odpowiednim serwerze Windows Active Directory (AD).  
     Wymagane porty są następujące: 
 
-    |     Usługa           |     Port     |     Protokół     |
+    |     Usługa           |     Port     |     Protocol (Protokół)     |
     |-----------------------|--------------|------------------|
     |    Usługi sieci Web AD    |    9389      |    TCP           |
-    |    systemem DNS,                |    53        |    TCP           |
-    |    systemem DNS,                |    53        |    UDP           |
-    |    Ruch             |    Brak       |    Odpowiedź echa    |
-    |    Kerberos           |    464       |    TCP           |
-    |    Kerberos           |    464       |    UDP           |
-    |    Kerberos           |    88        |    TCP           |
-    |    Kerberos           |    88        |    UDP           |
+    |    DNS                |    53        |    TCP           |
+    |    DNS                |    53        |    UDP           |
+    |    Ruch             |    ND       |    Odpowiedź echa    |
+    |    Udziałem           |    464       |    TCP           |
+    |    Udziałem           |    464       |    UDP           |
+    |    Udziałem           |    88        |    TCP           |
+    |    Udziałem           |    88        |    UDP           |
     |    LDAP               |    389       |    TCP           |
     |    LDAP               |    389       |    UDP           |
     |    LDAP               |    3268      |    TCP           |
@@ -112,45 +112,48 @@ Podsieć musi być delegowana do Azure NetApp Files.
 
     ![Połączenia Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
+> [!NOTE] 
+> Po zapisaniu połączenia Active Directory można edytować pola username i Password. Po zapisaniu połączenia nie można edytować żadnych innych wartości. Jeśli trzeba zmienić inne wartości, należy najpierw usunąć wszystkie wdrożone woluminy SMB, a następnie usunąć i utworzyć ponownie połączenie Active Directory.
+
 ## <a name="add-an-smb-volume"></a>Dodawanie woluminu SMB
 
 1. Kliknij blok **woluminy** w bloku pule pojemności. 
 
     ![Przejdź do woluminów](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
-2. Kliknij pozycję **+ Dodaj wolumin** , aby utworzyć wolumin.  
+2. Kliknij pozycję **+ Dodaj wolumin**, aby utworzyć wolumin.  
     Zostanie wyświetlone okno Tworzenie woluminu.
 
 3. W oknie Tworzenie woluminu kliknij pozycję **Utwórz** i podaj informacje dla następujących pól:   
     * **Nazwa woluminu**      
         Określ nazwę tworzonego woluminu.   
 
-        Nazwa woluminu musi być unikatowa w ramach każdej puli pojemności. Musi składać się z co najmniej trzech znaków. Można użyć dowolnych znaków alfanumerycznych.   
+        Nazwa woluminu musi być unikatowa w ramach każdej puli pojemności. Musi zawierać co najmniej trzy znaki. Można użyć dowolnych znaków alfanumerycznych.   
 
         Nie można użyć `default` jako nazwy woluminu.
 
     * **Pula pojemności**  
         Określ pulę pojemności, w której ma zostać utworzony wolumin.
 
-    * **Działa**  
-        Określ ilość pamięci logicznej, która jest przypisana do woluminu.  
+    * **Limit przydziału**  
+        Określ wielkość magazynu logicznego, który zostanie przydzielony do woluminu.  
 
-        Pole **dostępne przydziału** pokazuje ilość nieużywanych miejsc w wybranej puli pojemności, która może być używana do tworzenia nowego woluminu. Rozmiar nowego woluminu nie może przekraczać dostępnego limitu przydziału.  
+        W polu **Dostępny limit przydziału** jest wyświetlana ilość nieużywanego miejsca w wybranej puli pojemności, które można wykorzystać do utworzenia nowego woluminu. Rozmiar nowego woluminu nie może przekraczać dostępnego limitu przydziału.  
 
     * **Sieć wirtualna**  
         Określ sieć wirtualną platformy Azure, z której chcesz uzyskać dostęp do woluminu.  
 
         Określona Sieć wirtualna musi mieć podsieć delegowaną do Azure NetApp Files. Dostęp do usługi Azure NetApp Files można uzyskać tylko z tej samej sieci wirtualnej lub z sieci wirtualnej, która znajduje się w tym samym regionie co wolumin za pośrednictwem sieci równorzędnej. Możesz również uzyskać dostęp do woluminu z sieci lokalnej za pośrednictwem usługi Express Route.   
 
-    * **Podsieci**  
-        Określ podsieć, która ma być używana dla woluminu.  
-        Określona podsieć musi być delegowana do Azure NetApp Files. 
+    * **Podsieć**  
+        Określ podsieć, której chcesz użyć na potrzeby woluminu.  
+        Określana podsieć musi być delegowana do usługi Azure NetApp Files. 
         
-        Jeśli podsieć nie została oddelegowana, można kliknąć pozycję **Utwórz nową** na stronie Tworzenie woluminu. Następnie na stronie Tworzenie podsieci Określ informacje o podsieci, a następnie wybierz pozycję **Microsoft. NetApp/Volumes** , aby delegować podsieć do Azure NetApp Files. W każdej sieci wirtualnej można delegować tylko jedną podsieć do Azure NetApp Files.   
+        Jeśli podsieć nie została delegowana, można kliknąć pozycję **Utwórz nowe** na stronie Utwórz wolumin. Następnie na stronie Utwórz podsieć określ informacje o podsieci i wybierz pozycję **Microsoft.NetApp/woluminy**, aby delegować podsieć dla usługi Azure NetApp Files. W każdej sieci wirtualnej można delegować tylko jedną podsieć do Azure NetApp Files.   
  
         ![Tworzenie woluminu](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
-        ![Utwórz podsieć](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+        ![Tworzenie podsieci](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
 4. Kliknij pozycję **Protokół** i wykonaj następujące informacje:  
     * Wybierz opcję **SMB** jako typ protokołu dla woluminu. 
@@ -163,12 +166,12 @@ Podsieć musi być delegowana do Azure NetApp Files.
 
     Utworzony wolumin zostanie wyświetlony na stronie woluminy. 
  
-    Wolumin dziedziczy subskrypcję, grupę zasobów, atrybuty lokalizacji z puli pojemności. Aby monitorować stan wdrożenia woluminu, można użyć karty powiadomienia.
+    Wolumin dziedziczy atrybuty Subskrypcja, Grupa zasobów i Lokalizacja z puli pojemności. Stan wdrożenia woluminu możesz monitorować na karcie Powiadomienia.
 
 ## <a name="next-steps"></a>Następne kroki  
 
 * [Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych z systemem Windows lub Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [Limity zasobów dla Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Limity zasobów dla usługi Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Funkcja SMB — często zadawane pytania](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
-* [Informacje o integracji sieci wirtualnej dla usług platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [Informacje o integracji z siecią wirtualną dla usług platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
 * [Instalowanie nowego lasu Active Directory przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

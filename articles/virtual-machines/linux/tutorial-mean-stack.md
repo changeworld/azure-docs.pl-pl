@@ -15,31 +15,31 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 856e3e41e624844f1d7cbf5bf4cd1611bc10ecbb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5a1d1f738d8f32777bc4a6ea7d04fb0abf2accf7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081521"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300808"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Samouczek: tworzenie stosu MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure
 
 W tym samouczku pokazano, jak zaimplementować stos MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure. Utworzony stos MEAN umożliwia dodawanie i usuwanie książek w bazie danych oraz wyświetlanie ich listy. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Utwórz maszynę wirtualną z systemem Linux
+> * Tworzenie maszyny wirtualnej z systemem Linux
 > * Instalowanie środowiska Node.js
 > * Instalowanie bazy danych MongoDB i konfigurowanie serwera
 > * Instalowanie platformy Express i konfigurowanie tras do serwera
 > * Uzyskiwanie dostępu do tras przy użyciu AngularJS
 > * Uruchamianie aplikacji
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+W tym samouczku jest używany interfejs wiersza polecenia w [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć Cloud Shell, wybierz opcję **Wypróbuj** z góry dowolnego bloku kodu.
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 
-## <a name="create-a-linux-vm"></a>Utwórz maszynę wirtualną z systemem Linux
+## <a name="create-a-linux-vm"></a>Tworzenie maszyny wirtualnej z systemem Linux
 
 Utwórz nową grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group) i utwórz maszynę wirtualną z systemem Linux za pomocą polecenia [az vm create](https://docs.microsoft.com/cli/azure/vm). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
@@ -323,7 +323,7 @@ sudo apt-get install -y nodejs
     nodejs server.js
     ```
 
-2. Otwórz w przeglądarce internetowej adres zarejestrowany dla maszyny wirtualnej. Na przykład *http:\//13.72.77.9:3300*. Powinna zostać wyświetlona zawartość podobna do tej strony:
+2. Otwórz w przeglądarce internetowej adres zarejestrowany dla maszyny wirtualnej. Na przykład *http: \//13.72.77.9:3300*. Powinna zostać wyświetlona zawartość podobna do tej strony:
 
     ![Rekord książki](media/tutorial-mean/meanstack-init.png)
 
@@ -342,7 +342,7 @@ sudo apt-get install -y nodejs
 W ramach tego samouczka utworzono aplikację internetową, która śledzi rekordy książek przy użyciu stosu MEAN na maszynie wirtualnej z systemem Linux. W tym samouczku omówiono:
 
 > [!div class="checklist"]
-> * Utwórz maszynę wirtualną z systemem Linux
+> * Tworzenie maszyny wirtualnej z systemem Linux
 > * Instalowanie środowiska Node.js
 > * Instalowanie bazy danych MongoDB i konfigurowanie serwera
 > * Instalowanie platformy Express i konfigurowanie tras do serwera

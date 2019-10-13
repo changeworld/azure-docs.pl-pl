@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do usługi BLOB Storage i usług połączonych programu Visual Studio (Cloud Services) | Microsoft Docs
+title: Wprowadzenie do usługi BLOB Storage przy użyciu programu Visual Studio (Cloud Services)
 description: Jak rozpocząć korzystanie z usługi Azure Blob Storage w projekcie usługi w chmurze w programie Visual Studio po nawiązaniu połączenia z kontem magazynu przy użyciu usług połączonych programu Visual Studio
 services: storage
 author: ghogen
@@ -12,18 +12,19 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 56aceb4c782c15f69c7994df787b4b950523e8b5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: d151e55f627166d8ad7d8affa53740e86cd1e501
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510709"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298796"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Rozpoczynanie pracy z usługą Azure Blob Storage i usługami połączonymi programu Visual Studio (projekty usług Cloud Services)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a>Omówienie
-W tym artykule opisano sposób rozpoczynania pracy z usługą Azure Blob Storage po utworzeniu konta usługi Azure Storage lub przywoływaniu go za pomocą okna dialogowego **Dodawanie usług połączonych** programu Visual Studio w projekcie usług w chmurze programu Pokażemy Ci, jak uzyskać dostęp do kontenerów obiektów blob oraz jak wykonywać typowe zadania, takie jak przekazywanie, tworzenie list i pobieranie obiektów BLOB. Przykłady są zapisywane w języku C\# i używają [Microsoft Azure Storage biblioteki klienckiej dla platformy .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+## <a name="overview"></a>Przegląd
+W tym artykule opisano sposób rozpoczynania pracy z usługą Azure Blob Storage po utworzeniu konta usługi Azure Storage lub przywoływaniu go za pomocą okna dialogowego **Dodawanie usług połączonych** programu Visual Studio w projekcie usług w chmurze programu Pokażemy Ci, jak uzyskać dostęp do kontenerów obiektów blob oraz jak wykonywać typowe zadania, takie jak przekazywanie, tworzenie list i pobieranie obiektów BLOB. Przykłady są zapisywane w języku C @ no__t-0 i używają [biblioteki klienta Microsoft Azure Storage dla platformy .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 Azure Blob Storage to usługa do przechowywania dużych ilości danych bez struktury, do których można uzyskiwać dostęp z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Pojedynczy obiekt BLOB może być dowolnym rozmiarem. Obiekty blob mogą być takie jak obrazy, pliki audio i wideo, dane pierwotne i pliki dokumentów.
 

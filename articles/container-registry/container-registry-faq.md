@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: cbdf4f203204df2d26eb7c908167c1e1ca10d0ab
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264321"
+ms.locfileid: "72286517"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące Azure Container Registry
 
@@ -420,7 +420,7 @@ Przeglądarka może nie być w stanie wysłać żądania pobrania repozytoriów 
 * Bloki usługi AD
 * Błędy DNS
 
-Skontaktuj się z administratorem sieci lub Sprawdź konfigurację sieci i łączność. Ponadto można również wypróbować sesję incognito lub prywatną w przeglądarce, aby uniknąć nieodświeżonej pamięci podręcznej lub plików cookie przeglądarki.
+Skontaktuj się z administratorem sieci lub Sprawdź konfigurację sieci i łączność. Spróbuj uruchomić `az acr check-health -n yourRegistry` przy użyciu interfejsu wiersza polecenia platformy Azure, aby sprawdzić, czy środowisko jest w stanie połączyć się z Container Registry. Ponadto można również wypróbować sesję incognito lub prywatną w przeglądarce, aby uniknąć nieodświeżonej pamięci podręcznej lub plików cookie przeglądarki.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Jak mogę zbierać ślady http w systemie Windows?
 

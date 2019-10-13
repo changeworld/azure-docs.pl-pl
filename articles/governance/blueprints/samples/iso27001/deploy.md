@@ -1,17 +1,17 @@
 ---
-title: Przykład — plan ISO 27001 — kroki wdrażania
+title: Przykładowy plan ISO 27001 — kroki wdrażania
 description: Wdróż kroki dla przykładowego planu ISO 27001, w tym szczegóły parametru artefaktu.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 338741cc2d5bc019c5a33fdeb20ada6b05f3eef9
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 00e1f7bf0ff783a82d7a8458c44c8c50322632b3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248415"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299092"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Wdróż przykład strategii ISO 27001
 

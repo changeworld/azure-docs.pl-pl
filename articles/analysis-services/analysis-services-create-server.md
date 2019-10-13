@@ -2,20 +2,19 @@
 title: Szybki start — Tworzenie serwera usług Analysis Services przy użyciu witryny Azure Portal | Microsoft Docs
 description: Dowiedz się, jak utworzyć wystąpienie serwera usług Analysis Services na platformie Azure.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aae5b87e49b6d64e4c9ee854b65821d65969e66b
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: e6973ee311f1d3f5ba19714695f67bd321d953b7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536801"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295041"
 ---
-# <a name="quickstart-create-a-server---portal"></a>Szybki start: Tworzenie serwera — Portal
+# <a name="quickstart-create-a-server---portal"></a>Szybki start: tworzenie serwera — portal
 
 W tym przewodniku Szybki start opisano, jak utworzyć zasób serwera usług Analysis Services w ramach subskrypcji platformy Azure, korzystając z portalu.
 
@@ -37,16 +36,16 @@ W tym przewodniku Szybki start opisano, jak utworzyć zasób serwera usług Anal
 
 2. W sekcji **Analysis Services** wypełnij wymagane pola, a następnie naciśnij przycisk **Utwórz**.
    
-   * **Nazwa serwera**: wpisz unikatową nazwę, która będzie używana do odwoływania się do serwera. Nazwa serwera musi zaczynać się małą literę i składać się z od 3 do 128 małe litery i cyfry. Białych znaków i znaki specjalne są niedozwolone.
+   * **Nazwa serwera**: wpisz unikatową nazwę, która będzie używana do odwoływania się do serwera. Nazwa serwera musi rozpoczynać się od małej litery i zawierać od 3 do 128 małych liter i cyfr. Odstępy i znaki specjalne są niedozwolone.
    * **Subskrypcja**: wybierz subskrypcję, z którą będzie skojarzony ten serwer.
    * **Grupa zasobów**: utwórz nową grupę zasobów lub wybierz istniejącą. Grupy zasobów ułatwiają zarządzanie kolekcją zasobów platformy Azure. Aby dowiedzieć się więcej, zobacz [grupy zasobów](../azure-resource-manager/resource-group-overview.md).
    * **Lokalizacja**: lokalizacja centrum danych Azure, w którym będzie hostowany ten serwer. Wybierz lokalizację najbliższą względem Twojej największej bazy użytkowników.
-   * **Warstwa cenowa**: Wybierz warstwę cenową. Jeśli testujesz tę funkcję i planujesz zainstalować przykładową modelową bazę danych, wybierz bezpłatną warstwę **D1**. Aby dowiedzieć się więcej, zobacz [cennik usług Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/). 
-   * **Administrator**: domyślnie jest to konto użyte do bieżącego logowania. Możesz wybrać inne konto w usłudze Azure Active Directory.
-   * **Ustawienie Magazyn kopii zapasowych**: Opcjonalny. Jeśli masz już [konto magazynu](../storage/common/storage-introduction.md), możesz je wskazać jako domyślny magazyn kopii zapasowych modelowej bazy danych. Możesz również określić ustawienia [tworzenia i przywracania kopii zapasowych](analysis-services-backup.md) później.
-   * **Czas wygaśnięcia klucza magazynu**: Opcjonalny. Określ czas wygaśnięcia klucza magazynu.
+   * **Warstwa cenowa**: wybierz warstwę cenową. Jeśli testujesz tę funkcję i planujesz zainstalować przykładową modelową bazę danych, wybierz bezpłatną warstwę **D1**. Aby dowiedzieć się więcej, zobacz [cennik usług Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/). 
+   * **Administrator**: domyślnie jest to aktualnie zalogowane konto. Możesz wybrać inne konto w usłudze Azure Active Directory.
+   * **Ustawienie Magazyn kopii zapasowych**: opcjonalne. Jeśli masz już [konto magazynu](../storage/common/storage-introduction.md), możesz je wskazać jako domyślny magazyn kopii zapasowych modelowej bazy danych. Możesz również określić ustawienia [tworzenia i przywracania kopii zapasowych](analysis-services-backup.md) później.
+   * **Czas wygaśnięcia klucza magazynu**: opcjonalne. Określ czas wygaśnięcia klucza magazynu.
 
-Tworzenie serwera zwykle trwa mniej niż minutę. W przypadku wybrania opcji **Dodaj do portalu** przejdź do portalu, aby zobaczyć nowy serwer. Możesz też wybrać pozycję **Wszystkie usługi** > **Analysis Services**, aby sprawdzić, czy serwer jest gotowy. Serwery obsługują modele tabelaryczne na poziomie zgodności 1200 i wyższym. Poziom zgodności modelu jest określona w programie SSDT lub programu SSMS.
+Tworzenie serwera zwykle trwa mniej niż minutę. W przypadku wybrania opcji **Dodaj do portalu** przejdź do portalu, aby zobaczyć nowy serwer. Możesz też wybrać pozycję **Wszystkie usługi** > **Analysis Services**, aby sprawdzić, czy serwer jest gotowy. Serwery obsługują modele tabelaryczne na poziomach zgodności 1200 i wyższych. Poziom zgodności modelu jest określony w SSDT lub SSMS.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -55,10 +54,10 @@ Gdy serwer nie będzie już potrzebny, usuń go. Na stronie **Przegląd** serwer
  ![Czyszczenie](./media/analysis-services-create-server/aas-create-server-cleanup.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym przewodniku Szybki Start przedstawiono sposób tworzenia serwera w ramach subskrypcji platformy Azure. Teraz, po utworzeniu serwera, możesz go zabezpieczyć, konfigurując (opcjonalną) zaporę serwera. Możesz też dodać do serwera podstawowy przykładowy model danych bezpośrednio w portalu. Przykładowy model służy do zdobywania wiedzy na temat konfigurowania ról modelowej bazy danych oraz testowania połączeń klienckich. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego dodawania przykładowego modelu.
 
 > [!div class="nextstepaction"]
-> [Szybki start: Konfigurowanie zapory serwera — Portal](analysis-services-qs-firewall.md)   
+> [Szybki start: konfigurowanie zapory serwera — Portal](analysis-services-qs-firewall.md)   
 > [!div class="nextstepaction"]
-> [Samouczek: dodawanie przykładowego modelu do serwera](analysis-services-create-sample-model.md)
+> [Tutorial: Add a sample model to your server](analysis-services-create-sample-model.md) (Samouczek: dodawanie przykładowego modelu do serwera)

@@ -2,20 +2,19 @@
 title: Samouczek — konfigurowanie ról administratora i użytkowników usług Azure Analysis Services | Microsoft Docs
 description: Dowiedz się, jak skonfigurować role usług Azure Analysis Services.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b36541cde457b7faf8b3a020cdde01f049ceb652
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b70d1502985a1ffc0ebdf6fcb487cda3992d1c19
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932211"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294432"
 ---
-# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Samouczek: Konfigurowanie ról administratora i użytkowników serwera
+# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Samouczek: konfigurowanie ról administratora i użytkowników serwera
 
  W tym samouczku użyjesz programu SQL Server Management Studio (SSMS), aby połączyć się z serwerem na platformie Azure w celu skonfigurowania ról administratora serwera i modelowej bazy danych. Zostaną w nim również przedstawione informacje na temat [języka TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200). TMSL to język skryptów oparty na notacji JSON, obsługujący modele tabelaryczne na poziomie zgodności 1200 lub wyższym. Może być używany do automatyzacji wielu zadań związanych z modelowaniem tabelarycznym. Język TMSL jest często używany w programie PowerShell, ale w tym samouczku jest używany w edytorze zapytań XMLA w programie SSMS. Podczas pracy z tym samouczkiem wykonasz następujące zadania: 
   
@@ -53,7 +52,7 @@ W pozostałych zadaniach użyjesz programu SSMS, aby połączyć się z serwerem
 
 1. W programie SSMS wybierz pozycję **Eksplorator obiektów**, a następnie kliknij pozycję **Połącz** > **Analysis Services**.
 
-    ![Połącz](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Łączenie](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. W oknie dialogowym **Połączenie z serwerem** w polu **Nazwa serwera** skopiuj i wklej nazwę serwera skopiowaną z portalu. W polu **Uwierzytelnianie** wybierz pozycję **Active Directory — Uniwersalne z obsługą uwierzytelniania wieloskładnikowego**, a następnie wprowadź nazwę konta użytkownika i naciśnij przycisk **Połącz**.
    
@@ -144,5 +143,5 @@ Gdy konta i role użytkownika lub grupy nie są już potrzebne, można je usuną
 W tym samouczku przedstawiono sposób łączenia się z serwerem Azure AD i pracy z przykładowymi modelowymi bazami danych adventureworks oraz właściwościami w programie SSMS. Przedstawiono również sposób korzystania ze skryptów SSMS i TMSL w celu dodawania użytkowników lub grup do istniejących i nowych ról. Teraz, po skonfigurowaniu uprawnień użytkowników na serwerze i w przykładowej modelowej bazie danych, Ty i inni użytkownicy możecie łączyć się z nimi za pomocą aplikacji klienckich, takich jak Power BI. Aby dowiedzieć się więcej, przejdź do następnego samouczka. 
 
 > [!div class="nextstepaction"]
-> [Samouczek: Nawiązywanie połączenia za pomocą programu Power BI Desktop](analysis-services-tutorial-pbid.md)
+> [Samouczek: nawiązywanie połączenia za pomocą programu Power BI Desktop](analysis-services-tutorial-pbid.md)
 

@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 802b4deb91f1df784ac0aed2952d3f915b54ce73
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699716"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299585"
 ---
 # <a name="how-to-deploy-azure-files"></a>Jak wdrożyć usługę Pliki Azure
-[Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. W tym artykule przedstawiono, jak praktycznie wdrożyć Azure Files w organizacji.
+[Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. W tym artykule przedstawiono, jak praktycznie wdrożyć Azure Files w organizacji.
 
 Zdecydowanie zalecamy zapoznanie się z [planowaniem wdrożenia Azure Files](storage-files-planning.md) przed wykonaniem kroków opisanych w tym artykule.
 
@@ -28,13 +28,13 @@ W tym artykule założono, że wykonano już następujące czynności:
 ## <a name="transfer-data-into-azure-files"></a>Przesyłanie danych do Azure Files
 Możesz chcieć migrować istniejące udziały plików, takie jak te przechowywane lokalnie, do nowego udziału plików platformy Azure. W tej sekcji przedstawiono sposób przenoszenia danych do udziału plików platformy Azure za pomocą kilku popularnych metod, które opisano szczegółowo w [przewodniku planowania](storage-files-planning.md#data-transfer-method)
 
-### <a name="azure-file-sync"></a>Azure File Sync
+### <a name="azure-file-sync"></a>Usługa Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez transformowanie serwerów z systemem Windows do szybkiej pamięci podręcznej udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
 
 Azure File Sync może służyć do migrowania danych do udziału plików platformy Azure, nawet jeśli mechanizm synchronizacji nie jest potrzebny do długoterminowego użycia. Więcej informacji na temat sposobu korzystania z Azure File Sync do transferowania danych do udziału plików platformy Azure można znaleźć w temacie [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md) i [sposób wdrażania Azure File Sync](storage-sync-files-deployment-guide.md).
 
 ### <a name="azure-importexport"></a>Usługa Azure Import/Export
-Usługa Azure Import/Export umożliwia bezpieczne przesyłanie dużych ilości danych do udziału plików platformy Azure przez wysyłanie dysków twardych do centrum danych platformy Azure. Aby zapoznać się z bardziej szczegółowym omówieniem usługi, zobacz temat [Korzystanie z usługi Microsoft Azure Import/Export w celu transferowania danych do magazynu Azure](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
+Usługa Azure Import/Export umożliwia bezpieczne przesyłanie dużych ilości danych do udziału plików platformy Azure przez wysyłanie dysków twardych do centrum danych platformy Azure. Aby zapoznać się z bardziej szczegółowym omówieniem usługi, zobacz temat [Używanie usługi Microsoft Azure Import/Export do transferowania danych do magazynu platformy Azure](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 > [!Note]  
 > Usługa Azure Import/Export nie obsługuje teraz eksportowania plików z udziału plików platformy Azure.
@@ -63,9 +63,9 @@ Poniższe kroki spowodują zaimportowanie danych z lokalizacji lokalnej do udzia
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    Można określić wiele udziałów z kontem magazynu. Aby uzyskać więcej informacji [, zobacz przygotowanie pliku CSV zestawu danych](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-the-dataset-csv-file) .
+    Można określić wiele udziałów z kontem magazynu. Aby uzyskać więcej informacji [, zobacz przygotowanie pliku CSV zestawu danych](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
-5. Utwórz plik CSV driveset. Plik CSV driveset zawiera listę dysków dostępnych dla lokalnego agenta eksportu. Na przykład następujące pliki CSV driveset zawierają listę `X:`dysków, `Y:`i `Z:` , które mają być używane w zadaniu lokalnego eksportu:
+5. Utwórz plik CSV driveset. Plik CSV driveset zawiera listę dysków dostępnych dla lokalnego agenta eksportu. Na przykład następujący plik CSV driveset zawiera listę dysków `X:`, `Y:` i `Z:`, które mają być używane w lokalnym zadaniu eksportu:
 
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -74,7 +74,7 @@ Poniższe kroki spowodują zaimportowanie danych z lokalizacji lokalnej do udzia
     Z,Format,SilentMode,Encrypt,
     ```
     
-    Aby uzyskać więcej informacji [, zobacz przygotowanie pliku CSV driveset](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file) .
+    Aby uzyskać więcej informacji [, zobacz przygotowanie pliku CSV driveset](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 6. Użyj [Narzędzia WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) , aby skopiować dane na jeden lub więcej dysków twardych.
 
@@ -90,13 +90,13 @@ Poniższe kroki spowodują zaimportowanie danych z lokalizacji lokalnej do udzia
 ### <a name="robocopy"></a>Robocopy
 Robocopy to dobrze znane narzędzie do kopiowania, które jest dostarczane z systemami Windows i Windows Server. Robocopy może służyć do transferowania danych do Azure Files przez zainstalowanie udziału plików lokalnie, a następnie użycie zainstalowanej lokalizacji jako miejsca docelowego w poleceniu Robocopy. Korzystanie z Robocopy jest bardzo proste:
 
-1. [Zainstaluj udział plików platformy Azure](storage-how-to-use-files-windows.md). W celu uzyskania optymalnej wydajności zalecamy zainstalowanie udziału plików platformy Azure lokalnie na serwerze, który zawiera dane. W niektórych przypadkach, na przykład gdy serwer plików, który obsługuje dane, jest urządzeniem NAS, może to nie być możliwe. W takim przypadku warto zainstalować udział plików platformy Azure na komputerze. W tym przykładzie jest `net use` używany w wierszu polecenia, aby zainstalować udział plików:
+1. [Zainstaluj udział plików platformy Azure](storage-how-to-use-files-windows.md). W celu uzyskania optymalnej wydajności zalecamy zainstalowanie udziału plików platformy Azure lokalnie na serwerze, który zawiera dane. W niektórych przypadkach, na przykład gdy serwer plików, który obsługuje dane, jest urządzeniem NAS, może to nie być możliwe. W takim przypadku warto zainstalować udział plików platformy Azure na komputerze. W tym przykładzie użyto `net use` w wierszu polecenia, aby zainstalować udział plików:
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
     ```
 
-2. Użyj `robocopy` w wierszu polecenia, aby przenieść dane do udziału plików platformy Azure:
+2. Aby przenieść dane do udziału plików platformy Azure, użyj `robocopy` w wierszu polecenia:
 
     ```
     robocopy <path-to-local-share> <path-to-azure-file-share> /E /Z /MT:32
@@ -137,7 +137,7 @@ $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net 
 ```
 
 ### <a name="linux"></a>Linux
-Prosty skrypt bash połączony z protokołem SSH może dać ten sam wynik w poniższym przykładzie. `$computer` Zmienna jest podobnie pozostała do wypełnienia przez użytkownika:
+Prosty skrypt bash połączony z protokołem SSH może dać ten sam wynik w poniższym przykładzie. Zmienna `$computer` jest analogiczna do wypełnienia przez użytkownika:
 
 ```
 computer = ("MyComputer1" "MyComputer2" "MyComputer3" "MyComputer4")
@@ -147,7 +147,7 @@ do
 done
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md)
 - [Rozwiązywanie problemów Azure Files w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)
 - [Rozwiązywanie problemów Azure Files w systemie Linux](storage-troubleshoot-linux-file-connection-problems.md)

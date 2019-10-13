@@ -4,14 +4,14 @@ description: Użyj Azure Portal, aby wyeksportować szablon Azure Resource Manag
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 15f527dfe517dcb3329b8b61243d7c5054eedb56
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6b37b61bea63ec626bfd709a40f177f43d1dfe03
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959695"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300375"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Eksport jednego i kilku zasobów do szablonu w Azure Portal
 
@@ -48,39 +48,36 @@ Wyeksportuj szablon przed wdrożeniem lub z historii, gdy:
 * Chcesz, aby szablon był łatwy do ponownego użycia.
 * Nie trzeba dołączać zmian wprowadzonych po oryginalnym wdrożeniu.
 
-## <a name="export-template-from-resource-group"></a>Eksportuj szablon z grupy zasobów
+## <a name="export-template-from-a-resource-group"></a>Eksportuj szablon z grupy zasobów
 
 Aby wyeksportować jeden lub więcej zasobów z grupy zasobów:
 
 1. Wybierz grupę zasobów zawierającą zasoby, które chcesz wyeksportować.
 
-1. Aby wyeksportować wszystkie zasoby w grupie zasobów, zaznacz opcję Wszystkie, a następnie **Eksportuj szablon**. Opcja **Eksportuj szablon** zostanie włączona tylko po wybraniu co najmniej jednego zasobu.
+1. Wybierz co najmniej jeden zasób, zaznaczając pola wyboru.  Aby zaznaczyć wszystkie, zaznacz pole wyboru po lewej stronie **nazwy**. Element menu **Eksportuj szablon** zostanie włączony dopiero po wybraniu co najmniej jednego zasobu.
 
    ![Eksportuj wszystkie zasoby](./media/export-template-portal/select-all-resources.png)
 
-1. Aby wybrać określone zasoby do wyeksportowania, zaznacz pola wyboru obok tych zasobów. Następnie wybierz pozycję **Eksportuj szablon**.
+    Na zrzucie ekranu jest zaznaczone tylko konto magazynu.
+1. Wybierz pozycję **Eksportuj szablon**.
 
-   ![Wybierz zasoby do wyeksportowania](./media/export-template-portal/select-resources.png)
-
-1. Zostanie wyświetlony wyeksportowany szablon i jest dostępny do pobrania.
+1. Zostanie wyświetlony wyeksportowany szablon, który jest dostępny do pobrania i wdrożenia.
 
    ![Pokaż szablon](./media/export-template-portal/show-template.png)
 
-## <a name="export-template-from-resource"></a>Eksportuj szablon z zasobu
+## <a name="export-template-from-a-resource"></a>Eksportuj szablon z zasobu
 
 Aby wyeksportować jeden zasób:
 
 1. Wybierz grupę zasobów zawierającą zasób, który chcesz wyeksportować.
 
-1. Wybierz zasób do wyeksportowania.
-
-   ![Wybierz zasób](./media/export-template-portal/select-link-resource.png)
+1. Wybierz zasób, który chcesz wyeksportować, aby otworzyć zasób.
 
 1. W przypadku tego zasobu wybierz pozycję **Eksportuj szablon** w lewym okienku.
 
    ![Eksportuj zasób](./media/export-template-portal/export-single-resource.png)
 
-1. Zostanie wyświetlony wyeksportowany szablon i jest dostępny do pobrania. Szablon zawiera tylko jeden zasób.
+1. Zostanie wyświetlony wyeksportowany szablon, który jest dostępny do pobrania i wdrożenia. Szablon zawiera tylko jeden zasób.
 
 ## <a name="export-template-before-deployment"></a>Eksportuj szablon przed wdrożeniem
 
@@ -92,9 +89,8 @@ Aby wyeksportować jeden zasób:
 
    ![Pobieranie szablonu](./media/export-template-portal/download-before-deployment.png)
 
-1. Szablon jest wyświetlany i jest dostępny do pobrania.
+1. Szablon jest wyświetlany i jest dostępny do pobrania i wdrożenia.
 
-   ![Pokaż szablon](./media/export-template-portal/show-template-before-deployment.png)
 
 ## <a name="export-template-after-deployment"></a>Eksportuj szablon po wdrożeniu
 

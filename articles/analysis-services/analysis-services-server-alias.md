@@ -1,50 +1,49 @@
 ---
-title: Usługa Azure Analysis Services alias serwerów nazw | Dokumentacja firmy Microsoft
-description: Opisuje sposób tworzenia i używania aliasów nazwy serwera.
+title: Nazwy serwerów aliasów Azure Analysis Services | Microsoft Docs
+description: Opisuje sposób tworzenia i używania aliasów nazw serwerów.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 66e6b4713591f099769543a75dcddec34f3d2e2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 161df354bae350df533f3991e551401fd56a4a65
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534321"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301077"
 ---
-# <a name="alias-server-names"></a>Alias serwera nazw
+# <a name="alias-server-names"></a>Nazwy serwerów aliasów
 
-Za pomocą aliasu nazwy serwera, użytkownicy mogą nawiązywać połączenie z serwerem usług Azure Analysis Services przy użyciu krótszy *alias* zamiast nazwy serwera. W przypadku łączenia się z aplikacji klienckiej, alias jest określony jako punktu końcowego za pomocą **łącze: / /** formatu protokołu. Punktu końcowego następnie zwraca nazwę prawdziwy serwer w celu nawiązania połączenia.
+Używając aliasu nazwy serwera, użytkownicy mogą łączyć się z serwerem Azure Analysis Services przy użyciu krótszego *aliasu* zamiast nazwy serwera. Podczas nawiązywania połączenia z aplikacji klienckiej alias jest określany jako punkt końcowy przy użyciu formatu protokołu **link://** . Punkt końcowy zwraca rzeczywistą nazwę serwera w celu nawiązania połączenia.
 
-Alias serwera nazw dla zastosowań dobre są:
+Nazwy serwerów aliasów są dobre dla:
 
-- Migrowanie modele między serwerami, nie wpływając na użytkowników. 
-- Serwer przyjaznej nazwy są łatwiejsze do zapamiętania przez użytkowników. 
-- Bezpośrednie użytkowników na innych serwerach o różnych porach dnia. 
-- Bezpośrednie użytkowników w różnych regionach z wystąpieniami, które są geograficznie bliżej, np. przy użyciu usługi Azure Traffic Manager. 
+- Migrowanie modeli między serwerami bez wpływu na użytkowników. 
+- Przyjazne nazwy serwerów są łatwiejsze dla użytkowników. 
+- Kierowanie użytkowników do różnych serwerów w różnych porach dnia. 
+- Kierowanie użytkowników w różnych regionach do wystąpień, które znajdują się geograficznie bliżej, tak jak w przypadku korzystania z usługi Azure Traffic Manager. 
 
-Punkt końcowy HTTPS, która zwraca prawidłową nazwę serwera usług Azure Analysis Services może służyć jako alias. Punkt końcowy musi obsługiwać protokół HTTPS za pośrednictwem portu 443 i port nie może być określony w identyfikatorze URI.
+Każdy punkt końcowy HTTPS, który zwraca poprawną nazwę serwera Azure Analysis Services może być używany jako alias. Punkt końcowy musi obsługiwać protokół HTTPS przez port 443, a port nie może być określony w identyfikatorze URI.
 
 ![Alias przy użyciu formatu linku](media/analysis-services-alias/aas-alias-browser.png)
 
-Podczas nawiązywania połączenia z klientem, nazwę serwera aliasu jest wprowadzane przy użyciu **łącze: / /** formatu protokołu. Na przykład w programie Power BI Desktop:
+Podczas nawiązywania połączenia z poziomu klienta nazwa serwera aliasu jest wprowadzana przy użyciu formatu protokołu **link://** . Na przykład w Power BI Desktop:
 
-![Połączenie programu Power BI Desktop](media/analysis-services-alias/aas-alias-connect-pbid.png)
+![Połączenie Power BI Desktop](media/analysis-services-alias/aas-alias-connect-pbid.png)
 
 ## <a name="create-an-alias"></a>Tworzenie aliasu
 
-Aby utworzyć punkt końcowy aliasu, można użyć dowolnej metody, która zwraca prawidłową nazwę serwera usług Azure Analysis Services. Na przykład odwołanie do pliku w usłudze Azure Storage Blob zawierają rzeczywiste server name, lub Utwórz i Opublikuj aplikację formularzy sieci Web ASP.NET.
+Aby utworzyć alias punktu końcowego, można użyć dowolnej metody, która zwraca prawidłową nazwę serwera Azure Analysis Services. Na przykład odwołanie do pliku na platformie Azure Blob Storage zawierające rzeczywistą nazwę serwera lub tworzenie i publikowanie aplikacji ASP.NET Web Forms.
 
-W tym przykładzie aplikacja formularzy sieci Web ASP.NET jest tworzony w programie Visual Studio. Strona wzorcowa odwołania i użytkownika kontroli są usuwane ze strony Default.aspx. Zawartość Default.aspx jest po prostu następująca dyrektywa strony:
+W tym przykładzie aplikacja formularzy sieci Web ASP.NET jest tworzona w programie Visual Studio. Odwołanie do strony głównej i kontrolka użytkownika są usuwane ze strony Default. aspx. Zawartość default. aspx jest po prostu następująca Dyrektywa Page:
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
 ```
 
-W zdarzeniu Page_Load w Default.aspx.cs używa metody Response.Write(), aby zwrócić nazwę serwera usług Azure Analysis Services.
+Zdarzenie Page_Load w Default.aspx.cs używa metody Response. Write () do zwrócenia nazwy serwera Azure Analysis Services.
 
 ```
 protected void Page_Load(object sender, EventArgs e)
@@ -56,4 +55,4 @@ protected void Page_Load(object sender, EventArgs e)
 ## <a name="see-also"></a>Zobacz także
 
 [Biblioteki klienckie](analysis-services-data-providers.md)   
-[Łączenie z programu Power BI Desktop](analysis-services-connect-pbi.md)
+[Połącz z Power BI Desktop](analysis-services-connect-pbi.md)

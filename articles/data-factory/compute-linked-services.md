@@ -7,28 +7,29 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 2daae1637c568b72d548330abbcb73da21b12683
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: ae3350b14ca1073a5fbb1a353b9301c57e7f1ea4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176850"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298327"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Środowiska obliczeniowe obsługiwane przez Azure Data Factory
 W tym artykule opisano różne środowiska obliczeniowe, za pomocą których można przetwarzać lub przekształcać dane. Zawiera on także szczegółowe informacje o różnych konfiguracjach (na żądanie a), które są obsługiwane przez Data Factory podczas konfigurowania połączonych usług łączących te środowiska obliczeniowe z fabryką danych Azure.
 
 Poniższa tabela zawiera listę środowisk obliczeniowych obsługiwanych przez Data Factory oraz działania, które można na nich uruchamiać. 
 
-| Środowisko obliczeniowe                                          | aktywności                                                   |
+| Środowisko obliczeniowe                                          | activities                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Klaster HDInsight na żądanie](#azure-hdinsight-on-demand-linked-service) lub [własny klaster usługi HDInsight](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md), [świnie](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), usługa [Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
-| [Azure Batch](#azure-batch-linked-service)                   | [Niestandardowy](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Działania Machine Learning: wykonywanie wsadowe i aktualizowanie zasobu](transform-data-using-machine-learning.md) |
-| [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
+| [Azure Batch](#azure-batch-linked-service)                   | [Niestandardowa](transform-data-using-dotnet-custom-activity.md)     |
+| [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Działania usługi Machine Learning: wykonywanie wsadowe i aktualizacja zasobów](transform-data-using-machine-learning.md) |
+| [Usługa Azure Machine Learning](#azure-machine-learning-service-linked-service) | [Azure Machine Learning wykonywania potoku](transform-data-machine-learning-service.md) |
+| [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Język U-SQL usługi Data Lake Analytics](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Procedura składowana](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notes](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
 
@@ -89,18 +90,18 @@ Poniższy kod JSON definiuje połączoną usługę HDInsight na żądanie z syst
 ```
 
 > [!IMPORTANT]
-> Klaster usługi HDInsight tworzy **kontener domyślny** w magazynie obiektów BLOB określonym w kodzie JSON (**linkedServiceName**). Usługa HDInsight nie usuwa tego kontenera w przypadku usunięcia klastra. Takie zachowanie jest zaprojektowane. Dzięki połączonej usłudze HDInsight na żądanie klaster usługi HDInsight jest tworzony za każdym razem, gdy trzeba przetworzyć wycinek, chyba że istnieje aktywny klaster (**TimeToLive**) i jest usuwany po zakończeniu przetwarzania. 
+> Klaster usługi HDInsight tworzy **kontener domyślny** w magazynie obiektów blob określonym w kodzie JSON (**linkedServiceName**). Usługa HDInsight nie powoduje usunięcia tego kontenera w przypadku usunięcia klastra. To zachowanie jest celowe. W przypadku połączonej usługi HDInsight na żądanie klaster usługi HDInsight jest tworzony za każdym razem, gdy trzeba przetworzyć wycinek — o ile w tym momencie nie istnieje aktywny klaster (**timeToLive**) — i zostaje usunięty po zakończeniu przetwarzania. 
 >
-> W przypadku większej liczby przebiegów działania zobaczysz wiele kontenerów w magazynie obiektów blob platformy Azure. Jeśli nie są one potrzebne do rozwiązywania problemów z zadaniami, można je usunąć, aby zmniejszyć koszty magazynowania. Nazwy tych kontenerów są zgodne ze wzorcem: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Użyj narzędzi, takich jak [Microsoft Eksplorator usługi Storage](https://storageexplorer.com/) , aby usunąć kontenery w usłudze Azure Blob Storage.
+> W przypadku większej liczby przebiegów działania zobaczysz wiele kontenerów w magazynie obiektów blob platformy Azure. Jeśli nie są potrzebne do rozwiązywania problemów z zadaniami, można je usunąć, aby zmniejszyć koszt przechowywania. Nazwy tych kontenerów są zgodne z następującym wzorcem: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Aby usunąć kontenery z usługi Azure Blob Storage, użyj takich narzędzi, jak [Microsoft Storage Explorer](https://storageexplorer.com/).
 >
 > 
 
 ### <a name="properties"></a>Właściwości
 | Właściwość                     | Opis                              | Wymagane |
 | ---------------------------- | ---------------------------------------- | -------- |
-| — typ                         | Właściwość Type powinna mieć wartość **HDInsightOnDemand**. | Tak      |
+| type                         | Właściwość Type powinna mieć wartość **HDInsightOnDemand**. | Tak      |
 | clusterSize                  | Liczba węzłów procesu roboczego/danych w klastrze. Klaster usługi HDInsight jest tworzony z 2 węzłami głównymi wraz z liczbą węzłów procesu roboczego określonych dla tej właściwości. Węzły mają rozmiar Standard_D3, który ma 4 rdzenie, więc klaster z 4 węzłami roboczymi zajmuje 24 rdzenie (4 @ no__t-04 = 16 rdzeni dla węzłów procesu roboczego i 2 @ no__t-14 = 8 rdzeni dla węzłów głównych). Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie klastrów w usłudze HDInsight za pomocą usługi Hadoop, Spark, Kafka i innych](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . | Tak      |
-| linkedServiceName            | Połączona usługa Azure Storage, która będzie używana przez klaster na żądanie do przechowywania i przetwarzania danych. Klaster HDInsight jest tworzony w tym samym regionie co konto usługi Azure Storage. Usługa Azure HDInsight ma ograniczenie łącznej liczby rdzeni, których można użyć w każdym obsługiwanym regionie platformy Azure. Upewnij się, że masz wystarczającą liczbę podstawowych przydziałów w tym regionie platformy Azure, aby spełnić wymagania clusterSize. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie klastrów w usłudze HDInsight za pomocą usługi Hadoop, Spark, Kafka i innych](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Obecnie nie można utworzyć klastra usługi HDInsight na żądanie, który używa Azure Data Lake Store jako magazynu. Jeśli chcesz przechowywać dane wynikowe z przetwarzania HDInsight w Azure Data Lake Store, Użyj działania kopiowania, aby skopiować dane z usługi Azure Blob Storage do Azure Data Lake Store. </p> | Tak      |
+| linkedServiceName            | Połączona usługa Azure Storage, która będzie używana przez klaster na żądanie do przechowywania i przetwarzania danych. Klaster HDInsight jest tworzony w tym samym regionie co konto usługi Azure Storage. Usługa Azure HDInsight ma ograniczenia całkowitej liczby rdzeni, których możesz użyć w każdym obsługiwanym przez nią regionie platformy Azure. Upewnij się, że masz wystarczającą liczbę podstawowych przydziałów w tym regionie platformy Azure, aby spełnić wymagania clusterSize. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie klastrów w usłudze HDInsight za pomocą usługi Hadoop, Spark, Kafka i innych](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Obecnie nie można utworzyć klastra usługi HDInsight na żądanie, który używa Azure Data Lake Store jako magazynu. Jeśli chcesz przechowywać dane wynikowe z przetwarzania HDInsight w Azure Data Lake Store, Użyj działania kopiowania, aby skopiować dane z usługi Azure Blob Storage do Azure Data Lake Store. </p> | Tak      |
 | clusterResourceGroup         | Klaster usługi HDInsight jest tworzony w tej grupie zasobów. | Tak      |
 | TimeToLive                   | Dozwolony czas bezczynności dla klastra usługi HDInsight na żądanie. Określa, jak długo klaster usługi HDInsight na żądanie pozostaje aktywny po zakończeniu działania, jeśli nie ma żadnych innych aktywnych zadań w klastrze. Minimalna dozwolona wartość to 5 minut (00:05:00).<br/><br/>Na przykład, Jeśli uruchomienie działania trwa 6 minut, a TimeToLive jest ustawiony na 5 minut, klaster pozostaje aktywny przez 5 minut po 6 minutach przetwarzania działania. Jeśli zostanie wykonane inne uruchomienie działania z oknem 6 minut, jest ono przetwarzane przez ten sam klaster.<br/><br/>Tworzenie klastra usługi HDInsight na żądanie jest kosztowną operacją (może to trochę potrwać), dlatego użyj tego ustawienia w razie potrzeby w celu zwiększenia wydajności fabryki danych przez ponowne użycie klastra usługi HDInsight na żądanie.<br/><br/>Jeśli wartość TimeToLive jest ustawiona na 0, klaster zostanie usunięty zaraz po zakończeniu działania. W przypadku ustawienia wysokiej wartości klaster może pozostać w stanie bezczynności, aby można było zalogować się w celu rozwiązania problemu, ale może to spowodować wysokie koszty. W związku z tym ważne jest, aby ustawić odpowiednią wartość na podstawie Twoich potrzeb.<br/><br/>Jeśli wartość właściwości TimeToLive jest odpowiednio ustawiona, wiele potoków może współdzielić wystąpienie klastra usługi HDInsight na żądanie. | Tak      |
 | clustertype                  | Typ klastra usługi HDInsight, który ma zostać utworzony. Dozwolone wartości to "Hadoop" i "Spark". Jeśli nie zostanie określony, wartością domyślną jest Hadoop. Klastra z włączonym pakiet Enterprise Security nie można utworzyć na żądanie, zamiast tego użyj [istniejącego klastra/przeniesiej własne obliczenia](#azure-hdinsight-linked-service). | Nie       |
@@ -240,14 +241,14 @@ Jeśli chcesz utworzyć węzły główne i węzły procesu roboczego z rozmiarem
 "dataNodeSize": "Standard_D4",
 ```
 
-W przypadku określenia nieprawidłowej wartości tych właściwości może zostać wyświetlony następujący **błąd:** nie można utworzyć klastra. Wyjątek: nie można ukończyć operacji tworzenia klastra. Operacja nie powiodła się z kodem "400". Klaster został pozostawiony za stanem: "Error". Komunikat: "PreClusterCreationValidationFailure". Po otrzymaniu tego błędu upewnij się, że używasz **polecenia CMDLET & nazwy interfejsów API** z tabeli w obszarze [rozmiary Virtual Machines](../virtual-machines/linux/sizes.md) artykułu.        
+W przypadku określenia nieprawidłowej wartości tych właściwości może zostać wyświetlony następujący **błąd:** nie można utworzyć klastra. Wyjątek: nie można ukończyć operacji tworzenia klastra. Operacja zakończona niepowodzeniem z kodem „400”. Końcowy stan klastra: „Błąd”. Komunikat: "PreClusterCreationValidationFailure". Po otrzymaniu tego błędu upewnij się, że używasz **polecenia CMDLET & nazwy interfejsów API** z tabeli w obszarze [rozmiary Virtual Machines](../virtual-machines/linux/sizes.md) artykułu.        
 
 ## <a name="bring-your-own-compute-environment"></a>Korzystanie z własnego środowiska obliczeniowego
 W tym rodzaju konfiguracji użytkownicy mogą rejestrować już istniejące środowisko obliczeniowe jako połączoną usługę w Data Factory. Środowisko komputerowe jest zarządzane przez użytkownika, a usługa Data Factory używa go do wykonywania działań.
 
 Ten typ konfiguracji jest obsługiwany dla następujących środowisk obliczeniowych:
 
-* Usługa Azure HDInsight
+* Azure HDInsight
 * Azure Batch
 * Azure Machine Learning
 * Azure Data Lake Analytics
@@ -286,9 +287,9 @@ Możesz utworzyć połączoną usługę Azure HDInsight, aby zarejestrować wła
 ### <a name="properties"></a>Właściwości
 | Właściwość          | Opis                                                  | Wymagane |
 | ----------------- | ------------------------------------------------------------ | -------- |
-| — typ              | Właściwość Type powinna być ustawiona na **HDInsight**.            | Tak      |
+| type              | Właściwość Type powinna być ustawiona na **HDInsight**.            | Tak      |
 | clusterUri        | Identyfikator URI klastra usługi HDInsight.                            | Tak      |
-| uż          | Określ nazwę użytkownika, który ma być używany do nawiązywania połączenia z istniejącym klastrem usługi HDInsight. | Tak      |
+| nazwa użytkownika          | Określ nazwę użytkownika, który ma być używany do nawiązywania połączenia z istniejącym klastrem usługi HDInsight. | Tak      |
 | hasło          | Określ hasło dla konta użytkownika.                       | Tak      |
 | linkedServiceName | Nazwa połączonej usługi Azure Storage odwołująca się do magazynu obiektów blob platformy Azure używanego przez klaster usługi HDInsight. <p>Obecnie nie można określić Azure Data Lake Store połączonej usługi dla tej właściwości. Jeśli klaster usługi HDInsight ma dostęp do Data Lake Store, możesz uzyskać dostęp do danych w Azure Data Lake Store ze skryptów Hive/świński. </p> | Tak      |
 | isEspEnabled      | Określ*wartość "true*", Jeśli klaster usługi HDInsight jest [pakiet Enterprise Security](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture) włączony. Wartość domyślna to "*false*". | Nie       |
@@ -346,7 +347,7 @@ Jeśli jesteś nowym usługą Azure Batch Service, zobacz następujące tematy:
 ### <a name="properties"></a>Właściwości
 | Właściwość          | Opis                              | Wymagane |
 | ----------------- | ---------------------------------------- | -------- |
-| — typ              | Właściwość Type powinna mieć wartość **AzureBatch**. | Tak      |
+| type              | Właściwość Type powinna mieć wartość **AzureBatch**. | Tak      |
 | accountName       | Nazwa konta Azure Batch.         | Tak      |
 | accessKey         | Klucz dostępu dla konta Azure Batch.  | Tak      |
 | batchUri          | Adres URL konta Azure Batch w formacie https://*batchaccountname. region*. Batch.Azure.com. | Tak      |
@@ -354,8 +355,8 @@ Jeśli jesteś nowym usługą Azure Batch Service, zobacz następujące tematy:
 | linkedServiceName | Nazwa połączonej usługi Azure Storage skojarzonej z tą Azure Batch połączoną usługą. Ta połączona usługa jest używana na potrzeby plików tymczasowych wymaganych do uruchomienia działania. | Tak      |
 | Właściwością connectvia        | Integration Runtime używany do wysyłania działań do tej połączonej usługi. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime. Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. | Nie       |
 
-## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning połączona usługa
-Utworzysz połączoną usługę Azure Machine Learning, aby zarejestrować punkt końcowy oceniania Machine Learning partii do fabryki danych.
+## <a name="azure-machine-learning-studio-linked-service"></a>Azure Machine Learning Studio połączona usługa
+Utworzysz połączoną usługę Azure Machine Learning Studio, aby zarejestrować punkt końcowy oceniania Machine Learning partii do fabryki danych.
 
 ### <a name="example"></a>Przykład
 
@@ -385,11 +386,55 @@ Utworzysz połączoną usługę Azure Machine Learning, aby zarejestrować punkt
 | Typ                   | Właściwość Type powinna mieć wartość: **Azure**. | Tak                                      |
 | mlEndpoint             | Adres URL oceniania partii.                   | Tak                                      |
 | apiKey                 | Interfejs API opublikowanego modelu obszaru roboczego.     | Tak                                      |
-| Właściwości updateresourceendpoint | Adres URL aktualizacji zasobu dla punktu końcowego usługi sieci Web Azure ML służącego do aktualizowania predykcyjnej usługi sieci Web za pomocą wyszkolonego pliku modelu | Nie                                       |
+| Właściwości updateresourceendpoint | Adres URL aktualizacji zasobu dla punktu końcowego usługi sieci Web Azure Machine Learning używany do aktualizowania predykcyjnej usługi sieci Web przy użyciu pliku modelu wyszkolonego | Nie                                       |
 | servicePrincipalId     | Określ identyfikator klienta aplikacji.     | Wymagane, jeśli określono właściwości updateresourceendpoint |
 | servicePrincipalKey    | Określ klucz aplikacji.           | Wymagane, jeśli określono właściwości updateresourceendpoint |
 | dzierżaw                 | Określ informacje o dzierżawie (nazwę domeny lub identyfikator dzierżawy), w których znajduje się Twoja aplikacja. Możesz ją pobrać, aktywując wskaźnik myszy w prawym górnym rogu Azure Portal. | Wymagane, jeśli określono właściwości updateresourceendpoint |
 | Właściwością connectvia             | Integration Runtime używany do wysyłania działań do tej połączonej usługi. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime. Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. | Nie                                       |
+
+## <a name="azure-machine-learning-service-linked-service"></a>Połączona usługa Azure Machine Learning
+Utworzysz połączoną usługę Azure Machine Learning, aby połączyć obszar roboczy usługi Azure Machine Learning z fabryką danych.
+
+> [!NOTE]
+> Dla połączonej usługi Azure Machine Learning jest obsługiwane obecnie tylko uwierzytelnianie główne usługi.
+
+### <a name="example"></a>Przykład
+
+```json
+{
+    "name": "AzureMLServiceLinkedService",
+    "properties": {
+        "type": "AzureMLService",
+        "typeProperties": {
+            "subscriptionId": "subscriptionId",
+            "resourceGroupName": "resourceGroupName",
+            "mlWorkspaceName": "mlWorkspaceName",
+            "servicePrincipalId": "service principal id",
+            "servicePrincipalKey": {
+                "value": "service principal key",
+                "type": "SecureString"
+            },
+            "tenant": "tenant ID"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime?",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="properties"></a>Właściwości
+| Właściwość               | Opis                              | Wymagane                                 |
+| ---------------------- | ---------------------------------------- | ---------------------------------------- |
+| Typ                   | Właściwość Type powinna mieć wartość: **AzureMLService**. | Tak                                      |
+| subscriptionId         | Identyfikator subskrypcji platformy Azure              | Tak                                      |
+| resourceGroupName      | name | Tak                                      |
+| mlWorkspaceName        | Nazwa obszaru roboczego usługi Azure Machine Learning | Tak  |
+| servicePrincipalId     | Określ identyfikator klienta aplikacji.     | Nie |
+| servicePrincipalKey    | Określ klucz aplikacji.           | Nie |
+| dzierżaw                 | Określ informacje o dzierżawie (nazwę domeny lub identyfikator dzierżawy), w których znajduje się Twoja aplikacja. Możesz ją pobrać, aktywując wskaźnik myszy w prawym górnym rogu Azure Portal. | Wymagane, jeśli określono właściwości updateresourceendpoint | Nie |
+| Właściwością connectvia             | Integration Runtime używany do wysyłania działań do tej połączonej usługi. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime. Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. | Nie |    
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics połączona usługa
 Tworzysz **Azure Data Lake Analytics** połączonej usługi, aby połączyć usługę obliczeniową Azure Data Lake Analytics z fabryką danych Azure. Działanie Data Lake Analytics U-SQL w potoku odwołuje się do tej połączonej usługi. 
@@ -410,7 +455,7 @@ Tworzysz **Azure Data Lake Analytics** połączonej usługi, aby połączyć us�
                 "type": "SecureString"
             },
             "tenant": "tenant ID",
-            "subscriptionId": "<optional, subscription id of ADLA>",
+            "subscriptionId": "<optional, subscription ID of ADLA>",
             "resourceGroupName": "<optional, resource group name of ADLA>"
         },
         "connectVia": {
@@ -425,10 +470,10 @@ Tworzysz **Azure Data Lake Analytics** połączonej usługi, aby połączyć us�
 
 | Właściwość             | Opis                              | Wymagane                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| — typ                 | Właściwość Type powinna mieć wartość: **AzureDataLakeAnalytics**. | Tak                                      |
+| type                 | Właściwość Type powinna mieć wartość: **AzureDataLakeAnalytics**. | Tak                                      |
 | accountName          | Nazwa konta Azure Data Lake Analytics.  | Tak                                      |
 | dataLakeAnalyticsUri | Azure Data Lake Analytics identyfikator URI.           | Nie                                       |
-| Identyfikator       | Identyfikator subskrypcji platformy Azure                    | Nie                                       |
+| subscriptionId       | Identyfikator subskrypcji platformy Azure                    | Nie                                       |
 | resourceGroupName    | Nazwa grupy zasobów platformy Azure                | Nie                                       |
 | servicePrincipalId   | Określ identyfikator klienta aplikacji.     | Tak                                      |
 | servicePrincipalKey  | Określ klucz aplikacji.           | Tak                                      |
@@ -487,9 +532,9 @@ Można utworzyć **Azure Databricks połączonej usługi** , aby zarejestrować 
 
 | Właściwość             | Opis                              | Wymagane                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| nazwa                 | Nazwa połączonej usługi               | Tak   |
-| — typ                 | Właściwość Type powinna mieć wartość: **AzureDatabricks**. | Tak                                      |
-| domena               | Określ odpowiednio region platformy Azure na podstawie regionu obszaru roboczego datakostki. Przykład: https://eastus.azuredatabricks.net | Tak                                 |
+| name                 | Nazwa połączonej usługi               | Tak   |
+| type                 | Właściwość Type powinna mieć wartość: **AzureDatabricks**. | Tak                                      |
+| domeny               | Określ odpowiednio region platformy Azure na podstawie regionu obszaru roboczego datakostki. Przykład: https://eastus.azuredatabricks.net | Tak                                 |
 | accessToken          | Token dostępu jest wymagany do uwierzytelniania Data Factory Azure Databricks. Token dostępu musi być wygenerowany z obszaru roboczego datakostki. Bardziej szczegółowe instrukcje znajdowania tokenu dostępu można znaleźć [tutaj](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)  | Tak                                       |
 | existingClusterId    | Identyfikator klastra istniejącego klastra, w którym mają zostać uruchomione wszystkie zadania. Powinien to być już utworzony interaktywny klaster. Może być konieczne ręczne ponowne uruchomienie klastra, jeśli przestanie odpowiadać. Datakostki sugerują uruchomione zadania w nowych klastrach w celu zapewnienia większej niezawodności. Identyfikator klastra interaktywnego klastra można znaleźć w obszarze roboczym datakosteks — > klastrów — > Interactive Nazwa klastra — > Configuration-> Tagi. [Więcej szczegółów](https://docs.databricks.com/user-guide/clusters/tags.html) | Nie 
 | instancePoolId    | Identyfikator puli wystąpień istniejącej puli w obszarze roboczym datakosteks.  | Nie  |
@@ -500,7 +545,7 @@ Można utworzyć **Azure Databricks połączonej usługi** , aby zarejestrować 
 | newClusterInitScripts| zestaw opcjonalnych, zdefiniowanych przez użytkownika skryptów inicjalizacji dla nowego klastra. Określanie ścieżki DBFS do skryptów init. | Nie  |
 
 
-## <a name="azure-sql-database-linked-service"></a>Azure SQL Database połączona usługa
+## <a name="azure-sql-database-linked-service"></a>Połączona usługa Azure SQL Database
 Utworzysz połączoną usługę Azure SQL i użyjesz jej razem z [działaniem procedury składowanej](transform-data-using-stored-procedure.md) , aby wywołać procedurę składowaną z potoku Data Factory. Aby uzyskać szczegółowe informacje na temat tej połączonej usługi, zobacz artykuł dotyczący [łącznika usługi Azure SQL](connector-azure-sql-database.md#linked-service-properties) .
 
 ## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL Data Warehouse połączona usługa

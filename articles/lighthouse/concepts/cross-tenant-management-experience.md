@@ -1,5 +1,5 @@
 ---
-title: Obsługa wielu dzierżawców za pomocą usługi Azure Lighthouse
+title: Środowiska zarządzania wieloma dzierżawami
 description: Zarządzanie zasobami delegowanymi przez platformę Azure umożliwia korzystanie z funkcji zarządzania między dzierżawcami.
 author: JnHs
 ms.service: lighthouse
@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
-ms.translationtype: MT
+ms.openlocfilehash: ab0362af9a3eec698150c135fd98283c9db2c833
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309653"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286609"
 ---
 # <a name="cross-tenant-management-experiences"></a>Środowiska zarządzania wieloma dzierżawami
 
@@ -57,7 +57,7 @@ Obecnie środowisko zarządzania między dzierżawcami obsługuje następujące 
 
 - Wyświetlanie alertów dotyczących delegowanych subskrypcji w Azure Portal lub programowo przy użyciu wywołań interfejsu API REST, z możliwością wyświetlania alertów we wszystkich subskrypcjach
 - Wyświetl szczegóły dziennika aktywności dla delegowanych subskrypcji
-- Analiza dzienników: Wykonywanie zapytań dotyczących danych ze zdalnych obszarów roboczych klientów w wielu dzierżawcach
+- Log Analytics: wykonywanie zapytań dotyczących danych ze zdalnych obszarów roboczych klientów w wielu dzierżawcach
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -119,7 +119,7 @@ Obecnie środowisko zarządzania między dzierżawcami obsługuje następujące 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 We wszystkich scenariuszach należy pamiętać o następujących bieżących ograniczeniach:
 
-- Żądania obsługiwane przez Azure Resource Manager można wykonać przy użyciu funkcji zarządzania zasobami delegowanymi przez platformę Azure. Identyfikatory URI operacji dla tych żądań zaczynają `https://management.azure.com`się od. Jednak żądania, które są obsługiwane przez wystąpienie typu zasobu (takie jak dostęp do magazynu kluczy lub dostęp do danych magazynu), nie są obsługiwane przez delegowane zarządzanie zasobami platformy Azure. Identyfikatory URI operacji dla tych żądań zwykle zaczynają się od adresu, który jest unikatowy dla Twojego wystąpienia, `https://myaccount.blob.core.windows.net` takiego `https://mykeyvault.vault.azure.net/`jak lub. Te ostatnie również są zazwyczaj operacjami na danych, a nie operacjami zarządzania. 
+- Żądania obsługiwane przez Azure Resource Manager można wykonać przy użyciu funkcji zarządzania zasobami delegowanymi przez platformę Azure. Identyfikatory URI operacji dla tych żądań zaczynają się od `https://management.azure.com`. Jednak żądania, które są obsługiwane przez wystąpienie typu zasobu (takie jak dostęp do magazynu kluczy lub dostęp do danych magazynu), nie są obsługiwane przez delegowane zarządzanie zasobami platformy Azure. Identyfikatory URI operacji dla tych żądań zwykle zaczynają się od adresu, który jest unikatowy dla Twojego wystąpienia, takiego jak `https://myaccount.blob.core.windows.net` lub `https://mykeyvault.vault.azure.net/`. Te ostatnie również są zazwyczaj operacjami na danych, a nie operacjami zarządzania. 
 - Przypisania ról muszą używać [wbudowanych ról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kontroli dostępu opartej na ROLACH (RBAC). Wszystkie wbudowane role są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z wyjątkiem właściciela, administratora dostępu użytkowników lub wszelkich wbudowanych ról z uprawnieniami [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Role niestandardowe i [role administratora klasycznej subskrypcji](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nie są również obsługiwane.
 - Obecnie nie można dołączyć subskrypcji (lub grupy zasobów w ramach subskrypcji) do zarządzania zasobami delegowanymi przez platformę Azure, jeśli subskrypcja używa Azure Databricks. Podobnie, jeśli subskrypcja została zarejestrowana w celu dołączenia do dostawcy zasobów **Microsoft. ManagedServices** , nie będzie można w tej chwili utworzyć obszaru roboczego dla tej subskrypcji.
 

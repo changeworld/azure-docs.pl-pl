@@ -1,21 +1,20 @@
 ---
 title: Samouczek — nawiązywanie połączenia z usługami Azure Analysis Services za pomocą programu Power BI Desktop | Microsoft Docs
 author: minewiskan
-manager: kfile
 description: Informacje dotyczące sposobu nawiązywania połączenia z usługami Azure Analysis Services za pomocą programu Power BI Desktop.
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: daebc3e720eec8d958697288922c788a44156778
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f2123b6d8b11c89735e65cb0f48d93841f49328d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932382"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294491"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Samouczek: Nawiązywanie połączenia za pomocą programu Power BI Desktop
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Samouczek: nawiązywanie połączenia za pomocą programu Power BI Desktop
 
 W tym samouczku użyjesz programu Power BI Desktop do nawiązania połączenia z przykładową modelową bazą danych adventureworks na serwerze. Zadania, które należy wykonać, symulują typowe połączenie użytkownika z modelem i tworzenie podstawowego raportu na podstawie danych z modelu.
 
@@ -71,4 +70,4 @@ Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa s
 Jeśli raport nie będzie już potrzebny, nie zapisuj go lub usuń pliki, jeśli raport został już zapisany.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku przedstawiono sposób użycia programu Power BI Desktop do nawiązywania połączenia z modelem danych na serwerze i tworzenia podstawowego raportu. Jeśli nie znasz sposobu tworzenia modelu danych, zapoznaj się z samouczkiem dotyczącym [modelowania danych tabelarycznych sprzedaży internetowej firmy Adventure Works](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) w dokumentacji SQL Server Analysis Services.
+W tym samouczku przedstawiono sposób użycia programu Power BI Desktop do nawiązywania połączenia z modelem danych na serwerze i tworzenia podstawowego raportu. Jeśli nie znasz sposobu tworzenia modelu danych, zapoznaj się z [samouczkiem dotyczącym modelowania danych tabelarycznych sprzedaży internetowej firmy Adventure Works](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) w dokumentacji SQL Server Analysis Services.

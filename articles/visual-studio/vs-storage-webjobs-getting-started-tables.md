@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie z usługą Azure Storage i usługami połączonymi programu Visual Studio (projekty zadań WebJob)
+title: Wprowadzenie z usługą Azure Storage przy użyciu programu Visual Studio (projekty WebJob)
 description: Jak rozpocząć korzystanie z usługi Azure Table Storage w projekcie Azure WebJobs w programie Visual Studio po nawiązaniu połączenia z kontem magazynu przy użyciu usług połączonych programu Visual Studio
 services: storage
 author: ghogen
@@ -12,25 +12,26 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 8875f680c8bb83c2375d6fe767f376cbb35d5a0a
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 042f2659d3691e8c51e092bf69473187b8615ee6
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510671"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299957"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Wprowadzenie z usługą Azure Storage (projekty zadań WebJob platformy Azure)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym artykule C# przedstawiono przykłady kodu, które pokazują, jak używać zestawu SDK Azure WebJobs w wersji 1. x z usługą Azure Table Storage. Przykłady kodu używają [zestawu SDK zadań WebJob](https://github.com/Azure/azure-webjobs-sdk/wiki) w wersji 1. x.
 
-Usługa Azure Table Storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele platformy Azure są idealnym rozwiązaniem do przechowywania strukturalnych danych nierelacyjnych.  Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Table Storage przy użyciu platformy .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
+Usługa Azure Table Storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa to magazyn danych NoSQL, który akceptuje uwierzytelnione wywołania z chmury platformy Azure i poza nią. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.  Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Table Storage przy użyciu platformy .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
 
 Niektóre fragmenty kodu pokazują atrybut **tabeli** używany w funkcjach, które są wywoływane ręcznie, czyli nie przy użyciu jednego z atrybutów wyzwalacza.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Jak dodać jednostki do tabeli
-Aby dodać jednostki do tabeli, Użyj atrybutu **Table** z **ICollector\<> t** lub **IAsyncCollector\<t >** , gdzie **T** określa schemat jednostek, które chcesz dodać. Konstruktor atrybutu przyjmuje parametr ciągu, który określa nazwę tabeli.
+Aby dodać jednostki do tabeli, Użyj atrybutu **Table** z **ICollector @ no__t-2T >** lub **IAsyncCollector @ no__t-4T >** parametru, gdzie **t** określa schemat jednostek, które chcesz dodać. Konstruktor atrybutu przyjmuje parametr ciągu, który określa nazwę tabeli.
 
 Poniższy przykładowy kod dodaje jednostki **osoby** do tabeli o nazwie transfery *wejściowe*.
 
@@ -49,7 +50,7 @@ Poniższy przykładowy kod dodaje jednostki **osoby** do tabeli o nazwie transfe
             }
         }
 
-Zazwyczaj typ używany z **ICollector** pochodzi z **klasy tableentity** lub implementuje **ITableEntity**, ale nie jest to konieczne. Jedna z następujących klas **osób** współpracuje z kodem pokazanym w poprzedniej metodzie transferu danych przychodzących.
+Zazwyczaj typ używany z **ICollector** pochodzi z **klasy tableentity** lub implementuje **ITableEntity**, ale nie jest to konieczne. Jedna z następujących klas **osób** współpracuje z kodem pokazanym **w poprzedniej** metodzie transferu danych przychodzących.
 
         public class Person : TableEntity
         {
@@ -79,7 +80,7 @@ Po zakończeniu działania strony **szczegóły wywołania** zgłasza liczbę ut
 ![Zakończono funkcję transferu danych przychodzących](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Jak odczytać wiele jednostek z tabeli
-Aby odczytać tabelę, Użyj atrybutu **Table** z parametrem **IQueryable\<T >** , gdzie Type **t** pochodzi z **klasy tableentity** lub implementuje **ITableEntity**.
+Aby odczytać tabelę, Użyj atrybutu **Table** z parametrem **IQueryable @ no__t-2T >** , w którym typ **t** pochodzi od **klasy tableentity** lub implementuje **ITableEntity**.
 
 Poniższy przykładowy kod odczytuje i rejestruje wszystkie wiersze z tabeli danych **wejściowych** :
 

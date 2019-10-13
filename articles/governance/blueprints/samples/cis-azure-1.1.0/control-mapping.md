@@ -1,17 +1,17 @@
 ---
-title: Przykład — przykłady Microsoft Azure fundacje testów porównawczych — mapowanie rekomendacji
+title: Przykłady usługi CIS Microsoft Azure przykładowe zaleceń planu porównawczego
 description: Rekomendacja zaleceń usługi CIS Microsoft Azure przykłady planów testów porównawczych do Azure Policy.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 9368ad220f1ded1a11360dbdf0af86c27277a207
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: fa683206ec1ff4d02298fd2689791601ff11f85c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001278"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297795"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Rekomendacja zaleceń przykładowego planu testów usługi CIS Microsoft Azure
 
@@ -198,7 +198,7 @@ Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , kt�
 Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga zapewnić, że zaawansowane zabezpieczenia danych są włączone na serwerach SQL i wystąpieniach zarządzanych SQL.
 
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych SQL
-- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
+- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4,5 Upewnij się, że ustawienie "typy wykrywania zagrożeń" ma wartość "All"
 
@@ -219,7 +219,7 @@ Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , kt�
 Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga zapewnić, że zaawansowane powiadomienia o zabezpieczeniach danych są prawidłowo włączone.
 
 - Powiadomienia e-mail do administratorów i właścicieli subskrypcji powinny być włączone w ustawieniach zaawansowanych danych wystąpienia zarządzanego SQL
-- Powiadomienia e-mail dla administratorów i właścicieli subskrypcji powinny być włączone w ustawieniach zaawansowanych zabezpieczeń danych programu SQL Server
+- W zaawansowanych ustawieniach zabezpieczeń danych serwera SQL powinny być włączone powiadomienia e-mail do administratorów i właścicieli subskrypcji
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4,8 upewnij się, że skonfigurowano administratora Azure Active Directory
 
@@ -238,7 +238,7 @@ Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , kt�
 Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które ułatwiają zapewnienie, że funkcja ochrony zaszyfrowanych danych dla serwerów SQL i wystąpień zarządzanych przez program SQL jest szyfrowana przy użyciu własnego klucza.
 
 - Funkcja ochrony TDE wystąpienia zarządzanego SQL powinna być szyfrowana przy użyciu własnego klucza
-- Funkcja ochrony programu SQL Server TDE powinna być szyfrowana przy użyciu własnego klucza
+- Funkcja ochrony TDE serwera SQL powinna być zaszyfrowana za pomocą Twojego własnego klucza
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4,11 upewnij się, że ustawienie "Wymuszaj połączenie SSL" ma wartość "ENABLED" dla serwera bazy danych MySQL
 
@@ -362,10 +362,10 @@ Po przejrzeniu mapowania kontroli w ramach planu porównawczego usługi CIS Micr
 > [Plan porównawczy usług CIS Microsoft Azure — omówienie](./index.md)
 > [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
 
-Dodatkowe artykuły o planach i sposobach ich użycia:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
-- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów](../../concepts/resource-locking.md)planu.
-- Dowiedz się, jak [aktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).

@@ -2,18 +2,17 @@
 title: Azure Analysis Services wysoka dostępność | Microsoft Docs
 description: Zapewnienie, Azure Analysis Services wysoka dostępność.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9947ab24262c6b92457bcd858bbf03d21eb317a2
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 151739c77939ab98b0cdca6d75692267ef0d4385
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619313"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295313"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services wysoka dostępność
 
@@ -33,7 +32,7 @@ Aby uniknąć konieczności zmiany parametrów połączenia na klientach raporto
 
 ## <a name="related-information"></a>Informacje pokrewne
 
-[Tworzenie kopii zapasowej i przywracanie](analysis-services-backup.md)   
-[Zarządzaj Azure Analysis Services](analysis-services-manage.md)   
+[Kopia zapasowa i przywracanie](analysis-services-backup.md)   
+[Zarządzanie @no__t Azure Analysis Services](analysis-services-manage.md)-1  
 [Nazwy serwerów aliasów](analysis-services-server-alias.md) 
 

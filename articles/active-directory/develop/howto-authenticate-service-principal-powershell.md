@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/19/2019
+ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe0a3c8cbee92be85fe415a4d44d5493940bb45a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f7c75a567dbefc71b4b0fea595dae56a03def5ed
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638623"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295446"
 ---
-# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Instrukcje: Tworzenie jednostki usługi z certyfikatem przy użyciu programu Azure PowerShell
+# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Instrukcje: używanie Azure PowerShell do tworzenia jednostki usługi przy użyciu certyfikatu
 
 Jeśli masz aplikację lub skrypt, które potrzebują dostępu do zasobów, możesz skonfigurować tożsamość aplikacji i uwierzytelnić aplikację przy użyciu jej własnych poświadczeń. Ta tożsamość jest określana jako jednostka usługi. Takie podejście umożliwia:
 
@@ -46,9 +46,14 @@ Aby ukończyć ten artykuł, musisz mieć wystarczające uprawnienia zarówno w 
 
 Najłatwiejszym sposobem sprawdzenia, czy Twoje konto ma odpowiednie uprawnienia, jest skorzystanie z portalu. Zobacz [Sprawdzanie wymaganego uprawnienia](howto-create-service-principal-portal.md#required-permissions).
 
+## <a name="assign-the-application-to-a-role"></a>Przypisywanie aplikacji do roli
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, musisz przypisać aplikację do roli. Zdecyduj, która rola oferuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Wbudowane role](/azure/role-based-access-control/built-in-roles).
+
+Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone do niższych poziomów zakresu. Na przykład dodanie aplikacji do roli *czytelnik* dla grupy zasobów oznacza, że może ona odczytać grupę zasobów i wszystkie zawarte w niej zasoby. Aby umożliwić aplikacji wykonywanie akcji takich jak ponowny rozruch, uruchamianie i zatrzymywanie wystąpień, wybierz rolę *współautor* .
+
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Tworzenie jednostki usługi z certyfikatem z podpisem własnym
 
-Poniższy przykład przedstawia prosty scenariusz. Używa polecenie [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) , aby utworzyć jednostkę usługi z certyfikatem z podpisem własnym, a następnie za pomocą właściwości [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) przypisać rolę [współautor](../../role-based-access-control/built-in-roles.md#contributor) do jednostki usługi. Zakres przypisania roli to aktualnie wybrana subskrypcja platformy Azure. Aby wybrać inną subskrypcję, użyj polecenie [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
+Poniższy przykład przedstawia prosty scenariusz. Używa polecenie [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) , aby utworzyć jednostkę usługi z certyfikatem z podpisem własnym, i przypisać rolę [czytnika](/azure/role-based-access-control/built-in-roles#reader) do jednostki usługi przy użyciu funkcji [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) . Zakres przypisania roli to aktualnie wybrana subskrypcja platformy Azure. Aby wybrać inną subskrypcję, użyj polecenie [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
 
 > [!NOTE]
 > Polecenie cmdlet New-SelfSignedCertificate i moduł PKI nie są obecnie obsługiwane w programie PowerShell Core. 
@@ -64,10 +69,10 @@ $sp = New-AzADServicePrincipal -DisplayName exampleapp `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
 Sleep 20
-New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
-Przykład uśpienia przez 20 sekund, aby umożliwić pewien czas propagacji nowej jednostki usługi w usłudze Azure AD. Jeśli skrypt nie czeka wystarczająco długo, zobaczysz komunikat o błędzie: "Podmiot zabezpieczeń {ID}" nie istnieje w katalogu {DIR-ID} ". Aby rozwiązać ten problem, poczekaj chwilę, a następnie ponownie uruchom polecenie **New-AzRoleAssignment** .
+Przykład uśpienia przez 20 sekund, aby umożliwić pewien czas propagacji nowej jednostki usługi w usłudze Azure AD. Jeśli skrypt nie będzie oczekiwać wystarczająco długo, pojawi się następujący komunikat o błędzie: „Identyfikator {ID} jednostki usługi nie istnieje w katalogu {DIR-ID}”. Aby rozwiązać ten problem, poczekaj chwilę, a następnie ponownie uruchom polecenie **New-AzRoleAssignment** .
 
 Zakres przypisania roli do określonej grupy zasobów można określić za pomocą parametru **ResourceGroupName**. Zakres konkretnego zasobu można również określić za pomocą parametrów **ResourceType** i **ResourceName**. 
 
@@ -105,7 +110,7 @@ $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).Applicat
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Tworzenie jednostki usługi z certyfikatem od urzędu certyfikacji
 
-W poniższym przykładzie użyto certyfikatu wystawionego przez urząd certyfikacji w celu utworzenia jednostki usługi. Zakres przypisania obejmuje określoną subskrypcję platformy Azure. Dodaje on jednostkę usługi do roli [Współautor](../../role-based-access-control/built-in-roles.md#contributor). Jeśli podczas przypisywania roli wystąpi błąd, zostanie ponownie podjęta próba przypisania.
+W poniższym przykładzie użyto certyfikatu wystawionego przez urząd certyfikacji w celu utworzenia jednostki usługi. Zakres przypisania obejmuje określoną subskrypcję platformy Azure. Dodaje nazwę główną usługi do roli [czytelnik](../../role-based-access-control/built-in-roles.md#reader) . Jeśli podczas przypisywania roli wystąpi błąd, zostanie ponownie podjęta próba przypisania.
 
 ```powershell
 Param (
@@ -141,7 +146,7 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
+    New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
     $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
@@ -215,13 +220,12 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 Podczas tworzenia jednostki usługi mogą wystąpić następujące błędy:
 
-* **„Authentication_Unauthorized”** lub **„W kontekście nie znaleziono subskrypcji”** . — Ten błąd jest wyświetlany, gdy konto nie ma [wymaganych uprawnień](#required-permissions) do zarejestrowania aplikacji w usłudze Azure AD. Zazwyczaj ten błąd jest wyświetlany, gdy tylko użytkownicy administracyjni w Azure Active Directory mogą rejestrować aplikacje, a Twoje konto nie jest kontem administratora. Poproś administratora o przypisanie Cię do roli administratora lub o umożliwienie użytkownikom rejestrowania aplikacji.
+* **„Authentication_Unauthorized”** lub **„W kontekście nie znaleziono subskrypcji”** . — Ten błąd jest wyświetlany, gdy konto nie ma [wymaganych uprawnień](#required-permissions) do zarejestrowania aplikacji w usłudze Azure AD. Zazwyczaj ten błąd jest wyświetlany, gdy tylko użytkownicy administracyjni w Azure Active Directory mogą rejestrować aplikacje, a Twoje konto nie jest kontem administratora. Poproszenie administratora o przypisanie do roli administratora lub umożliwienie użytkownikom rejestrowania aplikacji.
 
 * Twoje konto **"nie ma autoryzacji do wykonania akcji" Microsoft. Authorization/roleAssignments/Write "w zakresie"/subscriptions/{GUID} "."** — ten błąd jest wyświetlany, gdy konto nie ma wystarczających uprawnień do przypisania roli do Identity. Poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników.
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby skonfigurować jednostkę przy użyciu hasła, zobacz [Tworzenie jednostki usługi platformy Azure za pomocą programu Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
-* Aby uzyskać szczegółowe instrukcje dotyczące integrowania aplikacji na platformie Azure na potrzeby zarządzania zasobami, zobacz [Developer's guide to authorization with the Azure Resource Manager API (Przewodnik dewelopera dotyczący autoryzowania przy użyciu interfejsu API usługi Azure Resource Manager)](../../azure-resource-manager/resource-manager-api-authentication.md).
 * Aby uzyskać bardziej szczegółowy opis aplikacji i jednostek usługi, zobacz [Application Objects and Service Principal Objects (Obiekty aplikacji i obiekty jednostki usługi)](app-objects-and-service-principals.md).
 * Aby uzyskać więcej informacji na temat uwierzytelniania usługi Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md).

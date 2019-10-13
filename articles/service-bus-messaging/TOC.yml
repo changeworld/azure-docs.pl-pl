@@ -91,6 +91,8 @@
       href: service-bus-async-messaging.md
     - name: Obsługa wyłączeń i awarii
       href: service-bus-outages-disasters.md
+    - name: Ograniczanie przepływności
+      href: service-bus-throttling.md
     - name: Bezpieczeństwo
       items:
         - name: Uwierzytelnianie i autoryzacja

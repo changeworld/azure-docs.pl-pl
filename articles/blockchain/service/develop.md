@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 10/11/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 6f27dd199cc054d128a4f46b222c7207d5975efb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2990917243507d93cb6a86da11cf771f3a42eebd
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241004"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298431"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Omówienie tworzenia usług łańcucha bloków platformy Azure
 
@@ -25,7 +25,7 @@ Za pomocą usługi Azure łańcucha bloków można tworzyć sieci łańcucha blo
 
 Istnieją różne typy klientów dla sieci łańcucha bloków, w tym pełne węzły, węzły lekkie i klienci zdalni. Usługa Azure łańcucha bloków tworzy sieć łańcucha bloków, która zawiera węzły. Możesz użyć różnych klientów jako bramy do usługi Azure łańcucha bloków Service do tworzenia łańcucha bloków. Usługa Azure łańcucha bloków oferuje podstawowe uwierzytelnianie lub klucz dostępu jako punkt końcowy projektowania. Poniżej znajdują się popularne Klienci, których można użyć do nawiązania połączenia.
 
-### <a name="metamask"></a>MetaMask
+### <a name="metamask"></a>Maska
 
 Funkcja maskowania to oparty na przeglądarce portfel (Klient zdalny), klient RPC i podstawowy Eksplorator umów. W przeciwieństwie do innych portfeli przeglądarki, usuwanie wystąpienia web3 jest wprowadzane do kontekstu JavaScript przeglądarki, działającego jako klient RPC, który łączy się z wieloma Ethereum blockchains (*mainnet*, *Ropsten testnet*, *KOVAN testnet*, lokalny węzeł RPC, itp.). Możesz łatwo skonfigurować niestandardowe zdalne wywoływanie procedur, aby nawiązać połączenie z usługą Azure łańcucha bloków i rozpocząć programowanie łańcucha bloków przy użyciu Remix.
 
@@ -39,7 +39,7 @@ Aby opracowywać zaawansowane rozwiązania dla przedsiębiorstw łańcucha blok�
 
 Truffle to popularna platforma programistyczna łańcucha bloków do pisania, kompilowania, wdrażania i testowania zdecentralizowanych aplikacji na Ethereum blockchains. Możesz również traktować Truffle jako platformę, która próbuje bezproblemowo zintegrować inteligentne projektowanie kontraktu i tradycyjne programowanie w sieci Web.
 
-Nawet najniższy projekt współdziała z co najmniej dwoma węzłami łańcucha bloków: Jeden na komputerze dewelopera, a drugi przedstawia sieć, w której deweloper wdraża swoją aplikację. Na przykład główna publiczna sieć Ethereum lub usługa Azure łańcucha bloków. Truffle zapewnia system do zarządzania artefaktami kompilacji i wdrażania dla każdej sieci i robi to w sposób, który upraszcza wdrażanie aplikacji końcowej. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Użyj Truffle, aby nawiązać połączenie z siecią](connect-truffle.md)usługi Azure łańcucha bloków Service.
+Nawet najmniejszy projekt współdziała z co najmniej dwoma węzłami łańcucha bloków: jeden na komputerze dewelopera, a drugi reprezentuje sieć, w której deweloper wdraża swoją aplikację. Na przykład główna publiczna sieć Ethereum lub usługa Azure łańcucha bloków. Truffle zapewnia system do zarządzania artefaktami kompilacji i wdrażania dla każdej sieci i robi to w sposób, który upraszcza wdrażanie aplikacji końcowej. Aby uzyskać więcej informacji, zobacz [Szybki Start: korzystanie z Truffle w celu nawiązania połączenia z siecią usługi Azure łańcucha bloków](connect-truffle.md).
 
 ## <a name="ethereum-quorum-private-transaction"></a>Prywatna transakcja kworum Ethereum
 
@@ -51,13 +51,13 @@ Kworum to oparty na systemie Ethereum protokół księgi rozproszonej z transakc
 * Uprawnienia elementu równorzędnego — węzeł i równorzędne uprawnienia przy użyciu inteligentnych kontraktów, dzięki czemu tylko znane strony mogą dołączyć do sieci
 * Wyższa wydajność — kworum zapewnia wyższą wydajność niż Geth publiczny
 
-Zobacz [samouczek: Wyślij transakcję przy użyciu usługi Azure](send-transaction.md) łańcucha bloków Service, aby zapoznać się z przykładową transakcją prywatną.
+Zapoznaj się z [samouczkiem: Wyślij transakcję przy użyciu usługi Azure łańcucha bloków Service](send-transaction.md) , aby zapoznać się z przykładem transakcji prywatnej.
 
 ## <a name="block-explorers"></a>Eksplorator bloków
 
 Eksploratory bloków są w trybie online łańcucha bloków przeglądarki, które wyświetlają poszczególne zawartość bloku, dane adresów transakcji i historię. Podstawowe informacje o bloku są dostępne za pomocą Azure Monitor w usłudze Azure łańcucha bloków, jednak jeśli potrzebne są bardziej szczegółowe informacje podczas opracowywania, mogą być przydatne Eksploratory blokowe.  Istnieją popularne Eksploratora bloków Open Source, których można użyć. Poniżej znajduje się lista bloków Eksploratora, które współpracują z usługą Azure łańcucha bloków:
 
-* [Eksplorator usługi Azure łańcucha bloków](https://web3labs.com/azure-offer) z firmy Web3 Labs
+* [Epirus Azure łańcucha bloków Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) z programu Web3 Labs
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
 ## <a name="tps-measurement"></a>Pomiar TPS
@@ -66,4 +66,4 @@ Ponieważ łańcucha bloków jest używany w większej liczbie scenariuszy dla p
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Szybki start: Użyj Truffle, aby nawiązać połączenie z siecią usługi Azure łańcucha bloków Service](connect-truffle.md)
+[Szybki Start: używanie Truffle do nawiązywania połączenia z siecią usługi Azure łańcucha bloków Service](connect-truffle.md)

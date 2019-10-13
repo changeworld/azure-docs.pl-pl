@@ -2,18 +2,17 @@
 title: Nawiązywanie połączenia z usługą Azure Analysis Services przy użyciu programu Excel | Microsoft Docs
 description: Dowiedz się, jak nawiązać połączenie z serwerem Azure Analysis Services za pomocą programu Excel.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4e6c73ad465f362a046a339f286cc25b4af508cf
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 1ba6864d0bab460b270f6f27acced57d7943a17a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619188"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295336"
 ---
 # <a name="connect-with-excel"></a>Łączenie z programem Excel
 
@@ -27,9 +26,9 @@ Konto, za pomocą którego logujesz się, musi należeć do roli bazy danych mod
 
 Łączenie z serwerem w programie Excel jest obsługiwane przy użyciu polecenia Pobierz dane w programie Excel 2016 i nowszych. Łączenie przy użyciu Kreatora importu tabeli w Power Pivot nie jest obsługiwane. 
 
-1. W programie Excel na Wstążce **dane** kliknij pozycję **Pobierz dane** > zewnętrzne**z innych źródeł** > **z Analysis Services**.
+1. W programie Excel na Wstążce **dane** kliknij pozycję **pobierz dane zewnętrzne** > **z innych źródeł** > **z Analysis Services**.
 
-2. W Kreatorze połączenia danych w polu **Nazwa serwera**wprowadź nazwę serwera, w tym protokół i identyfikator URI. Na przykład asazure://westcentralus.asazure.windows.net/advworks. Następnie w obszarze **poświadczenia logowania**wybierz opcję **Użyj następującej nazwy użytkownika i hasła**, a następnie wpisz nazwę użytkownika organizacji, na przykład nancy@adventureworks.comi hasło.
+2. W Kreatorze połączenia danych w polu **Nazwa serwera**wprowadź nazwę serwera, w tym protokół i identyfikator URI. Na przykład asazure://westcentralus.asazure.windows.net/advworks. Następnie w obszarze **poświadczenia logowania**wybierz opcję **Użyj następującej nazwy użytkownika i hasła**, a następnie wpisz nazwę użytkownika organizacji, na przykład nancy@adventureworks.com i hasło.
 
     > [!IMPORTANT]
     > Jeśli zalogujesz się przy użyciu konta Microsoft, usługi Live ID, usługi Yahoo, usługi Gmail itp. lub musisz się zalogować przy użyciu uwierzytelniania wieloskładnikowego, pozostaw pole hasła puste. Po kliknięciu przycisku Dalej zostanie wyświetlony monit o podanie hasła. 

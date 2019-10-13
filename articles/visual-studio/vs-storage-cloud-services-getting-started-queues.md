@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do usługi queue storage i usług połączonych programu Visual Studio (Cloud Services) | Microsoft Docs
+title: Rozpoczynanie pracy z usługą queue storage przy użyciu programu Visual Studio (Cloud Services)
 description: Jak rozpocząć korzystanie z usługi Azure queue storage w projekcie usługi w chmurze w programie Visual Studio po nawiązaniu połączenia z kontem magazynu przy użyciu usług połączonych programu Visual Studio
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5ea0af23ef8cf41b20de033d38e4d8652f9f8310
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 603bb2b9a862ad4ed2cbde63e2d82b9a82fbeaa1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510696"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298776"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Wprowadzenie do usługi Azure queue storage i usług połączonych programu Visual Studio (projekty usług Cloud Services)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -57,7 +58,7 @@ Aby uzyskać dostęp do kolejek w projektach Cloud Services programu Visual Stud
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**UWAGA:** Skorzystaj ze wszystkich powyższych kodów przed kodem w poniższych przykładach.
+**Uwaga:** Skorzystaj ze wszystkich powyższych kodów przed kodem w poniższych przykładach.
 
 ## <a name="create-a-queue-in-code"></a>Tworzenie kolejki w kodzie
 Aby utworzyć kolejkę w kodzie, należy po prostu dodać wywołanie do **metodę createifnotexists**.
@@ -66,7 +67,7 @@ Aby utworzyć kolejkę w kodzie, należy po prostu dodać wywołanie do **metod�
     messageQueue.CreateIfNotExists();
 
 ## <a name="add-a-message-to-a-queue"></a>Dodawanie komunikatu do kolejki
-Aby wstawić komunikat do istniejącej kolejki, Utwórz nowy obiekt **CloudQueueMessage** , a następnie Wywołaj metodę AddMessage.
+Aby wstawić komunikat do istniejącej kolejki, Utwórz nowy obiekt **CloudQueueMessage** , a następnie Wywołaj metodę **AddMessage** .
 
 Obiekt **CloudQueueMessage** można utworzyć na podstawie ciągu (w formacie UTF-8) lub tablicy bajtowej.
 

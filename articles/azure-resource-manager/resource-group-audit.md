@@ -1,85 +1,85 @@
 ---
-title: Wyświetlanie dzienników aktywności platformy Azure do monitorowania zasobów | Dokumentacja firmy Microsoft
-description: Użyj dzienników aktywności do przeglądu użytkownika akcje i błędy. Pokazuje witryny Azure portal programu PowerShell, interfejsu wiersza polecenia platformy Azure i REST.
+title: Wyświetlanie dzienników aktywności platformy Azure w celu monitorowania zasobów | Microsoft Docs
+description: Użyj dzienników aktywności, aby przejrzeć akcje i błędy użytkownika. Pokazuje Azure Portal PowerShell, interfejs wiersza polecenia platformy Azure i REST.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7ff45be4eea5c6e8ab83093847164ede0e94579a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aba06b07fef1cbc5d84d93cf38fec3bd936c1ac8
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606575"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286118"
 ---
-# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Wyświetlanie dzienników aktywności, aby monitorować działania dotyczące zasobów
+# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Wyświetlanie dzienników aktywności w celu monitorowania akcji dotyczących zasobów
 
 Za pomocą dzienników aktywności można określić:
 
-* jakie operacje zostały wykonane na zasobów w ramach subskrypcji
-* kto rozpoczął wykonać operację
-* Czas wystąpienia operacji
-* Stan operacji
-* Wartości innych właściwości, które mogą ułatwić zbadanie operacji
+* jakie operacje zostały wykonane względem zasobów w ramach subskrypcji
+* kto uruchomił operację
+* gdy wystąpiła operacja
+* stan operacji
+* wartości innych właściwości, które mogą pomóc w zbadaniu operacji
 
-Dziennik aktywności zawiera wszystkie operacje zapisu (PUT, POST, DELETE) dla zasobów. Go nie obejmują operacji odczytu (GET). Aby uzyskać listę zasobów czynności, zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](../role-based-access-control/resource-provider-operations.md). Dzienników aktywności można użyć do znalezienia błędu podczas rozwiązywania problemów lub do monitorowania sposobu, w jaki zasób został zmodyfikowany przez użytkownika w organizacji.
+Dziennik aktywności zawiera wszystkie operacje zapisu (PUT, POST, DELETE) dla zasobów. Nie obejmuje on operacji odczytu (GET). Aby zapoznać się z listą akcji zasobów, zobacz [Azure Resource Manager operacje dostawcy zasobów](../role-based-access-control/resource-provider-operations.md). Dzienników aktywności można użyć do znalezienia błędu podczas rozwiązywania problemów lub do monitorowania sposobu, w jaki zasób został zmodyfikowany przez użytkownika w organizacji.
 
-Dzienniki aktywności są przechowywane przez 90 dni. Można wyszukać dowolny zakres dat, tak długo, jak Data początkowa nie więcej niż 90 dni w przeszłość.
+Dzienniki aktywności są przechowywane przez 90 dni. Możesz wykonać zapytanie dotyczące dowolnego zakresu dat, jednak data początkowa nie może być wcześniejsza od daty bieżącej o więcej niż 90 dni.
 
-Można pobrać informacji z dzienników aktywności w portalu, programu PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST usługi Insights lub [Insights — Biblioteka .NET](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
+Możesz pobrać informacje z dzienników aktywności za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia platformy Azure, API REST lub [biblioteki usługi Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Aby wyświetlić dzienniki aktywności w portalu, wybierz **Monitor**.
+1. Aby wyświetlić dzienniki aktywności za pomocą portalu, wybierz pozycję **Monitoruj**.
 
     ![Wybierz monitor](./media/resource-group-audit/select-monitor.png)
 
-1. Wybierz **dziennika aktywności**.
+1. Wybierz pozycję **Dziennik aktywności**.
 
-    ![Wybierz dziennik aktywności](./media/resource-group-audit/select-activity-log.png)
+    ![Wybierz Dziennik aktywności](./media/resource-group-audit/select-activity-log.png)
 
-1. Zostanie wyświetlone podsumowanie ostatnich operacji. Domyślny zestaw filtry są stosowane do operacji. Należy zauważyć, że zawiera informacje na temat podsumowania, kto rozpoczął akcję i kiedy to się stało.
+1. Zobaczysz podsumowanie ostatnich operacji. Do operacji jest stosowany domyślny zestaw filtrów. Zwróć uwagę na informacje na temat tego, kto uruchomił akcję i kiedy wystąpił.
 
-    ![Wyświetl podsumowanie, ostatnie operacji](./media/resource-group-audit/audit-summary.png)
+    ![Wyświetl podsumowanie ostatnich operacji](./media/resource-group-audit/audit-summary.png)
 
-1. Aby szybko uruchomić wstępnie zdefiniowany zestaw filtrów, zaznacz **szybki wgląd w szczegóły**.
+1. Aby szybko uruchomić wstępnie zdefiniowany zestaw filtrów, wybierz pozycję **szybki wgląd w szczegółowe informacje**.
 
-    ![Wybierz szybki wgląd w szczegóły](./media/resource-group-audit/select-quick-insights.png)
+    ![Wybieranie szybkiego wglądu w szczegółowe dane](./media/resource-group-audit/select-quick-insights.png)
 
-1. Wybierz jedną z opcji. Na przykład wybierz **nieudanych wdrożeń** zobaczyć błędy z wdrożenia.
+1. Wybierz jedną z opcji. Na przykład wybierz pozycję **wdrożenia zakończone niepowodzeniem** , aby zobaczyć błędy wdrożeń.
 
-    ![Wybierz opcję wdrożenia zakończone niepowodzeniem](./media/resource-group-audit/select-failed-deployments.png)
+    ![Wybieranie wdrożeń zakończonych niepowodzeniem](./media/resource-group-audit/select-failed-deployments.png)
 
-1. Zwróć uwagę, że filtry zostały zmienione skoncentrować się na błędy związane z wdrażaniem w ciągu ostatnich 24 godzin. Wyświetlane są tylko te operacje, które pasują do filtrów.
+1. Zauważ, że filtry zostały zmienione, aby skoncentrować się na błędach wdrożenia w ciągu ostatnich 24 godzin. Wyświetlane są tylko operacje pasujące do filtrów.
 
     ![Filtry widoku](./media/resource-group-audit/view-filters.png)
 
-1. Aby skoncentrować się na określonych operacji, Zmień filtry lub deklarowania nowych. Na przykład na poniższej ilustracji przedstawiono nową wartość dla **Timespan** i **typ zasobu** jest ustawiona na kontach magazynu. 
+1. Aby skoncentrować się na określonych operacjach, zmień filtry lub Zastosuj nowe. Na przykład na poniższej ilustracji przedstawiono nową wartość ustawienia **TimeSpan** , a **Typ zasobu** to konta magazynu.
 
-    ![Ustaw opcje filtru](./media/resource-group-audit/set-filter.png)
+    ![Ustawianie opcji filtru](./media/resource-group-audit/set-filter.png)
 
-1. Jeśli potrzebujesz uruchomić zapytanie później, wybierz **filtry bieżący numer Pin**.
+1. Jeśli musisz ponownie uruchomić zapytanie później, wybierz pozycję **Przypnij bieżące filtry**.
 
-    ![Filtry numeru PIN](./media/resource-group-audit/pin-filters.png)
+    ![Przypnij filtry](./media/resource-group-audit/pin-filters.png)
 
-1. Nazwij filtr.
+1. Nadaj nazwę filtrowi.
 
     ![Filtry nazw](./media/resource-group-audit/name-filters.png)
 
 1. Filtr jest dostępny na pulpicie nawigacyjnym.
 
-    ![Pokaż filtru na pulpicie nawigacyjnym](./media/resource-group-audit/show-dashboard.png)
+    ![Pokaż filtr na pulpicie nawigacyjnym](./media/resource-group-audit/show-dashboard.png)
 
-1. Z poziomu portalu możesz wyświetlić zmiany w zasobie. Przejdź do wartości domyślnych wyświetlać w monitorze i wybrać operację, z udziałem, zmieniając zasobu.
+1. W portalu można wyświetlić zmiany w zasobie. Wróć do widoku domyślnego w monitorze i wybierz operację, która obejmuje zmianę zasobu.
 
     ![Wybierz operację](./media/resource-group-audit/select-operation.png)
 
-1. Wybierz **(wersja zapoznawcza) historię zmian** i wybierz jedną z dostępnych operacji.
+1. Wybierz pozycję **historia zmian (wersja zapoznawcza)** i wybierz jedną z dostępnych operacji.
 
-    ![Wybierz pozycję Historia zmian](./media/resource-group-audit/select-change-history.png)
+    ![Wybierz historię zmian](./media/resource-group-audit/select-change-history.png)
 
-1. Zmiany w zasobie są wyświetlane.
+1. Zostaną wyświetlone zmiany w zasobie.
 
     ![Pokaż zmiany](./media/resource-group-audit/show-changes.png)
 
@@ -89,110 +89,111 @@ Aby dowiedzieć się więcej na temat historii zmian, zobacz [pobieranie zmian z
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Uruchom, aby pobrać Wpisy dziennika **Get AzLog** polecenia. Możesz podać dodatkowe parametry, aby filtrować listę wpisów. Jeśli nie określisz godzinę rozpoczęcia i zakończenia są zwracane wpisy z ostatnich siedmiu dni.
+Aby pobrać wpisy dziennika, uruchom polecenie **Get-AzLog** . Podajesz dodatkowe parametry filtrowania listy wpisów. Jeśli nie określisz godziny rozpoczęcia i zakończenia, zwracane są wpisy z ostatnich siedmiu dni.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup
 ```
 
-Poniższy przykład pokazuje, jak korzystać z dziennika aktywności do badań operacje wykonywane w czasie. Daty rozpoczęcia i zakończenia są określone w formacie daty.
+Poniższy przykład pokazuje, jak za pomocą dziennika aktywności zbadać operacje wykonywane w określonym czasie. Daty rozpoczęcia i zakończenia są określone w formacie daty.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime 2019-05-05T06:00 -EndTime 2019-05-09T06:00
 ```
 
-Alternatywnie można użyć funkcji daty, aby określić zakres dat, takich jak ostatnich 14 dni.
+Lub można użyć funkcji daty, aby określić zakres dat, taki jak ostatnie 14 dni.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
 ```
 
-Możesz wyszukać akcje wykonywane przez konkretnego użytkownika.
+Można wyszukiwać akcje wykonywane przez określonego użytkownika.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
 ```
 
-Można filtrować operacje zakończone niepowodzeniem.
+Można filtrować dla operacji zakończonych niepowodzeniem.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -Status Failed
 ```
 
-Można skoncentrować się na jeden błąd, analizując komunikat o stanie dla tego wpisu.
+Możesz skupić się na jednym błędzie, przeglądając komunikat o stanie dla tego wpisu.
 
 ```azurepowershell-interactive
 (Get-AzLog -ResourceGroup ExampleGroup -Status Failed).Properties.Content.statusMessage | ConvertFrom-Json
 ```
 
-Możesz wybrać określone wartości, aby ograniczyć ilość danych, która jest zwracana.
+Możesz wybrać określone wartości, aby ograniczyć zwracane dane.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
 ```
 
-W zależności od godziny rozpoczęcia, które określisz poprzednie polecenia może zwracać długą listę operacji dla grupy zasobów. Możesz filtrować wyniki do czego szukasz, zapewniając kryteria wyszukiwania. Na przykład można filtrować według typu działania.
+W zależności od określonego czasu rozpoczęcia poprzednie polecenia mogą zwracać długą listę operacji dla grupy zasobów. Możesz filtrować wyniki dla tego, czego szukasz, dostarczając kryteria wyszukiwania. Na przykład można filtrować według typu operacji.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
 ```
 
-Wykres zasobów można użyć, aby wyświetlić historię zmian dla zasobu. Aby uzyskać więcej informacji, zobacz [pobieranie zmian zasobów](../governance/resource-graph/how-to/get-resource-changes.md).
+Możesz użyć grafu zasobów, aby wyświetlić historię zmian dla zasobu. Aby uzyskać więcej informacji, zobacz [pobieranie zmian zasobów](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Uruchom, aby pobrać Wpisy dziennika [az monitor dziennika aktywności listy](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) polecenia Przesunięcie do wskazania przedział czasu.
+Aby pobrać wpisy dziennika, uruchom polecenie [AZ monitor Activity-Log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) z przesunięciem w celu wskazania przedziału czasu.
 
 ```azurecli-interactive
 az monitor activity-log list --resource-group ExampleGroup --offset 7d
 ```
 
-Poniższy przykład pokazuje, jak korzystać z dziennika aktywności do badań operacje wykonywane w czasie. Daty rozpoczęcia i zakończenia są określone w formacie daty.
+Poniższy przykład pokazuje, jak za pomocą dziennika aktywności zbadać operacje wykonywane w określonym czasie. Daty rozpoczęcia i zakończenia są określone w formacie daty.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --start-time 2019-05-01 --end-time 2019-05-15
 ```
 
-Możesz wyszukać akcje wykonywane przez określonego użytkownika, nawet w przypadku grupy zasobów, który już nie istnieje.
+Można wyszukiwać akcje wykonywane przez określonego użytkownika, nawet w przypadku grupy zasobów, która już nie istnieje.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --caller someone@contoso.com --offset 5d
 ```
 
-Można filtrować operacje zakończone niepowodzeniem.
+Można filtrować dla operacji zakończonych niepowodzeniem.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --status Failed --offset 1d
 ```
 
-Można skoncentrować się na jeden błąd, analizując komunikat o stanie dla tego wpisu.
+Możesz skupić się na jednym błędzie, przeglądając komunikat o stanie dla tego wpisu.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --status Failed --offset 1d --query [].properties.statusMessage
 ```
 
-Możesz wybrać określone wartości, aby ograniczyć ilość danych, która jest zwracana.
+Możesz wybrać określone wartości, aby ograniczyć zwracane dane.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --offset 1d --query '[].{Operation: operationName.value, Status: status.value, SubStatus: subStatus.localizedValue}'
 ```
 
-W zależności od godziny rozpoczęcia, które określisz poprzednie polecenia może zwracać długą listę operacji dla grupy zasobów. Możesz filtrować wyniki do czego szukasz, zapewniając kryteria wyszukiwania. Na przykład można filtrować według typu działania.
+W zależności od określonego czasu rozpoczęcia poprzednie polecenia mogą zwracać długą listę operacji dla grupy zasobów. Możesz filtrować wyniki dla tego, czego szukasz, dostarczając kryteria wyszukiwania. Na przykład można filtrować według typu operacji.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationName.value=='Microsoft.Storage/storageAccounts/write']"
 ```
 
-Wykres zasobów można użyć, aby wyświetlić historię zmian dla zasobu. Aby uzyskać więcej informacji, zobacz [pobieranie zmian zasobów](../governance/resource-graph/how-to/get-resource-changes.md).
+Możesz użyć grafu zasobów, aby wyświetlić historię zmian dla zasobu. Aby uzyskać więcej informacji, zobacz [pobieranie zmian zasobów](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="rest-api"></a>Interfejs API REST
 
-Operacje REST do pracy z dziennika aktywności są częścią [interfejsu API REST usługi Insights](/rest/api/monitor/). Aby pobrać zdarzenia dziennika aktywności, zobacz [listy zdarzeń zarządzania w ramach subskrypcji](/rest/api/monitor/activitylogs).
+Operacje REST do pracy z dziennikiem aktywności są częścią [interfejsu API REST usługi Insights](/rest/api/monitor/). Aby pobrać zdarzenia dziennika aktywności, zobacz [Wyświetlanie listy zdarzeń zarządzania w ramach subskrypcji](/rest/api/monitor/activitylogs).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dzienniki aktywności platformy Azure może służyć za pomocą usługi Power BI do uzyskania bardziej wnikliwych analiz dotyczących działań w ramach subskrypcji. Zobacz [wyświetlanie i analizowanie dzienników aktywności platformy Azure w usłudze Power BI i nie tylko](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* Aby dowiedzieć się więcej na temat ustawiania zasad zabezpieczeń, zobacz [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md).
-* Aby dowiedzieć się więcej na temat poleceń w celu wyświetlania operacji wdrażania, zobacz [wyświetlanie operacji wdrażania](resource-manager-deployment-operations.md).
-* Aby dowiedzieć się, jak zapobiegać usunięcia zasobu dla wszystkich użytkowników, zobacz [blokowanie zasobów w usłudze Azure Resource Manager](resource-group-lock-resources.md).
-* Aby wyświetlić listę operacji, które są dostępne dla każdego dostawcy usługi Microsoft Azure Resource Manager, zobacz [operacji dostawcy zasobów usługi Resource Manager platformy Azure](../role-based-access-control/resource-provider-operations.md)
+* Dzienników aktywności platformy Azure można używać w połączeniu z Power BI, aby uzyskać więcej szczegółowych informacji o akcjach w ramach subskrypcji. Zobacz [Wyświetlanie i analizowanie dzienników aktywności platformy Azure w Power BI i nie tylko](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
+* Aby dowiedzieć się więcej na temat ustawiania zasad zabezpieczeń, zobacz [Access Control oparte na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md).
+* Aby wyświetlić więcej szczegółów o zmianach w aplikacjach z warstwy infrastruktury we wszystkich sposobach wdrażania aplikacji, zobacz [używanie analizy zmian aplikacji w Azure Monitor] (.. /Azure-monitor/App/Change-Analysis. MD).
+* Aby dowiedzieć się więcej na temat poleceń do wyświetlania operacji wdrażania, zobacz [Wyświetlanie operacji wdrażania](resource-manager-deployment-operations.md).
+* Aby dowiedzieć się, jak uniemożliwić usuwanie zasobów dla wszystkich użytkowników, zobacz temat [blokowanie zasobów przy użyciu Azure Resource Manager](resource-group-lock-resources.md).
+* Aby wyświetlić listę operacji dostępnych dla każdego Microsoft Azure dostawcy Menedżer zasobów, zobacz [Azure Resource Manager operacje dostawcy zasobów](../role-based-access-control/resource-provider-operations.md)

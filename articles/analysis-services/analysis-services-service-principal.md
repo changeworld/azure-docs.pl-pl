@@ -2,18 +2,17 @@
 title: Automatyzowanie Azure Analysis Services zadań przy użyciu jednostek usługi | Microsoft Docs
 description: Dowiedz się, jak utworzyć jednostki usługi do automatyzowania zadań Azure Analysis Services.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4bfa969089407a35658160cf05a6407f8c717714
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 94f1313825b21b3adf7173b56798fce22736ea87
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347956"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294562"
 ---
 # <a name="automation-with-service-principals"></a>Automatyzacja przy użyciu jednostek usługi
 
@@ -27,7 +26,7 @@ Analysis Services obsługuje również operacje wykonywane przez zarządzane to�
  
 Nazwy główne usługi można tworzyć w Azure Portal lub przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz:
 
-[Tworzenie nazwy głównej usługi — Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Tworzenie nazwy głównej usługi — Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)@no__t — 1  
 [Tworzenie jednostki usługi — PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Przechowuj poświadczenia i zasoby certyfikatów w Azure Automation
@@ -49,9 +48,9 @@ Identyfikator appID i hasło i certyfikat jednostki usługi mogą być używane 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Korzystanie z modułu AZ. AnalysisServices
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Using AZ. AnalysisServices module
 
-W przypadku używania jednostki usługi do operacji zarządzania zasobami z modułem [AZ. AnalysisServices](/powershell/module/az.analysisservices) należy użyć `Connect-AzAccount` polecenia cmdlet. 
+W przypadku używania jednostki usługi do operacji zarządzania zasobami z modułem [AZ. AnalysisServices](/powershell/module/az.analysisservices) należy użyć polecenia cmdlet `Connect-AzAccount`. 
 
 W poniższym przykładzie identyfikator appID i hasło są używane do wykonywania operacji płaszczyzny kontroli w celu synchronizacji z replikami tylko do odczytu i skalowania w górę/w poziomie:
 
@@ -93,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO i ADOMD 
 
-Podczas nawiązywania połączenia z aplikacjami klienckimi i aplikacjami sieci Web, [bibliotekami klienckimi biblioteki AMO i ADOMD](analysis-services-data-providers.md) w wersji 15.0.2 i wyższych pakietów instalowalnych z usług NuGet w parametrach `app:AppID` połączenia przy użyciu następującej składni: i hasła lub `cert:thumbprint`. 
+Podczas nawiązywania połączenia z aplikacjami klienckimi i aplikacjami sieci Web, [bibliotekami klienckimi biblioteki AMO i ADOMD](analysis-services-data-providers.md) w wersji 15.0.2 i wyższych pakietów instalowalnych z usług NuGet w parametrach połączenia przy użyciu następującej składni: `app:AppID` i hasła lub @no__ t-2. 
 
-W poniższym przykładzie `appID` `password` i są używane do wykonywania operacji odświeżania bazy danych modelu:
+W poniższym przykładzie `appID` i `password` są używane do wykonywania operacji odświeżania bazy danych modelu:
 
 ```csharp
 string appId = "xxx";
@@ -109,6 +108,6 @@ tbl.RequestRefresh(RefreshType.Full);
 db.Model.SaveChanges();
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Zaloguj się przy użyciu Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
 [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md)   

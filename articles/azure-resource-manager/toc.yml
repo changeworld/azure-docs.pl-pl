@@ -228,8 +228,6 @@
           href: resource-group-delete.md
         - name: Blokowanie zasobów
           href: resource-group-lock-resources.md
-        - name: Interfejs API uwierzytelniania na potrzeby dostępu do subskrypcji
-          href: resource-manager-api-authentication.md
         - name: Tworzenie subskrypcji EA
           href: programmatically-create-subscription.md
         - name: Przyznawanie dostępu w celu tworzenia subskrypcji EA

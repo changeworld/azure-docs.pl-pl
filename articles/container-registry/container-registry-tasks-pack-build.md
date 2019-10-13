@@ -5,18 +5,18 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 10/10/2019
 ms.author: danlep
-ms.openlocfilehash: 4e41bcaff8faef2c4eaec9ae852955d4b7ce354b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b544820a0c496e0814de44790ea9c28878031a7d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839897"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293907"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Kompilowanie i wypychanie obrazu z aplikacji przy użyciu natywnej Buildpack w chmurze
 
-Polecenie interfejsu wiersza polecenia `az acr pack build` platformy Azure [`pack`](https://github.com/buildpack/pack) używa narzędzia CLI, z [Buildpacks](https://buildpacks.io/), do kompilowania aplikacji i wypychania jej obrazu do usługi Azure Container Registry. Ta funkcja udostępnia opcję szybkiego tworzenia obrazu kontenera na podstawie kodu źródłowego aplikacji w języku Node. js, Java i innych językach bez konieczności definiowania pliku dockerfile.
+Polecenie interfejsu wiersza polecenia platformy Azure `az acr pack build` używa narzędzia CLI [`pack`](https://github.com/buildpack/pack) z [Buildpacks](https://buildpacks.io/), aby skompilować aplikację i wypchnąć obraz do usługi Azure Container Registry. Ta funkcja udostępnia opcję szybkiego tworzenia obrazu kontenera na podstawie kodu źródłowego aplikacji w języku Node. js, Java i innych językach bez konieczności definiowania pliku dockerfile.
 
 Możesz użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure, aby uruchomić przykłady w tym artykule. Jeśli chcesz używać go lokalnie, wymagana jest wersja 2.0.70 lub nowsza. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
@@ -25,32 +25,32 @@ Możesz użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza pole
 
 ## <a name="use-the-build-command"></a>Korzystanie z polecenia Build
 
-Aby skompilować i wypchnąć obraz kontenera za pomocą natywnej Buildpacks w chmurze, uruchom polecenie [AZ ACR Pack Build][az-acr-pack-build] . Podczas gdy polecenie [AZ ACR Build][az-acr-build] kompiluje i wypycha obraz ze źródła pliku dockerfile i powiązanego kodu, `az acr pack build` należy bezpośrednio określić drzewo źródła aplikacji.
+Aby skompilować i wypchnąć obraz kontenera za pomocą natywnej Buildpacks w chmurze, uruchom polecenie [AZ ACR Pack Build][az-acr-pack-build] . Podczas gdy polecenie [AZ ACR Build][az-acr-build] kompiluje i wypycha obraz ze źródła pliku dockerfile i powiązanego kodu, z `az acr pack build` należy określić bezpośrednio drzewo źródła aplikacji.
 
-Podczas uruchamiania `az acr pack build`należy określić co najmniej następujące elementy:
+Podczas uruchamiania `az acr pack build` należy określić co najmniej następujące elementy:
 
 * Rejestr kontenerów platformy Azure, w którym jest uruchamiane polecenie
 * Nazwa obrazu i tag dla obrazu uzyskanego
-* Jedna z [obsługiwanych lokalizacji kontekstu](container-registry-tasks-overview.md#quick-task) dla zadań ACR, takich jak katalog lokalny, repozytorium GitHub lub zdalne plik tar
-* Nazwa obrazu konstruktora Buildpack, `cloudfoundry/cnb:bionic`na przykład.  
+* Jedna z [obsługiwanych lokalizacji kontekstu](container-registry-tasks-overview.md#context-locations) dla zadań ACR, takich jak katalog lokalny, repozytorium GitHub lub zdalne plik tar
+* Nazwa obrazu konstruktora Buildpack, na przykład `cloudfoundry/cnb:0.0.12-bionic`.  
 
-`az acr pack build`obsługuje inne funkcje poleceń ACR Tasks, w tym [uruchamiania zmiennych](container-registry-tasks-reference-yaml.md#run-variables) i [dzienników uruchamiania zadań](container-registry-tasks-overview.md#view-task-logs) , które są przesyłane strumieniowo, a także zapisane do późniejszego pobrania.
+`az acr pack build` obsługuje inne funkcje poleceń ACR zadania, w tym [uruchomienia zmiennych](container-registry-tasks-reference-yaml.md#run-variables) i [dzienników uruchamiania zadań](container-registry-tasks-overview.md#view-task-logs) , które są przesyłane strumieniowo, a także zapisane do późniejszego pobrania.
 
-## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Przykład: Kompilowanie obrazu Node. js za pomocą programu Cloud Foundry Builder
+## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Przykład: kompilowanie obrazu Node. js za pomocą konstruktora Cloud Foundry
 
-Poniższy przykład kompiluje obraz kontenera z aplikacji node. js w repozytorium [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) , używając `cloudfoundry/cnb:bionic` konstruktora:
+Poniższy przykład tworzy obraz kontenera z aplikacji node. js w repozytorium [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) przy użyciu konstruktora `cloudfoundry/cnb:0.0.12-bionic`:
 
 ```azurecli
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --pull --builder cloudfoundry/cnb:bionic \
+    --pull --builder cloudfoundry/cnb:0.0.12-bionic \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-Ten przykład kompiluje `node-app` obraz `1.0` przy użyciu znacznika i wypchnięcie go do rejestru kontenerów *rejestru* . W tym miejscu docelowa Nazwa rejestru jest jawnie poprzedzona nazwą obrazu. Jeśli nie zostanie określony, adres URL rejestru zostanie automatycznie poprzedzony nazwą obrazu.
+Ten przykład kompiluje obraz `node-app` ze znacznikiem `1.0` i wypchnięcie go do rejestru kontenerów *rejestru* . W tym miejscu docelowa Nazwa rejestru jest jawnie poprzedzona nazwą obrazu. Jeśli nie zostanie określony, adres URL rejestru zostanie automatycznie poprzedzony nazwą obrazu.
 
-`--pull` Parametr określa, że polecenie pobiera najnowszy obraz konstruktora.
+Parametr `--pull` Określa, że polecenie ściąga najnowszą wersję obrazu konstruktora.
 
 Dane wyjściowe polecenia pokazują postęp kompilowania i wypychania obrazu. 
 
@@ -66,11 +66,11 @@ Uruchom obraz:
 docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 ```
 
-Przejdź do `localhost:1337` ulubionej przeglądarki, aby wyświetlić przykładową aplikację internetową. Naciśnij `[Ctrl]+[C]` klawisz, aby zatrzymać kontener.
+Przejdź do `localhost:1337` w ulubionej przeglądarce, aby wyświetlić przykładową aplikację internetową. Naciśnij `[Ctrl]+[C]`, aby zatrzymać kontener.
 
-## <a name="example-build-java-image-with-heroku-builder"></a>Przykład: Tworzenie obrazu Java za pomocą konstruktora Heroku
+## <a name="example-build-java-image-with-heroku-builder"></a>Przykład: kompilowanie obrazu Java za pomocą konstruktora Heroku
 
-Poniższy przykład kompiluje obraz kontenera z aplikacji Java w repozytorium [buildpack/Sample-Java-App](https://github.com/buildpack/sample-java-app) , używając `heroku/buildpacks:18` konstruktora:
+Poniższy przykład tworzy obraz kontenera z aplikacji Java w repozytorium [buildpack/Sample-Java-App](https://github.com/buildpack/sample-java-app) , korzystając z konstruktora `heroku/buildpacks:18`:
 
 ```azurecli
 az acr pack build \
@@ -80,9 +80,9 @@ az acr pack build \
     https://github.com/buildpack/sample-java-app.git
 ```
 
-Ten przykład kompiluje `java-app` obraz oznaczony przy użyciu identyfikatora uruchomienia polecenia i wypchnięcie go do rejestru kontenerów *rejestru* .
+Ten przykład kompiluje obraz `java-app` oznaczony przy użyciu identyfikatora uruchomienia polecenia i wypchnięcie go do rejestru kontenerów *rejestru* .
 
-`--pull` Parametr określa, że polecenie pobiera najnowszy obraz konstruktora.
+Parametr `--pull` Określa, że polecenie ściąga najnowszą wersję obrazu konstruktora.
 
 Dane wyjściowe polecenia pokazują postęp kompilowania i wypychania obrazu. 
 
@@ -98,12 +98,12 @@ Uruchom obraz, zastępując tag obrazu *RunId*:
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 ```
 
-Przejdź do `localhost:8080` ulubionej przeglądarki, aby wyświetlić przykładową aplikację internetową. Naciśnij `[Ctrl]+[C]` klawisz, aby zatrzymać kontener.
+Przejdź do `localhost:8080` w ulubionej przeglądarce, aby wyświetlić przykładową aplikację internetową. Naciśnij `[Ctrl]+[C]`, aby zatrzymać kontener.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po skompilowaniu i wypchnięciu obrazu kontenera `az acr pack build`za pomocą programu można wdrożyć go jak dowolny obraz w wybranym miejscu docelowym. Opcje wdrażania platformy Azure obejmują uruchamianie go w [App Service](../app-service/containers/tutorial-custom-docker-image.md) lub [usługi Azure Kubernetes](../aks/tutorial-kubernetes-deploy-cluster.md).
+Po skompilowaniu i wypchnięciu obrazu kontenera za pomocą `az acr pack build` można wdrożyć go jak dowolny obraz w wybranym miejscu docelowym. Opcje wdrażania platformy Azure obejmują uruchamianie go w [App Service](../app-service/containers/tutorial-custom-docker-image.md) lub [usługi Azure Kubernetes](../aks/tutorial-kubernetes-deploy-cluster.md).
 
 Aby uzyskać więcej informacji na temat funkcji zadań ACR, zobacz [Automatyzacja kompilacji i konserwacji obrazów kontenerów za pomocą zadań ACR](container-registry-tasks-overview.md).
 

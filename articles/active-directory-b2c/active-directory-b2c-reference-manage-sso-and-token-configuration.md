@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 966386bfed5f94556f145afab1c665eb3c90546a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 36a95b502c13ccf360ba4ac56b4837d41ee487c8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065557"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296398"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Zarządzanie użyciem rejestracji jednokrotnej i tokenu przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -54,9 +54,9 @@ Poniższe wartości są ustawiane w poprzednim przykładzie:
 - **Okresy istnienia tokenu dostępu** — wartość okresu istnienia tokenu dostępu jest ustawiana za pomocą elementu metadanych **token_lifetime_secs** . Wartość domyślna to 3600 sekund (60 minut).
 - **Okres istnienia tokenu identyfikatora** — wartość okresu istnienia tokenu identyfikatora jest ustawiana za pomocą elementu metadanych **id_token_lifetime_secs** . Wartość domyślna to 3600 sekund (60 minut).
 - **Okres istnienia tokenu odświeżania** — wartość okresu istnienia tokenu odświeżania jest ustawiana za pomocą elementu metadanych **refresh_token_lifetime_secs** . Wartość domyślna to 1209600 sekund (14 dni).
-- **Okres istnienia przesuwanego okna tokenu odświeżania** — Jeśli chcesz ustawić okres istnienia ruchomego okna do tokenu odświeżania, ustaw wartość elementu metadanych **rolling_refresh_token_lifetime_secs** . Wartość domyślna to 7776000 (90 dni). Jeśli nie chcesz wymusić okresu istnienia ruchomego okna, Zastąp `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`element pozycją.
+- **Okres istnienia przesuwanego okna tokenu odświeżania** — Jeśli chcesz ustawić okres istnienia ruchomego okna do tokenu odświeżania, ustaw wartość elementu metadanych **rolling_refresh_token_lifetime_secs** . Wartość domyślna to 7776000 (90 dni). Jeśli nie chcesz wymusić okresu istnienia ruchomego okna, Zastąp element wartością `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
 - **Claimname (ISS)** — w ramach żądania wystawcy (ISS) jest ustawiany element metadanych **IssuanceClaimPattern** . Odpowiednie wartości to `AuthorityAndTenantGuid` i `AuthorityWithTfp`.
-- **Ustawianie zgłoszenia reprezentującego identyfikator zasad** — opcje ustawiania tej wartości są `TFP` (zasady struktury zaufania) i `ACR` (odwołanie kontekstu uwierzytelniania). `TFP`jest to zalecana wartość. Ustaw **AuthenticationContextReferenceClaimPattern** z wartością `None`.
+- **Ustawianie zgłoszenia reprezentującego identyfikator zasad** — opcje ustawiania tej wartości są `TFP` (zasady struktury zaufania) i `ACR` (odwołanie kontekstu uwierzytelniania). wartość `TFP` jest zalecana. Ustaw **AuthenticationContextReferenceClaimPattern** z wartością `None`.
 
     W elemencie **ClaimsSchema** Dodaj następujący element:
 
@@ -101,6 +101,6 @@ Aby zmienić zachowanie sesji i konfiguracje rejestracji jednokrotnej, należy d
 
 Następujące wartości są konfigurowane w poprzednim przykładzie:
 
-- Logowanie jednokrotne **(SSO)** — Logowanie jednokrotne jest konfigurowane z **SingleSignon**. Odpowiednie `Tenant`wartości to `Application` `Suppressed`,,, i. `Policy`
-- **Okres istnienia sesji aplikacji sieci Web (w minutach)** — okres istnienia sesji aplikacji sieci Web jest ustawiany z elementem **SessionExpiryInSeconds** . Wartość domyślna to 86400 sekund (1440 minut).
+- Logowanie jednokrotne **(SSO)** — Logowanie jednokrotne jest konfigurowane z **SingleSignon**. Odpowiednie wartości to `Tenant`, `Application`, `Policy` i `Suppressed`.
 - Limit **czasu sesji aplikacji sieci Web** — limit czasu sesji aplikacji sieci Web jest ustawiany z elementem **SessionExpiryType** . Odpowiednie wartości to `Absolute` i `Rolling`.
+- **Okres istnienia sesji aplikacji sieci Web** — okres istnienia sesji aplikacji sieci Web jest ustawiany przy użyciu elementu **SessionExpiryInSeconds** . Wartość domyślna to 86400 sekund (1440 minut).

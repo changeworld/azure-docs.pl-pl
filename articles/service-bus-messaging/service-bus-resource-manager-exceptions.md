@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 7b9d4099734af3a04f43d35d89f07f8b005c90f9
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 9a2d25aba03156d6d14fe5ef9aa58b3748033b85
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802513"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296385"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Wyjątki Menedżer zasobów Service Bus
 
@@ -36,7 +36,7 @@ Poniżej znajdują się różne wyjątki/błędy, które są przedstawione w Azu
 
 | Kod błędu | Kod podkodu błędu | Komunikat o błędzie | Opis | Zalecenie |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Nieprawidłowe żądanie | 40000 | Kod Subcode = 40000. Nie można ustawić właściwości *"Property Name"* podczas tworzenia kolejki, ponieważ przestrzeń nazw *"name* " ma używaną warstwę "Basic". Ta operacja jest obsługiwana tylko w warstwie Standardowa lub Premium. | W warstwie Podstawowa Azure Service Bus nie można ustawić ani zaktualizować poniższych właściwości — <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>requiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> Prześlij dalej </li> <li> Tematy </li> </ul> | Rozważ uaktualnienie z warstwy Podstawowa do standardowa lub Premium, aby korzystać z tej funkcji. |
+| Nieprawidłowe żądanie | 40000 | Kod Subcode = 40000. Nie można ustawić właściwości *"Property Name"* podczas tworzenia kolejki, ponieważ przestrzeń nazw *"name* " ma używaną warstwę "Basic". Ta operacja jest obsługiwana tylko w warstwie Standardowa lub Premium. | W warstwie Podstawowa Azure Service Bus nie można ustawić ani zaktualizować poniższych właściwości — <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> Prześlij dalej </li> <li> Tematy </li> </ul> | Rozważ uaktualnienie z warstwy Podstawowa do standardowa lub Premium, aby korzystać z tej funkcji. |
 | Nieprawidłowe żądanie | 40000 | Kod Subcode = 40000. Nie można zmienić wartości właściwości "requiresDuplicateDetection" istniejącej kolejki (lub tematu). | Wykrywanie duplikatów musi być włączone/wyłączone w momencie tworzenia jednostki. Nie można zmienić parametru konfiguracji wykrywania duplikatów po utworzeniu. | Aby włączyć wykrywanie duplikatów dla wcześniej utworzonej kolejki/tematu, można utworzyć nową kolejkę/temat z wykrywaniem duplikatów, a następnie przekazać ją z oryginalnej kolejki do nowej kolejki lub tematu. |
 | Nieprawidłowe żądanie | 40000 | Kod Subcode = 40000. Określona wartość 16384 jest nieprawidłowa. Właściwość "MaxSizeInMegabytes" musi mieć jedną z następujących wartości: 1024; 2048; 3072; 4096; 5120. | Wartość MaxSizeInMegabytes jest nieprawidłowa. | Upewnij się, że MaxSizeInMegabytes ma jedną z następujących wartości: 1024, 2048, 3072, 4096, 5120. |
 | Nieprawidłowe żądanie | 40000 | Kod Subcode = 40000. Nie można zmienić partycjonowania dla kolejki/tematu. | Nie można zmienić partycjonowania dla jednostki. | Utwórz nową jednostkę (kolejkę lub temat) i Włącz partycje. | 
@@ -57,9 +57,9 @@ Podobnie jak w przypadku protokołu HTTP "kod błędu 429" wskazuje "zbyt wiele 
 | 429 | 50004 | Subcode = 50004. Żądanie zostało przerwane, ponieważ przestrzeń nazw *obszaru nazw jest* ograniczana. | Ten warunek błędu zostaje osiągnięty, gdy liczba żądań przychodzących przekracza ograniczenie zasobu. | Poczekaj kilka sekund i spróbuj ponownie. <br/> <br/> Dowiedz się więcej na temat [limitów](../azure-resource-manager/resource-manager-request-limits.md) [przydziałów](service-bus-quotas.md) i żądań Azure Resource Manager|
 | 429 | 40901 | Subcode = 40901. Inna operacja powodująca konflikt jest w toku. | Inna operacja powodująca konflikt jest w toku dla tego samego zasobu/jednostki | Poczekaj na zakończenie bieżącej operacji w toku przed ponowną próbą. |
 | 429 | 40900 | Subcode = 40900. Kolizj. Żądasz operacji, która nie jest dozwolona w bieżącym stanie zasobu. | Ten stan może być osiągnięty w przypadku wykonywania wielu żądań w celu wykonania operacji na tej samej jednostce (Kolejka, temat, subskrypcja lub reguła) w tym samym czasie. | Poczekaj kilka sekund i spróbuj ponownie |
+| 429 | 40901 | Wystąpił konflikt żądania w jednostce *"Nazwa jednostki* " z innym żądaniem | Inna operacja powodująca konflikt jest w toku dla tego samego zasobu/jednostki | Poczekaj na zakończenie poprzedniej operacji przed ponowną próbą |
+| 429 | 40901 | Inne żądanie aktualizacji jest w toku dla jednostki *"Nazwa jednostki"* . | Inna operacja powodująca konflikt jest w toku dla tego samego zasobu/jednostki | Poczekaj na zakończenie poprzedniej operacji przed ponowną próbą |
 | 429 | brak | Wystąpił konflikt zasobów. Inna operacja powodująca konflikt może być w toku. Jeśli ponowienie operacji nie powiodło się, czyszczenie w tle nadal oczekuje. Spróbuj ponownie później. | Ten stan może wystąpić, gdy istnieje oczekująca operacja w odniesieniu do tej samej jednostki. | Poczekaj na zakończenie poprzedniej operacji przed ponowną próbą. |
-| 429 | brak | Wystąpił konflikt żądania w jednostce *"Nazwa jednostki* " z innym żądaniem | Inna operacja powodująca konflikt jest w toku dla tego samego zasobu/jednostki | Poczekaj na zakończenie poprzedniej operacji przed ponowną próbą |
-| 429 | brak | Inne żądanie aktualizacji jest w toku dla jednostki *"Nazwa jednostki"* . | Inna operacja powodująca konflikt jest w toku dla tego samego zasobu/jednostki | Poczekaj na zakończenie poprzedniej operacji przed ponowną próbą |
 
 
 ## <a name="error-code-not-found"></a>Kod błędu: nie znaleziono

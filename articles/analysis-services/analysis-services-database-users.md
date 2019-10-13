@@ -2,18 +2,17 @@
 title: Zarządzanie rolami bazy danych i użytkownikami w Azure Analysis Services | Microsoft Docs
 description: Dowiedz się, jak zarządzać rolami bazy danych i użytkownikami na serwerze Analysis Services na platformie Azure.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2a6c63c4ae58079c79a9d344f1e2550e4768088f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 426b69173994fc94a52ef0fcccb0dbc6315de14a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932244"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301155"
 ---
 # <a name="manage-database-roles-and-users"></a>Zarządzanie rolami i użytkownikami bazy danych
 
@@ -28,7 +27,7 @@ Uprawnienia roli obejmują:
 
 Podczas tworzenia projektu modelu tabelarycznego tworzysz role i Dodaj użytkowników lub grupy do tych ról przy użyciu menedżera ról w SQL Server narzędzia danych (SSDT). Po wdrożeniu na serwerze programu należy używać SQL Server Management Studio (SSMS), [Analysis Services poleceń cmdlet programu PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)lub [języka skryptów tabelarycznych](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) w celu dodawania lub usuwania ról i członków użytkowników.
 
-**Grupy zabezpieczeń** muszą mieć [włączoną obsługę poczty](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) z `MailEnabled` właściwością ustawioną `True`na. Określanie grupy przy użyciu `obj:groupid@tenantid`adresu e-mail.
+**Grupy zabezpieczeń** muszą mieć [włączoną obsługę poczty](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) z właściwością `MailEnabled` ustawioną na `True`. Podczas określania grupy przy użyciu adresu e-mail `obj:groupid@tenantid`.
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Aby dodać role i użytkowników w programie SSDT lub zarządzać nimi  
@@ -45,15 +44,15 @@ Podczas tworzenia projektu modelu tabelarycznego tworzysz role i Dodaj użytkown
   
     |Uprawnienie|Opis|  
     |----------------|-----------------|  
-    |**Brak**|Członkowie nie mogą modyfikować schematu modelu i nie mogą wykonywać zapytań dotyczących danych.|  
+    |**Dawaj**|Członkowie nie mogą modyfikować schematu modelu i nie mogą wykonywać zapytań dotyczących danych.|  
     |**Odczyt**|Członkowie mogą wykonywać zapytania dotyczące danych (na podstawie filtrów wierszy), ale nie mogą modyfikować schematu modelu.|  
     |**Odczyt i proces**|Członkowie mogą wykonywać zapytania dotyczące danych (na podstawie filtrów na poziomie wiersza) i uruchamiać proces i przetwarzać wszystkie operacje, ale nie mogą modyfikować schematu modelu.|  
     |**Podstawowych**|Członkowie mogą uruchamiać proces i przetwarzać wszystkie operacje. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania dotyczącego danych.|  
-    |**Administrator**|Członkowie mogą modyfikować schemat modelu i wykonywać zapytania dotyczące wszystkich danych.|   
+    |**Administratora**|Członkowie mogą modyfikować schemat modelu i wykonywać zapytania dotyczące wszystkich danych.|   
   
 5.  Jeśli tworzona rola ma uprawnienia Odczyt lub odczyt i przetwarzanie, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij kartę **filtry wierszy** , a następnie wybierz tabelę, a następnie kliknij pole **Filtr języka DAX** , a następnie wpisz formułę języka DAX.
   
-6.  Kliknij pozycję **Członkowie** > **Dodaj zewnętrzny**.  
+6.  Kliknij pozycję **członkowie** > **Dodaj zewnętrzny**.  
   
 8.  W obszarze **Dodawanie zewnętrznego elementu członkowskiego**wprowadź użytkowników lub grupy w dzierżawie usługi Azure AD według adresu e-mail. Po kliknięciu przycisku OK i zamknięciu menedżera ról, role i członkowie roli są wyświetlane w Eksploratorze modelu tabelarycznego. 
  
@@ -80,7 +79,7 @@ Aby dodać role i użytkowników do wdrożonej bazy danych modelu, należy poł�
   
 4. Kliknij pozycję **członkostwo**, a następnie wprowadź użytkownika lub grupę w dzierżawie usługi Azure AD według adresu e-mail.
 
-     ![Dodaj użytkownika](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
+     ![Dodawanie użytkownika](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
 5. Jeśli tworzona rola ma uprawnienie Odczyt, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij pozycję **filtry wierszy**, zaznacz tabelę, a następnie wpisz formułę języka DAX w polu **Filtr języka DAX** . 
 
@@ -122,7 +121,7 @@ W tym przykładzie użytkownik zewnętrzny i Grupa są dodawani do roli analityk
 
 Moduł [SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) udostępnia specyficzne dla zadania polecenia cmdlet zarządzania bazami danych i polecenie cmdlet Invoke-ASCmd z parametrem ogólnego przeznaczenia, które akceptuje zapytanie lub skrypt języka skryptów tabelarycznych (TMSL). Następujące polecenia cmdlet służą do zarządzania rolami bazy danych i użytkownikami.
   
-|Polecenia cmdlet|Opis|
+|Polecenie cmdlet|Opis|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Dodaj członka do roli bazy danych.| 
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Usuń członka z roli bazy danych.|   
@@ -140,7 +139,7 @@ Filtry wierszy dotyczą określonych wierszy i powiązanych wierszy. Gdy tabela 
   
 |Tabela|Wyrażenie języka DAX|  
 |-----------|--------------------|  
-|Region|=Region[Country]="USA"|  
+|Region|= Region [Country] = "USA"|  
 |ProductCategory|= ProductCategory [nazwa] = "rowery"|  
 |Transakcje|= Transakcje [Year] = 2016|  
   

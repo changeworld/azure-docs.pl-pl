@@ -11,22 +11,25 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/11/2019
 ms.author: magoedte
-ms.openlocfilehash: f8dcab1a7a46d518b752e48f9886b60a37d8ec4c
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: fb6714a52a65ef5efe4725b99acb30cb67af20c3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299538"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299279"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Usuwanie i przywracanie obszaru roboczego usługi Azure Log Analytics
+
 W tym artykule wyjaśniono koncepcję nietrwałego usunięcia obszaru roboczego usługi Azure Log Analytics i odzyskiwania usuniętego obszaru roboczego. 
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Zagadnienia dotyczące usuwania obszaru roboczego
+
 Po usunięciu obszaru roboczego Log Analytics jest wykonywana operacja usuwania nietrwałego umożliwiająca odzyskanie obszaru roboczego, w tym jego danych i podłączonych agentów w ciągu 14 dni, bez względu na to, czy usunięcie było przypadkowe czy celowe. Po okresie usuwania nietrwałego obszar roboczy i jego dane nie są odzyskiwalne i są umieszczane w kolejce do trwałego usunięcia w ciągu 30 dni.
 
 Należy zachować ostrożność podczas usuwania obszaru roboczego, ponieważ mogą istnieć ważne dane i konfiguracja, które mogą negatywnie wpłynąć na działanie usługi. Zapoznaj się z agentami, rozwiązaniami i innymi usługami i źródłami platformy Azure, które przechowują dane w Log Analytics, na przykład:
+
 * Rozwiązania do zarządzania
 * Azure Automation
 * Agenci działający na maszynach wirtualnych z systemem Windows i Linux
@@ -36,29 +39,35 @@ Należy zachować ostrożność podczas usuwania obszaru roboczego, ponieważ mo
 Operacja usuwania nietrwałego usuwa zasób obszaru roboczego, a wszystkie powiązane uprawnienia użytkowników są zerwane. Jeśli użytkownicy są powiązani z innymi obszarami roboczymi, mogą nadal korzystać z Log Analytics z tymi innymi obszarami roboczymi.
 
 ## <a name="soft-delete-behavior"></a>Zachowanie nietrwałego usuwania
+
 Operacja usuwania obszaru roboczego służy do usuwania obszaru roboczego Menedżer zasobów zasobu, ale jego konfiguracja i dane będą przechowywane przez 14 dni, a jednocześnie zostanie wyświetlony wygląd obszaru roboczego. Wszyscy agenci i System Center Operations Manager grupy zarządzania skonfigurowane do raportowania do obszaru roboczego pozostają w stanie oddzielonym w okresie usuwania nietrwałego. Usługa zapewnia Dodatkowo mechanizm odzyskiwania usuniętego obszaru roboczego, w tym jego danych i połączonych zasobów, głównie cofając operację usuwania.
 
 > [!NOTE] 
-> Zainstalowane rozwiązania i połączone usługi, takie jak konto usługi Automation, są trwale usuwane z obszaru roboczego w czasie usuwania i nie można ich odzyskać. Te zmiany należy skonfigurować ponownie po wykonaniu operacji odzyskiwania w celu przełączenia obszaru roboczego do jego poprzedniej funkcjonalności. 
+> Zainstalowane rozwiązania i połączone usługi, takie jak konto Azure Automation, zostaną trwale usunięte z obszaru roboczego w czasie usuwania i nie można ich odzyskać. Te zmiany należy skonfigurować ponownie po operacji odzyskiwania, aby przełączyć obszar roboczy do wcześniej skonfigurowanego stanu.
 
-Obszar roboczy można usunąć przy użyciu [programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [interfejsu API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)lub w [Azure Portal](https://portal.azure.com).
+Obszar roboczy można usunąć przy użyciu [programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [interfejsu API REST](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)lub w [Azure Portal](https://portal.azure.com).
 
 ### <a name="delete-workspace-in-azure-portal"></a>Usuwanie obszaru roboczego w Azure Portal
+
 1. Aby się zalogować, przejdź do [Azure Portal](https://portal.azure.com). 
 2. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **log Analytics obszary robocze**.
 3. Na liście obszarów roboczych Log Analytics wybierz obszar roboczy, a następnie kliknij przycisk **Usuń** w górnej części środkowego okienka.
-   ![Opcja usuwania z okienka właściwości obszaru roboczego](media/delete-workspace/log-analytics-delete-workspace.png)
+   ![Delete opcja z okienka właściwości obszaru roboczego @ no__t-1
 4. Gdy zostanie wyświetlone okno komunikatu potwierdzenia z prośbą o potwierdzenie usunięcia obszaru roboczego, kliknij przycisk **tak**.
-   ![Potwierdzenie usunięcia obszaru roboczego](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+   ![Confirm Usuwanie obszaru roboczego @ no__t-1
 
 ## <a name="recover-workspace"></a>Odzyskiwanie obszaru roboczego
-Jeśli masz uprawnienia współautora do subskrypcji i grupy zasobów do lokalizacji obszaru roboczego przed operacją usuwania nietrwałego, możesz odzyskać ją w okresie usuwania nietrwałego, łącznie z danymi, konfiguracją i połączonymi agentami. Po okresie usuwania nietrwałego obszar roboczy nie jest możliwy do odzyskania i zostaje przypisany do trwałego usunięcia.
 
-Obszar roboczy można odzyskać przez ponowne utworzenie obszaru roboczego przy użyciu dowolnej z obsługiwanych metod tworzenia: Program PowerShell, interfejs wiersza polecenia platformy Azure lub z Azure Portal tak długo, jak te właściwości są wypełniane informacjami o usuniętym obszarze roboczym, w tym:
-1.  Identyfikator subskrypcji
-2.  Nazwa grupy zasobów
-3.  Nazwa obszaru roboczego
-4.  Region
+Jeśli masz uprawnienia współautora do subskrypcji i grupy zasobów, do której został skojarzony obszar roboczy przed operacją usuwania nietrwałego, możesz odzyskać ją w okresie usuwania nietrwałego, w tym jego dane, konfigurację i połączone agenci. Po okresie usuwania nietrwałego obszar roboczy nie jest możliwy do odzyskania i zostaje przypisany do trwałego usunięcia. Nazwy usuniętych obszarów roboczych są zachowywane w okresie usuwania nietrwałego i nie mogą być używane podczas próby utworzenia nowego obszaru roboczego.  
+
+Obszar roboczy można odzyskać przez ponowne utworzenie obszaru roboczego przy użyciu metod tworzenia obszaru roboczego [programu PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) lub [interfejsu API REST]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , o ile te właściwości zostaną wypełnione informacjami o usuniętych obszarach roboczych, takich jak:
+
+* Identyfikator subskrypcji
+* Nazwa grupy zasobów
+* Nazwa obszaru roboczego
+* Region
 
 > [!NOTE]
-> Nazwy usuniętych obszarów roboczych są zachowywane dla okresu usuwania nietrwałego i nie mogą być używane podczas tworzenia nowego obszaru roboczego. Nazwy obszarów roboczych są *udostępniane i dostępne* do użycia podczas tworzenia nowego obszaru roboczego po upływie okresu usuwania nietrwałego.
+> * Odzyskiwanie obszaru roboczego nie jest obsługiwane w [Azure Portal](https://portal.azure.com). 
+> * Ponowne tworzenie obszaru roboczego w okresie usuwania nietrwałego wskazuje, że ta nazwa obszaru roboczego jest już używana. 
+> 

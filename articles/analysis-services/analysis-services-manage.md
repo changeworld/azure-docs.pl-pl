@@ -1,70 +1,69 @@
 ---
-title: Zarządzanie usług Azure Analysis Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać serwerem usług Analysis Services na platformie Azure.
+title: Zarządzanie Azure Analysis Services | Microsoft Docs
+description: Dowiedz się, jak zarządzać serwerem Analysis Services na platformie Azure.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0bae06d46c2c96ba9dd058e9c2d380379523811c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63591da8d7661f7f3a29b321c20a2e05351c71fd
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61065199"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298595"
 ---
-# <a name="manage-analysis-services"></a>Zarządzanie usług Analysis Services
-Po utworzeniu serwera usług Analysis Services na platformie Azure, może to być niektóre administrowanie i zarządzanie zadania, które należy wykonać w dół po drodze następnie od razu lub później. Na przykład uruchomić przetwarzania odświeżania danych, kontrolowania, kto może uzyskiwać dostęp do modeli na serwerze lub monitorowanie kondycji serwera. Niektóre zadania zarządzania, można wykonać tylko w witrynie Azure portal, inne osoby w SQL Server Management Studio (SSMS), a niektóre zadania może odbywać się w jednym.
+# <a name="manage-analysis-services"></a>Zarządzanie usługami Analysis Services
+Po utworzeniu serwera Analysis Services na platformie Azure mogą istnieć pewne zadania administracyjne i administracyjne, które należy wykonać od razu lub w dół. Na przykład możesz uruchomić przetwarzanie do danych odświeżania, kontrolować, kto może uzyskać dostęp do modeli na serwerze, lub monitorować kondycję serwera. Niektóre zadania zarządzania można wykonywać tylko w Azure Portal, innych w programie SQL Server Management Studio (SSMS), a niektóre zadania można wykonać w dowolnym z nich.
 
 ## <a name="azure-portal"></a>Azure Portal
-[Witryna Azure portal](https://portal.azure.com/) jest, gdzie możesz można utworzyć i Usuń serwery, Monitoruj zasoby serwera, zmienianie rozmiaru i zarządzanie, kto ma dostęp do serwerów.  Jeśli występują problemy, można wysyłać również żądanie pomocy technicznej.
+[Azure Portal](https://portal.azure.com/) to miejsce, w którym można tworzyć i usuwać serwery, monitorować zasoby serwera, zmieniać rozmiar i zarządzać osobami, które mają dostęp do serwerów.  Jeśli masz jakieś problemy, możesz również przesłać żądanie pomocy technicznej.
 
 ![Pobieranie nazwy serwera z systemu Azure](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
-Nawiązywanie połączenia z serwerem na platformie Azure jest podobne do nawiązywania połączenia z wystąpieniem serwera w danej organizacji. W programie SSMS można wykonać wiele tych samych zadań, takich jak przetwarzanie danych lub utworzyć skrypt przetwarzania, Zarządzanie rolami i przy użyciu programu PowerShell.
+Nawiązywanie połączenia z serwerem na platformie Azure odbywa się tak samo jak łączenie z wystąpieniem serwera w organizacji. W programie SSMS można wykonać wiele z tych samych zadań, takich jak przetwarzanie danych lub Tworzenie skryptu przetwarzania, zarządzanie rolami i korzystanie z programu PowerShell.
   
 ![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
-### <a name="download-and-install-ssms"></a>Pobieranie i instalowanie programu SSMS
-Aby uzyskać najnowsze funkcje i daje płynne doświadczenia podczas nawiązywania połączenia z serwerem usług Azure Analysis Services, upewnij się, że używasz najnowszej wersji programu SSMS. 
+### <a name="download-and-install-ssms"></a>Pobieranie i Instalowanie programu SSMS
+Aby uzyskać najnowsze funkcje i bezproblemowe środowisko podczas nawiązywania połączenia z serwerem Azure Analysis Services, upewnij się, że używasz najnowszej wersji programu SSMS. 
 
-[Pobieranie programu SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+[Pobierz SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 
-### <a name="to-connect-with-ssms"></a>Aby połączyć za pomocą programu SSMS
- Korzystając z programu SSMS, przed nawiązaniem połączenia z serwerem po raz pierwszy, upewnij się, że Twoja nazwa użytkownika jest uwzględniona w grupie Administratorzy usług Analysis Services. Aby dowiedzieć się więcej, zobacz [bazy danych użytkowników i administratorów serwera](#server-administrators-and-database-users) w dalszej części tego artykułu.
+### <a name="to-connect-with-ssms"></a>Aby nawiązać połączenie za pomocą programu SSMS
+ W przypadku korzystania z programu SSMS przed nawiązaniem połączenia z serwerem po raz pierwszy upewnij się, że nazwa użytkownika jest uwzględniona w grupie Administratorzy Analysis Services. Aby dowiedzieć się więcej, zobacz temat [Administratorzy serwera i użytkownicy bazy danych](#server-administrators-and-database-users) w dalszej części tego artykułu.
 
-1. Przed nawiązaniem połączenia, należy uzyskać nazwę serwera. Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa serwera**.
+1. Przed nawiązaniem połączenia należy uzyskać nazwę serwera. Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa serwera**.
    
     ![Pobieranie nazwy serwera z systemu Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. W programie SSMS wybierz pozycję **Eksplorator obiektów**, a następnie kliknij pozycję **Połącz** > **Analysis Services**.
-3. W **Połącz z serwerem** okno dialogowe, Wklej nazwę serwera, a następnie w **uwierzytelniania**, wybierz jedną z następujących typów uwierzytelniania:   
+3. W oknie dialogowym **łączenie z serwerem** Wklej w polu Nazwa serwera, a następnie w obszarze **uwierzytelnianie**wybierz jeden z następujących typów uwierzytelniania:   
     > [!NOTE]
-    > Typ uwierzytelniania, **usługi Active Directory — uniwersalnego z obsługą uwierzytelniania Wieloskładnikowego**, jest zalecane.
+    > Zalecany jest typ uwierzytelniania, **Active Directory uniwersalny z obsługą uwierzytelniania WIELOskładnikowego**.
 
     > [!NOTE]
-    > Jeśli zalogujesz Account Microsoft Live ID, Yahoo, Gmail, itp., pozostaw puste pole hasła. Zostanie wyświetlony monit o podanie hasła po kliknięciu przycisku Połącz.
+    > Jeśli zalogujesz się przy użyciu konta Microsoft, usługi Live ID, usługi Yahoo, usługi Gmail itp., pozostaw pole hasło puste. Po kliknięciu przycisku Połącz zostanie wyświetlony monit o podanie hasła.
 
-    **Uwierzytelnianie Windows** poświadczenia Windows domena\nazwa_użytkownika i hasło.
+    **Uwierzytelnianie systemu Windows** w celu użycia poświadczeń systemu Windows domena\nazwa użytkownika i hasła.
 
-    **Uwierzytelnianie hasłem usługi Active Directory** do użycia z poziomu konta organizacji. Na przykład podczas nawiązywania połączenia z innej domeny przyłączone do komputera.
+    **Active Directory uwierzytelnianie hasła** w celu korzystania z konta organizacyjnego. Na przykład podczas nawiązywania połączenia z komputera, który nie jest przyłączony do domeny.
 
-    **Usługi Active Directory — uniwersalnego z obsługą uwierzytelniania Wieloskładnikowego** używać [uwierzytelnianie nieinterakcyjne lub usługi Multi-Factor Authentication](../sql-database/sql-database-ssms-mfa-authentication.md). 
+    **Active Directory — uniwersalna obsługa usługi MFA** w celu korzystania z [uwierzytelniania nieinterakcyjnego lub wieloskładnikowego](../sql-database/sql-database-ssms-mfa-authentication.md). 
    
     ![Nawiązywanie połączenia w programie SSMS](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
-## <a name="server-administrators-and-database-users"></a>Administratorzy serwera i bazy danych użytkowników
-W usługach Azure Analysis Services istnieją dwa typy użytkowników, administratorów i użytkowników bazy danych. Użytkownicy obu typów musi znajdować się w usłudze Azure Active Directory i musi być określona za pomocą adresu e-mail organizacji lub nazwy UPN. Aby dowiedzieć się więcej, zobacz [Authentication and user permissions (Uwierzytelnianie i uprawnienia użytkownika)](analysis-services-manage-users.md).
+## <a name="server-administrators-and-database-users"></a>Administratorzy serwera i użytkownicy bazy danych
+W Azure Analysis Services istnieją dwa typy użytkowników, Administratorzy serwerów i użytkownicy baz danych. Oba typy użytkowników muszą znajdować się w Azure Active Directory i muszą być określone przy użyciu adresu e-mail organizacji lub nazwy UPN. Aby dowiedzieć się więcej, zobacz [Authentication and user permissions (Uwierzytelnianie i uprawnienia użytkownika)](analysis-services-manage-users.md).
 
 
 ## <a name="troubleshooting-connection-problems"></a>Rozwiązywanie problemów z połączeniem
-Podczas nawiązywania połączenia przy użyciu programu SSMS, jeśli napotkasz problemy, może być konieczne wyczyszczenie pamięci podręcznej logowania. Nic nie jest buforowana na dysku. Aby wyczyścić pamięć podręczną, zamknij i uruchom ponownie proces connect. 
+W przypadku nawiązywania połączenia przy użyciu programu SSMS może być konieczne wyczyszczenie pamięci podręcznej logowania. Nic nie jest buforowane na dysku. Aby wyczyścić pamięć podręczną, Zamknij i uruchom ponownie proces łączenia. 
 
-## <a name="next-steps"></a>Kolejne kroki
-Jeśli nie zostały już wdrożone modelu tabelarycznego, do nowego serwera, teraz jest dobry moment na to. Aby dowiedzieć się więcej, zobacz artykuł [Deploy to Azure Analysis Services](analysis-services-deploy.md) (Wdrażanie w usługach Azure Analysis Services).
+## <a name="next-steps"></a>Następne kroki
+Jeśli model tabelaryczny nie został jeszcze wdrożony na nowym serwerze, teraz jest to dobry czas. Aby dowiedzieć się więcej, zobacz artykuł [Deploy to Azure Analysis Services](analysis-services-deploy.md) (Wdrażanie w usługach Azure Analysis Services).
 
-Jeśli wdrożono modelu do serwera, możesz nawiązać z nim za pomocą klienta lub przeglądarki. Aby dowiedzieć się więcej, zobacz [pobieranie danych z serwera usług Azure Analysis Services](analysis-services-connect.md).
+Jeśli model został wdrożony na serwerze, możesz połączyć się z nim za pomocą klienta lub przeglądarki. Aby dowiedzieć się więcej, zobacz [pobieranie danych z serwera Azure Analysis Services](analysis-services-connect.md).
 

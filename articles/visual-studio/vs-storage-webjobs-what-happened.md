@@ -1,5 +1,5 @@
 ---
-title: Co się stało z moim projektem WebJob (usługa połączona usługi Visual Studio Azure Storage)? | Microsoft Docs
+title: Co się stało z moim projektem WebJob (Visual Studio Azure Storage)?
 description: Opisuje, co się stało w projekcie WebJob platformy Azure po nawiązaniu połączenia z kontem magazynu przy użyciu usług połączonych programu Visual Studio
 services: storage
 author: ghogen
@@ -12,26 +12,27 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: c54214e0b919ddaa60403a1c986a144100143577
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 17861b7c25dfaf9bc9399e5261cdf2a5b43caf21
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510475"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298732"
 ---
 # <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>Co się stało z moim projektem WebJob (usługa połączona usługi Visual Studio Azure Storage)?
 ## <a name="references-added"></a>Dodane odwołania
 Pakiet NuGet usługi Azure Storage został dodany do projektu programu Visual Studio lub zaktualizowany w nim.  
 Ten pakiet dodaje następujące odwołania platformy .NET:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.WindowsAzure.ConfigurationManager**
-* **Microsoft.WindowsAzure.Storage**
-* **Newtonsoft.Json**
-* **System.Data**
-* **System.Spatial**
+* **Microsoft. Data. EDM**
+* **Microsoft. Data. OData**
+* **Microsoft. Data. Services. Client**
+* **Microsoft. WindowsAzure. ConfigurationManager**
+* **Microsoft. WindowsAzure. Storage**
+* **Newtonsoft. JSON**
+* **System. Data**
+* **System. przestrzenny**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Dodano parametry połączenia dla usługi Azure Storage
 W pliku App. config projektu wpisy **AzureWebJobsStorage** i **AzureWebJobsDashboard** zostały zaktualizowane o parametry i klucz połączenia wybranego konta magazynu.

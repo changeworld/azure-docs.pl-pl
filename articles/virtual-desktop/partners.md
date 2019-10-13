@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937500"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300164"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -62,6 +62,16 @@ Gdy jest używany z pulpitem wirtualnym systemu Windows, ControlUp zapewnia doda
 - [Zobacz krótkie rozwiązanie do przyłączania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Przejdź do witryny sieci Web partnera](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="devicetrust"></a>deviceTRUST
+
+![Logo deviceTRUST](./media/partners/devicetrust.png)
+
+deviceTRUST to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który contextualizes przedsiębiorstwo korporacyjne, dzięki czemu użytkownicy mogą uzyskać dostęp do pulpitu wirtualnego systemu Windows z dowolnego miejsca, na dowolnym urządzeniu, przy użyciu dowolnej sieci, jednocześnie dostarczając działy informacji i kontroli, których potrzebują, aby spełnić wymagania dotyczące zarządzania. 
+
+deviceTRUST rozszerza wartość pulpitu wirtualnego systemu Windows z ich kontekstową technologią zabezpieczeń. deviceTRUST umożliwia dostęp warunkowy do bezpiecznego dostępu do pulpitu wirtualnego systemu Windows, warunkowego dostępu do aplikacji w ramach pulpitu wirtualnego systemu Windows i stosowania zasad pulpitu wirtualnego systemu Windows bez żadnej dodatkowej infrastruktury. Korzystanie z usługi deviceTRUST umożliwia mobilny, elastyczny obszar roboczy, który spełnia wszystkie wymagania dotyczące zabezpieczeń, zgodności i przepisów prawnych. 
+
+- [Przejdź do witryny sieci Web partnera](https://devicetrust.com/wvd).
+
 ## <a name="lakeside-software"></a>Lakeside oprogramowanie
 
 ![Logo oprogramowania Lakeside](./media/partners/lakeside.png)
@@ -84,6 +94,14 @@ Program liquider Essentials rozszerza wartość pulpitu wirtualnego systemu Wind
 - [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
 - [Przejdź do witryny sieci Web partnera](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
+## <a name="login-vsi"></a>VSI logowania
+
+![Logo logowania VSI](./media/partners/loginvsi.png)
+
+VSI logowania to dostawca usług dodanego pulpitu wirtualnego systemu Windows i partner firmy Microsoft dostarczający oprogramowanie do testowania wydajności aplikacji w środowiskach pulpitu wirtualnego systemu Windows. Klienci przenoszący lokalne usługi biznesowe na pulpit wirtualny systemu Windows używają logowania VSI Enterprise Edition, aby oszacować i zapewnić optymalną wydajność, skalowalność i dostępność systemu Windows 10 Enterprise wielosesyjnego, Windows 10 Enterprise i System Windows 7 włączony z aplikacjami o znaczeniu krytycznym dla firmy.
+
+- [Przejdź do witryny sieci Web partnera](https://www.loginvsi.com).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Logo Nerdio](./media/partners/nerdio.png)
@@ -94,6 +112,26 @@ Nerdio rozszerza wartość pulpitu wirtualnego systemu Windows, co ułatwia Inic
 
 - [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Przejdź do witryny sieci Web partnera](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="policypak"></a>PolicyPak
+
+![Logo PolicyPak](./media/partners/policypak.png)
+
+PolicyPak Software to partner pulpitu wirtualnego systemu Windows, który wykonuje całkowite zarządzanie ustawieniami dla aplikacji, pulpitu, przeglądarek, języka Java i ustawień zabezpieczeń. PolicyPak utrzymuje Zgodność ustawień pulpitu, systemu i zabezpieczeń. PolicyPak zwiększa wartość pulpitu wirtualnego systemu Windows, dodając pakiet składników w celu wzmocnienia wbudowanej administracji systemu Windows. Użyj istniejących zasady grupy Active Directory i/lub usługi Windows Intune, aby dostarczyć ustawienia PolicyPak i zwiększyć możliwości administratorów zarządzania swoimi maszynami z systemem Windows 10. 
+
+Najczęstsze przypadki użycia PolicyPak mają na celu usunięcie lokalnych praw administratora i przezwyciężenie monitów kontroli konta użytkownika, zablokowanie oprogramowania wymuszającego okup, zarządzanie wieloma przeglądarkami, Zarządzanie trybami Enterprise i zgodność programu Internet Explorer, Zmniejszanie liczby obiektów zasad grupy, zarządzanie skojarzeniami plików systemu Windows 10, Zarządzaj menu Start systemu Windows 10 i paskiem zadań oraz Zarządzaj funkcjami systemu Windows 10 i opcjonalnymi funkcjami.  
+
+- [Przejdź do witryny sieci Web partnera](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
+
+## <a name="printerlogic"></a>PrinterLogic
+
+![Logo PrinterLogic](./media/partners/printerlogic.png)
+
+PrinterLogic to platforma dostawcy usług dla systemu Windows, która umożliwia informatykom eliminowanie wszystkich serwerów wydruku i dostarczanie wysokiej dostępności bezserwerowej infrastruktury drukowania. PrinterLogic rozszerza wartość pulpitu wirtualnego systemu Windows i platformy Azure, ułatwiając centralne zarządzanie i wdrażanie obiektów drukarki na dowolnej drukarce lub w systemie operacyjnym punktu końcowego.   
+
+Dostępna jako SaaS lub jako stos sieci Web w prywatnej chmurze, platforma PrinterLogic gwarantuje, że użytkownicy zawsze mają odpowiednie drukarki, których potrzebują w swoich sesjach wirtualnych na podstawie identyfikatora użytkownika, nazwy urządzenia lub lokalizacji. Ta funkcja jest uzupełniana przez pełny zestaw funkcji zarządzania drukowaniem w przedsiębiorstwie, takich jak śledzenie wydruków i raportowanie, Drukowanie mobilne oraz drukowanie w wersji o bezpiecznym wskaźniku. 
+
+- [Przejdź do witryny sieci Web partnera](https://www.printerlogic.com).
 
 ## <a name="thinprint"></a>ThinPrint
 

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937320"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286753"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Najlepsze rozwiązania dotyczące używania Power BI do wykonywania zapytań i wizualizacji danych Eksplorator danych platformy Azure
 
@@ -48,7 +48,7 @@ W poniższej sekcji przedstawiono porady i wskazówki dotyczące korzystania z j
 
 Złożone zapytania są łatwiej wyrażone w Kusto niż w Power Query. Powinny być zaimplementowane jako [funkcje Kusto](/azure/kusto/query/functions)i wywoływane w Power BI. Ta metoda jest wymagana w przypadku używania **zapytania bezpośredniego** z instrukcjami `let` w zapytaniu Kusto. Ponieważ Power BI sprzęga dwa zapytania, a instrukcje `let` nie mogą być używane z operatorem `join`, mogą wystąpić błędy składniowe. W związku z tym Zapisz każdą część sprzężenia jako funkcję Kusto i zezwól Power BI do łączenia tych dwóch funkcji jednocześnie.
 
-### <a name="how-to-simulate-a-relative-data-time-operator"></a>Jak symulować względny operator czasu danych
+### <a name="how-to-simulate-a-relative-date-time-operator"></a>Symulowanie operatora względnej daty i godziny
 
 Power BI nie zawiera operatora *względnej* daty i godziny, takiego jak `ago()`.
 Aby symulować `ago()`, użyj kombinacji `DateTime.FixedLocalNow()` i `#duration` funkcji Power BI.

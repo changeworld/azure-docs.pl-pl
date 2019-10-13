@@ -2,18 +2,17 @@
 title: Dodaj nazwę główną usługi do roli administratora serwera Azure Analysis Services | Microsoft Docs
 description: Dowiedz się, jak dodać nazwę główną usługi Automation do roli administratora serwera
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8fbbdbd647aa3d733a26ceaf72629058ae3a274
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5e4650d3be5ce21a49b419577eaf83225b1c0d4d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619275"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298720"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Dodawanie jednostki usługi do roli administratora serwera 
 
@@ -22,7 +21,7 @@ ms.locfileid: "68619275"
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Przed ukończeniem tego zadania musisz mieć nazwę główną usługi zarejestrowaną w Azure Active Directory.
 
-[Tworzenie nazwy głównej usługi — Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Tworzenie nazwy głównej usługi — Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)@no__t — 1  
 [Tworzenie jednostki usługi — PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
@@ -31,7 +30,7 @@ Aby wykonać to zadanie, musisz mieć uprawnienia [administratora serwera](analy
 ## <a name="add-service-principal-to-server-administrators-role"></a>Dodawanie nazwy głównej usługi do roli Administratorzy serwera
 
 1. W programie SSMS Połącz się z platformą Azure jako serwerem.
-2. W obszarze **Właściwości** > serwera**zabezpieczenia**kliknij przycisk **Dodaj**.
+2. We **właściwościach serwera** > **zabezpieczenia**kliknij przycisk **Dodaj**.
 3. W obszarze **Wybierz użytkownika lub grupę**Wyszukaj zarejestrowaną aplikację według nazwy, wybierz pozycję, a następnie kliknij przycisk **Dodaj**.
 
     ![Wyszukaj konto jednostki usługi](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)

@@ -2,18 +2,17 @@
 title: Co to jest Azure Analysis Services? | Microsoft Docs
 description: Dowiedz się więcej o usługach Analysis Services na platformie Azure.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/27/2019
+ms.date: 10/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1f3552fe574291bf696e3b4418924c7e005d713e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 25366a550887461c6d36d4870a2c9062120ede47
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259549"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294776"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -25,7 +24,7 @@ Azure Analysis Services to w pełni zarządzana platforma jako usługa (PaaS), k
 
 **Wideo:** zapoznaj się z [omówieniem usługi Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4), aby dowiedzieć się, jakie miejsce usługa ta zajmuje wśród ogólnych możliwości analizy biznesowej oferowanych przez firmę Microsoft.
 
-## <a name="get-up-and-running-quickly"></a>Szybkie rozpoczęcie pracy
+## <a name="get-up-and-running-quickly"></a>Rozpocznij pracę w mgnieniu oka
 
 W witrynie Azure Portal [serwer można utworzyć](analysis-services-create-server.md) w ciągu kilku minut. [Szablony](../azure-resource-manager/resource-manager-create-first-template.md) usługi Azure Resource Manager i program PowerShell pozwalają natomiast tworzyć serwery za pomocą szablonu deklaratywnego. Pojedynczy szablon pozwala wdrażać zasoby serwera wraz z innymi składnikami platformy Azure, takimi jak konta magazynu i usługa Azure Functions. 
 
@@ -41,25 +40,25 @@ Usługa Azure Analysis Services jest dostępna w warstwach **Deweloper**, **Pods
 
 Ta warstwa jest zalecana w przypadku scenariuszy związanych z oceną, programowaniem i testowaniem. Pojedynczy plan uwzględnia wszystkie funkcje warstwy Standardowa, ale ma ograniczenia dotyczące mocy obliczeniowej, jednostek QPU i rozmiaru pamięci. Skalowanie repliki zapytania *jest niedostępne* w tej warstwie. W tej warstwie nie jest oferowana umowa SLA.
 
-|Plan  |Jednostki QPU  |Pamięć (GB)  |
+|Plan  |QPU  |Pamięć (GB)  |
 |---------|---------|---------|
 |D1    |    20     |    3     |
 
 
-### <a name="basic-tier"></a>Warstwa Podstawowa
+### <a name="basic-tier"></a>Warstwa Basic
 
 Warstwa polecana w przypadku rozwiązań produkcyjnych z niewielkimi modelami tabelarycznymi, ograniczoną współbieżnością użytkowników i prostymi wymaganiami dotyczącymi odświeżania danych. Skalowanie repliki zapytania *jest niedostępne* w tej warstwie. Perspektywy, wiele partycji ani funkcje modelu tabelarycznego DirectQuery *nie są obsługiwane* w tej warstwie.  
 
-|Plan  |Jednostki QPU  |Pamięć (GB)  |
+|Plan  |QPU  |Pamięć (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
 |B2    |    80     |    16     |
 
-### <a name="standard-tier"></a>Warstwa Standardowa
+### <a name="standard-tier"></a>Warstwa standardowa
 
 Ta warstwa jest najlepszym rozwiązaniem w przypadku aplikacji produkcyjnych o kluczowym znaczeniu, które wymagają elastycznej współbieżności użytkowników i korzystają z szybko rozrastających się modeli danych. Obsługuje ona zaawansowane odświeżanie danych dla aktualizacji modelu danych przeprowadzanych prawie w czasie rzeczywistym i obsługuje wszystkie tabelaryczne funkcje modelowania.
 
-|Plan  |Jednostki QPU  |Pamięć (GB)  |
+|Plan  |QPU  |Pamięć (GB)  |
 |---------|---------|---------|
 |S0    |    40     |    10     |
 |S1    |    100     |    25     |
@@ -82,13 +81,13 @@ Usługa Azure Analysis Services jest obsługiwana w regionach na całym świecie
 |---------|---------|:---------:|
 |Brazylia Południowa     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Kanada Środkowa    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
-|East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
+|Wschodnie stany USA     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |Wschodnie stany USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Wschodnie stany USA 2     |     S8, S9, S8v2, S9v2   |    1    |
-|Środkowo-północne stany USA     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Północno-środkowe stany USA     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Środkowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Środkowo-południowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Środkowo-zachodnie stany USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|Południowo-środkowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Zachodnio-środkowe stany USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Zachodnie stany USA     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |Zachodnie stany USA     |    S8, S9, S8v2, S9v2   |    2  |
 |Zachodnie stany USA 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
@@ -112,14 +111,14 @@ Usługa Azure Analysis Services jest obsługiwana w regionach na całym świecie
 |Australia Wschodnia     |    S8, S9, S8v2, S9v2    |    1     |
 |Australia Południowo-Wschodnia     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japonia Wschodnia     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Azja Południowo-Wschodnia     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
+|Azja Południowo-wschodnia     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |Indie Zachodnie     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Skalowanie zgodnie z potrzebami
 
 ### <a name="scale-updown-pause-and-resume"></a>Skalowanie w górę/dół, wstrzymywanie i wznawianie
 
-Serwer można skalować w górę, skalować w dół lub wstrzymywać. Można do tego użyć witryny Azure Portal lub, aby mieć pełną kontrolę na bieżąco, użyć programu PowerShell. Płaci się wyłącznie za użyte zasoby.  
+Serwer można skalować w górę, skalować w dół lub wstrzymywać. Można do tego użyć witryny Azure Portal lub, aby mieć pełną kontrolę na bieżąco, użyć programu PowerShell. Płacisz wyłącznie za użyte zasoby.  
 
 ### <a name="scale-out-resources-for-fast-query-responses"></a>Skalowanie zasobów w poziomie w celu szybkiego uzyskiwania odpowiedzi na zapytania
 
@@ -149,7 +148,7 @@ Modele tabelaryczne w usłudze Azure Analysis Services obsługują wiele różny
 
 ## <a name="compatibility-level"></a>Poziom zgodności
 
-Poziom zgodności dotyczy zachowań specyficznych dla wersji w aparacie Analysis Services. Azure Analysis Services obsługuje modele tabelaryczne na poziomach zgodności 1200 i wyższych. Aby dowiedzieć się więcej, zobacz [poziom zgodności dla modeli tabelarycznych Analysis Services](analysis-services-compat-level.md).
+Poziom zgodności dotyczy zachowań specyficznych dla wersji w aparacie Analysis Services. Azure Analysis Services obsługuje modele tabelaryczne na poziomach zgodności 1200 i wyższych. Aby dowiedzieć się więcej, zobacz [poziom zgodności dla modeli tabelarycznych](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services).
 
 
 ## <a name="your-data-is-secure"></a>Twoje dane są bezpieczne
@@ -162,7 +161,7 @@ Na poziomie serwera usługi Analysis Services oferują zaporę, uwierzytelnianie
 
 Zapora usługi Azure Analysis Services blokuje wszystkie połączenia klienta inne niż adresy IP określone w regułach. Domyślnie ochrona za pomocą zapory nie jest włączana w przypadku nowych serwerów. Zalecane jest włączenie ochrony za pomocą zapory i skonfigurowanie zasad w ramach skryptu inicjowania obsługi serwera lub w portalu natychmiast po utworzeniu serwera. Skonfiguruj reguły, określając dozwolone adresy IP przy użyciu poszczególnych adresów IP klientów lub zakresu. Połączenia usługi Power BI również mogą być dozwolone lub zablokowane. Zaporę i reguły należy skonfigurować w portalu lub przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz [Configure a server firewall](analysis-services-qs-firewall.md) (Konfigurowanie zapory serwera).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 
 Uwierzytelnianie użytkownika jest obsługiwane przez usługę [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Podczas logowania użytkownicy korzystają z tożsamości konta organizacji z dostępem do bazy danych opartym na rolach. Tożsamości użytkowników muszą być członkami domyślnej usługi Azure Active Directory dla subskrypcji, w której znajduje się serwer. Aby dowiedzieć się więcej, zobacz [Authentication and user permissions (Uwierzytelnianie i uprawnienia użytkownika)](analysis-services-manage-users.md).
 
@@ -178,7 +177,7 @@ Usługa Analysis Services używa [autoryzacji opartej na rolach](https://docs.mi
   
 Użytkownicy końcowi inni niż administracyjni, którzy wykonują zapytania dotyczące danych, mają przyznawane prawa dostępu za pomocą ról bazy danych. Rola bazy danych jest tworzona jako oddzielny obiekt w bazie danych i ma zastosowanie tylko do bazy danych, w której została utworzona. Role bazy danych są definiowane w oparciu o uprawnienia administratora, odczytu oraz odczytu i przetwarzania (bazy danych). Konta użytkowników i grup są dodawane przy użyciu programu SSMS lub PowerShell.
 
-### <a name="row-level-security"></a>Zabezpieczenia na poziomie wiersza
+### <a name="row-level-security"></a>Zabezpieczenia na poziomie wierszy
 
 Modele tabelaryczne na wszystkich poziomach zgodności obsługują zabezpieczenia na poziomie wiersza. Zabezpieczenia na poziomie wiersza są konfigurowane w modelu przy użyciu wyrażeń języka DAX definiujących wiersze w tabeli oraz dowolne wiersze w powiązanej tabeli wielokierunkowej, dla której użytkownik może tworzyć zapytania. Filtry wiersza używające wyrażeń języka DAX są definiowane na potrzeby uprawnień odczytu oraz odczytu i przetwarzania. 
 
@@ -190,7 +189,7 @@ Modele tabelaryczne na poziomie zgodności 1400 obsługują zabezpieczenia na po
 
 Jednostki usług to zasoby aplikacji usługi Azure Active Directory tworzone w ramach dzierżawy w celu przeprowadzania nienadzorowanych operacji na poziomie zasobu lub usługi. Jednostki usług są używane przez usługę Azure Automation, tryb nienadzorowany programu PowerShell, niestandardowe aplikacje klienckie i aplikacje internetowe do automatyzacji typowych zadań, takich jak odświeżanie danych, skalowanie w górę lub w dół oraz wstrzymywanie i wznawianie. Uprawnienia są przypisywane do jednostek usług za pośrednictwem członkostwa w rolach. Aby dowiedzieć się więcej, zobacz [Automation with service principals](analysis-services-service-principal.md) (Automatyzacja przy użyciu jednostek usługi).
 
-### <a name="azure-governance"></a>Zarządzanie platformą Azure
+### <a name="azure-governance"></a>Ład na platformie Azure
 
 Usługa Azure Analysis Services jest objęta [warunkami dotyczącymi usług online firmy Microsoft](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) i [zasadami zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/privacystatement).
 Aby dowiedzieć się więcej na temat zabezpieczeń platformy Azure, zobacz [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
@@ -261,7 +260,7 @@ Społeczność użytkowników usług Analysis Services jest bardzo aktywna. Doł
 > [Utwórz konto bezpłatnej wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Szybki start: Tworzenie serwera — Portal](analysis-services-create-server.md)   
+> [Szybki start: tworzenie serwera — portal](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Szybki start: Tworzenie serwera — PowerShell](analysis-services-create-powershell.md)  
+> [Szybki start: tworzenie serwera — PowerShell](analysis-services-create-powershell.md)  

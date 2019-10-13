@@ -8,43 +8,43 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0ff2d9b8c0ca891b25dfcd6bf1f19d1541fd1541
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ca6b055b5d3702cea4ca1986ad1c81b59f76cee3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673235"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299633"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>Autoryzuj dostęp do obiektów blob i kolejek przy użyciu Azure Active Directory z aplikacji klienckiej
 
 Główną zaletą korzystania z Azure Active Directory (Azure AD) z usługą Azure Blob Storage lub kolejką queue storage jest to, że Twoje poświadczenia nie muszą już być przechowywane w kodzie. Zamiast tego można zażądać tokenu dostępu OAuth 2,0 z platformy tożsamości firmy Microsoft (dawniej: Azure AD). Usługa Azure AD uwierzytelnia podmiot zabezpieczeń (użytkownika, grupę lub nazwę główną usługi), na którym działa aplikacja. W przypadku pomyślnego uwierzytelnienia usługa Azure AD zwraca token dostępu do aplikacji, a następnie może użyć tokenu dostępu do autoryzowania żądań do usługi Azure Blob Storage lub magazynu kolejek.
 
-W tym artykule pokazano, jak skonfigurować aplikację natywną lub aplikację sieci Web do uwierzytelniania za pomocą platformy Microsoft Identity platform 2,0. Podobne metody, z których można użyć .NET funkcji przykładowy kod, ale w innych językach. Aby uzyskać więcej informacji o platformie Microsoft Identity platform 2,0, zobacz [Microsoft Identity platform (v 2.0) — Omówienie](../../active-directory/develop/v2-overview.md).
+W tym artykule pokazano, jak skonfigurować aplikację natywną lub aplikację sieci Web do uwierzytelniania za pomocą platformy Microsoft Identity platform 2,0. Przykładowy kod zawiera funkcje platformy .NET, ale inne języki używają podobnego podejścia. Aby uzyskać więcej informacji o platformie Microsoft Identity platform 2,0, zobacz [Microsoft Identity platform (v 2.0) — Omówienie](../../active-directory/develop/v2-overview.md).
 
-Aby uzyskać omówienie przepływie przyznawania kodu OAuth 2.0, zobacz [Autoryzuj dostęp do aplikacji sieci web usługi Azure Active Directory przy użyciu kodu uwierzytelniania OAuth 2.0 udzielić przepływ](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
+Aby zapoznać się z omówieniem przepływu przyznawania kodu OAuth 2,0, zobacz temat [Autoryzuj dostęp do aplikacji sieci web Azure Active Directory przy użyciu przepływu przyznawania kodu oauth 2,0](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Przypisywanie roli do podmiotu zabezpieczeń usługi Azure AD
 
-Na potrzeby uwierzytelniania podmiotu zabezpieczeń z poziomu aplikacji usługi Azure Storage, należy najpierw skonfigurować ustawienia kontroli (RBAC) dostępu opartej na rolach dla tego podmiotu zabezpieczeń. Usługa Azure Storage definiuje wbudowane role RBAC, które obejmują uprawnienia do kontenerów i kolejek. Gdy rola RBAC jest przypisywana do podmiotu zabezpieczeń, tego podmiotu zabezpieczeń ma uprawnienia do tego zasobu. Aby uzyskać więcej informacji, zobacz [Zarządzanie prawami dostępu do obiektów blob platformy Azure i Kolejkowanie danych przy użyciu RBAC](storage-auth-aad-rbac.md).
+Aby uwierzytelnić podmiot zabezpieczeń z aplikacji usługi Azure Storage, najpierw Skonfiguruj ustawienia kontroli dostępu opartej na rolach (RBAC) dla tego podmiotu zabezpieczeń. Usługa Azure Storage definiuje wbudowane role RBAC, które obejmują uprawnienia do kontenerów i kolejek. Gdy rola RBAC zostanie przypisana do podmiotu zabezpieczeń, ten podmiot zabezpieczeń ma udzielony dostęp do tego zasobu. Aby uzyskać więcej informacji, zobacz [Zarządzanie prawami dostępu do obiektów blob platformy Azure i Kolejkowanie danych przy użyciu RBAC](storage-auth-aad-rbac.md).
 
-## <a name="register-your-application-with-an-azure-ad-tenant"></a>Zarejestruj swoją aplikację z dzierżawy usługi Azure AD
+## <a name="register-your-application-with-an-azure-ad-tenant"></a>Rejestrowanie aplikacji w dzierżawie usługi Azure AD
 
-Pierwszy krok w korzystaniu z usługi Azure AD do autoryzacji dostępu do zasobów magazynu polega na zarejestrowaniu aplikacji klienckiej z dzierżawą usługi Azure AD na podstawie [Azure Portal](https://portal.azure.com). Po zarejestrowaniu aplikacji klienckiej podaj informacje o aplikacji do usługi Azure AD. Następnie usługa Azure AD zawiera identyfikator klienta (nazywanych również *identyfikator aplikacji*) umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o identyfikatorze klienta, zobacz [aplikacji i obiektów nazw głównych usług w usłudze Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md).
+Pierwszy krok w korzystaniu z usługi Azure AD do autoryzacji dostępu do zasobów magazynu polega na zarejestrowaniu aplikacji klienckiej z dzierżawą usługi Azure AD na podstawie [Azure Portal](https://portal.azure.com). Po zarejestrowaniu aplikacji klienckiej podaj informacje o aplikacji do usługi Azure AD. Następnie usługa Azure AD udostępnia identyfikator klienta (nazywany również *identyfikatorem aplikacji*) używany do kojarzenia aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o IDENTYFIKATORze klienta, zobacz [obiekty główne aplikacji i usługi w Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md).
 
-Aby zarejestrować aplikację usługi Azure Storage, wykonaj kroki przedstawione w [przewodniku szybki start: Zarejestruj aplikację na platformie](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)tożsamości firmy Microsoft. Na poniższej ilustracji przedstawiono typowe ustawienia rejestracji aplikacji sieci Web:
+Aby zarejestrować aplikację usługi Azure Storage, wykonaj kroki przedstawione w [przewodniku szybki start: rejestrowanie aplikacji na platformie tożsamości firmy Microsoft](../../active-directory/develop/quickstart-configure-app-access-web-apis.md). Na poniższej ilustracji przedstawiono typowe ustawienia rejestracji aplikacji sieci Web:
 
 ![Zrzut ekranu przedstawiający sposób rejestrowania aplikacji magazynu w usłudze Azure AD](./media/storage-auth-aad-app/app-registration.png)
 
 > [!NOTE]
-> Jeśli zarejestrujesz aplikację jako natywną aplikację, można określić dowolny prawidłowy identyfikator URI dla **identyfikator URI przekierowania**. W przypadku aplikacji natywnych ta wartość nie musi być rzeczywistym adresem URL. W przypadku aplikacji sieci Web identyfikator URI przekierowania musi być prawidłowym identyfikatorem URI, ponieważ określa adres URL, na który są udostępniane tokeny.
+> Jeśli aplikacja jest zarejestrowana jako aplikacja natywna, można określić dowolny prawidłowy identyfikator URI dla **identyfikatora URI przekierowania**. W przypadku aplikacji natywnych ta wartość nie musi być rzeczywistym adresem URL. W przypadku aplikacji sieci Web identyfikator URI przekierowania musi być prawidłowym identyfikatorem URI, ponieważ określa adres URL, na który są udostępniane tokeny.
 
-Po zarejestrowaniu aplikacji zobaczysz identyfikator aplikacji (lub identyfikator klienta) w obszarze **ustawienia**:
+Po zarejestrowaniu aplikacji zobaczysz identyfikator aplikacji (lub identyfikator klienta) w obszarze **Ustawienia**:
 
 ![Zrzut ekranu przedstawiający identyfikator klienta](./media/storage-auth-aad-app/app-registration-client-id.png)
 
-Aby uzyskać więcej informacji na temat rejestrowania aplikacji w usłudze Azure AD, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md).
+Aby uzyskać więcej informacji na temat rejestrowania aplikacji w usłudze Azure AD, zobacz [Integrowanie aplikacji z Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md).
 
-## <a name="grant-your-registered-app-permissions-to-azure-storage"></a>Udzielanie uprawnień zarejestrowana aplikacja do usługi Azure Storage
+## <a name="grant-your-registered-app-permissions-to-azure-storage"></a>Przyznanie zarejestrowanej aplikacji uprawnień do usługi Azure Storage
 
 Następnie Udziel uprawnień aplikacji do wywoływania interfejsów API usługi Azure Storage. Ten krok umożliwia aplikacji autoryzowanie żądań do usługi Azure Storage za pomocą usługi Azure AD.
 
@@ -65,7 +65,7 @@ Okienko **uprawnienia interfejsu API** pokazuje teraz, że zarejestrowana aplika
 Aplikacja wymaga klucza tajnego klienta, aby potwierdzić swoją tożsamość podczas żądania tokenu. Aby dodać klucz tajny klienta, wykonaj następujące kroki:
 
 1. Przejdź do rejestracji aplikacji w Azure Portal.
-1. Wybierz ustawienie **certyfikaty &** wpisy tajne.
+1. Wybierz ustawienie **certyfikaty & wpisy tajne** .
 1. W obszarze wpisy **tajne klienta**kliknij pozycję **Nowy klient klucz tajny** , aby utworzyć nowy wpis tajny.
 1. Podaj opis wpisu tajnego i wybierz żądany interwał ważności.
 1. Natychmiast skopiuj wartość nowego wpisu tajnego do bezpiecznej lokalizacji. Pełna wartość jest wyświetlana tylko raz.
@@ -76,19 +76,19 @@ Aplikacja wymaga klucza tajnego klienta, aby potwierdzić swoją tożsamość po
 
 Po zarejestrowaniu aplikacji i udzieleniu uprawnień do uzyskiwania dostępu do danych w usłudze Azure Blob Storage lub queue storage możesz dodać kod do aplikacji, aby uwierzytelnić podmiot zabezpieczeń i uzyskać token OAuth 2,0. Aby uwierzytelnić i uzyskać token, można użyć jednej z [bibliotek uwierzytelniania platformy tożsamości firmy Microsoft](../../active-directory/develop/reference-v2-libraries.md) lub innej biblioteki typu open source, która obsługuje openid connect Connect 1,0. Aplikacja może następnie użyć tokenu dostępu do autoryzowania żądania do magazynu obiektów blob platformy Azure lub magazynu kolejek.
 
-Aby zapoznać się z listą scenariuszy, w których są obsługiwane tokeny, zobacz sekcję [scenariusze](https://aka.ms/msal-net-scenarios) w [bibliotece Microsoft Authentication Library (MSAL) dla](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) repozytorium usługi .NET GitHub.
+Aby zapoznać się z listą scenariuszy, w których są obsługiwane uzyskiwanie tokenów, zobacz sekcję [przepływy uwierzytelniania](/en-us/azure/active-directory/develop/msal-authentication-flows) w temacie [zawartość biblioteki uwierzytelniania firmy Microsoft](/azure/active-directory/develop/msal-overview).
 
-## <a name="well-known-values-for-authentication-with-azure-ad"></a>Dobrze znane wartości do uwierzytelniania przy użyciu usługi Azure AD
+## <a name="well-known-values-for-authentication-with-azure-ad"></a>Dobrze znane wartości uwierzytelniania przy użyciu usługi Azure AD
 
-Na potrzeby uwierzytelniania podmiotu zabezpieczeń w usłudze Azure AD, należy niektóre znane wartości mają zostać uwzględnione w kodzie.
+Aby uwierzytelnić podmiot zabezpieczeń w usłudze Azure AD, musisz uwzględnić w kodzie pewne dobrze znane wartości.
 
 ### <a name="azure-ad-authority"></a>Urząd usługi Azure AD
 
-Dla chmury publicznej firmy Microsoft, Azure podstawowy urząd usługi AD jest następująca, gdzie *identyfikator dzierżawy* jest identyfikator dzierżawy usługi Active Directory (lub identyfikator katalogu):
+W przypadku chmury publicznej firmy Microsoft podstawowy urząd usługi Azure AD jest następujący, gdzie *dzierżawca* to identyfikator dzierżawy Active Directory (lub identyfikator katalogu):
 
 `https://login.microsoftonline.com/<tenant-id>/`
 
-Identyfikator dzierżawy określa dzierżawy usługi Azure AD do uwierzytelniania. Jest również określany jako identyfikator katalogu. Aby pobrać identyfikator dzierżawy, przejdź do strony **Przegląd** rejestracji aplikacji w Azure Portal i skopiuj wartość z tego miejsca.
+Identyfikator dzierżawy identyfikuje dzierżawę usługi Azure AD do użycia na potrzeby uwierzytelniania. Jest również określany jako identyfikator katalogu. Aby pobrać identyfikator dzierżawy, przejdź do strony **Przegląd** rejestracji aplikacji w Azure Portal i skopiuj wartość z tego miejsca.
 
 ### <a name="azure-storage-resource-id"></a>Identyfikator zasobu usługi Azure Storage
 
@@ -96,7 +96,7 @@ Identyfikator dzierżawy określa dzierżawy usługi Azure AD do uwierzytelniani
 
 ## <a name="net-code-example-create-a-block-blob"></a>Przykład kodu platformy .NET: Tworzenie blokowego obiektu BLOB
 
-Przykład kodu pokazuje, jak uzyskiwanie dostępu do tokenu z usługi Azure AD. Token dostępu jest używany do uwierzytelniania określonego użytkownika, a następnie Autoryzuj żądanie, aby utworzyć blokowego obiektu blob. Aby to działało próbki, najpierw wykonaj kroki opisane w poprzednich sekcjach.
+W przykładzie kodu pokazano, jak uzyskać token dostępu z usługi Azure AD. Token dostępu służy do uwierzytelniania określonego użytkownika, a następnie autoryzowania żądania utworzenia blokowego obiektu BLOB. Aby uzyskać ten przykład pracy, należy najpierw wykonać czynności opisane w poprzednich sekcjach.
 
 Aby zażądać tokenu, potrzebne są następujące wartości z rejestracji aplikacji:
 
@@ -106,14 +106,14 @@ Aby zażądać tokenu, potrzebne są następujące wartości z rejestracji aplik
 - Identyfikator URI przekierowania klienta. Pobierz tę wartość z ustawień **uwierzytelniania** dla rejestracji aplikacji.
 - Wartość klucza tajnego klienta. Pobierz tę wartość z lokalizacji, do której została wcześniej skopiowana.
 
-### <a name="create-a-storage-account-and-container"></a>Utwórz konto magazynu i kontener
+### <a name="create-a-storage-account-and-container"></a>Tworzenie konta magazynu i kontenera
 
 Aby uruchomić przykładowy kod, Utwórz konto magazynu w ramach tej samej subskrypcji co Azure Active Directory. Następnie utwórz kontener w ramach tego konta magazynu. Przykładowy kod spowoduje utworzenie blokowego obiektu BLOB w tym kontenerze.
 
 Następnie jawnie Przypisz rolę **współautor danych obiektu blob magazynu** do konta użytkownika, w ramach którego zostanie uruchomiony przykładowy kod. Aby uzyskać instrukcje dotyczące sposobu przypisywania tej roli w Azure Portal, zobacz [udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki RBAC w Azure Portal](storage-auth-aad-rbac-portal.md).
 
 > [!NOTE]
-> Podczas tworzenia konta usługi Azure Storage nie są automatycznie przypisywane uprawnienia dostępu do danych za pośrednictwem usługi Azure AD. Należy jawnie przypisać sobie rolę RBAC dla usługi Azure Storage. Można ją przypisać na poziomie subskrypcji, grupy zasobów, konto magazynu lub kontenera lub kolejki.
+> Podczas tworzenia konta usługi Azure Storage nie są automatycznie przypisywane uprawnienia dostępu do danych za pośrednictwem usługi Azure AD. Musisz jawnie przypisać rolę RBAC do usługi Azure Storage. Można ją przypisać na poziomie subskrypcji, grupy zasobów, konta magazynu lub kontenera lub kolejki.
 
 ### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>Tworzenie aplikacji sieci Web, która autoryzuje dostęp do usługi BLOB Storage w usłudze Azure AD
 
@@ -121,9 +121,9 @@ Gdy aplikacja uzyskuje dostęp do usługi Azure Storage, odbywa się to w imieni
 
 Zakończona przykładową aplikacją sieci Web, która uzyskuje token i używa jej do tworzenia obiektów BLOB w usłudze Azure Storage, jest dostępna w serwisie [GitHub](https://aka.ms/aadstorage). Przeglądanie i uruchamianie wykonanego przykładu może być pomocne w zrozumieniu przykładów kodu. Aby uzyskać instrukcje dotyczące sposobu uruchamiania kompletnego przykładu, zobacz sekcję zatytułowaną [Wyświetlanie i uruchamianie ukończonego przykładu](#view-and-run-the-completed-sample).
 
-#### <a name="add-references-and-using-statements"></a>Dodaj odwołania i przy użyciu instrukcji  
+#### <a name="add-references-and-using-statements"></a>Dodaj odwołania i instrukcje using  
 
-W programie Visual Studio Zainstaluj bibliotekę klienta usługi Azure Storage. Z **narzędzia** menu, wybierz opcję **Menedżera pakietów Nuget**, następnie **Konsola Menedżera pakietów**. Wpisz następujące polecenia w oknie konsoli, aby zainstalować wymagane pakiety z biblioteki klienta usługi Azure Storage dla platformy .NET:
+W programie Visual Studio Zainstaluj bibliotekę klienta usługi Azure Storage. W menu **Narzędzia** wybierz pozycję **Menedżer pakietów NuGet**, a następnie kliknij pozycję **konsola Menedżera pakietów**. Wpisz następujące polecenia w oknie konsoli, aby zainstalować wymagane pakiety z biblioteki klienta usługi Azure Storage dla platformy .NET:
 
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
@@ -162,9 +162,9 @@ private static async Task<string> CreateBlob(string accessToken)
 > [!NOTE]
 > Aby autoryzować operacje obiektów blob i kolejek przy użyciu tokenu OAuth 2,0, należy użyć protokołu HTTPS.
 
-W powyższym przykładzie biblioteki klienta .NET obsługuje autoryzacji żądania, aby utworzyć blokowego obiektu blob. Biblioteki klienckie usługi Azure Storage dla innych języków również obsługują autoryzację żądania. Jednak w przypadku wywołania operacji usługi Azure Storage przy użyciu tokenu OAuth za pomocą interfejsu API REST, następnie należy autoryzować żądania przy użyciu tokenu OAuth.
+W powyższym przykładzie Biblioteka klienta .NET obsługuje autoryzację żądania, aby utworzyć blokowy obiekt BLOB. Biblioteki klienckie usługi Azure Storage dla innych języków również obsługują autoryzację żądania. Jeśli jednak wywołujesz operację usługi Azure Storage z tokenem OAuth przy użyciu interfejsu API REST, musisz autoryzować żądanie przy użyciu tokenu OAuth.
 
-Aby wywoływać operacje usługi obiektów Blob i kolejek, przy użyciu tokenów dostępu protokołu OAuth, należy przekazać token dostępu w **autoryzacji** przy użyciu nagłówka **elementu nośnego** schemat, a następnie określ usługę w wersji 2017-11-09 wyższa, jako pokazano w poniższym przykładzie:
+Aby wywoływać operacje obiektów blob i usługa kolejki przy użyciu tokenów dostępu OAuth, należy przekazać token dostępu do nagłówka **autoryzacji** za pomocą schematu **Bearer** i określić wersję usługi 2017-11-09 lub wyższą, jak pokazano w następującym przykładzie:
 
 ```https
 GET /container/file.txt HTTP/1.1
@@ -173,11 +173,11 @@ x-ms-version: 2017-11-09
 Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 ```
 
-#### <a name="get-an-oauth-token-from-azure-ad"></a>Pobierz OAuth token z usługi Azure AD
+#### <a name="get-an-oauth-token-from-azure-ad"></a>Pobieranie tokenu OAuth z usługi Azure AD
 
 Następnie Dodaj metodę, która żąda tokenu z usługi Azure AD w imieniu użytkownika. Ta metoda określa zakres, dla którego mają zostać przyznane uprawnienia. Aby uzyskać więcej informacji o uprawnieniach i zakresach, zobacz [uprawnienia i wyrażanie zgody w punkcie końcowym platformy tożsamości firmy Microsoft](../../active-directory/develop/v2-permissions-and-consent.md).
 
-Użyj identyfikatora zasobu, aby skonstruować zakres, dla którego ma zostać pozyskany token. Przykład konstruuje zakres przy użyciu identyfikatora zasobu wraz z wbudowanym `user_impersonation` zakresem, który wskazuje, że token jest żądany w imieniu użytkownika.
+Użyj identyfikatora zasobu, aby skonstruować zakres, dla którego ma zostać pozyskany token. Przykład konstruuje zakres przy użyciu identyfikatora zasobu wraz z wbudowanym zakresem `user_impersonation`, który wskazuje, że token jest wymagany w imieniu użytkownika.
 
 Należy pamiętać, że może być konieczne zaprezentowanie użytkownikowi interfejsu, który umożliwia użytkownikowi wyrażanie zgody na żądanie tokenu. Gdy wyrażasz zgodę, przykład przechwytuje **MsalUiRequiredException** i wywołuje kolejną metodę, aby ułatwić żądanie zgody:
 
@@ -201,7 +201,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Zgoda polega na tym, że użytkownik udzielający autoryzacji aplikacji dostępu do chronionych zasobów w ich imieniu. Platforma Microsoft Identity platform 2,0 obsługuje przyrostową zgodę, co oznacza, że podmiot zabezpieczeń może najpierw zażądać minimalnego zestawu uprawnień i dodać do nich uprawnienia w miarę upływu czasu. Gdy kod żąda tokenu dostępu, określ zakres uprawnień wymaganych przez aplikację w danym momencie w `scope` parametrze. Aby uzyskać więcej informacji na temat łącznej zgody, zobacz sekcję zatytułowaną **przyrostową i dynamiczną zgodę** w przypadku [aktualizacji na platformie Microsoft Identity platform (v 2.0)?](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
+Zgoda polega na tym, że użytkownik udzielający autoryzacji aplikacji dostępu do chronionych zasobów w ich imieniu. Platforma Microsoft Identity platform 2,0 obsługuje przyrostową zgodę, co oznacza, że podmiot zabezpieczeń może najpierw zażądać minimalnego zestawu uprawnień i dodać do nich uprawnienia w miarę upływu czasu. Gdy kod żąda tokenu dostępu, określ zakres uprawnień wymaganych przez aplikację w dowolnym momencie w parametrze `scope`. Aby uzyskać więcej informacji na temat łącznej zgody, zobacz sekcję zatytułowaną **przyrostową i dynamiczną zgodę** w przypadku [aktualizacji na platformie Microsoft Identity platform (v 2.0)?](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
 Poniższa metoda tworzy właściwości uwierzytelniania na potrzeby żądania przyrostowej zgody:
 

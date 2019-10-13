@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8fbb09ecf09008c25c84a11c7b43dfb26450e30a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338748"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286550"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Znane problemy i rozwiązywanie problemów Azure Machine Learning
 
@@ -37,13 +37,13 @@ Możesz chcieć uruchomić eksperyment zawierający tylko zestaw danych, aby wiz
  
 Przed usunięciem można połączyć zestaw danych z dowolnym modułem przekształcania danych (Wybierz kolumny w zestawie danych, edytować metadane, podzielić dane itp.) i uruchomić eksperyment. Następnie można wizualizować zestaw danych. 
 
-Na poniższej ilustracji przedstawiono sposób ![: visulize — dane](./media/resource-known-issues/aml-visualize-data.png)
+Poniższy obraz pokazuje, jak: ![visulize-Data @ no__t-1
 
 ## <a name="sdk-installation-issues"></a>Problemy z instalacją zestawu SDK
 
-**Komunikat o błędzie: Nie można odinstalować "PyYAML"**
+**Komunikat o błędzie: nie można odinstalować "PyYAML"**
 
-Zestaw Azure Machine Learning SDK dla języka Python: PyYAML jest zainstalowaną distutils projektem. W związku z tym nie można dokładnie określić, które pliki należą do niej, jeśli istnieje częściowe odinstalowanie. Aby kontynuować instalację zestawu SDK podczas ignorowanie tego błędu, należy użyć:
+Zestaw Azure Machine Learning SDK dla języka Python: PyYAML jest zainstalowaną distutils projektem. W związku z tym nie można dokładnie określić, które pliki należą do niej, jeśli istnieje częściowe odinstalowanie. Aby kontynuować instalowanie zestawu SDK przy ignorowaniu tego błędu, użyj:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -57,21 +57,21 @@ conda create -n <env-name> python=3.7.3
 ```
 Tworzy środowisko Conda przy użyciu języka Python 3.7.3, który nie ma problemu z instalacją w 3.7.4.
 
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Problemy z utworzeniem obliczeniowego usługi Azure Machine Learning
+## <a name="trouble-creating-azure-machine-learning-compute"></a>Problem z tworzeniem Azure Machine Learning obliczeń
 
-Brak rzadkich prawdopodobieństwo, że niektórych użytkowników, którzy utworzyli swój obszar roboczy usługi Azure Machine Learning w witrynie Azure portal przed wydaniem Ogólnodostępnej mogą nie można utworzyć obliczeniowego usługi Azure Machine Learning, w tym obszarze roboczym. Możesz zgłosić żądanie pomocy technicznej, korzystająca z usługi lub Utwórz nowy obszar roboczy za pośrednictwem portalu lub zestawu SDK, aby odblokować samodzielnie natychmiast.
+Istnieje rzadka szansa, że niektórzy użytkownicy, którzy utworzyli swój Azure Machine Learningy obszar roboczy z Azure Portal przed wydaniem GA, mogą nie być w stanie utworzyć Azure Machine Learning obliczeń w tym obszarze roboczym. Możesz zgłosić żądanie obsługi do usługi lub utworzyć nowy obszar roboczy za pomocą portalu lub zestawu SDK, aby natychmiast odblokować.
 
-## <a name="image-building-failure"></a>Błąd tworzenia obrazu
+## <a name="image-building-failure"></a>Niepowodzenie kompilowania obrazu
 
-Obraz tworzenia niepowodzenia podczas wdrażania usługi sieci web. Obejście polega na dodawanie "pynacl == 1.2.1" jako zależność pip Conda pliku konfiguracji obrazu.
+Niepowodzenie kompilowania obrazu podczas wdrażania usługi sieci Web. Obejście polega na dodaniu "pynacl = = 1.2.1" jako zależności od pliku Conda do konfiguracji obrazu.
 
 ## <a name="deployment-failure"></a>Niepowodzenie wdrożenia
 
 Jeśli obserwujesz `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, Zmień jednostkę SKU dla maszyn wirtualnych używanych we wdrożeniu na taką, która ma więcej pamięci.
 
-## <a name="fpgas"></a>Układów FPGA
+## <a name="fpgas"></a>Układy FPGA
 
-Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają wymagane i zostało zatwierdzone dla limitu przydziału FPGA. Aby zażądać dostępu, wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai
+Nie będzie można wdrażać modeli w usłudze FPGA, dopóki nie zażądano i nie zatwierdzono do przydziału FPGA. Aby zażądać dostępu, Wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Zautomatyzowane uczenie maszynowe
 
@@ -81,13 +81,13 @@ Automatyczne Uczenie maszynowe w przepływie dwuosiowym obecnie nie obsługuje p
 
 Binarne wykresy klasyfikacji (precyzja-odwoływanie, ROC, krzywa zysku itp.) pokazana w zautomatyzowanych iteracjach eksperymentów w przypadku nieprawidłowego renderowania w interfejsie użytkownika od 4/12. Wykresy wykresów są obecnie wyświetlane z wynikami odwrotnymi, gdzie lepsze są modele z niższymi wynikami. Zbadano rozwiązanie.
 
-## <a name="databricks"></a>Databricks
+## <a name="databricks"></a>Usługa Databricks
 
-Problemy z usługi Databricks i Azure Machine Learning.
+Azure Machine Learning i problemy.
 
 ### <a name="failure-when-installing-packages"></a>Błąd podczas instalowania pakietów
 
-Azure Machine Learning Instalacja zestawu SDK kończy się niepowodzeniem na Azure Databricks po zainstalowaniu większej liczby pakietów. Niektóre pakiety, takich jak `psutil`, mogą powodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety przez zamarzanie wersji biblioteki. Ten problem jest związany z kostkami, a nie z zestawem SDK Azure Machine Learning. Ten problem może również wystąpić z innymi bibliotekami. Przykład:
+Azure Machine Learning Instalacja zestawu SDK kończy się niepowodzeniem na Azure Databricks po zainstalowaniu większej liczby pakietów. Niektóre pakiety, takie jak `psutil`, mogą spowodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety przez zamarzanie wersji biblioteki. Ten problem jest związany z kostkami, a nie z zestawem SDK Azure Machine Learning. Ten problem może również wystąpić z innymi bibliotekami. Przykład:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -101,7 +101,7 @@ W przypadku korzystania z funkcji automatycznego uczenia maszynowego na Azure Da
 
 ### <a name="10-iterations-for-automated-machine-learning"></a>> 10 iteracji dla automatycznej uczenia maszynowego
 
-W obszarze zautomatyzowane ustawienia uczenia maszynowego, jeśli masz więcej niż 10 iteracji, `show_output` Ustaw `False` wartość podczas przesyłania przebiegu.
+W obszarze zautomatyzowane ustawienia uczenia maszynowego, jeśli masz więcej niż 10 iteracji, ustaw wartość `show_output` na `False` podczas przesyłania przebiegu.
 
 ### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Element widget dla Azure Machine Learning SDK/automatycznej uczenia maszynowego
 
@@ -128,19 +128,19 @@ Jeśli te kroki nie rozwiążą problemu, spróbuj ponownie uruchomić klaster.
 
 ### <a name="failtosendfeather"></a>FailToSendFeather
 
-`FailToSendFeather` Jeśli wystąpi błąd podczas odczytywania danych w klastrze Azure Databricks, zapoznaj się z następującymi rozwiązaniami:
+Jeśli podczas odczytywania danych w klastrze Azure Databricks wyświetlany jest błąd `FailToSendFeather`, zapoznaj się z następującymi rozwiązaniami:
 
-* Uaktualnij `azureml-sdk[automl_databricks]` pakiet do najnowszej wersji.
-* Dodaj `azure-dataprep` wersję 1.1.8 lub nowszą.
-* Dodaj `pyarrow` wersję 0,11 lub nowszą.
+* Uaktualnij pakiet `azureml-sdk[automl_databricks]` do najnowszej wersji.
+* Dodaj `azure-dataprep` w wersji 1.1.8 lub nowszej.
+* Dodaj `pyarrow` w wersji 0,11 lub nowszej.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Jeśli przejdziesz bezpośrednio, aby wyświetlić obszar roboczy z Udostępnij link z zestawu SDK lub w portalu, nie można wyświetlić strony z normalnej Przegląd informacji o subskrypcji w rozszerzeniu. Ponadto nie można przełączyć się do innego obszaru roboczego. Jeśli zachodzi potrzeba wyświetlenia innego obszaru roboczego, obejście to przejście bezpośrednio do [Azure Portal](https://portal.azure.com) i wyszukanie nazwy obszaru roboczego.
+Jeśli połączysz się bezpośrednio z obszarem roboczym z poziomu zestawu SDK lub portalu, nie będziesz w stanie wyświetlić standardowej strony przeglądu z informacjami o subskrypcji w rozszerzeniu. Nie będzie też możliwe przełączenie do innego obszaru roboczego. Jeśli zachodzi potrzeba wyświetlenia innego obszaru roboczego, obejście to przejście bezpośrednio do [Azure Portal](https://portal.azure.com) i wyszukanie nazwy obszaru roboczego.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
-Czasami może być przydatne Jeśli podasz informacje diagnostyczne podczas pytania o pomoc. Aby wyświetlić niektóre dzienniki, odwiedź stronę [Azure Portal](https://portal.azure.com) i przejdź do obszaru roboczego, a następnie wybierz pozycję **obszar roboczy > eksperymentuj > Uruchom > dzienników**.  Te informacje można również znaleźć w sekcji **eksperymenty** na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
+Czasami pomocne może być podanie informacji diagnostycznych podczas pytania o pomoc. Aby wyświetlić niektóre dzienniki, odwiedź stronę [Azure Portal](https://portal.azure.com) i przejdź do obszaru roboczego, a następnie wybierz pozycję **obszar roboczy > eksperymentuj > Uruchom > dzienników**.  Te informacje można również znaleźć w sekcji **eksperymenty** na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
 
 > [!NOTE]
 > Azure Machine Learning rejestruje informacje z różnych źródeł podczas szkolenia, takie jak AutoML lub kontener platformy Docker, który uruchamia zadanie szkoleniowe. Wiele z tych dzienników nie jest udokumentowane. Jeśli wystąpią problemy i skontaktuje się z działem pomocy technicznej firmy Microsoft, mogą oni korzystać z tych dzienników podczas rozwiązywania problemów.
@@ -153,7 +153,7 @@ Niektóre z tych akcji są wyświetlane w obszarze __działania__ obszaru robocz
 
 ## <a name="resource-quotas"></a>Limity przydziałów zasobów
 
-Dowiedz się więcej o [limity przydziałów zasobów](how-to-manage-quotas.md) można napotkać podczas pracy z usługą Azure Machine Learning.
+Dowiedz się więcej na temat [przydziałów zasobów](how-to-manage-quotas.md) , które można napotkać podczas pracy z Azure Machine Learning.
 
 ## <a name="authentication-errors"></a>Błędy uwierzytelniania
 
@@ -177,7 +177,7 @@ Jeśli używasz udziału plików dla innych obciążeń, takich jak transfer dan
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Awarie usług WebServices w usłudze Azure Kubernetes 
 
-Wiele błędów sieci Web w usłudze Azure Kubernetes można debugować, łącząc się z klastrem przy użyciu `kubectl`programu. Możesz uzyskać dostęp `kubeconfig.json` do klastra usługi Azure Kubernetes Service, uruchamiając
+Wiele błędów sieci Web w usłudze Azure Kubernetes można debugować, łącząc się z klastrem przy użyciu `kubectl`. @No__t-0 dla klastra usługi Azure Kubernetes Service można uzyskać, uruchamiając
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -185,7 +185,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Aktualizowanie składników Azure Machine Learning w klastrze AKS
 
-Należy ręcznie zastosować aktualizacje Azure Machine Learning składników zainstalowanych w klastrze usługi Azure Kubernetes. Te aktualizacje można zastosować, odłączając klaster od obszaru roboczego Azure Machine Learning, a następnie ponownie dołączając klaster do obszaru roboczego. Jeśli w klastrze jest włączony protokół SSL, podczas ponownego dołączania klastra należy podać certyfikat SSL i klucz prywatny. 
+Należy ręcznie zastosować aktualizacje Azure Machine Learning składników zainstalowanych w klastrze usługi Azure Kubernetes. 
+
+> [!WARNING]
+> Przed wykonaniem poniższych czynności Sprawdź wersję klastra usługi Azure Kubernetes Service. Jeśli wersja klastra jest równa lub większa niż 1,14, nie będziesz w stanie ponownie dołączyć klastra do obszaru roboczego Azure Machine Learning.
+
+Te aktualizacje można zastosować, odłączając klaster od obszaru roboczego Azure Machine Learning, a następnie ponownie dołączając klaster do obszaru roboczego. Jeśli w klastrze jest włączony protokół SSL, podczas ponownego dołączania klastra należy podać certyfikat SSL i klucz prywatny. 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -213,7 +218,7 @@ kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes przechowuje wpisy tajne w zakodowanym formacie Base-64. Przed udostępnieniem tych `key.pem` elementów tajnych należy oprzeć `cert.pem` na Base-64. `attach_config.enable_ssl` 
+>Kubernetes przechowuje wpisy tajne w zakodowanym formacie Base-64. Aby zapewnić ich `attach_config.enable_ssl`, należy 64 najpierw zdekodować składniki `cert.pem` i `key.pem` wpisów tajnych. 
 
 ## <a name="recommendations-for-error-fix"></a>Zalecenia dotyczące poprawki błędów
 W oparciu o ogólną obserwację poniżej przedstawiono zalecenia dotyczące platformy Azure ML do rozwiązywania niektórych typowych błędów w usłudze Azure ML.

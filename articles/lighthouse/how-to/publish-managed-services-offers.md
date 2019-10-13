@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4781126bc4fcfb6391db42a75553a13e0e4cc4f9
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155150"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300302"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikowanie oferty usług zarządzanych w witrynie Azure Marketplace
 
@@ -70,10 +70,10 @@ Na koniec Wypełnij sekcję **szczegóły manifestu** . Spowoduje to utworzenie 
 - Następnie wprowadź swój **Identyfikator dzierżawy**. Jest to identyfikator GUID skojarzony z IDENTYFIKATORem dzierżawy Azure Active Directory organizacji (tj. dzierżawcą, w którym będziesz pracować w celu zarządzania zasobami klientów). Jeśli go nie masz, możesz go znaleźć, umieszczając kursor nad nazwą swojego konta w prawym górnym rogu Azure Portal lub wybierając pozycję **Przełącz katalog**. 
 - Na koniec Dodaj jeden lub więcej wpisów **autoryzacji** do planu. Autoryzacje definiują jednostki, które mogą uzyskiwać dostęp do zasobów i subskrypcji dla klientów, którzy kupują plan. Należy podać te informacje w celu uzyskania dostępu do zasobów w imieniu klienta przy użyciu funkcji zarządzania zasobami delegowanymi przez platformę Azure.
   Dla każdej autoryzacji podaj następujące dane. Następnie można wybrać **nową autoryzację** dowolną liczbę razy, aby dodać więcej użytkowników/definicje ról.
-  - **Identyfikator obiektu usługi Azure AD**: Identyfikator usługi Azure AD użytkownika, grupy użytkowników lub aplikacji, do której zostaną przyznane określone uprawnienia (zgodnie z opisem w definicji roli) do zasobów klientów.
-  - **Nazwa wyświetlana obiektu usługi Azure AD**: Przyjazna nazwa ułatwiająca klientowi zrozumienie celu tej autoryzacji. Klient zobaczy tę nazwę podczas delegowania zasobów.
-  - **Definicja roli**: Wybierz jedną z dostępnych wbudowanych ról usługi Azure AD z listy. Ta rola określi uprawnienia, które użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mieć w zasobach klientów. Aby uzyskać informacje na temat tych ról, zobacz [role wbudowane](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
-  - **Role**, które można przypisać: Jest to wymagane tylko wtedy, gdy w **definicji roli** dla tej autoryzacji został wybrany administrator dostępu użytkowników. Jeśli tak, należy dodać co najmniej jedną przypisaną rolę w tym miejscu. Użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mógł przypisać te role, które można **przypisać** do [zarządzanych tożsamości](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Należy pamiętać, że żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkowników będą stosowane dla tego użytkownika. Jeśli nie wybierzesz w tym miejscu co najmniej jednej roli, przesyłanie nie zostanie przekazane do certyfikacji. (Jeśli nie wybrano administratora dostępu użytkowników dla definicji roli tego użytkownika, to pole nie ma żadnego efektu).
+  - **Identyfikator obiektu usługi Azure AD**: identyfikator usługi Azure AD użytkownika, grupy użytkowników lub aplikacji, do której zostaną przyznane określone uprawnienia (zgodnie z opisem w definicji roli) do zasobów klientów.
+  - **Nazwa wyświetlana obiektu usługi Azure AD**: przyjazna nazwa, która pomaga klientowi zrozumieć cel tej autoryzacji. Klient zobaczy tę nazwę podczas delegowania zasobów.
+  - **Definicja roli**: Wybierz jedną z dostępnych ról wbudowanych usługi Azure AD z listy. Ta rola określi uprawnienia, które użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mieć w zasobach klientów. Aby uzyskać informacje na temat tych ról, zobacz [role wbudowane](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+  - **Role**możliwe do przypisania: jest to wymagane tylko wtedy, gdy w **definicji roli** dla tej autoryzacji została wybrana wartość administrator dostępu użytkowników. Jeśli tak, należy dodać co najmniej jedną przypisaną rolę w tym miejscu. Użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mógł przypisać te role, które można **przypisać** do [zarządzanych tożsamości](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Należy pamiętać, że żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkowników będą stosowane dla tego użytkownika. Jeśli nie wybierzesz w tym miejscu co najmniej jednej roli, przesyłanie nie zostanie przekazane do certyfikacji. (Jeśli nie wybrano administratora dostępu użytkowników dla definicji roli tego użytkownika, to pole nie ma żadnego efektu).
 
 > [!TIP]
 > W większości przypadków użytkownik chce przypisać uprawnienia do grupy użytkowników usługi Azure AD lub nazwy głównej usług, a nie do serii poszczególnych kont użytkowników. Pozwala to na dodawanie lub usuwanie dostępu dla poszczególnych użytkowników bez konieczności aktualizacji i ponownego publikowania planu, gdy zmienią się wymagania dotyczące dostępu.
@@ -92,14 +92,14 @@ Podaj informacje dotyczące następujących pól w sekcji **Przegląd** :
 |**Podsumowanie**     | Krótki cel lub funkcja oferty. Jest to zwykle wyświetlane pod tytułem. Maksymalna długość 100 znaków.        |
 |**Długie podsumowanie**     | Dłuższe podsumowanie przeznaczenia lub funkcji oferty. Maksymalna długość 256 znaków.        |
 |**Opis**     | Więcej informacji o ofercie. To pole ma maksymalną długość 3000 znaków i obsługuje proste formatowanie HTML. W opisie należy uwzględnić słowa "usługa zarządzana" lub "zarządzane usługi".       |
-|**Identyfikator marketingu**     | Unikatowy identyfikator przyjazny dla adresu URL. zostanie ona użyta w adresach URL witryny Marketplace dla tej oferty. Na przykład jeśli identyfikator wydawcy to *contoso* , a Twój identyfikator marketingu to *sampleApp*, adres URL oferty w *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* witrynie Azure Marketplace zostanie wyszukany.        |
+|**Identyfikator marketingu**     | Unikatowy identyfikator przyjazny dla adresu URL. zostanie ona użyta w adresach URL witryny Marketplace dla tej oferty. Na przykład jeśli identyfikator wydawcy to *contoso* , a Twój identyfikator marketingu to *sampleApp*, adres URL oferty w witrynie Azure Marketplace będzie *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* .        |
 |**Podgląd identyfikatorów subskrypcji**     | Dodaj jeden do 100 identyfikatorów subskrypcji. Klienci powiązani z tymi subskrypcjami będą mogli wyświetlać ofertę w portalu Azure Marketplace przed rozpoczęciem jej używania. Zalecamy dołączenie własnych subskrypcji tutaj, aby można było wyświetlić podgląd oferty w portalu Azure Marketplace przed udostępnieniem jej klientom.  (Zespoły pomocy technicznej i inżynierów firmy Microsoft będą mogli wyświetlać swoją ofertę w trakcie okresu zapoznawczego).   |
 |**Przydatne linki**     | Adresy URL powiązane z ofertą, takie jak dokumentacja, informacje o wersji, często zadawane pytania itp.        |
 |**Sugerowane kategorie (maks. 5)**     | Co najmniej jedna kategoria (do pięciu), która ma zastosowanie do oferty. Te kategorie pomagają klientom w znalezieniu oferty w witrynie Azure Marketplace i Azure Portal.        |
 
 W sekcji **artefakty marketingowe** można przekazać logo i inne zasoby, które mają być wyświetlane wraz z ofertą. Możesz opcjonalnie przekazać zrzuty ekranu lub linki do filmów wideo, które mogą pomóc klientom w zrozumieniu oferty.
 
-Wymagane są cztery rozmiary logo: **Małe (40x40)** , **średnie (90x90)** , **duże (115x115)** i **szerokie (255x155)** . Postępuj zgodnie z poniższymi wskazówkami dotyczącymi logo:
+Wymagane są cztery rozmiary logo: **małe (40x40)** , **średnie (90x90)** , **duże (115x115)** i **szerokie (255x155)** . Postępuj zgodnie z poniższymi wskazówkami dotyczącymi logo:
 
 - Projekt platformy Azure ma prostą paletę kolorów. Ogranicz liczbę podstawowych i pomocniczych kolorów w logo.
 - Kolory motywu portalu to biały i czarny. Nie używaj tych kolorów jako kolorów tła swojego logo. Użyj koloru, który sprawi, że logo będzie się wyróżniać w portalu. Zalecamy proste kolory podstawowe.

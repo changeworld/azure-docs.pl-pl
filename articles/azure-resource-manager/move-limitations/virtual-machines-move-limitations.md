@@ -4,14 +4,14 @@ description: Użyj Azure Resource Manager, aby przenieść maszyny wirtualne do 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 10/10/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7b9cce7ac367f42329e3198c75a7640a205d01fe
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 443d6f2bcbb61d9106b079a4e63c48bb433d19c6
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035541"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286741"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Wskazówki dotyczące przenoszenia maszyn wirtualnych
 
@@ -23,9 +23,10 @@ Następujące scenariusze nie są jeszcze obsługiwane:
 
 * Nie można przenieść Managed Disks w Strefy dostępności do innej subskrypcji.
 * Nie można przenieść Virtual Machine Scale Sets ze standardową jednostką SKU Load Balancer lub z publicznym adresem IP standardowej jednostki SKU.
-* Utworzona na podstawie zasobów w portalu Marketplace z planami dołączone maszyny wirtualne nie można przenosić między grupami zasobów lub subskrypcji. Usuń obsługę administracyjną maszyny wirtualnej w bieżącej subskrypcji i Wdróż ją ponownie w nowej subskrypcji.
-* Maszyny wirtualne w istniejącej sieci wirtualnej, ale nie są przenoszone wszystkie zasoby w sieci wirtualnej.
+* Nie można przenosić maszyn wirtualnych utworzonych z zasobów witryny Marketplace z dołączonymi planami między grupami zasobów lub subskrypcjami. Usuń obsługę administracyjną maszyny wirtualnej w bieżącej subskrypcji i Wdróż ją ponownie w nowej subskrypcji.
+* Nie można przenieść maszyn wirtualnych w istniejącej sieci wirtualnej do nowej subskrypcji, jeśli nie przeniesiesz wszystkich zasobów w sieci wirtualnej.
 * Nie można przenosić maszyn wirtualnych o niskim priorytecie i zestawów skalowania maszyn wirtualnych o niskim priorytecie między grupami zasobów lub subskrypcjami.
+* Maszyn wirtualnych w zestawie dostępności nie można przenieść pojedynczo.
 
 ## <a name="virtual-machines-with-azure-backup"></a>Maszyny wirtualne z Azure Backup
 
@@ -33,10 +34,10 @@ Aby przenieść maszyny wirtualne skonfigurowane przy użyciu Azure Backup, nale
 
 * Znajdź lokalizację maszyny wirtualnej.
 * Znajdź grupę zasobów o następującym wzorcu nazewnictwa: `AzureBackupRG_<location of your VM>_1` na przykład AzureBackupRG_westus2_1
-* Jeśli komputer znajduje się w witrynie Azure portal, a następnie sprawdź "Pokaż ukryte typy"
-* Jeśli w programie PowerShell użyj `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` polecenia cmdlet
-* Jeśli w interfejsu wiersza polecenia, użyj `az resource list -g AzureBackupRG_<location of your VM>_1`
-* Znajdź zasób z typem `Microsoft.Compute/restorePointCollections` , który ma wzorzec nazewnictwa`AzureBackup_<name of your VM that you're trying to move>_###########`
+* Jeśli w Azure Portal, zaznacz pole wyboru "Pokaż ukryte typy"
+* Jeśli w programie PowerShell, użyj polecenia cmdlet `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`
+* Jeśli w interfejsie wiersza polecenia, użyj `az resource list -g AzureBackupRG_<location of your VM>_1`
+* Znajdź zasób z typem `Microsoft.Compute/restorePointCollections`, który ma wzorzec nazewnictwa `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Usuń ten zasób. Ta operacja usuwa tylko natychmiastowe punkty odzyskiwania, a nie kopię zapasową danych w magazynie.
 * Po zakończeniu usuwania można przenieść magazyn i maszynę wirtualną do subskrypcji docelowej. Po przeniesieniu można kontynuować wykonywanie kopii zapasowych bez utraty danych.
 * Informacje o przenoszeniu magazynów usługi Recovery Service dla kopii zapasowej znajdują się w temacie [Recovery Services ograniczenia](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).

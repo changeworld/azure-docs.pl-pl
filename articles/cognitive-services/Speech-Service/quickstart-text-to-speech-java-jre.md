@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/19/2019
 ms.author: yulili
-ms.openlocfilehash: 832525ae1441fca85f8df661b4a187c0be8d91dc
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c66e321618b46d52f791f95dab570e3721e806a9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803985"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299225"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-java"></a>Szybki Start: syntezowanie mowy przy użyciu zestawu Speech SDK dla języka Java
 
@@ -79,7 +79,7 @@ Jeśli korzystasz z systemu Windows (64-bitowego), upewnij się, że zainstalowa
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
 Naciśnij klawisz F11 lub wybierz kolejno pozycje **Uruchom** > **Debugowanie**.
-Wprowadź tekst podczas podwyższania poziomu, a w tym miejscu audio jest odtwarzany z domyślnego głośnika.
+Wprowadź tekst po wyświetleniu monitu, aby słyszeć dźwięk, który jest odtwarzany z domyślnego głośnika.
 
 ## <a name="next-steps"></a>Następne kroki
 

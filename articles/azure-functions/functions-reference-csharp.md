@@ -1,22 +1,19 @@
 ---
 title: Informacje C# dotyczące deweloperów skryptów Azure Functions
 description: Dowiedz się, jak opracowywać C# Azure Functions przy użyciu skryptu.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
+author: craigshoemaker
+manager: gwallace
 keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bez serwera
 ms.service: azure-functions
-ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
-ms.author: glenga
-ms.openlocfilehash: e4460dd7131e35ee8b3f3112977099276da2d4ce
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.author: cshoe
+ms.openlocfilehash: c055e1e94d6bc636292fef5da63e7a8c8eb7fa07
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849420"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299857"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Dokumentacja C# dla deweloperów skryptów Azure Functions (CSX)
 
@@ -30,9 +27,9 @@ W tym artykule przyjęto założenie, że został już odczytany [Przewodnik dew
 
 ## <a name="how-csx-works"></a>Jak działa CSX
 
-Środowisko C# skryptu dla Azure Functions jest oparte na [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction). Przepływy danych do C# funkcji za pośrednictwem argumentów metody. Nazwy argumentów są określone w `function.json` pliku, a istnieją wstępnie zdefiniowane nazwy do uzyskiwania dostępu do takich elementów jak Rejestrator funkcji i tokeny anulowania.
+Środowisko C# skryptu dla Azure Functions jest oparte na [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction). Przepływy danych do C# funkcji za pośrednictwem argumentów metody. Nazwy argumentów są określone w pliku `function.json`, a istnieją wstępnie zdefiniowane nazwy do uzyskiwania dostępu do takich elementów jak Rejestrator funkcji i tokeny anulowania.
 
-Format *. CSX* umożliwia pisanie mniej "standardowych" i skoncentrowanie się na pisaniu tylko C# funkcji. Zamiast zawijać wszystko w przestrzeni nazw i klasie, wystarczy zdefiniować `Run` metodę. Dołącz wszystkie odwołania do zestawów i przestrzenie nazw na początku pliku w zwykły sposób.
+Format *. CSX* umożliwia pisanie mniej "standardowych" i skoncentrowanie się na pisaniu tylko C# funkcji. Zamiast zawijać wszystko w przestrzeni nazw i klasie, wystarczy zdefiniować metodę `Run`. Dołącz wszystkie odwołania do zestawów i przestrzenie nazw na początku pliku w zwykły sposób.
 
 Pliki *. CSX* aplikacji funkcji są kompilowane po zainicjowaniu wystąpienia. Ten krok kompilacji oznacza, jak zimne uruchomienie może trwać dłużej C# dla funkcji skryptów w C# porównaniu z bibliotekami klas. Ten krok kompilacji ma również na C# celu edytowanie funkcji skryptów w Azure Portal, podczas gdy C# biblioteki klas nie są.
 
@@ -57,11 +54,11 @@ FunctionsProject
 
 Istnieje udostępniony plik [host. JSON](functions-host-json.md) , który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma własny plik kodu (. CSX) i plik konfiguracji powiązania (Function. JSON).
 
-Rozszerzenia powiązań wymagane w [wersji 2. x](functions-versions.md) środowiska uruchomieniowego funkcji są zdefiniowane w `extensions.csproj` pliku z rzeczywistymi plikami `bin` biblioteki w folderze. Podczas programowania lokalnego należy [zarejestrować rozszerzenia powiązań](./functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w Azure Portal Rejestracja jest wykonywana.
+Rozszerzenia powiązań wymagane w [wersji 2. x](functions-versions.md) środowiska uruchomieniowego funkcji są zdefiniowane w pliku `extensions.csproj` z rzeczywistymi plikami biblioteki w folderze `bin`. Podczas programowania lokalnego należy [zarejestrować rozszerzenia powiązań](./functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w Azure Portal Rejestracja jest wykonywana.
 
 ## <a name="binding-to-arguments"></a>Powiązanie z argumentami
 
-Dane wejściowe lub wyjściowe są powiązane z parametrem funkcji C# skryptu za pośrednictwem `name` właściwości w pliku konfiguracyjnym *Function. JSON* . W poniższym przykładzie przedstawiono plik *Function. JSON* i plik *Run. CSX* dla funkcji wyzwalanej przez kolejkę. Parametr, który odbiera dane z komunikatu kolejki, jest nazwany `myQueueItem` , ponieważ jest to wartość `name` właściwości.
+Dane wejściowe lub wyjściowe są powiązane z parametrem funkcji C# skryptu za pośrednictwem właściwości `name` w pliku konfiguracyjnym *Function. JSON* . W poniższym przykładzie przedstawiono plik *Function. JSON* i plik *Run. CSX* dla funkcji wyzwalanej przez kolejkę. Parametr, który odbiera dane z komunikatu kolejki, nosi nazwę `myQueueItem`, ponieważ jest to wartość właściwości `name`.
 
 ```json
 {
@@ -91,11 +88,11 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 }
 ```
 
-Instrukcja została omówiona [w dalszej części tego artykułu.](#referencing-external-assemblies) `#r`
+Instrukcja `#r` została omówiona [w dalszej części tego artykułu](#referencing-external-assemblies).
 
 ## <a name="supported-types-for-bindings"></a>Obsługiwane typy powiązań
 
-Każde powiązanie ma własne obsługiwane typy; na przykład wyzwalacz obiektu BLOB może być używany z parametrem String, parametrem poco, `CloudBlockBlob` parametrem lub dowolnym innym obsługiwanym typem. [Artykuł dotyczący powiązań powiązań obiektów BLOB](functions-bindings-storage-blob.md#trigger---usage) zawiera listę wszystkich obsługiwanych typów parametrów dla wyzwalaczy obiektów BLOB. Aby uzyskać więcej informacji, zobacz [wyzwalacze i powiązania](functions-triggers-bindings.md) oraz [dokumenty referencyjne powiązań dla każdego typu powiązania](functions-triggers-bindings.md#next-steps).
+Każde powiązanie ma własne obsługiwane typy; na przykład wyzwalacz obiektu BLOB może być używany z parametrem String, parametrem POCO, parametrem `CloudBlockBlob` lub dowolnym innym obsługiwanym typem. [Artykuł dotyczący powiązań powiązań obiektów BLOB](functions-bindings-storage-blob.md#trigger---usage) zawiera listę wszystkich obsługiwanych typów parametrów dla wyzwalaczy obiektów BLOB. Aby uzyskać więcej informacji, zobacz [wyzwalacze i powiązania](functions-triggers-bindings.md) oraz [dokumenty referencyjne powiązań dla każdego typu powiązania](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -122,7 +119,7 @@ Klasa POCO musi mieć zdefiniowaną metodę pobierającą i setter dla każdej w
 
 ## <a name="reusing-csx-code"></a>Używanie kodu. CSX
 
-Można użyć klas i metod zdefiniowanych w innych plikach *. CSX* w pliku *Run. CSX* . W tym celu należy użyć `#load` dyrektyw w pliku *Run. CSX* . W poniższym przykładzie procedura rejestrowania o `MyLogger` nazwie jest udostępniana w elemencie webrejestratoru *. CSX* i załadowana do polecenia `#load` Run. CSX przy użyciu dyrektywy:
+Można użyć klas i metod zdefiniowanych w innych plikach *. CSX* w pliku *Run. CSX* . W tym celu należy użyć dyrektyw `#load` w pliku *Run. CSX* . W poniższym przykładzie procedura rejestrowania o nazwie `MyLogger` jest udostępniana w elemencie *Webrejestratoru. CSX* i załadowana do programu *Run. CSX* przy użyciu dyrektywy `#load`:
 
 Przykład *Run. CSX*:
 
@@ -147,7 +144,7 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-Użycie pliku Shared *. CSX* jest typowym wzorcem, gdy chcesz silnie wpisywać dane przesyłane między funkcjami przy użyciu obiektu poco. W poniższym uproszczonym przykładzie wyzwalacz http i wyzwalacz kolejki współdzielą obiekt poco o nazwie `Order` , aby silnie wpisać dane zamówienia:
+Użycie pliku Shared *. CSX* jest typowym wzorcem, gdy chcesz silnie wpisywać dane przesyłane między funkcjami przy użyciu obiektu poco. W poniższym uproszczonym przykładzie wyzwalacz HTTP i wyzwalacz kolejki współdzielą obiekt POCO o nazwie `Order`, aby silnie wpisać dane zamówienia:
 
 Przykład *Run. CSX* dla wyzwalacza http:
 
@@ -214,11 +211,11 @@ public class Order
 }
 ```
 
-Możesz użyć ścieżki względnej z `#load` dyrektywą:
+Możesz użyć ścieżki względnej z dyrektywą `#load`:
 
-* `#load "mylogger.csx"`ładuje plik znajdujący się w folderze funkcji.
-* `#load "loadedfiles\mylogger.csx"`ładuje plik znajdujący się w folderze w folderze funkcji.
-* `#load "..\shared\mylogger.csx"`ładuje plik znajdujący się w folderze na tym samym poziomie co folder funkcji, czyli bezpośrednio w katalogu *wwwroot*.
+* `#load "mylogger.csx"` ładuje plik znajdujący się w folderze funkcji.
+* `#load "loadedfiles\mylogger.csx"` ładuje plik znajdujący się w folderze w folderze funkcji.
+* `#load "..\shared\mylogger.csx"` ładuje plik znajdujący się w folderze na tym samym poziomie co folder funkcji, czyli bezpośrednio w katalogu *wwwroot*.
 
 Dyrektywa `#load` działa tylko z plikami *. CSX* , a nie z plikami *. cs* .
 
@@ -226,13 +223,13 @@ Dyrektywa `#load` działa tylko z plikami *. CSX* , a nie z plikami *. cs* .
 
 Można użyć wartości zwracanej metody dla powiązania danych wyjściowych przy użyciu nazwy `$return` w pliku *Function. JSON*. Aby zapoznać się z przykładami, zobacz [wyzwalacze i powiązania](./functions-bindings-return-value.md).
 
-Użyj wartości zwracanej tylko wtedy, gdy pomyślne wykonanie funkcji zawsze powoduje, że wartość zwracana zostanie przekazana do powiązania danych wyjściowych. W przeciwnym razie `ICollector` Użyj `IAsyncCollector`lub, jak pokazano w poniższej sekcji.
+Użyj wartości zwracanej tylko wtedy, gdy pomyślne wykonanie funkcji zawsze powoduje, że wartość zwracana zostanie przekazana do powiązania danych wyjściowych. W przeciwnym razie użyj `ICollector` lub `IAsyncCollector`, jak pokazano w poniższej sekcji.
 
 ## <a name="writing-multiple-output-values"></a>Zapisywanie wielu wartości wyjściowych
 
-Aby zapisać wiele wartości do powiązania danych wyjściowych lub jeśli pomyślne wywołanie funkcji może nie spowodować, że wszystko jest przekazywane do powiązania danych wyjściowych, użyj [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) typów lub. [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) Te typy są kolekcjami tylko do zapisu, które są zapisywane do powiązania danych wyjściowych, gdy metoda zostanie zakończona.
+Aby zapisać wiele wartości do powiązania danych wyjściowych lub jeśli pomyślne wywołanie funkcji może nie skutkować przekazaniem do powiązania danych wyjściowych, użyj typów [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) lub [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) . Te typy są kolekcjami tylko do zapisu, które są zapisywane do powiązania danych wyjściowych, gdy metoda zostanie zakończona.
 
-Ten przykład zapisuje wiele komunikatów w kolejce w tej samej kolejce `ICollector`przy użyciu:
+Ten przykład zapisuje wiele komunikatów w kolejce w tej samej kolejce przy użyciu `ICollector`:
 
 ```csharp
 public static void Run(ICollector<string> myQueue, ILogger log)
@@ -244,7 +241,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>Rejestrowanie
 
-Aby zalogować dane wyjściowe do dzienników przesyłania C#strumieniowego w programie, należy dołączyć argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Zalecamy, aby ją `log`nazwać. Unikaj `Console.Write` używania w Azure Functions.
+Aby zalogować dane wyjściowe do dzienników przesyłania C#strumieniowego w programie, należy dołączyć argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Zalecamy, aby nazwać ją `log`. Unikaj używania `Console.Write` w Azure Functions.
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -254,11 +251,11 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> Aby uzyskać informacje na temat nowszej struktury rejestrowania, której można użyć zamiast `TraceWriter`programu, zobacz [Zapisywanie dzienników C# w funkcjach](functions-monitoring.md#write-logs-in-c-functions) w artykule **monitor Azure Functions** .
+> Aby uzyskać informacje o nowszej platformie rejestrowania, których można użyć zamiast `TraceWriter`, zobacz [Zapisywanie dzienników w C# funkcjach](functions-monitoring.md#write-logs-in-c-functions) w artykule **monitorowanie Azure Functions** .
 
 ## <a name="async"></a>Asynchroniczne
 
-Aby wykonać funkcję [asynchroniczną](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), należy użyć `async` `Task` słowa kluczowego i zwrócić obiekt.
+Aby wykonać funkcję [asynchroniczną](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), należy użyć słowa kluczowego `async` i zwrócić obiekt `Task`.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -270,7 +267,7 @@ public async static Task ProcessQueueMessageAsync(
 }
 ```
 
-Nie można używać `out` parametrów w funkcjach asynchronicznych. W przypadku powiązań wyjściowych Użyj zamiast niego [wartości zwracanej funkcji](#binding-to-method-return-value) lub [obiektu modułu zbierającego](#writing-multiple-output-values) .
+Nie można używać parametrów `out` w funkcjach asynchronicznych. W przypadku powiązań wyjściowych Użyj zamiast niego [wartości zwracanej funkcji](#binding-to-method-return-value) lub [obiektu modułu zbierającego](#writing-multiple-output-values) .
 
 ## <a name="cancellation-tokens"></a>Tokeny anulowania
 
@@ -303,7 +300,7 @@ public static void Run(
 
 ## <a name="importing-namespaces"></a>Importowanie przestrzeni nazw
 
-Jeśli zachodzi konieczność zaimportowania przestrzeni nazw, można to zrobić w zwykły `using` sposób z klauzulą.
+Jeśli zachodzi potrzeba zaimportowania przestrzeni nazw, można to zrobić w zwykły sposób z klauzulą `using`.
 
 ```csharp
 using System.Net;
@@ -326,7 +323,7 @@ Następujące przestrzenie nazw są automatycznie importowane i dlatego są opcj
 
 ## <a name="referencing-external-assemblies"></a>Odwołujące się do zestawów zewnętrznych
 
-W przypadku zestawów struktury Dodaj odwołania za pomocą `#r "AssemblyName"` dyrektywy.
+W przypadku zestawów struktury Dodaj odwołania za pomocą dyrektywy `#r "AssemblyName"`.
 
 ```csharp
 #r "System.Web.Http"
@@ -352,7 +349,7 @@ Następujące zestawy są automatycznie dodawane przez środowisko hostingu Azur
 * `System.Web.Http`
 * `System.Net.Http.Formatting`
 
-Następujące zestawy mogą być przywoływane przez prostą nazwę (na przykład `#r "AssemblyName"`):
+Następujące zestawy mogą odwoływać się do nazwy prostej (na przykład `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -365,15 +362,15 @@ Następujące zestawy mogą być przywoływane przez prostą nazwę (na przykła
 
 Aby odwołać się do zestawu niestandardowego, można użyć zestawu *udostępnionego* lub zestawu *prywatnego* :
 
-* Zestawy udostępnione są współużytkowane przez wszystkie funkcje w aplikacji funkcji. Aby odwołać się do zestawu niestandardowego, Przekaż zestaw do folderu o `bin` nazwie w [folderze głównym aplikacji funkcji](functions-reference.md#folder-structure) (wwwroot).
+* Zestawy udostępnione są współużytkowane przez wszystkie funkcje w aplikacji funkcji. Aby odwołać się do zestawu niestandardowego, Przekaż zestaw do folderu o nazwie `bin` w [folderze głównym aplikacji funkcji](functions-reference.md#folder-structure) (wwwroot).
 
-* Zestawy prywatne są częścią danego kontekstu funkcji i obsługują ładowanie bezpośredniego różnych wersji. Zestawy prywatne należy przekazać do `bin` folderu w katalogu funkcji. Odwołuje się do zestawów przy użyciu nazwy pliku, `#r "MyAssembly.dll"`takiej jak.
+* Zestawy prywatne są częścią danego kontekstu funkcji i obsługują ładowanie bezpośredniego różnych wersji. Zestawy prywatne należy przekazać w folderze `bin` w katalogu funkcji. Odwołuje się do zestawów przy użyciu nazwy pliku, takiej jak `#r "MyAssembly.dll"`.
 
 Informacje o sposobach przekazywania plików do folderu funkcji znajdują się w sekcji [Zarządzanie pakietami](#using-nuget-packages).
 
 ### <a name="watched-directories"></a>Monitorowane katalogi
 
-Katalog zawierający plik skryptu funkcji jest automatycznie oglądany pod kątem zmian w zestawach. Aby obejrzeć zmiany zestawu w innych katalogach, Dodaj je do `watchDirectories` listy w pliku [host. JSON](functions-host-json.md).
+Katalog zawierający plik skryptu funkcji jest automatycznie oglądany pod kątem zmian w zestawach. Aby obejrzeć zmiany zestawu w innych katalogach, Dodaj je do listy `watchDirectories` w pliku [host. JSON](functions-host-json.md).
 
 ## <a name="using-nuget-packages"></a>Korzystanie z pakietów NuGet
 Aby używać pakietów NuGet w funkcji 2. x C# , Przekaż plik *. proj* do folderu funkcji w systemie plików aplikacji funkcji. Poniżej znajduje się przykładowy plik *Function. proj* , który dodaje odwołanie do *Microsoft. ProjectOxford.* *1.1.0*w wersji:
@@ -450,12 +447,12 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>Powiązanie w czasie wykonywania
 
-W C# programie i innych językach .NET można użyć wzorca powiązania [](https://en.wikipedia.org/wiki/Imperative_programming) , a nie do powiązań [deklaratywnych](https://en.wikipedia.org/wiki/Declarative_programming) w *funkcji Function. JSON*. Bezwzględne powiązanie jest przydatne, gdy parametry powiązania muszą być obliczane w czasie wykonywania, a nie w czasie projektowania. Za pomocą tego wzorca można powiązać z obsługiwanymi powiązaniami wejściowymi i wyjściowymi na bieżąco w kodzie funkcji.
+W C# programie i innych językach .NET można użyć [wzorca powiązania,](https://en.wikipedia.org/wiki/Imperative_programming) a nie do powiązań [*deklaratywnych*](https://en.wikipedia.org/wiki/Declarative_programming) w *funkcji Function. JSON*. Bezwzględne powiązanie jest przydatne, gdy parametry powiązania muszą być obliczane w czasie wykonywania, a nie w czasie projektowania. Za pomocą tego wzorca można powiązać z obsługiwanymi powiązaniami wejściowymi i wyjściowymi na bieżąco w kodzie funkcji.
 
 Zdefiniuj bezwzględne powiązanie w następujący sposób:
 
 - **Nie** dołączaj wpisu w pliku *Function. JSON* dla żądanych bezwzględnych powiązań.
-- Przekaż parametr [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) wejściowy lub [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
+- Przekaż parametr wejściowy [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) lub [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
 - Użyj następującego C# wzorca, aby wykonać powiązanie danych.
 
 ```cs
@@ -465,7 +462,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`jest atrybutem platformy .NET, który definiuje powiązanie `T` i jest typem wejściowym lub wyjściowym obsługiwanym przez ten typ powiązania. `T`nie może być `out` typem parametru (na przykład `out JObject`). Na przykład powiązanie danych wyjściowych tabeli Mobile Apps obsługuje [sześć typów wyjściowych](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale można używać tylko [ICollector\<T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) lub [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) dla `T`.
+`BindingTypeAttribute` to atrybut platformy .NET, który definiuje powiązanie, a `T` jest typem wejściowym lub wyjściowym obsługiwanym przez ten typ powiązania. `T` nie może być typem parametru `out` (na przykład `out JObject`). Na przykład powiązanie danych wyjściowych tabeli Mobile Apps obsługuje [sześć typów wyjściowych](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale można użyć tylko [ICollector @ no__t-2T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) lub [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) dla `T`.
 
 ### <a name="single-attribute-example"></a>Przykład pojedynczego atrybutu
 
@@ -488,7 +485,7 @@ public static async Task Run(string input, Binder binder)
 
 ### <a name="multiple-attribute-example"></a>Przykład wielu atrybutów
 
-W poprzednim przykładzie jest pobierane ustawienie aplikacji dla głównych parametrów połączenia konta magazynu aplikacji funkcji (co to jest `AzureWebJobsStorage`). Możesz określić niestandardowe ustawienie aplikacji do użycia dla konta magazynu, dodając [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) i przekazując tablicę atrybutów do `BindAsync<T>()`. Użyj parametru `Binder` , a nie `IBinder`.  Przykład:
+Poprzedni przykład pobiera ustawienia aplikacji dla głównych parametrów połączenia konta magazynu aplikacji funkcji (czyli `AzureWebJobsStorage`). Możesz określić niestandardowe ustawienie aplikacji do użycia dla konta magazynu, dodając [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) i przekazując tablicę atrybutów do `BindAsync<T>()`. Użyj `Binder` parametru, a nie `IBinder`.  Na przykład:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -512,15 +509,15 @@ public static async Task Run(string input, Binder binder)
 Poniższa tabela zawiera listę atrybutów .NET dla każdego typu powiązania i pakietów, w których zostały zdefiniowane.
 
 > [!div class="mx-codeBreakAll"]
-> | Powiązanie | Atrybut | Dodawanie odwołania |
+> | Łączenie | Atrybut | Dodaj odwołanie |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
-> | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
+> | Centra zdarzeń | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
 > | Aplikacje mobilne | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
-> | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
+> | Centra powiadomień | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 > | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
 > | Kolejka magazynu | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | Obiekt blob magazynu | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | Magazyn obiektów blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Tabela magazynu | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 

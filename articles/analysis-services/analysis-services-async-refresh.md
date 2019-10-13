@@ -2,18 +2,17 @@
 title: Odświeżanie asynchroniczne dla modeli Azure Analysis Services | Microsoft Docs
 description: Dowiedz się, jak kod odświeżać asynchronicznie za pomocą interfejsu API REST.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 82e40f756e0d8e0b5627b7c8856bd25fa98adbcb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: daa25ecd12cb4c3b6ba72164c36cef01001448cf
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932293"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301165"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne za pomocą interfejsu API REST
 
@@ -57,12 +56,12 @@ Na przykład możesz użyć zlecenia POST w kolekcji rerefreshs, aby wykonać op
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 
 Wszystkie wywołania muszą zostać uwierzytelnione z prawidłowym tokenem Azure Active Directory (OAuth 2) w nagłówku autoryzacji i muszą spełniać następujące wymagania:
 
 - Token musi być tokenem użytkownika lub podmiotem usługi aplikacji.
-- Token musi mieć odpowiednich odbiorców `https://*.asazure.windows.net`.
+- Token musi mieć ustawionych odpowiednich odbiorców, aby `https://*.asazure.windows.net`.
 - Użytkownik lub aplikacja musi mieć wystarczające uprawnienia na serwerze lub modelu, aby wykonać żądane wywołanie. Poziom uprawnień jest określany przez role należące do modelu lub grupy administratorów na serwerze.
 
     > [!IMPORTANT]
@@ -98,13 +97,13 @@ Treść może wyglądać następująco:
 
 Określanie parametrów nie jest wymagane. Ustawienie domyślne jest stosowane.
 
-| Name (Nazwa)             | Typ  | Opis  |Domyślny  |
+| Nazwa             | Typ  | Opis  |Domyślne  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | Typ przetwarzania do wykonania. Typy są wyrównane z typami [poleceń Refresh](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) TMSL: Full, clearValues, Oblicz, dataonly, Automatic i defragmentowania. Dodawanie typu nie jest obsługiwane.      |   Automatyczne      |
-| `CommitMode`     | Enum  | Określa, czy obiekty będą zatwierdzane w partiach, czy tylko po zakończeniu. Tryby to: default, transakcyjna, partialBatch.  |  transakcyjna       |
-| `MaxParallelism` | Int   | Ta wartość określa maksymalną liczbę wątków, w których uruchamianie poleceń przetwarzania jest równoległe. Ta wartość jest wyrównana z właściwością MaxParallelism, którą można ustawić w TMSL [Sequence polecenia](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
-| `RetryCount`     | Int   | Wskazuje liczbę ponownych prób wykonania operacji przed zakończeniem się niepowodzeniem.      |     0    |
-| `Objects`        | Array | Tablica obiektów do przetworzenia. Każdy obiekt zawiera: "Tabela" podczas przetwarzania całej tabeli lub "tabeli" i "partycji" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, cały model zostanie odświeżony. |   Przetwórz cały model      |
+| `Type`           | Wyliczenie  | Typ przetwarzania do wykonania. Typy są wyrównane z typami [poleceń Refresh](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) TMSL: Full, clearValues, Oblicz, dataonly, Automatic i defragmentowania. Dodawanie typu nie jest obsługiwane.      |   Automatyczne      |
+| `CommitMode`     | Wyliczenie  | Określa, czy obiekty będą zatwierdzane w partiach, czy tylko po zakończeniu. Tryby to: default, transakcyjna, partialBatch.  |  transakcyjna       |
+| `MaxParallelism` | ZAOKR   | Ta wartość określa maksymalną liczbę wątków, w których uruchamianie poleceń przetwarzania jest równoległe. Ta wartość jest wyrównana z właściwością MaxParallelism, którą można ustawić w TMSL [Sequence polecenia](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
+| `RetryCount`     | ZAOKR   | Wskazuje liczbę ponownych prób wykonania operacji przed zakończeniem się niepowodzeniem.      |     0    |
+| `Objects`        | Tablica | Tablica obiektów do przetworzenia. Każdy obiekt zawiera: "Tabela" podczas przetwarzania całej tabeli lub "tabeli" i "partycji" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, cały model zostanie odświeżony. |   Przetwórz cały model      |
 
 Wartość CommitMode jest równa partialBatch. Jest on używany podczas wstępnego ładowania dużych zestawów danych, które mogą zająć kilka godzin. Jeśli operacja odświeżania nie powiedzie się po pomyślnym zatwierdzeniu jednej lub większej liczby partii, pomyślnie przekazane partie pozostaną zatwierdzone (nie zostaną wycofane pomyślnie przekazane partie).
 
@@ -186,11 +185,11 @@ Aby sprawdzić stan operacji synchronizacji, użyj metody GET, która przekazuje
 
 Wartości dla `syncstate`:
 
-- 0: Replikacji. Pliki bazy danych są replikowane do folderu docelowego.
-- 1: Ponownego wypełniania. Baza danych jest usuwana w wystąpieniach serwera tylko do odczytu.
-- 2: Ukończono. Operacja synchronizacji zakończyła się pomyślnie.
-- 3: Niepowodzenie. Operacja synchronizacji nie powiodła się.
-- 4\. Finalizowanie. Operacja synchronizacji została ukończona, ale wykonuje kroki czyszczenia.
+- 0: Replikowanie. Pliki bazy danych są replikowane do folderu docelowego.
+- 1: ponownego wypełniania. Baza danych jest usuwana w wystąpieniach serwera tylko do odczytu.
+- 2: ukończono. Operacja synchronizacji zakończyła się pomyślnie.
+- 3: nie powiodło się. Operacja synchronizacji nie powiodła się.
+- 4: finalizowanie. Operacja synchronizacji została ukończona, ale wykonuje kroki czyszczenia.
 
 ## <a name="code-sample"></a>Przykład kodu
 
@@ -203,18 +202,18 @@ Oto przykład C# kodu, aby rozpocząć pracę, [RestApiSample w witrynie GitHub]
 
 Przykładowy kod używa uwierzytelniania [nazwy głównej usługi](#service-principal) .
 
-### <a name="service-principal"></a>Jednostka usługi
+### <a name="service-principal"></a>Nazwa główna usługi
 
 Aby uzyskać więcej informacji na temat konfigurowania nazwy głównej usługi i przypisywania do niej wymaganych uprawnień na platformie Azure, zobacz [Tworzenie jednostki usługi — Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) i [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md) . Po wykonaniu kroków wykonaj następujące dodatkowe czynności:
 
 1.  W przykładzie kodu Znajdź **ciąg Authority =...** , Zamień **wspólny** z identyfikatorem dzierżawy w Twojej organizacji.
-2.  Comment/uncomment, aby Klasa ClientCredential była używana do tworzenia wystąpienia obiektu poświadczeń. Upewnij się \<, że identyfikator aplikacji \<> i wartości > klucza aplikacji są dostępne w bezpieczny sposób lub Użyj uwierzytelniania opartego na certyfikatach dla podmiotów usługi.
+2.  Comment/uncomment, aby Klasa ClientCredential była używana do tworzenia wystąpienia obiektu poświadczeń. Upewnij się, że identyfikatory \<App > i @no__t 1App klucza > są dostępne w bezpieczny sposób lub Użyj uwierzytelniania opartego na certyfikatach dla podmiotów usługi.
 3.  Uruchom przykład.
 
 
 ## <a name="see-also"></a>Zobacz także
 
 [Przykłady](analysis-services-samples.md)   
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
+[Interfejs API REST](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
 

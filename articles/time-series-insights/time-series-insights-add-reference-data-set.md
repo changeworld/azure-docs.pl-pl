@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 138894f10a4865a5ea251caff6683ed70721c000
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c33619ba52246128526bb132dfe94416c7c4de8c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172921"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299603"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Utwórz zestaw danych referencyjnych dla środowiska Time Series Insights przy użyciu Azure Portal
 
@@ -26,7 +26,7 @@ Zestaw danych referencyjnych to kolekcja elementów, które rozszerzają zdarzen
 
 Dane referencyjne nie są przyłączone wstecz. W takim przypadku tylko bieżące i przyszłe dane przychodzące są dopasowywane i dołączane do zestawu dat odwołania po jego skonfigurowaniu i przekazaniu.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 ### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Dowiedz się więcej o modelu danych referencyjnych usługi Time Series Insights.</br>
 
@@ -34,45 +34,47 @@ Dane referencyjne nie są przyłączone wstecz. W takim przypadku tylko bieżąc
 
 ## <a name="add-a-reference-data-set"></a>Dodawanie zestawu danych referencyjnych
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
-1. Znajdź istniejącego środowiska usługi Time Series Insights. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie Azure Portal. Wybierz środowisko usługi Time Series Insights.
+1. Znajdź istniejące środowisko Azure Time Series Insights. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie Azure Portal. Wybierz środowisko usługi Time Series Insights.
 
 1. Wybierz stronę **Przegląd** . Znajdź **adres URL eksploratora Time Series Insights** i Otwórz link.  
 
-   Wyświetl Eksploratora dla środowiska TSI.
+   Wyświetl Eksploratora dla środowiska Time Series Insightsowego.
 
-1. Rozwiń selektor środowiska w Eksploratorze TSI. Wybierz aktywne środowisko. Wybierz ikonę dane referencyjne w prawym górnym rogu strony Eksploratora.
+1. Rozwiń selektor środowiska w Eksploratorze Time Series Insights. Wybierz aktywne środowisko. Wybierz ikonę dane referencyjne w prawym górnym rogu strony Eksploratora.
 
-   [![Dodaj dane referencyjne](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
+   [dane referencyjne @no__t 1Add](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
 
 1. Wybierz przycisk **+ Dodaj zestaw danych** , aby rozpocząć dodawanie nowego zestawu danych.
 
-   [![Dodaj zestaw danych](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
+   [@no__t — zestaw danych 1Add](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
 
 1. Na stronie **Nowy zestaw danych referencyjnych** wybierz format danych:
+
    - Wybierz opcję **CSV** dla danych rozdzielanych przecinkami. Pierwszy wiersz jest traktowany jako wiersz nagłówka.
    - Wybierz **tablicę JSON** dla danych sformatowanych w formacie JavaScript Object Notation (JSON).
 
-   [![Wybierz format danych.](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox)
+   [@no__t — format danych 1Choose.](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox)
 
 1. Podaj dane przy użyciu jednej z dwóch metod:
+
    - Wklej dane do edytora tekstu. Następnie wybierz przycisk **Analizuj dane referencyjne** .
    - Wybierz przycisk **Wybierz plik** , aby dodać dane z lokalnego pliku tekstowego.
 
-   Na przykład wklej dane CSV: [![Wklejone dane CSV](media/add-reference-data-set/csv-data-pasted.png)](media/add-reference-data-set/csv-data-pasted.png#lightbox)
+   Na przykład wklej dane CSV: [![Pasted dane CSV](media/add-reference-data-set/csv-data-pasted.png)](media/add-reference-data-set/csv-data-pasted.png#lightbox)
 
-   Na przykład wklej dane tablicy JSON: [![Wklej dane JSON](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
+   Na przykład wklej dane tablicy JSON: [dane json @no__t 1Paste](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
 
-   Jeśli wystąpi błąd podczas analizowania wartości danych, błąd pojawia się na czerwono u dołu strony, `CSV parsing error, no rows extracted`na przykład.
+   Jeśli wystąpi błąd podczas analizowania wartości danych, błąd pojawia się na czerwono w dolnej części strony, na przykład `CSV parsing error, no rows extracted`.
 
 1. Po pomyślnym przeanalizowaniu danych zostanie wyświetlona siatka danych wyświetlająca kolumny i wiersze reprezentujące dane.  Przejrzyj siatkę danych, aby upewnić się, że jest to prawidłowa.
 
-   [![Dodaj dane referencyjne](media/add-reference-data-set/parse-data.png)](media/add-reference-data-set/parse-data.png#lightbox)
+   [dane referencyjne @no__t 1Add](media/add-reference-data-set/parse-data.png)](media/add-reference-data-set/parse-data.png#lightbox)
 
-1. Przejrzyj każdą kolumnę, aby zobaczyć przyjęty typ danych, a jeśli to konieczne, w razie potrzeby zmień typ danych.  Wybierz symbol typu danych w nagłówku kolumny: **#** dla podwójnej (dane liczbowe), **T | F** dla wartości logicznej lub **ABC** dla ciągu.
+1. Przejrzyj każdą kolumnę, aby zobaczyć przyjęty typ danych, a jeśli to konieczne, w razie potrzeby zmień typ danych.  Wybierz symbol typu danych w nagłówku kolumny: **#** dla podwójne (dane liczbowe), **t | F** dla wartości logicznej lub **ABC** dla ciągu.
 
-   [![Wybierz typy danych w nagłówkach kolumn.](media/add-reference-data-set/choose-datatypes.png)](media/add-reference-data-set/choose-datatypes.png#lightbox)
+   [![Choose typy danych w nagłówkach kolumn.](media/add-reference-data-set/choose-datatypes.png)](media/add-reference-data-set/choose-datatypes.png#lightbox)
 
 1. W razie konieczności zmień nazwy nagłówków kolumn. Nazwa kolumny klucza jest konieczna do przyłączenia do odpowiedniej właściwości w źródle zdarzenia. Upewnij się, że nazwy kolumn klucza danych referencyjnych są zgodne z nazwą zdarzenia do danych przychodzących, z uwzględnieniem wielkości liter. Nazwy kolumn niebędących kluczami służą do rozszerzania danych przychodzących z odpowiednimi wartościami danych referencyjnych.
 
@@ -82,17 +84,17 @@ Dane referencyjne nie są przyłączone wstecz. W takim przypadku tylko bieżąc
 
 1. Nazwij zestaw danych, wypełniając pole **Nazwa zestawu danych** powyżej siatki danych.
 
-    [![Nadaj nazwę zestawowi danych.](media/add-reference-data-set/name-reference-dataset.png)](media/add-reference-data-set/name-reference-dataset.png#lightbox)
+    [@no__t — 1Name zestaw danych.](media/add-reference-data-set/name-reference-dataset.png)](media/add-reference-data-set/name-reference-dataset.png#lightbox)
 
 1. Podaj kolumnę **klucza podstawowego** w zestawie danych, wybierając listę rozwijaną powyżej siatki danych.
 
-    [![Wybierz kolumny klucza.](media/add-reference-data-set/set-primary-key.png)](media/add-reference-data-set/set-primary-key.png#lightbox)
+    [@no__t — 1Select kolumny klucza.](media/add-reference-data-set/set-primary-key.png)](media/add-reference-data-set/set-primary-key.png#lightbox)
 
-    Opcjonalnie wybierz **+** przycisk, aby dodać kolumnę klucza pomocniczego jako złożony klucz podstawowy. Jeśli musisz cofnąć zaznaczenie, wybierz z listy rozwijanej wartość pustą, aby usunąć klucz pomocniczy.
+    Opcjonalnie wybierz przycisk **+** , aby dodać kolumnę klucza pomocniczego jako złożony klucz podstawowy. Jeśli musisz cofnąć zaznaczenie, wybierz z listy rozwijanej wartość pustą, aby usunąć klucz pomocniczy.
 
 1. Aby przekazać dane, wybierz przycisk **Przekaż wiersze** .
 
-    [![Przesyłane](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
+    [@no__t — 1Upload](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
 
     Strona potwierdza ukończone przekazywanie i wyświetla komunikat **pomyślnie przekazano zestaw danych**.
 

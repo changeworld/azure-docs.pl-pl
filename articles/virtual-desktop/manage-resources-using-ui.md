@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679482"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300902"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Samouczek: wdrażanie narzędzia do zarządzania
 
@@ -26,6 +26,12 @@ Narzędzie do zarządzania udostępnia interfejs użytkownika służący do zarz
 Ponieważ aplikacja wymaga zgody na współdziałanie z pulpitem wirtualnym systemu Windows, to narzędzie nie obsługuje scenariuszy biznes-to-Business (B2B). Każda subskrypcja dzierżawy usługi Azure Active Directory (AAD) będzie potrzebować oddzielnego wdrożenia narzędzia do zarządzania.
 
 To narzędzie do zarządzania jest przykładem. Firma Microsoft zapewni ważne aktualizacje zabezpieczeń i ich jakości. [Kod źródłowy jest dostępny w](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)serwisie GitHub. Zachęcamy klientów i partnerów do dostosowania narzędzia do potrzeb firmy.
+
+Do następujących przeglądarek są zgodne narzędzia do zarządzania:
+- Google Chrome 68 lub nowsza
+- Microsoft Edge 40,15063 lub nowsza
+- Mozilla Firefox 52,0 lub nowsza
+- Przeglądarka Safari 10 lub nowsza (tylko macOS)
 
 ## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Co jest potrzebne do uruchomienia szablonu Azure Resource Manager
 

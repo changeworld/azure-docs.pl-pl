@@ -2,18 +2,17 @@
 title: Zainstaluj lokalną bramę danych dla Azure Analysis Services | Microsoft Docs
 description: Dowiedz się, jak zainstalować i skonfigurować lokalną bramę danych.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e87a8221a4db4dfab132a91a31a9ba5b5602a3db
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 6f182976ac655692f8c50d4e7560aa21444ce848
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678431"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298652"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalowanie i konfigurowanie bramy danych lokalnych
 
@@ -42,7 +41,7 @@ Aby dowiedzieć się więcej o bramie i sposobie jej użycia przez Azure Analysi
 * Zainstaluj bramę na komputerze, który pozostanie włączony i nie przechodzi do trybu uśpienia.
 * Nie instaluj bramy na komputerze podłączonym bezprzewodowo do sieci. Wydajność może być mniejsza.
 * Podczas instalacji bramy konto użytkownika, które jest zalogowany na komputerze, musi mieć uprawnienia Logowanie jako usługa. Po zakończeniu instalacji usługa lokalnej bramy danych używa konta NT SERVICE\PBIEgwService do logowania się jako usługa. Można określić inne konto podczas instalacji lub usług po zakończeniu instalacji. Upewnij się, że ustawienia zasady grupy umożliwiają zarówno konto, za pomocą którego zalogowano się podczas instalacji, jak i wybrane konto usługi ma uprawnienia Logowanie jako usługa.
-* Zaloguj się do platformy Azure przy użyciu konta w usłudze Azure AD dla [](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) tej samej dzierżawy, która jest zarejestrowana w ramach subskrypcji. Konta B2B (gość) platformy Azure nie są obsługiwane podczas instalowania i rejestrowania bramy.
+* Zaloguj się do platformy Azure przy użyciu konta w usłudze Azure AD dla tej samej [dzierżawy](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) , która jest zarejestrowana w ramach subskrypcji. Konta B2B (gość) platformy Azure nie są obsługiwane podczas instalowania i rejestrowania bramy.
 * Jeśli źródła danych znajdują się w usłudze Azure Virtual Network (VNet), należy skonfigurować właściwość serwera [AlwaysUseGateway](analysis-services-vnet-gateway.md) .
 * Opisana tutaj Brama (Unified) nie jest obsługiwana w regionach platformy Azure (Niemcy). Zamiast tego należy użyć **dedykowanej bramy lokalnej dla Azure Analysis Services**zainstalowanej z **Szybki Start** serwera w portalu. 
 
@@ -65,7 +64,7 @@ Aby dowiedzieć się więcej o bramie i sposobie jej użycia przez Azure Analysi
 
 3. Zaloguj się do platformy Azure. Konto musi znajdować się w Azure Active Directory Twojej dzierżawy. To konto jest używane przez administratora bramy. Konta B2B (gość) platformy Azure nie są obsługiwane podczas instalowania i rejestrowania bramy.
 
-   ![Logowanie do platformy Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![Zaloguj się w usłudze Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
    > Jeśli zalogujesz się przy użyciu konta domeny, zostanie ono zamapowane na konto organizacyjne w usłudze Azure AD. Konto organizacyjne jest używane jako Administrator bramy.
@@ -98,17 +97,17 @@ Po zainstalowaniu i zarejestrowaniu bramy musisz utworzyć zasób bramy w ramach
 
    * **Nazwa**: Wprowadź nazwę zasobu bramy. 
 
-   * **Subskrypcja**: Wybierz subskrypcję platformy Azure, która ma zostać skojarzona z zasobem bramy. 
+   * **Subskrypcja**: wybierz subskrypcję platformy Azure, która ma zostać skojarzona z zasobem bramy. 
    
      Domyślna subskrypcja jest oparta na koncie platformy Azure użytym do zalogowania się.
 
-   * **Grupa zasobów**: Utwórz grupę zasobów lub wybierz istniejącą grupę zasobów.
+   * **Grupa zasobów**: utwórz grupę zasobów lub wybierz istniejącą.
 
    * **Lokalizacja**: Wybierz region, w którym zarejestrowano bramę.
 
    * **Nazwa instalacji**: Jeśli instalacja bramy nie została jeszcze wybrana, wybierz bramę zainstalowaną na komputerze i zarejestrowano. 
 
-     Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz**.
+     Gdy skończysz, kliknij przycisk **Utwórz**.
 
 ## <a name="connect-servers"></a>Łączenie serwerów z zasobem bramy
 
@@ -128,7 +127,7 @@ Po zainstalowaniu i zarejestrowaniu bramy musisz utworzyć zasób bramy w ramach
 
     ![Pomyślne połączenie serwera z bramą](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-Gotowe. Jeśli konieczne jest otwarcie portów lub Rozwiązywanie problemów, należy sprawdzić, czy [lokalna Brama danych](analysis-services-gateway.md)jest Wyewidencjonuj.
+To już wszystko. Jeśli konieczne jest otwarcie portów lub Rozwiązywanie problemów, należy sprawdzić, czy [lokalna Brama danych](analysis-services-gateway.md)jest Wyewidencjonuj.
 
 ## <a name="next-steps"></a>Następne kroki
 

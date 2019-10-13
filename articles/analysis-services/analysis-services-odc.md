@@ -1,38 +1,37 @@
 ---
-title: Tworzenie pliku odc, aby nawiązać połączenie z serwerem usług Azure Analysis Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć plik połączenia danych pakietu Office, aby nawiązać połączenie i pobieranie danych z serwera usług Analysis Services na platformie Azure.
+title: Utwórz plik odc, aby nawiązać połączenie z serwerem Azure Analysis Services | Microsoft Docs
+description: Dowiedz się, jak utworzyć plik połączenia danych pakietu Office w celu nawiązania połączenia i pobrania danych z serwera Analysis Services na platformie Azure.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 37f068be544f964f3aec63d85702098c8f382ab8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e12717b37171df55c7559bb1b05c467f332236bc
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60785714"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294839"
 ---
 # <a name="create-an-office-data-connection-file"></a>Tworzenie pliku połączenia danych pakietu Office
 
-Informacje przedstawione w tym artykule opisano, jak utworzyć plik połączenia danych pakietu Office do nawiązywania połączenia z serwerem usług Azure Analysis Services z programu Excel 2016 numer wersji 16.0.7369.2117 lub wcześniej, lub Excel 2013. Zaktualizowany [dostawcy MSOLAP.7](analysis-services-data-providers.md) jest również wymagany.
+Informacje przedstawione w tym artykule opisują sposób tworzenia pliku połączenia danych pakietu Office w celu nawiązania połączenia z serwerem Azure Analysis Services z poziomu programu Excel 2016 w wersji 16.0.7369.2117 lub starszej lub Excel 2013. Wymagany jest również zaktualizowany [dostawca MSOLAP. 7](analysis-services-data-providers.md) .
 
 
-1. Skopiuj przykładowy plik połączenia poniżej i Wklej do edytora tekstu. 
+1. Skopiuj przykładowy plik połączenia poniżej i wklej go do edytora tekstu. 
 
-2. W `odc:ConnectionString`, Zmień następujące właściwości:
+2. W `odc:ConnectionString` Zmień następujące właściwości:
 
-    *   W `Data Source=asazure://<region>.asazure.windows.net/<servername>;` zmienić `<region>` w regionie Twojego serwera usług Analysis Services i `<servername>` do nazwy serwera.
+    *   W `Data Source=asazure://<region>.asazure.windows.net/<servername>;` Zmień `<region>` do regionu serwera Analysis Services i `<servername>` na nazwę serwera.
 
-    *   W `Initial Catalog=<database>;` zmienić `<database>` nazwę bazy danych.
+    *   W `Initial Catalog=<database>;` Zmień `<database>` na nazwę bazy danych.
 
-3. W `<odc:CommandText>Model</odc:CommandText>` zmienić `Model` nazwę modelu lub perspektywy. 
+3. W `<odc:CommandText>Model</odc:CommandText>` Zmień `Model` na nazwę modelu lub perspektywy. 
 
-4. Zapisz plik z `.odc` rozszerzenie C:\Users\\*username*\Documents\My folder źródła danych.
+4. Zapisz plik z rozszerzeniem `.odc` w folderze C:\Users @ no__t-1*username*\Documents\My sources.
 
-5. Kliknij prawym przyciskiem myszy plik, a następnie kliknij przycisk **Otwórz w programie Excel**. Lub w programie Excel na **danych** wstążki, kliknij przycisk **istniejące połączenia**, wybierz swój plik, a następnie kliknij przycisk **Otwórz**.
+5. Kliknij plik prawym przyciskiem myszy, a następnie kliknij polecenie **Otwórz w programie Excel**. Lub w programie Excel na Wstążce **dane** kliknij pozycję **istniejące połączenia**, wybierz plik, a następnie kliknij przycisk **Otwórz**.
 
 
 

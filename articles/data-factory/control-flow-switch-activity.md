@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: bc37c8a4f55b06338859e66d53050c6e0ad1ecf6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 3f60965ad54fb94e7f69b69c161b482f0b953c5a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178646"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293950"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Przełącz działanie w Azure Data Factory
 
@@ -26,39 +26,39 @@ Działanie Switch zapewnia te same funkcje, które instrukcja SWITCH zawiera w j
 
 {
    "name": "<Name of the activity>",
-        "type": "Switch",
-        "typeProperties": {
-            "expression": {
-                "value": "<expression that evaluates to some string value>",
-                "type": "Expression"
+    "type": "Switch",
+    "typeProperties": {
+        "expression": {
+            "value": "<expression that evaluates to some string value>",
+            "type": "Expression"
+        },
+        "cases": [
+            {
+                "value": "<string value that matches expression evaluation>",
+                "activities": [
+                    {
+                        "<Activity 1 definition>"
+                    },
+                    {
+                        "<Activity 2 definition>"
+                    },
+                    {
+                        "<Activity N definition>"
+                    }
+                ]
+            }           
+        ],
+        "defaultActivities": [
+            {
+                "<Activity 1 definition>"
             },
-            "cases": [
-                {
-                    "value": "<string value that matches expression evaluation>",
-                    "activities": [
-                        {
-                            "<Activity 1 definition>"
-                        },
-                        {
-                            "<Activity 2 definition>"
-                        },
-                        {
-                            "<Activity N definition>"
-                        }
-                    ]
-                }           
-            ],
-            "defaultActivities": [
-                {
-                    "<Activity 1 definition>"
-                },
-                {
-                    "<Activity 2 definition>"
-                },
-                {
-                    "<Activity N definition>"
-                }
-            ]
+            {
+                "<Activity 2 definition>"
+            },
+            {
+                "<Activity N definition>"
+            }
+        ]
     }
 }
 ```
@@ -67,9 +67,9 @@ Działanie Switch zapewnia te same funkcje, które instrukcja SWITCH zawiera w j
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-nazwa | Nazwa działania Switch. | String | Tak
-— typ | Należy ustawić, aby *Przełączać** | String | Tak
-wyrażenie | Wyrażenie, które musi obliczyć wartość ciągu | Wyrażenie z ciągiem typu wynikowego | Tak
+name | Nazwa działania Switch. | Ciąg | Tak
+type | Należy ustawić, aby *Przełączać** | Ciąg | Tak
+wyrażenia | Wyrażenie, które musi obliczyć wartość ciągu | Wyrażenie z ciągiem typu wynikowego | Tak
 padkach | Zestaw przypadków, które zawierają wartość i zestaw działań do wykonania, gdy wartość jest zgodna z oceną wyrażenia. Należy podać co najmniej jeden przypadek. Obowiązuje maksymalnie 25 przypadków. | Tablica obiektów Case | Tak
 defaultActivities | Zestaw działań, które są wykonywane, gdy szacowanie wyrażenia nie jest spełnione. | Tablica działań | Tak
 
@@ -334,9 +334,9 @@ $result.Error -join "`r`n"
 
 Zobacz inne działania przepływu sterowania obsługiwane przez Data Factory: 
 
-- [Działanie if Condition](control-flow-if-condition-activity.md)
-- [Działanie wykonywania potoku](control-flow-execute-pipeline-activity.md)
+- [Działanie If Condition](control-flow-if-condition-activity.md)
+- [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
-- [Działanie pobierania metadanych](control-flow-get-metadata-activity.md)
+- [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 - [Aktywność sieci Web](control-flow-web-activity.md)

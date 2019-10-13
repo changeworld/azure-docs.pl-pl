@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/08/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 9c02db01d7b95f3178d73602089b30029fb0db9f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
-ms.translationtype: HT
+ms.openlocfilehash: a788226ad5bd3f8cd6416ad032fc439e860fd713
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274832"
+ms.locfileid: "72286701"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz automatyczną formułę skalowania węzłów obliczeniowych w puli usługi Batch
 
@@ -207,7 +207,7 @@ Te wstępnie zdefiniowane **funkcje** są dostępne do użycia podczas definiowa
 | LG (Double) |double |Zwraca bazę logarytmiczną 2 z podwójnej precyzji. |
 | LG (doubleVecList) |doubleVec |Zwraca bazę dziennika ze składnikiem 2 z doubleVecList. Element VEC (Double) musi być jawnie zakończony dla parametru. W przeciwnym razie przyjmowana jest podwójna wersja LG (Double). |
 | ln (Double) |double |Zwraca naturalny dziennik z podwójnej precyzji. |
-| ln (doubleVecList) |doubleVec |Zwraca bazę dziennika ze składnikiem 2 z doubleVecList. Element VEC (Double) musi być jawnie zakończony dla parametru. W przeciwnym razie przyjmowana jest podwójna wersja LG (Double). |
+| ln (doubleVecList) |doubleVec |Zwraca naturalny dziennik z podwójnej precyzji. |
 | Dziennik (Double) |double |Zwraca bazę dziennika o wartości 10 z podwójnej precyzji. |
 | Dziennik (doubleVecList) |doubleVec |Zwraca bazę dziennika ze składnikami 10 doubleVecList. Element VEC (Double) musi być jawnie zakończony dla pojedynczego parametru Double. W przeciwnym razie przyjmowana jest wersja podwójnego rejestrowania (Double). |
 | Max (doubleVecList) |double |Zwraca maksymalną wartość w doubleVecList. |

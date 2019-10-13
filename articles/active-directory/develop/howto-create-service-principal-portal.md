@@ -16,14 +16,14 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28354f54978e8ba776d8b0da294652ff462a05f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 14c3f90918d246a63d50af7b3542e8e74d5fbcf1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853458"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295523"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów
+# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów
 
 W tym artykule opisano sposób tworzenia nowej aplikacji Azure Active Directory (Azure AD) i nazwy głównej usługi, która może być używana z kontrolą dostępu opartą na rolach. Jeśli masz kod wymagający dostępu lub modyfikacji zasobów, możesz utworzyć tożsamość dla aplikacji. Ta tożsamość jest określana jako jednostka usługi. Następnie można przypisać wymagane uprawnienia do nazwy głównej usługi. W tym artykule pokazano, jak utworzyć jednostkę usługi przy użyciu portalu. Koncentruje się na aplikacji z jedną dzierżawą, w której aplikacja jest przeznaczona do działania tylko w jednej organizacji. Zwykle używasz aplikacji z jedną dzierżawą dla aplikacji biznesowych, które działają w organizacji.
 
@@ -46,9 +46,9 @@ Utworzono aplikację usługi Azure AD i nazwę główną usługi.
 
 ## <a name="assign-the-application-to-a-role"></a>Przypisywanie aplikacji do roli
 
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, musisz przypisać aplikację do roli. Zdecyduj, która rola oferuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej o dostępnych rolach [, zobacz RBAC: wbudowane role](../../role-based-access-control/built-in-roles.md).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, musisz przypisać aplikację do roli. Zdecyduj, która rola oferuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Wbudowane role](../../role-based-access-control/built-in-roles.md).
 
-Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład dodanie aplikacji do roli czytelnik dla grupy zasobów oznacza, że może ona odczytać grupę zasobów i wszystkie zawarte w niej zasoby.
+Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone do niższych poziomów zakresu. Na przykład dodanie aplikacji do roli czytelnik dla grupy zasobów oznacza, że może ona odczytać grupę zasobów i wszystkie zawarte w niej zasoby.
 
 1. Przejdź do poziomu zakresu, do którego chcesz przypisać aplikację. Aby na przykład przypisać rolę w zakresie subskrypcji, wybierz pozycję **wszystkie usługi** i **subskrypcje**.
 
@@ -60,13 +60,13 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
 
    Jeśli nie widzisz subskrypcji, której szukasz, wybierz pozycję **Filtr subskrypcje globalne**. Upewnij się, że wybrano subskrypcję dla portalu.
 
-1. Wybierz **kontrola dostępu (IAM)** .
-1. Wybierz **Dodaj przypisanie roli**.
-1. Wybierz rolę, którą chcesz przypisać do aplikacji. Aby umożliwić aplikacji wykonywanie akcji takich jak **ponowny rozruch**, **Uruchamianie** i zatrzymywanie wystąpień, wybierz rolę **współautor** . Domyślnie aplikacje usługi Azure AD nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, wyszukaj ją i wybierz ją.
+1. Wybierz pozycję **Kontrola dostępu (IAM)** .
+1. Wybierz pozycję **Dodaj przypisanie roli**.
+1. Wybierz rolę, którą chcesz przypisać do aplikacji. Aby umożliwić aplikacji wykonywanie akcji takich jak **ponowny rozruch**, **Uruchamianie** i **Zatrzymywanie** wystąpień, wybierz rolę **współautor** . Domyślnie aplikacje usługi Azure AD nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, wyszukaj ją i wybierz ją.
 
    ![Wybierz rolę, która ma zostać przypisana do aplikacji](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Wybierz **Zapisz** zakończenie przypisanie roli. Aplikacja zostanie wyświetlona na liście użytkowników przypisanych do roli dla tego zakresu.
+1. Wybierz pozycję **Zapisz** , aby zakończyć Przypisywanie roli. Aplikacja zostanie wyświetlona na liście użytkowników przypisanych do roli dla tego zakresu.
 
 Nazwa główna usługi została skonfigurowana. Możesz rozpocząć korzystanie z niego do uruchamiania skryptów lub aplikacji. W następnej sekcji pokazano, jak uzyskać wartości, które są konieczne podczas logowania programowo.
 
@@ -89,11 +89,11 @@ Aplikacje demona mogą używać dwóch form poświadczeń do uwierzytelniania w 
 
 ### <a name="upload-a-certificate"></a>Przekaż certyfikat
 
-Jeśli masz istniejący certyfikat, możesz go użyć.  Opcjonalnie można utworzyć certyfikat z podpisem własnym na potrzeby testowania. Otwórz program PowerShell i uruchom polecenie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) z poniższymi parametrami, aby utworzyć certyfikat z podpisem własnym w magazynie certyfikatów użytkownika na `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`komputerze:.  Wyeksportuj ten certyfikat za pomocą przystawki [Zarządzanie certyfikatem użytkownika](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) programu MMC dostępnej w panelu sterowania systemu Windows.
+Jeśli masz istniejący certyfikat, możesz go użyć.  Opcjonalnie można utworzyć certyfikat z podpisem własnym na potrzeby testowania. Otwórz program PowerShell i uruchom polecenie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) z poniższymi parametrami, aby utworzyć certyfikat z podpisem własnym w magazynie certyfikatów użytkownika na komputerze: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Wyeksportuj ten certyfikat za pomocą przystawki [Zarządzanie certyfikatem użytkownika](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) programu MMC dostępnej w panelu sterowania systemu Windows.
 
 Aby przekazać certyfikat:
 
-1. Wybierz pozycję **certyfikaty &** wpisy tajne.
+1. Wybierz pozycję **certyfikaty & wpisy tajne**.
 1. Wybierz pozycję **Przekaż certyfikat** i wybierz certyfikat (istniejący certyfikat lub wyeksportowany certyfikat z podpisem własnym).
 
     ![Wybierz pozycję Przekaż certyfikat i wybierz ten, który chcesz dodać.](./media/howto-create-service-principal-portal/upload-cert.png)
@@ -106,7 +106,7 @@ Po zarejestrowaniu certyfikatu w aplikacji w portalu rejestracji aplikacji nale�
 
 Jeśli zdecydujesz się nie używać certyfikatu, możesz utworzyć nowy klucz tajny aplikacji.
 
-1. Wybierz pozycję **certyfikaty &** wpisy tajne.
+1. Wybierz pozycję **certyfikaty & wpisy tajne**.
 1. Wybierz pozycję wpisy **tajne klienta — > nowego klucza tajnego klienta**.
 1. Podaj opis klucza tajnego i czas trwania. Po zakończeniu wybierz pozycję **Dodaj**.
 
@@ -132,7 +132,7 @@ Jeśli ustawienie rejestracje aplikacji ma wartość **nie**, tylko użytkownicy
 
 ### <a name="check-azure-subscription-permissions"></a>Sprawdź uprawnienia subskrypcji platformy Azure
 
-W ramach subskrypcji platformy Azure Twoje konto musi mieć `Microsoft.Authorization/*/Write` dostęp do przypisywania aplikacji usługi AD do roli. Ta akcja jest wykonywana za pośrednictwem roli [Właściciel](../../role-based-access-control/built-in-roles.md#owner) lub [Administrator dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator). Jeśli Twoje konto jest przypisane do roli **współautor** , nie masz wystarczających uprawnień. Wystąpił błąd podczas próby przypisania nazwy głównej usługi do roli.
+W ramach subskrypcji platformy Azure Twoje konto musi mieć dostęp do `Microsoft.Authorization/*/Write`, aby przypisać aplikację usługi AD do roli. Ta akcja jest wykonywana za pośrednictwem roli [Właściciel](../../role-based-access-control/built-in-roles.md#owner) lub [Administrator dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator). Jeśli Twoje konto jest przypisane do roli **współautor** , nie masz wystarczających uprawnień. Wystąpił błąd podczas próby przypisania nazwy głównej usługi do roli.
 
 Aby sprawdzić uprawnienia do subskrypcji:
 
@@ -148,8 +148,7 @@ Aby sprawdzić uprawnienia do subskrypcji:
 
    ![Ten przykład pokazuje, że użytkownik jest przypisany do roli właściciela](./media/howto-create-service-principal-portal/view-user-role.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby skonfigurować aplikację wielodostępną, zapoznaj się [z przewodnikiem dewelopera na potrzeby autoryzacji za pomocą interfejsu API Azure Resource Manager](../../azure-resource-manager/resource-manager-api-authentication.md).
 * Aby dowiedzieć się więcej na temat określania zasad zabezpieczeń, zobacz [Access Control oparte na rolach platformy Azure](../../role-based-access-control/role-assignments-portal.md).  
 * Aby uzyskać listę dostępnych akcji, które można udzielić lub odmówić użytkownikom, zobacz [Azure Resource Manager operacje dostawcy zasobów](../../role-based-access-control/resource-provider-operations.md).

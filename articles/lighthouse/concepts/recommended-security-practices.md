@@ -1,50 +1,50 @@
 ---
-title: Wskazówki dotyczące zabezpieczeń zalecane dla platformy Azure morskiej
-description: Podczas korzystania z systemu Azure delegowane zarządzanie zasobami, warto wziąć pod uwagę zabezpieczeń i kontroli dostępu.
+title: Zalecane najlepsze rozwiązania dotyczące zabezpieczeń
+description: W przypadku korzystania z funkcji zarządzania zasobami delegowanymi przez platformę Azure ważne jest, aby uwzględnić zabezpieczenia i kontrolę dostępu.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 843b965e6ea74a7c11dc11459ff5d30ddbe5c987
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 08a54313885c7d38117c242f01c2780796f38a08
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809869"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286185"
 ---
-# <a name="recommended-security-practices"></a>Wskazówki dotyczące zalecanych zabezpieczeń
+# <a name="recommended-security-practices"></a>Zalecane najlepsze rozwiązania dotyczące zabezpieczeń
 
-Podczas korzystania z systemu Azure delegowane zarządzanie zasobami, warto wziąć pod uwagę zabezpieczeń i kontroli dostępu. Użytkownicy w Twojej dzierżawie będzie miała bezpośredni dostęp do subskrypcji klienta i grupy zasobów, dlatego należy wykonać czynności, aby zachować bezpieczeństwo dzierżawy usługi. Należy również upewnić, że tylko zezwolisz na dostęp, potrzebne do skutecznego zarządzania zasobami Twoich klientów. Ten temat zawiera zalecenia, aby to zrobić.
+W przypadku korzystania z funkcji zarządzania zasobami delegowanymi przez platformę Azure ważne jest, aby uwzględnić zabezpieczenia i kontrolę dostępu. Użytkownicy w dzierżawie będą mieć bezpośredni dostęp do subskrypcji klientów i grup zasobów, dlatego należy podjąć kroki w celu utrzymania bezpieczeństwa dzierżawy. Należy również upewnić się, że zezwolisz na dostęp, który jest potrzebny do efektywnego zarządzania zasobami klientów. Ten temat zawiera zalecenia ułatwiające wykonanie tej czynności.
 
-## <a name="require-azure-multi-factor-authentication"></a>Wymagaj uwierzytelniania wieloskładnikowego Azure
+## <a name="require-azure-multi-factor-authentication"></a>Wymagaj Multi-Factor Authentication platformy Azure
 
-[Usługa Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (znany także jako weryfikacji dwuetapowej) pomaga uniemożliwiają osobom atakującym uzyskanie dostępu do konta, wymagając wiele kroków uwierzytelniania. Należy wymagać uwierzytelniania wieloskładnikowego dla wszystkich użytkowników w dzierżawie dostawcy usług, w tym użytkownicy, którzy będą mieć dostęp do zasobów klienta.
+[Usługa Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (znana także jako weryfikacja dwuetapowa) zapobiega uzyskaniu dostępu do konta przez osoby atakujące, wymagając wielu kroków uwierzytelniania. Należy wymagać Multi-Factor Authentication dla wszystkich użytkowników w dzierżawie dostawcy usług, w tym wszystkich użytkowników, którzy będą mieli dostęp do zasobów klienta.
 
-Sugerujemy, możesz zadawać pytania klientów do wdrożenia usługi Azure Multi-Factor Authentication w również dzierżawcom.
+Zalecamy poproszenie klientów o wdrożenie Multi-Factor Authentication platformy Azure w swoich dzierżawach.
 
-## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Przypisywanie uprawnień do grup, za pomocą zasadę najmniejszych uprawnień
+## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Przypisywanie uprawnień do grup przy użyciu zasad najniższych uprawnień
 
-Aby ułatwić zarządzanie, zaleca się przy użyciu grup użytkowników usługi Azure AD dla każdej roli, wymagane do zarządzania zasobami Twoich klientów. Dzięki temu można dodawać lub usuwać pojedynczych użytkowników do grupy, zgodnie z potrzebami, a nie przypisywania uprawnień bezpośrednio do tego użytkownika.
+Aby ułatwić zarządzanie, zalecamy korzystanie z grup użytkowników usługi Azure AD dla każdej roli wymaganej do zarządzania zasobami klientów. Pozwala to na dodanie lub usunięcie poszczególnych użytkowników do grupy w zależności od potrzeb, zamiast przypisywania uprawnień bezpośrednio do tego użytkownika.
 
-Podczas tworzenia struktury uprawnień, pamiętaj, że postępuj zgodnie z zasadą najniższych uprawnień, aby użytkownicy mają tylko uprawnienia wymagane do wykonania swojej pracy, aby zmniejszyć prawdopodobieństwo przypadkowego błędy.
+Podczas tworzenia struktury uprawnień należy przestrzegać zasad najniższych uprawnień, aby użytkownicy mieli tylko uprawnienia potrzebne do ukończenia swoich zadań, co zmniejsza prawdopodobieństwo wystąpienia nieumyślnego błędu.
 
-Na przykład można użyć struktury następująco:
+Na przykład możesz chcieć użyć struktury podobnej do następujących:
 
-|Nazwa grupy  |Type  |principalId  |Definicja roli  |Identyfikator definicji roli  |
+|Nazwa grupy  |Typ  |principalId  |Definicja roli  |Identyfikator definicji roli  |
 |---------|---------|---------|---------|---------|
-|Architekci     |Grupy użytkowników         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
-|Ocena     |Grupy użytkowników         |\<principalId\>         |Czytelnik         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|Maszyna wirtualna specjaliści ds.     |Grupy użytkowników         |\<principalId\>         |Współautor maszyny Wirtualnej         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automatyzacja     |Główna nazwa usługi (SPN)         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Architektury     |Grupa użytkowników         |\<principalId @ no__t-1         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Ocena     |Grupa użytkowników         |\<principalId @ no__t-1         |Czytelnik         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
+|Specjaliści dla maszyn wirtualnych     |Grupa użytkowników         |\<principalId @ no__t-1         |Współautor maszyny wirtualnej         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
+|Automation     |Główna nazwa usługi (SPN)         |\<principalId @ no__t-1         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
-Po utworzeniu grupy można przypisać użytkowników, zgodnie z potrzebami. Dodawać tylko użytkowników, którzy rzeczywiście muszą mieć dostęp. Pamiętaj regularnie przeglądanie członkostwa w grupie i usuń wszystkich użytkowników, które nie są już odpowiednie lub niezbędne do uwzględnienia.
+Po utworzeniu tych grup można przypisywać użytkowników zgodnie z wymaganiami. Dodawać tylko użytkowników, którzy naprawdę muszą mieć dostęp. Pamiętaj o regularnym przeglądaniu członkostwa w grupach i usunięciu wszystkich użytkowników, którzy nie są już zarejestrowani.
 
-Należy pamiętać, że w przypadku możesz [angażowania nowych klientów za pośrednictwem oferty publicznej usługi zarządzanej](../how-to/publish-managed-services-offers.md), wszystkie grupy (lub użytkownika lub nazwy głównej usługi), możesz uwzględnić będą mieć takie same uprawnienia dla każdego klienta, który zakupi plan. Aby przypisać różnych grup, aby pracować z każdego klienta, należy opublikować oddzielne prywatne plan wyłącznie dla każdego klienta lub dołączanie klientów indywidualnie przy użyciu szablonów usługi Azure Resource Manager. Na przykład spróbujesz opublikować publiczny plan, który ma bardzo ograniczony dostęp, a następnie pracować z klientem bezpośrednio do dołączenia ich zasoby dla dodatkowych praw dostępu za pomocą dostosowanego szablonu zasobów platformy Azure, udzielanie dodatkowe prawa dostępu, zgodnie z potrzebami.
+Należy pamiętać, że po dołączeniu [klientów za pomocą publicznej oferty usług zarządzanej](../how-to/publish-managed-services-offers.md)każda grupa (lub użytkownik lub nazwa główna usługi) będzie mieć takie same uprawnienia dla każdego klienta, który kupuje plan. Aby przypisać różne grupy do pracy z poszczególnymi klientami, należy opublikować oddzielny plan prywatny, który jest wyłączny dla każdego klienta, lub dołączyć klientów osobno przy użyciu szablonów Azure Resource Manager. Można na przykład opublikować plan publiczny o bardzo ograniczonym dostępie, a następnie skontaktować się z klientem bezpośrednio w celu dołączenia swoich zasobów w celu uzyskania dodatkowego dostępu przy użyciu dostosowanego szablonu zasobów platformy Azure w razie potrzeby.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Wdrażanie usługi Azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
-- Dowiedz się więcej o [międzydzierżawowa środowiska zarządzania](cross-tenant-management-experience.md).
+- [Wdróż Multi-Factor Authentication platformy Azure](../../active-directory/authentication/howto-mfa-getstarted.md).
+- Dowiedz się więcej na temat [środowisk zarządzania między dzierżawcami](cross-tenant-management-experience.md).

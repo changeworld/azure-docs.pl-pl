@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
-ms.openlocfilehash: b53bb0f04bf6a739b588b14febd622f6bf7a6a63
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354900"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286651"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Komunikacja z Centrum IoT Hub przy użyciu protokołu AMQP
 
@@ -22,16 +22,16 @@ Usługa Azure IoT Hub obsługuje funkcję [języka oasis Advanced Message Queuin
 
 ### <a name="connect-and-authenticate-to-an-iot-hub-service-client"></a>Nawiązywanie połączenia i uwierzytelnianie do centrum IoT Hub (klient usługi)
 
-Aby nawiązać połączenie z usługą IoT Hub przy użyciu programu AMQP, klient może korzystać z uwierzytelniania opartego na [oświadczeniach (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) lub [warstwa zabezpieczeń i prostego uwierzytelnienia (SASL)](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer).
+Aby nawiązać połączenie z usługą IoT Hub przy użyciu programu AMQP, klient może korzystać z uwierzytelniania [opartego na oświadczeniach (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) lub [warstwa zabezpieczeń i prostego uwierzytelnienia (SASL)](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer).
 
 Klient usługi wymaga następujących informacji:
 
-| Information | Value |
+| Informacje | Wartość |
 |-------------|--------------|
 | Nazwa hosta Centrum IoT Hub | `<iot-hub-name>.azure-devices.net` |
 | Nazwa klucza | `service` |
 | Klucz dostępu | Klucz podstawowy lub pomocniczy skojarzony z usługą |
-| Sygnatura dostępu współdzielonego | Sygnatura dostępu współdzielonego o krótkim czasie życia w następującym `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`formacie:. Aby uzyskać kod służący do generowania tej sygnatury, zobacz [Kontrola dostępu do IoT Hub](./iot-hub-devguide-security.md#security-token-structure).
+| Sygnatura dostępu współdzielonego | Sygnatura dostępu współdzielonego o krótkim czasie życia w następującym formacie: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Aby uzyskać kod służący do generowania tej sygnatury, zobacz [Kontrola dostępu do IoT Hub](./iot-hub-devguide-security.md#security-token-structure).
 
 Poniższy fragment kodu używa [biblioteki uAMQP w języku Python](https://github.com/Azure/azure-uamqp-python) do nawiązywania połączenia z usługą IoT Hub za pośrednictwem linku nadawcy.
 
@@ -65,9 +65,9 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 Aby dowiedzieć się więcej o wymianie komunikatów z chmury do urządzenia między usługą a centrum IoT i między urządzeniem i usługą IoT Hub, zobacz [wysyłanie komunikatów z chmury do urządzenia z Centrum IoT Hub](iot-hub-devguide-messages-c2d.md). Klient usługi używa dwóch linków do wysyłania komunikatów i otrzymywania informacji zwrotnych dotyczących wcześniej wysłanych komunikatów z urządzeń, zgodnie z opisem w poniższej tabeli:
 
-| Utworzone przez | Typ linku | Ścieżka łącza | Opis |
+| Utworzone przez | Typ łącza | Ścieżka łącza | Opis |
 |------------|-----------|-----------|-------------|
-| Usługa | Link nadawcy | `/messages/devicebound` | Komunikaty z chmury do urządzenia, które są przeznaczone dla urządzeń, są wysyłane do tego linku przez usługę. Komunikaty wysyłane za pośrednictwem tego linku mają `To` ustawioną właściwość na `/devices/<deviceID>/messages/devicebound`ścieżkę łącza odbiorcy urządzenia docelowego. |
+| Usługa | Link nadawcy | `/messages/devicebound` | Komunikaty z chmury do urządzenia, które są przeznaczone dla urządzeń, są wysyłane do tego linku przez usługę. Komunikaty wysyłane przez ten link mają ustawioną właściwość `To` na ścieżkę łącza odbiorcy urządzenia docelowego `/devices/<deviceID>/messages/devicebound`. |
 | Usługa | Link odbiornika | `/messages/serviceBound/feedback` | Komunikaty dotyczące uzupełniania, odrzucania i przesyłania informacji zwrotnych, które pochodzą z urządzeń otrzymanych w tym łączu przez usługę. Aby uzyskać więcej informacji na temat komunikatów dotyczących opinii, zobacz [wysyłanie komunikatów z chmury do urządzeń z Centrum IoT](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
 Poniższy fragment kodu przedstawia sposób tworzenia komunikatu z chmury do urządzenia i wysyłania go do urządzenia przy użyciu [biblioteki uAMQP w języku Python](https://github.com/Azure/azure-uamqp-python).
@@ -128,7 +128,7 @@ for msg in batch:
 
 Jak pokazano w powyższym kodzie, komunikat z opiniami z chmury do urządzenia ma typ zawartości *Application/VND. Microsoft. iothub.* replika. JSON. Za pomocą właściwości w treści JSON komunikatu można wywnioskować stan dostarczania oryginalnej wiadomości:
 
-* Klucz `statusCode` w treści opinii ma jedną z następujących wartości: *Powodzenie*, *wygasło*, *DeliveryCountExceeded*, *odrzucone*lub *przeczyszczane*.
+* Klucz `statusCode` w treści opinii ma jedną z następujących wartości: *sukces*, *wygasłe*, *DeliveryCountExceeded*, *odrzucone*lub *przeczyszczane*.
 
 * Klucz `deviceId` w treści opinii ma identyfikator urządzenia docelowego.
 
@@ -222,11 +222,11 @@ Aby nawiązać połączenie z usługą IoT Hub przy użyciu usługi AMQP, urząd
 
 Dla klienta urządzenia wymagane są następujące informacje:
 
-| Information | Wartość |
+| Informacje | Wartość |
 |-------------|--------------|
 | Nazwa hosta Centrum IoT Hub | `<iot-hub-name>.azure-devices.net` |
 | Klucz dostępu | Klucz podstawowy lub pomocniczy skojarzony z urządzeniem |
-| Sygnatura dostępu współdzielonego | Sygnatura dostępu współdzielonego o krótkim czasie życia w następującym `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`formacie:. Aby uzyskać kod służący do generowania tej sygnatury, zobacz [Kontrola dostępu do IoT Hub](./iot-hub-devguide-security.md#security-token-structure).
+| Sygnatura dostępu współdzielonego | Sygnatura dostępu współdzielonego o krótkim czasie życia w następującym formacie: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Aby uzyskać kod służący do generowania tej sygnatury, zobacz [Kontrola dostępu do IoT Hub](./iot-hub-devguide-security.md#security-token-structure).
 
 Poniższy fragment kodu używa [biblioteki uAMQP w języku Python](https://github.com/Azure/azure-uamqp-python) do nawiązywania połączenia z usługą IoT Hub za pośrednictwem linku nadawcy.
 
@@ -259,15 +259,15 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 Następujące ścieżki linków są obsługiwane jako operacje na urządzeniach:
 
-| Utworzone przez | Typ linku | Ścieżka łącza | Opis |
+| Utworzone przez | Typ łącza | Ścieżka łącza | Opis |
 |------------|-----------|-----------|-------------|
 | Urządzenia | Link odbiornika | `/devices/<deviceID>/messages/devicebound` | Komunikaty z chmury do urządzenia, które są przeznaczone dla urządzeń, są odbierane przez każde urządzenie docelowe. |
-| Urządzenia | Link nadawcy | `/devices/<deviceID>messages/events` | Komunikaty przesyłane z urządzenia do chmury są wysyłane przez ten link. |
+| Urządzenia | Link nadawcy | `/devices/<deviceID>/messages/events` | Komunikaty przesyłane z urządzenia do chmury są wysyłane przez ten link. |
 | Urządzenia | Link nadawcy | `/messages/serviceBound/feedback` | Informacje zwrotne z chmury do urządzenia są wysyłane do usługi za pośrednictwem tego linku przez urządzenia. |
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>Otrzymywanie poleceń z chmury do urządzenia (klient urządzenia)
 
-Polecenia z chmury do urządzenia, które są wysyłane do urządzeń, docierają `/devices/<deviceID>/messages/devicebound` do linku. Urządzenia mogą odbierać te komunikaty w partiach, a w razie konieczności używać ładunku danych komunikatów, właściwości komunikatu, adnotacji lub właściwości aplikacji.
+Polecenia z chmury do urządzenia, które są wysyłane do urządzeń, docierają do linku `/devices/<deviceID>/messages/devicebound`. Urządzenia mogą odbierać te komunikaty w partiach, a w razie konieczności używać ładunku danych komunikatów, właściwości komunikatu, adnotacji lub właściwości aplikacji.
 
 Poniższy fragment kodu używa [biblioteki uAMQP w języku Python](https://github.com/Azure/azure-uamqp-python)) do odbierania komunikatów z chmury do urządzenia przez urządzenie.
 
@@ -360,13 +360,13 @@ for result in results:
         print result
 ```
 
-## <a name="additional-notes"></a>Dodatkowe uwagi
+## <a name="additional-notes"></a>Uwagi dodatkowe
 
 * Połączenia AMQP mogą ulec zakłóceniu z powodu błędu sieci lub wygaśnięcia tokenu uwierzytelniania (generowanego w kodzie). Klient usługi musi obsłużyć te sytuacje i ponownie nawiązać połączenie i linki, jeśli jest to konieczne. Jeśli token uwierzytelniania wygaśnie, klient może uniknąć porzucenia połączenia przy użyciu aktywnego odnowienia tokenu przed jego wygaśnięciem.
 
 * Klient musi czasami być w stanie obsłużyć prawidłowe przekierowania linków. Aby zrozumieć tę operację, zobacz dokumentację klienta programu AMQP.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej o protokole AMQP, zobacz [specyfikację AMQP v 1.0](https://www.amqp.org/sites/amqp.org/files/amqp.pdf).
 

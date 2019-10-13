@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/25/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: b262a06bc3d80bd1f8105c6629bbc07e6ccd34eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c00c1ecf001162964b01a3e858534fa502b7484c
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077154"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285847"
 ---
 # <a name="what-is-azure-event-grid"></a>Co to jest usługa Azure Event Grid?
 
@@ -22,7 +22,7 @@ Usługa Azure Event Grid umożliwia łatwe tworzenie aplikacji za pomocą archit
 
 Filtry pozwalają kierować określone zdarzenia do różnych punktów końcowych i korzystać z multiemisji do wielu punktów końcowych, a także zapewniają niezawodne dostarczanie zdarzeń.
 
-Usługa Azure Event Grid jest wdrażany w celu zapewnienia maksymalnej dostępności przez natywnie rozsyłanie się w wielu domenach błędów w każdym regionie i w różnych strefach dostępności (w regionach, które je obsługują). Obecnie usługa Azure Event Grid jest dostępna we wszystkich publicznych regionach. Jeszcze nie jest dostępna w Azure (Niemcy), Azure China 21Vianet lub chmury platformy Azure dla instytucji rządowych.
+Azure Event Grid został wdrożony w celu zmaksymalizowania dostępności przez natywne rozmieszczenie w wielu domenach błędów w każdym regionie i w strefach dostępności (w regionach, które je obsługują). Aby zapoznać się z listą regionów obsługiwanych przez Event Grid, zobacz temat [produkty dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
 Ten artykuł zawiera omówienie usługi Azure Event Grid. Aby rozpocząć pracę z usługą Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md). 
 
@@ -42,7 +42,7 @@ Aby uzyskać szczegółowe informacje o możliwościach poszczególnych źróde�
 * [Media Services](event-sources.md#media-services)
 * [Grupy zasobów (operacje zarządzania)](event-sources.md#resource-groups)
 * [Service Bus](event-sources.md#service-bus)
-* [Obiekt Blob magazynu](event-sources.md#storage)
+* [Obiekt blob magazynu](event-sources.md#storage)
 * [Azure Maps](event-sources.md#maps)
 
 ## <a name="event-handlers"></a>Procedury obsługi zdarzeń
@@ -57,7 +57,7 @@ Aby uzyskać szczegółowe informacje o możliwościach poszczególnych procedur
 * [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Queue Storage](event-handlers.md#queue-storage)
 * [Service Bus](event-handlers.md#service-bus-queue-preview) (wersja zapoznawcza)
-* [WebHooks](event-handlers.md#webhooks)
+* [Elementy webhook](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Pojęcia
 
@@ -94,7 +94,7 @@ Usługa Azure Event Grid udostępnia kilka funkcji, które znacząco usprawniaj�
 
 ![Architektura aplikacji bez użycia serwera](./media/overview/serverless_web_app.png)
 
-Usługa Event Grid łączy źródła danych i procedury obsługi zdarzeń. Usługi Event Grid można na przykład użyć, aby wyzwolić funkcję bezserwerową, która analizuje obrazy po dodaniu do kontenera magazynu obiektów blob. 
+Usługa Event Grid łączy źródła danych i programy obsługi zdarzeń. Usługi Event Grid można na przykład użyć, aby wyzwolić funkcję bezserwerową, która analizuje obrazy po dodaniu do kontenera magazynu obiektów blob. 
 
 ### <a name="ops-automation"></a>Automatyzacja operacji
 
@@ -112,7 +112,7 @@ Usługa Event Grid łączy aplikację z innymi usługami. Przykładowo możesz u
 
 Usługa Azure Event Grid korzysta z modelu płatności za zdarzenia, w którym płaci się wyłącznie za użyte zasoby. Pierwsze 100 000 operacji w danym miesiącu jest bezpłatnych. Operacje są zdefiniowane jako ruch przychodzący zdarzenia, próby dostarczenia subskrypcji, wywołania zarządzania oraz filtrowanie według sufiksu tematu. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/event-grid/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Route Storage Blob events (Kierowanie zdarzeń usługi Storage Blob)](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Informacje na temat odpowiadania na zdarzenia usługi Storage Blob za pomocą usługi Event Grid.

@@ -1,5 +1,5 @@
 ---
-title: Co się stało z moim projektem ASP.NET 5 (usługi połączone Visual Studio) | Microsoft Docs
+title: Co się stało z moim projektem ASP.NET 5 (usługi połączone programu Visual Studio)
 description: Opisuje, co się stanie po nawiązaniu połączenia z kontem usługi Azure Storage w projekcie programu Visual Studio ASP.NET 5 przy użyciu usług połączonych programu Visual Studio
 services: storage
 author: ghogen
@@ -12,26 +12,27 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: e29c0302ecd703cb02199df95892e24917baf8e8
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: be99465a48aaf680834f313e03384a9f0c211502
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510759"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300004"
 ---
 # <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Co się stało z moim projektem ASP.NET 5 (usługa połączone usługi Visual Studio Azure Storage)?
 ## <a name="references-added"></a>Dodane odwołania
 Pakiet NuGet usługi Azure Storage został dodany do projektu programu Visual Studio.  
 Ten pakiet dodaje następujące odwołania platformy .NET:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.WindowsAzure.Configuration**
-* **Microsoft.WindowsAzure.Storage**
-* **Newtonsoft.Json**
-* **System.Data**
-* **System.Spatial**
+* **Microsoft. Data. EDM**
+* **Microsoft. Data. OData**
+* **Microsoft. Data. Services. Client**
+* **Microsoft. WindowsAzure. Configuration**
+* **Microsoft. WindowsAzure. Storage**
+* **Newtonsoft. JSON**
+* **System. Data**
+* **System. przestrzenny**
 
 Ponadto został dodany pakiet NuGet **Microsoft. Framework. Configuration. JSON** .
 

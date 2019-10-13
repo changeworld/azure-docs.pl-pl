@@ -14,19 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 891eade6aaaf8db9813566d10cdceed113560dc7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 223a5a5b77ded9eb26a5cf3f0003bc9d393615db
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091875"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300858"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalowanie bazy danych MySQL na maszynie wirtualnej z dystrybucją systemu OpenSUSE Linux na platformie Azure
 
 [MySQL](https://www.mysql.com) to popularna, typu open-source baza danych SQL. W tym samouczku pokazano, jak utworzyć maszynę wirtualną z systemem OpenSUSE Linux, a następnie zainstalować MySQL.
 
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, musisz mieć interfejs wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
@@ -104,7 +102,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>Hasło MySQL
 
-Po zakończeniu instalacji hasło główne programu MySQL jest domyślnie puste. Uruchom skrypt **instalacji\_bezpiecznego\_MySQL** , aby zabezpieczyć MySQL. Skrypt poprosi o zmianę hasła głównego programu MySQL, usunięcie kont użytkowników anonimowych, wyłączenie zdalnego logowania się, usunięcie testów baz danych i ponowne załadowanie tabeli uprawnień. 
+Po zakończeniu instalacji hasło główne programu MySQL jest domyślnie puste. Uruchom skrypt **MySQL @ no__t-1secure @ no__t-2installation** , aby zabezpieczyć MySQL. Skrypt poprosi o zmianę hasła głównego programu MySQL, usunięcie kont użytkowników anonimowych, wyłączenie zdalnego logowania się, usunięcie testów baz danych i ponowne załadowanie tabeli uprawnień. 
 
 Po ponownym uruchomieniu serwera należy ponownie przeprowadzić protokół SSH do maszyny wirtualnej.
 
@@ -139,7 +137,7 @@ CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ## <a name="create-a-database"></a>Tworzenie bazy danych
 
 
-Utwórz bazę danych i Udziel `mysqluser` uprawnień użytkownika.
+Utwórz bazę danych i Udziel uprawnień użytkownika `mysqluser`.
 
 ```sql
 CREATE DATABASE testdatabase;

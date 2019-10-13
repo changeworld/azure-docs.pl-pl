@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2bdff6195a0dcf93bfc3a596189b062bf4f3ab12
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b381c4be5d0c56e14ccd01657542ef3bff2f8894
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254976"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285673"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Samouczek: korzystanie z kontroli kondycji w usłudze Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
 
@@ -38,8 +38,8 @@ Ten samouczek obejmuje następujące zadania:
 
 Zasoby dodatkowe:
 
-- [Dokumentacja interfejsu API REST usługi Azure Menedżer wdrażania](https://docs.microsoft.com/rest/api/deploymentmanager/).
-- [Przykład Menedżer wdrażania platformy Azure](https://github.com/Azure-Samples/adm-quickstart).
+* [Dokumentacja interfejsu API REST usługi Azure Menedżer wdrażania](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Przykład Menedżer wdrażania platformy Azure](https://github.com/Azure-Samples/adm-quickstart).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -48,7 +48,16 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 * Ukończ [Korzystanie z usługi Azure Menedżer wdrażania z szablonami Menedżer zasobów](./deployment-manager-tutorial.md).
-* Pobierz [Szablony i artefakty](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) , które są używane w tym samouczku.
+
+## <a name="install-the-artifacts"></a>Instalowanie artefaktów
+
+Pobierz [Szablony i artefakty](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) i rozpakuj je lokalnie, jeśli nie zostało to zrobione. Następnie uruchom skrypt programu PowerShell w obszarze [przygotowanie artefaktów](./deployment-manager-tutorial.md#prepare-the-artifacts). Skrypt tworzy grupę zasobów, tworzy kontener magazynu, tworzy kontener obiektów blob, przekazuje pobrane pliki, a następnie tworzy token sygnatury dostępu współdzielonego.
+
+Utwórz kopię adresu URL z tokenem SAS. Ten adres URL jest wymagany do wypełnienia pola w pliku z dwoma parametrami, plikiem parametrów topologii i plikiem parametrów wdrożenia.
+
+Otwórz plik CreateADMServiceTopology. Parameters. JSON, a następnie zaktualizuj wartości **projectName** i **artifactSourceSASLocation**.
+
+Otwórz plik CreateADMRollout. Parameters. JSON, a następnie zaktualizuj wartości **projectName** i **artifactSourceSASLocation**.
 
 ## <a name="create-a-health-check-service-simulator"></a>Tworzenie symulatora usługi sprawdzania kondycji
 
@@ -56,21 +65,12 @@ W środowisku produkcyjnym zwykle używany jest jeden lub więcej dostawców mon
 
 Poniższe dwa pliki są używane do wdrażania funkcji platformy Azure. Nie musisz pobierać tych plików, aby przejść przez samouczek.
 
-* Szablon Menedżer zasobów zlokalizowany w [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Ten szablon zostanie wdrożony w celu utworzenia funkcji platformy Azure.
-* Plik zip kodu źródłowego funkcji platformy Azure, [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Ten plik zip jest wywoływany przez szablon Menedżer zasobów.
+* Szablon Menedżer zasobów zlokalizowany w [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json). Ten szablon zostanie wdrożony w celu utworzenia funkcji platformy Azure.
+* Plik zip kodu źródłowego funkcji platformy Azure, [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip). Ten plik zip jest wywoływany przez szablon Menedżer zasobów.
 
 Aby wdrożyć funkcję platformy Azure, wybierz **ją** , aby otworzyć usługę Azure Cloud Shell, a następnie wklej następujący skrypt do okna powłoki.  Aby wkleić kod, kliknij prawym przyciskiem myszy okno powłoki, a następnie wybierz polecenie **Wklej**.
 
-> [!IMPORTANT]
-> **projectName** w skrypcie programu PowerShell służy do generowania nazw usług platformy Azure, które są wdrożone w tym samouczku. Użyj tej samej wartości **namePrefix** , która została użyta w [Menedżer wdrażania na platformie Azure przy użyciu szablonów Menedżer zasobów](./deployment-manager-tutorial.md) dla projectName.  Różne usługi platformy Azure mają różne wymagania dotyczące nazw. Aby upewnić się, że wdrożenie zakończyło się pomyślnie, wybierz nazwę o długości mniejszej niż 12 znaków i cyfr.
-> Zapisz kopię nazwy projektu. Ten sam projectName jest używany w samouczku.
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$resourceGroupName = "${projectName}rg"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
@@ -236,13 +236,6 @@ Ta sekcja zawiera informacje na temat sposobu dołączania kroku sprawdzania kon
 Uruchom Poniższy skrypt programu PowerShell, aby wdrożyć topologię. Potrzebne są te same **CreateADMServiceTopology. JSON** i **CreateADMServiceTopology. Parameters. JSON** , które były używane w [usłudze Azure Menedżer wdrażania z szablonami Menedżer zasobów](./deployment-manager-tutorial.md).
 
 ```azurepowershell
-$projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$filePath = Read-Host -Prompt "Enter the file path to the downloaded tutorial files"
-
-$resourceGroupName = "${projectName}rg"
-
-
 # Create the service topology
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
@@ -369,9 +362,9 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
 2. Użyj pola **Filtruj według nazwy**, aby zawęzić listę grup zasobów utworzonych w tym samouczku. Powinny istnieć 3–4 grupy:
 
-    * **&lt;namePrefix>rg**: zawiera zasoby usługi Deployment Manager.
-    * **&lt;namePrefix>ServiceWUSrg**: zawiera zasoby zdefiniowane przez usługę ServiceWUS.
-    * **&lt;namePrefix>ServiceEUSrg**: zawiera zasoby zdefiniowane przez usługę ServiceEUS.
+    * **&lt;projectName > RG**: zawiera zasoby Menedżer wdrażania.
+    * **&lt;projectName > ServiceWUSrg**: zawiera zasoby zdefiniowane przez ServiceWUS.
+    * **&lt;projectName > ServiceEUSrg**: zawiera zasoby zdefiniowane przez ServiceEUS.
     * Grupa zasobów dla tożsamości zarządzanej zdefiniowanej przez użytkownika.
 3. Wybierz nazwę grupy zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.

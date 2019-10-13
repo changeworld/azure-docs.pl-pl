@@ -1,17 +1,17 @@
 ---
-title: Samouczek — ochrona nowych zasobów przy użyciu blokad zasobów planu
+title: Ochrona nowych zasobów przy użyciu blokad planów
 description: W ramach tego samouczka nauczysz się używać opcji blokowania zasobów usługi Azure Plans tylko do odczytu i nie usuwaj, aby chronić nowo wdrożone zasoby.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
-ms.openlocfilehash: a82b24f89cea580a1c79a1dec60996629b7b14f3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 2f66677df7cd1c6fbde9c0467b4d7f2094509ee8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978148"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297013"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Samouczek: Ochrona nowych zasobów przy użyciu blokad zasobów usługi Azure Plans
 
@@ -28,13 +28,13 @@ W tym samouczku wykonasz następujące czynności:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego samouczka potrzebna jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
+Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-blueprint-definition"></a>Tworzenie definicji strategii
 
 Najpierw Utwórz definicję planu.
 
-1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Na stronie **pierwsze kroki** z lewej strony wybierz pozycję **Utwórz** w obszarze **Utwórz plan**.
 
@@ -112,7 +112,7 @@ Po **pomyślnym zakończeniu zapisywania definicji** planu zostanie wyświetlone
 
 Twoja definicja planu została teraz utworzona w Twoim środowisku. Jest on tworzony w trybie **wersji roboczej** i musi być opublikowany, aby można go było przypisać i wdrożyć.
 
-1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć definicję planu **storageaccount** , a następnie wybierz ją.
 
@@ -126,7 +126,7 @@ Po **pomyślnym** wyświetleniu powiadomienia portalu publikowanie definicji str
 
 Po opublikowaniu definicji planu można przypisać ją do subskrypcji w grupie zarządzania, w której zapisano ją. W tym kroku podajesz parametry, aby każde wdrożenie definicji strategii było unikatowe.
 
-1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć definicję planu **storageaccount** , a następnie wybierz ją.
 
@@ -134,17 +134,17 @@ Po opublikowaniu definicji planu można przypisać ją do subskrypcji w grupie z
 
 1. Podaj wartości parametrów dla przypisania planu:
 
-   - **Nazwie**
+   - **Podstawy**
 
      - **Subskrypcje**: Wybierz co najmniej jedną subskrypcję znajdującą się w grupie zarządzania, w której zapisano definicję planu. W przypadku wybrania więcej niż jednej subskrypcji zostanie utworzone przypisanie dla każdej subskrypcji przy użyciu wprowadzonych parametrów.
      - **Nazwa przypisania**: nazwa jest wstępnie wypełniana na podstawie nazwy definicji planu. To przypisanie reprezentuje zablokowanie nowej grupy zasobów, dlatego należy zmienić nazwę przypisania na **przypisanie-storageaccount-TestingBPLocks**.
-     - **Lokalizacja**: Wybierz region, w którym chcesz utworzyć zarządzaną tożsamość. Azure Blueprint używa tej tożsamości zarządzanej do wdrożenia wszystkich artefaktów w przypisanym planie. Aby dowiedzieć się więcej, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Lokalizacja**: Wybierz region, w którym chcesz utworzyć zarządzaną tożsamość. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
        Na potrzeby tego samouczka wybierz pozycję **Wschodnie stany USA 2**.
      - **Wersja definicji**planu: Wybierz opublikowaną wersję **1,0** definicji planu.
 
    - **Przypisanie blokady**
 
-     Wybierz tryb blokowania **tylko do odczytu** . Aby uzyskać więcej informacji, zobacz temat [plany blokowania zasobów](../concepts/resource-locking.md).
+     Wybierz tryb blokowania **tylko do odczytu** . Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../concepts/resource-locking.md).
 
    - **Tożsamość zarządzana**
 
@@ -158,7 +158,7 @@ Po opublikowaniu definicji planu można przypisać ją do subskrypcji w grupie z
      |-|-|-|-|-|
      |Grupa zasobów RGtoLock|Grupa zasobów|Nazwa|TestingBPLocks|Określa nazwę nowej grupy zasobów, do której mają zostać zastosowane blokady planu.|
      |Grupa zasobów RGtoLock|Grupa zasobów|Lokalizacja|Zachodnie stany USA 2|Określa lokalizację nowej grupy zasobów, do której mają zostać zastosowane blokady planu.|
-     |StorageAccount|Szablon Menedżer zasobów|storageAccountType (StorageAccount)|Standard_GRS|Jednostka SKU magazynu. Wartość domyślna to _Standard_LRS_.|
+     |StorageAccount|Szablon usługi Resource Manager|storageAccountType (StorageAccount)|Standard_GRS|Jednostka SKU magazynu. Wartość domyślna to _Standard_LRS_.|
 
 1. Po wprowadzeniu wszystkich parametrów wybierz pozycję **Przypisz** w dolnej części strony.
 
@@ -170,7 +170,7 @@ Po wyświetleniu powiadomienia portalu **przypisywanie definicji planu powiodło
 
 Przypisanie tworzy _TestingBPLocks_ grupy zasobów i konto magazynu wdrożone przez artefakt szablonu Menedżer zasobów. Nowa grupa zasobów i wybrany stan blokady są wyświetlane na stronie szczegółów przypisania.
 
-1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz stronę **przypisane plany** po lewej stronie. Użyj filtrów, aby znaleźć przypisanie do planu **storageaccount-TestingBPLocks przypisania** , a następnie wybierz je.
 
@@ -194,7 +194,7 @@ Przypisanie tworzy _TestingBPLocks_ grupy zasobów i konto magazynu wdrożone pr
 
 1. Na stronie nawigacyjnej Azure Portal wybierz pozycję **Kontrola dostępu TestingBPLocks (IAM)** . Następnie wybierz stronę **Przegląd** po lewej stronie, a następnie przycisk **Usuń grupę zasobów** . Wprowadź nazwę **TestingBPLocks** , aby potwierdzić usunięcie, a następnie wybierz pozycję **Usuń** w dolnej części okienka.
 
-   **Nie powiodło się usunięcie TestingBPLocks grupy zasobów** powiadomienia portalu. Ten błąd oznacza, że mimo że Twoje konto ma uprawnienia do usuwania grupy zasobów, odmowa dostępu przez przypisanie planu. Należy pamiętać, że podczas przypisywania strategii zaznaczono tryb blokowania **tylko do odczytu** . Blokada strategii uniemożliwia konto z uprawnieniami, nawet _właściciel_, od usunięcia zasobu. Aby uzyskać więcej informacji, zobacz temat [plany blokowania zasobów](../concepts/resource-locking.md).
+   **Nie powiodło się usunięcie TestingBPLocks grupy zasobów** powiadomienia portalu. Ten błąd oznacza, że mimo że Twoje konto ma uprawnienia do usuwania grupy zasobów, odmowa dostępu przez przypisanie planu. Należy pamiętać, że podczas przypisywania strategii zaznaczono tryb blokowania **tylko do odczytu** . Blokada strategii uniemożliwia konto z uprawnieniami, nawet _właściciel_, od usunięcia zasobu. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../concepts/resource-locking.md).
 
 Te kroki pokazują, że nasze wdrożone zasoby są teraz chronione za pomocą blokad planu, które uniemożliwiają niepożądane usuwanie, nawet z konta, które ma uprawnienia do usuwania zasobów.
 
@@ -202,7 +202,7 @@ Te kroki pokazują, że nasze wdrożone zasoby są teraz chronione za pomocą bl
 
 Ostatnim krokiem jest usunięcie przypisania definicji planu. Usunięcie przypisania nie powoduje usunięcia skojarzonych artefaktów.
 
-1. W lewym okienku wybierz pozycję **wszystkie usługi** . Wyszukaj i wybierz **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz stronę **przypisane plany** po lewej stronie. Użyj filtrów, aby znaleźć przypisanie do planu **storageaccount-TestingBPLocks przypisania** , a następnie wybierz je.
 
@@ -218,7 +218,7 @@ Zabezpieczenia dla grupy zasobów pokazują, że przypisanie planu nie ma już d
 
 Po wyświetleniu powiadomienia portalu **usuwanie przypisania strategii powiodło** się przejdź do następnego kroku.
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Po zakończeniu pracy z tym samouczkiem Usuń następujące zasoby:
 
@@ -227,9 +227,9 @@ Po zakończeniu pracy z tym samouczkiem Usuń następujące zasoby:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [cyklu życia](../concepts/lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md).
 - Dowiedz się, jak używać [blokowania zasobów](../concepts/resource-locking.md)planu.
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../concepts/sequencing-order.md).
-- Dowiedz się, jak [aktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
 - [Rozwiązywanie problemów](../troubleshoot/general.md) podczas przypisywania planu.

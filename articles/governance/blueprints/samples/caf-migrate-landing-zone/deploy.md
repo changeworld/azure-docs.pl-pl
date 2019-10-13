@@ -1,22 +1,22 @@
 ---
-title: Przykład — CAF Migrowanie planu strefy ładunkowej — kroki wdrażania
-description: Wdróż kroki dla przykładu CAF Migrowanie strefy ładunkowej, w tym szczegóły parametru artefaktu.
+title: Przykładowa procedura CAF migracji w ramach planu strefy instalacji
+description: Wdróż kroki dla planu strefy CAF migracji, w tym szczegóły parametrów artefaktu.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 0a635c9c3b864e4ce74dbbe8b9c95df38489176f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: cb41d363b208400598c8afb06dfdb4acaeb02d2b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248497"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298020"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Wdrażanie przykładowej platformy wdrażania Microsoft Cloud dla platformy Azure Migrowanie planu strefy ładunkowej
 
-Aby wdrożyć przykład strategii platformy Azure CAF Migrowanie planu strefy ładunkowej, należy wykonać następujące czynności:
+Aby wdrożyć przykład strategii CAF migracji planów platformy Azure, należy wykonać następujące czynności:
 
 > [!div class="checklist1"]
 > - Zalecane do wdrożenia przykładu strategii [CAF Foundation](../caf-foundation/index.md)
@@ -118,7 +118,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 Po przejrzeniu kroków w celu wdrożenia przykładu CAF migrowania strefy ładunkowej, odwiedź następujące artykuły, aby dowiedzieć się więcej o architekturze:
 
 > [!div class="nextstepaction"]
-> [CAF Migrowanie strefy ładunkowej — Omówienie](./index.md)
+> [CAF Migrowanie strefy docelowej — Omówienie](./index.md)
 
 Dodatkowe artykuły na temat strategii i sposobu ich używania:
 

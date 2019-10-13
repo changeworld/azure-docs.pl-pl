@@ -1,40 +1,43 @@
 ---
-title: Cross-Origin Resource Sharing (CORS) w usłudze Azure Cosmos DB
-description: W tym artykule opisano sposób konfigurowania udostępniania zasobów między źródłami (CORS) w usłudze Azure Cosmos DB przy użyciu witryny Azure portal i szablonów usługi Azure Resource Manager.
+title: Współużytkowanie zasobów między źródłami (CORS) w Azure Cosmos DB
+description: W tym artykule opisano sposób konfigurowania współużytkowania zasobów między źródłami (CORS) w Azure Cosmos DB przy użyciu szablonów Azure Portal i Azure Resource Manager.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 1269c4c2405e9b906b63c8a29c0de1ac217da1d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82c49854611e6c425b75f0830a1402c8f5a4694e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241893"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299176"
 ---
-# <a name="configure-cross-origin-resource-sharing-cors"></a>Skonfiguruj współużytkowanie zasobów między źródłami (Cors) 
+# <a name="configure-cross-origin-resource-sharing-cors"></a>Skonfiguruj współużytkowanie zasobów między źródłami (CORS) 
 
-Udostępnianie zasobów między źródłami (CORS) to funkcja protokołu HTTP, który umożliwia aplikacji sieci web uruchomionej w jednej domenie dostęp do zasobów w innej domenie. Przeglądarki sieci Web wdrażają ograniczenie bezpieczeństwa nazywane zasadami jednego źródła, który uniemożliwia strony sieci web wywoływaniu interfejsów API w innej domenie. Jednak mechanizm CORS zapewnia bezpieczną metodę umożliwiania domenę pochodzenia w celu wywoływania interfejsów API w innej domenie. Interfejs API SQL Core w usłudze Azure Cosmos DB obsługuje teraz udostępniania zasobów między źródłami (CORS) przy użyciu nagłówka "allowedOrigins". Po włączeniu obsługi mechanizmu CORS dla konta usługi Azure Cosmos tylko uwierzytelnionego żądania są obliczane, aby określić, czy są dozwolone zgodnie z regułami, które określono.
+Współużytkowanie zasobów między źródłami (CORS) to funkcja protokołu HTTP, która umożliwia aplikacji sieci Web działającej w ramach jednej domeny dostęp do zasobów w innej domenie. Przeglądarki sieci Web implementują ograniczenie zabezpieczeń nazywane zasadami tego samego źródła, które uniemożliwiają stronie sieci Web wywoływanie interfejsów API w innej domenie. Jednak mechanizm CORS zapewnia bezpieczny sposób, aby umożliwić domenie pochodzenia wywoływanie interfejsów API w innej domenie. Interfejs API Core (SQL) w Azure Cosmos DB obsługuje teraz funkcję współużytkowania zasobów między źródłami (CORS) przy użyciu nagłówka "allowedOrigins". Po włączeniu obsługi mechanizmu CORS dla konta usługi Azure Cosmos są oceniane tylko uwierzytelnione żądania, aby określić, czy są dozwolone zgodnie z określonymi regułami.
 
-Można skonfigurować współużytkowanie zasobów, udostępnianie ustawień (między źródłami CORS) w witrynie Azure portal lub przy użyciu szablonu usługi Azure Resource Manager. Interfejs API SQL Core w usłudze Azure Cosmos DB obsługuje biblioteki JavaScript, która działa zarówno w technologii Node.js, jak i oparte na przeglądarce środowiska. Ta biblioteka teraz korzystać z zalet obsługi mechanizmu CORS w trybie bramy. Brak konfiguracji po stronie klienta potrzebnych do korzystania z tej funkcji. Z obsługą mechanizmu CORS zasobów z poziomu przeglądarki można uzyskać dostęp do usługi Azure Cosmos DB za pomocą [biblioteki JavaScript](https://www.npmjs.com/package/@azure/cosmos) lub bezpośrednio z [interfejsu API REST](https://docs.microsoft.com/rest/api/cosmos-db/) dla prostych operacji. 
+Ustawienia udostępniania zasobów między źródłami (CORS) można skonfigurować z poziomu Azure Portal lub szablonu Azure Resource Manager. W przypadku kont usługi Cosmos przy użyciu interfejsu API Core (SQL) Azure Cosmos DB obsługuje bibliotekę języka JavaScript działającą w środowiskach Node. js i opartych na przeglądarce. Ta biblioteka może teraz korzystać z obsługi mechanizmu CORS w przypadku korzystania z trybu bramy. Do korzystania z tej funkcji nie jest wymagana konfiguracja po stronie klienta. W przypadku obsługi mechanizmu CORS zasoby z przeglądarki mogą bezpośrednio uzyskać dostęp do Azure Cosmos DB za pośrednictwem [biblioteki JavaScript](https://www.npmjs.com/package/@azure/cosmos) lub bezpośrednio z [interfejsu API REST](https://docs.microsoft.com/rest/api/cosmos-db/) w przypadku prostych operacji. 
 
-## <a name="enable-cors-support-from-azure-portal"></a>Włączanie obsługi mechanizmu CORS w witrynie Azure portal
+> [!NOTE]
+> Obsługa mechanizmu CORS jest odpowiednia i obsługiwana dla interfejsu API Azure Cosmos DB Core (SQL). Nie ma zastosowania do Azure Cosmos DB interfejsów API dla Cassandra, Gremlin lub MongoDB, ponieważ te protokoły nie używają protokołu HTTP do komunikacji klient-serwer. 
 
-Aby włączyć udostępnianie zasobów między źródłami za pomocą witryny Azure portal, należy użyć następujące czynności:
+## <a name="enable-cors-support-from-azure-portal"></a>Włączanie obsługi mechanizmu CORS z poziomu Azure Portal
 
-1. Przejdź do swojego konta usługi Azure cosmos DB. Otwórz **CORS** bloku.
+Wykonaj następujące kroki, aby włączyć współużytkowanie zasobów między źródłami przy użyciu Azure Portal:
 
-2. Określ listę rozdzielanych przecinkami, źródeł, które mogą ułatwić wywołań między źródłami na koncie usługi Azure Cosmos DB. Na przykład `https://www.mydomain.com`, `https://mydomain.com`, `https://api.mydomain.com`. Można również użyć symbolu wieloznacznego "\*" Aby zezwalać na wszystkie pochodzenia i wybrać **przesyłania**. 
+1. Przejdź do konta usługi Azure Cosmos DB. Otwórz blok **CORS** .
+
+2. Określ rozdzieloną przecinkami listę źródeł, które mogą nawiązywać wywołania między źródłami do konta Azure Cosmos DB. Na przykład `https://www.mydomain.com`, `https://mydomain.com`, `https://api.mydomain.com`. Możesz również użyć symbolu wieloznacznego "\*", aby zezwolić na wszystkie źródła i wybrać opcję **Prześlij**. 
 
    > [!NOTE]
-   > Obecnie nie można używać symboli wieloznacznych jako część nazwy domeny. Na przykład `https://*.mydomain.net` format nie jest jeszcze obsługiwany. 
+   > Obecnie nie można używać symboli wieloznacznych jako części nazwy domeny. Na przykład format `https://*.mydomain.net` nie jest jeszcze obsługiwany. 
    
-   ![Włącz udostępnianie zasobów między źródłami przy użyciu witryny Azure portal](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
+   ![Włącz udostępnianie zasobów między źródłami przy użyciu Azure Portal](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
  
-## <a name="enable-cors-support-from-resource-manager-template"></a>Włączanie obsługi mechanizmu CORS za pomocą szablonu usługi Resource Manager
+## <a name="enable-cors-support-from-resource-manager-template"></a>Włączanie obsługi mechanizmu CORS przy użyciu szablonu Menedżer zasobów
 
-Aby włączyć mechanizm CORS za pomocą szablonu usługi Resource Manager, należy dodać sekcję "cors" z właściwością "allowedOrigins" do dowolnego istniejącego szablonu. Następujące dane JSON znajduje się przykład szablonu, który tworzy nowe konto usługi Azure Cosmos z włączonym mechanizmem CORS.
+Aby włączyć mechanizm CORS przy użyciu szablonu Menedżer zasobów, należy dodać sekcję "CORS" z właściwością "allowedOrigins" do dowolnego istniejącego szablonu. Poniższy kod JSON jest przykładem szablonu, który tworzy nowe konto usługi Azure Cosmos z włączonym mechanizmem CORS.
 
 ```json
 {
@@ -75,9 +78,9 @@ Aby włączyć mechanizm CORS za pomocą szablonu usługi Resource Manager, nale
 }
 ```
 
-## <a name="using-the-azure-cosmos-db-javascript-library-from-a-browser"></a>Przy użyciu biblioteki usługi Azure Cosmos DB JavaScript w przeglądarce
+## <a name="using-the-azure-cosmos-db-javascript-library-from-a-browser"></a>Korzystanie z Azure Cosmos DB biblioteki JavaScript z przeglądarki
 
-Obecnie biblioteki Azure Cosmos DB JavaScript ma CommonJS wersję biblioteki dostarczane z pakietu. Aby użyć tej biblioteki z przeglądarki, musisz utworzyć przeglądarki zgodnej biblioteki za pomocą narzędzia pakietu zbiorczego aktualizacji lub Webpack. Niektóre Node.js biblioteki powinien mieć mocks przeglądarki dla nich. Oto przykład webpack pliku konfiguracji, który zawiera niezbędne ustawienia makiety.
+Obecnie Biblioteka Azure Cosmos DB JavaScript ma tylko wersję CommonJS biblioteki, która została dostarczona z jej pakietem. Aby użyć tej biblioteki z przeglądarki, należy użyć narzędzia, takiego jak ROLLUP lub WebPack, aby utworzyć bibliotekę zgodną z przeglądarką. Niektóre biblioteki Node. js powinny mieć dla nich makiety przeglądarki. Poniżej znajduje się przykładowy plik konfiguracji pakietu WebPack z niezbędnymi ustawieniami makiety.
 
 ```javascript
 const path = require("path");
@@ -96,15 +99,15 @@ module.exports = {
 };
 ```
  
-Oto [przykładowy kod](https://github.com/christopheranderson/cosmos-browser-sample) używający TypeScript i Webpack z biblioteką zestaw JavaScript SDK usługi Azure Cosmos DB do tworzenia aplikacji zadań do wykonania, która wysyła aktualizacje w czasie rzeczywistym, gdy są tworzone nowe elementy.
-Najlepszym rozwiązaniem jest nieużywanie klucz podstawowy do komunikowania się z usługą Azure Cosmos DB za pomocą przeglądarki. Zamiast tego należy użyć tokenów zasobów do komunikowania się. Aby uzyskać więcej informacji na temat tokenów zasobów, zobacz [zabezpieczanie dostępu do usługi Azure Cosmos DB](secure-access-to-data.md#resource-tokens) artykułu.
+Oto [przykład kodu](https://github.com/christopheranderson/cosmos-browser-sample) , który używa języka TypeScript i WebPack z biblioteką SDK Azure Cosmos DB JavaScript do tworzenia aplikacji do zrobienia, która wysyła aktualizacje w czasie rzeczywistym po utworzeniu nowych elementów.
+Najlepszym rozwiązaniem jest nieużywanie klucza podstawowego do komunikowania się z Azure Cosmos DB z przeglądarki. Zamiast tego należy użyć tokenów zasobów do komunikacji. Aby uzyskać więcej informacji na temat tokenów zasobów, zobacz [Zabezpieczanie dostępu do Azure Cosmos DB](secure-access-to-data.md#resource-tokens) artykułu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat innych sposobów, aby zabezpieczyć swoje konto usługi Azure Cosmos, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat innych sposobów zabezpieczania konta usługi Azure Cosmos, zobacz następujące artykuły:
 
-* [Konfigurowanie zapory dla usługi Azure Cosmos DB](how-to-configure-firewall.md) artykułu.
+* [Skonfiguruj zaporę dla Azure Cosmos DB](how-to-configure-firewall.md) artykułu.
 
-* [Konfigurowanie sieci wirtualnej i podsieci na podstawie dostępu dla konta usługi Azure Cosmos DB](how-to-configure-vnet-service-endpoint.md)
+* [Konfigurowanie sieci wirtualnej i dostępu opartego na podsieci dla konta usługi Azure Cosmos DB](how-to-configure-vnet-service-endpoint.md)
     
 

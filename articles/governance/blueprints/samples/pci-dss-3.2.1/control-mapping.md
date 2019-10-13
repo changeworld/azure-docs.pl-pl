@@ -1,5 +1,5 @@
 ---
-title: Przykład-PCI-DSS v 3.2.1 — Mapowanie formantów
+title: Przykład planu PCI-DSS v 3.2.1 plan kontroli
 description: Sterowanie mapowaniem z przykładowej strategii branżowej Data Security Standard v 3.2.1 do Azure Policy i RBAC.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: fca86163cdfc8790da007a1f0f9264534b512cdd
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 8c8dbc8534720189c40624cfda97ce09a612e453
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981486"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297205"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu PCI-DSS v 3.2.1
 
@@ -113,7 +113,7 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 Dzienniki diagnostyczne zapewniają wgląd w operacje wykonywane w ramach zasobów platformy Azure. Dzienniki systemu Azure są oparte na zsynchronizowaniu zegarów wewnętrznych w celu utworzenia skorelowanego rekordu zdarzeń między zasobami.
 
 - Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
-- Inspekcja ustawień diagnostycznych
+- Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
 - Wdrażanie inspekcji na serwerach SQL
 - Konta magazynu należy migrować do nowych zasobów Azure Resource Manager
@@ -134,10 +134,10 @@ Po przejrzeniu mapowania kontroli planu PCI-DSS v 3.2.1 zapoznaj się z następu
 > [Plan PCI-DSS v 3.2.1 — omówienie](./index.md)
 > [PCI-DSS v 3.2.1 plan — kroki wdrażania](./deploy.md)
 
-## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Dodatkowe artykuły o planach i sposobach ich użycia:
+## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
-- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania planów](../../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów](../../concepts/resource-locking.md)planu.
-- Dowiedz się, jak [aktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).

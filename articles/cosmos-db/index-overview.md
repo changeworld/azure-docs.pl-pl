@@ -4,14 +4,14 @@ description: Dowiedz się, jak indeksowanie działa w Azure Cosmos DB.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914194"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299786"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indeksowanie w Azure Cosmos DB — Omówienie
 
@@ -64,9 +64,11 @@ Po zapisaniu elementu Azure Cosmos DB efektywnie indeksuje ścieżkę każdej w�
 
 ## <a name="index-kinds"></a>Rodzaje indeksów
 
-Azure Cosmos DB obecnie obsługuje trzy rodzaje indeksów:
+Azure Cosmos DB obecnie obsługuje trzy rodzaje indeksów.
 
-Rodzaj indeksu **zakresu** jest używany dla:
+### <a name="range-index"></a>Indeks zakresu
+
+Indeks **zakresu** jest oparty na uporządkowanej strukturze podobnej do drzewa. Rodzaj indeksu zakresu jest używany dla:
 
 - Zapytania o równość:
 
@@ -74,20 +76,41 @@ Rodzaj indeksu **zakresu** jest używany dla:
    SELECT * FROM container c WHERE c.property = 'value'
    ```
 
+   ```sql
+   SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
+   ```
+
+   Dopasowanie równości w elemencie tablicy
+   ```sql
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1”)
+    ```
+
 - Zapytania zakresu:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  (działa dla `>`, `<`, `>=` `<=`,, )`!=`
+  (działa dla `>`, `<`, `>=`, `<=`, `!=`)
 
-- `ORDER BY`wybiera
+- Sprawdzanie obecności właściwości:
 
-   ```sql 
+   ```sql
+   SELECT * FROM c WHERE IS_DEFINED(c.property)
+   ```
+
+- Dopasowanie prefiksu ciągu (zawiera słowo kluczowe nie będzie korzystać z indeksu zakresu):
+
+   ```sql
+   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   ```
+
+- zapytania `ORDER BY`:
+
+   ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- `JOIN`wybiera
+- zapytania `JOIN`:
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
@@ -95,31 +118,41 @@ Rodzaj indeksu **zakresu** jest używany dla:
 
 Indeksów zakresu można używać w przypadku wartości skalarnych (String lub Number).
 
-Rodzaj indeksu **przestrzennego** jest używany dla:
+### <a name="spatial-index"></a>Indeks przestrzenny
 
-- Zapytania dotyczące odległości geograficznej: 
+Indeksy **przestrzenne** umożliwiają wydajne zapytania dotyczące obiektów geoprzestrzennych, takich jak punkty, linie, wielokąty i MultiPolygon. Te zapytania używają ST_DISTANCE, ST_WITHIN, ST_INTERSECTS słów kluczowych. Poniżej przedstawiono kilka przykładów, które używają rodzaju indeksu przestrzennego:
+
+- Zapytania dotyczące odległości geograficznej:
 
    ```sql
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
    ```
 
-- Geoprzestrzenne w ramach zapytań: 
+- Geoprzestrzenne w ramach zapytań:
 
    ```sql
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
+- Zapytania z przecięciem geograficznym:
+
+   ```sql
+   SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
+   ```
+
 Indeksów przestrzennych można używać w poprawnie sformatowanych obiektach [GEOJSON](geospatial.md) . Punkty, LineStrings, wielokąty i wielowielokąty są obecnie obsługiwane.
 
-Typ indeksu **złożonego** jest używany dla:
+### <a name="composite-indexes"></a>Indeksy złożone
 
-- `ORDER BY`zapytania dotyczące wielu właściwości:
+Indeksy **złożone** zwiększają wydajność podczas wykonywania operacji na wielu polach. Typ indeksu złożonego jest używany dla:
+
+- zapytania `ORDER BY` dotyczące wielu właściwości:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Wykonuje zapytania z filtrem `ORDER BY`i. Te zapytania mogą korzystać z indeksu złożonego, jeśli do `ORDER BY` klauzuli zostanie dodana Właściwość Filter.
+- Wykonuje zapytania z filtrem i `ORDER BY`. Te zapytania mogą korzystać z indeksu złożonego, jeśli Właściwość Filter jest dodawana do klauzuli `ORDER BY`.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
@@ -131,16 +164,23 @@ Typ indeksu **złożonego** jest używany dla:
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
+Tak długo, jak jeden predykat filtru używa dla danego rodzaju indeksu, aparat kwerend zostanie oceniony przed skanowaniem reszty. Na przykład jeśli masz zapytanie SQL, takie jak `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+
+* Powyższe zapytanie najpierw filtruje wpisy, w których firstName = "Andrew" przy użyciu indeksu. Następnie przekazuje wszystkie wpisy firstName = "Andrew" przy użyciu kolejnego potoku, aby obliczyć predykat zawierający filtr.
+
+* Można przyspieszyć zapytania i uniknąć pełnego skanowania kontenera podczas korzystania z funkcji, które nie używają indeksu (np. CONTAINS) przez dodanie dodatkowych predykatów filtru, które używają indeksu. Kolejność klauzul filtru nie jest ważna. Aparat zapytań będzie określać, które predykaty są bardziej wybiórcze i odpowiednio uruchomić zapytanie.
+
+
 ## <a name="querying-with-indexes"></a>Wykonywanie zapytań przy użyciu indeksów
 
-Ścieżki wyodrębnione podczas indeksowania danych ułatwiają wyszukiwanie w indeksie podczas przetwarzania zapytania. Dopasowując `WHERE` klauzulę zapytania z listą ścieżek indeksowanych, można łatwo zidentyfikować elementy, które pasują do predykatu zapytania.
+Ścieżki wyodrębnione podczas indeksowania danych ułatwiają wyszukiwanie w indeksie podczas przetwarzania zapytania. Dopasowując klauzulę `WHERE` zapytania z listą indeksowanych ścieżek, można szybko identyfikować elementy, które pasują do predykatu zapytania.
 
 Rozważmy na przykład następujące zapytanie: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Predykat zapytania (filtrowanie dla elementów, gdzie każda lokalizacja ma wartość "Francja", ponieważ jego kraj) będzie odpowiadał ścieżce wyróżnionej w kolorze czerwonym poniżej:
 
 ![Dopasowanie określonej ścieżki w drzewie](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Klauzula, która porządkuje według pojedynczej właściwości, zawsze wymaga indeksu zakresu i zakończy się niepowodzeniem, jeśli ścieżka, do której się odwołuje, nie ma takiej wartości. `ORDER BY` Podobnie, `ORDER BY` zapytanie, które porządkuje wiele właściwości, *zawsze* wymaga indeksu złożonego.
+> Klauzula `ORDER BY`, która porządkuje według pojedynczej właściwości, *zawsze* wymaga indeksu zakresu i zakończy się niepowodzeniem, jeśli ścieżka, do której się odwołuje, nie ma jednego. Podobnie kwerenda `ORDER BY`, która porządkuje według wielu właściwości, *zawsze* wymaga złożonego indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 
