@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 548f37d6a0d4390fb98ceaee7b59314400debb38
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986551"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299621"
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach usługi Azure Storage
 
@@ -43,7 +43,7 @@ Poniżej przedstawiono tematy, które mają być omówione w tym artykule:
   W tej sekcji omówiono sposób zabezpieczania danych podczas ich przesyłania do usługi Azure Storage lub z niej. Porozmawiamy o zalecanym użyciu protokołu HTTPS i szyfrowaniu używanym przez protokół SMB 3,0 dla udziałów plików platformy Azure. Zajmiemy się również szyfrowaniem po stronie klienta, co pozwala na szyfrowanie danych przed ich przesłaniem do magazynu w aplikacji klienckiej i odszyfrowywanie danych po ich przeniesieniu poza magazyn.
 * [Szyfrowanie w spoczynku](#encryption-at-rest)
 
-  Będziemy mówić o szyfrowanie usługi Storage (SSE), która jest teraz automatycznie włączona dla nowych i istniejących kont magazynu. Dowiesz się również, jak można użyć Azure Disk Encryption i poznać podstawowe różnice oraz przypadki szyfrowania dysków, a także szyfrowanie z użyciem funkcji SSE i szyfrowania po stronie klienta. Na krótko Przyjrzyjmy się zgodności ze standardem FIPS dla Stanów Zjednoczonych Komputery rządowe.
+  Będziemy mówić o szyfrowanie usługi Storage (SSE), która jest teraz automatycznie włączona dla nowych i istniejących kont magazynu. Dowiesz się również, jak można użyć Azure Disk Encryption i poznać podstawowe różnice oraz przypadki szyfrowania dysków, a także szyfrowanie z użyciem funkcji SSE i szyfrowania po stronie klienta. Na krótko Przyjrzyjmy się zgodności ze standardem FIPS dla komputerów rządowych w Stanach Zjednoczonych.
 * Używanie [analityka magazynu](#storage-analytics) do inspekcji dostępu do usługi Azure Storage
 
   W tej sekcji omówiono sposób znajdowania informacji w dziennikach analizy magazynu dla żądania. Zajmiemy się rzeczywistymi danymi dziennika analizy magazynu i zobacz, jak rozpoznać, czy żądanie zostało wykonane przy użyciu klucza konta magazynu, z sygnaturą dostępu współdzielonego, czy anonimowe, oraz czy zakończyło się powodzeniem lub niepowodzeniem.
@@ -90,7 +90,7 @@ Poniżej przedstawiono główne punkty, które należy znać, aby uzyskać dost�
 * [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
   W tym artykule objaśniono funkcję kontroli dostępu opartej na rolach w usłudze Azure Active Directory i sposób jej działania.
-* [RBAC Wbudowane role](../../role-based-access-control/built-in-roles.md)
+* [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../../role-based-access-control/built-in-roles.md)
 
   W tym artykule szczegółowo opisano wszystkie wbudowane role dostępne w ramach RBAC.
 * [Omówienie wdrażania przy użyciu usługi Resource Manager oraz wdrażania klasycznego](../../azure-resource-manager/resource-manager-deployment-model.md)
@@ -102,9 +102,7 @@ Poniżej przedstawiono główne punkty, które należy znać, aby uzyskać dost�
 * [Dokumentacja interfejsu API REST dostawcy zasobów usługi Azure Storage](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   Ten interfejs API zawiera opis interfejsów API, których można użyć do programistycznego zarządzania kontem magazynu.
-* [Korzystanie z interfejsu API uwierzytelniania Menedżer zasobów do uzyskiwania dostępu do subskrypcji](../../azure-resource-manager/resource-manager-api-authentication.md)
 
-  W tym artykule przedstawiono sposób uwierzytelniania przy użyciu Menedżer zasobów interfejsów API.
 * [Kontrola dostępu oparta na rolach dla platformy Microsoft Azure — konferencja Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
   To jest link do filmu wideo w witrynie Channel 9 z konferencji Microsoft Ignite 2015. W tej sesji rozmawiamy o możliwościach zarządzania dostępem i raportowania na platformie Azure i eksplorujemy najlepsze rozwiązania dotyczące zabezpieczania dostępu do subskrypcji Azure za pomocą usługi Azure Active Directory.
@@ -188,7 +186,7 @@ Ponadto można określić, że żądania wysyłane przy użyciu sygnatury dostę
 #### <a name="definition-of-a-shared-access-signature"></a>Definicja sygnatury dostępu współdzielonego
 Sygnatura dostępu współdzielonego to zestaw parametrów zapytania dołączanych do adresu URL wskazywanego przez zasób
 
-zawiera informacje o dozwolonym dostępie oraz o długości czasu, przez jaki dozwolony jest dostęp. Oto przykład: Ten identyfikator URI zapewnia dostęp do odczytu do obiektu BLOB przez pięć minut. Zwróć uwagę, że parametry zapytania SAS muszą mieć zakodowany adres URL, na przykład% 3A dla dwukropka (:) lub% 20 dla odstępu.
+zawiera informacje o dozwolonym dostępie oraz o długości czasu, przez jaki dozwolony jest dostęp. Oto przykład: Ten identyfikator URI zapewnia dostęp do odczytu do obiektu BLOB przez pięć minut. Zwróć uwagę, że parametry zapytania SAS muszą mieć zakodowany adres URL, na przykład% 3A dla dwukropka (:) lub %20 dla odstępu.
 
 ```
 http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
@@ -239,7 +237,7 @@ Aby uzyskać bardziej szczegółowe informacje na temat używania sygnatur dost�
   * [Konstruowanie sygnatury dostępu współdzielonego usługi](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Konstruowanie sygnatury dostępu współdzielonego konta](https://msdn.microsoft.com/library/mt584140.aspx)
 
-* Authentication
+* Uwierzytelnianie
 
   * [Uwierzytelnianie dla usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Sygnatura dostępu współdzielonego Wprowadzenie — samouczek
@@ -250,7 +248,7 @@ Aby uzyskać bardziej szczegółowe informacje na temat używania sygnatur dost�
 ### <a name="transport-level-encryption--using-https"></a>Szyfrowanie na poziomie transportu — używanie protokołu HTTPS
 Innym krokiem, który należy wykonać w celu zapewnienia bezpieczeństwa danych usługi Azure Storage, jest szyfrowanie danych między klientem a usługą Azure Storage. Pierwszym zaleceniem jest zawsze używanie protokołu [https](https://en.wikipedia.org/wiki/HTTPS) , który zapewnia bezpieczną komunikację za pośrednictwem publicznego Internetu.
 
-Aby korzystać z bezpiecznego kanału komunikacyjnego, należy zawsze używać protokołu HTTPS podczas wywoływania interfejsów API REST lub uzyskiwania dostępu do obiektów w magazynie. Ponadto **sygnatury dostępu**współdzielonego, które mogą służyć do delegowania dostępu do obiektów usługi Azure Storage, obejmują opcję określenia, że tylko protokół HTTPS może być używany podczas korzystania z sygnatur dostępu współdzielonego, co gwarantuje, że każdy wysyła linki z TOKENami SAS będzie używać właściwego protokołu.
+Aby korzystać z bezpiecznego kanału komunikacyjnego, należy zawsze używać protokołu HTTPS podczas wywoływania interfejsów API REST lub uzyskiwania dostępu do obiektów w magazynie. Ponadto **sygnatury dostępu współdzielonego**, które mogą służyć do delegowania dostępu do obiektów usługi Azure Storage, obejmują opcję określenia, że tylko protokół HTTPS może być używany podczas korzystania z sygnatur dostępu współdzielonego, co gwarantuje, że każdy wysyła linki z TOKENami SAS będzie używać właściwego protokołu.
 
 Można wymusić użycie protokołu HTTPS podczas wywoływania interfejsów API REST w celu uzyskania dostępu do obiektów w kontach magazynu przez włączenie [bezpiecznego transferu wymaganego](../storage-require-secure-transfer.md) dla konta magazynu. Połączenia przy użyciu protokołu HTTP zostaną odrzucone po włączeniu tej opcji.
 
@@ -302,7 +300,7 @@ Azure Disk Encryption umożliwia szyfrowanie dysków systemu operacyjnego i dysk
 Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, gdy są one włączone w Microsoft Azure:
 
 * Integracja z usługą Azure Key Vault
-* Maszyny wirtualne w warstwie Standardowa: [Maszyny wirtualne z serii a, D, DS, G, GS i tak dalej IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* Maszyny wirtualne w warstwie Standardowa: [a, D, DS, G, GS i tak dalej serie maszyn wirtualnych IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * Włączanie szyfrowania na maszynach wirtualnych z systemem Windows i Linux IaaS
 * Wyłączanie szyfrowania na dyskach systemu operacyjnego i danych dla maszyn wirtualnych z systemem Windows IaaS
 * Wyłączanie szyfrowania na dyskach danych dla maszyn wirtualnych z systemem Linux IaaS
@@ -323,7 +321,7 @@ Rozwiązanie nie obsługuje następujących scenariuszy, funkcji i technologii w
 
 
 > [!NOTE]
-> Szyfrowanie dysków systemu operacyjnego Linux jest obecnie obsługiwane w następujących dystrybucjach w systemie Linux: RHEL 7,2, CentOS 7.2 n i Ubuntu 16,04.
+> Szyfrowanie dysków systemu operacyjnego Linux jest obecnie obsługiwane w następujących dystrybucjach systemów Linux: RHEL 7,2, CentOS 7.2 n i Ubuntu 16,04.
 >
 >
 
@@ -391,7 +389,7 @@ W poniższych zasobach znajduje się artykuł zawierający listę wielu pól w d
 
 ![Migawka pól w pliku dziennika](./media/storage-security-guide/image3.png)
 
-Interesuje Cię wpisy dla elementu GetBlob i sposobu ich autoryzacji, dlatego musimy szukać wpisów z typem operacji "Get-BLOB" i sprawdzić stan żądania (w czwartej</sup> kolumnie) oraz typ autoryzacji (ósma</sup> kolumna).
+Interesuje Cię wpisy dla elementu GetBlob i sposobu ich autoryzacji, dlatego musimy szukać wpisów z typem operacji "Get-BLOB" i sprawdzić żądanie-status (czwarta kolumna @ no__t-0) i typ autoryzacji (ósma kolumna @ no__t-1).
 
 Na przykład w pierwszych kilku wierszach na powyższej liście żądanie-status ma wartość "powodzenie", a typ autoryzacji to "uwierzytelnione". Oznacza to, że żądanie było autoryzowane przy użyciu klucza konta magazynu.
 
@@ -400,13 +398,13 @@ Mamy trzy przypadki, w których jesteśmy zainteresowani.
 
 1. Obiekt BLOB jest publiczny i jest dostępny przy użyciu adresu URL bez sygnatury dostępu współdzielonego. W takim przypadku żądanie-status ma wartość "AnonymousSuccess", a typ autoryzacji to "Anonymous".
 
-   1.0;2015-11-17T02:01:29.0488963Z;GetBlob;**AnonymousSuccess**;200;124;37;**anonymous**;;mystorage…
+   1.0; 2015-11-17T02:01:29.0488963 Z; GetBlob **AnonymousSuccess**; 200; 124; 37; **anonimowe**;; Magazyn...
 2. Obiekt BLOB jest prywatny i został użyty z sygnaturą dostępu współdzielonego. W takim przypadku żądanie-status ma wartość "SASSuccess", a typ autoryzacji to "SAS".
 
-   1.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
+   1.0; 2015-11-16T18:30:05.6556115 Z; GetBlob **SASSuccess**; 200; 416; 64; **sygnatura dostępu współdzielonego**;; Magazyn...
 3. Obiekt BLOB jest prywatny, a klucz magazynu został użyty w celu uzyskania do niego dostępu. W takim przypadku żądanie-status ma wartość "**powodzenie**", a typ autoryzacji to "**uwierzytelnione**".
 
-   1.0;2015-11-16T18:32:24.3174537Z;GetBlob;**Success**;206;59;22;**authenticated**;mystorage…
+   1.0; 2015-11-16T18:32:24.3174537 Z; GetBlob **Powodzenie**; 206; 59; 22; **uwierzytelniono**; magazyn...
 
 Za pomocą programu Microsoft Message Analyzer można przeglądać i analizować te dzienniki. Obejmuje to możliwości wyszukiwania i filtrowania. Na przykład możesz chcieć wyszukać wystąpienia obiektu GetBlob, aby sprawdzić, czy użycie jest oczekiwane, czyli aby upewnić się, że ktoś nie uzyskuje dostępu do konta magazynu w sposób niewłaściwy.
 
@@ -427,7 +425,7 @@ Za pomocą programu Microsoft Message Analyzer można przeglądać i analizować
 
   Ten artykuł jest odwołaniem do programu Microsoft Message Analyzer i zawiera linki do samouczka, przewodnika Szybki Start i podsumowania funkcji.
 
-## <a name="cross-origin-resource-sharing-cors"></a>Współużytkowanie zasobów między źródłami (CORS)
+## <a name="cross-origin-resource-sharing-cors"></a>Współużytkowanie zasobów między źródłami (CORS, Cross-Origin Resource Sharing)
 ### <a name="cross-domain-access-of-resources"></a>Dostęp między domenami do zasobów
 Gdy przeglądarka sieci Web działająca w jednej domenie wysyła żądanie HTTP do zasobu z innej domeny, jest to nazywane żądanie HTTP między źródłami. Na przykład strona HTML obsługiwana przez contoso.com wykonuje żądanie dotyczące JPEG hostowanego na fabrikam.blob.core.windows.net. Ze względów bezpieczeństwa przeglądarki ograniczają żądania HTTP między źródłami inicjowane przez skrypty, takie jak JavaScript. Oznacza to, że jeśli jakiś kod JavaScript na stronie sieci Web na contoso.com zażądał tego JPEG w fabrikam.blob.core.windows.net, przeglądarka nie zezwoli na żądanie.
 
@@ -460,8 +458,8 @@ Domyślnie mechanizm CORS jest wyłączony na wszystkich usługach. Mechanizm CO
 Oto co oznacza każdy wiersz:
 
 * **AllowedOrigins** Oznacza to, że niezgodne domeny mogą żądać i odbierać dane z usługi magazynu. Oznacza to, że zarówno contoso.com, jak i fabrikam.com mogą żądać danych z Blob Storage dla określonego konta magazynu. Możesz również ustawić tę opcję na symbol wieloznaczny (\*), aby zezwolić na dostęp do żądań wszystkim domenom.
-* **Atrybut AllowedMethods** Jest to lista metod (czasownik żądania HTTP), które mogą być używane podczas wykonywania żądania. W tym przykładzie dozwolone są tylko PUT i GET. Możesz ustawić tę wartość na symbol wieloznaczny (\*), aby zezwolić na użycie wszystkich metod.
-* **AllowedHeaders** To są nagłówki żądań, które domena pochodzenia może określić podczas wykonywania żądania. W tym przykładzie wszystkie nagłówki metadanych zaczynające się od wartości x-MS-meta-data, x-MS-meta i x-MS-meta-ABC są dozwolone. Symbol wieloznaczny\*() wskazuje, że dozwolony jest dowolny nagłówek zaczynający się od określonego prefiksu.
+* **Atrybut AllowedMethods** Jest to lista metod (czasownik żądania HTTP), które mogą być używane podczas wykonywania żądania. W tym przykładzie dozwolone są tylko PUT i GET. Możesz ustawić tę wartość na symbol wieloznaczny (\*), aby umożliwić korzystanie ze wszystkich metod.
+* **AllowedHeaders** To są nagłówki żądań, które domena pochodzenia może określić podczas wykonywania żądania. W tym przykładzie wszystkie nagłówki metadanych zaczynające się od wartości x-MS-meta-data, x-MS-meta i x-MS-meta-ABC są dozwolone. Symbol wieloznaczny (\*) wskazuje, że dozwolony jest dowolny nagłówek zaczynający się od określonego prefiksu.
 * **ExposedHeaders** Wskazuje to, które nagłówki odpowiedzi powinny być uwidocznione przez przeglądarkę do wystawcy żądania. W tym przykładzie zostanie uwidoczniony nagłówek zaczynający się od "x-MS-meta-".
 * **Atrybut maxageinseconds** Jest to maksymalny czas buforowania żądania opcji inspekcji wstępnej w przeglądarce. (Aby uzyskać więcej informacji na temat żądania wstępnego, zapoznaj się z pierwszym artykułem poniżej).
 
@@ -474,7 +472,7 @@ Aby uzyskać więcej informacji na temat mechanizmu CORS i sposobu jego włącza
 * [Obsługa udostępniania zasobów między źródłami (CORS) dla usług Azure Storage w witrynie MSDN](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
   Jest to dokumentacja referencyjna dotycząca obsługi mechanizmu CORS dla usług Azure Storage. Zawiera łącza do artykułów, które są stosowane do każdej usługi magazynu, i pokazuje przykład i objaśnia każdy element w pliku CORS.
-* [Microsoft Azure Storage: Wprowadzenie do mechanizmu CORS](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+* [Microsoft Azure Storage: wprowadzenie CORS](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
   Jest to link do początkowego artykułu blogu z informacją, jak go używać.
 
@@ -486,9 +484,9 @@ Aby uzyskać więcej informacji na temat mechanizmu CORS i sposobu jego włącza
    Jeśli można użyć protokołu HTTPS, który zapewnia zabezpieczenia na poziomie transportu, użycie sprawdzania MD5 jest zbędne i niepotrzebne.
 
    Aby uzyskać więcej informacji, zobacz [Omówienie algorytmu MD5 obiektów blob platformy Azure](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
-2. **Co o zgodności ze standardem FIPS dla Stanów Zjednoczonych Zarządowi?**
+2. **Co o zgodności ze standardem FIPS dla instytucji rządowych USA?**
 
-   Stany Zjednoczone FIPS (Federal Information Processing Standard) definiuje algorytmy kryptograficzne zatwierdzone do użycia przez stany USA Federalne systemy komputerowe do ochrony poufnych danych. Włączenie trybu FIPS na serwerze lub pulpicie systemu Windows informuje system operacyjny, że powinny być używane tylko algorytmy kryptograficzne zatwierdzone przez FIPS. Jeśli aplikacja używa niezgodnych algorytmów, aplikacje zostaną przerwane. With.NET Framework w wersji 4.5.2 lub nowszej aplikacja automatycznie przełącza algorytmy kryptografii tak, aby korzystały z algorytmów zgodnych ze standardem FIPS, gdy komputer jest w trybie FIPS.
+   Stany Zjednoczone Federal Information Processing Standard (FIPS) definiuje algorytmy kryptograficzne zatwierdzone do użycia przez Federalne systemy komputerowe dla instytucji rządowych w Stanach ochrony danych poufnych. Włączenie trybu FIPS na serwerze lub pulpicie systemu Windows informuje system operacyjny, że powinny być używane tylko algorytmy kryptograficzne zatwierdzone przez FIPS. Jeśli aplikacja używa niezgodnych algorytmów, aplikacje zostaną przerwane. With.NET Framework w wersji 4.5.2 lub nowszej aplikacja automatycznie przełącza algorytmy kryptografii tak, aby korzystały z algorytmów zgodnych ze standardem FIPS, gdy komputer jest w trybie FIPS.
 
    Firma Microsoft pozostawi do każdego klienta, aby zdecydować, czy włączyć tryb FIPS. Uważamy, że nie ma żadnych istotnych przyczyn dla klientów, którzy nie podlegają regulacjom rządowym, aby domyślnie włączyć tryb FIPS.
 
@@ -498,7 +496,7 @@ Aby uzyskać więcej informacji na temat mechanizmu CORS i sposobu jego włącza
   Ten artykuł w blogu zawiera omówienie standardu FIPS i wyjaśnia, dlaczego domyślnie nie włącza trybu FIPS.
 * [Walidacja standardu FIPS 140](https://technet.microsoft.com/library/cc750357.aspx)
 
-  Ten artykuł zawiera informacje o tym, jak produkty i moduły kryptograficzne firmy Microsoft są zgodne ze standardem FIPS dla Stanów Zjednoczonych Federalne władze rządowe.
-* ["Kryptografia systemu: Użyj zgodnych algorytmów FIPS do szyfrowania, mieszania i podpisywania "efektów ustawień zabezpieczeń w systemie Windows XP i nowszych wersjach systemu Windows](https://support.microsoft.com/kb/811833)
+  Ten artykuł zawiera informacje dotyczące sposobu, w jaki produkty i moduły kryptograficzne firmy Microsoft są zgodne ze standardem FIPS dla instytucji rządowych Stanów Zjednoczonych.
+* ["Kryptografia systemu: Użyj zgodnych algorytmów FIPS do szyfrowania, mieszania i podpisywania" efektów ustawień zabezpieczeń w systemie Windows XP i nowszych wersjach systemu Windows](https://support.microsoft.com/kb/811833)
 
   W tym artykule omówiono użycie trybu FIPS w starszych komputerach z systemem Windows.

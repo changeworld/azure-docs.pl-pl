@@ -9,73 +9,95 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 864a641968268c439c65996998cbb822746b96f9
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 03e6852f5b54160bed6336e253e38423b5ecea51
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838998"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294321"
 ---
 # <a name="entity-functions-preview"></a>Funkcje jednostki (wersja zapoznawcza)
 
-Funkcje Entity definiują operacje umożliwiające odczytywanie i aktualizowanie małych fragmentów stanu, znanych jako *jednostek trwałych*. Podobnie jak funkcje programu Orchestrator, funkcje jednostki są funkcjami o specjalnym typie wyzwalacza, *wyzwalaczem jednostki*. W przeciwieństwie do funkcji programu Orchestrator, funkcje jednostek nie mają żadnych ograniczeń związanych z kodem. Funkcje jednostek również zarządzają stanem jawnie, a nie niejawnie reprezentującą stan za pośrednictwem przepływu sterowania.
+Funkcje Entity definiują operacje umożliwiające odczytywanie i aktualizowanie małych fragmentów stanu, znanych jako *jednostek trwałych*. Podobnie jak funkcje programu Orchestrator, funkcje jednostki są funkcjami o specjalnym typie wyzwalacza, *wyzwalaczem jednostki*. W przeciwieństwie do funkcji programu Orchestrator, funkcja Entity Functions zarządza stanem jednostki jawnie, a nie niejawnie reprezentującą stan za pośrednictwem przepływu sterowania.
+Jednostki zapewniają metodę skalowania aplikacji przez dystrybucję pracy w wielu jednostkach, z których każdy ma stanowy rozmiar.
 
 > [!NOTE]
 > Funkcje jednostki i powiązane funkcje są dostępne tylko w Durable Functions 2,0 i nowszych. Funkcje jednostki są obecnie w publicznej wersji zapoznawczej.
 
-## <a name="entity-identity"></a>Tożsamość jednostki
+## <a name="general-concepts"></a>Pojęcia ogólne
 
-Jednostki (czasami określane jako *wystąpienia*jednostek) są dostępne za pośrednictwem unikatowego identyfikatora, *identyfikatora jednostki*. Identyfikator jednostki to po prostu para ciągów, które jednoznacznie identyfikują wystąpienie jednostki. Składa się z:
+Jednostki zachowują się jak małe usługi, które komunikują się za pośrednictwem komunikatów. Każda jednostka ma unikatową tożsamość i stan wewnętrzny (jeśli istnieje). Podobnie jak w przypadku usług lub obiektów, jednostki wykonują operacje po wyświetleniu monitu. Gdy jest wykonywana, operacja może zaktualizować stan wewnętrzny jednostki. Może również wywołać usługi zewnętrzne i poczekać na odpowiedź. Jednostki komunikują się z innymi jednostkami, aranżacjami i klientami przy użyciu komunikatów, które są niejawnie wysyłane przez niezawodne kolejki. 
 
-* **Nazwa jednostki**: Nazwa identyfikująca typ jednostki (na przykład "licznik").
+Aby zapobiec konfliktom, wszystkie operacje na pojedynczej jednostce są gwarantowane do wykonania szeregowego, czyli jeden po drugim. 
+
+### <a name="entity-id"></a>Identyfikator jednostki
+Do jednostek uzyskuje się dostęp za pośrednictwem unikatowego identyfikatora, *identyfikatora jednostki*. Identyfikator jednostki to po prostu para ciągów, które jednoznacznie identyfikują wystąpienie jednostki. Składa się z:
+
+* **Nazwa jednostki**: Nazwa identyfikująca typ jednostki (na przykład "licznik"). Ta nazwa musi być zgodna z nazwą funkcji jednostki implementującej jednostkę. Wielkość liter nie jest uwzględniana.
 * **Klucz jednostki**: ciąg, który jednoznacznie identyfikuje jednostkę między wszystkimi innymi jednostkami o tej samej nazwie (na przykład identyfikator GUID).
 
 Na przykład funkcja jednostki *licznika* może być używana do przechowywania wyników w grze online. Każde wystąpienie gry będzie miało unikatowy identyfikator jednostki, taki jak `@Counter@Game1`, `@Counter@Game2` i tak dalej. Wszystkie operacje przeznaczone dla określonej jednostki wymagają określenia identyfikatora jednostki jako parametru.
 
-## <a name="programming-models"></a>Modele programowania
+### <a name="entity-operations"></a>Operacje jednostki ###
 
-Trwałe jednostki obsługują dwa różne modele programowania. Pierwszy model jest dynamicznym modelem funkcjonalnym, w którym jednostka jest definiowana przez pojedynczą funkcję. Drugi model jest modelem zorientowanym na obiekt, w którym jednostka jest definiowana przez klasę i metody. Te modele i modele programowania umożliwiające współdziałanie z jednostkami są opisane w następnych sekcjach.
+Aby wywołać operację dla jednostki, jeden określa
 
-### <a name="defining-entities"></a>Definiowanie jednostek
+* *Identyfikator jednostki* docelowej
+* *Nazwa operacji*, ciąg określający operację do wykonania. Na przykład jednostka licznika może obsługiwać operacje "Add", "Get" lub "reset".
+* *Dane wejściowe operacji*, które są opcjonalnym parametrem wejściowym dla operacji. Na przykład operacja "Add" może przyjmować liczbę całkowitą jako dane wejściowe.
 
-Istnieją dwa opcjonalne modele programowania do tworzenia trwałych jednostek. Poniższy kod jest przykładem prostej jednostki *licznika* zaimplementowaną jako funkcja standardowa. Ta funkcja definiuje trzy *operacje*, `add`, `reset` i `get`, z których każda działa na wartości typu integer, `currentValue`.
+Operacje mogą zwracać wartość wyniku lub wynik błędu (na przykład błąd JavaScript lub wyjątek .NET). Ten wynik lub błąd może być zauważalny przez aranżacje, które wywołały operację.
+
+Operacja jednostki może również tworzyć, odczytywać, aktualizować i usuwać stan jednostki. Stan jednostki jest zawsze trwale trwały w magazynie.
+
+## <a name="defining-entities"></a>Definiowanie jednostek
+
+Obecnie oferujemy dwa oddzielne interfejsy API do definiowania jednostek.
+
+**Składnia oparta na funkcjach** , w której jednostki są reprezentowane jako funkcje, a operacje są jawnie wysyłane przez aplikację. Ta składnia działa dobrze w przypadku jednostek z prostym stanem, kilkoma operacjami lub dynamicznym zestawem operacji (na przykład w strukturach aplikacji). Jednak może być żmudnym, ponieważ nie przechwytuje błędów typu w czasie kompilacji.
+
+**Składnia oparta na klasie** , w której jednostki i operacje są reprezentowane przez klasy i metody. Ta składnia daje łatwiejszy do odczytu kod i umożliwia wywoływanie operacji w sposób bezpieczny dla typu. Składnia oparta na klasie jest tylko cienką warstwą na podstawie składni opartej na funkcjach, tak aby obie warianty mogły być używane zamiennie w tej samej aplikacji.
+
+### <a name="example-function-based-syntax"></a>Przykład: Składnia oparta na funkcjach
+
+Poniższy kod jest przykładem prostej jednostki *licznika* wdrożonej jako funkcja trwała. Ta funkcja definiuje trzy operacje, `add`, `reset` i `get`, z których każda działa na stanie liczby całkowitej.
 
 ```csharp
 [FunctionName("Counter")]
 public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
-    int currentValue = ctx.GetState<int>();
-
     switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
-            int amount = ctx.GetInput<int>();
-            currentValue += amount;
+            ctx.SetState(ctx.GetState<int>() + ctx.GetInput<int>());
             break;
         case "reset":
-            currentValue = 0;
+            ctx.SetState(0);
             break;
         case "get":
-            ctx.Return(currentValue);
+            ctx.Return(ctx.GetState<int>()));
             break;
     }
-
-    ctx.SetState(currentValue);
 }
 ```
 
-Ten model działa najlepiej w przypadku prostych implementacji jednostek lub implementacji, które mają dynamiczny zestaw operacji. Można jednak również użyć modelu programowania opartego na klasach, który jest przydatny dla jednostek, które są statyczne, ale mają bardziej złożone implementacje. Poniższy przykład jest równoważną implementacją jednostki `Counter` przy użyciu klas i metod.
+Aby uzyskać więcej informacji na temat składni opartej na funkcjach i korzystania z niej, zobacz [składnia oparta na funkcjach](durable-functions-dotnet-entities.md#function-based-syntax).
+
+### <a name="example-class-based-syntax"></a>Przykład: Składnia oparta na klasie
+
+Poniższy przykład jest równoważną implementacją jednostki `Counter` przy użyciu klas i metod.
 
 ```csharp
+[JsonObject(MemberSerialization.OptIn)]
 public class Counter
 {
     [JsonProperty("value")]
     public int CurrentValue { get; set; }
 
     public void Add(int amount) => this.CurrentValue += amount;
-    
+
     public void Reset() => this.CurrentValue = 0;
-    
+
     public int Get() => this.CurrentValue;
 
     [FunctionName(nameof(Counter))]
@@ -84,19 +106,31 @@ public class Counter
 }
 ```
 
+Stan tej jednostki jest obiekt typu `Counter`, który zawiera pole przechowujące bieżącą wartość licznika. Aby zachować ten obiekt w magazynie, jest on serializowany i deserializowany przez bibliotekę [JSON.NET](https://www.newtonsoft.com/json) . 
+
+Aby uzyskać więcej informacji na temat składni opartej na klasie i korzystania z niej, zobacz [Definiowanie klas jednostek](durable-functions-dotnet-entities.md#defining-entity-classes).
+
+## <a name="accessing-entities"></a>Uzyskiwanie dostępu do jednostek
+
+Dostęp do jednostek można uzyskać przy użyciu jednej lub dwukierunkowej komunikacji. Używamy następującej terminologii w celu odróżnienia: 
+
+* **Wywołanie** jednostki oznacza, że używamy komunikacji dwukierunkowej (rundy): wysyłamy komunikat operacji do jednostki, a następnie poczekaj na komunikat odpowiedzi przed kontynuowaniem. Komunikat odpowiedzi może podawać wartość wyniku lub wynik błędu (na przykład błąd JavaScript lub wyjątek .NET). Ten wynik lub błąd jest następnie zauważalny przez obiekt wywołujący.
+* **Sygnalizowanie** jednostki oznacza, że używamy komunikacji jednokierunkowej (Fire i zapomnij): wysyłamy komunikat operacji, ale nie czekaj na odpowiedź. Gdy komunikat jest gwarantowany w końcu, nadawca nie wie, kiedy i nie może obserwować żadnej wartości wyniku ani błędów.
+
+Dostęp do jednostek można uzyskać z poziomu funkcji klienta, z poziomu funkcji programu Orchestrator lub z poziomu funkcji Entity. Nie wszystkie formy komunikacji są obsługiwane przez wszystkie konteksty:
+
+* W ramach klientów można *sygnalizować* jednostki i można *odczytać* stan jednostki.
+* Z poziomu aranżacji można *sygnalizować* jednostki i można *wywoływać* jednostki.
+* Z poziomu jednostek można *sygnalizować* jednostki.
+
+Poniżej przedstawiono przykłady ilustrujące różne sposoby uzyskiwania dostępu do jednostek.
+
 > [!NOTE]
-> Metoda punktu wejścia funkcji z atrybutem `[FunctionName]` *musi* być zadeklarowana `static` w przypadku używania klas jednostek. Niestatyczne metody punktu wejścia mogą spowodować inicjalizację wielu obiektów oraz inne niezdefiniowane zachowania.
+> Dla uproszczenia w poniższych przykładach przedstawiono składnię o jednoznacznie określonym typie w celu uzyskania dostępu do jednostek. Ogólnie rzecz biorąc, zalecamy [Uzyskiwanie dostępu do jednostek za poorednictwem interfejsów](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , ponieważ zapewnia to większą kontrolę typów.
 
-W modelu programowania opartego na klasach obiekt `IDurableEntityContext` jest dostępny we właściwości statycznej `Entity.Current`.
+### <a name="example-client-signals-an-entity"></a>Przykład: klient sygnalizuje jednostkę
 
-Model oparty na klasie jest podobny do modelu programowania popularnego przez [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). W tym modelu typ jednostki jest zdefiniowany jako Klasa platformy .NET. Każda metoda klasy jest operacją, którą może wywołać Klient zewnętrzny. W przeciwieństwie do orleans interfejsy .NET są jednak opcjonalne. Poprzedni przykład *licznika* nie korzystał z interfejsu, ale nadal może być wywoływany przez inne funkcje lub wywołania interfejsu API protokołu HTTP.
-
-> [!NOTE]
-> Funkcje wyzwalacza jednostki są dostępne w Durable Functions 2,0 i nowszych. Obecnie funkcje wyzwalacza jednostki są dostępne tylko dla aplikacji funkcji platformy .NET.
-
-### <a name="accessing-entities-from-clients"></a>Uzyskiwanie dostępu do jednostek z klientów
-
-Jednostki trwałe mogą być wywoływane lub wysyłane zapytania od zwykłych funkcji — znanych także jako *funkcje klienta* — za pomocą [powiązania danych wyjściowych klienta jednostki](durable-functions-bindings.md#entity-client). Poniższy przykład *pokazuje funkcję wyzwalaną przez* kolejkę przy użyciu tego powiązania.
+Aby uzyskać dostęp do jednostek z zwykłej funkcji platformy Azure, znanej również jako *Funkcja kliencka* , należy użyć [powiązania danych wyjściowych klienta jednostki](durable-functions-bindings.md#entity-client). Poniższy przykład *pokazuje funkcję wyzwalaną przez* kolejkę przy użyciu tego powiązania.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -111,12 +145,11 @@ public static Task Run(
 }
 ```
 
-> [!NOTE]
-> Funkcje platformy .NET obsługują zarówno luźno wpisane metody, jak i bezpieczne typy sygnalizujące jednostki. Szczegóły można znaleźć w dokumentacji dotyczącej [powiązań klienta jednostki](durable-functions-bindings.md#entity-client-usage) .
+Termin " *sygnał* " oznacza, że wywołanie interfejsu API jednostki jest jednokierunkowe i asynchroniczne. Nie jest możliwe, aby *Funkcja klienta* wiedziała, kiedy jednostka przetworzyła operację. Ponadto funkcja klienta nie może obserwować żadnych wartości wyników ani wyjątków. 
 
-Termin " *sygnał* " oznacza, że wywołanie interfejsu API jednostki jest jednokierunkowe i asynchroniczne. Nie jest możliwe, aby *Funkcja klienta* wiedziała, kiedy jednostka przetworzyła operację, ani nie jest możliwe, aby funkcja jednostki zwracała wartość do funkcji klienta. Jednokierunkowa obsługa komunikatów oparta na kolejkach polega na zamierzonym wyborze jednostek trwałych w celu określenia priorytetów względem wydajności. Ten wybór projektowy jest jednym z kompromisów trwałych jednostek w porównaniu z innymi, podobnymi technologiami. Obecnie tylko aranżacje mogą obsługiwać wartości zwracane z jednostek, zgodnie z opisem w następnej sekcji.
+### <a name="example-client-reads-an-entity-state"></a>Przykład: klient odczytuje stan jednostki
 
-Funkcje klienta programu mogą również wysyłać zapytania o stan jednostek, jak pokazano w następującym przykładzie:
+Funkcje klienta programu mogą również wysyłać zapytania o stan jednostki, jak pokazano w następującym przykładzie:
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -130,11 +163,11 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-Zapytania o stan jednostki są wysyłane do magazynu trwałego śledzenia i zwracają ostatnio *utrwalony* stan jednostki. Możliwe, że zwrócony stan może być nieodświeżony w porównaniu z stanem w pamięci jednostki. Tylko aranżacje mogą odczytywać stan w pamięci jednostki, zgodnie z opisem w następnej sekcji.
+Zapytania o stan jednostki są wysyłane do magazynu trwałego śledzenia i zwracają ostatnio *utrwalony* stan jednostki. Ten stan jest zawsze "przydzielony", oznacza to, że nigdy nie jest tymczasowy stan pośredni przyjęty w trakcie wykonywania operacji. Jednak jest możliwe, że ten stan jest nieodświeżony w porównaniu do stanu w pamięci obiektu. Tylko aranżacje mogą odczytywać stan w pamięci jednostki, zgodnie z opisem w następnej sekcji.
 
-### <a name="accessing-entities-from-orchestrations"></a>Uzyskiwanie dostępu do jednostek z aranżacji
+### <a name="example-orchestration-signals-and-calls-an-entity"></a>Przykład: sygnały aranżacji i wywołania jednostki
 
-Funkcje programu Orchestrator mogą uzyskiwać dostęp do jednostek przy użyciu interfejsów API w ramach [powiązania wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-trigger). Funkcje programu Orchestrator mogą wybierać między komunikacją jednokierunkową (pożar i zapomnij, zwane również *sygnałem*) oraz komunikacji dwukierunkowej (żądanie i odpowiedź, nazywane również *wywołaniem*). Poniższy przykładowy kod pokazuje funkcję programu Orchestrator *wywołującą* i *sygnalizującą* jednostkę *licznika* .
+Funkcje programu Orchestrator mogą uzyskiwać dostęp do jednostek przy użyciu interfejsów API w ramach [powiązania wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-trigger). Poniższy przykładowy kod pokazuje funkcję programu Orchestrator *wywołującą* i *sygnalizującą* jednostkę *licznika* .
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -143,11 +176,11 @@ public static async Task Run(
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
 
-    // Synchronous call to the entity which returns a value - will await a response
+   // Two-way call to the entity which returns a value - awaits the response
     int currentValue = await context.CallEntityAsync<int>(entityId, "Get");
     if (currentValue < 10)
     {
-        // Asynchronous call which updates the value - will not await a response
+        // One-way signal to the entity which updates the value - does not await a response
         context.SignalEntity(entityId, "Add", 1);
     }
 }
@@ -156,94 +189,29 @@ public static async Task Run(
 Tylko aranżacje mogą wywołać jednostki i uzyskać odpowiedź, co może być wartością zwracaną lub wyjątkiem. Funkcje klienta korzystające z [powiązania klienta](durable-functions-bindings.md#entity-client) mogą jedynie *sygnalizować* jednostki.
 
 > [!NOTE]
-> Wywołanie jednostki z funkcji orchestrtor jest podobne do wywoływania [funkcji działania](durable-functions-types-features-overview.md#activity-functions) z funkcji programu Orchestrator. Główną różnicą jest to, że funkcje jednostki są trwałymi obiektami z adresem ( *identyfikatorem jednostki*) i obsługują Określanie nazwy operacji. Funkcje działania, z drugiej strony, są bezstanowe i nie mają koncepcji operacji.
+> Wywołanie jednostki z funkcji programu Orchestrator jest podobne do wywołania [funkcji działania](durable-functions-types-features-overview.md#activity-functions) z funkcji programu Orchestrator. Główną różnicą jest to, że funkcje jednostki są trwałymi obiektami z adresem ( *identyfikatorem jednostki*) i obsługują Określanie nazwy operacji. Funkcje działania, z drugiej strony, są bezstanowe i nie mają koncepcji operacji.
 
-### <a name="dependency-injection-in-entity-classes-net"></a>Iniekcja zależności w klasach jednostek (.NET)
+### <a name="example-entity-signals-an-entity"></a>Przykład: jednostka sygnalizuje jednostkę
 
-Klasy jednostek obsługują [iniekcję zależności Azure Functions](../functions-dotnet-dependency-injection.md). Poniższy przykład pokazuje, jak zarejestrować usługę `IHttpClientFactory` w jednostce opartej na klasie.
+Funkcja Entity może wysyłać sygnały do innych jednostek (lub nawet siebie!) podczas wykonywania operacji.
+Na przykład można zmodyfikować powyższy przykład jednostki licznika, aby wysyłał sygnał "punkt kontrolny" do pewnej jednostki monitora, gdy licznik osiągnie wartość 100:
 
 ```csharp
-[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
-
-namespace MyNamespace
-{
-    public class Startup : FunctionsStartup
-    {
-        public override void Configure(IFunctionsHostBuilder builder)
+   case "add":
+        var amount = ctx.GetInput<int>();
+        if (currentValue < 100 && currentValue + amount >= 100)
         {
-            builder.Services.AddHttpClient();
+            ctx.SignalEntity(new EntityId("MonitorEntity", ""), "milestone-reached", ctx.EntityKey);
         }
-    }
-}
+        currentValue += amount;
+        break;
 ```
-
-W poniższym fragmencie kodu pokazano, jak dołączyć wstrzykiwaną usługę do klasy Entity.
-
-```csharp
-public class HttpEntity
-{
-    private readonly HttpClient client;
-
-    public class HttpEntity(IHttpClientFactory factory)
-    {
-        this.client = factory.CreateClient();
-    }
-
-    public Task<int> GetAsync(string url)
-    {
-        using (var response = await this.client.GetAsync(url))
-        {
-            return (int)response.StatusCode;
-        }
-    }
-
-    // The function entry point must be declared static
-    [FunctionName(nameof(HttpEntity))]
-    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-        => ctx.DispatchAsync<HttpEntity>();
-}
-```
-
-> [!NOTE]
-> W przeciwieństwie do używania iniekcji konstruktora w zwykłych Azure Functions .NET, Metoda punktu wejścia funkcji dla jednostek opartych na klasie *musi* być zadeklarowana `static`. Deklarowanie niestatycznego punktu wejścia funkcji może spowodować konflikty między normalnym inicjatorem obiektu Azure Functions i inicjatorem obiektów trwałe jednostki.
-
-### <a name="bindings-in-entity-classes-net"></a>Powiązania w klasach jednostek (.NET)
-
-W przeciwieństwie do funkcji regularnych, metody klasy jednostek nie mają bezpośredniego dostępu do powiązań wejściowych i wyjściowych. Zamiast tego, dane wiążące muszą być przechwytywane w deklaracji funkcji punktu wejścia, a następnie przekazywać do metody `DispatchAsync<T>`. Wszystkie obiekty przenoszone do `DispatchAsync<T>` będą automatycznie przesyłane do konstruktora klasy jednostki jako argument.
-
-Poniższy przykład pokazuje, jak odwołanie `CloudBlobContainer` z [powiązania danych wejściowych obiektu BLOB](../functions-bindings-storage-blob.md#input) może zostać udostępnione dla jednostki opartej na klasie.
-
-```csharp
-public class BlobBackedEntity
-{
-    private readonly CloudBlobContainer container;
-
-    public BlobBackedEntity(CloudBlobContainer container)
-    {
-        this.container = container;
-    }
-
-    // ... entity methods can use this.container in their implementations ...
-    
-    [FunctionName(nameof(BlobBackedEntity))]
-    public static Task Run(
-        [EntityTrigger] IDurableEntityContext context,
-        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
-    {
-        // passing the binding object as a parameter makes it available to the
-        // entity class constructor
-        return context.DispatchAsync<BlobBackedEntity>(container);
-    }
-}
-```
-
-Aby uzyskać więcej informacji na temat powiązań w Azure Functions, zapoznaj się z dokumentacją [Azure Functions wyzwalacze i powiązania](../functions-triggers-bindings.md) .
 
 ## <a name="entity-coordination"></a>Koordynacja jednostek
 
 Mogą wystąpić sytuacje, w których trzeba skoordynować operacje w wielu jednostkach. Na przykład w aplikacji bankowej mogą istnieć jednostki reprezentujące poszczególne konta bankowe. W przypadku przenoszenia funduszy z jednego konta do innego należy upewnić się, że konto _źródłowe_ ma wystarczające środki i że aktualizacje zarówno dla konta _źródłowego_ , jak i _docelowego_ są wykonywane w sposób spójny.
 
-### <a name="transfer-funds-example-in-c"></a>Przykład transferu pieniędzy wC#
+### <a name="example-transfer-funds"></a>Przykład: transfer środków
 
 Poniższy przykładowy kod transferuje fundusze między dwiema jednostkami _kont_ przy użyciu funkcji programu Orchestrator. Koordynacja aktualizacji jednostek wymaga użycia metody `LockAsync` do utworzenia _sekcji krytycznej_ w aranżacji:
 
@@ -294,6 +262,9 @@ W programie .NET `LockAsync` zwraca `IDisposable`, które kończą sekcję kryty
 
 W poprzednim przykładzie funkcja programu Orchestrator przesłała fundusze z jednostki _źródłowej_ do jednostki _docelowej_ . Metoda `LockAsync` zablokowała zarówno jednostkę _źródłową_ , jak i _docelową_ . Ten blok zapewnia, że żaden inny klient nie może wykonać zapytania lub zmodyfikować stanu jednego z kont do momentu, gdy logika aranżacji nie zakończyła _sekcji krytycznej_ na końcu instrukcji `using`. Skutecznie uniemożliwia to przekroczenie możliwości przeprojektowania z konta _źródłowego_ .
 
+> [!NOTE] 
+> Gdy aranżacja kończy się (zwykle lub z powodu błędu), wszelkie krytyczne sekcje w toku są niejawnie zakończone i wszystkie blokady są zwalniane.
+
 ### <a name="critical-section-behavior"></a>Zachowanie sekcji krytycznej
 
 Metoda `LockAsync` tworzy _sekcję krytyczną_ w aranżacji. Te _krytyczne sekcje_ uniemożliwiają innym aranżacjom wprowadzanie nakładających się zmian do określonego zestawu jednostek. Wewnętrznie interfejs API `LockAsync` wysyła operacje "Lock" do jednostek i zwraca, gdy odbierze komunikat odpowiedzi "lockd" z każdej z tych samych jednostek. *Blokady* i *odblokowywanie* to wbudowane operacje obsługiwane przez wszystkie jednostki.
@@ -305,9 +276,11 @@ Nie można wykonywać operacji z innych klientów w jednostce, gdy jest ona w st
 
 Blokady na jednostkach są trwałe, więc będą zachowywane nawet wtedy, gdy proces wykonywany zostanie odtworzony. Blokady są wewnętrznie utrwalane jako część trwałego stanu jednostki.
 
-### <a name="critical-section-restrictions"></a>Ograniczenia sekcji krytycznej
+W przeciwieństwie do transakcji sekcje krytyczne nie są automatycznie wycofywane w przypadku błędów. Zamiast tego, każda obsługa błędów (wycofywanie, ponawianie lub inne) musi być jawnie zakodowana; na przykład przez przechwytywanie błędów lub wyjątków. Ten wybór projektu jest zamierzony. Automatyczne wycofywanie wszystkich efektów aranżacji jest trudne lub niemożliwe, ponieważ aranżacje mogą uruchamiać działania i wykonywać wywołania do zewnętrznych usług, których nie można cofnąć. Ponadto próby wycofania mogą się nie powieść i wymagają dalszej obsługi błędów.
 
-Nakładamy kilka ograniczeń dotyczących sposobu używania sekcji krytycznych. Ograniczenia te służą do zapobiegania zakleszczeniom i współużytkowania wątkowości.
+### <a name="critical-section-rules"></a>Reguły sekcji krytycznej
+
+W przeciwieństwie do elementów podstawowych blokowania niskiego poziomu w większości języków programowania, sekcje krytyczne **nie są zagwarantowane**. Aby zapobiec zakleszczeniom, Wymuś następujące ograniczenia: 
 
 * Sekcje krytyczne nie mogą być zagnieżdżane.
 * Sekcje krytyczne nie mogą tworzyć podaranżacji.
@@ -315,23 +288,31 @@ Nakładamy kilka ograniczeń dotyczących sposobu używania sekcji krytycznych. 
 * Sekcje krytyczne nie mogą wywoływać tej samej jednostki przy użyciu wielu wywołań równoległych.
 * Sekcje krytyczne mogą sygnalizować tylko jednostki, które nie zostały zablokowane.
 
+Wszelkie naruszenia tych reguł powodują wystąpienie błędu czasu wykonywania (takie jak `LockingRulesViolationException` w środowisku .NET), które zawiera komunikat z wyjaśnieniem, jaka reguła została przerwana.
+
 ## <a name="comparison-with-virtual-actors"></a>Porównanie z aktorami wirtualnymi
 
-Wiele funkcji jednostek trwałych jest inspirowany [modelem aktora](https://en.wikipedia.org/wiki/Actor_model). Jeśli znasz już uczestników, możesz rozpoznać wiele pojęć opisanych w tym artykule. W szczególności trwałe jednostki są podobne do [aktorów wirtualnych](https://research.microsoft.com/projects/orleans/) na wiele sposobów:
+Wiele funkcji jednostek trwałych jest inspirowany [modelem aktora](https://en.wikipedia.org/wiki/Actor_model). Jeśli znasz już uczestników, możesz rozpoznać wiele pojęć opisanych w tym artykule. Trwałe jednostki są szczególnie podobne do [aktorów wirtualnych](https://research.microsoft.com/projects/orleans/)lub *ziaren*, które są popularne przez [projekt Orleans](http://dotnet.github.io/orleans/). Na przykład:
 
 * Jednostki trwałe są adresowane za pośrednictwem *identyfikatora jednostki*.
 * Trwałe operacje jednostki wykonują szeregowo, pojedynczo, aby uniknąć sytuacji wyścigu.
-* Trwałe jednostki są tworzone automatycznie po wywołaniu lub zasygnalizowaniu.
+* Trwałe jednostki są tworzone niejawnie, gdy są wywoływane lub sygnalizowane.
 * W przypadku braku wykonywania operacji trwałe jednostki są dyskretnie zwalniane z pamięci.
 
 Istnieją jednak pewne istotne różnice, które warto wziąć pod uwagę:
 
 * Trwałe jednostki ustalają priorytety *trwałości* przed *opóźnieniami*i w ten sposób mogą nie być odpowiednie dla aplikacji z rygorystycznymi wymaganiami opóźnienia.
-* Komunikaty wysyłane między jednostkami są dostarczane w sposób niezawodny i w kolejności.
-* Trwałe jednostki mogą być używane w połączeniu z trwałymi aranżacjami i obsługują mechanizmy blokowania rozproszonego.
-* Wzorce żądania/odpowiedzi w jednostkach są ograniczone do aranżacji. W przypadku komunikacji między *klientem* *i jednostką* , tylko jednokierunkowa obsługa komunikatów (nazywanych także "sygnalizacją") jest dozwolona, jak w oryginalnym modelu aktora. Takie zachowanie uniemożliwia rozproszone zakleszczenie.
+* Jednostki trwałe nie mają wbudowanych limitów czasu dla komunikatów. W Orleans, wszystkie komunikaty przekroczą limit czasu po skonfigurowaniu czasu (domyślnie 30 sekund).
+* Komunikaty wysyłane między jednostkami są dostarczane w sposób niezawodny i w kolejności. W Orleans, niezawodne lub uporządkowane dostarczanie jest obsługiwane w przypadku zawartości wysyłanej za poorednictwem strumieni, ale nie jest gwarantowane dla wszystkich komunikatów między ziarnami.
+* Wzorce żądania/odpowiedzi w jednostkach są ograniczone do aranżacji. W obrębie jednostek dozwolony jest tylko jednokierunkowa obsługa komunikatów (nazywanych także "sygnalizacją"), jak w oryginalnym modelu aktora i w przeciwieństwie do ziaren w Orleans. 
+* Trwałe jednostki nie są zakleszczony. W Orleans mogą wystąpić zakleszczenia (i nie należy rozwiązywać problemów przed upływem limitu czasu komunikatów).
+* Trwałe jednostki mogą być używane w połączeniu z trwałymi aranżacjami i obsługują mechanizmy blokowania rozproszonego. 
+
 
 ## <a name="next-steps"></a>Następne kroki
+
+> [!div class="nextstepaction"]
+> [Zapoznaj się z przewodnikiem dewelopera w przypadku trwałych jednostek w programie .NET](durable-functions-dotnet-entities.md)
 
 > [!div class="nextstepaction"]
 > [Informacje o centrach zadań](durable-functions-task-hubs.md)

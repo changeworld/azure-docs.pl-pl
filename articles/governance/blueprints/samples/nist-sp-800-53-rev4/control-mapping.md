@@ -1,17 +1,17 @@
 ---
-title: Przykład — NIST SP 800-53 R4 — Mapowanie formantów
+title: Przykładowa kontrola nad planem NIST SP 800-53 R4
 description: Sterowanie mapowaniem przykładu programu NIST SP 800-53 R4. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: c45e0fc450c420418e9302a6a811865867e7b096
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 1fab1ebee03f48434fd0fb8ccb1bf1be708370e5
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248390"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299068"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>Sterowanie mapowaniem przykładowego planu NIST SP 800-53 R4
 

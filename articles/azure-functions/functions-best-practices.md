@@ -1,27 +1,24 @@
 ---
 title: Najlepsze rozwiązania dotyczące Azure Functions | Microsoft Docs
 description: Poznaj najlepsze rozwiązania i wzorce Azure Functions.
-services: functions
-documentationcenter: na
-author: wesmc7777
-manager: jeconnoc
-keywords: Azure Functions, wzorce, najlepsze rozwiązanie, funkcje, przetwarzanie zdarzeń, elementy webhook, dynamiczne obliczenia, architektura bezserwerowa
+author: ggailey777
+manager: gwallace
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933058"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294360"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizacja wydajności i niezawodności Azure Functions
 
-Ten artykuł zawiera wskazówki dotyczące poprawy wydajności i niezawodności aplikacji funkcji bezserwerowych. [](https://azure.microsoft.com/solutions/serverless/) 
+Ten artykuł zawiera wskazówki dotyczące poprawy wydajności i niezawodności aplikacji funkcji [bezserwerowych](https://azure.microsoft.com/solutions/serverless/) . 
 
 ## <a name="general-best-practices"></a>Ogólne najlepsze praktyki
 
@@ -29,7 +26,9 @@ Poniżej przedstawiono najlepsze rozwiązania w zakresie kompilowania i tworzeni
 
 ### <a name="avoid-long-running-functions"></a>Unikaj długotrwałych funkcji
 
-Duże, długotrwałe funkcje mogą powodować nieoczekiwane problemy z przekroczeniem limitu czasu. Funkcja może być duża ze względu na wiele zależności Node. js. Importowanie zależności może być również przyczyną zwiększonych czasów ładowania, które powodują nieoczekiwane przekroczenie limitu czasu. Zależności są ładowane jawnie i niejawnie. Pojedynczy moduł załadowany przez kod może ładować własne dodatkowe moduły.  
+Duże, długotrwałe funkcje mogą powodować nieoczekiwane problemy z przekroczeniem limitu czasu. Aby dowiedzieć się więcej o limitach czasu dla danego planu hostingu, zobacz [limit czasu aplikacji funkcji](functions-scale.md#timeout). 
+
+Funkcja może być duża ze względu na wiele zależności Node. js. Importowanie zależności może być również przyczyną zwiększonych czasów ładowania, które powodują nieoczekiwane przekroczenie limitu czasu. Zależności są ładowane jawnie i niejawnie. Pojedynczy moduł załadowany przez kod może ładować własne dodatkowe moduły. 
 
 Jeśli to możliwe, Refaktoryzacja duże funkcje do mniejszych zestawów funkcji, które współpracują i zwracają odpowiedzi szybko. Na przykład funkcja webhook lub wyzwalacz HTTP może wymagać odpowiedzi potwierdzenia w określonym limicie czasu; elementy webhook często wymagają natychmiastowej reakcji. Ładunek wyzwalacza HTTP można przekazać do kolejki w celu przetworzenia przez funkcję wyzwalacza kolejki. Takie podejście umożliwia odroczenie rzeczywistej pracy i zwrócenie natychmiastowej odpowiedzi.
 
@@ -49,7 +48,7 @@ Centra zdarzeń są przydatne do obsługi komunikacji dużej ilości.
 
 ### <a name="write-functions-to-be-stateless"></a>Funkcje zapisu są bezstanowe 
 
-Funkcje powinny być bezstanowe i idempotentne, jeśli jest to możliwe. Skojarz wszystkie wymagane informacje o stanie z danymi. Na przykład przetworzone zamówienie prawdopodobnie ma skojarzony `state` element członkowski. Funkcja może przetwarzać zamówienie na podstawie tego stanu, gdy sama funkcja pozostaje bez zmian. 
+Funkcje powinny być bezstanowe i idempotentne, jeśli jest to możliwe. Skojarz wszystkie wymagane informacje o stanie z danymi. Na przykład przetworzone zamówienie prawdopodobnie ma skojarzony element członkowski `state`. Funkcja może przetwarzać zamówienie na podstawie tego stanu, gdy sama funkcja pozostaje bez zmian. 
 
 Funkcje idempotentne są szczególnie zalecane z wyzwalaczami czasomierza. Na przykład, jeśli masz coś, co bezwzględnie musi być uruchamiane raz dziennie, napisz je tak, aby można je było uruchomić w dowolnym momencie dnia z tymi samymi wynikami. Funkcja może wyjść, gdy nie ma pracy przez konkretny dzień. Ponadto jeśli poprzednie uruchomienie nie powiodło się, następne uruchomienie powinno zostać wznowione w miejscu, w którym zostało pozostawione.
 
@@ -93,19 +92,19 @@ Nie używaj pełnego rejestrowania w kodzie produkcyjnym. Ma negatywny wpływ na
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Użyj kodu asynchronicznego, ale unikaj blokowania wywołań
 
-Programowanie asynchroniczne jest zalecanym najlepszym rozwiązaniem. Jednak zawsze należy unikać odwoływania `Result` się do właściwości `Wait` lub metody wywołującej w `Task` wystąpieniu. Takie podejście może prowadzić do wyczerpania wątków.
+Programowanie asynchroniczne jest zalecanym najlepszym rozwiązaniem. Jednak zawsze należy unikać odwoływania się do właściwości `Result` lub wywołania metody `Wait` w wystąpieniu `Task`. Takie podejście może prowadzić do wyczerpania wątków.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>W miarę możliwości odbieraj komunikaty w usłudze Batch
 
-Niektóre wyzwalacze, takie jak centrum zdarzeń, umożliwiają otrzymywanie wsadowych komunikatów na pojedynczym wywołaniu.  Przetwarzanie wsadowe komunikatów ma znacznie lepszą wydajność.  Maksymalny rozmiar wsadu można skonfigurować w `host.json` pliku zgodnie z opisem w [dokumentacji dotyczącej hosta. JSON.](functions-host-json.md)
+Niektóre wyzwalacze, takie jak centrum zdarzeń, umożliwiają otrzymywanie wsadowych komunikatów na pojedynczym wywołaniu.  Przetwarzanie wsadowe komunikatów ma znacznie lepszą wydajność.  Maksymalny rozmiar wsadu można skonfigurować w pliku `host.json`, zgodnie z opisem w [dokumentacji dotyczącej pliku host. JSON.](functions-host-json.md)
 
-W C# przypadku funkcji można zmienić typ na tablicę o jednoznacznie określonym typie.  Na przykład zamiast `EventData sensorEvent` sygnatury metody może być `EventData[] sensorEvent`.  W przypadku innych języków należy jawnie ustawić właściwość Kardynalność w `function.json` do `many` , aby można było włączyć przetwarzanie wsadowe [, jak pokazano tutaj](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+W C# przypadku funkcji można zmienić typ na tablicę o jednoznacznie określonym typie.  Na przykład zamiast `EventData sensorEvent` sygnatura metody może być `EventData[] sensorEvent`.  W przypadku innych języków należy jawnie ustawić właściwość Kardynalność w `function.json` na `many`, aby włączyć przetwarzanie wsadowe [jak pokazano poniżej](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurowanie zachowań hosta w celu lepszego obsłużenia współbieżności
 
-`host.json` Plik w aplikacji funkcji umożliwia konfigurację środowiska uruchomieniowego hosta i zachowań wyzwalających.  Oprócz zachowań wsadowych można zarządzać współbieżnością dla wielu wyzwalaczy.  Często dostosowanie wartości w tych opcjach może pomóc każdej skali wystąpienia odpowiednio do potrzeb wywołanych funkcji.
+Plik `host.json` w aplikacji funkcji umożliwia skonfigurowanie zachowań środowiska uruchomieniowego hosta i wyzwalacza.  Oprócz zachowań wsadowych można zarządzać współbieżnością dla wielu wyzwalaczy.  Często dostosowanie wartości w tych opcjach może pomóc każdej skali wystąpienia odpowiednio do potrzeb wywołanych funkcji.
 
 Ustawienia w pliku hosts są stosowane dla wszystkich funkcji w aplikacji w ramach *jednego wystąpienia* funkcji. Jeśli na przykład aplikacja funkcji ma 2 funkcje HTTP i współbieżne żądania mają ustawioną wartość 25, żądanie do wyzwalacza HTTP będzie wliczane do współużytkowanych 25 współbieżnych żądań.  Jeśli ta aplikacja funkcji jest skalowana do 10 wystąpień, 2 funkcje byłyby efektywnie zezwalały na 250 współbieżnych żądań (10 wystąpień * 25 współbieżnych żądań na wystąpienie).
 
@@ -117,7 +116,7 @@ Inne opcje konfiguracji hosta znajdują się [w dokumencie konfiguracji hosta](f
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji, zobacz następujące zasoby:
+Więcej informacji zawierają następujące zasoby:
 
 * [Jak zarządzać połączeniami w Azure Functions](manage-connections.md)
 * [Azure App Service najlepszych praktyk](../app-service/app-service-best-practices.md)

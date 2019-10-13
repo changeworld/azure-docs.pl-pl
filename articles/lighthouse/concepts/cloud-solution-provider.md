@@ -1,5 +1,5 @@
 ---
-title: Azure Lighthouse i program dostawcy rozwiązań w chmurze
+title: Zagadnienia dotyczące programu Cloud Solution Provider
 description: W przypadku korzystania z funkcji zarządzania zasobami delegowanymi przez platformę Azure ważne jest, aby uwzględnić zabezpieczenia i kontrolę dostępu.
 author: JnHs
 ms.service: lighthouse
@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 399d2cb829c0425e3c9ee70a61cafde8568f903b
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 76df2942b176fd7d0e785213e44655ffd11da410
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012111"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286207"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse i program dostawcy rozwiązań w chmurze
 

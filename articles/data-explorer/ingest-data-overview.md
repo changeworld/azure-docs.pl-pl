@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: be77ae932ec72239bea04fce298d7f1b84e5e4d8
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 35d3451327a0ce7bcaf567f93c48d532842b4f25
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240650"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285920"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych Eksplorator danych platformy Azure
 
@@ -22,17 +22,17 @@ Pozyskiwanie danych to proces używany do ładowania rekordów danych z co najmn
 
 Usługa zarządzania danymi w usłudze Azure Eksplorator danych, która jest odpowiedzialna za pozyskiwanie danych, zapewnia następujące funkcje:
 
-1. **Ściąganie danych**: Ściągaj dane ze źródeł zewnętrznych (Event Hubs) lub Odczytuj żądania pozyskiwania z kolejki platformy Azure.
+1. **Ściąganie danych**: ściąganie danych ze źródeł zewnętrznych (Event Hubs) lub odczytywanie żądań ściągnięcia z kolejki platformy Azure.
 
-1. Tworzenie **partii**: Dane wsadowe przepływające do tej samej bazy danych i tabeli w celu zoptymalizowania przepływności pozyskiwania.
+1. **Przetwarzanie wsadowe**: dane wsadowe przepływające do tej samej bazy danych i tabeli w celu zoptymalizowania przepływności pozyskiwania.
 
-1. **Sprawdzanie poprawności**: Wstępna weryfikacja i Konwersja formatu, jeśli jest to konieczne.
+1. **Walidacja**: wstępne sprawdzanie poprawności i Konwersja formatu, jeśli jest to konieczne.
 
-1. **Manipulowanie danymi**: Dopasowanie schematu, porządkowanie, indeksowanie, kodowanie i kompresowanie danych.
+1. **Manipulowanie danymi**: dopasowywanie schematu, porządkowanie, indeksowanie, kodowanie i kompresowanie danych.
 
-1. **Punkt trwałości w przepływie**pozyskiwania: Zarządzanie obciążeniem pozyskiwania w aparacie i dojściem ponawiania prób po błędach przejściowych.
+1. **Punkt trwałości w przepływie**pozyskiwania: Zarządzanie obciążeniem pozyskiwania w aparacie i dojściem ponawiania prób w przypadku błędów przejściowych.
 
-1. Zatwierdź pozyskiwanie **danych**: Sprawia, że dane są dostępne dla kwerendy.
+1. Zatwierdź pozyskiwanie **danych**: udostępnia dane dla kwerendy.
 
 ## <a name="ingestion-methods"></a>Metody pozyskiwania
 
@@ -70,13 +70,13 @@ Kusto oferuje zestaw SDK klienta, który może służyć do pozyskiwania i wykon
 
 * [Zestaw SDK węzła](/azure/kusto/api/node/kusto-node-client-library)
 
-* [REST API](/azure/kusto/api/netfx/kusto-ingest-client-rest)
+* [Interfejs API REST](/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
 **Techniki pozyskiwania programistycznego**:
 
 * Pozyskiwanie danych za pomocą usługi zarządzania danymi w usłudze Azure Eksplorator danych (Wysoka przepływność i niezawodne pozyskiwanie):
 
-    Pozyskiwanie [**wsadowe**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (udostępniane przez zestaw SDK): klient przekazuje dane do usługi Azure Blob Storage (wydanej przez usługę zarządzania danymi w usłudze Azure Eksplorator danych) i publikuje powiadomienie w kolejce platformy Azure. Pozyskiwanie wsadowe jest zalecaną techniką do pozyskiwania, niezawodnego i taniego pozyskiwania danych.
+    Pozyskiwanie [**wsadowe**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (udostępniane przez zestaw SDK): klient przekazuje dane do usługi Azure Blob Storage (oznaczonej przez usługę zarządzania danymi w usłudze Azure Eksplorator danych) i publikuje powiadomienie w usłudze Azure Queue. Pozyskiwanie wsadowe jest zalecaną techniką do pozyskiwania, niezawodnego i taniego pozyskiwania danych.
 
 * Pozyskiwanie danych bezpośrednio w aparacie Eksplorator danych platformy Azure (najbardziej odpowiednie dla eksploracji i tworzenia prototypów):
 
@@ -90,7 +90,7 @@ Kusto oferuje zestaw SDK klienta, który może służyć do pozyskiwania i wykon
 
 | Metoda | Opóźnienie |
 | --- | --- |
-| **Pozyskiwanie wbudowane** | Natychmiastowe |
+| **Pozyskiwanie wbudowane** | Bezpośredniego |
 | **Pozyskiwanie z zapytania** | Czas wykonywania zapytania + czas przetwarzania |
 | **Pozyskiwanie z magazynu** | Czas pobierania + czas przetwarzania |
 | **Przyjmowanie w kolejce** | Przetwarzanie wsadowe + czas przetwarzania |
@@ -119,7 +119,7 @@ W przypadku organizacji z istniejącą infrastrukturą opartą na usłudze obsł
 
 W przypadku wszystkich metod pozyskiwania innych niż pozyskiwanie z kwerendy sformatuj dane, aby usługa Azure Eksplorator danych mogła ją przeanalizować. Obsługiwane formaty danych:
 
-* CSV, TSV, TSVE, PSV, SCSV, RAPORT O KONDYCJI
+* TXT, CSV, TSV, TSVE, PSV, SCSV, RAPORT O KONDYCJI
 * JSON (rozdzielone wierszami, wielowierszowe), Avro
 * ZIP i GZIP 
 
@@ -136,7 +136,7 @@ W przypadku wszystkich metod pozyskiwania innych niż pozyskiwanie z kwerendy sf
 Mapowanie schematu pomaga powiązać pola danych źródłowych z kolumnami tabeli docelowej.
 
 * [Mapowanie CSV](/azure/kusto/management/mappings?branch=master#csv-mapping) (opcjonalnie) działa ze wszystkimi formatami opartymi na liczbie porządkowej. Można go wykonać przy użyciu parametru polecenia pozyskiwania lub [wstępnie utworzonego w tabeli](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) i przywoływanych przez parametr polecenia pozyskiwania.
-* [Mapowanie JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (obowiązkowe) i [Mapowanie Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (obowiązkowe) można wykonać przy użyciu parametru polecenia pozyskiwania. Mogą być również [wstępnie utworzone w tabeli](/azure/kusto/management/tables#create-ingestion-mapping) i przywoływane przez parametr polecenia pozyskiwania.
+* [Mapowanie JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (obowiązkowe) i [Mapowanie Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (obowiązkowe) można wykonać za pomocą parametru polecenia pozyskiwania. Mogą być również [wstępnie utworzone w tabeli](/azure/kusto/management/tables#create-ingestion-mapping) i przywoływane przez parametr polecenia pozyskiwania.
 
 ## <a name="next-steps"></a>Następne kroki
 

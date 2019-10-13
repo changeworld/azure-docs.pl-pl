@@ -2,19 +2,19 @@
 title: Kodery przesyłania strumieniowego na żywo zalecane przez Media Services — Azure | Microsoft Docs
 description: Dowiedz się więcej o koderach lokalnych dotyczących przesyłania strumieniowego na żywo zalecanych przez Media Services
 services: media-services
-keywords: encoding;encoders;media
+keywords: kodowanie; kodery; nośnik
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/08/2019
+ms.date: 10/10/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b9cb325f2bb7419e32efd5bde4705786c5dbeb5
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934925"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300950"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery przesyłania strumieniowego na żywo
 
@@ -37,6 +37,7 @@ Usługa Media Services zaleca używanie jednego z następujących koderów na ż
 > Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP sprawdź ustawienia zapory i/lub serwera proxy, aby upewnić się, że porty TCP ruchu wychodzącego 1935 i 1936 są otwarte.
 
 - Adobe Flash Media Live Encoder 3.2
+- [Cambria na żywo 4,3](https://www.capellasystems.net/products/cambria-live/)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
@@ -73,9 +74,9 @@ Aby odtworzyć zawartość, musi być obecny strumień audio i wideo. Odtwarzani
 
 ### <a name="configuration-tips"></a>Wskazówki dotyczące konfiguracji
 
-- Jeśli to możliwe, przy użyciu połączenia internetowego hardwired.
+- Zawsze, gdy to możliwe, Użyj połączenia internetowego Hardwired.
 - Podczas określania wymagań dotyczących przepustowości należy zwiększyć szybkość transmisji strumieniowej. Chociaż nie jest to wymagane, prosta reguła pomaga ograniczyć wpływ przeciążenia sieci.
-- Podczas korzystania z koderów opartych na oprogramowaniu, zamknąć wszystkie zbędne programy.
+- W przypadku korzystania z koderów opartych na oprogramowaniu Zamknij wszystkie zbędne programy.
 - Zmiana konfiguracji kodera po rozpoczęciu wypychania ma negatywny wpływ na zdarzenie. Zmiany konfiguracji mogą spowodować niestabilność zdarzenia. 
 - Upewnij się, że podajesz sobie dużo czasu, aby skonfigurować wydarzenie. W przypadku zdarzeń o dużej skali zalecamy uruchomienie Instalatora godzinę przed wydarzeniem.
 
@@ -127,7 +128,7 @@ Wykonaj te same czynności co w przypadku [weryfikacji zdarzenia](#pass-through-
 
 ### <a name="email-your-recorded-settings"></a>Wyślij zapisane ustawienia pocztą e-mail
 
-Na koniec Wyślij zapisane ustawienia i parametry Archiwum na żywo, aby Azure Media Services amshelp@microsoft.com powiadomienia, że wszystkie testy samoweryfikacji zostały zakończone pomyślnie. Podaj również informacje kontaktowe dla każdej z nich. Możesz skontaktować się z zespołem Azure Media Services, podając wszelkie pytania dotyczące tego procesu.
+Na koniec Wyślij zapisane ustawienia i parametry Archiwum na żywo, aby Azure Media Services amshelp@microsoft.com jako powiadomienie, że wszystkie testy samoweryfikacji zostały zakończone pomyślnie. Podaj również informacje kontaktowe dla każdej z nich. Możesz skontaktować się z zespołem Azure Media Services, podając wszelkie pytania dotyczące tego procesu.
 
 ## <a name="next-steps"></a>Następne kroki
 

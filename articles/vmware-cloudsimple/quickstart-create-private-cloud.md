@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828942"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285789"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Szybki Start — Konfigurowanie środowiska chmury prywatnej
 
@@ -183,9 +183,9 @@ Jeśli ustawisz hasło, które nie spełnia wymagań:
 * Jeśli używasz klienta programu vSphere Flash, zgłaszany jest błąd
 * Jeśli używasz klienta HTML5, nie zgłasza on błędu. Klient nie akceptuje zmiany i nadal działa stare hasło.
 
-## <a name="change-nsx-administrator-password"></a>Zmień hasło administratora NSX
+## <a name="access-nsx-manager"></a>Dostęp do programu NSX Manager
 
-Program NSX Manager jest wdrażany z domyślnym hasłem.  Zalecamy zmianę hasła po utworzeniu chmury prywatnej.
+Program NSX Manager jest wdrażany z domyślnym hasłem. 
 
 * Nazwa użytkownika: **administrator**
 * Hasło: **CloudSimple123!**
@@ -198,8 +198,6 @@ W portalu CloudSimple można znaleźć w pełni kwalifikowaną nazwę domeny (FQ
 4. Użyj nazwy FQDN lub adresu IP programu **NSX Manager** i nawiąż połączenie przy użyciu przeglądarki sieci Web.
 
     ![Znajdź nazwę FQDN programu NSX Manager](media/private-cloud-nsx-manager-fqdn.png)
-
-Aby zmienić hasło, postępuj zgodnie z instrukcjami w temacie [instalacja programu NSX Manager](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html).
 
 ## <a name="create-a-port-group"></a>Tworzenie grupy portów
 

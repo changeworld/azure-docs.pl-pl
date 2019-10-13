@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: b30ccbcba0b2126d1fe1abce9ae67a55ce25f601
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92623377daa80efe08b260745fa1d9443366cb8a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170268"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300604"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie SQL Server wystąpienia klastra trybu failover na platformie Azure Virtual Machines
 
@@ -375,14 +375,15 @@ Aby utworzyć moduł równoważenia obciążenia:
 
 1. Skonfiguruj moduł równoważenia obciążenia przy użyciu:
 
-   - **Nazwa**: Nazwa identyfikująca moduł równoważenia obciążenia.
-   - **Typ**: usługa równoważenia obciążenia może być publiczna lub prywatna. Dostęp do prywatnego modułu równoważenia obciążenia można uzyskać w ramach tej samej sieci wirtualnej. Większość aplikacji platformy Azure może korzystać z prywatnego modułu równoważenia obciążenia. Jeśli aplikacja wymaga dostępu do SQL Server bezpośrednio za pośrednictwem Internetu, użyj publicznego modułu równoważenia obciążenia.
-   - **Virtual Network**: sieć, w której znajduje się maszyna wirtualna.
-   - **Podsieć**: ta sama podsieć, w której znajduje się maszyna wirtualna.
-   - **Prywatny adres IP**: ten sam adres IP, który został przypisany do zasobu sieci klastra SQL Server FCI.
-   - **subskrypcja**: Twoja subskrypcja platformy Azure.
+   - **Subskrypcja**: Twoja subskrypcja platformy Azure.
    - **Grupa zasobów**: Użyj tej samej grupy zasobów co maszyny wirtualne.
-   - **Lokalizacja**: Użyj tej samej lokalizacji platformy Azure co maszyny wirtualne.
+   - **Nazwa**: Nazwa identyfikująca moduł równoważenia obciążenia.
+   - **Region**: Użyj tej samej lokalizacji platformy Azure co maszyny wirtualne.
+   - **Typ**: usługa równoważenia obciążenia może być publiczna lub prywatna. Dostęp do prywatnego modułu równoważenia obciążenia można uzyskać w ramach tej samej sieci wirtualnej. Większość aplikacji platformy Azure może korzystać z prywatnego modułu równoważenia obciążenia. Jeśli aplikacja wymaga dostępu do SQL Server bezpośrednio za pośrednictwem Internetu, użyj publicznego modułu równoważenia obciążenia.
+   - **Jednostka SKU**: jednostka SKU dla modułu równoważenia obciążenia powinna być standardowa. 
+   - **Virtual Network**: sieć, w której znajduje się maszyna wirtualna.
+   - **Przypisanie adresu IP**: przypisanie adresu IP powinno być statyczne. 
+   - **Prywatny adres IP**: ten sam adres IP, który został przypisany do zasobu sieci klastra SQL Server FCI.
    Zapoznaj się z poniższym obrazem:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)

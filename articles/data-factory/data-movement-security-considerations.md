@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ca5a98fb4fd0fd07cd0e2557840a2e0aed6901e5
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931269"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285613"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń dotyczące przenoszenia danych w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -46,12 +46,12 @@ Data Factory został certyfikowany dla:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Jeśli interesuje Cię zgodność z platformą Azure i sposób zabezpieczania infrastruktury przez platformę Azure, odwiedź [Centrum zaufania firmy Microsoft](https://microsoft.com/en-us/trustcenter/default.aspx). Aby uzyskać najnowszą listę wszystkich kontroli zgodności z platformą Azure — https://aka.ms/AzureCompliance.
+Jeśli interesuje Cię zgodność z platformą Azure i sposób zabezpieczania infrastruktury przez platformę Azure, odwiedź [Centrum zaufania firmy Microsoft](https://microsoft.com/en-us/trustcenter/default.aspx). Aby uzyskać najnowszą listę wszystkich ofert zgodności z platformą Azure — https://aka.ms/AzureCompliance.
 
 W tym artykule opisano zagadnienia dotyczące zabezpieczeń w następujących dwóch scenariuszach przenoszenia danych: 
 
-- **Scenariusz chmury**: W tym scenariuszu zarówno źródło, jak i miejsce docelowe są publicznie dostępne za pomocą Internetu. Obejmują one zarządzane usługi magazynu w chmurze, takie jak Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon RedShift, SaaS Services, takie jak Salesforce i protokoły sieci Web, takie jak FTP i OData. Zapoznaj się z pełną listą obsługiwanych źródeł danych w [obsługiwanych sklepach i formatach danych](copy-activity-overview.md#supported-data-stores-and-formats).
-- **Scenariusz hybrydowy**: W tym scenariuszu Źródło lub miejsce docelowe znajduje się za zaporą lub wewnątrz lokalnej sieci firmowej. Magazyn danych znajduje się w sieci prywatnej lub sieci wirtualnej (najczęściej w źródle) i nie jest publicznie dostępny. Serwery baz danych hostowane na maszynach wirtualnych są również objęte tym scenariuszem.
+- **Scenariusz chmury**: w tym scenariuszu zarówno źródło, jak i miejsce docelowe są publicznie dostępne przez Internet. Obejmują one zarządzane usługi magazynu w chmurze, takie jak Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon RedShift, SaaS Services, takie jak Salesforce i protokoły sieci Web, takie jak FTP i OData. Zapoznaj się z pełną listą obsługiwanych źródeł danych w [obsługiwanych sklepach i formatach danych](copy-activity-overview.md#supported-data-stores-and-formats).
+- **Scenariusz hybrydowy**: w tym scenariuszu Źródło lub miejsce docelowe znajduje się za zaporą lub wewnątrz lokalnej sieci firmowej. Magazyn danych znajduje się w sieci prywatnej lub sieci wirtualnej (najczęściej w źródle) i nie jest publicznie dostępny. Serwery baz danych hostowane na maszynach wirtualnych są również objęte tym scenariuszem.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -97,7 +97,7 @@ Firma Amazon S3 obsługuje szyfrowanie danych między klientem i serwerem. Aby u
 #### <a name="amazon-redshift"></a>Amazon Redshift
 Amazon RedShift obsługuje szyfrowanie klastra dla danych przechowywanych w spoczynku. Aby uzyskać więcej informacji, zobacz temat [szyfrowanie bazy danych Amazon RedShift](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
 
-#### <a name="salesforce"></a>Usługi SalesForce
+#### <a name="salesforce"></a>Salesforce
 Usługi Salesforce obsługują szyfrowanie platformy osłony, które umożliwiają szyfrowanie wszystkich plików, załączników i pól niestandardowych. Aby uzyskać więcej informacji, zobacz [Omówienie przepływu uwierzytelniania OAuth serwera sieci Web](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios"></a>Scenariusze hybrydowe
@@ -110,7 +110,7 @@ Kanał polecenia umożliwia komunikację między usługami przenoszenia danych w
 ### <a name="on-premises-data-store-credentials"></a>Poświadczenia lokalnego magazynu danych
 Poświadczenia mogą być przechowywane w usłudze Fabryka danych lub [odwoływać się do nich przez fabrykę danych](store-credentials-in-key-vault.md) podczas środowiska uruchomieniowego z Azure Key Vault. W przypadku przechowywania poświadczeń w usłudze Fabryka danych są one zawsze przechowywane w postaci zaszyfrowanej w ramach własnego środowiska Integration Runtime. 
  
-- **Przechowuj poświadczenia lokalnie**. Jeśli bezpośrednio używasz polecenia cmdlet **Set-AzDataFactoryV2LinkedService** z parametrami połączenia i poświadczeniami wbudowanymi w kod JSON, połączona usługa jest zaszyfrowana i zapisywana w środowisku Integration Runtime.  W takim przypadku poświadczenia są przesyłane za pomocą usługi zaplecza platformy Azure, która jest ostatecznie zabezpieczona, do samodzielnej maszyny integracyjnej, w której jest na koniec Encrpted i przechowywana. Własne środowisko Integration runtime używa funkcji [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) systemu Windows do szyfrowania poufnych danych i informacji o poświadczeniach.
+- **Przechowuj poświadczenia lokalnie**. Jeśli bezpośrednio używasz polecenia cmdlet **Set-AzDataFactoryV2LinkedService** z parametrami połączenia i poświadczeniami wbudowanymi w kod JSON, połączona usługa jest zaszyfrowana i zapisywana w środowisku Integration Runtime.  W takim przypadku poświadczenia są przesyłane za pomocą usługi zaplecza platformy Azure, która jest niezwykle bezpieczna, do samodzielnej maszyny integracyjnej, w której jest ona zaszyfrowana i przechowywana. Własne środowisko Integration runtime używa funkcji [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) systemu Windows do szyfrowania poufnych danych i informacji o poświadczeniach.
 
 - **Przechowuj poświadczenia w Azure Key Vault**. Możesz również przechowywać poświadczenia magazynu danych w [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory Pobiera poświadczenia podczas wykonywania działania. Aby uzyskać więcej informacji, zobacz [przechowywanie poświadczeń w Azure Key Vault](store-credentials-in-key-vault.md).
 
@@ -136,11 +136,11 @@ Usługa Azure Virtual Network to logiczna reprezentacja sieci w chmurze. Sieć l
 
 Poniższa tabela zawiera podsumowanie zaleceń dotyczących sieci i samodzielnego środowiska Integration Runtime na podstawie różnych kombinacji lokalizacji źródłowej i docelowej na potrzeby przenoszenia danych hybrydowych.
 
-| Source      | Miejsce docelowe                              | Konfiguracja sieci                    | Instalacja środowiska Integration Runtime                |
+| Źródło      | Cel                              | Konfiguracja sieci                    | Instalacja środowiska Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | IPSec sieci VPN (punkt-lokacja lub lokacja-lokacja) | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
-| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatna Komunikacja równorzędna)           | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
-| Lokalnie | Usługi oparte na platformie Azure, które mają publiczny punkt końcowy | ExpressRoute (Komunikacja równorzędna firmy Microsoft)            | Własne środowisko Integration runtime można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure. |
+| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | IPSec sieci VPN (punkt-lokacja lub lokacja-lokacja) | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatna Komunikacja równorzędna)           | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalne | Usługi oparte na platformie Azure, które mają publiczny punkt końcowy | ExpressRoute (Komunikacja równorzędna firmy Microsoft)            | Własne środowisko Integration runtime można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure. |
 
 Na poniższych ilustracjach przedstawiono użycie własnego środowiska Integration Runtime do przeniesienia danych między lokalną bazą danych i usługami platformy Azure przy użyciu ExpressRoute i sieci VPN IPSec (z usługą Azure Virtual Network):
 
@@ -148,28 +148,21 @@ Na poniższych ilustracjach przedstawiono użycie własnego środowiska Integrat
 
 ![Korzystanie z ExpressRoute z bramą](media/data-movement-security-considerations/express-route-for-gateway.png) 
 
-**IPSec VPN**
+**IPSec sieci VPN**
 
 ![IPSec VPN z bramą](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Konfiguracje zapory i listy dozwolonych adresy IP
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Konfiguracja zapory i lista dozwolonych ustawień dla adresów IP
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Wymagania dotyczące zapory dla sieci lokalnej/prywatnej  
 W przedsiębiorstwie firmowa Zapora jest uruchamiana na centralnym routerze organizacji. Zapora systemu Windows jest uruchamiana jako demon na komputerze lokalnym, na którym jest zainstalowany własny środowisko Integration Runtime. 
 
 W poniższej tabeli przedstawiono wymagania dotyczące portów i domen wychodzących dla zapór firmowych:
 
-| Nazwy domen                  | Porty wychodzące | Opis                              |
-| ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443            | Wymagane przez własne środowisko Integration Runtime do łączenia się z usługami przenoszenia danych w Data Factory. |
-| `*.frontend.clouddatahub.net` | 443            | Wymagane przez własne środowisko Integration Runtime do nawiązywania połączenia z usługą Data Factory. |
-| `download.microsoft.com`    | 443            | Wymagane przez własne środowisko Integration Runtime do pobierania aktualizacji. Jeśli funkcja autoaktualizacji została wyłączona, można to pominąć. |
-| `*.core.windows.net`          | 443            | Używany przez własne środowisko Integration Runtime do nawiązywania połączenia z kontem usługi Azure Storage w przypadku korzystania z funkcji [kopiowania etapowego](copy-activity-performance.md#staged-copy) . |
-| `*.database.windows.net`      | 1433           | Obowiązkowe Wymagane podczas kopiowania z lub do Azure SQL Database lub Azure SQL Data Warehouse. Funkcja kopiowania przemieszczania służy do kopiowania danych do Azure SQL Database lub Azure SQL Data Warehouse bez otwierania portu 1433. |
-| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | Obowiązkowe Wymagane podczas kopiowania z lub do Azure Data Lake Store. |
+[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> Może być konieczne zarządzanie portami lub domeną listy dozwolonych na poziomie zapory firmowej, zgodnie z wymaganiami odpowiednich źródeł danych. W tej tabeli są stosowane przykłady Azure SQL Database, Azure SQL Data Warehouse i Azure Data Lake Store.   
+> Może być konieczne zarządzanie portami lub Konfigurowanie listy dozwolonych domen na poziomie zapory firmowej zgodnie z wymaganiami odpowiednich źródeł danych. W tej tabeli są stosowane przykłady Azure SQL Database, Azure SQL Data Warehouse i Azure Data Lake Store.   
 
 W poniższej tabeli przedstawiono wymagania dotyczące portów ruchu przychodzącego dla zapory systemu Windows:
 
@@ -179,15 +172,15 @@ W poniższej tabeli przedstawiono wymagania dotyczące portów ruchu przychodzą
 
 ![Wymagania dotyczące portów bramy](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>Konfiguracje IP i listy dozwolonych w magazynach danych
-Niektóre magazyny danych w chmurze wymagają również dozwolonych adresu IP komputera, który uzyskuje dostęp do magazynu. Upewnij się, że adres IP maszyny z obsługą środowiska Integration Runtime jest odpowiednio listy dozwolonych lub skonfigurowany w zaporze.
+#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>Konfiguracje IP i lista dozwolonych ustawień w magazynach danych
+Niektóre magazyny danych w chmurze wymagają również, aby adres IP komputera miał dostęp do magazynu. Upewnij się, że adres IP maszyny z obsługą środowiska Integration Runtime jest odpowiednio dozwolony lub skonfigurowany w zaporze.
 
-Następujące magazyny danych w chmurze wymagają dozwolonych adresu IP na własnym komputerze Integration Runtime. Niektóre z tych magazynów danych domyślnie mogą nie wymagać listy dozwolonych. 
+Następujące magazyny danych w chmurze wymagają zezwolenia na adres IP komputera Integration Runtime. Niektóre z tych magazynów danych domyślnie mogą nie wymagać listy dozwolonych. 
 
 - [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
-- [Usługi Azure Cosmos DB](../cosmos-db/firewall-support.md)
+- [Azure Cosmos DB](../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
@@ -198,7 +191,7 @@ Tak. Więcej szczegółów można znaleźć [tutaj](https://azure.microsoft.com/
 
 **Jakie są wymagania dotyczące portów dla środowiska Integration Runtime, które mają być obsługiwane?**
 
-Własne środowisko Integration Runtime umożliwia nawiązywanie połączeń opartych na protokole HTTP z dostępem do Internetu. Porty wychodzące 443 muszą być otwarte dla własnego środowiska Integration Runtime, aby nawiązać to połączenie. Otwórz port przychodzący 8060 tylko na poziomie komputera (nie na poziomie zapory firmowej) dla aplikacji Menedżer poświadczeń. Jeśli Azure SQL Database lub Azure SQL Data Warehouse jest używany jako źródło lub miejsce docelowe, należy również otworzyć port 1433. Aby uzyskać więcej informacji, zobacz sekcję [konfiguracje zapory i adresy IP listy dozwolonych](#firewall-configurations-and-whitelisting-ip-address-of-gateway) . 
+Własne środowisko Integration Runtime umożliwia nawiązywanie połączeń opartych na protokole HTTP z dostępem do Internetu. Porty wychodzące 443 muszą być otwarte dla własnego środowiska Integration Runtime, aby nawiązać to połączenie. Otwórz port przychodzący 8060 tylko na poziomie komputera (nie na poziomie zapory firmowej) dla aplikacji Menedżer poświadczeń. Jeśli Azure SQL Database lub Azure SQL Data Warehouse jest używany jako źródło lub miejsce docelowe, należy również otworzyć port 1433. Aby uzyskać więcej informacji, zobacz sekcję [konfiguracje zapory i lista dozwolonych ustawień dla adresów IP](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) . 
 
 
 ## <a name="next-steps"></a>Następne kroki

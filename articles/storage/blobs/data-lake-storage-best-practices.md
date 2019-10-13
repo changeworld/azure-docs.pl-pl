@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991870"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299660"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Najlepsze rozwiązania dotyczące korzystania z Azure Data Lake Storage Gen2
 
-Ten artykuł zawiera informacje o najlepszych rozwiązaniach i kwestiach związanych z pracą z usługą Azure Data Lake Storage Gen2. Ten artykuł zawiera informacje dotyczące zabezpieczeń, wydajności, odporności i monitorowania Data Lake Storage Gen2. Przed Data Lake Storage Gen2, praca z naprawdę dużą ilością danych w usługach, takich jak usługa Azure HDInsight, została złożona. Fragmentu dane na wielu kontach magazynu obiektów blob, dzięki czemu można osiągnąć magazyn petabajtów i optymalną wydajność w tej skali. W przypadku Data Lake Storage Gen2 większość stałych limitów rozmiaru i wydajności jest usuwana. Jednak nadal istnieją pewne zagadnienia, które opisano w tym artykule, aby uzyskać najlepszą wydajność dzięki Data Lake Storage Gen2.
+Ten artykuł zawiera informacje o najlepszych rozwiązaniach i kwestiach związanych z pracą z usługą Azure Data Lake Storage Gen2. Ten artykuł zawiera informacje dotyczące zabezpieczeń, wydajności, odporności i monitorowania Data Lake Storage Gen2. Przed Data Lake Storage Gen2, praca z naprawdę dużą ilością danych w usługach, takich jak usługa Azure HDInsight, została złożona. Fragmentu dane na wielu kontach magazynu obiektów blob, dzięki czemu można osiągnąć magazyn petabajtów i optymalną wydajność w tej skali. Data Lake Storage Gen2 obsługuje pojedyncze rozmiary plików, tak jakby 5TB i większość stałych limitów wydajności został usunięty. Jednak nadal istnieją pewne zagadnienia, które opisano w tym artykule, aby uzyskać najlepszą wydajność dzięki Data Lake Storage Gen2.
 
-## <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
+## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 
 Azure Data Lake Storage Gen2 oferuje funkcje kontroli dostępu w systemie POSIX dla użytkowników, grup Azure Active Directory (Azure AD) i jednostek usługi. Te kontrolki dostępu można ustawić na istniejące pliki i katalogi. Kontroli dostępu można także użyć do tworzenia uprawnień domyślnych, które mogą być automatycznie stosowane do nowych plików lub katalogów. Więcej szczegółów na temat list ACL Data Lake Storage Gen2 są dostępne w [programie w programie Azure Data Lake Storage Gen2](storage-data-lake-storage-access-control.md).
 
@@ -39,7 +39,7 @@ Nazwy główne usług Azure Active Directory są zwykle używane przez usługi, 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Włączanie zapory Data Lake Storage Gen2 z dostępem do usługi platformy Azure
 
-Data Lake Storage Gen2 obsługuje opcję włączania zapory i ograniczania dostępu tylko do usług platformy Azure, co jest zalecane do ograniczenia wektora ataków zewnętrznych. Zaporę można włączyć na koncie magazynu w Azure Portal za pomocą **zapory** > **Włącz zaporę (włączona)**  > **Zezwalaj na dostęp do opcji usług platformy Azure** .
+Data Lake Storage Gen2 obsługuje opcję włączania zapory i ograniczania dostępu tylko do usług platformy Azure, co jest zalecane do ograniczenia wektora ataków zewnętrznych. Zaporę można włączyć na koncie magazynu w Azure Portal za pośrednictwem **zapory** > **Włącz zaporę (włączona)**  > **Zezwalanie na dostęp do opcji usług platformy Azure** .
 
 Aby uzyskać dostęp do konta magazynu z Azure Databricks, wdróż Azure Databricks w sieci wirtualnej, a następnie Dodaj tę sieć wirtualną do zapory. Zobacz [Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
@@ -47,7 +47,7 @@ Aby uzyskać dostęp do konta magazynu z Azure Databricks, wdróż Azure Databri
 
 Podczas tworzenia architektury systemu przy użyciu Data Lake Storage Gen2 lub dowolnej usługi w chmurze należy wziąć pod uwagę wymagania dotyczące dostępności i sposób reagowania na potencjalne przerwy w świadczeniu usługi. Problem może być zlokalizowany w konkretnym wystąpieniu lub nawet w całym regionie, więc należy mieć plan dla obu tych wystąpień. W zależności od celu czasu odzyskiwania i celu punktu odzyskiwania umowy SLA obciążenia można wybrać bardziej lub mniej agresywną strategię w celu zapewnienia wysokiej dostępności i odzyskiwania po awarii.
 
-### <a name="high-availability-and-disaster-recovery"></a>Wysoka dostępność i odzyskiwanie po awarii
+### <a name="high-availability-and-disaster-recovery"></a>Wysoka dostępność i odzyskiwanie
 
 Wysoką dostępność (HA) i odzyskiwanie po awarii (DR) może być czasami połączone ze sobą, Chociaż każda z nich ma nieco inną strategię, szczególnie w przypadku, gdy zawiera dane. Data Lake Storage Gen2 już obsługuje replikację 3. pod okapem, aby chronić przed zlokalizowanymi awariami sprzętowymi. Ponadto inne opcje replikacji, takie jak ZRS lub GZRS (wersja zapoznawcza), zwiększają HA, podczas gdy GRS & RA-GRS ulepszają program DR. Podczas kompilowania planu o wysokiej dostępności w przypadku przerwania działania usługi obciążenie musi mieć dostęp do najnowszych danych tak szybko, jak to możliwe, przez przełączenie na lokalnie lub w nowym regionie.
 
@@ -89,7 +89,7 @@ Istnieje istotny powód, aby umieścić datę na końcu struktury katalogów. Je
 
 Na wysokim poziomie często stosowane podejście do przetwarzania wsadowego polega na wykorzystaniu danych w katalogu "in". Następnie, po przetworzeniu danych, należy umieścić nowe dane w katalogu "out" dla procesów podrzędnych do użycia. Ta struktura katalogów jest czasami widoczna dla zadań wymagających przetwarzania poszczególnych plików i może nie wymagać masowego przetwarzania równoległego w dużych zestawach danych. Podobnie jak w przypadku zalecanej struktury IoT, dobrą strukturą katalogów są katalogi poziomu nadrzędnego dla elementów, takich jak region i zagadnienia dotyczące tematu (na przykład organizacja, produkt/producent). Ta struktura ułatwia zabezpieczanie danych w organizacji i lepsze zarządzanie danymi w obciążeniach. Ponadto należy rozważyć datę i godzinę w strukturze, aby umożliwić lepszą organizację, wyszukiwanie filtrowane, zabezpieczenia i automatyzację w przetwarzaniu. Poziom szczegółowości dla struktury daty zależy od interwału, w którym dane są przekazywane lub przetwarzane, na przykład co godzinę, codziennie lub nawet miesięcznie.
 
-Czasami przetwarzanie plików nie powiedzie się z powodu uszkodzenia danych lub nieoczekiwanych formatów. W takich przypadkach struktura katalogów może korzystać z folderu **/Bad** , aby przenieść pliki do dalszej inspekcji. Zadanie usługi Batch może także obsłużyć raportowanie lub powiadomienie o tych nieprawidłowych plikach w ramach interwencji ręcznej. Weź pod uwagę następującą strukturę szablonów:
+Czasami przetwarzanie plików nie powiedzie się z powodu uszkodzenia danych lub nieoczekiwanych formatów. W takich przypadkach struktura katalogów może korzystać z folderu **/Bad** , aby przenieść pliki do dalszej inspekcji. Zadanie usługi Batch może także obsłużyć raportowanie lub powiadomienie o tych *nieprawidłowych* plikach w ramach interwencji ręcznej. Weź pod uwagę następującą strukturę szablonów:
 
     {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/

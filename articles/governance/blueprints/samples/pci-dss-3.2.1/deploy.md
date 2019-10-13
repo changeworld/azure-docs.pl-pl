@@ -1,5 +1,5 @@
 ---
-title: Przykład-PCI-DSS v 3.2.1 — etapy wdrażania
+title: Przykład strategii PCI-DSS v 3.2.1 — wdrażanie kroków
 description: Wdróż kroki dla przykładowej usługi Payment Card Industry Data Security Standard v 3.2.1 z uwzględnieniem szczegółów parametrów artefaktu.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: fa409b873ea1dd0c0970ebc694ad68673df4d033
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 85f9eab29411ac896f73eed7aba607c733e4b95e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248859"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299046"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Wdróż przykład planu PCI-DSS v 3.2.1
 
@@ -100,7 +100,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |\[Preview @ no__t-1 Audit PCI v 3.2.1:2018 r Controls i Wdróż określone rozszerzenia maszyn wirtualnych do obsługi wymagań inspekcji|Przypisanie zasad|Lista typów zasobów | Inspekcja ustawień diagnostycznych dla wybranych typów zasobów. Wartość domyślna to wszystkie zasoby są wybrane| 
 |Dozwolone lokalizacje|Przypisanie zasad|Lista dozwolonych lokalizacji|Lista lokalizacji centrów danych dozwolonych dla każdego zasobu, który ma zostać wdrożony w programie. Ta lista jest dostosowywana do odpowiednich lokalizacji platformy Azure globalnie. Wybierz lokalizacje, które chcesz zezwolić.| 
 |Dozwolone lokalizacje grup zasobów|Przypisanie zasad |Dozwolona lokalizacja |Te zasady pozwalają ograniczyć lokalizacje, w których organizacja może tworzyć grupy zasobów w programie. Służy do wymuszania wymagań dotyczących zgodności obszarów geograficznych.| 
-|Wdrażanie inspekcji na serwerach SQL|Przypisanie zasad|Dni przechowywania|Przechowywania danych w ciągu kilku dni. Wartość domyślna to 180, ale PCI wymaga 365.| 
+|Wdrażanie inspekcji na serwerach SQL|Przypisanie zasad|Dni przechowywania|Przechowywanie danych w liczbie dni. Wartość domyślna to 180, ale PCI wymaga 365.| 
 |Wdrażanie inspekcji na serwerach SQL|Przypisanie zasad|Nazwa grupy zasobów dla konta magazynu|Inspekcja zapisuje zdarzenia bazy danych w dzienniku inspekcji na koncie usługi Azure Storage (konto magazynu zostanie utworzone w każdym regionie, w którym zostanie utworzone SQL Server, które będzie współużytkowane przez wszystkie serwery w tym regionie).| 
 
 ## <a name="next-steps"></a>Następne kroki

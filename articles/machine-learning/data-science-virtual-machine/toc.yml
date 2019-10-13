@@ -71,3 +71,7 @@
       href: reference-ubuntu-vm.md
     - name: Maszyna DSVM z systemem CentOS
       href: reference-centos-vm.md
+    - name: Informacje o wersji
+      href: release-notes.md
+    - name: Znane problemy
+      href: reference-known-issues.md

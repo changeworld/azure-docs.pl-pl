@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 05bc4fe23c0bea58e62db0ceab3fbfdc70660dd9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 77d68763bac37a35b070bb7c95e2c16df7f67a27
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091179"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299340"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-same-or-different-subscription-with-powershell"></a>Tworzenie dysku zarządzanego na podstawie pliku VHD na koncie magazynu w ramach tej samej lub innej subskrypcji za pomocą programu PowerShell
 
@@ -28,8 +28,6 @@ Ten skrypt tworzy dysk zarządzany na podstawie pliku VHD na koncie magazynu w r
 Nie należy tworzyć wielu identycznych dysków zarządzanych na podstawie pliku VHD w krótkim czasie. Aby utworzyć dyski zarządzane na podstawie pliku VHD, należy utworzyć migawkę obiektu blob pliku VHD, a następnie użyć tej migawki do tworzenia dysków zarządzanych. W ciągu jednej minuty można utworzyć tylko jedną migawkę obiektu blob, co powoduje błędy tworzenia dysku z powodu dławienia. Aby uniknąć tego ograniczania, utwórz [migawkę zarządzaną z pliku VHD](virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), a następnie użyj migawki zarządzanej, aby utworzyć wiele dysków zarządzanych w krótkim czasie.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 

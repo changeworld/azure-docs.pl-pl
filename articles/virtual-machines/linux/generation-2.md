@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/11/2019
 ms.author: lahugh
-ms.openlocfilehash: 6bd74fa299385acb1abe4b32db5d35366249eaa6
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 3c6a054229ab7a16fb48dff5ec2e8681c3c5345e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173928"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299500"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Obsługa maszyn wirtualnych 2. generacji (wersja zapoznawcza) na platformie Azure
 
@@ -55,14 +55,14 @@ Maszyny wirtualne generacji 1 są obsługiwane przez wszystkie rozmiary maszyn w
 
 Maszyny wirtualne 2. generacji obsługują następujące obrazy w portalu Marketplace:
 
-* Windows Server 2019 Datacenter
+* System Windows Server 2019 Datacenter
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 
-## <a name="on-premises-vs-azure-generation-2-vms"></a>W środowisku lokalnym a Maszyny wirtualne generacji 2 platformy Azure
+## <a name="on-premises-vs-azure-generation-2-vms"></a>Lokalna a maszyny wirtualne 2. generacji platformy Azure
 
 Platforma Azure nie obsługuje obecnie niektórych funkcji, które są obsługiwane przez funkcję Hyper-V w przypadku maszyn wirtualnych 2. generacji.
 
@@ -78,7 +78,7 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji, które są obsługiw
 
 ### <a name="generation-1-vs-generation-2-features"></a>Funkcje generacji 1 a generacja 2
 
-| Cecha | Generacja 1 | Generacja 2 |
+| Funkcja | Generacja 1 | Generacja 2 |
 |---------|--------------|--------------|
 | Rozruch             | PCAT         | UEFI |
 | Kontrolery dysków | IDE          | SCSI |
@@ -93,7 +93,7 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji, które są obsługiw
 | Obsługa zestawu skalowania maszyn wirtualnych | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | y                |
 | Tworzenie kopii zapasowej/przywracanie                    | :heavy_check_mark: | :heavy_check_mark: |
-| Galeria obrazów udostępnionych              | :heavy_check_mark: | y                |
+| Galeria obrazów udostępnionych              | :heavy_check_mark: | :heavy_check_mark: |
 | Szyfrowanie dysków Azure             | :heavy_check_mark: | y                |
 
 ## <a name="creating-a-generation-2-vm"></a>Tworzenie maszyny wirtualnej generacji 2
@@ -121,7 +121,7 @@ Po wybraniu jednostki SKU systemu Windows Server jako oferty na karcie **Zaawans
 
 Możesz również użyć programu PowerShell do utworzenia maszyny wirtualnej, bezpośrednio odwołującej się do jednostki SKU generacji 1 lub 2.
 
-Na przykład użyj następującego polecenia cmdlet programu PowerShell, aby wyświetlić listę jednostek SKU w `WindowsServer` ofercie.
+Na przykład użyj następującego polecenia cmdlet programu PowerShell, aby uzyskać listę jednostek SKU w ofercie `WindowsServer`.
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer

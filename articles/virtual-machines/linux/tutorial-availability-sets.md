@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8857e93aec883dc4b7fe0b71093184c3b604b24a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 10458e3c5f1e4dc9034206470fdfec19e13417fb
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103589"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299455"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Samouczek: tworzenie i wdrażanie maszyn wirtualnych o wysokiej dostępności za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -33,9 +33,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie maszyny wirtualnej w zestawie dostępności
 > * Sprawdzanie dostępnych rozmiarów maszyn wirtualnych
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+W tym samouczku jest używany interfejs wiersza polecenia w [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), który jest stale aktualizowany do najnowszej wersji. Aby otworzyć Cloud Shell, wybierz opcję **Wypróbuj** z góry dowolnego bloku kodu.
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="high-availability-in-azure-overview"></a>Wysoka dostępność na platformie Azure — omówienie
 Wysoką dostępność na platformie Azure można utworzyć na wiele różnych sposobów. Dostępne są dwie opcje, które są zestawami dostępności i strefami dostępności. Korzystając z zestawów dostępności, maszyny wirtualne będą chronione przed awariami, które mogą wystąpić w centrum danych. Obejmuje to awarie sprzętu i błędy oprogramowania platformy Azure. Za pomocą stref dostępności maszyny wirtualne będą umieszczane w fizycznej osobnej infrastrukturze bez udostępnionych zasobów i w związku z tym będą chronione przed całymi awariami centrów danych.
@@ -50,7 +50,7 @@ Rozważmy typowe rozwiązanie z użyciem maszyn wirtualnych, obejmujące cztery 
 
 ### <a name="availability-zone-overview"></a>Przegląd strefy dostępności
 
-Strefy dostępności to oferta wysokiej dostępności, która chroni Twoje aplikacje i dane przed awariami centrów danych. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. W celu zapewnienia odporności dostępne są co najmniej trzy oddzielne strefy we wszystkich włączonych regionach. Fizyczna separacja stref dostępności w ramach regionu chroni aplikacje i dane przed awariami centrum danych. Usługi strefowo nadmiarowe replikujeją aplikacje i dane między Strefy dostępności, aby chronić je przed awariami jednego punktu. Dzięki Strefy dostępności platforma Azure oferuje niestandardową umowę SLA na 99,99% czasu maszyn wirtualnych.
+Strefy dostępności to oferta wysokiej dostępności, która chroni Twoje aplikacje i dane przed awariami centrów danych. Strefy dostępności to unikatowe fizyczne lokalizacje w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jednego centrum danych wyposażonego w niezależne zasilanie, chłodzenie i sieć. W celu zapewnienia odporności dostępne są co najmniej trzy oddzielne strefy we wszystkich włączonych regionach. Fizyczna separacja stref dostępności w ramach regionu chroni aplikacje i dane przed awariami centrum danych. Usługi strefowo nadmiarowe replikujeją aplikacje i dane między Strefy dostępności, aby chronić je przed awariami jednego punktu. Dzięki Strefy dostępności platforma Azure oferuje niestandardową umowę SLA na 99,99% czasu maszyn wirtualnych.
 
 Podobnie jak w przypadku zestawów dostępności, rozważmy typowe rozwiązanie oparte na maszynach wirtualnych, które może zawierać cztery serwery frontonu sieci Web i używać dwóch maszyn wirtualnych zaplecza, które obsługują bazę danych. Podobnie jak w przypadku zestawów dostępności, należy wdrożyć maszyny wirtualne w dwóch oddzielnych strefach dostępności: jedną strefę dostępności dla warstwy "Web" i jedną strefę dostępności dla warstwy "baza danych". Gdy tworzysz nową maszynę wirtualną i określisz strefę dostępności jako parametr polecenia AZ VM Create, platforma Azure automatycznie zagwarantuje, że utworzone maszyny wirtualne są izolowane w zupełnie różnych strefach dostępności. Jeśli na całym centrum danych jest uruchomiona jedna z maszyn wirtualnych na serwerze sieci Web lub serwerze, na którym występuje problem, wiadomo, że inne wystąpienia serwera sieci Web i maszyn wirtualnych bazy danych działają nadal, ponieważ są one uruchomione w całkowicie oddzielnych centrach
 
@@ -126,5 +126,5 @@ Przejdź do następnego samouczka, aby poznać zestawy skalowania maszyn wirtual
 > [Tworzenie zestawu skalowania maszyn wirtualnych](tutorial-create-vmss.md)
 
 * Aby dowiedzieć się więcej o strefach dostępności, zapoznaj się z [dokumentacją strefy dostępności](../../availability-zones/az-overview.md).
-* Dostępna jest również większa dokumentacja dotycząca obu zestawów dostępności i stref dostępności [](./manage-availability.md).
+* [Dostępna jest](./manage-availability.md)również większa dokumentacja dotycząca obu zestawów dostępności i stref dostępności.
 * Aby wypróbować strefy dostępności, odwiedź stronę [Tworzenie maszyny wirtualnej z systemem Linux w strefie dostępności przy użyciu interfejsu wiersza polecenia platformy Azure](./create-cli-availability-zone.md)

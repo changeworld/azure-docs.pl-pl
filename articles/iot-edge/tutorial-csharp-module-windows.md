@@ -9,14 +9,14 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c872b10d7819fb95d614664ed32831f410349760
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 32bd0438afa63212222acb84c0194bbc1f4816ce
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122902"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286684"
 ---
-# <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: Opracowywanie C# modułu IoT Edge dla urządzeń z systemem Windows
+# <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: opracowywanie C# modułu IoT Edge dla urządzeń z systemem Windows
 
 Użyj programu Visual Studio, C# aby opracować kod i wdrożyć go na urządzeniu z systemem Windows, na którym działa Azure IoT Edge. 
 
@@ -36,9 +36,9 @@ Utworzony w tym samouczku moduł usługi IoT Edge filtruje dane temperatury gene
 
 W tym samouczku pokazano, jak utworzyć moduł **C#** w programie przy użyciu **programu Visual Studio 2019**i jak wdrożyć go na **urządzeniu z systemem Windows**. Jeśli tworzysz moduły dla urządzeń z systemem Linux, przejdź do [obszaru C# opracowywanie modułu IoT Edge dla urządzeń z systemem Linux](tutorial-csharp-module.md) . 
 
-Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania modułów C na urządzeniach z systemem Windows: 
+Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania C# modułów na urządzeniach z systemem Windows: 
 
-| C# | Visual Studio Code | Visual Studio 2017/2019 | 
+| C# | Visual Studio Code | Program Visual Studio 2017/2019 | 
 | -- | ------------------ | ------------------ |
 | **Windows AMD64 — programowanie** | ![Opracowywanie C# modułów dla WinAMD64 w vs Code](./media/tutorial-c-module/green-check.png) | ![Opracowywanie C# modułów dla WinAMD64 w programie Visual Studio](./media/tutorial-c-module/green-check.png) |
 | **Windows AMD64 Debug** |   | ![Moduły C# debugowania dla WinAMD64 w programie Visual Studio](./media/tutorial-c-module/green-check.png) |
@@ -76,7 +76,7 @@ Narzędzia Azure IoT Edge zawierają szablony projektów dla wszystkich obsługi
 
 4. W oknie IoT Edge aplikacji i modułu Skonfiguruj projekt przy użyciu następujących wartości: 
 
-   | Pole | Value |
+   | Pole | Wartość |
    | ----- | ----- |
    | Wybierz szablon | Wybierz pozycję  **C# moduł**. | 
    | Nazwa projektu modułu | Nazwij moduł **CSharpModule**. | 
@@ -297,13 +297,13 @@ W poprzedniej sekcji utworzono rozwiązanie usługi IoT Edge i dodano kod do mod
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Może zostać wyświetlone ostrzeżenie dotyczące zabezpieczeń zalecające użycie programu `--password-stdin`. Chociaż najlepsze rozwiązanie jest zalecane w scenariuszach produkcyjnych, jest ono poza zakresem tego samouczka. Aby uzyskać więcej informacji, zobacz informacje dotyczące [logowania do platformy Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   Może zostać wyświetlone ostrzeżenie dotyczące zabezpieczeń zalecające użycie `--password-stdin`. Chociaż najlepsze rozwiązanie jest zalecane w scenariuszach produkcyjnych, jest ono poza zakresem tego samouczka. Aby uzyskać więcej informacji, zobacz informacje dotyczące [logowania do platformy Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 2. W Eksploratorze rozwiązań programu Visual Studio kliknij prawym przyciskiem myszy nazwę projektu, który chcesz skompilować. Nazwa domyślna to **AzureIotEdgeApp1** , a ponieważ tworzysz moduł systemu Windows, rozszerzenie powinno mieć wartość **Windows. amd64**. 
 
 3. Wybierz pozycję **kompilacje i moduły IoT Edge wypychania**. 
 
-   Polecenie Build i push uruchamia trzy operacje. Po pierwsze tworzy nowy folder w rozwiązaniu o nazwie **config** , który zawiera pełny manifest wdrożenia, z wbudowanymi informacjami w szablonie wdrożenia i innych plikach rozwiązania. Następnie jest uruchamiany `docker build` w celu skompilowania obrazu kontenera na podstawie odpowiednich pliku dockerfile dla architektury docelowej. Następnie jest uruchamiany `docker push` w celu wypchnięcia repozytorium obrazów do rejestru kontenerów. 
+   Polecenie Build i push uruchamia trzy operacje. Po pierwsze tworzy nowy folder w rozwiązaniu o nazwie **config** , który zawiera pełny manifest wdrożenia, z wbudowanymi informacjami w szablonie wdrożenia i innych plikach rozwiązania. Następnie działa `docker build` w celu skompilowania obrazu kontenera na podstawie odpowiednich pliku dockerfile dla architektury docelowej. Następnie uruchamia `docker push` w celu wypchnięcia repozytorium obrazów do rejestru kontenerów. 
 
 ## <a name="deploy-modules-to-device"></a>Wdrażanie modułów na urządzeniu
 
@@ -362,7 +362,7 @@ W przeciwnym razie możesz usunąć konfiguracje lokalne i zasoby platformy Azur
 W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułów, możesz dowiedzieć się więcej na temat [opracowywania własnych modułów IoT Edge](module-development.md) lub tworzenia [modułów w programie Visual Studio](how-to-visual-studio-develop-module.md). Możesz przejść do kolejnych samouczków, aby dowiedzieć się, jak Azure IoT Edge może pomóc w wdrażaniu usług Azure Cloud Services w celu przetwarzania i analizowania danych na krawędzi.
 
 > [!div class="nextstepaction"]
-> [Functions](tutorial-deploy-function.md)
+> [Funkcje](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
 > [Machine Learning](tutorial-deploy-machine-learning.md)
 > [Custom Vision Service](tutorial-deploy-custom-vision.md)

@@ -2,18 +2,17 @@
 title: Źródła danych obsługiwane w Azure Analysis Services | Microsoft Docs
 description: Opisuje źródła danych obsługiwane przez modele danych w Azure Analysis Services.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 79346f0bf80386fb83f55daccda8790652ff8541
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993390"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298622"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w Azure Analysis Services
 
@@ -39,7 +38,7 @@ Obsługiwane jest <a name="azsqlmanaged">2</a> Azure SQL Database wystąpienia z
 <a name="gen2">4</a> — ADLS Gen2 nie jest obecnie obsługiwane.
 
 
-**Dostawcy**   
+@No__t **dostawcy**— 1  
 Modele w pamięci i DirectQuery łączące się ze źródłami danych platformy Azure używają .NET Framework Dostawca danych do SQL Server.
 
 ## <a name="other-data-sources"></a>Inne źródła danych
@@ -50,8 +49,8 @@ Nawiązywanie połączenia z lokalnymi źródłami danych z programu i platformy
 
 |Źródło danych | Dostawca w pamięci | Dostawca zapytania bezpośredniego |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11,0, dostawca OLE DB firmy Microsoft dla SQL Server .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
-| SQL Server Data Warehouse |SQL Server Native Client 11,0, dostawca OLE DB firmy Microsoft dla SQL Server .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
+| Oprogramowanie SQL Server |SQL Server Native Client 11,0, dostawca OLE DB firmy Microsoft dla SQL Server .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
+| Magazyn danych SQL Server |SQL Server Native Client 11,0, dostawca OLE DB firmy Microsoft dla SQL Server .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
 | Oracle | OLE DB Provider for Oracle, Oracle Dostawca danych dla platformy .NET |Oracle Dostawca danych dla platformy .NET |
 | Teradata |Dostawca OLE DB dla programu Teradata, Dostawca danych programu Teradata dla platformy .NET |Dostawca danych programu Teradata dla platformy .NET |
 | | | |
@@ -62,12 +61,12 @@ Nawiązywanie połączenia z lokalnymi źródłami danych z programu i platformy
 |---------|
 |Baza danych programu Access     |  
 |Active Directory<sup>[1](#tab1400b)</sup>     |  
-|Analysis Services     |  
+|Usługi analityczne     |  
 |System platformy analizy     |  
 |Plik CSV  |
 |Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
 |Skoroszyt programu Excel     |  
-|Exchange<sup>[1](#tab1400b)</sup>     |  
+|Program Exchange<sup>[1](#tab1400b)</sup>     |  
 |Folder<sup>[1](#tab1400b)</sup>     |
 |IBM Informix<sup>[1](#tab1400b)</sup> (beta) |
 |Dokument JSON<sup>[1](#tab1400b)</sup>     |  
@@ -92,17 +91,17 @@ tylko <a name="tab1400b">1</a> -tabelaryczny model 1400 i wyższe.
 
 ## <a name="specifying-a-different-provider"></a>Określanie innego dostawcy
 
-Modele danych w Azure Analysis Services mogą wymagać różnych dostawców danych podczas łączenia się z pewnymi źródłami danych. W niektórych przypadkach modele tabelaryczne łączące się ze źródłami danych przy użyciu natywnych dostawców, takich jak SQL Server Native Client (SQLNCLI11), mogą zwrócić błąd. W przypadku korzystania z natywnych dostawców innych niż SQLOLEDB może zostać wyświetlony komunikat o błędzie: **Dostawca "sqlncli 11.1" nie jest zarejestrowany**. Lub, jeśli masz model zapytania bezpośredniego łączący się z lokalnymi źródłami danych i używasz dostawców natywnych, może pojawić się komunikat o błędzie: **Wystąpił błąd podczas tworzenia zestawu wierszy OLE DB. Nieprawidłowa składnia w sąsiedztwie "** limit".
+Modele danych w Azure Analysis Services mogą wymagać różnych dostawców danych podczas łączenia się z pewnymi źródłami danych. W niektórych przypadkach modele tabelaryczne łączące się ze źródłami danych przy użyciu natywnych dostawców, takich jak SQL Server Native Client (SQLNCLI11), mogą zwrócić błąd. W przypadku korzystania z natywnych dostawców innych niż SQLOLEDB może zostać wyświetlony komunikat o błędzie: **dostawca "sqlncli 11.1" nie jest zarejestrowany**. Lub, jeśli masz model zapytania bezpośredniego łączący się z lokalnymi źródłami danych i używasz dostawców natywnych, może pojawić się komunikat o błędzie: **błąd podczas tworzenia zestawu wierszy OLE DB. Nieprawidłowa składnia w sąsiedztwie "LIMIT"** .
 
 W przypadku migrowania lokalnego modelu SQL Server Analysis Services tabelarycznego do Azure Analysis Services, może być konieczne zmianę dostawcy.
 
 **Aby określić dostawcę**
 
-1. W SSDT >**źródła danych** >  **Eksploratora modeli tabelarycznych**kliknij prawym przyciskiem myszy połączenie ze źródłem danych, a następnie kliknij polecenie **Edytuj źródło danych**.
+1. W programie SSDT > **Eksplorator modelu tabelarycznego** > **źródła danych**, kliknij prawym przyciskiem myszy połączenie ze źródłem danych, a następnie kliknij polecenie **Edytuj źródło danych**.
 2. W obszarze **Edytuj połączenie**kliknij pozycję **Zaawansowane** , aby otworzyć okno właściwości zaawansowana.
-3. W obszarze **Ustaw zaawansowane właściwości** > **dostawców**wybierz odpowiedniego dostawcę.
+3. W obszarze **Ustaw zaawansowane właściwości** > **dostawcy**wybierz odpowiedniego dostawcę.
 
-## <a name="impersonation"></a>Personifikacja
+## <a name="impersonation"></a>Chodzi
 W niektórych przypadkach może być konieczne określenie innego konta personifikacji. Konto personifikacji można określić w programie Visual Studio (SSDT) lub w programie SSMS.
 
 Dla lokalnych źródeł danych:

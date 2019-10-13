@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: d1c80e2ab9ae6a893b1adea6bd68e9b585288d8b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074960"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294346"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Ograniczenia importu interfejsu API i znane problemy
 
@@ -33,12 +33,13 @@ Jeśli otrzymujesz błędy podczas importowania dokumentu OpenAPI, upewnij się,
 ### <a name="open-api-general"> </a>Ogólne
 
 -   Wymagane parametry w ścieżce i zapytaniu muszą mieć unikatowe nazwy. (W OpenAPI Nazwa parametru musi być unikatowa w obrębie lokalizacji, na przykład Path, Query, header. Jednakże w API Management zezwalamy na rozróżnienie operacji przy użyciu parametrów Path i Query (które nie są obsługiwane przez OpenAPI). Dlatego wymagamy, aby nazwy parametrów były unikatowe w ramach całego szablonu adresu URL.
--   wskaźniki ref nie mogą odwoływać się do plików zewnętrznych.  **\$**
+-   wskaźniki **\$ref** nie mogą odwoływać się do plików zewnętrznych.
 -   **ścieżki x-MS** i **x-Server** są jedynymi obsługiwanymi rozszerzeniami.
 -   Rozszerzenia niestandardowe są ignorowane podczas importowania i nie są zapisywane ani zachowywane do eksportu.
 -   **Rekursja** — API Management nie obsługuje definicji zdefiniowanych cyklicznie (na przykład schematów odnoszących się do siebie).
 -   Adres URL pliku źródłowego (jeśli jest dostępny) jest stosowany do względnych adresów URL serwera.
 -   Definicje zabezpieczeń zostały zignorowane.
+-   Wbudowane definicje schematu dla operacji interfejsu API nie są obsługiwane. Definicje schematu są zdefiniowane w zakresie interfejsu API i można do nich odwoływać się w zakresach żądań lub odpowiedzi operacji interfejsu API.
 
 ### <a name="open-api-v2"> </a>Openapi wersja 2
 
@@ -50,7 +51,7 @@ Jeśli otrzymujesz błędy podczas importowania dokumentu OpenAPI, upewnij się,
 -   **Przykłady** nie są obsługiwane, ale **przykład** to.
 -   **Wieloczęściowe/formularz — dane** nie są obsługiwane.
 
-## <a name="wsdl"> </a>JĘZYK WSDL
+## <a name="wsdl"> </a>Język WSDL
 
 Pliki WSDL są używane do tworzenia protokołu SOAP przekazującego i interfejsów API protokołu SOAP-to-REST.
 
