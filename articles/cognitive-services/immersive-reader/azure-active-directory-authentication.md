@@ -10,22 +10,22 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d51c27b90113679c1547f2d030459a03cc22c80c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990139"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299809"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Używanie uwierzytelniania Azure Active Directory (Azure AD) z usługą czytnika immersyjny
 
-W poniższych sekcjach użyjesz środowiska Azure Cloud Shell lub interfejsu wiersza polecenia platformy Azure, aby utworzyć nowy zasób czytnika immersyjny z niestandardową domeną poddomeny, a następnie skonfigurować usługę Azure AD w dzierżawie platformy Azure. Po zakończeniu konfiguracji początkowej nastąpi wywołanie usługi Azure AD w celu uzyskania tokenu dostępu, podobnie jak w przypadku korzystania z zestawu SDK czytnika immersyjny. W przypadku zablokowania linki są dostępne w każdej sekcji ze wszystkimi dostępnymi opcjami dla każdego z poleceń interfejsu wiersza polecenia platformy Azure.
+W poniższych sekcjach zostanie użyte środowisko Azure Cloud Shell lub Azure PowerShell do utworzenia nowego zasobu czytnika immersyjny z poddomeną niestandardową, a następnie skonfigurowania usługi Azure AD w dzierżawie platformy Azure. Po zakończeniu konfiguracji początkowej nastąpi wywołanie usługi Azure AD w celu uzyskania tokenu dostępu, podobnie jak w przypadku korzystania z zestawu SDK czytnika immersyjny. W przypadku zablokowania linki są dostępne w każdej sekcji ze wszystkimi dostępnymi opcjami poszczególnych poleceń Azure PowerShell.
 
 ## <a name="create-an-immersive-reader-resource-with-a-custom-subdomain"></a>Tworzenie zasobu czytnika immersyjny przy użyciu niestandardowej domeny podrzędnej
 
 1. Zacznij od otworzenia [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Następnie [Wybierz subskrypcję](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
@@ -36,12 +36,12 @@ W poniższych sekcjach użyjesz środowiska Azure Cloud Shell lub interfejsu wie
 
    -SkuName może być F0 (warstwa Bezpłatna) lub S0 (warstwa standardowa, również bezpłatna w publicznej wersji zapoznawczej). Warstwa S0 ma wyższy limit szybkości wywołań i nie ma miesięcznego limitu liczby wywołań.
 
-   -Location może być dowolną z następujących: `eastus`, `westus`, `australiaeast` `centralindia` `japaneast`,,,, `northeurope``westeurope`
+   -Location może być dowolną z następujących: `eastus`, `westus`, `australiaeast`, `centralindia`, `japaneast`, `northeurope`, `westeurope`
 
    -CustomSubdomainName musi być globalnie unikatowa i nie może zawierać znaków specjalnych, takich jak: ".", "!", ",".
 
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME> -Type ImmersiveReader -SkuName S0 -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
 
    // Display the Resource info
@@ -54,11 +54,11 @@ W poniższych sekcjach użyjesz środowiska Azure Cloud Shell lub interfejsu wie
 
 
    >[!NOTE]
-   > Jeśli utworzysz zasób w Azure Portal, zasób "name" jest używany jako poddomena niestandardowa. Nazwę domeny podrzędnej można sprawdzić w portalu, przechodząc do strony przegląd zasobów i wyszukając poddomenę w punkcie końcowym na liście, na przykład `https://[SUBDOMAIN].cognitiveservices.azure.com/`. Możesz również tutaj zaznaczyć, gdy chcesz uzyskać poddomenę do integracji z zestawem SDK.
+   > Jeśli utworzysz zasób w Azure Portal, zasób "name" jest używany jako poddomena niestandardowa. Nazwę domeny podrzędnej można sprawdzić w portalu, przechodząc do strony przegląd zasobów i wyszukając poddomenę w punkcie końcowym, na przykład `https://[SUBDOMAIN].cognitiveservices.azure.com/`. Możesz również tutaj zaznaczyć, gdy chcesz uzyskać poddomenę do integracji z zestawem SDK.
 
    Jeśli zasób został utworzony w portalu, możesz również [uzyskać już istniejący zasób](https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount?view=azps-1.8.0) .
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = Get-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME>
 
    // Display the Resource info
@@ -74,7 +74,7 @@ Teraz, gdy masz niestandardową poddomenę skojarzoną z zasobem, musisz przypis
    >[!NOTE]
    > Hasło, znane także jako "klucz tajny klienta", będzie używane podczas uzyskiwania tokenów uwierzytelniania.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $password = "<YOUR_PASSWORD>"
    $secureStringPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
    $aadApp = New-AzADApplication -DisplayName ImmersiveReaderAAD -IdentifierUris http://ImmersiveReaderAAD -Password $secureStringPassword
@@ -87,7 +87,7 @@ Teraz, gdy masz niestandardową poddomenę skojarzoną z zasobem, musisz przypis
 
 2. Następnie musisz [utworzyć nazwę główną usługi](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) dla aplikacji usługi Azure AD.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $principal = New-AzADServicePrincipal -ApplicationId $aadApp.ApplicationId
 
    // Display the service principal info
@@ -99,7 +99,7 @@ Teraz, gdy masz niestandardową poddomenę skojarzoną z zasobem, musisz przypis
 
 3. Ostatnim krokiem jest [przypisanie roli "Cognitive Services użytkownika"](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) do nazwy głównej usługi (w zakresie do zasobu). Przypisując rolę, przyznasz jednostce usługi dostęp do tego zasobu. Można przyznać tej samej jednostce usługi dostęp do wielu zasobów w ramach subskrypcji.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    New-AzRoleAssignment -ObjectId $principal.Id -Scope $resource.Id -RoleDefinitionName "Cognitive Services User"
    ```
 
@@ -112,13 +112,13 @@ Teraz, gdy masz niestandardową poddomenę skojarzoną z zasobem, musisz przypis
 W tym przykładzie Twoje hasło służy do uwierzytelniania jednostki usługi w celu uzyskiwania tokenu usługi Azure AD.
 
 1. Pobierz **TenantId**:
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $context = Get-AzContext
    $context.Tenant.Id
    ```
 
 2. Pobierz token:
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $authority = "https://login.windows.net/" + $context.Tenant.Id
    $resource = "https://cognitiveservices.azure.com/"
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
