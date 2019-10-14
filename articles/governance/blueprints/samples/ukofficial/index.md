@@ -1,5 +1,5 @@
 ---
-title: Przykład — strategia standardów UK OFFICIAL i UK NHS — omówienie
+title: Przykłady strategii standardów UK OFFICIAL i UK NHS — omówienie
 description: Omówienie i architektura przykładów strategii standardów UK OFFICIAL i UK NHS. Ten przykład strategii pomaga klientom ocenić określone mechanizmy kontroli.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 2478dce573fac52d948e6e180d9716beda34b44b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 942928a3e5da02bc44f85baab1b9795137a9433d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248764"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297107"
 ---
 # <a name="overview-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Omówienie przykładów strategii standardów UK OFFICIAL i UK NHS
 

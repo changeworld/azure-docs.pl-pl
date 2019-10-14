@@ -41,7 +41,7 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | NL-to      | Holenderski (belgijski)        |       |    ✓   |         |                   |                |     ✓     |
 | en-AU      | Angielski (Australia)    |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | EN-NZ      | Angielski (Nowa Zelandia)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| pl GB      | Angielski (Wielka Brytania) |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| pl GB      | Angielski (Zjednoczone Królestwo) |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | pl-US      | Angielski (USA)          |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | et-EE      | Estoński               |       |    ✓   |         |         ✓         |                |     ✓     |
 | fi-FI      | Fiński                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |

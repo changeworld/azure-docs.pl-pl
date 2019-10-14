@@ -57,7 +57,7 @@ Plik konfiguracyjny `/etc/multipath.conf` zapewnia wiele funkcji wielu ścieżek
 Multipath.conf składa się z pięciu sekcji:
 
 - **Poziom domyślnych ustawień systemowych** *(wartość domyślna)* : Można zastąpić domyślne ustawienia poziomu systemu.
-- **Na czarnej liście urządzeń** *(czarna lista)* : Można określić listę urządzeń, które nie powinny być kontrolowane przez urządzenie mapowania.
+- **Na liście zablokowanych urządzeń** *(lista zablokowanych)* : Można określić listę urządzeń, które nie powinny być kontrolowane przez urządzenie mapowania.
 - **Utworzyć listę niedozwolonych wyjątki** *(blacklist_exceptions)* : Można zidentyfikować konkretnych urządzeń powinien być traktowany jako wielościeżkowe urządzeń, nawet jeżeli listy zabronionych na liście.
 - **Ustawienia określonego kontrolera magazynu** *(urządzenia)* : Można określić ustawienia konfiguracji, które będą stosowane do urządzeń, dostawcy i informacje o produkcie.
 - **Określone ustawienia urządzenia** *(multipaths)* : W tej sekcji można użyć, aby dostroić ustawienia konfiguracji dla poszczególnych jednostek LUN.

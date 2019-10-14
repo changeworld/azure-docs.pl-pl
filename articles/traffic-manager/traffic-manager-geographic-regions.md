@@ -63,7 +63,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - FR(France)
 
-        - GB (Wielka Brytania)
+        - GB (Zjednoczone Królestwo)
 
         - GG(Guernsey)
 

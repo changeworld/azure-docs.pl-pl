@@ -1,17 +1,17 @@
 ---
-title: Przykład — strategia dla obciążenia środowiska ASE/bazy danych SQL ISO 27001 — przegląd
+title: Przykład strategii obciążenia środowiska ASE/bazy danych SQL ISO 27001 — omówienie
 description: Omówienie i architektura przykładu strategii obciążenia środowiska App Service Environment/bazy danych SQL ISO 27001.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: e2f95cb28d14359955a0fbec1d402b08b911a59c
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 066df6b0fc7516777e2edf523bef226c09c80263
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978331"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299145"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Przegląd przykładowej strategii obciążenia środowiska App Service Environment/bazy danych SQL ISO 27001
 

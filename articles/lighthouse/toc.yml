@@ -44,6 +44,8 @@
     - name: Wyświetlanie dostawców usług i zarządzanie nimi
       displayName: 'managed services offer, azure marketplace, publish'
       href: ./how-to/view-manage-service-providers.md
+    - name: 'Wdrażanie zasad, które można skorygować'
+      href: ./how-to/deploy-policy-remediation.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

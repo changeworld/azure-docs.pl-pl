@@ -187,7 +187,7 @@ W tej sekcji dodasz do urządzenia usługi IoT Edge moduł niestandardowy utworz
         |Identyfikator URI obrazu     | Identyfikator URI obrazu dla odpowiadających im obrazów kontenera dla modułu.        |
         |Poświadczenia są wymagane     | Jeśli zaznaczone, nazwę użytkownika i hasło są używane do pobierania modułów za pomocą dopasowywania adresu URL.        |
     
-        W **opcje tworzenia kontenera** wprowadź punkty instalacji lokalnej moduły graniczne, które kopiowane w poprzednich krokach dla udziału Edge i przeglądarki Edge lokalny udział.
+        W **opcje tworzenia kontenera** wprowadź punkty instalacji lokalnej moduły graniczne, które kopiowane w poprzednich krokach dla udziału Edge i przeglądarki Microsoft Edge lokalny udział.
 
         > [!IMPORTANT]
         > Ścieżki używane w tym miejscu są instalowane w Twoim kontenerze, więc musi odpowiadać oczekiwaniom funkcji w kontenerze. Jeśli wykonujesz [Tworzenie niestandardowego modułu](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code), określony w tym module kod oczekuje, że skopiowany ścieżki. Nie należy modyfikować tych ścieżek.

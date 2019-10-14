@@ -56,7 +56,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps mobilnośc
 |--------|---------|
 | Australia      | <p>Adelajda, sprężyny Alice, Bowen, Brisbane, Bundaberg QLD, Burnie, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, Wyspa magnetycznych, Bay Maryborough Hervey, Melbourne, Nowa Południowa Walia, Perth, RockHampton, Południowo-Wschodniej Queensland, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | Chiny | <p> Changchun, Changsha, Chengdu, Chongqing, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Szanghaj, Pekin, Zhengzhou Guangzhou, Shenzhen,</P>| 
-| SRA Hongkong | Hongkong *|
+| SRA Hongkong | SRA Hongkong *|
 | SRA Makau | Macau*|
 | Indie | Ahmedabad Bengaluru, Delhi, Mumbaj (Bombaj), Mysuru|
 | Indonezja | Bandung Banyuwangi, Batam, Denpasar, Dżakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
@@ -110,7 +110,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps mobilnośc
 | Portugalia | Bragança, Coimbra, Funchal, Leiria, Lisboa, Portimao, Porto|
 | Republika Malta | Malta* | 
 | Rumunia | <p>Alba Iulia, Arad, Bistrița, Brăila, Braşov, Bukareszt, Buzau, Cluj Napoca, Constanța, Craiova, Deva, Focșani, Galati, Iaşi, Miercurea Ciuc, Oradea, Piatra Neamt, Pitești, Ploieşti, Reșița, Satu Mare, Sibiu, Suceava, Targu Mures, Timisoary, Tulcea, Zalau</p> | 
-| Rosja  | Rostov-on-Don Wołgograd, Jekaterynburg, Kazań, Kirow, Krasnodar, Moskwa, Nalchik, Niżni Nowogród, Nowosybirsk, Noyabrsk, Omsk, jako trwałą, St Petersburg, Twer, Tomsk |
+| Rosja  | Rostov-on-Don Wołgograd, Jekaterynburg, Kazań, Gizigalay, Krasnodar, Moskwa, Nalchik, Niżni Nowogród, Nowosybirsk, Noyabrsk, Omsk, jako trwałą, St Petersburg, Twer, Tomsk |
 | Serbia  | Belgrad, Kragujevac, sieciowej usługi informacyjnej, nowy Sad Valjevo, Subotica | 
 | Słowacja | Bańska Bystrzyca, Bratysława, Kosice, Presov Prievidza, Trencin | 
 | Słowenia | Koper, Lublana | 
@@ -119,7 +119,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps mobilnośc
 | Szwajcaria | M.in. Basel, Geneva, Yverdon-les-Bains Zurych | 
 | Turcja | Adana Mersin, Ankara, Antalya, Balıkesir, Bilecik, Bolu, Bursa, Denizli, Duzce, Elazig, Eskisehir, Stambuł, Istambuł; Aydin, Kahramanmaras, Kayseri, Konya, Malatya, Muğla, Samsun, Şanlıurfa |    
 | Zjednoczone Królestwo | Podlasie Middlands wschodnie, Londyn i południowo-wschodnia, północny wschód, Północny zachód, Irlandii Północnej, Szkocja, Południowy Zachód, Walia, West Middlands, Yorkshire |
-| Ukraina | Kharkiv, Zhytomyr, Kiev, Lviv, Chernivtsi |
+| Ukraina | Kharkiv, Zhytomyr, Kiev, Lwów, Chernivtsi |
 
 
 ## <a name="middle-east-and-africa"></a>Bliski Wschód i Afryka
