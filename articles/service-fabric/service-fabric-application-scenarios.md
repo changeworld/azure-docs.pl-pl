@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/24/2019
 ms.author: atsenthi
-ms.openlocfilehash: 91e85f762e05c836fe32f5743cc48afed30ae983
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d72e124248887690ca26c2676e8036cb1b5c4339
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327298"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303505"
 ---
 # <a name="service-fabric-application-scenarios"></a>Scenariusze aplikacji Service Fabric
 Usługa Azure Service Fabric oferuje niezawodną i elastyczną platformę, w której można pisać i uruchamiać wiele rodzajów aplikacji i usług firmy. Te aplikacje i mikrousługi mogą być bezstanowe lub stanowe i są zrównoważone przez zasoby na maszynach wirtualnych w celu zmaksymalizowania wydajności. 
@@ -30,7 +30,7 @@ Aby uzyskać wskazówki dotyczące projektowania dotyczące tworzenia aplikacji,
 
 Rozważ użycie Service Fabric platformy dla następujących typów aplikacji:
 
-* **Gromadzenie i przetwarzanie danych oraz IoT**: Service Fabric obsługuje dużą skalę i ma małe opóźnienia dzięki usługom stanowym. Może ona pomóc w przetwarzaniu danych na milionach urządzeń, gdzie znajdują się dane dotyczące urządzenia i obliczenia.
+* **Zbieranie i przetwarzanie danych oraz IoT**: Service Fabric obsługuje dużą skalę i ma małe opóźnienia w ramach usług stanowych. Może ona pomóc w przetwarzaniu danych na milionach urządzeń, gdzie znajdują się dane dotyczące urządzenia i obliczenia.
 
     Klienci, którzy korzystali z usługi IoT Services przy użyciu Service Fabric obejmują systemy [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [PCL](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneider elektryczny](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)i [siatkowe](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
 
@@ -38,7 +38,7 @@ Rozważ użycie Service Fabric platformy dla następujących typów aplikacji:
 
     Klienci, którzy korzystali z wbudowanych usług gier, obejmują [kolejne gry](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) i [Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/). Klienci z utworzonymi sesjami interaktywnymi obejmują [Honeywell z usługą HoloLens](https://customers.microsoft.com/story/honeywell-manufacturing-hololens).
 
-* **Analiza danych i przetwarzanie przepływu pracy**: Aplikacje, które muszą w niezawodny sposób przetwarzać zdarzenia lub strumienie danych, z zoptymalizowanych odczytów i zapisów w Service Fabric. Service Fabric obsługuje także potoki przetwarzania aplikacji, w których wyniki muszą być niezawodne i przesyłane do następnego etapu przetwarzania bez utraty. Te potoki obejmują systemy transakcyjne i finansowe, w których są niezbędne gwarancje spójności danych i obliczeń.
+* **Analiza danych i przetwarzanie przepływu pracy**: aplikacje, które muszą w niezawodny sposób przetwarzać zdarzenia lub strumienie danych, z zoptymalizowanych odczytów i zapisów w Service Fabric. Service Fabric obsługuje także potoki przetwarzania aplikacji, w których wyniki muszą być niezawodne i przesyłane do następnego etapu przetwarzania bez utraty. Te potoki obejmują systemy transakcyjne i finansowe, w których są niezbędne gwarancje spójności danych i obliczeń.
 
     Klienci, którzy mają wbudowaną służbowe usługi workflow, obejmują [grupę Zeiss](https://customers.microsoft.com/story/zeiss-group-focuses-on-azure-service-fabric-for-key-integration-platform), [rozwiązania biznesowe kworum](https://customers.microsoft.com/en-us/story/quorum-business-solutions-expand-energy-managemant-solutions-using-azure-service-fabric)i [Société General](https://customers.microsoft.com/en-us/story/societe-generale-speeds-real-time-market-quotes-using-azure-service-fabric).
 
@@ -50,9 +50,9 @@ Rozważ użycie Service Fabric platformy dla następujących typów aplikacji:
 
     Klienci, którzy korzystali z usług obliczeniowych, obejmują [odpowiedzi Solidsoft](https://customers.microsoft.com/story/solidsoft-reply-platform-powers-e-verification-of-pharmaceuticals) i [Infosupport](https://customers.microsoft.com/story/service-fabric-customer-profile-info-support-and-fudura).
 
-* **Usługi o wysokiej**dostępności: Service Fabric zapewnia szybką pracę w trybie failover przez utworzenie wielu replik usług dodatkowych. Jeśli węzeł, proces lub indywidualna usługa ulegnie awarii z powodu sprzętu lub innego błędu, jedna z replik pomocniczych jest podwyższana do repliki podstawowej z minimalną utratą usługi.
+* **Usługi o wysokiej dostępności**: Service Fabric zapewnia szybką pracę w trybie failover przez utworzenie wielu replik usług dodatkowych. Jeśli węzeł, proces lub indywidualna usługa ulegnie awarii z powodu sprzętu lub innego błędu, jedna z replik pomocniczych jest podwyższana do repliki podstawowej z minimalną utratą usługi.
 
-* **Skalowalne usługi**: Poszczególne usługi mogą być podzielone na partycje, co pozwala na skalowanie stanu w całym klastrze. Poszczególne usługi mogą być również tworzone i usuwane na bieżąco. Usługi można skalować w poziomie z kilku wystąpień w kilku węzłach do tysięcy wystąpień w wielu węzłach, a następnie skalować je ponownie w razie potrzeby. Za pomocą Service Fabric można kompilować te usługi i zarządzać pełnymi cyklami życia.
+* **Skalowalne usługi**: poszczególne usługi mogą być podzielone na partycje, co umożliwia skalowanie w poziomie w klastrze. Poszczególne usługi mogą być również tworzone i usuwane na bieżąco. Usługi można skalować w poziomie z kilku wystąpień w kilku węzłach do tysięcy wystąpień w wielu węzłach, a następnie skalować je ponownie w razie potrzeby. Za pomocą Service Fabric można kompilować te usługi i zarządzać pełnymi cyklami życia.
 
 ## <a name="application-design-case-studies"></a>Analizy przypadków projektowania aplikacji
 Analizy przypadków pokazujące, w jaki sposób Service Fabric jest używany do projektowania aplikacji, jest publikowana na [historiech](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=0&so=story_publish_date%20desc/) i [mikrousługach klientów w witrynach platformy Azure](https://azure.microsoft.com/solutions/microservice-applications/) .
@@ -68,9 +68,9 @@ Mikrousługi stanowe upraszczają projekty aplikacji, ponieważ usuwają potrzeb
 
 Poniższe diagramy ilustrują różnice między projektowaniem aplikacji, która jest bezstanowa i jednego ze stanowych. Dzięki wykorzystaniu modeli programowania [Reliable Services](service-fabric-reliable-services-introduction.md) i [Reliable Actors](service-fabric-reliable-actors-introduction.md) , usługi stanowe zmniejszają złożoność aplikacji przy jednoczesnym osiągnięciu dużej przepływności i małych opóźnień.
 
-Oto przykładowa aplikacja korzystająca z usług bezstanowych: ![Application, który korzysta z usług bezstanowych @ no__t-1
+Oto przykładowa aplikacja korzystająca z usług bezstanowych: ![Application, które korzystają z usług bezstanowych @ no__t-1
 
-Oto przykładowa aplikacja korzystająca z usług stanowych: ![Application, który korzysta z usług bezstanowych @ no__t-1
+Oto przykładowa aplikacja korzystająca z usług stanowych: ![Application, która korzysta z usług stanowych @ no__t-1
 
 ## <a name="next-steps"></a>Następne kroki
 

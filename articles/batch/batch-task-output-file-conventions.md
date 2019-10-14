@@ -14,18 +14,18 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4446b92a8998f05aae47a3bab6a2cea4785fddf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a2970c46c7cbc978bf6d7491c9258dcccc5404bd
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094563"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302679"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Utrwalanie danych zadań i zadań w usłudze Azure Storage za pomocą biblioteki Konwencji plików wsadowych dla platformy .NET
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-Jednym ze sposobów utrwalania danych zadania jest użycie [biblioteki Konwencji plików Azure Batch dla platformy .NET][nuget_package]. Biblioteka Konwencji plików upraszcza proces przechowywania danych wyjściowych zadań w usłudze Azure Storage i pobierania go. Można użyć biblioteki Konwencji plików w kodzie zadania i klienta &mdash; w kodzie zadania do utrwalania plików, a także w kodzie klienta, aby wyświetlić listę i pobrać je. Kod zadania może również użyć biblioteki do pobrania danych wyjściowych zadań nadrzędnych, takich jak scenariusz [zależności zadań](batch-task-dependencies.md) .
+Jednym ze sposobów utrwalania danych zadania jest użycie [biblioteki Konwencji plików Azure Batch dla platformy .NET][nuget_package]. Biblioteka Konwencji plików upraszcza proces przechowywania danych wyjściowych zadań w usłudze Azure Storage i pobierania go. Można użyć biblioteki Konwencji plików zarówno w kodzie zadania, jak i klienta &mdash; w kodzie zadania do utrwalania plików, a także w kodzie klienta, aby wyświetlić listę i pobrać je. Kod zadania może również użyć biblioteki do pobrania danych wyjściowych zadań nadrzędnych, takich jak scenariusz [zależności zadań](batch-task-dependencies.md) .
 
 Aby pobrać pliki wyjściowe z biblioteką Konwencji plików, można zlokalizować pliki dla danego zadania lub zadania, wymieniając je według identyfikatorów i przeznaczenie. Nie musisz znać nazw lub lokalizacji plików. Na przykład można użyć biblioteki Konwencji plików, aby wyświetlić listę wszystkich plików pośrednich dla danego zadania, lub pobrać plik podglądu dla danego zadania.
 
@@ -42,7 +42,7 @@ Azure Batch zapewnia więcej niż jeden sposób utrwalania danych wyjściowych z
 - Aplikacja kliencka lub inne zadania w zadaniu muszą odszukać i pobrać pliki wyjściowe zadania według identyfikatora lub według celu.
 - Chcesz wyświetlić dane wyjściowe zadania w Azure Portal.
 
-Jeśli Twój Scenariusz różni się od wymienionych powyżej, może być konieczne rozważenie innego podejścia. Aby uzyskać więcej informacji na temat innych opcji utrwalania danych wyjściowych zadania, zobacz Utrwalanie zadań [i zadań wyjściowych w usłudze Azure Storage](batch-task-output.md).
+Jeśli Twój Scenariusz różni się od wymienionych powyżej, może być konieczne rozważenie innego podejścia. Aby uzyskać więcej informacji na temat innych opcji utrwalania danych wyjściowych zadania, zobacz [utrwalanie zadań i zadań wyjściowych w usłudze Azure Storage](batch-task-output.md).
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Co to jest standardowa Konwencja pliku wsadowego?
 
@@ -63,18 +63,18 @@ Aby zachować dane wyjściowe do usługi Azure Storage przy użyciu biblioteki K
 
 ## <a name="persist-output-data"></a>Utrwalanie danych wyjściowych
 
-Aby zachować dane wyjściowe zadania i zadania przy użyciu biblioteki Konwencji plików, Utwórz kontener w usłudze Azure Storage, a następnie Zapisz dane wyjściowe do kontenera. Użyj [biblioteki klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage) w kodzie zadania, aby przekazać dane wyjściowe zadania do kontenera. 
+Aby zachować dane wyjściowe zadania i zadania przy użyciu biblioteki Konwencji plików, Utwórz kontener w usłudze Azure Storage, a następnie Zapisz dane wyjściowe do kontenera. Użyj [biblioteki klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage) w kodzie zadania, aby przekazać dane wyjściowe zadania do kontenera.
 
 Aby uzyskać więcej informacji na temat pracy z kontenerami i obiektami BLOB w usłudze Azure Storage, zobacz Wprowadzenie [do usługi Azure Blob Storage przy użyciu platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
 > [!WARNING]
-> Wszystkie dane wyjściowe zadania i zadania utrwalane za pomocą biblioteki Konwencji plików są przechowywane w tym samym kontenerze. Jeśli duża liczba zadań próbuje jednocześnie utrwalać pliki, [limity ograniczania magazynu](../storage/common/storage-performance-checklist.md#blobs) mogą być wymuszane.
+> Wszystkie dane wyjściowe zadania i zadania utrwalane za pomocą biblioteki Konwencji plików są przechowywane w tym samym kontenerze. W przypadku dużej liczby zadań, które próbują jednocześnie utrwalać pliki, można wymusić limity ograniczenia usługi Azure Storage. Aby uzyskać więcej informacji na temat limitów ograniczania przepustowości, zobacz [Lista kontrolna wydajności i skalowalności dla usługi BLOB Storage](../storage/blobs/storage-performance-checklist.md).
 
 ### <a name="create-storage-container"></a>Tworzenie kontenera magazynu
 
 Aby zachować dane wyjściowe zadania do usługi Azure Storage, należy najpierw utworzyć kontener przez wywołanie [CloudJob][net_cloudjob]. [PrepareOutputStorageAsync][net_prepareoutputasync]. Ta metoda rozszerzenia przyjmuje obiekt [CloudStorageAccount][net_cloudstorageaccount] jako parametr. Tworzy kontener o nazwie zgodnej ze standardem Konwencji plików, dzięki czemu jego zawartość jest wykrywalna przez Azure Portal i metody pobierania omówione w dalszej części artykułu.
 
-Zwykle umieszczasz kod w celu utworzenia kontenera w aplikacji &mdash; klienckiej aplikacji, która tworzy pule, zadania i zadania.
+Zwykle umieszczasz kod w celu utworzenia kontenera w aplikacji klienckiej &mdash; aplikacji, która tworzy pule, zadania i zadania.
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob(
@@ -109,12 +109,12 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-`kind` Parametr [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[ Metoda SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) klasyfikuje utrwalone pliki. Istnieją cztery wstępnie zdefiniowane typy [TaskOutputKind][net_taskoutputkind] : `TaskOutput`, `TaskPreview`, `TaskLog`, i `TaskIntermediate.` można także definiować niestandardowe kategorie danych wyjściowych.
+Parametr `kind` [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage). Metoda [SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) klasyfikuje utrwalone pliki. Istnieją cztery wstępnie zdefiniowane typy [TaskOutputKind][net_taskoutputkind] : `TaskOutput`, `TaskPreview`, `TaskLog` i `TaskIntermediate.` można także definiować niestandardowe kategorie danych wyjściowych.
 
 Te typy wyjściowe umożliwiają określenie typu danych wyjściowych do wyświetlenia podczas późniejszej kwerendy partii dla utrwalonych danych wyjściowych danego zadania. Innymi słowy, gdy wyświetlasz listę danych wyjściowych dla zadania, możesz filtrować listę na jednym z typów wyjściowych. Na przykład "Nadaj mi *Podgląd* danych wyjściowych dla zadania *109*". Więcej informacji na temat wyświetlania i pobierania danych wyjściowych znajduje się w dalszej części artykułu.
 
 > [!TIP]
-> Typ wyjściowy określa również, gdzie w Azure Portal pojawia się określony plik: Pliki z kategoryzacją *TaskOutput*są wyświetlane w obszarze **pliki wyjściowe zadania**, a pliki *TaskLog* są wyświetlane w obszarze **dzienniki zadań**.
+> Typ wyjściowy określa również, gdzie w Azure Portal pojawia się określony plik: pliki z kategoryzacją *TaskOutput*są wyświetlane w obszarze **pliki wyjściowe zadania**, a pliki *TaskLog* są wyświetlane w obszarze **dzienniki zadań**.
 
 ### <a name="store-job-outputs"></a>Przechowuj dane wyjściowe zadania
 
@@ -134,9 +134,9 @@ Podobnie jak w przypadku typu **TaskOutputKind** dla danych wyjściowych zadania
 
 ### <a name="store-task-logs"></a>Przechowuj dzienniki zadań
 
-Oprócz utrwalania plików w trwałej pamięci masowej po zakończeniu zadania lub zadania, może być konieczne utrwalenie plików, które są aktualizowane podczas wykonywania plików dziennika zadań &mdash; `stderr.txt`lub `stdout.txt` na przykład. W tym celu Biblioteka Konwencji plików Azure Batch udostępnia [TaskOutputStorage][net_taskoutputstorage]. [SaveTrackedAsync][net_savetrackedasync] . Za pomocą [SaveTrackedAsync][net_savetrackedasync]można śledzić aktualizacje pliku w węźle (w określonym interwale) i zachować te aktualizacje w usłudze Azure Storage.
+Oprócz utrwalania plików w trwałej pamięci masowej po zakończeniu zadania lub zadania, może być konieczne utrwalenie plików, które są aktualizowane podczas wykonywania zadania &mdash; plików dziennika lub `stdout.txt` i `stderr.txt`, na przykład. W tym celu Biblioteka Konwencji plików Azure Batch udostępnia [TaskOutputStorage][net_taskoutputstorage]. [SaveTrackedAsync][net_savetrackedasync] . Za pomocą [SaveTrackedAsync][net_savetrackedasync]można śledzić aktualizacje pliku w węźle (w określonym interwale) i zachować te aktualizacje w usłudze Azure Storage.
 
-W poniższym fragmencie kodu używamy [SaveTrackedAsync][net_savetrackedasync] do aktualizacji `stdout.txt` usługi Azure Storage co 15 sekund podczas wykonywania zadania:
+W poniższym fragmencie kodu używamy [SaveTrackedAsync][net_savetrackedasync] do aktualizowania `stdout.txt` w usłudze Azure Storage co 15 sekund podczas wykonywania zadania:
 
 ```csharp
 TimeSpan stdoutFlushDelay = TimeSpan.FromSeconds(3);
@@ -161,12 +161,12 @@ using (ITrackedSaveOperation stdout =
 }
 ```
 
-Sekcja `Code to process data and produce output file(s)` z komentarzem jest symbolem zastępczym dla kodu, który zwykle wykonuje zadanie. Przykładowo może być kod, który pobiera dane z usługi Azure Storage i wykonuje transformację lub obliczenie. Ważna część tego fragmentu kodu przedstawia sposób, w jaki można otoczyć ten kod w `using` bloku, aby okresowo aktualizować plik za pomocą [SaveTrackedAsync][net_savetrackedasync].
+Sekcja z komentarzem `Code to process data and produce output file(s)` jest symbolem zastępczym dla kodu, który zwykle wykonuje zadanie. Przykładowo może być kod, który pobiera dane z usługi Azure Storage i wykonuje transformację lub obliczenie. Ważna część tego fragmentu kodu przedstawia sposób, w jaki można otoczyć ten kod w bloku `using`, aby okresowo aktualizować plik za pomocą [SaveTrackedAsync][net_savetrackedasync].
 
-Agent węzła jest programem uruchamianym w każdym węźle w puli i udostępnia interfejs poleceń i kontroli między węzłem a usługą Batch. Wywołanie jest wymagane na końcu tego `using` bloku, aby upewnić się, że Agent węzła ma czas, aby opróżnić zawartość Standard do pliku stdout. txt w węźle. `Task.Delay` Bez tego opóźnienia można pominąć ostatnie kilka sekund danych wyjściowych. To opóźnienie może nie być wymagane dla wszystkich plików.
+Agent węzła jest programem uruchamianym w każdym węźle w puli i udostępnia interfejs poleceń i kontroli między węzłem a usługą Batch. Na końcu tego bloku `using` jest wymagane wywołanie `Task.Delay`, aby upewnić się, że Agent węzła ma czas, aby opróżnić zawartość Standard do pliku stdout. txt w węźle. Bez tego opóźnienia można pominąć ostatnie kilka sekund danych wyjściowych. To opóźnienie może nie być wymagane dla wszystkich plików.
 
 > [!NOTE]
-> Po włączeniu śledzenia plików przy użyciu usługi **SaveTrackedAsync**tylko dołączanie do śledzonego pliku są utrwalane w usłudze Azure Storage. Tej metody należy używać tylko do śledzenia plików dziennika nieobracania lub innych plików, które są zapisywane przy użyciu operacji dołączania na końcu pliku.
+> Po włączeniu śledzenia plików przy użyciu usługi **SaveTrackedAsync**tylko *dołączanie* do śledzonego pliku są utrwalane w usłudze Azure Storage. Tej metody należy używać tylko do śledzenia plików dziennika nieobracania lub innych plików, które są zapisywane przy użyciu operacji dołączania na końcu pliku.
 
 ## <a name="retrieve-output-data"></a>Pobieranie danych wyjściowych
 
@@ -209,9 +209,9 @@ Przykładowy projekt [PersistOutputs][github_persistoutputs] jest jednym z [przy
 
 1. Otwórz projekt w programie **Visual Studio 2019**.
 2. Dodaj **poświadczenia konta** usługi Batch i Storage do **AccountSettings. Settings** w projekcie Microsoft. Azure. Batch. Samples. Common.
-3. **Kompilacja** (ale nie są uruchamiane) rozwiązanie. Jeśli zostanie wyświetlony monit, Przywróć wszystkie pakiety NuGet.
-4. Użyj Azure Portal, aby przekazać [pakiet aplikacji](batch-application-packages.md) dla **PersistOutputsTask**. Uwzględnij `PersistOutputsTask.exe` i jej zestawy zależne w pakiecie. zip, ustaw identyfikator aplikacji na "PersistOutputsTask" i wersję pakietu aplikacji na "1,0".
-5. **Rozpocznij** (Uruchom) projekt **PersistOutputs** .
+3. **Kompiluj** (ale nie uruchamiaj) rozwiązanie. Jeśli zostanie wyświetlony monit, Przywróć wszystkie pakiety NuGet.
+4. Użyj Azure Portal, aby przekazać [pakiet aplikacji](batch-application-packages.md) dla **PersistOutputsTask**. Uwzględnij `PersistOutputsTask.exe` i jej zestawów zależnych w pakiecie. zip, ustaw identyfikator aplikacji na "PersistOutputsTask" i wersję pakietu aplikacji na "1,0".
+5. **Uruchom** (Uruchom) projekt **PersistOutputs** .
 6. Po wyświetleniu monitu o wybranie technologii trwałości do uruchomienia przykładu wprowadź **1** , aby uruchomić przykład za pomocą biblioteki Konwencji plików, aby utrzymać dane wyjściowe zadania. 
 
 ## <a name="next-steps"></a>Następne kroki

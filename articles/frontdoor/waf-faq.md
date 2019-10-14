@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f6e0ea7ca5b9b131a8d7d7c2c6546130a7d020b3
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375346"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302852"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Często zadawane pytania dotyczące zapory aplikacji sieci Web platformy Azure
 
@@ -31,7 +31,7 @@ Zasady usługi Azure WAF można stosować do aplikacji sieci Web hostowanych na 
 
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Co to jest WAF dla usługi Azure front-drzwi? 
 
-Drzwi frontonu platformy Azure to wysoce skalowalna, globalnie dystrybuowana aplikacja i usługa Content Delivery Network. Usługa Azure WAF, która jest zintegrowana z przednim Drzwiem, kończy ataki typu "odmowa usługi" i "ukierunkowane na aplikacje" na granicy sieci platformy Azure, a przed wprowadzeniem sieci wirtualnej zapewnia ochronę bez utraty wydajności.
+Drzwi frontonu platformy Azure to wysoce skalowalna, globalnie dystrybuowana aplikacja i usługa Content Delivery Network. Gdy usługa Azure WAF jest zintegrowana z usługą Azure front-drzwi, ataki typu "odmowa usługi" i "aplikacje ukierunkowane" są zatrzymane na granicy sieci platformy Azure. Ta ochrona jest bliska źródłu ataków, zanim będzie mogła wejść do sieci vitrual. Usługa WAF for Azure front-drzwi oferuje ochronę bez obniżania wydajności.
 
 ## <a name="does-azure-waf-support-https"></a>Czy usługa Azure WAF obsługuje protokół HTTPS?
 

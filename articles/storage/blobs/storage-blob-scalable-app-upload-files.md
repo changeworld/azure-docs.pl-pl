@@ -1,18 +1,18 @@
 ---
 title: Równoległe przekazywanie dużych ilości danych losowych do usługi Azure Storage | Microsoft Docs
-description: Dowiedz się, jak przy użyciu zestawu Azure SDK przekazywać równolegle duże ilości danych losowych na konto usługi Azure Storage
+description: Dowiedz się, jak używać biblioteki klienckiej usługi Azure Storage w celu równoległego przekazywania dużych ilości danych losowych do konta usługi Azure Storage
 author: roygara
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: e5c1a78bf2f482e99d8ff13590a8bb81f9601991
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5b20686399db9537e5db8622a433b5e506939d19
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698967"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302985"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Równoległe przekazywanie dużych ilości danych losowych do usługi Azure Storage
 
@@ -28,11 +28,11 @@ Część druga serii zawiera informacje na temat wykonywania następujących czy
 
 Usługa Azure Blob Storage to skalowalna usługa do przechowywania danych. Aby zagwarantować maksymalną wydajność aplikacji, warto wiedzieć, jak działa magazyn obiektów blob. Warto znać ograniczenia obiektów blob na platformie Azure, które opisano w temacie [Blob storage scalability targets (Wartości docelowe skalowalności usługi Blob Storage)](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
 
-[Nazewnictwo partycji](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) jest innym potencjalnie ważnym czynnikiem podczas projektowania wysoce wydajnych aplikacji przy użyciu obiektów BLOB. W przypadku bloków o rozmiarze większym lub równym cztery bazy MiB są używane [obiekty blob o wysokiej przepływności](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) , a nazwa partycji nie wpłynie na wydajność. W przypadku bloków o rozmiarze mniejszym niż cztery MiB usługa Azure Storage korzysta z schematu partycjonowania opartego na zakresie, aby skalować i zrównoważyć obciążenie. Ta konfiguracja oznacza, że pliki z podobną konwencją nazewnictwa lub podobnymi prefiksami są umieszczane w tej samej partycji. Ta logika dotyczy także nazwy kontenera, do którego przekazywane są pliki. W tym samouczku używane są pliki, których nazwa zawiera identyfikator GUID, a ich zawartość jest generowana losowo. Są one przekazywane do pięciu różnych kontenerów o losowych nazwach.
+[Nazewnictwo partycji](../blobs/storage-performance-checklist.md#partitioning) jest innym potencjalnie ważnym czynnikiem podczas projektowania aplikacji o wysokiej wydajności przy użyciu obiektów BLOB. W przypadku bloków o rozmiarze większym niż lub równym 4 MiB są używane [blokowe obiekty blob o dużej przepływności](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) , a nazwy partycji nie wpłyną na wydajność. W przypadku bloków o rozmiarze mniejszym niż 4 MiB usługa Azure Storage korzysta z schematu partycjonowania opartego na zakresie, aby skalować i zrównoważyć obciążenie. Ta konfiguracja oznacza, że pliki z podobną konwencją nazewnictwa lub podobnymi prefiksami są umieszczane w tej samej partycji. Ta logika dotyczy także nazwy kontenera, do którego przekazywane są pliki. W tym samouczku używane są pliki, których nazwa zawiera identyfikator GUID, a ich zawartość jest generowana losowo. Są one przekazywane do pięciu różnych kontenerów o losowych nazwach.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten samouczek, konieczne jest ukończenie poprzedniego samouczka na temat usługi Storage: [Tworzenie maszyny wirtualnej i konta magazynu dla skalowalnej aplikacji][previous-tutorial].
+Aby ukończyć ten samouczek, musisz wykonać poprzedni samouczek dotyczący usługi Storage: [Tworzenie maszyny wirtualnej i konta magazynu dla skalowalnej aplikacji][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>Tworzenie zdalnej sesji na maszynie wirtualnej
 
@@ -44,7 +44,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>Konfigurowanie parametrów połączenia
 
-W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Skopiuj **parametry połączenia** z klucza podstawowego lub pomocniczego. Zaloguj się do maszyny wirtualnej utworzonej w poprzednim samouczku. Otwórz **wiersz polecenia** z uprawnieniami administratora i uruchom polecenie `setx` z przełącznikiem `/m`. To polecenie zapisuje zmienną środowiskową ustawień maszyny. Zmienna środowiskowa będzie dostępna po ponownym załadowaniu **wiersza polecenia**. Zastąp ciąg **\<storageConnectionString\>** w następującym przykładzie:
+W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Kopiuj **ciąg połączenia** z klucza podstawowego lub dodatkowego. Zaloguj się do maszyny wirtualnej utworzonej w poprzednim samouczku. Otwórz **wiersz polecenia** z uprawnieniami administratora i uruchom polecenie `setx` z przełącznikiem `/m`. To polecenie zapisuje zmienną środowiskową ustawień maszyny. Zmienna środowiskowa będzie dostępna po ponownym załadowaniu **wiersza polecenia**. Zastąp ciąg **\<storageConnectionString\>** w następującym przykładzie:
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m
@@ -66,7 +66,7 @@ Aplikacja tworzy pięć losowo nazwanych kontenerów i rozpoczyna przekazywanie 
 
 Oprócz skonfigurowania ustawień wątków oraz limitu połączeń, opcje [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) metody [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) są konfigurowane tak, aby używać funkcji równoległości i wyłączyć sprawdzanie poprawności wartości skrótu MD5. Pliki są przekazywane w blokach po 100 MB. Ta konfiguracja zapewnia lepszą wydajność, ale może być kosztowna, jeśli jest używana w sieci o niskiej wydajności — jeśli wystąpi błąd, konieczne będzie ponowne przekazanie całego bloku 100 MB.
 
-|Właściwość|Value|Opis|
+|Właściwość|Wartość|Opis|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| To ustawienie dzieli obiekt blob na bloki na potrzeby przekazywania. W celu uzyskania najwyższej wydajności ta wartość powinna być osiem razy większa niż liczba rdzeni. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Ta właściwość wyłącza sprawdzanie skrótu MD5 przekazanej zawartości. Wyłączenie sprawdzania poprawności skrótu MD5 zwiększa szybkość transferu. Jednak poprawność i integralność przekazywanych plików nie jest wtedy sprawdzana.   |

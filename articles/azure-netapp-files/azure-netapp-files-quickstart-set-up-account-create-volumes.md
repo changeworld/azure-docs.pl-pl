@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: 9676b10eafbc72a04cb68fc828a72f77e6c3916f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d3035572e629bc11207cc473b51e3edb4f6a5a13
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298587"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302826"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Szybki Start: Konfigurowanie Azure NetApp Files i Tworzenie woluminu NFS 
 
@@ -255,10 +255,12 @@ Ten artykuł instruktażowy wymaga modułu Azure PowerShell AZ Version 2.6.0 lub
     * Wybierz system **plików NFS** jako typ protokołu dla woluminu.  
     * Wprowadź **myfilepath1** jako ścieżkę pliku, która zostanie użyta do utworzenia ścieżki eksportu dla woluminu.  
     * Wybierz wersję systemu plików NFS (**NFSv3** lub **nfsv 4.1**) dla woluminu.  
+      Zapoznaj się z [zagadnieniami](azure-netapp-files-create-volumes.md#considerations) i [najlepszym rozwiązaniem](azure-netapp-files-create-volumes.md#best-practice) dotyczącym wersji systemu plików NFS. 
+      
 > [!IMPORTANT] 
 > Dostęp do funkcji NFSv 4.1 wymaga listy dozwolonych.  Aby zażądać listy dozwolonych, Prześlij żądanie do <anffeedback@microsoft.com>. 
 
-    ![Specify NFS protocol for quickstart](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+  ![Określanie protokołu NFS dla przewodnika Szybki Start](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. Kliknij pozycję **Przegląd + utwórz**.
 

@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab48579c6eda085d77e2a6ab080b0a4a1ce806bd
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000334"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303531"
 ---
-# <a name="what-is-passwordless"></a>Co to jest bezhasło?
+# <a name="what-is-passwordless"></a>Co to jest logowanie bez hasła?
 
 Uwierzytelnianie wieloskładnikowe (MFA) to świetny sposób zabezpieczania organizacji, ale użytkownicy uzyskują sfrustrowani z dodatkową warstwą na potrzeby zapamiętywania haseł. Metody uwierzytelniania bez hasła są wygodniejsze, ponieważ hasło jest usuwane i zastępowane przez użytkownika.
 
 |   | Coś, czego masz | Coś lub wiesz |
 | --- | --- | --- |
-| Kończenie | Telefon lub klucz zabezpieczeń | Biometryczna lub PIN |
+| Logowanie bez hasła | Telefon lub klucz zabezpieczeń | Biometryczna lub PIN |
 
 Każda organizacja ma inne potrzeby związane z uwierzytelnianiem. Firma Microsoft obecnie oferuje funkcje Windows Hello dla naszych komputerów z systemem Windows. Dodajemy Microsoft Authenticator aplikację i klucze zabezpieczeń FIDO2 do rodziny bezhaseł.
 
@@ -55,9 +55,9 @@ Klucz zabezpieczeń **musi** implementować następujące funkcje i rozszerzenia
 | 3 | HMAC-Secret | To rozszerzenie zapewnia możliwość zalogowania się na urządzeniu, gdy jest ono wyłączone lub w trybie samolotowym. |
 | 4 | Wiele kont na jednostkę UZALEŻNIONą | Ta funkcja zapewnia, że można użyć tego samego klucza zabezpieczeń dla wielu usług, takich jak konto Microsoft i Azure Active Directory. |
 
-Następujący dostawcy oferują klucze zabezpieczeń FIDO2 różnego rodzaju, które są znane jako zgodne ze środowiska paswordless. Firma Microsoft zachęca klientów do ocenienia właściwości zabezpieczeń tych kluczy, kontaktując się z dostawcą oraz FIDO Alliance.
+Następujący dostawcy oferują klucze zabezpieczeń FIDO2 różnego rodzaju, które są znane jako zgodne z funkcją bezhaseł. Firma Microsoft zachęca klientów do ocenienia właściwości zabezpieczeń tych kluczy, kontaktując się z dostawcą oraz FIDO Alliance.
 
-| Dostawcy | Kontakt |
+| Dostawca | Kontakt |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |

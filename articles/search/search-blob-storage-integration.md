@@ -1,22 +1,21 @@
 ---
-title: Dodawanie wyszukiwania pełnotekstowego do usługi Azure Blob Storage — Azure Search
-description: Przeszukiwanie zawartości tekstu w usłudze Azure Blob Storage w celu Azure Search indeksowania w kodzie przy użyciu interfejsu API REST protokołu HTTP.
-services: search
+title: Dodawanie wyszukiwania pełnotekstowego do usługi Azure Blob Storage
+titleSuffix: Azure Search
+description: Wyodrębnij zawartość i Dodaj strukturę do obiektów blob platformy Azure podczas kompilowania indeksu wyszukiwania pełnotekstowego w Azure Search.
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/01/2019
-author: mgottein
-manager: nitinme
-ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: f0801931b57302ae1d627dab783a40d2407c19ac
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 10/09/2019
+ms.openlocfilehash: 7e5eb73cc6abc72689bbc674b29f4d288dd66b6f
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650088"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302897"
 ---
-# <a name="searching-blob-storage-with-azure-search"></a>Przeszukiwanie magazynu obiektów blob za pomocą usługi Azure Search
+# <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Dodawanie wyszukiwania pełnotekstowego do danych obiektów blob platformy Azure przy użyciu Azure Search
 
 Wyszukiwanie w różnych typach zawartości przechowywanych w usłudze Azure Blob Storage może być trudnym problemem do rozwiązania. Można jednak indeksować i przeszukiwać zawartość obiektów BLOB za pomocą zaledwie kilku kliknięć przy użyciu Azure Search. Wyszukiwanie w usłudze BLOB Storage wymaga aprowizacji usługi Azure Search. Różne limity usług i warstwy cenowe Azure Search można znaleźć na [stronie cennika](https://aka.ms/azspricing).
 
@@ -45,7 +44,7 @@ Azure Search można skonfigurować do wyodrębniania zawartości strukturalnej z
 
 Analiza JSON nie jest obecnie konfigurowalna za pomocą portalu. [Dowiedz się więcej o analizie JSON w Azure Search.](https://aka.ms/azsjsonblobindexing)
 
-## <a name="quick-start"></a>Szybki start
+## <a name="quickstart"></a>Szybki start
 Azure Search można dodać do obiektów BLOB bezpośrednio ze strony portalu usługi BLOB Storage.
 
 ![](./media/search-blob-storage-integration/blob-blade.png)

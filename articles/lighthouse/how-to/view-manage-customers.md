@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8163bcb4189cbec545544b7d43ba7142d34e29dd
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286158"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302747"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Wyświetlanie klientów i delegowanych zasobów oraz zarządzanie nimi
 
@@ -37,7 +37,7 @@ Na tej stronie można wyświetlić następujące informacje:
 
 - Aby wyświetlić wszystkie subskrypcje, oferty i delegacje skojarzone z klientem, wybierz nazwę klienta.
 - Aby wyświetlić więcej szczegółów na temat oferty i jej delegowania, wybierz nazwę oferty.
-- Aby wyświetlić więcej szczegółów na temat przypisań acrolecess dla delegowanych subskrypcji lub grup zasobów, wybierz wpis w kolumnie **delegacje** .
+- Aby wyświetlić więcej szczegółów na temat przypisań ról dla delegowanych subskrypcji lub grup zasobów, wybierz wpis w kolumnie **delegacje** .
 
 ## <a name="view-delegations"></a>Wyświetl delegowania
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: b7474ca8e8489edb37b3ac9b7c8b5be52867363c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1a479b4928631f27d5453d462a59fe7fed09a88c
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298499"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302765"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Tworzenie woluminu NFS dla usługi Azure NetApp Files
 
@@ -33,11 +33,11 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia 
 
-* Wybór wersji systemu plików NFS do użycia  
-  NFSv3 może obsługiwać wiele różnych przypadków użycia i jest często wdrażany w większości aplikacji dla przedsiębiorstw. Należy sprawdzić poprawność wersji (NFSv3 lub NFSv 4.1) wymaganej przez aplikację i utworzyć wolumin przy użyciu odpowiedniej wersji. Jeśli na przykład używasz platformy [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave), zalecane jest blokowanie plików z nfsv 4.1 w NFSv3. 
-
 > [!IMPORTANT] 
 > Dostęp do funkcji NFSv 4.1 wymaga listy dozwolonych.  Aby zażądać listy dozwolonych, Prześlij żądanie do <anffeedback@microsoft.com>. 
+
+* Wybór wersji systemu plików NFS do użycia  
+  NFSv3 może obsługiwać wiele różnych przypadków użycia i jest często wdrażany w większości aplikacji dla przedsiębiorstw. Należy sprawdzić poprawność wersji (NFSv3 lub NFSv 4.1) wymaganej przez aplikację i utworzyć wolumin przy użyciu odpowiedniej wersji. Jeśli na przykład używasz platformy [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave), zalecane jest blokowanie plików z nfsv 4.1 w NFSv3. 
 
 * Zabezpieczenia  
   Obsługa bitów trybu systemu UNIX (odczyt, zapis i wykonywanie) jest dostępna dla NFSv3 i NFSv 4.1. Aby można było zainstalować woluminy NFS, na kliencie NFS jest wymagany dostęp na poziomie głównym.

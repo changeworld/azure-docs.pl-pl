@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 99af39e996aaadd572603f63d019ff929b679550
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c4cd906148f0f83ab4d66a9daaa606d7b9c183cd
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846241"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303596"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Skonfiguruj regułę limitu szybkości zapory aplikacji sieci Web przy użyciu Azure PowerShell
 Reguła limitu szybkości usługi Azure Web Application Firewall (WAF) dla drzwi frontonu platformy Azure określa liczbę żądań dozwolonych z pojedynczego adresu IP klienta w czasie trwania jednej minuty.
@@ -49,7 +49,7 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 ### <a name="create-a-front-door-profile"></a>Tworzenie profilu frontu drzwi
-Utwórz profil z drzwiami przednimi, wykonując instrukcje opisane [w przewodniku szybki start: Tworzenie profilu frontu drzwi](quickstart-create-front-door.md)
+Utwórz profil z drzwiami wstępnymi, postępując zgodnie z instrukcjami opisanymi w [przewodniku szybki start: Tworzenie profilu front-drzwi](quickstart-create-front-door.md)
 
 ## <a name="define-url-match-conditions"></a>Definiuj warunki dopasowania adresów URL
 Zdefiniuj warunek dopasowania adresu URL (adres URL zawiera/promo) przy użyciu polecenia [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject).
@@ -76,11 +76,9 @@ Ustaw limit szybkości przy użyciu polecenia [New-AzFrontDoorWafCustomRuleObjec
 
 ## <a name="configure-a-security-policy"></a>Konfigurowanie zasad zabezpieczeń
 
-Znajdź nazwę grupy zasobów, która zawiera profil przedni drzwi przy użyciu `Get-AzureRmResourceGroup`. Następnie skonfiguruj zasady zabezpieczeń z niestandardową regułą limitu szybkości przy użyciu polecenia [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) w określonej grupie zasobów, która zawiera profil drzwi przednich.
+Znajdź nazwę grupy zasobów, która zawiera profil przedniego, przy użyciu `Get-AzureRmResourceGroup`. Następnie skonfiguruj zasady zabezpieczeń z niestandardową regułą limitu szybkości przy użyciu polecenia [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) w określonej grupie zasobów, która zawiera profil drzwi przednich.
 
-W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* z założeniem, że profil przedniego został utworzony przy użyciu instrukcji przedstawionych w [przewodniku szybki start: Tworzenie przedniego](quickstart-create-front-door.md) artykułu.
-
- przy użyciu polecenia [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* z założeniem, że profil przeddrzwi został utworzony przy użyciu instrukcji przedstawionych w [przewodniku szybki start: Tworzenie artykułu z drzwiem przednim](quickstart-create-front-door.md) przy [użyciu New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `
@@ -94,7 +92,7 @@ W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* z za�
 Połącz obiekt zasad zabezpieczeń z istniejącym hostem frontonu z przednim Drzwiem i zaktualizuj właściwości drzwi zewnętrznych. Najpierw Pobierz obiekt Front-drzwiczk przy użyciu polecenia [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) .
 Następnie ustaw właściwość *WebApplicationFirewallPolicyLink* frontonu na identyfikator *zasobu* "$ratePolicy" utworzony w poprzednim kroku przy użyciu polecenia [Set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) . 
 
-W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* z założeniem, że profil przedniego został utworzony przy użyciu instrukcji przedstawionych w [przewodniku szybki start: Tworzenie przedniego](quickstart-create-front-door.md) artykułu. Ponadto w poniższym przykładzie Zastąp $frontDoorName nazwą profilu od drzwi do przodu. 
+W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* z założeniem, że profil przeddrzwi został utworzony przy użyciu instrukcji przedstawionych w [przewodniku szybki start: Tworzenie przedniego](quickstart-create-front-door.md) artykułu. Ponadto w poniższym przykładzie Zastąp $frontDoorName nazwą profilu od drzwi do przodu. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `

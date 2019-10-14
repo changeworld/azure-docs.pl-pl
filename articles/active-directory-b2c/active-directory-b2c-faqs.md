@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d852b786c1cc1c1eb9d39b931f9b8a142f969815
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065868"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302545"
 ---
-# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Często zadawane pytania
+# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: często zadawane pytania
 
 Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące Azure Active Directory B2C (Azure AD B2C). Kontynuuj sprawdzanie aktualizacji.
 
@@ -27,7 +27,7 @@ Istnieją dwie typowe przyczyny, dla których rozszerzenie usługi Azure AD nie 
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Czy mogę używać funkcji Azure AD B2C w mojej istniejącej dzierżawie usługi Azure AD opartej na pracowniku?
 
-Usługa Azure AD i Azure AD B2C są oddzielnymi ofertami produktu i nie mogą współistnieć w tej samej dzierżawie. Dzierżawa usługi Azure AD reprezentuje organizację. Dzierżawca Azure AD B2C reprezentuje kolekcję tożsamości, które mają być używane z aplikacjami jednostek uzależnionych. Dzięki zasadom niestandardowym (w publicznej wersji zapoznawczej) Azure AD B2C można sfederować do usługi Azure AD, umożliwiając uwierzytelnianie pracowników w organizacji.
+Usługa Azure AD i Azure AD B2C są oddzielnymi ofertami produktu i nie mogą współistnieć w tej samej dzierżawie. Dzierżawa usługi Azure AD reprezentuje organizację. Dzierżawca Azure AD B2C reprezentuje kolekcję tożsamości, które mają być używane z aplikacjami jednostek uzależnionych. Przy użyciu zasad niestandardowych Azure AD B2C można sfederować do usługi Azure AD, umożliwiając uwierzytelnianie pracowników w organizacji.
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Czy mogę użyć usługi Azure AD B2C, aby zapewnić logowanie społeczne (Facebook i Google +) do pakietu Office 365?
 
@@ -35,9 +35,9 @@ Nie można użyć Azure AD B2C do uwierzytelniania użytkowników dla Microsoft 
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Co to są konta lokalne w Azure AD B2C? Czym różnią się one od kont służbowych w usłudze Azure AD?
 
-W dzierżawie usługi Azure AD użytkownicy, którzy należą do logowania do dzierżawy przy użyciu adresu e-mail formularza `<xyz>@<tenant domain>`. Jest to jedna z zweryfikowanych domen w dzierżawie lub w domenie `<...>.onmicrosoft.com`początkowej. `<tenant domain>` Ten typ konta jest kontem służbowym.
+W dzierżawie usługi Azure AD użytkownicy, którzy należą do logowania do dzierżawy przy użyciu adresu e-mail w formularzu `<xyz>@<tenant domain>`. @No__t-0 to jedna z zweryfikowanych domen w dzierżawie lub początkowa domena `<...>.onmicrosoft.com`. Ten typ konta jest kontem służbowym.
 
-W dzierżawie Azure AD B2C większość aplikacji chce, aby użytkownik mógł się zalogować przy użyciu dowolnego adresu e-mail (na przykład joe@comcast.net bob@gmail.com sarah@contoso.com,, lub jim@live.com). Ten typ konta jest kontem lokalnym. Obsługiwane są również dowolne nazwy użytkowników jako konta lokalne (na przykład Jan, Robert, Sarah lub Jim). Podczas konfigurowania dostawców tożsamości dla Azure AD B2C w Azure Portal można wybrać jeden z tych dwóch typów kont lokalnych. W dzierżawie Azure AD B2C wybierz pozycję **dostawcy tożsamości**, wybierz pozycję **konto lokalne**, a następnie wybierz pozycję **Nazwa użytkownika**.
+W dzierżawie Azure AD B2C większość aplikacji chce, aby użytkownik mógł się zalogować przy użyciu dowolnego adresu e-mail (na przykład joe@comcast.net, bob@gmail.com, sarah@contoso.com lub jim@live.com). Ten typ konta jest kontem lokalnym. Obsługiwane są również dowolne nazwy użytkowników jako konta lokalne (na przykład Jan, Robert, Sarah lub Jim). Podczas konfigurowania dostawców tożsamości dla Azure AD B2C w Azure Portal można wybrać jeden z tych dwóch typów kont lokalnych. W dzierżawie Azure AD B2C wybierz pozycję **dostawcy tożsamości**, wybierz pozycję **konto lokalne**, a następnie wybierz pozycję **Nazwa użytkownika**.
 
 Konta użytkowników dla aplikacji muszą być zawsze tworzone za pośrednictwem przepływu użytkownika, tworzenia konta lub logowania lub korzystania z usługi Azure AD interfejs API programu Graph. Konta użytkowników utworzone w Azure Portal są używane tylko do administrowania dzierżawcą.
 
@@ -59,7 +59,7 @@ Nie. Domyślne zakresy używane dla naszego obsługiwanego zestawu dostawców to
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Czy moja aplikacja musi być uruchamiana na platformie Azure dla pracy z Azure AD B2C?
 
-Nie, możesz hostować aplikację w dowolnym miejscu (w chmurze lub lokalnie). Wszystkie potrzebne do współdziałania z Azure AD B2C to możliwość wysyłania i otrzymywania żądań HTTP w publicznie dostępnych punktach końcowych.
+Nie, możesz hostować aplikację w dowolnym miejscu (w chmurze lub lokalnie). Aby mogła ona wchodzić w interakcje z usługą Azure AD B2C, musi ona mieć tylko możliwość wysyłania i odbierania żądań HTTP za pośrednictwem publicznie dostępnych punktów końcowych.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Mam wiele dzierżawców Azure AD B2C. Jak mogę zarządzać nimi na Azure Portal?
 
@@ -69,8 +69,8 @@ Przed otwarciem elementu "Azure AD B2C" w menu po lewej stronie Azure Portal nal
 
 Za pomocą [funkcji znakowania firmowego](../active-directory/fundamentals/customize-branding.md) można dostosować zawartość wiadomości e-mail weryfikacyjnych. W tym celu można dostosować te dwa elementy wiadomości e-mail:
 
-* **Logo transparentu**: Widoczne w prawym dolnym rogu.
-* **Kolor tła**: Pokazano u góry.
+* **Logo transparentu**: widoczne w prawym dolnym rogu.
+* **Kolor tła**: wyświetlany w górnej części.
 
     ![Zrzut ekranu przedstawiający dostosowaną wiadomość e-mail weryfikacyjną](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
@@ -78,7 +78,7 @@ Podpis e-mail zawiera nazwę dzierżawy Azure AD B2C podaną podczas pierwszego 
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako Administrator globalny.
 1. Otwórz blok **Azure Active Directory** .
-1. Kliknij przycisk **właściwości** kartę.
+1. Kliknij kartę **Właściwości** .
 1. Zmień wartość pola **Nazwa** .
 1. Kliknij przycisk **Zapisz** w górnej części strony.
 
@@ -122,7 +122,7 @@ Nie, Azure AD B2C nie obsługuje tego samego zestawu raportów co Azure AD — w
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Czy można zlokalizować interfejs użytkownika stron obsłużonych przez Azure AD B2C? Jakie języki są obsługiwane?
 
-Tak!  Przeczytaj o [dostosowywaniu języka](active-directory-b2c-reference-language-customization.md), który jest w publicznej wersji zapoznawczej. Udostępniamy tłumaczenia dla języków 36 i można przesłonić dowolny ciąg, aby odpowiadał Twoim potrzebom.
+Tak, zobacz [Dostosowywanie języka](active-directory-b2c-reference-language-customization.md). Udostępniamy tłumaczenia dla języków 36 i można przesłonić dowolny ciąg, aby odpowiadał Twoim potrzebom.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Czy mogę używać własnych adresów URL na stronach do rejestracji i logowania, które są obsługiwane przez Azure AD B2C? Czy na przykład mogę zmienić adres URL z contoso.b2clogin.com na login.contoso.com?
 
