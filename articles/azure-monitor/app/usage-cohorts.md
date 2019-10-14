@@ -131,7 +131,7 @@ Poprzednie dwa kohorty zostały zdefiniowane przy użyciu list rozwijanych. Ale 
 
 _Czy mogę zdefiniowane kohorta użytkowników z określonych kraj/region. Gdy porównać ta kohorta w narzędziu użytkownicy, można po prostu ustawienie filtru na tego kraju/regionu, czy mogę zobaczyć różne wyniki. Dlaczego?_
 
-Kohorty i filtry są różne. Załóżmy, że masz kohorta użytkowników z Wielka Brytania (zdefiniowane tak jak w poprzednim przykładzie) i porównaj wyniki z ustawieniem dla filtru "kraj lub region = Wielkiej Brytanii."
+Kohorty i filtry są różne. Załóżmy, że masz kohorta użytkowników ze Zjednoczonego Królestwa (zdefiniowane tak jak w poprzednim przykładzie) i porównaj wyniki z ustawieniem dla filtru "kraj lub region = Zjednoczone Królestwo."
 
 * Wersja kohorty pokazuje wszystkie zdarzenia od użytkowników, którzy wysłali jednego lub wielu zdarzeń z Wielkiej Brytanii w bieżącym zakresie czasu. Jeśli podzieli według kraju lub regionu, zostanie wyświetlony ekran podobny do wielu innych krajów i regionów.
 * Wersja filtrów wyświetlane są tylko zdarzenia z Zjednoczonego Królestwa. Ale jeśli podzieli według kraju lub regionu, zostanie wyświetlony Zjednoczonego Królestwa.

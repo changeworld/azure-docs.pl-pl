@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
-ms.openlocfilehash: 316ddbf662a5418e54f37cb335475a86c50118c7
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131443"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264492"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Użyj działania Azure Data Factory polecenia, aby uruchomić polecenia usługi Azure Eksplorator danych Control
 
@@ -29,11 +29,13 @@ ms.locfileid: "71131443"
 ## <a name="create-a-new-pipeline"></a>Tworzenie nowego potoku
 
 1. Wybierz narzędzie **autor** ołówka. 
-1. Utwórz nowy potok, wybierając **+** pozycję **potok** z listy rozwijanej.
+1. Utwórz nowy potok, wybierając **+** , a następnie wybierz pozycję **potok** z listy rozwijanej.
 
    ![Utwórz nowy potok](media/data-factory-command-activity/create-pipeline.png)
 
 ## <a name="create-a-lookup-activity"></a>Tworzenie działania wyszukiwania
+
+[Działanie Lookup](/azure/data-factory/control-flow-lookup-activity) może pobrać zestaw danych ze wszystkich obsługiwanych przez Azure Data Factory źródeł danych. Dane wyjściowe działania Lookup mogą być używane w działaniu ForEach lub innym.
 
 1. W okienku **działania** w obszarze **Ogólne**wybierz działanie **Wyszukiwanie** . Przeciągnij i upuść je do głównej kanwy po prawej stronie.
  
@@ -83,13 +85,13 @@ ms.locfileid: "71131443"
     * Wybierz pozycję **Testuj połączenie** , aby przetestować utworzone połączenie połączonej usługi. Jeśli można nawiązać połączenie z instalatorem, zostanie wyświetlone zielonego **znacznika wyboru.**
     * Wybierz pozycję **Zakończ** , aby ukończyć tworzenie połączonej usługi.
 
-1. Po skonfigurowaniu połączonej usługi w**połączeniu** **AzureDataExplorerTable** > Dodaj nazwę **tabeli** . Wybierz pozycję **Podgląd danych**, aby upewnić się, że dane są poprawnie wyświetlane.
+1. Po skonfigurowaniu połączonej usługi w **AzureDataExplorerTable** > **połączenie**należy dodać nazwę **tabeli** . Wybierz pozycję **Podgląd danych**, aby upewnić się, że dane są poprawnie wyświetlane.
 
    Zestaw danych jest teraz gotowy i możesz kontynuować edytowanie potoku.
 
 ### <a name="add-a-query-to-your-lookup-activity"></a>Dodawanie zapytania do działania wyszukiwania
 
-1. W obszarze **potok-4 —**  > **Ustawienia** dokumentacji Dodaj zapytanie w polu tekstowym **zapytania** , na przykład:
+1. W obszarze **potok-4-docs** > **Ustawienia** Dodaj zapytanie w polu tekstowym **zapytania** , na przykład:
 
     ```kusto
     ClusterQueries
@@ -103,7 +105,9 @@ ms.locfileid: "71131443"
 
 ## <a name="create-a-for-each-activity"></a>Utwórz działanie for-each 
 
-1. Następnie Dodaj działanie for-each do potoku. To działanie będzie przetwarzać dane zwrócone przez działanie wyszukiwania. 
+Działanie [for-each](/azure/data-factory/control-flow-for-each-activity) służy do iterowania kolekcji i wykonywania określonych działań w pętli. 
+
+1. Teraz dodasz działanie for-each do potoku. To działanie będzie przetwarzać dane zwrócone przez działanie wyszukiwania. 
     * W okienku **działania** w obszarze **iteracja & Conditional**wybierz działanie **foreach** , a następnie przeciągnij i upuść je na kanwie.
     * Narysuj linię między wyjściem działania Lookup i wejściem działania ForEach na kanwie, aby je połączyć.
 
@@ -112,7 +116,7 @@ ms.locfileid: "71131443"
 1.  Wybierz działanie ForEach na kanwie. Na karcie **Ustawienia** poniżej:
     * Zaznacz pole wyboru **sekwencyjnego** , aby przeprowadzić sekwencyjne przetwarzanie wyników wyszukiwania, lub pozostaw niezaznaczone, aby utworzyć równoległe przetwarzanie.
     * Ustaw **liczbę partii**.
-    * W obszarze **elementy**podaj następujące odwołanie do wartości wyjściowej:  *@activity("Lookup1"). Output. Value*
+    * W obszarze **elementy**podaj następujące odwołanie do wartości wyjściowej: *@activity ("Lookup1"). Output. Value*
 
        ![Ustawienia działania ForEach](media/data-factory-command-activity/for-each-activity-settings.png)
 
@@ -146,8 +150,8 @@ ms.locfileid: "71131443"
 
     > [!NOTE]
     > Działanie polecenia ma następujące limity:
-    > * Limit rozmiaru: 1 MB rozmiaru odpowiedzi
-    > * Limit czasu: 20 minut (wartość domyślna), 1 godzina (maksimum).
+    > * Limit rozmiaru: 1 MB, rozmiar odpowiedzi
+    > * Limit czasu: 20 minut (wartość domyślna), 1 godzina (maksymalna).
     > * W razie potrzeby można dołączyć zapytanie do wyniku przy użyciu [AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands), aby zmniejszyć wynikowy rozmiar/czas.
 
 1.  Teraz potok jest gotowy. Możesz wrócić do widoku głównego potoku, klikając nazwę potoku.
@@ -166,7 +170,7 @@ Struktura danych wyjściowych działania polecenia jest szczegółowo opisana po
 
 ### <a name="returned-value-of-a-non-async-control-command"></a>Zwrócona wartość polecenia sterowania nieasynchronicznego
 
-W nieasynchronicznym poleceniu sterowania struktura zwracanej wartości jest podobna do struktury wyniku działania Lookup. `count` Pole wskazuje liczbę zwróconych rekordów. Pole `value` stała tablica zawiera listę rekordów. 
+W nieasynchronicznym poleceniu sterowania struktura zwracanej wartości jest podobna do struktury wyniku działania Lookup. Pole `count` wskazuje liczbę zwróconych rekordów. Pole stałej tablicy `value` zawiera listę rekordów. 
 
 ```json
 { 

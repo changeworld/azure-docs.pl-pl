@@ -1,6 +1,6 @@
 ---
-title: Automatyczne skalowanie w górę jednostek przepływności — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Włączyć automatyczne rozszerzanie przestrzeni nazw, aby automatycznie skalować w górę jednostek przepływności.
+title: Automatyczne skalowanie jednostek przepływności — Event Hubs platformy Azure | Microsoft Docs
+description: Włącz automatyczne podwyższenie poziomu w przestrzeni nazw, aby automatycznie skalować jednostki przepływności.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,65 +15,68 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 22c12d3233d85a02f6eef8d63e5a4494b4f0cdfa
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: dc6edaebebe89b6d4a35ada58d40795f86a935d3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273703"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264472"
 ---
-# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatyczne skalowanie w górę jednostek przepływności usługi Azure Event Hubs
-Azure Event Hubs to wysoce skalowana platforma do strumieniowego przesyłania danych. W efekcie użycia usługi Event Hubs często zwiększa się po rozpoczęciu korzystania z usługi. Wymaga tych danych użycia, zwiększając wstępnie [jednostek przepływności](event-hubs-scalability.md#throughput-units) skalowania usługi Event Hubs i obsługiwać większe szybkości transferu. **Automatyczne rozszerzanie** funkcji usługi Event Hubs automatycznie jest skalowany w górę, zwiększając liczbę jednostek przepływności, aby zaspokoić potrzeby użycia wymagań. Zwiększenie jednostek przepływności zapobiega scenariuszy, w którym ograniczania przepływności:
+# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatyczne skalowanie jednostek przepływności usługi Azure Event Hubs
+Azure Event Hubs to wysoce skalowalna platforma przesyłania strumieniowego danych. W związku z tym Event Hubs użycie często rośnie po rozpoczęciu korzystania z usługi. Takie użycie wymaga zwiększenia wstępnie [zdefiniowanych jednostek przepływności](event-hubs-scalability.md#throughput-units) do skalowania Event Hubs i obsłużenia większych szybkości transferu. Funkcja **automatycznego** rozszerzania Event Hubs automatycznie skaluje się w górę przez zwiększenie liczby jednostek przepływności w celu spełnienia wymagań dotyczących użycia. Zwiększenie jednostek przepływności uniemożliwia scenariusze ograniczania, w którym:
 
-* Stawki transferu danych przychodzących danych przekracza zestaw jednostek przepływności.
-* Liczby żądań danych wychodzących przekracza zestaw jednostek przepływności.
+* Szybkość transferu danych przychodzących przekracza ustaloną liczbę jednostek przepływności.
+* Szybkości żądań danych wychodzących przekraczają ustawioną jednostkę przepływności.
 
-Usługa Event Hubs zwiększa przepływność, gdy rośnie obciążenie operacjami po osiągnięciu progu minimalne, bez żadnych żądań kończy się niepowodzeniem z błędami ServerBusy.
+Usługa Event Hubs zwiększa przepływność, gdy obciążenie przekracza minimalny próg, bez żądań zakończonych niepowodzeniem z błędami ServerBusy.
 
-## <a name="how-auto-inflate-works"></a>Jak działa automatyczne rozszerzanie
+## <a name="how-auto-inflate-works"></a>Jak działa funkcja autodostrajania
 
-Ruch do centrów zdarzeń jest kontrolowane przez [jednostek przepływności](event-hubs-scalability.md#throughput-units). Pojedyncza jednostka przepływności umożliwia 1 MB na sekundę transferu danych przychodzących i dwa razy ilość danych wychodzących. Centra zdarzeń w wersji Standard można skonfigurować z 1-20 jednostek przepływności. Automatyczne rozszerzanie umożliwia zacznij od czegoś małego z jednostkami minimalna przepustowość wymagana, które wybierzesz. Funkcja następnie skaluje się automatycznie maksymalnego limitu jednostek przepływności, których potrzebujesz, w zależności od zwiększenia ilości ruchu. Automatyczne rozszerzanie zapewnia następujące korzyści:
+Ruch Event Hubs jest kontrolowany przez [jednostki przepływności](event-hubs-scalability.md#throughput-units). Pojedyncza jednostka przepływności zezwala na 1 MB na sekundę i dwa razy większą ilość danych wychodzących. Standardowe Centra zdarzeń można skonfigurować przy użyciu jednostek przepływności 1-20. Funkcja autodostrajania pozwala rozpocząć mały wybór minimalnej wymaganej liczby jednostek przepływności. Funkcja zostanie następnie automatycznie skalowana do maksymalnego limitu jednostek przepływności, które są potrzebne, w zależności od wzrostu ruchu. Funkcja autodostrajania zapewnia następujące korzyści:
 
-- Wydajny mechanizm skalowania na początku są małe, i skalowanie w górę proporcjonalna do rozwoju środowiska.
-- Automatycznie Skaluj do określonej górnego limitu bez ograniczania problemów.
-- Większa kontrola nad skalowaniem, dlatego użytkownik decyduje o ile do skali.
+- Wydajny mechanizm skalowania, który umożliwia uruchamianie małych i skalowalnych w górę.
+- Automatycznie Skaluj do określonego górnego limitu bez ograniczania problemów.
+- Większa kontrola nad skalowaniem, ponieważ pozwala kontrolować czas i szybkość skalowania.
 
-## <a name="enable-auto-inflate-on-a-namespace"></a>Włącz automatyczne rozszerzanie w przestrzeni nazw
+## <a name="enable-auto-inflate-on-a-namespace"></a>Włącz funkcję autodostrajania dla przestrzeni nazw
 
-Można włączyć lub wyłączyć automatyczne rozszerzanie w przestrzeni nazw usługi Event Hubs przy użyciu jednej z następujących metod:
+Można włączać lub wyłączać funkcję autodostrajania w warstwie Standardowa Event Hubs przestrzeni nazw za pomocą jednej z następujących metod:
 
-- [Witryny Azure portal](https://portal.azure.com).
-- [Szablonu usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate).
+- [Azure Portal](https://portal.azure.com).
+- [Szablon Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate).
 
-### <a name="enable-auto-inflate-through-the-portal"></a>Włącz automatyczne rozszerzanie za pośrednictwem portalu
+> [!NOTE]
+> Przestrzenie nazw Event Hubs warstwy Podstawowa nie obsługują funkcji autodostrajania.
+
+### <a name="enable-auto-inflate-through-the-portal"></a>Włącz funkcję autodostrajania za pomocą portalu
 
 
 #### <a name="enable-at-the-time-of-creation"></a>Włącz w czasie tworzenia 
-Można włączyć automatyczne rozszerzanie funkcji **podczas tworzenia przestrzeni nazw usługi Event Hubs**:
+Funkcję Autostart można włączyć **podczas tworzenia przestrzeni nazw Event Hubs**:
  
-![Włącz automatyczne rozszerzanie podczas tworzenia Centrum zdarzeń czasu](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
+![Włącz funkcję autodostrajania podczas tworzenia centrum zdarzeń](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
-Po włączeniu tej opcji możesz zacząć od małej przy użyciu jednostek przepływności i skalowanie w górę użycie wymaga zwiększenia. Górny limit inflacji natychmiast wpływa na ceny, która jest zależna od liczby jednostek przepływności na godzinę.
+Gdy ta opcja jest włączona, możesz zacząć od małych do jednostek przepływności i skalować w górę w miarę wzrostu użycia. Górny limit inflacji nie ma natychmiast wpływu na ceny, które są zależne od liczby jednostek przepływności używanych na godzinę.
 
-#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Włączyć automatyczne rozszerzanie na istniejącym Centrum zdarzeń
-Można także włączyć automatyczne rozszerzanie funkcji i zmodyfikować jego ustawienia, korzystając z poniższych instrukcji: 
+#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Włącz funkcję autodostrajania dla istniejącego centrum zdarzeń
+Możesz również włączyć funkcję autostartu i zmodyfikować jej ustawienia, wykonując następujące instrukcje: 
  
-1. Na **Event Hubs Namespace** wybierz opcję **wyłączone** w obszarze **automatyczne rozszerzanie jednostek przepływności**.  
+1. Na stronie **obszar nazw Event Hubs** wybierz pozycję **wyłączone** w obszarze **jednostki przepływności autodostrajania**.  
 
-    ![Wybierz jednostki przepływności na stronie przestrzeń nazw usługi Event Hubs](./media/event-hubs-auto-inflate/select-throughput-units.png)
-2. W **Ustawienia skalowania** strony, zaznacz pole wyboru **Włącz** (Jeśli nie została włączona funkcja automatycznego skalowania).
+    ![Wybierz jednostki przepływności na stronie przestrzeni nazw Event Hubs](./media/event-hubs-auto-inflate/select-throughput-units.png)
+2. Na stronie **ustawienia skalowania** zaznacz pole wyboru **Włącz** (Jeśli funkcja skalowania automatycznego nie została włączona).
 
     ![Wybierz pozycję Włącz](./media/event-hubs-auto-inflate/scale-settings.png)
-3. Wprowadź **maksymalna** liczby jednostek przepływności lub użyj paska przewijania, można ustawić wartości. 
-4. (opcjonalnie) Aktualizacja **minimalne** liczby jednostek przepływności w górnej części tej strony. 
+3. Wprowadź **maksymalną** liczbę jednostek przepływności lub Użyj paska przewijania, aby ustawić wartość. 
+4. obowiązkowe Zaktualizuj **minimalną** liczbę jednostek przepływności w górnej części tej strony. 
 
 
 > [!NOTE]
-> Po zastosowaniu automatyczne rozszerzanie konfiguracji zwiększenie jednostek przepływności, usługa Event Hubs emituje dzienniki diagnostyczne, które pozwalają dowiedzieć się, kiedy i dlaczego zwiększyć przepływność. Aby włączyć rejestrowanie diagnostyczne dla Centrum zdarzeń, wybierz **ustawień diagnostycznych** w menu po lewej stronie, na stronie Centrum zdarzeń w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [skonfigurować dzienniki diagnostyczne na potrzeby usługi Azure event hub](event-hubs-diagnostic-logs.md). 
+> Po zastosowaniu automatycznej konfiguracji w celu zwiększenia liczby jednostek przepływności usługa Event Hubs emituje dzienniki diagnostyczne, które zawierają informacje o tym, dlaczego i kiedy przepływność rośnie. Aby włączyć rejestrowanie diagnostyczne dla centrum zdarzeń, wybierz pozycję **Ustawienia diagnostyczne** w menu po lewej stronie centrum zdarzeń w Azure Portal. Aby uzyskać więcej informacji, zobacz [Konfigurowanie dzienników diagnostycznych dla centrum zdarzeń platformy Azure](event-hubs-diagnostic-logs.md). 
 
-### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Włącz automatyczne rozszerzanie przy użyciu szablonu usługi Azure Resource Manager
+### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Włącz funkcję autodostrajania przy użyciu szablonu Azure Resource Manager
 
-Podczas wdrażania szablonu usługi Azure Resource Manager, można włączyć automatyczne rozszerzanie. Na przykład ustawić `isAutoInflateEnabled` właściwości **true** i ustaw `maximumThroughputUnits` do 10. Na przykład:
+Podczas wdrażania szablonu Azure Resource Manager można włączyć funkcję autodostrajania. Na przykład ustaw właściwość `isAutoInflateEnabled` na **wartość true** i ustaw `maximumThroughputUnits` do 10. Na przykład:
 
 ```json
 "resources": [
@@ -116,12 +119,12 @@ Podczas wdrażania szablonu usługi Azure Resource Manager, można włączyć au
     ]
 ```
 
-Aby uzyskać kompletny szablon, zobacz [przestrzeni nazw usługi Event Hubs Utwórz i Włącz rozszerzanie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) szablon w witrynie GitHub.
+Aby uzyskać pełny szablon, zobacz [przestrzeń nazw Create Event Hubs i Włącz szablon rozdęcie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) w serwisie GitHub.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
-* [Omówienie usługi Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 

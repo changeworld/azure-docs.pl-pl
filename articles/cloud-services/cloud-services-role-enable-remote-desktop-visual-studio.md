@@ -1,5 +1,5 @@
 ---
-title: Włączanie Podłączanie pulpitu zdalnego roli na platformie Azure Cloud Services
+title: Korzystanie z programu Visual Studio, Włączanie Pulpit zdalny dla roli (Cloud Services platformy Azure)
 description: Jak skonfigurować aplikację usługi w chmurze platformy Azure w celu zezwalania na połączenia pulpitu zdalnego
 services: cloud-services
 author: ghogen
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 6a6d045513e3e91c5a8b2004e47378a097be8963
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 96f71306c060a6a533a3ab1c0c54b49d74e5cd82
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515923"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298391"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Włączanie Podłączanie pulpitu zdalnego roli na platformie Azure Cloud Services przy użyciu programu Visual Studio
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
-> * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+> * [Program PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 Pulpit zdalny umożliwia dostęp do pulpitu roli działającej na platformie Azure. Połączenia Pulpit zdalny można użyć do rozwiązywania problemów i diagnozowania problemów z aplikacją, gdy jest ona uruchomiona.
@@ -47,13 +47,13 @@ W przypadku korzystania z programu Visual Studio 2017 w wersji 15,4 lub starszej
    > [!Note]
    > Certyfikaty, które są potrzebne dla połączenia pulpitu zdalnego, różnią się od certyfikatów używanych dla innych operacji platformy Azure. Certyfikat dostępu zdalnego musi mieć klucz prywatny.
 
-5. Wybierz certyfikat z listy lub wybierz pozycję  **&lt;Utwórz... &gt;** . W przypadku tworzenia nowego certyfikatu podaj przyjazną nazwę dla nowego certyfikatu po wyświetleniu monitu, a następnie wybierz **przycisk OK**. Nowy certyfikat pojawi się w polu listy rozwijanej.
+5. Wybierz certyfikat z listy lub wybierz **&lt;Create... &gt;** . W przypadku tworzenia nowego certyfikatu podaj przyjazną nazwę dla nowego certyfikatu po wyświetleniu monitu, a następnie wybierz **przycisk OK**. Nowy certyfikat pojawi się w polu listy rozwijanej.
 
 6. Podaj nazwę użytkownika i hasło. Nie można użyć istniejącego konta. Nie używaj "administratora" jako nazwy użytkownika dla nowego konta.
 
 7. Wybierz datę wygaśnięcia konta i, po upływie którego Pulpit zdalny połączenia będą blokowane.
 
-8. Po podaniu wszystkich wymaganych informacji wybierz **przycisk OK**. Program Visual Studio dodaje pulpit zdalny ustawienia do projektu `.cscfg` i `.csdef` plików, łącznie z hasłem zaszyfrowanym przy użyciu wybranego certyfikatu.
+8. Po podaniu wszystkich wymaganych informacji wybierz **przycisk OK**. Program Visual Studio dodaje ustawienia Pulpit zdalny do plików `.cscfg` i `.csdef` projektu, łącznie z hasłem zaszyfrowanym przy użyciu wybranego certyfikatu.
 
 9. Wykonaj wszystkie pozostałe kroki przy użyciu przycisku **dalej** , a następnie wybierz pozycję **Publikuj** , gdy wszystko jest gotowe do opublikowania usługi w chmurze. Jeśli nie jesteś gotowy do opublikowania, wybierz pozycję **Anuluj** i odpowiedź **tak** po wyświetleniu monitu o zapisanie zmian. Usługę w chmurze można opublikować później przy użyciu tych ustawień.
 
@@ -86,7 +86,7 @@ Projekt usługi w chmurze można wdrożyć na serwerze kompilacji (na przykład 
 
 Aby użyć rozszerzenia RDP z Azure DevOps Services, należy uwzględnić następujące szczegóły w potoku kompilacji:
 
-1. Dołącz `/p:ForceRDPExtensionOverPlugin=true` do argumentów programu MSBuild, aby upewnić się, że wdrożenie współpracuje z rozszerzeniem RDP, a nie z wtyczką RDP. Przykład:
+1. W argumentach programu MSBuild Uwzględnij `/p:ForceRDPExtensionOverPlugin=true`, aby upewnić się, że wdrożenie współpracuje z rozszerzeniem RDP, a nie z wtyczką RDP. Na przykład:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
@@ -95,9 +95,9 @@ Aby użyć rozszerzenia RDP z Azure DevOps Services, należy uwzględnić nastę
 
 1. Po wykonaniu kroków kompilacji Dodaj krok **wdrożenie usługi w chmurze Azure** i ustaw jego właściwości.
 
-1. Po wykonaniu kroku wdrożenia Dodaj krok **programu Azure PowerShell** , ustaw jego właściwość **Nazwa wyświetlana** na "Azure Deployment: Włącz rozszerzenie RDP "(lub inną odpowiednią nazwę) i wybierz odpowiednią subskrypcję platformy Azure.
+1. Po kroku wdrożenia Dodaj krok **programu Azure PowerShell** , ustaw jego właściwość **Nazwa wyświetlana** na "Azure Deployment: Enable RDP" (lub inną odpowiednią nazwę), a następnie wybierz odpowiednią subskrypcję platformy Azure.
 
-1. Ustaw **Typ skryptu** na "inline" i wklej poniższy kod do pola **skryptu wbudowanego** . (Możesz również utworzyć `.ps1` plik w projekcie za pomocą tego skryptu, ustawić **Typ skryptu** na "ścieżka do pliku skryptu" i ustawić **ścieżkę skryptu** , aby wskazywała plik).
+1. Ustaw **Typ skryptu** na "inline" i wklej poniższy kod do pola **skryptu wbudowanego** . (Można również utworzyć plik `.ps1` w projekcie za pomocą tego skryptu, ustawić **Typ skryptu** na "ścieżka pliku skryptu" i ustawić **ścieżkę skryptu** , aby wskazywała plik).
 
     ```ps
     Param(
@@ -146,6 +146,6 @@ Po opublikowaniu usługi w chmurze na platformie Azure i włączeniu Pulpit zdal
 
 3. Wprowadź nazwę użytkownika i hasło, które zostały wcześniej utworzone. Użytkownik jest zalogowany do sesji zdalnej.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 [Jak skonfigurować Cloud Services](cloud-services-how-to-configure-portal.md)
