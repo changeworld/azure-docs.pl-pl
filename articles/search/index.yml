@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: 9c89fa143ad5e7fb2c4ba9c227682d14aa511bd9
-  ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+  ms.openlocfilehash: ece327a4155e0336de97b95ffa0a58a1d48097da
+  ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/25/2019
-  ms.locfileid: "71265642"
+  ms.lasthandoff: 10/14/2019
+  ms.locfileid: "72302728"
 landingContent:
 - title: Informacje o usłudze Azure Search
   linkLists:
@@ -46,6 +46,20 @@ landingContent:
     links:
     - text: Wprowadzenie do usługi Azure Search
       url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
+- title: Używanie z magazynem obiektów blob
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Korzystanie z AI w celu zrozumienia danych obiektów blob
+      url: search-blob-ai-integration.md
+    - text: Dodawanie wyszukiwania pełnotekstowego do danych obiektów blob
+      url: search-blob-storage-integration.md
+    - text: Przechowywanie wzbogaceń o sztuczną inteligencję
+      url: knowledge-store-create-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Indeksowanie częściowo ustrukturyzowanych danych obiektów blob
+      url: search-semi-structured-data.md
 - title: Indeksowanie danych
   linkLists:
   - linkListType: concept
