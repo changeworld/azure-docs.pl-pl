@@ -11,10 +11,10 @@ ms.topic: overview
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 08/01/2019
 ms.openlocfilehash: 54d665d6a4fd9aa0216d9eccf821f5af539a3636
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71087590"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Rozwiązania B2B Enterprise Integration z Azure Logic Apps i Pakiet integracyjny dla przedsiębiorstw
@@ -34,7 +34,7 @@ Jeśli znasz już firmę Microsoft BizTalk Server lub platformę Azure BizTalk S
 
 * Możesz utworzyć niestandardowy kod dla aplikacji logiki za pomocą usługi Azure Functions.
 
-## <a name="how-do-i-get-started"></a>Jak rozpocząć?
+## <a name="how-do-i-get-started"></a>Jak rozpocząć pracę?
 
 Przed rozpoczęciem tworzenia przepływów pracy aplikacji logiki B2B z elementem EIP potrzebne są następujące elementy:
 
@@ -50,7 +50,7 @@ Poniżej przedstawiono ogólne kroki umożliwiające rozpoczęcie tworzenia apli
 
 ![Wymagania wstępne dotyczące tworzenia aplikacji logiki B2B](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
-## <a name="try-now"></a>Wypróbuj teraz
+## <a name="try-now"></a>Wypróbuj
 
 [Wdróż w pełni działającą przykładową aplikację logiki, która wysyła i odbiera komunikaty AS2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: aa48ebe573736349cab519b5181af10f6d03bc46
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d8d7c0232110d3d5b040debc3a24941988d4ee29
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285972"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372242"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Tworzenie prywatnego punktu końcowego przy użyciu Azure Portal
 
@@ -115,8 +115,8 @@ W tej sekcji utworzysz serwer bazy danych SQL na platformie Azure.
     | **SZCZEGÓŁY WYSTĄPIENIA** |  |
     | Nazwa bazy danych  | Wprowadź *bazę danych*. Jeśli ta nazwa jest wykonywana, utwórz unikatową nazwę. |
     |||
-5. W obszarze **serwer**wybierz pozycję **Utwórz nowy**. 
-6. W obszarze **nowy serwer**wprowadź lub wybierz następujące informacje:
+5. W obszarze **serwer**wybierz pozycję **Utwórz nowy**. 
+6. W obszarze **nowy serwer**wprowadź lub wybierz następujące informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
@@ -125,9 +125,9 @@ W tej sekcji utworzysz serwer bazy danych SQL na platformie Azure.
     | Hasło | Wprowadź wybrane hasło. Hasło musi mieć długość co najmniej 8 znaków i spełniać zdefiniowane wymagania. |
     | Lokalizacja | Wybierz region platformy Azure, w którym chcesz mieć SQL Server. |
     
-7. Wybierz **przycisk OK**. 
-8. Wybierz pozycję **Recenzja + Utwórz**. Nastąpi przejście do **przeglądu i tworzenia**@no__t 1page, gdzie platforma Azure weryfikuje konfigurację. 
-9. Gdy zobaczysz komunikat o przekazaniu walidacji, wybierz pozycję **Utwórz**. 
+7. Kliknij przycisk **OK**. 
+8. Wybierz pozycję **Przegląd + utwórz**. Nastąpi przejście do strony **Recenzja i tworzenie** , w której platforma Azure weryfikuje konfigurację. 
+9. Gdy zobaczysz komunikat o przekazaniu walidacji, wybierz pozycję **Utwórz**. 
 10. Gdy zobaczysz komunikat o przekazaniu walidacji, wybierz pozycję Utwórz. 
 
 ## <a name="create-a-private-endpoint"></a>Tworzenie prywatnego punktu końcowego
@@ -147,18 +147,18 @@ W tej sekcji utworzysz program SQL Server i dodasz do niego prywatny punkt końc
     | Nazwa | Wprowadź * myPrivateEndpoint*. Jeśli ta nazwa jest wykonywana, utwórz unikatową nazwę. |
     |Region|Wybierz pozycję **WestCentralUS**.|
     |||
-5. Wybierz pozycję **Dalej: zasób**.
-6. W obszarze **Utwórz prywatny punkt końcowy zasobu**wprowadź lub wybierz następujące informacje:
+5. Wybierz pozycję **Dalej: zasób**.
+6. W obszarze **Utwórz prywatny punkt końcowy zasobu**wprowadź lub wybierz następujące informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
     |Metoda połączenia  | Wybierz pozycję Połącz z zasobem platformy Azure w moim katalogu.|
     | Subskrypcja| Wybierz subskrypcję. |
-    | Typ zasobu | Wybierz pozycję **Microsoft. SQL/Server**. |
+    | Typ zasobu | Wybierz pozycję **Microsoft. SQL/Server**. |
     | Zasób |Wybierz *pozycję* Wyznacz|
     |Docelowy zasób podrzędny |Wybierz *sqlServer*|
     |||
-7. Wybierz pozycję **Dalej: Konfiguracja**.
+7. Wybierz pozycję **Dalej: Konfiguracja**.
 8. W obszarze **Tworzenie prywatnego punktu końcowego (wersja zapoznawcza) — Konfiguracja**wprowadź lub wybierz następujące informacje:
 
     | Ustawienie | Wartość |
@@ -167,12 +167,12 @@ W tej sekcji utworzysz program SQL Server i dodasz do niego prywatny punkt końc
     | Sieć wirtualna| Wybierz pozycję *MyVirtualNetwork*. |
     | Podsieć | Wybierz pozycję Moja *podsieć*. |
     |**PRYWATNA INTEGRACJA Z USŁUGĄ DNS**||
-    |Integracja z prywatną strefą DNS |Wybierz pozycję **tak**. |
+    |Integracja z prywatną strefą DNS |Wybierz pozycję **tak**. |
     |Strefa Prywatna strefa DNS |SELECT *(New) privatelink. Database. Windows. NET* |
     |||
 
-1. Wybierz pozycję **Recenzja + Utwórz**. Nastąpi przejście do **przeglądu i tworzenia**@no__t 1page, gdzie platforma Azure weryfikuje konfigurację. 
-2. Gdy zobaczysz **weryfikację przekazaną** message, wybierz pozycję **Utwórz**. 
+1. Wybierz pozycję **Przegląd + utwórz**. Nastąpi przejście do strony **Recenzja i tworzenie** , w której platforma Azure weryfikuje konfigurację. 
+2. Gdy zobaczysz komunikat o **przekazaniu walidacji** , wybierz pozycję **Utwórz**. 
  
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Nawiązywanie połączenia z maszyną wirtualną przy użyciu Pulpit zdalny (RDP)
 
@@ -217,7 +217,7 @@ Po utworzeniu*myVm** Połącz się z nim za pośrednictwem Internetu w następuj
     ```
 3. Zainstaluj [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-4. W obszarze **Połącz z serwerem**wprowadź lub wybierz następujące informacje:
+4. W obszarze **Połącz z serwerem**wprowadź lub wybierz następujące informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
@@ -227,16 +227,16 @@ Po utworzeniu*myVm** Połącz się z nim za pośrednictwem Internetu w następuj
     |Hasło |Wprowadź hasło podane podczas tworzenia programu SQL Server. |
     |Zapamiętaj hasło|Wybierz pozycję **tak**.|
     |||
-1. Wybierz pozycję **Połącz**.
+1. Wybierz przycisk **Połącz**.
 2. Przeglądaj bazy danych z menu po lewej stronie.
 3. Zdefiniować Utwórz lub zapytaj informacje z bazy danych.
 4. Zamknij połączenie pulpitu zdalnego z *myVm*. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
 Gdy skończysz korzystać z prywatnego punktu końcowego, programu SQL Server i maszyny wirtualnej, Usuń grupę zasobów i wszystkie zawarte w niej zasoby: 
-1. Wprowadź wartość *Webresourcename* in **Wyszukiwanie** box w górnej części portalu i wybierz pozycję Moja *zasobów*@no__t — 5from wyniki wyszukiwania. 
-2. Wybierz pozycję **Usuń grupę zasobów**. 
-3. Wprowadź dla elementu webresourcename **Typ Nazwa grupy zasobów** and wybierz pozycję **Usuń**.
+1. Wprowadź nazwę *zasobu*@no__t — 1In pole **wyszukiwania** w górnej części portalu i wybierz pozycję Moja *resourceName*@no__t — 4from wyniki wyszukiwania. 
+2. Wybierz pozycję **Usuń grupę zasobów**. 
+3. Wprowadź wartość webresourcename **, aby wpisać nazwę grupy zasobów** , a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

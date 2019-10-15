@@ -8,10 +8,10 @@ ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
 ms.openlocfilehash: 3adcccde89823f865535c9e1350ac4c3e541eef6
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71066258"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Link prywatny dla Azure SQL Database i magazynu danych (wersja zapoznawcza)
@@ -50,7 +50,7 @@ Za pomocą linku prywatnego klienci mogą włączyć dostęp między lokalizacja
 ### <a name="creation-process"></a>Proces tworzenia
 Prywatne punkty końcowe można tworzyć przy użyciu portalu, programu PowerShell lub interfejsu wiersza polecenia platformy Azure:
 - [Portal](../private-link/create-private-endpoint-portal.md)
-- [PowerShell](../private-link/create-private-endpoint-powershell.md)
+- [Program PowerShell](../private-link/create-private-endpoint-powershell.md)
 - [Interfejs wiersza polecenia](../private-link/create-private-endpoint-cli.md)
 
 ### <a name="approval-process"></a>Proces zatwierdzania
@@ -60,16 +60,16 @@ Po utworzeniu przez administratora sieci prywatnego punktu końcowego (PE) admin
 
     - (1) wybierz połączenia prywatnego punktu końcowego w lewym okienku
     - (2) przedstawia listę wszystkich połączeń prywatnych punktów końcowych (PECs)
-    - (3) odpowiedni zrzut ekranu, który został utworzony ![przez prywatny punkt końcowy (PE) dla wszystkich PECs][3]
+    - (3) odpowiedni prywatny punkt końcowy (PE) utworzony ![Screenshot wszystkich PECs @ no__t-1
 
 1. Wybierz z listy indywidualny element PEC, wybierając go.
-![Zrzut ekranu — wybrany komputer PEC][6]
+![Screenshot wybrany komputer PEC @ no__t-1
 
 1. Administrator SQL może zdecydować się na zatwierdzenie lub odrzucenie PEC i opcjonalnie dodać odpowiedź krótką tekstu.
-![Zrzut ekranu przedstawiający zatwierdzenie PEC][4]
+![Screenshot zatwierdzenia PEC @ no__t-1
 
 1. Po zatwierdzeniu lub odrzuceniu lista będzie odzwierciedlać odpowiedni stan wraz z tekstem odpowiedzi.
-![Zrzut ekranu przedstawiający wszystkie PECs po zatwierdzeniu][5]
+![Screenshot wszystkich PECs po zatwierdzeniu @ no__t-1
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Przypadki użycia prywatnego linku do Azure SQL Database 
 
@@ -128,7 +128,7 @@ Wynik pokazuje, że Psping może wysłać polecenie ping do prywatnego adresu IP
 
 ### <a name="check-connectivity-using-nmap"></a>Sprawdź łączność przy użyciu Nmap
 
-Nmap (Maper sieci) to narzędzie bezpłatne i typu "open source" służące do przeprowadzania inspekcji sieci i zabezpieczeń. Aby uzyskać więcej informacji i link do pobierania, https://nmap.org odwiedź stronę. Za pomocą tego narzędzia można upewnić się, że prywatny punkt końcowy nasłuchuje połączeń na porcie 1433.
+Nmap (Maper sieci) to narzędzie bezpłatne i typu "open source" służące do przeprowadzania inspekcji sieci i zabezpieczeń. Aby uzyskać więcej informacji i link do pobierania, odwiedź stronę https://nmap.org. Za pomocą tego narzędzia można upewnić się, że prywatny punkt końcowy nasłuchuje połączeń na porcie 1433.
 
 Uruchom Nmap w następujący sposób, podając zakres adresów podsieci, która hostuje prywatny punkt końcowy.
 

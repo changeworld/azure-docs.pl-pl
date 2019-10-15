@@ -149,6 +149,8 @@
               href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-2017#examples--and-'
         - name: Buforowanie zestawu wyników
           items:
+            - name: Omówienie
+              href: sql-data-warehouse-result-set-caching-overview.md
             - name: Zestaw na potrzeby bazy danych
               href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
             - name: Zestaw na potrzeby sesji

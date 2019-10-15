@@ -1,8 +1,6 @@
 ---
 title: Tworzenie pierwszej funkcji na platformie Azure przy użyciu programu Visual Studio
 description: Utwórz i opublikuj funkcję Azure wyzwalaną przez protokół HTTP przy użyciu programu Visual Studio.
-services: functions
-documentationcenter: na
 author: ggailey777
 manager: gwallace
 keywords: azure functions, funkcje, przetwarzanie zdarzeń, obliczenia, architektura bez serwera
@@ -12,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 9a2978bc181fd4c50665b6178d22d19eeb9e2568
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d798be3a0cde39de208105c4b3d4458fa5b124c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096568"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329493"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio
 
@@ -39,7 +37,7 @@ Aby ukończyć ten samouczek, należy najpierw zainstalować [program Visual Stu
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Program Visual Studio tworzy projekt i klasę, która zawiera kod standardowy dla typu funkcji wyzwalacza HTTP. Atrybut metody ustawia nazwę funkcji, która domyślnie jest `HttpTrigger`. `FunctionName` Ten `HttpTrigger` atrybut określa, że funkcja jest wyzwalana przez żądanie HTTP. Standardowy kod wysyła odpowiedź HTTP zawierającą wartość z treści żądania lub ciągu zapytania.
+Program Visual Studio tworzy projekt i klasę, która zawiera kod standardowy dla typu funkcji wyzwalacza HTTP. Atrybut `FunctionName` metody ustawia nazwę funkcji, która domyślnie jest `HttpTrigger`. Atrybut `HttpTrigger` Określa, że funkcja jest wyzwalana przez żądanie HTTP. Standardowy kod wysyła odpowiedź HTTP zawierającą wartość z treści żądania lub ciągu zapytania.
 
 Możesz rozszerzyć możliwości funkcji za pomocą powiązań wejściowych i wyjściowych przez zastosowanie odpowiednich atrybutów do metody. Aby uzyskać więcej informacji, zobacz sekcję [Triggers and bindings](functions-dotnet-class-library.md#triggers-and-bindings) (Wyzwalacze i powiązania) [dokumentacji usługi Azure Functions dla deweloperów w C#](functions-dotnet-class-library.md).
 

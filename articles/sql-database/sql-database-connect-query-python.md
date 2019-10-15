@@ -1,26 +1,26 @@
 ---
-title: Korzystanie z języka Python do wykonywania zapytań w bazie danych Azure SQL | Microsoft Docs
+title: 'Szybki Start: używanie języka Python do wykonywania zapytań w Azure SQL Database'
 description: W tym temacie przedstawiono sposób użycia języka Python do utworzenia programu, który nawiązuje połączenie z bazą danych Azure SQL Database i wykonuje zapytania za pomocą instrukcji języka Transact-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
+ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 659f6333d16f84cc35be45c45b7a7119e53fd0d0
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 32861fa8f8756c4e8d30c055582789d41a92fe7c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764277"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331858"
 ---
-# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka Python do wykonywania zapytań w bazie danych Azure SQL Database
+# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka Python do wykonywania zapytań w bazie danych Azure SQL Database
 
- W tym przewodniku Szybki start pokazano, jak używać języka [Python](https://python.org) w celu nawiązywania połączenia z bazą danych Azure SQL Database, a następnie, korzystając z instrukcji Transact-SQL, wysyłać zapytania o dane. Aby uzyskać dalsze informacje na temat zestawu SDK, zapoznaj się z naszą dokumentacją [referencyjną](https://docs.microsoft.com/python/api/overview/azure/sql), [repozytorium GitHub pyodbc](https://github.com/mkleehammer/pyodbc/wiki/) i [przykładem pyodbc](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
+ W tym artykule pokazano, jak używać języka [Python](https://python.org) do nawiązywania połączenia z usługą Azure SQL Database i używania instrukcji Transact-SQL do wykonywania zapytań dotyczących danych. Aby uzyskać dalsze informacje na temat zestawu SDK, zapoznaj się z naszą dokumentacją [referencyjną](https://docs.microsoft.com/python/api/overview/azure/sql), [repozytorium GitHub pyodbc](https://github.com/mkleehammer/pyodbc/wiki/) i [przykładem pyodbc](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,10 +32,10 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
   |:--- |:--- |:---|
   | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
-  |Ładuj dane|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
@@ -44,17 +44,17 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
   
 - Oprogramowanie związane z językiem Python dla Twojego systemu operacyjnego:
   
-  - **MacOS**: zainstaluj oprogramowanie Homebrew i Python, zainstaluj sterownik ODBC i pakiet SQLCMD, a następnie zainstaluj sterownik języka Python dla programu SQL Server. Zobacz kroki 1.2, 1.3 i 2.1 w temacie [Create Python apps using SQL Server on macOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/) (Tworzenie aplikacji języka Python przy użyciu programu SQL Server w systemie macOS). Aby uzyskać więcej informacji, zobacz temat [Install the Microsoft ODBC Driver on Linux and macOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server) (Instalowanie sterownika ODBC firmy Microsoft w systemie Linux i macOS).
+  - **MacOS**: Zainstaluj oprogramowania Homebrew i Python, zainstaluj sterownik ODBC i narzędzie sqlcmd, a następnie zainstaluj sterownik Python dla SQL Server. Zobacz kroki 1.2, 1.3 i 2.1 w temacie [Create Python apps using SQL Server on macOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/) (Tworzenie aplikacji języka Python przy użyciu programu SQL Server w systemie macOS). Aby uzyskać więcej informacji, zobacz temat [Install the Microsoft ODBC Driver on Linux and macOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server) (Instalowanie sterownika ODBC firmy Microsoft w systemie Linux i macOS).
 
-  - **Ubuntu**: Zainstaluj język Python i inne wymagane pakiety przy użyciu polecenia `sudo apt-get install python python-pip gcc g++ build-essential`. Pobierz i zainstaluj sterownik ODBC, narzędzie SQLCMD i sterownik języka Python dla programu SQL Server. Aby uzyskać instrukcje, zobacz temat [Configure a development environment for pyodbc Python development](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux) (Konfigurowanie środowiska deweloperskiego na potrzeby programowania w języku Python przy użyciu modułu pyodbc).
+  - **Ubuntu**: Zainstaluj Język Python i inne wymagane pakiety z `sudo apt-get install python python-pip gcc g++ build-essential`. Pobierz i zainstaluj sterownik ODBC, narzędzie SQLCMD i sterownik języka Python dla programu SQL Server. Aby uzyskać instrukcje, zobacz temat [Configure a development environment for pyodbc Python development](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux) (Konfigurowanie środowiska deweloperskiego na potrzeby programowania w języku Python przy użyciu modułu pyodbc).
 
-  - **Windows**: Zainstaluj oprogramowanie Python, sterownik ODBC, narzędzie SQLCMD i sterownik języka Python dla programu SQL Server. Aby uzyskać instrukcje, zobacz temat [Configure a development environment for pyodbc Python development](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows) (Konfigurowanie środowiska deweloperskiego na potrzeby programowania w języku Python przy użyciu modułu pyodbc).
+  - **System Windows**: Zainstaluj Język Python, sterownik ODBC i narzędzie sqlcmd oraz sterownik Python dla SQL Server. Aby uzyskać instrukcje, zobacz temat [Configure a development environment for pyodbc Python development](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows) (Konfigurowanie środowiska deweloperskiego na potrzeby programowania w języku Python przy użyciu modułu pyodbc).
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
 Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 2. Przejdź do strony **bazy danych SQL** lub **wystąpienia zarządzane SQL** .
 

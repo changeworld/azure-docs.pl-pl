@@ -1,5 +1,5 @@
 ---
-title: Szybki start na platformie Azure — uruchamianie zadania usługi Batch — Python
+title: 'Szybki Start: uruchamianie zadania Azure Batch — interfejs API języka Python'
 description: Szybko uruchamiaj zadania i zadania podrzędne usługi Batch za pomocą biblioteki klienta Python usługi Batch.
 services: batch
 author: laurenhughes
@@ -9,13 +9,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
-ms.custom: mvc
-ms.openlocfilehash: 77ccfc1a67fabca7fde47edac9094c6a68191f0f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom:
+- seo-python-october2019
+- mvc
+ms.openlocfilehash: e5ec131e73c40e72862122d360574bb4ee5d3cda
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090761"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329360"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu API języka Python
 
@@ -33,7 +35,7 @@ Ten przewodnik Szybki start przedstawia uruchamianie zadania usługi Azure Batch
 
 * Konto usługi Azure Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md). 
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -47,7 +49,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Przejdź do katalogu, który zawiera skrypt `python_quickstart_client.py`języka Python.
+Przejdź do katalogu, który zawiera skrypt w języku Python `python_quickstart_client.py`.
 
 W środowisku projektowym Python zainstaluj wymagane pakiety przy użyciu menedżera `pip`.
 

@@ -553,7 +553,7 @@
         - name: Authentication
           items:
             - name: Podstawowe informacje o uwierzytelnianiu
-              href: authentication-scenarios.md
+              href: v1-authentication-scenarios.md
             - name: Protokoły OAuth 2.0 i OpenID Connect
               items:
                 - name: OpenID Connect

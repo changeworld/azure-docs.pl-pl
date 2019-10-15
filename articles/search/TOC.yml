@@ -299,8 +299,6 @@
           href: search-manage-powershell.md
         - name: Działanie monitorowania i rejestrowanie
           href: search-monitor-usage.md
-        - name: Analiza ruchu wyszukiwania
-          href: search-traffic-analytics.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

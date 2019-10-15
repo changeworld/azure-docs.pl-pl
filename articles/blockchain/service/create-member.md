@@ -1,23 +1,23 @@
 ---
-title: Tworzenie członka usługi Azure łańcucha bloków Service łańcucha bloków przy użyciu Azure Portal
+title: Tworzenie elementu członkowskiego usługi Azure łańcucha bloków przy użyciu Azure Portal
 description: Użyj usługi Azure łańcucha bloków Service, aby utworzyć członka łańcucha bloków.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 08/29/2019
+ms.date: 10/14/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 9f58379acd88fd93a00edc11b73b41dc3d6226a5
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c87f9a044d6655b2062f2c2657d3b465699e0dd2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241039"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329257"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Szybki start: Tworzenie członka usługi Azure łańcucha bloków Service łańcucha bloków przy użyciu Azure Portal
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Szybki Start: Tworzenie członka usługi Azure łańcucha bloków Service łańcucha bloków przy użyciu Azure Portal
 
 Usługa Azure łańcucha bloków to platforma łańcucha bloków, w ramach której można wykonać logikę biznesową w ramach kontraktu inteligentnego. W tym przewodniku szybki start pokazano, jak rozpocząć pracę przez utworzenie elementu członkowskiego łańcucha bloków przy użyciu Azure Portal.
 
@@ -27,7 +27,7 @@ Usługa Azure łańcucha bloków to platforma łańcucha bloków, w ramach któr
 
 Utwórz element członkowski łańcucha bloków, w którym jest uruchamiany protokół finansów kworum w nowym lub istniejącym konsorcjum.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.
 1. Wybierz pozycję **łańcucha bloków** > **Azure łańcucha bloków Service**.
 1. Ukończ szablon.
@@ -37,14 +37,14 @@ Utwórz element członkowski łańcucha bloków, w którym jest uruchamiany prot
     Ustawienie | Opis
     --------|------------
     Łańcucha bloków element członkowski | Wybierz unikatową nazwę identyfikującą członka usługi Azure łańcucha bloków Service łańcucha bloków. Nazwa elementu członkowskiego łańcucha bloków może zawierać tylko małe litery i cyfry. Pierwszy znak musi być literą. Wartość musi mieć długość od 2 do 20 znaków.
-    Subscription | Wybierz subskrypcję platformy Azure, która ma być używana dla usługi. Jeśli masz wiele subskrypcji, wybierz tę, w ramach której są naliczane opłaty za ten zasób.
-    Resource group | Nowa nazwa grupy zasobów lub istniejąca nazwa z subskrypcji.
+    Subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla usługi. Jeśli masz wiele subskrypcji, wybierz tę, w ramach której są naliczane opłaty za ten zasób.
+    Grupa zasobów | Nowa nazwa grupy zasobów lub istniejąca nazwa z subskrypcji.
     Region | Lokalizacja musi być taka sama dla wszystkich członków konsorcjum.
     Hasło konta elementu członkowskiego | Hasło konta elementu członkowskiego służy do szyfrowania klucza prywatnego dla konta Ethereum utworzonego dla elementu członkowskiego. Do zarządzania konsorcjum używasz konta elementu członkowskiego i hasła konta elementu członkowskiego.
     Nazwa konsorcjum | W przypadku nowego konsorcjum wprowadź unikatową nazwę. W przypadku dołączania konsorcjum przez zaproszenie wartość jest konsorcjum, do którego jest przyłączany.
     Opis | Opis konsorcjum.
-    Protocol |  Wersja zapoznawcza obsługuje protokół kworum.
-    Cennik | Konfiguracja węzła dla nowej usługi. Wybierz opcję **Standardowa**. 2 węzły modułu sprawdzania poprawności i 1 węzeł transakcji to ustawienia domyślne.
+    Protocol (Protokół) |  Wersja zapoznawcza obsługuje protokół kworum.
+    Cennik | Konfiguracja węzła dla nowej usługi. Wybierz pozycję **Standardowy**. 2 węzły modułu sprawdzania poprawności i 1 węzeł transakcji to ustawienia domyślne.
     Hasło węzła transakcji | Hasło dla domyślnego węzła transakcji elementu członkowskiego. Użyj hasła uwierzytelniania podstawowego podczas nawiązywania połączenia z domyślnym punktem końcowym węzła transakcji elementu członkowskiego łańcucha bloków.
 
 1. Wybierz pozycję **Utwórz** , aby zainicjować obsługę administracyjną usługi. Inicjowanie obsługi trwa około 10 minut.
@@ -57,7 +57,7 @@ Wybierz pozycję **Przegląd**, aby wyświetlić podstawowe informacje o usłudz
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Możesz użyć elementu członkowskiego utworzonego dla następnego przewodnika Szybki start lub samouczka. Gdy zasoby nie będą już potrzebne, można je usunąć przez usunięcie `myResourceGroup` grupy zasobów utworzonej przez usługę Azure łańcucha bloków.
+Możesz użyć elementu członkowskiego utworzonego dla następnego przewodnika Szybki start lub samouczka. Gdy zasoby nie będą już potrzebne, można je usunąć, usuwając grupę zasobów `myResourceGroup` utworzoną przez usługę Azure łańcucha bloków.
 
 Aby usunąć grupę zasobów:
 

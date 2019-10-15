@@ -1,26 +1,22 @@
 ---
 title: Dodawanie powiązania kolejki usługi Azure Storage do funkcji języka Python
-description: Dowiedz się, jak dodać powiązanie danych wyjściowych kolejki usługi Azure Storage do funkcji języka Python za pomocą interfejsu wiersza polecenia platformy Azure i podstawowych narzędzi.
-services: functions
-keywords: ''
+description: Dowiedz się, jak dodać powiązanie danych wyjściowych kolejki usługi Azure Storage do funkcji języka Python.
 author: ggailey777
 ms.author: glenga
-ms.date: 04/24/2019
+ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.custom: mvc
-ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 92ee9b0a8a0906bca31d7dcb1730c3464d0d6cbc
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+manager: gwallace
+ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839193"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329732"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Dodawanie powiązania kolejki usługi Azure Storage do funkcji języka Python
 
-Azure Functions umożliwia łączenie usług platformy Azure i innych zasobów z funkcjami bez konieczności pisania kodu integracji. Te *powiązania*, które reprezentują zarówno dane wejściowe, jak i wyjściowe, są zadeklarowane w definicji funkcji. Dane z powiązań są przekazywane do funkcji jako parametry. *Wyzwalacz* jest specjalnym typem powiązania danych wejściowych. Chociaż funkcja ma tylko jeden wyzwalacz, może mieć wiele powiązań wejściowych i wyjściowych. Aby dowiedzieć się więcej, zobacz temat [Azure Functions wyzwalacze i koncepcje powiązań](functions-triggers-bindings.md).
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
 W tym artykule pokazano, jak zintegrować funkcję utworzoną w [poprzednim artykule szybki start](functions-create-first-function-python.md) z kolejką usługi Azure Storage. Powiązanie danych wyjściowych dodawane do tej funkcji zapisuje dane z żądania HTTP do wiadomości w kolejce.
 
@@ -34,7 +30,7 @@ Przed rozpoczęciem tego artykułu wykonaj kroki opisane w [części 1 przewodni
 
 ## <a name="download-the-function-app-settings"></a>Pobierz ustawienia aplikacji funkcji
 
-[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
+[!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>Włącz zbiory rozszerzeń
 
@@ -63,7 +59,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Ponieważ w poprzednim przewodniku szybki start włączono pakiety rozszerzeń w pliku host. JSON, [rozszerzenie powiązania magazynu](functions-bindings-storage-blob.md#packages---functions-2x) zostało pobrane i zainstalowane dla Ciebie podczas uruchamiania, wraz z innymi rozszerzeniami powiązań firmy Microsoft.
+> Ponieważ włączono pakiety rozszerzeń w pliku host. JSON, [rozszerzenie powiązania magazynu](functions-bindings-storage-blob.md#packages---functions-2x) zostało pobrane i zainstalowane dla Ciebie podczas uruchamiania, wraz z innymi rozszerzeniami powiązań firmy Microsoft.
 
 Skopiuj adres URL funkcji `HttpTrigger` z danych wyjściowych środowiska uruchomieniowego i wklej go w pasku adresu swojej przeglądarki. Dołącz ciąg zapytania `?name=<yourname>` do tego adresu URL i uruchom żądanie. W przeglądarce powinna zostać wyświetlona taka sama odpowiedź jak w poprzednim artykule.
 
@@ -71,17 +67,17 @@ Tym razem powiązanie danych wyjściowych tworzy również kolejkę o nazwie `ou
 
 Następnie użyj interfejsu wiersza polecenia platformy Azure, aby wyświetlić nową kolejkę i sprawdzić, czy wiadomość została dodana. Możesz również wyświetlić kolejkę za pomocą [Eksplorator usługi Microsoft Azure Storage][Azure Storage Explorer] lub [Azure Portal](https://portal.azure.com).
 
-### <a name="set-the-storage-account-connection"></a>Ustawianie połączenia konta magazynu
-
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
-
-### <a name="query-the-storage-queue"></a>Wykonywanie zapytań względem kolejki magazynu
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
-Teraz można ponownie opublikować zaktualizowaną aplikację funkcji na platformie Azure.
+### <a name="redeploy-the-project"></a>Wdróż ponownie projekt 
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+Aby zaktualizować opublikowaną aplikację, użyj polecenia [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools, aby wdrożyć kod projektu na platformie Azure. W tym przykładzie Zastąp `<APP_NAME>` nazwą aplikacji.
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
 
 Ponownie można użyć zawieszeń lub przeglądarki do przetestowania wdrożonej funkcji. Tak jak wcześniej, należy dołączyć ciąg zapytania `&name=<yourname>` do adresu URL, jak w poniższym przykładzie:
 
@@ -89,7 +85,7 @@ Ponownie można użyć zawieszeń lub przeglądarki do przetestowania wdrożonej
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-Możesz [sprawdzić komunikat kolejki magazynu](#query-the-storage-queue) , aby sprawdzić, czy powiązanie danych wyjściowych ponownie wygenerowało nową wiadomość w kolejce.
+Możesz [sprawdzić ponownie komunikat kolejki magazynu](#query-the-storage-queue) , aby sprawdzić, czy powiązanie danych wyjściowych generuje nowy komunikat w kolejce zgodnie z oczekiwaniami.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 

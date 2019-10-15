@@ -1,5 +1,5 @@
 ---
-title: 'Azure: Szybki start — tworzenie obiektu blob w magazynie obiektów przy użyciu języka Python | Microsoft Docs'
+title: 'Szybki Start: Tworzenie obiektu BLOB w usłudze Azure Blob Storage za pomocą języka Python'
 description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie przy użyciu biblioteki klienta języka Python przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,16 +7,17 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.custom: seo-python-october2019
+ms.openlocfilehash: f5be8d5fd452953f447bbc8b08a852c1f8da94a0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981223"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331815"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu języka Python
 
-W tym przewodniku szybki start użyjesz języka Python, aby przekazywać, pobierać i wyświetlać listę blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage. Obiekty blob są po prostu obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Obiekty blob w usłudze Azure Storage różnią się od udziałów plików, tabel bez schematu i kolejek komunikatów.  Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](/azure/storage/common/storage-introduction).
+W tym artykule opisano użycie języka Python do przekazywania, pobierania i wyświetlania listy blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage. Obiekty blob są po prostu obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Obiekty blob w usłudze Azure Storage różnią się od udziałów plików, tabel bez schematu i kolejek komunikatów.  Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](/azure/storage/common/storage-introduction).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

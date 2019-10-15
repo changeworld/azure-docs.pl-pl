@@ -1,24 +1,21 @@
 ---
 title: Tworzenie pierwszej funkcji w systemie Linux na platformie Azure
-description: Dowiedz się, jak utworzyć pierwszą funkcję hostowaną w systemie Linux na platformie Azure przy użyciu narzędzi Azure Functions Core Tools i interfejsu wiersza polecenia platformy Azure.
-services: functions
-keywords: ''
+description: Dowiedz się, jak utworzyć pierwszą funkcję hostowaną w systemie Linux na platformie Azure przy użyciu narzędzi wiersza polecenia, Azure Functions Core Tools i interfejsu CLI platformy Azure.
 author: ggailey777
 ms.author: glenga
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
-ms.devlang: javascript
-manager: jeconnoc
-ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 34f4dc4b36f4efd75c5a7cd14b3214886955a403
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562974"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329675"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>Tworzenie pierwszej funkcji hostowanej w systemie Linux przy użyciu narzędzi podstawowych i interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>Szybki Start: Tworzenie pierwszej funkcji hostowanej w systemie Linux przy użyciu narzędzi wiersza polecenia
 
 Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.com/serverless) systemu Linux bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej. Hosting w systemie Linux wymaga [środowiska uruchomieniowego w wersji 2. x](functions-versions.md). Funkcje bezserwerowe działają w [planie zużycia](functions-scale.md#consumption-plan).
 
@@ -30,7 +27,7 @@ Poniższe kroki można wykonać na komputerze Mac, w systemie Windows lub w syst
 
 Przed uruchomieniem tego przykładu należy dysponować następującymi elementami:
 
-- Zainstaluj [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.666 lub nowszej.
++ Zainstaluj [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.666 lub nowszej.
 
 + Zainstaluj [interfejs wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Możesz również użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).
 
@@ -56,7 +53,7 @@ Przed uruchomieniem tego przykładu należy dysponować następującymi elementa
 
 Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia bezserwerowe środowisko do wykonywania kodu funkcji. Umożliwia ona grupowanie funkcji w ramach jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. Utwórz aplikację funkcji działającą w systemie Linux przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
 
-W poniższym poleceniu zamiast symbolu zastępczego `<app_name>` użyj unikatowej nazwy aplikacji funkcji, a zamiast symbolu zastępczego `<storage_name>` użyj nazwy konta magazynu. `<app_name>` jest również domyślną domeną DNS aplikacji funkcji. Ta nazwa musi być unikatowa dla wszystkich aplikacji na platformie Azure. Należy `<language>` również ustawić środowisko uruchomieniowe dla aplikacji funkcji, z `python` `dotnet` (C#), `node` (JavaScript/TypeScript) lub.
+W poniższym poleceniu zamiast symbolu zastępczego `<app_name>` użyj unikatowej nazwy aplikacji funkcji, a zamiast symbolu zastępczego `<storage_name>` użyj nazwy konta magazynu. `<app_name>` jest również domyślną domeną DNS aplikacji funkcji. Ta nazwa musi być unikatowa dla wszystkich aplikacji na platformie Azure. Należy również ustawić środowisko uruchomieniowe `<language>` dla aplikacji funkcji, z `dotnet` (C#), `node` (JavaScript/TypeScript) lub `python`.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westus --os-type Linux \

@@ -10,12 +10,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: overview
 ms.date: 10/10/2019
-ms.openlocfilehash: 70fa1bd2f33d3a6e58b12b9d2da617e8129c8da9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6c5eecb762aceb6f674e0b8084ed98c6b5500f98
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299724"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331730"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Jakie narzędzia są dostępne na platformie Azure Data Science Virtual Machine?
 
@@ -42,7 +42,7 @@ Poniżej zamieszczono aktualną listę narzędzi uwzględnionych w Data Science 
 | JupyterHub (serwer notesu wieloużytkownikom)|<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | |
 | JupyterLab (serwer notesu wieloużytkownikom) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> | |
 | Narzędzia programistyczne, środowisk IDE i edytory kodu:| | |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2017 (wersja Community)](https://www.visualstudio.com/community/) z dodatkiem git, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server Data Tools, [Node. js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs)i [R Tools for Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) |<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span>   | [Program Visual Studio na DSVM](./dsvm-tools-development.md#visual-studio-2017) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2017 (wersja Community)](https://www.visualstudio.com/community/) z dodatkiem git, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server Data Tools, [Node. js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs)i [R Tools for Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) |<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span>   | [Program Visual Studio na DSVM](./dsvm-tools-development.md#visual-studio-community-2017) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio Code](https://code.visualstudio.com/) |<span class='green-check'>&#9989;</span></br> (1.31.1) |<span class='green-check'>&#9989;</span></br> (1,31) | [Visual Studio Code w DSVM](./dsvm-tools-development.md#visual-studio-code) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) |<span class='green-check'>&#9989;</span></br> (1.2.50 XX) |<span class='green-check'>&#9989;</span></br> (1.1.456) | [RStudio pulpit na DSVM](./dsvm-tools-development.md#rstudio--desktop) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | [Serwer RStudio w DSVM](./dsvm-tools-development.md#rstudio--server)

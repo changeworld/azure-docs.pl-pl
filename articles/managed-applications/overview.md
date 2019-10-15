@@ -1,17 +1,17 @@
 ---
 title: Omówienie usługi Azure Managed Applications | Microsoft Docs
-description: Opis pojęć związanych z usługą Azure Managed Applications
+description: Opisuje koncepcje Azure Managed Applications, które oferują rozwiązania w chmurze, które są łatwe do wdrożenia i obsługi przez klientów.
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 97d6a229651f1c3fbcdbb79c7ae7d1c1f855882b
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: fa37536b800203e981a841d049dc385640733f92
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234753"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332685"
 ---
 # <a name="azure-managed-applications-overview"></a>Omówienie usługi Azure Managed Applications
 
@@ -82,4 +82,4 @@ Do aplikacji zarządzanej możesz zastosować [zasady Azure Policy](../governanc
 W tym artykule omówiono korzyści z używania aplikacji zarządzanych. Przejdź do następnego artykułu, aby utworzyć definicję aplikacji zarządzanej.
 
 > [!div class="nextstepaction"]
-> [Szybki start: Publikowanie definicji aplikacji zarządzanej platformy Azure](publish-managed-app-definition-quickstart.md)
+> [Szybki start: publikowanie definicji aplikacji zarządzanej platformy Azure](publish-managed-app-definition-quickstart.md)

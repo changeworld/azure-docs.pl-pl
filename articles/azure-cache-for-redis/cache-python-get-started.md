@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie aplikacji Python korzystającej z usługi Azure Cache for Redis | Microsoft Docs'
+title: 'Szybki Start: Tworzenie aplikacji w języku Python korzystającej z usługi Azure cache for Redis'
 description: W tym przewodniku Szybki start dowiesz się, jak utworzyć aplikację Python korzystającą z usługi Azure Cache for Redis
 services: cache
 documentationcenter: ''
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: fcb5d74305375c9883f2d601a2ab7d2d9a50b9cb
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.custom:
+- mvc
+- seo-python-october2019
+ms.openlocfilehash: 87c22d3497765fca6f0dcae445152e6e2923510e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743930"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329861"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Szybki start: korzystanie z usługi Azure Cache for Redis za pomocą języka Python
+# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Szybki Start: korzystanie z usługi Azure cache for Redis za pomocą języka Python
 
-W tym przewodniku szybki start dodaliśmy usługę Azure cache for Redis do aplikacji w języku Python, aby uzyskać dostęp do bezpiecznej, dedykowanej pamięci podręcznej dostępnej z dowolnej aplikacji na platformie Azure.
+W tym artykule opisano obsługę usługi Azure cache for Redis w aplikacji w języku Python w celu uzyskania dostępu do bezpiecznej, dedykowanej pamięci podręcznej dostępnej z dowolnej aplikacji na platformie Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -115,7 +117,7 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozyc
 
 W polu tekstowym **Filtruj według nazwy...** wprowadź nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. W grupie zasobów na liście wynik wybierz pozycję **...** , a następnie **Usuń grupę zasobów**.
 
-![Usuwanie](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![Usuń](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
 Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Aby potwierdzić, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 

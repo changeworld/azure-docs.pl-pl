@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: overview
 ms.date: 09/03/2019
 ms.author: heidist
-ms.openlocfilehash: 3b0647c3a71e6ce242e7cbd0eedcca3d0fa30ded
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: b92838f7c43a11cd8bd4e1e19f906d33758bf495
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274050"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331166"
 ---
 # <a name="what-is-azure-search"></a>Co to jest usługa Azure Search?
 
 Azure Search to rozwiązanie w chmurze typu "wyszukiwanie jako usługa", które udostępnia deweloperom interfejsy API i narzędzia umożliwiające dodawanie bogatego środowiska wyszukiwania do aplikacji sieci Web, mobilnych i firmowych. Niestandardowy kod wywołuje pozyskiwanie danych (indeksowanie) w celu utworzenia i załadowania indeksu. Po drugiej stronie kod aplikacji wystawia żądania zapytań i obsługuje odpowiedzi. Środowisko wyszukiwania jest zdefiniowane w kliencie przy użyciu funkcji z Azure Search, z wykonywaniem zapytań w odniesieniu do utrwalonego indeksu tworzonego, własnego i przechowywanego w usłudze.
 
-![Architektura Azure Search](media/search-what-is-azure-search/azure-search-diagram.svg "Architektura Azure Search")
+Architektura architektury ![Azure Search architecture](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search")
 
 Funkcje są uwidaczniane za pośrednictwem prostego [interfejsu API REST](/rest/api/searchservice/) lub [zestawu SDK platformy .NET](search-howto-dotnet-sdk.md), które pozwalają zamaskować złożoność związaną z używaniem pobierania informacji. Oprócz interfejsów API witryna Azure Portal udostępnia funkcje administrowania i zarządzania zawartością oraz narzędzia służące do tworzenia prototypów i wykonywania zapytań względem indeksów. Ponieważ usługa ta działa w chmurze, zarządzaniem infrastrukturą i dostępnością zajmuje się firma Microsoft.
 
@@ -39,35 +39,35 @@ Azure Search doskonale nadaje się dla następujących scenariuszy aplikacji:
 
 ## <a name="feature-descriptions"></a>Opisy funkcji
 
-| Podstawowe&nbsp;wyszukiwanie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkcje |
+| Core @ no__t-0search @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10 @ no__t-11 @ no__t-12 @ no__t-13 @ no__t-14 @ no__t-15 @ no__t-16 @ no__t-17 @ no__t-18 @ no__t-19 @ no__t-20 @ no__t-21 @ no__t-22 @ no__t-23 @ no__t-24  | Funkcje |
 |-------------------|----------|
 |Wyszukiwanie tekstowe w dowolnej postaci | [**Wyszukiwanie pełnotekstowe**](search-lucene-query-architecture.md) jest podstawowym przypadkiem użycia dla większości aplikacji opartych na wyszukiwaniu. Zapytania można formułować za pomocą obsługiwanej składni. <br/><br/>[**Prosta składnia zapytań**](query-simple-syntax.md) zawiera operatory logiczne, operatory wyszukiwania fraz, operatory sufiksów oraz operatory pierwszeństwa.<br/><br/>[**Składnia zapytań Lucene**](query-lucene-syntax.md) obejmuje wszystkie operacje prostej składni rozszerzone o wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie, promowanie terminów i wyrażenia regularne.|
-| Istotność | [**Proste ocenianie**](index-add-scoring-profiles.md) to kluczowa zaleta korzystania z usługi Azure Search. Profile oceniania służą do modelowania trafności jako funkcji wartości w samych dokumentach. Na przykład nowsze produkty lub produkty o obniżonej cenie mogą być wyświetlane na początku wyników wyszukiwania. Do tworzenia profilów oceniania można również używać tagów spersonalizowanej oceny opartych na preferencjach klientów, śledzonych i przechowywanych oddzielnie. |
+| Trafność | [**Proste ocenianie**](index-add-scoring-profiles.md) to kluczowa zaleta korzystania z usługi Azure Search. Profile oceniania służą do modelowania trafności jako funkcji wartości w samych dokumentach. Na przykład nowsze produkty lub produkty o obniżonej cenie mogą być wyświetlane na początku wyników wyszukiwania. Do tworzenia profilów oceniania można również używać tagów spersonalizowanej oceny opartych na preferencjach klientów, śledzonych i przechowywanych oddzielnie. |
 | Wyszukiwanie geograficzne | Usługa Azure Search umożliwia przetwarzanie, filtrowanie i wyświetlanie lokalizacji geograficznych. Pozwala ona użytkownikom eksplorować dane na podstawie zbliżenia wyniku wyszukiwania do lokalizacji fizycznej. Aby dowiedzieć się więcej, [obejrzyj ten film](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) lub [zapoznaj się z przykładem](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). |
 | Filtry i aspekty | [**Nawigacja aspektowa**](search-faceted-navigation.md) jest włączana za pomocą jednego parametru zapytania. Usługa Azure Search zwraca strukturę nawigacji aspektowej, której można użyć jako kodu dla listy kategorii podczas samodzielnego filtrowania (na przykład filtrowania elementów katalogu według ceny i zakresu lub marki). <br/><br/> [**Filtry**](query-odata-filter-orderby-syntax.md) umożliwiają integrowanie nawigacji aspektowej z interfejsem użytkownika aplikacji, rozbudowywanie zapytań oraz filtrowanie na podstawie kryteriów określonych przez użytkownika lub dewelopera. Do tworzenie filtrów służy składnia OData. |
 | Funkcje środowiska użytkownika | [**Funkcja autouzupełniania**](search-autocomplete-tutorial.md) może być włączona dla zapytań typu "w przód" na pasku wyszukiwania. <br/><br/>[**Sugestie dotyczące wyszukiwania**](https://docs.microsoft.com/rest/api/searchservice/suggesters) działają również na podstawie tekstu częściowego wpisanego w pasku wyszukiwania, ale wyniki są faktycznymi dokumentami w indeksie, a nie terminami zapytania. <br/><br/>[**Synonimy**](search-synonyms.md) umożliwiają kojarzenie równoważnych terminów, co niejawnie rozszerza zakres zapytania — bez potrzeby podawania terminów alternatywnych przez użytkownika. <br/><br/>[**Wyróżnianie trafień**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) umożliwia zastosowanie formatowania tekstu do pasującego słowa kluczowego w wynikach wyszukiwania. Można wybrać pola, które zwracają wyróżnione fragmenty.<br/><br/>[**Sortowanie**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) jest dostępne dla wielu pól za pośrednictwem schematu indeksu. Można je przełączać w czasie wykonywania zapytania za pomocą pojedynczego parametru wyszukiwania.<br/><br/> [**Stronicowanie**](search-pagination-page-layout.md) i ograniczanie wyników wyszukiwania jest proste dzięki precyzyjnej kontroli nad wynikami wyszukiwania udostępnianej przez usługę Azure Search.  <br/><br/>|
 
-| Wzbogacanie AI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkcje |
+| AI @ no__t-0enrichment @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10 @ no__t-11       | Funkcje |
 |-------------------|----------|
 |Wzbogacone dokumenty AI | [**Wyszukiwanie poznawcze**](cognitive-search-concept-intro.md) dla analizy obrazów i tekstu można zastosować do potoku indeksowania, aby wyodrębnić informacje tekstowe z nieprzetworzonej zawartości. Kilka przykładów [wbudowanych możliwości](cognitive-search-predefined-skills.md) to optyczne rozpoznawanie znaków (które pozwala na przeszukiwanie plików JPEG), rozpoznawanie jednostek (identyfikowanie organizacji, nazwy lub lokalizacji) oraz rozpoznawanie kluczowych fraz. W celu dołączenia do potoku można również użyć [możliwości kodu niestandardowego](cognitive-search-create-custom-skill-example.md). |
 | Przechowywane wzbogacania na potrzeby analizy i zużycia| [**Magazyn wiedzy (wersja zapoznawcza)** ](knowledge-store-concept-intro.md) to rozszerzenie indeksowania opartego na formacie AI. Za pomocą usługi Azure Storage jako zaplecza można zapisywać wzbogacania utworzone podczas indeksowania. Te artefakty mogą służyć do projektowania lepszych umiejętności lub tworzenia kształtu i struktury z amorphous lub niejednoznacznych danych. Można tworzyć projekcje tych struktur, które są przeznaczone dla konkretnych obciążeń lub użytkowników. Można również bezpośrednio analizować wyodrębnione dane lub ładować je do innych aplikacji.<br/><br/> |
 
-| Importowanie&nbsp;/indeksowanie danych | Funkcje |
+| Data @ no__t-0import/Indexing | Funkcje |
 |----------------------------------|----------|
 | Źródła danych | Indeksy usługi Azure Search akceptują dane z dowolnego źródła, o ile mają one strukturę danych JSON. <br/><br/> [**Indeksatory**](search-indexer-overview.md) automatyzują pozyskiwanie danych dla obsługiwanych źródeł danych platformy Azure i obsługują serializację JSON. Łączenie się z usługą [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md)lub [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) w celu wyodrębnienia zawartości z możliwością wyszukiwania w podstawowych magazynach danych. Indeksatory obiektów blob platformy Azure mogą przeprowadzać *„łamanie zabezpieczeń dokumentów”* w celu [wyodrębniania tekstu z głównych formatów plików](search-howto-indexing-azure-blob-storage.md), na przykład plików PDF i HTML oraz dokumentów pakietu Microsoft Office. |
 | Hierarchiczne i zagnieżdżone struktury danych | [**Złożone typy**](search-howto-complex-data-types.md) i Kolekcje umożliwiają modelowanie praktycznie dowolnego typu struktury JSON jako indeksu Azure Search. Kardynalność "jeden do wielu" i wiele-do-wielu może być wyrażona natywnie za poorednictwem kolekcji, typów złożonych i kolekcji typów złożonych.|
 | Analiza lingwistyczna | Analizatory to składniki używane do przetwarzania tekstu podczas operacji indeksowania i wyszukiwania. Są dwa typy analizatorów. <br/><br/>[**Niestandardowe analizatory leksykalne**](index-add-custom-analyzers.md) są używane w złożonych zapytaniach wyszukiwania korzystających z dopasowania fonetycznego i wyrażeń regularnych. <br/><br/>[**Analizatory języków**](index-add-language-analyzers.md), opracowane przez firmę Lucene lub Microsoft, są używane do inteligentnej obsługi struktur lingwistycznych, m.in. czasów gramatycznych, rodzajów i rzeczowników z nieregularną liczbą mnogą (na przykład „mouse” i „mice” w języku angielskim), a także rozkładania i dzielenia wyrazów (w przypadku języków, w których nie używa się odstępów). <br/><br/>|
 
 
-| Poziom&nbsp;platformy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Funkcje |
+| Platform @ no__t-0level @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10 @ no__t-11 @ no__t-12 @ no__t-13| Funkcje |
 |-------------------|----------|
 | Narzędzia służące do tworzenia prototypów i przeprowadzania inspekcji | Portal udostępnia [**kreatora importowania danych**](search-import-data-portal.md) umożliwiającego konfigurowanie indeksatorów, projektanta indeksów służącego do wdrożenia indeksu oraz [**eksploratora wyszukiwania**](search-explorer.md), który pozwala testować zapytania i dostosowywać profile oceniania. Można również otworzyć dowolny indeks, aby wyświetlić jego schemat. |
-| Monitorowanie i diagnostyka | [**Włącz funkcje monitorowania**](search-monitor-usage.md) , aby przekroczyć metryki na pierwszy rzut oka, które są zawsze widoczne w portalu. Metryki dotyczące liczby zapytań na sekundę, opóźnienia i ograniczania są przechwytywane i udostępniane na stronach portalu bez konieczności konfigurowania dodatkowych ustawień. <br/><br/>[**Analiza ruchu wyszukiwania**](search-traffic-analytics.md) jest kolejną alternatywą monitorowania, w której zbierane są dane po stronie serwera i po stronie klienta w celu odblokowania szczegółowych informacji o tym, co użytkownicy wprowadzają w polu wyszukiwania. |
+| Monitorowanie i diagnostyka | [**Włącz funkcje monitorowania**](search-monitor-usage.md) , aby przekroczyć metryki na pierwszy rzut oka, które są zawsze widoczne w portalu. Metryki dotyczące liczby zapytań na sekundę, opóźnienia i ograniczania są przechwytywane i udostępniane na stronach portalu bez konieczności konfigurowania dodatkowych ustawień.|
 | Szyfrowanie po stronie serwera | [**Szyfrowanie zarządzane przez firmę Microsoft — w spoczynku**](search-security-overview.md#encrypted-transmission-and-storage) jest wbudowane w wewnętrzną warstwę magazynu i jest nieodwołalne. Opcjonalnie można uzupełnić domyślne szyfrowanie za pomocą [**kluczy szyfrowania zarządzanych przez klienta (wersja zapoznawcza)** ](search-security-manage-encryption-keys.md). Klucze tworzone i zarządzane w Azure Key Vault są używane do szyfrowania indeksów i map synonimów w programie Azure Search. |
 | Infrastruktura | **Platforma o wysokiej dostępności** zapewnia niezawodne działanie usługi wyszukiwania. W przypadku prawidłowego skalowania [usługa Azure Search gwarantuje dostępność na poziomie 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> Kompleksowe rozwiązanie Azure Search jest **w pełni zarządzane i skalowalne** — nie wymaga żadnych czynności w zakresie zarządzania infrastrukturą. Skalowanie w dwóch wymiarach pozwala dostosować usługę do swoich potrzeb, na przykład zwiększyć miejsce do magazynowania dokumentów czy zapewnić obsługę większych obciążeń zapytaniami.<br/><br/>|
 
 ## <a name="how-to-use-azure-search"></a>Jak używać usługi Azure Search
-### <a name="step-1-provision-service"></a>Krok 1: aprowizowanie usługi
+### <a name="step-1-provision-service"></a>Krok 1. Aprowizowanie usługi
 Usługę Azure Search możesz aprowizować w witrynie [Azure Portal](https://portal.azure.com/) lub za pomocą [interfejsu API usługi Azure Resource Management](/rest/api/searchmanagement/). Możesz wybrać wersję bezpłatną, współużytkowaną z innymi subskrybentami, lub [warstwę płatną](https://azure.microsoft.com/pricing/details/search/), która pozwala rezerwować zasoby używane przez konkretną usługę. W warstwach płatnych dostępne są dwa wymiary skalowania usługi: 
 
 - Dodawanie replik w celu zwiększenia pojemności umożliwiającej obsługę dużych obciążeń zapytaniami.   
@@ -75,19 +75,19 @@ Usługę Azure Search możesz aprowizować w witrynie [Azure Portal](https://por
 
 Dzięki oddzielnej obsłudze magazynu dokumentów i przepływności zapytań możesz kalibrować zasoby na podstawie wymagań środowiska produkcyjnego.
 
-### <a name="step-2-create-index"></a>Krok 2: tworzenie indeksu
+### <a name="step-2-create-index"></a>Krok 2. Tworzenie indeksu
 Zanim zaczniesz przekazywać zawartość do przeszukiwania, musisz zdefiniować indeks usługi Azure Search. Indeks przypomina tabelę bazy danych, która przechowuje dane i może akceptować zapytania wyszukiwania. Musisz zdefiniować schemat indeksu odzwierciedlający strukturę dokumentów, które chcesz przeszukiwać, podobnie jak w przypadku pól w bazie danych.
 
 Schemat możesz utworzyć w witrynie Azure Portal lub programowo przy użyciu [zestawu SDK platformy .NET](search-howto-dotnet-sdk.md) lub [interfejsu API REST](/rest/api/searchservice/).
 
-### <a name="step-3-load-data"></a>Krok 3: Ładuj dane
+### <a name="step-3-load-data"></a>Krok 3. Ładowanie danych
 Po zdefiniowaniu indeksu możesz zacząć przekazywać zawartość. Możesz użyć modelu wypychania lub modelu ściągania.
 
 W modelu ściągania dane są pobierane z zewnętrznych źródeł danych. Jest on obsługiwany przez *indeksatory*, które usprawniają i automatyzują aspekty pozyskiwania danych, takie jak łączenie się z danymi oraz ich odczytywanie i serializowanie. [Indeksatory](/rest/api/searchservice/Indexer-operations) są dostępne dla usług Azure Cosmos DB, Azure SQL Database, Azure Blob Storage oraz programu SQL Server hostowanego na maszynie wirtualnej platformy Azure. Indeksator możesz skonfigurować na potrzeby zaplanowanego odświeżania danych lub odświeżania danych na żądanie.
 
 Model wypychania jest oparty na zestawie SDK lub interfejsach API REST i umożliwia wysyłanie zaktualizowanych dokumentów do indeksu. Dane możesz wypychać praktycznie z każdego zestawu danych w formacie JSON. Aby uzyskać wskazówki dotyczące ładowania danych, zobacz [Dodawanie, aktualizowanie lub usuwanie dokumentów](/rest/api/searchservice/addupdate-or-delete-documents) lub [Jak używać zestawu SDK dla platformy .NET](search-howto-dotnet-sdk.md).
 
-### <a name="step-4-search"></a>Krok 4: Wyszukaj
+### <a name="step-4-search"></a>Krok 4. Wyszukiwanie
 Po wypełnieniu indeksu możesz [wydać zapytania wyszukiwania](search-query-overview.md) do punktu końcowego usługi przy użyciu prostych żądań HTTP z [interfejsem API REST](/rest/api/searchservice/Search-Documents) lub [zestawem SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations).
 
 Przejdź do sekcji [Tworzenie pierwszej aplikacji wyszukiwania](tutorial-csharp-create-first-app.md) , aby skompilować, a następnie rozwiń stronę sieci Web, która zbiera dane wejściowe użytkownika i obsługuje wyniki. Można również użyć [programu Poster do interaktywnego wywołania REST](search-get-started-postman.md) lub wbudowanego [eksploratora wyszukiwania](search-explorer.md) w Azure Portal, aby zbadać istniejący indeks.
@@ -132,7 +132,7 @@ Subskrybenci platformy Azure mogą [aprowizować usługę w warstwie Bezpłatna]
 
 Jeśli nie masz subskrypcji, możesz [otworzyć bezpłatne konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Otrzymasz środki umożliwiające wypróbowanie płatnych usług platformy Azure. Nawet po ich wyczerpaniu możesz zachować konto i korzystać z [bezpłatnych usług platformy Azure](https://azure.microsoft.com/free/). Karta kredytowa nie zostanie obciążona, chyba że jawnie zmienisz ustawienia i poprosisz o jej obciążenie.
 
-Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): W ramach subskrypcji MSDN co miesiąc otrzymasz środki, które możesz przeznaczyć na płatne usługi platformy Azure. 
+Możesz też [aktywować korzyści subskrybenta MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) — w ramach subskrypcji MSDN co miesiąc otrzymasz kredyt, który można przeznaczyć na płatne usługi platformy Azure. 
 
 ## <a name="how-to-get-started"></a>Jak zacząć
 
@@ -143,7 +143,7 @@ Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.m
 3. Rozpocznij pracę z kodem, korzystając z platformy .NET lub interfejsu API REST:
 
    + [Jak używać zestawu SDK dla platformy .NET](search-howto-dotnet-sdk.md) — przedstawia podstawowy przepływ pracy w kodzie zarządzanym.  
-   + [Wprowadzenie do interfejsu API REST](https://github.com/Azure-Samples/search-rest-api-getting-started) — zawiera te same kroki, wykonywane za pomocą interfejsu API REST. Podczas pracy z tym przewodnikiem Szybki start interfejsy API REST można również wywoływać przy użyciu narzędzia Postman lub Fiddler — zobacz: [Poznaj interfejs API REST usługi Azure Search](search-get-started-postman.md).
+   + [Wprowadzenie do interfejsu API REST](https://github.com/Azure-Samples/search-rest-api-getting-started) — zawiera te same kroki, wykonywane za pomocą interfejsu API REST. Podczas pracy z tym przewodnikiem Szybki Start interfejsy API REST można również wywoływać przy użyciu narzędzia Postman lub Fiddler — zobacz [Odkrywanie interfejsów API REST usługi Azure Search](search-get-started-postman.md).
 
 ## <a name="watch-this-video"></a>Obejrzyj ten film wideo
 

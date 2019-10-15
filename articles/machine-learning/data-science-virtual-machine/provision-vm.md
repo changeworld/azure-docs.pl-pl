@@ -7,18 +7,18 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: fcd115b672e4e2677cb7ad48fc94905747d66781
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c9b72c90bc23cfac6f064445c4f6f98d05d7fe16
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675112"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331775"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Szybki Start: Konfigurowanie Data Science Virtual Machine dla systemu Windows
 
 Zacznij korzystać z Data Science Virtual Machine systemu Windows.
 
-## <a name="prerequisite"></a>Wymaganie wstępne
+## <a name="prerequisite"></a>Warunek wstępny
 
 Aby utworzyć Data Science Virtual Machine systemu Windows, musisz mieć subskrypcję platformy Azure. [Wypróbuj bezpłatnie platformę Azure](https://azure.com/free).
 Zanotuj bezpłatne konta platformy Azure nie obsługują jednostek SKU maszyn wirtualnych obsługujących procesor GPU.
@@ -34,7 +34,7 @@ Aby utworzyć wystąpienie DSVM:
 
 1. Wybierz przycisk **Utwórz** u dołu.
 
-    [![](media/provision-vm/create-windows-expanded.png#lightbox)(media/provision-vm/create-windows.png "Przycisk służący do tworzenia maszyny z systemem Windows")](media/provision-vm/create-windows-expanded.png#lightbox)
+    [![](media/provision-vm/create-windows.png "Przycisk służący do tworzenia maszyny z systemem Windows")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. Należy przekierować do bloku "Tworzenie maszyny wirtualnej".
    Karta @no__t 0Basics odpowiadająca maszynie wirtualnej z systemem Windows @ no__t-1
@@ -48,7 +48,7 @@ Aby utworzyć wystąpienie DSVM:
       * **Rozmiar**: powinno to być automatycznie wypełniane rozmiarem odpowiednim dla ogólnych obciążeń. Dowiedz się więcej o [rozmiarach maszyn wirtualnych z systemem Windows na platformie Azure](../../virtual-machines/windows/sizes.md).
       * **Nazwa użytkownika**: Wprowadź nazwę użytkownika administratora. Jest to nazwa użytkownika, która będzie używana do logowania się do maszyny wirtualnej i nie musi być taka sama jak nazwa użytkownika platformy Azure.
       * **Hasło**: wprowadź hasło, które będzie używane do logowania się do maszyny wirtualnej.    
-1. Wybierz pozycję **Recenzja + Utwórz**.
+1. Wybierz pozycję **Przegląd + utwórz**.
 1. **Przegląd + tworzenie**
    * Sprawdź, czy wszystkie wprowadzone informacje są poprawne. 
    * Wybierz pozycję **Utwórz**.
@@ -77,5 +77,4 @@ Możesz również dołączyć DSVM do Azure Notebooks uruchamiania notesów Jupy
 * Zapoznaj się z artykułem [dziesięć rzeczy, które można wykonać na Data Science Virtual Machine](https://aka.ms/dsvmtenthings).
 * Dowiedz się, jak kompleksowo kompilować kompleksowe rozwiązania analityczne przy użyciu [zespołowego procesu nauki o danych](../team-data-science-process/index.yml).
 * Odwiedź [Azure AI Gallery](https://gallery.cortanaintelligence.com) , aby poznać przykłady dla przykładów usługi Machine Learning i analizy danych, które używają Azure Machine Learning i powiązanych usług danych na platformie Azure. Podano również ikonę dla tej galerii w menu **Start** i na pulpicie maszyny wirtualnej.
-* Zapoznaj się z odpowiednią [dokumentacją](./reference-windows-vm.md) dla tej maszyny wirtualnej.
 
