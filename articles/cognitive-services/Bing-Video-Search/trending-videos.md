@@ -41,7 +41,7 @@ Poniższe rynki obsługują trendy dotyczące trendów wideo.
  
 -   en-AU (angielski, Australia)  
 -   EN-CA (angielski, Kanada)  
--   pl-GB (angielski, Wielka Brytania)  
+-   pl-GB (angielski, Zjednoczone Królestwo)  
 -   EN-ID (angielski, Indonezja)  
 -   EN-IE (angielski, Irlandia)  
 -   pl (angielski, Indie)  

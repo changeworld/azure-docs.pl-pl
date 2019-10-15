@@ -124,7 +124,7 @@ Najpierw utwórz nowy folder o nazwie *Azure-Blobs-JavaScript* i otwórz go w vs
 
 ### <a name="configure-the-debugger"></a>Skonfiguruj debuger
 
-Aby skonfigurować rozszerzenie debugera w VS Code, wybierz pozycję **debuguj > Dodaj konfigurację...** , a następnie wybierz pozycję **Chrome** lub **Edge**, w zależności od rozszerzenia zainstalowanego wcześniej w sekcji wymagania wstępne. Ta akcja powoduje utworzenie pliku *Launch. JSON* i otwarcie go w edytorze.
+Aby skonfigurować rozszerzenie debugera w VS Code, wybierz pozycję **debuguj > Dodaj konfigurację...** , a następnie wybierz pozycję **Chrome** lub **Microsoft Edge**, w zależności od rozszerzenia zainstalowanego wcześniej w sekcji wymagania wstępne. Ta akcja powoduje utworzenie pliku *Launch. JSON* i otwarcie go w edytorze.
 
 Następnie zmodyfikuj plik *Launch. JSON* , tak aby `url` zawierał `/index.html` wartość:
 

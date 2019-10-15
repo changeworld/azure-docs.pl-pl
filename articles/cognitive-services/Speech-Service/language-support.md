@@ -239,7 +239,7 @@ Dostosowanie głosu jest dostępne dla de-DE, en-GB, pl-US, EN-pl, es-MX, fr-FR,
 | Queretaro Otomi      | `otq`          |
 | Rumuński      | `ro`          |
 | Rosyjski      | `ru`          |
-| (Samoa Zachodnie)      | `sm`          |
+| (Samoa)      | `sm`          |
 | Serbski (Cyrylica)      | `sr-Cyrl`          |
 | Serbski (łaciński)      | `sr-Latn`          |
 | Słowacki     | `sk`          |

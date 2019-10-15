@@ -189,7 +189,7 @@ Diagram przepływu danych dla tej architektury referencyjnej jest dostępny do [
 
 ## <a name="compliance-documentation"></a>Dokumentacja dotycząca zgodności
 
-W [macierzy strategia zabezpieczeń i zgodności z przepisami platformy Azure – UK NHS — Wielka Brytania](https://aka.ms/uknhs-crm) zawiera wszystkie wymagania NHS. Ta macierz zawiera szczegółowe informacje o tym, czy implementacja każdej z tych zasad jest odpowiedzialna za firmę Microsoft, klienta, czy współdzielona między nimi.
+W [macierzy strategia zabezpieczeń i zgodności z przepisami platformy Azure – UK NHS — Zjednoczone Królestwo](https://aka.ms/uknhs-crm) zawiera wszystkie wymagania NHS. Ta macierz zawiera szczegółowe informacje o tym, czy implementacja każdej z tych zasad jest odpowiedzialna za firmę Microsoft, klienta, czy współdzielona między nimi.
 
 [Macierz implementacji aplikacji sieci Web w strategia zabezpieczeń i zgodności z przepisami platformy Azure Wielkiej Brytanii NHS PaaS](https://aka.ms/uknhs-paaswa-cim) zawiera informacje o tym, które wymagania NHS z Wielkiej Brytanii są rozwiązywane przez architekturę aplikacji sieci Web PaaS, łącznie z szczegółowymi opisami tego, jak Implementacja spełnia wymagania każdej z tych zasad.
 

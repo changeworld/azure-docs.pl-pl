@@ -88,7 +88,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Queretaro Otomi|   `otq`   |Tylko statystyczne|  Statystyczn|
 |Rumuński|  `ro`    |Neuronowych dostępne|  Neuronowa|
 |Rosyjski|   `ru`    |Neuronowych dostępne|  Neuronowa|
-|(Samoa Zachodnie)|    `sm`    |Tylko statystyczne|  Statystyczn|
+|(Samoa)|    `sm`    |Tylko statystyczne|  Statystyczn|
 |Serbski (Cyrylica)|    `sr-Cyrl`   |Tylko statystyczne|  Statystyczn|
 |Serbski (łaciński)|   `sr-Latn`   |Tylko statystyczne   |Statystyczn|
 |Słowacki|    `sk`    |Neuronowych dostępne|  Neuronowa|
@@ -243,7 +243,7 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Portugalski      | `pt`          |
 | Rumuński      | `ro`          |
 | Rosyjski      | `ru`          |
-|(Samoa Zachodnie)|    `sm`    |
+|(Samoa)|    `sm`    |
 | Serbski (łaciński)      | `sr-Latn`          |
 | Słowacki     | `sk`          |
 | Słoweński      | `sl`          |

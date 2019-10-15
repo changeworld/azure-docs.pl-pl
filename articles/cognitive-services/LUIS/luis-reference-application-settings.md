@@ -46,7 +46,7 @@ Poniższy wyrażenia długości pokazuje, jak normalizacja znaków diakrytycznyc
 
 ### <a name="language-support-for-diacritics"></a>Obsługa języka dla znaków diakrytycznych
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Brazylijski portugalski `pt-br` (znaki diakrytyczne)
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Portugalski (Brazylia) `pt-br` (znaki diakrytyczne)
 
 |Znaki diakrytyczne ustawione na wartość false|Znaki diakrytyczne ustawione na wartość true|
 |-|-|

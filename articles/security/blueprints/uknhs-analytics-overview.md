@@ -161,9 +161,9 @@ Diagram przepływu danych dla tej architektury referencyjnej jest dostępny do [
 
 ## <a name="compliance-documentation"></a>Dokumentacja dotycząca zgodności
 
-W [macierzy strategia zabezpieczeń i zgodności z przepisami platformy Azure — Wielka Brytania w NHS —](https://aka.ms/uknhs-crm) lista wszystkich zasad zabezpieczeń wymaganych przez Zjednoczone Królestwo NHS. Ta macierz zawiera szczegółowe informacje o tym, czy implementacja każdej z tych zasad jest odpowiedzialna za firmę Microsoft, klienta, czy współdzielona między nimi.
+W [macierzy strategia zabezpieczeń i zgodności z przepisami platformy Azure — Zjednoczone Królestwo w NHS —](https://aka.ms/uknhs-crm) lista wszystkich zasad zabezpieczeń wymaganych przez Zjednoczone Królestwo NHS. Ta macierz zawiera szczegółowe informacje o tym, czy implementacja każdej z tych zasad jest odpowiedzialna za firmę Microsoft, klienta, czy współdzielona między nimi.
 
-[Macierz strategia zabezpieczeń i zgodności z przepisami platformy Azure — NHS — Wielka Brytania — implementacja analityczna danych](https://aka.ms/uknhs-analytics-cim) , która zawiera informacje o tym, które wymagania dotyczące Wielkiej Brytanii NHS są rozwiązywane przez architekturę analizy danych, w tym szczegółowy opis sposobu implementacji spełnia wymagania każdej z tych zasad.
+[Macierz strategia zabezpieczeń i zgodności z przepisami platformy Azure — NHS — Zjednoczone Królestwo — implementacja analityczna danych](https://aka.ms/uknhs-analytics-cim) , która zawiera informacje o tym, które wymagania dotyczące Zjednoczonego Królestwa NHS są rozwiązywane przez architekturę analizy danych, w tym szczegółowy opis sposobu implementacji spełnia wymagania każdej z tych zasad.
 
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia

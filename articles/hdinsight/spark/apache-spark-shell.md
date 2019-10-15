@@ -64,7 +64,7 @@ Polecenie powłoki Spark (`spark-shell`, `pyspark`lub `sparkR`) obsługuje wiele
 | --Master MASTER_URL | Określa główny adres URL. W usłudze HDInsight ta wartość jest zawsze `yarn`. | `--master yarn`|
 | --jars JAR_LIST | Rozdzielana przecinkami lista Jars lokalnego do uwzględnienia w sterownikach i ścieżkach klas wykonywania. W usłudze HDInsight ta lista zawiera ścieżki do domyślnego systemu plików w usłudze Azure Storage lub Data Lake Storage. | `--jars /path/to/examples.jar` |
 | --MAVEN_COORDS pakietów | Rozdzielana przecinkami lista współrzędnych Maven Jars do uwzględnienia w sterownikach i ścieżkach klas wykonywania. Przeszukuje lokalne repozytorium Maven, a następnie Maven Central, wszelkie dodatkowe repozytoria zdalne określone za `--repositories`pomocą. Format współrzędnych to *GroupID*:*artifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
-| --Lista z LISTą plików | Tylko w przypadku języka Python, rozdzielana przecinkami lista plików zip, jaja lub. PR do umieszczenia w PYTHONPATH. | `--pyfiles "samples.py"` |
+| --Lista z LISTą plików | Tylko w przypadku języka Python, rozdzielana przecinkami lista plików zip, egg lub. PR do umieszczenia w PYTHONPATH. | `--pyfiles "samples.py"` |
 
 ## <a name="next-steps"></a>Następne kroki
 
