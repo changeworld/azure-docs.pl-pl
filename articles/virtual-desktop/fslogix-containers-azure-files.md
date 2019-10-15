@@ -7,16 +7,19 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 5e52275cc7215f6c54c2ff6a11faf82114c414b4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e651695055b9bfdbfbb5b6281af8c1d21235009b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676596"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311799"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontenery profili FSLogix i pliki platformy Azure
 
 Usługa pulpitu wirtualnego systemu Windows zaleca kontenery profilu FSLogix jako rozwiązanie profilu użytkownika. FSLogix zaprojektowano pod kątem roamingu profilów w zdalnych środowiskach obliczeniowych, takich jak pulpit wirtualny systemu Windows. W ramach jednego kontenera jest przechowywany kompletny profil użytkownika. Po zalogowaniu ten kontener jest dynamicznie dołączany do środowiska obliczeniowego przy użyciu natywnie obsługiwanego wirtualnego dysku twardego (VHD) oraz wirtualnego dysku twardego funkcji Hyper-V (VHDX). Profil użytkownika jest natychmiast dostępny i pojawia się w systemie tak samo jak natywny profil użytkownika. W tym artykule opisano, jak kontenery profilu FSLogix używane z funkcją Azure Files na pulpicie wirtualnym systemu Windows.
+
+>[!NOTE]
+>Jeśli szukasz materiału do porównania o różnych opcjach magazynu kontenera profilu FSLogix na platformie Azure, zobacz [Opcje magazynu dla kontenerów profilów FSLogix](store-fslogix-profile.md).
 
 ## <a name="user-profiles"></a>Profile użytkowników
 

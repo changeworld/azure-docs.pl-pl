@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 85f7ea11638278a010b2a94d9c6472857f51b687
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 8de36ea9f7bb77443b22e038172ee69bb8435b29
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710171"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311225"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosting statycznej witryny sieci Web w usłudze Azure Storage
 
@@ -41,8 +41,8 @@ Aby przekazać zawartość do kontenera **$Web** , można użyć dowolnego z tyc
 > [!div class="checklist"]
 > * [Interfejs wiersza polecenia platformy Azure](storage-blob-static-website-how-to.md#cli)
 > * [Moduł Azure PowerShell](storage-blob-static-website-how-to.md#powershell)
-> * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/)
+> * [Narzędzie AzCopy](../common/storage-use-azcopy-v10.md)
+> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code rozszerzenie](/azure/javascript/tutorial-vscode-static-website-node-01)
 
@@ -50,7 +50,7 @@ Aby przekazać zawartość do kontenera **$Web** , można użyć dowolnego z tyc
 
 Użytkownicy mogą wyświetlać zawartość witryny z przeglądarki przy użyciu publicznego adresu URL witryny sieci Web. Adres URL można znaleźć za pomocą Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Użyj tej tabeli jako przewodnika.
 
-|Narzędzie| Wskazówki |
+|Narzędzie| Wskazówka |
 |----|----|
 |**Azure Portal** | [Znajdź adres URL witryny sieci Web przy użyciu Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Interfejs wiersza polecenia platformy Azure** | [Znajdowanie adresu URL witryny sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure](storage-blob-static-website-how-to.md#cli-find-url) |
@@ -82,7 +82,7 @@ Jednak publiczny dostęp do podstawowego punktu końcowego usługi BLOB Service 
 
 Aby udostępnić pliki statycznej witryny sieci Web za pośrednictwem domeny niestandardowej i protokołu HTTPS, zobacz [używanie Azure CDN do uzyskiwania dostępu do obiektów blob z domenami niestandardowymi za pośrednictwem protokołu HTTPS](storage-https-custom-domain-cdn.md). W ramach tego procesu należy wskazać sieć CDN do podstawowego punktu końcowego *statycznej witryny sieci Web* , a nie podstawowy punkt końcowy *usługi BLOB Service* . Może być konieczne odczekanie kilku minut, zanim zawartość będzie widoczna, ponieważ konfiguracja usługi CDN nie zostanie natychmiast wykonana.
 
-Podczas aktualizowania statycznej witryny sieci Web należy wyczyścić zawartość pamięci podręcznej na serwerach brzegowych usługi CDN, przeczyszczając punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz [przeczyszczanie punktu końcowego Azure CDN](../../cdn/cdn-purge-endpoint.md).
+Podczas aktualizowania statycznej witryny sieci Web należy wyczyścić zawartość pamięci podręcznej na serwerach brzegowych usługi CDN, przeczyszczając punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz [Przeczyszczanie punktu końcowego usługi Azure CDN](../../cdn/cdn-purge-endpoint.md).
 
 > [!NOTE]
 > Protokół HTTPS jest obsługiwany natywnie za pośrednictwem punktu końcowego sieci Web konta, dzięki czemu punkt końcowy sieci Web jest dostępny zarówno w przypadku protokołu HTTP, jak i HTTPS. Jeśli jednak konto magazynu jest skonfigurowane tak, aby wymagało bezpiecznego transferu za pośrednictwem protokołu HTTPS, użytkownicy muszą używać punktu końcowego HTTPS. Aby uzyskać więcej informacji, zobacz [Wymagaj bezpiecznego transferu w usłudze Azure Storage](../common/storage-require-secure-transfer.md).

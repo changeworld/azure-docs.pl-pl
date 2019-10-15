@@ -1,6 +1,6 @@
 ---
-title: Debugowanie łączników serwera Proxy aplikacji — Azure Active Directory | Dokumentacja firmy Microsoft
-description: Przy debugowaniu problemów z łącznikami serwera Proxy aplikacji usługi Azure Active Directory (Azure AD).
+title: Debugowanie łączników serwera proxy aplikacji — Azure Active Directory | Microsoft Docs
+description: Problemy z debugowaniem przy użyciu łączników serwera proxy aplikacji Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: c3088ae777fe1a64be218105d36fdb9e01d7b798
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66172238"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311850"
 ---
-# <a name="debug-application-proxy-connector-issues"></a>Debugowanie problemów z łącznika serwera Proxy aplikacji 
+# <a name="debug-application-proxy-connector-issues"></a>Debuguj problemy dotyczące łącznika serwera proxy aplikacji 
 
-Ten artykuł ułatwia rozwiązywanie problemów z łącznikami serwera Proxy aplikacji usługi Azure Active Directory (Azure AD). Jeśli używasz usługi serwera Proxy aplikacji dostępu zdalnego do aplikacji sieci web w środowisku lokalnym, ale występują problemy z nawiązaniem połączenia z aplikacją, użyj tego schematu blokowego do debugowania problemów łącznika. 
+Ten artykuł pomaga rozwiązywać problemy z łącznikami serwera proxy aplikacji Azure Active Directory (Azure AD). Jeśli używasz usługi serwera proxy aplikacji w celu uzyskania dostępu zdalnego do lokalnej aplikacji sieci Web, ale masz problemy z połączeniem z aplikacją, użyj tego schematu blokowego do debugowania problemów z łącznikiem. 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, zainstalowano łącznik serwera Proxy aplikacji usługi i są wystąpił problem. Podczas rozwiązywania problemów z serwera Proxy aplikacji, zalecamy uruchomić ten przepływ rozwiązywania problemów, aby określić, jeśli łączników serwera Proxy aplikacji są poprawnie skonfigurowane. Jeśli nadal występują problemy z nawiązaniem połączenia z aplikacją, postępuj zgodnie z rozwiązywania problemów z przepływem w [problemy z aplikacją serwer Proxy debugowania aplikacji](application-proxy-debug-apps.md).  
+W tym artykule przyjęto założenie, że zainstalowano łącznik serwera proxy aplikacji i występuje problem. W przypadku rozwiązywania problemów z serwerem proxy aplikacji zalecamy rozpoczęcie pracy z tym przepływem rozwiązywania problemów w celu ustalenia, czy łączniki serwera proxy aplikacji są prawidłowo skonfigurowane. Jeśli nadal występują problemy z nawiązywaniem połączenia z aplikacją, postępuj zgodnie z przepływem rozwiązywania problemów, aby [debugować problemy aplikacji serwera proxy aplikacji](application-proxy-debug-apps.md).  
 
 
-Aby uzyskać więcej informacji dotyczących serwera Proxy aplikacji i używania jej łączników zobacz:
+Aby uzyskać więcej informacji na temat serwera proxy aplikacji i korzystania z jego łączników, zobacz:
 
-- [Dostęp zdalny do aplikacji lokalnych za pośrednictwem serwera Proxy aplikacji](application-proxy.md)
-- [Łączników serwera Proxy aplikacji](application-proxy-connectors.md)
+- [Dostęp zdalny do aplikacji lokalnych przy użyciu serwera proxy aplikacji](application-proxy.md)
+- [Łączniki serwera proxy aplikacji](application-proxy-connectors.md)
 - [Instalowanie i rejestrowanie łącznika](application-proxy-add-on-premises-application.md)
-- [Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach](application-proxy-troubleshoot.md)
+- [Rozwiązywanie problemów z serwerem proxy aplikacji i komunikatów o błędach](application-proxy-troubleshoot.md)
 
-## <a name="flowchart-for-connector-issues"></a>Schemat blokowy problemy dotyczące łącznika
+## <a name="flowchart-for-connector-issues"></a>Schemat blokowy dotyczący problemów z łącznikiem
 
-Ten schemat blokowy przeprowadzi Cię przez kroki do debugowania, niektóre najbardziej typowe problemy, łącznik. Aby uzyskać szczegółowe informacje o każdym kroku Zobacz tabeli schematu blokowego.
+Ten schemat blokowy przeprowadzi Cię przez kroki dotyczące debugowania niektórych typowych problemów z łącznikiem. Aby uzyskać szczegółowe informacje o każdym z kroków, zobacz tabelę po schemacie blokowym.
 
-![Schemat blokowy pokazujący etapy dotyczące debugowania łącznika](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
+![Schemat blokowy przedstawiający kroki debugowania łącznika](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | Akcja | Opis | 
+|  | Działanie | Opis | 
 |---------|---------|---------|
-|1 | Znajdź grupy łączników, przypisany do aplikacji | Prawdopodobnie już łącznik zainstalowane na wielu serwerach, w którym to przypadku należy łączniki [przypisane do grupy łączników](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Aby dowiedzieć się więcej na temat grupy łączników, zobacz [Publikuj aplikacje w oddzielnych sieciach i miejsc za pomocą grupy łączników](application-proxy-connector-groups.md). |
-|2 | Zainstaluj łącznik i przypisać grupę | Jeśli nie masz zainstalowanego łącznika, zobacz [Instalowanie i rejestrowanie łącznika](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br>Jeśli łącznik nie jest przypisany do grupy, zobacz [przypisać łącznika do grupy](application-proxy-connector-groups.md#create-connector-groups).<br></br>Jeśli aplikacja nie jest przypisany do grupy łączników, zobacz [przypisania aplikacji do grupy łączników](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|
-|3 | Uruchom test portu na serwerze łącznika | Na serwerze łącznika, uruchom test portów przy użyciu [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) lub innych portów, testowanie narzędzia do sprawdzania, czy Otwórz porty 443 i 80.|
-|4 | Konfigurowanie domen i portów | [Upewnij się, że Twoich domen i porty są skonfigurowane prawidłowo](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) dla łącznika zapewnić prawidłowe działanie, istnieją Niektóre porty, które muszą być otwarte i adresów URL, które serwer musi mieć możliwość uzyskania dostępu. |
-|5 | Sprawdź, czy serwer proxy zaplecza jest w użyciu | Sprawdź, czy łączniki są używane serwery proxy zaplecza lub je z pominięciem. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z łącznika serwera proxy i problemy z połączeniem usługi](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues). |
-|6 | Aktualizowanie łącznika i aktualizacji, aby użyć serwera proxy zaplecza | Proxy zaplecza jest używany, należy się upewnić, że łącznik używa tego samego serwera proxy. Aby uzyskać szczegółowe informacje dotyczące rozwiązywania problemów i konfigurowania łączników do pracy z serwerami proxy, zobacz [pracy przy użyciu istniejących serwerów proxy lokalnych](application-proxy-configure-connectors-with-proxy-servers.md). |
-|7 | Ładowanie wewnętrzny adres URL aplikacji na serwerze łącznika | Na serwerze łącznika załadować wewnętrzny adres URL aplikacji. |
-|8 | Sprawdź łączność z siecią wewnętrzną | Istnieje problem z łącznością w sieci wewnętrznej, ten przepływ debugowania nie jest w stanie do diagnozowania. Aplikacja musi być dostępny wewnętrznie dla łączników do pracy. Można włączyć i wyświetlić dzienniki zdarzeń łącznika, zgodnie z opisem w [łączników serwera Proxy aplikacji](application-proxy-connectors.md#under-the-hood). |
-|9 | Wartość limitu czasu na zapleczu wydłużyć | W **dodatkowe ustawienia** dla aplikacji, należy zmienić **limit czasu aplikacji zaplecza** ustawienie **długie**. Zobacz [Dodawanie aplikacji lokalnych do usługi Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). |
-|10 | Jeśli problemy będą się powtarzać, twórz problemów określonego przepływu, przeglądu aplikacji i logowanie Jednokrotne debugowanie przepływów | Użyj [problemy z aplikacją serwer Proxy debugowania aplikacji](application-proxy-debug-apps.md) Rozwiązywanie problemów z przepływem. |
+|1 | Znajdowanie grupy łączników przypisanej do aplikacji | Prawdopodobnie masz łącznik zainstalowany na wielu serwerach, w takim przypadku łączniki powinny być [przypisane do grup łączników](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Aby dowiedzieć się więcej na temat grup łączników, zobacz [publikowanie aplikacji w oddzielnych sieciach i lokalizacjach za pomocą grup łączników](application-proxy-connector-groups.md). |
+|2 | Instalowanie łącznika i przypisywanie grupy | Jeśli nie masz zainstalowanego łącznika, zobacz [Instalowanie i rejestrowanie łącznika](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Jeśli masz problemy z instalowaniem łącznika, zobacz [problem z instalowaniem łącznika](application-proxy-connector-installation-problem.md).<br></br> Jeśli łącznik nie jest przypisany do grupy, zobacz [przypisywanie łącznika do grupy](application-proxy-connector-groups.md#create-connector-groups).<br></br>Jeśli aplikacja nie jest przypisana do grupy łączników, zobacz [przypisywanie aplikacji do grupy łączników](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|
+|3 | Uruchamianie testu portu na serwerze łącznika | Na serwerze łącznika Uruchom test portu przy użyciu programu [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) lub innego narzędzia do testowania portów, aby sprawdzić, czy są otwarte porty 443 i 80.|
+|4 | Konfigurowanie domen i portów | Upewnij [się, że domeny i porty są prawidłowo skonfigurowane](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) Aby łącznik działał prawidłowo, istnieją pewne porty, które muszą być otwarte i adresy URL, do których serwer musi mieć dostęp. |
+|5 | Sprawdź, czy serwer proxy zaplecza jest używany | Sprawdź, czy łączniki korzystają z serwerów proxy zaplecza, czy ich pomijania. Aby uzyskać szczegółowe informacje, zobacz [Rozwiązywanie problemów z serwerem proxy łącznika i problemy z łącznością usług](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues). |
+|6 | Aktualizowanie łącznika i Aktualizator w celu korzystania z serwera proxy zaplecza | Jeśli serwer proxy zaplecza jest używany, należy się upewnić, że łącznik używa tego samego serwera proxy. Aby uzyskać szczegółowe informacje na temat rozwiązywania problemów i konfigurowania łączników do pracy z serwerami proxy, zobacz [pracy z istniejącymi lokalnymi serwerami proxy](application-proxy-configure-connectors-with-proxy-servers.md). |
+|7 | Załaduj wewnętrzny adres URL aplikacji na serwerze łącznika | Na serwerze łącznika Załaduj wewnętrzny adres URL aplikacji. |
+|8 | Sprawdź połączenie z siecią wewnętrzną | Wystąpił problem z łącznością w sieci wewnętrznej, który nie może zdiagnozować tego przepływu debugowania. Aby łączniki działały, aplikacja musi być wewnętrznie dostępna. Można włączyć i wyświetlić dzienniki zdarzeń łącznika zgodnie z opisem w [łącznikach serwera proxy aplikacji](application-proxy-connectors.md#under-the-hood). |
+|9 | Wydłużenie limitu czasu na zapleczu | W **dodatkowych ustawieniach** aplikacji zmień ustawienie **limitu czasu aplikacji zaplecza** na wartość **Long**. Zobacz [Dodawanie aplikacji lokalnej do usługi Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). |
+|10 | Jeśli problemy będą nadal występować, należy określić problemy związane z przepływem, przejrzeć przepływy debugowania aplikacji i rejestracji jednokrotnej | Użyj narzędzia [debugowania aplikacji serwera proxy](application-proxy-debug-apps.md) aplikacji. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 
-* [Publikuj aplikacje w oddzielnych sieciach i miejsc za pomocą grupy łączników](application-proxy-connector-groups.md)
-* [Praca z istniejących serwerów proxy w środowisku lokalnym](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Rozwiązywanie problemów z błędami serwera Proxy aplikacji i łączników](application-proxy-troubleshoot.md)
-* [Jak dyskretnie zainstalować łącznik serwera Proxy aplikacji usługi Azure AD](application-proxy-register-connector-powershell.md)
+* [Publikowanie aplikacji w oddzielnych sieciach i lokalizacjach za pomocą grup łączników](application-proxy-connector-groups.md)
+* [Współdziałanie z istniejącymi lokalnymi serwerami proxy](application-proxy-configure-connectors-with-proxy-servers.md)
+* [Rozwiązywanie problemów z serwerem proxy aplikacji i błędami łącznika](application-proxy-troubleshoot.md)
+* [Jak zainstalować łącznik usługi Azure serwer proxy aplikacji usługi Azure AD w trybie dyskretnym](application-proxy-register-connector-powershell.md)

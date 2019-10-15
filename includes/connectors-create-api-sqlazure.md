@@ -5,109 +5,70 @@ services: logic-apps
 author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 05/15/2018
 ms.author: estfan
 ms.custom: include file
-ms.openlocfilehash: da03c5247b8ebe0a3305b08a05d661264497663f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 05/15/2018
+ms.openlocfilehash: aa1001661d8fe03855e1a28b882f674bee3606b2
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183484"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312005"
 ---
-* Jeśli używasz usługi Azure SQL Database, wykonaj kroki opisane w temacie [nawiązywanie połączenia z bazą danych SQL Azure](#connect-azure-sql-db). 
+* Jeśli używasz Azure SQL Database, postępuj zgodnie z instrukcjami w sekcji [Połącz z Azure SQL Database](#connect-azure-sql-db).
 
-* Jeśli używasz programu SQL Server, wykonaj kroki opisane w temacie [Połącz z serwerem SQL](#connect-sql-server).
+* Jeśli używasz SQL Server, postępuj zgodnie z instrukcjami w sekcji [Połącz z SQL Server](#connect-sql-server).
 
 <a name="connect-azure-sql-db"></a>
 
-### <a name="connect-to-azure-sql-database"></a>Nawiązać połączenie z bazą danych Azure SQL
+### <a name="connect-to-azure-sql-database"></a>Połącz z Azure SQL Database
 
-1. Gdy SQL wyzwalacza lub akcji wyświetli monit o podanie informacji o połączeniu, wykonaj następujące kroki:
+Gdy wyzwalacz SQL lub akcja monituje o informacje o połączeniu, wykonaj następujące kroki, które działają dla obu wyzwalaczy i akcji.
 
-   1. Utwórz nazwę połączenia.
+1. W obszarze **Nazwa połączenia**Utwórz nazwę połączenia.
 
-   2. Wybierz swój serwer SQL, a następnie wybierz swoją bazę danych. 
+1. W obszarze **nazwa SQL Server**wybierz swój serwer Azure SQL. Gdy zostanie wyświetlona lista **nazwa SQL Database** , wybierz swoją bazę danych. Podaj nazwę użytkownika i hasło do serwera Azure SQL.
 
-      Lista baz danych pojawia się tylko po wybraniu programu SQL server.
- 
-   3. Podaj nazwę użytkownika i hasło dla serwera.
+   Te informacje można również znaleźć w Azure Portal w obszarze właściwości bazy danych SQL lub w parametrach połączenia:
 
-      Można znaleźć te informacje w witrynie Azure portal w obszarze właściwości bazy danych SQL lub w ciągu połączenia: 
-      
-      "Nazwa użytkownika = <*nazwa_użytkownika*>"
-      <br>
-      "Hasło = <*yourPassword*>"
+   * `User ID=<your-user-name>`
+   * `Password=<your-password>`
 
-   Ten przykład przedstawia informacje o połączeniu dla wyzwalacza, ale następujące kroki działają zbyt dla akcji.
+   ![Utwórz połączenie Azure SQL Database](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
 
-   ![Utwórz połączenie z bazą danych SQL Azure](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
-   <br>
-   Gwiazdki (*) wskazują wymaganymi wartościami.
+1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
-   | Właściwość | Wartość | Szczegóły | 
-   |----------|-------|---------| 
-   | Nazwa połączenia | <*my-sql-connection*> | Nazwa połączenia | 
-   | Nazwa serwera SQL | <*my-sql-server*> | Nazwa serwera SQL |
-   | Nazwa bazy danych SQL | <*my-sql-database*>  | Nazwa bazy danych SQL | 
-   | Nazwa użytkownika | <*my-sql-username*> | Nazwa użytkownika do uzyskiwania dostępu do bazy danych |
-   | Hasło | <*moje hasło sql*> | Hasło do uzyskiwania dostępu do bazy danych | 
-   |||| 
-
-2. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
-
-3. Po utworzeniu połączenia, kontynuuj [wyzwalacza SQL Dodaj](#add-sql-trigger) lub [SQL Dodaj akcję](#add-sql-action).
+1. Po utworzeniu połączenia Kontynuuj [Dodawanie wyzwalacza SQL](#add-sql-trigger) lub [Dodaj akcję SQL](#add-sql-action).
 
 <a name="connect-sql-server"></a>
 
 ### <a name="connect-to-sql-server"></a>Ustanawianie połączenia z programem SQL Server
 
-Aby można było wybrać bramę, upewnij się, że już [Konfigurowanie Twoja brama data gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). W ten sposób, brama pojawia się na liście bram podczas tworzenia połączenia.
+Gdy wyzwalacz SQL lub akcja monituje o informacje o połączeniu, wykonaj następujące kroki, które działają dla obu wyzwalaczy i akcji. Jednak przed rozpoczęciem upewnij się, że już [skonfigurowano lokalną bramę danych](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). W przeciwnym razie Brama nie będzie wyświetlana na liście bramy podczas tworzenia połączenia.
 
-1. Gdy SQL wyzwalacza lub akcji wyświetli monit o podanie informacji o połączeniu, wykonaj następujące kroki:
+1. W obszarze **Nazwa połączenia**Utwórz nazwę połączenia.
 
-   1. Wyzwalacz lub akcję, wybierz **Połącz za pośrednictwem lokalnej bramy danych** tak, aby wyświetlane opcje programu SQL server.
+1. W wyzwalaczu lub akcji wybierz opcję **Połącz za pośrednictwem lokalnej bramy danych** , aby wyświetlić opcje programu SQL Server.
 
-   2. Utwórz nazwę połączenia.
+1. W polu **Nazwa serwera SQL** i **Nazwa bazy danych SQL**Podaj adres serwera SQL i nazwę bazy danych. Podaj nazwę użytkownika **i hasło** dla serwera.
 
-   3. Podaj adres swojego serwera SQL server, a następnie podaj nazwę dla bazy danych.
-   
-      Te informacje można znaleźć w ciągu połączenia: 
-      
-      * "Server=<*yourServerAddress*>"
-      * "Database=<*yourDatabaseName*>"
+   Te informacje można również znaleźć w parametrach połączenia:
 
-   4. Podaj nazwę użytkownika i hasło dla serwera.
+   * `Server=<your-server-address>`
+   * `Database=<your-database-name>`
+   * `User ID=<your-user-name>`
+   * `Password=<your-password>`
 
-      Te informacje można znaleźć w ciągu połączenia: 
-      
-      * "Nazwa użytkownika = <*nazwa_użytkownika*>"
-      * "Hasło = <*yourPassword*>"
+   ![Utwórz połączenie SQL Server](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
 
-   5. Jeśli program SQL server korzysta z uwierzytelniania podstawowe lub Windows, wybierz typ uwierzytelniania.
+1. Jeśli program SQL Server używa uwierzytelniania systemu Windows lub uwierzytelnianie podstawowe, wybierz **Typ uwierzytelniania**.
 
-   6. Wybierz nazwę dla bramy danych lokalnych, która została wcześniej utworzona.
-   
-      Jeśli brama nie pojawia się na liście, sprawdź, że poprawnie [skonfigurowania bramy](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection).
+1. W obszarze **bramy**wybierz subskrypcję platformy Azure, która jest skojarzona z wcześniej utworzoną lokalną bramą danych, a następnie wybierz nazwę lokalnej bramy danych.
 
-   Ten przykład przedstawia informacje o połączeniu dla wyzwalacza, ale następujące kroki działają zbyt dla akcji.
+   Jeśli Brama nie znajduje się na liście, sprawdź poprawność [konfiguracji bramy](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection).
 
-   ![Tworzenie połączenia programu SQL Server](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
-   <br>
-   Gwiazdki (*) wskazują wymaganymi wartościami.
+   ![Ukończono tworzenie połączenia SQL Server](./media/connectors-create-api-sqlazure/sql-server-create-connection-complete.png)
 
-   | Właściwość | Wartość | Szczegóły | 
-   |----------|-------|---------| 
-   | Nawiązywanie połączenia za pośrednictwem bramy lokalnej | Wybierz tę opcję, najpierw ustawień programu SQL Server. | | 
-   | Nazwa połączenia | <*my-sql-connection*> | Nazwa połączenia | 
-   | Nazwa serwera SQL | <*my-sql-server*> | Nazwa serwera SQL |
-   | Nazwa bazy danych SQL | <*my-sql-database*>  | Nazwa bazy danych SQL |
-   | Nazwa użytkownika | <*my-sql-username*> | Nazwa użytkownika do uzyskiwania dostępu do bazy danych |
-   | Hasło | <*moje hasło sql*> | Hasło do uzyskiwania dostępu do bazy danych | 
-   | Typ uwierzytelniania | Windows lub Basic | Opcjonalnie: Typ uwierzytelniania używany przez program SQL server | 
-   | Bramy | <*my-data-gateway*> | Nazwa dla lokalnej bramy danych | 
-   |||| 
+1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
-2. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**. 
-
-3. Po utworzeniu połączenia, kontynuuj [wyzwalacza SQL Dodaj](#add-sql-trigger) lub [SQL Dodaj akcję](#add-sql-action).
+1. Po utworzeniu połączenia Kontynuuj [Dodawanie wyzwalacza SQL](#add-sql-trigger) lub [Dodaj akcję SQL](#add-sql-action).

@@ -8,36 +8,29 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 7e5eb73cc6abc72689bbc674b29f4d288dd66b6f
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 1aec65ab08cd1c0711e51a222a8e674ef56ef508
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302897"
+ms.locfileid: "72312185"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Dodawanie wyszukiwania pełnotekstowego do danych obiektów blob platformy Azure przy użyciu Azure Search
 
-Wyszukiwanie w różnych typach zawartości przechowywanych w usłudze Azure Blob Storage może być trudnym problemem do rozwiązania. Można jednak indeksować i przeszukiwać zawartość obiektów BLOB za pomocą zaledwie kilku kliknięć przy użyciu Azure Search. Wyszukiwanie w usłudze BLOB Storage wymaga aprowizacji usługi Azure Search. Różne limity usług i warstwy cenowe Azure Search można znaleźć na [stronie cennika](https://aka.ms/azspricing).
+Wyszukiwanie w różnych typach zawartości przechowywanych w usłudze Azure Blob Storage może być trudnym problemem do rozwiązania. Można jednak indeksować i przeszukiwać zawartość obiektów BLOB za pomocą zaledwie kilku kliknięć przy użyciu [Azure Search](search-what-is-azure-search.md). Azure Search ma wbudowaną integrację do indeksowania poza magazynem obiektów BLOB za pomocą [*indeksatora obiektów BLOB*](search-howto-indexing-azure-blob-storage.md) , który dodaje możliwości rozpoznawania źródła danych do indeksowania.
 
-## <a name="what-is-azure-search"></a>Co to jest usługa Azure Search?
-[Azure Search](https://aka.ms/whatisazsearch) to usługa wyszukiwania, która ułatwia deweloperom Dodawanie niezawodnych funkcji wyszukiwania pełnotekstowego do aplikacji internetowych i mobilnych. Jako usługa Azure Search eliminuje konieczność zarządzania dowolnymi infrastrukturami wyszukiwania, a jednocześnie oferuje umowę [SLA na 99,9%](https://aka.ms/azuresearchsla)czasu.
+## <a name="supported-content-types"></a>Obsługiwane typy zawartości
 
-## <a name="index-and-search-enterprise-document-formats"></a>Indeksuj i Przeszukaj formaty dokumentów przedsiębiorstwa
-Z obsługą [wyodrębniania dokumentów](https://aka.ms/azsblobindexer) w usłudze Azure Blob Storage można indeksować następującą zawartość:
+Uruchamiając indeksator obiektów BLOB w kontenerze, można wyodrębnić tekst i metadane z następujących typów zawartości za pomocą pojedynczego zapytania:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-Przez wyodrębnienie tekstu i metadanych z tych typów plików można przeszukiwać wiele formatów plików przy użyciu jednego zapytania. 
+Opcjonalnie można dołączyć [wzbogacanie AI](search-blob-ai-integration.md) w formie *zestawu umiejętności* , aby utworzyć nowe informacje i strukturę z obiektów blob, w tym tekstową reprezentację plików obrazów. Dodanie wzbogacania AI rozszerza listę typów zawartości w taki sposób, aby obejmowała JPEG i PNG. Dodaje umiejętności przetwarzania obrazów, takie jak [optyczne rozpoznawanie znaków (OCR)](cognitive-search-skill-ocr.md) i identyfikacja [funkcji wizualizacji](cognitive-search-skill-image-analysis.md) , które umożliwiają indeksowanie zawartości wizualnej znalezionej w każdym obrazie.
 
 ## <a name="search-through-your-blob-metadata"></a>Przeszukiwanie metadanych obiektów BLOB
 Typowym scenariuszem, który ułatwia sortowanie za pomocą obiektów BLOB dowolnego typu zawartości, jest indeksowanie zarówno niestandardowych metadanych, jak i właściwości systemu dla każdego obiektu BLOB. W ten sposób informacje o wszystkich obiektach Blob są indeksowane niezależnie od typu dokumentu. Następnie można przystępować do sortowania, filtrowania i aspektów całej zawartości magazynu obiektów BLOB.
 
 [Dowiedz się więcej na temat indeksowania metadanych obiektów BLOB.](https://aka.ms/azsblobmetadataindexing)
-
-## <a name="image-search"></a>Wyszukiwanie obrazów
-Azure Search wyszukiwanie pełnotekstowe, Nawigacja aspektowa i możliwości sortowania można teraz zastosować do metadanych obrazów przechowywanych w obiektach Blob.
-
-Wyszukiwanie poznawcze obejmuje umiejętności przetwarzania obrazów, takie jak [optyczne rozpoznawanie znaków (OCR)](cognitive-search-skill-ocr.md) i identyfikacja [funkcji wizualizacji](cognitive-search-skill-image-analysis.md) , które umożliwiają indeksowanie zawartości wizualnej znalezionej w każdym obrazie.
 
 ## <a name="index-and-search-through-json-blobs"></a>Indeksowanie obiektów BLOB JSON i ich wyszukiwanie
 Azure Search można skonfigurować do wyodrębniania zawartości strukturalnej znalezionej w obiektach Blob, które zawierają kod JSON. Azure Search może odczytywać obiekty blob JSON i analizować zawartość strukturalną do odpowiednich pól Azure Search dokumentu. Azure Search może również przyjmować obiekty blob, które zawierają tablicę obiektów JSON i mapują każdy element do oddzielnego Azure Search dokumentu.

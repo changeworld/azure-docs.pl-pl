@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 839faa4cf2455ee2b0de38046a464ce824f007cd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301869"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311879"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurowanie SQL Server wystąpienia klastra trybu failover z udziałem plików w warstwie Premium na platformie Azure Virtual Machines
 
@@ -37,7 +37,7 @@ Należy mieć praktyczne zrozumienie następujących technologii:
 - [Technologie klastrów systemu Windows](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server wystąpienia klastra trybu failover](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Istotną różnicą jest to, że w klastrze trybu failover maszyny wirtualnej Azure IaaS zaleca się użycie jednej karty sieciowej na serwer (węzeł klastra) i pojedynczej podsieci. Sieć platformy Azure ma fizyczną nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci są niepotrzebne w klastrze gościa maszyny wirtualnej IaaS platformy Azure. Mimo że raport weryfikacji klastra wygeneruje ostrzeżenie, że węzły są dostępne tylko w jednej sieci, to ostrzeżenie można bezpiecznie zignorować w klastrach trybu failover maszyny wirtualnej Azure IaaS. 
+Istotną różnicą jest to, że w klastrze trybu failover maszyny wirtualnej Azure IaaS zaleca się użycie jednej karty sieciowej na serwer (węzeł klastra) i pojedynczej podsieci. Sieć platformy Azure ma fizyczną nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci nie są potrzebne w klastrze gościa maszyny wirtualnej Azure IaaS. Mimo że raport weryfikacji klastra wygeneruje ostrzeżenie, że węzły są dostępne tylko w jednej sieci, to ostrzeżenie można bezpiecznie zignorować w klastrach trybu failover maszyny wirtualnej Azure IaaS. 
 
 Ponadto należy ogólnie zrozumieć następujące technologie:
 
@@ -51,7 +51,7 @@ Ponadto należy ogólnie zrozumieć następujące technologie:
 
 Udziały plików w warstwie Premium zapewniają operacje we/wy na sekundę, które będą spełniały potrzeby wielu obciążeń. Jednak w przypadku obciążeń intensywnie korzystających z operacji we/wy należy wziąć pod uwagę [SQL Server FCI z bezpośrednie miejsca do magazynowania](virtual-machines-windows-portal-sql-create-failover-cluster.md) na podstawie zarządzanych dysków w warstwie Premium lub dysków twardych.  
 
-Sprawdź działanie IOPS w bieżącym środowisku i sprawdź, czy pliki premium będą dostarczać zbędne IOPS przed rozpoczęciem wdrażania lub migracji. Użyj liczników dysków monitora wydajności systemu Windows i monitoruj łączną liczbę operacji we/wy (transfery dysku/s) i przepływność (bajty dysku/s) wymagane dla plików SQL Server, dzienników i tymczasowych baz danych. Wiele obciążeń ma rozbicie operacji we/wy, dlatego dobrym pomysłem jest sprawdzenie w czasie dużych okresów użycia i zanotowanie maksymalnej liczby IOPS, a także przeciętnych operacji we/wy na sekundę. Udziały plików w warstwie Premium zapewniają liczbę operacji we/wy na podstawie rozmiaru udziału. Pliki w warstwie Premium zapewniają również rozbicie na wiele godzin, dzięki czemu można przedefiniować wartość we/wy do trzykrotnej kwoty linii bazowej. 
+Sprawdź działanie IOPS w bieżącym środowisku i sprawdź, czy pliki premium będą dostarczać zbędne IOPS przed rozpoczęciem wdrażania lub migracji. Użyj liczników dysków monitora wydajności systemu Windows i monitoruj łączną liczbę IOPS (transfery dysku/s) i przepływność (bajty dysku/s) wymagane dla plików SQL Server, dzienników i tymczasowych baz danych. Wiele obciążeń ma rozbicie operacji we/wy, dlatego dobrym pomysłem jest sprawdzenie w czasie dużych okresów użycia i zanotowanie maksymalnej liczby IOPS, a także przeciętnych operacji we/wy na sekundę. Udziały plików w warstwie Premium zapewniają liczbę operacji we/wy na podstawie rozmiaru udziału. Pliki w warstwie Premium zapewniają również rozbicie na wiele godzin, dzięki czemu można przedefiniować wartość we/wy do trzykrotnej kwoty linii bazowej. 
 
 ### <a name="licensing-and-pricing"></a>Licencjonowanie i Cennik
 
@@ -165,34 +165,20 @@ Po utworzeniu i skonfigurowaniu maszyn wirtualnych można skonfigurować udział
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do konta magazynu.
 1. Przejdź do obszaru **udziały plików** w obszarze **Usługa plików** i wybierz udział plików w warstwie Premium, którego chcesz użyć dla magazynu SQL. 
 1. Wybierz pozycję **Połącz** , aby wyświetlić parametry połączenia dla udziału plików. 
-1. Wybierz literę dysku, której chcesz użyć, z listy rozwijanej, a następnie skopiuj dwa polecenia programu PowerShell z dwóch bloków poleceń programu PowerShell.  Wklej je do edytora tekstu, takiego jak Notatnik. 
+1. Wybierz literę dysku, której chcesz użyć, z listy rozwijanej, a następnie skopiuj oba bloki kodu do Notatnika.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/premium-file-storage-commands.png" alt-text="Kopiuj Oba polecenia programu PowerShell z portalu usługi File Share Connect":::
 
 1. Połącz protokół RDP z maszyną wirtualną SQL Server przy użyciu konta, które będzie używane przez SQL Server FCI dla konta usługi. 
 1. Uruchom konsolę administracyjną poleceń programu PowerShell. 
-1. Uruchom polecenie `Test-NetConnection`, aby przetestować łączność z kontem magazynu. Nie uruchamiaj polecenia `cmdkey` z pierwszego bloku kodu. 
+1. Uruchom polecenia z portalu zapisanego wcześniej. 
+1. Przejdź do udziału za pomocą Eksploratora plików lub okna dialogowego **uruchamiania** (klawisz systemu Windows + r), używając ścieżki sieciowej `\\storageaccountname.file.core.windows.net\filesharename`. Przykład: `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
 
-   ```console
-   example: Test-NetConnection -ComputerName  sqlvmstorageaccount.file.core.windows.net -Port 445
-   ```
-
-1. Uruchom polecenie `cmdkey` z *drugiego* bloku kodu, aby zainstalować udział plików jako dysk i zachować go. 
-
-   ```console
-   example: cmdkey /add:sqlvmstorageaccount.file.core.windows.net /user:Azure\sqlvmstorageaccount /pass:+Kal01QAPK79I7fY/E2Umw==
-   net use M: \\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare /persistent:Yes
-   ```
-
-1. Otwórz **Eksploratora plików** i przejdź do **tego komputera**. Udział plików jest widoczny w obszarze lokalizacje sieciowe: 
-
-   :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/file-share-as-storage.png" alt-text="Udział plików widoczny jako magazyn w Eksploratorze plików":::
-
-1. Otwórz nowo mapowany dysk i Utwórz w tym miejscu co najmniej jeden folder, w którym mają zostać umieszczone pliki danych SQL. 
+1. Utwórz co najmniej jeden folder w nowo połączonym udziale plików, w którym mają zostać umieszczone pliki danych SQL. 
 1. Powtórz te kroki na każdej maszynie SQL Server VM, która będzie uczestniczyć w klastrze. 
 
   > [!IMPORTANT]
-  > Nie należy używać tego samego udziału plików zarówno dla plików danych, jak i z powrotem. Wykonaj te same czynności, aby skonfigurować dodatkowy udział plików dla kopii zapasowych, jeśli chcesz utworzyć kopię zapasową baz danych w udziale plików. 
+  > Rozważ użycie oddzielnego udziału plików dla plików kopii zapasowej w celu zapisania liczby IOPS i pojemności tego udziału dla danych i plików dziennika. W przypadku plików kopii zapasowej można użyć Premium lub standardowego udziału plików
 
 ## <a name="step-3-configure-failover-cluster-with-file-share"></a>Krok 3. Konfigurowanie klastra trybu failover z udziałem plików 
 
@@ -349,7 +335,7 @@ Aby utworzyć moduł równoważenia obciążenia:
    - **Nazwa**: Nazwa identyfikująca moduł równoważenia obciążenia.
    - **Region**: Użyj tej samej lokalizacji platformy Azure co maszyny wirtualne.
    - **Typ**: usługa równoważenia obciążenia może być publiczna lub prywatna. Dostęp do prywatnego modułu równoważenia obciążenia można uzyskać w ramach tej samej sieci wirtualnej. Większość aplikacji platformy Azure może korzystać z prywatnego modułu równoważenia obciążenia. Jeśli aplikacja wymaga dostępu do SQL Server bezpośrednio za pośrednictwem Internetu, użyj publicznego modułu równoważenia obciążenia.
-   - **Jednostka SKU**: jednostka SKU dla modułu równoważenia obciążenia powinna być standardowa. 
+   - **Jednostka SKU**: jednostka SKU modułu równoważenia obciążenia powinna być standardowa. 
    - **Virtual Network**: sieć, w której znajduje się maszyna wirtualna.
    - **Przypisanie adresu IP**: przypisanie adresu IP powinno być statyczne. 
    - **Prywatny adres IP**: ten sam adres IP, który został przypisany do zasobu sieci klastra SQL Server FCI.

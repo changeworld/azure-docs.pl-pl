@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 03e6852f5b54160bed6336e253e38423b5ecea51
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294321"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312136"
 ---
 # <a name="entity-functions-preview"></a>Funkcje jednostki (wersja zapoznawcza)
 
@@ -206,6 +206,68 @@ Na przykład można zmodyfikować powyższy przykład jednostki licznika, aby wy
         currentValue += amount;
         break;
 ```
+
+W poniższym fragmencie kodu pokazano, jak dołączyć wstrzykiwaną usługę do klasy Entity.
+
+```csharp
+public class HttpEntity
+{
+    private readonly HttpClient client;
+
+    public HttpEntity(IHttpClientFactory factory)
+    {
+        this.client = factory.CreateClient();
+    }
+
+    public async Task<int> GetAsync(string url)
+    {
+        using (var response = await this.client.GetAsync(url))
+        {
+            return (int)response.StatusCode;
+        }
+    }
+
+    // The function entry point must be declared static
+    [FunctionName(nameof(HttpEntity))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<HttpEntity>();
+}
+```
+
+> [!NOTE]
+> W przeciwieństwie do używania iniekcji konstruktora w zwykłych Azure Functions .NET, Metoda punktu wejścia funkcji dla jednostek opartych na klasie *musi* być zadeklarowana `static`. Deklarowanie niestatycznego punktu wejścia funkcji może spowodować konflikty między normalnym inicjatorem obiektu Azure Functions i inicjatorem obiektów trwałe jednostki.
+
+### <a name="bindings-in-entity-classes-net"></a>Powiązania w klasach jednostek (.NET)
+
+W przeciwieństwie do funkcji regularnych, metody klasy jednostek nie mają bezpośredniego dostępu do powiązań wejściowych i wyjściowych. Zamiast tego, dane wiążące muszą być przechwytywane w deklaracji funkcji punktu wejścia, a następnie przekazywać do metody `DispatchAsync<T>`. Wszystkie obiekty przenoszone do `DispatchAsync<T>` będą automatycznie przesyłane do konstruktora klasy jednostki jako argument.
+
+Poniższy przykład pokazuje, jak odwołanie `CloudBlobContainer` z [powiązania danych wejściowych obiektu BLOB](../functions-bindings-storage-blob.md#input) może zostać udostępnione dla jednostki opartej na klasie.
+
+```csharp
+public class BlobBackedEntity
+{
+    private readonly CloudBlobContainer container;
+
+    public BlobBackedEntity(CloudBlobContainer container)
+    {
+        this.container = container;
+    }
+
+    // ... entity methods can use this.container in their implementations ...
+    
+    [FunctionName(nameof(BlobBackedEntity))]
+    public static Task Run(
+        [EntityTrigger] IDurableEntityContext context,
+        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
+    {
+        // passing the binding object as a parameter makes it available to the
+        // entity class constructor
+        return context.DispatchAsync<BlobBackedEntity>(container);
+    }
+}
+```
+
+Aby uzyskać więcej informacji na temat powiązań w Azure Functions, zapoznaj się z dokumentacją [Azure Functions wyzwalacze i powiązania](../functions-triggers-bindings.md) .
 
 ## <a name="entity-coordination"></a>Koordynacja jednostek
 

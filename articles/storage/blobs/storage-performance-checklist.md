@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 84707c72e62bed7621d94dbd1ec65607cfcfd2d6
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303043"
+ms.locfileid: "72311130"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Lista kontrolna wydajności i skalowalności usługi BLOB Storage
 
@@ -45,6 +45,9 @@ Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach 
 | &nbsp; |Narzędzia |[Czy używasz najnowszych wersji bibliotek i narzędzi klienta dostarczonych przez firmę Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Ponowne próby |[Czy zasady ponawiania są używane z wykładniczą wycofywaniaą do ograniczania błędów i przekroczeń limitu czasu?](#timeout-and-server-busy-errors) |
 | &nbsp; |Ponowne próby |[Czy aplikacja unika ponawiania prób w przypadku błędów, które nie są ponawiane?](#non-retryable-errors) |
+| &nbsp; |Kopiowanie obiektów BLOB |[Czy są kopiowane obiekty blob w sposób najbardziej wydajny?](#blob-copy-apis) |
+| &nbsp; |Kopiowanie obiektów BLOB |[Czy używasz najnowszej wersji programu AzCopy na potrzeby operacji kopiowania zbiorczego?](#use-azcopy) |
+| &nbsp; |Kopiowanie obiektów BLOB |[Czy używasz rodziny Azure Data Box do importowania dużych ilości danych?](#use-azure-data-box) |
 | &nbsp; |Dystrybucja zawartości |[Czy używasz sieci CDN do dystrybucji zawartości?](#content-distribution) |
 | &nbsp; |Użyj metadanych |[Czy są przechowywane często używane metadane dotyczące obiektów BLOB w swoich metadanych?](#use-metadata) |
 | &nbsp; |Szybkie przekazywanie |[Czy podczas próby przekazania jednego obiektu BLOB szybko przekazująsz bloki?](#upload-one-large-blob-quickly) |
@@ -183,7 +186,7 @@ Aby uzyskać więcej informacji na temat ulepszeń wydajności w programie .NET 
 
 ### <a name="increase-default-connection-limit"></a>Zwiększ domyślny limit połączeń
 
-W programie .NET Poniższy kod zwiększa domyślny limit połączeń (zwykle 2 w środowisku klienta lub 10 w środowisku serwera) do 100. Zazwyczaj należy ustawić wartość na około liczbę wątków używanych przez aplikację. Ustaw limit połączeń przed otwarciem wszystkich połączeń.
+W programie .NET Poniższy kod zwiększa domyślny limit połączeń (zazwyczaj dwa w środowisku klienta lub dziesięć w środowisku serwera) do 100. Zazwyczaj należy ustawić wartość na około liczbę wątków używanych przez aplikację. Ustaw limit połączeń przed otwarciem wszystkich połączeń.
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
@@ -227,9 +230,23 @@ Biblioteki klienta obsługują ponawianie prób z świadomością, które błęd
 
 Aby uzyskać więcej informacji na temat kodów błędów usługi Azure Storage, zobacz informacje o [stanie i kodach błędów](/rest/api/storageservices/status-and-error-codes2).
 
-## <a name="transfer-data"></a>Transfer danych
+## <a name="copying-and-moving-blobs"></a>Kopiowanie i przeniesienie obiektów BLOB
 
-Aby uzyskać informacje na temat wydajnego transferu danych do i z magazynu obiektów blob lub między kontami magazynu, zobacz [Wybieranie rozwiązania platformy Azure na potrzeby transferu danych](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+Usługa Azure Storage udostępnia wiele rozwiązań do kopiowania i przemieszczania obiektów BLOB w ramach konta magazynu, między kontami magazynu i między systemami lokalnymi a chmurą. W tej sekcji opisano niektóre z tych opcji w zależności od ich wpływu na wydajność. Aby uzyskać informacje na temat wydajnego transferu danych do lub z magazynu obiektów blob, zobacz [Wybieranie rozwiązania platformy Azure do transferu danych](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+### <a name="blob-copy-apis"></a>Interfejsy API kopiowania obiektów BLOB
+
+Aby skopiować obiekty blob na kontach magazynu, użyj operacji [Put bloku z adresu URL](/rest/api/storageservices/put-block-from-url) . Ta operacja kopiuje dane synchronicznie z dowolnego źródła adresu URL do blokowego obiektu BLOB. Użycie operacji `Put Block from URL` może znacznie zmniejszyć wymaganą przepustowość podczas migrowania danych między kontami magazynu. Ponieważ operacja kopiowania odbywa się po stronie usługi, nie trzeba pobierać i ponownie ładować danych.
+
+Aby skopiować dane w ramach tego samego konta magazynu, użyj operacji [kopiowania obiektu BLOB](/rest/api/storageservices/Copy-Blob) . Kopiowanie danych w ramach tego samego konta magazynu jest zwykle wykonywane szybko.  
+
+### <a name="use-azcopy"></a>Korzystanie z narzędzia AzCopy
+
+Narzędzie wiersza polecenia AzCopy jest prostą i wydajną opcją transferu zbiorczego obiektów BLOB do, z i między kontami magazynu. AzCopy jest zoptymalizowany pod kątem tego scenariusza i może osiągać wysokie szybkości transferu. AzCopy wersja 10 używa operacji `Put Block From URL` do kopiowania danych obiektów BLOB na kontach magazynu. Aby uzyskać więcej informacji, zobacz [kopiowanie lub przenoszenie danych do usługi Azure Storage za pomocą AzCopy v10](/azure/storage/common/storage-use-azcopy-v10).  
+
+### <a name="use-azure-data-box"></a>Użyj Azure Data Box
+
+Aby zaimportować duże ilości danych do usługi BLOB Storage, należy rozważyć użycie Azure Data Box rodziny do transferów w trybie offline. Urządzenia urządzenie Data Box dostarczone przez firmę Microsoft są dobrym rozwiązaniem w przypadku przeniesienia dużych ilości danych na platformę Azure, gdy jest to ograniczone przez czas, dostępność sieci lub koszty. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure DataBox](/azure/databox/).
 
 ## <a name="content-distribution"></a>Dystrybucja zawartości
 
@@ -239,7 +256,7 @@ Aby uzyskać więcej informacji na temat Azure CDN, zobacz [Azure CDN](../../cdn
 
 ## <a name="use-metadata"></a>Użyj metadanych
 
-Blob service obsługuje żądania główne, które mogą obejmować właściwości obiektów blob lub metadane. Na przykład, jeśli aplikacja wymaga danych EXIF (format obrazu exchangable) ze zdjęcia, może pobrać zdjęcie i wyodrębnić ją. Aby zaoszczędzić przepustowość i zwiększyć wydajność, aplikacja może przechowywać dane EXIF w metadanych obiektu BLOB, gdy aplikacja przekaże zdjęcie. Następnie można pobrać dane EXIF w metadanych przy użyciu tylko żądania PODRZĘDNEgo. Pobieranie tylko metadanych, a nie całej zawartości obiektu BLOB, oszczędza przepustowość i skraca czas przetwarzania wymagany do wyodrębnienia danych EXIF. Należy pamiętać, że na obiekt BLOB mogą być przechowywane tylko 8 KB metadanych.  
+Blob service obsługuje żądania główne, które mogą obejmować właściwości obiektów blob lub metadane. Na przykład, jeśli aplikacja wymaga danych EXIF (format obrazu exchangable) ze zdjęcia, może pobrać zdjęcie i wyodrębnić ją. Aby zaoszczędzić przepustowość i zwiększyć wydajność, aplikacja może przechowywać dane EXIF w metadanych obiektu BLOB, gdy aplikacja przekaże zdjęcie. Następnie można pobrać dane EXIF w metadanych przy użyciu tylko żądania PODRZĘDNEgo. Pobieranie tylko metadanych, a nie całej zawartości obiektu BLOB, oszczędza przepustowość i skraca czas przetwarzania wymagany do wyodrębnienia danych EXIF. Należy pamiętać, że 8 KiB metadanych można przechowywać na obiekt BLOB.  
 
 ## <a name="upload-blobs-quickly"></a>Szybkie przekazywanie obiektów BLOB
 

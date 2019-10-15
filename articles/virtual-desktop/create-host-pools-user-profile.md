@@ -7,18 +7,21 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 9b187696524e96bc13254a24fd8f39d5aeb89e7d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676695"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311595"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Tworzenie kontenera profilu dla puli hostów za pomocą udziału plików
 
 Usługa pulpitu wirtualnego systemu Windows oferuje kontenery profilu FSLogix jako zalecane rozwiązanie profilu użytkownika. Nie zalecamy korzystania z rozwiązania profilu użytkownika (UPD), które będzie przestarzałe w przyszłych wersjach pulpitu wirtualnego systemu Windows.
 
 W tym artykule opisano sposób konfigurowania udziału kontenera FSLogix profile dla puli hostów przy użyciu udziału plików opartego na maszynach wirtualnych. Więcej dokumentacji FSLogix można znaleźć w [witrynie FSLogix](https://docs.fslogix.com/).
+
+>[!NOTE]
+>Jeśli szukasz materiału do porównania o różnych opcjach magazynu kontenera profilu FSLogix na platformie Azure, zobacz [Opcje magazynu dla kontenerów profilów FSLogix](store-fslogix-profile.md).
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Utwórz nową maszynę wirtualną, która będzie pełnić rolę udziału plików
 
@@ -68,4 +71,4 @@ Aby skonfigurować maszyny wirtualne przy użyciu oprogramowania FSLogix, wykona
 | VHDLocations        | Wartość ciągu wielociągowego | "Ścieżka sieciowa udziału plików"     |
 
 >[!IMPORTANT]
->Aby zabezpieczyć środowisko pulpitu wirtualnego systemu Windows na platformie Azure, zalecamy, aby nie otwierać portu przychodzącego 3389 na maszynach wirtualnych. Pulpit wirtualny systemu Windows nie wymaga otwartego portu przychodzącego 3389 dla użytkowników w celu uzyskania dostępu do maszyn wirtualnych puli hostów. Jeśli musisz otworzyć port 3389 w celu rozwiązywania problemów, zalecamy użycie [dostępu just in Time do maszyny wirtualnej](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>Aby zabezpieczyć środowisko pulpitu wirtualnego systemu Windows na platformie Azure, zalecamy, aby nie otwierać portu przychodzącego 3389 na maszynach wirtualnych. Pulpit wirtualny systemu Windows nie wymaga otwartego portu przychodzącego 3389 dla użytkowników w celu uzyskania dostępu do maszyn wirtualnych puli hostów. Jeśli musisz otworzyć port 3389 w celu rozwiązywania problemów, zalecamy użycie [dostępu just in Time do maszyny wirtualnej](../security-center/security-center-just-in-time.md).

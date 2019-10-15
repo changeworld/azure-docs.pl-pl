@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: cb9f37d5e2c33984189c90857b409d3a59e74e59
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: d9fe4ee761a7ff9570bf0df61a8990f82640b4f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303120"
+ms.locfileid: "72311612"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Lista kontrolna wydajności i skalowalności dla usługi Table Storage
 
@@ -52,10 +52,10 @@ Ten artykuł organizuje sprawdzone rozwiązania dotyczące wydajności w ramach 
 | &nbsp; |Ograniczanie zwracanych danych |[Czy używasz filtrowania, aby uniknąć zwracania jednostek, które nie są potrzebne?](#limiting-the-amount-of-data-returned) |
 | &nbsp; |Ograniczanie zwracanych danych |[Czy używasz projekcji, aby uniknąć zwracania właściwości, które nie są potrzebne?](#limiting-the-amount-of-data-returned) |
 | &nbsp; |Denormalizacja |[Czy masz rozznormalizowane dane, aby uniknąć nieefektywnych zapytań lub wielu żądań odczytu podczas próby pobrania danych?](#denormalization) |
-| &nbsp; |Wstaw/Aktualizuj/Usuń |[Czy są przetwarzane zbiorczo żądania, które muszą być transakcyjne lub mogą być wykonywane w tym samym czasie w celu zmniejszenia liczby operacji rundy?](#batching) |
-| &nbsp; |Wstaw/Aktualizuj/Usuń |[Czy unikasz pobierania jednostki tylko w celu ustalenia, czy chcesz wywołać Wstawianie czy aktualizowanie?](#upsert) |
-| &nbsp; |Wstaw/Aktualizuj/Usuń |[Czy należy wziąć pod uwagę przechowywanie serii danych, które często będą pobierane razem w jednej jednostce jako właściwości zamiast wielu jednostek?](#storing-data-series-in-a-single-entity) |
-| &nbsp; |Wstaw/Aktualizuj/Usuń |[W przypadku jednostek, które będą zawsze pobierane razem i mogą być zapisywane w partiach (na przykład dane szeregów czasowych), należy wziąć pod uwagę użycie obiektów BLOB zamiast tabel?](#storing-structured-data-in-blobs) |
+| &nbsp; |Wstawianie, aktualizowanie i usuwanie |[Czy są przetwarzane zbiorczo żądania, które muszą być transakcyjne lub mogą być wykonywane w tym samym czasie w celu zmniejszenia liczby operacji rundy?](#batching) |
+| &nbsp; |Wstawianie, aktualizowanie i usuwanie |[Czy unikasz pobierania jednostki tylko w celu ustalenia, czy chcesz wywołać Wstawianie czy aktualizowanie?](#upsert) |
+| &nbsp; |Wstawianie, aktualizowanie i usuwanie |[Czy należy wziąć pod uwagę przechowywanie serii danych, które często będą pobierane razem w jednej jednostce jako właściwości zamiast wielu jednostek?](#storing-data-series-in-a-single-entity) |
+| &nbsp; |Wstawianie, aktualizowanie i usuwanie |[W przypadku jednostek, które będą zawsze pobierane razem i mogą być zapisywane w partiach (na przykład dane szeregów czasowych), należy wziąć pod uwagę użycie obiektów BLOB zamiast tabel?](#storing-structured-data-in-blobs) |
 
 ## <a name="scalability-targets"></a>Tarcze skalowalności
 
@@ -254,7 +254,7 @@ Jeśli aplikacja kliencka wymaga tylko ograniczonego zestawu właściwości z je
 
 W przeciwieństwie do pracy z relacyjnymi bazami danych, sprawdzone rozwiązania do wydajnego wykonywania zapytań o dane tabeli prowadzą do denormalizacji danych. Oznacza to, że duplikowanie tych samych danych w wielu jednostkach (po jednym dla każdego klucza, którego można użyć do znajdowania danych) w celu zminimalizowania liczby jednostek, które muszą zostać przeskanowane przez zapytanie w celu znalezienia danych potrzebnych przez klienta, a nie konieczności skanowania dużej liczby jednostek w celu znalezienia danych aplikacji likacji. Na przykład w witrynie internetowej handlu elektronicznego możesz chcieć znaleźć zamówienie zarówno według identyfikatora klienta, jak i daty (podać zamówienia tego klienta), a w dniu W Table Storage najlepiej przechowywać jednostkę (lub odwołanie do niej) dwa razy — raz z nazwą tabeli, PK i RK, aby ułatwić znajdowanie według identyfikatora klienta, co ułatwia znalezienie go w dniu.  
 
-### <a name="insertupdatedelete"></a>Wstaw/Aktualizuj/Usuń
+### <a name="insert-update-and-delete"></a>Wstawianie, aktualizowanie i usuwanie
 
 W tej sekcji opisano sprawdzone praktyki modyfikowania jednostek przechowywanych w Table service.  
 

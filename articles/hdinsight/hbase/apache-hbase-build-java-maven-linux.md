@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.openlocfilehash: aad601a48b2b420a809a385e336f103612d2e378
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: c948d07bed99f1286e27d645fde7b96fdc699c02
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167095"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311691"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Tworzenie aplikacji Java dla platformy Apache HBase
 
@@ -29,11 +29,11 @@ Kroki opisane w tym dokumencie wykorzystują [Apache Maven](https://maven.apache
 
 * Pakiet [Apache Maven](https://maven.apache.org/download.cgi) został prawidłowo [zainstalowany](https://maven.apache.org/install.html) zgodnie z usługą Apache.  Maven to system kompilacji projektu dla projektów języka Java.
 
-* Klient SSH. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * W przypadku korzystania z programu PowerShell konieczne jest polecenie [AZ module](https://docs.microsoft.com/powershell/azure/overview).
 
-* Edytor tekstu. W tym artykule jest wykorzystywany program Microsoft Notepad.
+* Edytor tekstów. W tym artykule jest wykorzystywany program Microsoft Notepad.
 
 ## <a name="test-environment"></a>Środowisko testowe
 Środowisko używane na potrzeby tego artykułu było komputerem z systemem Windows 10.  Polecenia zostały wykonane w wierszu polecenia, a różne pliki były edytowane w Notatniku. Zmodyfikuj odpowiednio dla danego środowiska.
@@ -704,4 +704,4 @@ Użyj parametru `-showErr`, aby wyświetlić błąd standardowy (STDERR), który
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się, jak używać SqlLine z Apache HBase](apache-hbase-phoenix-squirrel-linux.md)
+[Dowiedz się, jak używać SqlLine z Apache HBase](apache-hbase-query-with-phoenix.md)

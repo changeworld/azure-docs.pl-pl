@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: becb4e4787c21e18455144108274f585ba25cb72
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105382"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311647"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix w usłudze Azure HDInsight
 
@@ -32,7 +32,7 @@ Apache Phoenix dodaje kilka ulepszeń wydajności i funkcji HBase zapytań.
 
 HBase ma jeden indeks, który jest lexicographically posortowany w podstawowym kluczu wiersza. Dostęp do tych rekordów można uzyskać tylko za pomocą klucza wiersza. Uzyskiwanie dostępu do rekordów za pomocą dowolnej kolumny poza kluczem wiersza wymaga skanowania wszystkich danych przy zastosowaniu wymaganego filtru. W indeksie pomocniczym kolumny lub wyrażenia, które są indeksowane, tworzą alternatywny klucz wiersza, co umożliwia wyszukiwanie i przeszukiwanie zakresu w tym indeksie.
 
-Utwórz indeks pomocniczy za pomocą `CREATE INDEX` polecenia:
+Utwórz indeks pomocniczy za pomocą polecenia `CREATE INDEX`:
 
 ```sql
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
@@ -44,9 +44,9 @@ Takie podejście może przynieść znaczący wzrost wydajności nad wykonywaniem
 
 Widoki w Phoenix umożliwiają przezwyciężenie ograniczenia HBase, w którym wydajność zaczyna obniżać się podczas tworzenia więcej niż około 100 tabel fizycznych. Widoki Phoenix umożliwiają udostępnienie jednej źródłowej tabeli HBase w wielu *tabelach wirtualnych* .
 
-Tworzenie widoku Phoenix jest podobne do standardowej składni widoku języka SQL. Jedną z różnic polega na tym, że można zdefiniować kolumny dla widoku, oprócz kolumn dziedziczonych ze swojej tabeli podstawowej. Możesz również dodać nowe `KeyValue` kolumny.
+Tworzenie widoku Phoenix jest podobne do standardowej składni widoku języka SQL. Jedną z różnic polega na tym, że można zdefiniować kolumny dla widoku, oprócz kolumn dziedziczonych ze swojej tabeli podstawowej. Możesz również dodawać nowe kolumny `KeyValue`.
 
-Na przykład Oto tabela fizyczna o nazwie `product_metrics` z następującą definicją:
+Na przykład poniżej znajduje się tabela fizyczna o nazwie `product_metrics` z następującą definicją:
 
 ```sql
 CREATE  TABLE product_metrics (
@@ -65,13 +65,13 @@ SELECT * FROM product_metrics
 WHERE metric_type = 'm';
 ```
 
-Aby później dodać więcej kolumn, użyj `ALTER VIEW` instrukcji.
+Aby później dodać więcej kolumn, użyj instrukcji `ALTER VIEW`.
 
 ### <a name="skip-scan"></a>Pomiń skanowanie
 
 Funkcja pomijania skanowania używa co najmniej jednej kolumny indeksu złożonego, aby znaleźć różne wartości. W przeciwieństwie do skanowania zakresu, pomijanie skanowania implementuje skanowanie wewnątrz wierszy, co [zwiększa wydajność](https://phoenix.apache.org/performance.html#Skip-Scan). Podczas skanowania pierwsza dopasowana wartość jest pomijana wraz z indeksem do momentu znalezienia następnej wartości.
 
-Pomijanie skanowania używa `SEEK_NEXT_USING_HINT` wyliczenia filtru HBase. Przy `SEEK_NEXT_USING_HINT`użyciu, pomijanie skanowania śledzi zbiór kluczy lub zakresów kluczy, które są wyszukiwane w każdej kolumnie. Funkcja pomijania skanowania Pobiera klucz, który został przesłany do niego podczas obliczania filtru, i określa, czy jest jedną z kombinacji. W przeciwnym razie pomijanie skanowania szacuje następny najwyższy klucz, aby przejść do.
+Pomijanie skanowania używa wyliczenia `SEEK_NEXT_USING_HINT` filtru HBase. Korzystając z `SEEK_NEXT_USING_HINT`, skanowanie pomijania śledzi zbiór kluczy lub zakresów kluczy, które są wyszukiwane w każdej kolumnie. Funkcja pomijania skanowania Pobiera klucz, który został przesłany do niego podczas obliczania filtru, i określa, czy jest jedną z kombinacji. W przeciwnym razie pomijanie skanowania szacuje następny najwyższy klucz, aby przejść do.
 
 ### <a name="transactions"></a>Transakcje
 
@@ -81,13 +81,13 @@ Podobnie jak w przypadku tradycyjnych transakcji SQL, transakcje udostępniane z
 
 Aby włączyć transakcje w Phoenix, zapoznaj się z [dokumentacją Apache Phoenix transakcji](https://phoenix.apache.org/transactions.html).
 
-Aby utworzyć nową tabelę z włączonymi transakcjami, `TRANSACTIONAL` ustaw właściwość `true` na w `CREATE` instrukcji:
+Aby utworzyć nową tabelę z włączonymi transakcjami, ustaw właściwość `TRANSACTIONAL` na `true` w instrukcji `CREATE`:
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
 ```
 
-Aby zmienić istniejącą tabelę jako transakcyjną, Użyj tej samej właściwości w `ALTER` instrukcji:
+Aby zmienić istniejącą tabelę jako transakcyjną, Użyj tej samej właściwości w instrukcji `ALTER`:
 
 ```sql
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
@@ -100,7 +100,7 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 *Serwer regionu hotspotting* może wystąpić podczas pisania rekordów z sekwencyjnymi klawiszami do HBase. Mimo że w klastrze może znajdować się wiele serwerów regionów, wszystkie operacje zapisu są wykonywane tylko na jednym z nich. To stężenie tworzy problem hotspotting, w którym zamiast obciążeń zapisu, które są dystrybuowane na wszystkich dostępnych serwerach regionów, tylko jeden obsługuje obciążenie. Ponieważ każdy region ma wstępnie zdefiniowany maksymalny rozmiar, gdy region osiągnie ten limit rozmiaru, jest podzielony na dwa małe regiony. W takim przypadku jeden z tych nowych regionów przyjmuje wszystkie nowe rekordy, stając się nowym punktem aktywnym.
 
-Aby wyeliminować ten problem i uzyskać lepszą wydajność, należy wstępnie podzielić tabele, aby wszystkie serwery regionów były równie używane. Phoenix udostępnia *tabele solone*, które w sposób przezroczysty umożliwiają dodawanie bajtów soli do klucza wiersza dla konkretnej tabeli. Tabela jest wstępnie podzielona na granice bajtów soli, aby zapewnić równoważną dystrybucję obciążenia między serwerami regionów podczas początkowej fazy tabeli. Takie podejście dystrybuuje obciążenie pracą zapisu na wszystkich dostępnych serwerach regionów, poprawiając wydajność zapisu i odczytu. Aby przeprowadzić solenie tabeli, określ `SALT_BUCKETS` Właściwość tabeli podczas tworzenia tabeli:
+Aby wyeliminować ten problem i uzyskać lepszą wydajność, należy wstępnie podzielić tabele, aby wszystkie serwery regionów były równie używane. Phoenix udostępnia *tabele solone*, które w sposób przezroczysty umożliwiają dodawanie bajtów soli do klucza wiersza dla konkretnej tabeli. Tabela jest wstępnie podzielona na granice bajtów soli, aby zapewnić równoważną dystrybucję obciążenia między serwerami regionów podczas początkowej fazy tabeli. Takie podejście dystrybuuje obciążenie pracą zapisu na wszystkich dostępnych serwerach regionów, poprawiając wydajność zapisu i odczytu. Aby przeprowadzić solenie tabeli, określ Właściwość tabeli `SALT_BUCKETS` podczas tworzenia tabeli:
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -137,4 +137,4 @@ HDInsight An klaster HBase zawiera [interfejs użytkownika Ambari](hdinsight-had
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Używanie Apache Phoenix z klastrami HBase opartymi na systemie Linux w usłudze HDInsight](hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Używanie Apache Phoenix z klastrami HBase opartymi na systemie Linux w usłudze HDInsight](hbase/apache-hbase-query-with-phoenix.md)

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 43465a1c31b953620c45dfe759de7b6e1b4dc3c9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: f00f6bcf07cbdc5aeaeb04aeccf7e88cf4822dbf
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917279"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311714"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Zbiorcze ładowanie danych do oprogramowania Apache Phoenix za pomocą programu psql
 
@@ -21,17 +21,17 @@ ms.locfileid: "70917279"
 
 ## <a name="bulk-loading-with-apache-phoenix"></a>Ładowanie zbiorcze z Apache Phoenix
 
-Istnieje wiele sposobów na uzyskanie danych do HBase, w tym Używanie interfejsów API klienta, zadania MapReduce z TableOutputFormat lub wprowadzanie danych ręcznie przy użyciu powłoki HBase. Phoenix oferuje dwie metody ładowania danych CSV do tabel w Phoenix: narzędzia ładowania klienta o nazwie `psql`i narzędzia ładowania zbiorczego opartego na MapReduce.
+Istnieje wiele sposobów na uzyskanie danych do HBase, w tym Używanie interfejsów API klienta, zadania MapReduce z TableOutputFormat lub wprowadzanie danych ręcznie przy użyciu powłoki HBase. Phoenix oferuje dwie metody ładowania danych CSV do tabel Phoenix: Narzędzie ładowania klienta o nazwie `psql` i narzędzia ładowania zbiorczego opartego na MapReduce.
 
-`psql` Narzędzie jest jednowątkowe i najlepiej nadaje się do ładowania megabajtów lub gigabajtów danych. Wszystkie pliki CSV do załadowania muszą mieć rozszerzenie pliku CSV.  Możesz również określić pliki skryptów SQL w `psql` wierszu polecenia z rozszerzeniem pliku ". SQL".
+Narzędzie `psql` jest jednowątkowe i najlepiej nadaje się do ładowania megabajtów lub gigabajtów danych. Wszystkie pliki CSV do załadowania muszą mieć rozszerzenie pliku CSV.  Możesz również określić pliki skryptów SQL w wierszu polecenia `psql` z rozszerzeniem pliku ". SQL".
 
 Ładowanie zbiorcze z MapReduce jest używane dla znacznie większych woluminów danych, zwykle w scenariuszach produkcyjnych, ponieważ MapReduce używa wielu wątków.
 
-Przed rozpoczęciem ładowania danych upewnij się, że Phoenix jest włączona i że ustawienia limitu czasu zapytania są zgodnie z oczekiwaniami.  Uzyskaj dostęp do pulpitu nawigacyjnego [Apache Ambari](https://ambari.apache.org/) klastra usługi HDInsight, wybierz pozycję HBase, a następnie kartę Konfiguracja.  Przewiń w dół, aby sprawdzić, czy Apache Phoenix `enabled` jest ustawiona na tak, jak pokazano:
+Przed rozpoczęciem ładowania danych upewnij się, że Phoenix jest włączona i że ustawienia limitu czasu zapytania są zgodnie z oczekiwaniami.  Uzyskaj dostęp do pulpitu nawigacyjnego [Apache Ambari](https://ambari.apache.org/) klastra usługi HDInsight, wybierz pozycję HBase, a następnie kartę Konfiguracja.  Przewiń w dół, aby sprawdzić, czy Apache Phoenix jest ustawiona na `enabled`, jak pokazano:
 
 ![Apache Phoenix ustawień klastra usługi HDInsight](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
-### <a name="use-psql-to-bulk-load-tables"></a>Użyj `psql` do ładowania zbiorczego tabel
+### <a name="use-psql-to-bulk-load-tables"></a>Używanie `psql` do zbiorczego ładowania tabel
 
 1. Utwórz nową tabelę, a następnie Zapisz zapytanie z nazwą pliku `createCustomersTable.sql`.
 
@@ -44,7 +44,7 @@ Przed rozpoczęciem ładowania danych upewnij się, że Phoenix jest włączona 
         Country varchar);
     ```
 
-2. Skopiuj plik CSV (pokazany przykładowo zawartość) `customers.csv` `/tmp/` do katalogu w celu załadowania do nowo utworzonej tabeli.  Użyj polecenia `hdfs` , aby skopiować plik CSV do żądanej lokalizacji źródłowej.
+2. Skopiuj plik CSV (pokazany przykładowo zawartość) jako `customers.csv` do katalogu `/tmp/` do załadowania do nowo utworzonej tabeli.  Za pomocą polecenia `hdfs` Skopiuj plik CSV do żądanej lokalizacji źródłowej.
 
     ```
     1,Samantha,260000.0,18,US
@@ -57,14 +57,14 @@ Przed rozpoczęciem ładowania danych upewnij się, że Phoenix jest włączona 
     hdfs dfs -copyToLocal /example/data/customers.csv /tmp/
     ```
 
-3. Utwórz zapytanie SELECT SQL, aby sprawdzić, czy dane wejściowe zostały załadowane prawidłowo, a następnie Zapisz `listCustomers.sql`zapytanie z nazwą pliku. Możesz użyć dowolnego zapytania SQL.
+3. Utwórz zapytanie SELECT SQL, aby sprawdzić, czy dane wejściowe zostały załadowane prawidłowo, a następnie Zapisz zapytanie z nazwą pliku `listCustomers.sql`. Możesz użyć dowolnego zapytania SQL.
      ```sql
     SELECT Name, Income from Customers group by Country;
     ```
 
-4. Ładuj zbiorczo dane, otwierając *nowe* okno polecenia usługi Hadoop. Najpierw przejdź do lokalizacji katalogu wykonywania za pomocą `cd` polecenia, a następnie `psql` Użyj narzędzia (polecenie języka Python `psql.py` ). 
+4. Ładuj zbiorczo dane, otwierając *nowe* okno polecenia usługi Hadoop. Najpierw przejdź do lokalizacji katalogu wykonywania za pomocą polecenia `cd`, a następnie użyj narzędzia `psql` (polecenie Python `psql.py`). 
 
-    Poniższy przykład oczekuje, że `customers.csv` plik jest kopiowany z konta magazynu do lokalnego katalogu tymczasowego przy użyciu opcji `hdfs` w kroku 2 powyżej.
+    Poniższy przykład oczekuje, że plik `customers.csv` został skopiowany z konta magazynu do lokalnego katalogu tymczasowego przy użyciu `hdfs`, jak w kroku 2 powyżej.
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
@@ -73,9 +73,9 @@ Przed rozpoczęciem ładowania danych upewnij się, że Phoenix jest włączona 
     ```
 
     > [!NOTE]   
-    > Aby określić `ZookeeperQuorum` nazwę, zlokalizuj [Apache ZooKeeper](https://zookeeper.apache.org/) ciągu kworum w pliku `/etc/hbase/conf/hbase-site.xml` o nazwie `hbase.zookeeper.quorum`właściwości.
+    > Aby określić nazwę `ZookeeperQuorum`, Znajdź ciąg kworum [Apache ZooKeeper](https://zookeeper.apache.org/) w pliku `/etc/hbase/conf/hbase-site.xml` z nazwą właściwości `hbase.zookeeper.quorum`.
 
-5. Po zakończeniu `psql` operacji w oknie poleceń powinien zostać wyświetlony komunikat:
+5. Po ukończeniu operacji `psql` powinien zostać wyświetlony komunikat w oknie poleceń:
 
     ```
     CSV Upsert complete. 5000 rows upserted
@@ -86,17 +86,17 @@ Przed rozpoczęciem ładowania danych upewnij się, że Phoenix jest włączona 
 
 Aby obciążać obciążenie wyższego poziomu przepływności za pośrednictwem klastra, użyj narzędzia ładowania MapReduce. Ten moduł ładujący najpierw konwertuje wszystkie dane do HFiles, a następnie tworzy HFiles do HBase.
 
-1. Uruchom moduł ładujący MapReduce woluminów CSV przy `hadoop` użyciu polecenia z JAR klienta w Phoenix:
+1. Uruchom moduł ładujący MapReduce woluminów CSV za pomocą polecenia `hadoop` z JAR:
 
     ```bash
     hadoop jar phoenix-<version>-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table CUSTOMERS --input /data/customers.csv
     ```
 
-2. Utwórz nową tabelę za pomocą instrukcji SQL, tak jak `CreateCustomersTable.sql` w poprzednim kroku 1.
+2. Utwórz nową tabelę za pomocą instrukcji SQL, tak jak w przypadku `CreateCustomersTable.sql` w poprzednim kroku 1.
 
-3. Aby sprawdzić schemat tabeli, uruchom `!describe inputTable`polecenie.
+3. Aby sprawdzić schemat tabeli, uruchom `!describe inputTable`.
 
-4. Określ ścieżkę lokalizacji do danych wejściowych, na przykład przykładowy `customers.csv` plik. Pliki wejściowe mogą znajdować się na koncie magazynu WASB/ADLS. W tym przykładowym scenariuszu pliki wejściowe znajdują się `<storage account parent>/inputFolderBulkLoad` w katalogu.
+4. Określ ścieżkę lokalizacji do danych wejściowych, na przykład plik `customers.csv`. Pliki wejściowe mogą znajdować się na koncie magazynu WASB/ADLS. W tym przykładowym scenariuszu pliki wejściowe znajdują się w katalogu `<storage account parent>/inputFolderBulkLoad`.
 
 5. Przejdź do katalogu wykonywania polecenia MapReduce zbiorczego ładowania:
 
@@ -104,9 +104,9 @@ Aby obciążać obciążenie wyższego poziomu przepływności za pośrednictwem
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-6. Znajdź wartość w `/etc/hbase/conf/hbase-site.xml`, z nazwą `hbase.zookeeper.quorum`właściwości. `ZookeeperQuorum`
+6. Znajdź wartość `ZookeeperQuorum` w `/etc/hbase/conf/hbase-site.xml` z nazwą właściwości `hbase.zookeeper.quorum`.
 
-7. Skonfiguruj ścieżkę klasową i uruchom `CsvBulkLoadTool` polecenie Narzędzia:
+7. Skonfiguruj ścieżkę klasową i uruchom polecenie Narzędzia `CsvBulkLoadTool`:
 
     ```bash
     /usr/hdp/current/phoenix-client$ HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar /usr/hdp/2.4.2.0-258/phoenix/phoenix-4.4.0.2.4.2.0-258-client.jar
@@ -114,7 +114,7 @@ Aby obciążać obciążenie wyższego poziomu przepływności za pośrednictwem
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
     ```
 
-8. Aby użyć MapReduce z Azure Data Lake Storage, Zlokalizuj Data Lake Storage katalog główny, który jest `hbase.rootdir` wartością w. `hbase-site.xml` W poniższym poleceniu Data Lake Storage katalog `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`główny. W tym poleceniu Określ Data Lake Storage wejściowe i wyjściowe folderów jako parametry:
+8. Aby użyć MapReduce z Azure Data Lake Storage, Zlokalizuj Data Lake Storage katalog główny, który jest wartością `hbase.rootdir` w `hbase-site.xml`. W poniższym poleceniu katalog główny Data Lake Storage jest `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. W tym poleceniu Określ Data Lake Storage wejściowe i wyjściowe folderów jako parametry:
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -124,9 +124,9 @@ Aby obciążać obciążenie wyższego poziomu przepływności za pośrednictwem
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/temp/input/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure --output  adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/output1
     ```
 
-## <a name="recommendations"></a>Zalecenia
+## <a name="recommendations"></a>Polecane elementy
 
-* Użyj tego samego nośnika magazynu dla folderów wejściowych i wyjściowych, usługi Azure Storage (WASB) lub Azure Data Lake Storage (ADL). Aby przenieść dane z usługi Azure Storage do Data Lake Storage, można użyć `distcp` polecenia:
+* Użyj tego samego nośnika magazynu dla folderów wejściowych i wyjściowych, usługi Azure Storage (WASB) lub Azure Data Lake Storage (ADL). Aby przenieść dane z usługi Azure Storage do Data Lake Storage, można użyć polecenia `distcp`:
 
     ```bash
     hadoop distcp wasb://@.blob.core.windows.net/example/data/gutenberg adl://.azuredatalakestore.net:443/myfolder
@@ -141,6 +141,6 @@ Aby obciążać obciążenie wyższego poziomu przepływności za pośrednictwem
 ## <a name="next-steps"></a>Następne kroki
 
 * [Ładowanie danych zbiorczych za pomocą Apache Phoenix](https://phoenix.apache.org/bulk_dataload.html)
-* [Korzystanie z Apache Phoenix w przypadku klastrów Apache HBase opartych na systemie Linux w usłudze HDInsight](../hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Korzystanie z Apache Phoenix w przypadku klastrów Apache HBase opartych na systemie Linux w usłudze HDInsight](../hbase/apache-hbase-query-with-phoenix.md)
 * [Tabele solone](https://phoenix.apache.org/salted.html)
 * [Apache Phoenix gramatyki](https://phoenix.apache.org/language/index.html)

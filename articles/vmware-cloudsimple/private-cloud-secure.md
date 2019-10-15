@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 39f451e94f2a825e69425f71aceda5f34de7eeb5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c9d3b2858ea3d80836b280b795025f2ce2eb85c7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642645"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311758"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Jak zabezpieczyć środowisko chmury prywatnej
 
@@ -21,26 +21,26 @@ Zdefiniowanie kontroli dostępu opartej na rolach (RBAC) dla usługi CloudSimple
 
 ## <a name="rbac-for-cloudsimple-service"></a>RBAC dla usługi CloudSimple
 
-Tworzenie usługi CloudSimple wymaga roli **właściciela** lub współautora w ramach subskrypcji platformy Azure.  Domyślnie wszyscy właściciele i Współautorzy mogą tworzyć usługi CloudSimple i uzyskiwać dostęp do portalu CloudSimple na potrzeby tworzenia chmur prywatnych i zarządzania nimi.  Na region można utworzyć tylko jedną usługę CloudSimple.  Aby ograniczyć dostęp do określonych administratorów, wykonaj poniższą procedurę.
+Tworzenie usługi CloudSimple wymaga roli **właściciela** lub **współautora** w ramach subskrypcji platformy Azure.  Domyślnie wszyscy właściciele i Współautorzy mogą tworzyć usługi CloudSimple i uzyskiwać dostęp do portalu CloudSimple na potrzeby tworzenia chmur prywatnych i zarządzania nimi.  Na region można utworzyć tylko jedną usługę CloudSimple.  Aby ograniczyć dostęp do określonych administratorów, wykonaj poniższą procedurę.
 
 1. Utwórz usługę CloudSimple w nowej **grupie zasobów** na Azure Portal
 2. Określ wartość RBAC dla grupy zasobów.
 3. Kup węzły i Użyj tej samej grupy zasobów co usługa CloudSimple
 
-Tylko użytkownicy posiadający uprawnienia **właściciela** lub współautora w grupie zasobów będą widzieć usługę CloudSimple i uruchamiać Portal CloudSimple.
+Tylko użytkownicy posiadający uprawnienia **właściciela** lub **współautora** w grupie zasobów będą widzieć usługę CloudSimple i uruchamiać Portal CloudSimple.
 
 Aby uzyskać więcej informacji na temat RBAC, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure](../role-based-access-control/overview.md).
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>RBAC dla chmury prywatnej — vCenter
 
-Podczas tworzenia chmury `CloudOwner@cloudsimple.local` prywatnej jest tworzony domyślny użytkownik w domenie vCenter SSO.  Użytkownik CloudOwner ma uprawnienia do zarządzania programem vCenter.   Do programu vCenter SSO są dodawane dodatkowe źródła tożsamości w celu udzielenia dostępu innym użytkownikom.  Wstępnie zdefiniowane role i grupy są konfigurowane w programie vCenter, który może służyć do dodawania kolejnych użytkowników.
+Domyślny @no__t użytkownika-0 jest tworzony w domenie programu vCenter SSO podczas tworzenia chmury prywatnej.  Użytkownik CloudOwner ma uprawnienia do zarządzania programem vCenter. Do programu vCenter SSO są dodawane dodatkowe źródła tożsamości w celu udzielenia dostępu innym użytkownikom.  Wstępnie zdefiniowane role i grupy są konfigurowane w programie vCenter, który może służyć do dodawania kolejnych użytkowników.
 
 ### <a name="add-new-users-to-vcenter"></a>Dodawanie nowych użytkowników do programu vCenter
 
-1. [Eskalować uprawnienia](escalate-private-cloud-privileges.md) dla *CloudOwner@cloudsimple.local* użytkownika w chmurze prywatnej.
-2. Zaloguj się do programu vCenter przy użyciu *CloudOwner@cloudsimple.local*
+1. [Eskalować uprawnienia](escalate-private-cloud-privileges.md) dla użytkownika **CloudOwner@cloudsimple.local** w chmurze prywatnej.
+2. Zaloguj się do programu vCenter przy użyciu **CloudOwner@cloudsimple.local**
 3. [Dodaj użytkowników korzystających z logowania](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html)jednokrotnego w programie vCenter.
-4. Dodawanie użytkowników do [grup programu vCenter logowanie](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)jednokrotne.
+4. Dodawanie użytkowników do [grup programu vCenter Logowanie jednokrotne](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 Aby uzyskać więcej informacji na temat wstępnie zdefiniowanych ról i grup, zobacz [model uprawnień chmury prywatnej CloudSimple firmy VMware vCenter](learn-private-cloud-permissions.md) .
 
@@ -51,9 +51,9 @@ Możesz dodać dodatkowych dostawców tożsamości dla domeny vCenter SSO w chmu
 * [Użyj Active Directory jako dostawcy tożsamości](set-vcenter-identity.md) w usłudze vCenter w chmurze prywatnej.
 * [Korzystanie z usługi Azure AD jako dostawcy tożsamości](azure-ad.md) w usłudze vCenter w chmurze prywatnej
 
-1. [Eskalować uprawnienia](escalate-private-cloud-privileges.md) dla *CloudOwner@cloudsimple.local* użytkownika w chmurze prywatnej.
-2. Zaloguj się do programu vCenter przy użyciu *CloudOwner@cloudsimple.local*
-3. Dodaj użytkowników z dostawcy tożsamości do [grup usługi vCenter logowanie](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)jednokrotne.
+1. [Eskalować uprawnienia](escalate-private-cloud-privileges.md) dla użytkownika **CloudOwner@cloudsimple.local** w chmurze prywatnej.
+2. Zaloguj się do programu vCenter przy użyciu **CloudOwner@cloudsimple.local**
+3. Dodaj użytkowników z dostawcy tożsamości do [grup usługi vCenter Logowanie jednokrotne](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 ## <a name="secure-network-on-your-private-cloud-environment"></a>Zabezpieczanie sieci w środowisku chmury prywatnej
 
