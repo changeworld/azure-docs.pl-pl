@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie zmian maszyn wirtualnych — usługi Azure Event Grid i Logic Apps | Microsoft Docs
-description: Sprawdzanie zmian konfiguracji maszyn wirtualnych za pomocą usług Azure Event Grid i Logic Apps
+title: Monitorowanie zmian maszyn wirtualnych — Azure Event Grid & Logic Apps
+description: Sprawdź zmiany w maszynach wirtualnych za pomocą Azure Event Grid i Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,26 +8,29 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
-ms.date: 05/14/2019
-ms.openlocfilehash: 33634773b436114f4a5f2942028710ae50e0e703
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 10/11/2019
+ms.openlocfilehash: ed48a4e5bab807695000fe6cdbecf1c1b7b01e9b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801141"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72325815"
 ---
-# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Samouczek: Monitorowanie zmian maszyn wirtualnych za pomocą usług Azure Event Grid i Logic Apps
+# <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Samouczek: monitorowanie zmian maszyny wirtualnej przy użyciu Azure Event Grid i Logic Apps
 
-W przypadku wystąpienia określonych zdarzeń w zasobach platformy Azure lub zasobach innych firm możliwe jest uruchamianie zautomatyzowanego [przepływu pracy aplikacji logiki](../logic-apps/logic-apps-overview.md). Zasoby te mogą publikować te zdarzenia w usłudze [Azure Event Grid](../event-grid/overview.md). Z kolei usługa Event Grid wypycha te zdarzenia do subskrybentów, którzy mają kolejki, elementy webhook lub [centra zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md) jako punkty końcowe. Jako subskrybent aplikacja logiki może czekać na te zdarzenia z usługi Event Grid przed uruchomieniem automatycznych przepływów pracy w celu wykonywania zadań — bez konieczności pisania kodu.
+Aby monitorować konkretne zdarzenia występujące w zasobach platformy Azure lub zasobach innych firm i odpowiadać na nie, można automatyzować i uruchamiać zadania jako przepływ pracy przez utworzenie [aplikacji logiki](../logic-apps/logic-apps-overview.md) korzystającej z minimalnej ilości kodu. Te zasoby mogą publikować zdarzenia w usłudze [Azure Event Grid](../event-grid/overview.md). Z kolei usługa Event Grid wypycha te zdarzenia do subskrybentów, którzy mają kolejki, elementy webhook lub [centra zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md) jako punkty końcowe. Jako subskrybent aplikacja logiki może oczekiwać na te zdarzenia z usługi Event Grid przed uruchomieniem zautomatyzowanych przepływów pracy w celu wykonania zadań.
 
 Na przykład poniżej przedstawiono niektóre zdarzenia, które wydawcy mogą wysyłać do subskrybentów za pośrednictwem usługi Azure Event Grid:
 
-* Utworzenie, odczyt, aktualizacja lub usunięcie zasobu. Można na przykład monitorować zmiany, które mogą spowodować naliczenie opłat w ramach subskrypcji platformy Azure i wpłynąć na rachunek. 
+* Utworzenie, odczyt, aktualizacja lub usunięcie zasobu. Można na przykład monitorować zmiany, które mogą spowodować naliczenie opłat w ramach subskrypcji platformy Azure i wpłynąć na rachunek.
+
 * Dodanie lub usunięcie osoby z subskrypcji platformy Azure.
+
 * Aplikacja wykonuje określoną akcję.
+
 * Pojawienie się nowego komunikatu w kolejce.
 
-Ten samouczek tworzy aplikację logiki, która śledzi zmiany w maszynie wirtualnej i wysyła wiadomości e-mail o tych zmianach. Podczas tworzenia aplikacji logiki z subskrypcją zdarzeń dla zasobu platformy Azure zdarzenia przepływają z tego zasobu za pośrednictwem usługi Event Grid do aplikacji logiki. Samouczek przeprowadzi Cię przez tworzenie tej aplikacji logiki:
+W tym samouczku przedstawiono tworzenie aplikacji logiki, która monitoruje zmiany w maszynie wirtualnej i wysyła wiadomości e-mail o tych zmianach. Podczas tworzenia aplikacji logiki z subskrypcją zdarzeń dla zasobu platformy Azure zdarzenia przepływają z tego zasobu za pośrednictwem usługi Event Grid do aplikacji logiki. Samouczek przeprowadzi Cię przez tworzenie tej aplikacji logiki:
 
 ![Omówienie — monitorowanie maszyny wirtualnej za pomocą usługi Event Grid i aplikacji logiki](./media/monitor-virtual-machine-changes-event-grid-logic-app/monitor-virtual-machine-event-grid-logic-app-overview.png)
 
@@ -42,171 +45,162 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Konto e-mail od dostawcy obsługiwanego przez usługę Logic Apps do wysyłania powiadomień, takich jak Office 365 Outlook, Outlook.com lub Gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](/connectors/). 
+* Konto e-mail od dostawcy poczty e-mail obsługiwanego przez Logic Apps do wysyłania powiadomień, takich jak Office 365 Outlook, Outlook.com lub gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](/connectors/).
 
-  W tym samouczku korzysta z konta usługi Office 365 Outlook. Jeśli korzystasz z innego konta e-mail, ogólne kroki pozostają takie same, ale Twój interfejs użytkownika może wyglądać trochę inaczej.
+  W tym samouczku jest stosowane konto Office 365 Outlook. Jeśli korzystasz z innego konta e-mail, ogólne kroki pozostają takie same, ale Twój interfejs użytkownika może wyglądać trochę inaczej.
 
-* [Maszyna wirtualna](https://azure.microsoft.com/services/virtual-machines). Jeśli jeszcze tego nie zrobiono, utwórz maszynę wirtualną za pośrednictwem [samouczek maszyny Wirtualnej Utwórz](../virtual-machines/windows/quick-create-portal.md). Aby maszyna wirtualna publikowała zdarzenia, [nie trzeba nic robić](../event-grid/overview.md).
+* [Maszyna wirtualna](https://azure.microsoft.com/services/virtual-machines) sama we własnej grupie zasobów platformy Azure. Jeśli jeszcze tego nie zrobiono, Utwórz maszynę wirtualną za pomocą [samouczka Tworzenie maszyny wirtualnej](../virtual-machines/windows/quick-create-portal.md). Aby maszyna wirtualna publikowała zdarzenia, [nie trzeba nic robić](../event-grid/overview.md).
 
 ## <a name="create-blank-logic-app"></a>Tworzenie pustej aplikacji logiki
 
-1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu poświadczeń konta Azure. 
+1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu poświadczeń konta Azure.
 
-1. W głównym menu platformy Azure, wybierz **Utwórz zasób** > **integracji** > **aplikacji logiki**.
+1. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** > **integracja** > **aplikacji logiki**.
 
    ![Tworzenie aplikacji logiki](./media/monitor-virtual-machine-changes-event-grid-logic-app/azure-portal-create-logic-app.png)
 
-1. W obszarze **aplikacji logiki**, podaj informacje o aplikacji logiki. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
+1. W obszarze **aplikacja logiki**podaj informacje o zasobie aplikacji logiki. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
    ![Podawanie szczegółów aplikacji logiki](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
-   | Właściwość | Sugerowana wartość | Opis |
-   | -------- | --------------- | ----------- |
-   | **Nazwa** | <*logic-app-name*> | Podaj unikatową nazwę aplikacji logiki. |
-   | **Subskrypcja** | <*Azure-subscription-name*> | Wybierz tę samą subskrypcję platformy Azure dla wszystkich usług w tym samouczku. |
-   | **Grupa zasobów** | <*Azure-resource-group*> | Wybierz tę samą grupę zasobów platformy Azure dla wszystkich usług w tym samouczku. |
-   | **Lokalizacja** | <*Azure-datacenter-region*> | Wybierz ten sam region dla wszystkich usług w tym samouczku. |
+   | Właściwość | Wymagane | Wartość | Opis |
+   |----------|----------|-------|-------------|
+   | **Nazwa** | Tak | <*Logic-App-name*> | Podaj unikatową nazwę aplikacji logiki. |
+   | **Subskrypcja** | Tak | <*Azure-subscription-name*> | Wybierz tę samą subskrypcję platformy Azure dla wszystkich usług w tym samouczku. |
+   | **Grupa zasobów** | Tak | <*Azure-Resource-group*> | Nazwa grupy zasobów platformy Azure dla aplikacji logiki, którą można wybrać dla wszystkich usług w tym samouczku. |
+   | **Lokalizacja** | Tak | <*Azure-region*> | Wybierz ten sam region dla wszystkich usług w tym samouczku. |
    |||
 
-   Teraz został utworzony zasób platformy Azure dla Twojej aplikacji logiki. 
-
-1. Gdy platforma Azure wdroży aplikację logiki, Projektant aplikacji usługi Logic Apps wyświetlający stronę z wprowadzającym wideo i najczęściej używanymi wyzwalaczami. Przewiń poza wideo i wyzwalacze. 
+1. Po wdrożeniu aplikacji logiki przez platformę Azure Projektant Logic Apps wyświetli stronę z wprowadzeniem wideo i często używanymi wyzwalaczami. Przewiń poza wideo i wyzwalacze.
 
 1. W obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**.
 
    ![Wybieranie szablonu aplikacji logiki](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-logic-app-template.png)
 
-   Projektant aplikacji logiki wyświetla teraz [ *wyzwalaczy* ](../logic-apps/logic-apps-overview.md#logic-app-concepts) służące do uruchomienia aplikacji logiki. Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywowany w momencie wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku. 
-   Każdym aktywowaniu wyzwalacza usługi Azure Logic Apps tworzy wystąpienie przepływu pracy, który uruchamia aplikację logiki.
+   Projektant Logic Apps wyświetla teraz [*wyzwalacze*](../logic-apps/logic-apps-overview.md#logic-app-concepts) , których można użyć do uruchomienia aplikacji logiki. Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywowany w momencie wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku. Za każdym razem, gdy wyzwala wyzwalacz, Azure Logic Apps tworzy wystąpienie przepływu pracy, które uruchamia aplikację logiki.
 
-## <a name="add-event-grid-trigger"></a>Dodawanie wyzwalacza usługi Event Grid 
+## <a name="add-an-event-grid-trigger"></a>Dodawanie wyzwalacza Event Grid
 
-Teraz Dodaj wyzwalacz usługi Event Grid, który monitoruje grupy zasobów dla maszyny wirtualnej. 
+Teraz Dodaj wyzwalacz Event Grid, który służy do monitorowania grupy zasobów dla maszyny wirtualnej.
 
-1. W projektancie w polu wyszukiwania wprowadź "event grid" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **Gdy wystąpi zdarzenie zasobu — usługi Azure Event Grid**
+1. W projektancie w polu wyszukiwania wprowadź `event grid` jako filtr. Z listy Wyzwalacze wybierz wyzwalacz **gdy występuje zdarzenie zasobu** .
 
-   ![Wybierz ten wyzwalacz: "W zdarzeniu zasobu"](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
+   ![Wybierz ten wyzwalacz: "w zdarzeniu zasobu"](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
 
-1. Po wyświetleniu monitu zaloguj się do usługi Azure Event Grid przy użyciu poświadczeń konta platformy Azure. W **dzierżawy** listę, która pokazuje dzierżawy usługi Azure Active Directory, która jest skojarzony z subskrypcją platformy Azure, upewnij się, że pojawia się poprawne dzierżawy.
+1. Po wyświetleniu monitu zaloguj się, aby Azure Event Grid przy użyciu poświadczeń konta platformy Azure. Na liście **dzierżawców** , która zawiera Azure Active Directory dzierżawy skojarzonej z subskrypcją platformy Azure, sprawdź, czy jest wyświetlana prawidłowa dzierżawa, na przykład:
 
    ![Logowanie przy użyciu poświadczeń platformy Azure](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > Jeśli logujesz się za pomocą osobistego konta Microsoft, takiego jak @outlook.com lub @hotmail.com, wyzwalacz usługi Event Grid może nie być wyświetlany poprawnie. Aby obejść ten problem, wybierz pozycję [Nawiąż połączenie z jednostką usługi](../active-directory/develop/howto-create-service-principal-portal.md) lub uwierzytelnij się jako członek usługi Azure Active Directory skojarzonej z Twoją subskrypcją platformy Azure, na przykład *nazwa użytkownika*@emailoutlook.onmicrosoft.com.
+   > Jeśli logujesz się za pomocą osobistego konta Microsoft, takiego jak @outlook.com lub @hotmail.com, wyzwalacz usługi Event Grid może nie być wyświetlany poprawnie. Aby obejść ten krok, wybierz pozycję [Połącz z](../active-directory/develop/howto-create-service-principal-portal.md)jednostką usługi lub Uwierzytelnij się jako członek Azure Active Directory, który jest skojarzony z subskrypcją platformy Azure, na przykład *Nazwa użytkownika*@emailoutlook.onmicrosoft.com.
 
-1. Teraz subskrybuj zdarzenia wydawcy przy użyciu aplikacji logiki. Podaj szczegóły subskrypcji zdarzeń określone w poniższej tabeli:
+1. Teraz Zasubskrybuj aplikację logiki do zdarzeń od wydawcy. Podaj szczegółowe informacje o subskrypcji zdarzeń zgodnie z opisem w poniższej tabeli, na przykład:
 
-   ![Podaj szczegóły subskrypcji zdarzeń](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details-generic.png)
+   ![Podaj szczegóły subskrypcji zdarzeń](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | Właściwość | Wymagany | Value | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    | -------- | -------- | ----- | ----------- |
-   | **Subskrypcja** | Tak | <*event-publisher-Azure-subscription-name*> | Wybierz nazwę dla subskrypcji platformy Azure skojarzone z wydawcą zdarzeń. Na potrzeby tego samouczka wybierz nazwę subskrypcji platformy Azure dla maszyny wirtualnej. |
-   | **Typ zasobu** | Tak | <*event-publisher-Azure-resource-type*> | Wybierz typ zasobu platformy Azure dla danego wydawcy zdarzeń. Na potrzeby tego samouczka wybierz tę wartość, aby monitorować grup zasobów platformy Azure: <p><p>**Microsoft.Resources.ResourceGroups** |
-   | **Nazwa zasobu** |  Tak | <*event-publisher-Azure-resource-name*> | Wybierz nazwę dla zasobów platformy Azure dla danego wydawcy zdarzeń. Ta lista zależy od wybranego typu zasobu. Na potrzeby tego samouczka wybierz nazwę grupy zasobów platformy Azure dla maszyny wirtualnej. |
-   | **Element typu zdarzenia** |  Nie | <*typy zdarzeń*> | Wybierz jeden lub więcej określonych typów zdarzeń do filtrowania i wysłać do swojej usługi event grid. Na przykład można opcjonalnie dodać te typy zdarzeń, aby wykryć, kiedy zasoby są zmieniane lub usuwane: <p><p>- **Microsoft.Resources.ResourceActionSuccess** <br>- **Microsoft.Resources.ResourceDeleteSuccess** <br>- **Microsoft.Resources.ResourceWriteSuccess** <p>Aby uzyskać więcej informacji zobacz następujące tematy: <p><p>- [Zrozumienie filtrowania zdarzeń](../event-grid/event-filtering.md) <br>- [Filtrowanie zdarzeń usługi Event Grid](../event-grid/how-to-filter-events.md) <br>- [Schemat zdarzeń Azure Event Grid dla grup zasobów](../event-grid/event-schema-resource-groups.md) |
-   | **Nazwa subskrypcji** | Nie | <*event-subscription-name*> | Podaj unikatową nazwę dla Twojej subskrypcji zdarzeń. |
-   | Ustawienia opcjonalne, można wybrać **dodano nowy parametr**. | Nie | {zobacz opisy} | * **Filtr prefiksu**: W tym samouczku należy pozostawić tą właściwość pustą. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg prefiksu jako filtr, na przykład ścieżkę i parametr dla konkretnego zasobu. <p>* **Filtr sufiksu**: W tym samouczku należy pozostawić tą właściwość pustą. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg sufiksu jako filtr, na przykład rozszerzenie nazwy pliku, aby uwzględniać tylko określone typy plików. |
+   | **Subskrypcja** | Tak | <*wydarzenie-Publisher-Azure-Subscription-name*> | Wybierz nazwę subskrypcji platformy Azure, która jest skojarzona z *wydawcą zdarzeń*. Na potrzeby tego samouczka wybierz nazwę subskrypcji platformy Azure dla swojej maszyny wirtualnej. |
+   | **Typ zasobu** | Tak | zdarzenie < *-Publisher-Azure-Resource-type*> | Wybierz typ zasobu platformy Azure dla wydawcy zdarzeń. Aby uzyskać więcej informacji na temat typów zasobów platformy Azure, zobacz [dostawcy zasobów platformy Azure i ich typy](../azure-resource-manager/resource-manager-supported-services.md). W tym samouczku wybierz wartość `Microsoft.Resources.ResourceGroups`, aby monitorować grupy zasobów platformy Azure. Jeśli chcesz monitorować tylko maszyny wirtualne,  |
+   | **Nazwa zasobu** |  Tak | <*wydarzenie-Publisher-Azure-Resource-name*> | Wybierz nazwę zasobu platformy Azure dla wydawcy zdarzeń. Ta lista różni się w zależności od wybranego typu zasobu. Na potrzeby tego samouczka wybierz nazwę grupy zasobów platformy Azure, która obejmuje daną maszynę wirtualną. |
+   | **Element typu zdarzenia** |  Nie | <*typów zdarzeń*> | Wybierz co najmniej jeden typ zdarzenia, który ma być filtrowany i wysyłany do swojej siatki zdarzeń. Można na przykład opcjonalnie dodać te typy zdarzeń do wykrywania, kiedy zasoby są zmieniane lub usuwane: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Aby uzyskać więcej informacji, zobacz następujące tematy: <p><p>[schemat zdarzeń Azure Event Grid -  dla grup zasobów](../event-grid/event-schema-resource-groups.md) <br>- [zrozumienie filtrowania zdarzeń](../event-grid/event-filtering.md) <br>zdarzenia filtru - [dla Event Grid](../event-grid/how-to-filter-events.md) |
+   | Aby dodać właściwości opcjonalne, wybierz pozycję **Dodaj nowy parametr**, a następnie wybierz odpowiednie właściwości. | Nie | {Zobacz opisy} | **Filtr prefiksu*** : w tym samouczku pozostaw tę właściwość pustą. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg prefiksu jako filtr, na przykład ścieżkę i parametr dla konkretnego zasobu. <p>**Filtr sufiksu*** : w tym samouczku pozostaw tę właściwość pustą. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg sufiksu jako filtr, na przykład rozszerzenie nazwy pliku, aby uwzględniać tylko określone typy plików. <p>* **Nazwa subskrypcji**: na potrzeby tego samouczka możesz podać unikatową nazwę subskrypcji zdarzenia. |
    |||
 
-   Gdy wszystko będzie gotowe, wyzwalacza usługi Event Grid może wyglądać następująco:
-
-   ![Szczegóły wyzwalacza usługi Event Grid przykład](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
-
-1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**. Aby zwinąć i ukryć szczegóły akcji w aplikacji logiki, wybierz pasek tytułu tej akcji.
+1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**. Aby zwinąć i ukryć szczegóły akcji w aplikacji logiki, wybierz pasek tytułu akcji.
 
    ![Zapisywanie aplikacji logiki](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-save.png)
 
    Podczas zapisywania aplikacji logiki z wyzwalaczem usługi Event Grid platforma Azure automatycznie tworzy dla tej aplikacji logiki subskrypcję zdarzeń wybranego zasobu. Dlatego gdy zasób publikuje zdarzenie w usłudze Event Grid, usługa ta automatycznie wypycha je do aplikacji logiki. Zdarzenie to wyzwala aplikację logiki, a następnie tworzy i uruchamia wystąpienie przepływu pracy, który zdefiniujesz w następnych krokach.
 
-Aplikacja logiki jest teraz aktywna i nasłuchuje zdarzeń z usługi Event Grid, ale nie robi nic, dopóki nie dodasz akcji do przepływu pracy. 
+Aplikacja logiki jest teraz aktywna i nasłuchuje zdarzeń z usługi Event Grid, ale nie robi nic, dopóki nie dodasz akcji do przepływu pracy.
 
-## <a name="add-condition"></a>Dodaj warunek
+## <a name="add-a-condition"></a>Dodawanie warunku
 
-Aby uruchamiać przepływ pracy aplikacji logiki tylko w przypadku wystąpienia określonego zdarzenia, dodaj warunek, który sprawdza operacje „zapis” maszyny wirtualnej. Jeśli ten warunek zostanie spełniony, aplikacja logiki wyśle Ci wiadomość e-mail zawierającą szczegóły zaktualizowanej maszyny wirtualnej.
+Jeśli chcesz, aby aplikacja logiki działała tylko wtedy, gdy wystąpi określone zdarzenie lub operacja, Dodaj warunek, który sprawdza działanie `Microsoft.Compute/virtualMachines/write`. Jeśli ten warunek zostanie spełniony, aplikacja logiki wyśle Ci wiadomość e-mail zawierającą szczegóły zaktualizowanej maszyny wirtualnej.
 
-1. W Projektancie aplikacji logiki, w obszarze wyzwalacza usługi event grid, wybierz opcję **nowy krok**.
+1. W Projektancie aplikacji logiki w obszarze wyzwalacza zdarzenia wybierz pozycję **nowy krok**.
 
-   ![Wybierz pozycję "Nowy krok"](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
+   ![Wybierz pozycję "nowy krok"](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
 
-1. W polu wyszukiwania wprowadź "warunek" jako filtr. Z listy akcji wybierz następującą akcję: **Warunek**
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź `condition` jako filtr. Z listy Akcje wybierz akcję **warunek** .
 
-   ![Dodaj warunek](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
+   ![Dodawanie warunku](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
 
    Projektant aplikacji logiki dodaje pusty warunek do przepływu pracy, w tym ścieżki akcji do wykonania na podstawie tego, czy warunek jest spełniony (wartość true), czy nie (wartość false).
 
-   ![Pusty warunek](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
+   ![Zostanie wyświetlony pusty warunek](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
 
-1. Zmień nazwę tytuł warunku `If a virtual machine in your resource group has changed`. Na pasku tytułu warunku, kliknij przycisk wielokropka (**...** ) i wybierz **Zmień nazwę**.
+1. Zmień nazwę tytułu warunku na `If a virtual machine in your resource group has changed`. Na pasku tytułu warunku wybierz przycisk wielokropka ( **...** ), a następnie wybierz pozycję **Zmień nazwę**.
 
-   ![Zmienianie nazwy warunku](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
+   ![Zmień nazwę warunku](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
 
-1. Utwórz warunek sprawdzający zdarzenia `body` dla `data` obiektu gdzie `operationName` właściwości jest równa `Microsoft.Compute/virtualMachines/write` operacji. Dowiedz się więcej o [schemacie zdarzeń usługi Event Grid](../event-grid/event-schema.md).
+1. Utwórz warunek, który sprawdza zdarzenie `body` dla obiektu `data`, gdzie Właściwość `operationName` jest równa operacji `Microsoft.Compute/virtualMachines/write`. Dowiedz się więcej o [schemacie zdarzeń usługi Event Grid](../event-grid/event-schema.md).
 
-   1. W pierwszym wierszu w obszarze **I** kliknij wewnątrz pola po lewej stronie. Na liście zawartości dynamicznej, która jest wyświetlana, wybierz opcję **wyrażenie**.
+   1. W pierwszym wierszu w obszarze **I** kliknij wewnątrz pola po lewej stronie. Na wyświetlonej liście zawartości dynamicznej wybierz pozycję **wyrażenie**.
 
-      ![Wybierz pozycję "Wyrażenie"](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-choose-expression.png)
+      ![Wybierz pozycję "wyrażenie", aby otworzyć Edytor wyrażeń](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-choose-expression.png)
 
-   1. W edytorze wyrażeń wprowadź następujące wyrażenie, a następnie wybierz **OK**: 
+   1. W edytorze wyrażeń wprowadź wyrażenie, które zwraca nazwę operacji z wyzwalacza, a następnie wybierz **przycisk OK**:
 
       `triggerBody()?['data']['operationName']`
 
       Na przykład:
 
-      ![Wybierz pozycję "Wyrażenie"](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-add-data-operation-name.png)
+      ![Wprowadź wyrażenie, aby wyodrębnić nazwę operacji](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-add-data-operation-name.png)
 
    1. W środkowym polu zachowaj operator **jest równe**.
 
-   1. W polu prawego wprowadź tę wartość:
+   1. W prawym polu wprowadź tę wartość, która jest operacją określoną do monitorowania:
 
       `Microsoft.Compute/virtualMachines/write`
 
-   Zakończono warunek teraz będzie wyglądać następująco:
+   Gotowy warunek wygląda teraz następująco:
 
-   ![Gotowy warunek](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
+   ![Warunek wykonany porównujący operację](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
 
-   Po przełączeniu się z widoku Projekt kodu, Wyświetl i z powrotem do widoku projektu, wyrażenie, które określono w warunku jest rozpoznawana jako **data.operationName** tokenu:
+   Jeśli przełączysz się z widoku projektu do widoku kodu i wrócisz do widoku projektu, wyrażenie określone w warunku jest rozpoznawane jako **Data. OperationName** token:
 
-   ![Stan rozwiązany](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
+   ![Rozpoznane tokeny w warunku](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
 
 1. Zapisz aplikację logiki.
 
 ## <a name="send-email-notifications"></a>Wysyłanie powiadomień w wiadomościach e-mail
 
-Teraz dodaj [*akcję*](../logic-apps/logic-apps-overview.md#logic-app-concepts), aby otrzymać wiadomość e-mail, gdy określony warunek jest spełniony (ma wartość true).
+Teraz Dodaj [*akcję*](../logic-apps/logic-apps-overview.md#logic-app-concepts) , aby otrzymać wiadomość e-mail, gdy określony warunek ma wartość true.
 
-1. W polu **W przypadku wartości true** warunku wybierz pozycję **Dodaj akcję**.
+1. W polu warunek w **przypadku wartości true** wybierz pozycję **Dodaj akcję**.
 
    ![Dodawanie akcji do wykonania w przypadku wartości true warunku](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
-1. W polu wyszukiwania wprowadź "Wyślij wiadomość e-mail" jako filtr. W oparciu o Twojego dostawcę poczty e-mail znajdź i wybierz zgodny łącznik. Następnie wybierz akcję „Wyślij wiadomość e-mail” dla Twojego łącznika. Na przykład: 
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź `send an email` jako filtr. W oparciu o Twojego dostawcę poczty e-mail znajdź i wybierz zgodny łącznik. Następnie wybierz akcję „Wyślij wiadomość e-mail” dla Twojego łącznika. Na przykład:
 
-   * Dla konta służbowego platformy Azure wybierz łącznik usługi Office 365 Outlook. 
+   * Dla konta służbowego platformy Azure wybierz łącznik usługi Office 365 Outlook.
 
-   * Dla osobistych kont Microsoft wybierz łącznik usługi Outlook.com. 
+   * Dla osobistych kont Microsoft wybierz łącznik usługi Outlook.com.
 
-   * Dla kont usługi Gmail wybierz łącznik usługi Gmail. 
+   * Dla kont usługi Gmail wybierz łącznik usługi Gmail.
 
-   W tym samouczku będzie kontynuowane przy użyciu łącznika usługi Office 365 Outlook. 
-   Jeśli używasz innego dostawcy, kroki pozostają takie same, ale Twój interfejs użytkownika może wyglądać trochę inaczej. 
+   Ten samouczek jest kontynuowany przy użyciu łącznika programu Outlook pakietu Office 365. Jeśli używasz innego dostawcy, kroki pozostają takie same, ale interfejs użytkownika może wyglądać nieco inaczej.
 
    ![Wybieranie akcji „Wyślij wiadomość e-mail”](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-send-email.png)
 
 1. Jeśli nie masz jeszcze połączenia z dostawcą poczty e-mail, zaloguj się na swoje konto poczty e-mail po wyświetleniu prośby o uwierzytelnienie.
 
-1. Zmień nazwę tytuł wysyłania wiadomości e-mail tego tytułu: `Send email when virtual machine updated`
+1. Zmień nazwę akcji Wyślij pocztą e-mail na ten tytuł: `Send email when virtual machine updated`
 
-1. Podaj szczegóły dla wiadomości e-mail określone w poniższej tabeli:
+1. Podaj informacje o wiadomości e-mail zgodnie z opisem w poniższej tabeli:
 
-   ![Pusta akcja wiadomości e-mail](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-empty-email-action.png)
+   ![Podaj informacje o akcji poczty e-mail](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-empty-email-action.png)
 
    > [!TIP]
-   > Aby wybrać z wyniki z poprzednich kroków w przepływie pracy, kliknij w polu edycji, aby wyświetlić listę zawartości dynamicznej, lub wybierz **Dodaj zawartość dynamiczną**. Aby uzyskać więcej wyników wybierz **Zobacz więcej** dla każdej sekcji na liście. Aby zamknąć na liście zawartości dynamicznej, wybierz pozycję **Dodaj zawartość dynamiczną** ponownie.
+   > Aby wybrać dane wyjściowe z poprzednich kroków w przepływie pracy, kliknij wewnątrz pola edycji, aby wyświetlić listę zawartości dynamicznej, lub wybierz pozycję **Dodaj zawartość dynamiczną**. Aby uzyskać więcej wyników, wybierz pozycję **Zobacz więcej** dla każdej sekcji na liście. Aby zamknąć listę zawartości dynamicznej, ponownie wybierz pozycję **Dodaj zawartość dynamiczną** .
 
-   | Właściwość | Wymagany | Value | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    | -------- | -------- | ----- | ----------- |
-   | **Do** | Tak | <*Odbiorca\@domeny*> | Wprowadź adres e-mail adresata. Do celów testowych możesz użyć własnego adresu e-mail. |
-   | **Temat** | Tak | Zaktualizowano zasób: **Temat** | Wprowadź zawartość w polu tematu wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst, a następnie wybierz zdarzenie **podmiotu** pola. Tutaj temat wiadomości e-mail zawiera nazwę zaktualizowanego zasobu (maszyny wirtualnej). |
-   | **Body** | Tak | Zasób: **Temat** <p>Typ zdarzenia: **Typ zdarzenia**<p>Identyfikator zdarzenia: **Identyfikator**<p>Czas: **Czas zdarzenia** | Wprowadź zawartość w polu treści wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst i wybierz zdarzenie **tematu**, **typ zdarzenia**, **identyfikator**, i **czas trwania zdarzenia** pola tak, aby Twoje wiadomość e-mail zawiera zasobów, która wywołała zdarzenie, typ zdarzenia, sygnatura czasowa zdarzenia i identyfikator zdarzenia dla aktualizacji. W tym samouczku zasób jest wybrane w wyzwalaczu grupy zasobów platformy Azure. <p>Aby dodać puste wiersze w zawartości, naciśnij klawisze Shift + Enter. |
+   | **Do** | Tak | <*adresat @ no__t-2domain*> | Wprowadź adres e-mail adresata. Do celów testowych możesz użyć własnego adresu e-mail. |
+   | **Temat** | Tak | `Resource updated:` **Temat** | Wprowadź zawartość w polu tematu wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst, a następnie wybierz pole **podmiotu** zdarzenia. Tutaj temat wiadomości e-mail zawiera nazwę zaktualizowanego zasobu (maszyny wirtualnej). |
+   | **Treść** | Tak | **temat** `Resource:` <p>**Typ zdarzenia** `Event type:`<p>**identyfikator** `Event ID:`<p>`Time:` **czas zdarzenia** | Wprowadź zawartość w polu treści wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst i **Wybierz pozycję zdarzenie,** **Typ zdarzenia**, **Identyfikator**i **czas zdarzenia** , tak aby poczta e-mail zawierała zasób, który wygenerował zdarzenie, typ zdarzenia, sygnatura czasowa zdarzenia i identyfikator zdarzenia dla aktualizacji. W tym samouczku zasób jest grupą zasobów platformy Azure wybraną w wyzwalaczu. <p>Aby dodać puste wiersze w zawartości, naciśnij klawisze Shift + Enter. |
    ||||
 
    > [!NOTE]
@@ -220,10 +214,9 @@ Teraz dodaj [*akcję*](../logic-apps/logic-apps-overview.md#logic-app-concepts),
 
    ![Ukończona aplikacja logiki](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-completed.png)
 
-1. Zapisz aplikację logiki. Aby zwinąć i ukryć szczegóły akcji w aplikacji logiki, wybierz pasek tytułu tej akcji.
+1. Zapisz aplikację logiki. Aby zwinąć i ukryć szczegóły każdej akcji w aplikacji logiki, wybierz pasek tytułu akcji.
 
-   Aplikacja logiki jest teraz aktywna, ale czeka na zmiany maszyny wirtualnej, zanim wykona jakiekolwiek akcje. 
-   Aby teraz przetestować Twoją aplikację logiki, przejdź do następnej sekcji.
+   Aplikacja logiki jest teraz aktywna, ale czeka na zmiany maszyny wirtualnej, zanim wykona jakiekolwiek akcje. Aby teraz przetestować Twoją aplikację logiki, przejdź do następnej sekcji.
 
 ## <a name="test-your-logic-app-workflow"></a>Testowanie przepływu pracy aplikacji logiki
 
@@ -235,7 +228,7 @@ Teraz dodaj [*akcję*](../logic-apps/logic-apps-overview.md#logic-app-concepts),
 
    ![Wiadomość e-mail o aktualizacji maszyny wirtualnej](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
 
-1. Przejrzyj przebiegi i wyzwalać historii dla swojej aplikacji logiki, w menu aplikacji logiki, wybierz **Przegląd**. Aby wyświetlić więcej szczegółów na temat uruchomienia, wybierz wiersz dla tego uruchomienia.
+1. Aby przejrzeć historię uruchamiania i wyzwalania dla aplikacji logiki, w menu aplikacji logiki wybierz pozycję **Przegląd**. Aby wyświetlić więcej szczegółów dotyczących przebiegu, wybierz wiersz dla tego przebiegu.
 
    ![Historia przebiegów aplikacji logiki](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-run-history.png)
 
@@ -256,15 +249,15 @@ Za pomocą usług Event Grid i Logic Apps możesz także monitorować inne zmian
 
 Ten samouczek używa zasobów i wykonuje akcje, które mogą spowodować naliczenie opłat w ramach Twojej subskrypcji platformy Azure. Gdy ukończysz pracę z samouczkiem i testowanie, upewnij się, że zostały wyłączone lub usunięte wszelkie zasoby, dla których nie chcesz naliczenia opłat.
 
-* Aby zatrzymać aplikację logiki bez usuwania swojej pracy, wyłącz ją. W menu aplikacji logiki, wybierz **Przegląd**. Na pasku narzędzi wybierz pozycję **Wyłącz**.
+* Aby zatrzymać aplikację logiki bez usuwania swojej pracy, wyłącz ją. W menu aplikacji logiki wybierz pozycję **Przegląd**. Na pasku narzędzi wybierz pozycję **Wyłącz**.
 
   ![Wyłączanie aplikacji logiki](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
 
   > [!TIP]
   > Jeśli nie widzisz menu aplikacji logiki, spróbuj wrócić do pulpitu nawigacyjnego platformy Azure i ponownie otworzyć aplikację logiki.
 
-* Aby trwale usunąć aplikację logiki, w menu aplikacji logiki wybierz pozycję **Przegląd**. Na pasku narzędzi wybierz pozycję **Usuń**. Upewnij się, że chcesz usunąć aplikację logiki, a następnie wybierz **Usuń**.
+* Aby trwale usunąć aplikację logiki, w menu aplikacji logiki wybierz pozycję **Przegląd**. Na pasku narzędzi wybierz pozycję **Usuń**. Potwierdź, że chcesz usunąć aplikację logiki, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie i kierowanie zdarzeń niestandardowych za pomocą usługi Event Grid](../event-grid/custom-event-quickstart.md)

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003515"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326787"
 ---
-# <a name="select-clause"></a>SELECT — klauzula
+# <a name="select-clause-in-azure-cosmos-db"></a>Klauzula SELECT w Azure Cosmos DB
 
 Każde zapytanie składa się z klauzuli SELECT i opcjonalnych klauzul from i [WHERE](sql-query-where.md) , zgodnie [ze](sql-query-from.md) standardami ANSI języka SQL. Typowo, źródło w klauzuli FROM jest wyliczane i klauzula WHERE stosuje filtr dla źródła, aby pobrać podzestaw elementów JSON. Klauzula SELECT następnie projektuje żądane wartości JSON na liście wyboru.
 
@@ -36,19 +36,19 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  Właściwości lub wartość należy wybrać zestaw wyników.  
+  Właściwości lub wartości, które mają zostać wybrane dla zestawu wyników.  
   
 - `'*'`  
 
-  Określa, że wartość należy pobrać bez wprowadzania żadnych zmian. W szczególności, jeśli przetworzonych wartość jest obiektem, wszystkie właściwości będą pobierane.  
+  Określa, że wartość powinna być pobierana bez wprowadzania żadnych zmian. W przypadku, gdy przetworzona wartość jest obiektem, zostaną pobrane wszystkie właściwości.  
   
 - `<object_property_list>`  
   
-  Określa listę właściwości, które mają zostać pobrane. Każdy zwrócona wartość będzie obiektu przy użyciu właściwości określonych.  
+  Określa listę właściwości, które mają zostać pobrane. Każda zwrócona wartość będzie obiektem ze wskazanymi właściwościami.  
   
 - `VALUE`  
 
-  Określa, że wartość JSON mają zostać pobrane zamiast kompletnego obiektu JSON. To, w przeciwieństwie do `<property_list>` nie jest zawijany przewidywane wartości w obiekcie.  
+  Określa, że wartość JSON ma być pobierana zamiast pełnego obiektu JSON. W przeciwieństwie do `<property_list>` nie otacza przewidywanej wartości w obiekcie.  
  
 - `DISTINCT`
   
@@ -56,13 +56,13 @@ SELECT <select_specification>
 
 - `<scalar_expression>`  
 
-  Wyrażenie reprezentujące wartość ma zostać obliczony. Zobacz [wyrażenia skalarne](sql-query-scalar-expressions.md) sekcji, aby uzyskać szczegółowe informacje.  
+  Wyrażenie reprezentujące wartość, która ma zostać obliczona. Szczegóły można znaleźć w sekcji [wyrażenia skalarne](sql-query-scalar-expressions.md) .  
 
 ## <a name="remarks"></a>Uwagi
 
-`SELECT *` Składnia jest prawidłowa, jeśli klauzula FROM zadeklarował dokładnie jeden alias. `SELECT *` udostępnia projekcji tożsamości, które mogą być przydatne, jeśli brak projekcji nie jest konieczne. Wybierz * jest prawidłowa, jeśli klauzula FROM określono tylko i wyłącznie jedno źródło danych wejściowych.  
+Składnia `SELECT *` jest prawidłowa tylko wtedy, gdy klauzula FROM deklaruje dokładnie jeden alias. `SELECT *` zawiera projekcję tożsamości, która może być przydatna, jeśli nie jest wymagana projekcja. SELECT * jest prawidłowy tylko wtedy, gdy klauzula FROM jest określona i wprowadza tylko pojedyncze źródło danych wejściowych.  
   
-Zarówno `SELECT <select_list>` i `SELECT *` są "sugar składni" i można również wyrazić za pomocą prostych instrukcji "SELECT", jak pokazano poniżej.  
+Zarówno `SELECT <select_list>`, jak i `SELECT *` są "sacharoza" i mogą być alternatywnie wyrażone przy użyciu prostych instrukcji SELECT, jak pokazano poniżej.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -78,7 +78,7 @@ Zarówno `SELECT <select_list>` i `SELECT *` są "sugar składni" i można równ
   
 ## <a name="examples"></a>Przykłady
 
-Poniższy przykład `address` zapytania SELECT zwraca, z `Families` którego `id` pasuje: `AndersenFamily`
+Poniższy przykład zapytania SELECT zwraca `address` z `Families`, którego `id` dopasowuje `AndersenFamily`:
 
 ```sql
     SELECT f.address
@@ -109,7 +109,7 @@ Można uzyskać dostęp do właściwości przy użyciu operatora właściwości 
 
 ### <a name="nested-properties"></a>Właściwości zagnieżdżone
 
-W poniższym przykładzie przedstawiono projekty dwóch zagnieżdżonych `f.address.state` właściwości `f.address.city`i.
+W poniższym przykładzie przedstawiono projekty dwóch zagnieżdżonych właściwości, `f.address.state` i `f.address.city`.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -147,7 +147,7 @@ Wyniki są następujące:
     }]
 ```
 
-W poprzednim przykładzie klauzula SELECT musi utworzyć obiekt JSON, a ponieważ przykład nie zawiera klucza, klauzula używa nazwy `$1`zmiennej argumentu niejawnego. Następujące zapytanie zwraca dwie niejawne zmienne argumentów `$1` : `$2`i.
+W poprzednim przykładzie klauzula SELECT musi utworzyć obiekt JSON, a ponieważ przykład nie zawiera klucza, klauzula używa niejawnej nazwy zmiennej argumentu `$1`. Następujące zapytanie zwraca dwie niejawne zmienne argumentów: `$1` i `$2`.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },

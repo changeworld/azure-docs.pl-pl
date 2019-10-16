@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 1f9cb82abd5bc0823f5e7bc23fe437007bccc8e0
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 85a3a9f7afac8250b225d42462f6b29042e34a2a
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873584"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330458"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Zarządzanie pracownią w Azure Lab Services 
 W tym artykule opisano sposób tworzenia i usuwania laboratorium zajęć. Przedstawiono w nim również sposób wyświetlania wszystkich laboratoriów zajęć na koncie laboratorium. 
@@ -29,21 +29,19 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 ## <a name="create-a-classroom-lab"></a>Tworzenie laboratorium na potrzeby zajęć
 
 1. Przejdź do [witryny internetowej usługi Azure Lab Services](https://labs.azure.com). Należy pamiętać, że program Internet Explorer 11 nie jest jeszcze obsługiwany. 
-2. Wybierz pozycję **Zaloguj**. Wybierz lub wprowadź **Identyfikator użytkownika** , który jest członkiem roli **twórca laboratorium** na koncie laboratorium, a następnie wprowadź hasło. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft. 
+2. Wybierz pozycję **Zaloguj się** i wprowadź swoje poświadczenia. Wybierz lub wprowadź **Identyfikator użytkownika** , który jest członkiem roli **twórca laboratorium** na koncie laboratorium, a następnie wprowadź hasło. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft. 
+3. Wybierz pozycję **nowe laboratorium**. 
+    
+    ![Tworzenie laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/new-lab-button.png)
 3. W oknie **Nowe laboratorium** wykonaj następujące czynności: 
     1. Określ **nazwę** dla swojego laboratorium. 
-    2. Określ maksymalną **liczbę maszyn wirtualnych** w laboratorium. Możesz później zwiększyć lub zmniejszyć liczbę maszyn wirtualnych w środowisku laboratoryjnym. 
+    2. Wybierz **rozmiar maszyn wirtualnych** , które są potrzebne dla klasy. Aby uzyskać listę dostępnych rozmiarów, zobacz sekcję [rozmiary maszyn wirtualnych](#vm-sizes) . 
+    3. Wybierz **obraz maszyny wirtualnej** , który ma być używany dla laboratorium z klasą. W przypadku wybrania obrazu systemu Linux zostanie wyświetlona opcja włączenia dla niego połączenia pulpitu zdalnego. Aby uzyskać szczegółowe informacje, zobacz [Włączanie usługi Podłączanie pulpitu zdalnego dla systemu Linux](how-to-enable-remote-desktop-linux.md).
+    4. Przejrzyj **łączną cenę za godzinę** wyświetlaną na stronie. 
     6. Wybierz pozycję **Zapisz**.
 
-        ![Tworzenie laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-4. Na stronie **Wybór specyfikacji maszyny wirtualnej** wykonaj następujące czynności:
-    1. Wybierz **rozmiar** maszyn wirtualnych tworzonych w laboratorium. Dozwolone są obecnie, **małe**, **średnie**, **średnie (Wirtualizacja)** , **duże**i **GPU** . Aby uzyskać szczegółowe informacje, zobacz sekcję [rozmiary maszyn wirtualnych](#vm-sizes) .
-    1. Wybierz **region**, w którym mają być tworzone maszyny wirtualne. 
-    1. Wybierz **obraz maszyny wirtualnej**, którego chcesz używać do tworzenia maszyn wirtualnych w laboratorium. W przypadku wybrania obrazu systemu Linux zostanie wyświetlona opcja włączenia dla niego połączenia pulpitu zdalnego. Aby uzyskać szczegółowe informacje, zobacz [Włączanie usługi Podłączanie pulpitu zdalnego dla systemu Linux](how-to-enable-remote-desktop-linux.md).
-    1. Wybierz opcję **Dalej**.
-
-        ![Określanie specyfikacji maszyny wirtualnej](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
-5. Na stronie **Ustawianie poświadczeń** określ domyślne poświadczenia dla wszystkich maszyn wirtualnych w laboratorium. 
+        ![Nowe okno laboratorium](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+4. Na stronie **poświadczenia maszyny wirtualnej** Określ domyślne poświadczenia dla wszystkich maszyn wirtualnych w laboratorium.
     1. Określ **nazwę użytkownika** dla wszystkich maszyn wirtualnych w laboratorium.
     2. Podaj **hasło** użytkownika. 
 
@@ -51,50 +49,53 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
         > Zanotuj nazwę użytkownika i hasło. Nie zostaną one ponownie wyświetlone.
     3. Wyłącz opcję **Użyj tego samego hasła dla wszystkich maszyn wirtualnych** , jeśli chcesz, aby studenci ustawili swoje hasła. Ten krok jest **opcjonalny**. 
 
-        Nauczyciel może wybrać użycie tego samego hasła dla wszystkich maszyn wirtualnych w laboratorium lub zezwolić uczniom na ustawianie haseł dla swoich maszyn wirtualnych. Domyślnie to ustawienie jest włączone dla wszystkich obrazów systemów Windows i Linux z wyjątkiem Ubuntu. W przypadku wybrania maszyny wirtualnej **Ubuntu** to ustawienie jest wyłączone, więc uczniowie będą monitowani o ustawienie hasła podczas pierwszego logowania.
-    1. Wybierz pozycję **Utwórz**. 
+        Nauczyciel może wybrać użycie tego samego hasła dla wszystkich maszyn wirtualnych w laboratorium lub zezwolić uczniom na ustawianie haseł dla swoich maszyn wirtualnych. Domyślnie to ustawienie jest włączone dla wszystkich obrazów systemów Windows i Linux z wyjątkiem Ubuntu. W przypadku wybrania maszyny wirtualnej **Ubuntu** to ustawienie jest wyłączone, więc uczniowie będą monitowani o ustawienie hasła podczas pierwszego logowania.  
 
-        ![Ustaw poświadczenia](../media/tutorial-setup-classroom-lab/set-credentials.png)
-6. Na stronie **Konfigurowanie szablonu** zostanie wyświetlony stan procesu tworzenia laboratorium. Tworzenie szablonu w laboratorium trwa maksymalnie 20 minut. Szablon w laboratorium to podstawowy obraz maszyny wirtualnej, który służy do tworzenia maszyn wirtualnych wszystkich użytkowników. Możesz skonfigurować maszynę wirtualną szablonu dokładnie tak jak chcesz dla użytkowników laboratorium.  
+        ![Nowe okno laboratorium](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
+        > [!IMPORTANT]
+        > Zanotuj nazwę użytkownika i hasło. Nie zostaną one ponownie wyświetlone.    
+    4. Następnie wybierz przycisk **dalej** na stronie **poświadczenia maszyny wirtualnej** . 
+5. Na stronie **zasady laboratorium** wprowadź liczbę godzin wyznaczonych dla każdego użytkownika (**limit przydziału dla każdego użytkownika**) poza zaplanowanym terminem dla laboratorium, a następnie wybierz pozycję **Zakończ**. 
 
-    ![Konfigurowanie szablonu](../media/tutorial-setup-classroom-lab/configure-template.png)
-7. Po zakończeniu konfiguracji szablonu zostanie wyświetlona następująca strona: 
+    ![Przydział dla każdego użytkownika](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+5. Powinien zostać wyświetlony następujący ekran pokazujący stan tworzenia szablonu maszyny wirtualnej. Tworzenie szablonu w laboratorium trwa maksymalnie 20 minut. 
 
-    ![Strona Konfigurowanie szablonu po zakończeniu konfiguracji](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. Poniższe kroki są opcjonalne w tym samouczku: 
+    ![Stan tworzenia szablonu maszyny wirtualnej](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
+8. Na stronie **szablon** wykonaj następujące czynności: te kroki są **opcjonalne** dla tego samouczka.
+
     2. Nawiąż połączenie z maszyną wirtualną szablonu, wybierając pozycję **Połącz**. Jeśli jest to maszyna wirtualna z szablonem systemu Linux, wybierz, czy chcesz nawiązać połączenie przy użyciu protokołu SSH, czy RDP (Jeśli włączono protokół RDP).
     1. Wybierz pozycję **zresetuj hasło** , aby zresetować hasło dla maszyny wirtualnej. 
     1. Zainstaluj i skonfiguruj oprogramowania na maszynie wirtualnej szablonu. 
     1. **Zatrzymaj** maszynę wirtualną.  
     1. Wprowadź **opis** szablonu.
-9. Wybierz przycisk **Dalej** na stronie szablonu. 
-10. Na stronie **Publikowanie szablonu** wykonaj następujące czynności. 
-    1. Aby natychmiast opublikować szablon, zaznacz pole wyboru *Rozumiem, że po opublikowaniu szablonu nie można go modyfikować. Ten proces można wykonać tylko raz i może on potrwać do godziny* i wybierz polecenie **Publikuj**.  Opublikuj szablon, aby wystąpienia maszyny wirtualnej szablonu były dostępne dla użytkowników laboratorium.
+10. Na stronie **szablon** wybierz pozycję **Publikuj** na pasku narzędzi. 
 
-        > [!WARNING]
-        > Nie można cofnąć publikowania szablonu. 
-    2. Aby opublikować później, wybierz pozycję **Zachowaj na później**. Maszynę wirtualną szablonu można opublikować po zakończeniu działania kreatora. Aby uzyskać szczegółowe informacje na temat konfigurowania i publikowania po zakończeniu pracy kreatora, zobacz temat aby uzyskać szczegółowe informacje na temat konfigurowania i publikowania po zakończeniu działania kreatora, zobacz sekcję publikowanie szablonu w artykule [jak zarządzać z pomocą laboratoriów zajęć](how-to-manage-classroom-labs.md) .
+    ![Przycisk Publikuj szablon](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
-        ![Publikowanie szablonu](../media/tutorial-setup-classroom-lab/publish-template.png)
-11. Zostanie wyświetlony **postęp publikowania** szablonu. Ten proces może potrwać do godziny. 
+    > [!WARNING]
+    > Nie można cofnąć publikowania szablonu. 
+8. Na stronie **szablon publikacji** wprowadź liczbę maszyn wirtualnych, które chcesz utworzyć w laboratorium, a następnie wybierz pozycję **Publikuj**. 
+
+    ![Szablon publikacji — liczba maszyn wirtualnych](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
+11. Zobaczysz **stan publikowania** szablonu na stronie. Ten proces może potrwać do godziny. 
 
     ![Publikowanie szablonu — postęp](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-12. Po pomyślnym opublikowaniu szablonu zostanie wyświetlona następująca strona. Wybierz pozycję **Done** (Gotowe).
-
-    ![Publikowanie szablonu — powodzenie](../media/tutorial-setup-classroom-lab/publish-success.png)
-1. Zostanie wyświetlony **pulpit nawigacyjny** laboratorium. 
-    
-    ![Pulpit nawigacyjny laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-4. Przejdź do strony **Maszyny wirtualne** i sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Maszyny wirtualne możesz uruchomić na tej stronie lub pozwolić, aby zrobili to uczniowie. 
+4. Przejdź do strony **puli maszyn wirtualnych** , wybierając pozycję Maszyny wirtualne w menu po lewej stronie lub wybierając pozycję kafelek maszyny wirtualne. Sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Maszyny wirtualne możesz uruchomić na tej stronie lub pozwolić, aby zrobili to uczniowie. 
 
     ![Maszyny wirtualne w stanie Zatrzymano](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
+    Na tej stronie wykonaj następujące zadania (nie wykonuj tych kroków w samouczku. Te kroki dotyczą tylko Twoich informacji.): 
+    
+    1. Aby zmienić pojemność laboratorium (liczbę maszyn wirtualnych w laboratorium), wybierz pozycję **pojemność laboratorium** na pasku narzędzi.
+    2. Aby jednocześnie uruchomić wszystkie maszyny wirtualne, wybierz pozycję **Rozpocznij wszystko** na pasku narzędzi. 
+    3. Aby uruchomić konkretną maszynę wirtualną, wybierz strzałkę w dół w obszarze **stan**, a następnie wybierz polecenie **Uruchom**. Możesz również uruchomić maszynę wirtualną, wybierając maszynę wirtualną w pierwszej kolumnie, a następnie wybierając pozycję **Rozpocznij** na pasku narzędzi.                
+
 ### <a name="vm-sizes"></a>Rozmiary maszyn wirtualnych  
 
-| Size | Rdzenie | Pamięć RAM | Opis | 
+| Rozmiar | Rdzenie | Pamięć RAM | Opis | 
 | ---- | ----- | --- | ----------- | 
 | Małe | 2 | 3,5 GB | Ten rozmiar najlepiej nadaje się w przypadku wiersza polecenia, otwierania przeglądarki sieci Web, serwerów sieci Web o małym ruchu, małych i średnich baz danych. |
-| Średni | 4 | 7 GB | Ten rozmiar jest najlepiej dostosowany do relacyjnych baz danych, buforowania w pamięci i analiz | 
+| Średnie | 4 | 7 GB | Ten rozmiar jest najlepiej dostosowany do relacyjnych baz danych, buforowania w pamięci i analiz | 
 | Średni (Wirtualizacja zagnieżdżona) | 4 | 16 GB | Ten rozmiar jest najlepiej dostosowany do relacyjnych baz danych, buforowania w pamięci i analizy. Ten rozmiar obsługuje również wirtualizację zagnieżdżoną. <p>Tego rozmiaru można używać w scenariuszach, w których każdy student potrzebuje wielu maszyn wirtualnych. Nauczyciele mogą używać wirtualizacji zagnieżdżonej, aby skonfigurować kilka małych zagnieżdżonych maszyn wirtualnych w ramach maszyny wirtualnej. </p> |
 | Duże | 8 | 32 GB | Ten rozmiar najlepiej nadaje się w przypadku aplikacji wymagających szybszych procesorów CPU, lepszej wydajności dysków lokalnych, dużych baz danych i dużych pamięci podręcznych pamięci. Ten rozmiar obsługuje również wirtualizację zagnieżdżoną |  
 | Mały procesor GPU (wizualizacja) | 6 | 56 GB | Ten rozmiar najlepiej nadaje się do zdalnej wizualizacji, przesyłania strumieniowego, gier, kodowania przy użyciu struktur, takich jak OpenGL i DirectX. | 
@@ -104,26 +105,23 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 ## <a name="view-all-classroom-labs"></a>Wyświetl wszystkie pracownice klasy
 1. Przejdź do [portalu Azure Lab Services](https://labs.azure.com).
 2. Wybierz pozycję **Zaloguj**. Wybierz lub wprowadź **Identyfikator użytkownika** , który jest członkiem roli **twórca laboratorium** na koncie laboratorium, a następnie wprowadź hasło. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft. 
-3. Upewnij się, że wszystkie laboratoria zostały wyświetlone na wybranym koncie laboratorium. 
+3. Upewnij się, że wszystkie laboratoria zostały wyświetlone na wybranym koncie laboratorium. Na kafelku laboratorium zobaczysz liczbę maszyn wirtualnych w laboratorium i limit przydziału dla każdego użytkownika (poza zaplanowanym czasem).
 
     ![Wszystkie laboratoria](../media/how-to-manage-classroom-labs/all-labs.png)
 3. Użyj listy rozwijanej u góry, aby wybrać inne konto laboratorium. Zobaczysz laboratoria na wybranym koncie laboratorium. 
 
 ## <a name="delete-a-classroom-lab"></a>Usuwanie laboratorium zajęć
-1. Na kafelku laboratorium wybierz trzy kropki (...) w rogu. 
+1. Na kafelku laboratorium wybierz trzy kropki (...) w rogu, a następnie wybierz pozycję **Usuń**. 
 
-    ![Wybieranie laboratorium](../media/how-to-manage-classroom-labs/select-three-dots.png)
-2. Wybierz pozycję **Usuń**. 
-
-    ![Usuwanie przycisku](../media/how-to-manage-classroom-labs/delete-button.png)
-3. W oknie dialogowym **usuwanie laboratorium** wybierz pozycję **Usuń**. 
-
-    ![Usuń okno dialogowe](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
+    ![Przycisk Usuń](../media/how-to-manage-classroom-labs/delete-button.png)
+3. W oknie dialogowym **usuwanie laboratorium** wybierz pozycję **Usuń** , aby kontynuować usuwanie. 
 
 ## <a name="switch-to-another-classroom-lab"></a>Przełącz do innego laboratorium zajęć
 Aby przełączyć się do innego laboratorium zajęć z bieżącego, wybierz listę rozwijaną laboratoriów na koncie laboratorium w górnej części.
 
 ![Wybierz z listy rozwijanej Lab (laboratorium) w górnej części](../media/how-to-manage-classroom-labs/switch-lab.png)
+
+Możesz również utworzyć nowe laboratorium przy użyciu **nowego laboratorium** z tej listy rozwijanej. 
 
 
 ## <a name="next-steps"></a>Następne kroki

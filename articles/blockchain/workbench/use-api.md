@@ -1,21 +1,21 @@
 ---
-title: Korzystanie z interfejsu API REST usługi Azure łańcucha bloków Workbench Preview
+title: Korzystanie z interfejsu API REST usługi Azure Blockchain Workbench
 description: Scenariusze korzystania z interfejsu API REST usługi Azure łańcucha bloków Workbench Preview
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 412b78363be70918969734cd8890a8ee940df431
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2f751cc4f0037b8d60034636a0c512989113e441
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843814"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328871"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure łańcucha bloków Workbench Preview
 
@@ -210,8 +210,8 @@ Content-type: application/json
 
 Gdy użytkownik zdecyduje się na głębokie szczegółowe kontraktu, klient łańcucha bloków może wyświetlić dostępne akcje użytkownika z uwzględnieniem stanu kontraktu. W tym przykładzie użytkownik przegląda wszystkie dostępne akcje dla nowo utworzonego kontraktu inteligentnego:
 
-* Zmodyfikować Zezwala użytkownikowi na modyfikowanie opisu i ceny elementu zawartości.
-* Kończyć Umożliwia użytkownikowi zakończenie kontraktu elementu zawartości.
+* Zmień: umożliwia użytkownikowi zmodyfikowanie opisu i ceny zasobu.
+* Przerwij: umożliwia użytkownikowi zakończenie kontraktu elementu zawartości.
 
 Użyj [interfejsu API pobierania akcji kontraktu](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget):
 
@@ -277,7 +277,7 @@ Content-type: application/json
 
 Użytkownik może następnie zdecydować się na podjęcie działania dla określonego wystąpienia kontraktu inteligentnego. W tym przypadku Rozważmy scenariusz, w którym użytkownik chce zmodyfikować opis i cenę elementu zawartości do następującej akcji:
 
-* Opis: "Mój zaktualizowany samochód"
+* Opis: „Mój zaktualizowany samochód”
 * Cena: 54321
 
 Użyj [interfejsu API tworzenia akcji kontraktu](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost):

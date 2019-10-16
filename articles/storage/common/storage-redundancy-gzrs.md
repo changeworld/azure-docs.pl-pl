@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 395e8b1bc92ea64c8a5cea114be443d6411c7412
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170329"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333216"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
@@ -25,7 +25,7 @@ Firma Microsoft zaleca używanie GZRS dla aplikacji wymagających spójności, t
 
 ## <a name="about-the-preview"></a>Informacje o wersji zapoznawczej
 
-Tylko konta magazynu ogólnego przeznaczenia w wersji 2 obsługują GZRS i RA-GZRS. Aby uzyskać więcej informacji na temat typów kont magazynu, zobacz [Omówienie konta usługi Azure Storage](storage-account-overview.md). GZRS i RA-GZRS obsługują blokowe obiekty blob, stronicowe obiekty blob, które nie są dyskami VHD, plikami, tabelami i kolejkami.
+Tylko konta magazynu ogólnego przeznaczenia w wersji 2 obsługują GZRS i RA-GZRS. Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat [Przegląd konta usługi Azure Storage](storage-account-overview.md). GZRS i RA-GZRS obsługują blokowe obiekty blob, stronicowe obiekty blob (które nie są dyskami VHD), pliki, tabele i kolejki.
 
 GZRS i RA-GZRS są obecnie dostępne w wersji zapoznawczej w następujących regionach:
 
@@ -101,9 +101,9 @@ Istnieją dwie opcje migracji do GZRS lub RA-GZRS z konta LRS, GRS lub RA-GRS:
 
 #### <a name="perform-a-manual-migration"></a>Przeprowadź migrację ręczną
 
-Aby przeprowadzić migrację w określonym dniu, należy rozważyć przeprowadzenie ręcznej migracji. Migracja ręczna zapewnia większą elastyczność niż migracja na żywo. W przypadku ręcznej migracji masz kontrolę nad chronometrażem.
+Aby przeprowadzić migrację w określonym dniu, należy rozważyć przeprowadzenie ręcznej migracji. Migracja ręczna zapewnia większą elastyczność niż migracja na żywo. W przypadku migracji ręcznej masz kontrolę nad harmonogramem.
 
-Aby ręcznie migrować dane z istniejącego konta do konta usługi GZRS lub RA-GZRS, użyj narzędzia, które może efektywnie kopiować dane. Oto kilka przykładów:
+Aby ręcznie migrować dane z istniejącego konta do konta usługi GZRS lub RA-GZRS, użyj narzędzia, które może efektywnie kopiować dane. Oto niektóre przykłady:
 
 - Użyj narzędzia, takiego jak AzCopy lub niezawodnego narzędzia innej firmy. Aby uzyskać informacje na temat AzCopy, zobacz Rozpoczynanie [pracy z AzCopy](storage-use-azcopy-v10.md).
 - Jeśli znasz już usługi Hadoop lub HDInsight, Dołącz źródłowe i docelowe konta magazynu do klastra. Następnie zrównoleglanie proces kopiowania danych za pomocą narzędzia, takiego jak pomocą distcp.
@@ -121,11 +121,11 @@ Po zakończeniu migracji ustawienie replikacji konta magazynu zostanie zaktualiz
 
 Należy pamiętać o następujących ograniczeniach migracji na żywo:
 
-- Mimo że firma Microsoft natychmiast obsługuje Twoje żądanie migracji na żywo, nie ma gwarancji, że po zakończeniu migracji na żywo. Jeśli chcesz, aby dane były migrowane do GZRS lub RA-GZRS w określonym dniu, firma Microsoft zaleca przeprowadzenie ręcznej migracji. Ogólnie rzecz biorąc, im więcej danych znajduje się na Twoim koncie, tym dłużej trwa Migrowanie tych danych.
+- Mimo że firma Microsoft obsłuży Twoje żądanie migracji na żywo tak szybko, jak to możliwe, nie ma możliwości określenia, kiedy migracja na żywo zostanie ukończona. Jeśli chcesz, aby dane były migrowane do GZRS lub RA-GZRS w określonym dniu, firma Microsoft zaleca przeprowadzenie ręcznej migracji. Ogólnie rzecz biorąc, im więcej danych zawiera Twoje konto, tym dłużej trwa ich migracja.
 - Twoje konto musi zawierać dane.
 - Dane można migrować tylko w tym samym regionie.
 - Tylko standardowe typy kont magazynu obsługują migrację na żywo. Konta magazynu w warstwie Premium muszą być migrowane ręcznie.
-- Migracja na żywo z konta GZRS lub RA-GZRS do konta LRS, GRS lub RA-GRS nie jest obsługiwana. Konieczne będzie ręczne przeniesienie danych na nowe lub istniejące konto magazynu.
+- Migracja na żywo z konta GZRS lub RA-GZRS do konta LRS, GRS lub RA-GRS nie jest obsługiwana. Konieczne będzie ręczne przeniesienie danych do nowego lub istniejącego konta magazynu.
 - Możesz zażądać migracji na żywo z usługi RA-GRS do RA-GZRS. Migrowanie z usługi RA-GRS do usługi GZRS nie jest jednak obsługiwane. W takim przypadku należy zażądać migracji na żywo do RA-GZRS, a następnie ręcznie przekonwertować konto magazynu, aby użyć GZRS.
 - Dyski zarządzane obsługują tylko LRS i nie można ich migrować do GZRS lub RA-GZRS. Aby uzyskać integrację z zestawami dostępności, zobacz [wprowadzenie do usługi Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
 - Można przechowywać migawki i obrazy dla SSD w warstwie Standardowa Managed Disks HDD w warstwie Standardowa magazynu i [wybierać między opcjami LRS, ZRS, GZRS i RA-GZRS](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -135,14 +135,14 @@ Aby zażądać migracji na żywo, użyj [Azure Portal](https://ms.portal.azure.c
 
 1. Wybierz pozycję **nowe żądanie obsługi**.
 2. Wypełnij **podstawowe** informacje na podstawie informacji o koncie. W sekcji **Usługa** wybierz pozycję **Zarządzanie kontem magazynu** i określ konto, które ma zostać zmigrowane.
-3. Wybierz pozycję **dalej**.
+3. Wybierz opcję **Dalej**.
 4. Określ następujące wartości w sekcji **problem** :
     - **Ważność**: pozostaw wartość domyślną równą-is.
     - **Typ problemu**: wybierz pozycję **migracja danych**.
     - **Kategoria**: wybierz pozycję **MIGRUJ do (Ra-) GZRS w regionie**.
     - **Title**: wpisz opisowy tytuł, na przykład **(Ra-) GZRS migracji konta**.
     - **Szczegóły**: wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład "Chcę migrować do GZRS z [LRS, GRS] w regionie \_ @ no__t-3". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w regionie \_ @ no__t-1".
-5. Wybierz pozycję **dalej**.
+5. Wybierz opcję **Dalej**.
 6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje kontaktowe** .
 7. Wybierz pozycję **Utwórz**.
 

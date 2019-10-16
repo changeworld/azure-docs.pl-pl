@@ -1,23 +1,23 @@
 ---
-title: Tworzenie aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench
+title: Tworzenie aplikacji łańcucha bloków — Azure łańcucha bloków Workbench
 description: Samouczek dotyczący sposobu tworzenia aplikacji łańcucha bloków na platformie Azure łańcucha bloków Workbench Preview.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: adc47ecb06c0e2dbfcae7b85aeec284027315e5b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: a7d7c68840999772461655090d0213ada0997a7a
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845157"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329106"
 ---
-# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Samouczek: Tworzenie aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench
+# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Samouczek: Tworzenie aplikacji łańcucha bloków na platformie Azure łańcucha bloków Workbench
 
 Usługa Azure Blockchain Workbench umożliwia tworzenie aplikacji łańcucha bloków reprezentujących przepływy pracy dla wielu podmiotów zdefiniowane za pomocą konfiguracji i kodu kontraktu inteligentnego.
 
@@ -214,7 +214,7 @@ Na początku pliku konfiguracji znajdują się informacje o aplikacji, w tym naz
 
 W sekcji ról aplikacji są definiowane role użytkowników, którzy mogą działać lub uczestniczyć w ramach aplikacji łańcucha bloków. Definiowany jest zestaw odrębnych ról na podstawie funkcjonalności. W scenariuszu żądanie-odpowiedź występuje rozróżnienie między funkcjonalnością osoby żądającej jako jednostki tworzącej żądania oraz osoby odpowiadającej jako jednostki tworzącej odpowiedzi.
 
-### <a name="workflows"></a>Workflows
+### <a name="workflows"></a>Przepływy
 
 Przepływy pracy definiują co najmniej jeden etap i co najmniej jedną akcję kontraktu. W scenariuszu żądanie-odpowiedź pierwszy etap (stan) przepływu pracy to wykonanie akcji (przejście) wysłania żądania (funkcja) przez osobę żądającą (rola). W kolejnym etapie (stan) osoba odpowiadająca (rola) wykonuje akcję (przejście) wysłania odpowiedzi (funkcja). Przepływ pracy aplikacji może obejmować właściwości, funkcje i stany wymagane do opisania przepływu kontraktu.
 
@@ -287,7 +287,7 @@ Dodaj funkcję konstruktora do Twojego kontraktu w pliku kodu kontraktu intelige
     }
 ```
 
-### <a name="functions"></a>Funkcje
+### <a name="functions"></a>Functions
 
 Funkcje to wykonywalne jednostki logiki biznesowej w ramach kontraktu. Wymagane parametry funkcji są definiowane jako parametry funkcji w pliku konfiguracji. Liczba, kolejność i typ parametrów muszą być takie same w obu plikach. Funkcje są skojarzone z przejściami w przepływie pracy usługi Blockchain Workbench w pliku konfiguracji. Przejście jest akcją wykonywaną, aby przejść do kolejnego etapu przepływu pracy aplikacji, jak określono w kontrakcie.
 

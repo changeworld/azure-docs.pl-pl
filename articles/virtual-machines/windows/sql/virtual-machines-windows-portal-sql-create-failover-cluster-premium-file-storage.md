@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 39f04005776f3b451ad7c64c76f9aa5d8c4a7768
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311879"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330092"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurowanie SQL Server wystąpienia klastra trybu failover z udziałem plików w warstwie Premium na platformie Azure Virtual Machines
 
@@ -52,6 +52,8 @@ Ponadto należy ogólnie zrozumieć następujące technologie:
 Udziały plików w warstwie Premium zapewniają operacje we/wy na sekundę, które będą spełniały potrzeby wielu obciążeń. Jednak w przypadku obciążeń intensywnie korzystających z operacji we/wy należy wziąć pod uwagę [SQL Server FCI z bezpośrednie miejsca do magazynowania](virtual-machines-windows-portal-sql-create-failover-cluster.md) na podstawie zarządzanych dysków w warstwie Premium lub dysków twardych.  
 
 Sprawdź działanie IOPS w bieżącym środowisku i sprawdź, czy pliki premium będą dostarczać zbędne IOPS przed rozpoczęciem wdrażania lub migracji. Użyj liczników dysków monitora wydajności systemu Windows i monitoruj łączną liczbę IOPS (transfery dysku/s) i przepływność (bajty dysku/s) wymagane dla plików SQL Server, dzienników i tymczasowych baz danych. Wiele obciążeń ma rozbicie operacji we/wy, dlatego dobrym pomysłem jest sprawdzenie w czasie dużych okresów użycia i zanotowanie maksymalnej liczby IOPS, a także przeciętnych operacji we/wy na sekundę. Udziały plików w warstwie Premium zapewniają liczbę operacji we/wy na podstawie rozmiaru udziału. Pliki w warstwie Premium zapewniają również rozbicie na wiele godzin, dzięki czemu można przedefiniować wartość we/wy do trzykrotnej kwoty linii bazowej. 
+
+Aby uzyskać więcej informacji na temat wydajności udziałów plików w warstwie Premium, zobacz [warstwy wydajności udziału plików](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-planning#file-share-performance-tiers). 
 
 ### <a name="licensing-and-pricing"></a>Licencjonowanie i Cennik
 

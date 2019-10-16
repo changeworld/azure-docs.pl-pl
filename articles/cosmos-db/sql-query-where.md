@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003477"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326639"
 ---
-# <a name="where-clause"></a>Klauzula WHERE
+# <a name="where-clause-in-azure-cosmos-db"></a>Klauzula WHERE w Azure Cosmos DB
 
-Opcjonalna klauzula WHERE (`WHERE <filter_condition>`) określa warunek (y), które muszą spełniać źródłowe elementy JSON dla zapytania, aby uwzględnić je w wynikach. Element JSON musi oszacować określone warunki, aby `true` można je było uwzględnić w wyniku. Warstwa indeksu używa klauzuli WHERE do określenia najmniejszego podzestawu elementów źródłowych, które mogą być częścią wyniku.
+Opcjonalna klauzula WHERE (`WHERE <filter_condition>`) określa warunki, że źródłowe elementy JSON muszą być spełnione dla zapytania, aby uwzględnić je w wynikach. Element JSON musi oszacować określone warunki, aby `true` do uwzględnienia w wyniku. Warstwa indeksu używa klauzuli WHERE do określenia najmniejszego podzestawu elementów źródłowych, które mogą być częścią wyniku.
   
 ## <a name="syntax"></a>Składnia
   
@@ -29,20 +29,20 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Określa warunek do spełnienia dokumentów, które mają zostać zwrócone.  
+   Określa warunek, który ma zostać spełniony dla dokumentów, które mają zostać zwrócone.  
   
 - `<scalar_expression>`  
   
-   Wyrażenie reprezentujące wartość ma zostać obliczony. Aby uzyskać szczegółowe informacje, zobacz [wyrażenia skalarne](sql-query-scalar-expressions.md) .  
+   Wyrażenie reprezentujące wartość, która ma zostać obliczona. Aby uzyskać szczegółowe informacje, zobacz [wyrażenia skalarne](sql-query-scalar-expressions.md) .  
   
 
 ## <a name="remarks"></a>Uwagi
   
-  W kolejności dokumentu, które mają zostać zwrócone wyrażenie określone jako filtr warunek musi zwrócić wartość true. Tylko wartość logiczną PRAWDA będzie spełniać warunek jakakolwiek inna wartość: Niezdefiniowany, null, wartość false, liczby, tablicy lub obiektu nie spełnia warunku. 
+  Aby dokument był zwracany wyrażenie określone jako warunek filtru musi mieć wartość true. Tylko wartość logiczna true będzie spełniać warunek, żadna inna wartość: undefined, null, false, Number, array lub Object nie spełnia warunku. 
 
 ## <a name="examples"></a>Przykłady
 
-Następujące zapytanie żąda elementów, które zawierają `id` właściwość, której wartość to. `AndersenFamily` Wyklucza wszelkie elementy, które nie mają `id` właściwości lub których wartość nie jest zgodna. `AndersenFamily`
+Następujące zapytanie żąda elementów, które zawierają Właściwość `id`, której wartość jest `AndersenFamily`. Wyklucza każdy element, który nie ma właściwości `id` lub którego wartość nie jest zgodna z `AndersenFamily`.
 
 ```sql
     SELECT f.address
@@ -74,7 +74,7 @@ Można użyć następujących obsługiwanych operatorów binarnych:
 |Bitowy    | \|, &, ^, <<, >>, >>> (wypełnienie zerami, przesunięcie w prawo) |
 |Logiczny    | AND, OR, NOT      |
 |Porównanie | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|String     |  \|\| (łączenie) |
+|Ciąg     |  \|\| (łączenie) |
 
 Następujące zapytania używają operatorów binarnych:
 
@@ -104,10 +104,10 @@ Można również użyć operatorów jednoargumentowych +,-, ~, a nie w zapytania
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Można również użyć odwołań do właściwości w zapytaniach. Na przykład `SELECT * FROM Families f WHERE f.isRegistered` zwraca element JSON zawierający Właściwość `isRegistered` o wartości równej `true`. Każda inna wartość, taka jak `false` `Undefined`, `null` `<number>` `<string>` `<array>`,,,, lub, wyklucza element z wyniku. `<object>` 
+Można również użyć odwołań do właściwości w zapytaniach. Na przykład `SELECT * FROM Families f WHERE f.isRegistered` zwraca element JSON zawierający Właściwość `isRegistered` o wartości równej `true`. Każda inna wartość, taka jak `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>` lub `<array>`, wyklucza element z wyniku. 
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
 - [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [FROM — klauzula](sql-query-from.md)
+- [Klauzula FROM](sql-query-from.md)

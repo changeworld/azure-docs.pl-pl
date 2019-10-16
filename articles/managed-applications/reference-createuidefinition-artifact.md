@@ -1,20 +1,20 @@
 ---
 title: Dokumentacja artefaktu createUiDefinition aplikacji zarządzanej platformy Azure
-description: Ten artykuł jest odwołaniem do artefaktu createUiDefinition.
+description: Pokazuje, jak utworzyć artefakt createUiDefinition dla aplikacji zarządzanej platformy Azure. Plik ma nazwę createUiDefinition. JSON.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: 5168e977a7bc289ec8981ef1df8cddd5cc6df678
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 09364a849926fc829a890bfcdc8b760c7c7e189c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336480"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330194"
 ---
-# <a name="reference-user-interface-elements-artifact"></a>Informacje ogólne: Artefakt elementów interfejsu użytkownika
+# <a name="reference-user-interface-elements-artifact"></a>Odwołanie: artefakt elementów interfejsu użytkownika
 
 Ten artykuł jest odwołaniem do artefaktu *createUiDefinition. JSON* w Azure Managed Applications. Aby uzyskać więcej informacji na temat tworzenia elementów interfejsu użytkownika, zobacz [Tworzenie elementów interfejsu użytkownika](create-uidefinition-elements.md).
 
@@ -84,5 +84,5 @@ Poniższy kod JSON przedstawia przykład pliku *createUiDefinition. JSON* dla Az
 ## <a name="next-steps"></a>Następne kroki
 
 - [Samouczek: Tworzenie aplikacji zarządzanej z niestandardowymi akcjami i zasobami](tutorial-create-managed-app-with-custom-provider.md)
-- [Odwoła Artefakt szablonu wdrożenia](reference-main-template-artifact.md)
-- [Odwoła Wyświetl artefakt definicji](reference-view-definition-artifact.md)
+- [Odwołanie: artefakt szablonu wdrożenia](reference-main-template-artifact.md)
+- [Reference: artefakt definicji widoku](reference-view-definition-artifact.md)

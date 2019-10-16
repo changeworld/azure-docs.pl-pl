@@ -1,17 +1,17 @@
 ---
 title: Tworzenie i używanie dostawcy niestandardowego
-description: Ten samouczek przedstawia sposób tworzenia i używania niestandardowego dostawcy.
+description: W tym samouczku przedstawiono sposób tworzenia i używania niestandardowego dostawcy platformy Azure. Użyj dostawców niestandardowych, aby zmienić przepływy pracy na platformie Azure.
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 053cf9fca03bf58cf10c313ae2569ce1918a46b9
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6217e9007f20cb365aff0837f58f1a6074a3e6ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172910"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330055"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Tworzenie i używanie dostawcy niestandardowego
 
@@ -34,15 +34,15 @@ Po utworzeniu punktu końcowego można utworzyć niestandardowego dostawcę w ce
 
 Właściwość | Wymagane | Opis
 ---|---|---
-**name** | Tak | Nazwa definicji punktu końcowego. Platforma Azure udostępnia tę nazwę za pomocą interfejsu API w obszarze/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
+**Nazwij** | Tak | Nazwa definicji punktu końcowego. Platforma Azure udostępnia tę nazwę za pomocą interfejsu API w obszarze/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
 **routingtype** | Nie | Typ kontraktu punktu końcowego. Jeśli wartość nie jest określona, zostanie ona domyślnie ustawiona na "proxy".
 **punktu końcowego** | Tak | Punkt końcowy, do którego będą kierowane żądania. Ten punkt końcowy obsługuje odpowiedź i wszystkie efekty uboczne żądania.
 
-Wartość **punktu końcowego** jest WYZWALANYM adresem URL aplikacji funkcji platformy Azure. Symbole zastępcze `<funcname>` `<functionkey>` , i muszą zostać zastąpione wartościami dla utworzonej aplikacji funkcji. `<yourapp>`
+Wartość **punktu końcowego** jest WYZWALANYM adresem URL aplikacji funkcji platformy Azure. Symbole zastępcze `<yourapp>`, `<funcname>` i `<functionkey>` muszą zostać zastąpione wartościami dla utworzonej aplikacji funkcji.
 
 ## <a name="define-custom-actions-and-resources"></a>Definiowanie niestandardowych akcji i zasobów
 
-Dostawca niestandardowy zawiera listę definicji punktów końcowych modelowanych w ramach **akcji** i właściwości **resourceTypes** . Właściwość **Actions** mapuje na akcje niestandardowe udostępniane przez niestandardowego dostawcę, a właściwość **resourceTypes** to zasoby niestandardowe. W tym samouczku Dostawca niestandardowy ma właściwość **Actions** o `myCustomAction` nazwie i Właściwość **resourceTypes** o nazwie `myCustomResources`.
+Dostawca niestandardowy zawiera listę definicji punktów końcowych modelowanych w ramach **akcji** i właściwości **resourceTypes** . Właściwość **Actions** mapuje na akcje niestandardowe udostępniane przez niestandardowego dostawcę, a właściwość **resourceTypes** to zasoby niestandardowe. W tym samouczku Dostawca niestandardowy ma właściwość **Actions** o nazwie `myCustomAction` i Właściwość **resourceTypes** o nazwie `myCustomResources`.
 
 ```JSON
 {
@@ -113,7 +113,7 @@ Po utworzeniu niestandardowego dostawcy można użyć nowych interfejsów API pl
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 > [!NOTE]
-> Należy zastąpić `{subscriptionId}` symbole zastępcze `{resourceGroupName}` i grupę zasobów, w której został wdrożony niestandardowy dostawca.
+> Należy zastąpić symbole zastępcze `{subscriptionId}` i `{resourceGroupName}` z subskrypcją i grupą zasobów, w której został wdrożony niestandardowy dostawca.
 
 ```azurecli-interactive
 az resource invoke-action --action myCustomAction \
@@ -141,7 +141,7 @@ Brak.
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 > [!NOTE]
-> Należy zastąpić `{subscriptionId}` symbole zastępcze `{resourceGroupName}` i grupę zasobów, w której został wdrożony niestandardowy dostawca.
+> Należy zastąpić symbole zastępcze `{subscriptionId}` i `{resourceGroupName}` z subskrypcją i grupą zasobów, w której został wdrożony niestandardowy dostawca.
 
 #### <a name="create-a-custom-resource"></a>Tworzenie zasobu niestandardowego
 
@@ -160,8 +160,8 @@ az resource create --is-full-object \
 Parametr | Wymagane | Opis
 ---|---|---
 *is-full-Object* | Tak | Wskazuje, czy obiekt właściwości zawiera inne opcje, takie jak lokalizacja, Tagi, jednostka SKU lub plan.
-*id* | Tak | Identyfikator zasobu niestandardowego. Ten identyfikator jest rozszerzeniem niestandardowego identyfikatora zasobu dostawcy.
-*Właściwości* | Tak | Treść żądania, która zostanie wysłana do punktu końcowego.
+*#c1* | Tak | Identyfikator zasobu niestandardowego. Ten identyfikator jest rozszerzeniem niestandardowego identyfikatora zasobu dostawcy.
+*aœciwoœci* | Tak | Treść żądania, która zostanie wysłana do punktu końcowego.
 
 #### <a name="delete-a-custom-resource"></a>Usuwanie zasobu niestandardowego
 
@@ -171,7 +171,7 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 
 Parametr | Wymagane | Opis
 ---|---|---
-*id* | Tak | Identyfikator zasobu niestandardowego. Ten identyfikator jest rozszerzeniem niestandardowego identyfikatora zasobu dostawcy.
+*#c1* | Tak | Identyfikator zasobu niestandardowego. Ten identyfikator jest rozszerzeniem niestandardowego identyfikatora zasobu dostawcy.
 
 #### <a name="retrieve-a-custom-resource"></a>Pobieranie zasobu niestandardowego
 
@@ -181,7 +181,7 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 
 Parametr | Wymagane | Opis
 ---|---|---
-*id* | Tak | Identyfikator zasobu niestandardowego. Ten identyfikator jest rozszerzeniem niestandardowego identyfikatora zasobu dostawcy.
+*#c1* | Tak | Identyfikator zasobu niestandardowego. Ten identyfikator jest rozszerzeniem niestandardowego identyfikatora zasobu dostawcy.
 
 # <a name="templatetabtemplate"></a>[Szablon](#tab/template)
 
@@ -207,7 +207,7 @@ Przykładowy szablon Menedżer zasobów:
 
 Parametr | Wymagane | Opis
 ---|---|---
-*resourceTypeName* | Tak | Wartość właściwości resourceTypes zdefiniowanej w dostawcy niestandardowym. `name`
+*resourceTypeName* | Tak | Wartość `name` właściwości **resourceTypes** zdefiniowanej w dostawcy niestandardowym.
 *resourceProviderName* | Tak | Nazwa wystąpienia dostawcy niestandardowego.
 *customResourceName* | Tak | Niestandardowa nazwa zasobu.
 
@@ -221,4 +221,4 @@ Parametr | Wymagane | Opis
 W tym artykule przedstawiono informacje o dostawcach niestandardowych. Aby uzyskać więcej informacji, zobacz:
 
 - [Instrukcje: Dodawanie akcji niestandardowych do interfejsu API REST platformy Azure](./custom-providers-action-endpoint-how-to.md)
-- [Instrukcje: Dodawanie niestandardowych zasobów do interfejsu API REST platformy Azure](./custom-providers-resources-endpoint-how-to.md)
+- [Instrukcje: Dodawanie zasobów niestandardowych do interfejsu API REST platformy Azure](./custom-providers-resources-endpoint-how-to.md)

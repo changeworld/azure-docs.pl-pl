@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2019
+ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14c3f90918d246a63d50af7b3542e8e74d5fbcf1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295523"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72324697"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów
 
@@ -62,7 +62,7 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
 
 1. Wybierz pozycję **Kontrola dostępu (IAM)** .
 1. Wybierz pozycję **Dodaj przypisanie roli**.
-1. Wybierz rolę, którą chcesz przypisać do aplikacji. Aby umożliwić aplikacji wykonywanie akcji takich jak **ponowny rozruch**, **Uruchamianie** i **Zatrzymywanie** wystąpień, wybierz rolę **współautor** . Domyślnie aplikacje usługi Azure AD nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, wyszukaj ją i wybierz ją.
+1. Wybierz rolę, którą chcesz przypisać do aplikacji. Na przykład, aby zezwolić aplikacji na wykonywanie akcji takich jak **ponowny rozruch**, **Uruchamianie** i **Zatrzymywanie** wystąpień, wybierz rolę **współautor** .  Przeczytaj więcej na temat [dostępnych ról](../../role-based-access-control/built-in-roles.md) domyślnie aplikacje usługi Azure AD nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, wyszukaj ją i wybierz ją.
 
    ![Wybierz rolę, która ma zostać przypisana do aplikacji](./media/howto-create-service-principal-portal/select-role.png)
 
@@ -89,7 +89,13 @@ Aplikacje demona mogą używać dwóch form poświadczeń do uwierzytelniania w 
 
 ### <a name="upload-a-certificate"></a>Przekaż certyfikat
 
-Jeśli masz istniejący certyfikat, możesz go użyć.  Opcjonalnie można utworzyć certyfikat z podpisem własnym na potrzeby testowania. Otwórz program PowerShell i uruchom polecenie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) z poniższymi parametrami, aby utworzyć certyfikat z podpisem własnym w magazynie certyfikatów użytkownika na komputerze: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Wyeksportuj ten certyfikat za pomocą przystawki [Zarządzanie certyfikatem użytkownika](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) programu MMC dostępnej w panelu sterowania systemu Windows.
+Jeśli masz istniejący certyfikat, możesz go użyć.  Opcjonalnie można utworzyć certyfikat z podpisem własnym na potrzeby testowania. Otwórz program PowerShell i uruchom polecenie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) z poniższymi parametrami, aby utworzyć certyfikat z podpisem własnym w magazynie certyfikatów użytkownika na komputerze: 
+
+```powershell
+$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
+```
+
+Wyeksportuj ten certyfikat do pliku za pomocą przystawki [Zarządzanie certyfikatem użytkownika](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC dostępnej w panelu sterowania systemu Windows.
 
 Aby przekazać certyfikat:
 
@@ -114,6 +120,14 @@ Jeśli zdecydujesz się nie używać certyfikatu, możesz utworzyć nowy klucz t
 
    ![Skopiuj wartość klucza tajnego, ponieważ nie można pobrać jej później](./media/howto-create-service-principal-portal/copy-secret.png)
 
+## <a name="configure-access-policies-on-resources"></a>Konfigurowanie zasad dostępu do zasobów
+Należy pamiętać, że konieczne może być skonfigurowanie uprawnień do dodawania do zasobów, do których aplikacja musi mieć dostęp. Na przykład należy również [zaktualizować zasady dostępu magazynu kluczy](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) , aby zapewnić aplikacji dostęp do kluczy, wpisów tajnych lub certyfikatów.  
+
+1. W [Azure Portal](https://portal.azure.com)przejdź do magazynu kluczy i wybierz pozycję **zasady dostępu**.  
+1. Wybierz pozycję **Dodaj zasady dostępu**, a następnie wybierz uprawnienia Key, Secret i Certificate, które chcesz udzielić aplikacji.  Wybierz nazwę główną usługi utworzoną wcześniej.
+1. Wybierz pozycję **Dodaj** , aby dodać zasady dostępu, a następnie pozycję **Zapisz** , aby zatwierdzić zmiany.
+    @no__t — zasady dostępu 0Add @ no__t-1
+
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 
 Musisz mieć wystarczające uprawnienia do zarejestrowania aplikacji w dzierżawie usługi Azure AD i przypisania aplikacji do roli w ramach subskrypcji platformy Azure.
@@ -125,7 +139,7 @@ Musisz mieć wystarczające uprawnienia do zarejestrowania aplikacji w dzierżaw
 
    ![Znajdź rolę. Jeśli jesteś użytkownikiem, upewnij się, że użytkownicy niebędący administratorami mogą rejestrować aplikacje](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. Wybierz pozycję **Ustawienia użytkownika**.
+1. W okienku po lewej stronie wybierz pozycję **Ustawienia użytkownika**.
 1. Sprawdź ustawienie **rejestracje aplikacji** . Tę wartość można ustawić tylko przez administratora. W przypadku wybrania **opcji tak**każdy użytkownik w dzierżawie usługi Azure AD może zarejestrować aplikację.
 
 Jeśli ustawienie rejestracje aplikacji ma wartość **nie**, tylko użytkownicy z rolą administratora mogą rejestrować te typy aplikacji. Zobacz [dostępne role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) i [uprawnienia roli](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) , aby dowiedzieć się więcej na temat dostępnych ról administratorów i określonych uprawnień w usłudze Azure AD, które są nadawane każdej roli. Jeśli Twoje konto jest przypisane do roli użytkownika, ale ustawienie rejestracji aplikacji jest ograniczone do użytkowników administracyjnych, poproszenie administratora o przypisanie do jednej z ról administratora, które mogą tworzyć wszystkie aspekty rejestracji aplikacji i zarządzać nimi, lub aby umożliwić użytkownikom Zarejestruj aplikacje.

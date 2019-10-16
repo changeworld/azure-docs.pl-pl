@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969581"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330236"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace — często zadawane pytania
 
@@ -24,15 +24,15 @@ Odpowiedzi na często zadawane pytania dotyczące portalu Azure Marketplace i Mi
 
 **Co to jest Portal Azure Marketplace?**
 
-[Portal Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) zapewnia dostęp i informacje o rozwiązaniach i usługach dostępnych od firmy Microsoft i jej partnerów. Klienci (specjaliści IT i deweloperzy) mogą odkrywać, próbować kupować rozwiązania oprogramowania w chmurze oparte na platformie Azure. Nasz katalog ponad 8000 list zawiera bloki konstrukcyjne platformy Azure, takie jak Virtual Machines (maszyny wirtualne), interfejsy API, aplikacje platformy Azure, szablony rozwiązań i aplikacje zarządzane, aplikacje SaaS, kontenery i usługi konsultingowe. 
+[Portal Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) zapewnia dostęp i informacje o rozwiązaniach i usługach dostępnych od firmy Microsoft i jej partnerów. Klienci mogą odkrywać, wypróbować lub kupować rozwiązania do tworzenia oprogramowania w chmurze oparte na platformie Azure lub w systemie. Nasz katalog ponad 8000 list zawiera bloki konstrukcyjne platformy Azure, takie jak Virtual Machines (maszyny wirtualne), interfejsy API, aplikacje platformy Azure, szablony rozwiązań i aplikacje zarządzane, aplikacje SaaS, kontenery i usługi konsultingowe.
 
 **Kto jest klientem portalu Azure Marketplace?**
 
-Portal Azure Marketplace jest przeznaczony dla informatyków i deweloperów chmury, którzy chcą korzystać z komercyjnego oprogramowania i usług IT.
+Portal Azure Marketplace jest przeznaczony dla informatyków i deweloperów chmury zainteresowanych komercyjnym oprogramowaniem i usługami IT.
 
 **Jakiego typu produkty są obecnie dostępne w portalu Azure Marketplace?**
 
-Witryna Azure Marketplace oferuje rozwiązania i usługi techniczne utworzone przez firmę Microsoft i jej partnerów w celu zwiększenia możliwości produktów i usług platformy Azure. Katalog rozwiązań obejmuje kilka kategorii, w tym między innymi:
+Witryna Azure Marketplace oferuje rozwiązania i usługi techniczne utworzone przez firmę Microsoft i jej partnerów w celu zwiększenia możliwości produktów i usług platformy Azure. Katalog rozwiązań obejmuje kilka kategorii, w tym:
 
 * podstawowe systemy operacyjne
 * databases
@@ -41,9 +41,6 @@ Witryna Azure Marketplace oferuje rozwiązania i usługi techniczne utworzone pr
 * sieć
 * łańcucha bloków
 * narzędzia deweloperskie
-* i nie tylko
-
-Portal Azure Marketplace oferuje aplikacje SaaS, Virtual Machines, szablony rozwiązań, aplikacje zarządzane przez platformę Azure i usługi konsultingowe.
 
 ### <a name="azure-marketplace-for-customers"></a>Witryna Azure Marketplace dla klientów
 
@@ -338,7 +335,7 @@ Potencjalni klienci to klienci, którzy wdrażają produkty z portalu Marketplac
 
 **Gdzie mogę uzyskać pomoc w konfigurowaniu miejsca docelowego potencjalnego klienta?**
 
-Dowiedz się więcej w temacie [Portal Cloud partner — Uzyskaj informacje o potencjalnych klientach](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) lub Prześlij bilet pomocy technicznej za pomocą [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) , wybierając typ oferty i zarządzanie potencjalnymi klientami.
+Dowiedz się więcej w [centrum partnerskim — Pobierz](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) dokumentację dla klientów lub Prześlij bilet pomocy technicznej za pomocą [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) , wybierając typ oferty i zarządzanie potencjalnymi klientami.
 
 **Czy muszę skonfigurować miejsce docelowe potencjalnego klienta w celu opublikowania oferty w portalu Marketplace?**
 
@@ -346,7 +343,7 @@ Tak, jeśli publikowana jest oferta **contacter**, **SaaS**lub **usług konsulti
 
 **Jak upewnić się, że konfiguracja lidera jest poprawna?**
 
-Po zakończeniu oferty i skonfigurowaniu miejsca docelowego potencjalnego klienta Lista może być prawidłowo opublikowana w [Portal Cloud partner](https://cloudpartner.azure.com/). Przed zapisaniem na żywo można sprawdzić, czy konfiguracja lidera działa poprawnie.  Wyślij test — potencjalny klient do miejsca docelowego potencjalnego klienta skonfigurowanego w ofercie.
+Po zakończeniu oferty i skonfigurowaniu miejsca docelowego potencjalnego klienta Lista może być prawidłowo opublikowana w [centrum partnerskim](https://cloudpartner.azure.com/). Przed zapisaniem na żywo można sprawdzić, czy konfiguracja lidera działa poprawnie.  Wyślij test — potencjalny klient do miejsca docelowego potencjalnego klienta skonfigurowanego w ofercie.
 
 **Jakie kraje/regiony są dostępne dla wydawców w portalu Azure Marketplace?**
 
@@ -356,7 +353,7 @@ Wydawcy w oparciu o następujące kraje/regiony mogą obecnie sprzedawać w port
 
 *Maszyna wirtualna & Azure Apps:*
 
-1. Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
+1. Zaloguj się do [Centrum partnerskiego](https://cloudpartner.azure.com/).
 1. Wybierz ofertę z karty **wszystkie oferty** .
 1. W okienku po lewej stronie ekranu wybierz kartę **jednostki SKU** .
 1. Wybierz jednostkę SKU do usunięcia, a następnie kliknij przycisk **Usuń** dla tej jednostki SKU.
@@ -366,7 +363,7 @@ Aby uzyskać więcej informacji, zobacz [usuwanie oferty](./cloud-partner-portal
 
 *Web Apps (SaaS Apps, dodatki) & usługi doradcze:*
 
-1. W portal Cloud Partner wybierz ikonę znaku zapytania, a następnie kliknij pozycję **Pomoc techniczna**.
+1. W centrum partnerskim wybierz ikonę znaku zapytania, a następnie kliknij pozycję **Pomoc techniczna**.
 1. Przejdź do pozycji <https://go.microsoft.com/fwlink/?linkid=844975> (Plik > Nowy > Inny).
 1. Na stronie Pomoc techniczna wybierz typ oferty.
 1. Wybierz pozycję **Usuń** opublikowaną ofertę.
@@ -419,19 +416,19 @@ Zarejestruj bilet z [Pomoc techniczna firmy Microsoft](https://support.microsoft
 
 **Z kim mam się kontaktować w przypadku ogólnych problemów z pomocą techniczną w witrynie Azure Marketplace?**
 
-Aby uzyskać ogólną pomoc techniczną dotyczącą zastosowań lub rozwiązywania problemów, skontaktuj się z [pomocą techniczną Portal Cloud partner](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
+Aby uzyskać ogólną pomoc techniczną dotyczącą zastosowań lub rozwiązywania problemów, skontaktuj się z [pomocą techniczną centrum partnera](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
 
 W przypadku problemów z rozliczeniami i subskrypcją w ramach zakupu portalu Azure Marketplace skontaktuj się z [pomocą techniczną platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
 **Komu mogę się skontaktować z publikowaniem lub oferowaniem pytań dotyczących zarządzania?**
 
-Odwiedź [Przewodnik wydawcy portalu Azure Marketplace](marketplace-publishers-guide.md) , aby uzyskać aktualne zasoby i dokumenty dotyczące często zadawanych pytań. Ponadto można rejestrować bilet z [Pomoc techniczna firmy Microsoft w Portal Cloud partner](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Odwiedź [Przewodnik wydawcy portalu Azure Marketplace](marketplace-publishers-guide.md) , aby uzyskać aktualne zasoby i dokumenty dotyczące często zadawanych pytań. Ponadto możesz rejestrować bilet [Pomoc techniczna firmy Microsoft w centrum partnerskim](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
 ### <a name="azure-marketplace-for-publishers"></a>Portal Azure Marketplace dla wydawców
 
 **Jak mogę zdefiniować moją dostępność geograficzną, aby umożliwić sprzedawanie w różnych krajach/regionach?**
 
-1.  W portal Cloud Partner przejdź do jednostki SKU, do której chcesz dodać nowe kraje/regiony.  W obszarze **szczegóły jednostki SKU**przejdź do obszaru **dostępność kraju/regionu** i kliknij pozycję **Wybierz regiony**.
+1.  W centrum partnerskim przejdź do jednostki SKU, do której chcesz dodać nowe kraje/regiony.  W obszarze **szczegóły jednostki SKU**przejdź do obszaru **dostępność kraju/regionu** i kliknij pozycję **Wybierz regiony**.
 
     ![Wybierz regiony](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 

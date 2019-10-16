@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 69fe370029cef391b8ee483ffdee5c588df41d58
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 147d3dba2e2dc271d5b7422d7ba2b28c04f583af
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030662"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330641"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Konfigurowanie laboratorium do uczenia skryptów powłoki w systemie Linux
 W tym artykule opisano sposób konfigurowania laboratorium do uczenia skryptów powłoki w systemie Linux. Obsługa skryptów jest przydatną częścią administrowania systemem, która umożliwia administratorom uniknięcie powtarzających się zadań. W tym przykładowym scenariuszu Klasa obejmuje tradycyjne skrypty bash oraz ulepszone skrypty. Ulepszone skrypty to skrypty, które łączą bash polecenia i Ruby. Takie podejście umożliwia używanie języka Ruby do przekazywania danych wokół i bash poleceń w celu współdziałania z powłoką. 
@@ -40,7 +40,7 @@ Postępuj zgodnie z [tym samouczkiem](tutorial-setup-classroom-lab.md) , aby utw
 | ------------ | ------------------ |
 | Rozmiar maszyny wirtualnej (VM) | Małe  |
 | Obraz maszyny wirtualnej | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) |
-| Włącz Podłączanie pulpitu zdalnego | Mogły. <p>Włączenie tego ustawienia umożliwi nauczycielom i uczniom łączenie się z maszynami wirtualnymi przy użyciu pulpitu zdalnego (RDP). Aby uzyskać więcej informacji, zobacz [Włączanie maszyn wirtualnych pulpitu zdalnego dla systemu Linux w laboratorium w Azure Lab Services](how-to-enable-remote-desktop-linux.md#teachers-connecting-to-the-template-vm-using-rdp). </p>|
+| Włącz Podłączanie pulpitu zdalnego | Mogły. <p>Włączenie tego ustawienia umożliwi nauczycielom i uczniom łączenie się z maszynami wirtualnymi przy użyciu pulpitu zdalnego (RDP). Aby uzyskać więcej informacji, zobacz [Włączanie maszyn wirtualnych pulpitu zdalnego dla systemu Linux w laboratorium w Azure Lab Services](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>Zainstaluj program Desktop i xrdp
@@ -96,9 +96,9 @@ W tym artykule omówiono procedurę tworzenia laboratorium dla klas skryptów. C
 Następne kroki są wspólne do konfigurowania dowolnego laboratorium:
 
 - [Dodawanie użytkowników](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Ustaw przydział](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [Ustaw przydział](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Ustawianie harmonogramu](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Linki do rejestracji w wiadomościach e-mail z uczniami](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link). 
+- [Linki do rejestracji w wiadomościach e-mail z uczniami](how-to-configure-student-usage.md#send-invitations-to-users). 
 
 
 

@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 6cc509b9f9a9087fbe832dbd35b3dfd8d60a6577
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 51d051fee1da1f9bb0c89ea9123748b512f84007
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308063"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327990"
 ---
-# <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Samouczek: W portalu QnA Maker Utwórz bazę wiedzy
+# <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Samouczek: w portalu QnA Maker Utwórz bazę wiedzy
 
 Utwórz nową bazę wiedzy z pytaniami i odpowiedziami z publicznych często zadawanych pytań. Zapisz, Wyszkol i Opublikuj bazę wiedzy. Po opublikowaniu bazy wiedzy Wyślij pytanie i odbierz odpowiedź z poleceniem zwinięcie. Następnie utwórz bot i przetestuj bot z tym samym pytaniem. 
 
@@ -39,7 +39,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md). 
 
-## <a name="create-a-knowledge-base"></a>Tworzenie bazy wiedzy 
+## <a name="create-a-knowledge-base"></a>Utwórz bazę wiedzy 
 
 1. Zaloguj się do portalu usługi [QnA Maker](https://www.qnamaker.ai). 
 
@@ -51,7 +51,7 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
 
 1. Wybierz istniejące ustawienia:  
 
-    |Ustawienie|Cel|
+    |Ustawienie|Przeznaczenie|
     |--|--|
     |Identyfikator katalogu Microsoft Azure|Ten identyfikator jest skojarzony z kontem używanym do logowania się do Azure Portal i portalu QnA Maker. |
     |Identyfikator subskrypcji platformy Azure|Konto rozliczeniowe, w którym utworzono zasób QnA Maker.|
@@ -65,9 +65,9 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
 
 1. Wypełnij bazę wiedzy następującymi ustawieniami:  
 
-    |Nazwa ustawienia|Wartość ustawienia|Cel|
+    |Nazwa ustawienia|Wartość ustawienia|Przeznaczenie|
     |--|--|--|
-    |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Zawartość często zadawanych pytań pod tym adresem URL jest formatowana za pomocą pytania, po którym następuje odpowiedź. Ten format może być interpretowany przez usługę QnA Maker w celu wyodrębnienia pytań i skojarzonych odpowiedzi.|
+    |Adres URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Zawartość często zadawanych pytań pod tym adresem URL jest formatowana za pomocą pytania, po którym następuje odpowiedź. Ten format może być interpretowany przez usługę QnA Maker w celu wyodrębnienia pytań i skojarzonych odpowiedzi.|
     |Plik |_nieużywane w tym samouczku_|Służy do przekazywania plików dla pytań i odpowiedzi. |
     |Osobowość dla konwersacji|Wyświetlana|Zapewnia to łatwą i swobodną [osobowość](../Concepts/best-practices.md#chit-chat) typowych pytań i odpowiedzi. Później można edytować te pytania i odpowiedzi. |
 
@@ -109,7 +109,7 @@ Nie zamykaj tej strony **publikowania** . Będzie ona potrzebna w dalszej częś
 
     ![Zrzut ekranu przedstawiający kartę zwinięcie](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. Skopiuj tekst z karty **zwinięcie** i uruchom ją w terminalu z włączonym zwinięciem lub w wierszu polecenia. Wartość nagłówka autoryzacji zawiera tekst `Endpoint`, z końcowym miejscem, a następnie klawiszem.
+1. Skopiuj tekst z karty **zwinięcie** i uruchom ją w terminalu z włączonym zwinięciem lub w wierszu polecenia. Wartość nagłówka autoryzacji obejmuje tekst `Endpoint`, z końcowym miejscem, a następnie klawiszem.
 
 1. Zastąp element `<Your question>` pytaniem `How large can my KB be?`. Jest ono podobne do pytania `How large a knowledge base can I create?`, ale nie identyczne. Usługa QnA Maker stosuje przetwarzanie języka naturalnego w celu określenia, czy dwa pytania są takie same.     
 
@@ -139,7 +139,7 @@ Nie zamykaj tej strony **publikowania** . Będzie ona potrzebna w dalszej częś
 
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Użyj Zwinięciea, aby wykonać zapytanie o odpowiedź Chit-Chat
 
-1. W terminalu z włączoną funkcją zastępowania Zastąp `How large can my KB be?` element instrukcją bot-kończącą się od użytkownika, taką jak. `Thank you`   
+1. W terminalu z włączoną funkcją zastępowania Zastąp `How large can my KB be?` instrukcją bot z konwersacją użytkownika, taką jak `Thank you`.   
 
 1. Uruchom polecenie zwinięcie i odbierz odpowiedź JSON, łącznie z oceną i odpowiedzią. 
 
@@ -181,7 +181,7 @@ Nie zamykaj tej strony **publikowania** . Będzie ona potrzebna w dalszej częś
 
 Każde pytanie, które QnA Maker nie ma pewności, że otrzymuje odpowiedź domyślną. Ta odpowiedź jest skonfigurowana w witrynie Azure portal. 
 
-1. W terminalu z włączoną funkcją zwinięcia Zamień `Thank you` na. `x` 
+1. W terminalu z włączoną funkcją zwinięcia Zastąp `Thank you` z `x`. 
 
 1. Uruchom polecenie zwinięcie i odbierz odpowiedź JSON, łącznie z oceną i odpowiedzią. 
 
@@ -201,7 +201,7 @@ Każde pytanie, które QnA Maker nie ma pewności, że otrzymuje odpowiedź domy
     }
     ```
     
-    QNA Maker zwrócił wynik `0`, co oznacza brak pewności. Zwraca również odpowiedź domyślną. 
+    QnA Maker zwróciła wynik `0`, co oznacza brak pewności. Zwraca również odpowiedź domyślną. 
 
 ## <a name="create-a-knowledge-base-bot"></a>Tworzenie bazy wiedzy bot
 
@@ -209,7 +209,7 @@ Aby uzyskać więcej informacji, zobacz [tworzenie rozmowy bot z tą bazą wiedz
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu pracy z bot bazy wiedzy Usuń grupę zasobów, `my-tutorial-rg`aby usunąć wszystkie zasoby platformy Azure utworzone w procesie bot.
+Po zakończeniu pracy z bot bazy wiedzy Usuń grupę zasobów `my-tutorial-rg`, aby usunąć wszystkie zasoby platformy Azure utworzone w procesie bot.
 
 Po zakończeniu pracy z bazą wiedzy w portalu QnA Maker wybierz pozycję **Moje bazy wiedzy**. Następnie wybierz bazę wiedzy, **mój samouczek KB**i wybierz ikonę Usuń znajdującą się po prawej stronie w tym wierszu.  
 

@@ -1,29 +1,29 @@
 ---
-title: Klauzuli FROM w usłudze Azure Cosmos DB
-description: Dowiedz się więcej o klauzuli SQL FROM dla usługi Azure Cosmos DB
+title: Klauzula FROM w Azure Cosmos DB
+description: Dowiedz się więcej na temat klauzuli SQL FROM dla Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: tisande
-ms.openlocfilehash: 6bc93569dc9a0405ec3a8dfd719c89ede01df84d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 79bb17277a041f71c095ed724737012f9501f16f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342906"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326991"
 ---
-# <a name="from-clause"></a>FROM — klauzula
+# <a name="from-clause-in-azure-cosmos-db"></a>Klauzula FROM w Azure Cosmos DB
 
-ŹRÓDŁOWA (`FROM <from_specification>`) klauzula jest opcjonalne, jeśli źródło jest filtrowana lub przewidywany później w zapytaniu. Zapytanie, takich jak `SELECT * FROM Families` wylicza w całym `Families` kontenera. Umożliwia także specjalny identyfikator GŁÓWNYM w kontenerze, zamiast nazwy kontenera.
+Klauzula FROM (`FROM <from_specification>`) jest opcjonalna, chyba że źródło zostanie odfiltrowane lub zaprojektować w dalszej części zapytania. Zapytanie, takie jak `SELECT * FROM Families`, wylicza cały kontener `Families`. Zamiast używać nazwy kontenera, można także użyć głównego identyfikatora dla kontenera.
 
-Klauzula FROM wymusza następujące zasady na zapytanie:
+Klauzula FROM wymusza następujące reguły dla każdego zapytania:
 
-* Kontener może mieć alias, taki jak `SELECT f.id FROM Families AS f` lub po prostu `SELECT f.id FROM Families f`. W tym miejscu `f` jest aliasem dla `Families`. PONIEWAŻ jest opcjonalne słowo kluczowe, aby [alias](sql-query-aliasing.md) identyfikator.  
+* Kontener może mieć alias, taki jak `SELECT f.id FROM Families AS f` lub po prostu `SELECT f.id FROM Families f`. Tutaj `f` jest aliasem dla `Families`. JAKO opcjonalne słowo kluczowe [aliasu](sql-query-aliasing.md) identyfikatora.  
 
-* Jeden raz, ponieważ oryginalna nazwa źródła nie może być powiązany. Na przykład `SELECT Families.id FROM Families f` ma nieprawidłową składnię ponieważ identyfikator `Families` jest aliasem i nie można rozpoznać dłużej.  
+* Po usunięciu aliasu oryginalna nazwa źródła nie może być powiązana. Na przykład `SELECT Families.id FROM Families f` jest syntaktycznie nieprawidłowy, ponieważ identyfikator `Families` ma alias i nie można go rozpoznać.  
 
-* Wszystkie właściwości odwołania musi być w pełni kwalifikowana uniknąć niejednoznaczne powiązań w przypadku braku zgodności ścisłego schematu. Na przykład `SELECT id FROM Families f` ma nieprawidłową składnię ponieważ właściwość `id` nie jest powiązany.
+* Wszystkie właściwości, do których istnieją odwołania, muszą być w pełni kwalifikowane, aby uniknąć niejednoznacznych powiązań w przypadku braku ścisłego przestrzegania schematu. Na przykład `SELECT id FROM Families f` jest syntaktycznie nieprawidłowa, ponieważ właściwość `id` nie jest powiązana.
 
 ## <a name="syntax"></a>Składnia
   
@@ -49,72 +49,72 @@ FROM <from_specification>
   
 - `<from_source>`  
   
-  Określa źródło danych, z lub bez aliasu. Jeśli nie określono aliasu, zostanie wywnioskowany z `<container_expression>` za pomocą następujących reguł:  
+  Określa źródło danych z aliasem lub bez niego. Jeśli alias nie zostanie określony, zostanie wywnioskowany na podstawie `<container_expression>` przy użyciu następujących reguł:  
   
-  -  Jeśli wyrażenie ma container_name, container_name będzie używany jako alias.  
+  -  Jeśli wyrażenie jest container_name, container_name będzie używany jako alias.  
   
-  -  Jeśli wyrażenie ma `<container_expression>`, property_name, a następnie property_name zostanie użyta jako alias. Jeśli wyrażenie ma container_name, container_name będzie używany jako alias.  
+  -  Jeśli wyrażenie jest `<container_expression>`, a następnie property_name, PROPERTY_NAME zostanie użyte jako alias. Jeśli wyrażenie jest container_name, container_name będzie używany jako alias.  
   
-- AS `input_alias`  
+- JAKO `input_alias`  
   
-  Określa, że `input_alias` to zbiór wartości zwróconych z podstawowego wyrażenia kontenera.  
+  Określa, że `input_alias` to zbiór wartości zwracanych przez bazowe wyrażenie kontenera.  
  
-- `input_alias` INDIE  
+- `input_alias` w  
   
-  Określa, że `input_alias` powinny reprezentować zbiór wartości uzyskane przez Iterowanie wszystkie elementy tablicy każdej macierzy zwracanym przez wyrażenie bazowego kontenera. Każda wartość zwracana przez bazowego wyrażenie kontenera, który nie jest tablicą jest ignorowany.  
+  Określa, że `input_alias` powinien reprezentować zestaw wartości uzyskanych przez iterację wszystkich elementów tablicy każdej tablicy zwracanej przez bazowe wyrażenie kontenera. Każda wartość zwrócona przez wyrażenie kontenera bazowego, który nie jest tablicą, jest ignorowana.  
   
 - `<container_expression>`  
   
-  Określa wyrażenie kontenera, który ma być używany do pobierania dokumentów.  
+  Określa wyrażenie kontenera, które ma być używane do pobierania dokumentów.  
   
 - `ROOT`  
   
-  Określa, że dany dokument powinny zostać pobrane z domyślnego kontenera aktualnie połączonych.  
+  Określa, że dokument powinien być pobrany z domyślnego, połączonego kontenera.  
   
 - `container_name`  
   
-  Określa, że w tym dokumencie mają zostać pobrane z podanego kontenera. Nazwa kontenera musi odpowiadać nazwie kontenera połączone obecnie z usługą.  
+  Określa, że dokument powinien być pobrany z podanego kontenera. Nazwa kontenera musi być zgodna z nazwą kontenera, z którym jest aktualnie połączona.  
   
 - `input_alias`  
   
-  Określa, że w tym dokumencie mają zostać pobrane ze źródła, zdefiniowane przez podany alias.  
+  Określa, że dokument ma zostać pobrany z innego źródła zdefiniowanego przez podany alias.  
   
 - `<container_expression> '.' property_`  
   
-  Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kontenera.  
+  Określa, że dokument ma być pobierany przez uzyskanie dostępu do właściwości `property_name` lub elementu tablicy array_index dla wszystkich dokumentów pobranych przez określone wyrażenie kontenera.  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kontenera.  
+  Określa, że dokument ma być pobierany przez uzyskanie dostępu do właściwości `property_name` lub elementu tablicy array_index dla wszystkich dokumentów pobranych przez określone wyrażenie kontenera.  
   
 ## <a name="remarks"></a>Uwagi
   
-Wszystkie aliasy podany lub wnioskowany w `<from_source>(`s) musi być unikatowa. Składnia `<container_expression>.`property_name jest taka sama jak `<container_expression>' ['"property_name"']'`. Jednak te ostatnie składni można użyć, jeśli nazwa właściwości zawiera znak — identyfikator.  
+Wszystkie aliasy dostarczone lub wywnioskowane w `<from_source>(`s) muszą być unikatowe. Składnia `<container_expression>.`property_name jest taka sama jak `<container_expression>' ['"property_name"']'`. Jednakże Ostatnia składnia może być użyta, jeśli nazwa właściwości zawiera znak inny niż identyfikator.  
   
-### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Obsługa brakujących elementów tablicy i wartości niezdefiniowanego nie ma właściwości
+### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Obsługa brakujących właściwości, brak elementów tablicy i niezdefiniowane wartości
   
-Wyrażenie kontenerów uzyskuje dostęp do właściwości lub elementów tablicy i wartości nie istnieje, ta wartość będą ignorowane i nie przetwarzane dalszych.  
+Jeśli wyrażenie kontenera uzyskuje dostęp do właściwości lub elementów tablicy i ta wartość nie istnieje, ta wartość zostanie zignorowana i nie będzie można jej przetworzyć.  
   
-### <a name="container-expression-context-scoping"></a>Wyznaczanie zakresu kontekście wyrażenia kontenera  
+### <a name="container-expression-context-scoping"></a>Określanie zakresu kontekstu wyrażenia kontenera  
   
-Wyrażenie kontener może być należące do kontenera lub zakresu w dokumencie:  
+Wyrażenie kontenera może być w zakresie kontenera lub w zakresie dokumentu:  
   
--   Wyrażenie jest kontenerów należące do zakresu, jeśli bazowe źródło wyrażenia kontenera jest albo głównego lub `container_name`. Takie wyrażenie reprezentuje zestaw dokumenty pobierane z kontenera bezpośrednio, a nie jest zależna od przetwarzania innych wyrażeń kontenera.  
+-   Wyrażenie jest w zakresie kontenera, jeśli bazowe Źródło wyrażenia kontenera jest elementem głównym lub `container_name`. Takie wyrażenie reprezentuje zestaw dokumentów pobranych bezpośrednio z kontenera i nie zależy od przetwarzania innych wyrażeń kontenera.  
   
--   Wyrażenie jest dokument należące do zakresu, jeśli bazowe źródło wyrażenia kontenera jest `input_alias` wprowadzone wcześniej w zapytaniu. Takie wyrażenie reprezentuje zestaw dokumentów uzyskanych przez obliczenie wyrażenia kontenera w zakresie każdego dokumentu należących do zestawu skojarzonych z danym kontenerem aliasem.  Wynikowy zestaw będzie Unii zestawów uzyskany w wyniku obliczenia wyrażenia kontenera dla poszczególnych dokumentów w podstawowym zestawie. 
+-   Wyrażenie jest w zakresie dokumentu, jeśli bazowe Źródło wyrażenia kontenera jest `input_alias` wprowadzone wcześniej w zapytaniu. Takie wyrażenie reprezentuje zestaw dokumentów uzyskanych przez ocenę wyrażenia kontenera w zakresie każdego dokumentu należącego do zestawu skojarzonego z kontenerem aliasów.  Wynikiem zestawu będzie związek zestawów uzyskanych przez obliczenie wyrażenia kontenera dla każdego z dokumentów w zestawie bazowym. 
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="get-subitems-by-using-the-from-clause"></a>Pobierz elementy podrzędne przy użyciu klauzuli FROM
+### <a name="get-subitems-by-using-the-from-clause"></a>Pobierz elementy podelementowe za pomocą klauzuli FROM
 
-Klauzula FROM może zmniejszyć źródła utworzenie mniejszego podzestawu. Aby wyliczyć tylko poddrzewo w każdym elemencie, subroot może stać się źródła, jak pokazano w poniższym przykładzie:
+Klauzula FROM może zmniejszyć źródło do mniejszego podzestawu. Aby wyliczyć tylko poddrzewo dla każdego elementu, jego element główny może stać się źródłem, jak pokazano w następującym przykładzie:
 
 ```sql
     SELECT *
     FROM Families.children
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -147,14 +147,14 @@ Wyniki są:
     ]
 ```
 
-Poprzednie Zapytanie używane tablicę jako źródła, ale obiekt jest również używany jako źródło. Zapytanie uwzględnia wszystkie wartości JSON prawidłowe, definicja źródła do włączenia w wyniku. Poniższy przykład, można wyłączyć `Families` nie mają `address.state` wartość.
+Poprzednie zapytanie używało tablicy jako źródła, ale można również użyć obiektu jako źródła. Zapytanie uwzględnia wszystkie prawidłowe, zdefiniowane wartości JSON w źródle do uwzględnienia w wyniku. W poniższym przykładzie wykluczono `Families`, które nie mają wartości `address.state`.
 
 ```sql
     SELECT *
     FROM Families.address.state
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -163,8 +163,8 @@ Wyniki są:
     ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
-- [Klauzula SELECT](sql-query-select.md)
+- [SELECT — klauzula](sql-query-select.md)
 - [Klauzula WHERE](sql-query-where.md)

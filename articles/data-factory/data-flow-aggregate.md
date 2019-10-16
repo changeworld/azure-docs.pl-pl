@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
-ms.translationtype: MT
+ms.openlocfilehash: 1dcc28313d1d8e59024fbc70738567cb59585d20
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026980"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326490"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregowanie transformacji w strumieniu danych mapowania 
 
@@ -44,6 +44,19 @@ Przekształcenia agregowane są ściśle równoważne z kwerendami SELECT SQL Ag
 * Użyj funkcji agregującej, aby dołączyć tę dodatkową kolumnę, taką jak Last () lub First ()
 * Dołącz ponownie kolumny przed agregacją przy użyciu [wzorca samosprzężenia](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
 
+## <a name="data-flow-script"></a>Skrypt przepływu danych
+
+Skrypt agregacji(media/data-flow/aggdfs1.png "zagregowanego") ![skryptu przepływu danych]
+
+* ```MoviesYear```: kolumna pochodna definiująca kolumny Year i title
+* ```AvgComedyRatingByYear```: Przekształcenie agregacji dla średniej klasyfikacji Comedies pogrupowane według roku
+* ```avgrating```: Nazwa nowej kolumny, która jest tworzona w celu przechowywania zagregowanej wartości
+
+```
+MoviesYear aggregate(groupBy(year),
+    avgrating = avg(toInteger(Rating))) ~> AvgComedyRatingByYear
+```
+  
 ## <a name="next-steps"></a>Następne kroki
 
 * Definiowanie agregacji opartej na oknach przy użyciu [transformacji okna](data-flow-window.md)

@@ -1,21 +1,21 @@
 ---
-title: Użyj Visual Studio Code, aby tworzyć, kompilować i wdrażać inteligentne kontrakty przy użyciu usługi Azure łańcucha bloków Service
+title: Użyj Visual Studio Code — usługa Azure łańcucha bloków
 description: Samouczek dotyczący sposobu korzystania z rozszerzenia Azure łańcucha bloków Development Kit for Ethereum w programie Visual Studio Code do tworzenia, kompilowania i wdrażania inteligentnego kontraktu w usłudze Azure łańcucha bloków Service.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/10/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 96fe4d77efdd1fda309d7da021bcc208edd2dfe9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934997"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329242"
 ---
-# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Samouczek: Używanie Visual Studio Code do tworzenia, kompilowania i wdrażania kontraktów inteligentnych
+# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Samouczek: używanie Visual Studio Code do tworzenia, kompilowania i wdrażania kontraktów inteligentnych
 
 W tym samouczku Użyj rozszerzenia Azure łańcucha bloków Development Kit for Ethereum w Visual Studio Code, aby utworzyć, skompilować i wdrożyć inteligentny kontrakt w usłudze Azure łańcucha bloków Service. Możesz również użyć Truffle do wykonywania funkcji kontraktu inteligentnego za pośrednictwem transakcji.
 
@@ -31,13 +31,13 @@ Używasz zestawu Azure łańcucha bloków Development Kit dla Ethereum:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Pełny [Przewodnik Szybki Start: Użyj Visual Studio Code, aby nawiązać połączenie z siecią Azure łańcucha bloków Service Consortium](connect-vscode.md)
+* Kończenie [szybkiego startu: użyj Visual Studio Code, aby nawiązać połączenie z siecią Azure łańcucha bloków Service Consortium](connect-vscode.md)
 
 ## <a name="create-a-smart-contract"></a>Tworzenie kontraktu inteligentnego
 
-Zestaw Azure łańcucha bloków Development Kit dla Ethereum używa szablonów projektów i narzędzi Truffle, aby pomóc w tworzeniu i wdrażaniu umów. Przed rozpoczęciem wykonaj czynności wstępne [dotyczące przewodnika Szybki Start: Użyj Visual Studio Code, aby nawiązać połączenie z siecią](connect-vscode.md)konsorcjum usługi Azure łańcucha bloków. Przewodnik Szybki Start przeprowadzi Cię przez proces instalowania i konfigurowania zestawu Azure łańcucha bloków Development Kit dla Ethereum.
+Zestaw Azure łańcucha bloków Development Kit dla Ethereum używa szablonów projektów i narzędzi Truffle, aby pomóc w tworzeniu i wdrażaniu umów. Przed rozpoczęciem Wypełnij wymagania wstępne [przewodnika Szybki Start: użyj Visual Studio Code, aby nawiązać połączenie z siecią konsorcjum usługi Azure łańcucha bloków](connect-vscode.md). Przewodnik Szybki Start przeprowadzi Cię przez proces instalowania i konfigurowania zestawu Azure łańcucha bloków Development Kit dla Ethereum.
 
-1. Z palety poleceń vs Code wybierz **pozycję Azure łańcucha bloków: Nowy projekt**o stałej wypełniania.
+1. Z palety poleceń VS Code wybierz pozycję **Azure łańcucha bloków: nowy projekt o stałej**wypełniania.
 1. Wybierz pozycję **Utwórz projekt podstawowy**.
 1. Utwórz nowy folder o nazwie `HelloBlockchain` i **Wybierz pozycję Nowy projekt ścieżka**.
 
@@ -76,7 +76,7 @@ Usługa Azure łańcucha bloków Development Kit używa Truffle do wykonania skr
 
 Funkcja **SendRequest** kontraktu **HelloBlockchain** zmienia zmienną stanu **RequestMessage** . Zmiana stanu sieci łańcucha bloków odbywa się za pośrednictwem transakcji. Możesz utworzyć skrypt, aby wykonać funkcję **SendRequest** za pośrednictwem transakcji.
 
-1. Utwórz nowy plik w katalogu głównym projektu Truffle i nadaj mu `sendrequest.js`nazwę. Dodaj następujący kod JavaScript Web3 do pliku.
+1. Utwórz nowy plik w katalogu głównym projektu Truffle i nadaj mu nazwę `sendrequest.js`. Dodaj następujący kod JavaScript Web3 do pliku.
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
@@ -104,7 +104,7 @@ Funkcja **SendRequest** kontraktu **HelloBlockchain** zmienia zmienną stanu **R
     truffle exec sendrequest.js --network <blockchain network>
     ```
 
-    Zastąp \<Sieć\> łańcucha bloków nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
+    Zastąp \<blockchain Network @ no__t-1 nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
 
 Truffle wykonuje skrypt w sieci łańcucha bloków.
 
@@ -132,7 +132,7 @@ Funkcje kontraktu inteligentnego mogą zwracać bieżącą wartość zmiennych s
 
 1. Kliknij prawym przyciskiem myszy **HelloBlockchain. peruwiański** i wybierz polecenie **Kompiluj kontrakty** z menu, aby skompilować zmiany do kontraktu inteligentnego.
 1. Aby wdrożyć, kliknij prawym przyciskiem myszy **HelloBlockchain. peruwiański** i wybierz polecenie **Wdróż kontrakty** z menu. Po wyświetleniu monitu wybierz Sieć Azure łańcucha bloków Consortium w palecie poleceń.
-1. Następnie utwórz skrypt, używając programu w celu wywołania funkcji **GetMessage** . Utwórz nowy plik w katalogu głównym projektu Truffle i nadaj mu `getmessage.js`nazwę. Dodaj następujący kod JavaScript Web3 do pliku.
+1. Następnie utwórz skrypt, używając programu w celu wywołania funkcji **GetMessage** . Utwórz nowy plik w katalogu głównym projektu Truffle i nadaj mu nazwę `getmessage.js`. Dodaj następujący kod JavaScript Web3 do pliku.
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
@@ -159,7 +159,7 @@ Funkcje kontraktu inteligentnego mogą zwracać bieżącą wartość zmiennych s
     truffle exec getmessage.js --network <blockchain network>
     ```
 
-    Zastąp \<Sieć\> łańcucha bloków nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
+    Zastąp \<blockchain Network @ no__t-1 nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
 
 Skrypt wysyła zapytanie do inteligentnego kontraktu przez wywołanie funkcji GetMessage. Zwracana jest bieżąca wartość zmiennej stanu **RequestMessage** .
 
@@ -175,7 +175,7 @@ Zwróć uwagę na to, że wartość nie jest **Hello, łańcucha bloków!** . Za
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy zasoby nie będą już potrzebne, można je usunąć przez usunięcie `myResourceGroup` grupy zasobów utworzonej w ramach przewodnika Szybki Start dotyczącego *tworzenia elementu członkowskiego łańcucha bloków* .
+Gdy zasoby nie będą już potrzebne, można je usunąć, usuwając grupę zasobów `myResourceGroup` utworzoną w ramach przewodnika Szybki Start dotyczącego *tworzenia elementu członkowskiego łańcucha bloków* .
 
 Aby usunąć grupę zasobów:
 

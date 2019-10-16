@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: e1875ebdb62cfc6d606465b863215513aaa47c02
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 5b6ec913226f44a47bfa5c734e0c20ef3a87ca67
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972903"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329429"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użyciem i kosztami za pomocą dzienników Azure Monitor
 
@@ -32,7 +32,7 @@ W tym artykule opisano, jak można aktywnie monitorować pozyskiwane ilości dan
 
 ## <a name="pricing-model"></a>Model cen
 
-Domyślna cena dla Log Analytics jest modelem **płatności zgodnie z rzeczywistym** użyciem na podstawie ilości danych pozyskiwanych i opcjonalnie do dłuższego przechowywania danych. Każdy obszar roboczy Log Analytics jest rozliczany jako osobna usługa i przyczynia się do rozliczenia za subskrypcję platformy Azure. Ilość pozyskiwania danych może być znaczna w zależności od następujących czynników: 
+Domyślna cena dla Log Analytics jest modelem **płatności zgodnie z rzeczywistym** użyciem na podstawie ilości danych pozyskiwanych i opcjonalnie do dłuższego przechowywania danych. Ilość danych jest mierzona jako rozmiar danych, które będą przechowywane. Każdy obszar roboczy Log Analytics jest rozliczany jako osobna usługa i przyczynia się do rozliczenia za subskrypcję platformy Azure. Ilość pozyskiwania danych może być znaczna w zależności od następujących czynników: 
 
   - Liczba włączonych rozwiązań zarządzania i ich konfiguracja (np. 
   - Liczba monitorowanych maszyn wirtualnych
@@ -123,13 +123,13 @@ Aby ustawić domyślne przechowywanie dla obszaru roboczego,
 
     ![Zmień ustawienie przechowywania danych obszaru roboczego](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-Przechowywanie można również [ustawić za pomocą ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja jest udostępniana tylko przez ARM. 
+Przechowywanie można również [ustawić za pośrednictwem Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja jest udostępniana tylko przez Azure Resource Manager. 
 
 Dwa typy danych — `Usage` i `AzureActivity`--są domyślnie zachowywane przez 90 dni i nie są naliczane opłaty za korzystanie z tego 90go okresu przechowywania. Te typy danych są również wolne od opłat za pozyskiwanie danych. 
 
 ### <a name="retention-by-data-type"></a>Przechowywanie według typu danych
 
-Można również określić różne ustawienia przechowywania dla poszczególnych typów danych. Każdy typ danych jest zasobem podrzędnym obszaru roboczego. Na przykład tabelę SecurityEvent można rozmieścić w [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) jako:
+Można również określić różne ustawienia przechowywania dla poszczególnych typów danych. Każdy typ danych jest zasobem podrzędnym obszaru roboczego. Na przykład można [rozAzure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) tabeli SecurityEvent jako:
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -161,7 +161,7 @@ Aby ustawić przechowywanie określonego typu danych (w tym przykładzie Securit
 
 Nie można ustawić typów danych `Usage` i `AzureActivity` z przechowywaniem niestandardowym. Zajmie to maksymalny domyślny okres przechowywania obszaru roboczego lub 90 dni. 
 
-Doskonałym narzędziem do nawiązywania bezpośredniego połączenia z platformą ARM w celu ustawienia przechowywania według typu danych jest narzędzie OSS [ARMclient](https://github.com/projectkudu/ARMClient).  Dowiedz się więcej na temat ARMclient z artykułów przez [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) i [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).  Oto automatyzacji z ARMClient, aby ustawić dane SecurityEvent na 730 dni:
+Doskonałym narzędziem do nawiązywania bezpośredniego połączenia z Azure Resource Manager, aby ustawić przechowywanie według typu danych, jest narzędzie OSS [ARMclient](https://github.com/projectkudu/ARMClient).  Dowiedz się więcej na temat ARMclient z artykułów przez [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) i [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).  Oto automatyzacji z ARMClient, aby ustawić dane SecurityEvent na 730 dni:
 
 ```
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview "{properties: {retentionInDays: 730}}"
@@ -193,7 +193,7 @@ Jeśli obszar roboczy Log Analytics ma dostęp do starszych warstw cenowych, aby
 3. W obszarze **warstwa cenowa**wybierz warstwę cenową, a następnie kliknij pozycję **Wybierz**.  
     @no__t — plan cennika 0Selected @ no__t-1
 
-Możesz również [ustawić warstwę cenową za pośrednictwem ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy użyciu parametru `sku` (`pricingTier` w szablonie ARM). 
+Możesz również [ustawić warstwę cenową za pośrednictwem Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy użyciu parametru `sku` (`pricingTier` w szablonie ARM). 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Rozwiązywanie problemów dlaczego Log Analytics nie zbiera już danych
 

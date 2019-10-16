@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef652b05f62218ee1d0e72543bfa546f0c14abe
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001711"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330025"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS przy użyciu Azure Active Directory
 
@@ -99,14 +99,14 @@ Użyj portalu Azure Active Directory, aby skonfigurować usługę Azure AD Provi
 
 1. Wybierz opcję Automatyczna dla **trybu aprowizacji** , aby określić ustawienia poświadczeń administratora, mapowania, uruchamiania i zatrzymywania oraz synchronizację.
 
-   - Rozwiń węzeł **poświadczenia administratora** , aby wprowadzić poświadczenia wymagane przez usługę Azure AD do łączenia się z interfejsem API zarządzania użytkownikami aplikacji. Ta sekcja umożliwia również włączenie powiadomień e-mail w przypadku niepowodzenia poświadczeń lub zadania aprowizacji do [kwarantanny](#quarantine).
+   - Rozwiń węzeł **poświadczenia administratora** , aby wprowadzić poświadczenia wymagane przez usługę Azure AD do łączenia się z interfejsem API zarządzania użytkownikami aplikacji. Ta sekcja umożliwia również włączenie powiadomień e-mail w przypadku niepowodzenia poświadczeń lub zadania aprowizacji do [kwarantanny](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
    - Rozwiń węzeł **mapowania** , aby wyświetlić i edytować atrybuty użytkownika, które przepływają między usługą Azure AD a aplikacją docelową, gdy konta użytkowników są inicjowane lub aktualizowane. Jeśli aplikacja docelowa obsługuje tę funkcję, w tej sekcji można opcjonalnie skonfigurować obsługę administracyjną grup i kont użytkowników. Wybierz mapowanie w tabeli, aby otworzyć Edytor mapowania po prawej stronie, w którym można wyświetlać i dostosowywać atrybuty użytkownika.
 
-     **Filtry określania zakresu** informują usługę aprowizacji, którą użytkownicy i grupy w systemie źródłowym powinny być obsługiwane lub cofać administracyjnie do systemu docelowego. W okienku **Mapowanie atrybutu** wybierz pozycję **Zakres obiektu źródłowego** , aby filtrować według określonych wartości atrybutów. Można na przykład określić, że tylko użytkownicy z atrybutem "dział" "Sales" muszą być w zakresie aprowizacji. Aby uzyskać więcej informacji, zobacz [Używanie filtrów zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
+     **Filtry określania zakresu** informują usługę aprowizacji, którą użytkownicy i grupy w systemie źródłowym powinny być obsługiwane lub cofać administracyjnie do systemu docelowego. W okienku **Mapowanie atrybutu** wybierz pozycję **Zakres obiektu źródłowego** , aby filtrować według określonych wartości atrybutów. Można na przykład określić, że w zakres aprowizacji mają wchodzić tylko użytkownicy, u których atrybut „Dział” ma wartość „Sprzedaż”. Aby uzyskać więcej informacji, zobacz [Używanie filtrów zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
 
      Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów](customize-application-attributes.md).
 
-   - **Ustawienia** kontrolują działanie usługi aprowizacji dla aplikacji, w tym to, czy jest ona obecnie uruchomiona. Menu **zakres** pozwala określić, czy tylko przypisani Użytkownicy i grupy powinny znajdować się w zakresie aprowizacji, czy też należy zainicjować obsługę administracyjną wszystkich użytkowników w katalogu usługi Azure AD. Aby uzyskać informacje dotyczące przypisywania użytkowników i grup, zobacz [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw w Azure Active Directory](assign-user-or-group-access-portal.md).
+   - **Ustawienia** kontrolują działanie usługi aprowizacji dla aplikacji, w tym to, czy jest ona obecnie uruchomiona. Menu **zakres** pozwala określić, czy tylko przypisani Użytkownicy i grupy powinny znajdować się w zakresie aprowizacji, czy też należy zainicjować obsługę administracyjną wszystkich użytkowników w katalogu usługi Azure AD. Aby uzyskać informacje na temat „przypisywania” użytkowników i grup, zobacz [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](assign-user-or-group-access-portal.md).
 
 Na ekranie Zarządzanie aplikacjami wybierz pozycję **dzienniki aprowizacji (wersja zapoznawcza)** , aby wyświetlić rekordy wszystkich operacji wykonywanych przez usługę Azure AD Provisioning. Aby uzyskać więcej informacji, zobacz [Przewodnik po raportowaniu obsługi administracyjnej](check-status-user-account-provisioning.md).
 
@@ -173,7 +173,7 @@ Jeśli większość lub wszystkie wywołania związane z systemem docelowym są 
 
 W przypadku kwarantanny Częstotliwość cykli przyrostowych jest stopniowo zmniejszana do raz dziennie.
 
-Zadanie aprowizacji zostanie usunięte z kwarantanny po naprawieniu wszystkich błędów powodujących problemy, gdy zostanie uruchomiony następny cykl synchronizacji. Jeśli zadanie aprowizacji pozostaje w kwarantannie przez ponad cztery tygodnie, zadanie aprowizacji jest wyłączone.
+Zadanie aprowizacji zostanie usunięte z kwarantanny po naprawieniu wszystkich błędów powodujących problemy, gdy zostanie uruchomiony następny cykl synchronizacji. Jeśli zadanie aprowizacji pozostaje w kwarantannie przez ponad cztery tygodnie, zadanie aprowizacji jest wyłączone. [Tutaj](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)znajdziesz więcej informacji na temat stanu kwarantanny.
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Jak długo trwa inicjowanie obsługi administracyjnej użytkowników?
 
@@ -225,7 +225,7 @@ W celu obejścia tego problemu należy jawnie przypisać (lub inaczej określić
 
 Tak. Używamy szyfrowania protokołu HTTPS SSL dla serwera docelowego.
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
 - [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
 - [Dostosowywanie mapowań atrybutów na potrzeby aprowizacji użytkowników](customize-application-attributes.md)

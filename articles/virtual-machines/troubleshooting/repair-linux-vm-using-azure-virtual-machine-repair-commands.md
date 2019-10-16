@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 56e420f9641638bfa79ff077be73132b00b934ab
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71132093"
 ---
-# <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Naprawianie maszyny wirtualnej z systemem Linux przy użyciu poleceń naprawy maszyny wirtualnej platformy Azure
+# <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Naprawianie maszyny wirtualnej z systemem Linux za pomocą poleceń naprawiania maszyny wirtualnej platformy Azure
 
 Jeśli maszyna wirtualna z systemem Linux na platformie Azure napotyka błąd rozruchu lub dysku, może być konieczne wykonanie środków zaradczych na dysku. Typowym przykładem może być niepowodzenie aktualizacji aplikacji, która uniemożliwia pomyślne uruchomienie maszyny wirtualnej. W tym artykule szczegółowo opisano sposób używania poleceń naprawy maszyny wirtualnej platformy Azure do łączenia dysku z inną maszyną wirtualną z systemem Linux w celu usunięcia błędów, a następnie odbudowania oryginalnej maszyny wirtualnej.
 
@@ -54,13 +54,13 @@ Aby uzyskać dodatkową dokumentację i instrukcje, zobacz [AZ VM Repair](https:
 
    Jeśli wolisz zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie ``az --version``, aby dowiedzieć się, jaka wersja jest używana. Jeśli musisz zainstalować lub uaktualnić interfejs wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-2. Jeśli używasz `az vm repair` poleceń po raz pierwszy, Dodaj rozszerzenie interfejsu wiersza polecenia maszyny wirtualnej do naprawy.
+2. Jeśli po raz pierwszy użyto poleceń `az vm repair`, Dodaj rozszerzenie interfejsu wiersza polecenia maszyny wirtualnej do naprawy.
 
    ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
-   Jeśli wcześniej użyto `az vm repair` poleceń, Zastosuj wszystkie aktualizacje rozszerzenia maszyny wirtualnej.
+   Jeśli wcześniej użyto poleceń `az vm repair`, Zastosuj wszystkie aktualizacje rozszerzenia VM-Repair.
 
    ```azurecli-interactive
    az extension update -n vm-repair
@@ -82,7 +82,7 @@ Aby uzyskać dodatkową dokumentację i instrukcje, zobacz [AZ VM Repair](https:
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Weryfikowanie i włączanie diagnostyki rozruchu
 
-Poniższy przykład włącza rozszerzenie diagnostyki na maszynie wirtualnej o nazwie ``myVMDeployed`` w grupie zasobów o nazwie: ``myResourceGroup``
+Poniższy przykład włącza rozszerzenie diagnostyki na maszynie wirtualnej o nazwie ``myVMDeployed`` w grupie zasobów o nazwie ``myResourceGroup``:
 
 Interfejs wiersza polecenia platformy Azure
 

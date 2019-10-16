@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: fd8168b5786f669de0c5c2109c9e02b43c62c582
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f3d443eed43cc1e131cd3dc47407ce2dfb023ce8
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933651"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326378"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Kontrola źródła w Azure Data Factory
 
@@ -25,6 +25,9 @@ ms.locfileid: "68933651"
 
 - Twórz bezpośrednio z usługą Data Factory
 - Tworzenie za pomocą Azure Repos Git lub integracji z usługą GitHub
+
+> [!NOTE]
+> W chmurze Azure Government jest obsługiwana tylko bezpośrednie tworzenie z usługą Data Factory.
 
 ## <a name="author-directly-with-the-data-factory-service"></a>Twórz bezpośrednio z usługą Data Factory
 
@@ -51,7 +54,7 @@ Tworzenie wizualne za pomocą integracji Azure Repos git obsługuje kontrolę ź
 
 Azure Repos repozytorium git można skonfigurować przy użyciu fabryki danych za pomocą dwóch metod.
 
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Metoda konfiguracji 1: Strona główna Azure Data Factory
+#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Konfiguracja Metoda 1: Strona główna Azure Data Factory
 
 Na stronie głównej Azure Data Factory wybierz pozycję **Skonfiguruj repozytorium kodu**.
 
@@ -68,7 +71,7 @@ Obie metody otwierają okienko Konfiguracja ustawień repozytorium.
 
 W okienku Konfiguracja są wyświetlane następujące Azure Repos ustawienia repozytorium kodu:
 
-| Ustawienie | Opis | Value |
+| Ustawienie | Opis | Wartość |
 |:--- |:--- |:--- |
 | **Typ repozytorium** | Typ repozytorium kodu Azure Repos.<br/> | Azure DevOps Git lub GitHub |
 | **Azure Active Directory** | Nazwa dzierżawy usługi Azure AD. | `<your tenant name>` |
@@ -78,7 +81,7 @@ W okienku Konfiguracja są wyświetlane następujące Azure Repos ustawienia rep
 | **Rozgałęzienie współpracy** | Gałąź współpracy Azure Repos, która jest używana do publikowania. Domyślnie jego `master`. Zmień to ustawienie, jeśli chcesz opublikować zasoby z innej gałęzi. | `<your collaboration branch name>` |
 | **Folder główny** | Folder główny w gałęzi współpracy Azure Repos. | `<your root folder name>` |
 | **Importuj istniejące zasoby Data Factory do repozytorium** | Określa, czy zaimportować istniejące zasoby usługi Fabryka danych z **kanwy tworzenia** środowiska użytkownika do Azure Repos repozytorium git. Zaznacz pole, aby zaimportować zasoby usługi Fabryka danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja eksportuje poszczególne zasoby pojedynczo (to oznacza, że połączone usługi i zestawy danych są eksportowane do oddzielnych notacji JSON). Gdy to pole nie zostanie zaznaczone, istniejące zasoby nie zostaną zaimportowane. | Wybrane (domyślnie) |
-| **Gałąź, do której ma zostać zaimportowany zasób** | Określa, w którym rozgałęzieniu są importowane zasoby usługi Fabryka danych (potoki, zestawy danych, połączone usługi itp.). Zasoby można importować do jednej z następujących gałęzi: a. Współpraca b. Utwórz nowy c. Użyj istniejącego |  |
+| **Gałąź, do której ma zostać zaimportowany zasób** | Określa, w którym rozgałęzieniu są importowane zasoby usługi Fabryka danych (potoki, zestawy danych, połączone usługi itp.). Zasoby można importować do jednej z następujących gałęzi: a. Współpraca b. Utwórz nowy c. Użyj istniejącej |  |
 
 > [!NOTE]
 > Jeśli używasz przeglądarki Microsoft Edge i nie widzisz żadnych wartości na liście rozwijanej konta usługi Azure DevOps, Dodaj port https://*. VisualStudio. com do listy zaufanych witryn.
@@ -103,7 +106,7 @@ Aby uzyskać więcej informacji na temat łączenia Azure Repos z Active Directo
 
 ## <a name="author-with-github-integration"></a>Tworzenie z integracją usługi GitHub
 
-Tworzenie wizualne dzięki integracji z usługą GitHub obsługuje kontrolę źródła i współpracę w ramach potoków usługi Data Factory. Możesz skojarzyć fabrykę danych z repozytorium konta usługi GitHub na potrzeby kontroli źródła, współpracy i przechowywania wersji. Pojedyncze konto usługi GitHub może mieć wiele repozytoriów, ale repozytorium GitHub może być skojarzone tylko z jedną fabryką danych. Jeśli nie masz konta lub repozytorium usługi GitHub, postępuj zgodnie z [tymi instrukcjami](https://github.com/join) , aby utworzyć zasoby.
+Tworzenie wizualne dzięki integracji z usługą GitHub obsługuje kontrolę źródła i współpracę w ramach potoków usługi Data Factory. Możesz skojarzyć fabrykę danych z repozytorium konta usługi GitHub na potrzeby kontroli źródła, współpracy i przechowywania wersji. Pojedyncze konto usługi GitHub może mieć wiele repozytoriów, ale repozytorium GitHub może być skojarzone tylko z jedną fabryką danych. Jeśli nie masz konta lub repozytorium usługi GitHub, postępuj zgodnie z poniższymi [instrukcjami](https://github.com/join)@no__t 1To Utwórz zasoby.
 
 Integracja z usługą GitHub Data Factory obsługuje zarówno publiczną witrynę GitHub (czyli [https://github.com](https://github.com)), jak i witrynę GitHub Enterprise. Można używać publicznych i prywatnych repozytoriów GitHub z Data Factory, jak długo masz uprawnienia do odczytu i zapisu do repozytorium w serwisie GitHub.
 
@@ -117,7 +120,7 @@ W przypadku wprowadzenia i pokazania tej funkcji na dziewięć minut Obejrzyj na
 
 Repozytorium GitHub można skonfigurować przy użyciu fabryki danych za pomocą dwóch metod.
 
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Metoda konfiguracji 1: Strona główna Azure Data Factory
+#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Konfiguracja Metoda 1: Strona główna Azure Data Factory
 
 Na stronie głównej Azure Data Factory wybierz pozycję **Skonfiguruj repozytorium kodu**.
 
@@ -137,15 +140,15 @@ W okienku Konfiguracja są wyświetlane następujące ustawienia repozytorium Gi
 
 | **Ustawienie** | **Opis**  | **Wartość**  |
 |:--- |:--- |:--- |
-| **Typ repozytorium** | Typ repozytorium kodu Azure Repos. | GitHub |
+| **Typ repozytorium** | Typ repozytorium kodu Azure Repos. | Witryna GitHub |
 | **Korzystanie z usługi GitHub Enterprise** | Zaznacz pole wyboru usługi GitHub Enterprise | niezaznaczony (domyślnie) |
 | **Adres URL przedsiębiorstwa usługi GitHub** | Główny adres URL dla przedsiębiorstwa usługi GitHub. Na przykład: https://github.mydomain.com. Wymagane tylko wtedy, gdy wybrano korzystanie z usługi **GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
-| **Konto usługi GitHub** | Nazwa konta usługi GitHub. Tę nazwę można znaleźć z protokołu https:\//GitHub.com/{account name}/{Repository Name}. Przechodzenie na stronę z prośbą o wprowadzenie poświadczeń OAuth usługi GitHub na Twoje konto w usłudze GitHub. | `<your GitHub account name>` |
+| **Konto usługi GitHub** | Nazwa konta usługi GitHub. Tę nazwę można znaleźć z protokołu https: \//GitHub. com/{account name}/{Repository Name}. Przechodzenie na stronę z prośbą o wprowadzenie poświadczeń OAuth usługi GitHub na Twoje konto w usłudze GitHub. | `<your GitHub account name>` |
 | **Nazwa repozytorium**  | Nazwa repozytorium kodu usługi GitHub. Konta usługi GitHub zawierają repozytoria Git do zarządzania kodem źródłowym. Można utworzyć nowe repozytorium lub użyć istniejącego repozytorium, które już znajduje się na Twoim koncie. | `<your repository name>` |
 | **Rozgałęzienie współpracy** | Gałąź współpracy GitHub, która jest używana do publikowania. Domyślnie jego główna. Zmień to ustawienie, jeśli chcesz opublikować zasoby z innej gałęzi. | `<your collaboration branch>` |
 | **Folder główny** | Twój folder główny w gałęzi współpracy usługi GitHub. |`<your root folder name>` |
 | **Importuj istniejące zasoby Data Factory do repozytorium** | Określa, czy zaimportować istniejące zasoby usługi Fabryka danych z kanwy tworzenia środowiska użytkownika do repozytorium GitHub. Zaznacz pole, aby zaimportować zasoby usługi Fabryka danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja eksportuje poszczególne zasoby pojedynczo (to oznacza, że połączone usługi i zestawy danych są eksportowane do oddzielnych notacji JSON). Gdy to pole nie zostanie zaznaczone, istniejące zasoby nie zostaną zaimportowane. | Wybrane (domyślnie) |
-| **Gałąź, do której ma zostać zaimportowany zasób** | Określa, w którym rozgałęzieniu są importowane zasoby usługi Fabryka danych (potoki, zestawy danych, połączone usługi itp.). Zasoby można importować do jednej z następujących gałęzi: a. Współpraca b. Utwórz nowy c. Użyj istniejącego |  |
+| **Gałąź, do której ma zostać zaimportowany zasób** | Określa, w którym rozgałęzieniu są importowane zasoby usługi Fabryka danych (potoki, zestawy danych, połączone usługi itp.). Zasoby można importować do jednej z następujących gałęzi: a. Współpraca b. Utwórz nowy c. Użyj istniejącej |  |
 
 ### <a name="known-github-limitations"></a>Znane ograniczenia dotyczące usługi GitHub
 
@@ -173,17 +176,17 @@ Systemy kontroli wersji (znane także jako _Kontrola źródła_) umożliwiają d
 
 ### <a name="creating-feature-branches"></a>Tworzenie gałęzi funkcji
 
-Każde Azure Repos repozytorium git skojarzone z fabryką danych ma rozgałęzienie współpracy. (`master` jest to domyślna gałąź współpracy). Użytkownicy mogą również tworzyć gałęzie funkcji, klikając pozycję **+ Nowa gałąź** na liście rozwijanej rozgałęzienie. Gdy zostanie wyświetlone okienko nowe rozgałęzienie, wprowadź nazwę gałęzi funkcji.
+Każde Azure Repos repozytorium git skojarzone z fabryką danych ma rozgałęzienie współpracy. (`master` to domyślna gałąź współpracy). Użytkownicy mogą również tworzyć gałęzie funkcji, klikając pozycję **+ Nowa gałąź** na liście rozwijanej rozgałęzienie. Gdy zostanie wyświetlone okienko nowe rozgałęzienie, wprowadź nazwę gałęzi funkcji.
 
 ![Utwórz nową gałąź](media/author-visually/new-branch.png)
 
-Gdy wszystko będzie gotowe do scalenia zmian z gałęzi funkcji z gałęzią współpracy, kliknij listę rozwijaną rozgałęzienie i wybierz pozycję **Utwórz żądanie ściągnięcia**. Ta akcja spowoduje przejście do Azure Repos git, gdzie można zgłaszać żądania ściągnięcia, przeprowadzać przeglądy kodu i scalać zmiany w gałęzi współpracy. (`master` wartość domyślna). Możliwe jest tylko publikowanie w usłudze Data Factory z poziomu gałęzi współpracy. 
+Gdy wszystko będzie gotowe do scalenia zmian z gałęzi funkcji z gałęzią współpracy, kliknij listę rozwijaną rozgałęzienie i wybierz pozycję **Utwórz żądanie ściągnięcia**. Ta akcja spowoduje przejście do Azure Repos git, gdzie można zgłaszać żądania ściągnięcia, przeprowadzać przeglądy kodu i scalać zmiany w gałęzi współpracy. (wartość domyślna to `master`). Możliwe jest tylko publikowanie w usłudze Data Factory z poziomu gałęzi współpracy. 
 
 ![Utwórz nowe żądanie ściągnięcia](media/author-visually/create-pull-request.png)
 
 ### <a name="configure-publishing-settings"></a>Konfigurowanie ustawień publikowania
 
-Aby skonfigurować gałąź Publikuj, czyli gałąź, w której zapisano Menedżer zasobów szablony — Dodaj `publish_config.json` plik do folderu głównego w gałęzi współpracy. Data Factory odczytuje ten plik, szuka pola `publishBranch`i tworzy nową gałąź (jeśli jeszcze nie istnieje) z podaną wartością. Następnie zapisuje wszystkie szablony Menedżer zasobów w określonej lokalizacji. Przykład:
+Aby skonfigurować gałąź Publikuj, czyli gałąź, w której zapisano Menedżer zasobów szablony — Dodaj plik `publish_config.json` do folderu głównego w gałęzi współpracy. Data Factory odczytuje ten plik, szuka pola `publishBranch` i tworzy nową gałąź (jeśli jeszcze nie istnieje) z podaną wartością. Następnie zapisuje wszystkie szablony Menedżer zasobów w określonej lokalizacji. Na przykład:
 
 ```json
 {
@@ -194,11 +197,11 @@ Aby skonfigurować gałąź Publikuj, czyli gałąź, w której zapisano Menedż
 Po określeniu nowej gałęzi publikowania Data Factory nie usuwa poprzedniej gałęzi publikacji. Jeśli chcesz zdalnie użyć poprzedniej gałęzi publikowania, usuń ją ręcznie.
 
 > [!NOTE]
-> Data Factory odczytuje `publish_config.json` tylko plik podczas ładowania fabryki. Jeśli w portalu masz już załadowane fabryki, Odśwież przeglądarkę, aby zmiany zaczęły obowiązywać.
+> Data Factory odczytuje tylko plik `publish_config.json` podczas ładowania fabryki. Jeśli w portalu masz już załadowane fabryki, Odśwież przeglądarkę, aby zmiany zaczęły obowiązywać.
 
 ### <a name="publish-code-changes"></a>Publikuj zmiany kodu
 
-Po scaleniu zmian w gałęzi współpracy (`master` jest to ustawienie domyślne) kliknij przycisk **Opublikuj** , aby ręcznie opublikować zmiany kodu w gałęzi głównej do usługi Data Factory.
+Po scaleniu zmian w gałęzi współpracy (`master` jest wartością domyślną) kliknij przycisk **Opublikuj** , aby ręcznie opublikować zmiany kodu w gałęzi głównej do usługi Data Factory.
 
 ![Publikuj zmiany w usłudze Data Factory](media/author-visually/publish-changes.png)
 
@@ -248,7 +251,7 @@ Jeśli gałąź publikowania nie jest zsynchronizowana z gałęzią główną i 
 1. Usuń wszystkie zasoby z gałęzi współpracy
 1. Utwórz żądanie ściągnięcia, aby scalić zmiany w gałęzi współpracy 
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 Wybierz **opinię** , aby skomentować informacje o funkcjach lub powiadomić firmę Microsoft o problemach z narzędziem:
 
 ![Opinia](media/author-visually/provide-feedback.png)

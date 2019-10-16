@@ -1,21 +1,21 @@
 ---
-title: Wzorce integracji kontraktu inteligentnego w usłudze Azure łańcucha bloków Workbench w wersji zapoznawczej
+title: Wzorce integracji kontraktu inteligentnego w usłudze Azure łańcucha bloków Workbench
 description: Omówienie wzorców integracji kontraktu inteligentnego w usłudze Azure łańcucha bloków Workbench Preview.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 80c4f2683efacf575be853b6268ee958f1567440
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b3e7ff18dddeaeb1a42d69b9ed57d163410fbfa1
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845176"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329223"
 ---
 # <a name="smart-contract-integration-patterns"></a>Wzorce integracji kontraktów inteligentnych
 
@@ -71,7 +71,7 @@ Wykonywanie zapytań odbywa się przy użyciu przedstawionych wcześniej proces�
 
 Integracja z obsługą wiadomości ułatwia interakcję z systemami, usługami i urządzeniami, w których logowanie interakcyjne nie jest możliwe ani pożądane. Integracja z obsługą wiadomości koncentruje się na dwóch typach komunikatów: komunikaty żądające transakcji są wykonywane w księdze rozproszonej oraz zdarzenia udostępniane przez ten księgę w przypadku zrealizowania transakcji.
 
-Integracja z obsługą komunikatów koncentruje się na wykonywaniu i monitorowaniu transakcji związanych z tworzeniem, tworzeniem kontraktu i wykonywaniem transakcji w ramach kontraktów . jest ona głównie używana przez bezobsługowe systemy zaplecza.
+Integracja z obsługą komunikatów koncentruje się na wykonywaniu i monitorowaniu transakcji związanych z tworzeniem, tworzeniem kontraktu i wykonywaniem transakcji w ramach kontraktów. jest ona głównie używana przez *bezobsługowe* systemy zaplecza.
 
 Ta sekcja analizuje wzorce ukierunkowane na aspekty interfejsu API opartego na komunikatach, które wysyłają transakcje do rozproszonej księgi i wzorców, które reprezentują komunikaty o zdarzeniach udostępniane przez podstawową księgę rozproszoną.
 

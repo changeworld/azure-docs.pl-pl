@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b8f213bd614e4adce74b83c87649a0f248cba7b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 11b16f91d600c20b48fbdc5887a4a0a4b538e916
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710107"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330658"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Twórz TensorFlow model uczenia głębokiego na dużą skalę dzięki Azure Machine Learning
 
@@ -46,7 +46,7 @@ Uruchom ten kod w dowolnym z następujących środowisk:
 
 Ta sekcja umożliwia skonfigurowanie eksperymentu szkoleniowego przez załadowanie wymaganych pakietów języka Python, zainicjowanie obszaru roboczego, utworzenie eksperymentu i przekazanie danych szkoleniowych i skryptów szkoleniowych.
 
-### <a name="import-packages"></a>Importuj pakiety
+### <a name="import-packages"></a>Importowanie pakietów
 
 Najpierw zaimportuj niezbędne biblioteki języka Python.
 
@@ -142,9 +142,9 @@ TensorFlow szacowania jest implementowane za pomocą klasy generycznej [`estimat
 
 Jeśli do uruchomienia skryptu szkoleniowego wymagane są dodatkowe pakiety PIP lub Conda, można je zainstalować na efekcie obrazu platformy Docker, przenosząc ich nazwy za pomocą argumentów `pip_packages` i `conda_packages`.
 
-```Python
+```python
 script_params = {
-    '--data-folder': ws.get_default_datastore().as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--batch-size': 50,
     '--first-layer-neurons': 300,
     '--second-layer-neurons': 100,

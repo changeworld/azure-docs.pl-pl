@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2508090fa8831c8fefb0e710c28e512ec0c94c6e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: de98f972a43f3845d2a01b928d90283732ef4843
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074153"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329791"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Przychodzące i wychodzące adresy IP w Azure App Service
 
@@ -52,7 +52,7 @@ Niezależnie od liczby wystąpień skalowanych w poziomie, każda aplikacja ma o
 
 Zestaw wychodzących adresów IP dla aplikacji zmienia się podczas skalowania aplikacji między niższą warstwą (**podstawowa**, **standardowa**i **Premium**) i warstwą **Premium v2** .
 
-Można znaleźć zestaw wszystkich możliwych wychodzących adresów IP, które mogą być używane przez aplikację, niezależnie od warstw cenowych, szukając `possibleOutboundIPAddresses` właściwości lub w polu dodatkowe wychodzące **adresy IP** w bloku **Właściwości** w Azure Portal. Zobacz [Znajdź wychodzące adresy IP](#find-outbound-ips).
+Można znaleźć zestaw wszystkich możliwych wychodzących adresów IP, które mogą być używane przez aplikację, niezależnie od warstw cenowych, szukając `possibleOutboundIpAddresses` właściwości lub w polu **dodatkowe wychodzące adresy IP** w bloku **Właściwości** w Azure Portal. Zobacz [Znajdź wychodzące adresy IP](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Znajdź wychodzące adresy IP
 

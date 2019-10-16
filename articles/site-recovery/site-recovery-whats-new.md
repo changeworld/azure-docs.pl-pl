@@ -5,20 +5,35 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8e034153a2e98a101527f411c78ace6e46b01b29
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: MT
+ms.openlocfilehash: 5c449136339a4c31cb1829b53f62e1724caa4736
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937523"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372257"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) jest regularnie aktualizowana i ulepszana. Aby pomóc Ci zachować aktualność, ten artykuł zawiera informacje o najnowszych wersjach, nowych funkcjach i nowej zawartości. Ta strona jest regularnie aktualizowana.
 
 Możesz postępować zgodnie z Site Recovery powiadomieniami o aktualizacji w kanale [aktualizacji platformy Azure](https://azure.microsoft.com/updates/?product=site-recovery) .
+
+## <a name="update-to-servicing-stack-updatesha-2"></a>Aktualizacja do obsługi aktualizacji stosu/SHA-2
+
+W przypadku odzyskiwania po awarii maszyn wirtualnych platformy Azure do regionu pomocniczego lub lokalnych maszyn wirtualnych VMware lub serwerów fizycznych na platformie Azure należy pamiętać o następujących kwestiach:
+
+- Z wersji 9.30. x. x rozszerzenia usługi mobilności (dla maszyn wirtualnych platformy Azure) i agenta usługi mobilności (dla komputerów VMware/fizycznych) Niektóre systemy operacyjne muszą mieć uruchomioną aktualizację stosu obsługi i algorytm SHA-2. Szczegóły przedstawiono w poniższej tabeli.
+- Zainstaluj aktualizację i algorytm SHA-2 zgodnie z połączoną bazą wiedzy.
+- Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
+
+**System operacyjny** | **Maszyna wirtualna platformy Azure** | **Maszyna wirtualna VMware/komputer fizyczny**
+--- | --- | ---
+**Windows 2008 R2 z dodatkiem SP1** | [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 2008 z dodatkiem SP2** | [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 7 z dodatkiem SP1** | [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Obsługa aktualizacji stosu](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419).
+
 
 ## <a name="supported-updates"></a>Obsługiwane aktualizacje
 

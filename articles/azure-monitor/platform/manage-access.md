@@ -13,24 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 920e470a8bc06050219d0f603ab842cfc267e6ce
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 010f7bb2f19eed757da3f62011b69e1f09ddadf0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695004"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329410"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie dostępem do danych dziennika i obszarów roboczych w Azure Monitor
 
-Azure Monitor przechowuje dane [dziennika](data-platform-logs.md) w log Analytics obszarze roboczym, który zasadniczo jest kontenerem zawierającym informacje o danych i konfiguracji. Aby zarządzać dostępem do danych dziennika, należy wykonać różne zadania administracyjne związane z obszarem roboczym.
+Azure Monitor przechowuje dane [dzienników](data-platform-logs.md) w obszarze roboczym log Analytics. Obszar roboczy to kontener zawierający dane i informacje o konfiguracji. Aby zarządzać dostępem do danych dziennika, należy wykonać różne zadania administracyjne związane z obszarem roboczym.
 
-W tym artykule opisano sposób zarządzania dostępem do dzienników i zarządzania obszarami roboczymi, które je zawierają, w tym:
+W tym artykule wyjaśniono, jak zarządzać dostępem do dzienników i administrować obszarami roboczymi, które je zawierają, w tym w jaki sposób udzielić dostępu do: 
 
-* Jak udzielić dostępu użytkownikom, którzy potrzebują dostępu do danych dzienników z określonych zasobów przy użyciu kontroli dostępu opartej na rolach (RBAC) na platformie Azure.
-
-* Jak udzielić dostępu do obszaru roboczego przy użyciu uprawnień obszaru roboczego.
-
-* Jak udzielić dostępu użytkownikom, którzy potrzebują dostępu do danych dziennika w określonej tabeli w obszarze roboczym przy użyciu funkcji RBAC platformy Azure.
+* Obszar roboczy przy użyciu uprawnień obszaru roboczego.
+* Użytkownicy, którzy potrzebują dostępu do danych dzienników z określonych zasobów przy użyciu kontroli dostępu opartej na rolach (RBAC) na platformie Azure.
+* Użytkownicy, którzy potrzebują dostępu do danych dziennika w określonej tabeli w obszarze roboczym przy użyciu funkcji RBAC platformy Azure.
 
 ## <a name="configure-access-control-mode"></a>Konfigurowanie trybu kontroli dostępu
 
@@ -150,14 +148,14 @@ Rola czytelnika Log Analytics obejmuje następujące działania platformy Azure:
 
 Członkowie roli *Współautor usługi Log Analytics* mogą wykonywać następujące czynności:
 
-* Odczytaj wszystkie dane monitorowania jako czytnik Log Analytics mogą
-* Tworzenie i konfigurowanie kont usługi Automation
+* Odczytaj wszystkie dane monitorowania, które czytnik Log Analytics może
+* Tworzenie i Konfigurowanie kont usługi Automation
 * Dodawanie i usuwanie rozwiązań do zarządzania
 
     > [!NOTE]
     > Aby pomyślnie wykonać ostatnie dwie akcje, należy przyznać to uprawnienie na poziomie grupy zasobów lub subskrypcji.
 
-* Odczytywanie kluczy kont magazynu
+* Odczytaj klucze konta magazynu
 * Konfigurowanie kolekcji dzienników z usługi Azure Storage
 * Edytowanie ustawień monitorowania dla zasobów platformy Azure, w tym:
   * Dodawanie rozszerzenia do maszyn wirtualnych

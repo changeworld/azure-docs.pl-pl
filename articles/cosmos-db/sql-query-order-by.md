@@ -1,21 +1,21 @@
 ---
-title: Klauzula ORDER BY w usłudze Azure Cosmos DB
-description: Dowiedz się więcej o SQL ORDER BY — klauzula dla usługi Azure Cosmos DB. Użyj programu SQL jako języka zapytań usługi Azure Cosmos DB w formacie JSON.
+title: Klauzula ORDER BY w Azure Cosmos DB
+description: Dowiedz się więcej o klauzuli ORDER BY języka SQL dla Azure Cosmos DB. Użyj programu SQL jako Azure Cosmos DB języka zapytań JSON.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: d0a1ed33d5848c3ed8d5f83af8b320d77fe0dc65
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 14f61d14b59dca4bcf2e0f4b93e918f101a61833
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342678"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326849"
 ---
-# <a name="order-by-clause"></a>Klauzula ORDER BY
+# <a name="order-by-clause-in-azure-cosmos-db"></a>Klauzula ORDER BY w Azure Cosmos DB
 
-Opcjonalna klauzula ORDER BY określa kolejność sortowania wyników zwróconych przez zapytanie.
+Opcjonalna klauzula ORDER BY określa kolejność sortowania dla wyników zwracanych przez zapytanie.
 
 ## <a name="syntax"></a>Składnia
   
@@ -29,31 +29,31 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   Określa właściwość lub wyrażenie do sortowania zestawu wyników zapytania. Kolumna sortowania może być określona jako alias nazwy lub właściwości.  
+   Określa właściwość lub wyrażenie, dla którego ma zostać posortowany zestaw wyników zapytania. Kolumnę sortowania można określić jako nazwę lub alias właściwości.  
   
-   Można określić wiele właściwości. Nazwy właściwości muszą być unikatowe. Sekwencja właściwości sortowania w klauzuli ORDER BY określa organizacji zestawu posortowanego wyników. Oznacza to zestaw wyników jest posortowana według pierwszą właściwością, a następnie tego uporządkowana lista jest posortowana według właściwości drugiej i tak dalej.  
+   Można określić wiele właściwości. Nazwy właściwości muszą być unikatowe. Sekwencja właściwości sortowania w klauzuli ORDER BY definiuje organizację zestawu wyników sortowania. Oznacza to, że zestaw wyników jest sortowany według pierwszej właściwości, a następnie że uporządkowana lista jest posortowana według drugiej właściwości i tak dalej.  
   
-   Nazwy właściwości, do których odwołuje się w klauzuli ORDER BY muszą odpowiadać właściwością na liście wyboru lub do właściwości zdefiniowane w kolekcji określonej w klauzuli FROM bez żadnych niejednoznaczności.  
+   Nazwy właściwości, do których odwołuje się klauzula ORDER BY, muszą odpowiadać właściwości na liście wyboru lub do właściwości zdefiniowanej w kolekcji określonej w klauzuli FROM bez żadnych niejasności.  
   
 - `<sort_expression>`  
   
-   Określa właściwości lub wyrażenia do sortowania zestawu wyników zapytania.  
+   Określa jedną lub więcej właściwości lub wyrażeń, dla których ma zostać posortowany zestaw wyników zapytania.  
   
 - `<scalar_expression>`  
   
-   Zobacz [wyrażenia skalarne](sql-query-scalar-expressions.md) sekcji, aby uzyskać szczegółowe informacje.  
+   Aby uzyskać szczegółowe informacje, zobacz sekcję [wyrażenia skalarne](sql-query-scalar-expressions.md) .  
   
 - `ASC | DESC`  
   
-   Określa, że wartości w określonej kolumnie powinny być sortowane w kolejności rosnącej lub malejącej. ASC sortuje od najniższej do najwyższej wartości. DESC sortuje od najwyższej do najniższej wartości. ASC jest domyślny porządek sortowania. Wartości null są traktowane jako najniższe możliwe wartości.  
+   Określa, że wartości w określonej kolumnie powinny być sortowane w kolejności rosnącej lub malejącej. Wartość ASC sortuje od najniższej wartości do najwyższej wartości. Wartość DESC sortuje od największej do najmniejszej wartości. ASC jest domyślną kolejnością sortowania. Wartości null są traktowane jako najniższe możliwe wartości.  
   
 ## <a name="remarks"></a>Uwagi  
   
-   W klauzuli ORDER BY wymaga, że zasady indeksowania obejmują indeksu dla pól posortowana. W czasie wykonywania zapytań usługi Azure Cosmos DB obsługuje sortowanie nazwę właściwości, a nie dla właściwości obliczane. Usługa Azure Cosmos DB obsługuje wiele właściwości ORDER BY. Aby można było uruchomić zapytania z wieloma właściwościami klauzuli ORDER BY, należy zdefiniować [indeksu złożonego](index-policy.md#composite-indexes) w polach posortowana.
+   Klauzula ORDER BY wymaga, aby zasady indeksowania zawierały indeks dla sortowanych pól. Środowisko uruchomieniowe zapytań Azure Cosmos DB obsługuje sortowanie względem nazwy właściwości, a nie do właściwości obliczanych. Azure Cosmos DB obsługuje wiele właściwości ORDER BY. Aby uruchomić zapytanie z wieloma właściwościami ORDER BY, należy zdefiniować [indeks złożony](index-policy.md#composite-indexes) dla sortowanych pól.
 
 ## <a name="examples"></a>Przykłady
 
-Na przykład w tym miejscu jest zapytanie, które pobiera rodzin rosnąco nazwę miejscowości rezydentnego:
+Załóżmy na przykład, że jest to zapytanie, które pobiera rodziny w kolejności rosnącej nazwy miejscowości rezydentnej:
 
 ```sql
     SELECT f.id, f.address.city
@@ -61,7 +61,7 @@ Na przykład w tym miejscu jest zapytanie, które pobiera rodzin rosnąco nazwę
     ORDER BY f.address.city
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -76,7 +76,7 @@ Wyniki są:
     ]
 ```
 
-Następujące zapytanie pobiera rodziny `id`s w kolejności ich Data utworzenia elementu. Element `creationDate` jest liczbą oznaczającą *czasie uniksowym*, lub czas, który upłynął od 1 stycznia 1970 r. w ciągu kilku sekund.
+Poniższe zapytanie pobiera rodzinę `id`s w kolejności ich tworzenia elementów. Element `creationDate` to liczba reprezentująca *czas epoki*lub czas, który upłynął od sty. 1, 1970 w sekundach.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -84,7 +84,7 @@ Następujące zapytanie pobiera rodziny `id`s w kolejności ich Data utworzenia 
     ORDER BY f.creationDate DESC
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -99,7 +99,7 @@ Wyniki są:
     ]
 ```
 
-Ponadto może zamówić łączność obejmującą wiele właściwości. Zapytanie, które porządkuje przez wiele właściwości wymaga [indeksu złożonego](index-policy.md#composite-indexes). Należy wziąć pod uwagę następujące zapytanie:
+Ponadto możesz zamówić według wielu właściwości. Zapytanie, które porządkuje według wielu właściwości, wymaga [indeksu złożonego](index-policy.md#composite-indexes). Rozważ następujące zapytanie:
 
 ```sql
     SELECT f.id, f.creationDate
@@ -107,10 +107,10 @@ Ponadto może zamówić łączność obejmującą wiele właściwości. Zapytani
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-To zapytanie pobiera rodziny `id` rosnąco nazwę miejscowości. Jeśli wiele elementów ma taką samą nazwę miasta, zapytanie będzie kolejność według `creationDate` w kolejności malejącej.
+To zapytanie pobiera rodzinę `id` w kolejności rosnącej według nazwy miasta. Jeśli wiele elementów ma taką samą nazwę miasta, zapytanie zostanie uporządkowane według `creationDate` w kolejności malejącej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
-- [Klauzula SELECT](sql-query-select.md)
-- [Klauzula ograniczenia PRZESUNIĘCIA](sql-query-offset-limit.md)
+- [SELECT — klauzula](sql-query-select.md)
+- [Klauzula limitu przesunięcia](sql-query-offset-limit.md)

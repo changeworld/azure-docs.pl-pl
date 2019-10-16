@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 44b3830465bf2b5aa06612aa868b086b120f1ece
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262715"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372274"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Łączenie danych od dostawców analizy zagrożeń
 
@@ -60,9 +60,9 @@ Za pomocą jednego z produktów zintegrowanej platformy do analizy zagrożeń (T
 
 1. [Zarejestruj aplikację](/graph/auth-v2-service#1-register-your-app) w Azure Active Directory, aby uzyskać identyfikator aplikacji, klucz tajny aplikacji i identyfikator dzierżawy Azure Active Directory. Te wartości są potrzebne podczas konfigurowania zintegrowanego produktu lub aplikacji TIP, która korzysta Microsoft Graph z bezpośredniej integracji z interfejsem API tiIndicators zabezpieczeń.
 
-2. [Skonfiguruj uprawnienia interfejsu API](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) dla zarejestrowanej aplikacji: Dodaj uprawnienie Microsoft Graph aplikacji **ThreatIndicators. ReadWrite. OwnedBy** do zarejestrowanej aplikacji.
+2. [Skonfiguruj uprawnienia interfejsu API](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) dla zarejestrowanej aplikacji: dodaj uprawnienie Microsoft Graph aplikacji **ThreatIndicators. ReadWrite. OwnedBy** do zarejestrowanej aplikacji.
 
-3. Skontaktuj się z administratorem dzierżawy Azure Active Directory, aby przyznać administratorowi zgodę na zarejestrowana aplikacja w organizacji. Z Azure Portal: **Azure Active Directory** > **rejestracje aplikacji** **Wyświetl nazwęaplikacji>uprawnieniainterfejsu API Przyznaj zgodę administratora na\<**  >  >  >  ***Nazwa dzierżawy*.> \<**
+3. Skontaktuj się z administratorem dzierżawy Azure Active Directory, aby przyznać administratorowi zgodę na zarejestrowana aplikacja w organizacji. W Azure Portal: **Azure Active Directory** > **rejestracje aplikacji** >  **\<_Nazwa aplikacji_>**  > **Wyświetl uprawnienia interfejsu API**0**Udziel zgody administratora na 2_Nazwa dzierżawy_ 4**.
 
 4. Skonfiguruj produkt lub aplikację TIP, która korzysta Microsoft Graph z bezpośredniej integracji z interfejsem API tiIndicators zabezpieczeń w celu wysyłania wskaźników do wskaźnika platformy Azure, określając następujące kwestie:
     
@@ -70,13 +70,13 @@ Za pomocą jednego z produktów zintegrowanej platformy do analizy zagrożeń (T
     
     b. Dla produktu docelowego określ platformę Azure.
     
-    c. Dla akcji Określ alert.
+    d. Dla akcji Określ alert.
 
-5. W Azure Portal przejdź do**łączników danych**  >  **wskaźnikowych platformy Azure**, a następnie wybierz łącznik **platformy analizy zagrożeń (wersja zapoznawcza)** .
+5. W Azure Portal przejdź do łącznika**danych** **Azure — wskaźnik**@no__t — 1, a następnie wybierz łącznik **platformy analizy zagrożeń (wersja zapoznawcza)** .
 
 6. Wybierz **Otwórz stronę łącznika**, a następnie **Połącz się**.
 
-7. Aby wyświetlić wskaźniki zagrożeń, które zostały zaimportowane do wskaźnika wskaźnikowego platformy Azure, przejdź do **platformy Azure — dzienniki** > i**SecurityInsights**, a następnie rozwiń węzeł **ThreatIntelligenceIndicator**.
+7. Aby wyświetlić wskaźniki zagrożeń, które zostały zaimportowane do wskaźnika wskaźnikowego platformy Azure, przejdź do okna **wskaźnikowego platformy Azure — dzienniki** > **SecurityInsights**, a następnie rozwiń węzeł **ThreatIntelligenceIndicator**.
 
 ## <a name="next-steps"></a>Następne kroki
 

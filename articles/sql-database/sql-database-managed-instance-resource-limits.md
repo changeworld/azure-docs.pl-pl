@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 74fd8abbe78395a75d9c0a49eb717fb8ceecd11e
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: 17ffc07bb5632b1b56b7bff1e843e5955d396089
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982790"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372213"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -49,7 +49,7 @@ Ilość miejsca OLTP w pamięci w [krytyczne dla działania firmy](sql-database-
 | --- | --- | --- |
 | 4 rdzeni wirtualnych  | 3,14 GB | |   
 | 8 rdzeni wirtualnych  | 6,28 GB | 8 GB |
-| 16 rdzeni wirtualnych | 15,77 GB | 20 GB |
+| 16 rdzeni wirtualnych | 15,77 GB | 20 GB |
 | 24 rdzeni wirtualnych | 25,25 GB | 36 GB |
 | 32 rdzeni wirtualnych | 37,94 GB | |
 | 40 rdzeni wirtualnych | 52,23 GB | |
@@ -63,30 +63,30 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 > [!Important]
 > Krytyczne dla działania firmy warstwa usługi oferuje dodatkową wbudowaną kopię wystąpienia (replikę pomocniczą), która może być używana do obsługi obciążeń tylko do odczytu. Jeśli możesz oddzielić zapytania odczytu i zapisu oraz zapytania tylko do odczytu/analizy/raportowania, otrzymujesz dwa razy rdzeni wirtualnych i pamięć za tę samą cenę. Replika pomocnicza może potrwać kilka sekund za wystąpieniem podstawowym, więc jest przeznaczona do odciążania obciążeń raportowanie/analitycznych, które nie wymagają dokładnego stanu danych. W poniższej tabeli **zapytania tylko do odczytu** są zapytania, które są wykonywane w replice pomocniczej.
 
-| **Ona** | **Ogólnego przeznaczenia** | **Krytyczne dla działania firmy** |
+| **Funkcja** | **Ogólnego przeznaczenia** | **Krytyczne dla działania firmy** |
 | --- | --- | --- |
 | Liczba rdzeni wirtualnych @ no__t-0 | Obliczenia: 8, 16, 24<br/>5 rdzeń: 4, 8, 16, 24, 32, 40, 64, 80 | Obliczenia: 8, 16, 24 <br/> 5 rdzeń: 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Same liczba rdzeni wirtualnych jest przeznaczona dla zapytań tylko do odczytu. |
 | Maksymalna pamięć | Obliczenia: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń: 20,4 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. | Obliczenia: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń: 20,4 GB-408 GB (5.1 GB/rdzeń wirtualny) dla zapytań do odczytu i zapisu<br/>+ dodatkowe 20,4 GB – 408 GB (5.1 GB/rdzeń wirtualny) dla zapytań tylko do odczytu.<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. |
 | Maksymalny rozmiar magazynu wystąpienia (zarezerwowany) | -2 TB dla 4 rdzeni wirtualnych (tylko 5 rdzeń)<br/>-8 TB dla innych rozmiarów | Obliczenia: 1 TB <br/> 5 rdzeń <br/>-1 TB dla 4, 8, 16 rdzeni wirtualnych<br/>-2 TB przez 24 rdzeni wirtualnych<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalny rozmiar bazy danych | Do aktualnie dostępnego rozmiaru wystąpienia (maksymalnie 2 TB – 8 TB w zależności od liczby rdzeni wirtualnych). | Do aktualnie dostępnego rozmiaru wystąpienia (maksymalnie 1 TB — 4 TB w zależności od liczby rdzeni wirtualnych). |
-| Maksymalny rozmiar bazy danych tempDB | Ograniczone do 24 GB/rdzeń wirtualny (96 – 1 920 GB) i aktualnie dostępnego rozmiaru magazynu wystąpień.<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać więcej przestrzeni TempDB. | Do aktualnie dostępnego rozmiaru magazynu wystąpień. Rozmiar pliku dziennika bazy danych TempDB jest obecnie ograniczony do 24GB/rdzeń wirtualny. |
+| Maksymalny rozmiar bazy danych tempDB | Ograniczone do 24 GB/rdzeń wirtualny (96 – 1 920 GB) i aktualnie dostępnego rozmiaru magazynu wystąpień.<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać więcej przestrzeni TempDB.<br/> Rozmiar pliku dziennika jest ograniczony do 120 GB.| Do aktualnie dostępnego rozmiaru magazynu wystąpień. |
 | Maksymalna liczba baz danych na wystąpienie | 100, chyba że osiągnięto limit rozmiaru magazynu wystąpień. | 100, chyba że osiągnięto limit rozmiaru magazynu wystąpień. |
 | Maksymalna liczba plików bazy danych na wystąpienie | Do 280, o ile nie osiągnięto rozmiaru magazynu wystąpienia lub limitu [przestrzeni dyskowej usługi Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) . | 32 767 plików na bazę danych, o ile nie osiągnięto limitu rozmiaru magazynu wystąpień. |
 | Maksymalny rozmiar pliku danych | Ograniczone do aktualnie dostępnego rozmiaru magazynu wystąpień (maksymalnie 2 TB-8 TB) i [miejsca alokacji dysku Azure Premium Storage](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Ograniczone do aktualnie dostępnego rozmiaru magazynu wystąpień (do 1 TB – 4 TB). |
 | Maksymalny rozmiar pliku dziennika | Ograniczone do 2 TB i aktualnie dostępnego rozmiaru magazynu wystąpień. | Ograniczone do 2 TB i aktualnie dostępnego rozmiaru magazynu wystąpień. |
-| Operacje we/wy danych/dziennika (przybliżone) | Do 30-40 K operacji we/wy na wystąpienie *, 500-7500 na plik<br/>\*[zwiększenie rozmiaru pliku w celu uzyskania większej liczby operacji we/wy na sekundę](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k – 110 K (1375 IOPS/rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać lepszą wydajność operacji we/wy. |
+| Operacje we/wy danych/dziennika (przybliżone) | Do 30-40 K operacji we/wy na wystąpienie *, 500-7500 na plik<br/>\*[zwiększenie rozmiaru pliku w celu uzyskania większej liczby operacji we/wy na sekundę](#file-io-characteristics-in-general-purpose-tier)| 5,5 k – 110 K (1375 IOPS/rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać lepszą wydajność operacji we/wy. |
 | Limit przepływności zapisu dziennika (na wystąpienie) | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s |
-| Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[zwiększenie rozmiaru pliku w celu uzyskania lepszej wydajności operacji we/wy](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Nieograniczone. |
+| Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[zwiększenie rozmiaru pliku w celu uzyskania lepszej wydajności operacji we/wy](#file-io-characteristics-in-general-purpose-tier) | Nieograniczone. |
 | Opóźnienie operacji we/wy magazynu (w przybliżeniu) | 5-10 ms | 1-2 MS |
-| Przetwarzanie OLTP w pamięci | Nieobsługiwane | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
+| Przetwarzanie OLTP w pamięci | Brak obsługi | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
 | Maksymalna liczba sesji | 30000 | 30000 |
 | [Repliki tylko do odczytu](sql-database-read-scale-out.md) | 0 | 1 (wliczone w cenę) |
 
 > [!NOTE]
 > - **Obecnie dostępny rozmiar magazynu wystąpienia** to różnica między zarezerwowanym rozmiarem wystąpienia i ilością miejsca do magazynowania.
 > - Rozmiar pliku danych i dziennika w bazach danych użytkownika i systemu jest uwzględniany w rozmiarze magazynu wystąpienia, który jest porównywany z maksymalnym limitem rozmiaru magazynu. Użyj widoku system <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> , aby określić łączną ilość miejsca używanego przez bazy danych. Dzienniki błędów nie są utrwalane i nie zostały uwzględnione w rozmiarze. Kopie zapasowe nie są uwzględniane w rozmiarze magazynu.
-> - Przepływność i operacje we/wy zależą również od rozmiaru strony, która nie jest jawnie ograniczona przez wystąpienie zarządzane.
-> Można utworzyć kolejną replikę do odczytu w innym regionie świadczenia usługi Azure przy użyciu grup Autotryb failover.
+> - Przepływność i operacje we/wy w warstwie Ogólnego przeznaczenia również zależą od [rozmiaru pliku](#file-io-characteristics-in-general-purpose-tier) , który nie jest jawnie ograniczony przez wystąpienie zarządzane.
+> - Można utworzyć kolejną replikę do odczytu w innym regionie świadczenia usługi Azure przy użyciu grup Autotryb failover.
 > - Maksymalna liczba operacji we/wy wystąpienia zależy od układu pliku i rozkładu obciążenia. Przykładowo, jeśli utworzysz 7 x 1 GB plików z maksymalną 5 K IOPS każdy i 7 małych plików (mniejszym niż 128 GB) z 500 IOPS każdy, możesz uzyskać 38500 liczby IOPS na wystąpienie (7x5000 + 7x500), jeśli obciążenie może korzystać ze wszystkich plików. Należy zauważyć, że niektóre liczby operacji we/wy są również używane do tworzenia kopii zapasowych.
 
 > [!NOTE]
@@ -135,9 +135,9 @@ W poniższej tabeli przedstawiono **domyślne limity** dla obsługiwanych typów
 |Typ subskrypcji| Maksymalna liczba podsieci wystąpienia zarządzanego | Maksymalna liczba jednostek rdzeń wirtualny * |
 | :---| :--- | :--- |
 |Płatność zgodnie z rzeczywistym użyciem|3|320|
-|U |8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
+|CSP |8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
 |Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie|3|320|
-|Enterprise — tworzenie i testowanie|3|320|
+|Tworzenie i testowanie (przedsiębiorstwo)|3|320|
 |EA|8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional i Platformy MSDN|2|32|
@@ -156,7 +156,7 @@ Aby zainicjować proces uzyskiwania większego przydziału:
    ![Pomoc i obsługa techniczna](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Na karcie podstawowe informacje o nowym żądaniu obsługi:
    - W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
-   - W obszarze **subskrypcja**wybierz swoją subskrypcję.
+   - W polu **Subskrypcja** wybierz subskrypcję.
    - W obszarze **Typ limitu przydziału**wybierz pozycję **SQL Database wystąpienie zarządzane**.
    - W przypadku **planu pomocy technicznej**wybierz plan pomocy technicznej.
 

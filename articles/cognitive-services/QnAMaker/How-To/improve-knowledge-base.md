@@ -8,16 +8,16 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: e605f2ab0e79fa3d7d3ee3735f47776654566cb6
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 83d60487922e3355aab8e34f6a8409c529901d14
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802328"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328040"
 ---
-# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Korzystanie z usługi Active Learning w celu ulepszania bazy wiedzy
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
 
 Usługa Active Learning pozwala ulepszyć jakość bazy wiedzy, sugerując alternatywne pytania na podstawie przesłanych przez użytkowników do pary pytań i odpowiedzi. Te sugestie można przejrzeć, dodając je do istniejących pytań lub odrzucając je. 
 
@@ -175,7 +175,7 @@ Aplikacja kliencka wyświetli pytania z opcją dla użytkownika, aby wybrać _po
 
 Gdy użytkownik wybierze jedno z istniejących pytań, aplikacja kliencka wysyła wybór użytkownika jako opinię za pomocą interfejsu API pouczenia QnA Maker. Ta opinia kończy aktywną pętlę opinii szkoleniowych. 
 
-## <a name="train-api"></a>Interfejs API uczenia
+## <a name="train-api"></a>Interfejs API trenowania
 
 Aktywne opinie dotyczące uczenia są wysyłane do QnA Maker za pomocą żądania POST interfejsu API uczenia. Podpis interfejsu API to:
 
@@ -186,22 +186,22 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Właściwość żądania HTTP|Nazwa|Typ|Cel|
+|Właściwość żądania HTTP|Nazwa|Typ|Przeznaczenie|
 |--|--|--|--|
 |Parametr trasy adresu URL|Identyfikator bazy wiedzy|string|Identyfikator GUID bazy wiedzy.|
 |Niestandardowa poddomena|Nazwa zasobu QnAMaker|string|Nazwa zasobu jest używana jako niestandardowa poddomena dla QnA Maker. Jest on dostępny na stronie Ustawienia po opublikowaniu bazy wiedzy. Jest on wyświetlany jako `host`.|
-|nagłówek|Typ zawartości|string|Typ nośnika treści wysyłanej do interfejsu API. Wartość domyślna to: `application/json`|
-|nagłówek|Autoryzacja|string|Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Nagłówek|Content-Type|string|Typ nośnika treści wysyłanej do interfejsu API. Wartość domyślna to: `application/json`|
+|Nagłówek|Autoryzacja|string|Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Opublikuj treść|Obiekt JSON|JSON|Opinie szkoleniowe|
 
 Treść JSON ma kilka ustawień:
 
-|Właściwość treści JSON|Typ|Cel|
+|Właściwość treści JSON|Typ|Przeznaczenie|
 |--|--|--|--|
 |`feedbackRecords`|tablica|Lista opinii.|
 |`userId`|string|Identyfikator użytkownika osoby akceptującej sugerowane pytania. Format identyfikatora użytkownika jest aktualny. Na przykład adres e-mail może być prawidłowym IDENTYFIKATORem użytkownika w danej architekturze. Opcjonalny.|
 |`userQuestion`|string|Dokładny tekst zapytania użytkownika. Wymagany.|
-|`qnaID`|liczba|Identyfikator pytania znaleziony w [odpowiedzi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties). |
+|`qnaID`|numer|Identyfikator pytania znaleziony w [odpowiedzi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
 Przykładowa treść JSON wygląda następująco:
 
@@ -390,15 +390,15 @@ Kolumna `SuggestedQuestions` jest obiektem JSON informacji o niejawnej, `autosug
 ```
 
 Możesz również użyć interfejsu API pobierania zmian, aby przejrzeć te zmiany, używając protokołu REST lub dowolnego z zestawów SDK opartych na języku:
-* [INTERFEJS API REST](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [ZESTAW SDK PLATFORMY .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+* [Interfejs API REST](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
 Po ponownym zaimportowaniu tej aplikacji aktywna nauka nadal zbiera informacje i zaleca sugestie dotyczące bazy wiedzy. 
 
 
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 Najlepsze rozwiązania dotyczące korzystania z usługi Active Learning można znaleźć w temacie [Best Practices](../Concepts/best-practices.md#active-learning).
 

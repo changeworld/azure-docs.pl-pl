@@ -1,5 +1,5 @@
 ---
-title: Aplikacja sieci Web języka Python (Django) z PostgreSQL w systemie Linux — Azure App Service | Microsoft Docs
+title: 'Samouczek: aplikacja sieci Web języka Python (Django) z PostgreSQL w systemie Linux — Azure App Service'
 description: Dowiedz się, jak uruchomić opartą na danych aplikację sieci Web w języku Python (Django) na platformie Azure z połączeniem z bazą danych PostgreSQL.
 services: app-service\web
 documentationcenter: python
@@ -11,13 +11,16 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 1fc322cf7e425e35751369ab8daf1ef1809d5f07
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.custom:
+- mvc
+- seodec18
+- seo-python-october2019
+ms.openlocfilehash: c816d2ee76002f60963415b1027579eb6db94089
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203260"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329996"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Tworzenie aplikacji sieci Web w języku Python (Django) z PostgreSQL w Azure App Service
 
@@ -140,9 +143,9 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-Przejdź do `http://localhost:8000` programu w przeglądarce. Powinien zostać wyświetlony komunikat `No polls are available.`. 
+Przejdź do `http://localhost:8000` w przeglądarce. Powinien zostać wyświetlony komunikat `No polls are available.`. 
 
-Przejdź do `http://localhost:8000/admin` i zaloguj się przy użyciu użytkownika administracyjnego utworzonego w ostatnim kroku. Wybierz pozycję **Dodaj** obok pozycji **pytania** i Utwórz pytanie dotyczące ankiety z wybranymi opcjami.
+Przejdź do `http://localhost:8000/admin` i zaloguj się przy użyciu administratora utworzonego w ostatnim kroku. Wybierz pozycję **Dodaj** obok pozycji **pytania** i Utwórz pytanie dotyczące ankiety z wybranymi opcjami.
 
 ![Działająca lokalnie aplikacja platformy Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
@@ -158,7 +161,7 @@ W tym kroku utworzysz bazę danych PostgreSQL na platformie Azure. Aplikacja wdr
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
@@ -166,7 +169,7 @@ W tym kroku utworzysz bazę danych PostgreSQL na platformie Azure. Aplikacja wdr
 
 Za pomocą polecenia [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) utwórz serwer PostgreSQL w usłudze Cloud Shell.
 
-W poniższym przykładowym poleceniu Zastąp  *\<PostgreSQL-Name >* unikatową nazwą serwera, a następnie zastąp  *\<ciąg admin-username >* i  *\<Administrator-Password >* z odpowiednimi poświadczeniami użytkownika. Poświadczenia użytkownika są dla konta administratora bazy danych. Ta nazwa serwera jest używana jako część punktu końcowego bazy danych PostgreSQL (`https://<postgresql-name>.postgres.database.azure.com`), więc nazwa musi być unikatowa na wszystkich serwerach platformy Azure.
+W poniższym przykładowym poleceniu Zastąp *\<postgresql-name >* nazwą unikatowego serwera i zastąp *\<admin-username >* i *@no__t 5admin-Password >* z poświadczeniami żądanego użytkownika. Poświadczenia użytkownika są dla konta administratora bazy danych. Ta nazwa serwera jest używana jako część punktu końcowego bazy danych PostgreSQL (`https://<postgresql-name>.postgres.database.azure.com`), więc nazwa musi być unikatowa na wszystkich serwerach platformy Azure.
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
@@ -194,7 +197,7 @@ Po utworzeniu serwera usługi Azure Database for PostgreSQL w interfejsie wiersz
 ```
 
 > [!NOTE]
-> Pamiętaj \<, aby w przyszłości > \<nazwy użytkownika admin i > administratora. Będą one potrzebne do zalogowania się do serwera Postgre i jego baz danych.
+> Zapamiętaj \<admin-username > i \<admin-Password > w przyszłości. Będą one potrzebne do zalogowania się do serwera Postgre i jego baz danych.
 
 ### <a name="create-firewall-rules-for-the-postgresql-server"></a>Tworzenie reguł zapory dla serwera PostgreSQL
 
@@ -207,7 +210,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > To ustawienie umożliwia nawiązywanie połączeń sieciowych ze wszystkich adresów IP w sieci platformy Azure. Na potrzeby użytku produkcyjnego spróbuj skonfigurować możliwie najbardziej restrykcyjne reguły zapory, [używając tylko adresów IP ruchu wychodzącego wykorzystywanych przez Twoją aplikację](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-W Cloud Shell ponownie uruchom polecenie, aby zezwolić na dostęp z komputera lokalnego, zastępując  *\<adres IP >* z [lokalnym adresem IP IPv4](https://www.whatsmyip.org/).
+W Cloud Shell ponownie uruchom polecenie, aby zezwolić na dostęp z komputera lokalnego przez zastąpienie *\<your-IP-address >* z [lokalnym adresem IP IPv4](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
@@ -269,9 +272,9 @@ Po utworzeniu administratora uruchom serwer Django.
 python manage.py runserver
 ```
 
-Przejdź do `http://localhost:8000` . Powinien zostać ponownie wyświetlony komunikat `No polls are available.`. 
+Przejdź do `http://localhost:8000`. Powinien zostać ponownie wyświetlony komunikat `No polls are available.`. 
 
-Przejdź do `http://localhost:8000/admin` i zaloguj się przy użyciu utworzonego przez Ciebie administratora i Utwórz pytania dotyczące ankiety, takie jak wcześniej.
+Przejdź do `http://localhost:8000/admin` i zaloguj się przy użyciu utworzonego administratora, a następnie utwórz pytania dotyczące ankiety, takie jak wcześniej.
 
 ![Działająca lokalnie aplikacja platformy Python Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
@@ -328,7 +331,7 @@ git commit -am "configure for App Service"
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
+### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
@@ -424,7 +427,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)
+> [Samouczek: mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)
 
 Lub zapoznaj się z innymi zasobami:
 

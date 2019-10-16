@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 753e5c58b1417362943a9c12b29ad9aa9afa1f04
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 68249fc9a599ab49e8d5fd231fa63e91a6e3a21f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648674"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330110"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalowanie agenta programu Azure AD Connect Health
 
@@ -39,9 +39,14 @@ Poniższa tabela zawiera listę wymagań dotyczących używania programu Azure A
 |Łączność wychodząca na podstawie adresów IP | W przypadku filtrowania zapory opartego na adresach IP zapoznaj się z [zakresem adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).|
 | Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona | Rejestracja agenta lub operacje przekazywania danych mogą zakończyć się niepowodzeniem, jeśli w warstwie sieciowej jest aktywny proces zakończenia lub inspekcji połączenia SSL dla ruchu wychodzącego. Dowiedz się więcej na temat [sposobu konfigurowania inspekcji połączenia SSL](https://technet.microsoft.com/library/ee796230.aspx) |
 | Porty zapory na serwerze, na którym jest uruchomiony agent |Agent wymaga, aby poniższe porty zapory były otwarte w celu komunikacji z punktami końcowymi usług programu Azure AD Connect Health.<br /><br /><li>Port TCP 443</li><li>Port TCP 5671</li> <br />Należy zauważyć, że port 5671 nie jest już wymagany dla najnowszej wersji agenta. Uaktualnij do najnowszej wersji, aby był wymagany tylko port 443. Dowiedz się więcej na temat [włączania portów zapory](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
-| Zezwalaj na następujące witryny sieci web, jeśli są włączone zwiększone zabezpieczenia programu Internet Explorer |Jeśli zwiększone zabezpieczenia programu Internet Explorer są włączone na serwerze, na którym ma zostać zainstalowany agent, musisz zezwolić na otwieranie poniższych witryn sieci Web.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.NET</li><li>Serwer federacyjny Twojej organizacji zaufany przez usługę Azure Active Directory. Na przykład: https:\//sts.contoso.com</li> Dowiedz się więcej na temat [sposobu konfigurowania programu Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+| Zezwalaj na następujące witryny sieci web, jeśli są włączone zwiększone zabezpieczenia programu Internet Explorer |Jeśli zwiększone zabezpieczenia programu Internet Explorer są włączone na serwerze, na którym ma zostać zainstalowany agent, musisz zezwolić na otwieranie poniższych witryn sieci Web.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \//aadcdn. msftauth. NET</li><li>Serwer federacyjny Twojej organizacji zaufany przez usługę Azure Active Directory. Na przykład: https:\//sts.contoso.com</li> Dowiedz się więcej [na temat konfigurowania programu IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Jeśli masz serwer proxy w sieci, zobacz uwagi poniżej.|
 | Upewnij się, że zainstalowano program PowerShell w wersji 4.0 lub nowszej | <li>System Windows Server 2008 R2 jest dostarczany z programem PowerShell w wersji 2.0, która jest niewystarczająca dla agenta. Zaktualizuj program PowerShell zgodnie z opisem w poniższej sekcji dotyczącej [instalacji agenta na serwerach z systemem Windows Server 2008 R2](#agent-installation-on-windows-server-2008-r2-servers).</li><li>System Windows Server 2012 jest dostarczany z programem PowerShell w wersji 3.0, która jest niewystarczająca dla agenta.  [Zaktualizuj](https://www.microsoft.com/download/details.aspx?id=40855) platformę Windows Management Framework.</li><li>System Windows Server 2012 R2 i jego nowsze wersje są dostarczane z wystarczająco nową wersją programu PowerShell.</li>|
 |Wyłącz standard FIPS|Standard FIPS nie jest obsługiwany przez agentów programu Azure AD Connect Health.|
+
+
+> [!NOTE]
+> Jeśli masz wysoce zablokowanie i wyjątkowo ograniczone środowisko, musisz dozwolonych adresy URL wymienione na liście punktów końcowych usług, oprócz tych wymienionych w powyższej konfiguracji programu IE zwiększonych zabezpieczeń. 
+>
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Łączność wychodząca z punktami końcowymi usług Azure
 
@@ -51,7 +56,7 @@ Poniższa tabela zawiera listę wymagań dotyczących używania programu Azure A
 | --- | --- |
 | Ogólne publiczne | <li>&#42;.blob.core.windows.net </li><li>&#42;. aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net — Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *ten punkt końcowy jest używany tylko do celów odnajdywania podczas rejestracji.</li> |
 | Azure (Niemcy) | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *ten punkt końcowy jest używany tylko do celów odnajdywania podczas rejestracji.</li> |
-| Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *ten punkt końcowy jest używany tylko do celów odnajdywania podczas rejestracji.</li> |
+| Platforma Azure dla instytucji rządowych | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *ten punkt końcowy jest używany tylko do celów odnajdywania podczas rejestracji.</li> |
 
 
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Pobieranie i instalowanie agenta programu Azure AD Connect Health
@@ -337,7 +342,7 @@ Serwer proxy możesz określić ręcznie na każdym serwerze, na którym jest ur
 
     Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 
-Przykład: *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress mójserwerproxy: 443*
+Przykład: *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress mojserwerproxy: 443*
 
 * Parametr „address” może być rozpoznawalną nazwą serwera w systemie DNS lub adresem IPv4.
 * Parametr „port” można pominąć. W przypadku pominięcia jako domyślny zostanie wybrany port 443.
@@ -360,14 +365,14 @@ Możesz odczytać aktualnie skonfigurowane ustawienia serwera proxy, wykonując 
 
 Mogą wystąpić problemy powodujące utratę łączności agenta programu Azure AD Connect Health z usługą Azure AD Connect Health. Ich przyczyną mogą być problemy z siecią, problemy z uprawnieniami lub różne inne czynniki.
 
-Jeśli agent nie może wysyłać danych do programu Azure AD Connect Health przez ponad 2 godziny, w portalu zostanie wyświetlony alert o treści: „Dane usługi kondycji są nieaktualne”. Możesz sprawdzić, czy agent programu Azure AD Connect Health, którego dotyczy alert, jest w stanie przekazywać dane do usługi Azure AD Connect Health, wykonując następujące polecenie programu PowerShell:
+Jeśli agent nie może wysyłać danych do programu Azure AD Connect Health przez ponad 2 godziny, w portalu zostanie wyświetlony alert o treści „Dane usługi kondycji są nieaktualne”. Możesz sprawdzić, czy agent programu Azure AD Connect Health, którego dotyczy alert, jest w stanie przekazywać dane do usługi Azure AD Connect Health, wykonując następujące polecenie programu PowerShell:
 
     Test-AzureADConnectHealthConnectivity -Role ADFS
 
 Parametr roli obecnie przyjmuje następujące wartości:
 
 * ADFS
-* Sync
+* Synchronizacja
 * ADDS
 
 > [!NOTE]
@@ -375,7 +380,7 @@ Parametr roli obecnie przyjmuje następujące wartości:
 >
 >
 
-## <a name="related-links"></a>Linki pokrewne
+## <a name="related-links"></a>Powiązane linki
 
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Operacje w programie Azure AD Connect Health](how-to-connect-health-operations.md)

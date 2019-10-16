@@ -1,6 +1,6 @@
 ---
-title: Aplikacji zarządzanych platformy Azure za pomocą tożsamości zarządzanych
-description: Dowiedz się, jak skonfigurować aplikację zarządzane przy użyciu tożsamości usługi zarządzanej. Tożsamość zarządzana może służyć do wdrażania Managed Applications, które są połączone z istniejącymi zasobami udzielić Managed Applications, aby zarządzać zasobami platformy Azure poza zarządzanej grupy zasobów i zapewnić operacyjną tożsamości Managed Applications dla dziennika aktywności i inne usługi w obrębie platformy Azure.
+title: Aplikacja zarządzana przez platformę Azure z zarządzaną tożsamością
+description: Skonfiguruj zarządzaną aplikację przy użyciu tożsamości zarządzanej do łączenia z istniejącymi zasobami, zarządzania zasobami platformy Azure i zapewniania tożsamości operacyjnej dziennika aktywności.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
@@ -8,36 +8,36 @@ ms.reviewer: ''
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: 9fb5f7a4a62c2d323059f7c0b879482e93feef2f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9e1f5072921104c749a0acef95b7da09f1cbb662
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434857"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330227"
 ---
-# <a name="azure-managed-application-with-managed-identity"></a>Aplikacji zarządzanych platformy Azure za pomocą tożsamości zarządzanych
+# <a name="azure-managed-application-with-managed-identity"></a>Aplikacja zarządzana przez platformę Azure z zarządzaną tożsamością
 
 > [!NOTE]
-> Obsługa tożsamości zarządzanego Managed Applications jest obecnie w wersji zapoznawczej. Korzystanie z tożsamości zarządzanej, użyj wersji interfejsu api 2018-09-01-preview.
+> Obsługa tożsamości zarządzanych dla zarządzanych aplikacji jest obecnie w wersji zapoznawczej. Użyj wersji interfejsu API 2018-09-01-Preview, aby użyć tożsamości zarządzanej.
 
-Dowiedz się, jak skonfigurować aplikacjami zarządzanymi, aby zawierała tożsamości usługi zarządzanej. Tożsamość zarządzana może służyć do Zezwalaj na klienta udzielić dostępu aplikacji zarządzanych do dodatkowych zasobów istniejących. Tożsamość jest zarządzana przez platformę Azure i nie wymaga obsługi administracyjnej ani Obróć jakichkolwiek kluczy tajnych. Aby uzyskać więcej informacji o zarządzanych tożsamości w usłudze Azure Active Directory (AAD), zobacz [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
+Dowiedz się, jak skonfigurować zarządzaną aplikację w taki sposób, aby zawierała zarządzaną tożsamość. Tożsamości zarządzanej można użyć, aby umożliwić klientowi udzielenie zarządzanej aplikacji dostępu do dodatkowych istniejących zasobów. Tożsamość jest zarządzana przez platformę Azure i nie wymaga aprowizacji ani rotacji żadnych wpisów tajnych. Aby uzyskać więcej informacji o tożsamościach zarządzanych w usłudze Azure Active Directory (AAD), zobacz [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
-Aplikacja może otrzymać dwa rodzaje tożsamości:
+Aplikacja może mieć przyznane dwa typy tożsamości:
 
-- A **tożsamości przypisanych przez system** jest powiązany z aplikacją i zostanie usunięty, jeśli aplikacja zostanie usunięta. Aplikacja może mieć tylko jedną tożsamość przypisaną przez system.
-- A **tożsamości przypisanych przez użytkownika** jest autonomicznym zasobów platformy Azure, które mogą być przypisane do aplikacji. Aplikacja może mieć wiele tożsamości przypisanych przez użytkownika.
+- **Tożsamość przypisana do systemu** jest powiązana z aplikacją i jest usuwana, jeśli aplikacja zostanie usunięta. Aplikacja może mieć tylko jedną tożsamość przypisaną do systemu.
+- **Tożsamość przypisana przez użytkownika** to autonomiczny zasób platformy Azure, który można przypisać do aplikacji. Aplikacja może mieć wiele tożsamości przypisanych do użytkownika.
 
-## <a name="how-to-use-managed-identity"></a>Jak korzystać z tożsamości zarządzanej
+## <a name="how-to-use-managed-identity"></a>Jak używać tożsamości zarządzanej
 
-Tożsamość zarządzana umożliwia wielu scenariuszy dla zarządzanych aplikacji. Kilka typowych scenariuszy, które można rozwiązać, są:
+Tożsamość zarządzana umożliwia wykonywanie wielu scenariuszy dla zarządzanych aplikacji. Niektóre typowe scenariusze, które mogą zostać rozwiązane, to:
 
-- Wdrażanie aplikacji zarządzanych połączone z istniejącymi zasobami platformy Azure. Przykładem jest wdrożenie maszyny wirtualnej (VM) platformy Azure w ramach zarządzanej aplikacji, który jest dołączony do [istniejący interfejs sieciowy](../virtual-network/virtual-network-network-interface-vm.md).
-- Przyznawanie aplikacji zarządzanych i wydawcy dostęp do zasobów platformy Azure poza **zarządzanej grupy zasobów**.
-- Zapewnianie operacyjnej tożsamości Managed Applications dla dziennika aktywności i innych usług w ramach platformy Azure.
+- Wdrażanie zarządzanej aplikacji połączonej z istniejącymi zasobami platformy Azure. Przykładem jest Wdrażanie maszyny wirtualnej platformy Azure w ramach aplikacji zarządzanej, która jest dołączona do [istniejącego interfejsu sieciowego](../virtual-network/virtual-network-network-interface-vm.md).
+- Przyznanie aplikacji zarządzanej oraz dostęp wydawcy do zasobów platformy Azure poza **zarządzaną grupą zasobów**.
+- Zapewnianie operacyjnej tożsamości zarządzanych aplikacji dla dziennika aktywności i innych usług na platformie Azure.
 
 ## <a name="adding-managed-identity"></a>Dodawanie tożsamości zarządzanej
 
-Tworzenie aplikacji zarządzanych przy użyciu tożsamości usługi zarządzanej wymaga dodatkowych właściwości, należy ustawić na zasób platformy Azure. W poniższym przykładzie pokazano próbkę **tożsamości** właściwości:
+Tworzenie aplikacji zarządzanej z zarządzaną tożsamością wymaga ustawienia dodatkowej właściwości dla zasobu platformy Azure. W poniższym przykładzie przedstawiono przykładową Właściwość **tożsamości** :
 
 ```json
 {
@@ -49,11 +49,11 @@ Tworzenie aplikacji zarządzanych przy użyciu tożsamości usługi zarządzanej
 }
 ```
 
-Istnieją dwa podstawowe sposoby tworzenia aplikacji zarządzanych za pomocą **tożsamości**: [CreateUIDefinition.json](./create-uidefinition-overview.md) i [szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Dla pojedynczego proste tworzenie scenariuszy, CreateUIDefinition powinna służyć do włączyć tożsamości zarządzanej, ponieważ zawiera ono więcej możliwości. Jednak podczas pracy z zaawansowanych lub złożonych zautomatyzowane systemy, które wymagają lub można użyć wielu wdrożeń zarządzanych aplikacji, szablony.
+Istnieją dwa typowe sposoby tworzenia aplikacji zarządzanej przy użyciu **tożsamości**: [CreateUIDefinition. json](./create-uidefinition-overview.md) i [szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). W przypadku prostych scenariuszy pojedynczego tworzenia CreateUIDefinition należy używać do włączania tożsamości zarządzanej, ponieważ oferuje ona bogatsze środowisko. Jednak w przypadku systemów Advanced lub Complex, które wymagają zautomatyzowanego lub wielu wdrożeń aplikacji zarządzanych, można używać szablonów.
 
-### <a name="using-createuidefinition"></a>Za pomocą CreateUIDefinition
+### <a name="using-createuidefinition"></a>Korzystanie z CreateUIDefinition
 
-Zarządzanej aplikacji można skonfigurować za pomocą tożsamości zarządzanej za pośrednictwem [CreateUIDefinition.json](./create-uidefinition-overview.md). W [generuje sekcji](./create-uidefinition-overview.md#outputs), klucz `managedIdentity` może służyć do zastępowania właściwość identity obiektu szablonu zarządzanej aplikacji. Dzwonek przykładowe spowoduje włączenie **przypisany systemowo** tożsamości w zarządzanej aplikacji. Bardziej złożone obiekty tożsamości można zostać utworzona przy użyciu elementów CreateUIDefinition poprosić użytkownika o dane wejściowe. Te dane wejściowe może służyć do tworzenia aplikacji zarządzanych za pomocą **tożsamości przypisanych przez użytkownika**.
+Zarządzaną aplikację można skonfigurować za pomocą tożsamości zarządzanej za pomocą pliku [CreateUIDefinition. JSON](./create-uidefinition-overview.md). W [sekcji dane wyjściowe](./create-uidefinition-overview.md#outputs)klucz `managedIdentity` może służyć do przesłonięcia właściwości Identity szablonu zarządzanej aplikacji. Przykładowy w postaci, w której zostanie włączona tożsamość **przypisana przez system** w zarządzanej aplikacji. Bardziej złożone obiekty tożsamości można utworzyć za pomocą elementów CreateUIDefinition, aby poprosił odbiorcę o dane wejściowe. Te dane wejściowe mogą służyć do konstruowania zarządzanych aplikacji przy użyciu **tożsamości przypisanej do użytkownika**.
 
 ```json
 "outputs": {
@@ -61,17 +61,17 @@ Zarządzanej aplikacji można skonfigurować za pomocą tożsamości zarządzane
 }
 ```
 
-#### <a name="when-to-use-createuidefinition-for-managed-identity"></a>Kiedy należy używać CreateUIDefinition tożsamości zarządzanej
+#### <a name="when-to-use-createuidefinition-for-managed-identity"></a>Kiedy używać CreateUIDefinition do zarządzanej tożsamości
 
-Poniżej przedstawiono kilka zaleceń, kiedy należy używać CreateUIDefinition włączania tożsamości zarządzanej w zarządzanych aplikacjach.
+Poniżej przedstawiono kilka zaleceń dotyczących używania CreateUIDefinition do włączania tożsamości zarządzanej w zarządzanych aplikacjach.
 
-- Tworzenie aplikacji zarządzanych przechodzi przez witryny Azure portal lub portalu marketplace.
-- Tożsamości usługi zarządzanej wymaga wprowadzenia danych przez konsumenta złożone.
-- Tożsamości usługi zarządzanej jest wymagana przy tworzeniu aplikacji zarządzanych.
+- Tworzenie aplikacji zarządzanej odbywa się za pomocą Azure Portal lub witryny Marketplace.
+- Tożsamość zarządzana wymaga złożonych danych wejściowych konsumenta.
+- Tożsamość zarządzana jest wymagana podczas tworzenia aplikacji zarządzanej.
 
-#### <a name="systemassigned-createuidefinition"></a>Wartość SystemAssigned CreateUIDefinition
+#### <a name="systemassigned-createuidefinition"></a>SystemAssigned CreateUIDefinition
 
-Podstawowe CreateUIDefinition umożliwiająca tożsamości wartość SystemAssigned dla zarządzanych aplikacji.
+Podstawowa CreateUIDefinition, która umożliwia SystemAssigned tożsamość aplikacji zarządzanej.
 
 ```json
 {
@@ -93,7 +93,7 @@ Podstawowe CreateUIDefinition umożliwiająca tożsamości wartość SystemAssig
 
 #### <a name="userassigned-createuidefinition"></a>UserAssigned CreateUIDefinition
 
-Podstawowe CreateUIDefinition, która przyjmuje **tożsamości przypisanych przez użytkownika** zasobu jako danych wejściowych i umożliwia tożsamości UserAssigned dla zarządzanych aplikacji.
+Podstawowa CreateUIDefinition, która pobiera zasób **tożsamości przypisany przez użytkownika** jako dane wejściowe i włącza tożsamość UserAssigned dla aplikacji zarządzanej.
 
 ```json
 {
@@ -131,29 +131,29 @@ Podstawowe CreateUIDefinition, która przyjmuje **tożsamości przypisanych prze
 }
 ```
 
-CreateUIDefinition.json powyżej generuje Utwórz interfejs użytkownika, który zawiera pole tekstowe dla użytkownika o podanie **tożsamości przypisanych przez użytkownika** identyfikatora zasobu platformy Azure. Wygenerowany środowisko będzie wyglądać:
+Plik CreateUIDefinition. JSON powyżej generuje środowisko użytkownika, które ma pole tekstowe odbiorcy, aby wprowadzić identyfikator zasobu platformy Azure **przypisany przez użytkownika** . Wygenerowane środowisko będzie wyglądać następująco:
 
-![Przykładowy tożsamości przypisanych przez użytkownika CreateUIDefinition](./media/publish-managed-identity/user-assigned-identity.png)
+![Przykładowa tożsamość przypisana przez użytkownika CreateUIDefinition](./media/publish-managed-identity/user-assigned-identity.png)
 
-### <a name="using-azure-resource-manager-templates"></a>Za pomocą szablonów usługi Azure Resource Manager
+### <a name="using-azure-resource-manager-templates"></a>Korzystanie z szablonów Azure Resource Manager
 
 > [!NOTE]
-> Szablony zarządzanej aplikacji w portalu Marketplace są generowane automatycznie dla klientów, przechodząc w witrynie Azure portal utworzyć środowisko.
-> W tych scenariuszach `managedIdentity` klucza danych wyjściowych na CreateUIDefinition może służyć do włączyć tożsamości.
+> Szablony aplikacji zarządzane w portalu Marketplace są generowane automatycznie dla klientów przechodzących przez Azure Portal tworzenia środowiska.
+> W tych scenariuszach klucz wyjściowy `managedIdentity` w CreateUIDefinition musi być używany do włączenia tożsamości.
 
-Można również włączyć tożsamości usługi zarządzanej za pomocą szablonów usługi Azure Resource Manager. Dzwonek przykładowe spowoduje włączenie **przypisany systemowo** tożsamości w zarządzanej aplikacji. Bardziej złożone obiekty tożsamości można zostać utworzona za pomocą parametrów szablonu usługi Azure Resource Manager, podaj dane wejściowe. Te dane wejściowe może służyć do tworzenia aplikacji zarządzanych za pomocą **tożsamości przypisanych przez użytkownika**.
+Tożsamość zarządzaną można również włączyć za pomocą szablonów Azure Resource Manager. Przykładowy w postaci, w której zostanie włączona tożsamość **przypisana przez system** w zarządzanej aplikacji. Bardziej złożone obiekty tożsamości można utworzyć przy użyciu parametrów szablonu Azure Resource Manager, aby zapewnić dane wejściowe. Te dane wejściowe mogą służyć do konstruowania zarządzanych aplikacji przy użyciu **tożsamości przypisanej do użytkownika**.
 
-#### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>Kiedy należy używać szablonów usługi Azure Resource Manager tożsamości zarządzanej
+#### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>Kiedy używać szablonów Azure Resource Manager dla tożsamości zarządzanej
 
-Poniżej przedstawiono kilka zaleceń, kiedy należy używać szablonów usługi Azure Resource Manager, włączania tożsamości zarządzanej w zarządzanych aplikacjach.
+Poniżej przedstawiono kilka zaleceń dotyczących używania Azure Resource Manager szablonów do włączania tożsamości zarządzanej w zarządzanych aplikacjach.
 
-- Zarządzane aplikacje mogą programowo wdrażane na podstawie szablonu.
-- Przypisania ról niestandardowych dla tożsamości zarządzanej są wymagane do obsługi administracyjnej zarządzanych aplikacji.
-- Zarządzanej aplikacji platformy Azure portal i portalu marketplace przepływ tworzenia nie jest konieczne.
+- Zarządzane aplikacje można programistycznie wdrażać na podstawie szablonu.
+- Niestandardowe przypisania ról dla tożsamości zarządzanej są konieczne do aprowizacji zarządzanej aplikacji.
+- Aplikacja zarządzana nie potrzebuje Azure Portal i przepływu tworzenia witryny Marketplace.
 
-#### <a name="systemassigned-template"></a>Wartość SystemAssigned szablonu
+#### <a name="systemassigned-template"></a>Szablon SystemAssigned
 
-Podstawowy szablon usługi Azure Resource Manager, który wdraża zarządzanej aplikacji za pomocą **przypisany systemowo** tożsamości.
+Podstawowy szablon Azure Resource Manager, który wdraża zarządzaną aplikację przy użyciu tożsamości **przypisanej do systemu** .
 
 ```json
 "resources": [
@@ -175,7 +175,7 @@ Podstawowy szablon usługi Azure Resource Manager, który wdraża zarządzanej a
 
 ### <a name="userassigned-template"></a>Szablon UserAssigned
 
-Podstawowy szablon usługi Azure Resource Manager, który wdraża zarządzanej aplikacji za pomocą **tożsamości przypisanych przez użytkownika**.
+Podstawowy szablon Azure Resource Manager, który wdraża zarządzaną aplikację przy użyciu **tożsamości przypisanej do użytkownika**.
 
 ```json
 "resources": [
@@ -206,22 +206,22 @@ Podstawowy szablon usługi Azure Resource Manager, który wdraża zarządzanej a
 
 ## <a name="granting-access-to-azure-resources"></a>Udzielanie dostępu do zasobów platformy Azure
 
-Po udzieleniu tożsamości usługi zarządzanej aplikacji go można udzielić dostępu do istniejących zasobów platformy azure. Ten proces może odbywać się za pośrednictwem interfejsu (IAM) kontroli dostępu w witrynie Azure portal. Nazwa aplikacji zarządzanych lub **tożsamości przypisanych przez użytkownika** można przeszukiwać, Dodaj przypisanie roli.
+Gdy zarządzana aplikacja otrzymuje tożsamość, może uzyskać dostęp do istniejących zasobów platformy Azure. Ten proces można przeprowadzić za pomocą interfejsu kontroli dostępu (IAM) w Azure Portal. Nazwę zarządzanej aplikacji lub **tożsamości przypisanej do użytkownika** można wyszukać w celu dodania przypisania roli.
 
-![Dodaj przypisanie roli dla zarządzanych aplikacji](./media/publish-managed-identity/identity-role-assignment.png)
+![Dodawanie przypisania roli dla aplikacji zarządzanej](./media/publish-managed-identity/identity-role-assignment.png)
 
 ## <a name="linking-existing-azure-resources"></a>Łączenie istniejących zasobów platformy Azure
 
 > [!NOTE]
-> A **tożsamości przypisanych przez użytkownika** musi być [skonfigurowane](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) przed wdrożeniem aplikacji zarządzanych. Ponadto połączony zasób wdrożenia aplikacji dla zarządzanych jest obsługiwana tylko w przypadku **marketplace** rodzaju.
+> Przed wdrożeniem zarządzanej aplikacji należy [skonfigurować](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) **tożsamość przypisaną przez użytkownika** . Ponadto wdrożenie połączonego zasobu aplikacji zarządzanych jest obsługiwane tylko dla danego rodzaju **witryny Marketplace** .
 
-Tożsamość zarządzana można również wdrożyć zarządzanej aplikacji, która wymaga dostępu do istniejących zasobów podczas jego wdrażania. Po zaaprowizowaniu aplikacji zarządzanych przez klienta i **tożsamości przypisanych przez użytkownika** mogą być dodawane do zapewniają dodatkowe zezwolenia **mainTemplate** wdrożenia.
+Tożsamości zarządzanej można także użyć do wdrożenia aplikacji zarządzanej, która wymaga dostępu do istniejących zasobów podczas jej wdrażania. Gdy zarządzana aplikacja jest obsługiwana przez klienta, można dodać **tożsamości przypisane do użytkownika** , aby zapewnić dodatkowe autoryzacje wdrożenia **mainTemplate** .
 
-### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>Tworzenie CreateUIDefinition z zasobu połączonego
+### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>Tworzenie CreateUIDefinition z połączonym zasobem
 
-Podczas łączenia wdrożenia aplikacji zarządzanych do istniejących zasobów, zarówno istniejącego zasobu platformy Azure i **tożsamości przypisanych przez użytkownika** rolą zastosowanie przypisania na taki zasób musi być podana.
+Podczas łączenia wdrożenia aplikacji zarządzanej z istniejącymi zasobami należy dostarczyć zarówno istniejący zasób platformy Azure, jak i **tożsamość przypisaną przez użytkownika** z odpowiednim przypisaniem roli dla tego zasobu.
 
- Przykładowe CreateUIDefinition, która wymaga dwóch danych wejściowych: identyfikator zasobu interfejsu sieciowego i identyfikator zasobu tożsamości przypisanych przez użytkownika.
+ Przykładowa CreateUIDefinition, która wymaga dwóch danych wejściowych: identyfikatora zasobu interfejsu sieciowego i identyfikatora zasobu tożsamości przypisanego przez użytkownika.
 
 ```json
 {
@@ -269,15 +269,15 @@ Podczas łączenia wdrożenia aplikacji zarządzanych do istniejących zasobów,
 }
 ```
 
-Ta CreateUIDefinition.json generuje Utwórz środowisko użytkownika, który ma dwa pola. Pierwsze pole umożliwia użytkownikowi wprowadź identyfikator zasobu platformy Azure dla zasobów jest połączona z wdrażanie zarządzanych aplikacji. Druga jest przeznaczona dla klientów wprowadzić **tożsamości przypisanych przez użytkownika** Identyfikatora zasobu platformy Azure, który ma dostęp do połączonych zasobów platformy Azure. Wygenerowany środowisko będzie wyglądać:
+Ten plik CreateUIDefinition. JSON generuje środowisko użytkownika, które ma dwa pola. Pierwsze pole umożliwia użytkownikowi wprowadzanie identyfikatora zasobu platformy Azure dla zasobu połączonego z wdrożeniem aplikacji zarządzanej. Druga dotyczy konsumenta, który wprowadza identyfikator zasobu platformy Azure **przypisany przez użytkownika** , który ma dostęp do połączonego zasobu platformy Azure. Wygenerowane środowisko będzie wyglądać następująco:
 
-![Przykładowy CreateUIDefinition za pomocą dwóch danych wejściowych: interfejs sieciowy, identyfikator zasobu i identyfikator zasobu tożsamości przypisanych przez użytkownika](./media/publish-managed-identity/network-interface-cuid.png)
+![Przykład CreateUIDefinition z dwoma danymi wejściowymi: Identyfikator zasobu interfejsu sieciowego i identyfikator zasobu tożsamości przypisanego przez użytkownika](./media/publish-managed-identity/network-interface-cuid.png)
 
-### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>Tworzenie mainTemplate z zasobu połączonego
+### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>Tworzenie mainTemplate z połączonym zasobem
 
-Oprócz aktualizowaniem CreateUIDefinition głównego szablonu również musi zostać zaktualizowany do akceptowania przekazany w identyfikatorze zasobu połączonego. Aby zaakceptować nowe dane wyjściowe przez dodanie nowego parametru można aktualizować głównego szablonu. Ponieważ `managedIdentity` dane wyjściowe zastępuje wartość na wygenerowany szablon zarządzanej aplikacji, nie zostanie przekazany do głównego szablonu, a nie powinny znajdować się w sekcji parametrów.
+Oprócz aktualizowania CreateUIDefinition należy również zaktualizować główny szablon, aby akceptował pozostały identyfikator połączonego zasobu. Szablon główny można zaktualizować, aby akceptował nowe dane wyjściowe przez dodanie nowego parametru. Ponieważ dane wyjściowe `managedIdentity` przesłaniają wartość w generowanym szablonie aplikacji zarządzanej, nie są przekazywane do szablonu głównego i nie powinny być zawarte w sekcji Parameters.
 
-Przykładowy główny szablon ustawiający profil sieciowy do istniejącego interfejsu sieciowego, które są dostarczane przez CreateUIDefinition.
+Przykładowy szablon główny, który ustawia profil sieci na istniejący interfejs sieciowy udostępniony przez CreateUIDefinition.
 
 ```json
 {
@@ -309,17 +309,17 @@ Przykładowy główny szablon ustawiający profil sieciowy do istniejącego inte
 }
 ```
 
-### <a name="consuming-the-managed-application-with-a-linked-resource"></a>Korzystanie z aplikacji zarządzanych za pomocą zasobu połączonego
+### <a name="consuming-the-managed-application-with-a-linked-resource"></a>Używanie aplikacji zarządzanej z połączonym zasobem
 
-Po utworzeniu pakietu aplikacji zarządzanych zarządzanej aplikacji mogą być używane w witrynie Azure portal. Zanim mogą być używane, istnieje kilka wstępnie wymagane kroki.
+Po utworzeniu pakietu aplikacji zarządzanej aplikacja zarządzana może być używana przez Azure Portal. Aby można było korzystać z programu, należy wykonać kilka czynności w ramach wymagań wstępnych.
 
-- Można utworzyć wystąpienia wymagane połączonego zasobu platformy Azure.
-- **Tożsamości przypisanych przez użytkownika** musi być [utworzone i biorąc pod uwagę przypisań ról](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) do zasobu połączonego.
-- Istniejące połączone identyfikator zasobu i **tożsamości przypisanych przez użytkownika** identyfikator podano CreateUIDefinition.
+- Należy utworzyć wystąpienie wymaganego połączonego zasobu platformy Azure.
+- **Tożsamość przypisana przez użytkownika** musi być [utworzona i ma nadane przypisania roli](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) do połączonego zasobu.
+- Istniejący identyfikator połączonego zasobu i identyfikator **tożsamości przypisany przez użytkownika** są udostępniane CreateUIDefinition.
 
-## <a name="accessing-the-managed-identity-token"></a>Uzyskiwanie dostępu do tokenu tożsamości zarządzanej
+## <a name="accessing-the-managed-identity-token"></a>Uzyskiwanie dostępu do tokenu zarządzanej tożsamości
 
-Token zarządzanej aplikacji jest teraz dostępna za pośrednictwem `listTokens` interfejsu api w dzierżawie wydawcy. Przykładowe żądanie może wyglądać jak:
+Do tokenu aplikacji zarządzanej można teraz uzyskać dostęp za pośrednictwem interfejsu API `listTokens` z dzierżawy wydawcy. Przykładowe żądanie może wyglądać następująco:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
@@ -336,11 +336,11 @@ Parametry treści żądania:
 
 Parametr | Wymagane | Opis
 ---|---|---
-authorizationAudience | *Brak* | Identyfikator URI Identyfikatora aplikacji z zasobu docelowego. Ponadto jest `aud` (odbiorcy) oświadczenia w wystawionych tokenów. Wartość domyślna to "https://management.azure.com/"
-userAssignedIdentities | *Brak* | Lista tożsamości zarządzanej można pobrać tokenu dla przypisanych przez użytkownika. Jeśli nie zostanie określony, `listTokens` zwróci token dla tożsamości zarządzanej przypisana przez system.
+authorizationAudience | *znaleziono* | Identyfikator URI identyfikatora aplikacji dla zasobu docelowego. Jest to także zbiór `aud` (grupy odbiorców) wystawionego tokenu. Wartość domyślna to "https://management.azure.com/"
+Resourceidentity | *znaleziono* | Lista zarządzanych tożsamości przypisanych przez użytkownika w celu pobrania tokenu dla programu. Jeśli nie zostanie określony, `listTokens` zwróci token dla tożsamości zarządzanej przypisanej do systemu.
 
 
-Przykładowa odpowiedź może wyglądać jak:
+Przykładowa odpowiedź może wyglądać następująco:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -361,19 +361,19 @@ Content-Type: application/json
 }
 ```
 
-Odpowiedź będzie zawierać tablicę tokenów w obszarze `value` właściwości:
+Odpowiedź będzie zawierać tablicę tokenów pod właściwością `value`:
 
 Parametr | Opis
 ---|---
-access_token | Token żądanego dostępu.
-expires_in | Liczba sekund, przez które token dostępu będą obowiązywać.
-expires_on | Zakres czasu wygaśnięcia tokenu dostępu. To jest reprezentowany jako liczbę sekund od epoki.
-not_before | Przedział czasu, gdy token dostępu będą obowiązywać. To jest reprezentowany jako liczbę sekund od epoki.
-authorizationAudience | `aud` (Odbiorcy) token dostępu został żądanie. To jest taka sama, jak została podana w `listTokens` żądania.
-resourceId | Identyfikator zasobu platformy Azure wystawiony token. Jest to identyfikator zarządzanej aplikacji lub identyfikator tożsamości przypisanych przez użytkownika.
+access_token | Żądany token dostępu.
+expires_in | Liczba sekund, przez jaką token dostępu będzie prawidłowy.
+expires_on | Wartość TimeSpan w przypadku wygaśnięcia tokenu dostępu. Jest to reprezentowane przez liczbę sekund od epoki.
+not_before | Przedział czasu, gdy obowiązuje token dostępu. Jest to reprezentowane przez liczbę sekund od epoki.
+authorizationAudience | @No__t-0 (odbiorcy) żądanie tokenu dostępu. Jest to takie samo, jak podane w żądaniu `listTokens`.
+resourceId | Identyfikator zasobu platformy Azure dla wystawionego tokenu. Jest to identyfikator aplikacji zarządzanej lub identyfikator tożsamości przypisany przez użytkownika.
 token_type | Typ tokenu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Jak skonfigurować zarządzanej aplikacji za pomocą dostawcy niestandardowego](./custom-providers-overview.md)
+> [Jak skonfigurować zarządzaną aplikację przy użyciu dostawcy niestandardowego](./custom-providers-overview.md)

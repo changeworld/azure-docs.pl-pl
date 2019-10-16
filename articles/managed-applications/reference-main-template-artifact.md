@@ -1,20 +1,20 @@
 ---
 title: Dokumentacja artefaktu szablonu wdrażania aplikacji zarządzanych przez platformę Azure
-description: Ten artykuł jest odwołaniem do artefaktu szablonu wdrożenia.
+description: Zawiera przykład artefaktu szablonu wdrożenia dla Azure Managed Applications.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: fe2517a8cc2ddee6623f88b2ae5e46c9e5319567
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ec59c9cde4f23b4a9d641d286e152ea737576534
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336493"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330171"
 ---
-# <a name="reference-deployment-template-artifact"></a>Informacje ogólne: Artefakt szablonu wdrożenia
+# <a name="reference-deployment-template-artifact"></a>Odwołanie: artefakt szablonu wdrożenia
 
 Ten artykuł jest odwołaniem do artefaktu *mainTemplate. JSON* w Azure Managed Applications. Aby uzyskać więcej informacji na temat tworzenia szablonu wdrożenia, zobacz [Azure Resource Manager templates](../azure-resource-manager/resource-group-authoring-templates.md).
 
@@ -192,5 +192,5 @@ Poniższy kod JSON przedstawia przykład pliku *mainTemplate. JSON* dla Azure Ma
 ## <a name="next-steps"></a>Następne kroki
 
 - [Samouczek: Tworzenie aplikacji zarządzanej z niestandardowymi akcjami i zasobami](tutorial-create-managed-app-with-custom-provider.md)
-- [Odwoła Artefakt elementów interfejsu użytkownika](reference-createuidefinition-artifact.md)
-- [Odwoła Wyświetl artefakt definicji](reference-view-definition-artifact.md)
+- [Odwołanie: artefakt elementów interfejsu użytkownika](reference-createuidefinition-artifact.md)
+- [Reference: artefakt definicji widoku](reference-view-definition-artifact.md)

@@ -1,23 +1,23 @@
 ---
-title: Klauzula ograniczenia PRZESUNIĘCIA w usłudze Azure Cosmos DB
-description: Dowiedz się więcej o klauzuli przesunięcie LIMIT usługi Azure Cosmos DB.
+title: Klauzula limitu przesunięcia w Azure Cosmos DB
+description: Dowiedz się więcej na temat klauzuli LIMIT przesunięcia dla Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 60ac28c80e9f7cc72f4d6005c12cb5f68671341e
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 7aae56783f83f13b50321c88d69f07d910e589dd
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342522"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326874"
 ---
-# <a name="offset-limit-clause"></a>Klauzula ograniczenia PRZESUNIĘCIA
+# <a name="offset-limit-clause-in-azure-cosmos-db"></a>Klauzula limitu przesunięcia w Azure Cosmos DB
 
-Klauzula przesunięcie LIMIT jest opcjonalna klauzula do pominięcia, a następnie wykonać pewnej liczby wartości z zapytania. Liczba przesunięcie i licznik limitu są wymagane w klauzuli ograniczenia PRZESUNIĘCIA.
+Klauzula LIMIT przesunięcia jest opcjonalną klauzulą, aby pominąć, a następnie pobrać pewną liczbę wartości z zapytania. W klauzuli LIMIT przesunięcia są wymagane liczby przesunięcia i liczba LIMITów.
 
-Stosowania limitu przesunięcie w połączeniu z klauzulą ORDER BY zestaw wyników jest generowany, wykonując Pomiń i podejmij uporządkowane wartości. Jeśli jest używany nie klauzuli ORDER BY, spowodują deterministyczne kolejność wartości.
+Gdy LIMIT przesunięcia jest używany w połączeniu z klauzulą ORDER BY, zestaw wyników jest tworzony przez wykonanie pominięcia i wykonania uporządkowanych wartości. Jeśli nie jest używana klauzula ORDER BY, spowoduje to deterministyczną kolejność wartości.
 
 ## <a name="syntax"></a>Składnia
   
@@ -29,19 +29,19 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 - `<offset_amount>`
 
-   Określa liczbę całkowitą liczbę elementów, które należy pominąć wyników zapytania.
+   Określa liczbę całkowitą elementów, które mają zostać pominięte w wynikach zapytania.
 
 - `<limit_amount>`
   
-   Określa liczbę całkowitą elementy zawierające wyniki zapytania
+   Określa liczbę całkowitą elementów, które powinny zawierać wyniki zapytania
 
 ## <a name="remarks"></a>Uwagi
   
-  Liczba przesunięcie i licznik limitu są wymagane w klauzuli ograniczenia PRZESUNIĘCIA. Jeśli jest to opcjonalne `ORDER BY` klauzula jest używana, zestaw wyników jest generowany, wykonując pomijania za pośrednictwem uporządkowane wartości. W przeciwnym razie zapytanie zwróci wartości ustalonej kolejności. Obecnie ta klauzula jest obsługiwana w przypadku kwerend w tylko jednej partycji, zapytań między partycjami jeszcze go nie obsługują.
+  W klauzuli LIMIT przesunięcia są wymagane zarówno licznik przesunięcia, jak i liczba LIMITów. Jeśli zostanie użyta opcjonalna klauzula `ORDER BY`, zestaw wyników zostanie utworzony przez przeskoczenie na uporządkowane wartości. W przeciwnym razie zapytanie zwróci ustaloną kolejność wartości. Obecnie ta klauzula jest obsługiwana w przypadku zapytań w ramach pojedynczej partycji. zapytania między partycjami jeszcze nie obsługują tego programu.
 
 ## <a name="examples"></a>Przykłady
 
-Na przykład w tym miejscu jest zapytanie, które zawierają pierwszej wartości i zwraca wartość drugiego (według nazwy miasta rezydentnego):
+Na przykład jest to zapytanie, które pomija pierwszą wartość i zwraca drugą wartość (w kolejności nazwy miasta rezydenta):
 
 ```sql
     SELECT f.id, f.address.city
@@ -50,7 +50,7 @@ Na przykład w tym miejscu jest zapytanie, które zawierają pierwszej wartości
     OFFSET 1 LIMIT 1
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -61,7 +61,7 @@ Wyniki są:
     ]
 ```
 
-Oto zapytanie, które zawierają pierwszej wartości i zwraca wartość drugiego (bez kolejności):
+Oto zapytanie, które pomija pierwszą wartość i zwraca drugą wartość (bez porządkowania):
 
 ```sql
    SELECT f.id, f.address.city
@@ -69,7 +69,7 @@ Oto zapytanie, które zawierają pierwszej wartości i zwraca wartość drugiego
     OFFSET 1 LIMIT 1
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -80,8 +80,8 @@ Wyniki są:
     ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
-- [Klauzula SELECT](sql-query-select.md)
+- [SELECT — klauzula](sql-query-select.md)
 - [Klauzula ORDER BY](sql-query-order-by.md)

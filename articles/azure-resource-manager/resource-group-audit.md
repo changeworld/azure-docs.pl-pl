@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: aba06b07fef1cbc5d84d93cf38fec3bd936c1ac8
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286118"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329439"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Wyświetlanie dzienników aktywności w celu monitorowania akcji dotyczących zasobów
 
@@ -193,7 +193,7 @@ Operacje REST do pracy z dziennikiem aktywności są częścią [interfejsu API 
 
 * Dzienników aktywności platformy Azure można używać w połączeniu z Power BI, aby uzyskać więcej szczegółowych informacji o akcjach w ramach subskrypcji. Zobacz [Wyświetlanie i analizowanie dzienników aktywności platformy Azure w Power BI i nie tylko](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 * Aby dowiedzieć się więcej na temat ustawiania zasad zabezpieczeń, zobacz [Access Control oparte na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md).
-* Aby wyświetlić więcej szczegółów o zmianach w aplikacjach z warstwy infrastruktury we wszystkich sposobach wdrażania aplikacji, zobacz [używanie analizy zmian aplikacji w Azure Monitor] (.. /Azure-monitor/App/Change-Analysis. MD).
+* Aby wyświetlić więcej szczegółów o zmianach w aplikacjach z warstwy infrastruktury we wszystkich sposobach wdrażania aplikacji, zobacz [Korzystanie z analizy zmian aplikacji w Azure monitor](../azure-monitor/app/change-analysis.md).
 * Aby dowiedzieć się więcej na temat poleceń do wyświetlania operacji wdrażania, zobacz [Wyświetlanie operacji wdrażania](resource-manager-deployment-operations.md).
 * Aby dowiedzieć się, jak uniemożliwić usuwanie zasobów dla wszystkich użytkowników, zobacz temat [blokowanie zasobów przy użyciu Azure Resource Manager](resource-group-lock-resources.md).
 * Aby wyświetlić listę operacji dostępnych dla każdego Microsoft Azure dostawcy Menedżer zasobów, zobacz [Azure Resource Manager operacje dostawcy zasobów](../role-based-access-control/resource-provider-operations.md)

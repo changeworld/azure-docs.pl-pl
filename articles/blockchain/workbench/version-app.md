@@ -1,21 +1,21 @@
 ---
-title: Przechowywanie wersji aplikacji łańcucha bloków na platformie Azure łańcucha bloków Workbench Preview
+title: Przechowywanie wersji aplikacji łańcucha bloków — Azure łańcucha bloków Workbench
 description: Jak korzystać z wersji aplikacji w usłudze Azure łańcucha bloków Workbench w wersji zapoznawczej.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 33ecb6dea48117edd876b90eda54768785f25c20
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: f6edbb54962ff11b5ed1497b6a202b9010c67aae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843884"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328839"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Wersja aplikacji Azure łańcucha bloków Workbench Preview
 
@@ -32,7 +32,7 @@ Możesz tworzyć i używać wielu wersji aplikacji Azure łańcucha bloków Work
 
 Aby dodać nową wersję, Przekaż nową konfigurację i pliki kontraktów inteligentnych do łańcucha bloków Workbench.
 
-1. W przeglądarce internetowej przejdź na adres internetowy usługi Blockchain Workbench. Na przykład `https://{workbench URL}.azurewebsites.net/` Aby uzyskać informacje na temat sposobu wyszukiwania adresu sieci Web usługi łańcucha bloków Workbench, zobacz [adres URL sieci Web łańcucha bloków WORKBENCH](deploy.md#blockchain-workbench-web-url)
+1. W przeglądarce internetowej przejdź na adres internetowy usługi Blockchain Workbench. Na przykład `https://{workbench URL}.azurewebsites.net/` Aby uzyskać informacje na temat wyszukiwania adresu sieci Web łańcucha bloków Workbench, zobacz [łańcucha bloków Workbench Web URL](deploy.md#blockchain-workbench-web-url)
 2. Zaloguj się jako [administrator usługi Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
 3. Wybierz aplikację łańcucha bloków, którą chcesz zaktualizować przy użyciu innej wersji.
 4. Wybierz pozycję **Dodaj wersję**. Zostanie wyświetlone okienko **Dodawanie wersji** .

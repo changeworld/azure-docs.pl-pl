@@ -1,21 +1,21 @@
 ---
-title: Rozwiązywanie problemów z usługą Azure łańcucha bloków Workbench Preview
+title: Rozwiązywanie problemów z usługą Azure łańcucha bloków Workbench
 description: Jak rozwiązywać problemy z aplikacją Azure łańcucha bloków Workbench w wersji zapoznawczej.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8fec065b629f2f2b93e78a63521ea0ce4669dd4e
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3032a81a4411cb162a335189ca65b845f8d6305f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844028"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329081"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Rozwiązywanie problemów z usługą Azure łańcucha bloków Workbench Preview
 
@@ -41,7 +41,7 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Uruchamianie skryptu
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-`collectBlockchainWorkbenchTroubleshooting.ps1` Uruchom skrypt, aby zebrać dzienniki i utworzyć plik zip zawierający folder informacji o rozwiązywaniu problemów. Przykład:
+Uruchom skrypt `collectBlockchainWorkbenchTroubleshooting.ps1`, aby zebrać dzienniki i utworzyć plik ZIP zawierający folder informacji o rozwiązywaniu problemów. Na przykład:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
@@ -72,7 +72,7 @@ Wyjściowy plik ZIP zawiera następującą strukturę folderów:
 
 Plik podsumowania zawiera migawkę ogólnego stanu aplikacji i kondycji aplikacji. Podsumowanie zawiera zalecane akcje, wyróżnia najważniejsze błędy i metadane dotyczące uruchomionych usług.
 
-Folder **metryk** zawiera metryki różnych składników systemu w miarę upływu czasu. Na przykład plik `\Details\Workbench\apiMetrics.txt` wyjściowy zawiera podsumowanie różnych kodów odpowiedzi i czasów odpowiedzi w całym okresie zbierania. Folder **szczegóły** zawiera szczegółowe dzienniki umożliwiające rozwiązywanie określonych problemów z usługą Workbench lub podstawową siecią łańcucha bloków. Na przykład `\Details\Workbench\Exceptions.csv` zawiera listę najnowszych wyjątków, które wystąpiły w systemie, co jest przydatne do rozwiązywania problemów z inteligentnymi kontraktami lub interakcjami z łańcucha bloków. 
+Folder **metryk** zawiera metryki różnych składników systemu w miarę upływu czasu. Na przykład plik wyjściowy `\Details\Workbench\apiMetrics.txt` zawiera podsumowanie różnych kodów odpowiedzi i czasów odpowiedzi w ciągu okresu zbierania. Folder **szczegóły** zawiera szczegółowe dzienniki umożliwiające rozwiązywanie określonych problemów z usługą Workbench lub podstawową siecią łańcucha bloków. Na przykład `\Details\Workbench\Exceptions.csv` zawiera listę najnowszych wyjątków, które wystąpiły w systemie, co jest przydatne do rozwiązywania problemów z inteligentnymi kontraktami lub interakcjami z łańcucha bloków. 
 
 ## <a name="next-steps"></a>Następne kroki
 
