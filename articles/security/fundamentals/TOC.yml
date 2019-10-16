@@ -3,6 +3,10 @@
 - name: Architektura i projekt
   href: overview.md
   expanded: false
+  items: null
+- name: Architektura i projekt
+  href: overview.md
+  expanded: false
   items:
     - name: Zaawansowane wykrywanie zagrożeń
       displayName: 'vulnerability, virus, IDs, incident'
@@ -12,14 +16,7 @@
       href: log-audit.md
     - name: Zabezpieczenia sieci na platformie Azure
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
-      href: abstract-network-security.md
-    - name: Bezpieczeństwo bezserwerowej platformy Azure
-      href: abstract-serverless-platform-security.md
-    - name: Zabezpieczenia kontenerów na platformie Azure
-      href: abstract-container-security.md
-    - name: Włączanie bezpieczeństwa działania
-      displayName: 'policy, policies, azure monitor, soc'
-      href: abstract-operational-security.md
+      href: 'https://azure.microsoft.com/resources/azure-network-security/'
     - name: Izolacja w chmurze platformy Azure
       displayName: trust boundary
       href: isolation-choices.md
@@ -28,8 +25,6 @@
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Możliwości techniczne zabezpieczeń
       href: technical-capabilities.md
-    - name: Programowanie bezpiecznych aplikacji na platformie Azure
-      href: abstract-develop-secure-apps.md
 - name: Bezpieczeństwo i szyfrowanie danych
   href: encryption-overview.md
   items:
@@ -90,8 +85,6 @@
                     - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD dla maszyn wirtualnych z systemem Linux
                       displayName: active directory
                       href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
-    - name: Zabezpieczenia usługi Azure Storage
-      href: storage-overview.md
     - name: Przewodnik po zabezpieczeniach magazynu
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Skrytka klienta
