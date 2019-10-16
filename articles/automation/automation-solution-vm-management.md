@@ -1,6 +1,6 @@
 ---
-title: Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania
-description: To rozwiązanie do zarządzania maszyną Wirtualną uruchamia i zatrzymuje maszyny wirtualne usługi Azure Resource Manager zgodnie z harmonogramem i aktywnie monitoruje z dzienników usługi Azure Monitor.
+title: Start/Stop VMs during off-hours rozwiązanie
+description: To rozwiązanie do zarządzania MASZYNą wirtualną uruchamia i wstrzymuje Azure Resource Managere maszyny wirtualne zgodnie z harmonogramem i aktywnie monitoruje z Azure Monitor dzienników.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,304 +9,304 @@ ms.author: robreed
 ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39ba577580424bf8283d64198bb3068b82869c51
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 15036b33e637953de7dc12100468d3dd8570f775
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476873"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376094"
 ---
-# <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
+# <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Start/Stop VMs during off-hours rozwiązanie w Azure Automation
 
-Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania uruchamia i zatrzymuje maszynach wirtualnych platformy Azure zgodnie z harmonogramami zdefiniowanych przez użytkownika, dają wgląd za pomocą dzienników usługi Azure Monitor i wysyła opcjonalne wiadomości e-mail przy użyciu [grup akcji](../azure-monitor/platform/action-groups.md). Obsługuje ona usługi Azure Resource Manager i klasycznych maszyn wirtualnych w przypadku większości scenariuszy.
+Start/Stop VMs during off-hours rozwiązanie uruchamia i wstrzymuje maszyny wirtualne platformy Azure w harmonogramach zdefiniowanych przez użytkownika, udostępnia wgląd w dzienniki Azure Monitor i wysyła opcjonalne wiadomości e-mail przy użyciu [grup akcji](../azure-monitor/platform/action-groups.md). Obsługuje ona zarówno Azure Resource Manager, jak i klasycznych maszyn wirtualnych w większości scenariuszy. Aby można było używać tego rozwiązania z klasycznymi maszynami wirtualnymi, musisz mieć klasyczne konto Uruchom jako, które nie jest domyślnie tworzone. Aby uzyskać instrukcje dotyczące tworzenia klasycznego konta Uruchom jako, zobacz [klasyczne konta Uruchom jako](automation-create-standalone-account.md#classic-run-as-accounts).
 
 > [!NOTE]
-> Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu, które rozwiązanie był testowany z moduły platformy Azure, które są importowane do konta usługi Automation, w przypadku wdrażania rozwiązania. Rozwiązania aktualnie nie działa przy użyciu nowszych wersji modułu usługi Azure. Dotyczy to tylko konto usługi Automation, która umożliwia uruchamianie/zatrzymywanie maszyn wirtualnych są uruchamiane podczas szczytu rozwiązania. Nadal można nowsze wersje modułu platformy Azure w innych kont usługi Automation, zgodnie z opisem w [jak aktualizowanie modułów programu Azure PowerShell w usłudze Azure Automation](automation-update-azure-modules.md)
+> Rozwiązanie Start/Stop VMs during off-hours zostało przetestowane z modułami platformy Azure, które zostały zaimportowane do konta usługi Automation podczas wdrażania rozwiązania. Rozwiązanie nie działa obecnie z nowszymi wersjami modułu platformy Azure. Ma to wpływ tylko na konto usługi Automation używane do uruchamiania rozwiązania Start/Stop VMs during off-hours. Nadal można używać nowszych wersji modułu platformy Azure na innych kontach usługi Automation, zgodnie z opisem w artykule [jak zaktualizować moduły Azure PowerShell w Azure Automation](automation-update-azure-modules.md)
 
-To rozwiązanie udostępnia opcję zdecentralizowane automatyzacji niskie koszty dla użytkowników, którzy chcesz zoptymalizować swoje koszty maszyn wirtualnych. Dzięki temu rozwiązaniu można wykonywać następujące czynności:
+To rozwiązanie zapewnia zdecentralizowaną opcję automatyzacji o niskich kosztach dla użytkowników, którzy chcą zoptymalizować koszty maszyn wirtualnych. Dzięki temu rozwiązaniu można:
 
 - Zaplanuj uruchamianie i zatrzymywanie maszyn wirtualnych.
-- Planowanie maszyn wirtualnych do uruchamiania i zatrzymywania w kolejności rosnącej przy użyciu tagów Azure (nieobsługiwane dla klasycznych maszyn wirtualnych).
-- AUTOSTOP maszyny wirtualne w oparciu o niskim użyciu procesora CPU.
+- Zaplanuj uruchamianie i zatrzymywanie maszyn wirtualnych w porządku rosnącym przy użyciu tagów platformy Azure (nieobsługiwanych w przypadku klasycznych maszyn wirtualnych).
+- Zatrzymaj zatrzymywanie maszyn wirtualnych na podstawie niskiego użycia procesora CPU.
 
-Ograniczenia związane z bieżącego rozwiązania są następujące:
+Poniżej przedstawiono ograniczenia dotyczące bieżącego rozwiązania:
 
-- To rozwiązanie zarządza VMs w dowolnym regionie, ale można używać tylko w tej samej subskrypcji co konto usługi Azure Automation.
-- To rozwiązanie jest dostępne na platformie Azure i AzureGov do dowolnego regionu, który obsługuje obszar roboczy usługi Log Analytics, konto usługi Azure Automation i alertach. Regiony AzureGov aktualnie nie obsługują funkcje poczty e-mail.
+- To rozwiązanie służy do zarządzania maszynami wirtualnymi w dowolnym regionie, ale mogą być używane tylko w tej samej subskrypcji co konto Azure Automation.
+- To rozwiązanie jest dostępne na platformie Azure i AzureGov do dowolnego regionu, który obsługuje obszar roboczy Log Analytics, konto Azure Automation i alerty. Regiony AzureGov obecnie nie obsługują funkcji poczty e-mail.
 
 > [!NOTE]
-> Jeśli używasz rozwiązania dla klasycznych maszyn wirtualnych, następnie wszystkie maszyny wirtualne będą przetwarzane sekwencyjnie na usługę w chmurze. Maszyny wirtualne są nadal przetwarzane równolegle w różnych usługach w chmurze.
+> Jeśli korzystasz z rozwiązania dla klasycznych maszyn wirtualnych, wszystkie maszyny wirtualne będą przetwarzane sekwencyjnie dla każdej usługi w chmurze. Maszyny wirtualne są nadal przetwarzane równolegle w różnych usługach w chmurze.
 >
-> Subskrypcje dostawcy rozwiązań w chmurze (Azure CSP) platformy Azure obsługują tylko model usługi Azure Resource Manager, usługi — z usługi Azure Resource Manager nie są dostępne w programie. Po uruchomieniu rozwiązania uruchomień/zatrzymań może wystąpią błędy, ponieważ zawiera ona polecenia cmdlet do zarządzania zasobami klasycznymi. Aby dowiedzieć się więcej na temat dostawcy usług Kryptograficznych, zobacz [usług dostępnych w ramach subskrypcji programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Jeśli używasz subskrypcji dostawcy CSP, należy zmodyfikować [ **External_EnableClassicVMs** ](#variables) zmienną **False** po wdrożeniu.
+> Subskrypcje dostawcy rozwiązań w chmurze platformy Azure (CSP) obsługują tylko model Azure Resource Manager, usługi nieAzure Resource Managerowe nie są dostępne w programie. Po uruchomieniu rozwiązania uruchamiania/zatrzymywania może wystąpić błąd, ponieważ zawiera polecenia cmdlet służące do zarządzania klasycznymi zasobami. Aby dowiedzieć się więcej na temat dostawcy usług kryptograficznych, zobacz [dostępne usługi w subskrypcjach programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). W przypadku korzystania z subskrypcji dostawcy CSP należy zmodyfikować zmienną [**External_EnableClassicVMs**](#variables) na **false** po wdrożeniu.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Elementy runbook dla tego rozwiązania, pracować [konta Uruchom jako platformy](automation-create-runas-account.md). Konto Uruchom jako jest preferowaną metodą uwierzytelniania, ponieważ używa ona uwierzytelniania certyfikatu zamiast hasła, które może być wygaśnięcie lub ulegać częstym zmianom.
+Elementy Runbook dla tego rozwiązania działają przy użyciu [konta Uruchom jako platformy Azure](automation-create-runas-account.md). Konto Uruchom jako jest preferowaną metodą uwierzytelniania, ponieważ używa uwierzytelniania certyfikatu zamiast hasła, które może wygasnąć lub zmienić.
 
-Zaleca się użyć oddzielnego konta usługi Automation dla rozwiązania uruchamianie/zatrzymywanie maszyn wirtualnych. Jest to spowodowane często uaktualniane są wersje modułu platformy Azure i ich parametrach może ulec zmianie. Rozwiązanie uruchamianie/zatrzymywanie maszyny Wirtualnej nie zostanie uaktualniona na ten sam cykl, dzięki czemu mogą nie działać z nowszymi wersjami poleceń cmdlet, które używa. Zalecane do testowania aktualizacji modułu w teście konta usługi Automation, przed zaimportowaniem ich w środowisku produkcyjnym, konto usługi Automation.
+Zalecane jest użycie oddzielnego konta usługi Automation dla rozwiązania do uruchamiania/zatrzymywania maszyn wirtualnych. Dzieje się tak, ponieważ wersje modułów platformy Azure są często uaktualniane i ich parametry mogą ulec zmianie. Rozwiązanie uruchamiania/zatrzymywania maszyny wirtualnej nie jest uaktualniane na tym samym erze, więc może nie współpracować z nowszymi wersjami poleceń cmdlet, których używa. Zaleca się przetestowanie aktualizacji modułu na koncie automatyzacji testów przed ich zaimportowaniem na konto automatyzacji produkcji.
 
-### <a name="permissions-needed-to-deploy"></a>Uprawnienia wymagane do wdrożenia
+### <a name="permissions-needed-to-deploy"></a>Uprawnienia do wdrożenia
 
-Istnieją pewne uprawnienia, które użytkownik musi mieć wdrażania uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania. Te uprawnienia są różne, jeśli przy użyciu wstępnie utworzonego obszaru roboczego konto usługi Automation i Log Analytics lub tworzenie nowych plików podczas wdrażania. Jeśli jesteś współautorem subskrypcji a administratorem globalnym w swojej dzierżawie usługi Azure Active Directory, nie musisz skonfigurować następujące uprawnienia. Jeśli nie ma tych uprawnień lub należy skonfigurować rolę niestandardową, zobacz uprawnień wymaganych poniżej.
+Istnieją pewne uprawnienia, które użytkownik musi wykonać, aby wdrożyć maszyny wirtualne uruchamiania/zatrzymywania poza godziną. Te uprawnienia są różne w przypadku używania wstępnie utworzonego konta usługi Automation i obszaru roboczego Log Analytics lub tworzenia nowych podczas wdrażania. Jeśli jesteś współautorem subskrypcji i administratorem globalnym w dzierżawie Azure Active Directory, nie musisz konfigurować następujących uprawnień. Jeśli nie masz tych praw lub musisz skonfigurować rolę niestandardową, zapoznaj się z uprawnieniami wymaganymi poniżej.
 
-#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Konto istniejące konto usługi Automation i Log Analytics
+#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Istniejące konto usługi Automation i konto Log Analytics
 
-Aby wdrożyć uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania do konta usługi Automation i Log Analytics użytkownika wdrażania rozwiązania wymagane są następujące uprawnienia na **grupy zasobów**. Aby dowiedzieć się więcej o rolach, zobacz [niestandardowych ról dla zasobów platformy Azure](../role-based-access-control/custom-roles.md).
+Aby wdrożyć rozwiązanie do uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami na koncie usługi Automation i Log Analytics wdrożenie przez użytkownika rozwiązania wymaga następujących uprawnień do **grupy zasobów**. Aby dowiedzieć się więcej na temat ról, zobacz [role niestandardowe dla zasobów platformy Azure](../role-based-access-control/custom-roles.md).
 
-| Uprawnienie | Scope|
+| Uprawnienie | Zakres|
 | --- | --- |
-| Microsoft.Automation/automationAccounts/read | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/variables/write | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/schedules/write | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/runbooks/write | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/connections/write | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/certificates/write | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/modules/write | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/modules/read | Grupa zasobów |
-| Microsoft.automation/automationAccounts/jobSchedules/write | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/jobs/write | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/jobs/read | Grupa zasobów |
-| Microsoft.OperationsManagement/solutions/write | Grupa zasobów |
-| Microsoft.OperationalInsights/workspaces/* | Grupa zasobów |
-| Microsoft.Insights/diagnosticSettings/write | Grupa zasobów |
-| Microsoft.Insights/ActionGroups/Write | Grupa zasobów |
-| Microsoft.Insights/ActionGroups/read | Grupa zasobów |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Grupa zasobów |
-| Microsoft.Resources/deployments/* | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/Read | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/zmienne/zapis | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/Schedules/Write | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/Runbooks/Write | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/Connections/Write | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/Certificates/Write | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/moduły/zapis | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/moduły/odczyt | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/jobSchedules/Write | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/Jobs/Write | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/Jobs/Read | Grupa zasobów |
+| Microsoft. OperationsManagement/Solutions/Write | Grupa zasobów |
+| Microsoft. OperationalInsights/obszary robocze/* | Grupa zasobów |
+| Microsoft. Insights/diagnosticSettings/Write | Grupa zasobów |
+| Microsoft. Insights/ActionGroups/Write | Grupa zasobów |
+| Microsoft. Insights/ActionGroups/Read | Grupa zasobów |
+| Microsoft. resources/subscriptions/resourceGroups/Read | Grupa zasobów |
+| Microsoft. resources/Deployments/* | Grupa zasobów |
 
-#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Nowe konto usługi Automation i nowy obszar roboczy usługi Log Analytics
+#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Nowe konto usługi Automation i nowy obszar roboczy Log Analytics
 
-Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami poza godzinami pracy wdrażania rozwiązania do nowego konta usługi Automation i Log Analytics obszaru roboczego użytkownika wdrażania rozwiązania wymaga uprawnienia określone w poprzedniej sekcji, a także następujące uprawnienia:
+Aby wdrożyć rozwiązanie do uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami na nowym koncie usługi Automation i Log Analytics obszarze roboczym, wdrożenie przez użytkownika rozwiązania wymaga uprawnień zdefiniowanych w poprzedniej sekcji, a także następujących uprawnień:
 
-- Administrator współpracujący dla subskrypcji — to tylko potrzebne do utworzenia klasycznego konta Uruchom jako
-- Być częścią [usługi Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **Deweloper aplikacji** roli. Aby uzyskać więcej informacji na temat konfigurowania konta Uruchom jako, zobacz [uprawnienia do konfigurowania kont Uruchom jako](manage-runas-account.md#permissions).
-- Współautorem subskrypcji lub następujące uprawnienia.
+- Współadministrator w ramach subskrypcji — jest to potrzebne tylko do utworzenia klasycznego konta Uruchom jako, jeśli zamierzasz zarządzać klasycznymi maszynami wirtualnymi. [Klasyczne konta Uruchom jako](automation-create-standalone-account.md#classic-run-as-accounts) nie są już domyślnie tworzone.
+- Należy do roli **Deweloper aplikacji** [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Aby uzyskać więcej informacji na temat konfigurowania kont Uruchom jako, zobacz [uprawnienia do konfigurowania kont Uruchom jako](manage-runas-account.md#permissions).
+- Współautorem subskrypcji lub następujących uprawnień.
 
-| Uprawnienie |Scope|
+| Uprawnienie |Zakres|
 | --- | --- |
-| Microsoft.Authorization/Operations/read | Subskrypcja|
-| Microsoft.Authorization/permissions/read |Subskrypcja|
-| Microsoft.Authorization/roleAssignments/read | Subskrypcja |
+| Microsoft. Authorization/Operations/Read | Subskrypcja|
+| Microsoft. Autoryzacja/uprawnienia/Odczyt |Subskrypcja|
+| Microsoft. Authorization/roleAssignments/Read | Subskrypcja |
 | Microsoft.Authorization/roleAssignments/write | Subskrypcja |
-| Microsoft.Authorization/roleAssignments/delete | Subskrypcja |
-| Microsoft.Automation/automationAccounts/connections/read | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/certificates/read | Grupa zasobów |
-| Microsoft.Automation/automationAccounts/write | Grupa zasobów |
-| Microsoft.OperationalInsights/workspaces/write | Grupa zasobów |
+| Microsoft. Authorization/roleAssignments/Delete | Subskrypcja |
+| Microsoft. Automation/automationAccounts/Connections/Read | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/Certificates/Read | Grupa zasobów |
+| Microsoft. Automation/automationAccounts/Write | Grupa zasobów |
+| Microsoft. OperationalInsights/obszary robocze/zapis | Grupa zasobów |
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 
-Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnych podczas szczytu rozwiązania do konta usługi Automation, a następnie skonfiguruj zmienne, aby dostosować rozwiązanie.
+Wykonaj następujące kroki, aby dodać rozwiązanie Start/Stop VMs during off-hours do konta usługi Automation, a następnie skonfiguruj zmienne, aby dostosować rozwiązanie.
 
-1. Wybierz z konta usługi Automation **uruchamianie/zatrzymywanie maszyn wirtualnych** w obszarze **powiązane zasoby**. W tym miejscu możesz kliknąć pozycję **Dowiedz się więcej o, a następnie włącz rozwiązanie**. Jeśli masz już wdrożone rozwiązanie uruchamianie/zatrzymywanie maszyn wirtualnych, można wybrać ją, klikając **Zarządzanie rozwiązaniem** i umieszczona na liście.
+1. Z poziomu konta usługi Automation wybierz pozycję **Uruchom/Zatrzymaj maszynę wirtualną** w obszarze **powiązane zasoby**. W tym miejscu możesz kliknąć **więcej informacji na temat i włączyć rozwiązanie**. Jeśli masz już wdrożone rozwiązanie do uruchamiania/zatrzymywania maszyny wirtualnej, możesz je wybrać, klikając pozycję **Zarządzaj rozwiązaniem** i wyszukując je na liście.
 
-   ![Korzystanie z konta usługi automation](./media/automation-solution-vm-management/enable-from-automation-account.png)
+   ![Włącz z konta usługi Automation](./media/automation-solution-vm-management/enable-from-automation-account.png)
 
    > [!NOTE]
-   > Można również utworzyć go z dowolnego miejsca w witrynie Azure portal, klikając **Utwórz zasób**. Na stronie portalu Marketplace, wpisz słowo kluczowe, taką jak **Start** lub **uruchomień/zatrzymań**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Alternatywnie możesz wpisać jeden lub więcej słów kluczowych z pełną nazwę rozwiązania i naciśnij klawisz Enter. Wybierz **uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu** w wynikach wyszukiwania.
+   > Możesz również utworzyć go z dowolnego miejsca w Azure Portal, klikając pozycję **Utwórz zasób**. Na stronie Marketplace wpisz słowo kluczowe, takie jak **Start** lub **Start/Stop**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Alternatywnie możesz wpisać jedno lub więcej słów kluczowych z pełnej nazwy rozwiązania, a następnie nacisnąć klawisz ENTER. Wybierz **Start/Stop VMS during off-hours** z wyników wyszukiwania.
 
-2. W **uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu** dla wybranego rozwiązania strony, przejrzyj dane podsumowania, a następnie kliknij przycisk **Utwórz**.
+2. Na stronie **Start/Stop VMS during off-hours** wybranego rozwiązania Przejrzyj informacje podsumowujące, a następnie kliknij przycisk **Utwórz**.
 
    ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
 
-3. **Dodaj rozwiązanie** zostanie wyświetlona strona. Monit o skonfigurowanie rozwiązania przed zaimportowaniem do subskrypcji usługi Automation.
+3. Zostanie wyświetlona strona **Dodawanie rozwiązania** . Zostanie wyświetlony monit o skonfigurowanie rozwiązania przed zaimportowaniem go do subskrypcji usługi Automation.
 
-   ![Strona Dodaj rozwiązanie zarządzania maszyny Wirtualnej](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
+   ![Strona dodawania rozwiązania do zarządzania maszyną wirtualną](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-4. Na **Dodaj rozwiązanie** wybierz opcję **obszaru roboczego**. Wybierz obszar roboczy usługi Log Analytics, która jest połączona z tą samą subskrypcją platformy Azure, w której znajduje się konto usługi Automation. Jeśli nie masz obszaru roboczego wybierz **Utwórz nowy obszar roboczy**. Na **obszaru roboczego usługi Log Analytics** strony, wykonaj następujące czynności:
-   - Określ nazwę dla nowego **obszaru roboczego usługi Log Analytics**, takie jak "ContosoLAWorkspace".
-   - Wybierz **subskrypcji** się połączyć, wybierając z listy rozwijanej, jeśli nie jest domyślnie wybrana.
-   - Aby uzyskać **grupy zasobów**, można utworzyć nową grupę zasobów lub wybrać istniejącą grupę.
-   - Wybierz **lokalizację**. Obecnie jedynymi dostępnymi lokalizacjami są **Australia południowo-wschodnia**, **Kanada Środkowa**, **Indie środkowe**, **wschodnie stany USA**, **Japonia, część wschodnia**, **Azja południowo-wschodnia**, **Południowe Zjednoczone Królestwo**, **Europa Zachodnia**, i **zachodnie stany USA 2**.
-   - Wybierz **warstwę cenową**. Wybierz **na GB (autonomiczne)** opcji. Dzienniki platformy Azure Monitor został zaktualizowany [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) i warstwie na GB jest jedyną opcją.
+4. Na stronie **Dodawanie rozwiązania** wybierz pozycję **obszar roboczy**. Wybierz obszar roboczy Log Analytics, który jest połączony z tą samą subskrypcją platformy Azure, w której znajduje się konto usługi Automation. Jeśli nie masz obszaru roboczego, wybierz pozycję **Utwórz nowy obszar roboczy**. Na stronie **obszar roboczy log Analytics** wykonaj następujące czynności:
+   - Określ nazwę nowego **obszaru roboczego log Analytics**, na przykład "ContosoLAWorkspace".
+   - Wybierz **subskrypcję** , z którą chcesz utworzyć łącze, wybierając pozycję z listy rozwijanej, jeśli wybrana wartość domyślna nie jest odpowiednia.
+   - W obszarze **Grupa zasobów**można utworzyć nową grupę zasobów lub wybrać istniejącą.
+   - Wybierz **lokalizację**. Obecnie jedyne dostępne lokalizacje to **Australia Południowo-Wschodnia**, **Kanada środkowa**, **Indie Środkowe**, **Wschodnie stany USA**, **Japonia Wschodnia**, **Azja Południowo**-Wschodnia, **Południowe Zjednoczone Królestwo**, **Europa Zachodnia**i **zachodnie stany USA 2** .
+   - Wybierz **warstwę cenową**. Wybierz opcję **na GB (autonomiczne)** . W przypadku dzienników Azure Monitor Zaktualizowano [Cennik](https://azure.microsoft.com/pricing/details/log-analytics/) i jedyną opcją jest warstwa za GB.
 
    > [!NOTE]
    > W przypadku włączenia rozwiązań tylko w niektórych regionach jest obsługiwane łączenie obszaru roboczego usługi Log Analytics i konta usługi Automation.
    >
-   > Aby uzyskać listę par mapowania obsługiwanych, zobacz [mapowania Region dla obszaru roboczego z konta usługi Automation i Log Analytics](how-to/region-mappings.md).
+   > Aby uzyskać listę obsługiwanych par mapowania, zobacz [Mapowanie regionów dla konta usługi Automation i obszaru roboczego log Analytics](how-to/region-mappings.md).
 
-5. Po podaniu wymaganych informacji w **obszaru roboczego usługi Log Analytics** kliknij **Utwórz**. Możesz śledzić postęp w sekcji **powiadomienia** z menu, która zwraca do **Dodaj rozwiązanie** strony po zakończeniu.
-6. Na **Dodaj rozwiązanie** wybierz opcję **konta usługi Automation**. Jeśli tworzysz nowy obszar roboczy usługi Log Analytics, możesz utworzyć nowe konto usługi Automation, który ma zostać skojarzony z nim lub wybierz istniejące konto usługi Automation, która nie jest już połączona z obszarem roboczym usługi Log Analytics. Wybierz istniejące konto usługi Automation, lub kliknij przycisk **Tworzenie konta usługi Automation**, a następnie na **Dodawanie konta usługi Automation** Podaj następujące informacje:
+5. Po podania wymaganych informacji na stronie **obszaru roboczego log Analytics** kliknij przycisk **Utwórz**. Postęp można śledzić w obszarze **powiadomienia** z menu, co powoduje powrót do strony **Dodawanie rozwiązania** po zakończeniu.
+6. Na stronie **Dodawanie rozwiązania** wybierz pozycję **konto usługi Automation**. Jeśli tworzysz nowy obszar roboczy Log Analytics, możesz utworzyć nowe konto usługi Automation, które ma być skojarzone z nim, lub wybrać istniejące konto usługi Automation, które nie jest już połączone z Log Analytics obszarem roboczym. Wybierz istniejące konto usługi Automation lub kliknij pozycję **Utwórz konto usługi Automation**, a następnie na stronie **Dodawanie konta usługi Automation** podaj następujące informacje:
    - W polu **Nazwa** wprowadź nazwę konta usługi Automation.
 
-     Wszystkie inne opcje są wypełniane automatycznie na podstawie na wybrany obszar roboczy usługi Log Analytics. Nie można zmodyfikować tych opcji. Konto Uruchom jako platformy Azure jest domyślną metodą uwierzytelniania dla elementów Runbook zawartych w tym rozwiązaniu. Po kliknięciu **OK**, opcje konfiguracji zostaną sprawdzone i utworzeniu konta usługi Automation. Postęp możesz śledzić w sekcji **Powiadomienia** z poziomu menu.
+     Wszystkie inne opcje są wypełniane automatycznie na podstawie wybranego obszaru roboczego Log Analytics. Tych opcji nie można modyfikować. Konto Uruchom jako platformy Azure jest domyślną metodą uwierzytelniania dla elementów Runbook zawartych w tym rozwiązaniu. Po kliknięciu przycisku **OK**opcje konfiguracji są weryfikowane i tworzone jest konto usługi Automation. Postęp możesz śledzić w sekcji **Powiadomienia** z poziomu menu.
 
-7. Na koniec na **Dodaj rozwiązanie** wybierz opcję **konfiguracji**. **Parametry** zostanie wyświetlona strona.
+7. Na koniec na stronie **Dodawanie rozwiązania** wybierz pozycję **Konfiguracja**. Zostanie wyświetlona strona **Parametry** .
 
-   ![Strona parametrów dla rozwiązania](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
+   ![Strona parametrów rozwiązania](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
-   W tym miejscu zostanie wyświetlony monit:
-   - Określ **docelowa grupa zasobów nazwy**. Te wartości są nazwy grup zasobów zawierających maszyny wirtualne mają być zarządzane przez to rozwiązanie. Można wprowadzić więcej niż jedną nazwę i oddzielić je za pomocą przecinka (wartości nie jest rozróżniana). Użycie symbolu wieloznacznego jest obsługiwane. Możesz skorzystać z tej opcji, jeśli chcesz uwzględnić maszyny wirtualne we wszystkich grupach zasobów w subskrypcji. Ta wartość jest przechowywana w **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** zmiennych.
-   - Określ **listę wykluczeń maszyny Wirtualnej (ciąg)** . Ta wartość jest nazwa co najmniej jednej maszyny wirtualnej z docelową grupę zasobów. Można wprowadzić więcej niż jedną nazwę i oddzielić je za pomocą przecinka (wartości nie jest rozróżniana). Użycie symbolu wieloznacznego jest obsługiwane. Ta wartość jest przechowywana w **External_ExcludeVMNames** zmiennej.
-   - Wybierz **harmonogram**. Wybierz datę i godzinę dla harmonogramu. Cyklicznych Dzienny harmonogram zostanie utworzony, począwszy od czasu, które wybrano. Wybierając inny region jest niedostępny. Aby skonfigurować harmonogram do określonej strefy czasowej po skonfigurowaniu rozwiązania, zobacz [modyfikowanie harmonogramu uruchamiania i zamykania](#modify-the-startup-and-shutdown-schedules).
-   - Aby otrzymać **wiadomości E-mail z powiadomieniami** z grupy akcji, zaakceptuj wartość domyślną **tak** i podaj prawidłowy adres e-mail. Jeśli wybierzesz **nie** , ale później zdecydujesz w późniejszym terminie, że chcesz otrzymywać powiadomień pocztą e-mail, możesz zaktualizować [grupy akcji](../azure-monitor/platform/action-groups.md) utworzonego za pomocą prawidłowych adresów e-mail rozdzielonych przecinkami. Należy również włączyć następujące reguły alertu:
+   W tym miejscu zostanie wyświetlony monit o:
+   - Określ **nazwy docelowych nazw zasobów**. Te wartości to nazwy grup zasobów, które zawierają maszyny wirtualne, które mają być zarządzane przez to rozwiązanie. Można wprowadzić więcej niż jedną nazwę i oddzielić każdy z nich przy użyciu przecinka (w wartościach nie jest rozróżniana wielkość liter). Użycie symbolu wieloznacznego jest obsługiwane. Możesz skorzystać z tej opcji, jeśli chcesz uwzględnić maszyny wirtualne we wszystkich grupach zasobów w subskrypcji. Ta wartość jest przechowywana w zmiennych **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** .
+   - Określ **listę wykluczeń maszyny wirtualnej (ciąg)** . Ta wartość jest nazwą co najmniej jednej maszyny wirtualnej z docelowej grupy zasobów. Można wprowadzić więcej niż jedną nazwę i oddzielić każdy z nich przy użyciu przecinka (w wartościach nie jest rozróżniana wielkość liter). Użycie symbolu wieloznacznego jest obsługiwane. Ta wartość jest przechowywana w zmiennej **External_ExcludeVMNames** .
+   - Wybierz **harmonogram**. Wybierz datę i godzinę dla harmonogramu. Zostanie utworzony dzienny harmonogram, który rozpoczyna się od wybranego czasu. Wybór innego regionu nie jest dostępny. Aby skonfigurować harmonogram do określonej strefy czasowej po skonfigurowaniu rozwiązania, zobacz [Modyfikowanie harmonogramu uruchamiania i zamykania](#modify-the-startup-and-shutdown-schedules).
+   - Aby otrzymywać **powiadomienia e-mail** z grupy akcji, Zaakceptuj wartość domyślną **tak** i Podaj prawidłowy adres e-mail. Jeśli wybierzesz pozycję **nie** , ale zdecydujesz się na późniejszą datę otrzymywania powiadomień e-mail, możesz zaktualizować [grupę akcji](../azure-monitor/platform/action-groups.md) utworzoną przy użyciu prawidłowych adresów e-mail rozdzielonych przecinkami. Należy również włączyć następujące reguły alertów:
 
      - AutoStop_VM_Child
      - Scheduled_StartStop_Parent
      - Sequenced_StartStop_Parent
 
      > [!IMPORTANT]
-     > Wartością domyślną dla **nazwy grupy zasobów obiektów docelowych** jest **&ast;** . Jest przeznaczony dla wszystkich maszyn wirtualnych w ramach subskrypcji. Jeśli nie chcesz, aby rozwiązanie pod kątem wszystkich maszyn wirtualnych w ramach subskrypcji, ta wartość musi zostać zaktualizowany do listy nazwy grupy zasobów przed włączeniem harmonogramy.
+     > Wartość domyślna dla **docelowych nazw zasobów** jest **&ast;** . Dotyczy to wszystkich maszyn wirtualnych w subskrypcji. Jeśli nie chcesz, aby rozwiązanie przekierować wszystkie maszyny wirtualne w subskrypcji, ta wartość musi zostać zaktualizowana do listy nazw grup zasobów przed włączeniem harmonogramów.
 
-8. Po skonfigurowaniu ustawień początkowych wymaganych dla rozwiązania, kliknij przycisk **OK** zamknąć **parametry** strony i wybierz **Utwórz**. Po wszystkie ustawienia zostaną zweryfikowane, rozwiązanie jest wdrożone do subskrypcji. Ten proces może potrwać kilka sekund, aby zakończyć i śledzić postęp w obszarze **powiadomienia** z menu.
+8. Po skonfigurowaniu początkowych ustawień wymaganych dla rozwiązania kliknij przycisk **OK** , aby zamknąć stronę **Parametry** , a następnie wybierz pozycję **Utwórz**. Po zweryfikowaniu wszystkich ustawień rozwiązanie zostanie wdrożone w ramach subskrypcji. Ten proces może potrwać kilka sekund, a postęp można śledzić w obszarze **powiadomienia** z menu.
 
 > [!NOTE]
-> Jeśli masz subskrypcję usługi Azure Cloud Solution Provider (CSP platformy Azure), po zakończeniu wdrożenia, na koncie usługi Automation, przejdź do strony **zmienne** w obszarze **zasoby udostępnione** i ustaw [ **External_EnableClassicVMs** ](#variables) zmienną **False**. Spowoduje to zatrzymanie rozwiązania z szukasz zasobów klasycznych maszyn wirtualnych.
+> Jeśli masz subskrypcję dostawcy rozwiązań w chmurze platformy Azure (CSP), po zakończeniu wdrożenia na koncie usługi Automation przejdź do pozycji **zmienne** w obszarze **zasoby udostępnione** i ustaw dla zmiennej [**External_EnableClassicVMs**](#variables) **wartość false.** . To uniemożliwia rozwiązanie wyszukiwanie klasycznych zasobów maszyn wirtualnych.
 
 ## <a name="scenarios"></a>Scenariusze
 
 Rozwiązanie zawiera trzy różne scenariusze. Te scenariusze są następujące:
 
-### <a name="scenario-1-startstop-vms-on-a-schedule"></a>Scenariusz 1: Uruchamianie/zatrzymywanie maszyn wirtualnych, zgodnie z harmonogramem
+### <a name="scenario-1-startstop-vms-on-a-schedule"></a>Scenariusz 1. Uruchamianie/zatrzymywanie maszyn wirtualnych zgodnie z harmonogramem
 
-Ten scenariusz jest domyślna konfiguracja przy pierwszym wdrożeniu rozwiązania. Na przykład można skonfigurować go w celu zatrzymania wszystkich maszyn wirtualnych w ramach subskrypcji, po opuszczeniu pracy wieczorem i uruchom je rano, gdy się ponownie w biurze. Po skonfigurowaniu harmonogramy **StartVM zaplanowane** i **StopVM zaplanowane** podczas wdrażania, mogą uruchamiać i zatrzymywać docelowych maszyn wirtualnych. Konfigurowanie tego rozwiązania, można po prostu zatrzymywanie maszyn wirtualnych jest obsługiwana, zobacz [modyfikować harmonogramy uruchamiania i zamykania](#modify-the-startup-and-shutdown-schedules) dowiesz się, jak skonfigurować harmonogram niestandardowy.
-
-> [!NOTE]
-> Strefa czasowa jest Twojej bieżącej strefy czasowej po skonfigurowaniu harmonogramu parametru czasu. Jednakże są przechowywane w formacie UTC w usłudze Azure Automation. Nie trzeba wykonać żadnych konwersji strefy czasowej, jak odbywa się to podczas wdrażania.
-
-Ty określasz, jakie maszyny wirtualne znajdują się w zakresie, konfigurując następujące zmienne: **External_Start_ResourceGroupNames**, **External_Stop_ResourceGroupNames**, i **External_ExcludeVMNames**.
-
-Aby umożliwić przeznaczonych dla akcji względem subskrypcji i grupy zasobów lub przeznaczonych dla określonej listy maszyn wirtualnych, ale nie oba.
-
-#### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Uruchamianie i zatrzymywanie działania względem subskrypcji i grupie zasobów docelowych
-
-1. Konfigurowanie **External_Stop_ResourceGroupNames** i **External_ExcludeVMNames** zmiennych do określania docelowych maszyn wirtualnych.
-2. Włącz i zaktualizuj **StartVM zaplanowane** i **StopVM zaplanowane** harmonogramów.
-3. Uruchom **ScheduledStartStop_Parent** element runbook z parametrem akcji ustawionym na **start** i ustaw parametr WHATIF **True** nad wersją zapoznawczą zmiany.
-
-#### <a name="target-the-start-and-stop-action-by-vm-list"></a>Docelowy akcji uruchamianie i zatrzymywanie przez listy maszyn wirtualnych
-
-1. Uruchom **ScheduledStartStop_Parent** runbook za pomocą parametru akcji równa **start**, Dodaj rozdzielaną przecinkami listę maszyn wirtualnych w *VMList* parametru, a następnie ustaw Parametr WHATIF **True**. Przejrzyj wprowadzone zmiany.
-1. Konfigurowanie **External_ExcludeVMNames** parametrem rozdzielana przecinkami lista maszyn wirtualnych (maszyny VM1, VM2, VM3).
-1. W tym scenariuszu nie uznaje **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupnames** zmiennych. W tym scenariuszu musisz utworzyć swój własny harmonogram automatyzacji. Aby uzyskać więcej informacji, zobacz [Planowanie elementu runbook w usłudze Azure Automation](../automation/automation-schedules.md).
+Ten scenariusz jest domyślną konfiguracją podczas pierwszego wdrożenia rozwiązania. Można na przykład skonfigurować go tak, aby zatrzymać wszystkie maszyny wirtualne w ramach subskrypcji, gdy opuszczasz pracę w wieczorie i zaczniesz je od rano, gdy wrócisz do biura. Podczas konfigurowania harmonogramów **zaplanowane — StartVM** i **zaplanowany-StopVM** podczas wdrażania, uruchamiają i zatrzymują maszyny wirtualne. Konfigurowanie tego rozwiązania do tylko zatrzymywania maszyn wirtualnych jest obsługiwane, zobacz [Modyfikowanie harmonogramów uruchamiania i zamykania](#modify-the-startup-and-shutdown-schedules) , aby dowiedzieć się, jak skonfigurować harmonogram niestandardowy.
 
 > [!NOTE]
-> Wartość **nazwy grupy zasobów obiektów docelowych** jest przechowywany jako wartość dla obu **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames**. Dla dalszych szczegółowości można zmodyfikować każde z tych zmiennych pod kątem różnych grupach zasobów. W przypadku akcji uruchamiania, użyj **External_Start_ResourceGroupNames**w przypadku Akcja zatrzymania, użyj **External_Stop_ResourceGroupNames**. Maszyny wirtualne są automatycznie dodawane do uruchomienia i zatrzymania harmonogramów.
+> Strefa czasowa jest bieżącą strefą czasową podczas konfigurowania parametru czasu planowania. Są one jednak przechowywane w formacie UTC w Azure Automation. Nie trzeba wykonywać żadnej konwersji strefy czasowej, ponieważ jest ona obsługiwana podczas wdrażania.
 
-### <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a>Scenariusz 2: Uruchamianie/zatrzymywanie maszyn wirtualnych, w kolejności przy użyciu tagów
+Aby kontrolować, które maszyny wirtualne znajdują się w zakresie, należy skonfigurować następujące zmienne: **External_Start_ResourceGroupNames**, **External_Stop_ResourceGroupNames**i **External_ExcludeVMNames**.
 
-W środowisku zawierającym co najmniej dwóch składników na wielu maszynach wirtualnych, obsługi rozproszonego obciążenia pracą ważne jest Obsługa sekwencji, w którym składniki są uruchomione i zatrzymane w kolejności. W tym scenariuszu można osiągnąć, wykonując następujące czynności:
+Można włączyć opcję określania wartości docelowej dla subskrypcji i grupy zasobów lub przeznaczenie określonej listy maszyn wirtualnych, ale nie obu.
 
-#### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Uruchamianie i zatrzymywanie działania względem subskrypcji i grupie zasobów docelowych
+#### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Kierowanie akcji uruchamiania i zatrzymywania względem subskrypcji i grupy zasobów
 
-1. Dodaj **sequencestart** i **sequencestop** tag z dodatnią liczbą całkowitą do maszyn wirtualnych, które są wykrywane i usuwane **External_Start_ResourceGroupNames** i  **External_Stop_ResourceGroupNames** zmiennych. Uruchamianie i zatrzymywanie działania są wykonywane w kolejności rosnącej. Aby dowiedzieć się, jak oznaczyć Maszynę wirtualną, zobacz [oznaczyć maszynę wirtualną Windows na platformie Azure](../virtual-machines/windows/tag.md) i [oznaczyć maszynę wirtualną systemu Linux na platformie Azure](../virtual-machines/linux/tag.md).
-1. Modyfikuj harmonogramy **Sequenced StartVM** i **Sequenced StopVM** do daty i godziny, który zgodnie z wymaganiami i włączyć harmonogram.
-1. Uruchom **SequencedStartStop_Parent** element runbook z parametrem akcji ustawionym na **start** i ustaw parametr WHATIF **True** nad wersją zapoznawczą zmiany.
-1. Wyświetlić podgląd akcji, a następnie wprowadź niezbędne zmiany przed zaimplementowaniem względem maszyn wirtualnych w środowisku produkcyjnym. Gdy gotowy, ręcznie umożliwia uruchomienie elementu runbook z parametrem ustawionym na **False**, lub pozwól, aby harmonogram Automation **Sequenced StartVM** i **Sequenced StopVM** uruchamiania automatycznie zgodnie z ustalonym harmonogramem.
+1. Skonfiguruj zmienne **External_Stop_ResourceGroupNames** i **External_ExcludeVMNames** w celu określenia docelowych maszyn wirtualnych.
+2. Włącz i zaktualizuj harmonogramy **zaplanowane-StartVM** i **zaplanowane StopVM** .
+3. Uruchom element Runbook **ScheduledStartStop_Parent** z parametrem Action ustawionym na wartość **Start** i parametrem WHATIF ustawionym na **true** , aby wyświetlić podgląd zmian.
 
-#### <a name="target-the-start-and-stop-action-by-vm-list"></a>Docelowy akcji uruchamianie i zatrzymywanie przez listy maszyn wirtualnych
+#### <a name="target-the-start-and-stop-action-by-vm-list"></a>Kierowanie akcji Rozpocznij i Zatrzymaj według maszyny wirtualnej
 
-1. Dodaj **sequencestart** i **sequencestop** tag z dodatnią liczbą całkowitą na maszyny wirtualne mają zostać dodane do **VMList** parametru.
-1. Uruchom **SequencedStartStop_Parent** runbook za pomocą parametru akcji równa **start**, Dodaj rozdzielaną przecinkami listę maszyn wirtualnych w *VMList* parametru, a następnie ustaw Parametr WHATIF **True**. Przejrzyj wprowadzone zmiany.
-1. Konfigurowanie **External_ExcludeVMNames** parametrem rozdzielana przecinkami lista maszyn wirtualnych (maszyny VM1, VM2, VM3).
-1. W tym scenariuszu nie uznaje **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupnames** zmiennych. W tym scenariuszu musisz utworzyć swój własny harmonogram automatyzacji. Aby uzyskać więcej informacji, zobacz [Planowanie elementu runbook w usłudze Azure Automation](../automation/automation-schedules.md).
-1. Wyświetlić podgląd akcji, a następnie wprowadź niezbędne zmiany przed zaimplementowaniem względem maszyn wirtualnych w środowisku produkcyjnym. Po gotowy, ręcznie wykonać monitorowania i diagnostyki/monitorowania — Akcja groupsrunbook z parametrem ustawionym na **False**, lub pozwól, aby harmonogram Automation **Sequenced StartVM** i **Sequenced StopVM** Uruchom automatycznie zgodnie z ustalonym harmonogramem.
+1. Uruchom element Runbook **ScheduledStartStop_Parent** z parametrem Action ustawionym na wartość **Start**, Dodaj rozdzieloną przecinkami listę maszyn wirtualnych w parametrze *VMList* , a następnie ustaw parametr WHATIF na **true**. Wyświetl podgląd zmian.
+1. Skonfiguruj parametr **External_ExcludeVMNames** z rozdzieloną przecinkami listą maszyn wirtualnych (VM1, VM2, VM3).
+1. Ten scenariusz nie honoruje zmiennych **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupnames** . W tym scenariuszu należy utworzyć własny harmonogram automatyzacji. Aby uzyskać szczegółowe informacje, zobacz [Planowanie elementu Runbook w Azure Automation](../automation/automation-schedules.md).
 
-### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>Scenariusz 3: Uruchamianie/zatrzymywanie automatycznie w oparciu o użycie procesora CPU
+> [!NOTE]
+> Wartość **docelowej nazwy obiektu** do odniesień jest przechowywana jako wartość zarówno **External_Start_ResourceGroupNames** , jak i **External_Stop_ResourceGroupNames**. Aby uzyskać więcej stopnia szczegółowości, można zmodyfikować każdą z tych zmiennych dla różnych grup zasobów. Dla akcji uruchamiania Użyj **External_Start_ResourceGroupNames**i dla akcji zatrzymania, użyj **External_Stop_ResourceGroupNames**. Maszyny wirtualne są automatycznie dodawane do harmonogramów uruchamiania i zatrzymywania.
 
-To rozwiązanie pomaga zarządzać koszt uruchamiania maszyn wirtualnych w ramach subskrypcji, oceniając maszyn wirtualnych platformy Azure, które nie są używane w okresach poza szczytem, takie jak po godzinach, i automatycznie ich zamknięcie Jeśli użycie procesora wynosi mniej niż x %.
+### <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a>Scenariusz 2. Uruchamianie/zatrzymywanie maszyn wirtualnych w sekwencji przy użyciu tagów
 
-Domyślnie rozwiązanie jest wstępnie skonfigurowana pod kątem oceny metrykę Procesora procent, aby sprawdzić, czy średnie wykorzystanie jest 5 procent lub mniej. W tym scenariuszu jest kontrolowana przez następujące zmienne i mogą być modyfikowane, jeśli wartości domyślne nie spełniają wymagań:
+W środowisku zawierającym co najmniej dwa składniki na wielu maszynach wirtualnych obsługujących obciążenie rozproszone, obsługa sekwencji, w której składniki zostały uruchomione i zatrzymane, jest ważna. Ten scenariusz można wykonać, wykonując następujące czynności:
+
+#### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Kierowanie akcji uruchamiania i zatrzymywania względem subskrypcji i grupy zasobów
+
+1. Dodaj tag **sequencestart** i **sequencestop** z dodatnią wartością całkowitą do maszyn wirtualnych, które są przeznaczone do zmiennych **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** . Akcje uruchamiania i zatrzymywania są wykonywane w kolejności rosnącej. Aby dowiedzieć się, jak oznaczyć maszynę wirtualną, zobacz [znakowanie maszyny wirtualnej z systemem Windows na platformie Azure](../virtual-machines/windows/tag.md) i oznaczanie [maszyny wirtualnej z systemem Linux na platformie Azure](../virtual-machines/linux/tag.md).
+1. Zmodyfikuj harmonogramy **Sequenced-StartVM** i **Sequenced-StopVM** do daty i godziny, które spełniają Twoje wymagania, i Włącz harmonogram.
+1. Uruchom element Runbook **SequencedStartStop_Parent** z parametrem Action ustawionym na wartość **Start** i parametrem WHATIF ustawionym na **true** , aby wyświetlić podgląd zmian.
+1. Wyświetl podgląd akcji i wprowadź wszelkie niezbędne zmiany przed wdrożeniem na maszynach wirtualnych w środowisku produkcyjnym. Gdy wszystko będzie gotowe, ręcznie wykonaj element Runbook z parametrem ustawionym na **wartość false**lub pozwól na sekwencjonowanie harmonogramu usługi Automation **-StartVM** i **Sequenced-StopVM** działa automatycznie zgodnie z określonym harmonogramem.
+
+#### <a name="target-the-start-and-stop-action-by-vm-list"></a>Kierowanie akcji Rozpocznij i Zatrzymaj według maszyny wirtualnej
+
+1. Dodaj tag **sequencestart** i **sequencestop** z dodatnią wartością całkowitą do maszyn wirtualnych, które planujesz dodać do parametru **VMList** .
+1. Uruchom element Runbook **SequencedStartStop_Parent** z parametrem Action ustawionym na wartość **Start**, Dodaj rozdzieloną przecinkami listę maszyn wirtualnych w parametrze *VMList* , a następnie ustaw parametr WHATIF na **true**. Wyświetl podgląd zmian.
+1. Skonfiguruj parametr **External_ExcludeVMNames** z rozdzieloną przecinkami listą maszyn wirtualnych (VM1, VM2, VM3).
+1. Ten scenariusz nie honoruje zmiennych **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupnames** . W tym scenariuszu należy utworzyć własny harmonogram automatyzacji. Aby uzyskać szczegółowe informacje, zobacz [Planowanie elementu Runbook w Azure Automation](../automation/automation-schedules.md).
+1. Wyświetl podgląd akcji i wprowadź wszelkie niezbędne zmiany przed wdrożeniem na maszynach wirtualnych w środowisku produkcyjnym. Gdy wszystko będzie gotowe, ręcznie wykonaj polecenie monitoring-and-Diagnostics/monitoring-Action-groupsrunbook z parametrem ustawionym na **wartość false**lub pozwól na sekwencjonowanie harmonogramu usługi Automation **-StartVM** i **Sequenced-StopVM** uruchamiane automatycznie zgodnie z ustalonym harmonogramem.
+
+### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>Scenariusz 3. automatyczne uruchamianie/zatrzymywanie na podstawie użycia procesora CPU
+
+To rozwiązanie może pomóc w zarządzaniu kosztami uruchamiania maszyn wirtualnych w ramach subskrypcji przez ocenę maszyn wirtualnych platformy Azure, które nie są używane w okresach poza szczytem, na przykład po godzinach, i ich automatyczne wyłączenie, jeśli użycie procesora jest mniejsze niż x%.
+
+Domyślnie rozwiązanie jest wstępnie skonfigurowane, aby oszacować procentową metrykę procesora CPU, aby sprawdzić, czy średnie użycie nie jest równe 5 procent. Ten scenariusz jest kontrolowany przez następujące zmienne i można go zmodyfikować, jeśli wartości domyślne nie spełniają wymagań:
 
 - External_AutoStop_MetricName
 - External_AutoStop_Threshold
 - External_AutoStop_TimeAggregationOperator
 - External_AutoStop_TimeWindow
 
-Aby umożliwić przeznaczonych dla akcji względem subskrypcji i grupy zasobów lub przeznaczonych dla określonej listy maszyn wirtualnych, ale nie oba.
+Można włączyć opcję określania wartości docelowej dla subskrypcji i grupy zasobów lub przeznaczenie określonej listy maszyn wirtualnych, ale nie obu.
 
-#### <a name="target-the-stop-action-against-a-subscription-and-resource-group"></a>Akcja zatrzymania względem subskrypcji i grupie zasobów docelowych
+#### <a name="target-the-stop-action-against-a-subscription-and-resource-group"></a>Przekieruj akcję zatrzymania na subskrypcję i grupę zasobów
 
-1. Konfigurowanie **External_Stop_ResourceGroupNames** i **External_ExcludeVMNames** zmiennych do określania docelowych maszyn wirtualnych.
-1. Włącz i zaktualizuj **Schedule_AutoStop_CreateAlert_Parent** harmonogramu.
-1. Uruchom **AutoStop_CreateAlert_Parent** element runbook z parametrem akcji ustawionym na **start** i ustaw parametr WHATIF **True** nad wersją zapoznawczą zmiany.
+1. Skonfiguruj zmienne **External_Stop_ResourceGroupNames** i **External_ExcludeVMNames** w celu określenia docelowych maszyn wirtualnych.
+1. Włącz i zaktualizuj harmonogram **Schedule_AutoStop_CreateAlert_Parent** .
+1. Uruchom element Runbook **AutoStop_CreateAlert_Parent** z parametrem Action ustawionym na wartość **Start** i parametrem WHATIF ustawionym na **true** , aby wyświetlić podgląd zmian.
 
-#### <a name="target-the-start-and-stop-action-by-vm-list"></a>Docelowy akcji uruchamianie i zatrzymywanie przez listy maszyn wirtualnych
+#### <a name="target-the-start-and-stop-action-by-vm-list"></a>Kierowanie akcji Rozpocznij i Zatrzymaj według maszyny wirtualnej
 
-1. Uruchom **AutoStop_CreateAlert_Parent** runbook za pomocą parametru akcji równa **start**, Dodaj rozdzielaną przecinkami listę maszyn wirtualnych w *VMList* parametru, a następnie ustaw Parametr WHATIF **True**. Przejrzyj wprowadzone zmiany.
-1. Konfigurowanie **External_ExcludeVMNames** parametrem rozdzielana przecinkami lista maszyn wirtualnych (maszyny VM1, VM2, VM3).
-1. W tym scenariuszu nie uznaje **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupnames** zmiennych. W tym scenariuszu musisz utworzyć swój własny harmonogram automatyzacji. Aby uzyskać więcej informacji, zobacz [Planowanie elementu runbook w usłudze Azure Automation](../automation/automation-schedules.md).
+1. Uruchom element Runbook **AutoStop_CreateAlert_Parent** z parametrem Action ustawionym na wartość **Start**, Dodaj rozdzieloną przecinkami listę maszyn wirtualnych w parametrze *VMList* , a następnie ustaw parametr WHATIF na **true**. Wyświetl podgląd zmian.
+1. Skonfiguruj parametr **External_ExcludeVMNames** z rozdzieloną przecinkami listą maszyn wirtualnych (VM1, VM2, VM3).
+1. Ten scenariusz nie honoruje zmiennych **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupnames** . W tym scenariuszu należy utworzyć własny harmonogram automatyzacji. Aby uzyskać szczegółowe informacje, zobacz [Planowanie elementu Runbook w Azure Automation](../automation/automation-schedules.md).
 
-Teraz, gdy harmonogram zatrzymywanie maszyn wirtualnych na podstawie użycia procesora CPU, musisz włączyć jedną z następujących harmonogramów, aby je uruchomić.
+Teraz, gdy masz harmonogram zatrzymywania maszyn wirtualnych na podstawie użycia procesora CPU, musisz włączyć jeden z poniższych harmonogramów, aby je uruchomić.
 
-- Docelowy akcji uruchamiania przez subskrypcję i grupę zasobów. Zobacz kroki w [scenariusz 1](#scenario-1-startstop-vms-on-a-schedule) do testowania i włączanie **StartVM zaplanowane** harmonogramów.
-- Docelowy uruchomienie działania według subskrypcji, grupy zasobów i tagu. Zobacz kroki w [scenariuszu 2](#scenario-2-startstop-vms-in-sequence-by-using-tags) do testowania i włączanie **Sequenced StartVM** harmonogramów.
+- Docelowa akcja uruchamiania według subskrypcji i grupy zasobów. Zapoznaj się z instrukcjami w [scenariuszu 1](#scenario-1-startstop-vms-on-a-schedule) w celu testowania i włączania harmonogramów **harmonogramu StartVM** .
+- Docelowa akcja uruchamiania według subskrypcji, grupy zasobów i tagu. Zobacz kroki w [scenariuszu 2](#scenario-2-startstop-vms-in-sequence-by-using-tags) , aby przetestować i włączyć harmonogramy **sekwencyjne-StartVM** .
 
 ## <a name="solution-components"></a>Składniki rozwiązania
 
-To rozwiązanie oferuje wstępnie skonfigurowane elementów runbook, harmonogramy i integracji przy użyciu dzienników usługi Azure Monitor, dzięki czemu można dostosować, uruchamiania i zamykania maszyn wirtualnych do potrzeb biznesowych.
+To rozwiązanie obejmuje wstępnie skonfigurowane elementy Runbook, harmonogramy i integrację z dziennikami Azure Monitor, dzięki czemu można dostosować uruchamianie i zamykanie maszyn wirtualnych zgodnie z potrzebami firmy.
 
 ### <a name="runbooks"></a>Elementy Runbook
 
-Poniższa tabela zawiera listę elementów runbook, wdrożone do konta usługi Automation przy użyciu tego rozwiązania. Nie należy wprowadzać zmian w kodzie elementu runbook. Zamiast tego należy napisać własnego elementu runbook dla nowych funkcji.
+Poniższa tabela zawiera listę elementów Runbook wdrożonych na koncie usługi Automation według tego rozwiązania. Nie wprowadzaj zmian w kodzie elementu Runbook. Zamiast tego napisz własny element Runbook pod kątem nowych funkcji.
 
 > [!IMPORTANT]
-> Nie należy bezpośrednio uruchamiać każdego elementu runbook za pomocą "podrzędny" dołączonym do jego nazwy.
+> Nie należy bezpośrednio uruchamiać żadnego elementu Runbook z elementem "Child" dołączonym do jego nazwy.
 
-Obejmują wszystkie nadrzędne elementy runbook _WhatIf_ parametru. Po ustawieniu **True**, _WhatIf_ obsługuje ze szczegółami dotyczącymi dokładne zachowanie wykonuje element runbook po uruchomieniu bez _WhatIf_ parametru i sprawdza poprawność poprawny są maszyny wirtualne celem. Element runbook wykonuje tylko działania zdefiniowane podczas _WhatIf_ parametr ma wartość **False**.
+Wszystkie nadrzędne elementy Runbook zawierają parametr _whatIf_ . Po ustawieniu na **wartość true**, _whatIf_ obsługuje szczegóły dokładnego zachowania elementu Runbook, gdy jest uruchamiany bez parametru _whatIf_ i sprawdza, czy są wskazane poprawne maszyny wirtualne. Element Runbook wykonuje tylko zdefiniowane akcje, gdy parametr _whatIf_ ma wartość **false**.
 
 |Element Runbook | Parametry | Opis|
 | --- | --- | ---|
-|AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Wywoływana z nadrzędnego elementu runbook. Ten element runbook tworzy alerty na podstawie poszczególnych zasobów w ramach scenariusza opisywanego AutoStop.|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: Wartość PRAWDA lub FAŁSZ  | Tworzy lub aktualizuje Azure reguł alertów na maszynach wirtualnych w grupach docelowych, subskrypcji lub zasobu. <br> VMList: Rozdzielana przecinkami lista maszyn wirtualnych. Na przykład _maszyny vm1, vm2, vm3_.<br> *WhatIf* weryfikuje logiką wykonywania elementu runbook bez wykonywania.|
-|AutoStop_Disable | Brak | Wyłącza alerty AutoStop i domyślnego harmonogramu.|
-|AutoStop_StopVM_Child | WebHookData | Wywoływana z nadrzędnego elementu runbook. Reguły alertów wywołać ten element runbook, aby zatrzymać maszynę Wirtualną.|
-|Bootstrap_Main | Brak | Umożliwia konfigurowanie ładowania początkowego konfiguracji, takich jak webhookURI, które nie są zwykle dostępne z usługi Azure Resource Manager jeden raz. Ten element runbook zostanie automatycznie usunięta po pomyślnym wdrożeniu.|
-|ScheduledStartStop_Child | VMName <br> Akcja: Uruchamianie lub zatrzymywanie <br> ResourceGroupName | Wywoływana z nadrzędnego elementu runbook. Wykonuje uruchamianie lub zatrzymywanie akcję na zatrzymanie zaplanowane.|
-|ScheduledStartStop_Parent | Akcja: Uruchamianie lub zatrzymywanie <br>VMList <br> WhatIf: Wartość PRAWDA lub FAŁSZ | To ustawienie ma wpływ na wszystkie maszyny wirtualne w subskrypcji. Edytuj **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** można wykonywać tylko na ten temat grup zasobów docelowych. Można również wykluczyć określonych maszyn wirtualnych, aktualizując **External_ExcludeVMNames** zmiennej.<br> VMList: Rozdzielana przecinkami lista maszyn wirtualnych. Na przykład _maszyny vm1, vm2, vm3_.<br> _WhatIf_ weryfikuje logiką wykonywania elementu runbook bez wykonywania.|
-|SequencedStartStop_Parent | Akcja: Uruchamianie lub zatrzymywanie <br> WhatIf: Wartość PRAWDA lub FAŁSZ<br>VMList| Utworzenie tagów o nazwie **sequencestart** i **sequencestop** na każdej maszynie Wirtualnej, dla którego chcesz działania uruchamiania/zatrzymywania sekwencji. Te nazwy tagu jest rozróżniana wielkość liter. Wartość tagu powinna być dodatnią liczbą całkowitą (1, 2, 3), kolejność, w którym chcesz rozpocząć lub zatrzymać. <br> VMList: Rozdzielana przecinkami lista maszyn wirtualnych. Na przykład _maszyny vm1, vm2, vm3_. <br> _WhatIf_ weryfikuje logiką wykonywania elementu runbook bez wykonywania. <br> **Uwaga**: Maszyny wirtualne muszą być w grupach zasobów, zdefiniowane jako External_Start_ResourceGroupNames External_Stop_ResourceGroupNames i External_ExcludeVMNames w usłudze Azure Automation zmiennych. Muszą mieć odpowiednie znaczniki do wykonywania czynności zastosować zmiany.|
+|AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Wywoływana z nadrzędnego elementu Runbook. Ten element Runbook tworzy alerty dotyczące poszczególnych zasobów dla scenariusza zatrzymywania.|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true lub false  | Tworzy lub aktualizuje reguły alertów platformy Azure na maszynach wirtualnych w ramach dostosowanej subskrypcji lub grup zasobów. <br> VMList: rozdzielona przecinkami lista maszyn wirtualnych. Na przykład _VM1, VM2, VM3_.<br> Wartość *whatIf* weryfikuje logikę elementu Runbook bez wykonywania operacji.|
+|AutoStop_Disable | brak | Wyłącza alerty autozatrzymaj i domyślny harmonogram.|
+|AutoStop_StopVM_Child | WebHookData | Wywoływana z nadrzędnego elementu Runbook. Reguły alertów wywołują ten element Runbook, aby zatrzymać maszynę wirtualną.|
+|Bootstrap_Main | brak | Używane jednorazowo do konfigurowania konfiguracji ładowania początkowego, takich jak webhookURI, które zwykle nie są dostępne w Azure Resource Manager. Ten element Runbook jest usuwany automatycznie po pomyślnym wdrożeniu.|
+|ScheduledStartStop_Child | VMName <br> Akcja: uruchamianie lub zatrzymywanie <br> ResourceGroupName | Wywoływana z nadrzędnego elementu Runbook. Wykonuje akcję uruchamiania lub zatrzymywania dla zaplanowanego zatrzymania.|
+|ScheduledStartStop_Parent | Akcja: uruchamianie lub zatrzymywanie <br>VMList <br> WhatIf: true lub false | To ustawienie ma wpływ na wszystkie maszyny wirtualne w subskrypcji. Edytuj **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** , aby wykonywać tylko te grupy zasobów. Można również wykluczyć określone maszyny wirtualne, aktualizując zmienną **External_ExcludeVMNames** .<br> VMList: rozdzielona przecinkami lista maszyn wirtualnych. Na przykład _VM1, VM2, VM3_.<br> Wartość _whatIf_ weryfikuje logikę elementu Runbook bez wykonywania operacji.|
+|SequencedStartStop_Parent | Akcja: uruchamianie lub zatrzymywanie <br> WhatIf: true lub false<br>VMList| Utwórz Tagi o nazwie **sequencestart** i **sequencestop** na każdej maszynie wirtualnej, dla której chcesz sekwencjonować działanie uruchamiania/zatrzymywania. W tych nazwach tagów jest rozróżniana wielkość liter. Wartość tagu powinna być dodatnią liczbą całkowitą (1, 2, 3) odpowiadającą kolejności, w której ma zostać uruchomiona lub zatrzymana. <br> VMList: rozdzielona przecinkami lista maszyn wirtualnych. Na przykład _VM1, VM2, VM3_. <br> Wartość _whatIf_ weryfikuje logikę elementu Runbook bez wykonywania operacji. <br> **Uwaga**: maszyny wirtualne muszą znajdować się w grupach zasobów zdefiniowanych jako External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames i External_ExcludeVMNames w zmiennych Azure Automation. Muszą mieć odpowiednie Tagi, aby akcje zaczęły obowiązywać.|
 
 ### <a name="variables"></a>Zmienne
 
-W poniższej tabeli wymieniono zmiennych utworzonych na koncie usługi Automation. Modyfikowanie tylko zmienne prefiksem **zewnętrznych**. Modyfikowanie zmiennych prefiksem **wewnętrzne** powoduje niepożądanych skutków.
+Poniższa tabela zawiera listę zmiennych utworzonych na koncie usługi Automation. Modyfikuj tylko zmienne z prefiksem **zewnętrznym**. Modyfikowanie zmiennych poprzedzonych prefiksem **Internal** powoduje niepożądane skutki.
 
 |Zmienna | Opis|
 |---------|------------|
-|External_AutoStop_Condition | Operator warunkowy wymagane do skonfigurowania warunek przed wyzwolenie alertu. Dopuszczalne wartości to **większe**, **równe**, **mniejsze**, i **równe**.|
-|External_AutoStop_Description | Alert, aby zatrzymać maszynę Wirtualną, jeśli procent użycia procesora CPU przekracza wartość progową.|
-|External_AutoStop_MetricName | Nazwa metryki wydajności, dla którego ma zostać skonfigurowany reguły alertów platformy Azure.|
-|External_AutoStop_Threshold | Próg alertu Azure reguły określone w zmiennej _External_AutoStop_MetricName_. Wartości procentowe mogą należeć do zakresu od 1 do 100.|
-|External_AutoStop_TimeAggregationOperator | Operator agregacji czasu, która jest stosowana do rozmiaru okna wybranego warunku. Dopuszczalne wartości to **średni**, **co najmniej**, **maksymalna**, **całkowita**, i **ostatniego**.|
-|External_AutoStop_TimeWindow | Rozmiar okna, w którym Azure analizuje wybrane metryki służącą do wyzwalania alertu. Ten parametr akceptuje dane wejściowe w formacie przedziału czasu. Możliwe wartości to od 5 minut do 6 godzin.|
-|External_EnableClassicVMs| Określa, czy klasyczne maszyny wirtualne są objęte rozwiązania. Wartość domyślna to True. Należy można ustawić na wartość False dla subskrypcji programu CSP.|
-|External_ExcludeVMNames | Wprowadź nazwy maszyn wirtualnych, które mają być wykluczone, oddzielając nazwy za pomocą przecinka bez spacji. To jest ograniczona do 140 maszyn wirtualnych. Jeśli ponad 140 maszyny wirtualne zostaną dodane do tej listy rozdzielanej przecinkami, maszyn wirtualnych, które są ustawione, które mają być wykluczone mogą zostać przypadkowo uruchomiona lub zatrzymana.|
-|External_Start_ResourceGroupNames | Określa co najmniej jedną grupę zasobów, oddzielając wartości przecinkami, przeznaczone dla działania uruchamiania.|
-|External_Stop_ResourceGroupNames | Określa co najmniej jedną grupę zasobów, oddzielając wartości za pomocą przecinków, przeznaczony dla akcji stop.|
+|External_AutoStop_Condition | Operator warunkowy wymagany do skonfigurowania warunku przed wyzwoleniem alertu. Dopuszczalne wartości to **GreaterThan**, **GreaterThanOrEqual**, **LessThan**i **LessThanOrEqual**.|
+|External_AutoStop_Description | Alert, aby zatrzymać maszynę wirtualną, jeśli procent procesora CPU przekroczy wartość progową.|
+|External_AutoStop_MetricName | Nazwa metryki wydajności, dla której ma zostać skonfigurowana reguła alertu platformy Azure.|
+|External_AutoStop_Threshold | Próg reguły alertu platformy Azure określony w zmiennej _External_AutoStop_MetricName_. Wartości procentowe mogą mieć wartość z zakresu od 1 do 100.|
+|External_AutoStop_TimeAggregationOperator | Operator agregacji czasu, który jest stosowany do wybranego rozmiaru okna, aby oszacować warunek. Dopuszczalne wartości to **Average**, **minimum**, **maksimum**, **Suma**i **ostatnie**.|
+|External_AutoStop_TimeWindow | Rozmiar okna, w którym platforma Azure analizuje wybrane metryki na potrzeby wyzwalania alertu. Ten parametr akceptuje dane wejściowe w formacie TimeSpan. Możliwe wartości to od 5 minut do 6 godzin.|
+|External_EnableClassicVMs| Określa, czy klasyczne maszyny wirtualne są objęte rozwiązaniem. Wartość domyślna to true. Dla subskrypcji CSP należy ustawić wartość false. Klasyczne maszyny wirtualne wymagają [klasycznego konta Uruchom jako](automation-create-standalone-account.md#classic-run-as-accounts).|
+|External_ExcludeVMNames | Wprowadź nazwy maszyn wirtualnych do wykluczenia, oddzielając nazwy przecinkami bez spacji. Jest to ograniczone do 140 maszyn wirtualnych. Jeśli dodasz więcej niż 140 maszyn wirtualnych do tej listy rozdzielanej przecinkami, maszyny wirtualne, które są wykluczone, mogą zostać przypadkowo uruchomione lub zatrzymane.|
+|External_Start_ResourceGroupNames | Określa co najmniej jedną grupę zasobów, oddzielając wartości przy użyciu przecinka przeznaczonego do uruchamiania akcji.|
+|External_Stop_ResourceGroupNames | Określa co najmniej jedną grupę zasobów, oddzielając wartości przy użyciu przecinka przeznaczonego dla akcji zatrzymania.|
 |Internal_AutomationAccountName | Określa nazwę konta usługi Automation.|
-|Internal_AutoSnooze_WebhookUri | Określa, że identyfikator URI elementu Webhook o nazwie scenariusz AutoStop.|
+|Internal_AutoSnooze_WebhookUri | Określa identyfikator URI elementu webhook wywołanego dla scenariusza zatrzymywania.|
 |Internal_AzureSubscriptionId | Określa identyfikator subskrypcji platformy Azure.|
 |Internal_ResourceGroupName | Określa nazwę grupy zasobów konta usługi Automation.|
 
-We wszystkich scenariuszach **External_Start_ResourceGroupNames**, **External_Stop_ResourceGroupNames**, i **External_ExcludeVMNames** zmienne są wymagane na przeznaczonych dla maszyn wirtualnych, z wyjątkiem rozdzielaną przecinkami listę maszyn wirtualnych przez zapewnienie **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**, i  **ScheduledStartStop_Parent** elementów runbook. Oznacza to maszyn wirtualnych musi znajdować się w docelowej grupy zasobów, start i zatrzymać wykonanie akcji. Podobnie jak usługa Azure policy w można docelowej subskrypcji lub grupy zasobów i akcji działa logiki dziedziczone przez nowo utworzonymi maszynami wirtualnymi. Ta metoda pozwala uniknąć konieczności kupowania oddzielne harmonogramu dla każdej maszyny Wirtualnej i Zarządzaj uruchamia i zatrzymuje się na skali.
+We wszystkich scenariuszach zmienne **External_Start_ResourceGroupNames**, **External_Stop_ResourceGroupNames**i **External_ExcludeVMNames** są niezbędne do określania docelowych maszyn wirtualnych, z wyjątkiem podawania rozdzielonych przecinkami Lista maszyn wirtualnych dla elementów Runbook **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**i **ScheduledStartStop_Parent** . Oznacza to, że maszyny wirtualne muszą znajdować się w docelowych grupach zasobów, aby akcje uruchamiania i zatrzymywania zostały wykonane. Logika działa podobnie do usługi Azure Policy, w której można kierować do subskrypcji lub grupy zasobów, a akcje są dziedziczone przez nowo utworzone maszyny wirtualne. Takie podejście pozwala uniknąć konieczności utrzymania oddzielnego harmonogramu dla każdej maszyny wirtualnej i zarządzanie rozpoczęciem i zatrzymaniem w skali.
 
 ### <a name="schedules"></a>Harmonogramy
 
-W poniższej tabeli wymieniono każdy z domyślnymi harmonogramami utworzone na koncie usługi Automation. Można je zmodyfikować lub utworzyć własne niestandardowe harmonogramy. Domyślnie wszystkie harmonogramy są wyłączone z wyjątkiem **Scheduled_StartVM** i **Scheduled_StopVM**.
+Poniższa tabela zawiera listę domyślnych harmonogramów utworzonych w ramach konta usługi Automation. Można je modyfikować lub tworzyć własne harmonogramy niestandardowe. Domyślnie wszystkie harmonogramy są wyłączone z wyjątkiem **Scheduled_StartVM** i **Scheduled_StopVM**.
 
-Nie należy włączać wszystkie harmonogramy, ponieważ może to powodować nakładających się akcje harmonogramu. Najlepiej określić optymalizacje, które chcesz wykonać i odpowiednio zmodyfikować. Zobacz przykładowe scenariusze, w sekcji Przegląd, aby uzyskać dokładniejsze objaśnienie.
+Nie należy włączać wszystkich harmonogramów, ponieważ mogą one tworzyć nakładające się akcje dotyczące harmonogramu. Najlepiej określić optymalizacje, które chcesz wykonać i odpowiednio zmodyfikować. Zapoznaj się z przykładowymi scenariuszami w sekcji Przegląd w celu uzyskania dalszych wyjaśnień.
 
 |Nazwa harmonogramu | Częstotliwość | Opis|
 |--- | --- | ---|
-|Schedule_AutoStop_CreateAlert_Parent | Co 8 godzin | Uruchamia element runbook AutoStop_CreateAlert_Parent co 8 godzin, które z kolei powoduje zatrzymanie maszyny Wirtualnej na podstawie wartości w External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames i External_ExcludeVMNames w usłudze Azure Automation zmiennych. Alternatywnie można określić rozdzielana przecinkami lista maszyn wirtualnych przy użyciu parametru VMList.|
-|Scheduled_StopVM | Zdefiniowane przez codziennie użytkownika | Uruchamia element runbook Scheduled_Parent z parametrem _zatrzymać_ codziennie o określonej godzinie. Automatycznie zatrzymuje wszystkie maszyny wirtualne, które spełniają reguły zdefiniowane przez zmienne zasobów. Włącz harmonogram powiązanej **StartVM zaplanowane**.|
-|Scheduled_StartVM | Zdefiniowane przez codziennie użytkownika | Uruchamia element runbook Scheduled_Parent z parametrem _Start_ codziennie o określonej godzinie. Automatycznie uruchamia wszystkie maszyny wirtualne, które spełniają reguły zdefiniowane przez odpowiednich zmiennych. Włącz harmonogram powiązanej **StopVM zaplanowane**.|
-|Sequenced-StopVM | 1:00:00 (czas UTC), każdy piątek | Uruchamia element runbook Sequenced_Parent z parametrem _zatrzymać_ każdy piątek o określonej godzinie. Sekwencyjnie (rosnąco) zatrzymania wszystkich maszyn wirtualnych przy użyciu tagu elementu **SequenceStop** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StartVM**.|
-|Sequenced-StartVM | 1:00 PM (UTC), każdy poniedziałek | Uruchamia element runbook Sequenced_Parent z parametrem _Start_ w każdy poniedziałek o określonej godzinie. Sekwencyjnie (malejąco) zaczyna się od wszystkich maszyn wirtualnych tag **SequenceStart** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StopVM**.|
+|Schedule_AutoStop_CreateAlert_Parent | Co 8 godzin | Uruchamia element Runbook AutoStop_CreateAlert_Parent co 8 godzin, co z kolei powoduje zatrzymanie wartości opartych na maszynie wirtualnej w External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames i External_ExcludeVMNames w zmiennych Azure Automation. Alternatywnie można określić rozdzieloną przecinkami listę maszyn wirtualnych przy użyciu parametru VMList.|
+|Scheduled_StopVM | Zdefiniowany przez użytkownika, codziennie | Uruchamia element Runbook Scheduled_Parent z parametrem _stop_ każdego dnia o określonej godzinie. Automatycznie wstrzymuje wszystkie maszyny wirtualne, które spełniają reguły zdefiniowane przez zmienne zasobów. Włącz harmonogram związany z **planowaną StartVM**.|
+|Scheduled_StartVM | Zdefiniowany przez użytkownika, codziennie | Uruchamia element Runbook Scheduled_Parent z parametrem _Start_ każdego dnia o określonej godzinie. Automatycznie uruchamia wszystkie maszyny wirtualne, które spełniają reguły zdefiniowane przez odpowiednie zmienne. Włącz harmonogram związany z **planowaną StopVM**.|
+|Sequenced-StopVM | 1:00 AM (UTC), każdy piątek | Uruchamia element Runbook Sequenced_Parent z parametrem _stop_ co piątek o określonej godzinie. Sekwencyjnie (rosnąco) przerywa wszystkie maszyny wirtualne ze znacznikiem **SequenceStop** zdefiniowanym przez odpowiednie zmienne. Aby uzyskać więcej informacji na temat wartości tagów i zmiennych zasobów, zobacz sekcję elementy Runbook. Włącz harmonogram związany z **sekwencją-StartVM**.|
+|Sequenced-StartVM | 1:00 PM (UTC), co poniedziałek | Uruchamia element Runbook Sequenced_Parent z parametrem _Start_ co poniedziałek o określonej godzinie. Sekwencyjnie (malejąco) uruchamia wszystkie maszyny wirtualne z tagiem **SequenceStart** zdefiniowanym przez odpowiednie zmienne. Aby uzyskać więcej informacji na temat wartości tagów i zmiennych zasobów, zobacz sekcję elementy Runbook. Włącz harmonogram związany z **sekwencją-StopVM**.|
 
-## <a name="azure-monitor-logs-records"></a>Usługa Azure Monitor rejestruje rekordy
+## <a name="azure-monitor-logs-records"></a>Rekordy dzienników Azure Monitor
 
-Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Analytics: dzienniki zadania i zadania strumieni.
+Automatyzacja tworzy dwa typy rekordów w obszarze roboczym Log Analytics: dzienniki zadań i strumienie zadań.
 
 ### <a name="job-logs"></a>Dzienniki zadań
 
 |Właściwość | Opis|
 |----------|----------|
-|Caller |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
-|Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs.|
-|CorrelationId | Identyfikator GUID, który jest Identyfikatorem korelacji zadania elementu runbook.|
-|JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
+|Obiekt wywołujący |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
+|Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs.|
+|CorrelationId | GUID, który jest IDENTYFIKATORem korelacji zadania elementu Runbook.|
+|JobId | GUID, który jest IDENTYFIKATORem zadania elementu Runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
 |resourceId | Określa typ zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
 |ResourceGroup | Określa nazwę grupy zasobów zadania elementu Runbook.|
@@ -318,28 +318,28 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 |SourceSystem | Określa system źródłowy dla przesłanych danych. W przypadku usługi Automation wartością jest OpsManager|
 |StreamType | Określa typ zdarzenia. Możliwe wartości:<br>— Pełne<br>— Dane wyjściowe<br>— Błąd<br>— Ostrzeżenie|
 |SubscriptionId | Określa identyfikator subskrypcji zadania.
-|Time | Data i godzina dla wykonania zadania elementu Runbook.|
+|Czas | Data i godzina dla wykonania zadania elementu Runbook.|
 
 ### <a name="job-streams"></a>Strumienie zadania
 
 |Właściwość | Opis|
 |----------|----------|
-|Caller |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
-|Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams.|
-|JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
+|Obiekt wywołujący |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
+|Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams.|
+|JobId | GUID, który jest IDENTYFIKATORem zadania elementu Runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
 |ResourceGroup | Określa nazwę grupy zasobów zadania elementu Runbook.|
 |resourceId | Określa identyfikator zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
 |ResourceProvider | Określa nazwę usługi platformy Azure, która zapewnia zasoby do wdrożenia i zarządzania. W przypadku usługi Automation wartością jest Azure Automation.|
 |ResourceType | Określa typ zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
-|resultType | Wynik zadania elementu Runbook w czasie wygenerowania zdarzenia. Możliwa wartość to:<br>— W toku|
+|resultType | Wynik zadania elementu Runbook w czasie wygenerowania zdarzenia. Możliwe wartości to:<br>— W toku|
 |resultDescription | Obejmuje strumień wyjściowy z elementu Runbook.|
 |RunbookName | Nazwa elementu Runbook.|
 |SourceSystem | Określa system źródłowy dla przesłanych danych. W przypadku usługi Automation wartością jest OpsManager.|
-|StreamType | Typ strumienia zadania. Możliwe wartości:<br>-Postęp<br>— Dane wyjściowe<br>— Ostrzeżenie<br>— Błąd<br>— Debugowanie<br>— Pełne|
-|Time | Data i godzina dla wykonania zadania elementu Runbook.|
+|StreamType | Typ strumienia zadania. Możliwe wartości:<br>— Postęp<br>— Dane wyjściowe<br>— Ostrzeżenie<br>— Błąd<br>— Debugowanie<br>— Pełne|
+|Czas | Data i godzina dla wykonania zadania elementu Runbook.|
 
-Jeśli wykonujesz dowolne wyszukiwanie dzienników, które zwraca rekordy kategorii **JobLogs** lub **JobStreams**, możesz wybrać **JobLogs** lub **JobStreams**widoku, który wyświetla zestaw kafelków z podsumowaniem aktualizacji zwracanych przez wyszukiwanie.
+Gdy wykonujesz każde wyszukiwanie w dzienniku, które zwraca rekordy kategorii **JobLogs** lub **JobStreams**, możesz wybrać widok **JobLogs** lub **JobStreams** , który wyświetla zestaw kafelków podsumowujących aktualizacje zwrócone przez wyszukiwanie.
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 
@@ -347,95 +347,95 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów dzi
 
 |Zapytanie | Opis|
 |----------|----------|
-|Znajdź zadania dla elementu runbook ScheduledStartStop_Parent, która została zakończona pomyślnie | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|Znajdź zadania dla elementu runbook SequencedStartStop_Parent, która została zakończona pomyślnie | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Znajdź zadania dla elementu Runbook ScheduledStartStop_Parent, które zakończyły się pomyślnie | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Znajdź zadania dla elementu Runbook SequencedStartStop_Parent, które zakończyły się pomyślnie | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="viewing-the-solution"></a>Wyświetlanie rozwiązania
 
-Aby uzyskać dostęp do rozwiązania, przejdź do konta usługi Automation wybierz **obszaru roboczego** w obszarze **powiązane zasoby**. Na stronie log analytics wybierz **rozwiązania** w obszarze **ogólne**. Na **rozwiązania** wybierz rozwiązanie **Start-Stop-VM [obszar roboczy]** z listy.
+Aby uzyskać dostęp do rozwiązania, przejdź do konta usługi Automation i wybierz pozycję **obszar roboczy** w obszarze **powiązane zasoby**. Na stronie usługi log Analytics wybierz pozycję **rozwiązania** w obszarze **Ogólne**. Na stronie **rozwiązania** wybierz z listy rozwiązanie **Start-Stop-VM [obszar roboczy]** .
 
-Wybranie rozwiązania Wyświetla **Start-Stop-VM [obszar roboczy]** stronie rozwiązania. W tym miejscu możesz sprawdzić ważne szczegóły, takie jak **StartStopVM** kafelka. W obszarze roboczym usługi Log Analytics ten Kafelek zawiera liczbę oraz graficzną reprezentację zadań elementów runbook dla rozwiązania, które zostały uruchomione i została zakończona pomyślnie.
+Wybranie rozwiązania spowoduje wyświetlenie strony rozwiązania **Start-Stop-VM [obszar roboczy]** . W tym miejscu możesz przejrzeć ważne szczegóły, takie jak kafelek **StartStopVM** . Tak jak w obszarze roboczym Log Analytics, ten kafelek przedstawia liczbę i graficzną reprezentację zadań elementu Runbook dla rozwiązania, które zostały uruchomione i zakończyły się pomyślnie.
 
 ![Strona rozwiązania Update Management Automation](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
-W tym miejscu możesz można wykonać dalszą analizę rekordów zadania, klikając kafelka pierścieniowej. Pulpit nawigacyjny rozwiązania przedstawia historię zadania i wstępnie zdefiniowane zapytania wyszukiwania w dzienniku. Przełącz się do portalu zaawansowane log analytics do wyszukiwania na podstawie zapytań wyszukiwania.
+W tym miejscu możesz wykonać dalsze analizy rekordów zadań, klikając kafelek pierścieniowy. Pulpit nawigacyjny rozwiązania przedstawia historię zadań i wstępnie zdefiniowane zapytania przeszukiwania dzienników. Przejdź do portalu zaawansowanego usługi log Analytics, aby wyszukiwać na podstawie zapytań wyszukiwania.
 
 ## <a name="configure-email-notifications"></a>Konfigurowanie powiadomień e-mail
 
-Aby zmienić powiadomienia e-mail, po wdrożeniu rozwiązania, zmodyfikuj grupę akcji, który został utworzony podczas wdrażania.  
+Aby zmienić powiadomienia e-mail po wdrożeniu rozwiązania, należy zmodyfikować grupę akcji utworzoną podczas wdrażania.  
 
 > [!NOTE]
-> Subskrypcje w chmurze Azure Government obsługuje funkcje poczty e-mail tego rozwiązania.
+> Subskrypcje w chmurze Azure Government nie obsługują funkcji poczty e-mail tego rozwiązania.
 
-W witrynie Azure portal przejdź do monitora -> grupy akcji. Wybierz grupę akcji o nazwie **StartStop_VM_Notication**.
+W Azure Portal przejdź do > grupy akcji monitorowanie. Wybierz grupę akcji zatytułowaną **StartStop_VM_Notication**.
 
 ![Strona rozwiązania Update Management Automation](media/automation-solution-vm-management/azure-monitor.png)
 
-Na **StartStop_VM_Notification** kliknij **Edytuj szczegóły** w obszarze **szczegóły**. Spowoduje to otwarcie **poczty E-mail/SMS/wypychania/rejestr** strony. Zaktualizuj adres e-mail, a następnie kliknij przycisk **OK** Aby zapisać zmiany.
+Na stronie **StartStop_VM_Notification** kliknij pozycję **Edytuj szczegóły** w obszarze **szczegóły**. Spowoduje to otwarcie strony **wiadomości e-mail/SMS/wypychania/głosu** . Zaktualizuj adres e-mail, a następnie kliknij przycisk **OK** , aby zapisać zmiany.
 
 ![Strona rozwiązania Update Management Automation](media/automation-solution-vm-management/change-email.png)
 
-Alternatywnie można dodać dodatkowe akcje grupę akcji, aby dowiedzieć się więcej o grupach akcji, zobacz [grupy akcji](../azure-monitor/platform/action-groups.md)
+Alternatywnie możesz dodać dodatkowe akcje do grupy akcji, aby dowiedzieć się więcej na temat grup akcji, zobacz [grupy akcji](../azure-monitor/platform/action-groups.md)
 
-Poniżej przedstawiono przykładową wiadomością e-mail, która jest wysyłana, gdy rozwiązanie zamyka maszyny wirtualne.
+Poniżej przedstawiono przykładową wiadomość e-mail, która jest wysyłana, gdy rozwiązanie zamknie maszyny wirtualne.
 
 ![Strona rozwiązania Update Management Automation](media/automation-solution-vm-management/email.png)
 
-## <a name="add-exclude-vms"></a>Dodaj/wykluczania maszyn wirtualnych
+## <a name="add-exclude-vms"></a>Dodawanie/wykluczanie maszyn wirtualnych
 
-Rozwiązanie udostępnia możliwość dodawania maszyny wirtualne mają być obiektem docelowym dla rozwiązania lub wykluczyć komputery z rozwiązania.
+Rozwiązanie zapewnia możliwość dodawania maszyn wirtualnych, których celem jest rozwiązanie, lub wykluczanie maszyn z rozwiązania.
 
-### <a name="add-a-vm"></a>Dodawanie maszyny Wirtualnej
+### <a name="add-a-vm"></a>Dodawanie maszyny wirtualnej
 
-Istnieje kilka opcji, których można użyć, aby upewnić się, czy maszyny Wirtualnej znajduje się w rozwiązaniu uruchomień/zatrzymań, po jego uruchomieniu.
+Istnieje kilka opcji, których można użyć, aby upewnić się, że maszyna wirtualna jest uwzględniona w rozwiązaniu uruchamiania/zatrzymywania, gdy zostanie uruchomione.
 
-* Każdy element nadrzędny [elementów runbook](#runbooks) rozwiązania mają **VMList** parametru. Rozdzielana przecinkami lista nazw maszyn wirtualnych można przekazywać do tego parametru, podczas planowania elementu nadrzędnego elementu runbook dla tych maszyn wirtualnych i sytuacji będzie uwzględniony po rozwiązaniu jest uruchamiany.
+* Każdy z nadrzędnych [elementów Runbook](#runbooks) rozwiązania ma parametr **VMList** . Można przekazać rozdzieloną przecinkami listę nazw maszyn wirtualnych do tego parametru podczas planowania odpowiedniego nadrzędnego elementu Runbook dla danej sytuacji. te maszyny wirtualne zostaną uwzględnione podczas uruchamiania rozwiązania.
 
-* Aby wybrać wiele maszyn wirtualnych, należy ustawić **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** przy użyciu nazwy grup zasobów zawierających maszyny wirtualne, aby rozpocząć lub zatrzymać. Można również ustawić tę wartość, `*`, aby rozwiązanie do uruchomienia wszystkich grup zasobów w subskrypcji.
+* Aby wybrać wiele maszyn wirtualnych, należy ustawić **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** przy użyciu nazw grup zasobów zawierających maszyny wirtualne, które mają zostać uruchomione lub zatrzymane. Możesz również ustawić tę wartość na `*`, aby rozwiązanie było uruchamiane dla wszystkich grup zasobów w subskrypcji.
 
-### <a name="exclude-a-vm"></a>Wyklucz Maszynę wirtualną
+### <a name="exclude-a-vm"></a>Wykluczanie maszyny wirtualnej
 
-Aby wykluczyć Maszynę wirtualną z rozwiązania, należy dodać go do **External_ExcludeVMNames** zmiennej. Ta zmienna jest rozdzielana przecinkami lista wybranych maszyn wirtualnych, które mają zostać wykluczone z rozwiązania uruchomień/zatrzymań. Ta lista jest ograniczona do 140 maszyn wirtualnych. Jeśli ponad 140 maszyny wirtualne zostaną dodane do tej listy rozdzielanej przecinkami, maszyn wirtualnych, które są ustawione, które mają być wykluczone mogą zostać przypadkowo uruchomiona lub zatrzymana.
+Aby wykluczyć maszynę wirtualną z rozwiązania, możesz dodać ją do zmiennej **External_ExcludeVMNames** . Ta zmienna jest rozdzielaną przecinkami listą maszyn wirtualnych, które mają zostać wykluczone z rozwiązania uruchamiania/zatrzymywania. Ta lista jest ograniczona do 140 maszyn wirtualnych. Jeśli dodasz więcej niż 140 maszyn wirtualnych do tej listy rozdzielanej przecinkami, maszyny wirtualne, które są wykluczone, mogą zostać przypadkowo uruchomione lub zatrzymane.
 
-## <a name="modify-the-startup-and-shutdown-schedules"></a>Modyfikuj harmonogramy uruchamiania i zamykania
+## <a name="modify-the-startup-and-shutdown-schedules"></a>Modyfikowanie harmonogramów uruchamiania i zamykania
 
-Harmonogramy uruchamiania i zamykania w tym rozwiązaniu Zarządzanie przedstawiono te same kroki, co zostało opisane w [Planowanie elementu runbook w usłudze Azure Automation](automation-schedules.md). Musi istnieć oddzielne harmonogramu, aby uruchomić i zatrzymać maszyn wirtualnych.
+Zarządzanie harmonogramami uruchamiania i zamykania w tym rozwiązaniu odbywa się zgodnie z tymi samymi krokami, które opisano w temacie [Planowanie elementu Runbook w Azure Automation](automation-schedules.md). Musi istnieć osobny harmonogram do uruchamiania i zatrzymywania maszyn wirtualnych.
 
-Konfigurowanie rozwiązania do właśnie zatrzymywania maszyn wirtualnych w określonym czasie jest obsługiwane. W tym scenariuszu możesz po prostu utworzyć **zatrzymać** harmonogram i bez odpowiedniej **Start** zaplanowane. W tym celu należy:
+Obsługiwane jest tylko skonfigurowanie rozwiązania do zatrzymywania maszyn wirtualnych w określonym czasie. W tym scenariuszu po prostu utworzysz harmonogram **zatrzymywania** i nie ma odpowiadającego jej **uruchomienia** . W tym celu należy:
 
-1. Upewnij się, dodano grupy zasobów dla maszyn wirtualnych zamknąć w **External_Stop_ResourceGroupNames** zmiennej.
-2. Utwórz swój własny harmonogram, czas, który chcesz zamknąć maszyny wirtualne.
-3. Przejdź do **ScheduledStartStop_Parent** elementu runbook i kliknij przycisk **harmonogram**. Dzięki temu można zaznaczyć harmonogram, który został utworzony w poprzednim kroku.
-4. Wybierz **parametry i ustawienia uruchamiania** i ustaw parametr akcji "Stop".
+1. Upewnij się, że dodano grupy zasobów do maszyn wirtualnych, które mają zostać zamknięte w zmiennej **External_Stop_ResourceGroupNames** .
+2. Utwórz własny harmonogram dla czasu, w którym chcesz zamknąć maszyny wirtualne.
+3. Przejdź do elementu Runbook **ScheduledStartStop_Parent** , a następnie kliknij pozycję **harmonogram**. Umożliwia to wybranie harmonogramu utworzonego w poprzednim kroku.
+4. Wybierz **Parametry i Uruchom ustawienia** i ustaw parametr akcji na wartość "Zatrzymaj".
 5. Kliknij przycisk **OK**, aby zapisać zmiany.
 
 ## <a name="update-the-solution"></a>Aktualizowanie rozwiązania
 
-Jeśli wdrożono poprzednią wersję tego rozwiązania, należy najpierw usunąć go z Twojego konta przed wdrożeniem zaktualizowanej wersji. Postępuj zgodnie z instrukcjami, aby [usunąć rozwiązanie](#remove-the-solution) a następnie wykonaj powyższe kroki, aby [wdrażania rozwiązania](#deploy-the-solution).
+Jeśli wdrożono poprzednią wersję tego rozwiązania, należy najpierw usunąć ją z konta przed wdrożeniem zaktualizowanej wersji. Postępuj zgodnie z instrukcjami, aby [usunąć rozwiązanie](#remove-the-solution) , a następnie postępuj zgodnie z powyższymi krokami, aby [wdrożyć rozwiązanie](#deploy-the-solution).
 
 ## <a name="remove-the-solution"></a>Usuń rozwiązanie
 
-Jeśli zdecydujesz, że nie jest już konieczne korzystanie z odpowiedniego rozwiązania, możesz usunąć go z konta usługi Automation. Usunięcie rozwiązania powoduje usunięcie tylko elementy runbook. Nie powoduje usunięcia harmonogramy lub zmienne, które zostały utworzone, gdy rozwiązanie zostało dodane. Zasoby, które należy usunąć ręcznie, jeśli nie używasz je z innymi elementami runbook.
+Jeśli zdecydujesz, że nie musisz już korzystać z rozwiązania, możesz je usunąć z konta usługi Automation. Usunięcie rozwiązania spowoduje usunięcie tylko elementów Runbook. Nie powoduje usunięcia harmonogramów ani zmiennych, które zostały utworzone podczas dodawania rozwiązania. Te zasoby należy usunąć ręcznie, jeśli nie są używane z innymi elementami Runbook.
 
 Aby usunąć rozwiązanie, wykonaj następujące czynności:
 
-1. Na koncie usługi Automation w ramach **powiązane zasoby**, wybierz opcję **połączony obszar roboczy**.
-1. Wybierz **przejdź do obszaru roboczego**.
-1. W obszarze **ogólne**, wybierz opcję **rozwiązania**. 
-1. Na **rozwiązania** wybierz rozwiązanie **Start-Stop-VM [obszar roboczy]** . Na **VMManagementSolution [obszar roboczy]** stronę z menu, wybierz opcję **Usuń**.<br><br> ![Usuń rozwiązanie Mgmt maszyny Wirtualnej](media/automation-solution-vm-management/vm-management-solution-delete.png)
-1. W **Usuń rozwiązanie** okna, upewnij się, że chcesz usunąć rozwiązanie.
-1. Podczas weryfikowania informacji i rozwiązanie zostanie usunięty, możesz śledzić postęp w sekcji **powiadomienia** z menu. Nastąpi powrót do **rozwiązania** strony po rozpoczęciu procesu, aby usunąć rozwiązania.
+1. Na koncie usługi Automation w obszarze **powiązane zasoby**wybierz pozycję **połączony obszar roboczy**.
+1. Wybierz pozycję **Przejdź do obszaru roboczego**.
+1. W obszarze **Ogólne**wybierz pozycję **rozwiązania**. 
+1. Na stronie **rozwiązania** wybierz pozycję **Start-Stop-VM [obszar roboczy]** rozwiązania. Na stronie **VMManagementSolution [obszar roboczy]** z menu wybierz pozycję **Usuń**.<br><br> @no__t — rozwiązanie do zarządzania MASZYNami wirtualnymi 0Delete @ no__t-1
+1. W oknie **Usuń rozwiązanie** Potwierdź, że chcesz usunąć rozwiązanie.
+1. Gdy informacje są weryfikowane i rozwiązanie zostało usunięte, możesz śledzić postęp w obszarze **powiadomienia** z menu. Po zakończeniu procesu usuwania rozwiązania nastąpi powrót do strony **rozwiązania** .
 
-Konto usługi Automation i obszaru roboczego usługi Log Analytics nie są usuwane w ramach tego procesu. Jeśli nie chcesz zachować obszaru roboczego usługi Log Analytics, musisz ręcznie je usunąć. Można to zrobić w witrynie Azure portal:
+Konto usługi Automation i obszar roboczy Log Analytics nie są usuwane w ramach tego procesu. Jeśli nie chcesz zachować obszaru roboczego Log Analytics, musisz go ręcznie usunąć. Można to zrobić z poziomu Azure Portal:
 
-1. Z platformy Azure ekran główny portalu, wybierz **obszarów roboczych usługi Log Analytics**.
-1. Na **obszarów roboczych usługi Log Analytics** wybierz obszar roboczy.
-1. Wybierz **Usuń** menu na stronie Ustawienia w obszarze roboczym.
+1. Na ekranie głównym Azure Portal wybierz pozycję **log Analytics obszary robocze**.
+1. Na stronie **obszary robocze log Analytics** wybierz obszar roboczy.
+1. Na stronie Ustawienia obszaru roboczego wybierz pozycję **Usuń** z menu.
 
-Jeśli nie chcesz zachować składniki konta usługi Azure Automation, możesz ręcznie usunąć każdy. Aby uzyskać listę elementów runbook, zmienne i harmonogramów utworzonych przez to rozwiązanie, zobacz [składników rozwiązania](#solution-components).
+Jeśli nie chcesz zachować składników konta Azure Automation, możesz usunąć je ręcznie. Aby uzyskać listę elementów Runbook, zmiennych i harmonogramów utworzonych przez rozwiązanie, zobacz [składniki rozwiązania](#solution-components).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat do tworzenia różnych zapytań wyszukiwania i przeglądania dzienników zadań usługi Automation przy użyciu dzienników usługi Azure Monitor, zobacz [przeszukiwania dzienników w dzienniki usługi Azure Monitor](../log-analytics/log-analytics-log-searches.md).
+- Aby dowiedzieć się więcej na temat tworzenia różnych zapytań wyszukiwania i przeglądania dzienników zadań usługi Automation z dziennikami Azure Monitor, zobacz [Wyszukiwanie w dzienniku w](../log-analytics/log-analytics-log-searches.md)dziennikach Azure monitor.
 - Aby dowiedzieć się więcej o wykonywaniu elementów runbook, sposobie monitorowania zadań elementów runbook i innych szczegółach technicznych, zobacz [Track a runbook job](automation-runbook-execution.md) (Śledzenie zadania elementu runbook).
-- Aby dowiedzieć się więcej na temat dzienników usługi Azure Monitor i źródłach zbierania danych, zobacz [Azure zbieranie danych magazynu w usłudze Azure Monitor rejestruje Przegląd](../azure-monitor/platform/collect-azure-metrics-logs.md).
+- Aby dowiedzieć się więcej na temat dzienników Azure Monitor i źródeł zbierania danych, zobacz [zbieranie danych usługi Azure Storage w dziennikach Azure monitor Omówienie](../azure-monitor/platform/collect-azure-metrics-logs.md).

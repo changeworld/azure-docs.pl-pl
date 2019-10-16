@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/21/2019
+ms.date: 10/03/2019
 ms.author: atsenthi
-ms.openlocfilehash: ca7a3cfe62520ed82dcf494a33f3bd188dbebe76
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 6b29eb31f5d425fc063c8c42e7911272e63167c8
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279984"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331098"
 ---
 # <a name="supported-service-fabric-versions"></a>Obsługiwane Service Fabric wersje
 
@@ -37,17 +37,17 @@ W poniższej tabeli wymieniono wersje Service Fabric i ich daty końcowe pomocy 
 | Service Fabric środowisko uruchomieniowe w klastrze | Można uaktualnić bezpośrednio z wersji klastra |Zgodna wersja zestawu SDK lub pakietu NuGet | Koniec wsparcia |
 | --- | --- |--- | --- |
 | Wszystkie wersje klastra przed 5.3.121 | 5.1.158.* |Mniejsze niż lub równe wersji 2,3 |20 stycznia 2017 |
-| 5.3.* | 5.1.158.* |Mniejsze niż lub równe wersji 2,3 |24 lutego 2017 |
-| 5.4.* | 5.1.158.* |Mniejsze niż lub równe wersji 2,4 |10 maja 2017       |
-| 5.5.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,5 |10 sierpnia 2017 r.    |
-| 5.6.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,6 |13 października 2017 r.   |
-| 5.7.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,7 |15 grudnia 2017  |
-| 6.0.* | 5.6.205.* |Mniejsze niż lub równe wersji 2,8 |30 marca 2018     |
-| 6.1.* | 5.7.221.* |Mniejsze niż lub równe wersji 3,0 |15 lipca 2018 r.      |
-| 6.2.* | 6.0.232.* |Mniejsze niż lub równe wersji 3,1 |26 października 2018   |
-| 6.3.* | 6.1.480.* |Mniejsze niż lub równe wersji 3,2 |31 marca 2019  |
-| 6.4.* | 6.2.301.* |Mniejsze niż lub równe wersji 3,3 |15 września 2019 |
-| 6.5.* | 6.4.617.* |Mniejsze niż lub równe wersji 3,4 |Bieżąca wersja, dlatego bez daty zakończenia |
+| 5,3. * | 5.1.158.* |Mniejsze niż lub równe wersji 2,3 |24 lutego 2017 |
+| 5,4. * | 5.1.158.* |Mniejsze niż lub równe wersji 2,4 |10 maja 2017 r.       |
+| 5,5. * | 5.4.164.* |Mniejsze niż lub równe wersji 2,5 |10 sierpnia 2017 r.    |
+| 5,6. * | 5.4.164.* |Mniejsze niż lub równe wersji 2,6 |13 października 2017 r.   |
+| 5,7. * | 5.4.164.* |Mniejsze niż lub równe wersji 2,7 |15 grudnia 2017  |
+| 6,0. * | 5.6.205.* |Mniejsze niż lub równe wersji 2,8 |30 marca 2018     |
+| 6,1. * | 5.7.221.* |Mniejsze niż lub równe wersji 3,0 |15 lipca 2018 r.      |
+| 6,2. * | 6.0.232.* |Mniejsze niż lub równe wersji 3,1 |26 października 2018   |
+| 6,3. * | 6.1.480.* |Mniejsze niż lub równe wersji 3,2 |31 marca 2019  |
+| 6,4. * | 6.2.301.* |Mniejsze niż lub równe wersji 3,3 |15 września 2019 |
+| 6,5. * | 6.4.617.* |Mniejsze niż lub równe wersji 3,4 |Bieżąca wersja, dlatego bez daty zakończenia |
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
@@ -57,11 +57,11 @@ W poniższej tabeli wymieniono systemy operacyjne obsługiwane przez obsługiwan
 | --- | --- |
 | Windows Server 2012 R2 | Wszystkie wersje |
 | Windows Server 2016 | Wszystkie wersje |
-| Windows Server 1709 | 6.0 |
-| System Windows Server w wersji 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
+| System Windows Server 1709 | 6.0 |
+| System Windows Server 1803 | 6.4 |
+| System Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16.04 | 6.0 |
+| Linux Ubuntu 16,04 | 6.0 |
 
 ## <a name="supported-version-names"></a>Obsługiwane nazwy wersji
 
@@ -109,3 +109,4 @@ W poniższej tabeli wymieniono nazwy wersji Service Fabric i odpowiadające im n
 | 6,5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6,5 ZASTOSUJESZ PAKIETU CU2 | 6.5.658.9590 | 6.5.460.1 |
 | 6,5 CU3 | 6.5.664.9590 | 6.5.466.1 |
+| 6,5 CU5 | 6.5.676.9590 | 6.5.467.1 |

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da694dd77186ce22bd7080540bd3b08e14f205b0
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 48be16827da21643af485d1fb94b9a7b76728325
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835363"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374049"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
 
@@ -31,13 +31,13 @@ ms.locfileid: "68835363"
 
 Ten artykuł zawiera informacje na temat korzyści z integracji aplikacji z usługą Azure Active Directory (Azure AD) i uzyskiwaniem zasobów do integracji. Usługa Azure AD udostępnia organizacjom klasy korporacyjnej Zarządzanie tożsamościami dla aplikacji w chmurze. Integracja z usługą Azure AD zapewnia użytkownikom usprawnione środowisko logowania i pomaga aplikacji z zasadami IT.
 
-## <a name="how-to-integrate"></a>Sposób przeprowadzania integracji
+## <a name="how-to-integrate"></a>Jak zintegrować
 
 Istnieje kilka sposobów integracji aplikacji z usługą Azure AD. Korzystaj z kilku z tych scenariuszy, które są odpowiednie dla Twojej aplikacji.
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Obsługa usługi Azure AD w celu zalogowania się do aplikacji
 
-**Zmniejsz liczbę logowań i zmniejsz koszty pomocy technicznej.** Przy użyciu usługi Azure AD do logowania się do aplikacji użytkownicy nie będą mieć jeszcze jednej nazwy i hasła. Jako deweloper będziesz mieć co najmniej jedno hasło do przechowywania i ochrony. Nie trzeba obsługiwać resetowania zapomnianych haseł. Usługa Azure AD umożliwia zalogowanie się do niektórych najpopularniejszych aplikacji w chmurze, w tym pakietów Office 365 i Microsoft Azure. Setki milionów użytkowników z milionów organizacji prawdopodobnie użytkownik jest już zalogowany w usłudze Azure AD. Dowiedz się więcej [na temat dodawania obsługi logowania do usługi Azure AD](authentication-scenarios.md).
+**Zmniejsz liczbę logowań i zmniejsz koszty pomocy technicznej.** Przy użyciu usługi Azure AD do logowania się do aplikacji użytkownicy nie będą mieć jeszcze jednej nazwy i hasła. Jako deweloper będziesz mieć co najmniej jedno hasło do przechowywania i ochrony. Nie trzeba obsługiwać resetowania zapomnianych haseł. Usługa Azure AD umożliwia zalogowanie się do niektórych najpopularniejszych aplikacji w chmurze, w tym pakietów Office 365 i Microsoft Azure. Setki milionów użytkowników z milionów organizacji prawdopodobnie użytkownik jest już zalogowany w usłudze Azure AD. Dowiedz się więcej [na temat dodawania obsługi logowania do usługi Azure AD](v1-authentication-scenarios.md).
 
 **Uprość rejestrowanie się w aplikacji.**  Podczas tworzenia konta w aplikacji usługa Azure AD może wysyłać podstawowe informacje o użytkowniku, aby można było wstępnie wypełnić formularz tworzenia konta lub całkowicie wyeliminować. Użytkownicy mogą zarejestrować się w celu korzystania z aplikacji przy użyciu konta usługi Azure AD za pomocą dobrze znanego środowiska, podobnego do tych znajdujących się w multimediach społecznościowych i aplikacjach mobilnych. Każdy użytkownik może utworzyć konto i zalogować się do aplikacji zintegrowanej z usługą Azure AD bez konieczności jej zaangażowania. Dowiedz się więcej o [rejestrowaniu aplikacji na potrzeby logowania do konta usługi Azure AD](../../app-service/configure-authentication-provider-aad.md).
 
@@ -77,7 +77,7 @@ Integracja z usługą Azure AD wiąże się z korzyściami, które nie wymagają
 
 ### <a name="advanced-security-features"></a>Zaawansowane funkcje bezpieczeństwa
 
-**Uwierzytelnianie wieloskładnikowe.**  Usługa Azure AD zapewnia natywne uwierzytelnianie wieloskładnikowe. Administratorzy IT mogą wymagać uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do Twojej aplikacji, dzięki czemu nie musisz samodzielnie zakodować tej pomocy technicznej. Dowiedz się [](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)więcej o uwierzytelnianiu wieloskładnikowym.
+**Uwierzytelnianie wieloskładnikowe.**  Usługa Azure AD zapewnia natywne uwierzytelnianie wieloskładnikowe. Administratorzy IT mogą wymagać uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do Twojej aplikacji, dzięki czemu nie musisz samodzielnie zakodować tej pomocy technicznej. Dowiedz się więcej o [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
 **Wykrywanie nietypowego logowania.**  Usługa Azure AD przetwarza więcej niż miliard logowań dziennie, przy użyciu algorytmów uczenia maszynowego do wykrywania podejrzanych działań i powiadamiania administratorów IT o możliwych problemach. Dzięki obsłudze logowania usługi Azure AD Twoja aplikacja uzyskuje korzyść tej ochrony. Dowiedz się więcej na temat [wyświetlania raportu dostępu Azure Active Directory](../active-directory-view-access-usage-reports.md).
 
@@ -93,9 +93,9 @@ Integracja z usługą Azure AD wiąże się z korzyściami, które nie wymagają
 
 **Usługa Azure AD jest wdrażana w centrach danych na całym świecie i jest zarządzana i monitorowana wokół zegara.**  Usługa Azure AD to system zarządzania tożsamościami dla Microsoft Azure i pakietu Office 365 i jest wdrażany w 28 centrach danych na całym świecie. Dane katalogu mają być replikowane do co najmniej trzech centrów danych. Globalne moduły równoważenia obciążenia zapewniają użytkownikom dostęp do najbliższej kopii usługi Azure AD zawierającej swoje dane i automatycznie ponownie kierują żądania do innych centrów danych w przypadku wykrycia problemu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Zacznij pisać kod](v2-overview.md#getting-started).
 
-[Logowanie użytkowników przy użyciu platformy tożsamości firmy Microsoft](authentication-scenarios.md)
+[Logowanie użytkowników przy użyciu platformy tożsamości firmy Microsoft](v1-authentication-scenarios.md)
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8bee226c85e6433500fcbef9b084cc547ef2b58f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fc869bc0c52a54044cbc095cd20f0395e590c852
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301674"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332814"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Opcje magazynu dla kontenerów profilów FSLogix w programie Virtual Desktop systemu Windows
 
@@ -27,9 +27,9 @@ W poniższych tabelach porównano oferty magazynów usługi Azure Storage dla sy
 |Funkcje|Usługa Pliki systemu Azure|Azure NetApp Files|Bezpośrednie miejsca do magazynowania|
 |--------|-----------|------------------|---------------------|
 |Usługa platformy|Tak, rozwiązanie platformy Azure — natywne|Tak, rozwiązanie platformy Azure — natywne|Nie, samozarządzane|
-|Dostępność regionalna|Pierścień 0, szeroka dostępność|Pierścień 1, obecnie dostępny w [co najmniej dziewięciu regionach](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Regiony kontrolerów domen obsługiwane przez usługę Azure COMPUTE — dyski w warstwie Premium są szeroko dostępne i zalecane dla Bezpośrednie miejsca do magazynowania|
+|Dostępność regionalna|Wszystkie regiony|[Wybierz regiony](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Wszystkie regiony|
 |Nadmiarowość|Lokalnie nadmiarowy/strefowo nadmiarowy/Geograficznie nadmiarowy|Nadmiarowość lokalna|Lokalnie nadmiarowy/strefowo nadmiarowy/Geograficznie nadmiarowy|
-|Warstwy i wydajność|Standardowa (Standard)<br>Premium<br>Maksymalnie Maksymalna liczba operacji we/wy 100 000 na udział dzięki 5 GB/s na udział na około 3 ms opóźnienia|Standardowa (Standard)<br>Premium<br>Ultrafiolet<br>Do 320k (16 KB) operacji wejścia/wyjścia na sekundę z 4,5 GB/s|HDD w warstwie Standardowa: maksymalnie 500 limitów liczby operacji we/wy na dysku<br>SSD w warstwie Standardowa: maksymalnie 4 k limity liczby operacji we/wy na dysku<br>SSD w warstwie Premium: maksymalnie 20 000 limitów liczby operacji we/wy na dysku|
+|Warstwy i wydajność|Standardowa (Standard)<br>Premium<br>Maksymalnie Maksymalna liczba operacji we/wy 100 000 na udział dzięki 5 GB/s na udział na około 3 ms opóźnienia|Standardowa (Standard)<br>Premium<br>Ultrafiolet<br>Do 320k (16 KB) operacji wejścia/wyjścia na sekundę z 4,5 GB/s|HDD w warstwie Standardowa: maksymalnie 500 limitów liczby operacji we/wy na dysku<br>SSD w warstwie Standardowa: maksymalnie 4 k limity liczby operacji we/wy na dysku<br>SSD w warstwie Premium: maksymalnie 20 000 limitów liczby operacji we/wy na dysku<br>Zalecamy używanie dysków w warstwie Premium dla Bezpośrednie miejsca do magazynowania|
 |Pojemność|100 TiB na udział|100 TiB na wolumin, do 12,5 PiB na subskrypcję|Maksymalna 32 TiB na dysk|
 |Wymagana infrastruktura|Minimalny rozmiar udziału 1 GiB|Minimalna Pula pojemności 4 TiB, minimalny rozmiar woluminu 100 GiB|Dwie maszyny wirtualne na platformie Azure IaaS (+ Monitor w chmurze) lub co najmniej trzy maszyny wirtualne bez opłat i kosztów dysków|
 |Protokoły|SMB 2.1/3. i REST|NFSv3, NFSv 4.1 (wersja zapoznawcza), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
@@ -39,7 +39,6 @@ W poniższych tabelach porównano oferty magazynów usługi Azure Storage dla sy
 |Funkcje|Usługa Pliki systemu Azure|Azure NetApp Files|Bezpośrednie miejsca do magazynowania|
 |--------|-----------|------------------|---------------------|
 |Dostęp|Chmura, lokalne i hybrydowe (usługa Azure File Sync)|Chmura, lokalna (za pośrednictwem ExpressRoute)|Chmura, lokalna|
-|Integracja z usługą Azure Active Directory|Azure Active Directory i Azure Active Directory Domain Services|Azure Active Directory Domain Services i natywne Active Directory|Tylko natywny Active Directory lub Azure Active Directory Domain Services|
 |Backup|Integracja z migawką usługi Azure Backup|Migawki Azure NetApp Files|Integracja z migawką usługi Azure Backup|
 |Zabezpieczenia i zgodność z przepisami|[Wszystkie certyfikaty obsługiwane przez platformę Azure](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|Zakończono ISO|[Wszystkie certyfikaty obsługiwane przez platformę Azure](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Integracja z usługą Azure Active Directory|Azure Active Directory i Azure Active Directory Domain Services|[Azure Active Directory Domain Services i natywne Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Tylko natywny Active Directory lub Azure Active Directory Domain Services|

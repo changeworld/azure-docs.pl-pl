@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 70da3a518746d1989e8807cee9bc7c87cc634c27
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: b08c7d1b91f89aba4c9cb8a23bb5c688521cb37e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873296"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372775"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 
@@ -22,7 +22,7 @@ ms.locfileid: "70873296"
 W tym artykule pokazano, jak można użyć [szablonu Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) , aby skonfigurować [nowsze alerty metryk](../../azure-monitor/platform/alerts-metric-near-real-time.md) w programie Azure monitor. Szablony Menedżer zasobów umożliwiają programistyczne Konfigurowanie alertów w sposób spójny i powtarzalny w środowiskach. Nowsze alerty metryk są obecnie dostępne dla [tego zestawu typów zasobów](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
-> Szablon zasobu do tworzenia alertów metryk dla typu zasobu: Obszar roboczy usługi Azure log Analytics (tj `Microsoft.OperationalInsights/workspaces`.) wymaga dodatkowych kroków. Aby uzyskać szczegółowe informacje, zobacz artykuł dotyczący [alertu dotyczącego metryk dla dzienników zasobów](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Szablon zasobu do tworzenia alertów metryk dla typu zasobu: obszar roboczy platformy Azure Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces` wymaga wykonania dodatkowych czynności. Aby uzyskać szczegółowe informacje, zobacz artykuł dotyczący [alertu dotyczącego metryk dla dzienników zasobów](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Podstawowe kroki są następujące:
 
@@ -2480,7 +2480,7 @@ Zapisz Poniższy kod JSON jako listę listy maszyn wirtualnych-static. JSON na p
                 "PT5M",
                 "PT15M",
                 "PT30M",
-                "PT1H""
+                "PT1H"
             ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"

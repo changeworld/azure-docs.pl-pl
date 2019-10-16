@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327135"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331210"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorowanie użycia zasobów i działania zapytań w Azure Search
 
@@ -31,7 +31,7 @@ Sekcje **użycia** i **monitorowania** wbudowane na stronie przeglądu raportuj�
 Karta **użycie** pokazuje dostępność zasobów względem bieżących [limitów](search-limits-quotas-capacity.md). Poniższa ilustracja dotyczy bezpłatnej usługi, która jest ograniczona do 3 obiektów każdego typu i 50 MB miejsca w magazynie. Usługa podstawowa lub standardowa ma wyższe limity i w przypadku zwiększenia liczby partycji Maksymalna ilość miejsca w magazynie jest proporcjonalna.
 
 ![Stan użycia względem czynnych limitów](./media/search-monitor-usage/usage-tab.png
- "Usage stanu względem efektywnych limitów @ no__t-2
+ "użycia względem limitów obowiązujących")
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Zapytania na sekundę (zapytań) i inne metryki
 
@@ -56,9 +56,8 @@ Azure Search nie przechowuje żadnych danych poza zarządzanymi obiektami, co oz
 
 W poniższej tabeli porównano opcje przechowywania dzienników i dodawania szczegółowego monitorowania operacji usługi i wykonywania zapytań do obciążeń za pomocą Application Insights.
 
-| Resource | Używana do |
+| Zasób | Używana do |
 |----------|----------|
-| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Zarejestrowane zdarzenia i metryki zapytań, oparte na poniższych schematach, skorelowane ze zdarzeniami użytkownika w aplikacji. Jest to jedyne rozwiązanie, które wykonuje działania użytkownika lub sygnałów do konta, mapując zdarzenia z wyszukiwania zainicjowanego przez użytkownika, w przeciwieństwie do filtrowania żądań przesłanych przez kod aplikacji. Aby skorzystać z tej metody, skopiuj kod instrumentacji do plików źródłowych, aby skierować informacje o żądaniu do Application Insights. Aby uzyskać więcej informacji, zobacz [Analiza ruchu wyszukiwania](search-traffic-analytics.md). |
 | [Dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Zarejestrowane zdarzenia i metryki zapytań na podstawie schematów poniżej. Zdarzenia są rejestrowane w obszarze roboczym Log Analytics. Można uruchamiać zapytania w obszarze roboczym, aby zwracać szczegółowe informacje z dziennika. Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z dziennikami Azure monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Zarejestrowane zdarzenia i metryki zapytań na podstawie schematów poniżej. Zdarzenia są rejestrowane w kontenerze obiektów blob i przechowywane w plikach JSON. Aby wyświetlić zawartość plików, użyj edytora JSON.|
 | [Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/) | Rejestrowane zdarzenia i metryki zapytań na podstawie schematów udokumentowanych w tym artykule. Wybierz tę opcję jako alternatywną usługę zbierania danych dla bardzo dużych dzienników. |
@@ -81,7 +80,7 @@ W tej sekcji dowiesz się, jak używać magazynu obiektów BLOB do przechowywani
 
    ![Włącz]monitorowanie(./media/search-monitor-usage/enable-monitoring.png "Włączanie") monitorowania
 
-3. Wybierz dane, które chcesz wyeksportować: Dzienniki, metryki lub oba te elementy. Możesz skopiować go do konta magazynu, wysłać do centrum zdarzeń lub wyeksportować do Azure Monitor dzienników.
+3. Wybierz dane, które chcesz wyeksportować: dzienniki, metryki lub oba te elementy. Możesz skopiować go do konta magazynu, wysłać do centrum zdarzeń lub wyeksportować do Azure Monitor dzienników.
 
    W przypadku archiwizowania do usługi BLOB Storage musi istnieć tylko konto magazynu. Kontenery i obiekty blob zostaną utworzone w miarę konieczności podczas eksportowania danych dziennika.
 
@@ -93,10 +92,10 @@ W tej sekcji dowiesz się, jak używać magazynu obiektów BLOB do przechowywani
 
 Rejestrowanie jest włączone po zapisaniu profilu. Kontenery są tworzone tylko w przypadku działania do rejestrowania lub mierzenia. Po skopiowaniu danych na konto magazynu dane są formatowane jako kod JSON i umieszczane w dwóch kontenerach:
 
-* insights — dzienniki operationlogs: dzienników ruchu wyszukiwania
-* insights — metryki pt1m: dla metryki
+* Insights-Logs-operationlogs: w przypadku dzienników ruchu wyszukiwania
+* Insights-Metrics-pt1m: for Metrics
 
-**It trwa godzinę, zanim kontenery pojawią się w magazynie obiektów BLOB. Istnieje jeden obiekt BLOB, na godzinę, na kontener.**
+**Trwa godzinę, zanim kontenery pojawią się w magazynie obiektów BLOB. Dla każdego kontenera istnieje jeden obiekt BLOB o godzinie.**
 
 Aby wyświetlić pliki, można użyć [Visual Studio Code](#download-and-open-in-visual-studio-code) lub innego edytora JSON. 
 
@@ -109,49 +108,49 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>Schemat dziennika
 Obiekty blob zawierające dzienniki ruchu usługi wyszukiwania są uporządkowane zgodnie z opisem w tej sekcji. Każdy obiekt BLOB ma jeden element główny o nazwie **Records** zawierający tablicę obiektów dziennika. Każdy obiekt BLOB zawiera rekordy dla wszystkich operacji, które miały miejsce w danej godzinie.
 
-| Name | Typ | Przykład | Uwagi |
+| Nazwa | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
-| resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/> FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twoje ResourceId |
-| operationName |ciąg |"Query.Search" |Nazwa operacji |
-| operationVersion |ciąg |"2019-05-06" |Używana wersja interfejsu api |
-| category |ciąg |"OperationLogs" |Stałe |
-| resultType |ciąg |Komunikat "success" |Możliwe wartości: Powodzenie lub niepowodzenie |
-| resultSignature |int |200 |Kod wyniku protokołu HTTP |
-| durationMS |int |50 |Czas trwania działania (w milisekundach) |
-| properties |obiekt |Zobacz poniższą tabelę |Obiekt zawierający dane specyficzne dla operacji |
+| time |datetime |"2018 R-12-07T00:00:43.6872559 Z" |Sygnatura czasowa operacji |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DOMYŚLNE/DOSTAWCY/<br/> Programu. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |Identyfikator zasobu |
+| operationName |string |"Query. Search" |Nazwa operacji |
+| operationVersion |string |"2019-05-06" |Używana wersja interfejsu API |
+| category |string |"OperationLogs" |stałego |
+| resultType |string |Prawnego |Możliwe wartości: sukces lub niepowodzenie |
+| resultSignature |int |200 |Kod wyniku HTTP |
+| Milisekundach) |int |50 |Czas trwania operacji w milisekundach |
+| properties |obiekt |Zapoznaj się z poniższą tabelą. |Obiekt zawierający dane specyficzne dla operacji |
 
-**Właściwości schematu**
+**Schemat właściwości**
 
-| Name (Nazwa) | Typ | Przykład | Uwagi |
+| Nazwa | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
-| Opis |ciąg |"Pobierz /indexes('content')/docs" |Operacja punktu końcowego |
-| Zapytanie |ciąg |"? Search = AzureSearch & $count = true & API-Version = 2019-05-06" |Parametry zapytania |
+| Opis |string |"GET/Indexes (" Content ")/docs" |Punkt końcowy operacji |
+| Zapytanie |string |"? Search = AzureSearch & $count = true & API-Version = 2019-05-06" |Parametry zapytania |
 | Dokumenty |int |42 |Liczba przetworzonych dokumentów |
-| indexName |ciąg |"testindex" |Nazwa indeksu skojarzone z operacją |
+| indexName |string |"testindex" |Nazwa indeksu skojarzonego z operacją |
 
-## <a name="metrics-schema"></a>Schemat metryki
+## <a name="metrics-schema"></a>Schemat metryk
 
 Metryki są przechwytywane dla żądań zapytań.
 
-| Name | Typ | Przykład | Uwagi |
+| Nazwa | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
-| resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/>FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twój identyfikator zasobu |
-| MetricName |ciąg |"Opóźnienie" |Nazwa metryki |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
-| średnia |int |64 |Średnia wartość próbek pierwotnych w odstępie czasu metryki |
-| minimalnie |int |37 |Minimalna wartość nieprzetworzoną próbek w odstępie czasu metryki |
-| maksymalnie |int |78 |Wartość maksymalna pierwotne próbek w odstępie czasu metryki |
-| łącznie |int |258 |Łączna wartość pierwotne próbek w odstępie czasu metryki |
-| count |int |4 |Liczba próbek raw, używany do generowania metrykę |
-| ziarna czasu |ciąg |"PT1M" |Ziarno czasu metryką przy podejmowaniu ISO 8601 |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DOMYŚLNE/DOSTAWCY/<br/>Programu. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |Identyfikator zasobu |
+| metricName |string |Opóźnienie |Nazwa metryki |
+| time |datetime |"2018 R-12-07T00:00:43.6872559 Z" |Sygnatura czasowa operacji |
+| Obliczon |int |64 |Średnia wartość próbek pierwotnych w interwale czasu metryki |
+| minimalny |int |37 |Minimalna wartość próbek pierwotnych w interwale czasu metryki |
+| Długość |int |78 |Maksymalna wartość próbek pierwotnych w interwale czasu metryki |
+| ogólnego |int |258 |Całkowita wartość próbek pierwotnych w interwale czasu metryki |
+| count |int |4 |Liczba nieprzetworzonych próbek użytych do wygenerowania metryki |
+| timegrain |string |"PT1M" |Ziarno czasu metryki w ISO 8601 |
 
-Wszystkie metryki są raportowane w odstępach jednej minuty. Każdy pomiar przedstawia wartości minimalna, maksymalna i średnia na minutę.
+Wszystkie metryki są raportowane w odstępach jednej minuty. Każda Metryka uwidacznia wartości minimalne, maksymalne i średnie na minutę.
 
-Metryki SearchQueriesPerSecond minimalna jest najniższa wartość dla zapytania wyszukiwania na sekundę, który został zarejestrowany w ciągu tej minuty. To samo dotyczy maksymalnej wartości. Średnia, to agregacji przez całą minutę.
-Pomyśl o tym scenariuszu podczas jednej minuty: sekundy wysoki załadować oznacza to maksymalną SearchQueriesPerSecond, następuje 58 sekund średnie obciążenie i na koniec co sekundę przy użyciu tylko jednego zapytania, który jest minimalnym warunkiem.
+W przypadku metryki SearchQueriesPerSecond minimum jest najmniejszą wartością dla zapytań wyszukiwania na sekundę, które zostały zarejestrowane w tej minucie. Ta sama zasada dotyczy wartości maksymalnej. Średnia, to wartość zagregowana w całej minucie.
+Pomyśl o tym scenariuszu w ciągu jednej minuty: co najmniej jedna sekunda wysokiego obciążenia, która jest maksymalną wartością dla SearchQueriesPerSecond, a następnie 58 sekund średniego obciążenia, a wreszcie jedna sekunda z tylko jednym zapytaniem, co jest minimalne.
 
-Aby uzyskać ThrottledSearchQueriesPercentage, minimalna, maksymalna, średnia i total, wszystkie mają taką samą wartość: procent zapytań wyszukiwania, które zostały ograniczone z łączna liczba zapytań wyszukiwania w ciągu jednej minuty.
+Dla ThrottledSearchQueriesPercentage, minimum, maksimum, Average i Total, ma taką samą wartość: procent zapytań wyszukiwania, które zostały ograniczone, od łącznej liczby zapytań wyszukiwania w ciągu jednej minuty.
 
 ## <a name="download-and-open-in-visual-studio-code"></a>Pobierz i Otwórz w Visual Studio Code
 
@@ -169,11 +168,11 @@ Po pobraniu pliku Otwórz go w edytorze JSON, aby wyświetlić jego zawartość.
 Interfejs API REST Azure Search i zestaw .NET SDK zapewniają programistyczny dostęp do metryk usług, informacji dotyczących indeksu i indeksatora oraz liczby dokumentów.
 
 * [Pobierz statystyki usług](/rest/api/searchservice/get-service-statistics)
-* [Pobieranie statystyki indeksu](/rest/api/searchservice/get-index-statistics)
-* [Liczba dokumentów](/rest/api/searchservice/count-documents)
+* [Pobierz statystyki indeksu](/rest/api/searchservice/get-index-statistics)
+* [Liczenie dokumentów](/rest/api/searchservice/count-documents)
 * [Pobierz stan indeksatora](/rest/api/searchservice/get-indexer-status)
 
-Aby włączyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure, zobacz dokumentację [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
+Aby włączyć korzystanie z programu PowerShell lub interfejsu wiersza polecenia platformy Azure, zapoznaj się z dokumentacją [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure elementu interfejsu użytkownika UserNameTextBox | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Compute.UserNameTextBox interfejsu użytkownika dla witryny Azure portal.
+title: Element interfejsu użytkownika usługi Azure UserNameTextBox | Microsoft Docs
+description: Opisuje element interfejsu użytkownika Microsoft. COMPUTE. UserNameTextBox dla Azure Portal. Umożliwia użytkownikom dostarczanie nazw użytkowników systemu Windows lub Linux.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 88ab13329a719ba1e1b8a7b5fba2f7a2d381eca2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 875c73c546fa52642959e2593d41f9af82c13797
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700854"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331593"
 ---
-# <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox UI element
-Formant pola tekstowego przy użyciu wbudowanych weryfikacji nazw użytkowników Windows i Linux.
+# <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft. COMPUTE. UserNameTextBox — element interfejsu użytkownika
+Kontrolka pola tekstowego z wbudowaną walidacją nazw użytkowników systemu Windows i Linux.
 
-## <a name="ui-sample"></a>Przykład interfejsu użytkownika
-![Microsoft.Compute.UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
+## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+![Microsoft. COMPUTE. UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
 
 ## <a name="schema"></a>Schemat
 ```json
@@ -44,17 +44,17 @@ Formant pola tekstowego przy użyciu wbudowanych weryfikacji nazw użytkowników
 ```
 
 ## <a name="remarks"></a>Uwagi
-- Jeśli `constraints.required` ustawiono **true**, a następnie w polu tekstowym musi mieć wartość do sprawdzania poprawności pomyślnie. Wartość domyślna to **true**.
-- `osPlatform` należy określić, i nie może być **Windows** lub **Linux**.
-- `constraints.regex` jest to wzorzec wyrażenia regularnego JavaScript. Jeśli zostanie określony, wartość w polu tekstowym musi pasujących do wzorca, aby sprawdzić poprawność pomyślnie. Wartość domyślna to **null**.
-- `constraints.validationMessage` jest to ciąg do wyświetlenia, gdy wartość w polu tekstowym nie powiodło się sprawdzanie poprawności określonej przez `constraints.regex`. Jeśli nie zostanie określony, są używane komunikaty wbudowanych sprawdzania poprawności w polu tekstowym. Wartość domyślna to **null**.
-- Ten element ma wbudowane sprawdzanie poprawności, która opiera się na wartość określona dla `osPlatform`. Wbudowane sprawdzania poprawności mogą służyć wraz z niestandardowym wyrażeniu regularnym. Jeśli wartość `constraints.regex` jest określony, a następnie sprawdzeń wbudowane i niestandardowe są wyzwalane.
+- Jeśli `constraints.required` jest ustawiona na **wartość true**, pole tekstowe musi mieć wartość, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **true**.
+- należy określić `osPlatform` i może to być **system Windows** lub **Linux**.
+- `constraints.regex` jest wzorcem wyrażenia regularnego JavaScript. Jeśli jest określony, wartość pola tekstowego musi być zgodna ze wzorcem, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **null**.
+- `constraints.validationMessage` to ciąg, który będzie wyświetlany, gdy wartość pola tekstowego nie powiedzie się walidacji określonej przez `constraints.regex`. Jeśli nie zostanie określony, będą używane wbudowane komunikaty weryfikacyjne pola tekstowego. Wartość domyślna to **null**.
+- Ten element ma wbudowaną weryfikację opartą na wartości określonej dla `osPlatform`. Wbudowanej walidacji można używać razem z niestandardowym wyrażeniem regularnym. Jeśli wartość `constraints.regex` jest określona, wyzwalane są zarówno wbudowane, jak i niestandardowe walidacji.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 ```json
 "Example name"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
-* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Następne kroki
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
+* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

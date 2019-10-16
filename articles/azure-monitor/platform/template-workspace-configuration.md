@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 810ecbd4421eec8e8e809b429270601a0c94d623
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 9c5fb38e66cb783b02d314d55cf0d0510523b6a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840898"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375977"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Zarządzanie obszarem roboczym Log Analytics przy użyciu szablonów Azure Resource Manager
 
@@ -46,7 +46,7 @@ W poniższej tabeli wymieniono wersje interfejsu API dla zasobów używanych w t
 
 | Zasób | Typ zasobu | Wersja interfejsu API |
 |:---|:---|:---|
-| Obszar roboczy   | Obszarów roboczych    | 2017-03-15 — wersja zapoznawcza |
+| Obszar roboczy   | obszarów roboczych    | 2017-03-15 — wersja zapoznawcza |
 | Search      | savedSearches | 2015-03-20 |
 | Źródło danych | źródła danych   | 2015-11-01 — wersja zapoznawcza |
 | Rozwiązanie    | rozwiązania     | 2015-11-01 — wersja zapoznawcza |
@@ -243,7 +243,7 @@ Poniższy przykładowy szablon ilustruje sposób wykonywania następujących czy
     "customlogName": {
     "type": "string",
     "metadata": {
-      "description": "custom log name"
+      "description": "The custom log name"
       }
     },
     "variables": {
@@ -419,7 +419,7 @@ Poniższy przykładowy szablon ilustruje sposób wykonywania następujących czy
           "type": "dataSources",
           "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
           "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {
@@ -462,7 +462,7 @@ Poniższy przykładowy szablon ilustruje sposób wykonywania następujących czy
               }
             ]
           }
-        }
+        },
         {
           "apiVersion": "2015-11-01-preview",
           "type": "datasources",
@@ -592,6 +592,7 @@ Poniższy przykładowy szablon ilustruje sposób wykonywania następujących czy
 }
 
 ```
+
 ### <a name="deploying-the-sample-template"></a>Wdrażanie przykładowego szablonu
 
 Aby wdrożyć przykładowy szablon:

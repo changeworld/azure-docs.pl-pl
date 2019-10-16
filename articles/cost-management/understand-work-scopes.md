@@ -1,21 +1,21 @@
 ---
-title: Zrozumienie i współpraca z zakresami Azure Cost Management | Microsoft Docs
+title: Zrozumienie zakresów Azure Cost Management i korzystanie z nich
 description: Ten artykuł pomaga zrozumieć zakresy zarządzania rozliczeniami i zasobami dostępne na platformie Azure oraz jak korzystać z zakresów w Cost Management i interfejsy API.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338635"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374487"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
@@ -47,7 +47,7 @@ Platforma Azure obsługuje trzy zakresy zarządzania zasobami. Każdy zakres obs
 
 - [**Grupy zasobów**](../azure-resource-manager/resource-group-overview.md#resource-groups) — logiczne grupowanie powiązanych zasobów dla rozwiązania platformy Azure, które współużytkują ten sam cykl życia. Na przykład zasoby, które są wdrażane i usuwane razem.
 
-    Typ zasobu: [Microsoft.Resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
+    Typ zasobu: [Microsoft. resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
 
 Grupy zarządzania umożliwiają organizowanie subskrypcji w hierarchię. Można na przykład utworzyć logiczną hierarchię organizacyjną przy użyciu grup zarządzania. Następnie nadaj zespołom subskrypcje dla obciążeń produkcyjnych i deweloperskich i testowych. Następnie utwórz grupy zasobów w ramach subskrypcji, aby zarządzać każdym podsystemem lub składnikiem.
 
@@ -106,7 +106,7 @@ Subskrypcje platformy Azure utworzone na podstawie indywidualnych ofert, takich 
 
 - [**Konto rozliczeniowe**](../billing/billing-view-all-accounts.md) — reprezentuje właściciela pojedynczego konta dla co najmniej jednej subskrypcji platformy Azure. Obecnie nie obsługuje udzielania dostępu do wielu osób ani dostępu do widoków zagregowanych kosztów.
 
-    Typ zasobu: Nie dotyczy
+    Typ zasobu: nie dotyczy
 
 Indywidualni Administratorzy konta subskrypcji platformy Azure mogą wyświetlać dane dotyczące rozliczeń, takie jak faktury i płatności, a także zarządzać nimi, w [centrum konta platformy Azure](https://account.azure.com/subscriptions). Nie mogą jednak wyświetlać danych kosztów ani zarządzać zasobami w Azure Portal. Aby udzielić dostępu do administratora konta, użyj wcześniej wymienionych ról Cost Management.
 
@@ -128,7 +128,10 @@ Konta rozliczeń umowy klienta firmy Microsoft mają następujące zakresy:
 
     Typ zasobu: `Microsoft.Billing/billingAccounts/invoiceSections`
 
+- **Klient** — reprezentuje grupę subskrypcji powiązanych z konkretnym klientem, który jest dołączony do umowy klienta firmy Microsoft przez partnera. Ten zakres jest specyficzny dla dostawcy CSP.
+
 W przeciwieństwie do zakresów rozliczeniowych EA, konta rozliczeń umowy klienta _są_ powiązane z pojedynczym katalogiem i nie mogą zawierać subskrypcji wielu katalogów usługi Azure AD.
+
 
 Zakresy rozliczeń umowy klienta obsługują następujące role:
 
@@ -149,7 +152,7 @@ Po zakończeniu integracji AWS zapoznaj się z tematem Konfigurowanie [i Konfigu
 - **Konto rozliczeń zewnętrznych** — reprezentuje umowę klienta z dostawcą innej firmy. Jest to podobne do konta rozliczeń EA.
 
     Typ zasobu: `Microsoft.CostManagement/externalBillingAccounts`
-    
+
 - **Subskrypcja zewnętrzna** — reprezentuje konto operacyjne klienta z niezależnym dostawcą. Jest to podobne do subskrypcji platformy Azure.
 
     Typ zasobu: `Microsoft.CostManagement/externalSubscriptions`
@@ -166,7 +169,7 @@ Wszystkie widoki Cost Management w Azure Portal obejmują wybór **zakresu** pil
 
 Podczas pracy z interfejsami API Cost Management, wiedząc, że zakres jest krytyczny. Poniższe informacje służą do tworzenia prawidłowego identyfikatora URI zakresu dla Cost Management interfejsów API.
 
-### <a name="billing-accounts"></a>Konta bilingowe
+### <a name="billing-accounts"></a>Konta rozliczeniowe
 
 1. Otwórz Azure Portal a następnie przejdź do **Cost Management i rozliczeń** na liście usług.
 2. Wybierz pozycję **Właściwości** w menu konto rozliczeń.
@@ -182,7 +185,7 @@ Podczas pracy z interfejsami API Cost Management, wiedząc, że zakres jest kryt
 5. Skopiuj konto rozliczeniowe i identyfikatory profilów rozliczeń.
 6. Twój zakres to: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
 
-### <a name="invoice-sections"></a>Sekcje faktur
+### <a name="invoice-sections"></a>Sekcje faktury
 
 1. Otwórz Azure Portal a następnie przejdź do **Cost Management i rozliczeń** na liście usług.
 2. Wybierz **sekcje faktury** w menu konto rozliczeń.
@@ -194,7 +197,7 @@ Podczas pracy z interfejsami API Cost Management, wiedząc, że zakres jest kryt
 ### <a name="ea-departments"></a>Działy EA
 
 1. Otwórz Azure Portal a następnie przejdź do **Cost Management i rozliczeń** na liście usług.
-2. Wybierz pozycję działy w menu Konto rozliczenia.
+2. Wybierz pozycję **działy** w menu Konto rozliczenia.
 3. Kliknij nazwę żądanego działu.
 4. Wybierz pozycję **Właściwości** w menu dział.
 5. Skopiuj konto rozliczeniowe i identyfikatory działów.
@@ -216,7 +219,7 @@ Podczas pracy z interfejsami API Cost Management, wiedząc, że zakres jest kryt
 3. Skopiuj identyfikator grupy zarządzania z tabeli.
 4. Twój zakres to: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Subscription
+### <a name="subscription"></a>Subskrypcja
 
 1. Otwórz Azure Portal i przejdź do obszaru **subskrypcje** na liście usług.
 2. Skopiuj identyfikator subskrypcji z tabeli.
@@ -234,4 +237,4 @@ Cost Management jest obecnie obsługiwana w globalnych i [Azure Government](http
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Jeśli nie została już zakończona pierwszym przewodniku Szybki Start usługi Cost Management, zapoznaj się z adresem [zacząć analizować koszty](quick-acm-cost-analysis.md).
+- Jeśli nie zostało to jeszcze zrobione z pierwszego przewodnika Szybki Start dla Cost Management, zapoznaj się z tematem [Rozpocznij analizowanie kosztów](quick-acm-cost-analysis.md).

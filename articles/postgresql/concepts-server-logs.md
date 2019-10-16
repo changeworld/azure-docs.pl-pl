@@ -1,48 +1,97 @@
 ---
-title: Dzienniki serwera w Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano sposób, w jaki Azure Database for PostgreSQL — pojedynczy serwer generuje zapytania i dzienniki błędów oraz sposób skonfigurowania przechowywania dzienników.
+title: Dzienniki w Azure Database for PostgreSQL — pojedynczy serwer
+description: Pojęcia związane z konfiguracją rejestrowania, magazynem i analizą w ramach Azure Database for PostgreSQL — jeden serwer
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 17083029f2377037b99abfa3ce8371661eccb957
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/14/2019
+ms.openlocfilehash: cc796733c9b0b1effd8043c49540f9b489610067
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029990"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331298"
 ---
-# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Dzienniki serwera w Azure Database for PostgreSQL — pojedynczy serwer
-Usługa Azure Database for PostgreSQL generuje dzienniki zapytań i błędów. Dzienniki zapytań i błędów mogą służyć do identyfikowania, rozwiązywania problemów i naprawy błędów konfiguracji oraz nieoptymalnej wydajności. (Dostęp do dzienników transakcji nie jest uwzględniony). 
+# <a name="logs-in-azure-database-for-postgresql---single-server"></a>Dzienniki w Azure Database for PostgreSQL — pojedynczy serwer
+Azure Database for PostgreSQL umożliwia konfigurowanie i dostęp do standardowych dzienników Postgres. Dzienniki mogą służyć do identyfikowania, rozwiązywania problemów i naprawiania błędów konfiguracji oraz nieoptymalnej wydajności. Rejestrowane informacje można skonfigurować i uzyskać do nich dostęp, w tym błędy, informacje o zapytaniach, rekordy autopróżniowe, połączenia i punkty kontrolne. (Dostęp do dzienników transakcji nie jest dostępny).
+
+Rejestrowanie inspekcji jest udostępniane za pomocą rozszerzenia Postgres pgaudit. Aby dowiedzieć się więcej, odwiedź artykuł dotyczący [pojęć związanych z inspekcją](concepts-audit.md) .
+
 
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania 
-Rejestrowanie na serwerze można skonfigurować przy użyciu parametrów serwera rejestrowania. Na każdym nowym serwerze **log_checkpoints** i **log_connections** są domyślnie włączone. Istnieją dodatkowe parametry, które można dostosować, aby odpowiadały potrzebom rejestrowania: 
+W celu skonfigurowania rejestrowania standardowego Postgres na serwerze możesz użyć parametrów serwera rejestrowania. Na każdym serwerze Azure Database for PostgreSQL, `log_checkpoints` i `log_connections` są domyślnie włączone. Istnieją dodatkowe parametry, które można dostosować, aby odpowiadały potrzebom rejestrowania: 
 
 ![Azure Database for PostgreSQL — parametry rejestrowania](./media/concepts-server-logs/log-parameters.png)
 
-Aby uzyskać więcej informacji na temat tych parametrów, zobacz artykuł [raportowanie błędów i dokumentacja rejestrowania](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) w programie PostgreSQL. Aby dowiedzieć się, jak skonfigurować Azure Database for PostgreSQL parametry, zapoznaj się z [dokumentacją portalu](howto-configure-server-parameters-using-portal.md) lub [dokumentacją interfejsu wiersza polecenia](howto-configure-server-parameters-using-cli.md).
+Aby dowiedzieć się więcej na temat parametrów dziennika Postgres, zapoznaj się z sekcją [kiedy rejestrować](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) i [co należy rejestrować](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) w dokumentacji Postgres. W Azure Database for PostgreSQL są dostępne większość parametrów rejestrowania Postgres.
 
-## <a name="access-server-logs-through-portal-or-cli"></a>Dostęp do dzienników serwera za poorednictwem portalu lub interfejsu wiersza polecenia
-Jeśli włączono dzienniki, możesz uzyskać do nich dostęp z magazynu dzienników Azure Database for PostgreSQL przy użyciu [Azure Portal](howto-configure-server-logs-in-portal.md), [interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-using-cli.md)i interfejsów API REST platformy Azure. Pliki dziennika są zmieniane co 1 godzinę lub 100 MB, w zależności od tego, co zostanie osiągnięte wcześniej. Okres przechowywania dla tego magazynu dzienników można ustawić przy użyciu parametru **log @ no__t-1retention @ no__t-2period** skojarzonego z serwerem. Wartość domyślna to 3 dni; Maksymalna wartość to 7 dni. Serwer musi mieć wystarczającą ilość przydzieloną magazyn do przechowywania plików dziennika. (Ten parametr przechowywania nie kontroluje dzienników diagnostycznych platformy Azure).
+Aby dowiedzieć się, jak skonfigurować parametry w Azure Database for PostgreSQL, zapoznaj się z [dokumentacją portalu](howto-configure-server-parameters-using-portal.md) lub [dokumentacją interfejsu wiersza polecenia](howto-configure-server-parameters-using-cli.md). 
 
+> [!NOTE]
+> Skonfigurowanie dużej liczby dzienników na przykład rejestrowania instrukcji może zwiększyć znaczne obciążenie wydajności. 
+
+## <a name="access-log-files"></a>Dostęp do plików dziennika
+Domyślny format dziennika w Azure Database for PostgreSQL to. log. Przykładowa linia z tego dziennika wygląda następująco:
+
+```
+2019-10-14 17:00:03 UTC-5d773cc3.3c-LOG: connection received: host=101.0.0.6 port=34331 pid=16216
+```
+
+Azure Database for PostgreSQL zapewnia krótkoterminową lokalizację przechowywania plików. log. Nowy plik zaczyna się co 1 godzina lub 100 MB, w zależności od tego, co nastąpi wcześniej. Dzienniki są dołączane do bieżącego pliku, ponieważ są emitowane z Postgres.  
+
+Można ustawić okres przechowywania dla tego krótkoterminowego magazynu dzienników przy użyciu parametru `log_retention_period`. Wartość domyślna to 3 dni; Maksymalna wartość to 7 dni. Krótkoterminowa lokalizacja przechowywania może zawierać maksymalnie 1 GB plików dziennika. Po 1 GB najstarsze pliki, niezależnie od okresu przechowywania, zostaną usunięte, aby zwolnić miejsce na nowe dzienniki. 
+
+Aby okresowo przechowywać dzienniki i analizę dzienników, można pobrać pliki dziennika. log i przenieść je do usługi innej firmy. Pliki można pobrać przy użyciu [Azure Portal](howto-configure-server-logs-in-portal.md), [interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-using-cli.md). Alternatywnie można skonfigurować ustawienia diagnostyczne Azure Monitor, które automatycznie emitują dzienniki (w formacie JSON) do dłuższych lokalizacji. Więcej informacji na temat tej opcji można znaleźć w sekcji poniżej. 
+
+Można zatrzymać generowanie plików. log, ustawiając parametr `logging_collector` na OFF. Wyłączenie generowania plików dziennika jest zalecane, jeśli używasz ustawień diagnostycznych Azure Monitor. Ta konfiguracja zmniejszy wpływ dodatkowego rejestrowania na wydajność.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
-Azure Database for PostgreSQL jest zintegrowana z Azure Monitor dzienników diagnostycznych. Po włączeniu dzienników na serwerze PostgreSQL można wybrać opcję ich emisji do [dzienników Azure monitor](../azure-monitor/log-query/log-query-overview.md), Event Hubs lub Azure Storage. 
+Azure Database for PostgreSQL jest zintegrowany z Azure Monitor ustawień diagnostycznych. Ustawienia diagnostyczne umożliwiają wysyłanie dzienników Postgres w formacie JSON do Azure Monitor dzienników na potrzeby analiz i alertów, Event Hubs do przesyłania strumieniowego i usługi Azure Storage w celu archiwizacji. 
 
 > [!IMPORTANT]
 > Ta funkcja diagnostyczna dla dzienników serwera jest dostępna tylko w [warstwach cenowych](concepts-pricing-tiers.md)ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
+
+
+### <a name="configure-diagnostic-settings"></a>Konfigurowanie ustawień diagnostycznych
+Ustawienia diagnostyczne dla serwera Postgres można włączyć za pomocą Azure Portal, interfejsu wiersza polecenia i środowiska API REST oraz programu PowerShell. Kategoria dziennika do wybrania to **PostgreSQLLogs**. (Istnieją inne dzienniki, które można skonfigurować w przypadku korzystania z [magazynu zapytań](concepts-query-store.md)).
 
 Aby włączyć dzienniki diagnostyczne przy użyciu Azure Portal:
 
    1. W portalu przejdź do pozycji *Ustawienia diagnostyczne* w menu nawigacji serwera Postgres.
    2. Wybierz pozycję *Dodaj ustawienie diagnostyczne*.
    3. Nadaj nazwę temu ustawieniu. 
-   4. Wybierz preferowaną lokalizację przechowania (konto magazynu, centrum zdarzeń, Analiza dzienników). 
-   5. Wybierz odpowiednie typy danych.
-   6. Zapisz ustawienie.
+   4. Wybierz preferowany punkt końcowy (konto magazynu, centrum zdarzeń, Analiza dzienników). 
+   5. Wybierz typ dziennika **PostgreSQLLogs**.
+   7. Zapisz ustawienie.
 
-W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależności od wybranego wyjściowego punktu końcowego pola zawarte i kolejność ich wyświetlania mogą się różnić. 
+Aby włączyć dzienniki diagnostyczne przy użyciu programu PowerShell, interfejsu wiersza polecenia lub API REST, zapoznaj się z artykułem [Ustawienia diagnostyczne](../azure-monitor/platform/diagnostic-settings.md) .
+
+### <a name="access-diagnostic-logs"></a>Uzyskiwanie dostępu do dzienników diagnostycznych
+
+Sposób dostępu do dzienników zależy od wybranego punktu końcowego. W przypadku usługi Azure Storage schemat został opisany w artykule [Rejestrowanie konta magazynu](../azure-monitor/platform/resource-logs-collect-storage.md) . Aby uzyskać Event Hubs, zobacz artykuł [przesyłanie strumieniowe dzienników platformy Azure](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+
+W przypadku dzienników Azure Monitor dzienniki są wysyłane do wybranego obszaru roboczego. Dzienniki Postgres używają trybu zbierania **AzureDiagnostics** , dzięki czemu można wykonywać zapytania z tabeli AzureDiagnostics. Pola w tabeli są opisane poniżej. Więcej informacji o wysyłaniu zapytań i alertach znajduje się w temacie Omówienie [zapytań dotyczących dzienników Azure monitor](../azure-monitor/log-query/log-query-overview.md) .
+
+Poniżej przedstawiono zapytania, w których można spróbować rozpocząć pracę. Alerty można skonfigurować na podstawie zapytań.
+
+Wyszukaj wszystkie dzienniki Postgres dla określonego serwera w ostatnim dniu
+```
+AzureDiagnostics
+| where LogicalServerName_s == 'myservername'
+| where TimeGenerated > ago(1d) 
+```
+
+Wyszukaj wszystkie błędy dla wszystkich serwerów Postgres w tym obszarze roboczym w ciągu ostatnich 6 godzin
+```
+AzureDiagnostics
+| where errorLevel_s == "error" and category == "PostgreSQLogs"
+| where TimeGenerated > ago(6h)
+```
+
+### <a name="log-format"></a>Format dziennika
+
+W poniższej tabeli opisano pola dla typu **PostgreSQLLogs** . W zależności od wybranego wyjściowego punktu końcowego pola zawarte i kolejność ich wyświetlania mogą się różnić. 
 
 |**Pole** | **Opis** |
 |---|---|
@@ -70,7 +119,7 @@ W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależnośc
 | Prefiks | Prefiks wiersza dziennika |
 
 
-
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o uzyskiwaniu dostępu do dzienników z [Azure Portal](howto-configure-server-logs-in-portal.md) lub [interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-using-cli.md).
 - Dowiedz się więcej o [cenach Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
+- Dowiedz się więcej o [dziennikach inspekcji](concepts-audit.md)

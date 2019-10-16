@@ -1,6 +1,6 @@
 ---
-title: Azure elementu interfejsu użytkownika TextBlock | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Common.TextBlock interfejsu użytkownika dla witryny Azure portal.
+title: Element interfejsu użytkownika usługi Azure TextBlock | Microsoft Docs
+description: Opisuje element Microsoft. Common. TextBlock interfejsu użytkownika dla Azure Portal. Służy do dodawania tekstu do interfejsu.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0dcd8ba1b1bacd990c91ce90ef0013caac446cdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da2453889f04352dbabe182772312d70deec4464
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722544"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331624"
 ---
-# <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock UI element
-Formant, który może służyć do dodawania tekstu w interfejsie portalu.
+# <a name="microsoftcommontextblock-ui-element"></a>Microsoft. Common. TextBlock — element interfejsu użytkownika
+Kontrolka, która może służyć do dodawania tekstu do interfejsu portalu.
 
-## <a name="ui-sample"></a>Przykład interfejsu użytkownika
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textblock.png)
+## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+![Microsoft. Common. TextBox](./media/managed-application-elements/microsoft.common.textblock.png)
 
 ## <a name="schema"></a>Schemat
 ```json
@@ -48,6 +48,6 @@ Formant, który może służyć do dodawania tekstu w interfejsie portalu.
 "Please provide the configuration values for your application. Learn more"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
-* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Następne kroki
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
+* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 10/15/2019
 ms.author: mayg
-ms.openlocfilehash: 6249a3c1c8ea3be02ca802d6be7e720bd900f675
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 687c21170c0397b89270e9c3a6af1e994c758179
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178092"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331111"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurowanie mapowania sieci i adresowania IP dla sieci wirtualnych
 
@@ -71,22 +71,21 @@ Adres IP dla każdej karty sieciowej na docelowej maszynie wirtualnej jest konfi
 - **Statyczny adres IP**: Jeśli karta sieciowa ŹRÓDŁOWEJ maszyny wirtualnej używa statycznego adresowania IP, docelowa karta sieciowa maszyny wirtualnej będzie również używać statycznego adresu IP.
 
 
-## <a name="ip-address-assignment-during-failover"></a>Przypisanie adresu IP podczas pracy w trybie failover
+## <a name="ip-address-assignment-during-failover"></a>Przypisywanie adresów IP podczas przełączania do trybu failover
 
-**Źródłowa i docelowa podsieć** | **Uzyskać**
+**Źródłowa i docelowa podsieć** | **Szczegóły**
 --- | ---
 Ta sama przestrzeń adresowa | Adres IP źródłowej karty sieciowej maszyny wirtualnej jest ustawiony jako docelowy adres IP karty sieciowej maszyny wirtualnej.<br/><br/> Jeśli adres nie jest dostępny, następny dostępny adres IP jest ustawiany jako element docelowy.
-
-Inna przestrzeń adresowa<br/><br/> Następny dostępny adres IP w podsieci docelowej jest ustawiany jako docelowy adres karty sieciowej maszyny wirtualnej.
+Inna przestrzeń adresowa | Następny dostępny adres IP w podsieci docelowej jest ustawiany jako docelowy adres karty sieciowej maszyny wirtualnej.
 
 
 
 ## <a name="ip-address-assignment-during-test-failover"></a>Przypisanie adresu IP podczas testowego przełączania do trybu failover
 
-**Sieć docelowa** | **Uzyskać**
+**Sieć docelowa** | **Szczegóły**
 --- | ---
-Sieć docelowa jest siecią wirtualną trybu failover | -Docelowy adres IP jest statyczny, ale nie jest to ten sam adres IP, który jest zarezerwowany dla trybu failover.<br/><br/>  -Przypisany adres jest następnym dostępnym adresem od końca zakresu podsieci.<br/><br/> Na przykład: Jeśli źródłowy adres IP to 10.0.0.19, a sieć trybu failover używa zakresu 10.0.0.0/24, wówczas Następny adres IP przypisany do docelowej maszyny wirtualnej to 10.0.0.254.
-Sieć docelowa nie jest siecią wirtualną trybu failover | -Docelowy adres IP będzie statyczny przy użyciu tego samego adresu IP zarezerwowanych dla trybu failover.<br/><br/>  — Jeśli ten sam adres IP jest już przypisany, adres IP jest następną dostępną na końcu zakresu podsieci.<br/><br/> Na przykład: Jeśli źródłowy statyczny adres IP to 10.0.0.19, a tryb failover znajduje się w sieci, która nie jest siecią trybu failover, z zakresem 10.0.0.0/24, docelowy statyczny adres IP będzie 10.0.0.0.19, jeśli jest dostępny, a w przeciwnym razie będzie 10.0.0.254.
+Sieć docelowa jest siecią wirtualną trybu failover | -Docelowy adres IP będzie statyczny przy użyciu tego samego adresu IP. <br/><br/>  — Jeśli ten sam adres IP jest już przypisany, adres IP jest następną dostępną na końcu zakresu podsieci. Na przykład: Jeśli źródłowy adres IP to 10.0.0.19, a sieć trybu failover używa zakresu 10.0.0.0/24, wówczas Następny adres IP przypisany do docelowej maszyny wirtualnej to 10.0.0.254.
+Sieć docelowa nie jest siecią wirtualną trybu failover | -Docelowy adres IP będzie statyczny przy użyciu tego samego adresu IP.<br/><br/>  — Jeśli ten sam adres IP jest już przypisany, adres IP jest następną dostępną na końcu zakresu podsieci.<br/><br/> Na przykład: Jeśli źródłowy statyczny adres IP to 10.0.0.19, a tryb failover znajduje się w sieci, która nie jest siecią trybu failover, z zakresem 10.0.0.0/24, docelowy statyczny adres IP będzie 10.0.0.0.19, jeśli jest dostępny, a w przeciwnym razie będzie 10.0.0.254.
 
 - Sieć wirtualna trybu failover jest siecią docelową wybraną podczas konfigurowania odzyskiwania po awarii.
 - Zalecamy, aby zawsze używać sieci nieprodukcyjnej do testowania pracy w trybie failover.

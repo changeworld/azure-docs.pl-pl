@@ -1,6 +1,6 @@
 ---
-title: Natywne aplikacje w usłudze Azure Active Directory
-description: Opisuje co to są aplikacje natywne i podstawowe informacje dotyczące protokołu przepływu, rejestracji i wygaśnięcia tokenu dla tego typu aplikacji.
+title: Natywne aplikacje w Azure Active Directory
+description: Opisuje aplikacje natywne i podstawowe informacje dotyczące przepływu protokołu, rejestracji i wygaśnięcia tokenu dla tego typu aplikacji.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,51 +17,51 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bf24124c4b072a64ef59500b2f723ff6abbb0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0034668231d97e64602bdbdd0836bded97bb733d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545840"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373868"
 ---
-# <a name="native-apps"></a>Aplikacje natywne
+# <a name="native-apps"></a>Natywne aplikacje
 
-Natywne aplikacje to aplikacje, które wywoływać internetowy interfejs API w imieniu użytkownika. Ten scenariusz jest oparty na typu przydziału kodu autoryzacji OAuth 2.0 przy użyciu publicznych klienta, zgodnie z opisem w sekcji 4.1 [specyfikację OAuth 2.0](https://tools.ietf.org/html/rfc6749). Aplikacji macierzystej uzyskuje token dostępu dla użytkownika przy użyciu protokołu OAuth 2.0. Ten token dostępu jest następnie wysyłana w żądaniu w internetowym interfejsie API, które udzielają użytkownikowi autoryzacji i zwraca żądanego zasobu.
+Natywne aplikacje to aplikacje, które wywołują internetowy interfejs API w imieniu użytkownika. Ten scenariusz jest oparty na typie autoryzacji uwierzytelniania OAuth 2,0 z klientem publicznym, zgodnie z opisem w sekcji 4,1 [specyfikacji OAuth 2,0](https://tools.ietf.org/html/rfc6749). Aplikacja natywna uzyskuje token dostępu dla użytkownika przy użyciu protokołu OAuth 2,0. Ten token dostępu jest następnie wysyłany w żądaniu do internetowego interfejsu API, który autoryzuje użytkownika i zwraca żądany zasób.
 
 ## <a name="diagram"></a>Diagram
 
-![Natywną aplikację sieci Web diagramu interfejsu API](./media/authentication-scenarios/native_app_to_web_api.png)
+![Diagram aplikacji natywnych dla interfejsu API sieci Web](./media/authentication-scenarios/native_app_to_web_api.png)
 
-## <a name="protocol-flow"></a>Protokołu przepływu
+## <a name="protocol-flow"></a>Przepływ protokołu
 
-Jeśli używasz biblioteki uwierzytelniania AD Większość opisanych poniżej szczegółów ma protokołu są obsługiwane, takich jak okno podręczne z przeglądarki, buforowanie tokenów oraz obsługi tokenów odświeżania.
+W przypadku korzystania z bibliotek uwierzytelniania usługi AD większość szczegółów protokołu opisanych poniżej jest obsługiwana przez Ciebie, takich jak wyskakujące okienko przeglądarki, buforowanie tokenów i obsługa tokenów odświeżania.
 
-1. Za pomocą aplikacji natywnej wysyła żądanie do punktu końcowego autoryzacji w usłudze Azure AD wyskakujące przeglądarki. To żądanie zawiera identyfikator aplikacji oraz identyfikatora URI przekierowania aplikacji macierzystej, jak pokazano w witrynie Azure portal i identyfikator URI aplikacji interfejsu API sieci web. Jeśli użytkownik nie zostało to zrobione, są monitowani o Zaloguj się ponownie
-1. Usługa Azure AD uwierzytelnia użytkownika. Jeśli jest to aplikacja wielodostępna i zgoda jest wymagana do korzystania z aplikacji, użytkownik będą musieli wyrazić zgodę, jeśli ich jeszcze tego nie zrobiłeś. Po przyznaniu zgody i po pomyślnym uwierzytelnieniu usługa Azure AD wystawia odpowiedzi kod autoryzacji do identyfikatora URI przekierowania aplikacji klienta.
-1. Gdy usługa Azure AD wysyła odpowiedź kodu autoryzacji do identyfikatora URI przekierowania, aplikacja kliencka zatrzymuje interakcji z przeglądarką i wyodrębnia kod autoryzacji z odpowiedzi. Przy użyciu tego kodu autoryzacji, aplikacja kliencka wysyła żądanie do punktu końcowego tokenu usługi Azure AD, który zawiera kod autoryzacji, szczegółowe informacje o aplikacji klienta (identyfikator aplikacji i identyfikator URI przekierowania) i żądany zasób (identyfikator URI aplikacji dla internetowy interfejs API).
-1. Kod autoryzacji i informacji na temat interfejsu API sieci web i aplikacji klienta są weryfikowane przez usługę Azure AD. Po pomyślnej weryfikacji usługi Azure AD zwraca dwa tokeny: token JWT dostępu i token odświeżania tokenu JWT. Ponadto usługa Azure AD zwraca podstawowe informacje o użytkowniku, takie jak ich wyświetlaną nazwę i dzierżawy identyfikator.
-1. Przy użyciu protokołu HTTPS aplikacja kliencka używa zwrócony token dostępu tokenów JWT do dodawania ciągu JWT z oznaczeniem "Bearer" w nagłówku autoryzacji żądania do internetowego interfejsu API. Interfejs API sieci web sprawdza poprawność tokenu JWT i, jeśli weryfikacja zakończy się pomyślnie, zwraca żądanego zasobu.
-1. Po wygaśnięciu token dostępu, aplikacja kliencka otrzyma błąd, który wskazuje, że użytkownik musi uwierzytelnić się ponownie. Aplikacja ma token odświeżania prawidłowe, może służyć uzyskać nowy token dostępu bez wyświetlania monitu użytkownikowi zalogowanie się ponownie. Jeśli wygaśnięciu ważności tokenu odświeżania aplikacji muszą interaktywnie ponownie uwierzytelnić użytkownika.
+1. Za pomocą okna podręcznego przeglądarki aplikacja natywna wysyła żądanie do punktu końcowego autoryzacji w usłudze Azure AD. To żądanie zawiera identyfikator aplikacji i identyfikator URI przekierowania aplikacji natywnej, jak pokazano w Azure Portal oraz identyfikator URI identyfikatora aplikacji dla internetowego interfejsu API. Jeśli użytkownik nie jest jeszcze zalogowany, zostanie wyświetlony monit o ponowne zalogowanie
+1. Usługa Azure AD uwierzytelnia użytkownika. Jeśli jest to aplikacja wielodostępna i zgoda jest wymagana do korzystania z aplikacji, użytkownik będzie musiał wyrazić zgodę, jeśli jeszcze nie zostało to zrobione. Po udzieleniu zgody i po pomyślnym uwierzytelnieniu usługa Azure AD wystawia odpowiedź na kod autoryzacji z powrotem na identyfikator URI przekierowania aplikacji klienta.
+1. Gdy usługa Azure AD wystawia odpowiedź kodu autoryzacji z powrotem na identyfikator URI przekierowania, aplikacja kliencka przestanie komunikować się z przeglądarką i wyodrębni kod autoryzacji z odpowiedzi. Korzystając z tego kodu autoryzacji, aplikacja kliencka wysyła żądanie do punktu końcowego tokenu usługi Azure AD, który zawiera kod autoryzacji, szczegóły dotyczące aplikacji klienckiej (identyfikatora aplikacji i identyfikatora URI przekierowania) oraz żądany zasób (identyfikator URI identyfikatora aplikacji dla Interfejs API sieci Web).
+1. Kod autoryzacji i informacje o aplikacji klienckiej i interfejsie API sieci Web są weryfikowane przez usługę Azure AD. Po pomyślnej weryfikacji usługa Azure AD zwraca dwa tokeny: token dostępu JWT i token odświeżenia tokenu JWT. Ponadto usługa Azure AD zwraca podstawowe informacje o użytkowniku, takie jak nazwa wyświetlana i identyfikator dzierżawy.
+1. Za pośrednictwem protokołu HTTPS aplikacja kliencka używa zwróconego tokenu dostępu JWT, aby dodać ciąg JWT z oznaczeniem "Bearer" w nagłówku autoryzacji żądania do internetowego interfejsu API. Interfejs API sieci Web sprawdza poprawność tokenu JWT i jeśli Walidacja zakończyła się pomyślnie, zwraca żądany zasób.
+1. Gdy token dostępu zostanie wygaśnie, aplikacja kliencka wyświetli błąd, który wskazuje, że użytkownik musi ponownie przeprowadzić uwierzytelnienie. Jeśli aplikacja ma prawidłowy token odświeżania, można go użyć, aby uzyskać nowy token dostępu bez monitowania użytkownika o ponowne zalogowanie. Jeśli token odświeżania wygaśnie, aplikacja będzie musiała interaktywnie uwierzytelnić użytkownika.
 
 > [!NOTE]
-> Token odświeżania wydane przez usługę Azure AD może służyć do dostępu do wielu zasobów. Na przykład jeśli masz aplikację kliencką, która ma uprawnienia do wywołania dwóch interfejsów API sieci web, token odświeżania może służyć do uzyskania dostępu do innych internetowy interfejs API oraz token.
+> Token odświeżania wystawiony przez usługę Azure AD może być używany do uzyskiwania dostępu do wielu zasobów. Na przykład jeśli masz aplikację kliencką, która ma uprawnienia do wywoływania dwóch internetowych interfejsów API, można użyć tokenu odświeżania, aby uzyskać token dostępu do innego internetowego interfejsu API.
 
 ## <a name="code-samples"></a>Przykłady kodu
 
-Zobacz przykłady kodu dla aplikacji natywnej do scenariuszy interfejsu Web API. I wrócić tu często — często dodajemy nowe przykłady. [Aplikacja natywna do internetowego interfejsu API](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
+Zapoznaj się z przykładami kodu dotyczącymi scenariuszy interfejsów API sieci Web aplikacji natywnych. I często sprawdzaj, czy nowe przykłady są często dodawane. [Natywna aplikacja do interfejsu API sieci Web](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
 
 ## <a name="app-registration"></a>Rejestracja aplikacji
 
-Aby zarejestrować aplikację z punktem końcowym usługi Azure AD w wersji 1.0, zobacz [rejestrowanie aplikacji](quickstart-register-app.md).
+Aby zarejestrować aplikację w punkcie końcowym usługi Azure AD v 1.0, zobacz [Rejestrowanie aplikacji](quickstart-register-app.md).
 
-* Pojedynczej dzierżawy - aplikacji natywnej i interfejsu API sieci web musi być zarejestrowana w tym samym katalogu w usłudze Azure AD. Interfejs API sieci web można skonfigurować do udostępnienia zestaw uprawnień, które są używane do ograniczenia aplikacji natywnej dostęp do swoich zasobów. Następnie aplikacja kliencka wybiera odpowiednich uprawnień, z menu rozwijanego "Uprawnienia na inne aplikacje" w witrynie Azure portal.
-* Wielodostępne — najpierw aplikacji natywnej tylko zarejestrowane w dewelopera lub katalog wydawcy. Po drugie natywną aplikację skonfigurowano do wskazania uprawnienia, które wymaga, aby działała prawidłowo. Ta lista wymaganych uprawnień jest wyświetlany w oknie dialogowym po użytkownik lub administrator w katalogu docelowym powoduje zgody aplikacji, która udostępnia je do swojej organizacji. Niektóre aplikacje wymagają tylko uprawnienia na poziomie użytkownika, które każdy użytkownik w organizacji mogą wyrazić zgodę na. Inne aplikacje wymagają uprawnień na poziomie administratora, które użytkownik w organizacji nie może wyrażać zgody na. Tylko administrator katalogu mogą wyrazić zgodę, do aplikacji, które wymagają tego poziomu uprawnień. Gdy użytkownik lub administrator wyraża zgodę, tylko interfejs API sieci web jest zarejestrowany w swojego katalogu. 
+* Pojedyncza dzierżawa — zarówno aplikacja natywna, jak i interfejs API sieci Web, muszą być zarejestrowane w tym samym katalogu w usłudze Azure AD. Internetowy interfejs API można skonfigurować tak, aby uwidaczniał zestaw uprawnień, który służy do ograniczania dostępu do zasobów aplikacji natywnych. Następnie aplikacja kliencka wybiera odpowiednie uprawnienia z menu rozwijanego "uprawnienia do innych aplikacji" w Azure Portal.
+* Wiele dzierżawców — aplikacja natywna kiedykolwiek zarejestrowana tylko w katalogu dewelopera lub wydawcy. Następnie aplikacja natywna jest konfigurowana w celu wskazania uprawnień, które wymagają do działania. Ta lista wymaganych uprawnień jest wyświetlana w oknie dialogowym, gdy użytkownik lub administrator w katalogu docelowym wyrazi zgodę na aplikację, która staje się dostępna dla swojej organizacji. Niektóre aplikacje wymagają tylko uprawnień na poziomie użytkownika, do których można wyrazić zgodę. Inne aplikacje wymagają uprawnień na poziomie administratora, których użytkownik w organizacji nie może wyrazić zgody. Tylko administrator katalogu może wyrazić zgodę na aplikacje, które wymagają tego poziomu uprawnień. Gdy użytkownik lub administrator wyraził zgodę, w swoim katalogu jest zarejestrowany tylko internetowy interfejs API. 
 
 ## <a name="token-expiration"></a>Wygaśnięcie tokenu
 
-Gdy aplikacji natywnej używa jego kod autoryzacji można uzyskać tokenu dostępu JWT, również odbiera token odświeżania tokenu JWT. Po wygaśnięciu token dostępu token odświeżania może służyć do ponownego uwierzytelnienia użytkownika bez konieczności ich ponownego zalogowania. Ten token odświeżania jest następnie używany do uwierzytelniania użytkownika, który skutkuje nowy token dostępu i token odświeżania.
+Gdy aplikacja natywna używa swojego kodu autoryzacji w celu uzyskania tokenu dostępu JWT, odbiera również token odświeżenia tokenu JWT. Po wygaśnięciu tokenu dostępu można go użyć do ponownego uwierzytelnienia użytkownika bez konieczności ponownego logowania. Ten token odświeżania jest następnie używany do uwierzytelniania użytkownika, co powoduje uzyskanie nowego tokenu dostępu i tokenu odświeżania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o innych [typów aplikacji i scenariuszy](app-types.md)
-- Dowiedz się więcej o usłudze Azure AD [podstawowe informacje o uwierzytelnianiu](authentication-scenarios.md)
+- Dowiedz się więcej o innych [typach aplikacji i scenariuszach](app-types.md)
+- Poznaj podstawowe informacje na temat [uwierzytelniania](v1-authentication-scenarios.md) usługi Azure AD

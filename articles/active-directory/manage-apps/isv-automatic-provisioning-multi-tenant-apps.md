@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 11fda31cd06db67e0a11a68a02da8b91a77e04e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c44006b20f4c0ef186f406e554ff555cda0c1dd8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729219"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373392"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Włącz automatyczne Inicjowanie obsługi administracyjnej użytkowników dla aplikacji wielodostępnej
 
@@ -56,7 +56,7 @@ Aplikacje, które wymagają, aby rekord użytkownika był obecny w aplikacji prz
 
 Usługa Azure AD udostępnia kilka ścieżek integracji, które umożliwiają automatyczne Inicjowanie obsługi użytkowników dla aplikacji.
 
-* [Usługa Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) Provisioning zarządza obsługą administracyjną i anulowaniem aprowizacji użytkowników z usługi Azure AD do aplikacji (aprowizacji wychodzące) i z aplikacji do usługi Azure AD (Udostępnianie przychodzące). Usługa nawiązuje połączenie z systemem dla punktów końcowych interfejsu API zarządzania tożsamościami w różnych domenach (standard scim) udostępnianych przez aplikację.
+* [Usługa Azure AD Provisioning](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) zarządza obsługą administracyjną i anulowaniem aprowizacji użytkowników z usługi Azure AD do aplikacji (aprowizacji wychodzące) i z aplikacji do usługi Azure AD (Udostępnianie przychodzące). Usługa nawiązuje połączenie z systemem dla punktów końcowych interfejsu API zarządzania tożsamościami w różnych domenach (standard scim) udostępnianych przez aplikację.
 
 * W przypadku korzystania z [Microsoft Graph](https://docs.microsoft.com/graph/)aplikacja zarządza przychodzącą i wychodzącą aprowizacji użytkowników i grup z usługi Azure AD do aplikacji przez przeszukiwanie interfejsu API Microsoft Graph.
 
@@ -67,8 +67,8 @@ Aby ułatwić określenie opcji integracji, która ma być używana dla aplikacj
 | Możliwości włączone lub ulepszone przez automatyczne Inicjowanie obsługi| Usługa Azure AD Provisioning (standard scim 2,0)| Interfejs API Microsoft Graph (OData v 4.0)| PROTOKÓŁ SAML JIT |
 |---|---|---|---|
 | Zarządzanie użytkownikami i grupami w usłudze Azure AD| √| √| Tylko użytkownik |
-| Zarządzanie użytkownikami i grupami synchronizowanymi z poziomu lokalnego Active Directory| √*| √*| Tylko użytkownik * |
-| Dostęp do danych poza użytkownikami i grupami podczas aprowizacji dostępu do danych usługi O365 (zespoły, SharePoint, Poczta E-mail, kalendarz, dokumenty itp.)| X+| √| X |
+| Zarządzanie użytkownikami i grupami synchronizowanymi z poziomu lokalnego Active Directory| √| √| Tylko użytkownik * |
+| Dostęp do danych poza użytkownikami i grupami podczas aprowizacji dostępu do danych usługi O365 (zespoły, SharePoint, Poczta E-mail, kalendarz, dokumenty itp.)| X +| √| X |
 | Tworzenie, odczytywanie i aktualizowanie użytkowników na podstawie reguł firmy| √| √| √ |
 | Usuwanie użytkowników na podstawie reguł firmy| √| √| X |
 | Zarządzanie automatyczną obsługą użytkowników dla wszystkich aplikacji z Azure Portal| √| X| √ |
@@ -76,20 +76,20 @@ Aby ułatwić określenie opcji integracji, która ma być używana dla aplikacj
 | Obsługa kont gościa (B2B)| √| √| √ |
 | Obsługa kont nienależących do przedsiębiorstwa (B2C)| X| √| √ |
 
-<sup>*</sup>— Konfiguracja Azure AD Connect jest wymagana do synchronizowania użytkowników z usługi AD z usługą Azure AD.  
-<sup>+</sup >— Korzystanie z programu Standard scim do aprowizacji nie wyklucza integracji aplikacji z programem MIcrosoft Graph do innych celów.
+<sup>*</sup> — Azure AD Connect konfiguracja jest wymagana do synchronizowania użytkowników z usługi AD z usługą Azure AD.  
+<sup>+</sup >— użycie Standard scim do aprowizacji nie wyklucza integracji aplikacji z programem Microsoft Graph do innych celów.
 
-## <a name="azure-ad-provisioning-service"></a>Usługa Azure AD Provisioning
+## <a name="azure-ad-provisioning-service-scim"></a>Usługa Azure AD Provisioning (standard scim)
 
-Usługi Azure AD Provisioning korzystają z standard scim, protokołu obsługiwanego przez wielu dostawców tożsamości (dostawców tożsamości). Zalecamy użycie usługi Azure AD Provisioning w celu obsługi dostawców tożsamości oprócz usługi Azure AD, ponieważ wszelkie dostawcy tożsamości zgodne z standard scim mogą łączyć się z punktem końcowym Standard scim.
+Usługi Azure AD Provisioning korzystają z protokołu [Standard scim] (https://aka.ms/SCIMOverview, który jest obsługiwany przez wielu dostawców tożsamości (dostawców tożsamości). Zalecamy użycie usługi Azure AD Provisioning w celu obsługi dostawców tożsamości oprócz usługi Azure AD, ponieważ wszelkie dostawcy tożsamości zgodne z standard scim mogą łączyć się z punktem końcowym Standard scim.
 
 Aby uzyskać więcej informacji o tym, jak użytkownicy usługi Azure AD Provisioning Standard scim, zobacz: 
+
+* [Dowiedz się więcej na temat standardu Standard scim](https://aka.ms/SCIMOverview)
 
 * [Używanie systemu do zarządzania tożsamościami między domenami (standard scim) w celu automatycznego aprowizacji użytkowników i grup z Azure Active Directory do aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 * [Opis implementacji usługi Azure AD Standard scim](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
-
-* [Tworzenie punktu końcowego Standard scim przy użyciu bibliotek interfejsu wiersza polecenia firmy Microsoft](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph do aprowizacji
 

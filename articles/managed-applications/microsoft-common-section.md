@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure elementu interfejsu użytkownika w sekcji | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Common.Section interfejsu użytkownika dla witryny Azure portal.
+title: Element interfejsu użytkownika sekcji platformy Azure | Microsoft Docs
+description: Opisuje element interfejsu użytkownika Microsoft. Common. Section dla Azure Portal. Służy do grupowania elementów w portalu na potrzeby wdrażania aplikacji zarządzanych.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: c89b45dd4d8e6c2964f3d2bcbb6c3cef445c79e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a48c89785e0a448609026aab53364f6cf704e948
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698897"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331654"
 ---
-# <a name="microsoftcommonsection-ui-element"></a>Element Microsoft.Common.Section interfejsu użytkownika
-Formant, który grupuje jeden lub więcej elementów do pozycji.
+# <a name="microsoftcommonsection-ui-element"></a>Microsoft. Common. Section — element interfejsu użytkownika
+Kontrolka, która grupuje co najmniej jeden element w ramach nagłówka.
 
-## <a name="ui-sample"></a>Przykład interfejsu użytkownika
-![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
+## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+![Microsoft. Common. sekcja](./media/managed-application-elements/microsoft.common.section.png)
 
 ## <a name="schema"></a>Schemat
 ```json
@@ -49,18 +49,18 @@ Formant, który grupuje jeden lub więcej elementów do pozycji.
 ```
 
 ## <a name="remarks"></a>Uwagi
-- `elements` musi mieć co najmniej jeden element, a może mieć wszystkich typów elementów, z wyjątkiem `Microsoft.Common.Section`.
-- Ten element nie obsługuje `toolTip` właściwości.
+- `elements` musi mieć co najmniej jeden element i może zawierać wszystkie typy elementów z wyjątkiem `Microsoft.Common.Section`.
+- Ten element nie obsługuje właściwości `toolTip`.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
-Aby uzyskać dostęp do wartości danych wyjściowych elementów w `elements`, użyj [basics()](create-uidefinition-functions.md#basics) lub [steps()](create-uidefinition-functions.md#steps) funkcje i notacji z kropką:
+Aby uzyskać dostęp do wartości wyjściowych elementów w `elements`, użyj [podstawowych ()](create-uidefinition-functions.md#basics) lub [kroków ()](create-uidefinition-functions.md#steps) i notacji kropkowej:
 
 ```json
 steps('configuration').section1.text1
 ```
 
-Elementy typu `Microsoft.Common.Section` mieć nie wartości danych wyjściowych.
+Elementy typu `Microsoft.Common.Section` nie mają samych wartości wyjściowych.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
-* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Następne kroki
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
+* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

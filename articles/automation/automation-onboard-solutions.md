@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: d247369647106cf1671a8770a6dce21f1a34a4b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739638"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372829"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Dołączanie rozwiązań aktualizacji i śledzenia zmian w usłudze Azure Automation
 
@@ -81,7 +81,7 @@ Teraz, gdy rozwiązania są włączone, można dołączyć maszynę wirtualną p
    ![Włączanie rozwiązania Update dla maszyny wirtualnej](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Nie Czekaj, aż inne rozwiązanie do wykonania, gdy włączeniem kolejnego rozwiązania pojawi się komunikat z informacją: *Trwa instalacja innego rozwiązania na tej lub innej maszyny wirtualnej. Po zakończeniu instalacji zostanie włączony przycisk Włącz i można zażądać instalacji rozwiązania na tej maszynie wirtualnej.*
+> Jeśli nie poczekasz na zakończenie innych rozwiązań, podczas włączania następnego rozwiązania pojawi się komunikat z informacją: *Instalacja innego rozwiązania jest w toku na tej lub innej maszynie wirtualnej. Po zakończeniu tej instalacji przycisk Włącz jest włączony i można zażądać instalacji rozwiązania na tej maszynie wirtualnej.*
 
 ## <a name="install-and-update-modules"></a>Instalowanie i aktualizowanie modułów
 
@@ -131,7 +131,14 @@ Aby można było uruchomić ten element runbook, musi być dołączone rozwiąza
 1. Wybierz przycisk **OK**, aby uruchomić zadanie elementu runbook.
 1. Monitoruj postęp oraz wszelkie błędy na stronie zadania elementu runbook.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Aby usunąć maszynę wirtualną z Update Management:
+
+* W obszarze roboczym Log Analytics Usuń maszynę wirtualną z zapisanego wyszukiwania w obszarze Konfiguracja zakresu `MicrosoftDefaultScopeConfig-Updates`. Zapisane wyszukiwania można znaleźć **ogólnie** w obszarze roboczym.
+* Usuń [program Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta log Analytics dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

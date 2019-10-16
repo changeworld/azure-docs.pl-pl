@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd20928816a30ad2843ce6c876bd77152dcd69e1
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001738"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374068"
 ---
-# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji Azure Active Directory
+# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
 W tym artykule pokazano, jak wyświetlić listę aplikacji w galerii aplikacji Azure Active Directory (Azure AD), zaimplementować Logowanie jednokrotne (SSO) i zarządzać listą.
 
@@ -71,7 +71,7 @@ Nasz zespół przegląda szczegóły i zapewnia odpowiednie uzyskanie dostępu. 
 
 Aby wyświetlić listę aplikacji w galerii aplikacji usługi Azure AD, należy najpierw zaimplementować jeden z następujących protokołów federacyjnych obsługiwanych przez usługę Azure AD. Musisz również wyrazić zgodę na warunki i postanowienia galerii aplikacji usługi Azure AD. Przeczytaj warunki i postanowienia galerii aplikacji usługi Azure AD w [tej witrynie sieci Web](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/).
 
-- **OpenID Connect Connect**: aby zintegrować aplikację z usługą Azure AD przy użyciu protokołu połączenia Open ID Connect, postępuj zgodnie z [instrukcjami dla deweloperów](authentication-scenarios.md).
+- **OpenID Connect Connect**: aby zintegrować aplikację z usługą Azure AD przy użyciu protokołu połączenia Open ID Connect, postępuj zgodnie z [instrukcjami dla deweloperów](v1-authentication-scenarios.md).
 
     ![Wyświetlanie aplikacji OpenID Connect Connect w galerii](./media/howto-app-gallery-listing/openid.png)
 
@@ -122,7 +122,7 @@ Oto przepływ aplikacji żądanych przez klienta.
 
 ![Pokazuje przepływ aplikacji żądanych przez klienta](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>osie czasu
+## <a name="timelines"></a>Osi czasu
 
 Oś czasu procesu tworzenia listy aplikacji SAML 2,0 lub WS-karmione w galerii wynosi od 7 do 10 dni roboczych.
 

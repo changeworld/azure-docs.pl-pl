@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: deab527d44713bffed1f430ec283592d0e4232ee
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.date: 10/14/2019
+ms.openlocfilehash: 198ef6889ffb7874c44f15338afbd8b3135ae3ef
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764412"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331318"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorowanie wydajności za pomocą magazynu zapytań
 
@@ -28,11 +28,11 @@ Magazyn zapytań jest funkcją wyboru, dlatego nie jest domyślnie aktywna na se
 ### <a name="enable-query-store-using-the-azure-portal"></a>Włącz magazyn zapytań przy użyciu Azure Portal
 1. Zaloguj się do Azure Portal i wybierz swój serwer Azure Database for PostgreSQL.
 2. Wybierz opcję **parametry serwera** w sekcji **Ustawienia** w menu.
-3. `pg_qs.query_capture_mode` Wyszukaj parametr.
+3. Wyszukaj parametr `pg_qs.query_capture_mode`.
 4. Ustaw wartość na `TOP` i **Zapisz**.
 
 Aby włączyć statystykę oczekiwania w magazynie zapytań: 
-1. `pgms_wait_sampling.query_capture_mode` Wyszukaj parametr.
+1. Wyszukaj parametr `pgms_wait_sampling.query_capture_mode`.
 1. Ustaw wartość na `ALL` i **Zapisz**.
 
 
@@ -58,6 +58,10 @@ Typowe scenariusze korzystania z magazynu zapytań obejmują:
 
 Aby zminimalizować użycie miejsca, statystyki wykonywania środowiska uruchomieniowego w magazynie statystyk środowiska uruchomieniowego są agregowane w ustalonym, konfigurowalnym przedziale czasu. Informacje w tych sklepach są widoczne przez zapytanie dotyczące widoków magazynu zapytań.
 
+## <a name="access-query-store-information"></a>Informacje o magazynie zapytań dostępu
+
+Dane magazynu zapytań są przechowywane w bazie danych azure_sys na serwerze Postgres. 
+
 Następujące zapytanie zwraca informacje o zapytaniach w magazynie zapytań:
 ```sql
 SELECT * FROM query_store.qs_view; 
@@ -67,6 +71,9 @@ Lub to zapytanie dotyczące statystyk oczekiwania:
 ```sql
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
+
+Możesz również emitować dane magazynu zapytań do [dzienników Azure monitor](../azure-monitor/log-query/log-query-overview.md) na potrzeby analiz i alertów, Event Hubs do przesyłania strumieniowego i usługi Azure Storage w celu archiwizacji. Kategorie dzienników do skonfigurowania to **QueryStoreRuntimeStatistics** i **QueryStoreWaitStatistics**. Aby dowiedzieć się więcej na temat instalacji, zobacz artykuł dotyczący [ustawień diagnostycznych Azure monitor](../azure-monitor/platform/diagnostic-settings.md) .
+
 
 ## <a name="finding-wait-queries"></a>Znajdowanie zapytań oczekujących
 Typy zdarzeń oczekiwania łączą różne zdarzenia oczekiwania do zasobników według podobieństwa. Magazyn zapytań zawiera typ zdarzenia oczekiwania, konkretną nazwę zdarzenia oczekiwania i zapytanie, którego dotyczy. Aby skorelować te informacje o poczekaniu z statystykami środowiska uruchomieniowego zapytań, można lepiej zrozumieć, co przyczynia się do charakterystyki wydajności zapytań.
@@ -84,16 +91,16 @@ Po włączeniu magazynu zapytań dane są zapisywane w 15-minutowych oknach agre
 
 Następujące opcje są dostępne na potrzeby konfigurowania parametrów magazynu zapytań.
 
-| **Parametr** | **Opis** | **Domyślne** | **Range**|
+| **Konstruktora** | **Opis** | **Domyślne** | **Zakres**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | Ustawia, które instrukcje są śledzone. | brak | Brak, Góra, wszystkie |
-| pg_qs.max_query_text_length | Ustawia maksymalną długość zapytania, którą można zapisać. Dłuższe zapytania zostaną obcięte. | 6000 | 100 – 10 TYS. |
+| pg_qs. Max _query_text_length | Ustawia maksymalną długość zapytania, którą można zapisać. Dłuższe zapytania zostaną obcięte. | 6000 | 100 – 10 tys. |
 | pg_qs.retention_period_in_days | Ustawia okres przechowywania. | 7 | 1 - 30 |
-| pg_qs.track_utility | Określa, czy polecenia narzędzi są śledzone | włączone | włączone, wyłączone |
+| pg_qs.track_utility | Określa, czy polecenia narzędzi są śledzone | z | włączone, wyłączone |
 
 Poniższe opcje są stosowane w odniesieniu do statystyk oczekiwania.
 
-| **Parametr** | **Opis** | **Domyślne** | **Range**|
+| **Konstruktora** | **Opis** | **Domyślne** | **Zakres**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | Ustawia, które instrukcje są śledzone pod kątem statystyk oczekiwania. | brak | Brak, wszystkie|
 | Pgms_wait_sampling.history_period | Ustaw częstotliwość próbkowania zdarzeń oczekiwania (w milisekundach). | 100 | 1-600000 |
@@ -115,20 +122,20 @@ Ten widok zwraca wszystkie dane w magazynie zapytań. Dla każdego unikatowego i
 |**Nazwa**   |**Typ** | **Wołują**  | **Opis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | Identyfikator z tabeli runtime_stats_entries|
-|user_id    |oid    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcję|
-|db_id  |oid    |pg_database.oid    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
+|user_id    |OID    |pg_authid. OID  |Identyfikator OID użytkownika, który wykonał instrukcję|
+|db_id  |OID    |pg_database. OID    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
 |query_id   |bigint  || Wewnętrzny kod skrótu obliczony na podstawie drzewa analizy instrukcji|
 |query_sql_text |Varchar (10000)  || Tekst deklaracji reprezentatywnej. Różne zapytania o tej samej strukturze są klastrowane ze sobą. Ten tekst jest tekstem dla pierwszych zapytań w klastrze.|
 |plan_id    |bigint |   |Identyfikator planu odpowiadającego temu zapytaniem, nie jest jeszcze dostępny|
-|start_time |timestamp  ||  Zapytania są agregowane według przedziałów czasu — domyślnie jest to 15 minut. Jest to godzina rozpoczęcia odpowiadająca przedziale czasu dla tego wpisu.|
-|end_time   |timestamp  ||  Godzina zakończenia odpowiadająca przedziale czasu dla tego wpisu.|
-|wywołania  |bigint  || Liczba wykonanych zapytań|
+|start_time |sygnatura czasowa  ||  Zapytania są agregowane według przedziałów czasu — domyślnie jest to 15 minut. Jest to godzina rozpoczęcia odpowiadająca przedziale czasu dla tego wpisu.|
+|end_time   |sygnatura czasowa  ||  Godzina zakończenia odpowiadająca przedziale czasu dla tego wpisu.|
+|Rozmowa  |bigint  || Liczba wykonanych zapytań|
 |total_time |Podwójna precyzja   ||  Łączny czas wykonywania zapytania (w milisekundach)|
 |min_time   |Podwójna precyzja   ||  Minimalny czas wykonywania zapytania (w milisekundach)|
 |max_time   |Podwójna precyzja   ||  Maksymalny czas wykonywania zapytania (w milisekundach)|
 |mean_time  |Podwójna precyzja   ||  Średni czas wykonywania zapytania (w milisekundach)|
 |stddev_time|   Podwójna precyzja    ||  Odchylenie standardowe czasu wykonywania zapytania (w milisekundach) |
-|wiersze   |bigint ||  Łączna liczba wierszy pobranych lub dotkniętych przez instrukcję|
+|Wierszy   |bigint ||  Łączna liczba wierszy pobranych lub dotkniętych przez instrukcję|
 |shared_blks_hit|   bigint  ||  Łączna liczba trafień w pamięci podręcznej bloków udostępnionych przez instrukcję|
 |shared_blks_read|  bigint  ||  Łączna liczba bloków udostępnionych odczytywanych przez instrukcję|
 |shared_blks_dirtied|   bigint   || Łączna liczba udostępnionych bloków 'dirtied przez instrukcję |
@@ -155,22 +162,22 @@ Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden 
 
 |**Nazwa**|  **Typ**|   **Wołują**| **Opis**|
 |---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcję|
-|db_id  |oid    |pg_database.oid    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
+|user_id    |OID    |pg_authid. OID  |Identyfikator OID użytkownika, który wykonał instrukcję|
+|db_id  |OID    |pg_database. OID    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
 |query_id   |bigint     ||Wewnętrzny kod skrótu obliczony na podstawie drzewa analizy instrukcji|
-|event_type |text       ||Typ zdarzenia, dla którego zaplecze oczekuje|
-|zdarzenie  |text       ||Nazwa zdarzenia oczekiwania, jeśli obecnie trwa oczekiwanie na zaplecze|
-|wywołania  |Integer        ||Liczba przechwyconych zdarzeń|
+|event_type |tekst       ||Typ zdarzenia, dla którego zaplecze oczekuje|
+|wydarzen  |tekst       ||Nazwa zdarzenia oczekiwania, jeśli obecnie trwa oczekiwanie na zaplecze|
+|Rozmowa  |Liczba całkowita        ||Liczba przechwyconych zdarzeń|
 
 
-### <a name="functions"></a>Funkcje
+### <a name="functions"></a>Functions
 Query_store. qs_reset () zwraca wartość void
 
-`qs_reset` odrzuca wszystkie dane statystyczne zebrane do tej pory przez magazyn zapytań. Tę funkcję można wykonać tylko przez rolę administratora serwera.
+`qs_reset` @ no__t-1discards wszystkie dane statystyczne zebrane do tej pory przez magazyn zapytań. Tę funkcję można wykonać tylko przez rolę administratora serwera.
 
 Query_store. staging_data_reset () zwraca wartość void
 
-`staging_data_reset` odrzuca wszystkie dane statystyczne zebrane w pamięci przez magazyn zapytań (czyli dane w pamięci, które nie zostały jeszcze opróżnione do bazy danych). Tę funkcję można wykonać tylko przez rolę administratora serwera.
+`staging_data_reset` @ no__t-1discards wszystkie dane statystyczne zebrane w pamięci przez magazyn zapytań (czyli dane w pamięci, które nie zostały jeszcze opróżnione do bazy danych). Tę funkcję można wykonać tylko przez rolę administratora serwera.
 
 ## <a name="limitations-and-known-issues"></a>Ograniczenia i znane problemy
 - Jeśli serwer PostgreSQL ma parametr default_transaction_read_only on, magazyn zapytań nie może przechwycić danych.

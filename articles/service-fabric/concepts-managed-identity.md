@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968279"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333124"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Tożsamość zarządzana dla aplikacji Service Fabric (wersja zapoznawcza)
 
@@ -45,7 +45,7 @@ Poniższe terminy są używane w całej zarządzanej tożsamości dla zestawu do
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Obsługiwane scenariusze dla aplikacji Service Fabric
 
-Zarządzane tożsamości dla Service Fabric są obsługiwane tylko w klastrach Service Fabric wdrożonych na platformie Azure i tylko w przypadku aplikacji wdrożonych jako zasoby platformy Azure; do aplikacji, które nie są wdrażane jako zasób platformy Azure, nie można przypisać tożsamości. Koncepcyjnie mówiąc, obsługa zarządzanych tożsamości w klastrze Service Fabric platformy Azure składa się z dwóch faz:
+Zarządzane tożsamości dla Service Fabric są obsługiwane tylko w klastrach Service Fabric wdrożonych na platformie Azure i tylko w przypadku aplikacji wdrożonych jako zasoby platformy Azure; nie można przypisać tożsamości do aplikacji, które nie zostały wdrożone jako zasoby platformy Azure. Koncepcyjnie mówiąc, obsługa zarządzanych tożsamości w klastrze Service Fabric platformy Azure składa się z dwóch faz:
 
 1. Przypisz co najmniej jedną zarządzaną tożsamość do zasobu aplikacji; do aplikacji można przypisać jedną tożsamość przypisaną do systemu i/lub do 32 tożsamości przypisanych do użytkownika.
 
@@ -63,6 +63,8 @@ Lista obsługiwanych scenariuszy dotyczących wersji zapoznawczej jest następuj
 Następujące scenariusze nie są obsługiwane lub nie są zalecane; Uwaga te akcje mogą nie być blokowane, ale mogą powodować awarię aplikacji:
 
    - Usuwanie lub zmiana tożsamości przypisanych do aplikacji; Jeśli musisz wprowadzić zmiany, Prześlij oddzielne wdrożenia, aby najpierw dodać nowe przypisanie tożsamości, a następnie usunąć wcześniej przypisane. Usunięcie tożsamości z istniejącej aplikacji może mieć niepożądane skutki, w tym pozostawienie aplikacji w stanie, który nie jest uaktualniony. Całkowicie można bezpiecznie usunąć aplikację, jeśli konieczne jest usunięcie tożsamości; Uwaga: spowoduje to usunięcie tożsamości przypisanej do systemu (jeśli została zdefiniowana) skojarzonej z aplikacją i spowoduje usunięcie wszelkich skojarzeń z tożsamościami przypisanymi do aplikacji.
+
+   - Obsługa tożsamości zarządzanych nie jest teraz zintegrowana z [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md); Integracja zostanie osiągnięta do końca okresu zapoznawczego dla funkcji zarządzanej tożsamości.
 
 >
 > [!NOTE]

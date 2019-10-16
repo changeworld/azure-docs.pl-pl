@@ -10,18 +10,63 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: da0c674eaf3bc650beae0a05f8f8a0c3613fbeaf
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f51b9c3032518fb66215126c5a8bf26ab9b59526
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177902"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331569"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
 W tym artykule dowiesz się więcej na temat wydań Azure Machine Learning.  Aby uzyskać pełną zawartość referencyjną SDK, odwiedź stronę referencyjną [**głównego zestawu sdk Azure Machine Learning dla języka Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Zapoznaj się z [listą znanych problemów](resource-known-issues.md) , aby dowiedzieć się więcej o znanych usterkach i obejść.
+
+## <a name="2019-10-14"></a>2019-10-14
+
+### <a name="azure-machine-learning-sdk-for-python-v1069"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.69
+
++ **Poprawki i ulepszenia błędów**
+  + **Azure-automl-Core**
+    + Ograniczanie objaśnień modelu do najlepszego przebiegu zamiast obliczania wyjaśnień dla każdego przebiegu. Zmiana tego zachowania na Local, Remote i ADB.
+    + Dodano obsługę wyjaśnień modelu na żądanie dla interfejsu użytkownika
+    + Dodano psutil jako zależność automl i uwzględnione psutil jako zależność Conda w amlcompute.
+    + Rozwiązano problem związany z algorytmem heurystycznego spowolnienia i oknem kroczącym dla danych prognozowania, który określa niektóre serie mogące spowodować błędy algebry liniowe
+      + Dodano drukowanie dla parametrów z algorytmem heurystycznym określonych w przebiegach prognozowania.
+  + **Azure — contrib — datadryf**
+    + Dodano ochronę podczas tworzenia metryk danych wyjściowych, jeśli w pierwszej sekcji nie ma dryfu poziomu zestawu danych.
+  + **Azure-contrib — interpretacja**
+    + Nazwa pakietu "Azure-contrib-wyjaśnij" została zmieniona na "Azure-contrib-Interpretuj"
+  + **Azure — rdzeń**
+    + Dodano interfejs API służący do wyrejestrowywania zestawów danych. `dataset.unregister_all_versions()`
+    + Dodano interfejs API zestawu danych w celu sprawdzenia czasu zmiany danych. `dataset.data_changed_time`.
+    + Możliwość użycia `FileDataset` i `TabularDataset` jako danych wejściowych `PythonScriptStep`, `EstimatorStep` i `HyperDriveStep` w potoku Azure Machine Learning
+    + Ulepszono wydajność `FileDataset.mount` w przypadku folderów zawierających dużą liczbę plików
+    + Dodano adres URL do znanych zaleceń dotyczących błędów w szczegółach uruchomienia.
+    + Naprawiono usterkę w przebiegu. Get _metrics, gdzie żądania mogą zakończyć się niepowodzeniem, Jeśli uruchomienie miało zbyt wiele elementów podrzędnych
+    + Dodano obsługę uwierzytelniania w klastrze Arcadia.
+    + Utworzenie obiektu eksperymentu powoduje pobranie lub utworzenie eksperymentu w obszarze roboczym Azure Machine Learning na potrzeby śledzenia historii uruchamiania. Identyfikator eksperymentu i czas archiwizowany są wypełniane w obiekcie eksperymentu podczas tworzenia. Przykład: eksperyment = eksperyment (obszar roboczy, "nowy eksperyment") experiment_id = experiment.id Archive () i reactivate () są funkcjami, które mogą być wywoływane w ramach eksperymentu w celu ukrycia i przywrócenia eksperymentu z wyświetlania w środowisku użytkownika lub zwrócenia domyślnego w wywołaniu Aby wyświetlić listę eksperymentów. Jeśli zostanie utworzony nowy eksperyment o takiej samej nazwie jak zarchiwizowany eksperyment, można zmienić nazwę zarchiwizowanego eksperymentu podczas ponownej aktywacji, przekazując nową nazwę. Może istnieć tylko jeden aktywny eksperyment o danej nazwie. Przykład: experiment1 = eksperyment (obszar roboczy, "aktywny eksperyment") experiment1. archiwalny () # Utwórz nowy aktywny eksperyment o takiej samej nazwie jak zarchiwizowany. experiment2. = Eksperyment (obszar roboczy, "aktywny eksperyment") experiment1. reactivate (new_name = "Previous Active eksperyment") lista metod statycznych () na Eksperymentie może przyjmować filtr nazw i filtr widoku. Wartości ViewType to "ACTIVE_ONLY", "ARCHIVED_ONLY" i "ALL" przykład: archived_experiments = eksperyment. list (Workspace, view_type = "ARCHIVED_ONLY") all_first_experiments = eksperyment. list (Workspace, Name = "First eksperyment", view_type = "ALL")
+    + Obsługa użycia środowiska do wdrażania modeli i aktualizacji usługi
+  + **Azure — datadryfowanie**
+    + Atrybut show klasy DataDriftDector nie będzie obsługiwał opcjonalnego argumentu "with_details". Atrybut show będzie zawierał tylko współczynnik dryfu danych i udział danych w kolumnach funkcji.
+    + Zmiany zachowania DataDriftDetector atrybutu "get_output":
+      + Parametr wejściowy start_time, end_time jest opcjonalny zamiast obowiązkowy;
+      + nput określonych start_time i/lub end_time z określonym run_id w tym samym wywołaniu spowoduje wyjątek błędu wartości, ponieważ wykluczają się wzajemnie. 
+      + Po wejściu start_time i/lub end_time są zwracane tylko wyniki zaplanowanego uruchomienia; 
+      + Parametr "daily_latest_only" jest przestarzały.
+    + Obsługa pobierania danych wyjściowych z dryfem opartym na DataSet.
+  + **Uczenie maszynowe — wyjaśnienie modelu**
+    + Zmienia nazwę pakietu usługi Uczenie maszynowe-Wyjaśnij, aby obtłumaczyć usługę Azure, zachowując stary pakiet pod kątem zgodności z poprzednimi wersjami
+    + stała usterka automl z nieprzetworzonymi wyjaśnieniami, które nie są domyślnie włączone przy pobieraniu z ExplanationClient
+    + Dodawanie obsługi `ScoringExplainer` do bezpośredniego tworzenia przy użyciu `MimicWrapper`
+  + **Azure — potok — rdzeń**
+    + Zwiększona wydajność tworzenia dużych potoków
+  + **Azure — uczenie rdzeniowe**
+    + Dodano obsługę TensorFlow 2,0 w TensorFlow szacowania
+  + **Uczenie maszynowe — automl**
+    + Uruchomienie przebiegu nadrzędnego nie powiedzie się, jeśli iteracja instalacji nie powiodła się, ponieważ organizacja już ją obsłuży.
+    + Dodano obsługę funkcji Local-Docker i lokalnego Conda na potrzeby eksperymentów AutoML
 
 ## <a name="2019-10-08"></a>2019-10-08
 
@@ -589,7 +634,7 @@ Przywrócono zmianę, która zwiększyła wydajność, ponieważ powodowała to 
     + Prześlij Notes Jupyter jako przebieg. [Dokumentacja interfejsu API](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
     + Publiczna wersja zapoznawcza narzędzia do [wykrywania dryfów danych](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py) za poorednictwem pakietu Azure-contrib-datadryfing ([przykładowe notesy](https://aka.ms/azureml-datadrift-example)). Dryfowanie danych jest jednym z najważniejszych powodów, w których dokładność modelu ulega obniżeniu w miarę upływu czasu. Zdarza się to, gdy dane dostarczane do modelu w środowisku produkcyjnym różnią się od danych, na których jest szkolony model. Narzędzie AML dryfowania danych ułatwia Klientowi monitorowanie dryfowania danych i wysyłanie alertów w przypadku wykrycia dryfu. 
 
-+ **Zmiany powodujące niezgodność**
++ **Istotne zmiany**
 
 + **Poprawki i ulepszenia błędów**
   + RunConfiguration Załaduj i Zapisz obsługuje określenie pełnej ścieżki pliku z pełnymi kopiami zapasowymi dla poprzedniego zachowania.
@@ -702,7 +747,7 @@ Użyj maszyny wirtualnej z notesem jako bezpiecznego, gotowego do użycia w prze
   + Wdrażanie kontenera na urządzeniu z serwerem [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)
   + Poprowadź ocenę danych za pomocą punktu końcowego gRPC z tym [przykładem](https://github.com/Azure-Samples/aml-hardware-accelerated-models)
 
-### <a name="automated-machine-learning"></a>Machine Learning zautomatyzowany
+### <a name="automated-machine-learning"></a>Zautomatyzowane uczenie maszynowe
 
 + Czyszczenie funkcji umożliwiające dynamiczne dodawanie featurizers na potrzeby optymalizacji wydajności. New featurizers: osadzanie pracy, Waga dowodów, kodowanie docelowe, kodowanie tekstu docelowego, odległość klastra
 + Inteligentna CV do obsługi pociągów i prawidłowych podziałów w ramach zautomatyzowanej ML
@@ -817,7 +862,7 @@ Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już ins
 
 ### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure Machine Learning zestawu SDK 1.1.0 przygotowywania danych
 
-+ **Zmiany powodujące niezgodność**
++ **Istotne zmiany**
   + Koncepcja pakietu przygotowywania danych jest przestarzała i nie jest już obsługiwana. Zamiast utrwalać wiele przepływów elementów w jednym pakiecie, można utrwalać przepływy elementów pojedynczo.
     + Przewodnik: [otwieranie i zapisywanie notesu dataflows](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
@@ -1002,7 +1047,7 @@ Azure Machine Learning obliczeń można utworzyć w języku Python przy użyciu 
 > Zalecamy utworzenie nowego obszaru roboczego do użycia Azure Machine Learning COMPUTE. Istnieje zdalna szansa, że użytkownicy próbujący utworzyć Azure Machine Learning obliczeń z istniejącego obszaru roboczego mogą zobaczyć błąd. Istniejące obliczenia w obszarze roboczym powinny nadal funkcjonować bez zmian.
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.2
-+ **Zmiany powodujące niezgodność**
++ **Istotne zmiany**
   + W tej wersji usuwamy obsługę tworzenia maszyny wirtualnej z Azure Machine Learning. Nadal możesz dołączyć istniejącą maszynę wirtualną w chmurze lub zdalny serwer lokalny. 
   + Usuwamy również pomoc techniczną dla usługi Batchai job, która powinna być obsługiwana za pomocą obliczeń Azure Machine Learning teraz.
 
@@ -1022,7 +1067,7 @@ Azure Machine Learning obliczeń można utworzyć w języku Python przy użyciu 
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Azure Machine Learning zestawu SDK 0.5.2 przygotowywania danych
-+ **Zmiany powodujące niezgodność** 
++ **Istotne zmiany** 
   * Zmieniono nazwę `SummaryFunction.N` na `SummaryFunction.Count`.
   
 + **Poprawki błędów**
@@ -1033,7 +1078,7 @@ Azure Machine Learning obliczeń można utworzyć w języku Python przy użyciu 
   * Dzielenie losowe nie powiedzie się, jeśli oryginalny przepływu danych nie ma nazwy  
 
 + **Więcej informacji**
-  * [Zestaw SDK przygotowywania danych Azure Machine Learning](https://aka.ms/data-prep-sdk)
+  * [Zestaw SDK przygotowywania danych usługi Azure Machine Learning](https://aka.ms/data-prep-sdk)
 
 ### <a name="docs-and-notebooks"></a>Dokumenty i notesy
 + Potoki ML
@@ -1060,7 +1105,7 @@ Azure Machine Learning obliczeń można utworzyć w języku Python przy użyciu 
 
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Zestaw Azure Machine Learning SDK dla języka Python v 0.1.80
 
-+ **Zmiany powodujące niezgodność** 
++ **Istotne zmiany** 
   * Przestrzeń nazw " *Azure. uczenie. widgets* " została przeniesiona do programu *Azure. widgets*.
   * na stronie *Azure. Core. COMPUTE. AmlCompute* są używane następujące klasy: *Azure. Core. COMPUTE. BatchAICompute* i *Azure. Core. COMPUTE. DSVMCompute*. Druga klasa zostanie usunięta w kolejnych wersjach. Klasa AmlCompute ma teraz łatwiejszą definicję, a po prostu wymaga vm_size i max_nodes, a następnie automatycznie skaluje klaster od 0 do max_nodes, gdy zadanie zostanie przesłane. Nasze [przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) zostały zaktualizowane o te informacje i powinny być podane przykłady użycia. Mamy nadzieję, że podoba Ci się to uproszczenie i wiele bardziej atrakcyjnych funkcji, które są dostępne w nowszej wersji.
 
@@ -1101,7 +1146,7 @@ Azure Portal dla Azure Machine Learning mają następujące aktualizacje:
 
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Zestaw Azure Machine Learning SDK dla języka Python v 0.1.74
 
-+ **Zmiany powodujące niezgodność** 
++ **Istotne zmiany** 
   * \* Workspace. compute_targets, magazyny danych, eksperymenty, obrazy, modele i *usługi WebService* są właściwościami, a nie metodami. Na przykład Zastąp *obszar roboczy. compute_targets ()* z *obszarem roboczym. compute_targets*.
   * *Uruchom. Pobierz _CONTEXT* przestarzałe *Uruchom. Get _submitted_run*. Ta Ostatnia metoda zostanie usunięta w kolejnych wersjach.
   * Klasa *PipelineData* teraz oczekuje obiektu magazynu danych jako parametru, a nie datastore_name. Podobnie *potok* akceptuje default_datastore zamiast default_datastore_name.
@@ -1151,7 +1196,7 @@ Azure Portal dla Azure Machine Learning mają następujące aktualizacje:
 
 Zapoznaj się z [listą znanych problemów](resource-known-issues.md) , aby dowiedzieć się więcej o znanych usterkach i obejść.
 
-+ **Zmiany powodujące niezgodność**
++ **Istotne zmiany**
   * Przestrzeń robocza. eksperymenty, przestrzeń robocza. modele, obszar roboczy. compute_targets, obszar roboczy. obrazy, obszar roboczy. Web _services Return dictionary, wcześniej zwrócona lista. Zobacz dokumentację interfejsu API usługi [Azure. Core. Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) .
 
   * Zautomatyzowany Machine Learning usunął znormalizowany błąd średniego kwadratu z podstawowych metryk.
@@ -1208,4 +1253,4 @@ Nowe, odświeżone wydanie Azure Machine Learning: Przeczytaj więcej na temat t
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z omówieniem [Azure Machine Learning](../service/overview-what-is-azure-ml.md).
+Zapoznaj się z omówieniem usługi [Azure Machine Learning](../service/overview-what-is-azure-ml.md).

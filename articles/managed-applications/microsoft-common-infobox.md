@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure elementu interfejsu użytkownika w pole informacyjne | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Common.TextBlock interfejsu użytkownika dla witryny Azure portal.
+title: Element interfejsu użytkownika usługi Azure InfoBox | Microsoft Docs
+description: Opisuje element interfejsu użytkownika Microsoft. Common. InfoBox dla Azure Portal. Służy do dodawania tekstu lub ostrzeżeń podczas wdrażania aplikacji zarządzanej.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2330197b4512dfdd72de3529145103b644594e25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67ae05c2ec7b36d76e49f26d5765bbc68b952292
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711213"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331684"
 ---
-# <a name="microsoftcommoninfobox-ui-element"></a>Element Microsoft.Common.InfoBox interfejsu użytkownika
-Formant, który dodaje pole informacyjne. Pole zawiera tekst ważne lub ostrzeżenia, które pomagają użytkownikom zrozumienie wartości, które zwracają się. Można go także połączyć z identyfikatora URI, aby uzyskać więcej informacji.
+# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft. Common. InfoBox — element interfejsu użytkownika
+Kontrolka, która dodaje pole informacji. Pole zawiera ważny tekst lub ostrzeżenia, które pomagają użytkownikom zrozumieć, jakie wartości zapewniają. Może także połączyć się z identyfikatorem URI, aby uzyskać więcej informacji.
 
-## <a name="ui-sample"></a>Przykład interfejsu użytkownika
-![Microsoft.Common.InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
+## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+![Microsoft. Common. InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
 
 
 ## <a name="schema"></a>Schemat
@@ -43,8 +43,8 @@ Formant, który dodaje pole informacyjne. Pole zawiera tekst ważne lub ostrzeż
 
 ## <a name="remarks"></a>Uwagi
 
-* Dla `icon`, użyj **Brak**, **informacje**, **ostrzeżenie**, lub **błąd**.
-* `uri` Właściwość jest opcjonalna.
+* W przypadku `icon` użyj wartości **none**, **info**, **Warning**lub **Error**.
+* Właściwość `uri` jest opcjonalna.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
@@ -52,6 +52,6 @@ Formant, który dodaje pole informacyjne. Pole zawiera tekst ważne lub ostrzeż
 "Nullam eros mi, mollis in sollicitudin non, tincidunt sed enim. Sed et felis metus, rhoncus ornare nibh. Ut at magna leo."
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
-* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Następne kroki
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
+* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

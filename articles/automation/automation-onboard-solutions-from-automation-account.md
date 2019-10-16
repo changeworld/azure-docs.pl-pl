@@ -9,18 +9,18 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3c27c268ed2a1c369c9b42bd1cd5a2365547c52f
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: e117c6f8aa8526392678f37a05ec61b55983a1c7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667457"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374440"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączanie rozwiązań Update Management, Change Tracking i spisu
 
 Azure Automation udostępnia rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenia zmian i spisu, co jest zainstalowane na komputerach. Istnieje wiele sposobów na dołączenie maszyn, można dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [przeglądać wiele maszyn](automation-onboard-solutions-from-browse.md), z poziomu konta usługi Automation lub przez [element Runbook](automation-onboard-solutions.md). W tym artykule opisano dołączanie tych rozwiązań z konta usługi Automation.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 
@@ -53,9 +53,9 @@ Każde rozwiązanie korzysta z konfiguracji zakresu w obszarze roboczym, aby kie
 
 Jeśli wybrany obszar roboczy nie ma jeszcze rozwiązań Update Management ani Change Tracking, zostaną utworzone następujące konfiguracje zakresów:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+* **MicrosoftDefaultScopeConfig — śledzenia zmian**
 
-* **MicrosoftDefaultScopeConfig-Updates**
+* **MicrosoftDefaultScopeConfig — aktualizacje**
 
 Jeśli wybrany obszar roboczy ma już rozwiązanie, rozwiązanie nie zostanie jeszcze wdrożone i nie zostanie do niego dodana konfiguracja zakresu.
 
@@ -65,7 +65,7 @@ Po dodaniu komputera do Update Management lub rozwiązań Change Tracking i spis
 
 Przejdź do konta usługi Automation i wybierz pozycję **zapisane wyszukiwania** w obszarze **Ogólne**. Dwa zapisane wyszukiwania używane przez te rozwiązania można zobaczyć w poniższej tabeli:
 
-|Name (Nazwa)     |Kategoria  |Alias  |
+|Nazwa     |Kategoria  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Śledzenia zmian       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizacje        | Updates__MicrosoftDefaultComputerGroup         |
@@ -116,7 +116,7 @@ Następujące rozwiązania zależą od obszaru roboczego Log Analytics:
 
 * [Zarządzanie aktualizacjami](automation-update-management.md)
 * [Śledzenie zmian](automation-change-tracking.md)
-* [Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami pracy](automation-solution-vm-management.md)
+* [Start/Stop VMs during off-hours](automation-solution-vm-management.md)
 
 Jeśli zdecydujesz, że nie chcesz już integrować konta usługi Automation z obszarem roboczym Log Analytics, możesz odłączyć swoje konto bezpośrednio od Azure Portal.  Przed kontynuowaniem należy najpierw usunąć wymienione wcześniej rozwiązania. w przeciwnym razie proces ten nie zostanie zablokowany. Zapoznaj się z artykułem dotyczącym określonego rozwiązania, które zostało zaimportowane, aby poznać kroki wymagane do jego usunięcia.
 
@@ -148,6 +148,13 @@ Jeśli użyto opcji Uruchom i Zatrzymaj maszyny wirtualne w rozwiązaniu off-god
 * Zmienne
 
 Możesz również odłączyć obszar roboczy od konta usługi Automation z poziomu obszaru roboczego Log Analytics. W obszarze roboczym wybierz pozycję **konto usługi Automation** w obszarze **powiązane zasoby**. Na stronie konto usługi Automation wybierz opcję **Odłącz konto**.
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Aby usunąć maszynę wirtualną z Update Management:
+
+* W obszarze roboczym Log Analytics Usuń maszynę wirtualną z zapisanego wyszukiwania w obszarze Konfiguracja zakresu `MicrosoftDefaultScopeConfig-Updates`. Zapisane wyszukiwania można znaleźć **ogólnie** w obszarze roboczym.
+* Usuń [program Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta log Analytics dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Następne kroki
 

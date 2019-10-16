@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9e0afd26b46fc6249b697c38983b9c219c42b1a0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 34b26dd1b9b8990da9e84c8d7cfc993d8bbe85a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845477"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376307"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrowanie obciążeń przy użyciu rozciągniętych sieci warstwy 2
 
@@ -57,10 +57,10 @@ W poniższej tabeli wymieniono obsługiwane wersje vSphere i typy adapterów sie
 
 | wersja vSphere | Typ źródłowego przełącznika vSwitch | Sterownik wirtualnej karty sieciowej | Docelowy typ przełącznika vSwitch | Obsługiwane? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Wszyscy | USŁUGA | Wszyscy | USŁUGA | Tak |
-| vSphere 6,7 UI lub nowszy, 6.5 P03 lub nowszy | USŁUGA | VMXNET3 | N-VDS | Tak |
-| vSphere 6,7 UI lub nowszy, 6.5 P03 lub nowszy | USŁUGA | E1000 | N-VDS | [Nieobsługiwane na VWware](https://kb.vmware.com/s/article/56991) |
-| vSphere 6,7 UI lub 6.5 P03, NSX-V lub wersje poniżej NSX-T 2.2, 6.5 P03 lub nowszy | Wszyscy | Wszyscy | N-VDS | [Nieobsługiwane na VWware](https://kb.vmware.com/s/article/56991) |
+| Wszystko | Usługa | Wszystko | Usługa | Tak |
+| vSphere 6,7 UI lub nowszy, 6.5 P03 lub nowszy | Usługa | VMXNET3 | N-VDS | Tak |
+| vSphere 6,7 UI lub nowszy, 6.5 P03 lub nowszy | Usługa | E1000 | N-VDS | [Nieobsługiwane na VWware](https://kb.vmware.com/s/article/56991) |
+| vSphere 6,7 UI lub 6.5 P03, NSX-V lub wersje poniżej NSX-T 2.2, 6.5 P03 lub nowszy | Wszystko | Wszystko | N-VDS | [Nieobsługiwane na VWware](https://kb.vmware.com/s/article/56991) |
 
 Od wersji programu VMware NSX-T 2,3:
 
@@ -76,7 +76,7 @@ Aby uzyskać więcej informacji, zobacz [wirtualne sieci prywatne](https://docs.
 | **Element** | **Wartość** |
 |------------|-----------------|
 | Nazwa sieci | MGMT_NET_VLAN469 |
-| VLAN | 469 |
+| OKREŚLONE | 469 |
 | CIDR| 10.250.0.0/24 |
 | Adres IP autonomicznego urządzenia brzegowego | 10.250.0.111 |
 | Adres IP samodzielnego urządzenia brzegowego | 192.227.85.167 |
@@ -85,7 +85,7 @@ Aby uzyskać więcej informacji, zobacz [wirtualne sieci prywatne](https://docs.
 
 | **Element** | **Wartość** |
 |------------|-----------------|
-| VLAN | 472 |
+| OKREŚLONE | 472 |
 | CIDR| 10.250.3.0/24 |
 
 ### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Schemat IP chmury prywatnej dla routera NSX-T tier0 (usługa sieci VPN L2)
@@ -101,22 +101,22 @@ Aby uzyskać więcej informacji, zobacz [wirtualne sieci prywatne](https://docs.
 
 | **Element** | **Wartość** |
 |------------|-----------------|
-| VLAN | 712 |
+| OKREŚLONE | 712 |
 | CIDR| 10.200.15.0/24 |
 
 ## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>Pobieranie identyfikatora routera logicznego wymaganego przez L2VPN
 
 Poniższe kroki pokazują, jak pobrać identyfikator routera logicznego usługi tier0 DR dla usług IPsec i L2VPN. Identyfikator routera logicznego jest potrzebny później podczas implementowania L2VPN.
 
-1. Zaloguj się do NSX-t Manager https://*NSX-T-Manager-IP-Address* i wybierz pozycję **Network** > **routers** > **Provider-LR** > —**Przegląd**. W obszarze **tryb wysokiej dostępności**wybierz pozycję **aktywne-w stanie wstrzymania**. Ta akcja powoduje otwarcie okna podręcznego, w którym jest wyświetlana maszyna wirtualna, na której znajduje się router tier0.
+1. Zaloguj się do NSX-T Manager https://*NSX-T-Manager-IP-Address* i wybierz pozycję **Networking** > **routery** > **dostawca-LR**@no__t **-6.** W obszarze **tryb wysokiej dostępności**wybierz pozycję **aktywne-w stanie wstrzymania**. Ta akcja powoduje otwarcie okna podręcznego, w którym jest wyświetlana maszyna wirtualna, na której znajduje się router tier0.
 
     ![Wybierz pozycję aktywne — wstrzymanie](media/l2vpn-fetch01.png)
 
-2. Wybierz**krawędzie** **węzłów** > sieciszkieletowej > . Zanotuj adres IP zarządzania aktywnej maszyny wirtualnej brzegowej (Edge VM1) zidentyfikowany w poprzednim kroku.
+2. Wybierz pozycję **Sieć szkieletowa** > **węzły** > **krawędzi**. Zanotuj adres IP zarządzania aktywnej maszyny wirtualnej brzegowej (Edge VM1) zidentyfikowany w poprzednim kroku.
 
     ![Adres IP zarządzania uwagami](media/l2vpn-fetch02.png)
 
-3. Otwórz sesję SSH na adres IP zarządzania dla maszyny wirtualnej brzegowej. Uruchom polecenie z nazwą użytkownika **admin** i hasłem **CloudSimple 123!.** ```get logical-router```
+3. Otwórz sesję SSH na adres IP zarządzania dla maszyny wirtualnej brzegowej. Uruchom polecenie ```get logical-router``` z nazwą użytkownika **admin** i hasłem **CloudSimple 123!** .
 
     ![Pobieranie danych wyjściowych routera logicznego](media/l2vpn-fetch03.png)
 
@@ -130,14 +130,14 @@ Poniższe kroki pokazują, jak pobrać identyfikator routera logicznego usługi 
 
     ![Dołącz przełącznik fikcyjny](media/l2vpn-fetch05.png)
 
-7. Ponownie uruchom `get logical-router` polecenie w sesji SSH maszyny wirtualnej brzegowej. Zostanie wyświetlony identyfikator UUID routera logicznego "DR-Provider-LR". Zanotuj identyfikator UUID, który jest wymagany podczas konfigurowania L2VPN.
+7. Uruchom ponownie polecenie `get logical-router` w sesji SSH maszyny wirtualnej brzegowej. Zostanie wyświetlony identyfikator UUID routera logicznego "DR-Provider-LR". Zanotuj identyfikator UUID, który jest wymagany podczas konfigurowania L2VPN.
 
     ![Pobieranie danych wyjściowych routera logicznego](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Pobieranie identyfikatora przełącznika logicznego wymaganego przez L2VPN
 
 1. Zaloguj się do [Menedżera NSX-T](https://nsx-t-manager-ip-address).
-2. Wybierz > **przełączniki**przełączaniasieci > > * * < \Logical Switch > \ * * > **Przegląd**.
+2. Wybieranie **sieci** > **przełączanie** > **przełączników** > * * < \Logical Switch @ No__t-5 * * > **Przegląd**.
 3. Zanotuj identyfikator UUID przełącznika logicznego rozciąganego, który jest wymagany podczas konfigurowania L2VPN.
 
     ![Pobieranie danych wyjściowych routera logicznego](media/l2vpn-fetch-switch01.png)
@@ -154,20 +154,20 @@ Aby nawiązać połączenie sieci VPN opartej na trasach IPsec między routerem 
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Anonsuj adres IP interfejsu sprzężenia zwrotnego w sieci underlay
 
-1. Utwórz trasę o wartości null dla sieci interfejsu sprzężenia zwrotnego. Zaloguj się do Menedżera NSX-T i wybierz pozycję **Network** > **Routing** > **routers** > **Provider-LR** > **Routing** > **static Routes**. Kliknij przycisk **Dodaj**. W polu **Sieć**wprowadź adres IP interfejsu sprzężenia zwrotnego. W przypadku **następnych przeskoków**kliknij przycisk **Dodaj**, określ wartość "null" dla następnego przeskoku i pozostaw wartość domyślną 1 dla opcji Odległość dla administratorów.
+1. Utwórz trasę o wartości null dla sieci interfejsu sprzężenia zwrotnego. Zaloguj się do Menedżera NSX-T i wybierz pozycję **sieć**@no__t-**1 Routing** > **routery** > **Provider-LR** > **Routing** > **trasy statyczne**. Kliknij pozycję **Add** (Dodaj). W polu **Sieć**wprowadź adres IP interfejsu sprzężenia zwrotnego. W przypadku **następnych przeskoków**kliknij przycisk **Dodaj**, określ wartość "null" dla następnego przeskoku i pozostaw wartość domyślną 1 dla opcji Odległość dla administratorów.
 
     ![Dodawanie trasy statycznej](media/l2vpn-routing-security01.png)
 
-2. Utwórz listę prefiksów IP. Zaloguj się do Menedżera NSX-T i wybierz kolejno**pozycje Routing** >  **sieci** > **routery** > **dostawcy — LR** > **Routing** > **adresów IP**. Kliknij przycisk **Dodaj**. Wprowadź nazwę, aby zidentyfikować listę. W przypadku **prefiksów**kliknij dwukrotnie przycisk **Dodaj** . W pierwszym wierszu wprowadź wartość "0.0.0.0/0" dla **sieci** i "Odmów" dla **akcji**. W drugim wierszu wybierz **dowolne** dla **sieci** i **Zezwalaj** na **działanie**.
+2. Utwórz listę prefiksów IP. Zaloguj się do Menedżera NSX-T i wybierz pozycję **sieć**@no__t-**1 Routing**@no__t-**3 routery** > **Provider-LR** > **Routing** > **list prefiksów IP**. Kliknij pozycję **Add** (Dodaj). Wprowadź nazwę, aby zidentyfikować listę. W przypadku **prefiksów**kliknij dwukrotnie przycisk **Dodaj** . W pierwszym wierszu wprowadź wartość "0.0.0.0/0" dla **sieci** i "Odmów" dla **akcji**. W drugim wierszu wybierz **dowolne** dla **sieci** i **Zezwalaj** na **działanie**.
 3. Dołącz listę prefiksów IP do sąsiadów BGP (TOR). Dołączanie listy prefiksów IP do sąsiada BGP uniemożliwia anonsowanie trasy domyślnej w protokole BGP do przełączników TOR. Jednak każda inna trasa obejmująca trasę o wartości null anonsuje adres IP interfejsu sprzężenia zwrotnego z przełącznikami TOR.
 
     ![Utwórz listę prefiksów IP](media/l2vpn-routing-security02.png)
 
-4. Logowanie do Menedżera NSX-T i wybieranie dostawcy**routerów** > **routingu** >  **sieci** >  **— LR** > **Routing** > **BGP**  >  **Sąsiedzi**. Wybierz pierwszy sąsiada. Kliknij pozycję **Edytuj** > **rodziny adresów**. W przypadku rodziny IPv4 należy edytować kolumnę **out Filter** i wybrać utworzoną przez siebie listę prefiksów IP. Kliknij polecenie **Zapisz**. Powtórz ten krok dla drugiego sąsiada.
+4. Zaloguj się do Menedżera NSX-T i wybierz pozycję **sieć** > **Routing**@no__t-**3 routery** > **Provider-LR** > **Routing** > **BGP**1**sąsiadów**. Wybierz pierwszy sąsiada. Kliknij pozycję **edytuj** > **rodziny adresów**. W przypadku rodziny IPv4 należy edytować kolumnę **out Filter** i wybrać utworzoną przez siebie listę prefiksów IP. Kliknij przycisk **Save** (Zapisz). Powtórz ten krok dla drugiego sąsiada.
 
-    ![Dołącz prefiks IP lista 1](media/l2vpn-routing-security03.png) ![dołączanie prefiksu IP lista 2](media/l2vpn-routing-security04.png)
+    ![Attach prefiks IP lista 1 @ no__t-1 ![Attach IP prefiks lista 2 @ no__t-3
 
-5. Dystrybuuj ponownie wartość null statycznej trasy do protokołu BGP. Aby anonsować trasę interfejsu sprzężenia zwrotnego z underlay, należy ponownie przeprowadzić dystrybucję wartości null statycznej trasy do protokołu BGP. Logowanie do Menedżera NSX-T i wybieranie**dostawcy** > **routerów** > **routingu** >  **sieci** > — > **Redystrybucja tras** LR  >  **Sąsiedzi**. Wybierz pozycję **Provider-LR-Route_Redistribution** , a następnie kliknij pozycję **Edytuj**. Zaznacz pole wyboru **statycznego** , a następnie kliknij przycisk **Zapisz**.
+5. Dystrybuuj ponownie wartość null statycznej trasy do protokołu BGP. Aby anonsować trasę interfejsu sprzężenia zwrotnego z underlay, należy ponownie przeprowadzić dystrybucję wartości null statycznej trasy do protokołu BGP. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **trasy redystrybucyjne**1**sąsiadów**. Wybierz pozycję **Provider-LR-Route_Redistribution** , a następnie kliknij pozycję **Edytuj**. Zaznacz pole wyboru **statycznego** , a następnie kliknij przycisk **Zapisz**.
 
     ![Ponowne dystrybuowanie zerowej trasy statycznej do protokołu BGP](media/l2vpn-routing-security05.png)
 
@@ -195,7 +195,7 @@ Logical-Port ID :
 Peer Code :
 ```
 
-Dla wszystkich poniższych wywołań interfejsu API Zastąp adres IP adresem IP Menedżera NSX-T. Można uruchomić wszystkie te wywołania interfejsu API z klienta programu Poster lub przy użyciu `curl` poleceń.
+Dla wszystkich poniższych wywołań interfejsu API Zastąp adres IP adresem IP Menedżera NSX-T. Można uruchomić wszystkie te wywołania interfejsu API z klienta programu POSTer lub za pomocą poleceń `curl`.
 
 ### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>Włącz usługę IPSec sieci VPN na routerze logicznym
 
@@ -211,7 +211,7 @@ POST   https://192.168.110.201/api/v1/vpn/ipsec/services/
 }
 ```
 
-### <a name="create-profiles-ike"></a>Utwórz profile: SZYFROWANIE
+### <a name="create-profiles-ike"></a>Tworzenie profilów: IKE
 
 ```
 POST https://192.168.110.201/api/v1/vpn/ipsec/ike-profiles
@@ -240,7 +240,7 @@ POST  https://192.168.110.201/api/v1/vpn/ipsec/dpd-profiles
 }
 ```
 
-### <a name="create-profiles-tunnel"></a>Utwórz profile: Drugiej
+### <a name="create-profiles-tunnel"></a>Tworzenie profilów: tunel
 
 ```
 POST  https://192.168.110.201/api/v1/vpn/ipsec/tunnel-profiles
@@ -430,7 +430,7 @@ Przed wdrożeniem upewnij się, że lokalne reguły zapory zezwalają na ruch pr
 
 2. Przejdź do folderu zawierającego wszystkie wyodrębnione pliki. Wybierz wszystkie VMDK (NSX-l2t-Client-Large. MF i NSX-l2t-client-large. OVF dla dużego rozmiaru urządzenia lub NSX-l2t-Client-xlarge. MF i NSX-l2t-client-Xlarge. OVF dla dodatkowego rozmiaru urządzenia o dużym rozmiarze). Kliknij przycisk **Dalej**.
 
-    ![](media/l2vpn-deploy-client02.png) Wybierz szablon Wybierzszablon![](media/l2vpn-deploy-client03.png)
+    ![Select Template @ no__t-1 ![Select Template @ no__t-3
 
 3. Wprowadź nazwę klienta autonomicznego NSX-T i kliknij przycisk **dalej**.
 
@@ -438,7 +438,7 @@ Przed wdrożeniem upewnij się, że lokalne reguły zapory zezwalają na ruch pr
 
 4. Kliknij przycisk **dalej** , aby uzyskać dostęp do ustawień magazynu danych. Wybierz odpowiedni magazyn danych dla klienta autonomicznego NSX-T i kliknij przycisk **dalej**.
 
-    ![Wybierz magazyn danych](media/l2vpn-deploy-client06.png)
+    ![Wybieranie magazynu danych](media/l2vpn-deploy-client06.png)
 
 5. Wybierz odpowiednie grupy portów dla magistrali sieci (magistrala PG), publicznego (pasma PG) i wysokiej dostępności (pasma) dla klienta autonomicznego NSX-T. Kliknij przycisk **Dalej**.
 
@@ -460,8 +460,7 @@ Przed wdrożeniem upewnij się, że lokalne reguły zapory zezwalają na ruch pr
     * **Długość prefiksu**. Wprowadź długość prefiksu sieci VLAN/podsieci.
     * **Administrator interfejsu wiersza polecenia/Włącz/hasło użytkownika root**. Ustaw hasło dla konta admin/Enable/root.
 
-      ![](media/l2vpn-deploy-client08.png)
-      Dostosuj![szablon Dostosuj szablon — więcej](media/l2vpn-deploy-client09.png)
+      ![Customize Template @ no__t-1 @ no__t-2Customize Template-więcej @ no__t-3
 
 7. Przejrzyj ustawienia i kliknij przycisk **Zakończ**.
 

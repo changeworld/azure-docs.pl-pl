@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 5d21d3800655cc0be78a2b63d13a3616b1d0f2f8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147360"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372715"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Używanie routingu komunikatów IoT Hub do wysyłania komunikatów z urządzenia do chmury do różnych punktów końcowych
 
@@ -79,7 +79,7 @@ Podczas routingu do magazynu obiektów BLOB zalecamy zarejestrowanie obiektów b
 
 Kolejki Service Bus i tematy używane jako punkty końcowe IoT Hub nie mogą mieć włączonej **sesji** lub **wykrywania duplikatów** . Jeśli jedna z tych opcji jest włączona, punkt końcowy jest wyświetlany jako **nieosiągalny** w Azure Portal.
 
-### <a name="event-hubs"></a>Event Hubs
+### <a name="event-hubs"></a>Centra zdarzeń
 
 Oprócz wbudowanego punktu końcowego zgodnego z Event Hubs można również kierować dane do niestandardowych punktów końcowych typu Event Hubs. 
 
@@ -115,7 +115,13 @@ Oprócz danych telemetrycznych urządzenia Routing komunikatów umożliwia równ
 
 Podczas tworzenia nowej trasy lub edytowania istniejącej trasy należy przetestować zapytanie trasy z przykładowym komunikatem. Możesz testować poszczególne trasy lub testować wszystkie trasy jednocześnie, a żadne komunikaty nie są kierowane do punktów końcowych podczas testu. Do testowania można używać Azure Portal, Azure Resource Manager, Azure PowerShell i interfejsu wiersza polecenia platformy Azure. Wyniki ułatwiają określenie, czy przykładowy komunikat pasuje do zapytania, komunikat niezgodny z zapytaniem lub test nie mógł zostać uruchomiony z powodu niepoprawnej składni przykładowego komunikatu lub zapytania. Aby dowiedzieć się więcej, zobacz [testowanie trasy](/rest/api/iothub/iothubresource/testroute) i [testowanie wszystkich tras](/rest/api/iothub/iothubresource/testallroutes).
 
-## <a name="latency"></a>Czas oczekiwania
+## <a name="ordering-guarantees-with-at-least-once-delivery"></a>Określanie kolejności gwarancji z co najmniej raz na dostarczenie
+
+IoT Hub Routing komunikatów gwarantuje uporządkowaną i co najmniej raz dostarczenie komunikatów do punktów końcowych. Oznacza to, że mogą istnieć zduplikowane komunikaty, a serie komunikatów mogą być ponownie przesyłane z zastosowaniem oryginalnej kolejności wiadomości. Na przykład jeśli oryginalna kolejność wiadomości to [1, 2, 3, 4], można otrzymać sekwencję komunikatów podobną do [1, 2, 1, 2, 3, 1, 2, 3, 4]. Gwarancja porządkowania polega na tym, że jeśli kiedykolwiek otrzymasz komunikat [1], zawsze będzie miało [2, 3, 4].
+
+W celu obsługi duplikatów komunikatów Zalecamy umieszczenie unikatowego identyfikatora we właściwościach aplikacji komunikatu w punkcie pochodzenia, który jest zwykle urządzeniem lub modułem. Usługa korzystająca z komunikatów może obsługiwać duplikaty komunikatów przy użyciu tego identyfikatora.
+
+## <a name="latency"></a>Opóźnienie
 
 W przypadku przesyłania komunikatów telemetrycznych z urządzenia do chmury przy użyciu wbudowanych punktów końcowych istnieje niewielkie zwiększenie opóźnienia po utworzeniu pierwszej trasy.
 

@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 4941e7af000e97e4ace0a9e90a187ed92409942d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1ed1b105f64d109284de441af1bcaee5f0827d75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264645"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331360"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Przydziały IoT Hub i ograniczanie przepustowości
 
@@ -95,7 +95,7 @@ IoT Hub wymusza inne limity operacyjne:
 
 | Operacja | Limit |
 | --------- | ----- |
-| Urządzenia | Maksymalna liczba urządzeń, które można połączyć z pojedynczym Centrum IoT Hub, to 1 000 000. Jedynym sposobem zwiększenia tego limitu jest skontaktowanie się z [Pomoc techniczna firmy Microsoft](https://azure.microsoft.com/support/options/).|
+| Urządzenia | Łączna liczba urządzeń i modułów, które mogą być zarejestrowane w pojedynczym Centrum IoT Hub, jest ograniczona do 1 000 000. Jedynym sposobem zwiększenia tego limitu jest skontaktowanie się z [Pomoc techniczna firmy Microsoft](https://azure.microsoft.com/support/options/).|
 | Operacje przekazywania plików | 10 współbieżnych przekazywania plików na urządzenie. |
 | Zadania<sup>1</sup> | Maksymalna liczba współbieżnych zadań to 1 (za darmo i S1), 5 (dla S2) i 10 (dla S3). Maksymalne współbieżne [zadania importowania/eksportowania urządzeń](iot-hub-bulk-identity-mgmt.md) mają jednak wartość 1 dla wszystkich warstw. <br/>Historia zadania jest przechowywana do 30 dni. |
 | Dodatkowe punkty końcowe | Płatne centra jednostek SKU mogą mieć 10 dodatkowych punktów końcowych. Bezpłatne centra SKU mogą mieć jeden dodatkowy punkt końcowy. |

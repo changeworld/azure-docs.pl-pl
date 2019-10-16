@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/22/2019
+ms.date: 10/03/2019
 ms.author: atsenthi
-ms.openlocfilehash: 0bc8a5bbecc4e7d58265e9c10c2c8a3351fcc312
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: cc77995e12d756c5878ee62ef6dd0f0229506d4c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036012"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333068"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Aby kompilować i uruchamiać [aplikacje Service Fabric platformy Azure][1] na k
 ### <a name="supported-operating-system-versions"></a>Obsługiwane wersje systemu operacyjnego
 Na potrzeby tworzenia aplikacji obsługiwane są następujące wersje systemu operacyjnego:
 
-* Windows 7
+* Windows 7
 * Windows 8/Windows 8.1
 * Windows Server 2012 R2
 * Windows Server 2016
@@ -69,8 +69,8 @@ Jeśli potrzebujesz tylko zestawu SDK, możesz zainstalować ten pakiet:
 * [Zainstaluj zestaw SDK usługi Microsoft Azure Service Fabric][core-sdk]
 
 Bieżące wersje:
-* Service Fabric zestawu SDK i narzędzi 3.4.664
-* 6\.5.664 środowiska uruchomieniowego Service Fabric
+* Service Fabric zestawu SDK i narzędzi 3.4.676
+* 6\.5.676 środowiska uruchomieniowego Service Fabric
 * Service Fabric Tools dla programu Visual Studio 2015 2.5.20615.1
 * Program Visual Studio 2017 15,9 zawiera Service Fabric Tools dla programu Visual Studio 2.4.11024.1 
 * Program Visual Studio 2019 16,1 zawiera Service Fabric Tools dla programu Visual Studio 2.5.20423.3
@@ -93,7 +93,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 Po skonfigurowaniu środowiska projektowego możesz zacząć kompilować i uruchamiać aplikacje.
 
 * [Dowiedz się, jak tworzyć i wdrażać aplikacje oraz zarządzać nimi](service-fabric-tutorial-create-dotnet-app.md)
-* [Dowiedz się więcej o modelach programowania: Reliable Services i Reliable Actors](service-fabric-choose-framework.md)
+* [Informacje o modelach programowania: Reliable Services i Reliable Actors](service-fabric-choose-framework.md)
 * [Przykłady kodu platformy Service Fabric w witrynie GitHub](https://aka.ms/servicefabricsamples)
 * [Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 * Uzyskaj informacje o [opcjach pomocy technicznej usługi Service Fabric](service-fabric-support.md)

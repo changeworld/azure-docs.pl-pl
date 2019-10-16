@@ -9,20 +9,20 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 6090881cc2b94fa42fdac22220c858a0153ccc5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648095"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331241"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Zarządzanie usługą Azure Search przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
-> * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
+> * [Program PowerShell](search-manage-powershell.md)
+> * [Interfejs API REST](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * @No__t języka [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)— 1 
 
 Polecenia cmdlet programu PowerShell i skrypty w systemie Windows, Linux lub [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) można uruchomić w celu utworzenia i skonfigurowania Azure Search. Moduł **AZ. Search** rozszerza Azure PowerShell] z pełną parzystością do [interfejsów api REST zarządzania Azure Search](https://docs.microsoft.com/rest/api/searchmanagement). Za pomocą Azure PowerShell i **AZ. Search**można wykonać następujące zadania:
 
@@ -40,7 +40,7 @@ Chociaż nie ma żadnych dedykowanych poleceń programu PowerShell do zarządzan
 
 Inne zadania nieobsługiwane za poorednictwem programu PowerShell lub dowolnego innego interfejsu API (tylko Portal) obejmują:
 + [Dołącz zasób usługi poznawczej](cognitive-search-attach-cognitive-services.md) do plików [indeksowanych wzbogaconych od AI](cognitive-search-concept-intro.md). Usługa poznawczej jest dołączona do zestawu umiejętności, a nie do subskrypcji ani usługi.
-+ [Rozwiązania do monitorowania dodatków](search-monitor-usage.md#add-on-monitoring-solutions) lub [Analiza ruchu wyszukiwania](search-traffic-analytics.md) używana do monitorowania Azure Search.
++ [Rozwiązania do monitorowania rozwiązań](search-monitor-usage.md#add-on-monitoring-solutions) na potrzeby monitorowania Azure Search.
 
 <a name="check-versions-and-load"></a>
 
@@ -94,7 +94,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="list-all-azure-search-services-in-your-subscription"></a>Wyświetl listę wszystkich usług Azure Search w ramach subskrypcji
 
-Następujące polecenia pochodzą z [**AZ.** ](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)Resources, zwracając informacje o istniejących zasobach i usługach, które zostały już zainicjowane w ramach subskrypcji. Jeśli nie wiesz, ile usług wyszukiwania zostało już utworzonych, te polecenia zwracają te informacje, co umożliwia zapisanie podróży do portalu.
+Następujące polecenia pochodzą z [**AZ. resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), zwracając informacje o istniejących zasobach i usługach, które zostały już zainicjowane w ramach subskrypcji. Jeśli nie wiesz, ile usług wyszukiwania zostało już utworzonych, te polecenia zwracają te informacje, co umożliwia zapisanie podróży do portalu.
 
 Pierwsze polecenie zwraca wszystkie usługi wyszukiwania.
 
@@ -197,11 +197,11 @@ Tags
 
 [**Nowy — AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) jest używany do przejęcia [kluczy interfejsu API](search-security-api-keys.md)administratora. Dwa klucze administratora są tworzone przy użyciu każdej usługi dla dostępu uwierzytelnionego. Klucze są wymagane dla każdego żądania. Oba klucze administratora są funkcjonalnie równoważne, dając pełny dostęp do zapisu do usługi wyszukiwania z możliwością pobierania dowolnych informacji lub tworzenia i usuwania dowolnych obiektów. Istnieją dwa klucze, aby można było użyć jednego z nich, zastępując pozostałe. 
 
-Możesz ponownie wygenerować tylko jeden raz, jako `primary` klucz lub. `secondary` W przypadku niezakłóconej usługi Pamiętaj, aby zaktualizować cały kod klienta, aby użyć klucza pomocniczego podczas wycofywania klucza podstawowego. Unikaj zmiany kluczy, gdy operacje są w locie.
+Możesz ponownie wygenerować tylko jeden raz, określony jako klucz `primary` lub `secondary`. W przypadku niezakłóconej usługi Pamiętaj, aby zaktualizować cały kod klienta, aby użyć klucza pomocniczego podczas wycofywania klucza podstawowego. Unikaj zmiany kluczy, gdy operacje są w locie.
 
 W zależności od tego, czy klucze zostaną ponownie wygenerowane bez aktualizowania kodu klienta, żądania przy użyciu starego klucza zakończą się niepowodzeniem. Ponowne wygenerowanie wszystkich nowych kluczy nie powoduje trwałego zablokowania Twojej usługi i nadal można uzyskać dostęp do usługi za pomocą portalu. Po ponownym wygenerowaniu kluczy podstawowych i pomocniczych można zaktualizować kod klienta, aby używał nowych kluczy, a operacje zostaną odpowiednio wznowione.
 
-Wartości kluczy interfejsu API są generowane przez usługę. Nie można podać klucza niestandardowego dla Azure Search do użycia. Podobnie nie istnieje zdefiniowana przez użytkownika nazwa kluczy API-Keys. Odwołania do klucza są stałymi ciągami, `primary` albo `secondary`lub. 
+Wartości kluczy interfejsu API są generowane przez usługę. Nie można podać klucza niestandardowego dla Azure Search do użycia. Podobnie nie istnieje zdefiniowana przez użytkownika nazwa kluczy API-Keys. Odwołania do klucza są stałymi ciągami, `primary` lub `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary

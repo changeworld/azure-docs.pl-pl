@@ -6,16 +6,16 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fcb65e75de730178901742dc36c72776e39b044b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0be6afc2d4d7f97717200b86d5e5b3bc2194afee
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977969"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376184"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
-Konfiguracja gościa używa modułu zasobów [Konfiguracja żądanego stanu](/powershell/dsc) (DSC) do tworzenia konfiguracji inspekcji maszyn platformy Azure. Konfiguracja DSC definiuje warunek, w którym maszyna powinna znajdować się w programie. Jeśli Ocena konfiguracji nie powiedzie się, zostanie wyzwolony efekt zasad **auditIfNotExists** i maszyna zostanie uznana za **niezgodną**.
+Konfiguracja gościa używa modułu zasobów [Konfiguracja żądanego stanu](/powershell/scripting/dsc/overview/overview) (DSC) do tworzenia konfiguracji inspekcji maszyn platformy Azure. Konfiguracja DSC definiuje warunek, w którym maszyna powinna znajdować się w programie. Jeśli Ocena konfiguracji nie powiedzie się, zostanie wyzwolony efekt zasad **auditIfNotExists** i maszyna zostanie uznana za **niezgodną**.
 
 [Azure Policy konfiguracja gościa](/azure/governance/policy/concepts/guest-configuration) może być używana tylko do inspekcji ustawień wewnątrz maszyn. Korygowanie ustawień wewnątrz maszyn nie jest jeszcze dostępne.
 
@@ -32,8 +32,8 @@ Aby utworzyć zasady konfiguracji gościa, należy dodać moduł zasobów. Tego 
 
 Moduł zasobów konfiguracji gościa wymaga następującego oprogramowania:
 
-- Narzędzia. Jeśli nie jest jeszcze zainstalowana, wykonaj [te instrukcje](/powershell/scripting/install/installing-powershell).
-- Azure PowerShell 1.5.0 lub wyższy. Jeśli nie jest jeszcze zainstalowana, wykonaj [te instrukcje](/powershell/azure/install-az-ps).
+- Narzędzia. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/scripting/install/installing-powershell).
+- Azure PowerShell 1.5.0 lub wyższy. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/azure/install-az-ps).
 
 ### <a name="install-the-module"></a>Instalowanie modułu
 
@@ -55,7 +55,7 @@ Konfiguracja gościa używa modułu zasobów **GuestConfiguration** do tworzenia
 
 ## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Utwórz niestandardową konfigurację i zasoby konfiguracji gościa
 
-Pierwszym krokiem tworzenia zasad niestandardowych dla konfiguracji gościa jest utworzenie konfiguracji DSC. Omówienie pojęć i terminologii DSC można znaleźć w temacie [Omówienie DSC programu PowerShell](/powershell/dsc/overview/overview).
+Pierwszym krokiem tworzenia zasad niestandardowych dla konfiguracji gościa jest utworzenie konfiguracji DSC. Omówienie pojęć i terminologii DSC można znaleźć w temacie [Omówienie DSC programu PowerShell](/powershell/scripting/dsc/overview/overview).
 
 Jeśli konfiguracja wymaga tylko zasobów, które są wbudowane z instalacją agenta konfiguracji gościa, wystarczy tylko utworzyć plik MOF konfiguracji. Jeśli musisz uruchomić dodatkowy skrypt, musisz utworzyć niestandardowy moduł zasobów.
 
@@ -115,7 +115,7 @@ Configuration baseline
 baseline
 ```
 
-Aby uzyskać więcej informacji, zobacz [Zapisywanie, kompilowanie i stosowanie konfiguracji](/powershell/dsc/configurations/write-compile-apply-configuration).
+Aby uzyskać więcej informacji, zobacz [Zapisywanie, kompilowanie i stosowanie konfiguracji](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
 ### <a name="custom-guest-configuration-configuration-on-windows"></a>Konfiguracja niestandardowej konfiguracji gościa w systemie Windows
 
@@ -141,7 +141,7 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-Aby uzyskać więcej informacji, zobacz [Zapisywanie, kompilowanie i stosowanie konfiguracji](/powershell/dsc/configurations/write-compile-apply-configuration).
+Aby uzyskać więcej informacji, zobacz [Zapisywanie, kompilowanie i stosowanie konfiguracji](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
 ## <a name="create-guest-configuration-custom-policy-package"></a>Utwórz niestandardowy pakiet zasad konfiguracji gościa
 
@@ -190,7 +190,7 @@ W Azure Policy konfiguracji gościa najlepszym sposobem zarządzania kluczami ta
 
 1. Na koniec w ramach zasobu niestandardowego Użyj identyfikatora klienta wygenerowanego powyżej, aby uzyskać dostęp do Key Vault przy użyciu tokenu dostępnego na komputerze.
 
-   @No__t-0 i adres URL do wystąpienia Key Vault można przesłać do zasobu jako [Właściwości](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) , więc nie trzeba aktualizować zasobu dla wielu środowisk lub należy zmienić wartości.
+   @No__t-0 i adres URL do wystąpienia Key Vault można przesłać do zasobu jako [Właściwości](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) , więc nie trzeba aktualizować zasobu dla wielu środowisk lub należy zmienić wartości.
 
 Następujący przykładowy kod może być używany w zasobie niestandardowym w celu pobierania wpisów tajnych z Key Vault przy użyciu tożsamości przypisanej do użytkownika. Wartość zwrócona przez żądanie do Key Vault jest zwykłym tekstem. Najlepszym rozwiązaniem jest zapisanie go w ramach obiektu Credential.
 
@@ -226,7 +226,7 @@ Polecenie cmdlet obsługuje również dane wejściowe z potoku programu PowerShe
 New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
 ```
 
-Więcej informacji o testowaniu z parametrami znajduje się w sekcji poniżej [przy użyciu parametrów w niestandardowych zasadach konfiguracji gościa](/azure/governance/policy/how-to/guest-configuration-create#using-parameters-in-custom-guest-configuration-policies).
+Więcej informacji o testowaniu z parametrami znajduje się w sekcji poniżej [przy użyciu parametrów w niestandardowych zasadach konfiguracji gościa](#using-parameters-in-custom-guest-configuration-policies).
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Tworzenie plików wdrożenia definicji Azure Policy i inicjatywy
 
@@ -298,7 +298,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-W przypadku zasad systemu Linux Uwzględnij Właściwość **AttributesYmlContent** w konfiguracji i Zastąp odpowiednie wartości. Agent konfiguracji gościa automatycznie tworzy plik YaML używany przez specyfikację do przechowywania atrybutów. Zobacz Poniższy przykład.
+W przypadku zasad systemu Linux Uwzględnij Właściwość **AttributesYmlContent** w konfiguracji i Zastąp odpowiednie wartości. Agent konfiguracji gościa automatycznie tworzy plik YaML używany przez specyfikację do przechowywania atrybutów. Zobacz poniższy przykład.
 
 ```azurepowershell-interactive
 Configuration FirewalldEnabled {
@@ -367,7 +367,7 @@ Najprostszym sposobem zwolnienia zaktualizowanego pakietu jest powtórzenie proc
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Konwertowanie zawartości systemu Windows zasady grupy na konfigurację Azure Policy gościa
 
-Konfiguracja gościa podczas inspekcji maszyn z systemem Windows jest implementacją składni konfiguracji żądanego stanu programu PowerShell. Społeczność DSC opublikowała narzędzia do konwertowania wyeksportowanych szablonów zasady grupy w formacie DSC. Korzystając z tego narzędzia wraz z poleceniami cmdlet konfiguracji gościa opisanymi powyżej, można skonwertować zawartość systemu Windows zasady grupy i pakiet/opublikować ją Azure Policy do inspekcji. Aby uzyskać szczegółowe informacje na temat korzystania z tego narzędzia, zobacz artykuł [Szybki Start: konwertowanie zasady grupy na DSC](/powershell/dsc/quickstarts/gpo-quickstart).
+Konfiguracja gościa podczas inspekcji maszyn z systemem Windows jest implementacją składni konfiguracji żądanego stanu programu PowerShell. Społeczność DSC opublikowała narzędzia do konwertowania wyeksportowanych szablonów zasady grupy w formacie DSC. Korzystając z tego narzędzia wraz z poleceniami cmdlet konfiguracji gościa opisanymi powyżej, można skonwertować zawartość systemu Windows zasady grupy i pakiet/opublikować ją Azure Policy do inspekcji. Aby uzyskać szczegółowe informacje na temat korzystania z tego narzędzia, zobacz artykuł [Szybki Start: konwertowanie zasady grupy na DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
 Po przeprowadzeniu konwersji zawartości należy wykonać kroki opisane powyżej, aby utworzyć pakiet i opublikować go jako Azure Policy będzie taka sama jak w przypadku dowolnej zawartości DSC.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>OPCJONALNE: podpisywanie pakietów konfiguracji gościa

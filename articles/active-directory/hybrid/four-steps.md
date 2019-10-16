@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 08db59e26a66aca57d65458a302c3c1de2e34a7b
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124926"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373497"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Cztery kroki do silnej wersji programu Identity Foundation z Azure Active Directory
 
@@ -26,7 +26,7 @@ Zarządzanie dostępem do aplikacji i danych nie może już polegać na tradycyj
 
 W przypadku przyjęcia rozwiązania do obsługi tożsamości hybrydowej w usłudze Azure Active Directory (Azure AD) organizacje uzyskują dostęp do funkcji w warstwie Premium, które odblokują produktywność dzięki możliwościom automatyzacji, delegowania, samoobsługowego i logowania jednokrotnego. Umożliwia ona pracownikom dostęp do zasobów firmy z dowolnego miejsca, w którym są one potrzebne do pracy, jednocześnie umożliwiając zespołowi IT zarządzanie tym dostępem, upewniając się, że odpowiednie osoby mają właściwy dostęp do odpowiednich zasobów, aby stworzyć bezpieczną produktywność.
 
-Na podstawie naszych informacji lista kontrolna najlepszych rozwiązań pomaga szybko wdrożyć zalecane akcje w celu utworzenia silnej wersji programu Identity Foundation w organizacji:
+Na podstawie naszych informacji lista kontrolna najlepszych rozwiązań pomaga szybko wdrożyć zalecane akcje w celu utworzenia *silnej* wersji programu Identity Foundation w organizacji:
 
 * Łatwe łączenie z aplikacjami
 * Ustanów jedną tożsamość dla każdego użytkownika automatycznie
@@ -83,7 +83,7 @@ W nowoczesnych przedsiębiorstwach działy IT często nie wiedzą o wszystkich a
 
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) może pomóc w zidentyfikowaniu użytecznych aplikacji, które są popularne dla użytkowników, którzy mogą zatwierdzono i dodać do galerii aplikacji dla przedsiębiorstw, aby użytkownicy mogli korzystać z takich funkcji, jak logowanie jednokrotne i dostęp warunkowy.
 
-*" **Cloud App Security** pomaga nam upewnić się, że nasze osoby prawidłowo korzystają z naszych aplikacji w chmurze i SaaS w sposób, który obsługuje podstawowe zasady zabezpieczeń, które pomagają chronić Accenture*". --- [John Blasi, dyrektor naczelny, bezpieczeństwo informacji, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Cloud App Security** pomaga nam upewnić się, że nasze osoby prawidłowo korzystają z naszych aplikacji w chmurze i SaaS w sposób, który obsługuje podstawowe zasady zabezpieczeń, które pomagają chronić Accenture".</em> --- [John Blasi, dyrektor naczelny, bezpieczeństwo informacji, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 Oprócz wykrywania cieniowania IT MCAS może również określać poziom ryzyka aplikacji, zapobiegać nieautoryzowanemu dostępowi do danych firmowych, możliwego wycieku danych i innym zagrożeniom związanym z bezpieczeństwem w aplikacjach.
 
@@ -115,7 +115,7 @@ Organizacje z Active Directoryami lokalnymi powinny rozciągnąć swój katalog 
 
 Najprostszą i zalecaną metodą włączenia uwierzytelniania w chmurze dla obiektów katalogu lokalnego w usłudze Azure AD jest włączenie [synchronizacji skrótów haseł](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS). Alternatywnie niektóre organizacje mogą rozważyć włączenie [uwierzytelniania przekazywanego](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA).
 
-Bez względu na to, czy wybierzesz PHS, czy PTA, nie zapomnij włączyć bezproblemowego [logowania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) jednokrotnego, aby umożliwić użytkownikom uzyskiwanie dostępu do aplikacji w chmurze, a w sieci firmowej przy użyciu urządzeń z systemami Windows 7 i 8. Bez logowania jednokrotnego użytkownicy muszą pamiętać hasła specyficzne dla aplikacji i zalogować się do każdej aplikacji. Podobnie pracownicy działu IT muszą utworzyć i zaktualizować konta użytkowników dla każdej aplikacji, takiej jak Office 365, Box i Salesforce. Użytkownicy muszą pamiętać swoje hasła, a także poświęcać czas na zalogowanie się do każdej aplikacji. Zapewnienie standardowego mechanizmu logowania jednokrotnego do całego przedsiębiorstwa ma kluczowe znaczenie dla najlepszego środowiska użytkownika, zmniejszenia ryzyka, możliwości zgłaszania i zarządzania.
+Bez względu na to, czy wybierzesz PHS, czy PTA, nie zapomnij włączyć [bezproblemowego logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) , aby umożliwić użytkownikom uzyskiwanie dostępu do aplikacji w chmurze, a w sieci firmowej przy użyciu urządzeń z systemami Windows 7 i 8. Bez logowania jednokrotnego użytkownicy muszą pamiętać hasła specyficzne dla aplikacji i zalogować się do każdej aplikacji. Podobnie pracownicy działu IT muszą utworzyć i zaktualizować konta użytkowników dla każdej aplikacji, takiej jak Office 365, Box i Salesforce. Użytkownicy muszą pamiętać swoje hasła, a także poświęcać czas na zalogowanie się do każdej aplikacji. Zapewnienie standardowego mechanizmu logowania jednokrotnego do całego przedsiębiorstwa ma kluczowe znaczenie dla najlepszego środowiska użytkownika, zmniejszenia ryzyka, możliwości zgłaszania i zarządzania.
 
 W przypadku organizacji, które już używają AD FS lub innego dostawcy uwierzytelniania lokalnego, przeniesienie do usługi Azure AD, ponieważ dostawca tożsamości może zmniejszyć złożoność i zwiększyć dostępność. Jeśli nie masz określonych przypadków użycia dla Federacji, zalecamy Migrowanie z uwierzytelniania federacyjnego do PHS i bezproblemowe logowanie jednokrotne lub PTA i bezproblemowe logowanie jednokrotne, aby korzystać z zalet zredukowanego miejsca lokalnego oraz elastyczności oferowanej przez chmurę Udoskonalone środowisko użytkownika. Aby uzyskać więcej informacji, zobacz [Migrowanie z usługi federacyjnej do synchronizacji skrótów haseł dla Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync).
 
@@ -143,11 +143,11 @@ Platforma Azure udostępnia raporty, które mogą być używane przez Ciebie i T
 
 [Raport logowania](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) usługi MFA zawiera informacje na temat użycia usługi MFA i zapewnia wgląd w sposób działania usługi MFA w organizacji. Posiadanie dostępu do działań związanych z logowaniem (oraz inspekcjami i wykrywaniem ryzyka) dla usługi Azure AD ma kluczowe znaczenie dla rozwiązywania problemów, analizy użycia i badań dowodowych.
 
-Podobnie można użyć [raportu](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) samoobsługowego zarządzania hasłami, aby określić, kto ma (lub nie) zarejestrowany dla SSPR.
+Podobnie można użyć raportu samoobsługowego [zarządzania hasłami](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) , aby określić, kto ma (lub nie) zarejestrowany dla SSPR.
 
 ### <a name="self-service-app-management"></a>Samoobsługowe zarządzanie aplikacjami
 
-Zanim użytkownicy będą mogli automatycznie wykrywać aplikacje z poziomu ich panelu dostępu, musisz włączyć [dostęp do aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) samoobsługowej do wszystkich aplikacji, które mają pozwolić użytkownikom na samodzielne odnajdowanie i żądać dostępu do programu. Samoobsługowy dostęp do aplikacji to doskonały sposób na umożliwienie użytkownikom samodzielnego odnajdywania aplikacji i opcjonalnie Zezwalanie grupie biznesowej na zatwierdzanie dostępu do tych aplikacji. Można zezwolić grupie biznesowej na zarządzanie poświadczeniami przypisanymi do tych użytkowników w celu logowania jednokrotnego [w aplikacjach](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) bezpośrednio z poziomu panelu dostępu.
+Zanim użytkownicy będą mogli automatycznie wykrywać aplikacje z poziomu ich panelu dostępu, musisz włączyć [dostęp do aplikacji samoobsługowej](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) do wszystkich aplikacji, które mają pozwolić użytkownikom na samodzielne odnajdowanie i żądać dostępu do programu. Samoobsługowy dostęp do aplikacji to doskonały sposób na umożliwienie użytkownikom samodzielnego odnajdywania aplikacji i opcjonalnie Zezwalanie grupie biznesowej na zatwierdzanie dostępu do tych aplikacji. Można zezwolić grupie biznesowej na zarządzanie poświadczeniami przypisanymi do tych użytkowników w celu logowania jednokrotnego [w aplikacjach](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) bezpośrednio z poziomu panelu dostępu.
 
 ### <a name="self-service-group-management"></a>Samoobsługowe zarządzanie grupami
 
@@ -156,7 +156,7 @@ Przypisywanie użytkowników do aplikacji jest najlepszym mapowaniem w przypadku
 * Oparte na atrybutach z przynależnością do grupy dynamicznej
 * Delegowanie do właścicieli aplikacji
 
-Usługa Azure AD umożliwia zarządzanie dostępem do zasobów przy użyciu grup zabezpieczeń i grup pakietu Office 365. Tymi grupami można zarządzać za pomocą właściciela grupy, który może zatwierdzać lub odrzucać żądania członkostwa oraz delegować kontrolę członkostwa w grupie. Ta funkcja jest określana jako samoobsługowe [Zarządzanie grupami](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management), dzięki czemu właściciele grup nie mają przypisanej roli administracyjnej do tworzenia grup i zarządzania nimi bez konieczności polegania na administratorach do obsługi ich żądań.
+Usługa Azure AD umożliwia zarządzanie dostępem do zasobów przy użyciu grup zabezpieczeń i grup pakietu Office 365. Tymi grupami można zarządzać za pomocą właściciela grupy, który może zatwierdzać lub odrzucać żądania członkostwa oraz delegować kontrolę członkostwa w grupie. Ta funkcja jest określana jako [Samoobsługowe zarządzanie grupami](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management), dzięki czemu właściciele grup nie mają przypisanej roli administracyjnej do tworzenia grup i zarządzania nimi bez konieczności polegania na administratorach do obsługi ich żądań.
 
 ## <a name="step-4---operationalize-your-insights"></a>Krok 4 — operacjonalizować się ze szczegółowymi informacjami
 
@@ -210,7 +210,7 @@ Oprócz odnajdywania w tle, monitorowania użycia aplikacji w całej organizacji
 * Gdzie i kiedy dane poufne są przechowywane w chmurze?
 * Kto uzyskuje dostęp do poufnych danych w chmurze?
 
-*"Dzięki Cloud App Security możemy szybko wykasować anomalie i podejmować działania".* --- [Eric LePenske, kierownik ds. ochrony informacji, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"Dzięki Cloud App Security możemy szybko wykasować anomalie i podejmować działania".* --- [Eric LePenske, starszy kierownik, bezpieczeństwo informacji, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 ## <a name="summary"></a>Podsumowanie
 
@@ -227,7 +227,7 @@ Mamy nadzieję, że ten dokument jest przydatny do ustanowienia silnej tożsamo�
 
 Zaleca się wydrukowanie poniższej listy kontrolnej w celu uzyskania odniesienia podczas podróży do bardziej stałego programu Identity Foundation w organizacji.
 
-### <a name="today"></a>Dzisiaj
+### <a name="today"></a>Obecnych
 
 |Gotowe?|Element|
 |:-|:-|

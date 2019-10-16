@@ -1,18 +1,18 @@
 ---
 title: Analiza komercyjnego portalu Marketplace w centrum partnerskim
 description: Dowiedz się, jak uzyskiwać dostęp do raportów analitycznych w celu monitorowania sprzedaży, oceny wydajności i optymalizowania ofert w portalu Marketplace.
-author: chjenk
+author: ChJenk
 manager: evansma
-ms.author: shthota
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/09/2019
-ms.openlocfilehash: b48e0cddfe4880382147e7bfb634335f10d6f5f9
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/14/2019
+ms.openlocfilehash: 593d43339961ab4576081aaa18a8d68716e40e9b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028853"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332130"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analiza komercyjnego portalu Marketplace w centrum partnerskim
 
@@ -321,3 +321,24 @@ Sekcja podsumowania ocen & przeglądów zawiera poniższe metryki dla wybranego 
 Przeglądy są wyświetlane w kolejności chronologicznej w przypadku ich opublikowania. Widok domyślny wyświetla wszystkie Recenzje. Możesz filtrować Recenzje według klasyfikacji gwiazdkowej przy użyciu **filtru** z menu rozwijanego. Możesz również wyszukać słowa kluczowe, które pojawiają się w przeglądzie.  
 
 ![Analiza komentarzy dotyczących przeglądu Centrum partnerskiego](./media/analyze-reviews.png)
+
+## <a name="frequently-asked-questions"></a>Często zadawane pytania
+
+W tej sekcji znajdują się odpowiedzi na często zadawane pytania dotyczące **braku dostępnych jeszcze komunikatów analizy** w centrum partnerskim.
+
+**Nie mogę wyświetlić danych analitycznych w centrum partnerskim. Gdy uzyskuję dostęp do tych stron, zobaczysz poniższy komunikat. Dlaczego to jest?**
+
+![Nie ma jeszcze danych dla ofert](./media/analytics-faq-no-data.png)
+
+Dlaczego może być wyświetlany następujący komunikat:
+
+- Oferty wymienione w portalu Marketplace nie są ofertami SaaS. Obecnie w centrum partnerskim są raportowane wyłącznie oferty usługi SaaS. Oferty usługi Dynamics 365 można publikować w centrum partnerskim, ale analiza dla tych ofert nie jest jeszcze włączona w centrum partnerskim.
+- Obecnie nie istnieją żadne pozyskiwania dla opublikowanych ofert w portalu Marketplace. Może to oznaczać, że oferty znajdują się na żywo w witrynie Marketplace i uzyskują widoki od klientów na stronach wyświetlania produktu, ale klienci nie zostali jeszcze zakupili i wdrażali.
+- Publikowanie oferty może być w toku i nie jest jeszcze na żywo. Klienci mogą uzyskać tylko oferty na żywo. Aby sprawdzić stan ofert, zobacz Omówienie na [pulpicie nawigacyjnym analizy](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). Aby uzyskać więcej informacji, zobacz [pulpit nawigacyjny podsumowania](#summary-dashboard) w tym artykule.
+- Oferty mogą być wyświetlane jako **kontakt ze mną**, które są ofertami tylko do wyświetlania i nie mogą zostać zakupione przez klientów w portalu Marketplace. Chociaż te oferty generują potencjalnych klientów i są Ci udostępniane, nie są tworzone zamówienia dla tych ofert, ponieważ nie można ich zakupić. Aby sprawdzić typ aukcji oferty, przejdź do strony konfiguracja.
+
+**Wiem, że mam dane analityczne, ale pojawia się następujący komunikat:**
+
+![Brak danych dla podanego zakresu dat](./media/analytics-faq-data-range.png)
+
+Jeśli otrzymujesz tę wiadomość, oznacza to, że masz dane analityczne, ale nie ma danych dla wybranego zakresu dat. Wybierz inny zakres dat lub niestandardowy zakres dat, aby wyświetlić dowolne dane od 2010. Aby uzyskać więcej informacji, zobacz [zakres dat](#date-range).

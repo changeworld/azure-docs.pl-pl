@@ -1,6 +1,6 @@
 ---
 title: Przykładowy skrypt programu Azure PowerShell — tworzenie definicji aplikacji zarządzanej | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell — tworzenie definicji aplikacji zarządzanej
+description: Zawiera przykładowy skrypt Azure PowerShell, który tworzy definicję aplikacji zarządzanej w ramach subskrypcji platformy Azure.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 35f1b805323da03f1622e5c355d6ffa6d960b275
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0491a5025886317faf7cb4601f8db3915527b80
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171503"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332576"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>Tworzenie definicji aplikacji zarządzanej za pomocą programu PowerShell
 
@@ -41,7 +41,7 @@ Ten skrypt używa następującego polecenia do utworzenia definicji aplikacji za
 | [New-AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | Tworzy definicję aplikacji zarządzanej. Należy podać pakiet, który zawiera wymagane pliki. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z wprowadzeniem do aplikacji zarządzanych, zobacz [Azure Managed Application overview](../overview.md) (Omówienie aplikacji zarządzanych platformy Azure).
 * Aby uzyskać więcej informacji na temat programu PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f3cbf740016a4c162c63343be4cb9cd577f85935
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c05b79d2f1da8076b507ca9ee7a06504de21d5ea
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699351"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333179"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Przegląd migawek udziałów dla Azure Files 
 Azure Files zapewnia możliwość tworzenia migawek udziałów plików. Migawki udziału przechwytują stan udziału w tym momencie. W tym artykule opisano, jakie funkcje są udostępniane przez migawki i jak można je wykorzystać w przypadku niestandardowego przypadku użycia.
@@ -37,7 +37,7 @@ Po utworzeniu migawki udziału można ją odczytywać, kopiować lub usuwać, al
 
 Możliwość udostępniania migawek jest dostępna na poziomie udziału plików. Pobieranie jest dostępne na poziomie poszczególnych plików, aby umożliwić przywracanie pojedynczych plików. Można przywrócić pełny udział plików przy użyciu protokołu SMB, interfejsu API REST, portalu, biblioteki klienta lub narzędzi PowerShell/interfejsu wiersza polecenia.
 
-Migawka udziału plików jest identyczna z jej podstawowym udziałem plików. Jedyną różnicą jest to, że wartość **daty i godziny** jest dołączana do identyfikatora URI udziału, aby wskazać godzinę utworzenia migawki udziału. Na przykład jeśli identyfikator URI udziału plików to http://storagesample.core.file.windows.net/myshare, identyfikator URI migawki udziału jest podobny do:
+Migawka udziału plików jest identyczna z jej podstawowym udziałem plików. Jedyną różnicą jest to, że wartość **daty i godziny** jest dołączana do identyfikatora URI udziału, aby wskazać godzinę utworzenia migawki udziału. Na przykład jeśli identyfikator URI udziału plików jest http://storagesample.core.file.windows.net/myshare, identyfikator URI migawki udziału jest podobny do:
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -71,18 +71,18 @@ Można skopiować pojedyncze pliki do udziału plików migawki w udziale podstaw
 
 Migawka udziału pozostaje niezmieniona po skopiowaniu, ale podstawowy udział plików jest zastępowany kopią danych, które były dostępne w migawce udziału. Wszystkie przywrócone pliki są w kierunku "zmieniona zawartość".
 
-Można skopiować plik w migawce udziału do lokalizacji docelowej o innej nazwie. Utworzony plik docelowy jest plikiem zapisywalnym, a nie migawką udziału.
+Można skopiować plik w migawce udziału do innego miejsca docelowego o innej nazwie. Utworzony plik docelowy jest plikiem zapisywalnym, a nie migawką udziału. W takim przypadku podstawowy udział plików pozostanie nienaruszony.
 
 Gdy plik docelowy zostanie zastąpiony kopią, wszystkie migawki udziałów skojarzone z oryginalnym plikiem docelowym pozostaną nienaruszone.
 
-## <a name="general-best-practices"></a>Ogólne najlepsze rozwiązania 
+## <a name="general-best-practices"></a>Ogólne najlepsze praktyki 
 Gdy korzystasz z infrastruktury na platformie Azure, Automatyzuj kopie zapasowe odzyskiwania danych, gdy jest to możliwe. Akcje automatyczne są bardziej niezawodne niż procesy ręczne, pomagając w ulepszaniu ochrony danych i odzyskiwania. Do automatyzacji można użyć interfejsu API REST, zestawu SDK klienta lub skryptów.
 
 Przed wdrożeniem harmonogramu udziałów migawek należy uważnie uwzględnić częstotliwość tworzenia migawek i ustawienia przechowywania, aby uniknąć ponoszenia niepotrzebnych opłat.
 
 Migawki udziałów zapewniają tylko ochronę na poziomie plików. Migawki udziałów nie uniemożliwiają usuwania przy użyciu programu FAT-Finger w udziale plików lub koncie magazynu. Aby chronić konto magazynu przed przypadkowym usunięciem, można zablokować konto magazynu lub grupę zasobów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Praca z migawkami udziałów w programie:
     - [Program PowerShell](storage-how-to-use-files-powershell.md)
     - [Interfejs wiersza polecenia](storage-how-to-use-files-cli.md)

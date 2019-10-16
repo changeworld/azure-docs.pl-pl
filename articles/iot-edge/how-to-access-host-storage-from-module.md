@@ -4,22 +4,24 @@ description: Użyj zmiennych środowiskowych i Utwórz opcje, aby umożliwić do
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/12/2019
+ms.date: 10/15/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2526f33f0053b5805394a4a898af88d86187066c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301284"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330802"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Zapewnianie modułom dostępu do magazynu lokalnego na urządzeniu
 
 Oprócz przechowywania danych przy użyciu usług Azure Storage lub magazynu kontenerów na urządzeniu można również przeznaczyć magazyn na hoście IoT Edge samo urządzenie w celu zwiększenia niezawodności, szczególnie w przypadku działania w trybie offline.
 
-Aby skonfigurować magazyn w systemie hosta, należy utworzyć zmienną środowiskową dla modułu, która wskazuje folder magazynu w kontenerze. Następnie użyj opcji tworzenia, aby powiązać ten folder magazynu z folderem na komputerze-hoście.
+## <a name="link-module-storage-to-device-storage"></a>Łączenie magazynu modułów z magazynem urządzeń
+
+Aby włączyć łącze z magazynu modułów do magazynu w systemie hosta, należy utworzyć zmienną środowiskową dla modułu, która wskazuje folder magazynu w kontenerze. Następnie użyj opcji tworzenia, aby powiązać ten folder magazynu z folderem na komputerze-hoście.
 
 Na przykład jeśli chcesz włączyć Centrum IoT Edge do przechowywania wiadomości w lokalnym magazynie urządzenia i pobrać je później, możesz skonfigurować zmienne środowiskowe i opcje tworzenia w Azure Portal w obszarze **Konfigurowanie ustawień zaawansowanego środowiska uruchomieniowego Edge** sekcja.
 
@@ -80,3 +82,7 @@ sudo chmod 700 <HostStoragePath>
 ```
 
 Więcej informacji o opcjach tworzenia można znaleźć w dokumentacji [platformy Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby uzyskać dodatkowy przykład uzyskiwania dostępu do magazynu hosta z modułu, zobacz temat [Zapisywanie danych na krawędzi za pomocą usługi Azure Blob Storage w IoT Edge](how-to-store-data-blob.md).

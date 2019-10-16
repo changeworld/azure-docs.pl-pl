@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 334ccbf64e32655b5e78ac6564abb65996ac53da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1cbbc1fde22262d5841766978d40487f812e0963
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167406"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333112"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności klastra Service Fabric
 W przypadku każdego wdrożenia produkcyjnego planowanie wydajności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę w ramach tego procesu.
@@ -81,7 +81,7 @@ Warstwa trwałości służy do wskazywania, że system ma uprawnienia do program
 | Bron           | 1                              | Maszyny wirtualne z co najmniej 50 GB lokalnego dysku SSD                                              | Nie zostanie opóźniony przez klaster Service Fabric           | Nie może być opóźniony przez dowolny znaczny okres czasu                                                    |
 
 > [!WARNING]
-> Typy węzłów działające z trwałością Bronze nie uzyskują _żadnych uprawnień_. Oznacza to, że zadania infrastruktury mające wpływ na obciążenia bezstanowe nie zostaną zatrzymane ani opóźnione, co może wpłynąć na Twoje obciążenia. Używaj tylko Bronze dla typów węzłów, które uruchamiają tylko obciążenia bezstanowe. W przypadku obciążeń produkcyjnych zaleca się używanie srebra lub wyższej. 
+> Typy węzłów działające z trwałością Bronze nie uzyskują _żadnych uprawnień_. Oznacza to, że zadania infrastruktury mające wpływ na obciążenia stanowe nie zostaną zatrzymane ani opóźnione, co może wpłynąć na Twoje obciążenia. Używaj tylko Bronze dla typów węzłów, które uruchamiają tylko obciążenia bezstanowe. W przypadku obciążeń produkcyjnych zaleca się używanie srebra lub wyższej. 
 > 
 > Niezależnie od dowolnego poziomu trwałości operacja [cofnięcia alokacji](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) w zestawie skalowania maszyn wirtualnych spowoduje zniszczenie klastra
 
@@ -123,7 +123,7 @@ Warstwa niezawodności służy do ustawiania liczby replik usług systemowych, k
 
 Warstwa niezawodności może przyjmować następujące wartości:
 
-* Platinum — uruchamianie usług systemowych z docelową liczbą zestawów replik siedmiu
+* Platinum — uruchamianie usług systemowych z docelowym zestawem replik liczba dziewięciu
 * Złoty — uruchamianie usług systemowych z docelową liczbą zestawów replik siedmiu
 * Silver-uruchom usługi systemowe z liczbą docelowych zestawów replik równą pięć 
 * Bronze — uruchomienie usług systemowych z docelową liczbą zestawów replik trzech

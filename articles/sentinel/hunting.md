@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240614"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372402"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel"></a>W przypadku zagrożeń związanych z platformą Azure — wskaźnikiem
 
@@ -37,20 +37,20 @@ Korzystając z łowiectwa wskaźnikowego platformy Azure, możesz korzystać z n
 
 - Wbudowane zapytania: Aby rozpocząć, Strona początkowa zawiera przykłady wstępnie załadowanych zapytań, które umożliwiają rozpoczęcie pracy i zapoznanie się z tabelami oraz językiem zapytań. Te wbudowane zapytania polowania są opracowywane przez badaczy zabezpieczeń firmy Microsoft w sposób ciągły, dodawanie nowych zapytań i dostosowywanie istniejących zapytań w celu udostępnienia punktu wejścia do wyszukiwania nowych wykryć i ustalenia miejsca, w którym należy zacząć polowanie dla zaczynają się nowe ataki. 
 
-- Zaawansowany język zapytań z technologią IntelliSense: Utworzone na podstawie języka zapytań, który zapewnia elastyczność potrzebną do skorzystania z kolejnego poziomu.
+- Zaawansowany język zapytań z technologią IntelliSense: wbudowaną na podstawie języka zapytań, który zapewnia elastyczność potrzebną do skorzystania z kolejnego poziomu.
 
-- Utwórz własne zakładki: W trakcie procesu polowania mogą trafiać między innymi dopasowania lub wyniki, pulpity nawigacyjne lub działania, które wyglądają nierzadko lub podejrzane. Aby oznaczyć te elementy tak, aby można było je w przyszłości wrócić do nich, użyj funkcji Zakładka. Zakładki umożliwiają zapisywanie elementów w celu ich późniejszego użycia w celu utworzenia incydentu do badania. Aby uzyskać więcej informacji na temat zakładek, zobacz [Używanie zakładek w łowiectwie](hunting.md).
-- Automatyzacja badań za pomocą notesów: Notesy przypominają elementy PlayBook krok po kroku, które można kompilować, aby zapoznać się z krokami badania i wyszukiwania.  Notesy hermetyzują wszystkie kroki polowania w element PlayBook wielokrotnego użytku, które mogą być współużytkowane z innymi osobami w organizacji. 
-- Wykonaj zapytanie dotyczące przechowywanych danych: Dane są dostępne w tabelach, aby można było wykonywać zapytania. Można na przykład wykonywać zapytania dotyczące tworzenia procesów, zdarzeń DNS i wielu innych typów zdarzeń.
+- Tworzenie własnych zakładek: w trakcie procesu polowania mogą trafiać dopasowania lub wyniki, pulpity nawigacyjne lub działania, które wyglądają nierzadko lub podejrzane. Aby oznaczyć te elementy tak, aby można było je w przyszłości wrócić do nich, użyj funkcji Zakładka. Zakładki umożliwiają zapisywanie elementów w celu ich późniejszego użycia w celu utworzenia incydentu do badania. Aby uzyskać więcej informacji na temat zakładek, zobacz [Używanie zakładek w łowiectwie](hunting.md).
+- Korzystaj z notesów do automatyzowania badań: Notesy przypominają elementy PlayBook krok po kroku, które można skompilować, aby zapoznać się z krokami badania i wyszukiwania.  Notesy hermetyzują wszystkie kroki polowania w element PlayBook wielokrotnego użytku, które mogą być współużytkowane z innymi osobami w organizacji. 
+- Zbadaj przechowywane dane: dane są dostępne w tabelach, aby można było wykonywać zapytania. Można na przykład wykonywać zapytania dotyczące tworzenia procesów, zdarzeń DNS i wielu innych typów zdarzeń.
 
-- Linki do społeczności: Skorzystaj z mocy większej społeczności, aby znaleźć dodatkowe zapytania i źródła danych.
+- Linki do społeczności: wykorzystanie mocy większej społeczności do znajdowania dodatkowych zapytań i źródeł danych.
  
 ## <a name="get-started-hunting"></a>Wprowadzenie do łowiectwa
 
-1. W portalu wskaźnikowym platformy Azure kliknijpozycję łowiectwo.
-  ![Azure — wskaźnik startowy](media/tutorial-hunting/hunting-start.png)
+1. W portalu wskaźnikowym platformy Azure kliknij pozycję **łowiectwo**.
+  ![Azure wskaźnik startowy to łowiectwo @ no__t-1
 
-2. Po otwarciu strony **polowania** wszystkie zapytania polowania są wyświetlane w pojedynczej tabeli. W tabeli wymieniono wszystkie zapytania, które zostały utworzone przez zespół analityków zabezpieczeń firmy Microsoft, a także wszelkie dodatkowe lub zmodyfikowane zapytania. Każde zapytanie zawiera opis tego, czego szuka i jakiego rodzaju dane są uruchamiane. Te szablony są pogrupowane według różnych taktykę — ikony po prawej stronie są typu zagrożenia, takie jak początkowy dostęp, trwałość i eksfiltracji. Te szablony zapytań polowania można filtrować przy użyciu dowolnych pól. Możesz zapisać dowolne zapytanie do ulubionych. Zapisanie zapytania do ulubionych spowoduje automatyczne uruchomienie zapytania przy każdej próbie uzyskania dostępu do strony polowania. Możesz utworzyć własne zapytanie polowania lub klonować i dostosowywać istniejący szablon zapytania polowania. 
+2. Po otwarciu strony **polowania** wszystkie zapytania polowania są wyświetlane w pojedynczej tabeli. W tabeli wymieniono wszystkie zapytania, które zostały utworzone przez zespół analityków zabezpieczeń firmy Microsoft, a także wszelkie dodatkowe lub zmodyfikowane zapytania. Każde zapytanie zawiera opis tego, czego szuka i jakiego rodzaju dane są uruchamiane. Te szablony są pogrupowane według różnych taktykę — ikony po prawej stronie są typu zagrożenia, takie jak początkowy dostęp, trwałość i eksfiltracji. Te szablony zapytań polowania można filtrować przy użyciu dowolnych pól. Możesz zapisać dowolne zapytanie do ulubionych. Zapisanie zapytania do ulubionych spowoduje automatyczne uruchomienie zapytania przy każdej próbie uzyskania dostępu do strony **polowania** . Możesz utworzyć własne zapytanie polowania lub klonować i dostosowywać istniejący szablon zapytania polowania. 
  
 2. Kliknij przycisk **Uruchom zapytanie** na stronie szczegółów zapytania polowania, aby uruchomić dowolne zapytanie bez opuszczania strony polowania.  W tabeli zostanie wyświetlona liczba dopasowań. Przejrzyj listę zapytań polowania i ich dopasowania. Sprawdź, który etap łańcucha kasowania jest skojarzony z.
 
@@ -58,9 +58,9 @@ Korzystając z łowiectwa wskaźnikowego platformy Azure, możesz korzystać z n
 
 4.  Kliknij wiersz i wybierz pozycję **Dodaj zakładkę** , aby dodać wiersze do zbadania — można to zrobić dla wszystkich elementów, które wyglądają podejrzanie. 
 
-5. Następnie wróć do strony głównej łowiectwa i kliknij kartę **zakładki** , aby wyświetlić wszystkie podejrzane działania. 
+5. Następnie wróć do strony głównej **łowiectwa** i kliknij kartę **zakładki** , aby wyświetlić wszystkie podejrzane działania. 
 
-6. Wybierz zakładkę, a następnie kliknij przycisk Zbadaj, aby otworzyć środowisko badania. Można filtrować zakładki. Na przykład, jeśli badasz kampanię, możesz utworzyć tag dla kampanii, a następnie filtrować wszystkie zakładki na podstawie kampanii.
+6. Wybierz zakładkę, a następnie kliknij przycisk **Zbadaj** , aby otworzyć środowisko badania. Można filtrować zakładki. Na przykład, jeśli badasz kampanię, możesz utworzyć tag dla kampanii, a następnie filtrować wszystkie zakładki na podstawie kampanii.
 
 1. Po wykryciu, które zapytanie polowające zapewnia wysoką wartość wglądu w możliwe ataki, można także utworzyć niestandardowe reguły wykrywania na podstawie zapytania i przedstawić te informacje jako alerty w odniesieniu do odpowiedzi na zdarzenia zabezpieczeń.
 
@@ -68,7 +68,7 @@ Korzystając z łowiectwa wskaźnikowego platformy Azure, możesz korzystać z n
 
 ## <a name="query-language"></a>Język zapytań 
 
-Łowiectwo na platformie Azure — na podstawie języka zapytań usługi Azure Log Analytics. Aby uzyskać więcej informacji na temat języka zapytań i obsługiwanych operatorów, zobacz [Dokumentacja języka zapytań](https://docs.loganalytics.io/docs/Language-Reference/).
+Łowiectwo na platformie Azure — na podstawie języka zapytań Kusto. Aby uzyskać więcej informacji na temat języka zapytań i obsługiwanych operatorów, zobacz [Dokumentacja języka zapytań](https://docs.loganalytics.io/docs/Language-Reference/).
 
 ## <a name="public-hunting-query-github-repository"></a>Zapytanie dotyczące publicznego polowania w repozytorium GitHub
 
@@ -78,7 +78,7 @@ Zapoznaj się z [repozytorium zapytań polowania](https://github.com/Azure/Orion
 
 ## <a name="sample-query"></a>Przykładowe zapytanie
 
-Typowa kwerenda rozpoczyna się od nazwy tabeli, po której następuje seria operatorów rozdzielonych \|przez.
+Typowe zapytanie rozpoczyna się od nazwy tabeli, po której następuje seria operatorów oddzielonych \|.
 
 W powyższym przykładzie Zacznij od nazwy tabeli SecurityEvent i Dodaj elementy potokowe zgodnie z wymaganiami.
 

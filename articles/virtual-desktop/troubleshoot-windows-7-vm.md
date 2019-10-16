@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: 7fdb46ac7cffc4eb6a791304c7a6b58378806296
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 282a4d166e48a41015cb2f08496fe39419bdcaf7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679895"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374257"
 ---
-# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Rozwiązywanie problemów z maszynami wirtualnymi systemu Windows 7 w systemie Windows Virtual Desktop
+# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Rozwiązywanie problemów z maszynami wirtualnymi z systemem Windows 7 w usłudze Windows Virtual Desktop
 
 Ten artykuł służy do rozwiązywania problemów występujących podczas konfigurowania maszyn wirtualnych hosta sesji usług pulpitu wirtualnego systemu Windows.
 
@@ -39,11 +39,11 @@ Jeśli pulpit wirtualny systemu Windows nie może odnaleźć użytkownika lub po
 
 Aby naprawić ten błąd, Dodaj użytkownika do grupy użytkowników Pulpit zdalny:
 
-1. Otwórz Azure Portal.
+1. Otwórz witrynę Azure Portal.
 2. Wybierz maszynę wirtualną, na której zostanie wyświetlony komunikat o błędzie.
 3. Wybierz pozycję **Uruchom polecenie**.
 4. Uruchom następujące polecenie z `<username>` zastąpione nazwą użytkownika, który chcesz dodać:
    
    ```cmd
-   localgroup "Remote Desktop Users" <username> /add
+   net localgroup "Remote Desktop Users" <username> /add
    ```

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure elementu interfejsu użytkownika w polu tekstowym | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Common.TextBox interfejsu użytkownika dla witryny Azure portal.
+title: Element interfejsu użytkownika Azure TextBox | Microsoft Docs
+description: Opisuje element UI Microsoft. Common. TextBox dla Azure Portal. Służy do dodawania niesformatowanego tekstu.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b06e8b49efe8b6de720fa9bb819d4720e4f80fb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b72bfcf06f4c7e256dd227e4edf781c4500c7b19
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044552"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331603"
 ---
-# <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI element
-Formant, który może służyć do edycji niesformatowanego tekstu.
+# <a name="microsoftcommontextbox-ui-element"></a>Microsoft. Common. TextBox — element interfejsu użytkownika
+Kontrolka, która może służyć do edycji niesformatowanego tekstu.
 
-## <a name="ui-sample"></a>Przykład interfejsu użytkownika
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
+## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+![Microsoft. Common. TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
 
 ## <a name="schema"></a>Schemat
 ```json
@@ -44,10 +44,10 @@ Formant, który może służyć do edycji niesformatowanego tekstu.
 ```
 
 ## <a name="remarks"></a>Uwagi
-- Jeśli `constraints.required` ustawiono **true**, a następnie w polu tekstowym musi mieć wartość do sprawdzania poprawności pomyślnie. Wartość domyślna to **false**.
-- `constraints.regex` jest to wzorzec wyrażenia regularnego JavaScript. Jeśli zostanie określony, wartość w polu tekstowym musi pasujących do wzorca, aby sprawdzić poprawność pomyślnie. Wartość domyślna to **null**.
-- `constraints.validationMessage` jest to ciąg wyświetlany, gdy w polu tekstowym wartość weryfikacji nie powiedzie się. Jeśli nie zostanie określony, są używane komunikaty wbudowanych sprawdzania poprawności w polu tekstowym. Wartość domyślna to **null**.
-- Istnieje możliwość określenia wartości `constraints.regex` podczas `constraints.required` ustawiono **false**. W tym scenariuszu wartość nie jest wymagane dla tego pola tekstowego sprawdzić poprawność pomyślnie. Jeśli jest określony, musi być zgodna wzorzec wyrażenia regularnego.
+- Jeśli `constraints.required` jest ustawiona na **wartość true**, pole tekstowe musi mieć wartość, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **false**.
+- `constraints.regex` jest wzorcem wyrażenia regularnego JavaScript. Jeśli jest określony, wartość pola tekstowego musi być zgodna ze wzorcem, aby pomyślnie sprawdzić poprawność. Wartość domyślna to **null**.
+- `constraints.validationMessage` to ciąg, który będzie wyświetlany, gdy wartość pola tekstowego nie powiedzie się. Jeśli nie zostanie określony, będą używane wbudowane komunikaty weryfikacyjne pola tekstowego. Wartość domyślna to **null**.
+- Możliwe jest określenie wartości `constraints.regex`, gdy `constraints.required` ma wartość **false**. W tym scenariuszu wartość nie jest wymagana, aby pole tekstowe zostało pomyślnie zweryfikowane. Jeśli jest określony, musi być zgodny ze wzorcem wyrażenia regularnego.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
@@ -55,6 +55,6 @@ Formant, który może służyć do edycji niesformatowanego tekstu.
 "my text value"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
-* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Następne kroki
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
+* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

@@ -1,24 +1,24 @@
 ---
 title: Odwołanie artefaktu definicji widoku aplikacji zarządzanej przez platformę Azure
-description: Ten artykuł jest odwołaniem do wyświetlania artefaktu definicji.
+description: Zawiera przykład artefaktu definicji widoku dla Azure Managed Applications. Nazwa pliku to galerii. JSON.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: e60f26fe0a7144d768bac020d62c61cb92594914
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1f56f6c9c519bd29423d92a8dc8b8ce5904b523c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336545"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332636"
 ---
-# <a name="reference-view-definition-artifact"></a>Informacje ogólne: Wyświetlanie artefaktu definicji
+# <a name="reference-view-definition-artifact"></a>Reference: artefakt definicji widoku
 
 Ten artykuł jest odwołaniem do artefaktu *galerii. JSON* w Azure Managed Applications. Aby uzyskać więcej informacji na temat konfiguracji widoków tworzenia, zobacz [artefakt definicji widoku](concepts-view-definition.md).
 
-## <a name="view-definition"></a>Wyświetl definicję
+## <a name="view-definition"></a>Definicja widoku
 
 Poniższy kod JSON przedstawia przykład pliku *galerii. JSON* dla Azure Managed Applications:
 
@@ -87,8 +87,8 @@ Poniższy kod JSON przedstawia przykład pliku *galerii. JSON* dla Azure Managed
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Samouczek: Tworzenie aplikacji zarządzanej z niestandardowymi akcjami i zasobami](tutorial-create-managed-app-with-custom-provider.md)
-- [Odwoła Artefakt elementów interfejsu użytkownika](reference-createuidefinition-artifact.md)
-- [Odwoła Artefakt szablonu wdrożenia](reference-main-template-artifact.md)
+- [Odwołanie: artefakt elementów interfejsu użytkownika](reference-createuidefinition-artifact.md)
+- [Odwołanie: artefakt szablonu wdrożenia](reference-main-template-artifact.md)

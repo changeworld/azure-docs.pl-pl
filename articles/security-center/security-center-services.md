@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ed231bc05d58a40c93cea74081c027e5b49f5306
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254510"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331146"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Obsługiwane funkcje dostępne w Azure Security Center
 
@@ -56,7 +56,7 @@ W poniższych sekcjach przedstawiono Security Center funkcje, które są dostęp
 |[Ocena programu Endpoint Protection](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|Bezpłatnie|
 |Ocena szyfrowania dysku|✔|✔|X|✔|✔|X|Bezpłatnie|
 |Ocena luk w zabezpieczeniach innych firm|✔|X|X|✔|X|X|Bezpłatnie|
-|[Ocena zabezpieczeń sieci]()|✔|✔|X|✔|✔|X|Bezpłatnie|
+|[Ocena zabezpieczeń sieci](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)|✔|✔|X|✔|✔|X|Bezpłatnie|
 
 ### Obsługiwane rozwiązania programu Endpoint Protection<a name="endpoint-supported"></a>
 

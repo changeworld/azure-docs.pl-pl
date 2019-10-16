@@ -12,20 +12,20 @@ ms.topic: reference
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: cf39c8b5e204493380c095519e0ff25c3ce19f68
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 46e7f5b5376622be9a05265942b6aceb38feebac
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959900"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372450"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights Azure Functions obsługiwanych funkcji
 
-Azure Functions oferuje [wbudowaną integrację](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) z usługą Application Insights, która jest dostępna za pomocą interfejsu ILogger. Poniżej znajduje się lista obecnie obsługiwanych funkcji. Zapoznaj się z tematem "Przewodnik po [rozpoczęciu](https://github.com/Azure/Azure-Functions/wiki/App-Insights)Azure Functions".
+Azure Functions oferuje [wbudowaną integrację](../../azure-functions/functions-monitoring.md) z usługą Application Insights, która jest dostępna za pomocą interfejsu ILogger. Poniżej znajduje się lista obecnie obsługiwanych funkcji. Zapoznaj się z tematem "Przewodnik po [rozpoczęciu](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)Azure Functions".
 
 ## <a name="supported-features"></a>Obsługiwane funkcje
 
-| Azure Functions                       | Wersjach                | V2 (zapłon 2018)  | 
+| Stan usługi Funkcje Azure                       | Wersja 1                | V2 (zapłon 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
 | **Zestaw SDK Application Insights .NET**   | **2.5.0**       | **2.9.1**         |
 | | | | 
@@ -45,7 +45,7 @@ Azure Functions oferuje [wbudowaną integrację](https://docs.microsoft.com/azur
 | Próbkowanie &bull;                     | Tak             | Tak               | 
 | pulsy &bull;                   |                 | Tak               | 
 | | | | 
-| **Korelacja**                       |                   |                   |               
+| **Korelacj**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | Tak               | 
 | &bull; EventHub                       |                   | Tak               | 
 | | | | 
@@ -62,7 +62,7 @@ Automatyczne zbieranie liczników wydajności działa tylko na maszynach z syste
 
 Określone kryteria filtrów niestandardowych są wysyłane z powrotem do składnika metryki na żywo w zestawie Application Insights SDK. Filtry mogą potencjalnie zawierać informacje poufne, takie jak customerID. Kanał można zabezpieczyć przy użyciu klucza tajnego interfejsu API. Instrukcje można znaleźć w temacie [Zabezpieczenia kanału kontroli](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) .
 
-## <a name="sampling"></a>Sond
+## <a name="sampling"></a>Próbkowanie
 
 Azure Functions domyślnie włącza próbkowanie w ich konfiguracji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie próbkowania](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
 

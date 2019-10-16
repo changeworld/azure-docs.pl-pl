@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177767"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332834"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -108,7 +108,7 @@ Poniżej przedstawiono sposób ręcznego konfigurowania zalecanych liczników wy
 3. W sekcji **Ustawienia** wybierz pozycję **Ustawienia zaawansowane**.
 4. Następnie przejdź do **danych**liczników wydajności  > **systemu Windows** i Dodaj następujące liczniki:
 
-    -   Dysk logiczny (\*) \|% wolnego miejsca
+    -   Dysk logiczny (\*) \%Free miejsce
     -   Dysk logiczny (C:) \\Avg. Długość kolejki dysku
     -   Pamięć (\*) @no__t — 1Available MB
     -   Informacje o procesorze (\*) @no__t — czas 1Processor
@@ -142,7 +142,7 @@ Aby upewnić się, że obszar roboczy Log Analytics ma wstępnie skonfigurowane 
 3. Następnie przejdź do **danych** > **liczników wydajności systemu Windows**.
 4. Upewnij się, że następujące liczniki są wstępnie skonfigurowane:
 
-   - Dysk logiczny (\*) \|% wolnego miejsca: Wyświetla ilość wolnego miejsca na dysku w postaci wartości procentowej.
+   - Dysk logiczny (\*) \%Free Space: Wyświetla ilość wolnego miejsca na dysku w postaci wartości procentowej.
    - Dysk logiczny (C:) \\Avg. Długość kolejki dysku: długość żądania transferu dysku dla dysku C. Wartość nie może przekroczyć 2 przez dłuższy czas.
    - Pamięć (\*) \\Available MB: dostępna pamięć dla systemu (w megabajtach).
    - Informacje o procesorze (\*) \\Processor: wyrażony w procentach czas, przez który procesor poświęca na wykonywanie bezczynnego wątku.

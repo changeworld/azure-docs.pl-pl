@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 198ab5f567652a76d209168041f305b9da4d0b43
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.date: 10/14/2019
+ms.openlocfilehash: 49ad7334c418e29c821320608be729e060b4a8ae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147170"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331328"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Rejestrowanie inspekcji w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -21,27 +21,29 @@ Rejestrowanie inspekcji działań bazy danych w ramach Azure Database for Postgr
 > pgAudit jest w wersji zapoznawczej na Azure Database for PostgreSQL.
 > Rozszerzenie można włączyć tylko na serwerach Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
+Jeśli chcesz, aby w dziennikach na poziomie zasobów platformy Azure były wykonywane operacje, takie jak skalowanie obliczeniowe i magazynowe, zobacz [Dziennik aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md).
+
 ## <a name="usage-considerations"></a>Zagadnienia dotyczące użycia
-Domyślnie instrukcje log pgAudit są emitowane wraz z regularnymi instrukcjami dzienników przy użyciu funkcji rejestrowania standardowego Postgres. W Azure Database for PostgreSQL pliki. log można pobrać za pomocą Azure Portal lub interfejsu wiersza polecenia. Maksymalny rozmiar magazynu dla kolekcji plików to 1 GB, a każdy plik jest dostępny przez maksymalnie siedem dni (wartość domyślna to trzy dni). Ta usługa jest krótkoterminową opcją magazynu.
+Domyślnie instrukcje rejestrowania rozszerzenia pgAudit są emitowane wraz z normalnymi instrukcjami rejestrowania przy użyciu standardowej funkcji rejestrowania bazy danych Postgres. W usłudze Azure Database for PostgreSQL pliki LOG można pobrać z poziomu witryny Azure Portal lub interfejsu wiersza polecenia. Maksymalny rozmiar magazynu dla kolekcji plików to 1 GB, a każdy plik jest dostępny przez maksymalnie siedem dni (wartość domyślna to trzy dni). Ta usługa jest krótkoterminową opcją magazynu.
 
 Alternatywnie można skonfigurować wszystkie dzienniki, które mają być emitowane do usługi Dziennik diagnostyczny Azure Monitor. W przypadku włączenia rejestrowania diagnostycznego Azure Monitor dzienniki będą automatycznie wysyłane (w formacie JSON) do usługi Azure Storage, Event Hubs i/lub dzienników Azure Monitor, w zależności od wybranej opcji.
 
-Włączenie pgAudit generuje dużą liczbę dzienników na serwerze, który ma wpływ na wydajność i magazyn dzienników. Zalecamy korzystanie z usługi dzienników diagnostycznych platformy Azure, która oferuje więcej opcji magazynu, a także funkcje analizy i alertów. Zalecamy wyłączenie standardowego rejestrowania, aby zmniejszyć wpływ dodatkowego rejestrowania na wydajność:
+Włączenie rozszerzenia pgAudit powoduje generowanie dużej liczby dzienników na serwerze, co ma wpływ na wydajność i magazyn dzienników. Zalecamy korzystanie z usługi dzienników diagnostycznych platformy Azure, która oferuje długoterminowe opcje magazynowania, a także funkcje analizy i alertów. Zalecamy wyłączenie standardowego rejestrowania, aby zmniejszyć wpływ dodatkowego rejestrowania na wydajność:
 
-   1. Ustaw parametr `logging_collector` na off. 
+   1. Ustaw parametr `logging_collector`. 
    2. Uruchom ponownie serwer, aby zastosować tę zmianę.
 
 Aby dowiedzieć się, jak skonfigurować rejestrowanie do usługi Azure Storage, Event Hubs lub dzienników Azure Monitor, odwiedź sekcję dzienniki diagnostyczne w [artykule Dzienniki serwera](concepts-server-logs.md).
 
 ## <a name="installing-pgaudit"></a>Instalowanie pgAudit
 
-Aby zainstalować pgAudit, należy dołączyć go do udostępnionych bibliotek wstępnego ładowania serwera. Zmiana `shared_preload_libraries` parametru Postgres wymaga ponownego uruchomienia serwera. Parametry można zmienić za pomocą [Azure Portal](howto-configure-server-parameters-using-portal.md), interfejsu [wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md)lub [API REST](/rest/api/postgresql/configurations/createorupdate).
+Aby zainstalować pgAudit, należy dołączyć go do udostępnionych bibliotek wstępnego ładowania serwera. Zmiana parametru `shared_preload_libraries` Postgres wymaga ponownego uruchomienia serwera. Parametry można zmienić za pomocą [Azure Portal](howto-configure-server-parameters-using-portal.md), interfejsu [wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md)lub [API REST](/rest/api/postgresql/configurations/createorupdate).
 
 Przy użyciu [Azure Portal](https://portal.azure.com):
 
    1. Wybierz serwer usługi Azure Database for PostgreSQL.
    2. Na pasku bocznym wybierz opcję **parametry serwera**.
-   3. `shared_preload_libraries` Wyszukaj parametr.
+   3. Wyszukaj parametr `shared_preload_libraries`.
    4. Wybierz pozycję **pgaudit**.
    5. Uruchom ponownie serwer, aby zastosować zmianę.
 
@@ -63,27 +65,27 @@ pgAudit umożliwia skonfigurowanie rejestrowania inspekcji sesji lub obiektu. [R
 Po [zainstalowaniu pgAudit](#installing-pgaudit)można skonfigurować jego parametry, aby rozpocząć rejestrowanie. [Dokumentacja pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) zawiera definicje każdego z parametrów. Najpierw Przetestuj parametry i upewnij się, że otrzymujesz oczekiwane zachowanie.
 
 > [!NOTE]
-> Ustawienie `pgaudit.log_client` na włączone spowoduje przekierowanie dzienników do procesu klienta (na przykład PSQL) zamiast zapisywania do pliku. To ustawienie powinno być zwykle wyłączone.
+> Ustawienie `pgaudit.log_client` spowoduje przekierowanie dzienników do procesu klienta (na przykład PSQL) zamiast zapisywania do pliku. To ustawienie powinno być zwykle wyłączone.
 
 > [!NOTE]
-> `pgaudit.log_level`jest włączona tylko wtedy `pgaudit.log_client` , gdy jest włączona. Ponadto w Azure Portal występuje obecnie usterka z `pgaudit.log_level`: pole kombi jest wyświetlane, co oznacza, że można wybrać wiele poziomów. Należy jednak wybrać tylko jeden poziom. 
+> `pgaudit.log_level` jest włączone tylko wtedy, gdy jest włączona funkcja `pgaudit.log_client`. Ponadto w Azure Portal istnieje obecnie usterka z `pgaudit.log_level`: pole kombi jest wyświetlane, co oznacza, że można wybrać wiele poziomów. Możliwe jest wybranie jednak tylko jednego poziomu. 
 
 > [!NOTE]
-> W Azure Database for PostgreSQL `pgaudit.log` nie można ustawić `-` za pomocą skrótu podpisywania (minus), zgodnie z opisem w dokumentacji pgAudit. Wszystkie wymagane klasy instrukcji (odczyt, zapis itp.) powinny być określone indywidualnie.
+> W Azure Database for PostgreSQL nie można ustawić `pgaudit.log` przy użyciu skrótu podpisywanie `-` (minus) zgodnie z opisem w dokumentacji pgAudit. Wszystkie wymagane klasy instrukcji (READ, WRITE itp.) powinny zostać określone indywidualnie.
 
 ### <a name="audit-log-format"></a>Format dziennika inspekcji
-Każdy wpis inspekcji jest wskazywany `AUDIT:` przez blisko początku wiersza dziennika. Format reszty wpisu jest szczegółowo opisany w [dokumentacji pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
+Każdy wpis inspekcji jest wskazywany przez `AUDIT:` blisko początku wiersza dziennika. Format reszty wpisu jest szczegółowo opisany w [dokumentacji pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
 
-Jeśli potrzebujesz innych pól do spełnienia wymagań dotyczących inspekcji, użyj parametru `log_line_prefix`Postgres. `log_line_prefix`jest ciągiem, który jest wyprowadzany na początku każdego wiersza dziennika Postgres. Na przykład następujące `log_line_prefix` ustawienie zawiera sygnaturę czasową, nazwę użytkownika, nazwa bazy danych i identyfikator procesu:
+Jeśli potrzebujesz innych pól do spełnienia wymagań dotyczących inspekcji, użyj parametru Postgres `log_line_prefix`. `log_line_prefix` to ciąg, który jest wyprowadzany na początku każdego wiersza dziennika Postgres. Na przykład następujące ustawienie `log_line_prefix` zawiera sygnaturę czasową, nazwę użytkownika, nazwa bazy danych i identyfikator procesu:
 
 ```
 t=%m u=%u db=%d pid=[%p]:
 ```
 
-Aby dowiedzieć się `log_line_prefix`więcej, odwiedź [dokumentację PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
+Aby dowiedzieć się więcej na temat `log_line_prefix`, zapoznaj się z [dokumentacją PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
 
 ### <a name="getting-started"></a>Wprowadzenie
-Aby szybko rozpocząć pracę, ustaw `pgaudit.log` na `WRITE`, a następnie otwórz dzienniki, aby przejrzeć dane wyjściowe. 
+Aby szybko rozpocząć pracę, ustaw wartość `pgaudit.log` na `WRITE` i Otwórz dzienniki, aby przejrzeć dane wyjściowe. 
 
 
 ## <a name="next-steps"></a>Następne kroki

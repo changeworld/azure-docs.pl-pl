@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą ThousandEyes | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i ThousandEyes.
+title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą ThousandEyes | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i ThousandEyes.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,205 +13,160 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: bb78b014ffe2d40b9a61da8e47893056e435ddc6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cd179049f88454c62244cf1819cee08ef78d0633
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088653"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373252"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ThousandEyes
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą ThousandEyes
 
-W tym samouczku dowiesz się, jak zintegrować ThousandEyes w usłudze Azure Active Directory (Azure AD).
-Integrowanie ThousandEyes z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę ThousandEyes z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi ThousandEyes z usługą Azure AD można:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do ThousandEyes.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do ThousandEyes (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do ThousandEyes.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi ThousandEyes przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą ThousandEyes, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* ThousandEyes pojedynczego logowania jednokrotnego włączonych subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) ThousandEyes.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje ThousandEyes **SP** jednokrotne logowanie inicjowane przez
+* ThousandEyes obsługuje usługę **SP i dostawcy tożsamości** zainicjowano Logowanie jednokrotne
+* ThousandEyes obsługuje [ **Automatyczne** Inicjowanie obsługi użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
 
-* Obsługuje ThousandEyes [ **automatyczne** aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+> [!NOTE]
+> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
 
 ## <a name="adding-thousandeyes-from-the-gallery"></a>Dodawanie ThousandEyes z galerii
 
-Aby skonfigurować integrację ThousandEyes w usłudze Azure AD, należy dodać ThousandEyes z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu ThousandEyes z usługą Azure AD, musisz dodać ThousandEyes z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać ThousandEyes z galerii, wykonaj następujące czynności:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **ThousandEyes** w polu wyszukiwania.
+1. Wybierz pozycję **ThousandEyes** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-thousandeyes"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla ThousandEyes
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą ThousandEyes przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w ThousandEyes.
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą ThousandEyes, wykonaj następujące bloki konstrukcyjne:
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj Logowanie jednokrotne](#configure-thousandeyes-sso)** w usłudze ThousandEyes, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    * **[Utwórz użytkownika testowego ThousandEyes](#create-thousandeyes-test-user)** , aby dysponować odpowiednikiem B. Simon w ThousandEyes, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-4. W polu wyszukiwania wpisz **ThousandEyes**, wybierz opcję **ThousandEyes** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **ThousandEyes** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-     ![ThousandEyes na liście wyników](common/search-new-app.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+1. W sekcji **Podstawowa konfiguracja języka SAML** aplikacja została wstępnie skonfigurowana i wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **Zapisz** .
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą ThousandEyes w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w ThousandEyes musi zostać ustanowione.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą ThousandEyes, należy wykonać poniższe bloki konstrukcyjne:
-
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie ThousandEyes logowania jednokrotnego](#configure-thousandeyes-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego ThousandEyes](#create-thousandeyes-test-user)**  — aby odpowiednikiem Britta Simon w ThousandEyes połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
-
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z ThousandEyes, wykonaj następujące czynności:
-
-1. W [witryny Azure portal](https://portal.azure.com/)na **ThousandEyes** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
-
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
-
-    ![ThousandEyes domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-signonurl.png)
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://app.thousandeyes.com/login/sso`
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificatebase64.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-6. Na **Konfigurowanie ThousandEyes** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie ThousandEyes** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    b. Identyfikator usługi Azure AD
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-    c. Adres URL wylogowywania
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
-### <a name="configure-thousandeyes-single-sign-on"></a>Konfigurowanie ThousandEyes logowanie jednokrotne
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-1. W oknie przeglądarki internetowej innej, zaloguj się na swoje **ThousandEyes** witryny firmy jako administrator.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi ThousandEyes.
+
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **ThousandEyes**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
+
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+## <a name="configure-thousandeyes-sso"></a>Konfigurowanie logowania jednokrotnego ThousandEyes
+
+1. W innym oknie przeglądarki sieci Web Zaloguj się do firmowej witryny **ThousandEyes** jako administrator.
 
 2. W menu u góry kliknij pozycję **Settings** (Ustawienia).
 
     ![Ustawienia](./media/thousandeyes-tutorial/ic790066.png "Ustawienia")
 
-3. Kliknij przycisk **konta**
+3. Kliknij pozycję **konto**
 
-    ![Konto](./media/thousandeyes-tutorial/ic790067.png "konta")
+    ![](./media/thousandeyes-tutorial/ic790067.png "Konto") konta
 
-4. Kliknij przycisk **zabezpieczeń i uwierzytelniania** kartę.
+4. Kliknij kartę **uwierzytelnianie & zabezpieczeń** .
 
-    ![Zabezpieczenia i uwierzytelnianie](./media/thousandeyes-tutorial/ic790068.png "zabezpieczeń i uwierzytelniania")
+    Zabezpieczenia(./media/thousandeyes-tutorial/ic790068.png "& uwierzytelnianie") ![&]zabezpieczeń
 
-5. W **konfiguracji logowania jednokrotnego** sekcji, wykonaj następujące czynności:
+5. W sekcji **Konfigurowanie logowania jednokrotnego** wykonaj następujące czynności:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/thousandeyes-tutorial/ic790069.png "skonfigurować logowanie jednokrotne")
+    ![Skonfiguruj](./media/thousandeyes-tutorial/ic790069.png "Logowanie") jednokrotne do instalacji
 
-    a. Wybierz **włączyć rejestrację jednokrotną**.
+    a. Wybierz pozycję **Włącz logowanie jednokrotne**.
 
-    b. W **adres URL strony logowania** pola tekstowego, Wklej **adres URL logowania**, które zostały skopiowane z witryny Azure portal.
+    b. W polu tekstowym **adres URL strony logowania** wklej **adres URL logowania**, który został skopiowany z Azure Portal.
 
-    c. W **adres URL strony wylogowania** pola tekstowego, Wklej **adres URL wylogowania**, które zostały skopiowane z witryny Azure portal.
+    d. W polu tekstowym **adres URL strony wylogowywania** wklej **adres URL wylogowania**, który został skopiowany z Azure Portal.
 
-    d. **Wystawca dostawcy tożsamości** pola tekstowego, Wklej **usługi Azure AD identyfikator**, które zostały skopiowane z witryny Azure portal.
+    d. Pole tekstowe **wystawcy dostawcy tożsamości** , wklej **Identyfikator usługi Azure AD**, który został skopiowany z Azure Portal.
 
-    e. W **certyfikatu weryfikacji**, kliknij przycisk **Choose file**, a następnie przekaż certyfikat został pobrany z witryny Azure portal.
+    e. W obszarze **certyfikat weryfikacji**kliknij pozycję **Wybierz plik**, a następnie przekaż certyfikat pobrany z Azure Portal.
 
-    f. Kliknij pozycję **Zapisz**.
+    f. Kliknij przycisk **Save** (Zapisz).
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-thousandeyes-test-user"></a>Utwórz użytkownika testowego ThousandEyes
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
-
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do ThousandEyes.
-
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **ThousandEyes**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-2. Na liście aplikacji wybierz **ThousandEyes**.
-
-    ![Link ThousandEyes na liście aplikacji](common/all-applications.png)
-
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
-
-### <a name="create-thousandeyes-test-user"></a>Tworzenie użytkownika testowego ThousandEyes
-
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w ThousandEyes. ThousandEyes obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów dotyczących konfigurowania automatycznej aprowizacji użytkowników można znaleźć [tutaj](thousandeyes-provisioning-tutorial.md).
+Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w ThousandEyes. ThousandEyes obsługuje automatyczne Inicjowanie obsługi użytkowników, która jest domyślnie włączona. Więcej szczegółów dotyczących konfigurowania automatycznego inicjowania obsługi użytkowników można znaleźć [tutaj](thousandeyes-provisioning-tutorial.md).
 
 **Jeśli potrzebujesz utworzyć użytkownika ręcznie, wykonaj następujące czynności:**
 
-1. Zaloguj się do witryny firmy ThousandEyes jako administrator.
+1. Zaloguj się do firmowej witryny ThousandEyes jako administrator.
 
 2. Kliknij pozycję **Ustawienia**.
 
@@ -219,40 +174,43 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Thousa
 
 3. Kliknij pozycję **Account** (Konto).
 
-    ![Konto](./media/thousandeyes-tutorial/IC790067.png "konta")
+    ![](./media/thousandeyes-tutorial/IC790067.png "Konto") konta
 
-4. Kliknij przycisk **konta & użytkowników** kartę.
+4. Kliknij kartę **konta & użytkownicy** .
 
-    ![Konta & użytkowników](./media/thousandeyes-tutorial/IC790073.png "konta & użytkowników")
+    ![Konta & kont użytkowników](./media/thousandeyes-tutorial/IC790073.png "& użytkowników")
 
-5. W **Dodawanie użytkowników i kont** sekcji, wykonaj następujące czynności:
+5. W sekcji **Dodawanie użytkowników & kont** wykonaj następujące czynności:
 
-    ![Dodaj konta użytkowników](./media/thousandeyes-tutorial/IC790074.png "dodać konta użytkowników")
+    ![Dodawanie kont użytkowników](./media/thousandeyes-tutorial/IC790074.png "Dodawanie kont użytkowników")
 
-    a. W **nazwa** polu tekstowym wpisz nazwę użytkownika, takie jak **Britta Simon**.
+    a. W polu tekstowym **Nazwa** wpisz nazwę użytkownika, na przykład **B. Simon**.
 
-    b. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak brittasimon@contoso.com.
+    b. W polu tekstowym **adres e-mail** wpisz adres e-mail użytkownika, taki jak b.simon@contoso.com.
 
-    b. Kliknij przycisk **dodać nowego użytkownika do konta**.
+    b. Kliknij pozycję **Dodaj nowego użytkownika do konta**.
 
     > [!NOTE]
-    > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail, w tym link do potwierdzenia i aktywować konto.
+    > Właściciel konta Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie i aktywowanie konta.
 
 > [!NOTE]
-> Można użyć jakichkolwiek innych ThousandEyes użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez ThousandEyes do świadczenia usługi Azure Active Directory kont użytkowników.
+> Do aprowizacji Azure Active Directory kontami użytkowników można używać innych narzędzi do tworzenia kont użytkowników lub interfejsów API udostępnionych przez program ThousandEyes.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-Po kliknięciu kafelka ThousandEyes w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze ThousandEyes, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+Po kliknięciu kafelka ThousandEyes w panelu dostępu należy automatycznie zalogować się do ThousandEyes, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj ThousandEyes z usługą Azure AD](https://aad.portal.azure.com/)
 
 - [Konfigurowanie aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)

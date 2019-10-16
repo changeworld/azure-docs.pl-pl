@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 1aec65ab08cd1c0711e51a222a8e674ef56ef508
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 24886d8b8a7b679f6474789748a002c8d045a746
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312185"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331276"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Dodawanie wyszukiwania pełnotekstowego do danych obiektów blob platformy Azure przy użyciu Azure Search
 
@@ -28,21 +28,28 @@ Uruchamiając indeksator obiektów BLOB w kontenerze, można wyodrębnić tekst 
 Opcjonalnie można dołączyć [wzbogacanie AI](search-blob-ai-integration.md) w formie *zestawu umiejętności* , aby utworzyć nowe informacje i strukturę z obiektów blob, w tym tekstową reprezentację plików obrazów. Dodanie wzbogacania AI rozszerza listę typów zawartości w taki sposób, aby obejmowała JPEG i PNG. Dodaje umiejętności przetwarzania obrazów, takie jak [optyczne rozpoznawanie znaków (OCR)](cognitive-search-skill-ocr.md) i identyfikacja [funkcji wizualizacji](cognitive-search-skill-image-analysis.md) , które umożliwiają indeksowanie zawartości wizualnej znalezionej w każdym obrazie.
 
 ## <a name="search-through-your-blob-metadata"></a>Przeszukiwanie metadanych obiektów BLOB
-Typowym scenariuszem, który ułatwia sortowanie za pomocą obiektów BLOB dowolnego typu zawartości, jest indeksowanie zarówno niestandardowych metadanych, jak i właściwości systemu dla każdego obiektu BLOB. W ten sposób informacje o wszystkich obiektach Blob są indeksowane niezależnie od typu dokumentu. Następnie można przystępować do sortowania, filtrowania i aspektów całej zawartości magazynu obiektów BLOB.
+Typowym scenariuszem, który ułatwia sortowanie za pomocą obiektów BLOB dowolnego typu zawartości, jest indeksowanie zarówno niestandardowych metadanych, jak i właściwości systemu dla każdego obiektu BLOB. W ten sposób informacje o wszystkich obiektach Blob są indeksowane niezależnie od typu dokumentu, przechowywane w indeksie na Azure Search. Korzystając z nowego indeksu, można następnie posortować, filtrować i aspektować zawartość całej zawartości magazynu obiektów BLOB.
 
-[Dowiedz się więcej na temat indeksowania metadanych obiektów BLOB.](https://aka.ms/azsblobmetadataindexing)
+### <a name="indexing-json-blobs"></a>Indeksowanie obiektów BLOB JSON
+Azure Search można skonfigurować do wyodrębniania zawartości strukturalnej znalezionej w obiektach Blob, które zawierają kod JSON. Azure Search może odczytywać obiekty blob JSON i analizować zawartość strukturalną do odpowiednich pól Azure Search dokumentu. Azure Search może również przyjmować obiekty blob, które zawierają tablicę obiektów JSON i mapują każdy element do oddzielnego Azure Search dokumentu. Można ustawić tryb analizowania, który ma wpływ na typ obiektu JSON utworzonego przez indeksator.
 
-## <a name="index-and-search-through-json-blobs"></a>Indeksowanie obiektów BLOB JSON i ich wyszukiwanie
-Azure Search można skonfigurować do wyodrębniania zawartości strukturalnej znalezionej w obiektach Blob, które zawierają kod JSON. Azure Search może odczytywać obiekty blob JSON i analizować zawartość strukturalną do odpowiednich pól Azure Search dokumentu. Azure Search może również przyjmować obiekty blob, które zawierają tablicę obiektów JSON i mapują każdy element do oddzielnego Azure Search dokumentu.
+## <a name="how-to-get-started"></a>Jak zacząć
 
-Analiza JSON nie jest obecnie konfigurowalna za pomocą portalu. [Dowiedz się więcej o analizie JSON w Azure Search.](https://aka.ms/azsjsonblobindexing)
-
-## <a name="quickstart"></a>Szybki start
-Azure Search można dodać do obiektów BLOB bezpośrednio ze strony portalu usługi BLOB Storage.
+Możesz rozpocząć bezpośrednio na stronie portalu konta magazynu. Kliknij przycisk **dodaj Azure Search** , aby uruchomić przepływ, w którym można wybrać istniejącą usługę Azure Search lub utworzyć nową usługę. Jeśli utworzysz nową usługę, wyjdziesz w środowisku portalu Twojego konta magazynu. Możesz przejść z powrotem do strony portalu magazynu i ponownie wybrać opcję **dodaj Azure Search** , w której można wybrać istniejącą usługę. 
 
 ![](./media/search-blob-storage-integration/blob-blade.png)
 
-Kliknij przycisk **dodaj Azure Search** , aby uruchomić przepływ, w którym można wybrać istniejącą usługę Azure Search lub utworzyć nową usługę. Jeśli utworzysz nową usługę, wyjdziesz w środowisku portalu Twojego konta magazynu. Możesz przejść z powrotem do strony portalu magazynu i ponownie wybrać opcję **dodaj Azure Search** , w której można wybrać istniejącą usługę.
+Jeśli masz już istniejącą usługę wyszukiwania w ramach tej samej subskrypcji, kliknij przycisk **dodaj Azure Search** otwiera Kreatora importu danych, dzięki czemu możesz natychmiast przejść od indeksowania, wzbogacania i definicji indeksu.
+
+Możesz również [utworzyć usługę Azure Search](search-create-index-portal.md) i zdefiniować indeksatory obiektów blob, które pobierają zawartość z kontenerów obiektów BLOB.
+
+Poniższe przewodniki Szybki Start i samouczki korzystają z danych obiektów blob:
+
++ [Indeksowanie obiektów BLOB ze strukturą za pomocą interfejsów API REST](search-semi-structured-data.md)
++ [Tworzenie potoku wzbogacania AI w portalu](cognitive-search-quickstart-blob.md)
++ [Utwórz potok wzbogacania AI wC#](cognitive-search-tutorial-blob-dotnet.md)
 
 ## <a name="next-steps"></a>Następne kroki
-Więcej informacji na temat Azure Search obiektu BLOB Indexer zawiera pełna [Dokumentacja](https://aka.ms/azsblobindexer).
+
+> [!div class="nextstepaction"]
+> [Konfigurowanie indeksatora obiektów BLOB](search-howto-indexing-azure-blob-storage.md) 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034c02c89c6e720311b3dc36428035e8cbdd2b3b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835220"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374093"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak uzyskać certyfikat AppSource dla Azure Active Directory
 
@@ -33,18 +33,18 @@ Aby wyświetlić autonomiczną aplikację SaaS na AppSource, aplikacja musi akce
 
 ## <a name="guides-and-code-samples"></a>Przewodniki i przykłady kodu
 
-Jeśli chcesz dowiedzieć się, jak zintegrować aplikację z usługą Azure AD przy użyciu funkcji Open ID Connect, postępuj zgodnie z naszymi przewodnikami i przykładami kodu w [przewodniku dewelopera Azure Active Directory](v1-overview.md#get-started "wprowadzenie do usługi Azure AD dla deweloperów").
+Jeśli chcesz dowiedzieć się, jak zintegrować aplikację z usługą Azure AD przy użyciu funkcji Open ID Connect, postępuj zgodnie z naszymi przewodnikami i przykładami kodu w [przewodniku dewelopera Azure Active Directory](v1-overview.md#get-started "Wprowadzenie do usługi Azure AD dla deweloperów").
 
 ## <a name="multi-tenant-applications"></a>Aplikacje z wieloma dzierżawcami
 
 *Aplikacja z wieloma dzierżawcami* to aplikacja akceptująca logowania od użytkowników z dowolnej firmy lub organizacji, która ma usługę Azure AD bez konieczności oddzielnego wystąpienia, konfiguracji lub wdrożenia. AppSource zaleca, aby aplikacje implementujące wiele dzierżawców mogły korzystać z bezpłatnej wersji próbnej *pojedynczego kliknięcia* .
 
 Aby włączyć obsługę wielu dzierżawców w aplikacji, wykonaj następujące kroki:
-1. Ustaw `Multi-Tenanted` [](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)właściwość na informacje o rejestracji aplikacji w Azure Portal. `Yes` Domyślnie aplikacje utworzone w Azure Portal są konfigurowane jako *[pojedyncze dzierżawy](#single-tenant-applications)* .
-1. Zaktualizuj swój kod, aby wysyłać żądania do `common` punktu końcowego. Aby to zrobić, zaktualizuj punkt końcowy z `https://login.microsoftonline.com/{yourtenant}` do `https://login.microsoftonline.com/common*`.
+1. Ustaw właściwość `Multi-Tenanted` na `Yes` informacji o rejestracji aplikacji w [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Domyślnie aplikacje utworzone w Azure Portal są konfigurowane jako *[pojedyncze dzierżawy](#single-tenant-applications)* .
+1. Zaktualizuj swój kod, aby wysyłać żądania do punktu końcowego `common`. Aby to zrobić, zaktualizuj punkt końcowy z `https://login.microsoftonline.com/{yourtenant}` do `https://login.microsoftonline.com/common*`.
 1. W przypadku niektórych platform, takich jak ASP .NET, należy również zaktualizować kod w celu zaakceptowania wielu wystawców.
 
-Aby uzyskać więcej informacji na temat wielu dzierżawców, zobacz Jak zalogować się do [każdego użytkownika usługi Azure Active Directory (Azure AD) przy użyciu wzorca aplikacji](howto-convert-app-to-be-multi-tenant.md)wielodostępnych.
+Aby uzyskać więcej informacji na temat wielu dzierżawców, zobacz [Jak zalogować się do każdego użytkownika usługi Azure Active Directory (Azure AD) przy użyciu wzorca aplikacji wielodostępnych](howto-convert-app-to-be-multi-tenant.md).
 
 ### <a name="single-tenant-applications"></a>Aplikacje z jedną dzierżawą
 
@@ -113,20 +113,20 @@ Aby uzyskać więcej informacji na temat korzystania z wersji próbnej usługi A
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji na temat tworzenia aplikacji obsługujących logowania do usługi Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+- Aby uzyskać więcej informacji na temat tworzenia aplikacji obsługujących logowania do usługi Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios).
 - Aby uzyskać informacje na temat sposobu wyświetlania listy aplikacji SaaS w programie AppSource, zobacz temat [Informacje o partnerze AppSource](https://appsource.microsoft.com/partners)
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 
 W przypadku integracji z usługą Azure AD w celu zapewnienia pomocy technicznej firma Microsoft używa [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) ze społecznością.
 
-Zdecydowanie zalecamy, aby zadać pytania Stack Overflow pierwsze i przeglądać istniejące problemy, aby zobaczyć, czy ktoś zażądał wcześniej pytania. Upewnij się, że Twoje pytania lub komentarze są otagowane przy użyciu [ `[azure-active-directory]` i `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Zdecydowanie zalecamy, aby zadać pytania Stack Overflow pierwsze i przeglądać istniejące problemy, aby zobaczyć, czy ktoś zażądał wcześniej pytania. Upewnij się, że Twoje pytania lub komentarze są oznaczone [`[azure-active-directory]` i `[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 
 Skorzystaj z poniższej sekcji komentarzy, aby przekazać Opinie i popomóc nam udoskonalić zawartość i kształtować ją.
 
 <!--Reference style links -->
-[AAD-Auth-Scenarios]:authentication-scenarios.md
-[AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
+[AAD-Auth-Scenarios-Browser-To-WebApp]:v1-authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started

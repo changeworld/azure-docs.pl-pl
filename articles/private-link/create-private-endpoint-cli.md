@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 30394ba7b71d7dcb4233e5dca341dda47fd9ffa7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219371"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376314"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Tworzenie prywatnego punktu końcowego przy użyciu interfejsu wiersza polecenia platformy Azure
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Dzięki temu zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie z zasobami łączy prywatnych. W tym przewodniku szybki start dowiesz się, jak utworzyć MASZYNę wirtualną w sieci wirtualnej, SQL Database serwerze z prywatnym punktem końcowym przy użyciu interfejsu wiersza polecenia platformy Azure. Następnie można uzyskać dostęp do maszyny wirtualnej i bezpiecznie uzyskać dostęp do prywatnego zasobu linku (w tym przykładzie do prywatnego serwera Azure SQL Database). 
@@ -21,7 +21,7 @@ Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja jest zainstalowana, uruchom polecenie `az --version`. Aby uzyskać informacje na temat instalacji i uaktualnienia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Przed utworzeniem dowolnego zasobu należy utworzyć grupę zasobów, która będzie hostować Virtual Network. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Ten przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *westcentralus* :
 
@@ -39,7 +39,7 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 ## <a name="disable-subnet-private-endpoint-policies"></a>Wyłącz zasady prywatnego punktu końcowego podsieci 
-Platforma Azure wdraża zasoby w podsieci w sieci wirtualnej, dlatego należy utworzyć lub zaktualizować podsieć w celu wyłączenia zasad sieci prywatnych punktów końcowych. Zaktualizuj konfigurację podsieci o nazwie * Moja podsieć * * za pomocą elementu [AZ Network VNET Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Platforma Azure wdraża zasoby w podsieci w sieci wirtualnej, dlatego należy utworzyć lub zaktualizować podsieć w celu wyłączenia zasad sieci prywatnych punktów końcowych. Zaktualizuj konfigurację podsieci o nazwie Moja *podsieć* with [AZ Network VNET Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -81,7 +81,7 @@ az sql db create \
     --capacity 1 
 ```
 
-Zwróć uwagę, że identyfikator SQL Server jest ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` podobny do tego, że w następnym kroku zostanie użyty Identyfikator SQL Server. 
+Zwróć uwagę, że identyfikator SQL Server jest podobny do @ no__t-0 spowoduje użycie identyfikatora SQL Server w następnym kroku. 
 
 ## <a name="create-the-private-endpoint"></a>Tworzenie prywatnego punktu końcowego 
 Utwórz prywatny punkt końcowy dla serwera SQL Database w Virtual Network: 
@@ -149,7 +149,7 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 W tej sekcji nawiążesz połączenie z serwerem SQL Database z maszyny wirtualnej przy użyciu prywatnego punktu końcowego.
 
  1. W Pulpit zdalny *myVM*Otwórz program PowerShell.
- 2. Wprowadź polecenie nslookup  MyServer.Database.Windows.NET, że zostanie wyświetlony komunikat podobny do tego: 
+ 2. Wprowadź polecenie nslookup no__t. Database. Windows. NET @-0 spowoduje to wyświetlenie komunikatu podobnego do tego: 
 
 ```
       Server:  UnKnown 
@@ -160,10 +160,10 @@ W tej sekcji nawiążesz połączenie z serwerem SQL Database z maszyny wirtualn
       Aliases:  myserver.database.windows.net 
 ```
  3. Zainstaluj SQL Server Management Studio 
- 4. W obszarze Połącz z serwerem wprowadź lub wybierz następujące informacje: Typ serwera: Wybierz pozycję aparat bazy danych.
- Nazwa serwera: Wybierz nazwę użytkownika myserver.database.windows.net: Wprowadź nazwę użytkownika podaną podczas tworzenia.
- Hasło Wprowadź hasło podane podczas tworzenia.
- Zapamiętaj hasło: Wybierz pozycję tak.
+ 4. W obszarze Połącz z serwerem wprowadź lub wybierz następujące informacje: typ serwera: wybierz pozycję aparat bazy danych.
+ Nazwa serwera: wybierz pozycję Nazwa użytkownika myserver.database.windows.net: Wprowadź nazwę użytkownika podaną podczas tworzenia.
+ Hasło: wprowadź hasło podane podczas tworzenia.
+ Zapamiętaj hasło: wybierz pozycję tak.
  
  5. Wybierz pozycję **Połącz**.
  6. Przeglądaj **bazy danych** z menu po lewej stronie.

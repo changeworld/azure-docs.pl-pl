@@ -1,136 +1,136 @@
 ---
-title: Ponowne włączanie ochrony maszyn wirtualnych platformy Azure do lokacji lokalnej podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych | Dokumentacja firmy Microsoft
-description: Po przejściu w tryb failover na platformie Azure podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych Dowiedz się, jak się nie powieść powrót po awarii z platformy Azure do lokacji lokalnej.
+title: Ponowne włączanie ochrony maszyn wirtualnych z platformy Azure do lokacji lokalnej podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych | Microsoft Docs
+description: Po przejściu w tryb failover na platformę Azure podczas odzyskiwania po awarii maszyn wirtualnych i serwerów fizycznych programu VMware należy dowiedzieć się, jak wrócić po awarii z platformy Azure do lokacji lokalnej.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/12/2019
+ms.date: 10/14/2019
 ms.author: mayg
-ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482935"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331057"
 ---
-# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ponowne włączanie ochrony i zakończyć się niepowodzeniem maszynami wstecz do lokacji lokalnej po włączeniu trybu failover na platformie Azure
+# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ponowne włączanie ochrony maszyn wirtualnych i ich przywracanie do lokacji lokalnej po przejściu do trybu failover na platformie Azure
 
-Po [trybu failover](site-recovery-failover.md) lokalnych maszyn wirtualnych z programu VMware lub serwery fizyczne do platformy Azure, pierwszym krokiem przechodzenia do lokacji sieci lokalnej jest do ponownego włączenia ochrony maszyn wirtualnych platformy Azure, które zostały utworzone podczas pracy awaryjnej. W tym artykule opisano, jak to zrobić. 
+Po przejściu do [trybu failover](site-recovery-failover.md) lokalnych maszyn wirtualnych VMware lub serwerów fizycznych na platformie Azure pierwszy krok powrotu po awarii do lokacji lokalnej polega na ponownej ochronie maszyn wirtualnych platformy Azure, które zostały utworzone podczas pracy w trybie failover. W tym artykule opisano, jak to zrobić. 
 
-Aby uzyskać szybki przegląd Obejrzyj poniższy film o tym, jak do trybu failover z platformy Azure do lokacji lokalnej.<br /><br />
+Aby zapoznać się z krótkim omówieniem, Obejrzyj poniższe wideo dotyczące sposobu przełączenia w tryb failover z platformy Azure do lokacji lokalnej.<br /><br />
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Jeśli szablon jest używany do tworzenia maszyn wirtualnych, upewnij się, że każda maszyna wirtualna ma swój własny identyfikator UUID dysków. UUID lokalnej maszyny wirtualnej jest niezgodna ze UUID głównego elementu docelowego, ponieważ oba zostały utworzone przy użyciu tego samego szablonu, ponownego włączania ochrony kończy się niepowodzeniem. Wdróż innego głównego elementu docelowego, który nie został utworzony na podstawie tego samego szablonu. Zanotuj następujące informacje:
-- Jeśli chcesz powrócić po awarii do alternatywnego vCenter, upewnij się, że są odnajdywane nowego serwera vCenter i główny serwer docelowy. Typowym symptomem jest, że magazynów danych jest niedostępna lub nie są widoczne w **ponownie włączyć ochronę** okno dialogowe.
-- Replikacja w środowisku lokalnym, potrzebne są zasady powrotu po awarii. Te zasady są tworzone automatycznie podczas tworzenia zasad kierunku do przodu. Zanotuj następujące informacje:
-    - Te zasady są skojarzone z serwerem konfiguracji podczas tworzenia automatycznie.
-    - Ta zasada nie jest edytowalny.
-    - Ustawianie wartości zasad są (próg celu punktu odzyskiwania = 15 minut, czas przechowywania punktu odzyskiwania = 24 godziny i częstotliwość migawek spójności aplikacji = 60 minut).
-- Podczas ponownego włączania ochrony i powrotu po awarii na lokalnym serwerze konfiguracji musi być uruchomiona i połączona.
-- Jeśli serwer vCenter zarządza maszynami wirtualnymi, do których można będzie wykonać powrotu po awarii, upewnij się, że masz [wymagane uprawnienia](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) odnajdowania maszyn wirtualnych na serwerach vCenter.
-- Przed można ponownie włączyć ochronę, należy usunąć migawki na głównym serwerze docelowym. W przypadku migawki głównego elementu docelowego w środowisku lokalnym lub maszynie wirtualnej ponownego włączania ochrony kończy się niepowodzeniem. Migawki maszyny wirtualnej są automatycznie łączone podczas wykonywania zadania ponownego włączania ochrony.
-- Wszystkie maszyny wirtualne grupy replikacji musi być tego samego typu systemu operacyjnego (wszystkie Windows lub Linux wszystkie). Grupy replikacji przy użyciu aktualnie mieszane systemy operacyjne nie jest obsługiwane dla ponowne włączanie ochrony i powrotu po awarii do środowiska lokalnego. Jest to spowodowane głównego elementu docelowego musi być tego samego systemu operacyjnego maszyny wirtualnej. Wszystkie maszyny wirtualne w grupie replikacji musi mieć ten sam główny element docelowy. 
-- Serwer konfiguracji jest wymagane w środowisku lokalnym, gdy możesz wykonać powrotu po awarii. Podczas powrotu po awarii maszyny wirtualnej musi istnieć w bazie danych serwera konfiguracji. W przeciwnym razie podczas powrotu po awarii zakończy się niepowodzeniem. Upewnij się, że przesłać regularnie zaplanowane kopie zapasowe serwera konfiguracji. W przypadku awarii, należy przywrócić na serwerze przy użyciu tego samego adresu IP tak, aby działa w przypadku powrotu po awarii.
-- Ponownego włączania ochrony i powrotu po awarii wymaga sieci VPN lokacja lokacja (S2S) do replikacji danych. Podaj sieci tak, aby w trybie failed-over maszyn wirtualnych na platformie Azure ma dostęp (ping) — lokalna konfiguracja serwera. Można także wdrożyć serwer przetwarzania na platformie Azure sieci maszyny wirtualnej w trybie failed-over. Należy również może komunikować się z lokalnym serwerem konfiguracji tego serwera przetwarzania.
-- Upewnij się, że otworzyć następujące porty dla trybu failover i powrotu po awarii:
+Jeśli używasz szablonu do tworzenia maszyn wirtualnych, upewnij się, że każda maszyna wirtualna ma własny identyfikator UUID dla dysków. Jeśli wartość UUID lokalnego maszyny wirtualnej koliduje z identyfikatorem UUID głównego elementu docelowego, ponieważ obie zostały utworzone na podstawie tego samego szablonu, ponownej ochrony nie powiedzie się. Wdróż inny główny serwer docelowy, który nie został utworzony na podstawie tego samego szablonu. Zanotuj następujące informacje:
+- Jeśli próbujesz wrócić do alternatywnego programu vCenter, upewnij się, że zostały wykryte nowe serwery vCenter i główny serwer docelowy. Typowy objaw polega na tym, że magazyny danych nie są dostępne lub nie są widoczne w oknie dialogowym Ponowne **Włączanie ochrony** .
+- Aby przeprowadzić replikację z powrotem do lokalnego, potrzebne są zasady powrotu po awarii. Te zasady są tworzone automatycznie podczas tworzenia zasad kierunku do przodu. Zanotuj następujące informacje:
+    - Te zasady są kojarzone z serwerem konfiguracji podczas jego tworzenia.
+    - Te zasady nie są edytowalne.
+    - Ustawienia wartości zasad to (próg RPO = 15 minut, czas przechowywania punktu odzyskiwania = 24 godziny, częstotliwość migawek spójności aplikacji = 60 min).
+- Podczas ponownej ochrony i powrotu po awarii lokalny serwer konfiguracji musi być uruchomiony i połączony.
+- Jeśli serwer vCenter zarządza maszynami wirtualnymi, do których nastąpi powrót po awarii, upewnij się, że masz [wymagane uprawnienia](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) do odnajdywania maszyn wirtualnych na serwerach vCenter.
+- Przed ponownym włączeniem ochrony usuń migawki na głównym serwerze docelowym. Jeśli migawki znajdują się na lokalnym serwerze docelowym lub na maszynie wirtualnej, ponownej ochrony kończy się niepowodzeniem. Migawki na maszynie wirtualnej są automatycznie scalane podczas zadania ponownego włączania ochrony.
+- Wszystkie maszyny wirtualne grupy replikacji muszą mieć ten sam typ systemu operacyjnego (wszystkie Windows lub wszystkie systemy Linux). Grupa replikacji z mieszanymi systemami operacyjnymi nie jest obecnie obsługiwana w przypadku ponownego włączania ochrony i powrotu po awarii do lokacji lokalnej. Dzieje się tak, ponieważ główny element docelowy musi być tym samym systemem operacyjnym co maszyna wirtualna. Wszystkie maszyny wirtualne grupy replikacji muszą mieć ten sam główny element docelowy. 
+- Serwer konfiguracji jest wymagany lokalnie w przypadku powrotu po awarii. Podczas powrotu po awarii maszyna wirtualna musi znajdować się w bazie danych serwera konfiguracji. W przeciwnym razie powrót po awarii nie powiedzie się. Upewnij się, że tworzysz regularnie zaplanowane kopie zapasowe serwera konfiguracji. Jeśli wystąpi awaria, przywróć serwer o tym samym adresie IP, aby działanie powrotu po awarii zadziałało. 
+- Ponownej ochrony i powrotu po awarii wymagają sieci VPN typu lokacja-lokacja (S2S) lub prywatnej komunikacji równorzędnej ExpressRoute w celu replikowania danych. Zapewnianie sieci, aby maszyny wirtualne w trybie failover na platformie Azure mogły nawiązać połączenie (ping) na lokalnym serwerze konfiguracji. Należy wdrożyć serwer przetwarzania w sieci platformy Azure dla maszyn wirtualnych zakończonych niepowodzeniem. Ten serwer przetwarzania musi być również w stanie komunikować się z lokalnym serwerem konfiguracji i główny serwer docelowy.
+- W przypadku, gdy adresy IP replikowanych elementów zostały zachowane w trybie failover, należy nawiązać połączenie S2S lub ExpressRoute między maszynami wirtualnymi platformy Azure i kartą sieciową powrotu po awarii serwera konfiguracji. Należy pamiętać, że przechowywanie adresów IP wymaga, aby serwer konfiguracji miał dwie karty sieciowe — jedną dla łączności z maszynami źródłowymi i jedną dla łączności z powrotem po awarii platformy Azure. Dzieje się tak, aby uniknąć nakładania się zakresów adresów podsieci źródła i maszyn wirtualnych w trybie failover.
+- Upewnij się, że następujące porty zostały otwarte w celu przełączenia w tryb failover i powrotu po awarii:
 
-    ![Porty dla trybu failover i powrotu po awarii](./media/vmware-azure-reprotect/failover-failback.png)
+    ![Porty trybu failover i powrotu po awarii](./media/vmware-azure-reprotect/failover-failback.png)
 
-- Odczyt wszystkich [wymagania wstępne dotyczące portów i adresów URL umieszczania na białej liście](vmware-azure-deploy-configuration-server.md#prerequisites).
+- Przeczytaj wszystkie [wymagania wstępne dotyczące portów i adresów URL listy dozwolonych](vmware-azure-deploy-configuration-server.md#prerequisites).
 
 ## <a name="deploy-a-process-server-in-azure"></a>Wdrażanie serwera przetwarzania na platformie Azure
 
-Serwer przetwarzania na platformie Azure może być konieczne przed powrotu po awarii do lokacji lokalnej:
-- Serwer przetwarzania odbiera dane z chronionej maszyny wirtualnej na platformie Azure, a następnie wysyła dane do lokacji lokalnej.
-- Sieci o małych opóźnieniach jest wymagany między serwerem przetwarzania i chronionej maszyny wirtualnej. Ogólnie rzecz biorąc należy wziąć pod uwagę czas oczekiwania podczas podejmowania decyzji, czy należy serwer przetwarzania na platformie Azure:
-    - Jeśli masz połączenie Azure ExpressRoute skonfigurować, można użyć lokalnego serwera przetwarzania do przesyłania danych, ponieważ brakuje opóźnienia między maszyną wirtualną a serwerem przetwarzania.
-    - Jednak w przypadku sieci VPN S2S zalecamy wdrożenie serwera przetwarzania na platformie Azure.
-    - Firma Microsoft zaleca korzystanie z serwerem przetwarzania opartych na platformie Azure podczas powrotu po awarii. Wydajność replikacji jest większe, jeśli serwer przetwarzania jest bliżej replikacji maszyny wirtualnej (maszyny Failover na platformie Azure). Weryfikację koncepcji można użyć serwera przetwarzania w środowisku lokalnym i usługi ExpressRoute za pomocą prywatnej komunikacji równorzędnej.
+Serwer przetwarzania na platformie Azure jest potrzebny przed powrotem po awarii do lokacji lokalnej:
+
+- Serwer przetwarzania otrzymuje dane z chronionych maszyn wirtualnych na platformie Azure, a następnie wysyła dane do lokacji lokalnej.
+- Między serwerem przetwarzania a chronioną maszyną wirtualną wymagana jest sieć o małym opóźnieniu. W związku z tym zaleca się wdrożenie serwera przetwarzania na platformie Azure. Wydajność replikacji jest wyższa, jeśli serwer przetwarzania jest bliższy replikacji maszyny wirtualnej (maszyna przełączona w tryb failover na platformie Azure). 
+- Aby sprawdzić koncepcję, można użyć lokalnego serwera przetwarzania i ExpressRoute z prywatną komunikację równorzędną.
 
 Aby wdrożyć serwer przetwarzania na platformie Azure:
 
-1. Jeśli musisz wdrożyć serwer przetwarzania na platformie Azure, zobacz [skonfigurować serwer przetwarzania na platformie Azure do powrotu po awarii](vmware-azure-set-up-process-server-azure.md).
-2. Maszyny wirtualne platformy Azure wysyłać dane replikacji do serwera przetwarzania. Skonfigurowanie sieci, tak aby maszyny wirtualne platformy Azure można uzyskać dostęp do serwera przetwarzania.
-3. Należy pamiętać, replikacja z platformy Azure do serwera lokalnego, może się zdarzyć tylko za pośrednictwem sieci VPN S2S lub prywatną komunikację równorzędną sieci usługi ExpressRoute. Upewnij się, że wystarczającą przepustowość jest dostępna za pośrednictwem tego kanału sieci.
+1. Jeśli musisz wdrożyć serwer przetwarzania na platformie Azure, zobacz [Konfigurowanie serwera przetwarzania na platformie Azure na potrzeby powrotu po awarii](vmware-azure-set-up-process-server-azure.md).
+2. Maszyny wirtualne platformy Azure wysyłają dane replikacji do serwera przetwarzania. Skonfiguruj sieci, aby maszyny wirtualne platformy Azure mogły nawiązać połączenie z serwerem przetwarzania.
+3. Należy pamiętać, że replikacja z platformy Azure do lokalnego może nastąpić tylko za pośrednictwem sieci VPN S2S lub prywatnej komunikacji równorzędnej sieci ExpressRoute. Upewnij się, że za pośrednictwem tego kanału sieciowego jest dostępna wystarczająca przepustowość.
 
-## <a name="deploy-a-separate-master-target-server"></a>Wdrożyć oddzielny główny serwer docelowy
+## <a name="deploy-a-separate-master-target-server"></a>Wdróż oddzielny główny serwer docelowy
 
-Główny serwer docelowy odbiera dane podczas powrotu po awarii. Domyślnie główny serwer docelowy jest uruchamiany na lokalnym serwerze konfiguracji. W zależności od ilości ruchu do tyłu, może być konieczne do utworzenia osobny główny serwer docelowy do powrotu po awarii. Poniżej przedstawiono instrukcje tworzenia takiego:
+Główny serwer docelowy odbiera dane podczas powrotu po awarii. Domyślnie główny serwer docelowy jest uruchamiany na lokalnym serwerze konfiguracji. Jednak w zależności od ilości ruchu z powrotem do tyłu może być konieczne utworzenie oddzielnego głównego serwera docelowego na potrzeby powrotu po awarii. Oto jak utworzyć:
 
-* [Tworzenie serwera głównego elementu docelowego Linux](vmware-azure-install-linux-master-target.md) powrotu po awarii maszyn wirtualnych systemu Linux. Jest to wymagane. Należy zauważyć, że główna serwera docelowego na LVM nie jest obsługiwana.
-* Opcjonalnie utwórz osobny główny serwer docelowy do powrotu po awarii maszyn wirtualnych Windows. Aby to zrobić, uruchom ponownie ujednoliconego Instalatora i wybierz, aby utworzyć główny serwer docelowy. [Dowiedz się więcej](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
+* [Utwórz główny serwer docelowy z systemem Linux](vmware-azure-install-linux-master-target.md) na potrzeby powrotu po awarii maszyn wirtualnych z systemem Linux. Jest to wymagane. Należy pamiętać, że główny serwer docelowy w systemie LVM nie jest obsługiwany.
+* Opcjonalnie można utworzyć oddzielny główny serwer docelowy dla powrotu po awarii maszyny wirtualnej z systemem Windows. W tym celu należy ponownie uruchomić ujednoliconą konfigurację i wybrać opcję utworzenia głównego serwera docelowego. [Dowiedz się więcej](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
 
-Po utworzeniu głównego serwera docelowego, wykonaj następujące czynności:
+Po utworzeniu głównego serwera docelowego wykonaj następujące zadania:
 
-- Jeśli maszyna wirtualna jest obecny w środowisku lokalnym na serwerze vCenter, główny serwer docelowy wymaga dostępu do pliku dysku maszyny wirtualnej (VMDK) maszyny wirtualnej w środowisku lokalnym. Wymagany jest dostęp do zapisu dysków maszyn wirtualnych replikowanych danych. Upewnij się, że magazyn danych lokalnej maszyny wirtualnej jest zainstalowany na hoście głównego serwera docelowego z dostępem do odczytu/zapisu.
-- Jeśli maszyna wirtualna nie jest obecny w środowisku lokalnym na serwerze vCenter, Usługa Site Recovery musi utworzyć nową maszynę wirtualną podczas ponownego włączania ochrony. Ta maszyna wirtualna jest tworzona na hoście ESX, na którym utworzono główny cel. Rozważnych hosta ESX, tak aby maszyny wirtualnej powrotu po awarii jest tworzona na hoście, który chcesz.
-- Nie można używać narzędzia Storage vMotion na głównym serwerze docelowym. Przy użyciu narzędzia Storage vMotion dla głównego serwera docelowego może spowodować powrót po awarii nie powiedzie się. Nie można uruchomić maszyny wirtualnej, ponieważ dyski nie są dostępne do niego. Aby temu zapobiec, Wyklucz główne serwery docelowe z listy vMotion.
-- Główny element docelowy ulega Storage vMotion zadania po ponownego włączania ochrony, dyski chronionej maszyny wirtualnej, które są dołączone do głównego elementu docelowego migrować do obiektu docelowego zadania vMotion. Jeśli zostanie podjęta próba się nie powieść po to, odłączenie dysku nie powiedzie się, ponieważ nie znajdują się dyski. Następnie staje się trudne do znalezienia dyski na kontach usługi storage. Musisz ręcznie znaleźć i dołącz je do maszyny wirtualnej. Po tym można uruchomić maszyny wirtualnej w środowisku lokalnym.
-- Dodaj dysk przechowywania do istniejącego serwera głównego elementu docelowego Windows. Dodaj nowy dysk i sformatuj dysk. Dysk przechowywania jest używana do zatrzymywania punkty w czasie, gdy maszyna wirtualna ponownie będzie replikowana na lokacji lokalnej. Poniżej podano niektóre kryteria dotyczące dysku przechowywania. Jeśli nie są spełnione poniższe kryteria, dysku nie ma na liście dla głównego serwera docelowego:
-    - Wolumin nie jest używana do innych celów, takich jak elementu docelowego replikacji.
+- Jeśli maszyna wirtualna jest obecna lokalnie na serwerze vCenter, główny serwer docelowy musi mieć dostęp do pliku dysku maszyny wirtualnej (VMDK) lokalnej maszyny wirtualnej. Dostęp jest wymagany do zapisania replikowanych danych na dyskach maszyny wirtualnej. Upewnij się, że magazyn danych lokalnej maszyny wirtualnej jest zainstalowany na hoście głównego elementu docelowego z dostępem do odczytu i zapisu.
+- Jeśli maszyna wirtualna nie jest obecna w środowisku lokalnym na serwerze vCenter, Usługa Site Recovery musi utworzyć nową maszynę wirtualną podczas ponownej ochrony. Ta maszyna wirtualna jest tworzona na hoście ESX, na którym tworzysz główny element docelowy. Należy uważnie wybrać hosta ESX, aby maszyna wirtualna powrotu po awarii została utworzona na żądanym hoście.
+- Nie można użyć vMotion magazynu dla głównego serwera docelowego. Użycie vMotion magazynu dla głównego serwera docelowego może spowodować niepowodzenie powrotu po awarii. Nie można uruchomić maszyny wirtualnej, ponieważ dyski nie są dostępne. Aby temu zapobiec, należy wykluczyć główne serwery docelowe z listy vMotion.
+- Jeśli główny obiekt docelowy przeprowadzi zadanie vMotion magazynu po ponownej ochronie, chronione dyski maszyny wirtualnej, które są dołączone do głównego elementu docelowego, są migrowane do obiektu docelowego zadania vMotion. Próba powrotu z powrotem po awarii spowoduje niepowodzenie odłączenia dysku, ponieważ nie znaleziono dysków. Następnie trudno znaleźć dyski na kontach magazynu. Należy je znaleźć ręcznie i dołączyć do maszyny wirtualnej. Następnie można uruchomić lokalną maszynę wirtualną.
+- Dodaj dysk przechowywania do istniejącego głównego serwera docelowego systemu Windows. Dodaj nowy dysk i sformatuj dysk. Dysk przechowywania służy do zatrzymania punktu w czasie, gdy maszyna wirtualna jest replikowana z powrotem do lokacji lokalnej. Poniżej przedstawiono niektóre kryteria dysku przechowywania. Jeśli te kryteria nie są spełnione, dysk nie jest wyświetlany na liście dla głównego serwera docelowego:
+    - Wolumin nie jest używany do żadnego innego celu, takiego jak element docelowy replikacji.
     - Wolumin nie jest w trybie blokady.
-    - Wolumin nie jest woluminem pamięci podręcznej. Instalacja głównego elementu docelowego nie może istnieć na tym woluminie. Wolumin instalacji niestandardowej dla elementu docelowego serwera i wzorzec procesu nie kwalifikuje się wolumin przechowywania. Gdy serwer przetwarzania i główny serwer docelowy są zainstalowane na woluminie, wolumin jest woluminem pamięci podręcznej głównego elementu docelowego.
+    - Wolumin nie jest woluminem pamięci podręcznej. Na tym woluminie nie można przeprowadzić instalacji głównego elementu docelowego. Niestandardowy wolumin instalacyjny serwera przetwarzania i głównego elementu docelowego nie kwalifikuje się do woluminu przechowywania. Gdy serwer przetwarzania i główny element docelowy są zainstalowane w woluminie, wolumin jest woluminem pamięci podręcznej głównego serwera docelowego.
     - Typ systemu plików woluminu nie jest w systemie FAT lub FAT32.
     - Pojemność woluminu jest różna od zera.
-    - Domyślnym woluminem przechowywania dla Windows jest wolumin R.
-    - Domyślnym woluminem przechowywania dla systemu Linux jest /mnt/retention.
-- Jeśli używasz istniejącej maszyny serwera konfiguracji/serwera przetwarzania lub skalowania lub proces maszyny serwera docelowego serwera/główną, należy dodać nowy dysk. Nowy dysk musi spełniać wymagania poprzedniej. Jeśli dysk przechowywania nie jest obecny, nie są wyświetlane na liście rozwijanej wyboru w portalu. Po dodaniu dysku do głównego elementu docelowego w środowisku lokalnym, trwa maksymalnie 15 minut na dysku, które pojawią się w zaznaczenia w portalu. Możesz też odświeżyć serwera konfiguracji, jeśli dysk nie pojawia się po 15 minutach.
-- Zainstaluj narzędzia VMware lub narzędzia w przypadku maszyn wirtualnych Otwórz na głównym serwerze docelowym. Bez narzędzi nie można wykryć magazynów danych na hoście ESXi głównego serwera docelowego.
-- Ustaw `disk.EnableUUID=true` ustawienie za pomocą parametrów konfiguracji maszyny wirtualnej główny serwer docelowy w środowisku VMware. Jeśli ten wiersz nie istnieje, należy go dodać. To ustawienie jest wymagane w celu zapewnienia spójnego UUID VMDK tak, aby go na komputerze instalująca poprawnie.
-- Host ESX, na którym tworzony jest głównego elementu docelowego musi mieć co najmniej jedną maszynę wirtualną pliku system (VMFS) magazynu danych dołączono do niego. Jeśli są dołączone nie VMFS magazynów danych, **Datastore** danych wejściowych na stronie ponownej ochrony jest pusta i nie można kontynuować.
-- Główny serwer docelowy nie może mieć migawek na dyskach. W przypadku migawki ponownego włączania ochrony i powrotu po awarii się nie powieść.
-- Głównego elementu docelowego nie może mieć zdefiniowany kontroler Paravirtual SCSI. Kontroler może składać się z kontrolera LSI logiki. Bez kontrolera LSI Logic ponownego włączania ochrony kończy się niepowodzeniem.
-- Dla każdego wystąpienia głównego elementu docelowego może mieć co najwyżej 60 dysków podłączone do niego. Jeśli liczba maszyn wirtualnych, które jest przełączona do trybu do głównego elementu docelowego w środowisku lokalnym ma więcej niż łączna liczba 60 dysków, reprotects do głównego elementu docelowego się nie powiedzie się. Upewnij się, że masz wystarczająco dużo wzorzec docelowe miejsca na dysku albo wdrożyć dodatkowe główne serwery docelowe.
+    - Domyślnym woluminem przechowywania dla systemu Windows jest wolumin R.
+    - Domyślnym woluminem przechowywania dla systemu Linux jest/mnt/Retention.
+- Nowy dysk należy dodać w przypadku korzystania z istniejącej maszyny serwera przetwarzania/serwera konfiguracji lub skali lub serwera przetwarzania/głównego serwera docelowego. Nowy dysk musi spełniać powyższe wymagania. Jeśli dysk przechowywania nie istnieje, nie jest wyświetlany na liście rozwijanej wyboru w portalu. Po dodaniu dysku do lokalnego głównego serwera docelowego potrwa to 15 minut, zanim dysk zostanie wyświetlony w wybranym portalu. Można również odświeżyć serwer konfiguracji, jeśli dysk nie jest wyświetlany po 15 minutach.
+- Zainstaluj narzędzia VMware lub narzędzia Otwórz maszynę wirtualną na głównym serwerze docelowym. Bez narzędzi nie można wykryć magazynów danych na hoście ESXi głównego elementu docelowego.
+- Ustaw ustawienie `disk.EnableUUID=true` w parametrach konfiguracji głównej docelowej maszyny wirtualnej w oprogramowaniu VMware. Jeśli ten wiersz nie istnieje, Dodaj go. To ustawienie jest wymagane, aby zapewnić spójny identyfikator UUID w VMDK, tak aby był poprawnie instalowany.
+- Na hoście ESX, na którym tworzony jest główny element docelowy, musi być dołączony co najmniej jeden magazyn danych maszyny wirtualnej (VMFS). Jeśli nie są dołączone żadne magazyny danych VMFS, dane wejściowe ze **sklepu datastore** na stronie ponownej ochrony są puste i nie będzie można ich wykonać.
+- Główny serwer docelowy nie może mieć migawek na dyskach. Jeśli istnieją migawki, reochrona i powrót po awarii, zakończy się niepowodzeniem.
+- Główny element docelowy nie może mieć kontrolera SCSI Paravirtual. Kontroler może być tylko kontrolerem logiki LSI. W przypadku braku kontrolera logiki LSI nie jest przeprowadzana ochrona.
+- Dla każdego wystąpienia główny element docelowy może mieć co najwyżej 60 dysków. Jeśli liczba maszyn wirtualnych, które są ponownie chronione w lokalnym głównym systemie docelowym, ma więcej niż łączna liczba dysków 60, ponowne włączenie ochrony do głównego celu nie powiedzie się. Upewnij się, że masz wystarczającą ilość głównych docelowych gniazd dysku lub Wdróż dodatkowe główne serwery docelowe.
     
 
-## <a name="enable-reprotection"></a>Włączanie ponownego włączania ochrony
+## <a name="enable-reprotection"></a>Włącz ponownie ochronę
 
-Po uruchomieniu maszyny wirtualnej na platformie Azure, dopiero po pewnym czasie dla agenta zarejestrować serwer konfiguracji (maksymalnie 15 minut). W tym czasie nie będzie można ponownie włączyć ochronę, a komunikat o błędzie wskazuje, że agent nie jest zainstalowany. W takim przypadku poczekaj kilka minut, a następnie spróbuj ponownie ponownego włączania ochrony:
+Po uruchomieniu maszyny wirtualnej na platformie Azure program Agent może zarejestrować się ponownie na serwerze konfiguracji (do 15 minut). W tym czasie nie będzie można ponownie włączyć ochrony i zostanie wyświetlony komunikat o błędzie informujący, że Agent nie jest zainstalowany. W takim przypadku poczekaj kilka minut, a następnie spróbuj ponownie wykonać ponowną ochronę:
 
 
-1. Wybierz **magazynu** > **zreplikowane elementy**. Kliknij prawym przyciskiem myszy maszynę wirtualną, która przełączone w tryb failover, a następnie wybierz **ponownego włączenia ochrony**. Alternatywnie dla przycisku polecenia, wybierz maszynę, a następnie wybierz **ponownego włączenia ochrony**.
-2. Upewnij się, że **platformy Azure do środowiska lokalnego** wybrano kierunek ochrony.
-3. W **główny serwer docelowy** i **serwera przetwarzania**, wybierz serwer główny serwer docelowy w środowisku lokalnym i serwera przetwarzania.  
-4. Aby uzyskać **Datastore**, wybierz magazyn danych, do której chcesz odzyskać dyski w środowisku lokalnym. Ta opcja jest używana w środowisku lokalnym maszyna wirtualna zostanie usunięta, gdy trzeba utworzyć nowe dyski. Ta opcja jest ignorowana, jeśli dyski już istnieją. Nadal należy określić wartość.
+1. Wybierz **magazyn** > **zreplikowane elementy**. Kliknij prawym przyciskiem myszy maszynę wirtualną, która przełączona w tryb failover, a następnie wybierz pozycję **Włącz ponownie ochronę**. Lub z przycisków poleceń wybierz maszynę, a następnie wybierz pozycję **Włącz ponownie ochronę**.
+2. Upewnij się, że wybrano kierunek ochrony na **platformie Azure do lokalnego** .
+3. Na **głównym serwerze docelowym** i **serwerze przetwarzania**wybierz lokalny główny serwer docelowy i serwer przetwarzania.  
+4. W obszarze **Magazyn**danych wybierz magazyn danych, do którego chcesz odzyskać dyski lokalnie. Ta opcja jest używana, gdy lokalna maszyna wirtualna jest usuwana i konieczne jest utworzenie nowych dysków. Ta opcja jest ignorowana, jeśli dyski już istnieją. Nadal trzeba określić wartość.
 5. Wybierz dysk przechowywania.
 6. Zasady powrotu po awarii są wybierane automatycznie.
-7. Wybierz **OK** można rozpocząć ponowne włączanie ochrony. Zadanie zaczyna replikować maszynę wirtualną z platformy Azure do lokacji lokalnej. Na karcie **Zadania** można śledzić postęp. Po pomyślnym zakończeniu ponownego włączania ochrony, maszyny wirtualne przechodzą w stanie chronionym.
+7. Wybierz **przycisk OK** , aby rozpocząć reochronę. Zadanie zaczyna replikować maszynę wirtualną z platformy Azure do lokacji lokalnej. Postęp można śledzić na karcie **zadania** . Po pomyślnym zakończeniu ochrony maszyna wirtualna przechodzi w stan chroniony.
 
 Zanotuj następujące informacje:
-- Jeśli chcesz odzyskać do alternatywnej lokalizacji (w przypadku usunięcia lokalnej maszyny wirtualnej), wybierz dysk przechowywania i magazynu danych, które są skonfigurowane dla głównego serwera docelowego. Podczas powrotu po awarii do lokacji lokalnej, maszyn wirtualnych VMware w planie ochrony podczas powrotu po awarii będzie używać tego samego magazynu danych jako główny serwer docelowy. Nowa maszyna wirtualna jest tworzona w programie vCenter.
-- Jeśli chcesz odzyskać maszynę wirtualną na platformie Azure do istniejącej maszyny wirtualnej w środowisku lokalnym, należy zainstalować maszyny wirtualnej lokalnych magazynów danych, z dostępem do odczytu/zapisu na hoście ESXi głównego serwera docelowego.
+- Jeśli chcesz odzyskać do lokalizacji alternatywnej (po usunięciu lokalnej maszyny wirtualnej), wybierz dysk przechowywania i magazyn danych, które są skonfigurowane dla głównego serwera docelowego. Po powrocie po awarii do lokacji lokalnej maszyny wirtualne VMware w planie ochrony powrotu po awarii używają tego samego magazynu danych co główny serwer docelowy. Utworzona zostanie nowa maszyna wirtualna w programie vCenter.
+- Jeśli chcesz odzyskać maszynę wirtualną na platformie Azure do istniejącej lokalnej maszyny wirtualnej, zainstaluj magazyny danych lokalnych maszyn wirtualnych z dostępem do odczytu/zapisu na hoście ESXi głównego serwera docelowego.
 
-    ![Ponowne włączanie ochrony okno dialogowe](./media/vmware-azure-reprotect/reprotectinputs.png)
+    ![Okno dialogowe Ponowne włączanie ochrony](./media/vmware-azure-reprotect/reprotectinputs.png)
 
-- Użytkownik może również ponowne włączanie ochrony na poziomie planu odzyskiwania. Grupy replikacji może być przełączona do trybu wyłącznie za pośrednictwem planu odzyskiwania. Gdy możesz ponownie włączyć ochronę za pomocą planu odzyskiwania, należy podać wartości dla każdego chronionego komputera.
-- Użyj tego samego głównego serwera docelowego do ponownego włączenia ochrony grupy replikacji. Jeśli używasz innego głównego serwera docelowego do ponownego włączenia ochrony grupy replikacji, serwer nie może zapewnić wspólnego punktu w czasie.
-- Maszyna wirtualna w środowisku lokalnym jest wyłączona podczas ponownego włączania ochrony. Pomaga to zapewnić spójność danych podczas replikacji. Nie włączać maszyny wirtualnej po zakończeniu ponownego włączania ochrony.
+- Możesz również ponownie włączyć ochronę na poziomie planu odzyskiwania. Grupę replikacji można ponownie chronić tylko za pomocą planu odzyskiwania. Po ponownym włączeniu ochrony przy użyciu planu odzyskiwania należy podać wartości dla każdej chronionej maszyny.
+- Użyj tego samego głównego serwera docelowego do ponownego włączenia ochrony grupy replikacji. W przypadku użycia innego głównego serwera docelowego do ponownego włączenia ochrony grupy replikacji serwer nie może zapewnić typowego punktu w czasie.
+- Lokalna maszyna wirtualna jest wyłączona podczas ponownej ochrony. Pomaga to zapewnić spójność danych podczas replikacji. Nie włączaj maszyny wirtualnej po zakończeniu ponownej ochrony.
 
 
 
 ## <a name="common-issues"></a>Typowe problemy
 
-- Jeśli odnajdywanie vCenter użytkownika tylko do odczytu, a ochrona maszyn wirtualnych, ochrona zakończy się powodzeniem, a tryb failover działa prawidłowo. Podczas ponownego włączania ochrony trybu failover kończy się niepowodzeniem, ponieważ nie można odnaleźć magazynów danych. Objawem to, że podczas ponownego włączania ochrony nie ma na liście magazynów danych. Aby rozwiązać ten problem, należy zaktualizować poświadczenia vCenter przy użyciu odpowiedniego konta, które ma uprawnienia, a następnie ponów zadanie. 
-- Podczas powrotu po awarii maszyny wirtualnej systemu Linux i uruchomić go lokalnie, zobaczysz, że pakietu Menedżera sieci został odinstalowany z komputera. Ta dezinstalacja występuje, ponieważ pakiet Menedżer sieci jest usuwany, gdy maszyna wirtualna jest odzyskiwana na platformie Azure.
-- W przypadku maszyny wirtualnej systemu Linux jest skonfigurowana ze statycznym adresem IP i jest w trybie Failover na platformie Azure, adres IP jest uzyskiwany z serwera DHCP. Podczas przejścia w tryb failover do serwera lokalnego, maszyna wirtualna w dalszym ciągu używać protokołu DHCP w celu pobrania adresu IP. Ręcznie Zaloguj się do maszyny, a następnie ustaw adres statyczny adres, jeśli to konieczne. Maszynę wirtualną Windows można ponownie pobrać jego statyczny adres IP.
-- Jeśli używasz wersji bezpłatnej ESXi 5.5 lub vSphere 6 Hypervisor bezpłatna wersja trybu failover zakończy się pomyślnie, ale podczas powrotu po awarii nie powiodła się. Aby włączyć powrót po awarii, uaktualnienie do licencji ewaluacyjnej albo program.
-- Jeśli nie można nawiązać połączenia serwera konfiguracji z serwera przetwarzania, użyj Telnet, aby sprawdzić połączenie z serwerem konfiguracji na porcie 443. Możesz również spróbować wykonać polecenie ping do serwera konfiguracji z serwera przetwarzania. Serwer przetwarzania powinny mieć również pulsu, gdy jest podłączone do serwera konfiguracji.
-- Serwer Windows Server 2008 R2 z dodatkiem SP1, który jest chroniony jako serwera fizycznego w środowisku lokalnym, nie może powrót po awarii z platformy Azure do lokacji lokalnej.
-- Nie można przerwać w następujących okolicznościach:
-    - Przeprowadzono migrację maszyn na platformę Azure. [Dowiedz się więcej](migrate-overview.md#what-do-we-mean-by-migration).
-    - Maszyny Wirtualnej został przeniesiony do innej grupy zasobów.
-    - Można usunąć maszyny Wirtualnej platformy Azure.
-    - Możesz wyłączyć ochrony maszyny Wirtualnej.
-    - Maszyna wirtualna została utworzona ręcznie na platformie Azure. Maszyny powinny zostały pierwotnie chroniony w środowisku lokalnym i przełączone w tryb failover Azure przed ponownego włączania ochrony.
-    - Tylko na hoście ESXi może zakończyć się niepowodzeniem. Można wykonać powrót po awarii maszyn wirtualnych z programu VMware lub serwerów fizycznych na hostach funkcji Hyper-V, maszyn fizycznych lub stacji roboczych VMware.
+- W przypadku przeprowadzania odnajdywania vCenter użytkownika tylko do odczytu i ochrony maszyn wirtualnych ochrona kończy się powodzeniem, a tryb failover działa. W trakcie ochrony tryb failover nie powiedzie się, ponieważ nie można odnaleźć magazynów danych. Objaw polega na tym, że magazyny danych nie są wyświetlane na liście podczas jej ochrony. Aby rozwiązać ten problem, możesz zaktualizować poświadczenia vCenter przy użyciu odpowiedniego konta z uprawnieniami, a następnie ponowić zadanie. 
+- W przypadku powrotu po awarii maszyny wirtualnej z systemem Linux i uruchomienia jej w środowisku lokalnym można zobaczyć, że pakiet Menedżera sieci został odinstalowany z komputera. Ta Dezinstalacja jest wykonywana, ponieważ pakiet Menedżera sieci jest usuwany podczas odzyskiwania maszyny wirtualnej na platformie Azure.
+- W przypadku skonfigurowania maszyny wirtualnej z systemem Linux przy użyciu statycznego adresu IP i przełączeniu w tryb failover na platformę Azure adres IP jest pobierany z serwera DHCP. Po przełączeniu w tryb failover do lokalnego, maszyna wirtualna będzie w dalszym ciągu używać protokołu DHCP w celu uzyskania adresu IP. Zaloguj się ręcznie na maszynie, a następnie w razie potrzeby ustaw adres IP z powrotem na adres statyczny. Maszyna wirtualna z systemem Windows może ponownie uzyskać swój statyczny adres IP.
+- Jeśli używasz wersji bezpłatnej programu ESXi 5,5 lub vSphere 6 funkcji hypervisor, tryb failover zakończy się pomyślnie, ale powrót po awarii nie powiedzie się. Aby włączyć powrót po awarii, Uaktualnij do wersji ewaluacyjnej programu.
+- Jeśli nie można skontaktować się z serwerem konfiguracji z serwera przetwarzania, należy użyć programu Telnet do sprawdzenia łączności z serwerem konfiguracji na porcie 443. Możesz również spróbować wysłać polecenie ping do serwera konfiguracji z serwera przetwarzania. Serwer przetwarzania powinien również mieć puls, gdy jest połączony z serwerem konfiguracji.
+- Serwer z systemem Windows Server 2008 R2 z dodatkiem SP1, który jest chroniony jako fizyczny serwer lokalny, nie może powrócić z powrotem z platformy Azure do lokacji lokalnej.
+- Nie można przeprowadzić powrotu po awarii w następujących okolicznościach:
+    - Maszyny wirtualne zostały zmigrowane na platformie Azure. [Dowiedz się więcej](migrate-overview.md#what-do-we-mean-by-migration).
+    - Maszyna wirtualna została przeniesiona do innej grupy zasobów.
+    - Maszyna wirtualna platformy Azure została usunięta.
+    - Ochrona maszyny wirtualnej została wyłączona.
+    - Maszyna wirtualna została utworzona ręcznie na platformie Azure. Maszyna powinna być początkowo chroniona lokalnie i przełączona w tryb failover na platformę Azure przed ponowną ochroną.
+    - Można się nie powieść tylko dla hosta ESXi. Nie można przeprowadzić powrotu po awarii maszyn wirtualnych VMware lub serwerów fizycznych do hostów funkcji Hyper-V, maszyn fizycznych ani stacji roboczych VMware.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po wprowadzeniu chroniony stan maszyny wirtualnej możesz [zainicjować powrotu po awarii](vmware-azure-failback.md). Powrót po awarii zamykania maszyny wirtualnej na platformie Azure i wykonuje rozruch maszyny wirtualnej w środowisku lokalnym. Oczekiwać, że przestój dla aplikacji. Wybierz czas w przypadku powrotu po awarii, jeśli aplikacja może tolerować przestojów.
+Po wprowadzeniu stanu chronionego przez maszynę wirtualną można [zainicjować powrót po awarii](vmware-azure-failback.md). Powrót po awarii zamyka maszynę wirtualną na platformie Azure i uruchamia lokalną maszynę wirtualną. Oczekiwano pewnego przestoju dla aplikacji. Wybierz godzinę powrotu po awarii, gdy aplikacja będzie mogła tolerować przestoje.
 
 

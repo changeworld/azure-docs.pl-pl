@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710192"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330846"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
@@ -62,11 +62,25 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ## <a name="software-preparation-and-installation"></a>Przygotowanie oprogramowania i instalacja
 
-W tej sekcji opisano, jak przygotować i zainstalować usługę FSLogix, usługę Windows Defender oraz inne typowe aplikacje. 
+W tej sekcji opisano sposób przygotowania i instalacji usługi FSLogix oraz usługi Windows Defender oraz niektórych podstawowych opcji konfiguracji aplikacji i rejestru obrazu. 
 
-Jeśli instalujesz pakiet Office 365 ProPlus i usługę OneDrive na maszynie wirtualnej, zobacz [Instalowanie pakietu Office na głównym obrazie wirtualnego dysku twardego](install-office-on-wvd-master-image.md). Skorzystaj z linku w sekcji Następne kroki tego artykułu, aby powrócić do tego artykułu i ukończyć proces głównego wirtualnego dysku twardego.
+Jeśli instalujesz pakiet Office 365 ProPlus i usługę OneDrive na maszynie wirtualnej, przejdź do pozycji [Zainstaluj pakiet Office na głównym obrazie wirtualnego dysku twardego](install-office-on-wvd-master-image.md) i postępuj zgodnie z instrukcjami, aby zainstalować aplikacje. Po zakończeniu Wróć do tego artykułu.
 
 Jeśli użytkownicy muszą uzyskać dostęp do określonych aplikacji biznesowych, zalecamy ich zainstalowanie po zakończeniu instrukcji tej sekcji.
+
+### <a name="set-up-user-profile-container-fslogix"></a>Konfigurowanie kontenera profilu użytkownika (FSLogix)
+
+Aby dołączyć kontener FSLogix jako część obrazu, postępuj zgodnie z instrukcjami w temacie [Tworzenie kontenera profilu dla puli hostów przy użyciu udziału plików](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Funkcję kontenera FSLogix można testować za pomocą [tego przewodnika Szybki Start](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial).
+
+### <a name="configure-windows-defender"></a>Konfiguruj usługę Windows Defender
+
+Jeśli usługa Windows Defender jest skonfigurowana na maszynie wirtualnej, upewnij się, że jest ona skonfigurowana pod kątem braku skanowania całej zawartości plików VHD i VHDX podczas załączników.
+
+Ta konfiguracja usuwa tylko skanowanie plików VHD i VHDX podczas załączników, ale nie wpływa na skanowanie w czasie rzeczywistym.
+
+Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania usługi Windows Defender w systemie Windows Server, zobacz [Konfigurowanie wykluczeń programu antywirusowego Windows Defender w systemie Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+
+Aby dowiedzieć się więcej o tym, jak skonfigurować usługę Windows Defender do wykluczania niektórych plików z skanowania, zobacz [Konfigurowanie i weryfikowanie wykluczeń na podstawie rozszerzenia pliku i lokalizacji folderu](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
 
 ### <a name="disable-automatic-updates"></a>Wyłącz aktualizacje automatyczne
 
@@ -88,20 +102,6 @@ Uruchom to polecenie, aby określić układ startowy dla komputerów z systemem 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
-
-### <a name="set-up-user-profile-container-fslogix"></a>Konfigurowanie kontenera profilu użytkownika (FSLogix)
-
-Aby dołączyć kontener FSLogix jako część obrazu, postępuj zgodnie z instrukcjami w temacie [Tworzenie kontenera profilu dla puli hostów przy użyciu udziału plików](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Funkcję kontenera FSLogix można testować za pomocą [tego przewodnika Szybki Start](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial).
-
-### <a name="configure-windows-defender"></a>Konfiguruj usługę Windows Defender
-
-Jeśli usługa Windows Defender jest skonfigurowana na maszynie wirtualnej, upewnij się, że jest ona skonfigurowana pod kątem braku skanowania całej zawartości plików VHD i VHDX podczas załączników.
-
-Ta konfiguracja usuwa tylko skanowanie plików VHD i VHDX podczas załączników, ale nie wpływa na skanowanie w czasie rzeczywistym.
-
-Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania usługi Windows Defender w systemie Windows Server, zobacz [Konfigurowanie wykluczeń programu antywirusowego Windows Defender w systemie Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
-
-Aby dowiedzieć się więcej o tym, jak skonfigurować usługę Windows Defender do wykluczania niektórych plików z skanowania, zobacz [Konfigurowanie i weryfikowanie wykluczeń na podstawie rozszerzenia pliku i lokalizacji folderu](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
 
 ### <a name="configure-session-timeout-policies"></a>Konfigurowanie zasad limitu czasu sesji
 
@@ -157,7 +157,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>Uwzględnij dodatkową obsługę języka
 
-Ten artykuł nie obejmuje konfigurowania języka i obsługi regionalnej. Aby uzyskać więcej informacji, zobacz następujące artykuły:
+Ten artykuł nie obejmuje konfigurowania języka i obsługi regionalnej. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 - [Dodawanie języków do obrazów systemu Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
 - [Funkcje na żądanie](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)

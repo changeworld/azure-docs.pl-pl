@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Aplikacja Scala Maven dla platformy Spark z IntelliJem — Azure HDInsight'
+title: 'Samouczek: Scala Maven Application for Spark with IntelliJ-Azure HDInsight'
 description: Samouczek — Tworzenie aplikacji Spark, która została zapisywana w Scala za pomocą platformy Apache Maven jako systemu kompilacji i istniejącej Archetype Maven dla Scala zapewnianej przez IntelliJ pomysł.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
 ms.openlocfilehash: 667590120bba4676cbedf3d3bb2ff08e31656e1d
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71147019"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Samouczek: tworzenie aplikacji Scala Maven dla platformy Apache Spark w usłudze HDInsight przy użyciu środowiska IntelliJ
@@ -37,7 +37,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * [Zestaw Oracle Java Development](https://www.azul.com/downloads/azure-only/zulu/).  W tym samouczku jest używany język Java w wersji 8.0.202.
 
-* Środowisko projektowe Java. W tym artykule jest używane środowisko [IntelliJ IDEA Community w wersji  2018.3.4](https://www.jetbrains.com/idea/download/).
+* Środowisko projektowe Java. W tym artykule [jest stosowany pomysł IntelliJ Community Ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
 * Azure Toolkit for IntelliJ.  Zobacz [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in) (Instalowanie zestawu Azure Toolkit for IntelliJ).
 
@@ -113,7 +113,7 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
 10. Sprawdź nazwę i lokalizację projektu, a następnie wybierz pozycję **Finish** (Zakończ).  Zaimportowanie projektu potrwa kilka minut.
 
-11. Po zaimportowaniu projektu w lewym okienku przejdź do pozycji **SparkSimpleApp** > **src** > **test**  >  **scala** > **com** > **microsoft** > **spark**  >  **example**.  Kliknij prawym przyciskiem myszy pozycję **MySpec**, a następnie wybierz pozycję **Delete...** (Usuń...). Ten plik nie jest potrzebny w aplikacji.  Wybierz przycisk **OK** w oknie dialogowym.
+11. Po zaimportowaniu projektu w lewym okienku przejdź do pozycji **SparkSimpleApp** > **src** > **test**  >  **scala** > **com** > **microsoft** > **spark**  >  **example**.  Kliknij prawym przyciskiem myszy pozycję Moja **Specyfikacja**, a następnie wybierz pozycję **Usuń.** Ten plik nie jest potrzebny dla aplikacji.  Wybierz przycisk **OK** w oknie dialogowym.
   
 12. W kolejnych krokach zaktualizujemy plik **pom.xml**, definiując zależności dla aplikacji Spark Scala. Aby automatycznie pobrać i rozpoznać te zależności, musisz odpowiednio skonfigurować narzędzie Maven.
 
@@ -123,7 +123,7 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
 15. Zaznacz pole wyboru **Import Maven projects automatically** (Importuj projekty Maven automatycznie).
 
-16. Wybierz **Zastosuj**, a następnie wybierz pozycję **OK**.  Następnie nastąpi powrót do okna projektu.
+16. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.  Następnie nastąpi powrót do okna projektu.
 
     ![Konfigurowanie automatycznego pobierania w narzędziu Maven](./media/apache-spark-create-standalone-application/configure-maven-download.png)
 
@@ -210,7 +210,7 @@ Aplikację można uruchomić w klastrze przy użyciu następujących metod:
 
 Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń klaster, który został utworzony, wykonując następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. W polu **Wyszukaj** w górnej części wpisz **HDInsight**.
 
@@ -220,7 +220,7 @@ Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń klaster, który zosta�
 
 1. Wybierz pozycję **Usuń**. Wybierz pozycję **tak**.
 
-![Usuwanie klastra usługi HDInsight w witrynie Azure Portal](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "Usuwanie klastra usługi HDInsight")
+![Usuwanie](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "klastra") usługi HDInsight w portalu Azure
 
 ## <a name="next-step"></a>Następny krok
 

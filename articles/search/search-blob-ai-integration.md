@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 2513825fcb275aeb3c4f0ca49ff5f2a6bd9441f0
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 5dc81f6e35f86c6dee77d44ff5c59c2657434a37
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303017"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376267"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>Korzystanie z AI do zrozumienia danych obiektów BLOB
 
@@ -48,7 +48,7 @@ Po dodaniu Azure Search do konta magazynu można wykonać standardowy proces, ab
 
 W poniższych sekcjach omówiono więcej składników i koncepcji.
 
-## <a name="use-blob-indexers"></a>Korzystanie z indeksatorów obiektów BLOB
+## <a name="begin-with-blob-indexers"></a>Rozpocznij od indeksatorów obiektów BLOB
 
 Wzbogacanie AI jest dodatkiem do potoku indeksowania, a w Azure Search te potoki są zbudowane na podstawie *indeksatora*. Indeksator to podusługa z obsługą źródła danych, która jest wyposażona w wewnętrzną logikę do próbkowania danych, odczytywanie danych metadanych, pobieranie danych i Serializowanie danych z formatów natywnych do dokumentów JSON w celu późniejszego zaimportowania. Indeksatory są często używane do importowania, oddziel je od AI, ale jeśli chcesz skompilować potok wzbogacania AI, będziesz potrzebować indeksatora i zestawu umiejętności. W tej sekcji skupmy się na samym indeksatorze.
 
@@ -76,30 +76,33 @@ Wbudowane umiejętności, które są obsługiwane przez Cognitive Services wymag
 
 Jeśli używasz tylko umiejętności niestandardowych i wbudowanych narzędzi, nie ma żadnej zależności ani kosztów związanych z Cognitive Services.
 
-## <a name="order-of-operations"></a>Kolejność operacji
+<!-- ## Order of operations
 
-Teraz zostały omówione indeksatory, wyodrębnianie zawartości i umiejętności, dlatego można dokładniej zapoznać się z mechanizmami potoku i kolejnością operacji.
+Now we've covered indexers, content extraction, and skills, we can take a closer look at pipeline mechanisms and order of operations.
 
-Zestawu umiejętności jest składową jednego lub większej liczby umiejętności. Jeśli chodzi o wiele umiejętności, zestawu umiejętności działa jako potok sekwencyjny, tworząc wykresy zależności, gdzie dane wyjściowe z jednej umiejętności staną się danymi wejściowymi do innej. 
+A skillset is a composition of one or more skills. When multiple skills are involved, the skillset operates as sequential pipeline, producing dependency graphs, where output from one skill becomes input to another. 
 
-Na przykład w przypadku dużego obiektu BLOB tekstu bez struktury Przykładowa kolejność operacji dla analizy tekstu może być następująca:
+For example, given a large blob of unstructured text, a sample order of operations for text analytics might be as follows:
 
-1. Użyj rozdzielacza tekstu, aby podzielić obiekt BLOB na mniejsze części.
-1. Użyj wykrywanie języka, aby określić, czy zawartość jest w języku angielskim czy innym.
-1. Użyj translatora tekstu, aby wyświetlić cały tekst w typowym języku.
-1. Uruchom rozpoznawanie jednostek, wyodrębnianie kluczowych fraz lub analiza tonacji na fragmentach tekstu. W tym kroku są tworzone i wypełniane nowe pola. Jednostki mogą być lokalizacjami, osobami, organizacjami i datami. Kluczowe frazy są krótkimi kombinacjami wyrazów, które pojawiają się razem. Wynik tonacji jest klasyfikacją dla elementu Continuum z wartości ujemnej (0) na dodatnią (1) tonacji.
-1. Użyj scalania tekstu do odtworzenia dokumentu z mniejszych fragmentów..
+1. Use Text Splitter to break the blob into smaller parts.
+1. Use Language Detection to determine if content is English or another language.
+1. Use Text Translator to get all text into a common language.
+1. Run Entity Recognition, Key Phrase Extraction, or Sentiment Analysis on chunks of text. In this step, new fields are created and populated. Entities might be location, people, organization, dates. Key phrases are short combinations of words that appear to belong together. Sentiment score is a rating on continuum of negative (0) to positive (1) sentiment.
+1. Use Text Merger to reconstitute the document from the smaller chunks. -->
 
+## <a name="how-to-use-ai-enriched-content"></a>Jak korzystać z zawartości wzbogaconej AI
 
-## <a name="outputs-and-use-cases"></a>Dane wyjściowe i przypadki użycia
+Dane wyjściowe wzbogacania AI to indeks wyszukiwania na Azure Search lub magazyn wiedzy w usłudze Azure Storage.
 
-Wzbogacony dokument na końcu potoku różni się od oryginalnej wersji wejściowej przez obecność dodatkowych pól zawierających nowe informacje, które zostały wyodrębnione lub wygenerowane podczas wzbogacania. W związku z tym można korzystać z kombinacji oryginalnych i utworzonych wartości na kilka sposobów.
+W Azure Search indeks wyszukiwania jest używany na potrzeby interaktywnej eksploracji przy użyciu dowolnego tekstu i filtrowanych zapytań w aplikacji klienckiej. Wzbogacone dokumenty utworzone za pomocą AI są sformatowane w formacie JSON i indeksowane w taki sam sposób, jak wszystkie dokumenty są indeksowane w Azure Search, przy użyciu wszystkich korzyści oferowanych przez indeksator. Na przykład podczas indeksowania indeksator obiektu BLOB odwołuje się do parametrów i ustawień konfiguracji w celu wykorzystania dowolnego mapowania pól lub logiki wykrywania zmian. Takie ustawienia są w pełni dostępne dla regularnego indeksowania i wzbogaconych obciążeń AI. Indeksowanie końcowe, gdy zawartość jest przechowywana w Azure Search, można tworzyć rozbudowane zapytania i wyrażenia filtru, aby zrozumieć zawartość.
 
-Format danych wyjściowych to indeks wyszukiwania na Azure Search lub magazyn wiedzy w usłudze Azure Storage.
+W usłudze Azure Storage magazyn wiedzy ma dwie manifesty: kontener obiektów blob lub tabele w magazynie tabel. 
 
-W Azure Search, wzbogacone dokumenty są sformatowane w formacie JSON i mogą być indeksowane w taki sam sposób, jak wszystkie dokumenty są indeksowane, z korzyściami, jakie zapewnia indeksator. Pola z ulepszonych dokumentów są mapowane na schemat indeksu. Podczas indeksowania indeksator obiektu BLOB odwołuje się do parametrów i ustawień konfiguracji, aby można było użyć dowolnego mapowania pól lub zdefiniowanej logiki wykrywania zmian. Indeksowanie końcowe, gdy zawartość jest przechowywana w Azure Search, można tworzyć rozbudowane zapytania i wyrażenia filtru, aby zrozumieć zawartość.
++ Kontener obiektów BLOB przechwytuje w całości wzbogacone dokumenty, co jest przydatne, jeśli chcesz uzyskać strumieniowe źródło danych do innych procesów. 
 
-W usłudze Azure Storage magazyn wiedzy ma dwie manifesty: kontener obiektów blob lub tabele w magazynie tabel. Kontener obiektów BLOB przechwytuje w całości wzbogacone dokumenty, co jest przydatne, jeśli chcesz uzyskać strumieniowe źródło danych do innych procesów. W przeciwieństwie do magazynu tabel można obsłużyć fizyczne projekcje ulepszonych dokumentów. Można tworzyć wycinki lub warstwy wzbogaconych dokumentów, które zawierają lub wykluczają określone części. Do analizy w Power BI tabele w usłudze Azure Table Storage stają się źródłem danych w celu przeprowadzenia dalszej wizualizacji i eksploracji.
++ W przeciwieństwie do magazynu tabel można obsłużyć fizyczne projekcje ulepszonych dokumentów. Można tworzyć wycinki lub warstwy wzbogaconych dokumentów, które zawierają lub wykluczają określone części. Do analizy w Power BI tabele w usłudze Azure Table Storage stają się źródłem danych w celu przeprowadzenia dalszej wizualizacji i eksploracji.
+
+Wzbogacony dokument na końcu potoku różni się od oryginalnej wersji wejściowej przez obecność dodatkowych pól zawierających nowe informacje, które zostały wyodrębnione lub wygenerowane podczas wzbogacania. W związku z tym można korzystać z kombinacji oryginalnej i utworzonej zawartości niezależnie od używanej struktury danych wyjściowych.
 
 ## <a name="next-steps"></a>Następne kroki
 

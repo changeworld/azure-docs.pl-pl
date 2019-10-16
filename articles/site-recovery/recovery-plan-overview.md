@@ -6,14 +6,14 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8502e08db48700aefe51a6e4f0e79d1b08f6ca79
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814427"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331915"
 ---
 # <a name="about-recovery-plans"></a>Informacje o planach odzyskiwania
 
@@ -33,6 +33,9 @@ Plan odzyskiwania ułatwia zdefiniowanie systematycznego procesu odzyskiwania pr
 
 
 ## <a name="model-apps"></a>Aplikacje modelu
+
+> [!NOTE]
+> Do jednego planu odzyskiwania można dodać do 100 chronionych wystąpień.
 
 Można zaplanować i utworzyć grupę odzyskiwania, aby przechwytywać właściwości specyficzne dla aplikacji. Rozważmy na przykład typową aplikację trójwarstwowej z zapleczem programu SQL Server, programem pośredniczącym i frontonem sieci Web. Zazwyczaj dostosowuje się plan odzyskiwania, tak aby maszyny w poszczególnych warstwach były uruchamiane w odpowiedniej kolejności po przejściu w tryb failover.
 
@@ -60,16 +63,16 @@ Dzięki temu dostosowaniu, co się dzieje, gdy uruchomisz tryb failover w ramach
 
 Odzyskiwanie dużych aplikacji może być złożonym zadaniem. Ręczne kroki sprawiają, że proces podatny na błędy, a osoba pracująca w trybie failover może nie wiedzieć o wszystkich złożonego aplikacji. Można użyć planu odzyskiwania, aby wprowadzić zamówienie i zautomatyzować akcje potrzebne w każdym kroku, korzystając z Azure Automation elementów Runbook w celu przełączenia w tryb failover do platformy Azure lub skryptów. W przypadku zadań, które nie mogą być zautomatyzowane, można wstawiać pauzy dla akcji ręcznych w planach odzyskiwania. Istnieje kilka typów zadań, które można skonfigurować:
 
-* **Zadania na maszynie wirtualnej platformy Azure po przejściu w tryb failover**: Po przejściu w tryb failover na platformie Azure zwykle trzeba wykonać akcje, aby można było połączyć się z maszyną wirtualną po przejściu w tryb pracy awaryjnej. Przykład: 
+* **Zadania na maszynie wirtualnej platformy Azure po**przejściu w tryb failover: w przypadku przełączenia awaryjnego na platformę Azure zwykle trzeba wykonać akcje, aby można było nawiązać połączenie z maszyną wirtualną po zakończeniu pracy w trybie failover. Na przykład: 
     * Utwórz publiczny adres IP na maszynie wirtualnej platformy Azure.
     * Przypisz sieciową grupę zabezpieczeń do karty sieciowej maszyny wirtualnej platformy Azure.
     * Dodaj moduł równoważenia obciążenia do zestawu dostępności.
-* **Zadania wewnątrz maszyny wirtualnej po przejściu w tryb failover**: Te zadania zwykle ponownie konfigurują aplikację uruchomioną na komputerze, tak aby nadal działała poprawnie w nowym środowisku. Na przykład:
+* **Zadania w ramach maszyny wirtualnej po**przejściu do trybu failover: te zadania zwykle ponownie konfigurują aplikację uruchomioną na komputerze, tak aby nadal działała poprawnie w nowym środowisku. Na przykład:
     * Zmodyfikuj parametry połączenia z bazą danych w ramach maszyny.
     * Zmień konfigurację lub reguły serwera sieci Web.
 
 
-## <a name="test-failover"></a>Testowe przełączenie w tryb failover
+## <a name="test-failover"></a>Testowanie pracy w trybie failover
 
 Można użyć planu odzyskiwania, aby wyzwolić test pracy w trybie failover. Należy stosować następujące najlepsze rozwiązania:
 
@@ -81,7 +84,7 @@ Można użyć planu odzyskiwania, aby wyzwolić test pracy w trybie failover. Na
 
     ![Zrzut ekranu przykładowego planu odzyskiwania testowego w Site Recovery](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>Obejrzyj film
+## <a name="watch-the-video"></a>Obejrzyj wideo
 
 Obejrzyj szybki przykład wideo pokazujący przejście w tryb failover na potrzeby dwuwarstwowej aplikacji WordPress.
     

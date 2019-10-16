@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 31b005bd76591d8098f119c7aa9b87a68841658c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719880"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331270"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Administrowanie usługą dla Azure Search w Azure Portal
 > [!div class="op_single_selector"]
@@ -34,8 +34,7 @@ Azure Search to w pełni zarządzana usługa wyszukiwania oparta na chmurze słu
 
 Należy zauważyć, że *uaktualnienie* nie jest wymienione jako zadanie administracyjne. Ponieważ zasoby są alokowane po aprowizacji usługi, przeniesienie do innej warstwy wymaga nowej usługi. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie usługi Azure Search](search-create-service-portal.md).
 
-> [!Tip]
-> Szukasz pomocy na temat analizowania ruchu wyszukiwania lub wydajności zapytań? Można monitorować woluminy zapytań, które wyszukiwane są osoby i jak pomyślne wyniki wyszukiwania znajdują się w identyfikatorach klientów, którzy mają do określonych dokumentów w indeksie. Aby uzyskać więcej informacji, zobacz [Analiza ruchu wyszukiwania Azure Search](search-traffic-analytics.md), [monitorowania metryk użycia i zapytań](search-monitor-usage.md)oraz [wydajności i optymalizacji](search-performance-optimization.md).
+Możesz monitorować wolumin zapytań i inne metryki oraz korzystać z tych szczegółowych informacji, aby dostosować usługę do krótszych czasów odpowiedzi. Aby uzyskać więcej informacji, zobacz [monitorowanie metryk użycia i kwerendy](search-monitor-usage.md) oraz [wydajność i optymalizację](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
@@ -55,7 +54,7 @@ W zakresie ogólnych informacji o usłudze możesz uzyskać informacje w następ
 
 * W portalu na pulpicie nawigacyjnym usługi, za pomocą powiadomień, właściwości i komunikatów o stanie.
 * Korzystanie z [programu PowerShell](search-manage-powershell.md) lub [interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/) w celu [pobrania właściwości usługi](https://docs.microsoft.com/rest/api/searchmanagement/services)lub stanu użycia zasobów indeksu.
-* Za pomocą [analizy ruchu wyszukiwania](search-traffic-analytics.md), jak wspomniano wcześniej.
+
 
 <a id="sub-5"></a>
 

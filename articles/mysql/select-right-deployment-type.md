@@ -1,78 +1,105 @@
 ---
 title: Wybieranie odpowiedniego typu wdrożenia dla Azure Database for MySQL
-description: W tym artykule opisano zagadnienia, które należy wykonać przed przejściem do infrastruktury jako usługi (IaaS) lub platformy jako usługi (PaaS) dla Azure Database for MySQL.
+description: W tym artykule opisano czynniki, które należy wziąć pod uwagę przed wdrożeniem Azure Database for MySQL jak infrastruktura jako usługa (IaaS) lub platforma jako usługa (PaaS).
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7bcbf379ea8d046c8c477dc716711a6a6ffa1dc9
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 035a559f27d11a89dba1983f1bcaf406ef6a0d05
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813836"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331943"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Wybieranie odpowiedniej opcji serwera MySQL na platformie Azure
 
-Na platformie Azure obciążenia serwera MySQL mogą działać w hostowanej maszynie wirtualnej (IaaS) lub jako usługa hostowana (PaaS). PaaS ma wiele opcji wdrażania, a w każdej opcji wdrożenia znajdują się warstwy usług. Podczas decydowania o PaaS lub IaaS należy określić, czy chcesz zarządzać bazą danych, stosować poprawki i tworzyć kopie zapasowe, czy też chcesz delegować te operacje na platformę Azure.</br>
+Na platformie Azure obciążenia serwera MySQL mogą działać w hostowanej infrastrukturze maszyny wirtualnej jako usługi (IaaS) lub jako hostowanej platformy jako usługi (PaaS). PaaS ma wiele opcji wdrażania, a w każdej opcji wdrożenia znajdują się warstwy usług. Po wybraniu opcji między IaaS i PaaS należy zdecydować, czy chcesz zarządzać bazą danych, stosować poprawki i tworzyć kopie zapasowe, czy też chcesz delegować te operacje na platformę Azure.
 
-Na podstawie odpowiedzi na to pytanie należy wziąć pod uwagę następujące opcje: <br/>
+Podczas podejmowania decyzji należy wziąć pod uwagę następujące dwie opcje:
 
-**Azure Database for MySQL** to w pełni zarządzany aparat bazy danych MySQL oparty na stabilnej wersji Community Edition. Ta relacyjna baza danych jako usługa (DBaaS) hostowana w chmurze platformy Azure znajduje się w kategorii branżowej platformy jako usługi (PaaS). W przypadku wystąpienia zarządzanego programu MySQL na platformie Azure można używać wbudowanych funkcji i funkcji, które wymagają rozbudowanej konfiguracji w przypadku korzystania z serwera MySQL (lokalnie lub na maszynie wirtualnej platformy Azure). W przypadku korzystania z programu MySQL jako usługi możesz skorzystać z opcji w celu skalowania w górę lub w dół w celu uzyskania większej mocy bez przerw w działaniu. Ponadto, w przeciwieństwie do autonomicznego serwera MySQL, Azure Database for MySQL oferuje dodatkowe funkcje, takie jak wbudowana wysoka dostępność, analiza i zarządzanie. <br/><br/>
-**Baza danych MySQL na maszynie wirtualnej platformy Azure** znajduje się w kategorii branżowej infrastruktura jako usługa (IaaS) i umożliwia uruchamianie serwera MySQL w ramach w pełni zarządzanej maszyny wirtualnej w chmurze platformy Azure. Wszystkie najnowsze wersje i wersje programu MySQL można zainstalować na maszynie wirtualnej IaaS. Najbardziej znaczącą różnicą od Azure Database for MySQL jest to, że program MySQL na maszynach wirtualnych platformy Azure umożliwia kontrolę nad aparatem bazy danych. Jednak ten formant jest kosztem dodatkowej odpowiedzialności za zarządzanie maszynami wirtualnymi i wielu zadań DBA, takich jak Konserwacja serwera bazy danych/stosowanie poprawek, projekt odzyskiwania i wysokiej dostępności itd.
+- **Azure Database for MySQL**. Ta opcja to w pełni zarządzany aparat bazy danych MySQL oparty na stabilnej wersji programu MySQL Community Edition. Ta relacyjna baza danych jako usługa (DBaaS) hostowana na platformie Azure Cloud Platform znajduje się w kategorii branża PaaS.
+
+  W przypadku wystąpienia zarządzanego programu MySQL na platformie Azure można używać wbudowanych funkcji, które w przeciwnym razie wymagają obszernej konfiguracji, gdy serwer MySQL jest lokalnie lub na maszynie wirtualnej platformy Azure.
+
+  W przypadku korzystania z programu MySQL jako usługi Płatność odbywa się zgodnie z opcjami skalowania w górę lub w poziomie w celu uzyskania większej kontroli bez przerw w działaniu. W przeciwieństwie do autonomicznego serwera MySQL, Azure Database for MySQL oferuje dodatkowe funkcje, takie jak wbudowana wysoka dostępność, analiza i zarządzanie.
+
+- **Baza danych MySQL na maszynach wirtualnych platformy Azure**. Ta opcja znajduje się w kategorii branża IaaS. Za pomocą tej usługi można uruchomić serwer MySQL wewnątrz w pełni zarządzanej maszyny wirtualnej na platformie Azure w chmurze. Wszystkie najnowsze wersje i wersje programu MySQL można zainstalować na maszynie wirtualnej IaaS.
+
+  W najbardziej znaczącej różnicy między Azure Database for MySQL, MySQL na maszynach wirtualnych platformy Azure oferuje kontrolę nad aparatem bazy danych. Jednak ten formant jest kosztem odpowiedzialności za zarządzanie maszynami wirtualnymi i wieloma zadaniami administracyjnymi bazy danych (DBA). Te zadania obejmują obsługę i stosowanie poprawek do serwerów baz danych, odzyskiwania bazy danych i projektu o wysokiej dostępności.
 
 Główne różnice między tymi opcjami są wymienione w poniższej tabeli:
 
-|            | **Azure Database for MySQL** | **Baza danych MySQL na maszynach wirtualnych platformy Azure**    |
+|            | Azure Database for MySQL | Baza danych MySQL na maszynach wirtualnych platformy Azure    |
 |:-------------------|:-----------------------------|:--------------------|
-| **USŁUG**                | Oferuje umowę SLA na 99,99% dostępności| Do 99,95% dostępności z co najmniej 2 wystąpieniem w tym samym zestawie dostępności. <br/>99,9% maszyny wirtualnej z jednym wystąpieniem przy użyciu usługi Premium Storage <br/> 99,99% ze strefą dostępności z co najmniej 2 wystąpieniem w 2 lub większym zestawie dostępności.<br/> Uwaga — [Umowa SLA dotycząca maszyn wirtualnych](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) |
-| **Stosowanie poprawek systemu operacyjnego**        | Automatyczne  | Zarządzane przez klientów |
-|**Stosowanie poprawek MySQL**     | Automatyczne  | Zarządzane przez klientów |
-| **Wysoka dostępność** | Model wysokiej dostępności (HA) jest oparty na wbudowanych mechanizmach trybu failover w przypadku wystąpienia przerwy na poziomie węzła. W takich przypadkach usługa automatycznie tworzy wystąpienie i dołącza magazyn do nowego wystąpienia. | Wysoka dostępność jest poddawana architekturze, implementowana, przetestowana i obsługiwana przez klienta. Może to obejmować zawsze włączone (klaster trybu failover lub replikacja grupowa), wysyłanie dziennika i replikację transakcyjną, w zależności od używanej wersji aparatu MySQL.|
-| **Nadmiarowość stref** | Obecnie nie jest obsługiwane. | Maszyny wirtualne platformy Azure można skonfigurować do uruchamiania w różnych strefach dostępności. W przypadku rozwiązania lokalnego klienci mogą tworzyć i obsługiwać własne pomocnicze centrum danych oraz zarządzać nimi.|
-| **Scenariusze hybrydowe** | [Replikacja typu Data-in](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication) pozwala synchronizować dane z zewnętrznego serwera MySQL do usługi Azure Database for MySQL. Serwer zewnętrzny może być lokalny, w maszynach wirtualnych lub w usłudze bazy danych hostowanej przez innych dostawców chmury.  <br/> <br/> Funkcja [Read Replica](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) umożliwia replikowanie danych z serwera Azure Database for MySQL (Master) do maksymalnie pięciu serwerów tylko do odczytu (replik) w tym samym regionie świadczenia usługi Azure lub w różnych regionach. Repliki tylko do odczytu są asynchronicznie aktualizowane przy użyciu technologii replikacji binlog.   <br/> <br/> Uwaga — replikacja odczytu między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.| Zarządzane przez klientów <br/>
-| **Tworzenie kopii zapasowej i przywracanie** | Automatycznie tworzy [kopie zapasowe serwera](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) i zapisuje je w skonfigurowanym przez użytkownika miejscu magazynu lokalnie nadmiarowego lub geograficznie nadmiarowego. Usługa przyjmuje kopie zapasowe z pełnymi, różnicami i dziennikami transakcji | Zarządzane przez klientów |
-| **Operacje monitorowania bazy danych** | Umożliwia klientom [Ustawianie alertów](https://docs.microsoft.com/azure/mysql/concepts-monitoring) dotyczących operacji w bazie danych i działanie po osiągnięciu progów. | Zarządzane przez klientów |
-| **Zaawansowana ochrona wątków** | Zapewnia [zaawansowaną ochronę przed zagrożeniami](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal) , która wykrywa anomalie działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. | Klienci muszą kompilować się dla siebie.
-| **Kopie zapasowe (odzyskiwanie po awarii)** | Przechowuje zautomatyzowane kopie zapasowe w ramach użytkownika skonfigurowanego [lokalnie nadmiarowy lub geograficznie nadmiarowy](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal). Kopie zapasowe mogą być również używane do przywracania serwera do punktu w czasie. Okres przechowywania można ustawić od 7-35 dni. Przywracanie można wykonać przy użyciu Azure Portal. <br/> | W pełni zarządzane przez klienta, w tym m.in. Planowanie, testowanie, archiwizowanie, przechowywanie i przechowywanie. Dodatkową opcją jest użycie usługi Azure Recovery Services magazyn do tworzenia kopii zapasowych maszyn wirtualnych i baz danych platformy Azure na maszynach wirtualnych (w wersji zapoznawczej). |
-| **Zalecenie dotyczące wydajności** | Zapewnia klientom [zalecenia dotyczące wydajności](https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) proaktywnej na podstawie danych telemetrycznych użycia, które ułatwiają Optymalizowanie obciążeń. | Zarządzane przez klientów |
-
+| Umowa dotycząca poziomu usług (SLA)                | Oferuje umowę SLA na 99,99% dostępności| Do 99,95% dostępności z co najmniej dwoma wystąpieniami w tym samym zestawie dostępności.<br/><br/>dostępność na 99,9% z maszyną wirtualną o pojedynczym wystąpieniu przy użyciu usługi Premium Storage.<br/><br/>99,99% przy użyciu Strefy dostępności z wieloma wystąpieniami w wielu zestawach dostępności.<br/><br/>Zobacz umowę [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)dotyczącą Virtual Machines. |
+| Stosowanie poprawek systemu operacyjnego        | Automatyczny  | Zarządzane przez klientów |
+| Stosowanie poprawek MySQL     | Automatyczny  | Zarządzane przez klientów |
+| Wysoka dostępność | Model wysokiej dostępności (HA) jest oparty na wbudowanych mechanizmach trybu failover w przypadku wystąpienia przerwy na poziomie węzła. W takich przypadkach usługa automatycznie tworzy nowe wystąpienie i dołącza magazyn do tego wystąpienia. | Klienci mogą korzystać z architektów, implementować, testować i obsługiwać wysoką dostępność. Możliwości mogą obejmować zawsze włączone klaster trybu failover, zawsze włączone replikacje grupowe, wysyłanie dziennika lub replikację transakcyjną.|
+| Nadmiarowość stref | Obecnie nieobsługiwane | Maszyny wirtualne platformy Azure można skonfigurować do uruchamiania w różnych strefach dostępności. W przypadku rozwiązania lokalnego klienci muszą tworzyć i obsługiwać własne pomocnicze centrum danych oraz zarządzać nimi.|
+| Scenariusze hybrydowe | Za pomocą [replikacja typu Data-in](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)można synchronizować dane z zewnętrznego serwera MySQL do usługi Azure Database for MySQL. Serwer zewnętrzny może być lokalny, w maszynach wirtualnych lub w usłudze bazy danych hostowanej przez innych dostawców chmury.<br/><br/> Funkcja [Read Replica](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) umożliwia replikowanie danych z serwera głównego Azure Database for MySQL do maksymalnie pięciu serwerów repliki tylko do odczytu. Repliki są w tym samym regionie świadczenia usługi Azure lub w różnych regionach. Repliki tylko do odczytu są asynchronicznie aktualizowane przy użyciu technologii replikacji binlog.<br/><br/>Replikacja odczytu między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.| Zarządzane przez klientów
+| Tworzenie kopii zapasowej i przywracanie | Program automatycznie tworzy [kopie zapasowe serwera](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) i przechowuje je w magazynie skonfigurowanym przez użytkownika, który jest lokalnie nadmiarowy lub geograficznie nadmiarowy. Usługa przyjmuje kopie zapasowe z pełnymi, różnicami i dziennikami transakcji | Zarządzane przez klientów |
+| Operacje monitorowania bazy danych | Oferuje klientom możliwość [ustawiania alertów](https://docs.microsoft.com/azure/mysql/concepts-monitoring) w ramach operacji bazy danych i działania po osiągnięciu progów. | Zarządzane przez klientów |
+| Zaawansowana ochrona przed zagrożeniami | Zapewnia [zaawansowaną ochronę przed zagrożeniami](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal). Ta ochrona wykrywa nietypowe działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. | Klienci muszą samodzielnie skompilować tę ochronę.
+| Odzyskiwanie po awarii | Przechowuje automatyczne kopie zapasowe w [magazynie lokalnie nadmiarowy lub geograficznie nadmiarowy](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal). Kopie zapasowe mogą również przywracać serwer do punktu w czasie. Okres przechowywania jest w dowolnym miejscu od 7 do 35 dni. Przywracanie jest realizowane przy użyciu Azure Portal. | W pełni zarządzane przez klientów. Obowiązki obejmują m.in. Planowanie, testowanie, archiwizowanie, przechowywanie i przechowywanie. Dodatkowa opcja polega na użyciu magazynu Recovery Services platformy Azure do tworzenia kopii zapasowych maszyn wirtualnych i baz danych platformy Azure na maszynach wirtualnych. Ta opcja jest w wersji zapoznawczej. |
+| Zalecenia dotyczące wydajności | Zapewnia klientom [zalecenia dotyczące wydajności](https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) na podstawie generowanych przez system plików dziennika użycia. Zalecenia ułatwiają optymalizację obciążeń. | Zarządzane przez klientów |
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>Motywacje biznesowe do wyboru PaaS lub IaaS
 
-Istnieje kilka czynników, które mogą mieć wpływ na decyzję, aby wybrać PaaS lub IaaS do hostowania baz danych MySQL:
+Istnieje kilka czynników, które mogą mieć wpływ na decyzję, aby wybrać PaaS lub IaaS do hostowania baz danych MySQL.
 
 ### <a name="cost"></a>Koszt
 
-Niezależnie od tego, czy jesteś strapped startowym dla środków pieniężnych, czy zespołu w firmie, która działa pod kątem ścisłych ograniczeń budżetowych, ograniczone finansowanie jest często podstawowym zagadnieniem podczas określania najlepszego rozwiązania do hostowania baz danych. W tej sekcji opisano podstawowe informacje dotyczące rozliczeń i licencjonowania na platformie Azure w odniesieniu do Azure Database for MySQL i MySQL na maszynach wirtualnych platformy Azure:
+Ograniczone finansowanie jest często podstawowym zagadnieniem, które określa najlepsze rozwiązanie do hostowania baz danych. Jest to prawdziwe, niezależnie od tego, czy jesteś w trakcie uruchamiania z małym środkiem pieniężnym czy zespołem w firmie, który działa w ramach ścisłych ograniczeń budżetowych. W tej sekcji opisano podstawowe informacje dotyczące rozliczeń i licencjonowania na platformie Azure, które mają zastosowanie do Azure Database for MySQL i MySQL na maszynach wirtualnych platformy Azure.
 
-#### <a name="billing"></a>Godzin
+#### <a name="billing"></a>Rozliczenia
 
-Obecnie Azure Database for MySQL jest dostępna jako usługa w kilku warstwach z różnymi cenami dla zasobów, dla których wszystkie są rozliczane godzinowo według ustalonej stawki. Najnowsze informacje dotyczące bieżących obsługiwanych warstw usług, rozmiarów obliczeń i ilości miejsca do magazynowania można znaleźć w temacie [model zakupów oparty na rdzeń wirtualny](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers). Możesz dynamicznie dostosować warstwy usług i rozmiary obliczeń, aby odpowiadały potrzebom różnych przepływności aplikacji. Opłaty są naliczane za wychodzący ruch internetowy przy zwykłych [stawkach za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/).
+Azure Database for MySQL jest obecnie dostępna jako usługa w kilku warstwach z różnymi cenami dla zasobów. Wszystkie zasoby są rozliczane godzinowo według ustalonej stawki. Najnowsze informacje na temat aktualnie obsługiwanych warstw usług, rozmiarów obliczeń i ilości miejsca do magazynowania można znaleźć w temacie [model zakupów oparty na rdzeń wirtualny](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers). Możesz dynamicznie dostosować warstwy usług i rozmiary obliczeń, aby odpowiadały potrzebom różnych przepływności aplikacji. Opłaty są naliczane za wychodzący ruch internetowy przy zwykłych [stawkach za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/).
 
-W przypadku Azure Database for MySQL oprogramowanie bazy danych jest automatycznie konfigurowane, poprawiane i uaktualniane przez firmę Microsoft, co zmniejsza koszty administracyjne. Ponadto [wbudowane funkcje tworzenia kopii zapasowych](https://docs.microsoft.com/azure/mysql/concepts-backup) pomagają zapewnić znaczne oszczędności, zwłaszcza w przypadku dużej liczby baz danych. Za pomocą programu MySQL na maszynach wirtualnych platformy Azure Możesz wybrać i uruchomić dowolną wersję programu MySQL. Niezależnie od używanej wersji programu MySQL płacisz za zainicjowaną maszynę wirtualną i koszty dla określonego typu licencji używanego dla programu MySQL.
+W przypadku Azure Database for MySQL firma Microsoft automatycznie konfiguruje, poprawki i uaktualnia oprogramowanie bazy danych. Te automatyczne akcje zmniejszają koszty administracyjne. Ponadto Azure Database for MySQL ma [wbudowaną funkcję tworzenia kopii zapasowych](https://docs.microsoft.com/azure/mysql/concepts-backup) . Te funkcje pomagają osiągnąć znaczący koszt oszczędności, zwłaszcza w przypadku dużej liczby baz danych. W przeciwieństwie do programu MySQL na maszynach wirtualnych platformy Azure można wybrać i uruchomić dowolną wersję programu MySQL. Niezależnie od używanej wersji programu MySQL można płacić za zainicjowaną maszynę wirtualną oraz koszty dla określonego typu licencji MySQL.
 
-Azure Database for MySQL zapewnia wysoką dostępność dowolnego rodzaju przerw na poziomie węzła i nadal utrzymuje 99,99% umowy SLA dla usługi. Jednak w przypadku wysokiej dostępności bazy danych (HA) w ramach maszyn wirtualnych klient powinien przejść przez opcje wysokiej dostępności dostępne w bazie danych MySQL, takie jak [replikacja MySQL](https://dev.mysql.com/doc/refman/8.0/en/replication.html). Korzystanie z obsługiwanej opcji wysokiej dostępności nie zapewnia dodatkowej umowy SLA, ale umożliwia uzyskanie > 99,99% dostępności bazy danych z dodatkowym kosztem i narzutem administracyjnym.
+Azure Database for MySQL zapewnia wbudowaną wysoką dostępność dla dowolnego rodzaju przerw na poziomie węzła, utrzymując gwarancję SLA na 99,99% dla usługi. Jednak w przypadku wysokiej dostępności bazy danych w ramach maszyn wirtualnych klienci powinni korzystać z opcji wysokiej dostępności, takich jak [replikacja MySQL](https://dev.mysql.com/doc/refman/8.0/en/replication.html) , która jest dostępna w bazie danych MySQL. Korzystanie z obsługiwanej opcji wysokiej dostępności nie zapewnia dodatkowej umowy SLA. Jednak pozwala to osiągnąć więcej niż 99,99% dostępności bazy danych przy dodatkowych kosztach i obciążeniu administracyjnym.
 
-Aby uzyskać więcej informacji na temat cen, zobacz następujące zasoby:
+Aby uzyskać więcej informacji na temat cen, zobacz następujące artykuły:
 * [Cennik Azure Database for MySQL](https://azure.microsoft.com/pricing/details/mysql/)
 * [Cennik maszyny wirtualnej](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Kalkulator cen platformy Azure](https://azure.microsoft.com/pricing/calculator/)
 
 ### <a name="administration"></a>Administracja
 
-W przypadku wielu firm decyzja o przejściu do usługi w chmurze polega na tym, że jest to bardzo dużo na odciążeniu złożoności administracji. Dzięki IaaS i PaaS, firma Microsoft administruje podstawową infrastrukturą i automatycznie replikuje wszystkie dane w celu zapewnienia odzyskiwania po awarii, konfiguruje i uaktualnia oprogramowanie bazy danych, zarządza równoważeniem obciążenia i działa w trybie failover, jeśli istnieje Błąd serwera.
+W przypadku wielu firm decyzja o przejściu do usługi w chmurze polega na tym, że jest to bardzo dużo na odciążeniu złożoności administracji, ponieważ ma ona koszt. Z IaaS i PaaS, firma Microsoft:
 
-* **Za pomocą Azure Database for MySQL**można nadal administrować swoją bazą danych, ale nie musisz już zarządzać aparatem bazy danych, systemem operacyjnym ani sprzętem. Przykłady elementów, które można nadal administrować, obejmują bazy danych i logowania, dostrajanie indeksów i zapytań oraz inspekcję i zabezpieczenia. Ponadto Konfigurowanie wysokiej dostępności w innym centrum danych wymaga konfiguracji minimalnej lub bez niej.<br/><br/>
-* **Za pomocą programu MySQL na maszynach wirtualnych platformy Azure**masz pełną kontrolę nad konfiguracją systemu operacyjnego i wystąpienia serwera MySQL. W przypadku maszyny wirtualnej należy zdecydować, kiedy należy zaktualizować/uaktualnić system operacyjny i oprogramowanie bazy danych oraz kiedy zainstalować dodatkowe oprogramowanie, np. aplikację antywirusową. Niektóre funkcje automatyczne zapewniają znacznie uproszczenie stosowania poprawek, kopii zapasowych i wysokiej dostępności. Ponadto można kontrolować rozmiar maszyny wirtualnej, liczbę dysków i ich konfiguracje magazynu. Aby uzyskać więcej informacji, zobacz rozmiary maszyn wirtualnych i usług w chmurze dla platformy Azure.
+- Zarządza podstawową infrastrukturą.
+- Automatycznie replikuje wszystkie dane w celu zapewnienia odzyskiwania po awarii.
+- Konfiguruje i uaktualnia oprogramowanie bazy danych.
+- Zarządza równoważeniem obciążenia.
+- Działa w trybie failover, jeśli wystąpi błąd serwera.
 
-### <a name="time-to-move-to-azure-br"></a>Czas przejścia na platformę Azure <br/>
-* **Azure Database for MySQL** to odpowiednie rozwiązanie dla aplikacji zaprojektowanych w chmurze, gdy produktywność deweloperów i krótki czas na rynek dla nowych rozwiązań jest krytyczny. Dzięki funkcjom programistycznym opartym na usłudze SYSDBA usługa jest idealna dla architektów i deweloperów rozwiązań w chmurze, ponieważ obniża potrzebę zarządzania bazowym systemem operacyjnym i bazą danych.<br/><br/>
-* Program **MySQL na maszynach wirtualnych platformy Azure** doskonale nadaje się do istniejących lub nowych aplikacji, które wymagają bazy danych MySQL lub dostępu do funkcji w bazie danych MySQL w systemie Windows/Linux i chcesz uniknąć czasu i kosztów nabycia nowego sprzętu lokalnego. Ta opcja jest również przydatna w przypadku migrowania istniejących lokalnych aplikacji i baz danych na platformę Azure zgodnie z oczekiwaniami — w przypadkach, w których wystąpienie Azure Database for MySQL nie jest dobrym rozwiązaniem. Ponieważ nie ma potrzeby zmieniania warstw prezentacji, aplikacji i danych, możesz zaoszczędzić czas i budżet w przypadku ponownego tworzenia architektury istniejącego rozwiązania. Zamiast tego można skupić się na migrowaniu wszystkich rozwiązań na platformę Azure i rozwiązaniu niektórych optymalizacji wydajności, które mogą być wymagane przez platformę Azure.
+Na poniższej liście opisano zagadnienia dotyczące zagadnień administracyjnych dla każdej z nich:
+
+* Za pomocą Azure Database for MySQL można nadal administrować swoją bazą danych. Nie trzeba jednak już zarządzać aparatem bazy danych, systemem operacyjnym ani sprzętem. Przykłady elementów, którymi można zarządzać, to m.in.:
+
+  - Bazy danych
+  - Logowanie
+  - Dostosowywanie indeksu
+  - Dostrajanie zapytania
+  - Inspekcja
+  - Zabezpieczenia
+
+  Ponadto skonfigurowanie wysokiej dostępności w innym centrum danych wymaga minimalnej konfiguracji lub jej administracji.
+
+* Za pomocą programu MySQL na maszynach wirtualnych platformy Azure masz pełną kontrolę nad systemem operacyjnym i konfiguracją wystąpienia serwera MySQL. Za pomocą maszyny wirtualnej Zdecyduj, kiedy zaktualizować lub uaktualnić system operacyjny i oprogramowanie bazy danych. Należy również określić, kiedy zainstalować dodatkowe oprogramowanie, np. aplikację antywirusową. Niektóre funkcje automatyczne zapewniają znacznie uproszczenie stosowania poprawek, kopii zapasowych i wysokiej dostępności. Można kontrolować rozmiar maszyny wirtualnej, liczbę dysków i ich konfiguracje magazynu. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych i usług w chmurze dla platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+
+### <a name="time-to-move-to-azure"></a>Czas przejścia na platformę Azure
+
+* Azure Database for MySQL to odpowiednie rozwiązanie dla aplikacji zaprojektowanych w chmurze, gdy produktywność deweloperów i krótki czas wprowadzenia na rynek nowych rozwiązań mają kluczowe znaczenie. Dzięki funkcjom programistycznym, takim jak DBA, usługa jest odpowiednia dla architektów i deweloperów rozwiązań w chmurze, ponieważ obniża potrzebę zarządzania bazowym systemem operacyjnym i bazą danych.
+
+* Aby uniknąć czasu i wydatków na pozyskiwanie nowego sprzętu lokalnego, program MySQL na maszynach wirtualnych platformy Azure to odpowiednie rozwiązanie dla aplikacji, które wymagają bazy danych MySQL lub dostępu do funkcji MySQL w systemie Windows lub Linux. To rozwiązanie jest również odpowiednie do migrowania istniejących lokalnych aplikacji i baz danych na platformę Azure bez zmian, w przypadku których Azure Database for MySQL jest słabo dopasowany.
+
+  Ze względu na to, że nie trzeba zmieniać warstw prezentacji, aplikacji i danych, możesz zaoszczędzić czas i budżet na potrzeby ponownej architektury istniejącego rozwiązania. Zamiast tego można skupić się na migrowaniu wszystkich rozwiązań na platformę Azure i rozwiązaniu niektórych optymalizacji wydajności, które mogą być wymagane przez platformę Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zobacz [cennik Azure Database for MySQL](https://azure.microsoft.com/pricing/details/mysql/)
-* Zacznij od [utworzenia pierwszego serwera](https://review.docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal).
-
+* Zobacz [cennik Azure Database for MySQL](https://azure.microsoft.com/pricing/details/MySQL/).
+* Rozpoczęcie pracy przez [utworzenie pierwszego serwera](https://review.docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal).

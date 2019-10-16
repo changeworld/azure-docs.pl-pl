@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.author: dacurwin
-ms.openlocfilehash: dc7745c7c1110bf3635b1621cecfd5e61488b9f9
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1835c6968bfdfcc3f3ce4d8a624e8f6bd62e224c
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210395"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375944"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Kopia zapasowa spójna na poziomie aplikacji maszyn wirtualnych platformy Azure z systemem Linux
 
@@ -36,37 +36,39 @@ Przed skryptami wywoływane są natywne interfejsy API aplikacji, które w trybi
 
 4. Upewnij się, że następujące uprawnienia dotyczą tych plików:
 
-   - **VMSnapshotScriptPluginConfig.json**: Uprawnienie "600". Na przykład tylko użytkownik "root" powinien mieć uprawnienia "read" i "Write" do tego pliku, a użytkownik nie powinien mieć uprawnień "Execute".
+   - **VMSnapshotScriptPluginConfig. JSON**: uprawnienie "600". Na przykład tylko użytkownik "root" powinien mieć uprawnienia "read" i "Write" do tego pliku, a użytkownik nie powinien mieć uprawnień "Execute".
 
-   - **Plik skryptu wstępnego**: Uprawnienie "700".  Na przykład tylko użytkownik "root" powinien mieć uprawnienia "read", "Write" i "Execute" dla tego pliku.
+   - **Plik skryptu wstępnego**: uprawnienie "700".  Na przykład tylko użytkownik "root" powinien mieć uprawnienia "read", "Write" i "Execute" dla tego pliku.
 
    - **Po skrypcie** Uprawnienie "700". Na przykład tylko użytkownik "root" powinien mieć uprawnienia "read", "Write" i "Execute" dla tego pliku.
 
-   > [!Important]
+   > [!IMPORTANT]
    > Platforma zapewnia użytkownikom dużą moc. Zabezpiecz platformę i upewnij się, że tylko użytkownik "root" ma dostęp do krytycznych plików JSON i skryptów.
    > Jeśli wymagania nie są spełnione, skrypt nie zostanie uruchomiony, co spowoduje awarię systemu plików i niespójną kopię zapasową.
    >
 
 5. Skonfiguruj plik **VMSnapshotScriptPluginConfig. JSON** zgodnie z opisem w tym miejscu:
-    - **wtyczkaname**: Pozostaw to pole jako is lub skrypty mogą nie funkcjonować zgodnie z oczekiwaniami.
+    - **wtyczkaname**: pozostaw to pole jako is lub skrypty mogą nie funkcjonować zgodnie z oczekiwaniami.
 
     - **preScriptLocation**: Podaj pełną ścieżkę skryptu wstępnego na maszynie wirtualnej, dla której ma zostać utworzona kopia zapasowa.
 
     - **postScriptLocation**: Podaj pełną ścieżkę do skryptu na maszynie wirtualnej, dla której ma zostać utworzona kopia zapasowa.
 
-    - **preScriptParams**: Podaj parametry opcjonalne, które muszą zostać przesłane do skryptu poprzedzającego. Wszystkie parametry powinny znajdować się w cudzysłowach. Jeśli używasz wielu parametrów, oddziel parametry przecinkami.
+    - **preScriptParams**: podaj parametry opcjonalne, które muszą zostać przesłane do skryptu poprzedzającego. Wszystkie parametry powinny znajdować się w cudzysłowach. Jeśli używasz wielu parametrów, oddziel parametry przecinkami.
 
-    - **postScriptParams**: Podaj parametry opcjonalne, które muszą zostać przesłane do skryptu po stronie. Wszystkie parametry powinny znajdować się w cudzysłowach. Jeśli używasz wielu parametrów, oddziel parametry przecinkami.
+    - **postScriptParams**: podaj parametry opcjonalne, które muszą zostać przesłane do skryptu po stronie. Wszystkie parametry powinny znajdować się w cudzysłowach. Jeśli używasz wielu parametrów, oddziel parametry przecinkami.
 
-    - **preScriptNoOfRetries**: Ustaw liczbę powtórzeń wykonywania skryptu poprzedzającego, jeśli wystąpił błąd przed zakończeniem. Zero oznacza tylko jedną próbę, a nie ponawianie próby w przypadku wystąpienia błędu.
+    - **preScriptNoOfRetries**: Ustaw liczbę ponownych prób wykonania skryptu wstępnego, jeśli wystąpił błąd przed zakończeniem. Zero oznacza tylko jedną próbę, a nie ponawianie próby w przypadku wystąpienia błędu.
 
-    - **postScriptNoOfRetries**:  Ustaw liczbę ponownych prób wykonania skryptu po skrypcie, jeśli wystąpił błąd przed zakończeniem. Zero oznacza tylko jedną próbę, a nie ponawianie próby w przypadku wystąpienia błędu.
+    - **postScriptNoOfRetries**: Ustaw liczbę ponownych prób wykonania skryptu po skrypcie, jeśli wystąpił błąd przed zakończeniem. Zero oznacza tylko jedną próbę, a nie ponawianie próby w przypadku wystąpienia błędu.
 
-    - **timeoutInSeconds**: Określ poszczególne limity czasu dla skryptu wstępnego i skryptu po stronie (wartość maksymalna to 1800).
+    - **timeoutInSeconds**: Określ indywidualne limity czasu dla skryptu wstępnego i po skrypcie (wartość maksymalna może być równa 1800).
 
-    - **continueBackupOnFailure**: Ustaw tę wartość na **true (prawda** ), jeśli chcesz, aby Azure Backup powracać do spójnego systemu plików lub kopii zapasowej spójnej awarii w przypadku niepowodzenia skryptów poprzedzających lub skryptów. Ustawienie **wartości false** powoduje niepowodzenie tworzenia kopii zapasowej w przypadku awarii skryptu (z wyjątkiem sytuacji, gdy maszyna wirtualna z jednym dyskiem powraca do kopii zapasowej spójnej na poziomie awarii, niezależnie od tego ustawienia).
+    - **continueBackupOnFailure**: Ustaw tę wartość na **true (prawda** ), jeśli chcesz, aby Azure Backup powracać do systemu plików w spójny sposób lub kopia zapasowa spójna na poziomie awarii w przypadku niepowodzenia skryptów poprzedzających skrypt lub po awarii. Ustawienie **wartości false** powoduje niepowodzenie tworzenia kopii zapasowej w przypadku awarii skryptu (z wyjątkiem sytuacji, gdy maszyna wirtualna z jednym dyskiem powraca do kopii zapasowej spójnej na poziomie awarii, niezależnie od tego ustawienia).
 
     - **fsFreezeEnabled**: Określ, czy system Linux fsfreeze powinien być wywoływany podczas tworzenia migawki maszyny wirtualnej w celu zapewnienia spójności systemu plików. Zalecamy pozostawienie tego ustawienia na **wartość true** , chyba że aplikacja ma zależność od wyłączenia fsfreeze.
+
+    - **ScriptsExecutionPollTimeSeconds**: Ustaw czas przejścia rozszerzenia do trybu uśpienia między każdą sondowaniem do wykonania skryptu. Na przykład jeśli wartość jest równa 2, rozszerzenie sprawdza, czy wykonanie skryptu przedniego jest zakończone co 2 sekundy. Minimalna i maksymalna wartość, którą może przyjmować odpowiednio 1 i 5. Wartość powinna być ściśle liczbą całkowitą.
 
 6. Struktura skryptów jest teraz skonfigurowana. Jeśli kopia zapasowa maszyny wirtualnej jest już skonfigurowana, kolejna kopia zapasowa wywołuje skrypty i wyzwala kopię zapasową spójną na poziomie aplikacji. Jeśli nie skonfigurowano kopii zapasowej maszyny wirtualnej, skonfiguruj ją przy użyciu [kopii zapasowych maszyn wirtualnych platformy Azure do magazynów Recovery Services.](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)
 
@@ -76,16 +78,17 @@ Pamiętaj o dodaniu odpowiedniego rejestrowania podczas pisania skryptu wstępne
 
 | Błąd | Komunikat o błędzie | Zalecana akcja |
 | ------------------------ | -------------- | ------------------ |
-| Pre-ScriptExecutionFailed |Skrypt przed wystąpieniem zwrócił błąd, dlatego kopia zapasowa może nie być spójna z aplikacją.   | Zapoznaj się z dziennikami błędów dla skryptu, aby rozwiązać ten problem.|  
-|   Po ScriptExecutionFailed |    Skrypt po stronie zwrócił błąd, który może mieć wpływ na stan aplikacji. |    Zapoznaj się z dziennikami błędów dla skryptu, aby rozwiązać problem, i sprawdź stan aplikacji. |
-| Pre-ScriptNotFound |  Nie znaleziono skryptu wstępnego w lokalizacji określonej w pliku konfiguracji **VMSnapshotScriptPluginConfig. JSON** . |   Upewnij się, że skrypt jest obecny w ścieżce określonej w pliku konfiguracji, aby zapewnić kopię zapasową spójną na poziomie aplikacji.|
-| Po ScriptNotFound | Nie znaleziono skryptu wykonywanego w lokalizacji określonej w pliku konfiguracji **VMSnapshotScriptPluginConfig. JSON** . |   Upewnij się, że skrypt jest obecny w ścieżce określonej w pliku konfiguracji, aby zapewnić kopię zapasową spójną na poziomie aplikacji.|
-| IncorrectPluginhostFile | Plik **hosta wtyczki** , który jest dostarczany z rozszerzeniem VmSnapshotLinux, jest uszkodzony, więc nie można uruchomić skryptu wstępnego i skryptu, a kopia zapasowa nie będzie spójna z aplikacją. | Odinstaluj rozszerzenie **VmSnapshotLinux** i zostanie ono automatycznie zainstalowane ponownie przy użyciu następnej kopii zapasowej w celu rozwiązania problemu. |
+| Pre-ScriptExecutionFailed |Skrypt przed wystąpieniem zwrócił błąd, dlatego kopia zapasowa może nie być spójna z aplikacją.| Zapoznaj się z dziennikami błędów dla skryptu, aby rozwiązać ten problem.|  
+|Po ScriptExecutionFailed |Skrypt po stronie zwrócił błąd, który może mieć wpływ na stan aplikacji. |Zapoznaj się z dziennikami błędów dla skryptu, aby rozwiązać problem, i sprawdź stan aplikacji. |
+| Pre-ScriptNotFound |Nie znaleziono skryptu wstępnego w lokalizacji określonej w pliku konfiguracji **VMSnapshotScriptPluginConfig. JSON** . |Upewnij się, że skrypt jest obecny w ścieżce określonej w pliku konfiguracji, aby zapewnić kopię zapasową spójną na poziomie aplikacji.|
+| Po ScriptNotFound |Nie znaleziono skryptu wykonywanego w lokalizacji określonej w pliku konfiguracji **VMSnapshotScriptPluginConfig. JSON** . |Upewnij się, że skrypt jest obecny w ścieżce określonej w pliku konfiguracji, aby zapewnić kopię zapasową spójną na poziomie aplikacji.|
+| IncorrectPluginhostFile |Plik **hosta wtyczki** , który jest dostarczany z rozszerzeniem VmSnapshotLinux, jest uszkodzony, więc nie można uruchomić skryptu wstępnego i skryptu, a kopia zapasowa nie będzie spójna z aplikacją.| Odinstaluj rozszerzenie **VmSnapshotLinux** i zostanie ono automatycznie zainstalowane ponownie przy użyciu następnej kopii zapasowej w celu rozwiązania problemu. |
 | IncorrectJSONConfigFile | Plik **VMSnapshotScriptPluginConfig. JSON** jest niepoprawny, dlatego nie można uruchomić skryptu wstępnego i skryptu, a kopia zapasowa nie będzie spójna z aplikacją. | Pobierz kopię z usługi [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) i skonfiguruj ją ponownie. |
-| InsufficientPermissionforPre-Script | W przypadku uruchamiania skryptów użytkownik "root" powinien być właścicielem pliku, a plik powinien mieć uprawnienia "700" (oznacza to, że tylko "właściciel" powinien mieć uprawnienia "Odczyt", "zapis" i "wykonywanie"). | Upewnij się, że użytkownik "root" jest użytkownikiem "Owner" pliku skryptu i że tylko "Owner" ma uprawnienia "read", "Write" i "Execute". |
+| InsufficientPermissionforPre — skrypt | W przypadku uruchamiania skryptów użytkownik "root" powinien być właścicielem pliku, a plik powinien mieć uprawnienia "700" (oznacza to, że tylko "właściciel" powinien mieć uprawnienia "Odczyt", "zapis" i "wykonywanie"). | Upewnij się, że użytkownik "root" jest użytkownikiem "Owner" pliku skryptu i że tylko "Owner" ma uprawnienia "read", "Write" i "Execute". |
 | InsufficientPermissionforPost — skrypt | W przypadku uruchamiania skryptów użytkownik główny powinien być właścicielem pliku, a plik powinien mieć uprawnienia "700" (oznacza to, że tylko "właściciel" powinien mieć uprawnienia "Odczyt", "zapis" i "Execute"). | Upewnij się, że użytkownik "root" jest użytkownikiem "Owner" pliku skryptu i że tylko "Owner" ma uprawnienia "read", "Write" i "Execute". |
-| Pre-ScriptTimeout | Upłynął limit czasu wykonywania skryptu wstępnego tworzenia kopii zapasowej spójnej na poziomie aplikacji. | Sprawdź skrypt i zwiększ limit czasu w pliku **VMSnapshotScriptPluginConfig. JSON** , który znajduje się w **/etc/Azure**. |
+| Przed-ScriptTimeout | Upłynął limit czasu wykonywania skryptu wstępnego tworzenia kopii zapasowej spójnej na poziomie aplikacji. | Sprawdź skrypt i zwiększ limit czasu w pliku **VMSnapshotScriptPluginConfig. JSON** , który znajduje się w **/etc/Azure**. |
 | Post-ScriptTimeout | Przekroczono limit czasu wykonywania skryptu po wykonaniu kopii zapasowej spójnej na poziomie aplikacji. | Sprawdź skrypt i zwiększ limit czasu w pliku **VMSnapshotScriptPluginConfig. JSON** , który znajduje się w **/etc/Azure**. |
 
 ## <a name="next-steps"></a>Następne kroki
+
 [Konfigurowanie kopii zapasowej maszyny wirtualnej w magazynie Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)

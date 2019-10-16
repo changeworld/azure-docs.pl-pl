@@ -10,20 +10,20 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e0fee903372668d30db0686f6a23dd913428454
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 659a6357736817f4a590b97e585230ec8c2b7dae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828173"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332917"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Zaplanuj środowisko Azure Time Series Insights GA
 
 W tym artykule opisano sposób planowania środowiska Azure Time Series Insights ogólnej dostępności (GA) w oparciu o oczekiwany współczynnik ruchu przychodzącego i wymagania dotyczące przechowywania danych.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 **Obejrzyj ten film wideo, aby dowiedzieć się więcej na temat przechowywania danych w Azure Time Series Insights i jak planować go**:<br /><br />
 
@@ -31,17 +31,17 @@ W tym artykule opisano sposób planowania środowiska Azure Time Series Insights
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Aby rozpocząć pracę z Time Series Insights, najlepiej, Jeśli wiesz, ile danych ma być wypchnięcich przez minutę, i jak długo chcesz przechowywać dane.  
+Aby rozpocząć pracę z Azure Time Series Insights, najlepiej, Jeśli wiesz, ile danych ma być wypchnięcich przez minutę, i jak długo chcesz przechowywać dane.  
 
 Aby uzyskać więcej informacji o pojemności i przechowywaniu dla obu Time Series Insights jednostek SKU, zobacz [cennik Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 Aby najlepiej zaplanować środowisko Time Series Insights na potrzeby długotrwałego sukcesu, należy wziąć pod uwagę następujące atrybuty:
 
-- <a href="#storage-capacity">Pojemność magazynu</a>
-- <a href="#data-retention">Okres przechowywania danych</a>
-- <a href="#ingress-capacity">Pojemność transferu danych przychodzących</a>
-- <a href="#shape-your-events">Kształtowanie zdarzeń</a>
-- <a href="#ensure-that-you-have-reference-data">Upewnienie się, że masz dane referencyjne na miejscu</a>
+- [Pojemność magazynu](#storage-capacity)
+- [Okres przechowywania danych](#data-retention)
+- [Pojemność transferu danych przychodzących](#ingress-capacity)
+- [Kształtowanie zdarzeń](#shape-your-events)
+- [Upewnienie się, że masz dane referencyjne na miejscu](#ensure-that-you-have-reference-data)
 
 ## <a name="storage-capacity"></a>Pojemność magazynu
 
@@ -49,15 +49,17 @@ Domyślnie Time Series Insights zachowuje dane na podstawie ilości udostępnian
 
 ## <a name="data-retention"></a>Przechowywanie danych
 
-Można zmienić ustawienie **czas przechowywania danych** w środowisku Time Series Insights. Możesz włączyć do 400 dni przechowywania. 
+Można zmienić ustawienie **czas przechowywania danych** w środowisku Azure Time Series Insights. Możesz włączyć do 400 dni przechowywania. 
 
-Time Series Insights ma dwa tryby. Jeden tryb optymalizuje się w celu zapewnienia, że środowisko ma najbardziej aktualne dane. Ten tryb jest domyślnie włączony. 
+Azure Time Series Insights ma dwa tryby:
 
-Drugi tryb optymalizuje się w celu zapewnienia spełnienia limitów przechowywania. W drugim trybie ruch przychodzący jest wstrzymywany, jeśli zostanie osiągnięta ogólna pojemność magazynu środowiska. 
+* Jeden tryb optymalizuje najbardziej aktualne dane. Wymusza zasady umożliwiające **przeczyszczenie starych danych** z ostatnich dostępnych danych z wystąpieniem. Ten tryb jest domyślnie włączony. 
+* Druga optymalizuje dane, aby pozostawały poniżej skonfigurowanych limitów przechowywania. **Wstrzymaj** ruch przychodzący uniemożliwia ingressed nowych danych, gdy zostanie wybrany z **zachowaniem limitu magazynu**. 
 
 Można dostosować przechowywanie i przełączać się między dwoma trybami na stronie konfiguracji środowiska w Azure Portal.
 
-W środowisku Time Series Insights można skonfigurować maksymalnie 400 dni przechowywania danych.
+> [!IMPORTANT]
+> W środowisku Azure Time Series Insights GA można skonfigurować maksymalnie 400 dni przechowywania danych.
 
 ### <a name="configure-data-retention"></a>Konfigurowanie przechowywania danych
 
@@ -67,22 +69,22 @@ W środowisku Time Series Insights można skonfigurować maksymalnie 400 dni prz
 
 1. W polu **czas przechowywania danych (w dniach)** wprowadź wartość z zakresu od 1 do 400.
 
-   [![Konfigurowanie przechowywania](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [@no__t — przechowywanie 1Configure](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
 
 > [!TIP]
 > Aby dowiedzieć się więcej na temat implementowania odpowiednich zasad przechowywania danych, zobacz [jak skonfigurować przechowywanie](./time-series-insights-how-to-configure-retention.md).
 
 ## <a name="ingress-capacity"></a>Pojemność transferu danych przychodzących
 
-Drugim obszarem, na którym należy skoncentrować się na potrzeby planowania środowiska Time Series Insights, jest zdolność transferu danych przychodzących. Pojemność transferu danych przychodzących jest pochodną przydziału na minutę.
+Drugi obszar, na którym należy skoncentrować się podczas planowania środowiska Time Series Insights, to *zdolność*transferu danych przychodzących. Pojemność transferu danych przychodzących jest pochodną przydziału na minutę.
 
 Z punktu widzenia ograniczenia przepustowości pakiet danych ingressed, który ma rozmiar pakietu 32 KB jest traktowany jako zdarzenia 32, o rozmiarze 1 KB. Maksymalny dozwolony rozmiar zdarzenia to 32 KB. Pakiety danych o rozmiarze większym niż 32 KB są obcinane.
 
 Poniższa tabela zawiera podsumowanie pojemności przychodzącej na jednostkę dla każdej jednostki SKU Time Series Insights:
 
-|SKU  |Liczba zdarzeń miesięcznie  |Rozmiar zdarzenia miesięcznie  |Liczba zdarzeń na minutę  |Rozmiar zdarzenia na minutę  |
+|JSZ  |Liczba zdarzeń miesięcznie  |Rozmiar zdarzenia miesięcznie  |Liczba zdarzeń na minutę  |Rozmiar zdarzenia na minutę  |
 |---------|---------|---------|---------|---------|
-|S1     |   30 000 000     |  30 GB     |  720    |  720 KB   |
+|S1     |   30 000 000     |  30 GB     |  720    |  720 KB   |
 |S2     |   300 000 000    |   300 GB   | 7 200   | 7 200 KB  |
 
 Można zwiększyć pojemność jednostki SKU S1 lub S2 do 10 jednostek w jednym środowisku. Nie można migrować ze środowiska S1 do warstwy S2. Nie można migrować ze środowiska S2 do warstwy S1.
@@ -93,7 +95,7 @@ Ograniczanie i opóźnienie odgrywają rolę w wydajności na minutę. Jeśli Tw
 
 Na przykład jeśli masz pojedynczą jednostkę SKU S1, przyniesiesz dane przy użyciu stawki 720 zdarzeń na minutę, a szybkość danych jest większa niż jedna godzina według stawki 1 440 zdarzeń lub mniejszej, a w środowisku nie ma zauważalnego opóźnienia. Jednakże w przypadku przekroczenia 1 440 zdarzeń na minutę przez więcej niż godzinę, prawdopodobnie wystąpi opóźnienie w danych, które są wizualizowane i dostępne dla zapytań w środowisku.
 
-Użytkownik może nie wiedzieć, jak dużo danych, które powinny zostać wypchnięcie. W takim przypadku można znaleźć dane telemetryczne dla [usługi azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) i [platformy Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) w ramach subskrypcji Azure Portal. Dane telemetryczne mogą pomóc w ustaleniu, jak zainicjować obsługę środowiska. Aby wyświetlić dane telemetryczne, użyj okienka metryki w Azure Portal dla odpowiedniego źródła zdarzenia. Jeśli zrozumiesz metryki źródła zdarzeń, możesz efektywnie zaplanować i zainicjować obsługę środowiska Time Series Insights.
+Użytkownik może nie wiedzieć, jak dużo danych, które powinny zostać wypchnięcie. W takim przypadku można znaleźć dane telemetryczne dla [usługi azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) i [platformy Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) w ramach subskrypcji Azure Portal. Dane telemetryczne mogą pomóc w ustaleniu, jak zainicjować obsługę środowiska. Aby wyświetlić dane telemetryczne, użyj okienka **metryki** w Azure Portal dla odpowiedniego źródła zdarzenia. Jeśli zrozumiesz metryki źródła zdarzeń, możesz efektywnie zaplanować i zainicjować obsługę środowiska Time Series Insights.
 
 ### <a name="calculate-ingress-requirements"></a>Oblicz wymagania dotyczące transferu danych przychodzących
 
@@ -125,7 +127,7 @@ Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywania i zarząd
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Rozpocznij od utworzenia [nowego środowiska Time Series Insights w Azure Portal](time-series-insights-get-started.md).
 

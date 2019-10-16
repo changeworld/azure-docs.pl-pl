@@ -1,21 +1,21 @@
 ---
-title: Przypisywanie dostępu do danych Azure Cost Management | Microsoft Docs
+title: Przypisywanie dostępu do danych Azure Cost Management
 description: W tym artykule omówiono przypisanie uprawnień do Azure Cost Management danych dla różnych zakresów dostępu.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: f9db07f648956130bb5bdebb23321b0eb14679c7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ebc56d27b7adc8f1fea9eafabe1b211f3f0ad560
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695398"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375124"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych Cost Management
 
@@ -63,6 +63,8 @@ Aby wyświetlić dane dotyczące kosztów dla innych subskrypcji platformy Azure
 - Konto platformy Azure
 - Grupa zarządzania
 - Grupa zasobów
+
+Różne zakresy są dostępne po dołączeniu klientów do umowy klienta firmy Microsoft przez partnerów. Klienci korzystający z programu CSP mogą następnie korzystać z funkcji Cost Management po włączeniu ich przez partnera CSP. Aby uzyskać więcej informacji, zobacz Wprowadzenie [do Azure Cost Management dla partnerów](get-started-partners.md).
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Zapewnianie dostępu do kosztów w portalu EA
 

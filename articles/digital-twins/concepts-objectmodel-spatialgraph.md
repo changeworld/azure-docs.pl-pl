@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1186fec8d50d7e986d1c613cd96f741c34ca181a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950005"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372614"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Zrozumienie modeli obiektów Digital bliźniaczych reprezentacji i grafu analizy przestrzennej
 
@@ -85,7 +85,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
  Pełny format adresu URL zostanie wyświetlony na tym obrazie.
 
-(![Interfejs API zarządzania portalem Digital bliźniaczych reprezentacji](media/concepts/digital-twins-spatial-graph-management-api-url.png)] (Media/koncepcje/Digital-Twins-Spatial-Graph-Management-API-URL. png # element lightbox)
+[@no__t — interfejs API zarządzania portalu 1Digital bliźniaczych reprezentacji](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 Aby uzyskać więcej informacji na temat korzystania z wykresów analizy przestrzennej, odwiedź stronę usługi Azure Digital bliźniaczych reprezentacji Management Apis zobaczyć Preview.
 

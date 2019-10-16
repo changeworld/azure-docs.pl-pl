@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 167d880f82314fc3b5ade299442f04d62b5dacb9
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274494"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330819"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej hosta sesji
 
@@ -302,10 +302,17 @@ Jeśli zalogujesz się do wielosesyjnego systemu Windows 10 Enterprise przy uży
 
 W przypadku upływu limitu czasu zostanie wyświetlony komunikat o błędzie "Sesja zdalna została rozłączona, ponieważ dla tego komputera nie ma Pulpit zdalny licencji dostępu klienta".
 
-Jeśli zobaczysz jeden z tych komunikatów, oznacza to, że obraz nie ma zainstalowanych najnowszych aktualizacji systemu Windows lub że Pulpit zdalny tryb licencjonowania na **użytkownika**. Usuń konfigurację, która ustawia te zasady, a następnie wykonaj kroki, aby zidentyfikować wersję wielosesyjną systemu Windows 10 Enterprise i zainstalować odpowiednią aktualizację.  
+Jeśli zobaczysz jeden z tych komunikatów, oznacza to, że obraz nie ma zainstalowanych najnowszych aktualizacji systemu Windows lub że tryb licencjonowania Pulpit zdalny jest konfigurowany za pomocą zasad grupy. Postępuj zgodnie z instrukcjami w następnych sekcjach, aby sprawdzić ustawienia zasad grupy, zidentyfikuj wersję wielosesyjną systemu Windows 10 Enterprise i zainstaluj odpowiednią aktualizację.  
 
 >[!NOTE]
 >Pulpit wirtualny systemu Windows wymaga tylko licencji dostępu klienta RDS (CAL), gdy pula hostów zawiera hosty sesji systemu Windows Server. Aby dowiedzieć się, jak skonfigurować RDS CAL, zobacz [Licencjonowanie wdrożenia usług pulpitu zdalnego z licencjami dostępu klienta](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
+
+### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Wyłącz ustawienie zasad grupy trybu licencjonowania Pulpit zdalny
+
+Sprawdź ustawienie zasad grupy, otwierając Edytor zasady grupy na maszynie wirtualnej i przechodząc do **Szablony administracyjne** > **składników systemu Windows** > **usługi pulpitu zdalnego** > **pulpit zdalny hosta sesji**@no **Licencjonowanie**__t-7  > **ustawia tryb licencjonowania pulpit zdalny**. Jeśli ustawienie zasad grupy jest **włączone**, zmień je na **wyłączone**. Jeśli jest już wyłączona, pozostaw ją jako-is.
+
+>[!NOTE]
+>Jeśli zasady grupy są ustawiane za pośrednictwem domeny, należy wyłączyć to ustawienie dla zasad przeznaczonych dla maszyn wirtualnych obejmujących wiele sesji systemu Windows 10 Enterprise.
 
 ### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Określ, która wersja wielosesyjnej usługi Windows 10 Enterprise jest używana
 

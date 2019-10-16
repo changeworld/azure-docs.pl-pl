@@ -1,5 +1,5 @@
 ---
-title: Jak używać kolejek Azure Service Bus w języku Python | Microsoft Docs
+title: 'Samouczek: korzystanie z kolejek Azure Service Bus w języku Python'
 description: Dowiedz się, jak używać kolejek Azure Service Bus w języku Python.
 services: service-bus-messaging
 documentationcenter: python
@@ -14,12 +14,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 9bb53a8e68866e2ed346277171e2706f5907e8af
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 3561d7e3569b31698fbbc5f8cf2518d9fe1fc398
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141907"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331123"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Jak używać kolejek Service Bus przy użyciu języka Python
 
@@ -35,7 +36,7 @@ W ramach tego samouczka nauczysz się tworzyć aplikacje języka Python do wysy�
     3. Pobierz **Parametry połączenia**. 
 
         > [!NOTE]
-        > W tym samouczku utworzysz kolejkę w przestrzeni nazw Service Bus przy użyciu języka Python. 
+        > W tym samouczku utworzysz **kolejkę** w przestrzeni nazw Service Bus przy użyciu języka Python. 
 1. Zainstaluj Język Python lub [pakiet Azure Service Bus Python][Python Azure Service Bus package], zapoznaj się z [Podręcznikiem instalacji języka Python](/azure/python/python-sdk-azure-install). Zapoznaj się z pełną dokumentacją Service Bus Python SDK [tutaj](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
@@ -45,7 +46,7 @@ Obiekt **ServiceBusClient** umożliwia korzystanie z kolejek. Dodaj następując
 from azure.servicebus import ServiceBusClient
 ```
 
-Poniższy kod tworzy obiekt **ServiceBusClient** . Zamień `<CONNECTION STRING>` na element ConnectionString ServiceBus.
+Poniższy kod tworzy obiekt **ServiceBusClient** . Zastąp `<CONNECTION STRING>` elementem ConnectionString ServiceBus.
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
@@ -57,7 +58,7 @@ Wartości nazwy i wartości klucza sygnatury dostępu współdzielonego można z
 sb_client.create_queue("taskqueue")
 ```
 
-`create_queue` Metoda obsługuje również dodatkowe opcje, które umożliwiają przesłonięcie domyślnych ustawień kolejki, takich jak czas wygaśnięcia komunikatu (TTL) lub maksymalny rozmiar kolejki. Poniższy przykład ustawia maksymalny rozmiar kolejki na 5 GB, a wartość czasu wygaśnięcia na 1 minutę:
+Metoda `create_queue` obsługuje również dodatkowe opcje, które umożliwiają przesłonięcie domyślnych ustawień kolejki, takich jak czas wygaśnięcia komunikatu (TTL) lub maksymalny rozmiar kolejki. Poniższy przykład ustawia maksymalny rozmiar kolejki na 5 GB, a wartość czasu wygaśnięcia na 1 minutę:
 
 ```python
 sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
@@ -67,9 +68,9 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
 Aby uzyskać więcej informacji, zobacz [Azure Service Bus Dokumentacja języka Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="send-messages-to-a-queue"></a>Wysyłanie komunikatów do kolejki
-Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje `send` metodę `ServiceBusClient` dla obiektu.
+Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `send` w obiekcie `ServiceBusClient`.
 
-W poniższym przykładzie pokazano, jak wysłać wiadomość testową do kolejki o nazwie `taskqueue` using `send_queue_message`:
+W poniższym przykładzie pokazano, jak wysłać wiadomość testową do kolejki o nazwie `taskqueue` przy użyciu `send_queue_message`:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -83,12 +84,12 @@ msg = Message(b'Test Message')
 queue_client.send(msg)
 ```
 
-Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w kolejce, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez kolejkę. Ten rozmiar kolejki jest definiowany w czasie tworzenia, z górnym limitem 5 GB. Aby uzyskać więcej informacji na temat przydziałów, zobacz [Service Bus][Service Bus quotas]przydziały.
+Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w kolejce, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez kolejkę. Ten rozmiar kolejki jest definiowany w czasie tworzenia, z górnym limitem 5 GB. Aby uzyskać więcej informacji na temat przydziałów, zobacz [Service Bus przydziały][Service Bus quotas].
 
 Aby uzyskać więcej informacji, zobacz [Azure Service Bus Dokumentacja języka Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="receive-messages-from-a-queue"></a>Odbieranie komunikatów z kolejki
-Komunikaty są odbierane z kolejki przy użyciu `get_receiver` metody `ServiceBusService` dla obiektu:
+Komunikaty są odbierane z kolejki przy użyciu metody `get_receiver` w obiekcie `ServiceBusService`:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -108,11 +109,11 @@ with queue_client.get_receiver() as queue_receiver:
 Aby uzyskać więcej informacji, zobacz [Azure Service Bus Dokumentacja języka Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 
-Komunikaty są usuwane z kolejki, ponieważ są odczytywane, gdy parametr `peek_lock` ma wartość **false**. Można odczytać (wgląd) i zablokować komunikat bez usuwania go z kolejki przez ustawienie parametru `peek_lock` na **true**.
+Komunikaty są usuwane z kolejki, ponieważ są odczytywane, gdy parametr `peek_lock` ma wartość **Fałsz**. Można odczytać (wgląd) i zablokować komunikat bez usuwania go z kolejki, ustawiając parametr `peek_lock` na **true**.
 
 Zachowanie odczytu i usunięcia komunikatu w ramach operacji odbierania jest najprostszym modelem i najlepiej sprawdza się w scenariuszach, w których aplikacja może tolerować nieprzetwarzanie komunikatu w przypadku awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Service Bus oznaczył komunikat jako używany, a następnie aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, zostanie pominięta wiadomość, która była używana przed awarią.
 
-Jeśli parametr ma wartość true, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. `peek_lock` Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niegodny w przyszłości), kończy drugi etap procesu odbierania przez wywołanie metody **delete** dla obiektu **Message** . Metoda **delete** oznaczy komunikat jako używany i usuń go z kolejki.
+Jeśli parametr `peek_lock` ma **wartość true**, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niegodny w przyszłości), kończy drugi etap procesu odbierania przez wywołanie metody **delete** dla obiektu **Message** . Metoda **delete** oznaczy komunikat jako używany i usuń go z kolejki.
 
 ```python
 msg.delete()

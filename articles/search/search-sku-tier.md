@@ -1,6 +1,6 @@
 ---
 title: Wybierz warstwę cenową lub jednostkę SKU dla usługi Azure Search Service — Azure Search
-description: 'W tych jednostkach SKU można obsługiwać Azure Search: Wersje bezpłatna, podstawowa i Standardowa są dostępne w różnych konfiguracjach zasobów i poziomach pojemności.'
+description: 'Azure Search można obsługiwać w tych jednostkach SKU: bezpłatna, podstawowa i standardowa, a warstwa standardowa jest dostępna w różnych konfiguracjach zasobów i poziomach pojemności.'
 services: search
 author: HeidiSteen
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 32ec97ce923c1cffd92fa6522f30abf7ea87fff7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647348"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331189"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla Azure Search
 
@@ -39,11 +39,11 @@ Warstwy odzwierciedlają charakterystykę sprzętu obsługującego usługę (a n
 
 Wybrana warstwa określa stawkę naliczaną. Poniższy zrzut ekranu z Azure Portal zawiera dostępne warstwy, minus ceny (które można znaleźć w portalu i na [stronie cennika](https://azure.microsoft.com/pricing/details/search/)). Warstwy **bezpłatna**, **podstawowa**i **standardowa** są najczęściej spotykane.
 
-**Bezpłatna** tworzy ograniczoną usługę wyszukiwania w klastrze, udostępnianą innym subskrybentom. Możesz wykonywać małe projekty, w tym Przewodniki Szybki Start i samouczki, ale nie można skalować usługi ani uruchamiać znaczących obciążeń. **Podstawowa** i **standardowa** są najczęściej używanymi warstwami do obciążania, a standardem domyślnym.
+**Bezpłatna** tworzy ograniczoną usługę wyszukiwania w klastrze, udostępnianą innym subskrybentom. Możesz wykonywać małe projekty, w tym Przewodniki Szybki Start i samouczki, ale nie można skalować usługi ani uruchamiać znaczących obciążeń. **Podstawowa** i **standardowa** są najczęściej używanymi warstwami do obciążania, a **standardem** domyślnym.
 
-![Warstwy cenowe Azure Search](media/search-sku-tier/tiers.png "Warstwy cenowe Azure Search")
+![Warstwy cenowe Azure Search](media/search-sku-tier/tiers.png "warstw cenowych Azure Search")
 
-Niektóre warstwy są zoptymalizowane pod kątem niektórych typów pracy. Na przykład **standardowa 3 wysoka gęstość (S3 HD)** jest trybem *hostingu* dla S3, gdzie podstawowy sprzęt jest zoptymalizowany pod kątem dużej liczby mniejszych indeksów i jest przeznaczony dla scenariuszy wielodostępnych. Funkcja S3 HD ma taką samą opłatą za jednostkę jak S3, ale sprzęt jest zoptymalizowany pod kątem szybkiego odczytu plików na dużej liczbie mniejszych indeksów.
+Niektóre warstwy są zoptymalizowane pod kątem niektórych typów pracy. Na przykład **standardowa 3 wysoka gęstość (S3 HD)** jest *trybem hostingu* dla S3, gdzie podstawowy sprzęt jest zoptymalizowany pod kątem dużej liczby mniejszych indeksów i jest przeznaczony dla scenariuszy wielodostępnych. Funkcja S3 HD ma taką samą opłatą za jednostkę jak S3, ale sprzęt jest zoptymalizowany pod kątem szybkiego odczytu plików na dużej liczbie mniejszych indeksów.
 
 Warstwy **zoptymalizowane pod kątem magazynu** oferują większą pojemność magazynu przy niższej cenie za TB niż warstwy standardowe. Najważniejszym kompromisem jest wyższy poziom opóźnienia zapytań, który należy zweryfikować w celu spełnienia określonych wymagań aplikacji.  Aby dowiedzieć się więcej na temat zagadnień dotyczących wydajności tej warstwy, zobacz [zagadnienia dotyczące wydajności i optymalizacji](search-performance-optimization.md).
 
@@ -77,11 +77,11 @@ Opłaty są naliczane za dane wychodzące, jeśli usługi znajdują się w róż
 
 ### <a name="cognitive-search-ai-enrichment-with-cognitive-services"></a>Programowe przeszukiwanie i wzbogacanie plików AI z Cognitive Services
 
-W przypadku [wzbogacania AI z Cognitive Services](cognitive-search-concept-intro.md)należy zaplanować dołączenie do rozliczanego [zasobu Cognitive Services platformy Azure](cognitive-search-attach-cognitive-services.md)w tym samym regionie co Azure Search, w warstwie cenowej S0 na potrzeby przetwarzania płatności zgodnie z rzeczywistym użyciem. Nie ma stałego kosztu związanego z dołączaniem Cognitive Services. Płacisz tylko za potrzebne przetwarzanie.
+W przypadku [wzbogacania AI z Cognitive Services](cognitive-search-concept-intro.md)należy zaplanować [dołączenie do rozliczanego zasobu Cognitive Services platformy Azure](cognitive-search-attach-cognitive-services.md)w tym samym regionie co Azure Search, w warstwie cenowej S0 na potrzeby przetwarzania płatności zgodnie z rzeczywistym użyciem. Nie ma stałego kosztu związanego z dołączaniem Cognitive Services. Płacisz tylko za potrzebne przetwarzanie.
 
 | Operacja | Wpływ rozliczeń |
 |-----------|----------------|
-| Łamanie dokumentów, Wyodrębnianie tekstu | Wolne |
+| Łamanie dokumentów, Wyodrębnianie tekstu | Bezpłatnie |
 | Łamanie dokumentów, wyodrębnianie obrazów | Opłaty są naliczane zgodnie z liczbą obrazów wyodrębnionych z dokumentów. W [konfiguracji indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **imageAction** jest parametrem, który wyzwala wyodrębnianie obrazów. Jeśli **imageAction** jest ustawiona na wartość "none" (domyślnie), nie zostanie naliczona opłata za Wyodrębnianie obrazu. Szybkość wyodrębniania obrazu jest udokumentowana na stronie [szczegóły cennika](https://azure.microsoft.com/pricing/details/search/) Azure Search.|
 | [Wstępnie utworzone umiejętności poznawcze](cognitive-search-predefined-skills.md) | Opłaty są naliczane według tej samej stawki, co w przypadku, gdy zadanie zostało wykonane przy użyciu Cognitive Services bezpośrednio. |
 | Umiejętności niestandardowe | Niestandardowa umiejętność zapewnia funkcjonalność. Koszt użycia niestandardowej umiejętności zależy wyłącznie od tego, czy kod niestandardowy wywołuje inne usługi taryfowe. |
@@ -94,7 +94,7 @@ Najważniejszym koncepcją rozliczeniową do zrozumienia dla operacji Azure Sear
 
 SU to iloczyn *replik* i *partycji* używanych przez usługę: **(R x P = Su)** .
 
-Każda usługa rozpoczyna się od jednego SU (jedna replika pomnożona przez jedną partycję) jako minimum. Wartość maksymalna dla każdej usługi to 36 usług SUs. Tę wartość maksymalną można osiągnąć na wiele sposobów: 6 partycji x 6 replik lub 3 partycji x 12 — na przykład. Jest to typowe użycie mniejsze niż całkowita pojemność (na przykład 3-Replica, 3-podzielone usługi są rozliczane jako 9 usług SUs). Zobacz wykres [kombinacji partycji i repliki](search-capacity-planning.md#chart) dla prawidłowych kombinacji.
+Każda usługa rozpoczyna się od jednego SU (jedna replika pomnożona przez jedną partycję) jako minimum. Wartość maksymalna dla każdej usługi to 36 usług SUs. Tę wartość maksymalną można osiągnąć na wiele sposobów: 6 partycji x 6 replik lub 3 partycji x 12 replik, na przykład. Jest to typowe użycie mniejsze niż całkowita pojemność (na przykład 3-Replica, 3-podzielone usługi są rozliczane jako 9 usług SUs). Zobacz wykres [kombinacji partycji i repliki](search-capacity-planning.md#chart) dla prawidłowych kombinacji.
 
 Stawka rozliczeniowa jest naliczana co godzinę za pomocą funkcji SU. Każda warstwa ma stopniowo wyższą stawkę. Wyższe warstwy są dostarczane z większymi i speediermi partycjami, a to wpływa na ogólną wyższą stawkę godzinową dla tej warstwy. Stawki dla każdej warstwy można wyświetlić na stronie [szczegółów cennika](https://azure.microsoft.com/pricing/details/search/) .
 
@@ -102,7 +102,7 @@ Większość klientów uzyskuje zaledwie część całkowitej pojemności online
 
 ## <a name="how-to-manage-and-reduce-costs"></a>Jak zarządzać kosztami i je obniżyć
 
-Oprócz następujących sugestii zapoznaj się z tematem rozliczeń [i zarządzania kosztami](https://docs.microsoft.com/azure/billing/billing-getting-started).
+Oprócz następujących sugestii zapoznaj się z tematem [rozliczeń i zarządzania kosztami](https://docs.microsoft.com/azure/billing/billing-getting-started).
 
 - Utwórz wszystkie zasoby w tym samym regionie lub w możliwie najmniejszej liczbie regionów, aby zminimalizować lub wyeliminować opłaty za przepustowość.
 
@@ -161,7 +161,7 @@ Pojemność i koszty uruchomienia usługi są dostępne. Warstwy nakładają lim
 
 Wymagania biznesowe zwykle określają liczbę indeksów, które będą potrzebne. Na przykład może być potrzebny indeks globalny dla dużego repozytorium dokumentów. Lub może być potrzebne wiele indeksów opartych na regionie, aplikacji lub w trakcie pracy z firmą.
 
-Aby określić rozmiar indeksu, należy go [skompilować](search-create-index-portal.md). Struktura danych w Azure Search jest przede wszystkim odwróconą strukturą [indeksu](https://en.wikipedia.org/wiki/Inverted_index) , która ma inne cechy niż dane źródłowe. W przypadku odwróconego indeksu rozmiar i złożoność są określane przez zawartość, a nie niekoniecznie ilość danych, które są do niego strumieniowo. Duże źródło danych o wysokiej nadmiarowości może spowodować zmniejszenie indeksu niż mniejszy zestaw danych, który zawiera wysoce zmienną zawartość. Jest to rzadko możliwe do wywnioskowania rozmiaru indeksu na podstawie rozmiaru oryginalnego zestawu danych.
+Aby określić rozmiar indeksu, należy go [skompilować](search-create-index-portal.md). Struktura danych w Azure Search jest przede wszystkim [odwróconą](https://en.wikipedia.org/wiki/Inverted_index) strukturą indeksu, która ma inne cechy niż dane źródłowe. W przypadku odwróconego indeksu rozmiar i złożoność są określane przez zawartość, a nie niekoniecznie ilość danych, które są do niego strumieniowo. Duże źródło danych o wysokiej nadmiarowości może spowodować zmniejszenie indeksu niż mniejszy zestaw danych, który zawiera wysoce zmienną zawartość. Jest to rzadko możliwe do wywnioskowania rozmiaru indeksu na podstawie rozmiaru oryginalnego zestawu danych.
 
 > [!NOTE] 
 > Chociaż oszacowanie przyszłych potrzeb dotyczących indeksów i magazynu może wyglądać podobnie jak wątpliwości, warto wykonać te czynności. Jeśli pojemność warstwy wyzostanie zbyt niska, należy udostępnić nową usługę w wyższej warstwie, a następnie [ponownie załadować indeksy](search-howto-reindex.md). Nie istnieje uaktualnienie w miejscu usługi z jednej jednostki SKU do innej.
@@ -183,7 +183,7 @@ Dedykowane zasoby mogą obsługiwać większe próbkowanie i czasy przetwarzania
 
 1. [Przejrzyj limity usługi w każdej warstwie](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) , aby określić, czy niższe warstwy mogą obsługiwać wymaganą liczbę indeksów. W warstwach Podstawowa, S1 i S2 limity indeksu są odpowiednio 15, 50 i 200. Warstwa zoptymalizowana pod kątem magazynu ma limit 10 indeksów, ponieważ jest ona zaprojektowana do obsługi niskiej liczby bardzo dużych indeksów.
 
-1. [Utwórz usługę w warstwie](search-create-service-portal.md)rozliczanej:
+1. [Utwórz usługę w warstwie rozliczanej](search-create-service-portal.md):
 
     + Jeśli nie masz pewności co do planowanego obciążenia, Zacznij od warstwy Podstawowa lub S1.
     + Zacznij od o godzinie S2 lub nawet S3, Jeśli wiesz, że chcesz mieć indeksowanie dużej skali i ładowanie zapytań.
@@ -191,7 +191,7 @@ Dedykowane zasoby mogą obsługiwać większe próbkowanie i czasy przetwarzania
 
 1. [Utwórz początkowy indeks](search-create-index-portal.md) , aby określić sposób, w jaki dane źródłowe są tłumaczone na indeks. Jest to jedyny sposób oszacowania rozmiaru indeksu.
 
-1. [Monitoruj magazyn, limity usług, woluminy zapytań i opóźnienia](search-monitor-usage.md) w portalu. W portalu są wyświetlane zapytania na sekundę, ograniczone zapytania i opóźnienie wyszukiwania. Wszystkie te wartości mogą pomóc zdecydować, czy wybrano odpowiednią warstwę. Można również skonfigurować głębokie monitorowanie wartości, takich jak analiza przeglądowa, włączając analizę [ruchu wyszukiwania](search-traffic-analytics.md).
+1. [Monitoruj magazyn, limity usług, woluminy zapytań i opóźnienia](search-monitor-usage.md) w portalu. W portalu są wyświetlane zapytania na sekundę, ograniczone zapytania i opóźnienie wyszukiwania. Wszystkie te wartości mogą pomóc zdecydować, czy wybrano odpowiednią warstwę. 
 
 Liczba i rozmiar indeksu są równie ważne dla analizy. Wynika to z faktu, że maksymalne limity są osiągane za pomocą pełnego wykorzystania magazynu (partycji) lub maksymalnych limitów zasobów (indeksów, indeksatorów itd.), w zależności od tego, co nastąpi wcześniej. Portal pomaga śledzić oba elementy, pokazując bieżące użycie i maksymalne limity, obok strony przegląd.
 
@@ -215,8 +215,6 @@ Funkcje warstwy Bezpłatna i wersja zapoznawcza nie zapewniają [umów dotycząc
 
 ## <a name="tips-for-tier-evaluation"></a>Wskazówki dotyczące oceny warstwy
 
-+ Dowiedz się, jak tworzyć wydajne indeksy i dowiedzieć się, które metody odświeżania mają najniższy wpływ. Użyj usługi [Search Traffic Analytics](search-traffic-analytics.md) , aby uzyskać wgląd w działanie zapytań.
-
 + Zezwalaj na metryki do kompilowania zapytań i Zbieraj dane dotyczące wzorców użycia (zapytania w godzinach pracy, indeksowanie w godzinach poza szczytem). Te dane służą do informowania o decyzjach o aprowizacji usług. Chociaż nie jest to praktyczne ani codzienne erze, można dynamicznie dostosować partycje i zasoby, aby uwzględnić planowane zmiany w woluminach zapytań. Możesz również uwzględnić niezaplanowane, ale nieplanowane zmiany, jeśli poziomy są wystarczająco długie, aby zagwarantować wykonanie akcji.
 
 + Należy pamiętać, że jedynym minusemem niepotrzebnej do obsłużenia jest konieczność odrywania usługi, jeśli rzeczywiste wymagania są większe niż przewidywane przewidywania. Aby uniknąć przerw w działaniu usługi, należy utworzyć nową usługę w tej samej subskrypcji w wyższej warstwie i uruchamiać ją równolegle do momentu, aż wszystkie aplikacje i żądania będą kierowane do nowego punktu końcowego.
@@ -225,7 +223,7 @@ Funkcje warstwy Bezpłatna i wersja zapoznawcza nie zapewniają [umów dotycząc
 
 Zacznij od warstwy Bezpłatna i skompiluj początkowy indeks przy użyciu podzestawu danych, aby zrozumieć jego cechy. Struktura danych w Azure Search jest odwrotną strukturą indeksu. Rozmiar i złożoność odwróconego indeksu jest określana przez zawartość. Należy pamiętać, że wysoce nadmiarowa zawartość jest wynikiem mniejszych indeksów niż wysoce nieregularna zawartość. Dlatego charakterystyki zawartości, a nie rozmiar zestawu danych określają wymagania dotyczące magazynu indeksu.
 
-Po wstępnym oszacowaniu rozmiaru indeksu [zainicjuj usługę rozliczaną](search-create-service-portal.md) na jednej z warstw omówionych w tym artykule: Zoptymalizowane pod kątem warstwy Podstawowa, standardowa lub magazynu. Osłabij wszystkie sztuczne ograniczenia dotyczące ustalania rozmiarów danych i [ponownie skompiluj indeks](search-howto-reindex.md) , aby uwzględnić wszystkie dane, które mają być przeszukiwane.
+Po wstępnym oszacowaniu rozmiaru indeksu [zainicjuj usługę rozliczaną](search-create-service-portal.md) w jednej z warstw omówionych w tym artykule: wersja podstawowa, standardowa i zoptymalizowana pod kątem magazynu. Osłabij wszystkie sztuczne ograniczenia dotyczące ustalania rozmiarów danych i [ponownie skompiluj indeks](search-howto-reindex.md) , aby uwzględnić wszystkie dane, które mają być przeszukiwane.
 
 [Przydziel partycje i repliki](search-capacity-planning.md) w miarę potrzeb, aby uzyskać wymaganą wydajność i skalowanie.
 

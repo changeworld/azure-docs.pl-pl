@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure elementu interfejsu użytkownika z listy rozwijanej | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Common.DropDown interfejsu użytkownika dla witryny Azure portal.
+title: Element interfejsu użytkownika listy rozwijanej platformy Azure | Microsoft Docs
+description: Opisuje element interfejsu użytkownika Microsoft. Common. DropDown dla Azure Portal. Użyj, aby wybrać dostępne opcje podczas wdrażania aplikacji zarządzanej.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e78fa419b067c0bad48229dcfd8d4e986fc16903
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5784b5df9b522f0489ca1f6087627b45cec5349d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117305"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331736"
 ---
-# <a name="microsoftcommondropdown-ui-element"></a>Element Microsoft.Common.DropDown interfejsu użytkownika
-Kontrolka, wybór z listy rozwijanej.
+# <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown — element interfejsu użytkownika
+Kontrolka wyboru z listą rozwijaną.
 
-## <a name="ui-sample"></a>Przykład interfejsu użytkownika
-![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
+## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+![Microsoft. Common. DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
 
 ## <a name="schema"></a>Schemat
 ```json
@@ -53,16 +53,16 @@ Kontrolka, wybór z listy rozwijanej.
 
 ## <a name="remarks"></a>Uwagi
 
-- Etykieta dla `constraints.allowedValues` jest wyświetlany tekst dla elementu i jego wartość jest wartością danych wyjściowych w przypadku wybrania elementu.
-- Jeśli zostanie określony, wartość domyślna musi być obecny w etykietę `constraints.allowedValues`. Jeśli nie zostanie określony, pierwszy element `constraints.allowedValues` jest zaznaczone. Wartość domyślna to **null**.
+- Etykieta dla `constraints.allowedValues` jest wyświetlanym tekstem elementu, a jego wartość jest wartością wyjściową elementu, gdy jest zaznaczone.
+- Jeśli jest określony, wartość domyślna musi być etykietą obecną w `constraints.allowedValues`. Jeśli nie zostanie określony, zostanie wybrany pierwszy element w `constraints.allowedValues`. Wartość domyślna to **null**.
 - `constraints.allowedValues` musi mieć co najmniej jeden element.
-- Aby emulować wartość nie jest wymagane, Dodaj element z etykiety i wartość `""` (pusty ciąg), aby `constraints.allowedValues`.
+- Aby emulować wartość, która nie jest wymagana, Dodaj element z etykietą i wartością `""` (pusty ciąg) do `constraints.allowedValues`.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 ```json
 "two"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
-* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Następne kroki
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
+* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

@@ -1,6 +1,6 @@
 ---
 title: Typy aplikacji w wersji 1.0 | Azure
-description: W tym artykule opisano typy aplikacji oraz scenariuszy obsługiwanych przez punkt końcowy usługi Azure Active Directory w wersji 2.0.
+description: Opisuje typy aplikacji i scenariuszy obsługiwanych przez punkt końcowy Azure Active Directory v 2.0.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,69 +17,69 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efed9e35aed729c9efa39b0772b681d8c53ba7b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72fab8a51f1ea1b9c7bda14d825dad538f96cde6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540659"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374060"
 ---
 # <a name="application-types-in-v10"></a>Typy aplikacji w wersji 1.0
 
-Usługa Azure Active Directory (Azure AD) obsługuje uwierzytelnianie dla szerokiego zakresu nowoczesnych architekturach aplikacji, wszystkie z nich oparte na standardowych protokołach uwierzytelniania OAuth 2.0 lub OpenID Connect.
+Azure Active Directory (Azure AD) obsługuje uwierzytelnianie dla różnych nowoczesnych architektur aplikacji, wszystkie z nich oparte na standardach branżowych OAuth 2,0 lub OpenID Connect Connect.
 
-Na poniższym diagramie przedstawiono scenariusze i typy aplikacji, oraz w jaki sposób można dodawać różne składniki:
+Na poniższym diagramie przedstawiono scenariusze i typy aplikacji oraz sposób dodawania różnych składników:
 
 ![Scenariusze i typy aplikacji](./media/authentication-scenarios/application_types_and_scenarios.png)
 
-Poniżej przedstawiono pięciu scenariuszy głównej aplikacji obsługiwanych przez usługę Azure AD:
+Oto pięć scenariuszy aplikacji podstawowych obsługiwanych przez usługę Azure AD:
 
-- **[Aplikacja jednostronicowa (SPA)](single-page-application.md)** : Użytkownik musi zalogować się do aplikacji jednostronicowej, która jest zabezpieczony przez usługę Azure AD.
-- **[Przeglądarki sieci Web do aplikacji sieci web](web-app.md)** : Użytkownik musi zalogować się do aplikacji sieci web, która jest zabezpieczony przez usługę Azure AD.
-- **[Aplikacja natywna do internetowego interfejsu API](native-app.md)** : Natywnych aplikacji, która działa na telefonie, tablecie lub komputerze wymaga uwierzytelnienia użytkownika można pobrać zasobów z internetowego interfejsu API, która jest zabezpieczony przez usługę Azure AD.
-- **[Aplikacja do internetowego interfejsu API sieci Web](web-api.md)** : Aplikacja sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
-- **[Demon lub serwera aplikacji do internetowego interfejsu API](service-to-service.md)** : Aplikacji demona albo aplikacja serwera bez interfejsu użytkownika sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
+- **[Aplikacja jednostronicowa (Spa)](single-page-application.md)** : użytkownik musi zalogować się do aplikacji jednostronicowej zabezpieczonej przez usługę Azure AD.
+- **[Przeglądarka sieci Web do aplikacji sieci Web](web-app.md)** : użytkownik musi zalogować się do aplikacji sieci Web, która jest zabezpieczona przez usługę Azure AD.
+- **[Natywna aplikacja do interfejsu API sieci Web](native-app.md)** : Natywna aplikacja działająca na telefonie, tablecie lub komputerze musi uwierzytelnić użytkownika w celu pobierania zasobów z internetowego interfejsu API, który jest zabezpieczony przez usługę Azure AD.
+- **[Aplikacja sieci Web do interfejsu API sieci Web](web-api.md)** : aplikacja sieci Web musi pobrać zasoby z internetowego interfejsu API zabezpieczonego przez usługę Azure AD.
+- **[Demon lub aplikacja serwera do interfejsu API sieci Web](service-to-service.md)** : aplikacja demona lub aplikacja serwera bez interfejsu użytkownika sieci Web musi pobierać zasoby z internetowego interfejsu API zabezpieczonego przez usługę Azure AD.
 
-Skorzystaj z linków, aby dowiedzieć się więcej na temat każdego rodzaju aplikacji i zrozumienie ogólnych scenariuszy przed rozpoczęciem pracy z kodem. Można także Poznaj różnice, które należy znać podczas zapisywania danej aplikacji, która współdziała z punktu końcowego w wersji 1.0 lub punktu końcowego v2.0.
+Skorzystaj z linków, aby dowiedzieć się więcej na temat poszczególnych typów aplikacji i zrozumieć scenariusze wysokiego poziomu przed rozpoczęciem pracy z kodem. Możesz również zapoznać się z różnicami, które należy znać podczas pisania konkretnej aplikacji, która współpracuje z punktem końcowym v 1.0 lub punktem końcowym v 2.0.
 
 > [!NOTE]
-> Punkt końcowy v2.0 nie obsługuje wszystkich scenariuszy usługi Azure AD i funkcji. Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
+> Punkt końcowy v 2.0 nie obsługuje wszystkich scenariuszy i funkcji usługi Azure AD. Aby określić, czy należy używać punktu końcowego v 2.0, przeczytaj temat [ograniczenia dotyczące wersji v 2.0](active-directory-v2-limitations.md).
 
-Można tworzyć dowolne aplikacje i scenariuszy opisanych w tym miejscu przy użyciu różnych języków i platform. Są one wszystko wspierane przez przykłady kodu kompletny przewodnik przykłady kodu: [v1.0 przykłady kodu według scenariusza](sample-v1-code.md) i [przykłady kodu w wersji 2.0 według scenariusza](sample-v2-code.md). Możesz również pobrać przykłady kodu, bezpośrednio od odpowiadających im [repozytoriów przykładowe GitHub](https://github.com/Azure-Samples?q=active-directory).
+Można opracowywać dowolne aplikacje i scenariusze opisane w tym miejscu przy użyciu różnych języków i platform. Są one obsługiwane przez kompletne przykłady kodu dostępne w przewodniku przykładów kodu: [przykłady kodu w wersji 1.0 według scenariusza](sample-v1-code.md) i [przykładów kodu v 2.0 według scenariusza](sample-v2-code.md). Możesz również pobrać przykłady kodu bezpośrednio z odpowiednich [repozytoriów przykładów usługi GitHub](https://github.com/Azure-Samples?q=active-directory).
 
-Ponadto jeśli aplikacja wymaga konkretne lub segmentu scenariusz end-to-end, w większości przypadków te funkcje można dodać niezależnie. Na przykład w przypadku aplikacji natywnej, która wywołuje internetowy interfejs API łatwo dodać aplikację internetową, która także wywołania interfejsu API sieci web.
+Ponadto, jeśli aplikacja wymaga określonego fragmentu lub segmentu kompleksowego scenariusza, w większości przypadków można dodać funkcje niezależnie. Na przykład jeśli masz natywną aplikację, która wywołuje interfejs API sieci Web, możesz łatwo dodać aplikację sieci Web, która również wywołuje internetowy interfejs API.
 
 ## <a name="app-registration"></a>Rejestracja aplikacji
 
-### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>Rejestrowanie aplikacji, która używa punktu końcowego usługi Azure AD w wersji 1.0
+### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>Rejestrowanie aplikacji korzystającej z punktu końcowego usługi Azure AD v 1.0
 
-Każda aplikacja, która outsources uwierzytelniania usługi Azure AD, musi być zarejestrowany w katalogu. Ten krok obejmuje informuje usługę Azure AD o swojej aplikacji, łącznie z adresem URL, w którym znajduje się, adres URL do wysyłania odpowiedzi po uwierzytelnieniu identyfikatora URI, aby zidentyfikować aplikację i nie tylko. Ta informacja jest wymagana w kilku kluczowych powodów:
+Wszystkie aplikacje, które są źródłem uwierzytelniania do usługi Azure AD, muszą być zarejestrowane w katalogu. Ten krok polega na poinformowaniu usługi Azure AD o swojej aplikacji, w tym o adresie URL, na którym się znajduje, adresie URL do wysyłania odpowiedzi po uwierzytelnieniu, identyfikatorze URI służącym do identyfikowania aplikacji i nie tylko. Te informacje są wymagane z kilku najważniejszych przyczyn:
 
-* Usługa Azure AD wymaga do komunikacji z aplikacją podczas obsługi logowania jednokrotnego lub wymianę tokenów. Informacje przesyłane między usługą Azure AD i aplikacja obejmuje następujące elementy:
+* Usługa Azure AD musi komunikować się z aplikacją podczas obsługi logowania lub wymiany tokenów. Informacje przesyłane między usługą Azure AD a aplikacją obejmują następujące elementy:
   
-  * **Identyfikator URI Identyfikatora aplikacji** — identyfikator aplikacji. Ta wartość jest wysyłana do usługi Azure AD podczas uwierzytelniania w celu wskazania, która aplikacja obiekt wywołujący chce token dla. Ponadto tak, aby aplikacja wie, że jest zamierzonym obiektem docelowym było tę wartość znajduje się w tokenie.
-  * **Adres URL odpowiedzi** i **identyfikator URI przekierowania** — interfejs API sieci web lub aplikacji sieci web, adres URL odpowiedzi to lokalizacja, w którym usługi Azure AD wysyła odpowiedź uwierzytelniania, w tym token, jeśli uwierzytelnianie zakończyło się pomyślnie. W przypadku aplikacji natywnej identyfikator URI przekierowania to unikatowy identyfikator, do którego usługa Azure AD przekierowuje agenta użytkownika w ramach żądania OAuth 2.0.
-  * **Identyfikator aplikacji** — identyfikator aplikacji, który jest generowany przez usługę Azure AD, gdy aplikacja jest zarejestrowana. Żądający kod autoryzacji lub tokenu Identyfikatora aplikacji i klucz są wysyłane do usługi Azure AD podczas uwierzytelniania.
-  * **Klucz** -key, przesyłany wraz z identyfikator aplikacji podczas uwierzytelniania w usłudze Azure AD do wywołania interfejsu API sieci web.
-* Usługa Azure AD wymaga upewnić się, że aplikacja ma wymaganych uprawnień, aby uzyskiwać dostęp do danych katalogu, inne aplikacje w Twojej organizacji i tak dalej.
+  * Identyfikator **URI aplikacji** — identyfikator dla aplikacji. Ta wartość jest wysyłana do usługi Azure AD podczas uwierzytelniania, aby wskazać, której aplikacji obiekt wywołujący chce uzyskać token. Ponadto ta wartość jest uwzględniona w tokenie, aby aplikacja wiedziała, że była zamierzoną wartością docelową.
+  * **Adres URL odpowiedzi** i **Identyfikator URI przekierowania** — dla interfejsu API sieci Web lub aplikacji sieci Web adres URL odpowiedzi jest lokalizacją, w której usługa Azure AD wyśle odpowiedź uwierzytelniania, łącznie z tokenem, jeśli uwierzytelnianie zakończyło się pomyślnie. W przypadku aplikacji natywnych identyfikator URI przekierowania jest unikatowym identyfikatorem, do którego usługa Azure AD będzie przekierowywać agenta użytkownika w żądaniu OAuth 2,0.
+  * **Identyfikator aplikacji** — identyfikator aplikacji, która jest generowana przez usługę Azure AD po zarejestrowaniu aplikacji. Podczas żądania kodu autoryzacji lub tokenu, identyfikator aplikacji i klucz są wysyłane do usługi Azure AD podczas uwierzytelniania.
+  * **Klucz** — klucz, który jest wysyłany wraz z identyfikatorem aplikacji podczas uwierzytelniania w usłudze Azure AD w celu wywołania interfejsu API sieci Web.
+* Usługa Azure AD musi upewnić się, że aplikacja ma wymagane uprawnienia dostępu do danych katalogu, innych aplikacji w organizacji i tak dalej.
 
-Aby uzyskać szczegółowe informacje, Dowiedz się, jak [rejestrowanie aplikacji](quickstart-register-app.md).
+Aby uzyskać szczegółowe informacje, Dowiedz się, jak [zarejestrować aplikację](quickstart-register-app.md).
 
-## <a name="single-tenant-and-multi-tenant-apps"></a>Aplikacje jednej dzierżawy i wieloma dzierżawcami
+## <a name="single-tenant-and-multi-tenant-apps"></a>Aplikacje z jedną dzierżawą i wieloma dzierżawcami
 
-Inicjowanie obsługi administracyjnej staje się bardziej zrozumiały po zapoznaniu się, że istnieją dwie kategorie aplikacji, które mogą być opracowane i zintegrowane z usługą Azure AD:
+Inicjowanie obsługi stanie się wyraźniejsze, gdy zrozumiesz, że istnieją dwie kategorie aplikacji, które można opracować i zintegrować z usługą Azure AD:
 
-* **Pojedyncza aplikacja dzierżawy** — aplikacja jednej dzierżawy jest przeznaczony do użytku w jednej z organizacji. Są to zazwyczaj line-of-business (LoB) aplikacji napisanych przez Deweloper w przedsiębiorstwie. Aplikacja jednej dzierżawy musi tylko uzyskiwać dostęp użytkownicy w jednym katalogu, a w rezultacie wymaga tylko do udostępnienia w pojedynczym katalogu. Te aplikacje zwykle są rejestrowane przez dewelopera w organizacji.
-* **Aplikacja wielodostępna** -aplikacji z wieloma dzierżawami jest przeznaczona do użycia w wielu organizacjach nie tylko jednej z organizacji. Są to zazwyczaj aplikacje typu SaaS (software-as-a-service) napisane przez niezależnych dostawców oprogramowania (ISV). Wielodostępne aplikacje muszą być obsługiwana w każdym katalogu gdzie zostaną użyte, wymaga zgody użytkownika lub administratora, aby zarejestrować je. Proces wyrażania zgody rozpoczyna się po zarejestrowaniu aplikacji w katalogu i udzieleniu jej dostępu do interfejsu API programu Graph lub innego internetowego interfejsu API. Gdy użytkownik lub administrator z innej organizacji zarejestruje się w celu korzystania z aplikacji, zobaczą okno dialogowe, które wyświetla uprawnienia, których wymaga aplikacja. Użytkownik lub administrator, następnie mogą wyrazić zgodę na aplikację, która zapewnia dostęp do aplikacji do podanych danych, a na koniec rejestruje swojego katalogu aplikacji. Aby uzyskać więcej informacji, zobacz [Przegląd Framework zgody](consent-framework.md).
+* **Aplikacja o pojedynczej dzierżawie** — aplikacja pojedynczego dzierżawy jest przeznaczona do użytku w jednej organizacji. Są to zazwyczaj aplikacje biznesowe, które są zapisywane przez dewelopera przedsiębiorstwa. Tylko aplikacja o pojedynczej dzierżawie musi być dostępna dla użytkowników w jednym katalogu, a w związku z tym należy tylko zainicjować ją w jednym katalogu. Te aplikacje są zwykle zarejestrowane przez dewelopera w organizacji.
+* **Aplikacja wielodostępna** — aplikacja wielodostępna jest przeznaczona do użytku w wielu organizacjach, A nie tylko w jednej organizacji. Są to zazwyczaj aplikacje typu SaaS (software-as-a-service) napisane przez niezależnych dostawców oprogramowania (ISV). Aplikacje z wieloma dzierżawcami muszą być obsługiwane w każdym katalogu, w którym będą używane, co wymaga zgody użytkownika lub administratora na ich zarejestrowanie. Proces wyrażania zgody rozpoczyna się po zarejestrowaniu aplikacji w katalogu i udzieleniu jej dostępu do interfejsu API programu Graph lub innego internetowego interfejsu API. Gdy użytkownik lub administrator w innej organizacji rejestruje się w celu korzystania z aplikacji, zostanie wyświetlony okno dialogowe, w którym są wyświetlane uprawnienia wymagane przez aplikację. Użytkownik lub administrator może następnie wyrazić zgodę na aplikację, która zapewnia aplikacji dostęp do danych, a wreszcie rejestruje aplikację w katalogu. Aby uzyskać więcej informacji, zobacz [Omówienie struktury zgody](consent-framework.md).
 
-### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Dodatkowe zagadnienia dotyczące opracowywania pojedynczego dzierżawy lub wielodostępnych aplikacji
+### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Dodatkowe zagadnienia dotyczące tworzenia aplikacji z pojedynczym dzierżawcą lub wieloma dzierżawcami
 
-Kilka dodatkowych kwestii dotyczących pojawiają się podczas tworzenia aplikacji z wieloma dzierżawami, zamiast aplikacji pojedynczej dzierżawy. Na przykład, jeśli udostępniasz aplikację dla użytkowników w wielu katalogach, potrzebujesz mechanizmu, aby określić, której dzierżawy znajdują się w. Aplikacja jednej dzierżawy musi się tylko do wyszukiwania w katalogu dla użytkownika, gdy aplikacja wielodostępna musi zidentyfikować określonego użytkownika ze wszystkich katalogów w usłudze Azure AD. Aby wykonać to zadanie, usługa Azure AD zapewnia wspólnego punktu końcowego uwierzytelniania gdzie dowolnej aplikacji wielodostępnych można kierować żądań logowania, zamiast punktem końcowym specyficznym dla dzierżawy. Ten punkt końcowy jest https://login.microsoftonline.com/common dla wszystkich katalogów w usłudze Azure AD może być punktem końcowym specyficznym dla dzierżawy https://login.microsoftonline.com/contoso.onmicrosoft.com. Wspólnego punktu końcowego jest szczególnie ważne należy wziąć pod uwagę podczas opracowywania aplikacji, ponieważ będziesz potrzebować logikę potrzebną do obsługi wielu dzierżaw podczas logowania, wylogowywania i walidacji tokenów.
+Podczas tworzenia aplikacji wielodostępnej zamiast pojedynczej aplikacji dzierżawy powstają pewne dodatkowe zagadnienia. Na przykład jeśli udostępnisz aplikację użytkownikom w wielu katalogach, potrzebujesz mechanizmu, aby określić dzierżawcę, w którym się znajdują. Aplikacja pojedynczej dzierżawy musi tylko sprawdzić w swoim własnym katalogu dla użytkownika, podczas gdy aplikacja wielodostępna musi identyfikować określonego użytkownika ze wszystkich katalogów w usłudze Azure AD. Aby wykonać to zadanie, usługa Azure AD udostępnia wspólny punkt końcowy uwierzytelniania, w którym dowolna aplikacja wielodostępna może kierować żądania logowania, zamiast punktu końcowego określonego dla dzierżawy. Ten punkt końcowy jest https://login.microsoftonline.com/common dla wszystkich katalogów w usłudze Azure AD, podczas gdy punkt końcowy specyficzny dla dzierżawy może być https://login.microsoftonline.com/contoso.onmicrosoft.com. Typowy punkt końcowy jest szczególnie istotny do uwzględnienia podczas tworzenia aplikacji, ponieważ będzie potrzebna logika niezbędna do obsługi wielu dzierżawców podczas logowania, wylogowywania i weryfikacji tokenu.
 
-Jeśli aktualnie tworzysz aplikację pojedynczej dzierżawy, ale chcesz udostępnić wiele organizacji, możesz łatwo wprowadzać zmiany do aplikacji, a jej konfiguracji w usłudze Azure AD, aby stał się wieloma dzierżawami stanie. Ponadto usługa Azure AD używa tego samego klucza podpisywania wszystkich tokenów we wszystkich katalogach czy udostępniasz uwierzytelniania w pojedynczej dzierżawy lub w aplikacji wielodostępnej.
+Jeśli obecnie tworzysz aplikację z jedną dzierżawą, ale chcesz ją udostępnić dla wielu organizacji, możesz łatwo wprowadzić zmiany w aplikacji i jej konfiguracji w usłudze Azure AD, aby umożliwić obsługę wielu dzierżawców. Ponadto usługa Azure AD używa tego samego klucza podpisywania dla wszystkich tokenów we wszystkich katalogach, niezależnie od tego, czy jest to uwierzytelnianie w ramach jednej dzierżawy czy aplikacji wielodostępnych.
 
-Każdy scenariusz wymienione w niniejszym dokumencie zawiera podsekcja, który opisuje jego wymagania inicjowania obsługi administracyjnej. Aby uzyskać więcej szczegółowych informacji o aprowizacji aplikacji w usłudze Azure AD oraz różnice między jednym i wieloma dzierżawami aplikacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) Aby uzyskać więcej informacji. Kontynuuj czytanie, aby poznać typowe scenariusze aplikacji w usłudze Azure AD.
+Każdy scenariusz wymieniony w tym dokumencie zawiera podsekcję opisującą wymagania dotyczące aprowizacji. Aby uzyskać bardziej szczegółowe informacje na temat aprowizacji aplikacji w usłudze Azure AD i różnice między aplikacjami z jedną i wieloma dzierżawcami, zobacz [Integrowanie aplikacji z Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) , aby uzyskać więcej informacji. Kontynuuj odczytywanie, aby zrozumieć typowe scenariusze aplikacji w usłudze Azure AD.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o innych usługi Azure AD [podstawowe informacje o uwierzytelnianiu](authentication-scenarios.md)
+- Dowiedz się więcej na temat innych [podstaw uwierzytelniania](v1-authentication-scenarios.md) usługi Azure AD

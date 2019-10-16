@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 97628535deb79733e9d286977534a6ea97ba60e6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 566c208ef415f6fc9f3ada419e2f9e9244bc066d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182290"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333157"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Strategie wdrażania i najlepsze rozwiązania w zakresie optymalizacji wydajności na Azure Search
 
@@ -77,7 +77,7 @@ Celem rozproszonego geograficznie zestawu usług wyszukiwania jest posiadanie co
    ![Wiele kart usług według regionów][1]
 
 ### <a name="keeping-data-in-sync-across-multiple-azure-search-services"></a>Utrzymywanie synchronizacji danych w wielu Azure Search usługach
-Istnieją dwie opcje utrzymywania synchronizacji usług wyszukiwania rozproszonego, które składają się z użycia indeksatora [Azure Search](search-indexer-overview.md) lub interfejsu API wypychania (nazywanego również [interfejsem API REST Azure Search](https://docs.microsoft.com/rest/api/searchservice/)).  
+Istnieją dwie opcje utrzymywania synchronizacji usług wyszukiwania rozproszonego, które składają się z użycia [indeksatora Azure Search](search-indexer-overview.md) lub interfejsu API wypychania (nazywanego również [interfejsem API REST Azure Search](https://docs.microsoft.com/rest/api/searchservice/)).  
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Używanie indeksatorów do aktualizowania zawartości w wielu usługach
 
@@ -88,17 +88,12 @@ Poniżej znajduje się wysoce wysoki poziom wizualizacji, która będzie wygląd
    ![Pojedyncze źródło danych z rozproszoną usługą indeksatora i kombinacjami usług][2]
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Używanie interfejsów API REST do wypychania aktualizacji zawartości w wielu usługach
-Jeśli używasz interfejsu API REST Azure Search do wypychania [zawartości w indeksie Azure Search](https://docs.microsoft.com/rest/api/searchservice/update-index), możesz zapewnić synchronizację różnych usług wyszukiwania przez wypychanie zmian do wszystkich usług wyszukiwania, gdy wymagana jest aktualizacja. W kodzie, pamiętaj, aby obsługiwać przypadki, w których aktualizacja jednej usługi wyszukiwania kończy się niepowodzeniem, ale powiodła się dla innych usług wyszukiwania.
+Jeśli używasz interfejsu API REST Azure Search do [wypychania zawartości w indeksie Azure Search](https://docs.microsoft.com/rest/api/searchservice/update-index), możesz zapewnić synchronizację różnych usług wyszukiwania przez wypychanie zmian do wszystkich usług wyszukiwania, gdy wymagana jest aktualizacja. W kodzie, pamiętaj, aby obsługiwać przypadki, w których aktualizacja jednej usługi wyszukiwania kończy się niepowodzeniem, ale powiodła się dla innych usług wyszukiwania.
 
 ## <a name="leverage-azure-traffic-manager"></a>Korzystanie z usługi Azure Traffic Manager
 [Usługa Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) umożliwia kierowanie żądań do wielu witryn sieci Web zlokalizowanych w lokalizacji geograficznej, które są następnie obsługiwane przez wiele usług Azure Search. Jedną z zalet Traffic Manager jest to, że może ona sondować Azure Search, aby upewnić się, że jest ona dostępna i będzie kierować użytkowników do alternatywnych usług wyszukiwania w przypadku przestoju. Ponadto w przypadku routingu żądań wyszukiwania za pomocą usługi Azure Web Sites usługa Azure Traffic Manager umożliwia Równoważenie obciążenia, w przypadku których witryna internetowa jest niedostępna, ale nie Azure Search. Oto przykład architektury, która wykorzystuje Traffic Manager.
 
    ![Wiele kart usług według regionów z centralnym Traffic Manager][3]
-
-## <a name="monitor-performance"></a>Monitorowanie wydajności
-Azure Search umożliwia analizowanie i monitorowanie wydajności usługi za pomocą [analizy ruchu wyszukiwania](search-traffic-analytics.md). Po włączeniu tej funkcji i dodaniu instrumentacji do aplikacji klienckiej można opcjonalnie rejestrować pojedyncze operacje wyszukiwania, a także zagregowane metryki na koncie usługi Azure Storage, które można następnie przetworzyć w celu analizy lub wizualizacji w Power BI. Metryki przechwyty w ten sposób zapewniają statystyki wydajności, takie jak średnia liczba zapytań lub czasy odpowiedzi na zapytanie. Ponadto rejestrowanie operacji umożliwia przechodzenie do szczegółów określonych operacji wyszukiwania.
-
-Analiza ruchu jest przydatna do poznania stawek opóźnienia z tej Azure Search perspektywą. Ponieważ zarejestrowane metryki wydajności zapytań są oparte na czasie, w którym zapytanie ma być w pełni przetwarzane w Azure Search (od momentu, w którym żądanie jest wysyłane), można użyć tego do ustalenia, czy problemy z opóźnieniami pochodzą z usługi Azure Search lub po stronie usług środowisko IDE usługi, takie jak z opóźnienia sieci.  
 
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o limitach warstw cenowych i usług dla każdej z nich, zobacz [limity usługi w Azure Search](search-limits-quotas-capacity.md).

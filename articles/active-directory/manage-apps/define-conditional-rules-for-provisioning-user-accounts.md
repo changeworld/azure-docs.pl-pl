@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70812685"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Inicjowanie obsługi aplikacji opartej na atrybutach przy użyciu filtrów zakresu
@@ -65,7 +65,7 @@ Zgodnie z tym filtrem określania zakresu użytkownicy muszą spełniać następ
 Filtry zakresu są konfigurowane jako część mapowań atrybutów dla każdego łącznika aprowizacji użytkowników usługi Azure AD. W poniższej procedurze przyjęto założenie, że skonfigurowano automatyczną obsługę administracyjną dla [jednej z obsługiwanych aplikacji](../saas-apps/tutorial-list.md) i dodano do niej filtr określania zakresu.
 
 ### <a name="create-a-scoping-filter"></a>Tworzenie filtru określania zakresu
-1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory** > **aplikacje** > dla przedsiębiorstw**wszystkie aplikacje** .
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory** >  aplikacje dla**przedsiębiorstw** > **wszystkie aplikacje** .
 
 2. Wybierz aplikację, dla której skonfigurowano automatyczną obsługę administracyjną: na przykład "usługi ServiceNow".
 
@@ -79,21 +79,21 @@ Filtry zakresu są konfigurowane jako część mapowań atrybutów dla każdego 
 
 7. Zdefiniuj klauzulę, wybierając **nazwę atrybutu**źródłowego, **operatora**i **wartość atrybutu** do dopasowania. Obsługiwane są następujące operatory:
 
-   a. **RÓWNA**SIĘ. Klauzula zwraca wartość "true", jeśli obliczony atrybut jest zgodny z wartością ciągu wejściowego dokładnie (z uwzględnieniem wielkości liter).
+   a. **Równa**się. Klauzula zwraca wartość "true", jeśli obliczony atrybut jest zgodny z wartością ciągu wejściowego dokładnie (z uwzględnieniem wielkości liter).
 
-   b. **NIE RÓWNA**SIĘ. Klauzula zwraca wartość "true", jeśli oceniony atrybut nie jest zgodny z wartością ciągu wejściowego (z uwzględnieniem wielkości liter).
+   b. **nie równa**się. Klauzula zwraca wartość "true", jeśli oceniony atrybut nie jest zgodny z wartością ciągu wejściowego (z uwzględnieniem wielkości liter).
 
-   c. **MA WARTOŚĆ TRUE**. Klauzula zwraca wartość "true", jeśli obliczony atrybut zawiera wartości logicznej true.
+   d. **ma wartość true**. Klauzula zwraca wartość "true", jeśli obliczony atrybut zawiera wartości logicznej true.
 
-   d. **MA WARTOŚĆ FALSE**. Klauzula zwraca wartość "true", jeśli obliczony atrybut zawiera wartości logiczne false.
+   d. **ma wartość false**. Klauzula zwraca wartość "true", jeśli obliczony atrybut zawiera wartości logiczne false.
 
-   e. **MA WARTOŚĆ NULL**. Klauzula zwraca wartość "true", jeśli oceniony atrybut jest pusty.
+   e. **ma wartość null**. Klauzula zwraca wartość "true", jeśli oceniony atrybut jest pusty.
 
-   f. **NIE MA WARTOŚCI NULL**. Klauzula zwraca wartość "true", jeśli oceniony atrybut nie jest pusty.
+   f. **nie ma wartości null**. Klauzula zwraca wartość "true", jeśli oceniony atrybut nie jest pusty.
 
-   g. **DOPASOWANIE WYRAŻENIA REGULARNEGO**. Klauzula zwraca wartość "true", jeśli oceniony atrybut pasuje do wzorca wyrażenia regularnego. Na przykład: ([1-9] [0-9]) dopasowuje dowolną liczbę z zakresu od 10 do 99.
+   g. **dopasowanie wyrażenia regularnego**. Klauzula zwraca wartość "true", jeśli oceniony atrybut pasuje do wzorca wyrażenia regularnego. Na przykład: ([1-9] [0-9]) dopasowuje dowolną liczbę z zakresu od 10 do 99.
 
-   h. **NIE PASUJE DO WYRAŻENIA REGULARNEGO**. Klauzula zwraca wartość "true", jeśli oceniony atrybut nie jest zgodny ze wzorcem wyrażenia regularnego.
+   h. **nie pasuje do wyrażenia regularnego**. Klauzula zwraca wartość "true", jeśli oceniony atrybut nie jest zgodny ze wzorcem wyrażenia regularnego.
 
 8. Wybierz pozycję **Dodaj nową klauzulę określania zakresu**.
 

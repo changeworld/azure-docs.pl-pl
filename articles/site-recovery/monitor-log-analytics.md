@@ -1,20 +1,20 @@
 ---
-title: Monitoruj Azure Site Recovery z dziennikami Azure Monitor (Log Analytics)
+title: Monitoruj Azure Site Recovery z dziennikami Azure Monitor (Log Analytics) | Microsoft Docs
 description: Informacje na temat monitorowania Azure Site Recovery z dziennikami Azure Monitor (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/13/2019
 ms.author: raynew
-ms.openlocfilehash: 4eb88658437d3b29cc55d24bb83f73b660daea43
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718485"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331922"
 ---
-# <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorowanie Site Recovery przy użyciu dzienników Azure Monitor
+# <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorowanie usługi Site Recovery przy użyciu dzienników usługi Azure Monitor
 
 W tym artykule opisano sposób monitorowania maszyn replikowanych przez usługę Azure [Site Recovery](site-recovery-overview.md)przy użyciu [dzienników Azure monitor](../azure-monitor/platform/data-platform-logs.md)i [log Analytics](../azure-monitor/log-query/log-query-overview.md).
 
@@ -25,10 +25,14 @@ Site Recovery można Azure Monitor dzienników, aby ułatwić wykonywanie nastę
 - **Monitoruj Site Recovery kondycję i stan**. Na przykład można monitorować kondycję replikacji, stan testu pracy w trybie failover, zdarzenia Site Recovery, cele punktu odzyskiwania (RPO) dla chronionych maszyn i szybkość zmian dysku/danych.
 - **Skonfiguruj alerty dla Site Recovery**. Można na przykład skonfigurować alerty dotyczące kondycji komputera, stanu testu pracy w trybie failover lub Site Recovery stanu zadania.
 
-Korzystanie z dzienników Azure Monitor z Site Recovery jest obsługiwane w przypadku replikacji platformy Azure do platformy Azure oraz do replikacji platformy Azure/serwera fizycznego.
+Korzystanie z dzienników Azure Monitor z Site Recovery jest obsługiwane w przypadku replikacji **platformy Azure do platformy** Azure oraz do replikacji platformy Azure **/serwera fizycznego** .
+
+> [!NOTE]
+> Dzienniki danych o zmienionych i szybkości przekazywania są dostępne tylko dla maszyn wirtualnych platformy Azure replikowanych do pomocniczego regionu platformy Azure.
+
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Oto, czego potrzebujesz:
+Oto, co jest potrzebne:
 
 - Co najmniej jedna maszyna chroniona w magazynie Recovery Services.
 - Obszar roboczy Log Analytics do przechowywania dzienników Site Recovery. [Dowiedz się więcej o](../azure-monitor/learn/quick-create-workspace.md) konfigurowaniu obszaru roboczego.
@@ -38,13 +42,14 @@ Zalecamy zapoznanie się z [typowymi pytaniami monitorowania](monitoring-common-
 
 ## <a name="configure-site-recovery-to-send-logs"></a>Konfigurowanie Site Recovery do wysyłania dzienników
 
-1. W magazynie kliknij pozycję **Ustawienia** > diagnostyczne**Dodaj ustawienie diagnostyczne**.
+1. W magazynie kliknij pozycję **Ustawienia diagnostyczne** > **Dodaj ustawienie diagnostyczne**.
 
     ![Wybierz rejestrowanie diagnostyczne](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. W obszarze **Ustawienia diagnostyczne**Określ nazwę akcji Rejestruj i wybierz pozycję **Wyślij do log Analytics**.
+2. W obszarze **Ustawienia diagnostyczne**Określ nazwę, a następnie zaznacz pole wyboru **Wyślij do log Analytics**.
 3. Wybierz opcję subskrypcja dzienników Azure Monitor i obszar roboczy Log Analytics.
-4. Z listy dziennik wybierz wszystkie dzienniki z prefiksem **AzureSiteRecovery**. Następnie kliknij przycisk **OK**.
+4. Wybierz **Diagnostyka Azure** w przełączniku.
+5. Z listy dziennik wybierz wszystkie dzienniki z prefiksem **AzureSiteRecovery**. Następnie kliknij przycisk **OK**.
 
     ![Wybór obszaru roboczego](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -61,7 +66,7 @@ Pobieranie danych z dzienników przy użyciu zapytań dzienników utworzonych pr
 
 ### <a name="query-replication-health"></a>Kondycja replikacji zapytań
 
-To zapytanie przedstawia wykres kołowy dla bieżącej kondycji replikacji wszystkich chronionych maszyn wirtualnych platformy Azure, podzielone na trzy stany: Normalne, ostrzegawcze lub krytyczne.
+To zapytanie przedstawia wykres kołowy dla bieżącej kondycji replikacji wszystkich chronionych maszyn wirtualnych platformy Azure, podzielone na trzy stany: normalne, ostrzegawcze lub krytyczne.
 
 ```
 AzureDiagnostics  
@@ -88,7 +93,7 @@ AzureDiagnostics 
 
 ### <a name="query-rpo-time"></a>Czas RPO zapytania
 
-To zapytanie przedstawia wykres słupkowy maszyn wirtualnych platformy Azure replikowanych za pomocą Site Recovery, podzielony przez cel punktu odzyskiwania (RPO): Mniej niż 15 minut, od 15-30 minut, ponad 30 minut.
+To zapytanie przedstawia wykres słupkowy maszyn wirtualnych platformy Azure replikowanych za pomocą Site Recovery, podzielony przez cel punktu odzyskiwania (RPO): mniej niż 15 minut, od 15-30 minut, ponad 30 minut.
 
 ```
 AzureDiagnostics 
@@ -171,7 +176,10 @@ AzureDiagnostics  
 
 ### <a name="query-data-change-rate-churn-for-a-vm"></a>Współczynnik zmian danych zapytania dla maszyny wirtualnej
 
-To zapytanie przedstawia wykres trendu dla określonej maszyny wirtualnej platformy Azure (ContosoVM123), który śledzi współczynnik zmian danych (bajty zapisu na sekundę) i szybkość przekazywania danych. Te informacje są dostępne tylko dla maszyn wirtualnych platformy Azure replikowanych do regionu pomocniczego platformy Azure.
+> [!NOTE] 
+> Informacje o postępie są dostępne tylko dla maszyn wirtualnych platformy Azure replikowanych do pomocniczego regionu platformy Azure.
+
+To zapytanie przedstawia wykres trendu dla określonej maszyny wirtualnej platformy Azure (ContosoVM123), który śledzi współczynnik zmian danych (bajty zapisu na sekundę) i szybkość przekazywania danych. 
 
 ```
 AzureDiagnostics   
