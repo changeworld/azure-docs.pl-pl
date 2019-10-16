@@ -15,7 +15,7 @@
   items:
     - name: 'Tworzenie funkcji — C#'
       href: functions-create-your-first-function-visual-studio.md
-    - name: Tworzenie funkcji — Java/Maven
+    - name: Tworzenie funkcji — Java
       href: functions-create-first-java-maven.md
     - name: Tworzenie funkcji — JavaScript
       href: functions-create-first-function-vs-code.md
@@ -27,6 +27,8 @@
       items:
         - name: 'Magazyn — C#'
           href: functions-add-output-binding-storage-queue-vs.md
+        - name: Magazyn — Java
+          href: functions-add-output-binding-storage-queue-java.md
         - name: Magazyn — JavaScript
           href: functions-add-output-binding-storage-queue-vs-code.md
         - name: Magazyn — Python

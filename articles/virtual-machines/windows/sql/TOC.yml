@@ -102,7 +102,7 @@
           items:
             - name: Z bezpośrednim miejscem do magazynowania
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
-            - name: Z magazynem plików w warstwie Premium
+            - name: Z udziałem plików w warstwie Premium
               href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Dokumentacja
   items:

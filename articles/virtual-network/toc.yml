@@ -35,6 +35,20 @@
       href: policy-samples.md
 - name: Pojęcia
   items:
+    - name: Brama translatora adresów sieciowych
+      items:
+        - name: Omówienie
+          items:
+            - name: Informacje o bramie translatora adresów sieciowych
+              href: nat-service-overview.md
+        - name: Przewodniki Szybki start
+          items:
+            - name: Tworzenie bramy translatora adresów sieciowych — interfejs wiersza polecenia platformy Azure
+              href: quickstart-create-nat-gateway-cli.md
+        - name: Samouczki
+          items:
+            - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — interfejs wiersza polecenia platformy Azure
+              href: tutorial-create-validate-nat-gateway-cli.md
     - name: Grupy zabezpieczeń
       href: security-overview.md
     - name: Routing
@@ -91,22 +105,26 @@
           href: virtual-network-tcpip-performance-tuning.md
     - name: Wdrażanie
       items:
-        - name: Protokół IPv6 dla sieci wirtualnej — usługa Load Balancer w warstwie Podstawowa
+        - name: Protokół IPv6 dla sieci wirtualnej
           items:
-            - name: Azure PowerShell
-              href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
-            - name: Interfejs wiersza polecenia platformy Azure
-              href: virtual-network-ipv4-ipv6-dual-stack-cli.md
-            - name: Szablon usługi Resource Manager
-              href: ipv6-configure-template-json.md
-        - name: Protokół IPv6 dla sieci wirtualnej — usługa Load Balancer w warstwie Standardowa
-          items:
-            - name: Azure PowerShell
-              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-            - name: Interfejs wiersza polecenia platformy Azure
-              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
-            - name: Szablon usługi Resource Manager
-              href: ipv6-configure-standard-load-balancer-template-json.md
+            - name: Publiczny moduł równoważenia obciążenia w warstwie Podstawowa
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+                - name: Interfejs wiersza polecenia platformy Azure
+                  href: virtual-network-ipv4-ipv6-dual-stack-cli.md
+                - name: Szablon usługi Resource Manager
+                  href: ipv6-configure-template-json.md
+            - name: Publiczny moduł równoważenia obciążenia w warstwie Standardowa
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+                - name: Interfejs wiersza polecenia platformy Azure
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+                - name: Szablon usługi Resource Manager
+                  href: ipv6-configure-standard-load-balancer-template-json.md
+            - name: Wewnętrzny moduł równoważenia obciążenia w warstwie Standardowa
+              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
         - name: Grupy zabezpieczeń sieci
           items:
             - name: Azure PowerShell
@@ -230,8 +248,6 @@
           items:
             - name: Podsieci
               href: virtual-network-manage-subnet.md
-            - name: Delegowanie podsieci
-              href: manage-subnet-delegation.md
             - name: Komunikacja równorzędna
               href: virtual-network-manage-peering.md
             - name: Ochrona przed atakami DDOS

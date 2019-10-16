@@ -96,22 +96,22 @@
           items:
             - name: Tworzenie laboratoriów na potrzeby zajęć i zarządzanie nimi
               href: classroom-labs/how-to-manage-classroom-labs.md
-            - name: Konfigurowanie i publikowanie szablonów
+            - name: 'Konfigurowanie, dostosowywanie i publikowanie szablonów'
               href: classroom-labs/how-to-create-manage-template.md
-            - name: Konfigurowanie i kontrolowanie użycia
+            - name: Konfigurowanie puli maszyn wirtualnych i zarządzanie nią
+              href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: Dodawanie użytkowników laboratorium i zarządzanie nimi
               href: classroom-labs/how-to-configure-student-usage.md
             - name: Tworzenie harmonogramów i zarządzanie nimi
               href: classroom-labs/how-to-create-schedules.md
-            - name: Tworzenie środowiska z wieloma maszynami wirtualnymi w maszynie wirtualnej szablonu
-              href: classroom-labs/how-to-enable-multi-vm-environment.md
             - name: Używanie galerii obrazów udostępnionych
               href: classroom-labs/how-to-use-shared-image-gallery.md
             - name: Włączanie połączenia pulpitu zdalnego dla systemu Linux
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
-            - name: Ustawianie lub resetowanie haseł maszyn wirtualnych
-              href: classroom-labs/how-to-set-virtual-machine-passwords.md
             - name: Włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu
               href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
+            - name: Tworzenie środowiska z wieloma maszynami wirtualnymi w maszynie wirtualnej szablonu
+              href: classroom-labs/how-to-enable-multi-vm-environment.md
         - name: Łączenie się z maszynami wirtualnymi w laboratoriach na potrzeby zajęć (uczeń)
           items:
             - name: Dostęp do laboratoriów na potrzeby zajęć

@@ -111,7 +111,9 @@
   items:
     - name: Time Series Insights
       items:
-        - name: Ogólnie dostępna usługa Azure Time Series Insights
+        - name: Azure Time Series Insights
+          href: /rest/api/time-series-insights/index
+        - name: Dostęp do danych — ogólna dostępność
           href: /rest/api/time-series-insights/ga
           items:
             - name: Zapytanie
@@ -123,17 +125,8 @@
                   href: /rest/api/time-series-insights/ga-query-syntax
             - name: Interfejs API danych referencyjnych
               href: /rest/api/time-series-insights/ga-reference-data-api
-        - name: Wersja zapoznawcza usługi Azure Time Series Insights
+        - name: Omówienie pojęć dotyczących dostępu do danych
           href: /rest/api/time-series-insights/preview
-          items:
-            - name: Zapytanie szeregów czasowych
-              href: /rest/api/time-series-insights/preview-query
-            - name: Model szeregów czasowych
-              href: /rest/api/time-series-insights/preview-model
-            - name: Interfejs API środowiska szeregów czasowych
-              href: /rest/api/time-series-insights/preview-env
-            - name: Wyrażenie i składnia szeregów czasowych
-              href: /rest/api/time-series-insights/preview-tsx
     - name: Zestaw SDK klienta
       items:
         - name: Zestaw SDK klienta środowiska JavaScript

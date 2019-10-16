@@ -7,28 +7,34 @@
       href: billing-understand-your-bill.md
     - name: Opis zawartości rachunku EA
       href: billing-understand-your-bill-ea.md
-    - name: Opis zawartości rachunku — tylko umowa klienta firmy Microsoft
+    - name: Opis zawartości rachunku — umowa klienta firmy Microsoft
       href: billing-mca-understand-your-bill.md
+    - name: Opis zawartości rachunku — umowa partnera firmy Microsoft
+      href: billing-mpa-understand-your-bill.md
     - name: Wyświetlanie i pobieranie faktury platformy Microsoft Azure
       href: billing-download-azure-invoice.md
     - name: Wyświetlanie i pobieranie danych na temat użycia i opłat na platformie Microsoft Azure
       href: billing-download-azure-daily-usage.md
-    - name: Wyświetlanie i pobieranie dokumentów podatkowych dotyczących umowy klienta firmy Microsoft
+    - name: Wyświetlanie i pobieranie dokumentów podatkowych
       href: billing-mca-download-tax-document.md
     - name: Opłaty za usługi innych firm
       href: billing-understand-your-azure-marketplace-charges.md
     - name: Objaśnienie danych użycia
       href: billing-understand-your-usage.md
-    - name: Objaśnienie danych użycia — tylko umowa klienta firmy Microsoft
+    - name: Objaśnienie danych użycia — umowa klienta firmy Microsoft
       href: billing-mca-understand-your-usage.md
     - name: Objaśnienie faktury
       href: billing-understand-your-invoice.md
-    - name: Objaśnienie faktury — tylko umowa klienta firmy Microsoft
+    - name: Objaśnienie faktury — umowa klienta firmy Microsoft
       href: billing-mca-understand-your-invoice.md
-    - name: Jak zapłacić rachunek — tylko umowa klienta firmy Microsoft
+    - name: Objaśnienie faktury — umowa partnera firmy Microsoft
+      href: billing-mpa-invoice-terms-explained.md
+    - name: Jak zapłacić rachunek — umowa klienta firmy Microsoft
       href: billing-how-to-pay-bill.md
     - name: Konta rozliczeniowe dla umowy klienta firmy Microsoft
       href: billing-mca-overview.md
+    - name: Konta rozliczeniowe dla umowy partnera firmy Microsoft
+      href: mpa-overview.md
 - name: Zarządzanie kosztami
   items:
     - name: Zapobieganie powstawaniu nieoczekiwanych kosztów
@@ -115,10 +121,8 @@
           href: billing-avoid-charges-free-account.md
         - name: Sprawdzanie użycia
           href: billing-check-free-service-usage.md
-        - name: Rozszerzanie subskrypcji
+        - name: Uaktualnianie konta
           href: billing-upgrade-azure-subscription.md
-        - name: Objaśnienie mapowania liczników
-          href: billing-understand-free-service-meter-mapping.md
     - name: Edytowanie profilu
       href: billing-how-to-change-azure-account-profile.md
     - name: Otwarta bankowość i silnie uwierzytelnianie klienta
@@ -158,7 +162,7 @@
         - name: Zadania umowy EA w umowie klienta firmy Microsoft
           href: billing-mca-enterprise-operations.md
     - name: Konfigurowanie konta rozliczeniowego dla umowy klienta firmy Microsoft
-      href: billing-mca-setup-account.md
+      href: mca-setup-account.md
     - name: Rejestracja przy użyciu konta usługi Office 365
       href: billing-use-existing-office-365-account-azure-subscription.md
     - name: Rejestracja w usłudze Office 365 przy użyciu konta platformy Azure
@@ -173,6 +177,8 @@
       href: billing-subscription-transfer.md
     - name: Żądanie własności — umowa klienta firmy Microsoft
       href: billing-mca-request-billing-ownership.md
+    - name: Żądanie własności — umowa partnera firmy Microsoft
+      href: mpa-request-ownership.md
     - name: Anulowanie subskrypcji
       href: billing-how-to-cancel-azure-subscription.md
     - name: Zmiana karty kredytowej

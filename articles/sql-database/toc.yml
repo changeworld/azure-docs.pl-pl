@@ -22,14 +22,13 @@
               href: sql-database-purchase-models.md
             - name: Model oparty na rdzeniach wirtualnych
               href: sql-database-service-tiers-vcore.md
+              items:
+                - name: Warstwa bezserwerowych usług obliczeniowych
+                  href: sql-database-serverless.md
+                - name: Opłacanie wydajności rezerwowej z góry
+                  href: sql-database-reserved-capacity.md
             - name: Warstwy usług z jednostkami DTU
               href: sql-database-service-tiers-dtu.md
-            - name: Warstwa bezserwerowych usług obliczeniowych
-              href: sql-database-serverless.md
-            - name: Opłacanie wydajności rezerwowej z góry
-              href: sql-database-reserved-capacity.md
-            - name: Migracja z warstwy usługi Premium RS
-              href: sql-database-service-tiers-prs.md
         - name: Obliczenia i magazyn
           items:
             - name: Omówienie
@@ -43,6 +42,8 @@
               href: sql-database-service-tier-hyperscale.md
             - name: Hiperskala — często zadawane pytania
               href: sql-database-service-tier-hyperscale-faq.md
+            - name: Migracja z warstwy usługi Premium RS
+              href: sql-database-service-tiers-prs.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
@@ -224,6 +225,8 @@
               href: sql-database-disaster-recovery.md
             - name: Próbne operacje odzyskiwania
               href: sql-database-disaster-recovery-drills.md
+            - name: Konfigurowanie grupy trybu failover
+              href: sql-database-configure-failover-group.md
     - name: Monitorowanie i dostrajanie
       items:
         - name: Dokumentacja monitorowania i dostrajania
@@ -488,7 +491,7 @@
           href: sql-database-active-geo-replication-portal.md
         - name: Konfigurowanie usługi Azure SQL Data Sync
           href: sql-database-get-started-sql-data-sync.md
-        - name: Dodawanie do grupy trybu failover w elastycznej puli
+        - name: Dodawanie puli elastycznej do grupy trybu failover
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Konfigurowanie zabezpieczeń
           href: sql-database-security-tutorial.md
@@ -604,8 +607,6 @@
           href: sql-database-geo-replication-portal.md
         - name: Konfigurowanie zabezpieczeń dla replik geograficznych
           href: sql-database-geo-replication-security-config.md
-        - name: Konfigurowanie grupy trybu failover
-          href: sql-database-configure-failover-group.md
         - name: Próbowanie funkcji w pamięci
           href: sql-database-in-memory-sample.md
         - name: Włączanie automatycznego dostrajania
@@ -714,6 +715,8 @@
           href: replication-with-sql-database-managed-instance.md
         - name: Konfigurowanie zabezpieczeń
           href: sql-database-managed-instance-aad-security-tutorial.md
+        - name: Dodawanie wystąpienia zarządzanego do grupy trybu failover
+          href: sql-database-managed-instance-failover-group-tutorial.md
     - name: Pojęcia
       items:
         - name: Dokumentacja interfejsu API zarządzania

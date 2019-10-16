@@ -103,7 +103,7 @@
           items:
             - name: Monitorowanie i dostrajanie
               href: concepts-monitoring.md
-            - name: Dzienniki serwera
+            - name: Dzienniki
               href: concepts-server-logs.md
             - name: Dzienniki inspekcji
               href: concepts-audit.md
@@ -207,9 +207,9 @@
               href: howto-auto-grow-storage-portal.md
             - name: Interfejs wiersza polecenia platformy Azure
               href: howto-auto-grow-storage-cli.md
-        - name: Dzienniki dostępu serwera
+        - name: Dzienniki dostępu
           items:
-            - name: Azure Portal
+            - name: Portal Azure
               href: howto-configure-server-logs-in-portal.md
             - name: Interfejs wiersza polecenia platformy Azure
               href: howto-configure-server-logs-using-cli.md

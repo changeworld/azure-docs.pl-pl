@@ -148,6 +148,8 @@
           href: automation-onboard-solutions-from-automation-account.md
     - name: Przewodniki z instrukcjami
       items:
+        - name: Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych na platformie Azure
+          href: automation-tutorial-update-management.md
         - name: Zarządzanie aktualizacjami dla wielu maszyn wirtualnych
           href: manage-update-multi.md
         - name: Skrypty wstępne i końcowe
@@ -157,6 +159,14 @@
         - name: Integracja programu SCCM z rozwiązaniem Update Management
           href: oms-solution-updatemgmt-sccmintegration.md
           displayName: Configuration Manager
+        - name: Konfigurowanie usługi Windows Update dla rozwiązania Update Management
+          href: automation-configure-windows-update.md
+        - name: Używanie grup dynamicznych z rozwiązaniem Update Management
+          href: automation-update-management-groups.md
+        - name: Wykonywanie zapytań względem dzienników rozwiązania Update Management
+          href: automation-update-management-query-logs.md
+        - name: Wyświetlanie ocen aktualizacji
+          href: automation-view-update-assessments.md
     - name: Rozwiązywanie problemów
       items:
         - name: Dołączanie
@@ -300,14 +310,18 @@
       href: automation-connections.md
     - name: Poświadczenia
       href: automation-credentials.md
-    - name: Moduły
-      href: automation-integration-modules.md
+    - name: Moduły programu PowerShell
+      items:
+        - name: Moduły
+          href: automation-integration-modules.md
+        - name: Korzystanie z modułów Az w usłudze Azure Automation
+          href: az-modules.md
+        - name: Aktualizowanie modułów programu Azure PowerShell
+          href: automation-update-azure-modules.md
     - name: Harmonogramy
       href: automation-schedules.md
     - name: Zmienne
       href: automation-variables.md
-    - name: Aktualizowanie modułów programu Azure PowerShell
-      href: automation-update-azure-modules.md
     - name: Zarządzanie pakietami języka Python 2
       href: python-packages.md
     - name: Rozwiązywanie problemów z zasobami udostępnionymi

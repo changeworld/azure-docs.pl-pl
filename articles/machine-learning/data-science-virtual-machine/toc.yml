@@ -65,8 +65,6 @@
       href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
 - name: Dokumentacja
   items:
-    - name: Maszyna DSVM z systemem Windows
-      href: reference-windows-vm.md
     - name: Maszyna DSVM z systemem Ubuntu
       href: reference-ubuntu-vm.md
     - name: Maszyna DSVM z systemem CentOS
@@ -75,3 +73,5 @@
       href: release-notes.md
     - name: Znane problemy
       href: reference-known-issues.md
+    - name: Powiadomienia o wycofaniu
+      href: reference-deprecation.md

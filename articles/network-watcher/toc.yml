@@ -172,6 +172,8 @@
       href: /rest/api/network-watcher/
 - name: Zasoby
   items:
+    - name: Network Watcher — często zadawane pytania
+      href: frequently-asked-questions.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Forum MSDN
