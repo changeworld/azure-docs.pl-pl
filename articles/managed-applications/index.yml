@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Dokumentacja usługi Azure Managed Applications
 metadata:
-  title: Dokumentacja usługi Azure Managed Applications — samouczki i dokumentacja interfejsu API
+  title: Dokumentacja usługi Azure Managed Applications
   description: Używaj usługi Azure Managed Applications do publikowania rozwiązań w chmurze łatwiejszych w utrzymaniu dla klientów.
   services: managed-applications
   author: tfitzmac
