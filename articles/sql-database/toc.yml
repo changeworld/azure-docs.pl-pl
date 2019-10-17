@@ -271,6 +271,8 @@
                   href: sql-database-xevent-code-event-file.md
                 - name: Rozszerzone zdarzenia — bufor cykliczny
                   href: sql-database-xevent-code-ring-buffer.md
+        - name: Diagnostyka wydajności w hiperskali
+          href: sql-database-hyperscale-performance-diagnostics.md
     - name: Skalowalność
       items:
         - name: Dokumentacja skalowalności

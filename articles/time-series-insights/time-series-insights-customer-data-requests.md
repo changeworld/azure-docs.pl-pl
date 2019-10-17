@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 3437634ff70371f9679423149b6996a099c044b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: fb464d2c75e271bf2f7f1684ed991d01691d70e4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950732"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330939"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 
@@ -68,7 +68,7 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie przechowywania w Time Se
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Przeczytaj więcej [na temat udzielania dostępu do danych do środowiska TSI](./time-series-insights-data-access.md).
+* Przeczytaj więcej [na temat udzielania dostępu do danych w środowisku Azure Time Series Insights](./time-series-insights-data-access.md).
 
 * Wyświetl [Azure Time Series Insights Explorer](time-series-insights-explorer.md).
 

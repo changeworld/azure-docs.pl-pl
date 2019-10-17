@@ -131,6 +131,8 @@
       href: howto-password-smart-lockout.md
     - name: Logowanie bez hasła
       items:
+        - name: Wdrażanie bez haseł
+          href: howto-authentication-passwordless-deployment.md
         - name: Klucze zabezpieczeń bez hasła
           href: howto-authentication-passwordless-security-key.md
         - name: Logowanie za pomocą telefonu bez hasła

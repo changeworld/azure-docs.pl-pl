@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 6f1ea4e1053efd7522a9562a3229a0d3094da36b
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: bec70c6385c9d7ea09e1d8e41229b224423956ab
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285794"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330982"
 ---
 # <a name="azure-sql-database-features"></a>Funkcje Azure SQL Database
 
@@ -137,7 +137,7 @@ Platforma Azure udostępnia wiele możliwości PaaS, które są dodawane jako do
 | [Analiza SQL](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Tak | Tak |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Tak | Nie |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nie, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) jest oddzielną usługą w chmurze platformy Azure. | Nie, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) jest oddzielną usługą w chmurze platformy Azure. |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Tak, z zarządzanym środowiskiem SSIS w Azure Data Factory (ADF), w którym pakiety są przechowywane w SSISDB hostowanym przez Azure SQL Database i wykonywane na platformie Azure SSIS Integration Runtime (IR), zobacz [tworzenie Azure-SSIS IR w ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Aby porównać funkcje usług SSIS w SQL Database serwerze i wystąpieniu zarządzanym, zobacz [porównanie Azure SQL Database pojedynczych baz danych/pul elastycznych i wystąpienia zarządzanego](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). | Tak, z zarządzanym środowiskiem SSIS w Azure Data Factory (ADF), w którym pakiety są przechowywane w SSISDB hostowanym przez wystąpienie zarządzane i wykonywane na platformie Azure SSIS Integration Runtime (IR), zobacz [Create Azure-SSIS IR in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Aby porównać funkcje usług SSIS w SQL Database i wystąpieniu zarządzanym, zobacz [porównanie Azure SQL Database pojedynczych baz danych/pul elastycznych i wystąpienia zarządzanego](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Tak, z zarządzanym środowiskiem SSIS w Azure Data Factory (ADF), w którym pakiety są przechowywane w SSISDB hostowanym przez Azure SQL Database i wykonywane na platformie Azure SSIS Integration Runtime (IR), zobacz [tworzenie Azure-SSIS IR w ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Aby porównać funkcje usług SSIS w SQL Database serwerze i wystąpieniu zarządzanym, zobacz [porównanie Azure SQL Database pojedynczej bazy danych, elastycznej puli i wystąpienia zarządzanego](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). | Tak, z zarządzanym środowiskiem SSIS w Azure Data Factory (ADF), w którym pakiety są przechowywane w SSISDB hostowanym przez wystąpienie zarządzane i wykonywane na platformie Azure SSIS Integration Runtime (IR), zobacz [Create Azure-SSIS IR in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Aby porównać funkcje usług SSIS w SQL Database i wystąpieniu zarządzanym, zobacz [porównanie Azure SQL Database pojedynczej bazy danych, elastycznej puli i wystąpienia zarządzanego](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nie — [zobacz Power BI](https://docs.microsoft.com/power-bi/) | Nie — [zobacz Power BI](https://docs.microsoft.com/power-bi/) |
 | [Szczegółowe informacje o wydajności zapytań (QPI)](sql-database-query-performance.md) | Tak | Nie. Użyj wbudowanych raportów w SQL Server Management Studio i Azure Data Studio. |
 | [Sieć wirtualna](../virtual-network/virtual-networks-overview.md) | Częściowo, umożliwia ograniczony dostęp za pomocą [punktów końcowych sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md) | Tak, wystąpienie zarządzane jest wstrzykiwane w sieci wirtualnej klienta. Zobacz [podsieci](sql-database-managed-instance-transact-sql-information.md#subnet) i Sieć [wirtualną](sql-database-managed-instance-transact-sql-information.md#vnet) |

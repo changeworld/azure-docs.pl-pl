@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5799974581ba74d3265f0a5a66f9b081ded9f800
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 2939e37c891a6ecc0421062493cab2e5d79223b5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948208"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330927"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Informacje o przechowywaniu danych w Azure Time Series Insights
 
@@ -28,32 +28,31 @@ W tym artykule opisano dwa ustawienia, które mają wpływ na przechowywanie dan
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-Każde środowisko Azure Time Series ma ustawienie kontrolujące **czas przechowywania danych**. Wartość obejmuje od 1 do 400 dni. Dane są usuwane w zależności od pojemności magazynu środowiska lub czasu przechowywania, w zależności od tego, co nastąpi wcześniej.
+Każde środowisko Azure Time Series Insights ma ustawienie kontrolujące **czas przechowywania danych**. Wartość obejmuje od 1 do 400 dni. Dane są usuwane w zależności od pojemności magazynu środowiska lub czasu przechowywania, w zależności od tego, co nastąpi wcześniej.
 
-Ponadto środowisko szeregów czasowych platformy Azure ma ustawienie **zachowania przekroczenia limitu magazynu** . Steruje zachowaniem ruchu przychodzącego i przeczyszczania, gdy osiągnięto maksymalną pojemność środowiska. Podczas konfigurowania go można wybrać dwa zachowania:
+Ponadto środowisko Azure Time Series Insights ma ustawienie **zachowania przekroczenia limitu magazynu** . Steruje zachowaniem ruchu przychodzącego i przeczyszczania, gdy osiągnięto maksymalną pojemność środowiska. Podczas konfigurowania go można wybrać dwa zachowania:
 
 - **Przeczyść stare dane** (ustawienie domyślne)  
 - **Wstrzymaj ruch przychodzący**
 
 > [!NOTE]
 > Domyślnie podczas tworzenia nowego środowiska przechowywanie jest skonfigurowane do **przeczyszczania starych danych**. To ustawienie może być przełączane w razie konieczności po czasie tworzenia przy użyciu Azure Portal na stronie **Konfigurowanie** środowiska Time Series Insights.
+> * Informacje o sposobie konfigurowania zasad przechowywania można znaleźć w artykule [Konfigurowanie przechowywania w Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
-Aby uzyskać informacje na temat przełączania zachowań przechowywania, przejrzyj [Konfigurowanie przechowywania w Time Series Insights](time-series-insights-how-to-configure-retention.md).
-
-Porównaj zachowanie podczas przechowywania danych:
+Zasady przechowywania danych są szczegółowo opisane poniżej.
 
 ## <a name="purge-old-data"></a>Przeczyść stare dane
 
-- To zachowanie jest zachowaniem domyślnym dla środowisk Time Series Insights.  
-- Takie zachowanie jest preferowane, gdy użytkownicy chcą zawsze zobaczyć *najnowsze dane* w środowisku Time Series Insights.
-- To zachowanie powoduje *przeczyszczenie* danych po osiągnięciu limitów środowiska (czasu przechowywania, rozmiaru lub liczby, zależnie od tego, co nastąpi wcześniej). Wartość przechowywania jest domyślnie ustawiona na 30 dni.
-- Najstarsze dane pozyskiwane są czyszczone jako pierwsze (podejście FIFO).
+- **Przeczyść stare dane** jest domyślnym ustawieniem dla środowisk Azure Time Series Insightsych.  
+- **Przeczyść stare dane** jest preferowany, gdy użytkownicy chcą zawsze zobaczyć *najnowsze dane* w środowisku Time Series Insights.
+- Ustawienie **Przeczyść stare dane** umożliwia *przeczyszczenie* danych po osiągnięciu limitów środowiska (czasu przechowywania, rozmiaru lub liczby, zależnie od tego, co nastąpi wcześniej). Wartość przechowywania jest domyślnie ustawiona na 30 dni.
+- Najstarsze dane pozyskiwane są czyszczone jako pierwsze (podejście "najpierw w pierwszej kolejności").
 
 ### <a name="example-one"></a>Przykład jeden
 
 Rozważmy przykładowe środowisko z zachowaniem przechowywania **kontynuuje transfer danych i Przeczyść stare dane**:
 
-**Czas przechowywania danych** jest ustawiony na 400 dni. **Pojemność** jest ustawiona na jednostkę S1, która zawiera 30 GB całkowitej pojemności.   Załóżmy, że dane przychodzące są gromadzone do 500 MB każdego dnia. To środowisko może przechowywać tylko 60 dni danych według stawki danych przychodzących, ponieważ maksymalna pojemność osiągnie 60 dni. Dane przychodzące są gromadzone jako: 500 MB każdego dnia x 60 dni = 30 GB.
+**Czas przechowywania danych** jest ustawiony na 400 dni. **Pojemność** jest ustawiona na jednostkę S1, która zawiera 30 GB całkowitej pojemności. Załóżmy, że dane przychodzące są gromadzone do 500 MB każdego dnia. To środowisko może przechowywać tylko 60 dni danych według stawki danych przychodzących, ponieważ maksymalna pojemność osiągnie 60 dni. Dane przychodzące są gromadzone jako: 500 MB każdego dnia x 60 dni = 30 GB.
 
 W danym dniu 61st środowisko pokazuje najświeższe dane, ale Przeczyszcza najstarsze dane, starsze niż 60 dni. Przeczyszczanie powoduje miejsce na nowe przesyłanie strumieniowe danych, dzięki czemu można nadal eksplorować nowe dane. Jeśli użytkownik chce, aby dane były przechowywane dłużej, można zwiększyć rozmiar środowiska przez dodanie dodatkowych jednostek lub wypchnięcie mniejszej ilości danych.  
 
@@ -66,7 +65,7 @@ Za każdym razem, gdy dzienny wskaźnik transferu danych w danym środowisku prz
 ## <a name="pause-ingress"></a>Wstrzymaj ruch przychodzący
 
 - Ustawienie **Wstrzymaj** ruch przychodzący jest zaprojektowana w celu zapewnienia, że dane nie zostaną usunięte, jeśli limity rozmiaru i liczby zostaną osiągnięte przed okresem przechowywania.  
-- **Wstrzymaj** ruch przychodzący umożliwia użytkownikom zwiększenie wydajności środowiska przed przeczyszczeniem danych z powodu naruszenia okresu przechowywania
+- **Wstrzymaj** ruch przychodzący zapewnia użytkownikom dodatkowy czas na zwiększenie wydajności środowiska przed przeczyszczeniem danych z powodu naruszenia okresu przechowywania.
 - Pomaga ona w ochronie przed utratą danych, ale może utworzyć okazję do utraty najnowszych danych, jeśli ruch przychodzący zostanie wstrzymany poza okresem przechowywania źródła zdarzenia.
 - Jednak po osiągnięciu maksymalnej wydajności środowiska środowisko wstrzymuje ruch przychodzący do momentu wykonania następujących dodatkowych akcji:
 
@@ -93,8 +92,10 @@ W Event Hubs, których dotyczy problem, Rozważ zmianę właściwości **przecho
 
 Jeśli nie skonfigurowano żadnych właściwości dla źródła zdarzeń (`timeStampPropertyName`), Time Series Insights domyślnie do sygnatury czasowej przybycia w centrum zdarzeń jako oś X. Jeśli `timeStampPropertyName` jest skonfigurowany jako coś innego, środowisko szuka skonfigurowanego `timeStampPropertyName` w pakiecie danych podczas analizowania zdarzeń.
 
-Jeśli konieczne jest skalowanie środowiska w celu uwzględnienia dodatkowej pojemności lub zwiększenia długości przechowywania, zobacz [Jak skalować środowisko Time Series Insights](time-series-insights-how-to-scale-your-environment.md) , aby uzyskać więcej informacji.  
+Zapoznaj się z artykułem [Jak skalować środowisko Time Series Insights](time-series-insights-how-to-scale-your-environment.md) , aby skalować środowisko w celu zwiększenia pojemności lub zwiększyć czas przechowywania.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać informacje na temat konfigurowania lub zmieniania ustawień przechowywania danych, przejrzyj [Konfigurowanie przechowywania w Time Series Insights](time-series-insights-how-to-configure-retention.md).
+
+- Dowiedz się więcej o [ograniczeniu opóźnienia w Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).

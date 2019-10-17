@@ -595,6 +595,8 @@
               href: ./hbase/apache-hbase-rest-sdk.md
             - name: Programowanie aplikacji Java
               href: ./hbase/apache-hbase-build-java-maven-linux.md
+            - name: Oprogramowanie Apache Phoenix z oprogramowaniem Apache Zeppelin
+              href: ./hbase/apache-hbase-phoenix-zeppelin.md
             - name: Oprogramowanie Apache Phoenix w usłudze HDInsight
               href: ./hdinsight-phoenix-in-hdinsight.md
             - name: Korzystanie z zestawu SDK REST serwera Apache Phoenix Query Server

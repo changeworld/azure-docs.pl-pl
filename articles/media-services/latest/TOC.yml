@@ -285,6 +285,8 @@
       items:
         - name: Publikowanie zasobu — interfejs wiersza polecenia
           href: cli-publish-asset.md
+        - name: Dźwięk opisowy sygnału
+          href: signal-descriptive-audio-howto.md
 - name: Dokumentacja
   items:
     - name: Specyfikacja interfejsu OpenAPI (Swagger)

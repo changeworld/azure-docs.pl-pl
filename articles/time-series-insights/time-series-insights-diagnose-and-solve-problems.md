@@ -9,20 +9,20 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7c5786f4510e11d431f9e80dd52d1ffc3adb410
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 78a991fb310c635648513e6472543b9f5c01119d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129176"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330876"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w środowisku Time Series Insights
 
 W tym artykule opisano niektóre problemy, które mogą wystąpić w środowisku Azure Time Series Insights. Artykuł zawiera potencjalne przyczyny i rozwiązania do rozwiązania.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 ### <a name="learn-about-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>Dowiedz się więcej na temat typowych wyzwań i rozwiązań związanych z Time Series Insights klientami.</br>
 
@@ -34,17 +34,17 @@ W tym artykule opisano niektóre problemy, które mogą wystąpić w środowisku
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Przyczyna: dane źródłowe zdarzenia nie są w formacie JSON
 
-Azure Time Series Insights obsługuje tylko dane JSON. Aby uzyskać przykłady kodu JSON, zobacz [kształty JSON obsługiwany](./how-to-shape-query-json.md).
+Azure Time Series Insights obsługuje tylko dane JSON. Aby zapoznać się z przykładami JSON, zobacz [obsługiwane kształty JSON](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Przyczyna B: klucz źródła zdarzenia nie ma wymaganego uprawnienia
 
 * W przypadku usługi IoT Hub w usłudze Azure IoT Hub należy podać klucz z uprawnieniami do **łączenia usług** . **Iothubowner** lub zasady **usługi** będą działały, ponieważ oba mają uprawnienia do **łączenia usług** .
 
-   [![IoT Hub uprawnień do nawiązywania połączenia z usługą](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [@no__t — uprawnienia do nawiązywania połączenia z usługą 1IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
-* W przypadku centrum zdarzeń w usłudze Azure Event Hubs należy podać klucz, który ma uprawnienia do nasłuchiwania. Każda z zasad **odczytu** lub **zarządzania** będzie działała, ponieważ obie osoby mają uprawnienia do nasłuchiwania.
+* W przypadku centrum zdarzeń w usłudze Azure Event Hubs należy podać klucz, który ma uprawnienia do **nasłuchiwania** . Każda z zasad **odczytu** lub **zarządzania** będzie działała, ponieważ obie osoby mają uprawnienia do **nasłuchiwania** .
 
-   [![Uprawnienia do nasłuchiwania centrum zdarzeń](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [@no__t — uprawnienia do nasłuchiwania w centrum 1Event](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Przyczyna C: podana Grupa odbiorców nie ma wyłącznej Time Series Insights
 
@@ -69,7 +69,7 @@ Limit ograniczania jest wymuszany na podstawie typu i pojemności jednostki SKU 
 
 Na poniższej ilustracji przedstawiono środowisko Time Series Insights, które ma jednostkę SKU S1 i pojemność 3. Może on przypadać na 3 000 000 zdarzeń dziennie.
 
-[![Bieżąca pojemność jednostki SKU środowiska](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[1Environment — bieżąca pojemność jednostki SKU @no__t](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Załóżmy na przykład, że środowisko przejmuje komunikaty z centrum zdarzeń. Dzienny współczynnik transferu danych przychodzących to ~ 67 000 komunikatów. Ta częstotliwość tłumaczy na około 46 komunikatów co minutę. 
 
@@ -109,12 +109,12 @@ Pierwszy nagłówek kolumny powinien być nazwą właściwości sygnatury czasow
 
 Nie powinny być widoczne następujące wartości:
 
-- *(ABC)* : Wskazuje, że Time Series Insights odczytuje wartości danych jako ciągi.
-- *Ikona kalendarza*: Wskazuje, że Time Series Insights odczytuje wartość danych jako *datę i godzinę*.
-- *#* : Wskazuje, że Time Series Insights odczytuje wartości danych jako liczbę całkowitą.
+- *(ABC)* : wskazuje, że Time Series Insights odczytuje wartości danych jako ciągi.
+- *Ikona kalendarza*: wskazuje, że Time Series Insights odczytuje wartość danych jako *datę i godzinę*.
+- *#* : wskazuje, że Time Series Insights odczytuje wartości danych jako liczbę całkowitą.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać pomoc, Rozpocznij KONWERSACJĘ na [forum MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) lub [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights).
+- Przeczytaj [, jak ograniczyć opóźnienia w Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).
 
-- Aby uzyskać pomoc techniczną, Skorzystaj z [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/).
+- Dowiedz się [, jak skalować środowisko Time Series Insights](time-series-insights-how-to-scale-your-environment.md).

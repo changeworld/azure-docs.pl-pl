@@ -21,6 +21,8 @@
   items:
     - name: Typowe zasady dostępu warunkowego
       href: concept-conditional-access-policy-common.md
+    - name: Domyślne ustawienia zabezpieczeń
+      href: concept-conditional-access-security-defaults.md
     - name: Składniki zasad dostępu warunkowego
       href: concept-conditional-access-policies.md
     - name: Warunki
@@ -76,16 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Migrowanie zasad klasycznych
       href: policy-migration.md
-    - name: Zasady punktu odniesienia
-      items:
-        - name: Wymaganie uwierzytelniania MFA dla administratorów
-          href: howto-baseline-protect-administrators.md
-        - name: Ochrona użytkowników końcowych
-          href: howto-baseline-protect-end-users.md
-        - name: Blokowanie starszego uwierzytelniania
-          href: howto-baseline-protect-legacy-auth.md
-        - name: Wymaganie uwierzytelniania MFA do zarządzania usługami
-          href: howto-baseline-protect-azure.md
     - name: Wdrażanie dostępu warunkowego
       href: howto-conditional-access-adoption-kit.md
     - name: Rozwiązywanie problemów

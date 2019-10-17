@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128216"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372372"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -29,14 +29,15 @@ W tym artykule pokazano, jak za pomocą interfejsu API [przekazywania pliku wide
 
 Po przekazaniu wideo Video Indexer opcjonalnie koduje wideo (omówione w artykule). Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. Opcja with płatna umożliwia utworzenie konta Video Indexer, które jest [połączone z subskrypcją platformy Azure i kontem Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Media. 
 
-## <a name="uploading-considerations"></a>Zagadnienia dotyczące przekazywania
+## <a name="uploading-considerations-and-limitations"></a>Przekazywanie zagadnień i ograniczeń
  
+- Nazwa filmu wideo nie może być dłuższa niż 80 znaków.
 - Podczas przekazywania wideo na podstawie adresu URL (preferowany) punkt końcowy musi być zabezpieczony przy użyciu protokołu TLS 1,2 (lub nowszego).
 - Rozmiar przekazywania z adresem URL jest ograniczony do 30 GB.
 - Długość adresu URL żądania jest ograniczona do 6144 znaków, w przypadku których długość adresu URL ciągu zapytania jest ograniczona do 4096 znaków.
 - Rozmiar przekazywania z opcją tablicy bajtowej jest ograniczony do 2 GB.
 - Opcja tablicy bajtowej jest przekreślania po 30 minutach.
-- Adres URL podany w `videoURL` parametrze param musi być zakodowany.
+- Adres URL podany w parametrze `videoURL` musi być zakodowany.
 - Indeksowanie Media Services elementów zawartości ma takie samo ograniczenie jak indeksowanie z adresu URL.
 - W przypadku pojedynczego pliku Video Indexer ma maksymalny limit czasu trwania wynoszący 4 godziny.
 
@@ -60,22 +61,22 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
 - Zmiana stanu indeksowania: 
     - Właściwości:    
     
-        |Name|Opis|
+        |Nazwa|Opis|
         |---|---|
         |id|Identyfikator wideo|
         |state|Stan wideo|  
-    - Przykład: https:\//test.com/NotifyMe?projectName=MyProject&ID=1234abcd&State=processed
+    - Przykład: https: \//test. com/NotifyMe? projectName = WebProject & ID = 1234abcd & State = przetworzony
 - Osoba rozpoznana na filmie wideo:
   - Właściwości
     
-      |Name|Opis|
+      |Nazwa|Opis|
       |---|---|
       |id| Identyfikator wideo|
       |faceId|Identyfikator Face ID w indeksie wideo|
       |knownPersonId|Identyfikator osoby, unikatowy w ramach danego modelu twarzy|
       |personName|Imię i nazwisko osoby|
         
-    - Przykład: https:\//test.com/NotifyMe?projectName=MyProject&ID=1234abcd&FaceID=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Przykład: https: \//test. com/NotifyMe? projectName = WebProject & ID = 1234abcd & FaceID = 12 & knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5 & PersonName = Inigo_Montoya 
 
 #### <a name="notes"></a>Uwagi
 
@@ -94,7 +95,7 @@ Cena zależy od wybranej opcji indeksowania.
 
 ### <a name="priority"></a>priority
 
-Usługa Video Indexer indeksuje filmy wideo zgodnie z ich priorytetem. Użyj parametru **priority**, aby określić priorytet indeksu. Następujące wartości są prawidłowe: **Niska**, **normalna** (domyślna) i **wysoka**.
+Usługa Video Indexer indeksuje filmy wideo zgodnie z ich priorytetem. Użyj parametru **priority**, aby określić priorytet indeksu. Prawidłowe są następujące wartości: **Low** (niski), **Normal** (normalny — wartość domyślna), **High** (wysoki).
 
 Parametr **priority** jest obsługiwany tylko w przypadku płatnych kont.
 

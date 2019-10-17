@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: memildin
-ms.openlocfilehash: 356bfc28984ecc1bc6990c10378a3df155593e94
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: cce57053e265446a6307554509c34c5f802ed07f
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996708"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372592"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Uaktualnij do warstwy Standardowa Security Center na potrzeby zwiększonych zabezpieczeń
-Azure Security Center zapewnia ujednolicone Zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami dla obciążeń uruchomionych na platformie Azure, lokalnie i w innych chmurach. Zapewnia widoczność i kontrolę nad obciążeniami w chmurze hybrydowej, aktywną obroną, która zmniejsza narażenie na zagrożenia oraz Inteligentne wykrywanie, które ułatwiają szybkie rozwijanie ataków cybernetycznymi.
+Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby obciążeń uruchamianych na platformie Azure, lokalnie i w innych chmurach. Zapewnia widoczność i kontrolę nad obciążeniami w chmurze hybrydowej, aktywną obroną, która zmniejsza narażenie na zagrożenia oraz Inteligentne wykrywanie, które ułatwiają szybkie rozwijanie ataków cybernetycznymi.
 
 ## <a name="pricing-tiers"></a>Warstwy cenowe
-Security Center jest oferowana w dwóch warstwach:
+Usługa Security Center jest oferowana w dwóch warstwach:
 
-- Warstwa **bezpłatna** jest włączana automatycznie we wszystkich subskrypcjach platformy Azure, a także zawiera zasady zabezpieczeń, ciągłą ocenę zabezpieczeń i zalecenia dotyczące zabezpieczeń z możliwością podejmowania działań, które ułatwiają ochronę zasobów platformy Azure.
+- Warstwa **bezpłatna** jest włączana we wszystkich subskrypcjach platformy Azure, gdy po raz pierwszy odwiedzisz pulpit nawigacyjny Azure Security Center w witrynie Azure Portal lub progremmaticaly za pośrednictwem interfejsu API. Warstwa Bezpłatna zapewnia zasady zabezpieczeń, ciągłą ocenę zabezpieczeń i zalecenia dotyczące zabezpieczeń, które ułatwiają ochronę zasobów platformy Azure.
 - Warstwa **standardowa** rozszerza możliwości warstwy Bezpłatna do obciążeń działających w prywatnych i innych chmurach publicznych, zapewniając ujednolicone Zarządzanie zabezpieczeniami i ochronę przed zagrożeniami w ramach obciążeń chmury hybrydowej. Warstwa standardowa dodaje także zaawansowane możliwości wykrywania zagrożeń, które wykorzystują wbudowaną analizę behawioralną i uczenie maszynowe, aby identyfikować ataki i luki w zabezpieczeniach, kontrolę dostępu i aplikacji w celu ograniczenia narażenia na ataki sieciowe i złośliwe oprogramowanie. szczegółowe. Możesz bezpłatnie wypróbować warstwę Standardowa. Standard Security Center obsługuje zasoby platformy Azure, w tym maszyny wirtualne, zestawy skalowania maszyn wirtualnych, App Service, serwery SQL i konta magazynu. Jeśli masz Azure Security Center Standard, możesz zrezygnować z obsługi na podstawie typu zasobu. 
 
 
@@ -43,12 +43,12 @@ Aby uzyskać warstwę standardową:
 2. Wybierz subskrypcję, którą chcesz uaktualnić do wersji Standard.
 3. Wybierz pozycję **warstwa cenowa**.
 4. Wybierz pozycję **standardowa** , aby przeprowadzić uaktualnienie.
-5. Kliknij przycisk **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 
 (Ceny na obrazie są tylko do celów). @no__t — ceny 0Security Center @ no__t-1
 
 > [!NOTE]
-> Aby włączyć wszystkie funkcje Security Center, należy zastosować warstwę cenową standardowa do subskrypcji zawierającej odpowiednie maszyny wirtualne. Konfigurowanie cen dla obszaru roboczego nie umożliwia dostępu just in Time do maszyny wirtualnej, adaptacyjnych kontroli aplikacji i wykrywania sieci dla zasobów platformy Azure.
+> Aby włączyć wszystkie funkcje usługi Security Center, należy najpierw do subskrypcji zawierającej odpowiednie maszyny wirtualne zastosować warstwę cenową Standardowa. Konfigurowanie cen dla obszaru roboczego nie umożliwia dostępu just in Time do maszyny wirtualnej, adaptacyjnych kontroli aplikacji i wykrywania sieci dla zasobów platformy Azure.
 >
 >
 
@@ -56,7 +56,7 @@ Aby uzyskać warstwę standardową:
 Security Center oferuje zwiększone zabezpieczenia i ochronę przed zagrożeniami dla obciążeń chmury hybrydowej, w tym:
 
 - **Bezpieczeństwo hybrydowe** — Uzyskaj ujednolicony widok zabezpieczeń we wszystkich obciążeniach lokalnych i w chmurze. Stosuj zasady zabezpieczeń i stale oceniaj bezpieczeństwo obciążeń chmury hybrydowej w celu zapewnienia zgodności ze standardami zabezpieczeń. Zbieranie, wyszukiwanie i analizowanie danych zabezpieczeń z różnych źródeł, w tym zapór i innych rozwiązań partnerskich.
-- **Zaawansowane wykrywanie zagrożeń** — Użyj zaawansowanej analizy i Microsoft Intelligent Security Graph, aby uzyskać krawędzie przed rozwojem ataków cybernetycznymi.  Korzystaj z wbudowanej analizy behawioralnej i uczenia maszynowego, aby identyfikować ataki i wypróbować programy wykorzystujące zero dni. Monitoruj sieci, maszyny i usługi w chmurze pod kątem ataków przychodzących i działań po naruszeniu. Usprawnij badanie przy użyciu interaktywnych narzędzi i kontekstowej analizy zagrożeń.
+- **Zaawansowane wykrywanie zagrożeń** — Użyj zaawansowanej analizy i Microsoft Intelligent Security Graph, aby uzyskać krawędzie przed rozwojem ataków cybernetycznymi.  Wykorzystaj wbudowaną analizę behawioralną i uczenie maszynowe do identyfikowania ataków i luk typu zero day. Monitoruj sieci, maszyny i usługi w chmurze pod kątem przychodzących ataków i działań po naruszeniu zabezpieczeń. Usprawnij badanie dzięki interaktywnym narzędziom i kontekstowej analizie zagrożeń.
 - **Kontrola dostępu i aplikacji** — Zablokuj złośliwe oprogramowanie i inne niechciane aplikacje, stosując zalecenia listy dozwolonych dostosowane do konkretnych obciążeń i obsługiwane przez uczenie maszynowe. Zmniejszenie podatności na ataki sieci z dostępem just-in-Time do portów zarządzania na maszynach wirtualnych platformy Azure, co znacząco zmniejsza narażenie na odżycie i inne ataki sieciowe.
 
 
