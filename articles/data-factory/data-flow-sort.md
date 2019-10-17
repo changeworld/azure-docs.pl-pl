@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: f9d2699c870de21daea9ce421c79f089c04b99fa
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 029ce3c509d3f4d241012d3786e60f0c6e95fdc2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029120"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387188"
 ---
 # <a name="azure-data-factory-data-flow-sort-transformations"></a>Przekształcenia sortowania przepływu danych Azure Data Factory
 
 
 
-![](media/data-flow/sort.png "Sortuj") ustawienia sortowania
+![Ustawienia sortowania](media/data-flow/sort.png "Sortuj")
 
 Transformacja sortowania pozwala sortować wiersze przychodzące w bieżącym strumieniu danych. Wiersze wychodzące z transformacji sortowania będą następnie zgodne z ustawionymi regułami kolejności. Można wybrać poszczególne kolumny i posortować je ASC lub gru przy użyciu wskaźnika strzałki obok każdego pola. Jeśli musisz zmodyfikować kolumnę przed zastosowaniem sortowania, kliknij pozycję "kolumny obliczane", aby uruchomić Edytor wyrażeń. Dzięki temu można utworzyć wyrażenie dla operacji sortowania, zamiast po prostu zastosować kolumnę sortowania.
 

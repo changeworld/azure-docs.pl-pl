@@ -8,14 +8,14 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/25/2019
+ms.date: 10/16/2019
 ms.author: memildin
-ms.openlocfilehash: 3b4b02574c028822d25d841376b127a718243b2e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 69b81417e541bd6853e02065e8cee08e3e04b4a2
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202565"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433897"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Alerty zabezpieczeń w Centrum zabezpieczeń Azure
 
@@ -37,7 +37,7 @@ Ponadto osoby atakujące rozwinęły swoje metody w celu podwyższenia liczby za
 
 Alerty są powiadomieniami generowanymi przez Security Center w przypadku wykrycia zagrożeń dotyczących zasobów. Security Center priorytetów i wyświetla listę alertów wraz z informacjami wymaganymi do szybkiego zbadania problemu. Security Center również zawiera zalecenia dotyczące sposobu korygowania ataku.
 
-## Jak Security Center wykrywać zagrożenia? <a name="detect-threats"></a>
+## Jak Security Center wykrywać zagrożenia? <a name="detect-threats"> </a>
 
 Pracownicy naukowo-badawczy firmy Microsoft stale poszukują nowych zagrożeń. Ze względu na globalną obecność firmy Microsoft w chmurze i lokalnie mają dostęp do zestawu danych telemetrycznych rozległych. Szeroka i różnorodna kolekcja zestawów danych umożliwia odnalezienie nowych wzorców ataków i trendów w lokalnych produktach konsumenckich i firmowych, a także Usługi online. W związku z tym usługa Security Center może szybko zaktualizować swoje algorytmy wykrywania, w miarę jak atakujący wprowadzają nowe i coraz bardziej zaawansowane metody. Takie podejście pomaga sprostać wymaganiom szybko zmieniającego się środowiska zagrożenia.
 
@@ -47,34 +47,50 @@ Aby wykrywać rzeczywiste zagrożenia i zmniejszyć liczbę fałszywych wyników
 
 Usługa Security Center wykorzystuje zaawansowane narzędzia analizy zabezpieczeń, które wykraczają daleko poza metody bazujące na sygnaturze. Przełomowe rozwiązania dotyczące danych big data i technologii [uczenia maszynowego](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) są używane do oceny zdarzeń zachodzących w całej sieci szkieletowej chmury. Wykrywane są zagrożenia, które byłyby niemożliwe do wykrycia przy użyciu ręcznych metod, i przewidywany jest kierunek ewolucji ataków. Do narzędzi analizy zabezpieczeń należą:
 
-* **Zintegrowana analiza zagrożeń**: Szuka znanych nieprawidłowych aktorów, wykorzystując globalne analizy zagrożeń z produktów i usług firmy Microsoft, jednostki Microsoft Digital Zbrodnis (DCU), centrum Microsoft Security Response Center (MSRC) i zewnętrznych źródeł danych.
-* **Analiza behawioralna**: Stosuje znane wzorce w celu odnalezienia złośliwego zachowania.
-* **Wykrywanie anomalii**: Używa profilowania statystycznego do tworzenia historycznej linii bazowej. Narzędzie to alarmuje o odchyleniach od ustalonych linii bazowych zgodnych z wektorem potencjalnego ataku.
+* **Zintegrowana analiza zagrożeń**: szuka znanych nieprawidłowych aktorów, wykorzystując globalne analizy zagrożeń pochodzące z produktów i usług firmy Microsoft, jednostki Microsoft Digital zbrodnis (DCU), centrum Microsoft Security Response Center (MSRC) i zewnętrznych źródeł danych.
+* **Analiza zachowań**: stosuje znane wzorce w celu odnalezienia złośliwego zachowania.
+* **Wykrywanie anomalii**: używa profilowania statystycznego do tworzenia historycznej linii bazowej. Narzędzie to alarmuje o odchyleniach od ustalonych linii bazowych zgodnych z wektorem potencjalnego ataku.
 
-W poniższych tematach szczegółowo omówiono każdą z tych analiz.
+W poniższych sekcjach szczegółowo omówiono każdą z tych analiz.
 
 ### <a name="integrated-threat-intelligence"></a>Zintegrowana analiza zagrożeń
 
-Firma Microsoft dysponuje ogromną ilością danych do globalnej analizy zagrożeń. Telemetria pochodzi z wielu źródeł, takich jak usługi Azure, Office 365, Microsoft CRM online, Microsoft Dynamics AX, outlook.com i MSN.com, jednostka Microsoft Digital Crimes Unit (DCU) oraz centrum Microsoft Security Response Center (MSRC). Pracownicy naukowi otrzymują również informacje dotyczące analizy zagrożeń, które są wymieniane między największymi dostawcami usług w chmurze oraz subskrypcje źródeł analizy zagrożeń od innych firm. Usługa Azure Security Center może użyć tych informacji, aby ostrzec użytkownika przed zagrożeniami ze strony znanych złośliwych podmiotów.
+Firma Microsoft dysponuje ogromną ilością danych do globalnej analizy zagrożeń. Dane telemetryczne są przepływów z wielu źródeł, takich jak Azure, Office 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, Microsoft Digital Zbrodnis Unit (DCU) i Microsoft Security Response Center (MSRC). Badacze otrzymują również informacje o analizie zagrożeń, które są współużytkowane przez głównych dostawców usług w chmurze i źródła danych od innych stron trzecich. Usługa Azure Security Center może użyć tych informacji, aby ostrzec użytkownika przed zagrożeniami ze strony znanych złośliwych podmiotów.
 
 ### <a name="behavioral-analytics"></a>Analiza behawioralna
 
-Analiza behawioralna to metoda, która polega na analizie danych i porównywaniu ich z kolekcją znanych wzorców. Wzorce te nie są jednak prostymi sygnaturami. Określa się je za pośrednictwem złożonych algorytmów uczenia maszynowego, które są stosowane w przypadku wielkich zestawów danych. Są one również określane przez specjalistów od analizy, którzy dokonują dokładnej analizy złośliwych zachowań. Usługa Azure Security Center może użyć analizy behawioralnej w celu identyfikacji zasobów, których bezpieczeństwo zostało naruszone, na podstawie analizy dzienników maszyny wirtualnej, dzienników urządzenia sieci wirtualnej, dzienników sieci szkieletowej, zrzutów awaryjnych i innych źródeł.
+Analiza behawioralna to metoda, która polega na analizie danych i porównywaniu ich z kolekcją znanych wzorców. Wzorce te nie są jednak prostymi sygnaturami. Określa się je za pośrednictwem złożonych algorytmów uczenia maszynowego, które są stosowane w przypadku wielkich zestawów danych. Są one również określane przez specjalistów od analizy, którzy dokonują dokładnej analizy złośliwych zachowań. Azure Security Center może korzystać z analizy behawioralnej w celu identyfikowania zasobów narażonych na podstawie analizy dzienników maszyn wirtualnych, dzienników urządzeń sieci wirtualnej, dzienników sieci szkieletowej, zrzutów awaryjnych i innych źródeł.
 
-Ponadto istnieje korelacja z innymi sygnałami, które wykrywają dowody potwierdzające istnienie szeroko zakrojonej kampanii ataku. Ta korelacja pomaga w identyfikacji zdarzeń, które są zgodne ze sprawdzonymi wskaźnikami naruszenia bezpieczeństwa. 
+Ponadto istnieje korelacja z innymi sygnałami w celu sprawdzenia, czy są dostępne dodatkowe dowody na szeroką kampanię. Ta korelacja pomaga w identyfikacji zdarzeń, które są zgodne ze sprawdzonymi wskaźnikami naruszenia bezpieczeństwa. 
 
 ### <a name="anomaly-detection"></a>Wykrywanie anomalii
 
 Usługa Azure Security Center używa również wykrywania anomalii do identyfikowania zagrożeń. W przeciwieństwie do analizy behawioralnej (która zależy od znanych wzorców wyprowadzonych z dużych zestawów danych), wykrywanie anomalii jest bardziej „spersonalizowane” i koncentruje się na liniach bazowych, które są specyficzne dla przeprowadzonych wdrożeń. Uczenie maszynowe jest stosowane do określania normalnego działania wdrożeń, a następnie generowania reguł definiujących odstające warunki, które mogą reprezentować zdarzenie związane z zabezpieczeniami.
 
+## <a name="how-are-alerts-classified"></a>Jak są klasyfikowane alerty?
+
+Security Center przypisuje ważność do alertów, ułatwiając określanie priorytetów kolejności, w której uczestniczy każdy alert, dzięki czemu w przypadku naruszenia zabezpieczeń zasobów można od razu przejść do niego. Ważność jest oparta na tym, jak dobrze Security Center znajduje się w wyszukiwaniu lub analitycznym używanym do wystawiania alertu, a także poziom pewności, że istniało złośliwy wpływ na działanie, które prowadziło do alertu.
+
+> [!NOTE]
+> Ważność alertu jest wyświetlana w różny sposób w portalu i interfejsie API REST. różnice są wymienione na poniższej liście.
+
+* **Wysoka:** Istnieje duże prawdopodobieństwo naruszenia bezpieczeństwa zasobu. Należy od razu przyjrzeć się do niego. Security Center ma wysoki poziom zaufania zarówno w złośliwym zamiarach, jak i w ustaleniach używanych do wystawiania alertu. Na przykład alert, który wykrywa wykonywanie znanego złośliwego narzędzia, takiego jak program mimikatz, typowego narzędzia używanego do kradzieży poświadczeń.
+* **Średni (niski w interfejsie API REST)** : prawdopodobnie podejrzane działanie może wskazywać na naruszenie bezpieczeństwa zasobu.
+Stopień zaufania Security Center w analitycznym lub wyszukiwaniu jest średni, a wiarygodność złośliwego celu jest wysoka. Zazwyczaj mogą to być Uczenie maszynowe lub wykryte anomalie. Na przykład próba logowania z nietypowej lokalizacji.
+* **Niski (informacje w interfejsie API REST)** : może to być niegroźne, pozytywne lub zablokowane.
+   * Security Center nie ma wystarczającej pewności, że zamiar jest złośliwy, a działanie może być nieszkodliwe. Na przykład dziennik czyszczenie jest akcją, która może wystąpić, gdy osoba atakująca próbuje ukryć swoje ścieżki, ale w wielu przypadkach jest to procedura wykonywana przez administratorów.
+   * Security Center zazwyczaj nie informuje użytkownika o zablokowaniu ataków, chyba że jest to interesujący przypadek, który sugerujemy. 
+* **Informacyjny (dyskretny w interfejsie API REST)** : podczas przechodzenia do szczegółów zdarzenia związanego z bezpieczeństwem będą wyświetlane tylko alerty informacyjne lub w przypadku korzystania z interfejsu API REST z określonym identyfikatorem alertu. Zdarzenie zwykle składa się z wielu alertów, które mogą być wyświetlane na własne potrzeby tylko w celu uzyskania informacji, ale w kontekście innych alertów może być zaufanego bliższego wyglądu. 
+ 
+
 ## <a name="continuous-monitoring-and-assessments"></a>Ciągłe monitorowanie i oceny
 
 Azure Security Center korzyści ze stosowania przez firmę Microsoft zespołów badawczych i naukowych dotyczących zabezpieczeń, którzy stale monitorują zmiany w poziomie zagrożeń. Obejmuje to następujące inicjatywy:
 
-* **Monitorowanie analizy zagrożeń**: Analiza zagrożeń obejmuje mechanizmy, wskaźniki, konsekwencje i porady umożliwiające podejmowanie działań dotyczących istniejących lub powstających zagrożeń. Te informacje są udostępniane w branży zabezpieczeń, a firma Microsoft stale monitoruje zagrożenia płynące z wewnętrznych i zewnętrznych źródeł.
-* **Udostępnianie sygnałów**: Szczegółowe informacje z zespołów ds. zabezpieczeń w szerokim portfelu usług w chmurze i lokalnych usługach, serwerach i klientach w firmie Microsoft są udostępniane i analizowane.
-* **Specjaliści ds. zabezpieczeń firmy Microsoft**: Ciągłe zaangażowanie z zespołami w firmie Microsoft, którzy pracują w wyspecjalizowanych polach zabezpieczeń, takich jak dowodowych i wykrywanie ataków w sieci Web.
-* **Dostrajanie wykrywania**: Algorytmy są uruchamiane z rzeczywistymi zestawami danych klienta i pracownicy działu bezpieczeństwa pracują z klientami w celu weryfikacji wyników. Wyniki prawdziwie i fałszywie dodatnie są używane w celu udoskonalania algorytmów uczenia maszynowego.
+* **Monitorowanie analizy zagrożeń**: analiza zagrożeń obejmuje mechanizmy, wskaźniki, implikacje i porady umożliwiające podejmowanie działań dotyczących istniejących lub powstających zagrożeń. Te informacje są udostępniane w branży zabezpieczeń, a firma Microsoft stale monitoruje zagrożenia płynące z wewnętrznych i zewnętrznych źródeł.
+* **Udostępnianie sygnału**: uwagi zespołów ds. zabezpieczeń formułowane na podstawie informacji zebranych z szerokiej gamy produktów firmy Microsoft, takich jak usługi w chmurze i usługi lokalne, serwery i urządzenia klienckie w punkcie końcowym, są udostępniane i analizowane.
+* **Specjaliści ds. zabezpieczeń firmy Microsoft**: ciągła współpraca zespołów firmy Microsoft w zakresie wyspecjalizowanych zabezpieczeń, takich jak analiza śledcza i wykrywanie ataków w sieci Web.
+* **Dostrajanie wykrywania zagrożeń**: algorytmy są uruchamiane na rzeczywistych zestawach danych klienta, a pracownicy naukowo-badawczy z zakresu zabezpieczeń pracują z klientami w celu weryfikacji otrzymanych wyników. Wyniki prawdziwie i fałszywie dodatnie są używane w celu udoskonalania algorytmów uczenia maszynowego.
 
 Wszystkie te połączone wysiłki skutkują nowymi i ulepszonymi sposobami wykrywania zagrożeń, z których można korzystać od razu — użytkownik nie musi w tym kierunku nic robić.
 

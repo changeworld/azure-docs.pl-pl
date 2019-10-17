@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 5dde098277b16c7ec5339aa6b963b04dd608c8ac
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6adeae69a4ef9e6f2d77588f8071498fd25beb3e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079664"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390606"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Tworzenie maszyny wirtualnej z systemem Windows na podstawie wyspecjalizowanego dysku przy użyciu programu PowerShell
 
@@ -36,9 +36,9 @@ Możesz również użyć Azure Portal, aby [utworzyć nową maszynę wirtualną 
 
 W tym artykule pokazano, jak używać dysków zarządzanych. Jeśli masz starsze wdrożenie wymagające użycia konta magazynu, zobacz [Tworzenie maszyny wirtualnej na podstawie wyspecjalizowanego wirtualnego dysku twardego na koncie magazynu](sa-create-vm-specialized.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+Zalecamy ograniczenie liczby współbieżnych wdrożeń do 20 maszyn wirtualnych z jednego wirtualnego dysku twardego lub migawki. 
 
-## <a name="option-1-use-an-existing-disk"></a>Option 1: Użyj istniejącego dysku
+## <a name="option-1-use-an-existing-disk"></a>Opcja 1: Użyj istniejącego dysku
 
 Jeśli masz usuniętą maszynę wirtualną i chcesz ponownie użyć dysku systemu operacyjnego, aby utworzyć nową maszynę wirtualną, użyj polecenie [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk).
 
@@ -51,7 +51,7 @@ $osDisk = Get-AzDisk `
 ```
 Teraz możesz dołączyć ten dysk jako dysk systemu operacyjnego do [nowej maszyny wirtualnej](#create-the-new-vm).
 
-## <a name="option-2-upload-a-specialized-vhd"></a>Opcja 2: Przekazywanie wyspecjalizowanego wirtualnego dysku twardego
+## <a name="option-2-upload-a-specialized-vhd"></a>Opcja 2: przekazywanie wyspecjalizowanego wirtualnego dysku twardego
 
 Wirtualny dysk twardy można przekazać z wyspecjalizowanej maszyny wirtualnej utworzonej przy użyciu lokalnego narzędzia do wirtualizacji, takiego jak funkcja Hyper-V, lub maszyny wirtualnej wyeksportowanej z innej chmury.
 
@@ -74,7 +74,7 @@ Get-AzStorageAccount
 
 Aby użyć istniejącego konta magazynu, należy przejoć do sekcji [przekazywanie wirtualnego dysku twardego](#upload-the-vhd-to-your-storage-account) .
 
-Utwórz konto magazynu.
+Tworzenie konta magazynu
 
 1. Wymagana jest nazwa grupy zasobów, w której zostanie utworzone konto magazynu. Użyj Get-AzResourceGroup Zobacz wszystkie grupy zasobów, które znajdują się w Twojej subskrypcji.
    
@@ -82,7 +82,7 @@ Utwórz konto magazynu.
     Get-AzResourceGroup
     ```
 
-    Utwórz grupę zasobów o nazwie moja resourceName w regionie *zachodnie stany USA* .
+    Utwórz grupę zasobów o nazwie Moja *resourceName* w regionie *zachodnie stany USA* .
 
     ```powershell
     New-AzResourceGroup `
@@ -102,7 +102,7 @@ Utwórz konto magazynu.
     ```
 
 ### <a name="upload-the-vhd-to-your-storage-account"></a>Przekazywanie wirtualnego dysku twardego do konta magazynu 
-Użyj polecenia cmdlet [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) , aby przekazać wirtualny dysk twardy do kontenera na koncie magazynu. Ten przykład umożliwia przekazanie pliku *myVHD. VHD* z dysku\" twardego "C:\Users\Public\Documents\Virtual" do konta magazynu o nazwie *mojekontomagazynu* w grupie zasobów. Ten plik jest przechowywany w kontenerze o nazwie *myUploadedVHD. VHD*.
+Użyj polecenia cmdlet [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) , aby przekazać wirtualny dysk twardy do kontenera na koncie magazynu. Ten przykład przekazuje plik *myVHD. VHD* z dysku twardego C:\Users\Public\Documents\Virtual @ no__t-1 do konta magazynu o nazwie *mojekontomagazynu* w *grupie zasobów zasobu* . Ten plik jest przechowywany w kontenerze o *nazwie* *myUploadedVHD. VHD*.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -153,7 +153,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
     -ResourceGroupName $destinationResourceGroup
 ```
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>Opcja 3: Kopiowanie istniejącej maszyny wirtualnej platformy Azure
+## <a name="option-3-copy-an-existing-azure-vm"></a>Opcja 3: kopiowanie istniejącej maszyny wirtualnej platformy Azure
 
 Można utworzyć kopię maszyny wirtualnej korzystającej z dysków zarządzanych, pobierając migawkę maszyny wirtualnej, a następnie używając tej migawki do utworzenia nowego dysku zarządzanego i nowej maszyny wirtualnej.
 
@@ -204,7 +204,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Aby użyć tej migawki do utworzenia maszyny wirtualnej wymagającej wysokiej wydajności, Dodaj parametr `-AccountType Premium_LRS` do polecenia New-AzSnapshotConfig. Ten parametr tworzy migawkę, tak aby była przechowywana jako dysk zarządzany w warstwie Premium. Managed Disks w warstwie Premium są droższe niż w warstwie Standardowa, dlatego przed użyciem tego parametru należy pamiętać o wersji Premium.
+Aby użyć tej migawki do utworzenia maszyny wirtualnej wymagającej wysokiej wydajności, należy dodać parametr `-AccountType Premium_LRS` do polecenia New-AzSnapshotConfig. Ten parametr tworzy migawkę, tak aby była przechowywana jako dysk zarządzany w warstwie Premium. Managed Disks w warstwie Premium są droższe niż w warstwie Standardowa, dlatego przed użyciem tego parametru należy pamiętać o wersji Premium.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Tworzenie nowego dysku na podstawie migawki
 
@@ -242,7 +242,7 @@ Tworzenie sieci i innych zasobów maszyn wirtualnych, które mają być używane
 
 Utwórz [sieć wirtualną](../../virtual-network/virtual-networks-overview.md) i podsieć dla maszyny wirtualnej.
 
-1. Utwórz podsieć. Ten przykład tworzy podsieć onazwie Moja podsieć, w grupie zasobów *myDestinationResourceGroup*i ustawia prefiks adresu podsieci na *10.0.0.0/24*.
+1. Utwórz podsieć. Ten przykład tworzy podsieć o nazwie Moja *podsieć*, w grupie zasobów *myDestinationResourceGroup*i ustawia prefiks adresu podsieci na *10.0.0.0/24*.
    
     ```powershell
     $subnetName = 'mySubNet'
@@ -251,7 +251,7 @@ Utwórz [sieć wirtualną](../../virtual-network/virtual-networks-overview.md) i
        -AddressPrefix 10.0.0.0/24
     ```
     
-2. Utwórz sieć wirtualną. Ten przykład ustawia nazwę sieci wirtualnej na *myVnetName*, lokalizację na zachodnie *stany USA*oraz prefiks adresu sieci wirtualnej na *10.0.0.0/16*. 
+2. Utwórz sieć wirtualną. Ten przykład ustawia nazwę sieci wirtualnej na *myVnetName*, lokalizację na *zachodnie stany USA*oraz prefiks adresu sieci wirtualnej na *10.0.0.0/16*. 
    
     ```powershell
     $vnetName = "myVnetName"
@@ -353,7 +353,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Sprawdź, czy maszyna wirtualna została utworzona
-Nowo utworzona maszyna wirtualna powinna zostać wyświetlona w [Azure Portal](https://portal.azure.com) w obszarze **przeglądanie** > **maszyn wirtualnych**lub przy użyciu następujących poleceń programu PowerShell.
+Nowo utworzona maszyna wirtualna powinna zostać wyświetlona w [Azure Portal](https://portal.azure.com) w obszarze **przeglądanie** **maszyn wirtualnych** >  lub przy użyciu następujących poleceń programu PowerShell.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

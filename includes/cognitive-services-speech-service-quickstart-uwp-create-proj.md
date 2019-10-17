@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: erhopf
-ms.openlocfilehash: 0140981a694a7a7cd8556f7139a90d0656679d7d
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 64c93e5c8e139dbdcfd3faad3a9ac4328fb01972
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "70382163"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391726"
 ---
 Aby utworzyć projekt programu Visual Studio na potrzeby tworzenia platforma uniwersalna systemu Windows (platformy UWP), musisz skonfigurować opcje programistyczne programu Visual Studio, utworzyć projekt, wybrać architekturę docelową, skonfigurować funkcję przechwytywania audio i zainstalować zestaw Speech SDK.
 
@@ -59,14 +59,14 @@ Następnie utwórz projekt:
 
 1. W **wersji docelowej** (pierwsze pole listy rozwijanej) wybierz wartość identyczną lub późniejszą niż wartość w **wersji minimalnej**.
 
-1. Wybierz **przycisk OK**. Nastąpi powrót do środowiska IDE programu Visual Studio z nowym projektem utworzonym i widocznym w okienku **Eksplorator rozwiązań** .
+1. Kliknij przycisk **OK**. Nastąpi powrót do środowiska IDE programu Visual Studio z nowym projektem utworzonym i widocznym w okienku **Eksplorator rozwiązań** .
 
    ![projekt HelloWorld — Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-helloworld.png)
 
 Teraz wybierz architekturę platformy docelowej. Na pasku narzędzi programu Visual Studio Znajdź pole listy rozwijanej **platformy rozwiązania** . (Jeśli go nie widzisz, wybierz pozycję **wyświetl** > **paski narzędzi** > **Standard** , aby wyświetlić pasek narzędzi zawierający **platformy rozwiązań**). Jeśli korzystasz z 64-bitowego systemu Windows, wybierz **x64** w polu listy rozwijanej. 64 — bit systemu Windows może również uruchamiać aplikacje 32-bitowe, więc możesz wybrać **x86** , jeśli wolisz.
 
 > [!NOTE]
-> Zestaw Speech SDK obsługuje tylko procesory zgodne z technologią Intel. Procesory ARM nie są obecnie obsługiwane.
+> Zestaw Speech SDK obsługuje wyłącznie procesory zgodne z technologią Intel. Procesory ARM nie są obecnie obsługiwane.
 
 ### <a name="set-up-audio-capture"></a>Konfigurowanie przechwytywania audio
 
@@ -82,7 +82,7 @@ Następnie Zezwól, aby projekt przechwycić dane wejściowe audio:
 
 1. Na pasku menu wybierz **plik** > **Save Package. appxmanifest** , aby zapisać zmiany.
 
-### <a name="install-the-speech-sdk"></a>Instalowanie zestawu Speech SDK
+### <a name="install-the-speech-sdk"></a>Instalowanie zestawu SDK usługi Mowa
 
 Na koniec zainstaluj [pakiet NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget)i odwołuje się do zestawu Speech SDK w projekcie:
 
@@ -90,13 +90,13 @@ Na koniec zainstaluj [pakiet NuGet zestawu Speech SDK](https://aka.ms/csspeech/n
 
 1. Wybierz pozycję **Przeglądaj**.
 
-   ![Zrzut ekranu przedstawiający okno dialogowe Zarządzanie pakietami dla rozwiązania](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
+   ![Zrzut ekranu okna dialogowego Zarządzaj pakietami dla rozwiązania](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
 1. W obszarze **Źródło pakietu**wybierz pozycję **NuGet.org**.
 
 1. W polu **wyszukiwania** wprowadź `Microsoft.CognitiveServices.Speech`, a następnie wybierz ten pakiet po pojawieniu się w wynikach wyszukiwania.
 
-   ![Zrzut ekranu przedstawiający okno dialogowe Zarządzanie pakietami dla rozwiązania](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
+   ![Zrzut ekranu okna dialogowego Zarządzaj pakietami dla rozwiązania](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
 
 1. W okienku stan pakietu obok wyników wyszukiwania wybierz swój projekt **HelloWorld** .
 
@@ -104,4 +104,4 @@ Na koniec zainstaluj [pakiet NuGet zestawu Speech SDK](https://aka.ms/csspeech/n
 
 1. W oknie dialogowym **Podgląd zmian** wybierz **przycisk OK**.
 
-1. W oknie dialogowym **Akceptacja licencji** Wyświetl licencję, a następnie wybierz pozycję **Akceptuję**. Rozpocznie się instalacja pakietu i po zakończeniu instalacji w okienku **dane wyjściowe** zostanie wyświetlony komunikat podobny do następującego: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.6.0' to helloworld`.
+1. W oknie dialogowym **Akceptacja licencji** Wyświetl licencję, a następnie wybierz pozycję **Akceptuję**. Rozpocznie się instalacja pakietu i po zakończeniu instalacji w okienku **dane wyjściowe** zostanie wyświetlony komunikat podobny do następującego: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.7.0' to helloworld`.

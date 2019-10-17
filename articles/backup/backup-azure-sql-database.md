@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1482ac4b885507e37ba5972065810682c19bebed
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 202d608e5d994cabd3d7e2e9a0887c8aab75af31
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958461"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437821"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -24,7 +24,7 @@ To rozwiązanie wykorzystuje natywne interfejsy API SQL do wykonywania kopii zap
 
 * Po określeniu SQL Server maszyny wirtualnej, która ma być chroniona, i zapytania dotyczącej baz danych, usługa Azure Backup Service zainstaluje rozszerzenie kopii zapasowej obciążenia na maszynie wirtualnej przez rozszerzenie `AzureBackupWindowsWorkload`.
 * To rozszerzenie składa się z koordynatora i wtyczki SQL. Chociaż koordynator jest odpowiedzialny za wyzwalanie przepływów pracy dla różnych operacji, takich jak konfigurowanie kopii zapasowej, tworzenie kopii zapasowej i przywracanie, wtyczka jest odpowiedzialna za rzeczywisty przepływ danych.
-* Aby móc odnajdywać bazy danych na tej maszynie wirtualnej, Azure Backup tworzy konto `NT SERVICE\AzureWLBackupPluginSvc`. To konto jest używane na potrzeby tworzenia kopii zapasowych i przywracania oraz wymaga uprawnień administratora systemu SQL. Azure Backup korzysta z konta `NT AUTHORITY\SYSTEM` na potrzeby odnajdywania/wyszukiwania bazy danych, więc to konto musi być publicznym logowaniem na serwerze SQL. Jeśli nie utworzono maszyny wirtualnej programu SQL Server z witryny Azure Marketplace, może wystąpić błąd **UserErrorSQLNoSysadminMembership**. W takim przypadku [wykonaj te instrukcje](#set-vm-permissions).
+* Aby móc odnajdywać bazy danych na tej maszynie wirtualnej, Azure Backup tworzy konto `NT SERVICE\AzureWLBackupPluginSvc`. To konto jest używane na potrzeby tworzenia kopii zapasowych i przywracania oraz wymaga uprawnień administratora systemu SQL. Konto `NT SERVICE\AzureWLBackupPluginSvc` jest [kontem usługi wirtualnej](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)i w związku z tym nie wymaga zarządzania hasłami. Azure Backup korzysta z konta `NT AUTHORITY\SYSTEM` na potrzeby odnajdywania/wyszukiwania bazy danych, więc to konto musi być publicznym logowaniem na serwerze SQL. Jeśli nie utworzono maszyny wirtualnej programu SQL Server z witryny Azure Marketplace, może wystąpić błąd **UserErrorSQLNoSysadminMembership**. W takim przypadku [wykonaj te instrukcje](#set-vm-permissions).
 * Po zainicjowaniu konfigurowania ochrony dla wybranych baz danych usługa tworzenia kopii zapasowych konfiguruje koordynatora przy użyciu harmonogramów tworzenia kopii zapasowych i innych szczegółów zasad, które są buforowane lokalnie na maszynie wirtualnej.
 * W zaplanowanym czasie koordynator komunikuje się z wtyczką i zaczyna przesyłać strumieniowo dane kopii zapasowej z programu SQL Server przy użyciu infrastruktury VDI.  
 * Wtyczka wysyła dane bezpośrednio do magazynu usługi Recovery Services, co eliminuje konieczność lokalizacji tymczasowej. Dane są szyfrowane i przechowywane przez usługę Azure Backup na kontach magazynu.
@@ -62,32 +62,33 @@ Użytkownicy nie będą obciążani opłatami za tę funkcję do momentu, gdy je
 
 ## <a name="feature-consideration-and-limitations"></a>Zagadnienia i ograniczenia dotyczące funkcji
 
-- SQL Server kopii zapasowej można skonfigurować w Azure Portal lub **PowerShell**. Interfejs wiersza polecenia nie jest obsługiwany.
-- Rozwiązanie jest obsługiwane w przypadku obu rodzajów [wdrożeń](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) — Azure Resource Manager maszyn wirtualnych i klasycznych maszyn wirtualnych.
-- Maszyna wirtualna z systemem SQL Server wymaga łączności z Internetem, aby uzyskać dostęp do publicznych adresów IP platformy Azure.
-- SQL Server **wystąpienia klastra trybu failover (FCI)** i SQL Server zawsze włączone wystąpienie klastra trybu failover nie są obsługiwane.
-- Operacje tworzenia kopii zapasowych i przywracania dla duplikatów baz danych i migawek baz danych nie są obsługiwane.
-- Użycie więcej niż jednego rozwiązania do tworzenia kopii zapasowych w celu utworzenia kopii zapasowej autonomicznego wystąpienia SQL Server lub zawsze włączona Grupa dostępności programu SQL Server może prowadzić do awarii kopii zapasowej; nie należy tego robić.
-- Tworzenie kopii zapasowej dwóch węzłów grupy dostępności indywidualnie z tymi samymi lub różnymi rozwiązaniami może również prowadzić do niepowodzenia kopii zapasowych.
-- Azure Backup obsługuje tylko pełne i pełne kopie zapasowe tylko dla baz danych **tylko do odczytu**
-- Nie można chronić baz danych z dużą liczbą plików. Maksymalna liczba obsługiwanych plików to **~ 1000**.  
-- Można utworzyć kopię zapasową do **~ 2000** SQL Server baz danych w magazynie. Możesz utworzyć wiele magazynów, jeśli masz większą liczbę baz danych.
-- Można skonfigurować kopie zapasowe dla maksymalnie **50** baz danych w jednym z nich. to ograniczenie ułatwia optymalizację obciążeń kopii zapasowych.
-- Obsługiwane są bazy danych o rozmiarze do **2 TB** . w przypadku większych rozmiarów mogą wystąpić problemy z wydajnością.
-- Aby określić, jak wiele baz danych może być chronionych na serwer, należy wziąć pod uwagę takie czynniki jak przepustowość, rozmiar maszyny wirtualnej, częstotliwość tworzenia kopii zapasowych, rozmiar bazy danych itp. [Pobierz](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) planistę zasobów, który zapewnia przybliżoną liczbę baz danych, które można mieć na serwer na podstawie zasobów maszyny wirtualnej i zasad tworzenia kopii zapasowych.
-- W przypadku grup dostępności kopie zapasowe są pobierane z różnych węzłów w oparciu o kilka czynników. Zachowanie tworzenia kopii zapasowej dla grupy dostępności znajduje się poniżej.
+* SQL Server kopii zapasowej można skonfigurować w Azure Portal lub **PowerShell**. Interfejs wiersza polecenia nie jest obsługiwany.
+* Rozwiązanie jest obsługiwane w przypadku obu rodzajów [wdrożeń](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) — Azure Resource Manager maszyn wirtualnych i klasycznych maszyn wirtualnych.
+* Maszyna wirtualna z systemem SQL Server wymaga łączności z Internetem, aby uzyskać dostęp do publicznych adresów IP platformy Azure.
+* SQL Server **wystąpienia klastra trybu failover (FCI)** i SQL Server zawsze włączone wystąpienie klastra trybu failover nie są obsługiwane.
+* Operacje tworzenia kopii zapasowych i przywracania dla duplikatów baz danych i migawek baz danych nie są obsługiwane.
+* Użycie więcej niż jednego rozwiązania do tworzenia kopii zapasowych w celu utworzenia kopii zapasowej autonomicznego wystąpienia SQL Server lub zawsze włączona Grupa dostępności programu SQL Server może prowadzić do awarii kopii zapasowej; nie należy tego robić.
+* Tworzenie kopii zapasowej dwóch węzłów grupy dostępności indywidualnie z tymi samymi lub różnymi rozwiązaniami może również prowadzić do niepowodzenia kopii zapasowych.
+* Azure Backup obsługuje tylko pełne i pełne kopie zapasowe tylko dla baz danych **tylko do odczytu**
+* Nie można chronić baz danych z dużą liczbą plików. Maksymalna liczba obsługiwanych plików to **~ 1000**.  
+* Można utworzyć kopię zapasową do **~ 2000** SQL Server baz danych w magazynie. Możesz utworzyć wiele magazynów, jeśli masz większą liczbę baz danych.
+* Można skonfigurować kopie zapasowe dla maksymalnie **50** baz danych w jednym z nich. to ograniczenie ułatwia optymalizację obciążeń kopii zapasowych.
+* Obsługiwane są bazy danych o rozmiarze do **2 TB** . w przypadku większych rozmiarów mogą wystąpić problemy z wydajnością.
+* Aby określić, jak wiele baz danych może być chronionych na serwer, należy wziąć pod uwagę takie czynniki jak przepustowość, rozmiar maszyny wirtualnej, częstotliwość tworzenia kopii zapasowych, rozmiar bazy danych itp. [Pobierz](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) planistę zasobów, który zapewnia przybliżoną liczbę baz danych, które można mieć na serwer na podstawie zasobów maszyny wirtualnej i zasad tworzenia kopii zapasowych.
+* W przypadku grup dostępności kopie zapasowe są pobierane z różnych węzłów w oparciu o kilka czynników. Zachowanie tworzenia kopii zapasowej dla grupy dostępności znajduje się poniżej.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Zachowanie tworzenia kopii zapasowej w przypadku zawsze włączonych grup dostępności
 
 Zaleca się, aby kopie zapasowe zostały skonfigurowane tylko na jednym węźle w AG. Kopia zapasowa powinna być zawsze konfigurowana w tym samym regionie co węzeł podstawowy. Innymi słowy, w regionie, w którym konfigurujesz kopię zapasową, jest zawsze potrzebny węzeł podstawowy. Jeśli wszystkie węzły w AG znajdują się w tym samym regionie, w którym jest skonfigurowana kopia zapasowa, nie ma żadnego problemu.
 
-**W przypadku międzyregionowej AG**
-- Niezależnie od preferencji tworzenia kopii zapasowej kopie zapasowe nie będą wykonywane z węzłów, które nie znajdują się w tym samym regionie, w którym jest skonfigurowana kopia zapasowa. Wynika to z faktu, że kopie zapasowe między regionami nie są obsługiwane. Jeśli masz tylko dwa węzły, a węzeł pomocniczy znajduje się w innym regionie; w takim przypadku kopie zapasowe będą nadal wykonywane z węzła podstawowego (chyba że preferencja kopii zapasowej jest tylko pomocnicza).
-- Jeśli przechodzenie w tryb failover następuje w regionie innym niż ten, w którym skonfigurowano tworzenie kopii zapasowej, kopie zapasowe będą kończyć się niepowodzeniem w węzłach w regionie przełączenia w tryb failover.
+#### <a name="for-cross-region-ag"></a>W przypadku międzyregionowej AG
+
+* Niezależnie od preferencji tworzenia kopii zapasowej kopie zapasowe nie będą wykonywane z węzłów, które nie znajdują się w tym samym regionie, w którym jest skonfigurowana kopia zapasowa. Wynika to z faktu, że kopie zapasowe między regionami nie są obsługiwane. Jeśli masz tylko dwa węzły, a węzeł pomocniczy znajduje się w innym regionie; w takim przypadku kopie zapasowe będą nadal wykonywane z węzła podstawowego (chyba że preferencja kopii zapasowej jest tylko pomocnicza).
+* Jeśli przechodzenie w tryb failover następuje w regionie innym niż ten, w którym skonfigurowano tworzenie kopii zapasowej, kopie zapasowe będą kończyć się niepowodzeniem w węzłach w regionie przełączenia w tryb failover.
 
 W zależności od preferencji tworzenia kopii zapasowych i typów kopii zapasowych (pełna/różnicowa/log/Copy-Only) kopie zapasowe są pobierane z określonego węzła (podstawowy/pomocniczy).
 
-- **Preferencja kopii zapasowej: podstawowa**
+* **Preferencja kopii zapasowej: podstawowa**
 
 **Typ kopii zapasowej** | **Node**
     --- | ---
@@ -96,7 +97,7 @@ W zależności od preferencji tworzenia kopii zapasowych i typów kopii zapasowy
     Dziennik |  Podstawowy
     Tylko kopiowanie pełne |  Podstawowy
 
-- **Preferencja kopii zapasowej: tylko pomocnicza**
+* **Preferencja kopii zapasowej: tylko pomocnicza**
 
 **Typ kopii zapasowej** | **Node**
 --- | ---
@@ -105,7 +106,7 @@ Różnicy | Podstawowy
 Dziennik |  Pomocniczy
 Tylko kopiowanie pełne |  Pomocniczy
 
-- **Preferencja kopii zapasowej: pomocnicza**
+* **Preferencja kopii zapasowej: pomocnicza**
 
 **Typ kopii zapasowej** | **Node**
 --- | ---
@@ -114,7 +115,7 @@ Różnicy | Podstawowy
 Dziennik |  Pomocniczy
 Tylko kopiowanie pełne |  Pomocniczy
 
-- **Brak preferencji dotyczących kopii zapasowych**
+* **Brak preferencji dotyczących kopii zapasowych**
 
 **Typ kopii zapasowej** | **Node**
 --- | ---
@@ -227,7 +228,6 @@ catch
     Write-Host $_.Exception|format-list -force
 }
 ```
-
 
 ## <a name="next-steps"></a>Następne kroki
 

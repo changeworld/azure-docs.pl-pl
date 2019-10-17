@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
+author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 10/11/2019
-ms.openlocfilehash: 0307a905c1d3d7d9bc707fbda87fb8f3fd6d2aee
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/14/2019
+ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299698"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390697"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
@@ -88,6 +88,13 @@ Strefa o wysokiej dostępności nadmiarowa jest zilustrowana na poniższym diagr
 ## <a name="accelerated-database-recovery-adr"></a>Szybsze odzyskiwanie bazy danych (ADR)
 
 [Szybsze odzyskiwanie bazy danych (ADR)](sql-database-accelerated-database-recovery.md) to nowa funkcja aparatu bazy danych SQL, która znacznie zwiększa dostępność bazy danych, szczególnie w przypadku długotrwałych transakcji. Reguły ADR są obecnie dostępne dla pojedynczych baz danych, pul elastycznych i Azure SQL Data Warehouse.
+
+## <a name="testing-database-fault-resiliency"></a>Testowanie odporności błędów bazy danych
+
+Wysoka dostępność to fundamenentala platforma Azure SQL Database platformy i działa w sposób przezroczysty dla aplikacji bazy danych. Jednak firma Microsoft rozpoznaje, że można testować, w jaki sposób automatyczne operacje trybu failover inicjowane podczas planowanych lub nieplanowanych zdarzeń byłyby wpływać na aplikację przed wdrożeniem jej w środowisku produkcyjnym. Można wywołać specjalny interfejs API w celu ponownego uruchomienia bazy danych lub puli elastycznej, która spowoduje wyzwolenie pracy w trybie failover. W przypadku nadmiarowej bazy danych lub puli elastycznej, wywołanie interfejsu API spowoduje przekierowanie połączeń klienta do nowego elementu podstawowego w innym elemencie AZ. W związku z tym oprócz testowania pracy w trybie failover wpływa na istniejące sesje baz danych, można również sprawdzić, czy ma to wpływ na kompleksową wydajność. Ponieważ operacja ponownego uruchomienia jest niepożądana, a duża liczba z nich może wzważyć platformę, tylko jedno wywołanie trybu failover jest dozwolone co 30 minut dla każdej bazy danych lub puli elastycznej. Aby uzyskać szczegółowe informacje, zobacz [tryb failover bazy danych](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) i [tryb failover puli elastycznej](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover).       
+
+> [!IMPORTANT]
+> Polecenie przełączenia w tryb failover nie jest obecnie dostępne dla baz danych Hypescale i zarządzanych instancses.  
 
 ## <a name="conclusion"></a>Podsumowanie
 

@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aaa58d3027fecdbfdf594e5712cbdbd758380a7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169822"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389083"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Zażądaj dostępu do pakietu dostępu w usłudze Azure AD uprawnień do zarządzania (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ ms.locfileid: "72169822"
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Za pomocą usługi Azure AD uprawnienia do zarządzania pakietami dostępu umożliwiają jednorazowe skonfigurowanie zasobów i zasad, które automatycznie zarządzają dostępem w okresie istnienia pakietu dostępu. 
+Dzięki zarządzaniu prawami usługi Azure AD pakiet dostępu umożliwia jednorazowe skonfigurowanie zasobów i zasad, które automatycznie zarządzają dostępem w okresie istnienia pakietu dostępu. 
 
 Menedżer pakietów dostępu może skonfigurować zasady, aby wymagać zatwierdzenia użytkownikom dostępu do pakietów dostępu. Użytkownik wymagający dostępu do pakietu dostępu może przesłać żądanie uzyskania dostępu. W tym artykule opisano, jak przesłać żądanie dostępu.
 
@@ -40,7 +40,7 @@ Pierwszym krokiem jest zalogowanie się w portalu do mojego dostępu, w którym 
 
 **Rola wymagana wstępnie:** Obiektu żądającego
 
-1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Link rozpocznie się z "dostępem do", obejmuje wskazówkę katalogu i kończy się IDENTYFIKATORem pakietu dostępu podobnym do poniższego:
+1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Link rozpoczyna się od `myaccess`, zawiera wskazówkę katalogu i kończą się IDENTYFIKATORem pakietu dostępu.
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

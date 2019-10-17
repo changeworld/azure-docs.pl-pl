@@ -2,20 +2,20 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 05/05/2019
-ms.author: wgries
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e7aa2b4389fe60eed80b15aff04d6f7fcbc7b013
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: c04875f92ee58c24567fbb4d73d8d01697810f99
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68968910"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391728"
 ---
-| Resource | Cel | Limit sztywny |
+| Zasób | Cel | Limit sztywny |
 |----------|--------------|------------|
 | Usługi synchronizacji magazynu na region | 20 usług synchronizacji magazynu | Tak |
 | Grupy synchronizacji na usługę synchronizacji magazynu | 100 grup synchronizacji | Tak |
@@ -28,7 +28,7 @@ ms.locfileid: "68968910"
 | Maksymalny rozmiar deskryptora zabezpieczeń obiektu (katalogów i plików) | 64 KiB | Tak |
 | Rozmiar pliku | 100 GiB | Nie |
 | Minimalny rozmiar pliku do warstwowego | 64 KiB | Tak |
-| Współbieżne sesje synchronizacji | Agent v4 i nowsze: Ten limit różni się w zależności od dostępnych zasobów systemowych. <BR> Agent v3: Dwie aktywne sesje synchronizacji na procesor lub maksymalnie osiem aktywnych sesji synchronizacji na serwer. | Tak
+| Współbieżne sesje synchronizacji | Wersja w wersji 4 Agent i nowsze: limit zależy od dostępnych zasobów systemowych. <BR> Agent v3: dwie aktywne sesje synchronizacji na procesor lub maksymalnie osiem aktywnych sesji synchronizacji na serwer. | Tak
 
 > [!Note]  
 > Punkt końcowy Azure File Sync może skalować w górę do rozmiaru udziału plików platformy Azure. Jeśli osiągnięto limit rozmiaru udziału plików platformy Azure, synchronizacja nie będzie mogła działać.

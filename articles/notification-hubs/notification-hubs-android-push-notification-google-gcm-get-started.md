@@ -1,5 +1,5 @@
 ---
-title: Wysyłanie powiadomień push do aplikacji systemu Android przy użyciu usług Azure Notification Hubs i Google Cloud Messaging | Microsoft Docs
+title: Wysyłanie powiadomień wypychanych do systemu Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging | Microsoft Docs
 description: Korzystając z tego samouczka, dowiesz się, jak za pomocą usług Azure Notification Hubs i Google Firebase Cloud Messaging wysyłać powiadomienia push do urządzeń z systemem Android.
 services: notification-hubs
 documentationcenter: android
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 36af79b90722041ddb16bb90a73175a8635531fd
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212363"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72386321"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Samouczek: Powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging (przestarzałe)
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Samouczek: powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging (przestarzałe)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -55,7 +55,7 @@ W tym samouczku wykonasz następujące czynności:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
 
 ## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>Tworzenie projektu obsługującego usługę Google Cloud Messaging
@@ -166,9 +166,9 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą GCM i u
 
     Zaktualizuj trzy symbole zastępcze w poniższym kodzie dla klasy `NotificationSettings`:
 
-   * `SenderId`: numer projektu uzyskany wcześniej w konsoli [Google Cloud Console](https://cloud.google.com/console).
-   * `HubListenConnectionString`: parametry połączenia `DefaultListenAccessSignature` dla centrum. Możesz skopiować te parametry połączenia, klikając pozycję **Zasady dostępu** na stronie **Ustawienia** centrum w witrynie [Azure Portal].
-   * `HubName`: użyj nazwy centrum powiadomień wyświetlanej na stronie centrum w witrynie [Azure Portal].
+   * `SenderId`: numer projektu uzyskany wcześniej w [konsoli Google Cloud Console](https://cloud.google.com/console).
+   * `HubListenConnectionString`: parametry połączenia `DefaultListenAccessSignature` dla Twojego centrum. Możesz skopiować te parametry połączenia, klikając pozycję **Zasady dostępu** na stronie **Ustawienia** centrum w witrynie [Azure Portal].
+   * `HubName`: Użyj nazwy centrum powiadomień, która jest wyświetlana na stronie Centrum w [Azure Portal].
 
      `NotificationSettings` — kod:
 

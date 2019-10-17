@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 09ba4bc9e5ac496a7d1d65ff145d56818e53116e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b44bcf7edeaad07fbe0b3093ba3c7100cb0c24c4
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243341"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432067"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurowanie żądanego stanu serwerów i zarządzanie dryfem
 
@@ -34,7 +34,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 - Konto usługi Azure Automation. Aby uzyskać instrukcje dotyczące tworzenia konta Uruchom jako usługi Azure Automation, zobacz [Konto Uruchom jako platformy Azure](automation-sec-configure-azure-runas-account.md).
 - Maszyna wirtualna w Azure Resource Manager (nieklasyczny) z systemem Windows Server 2008 R2 lub nowszym. Aby uzyskać instrukcje dotyczące tworzenia maszyny wirtualnej, zobacz [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w witrynie Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 - Azure PowerShell module w wersji 3,6 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
-- Znajomość konfiguracji żądanego stanu (DSC). Informacje o konfiguracji DSC można znaleźć w temacie [Omówienie żądanego stanu programu Windows PowerShell](/powershell/scripting/dsc/overview/overviews) .
+- Znajomość konfiguracji żądanego stanu (DSC). Informacje o konfiguracji DSC można znaleźć w temacie [Omówienie żądanego stanu programu Windows PowerShell](/powershell/scripting/dsc/overview/overview) .
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 

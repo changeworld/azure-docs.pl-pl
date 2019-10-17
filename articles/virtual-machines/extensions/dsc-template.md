@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 59f8035aa69f21196a2134bf6bc1b12f3e5b34c4
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815709"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437955"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Rozszerzenie konfiguracji żądanego stanu z szablonami Azure Resource Manager
 
@@ -183,17 +183,17 @@ Aby uzyskać listę argumentów dostępnych dla domyślnego skryptu konfiguracji
 | Settings. Configuration. URL |string |Określa lokalizację adresu URL, z którego ma zostać pobrany plik konfiguracji DSC. Jeśli podany adres URL wymaga tokenu sygnatury dostępu współdzielonego, ustaw właściwość **protectedSettings. configurationUrlSasToken** na wartość tokenu SAS. Ta właściwość jest wymagana, jeśli są zdefiniowane **Ustawienia. Configuration. Script** lub **Settings. Configuration. Function** . Jeśli dla tych właściwości nie podano wartości, rozszerzenie wywoła domyślny skrypt konfiguracji w celu skonfigurowania metadanych lokalizacji Configuration Manager (LCM) i należy podać argumenty. |
 | Settings. Configuration. Script |string |Określa nazwę pliku skryptu, który zawiera definicję konfiguracji DSC. Ten skrypt musi znajdować się w folderze głównym pliku zip, który jest pobierany z adresu URL określonego przez właściwość **Settings. Configuration. URL** . Ta właściwość jest wymagana, jeśli są zdefiniowane **Ustawienia. Configuration. URL** lub **Settings. Configuration. Script** . Jeśli nie podano wartości dla tych właściwości, rozszerzenie wywołuje domyślny skrypt konfiguracji w celu ustawienia metadanych LCM i należy podać argumenty. |
 | Settings. Configuration. Function |string |Określa nazwę konfiguracji DSC. Konfiguracja o nazwie musi być uwzględniona w skrypcie, który definiuje wartość **Settings. Configuration. Script** . Ta właściwość jest wymagana, jeśli są zdefiniowane **Ustawienia. Configuration. URL** lub **Settings. Configuration. Function** . Jeśli nie podano wartości dla tych właściwości, rozszerzenie wywołuje domyślny skrypt konfiguracji w celu ustawienia metadanych LCM i należy podać argumenty. |
-| Settings. configurationArguments |Kolekcja |Definiuje wszystkie parametry, które mają zostać przekazane do konfiguracji DSC. Ta właściwość nie jest zaszyfrowana. |
+| Settings. configurationArguments |Collection |Definiuje wszystkie parametry, które mają zostać przekazane do konfiguracji DSC. Ta właściwość nie jest zaszyfrowana. |
 | Settings. configurationData. URL |string |Określa adres URL, z którego należy pobrać plik danych konfiguracji (psd1), który ma być używany jako dane wejściowe dla konfiguracji DSC. Jeśli podany adres URL wymaga tokenu sygnatury dostępu współdzielonego, ustaw właściwość **protectedSettings. configurationDataUrlSasToken** na wartość tokenu SAS. |
 | Settings. privacy. DataCollection |string |Włącza lub wyłącza zbieranie danych telemetrycznych. Jedyne możliwe wartości tej właściwości to **enable**, **disable**, **""** lub **$null**. Pozostawienie tej właściwości pustej lub wartości null włącza telemetrię. Wartość domyślna to **""** . Aby uzyskać więcej informacji, zobacz [zbieranie danych rozszerzenia DSC platformy Azure](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
-| Settings. advancedOptions. downloadMappings |Kolekcja |Definiuje alternatywne lokalizacje, z których ma zostać pobrane WMF. Aby uzyskać więcej informacji, zobacz [rozszerzenie Azure DSC 2,8 i sposób mapowania pobierania zależności rozszerzeń do własnej lokalizacji](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
-| protectedSettings.configurationArguments |Kolekcja |Definiuje wszystkie parametry, które mają zostać przekazane do konfiguracji DSC. Ta właściwość jest zaszyfrowana. |
+| Settings. advancedOptions. downloadMappings |Collection |Definiuje alternatywne lokalizacje, z których ma zostać pobrane WMF. Aby uzyskać więcej informacji, zobacz [rozszerzenie Azure DSC 2,8 i sposób mapowania pobierania zależności rozszerzeń do własnej lokalizacji](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
+| protectedSettings.configurationArguments |Collection |Definiuje wszystkie parametry, które mają zostać przekazane do konfiguracji DSC. Ta właściwość jest zaszyfrowana. |
 | protectedSettings.configurationUrlSasToken |string |Określa token sygnatury dostępu współdzielonego, aby uzyskać dostęp do adresu URL, który jest używany przez **Ustawienia. Configuration. URL** definiuje. Ta właściwość jest zaszyfrowana. |
 | protectedSettings.configurationDataUrlSasToken |string |Określa token sygnatury dostępu współdzielonego, aby uzyskać dostęp do adresu URL, który definiuje wartość **Settings. configurationData. URL** . Ta właściwość jest zaszyfrowana. |
 
 ## <a name="default-configuration-script"></a>Domyślny skrypt konfiguracji
 
-Aby uzyskać więcej informacji na temat następujących wartości, zobacz [Local Configuration Manager — ustawienia podstawowe](/powershell/dsc/metaconfig#basic-settings).
+Aby uzyskać więcej informacji na temat następujących wartości, zobacz [Local Configuration Manager — ustawienia podstawowe](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 Możesz użyć domyślnego skryptu konfiguracji rozszerzenia DSC, aby skonfigurować tylko właściwości LCM wymienione w poniższej tabeli.
 
 | Nazwa właściwości | Typ | Opis |
@@ -202,8 +202,8 @@ Możesz użyć domyślnego skryptu konfiguracji rozszerzenia DSC, aby skonfiguro
 | Settings. configurationArguments. RegistrationUrl |string |Wymagana właściwość. Określa adres URL punktu końcowego automatyzacji, gdzie węzeł próbuje zarejestrować. Tę wartość można automatycznie wykryć przy użyciu metody **referencyjnej** względem konta usługi Automation. |
 | Settings. configurationArguments. NodeConfigurationName |string |Wymagana właściwość. Określa konfigurację węzła w ramach konta usługi Automation, która ma zostać przypisana do węzła. |
 | Settings. configurationArguments. ConfigurationMode |string |Określa tryb LCM. Prawidłowe opcje to **ApplyOnly**, **ApplyandMonitor**i **ApplyandAutoCorrect**.  Wartość domyślna to **ApplyandMonitor**. |
-| Settings. configurationArguments. RefreshFrequencyMins | Równ | Określa, jak często LCM próbuje sprawdzić konto usługi Automation pod kątem aktualizacji.  Wartość domyślna to **30**.  Wartość minimalna to **15**. |
-| Settings. configurationArguments. ConfigurationModeFrequencyMins | Równ | Określa, jak często LCM sprawdza bieżącą konfigurację. Wartość domyślna to **15**. Wartość minimalna to **15**. |
+| Settings. configurationArguments. RefreshFrequencyMins | równ | Określa, jak często LCM próbuje sprawdzić konto usługi Automation pod kątem aktualizacji.  Wartość domyślna to **30**.  Wartość minimalna to **15**. |
+| Settings. configurationArguments. ConfigurationModeFrequencyMins | równ | Określa, jak często LCM sprawdza bieżącą konfigurację. Wartość domyślna to **15**. Wartość minimalna to **15**. |
 | Settings. configurationArguments. RebootNodeIfNeeded | wartość logiczna | Określa, czy węzeł może być automatycznie uruchamiany ponownie, jeśli operacja DSC zostanie zażądana. Wartość domyślna to **false**. |
 | Settings. configurationArguments. ActionAfterReboot | string | Określa, co się stanie po ponownym uruchomieniu podczas stosowania konfiguracji. Prawidłowe opcje to **ContinueConfiguration** i **StopConfiguration**. Wartość domyślna to **ContinueConfiguration**. |
 | Settings. configurationArguments. AllowModuleOverwrite | wartość logiczna | Określa, czy LCM zastępuje istniejące moduły w węźle. Wartość domyślna to **false**. |
@@ -430,4 +430,4 @@ Settings. Konfiguracja. URL wymaga, aby określono ustawienia. Configuration. Fu
 - Dowiedz się więcej o [używaniu zestawów skalowania maszyn wirtualnych z rozszerzeniem DSC platformy Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
 - Znajdź więcej szczegółowych informacji [na temat bezpiecznego zarządzania poświadczeniami DSC](dsc-credentials.md).
 - Zapoznaj się z [wprowadzeniem do programu obsługi rozszerzeń DSC platformy Azure](dsc-overview.md).
-- Aby uzyskać więcej informacji na temat programu PowerShell DSC, przejdź do [centrum dokumentacji programu PowerShell](/powershell/dsc/overview).
+- Aby uzyskać więcej informacji na temat programu PowerShell DSC, przejdź do [centrum dokumentacji programu PowerShell](/powershell/scripting/dsc/overview/overview).

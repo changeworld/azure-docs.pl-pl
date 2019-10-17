@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory: Często zadawane pytania | Microsoft Docs'
+title: 'Azure Data Factory: często zadawane pytania | Microsoft Docs'
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: c4836d519556e5a031f81279fef4891ba8d47c05
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141570"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387059"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące Azure Data Factory.  
@@ -48,7 +48,7 @@ Data Factory zapewnia swobodny model dowolnego stylu przepływu, który jest wym
 - Przepływy różnicowe:
     - Parametry mogą służyć do definiowania znacznika limitu górnego dla kopiowania różnicowego podczas przesuwania tabel wymiarów lub odwołań z magazynu relacyjnego, lokalnego lub w chmurze, w celu załadowania danych do usługi Lake. 
 
-Aby uzyskać więcej informacji, zobacz [Samouczek: Przepływy](tutorial-control-flow.md)sterowania.
+Aby uzyskać więcej informacji, zobacz [Samouczek: sterowanie przepływami](tutorial-control-flow.md).
 
 ### <a name="data-transformed-at-scale-with-code-free-pipelines"></a>Przekształcanie danych na dużą skalę przy użyciu potoków bez kodu
 Nowe środowisko narzędziowe oparte na przeglądarce zapewnia tworzenie i wdrażanie potoków bez obsługi kodu przy użyciu nowoczesnego, interaktywnego środowiska opartego na sieci Web.
@@ -84,7 +84,7 @@ Począwszy od początkowej publicznej wersji zapoznawczej w 2017, Data Factory d
 -   SQL Database z punktami końcowymi usługi sieci wirtualnej
 -   Wystąpienie zarządzane
 -   Pula elastyczna
--   Obsługa Azure Resource Manager sieci wirtualnej na podstawie klasycznej sieci wirtualnej, która ma zostać przestarzała w przyszłości, która pozwala na wstrzyknięcie lub dołączenie środowiska Azure-SSIS Integration Runtime do sieci wirtualnej skonfigurowanej dla SQL Database za pomocą usługi sieci wirtualnej punkty końcowe/dostęp do danych lokalnych. Aby uzyskać więcej informacji, zobacz również dołączanie [środowiska Azure-SSIS Integration Runtime do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md).
+-   Obsługa Azure Resource Manager sieci wirtualnej na podstawie klasycznej sieci wirtualnej, która ma zostać przestarzała w przyszłości, która pozwala na wstrzyknięcie lub dołączenie środowiska Azure-SSIS Integration Runtime do sieci wirtualnej skonfigurowanej dla SQL Database za pomocą usługi sieci wirtualnej punkty końcowe/dostęp do danych lokalnych. Aby uzyskać więcej informacji, zobacz również [dołączanie środowiska Azure-SSIS Integration Runtime do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md).
 -   Obsługa uwierzytelniania Azure Active Directory (Azure AD) i uwierzytelniania SQL w celu łączenia się z SSISDB, co pozwala na uwierzytelnianie usługi Azure AD za pomocą tożsamości zarządzanej Data Factory dla zasobów platformy Azure
 -   Obsługa tworzenia własnej lokalnej licencji SQL Server w celu zdobycia znacznego oszczędności kosztów z poziomu opcji Korzyść użycia hybrydowego platformy Azure
 -   Obsługa wersji Enterprise środowiska Azure-SSIS Integration Runtime, która umożliwia korzystanie z funkcji Advanced/Premium, niestandardowego interfejsu instalacji służącego do instalowania dodatkowych składników/rozszerzeń i ekosystemu partnerów. Aby uzyskać więcej informacji, zobacz również [Enterprise Edition, Konfiguracja niestandardowa i rozszerzalność innych firm dla usług SSIS w podajniku ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/). 
@@ -94,9 +94,9 @@ Począwszy od początkowej publicznej wersji zapoznawczej w 2017, Data Factory d
 ## <a name="what-is-the-integration-runtime"></a>Co to jest środowisko Integration Runtime?
 Środowisko Integration Runtime to infrastruktura obliczeniowa, która Azure Data Factory używa do zapewniania następujących możliwości integracji danych w różnych środowiskach sieciowych:
 
-- **Przenoszenie danych**: W przypadku przenoszenia danych środowisko Integration Runtime przenosi dane między źródłowym i docelowym magazynem danych, a jednocześnie zapewnia obsługę wbudowanych łączników, konwersji formatów, mapowania kolumn oraz wydajnego i skalowalnego transferu danych.
-- **Działania wysyłania**: W przypadku transformacji środowisko Integration Runtime zapewnia możliwość natywnego wykonywania pakietów usług SSIS.
-- **Wykonaj pakiety SSIS**: Środowisko Integration Runtime natywnie wykonuje pakiety usług SSIS w zarządzanym środowisku obliczeniowym platformy Azure. Środowisko Integration runtime obsługuje również wysyłanie i monitorowanie działań przekształcania działających w różnych usługach obliczeniowych, takich jak Azure HDInsight, Azure Machine Learning, SQL Database i SQL Server.
+- **Przenoszenie danych**: w przypadku przenoszenia danych środowisko Integration Runtime przenosi dane między źródłowym i docelowym magazynem danych, a jednocześnie zapewnia obsługę wbudowanych łączników, konwersji formatów, mapowania kolumn oraz wydajnego i skalowalnego transferu danych.
+- **Działania wysyłania**: w przypadku transformacji środowisko Integration Runtime zapewnia możliwość natywnego wykonywania pakietów usług SSIS.
+- **Wykonaj pakiety SSIS**: środowisko Integration Runtime natywnie wykonuje pakiety usług SSIS w zarządzanym środowisku obliczeniowym platformy Azure. Środowisko Integration runtime obsługuje również wysyłanie i monitorowanie działań przekształcania działających w różnych usługach obliczeniowych, takich jak Azure HDInsight, Azure Machine Learning, SQL Database i SQL Server.
 
 Do przenoszenia i przekształcania danych można wdrożyć jedno lub wiele wystąpień środowiska Integration Runtime. Środowisko Integration Runtime może działać w sieci publicznej platformy Azure lub w sieci prywatnej (lokalnej, na platformie Azure Virtual Network lub w Amazon Web Services wirtualnej chmurze prywatnej [VPC]). 
 
@@ -118,7 +118,7 @@ Działania reprezentują krok przetwarzania w potoku. Można na przykład użyć
 Zestawy danych reprezentują struktury w magazynach danych. Struktury te po prostu wskazują na dane, które mają być używane w działaniach jako dane wejściowe lub wyjściowe. 
 
 ### <a name="linked-services"></a>Połączone usługi
-Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. W ten sposób należy wziąć pod uwagę: Połączona usługa definiuje połączenie ze źródłem danych, a zestaw danych reprezentuje jego strukturę. Na przykład połączona usługa Azure Storage określa parametry połączenia w celu nawiązania połączenia z kontem usługi Azure Storage. A zestaw danych obiektów blob platformy Azure Określa kontener obiektów blob i folder, który zawiera dane.
+Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. W ten sposób należy wziąć pod uwagę: połączona usługa definiuje połączenie ze źródłem danych, a zestaw danych reprezentuje strukturę danych. Na przykład połączona usługa Azure Storage określa parametry połączenia w celu nawiązania połączenia z kontem usługi Azure Storage. A zestaw danych obiektów blob platformy Azure Określa kontener obiektów blob i folder, który zawiera dane.
 
 Połączone usługi mają dwa cele w Data Factory:
 
@@ -170,13 +170,13 @@ Tak, parametry są pierwszą klasą koncepcji najwyższego poziomu w Data Factor
 Tak. Można zdefiniować wartości domyślne parametrów w potokach. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Czy działanie w potoku zużywa argumenty, które są przekazane do uruchomienia potoku? 
-Tak. Każde działanie w potoku może zużywać wartość parametru, która jest przesyłana do potoku i uruchamiana z `@parameter` konstrukcja. 
+Tak. Każde działanie w potoku może zużywać wartość parametru, która jest przenoszona do potoku i uruchamiać z użyciem konstrukcji `@parameter`. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Czy właściwość wyjściowa działania może być używana w innym działaniu? 
-Tak. Dane wyjściowe działania mogą być używane w kolejnym działaniu z `@activity` konstruowaniem.
+Tak. Dane wyjściowe działania mogą być używane w kolejnym działaniu z konstrukcją `@activity`.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Jak mogę bezpiecznie obsłużyć wartości null w danych wyjściowych działania? 
-Można użyć `@coalesce` konstrukcji w wyrażeniach, aby bezpiecznie obsługiwać wartości null. 
+Można użyć konstrukcji `@coalesce` w wyrażeniach, aby bezpiecznie obsługiwać wartości null. 
 
 ## <a name="mapping-data-flows"></a>Mapowanie przepływów danych
 
@@ -210,5 +210,5 @@ Działanie kopiowania służy do przemieszczania danych z dowolnego innego łąc
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać instrukcje krok po kroku dotyczące tworzenia fabryki danych, zobacz następujące samouczki:
 
-- [Szybki start: Tworzenie fabryki danych](quickstart-create-data-factory-dot-net.md)
-- [Samouczek: Kopiowanie danych w chmurze](tutorial-copy-data-dot-net.md)
+- [Szybki Start: Tworzenie fabryki danych](quickstart-create-data-factory-dot-net.md)
+- [Samouczek: kopiowanie danych w chmurze](tutorial-copy-data-dot-net.md)
