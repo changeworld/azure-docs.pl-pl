@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 3e62c19454808ad398dfb205eae9de19a671852d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
-ms.translationtype: HT
+ms.openlocfilehash: 843cac8c7a5e6c80b7663df2a48079dd307b7d5a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376332"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383511"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matryca obsługi replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
@@ -82,18 +82,21 @@ Site Recovery obsługuje replikację maszyn wirtualnych platformy Azure z system
 
 ### <a name="windows"></a>Windows
 
+
 **System operacyjny** | **Szczegóły**
 --- | ---
 Windows Server 2019 | Obsługiwane dla serwera Server Core, serwera z funkcją środowisko pulpitu.
 Windows Server 2016  | Obsługiwane serwery z funkcją środowisko pulpitu.
 Windows Server 2012 R2 | Obsługiwane.
 Windows Server 2012 | Obsługiwane.
-Windows Server 2008 R2 z dodatkiem SP1/SP2 | Obsługiwane.<br/><br/> Z wersji 9.30. x. x rozszerzenia usługi mobilności dla maszyn wirtualnych platformy Azure należy zainstalować aktualizację [stosu obsługi systemu Windows (SSU)](https://support.microsoft.com/help/4490628) i [aktualizacje SHA-2](https://support.microsoft.com/help/4474419) na komputerach z systemem Windows Server 2008 R2 z dodatkiem SP1/SP2.  Jeśli te aktualizacje nie są zainstalowane, rozszerzenie agenta może nie być instalowane/uaktualniane zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
-Windows Server 2008 z dodatkiem SP2 | Z wersji 9.30. x. x rozszerzenia usługi mobilności dla maszyn wirtualnych platformy Azure należy zainstalować aktualizację [stosu obsługi systemu Windows (SSU)](https://support.microsoft.com/help/4493730) i [aktualizacje SHA-2](https://support.microsoft.com/help/4474419) na komputerach z systemem Windows Server 2008 z dodatkiem SP2.  Jeśli te aktualizacje nie są zainstalowane, rozszerzenie agenta może nie być instalowane/uaktualniane zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 z dodatkiem SP1/SP2 | Obsługiwane.<br/><br/> Z wersji 9.30. x. x (oczekiwana wersja: od listopada 2019) rozszerzenia usługi mobilności dla maszyn wirtualnych platformy Azure należy zainstalować aktualizację [stosu obsługi systemu Windows (SSU)](https://support.microsoft.com/help/4490628) i [aktualizacje SHA-2](https://support.microsoft.com/help/4474419) na komputerach z systemem Windows Server 2008 R2 z dodatkiem SP1/SP2.  Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
+Windows Server 2008 z dodatkiem SP2 | Z wersji 9.30. x. x (oczekiwana wersja: od listopada 2019) rozszerzenia usługi mobilności dla maszyn wirtualnych platformy Azure należy zainstalować aktualizację [stosu obsługi systemu Windows (SSU)](https://support.microsoft.com/help/4493730) i [na](https://support.microsoft.com/help/4474419) maszynach z systemem Windows Server 2008 z dodatkiem SP2.  Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
 Windows 10 (x64) | Obsługiwane.
 Windows 8.1 (x64) | Obsługiwane.
 Windows 8 (x64) | Obsługiwane.
-Windows 7 (x64) z dodatkiem SP1 lub nowszym | Na komputerach z systemem Windows 7 z dodatkiem SP1 z wersji 9.30. x. x rozszerzenia usługi mobilności dla maszyn wirtualnych platformy Azure należy zainstalować aktualizację [stosu obsługi systemu Windows (SSU)](https://support.microsoft.com/help/4490628) i [aktualizacje SHA-2](https://support.microsoft.com/help/4474419) .  Jeśli te aktualizacje nie są zainstalowane, rozszerzenie agenta może nie być instalowane/uaktualniane zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
+Windows 7 (x64) z dodatkiem SP1 lub nowszym | [Na komputerach](https://support.microsoft.com/help/4474419) z [systemem Windows 7](https://support.microsoft.com/help/4490628) z dodatkiem SP1 z wersji 9.30. x. x (oczekiwana wersja: od listopada 2019) rozszerzenia usługi mobilności dla maszyn wirtualnych platformy Azure.  Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
+
+
 
 #### <a name="linux"></a>Linux
 

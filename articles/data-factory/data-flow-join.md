@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: da6c3c90ebbeffcf468aad3809da097976d8ef0d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029324"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387242"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Mapowanie transformacji przepływu danych
 
@@ -20,7 +20,7 @@ ms.locfileid: "72029324"
 
 Użyj sprzężenia, aby połączyć dane z dwóch tabel w przepływie danych. Kliknij transformację, która będzie lewą relacją i Dodaj transformację sprzężenia z przybornika. Wewnątrz transformacji sprzężenia wybierz inny strumień danych z przepływu danych, aby uzyskać odpowiednią relację.
 
-(media/data-flow/join.png "Dołącz do") ![przekształcenia transformacji]
+![Przekształcanie sprzężenia](media/data-flow/join.png "Join")
 
 ## <a name="join-types"></a>Typy sprzężeń
 
@@ -56,7 +56,7 @@ Musisz wprowadzić co najmniej 1 (1.. n) warunki sprzężenia. Mogą to być pol
 
 W przeciwieństwie do łączenia scalania w narzędziach takich jak SSIS, sprzężenie w przepływie danych ADF nie jest obowiązkową operacją scalania łączenia. W związku z tym klucze Join nie muszą być sortowane jako pierwsze. Operacja join zostanie wykonana na podstawie optymalnej operacji JOIN w usłudze Spark: sprzężenie po stronie emisji/mapy:
 
-Optymalizacja sprzężenia ![Optymalizacja](media/data-flow/joinoptimize.png "sprzężenia")
+![Optymalizacja transformacji sprzężeń](media/data-flow/joinoptimize.png "Optymalizacja dołączania")
 
 Jeśli zestaw danych może pasować do pamięci węzła procesu roboczego, możemy zoptymalizować wydajność przyłączania. Można również określić Partycjonowanie danych w operacji JOIN, aby utworzyć zestawy danych, które mogą być lepiej dopasowane do pamięci na proces roboczy.
 
@@ -64,7 +64,7 @@ Jeśli zestaw danych może pasować do pamięci węzła procesu roboczego, może
 
 Możesz uzyskać warunki samosprzężenia w przepływie danych ADF przy użyciu wybierz transformację do aliasu istniejącego strumienia. Najpierw utwórz "nowe rozgałęzienie" ze strumienia, a następnie Dodaj pozycję Wybierz, aby utworzyć alias całego oryginalnego strumienia.
 
-Samoobsługowe ![samosprzężenie](media/data-flow/selfjoin.png "")
+![Samosprzężenie](media/data-flow/selfjoin.png "Samosprzężenie")
 
 Na powyższym diagramie wybór przekształceń znajduje się u góry. Wszystko to wykonuje aliasowanie oryginalnego strumienia do "OrigSourceBatting". W wyróżnionym przekształceniu Join poniżej można zobaczyć, że używamy tego strumienia SELECT aliasu jako sprzężenia po prawej stronie, umożliwiając nam odwoływanie się do tego samego klucza zarówno w lewej & po prawej stronie sprzężenia wewnętrznego.
 

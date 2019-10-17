@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202214"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438632"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Wycofanie funkcji Security Center (lipiec 2019)
 
@@ -53,7 +53,7 @@ Wycofano pulpit nawigacyjny zdarzeń, który pojawił się po wybraniu obszaru r
 
 Zachęcamy do korzystania z natywnych możliwości platformy Azure Log Analytics do wyświetlania istotnych zdarzeń w obszarach roboczych.
 
-Jeśli utworzono niestandardowe zdarzenia w Security Center, będą one dostępne. W obszarze log Analytics przejdź do pozycji **Wybierz obszary robocze** > **zapisane wyszukiwania**. Twoje dane nie zostaną utracone ani zmodyfikowane. Natywne istotne zdarzenia są również dostępne z tego samego ekranu w Log Analytics.
+Jeśli utworzono niestandardowe zdarzenia w Security Center, będą one dostępne. W Log Analytics **Wybierz pozycję obszar roboczy**@no__t — 1**zapisane wyszukiwania**. Twoje dane nie zostaną utracone ani zmodyfikowane. Natywne istotne zdarzenia są również dostępne z tego samego ekranu w Log Analytics.
 
 ![Wyszukiwania zapisane w obszarze roboczym][3]
 
@@ -105,7 +105,7 @@ Usunęliśmy przycisk **Przejdź do mapy zdarzeń zabezpieczeń** i pulpit nawig
 
 Po wybraniu przycisku **Przejdź do mapy zdarzeń zabezpieczeń** zostanie otwarty pulpit nawigacyjny analizy zagrożeń (teraz wycofany).
 
-![Pulpit nawigacyjny Analiza zagrożeń][11]
+![Pulpit nawigacyjny analizy zagrożeń][11]
 
 Po wybraniu obszaru roboczego, aby wyświetlić pulpit nawigacyjny analizy zagrożeń, należy otworzyć ekran mapy alertów zabezpieczeń (wersja zapoznawcza) na stronie Log Analytics.
 
@@ -130,7 +130,7 @@ Aby utworzyć niestandardowe alerty za pomocą platformy Azure — wskaźnik:
 
 Jeśli nie interesuje Cię korzystanie z platformy Azure, możesz utworzyć alerty za pomocą alertów dziennika Azure Monitor. Aby uzyskać instrukcje, zobacz [Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi przy użyciu Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) i [rejestrowania alertów w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
-![Niestandardowe alerty][13]
+![Alerty niestandardowe][13]
 
 Aby uzyskać więcej informacji na temat wycofywania alertów niestandardowych, zobacz [niestandardowe reguły alertów w Azure Security Center (wersja zapoznawcza)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
 
@@ -169,9 +169,9 @@ Jeśli masz istniejące połączone rozwiązania, zachęcamy do przejścia na pl
 
 Usługa Azure Security Center monitoruje konfiguracje zabezpieczeń, stosując zestaw [ponad 150 zalecanych reguł](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) dotyczących wzmacniania ochrony systemu operacyjnego. Te reguły dotyczą zapór, inspekcji, zasad haseł i nie tylko. Jeśli okaże się, że maszyna ma konfigurację podatną na zagrożenia, usługa Security Center wygeneruje rekomendację dotyczącą zabezpieczeń. [Ekran edytowanie konfiguracji zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) umożliwia klientom dostosowanie domyślnej konfiguracji zabezpieczeń systemu operacyjnego w programie Security Center.
 
-Ta funkcja w wersji zapoznawczej została wycofana. Aby ponownie zresetować konfiguracje zabezpieczeń do wartości domyślnych po dacie wycofania, zrób to za pośrednictwem interfejsu API lub programu PowerShell, wykonując [następujące instrukcje](https://aka.ms/ascresetsecurityconfigurations)
+Ta funkcja w wersji zapoznawczej została wycofana. Aby ponownie zresetować konfiguracje zabezpieczeń do wartości domyślnych po dacie wycofania, zrób to za pośrednictwem interfejsu API lub programu PowerShell, wykonując [następujące instrukcje](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)
 
-![Edytowanie konfiguracji zabezpieczeń][17]
+![Edytuj konfiguracje zabezpieczeń][17]
 
 ### <a name="edit-security-configurations---the-new-experience"></a>Edytowanie konfiguracji zabezpieczeń — nowe środowisko
 

@@ -1,0 +1,109 @@
+---
+title: Azure SQL Database Diagnostyka rozwiązywania problemów z wydajnością skalowania | Microsoft Docs
+description: W tym artykule opisano sposób rozwiązywania problemów z wydajnością skalowania w SQL Database.
+services: sql-database
+ms.service: sql-database
+ms.subservice: service
+ms.custom: ''
+ms.devlang: ''
+ms.topic: troubleshooting
+author: denzilribeiro
+ms.author: denzilr
+ms.reviewer: sstein
+ms.date: 10/09/2019
+ms.openlocfilehash: 8c632866f942e27c4340dc83b7ef302dd4b21314
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72392828"
+---
+# <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostyka rozwiązywania problemów z wydajnością w ramach skalowania SQL
+
+
+Aby rozwiązać problemy z wydajnością w bazie danych w ramach skalowania, [ogólna metodologia dostrajania wydajności](sql-database-monitor-tune-overview.md) w węźle obliczeniowym usługi Azure SQL Database jest punktem początkowym badania wydajności. Jednak ze względu na [rozproszoną architekturę](sql-database-service-tier-hyperscale.md) w ramach skalowania do pomocy dodano dodatkową diagnostykę. W tym artykule opisano szczegółowe dane diagnostyczne dotyczące skalowania.
+
+
+## <a name="log-rate-throttling-waits"></a>Ograniczenie liczby dzienników
+
+
+Każdy poziom usługi Azure SQL Database ma limity szybkości generowania dziennika, które są wymuszane przez [Zarządzanie szybkością rejestrowania](sql-database-resource-limits-database-server.md#transaction-log-rate-governance). W ramach skalowania limit generacji dzienników jest obecnie ustawiony na 100 MB/s niezależnie od warstwy usług. Jednak istnieją sytuacje, w których szybkość generowania dzienników w podstawowej replice obliczeniowej musi być ograniczona w celu zapewnienia możliwości odzyskiwania umowy SLA. Takie ograniczenie ma miejsce, gdy [serwer stronicowania lub inna replika obliczeniowa](sql-database-service-tier-hyperscale.md) znacznie za pomocą nowych rekordów dziennika z usługi log.
+
+Następujące typy oczekiwania (w tabeli [sys. DM _os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) opisują przyczyny ograniczenia liczby dzienników w podstawowej replice obliczeniowej:
+
+|Typ oczekiwania    |Opis                         |
+|-------------          |------------------------------------|
+|RBIO_RG_STORAGE        | Występuje, gdy szybkość generowania dziennika podstawowego węzła obliczeniowego bazy danych jest ograniczona ze względu na opóźnione użycie dziennika na serwerze stron.         |
+|RBIO_RG_DESTAGE        | Występuje, gdy jest ograniczana szybkość generowania dziennika węzła obliczeniowego bazy danych z powodu opóźnionego użycia dziennika przez długoterminowe przechowywanie dzienników.         |
+|RBIO_RG_REPLICA        | Występuje, gdy jest ograniczana szybkość generowania dziennika węzła obliczeniowego bazy danych z powodu opóźnionego użycia dziennika przez dodatkowe węzły repliki pomocniczej.         |
+|RBIO_RG_LOCALDESTAGE   | Występuje, gdy jest ograniczana szybkość generowania dziennika węzła obliczeniowego bazy danych z powodu opóźnionego użycia dziennika przez usługę log.         |
+
+
+## <a name="page-server-reads"></a>Odczyty serwera stronicowania
+
+Repliki obliczeń nie buforują pełnej kopii bazy danych lokalnie. Dane lokalne do repliki obliczeniowej są przechowywane w puli buforów (w pamięci) i w lokalnej pamięci podręcznej rozszerzenia puli buforów (RBPEX), która jest częściową (nieobejmującą) pamięcią podręczną stron danych. Ta lokalna pamięć podręczna RBPEX jest proporcjonalna do rozmiaru obliczeń i jest 3 razy większa niż pamięć warstwy obliczeniowej. RBPEX przypomina pulę buforów, ponieważ ma najczęściej używane dane. Każdy serwer stron, z drugiej strony, zawiera pamięć podręczną RBPEXą dla części bazy danych, którą przechowuje.
+ 
+Jeśli odczyt jest wystawiony w replice obliczeniowej, jeśli dane nie istnieją w puli buforów lub lokalnej pamięci podręcznej RBPEX, zostanie wygenerowane wywołanie funkcji GetPage (pageId, LSN), a strona jest pobierana z odpowiedniego serwera stronicowania. Odczyty z serwerów stronicowania to odczyty zdalne i są w tym samym wolniejsze niż odczyt z RBPEX lokalnego. W przypadku rozwiązywania problemów z wydajnością w ramach operacji we/wy musimy mieć możliwość poinformowania o liczbie systemu IOs wykonywanych przez stosunkowo wolniejsze odczyty zdalnego serwera stron.
+
+Dodaliśmy odczyty serwera stronicowania do zestawu widoków DMV i rozszerzonych zdarzeń, które ułatwiają identyfikację odczytów zdalnych z serwera stronicowania odczyty logiczne
+
+- Kolumny do operacji odczytywania serwera stron raportów są dostępne w widoków DMV wykonywania, takich jak:
+    - [sys. DM _exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+    - [sys. DM _exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+    - [sys. DM _exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+    - [sys. DM _exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+- Operacje odczytu serwera stronicowania są dodawane do następujących zdarzeń rozszerzonych:
+    - sql_statement_completed
+    - sp_statement_completed
+    - sql_batch_completed
+    - rpc_completed
+    - scan_stopped
+    - query_store_begin_persist_runtime_stat
+    - zapytanie-store_execution_runtime_info
+- ActualPageServerReads/ActualPageServerReadAheads są dodawane do pliku XML planu zapytania dla rzeczywistych planów.
+
+`<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
+
+> [!NOTE]
+> Aby wyświetlić te atrybuty w oknie Właściwości planu zapytania w programie SSMS, potrzebny będzie program SSMS 18,3 lub nowszy.
+
+
+## <a name="virtual-file-stats-and-io-accounting"></a>Statystyka pliku wirtualnego i ewidencjonowanie aktywności we/wy
+
+W Azure SQL Database [sys. DM _io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF jest podstawowym sposobem monitorowania SQL Server we/wy. Charakterystyki we/wy na potrzeby skalowania różnią się w zależności od [architektury rozproszonej](sql-database-service-tier-hyperscale.md#distributed-functions-architecture). W tej sekcji skupiamy się na operacjach we/wy (odczyt i zapis) do plików danych, jak pokazano w tym DMF. W ramach skalowania każdy plik danych widoczny w tym DMF odpowiada serwerowi strony zdalnej. Pamięć podręczna RBPEX określona tutaj to lokalna pamięć podręczna oparta na dyskach SSD, która jest pamięcią podręczną w węźle obliczeniowym.
+
+
+### <a name="local-rbpex-cache-usage"></a>Użycie lokalnej pamięci podręcznej RBPEX
+
+Lokalna pamięć podręczna RBPEX istnieje w węźle obliczeniowym w lokalnym magazynie dysków SSD. W ten sposób operacja we/wy w tej pamięci podręcznej RBPEX jest szybsza niż we/wy na zdalnych serwerach stron. Obecnie funkcja [sys. DM _io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) w bazie danych w ramach skalowania zawiera specjalny wiersz zgłaszania operacji we/wy w lokalnej pamięci podręcznej RBPEX w replice obliczeniowej. Ten wiersz ma wartość 0 dla kolumn `database_id` i `file_id`. Na przykład poniższe zapytanie zwraca statystykę użycia RBPEX od momentu uruchomienia bazy danych.
+
+`select * from sys.dm_io_virtual_file_stats(0,NULL);`
+
+Stosunek liczby odczytów wykonanych na RBPEX do zagregowanych odczytów wykonanych na wszystkich innych plikach danych zapewnia Współczynnik trafień pamięci podręcznej RBPEX.
+
+
+### <a name="data-reads"></a>Odczyty danych
+
+- Gdy odczyty są wydawane przez aparat SQL Server w replice obliczeniowej, mogą one być obsługiwane przez lokalną pamięć podręczną RBPEX lub przez zdalne serwery stron lub przez kombinację dwóch, jeśli odczytywane są wiele stron.
+- Gdy replika obliczeniowa odczytuje niektóre strony z określonego pliku, na przykład file_id 1, jeśli te dane znajdują się wyłącznie w lokalnej pamięci podręcznej RBPEX, wszystkie operacje we/wy dla tego odczytu są uwzględniane w odniesieniu do file_id 0 (RBPEX). Jeśli niektóre części danych znajdują się w lokalnej pamięci podręcznej RBPEX, a niektóre części znajdują się na zdalnym serwerze stron, we/wy jest uwzględniana wartość file_id 0 dla części obsługiwanej przez RBPEX, a część obsługiwana przez zdalny serwer strony ma na celu file_id 1. 
+- Gdy replika obliczeń żąda strony o określonym [numerze LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) z serwera stronicowania, jeśli serwer stronicowania nie został przechwycony do żądanego numeru LSN, odczyt w replice obliczeniowej zaczeka, aż serwer stronicowania przejdzie przed zwróceniem strony do repliki obliczeniowej. W przypadku dowolnego odczytu z serwera stronicowania w replice obliczeniowej zobaczysz typ oczekiwania PAGEIOLATCH_XX, jeśli czeka na to we/wy. Ten czas oczekiwania obejmuje zarówno czas na przechwycenie żądanej strony na serwerze stronicowania, jak i czas wymagany do przetransferowania strony z serwera stronicowania do repliki obliczeniowej.
+- Duże odczyty, takie jak Odczyt z wyprzedzeniem, często są wykonywane przy użyciu [odczytu "punktowego zbierania"](/sql/relational-databases/reading-pages/). Pozwala to na odczyt maksymalnie 4 MB stron w danym momencie, uważany za pojedynczy odczyt w aparacie SQL Server. Jednak gdy odczytywane dane są w RBPEX, te odczyty są rozliczane jako wiele indywidualnych operacji 8 KB, ponieważ pula buforów i RBPEX zawsze używają 8 KB stron. W związku z tym liczba odczytów systemu IOs, które są widoczne dla RBPEX, może być większa niż rzeczywista liczba urządzeń z systemem IOs wykonywanych przez aparat.
+
+
+### <a name="data-writes"></a>Zapisy danych
+
+- Podstawowa replika obliczeniowa nie zapisuje bezpośrednio na serwerach stron. Zamiast tego rekordy dzienników z usługi log są odtwarzane na odpowiednich serwerach stron. 
+- Zapisy, które nastąpiły w replice obliczeniowej, są głównie zapisywane w lokalnym RBPEX (file_id 0). W przypadku operacji zapisu w plikach logicznych, które są większe niż 8 KB, tj. przy użyciu funkcji [zbierania-zapisu](/sql/relational-databases/writing-pages/), każda operacja zapisu jest tłumaczona na wiele pojedynczych zapisów o rozmiarze 8 KB do RBPEX, ponieważ pula buforów i RBPEX zawsze używają 8 KB stron. W związku z tym liczba operacji zapisu dla systemu IOs, które są widoczne dla RBPEX, może być większa niż rzeczywista liczba urządzeń z systemem IOs wykonywanych przez aparat.
+- Pliki inne niż RBPEX lub pliki danych inne niż file_id 0, które odpowiadają serwerom stron, również wyświetlają zapisy. W warstwie usług skalowania, te zapisy są symulowane, ponieważ repliki obliczeniowe nigdy nie zapisują bezpośrednio na serwerach stron. Operacje we/wy zapisu są uwzględniane w miarę ich występowania w replice obliczeniowej, ale opóźnienie dla plików danych innych niż file_id 0 nie odzwierciedla rzeczywistego opóźnienia zapisów serwera stronicowania.
+
+### <a name="log-writes"></a>Zapisy dziennika
+
+- W podstawowym obliczeniu zapis w dzienniku jest uwzględniany w file_id 2 programu sys. DM _io_virtual_file_stats. Zapis w dzienniku na podstawowym obliczeniu jest zapis w strefie przechowywania dziennika, która jest zdalną usługą Azure Premium Storage.
+- W replice pomocniczej rekordy dziennika nie są zaostrzone w replice pomocniczej w ramach zatwierdzenia, a usługa xlog jest stosowana do zdalnych replik. Dane zapisy dziennika nie są faktycznie wykonywane w replikach pomocniczych i są przeznaczone tylko do celów śledzenia.
+
+## <a name="additional-resources"></a>Zasoby dodatkowe
+
+- W przypadku limitów zasobów rdzeń wirtualny dla pojedynczej bazy danych na potrzeby skalowania w poziomie można zobaczyć [limity rdzeń wirtualny warstwy usługi](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) .
+- Aby uzyskać Azure SQL Database dostrajania wydajności, zobacz [wydajność zapytań w Azure SQL Database](sql-database-performance-guidance.md)
+- Aby dostroić wydajność przy użyciu magazynu zapytań, zobacz [monitorowanie wydajności za pomocą magazynu zapytań](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/)
+- Aby poznać skrypty monitorowania DMV, zobacz [monitorowanie wydajności Azure SQL Database przy użyciu dynamicznych widoków zarządzania](sql-database-monitoring-with-dmvs.md)

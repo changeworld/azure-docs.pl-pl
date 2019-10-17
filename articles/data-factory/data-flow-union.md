@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 35d5b2250cb5f2f5bd5b3a0073dc2e3c655ceccb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 4832cd2036f615d1e90d5e7a21c1a9832c2fa837
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029921"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387133"
 ---
 # <a name="mapping-data-flow-union-transformation"></a>Mapowanie przekształceń Unii danych
 
@@ -22,19 +22,19 @@ Unia łączy wiele strumieni danych w jeden, wraz z Unią SQL dla tych strumieni
 
 Można połączyć n-liczbowe strumienie w tabeli ustawień, wybierając ikonę "+" obok każdego skonfigurowanego wiersza, w tym zarówno dane źródłowe, jak i strumienie z istniejących transformacji w przepływie danych.
 
-Unia ![transformacji Union](media/data-flow/union.png "")
+![Przekształcenie Unii](media/data-flow/union.png "Unia")
 
 W takim przypadku można połączyć różne metadane z wielu źródeł (w tym przykładzie trzy różne pliki źródłowe) i połączyć je w jeden strumień:
 
-![Przekształcenie Unii — Omówienie](media/data-flow/union111.png "Unii 1")
+![Przegląd transformacji Union](media/data-flow/union111.png "Unia 1")
 
 Aby to osiągnąć, Dodaj dodatkowe wiersze w ustawieniach Unii, dołączając wszystkie źródła, które chcesz dodać. Nie ma potrzeby wspólnego wyszukiwania lub klucza sprzężenia:
 
-(media/data-flow/unionsettings.png "Ustawienia Unii") dla ![ustawień transformacji Union]
+![Ustawienia transformacji Union](media/data-flow/unionsettings.png "Ustawienia Unii")
 
 Jeśli ustawisz transformację wybraną po Unii, będziesz mieć możliwość zmiany nazwy nakładających się pól lub pól, które nie zostały nazwane ze źródeł bez nagłówka. Kliknij pozycję "Zbadaj", aby zobaczyć kolumny łącz łączne z 132 w tym przykładzie z trzech różnych źródeł:
 
-Unia ![końcowa przekształcenia Unii](media/data-flow/union333.png "3")
+![Ostatni przekształcenie Unii](media/data-flow/union333.png "Unia 3")
 
 ## <a name="name-and-position"></a>Nazwa i pozycja
 
@@ -42,7 +42,7 @@ Po wybraniu opcji "Sumuj według nazwy" Każda wartość kolumny zostanie połą
 
 Jeśli wybierzesz pozycję "Union by position", każda wartość kolumny zostanie połączona do oryginalnej pozycji z każdego odpowiadającego źródła, co spowoduje powstanie nowego połączonego strumienia danych, w którym dane z każdego źródła są dodawane do tego samego strumienia:
 
-(media/data-flow/unionoutput.png "Dane wyjściowe Unii") ![wyjściowej]Union
+![Dane wyjściowe złożenia](media/data-flow/unionoutput.png "Dane wyjściowe złożenia")
 
 ## <a name="next-steps"></a>Następne kroki
 

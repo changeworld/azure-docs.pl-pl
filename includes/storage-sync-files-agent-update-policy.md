@@ -1,21 +1,21 @@
 ---
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
-ms.author: tamram
-ms.openlocfilehash: 5be5cf6cd410874d870b351c209517e90fcf3848
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: rogarana
+ms.openlocfilehash: 02e9553b9704c96794e0c1113ab3e06458f0f7c8
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699342"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391736"
 ---
 Agent Azure File Sync jest regularnie aktualizowany, aby można było dodać nowe funkcje i rozwiązać problemy. Zalecamy skonfigurowanie Microsoft Update do pobierania aktualizacji dla agenta Azure File Sync, gdy są one dostępne.
 
 #### <a name="major-vs-minor-agent-versions"></a>Wersje agenta głównego a pomocniczego
-* Wersje głównych agentów często zawierają nowe funkcje i mają rosnącą liczbę jako pierwszą część numeru wersji. Na przykład: \*2.\*.\*\*
-* Wersje agentów pomocniczych są również nazywane "poprawkami" i są wydawane częściej niż wersje główne. Często zawierają poprawki błędów i mniejsze ulepszenia, ale nie nowe funkcje. Na przykład: \* \*. 3.\*\*
+* Wersje głównych agentów często zawierają nowe funkcje i mają rosnącą liczbę jako pierwszą część numeru wersji. Na przykład: \*2. \*. \* @ no__t-3
+* Wersje agentów pomocniczych są również nazywane "poprawkami" i są wydawane częściej niż wersje główne. Często zawierają poprawki błędów i mniejsze ulepszenia, ale nie nowe funkcje. Na przykład: \* @ no__t-1.3. \* @ no__t-3
 
 #### <a name="upgrade-paths"></a>Ścieżki uaktualniania
 Istnieją cztery zatwierdzone i przetestowane sposoby instalowania aktualizacji agenta Azure File Sync. 
@@ -37,18 +37,23 @@ W przypadku agenta w wersji 6 zespół synchronizacji plików wprowadził funkcj
 
 W poniższych instrukcjach opisano, jak zmienić ustawienia po zakończeniu instalacji, jeśli trzeba wprowadzić zmiany.
 
-Otwórz powłokę i przejdź do katalogu, w którym zainstalowano agenta synchronizacji, a następnie zaimportuj polecenia cmdlet serwera, domyślnie będzie to wyglądać następująco:
+Otwórz konsolę programu PowerShell i przejdź do katalogu, w którym zainstalowano agenta synchronizacji, a następnie zaimportuj polecenia cmdlet serwera. Domyślnie będzie to wyglądać następująco:
 ```powershell
-cd C:\Program Files\Azure\StorageSyncAgent
-
-ipmo .\StorageSync.Management.ServerCmdlets.dll
+cd 'C:\Program Files\Azure\StorageSyncAgent'
+Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
 ```
 
-Można uruchomić `Get-StorageSyncAgentAutoUpdatePolicy` , aby sprawdzić bieżące ustawienie zasad i określić, czy chcesz je zmienić.
+Można uruchomić `Get-StorageSyncAgentAutoUpdatePolicy`, aby sprawdzić bieżące ustawienie zasad i określić, czy chcesz je zmienić.
 
-Aby zmienić bieżące ustawienie zasad na ścieżkę opóźnionej aktualizacji, można użyć:`Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration`
+Aby zmienić bieżące ustawienie zasad na ścieżkę opóźnionej aktualizacji, można użyć:
+```powershell
+Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration
+```
 
-Aby zmienić bieżące ustawienie zasad na ścieżkę natychmiastowej aktualizacji, można użyć:`Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest`
+Aby zmienić bieżące ustawienie zasad na ścieżkę natychmiastowej aktualizacji, można użyć:
+```powershell
+Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest
+```
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>Gwarancje dotyczące cyklu życia agenta i zarządzania zmianami
 Azure File Sync to usługa w chmurze, która ciągle wprowadza nowe funkcje i ulepszenia. Oznacza to, że określona wersja agenta Azure File Sync może być obsługiwana tylko przez ograniczony czas. Aby ułatwić wdrożenie, następujące reguły gwarantują, że masz wystarczającą ilość czasu i powiadomienia, aby uwzględnić aktualizacje/uaktualnienia agenta w procesie zarządzania zmianami:
@@ -56,7 +61,7 @@ Azure File Sync to usługa w chmurze, która ciągle wprowadza nowe funkcje i ul
 - Wersje głównych agentów są obsługiwane przez co najmniej sześć miesięcy od dnia wydania wersji początkowej.
 - Firma Microsoft gwarantuje, że istnieje nakładanie się co najmniej przez trzy miesiące między wsparciem dla głównych wersji agentów. 
 - Ostrzeżenia są wydawane dla zarejestrowanych serwerów za pomocą wkrótce wygasłego agenta co najmniej trzy miesiące przed wygaśnięciem. Możesz sprawdzić, czy serwer zarejestrowany korzysta ze starszej wersji agenta w sekcji zarejestrowane serwery usługi synchronizacji magazynu.
-- Okres istnienia pomocniczej wersji agenta jest powiązany z skojarzoną wersją główną. Na przykład po udostępnieniu agenta w wersji 3,0 Agent wersji 2. \* wszystkie zostaną skonfigurowane do wygasania razem.
+- Okres istnienia pomocniczej wersji agenta jest powiązany z skojarzoną wersją główną. Na przykład po wydaniu agenta w wersji 3,0 Agent wersji 2. \* spowoduje, że wszystkie wygaśnie.
 
 > [!Note]
 > Zainstalowanie wersji agenta z ostrzeżeniem o wygaśnięciu spowoduje wyświetlenie ostrzeżenia, ale powiedzie się. Próba zainstalowania lub połączenia z wygasłą wersją agenta nie jest obsługiwana i zostanie zablokowana.

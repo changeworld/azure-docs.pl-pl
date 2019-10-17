@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/10/2019
+ms.date: 10/03/2019
 ms.author: juliako
-ms.openlocfilehash: 152a767ad1aa2494579f15dd8051c6bc1f718a92
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910256"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383536"
 ---
 # <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
 
@@ -26,17 +26,17 @@ Microsoft Azure Media Services może służyć do kodowania wielu formatów plik
 
 W Media Services [punkt końcowy przesyłania strumieniowego](streaming-endpoint-concept.md) reprezentuje dynamiczny (just-in-Time) pakiet i pierwotną usługę, która umożliwia dostarczanie zawartości na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienckiego przy użyciu jednego z typowych protokołów multimediów przesyłania strumieniowego wymienione w poniższej sekcji. Dynamiczne tworzenie pakietów to funkcja, w którą są standardowo wyposażone wszystkie punkty końcowe przesyłania strumieniowego (w warstwie Standard lub Premium). 
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>Aby przygotować pliki źródłowe do dostarczenia
+## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a>@no__t — 0To Przygotuj pliki źródłowe do dostarczenia
 
 Aby skorzystać z funkcji dynamicznego tworzenia pakietów, musisz [zakodować](encoding-concept.md) plik Mezzanine (Source) do zestawu wielu plików MP4 (ISO Base Media 14496-12). Musisz mieć [zasób](assets-concept.md) z zakodowanymi plikami MP4 i plikami konfiguracji przesyłania strumieniowego, które są wymagane przez Media Services dynamiczne pakowanie. Z tego zestawu plików MP4 można użyć pakowania dynamicznego do dostarczania wideo za pośrednictwem następujących protokołów multimediów strumieniowych:
 
-|Protocol|Przykład|
+|Protocol (Protokół)|Przykład|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
-|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
+|MPEG-KRESKA CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
+|CMAF MPEG-KRESKA|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
 Jeśli planujesz ochronę zawartości przy użyciu Media Services szyfrowania dynamicznego, zobacz [protokoły przesyłania strumieniowego i typy szyfrowania](content-protection-overview.md#streaming-protocols-and-encryption-types).
@@ -98,18 +98,18 @@ Aby uzyskać informacje na temat przesyłania strumieniowego na żywo w Media Se
 Dynamiczne pakowanie obsługuje pliki MP4, które zawierają wideo kodowane przy użyciu [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC lub avc1) lub [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 lub hvc1).
 
 > [!NOTE]
-> Rozdzielczości do 4 KB i szybkości klatek do 60 klatek/s zostały przetestowane przy użyciu dynamicznego tworzenia pakietów. [Koder w warstwie Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) obsługuje kodowanie do H. 265 za pośrednictwem starszych interfejsów API v2. Skontaktuj się amshelp@microsoft.com z nami, jeśli masz pytania dotyczące tego tematu. 
+> Rozdzielczości do 4 KB i szybkości klatek do 60 klatek/s zostały przetestowane przy użyciu dynamicznego tworzenia pakietów. [Koder w warstwie Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) obsługuje kodowanie do H. 265 za pośrednictwem starszych interfejsów API v2. Skontaktuj się z amshelp@microsoft.com, jeśli masz pytania dotyczące tego tematu. 
 
-## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Kodery-dekoder audio obsługiwane przez pakowanie dynamiczne
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a>kodery-dekoder @no__t 0Audio obsługiwane przez pakowanie dynamiczne
 
 Pakowanie dynamiczne obsługuje dźwięk kodowany przy użyciu następujących protokołów:
 
 * [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, IT-AAC v1 lub AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Ulepszona AC-3 lub E-AC3)
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (ulepszone AC-3 lub E-AC3)
 * Dolby Atmos<br />
    Przesyłanie strumieniowe zawartości Dolby Atmos jest obsługiwane w przypadku standardów, takich jak protokół MPEG-KRESKa, przy użyciu wspólnego formatu przesyłania strumieniowego (CSF) lub Common Media Application Format (CMAF) i za pośrednictwem HTTP Live Streaming (HLS) z CMAF.
 
-* [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
+* [Pakiet](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
    Kodery-dekoder usług DTS obsługiwane przez ŁĄCZNIKi — CMAF, HLS-M2TS i HLS-CMAF są następujące:  
 
     * Cyfrowa przestrzenny usług DTS (dtsc)
@@ -119,12 +119,12 @@ Pakowanie dynamiczne obsługuje dźwięk kodowany przy użyciu następujących p
 
 Dynamiczne pakowanie obsługuje wiele ścieżek audio z KRESKami lub HLS (w wersji 4 lub nowszej) dla zasobów przesyłania strumieniowego z wieloma dźwiękami i wieloma językami.
 
-### <a name="additional-notes"></a>Dodatkowe uwagi
+### <a name="additional-notes"></a>Uwagi dodatkowe
 
 Dynamiczne pakowanie nie obsługuje plików zawierających audio [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) (jest to starszy koder-dekoder).
 
 > [!NOTE]
-> [Koder w warstwie Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) obsługuje kodowanie do Dolby Digital Plus, za pośrednictwem starszych interfejsów API v2. Skontaktuj się amshelp@microsoft.com z nami, jeśli masz pytania dotyczące tego tematu. 
+> [Koder w warstwie Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) obsługuje kodowanie do Dolby Digital Plus, za pośrednictwem starszych interfejsów API v2. Skontaktuj się z amshelp@microsoft.com, jeśli masz pytania dotyczące tego tematu. 
 
 ## <a name="manifests"></a>Manifesty 
  
@@ -161,7 +161,7 @@ QualityLevels(3579827)/Manifest(video,format=m3u8-aapl)
 QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ```
 
-#### <a name="mpeg-dash"></a>MPEG-DASH
+#### <a name="mpeg-dash"></a>MPEG-KRESKA
 
 Oto przykład pliku manifestu MPEG-KRESKOWANY, nazywanego również opisem prezentacji multimediów MPEG-KRESKOWANY (MPD):
 
@@ -220,7 +220,7 @@ Oto przykład pliku manifestu Smooth Streaming:
 
 ### <a name="naming-of-tracks-in-the-manifest"></a>Nazewnictwo ścieżek w manifeście
 
-Jeśli nazwa ścieżki audio została określona w pliku ISM, Media Services dodaje `Label` element `AdaptationSet` wewnątrz elementu, aby określić textural informacje dla określonej ścieżki audio. Przykład manifestu wyjściowej PAUZy:
+Jeśli nazwa ścieżki audio została określona w pliku ISM, Media Services dodaje element `Label` w `AdaptationSet`, aby określić informacje textural dla określonej ścieżki audio. Przykład manifestu wyjściowej PAUZy:
 
 ```xml
 <AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
@@ -232,15 +232,34 @@ Jeśli nazwa ścieżki audio została określona w pliku ISM, Media Services dod
 </AdaptationSet>
 ```
 
-Odtwarzacz może użyć `Label` elementu do wyświetlenia w jego interfejsie użytkownika.
+Odtwarzacz może użyć elementu `Label`, aby wyświetlić jego interfejs użytkownika.
 
 ### <a name="signaling-audio-description-tracks"></a>Sygnalizowanie ścieżek opisu audio
 
-Klient może dodać adnotację do ścieżki audio jako opis audio w manifeście. W tym celu dodamy parametry "Accessibility" i "role" do pliku ISM. Media Services rozpoznaje opis audio, jeśli ścieżka audio ma parametr "Accessibility" o wartości "Description" i parametr "role" z wartością "alternatywa". Jeśli Media Services wykryje opis audio w pliku ISM, informacje o opisie audio są przesyłane do manifestu klienta jako `Accessibility="description"` i `Role="alternate"` atrybuty do `StreamIndex` elementu.
+Możesz dodać ścieżkę narracji do wideo, aby ułatwić wizualnym klientom niesparowane nagranie wideo przez nasłuchiwanie narracji. Należy dodać adnotację do ścieżki audio jako opis audio w manifeście. W tym celu należy dodać parametry "Accessibility" i "role" do pliku ISM. Ponosisz odpowiedzialność za poprawne ustawianie tych parametrów, aby sygnalizować ścieżkę audio jako opis. Na przykład Dodaj `<param name="accessibility" value="description" />` i `<param name="role" value="alternate"` do pliku ISM dla określonej ścieżki audio. 
 
-Jeśli kombinacja "Accessibility" = "Description" i "role" = "alternatywa" jest ustawiona w pliku ISM, manifest PAUZy i gładki manifest zawierają wartości ustawione w parametrach "Accessibility" i "role". Klient jest odpowiedzialny za ustawienie tych dwóch wartości bezpośrednio i oznaczenie ścieżki audio jako opisu audio. Dla każdej linii, "ułatwienia dostępu" = "opis" i "rola" = "alternatywna" oznacza to, że ścieżka audio to opis audio.
+Aby uzyskać więcej informacji, zobacz artykuł [jak sygnalizować przykładową ścieżkę dźwiękową](signal-descriptive-audio-howto.md) .
 
-W przypadku HLS wersji 7 i nowszych`format=m3u8-cmaf`() jego `CHARACTERISTICS="public.accessibility.describes-video"` lista odtwarzania jest wykonywana tylko wtedy, gdy kombinacja "Accessibility" = "Description" i "role" = "alternatyw" jest ustawiona w pliku ISM. 
+#### <a name="smooth-streaming-manifest"></a>Manifest Smooth Streaming
+
+W przypadku odtwarzania strumienia Smooth Streaming, manifest będzie miał wartości w `Accessibility` i `Role` atrybutów dla tej ścieżki audio. Na przykład w elemencie `StreamIndex` zostanie dodana `Role="alternate" Accessibility="description"`, aby wskazać, że jest to opis audio.
+
+#### <a name="dash-manifest"></a>Manifest KRESKOWANY
+
+W przypadku manifestu PAUZy następujące dwa elementy zostałyby dodane do sygnalizowania opisu audio:
+
+```xml
+<Accessibility schemeIdUri="urn:mpeg:dash:role:2011" value="description"/>
+<Role schemeIdUri="urn:mpeg:dash:role:2011" value="alternate"/>
+```
+
+#### <a name="hls-playlist"></a>Lista odtwarzania HLS
+
+W przypadku HLS wersji 7 i wyższych `(format=m3u8-cmaf)` jej lista odtwarzania będzie przenosić się do `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"`, gdy ścieżka do opisu audio zostanie zasygnalizowane.
+
+#### <a name="example"></a>Przykład
+
+Aby uzyskać więcej informacji, zobacz [jak sygnalizować śledzenie opisów dźwięku](signal-descriptive-audio-howto.md).
 
 ## <a name="dynamic-manifest"></a>Manifest dynamiczny
 

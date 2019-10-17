@@ -1,0 +1,58 @@
+---
+title: Link udostępniania do żądania pakietu dostępu w usłudze Azure AD uprawnia zarządzanie (wersja zapoznawcza) — Azure Active Directory
+description: Dowiedz się, jak udostępnić link, aby zażądać pakietu dostępu w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
+services: active-directory
+documentationCenter: ''
+author: msaburnley
+manager: daveba
+editor: ''
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: conceptual
+ms.subservice: compliance
+ms.date: 10/15/2019
+ms.author: ajburnle
+ms.reviewer: ''
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 91b98df1f93991d4781283bc38b02dc20d11268d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72392334"
+---
+# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management-preview"></a>Link udostępniania do żądania pakietu dostępu w usłudze Azure AD uprawnia zarządzanie (wersja zapoznawcza)
+
+> [!IMPORTANT]
+> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Większość użytkowników w katalogu może zalogować się do portalu My Access i automatycznie wyświetlić listę pakietów dostępu, których mogą żądać. Jednak w przypadku użytkowników zewnętrznego partnera biznesowego, którzy nie znajdują się jeszcze w Twoim katalogu, należy wysłać im link umożliwiający zażądanie pakietu dostępu. 
+
+Tak długo, jak katalog pakietu dostępu jest [włączony dla użytkowników zewnętrznych](entitlement-management-catalog-create.md) i masz [zasady dla katalogu użytkownika zewnętrznego](entitlement-management-access-package-request-policy.md), użytkownik zewnętrzny może skorzystać z linku Portal dostępu do aplikacji, aby zażądać pakietu dostępu.
+
+## <a name="share-link-to-request-an-access-package"></a>Link udostępniania do żądania pakietu dostępu
+
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
+
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
+
+1. Na stronie Przegląd Skopiuj **łącze Mój dostęp do portalu**.
+
+    ![Przegląd pakietu dostępu — mój link portalu dostępu](./media/entitlement-management-shared/my-access-portal-link.png)
+
+    Ważne jest, aby skopiować całe łącze portalu dostępu, gdy wyśle je do wewnętrznego partnera biznesowego. Gwarantuje to, że partner uzyska dostęp do portalu Twojego katalogu w celu zgłoszenia żądania. Link rozpoczyna się od `myaccess`, zawiera wskazówkę katalogu i kończą się IDENTYFIKATORem pakietu dostępu.
+
+    `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
+
+1. Wiadomość e-mail lub Wyślij link do zewnętrznego partnera biznesowego. Mogą oni udostępnić link swoim użytkownikom, aby zażądać pakietu dostępu.
+
+## <a name="next-steps"></a>Następne kroki
+
+- [Zażądaj dostępu do pakietu dostępu](entitlement-management-request-access.md)
+- [Zatwierdzanie lub odrzucanie żądań dostępu](entitlement-management-request-approve.md)

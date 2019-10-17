@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71975326"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391731"
 ---
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
 
@@ -97,7 +97,7 @@ Liczniki Monitora wydajności są dostępne dla procesora, pamięci i każdego d
 | **Liczba operacji we/wy na sekundę** |Liczba żądań we/wy wystawionych na dysk magazynujący na sekundę. |Odczyty dysku/s <br> Zapisy dysku/s |TPS <br> r/s <br> w/s |
 | **Odczyty i zapisy z dysku** |% operacji odczytu i zapisu wykonanych na dysku. |Czas odczytu dysku (%) <br> Czas zapisu na dysku (%) |r/s <br> w/s |
 | **Przepływność** |Ilość danych odczytywanych lub zapisywana na dysku na sekundę. |Bajty odczytu dysku/s <br> Bajty zapisu dysku/s |kB_read/s <br> kB_wrtn/s |
-| **Opóźnienie** |Łączny czas wykonywania żądania we/wy dysku. |Średni czas dysku w s/odczyt <br> Średni czas dysku w s/zapis |kart <br> svctm |
+| **Opóźnienie** |Łączny czas wykonywania żądania we/wy dysku. |Średni czas dysku w s/odczyt <br> Średni czas dysku w s/zapis |Kart <br> svctm |
 | **Rozmiar we/wy** |Rozmiar żądań we/wy dotyczy dysków magazynu. |Średnia liczba bajtów dysku/odczyt <br> Średnia liczba bajtów dysku/zapis |avgrq — sz |
 | **Głębokość kolejki** |Liczba oczekujących żądań we/wy oczekujących na odczytanie lub zapis na dysku magazynu. |Bieżąca długość kolejki dysku |avgqu — sz |
 | **Maksymalny. Rozmiar** |Ilość pamięci wymaganej do bezproblemowego uruchamiania aplikacji |% Zadeklarowanych bajtów w użyciu |Użyj vmstat |
@@ -286,24 +286,24 @@ Dla wszystkich dysków SSD Premium lub Ultra dysków z pamięcią podręczną us
 * W przypadku dysków usługi Premium Storage z pamięcią podręczną ustawioną na **ReadWrite**Włącz bariery dla trwałości zapisu.
 * Aby etykiety woluminów były utrwalane po ponownym uruchomieniu maszyny wirtualnej, należy zaktualizować/etc/fstab przy użyciu unikatowych identyfikatorów uniwersalnych (UUID) do dysków. Aby uzyskać więcej informacji, zobacz [Dodawanie dysku zarządzanego do maszyny wirtualnej z systemem Linux](../articles/virtual-machines/linux/add-disk.md).
 
-Następujące dystrybucje systemu Linux zostały sprawdzone pod kątem usługi Premium dysków SSD. Aby uzyskać lepszą wydajność i stabilność dzięki dysków SSD Premium, zalecamy uaktualnienie maszyn wirtualnych do jednej z tych wersji lub w późniejszym czasie. 
+Następujące dystrybucje systemu Linux zostały sprawdzone pod kątem usługi Premium dysków SSD. Aby uzyskać lepszą wydajność i stabilność dzięki dysków SSD Premium, zalecamy uaktualnienie maszyn wirtualnych do jednej z tych wersji lub nowszych. 
 
 Niektóre wersje wymagają najnowszych usług integracji z systemem Linux (LIS), v 4.0 dla platformy Azure. Aby pobrać i zainstalować dystrybucję, postępuj zgodnie z linkiem wymienionym w poniższej tabeli. Dodaliśmy obrazy do listy po zakończeniu walidacji. Nasze walidacje pokazują, że wydajność jest różna dla każdego obrazu. Wydajność zależy od charakterystyki obciążenia i ustawień obrazu. Różne obrazy są dostrojone do różnych rodzajów obciążeń.
 
 | Dystrybucja | Wersja | Obsługiwane jądro | Szczegóły |
 | --- | --- | --- | --- |
-| Ubuntu | 12,04 | 3.2.0 — 75.110 + | Ubuntu-12_04_5-LTS-amd64-Server-20150119-en-US-30 GB |
-| Ubuntu | 14,04 | 3.13.0 — 44.73 + | Ubuntu-14_04_1-LTS-amd64-Server-20150123-en-US-30 GB |
-| Debian | 7. x, 8. x | 3.16.7-ckt4-1 + | &nbsp; |
-| SUSE | SLES 12| 3.12.36 — 38.1 +| SUSE-SLES-12-Priority-v20150213 <br> SUSE-SLES-12-v20150213 |
-| SUSE | SLES 11 Z DODATKIEM SP4 | 3.0.101 — 0.63.1 + | &nbsp; |
-| CoreOS | 584.0.0 +| 3.18.4 + | CoreOS 584.0.0 |
-| CentOS | 6,5, 6,6, 6,7, 7,0 | &nbsp; | [LIS4 wymagane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
-| CentOS | 7.1 + | 3.10.0-229.1.2. el7 + | [LIS4 zalecane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
-| Red Hat Enterprise Linux (RHEL) | 6,8 +, 7.2 + | &nbsp; | &nbsp; |
-| Oracle | 6.0 +, 7.2 + | &nbsp; | UEK4 lub RHCK |
-| Oracle | 7.0 — 7.1 | &nbsp; | UEK4 lub RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4 — 6.7 | &nbsp; | UEK4 lub RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Ubuntu | 12,04 lub nowszy| 3.2.0 — 75.110 + | Ubuntu-12_04_5-LTS-amd64-Server-20150119-en-US-30 GB |
+| Ubuntu | 14,04 lub nowszy| 3.13.0 — 44.73 +  | Ubuntu-14_04_1-LTS-amd64-Server-20150123-en-US-30 GB |
+| Debian | 7. x, 8. x lub nowszy| 3.16.7-ckt4-1 + | &nbsp; |
+| SUSE | SLES 12 lub nowszy| 3.12.36 — 38.1 + | SUSE-SLES-12-Priority-v20150213 <br> SUSE-SLES-12-v20150213 |
+| SUSE | SLES 11 z dodatkiem SP4 lub nowszym| 3.0.101 — 0.63.1 + | &nbsp; |
+| CoreOS | 584.0.0 + lub nowszy| 3.18.4 + | CoreOS 584.0.0 |
+| CentOS | 6,5, 6,6, 6,7, 7,0 lub nowsze| &nbsp; | [LIS4 wymagane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
+| CentOS | 7.1 + lub nowszy| 3.10.0-229.1.2. el7 + | [LIS4 zalecane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
+| Red Hat Enterprise Linux (RHEL) | 6,8 +, 7.2 + lub nowszy | &nbsp; | &nbsp; |
+| Oracle | 6.0 +, 7.2 + lub nowszy | &nbsp; | UEK4 lub RHCK |
+| Oracle | 7.0 — 7.1 lub nowszy | &nbsp; | UEK4 lub RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4 — 6.7 lub nowszy | &nbsp; | UEK4 lub RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>Sterowniki LIS dla OpenLogic CentOS
 

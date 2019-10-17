@@ -7,12 +7,12 @@ ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 605564ed541c23a9060879706fb25f91e97a8eac
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: HT
+ms.openlocfilehash: fe412e9e682fb55f1664c546e6b6c5a347527adb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326568"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387361"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Mapowanie obsługi JSON przepływu danych
 
@@ -24,11 +24,11 @@ Do przepływu danych można dodać kolumnę złożoną za pośrednictwem konstru
 
 W okienku po stronie schematu danych wyjściowych Umieść kursor nad kolumną i kliknij ikonę znaku plus. Wybierz pozycję **Dodaj podkolumnę** , aby utworzyć kolumnę typu złożonego.
 
-Dodaj podkolumnę(media/data-flow/addsubcolumn.png "Dodawanie") ![podkolumny]
+![Dodaj podkolumnę](media/data-flow/addsubcolumn.png "Dodaj podkolumnę")
 
 W ten sam sposób można dodać dodatkowe kolumny i podkolumny. W przypadku każdego niezłożonej pola wyrażenie może być dodane w edytorze wyrażeń z prawej strony.
 
-Kolumna ![złożona kolumny złożonej](media/data-flow/complexcolumn.png "")
+![Kolumna złożona](media/data-flow/complexcolumn.png "Kolumna złożona")
 
 ### <a name="entering-the-json-structure-manually"></a>Ręczne wprowadzanie struktury JSON
 
@@ -86,7 +86,7 @@ Jeśli to wyrażenie zostało wprowadzone dla kolumny o nazwie "complexColumn", 
 
 Używanie zestawu danych JSON jako źródła w przepływie danych pozwala na ustawienie pięciu dodatkowych ustawień. Te ustawienia można znaleźć w obszarze **Ustawienia JSON** zgodnie z opisem na karcie **Opcje źródła** .  
 
-![](media/data-flow/json-settings.png "Ustawienia") json dla ustawienia JSON
+![Ustawienia JSON](media/data-flow/json-settings.png "Ustawienia JSON")
 
 ### <a name="default"></a>Domyślne
 

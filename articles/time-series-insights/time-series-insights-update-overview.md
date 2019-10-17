@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4a57c6d4a9034d9145058e9137759c2cea19aa6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: da81d5603eb26ae3b209bbbc01a8d6fc31e1ba3a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978668"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382030"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Co to jest wersja zapoznawcza usługi Azure Time Series Insights?
 
@@ -45,7 +45,7 @@ W związku z tym tylko część tych danych jest wykorzystywana do celów operac
 
 Na poniższej ilustracji przedstawiono typowy przepływ danych IoT.
 
-  ![Przepływ danych IoT][1]
+  [przepływ danych @no__t 1IoT](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 ## <a name="azure-time-series-insights-for-industrial-iot"></a>Usługa Azure Time Series Insights dla przemysłowego Internetu rzeczy
 
@@ -70,7 +70,7 @@ Funkcje dotyczące szczegółowych informacji operacyjnych i eksplorowania danyc
 
 Na tym ogólnym diagramie przepływu danych przedstawiono aktualizacje.
 
-  ![Najważniejsze możliwości][2]
+  [@no__t — możliwości 1Key](media/v2-update-overview/overview-two.png)](media/v2-update-overview/overview-two.png#lightbox)
 
 Dzięki wprowadzeniu tych najważniejszych możliwości przemysłowego IoT usługa Time Series Insights oferuje następujące kluczowe korzyści.
 
@@ -94,7 +94,3 @@ Dowiedz się więcej na temat przypadków użycia:
 
 > [!div class="nextstepaction"]
 > [Przypadki użycia usługi Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-use-cases.md)
-
-<!-- Images -->
-[1]: media/v2-update-overview/overview-one.png
-[2]: media/v2-update-overview/overview-two.png

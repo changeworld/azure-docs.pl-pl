@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 5c449136339a4c31cb1829b53f62e1724caa4736
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
-ms.translationtype: HT
+ms.openlocfilehash: 5e3d226b0f15148c5ac4a9da84462f4a3277e112
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372257"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383568"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -24,8 +24,8 @@ Możesz postępować zgodnie z Site Recovery powiadomieniami o aktualizacji w ka
 
 W przypadku odzyskiwania po awarii maszyn wirtualnych platformy Azure do regionu pomocniczego lub lokalnych maszyn wirtualnych VMware lub serwerów fizycznych na platformie Azure należy pamiętać o następujących kwestiach:
 
-- Z wersji 9.30. x. x rozszerzenia usługi mobilności (dla maszyn wirtualnych platformy Azure) i agenta usługi mobilności (dla komputerów VMware/fizycznych) Niektóre systemy operacyjne muszą mieć uruchomioną aktualizację stosu obsługi i algorytm SHA-2. Szczegóły przedstawiono w poniższej tabeli.
-- Zainstaluj aktualizację i algorytm SHA-2 zgodnie z połączoną bazą wiedzy.
+- Z wersji 9.30. x. x (oczekiwana wersja: od listopada 2019) rozszerzenia usługi mobilności (dla maszyn wirtualnych platformy Azure) i agenta usługi mobilności (dla komputerów VMware/fizycznych) Niektóre systemy operacyjne maszyn muszą mieć uruchomioną aktualizację stosu obsługi i algorytm SHA-2. Szczegóły przedstawiono w poniższej tabeli.
+- Zainstaluj aktualizację i algorytm SHA-2 zgodnie z połączoną bazą wiedzy. Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami.
 - Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
 
 **System operacyjny** | **Maszyna wirtualna platformy Azure** | **Maszyna wirtualna VMware/komputer fizyczny**

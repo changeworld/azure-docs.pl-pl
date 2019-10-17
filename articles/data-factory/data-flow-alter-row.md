@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: fc497837792075501bcd92f6ee07ad9ee4fe2dfa
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: fff08b3e046161fbedefdc55f4e6a39a7f965f80
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027004"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387271"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory zmodyfikować przekształcenia wierszy
 
@@ -28,7 +28,7 @@ Użyj przekształcenia ALTER Row, aby ustawić zasady wstawiania, usuwania, aktu
 
 Tworzenie przekształcenia ALTER Row i Określanie zasad wiersza z warunkiem `true()`. Każdy wiersz, który nie spełnia żadnych wcześniej zdefiniowanych wyrażeń, zostanie oznaczony dla określonych zasad wiersza. Domyślnie każdy wiersz, który nie spełnia żadnego wyrażenia warunkowego, zostanie oznaczony dla `Insert`.
 
-![ALTER wiersz po jednym z zasad](media/data-flow/alter-row4.png "Zmień wiersz jednej zasady")
+![Zmień wiersz o jedną zasadę](media/data-flow/alter-row4.png "Zmień wiersz o jedną zasadę")
 
 > [!NOTE]
 > Aby oznaczyć wszystkie wiersze z jedną zasadą, można utworzyć warunek dla tych zasad i określić warunek jako `true()`.
@@ -37,7 +37,7 @@ Tworzenie przekształcenia ALTER Row i Określanie zasad wiersza z warunkiem `tr
 
 Włącz tryb debugowania przepływu danych, aby wyświetlić wyniki zasad ALTER Row w okienku Podgląd danych. Wykonanie polecenia ALTER Row w trybie debugowania przepływu danych nie spowoduje utworzenia akcji DDL ani DML względem obiektu docelowego. Aby te akcje były wykonywane, należy wykonać przepływ danych wewnątrz działania wykonywania przepływu danych w ramach potoku.
 
-![Zmień zasady wierszy](media/data-flow/alter-row3.png "ALTER Row zasady")
+![Zasady ALTER Row](media/data-flow/alter-row3.png "Zasady ALTER Row")
 
 Pozwoli to sprawdzić i wyświetlić stan każdego wiersza w oparciu o Twoje warunki. Istnieje ikona reprezentuje dla każdej akcji INSERT, Update, DELETE i Upsert, która będzie miała miejsce w przepływie danych, wskazująca, która akcja będzie wykonywana po wykonaniu przepływu danych w potoku.
 
@@ -45,7 +45,7 @@ Pozwoli to sprawdzić i wyświetlić stan każdego wiersza w oparciu o Twoje war
 
 Aby zmiana wiersza działała, musisz mieć typ ujścia bazy danych. W ustawieniach ujścia należy ustawić wszystkie akcje odpowiadające warunkom zmiany wiersza, które mają być dozwolone.
 
-![Zmień](media/data-flow/alter-row2.png "ujścia") wiersza ALTER Row
+![Zmień ujścia wierszy](media/data-flow/alter-row2.png "Zmień ujścia wierszy")
 
 Domyślnym zachowaniem w przepływie danych ADF z ujściami bazy danych jest wstawianie wierszy. Jeśli chcesz zezwolić na aktualizacje, upserts i usunięcia, należy również zaznaczyć te pola w zlewie, aby zezwolić na wykonywanie akcji.
 

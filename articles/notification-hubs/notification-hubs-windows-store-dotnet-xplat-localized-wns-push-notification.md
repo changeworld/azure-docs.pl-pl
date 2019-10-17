@@ -17,14 +17,14 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 57353999ff94aa8fd4499b511c86cd59d24d1f0a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 4ccf62dd8a249c9ba23bbb4510164b35a58db917
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213384"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387400"
 ---
-# <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie zlokalizowanych powiadomień push do aplikacji systemu Windows przy użyciu usługi Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie zlokalizowanych powiadomień wypychanych do aplikacji systemu Windows przy użyciu usługi Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Sklep Windows — C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -32,7 +32,7 @@ ms.locfileid: "71213384"
 
 ## <a name="overview"></a>Przegląd
 
-W tym samouczku przedstawiono sposób wysyłania zlokalizowanych powiadomień push do urządzeń przenośnych zarejestrowanych w usłudze Notification Hubs. W tym samouczku zaktualizujesz aplikacje utworzone w temacie [Samouczek: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) na potrzeby obsługi następujących scenariuszy:
+W tym samouczku przedstawiono sposób wysyłania zlokalizowanych powiadomień push do urządzeń przenośnych zarejestrowanych w usłudze Notification Hubs. W samouczku zaktualizujesz aplikacje utworzone w [samouczku: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md), aby obsługiwać następujące scenariusze:
 
 - Aplikacja dla Sklepu Windows umożliwia urządzeniom klienckim określenie języka oraz subskrybowanie różnych kategorii ważnych wiadomości.
 - Aplikacja zaplecza emituje powiadomienia, korzystając z funkcji **tag** i **szablon** usługi Azure Notification Hubs.
@@ -48,9 +48,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj kroki z artykułu [Samouczek: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
+Ukończenie [samouczka: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 
-W artykule [Samouczek: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) utworzono aplikację, która używała **tagów** do subskrybowania powiadomień w różnych **kategoriach** wiadomości. W tym samouczku użyjesz funkcji **szablon** usługi Notification Hubs, aby jeszcze łatwiej dostarczać **zlokalizowane** powiadomienia z ważnymi wiadomościami.
+W [samouczku: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) utworzono aplikację, która używała **tagów** do subskrybowania powiadomień w różnych **kategoriach** wiadomości. W tym samouczku użyjesz funkcji **szablon** usługi Notification Hubs, aby jeszcze łatwiej dostarczać **zlokalizowane** powiadomienia z ważnymi wiadomościami.
 
 Na wysokim poziomie szablony są sposobem określania formatu, w którym konkretne urządzenie powinno odebrać powiadomienie. Szablon określa dokładny format ładunku, odwołując się do właściwości stanowiących część komunikatu wysyłanego przez zaplecze aplikacji. W tym samouczku aplikacja zaplecza wysyła komunikat niezależny od ustawień regionalnych zawierający wszystkie obsługiwane języki:
 
@@ -78,7 +78,7 @@ Aby dowiedzieć się więcej o szablonach, zobacz artykuł [Push Templates (Szab
 
 ## <a name="update-windows-app-to-support-locale-information"></a>Aktualizowanie aplikacji systemu Windows o obsługę informacji o ustawieniach regionalnych
 
-1. Otwórz rozwiązanie programu Visual Studio utworzone w artykule [Samouczek: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
+1. Otwórz rozwiązanie programu Visual Studio utworzone w ramach [samouczka: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 2. Zaktualizuj plik `MainPage.xaml` rozwiązania, aby uwzględnić pole kombi ustawień regionalnych:
 
     ```xml

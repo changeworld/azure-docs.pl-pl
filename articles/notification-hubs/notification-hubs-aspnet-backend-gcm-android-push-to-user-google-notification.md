@@ -1,5 +1,5 @@
 ---
-title: Wypychanie powiadomień do konkretnych użytkowników aplikacji systemu Android przy użyciu usługi Azure Notification Hubs | Microsoft Docs
+title: Wysyłanie powiadomień do określonych aplikacji systemu Android przy użyciu usługi Azure Notification Hubs | Microsoft Docs
 description: Dowiedz się, jak wysyłać powiadomienia push do konkretnych użytkowników przy użyciu usługi Azure Notification Hubs.
 documentationcenter: android
 services: notification-hubs
@@ -17,21 +17,21 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 1b867d571e97209c4385c1f23b49fe5a03ab94d5
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: c5c9ec26c9387cd9ae129002697210c2b342ab9b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212079"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385883"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Samouczek: Powiadomienia wypychane do określonych użytkowników aplikacji systemu Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging (przestarzałe)
+# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Samouczek: wysyłanie powiadomień wypychanych do określonych użytkowników aplikacji systemu Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging (przestarzałe)
 
 > [!WARNING]
 > Od 10 kwietnia 2018 firma Google ma przestarzałe Google Cloud Messaging (GCM). Serwer GCM i interfejsy API klienta są przestarzałe i zostaną usunięte od razu do 29 maja 2019. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące GCM i FCM](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-W tym samouczku pokazano, jak wysyłać powiadomienia push do użytkownika konkretnej aplikacji na konkretnym urządzeniu za pomocą usługi Azure Notification Hubs. Zaplecze ASP.NET interfejsu WebAPI jest używane do uwierzytelniania klientów oraz generowania powiadomień, jak pokazano w artykule ze wskazówkami [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Ten samouczek jest oparty na centrum powiadomień utworzonym w ramach artykułu [Samouczek: wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md).
+W tym samouczku pokazano, jak wysyłać powiadomienia wypychane do użytkownika konkretnej aplikacji na konkretnym urządzeniu za pomocą usługi Azure Notification Hubs. Zaplecze ASP.NET interfejsu WebAPI jest używane do uwierzytelniania klientów oraz generowania powiadomień, jak pokazano w artykule ze wskazówkami [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Ten samouczek jest oparty na centrum powiadomień utworzonym w ramach artykułu [Samouczek: wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md).
 
 W tym samouczku wykonasz następujące kroki:
 
@@ -42,13 +42,13 @@ W tym samouczku wykonasz następujące kroki:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj kroki z artykułu [Samouczek: wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md) przed rozpoczęciem tego samouczka.
+Przed rozpoczęciem tego samouczka wykonaj kroki podane w artykule [Samouczek: wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="create-the-android-project"></a>Tworzenie projektu systemu Android
 
-Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ramach artykułu [Samouczek: wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md).
+Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ramach artykułu [Samouczek: wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md).
 
 1. Otwórz plik `res/layout/activity_main.xml` i zastąp następujące definicje zawartości:
 
@@ -406,7 +406,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     }
     ```
 
-    Program obsługi przycisku **logowania** generuje podstawowy token uwierzytelniania przy użyciu nazwy użytkownika i hasła wejściowego (reprezentuje dowolny token używany przez schemat uwierzytelniania), a następnie używa `RegisterClient` do wywoływania zaplecza na potrzeby rejestracji `login` .
+    Procedura obsługi `login` dla przycisku **Zaloguj** generuje podstawowy token uwierzytelniania przy użyciu nazwy użytkownika i hasła (reprezentuje dowolny token używany przez schemat uwierzytelniania), a następnie używa `RegisterClient` do wywołania zaplecza do rejestracji.
 
     Metoda `sendPush` wywołuje zaplecze, aby wyzwolić bezpieczne powiadomienie do użytkownika w oparciu o tag użytkownika. Docelowa usługa powiadomień platformy dla metody `sendPush` zależy od przekazanego ciągu `pns`.
 

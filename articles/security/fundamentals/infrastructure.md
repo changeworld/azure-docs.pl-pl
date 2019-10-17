@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 3da9fef8c7de248f30100f94724cd5dcdb7db8e3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a17d98d49d2c653e2498a663829d26e8a171fd74
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727071"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433512"
 ---
 # <a name="azure-infrastructure-security"></a>Zabezpieczenia infrastruktury platformy Azure
 Microsoft Azure działa w centrach danych zarządzanych i obsługiwanych przez firmę Microsoft. Te geograficznie rozproszone centra danych są zgodne z najważniejszymi standardami branżowymi, takimi jak ISO/IEC 27001:2013 i NIST SP 800-53, w celu zapewnienia bezpieczeństwa i niezawodności. Centra danych są zarządzane, monitorowane i administrowane przez pracowników operacyjnych firmy Microsoft. Personel operacyjny ma lata doświadczenia w dostarczaniu największych Usługi online na świecie z ciągłością 24 x 7.
@@ -45,14 +45,14 @@ Ważne jest zrozumienie działu odpowiedzialności między ty i firmą Microsoft
 
 Użytkownik zawsze odpowiada za następujące kwestie, niezależnie od typu wdrożenia:
 
-- Data
+- Dane
 - Punkty końcowe
 - Konto
 - Zarządzanie dostępem
 
-Upewnij się, że rozumiesz dział odpowiedzialności między ty i firmą Microsoft w ramach wdrożenia SaaS, PaaS i IaaS. Aby uzyskać więcej informacji, zobacz [udostępnianie obowiązków w chmurze obliczeniowej](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf).
+Upewnij się, że rozumiesz dział odpowiedzialności między ty i firmą Microsoft w ramach wdrożenia SaaS, PaaS i IaaS. Aby uzyskać więcej informacji, zobacz [udostępnianie obowiązków w chmurze obliczeniowej](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225237/1/Shared%20Responsibilities%20for%20Cloud%20Computing%20(2017-04-03).pdf).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat tego, co firma Microsoft pomaga w zabezpieczeniu infrastruktury platformy Azure, zobacz:
 
 - [Funkcje platformy Azure, lokalne i zabezpieczenia fizyczne](physical-security.md)

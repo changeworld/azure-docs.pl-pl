@@ -2,29 +2,29 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 07/08/2018
-ms.author: wgries
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 359347e41264711a6ac0fa4d2dd0c3633590e917
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 07cae1cee9810646de5bf9610a29991376736373
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183304"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391735"
 ---
-Ten błąd może wystąpić, gdy usługa Azure File Sync jest niedostępny z serwera. Ten błąd można rozwiązać, klikając pracy przez następujące kroki:
+Ten błąd może wystąpić, gdy usługa Azure File Sync jest niedostępna z serwera. Ten błąd można rozwiązać, wykonując następujące czynności:
 
-1. Sprawdzić, czy usługa Windows `FileSyncSvc.exe` nie jest blokowany przez zaporę.
-2. Sprawdź, czy port 443 został otwarty na połączenia wychodzące do usługi Azure File Sync. Można to zrobić za pomocą `Test-NetConnection` polecenia cmdlet. Adres URL `<azure-file-sync-endpoint>` symbolu zastępczego poniżej można znaleźć w [ustawień serwera proxy i zapory usługi Azure File Sync](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) dokumentu. 
+1. Sprawdź, czy usługa systemu Windows `FileSyncSvc.exe` nie jest blokowana przez zaporę.
+2. Sprawdź, czy port 443 jest otwarty dla połączeń wychodzących z usługą Azure File Sync. Można to zrobić za pomocą polecenia cmdlet `Test-NetConnection`. Adres URL `<azure-file-sync-endpoint>` z symbolem zastępczym poniżej znajduje się w dokumencie [Azure File Sync serwer proxy i ustawienia zapory](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) . 
 
     ```powershell
     Test-NetConnection -ComputerName <azure-file-sync-endpoint> -Port 443
     ```
 
-3. Upewnij się, że konfiguracja serwera proxy jest zgodne z oczekiwanym. Można to zrobić za pomocą `Get-StorageSyncProxyConfiguration` polecenia cmdlet. Więcej informacji na temat konfigurowania konfiguracji serwera proxy dla usługi Azure File Sync można znaleźć w [ustawień serwera proxy i zapory usługi Azure File Sync](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall).
+3. Upewnij się, że konfiguracja serwera proxy jest ustawiona zgodnie z oczekiwaniami. Można to zrobić za pomocą polecenia cmdlet `Get-StorageSyncProxyConfiguration`. Więcej informacji na temat konfigurowania konfiguracji serwera proxy dla Azure File Sync można znaleźć w [Azure File Sync serwerze proxy i ustawieniach zapory](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall).
 
     ```powershell
     $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
@@ -32,4 +32,4 @@ Ten błąd może wystąpić, gdy usługa Azure File Sync jest niedostępny z ser
     Get-StorageSyncProxyConfiguration
     ```
     
-4. Aby uzyskać dodatkową pomoc, rozwiązywania problemów z łącznością w sieci, skontaktuj się z administratorem sieci.
+4. Skontaktuj się z administratorem sieci, aby uzyskać dodatkową pomoc dotyczącą rozwiązywania problemów z siecią.

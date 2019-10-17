@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2293eac45da6f53b0cd29fda68b0ddc76aea1a6c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082556"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390634"
 ---
 # <a name="openshift-in-azure"></a>Usługa OpenShift na platformie Azure
 
@@ -31,7 +31,7 @@ OpenShift obejmuje Kubernetes do organizowania i zarządzania kontenerami. Dodaj
 - Łatwe wdrażanie i skalowanie.
 - Długoterminowa konserwacja dla zespołów i aplikacji.
 
-Dostępnych jest wiele wersji OpenShift.  W tych wersjach obecnie klienci mogą wdrażać na platformie Azure tylko dwie te wersje: Platforma kontenera OpenShift i OKD (dawniej pochodzenie OpenShift).
+Dostępnych jest wiele wersji OpenShift.  W tych wersjach już dziś są dostępne tylko dwie wersje, które klienci mogą wdrażać na platformie Azure: OpenShift kontenera platform i OKD (dawniej pochodzenie OpenShift).
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -49,9 +49,9 @@ OKD to projekt typu ["open source"](https://www.okd.io/) OpenShift, który jest 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Konfigurowanie typowych wymagań wstępnych dotyczących programu OpenShift na platformie Azure](./openshift-prerequisites.md)
-- [Wdrażanie platformy kontenera OpenShift na platformie Azure](./openshift-container-platform.md)
-- [Wdróż niezarządzaną ofertę portalu OpenShift platformy kontenera](./openshift-marketplace-self-managed.md)
+- [Konfigurowanie typowych wymagań wstępnych dotyczących programu OpenShift na platformie Azure](./openshift-container-platform-3x-prerequisites.md)
+- [Wdrażanie platformy kontenera OpenShift na platformie Azure](./openshift-container-platform-3x.md)
+- [Wdróż niezarządzaną ofertę portalu OpenShift platformy kontenera](./openshift-container-platform-3x-marketplace-self-managed.md)
 - [Wdróż OpenShift w Azure Stack](./openshift-azure-stack.md)
-- [Zadania po wdrożeniu](./openshift-post-deployment.md)
-- [Rozwiązywanie problemów z wdrażaniem OpenShift](./openshift-troubleshooting.md)
+- [Zadania po wdrożeniu](./openshift-container-platform-3x-post-deployment.md)
+- [Rozwiązywanie problemów z wdrażaniem OpenShift](./openshift-container-platform-3x-troubleshooting.md)

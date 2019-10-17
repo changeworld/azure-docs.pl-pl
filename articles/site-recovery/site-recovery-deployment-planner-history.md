@@ -6,18 +6,26 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 07/29/2019
+ms.date: 10/16/2019
 ms.author: dapatil
-ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620098"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433414"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Historia wersji Planista wdrażania usługi Azure Site Recovery
 
 W tym artykule przedstawiono historię wszystkich wersji Planista wdrażania usługi Azure Site Recovery wraz z poprawkami, znanymi ograniczeniami w każdej i ich datach wydania.
+
+## <a name="version-251"></a>Wersja 2,51
+
+**Data wydania: 22 sierpnia 2019**
+
+**Prefix**
+
+- Rozwiązano problem z rekomendacją kosztów w Planista wdrażania wersja 2,5
 
 ## <a name="version-25"></a>Wersja 2,5
 
@@ -101,7 +109,7 @@ W tym artykule przedstawiono historię wszystkich wersji Planista wdrażania us�
 
 **Znane ograniczenia:**
 
-- W przypadku odzyskiwania po awarii funkcji Hyper-V do platformy Azure maszyna wirtualna o nazwie zawierającej `"`znaki `[`takie `]`jak: ``` ` ``` `,`,,, i nie jest obsługiwana. Jeśli profilowana, generowanie raportu zakończy się niepowodzeniem lub będzie mieć niepoprawny wynik.
+- W przypadku odzyskiwania po awarii z funkcji Hyper-V do platformy Azure maszyna wirtualna o nazwie zawierającej znaki takie jak `,`, `"`, `[`, `]` i ``` ` ``` nie jest obsługiwana. Jeśli profilowana, generowanie raportu zakończy się niepowodzeniem lub będzie mieć niepoprawny wynik.
 - W przypadku odzyskiwania po awarii programu VMware do platformy Azure maszyna wirtualna o nazwie zawierającej przecinek nie jest obsługiwana. Po profilowaniu generowanie raportu kończy się niepowodzeniem lub będzie miało niepoprawny wynik.
 
 ## <a name="version-131"></a>Wersja 1.3.1

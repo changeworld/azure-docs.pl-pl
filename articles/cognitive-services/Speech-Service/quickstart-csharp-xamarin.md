@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: jhakulin
 ms.custom: ''
-ms.openlocfilehash: 02031e8e2800329134eaf34f5f99c93a20b99aac
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c9467bac8b5998252c021faca4eb4177c42a1736
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71804055"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387387"
 ---
 # <a name="quickstart-recognize-speech-using-cross-platform-xamarin-app-by-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy przy użyciu międzyplatformowej aplikacji Xamarin przy użyciu zestawu Speech SDK
 
@@ -64,7 +64,9 @@ Teraz Dodaj kod XAML, który definiuje interfejs użytkownika aplikacji, a nast�
 
 1. W obsłudze `OnRecognitionButtonClicked` Znajdź ciąg `YourServiceRegion` i zastąp go [regionem](regions.md) skojarzonym z subskrypcją. (Na przykład użyj `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
-1. Następnie należy utworzyć [usługę platformy Xamarin](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), która jest używana do wykonywania zapytań dotyczących uprawnień mikrofonu z różnych projektów platformy (platformy UWP, Android i iOS). Aby to zrobić, Dodaj nowy folder `Services` w projekcie `helloworld` i Utwórz nowy C# plik źródłowy w tym obszarze (kliknij prawym przyciskiem myszy folder `Services` i **Dodaj** > **nowy element**@no__t **-7)** i zmień jego nazwę na `IMicrophoneService.cs` i umieść cały kod z następujący fragment kodu w tym pliku: 0 @ no__t-11
+1. Następnie należy utworzyć [usługę platformy Xamarin](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), która jest używana do wykonywania zapytań dotyczących uprawnień mikrofonu z różnych projektów platformy (platformy UWP, Android i iOS). Aby to zrobić, Dodaj nowy folder `Services` w projekcie `helloworld` i Utwórz nowy C# plik źródłowy w tym obszarze (kliknij prawym przyciskiem myszy folder `Services` i **Dodaj** > **nowy element**@no__t **-7)** i zmień jego nazwę na `IMicrophoneService.cs` i umieść cały kod z następujący fragment kodu w tym pliku:
+
+[!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Dodaj przykładowy kod dla projektu `helloworld.Android`
 

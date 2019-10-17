@@ -1,5 +1,5 @@
 ---
-title: Wypychanie zlokalizowanych powiadomień do urządzeń z systemem iOS przy użyciu usługi Azure Notification Hubs | Microsoft Docs
+title: Wysyłanie zlokalizowanych powiadomień wypychanych do systemu iOS przy użyciu usługi Azure Notification Hubs | Microsoft Docs
 description: Dowiedz się, jak przy użyciu usługi Azure Notification Hubs używać wypychanych powiadomień z systemem iOS.
 services: notification-hubs
 documentationcenter: ios
@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8eb4cf5e12c16c3c164ecce41a84a9cd32fd85ee
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211893"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385656"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Samouczek: Wypychanie zlokalizowanych powiadomień do urządzeń z systemem iOS przy użyciu usługi Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Samouczek: wysyłanie zlokalizowanych powiadomień wypychanych do systemu iOS przy użyciu usługi Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Sklep Windows — C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -82,7 +82,7 @@ Aby uzyskać więcej informacji na temat szablonów, zobacz artykuł [Szablony](
 
 W tej sekcji zmodyfikujesz aplikację z informacjami o aplikacji, która została utworzona w temacie [Wysyłanie najważniejszych wiadomości przy użyciu usługi Notification Hubs] wiadomości w celu wysyłania zlokalizowanych najważniejszych wiadomości przy użyciu szablonów.
 
-`MainStoryboard_iPhone.storyboard`W programie Dodaj przesegmentowanie kontrolki w trzech językach: Angielski, francuski i mandarynki.
+W `MainStoryboard_iPhone.storyboard` Dodaj przesegmentowanie kontrolki w trzech językach: angielski, francuski i mandarynki.
 
 ![Tworzenie scenorysu interfejsu użytkownika systemu iOS][13]
 
@@ -92,7 +92,7 @@ Następnie upewnij się, że dodano element IBOutlet w plik viewcontroller. h, j
 
 ## <a name="build-the-ios-app"></a>Tworzenie aplikacji dla systemu iOS
 
-1. `Notification.h`W programie`retrieveLocale` Dodaj metodę i zmodyfikuj metody Store i Subskrybuj, jak pokazano w poniższym kodzie:
+1. W `Notification.h` Dodaj metodę `retrieveLocale` i zmodyfikuj metody Store i Subskrybuj, jak pokazano w poniższym kodzie:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -103,7 +103,7 @@ Następnie upewnij się, że dodano element IBOutlet w plik viewcontroller. h, j
 
     - (int) retrieveLocale;
     ```
-    W programie `storeCategoriesAndSubscribe` zmodyfikuj metodę, dodając parametrizapisującgowustawieniachdomyślnychużytkownika:`locale` `Notification.m`
+    W `Notification.m` zmodyfikuj metodę `storeCategoriesAndSubscribe`, dodając parametr `locale` i zapisując go w ustawieniach domyślnych użytkownika:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
@@ -141,7 +141,7 @@ Następnie upewnij się, że dodano element IBOutlet w plik viewcontroller. h, j
     }
     ```
 
-    Używasz metody `registerTemplateWithDeviceToken`, `registerNativeWithDeviceToken`a nie. Podczas rejestrowania dla szablonu należy podać szablon JSON, a także nazwę szablonu (ponieważ aplikacja może chcieć zarejestrować różne szablony). Pamiętaj o zarejestrowaniu kategorii jako tagów, aby upewnić się, że chcesz otrzymywać powiadomienia o tych wiadomościach.
+    Używasz metody `registerTemplateWithDeviceToken`, a nie `registerNativeWithDeviceToken`. Podczas rejestrowania dla szablonu należy podać szablon JSON, a także nazwę szablonu (ponieważ aplikacja może chcieć zarejestrować różne szablony). Pamiętaj o zarejestrowaniu kategorii jako tagów, aby upewnić się, że chcesz otrzymywać powiadomienia o tych wiadomościach.
 
     Dodaj metodę pobierania ustawień regionalnych z ustawień domyślnych użytkownika:
 
@@ -155,13 +155,13 @@ Następnie upewnij się, że dodano element IBOutlet w plik viewcontroller. h, j
     }
     ```
 
-2. Teraz, po zmodyfikowaniu `Notifications` klasy, należy upewnić się, `ViewController` że program korzysta z nowego `UISegmentControl`. Dodaj następujący wiersz w `viewDidLoad` metodzie, aby upewnić się, że wyświetlane są aktualnie wybrane ustawienia regionalne:
+2. Teraz, po zmodyfikowaniu klasy `Notifications`, należy upewnić się, że `ViewController` korzysta z nowego `UISegmentControl`. Dodaj następujący wiersz w metodzie `viewDidLoad`, aby upewnić się, że wyświetlane są obecnie wybrane ustawienia regionalne:
 
     ```objc
     self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
     ```
 
-    Następnie w `subscribe` metodzie Zmień wywołanie `storeCategoriesAndSubscribe` na następujący kod:
+    Następnie w metodzie `subscribe` Zmień wywołanie na `storeCategoriesAndSubscribe` do następującego kodu:
 
     ```objc
     [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
@@ -176,7 +176,7 @@ Następnie upewnij się, że dodano element IBOutlet w plik viewcontroller. h, j
     }];
     ```
 
-3. Na koniec należy zaktualizować `didRegisterForRemoteNotificationsWithDeviceToken` metodę w AppDelegate. m, aby można było poprawnie odświeżać rejestrację po uruchomieniu aplikacji. Zmień wywołanie `subscribe` metody powiadomień z następującym kodem:
+3. Na koniec należy zaktualizować metodę `didRegisterForRemoteNotificationsWithDeviceToken` w AppDelegate. m, aby można było poprawnie odświeżać rejestrację po uruchomieniu aplikacji. Zmień wywołanie metody `subscribe` powiadomienia przy użyciu następującego kodu:
 
     ```obj-c
     NSSet* categories = [self.notifications retrieveCategories];
@@ -194,7 +194,7 @@ Następnie upewnij się, że dodano element IBOutlet w plik viewcontroller. h, j
 
 ## <a name="optional-send-localized-template-notifications-from-the-device"></a>obowiązkowe Wyślij zlokalizowane powiadomienia szablonu z urządzenia
 
-Jeśli nie masz dostępu do programu Visual Studio lub chcesz tylko testować wysyłanie zlokalizowanych powiadomień szablonów bezpośrednio z aplikacji na urządzeniu. Można dodać zlokalizowane parametry szablonu do `SendNotificationRESTAPI` metody zdefiniowanej w poprzednim samouczku.
+Jeśli nie masz dostępu do programu Visual Studio lub chcesz tylko testować wysyłanie zlokalizowanych powiadomień szablonów bezpośrednio z aplikacji na urządzeniu. Można dodać zlokalizowane parametry szablonu do metody `SendNotificationRESTAPI` zdefiniowanej w poprzednim samouczku.
 
 ```objc
 - (void)SendNotificationRESTAPI:(NSString*)categoryTag

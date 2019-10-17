@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 992bc7acbb02dcdbc33d00349ddc7ae821f3ed01
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 55ff134bfa76634250b7495120432d7310b07c06
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329457"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431879"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -39,17 +39,17 @@ Cennik [usługi Azure Application Insights][start] to model z **płatnością zg
 
 Jeśli jeszcze nie korzystasz z Application Insights, możesz użyć [kalkulatora cen Azure monitor](https://azure.microsoft.com/pricing/calculator/?service=monitor) , aby oszacować koszt używania Application Insights. Zacznij od wprowadzenia "Azure Monitor" w polu wyszukiwania i kliknięcia kafelka Azure Monitor wyników. Przewiń w dół stronę do Azure Monitor i wybierz pozycję Application Insights z listy rozwijanej Typ.  W tym miejscu możesz wprowadzić liczbę GB danych, które mają być zbierane miesięcznie, a więc pytanie, jak dużo danych będzie Application Insights zbierać monitorowanie aplikacji. 
 
-Istnieją dwa podejścia do rozwiązania tego zagadnienia: użycie domyślnego monitorowania i próbkowania adaptacyjnego, które jest dostępne w zestawie SDK ASP.NET, lub estimtate likley pozyskiwania danych w oparciu o to, co inni klienci będą mogli zobaczyć. 
+Istnieją dwa podejścia do rozwiązania tego zagadnienia: użycie domyślnego monitorowania i próbkowania adaptacyjnego, które jest dostępne w zestawie SDK ASP.NET, lub oszacowanie potencjalnego pozyskiwania danych na podstawie tego, co inni klienci będą mogli zobaczyć. 
 
 ### <a name="data-collection-when-using-sampling"></a>Zbieranie danych przy użyciu próbkowania
 
 Przy [pobieraniu próbkowania](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)zestawu SDK ASP.NET wolumin danych jest dostosowywany automatycznie, aby zachować w ramach określonego maksymalnego natężenia ruchu dla domyślnego monitorowania Application Insights. Jeśli aplikacja tworzy niską ilość danych telemetrycznych, na przykład podczas debugowania lub z powodu niskiego użycia, elementy nie zostaną porzucone przez procesor próbkowania, o ile ilość poniżej skonfigurowanych zdarzeń na sekundę. W przypadku aplikacji o dużym nasileniu, z domyślnym progiem 5 zdarzeń na sekundę, próbkowanie adaptacyjne ograniczy liczbę codziennych zdarzeń do 432 000. Przy użyciu typowego średniego rozmiaru zdarzenia o wartości 1 KB odpowiada to 13,4 GB danych telemetrycznych na każdy węzeł obsługujący aplikację (ponieważ próbkowanie jest wykonywane lokalnie dla każdego węzła). 
 
-W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, można zastosować [próbkowanie](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) pozyskiwania próbek, gdy dane są receved przez Application Insights na podstawie procentowej ilości danych do zachowania lub [próbkowania o stałej szybkości dla ASP.NET, ASP.NET Core i Java witryny internetowe](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) umożliwiające zmniejszenie ruchu wysyłanego z serwera sieci Web i przeglądarek sieci Web
+W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, można zastosować [próbkowanie](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) pozyskiwania próbek, gdy dane są odbierane przez Application Insights na podstawie procentu ilości danych do zachowania lub [próbkowania o stałym rozmiarze dla ASP.NET, ASP.NET Core i Java witryny internetowe](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) umożliwiające zmniejszenie ruchu wysyłanego z serwera sieci Web i przeglądarek sieci Web
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Dowiedz się, co zbiera podobne odbiorcy
 
-Na stronie Kalkulator cen usługi Azure Monitoring dla Application Insights w przypadku włączenia funkcji "oszacowanie ilości danych opartych na działaniu aplikacji" można podać dane wejściowe aplikacji (żądania miesięcznie i wyświetlenia stron miesięcznie). Zbieraj dane telemetryczne po stronie klienta, a następnie Kalkulator wskaże medianę i 90-procentową ilość danych zbieranych przez podobne aplikacje. Oczywiście te idea obejmują zakres konfiguracji Application Insights (np. niektóre z nich mają [próbkowanie](../../azure-monitor/app/sampling.md)domyślne, niektóre nie mają żadnego próbkowania itp.), dlatego nadal masz kontrolę, aby zmniejszyć ilość danych, które pozostały poniżej poziomu średniego przy użyciu próbkowania. Jest to jednak punkt początkowy, który umożliwia zapoznanie się z innymi, podobnym klientom. 
+Na stronie Kalkulator cen usługi Azure Monitoring dla Application Insights w przypadku włączenia funkcji "oszacowanie ilości danych opartych na działaniu aplikacji" można podać dane wejściowe aplikacji (żądania miesięcznie i wyświetlenia stron miesięcznie). Zbieraj dane telemetryczne po stronie klienta, a następnie Kalkulator wskaże medianę i 90% ilość danych zbieranych przez podobne aplikacje. Oczywiście te aplikacje rozciągają się na zakres konfiguracji Application Insights (np. niektóre z nich mają [próbkowanie](../../azure-monitor/app/sampling.md)domyślne, niektóre nie mają żadnego próbkowania itp.), dlatego nadal masz kontrolę, aby zmniejszyć ilość danych, które pozostały poniżej poziomu średniego przy użyciu próbkowania. Jest to jednak punkt początkowy, który umożliwia zapoznanie się z innymi, podobnym klientom. 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Zapoznaj się z użyciem i szacunkowymi kosztami
 
@@ -73,7 +73,7 @@ Opłaty za Application Insights są dodawane do rachunku na korzystanie z platfo
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Wyświetlanie Application Insights użycia na rachunku na platformie Azure 
 
-Platforma Azure oferuje bardzo przydatne funkcje w [Azure Cost Management i centrum rozliczeń](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Na przykład funkcja "analiza kosztów" umożliwia wyświetlanie wydatków dotyczących zasobów platformy Azure. Dodanie filtru według typu zasobu (do Microsoft. Insights/Components dla Application Insights) umożliwi wyświetlenie wydatków.
+Platforma Azure oferuje bardzo przydatne funkcje w [Azure Cost Management i centrum rozliczeń](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Na przykład funkcja "analiza kosztów" umożliwia wyświetlanie wydatków dotyczących zasobów platformy Azure. Dodawanie filtru według typu zasobu (do Microsoft. Insights/Components for Application Insights) umożliwi śledzenie wydatków.
 
 Więcej informacji o użyciu można uzyskać, [pobierając użycie z witryny Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). W pobranym arkuszu kalkulacyjnym można zobaczyć użycie na zasób platformy Azure dziennie. W tym arkuszu kalkulacyjnym programu Excel można znaleźć użycie z zasobów Application Insights, wybierając najpierw filtrowanie w kolumnie "kategoria licznika", aby pokazać "Application Insights" i "Log Analytics", a następnie dodać filtr w kolumnie "identyfikator wystąpienia", która jest "zawiera Microsoft. Insights/Components.  Większość Application Insights użycie jest raportowane na miernikach z kategorią licznika Log Analytics, ponieważ istnieje pojedyncze zaplecze dzienników dla wszystkich składników Azure Monitor.  Tylko zasoby Application Insights ze starszych warstw cenowych i wieloetapowych testów sieci Web są zgłaszane z kategorią miernika Application Insights.  Użycie jest wyświetlane w kolumnie "zużyta ilość", a jednostka dla każdego wpisu jest pokazywana w kolumnie "jednostka miary".  Dostępne są więcej szczegółów, które ułatwiają [zrozumienie Microsoft Azure rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
@@ -96,9 +96,15 @@ systemEvents
 
 Tego zapytania można użyć w [alercie dziennika platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) w celu skonfigurowania alertów dla woluminów danych. 
 
-Ilość wysyłanych danych może być zarządzana na trzy sposoby:
+Ilość wysyłanych danych może być zarządzana przy użyciu następujących technik:
 
 * **Próbkowanie**: możesz użyć próbkowania, aby zmniejszyć ilość danych telemetrycznych wysyłanych z serwera i aplikacji klienckich przy minimalnym zniekształceniu metryk. Próbkowanie to podstawowe narzędzie, za pomocą którego można dostroić ilość wysyłanych danych. Dowiedz się więcej o [funkcjach pobierania próbek](../../azure-monitor/app/sampling.md).
+
+* **Ogranicz wywołania AJAX**: można [ograniczyć liczbę wywołań AJAX, które mogą być zgłaszane](../../azure-monitor/app/javascript.md#configuration) w każdym widoku strony, lub wyłączyć raportowanie AJAX.
+
+* **Wyłącz niepotrzebne moduły**: [Edytuj plik ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) , aby wyłączyć niepotrzebne moduły kolekcji. Na przykład można zdecydować, że liczniki wydajności lub dane zależności są nieistotne.
+
+* **Metryki przed agregacją**: w przypadku umieszczenia wywołań TrackMetric w aplikacji można zredukować ruch przy użyciu przeciążenia, które akceptuje Obliczanie średniej i odchylenia standardowego partii pomiarów. Lub można użyć [wstępnie agregowanego pakietu](https://www.myget.org/gallery/applicationinsights-sdk-labs).
  
 * **Dzienny limit**: podczas tworzenia zasobu Application Insights w Azure Portal dzienny limit jest ustawiany na 100 GB/dzień. Podczas tworzenia zasobu Application Insights w programie Visual Studio wartość domyślna to małe (tylko 32,3 MB/dzień). Domyślna wartość limitu dziennego jest ustawiana na ułatwienia testowania. Przed wdrożeniem aplikacji w środowisku produkcyjnym należy zamierzać, że użytkownik będzie zgłaszał dzienny limit. 
 
@@ -111,16 +117,6 @@ Ilość wysyłanych danych może być zarządzana na trzy sposoby:
     Usunięto ograniczenie dla niektórych typów subskrypcji, które mają środki kredytowe, których nie można użyć dla Application Insights. Wcześniej, jeśli subskrypcja ma limit wydatków, w oknie dialogowym dzienne zakończenie znajdują się instrukcje usuwania limitu wydatków i włączania codziennych limitów ponad 32,3 MB/dzień.
     
 * **Ograniczanie**przepływności: ograniczanie szybkości danych do 32 000 zdarzeń na sekundę, średnia na 1 minutę na klucz Instrumentacji. Ilość danych wysyłanych przez aplikację jest szacowana co minutę. W przypadku przekroczenia stawki za sekundę obliczonej w ciągu minuty serwer odrzuca niektóre żądania. Zestaw SDK buforuje dane, a następnie próbuje ponownie wysłać ją. Rozłożenie przeskoku przez kilka minut. Jeśli aplikacja stale wysyła dane przy użyciu stawki ograniczenia, niektóre dane zostaną usunięte. (Zestawy SDK ASP.NET, Java i JavaScript próbują ponownie wysłać dane w ten sposób; inne zestawy SDK mogą po prostu porzucić dane ograniczające ograniczenia). W przypadku wystąpienia ograniczenia zostanie wyświetlone ostrzeżenie informujące o tym, że wystąpiło.
-
-## <a name="reduce-your-data-volume"></a>Zmniejszanie ilości danych
-
-Oto kilka rzeczy, które można zrobić, aby zmniejszyć ilość danych:
-
-* Użyj [próbkowania](../../azure-monitor/app/sampling.md). Ta technologia zmniejsza szybkość danych bez pochylania metryk. Nie utracisz możliwości nawigowania między powiązanymi elementami w wyszukiwaniu. W obszarze aplikacje serwera próbkowanie działa automatycznie.
-* [Ogranicz liczbę wywołań AJAX, które mogą być zgłaszane](../../azure-monitor/app/javascript.md#configuration) w każdym widoku strony, lub Wyłącz raportowanie AJAX.
-* [Edytuj plik ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) , aby wyłączyć niepotrzebne moduły kolekcji. Na przykład można zdecydować, że liczniki wydajności lub dane zależności są nieistotne.
-* Podziel dane telemetryczne między osobnymi kluczami Instrumentacji. 
-* Metryki przed agregacją. W przypadku umieszczenia wywołań TrackMetric w aplikacji można zmniejszyć ruch przy użyciu przeciążenia, które akceptuje Obliczanie średniej i odchylenia standardowego partii pomiarów. Lub można użyć [wstępnie agregowanego pakietu](https://www.myget.org/gallery/applicationinsights-sdk-labs).
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>Zarządzanie maksymalnym dziennym woluminem danych
 
@@ -174,7 +170,7 @@ Aby zmienić przechowywanie, z zasobu Application Insights przejdź na stronę *
 
 ![Dostosuj dzienny limit ilości danych telemetrycznych](./media/pricing/pricing-005.png)
 
-Przechowywanie można także [ustawić programowo przy użyciu programu PowerShell](https://docs.microsoft.com/azure/azure-monitor/app/powershell#set-the-data-retention) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja przeczyszczania jest dostępna tylko za pośrednictwem Azure Resource Manager i powinna być używana z najwyższą starannością. 
+Przechowywanie można także [ustawić programowo przy użyciu programu PowerShell](powershell.md) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja przeczyszczania jest dostępna tylko za pośrednictwem Azure Resource Manager i powinna być używana z najwyższą starannością. 
 
 Gdy rozliczenia zaczynają obowiązywać dłużej niż w grudniu 2019, opłaty za dane przechowywane dłużej niż 90 dni będą naliczane zgodnie z tą samą stawką, w której jest naliczana opłata za przechowywanie danych Log Analytics Azure. Dowiedz się więcej na [stronie cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). Bądź na bieżąco z zmiennym postępem przechowywania w ramach [tej sugestii](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 

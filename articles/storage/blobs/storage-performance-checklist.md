@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311130"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382044"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Lista kontrolna wydajności i skalowalności usługi BLOB Storage
 
@@ -66,7 +66,7 @@ Jeśli zbliżasz się do maksymalnej liczby kont magazynu dozwolonych dla konkre
 
 - Czy używasz kont magazynu do przechowywania dysków niezarządzanych i dodawania tych dysków do maszyn wirtualnych? W tym scenariuszu firma Microsoft zaleca używanie dysków zarządzanych. Skalowanie dysków zarządzanych automatycznie i bez konieczności tworzenia poszczególnych kont magazynu i zarządzania nimi. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md)
 - Czy używasz jednego konta magazynu dla każdego klienta na potrzeby izolacji danych? W tym scenariuszu firma Microsoft zaleca używanie kontenera obiektów BLOB dla każdego klienta, a nie całego konta magazynu. Usługa Azure Storage umożliwia teraz Przypisywanie ról kontroli dostępu opartej na rolach (RBAC) do poszczególnych kontenerów. Aby uzyskać więcej informacji, zobacz [udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki przy użyciu RBAC w Azure Portal](../common/storage-auth-aad-rbac-portal.md).
-- Czy używasz wielu kont magazynu do fragmentu, aby zwiększyć ruch przychodzący, ruch wychodzący, operacje we/wy na sekundę (IOPS) lub pojemność? W tym scenariuszu firma Microsoft zaleca użycie zwiększonych limitów dla kont magazynu w warstwie Standardowa, aby zmniejszyć liczbę kont magazynu wymaganych do obciążenia, jeśli jest to możliwe. Skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/options/) , aby zażądać zwiększonych limitów dla konta magazynu. Aby uzyskać więcej informacji, zobacz temat [ogłaszanie większych kont magazynu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)o większej skali.
+- Czy używasz wielu kont magazynu do fragmentu, aby zwiększyć ruch przychodzący, ruch wychodzący, operacje we/wy na sekundę (IOPS) lub pojemność? W tym scenariuszu firma Microsoft zaleca użycie zwiększonych limitów dla kont magazynu w celu zmniejszenia liczby kont magazynu wymaganych do obciążenia, jeśli jest to możliwe. Skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/options/) , aby zażądać zwiększonych limitów dla konta magazynu. Aby uzyskać więcej informacji, zobacz temat [ogłaszanie większych kont magazynu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)o większej skali.
 
 ### <a name="capacity-and-transaction-targets"></a>Pojemność i cele transakcji
 
@@ -286,6 +286,4 @@ Stronicowe obiekty blob są odpowiednie, jeśli aplikacja musi wykonywać losowe
 ## <a name="next-steps"></a>Następne kroki
 
 - [Cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [Lista kontrolna wydajności i skalowalności usługi queue storage](../queues/storage-performance-checklist.md)
-- [Lista kontrolna wydajności i skalowalności dla usługi Table Storage](../tables/storage-performance-checklist.md)
 - [Kody stanu i błędów](/rest/api/storageservices/Status-and-Error-Codes2)

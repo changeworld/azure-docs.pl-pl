@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 733d3f9c4079193107f22178bdbde3a3ecf0e7ca
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028213"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387534"
 ---
 # <a name="mapping-data-flow-parameters"></a>Mapowanie parametrów przepływu danych
 
@@ -32,23 +32,23 @@ Użyj tej funkcji, aby zapewnić przepływ danych ogólnego przeznaczenia, elast
 
 Aby dodać parametry do przepływu danych, kliknij pustą część kanwy przepływu danych, aby wyświetlić właściwości ogólne. W okienku Ustawienia zostanie wyświetlona karta o nazwie "Parameters". Kliknij przycisk "nowy", aby wygenerować nowy parametr. Dla każdego parametru należy przypisać nazwę, wybrać typ i opcjonalnie ustawić wartość domyślną.
 
-![Tworzenie]parametrów przepływu danych(media/data-flow/create-params.png "Tworzenie parametrów przepływu danych")
+![Utwórz parametry przepływu danych](media/data-flow/create-params.png "Utwórz parametry przepływu danych")
 
 Parametrów można używać w dowolnym wyrażeniu przepływu danych. Parametry zaczynają się od $ i są niezmienne. Listę dostępnych parametrów można znaleźć w ramach konstruktora wyrażeń na karcie "parametry".
 
-(media/data-flow/parameter-expression.png "Wyrażenie parametru przepływu danych") ![wyrażenia parametru przepływu danych]
+![Wyrażenie parametru przepływu danych](media/data-flow/parameter-expression.png "Wyrażenie parametru przepływu danych")
 
 ## <a name="use-parameters-in-your-data-flow"></a>Używanie parametrów w przepływie danych
 
-* Można użyć wartości parametrów wewnątrz wyrażeń transformacji. Lista parametrów znajduje się na karcie Parametry w Konstruktorze wyrażeń. ![Użyj parametrów przepływu danych](media/data-flow/params9.png "Użyj parametrów przepływu danych")
+* Można użyć wartości parametrów wewnątrz wyrażeń transformacji. Lista parametrów znajduje się na karcie Parametry w Konstruktorze wyrażeń. ![Użyj parametrów przepływu danych](media/data-flow/params9.png "Uparametry przepływu danych SE)
 
-* Parametry są również używane do konfigurowania wartości dynamicznych dla ustawień transformacji źródła i ujścia. Po kliknięciu wewnątrz konfigurowalnych pól zostanie wyświetlone łącze "Dodaj dynamiczny contect". Kliknięcie spowoduje przejście do konstruktora wyrażeń, w którym można użyć parametrów do używania wartości dynamicznych. Dynamiczna(media/data-flow/params6.png "zawartość przepływu danych") ![zawartości dynamicznej przepływu danych]
+* Parametry są również używane do konfigurowania wartości dynamicznych dla ustawień transformacji źródła i ujścia. Po kliknięciu wewnątrz konfigurowalnych pól zostanie wyświetlone łącze "Dodaj dynamiczny contect". Kliknięcie spowoduje przejście do konstruktora wyrażeń, w którym można użyć parametrów do używania wartości dynamicznych. ![Zawartość dynamiczna przepływu danych](media/data-flow/params6.png "Dzawartość dynamiczna przepływu usługi ATA ")
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Ustaw mapowanie parametrów przepływu danych z potoku
 
 Po utworzeniu przepływu danych z parametrami można wykonać je z potoku za pomocą działania wykonaj przepływ danych. Po dodaniu działania do kanwy potoku zostaną wyświetlone dostępne parametry przepływu danych na karcie "parametry" działania.
 
-![Ustawianie]parametru przepływu danych(media/data-flow/parameter-assign.png "Ustawianie parametru przepływu danych")
+![Ustawianie parametru przepływu danych](media/data-flow/parameter-assign.png "Ustawianie parametru przepływu danych")
 
 Jeśli typ danych parametru to ciąg, po kliknięciu pola tekstowego, aby ustawić wartości parametrów, możesz wprowadzić potok lub wyrażenie przepływu danych. W przypadku wybrania wyrażenia potoku zostanie wyświetlony panel wyrażenia potoku. Upewnij się, że dołączasz funkcje potoku wewnątrz składni interpolacji ciągu przy użyciu `'@{<expression>}'`, na przykład:
 
@@ -61,7 +61,7 @@ Jeśli parametr nie jest typu String, zawsze będzie wyświetlany Konstruktor wy
 
 Każdy przepływ danych mapowania może mieć dowolną kombinację parametrów potoków i przepływów danych. 
 
-![](media/data-flow/parameter-example.png "Przykładowe parametry przepływu") danych parametrów przepływu danych
+![Przykład parametrów przepływu danych](media/data-flow/parameter-example.png "Przykład parametrów przepływu danych")
 
 
 

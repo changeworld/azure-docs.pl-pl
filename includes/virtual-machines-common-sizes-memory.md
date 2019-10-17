@@ -6,18 +6,18 @@ author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 08/08/2019
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 4d0e7bc7f491e328f5e9fce291d415452c49c745
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 55f82344956af7d6096fce7dbc3d7023589daa69
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830139"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428018"
 ---
 Rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci oferują duże proporcje pamięci dla serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizę w pamięci. Ten artykuł zawiera informacje na temat liczby procesorów wirtualnych vCPU, dysków danych i kart sieciowych, a także przepływności magazynu i przepustowości sieci dla każdego rozmiaru w ramach tego grupowania.
 
-* EV3 Series oferuje procesor E5-2673 v4 2,3 GHz (Broadwell) w konfiguracji wielowątkowej, co zapewnia lepszą wartość propozycji dla większości obciążeń ogólnego przeznaczenia, a EV3 do wyrównania z maszynami wirtualnymi ogólnego przeznaczenia większości innych chmur.  Pamięć została rozszerzona (od 7 GiB/vCPU do 8 GiB/vCPU), podczas gdy limity dysku i sieci zostały skorygowane dla poszczególnych rdzeni, aby dostosować je do przenoszenia do wielowątkowości.  EV3 to kolejne rozmiary maszyn wirtualnych o dużej ilości pamięci w rodzinach D/Dv2.
+* Serie EV3 są dostępne w przypadku procesorów Intel® Xeon® 2,1 GHz (Skylake) lub Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) w konfiguracji wielowątkowej, co zapewnia lepszą propozycję wartości dla większości obciążeń ogólnego przeznaczenia i przełączenie EV3 do wyrównanie z maszynami wirtualnymi ogólnego przeznaczenia dla większości innych chmur.  Pamięć została rozszerzona (od 7 GiB/vCPU do 8 GiB/vCPU), podczas gdy limity dysku i sieci zostały skorygowane dla poszczególnych rdzeni, aby dostosować je do przenoszenia do wielowątkowości.  EV3 to kolejne rozmiary maszyn wirtualnych o dużej ilości pamięci w rodzinach D/Dv2.
 
 * Rozmiary wersji zapoznawczej serii Eav3 i Easv3 wykorzystują procesor AMD z 2.35 GHz EPYC<sup>TM</sup> 7452 w konfiguracji wielowątkowej z maksymalnie 256 MB pamięci podręcznej L3, zwiększając opcje uruchamiania większości zoptymalizowanych pod kątem pamięci.  Serie Eav3 i Easv3 mają takie same konfiguracje pamięci i dysków jak seria EV3 & Esv3.
 
@@ -27,7 +27,7 @@ Rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci oferują duże p
 
 * Dv2 serii, G i DSv2/GS są idealnym rozwiązaniem w przypadku aplikacji wymagających szybszego procesorów wirtualnych vCPU, lepszej wydajności magazynu i większej ilości pamięci. Oferują one kombinację opcji o dużych możliwościach dla wielu aplikacji klasy korporacyjnej.
 
-* Seria Dv2, kontynuacja oryginalnej serii D, jest wyposażona w procesor CPU o większych możliwościach. Procesor CPU serii Dv2 jest o około 35% szybszy niż procesor CPU serii D. Jest ona oparta na procesorach Intel 2,4® Xeon o częstotliwości 2,4 GHz (Haswell) lub E5-2673 v4 2,3 GHz (Broadwell) z 2,0 technologią Intel Turbo, która pozwala uzyskać do 3,1 GHz. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
+* Seria Dv2, kontynuacja oryginalnej serii D, jest wyposażona w procesor CPU o większych możliwościach. Seria Dv2 jest o około 35% szybsza niż seria D. Jest ona uruchamiana na procesorach Intel® Xeon® 8171M 2,1 GHz (Skylake) lub Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) lub Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) oraz z technologią Intel Turbo — rozwiązanie 2,0. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
 
 * Usługa Azure Compute oferuje różne rozmiary maszyn wirtualnych, które są izolowane pod kątem konkretnego rodzaju sprzętu i przeznaczone dla jednego klienta.  Te rozmiary maszyn wirtualnych są dostosowane do obciążeń wymagających wysokiego stopnia izolacji od innych klientów, a zwłaszcza obciążeń związanych z takimi elementami jak zgodność z przepisami i wymogi prawne.  Klienci mogą również dodatkowo podzielić zasoby tych izolowanych maszyn wirtualnych, korzystając z [pomocy technicznej platformy Azure dla zagnieżdżonych maszyn wirtualnych](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).  Zapoznaj się z tabelami poniższych rodzin maszyn wirtualnych dla opcji izolowanych maszyn wirtualnych.
 
@@ -39,7 +39,7 @@ Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
 
-Wystąpienia serii ESv3 są oparte na procesorach Intel Xeon® E5-2673 v4 (Broadwell) z zegarem 2,3 GHz i technologią Intel Turbo Boost 2.0, dzięki której mogą osiągnąć częstotliwość 3,5 GHz oraz korzystają z magazynu Premium Storage. Wystąpienia serii Ev3 są doskonałe dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
+Wystąpienia serii ESv3 są wyposażone w procesory Intel® Xeon® 8171M 2,1 GHz (Skylake) lub Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) i można osiągnąć 3,5 GHz z technologią Intel Turbo — rozwiązanie 2,0 i korzystać z magazynu Premium Storage. Wystąpienia serii Ev3 są doskonałe dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
 
 
 | Rozmiar             | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
@@ -89,7 +89,7 @@ Premium Storage: nieobsługiwane
 
 Buforowanie Premium Storage: nieobsługiwane
 
-Wystąpienia serii Ev3 są oparte na procesorach Intel XEON® E5-2673 v4 (Broadwell) 2,3 GHz i technologią Intel Turbo Boost 2.0, dzięki której mogą osiągnąć częstotliwość 3,5 GHz. Wystąpienia serii Ev3 są doskonałe dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
+Wystąpienia serii EV3 są wyposażone w procesory Intel® Xeon® 8171M 2,1 GHz (Skylake) lub Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) i można osiągnąć 3,5 GHz z technologią Intel Turbo — rozwiązanie 2,0. Wystąpienia serii Ev3 są doskonałe dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
 
 Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów ESv3. Liczniki cen i rozliczeń dla rozmiarów ESv3 są takie same jak dla serii Ev3. 
 
@@ -241,7 +241,7 @@ Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
 
-Rozmiary serii DSv2 są oparte na procesorze Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz
+Rozmiary serii DSv2 są uruchamiane na procesorach Intel® Xeon® 8171M 2,1 GHz (Skylake) lub Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) lub Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell).
 
 | Rozmiar | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -266,7 +266,7 @@ Premium Storage: nieobsługiwane
 
 Buforowanie Premium Storage: nieobsługiwane
 
-Rozmiary serii DSv2 są oparte na procesorze Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz
+Rozmiary serii DSv2 są uruchamiane na procesorach Intel® Xeon® 8171M 2,1 GHz (Skylake) lub Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) lub Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell).
 
 | Rozmiar              | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

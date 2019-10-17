@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 9db1b96cb495fd0de452091da79ab61f7ae59118
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 24b0deb60f1047228dc3ff6000d423e7cb6939ca
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030717"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387321"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący wydajności i dostrajania przepływu danych
 
@@ -23,11 +23,11 @@ Podczas projektowania i testowania przepływów danych z poziomu środowiska ADF
 
 Podczas projektowania mapowania przepływów danych można testować poszczególne przekształcenia, klikając kartę Podgląd danych w panelu konfiguracja. Po zweryfikowaniu logiki Przetestuj przepływ danych jako działanie w potoku. Dodaj działanie wykonaj przepływ danych i użyj przycisku Debuguj, aby przetestować wydajność przepływu danych. Aby otworzyć plan wykonania i profil wydajności przepływu danych, kliknij ikonę okularów w obszarze "akcje" na karcie dane wyjściowe potoku.
 
-(media/data-flow/mon002.png "Monitor przepływu danych") ![monitora przepływu danych]2
+![Monitor przepływu danych](media/data-flow/mon002.png "Monitor przepływu danych 2")
 
  Korzystając z tych informacji, można oszacować wydajność przepływu danych w oparciu o różne źródła danych o różnych rozmiarach. Aby uzyskać więcej informacji, zobacz [monitorowanie przepływów danych mapowania](concepts-data-flow-monitoring.md).
 
-(media/data-flow/mon003.png "Monitor przepływu danych") ![monitorowania przepływu danych]3
+![Monitorowanie przepływu danych](media/data-flow/mon003.png "Monitor przepływu danych 3")
 
  W przypadku uruchomienia debugowania potoku około jednej minuty czasu konfiguracji klastra jest wymagana w przypadku klastra ciepłego. W przypadku inicjowania domyślnego Azure Integration Runtime czas pracy może potrwać około 5 minut.
 
@@ -37,7 +37,7 @@ Integration Runtime o większej liczbie rdzeni zwiększa liczbę węzłów w śr
 * Wypróbuj klaster **zoptymalizowany pod kątem obliczeń** , jeśli szybkość przetwarzania ma być wyższa niż szybkość wprowadzania
 * Wypróbuj klaster **zoptymalizowany pod kątem pamięci** , jeśli chcesz buforować więcej danych w pamięci.
 
-![Nowe]środowisko IR(media/data-flow/ir-new.png "nowego IR")
+![Nowy IR](media/data-flow/ir-new.png "Nowy IR")
 
 Aby uzyskać więcej informacji na temat tworzenia Integration Runtime, zobacz [Integration Runtime w Azure Data Factory](concepts-integration-runtime.md).
 
@@ -56,7 +56,7 @@ Domyślnie włączenie debugowania będzie używać domyślnego środowiska Azur
 1. W przypadku wybrania **kolumny**wybierz kolumnę partycji.
 1. W przypadku wybrania **zapytania**wprowadź zapytanie zgodne ze schematem partycjonowania tabeli bazy danych. To zapytanie pozwala aparatowi źródłowej bazy danych korzystać z eliminacji partycji. Tabele źródłowej bazy danych nie muszą być partycjonowane. Jeśli źródło nie jest już podzielone na partycje, moduł ADF nadal będzie używać partycjonowania danych w środowisku transformacji platformy Spark na podstawie klucza wybieranego w transformacji źródłowej.
 
-![](media/data-flow/sourcepart3.png "Część") źródłowa składnika źródłowego
+![Część źródłowa](media/data-flow/sourcepart3.png "Część źródłowa")
 
 ### <a name="source-batch-size-input-and-isolation-level"></a>Rozmiar partii źródłowej, dane wejściowe i poziom izolacji
 
@@ -66,13 +66,13 @@ W obszarze **Opcje źródła** w transformacji źródłowej następujące ustawi
 * Ustawienie zapytania może umożliwić filtrowanie wierszy w źródle przed ich nadejściem do przepływu danych w celu przetworzenia. Może to spowodować szybsze pozyskiwanie danych. Jeśli używasz zapytania, możesz dodać opcjonalne wskazówki dotyczące zapytań dla bazy danych Azure SQL, takie jak Odczyt niezatwierdzony.
 * Odczytanie niezatwierdzone zapewni szybsze wyniki zapytania dotyczące transformacji źródłowej
 
-![](media/data-flow/source4.png "Źródło") źródła
+![Element źródłowy](media/data-flow/source4.png "Źródło")
 
 ### <a name="sink-batch-size"></a>Rozmiar wsadu ujścia
 
 Aby uniknąć przetwarzania wierszy na wierszach przepływów danych, ustaw **rozmiar wsadu** na karcie Ustawienia dla usługi Azure SQL DB i ujścia usługi Azure SQL DW. W przypadku ustawienia rozmiaru wsadu ADF przetwarza operacje zapisu bazy danych w partiach na podstawie podanego rozmiaru.
 
-![](media/data-flow/sink4.png "Ujścia") ujścia
+![Fotografii](media/data-flow/sink4.png "Ujście")
 
 ### <a name="partitioning-on-sink"></a>Partycjonowanie na ujścia
 
@@ -101,7 +101,7 @@ W każdym przekształceniu można ustawić schemat partycjonowania, który ma by
 W przypadku debugowania w podglądzie danych i debugowaniu potoku, rozmiary i próbkowanie dla źródłowych elementów DataSet opartych na plikach są stosowane tylko do liczby zwracanych wierszy, a nie liczby odczytanych wierszy. Może to mieć wpływ na wydajność wykonywania debugowania i może spowodować niepowodzenie przepływu.
 * Klastry debugowania są domyślnie małymi klastrami z jednym węzłem, a firma Microsoft zaleca korzystanie z przykładowych małych plików na potrzeby debugowania. Przejdź do pozycji Ustawienia debugowania i wskaż mały podzestaw danych przy użyciu pliku tymczasowego.
 
-    ![](media/data-flow/debugsettings3.png "Ustawienia") debugowania ustawienia debugowania
+    ![Ustawienia debugowania](media/data-flow/debugsettings3.png "Ustawienia debugowania")
 
 ### <a name="file-naming-options"></a>Opcje nazewnictwa plików
 

@@ -1,60 +1,56 @@
 ---
-title: Resetowanie poświadczeń klastra usługi Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak aktualizacja lub zresetować poświadczenia nazwy głównej usługi dla klastra w usłudze Azure Kubernetes Service (AKS)
+title: Zresetuj poświadczenia dla klastra usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak zaktualizować lub zresetować poświadczenia nazwy głównej usługi dla klastra w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 5aac941133296d2040d5dd670155b80f5807e1e9
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bda0ab50b829fa2e6d58e73b51e3a0a0f6c9e2af
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614125"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432921"
 ---
-# <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Aktualizowanie lub zamiana poświadczeń dla jednostki usługi w usłudze Azure Kubernetes Service (AKS)
+# <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Aktualizowanie lub obracanie poświadczeń dla jednostki usługi w usłudze Azure Kubernetes Service (AKS)
 
-Domyślnie klastry usługi AKS są tworzone przy użyciu nazwy głównej usługi czasu wygaśnięcia jeden rok. Jak blisko datę wygaśnięcia można zresetować poświadczenia, które mają rozszerzenie nazwy głównej usługi dla dodatkowy okres czasu. Można również zaktualizować lub obrót poświadczeń jako część zasad zabezpieczeń zdefiniowane. Ten artykuł szczegółowo opisuje sposób aktualizacji tych poświadczeń klastra usługi AKS.
+Domyślnie klastry AKS są tworzone za pomocą jednostki usługi, która ma okres ważności jednoletniej. Gdy zbliżasz się do daty wygaśnięcia, możesz zresetować poświadczenia, aby zwiększyć jednostkę usługi przez dodatkowy okres czasu. Możesz również zaktualizować lub obrócić poświadczenia w ramach zdefiniowanych zasad zabezpieczeń. W tym artykule szczegółowo opisano, jak zaktualizować te poświadczenia dla klastra AKS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.65 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
+Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-## <a name="choose-to-update-or-create-a-service-principal"></a>Zaktualizowanie lub utworzyć nazwę główną usługi
+## <a name="choose-to-update-or-create-a-service-principal"></a>Wybierz, aby zaktualizować lub utworzyć nazwę główną usługi
 
-Jeśli chcesz zaktualizować poświadczenia dla klastra usługi AKS możesz:
+Jeśli chcesz zaktualizować poświadczenia dla klastra AKS, możesz wybrać następujące opcje:
 
-* Zaktualizuj poświadczenia dla istniejącej jednostki usługi używany przez klaster, lub
-* Tworzenie jednostki usługi i zaktualizuj klaster pod kątem używania tych nowych poświadczeń.
+* Zaktualizuj poświadczenia istniejącej nazwy głównej usługi używanej przez klaster lub
+* Utwórz nazwę główną usługi i zaktualizuj klaster, aby użyć tych nowych poświadczeń.
 
-Jeśli chcesz utworzyć jednostkę usługi i aktualizowanie klastra AKS, pomiń pozostałe kroki w tej sekcji i w dalszym ciągu [utworzyć nazwę główną usługi](#create-a-service-principal). Jeśli chcesz zaktualizować poświadczenia dla istniejącej jednostki usługi używany przez klaster AKS, wykonaj kroki w tej sekcji.
+### <a name="update-existing-service-principal-expiration"></a>Aktualizuj istniejące wygaśnięcie nazwy głównej usługi
 
-### <a name="get-the-service-principal-id"></a>Pobierz identyfikator jednostki usługi
-
-Aby zaktualizować poświadczenia dla istniejącej jednostki usługi, Pobierz identyfikator jednostki usługi przy użyciu klastra [az aks show][az-aks-show] polecenia. Poniższy przykład pobiera identyfikator dla klastra o nazwie *myAKSCluster* w *myResourceGroup* grupy zasobów. Identyfikator jednostki usługi jest ustawiona w zmiennej o nazwie *SP_ID* do użycia w dodatkowych poleceń.
+Aby zaktualizować poświadczenia dla istniejącej nazwy głównej usługi, Pobierz identyfikator jednostki usługi klastra za pomocą polecenia [AZ AKS show][az-aks-show] . Poniższy przykład pobiera identyfikator klastra o nazwie *myAKSCluster* w *grupie zasobów zasobu* . Identyfikator jednostki usługi jest ustawiany jako zmienna o nazwie *SP_ID* do użycia w dodatkowym poleceniu.
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
     --query servicePrincipalProfile.clientId -o tsv)
 ```
 
-### <a name="update-the-service-principal-credentials"></a>Zaktualizuj poświadczenia nazwy głównej usługi
-
-Przy użyciu zestawu zmiennej, która zawiera identyfikator jednostki usługi, zresetuj poświadczeń przy użyciu [resetowania az ad sp poświadczeń][az-ad-sp-credential-reset]. Poniższy przykład pozwala wygenerować nowy wpis tajny bezpieczny dla jednostki usługi platformy Azure. Ten nowy wpis tajny bezpieczne jest również przechowywane jako zmienną.
+W przypadku zestawu zmiennych, który zawiera identyfikator jednostki usługi, teraz Zresetuj poświadczenia przy użyciu polecenia [AZ AD Sp Credential Reset][az-ad-sp-credential-reset]. Poniższy przykład umożliwia wygenerowanie nowego bezpiecznego wpisu dla jednostki usługi przez platformę Azure. Ten nowy bezpieczny klucz tajny jest również przechowywany jako zmienna.
 
 ```azurecli-interactive
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
-Teraz przejdź do [klastra AKS aktualizacji za pomocą nowych poświadczeń](#update-aks-cluster-with-new-credentials).
+Teraz Kontynuuj, aby [zaktualizować klaster AKS przy użyciu nowych poświadczeń](#update-aks-cluster-with-new-credentials). Ten krok jest niezbędny w przypadku zmiany nazwy głównej usługi w klastrze AKS.
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+### <a name="create-a-new-service-principal"></a>Utwórz nową nazwę główną usługi
 
-Jeśli wybrano zaktualizować istniejące poświadczenia nazwy głównej usługi w poprzedniej sekcji, Pomiń ten krok. W dalszym ciągu [klastra AKS aktualizacji za pomocą nowych poświadczeń](#update-aks-cluster-with-new-credentials).
+Jeśli wybrano opcję zaktualizowania istniejących poświadczeń jednostki usługi w poprzedniej sekcji, Pomiń ten krok. Kontynuuj [Aktualizowanie klastra AKS przy użyciu nowych poświadczeń](#update-aks-cluster-with-new-credentials).
 
-Aby utworzyć nazwę główną usługi, a następnie zaktualizować klastra usługi AKS przy użyciu tych nowych poświadczeń, należy użyć [az ad sp create-for-rbac][az-ad-sp-create] polecenia. W poniższym przykładzie parametr `--skip-assignment` zapobiega przypisaniu jakichkolwiek dodatkowych przypisań:
+Aby utworzyć nazwę główną usługi, a następnie zaktualizować klaster AKS, aby korzystał z tych nowych poświadczeń, użyj polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create] . W poniższym przykładzie parametr `--skip-assignment` zapobiega przypisaniu jakichkolwiek dodatkowych przypisań:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -71,16 +67,18 @@ Dane wyjściowe będą podobne do poniższego przykładu. Zanotuj własne warto�
 }
 ```
 
-Teraz Zdefiniuj zmienne do usługi głównej identyfikator i klucz tajny klienta przy użyciu danych wyjściowych z własnych [az ad sp create-for-rbac][az-ad-sp-create] polecenia, jak pokazano w poniższym przykładzie. *SP_ID* jest Twoja *appId*i *SP_SECRET* jest Twoja *hasło*:
+Teraz Zdefiniuj zmienne dla identyfikatora jednostki usługi i wpisu tajnego klienta przy użyciu danych wyjściowych polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create] , jak pokazano w poniższym przykładzie. *SP_ID* jest *identyfikatorem Twojej aplikacji*, a *SP_SECRET* to *hasło*:
 
 ```azurecli-interactive
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```
 
-## <a name="update-aks-cluster-with-new-credentials"></a>Aktualizuj klaster AKS za pomocą nowych poświadczeń
+Teraz Kontynuuj, aby [zaktualizować klaster AKS przy użyciu nowych poświadczeń](#update-aks-cluster-with-new-credentials). Ten krok jest niezbędny w przypadku zmiany nazwy głównej usługi w klastrze AKS.
 
-Niezależnie od tego, czy została wybrana opcja zaktualizować poświadczenia dla istniejącej jednostki usługi lub utworzyć nazwę główną usługi, można teraz zaktualizować klastra usługi AKS przy użyciu nowych poświadczeń przy użyciu [poświadczenia aktualizacji az aks][az-aks-update-credentials] polecenia. Zmienne *--nazwy głównej usługi* i *— klucz tajny klienta* służą:
+## <a name="update-aks-cluster-with-new-credentials"></a>Aktualizowanie klastra AKS przy użyciu nowych poświadczeń
+
+Niezależnie od tego, czy wybrano aktualizację poświadczeń dla istniejącej nazwy głównej usługi, czy też utworzyć nazwę główną usługi, można teraz zaktualizować klaster AKS przy użyciu nowych poświadczeń za pomocą polecenia [AZ AKS Update-Credentials][az-aks-update-credentials] . Zmienne dla *--Service-Principal* i *--Client-Secret* są używane:
 
 ```azurecli-interactive
 az aks update-credentials \
@@ -91,11 +89,11 @@ az aks update-credentials \
     --client-secret $SP_SECRET
 ```
 
-Może potrwać kilka minut w przypadku poświadczeń jednostki usługi do zaktualizowania w usłudze AKS.
+Aktualizacja nazwy głównej usługi w AKS może chwilę potrwać.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule jednostka usługi dla samego klastra AKS został zaktualizowany. Aby uzyskać więcej informacji na temat sposobu zarządzania tożsamościami dla obciążeń w ramach klastra, zobacz [najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w usłudze AKS][best-practices-identity].
+W tym artykule została zaktualizowana jednostka usługi dla samego klastra AKS. Aby uzyskać więcej informacji na temat zarządzania tożsamością dla obciążeń w klastrze, zobacz [najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w programie AKS][best-practices-identity].
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

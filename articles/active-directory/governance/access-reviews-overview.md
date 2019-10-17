@@ -1,5 +1,5 @@
 ---
-title: Co to są przeglądy dostępu? — Usługa azure Active Directory | Dokumentacja firmy Microsoft
+title: Co to są przeglądy dostępu? — Azure Active Directory | Microsoft Docs
 description: Za pomocą Azure Active Directory przeglądy dostępu można kontrolować członkostwo w grupach i dostęp do aplikacji, aby zaspokoić inicjatywy dotyczące zarządzania, ryzyka i zgodności w organizacji.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 08/05/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe8b50775390d60f75fafeae490e0307912600f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 65def17622f026aa4869a4c60e7cb5146d56c5b0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125276"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389524"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co to są przeglądy dostępu w usłudze Azure AD?
 
@@ -62,7 +62,7 @@ W zależności od tego, co chcesz przejrzeć, możesz utworzyć przegląd dostę
 | Rola zasobów platformy Azure | Określeni recenzenci</br>Samoobsługowe przeglądanie | [Usługa Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
 
 
-## <a name="onboard-access-reviews"></a>Dołącz przeglądy dostępu
+## <a name="onboard-access-reviews"></a>Dołączanie przeglądów dostępu
 
 Aby dołączać przeglądy dostępu, wykonaj następujące kroki.
 
@@ -97,7 +97,7 @@ Jeśli wszystko jest gotowe do wdrożenia przeglądów dostępu w organizacji, w
 
 ### <a name="which-users-must-have-licenses"></a>Którzy użytkownicy muszą mieć licencje?
 
-Każdy użytkownik, który współdziała z przeglądami dostępu, musi mieć płatną licencję Azure AD — wersja Premium P2. Przykłady:
+Każdy użytkownik, który współdziała z przeglądami dostępu, musi mieć płatną licencję Azure AD — wersja Premium P2. Przykłady obejmują:
 
 - Administratorzy, którzy tworzą przegląd dostępu
 - Właściciele grup, którzy wykonują przegląd dostępu
@@ -113,7 +113,7 @@ Poniżej przedstawiono kilka przykładowych scenariuszy, które ułatwiają okre
 | Administrator tworzy przegląd dostępu grupy A z użytkownikami 500. Przypisuje 3 właścicieli grup jako recenzentów. | 1 Licencja dla administratorów + 3 licencji dla każdego właściciela grupy jako recenzentów. | 4 |
 | Administrator tworzy przegląd dostępu grupy A z użytkownikami 500. Sprawia, że jest to samodzielna przegląd. | 1 Licencja na licencje administrator + 500 dla każdego użytkownika jako samoprzeglądający. | 501 |
 | Administrator tworzy przegląd dostępu grupy B z 5 użytkownikami i 25 użytkownikami-Gości. Sprawia, że jest to samodzielna przegląd. | 1 Licencja na licencje administratora + 5 dla każdego użytkownika jako samoprzeglądający.<br/>(Goście są objęci wymaganym wskaźnikiem 1:5) | 6 |
-| Administrator tworzy przegląd dostępu grupy C z 5 użytkownikami i 108 użytkowników-Gości. Sprawia, że jest to samodzielna przegląd. | 1 Licencja na licencje administratora + 5 dla każdego użytkownika jako samorecenzentów + 16 dodatkowych licencji obejmujących wszystkich użytkowników-Gości 108 w wymaganym wskaźniku 1:5.<br/>1 + 5 = 6 licencji, które obejmują 5\*6 = 30 użytkowników-Gości. W przypadku pozostałych (108-5\*6) = 78 użytkowników-Gości, do 78/5 = 16 dodatkowych licencji są wymagane. W tym przypadku wymagane są 6 + 16 = 22 licencje. | 22 |
+| Administrator tworzy przegląd dostępu grupy C z 5 użytkownikami i 108 użytkowników-Gości. Sprawia, że jest to samodzielna przegląd. | 1 Licencja na licencje administratora + 5 dla każdego użytkownika jako samorecenzentów + 16 dodatkowych licencji obejmujących wszystkich użytkowników-Gości 108 w wymaganym wskaźniku 1:5.<br/>1 + 5 = 6 licencji, które obejmują 5 @ no__t-06 = 30 użytkowników-Gości. Pozostałe licencje (108 – 5 @ no__t-06) = 78 użytkowników-Gości, 78/5 = 16 dodatkowych licencji są wymagane. W tym przypadku wymagane są 6 + 16 = 22 licencje. | 22 |
 
 Aby uzyskać informacje na temat sposobu przypisywania licencji do użycia, zobacz [przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory](../fundamentals/license-users-groups.md).
 

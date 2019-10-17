@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 298fd336e87d07f9e65221d5e5f539e255c94993
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245333"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432312"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Rozwiązywanie problemów z uruchamianiem maszyn wirtualnych z systemem Linux z powodu błędów systemu plików
 
@@ -71,7 +71,7 @@ Checking all file systems.
 
 Ten problem może wystąpić, jeśli system plików nie został poprawnie zamknięty lub problemy związane z magazynem. Problemy obejmują błędy sprzętu lub oprogramowania, problemy dotyczące sterowników lub programów, Błędy zapisu itp. Zawsze ważne jest, aby utworzyć kopię zapasową najważniejszych danych. Narzędzia, które opisano w tym artykule, mogą ułatwić odzyskanie systemów plików, ale może to spowodować utratę danych.
 
-System Linux ma kilka dostępnych sprawdzań systemu plików. Najczęstsze dla dystrybucji na platformie Azure to: [FSCK](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)i [Xfs_repair](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
+System Linux ma kilka dostępnych sprawdzań systemu plików. Najczęstsze dla dystrybucji na platformie Azure to: [FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)i [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
 
 ## <a name="resolution"></a>Rozdzielczość
 

@@ -1,33 +1,33 @@
 ---
 title: Uruchamianie pierwszego zapytania przy użyciu interfejsu wiersza polecenia platformy Azure
-description: W tym artykule przedstawiono procedurę włączania rozszerzenia grafu zasobów dla interfejsu wiersza polecenia platformy Azure i uruchamiania pierwszego zapytania.
+description: W tym artykule przedstawiono kroki umożliwiające włączenie rozszerzenia usługi Resource Graph dla interfejsu wiersza polecenia platformy Azure i uruchomienie pierwszego zapytania.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/26/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 34325fe8e8fdf7f53eb730818dc57800b65076e2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b50a21f9c1a4bae7ced8afd9a49c33cc936983ac
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976714"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389736"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Szybki Start: uruchamianie pierwszego zapytania grafu zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Pierwszym krokiem korzystania z grafu zasobów platformy Azure jest sprawdzenie, czy rozszerzenie [interfejsu wiersza polecenia platformy Azure](/cli/azure/) jest zainstalowane. Ten przewodnik Szybki Start przeprowadzi Cię przez proces dodawania rozszerzenia do instalacji interfejsu wiersza polecenia platformy Azure. Możesz użyć rozszerzenia z interfejsem wiersza polecenia platformy Azure zainstalowanym lokalnie lub za pomocą [Azure Cloud Shell](https://shell.azure.com).
+Pierwszym krokiem do korzystania z usługi Azure Resource Graph jest zainstalowanie rozszerzenia dla [wiersza polecenia platformy Azure](/cli/azure/). Ten przewodnik Szybki start przeprowadzi Cię przez proces dodawania rozszerzenia do instalacji interfejsu wiersza polecenia platformy Azure. Rozszerzenia można używać z interfejsem wiersza polecenia platformy Azure zainstalowanym lokalnie lub za pośrednictwem [usługi Azure Cloud Shell](https://shell.azure.com).
 
-Po zakończeniu tego procesu dodaliśmy rozszerzenie do wybranej instalacji interfejsu wiersza polecenia platformy Azure i uruchomimy pierwsze zapytanie dotyczące wykresu zasobów.
+Po zakończeniu tego procesu będziesz mieć rozszerzenie dodane do instalacji interfejsu wiersza polecenia platformy Azure wybranym i uruchomisz swoje pierwsze zapytanie usługi Resource Graph.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-## <a name="add-the-resource-graph-extension"></a>Dodawanie rozszerzenia grafu zasobów
+## <a name="add-the-resource-graph-extension"></a>Dodawanie rozszerzenia usługi Resource Graph
 
-Aby włączyć interfejs wiersza polecenia platformy Azure do tworzenia zapytań dotyczących grafu zasobów platformy Azure, należy dodać rozszerzenie. To rozszerzenie działa wszędzie tam, gdzie można korzystać z interfejsu wiersza polecenia platformy Azure, [w tym bash w systemie Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (autonomiczny i wewnątrz portalu), [obraz platformy Docker CLI](https://hub.docker.com/r/microsoft/azure-cli/)lub zainstalowany lokalnie.
+Aby włączyć wykonywanie zapytań usługi Azure Resource Graph przy użyciu interfejsu wiersza polecenia platformy Azure, konieczne jest dodanie rozszerzenia. To rozszerzenie działa wszędzie tam, gdzie interfejs wiersza polecenia platformy Azure może być używany, w tym w [funkcji bash w systemie Windows 10](/windows/wsl/install-win10), usłudze [Cloud Shell](https://shell.azure.com) (autonomicznej i wewnątrz portalu), [obrazie platformy Docker interfejsu wiersza polecenia platformy Azure](https://hub.docker.com/r/microsoft/azure-cli/), lub zainstalowany lokalnie.
 
-1. Sprawdź, czy jest zainstalowany najnowszy interfejs wiersza polecenia platformy Azure (co najmniej **2.0.45**). Jeśli nie jest jeszcze zainstalowana, wykonaj [te instrukcje](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+1. Sprawdź, czy jest zainstalowany najnowszy interfejs wiersza polecenia platformy Azure (co najmniej **2.0.45**). Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
 
-1. W wybranym środowisku interfejsu wiersza polecenia platformy Azure zaimportuj go za pomocą następującego polecenia:
+1. W wybranym środowisku interfejsu wiersza polecenia platformy Azure zaimportuj rozszerzenie za pomocą następującego polecenia:
 
    ```azurecli-interactive
    # Add the Resource Graph extension to the Azure CLI environment
@@ -44,44 +44,44 @@ Aby włączyć interfejs wiersza polecenia platformy Azure do tworzenia zapytań
    az graph query -h
    ```
 
-## <a name="run-your-first-resource-graph-query"></a>Uruchom pierwsze zapytanie dotyczące wykresu zasobów
+## <a name="run-your-first-resource-graph-query"></a>Uruchamianie pierwszego zapytania usługi Resource Graph
 
-Po dodaniu rozszerzenia interfejsu wiersza polecenia platformy Azure do wybranego środowiska należy wypróbować prostą kwerendę grafu zasobów. Zapytanie zwróci pierwsze pięć zasobów platformy Azure z **nazwą** i **typem zasobu** każdego zasobu.
+Teraz, gdy rozszerzenie interfejsu wiersza polecenia platformy Azure zostało dodane do Twojego wybranego środowiska, nadszedł czas na wypróbowanie prostego zapytania usługi Resource Graph. Zapytanie zwróci pierwsze pięć zasobów platformy Azure przy użyciu właściwości **Name** i **Resource Type** każdego zasobu.
 
-1. Uruchom pierwsze zapytanie dotyczące wykresu zasobów platformy Azure przy użyciu rozszerzenia `graph` i `query` polecenia:
+1. Uruchom swoje pierwsze zapytanie usługi Azure Resource Graph przy użyciu rozszerzenia `graph` i polecenia `query`:
 
    ```azurecli-interactive
    # Login first with az login if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   az graph query -q 'project name, type | limit 5'
+   az graph query -q 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
-   > Ponieważ ten przykład zapytania nie zawiera modyfikatora sortowania, takiego jak `order by`, uruchomienie tego zapytania wiele razy może spowodować, że zostanie wyznaczony inny zestaw zasobów dla każdego żądania.
+   > Ponieważ to przykładowe zapytanie nie udostępnia modyfikatora sortowania takiego jak `order by`, wielokrotne uruchomienie tego zapytania będzie prawdopodobnie zwracało inny zestaw zasobów dla każdego żądania.
 
-1. Zaktualizuj zapytanie do `order by` Właściwość **name** :
+1. Zaktualizuj zapytanie, dodając modyfikator `order by` do właściwości **Name**:
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
-   az graph query -q 'project name, type | limit 5 | order by name asc'
+   az graph query -q 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
-   > Podobnie jak w przypadku pierwszego zapytania, uruchomienie tego zapytania wiele razy może spowodować, że zostanie utworzony inny zestaw zasobów dla każdego żądania. Kolejność poleceń zapytania jest ważna. W tym przykładzie `order by` jest dostępna po `limit`. Spowoduje to najpierw ograniczenie wyników zapytania, a następnie ich kolejność.
+   > Tak samo jak w przypadku pierwszego zapytania, wielokrotne uruchomienie tego zapytania prawdopodobnie zwróci inny zestaw zasobów dla każdego żądania. Kolejność poleceń zapytania jest ważna. W tym przykładzie polecenie `order by` następuje po poleceniu `limit`. Spowoduje to najpierw ograniczenie wyników zapytania, a następnie ich uporządkowanie.
 
-1. Zaktualizuj zapytanie do pierwszej `order by` Właściwość **name** , a następnie `limit` do pięciu pierwszych wyników:
+1. Zaktualizuj zapytanie, aby najpierw wykonywało polecenie `order by` w celu sortowania według właściwości **Name**, a następnie polecenie `limit` w celu ograniczenia do pięciu pierwszych wyników:
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   az graph query -q 'project name, type | order by name asc | limit 5'
+   az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
-Gdy ostateczne zapytanie jest uruchamiane kilka razy, przy założeniu, że nic w środowisku nie zmienia się, zwracane wyniki będą spójne i oczekiwane przez właściwość **name** , ale nadal są ograniczone do pięciu pierwszych wyników.
+Gdy końcowe zapytanie zostanie uruchomione wielokrotnie, zakładając, że nic się nie zmieniło w Twoim środowisku, zwrócone wyniki będą spójne i zgodne z oczekiwaniami — uporządkowane według właściwości **Name**, ale nadal ograniczone do pięciu pierwszych wyników.
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli chcesz usunąć rozszerzenie grafu zasobów ze środowiska interfejsu wiersza polecenia platformy Azure, możesz to zrobić za pomocą następującego polecenia:
+Jeśli chcesz usunąć rozszerzenie usługi Resource Graph ze środowiska interfejsu wiersza polecenia platformy Azure, możesz to zrobić za pomocą następującego polecenia:
 
 ```azurecli-interactive
 # Remove the Resource Graph extension from the Azure CLI environment
@@ -91,8 +91,8 @@ az extension remove -n resource-graph
 ## <a name="next-steps"></a>Następne kroki
 
 - Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md)
-- Dowiedz się więcej na temat [eksplorowania zasobów](./concepts/explore-resources.md)
-- Uruchom pierwsze zapytanie przy użyciu [Azure PowerShell](first-query-powershell.md)
-- Zobacz przykłady [początkowych zapytań](./samples/starter.md)
+- Dowiedz się, jak [eksplorować zasoby](./concepts/explore-resources.md)
+- Uruchamianie pierwszego zapytania przy użyciu [programu Azure PowerShell](first-query-powershell.md)
+- Zobacz przykłady [zapytań dla początkujących](./samples/starter.md)
 - Zobacz przykłady [zapytań zaawansowanych](./samples/advanced.md)
-- Prześlij opinię na temat usługi [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Podziel się opinią na platformie [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)

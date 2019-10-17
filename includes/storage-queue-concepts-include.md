@@ -4,12 +4,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 935a6201e24e97deaa0a1a65e499310f74a49e2d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 92f638666d9ac832ee5e6a7d4dccf9a9e669f908
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059041"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72427971"
 ---
 ## <a name="what-is-queue-storage"></a>Co to jest magazyn kolejek?
 
@@ -19,16 +20,16 @@ Azure Queue Storage to usługa do przechowywania dużej liczby komunikatów, do 
 
 Usługa kolejki platformy Azure zawiera następujące składniki:
 
-![Queue1](./media/storage-queue-concepts-include/queue1.png)
+![Składniki usługi Azure usługa kolejki](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
-* **Format adresu URL:** Kolejki są adresowane przy użyciu następującego formatu adresu URL:   
+* **Format adresu URL:** adresy URL kolejek mają następujący format:   
     http://`<storage account>`.queue.core.windows.net/`<queue>` 
   
     Następujący adres URL dotyczy kolejki w schemacie:  
   
     `http://myaccount.queue.core.windows.net/images-to-download`
 
-* **Konto magazynu:** Cały dostęp do usługi Azure Storage odbywa się za pomocą konta magazynu. Aby uzyskać szczegółowe informacje na temat pojemności konta magazynu, zobacz temat [Cele dotyczące skalowalności i wydajności usługi Azure Storage](../articles/storage/common/storage-scalability-targets.md).
-* **Niej** Kolejka zawiera zestaw komunikatów. Wszystkie komunikaty muszą być w kolejce. Pamiętaj, że nazwa kolejki może zawierać tylko małe litery. Informacje dotyczące nazewnictwa kolejek można znaleźć w temacie [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Nazewnictwo kolejek i metadanych).
-* **Komunikat:** Komunikat w dowolnym formacie, do 64 KB. Maksymalny czas pozostawania komunikatu w kolejce wynosi 7 dni.
+* **Konto magazynu:** cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Aby uzyskać szczegółowe informacje na temat pojemności konta magazynu, zobacz temat [Cele dotyczące skalowalności i wydajności usługi Azure Storage](../articles/storage/common/storage-scalability-targets.md).
+* **Kolejka:** kolejka zawiera zestaw komunikatów. Wszystkie komunikaty muszą być w kolejce. Pamiętaj, że nazwa kolejki może zawierać tylko małe litery. Informacje dotyczące nazewnictwa kolejek można znaleźć w temacie [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Nazewnictwo kolejek i metadanych).
+* **Komunikat**: komunikat w dowolnym formacie, o maksymalnym rozmiarze 64 KB. Maksymalny czas pozostawania komunikatu w kolejce wynosi 7 dni.
 

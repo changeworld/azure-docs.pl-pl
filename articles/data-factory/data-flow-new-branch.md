@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 3f443396627a4bbaba2a3eeb0a3ac05cc1597c85
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: de8cb74d788e3ca7599f226e4204c4b09112e70c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029291"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387220"
 ---
 # <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure Data Factory mapowanie nowej gałęzi przepływu danych
 
 
 
-(media/data-flow/menu.png "Menu") ![opcji gałęzi]
+![Opcje gałęzi](media/data-flow/menu.png "DodajMenu")
 
 Rozgałęzienie zajmie bieżący strumień danych w przepływie danych i zreplikuje je do innego strumienia. Użyj nowej gałęzi, aby wykonać wiele zestawów operacji i transformacji dla tego samego strumienia danych.
 
@@ -29,4 +29,4 @@ Można traktować ten nowy strumień z zestawem przekształceń i ujściam w jed
 > [!NOTE]
 > "Nowa gałąź" będzie wyświetlana tylko jako akcja w menu + przekształcenia, gdy istnieje kolejna transformacja, która następuje po bieżącej lokalizacji, w której próbujesz utworzyć gałąź. oznacza to, że na końcu nie zostanie wyświetlona opcja "Nowa gałąź", dopóki nie dodasz kolejnej transformacji po zaznaczeniu
 
-Gałąź ![rozgałęzienia](media/data-flow/branch2.png "2")
+![Gałęzi](media/data-flow/branch2.png "Gałąź 2")

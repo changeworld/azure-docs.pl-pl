@@ -1,9 +1,9 @@
 ---
-title: Wirtualne grodzenie powiadomień wypychanych przy użyciu usług Azure Notification Hubs i Bing Spatial Data | Microsoft Docs
+title: Wysyłanie powiadomień wypychanych za pomocą usługi Azure Notification Hubs i danych przestrzennych Bing | Microsoft Docs
 description: Korzystając z tego samouczka, dowiesz się, jak dostarczać powiadomienia push oparte na lokalizacji przy użyciu usługi Azure Notification Hubs i danych przestrzennych usługi Bing.
 services: notification-hubs
 documentationcenter: windows
-keywords: powiadomienie wypychane, powiadomienia wypychane
+keywords: powiadomienia wypychane, powiadomienia wypychane
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 84e52feb6e30e0b9b693019b671906fad8c908db
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 510e2648db3076a0e3ee2535c6058f7ed212f558
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213249"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387494"
 ---
-# <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Samouczek: dostarczanie powiadomień push opartych na lokalizacji przy użyciu usługi Azure Notification Hubs i danych przestrzennych usługi Bing
+# <a name="tutorial-send-location-based-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Samouczek: wysyłanie powiadomień wypychanych opartych na lokalizacji za pomocą usługi Azure Notification Hubs i danych przestrzennych Bing
 
 Korzystając z tego samouczka, dowiesz się, jak dostarczać powiadomienia push oparte na lokalizacji przy użyciu usługi Azure Notification Hubs i danych przestrzennych usługi Bing.
 
@@ -53,7 +53,7 @@ W tym samouczku wykonasz następujące kroki:
 3. Jeśli nie masz źródła danych, możesz je utworzyć za pomocą widocznego linku. Wybierz pozycję **Upload data as a data source** (Przekaż dane jako źródło danych). Możesz również użyć menu **Data sources** > **Upload data** (Źródła danych > Przekaż dane).
 
     ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
-4. Na dysku twardym utwórz plik `NotificationHubsGeofence.pipe` z następującą zawartością: W tym samouczku używasz przykładowego pliku opartego na potoku, który obejmuje obszar nabrzeża San Francisco:
+4. Utwórz plik `NotificationHubsGeofence.pipe` na dysku twardym o następującej zawartości: w tym samouczku użyjesz przykładowego pliku z potokiem, który tworzy ramki dla obszaru San Francisco Waterfront:
 
     ```text
     Bing Spatial Data Services, 1.0, TestBoundaries
@@ -359,7 +359,7 @@ W tym samouczku wykonasz następujące kroki:
 5. W witrynie zanotuj **Klucz tajny aplikacji** i **Identyfikator SID pakietu**. Obie wartości będą potrzebne w witrynie Azure Portal. Otwórz centrum powiadomień, wybierz pozycję **Ustawienia** > **Usługi powiadomień** > **Windows (WNS)** i wprowadź informacje w wymaganych polach.
 
     ![](./media/notification-hubs-geofence/notification-hubs-wns.png)
-6. Wybierz polecenie **Zapisz**.
+6. Wybierz pozycję **Zapisz**.
 7. Otwórz obszar **Odwołania** w **Eksploratorze rozwiązań** i wybierz pozycję **Zarządzaj pakietami NuGet**. Dodaj odwołanie do **biblioteki zarządzanej usługi Microsoft Azure Service Bus**. Wyszukaj pakiet `WindowsAzure.Messaging.Managed` i dodaj go do projektu.
 
     ![](./media/notification-hubs-geofence/vs-nuget.png)

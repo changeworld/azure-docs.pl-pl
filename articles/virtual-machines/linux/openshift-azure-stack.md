@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/23/2018
+ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f9f1072954e01f718fd3d9f03430b6ed6666bb62
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082593"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390647"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Wdrażanie platformy kontenera OpenShift lub OKD w Azure Stack
 
@@ -66,9 +66,9 @@ Niektóre typowe opcje dostosowania obejmują, ale nie są ograniczone do:
 - OpenShift specyficzne dla klastra, zmodyfikowane za pomocą pliku hosts (deployOpenShift.sh)
 - Odwołanie do obrazu RHEL (zmienna w azuredeploy. JSON)
 
-Aby zapoznać się z instrukcjami wdrażania przy użyciu interfejsu wiersza polecenia platformy Azure, postępuj zgodnie z odpowiednią sekcją w sekcji [OpenShift Container platform](./openshift-container-platform.md) lub [OKD](./openshift-okd.md) .
+Aby zapoznać się z instrukcjami wdrażania przy użyciu interfejsu wiersza polecenia platformy Azure, postępuj zgodnie z odpowiednią sekcją w sekcji [OpenShift Container platform](./openshift-container-platform-3x.md) lub [OKD](./openshift-okd.md) .
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Zadania po wdrożeniu](./openshift-post-deployment.md)
-- [Rozwiązywanie problemów z wdrażaniem OpenShift na platformie Azure](./openshift-troubleshooting.md)
+- [Zadania po wdrożeniu](./openshift-container-platform-3x-post-deployment.md)
+- [Rozwiązywanie problemów z wdrażaniem OpenShift na platformie Azure](./openshift-container-platform-3x-troubleshooting.md)

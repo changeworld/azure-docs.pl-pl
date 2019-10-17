@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.openlocfilehash: f08dea90e7700082b6eeb708b576451060f81255
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 168d977b9dc0ea6117796cf98a8562f168258d28
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140938"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387460"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Informacje o cenach Data Factory w ramach przykładów
 
@@ -42,19 +42,19 @@ Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi eleme
 | --- | --- |
 | Utwórz połączoną usługę | 2 jednostka do odczytu i zapisu  |
 | Tworzenie zestawów danych | 4 jednostki odczytu/zapisu (2 dla tworzenia zestawu danych, 2 dla odwołań połączonej usługi) |
-| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
+| Utwórz potok | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
 | Pobierz potok | 1 jednostka odczytu/zapisu |
 | Uruchom potok | 2 uruchomienia działania (1 dla uruchomienia wyzwalacza, 1 dla uruchomień działania) |
-| Kopiowanie danych założeń: czas wykonywania = 10 min | 10 \* 4 Azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji o jednostkach integracji danych i optymalizowaniu wydajności kopiowania, zobacz [ten artykuł](copy-activity-performance.md) . |
-| Monitorowanie założeń potoku: Wystąpił tylko 1 przebieg | 2 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 1 dla uruchomienia działania) |
+| Kopiowanie danych założeń: czas wykonywania = 10 min | 10 \* 4 Azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji o jednostkach integracji danych i zoptymalizować wydajność kopiowania, zobacz [ten artykuł](copy-activity-performance.md) . |
+| Monitorowanie założeń potoku: wystąpił tylko 1 przebieg | 2 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 1 dla uruchomienia działania) |
 
 **Łączny Cennik scenariusza: $0,16811**
 
 - Operacje Data Factory = **$0,0001**
-  - Odczyt/zapis = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitorowanie = 2\*000005 = $0,00001 [1 Monitorowanie = $0,25/50000 = 0,000005]
-- &amp; Wykonywanie aranżacji potoku = **$0,168**
-  - Uruchomienia działania = 001\*2 = 0,002 [1 Run = $1/1000 = 0,001]
+  - Odczyt/zapis = 10 @ no__t-000001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorowanie = 2 @ no__t-0000005 = $0,00001 [1 Monitorowanie = $0,25/50000 = 0,000005]
+- Aranżacja potoku &amp; wykonywania = **$0,168**
+  - Uruchomienia działania = 001 @ no__t-02 = 0,002 [1 Run = $1/1000 = 0,001]
   - Działania przenoszenia danych = $0,166 (proporcjonalnie do 10 minut czasu wykonywania. $0,25/godz. w Azure Integration Runtime)
 
 ## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Kopiowanie danych i przekształcanie ich przy użyciu Azure Databricks co godzinę
@@ -73,20 +73,20 @@ Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi eleme
 | --- | --- |
 | Utwórz połączoną usługę | 3 jednostka do odczytu i zapisu  |
 | Tworzenie zestawów danych | 4 jednostki odczytu/zapisu (2 dla tworzenia zestawu danych, 2 dla odwołań połączonej usługi) |
-| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
+| Utwórz potok | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
 | Pobierz potok | 1 jednostka odczytu/zapisu |
 | Uruchom potok | 3 uruchomienia działania (1 dla uruchomienia wyzwalacza, 2 dla uruchomień działania) |
-| Kopiowanie danych założeń: czas wykonywania = 10 min | 10 \* 4 Azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji o jednostkach integracji danych i optymalizowaniu wydajności kopiowania, zobacz [ten artykuł](copy-activity-performance.md) . |
-| Monitorowanie założeń potoku: Wystąpił tylko 1 przebieg | 3 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 2 dla uruchomienia działania) |
+| Kopiowanie danych założeń: czas wykonywania = 10 min | 10 \* 4 Azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji o jednostkach integracji danych i zoptymalizować wydajność kopiowania, zobacz [ten artykuł](copy-activity-performance.md) . |
+| Monitorowanie założeń potoku: wystąpił tylko 1 przebieg | 3 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 2 dla uruchomienia działania) |
 | Założenie działania wykonywania elementów datakostki: czas wykonywania = 10 min | 10-minimalne wykonywanie działania zewnętrznego potoku |
 
 **Łączny Cennik scenariusza: $0,16916**
 
 - Operacje Data Factory = **$0,00012**
-  - Odczyt/zapis = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitorowanie = 3\*000005 = $0,00001 [1 Monitorowanie = $0,25/50000 = 0,000005]
-- &amp; Wykonywanie aranżacji potoku = **$0,16904**
-  - Uruchomienia działania = 001\*3 = 0,003 [1 Run = $1/1000 = 0,001]
+  - Odczyt/zapis = 11 @ no__t-000001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorowanie = 3 @ no__t-0000005 = $0,00001 [1 Monitorowanie = $0,25/50000 = 0,000005]
+- Aranżacja potoku &amp; wykonywania = **$0,16904**
+  - Uruchomienia działania = 001 @ no__t-03 = 0,003 [1 Run = $1/1000 = 0,001]
   - Działania przenoszenia danych = $0,166 (proporcjonalnie do 10 minut czasu wykonywania. $0,25/godz. w Azure Integration Runtime)
   - Działanie zewnętrznego potoku = $0,000041 (proporcjonalnie do 10 minut czasu wykonywania. $0.00025/godzinę w Azure Integration Runtime)
 
@@ -107,21 +107,21 @@ Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi eleme
 | --- | --- |
 | Utwórz połączoną usługę | 3 jednostka do odczytu i zapisu  |
 | Tworzenie zestawów danych | 4 jednostki odczytu/zapisu (2 dla tworzenia zestawu danych, 2 dla odwołań połączonej usługi) |
-| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
+| Utwórz potok | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
 | Pobierz potok | 1 jednostka odczytu/zapisu |
 | Uruchom potok | 4 uruchomienia działania (1 dla uruchomienia wyzwalacza, 3 dla uruchomień działania) |
-| Kopiowanie danych założeń: czas wykonywania = 10 min | 10 \* 4 Azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji o jednostkach integracji danych i optymalizowaniu wydajności kopiowania, zobacz [ten artykuł](copy-activity-performance.md) . |
-| Monitorowanie założeń potoku: Wystąpił tylko 1 przebieg | 4 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 3 dla uruchomienia działania) |
+| Kopiowanie danych założeń: czas wykonywania = 10 min | 10 \* 4 Azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji o jednostkach integracji danych i zoptymalizować wydajność kopiowania, zobacz [ten artykuł](copy-activity-performance.md) . |
+| Monitorowanie założeń potoku: wystąpił tylko 1 przebieg | 4 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 3 dla uruchomienia działania) |
 | Założenie wykonania działania wyszukiwania: czas wykonywania = 1 min | 1 min wykonania działania potoku |
 | Założenie działania wykonywania elementów datakostki: czas wykonywania = 10 min | 10-minimalne wykonywanie działania zewnętrznego potoku |
 
 **Łączny Cennik scenariusza: $0,17020**
 
 - Operacje Data Factory = **$0,00013**
-  - Odczyt/zapis = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitorowanie = 4\*000005 = $0,00002 [1 Monitorowanie = $0,25/50000 = 0,000005]
-- &amp; Wykonywanie aranżacji potoku = **$0,17007**
-  - Uruchomienia działania = 001\*4 = 0,004 [1 Run = $1/1000 = 0,001]
+  - Odczyt/zapis = 11 @ no__t-000001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorowanie = 4 @ no__t-0000005 = $0,00002 [1 Monitorowanie = $0,25/50000 = 0,000005]
+- Aranżacja potoku &amp; wykonywania = **$0,17007**
+  - Uruchomienia działania = 001 @ no__t-04 = 0,004 [1 Run = $1/1000 = 0,001]
   - Działania przenoszenia danych = $0,166 (proporcjonalnie do 10 minut czasu wykonywania. $0,25/godz. w Azure Integration Runtime)
   - Działanie potoku = $0,00003 (proporcjonalnie do 1 minuty czasu wykonywania. $0.002/godzinę w Azure Integration Runtime)
   - Działanie zewnętrznego potoku = $0,000041 (proporcjonalnie do 10 minut czasu wykonywania. $0.00025/godzinę w Azure Integration Runtime)
@@ -150,19 +150,19 @@ Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi eleme
 | --- | --- |
 | Utwórz połączoną usługę | 2 jednostka do odczytu i zapisu  |
 | Tworzenie zestawów danych | 4 jednostki odczytu/zapisu (2 dla tworzenia zestawu danych, 2 dla odwołań połączonej usługi) |
-| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
+| Utwórz potok | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
 | Pobierz potok | 1 jednostka odczytu/zapisu |
 | Uruchom potok | 2 uruchomienia działania (1 dla uruchomienia wyzwalacza, 1 dla uruchomień działania) |
-| Założenia przepływu danych: czas wykonywania = 10 min + 10 min. TTL | 10 \* 8 rdzeni ogólnych obliczeń z wartością TTL 10 |
-| Monitorowanie założeń potoku: Wystąpił tylko 1 przebieg | 2 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 1 dla uruchomienia działania) |
+| Założenia przepływu danych: czas wykonywania = 10 min + 10 min. TTL | 10 \* 8 rdzeni obliczeń ogólnych z wartością TTL 10 |
+| Monitorowanie założeń potoku: wystąpił tylko 1 przebieg | 2 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 1 dla uruchomienia działania) |
 
 **Łączny Cennik scenariusza: $0,3011**
 
 - Operacje Data Factory = **$0,0001**
-  - Odczyt/zapis = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitorowanie = 2\*000005 = $0,00001 [1 Monitorowanie = $0,25/50000 = 0,000005]
-- &amp; Wykonywanie aranżacji potoku = **$0,301**
-  - Uruchomienia działania = 001\*2 = 0,002 [1 Run = $1/1000 = 0,001]
+  - Odczyt/zapis = 10 @ no__t-000001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorowanie = 2 @ no__t-0000005 = $0,00001 [1 Monitorowanie = $0,25/50000 = 0,000005]
+- Aranżacja potoku &amp; wykonywania = **$0,301**
+  - Uruchomienia działania = 001 @ no__t-02 = 0,002 [1 Run = $1/1000 = 0,001]
   - Działania związane z przepływem danych = $0,299 proporcjonalnie do 20 minut (czas wykonywania w 10 minutach + 10 minut TTL). $0.112/godzinę w Azure Integration Runtime z 8 rdzeniami ogólnymi obliczeniowymi
 
 ## <a name="next-steps"></a>Następne kroki

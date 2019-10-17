@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d6885e9b30cc71bda822a29574c4d574f2b020a0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962127"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387047"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Przetwarzanie plików tekstowych o stałej długości przy użyciu Data Factory mapowania przepływów danych
 
@@ -65,13 +65,13 @@ Korzystając z mapowania przepływów danych w Microsoft Azure Data Factory, mo�
 
     ```substring(Column_1,1,4)```
 
-    ![Kolumna pochodna](media/data-flow/fwderivedcol1.png)
+    ![kolumna pochodna](media/data-flow/fwderivedcol1.png)
 
 11. Powtórz krok 10 dla wszystkich kolumn, które należy przeanalizować.
 
 12. Wybierz kartę **Inspekcja** , aby wyświetlić nowe kolumny, które zostaną wygenerowane:
 
-    ![skontrol](media/data-flow/fwinspect.png)
+    ![Skontrol](media/data-flow/fwinspect.png)
 
 13. Użyj opcji Przekształć, aby usunąć wszystkie kolumny, które nie są potrzebne do przekształcenia:
 

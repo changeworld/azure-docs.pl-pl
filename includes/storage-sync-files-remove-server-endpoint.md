@@ -2,17 +2,17 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 05/31/2018
-ms.author: wgries
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 33dff710d83bd12a8db343a89c6e4576d1397ba7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: be3ce42ccdb9bedd02b8dead2426ac629fa12ef2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183303"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391737"
 ---
-Nie: usunięcie punktu końcowego serwera nie jest takie jak ponowne uruchamianie serwera! Usunięcie i ponowne utworzenie punktu końcowego serwera prawie nigdy nie jest właściwe rozwiązanie, aby Rozwiązywanie problemów z synchronizacji, obsługi warstw w chmurze lub innych aspektów wybranego działania usługi Azure File Sync. Usuwanie punktu końcowego serwera jest operacją destrukcyjną, i może powodować utratę danych w przypadku, że pliki warstwowe znajdują się poza przestrzeni nazw punktu końcowego serwera (zobacz [Dlaczego pliki warstwowe znajdują się poza przestrzeni nazw punktu końcowego serwera](../articles/storage/files/storage-files-faq.md#afs-tiered-files-out-of-endpoint) dla więcej informacji) lub niedostępności plików do plików warstwowych w ramach przestrzeni nazw punktu końcowego serwera. Te problemy nie zostanie rozwiązany, gdy punkt końcowy serwera są odtwarzane. Pliki warstwowe mogą istnieć w przestrzeni nazw punktu końcowego serwera, nawet wtedy, gdy nigdy nie przeprowadzono obsługi warstw włączone w chmurze. Dlatego zaleca się, że nie spowoduje to usunięcia punktu końcowego serwera, chyba że chcesz zaprzestać korzystania z usługi Azure File Sync za pomocą tego konkretnego folderu lub jawnie zalecił Aby to zrobić, inżynier z firmy Microsoft. Aby uzyskać więcej informacji, Usuń punkty końcowe z serwera, zobacz [usunąć punkt końcowy serwera](../articles/storage/files/storage-sync-files-server-endpoint.md#remove-a-server-endpoint).    
+Nie: Usuwanie punktu końcowego serwera nie jest podobne do ponownego rozruchu serwera. Usunięcie i ponowne utworzenie punktu końcowego serwera jest niemal nigdy odpowiednie rozwiązanie do rozwiązywania problemów z synchronizacją, warstwami w chmurze lub innymi aspektami Azure File Sync. Usuwanie punktu końcowego serwera jest operacją niszczącą. Może to spowodować utratę danych w przypadku, gdy pliki warstwowe istnieją poza przestrzenią nazw punktu końcowego serwera. Zobacz [Dlaczego pliki warstwowe istnieją poza przestrzenią nazw punktu końcowego serwera,](../articles/storage/files/storage-files-faq.md#afs-tiered-files-out-of-endpoint) Aby uzyskać więcej informacji. Lub może to spowodować brak dostępnych plików dla plików warstwowych, które znajdują się w przestrzeni nazw punktu końcowego serwera. Te problemy nie zostaną rozwiązane po odtworzeniu punktu końcowego serwera. Pliki warstwowe mogą znajdować się w przestrzeni nazw punktu końcowego serwera, nawet jeśli nie włączono obsługi warstw w chmurze. Dlatego zaleca się, aby nie usuwać punktu końcowego serwera, chyba że chcesz zatrzymać korzystanie z Azure File Sync z tym konkretnym folderem lub zostały one jawnie nadane przez inżyniera firmy Microsoft. Aby uzyskać więcej informacji na temat usuwania punktów końcowych serwera, zobacz [Usuwanie punktu końcowego serwera](../articles/storage/files/storage-sync-files-server-endpoint.md#remove-a-server-endpoint).    

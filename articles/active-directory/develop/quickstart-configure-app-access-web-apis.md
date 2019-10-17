@@ -16,14 +16,14 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937fca5698378a8c877b4a981557f87d06170e9a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879398"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389612"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Szybki start: Konfigurowanie aplikacji klienckiej na potrzeby uzyskiwania dostępu do internetowych interfejsów API
+# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Szybki Start: Konfigurowanie aplikacji klienckiej w celu uzyskiwania dostępu do interfejsów API sieci Web
 
 Aby aplikacje klienckie przeznaczone dla Internetu lub aplikacje poufne mogły uczestniczyć w przepływie przydziałów autoryzacji, który wymaga uwierzytelniania (i uzyskania tokenu dostępu), muszą ustanowić bezpieczne poświadczenia. Domyślną metodą uwierzytelniania obsługiwaną w witrynie Azure Portal jest użycie identyfikatora klienta i klucza tajnego.
 
@@ -76,12 +76,13 @@ Aby dodać identyfikator URI przekierowania do aplikacji:
    1. Wybierz typ tworzonej aplikacji: **Internetowa** lub **Klient publiczny (mobilny i klasyczny)** .
    1. Podaj identyfikator URI przekierowania dla aplikacji.
       * Dla aplikacji internetowych podaj podstawowy adres URL aplikacji. Na przykład ciąg `http://localhost:31544` może być adresem URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy mogą używać tego adresu URL, aby zalogować się do internetowej aplikacji klienckiej.
-      * W przypadku aplikacji publicznych podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną dla Twojej aplikacji, na przykład: `https://MyFirstApp`.
+      * W przypadku aplikacji publicznych podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną dla swojej aplikacji, na przykład: `https://MyFirstApp`.
 
 1. Aby wybrać z sugerowanych identyfikatorów URI przekierowania dla klientów publicznych (mobilnych, klasycznych), wykonaj następujące kroki:
     1. Znajdź sekcję **Identyfikatory URI przekierowania dla klientów publicznych (mobilnych, klasycznych)** z sugerowanymi identyfikatorami.
-    1. Wybierz odpowiednie identyfikatory URI przekierowania dla aplikacji za pomocą pól wyboru.
+    1. Wybierz odpowiednie identyfikatory URI przekierowania dla aplikacji za pomocą pól wyboru. Możesz również wprowadzić niestandardowy identyfikator URI przekierowania. Jeśli nie masz pewności, co należy zrobić, zapoznaj się z dokumentacją biblioteki.
 
+Istnieją pewne ograniczenia dotyczące identyfikatorów URI przekierowania. Dowiedz się więcej o [ograniczeniach i ograniczeniach identyfikatorów URI przekierowania](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
 > [!NOTE]
 > Wypróbuj nowe ustawienia **uwierzytelniania** , w którym można skonfigurować ustawienia dla aplikacji na podstawie platformy lub urządzenia, które mają być docelowe.
 >
@@ -96,7 +97,7 @@ Aby dodać identyfikator URI przekierowania do aplikacji:
 W zależności od używanej aplikacji istnieją pewne dodatkowe ustawienia, które mogą być potrzebne do skonfigurowania, takie jak:
 
 * **Adres URL wylogowywania**
-* W przypadku aplikacji jednostronicowych można włączyć niejawną **zgodę** i wybrać tokeny, które mają zostać wystawione przez punkt końcowy autoryzacji.
+* W przypadku aplikacji jednostronicowych można włączyć **niejawną zgodę** i wybrać tokeny, które mają zostać wystawione przez punkt końcowy autoryzacji.
 * W przypadku aplikacji klasycznych, które korzystają z tokenów z zintegrowanego uwierzytelniania systemu Windows, przepływu kodu urządzenia lub nazwy użytkownika/hasła w sekcji **domyślny typ klienta** , skonfiguruj wartość **tak**dla ustawienia **Traktuj aplikację jako klienta publicznego** .
 * Aby przeprowadzić integrację z usługą konto Microsoft przy użyciu zestawu Live SDK, skonfiguruj **obsługę zestawu SDK na żywo**. Nowe aplikacje nie wymagają tego ustawienia.
 * **Domyślny typ klienta**
@@ -105,18 +106,18 @@ W zależności od używanej aplikacji istnieją pewne dodatkowe ustawienia, któ
 
 **Obsługiwane typy kont** określają, kto może korzystać z aplikacji lub uzyskać dostęp do interfejsu API.
 
-Po skonfigurowaniu [obsługiwanych typów kont](quickstart-register-app.md) podczas pierwszej rejestracji aplikacji można zmienić to ustawienie tylko przy użyciu edytora manifestu aplikacji, jeśli:
+Po [skonfigurowaniu obsługiwanych typów kont](quickstart-register-app.md) podczas pierwszej rejestracji aplikacji można zmienić to ustawienie tylko przy użyciu edytora manifestu aplikacji, jeśli:
 
 * Można zmienić typy kont z **AzureADMyOrg** lub **AzureADMultipleOrgs** na **AzureADandPersonalMicrosoftAccount**lub na odwrót.
 * Można zmienić typy kont z **AzureADMyOrg** na **AzureADMultipleOrgs**lub odwrotnie.
 
 Aby zmienić obsługiwane typy kont dla istniejącej rejestracji aplikacji:
 
-* Zobacz [Konfigurowanie manifestu aplikacji](reference-app-manifest.md) i aktualizowanie `signInAudience` klucza.
+* Zobacz [Konfigurowanie manifestu aplikacji](reference-app-manifest.md) i aktualizowanie klucza `signInAudience`.
 
 ## <a name="configure-platform-settings-for-your-application"></a>Konfigurowanie ustawień platformy dla aplikacji
 
-[![Skonfiguruj ustawienia aplikacji na podstawie platformy lub urządzenia](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
+[@no__t 1Configure ustawienia aplikacji na podstawie platformy lub urządzenia](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
 
 Aby skonfigurować ustawienia aplikacji zależnie od platformy lub urządzenia, jesteś celem:
 
@@ -128,17 +129,17 @@ Aby skonfigurować ustawienia aplikacji zależnie od platformy lub urządzenia, 
 
    | Platforma                | Decyzji              | Ustawienia konfiguracji            |
    |-------------------------|----------------------|-----------------------------------|
-   | **Aplikacje sieci Web**    | **Sieć Web**              | Wprowadź **Identyfikator URI przekierowania** dla aplikacji. |
+   | **Aplikacje internetowe**    | **Sieć Web**              | Wprowadź **Identyfikator URI przekierowania** dla aplikacji. |
    | **Aplikacje mobilne** | **iOS**              | Wprowadź **Identyfikator pakietu**aplikacji, który można znaleźć w Xcode w oknie info. plist lub ustawienia kompilacji. Dodanie identyfikatora pakietu powoduje automatyczne utworzenie identyfikatora URI przekierowania dla aplikacji. |
    |                         | **Android**          | * Podaj **nazwę pakietu**aplikacji, którą można znaleźć w pliku pliku AndroidManifest. XML.<br/>* Wygeneruj i wprowadź **skrót sygnatury**. Dodanie skrótu podpisu powoduje automatyczne utworzenie identyfikatora URI przekierowania dla aplikacji.  |
-   | **Komputery stacjonarne i urządzenia**   | **Komputery stacjonarne i urządzenia** | Obowiązkowe. Wybierz jeden z zalecanych **sugerowanych identyfikatorów URI przekierowania** , jeśli tworzysz aplikacje dla komputerów stacjonarnych i urządzeń.<br/>Obowiązkowe. Wprowadź **niestandardowy identyfikator URI przekierowania**, który jest używany jako lokalizacja, w której usługa Azure AD będzie przekierowywać użytkowników w odpowiedzi na żądania uwierzytelniania. Na przykład w przypadku aplikacji .NET Core, w których chcesz współdziałać, użyj `https://localhost`programu. |
+   | **Komputery stacjonarne i urządzenia**   | **Komputery stacjonarne i urządzenia** | Obowiązkowe. Wybierz jeden z zalecanych **sugerowanych identyfikatorów URI przekierowania** , jeśli tworzysz aplikacje dla komputerów stacjonarnych i urządzeń.<br/>Obowiązkowe. Wprowadź **niestandardowy identyfikator URI przekierowania**, który jest używany jako lokalizacja, w której usługa Azure AD będzie przekierowywać użytkowników w odpowiedzi na żądania uwierzytelniania. Na przykład w przypadku aplikacji .NET Core, w których chcesz współdziałać, użyj `https://localhost`. |
 
    > [!IMPORTANT]
    > W przypadku aplikacji mobilnych, które nie używają najnowszej biblioteki MSAL lub nie używają brokera, należy skonfigurować identyfikatory URI przekierowania dla tych aplikacji na **komputerach stacjonarnych i urządzeniach**.
 
 1. W zależności od wybranej platformy mogą istnieć dodatkowe ustawienia, które można skonfigurować. W przypadku usługi **Web** Apps można:
     * Dodaj więcej identyfikatorów URI przekierowania
-    * Skonfiguruj niejawną zgodę na wybór tokenów, które mają być wystawione przez punkt końcowy autoryzacji:
+    * Skonfiguruj **niejawną zgodę** na wybór tokenów, które mają być wystawione przez punkt końcowy autoryzacji:
         * W przypadku aplikacji jednostronicowych wybierz zarówno **tokeny dostępu** , jak i **tokeny identyfikatora**
         * W przypadku aplikacji sieci Web wybierz pozycję **identyfikatory tokenów**
 
