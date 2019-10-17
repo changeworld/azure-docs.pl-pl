@@ -9,14 +9,14 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: b00e38259bc3fe8cb6998c64ec453a17963a5ee5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 77e731c1f737b579c68a0eba74fe9918b3f370d3
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595790"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388131"
 ---
-# <a name="glossary"></a>Słownik
+# <a name="custom-translator-glossary"></a>Słownik usługi Custom translator
 
 Słownik usługi [tłumaczenia niestandardowego](https://portal.customtranslator.azure.ai) objaśnia warunki, które mogą wystąpić podczas pracy z translatorem niestandardowym.
 

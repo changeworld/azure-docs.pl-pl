@@ -1,6 +1,6 @@
 ---
-title: Program Azure AD Connect Health — dane usługi kondycji nie jest maksymalnie alert Data | Dokumentacja firmy Microsoft
-description: W tym dokumencie opisano przyczyny alertu "dane usługi kondycji nie jest aktualny" i jak rozwiązać problemy.
+title: Azure AD Connect Health — dane usługi kondycji są nieaktualne Microsoft Docs
+description: W tym dokumencie opisano przyczynę alertu "dane usługi kondycji są nieaktualne" i jak rozwiązać ten problem.
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
@@ -14,60 +14,60 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c5bc2ea76c558e47eaa5f297ebe36a629aa5754
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 41c1c102e88e1712d561874aef87a6f22ed250a9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702642"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430219"
 ---
-# <a name="health-service-data-is-not-up-to-date-alert"></a>Dane usługi kondycji nie są na bieżąco alert
+# <a name="health-service-data-is-not-up-to-date-alert"></a>Dane usługi kondycji są nieaktualne
 
 ## <a name="overview"></a>Przegląd
 
-Agentów na komputerach lokalnych, które program Azure AD Connect Health monitoruje się okresowo przekazywanie danych do usługi Azure AD Connect Health. Jeśli usługa nie odbiera danych z agenta, informacje w portalu jest wyświetlany będą nieaktualne. Aby wyróżnić ten problem, usługa zostanie podniesiony **dane usługi kondycji nie są na bieżąco** alertu. Ten alert jest generowany, gdy usługa nie odebrała kompletne dane w ciągu ostatnich dwóch godzin.  
+Agenci na maszynach lokalnych, którzy Azure AD Connect Health monitoruje okresowo przekazywać dane do usługi Azure AD Connect Health. Jeśli usługa nie odbiera danych od agenta, informacje prezentowane przez portal będą przestarzałe. Aby wyróżnić problem, usługa zgłosi **dane usługi kondycji, które nie są aktualne** . Ten alert jest generowany, gdy usługa nie otrzymała pełnych danych w ciągu ostatnich dwóch godzin.  
 
-- **Ostrzeżenie** stan alertu, jeżeli usługa kondycji odebrała tylko **częściowe** typy danych wysłanych z serwera w ostatnich dwóch godzin. Alert stanu ostrzeżenia, nie spowoduje wyzwolenia powiadomienia e-mail do skonfigurowanych adresatów. 
-- **Błąd** stan alertu, jeżeli usługa kondycji nie otrzymał żadnych typów danych z serwera w ostatnich dwóch godzin. Błąd stanu alertu wywołuje wiadomości e-mail z powiadomieniami do skonfigurowanych adresatów.
+- Alert stanu **ostrzegawczego** jest uruchamiany, jeśli usługa kondycji odebrał tylko **częściowe** typy danych wysłane z serwera w ciągu ostatnich dwóch godzin. Alert stanu ostrzegawczego nie powoduje wyzwolenia powiadomień e-mail dotyczących skonfigurowanych adresatów. 
+- Alert stanu **błędu** jest uruchamiany, jeśli usługa kondycji nie odebrał żadnych typów danych z serwera w ciągu ostatnich dwóch godzin. Alert stanu błędu wyzwala powiadomienia e-mail dla skonfigurowanych adresatów.
 
-Usługa pobiera dane z agentów, które są uruchomione na komputerach lokalnych, w zależności od typu usługi. Poniższa tabela zawiera listę agentów uruchomionych na maszynie, co robią i typy danych, które generuje usługi. W niektórych przypadkach zaangażowanych wiele usług w procesie, więc z nich mogą być przyczyna nadmiernego. 
+Usługa pobiera dane z agentów, które są uruchomione na maszynach lokalnych, w zależności od typu usługi. W poniższej tabeli wymieniono agentów uruchomionych na komputerze, co robią, oraz typów danych generowanych przez usługę. W niektórych przypadkach w procesie występuje wiele usług, więc każdy z nich może być przyczyna. 
 
-## <a name="understanding-the-alert"></a>Opis alertu
+## <a name="understanding-the-alert"></a>Informacje o alercie
 
-**Szczegóły alertu** blok, kiedy wystąpił alert i zostało ostatnio wykryte. Proces w tle, które jest uruchamiane co dwie godziny generuje i ponownie ocenia alertu. W poniższym przykładzie początkowej alert wystąpił o 9:59 03/10. Alert nadal znajdował się na 03/12 o 10:00 kiedy alert został oceniony jako ponownie. Blok zawiera szczegóły również czasu usługa kondycji otrzymała ostatnio określonego typu danych. 
+Blok **szczegóły alertu** pokazuje, kiedy wystąpiło i ostatnio wykryto alert. Proces w tle, który jest uruchamiany co dwie godziny, generuje i ponownie oblicza alert. W poniższym przykładzie początkowy alert wystąpił w dniu 03/10 o 9:59 AM. Alert nadal istniał w dniu 03/12 o godzinie 10:00, gdy alert został ponownie oceniony. Blok zawiera również informacje o czasie, który Usługa kondycji ostatnio odebrał określonego typu danych. 
  
- ![Usługa Azure AD Connect Health szczegóły alertu](./media/how-to-connect-health-data-freshness/data-freshness-details.png)
+ ![Szczegóły alertu Azure AD Connect Health](./media/how-to-connect-health-data-freshness/data-freshness-details.png)
  
-Poniższa tabela zawiera mapowanie typów usług odpowiednie typy wymaganych danych:
+W poniższej tabeli przedstawiono typy usług odpowiadające wymaganym typom danych:
 
-| Typ usługi | Agent (nazwa usługi Windows) | Cel | Typ danych, wygenerowane  |
+| Typ usługi | Agent (nazwa usługi systemu Windows) | Przeznaczenie | Wygenerowano typ danych  |
 | --- | --- | --- | --- |  
-| Usługa Azure AD Connect (synchronizacja) | Usługa szczegółowych informacji synchronizacji programu Azure AD Connect Health | Zbieraj informacje specyficzne dla usługi AAD Connect (łączników, reguły synchronizacji, itp.) | AadSyncService SynchronizationRules <br />  AadSyncService łączników <br /> AadSyncService GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> AadSyncService bajty   |
-|  | Usługa monitorowania synchronizacji programu Azure AD Connect Health | Zbieranie liczników wydajności specyficzne dla usługi AAD Connect, śladów funkcji ETW, pliki | Licznik wydajności |
-| USŁUGI AD DS | Usługa szczegółowych informacji usług AD DS programu Azure AD Connect Health | Wykonaj syntetycznych testy, zbieranie informacji o topologii, metadane replikacji |  - Adds-TopologyInfo-Json <br /> — Typowe-TestData-Json (tworzy wyniki testów)   | 
-|  | Usługa monitorowania usług AD DS programu Azure AD Connect Health | Zbieranie liczników wydajności specyficznych dla usług AD DS, śladów funkcji ETW, pliki | -Licznik wydajności  <br /> — Typowe-TestData-Json (przekazuje wyniki testów)  |
-| AD FS | Usługa diagnostyczna usług AD FS programu Azure AD Connect Health | Wykonaj testy syntetycznego | TestResult (tworzy wyniki testów) | 
-| | Usługa szczegółowych informacji usług AD FS programu Azure AD Connect Health  | Zbieranie metryk użycia usług AD FS | Adfs-UsageMetrics |
-| | Usługa monitorowania usług AD FS programu Azure AD Connect Health | Zbieranie liczników wydajności specyficznych dla usług AD FS, śladów funkcji ETW, pliki | TestResult (przekazuje wyniki testów) |
+| Azure AD Connect (synchronizacja) | Usługa szczegółowych informacji synchronizacji programu Azure AD Connect Health | Zbierz informacje specyficzne dla połączenia usługi AAD (łączniki, reguły synchronizacji itp.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService — łączniki <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> -AadSyncService-serviceconfigurations <br /> -AadSyncService-servicestatus   |
+|  | Usługa monitorowania synchronizacji programu Azure AD Connect Health | Zbieranie liczników wydajności specyficznych dla połączenia usługi AAD, śledzenia ETW, plików | Licznik wydajności |
+| AD DS | Usługa szczegółowych informacji usług AD DS programu Azure AD Connect Health | Wykonywanie testów syntetycznych, zbieranie informacji o topologii, metadane replikacji |  -Dodaje-TopologyInfo-JSON <br /> -Common-TestData-JSON (tworzy wyniki testu)   | 
+|  | Usługa monitorowania usług AD DS programu Azure AD Connect Health | Zbieranie danych liczników wydajności, śledzenia ETW, plików | -Licznik wydajności  <br /> -Common-TestData-JSON (przekazuje wyniki testu)  |
+| AD FS | Usługa diagnostyczna usług AD FS programu Azure AD Connect Health | Wykonaj testy syntetyczne | TestResult (tworzy wyniki testu) | 
+| | Usługa szczegółowych informacji usług AD FS programu Azure AD Connect Health  | Zbieranie metryk użycia usług ADFS | ADFS — UsageMetrics |
+| | Usługa monitorowania usług AD FS programu Azure AD Connect Health | Zbieranie liczników wydajności dotyczących usług AD FS, śledzenia ETW, plików | TestResult (przekazuje wyniki testu) |
 
 ## <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów 
 
-Poniżej podano kroki wymagane do zdiagnozowania problemu. Pierwszy to zestaw podstawowych testów, które są wspólne dla wszystkich typów usług. Tabela poniżej zawierającego się poznać konkretne kroki dla każdego typu usługi i typ danych. 
+Kroki wymagane do zdiagnozowania problemu są podane poniżej. Pierwszy to zestaw podstawowych testów, które są wspólne dla wszystkich typów usług. 
 
 > [!IMPORTANT] 
-> Ten alert jest zgodna Connect Health [zasady przechowywania danych](reference-connect-health-user-privacy.md#data-retention-policy)
+> Ten alert następuje po nawiązaniu połączenia z [zasadami przechowywania danych](reference-connect-health-user-privacy.md#data-retention-policy) dotyczących kondycji
 
-* Upewnij się, że są zainstalowane najnowsze wersje agentów. Widok [Historia wersji](reference-connect-health-version-history.md). 
-* Upewnij się, że usługi agentów programu Azure AD Connect Health są **systemem** na maszynie. Na przykład programu Connect Health dla usług AD FS mają trzy usługi.
-  ![Weryfikowanie usługi Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
+* Upewnij się, że są zainstalowane najnowsze wersje agentów. Wyświetl [historię wydania](reference-connect-health-version-history.md). 
+* Upewnij się, że usługi agentów Azure AD Connect Health są **uruchomione** na tym komputerze. Na przykład program Connect Health dla AD FS powinien mieć trzy usługi.
+  ![Verify Azure AD Connect Health @ no__t-1
 
-* Upewnij się, że omijają i spełniać [sekcji wymagania dotyczące](how-to-connect-health-agent-install.md#requirements).
-* Użyj [narzędzia łączności test](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) do wykrywania problemów z łącznością.
-* Jeśli masz serwer HTTP Proxy, postępuj zgodnie z tymi [czynności konfiguracyjnych](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
+* Upewnij się, że przejdziesz do [sekcji wymagania](how-to-connect-health-agent-install.md#requirements)i spełnisz ją.
+* Za pomocą [Narzędzia do testowania połączeń](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) można wykrywać problemy z łącznością.
+* Jeśli masz serwer proxy HTTP, wykonaj następujące [czynności konfiguracyjne](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
 
 
 ## <a name="next-steps"></a>Następne kroki
-Jeśli dowolny z powyższych kroków zidentyfikować problem, napraw go i zaczekaj alertu rozwiązać. Proces w tle alertu jest uruchamiane co 2 godziny, potrwa do 2 godzin, aby rozwiązać alert. 
+Jeśli którykolwiek z powyższych kroków zidentyfikował problem, napraw go i poczekaj na jego rozwiązanie. Proces w tle alertu jest uruchamiany co 2 godziny, więc rozwiązanie alertu będzie trwać do 2 godzin. 
 
-* [Zasady przechowywania danych w usłudze Azure AD Connect Health](reference-connect-health-user-privacy.md#data-retention-policy)
+* [Zasady przechowywania danych Azure AD Connect Health](reference-connect-health-user-privacy.md#data-retention-policy)
 * [Azure AD Connect Health — często zadawane pytania](reference-connect-health-faq.md)

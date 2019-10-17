@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: b25a002cb1e2563ab97a2081c6b6a05362b66779
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338513"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388106"
 ---
-# <a name="immersive-reader-sdk-reference"></a>Dokumentacja zestawu SDK czytnika immersyjny
+# <a name="immersive-reader-sdk-reference-guide"></a>Przewodnik referencyjny zestawu SDK czytnika immersyjny
 
 Zestaw SDK czytnika immersyjny to biblioteka języka JavaScript, która umożliwia integrację czytnika immersyjny z aplikacją sieci Web.
 
-# <a name="functions"></a>Funkcje
+# <a name="functions"></a>Functions
 
 Zestaw SDK udostępnia funkcje:
 
@@ -41,14 +41,14 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parametry
 
-| Name | Typ | Opis |
+| Nazwa | Typ | Opis |
 | ---- | ---- |------------ |
-| `token` | ciąg | Token uwierzytelniania usługi Azure AD. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
-| `subdomain` | ciąg | Niestandardowa poddomena zasobu czytnika immersyjny na platformie Azure. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
+| `token` | string | Token uwierzytelniania usługi Azure AD. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
+| `subdomain` | string | Niestandardowa poddomena zasobu czytnika immersyjny na platformie Azure. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
 | `content` | [Zawartość](#content) | Obiekt zawierający zawartość, która ma zostać pokazana w czytniku immersyjny. |
 | `options` | [Opcje](#options) | Opcje konfigurowania niektórych zachowań czytnika immersyjny. Opcjonalny. |
 
-### <a name="returns"></a>Zwraca
+### <a name="returns"></a>Typu
 
 Zwraca `Promise<HTMLDivElement>`, który rozwiązuje, kiedy czytnik immersyjny jest ładowany. @No__t-0 jest rozpoznawany jako element `div`, którego jedynym elementem podrzędnym jest element `iframe`, który zawiera stronę czytnika immersyjny.
 
@@ -80,11 +80,11 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parametry
 
-| Name | Typ | Opis |
+| Nazwa | Typ | Opis |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Opcje konfigurowania niektórych zachowań funkcji renderButtons. Opcjonalny. |
 
-## <a name="types"></a>Typy
+## <a name="types"></a>Typ
 
 ### <a name="content"></a>Zawartość
 
@@ -124,7 +124,7 @@ Pojedynczy fragment danych, który zostanie przesłany do zawartości czytnika i
 | Style czcionki | Pogrubienie, kursywa, podkreślenie, kod, przekreślenie, indeks górny, dolny indeks |
 | Listy nieuporządkowane | Dysk, okrąg, kwadrat |
 | Uporządkowane listy | Dziesiętny, górny, Dolny, niższy niż alfa, wielkie litery, małe litery |
-| Hiperłącza | Wkrótce |
+| Hipertekst | Wkrótce |
 
 Nieobsługiwane Tagi będą renderowane w sposób porównywalny. Obrazy i tabele nie są obecnie obsługiwane.
 
@@ -189,8 +189,8 @@ Użyj następujących atrybutów, aby skonfigurować wygląd i działanie przyci
 
 | Atrybut | Opis |
 | --------- | ----------- |
-| `data-button-style` | Ustawia styl przycisku. Może być `icon`, `text`lub. `iconAndText` Wartość domyślna to `icon`. |
-| `data-locale` | Ustawia ustawienia regionalne. Na przykład `en-US` lub `fr-FR`. Wartość domyślna to angielski `en`. |
+| `data-button-style` | Ustawia styl przycisku. Może być `icon`, `text` lub `iconAndText`. Wartość domyślna to `icon`. |
+| `data-locale` | Ustawia ustawienia regionalne. Na przykład: `en-US` lub `fr-FR`. Wartość domyślna to angielski `en`. |
 | `data-icon-px-size` | Ustawia rozmiar ikony w pikselach. Wartość domyślna to 20px. |
 
 ## <a name="browser-support"></a>Obsługa przeglądarki
@@ -206,4 +206,4 @@ Najnowsze wersje następujących przeglądarek są używane w celu uzyskania naj
 ## <a name="next-steps"></a>Następne kroki
 
 * Eksplorowanie [zestawu SDK czytnika immersyjny w witrynie GitHub](https://github.com/microsoft/immersive-reader-sdk)
-* [Szybki start: Tworzenie aplikacji sieci Web, która uruchamia czytnik immersyjny (C#) ](./quickstart.md)
+* [Szybki Start: Tworzenie aplikacji sieci Web, która uruchamia czytnik immersyjnyC#()](./quickstart.md)

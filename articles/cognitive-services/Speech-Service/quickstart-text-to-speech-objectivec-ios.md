@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 9d7fb4dfef2ac3ab14a8a10eb4d9a7afb91ac71e
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 099a2f707431827996aa304aa706a9efbe54f589
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803978"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438840"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Szybki Start: wykluczanie mowy w celu języka C w systemie iOS przy użyciu zestawu Speech SDK
 
@@ -67,7 +67,8 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
 ## <a name="add-the-sample-code"></a>Dodawanie przykładowego kodu
 
 1. Otwórz obszar roboczy `helloworld.xcworkspace` w Xcode.
-1. Zastąp zawartość automatycznie generowanego pliku `AppDelegate.m` przez: [!code-objectivec @ no__t-2
+1. Zastąp zawartość automatycznie wygenerowanego pliku `AppDelegate.m` następującą zawartością:  
+   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/objectivec-ios/helloworld/helloworld/AppDelegate.m#code)]
 1. Zastąp zawartość automatycznie wygenerowanego pliku `ViewController.m` następującą zawartością:  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
 1. Zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.

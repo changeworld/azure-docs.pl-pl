@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 07591517211d5334b9bf055d778f00b171e7056f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263454"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432664"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Wdrażanie usługi Azure Databricks w sieci wirtualnej
 
@@ -101,7 +101,7 @@ W przypadku korzystania z tego szablonu nie trzeba wykonywać żadnych ręcznych
 
 ### <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń
 
-Aby utworzyć sieciowe grupy zabezpieczeń z regułami wymaganymi dla istniejącej sieci wirtualnej, użyj [szablonu sieciowej grupy zabezpieczeń dla iniekcji sieci wirtualnej datakostka](https://azure.microsoft.com/resources/templates/101-databricks-nsg-for-vnet-injection).
+Aby utworzyć sieciowe grupy zabezpieczeń z regułami wymaganymi dla istniejącej sieci wirtualnej, użyj [szablonu sieciowej grupy zabezpieczeń dla iniekcji sieci wirtualnej datakostka](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/).
 
 W przypadku korzystania z tego szablonu nie trzeba wykonywać żadnych ręcznych listy dozwolonych ruchu w podsieci.
 

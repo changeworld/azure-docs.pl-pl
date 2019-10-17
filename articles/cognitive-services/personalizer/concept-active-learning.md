@@ -1,5 +1,5 @@
 ---
-title: Active Learning — Personalizacja
+title: Zdarzenia aktywne i nieaktywne — Personalizacja
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -10,47 +10,36 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663709"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429037"
 ---
-# <a name="active-learning-and-learning-policies"></a>Aktywne zasady uczenia i uczenia 
+# <a name="active-and-inactive-events"></a>Zdarzenia aktywne i nieaktywne
 
-Gdy aplikacja wywołuje interfejs API rangi, otrzymujesz rangę zawartości. Logika biznesowa może korzystać z tej rangi, aby określić, czy zawartość ma być wyświetlana użytkownikowi. Gdy zostanie wyświetlona sklasyfikowana zawartość, która jest _aktywnym_ zdarzeniem rangi. Gdy aplikacja nie wyświetla tej sklasyfikowanej zawartości, to jest zdarzenie nieaktywnej rangi. 
+Gdy aplikacja wywołuje interfejs API rangi, otrzymujesz akcję, którą aplikacja powinna wyświetlić w polu rewardActionId.  Od tego momentu Personalizacja będzie oczekiwać, że nastąpi wywołanie z tym samym eventId. Wynik nagrody będzie używany do uczenia modelu, który będzie używany w przyszłych wywołaniach rangi. Jeśli dla eventId nie zostanie odebrane żadne wynagrodzenie, zostanie zastosowane defaul wynagrodzenie. Domyślne nagrody są ustalane w witrynie Azure Portal.
 
-Aktywne informacje o zdarzeniu rangi są zwracane do personalizacji. Te informacje służą do dalszego szkolenia modelu za pomocą bieżących zasad nauki.
-
-## <a name="active-events"></a>Aktywne zdarzenia
-
-Aktywne zdarzenia powinny zawsze być widoczne dla użytkownika, a połączenie płatne powinno zostać zwrócone, aby zamknąć pętlę uczenia. 
-
-### <a name="inactive-events"></a>Zdarzenia nieaktywne 
-
-Nieaktywne zdarzenia nie powinny zmieniać modelu bazowego, ponieważ użytkownik nie miał możliwości wyboru z sklasyfikowanej zawartości.
-
-## <a name="dont-train-with-inactive-rank-events"></a>Nie pouczenie z nieaktywnymi zdarzeniami rangi 
-
-W przypadku niektórych aplikacji może być konieczne wywołanie interfejsu API rangi bez znajomości tego, czy aplikacja będzie wyświetlać wyniki dla użytkownika. 
-
-Dzieje się tak w przypadku:
+W niektórych przypadkach może być konieczne wywołanie przez aplikację rangi oddzwonu, nawet jeśli wynik zostanie użyty lub displayedn do użytkownika. Może się tak zdarzyć w sytuacjach, gdy na przykład strona renderowania podwyższonej zawartości zostanie zastąpiona kampanią marketingową. Jeśli wynik wywołania rangi nie był nigdy używany i użytkownik nie zobaczy go, może być niewłaściwy do uczenia się z jakimkolwiek wynagrodzeniem, w ogóle lub w inny sposób.
+Zwykle zdarza się to, gdy:
 
 * Może być wstępnie wyrenderowany niektóre elementy interfejsu użytkownika, które użytkownik może lub może nie zobaczyć. 
 * Aplikacja może przeprowadzać personalizację predykcyjną, w której są wykonywane wywołania rangi z mniejszym kontekstem w czasie rzeczywistym, a ich dane wyjściowe mogą być używane przez aplikację. 
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Wyłącz aktywną naukę dla nieaktywnych zdarzeń rangi podczas wywołania rangi
+W takich przypadkach prawidłowym sposobem korzystania z programu Personalizuj jest wywoływanie rangi żądającej zdarzenia jako _nieaktywnego_. Personalizacja nie będzie oczekiwać odnoszącego się do tego zdarzenia i nie będzie stosowała wynagrodzenia domyślnego. Letr w logice biznesowej, jeśli aplikacja używa informacji z wywołania rangi, wystarczy _aktywować_ zdarzenie. Od momentu, gdy zdarzenie jest aktywne, Personalizacja będzie oczekiwać odzyskania dla zdarzenia lub zastosować wynagrodzenie domyślne, jeśli żadne jawne wywołanie nie zostanie wykonane do interfejsu API nagradzania.
 
-Aby wyłączyć automatyczną naukę, zadzwoń do rangi z `learningEnabled = False`.
+## <a name="get-inactive-events"></a>Pobierz zdarzenia nieaktywne
 
-Uczenie się dla nieaktywnego zdarzenia jest niejawnie aktywowane w przypadku wysłania nagrody dla rangi.
+Aby wyłączyć szkolenie dla zdarzenia, zadzwoń do rangi o `learningEnabled = False`.
 
-## <a name="learning-policies"></a>Zasady uczenia
+Uczenie się dla nieaktywnego zdarzenia jest niejawnie aktywowane w przypadku wysłania nagrody dla eventId lub wywołania interfejsu API `activate` dla tego eventId.
 
-Zasady uczenia określają konkretne *Parametry* szkolenia modeli. Dwa modele tych samych danych, przeszkolonych dla różnych zasad uczenia się, zachowywać się inaczej.
+## <a name="learning-settings"></a>Ustawienia uczenia
 
-### <a name="importing-and-exporting-learning-policies"></a>Importowanie i eksportowanie zasad uczenia
+Ustawienia uczenia określają konkretne *Parametry* szkolenia modeli. Dwa modele tych samych danych, przeszkolonych na różnych ustawieniach uczenia, zakończą się w inny sposób.
+
+### <a name="import-and-export-learning-policies"></a>Importowanie i eksportowanie zasad uczenia
 
 Możesz importować i eksportować pliki zasad nauki z Azure Portal. Pozwala to na zapisanie istniejących zasad, ich testowanie i zastępowanie oraz archiwizowanie ich w kontroli kodu źródłowego jako artefaktów do przyszłego odwołania i inspekcji.
 
