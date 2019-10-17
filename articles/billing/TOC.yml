@@ -195,8 +195,6 @@
       href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
     - name: Tworzenie dodatkowej subskrypcji
       href: billing-create-subscription.md
-    - name: Tworzenie dodatkowej subskrypcji — umowa klienta firmy Microsoft
-      href: billing-mca-create-subscription.md
     - name: Programowe tworzenie subskrypcji Enterprise
       href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
     - name: Eksportowanie informacji o subskrypcji
