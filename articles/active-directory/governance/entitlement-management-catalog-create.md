@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1a6d7901368d19cf5ca8221bc00f426980e6f48
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169939"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429580"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Tworzenie wykazu zasobów i zarządzanie nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
 
@@ -52,7 +52,7 @@ Katalog jest kontenerem zasobów i pakietów dostępu. Katalog można utworzyć,
 
 1. Jeśli chcesz zezwolić użytkownikom w wybranych katalogach zewnętrznych na żądanie pakietów dostępu w tym wykazie, ustaw opcję **włączone dla użytkowników zewnętrznych** na **wartość tak**.
 
-    ![Nowe okienko katalogu](./media/entitlement-management-catalog-create/new-catalog.png)
+    ![Nowe okienko katalogu](./media/entitlement-management-shared/new-catalog.png)
 
 1. Kliknij przycisk **Utwórz** , aby utworzyć wykaz.
 
@@ -130,7 +130,9 @@ Można edytować nazwę i opis wykazu. Użytkownicy zobaczą te informacje w szc
 
 1. Na stronie **Przegląd** wykazu kliknij pozycję **Edytuj**.
 
-1. Edytuj nazwę lub opis wykazu.
+1. Edytuj nazwę, opis lub włączone ustawienia katalogu.
+
+    ![Edytuj ustawienia katalogu](./media/entitlement-management-shared/catalog-edit.png)
 
 1. Kliknij przycisk **Save** (Zapisz).
 

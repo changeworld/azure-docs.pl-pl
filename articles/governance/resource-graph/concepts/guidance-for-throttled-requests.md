@@ -1,17 +1,17 @@
 ---
-title: Wskazówki dotyczące żądań z ograniczeniami
+title: Wskazówki dotyczące ograniczonych żądań
 description: Dowiedz się, jak tworzyć lepsze zapytania, aby uniknąć ograniczania żądań do grafu zasobów platformy Azure.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 06/19/2019
+ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 85d68beb27ab27a2ada9acbf9482d35dec438c06
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1bbfd2a64de0b42da19d0a978874d564f1755c59
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980286"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387630"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Wskazówki dotyczące żądań z ograniczeniami na wykresie zasobów platformy Azure
 
@@ -55,7 +55,7 @@ Wsadowe zapytania według subskrypcji, grupy zasobów lub pojedynczego zasobu s�
   {
       var userQueryRequest = new QueryRequest(
           subscriptions: new[] { subscriptionId },
-          query: "project name, type");
+          query: "Resoures | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -78,7 +78,7 @@ Wsadowe zapytania według subskrypcji, grupy zasobów lub pojedynczego zasobu s�
       var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
       var userQueryRequest = new QueryRequest(
           subscriptions: currSubscriptionBatch,
-          query: "project name, type");
+          query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -102,7 +102,7 @@ Wsadowe zapytania według subskrypcji, grupy zasobów lub pojedynczego zasobu s�
           resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -124,7 +124,7 @@ Ze względu na sposób wymuszonego ograniczania przepustowości zalecamy użycie
 
 - Harmonogram zapytania rozłożonego
 
-  | Liczba zapytań         | 15000  | 15000   | 15000    | 15000    |
+  | Liczba zapytań         | 15  | 15   | 15    | 15    |
   |---------------------|-----|------|-------|-------|
   | Przedział czasu (s) | 0-5 | 5-10 | 10-15 | 15-20 |
 
@@ -184,11 +184,11 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 }
 ```
 
-## <a name="pagination"></a>Dzielenia na strony
+## <a name="pagination"></a>Paginacja
 
 Ponieważ wykres zasobów platformy Azure zwraca co najwyżej 1000 wpisów w pojedynczej odpowiedzi na zapytanie, może być konieczne podział [zapytań na strony](./work-with-data.md#paging-results) , aby uzyskać kompletny zestaw danych, którego szukasz. Niektórzy klienci grafu zasobów platformy Azure obsługują jednak stronicowanie w inny sposób niż inne.
 
-- C#ZESTAWIE
+- Zestaw SDK języka C#
 
   W przypadku korzystania z zestawu SDK ResourceGraph należy obsługiwać stronicowanie, przekazując token pomijania zwracanego z poprzedniej odpowiedzi zapytania do następnej kwerendy z podziałem na strony. Ten projekt oznacza, że należy zebrać wyniki ze wszystkich wywołań z podziałem na strony i połączyć je razem na końcu. W takim przypadku każde wysłane zapytanie z podziałem na strony ma jeden przydział zapytania:
 
@@ -196,7 +196,7 @@ Ponieważ wykres zasobów platformy Azure zwraca co najwyżej 1000 wpisów w poj
   var results = new List<object>();
   var queryRequest = new QueryRequest(
       subscriptions: new[] { mySubscriptionId },
-      query: "project id, name, type | top 5000");
+      query: "Resources | project id, name, type | top 5000");
   var azureOperationResponse = await this.resourceGraphClient
       .ResourcesWithHttpMessagesAsync(queryRequest, header)
       .ConfigureAwait(false);
@@ -218,11 +218,11 @@ Ponieważ wykres zasobów platformy Azure zwraca co najwyżej 1000 wpisów w poj
   W przypadku korzystania z interfejsu wiersza polecenia platformy Azure lub Azure PowerShell zapytania do usługi Azure Resource Graph są automatycznie podzielone na strony, aby pobrać maksymalnie 5000 wpisów. Wyniki zapytania zwracają łączną listę wpisów ze wszystkich wywołań z podziałem na strony. W tym przypadku, w zależności od liczby wpisów w wyniku zapytania, pojedyncze zapytanie z podziałem na strony może zużywać więcej niż jeden przydział zapytania. Na przykład w poniższym przykładzie pojedynczy przebieg zapytania może zużywać do pięciu zasobów zapytania:
 
   ```azurecli-interactive
-  az graph query -q 'project id, name, type' -top 5000
+  az graph query -q 'Resources | project id, name, type' -top 5000
   ```
 
   ```azurepowershell-interactive
-  Search-AzGraph -Query 'project id, name, type' -Top 5000
+  Search-AzGraph -Query 'Resources | project id, name, type' -Top 5000
   ```
 
 ## <a name="still-get-throttled"></a>Nadal masz ograniczone ograniczenia?

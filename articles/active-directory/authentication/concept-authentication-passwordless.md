@@ -5,28 +5,40 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 89b52f356b112cff51105ed44c79788ee4542c6e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303531"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430519"
 ---
-# <a name="what-is-passwordless"></a>Co to jest logowanie bez hasła?
+# <a name="passwordless-authentication-options"></a>Opcje uwierzytelniania bezhasła
 
 Uwierzytelnianie wieloskładnikowe (MFA) to świetny sposób zabezpieczania organizacji, ale użytkownicy uzyskują sfrustrowani z dodatkową warstwą na potrzeby zapamiętywania haseł. Metody uwierzytelniania bez hasła są wygodniejsze, ponieważ hasło jest usuwane i zastępowane przez użytkownika.
 
 |   | Coś, czego masz | Coś lub wiesz |
 | --- | --- | --- |
-| Logowanie bez hasła | Telefon lub klucz zabezpieczeń | Biometryczna lub PIN |
+| Logowanie bez hasła | Urządzenia, numery telefonów lub klucze zabezpieczeń systemu Windows 10 | Biometryczna lub PIN |
 
-Każda organizacja ma inne potrzeby związane z uwierzytelnianiem. Firma Microsoft obecnie oferuje funkcje Windows Hello dla naszych komputerów z systemem Windows. Dodajemy Microsoft Authenticator aplikację i klucze zabezpieczeń FIDO2 do rodziny bezhaseł.
+Każda organizacja ma inne potrzeby związane z uwierzytelnianiem. Firma Microsoft oferuje trzy opcje uwierzytelniania bezhasła:
+
+- Windows Hello dla firm 
+- Aplikacja Microsoft Authenticator 
+- FIDO2 klucze zabezpieczeń
+
+![Uwierzytelnianie: zabezpieczenia i wygoda](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+
+## <a name="windows-hello-for-business"></a>Windows Hello dla firm 
+
+Funkcja Windows Hello dla firm jest idealna dla pracowników przetwarzających informacje, którzy mają własne Wyznaczeni komputery z systemem Windows. Biometryczne i kod PIN są bezpośrednio powiązane z komputerem użytkownika, co uniemożliwia dostęp od nikogo innego niż właściciel. Dzięki integracji infrastruktury PKI i wbudowanej obsłudze logowania jednokrotnego (SSO) usługa Windows Hello dla firm zapewnia prostą i wygodną metodę bezproblemowego uzyskiwania dostępu do zasobów firmy lokalnie i w chmurze.
+
+[Przewodnik planowania](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) usługi Windows Hello dla firm może służyć do podejmowania decyzji dotyczących typu wdrożenia usługi Windows Hello dla firm i opcji, które należy wziąć pod uwagę.
 
 ## <a name="microsoft-authenticator-app"></a>Aplikacja Microsoft Authenticator
 
@@ -44,7 +56,7 @@ W publicznej wersji zapoznawczej pracownicy mogą korzystać z zewnętrznych klu
 
 ![Zaloguj się do przeglądarki Microsoft Edge przy użyciu klucza zabezpieczeń](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
-Chociaż istnieje wiele kluczy, które są FIDO2 certyfikowane przez FIDO Alliance, firma Microsoft wymaga, aby niektóre opcjonalne rozszerzenia specyfikacji usługi CTAP FIDO2 zostały zaimplementowane przez dostawcę w celu zapewnienia maksymalnego poziomu zabezpieczeń i najlepszego środowiska.
+Chociaż istnieje wiele kluczy, które są FIDO2 certyfikowane przez usługi FIDO Alliance, firma Microsoft wymaga, aby niektóre opcjonalne rozszerzenia specyfikacji protokołu Klient-wystawca FIDO2 (CTAP) zostały zaimplementowane przez dostawcę w celu zapewnienia maksymalnego poziomu zabezpieczeń i najlepszego systemu.
 
 Klucz zabezpieczeń **musi** implementować następujące funkcje i rozszerzenia z protokołu CTAP FIDO2, aby były zgodne z firmą Microsoft:
 

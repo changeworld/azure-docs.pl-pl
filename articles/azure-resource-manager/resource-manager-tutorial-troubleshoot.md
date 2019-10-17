@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z wdrożeniami usługi Resource Manager | Microsoft Docs
-description: Dowiedz się, jak monitorować i rozwiązywać problemy z wdrożeniami usługi Resource Manager.
+description: Dowiedz się, jak monitorować wdrożenia szablonów Azure Resource Manager i rozwiązywać problemy. Pokazuje dzienniki aktywności i historię wdrożenia.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c889c3123160680d96889227d6964ff197dc41cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ad32ed83d731a26b6bb72fca230d00d5465c45a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388646"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390212"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Samouczek: Rozwiązywanie problemów z wdrożeniami szablonów usługi Resource Manager
+# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Samouczek: Rozwiązywanie problemów z wdrożeniami szablonów Menedżer zasobów
 
 Dowiedz się, jak rozwiązywać problemy z błędami wdrażania szablonów usługi Resource Manager. W tym samouczku skonfigurujesz dwa błędy w szablonie i dowiesz się, jak korzystać z dzienników aktywności i historii wdrażania, aby rozwiązać problemy.
 
@@ -53,13 +53,13 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 Otwórz szablon o nazwie [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Tworzenie standardowego konta magazynu) w obszarze [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/) i skonfiguruj dwa problemy z szablonem.
 
-1. W programie Visual Studio Code wybierz pozycję **File (Plik)**>**Open File (Otwórz plik)**.
+1. W programie Visual Studio Code wybierz pozycję **File (Plik)** >**Open File (Otwórz plik)** .
 2. W polu **File name (Nazwa pliku)** wklej następujący adres URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
-3. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik.
+3. Wybierz pozycję **Open (Otwórz)** , aby otworzyć plik.
 4. Zmień wiersz **apiVersion** na następujący:
 
     ```json
@@ -68,7 +68,7 @@ Otwórz szablon o nazwie [Create a standard storage account](https://azure.micro
     - Ciąg **apiVersion1** to nieprawidłowa nazwa elementu. Jest to błąd weryfikacji.
     - Zmień wersję interfejsu API na „2018-07-01”.  Jest to błąd wdrażania.
 
-5. Wybierz pozycję **File (Plik)**>**Save As (Zapisz jako)**, aby zapisać plik jako **azuredeploy.json** na komputerze lokalnym.
+5. Wybierz pozycję **File (Plik)** >**Save As (Zapisz jako)** , aby zapisać plik jako **azuredeploy.json** na komputerze lokalnym.
 
 ## <a name="troubleshoot-the-validation-error"></a>Rozwiązywanie problemów z błędami weryfikacji
 
@@ -101,7 +101,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Błąd wdrażania można odnaleźć w witrynie Azure Portal, korzystając z następującej procedury:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Otwórz grupę zasobów, wybierając pozycję **Grupa zasobów**, a następnie wybierz nazwę grupy zasobów. Zostanie wyświetlony komunikat **1 niepowodzenie** w obszarze **Wdrożenia**.
 
     ![Samouczek dotyczący rozwiązywania problemów w usłudze Resource Manager](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -115,7 +115,7 @@ Błąd wdrażania można odnaleźć w witrynie Azure Portal, korzystając z nast
 
 Ten błąd można również znaleźć w dzienniku aktywności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Wybierz pozycję **Monitorowanie** > **Dziennik aktywności**.
 3. Użyj filtrów, aby znaleźć dziennik.
 
@@ -134,6 +134,6 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 3. Wybierz nazwę grupy zasobów.  W grupie zasobów zostanie wyświetlonych łącznie sześć zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku pokazano, jak rozwiązywać problemy z błędami wdrażania szablonów usługi Resource Manager.  Aby uzyskać więcej informacji, zobacz [Troubleshoot common Azure deployment errors with Azure Resource Manager](./resource-manager-common-deployment-errors.md) (Rozwiązywanie typowych błędów z wdrożeniem na platformie Azure w usłudze Azure Resource Manager).

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: interfejs API tabel przy użyciu języka Python — Azure Cosmos DB'
+title: 'Szybki start: interfejs API tabel z językiem Python — Azure Cosmos DB'
 description: Ten przewodnik Szybki start przedstawia sposób używania interfejsu API tabel usługi Azure Cosmos DB do tworzenia aplikacji przy użyciu witryny Azure Portal i języka Python
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 358f55594037f4a468d31265f4e65a6ec4d7ef28
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.custom: seo-python-october2019
+ms.openlocfilehash: d4cfba26192eb097d06f82e18acb41c1f9640e66
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020134"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437330"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Szybki start: tworzenie aplikacji interfejsu API tabel przy użyciu języka Python i usługi Azure Cosmos DB
 
@@ -33,7 +34,7 @@ Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-Ponadto:
+Dodatkowo:
 
 * Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2019, możesz pobrać i korzystać **bezpłatnie** z programu [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że wybrano pakiety robocze **Programowanie na platformie Azure** i **Opracowywanie zawartości w języku Python**.
 * Wybierz również opcję języka Python 2 w pakiecie roboczym **Opracowywanie zawartości w języku Python** lub pobierz środowisko Python 2.7 z witryny [python.org](https://www.python.org/downloads/release/python-2712/).
@@ -84,7 +85,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) wybierz pozycję **Parametry połączenia**. 
 
-    ![Wyświetlanie i kopiowanie PARAMETRÓW POŁĄCZENIA w panelu parametrów połączenia](./media/create-table-python/connection-string.png)
+    ![Wyświetlanie i kopiowanie parametrów połączenia w ustawieniach parametrów połączenia](./media/create-table-python/view-and-copy-connection-string-in-connection-string-settings.png)
 
 2. Skopiuj NAZWĘ KONTA przy użyciu przycisku po prawej stronie pola.
 
@@ -94,7 +95,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 5. Wklej KLUCZ PODSTAWOWY z portalu do wartości STORAGE_ACCOUNT_KEY w wierszu 20.
 
-3. Zapisz plik config.py.
+6. Zapisz plik config.py.
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 

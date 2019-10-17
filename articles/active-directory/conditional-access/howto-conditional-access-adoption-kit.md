@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c75ec0ec212c99e474d13892178acbdc14e5f386
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075277"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430039"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Przyjmowanie dostępu warunkowego usługi Azure AD
 
@@ -45,14 +45,14 @@ Aby dowiedzieć się więcej na temat środowiska klienta i partnera w przypadku
 
 ## <a name="announcements"></a>Ogłoszenia
 
-Usługa Azure AD odbiera ulepszenia w sposób ciągły. Aby zachować aktualne informacje o najnowszych zmianach, zobacz [co nowego w Azure Active Directory?](../fundamentals/whats-new.md)
+Usługa Azure AD otrzymuje ulepszenia na bieżąco. Aby zachować aktualne informacje o najnowszych zmianach, zobacz [co nowego w Azure Active Directory?](../fundamentals/whats-new.md)
 
 Najnowsze blogi przez społeczność techniczną i Wydział tożsamości firmy Microsoft:
 
 * 24 września 2018, [Azure Active Directory dostępu warunkowego w Azure Databricks](https://azure.microsoft.com/updates/azure-active-directory-conditional-access-in-azure-databricks/)
 * 21 września 2018, [niestandardowe kontrolki dostępu warunkowego usługi Azure AD znajdują się w publicznej wersji zapoznawczej](https://azure.microsoft.com/updates/azure-ad-conditional-access-custom-controls-are-in-public-preview/)
 * 21 września 2018 [jest dostępna obsługa dostępu warunkowego usługi Azure AD dla ograniczonego dostępu za pomocą Microsoft Cloud App Security](https://azure.microsoft.com/updates/azure-ad-conditional-access-support-for-limited-access-with-microsoft-cloud-app-security-is-now-available/) .
-* 21 września 2018, [dostęp warunkowy usługi Azure AD: Obsługa programu Managed Browser dla platform iOS/Android jest teraz w wersji zapoznawczej](https://azure.microsoft.com/updates/azure-ad-conditional-access-managed-browser-support-for-ios-android-platforms-now-in-preview/)
+* 21 września 2018, [dostęp warunkowy usługi Azure AD: Obsługa przeglądarki zarządzanej dla platform iOS/Android teraz w wersji zapoznawczej](https://azure.microsoft.com/updates/azure-ad-conditional-access-managed-browser-support-for-ios-android-platforms-now-in-preview/)
 * 21 września 2018, [dostęp warunkowy usługi Azure AD dla kodów krajów jest w publicznej wersji zapoznawczej](https://azure.microsoft.com/updates/azure-ad-conditional-access-for-country-codes-is-in-public-preview/)
 * 21 września 2018, [dostępne są warunki użytkowania usługi Azure AD](https://azure.microsoft.com/updates/azure-ad-terms-of-use-now-available/)
 
@@ -69,7 +69,6 @@ Skorzystaj z poniższych linków, aby zapoznać się z omówieniem funkcji dost�
 
 Ponadto Skorzystaj z poniższych linków, aby uzyskać wskazówki dotyczące ochrony dostępu do wszystkich usług zintegrowanych z usługą Azure Active Directory.
 
-* [Co to jest podstawowa ochrona (wersja zapoznawcza)?](baseline-protection.md) Funkcja ochrony linii bazowej gwarantuje, że w środowisku Azure Active Directory jest włączony co najmniej poziom zabezpieczeń.
 * [Konfiguracje i dostęp do urządzeń](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations). Opisuje sposób konfigurowania bezpiecznego dostępu do usług w chmurze za pomocą produktów Enterprise Mobility + Security, implementując zalecane środowisko i konfigurację, w tym określony zestaw zasad dostępu warunkowego i powiązane funkcje.
 * [Azure Active Directory informacje o ustawieniach dostępu warunkowego](technical-reference.md). Dowiedz się
    * Jakie aplikacje korzystają z dostępu warunkowego?
@@ -91,13 +90,13 @@ Ponadto Skorzystaj z poniższych linków, aby uzyskać wskazówki dotyczące och
 
 Zapoznaj się z następującymi kursami dostępu warunkowego i więcej w witrynie [Pluralsight.com](https://www.pluralsight.com/):
 
-* Pluralsight.com: [Projektowanie zarządzania tożsamościami w Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-identity-management-design)
+* Pluralsight.com: [projektowanie zarządzania tożsamościami w Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-identity-management-design)
    * "Ten kurs przeprowadzi Cię przez najważniejsze elementy, które należy znać, aby zaprojektować rozwiązanie do zarządzania tożsamościami w usłudze Azure AD". Dostęp warunkowy usługi Azure AD został omówiony w module "Korzystanie z ról i Access Control w usłudze Azure AD".
 
-* Pluralsight.com: [Uwierzytelnianie projektu dla Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)
+* Pluralsight.com: [Projektuj uwierzytelnianie dla Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)
    * "Ten kurs wyjaśnia, jak używać usługi Azure AD do rozwiązywania wszystkich wymagań związanych z uwierzytelnianiem w chmurze". Dostęp warunkowy usługi Azure AD jest objęty modułem "wymagania dotyczące uwierzytelniania dla różnych scenariuszy".
 
-* Pluralsight.com: [Zaprojektuj autoryzację dla Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)
+* Pluralsight.com: [Projektuj autoryzację dla Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)
    * "Ten kurs uczy opcje autoryzacji dostępne w przypadku platformy Azure i usługi Azure AD". Dostęp warunkowy usługi Azure AD został omówiony w module "autoryzacja za pomocą Azure Resource Manager i usługi Azure AD".
 
 ### <a name="books"></a>Książki
@@ -108,7 +107,7 @@ Zapoznaj się z następującymi kursami dostępu warunkowego i więcej w witryni
 * Wiley [usługi infrastruktury Microsoft Azure](https://www.wiley.com/Mastering+Microsoft+Azure+Infrastructure+Services-p-9781119003298)
    * "Oto wszystko, czego potrzebujesz, aby zrozumieć, oszacować, wdrożyć i zachować środowiska, które używają Microsoft Azure".
 
-## <a name="white-papers"></a>Oficjalne dokumenty
+## <a name="white-papers"></a>Dokumentacja
 
 * Opublikowano 18 grudnia 2018, aby [utworzyć odporną strategię zarządzania kontrolą dostępu za pomocą Azure Active Directory](../authentication/concept-resilient-controls.md)
    * Ten dokument zawiera wskazówki dotyczące strategii, które organizacja może podjąć w celu zapewnienia odporności na zmniejszenie ryzyka związanego z blokadą w przypadku nieprzewidzianych przerw.
@@ -116,7 +115,7 @@ Zapoznaj się z następującymi kursami dostępu warunkowego i więcej w witryni
 * Opublikowano 18 września, 2018 [zasobów na potrzeby migrowania aplikacji do Azure Active Directory](../manage-apps/migration-resources.md)
    * Ten oficjalny dokument zawiera listę zasobów, które ułatwiają migrowanie dostępu do aplikacji i ich uwierzytelniania do Azure Active Directory (Azure AD).
 
-* Opublikowano 12 lipca 2018 [strategia zabezpieczeń i zgodności z przepisami platformy Azure: PaaS hosting aplikacji sieci Web dla OFICJALNych obciążeń BRYTYJSKIch](../../security/blueprints/ukofficial-paaswa-overview.md)
+* Opublikowano 12 lipca 2018 [strategia zabezpieczeń i zgodności z przepisami platformy Azure: PaaS aplikacje sieci Web obsługujące oficjalne obciążenia w Wielkiej Brytanii](../../security/blueprints/ukofficial-paaswa-overview.md)
    * Plany platformy Azure składają się z wskazówek dotyczących dokumentów i szablonów automatyzacji, które wdrażają architektury oparte na chmurze w celu oferowania rozwiązań do scenariuszy, które mają akredytacji lub wymagania dotyczące zgodności.
 
 ## <a name="guidance-for-it-administrators"></a>Wskazówki dla administratorów IT
@@ -130,22 +129,22 @@ Oto przydatne linki ułatwiające rozpoczęcie pracy:
 * [Najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory](best-practices.md)
 * [Korzystanie z przeglądów dostępu usługi Azure AD do zarządzania użytkownikami, którzy zostali wykluczeni z zasad dostępu warunkowego](../governance/conditional-access-exclusion.md)
 * [Instrukcje: Planowanie wdrożenia dostępu warunkowego w Azure Active Directory](plan-conditional-access.md)
-* [Szybki start: Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego Azure Active Directory](app-based-mfa.md)
-* [Szybki start: Wymagaj akceptacji warunków użytkowania przed uzyskaniem dostępu do aplikacji w chmurze](require-tou.md)
-* [Szybki start: Blokuj dostęp w przypadku wykrycia ryzyka sesji przy użyciu Azure Active Directory dostępu warunkowego](app-sign-in-risk.md)
+* [Szybki Start: Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji przy użyciu Azure Active Directory dostępu warunkowego](app-based-mfa.md)
+* [Szybki Start: Wymagaj akceptacji warunków użytkowania przed uzyskaniem dostępu do aplikacji w chmurze](require-tou.md)
+* [Szybki Start: Blokuj dostęp w przypadku wykrycia ryzyka sesji przy użyciu Azure Active Directory dostępu warunkowego](app-sign-in-risk.md)
 * [Często zadawane pytania dotyczące dostępu warunkowego usługi Azure AD](faqs.md)
    * Aby uzyskać dodatkowe pytania, możesz również wyświetlić [forum MSDN](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&sort=relevancedesc&brandIgnore=True&searchTerm=password+reset+azure).
    * Jeśli nie możesz znaleźć odpowiedzi na problem, nasze zespoły pomocy technicznej są zawsze dostępne, aby pomóc Ci w dalszej próbie. Użyj [skontaktuj się z pomocą techniczną firmy Microsoft](../authentication/active-directory-passwords-troubleshoot.md#contact-microsoft-support).
 
 ### <a name="tutorials"></a>Samouczki
 
-* [**Szybki start: Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego Azure Active Directory**](app-based-mfa.md)
+* [**Szybki Start: Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji przy użyciu Azure Active Directory dostępu warunkowego**](app-based-mfa.md)
    * Ten przewodnik Szybki Start przedstawia sposób konfigurowania zasad dostępu warunkowego usługi Azure AD, które wymagają uwierzytelniania wieloskładnikowego w przypadku wybranej aplikacji w chmurze w danym środowisku.
 
-* [**Szybki start: Wymagaj akceptacji warunków użytkowania przed uzyskaniem dostępu do aplikacji w chmurze**](require-tou.md)
+* [**Szybki Start: Wymagaj akceptacji warunków użytkowania przed uzyskaniem dostępu do aplikacji w chmurze**](require-tou.md)
    * Ten przewodnik Szybki Start przedstawia sposób konfigurowania zasad dostępu warunkowego usługi Azure AD, które wymagają zaakceptowania warunków użytkowania dla wybranej aplikacji w chmurze w danym środowisku.
 
-* [**Szybki start: Blokuj dostęp w przypadku wykrycia ryzyka sesji przy użyciu Azure Active Directory dostępu warunkowego**](app-sign-in-risk.md)
+* [**Szybki Start: Blokuj dostęp w przypadku wykrycia ryzyka sesji przy użyciu Azure Active Directory dostępu warunkowego**](app-sign-in-risk.md)
    * Ten przewodnik Szybki Start przedstawia sposób konfigurowania zasad dostępu warunkowego, które blokują logowanie, gdy wykryto skonfigurowany poziom ryzyka związanego z logowaniem.
 
 * [Samouczek: **Migrowanie zasad klasycznych, które wymagają uwierzytelniania wieloskładnikowego w Azure Portal**](policy-migration-mfa.md)

@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 8d0ad794caee8a06c8d403a981037d6560fb3f43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 37fec388acda78f3d13c8e85ddddf780ad099d69
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030128"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387998"
 ---
-# <a name="what-are-mapping-data-flows"></a>Czym są przepływy danych mapowania?
+# <a name="what-are-mapping-data-flows"></a>Co to jest mapowanie przepływów danych?
 
 Mapowanie przepływów danych to wizualnie zaprojektowane przekształcenia danych w Azure Data Factory. Przepływy danych umożliwiają inżynierom danych Tworzenie logiki transformacji danych graficznych bez pisania kodu. Wyniki przepływów danych są wykonywane jako działania w ramach potoków Azure Data Factory przy użyciu skalowanych klastrów Spark. Działania związane z przepływem danych mogą być operacyjne za pośrednictwem istniejących Data Factory planowania, kontroli, przepływu i monitorowania.
 
@@ -24,7 +24,7 @@ Mapowanie przepływów danych zapewnia w pełni wizualne środowisko, bez koniec
 
 Aby utworzyć przepływ danych, kliknij znak plus w obszarze zasoby fabryki. 
 
-Nowy przepływ(media/data-flow/newdataflow2.png "danych") nowego ![przepływu danych]
+![Nowy przepływ danych](media/data-flow/newdataflow2.png "Nowy przepływ danych")
 
 Spowoduje to przejście do kanwy przepływu danych, w której można utworzyć logikę transformacji. Kliknij pole "Dodaj Źródło", aby rozpocząć konfigurowanie transformacji źródłowej. Aby uzyskać więcej informacji, zobacz [Źródło transformacji](data-flow-source.md).
 
@@ -32,13 +32,13 @@ Spowoduje to przejście do kanwy przepływu danych, w której można utworzyć l
 
 Kanwa przepływu danych jest podzielony na trzy części: górny pasek, wykres i panel konfiguracja. 
 
-![Canvas](media/data-flow/canvas1.png "Canvas")
+![Przestrzeń](media/data-flow/canvas1.png "Przestrzeń")
 
 ### <a name="graph"></a>Graf
 
 Wykres przedstawia strumień transformacji. Pokazuje on dane źródłowe w miarę ich przepływu w jednym lub większej liczbie zlewów. Aby dodać nowe źródło, kliknij pole "Dodaj Źródło". Aby dodać nową transformację, kliknij znak plus w prawym dolnym rogu istniejącej transformacji.
 
-![Canvas](media/data-flow/canvas2.png "Canvas")
+![Przestrzeń](media/data-flow/canvas2.png "Przestrzeń")
 
 ### <a name="configuration-panel"></a>Panel konfiguracji
 
@@ -50,13 +50,13 @@ Każda transformacja ma co najmniej cztery karty konfiguracji:
 
 Pierwsza karta w okienku Konfiguracja każdej transformacji zawiera ustawienia specyficzne dla tej transformacji. Więcej informacji można znaleźć na stronie dokumentacji przekształcenia.
 
-Karta ![Ustawienia źródła]karty(media/data-flow/source1.png "ustawienia źródłowe")
+![Karta Ustawienia źródła](media/data-flow/source1.png "Karta Ustawienia źródła")
 
 #### <a name="optimize"></a>Optymalizowanie
 
 Karta _Optymalizacja_ zawiera ustawienia umożliwiające skonfigurowanie schematów partycjonowania.
 
-![Optymalizuj](media/data-flow/optimize1.png "optymalizację")
+![Optymalizacja](media/data-flow/optimize1.png "Optymalizowanie")
 
 Ustawieniem domyślnym jest "Użyj bieżącego partycjonowania", które instruuje Azure Data Factory, aby użyć schematu partycjonowania natywnego dla przepływów danych uruchomionych na platformie Spark. W większości scenariuszy zaleca się zastosowanie tego ustawienia.
 
@@ -92,7 +92,7 @@ Jeśli masz dobrą wiedzę o kardynalności danych, partycjonowanie kluczy może
 
 Karta _Inspekcja_ umożliwia wyświetlenie metadanych strumienia danych, który jest przekształcany. Widoczne są liczby kolumn, zmienione kolumny, kolumny dodane, typy danych, porządkowanie kolumn i odwołania do kolumn. Inspekcja to widok metadanych w trybie tylko do odczytu. Nie musisz mieć włączonego trybu debugowania, aby wyświetlić metadane w okienku Inspekcja.
 
-![Inspekcja](media/data-flow/inspect1.png "inspekcji")
+![Skontrol](media/data-flow/inspect1.png "Skontrol")
 
 Gdy zmienisz kształt danych za pomocą transformacji, przepływ zmian metadanych zostanie wyświetlony w okienku Inspekcja. Jeśli w transformacji źródłowej nie ma zdefiniowanego schematu, metadane nie będą widoczne w okienku Inspekcja. Brak metadanych jest powszechny w scenariuszach dryfowania schematu.
 
@@ -104,11 +104,11 @@ Jeśli tryb debugowania jest włączony, karta _Podgląd danych_ zapewnia intera
 
 Górny pasek zawiera akcje, które mają wpływ na cały przepływ danych, takie jak zapisywanie i walidacja. Można również przełączać się między trybami wykresu i konfiguracji za pomocą przycisków **Pokaż wykres** i **Ukryj wykres** .
 
-![Ukryj]wykres(media/data-flow/hideg.png "Ukryj Graf")
+![Ukryj wykres](media/data-flow/hideg.png "Ukryj wykres")
 
 W przypadku ukrycia grafu można przechodzić między węzłami transformacji później za pomocą przycisków **Wstecz** i **dalej** .
 
-![Nawigowanie]po(media/data-flow/showhide.png "nawigacji")
+![Nimi](media/data-flow/showhide.png "Nimi")
 
 ## <a name="next-steps"></a>Następne kroki
 

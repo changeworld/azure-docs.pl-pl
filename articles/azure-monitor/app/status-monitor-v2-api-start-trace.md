@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Rozpocznij śledzenie | Microsoft Docs'
-description: Dokumentacja interfejsu API monitor stanu v2. Rozpocznij śledzenie. Zbierz dzienniki ETW z monitor stanu i Application Insights SDK.
+title: 'Dokumentacja interfejsu API usługi Azure Application Insights Agent: rozpoczęcie śledzenia | Microsoft Docs'
+description: Dokumentacja interfejsu API agenta Application Insights. Rozpocznij śledzenie. Zbierz dzienniki ETW z monitor stanu i Application Insights SDK.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: f4c43e6bdb70687606041c2f0859ab072db2b587
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b1c5aa34c46a20631b328abfb061dc2477150c72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200376"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389845"
 ---
-# <a name="status-monitor-v2-api-start-applicationinsightsmonitoringtrace"></a>Interfejs API monitor stanu v2: Start-ApplicationInsightsMonitoringTrace
+# <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Interfejs API agenta Application Insights: Start-ApplicationInsightsMonitoringTrace
 
 W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -43,17 +43,17 @@ Zwykle będziemy zbierać zdarzenia w celu zbadania, Dlaczego aplikacja nie jest
 Środowisko uruchomieniowe dołączania bezkodowego będzie emitować zdarzenia ETW podczas uruchamiania usług IIS i uruchamiania aplikacji.
 
 Aby zebrać te zdarzenia:
-1. W konsoli cmd z uprawnieniami administratora wykonaj `iisreset /stop` polecenie, aby wyłączyć usługi IIS i wszystkie aplikacje sieci Web.
+1. W konsoli cmd z uprawnieniami administratora wykonaj `iisreset /stop`, aby wyłączyć usługi IIS i wszystkie aplikacje sieci Web.
 2. Wykonaj to polecenie cmdlet
-3. W konsoli cmd z uprawnieniami administratora uruchom polecenie, `iisreset /start` aby uruchomić usługi IIS.
+3. W konsoli cmd z uprawnieniami administratora wykonaj `iisreset /start`, aby uruchomić usługi IIS.
 4. Spróbuj przejść do swojej aplikacji.
 5. Po zakończeniu ładowania aplikacji można ją zatrzymać ręcznie (`Ctrl + C`) lub poczekać na przekroczenie limitu czasu.
 
 ### <a name="what-events-to-collect"></a>Jakie zdarzenia należy zebrać
 
 Podczas zbierania zdarzeń są dostępne trzy opcje:
-1. Użyj przełącznika `-CollectSdkEvents` , aby zbierać zdarzenia emitowane z zestawu SDK Application Insights.
-2. Użyj przełącznika `-CollectRedfieldEvents` , aby zbierać zdarzenia emitowane przez Monitor stanu i środowisko uruchomieniowe Redfield. Te dzienniki są przydatne podczas diagnozowania usług IIS i uruchamiania aplikacji.
+1. Użyj przełącznika `-CollectSdkEvents`, aby zbierać zdarzenia emitowane z zestawu Application Insights SDK.
+2. Użyj przełącznika `-CollectRedfieldEvents`, aby zbierać zdarzenia emitowane przez monitor stanu i środowisko uruchomieniowe Redfield. Te dzienniki są przydatne podczas diagnozowania usług IIS i uruchamiania aplikacji.
 3. Użyj obu przełączników do zbierania obu typów zdarzeń.
 4. Domyślnie, jeśli nie określono żadnego przełącznika, zostaną zebrane oba typy zdarzeń.
 
@@ -61,24 +61,24 @@ Podczas zbierania zdarzeń są dostępne trzy opcje:
 ## <a name="parameters"></a>Parametry
 
 ### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**Opcjonalnie.** Użyj tego parametru, aby określić, jak długo ten skrypt ma zbierać zdarzenia. Wartość domyślna to 5 minut.
+**Obowiązkowe.** Użyj tego parametru, aby określić, jak długo ten skrypt ma zbierać zdarzenia. Wartość domyślna to 5 minut.
 
 ### <a name="-logdirectory"></a>-LogDirectory
-**Opcjonalnie.** Użyj tego przełącznika, aby ustawić katalog wyjściowy pliku ETL. Domyślnie ten plik zostanie utworzony w katalogu modułów programu PowerShell. Pełna ścieżka zostanie wyświetlona podczas wykonywania skryptu.
+**Obowiązkowe.** Użyj tego przełącznika, aby ustawić katalog wyjściowy pliku ETL. Domyślnie ten plik zostanie utworzony w katalogu modułów programu PowerShell. Pełna ścieżka zostanie wyświetlona podczas wykonywania skryptu.
 
 
 ### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**Opcjonalnie.** Ten przełącznik umożliwia zbieranie zdarzeń Application Insights SDK.
+**Obowiązkowe.** Ten przełącznik umożliwia zbieranie zdarzeń Application Insights SDK.
 
 ### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**Opcjonalnie.** Ten przełącznik służy do zbierania zdarzeń z monitor stanu i środowiska uruchomieniowego Redfield.
+**Obowiązkowe.** Ten przełącznik służy do zbierania zdarzeń z monitor stanu i środowiska uruchomieniowego Redfield.
 
 ### <a name="-verbose"></a>-Verbose
 **Wspólny parametr.** Ten przełącznik umożliwia wyprowadzanie szczegółowych dzienników.
 
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>Dane wyjściowe
 
 
 ### <a name="example-of-application-startup-logs"></a>Przykład dzienników uruchamiania aplikacji
@@ -121,7 +121,7 @@ Dodatkowe Rozwiązywanie problemów:
 
 
 
- Więcej informacji o monitor stanu v2:
- - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.
+ Zrób więcej dzięki Application Insights agentowi:
+ - Skorzystaj z naszego przewodnika, aby [rozwiązać problemy z](status-monitor-v2-troubleshoot.md) agentem Application Insights.
  - [Pobierz konfigurację](status-monitor-v2-api-get-config.md) , aby upewnić się, że Twoje ustawienia zostały poprawnie zarejestrowane.
  - [Pobierz stan,](status-monitor-v2-api-get-status.md) aby sprawdzić monitorowanie.

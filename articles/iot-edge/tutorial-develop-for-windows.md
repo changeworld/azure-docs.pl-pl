@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0c7d88d76a3fea87b3cfe4032186140f38c263d3
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 755290997cb6aab328cd38ce81a21c598c737b5f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693409"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429013"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Samouczek: opracowywanie modułów IoT Edge dla urządzeń z systemem Windows
 
@@ -206,7 +206,7 @@ Przykładowy C# kod, który jest dostarczany z szablonem projektu, używa [klasy
 
 7. Znajdź właściwość **routes** $edgeHub żądanych właściwości. 
 
-   Jedna z funkcji, jeśli moduł IoT Edge Hub ma kierować komunikaty między wszystkimi modułami w ramach wdrożenia. Sprawdź wartości we właściwości trasy. Pierwsza trasa, **IotEdgeModule1ToIoTHub**, używa znaku wieloznacznego ( **\*** ), aby dołączyć komunikat pochodzący z kolejki wyjściowej w module IotEdgeModule1. Te komunikaty przechodzą do *$upstream*, która jest nazwą zastrzeżoną, która wskazuje IoT Hub. Druga trasa, **sensorToIotEdgeModule1**, pobiera komunikaty pochodzące z modułu SimulatedTemperatureSensor i kieruje je do kolejki wejściowej *INPUT1* modułu IotEdgeModule1. 
+   Jedną z funkcji modułu IoT Edge Hub jest kierowanie komunikatów między wszystkimi modułami w ramach wdrożenia. Sprawdź wartości we właściwości trasy. Pierwsza trasa, **IotEdgeModule1ToIoTHub**, używa znaku wieloznacznego ( **\*** ), aby dołączyć komunikat pochodzący z kolejki wyjściowej w module IotEdgeModule1. Te komunikaty przechodzą do *$upstream*, która jest nazwą zastrzeżoną, która wskazuje IoT Hub. Druga trasa, **sensorToIotEdgeModule1**, pobiera komunikaty pochodzące z modułu SimulatedTemperatureSensor i kieruje je do kolejki wejściowej *INPUT1* modułu IotEdgeModule1. 
 
    ![Przejrzyj trasy w pliku Deployment. Template. JSON](./media/tutorial-develop-for-windows/deployment-routes.png)
 

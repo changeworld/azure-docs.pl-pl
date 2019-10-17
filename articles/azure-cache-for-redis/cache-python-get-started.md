@@ -17,14 +17,14 @@ ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 87c22d3497765fca6f0dcae445152e6e2923510e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329861"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435528"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Szybki Start: korzystanie z usługi Azure cache for Redis za pomocą języka Python
+# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Szybki Start: Tworzenie aplikacji w języku Python korzystającej z usługi Azure cache for Redis
 
 W tym artykule opisano obsługę usługi Azure cache for Redis w aplikacji w języku Python w celu uzyskania dostępu do bezpiecznej, dedykowanej pamięci podręcznej dostępnej z dowolnej aplikacji na platformie Azure.
 
@@ -48,7 +48,7 @@ W poniższym przykładzie użyto *PIP3* for python3 do zainstalowania pakietu Re
     pip3 install redis
 ```
 
-![Instalowanie klienta redis-py](./media/cache-python-get-started/cache-python-install-redis-py.png)
+![Zainstaluj interfejs Python Redis-PR w usłudze Azure cache dla Redis](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 
 ## <a name="read-and-write-to-the-cache"></a>Odczytywanie i zapisywanie w pamięci podręcznej
@@ -100,7 +100,7 @@ for c in result:
 
 Uruchom skrypt języka Python.
 
-![Test dotyczący języka Python ukończony](./media/cache-python-get-started/cache-python-completed.png)
+![Uruchom skrypt języka Python, aby przetestować dostęp do pamięci podręcznej w usłudze Azure cache for Redis](./media/cache-python-get-started/cache-python-completed.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -117,7 +117,7 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozyc
 
 W polu tekstowym **Filtruj według nazwy...** wprowadź nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. W grupie zasobów na liście wynik wybierz pozycję **...** , a następnie **Usuń grupę zasobów**.
 
-![Usuń](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![Usuń swoją grupę zasobów szybkiego startu dla usługi Azure cache for Redis](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Aby potwierdzić, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 

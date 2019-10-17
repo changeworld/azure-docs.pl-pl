@@ -1,6 +1,6 @@
 ---
-title: Błędy rejestracji dostawcy zasobów platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak rozwiązać błędy rejestracji dostawcy zasobów platformy Azure.
+title: Błędy rejestracji dostawcy zasobów platformy Azure | Microsoft Docs
+description: Opisuje sposób rozwiązywania problemów z rejestracją dostawcy zasobów platformy Azure podczas wdrażania zasobów przy użyciu Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2f3db5e6260b065c83f0e337306d38dca6e5ff51
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fcdcfdfe736f29f18ea2dc240a66fd7fa6bc404b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60389959"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390256"
 ---
-# <a name="resolve-errors-for-resource-provider-registration"></a>Rozwiązywanie błędów dla rejestracji dostawcy zasobów
+# <a name="resolve-errors-for-resource-provider-registration"></a>Rozwiązywanie problemów dotyczących rejestracji dostawcy zasobów
 
-W tym artykule opisano błędy, które można napotkać podczas używania dostawcy zasobów, które wcześniej nie były używane w ramach subskrypcji.
+W tym artykule opisano błędy, które można napotkać podczas korzystania z dostawcy zasobów, który nie był wcześniej używany w Twojej subskrypcji.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Objaw
 
-Podczas wdrażania zasobów, może pojawić się następujący kod błędu i komunikatem:
+Podczas wdrażania zasobu może zostać wyświetlony następujący kod błędu i komunikat:
 
 ```
 Code: NoRegisteredProviderFound
@@ -36,16 +36,16 @@ Message: No registered resource provider found for location {location}
 and API version {api-version} for type {resource-type}.
 ```
 
-Lub może zostać wyświetlony podobny komunikat, stwierdzający, że:
+Można też otrzymać podobny komunikat informujący o tym, że:
 
 ```
 Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
-Komunikat o błędzie powinien zapewnić sugestie dotyczące obsługiwane lokalizacje i wersje interfejsów API. Możesz zmienić szablon do jednego z sugerowanych wartości. Większość dostawców są zarejestrowane automatycznie w witrynie Azure portal lub interfejsu wiersza polecenia, którego używasz, ale nie wszystkich. Jeśli nie znasz dostawcy określonego zasobu, zanim może być konieczne zarejestrować tego dostawcę.
+Komunikat o błędzie powinien zawierać sugestie dotyczące obsługiwanych lokalizacji i wersji interfejsu API. Możesz zmienić szablon na jedną z sugerowanych wartości. Większość dostawców jest automatycznie rejestrowana przez Azure Portal lub interfejs wiersza polecenia, którego używasz, ale nie wszystkie. Jeśli nie użyto dostawcy zasobów określonego wcześniej, może być konieczne zarejestrowanie tego dostawcy.
 
-Lub, wyłączając automatyczne zamykanie dla maszyn wirtualnych może zostać wyświetlony komunikat o błędzie podobny do:
+W przypadku wyłączenia automatycznego zamykania maszyn wirtualnych może zostać wyświetlony komunikat o błędzie podobny do:
 
 ```
 Code: AuthorizationFailed
@@ -54,79 +54,79 @@ Message: The client '<identifier>' with object id '<identifier>' does not have a
 
 ## <a name="cause"></a>Przyczyna
 
-Te błędy dla jednego z następujących powodów:
+Te błędy są wyświetlane z jednego z następujących powodów:
 
-* Dostawca wymagany zasób nie został zarejestrowany dla Twojej subskrypcji
-* Wersja interfejsu API, które nie są obsługiwane dla typu zasobu
+* Wymagany dostawca zasobów nie został zarejestrowany dla Twojej subskrypcji
+* Wersja interfejsu API nie jest obsługiwana dla typu zasobu
 * Lokalizacja nie jest obsługiwana dla typu zasobu
-* Automatycznego zamykania maszyn wirtualnych należy zarejestrować dostawcę zasobów Microsoft.DevTestLab.
+* W przypadku automatycznego zamykania maszyn wirtualnych dostawca zasobów Microsoft. wspólny musi być zarejestrowany.
 
 ## <a name="solution-1---powershell"></a>Rozwiązanie 1 — PowerShell
 
-W przypadku programu PowerShell, użyj **Get AzResourceProvider** wyświetlić Twój status rejestracji.
+W przypadku programu PowerShell Użyj polecenia **Get-AzResourceProvider** , aby wyświetlić stan rejestracji.
 
 ```powershell
 Get-AzResourceProvider -ListAvailable
 ```
 
-Aby zarejestrować dostawcę, należy użyć **AzResourceProvider rejestru** i podaj nazwę dostawcy zasobów, które chcesz zarejestrować.
+Aby zarejestrować dostawcę, należy użyć **register-AzResourceProvider** i podać nazwę dostawcy zasobów, który ma zostać zarejestrowany.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
-Aby uzyskać obsługiwane lokalizacje dla określonego typu zasobów, należy użyć:
+Aby uzyskać obsługiwane lokalizacje dla określonego typu zasobu, użyj:
 
 ```powershell
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-Aby uzyskać obsługiwanych wersji interfejsu API dla danego typu zasobu, należy użyć:
+Aby uzyskać obsługiwane wersje interfejsu API dla określonego typu zasobu, użyj:
 
 ```powershell
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
-## <a name="solution-2---azure-cli"></a>Rozwiązanie 2 — interfejs wiersza polecenia Azure
+## <a name="solution-2---azure-cli"></a>Rozwiązanie 2 — interfejs wiersza polecenia platformy Azure
 
-Aby zobaczyć, czy dostawca jest zarejestrowany, użyj `az provider list` polecenia.
+Aby sprawdzić, czy dostawca jest zarejestrowany, użyj polecenia `az provider list`.
 
 ```azurecli-interactive
 az provider list
 ```
 
-Aby zarejestrować dostawcę zasobów, użyj `az provider register` polecenia, a następnie określ *przestrzeni nazw* do zarejestrowania.
+Aby zarejestrować dostawcę zasobów, użyj polecenia `az provider register` i określ *przestrzeń nazw* do zarejestrowania.
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Cdn
 ```
 
-Aby wyświetlić obsługiwane lokalizacje i wersje interfejsów API dla typu zasobu, należy użyć:
+Aby wyświetlić obsługiwane lokalizacje i wersje interfejsu API dla typu zasobu, użyj:
 
 ```azurecli-interactive
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-## <a name="solution-3---azure-portal"></a>Rozwiązanie 3 - w witrynie Azure portal
+## <a name="solution-3---azure-portal"></a>Rozwiązanie 3 — Azure Portal
 
-Można wyświetlić stan rejestracji i zarejestrować przestrzeni nazw dostawcy zasobów za pośrednictwem portalu.
+Możesz zobaczyć stan rejestracji i zarejestrować przestrzeń nazw dostawcy zasobów za pomocą portalu.
 
-1. W portalu, wybierz **wszystkich usług**.
+1. W portalu wybierz pozycję **wszystkie usługi**.
 
    ![Wybierz wszystkie usługi](./media/resource-manager-register-provider-errors/select-all-services.png)
 
 1. Wybierz pozycję **Subskrypcje**.
 
-   ![Wybierz subskrypcje](./media/resource-manager-register-provider-errors/select-subscriptions.png)
+   ![Wybieranie subskrypcji](./media/resource-manager-register-provider-errors/select-subscriptions.png)
 
-1. Z listy subskrypcji Wybierz subskrypcję, której chcesz użyć do rejestrowania dostawcy zasobów.
+1. Z listy subskrypcji wybierz subskrypcję, której chcesz używać do rejestrowania dostawcy zasobów.
 
-   ![Wybierz subskrypcję, można zarejestrować dostawcy zasobów](./media/resource-manager-register-provider-errors/select-subscription-to-register.png)
+   ![Wybierz subskrypcję, aby zarejestrować dostawcę zasobów](./media/resource-manager-register-provider-errors/select-subscription-to-register.png)
 
-1. Dla Twojej subskrypcji, wybierz **dostawców zasobów**.
+1. W przypadku subskrypcji wybierz pozycję **dostawcy zasobów**.
 
    ![Wybierz dostawców zasobów](./media/resource-manager-register-provider-errors/select-resource-provider.png)
 
-1. Przyjrzyj się liście dostawców zasobów, a w razie potrzeby zaznacz **zarejestrować** link, aby zarejestrować dostawcę zasobów typu, który próbujesz wdrożyć.
+1. Zapoznaj się z listą dostawców zasobów i w razie potrzeby wybierz łącze **zarejestruj** , aby zarejestrować dostawcę zasobów typu, który próbujesz wdrożyć.
 
-   ![Lista dostawców zasobów](./media/resource-manager-register-provider-errors/list-resource-providers.png)
+   ![Wyświetl listę dostawców zasobów](./media/resource-manager-register-provider-errors/list-resource-providers.png)

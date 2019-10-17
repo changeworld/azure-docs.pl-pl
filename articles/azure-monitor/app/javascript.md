@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: mbullwin
-ms.openlocfilehash: 9b2cb9b16a91220db6fcc193fe64ea674b7103ab
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: b49206c677e2f1b20c154ae0c9e358e8b2b0bbd8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937089"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430196"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 
@@ -30,13 +30,13 @@ Usługi Application Insights można używać z dowolnymi stronami sieci Web — 
 1. Najpierw potrzebujesz zasobu Application Insights. Jeśli nie masz jeszcze klucza zasobu i instrumentacji, postępuj zgodnie z [instrukcjami dotyczącymi tworzenia nowego zasobu](create-new-resource.md).
 2. Skopiuj klucz Instrumentacji z zasobu, w którym chcesz wysłać dane telemetryczne języka JavaScript.
 3. Dodaj Application Insights JavaScript SDK do strony lub aplikacji sieci Web przy użyciu jednej z następujących dwóch opcji:
-    * [Konfiguracja NPM](#npm-based-setup)
+    * [Konfiguracja npm](#npm-based-setup)
     * [Fragment kodu JavaScript](#snippet-based-setup)
 
 > [!IMPORTANT]
-> Musisz użyć jednej z poniższych metod, aby dodać do aplikacji Application Insights zestaw SDK języka JavaScript. W przypadku korzystania z konfiguracji opartej na NPM nie należy używać Instalatora opartego na fragmentach kodu. Ten sam przebiega w odniesieniu do scenariusza zwrotnego przy użyciu podejścia opartego na fragmentach kodu. nie należy również używać konfiguracji opartej na NPM. 
+> Musisz użyć jednej z poniższych metod, aby dodać do aplikacji Application Insights zestaw SDK języka JavaScript. W przypadku korzystania z konfiguracji opartej na npm nie należy używać Instalatora opartego na fragmentach kodu. Ten sam przebiega w odniesieniu do scenariusza zwrotnego przy użyciu podejścia opartego na fragmentach kodu. nie należy również używać konfiguracji opartej na npm. 
 
-### <a name="npm-based-setup"></a>Konfiguracja oparta na NPM
+### <a name="npm-based-setup"></a>Konfiguracja oparta na npm
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -50,7 +50,7 @@ appInsights.loadAppInsights();
 
 ### <a name="snippet-based-setup"></a>Konfiguracja oparta na fragmentach kodu
 
-Jeśli aplikacja nie korzysta z NPM, możesz bezpośrednio instrumentować strony sieci Web za pomocą Application Insights, wklejając ten fragment w górnej części każdej strony. Najlepiej, gdy powinien to być pierwszy skrypt w sekcji `<head>`, aby można było monitorować ewentualne potencjalne problemy ze wszystkimi zależnościami. Jeśli używasz aplikacji Blazor Server, Dodaj fragment kodu w górnej części pliku `_Host.cshtml` w sekcji `<head>`.
+Jeśli aplikacja nie korzysta z npm, możesz bezpośrednio instrumentować strony sieci Web za pomocą Application Insights, wklejając ten fragment w górnej części każdej strony. Najlepiej, gdy powinien to być pierwszy skrypt w sekcji `<head>`, aby można było monitorować ewentualne potencjalne problemy ze wszystkimi zależnościami. Jeśli używasz aplikacji Blazor Server, Dodaj fragment kodu w górnej części pliku `_Host.cshtml` w sekcji `<head>`.
 
 ```html
 <script type="text/javascript">
@@ -103,8 +103,8 @@ Większość pól konfiguracji ma takie nazwy, że można je domyślnie określi
 
 | Nazwa | Domyślne | Opis |
 |------|---------|-------------|
-| InstrumentationKey | Null | **Wymagane**<br>Klucz Instrumentacji uzyskany w Azure Portal. |
-| accountId | Null | Opcjonalny identyfikator konta, jeśli aplikacja grupuje użytkowników na kontach. Bez spacji, przecinków, średników, równości lub pionowych słupków |
+| instrumentationKey | null | **Wymagane**<br>Klucz Instrumentacji uzyskany w Azure Portal. |
+| accountId | null | Opcjonalny identyfikator konta, jeśli aplikacja grupuje użytkowników na kontach. Bez spacji, przecinków, średników, równości lub pionowych słupków |
 | sessionRenewalMs | 1800000 | Sesja jest rejestrowana, jeśli użytkownik jest nieaktywny przez ten czas w milisekundach. Wartość domyślna to 30 minut |
 | sessionExpirationMs | 86400000 | Sesja jest rejestrowana, jeśli będzie trwać przez ten czas w milisekundach. Wartość domyślna to 24 godziny |
 | maxBatchSizeInBytes | 10 000 | Maksymalny rozmiar wsadu danych telemetrycznych. Jeśli partia przekracza ten limit, zostanie ona natychmiast wysłana i zostanie uruchomiona nowa Partia zadań |
@@ -128,14 +128,14 @@ Większość pól konfiguracji ma takie nazwy, że można je domyślnie określi
 | disableFlushOnBeforeUnload | false | Wartość domyślna to false. W przypadku wartości true Metoda Flush nie zostanie wywołana, gdy wyzwalane są wyzwalacze zdarzeń onBeforeUnload |
 | enableSessionStorageBuffer | true | Wartość domyślna to true. W przypadku wartości true bufor z całą niewysłaną telemetrię jest przechowywany w magazynie sesji. Bufor jest przywracany podczas ładowania strony |
 | isCookieUseDisabled | false | Wartość domyślna to false. Jeśli wartość jest równa true, zestaw SDK nie będzie przechowywać ani odczytywać żadnych danych z plików cookie.|
-| cookieDomain | Null | Niestandardowa domena plików cookie. Jest to przydatne, jeśli chcesz udostępnić pliki cookie Application Insights w poddomenach. |
+| cookieDomain | null | Niestandardowa domena plików cookie. Jest to przydatne, jeśli chcesz udostępnić pliki cookie Application Insights w poddomenach. |
 | isRetryDisabled | false | Wartość domyślna to false. W przypadku wartości false ponów próbę 206 (częściowe powodzenie), 408 (limit czasu), 429 (zbyt wiele żądań), 500 (wewnętrzny błąd serwera), 503 (Usługa niedostępna) i 0 (offline, tylko jeśli wykryto) |
 | isStorageUseDisabled | false | Jeśli wartość jest równa true, zestaw SDK nie będzie przechowywał ani nie odczytał żadnych danych z magazynu lokalnego i w ramach sesji. Wartość domyślna to false. |
 | isBeaconApiDisabled | true | Jeśli wartość jest równa false, zestaw SDK wyśle wszystkie dane telemetryczne za pomocą [interfejsu API sygnałów](https://www.w3.org/TR/beacon) |
 | onunloadDisableBeacon | false | Wartość domyślna to false. gdy karta zostanie ZAMKNIĘTA, zestaw SDK wyśle wszystkie pozostałe dane telemetryczne za pomocą [interfejsu API sygnałów](https://www.w3.org/TR/beacon) |
-| sdkExtension | Null | Ustawia nazwę rozszerzenia zestawu SDK. Dozwolone są tylko znaki alfanumeryczne. Nazwa rozszerzenia jest dodawana jako prefiks do tagu "AI. Internal. sdkVersion" (na przykład "ext_javascript: 2.0.0"). Wartość domyślna to null. |
+| sdkExtension | null | Ustawia nazwę rozszerzenia zestawu SDK. Dozwolone są tylko znaki alfanumeryczne. Nazwa rozszerzenia jest dodawana jako prefiks do tagu "AI. Internal. sdkVersion" (na przykład "ext_javascript: 2.0.0"). Wartość domyślna to null. |
 | isBrowserLinkTrackingEnabled | false | Wartość domyślna to false. Jeśli wartość jest równa true, zestaw SDK będzie śledził wszystkie żądania [linku do przeglądarki](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) . |
-| appId | Null | Identyfikator AppId jest używany dla korelacji między zależnościami AJAX, które są wykonywane po stronie klienta z żądaniami po stronie serwera. Gdy interfejs API sygnałów jest włączony, nie można go użyć automatycznie, ale można ustawić go ręcznie w konfiguracji. Wartość domyślna to null |
+| appId | null | Identyfikator AppId jest używany dla korelacji między zależnościami AJAX, które są wykonywane po stronie klienta z żądaniami po stronie serwera. Gdy interfejs API sygnałów jest włączony, nie można go użyć automatycznie, ale można ustawić go ręcznie w konfiguracji. Wartość domyślna to null |
 | enableCorsCorrelation | false | Jeśli wartość jest równa true, zestaw SDK doda dwa nagłówki ("Request-ID" i "Request-context") do wszystkich żądań CORS do skorelowania wychodzących zależności AJAX z odpowiednimi żądaniami po stronie serwera. Wartość domyślna to false |
 | namePrefix | definicji | Opcjonalna wartość, która będzie używana jako przyrostkowa nazwa dla localStorage i nazwy pliku cookie.
 | enableAutoRouteTracking | false | Automatyczne śledzenie zmian trasy w aplikacjach jednostronicowych (SPA). Jeśli wartość jest równa true, każda zmiana trasy wyśle nowy pageview do Application Insights. Zmiany trasy skrótu (`example.com/foo#bar`) są również rejestrowane jako nowe widoki stron.
@@ -229,7 +229,7 @@ Jeśli używasz bieżącego zestawu SDK PRODUKCYJNEgo usługi Application Insigh
    "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
    ```
 
-- Scenariusz NPM: Wywołaj `downloadAndSetup`, aby pobrać pełny skrypt ApplicationInsights z sieci CDN i zainicjuj go za pomocą klucza Instrumentacji:
+- scenariusz npm: Wywołaj `downloadAndSetup`, aby pobrać pełny skrypt ApplicationInsights z sieci CDN i zainicjuj go za pomocą klucza Instrumentacji:
 
    ```ts
    appInsights.downloadAndSetup({

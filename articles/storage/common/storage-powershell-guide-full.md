@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ac210a03f8b1a0a5f7fff07cbc68b4cd6bc98632
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 40fb44857126c3562e01585c3131afec87f01e42
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016345"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430060"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Używanie programu Azure PowerShell z usługą Azure Storage
 
@@ -42,7 +42,7 @@ W tym ćwiczeniu można wpisać polecenia do zwykłego okna programu PowerShell 
 
 Aby uzyskać więcej informacji na temat kont magazynu, zobacz [wprowadzenie do magazynu](storage-introduction.md) i [konta usługi Azure Storage](storage-create-storage-account.md).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -105,9 +105,9 @@ $ctx = $storageAccount.Context
 
 Skrypt używa następujących poleceń cmdlet programu PowerShell:
 
-*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) --pobiera listę prawidłowych lokalizacji. W przykładzie zastosowano `eastus` lokalizację.
+*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) --pobiera listę prawidłowych lokalizacji. W przykładzie używa się `eastus` dla lokalizacji.
 
-*   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) --tworzy nową grupę zasobów. Grupa zasobów to logiczny kontener, w którym są wdrażane i zarządzane zasoby platformy Azure. Jest wywoływana `teststoragerg`nasza.
+*   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) --tworzy nową grupę zasobów. Grupa zasobów to logiczny kontener, w którym są wdrażane i zarządzane zasoby platformy Azure. Nasza jest nazywana `teststoragerg`.
 
 *   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) --tworzy konto magazynu. W przykładzie zastosowano `testpshstorage`.
 
@@ -127,19 +127,19 @@ Teraz, gdy masz odwołanie do nowego konta magazynu lub istniejącego konta maga
 
 Aby zmienić ustawienia dla konta magazynu, użyj polecenie [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount). Chociaż nie można zmienić lokalizacji konta magazynu lub grupy zasobów, w której znajduje się, można zmienić wiele innych właściwości. Poniżej wymieniono niektóre właściwości, które można zmienić przy użyciu programu PowerShell.
 
-* **Domena** niestandardowa przypisana do konta magazynu.
+* **Domena niestandardowa** przypisana do konta magazynu.
 
 * **Tagi** przypisane do konta magazynu. Tagi są często używane do klasyfikowania zasobów na potrzeby rozliczeń.
 
-* **Jednostka SKU** to ustawienie replikacji dla konta magazynu, takie jak LRS dla magazynu lokalnie nadmiarowego. Na przykład można zmienić ze standardowego\_LRS na standardowy\_GRS lub standardowy\_RAGRS. Należy pamiętać, że nie można\_zmienić standardowych ZRS\_, standardowych GZRS\_, standardowa RAGZRS ani\_Premium LRS na inne jednostki SKU ani zmienić innych jednostek SKU na te.
+* **Jednostka SKU** to ustawienie replikacji dla konta magazynu, takie jak LRS dla magazynu lokalnie nadmiarowego. Na przykład można zmienić ze standardowego @ no__t-0LRS na standardowy @ no__t-1GRS lub standardowy @ no__t-2RAGRS. Należy pamiętać, że nie można zmienić standardowych produktów @ no__t-0ZRS, standard @ no__t-1GZRS, standard @ no__t-2RAGZRS lub Premium @ no__t-3LRS do innych jednostek SKU ani zmieniać innych jednostek SKU.
 
-* **Warstwa dostępu** dla kont usługi BLOB Storage. Wartość w polu Warstwa dostępu jest ustawiana na gorąca lub **chłodna**i pozwala zminimalizować koszt, wybierając warstwę dostępu, która jest wyrównana do sposobu korzystania z konta magazynu. Aby uzyskać więcej informacji, zobacz [warstwy magazynowania gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
+* **Warstwa dostępu** dla kont usługi BLOB Storage. Wartość w polu Warstwa dostępu jest ustawiana na **gorąca** lub **chłodna**i pozwala zminimalizować koszt, wybierając warstwę dostępu, która jest wyrównana do sposobu korzystania z konta magazynu. Aby uzyskać więcej informacji, zobacz [warstwy magazynowania gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
 
 * Zezwalaj tylko na ruch HTTPS.
 
 ### <a name="manage-the-access-keys"></a>Zarządzanie kluczami dostępu
 
-Konto usługi Azure Storage zawiera dwa klucze konta. Aby pobrać klucze, użyj polecenie [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey). Ten przykład pobiera pierwszy klucz. Aby pobrać inne, użyj `Value[1]` `Value[0]`zamiast.
+Konto usługi Azure Storage zawiera dwa klucze konta. Aby pobrać klucze, użyj polecenie [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey). Ten przykład pobiera pierwszy klucz. Aby pobrać inne, użyj `Value[1]` zamiast `Value[0]`.
 
 ```powershell
 $storageAccountKey = `
@@ -156,7 +156,7 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -KeyName key1
 ```
 
-Aby ponownie wygenerować drugi klucz, użyj `key2` jako nazwy klucza `key1`zamiast.
+Aby ponownie wygenerować drugi klucz, użyj `key2` jako nazwy klucza zamiast `key1`.
 
 Wygeneruj ponownie jeden z kluczy, a następnie Odzyskaj go w celu wyświetlenia nowej wartości.
 
@@ -252,4 +252,4 @@ W tym artykule przedstawiono również odwołania do kilku innych artykułów, t
 
 * [Polecenia cmdlet programu PowerShell płaszczyzny kontroli usługi Azure Storage](/powershell/module/az.storage/)
 * [Polecenia cmdlet programu PowerShell dotyczące płaszczyzny danych usługi Azure Storage](/powershell/module/azure.storage/)
-* [Dokumentacja programu Windows PowerShell](https://msdn.microsoft.com/library/ms714469.aspx)
+* [Dokumentacja programu Windows PowerShell](/powershell/scripting/developer/windows-powershell)

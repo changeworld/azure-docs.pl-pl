@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wyszukiwanie obrazów za pomocą interfejsu API wyszukiwania obrazów Bing i języka Python'
+title: 'Szybki Start: Wyszukiwanie obrazów — wyszukiwanie obrazów Bing interfejsu API REST i języka Python'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania wyszukiwania obrazów do interfejsu API wyszukiwania obrazów Bing przy użyciu języka Python i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9f43b056275ba83630e711ff1a512cb73e84216a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8dc7bc36b3d4b172521b0fbbf9aa09cf4d1a9b29
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034630"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390122"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Szybki start: wyszukiwanie obrazów za pomocą interfejsu API wyszukiwania obrazów Bing i języka Python
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Szybki Start: Wyszukiwanie obrazów przy użyciu interfejsu API REST wyszukiwanie obrazów Bing i języka Python
 
 Użyj tego przewodnika Szybki start, aby rozpocząć wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania obrazów Bing. Ta aplikacja języka Python wysyła zapytanie dotyczące wyszukiwania do interfejsu API i wyświetla adres URL pierwszego obrazu w wynikach. Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
@@ -27,7 +27,7 @@ Ten przykład można uruchomić jako notes programu Jupyter w witrynie [MyBinder
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
 
-Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) wraz z dodatkową obsługą błędów i adnotacjami.
+Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) wraz z dodatkową obsługą błędów i adnotacjami.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -67,12 +67,13 @@ Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://g
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Użyj biblioteki `requests` w celu wywołania interfejsu API wyszukiwania obrazów Bing. Dodaj nagłówek i parametry do żądania, a następnie zwróć odpowiedź jako obiekt JSON. 
+2. Użyj biblioteki `requests` w celu wywołania interfejsu API wyszukiwania obrazów Bing. Dodaj nagłówek i parametry do żądania, a następnie zwróć odpowiedź jako obiekt JSON. Pobierz adresy URL do kilku obrazów miniatur z pola `thumbnailUrl` odpowiedzi.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
+    thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
 ## <a name="view-the-response"></a>Wyświetlanie odpowiedzi
@@ -80,6 +81,8 @@ Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://g
 1. Utwórz nowy rysunek z czterema kolumnami i czterema wierszami przy użyciu biblioteki matplotlib. 
 
 2. Iteruj kolumny i wiersze na rysunku, a następnie użyj metody `Image.open()` biblioteki PIL w celu dodania miniatury obrazu do każdej przestrzeni. 
+
+3. Użyj metody `plt.show()` w celu narysowania rysunku i wyświetlenia obrazów.
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -90,9 +93,9 @@ Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://g
             image = Image.open(BytesIO(image_data.content))        
             axes[i][j].imshow(image)
             axes[i][j].axis("off")
+    plt.show()
     ```
 
-3. Użyj metody `plt.show()` w celu narysowania rysunku i wyświetlenia obrazów.
 
 ## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 5eff92352251febca1d4e7033618372dc929d987
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1d6560613294584c77f002e2380065d64ea143f7
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029409"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387963"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Dryf schematu w mapowaniu przepływu danych
 
@@ -34,7 +34,7 @@ Należy podjąć decyzję dotyczącą architektury w przepływie danych, aby akc
 
 W transformacji źródłowej, dryfowanie schematu jest zdefiniowane jako odczytane kolumny, które nie są zdefiniowane w schemacie zestawu danych. Aby włączyć dryfowanie schematu, zaznacz pole wyboru **Zezwalaj na dryfowanie schematu** w transformacji źródłowej.
 
-(media/data-flow/schemadrift001.png "Źródło dryfowania schematu") ![źródła dryfu schematu]
+![Źródło dryfu schematu](media/data-flow/schemadrift001.png "Źródło dryfu schematu")
 
 Po włączeniu dryfowania schematu wszystkie pola przychodzące są odczytywane ze źródła podczas wykonywania i przesyłane przez cały przepływ do ujścia. Domyślnie wszystkie nowo wykryte kolumny, znane jako *kolumny*przedzielone, docierają jako dane typu String. Jeśli chcesz, aby przepływ danych automatycznie wywnioskować typy danych z przewidzianymi kolumnami, zaznacz pole wyboru **wywnioskowanie typów kolumn** w ustawieniach źródłowych.
 
@@ -42,11 +42,11 @@ Po włączeniu dryfowania schematu wszystkie pola przychodzące są odczytywane 
 
 W transformacji ujścia, dryfowanie schematu jest zapisywane w przypadku zapisywania dodatkowych kolumn na podstawie elementów zdefiniowanych w schemacie danych ujścia. Aby włączyć dryfowanie schematu, zaznacz pole wyboru **Zezwalaj na dryfowanie** obiektów w transformację ujścia.
 
-Ujścia schematu ![ujścia](media/data-flow/schemadrift002.png "dryfu") schematu
+![Ujścia schematu dryfu](media/data-flow/schemadrift002.png "Ujścia schematu dryfu")
 
 Jeśli funkcja dryfowania schematu jest włączona, upewnij się, że suwak **automapowanie** na karcie Mapowanie jest włączony. Po tym suwaku wszystkie kolumny przychodzące są zapisywane w miejscu docelowym. W przeciwnym razie musisz użyć mapowania opartego na regułach, aby napisać kolumny przeznaczone.
 
-Automapowanie(media/data-flow/automap.png "obiektu sink") ![automapowania]ujścia
+![Automapowanie ujścia](media/data-flow/automap.png "Automapowanie ujścia")
 
 ## <a name="transforming-drifted-columns"></a>Przekształcanie kolumn z dryfem
 
@@ -62,11 +62,11 @@ Aby uzyskać więcej informacji na temat implementowania wzorców kolumn, zobacz
 
 Aby jawnie odwoływać się do kolumn z dryfem, można szybko generować mapowania dla tych kolumn za pośrednictwem szybkiej akcji podglądu danych. Gdy [tryb debugowania](concepts-data-flow-debug-mode.md) jest włączony, przejdź do karty Podgląd danych, a następnie kliknij przycisk **Odśwież** , aby pobrać Podgląd danych. Jeśli Fabryka danych wykryje, że istnieją kolumny mające Przedziały, można kliknąć pozycję **Mapuj** i wygenerować kolumnę pochodną, która pozwala na odwoływanie się do wszystkich kolumn w widoku schematu podrzędnych.
 
-![Mapowanie]przemapowanej(media/data-flow/mapdrifted1.png "mapy")
+![Przedryfowanie mapy](media/data-flow/mapdrifted1.png "Przedryfowanie mapy")
 
 W wygenerowanej transformacji kolumn pochodnych każda przeprowadzona kolumna jest mapowana na wykrytą nazwę i typ danych. W powyższym podglądzie danych kolumna "movieId" jest wykryta jako liczba całkowita. Po kliknięciu **mapowanej mapy** movieId jest zdefiniowany w kolumnie pochodnej jako `toInteger(byName('movieId'))` i uwzględniony w widokach schematu w transformacjach podrzędnych.
 
-![Mapowanie]przemapowanej(media/data-flow/mapdrifted2.png "mapy")
+![Przedryfowanie mapy](media/data-flow/mapdrifted2.png "Przedryfowanie mapy")
 
 ## <a name="next-steps"></a>Następne kroki
 W [języku wyrażeń przepływu danych](data-flow-expression-functions.md)znajdziesz dodatkowe możliwości dla wzorców kolumn i dryfu schematu, w tym "byName" i "byPosition".

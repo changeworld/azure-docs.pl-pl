@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e38a58d076f6a8b7b2b07e468c61835ed06f55a4
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255609"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435720"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption dla maszyn wirtualnych z systemem Windows 
 
@@ -32,7 +32,7 @@ Podstawowe informacje dotyczące Azure Disk Encryption dla systemu Windows możn
 
 ### <a name="supported-vm-sizes"></a>Obsługiwane rozmiary maszyn wirtualnych
 
-Maszyny wirtualne z systemem Windows są dostępne w [różnych rozmiarach](sizes-general.md). Azure Disk Encryption nie jest dostępna na [podstawowych maszynach wirtualnych serii A](/pricing/details/virtual-machines/series/)lub na maszynach wirtualnych z mniej niż 2 GB pamięci.
+Maszyny wirtualne z systemem Windows są dostępne w [różnych rozmiarach](sizes-general.md). Azure Disk Encryption nie jest dostępna na [podstawowych maszynach wirtualnych serii A](https://azure.microsoft.com/pricing/details/virtual-machines/series/)lub na maszynach wirtualnych z mniej niż 2 GB pamięci.
 
 Azure Disk Encryption jest również dostępna dla maszyn wirtualnych z magazynem w warstwie Premium.
 

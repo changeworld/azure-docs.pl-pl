@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów i znanych problemów z platformą Azure monitor stanu v2 | Microsoft Docs
-description: Znane problemy dotyczące monitor stanu v2 i rozwiązywania problemów. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: Rozwiązywanie problemów z usługą Azure Application Insights Agent i znane problemy | Microsoft Docs
+description: Znane problemy dotyczące Application Insights agenta i rozwiązywania problemów. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3e9bffaf3b533ef8fbe3e32c1dca671fb67c911
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ab1ce01c41679c6ff686ab37692d3b8e9167a4f8
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058291"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388204"
 ---
-# <a name="troubleshooting-status-monitor-v2"></a>Rozwiązywanie problemów monitor stanu v2
+# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Rozwiązywanie problemów z agentem Application Insights (dawniej nazwany monitor stanu v2)
 
 Po włączeniu monitorowania mogą wystąpić problemy uniemożliwiające zbieranie danych.
 W tym artykule wymieniono wszystkie znane problemy i przedstawiono przykłady rozwiązywania problemów.
@@ -31,9 +31,9 @@ Jeśli wystąpi problem, którego nie ma na liście, możesz skontaktować się 
 
 Jeśli dowolna z tych bibliotek dll znajduje się w katalogu bin, monitorowanie może zakończyć się niepowodzeniem:
 
-- Microsoft.ApplicationInsights.dll
-- Microsoft.AspNet.TelemetryCorrelation.dll
-- System.Diagnostics.DiagnosticSource.dll
+- Microsoft. ApplicationInsights. dll
+- Microsoft. AspNet. TelemetryCorrelation. dll
+- System. Diagnostics. DiagnosticSource. dll
 
 Niektóre z tych bibliotek DLL są zawarte w domyślnych szablonach aplikacji programu Visual Studio, nawet jeśli aplikacja nie korzysta z nich.
 Możesz użyć narzędzi do rozwiązywania problemów, aby zobaczyć zachowanie objawem:
@@ -93,16 +93,16 @@ Konfiguracja zestawu SDK nie jest dostępna dla użytkownika końcowego w wersji
 ### <a name="troubleshooting-powershell"></a>Rozwiązywanie problemów z programem PowerShell
 
 #### <a name="determine-which-modules-are-available"></a>Określanie, które moduły są dostępne
-Możesz użyć polecenia, `Get-Module -ListAvailable` aby określić, które moduły są zainstalowane.
+Aby określić, które moduły są zainstalowane, można użyć polecenia `Get-Module -ListAvailable`.
 
 #### <a name="import-a-module-into-the-current-session"></a>Importowanie modułu do bieżącej sesji
-Jeśli moduł nie został załadowany do sesji programu PowerShell, można go załadować ręcznie przy użyciu `Import-Module <path to psd1>` polecenia.
+Jeśli moduł nie został załadowany do sesji programu PowerShell, można go załadować ręcznie przy użyciu polecenia `Import-Module <path to psd1>`.
 
 
-### <a name="troubleshooting-the-status-monitor-v2-module"></a>Rozwiązywanie problemów z modułem monitor stanu v2
+### <a name="troubleshooting-the-application-insights-agent-module"></a>Rozwiązywanie problemów z modułem agenta Application Insights
 
-#### <a name="list-the-commands-available-in-the-status-monitor-v2-module"></a>Wyświetl listę poleceń dostępnych w module monitor stanu v2
-Uruchom polecenie `Get-Command -Module Az.ApplicationMonitor` , aby pobrać dostępne polecenia:
+#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>Wyświetl listę poleceń dostępnych w module agenta Application Insights
+Uruchom polecenie `Get-Command -Module Az.ApplicationMonitor`, aby pobrać dostępne polecenia:
 
 ```
 CommandType     Name                                               Version    Source
@@ -117,8 +117,8 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az
 Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
-#### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Określ bieżącą wersję modułu monitor stanu v2
-Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` , aby wyświetlić następujące informacje dotyczące modułu:
+#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>Określ bieżącą wersję modułu Application Insights Agent
+Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -PowerShellModule`, aby wyświetlić następujące informacje dotyczące modułu:
    - Wersja modułu programu PowerShell
    - Wersja zestawu SDK Application Insights
    - Ścieżki plików modułu programu PowerShell
@@ -131,7 +131,7 @@ Zapoznaj się z dokumentacją [interfejsu API](status-monitor-v2-api-get-status.
 Można sprawdzić procesy na komputerze z instrumentacją, aby ustalić, czy wszystkie biblioteki DLL zostały załadowane.
 Jeśli monitorowanie działa, należy załadować co najmniej 12 bibliotek DLL.
 
-`Get-ApplicationInsightsMonitoringStatus -InspectProcess` Użyj polecenia, aby sprawdzić biblioteki DLL.
+Użyj `Get-ApplicationInsightsMonitoringStatus -InspectProcess` polecenia, aby sprawdzić biblioteki DLL.
 
 Zapoznaj się z dokumentacją [interfejsu API](status-monitor-v2-api-get-status.md) w celu uzyskania szczegółowego opisu sposobu korzystania z tego polecenia cmdlet.
 
@@ -144,17 +144,17 @@ Zapoznaj się z dokumentacją [interfejsu API](status-monitor-v2-api-get-status.
 2. Uruchom PerfView64. exe.
 3. Rozwiń **Opcje zaawansowane**.
 4. Wyczyść następujące pola wyboru:
-    - **Zip**
-    - **Scal**
+    - **Kodu**
+    - **Połączenie**
     - **Kolekcja symboli platformy .NET**
-5. Ustaw tych **dodatkowych dostawców**:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. Ustaw tych **dodatkowych dostawców**: `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>Zbieranie dzienników
 
-1. W konsoli poleceń z uprawnieniami administratora uruchom `iisreset /stop` polecenie, aby wyłączyć usługi IIS i wszystkie aplikacje sieci Web.
+1. W konsoli poleceń z uprawnieniami administratora uruchom polecenie `iisreset /stop`, aby wyłączyć usługi IIS i wszystkie aplikacje sieci Web.
 2. W narzędzia PerfView wybierz pozycję **Rozpocznij zbieranie**.
-3. W konsoli poleceń z uprawnieniami administratora uruchom `iisreset /start` polecenie, aby uruchomić usługi IIS.
+3. W konsoli poleceń z uprawnieniami administratora uruchom polecenie `iisreset /start`, aby uruchomić usługi IIS.
 4. Spróbuj przejść do swojej aplikacji.
 5. Po załadowaniu aplikacji Wróć do narzędzia PerfView i wybierz pozycję **Zatrzymaj zbieranie**.
 

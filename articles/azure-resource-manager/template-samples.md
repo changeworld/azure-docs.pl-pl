@@ -1,6 +1,6 @@
 ---
 title: Przykłady szablonów usługi Azure Resource Manager
-description: Przykłady szablonów usługi Azure Resource Manager dla funkcji usługi Resource Manager
+description: Przykłady szablonów Azure Resource Manager do wdrażania funkcji zarządzania, takich jak role i blokady.
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -9,12 +9,12 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.date: 11/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: fe7804428a429ac705bdcb2932726f366a17a3b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e342507b584a405637fc6728dfcd6e49199a154f
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60390328"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390180"
 ---
 # <a name="azure-resource-manager-templates-for-management-features"></a>Szablony usługi Azure Resource Manager dla funkcji zarządzania
 

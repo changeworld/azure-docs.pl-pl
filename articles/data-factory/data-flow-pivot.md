@@ -6,35 +6,35 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 1412f7d822d83a8712d27dd4e86311567d6ac714
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e59f0623b898fedada63e51fabbaf88d8b17f59d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029298"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387795"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Przekształcanie tabeli przestawnej usługi Azure Data Factory
 
 
 Użyj tabeli przestawnej w przepływie danych ADF jako agregacji, w której co najmniej jedna kolumna grupowania ma swoje unikatowe wartości wierszy przekształcone w pojedyncze kolumny. Zasadniczo można przestawiać wartości wierszy w nowe kolumny (przekształcić dane w metadane).
 
-![Opcje Pivot]Pivot(media/data-flow/pivot1.png "1")
+![Opcje tabeli przestawnej](media/data-flow/pivot1.png "Przestaw 1")
 
 ## <a name="group-by"></a>Grupuj według
 
-![Opcje tabeli]przestawnej(media/data-flow/pivot2.png "2")
+![Opcje tabeli przestawnej](media/data-flow/pivot2.png "Pivot 2")
 
 Najpierw ustaw kolumny, według których chcesz grupować dla agregacji tabeli przestawnej. W tym miejscu możesz ustawić więcej niż 1 kolumnę przy użyciu znaku + obok listy kolumn.
 
 ## <a name="pivot-key"></a>Klucz przestawny
 
-![Opcje tabeli]przestawnej(media/data-flow/pivot3.png "3")
+![Opcje tabeli przestawnej](media/data-flow/pivot3.png "przestawny 3")
 
 Klucz przestawny jest kolumną przestawianą przez ADF z wierszy do kolumny. Domyślnie każda unikatowa wartość w zestawie danych dla tego pola będzie przestawiana do kolumny. Można jednak opcjonalnie wprowadzić wartości z zestawu danych, który ma być przestawny na wartości kolumn. Jest to kolumna, która określi nowe kolumny, które zostaną utworzone.
 
 ## <a name="pivoted-columns"></a>Kolumny przestawne
 
-![Opcje tabeli]przestawnej(media/data-flow/pivot4.png "4")
+![Opcje tabeli przestawnej](media/data-flow/pivot4.png "przestawka 4")
 
 Na koniec wybierzesz agregację, która ma być używana dla wartości przestawnych, i jak chcesz, aby kolumny były wyświetlane w nowej projekcji wyjściowej na podstawie transformacji.
 
@@ -42,7 +42,7 @@ Obowiązkowe Można ustawić wzorzec nazewnictwa z prefiksem, środkową i sufik
 
 Na przykład przestawianie "Sales" według "region" spowoduje, że nowe wartości kolumn z każdej wartości sprzedaży, tj. "25", "50", "1000" itd. Jeśli jednak ustawisz wartość prefiksu "Sales-", każda wartość kolumny spowoduje dodanie "Sales-" na początku wartości.
 
-![Opcja Pivot]Pivot(media/data-flow/pivot5.png "5")
+![Opcje tabeli przestawnej](media/data-flow/pivot5.png "Pivot 5")
 
 Ustawienie kolumny "normalny" spowoduje grupowanie wszystkich kolumn przestawnych z wartościami zagregowanymi. Ustawienie kolumn rozmieszczenia na "boczne" będzie odróżniać się od kolumn i wartości.
 
@@ -60,7 +60,7 @@ Transformacja przestawna spowoduje utworzenie nowych nazw kolumn, które są dyn
 
 Pivot automatycznie generuje nowe nazwy kolumn na podstawie wartości wierszy. Można przekształcić te nowe kolumny w metadane, do których można przywoływać się później w przepływie danych. Aby to zrobić, kliknij kartę Podgląd danych. Wszystkie nowe kolumny wygenerowane przez transformację przestawną są wyświetlane z ikoną "dryfed" w nagłówku tabeli. Kliknij przycisk "Mapuj przelany", aby przekształcić te nowe kolumny w metadane, co sprawia, że są one częścią modelu przepływu danych.
 
-![Kolumny tabeli przestawnej](media/data-flow/newpivot1.png "mapują kolumny tabeli") przestawnej
+![Kolumny tabeli przestawnej](media/data-flow/newpivot1.png "Mapuj kolumny tabeli przestawnej z przełożeń")
 
 ### <a name="landing-new-columns-in-sink"></a>Wypełnianie nowych kolumn w usłudze sink
 

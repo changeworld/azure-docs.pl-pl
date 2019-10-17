@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Włącz monitorowanie | Microsoft Docs'
-description: Dokumentacja interfejsu API monitor stanu v2. Enable-ApplicationInsightsMonitoring. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: 'Dokumentacja interfejsu API usługi Azure Application Insights Agent: Włączanie monitorowania | Microsoft Docs'
+description: Dokumentacja interfejsu API agenta Application Insights. Enable-ApplicationInsightsMonitoring. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 8742316697e6d6c8178bb02c8e7288499c655b6b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 2a310a83677bffc8843fdb8979ec272f197a8a39
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033129"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389889"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring"></a>Interfejs API monitor stanu v2: Enable-ApplicationInsightsMonitoring
+# <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Interfejs API agenta Application Insights: Enable-ApplicationInsightsMonitoring
 
 W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -53,11 +53,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 ### <a name="example-with-an-instrumentation-key-map"></a>Przykład z mapą kluczy Instrumentacji
 W tym przykładzie:
-- `MachineFilter`dopasowuje bieżący komputer przy użyciu `'.*'` symbolu wieloznacznego.
-- `AppFilter='WebAppExclude'`udostępnia klucz `null` Instrumentacji. Określona aplikacja nie będzie Instrumentacją.
-- `AppFilter='WebAppOne'`przypisuje określoną aplikację unikatowy klucz Instrumentacji.
-- `AppFilter='WebAppTwo'`przypisuje określoną aplikację unikatowy klucz Instrumentacji.
-- Na koniec `AppFilter` `'.*'` używa również symboli wieloznacznych, aby dopasować wszystkie aplikacje sieci Web, które nie są zgodne ze starszymi regułami i przypisać domyślny klucz Instrumentacji.
+- `MachineFilter` dopasowuje bieżący komputer przy użyciu symbolu wieloznacznego `'.*'`.
+- `AppFilter='WebAppExclude'` zawiera klucz Instrumentacji `null`. Określona aplikacja nie będzie Instrumentacją.
+- `AppFilter='WebAppOne'` przypisuje określoną aplikację unikatowy klucz Instrumentacji.
+- `AppFilter='WebAppTwo'` przypisuje określoną aplikację unikatowy klucz Instrumentacji.
+- Na koniec `AppFilter` używa również symbolu wieloznacznego `'.*'`, aby dopasować wszystkie aplikacje sieci Web, które nie są zgodne ze starszymi regułami i przypisać domyślny klucz Instrumentacji.
 - Spacje są dodawane do czytelności.
 
 ```powershell
@@ -77,7 +77,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
 **Wymagane.** Użyj tego parametru, aby podać wiele kluczy Instrumentacji i mapowanie kluczy Instrumentacji używanych przez poszczególne aplikacje.
-Można utworzyć pojedynczy skrypt instalacyjny dla kilku komputerów przez ustawienie `MachineFilter`.
+Można utworzyć pojedynczy skrypt instalacyjny dla kilku komputerów, ustawiając `MachineFilter`.
 
 > [!IMPORTANT]
 > Aplikacje będą zgodne z regułami w kolejności, w jakiej są udostępniane reguły. Dlatego należy najpierw określić najbardziej szczegółowe reguły i najbardziej ogólne reguły.
@@ -96,12 +96,12 @@ Można utworzyć pojedynczy skrypt instalacyjny dla kilku komputerów przez usta
 
 
 ### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
-**Opcjonalnie.** Użyj tego przełącznika, aby umożliwić aparatowi Instrumentacji zbieranie zdarzeń i komunikatów na temat tego, co się dzieje w trakcie wykonywania procesu zarządzanego. Te zdarzenia i komunikaty obejmują kody wyników zależności, zlecenia HTTP i tekst polecenia SQL.
+**Obowiązkowe.** Użyj tego przełącznika, aby umożliwić aparatowi Instrumentacji zbieranie zdarzeń i komunikatów na temat tego, co się dzieje w trakcie wykonywania procesu zarządzanego. Te zdarzenia i komunikaty obejmują kody wyników zależności, zlecenia HTTP i tekst polecenia SQL.
 
 Aparat Instrumentacji dodaje obciążenie i jest domyślnie wyłączony.
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**Opcjonalnie.** Ten przełącznik umożliwia zaakceptowanie licencji i zasad zachowania poufności informacji w instalacjach bezobsługowych.
+**Obowiązkowe.** Ten przełącznik umożliwia zaakceptowanie licencji i zasad zachowania poufności informacji w instalacjach bezobsługowych.
 
 ### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
 W przypadku klastra serwerów sieci Web może być używana [Konfiguracja udostępniona](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
@@ -115,7 +115,7 @@ Użyj tego przełącznika, aby zignorować to sprawdzenie i kontynuować instalo
 ### <a name="-whatif"></a>-WhatIf 
 **Wspólny parametr.** Za pomocą tego przełącznika można testować i weryfikować parametry wejściowe bez faktycznego włączenia monitorowania.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Dane wyjściowe
 
 
 #### <a name="example-output-from-a-successful-enablement"></a>Przykładowe dane wyjściowe z pomyślnego włączenia
@@ -164,7 +164,7 @@ Successfully enabled Application Insights Status Monitor
 - [Dodaj telemetrię klienta sieci Web](../../azure-monitor/app/javascript.md) , aby zobaczyć wyjątki z kodu strony sieci Web i włączyć wywołania śledzenia.
 - [Dodaj do kodu zestaw SDK Application Insights](../../azure-monitor/app/asp-net.md) , aby móc wstawiać wywołania śledzenia i rejestrowania.
  
- Więcej informacji o monitor stanu v2:
- - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.
+ Zrób więcej dzięki Application Insights agentowi:
+ - Skorzystaj z naszego przewodnika, aby [rozwiązać problemy z](status-monitor-v2-troubleshoot.md) agentem Application Insights.
  - [Pobierz konfigurację](status-monitor-v2-api-get-config.md) , aby upewnić się, że Twoje ustawienia zostały poprawnie zarejestrowane.
  - [Pobierz stan,](status-monitor-v2-api-get-status.md) aby sprawdzić monitorowanie.

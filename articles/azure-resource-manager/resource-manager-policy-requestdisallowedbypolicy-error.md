@@ -1,6 +1,6 @@
 ---
 title: Błąd RequestDisallowedByPolicy z zasadami zasobów platformy Azure | Microsoft Docs
-description: Opisuje przyczynę błędu RequestDisallowedByPolicy.
+description: Opisuje przyczynę błędu RequestDisallowedByPolicy podczas wdrażania zasobów przy użyciu Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e862637c688fd473b112fdfc0ee197da0444d02f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c791342bf68f84f6893e549d8528d1a861aa9040
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121230"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390302"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Błąd RequestDisallowedByPolicy z zasadami zasobów platformy Azure
 
@@ -45,7 +45,7 @@ Aby pobrać szczegóły dotyczące zasad, które zablokowały wdrożenie, należ
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-W programie PowerShell podaj identyfikator zasad jako `Id` parametr, aby pobrać szczegóły dotyczące zasad, które zablokowały wdrożenie.
+W programie PowerShell Podaj ten identyfikator zasad jako parametr `Id`, aby pobrać szczegóły dotyczące zasad, które zablokowały wdrożenie.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json

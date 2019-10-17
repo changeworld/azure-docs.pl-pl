@@ -13,34 +13,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 25be8f166fec8a311fdc2ed1fa3fca6339185e94
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 48e84517fba1caee771f6985b4c502227cae9e72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867533"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389799"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Jak włączyć Azure Monitor dla kontenerów
 
 Ten artykuł zawiera omówienie opcji dostępnych w celu skonfigurowania Azure Monitor dla kontenerów w celu monitorowania wydajności obciążeń wdrożonych w środowiskach Kubernetes i hostowanych w [usłudze Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 
-Usługa Azure Monitor dla kontenerów można włączyć dla nowych lub obsługiwane przez jedną lub więcej istniejących wdrożeń usługi AKS przy użyciu następujących metod:
+Azure Monitor dla kontenerów można włączyć dla nowych lub jednego lub kilku istniejących wdrożeń AKS przy użyciu następujących obsługiwanych metod:
 
 * Z Azure Portal, Azure PowerShell lub z interfejsem wiersza polecenia platformy Azure
-* Za pomocą [narzędzia Terraform i AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+* Korzystanie z [Terraform i AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
+Przed rozpoczęciem upewnij się, że masz następujące elementy:
 
 * **Obszar roboczy Log Analytics.**
 
-    Azure Monitor dla kontenerów obsługuje obszar roboczy Log Analytics w regionach wymienionych w produktach platformy Azure [według regionów](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor), z wyłączeniem regionu **US gov Wirginia**.
+    Azure Monitor dla kontenerów obsługuje obszar roboczy Log Analytics w regionach wymienionych w produktach platformy Azure [według regionów](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor).
 
-    Można utworzyć obszar roboczy po włączeniu monitorowania nowego klastra usługi AKS lub umożliwieniu funkcji dołączania tworzenie domyślnego obszaru roboczego w domyślnej grupie zasobów subskrypcji klastra AKS. Jeśli chcesz utworzyć samodzielnie, możesz je utworzyć za pomocą [usługi Azure Resource Manager](../platform/template-workspace-configuration.md)za pośrednictwem [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), lub [witryny Azure portal](../learn/quick-create-workspace.md). Aby uzyskać listę obsługiwanych par mapowania używanych dla domyślnego obszaru roboczego, zobacz [Mapowanie regionów dla Azure monitor kontenerów](container-insights-region-mapping.md).
+    Można utworzyć obszar roboczy po włączeniu monitorowania nowego klastra usługi AKS lub umożliwieniu funkcji dołączania tworzenie domyślnego obszaru roboczego w domyślnej grupie zasobów subskrypcji klastra AKS. Jeśli wybrano opcję utworzenia jej samodzielnie, można ją utworzyć za pomocą [Azure Resource Manager](../platform/template-workspace-configuration.md), za pomocą [programu PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)lub [Azure Portal](../learn/quick-create-workspace.md). Aby uzyskać listę obsługiwanych par mapowania używanych dla domyślnego obszaru roboczego, zobacz [Mapowanie regionów dla Azure monitor kontenerów](container-insights-region-mapping.md).
 
-* Musisz być członkiem **roli współautor log Analytics** , aby umożliwić monitorowanie kontenerów. Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../platform/manage-access.md).
+* Musisz być członkiem **roli współautor log Analytics** , aby umożliwić monitorowanie kontenerów. Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego Log Analytics, zobacz [Zarządzanie obszarami roboczymi](../platform/manage-access.md).
 
 * Jesteś członkiem roli **[właściciela](../../role-based-access-control/built-in-roles.md#owner)** w zasobie klastra AKS.
 
@@ -50,16 +50,16 @@ Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 
 ## <a name="components"></a>Składniki
 
-Możliwość monitorowania wydajności zależy od konteneryzowanych agenta usługi Log Analytics dla opracowane specjalnie dla usługi Azure Monitor, dla kontenerów systemu Linux. To wyspecjalizowane agenta służy do zbierania danych dotyczących zdarzeń i wydajności ze wszystkich węzłów w klastrze, a agent automatycznie wdrożeniu i zarejestrowaniu z określonym obszarem roboczym usługi Log Analytics podczas wdrażania. Wersja agenta jest microsoft / oms:ciprod04202018 lub nowszej, a jest reprezentowane przez datę w następującym formacie: *mmddyyyy*.
+Możliwość monitorowania wydajności opiera się na Log Analytics agencie dla systemu Linux opracowaną dla Azure Monitor dla kontenerów. Ten wyspecjalizowany Agent zbiera dane dotyczące wydajności i zdarzeń ze wszystkich węzłów w klastrze, a agent jest automatycznie wdrażany i rejestrowany przy użyciu określonego obszaru roboczego Log Analytics podczas wdrażania. Wersja agenta to Microsoft/OMS: ciprod04202018 lub nowsza. jest reprezentowana przez datę w następującym formacie: *mmddyyyy*.
 
 >[!NOTE]
 >W wersji zapoznawczej obsługi systemu Windows Server dla programu AKS klaster AKS z węzłami systemu Windows Server nie ma zainstalowanego agenta do zbierania danych i przesyłania dalej do Azure Monitor. Zamiast tego węzeł systemu Linux jest automatycznie wdrażany w klastrze w ramach standardowego wdrożenia zbiera dane i przekazuje je do Azure Monitor w imieniu wszystkich węzłów Windows w klastrze.  
 >
 
-Po wydaniu nowej wersji agenta jest on automatycznie uaktualniany na zarządzanych klastrów Kubernetes hostowanych na platformie Azure Kubernetes Service (AKS). Aby skorzystać z wersji wydanych, zobacz [anonse wersji agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
+Po wydaniu nowej wersji agenta zostanie ona automatycznie uaktualniona do zarządzanych klastrów Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS). Aby postępować zgodnie z wydaną wersją, zobacz [anonse dotyczące wersji agentów](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
 
 >[!NOTE]
->Jeśli masz już wdrożone w klastrze AKS, Włącz monitorowanie przy użyciu wiersza polecenia platformy Azure lub podanego szablonu Azure Resource Manager, jak pokazano w dalszej części tego artykułu. Nie można użyć `kubectl` do uaktualnienia, Usuń, Wdróż ponownie lub wdrożyć agenta.
+>Jeśli klaster AKS został już wdrożony, należy włączyć monitorowanie za pomocą interfejsu wiersza polecenia platformy Azure lub dostarczonego szablonu Azure Resource Manager, jak pokazano w dalszej części tego artykułu. Nie można użyć `kubectl` do uaktualnienia, usunięcia, ponownego wdrożenia lub wdrożenia agenta.
 >Szablon musi zostać wdrożony w tej samej grupie zasobów co klaster.
 
 Azure Monitor dla kontenerów można włączyć za pomocą jednej z następujących metod opisanych w poniższej tabeli.
@@ -76,4 +76,4 @@ Azure Monitor dla kontenerów można włączyć za pomocą jednej z następując
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Przy użyciu funkcji monitorowania, włączyć przechwytywania metryk kondycji dla węzłów klastra usługi AKS i zasobników, te metryki kondycji są dostępne w witrynie Azure portal. Aby dowiedzieć się, jak używać usługi Azure Monitor dla kontenerów, zobacz [widok usługi Azure Kubernetes Service health](container-insights-analyze.md).
+* Po włączeniu monitorowania pod kątem przechwytywania metryk kondycji zarówno dla węzłów klastra AKS, jak i dla każdego zasobnika te metryki kondycji są dostępne w Azure Portal. Aby dowiedzieć się, jak używać Azure Monitor kontenerów, zobacz temat [Wyświetlanie kondycji usługi Azure Kubernetes](container-insights-analyze.md).

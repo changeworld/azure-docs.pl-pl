@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: be2ab5605f7fa60ebb78493f714648d458e82a6c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5fc9262dd53f390dbc43646626cc324d8655f1de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029243"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387778"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Przekształcanie ujścia dla przepływu danych
 
@@ -21,7 +21,7 @@ Po przekształceniu przepływu danych możesz odujścia dane do docelowego zesta
 
 Aby obsłużyć dryfowanie schematu i zmiany w danych przychodzących, należy ujścia danych wyjściowych do folderu bez zdefiniowanego schematu w wyjściowym zestawie danych. Możesz również uwzględnić zmiany kolumn w źródłach, wybierając opcję **Zezwalaj na dryfowanie schematu** w źródle. Następnie Automap wszystkie pola w zlewie.
 
-![Opcje na karcie ujścia, w tym ujścia opcji Automap](media/data-flow/sink1.png "1")
+![Opcje na karcie zlewka z uwzględnieniem opcji Automap](media/data-flow/sink1.png "ujścia 1")
 
 Aby wyprowadzić wszystkie pola przychodzące, Włącz funkcję **Automap**. Aby wybrać pola, które mają być ujścia do miejsca docelowego, lub zmienić nazwy pól w miejscu docelowym, wyłącz **automapowanie**. Następnie otwórz kartę **Mapowanie** , aby zamapować pola wyjściowe.
 
@@ -32,22 +32,22 @@ W przypadku usługi Azure Blob Storage lub Data Lake Storage typów ujścia dane
 
 Schemat partycjonowania można ustawić na karcie **Optymalizacja** . Jeśli chcesz, aby Data Factory scalał dane wyjściowe w jeden plik, wybierz **jedną partycję**.
 
-![Opcje na karcie Optymalizacja](media/data-flow/opt001.png "opcji ujścia")
+![Opcje na karcie Optymalizacja](media/data-flow/opt001.png "Opcje ujścia")
 
 ## <a name="field-mapping"></a>Mapowanie pól
 Na karcie **Mapowanie** przekształcenia ujścia można mapować kolumny przychodzące po lewej stronie do miejsc docelowych po prawej stronie. Gdy ujścia danych są przesyłane do plików, Data Factory będą zawsze zapisywać nowe pliki do folderu. Po zmapowaniu do zestawu danych bazy wiedzy wybierz opcję operacje tabeli bazy danych, która będzie wstawiana, aktualizowana, upsert lub usuwana.
 
-(media/data-flow/sink2.png "Pochłaniacze") ![kart mapowania]
+![Karta mapowanie](media/data-flow/sink2.png "Ujścia")
 
 W tabeli mapowanie można wybrać wiele kolumn, odłączyć wiele kolumn lub zmapować wiele wierszy na tę samą nazwę kolumny.
 
 Aby zawsze mapować przychodzący zestaw pól na obiekt docelowy, ponieważ są one i w pełni akceptują elastyczne definicje schematu, wybierz opcję **Zezwalaj na dryfowanie schematu**.
 
-![Karta mapowanie pokazująca pola mapowane na kolumny w](media/data-flow/multi1.png "wielu opcjach") zestawu danych
+![Karta mapowanie pokazująca pola mapowane na kolumny w zestawie danych](media/data-flow/multi1.png "wiele opcji")
 
 Aby zresetować mapowania kolumn, wybierz pozycję **ponownie Mapuj**.
 
-(media/data-flow/sink1.png "Ujścia") ![karty ujścia]
+![Karta ujścia](media/data-flow/sink1.png "Ujścia — jeden")
 
 Wybierz pozycję **Weryfikuj schemat** , aby zakończyć niepowodzeniem ujścia w przypadku zmiany schematu.
 
@@ -56,7 +56,7 @@ Wybierz pozycję **Wyczyść folder,** aby obciąć zawartość folderu ujścia 
 ## <a name="rule-based-mapping"></a>Mapowanie oparte na regułach
 Gdy automapowanie jest wyłączone, będzie można dodać mapowanie oparte na kolumnach (stałe mapowanie) lub mapowanie oparte na regułach. Mapowanie oparte na regułach umożliwi pisanie wyrażeń z dopasowywaniem do wzorca. 
 
-Mapowanie oparte na(media/data-flow/rules4.png "regułach") ![mapowania oparte na regułach]
+![Mapowanie oparte na regułach](media/data-flow/rules4.png "Mapowanie oparte na regułach")
 
 Po wybraniu mapowania opartego na regułach, nastąpi naliczanie PODAJNIKa, aby oszacować pasujące wyrażenie zgodne z regułami przychodzącego wzorca i zdefiniować nazwy pól wychodzących. Możesz dodać dowolną kombinację mapowań pól i reguł. Nazwy pól są następnie generowane w czasie wykonywania przez moduł ADF na podstawie przychodzących metadanych ze źródła. Podczas debugowania można wyświetlać nazwy wygenerowanych pól i korzystać z okienka Podgląd danych.
 
@@ -79,7 +79,7 @@ Skonfiguruj nazewnictwo plików:
 
 Wybierz pozycję Ustawienia bazy danych:
 
-![Karta Ustawienia pokazująca opcje SQL dotyczące opcji UJŚCIA SQL](media/data-flow/alter-row2.png "")
+![Karta Ustawienia z opcjami ujścia SQL](media/data-flow/alter-row2.png "Opcje SQL")
 
 * **Metoda aktualizacji**: domyślnie zezwala na operacje wstawiania. Usuń zaznaczenie pola wyboru **Zezwalaj** , jeśli chcesz przerwać wstawianie nowych wierszy ze źródła. Aby zaktualizować, upsert lub usunąć wiersze, najpierw Dodaj transformację ALTER-Row do wierszy tagów dla tych działań. 
 * **Utwórz ponownie tabelę**: upuść lub Utwórz tabelę docelową przed zakończeniem przepływu danych.
@@ -88,12 +88,12 @@ Wybierz pozycję Ustawienia bazy danych:
 * **Włącz przemieszczanie**: Użyj podstawy podczas ładowania usługi Azure Data Warehouse jako zestawu danych ujścia.
 * **Wstępne i gotowe skrypty SQL**: wprowadź wielowierszowe skrypty SQL, które zostaną wykonane przed (przetwarzanie wstępne) i po wykonaniu (po przetworzeniu) dane są zapisywane w bazie danych ujścia
 
-![wstępne i końcowe]skrypty przetwarzania SQL skrypty(media/data-flow/prepost1.png "przetwarzania SQL")
+![wstępne i końcowe skrypty przetwarzania SQL](media/data-flow/prepost1.png "Skrypty przetwarzania SQL")
 
 > [!NOTE]
 > W przepływie danych można skierować Data Factory, aby utworzyć nową definicję tabeli w docelowej bazie danych. Aby utworzyć definicję tabeli, należy ustawić zestaw danych w transformację ujścia, która ma nową nazwę tabeli. W zestawie danych SQL, pod nazwą tabeli, wybierz opcję **Edytuj** i wprowadź nową nazwę tabeli. Następnie w transformacji ujścia Włącz opcję **Zezwalaj na dryfowanie schematu**. Ustaw dla opcji **Importuj schemat** **wartość Brak**.
 
-![Ustawienia zestawu danych SQL, gdzie można edytować nazwę tabeli](media/data-flow/dataset2.png "schemat SQL")
+![Ustawienia zestawu danych SQL, gdzie można edytować nazwę tabeli](media/data-flow/dataset2.png "Schemat SQL")
 
 > [!NOTE]
 > W przypadku aktualizowania lub usuwania wierszy w ujścia bazy danych należy ustawić kolumnę klucza. To ustawienie umożliwia przekształcenie zmiany wiersza w celu określenia unikatowego wiersza w bibliotece przenoszenia danych (DML).

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d79cefa9adec403ebbb5105351d2909eac9d02a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079656"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390504"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Tworzenie maszyny wirtualnej na podstawie dysku VHD przy użyciu Azure Portal
 
 Istnieje kilka sposobów tworzenia maszyny wirtualnej na platformie Azure: 
 
-- Jeśli masz już wirtualny dysk twardy (VHD) lub chcesz skopiować dysk VHD z istniejącej maszyny wirtualnej do użycia, możesz utworzyć nową maszynę wirtualną przez dołączenie dysku VHD do nowej maszyny wirtualnej jako dysku systemu operacyjnego. 
+- Jeśli masz już wirtualny dysk twardy (VHD) lub chcesz skopiować dysk VHD z istniejącej maszyny wirtualnej do użycia, możesz utworzyć nową maszynę wirtualną przez *dołączenie* dysku VHD do nowej maszyny wirtualnej jako dysku systemu operacyjnego. 
 
 - Można utworzyć nową maszynę wirtualną na podstawie wirtualnego dysku twardego maszyny wirtualnej, która została usunięta. Na przykład jeśli masz maszynę wirtualną platformy Azure, która nie działa prawidłowo, możesz usunąć maszynę wirtualną i użyć jej wirtualnego dysku twardego, aby utworzyć nową maszynę wirtualną. Możesz użyć ponownie tego samego dysku VHD lub utworzyć kopię dysku VHD przez utworzenie migawki, a następnie utworzenie nowego dysku zarządzanego na podstawie migawki. Mimo że utworzenie migawki trwa kilka kroków, zachowuje oryginalny dysk VHD i zapewnia powrotu.
 
@@ -34,6 +34,7 @@ Istnieje kilka sposobów tworzenia maszyny wirtualnej na platformie Azure:
 
 Nie używaj wyspecjalizowanego dysku, jeśli chcesz utworzyć wiele maszyn wirtualnych. Zamiast tego, w przypadku większych wdrożeń [Utwórz obraz](capture-image-resource.md) , a następnie [Użyj tego obrazu do utworzenia wielu maszyn wirtualnych](create-vm-generalized-managed.md).
 
+Zalecamy ograniczenie liczby współbieżnych wdrożeń do 20 maszyn wirtualnych z pojedynczej migawki lub dysku VHD. 
 
 ## <a name="copy-a-disk"></a>Kopiowanie dysku
 
@@ -53,7 +54,7 @@ Utwórz migawkę, a następnie Utwórz dysk na podstawie migawki. Ta strategia u
 12. Wprowadź **nazwę** dysku.
 13. Wybierz **grupę zasobów** dla dysku. Możesz użyć istniejącej grupy zasobów lub utworzyć nową. Ten wybór będzie również używany jako Grupa zasobów, w której tworzysz maszynę wirtualną z dysku.
 14. W obszarze **Typ konta**wybierz opcję magazyn **Standardowy (dysk twardy)** lub **Premium (SSD)** .
-15. W polu **Typ źródła**upewnij się, że wybrano migawkę.
+15. W polu **Typ źródła**upewnij się, że wybrano **migawkę** .
 16. Z listy rozwijanej **migawka źródłowa** wybierz migawkę, której chcesz użyć.
 17. Wprowadź inne zmiany w razie potrzeby, a następnie wybierz pozycję **Utwórz** , aby utworzyć dysk.
 
@@ -74,6 +75,7 @@ Gdy masz dysk VHD dysku zarządzanego, którego chcesz użyć, możesz utworzyć
 10. Na stronie **Konfiguracja gościa** Dodaj dowolne rozszerzenia zgodnie z wymaganiami.
 11. Gdy skończysz, wybierz pozycję **Przegląd + Utwórz**. 
 12. Jeśli konfiguracja maszyny wirtualnej przebiega pomyślnie, wybierz pozycję **Utwórz** , aby rozpocząć wdrażanie.
+
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: Jak aprowizować starsze urządzenia z usługi Azure IoT Hub Device Provisioning za pomocą kluczy symetrycznych | Dokumentacja firmy Microsoft
-description: Jak aprowizować starsze urządzenia z urządzeniem, wystąpienie usługi aprowizacji za pomocą kluczy symetrycznych
+title: Jak używać kluczy symetrycznych do udostępniania starszych urządzeń za pomocą usługi Azure IoT Hub Device Provisioning Service | Microsoft Docs
+description: Jak używać kluczy symetrycznych do udostępniania starszych urządzeń za pomocą wystąpienia usługi Device Provisioning
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,42 +8,43 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13e22d772ef9b90f415f10b65e4a4290a1f7bd81
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65914301"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434831"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak wykonać aprowizację starsze urządzenia przy użyciu kluczy symetrycznych
+# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak udostępnić starsze urządzenia przy użyciu kluczy symetrycznych
 
+Typowy problem z wieloma starszymi urządzeniami polega na tym, że często mają tożsamość składającą się z jednego fragmentu informacji. Informacje o tożsamości są zwykle adresami MAC lub numerami seryjnymi. Starsze urządzenia mogą nie mieć certyfikatu, modułu TPM ani żadnej innej funkcji zabezpieczeń, której można użyć do bezpiecznego zidentyfikowania urządzenia. Usługa Device Provisioning dla usługi IoT Hub obejmuje zaświadczenie klucza symetrycznego. Zaświadczenie klucza symetrycznego może służyć do identyfikowania urządzenia na podstawie informacji, takich jak adres MAC lub numer seryjny.
 
-Powszechny problem z wielu starszych urządzeń jest często mają tożsamość, która składa się z jednego fragmentu informacji. Informacje o tożsamości jest zwykle adres MAC lub numeru seryjnego. Starsze urządzenia może nie mieć certyfikat, modułu TPM lub innych funkcja zabezpieczeń, który może służyć do bezpiecznego identyfikowania urządzenia. Usługi Device Provisioning dla Centrum IoT hub zawiera zaświadczenie klucza symetrycznego. Zaświadczenie klucza symetrycznego może służyć do identyfikowania urządzenia na podstawie informacje, takie jak adres MAC lub numeru seryjnego.
+Jeśli można łatwo zainstalować [sprzętowy moduł zabezpieczeń (HSM)](concepts-security.md#hardware-security-module) i certyfikat, to może być lepszym rozwiązaniem do identyfikowania i aprowizacji urządzeń. Ponieważ takie podejście może pozwolić na obejście aktualizacji kodu wdrożonego na wszystkich urządzeniach, a w obrazie urządzenia nie zostanie osadzony klucz tajny.
 
-Jeśli możesz łatwo zainstalować [sprzętowego modułu zabezpieczeń (HSM)](concepts-security.md#hardware-security-module) i certyfikat, a następnie, może być lepszym rozwiązaniem w identyfikacji i aprowizacji urządzeń. Ponieważ takie podejście może umożliwić obejścia aktualizowania kodu wdrożony do wszystkich urządzeń, a nie musiałby klucz tajny, osadzonego w obrazie urządzenia.
+W tym artykule założono, że żaden moduł HSM lub certyfikat nie jest wykonalną opcją. Jednak zakłada się, że masz pewną metodę aktualizowania kodu urządzenia, aby używać usługi Device Provisioning do udostępniania tych urządzeń. 
 
-W tym artykule założono, ani modułu HSM lub certyfikatu to rentowną opcją. Jednak zakłada się, że masz niektóre metody aktualizacji kodu urządzenia na potrzeby udostępniania tych urządzeń do usługi Device Provisioning. 
-
-W tym artykule założono również, że aktualizacja urządzenia ma miejsce w bezpiecznym środowisku w celu uniemożliwienia nieupoważnionego dostępu do klucza głównego grupy lub klucza pochodnego urządzenia.
+W tym artykule przyjęto również założenie, że aktualizacja urządzenia odbywa się w bezpiecznym środowisku, aby zapobiec nieautoryzowanemu dostępowi do klucza grupy głównej lub klucza urządzenia pochodnego.
 
 Ten artykuł został opracowany z myślą o stacjach roboczych z systemem Windows. Jednak opisane procedury można wykonać także w systemie Linux. Aby uzyskać przykład dla systemu Linux, zobacz [Aprowizowanie pod kątem wielu dzierżaw](how-to-provision-multitenant.md).
 
+> [!NOTE]
+> Przykład użyty w tym artykule został zapisany w C. Dostępna jest również [ C# przykład klucza symetrycznego](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) służącego do aprowizacji urządzeń. Aby użyć tego przykładu, Pobierz lub Sklonuj repozytorium [Azure-IoT-Samples-CSharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) i postępuj zgodnie z instrukcjami w wierszu w przykładowym kodzie. Korzystając z instrukcji przedstawionych w tym artykule, można utworzyć grupę rejestracji klucza symetrycznego przy użyciu portalu i znaleźć zakres identyfikatorów oraz klucze podstawowe i pomocnicze, które są potrzebne do uruchomienia przykładu. Możesz również utworzyć rejestracje indywidualne przy użyciu przykładu.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Identyfikator unikatowy rejestracji zostanie zdefiniowana dla każdego urządzenia, w oparciu o informacje umożliwiające identyfikację tego urządzenia. Na przykład adres MAC lub numeru seryjnego.
+Unikatowy identyfikator rejestracji zostanie zdefiniowany dla każdego urządzenia na podstawie informacji identyfikujących to urządzenie. Na przykład adres MAC lub numer seryjny.
 
-Grupy rejestracji, który używa [zaświadczenie klucza symetrycznego](concepts-symmetric-key-attestation.md) zostanie utworzony przy użyciu usługi Device Provisioning Service. Klucz główny grupy będzie znajdować się w grupie rejestracji. Klucza głównego będzie służyć do tworzenia skrótu każdy identyfikator rejestracji, aby wygenerować klucz urządzenia unikatowy dla każdego urządzenia. Urządzenie będzie używało tego klucza pochodnego urządzenia za pomocą jego Identyfikatora rejestracji zaświadczania z usługą Device Provisioning i można przypisać do usługi IoT hub.
+Grupa rejestracyjna korzystająca z [zaświadczania klucza symetrycznego](concepts-symmetric-key-attestation.md) zostanie utworzona przy użyciu usługi Device Provisioning. Grupa rejestracji będzie zawierać klucz główny grupy. Ten klucz główny będzie używany do mieszania każdego unikatowego identyfikatora rejestracji w celu utworzenia unikatowego klucza urządzenia dla każdego urządzenia. Urządzenie użyje tego pochodnego klucza urządzenia ze swoim unikatowym IDENTYFIKATORem rejestracji w celu zaświadczenia usługi Device Provisioning i przypisania jej do centrum IoT Hub.
 
-Kod urządzenia, które przedstawiono w tym artykule będzie zgodna z tego samego wzorca jako [Szybki Start: Aprowizowanie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md). Ten kod będzie symulowania urządzenia przy użyciu przykładu z [zestawu SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c). Potwierdza symulowanego urządzenia z grupy rejestracji zamiast rejestrację indywidualną, jak pokazano w przewodniku Szybki Start.
+Kod urządzenia opisany w tym artykule będzie postępować zgodnie z tym samym wzorcem, co [Przewodnik Szybki Start: Inicjowanie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md). Kod symuluje urządzenie przy użyciu przykładu z [zestawu SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c). Symulowane urządzenie zostanie zatwierdzona z grupą rejestracji zamiast rejestracji indywidualnej, jak pokazano w przewodniku Szybki Start.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończenie [skonfigurować IoT Hub Device Provisioning Service przy użyciu witryny Azure portal](./quick-setup-auto-provision.md) Szybki Start.
-* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 lub nowszym z ["programowanie aplikacji klasycznych przy użyciu C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) włączony pakiet roboczy.
+* Zakończenie [konfigurowania IoT Hub Device Provisioning Service przy użyciu Azure Portal](./quick-setup-auto-provision.md) przewodnika Szybki Start.
+* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 lub nowszy z włączonym obciążeniem ["Programowanie aplikacji klasycznych C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
 * Zainstalowana najnowsza wersja usługi[Git](https://git-scm.com/download/).
 
 
@@ -53,7 +54,7 @@ W tej sekcji przygotujesz środowisko deweloperskie używane do opracowania [zes
 
 Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. To urządzenie symulowane podejmie próbę aprowizacji podczas sekwencji rozruchu urządzenia.
 
-1. Pobierz [system kompilacji CMake](https://cmake.org/download/).
+1. Pobierz [system kompilacji CMAKE](https://cmake.org/download/).
 
     Ważne jest, aby wstępnie wymagane składniki (program Visual Studio oraz pakiet roboczy „Programowanie aplikacji klasycznych w języku C++”) były zainstalowane na tym komputerze **przed** uruchomieniem `CMake` instalacji. Gdy wymagania wstępne zostaną spełnione, a pobrane pliki zweryfikowane, zainstaluj system kompilacji CMake.
 
@@ -98,58 +99,58 @@ Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. To urządzenie
     ```
 
 
-## <a name="create-a-symmetric-key-enrollment-group"></a>Utwórz grupę rejestracji klucza symetrycznego
+## <a name="create-a-symmetric-key-enrollment-group"></a>Tworzenie grupy rejestracji kluczy symetrycznych
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz swoje wystąpienie usługi Device Provisioning.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz wystąpienie usługi Device Provisioning Service.
 
-2. Wybierz **Zarządzanie rejestracjami** kartę, a następnie kliknij przycisk **Dodaj grupę rejestracji** znajdujący się u góry strony. 
+2. Wybierz kartę **Zarządzanie rejestracjami** , a następnie kliknij przycisk **Dodaj grupę rejestracji** w górnej części strony. 
 
-3. Na **Dodaj grupę rejestracji**, wprowadź następujące informacje i kliknij przycisk **Zapisz** przycisku.
+3. W obszarze **Dodaj grupę rejestracji**Wprowadź poniższe informacje, a następnie kliknij przycisk **Zapisz** .
 
-   - **Nazwa grupy**: Wprowadź **mylegacydevices**.
+   - **Nazwa grupy**: wprowadź **mylegacydevices**.
 
-   - **Typ zaświadczeń**: Wybierz **klucz symetryczny**.
+   - **Typ zaświadczania**: Wybierz **klucz symetryczny**.
 
    - **Automatycznie generuj klucze**: zaznacz to pole wyboru.
 
-   - **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **statycznie** można przypisać do określonego koncentratora.
+   - **Wybierz sposób przypisywania urządzeń do centrów**: wybierz opcję **Konfiguracja statyczna** , aby przypisać do określonego centrum.
 
-   - **Wybierz centra IoT Hub do tej grupy mogą być przypisane do**: Wybierz jeden z koncentratorami.
+   - **Wybierz centra IoT, do których ta grupa może być przypisana**: wybierz jedno z centrów.
 
-     ![Dodaj grupę rejestracji dla zaświadczenia klucza symetrycznego](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![Dodaj grupę rejestracji na potrzeby zaświadczania klucza symetrycznego](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. Po zapisaniu rejestracji zostanie wygenerowany **klucz podstawowy** i **klucz pomocniczy**. Zostaną one dodane do wpisu rejestracji. Grupa symetrycznego klucza rejestracji jest wyświetlana jako **mylegacydevices** w obszarze *Nazwa grupy* kolumny w *grup rejestracji* kartę. 
+4. Po zapisaniu rejestracji zostanie wygenerowany **klucz podstawowy** i **klucz pomocniczy**. Zostaną one dodane do wpisu rejestracji. Twoja grupa rejestracji kluczy symetrycznych jest wyświetlana jako **mylegacydevices** w kolumnie *Nazwa grupy* na karcie *grupy rejestracji* . 
 
-    Otwórz rejestrację i skopiuj wartość wygenerowanego **klucza podstawowego**. Ten klucz jest kluczem głównym grupy.
+    Otwórz rejestrację i skopiuj wartość wygenerowanego **klucza podstawowego**. Ten klucz jest kluczem grupy głównej.
 
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>Wybierz identyfikator rejestracji dla urządzenia
+## <a name="choose-a-unique-registration-id-for-the-device"></a>Wybierz unikatowy identyfikator rejestracji dla urządzenia
 
-Identyfikator rejestracji musi być zdefiniowany do identyfikowania poszczególnych urządzeń. Można użyć adresu MAC, numer seryjny lub żadnych unikatowych informacji z urządzenia. 
+Unikatowy identyfikator rejestracji musi być zdefiniowany, aby można było zidentyfikować każde urządzenie. Możesz użyć adresu MAC, numeru seryjnego lub wszelkich unikatowych informacji z urządzenia. 
 
-W tym przykładzie używamy kombinację adresu MAC i numer seryjny tworzących następujący ciąg identyfikatora rejestracji.
+W tym przykładzie używamy kombinacji adresu MAC i numeru seryjnego tworzącego następujący ciąg dla identyfikatora rejestracji.
 
 ```
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Utwórz identyfikator rejestracji dla urządzenia. Prawidłowe znaki to małe znaki alfanumeryczne i kreski ("-").
+Utwórz unikatowy identyfikator rejestracji dla urządzenia. Prawidłowe znaki to małe litery alfanumeryczne i myślnik ("-").
 
 
-## <a name="derive-a-device-key"></a>Uzyskania klucza urządzenia 
+## <a name="derive-a-device-key"></a>Utwórz klucz urządzenia 
 
-Aby wygenerować klucz urządzenia, należy użyć klucza głównego grupy do obliczenia [HMAC SHA256](https://wikipedia.org/wiki/HMAC) identyfikatora rejestracji dla urządzenia i przekonwertować wynik w formacie Base64.
+Aby wygenerować klucz urządzenia, użyj klucza głównego grupy do obliczenia [algorytmu HMAC-SHA256](https://wikipedia.org/wiki/HMAC) unikatowego identyfikatora rejestracji dla urządzenia i Przekształć wynik w formacie base64.
 
-Nie dołączaj klucza głównego usługi grupy w kodzie urządzenia.
+Nie dodawaj klucza głównego grupy do kodu urządzenia.
 
 
 #### <a name="linux-workstations"></a>Stacje robocze systemu Linux
 
-Jeśli używasz stacja robocza z systemem Linux umożliwia openssl wygenerowanie własnego klucza pochodnego urządzenia, jak pokazano w poniższym przykładzie.
+Jeśli używasz stacji roboczej z systemem Linux, możesz użyć OpenSSL, aby wygenerować pochodny klucz urządzenia, jak pokazano w poniższym przykładzie.
 
-Zastąp wartość **klucz** z **klucz podstawowy** zanotowany wcześniej.
+Zastąp wartość **klucza kluczem** **podstawowym** zanotowanym wcześniej.
 
-Zastąp wartość **REG_ID** przy użyciu swojego identyfikatora rejestracji.
+Zastąp wartość **REG_ID** identyfikatorem rejestracji.
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -166,11 +167,11 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 #### <a name="windows-based-workstations"></a>Stacje robocze z systemem Windows
 
-Jeśli używasz stację roboczą z systemem Windows można użyć programu PowerShell do wygenerowanie własnego klucza pochodnego urządzenia, jak pokazano w poniższym przykładzie.
+Jeśli używasz stacji roboczej z systemem Windows, możesz użyć programu PowerShell, aby wygenerować pochodny klucz urządzenia, jak pokazano w poniższym przykładzie.
 
-Zastąp wartość **klucz** z **klucz podstawowy** zanotowany wcześniej.
+Zastąp wartość **klucza kluczem** **podstawowym** zanotowanym wcześniej.
 
-Zastąp wartość **REG_ID** przy użyciu swojego identyfikatora rejestracji.
+Zastąp wartość **REG_ID** identyfikatorem rejestracji.
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -188,21 +189,21 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
 
-Urządzenie będzie używać klucza pochodnego urządzenia za pomocą Identyfikatora rejestracji symetrycznego zaświadczenie klucza przy użyciu grup rejestracji podczas inicjowania obsługi.
+Urządzenie użyje pochodnego klucza urządzenia z unikatowym IDENTYFIKATORem rejestracji, aby przeprowadzić zaświadczenie klucza symetrycznego z grupą rejestracji podczas aprowizacji.
 
 
 
-## <a name="create-a-device-image-to-provision"></a>Tworzenie obrazu urządzenia w celu aprowizacji
+## <a name="create-a-device-image-to-provision"></a>Tworzenie obrazu urządzenia do aprowizacji
 
-W tej sekcji spowoduje zaktualizowanie przykładu aprowizacji o nazwie **prov\_dev\_klienta\_przykładowe** znajduje się w zestawie SDK C usługi Azure IoT konfigurowania wcześniej. 
+W tej sekcji zostanie zaktualizowany przykład aprowizacji o nazwie **Prov @ no__t-1dev @ no__t-2client @ no__t-3sample** znajdujący się w zestawie SDK języka C usługi Azure IoT. 
 
-Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysłanie żądania aprowizacji wystąpienia usługi Device Provisioning Service. Sekwencji rozruchu spowoduje, że urządzenie zostało rozpoznane i przypisane do Centrum IoT, które zostały skonfigurowane w grupie rejestracji.
+Ten przykładowy kod symuluje sekwencję rozruchu urządzenia, która wysyła żądanie aprowizacji do wystąpienia usługi Device Provisioning. Sekwencja rozruchu spowoduje, że urządzenie zostanie rozpoznane i przypisane do centrum IoT, które zostało skonfigurowane w grupie rejestracji.
 
 1. W witrynie Azure Portal wybierz kartę **Przegląd** dla swojej usługi Device Provisioning Service, a następnie zapisz wartość **_Zakres identyfikatorów_** .
 
     ![Wyodrębnianie informacji o punkcie końcowym usługi Device Provisioning Service z bloku portalu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. W programie Visual Studio, otwórz **azure_iot_sdks.sln** plik rozwiązania, który został wygenerowany po uruchomieniu narzędzia CMake wcześniej. Plik rozwiązania powinien znajdować się w następującej lokalizacji:
+2. W programie Visual Studio Otwórz plik rozwiązania **azure_iot_sdks. sln** , który został wygenerowany przez uruchomienie CMAKE wcześniej. Plik rozwiązania powinien znajdować się w następującej lokalizacji:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -232,7 +233,7 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Usuń znaczniki komentarza wywołania funkcji i Zastąp wartości symboli zastępczych (włącznie z nawiasami) z Identyfikatorem rejestracji dla urządzenia i klucz pochodnej urządzenia, który został wygenerowany.
+    Usuń komentarz wywołania funkcji i Zastąp wartości symboli zastępczych (łącznie z nawiasami ostrymi) unikatowym IDENTYFIKATORem rejestracji urządzenia i wygenerowanym kluczem urządzenia pochodnego.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -262,7 +263,7 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
     Press enter key to exit:
     ```
 
-9. W portalu przejdź do centrum IoT, do którego przypisano Twoje urządzenie symulowane, a następnie kliknij kartę **Urządzenia IoT**. Po pomyślnej aprowizacji urządzenia symulowanego w centrum identyfikator urządzenia jest wyświetlany w bloku **Urządzenia IoT** z pozycją *STATUS* (stan) ustawioną na wartość **enabled** (włączone). Być może trzeba będzie kliknąć przycisk **Odśwież** u góry strony. 
+9. W portalu przejdź do centrum IoT Hub, do którego zostało przypisane symulowane urządzenie, a następnie kliknij kartę **urządzenia IoT** . Po pomyślnej aprowizacji symulowanego centrum jego identyfikator urządzenia jest wyświetlany w bloku **urządzenia IoT** z opcją *stan* jako **włączone**. Być może trzeba będzie kliknąć przycisk **Odśwież** u góry strony. 
 
     ![Urządzenie jest rejestrowane w centrum IoT](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 
@@ -270,17 +271,17 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
 
 ## <a name="security-concerns"></a>Zagadnienia dotyczące zabezpieczeń
 
-Należy pamiętać, że spowoduje to pozostawienie klucza pochodnego urządzenia dołączone jako część obrazu, który nie jest najlepszą zalecaną praktyką zabezpieczeń. To jest jednym z powodów Dlaczego bezpieczeństwo i łatwość użytkowania są wady i zalety. 
+Należy pamiętać, że spowoduje to pozostawienie pochodnego klucza urządzenia dołączanego jako część obrazu, co nie jest zalecanym najlepszym rozwiązaniem w zakresie zabezpieczeń. Jest to jeden z powodów, dla którego zabezpieczenia i łatwość użycia są kompromisami. 
 
 
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej Reprovisioning, zobacz [reprovisioning pojęcia dotyczące urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
-* [Szybki start: Aprowizowanie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
-* Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego](how-to-unprovision-devices.md) 
+* Aby dowiedzieć się więcej, zobacz temat [IoT Hub ponowne Inicjowanie obsługi administracyjnej urządzeń](concepts-device-reprovision.md) 
+* [Szybki Start: Inicjowanie obsługi symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
+* Aby dowiedzieć się więcej, zobacz [Jak anulować obsługę administracyjną urządzeń, które wcześniej były obsługiwane](how-to-unprovision-devices.md) . 
 
 
 

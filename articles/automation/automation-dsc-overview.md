@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061388"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429408"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Przegląd konfiguracji stanu Azure Automation
 
-Konfiguracja stanu Azure Automation to usługa platformy Azure, która umożliwia pisanie, zarządzanie i kompilowanie konfiguracji stanu żądanego (DSC) programu [](/powershell/dsc/configurations)PowerShell, importowanie [zasobów DSC](/powershell/dsc/resources)i przypisywanie konfiguracji do węzłów docelowych, a wszystko w chmury.
+Konfiguracja stanu Azure Automation to usługa platformy Azure, która umożliwia pisanie, zarządzanie i kompilowanie konfiguracji stanu żądanego ( [DSC) programu](/powershell/scripting/dsc/configurations/configurations)PowerShell, importowanie [zasobów DSC](/powershell/scripting/dsc/resources/resources)i przypisywanie konfiguracji do węzłów docelowych, a wszystko w chmury.
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Dlaczego warto używać konfiguracji stanu Azure Automation
 
@@ -27,11 +27,11 @@ Azure Automation konfiguracja stanu zapewnia kilka korzyści z używania DSC poz
 
 ### <a name="built-in-pull-server"></a>Wbudowany serwer ściągania
 
-Azure Automation konfiguracja stanu udostępnia serwer ściągania DSC podobny do [usługi Windows Feature DSC-Service](/powershell/dsc/pullserver) , dzięki czemu węzły docelowe automatycznie odbierają konfiguracje, są zgodne z żądanym stanem i raportują zgodność z powrotem. Wbudowany serwer ściągania w programie Azure Automation eliminuje konieczność skonfigurowania i utrzymania własnego serwera ściągania. Azure Automation mogą kierować wirtualne lub fizyczne maszyny z systemem Windows lub Linux, w chmurze lub w środowisku lokalnym.
+Azure Automation konfiguracja stanu udostępnia serwer ściągania DSC podobny do [usługi Windows Feature DSC-Service](/powershell/scripting/dsc/pull-server/pullserver) , dzięki czemu węzły docelowe automatycznie odbierają konfiguracje, są zgodne z żądanym stanem i raportują zgodność z powrotem. Wbudowany serwer ściągania w programie Azure Automation eliminuje konieczność skonfigurowania i utrzymania własnego serwera ściągania. Azure Automation mogą kierować wirtualne lub fizyczne maszyny z systemem Windows lub Linux, w chmurze lub w środowisku lokalnym.
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>Zarządzanie wszystkimi artefaktami DSC
 
-Azure Automation konfiguracja stanu umożliwia korzystanie z tej samej warstwy zarządzania do [konfiguracji żądanego stanu programu PowerShell](/powershell/dsc/overview) jako Azure Automation ofert dla skryptów programu PowerShell.
+Azure Automation konfiguracja stanu umożliwia korzystanie z tej samej warstwy zarządzania do [konfiguracji żądanego stanu programu PowerShell](/powershell/scripting/dsc/overview/overview) jako Azure Automation ofert dla skryptów programu PowerShell.
 
 Za pomocą Azure Portal lub z programu PowerShell można zarządzać wszystkimi konfiguracjami DSC, zasobami i węzłami docelowymi.
 
@@ -51,12 +51,12 @@ W przypadku węzłów z systemem Windows obsługiwane są następujące wersje:
 
 - Windows Server 2019
 - Windows Server 2016
-- Windows Server 2012R2
+- 2012R2 systemu Windows Server
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 - Windows 10
 - Windows 8.1
-- Windows 7
+- Windows 7
 
 Autonomiczna jednostka SKU produktu [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) nie zawiera implementacji żądanego stanu konfiguracją, więc nie może być zarządzana przez program PowerShell DSC lub konfigurację stanu Azure Automation.
 
@@ -74,10 +74,10 @@ W przypadku wszystkich węzłów systemu Linux działających na platformie Azur
 
 Jeśli węzły znajdują się w sieci prywatnej, do komunikacji z automatyzacją (DSC) wymagane są następujące porty i adresy URL:
 
-* Port: Do wychodzącego dostępu do Internetu jest wymagany tylko protokół TCP 443.
+* Port: dla wychodzącego dostępu do Internetu wymagany jest tylko protokół TCP 443.
 * Globalny adres URL: *. azure-automation.net
 * Globalny adres URL US Gov Wirginia: *. azure-automation.us
-* Usługa agenta: https://\<identyfikator obszaru roboczego\>. agentsvc.Azure-Automation.NET
+* Usługa agenta: https://@no__t -0workspaceId\>.agentsvc.azure-automation.net
 
 Zapewnia to łączność sieciową dla węzła zarządzanego w celu komunikowania się z Azure Automation.
 W przypadku korzystania z zasobów DSC, które komunikują się między węzłami, takimi jak [* zasoby](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource), należy również zezwolić na ruch między węzłami.
@@ -99,19 +99,19 @@ Jeśli masz konto usługi Automation zdefiniowane dla określonego regionu, moż
 
 | **Region** | **Rekord DNS** |
 | --- | --- |
-| Środkowo-zachodnie stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Środkowo-południowe stany USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| East US   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
+| Zachodnio-środkowe stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Południowo-środkowe stany USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Wschodnie stany USA   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
 | Wschodnie stany USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada Środkowa |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Europa Zachodnia |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Europa Północna |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| Azja Południowo-Wschodnia |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
+| Azja Południowo-wschodnia |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | Indie Środkowe |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonia Wschodnia |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Australia Południowo-Wschodnia |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | Południowe Zjednoczone Królestwo | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| Administracja USA — Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| US Gov Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Aby uzyskać listę adresów IP regionów zamiast nazw regionów, Pobierz plik XML [adresu IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) z centrum pobierania Microsoft.
 

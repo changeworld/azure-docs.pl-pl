@@ -1,65 +1,71 @@
 ---
-title: Dzienniki inspekcji dla usługi Azure Database for MySQL
-description: W tym artykule opisano dzienników inspekcji dostępnych w usłudze Azure Database for MySQL i dostępne parametry umożliwiające poziomów rejestrowania.
+title: Dzienniki inspekcji dla Azure Database for MySQL
+description: Opisuje dzienniki inspekcji dostępne w Azure Database for MySQL i dostępne parametry umożliwiające włączenie poziomów rejestrowania.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/26/2019
-ms.openlocfilehash: 86750cea5e7f0d4726f3e0e9a03795ef2a602d8b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42881fcb12f29ec14bbdc0ec4942b2eef17c7312
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443840"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434403"
 ---
-# <a name="audit-logs-in-azure-database-for-mysql"></a>Dzienniki inspekcji w usłudze Azure Database for MySQL
+# <a name="audit-logs-in-azure-database-for-mysql"></a>Inspekcja dzienników w Azure Database for MySQL
 
-W usłudze Azure Database for MySQL z dziennika inspekcji jest dostępna dla użytkowników. Dziennik inspekcji może służyć do śledzenia działań na poziomie bazy danych i jest często używany pod kątem zgodności.
+W Azure Database for MySQL dziennik inspekcji jest dostępny dla użytkowników. Dziennik inspekcji może służyć do śledzenia aktywności na poziomie bazy danych i jest często używany w celu zapewnienia zgodności.
 
 > [!IMPORTANT]
-> Funkcja dziennika inspekcji jest obecnie w wersji zapoznawczej.
+> Funkcje dziennika inspekcji są obecnie dostępne w wersji zapoznawczej.
 
-## <a name="configure-audit-logging"></a>Skonfiguruj rejestrowanie inspekcji
+## <a name="configure-audit-logging"></a>Konfigurowanie rejestrowania inspekcji
 
-Domyślnie dziennik inspekcji jest wyłączona. Aby ją włączyć, ustaw `audit_log_enabled` na wartość ON.
+Domyślnie dziennik inspekcji jest wyłączony. Aby ją włączyć, ustaw wartość `audit_log_enabled` na wartość włączone.
 
-Inne parametry, które można dostosować obejmują:
+Inne parametry, które można dostosować, obejmują:
 
-- `audit_log_events`: Określa zdarzenia, które mają być rejestrowane. Zobacz w poniższej tabeli dla określonych zdarzeń inspekcji.
-- `audit_log_exclude_users`: Użytkownicy programu MySQL do wykluczenia z rejestrowania. Zezwala na maksymalnie czterech użytkowników. Maksymalna długość parametru wynosi 256 znaków.
+- `audit_log_events`: kontroluje zdarzenia, które mają być rejestrowane. Szczegółowe zdarzenia inspekcji można znaleźć w poniższej tabeli.
+- `audit_log_include_users`: Użytkownicy programu MySQL mają być włączeni do rejestrowania. Wartość domyślna tego parametru jest pusta, co spowoduje uwzględnienie wszystkich użytkowników do rejestrowania. Ma wyższy priorytet niż `audit_log_exclude_users`. Maksymalna długość parametru to 512 znaków.
+> [!Note]
+> `audit_log_include_users` ma wyższy priorytet niż `audit_log_exclude_users` na przykład jeśli audit_log_include_users = `demouser` i audit_log_exclude_users = `demouser`, będzie przeprowadzać inspekcję dzienników, ponieważ `audit_log_include_users` ma wyższy priorytet.
+- `audit_log_exclude_users`: Użytkownicy programu MySQL mają być wykluczeni z rejestrowania. Maksymalna długość parametru to 512 znaków.
 
-| **Event** | **Opis** |
+> [!Note]
+> W przypadku `sql_text` Dziennik zostanie obcięty, jeśli przekracza 2048 znaków.
+
+| **Zdarzenie** | **Opis** |
 |---|---|
-| `CONNECTION` | — Inicjowanie połączenia (powodzeniem lub niepowodzeniem) <br> — Ponowne uwierzytelnianie użytkownika przy użyciu innego użytkownika/hasła podczas sesji <br> — Zakończenie połączenie |
-| `DML_SELECT`| Zapytań SELECT |
-| `DML_NONSELECT` | Zapytania DELETE/INSERT/UPDATE |
+| `CONNECTION` | -Inicjacja połączenia (powodzenie lub niepowodzenie) <br> -Uwierzytelnianie użytkownika przy użyciu innego użytkownika/hasła podczas sesji <br> -Zakończenie połączenia |
+| `DML_SELECT`| Wybieranie zapytań |
+| `DML_NONSELECT` | Wstawianie/usuwanie/aktualizowanie zapytań |
 | `DML` | DML = DML_SELECT + DML_NONSELECT |
-| `DDL` | Kwerend, takich jak "DROP DATABASE" |
-| `DCL` | Kwerend, takich jak "UDZIEL uprawnień" |
-| `ADMIN` | Kwerend, takich jak "Pokaż stan" |
-| `GENERAL` | Wszystko to w DML_SELECT DML_NONSELECT, DML, DDL, DCL i administratora |
-| `TABLE_ACCESS` | — Dostępne tylko w przypadku MySQL 5.7 <br> -Table przeczytaj instrukcje, na przykład wybierz pozycję "lub" INSERT INTO... SELECT <br> -Table delete instrukcje, na przykład DELETE lub TRUNCATE TABLE <br> -Instrukcji insert table, takich jak wstawianie lub ZASTĘPOWANIE <br> -Instrukcje update table, na przykład aktualizacji |
+| `DDL` | Zapytania, takie jak "DROP DATABASE" |
+| `DCL` | Zapytania, takie jak "Udziel uprawnień" |
+| `ADMIN` | Zapytania, takie jak "Pokaż stan" |
+| `GENERAL` | Wszystkie w DML_SELECT, DML_NONSELECT, DML, DDL, DCL i administrator |
+| `TABLE_ACCESS` | -Dostępne tylko dla MySQL 5,7 <br> — Instrukcje odczytu tabeli, takie jak SELECT lub INSERT INTO... ZAZNACZENIA <br> -Instrukcji DELETE tabeli, takich jak DELETE lub TRUNCATE TABLE <br> — Instrukcje INSERT tabeli, takie jak INSERT lub REPLACE <br> — Instrukcje aktualizacji tabeli, takie jak aktualizacja |
 
 ## <a name="access-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji
 
-Dzienniki inspekcji są zintegrowane z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki inspekcji na Twoim serwerze MySQL, może emitować je do dzienników usługi Azure Monitor, usługa Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych w witrynie Azure portal, zobacz [artykułu portalu dziennika inspekcji](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
+Dzienniki inspekcji są zintegrowane z Azure Monitor dziennikami diagnostycznymi. Po włączeniu dzienników inspekcji na serwerze MySQL można je emitować do Azure Monitor dzienników, Event Hubs lub Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych w Azure Portal, zobacz [artykuł Portal dziennika inspekcji](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
 
-## <a name="diagnostic-logs-schemas"></a>Schematy dla dzienników diagnostycznych
+## <a name="diagnostic-logs-schemas"></a>Schematy dzienników diagnostycznych
 
-W poniższych sekcjach opisano, co to jest danymi wyjściowymi MySQL dzienniki inspekcji na podstawie typu zdarzenia. W zależności od danych wyjściowych metody, pola, znajdujące się i kolejność, w jakiej są wyświetlane mogą się różnić.
+W poniższych sekcjach opisano dane wyjściowe dzienników inspekcji MySQL na podstawie typu zdarzenia. W zależności od metody Output pola uwzględnione i kolejność ich wyświetlania mogą się różnić.
 
 ### <a name="connection"></a>Połączenie
 
-| **Property** | **Opis** |
+| **Właściwość** | **Opis** |
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated [UTC]` | Sygnatura czasowa podczas rejestrowania w formacie UTC |
-| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
-| `SubscriptionId` | Identyfikator GUID dla subskrypcji, do której należy serwer |
+| `TimeGenerated [UTC]` | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
+| `Type` | Typ dziennika. Zawsze `AzureDiagnostics` |
+| `SubscriptionId` | Identyfikator GUID subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
-| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identyfikator URI zasobu |
 | `Resource` | Nazwa serwera |
@@ -67,27 +73,27 @@ W poniższych sekcjach opisano, co to jest danymi wyjściowymi MySQL dzienniki i
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Nazwa serwera |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (Ta funkcja jest dostępna tylko dla MySQL 5.7) |
-| `connection_id_d` | Identyfikator unikatowy połączenia wygenerowane przez MySQL |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (dostępne tylko dla MySQL 5,7) |
+| `connection_id_d` | Unikatowy identyfikator połączenia wygenerowany przez MySQL |
 | `host_s` | Puste |
-| `ip_s` | Adres IP klienta łączenie z bazą danych MySQL |
+| `ip_s` | Adres IP klienta nawiązującego połączenie z bazą danych MySQL |
 | `user_s` | Nazwa użytkownika wykonującego zapytanie |
-| `db_s` | Nazwa bazy danych połączone |
+| `db_s` | Nazwa bazy danych połączonej z |
 | `\_ResourceId` | Identyfikator URI zasobu |
 
 ### <a name="general"></a>Ogólne
 
-Schemat poniżej dotyczy ogólne, DML_SELECT, DML_NONSELECT, DML, DDL, DCL i administratora typów zdarzeń.
+Poniższy schemat dotyczy typów zdarzeń GENERAL, DML_SELECT, DML_NONSELECT, DML, DDL, DCL i administrator.
 
-| **Property** | **Opis** |
+| **Właściwość** | **Opis** |
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated [UTC]` | Sygnatura czasowa podczas rejestrowania w formacie UTC |
-| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
-| `SubscriptionId` | Identyfikator GUID dla subskrypcji, do której należy serwer |
+| `TimeGenerated [UTC]` | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
+| `Type` | Typ dziennika. Zawsze `AzureDiagnostics` |
+| `SubscriptionId` | Identyfikator GUID subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
-| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identyfikator URI zasobu |
 | `Resource` | Nazwa serwera |
@@ -95,27 +101,27 @@ Schemat poniżej dotyczy ogólne, DML_SELECT, DML_NONSELECT, DML, DDL, DCL i adm
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Nazwa serwera |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (Ta funkcja jest dostępna tylko dla MySQL 5.6) |
-| `event_time` | Zapytanie start sekund w sygnatura czasowa systemu UNIX |
-| `error_code_d` | Kod błędu, jeśli zapytanie nie powiodło się. `0` oznacza, że błąd nie |
-| `thread_id_d` | Identyfikator wątku, który jest wykonywane zapytanie |
+| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (dostępne tylko dla MySQL 5,6) |
+| `event_time` | Godzina rozpoczęcia zapytania w sygnaturze czasowej UTC |
+| `error_code_d` | Kod błędu, jeśli zapytanie nie powiodło się. `0` oznacza brak błędu |
+| `thread_id_d` | Identyfikator wątku, który wykonał zapytanie |
 | `host_s` | Puste |
-| `ip_s` | Adres IP klienta łączenie z bazą danych MySQL |
+| `ip_s` | Adres IP klienta nawiązującego połączenie z bazą danych MySQL |
 | `user_s` | Nazwa użytkownika wykonującego zapytanie |
-| `sql_text_s` | Tekst pełnej kwerendy |
+| `sql_text_s` | Pełny tekst zapytania |
 | `\_ResourceId` | Identyfikator URI zasobu |
 
-### <a name="table-access"></a>Dostępu do tabel
+### <a name="table-access"></a>Dostęp do tabeli
 
-| **Property** | **Opis** |
+| **Właściwość** | **Opis** |
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated [UTC]` | Sygnatura czasowa podczas rejestrowania w formacie UTC |
-| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
-| `SubscriptionId` | Identyfikator GUID dla subskrypcji, do której należy serwer |
+| `TimeGenerated [UTC]` | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
+| `Type` | Typ dziennika. Zawsze `AzureDiagnostics` |
+| `SubscriptionId` | Identyfikator GUID subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
-| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identyfikator URI zasobu |
 | `Resource` | Nazwa serwera |
@@ -123,13 +129,13 @@ Schemat poniżej dotyczy ogólne, DML_SELECT, DML_NONSELECT, DML, DDL, DCL i adm
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Nazwa serwera |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`, lub `DELETE` |
-| `connection_id_d` | Identyfikator unikatowy połączenia wygenerowane przez MySQL |
-| `db_s` | Nazwa bazy danych |
-| `table_s` | Nazwa tabeli dostępne |
-| `sql_text_s` | Tekst pełnej kwerendy |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` lub `DELETE` |
+| `connection_id_d` | Unikatowy identyfikator połączenia wygenerowany przez MySQL |
+| `db_s` | Nazwa bazy danych, do której uzyskano dostęp |
+| `table_s` | Nazwa tabeli, do której można uzyskać dostęp |
+| `sql_text_s` | Pełny tekst zapytania |
 | `\_ResourceId` | Identyfikator URI zasobu |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Jak skonfigurować dzienniki inspekcji w witrynie Azure portal](howto-configure-audit-logs-portal.md)
+- [Jak skonfigurować dzienniki inspekcji w Azure Portal](howto-configure-audit-logs-portal.md)

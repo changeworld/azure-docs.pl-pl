@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Dynamiczne maskowanie danych | Dokumentacja firmy Microsoft
-description: SQL Database Dynamiczne maskowanie danych ogranicza narażenie na dane poufne przez zamaskowanie go dla użytkowników bez uprawnień
+title: Dynamiczne maskowanie danych dla Azure SQL Database i magazynu danych | Dokumentacja firmy Microsoft
+description: Dynamiczne maskowanie danych ogranicza narażenie na dane poufne przez zamaskowanie ich dla użytkowników bez uprawnień do SQL Database i magazynu danych
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,14 +11,14 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2019
-ms.openlocfilehash: 366b9437aab134985c73611fa8b46c6fbd3d309c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e36e91330232a90ff51cf92ce8dc920b51e2d914
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568763"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430123"
 ---
-# <a name="sql-database-dynamic-data-masking"></a>SQL Database Dynamiczne maskowanie danych
+# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Dynamiczne maskowanie danych dla Azure SQL Database i magazynu danych
 
 SQL Database Dynamiczne maskowanie danych ogranicza narażenie na dane poufne przez zamaskowanie go dla użytkowników bez uprawnień. 
 
@@ -26,7 +26,7 @@ Dynamiczne maskowanie danych pomaga zapobiec nieautoryzowanemu dostępowi do dan
 
 Na przykład przedstawiciel usługi w centrum telefonicznym może identyfikować wywoływania według kilku cyfr numerów kart kredytowych, ale te elementy danych nie powinny być w pełni ujawnione dla przedstawiciela usługi. Można zdefiniować regułę maskowania, która będzie maskować wszystkie oprócz ostatnich czterech cyfr dowolnego numeru karty kredytowej w zestawie wyników dowolnego zapytania. Innym przykładem jest możliwość zdefiniowania odpowiedniej maski danych w celu ochrony danych osobowych (dane osobowe), dzięki czemu deweloper może wysyłać zapytania dotyczące środowisk produkcyjnych do celów związanych z rozwiązywaniem problemów bez naruszania przepisów dotyczących zgodności.
 
-## <a name="sql-database-dynamic-data-masking-basics"></a>SQL Database podstawowe Dynamiczne maskowanie danych
+## <a name="dynamic-data-masking-basics"></a>Dynamiczne maskowanie danych — podstawy
 
 Aby skonfigurować zasady dynamicznego maskowania danych w Azure Portal, należy wybrać operację dynamicznego maskowania danych w bloku SQL Database lub ustawień konfiguracji.
 
@@ -42,15 +42,15 @@ Dynamiczne maskowanie danych można skonfigurować za pomocą ról Administrator
 
 | Funkcja maskowania | Maskowanie logiki |
 | --- | --- |
-| **Domyślne** |**Pełne maskowanie według typów danych określonych pól**<br/><br/>• Użyj XXXX lub mniejszej wartości XS, jeśli rozmiar pola jest krótszy niż 4 znaki dla typów danych ciągu (nchar, ntext, nvarchar).<br/>• Użyj wartości zerowej dla liczbowych typów danych (bigint, bit, decimal, int, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Użyj 01-01-1900 dla typów danych Data/godzina (Date, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• Dla wariantu SQL, używana jest wartość domyślna bieżącego typu.<br/>• W przypadku kodu XML \<jest używany dokument zamaskowany/>.<br/>• Użyj pustej wartości dla specjalnych typów danych (tabela znaczników czasu, hierarchyid, GUID, Binary, Image, typy przestrzenne varbinary). |
+| **Domyślne** |**Pełne maskowanie według typów danych określonych pól**<br/><br/>• Użyj XXXX lub mniejszej wartości XS, jeśli rozmiar pola jest krótszy niż 4 znaki dla typów danych ciągu (nchar, ntext, nvarchar).<br/>• Użyj wartości zerowej dla liczbowych typów danych (bigint, bit, decimal, int, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Użyj 01-01-1900 dla typów danych Data/godzina (Date, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• Dla wariantu SQL, używana jest wartość domyślna bieżącego typu.<br/>• Dla pliku XML jest używany dokument \<masked/>.<br/>• Użyj pustej wartości dla specjalnych typów danych (tabela znaczników czasu, hierarchyid, GUID, Binary, Image, typy przestrzenne varbinary). |
 | **Karta kredytowa** |**Metoda maskowania, która ujawnia cztery ostatnie cyfry wydzielonych pól** i dodaje stały ciąg jako prefiks w postaci karty kredytowej.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **Wiadomość e-mail** |**Metoda maskowania, która uwidacznia pierwszą literę i zastępuje domenę xxx.com** przy użyciu stałego prefiksu ciągu w postaci adresu e-mail.<br/><br/>aXX@XXXX.com |
-| **Liczba losowa** |**Metoda maskowania, która generuje liczbę losową** zgodnie z wybranymi granicami i rzeczywistymi typami danych. Jeśli wyznaczono granice są równe, funkcja maskowania jest liczbą stałą.<br/><br/>![Okienko nawigacji](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
-| **Tekst niestandardowy** |**Metoda maskowania, która uwidacznia pierwsze i ostatnie znaki** i dodaje niestandardowy ciąg uzupełniania w środku. Jeśli oryginalny ciąg jest krótszy niż uwidoczniony prefiks i sufiks, zostanie użyty tylko ciąg uzupełniający. <br/>prefix[padding]suffix<br/><br/>![Okienko nawigacji](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
+| **Liczba losowa** |**Metoda maskowania, która generuje liczbę losową** zgodnie z wybranymi granicami i rzeczywistymi typami danych. Jeśli wyznaczono granice są równe, funkcja maskowania jest liczbą stałą.<br/><br/>@no__t — okienko 0Navigation @ no__t-1 |
+| **Tekst niestandardowy** |**Metoda maskowania, która uwidacznia pierwsze i ostatnie znaki** i dodaje niestandardowy ciąg uzupełniania w środku. Jeśli oryginalny ciąg jest krótszy niż uwidoczniony prefiks i sufiks, zostanie użyty tylko ciąg uzupełniający. <br/>prefiks [dopełnienie] sufiks<br/><br/>@no__t — okienko 0Navigation @ no__t-1 |
 
 <a name="Anchor1"></a>
 
-### <a name="recommended-fields-to-mask"></a>Zalecane pola do zamaskowania
+### <a name="recommended-fields-to-mask"></a>Zalecane pola do maskowania
 
 Aparat zaleceń DDM, który flaguje niektóre pola z bazy danych jako potencjalnie poufne pola, które mogą być dobrymi kandydatami do maskowania. W bloku Dynamiczne maskowanie danych w portalu zostaną wyświetlone zalecane kolumny dla bazy danych. Wystarczy kliknąć pozycję **Dodaj maskę** dla jednej lub większej liczby kolumn, a następnie **zapisać** , aby zastosować maskę dla tych pól.
 

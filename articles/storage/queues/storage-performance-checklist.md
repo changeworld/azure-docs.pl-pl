@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 02196a4df71bef767f8d1921f704907ad06e77b4
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 8ab4cb6b06f0f023a8f6368dac633a97afe29fd4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311160"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390027"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Lista kontrolna wydajności i skalowalności usługi queue storage
 
@@ -55,7 +55,7 @@ Aby uzyskać więcej informacji dotyczących skalowalności usługa kolejki, zob
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maksymalna liczba kont magazynu
 
-Jeśli zbliżasz się do maksymalnej liczby kont magazynu dozwolonych dla danej kombinacji subskrypcji/regionu, używasz wielu kont magazynu do fragmentu w celu zwiększenia ruchu przychodzącego, wychodzącego, operacji we/wy na sekundę (IOPS) lub pojemności? W tym scenariuszu firma Microsoft zaleca użycie zwiększonych limitów dla kont magazynu w warstwie Standardowa, aby zmniejszyć liczbę kont magazynu wymaganych do obciążenia, jeśli jest to możliwe. Skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/options/) , aby zażądać zwiększonych limitów dla konta magazynu. Aby uzyskać więcej informacji, zobacz temat [ogłaszanie większych kont magazynu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)o większej skali.
+Jeśli zbliżasz się do maksymalnej liczby kont magazynu dozwolonych dla danej kombinacji subskrypcji/regionu, używasz wielu kont magazynu do fragmentu w celu zwiększenia ruchu przychodzącego, wychodzącego, operacji we/wy na sekundę (IOPS) lub pojemności? W tym scenariuszu firma Microsoft zaleca użycie zwiększonych limitów dla kont magazynu w celu zmniejszenia liczby kont magazynu wymaganych do obciążenia, jeśli jest to możliwe. Skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/options/) , aby zażądać zwiększonych limitów dla konta magazynu. Aby uzyskać więcej informacji, zobacz temat [ogłaszanie większych kont magazynu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)o większej skali.
 
 ### <a name="capacity-and-transaction-targets"></a>Pojemność i cele transakcji
 
@@ -195,6 +195,4 @@ Użyj kolejek, aby zapewnić skalowalność architektury aplikacji. Poniżej wym
 ## <a name="next-steps"></a>Następne kroki
 
 - [Cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-- [Lista kontrolna wydajności i skalowalności usługi BLOB Storage](../blobs/storage-performance-checklist.md)
-- [Lista kontrolna wydajności i skalowalności dla usługi Table Storage](../tables/storage-performance-checklist.md)
 - [Kody stanu i błędów](/rest/api/storageservices/Status-and-Error-Codes2)

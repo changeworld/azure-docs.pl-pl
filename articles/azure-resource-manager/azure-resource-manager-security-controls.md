@@ -1,6 +1,6 @@
 ---
 title: Kontrolki zabezpieczeń dla Azure Resource Manager
-description: Lista kontrolna kontroli zabezpieczeń dla oceny Azure Resource Manager
+description: Lista kontrolna wbudowanych mechanizmów zabezpieczeń do oceny usługi Azure Resource Manager.
 services: azure-resource-manager
 author: msmbaldwin
 manager: rkarlin
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97fd6611d7e2a2787b865365c4c7579f89f17d01
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 78f3f41ca2f0aa45d295fd9846cf3aa96cccea72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886386"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390464"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Kontrolki zabezpieczeń dla Azure Resource Manager
 
@@ -25,7 +25,7 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w Azure Resource Manage
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: Klucze zarządzane przez firmę Microsoft | Tak |  |
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | Tak |  |
 | Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | HTTPS/TLS. |
 | Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | ND | Azure Resource Manager nie przechowuje zawartości klienta, tylko kontrolują dane. |
 | Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| Tak | |
@@ -52,8 +52,8 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w Azure Resource Manage
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| Tak | Na podstawie [Azure Active Directory](/azure/active-directory) .|
-| Authorization| Tak | |
+| Uwierzytelnianie| Tak | Na podstawie [Azure Active Directory](/azure/active-directory) .|
+| Autoryzacja| Tak | |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 

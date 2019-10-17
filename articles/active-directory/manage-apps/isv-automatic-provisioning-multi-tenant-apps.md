@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: c44006b20f4c0ef186f406e554ff555cda0c1dd8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 119c46ac2d1d34d86a6bfb9f75384f262f89219b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373392"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429453"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Włącz automatyczne Inicjowanie obsługi administracyjnej użytkowników dla aplikacji wielodostępnej
 
@@ -81,7 +81,7 @@ Aby ułatwić określenie opcji integracji, która ma być używana dla aplikacj
 
 ## <a name="azure-ad-provisioning-service-scim"></a>Usługa Azure AD Provisioning (standard scim)
 
-Usługi Azure AD Provisioning korzystają z protokołu [Standard scim] (https://aka.ms/SCIMOverview, który jest obsługiwany przez wielu dostawców tożsamości (dostawców tożsamości). Zalecamy użycie usługi Azure AD Provisioning w celu obsługi dostawców tożsamości oprócz usługi Azure AD, ponieważ wszelkie dostawcy tożsamości zgodne z standard scim mogą łączyć się z punktem końcowym Standard scim.
+Usługi Azure AD Provisioning wykorzystują [Standard scim](https://aka.ms/SCIMOverview), branżowe standardy do aprowizacji obsługiwane przez wielu dostawców tożsamości (dostawców tożsamości), a także aplikacje (np. zapasy, usługa g Suite, Dropbox). Zalecamy użycie usługi Azure AD Provisioning w celu obsługi dostawców tożsamości oprócz usługi Azure AD, ponieważ wszelkie dostawcy tożsamości zgodne z standard scim mogą łączyć się z punktem końcowym Standard scim. Kompilowanie prostego punktu końcowego/User umożliwia obsługę administracyjną bez konieczności obsługi własnego aparatu synchronizacji. 
 
 Aby uzyskać więcej informacji o tym, jak użytkownicy usługi Azure AD Provisioning Standard scim, zobacz: 
 
@@ -106,16 +106,6 @@ Dowiedz się więcej o korzystaniu z Microsoft Graph do aprowizacji:
 * [Omówienie uwierzytelniania Microsoft Graph](https://docs.microsoft.com/graph/auth/)
 
 * [Wprowadzenie do Microsoft Graph](https://developer.microsoft.com/graph/get-started)
-
-* [Korzystanie z interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/use-the-api)
-
-* [Eksplorator Microsoft Graph](https://aka.ms/ge) 
-
-* [Informacje o uprawnieniach Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference)
-
-* [Najlepsze rozwiązania dotyczące pracy z Microsoft Graph](https://docs.microsoft.com/graph/best-practices-concept)
-
-* [Polecane scenariusze dotyczące Microsoft Graph](https://developer.microsoft.com/graph/examples)
 
 ## <a name="using-saml-jit-for-provisioning"></a>Korzystanie z protokołu SAML JIT do aprowizacji
 

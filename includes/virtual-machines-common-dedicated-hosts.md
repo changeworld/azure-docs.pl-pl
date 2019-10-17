@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266861"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390543"
 ---
 ## <a name="benefits"></a>Korzyści 
 
@@ -42,7 +42,7 @@ Aby zapewnić wysoką dostępność, należy wdrożyć wiele maszyn wirtualnych,
 
 ### <a name="use-availability-zones-for-fault-isolation"></a>Użyj Strefy dostępności na potrzeby izolacji błędów
 
-Strefy dostępności są unikatowymi lokalizacjami fizycznymi w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. Grupa hostów jest tworzona w jednej strefie dostępności. Po utworzeniu wszystkie hosty zostaną umieszczone w tej strefie. Aby zapewnić wysoką dostępność w różnych strefach, należy utworzyć wiele grup hostów (jednej na strefę) i odpowiednio rozmieścić hosty.
+Strefy dostępności są unikatowymi lokalizacjami fizycznymi w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jednego centrum danych wyposażonego w niezależne zasilanie, chłodzenie i sieć. Grupa hostów jest tworzona w jednej strefie dostępności. Po utworzeniu wszystkie hosty zostaną umieszczone w tej strefie. Aby zapewnić wysoką dostępność w różnych strefach, należy utworzyć wiele grup hostów (jednej na strefę) i odpowiednio rozmieścić hosty.
 
 Jeśli grupa hostów zostanie przypisana do strefy dostępności, wszystkie maszyny wirtualne utworzone na tym hoście muszą zostać utworzone w tej samej strefie.
 
@@ -71,7 +71,7 @@ Infrastruktura obsługująca maszyny wirtualne może być czasami aktualizowana 
 > [!NOTE]
 >  Kontrola konserwacji jest obecnie w ograniczonym etapie wersji zapoznawczej i wymaga procesu dołączania. Zastosuj do tej wersji zapoznawczej, przesyłając [ankietę nominacji](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u).
 
-## <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
+## <a name="capacity-considerations"></a>Zagadnienia dotyczące pojemności
 
 Po aprowizacji dedykowanego hosta platforma Azure przypisze ją do serwera fizycznego. Gwarantuje to dostępność pojemności, gdy trzeba zainicjować obsługę administracyjną maszyny wirtualnej. Platforma Azure używa całej pojemności w regionie (lub strefie), aby wybrać serwer fizyczny dla hosta. Oznacza to również, że klienci mogą być w stanie rozwijać dedykowane hosty bez obaw o wykorzystaniu miejsca w klastrze.
 
@@ -82,6 +82,8 @@ Obowiązuje domyślny limit przydziału 3000 procesorów wirtualnych vCPU dla de
 ![Zrzut ekranu strony użycie i przydziały w portalu](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
 Aby uzyskać więcej informacji, zobacz [przydziały maszyn wirtualnych vCPU](/azure/virtual-machines/windows/quotas).
+
+Bezpłatna wersja próbna i subskrypcje MSDN nie mają przydziału dla dedykowanych hostów platformy Azure.
 
 ## <a name="pricing"></a>Cennik
 
@@ -97,11 +99,11 @@ Aby uzyskać więcej informacji, zobacz [Cennik dedykowanego hosta platformy Azu
 
 Jednostka SKU jest definiowana dla hosta i reprezentuje serię i typ rozmiaru maszyny wirtualnej. Można mieszać wiele maszyn wirtualnych o różnych rozmiarach w ramach jednego hosta, o ile mają one taką samą serię rozmiarów. Typ to generacja sprzętowa aktualnie dostępna w regionie.
 
-Różne `types` dla tej samej serii maszyn wirtualnych będą należeć od różnych dostawców procesora CPU i mają różne generacji procesora CPU oraz liczbę rdzeni.
+Różne `types` dla tej samej serii maszyn wirtualnych będą należeć od różnych dostawców procesora i mają różne generacji procesora CPU oraz liczbę rdzeni.
 
 Więcej informacji można znaleźć na [stronie cennika](https://aka.ms/ADHPricing) hosta.
 
-W ramach wersji zapoznawczej będziemy obsługiwać następujące SKU\types hosta:  DSv3_Type1 i ESv3_Type1
+W ramach wersji zapoznawczej będziemy obsługiwać następujące SKU\types hosta: DSv3_Type1 i ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>Cykl życia hosta
@@ -113,6 +115,6 @@ Platforma Azure monitoruje stan kondycji hostów i zarządza nim. Podczas wykony
 |----------|----------------|
 | Dostępne hosty     | Nie ma żadnych znanych problemów z hostem.   |
 | Host objęty badaniem  | Mamy problemy z hostem, do którego chcemy. Jest to stan przejściowy wymagany przez platformę Azure do wypróbowania i zidentyfikowania zakresu oraz głównej przyczyny zidentyfikowanego problemu. Może to mieć wpływ na maszyny wirtualne działające na hoście. |
-| Host oczekujący na cofnięcie alokacji   | Platforma Azure nie może przywrócić kondycji hosta z powrotem do stanu prawidłowego i poprosił o ponowne wdrożenie maszyn wirtualnych poza tym hostem. Jeśli `autoReplaceOnFailure` ta funkcja jest włączona, Twoje maszyny *wirtualne są w* dobrej kondycji. W przeciwnym razie maszyna wirtualna może działać na hoście, który kończy się niepowodzeniem.|
+| Host oczekujący na cofnięcie alokacji   | Platforma Azure nie może przywrócić kondycji hosta z powrotem do stanu prawidłowego i poprosił o ponowne wdrożenie maszyn wirtualnych poza tym hostem. Jeśli `autoReplaceOnFailure` jest włączona, Twoje maszyny wirtualne są *usługą zaleczoną* do zdrowego sprzętu. W przeciwnym razie maszyna wirtualna może działać na hoście, który kończy się niepowodzeniem.|
 | Cofnięto przydział hosta  | Wszystkie maszyny wirtualne zostały usunięte z hosta. Nie są już naliczane opłaty za tego hosta, ponieważ sprzęt nie został przetworzony.   |
 

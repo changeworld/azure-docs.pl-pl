@@ -10,17 +10,64 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/7/2019
+ms.date: 10/15/2019
 ms.author: raiye
-ms.openlocfilehash: 736cb30942646788ee6f365f67244d27f1aa0316
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b4150858986f204723dc258b23daf22de5d39842
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035181"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430169"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Response Center (MSRC) zastosowane do systemu operacyjnego gościa platformy Azure. Przeszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczy systemu operacyjnego gościa, którego używasz. Aktualizacje są zawsze przenoszone dla określonej [rodziny][family-explain] , w której zostały wprowadzone.
+
+## <a name="october-2019-guest-os"></a>System operacyjny gościa 2019 października
+
+>[!NOTE]
+>System operacyjny gościa w październiku jest obecnie wdrażany na maszynach wirtualnych usługi w chmurze skonfigurowanych do aktualizacji automatycznych. Po zakończeniu wprowadzania ta wersja zostanie udostępniona do ręcznego aktualizowania za pomocą plików Azure Portal i konfiguracji. W systemie operacyjnym gościa z października uwzględniono następujące poprawki. Ta lista może ulec zmianie.
+
+| Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
+| --- | --- | --- | --- | --- |
+|  Rel 19-10   |  [4520003]  |  Zabezpieczenia systemu Windows   |  2,91  |  8 października 2019  |
+|  Rel 19-10   |  [4519985]  |  Zabezpieczenia systemu Windows   |  3,78  |  8 października 2019  |
+|  Rel 19-10   |  [4519990]  |  Zabezpieczenia systemu Windows   |  4,71  |  8 października 2019  |
+|  Rel 19-10   |  [4519998]  |  Najnowsza aktualizacja zbiorcza   |  5,36  |  8 października 2019  |
+|  Rel 19-10   |  [4519338]  |  Najnowsza aktualizacja zbiorcza   |  6,12  |  8 października 2019  |
+|  Rel 19-10   |  [4519974]  |  Internet Explorer   |  2,91, 3,78, 4,71  |  8 października 2019  |
+|  Rel 19-10   |  [4516065]  |  Niezwiązane z zabezpieczeniami   |  2,91  |  Września 10, 2019  |
+|  Rel 19-10   |  [4516655]  |  SSU   |  2,91  |  Września 10, 2019  |
+|  Rel 19-10   |  [4516055]  |  Niezwiązane z zabezpieczeniami   |  3,78  |  Września 10, 2019  |
+|  Rel 19-10   |  [4512939]  |  SSU   |  3,78  |  Września 10, 2019  |
+|  Rel 19-10   |  [4514370]  |  .NET Framework 3,5   |  3,78  |  Września 10, 2019  |
+|  Rel 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  3,78  |  Września 10, 2019  |
+|  Rel 19-10   |  [4516067]  |  Bez zabezpieczeń   |  4,71  |  Września 10, 2019  |
+|  Rel 19-10   |  [4512938]  |  SSU   |  4,71  |  Września 10, 2019  |
+|  Rel 19-10   |  [4514371]  |  .NET Framework 3,5   |  4,71  |  Września 10, 2019  |
+|  Rel 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  4,71  |  Września 10, 2019  |
+|  Rel 19-10   |  [4512574]  |  SSU   |  5,36  |  Września 10, 2019  |
+|  Rel 19-10   |  [4512577]  |  SSU   |  6,12  |  Września 10, 2019  |
+
+[4520003]: https://support.microsoft.com/kb/4520003
+[4519985]: https://support.microsoft.com/kb/4519985
+[4519990]: https://support.microsoft.com/kb/4519990
+[4519998]: https://support.microsoft.com/kb/4519998
+[4519338]: https://support.microsoft.com/kb/4519338
+[4519974]: https://support.microsoft.com/kb/4519974
+[4516065]: https://support.microsoft.com/kb/4516065
+[4516655]: https://support.microsoft.com/kb/4516655
+[4516055]: https://support.microsoft.com/kb/4516055
+[4512939]: https://support.microsoft.com/kb/4512939
+[4514370]: https://support.microsoft.com/kb/4514370
+[4514368]: https://support.microsoft.com/kb/4514368
+[4516067]: https://support.microsoft.com/kb/4516067
+[4512938]: https://support.microsoft.com/kb/4512938
+[4514371]: https://support.microsoft.com/kb/4514371
+[4514367]: https://support.microsoft.com/kb/4514367
+[4512574]: https://support.microsoft.com/kb/4512574
+[4512577]: https://support.microsoft.com/kb/4512577
+
+
 
 ## <a name="september-2019-guest-os"></a>System operacyjny gościa z września 2019
 

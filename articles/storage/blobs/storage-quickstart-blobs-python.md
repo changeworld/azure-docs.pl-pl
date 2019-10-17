@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: f5be8d5fd452953f447bbc8b08a852c1f8da94a0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331815"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430156"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu języka Python
+# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Szybki Start: przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB w usłudze Azure Blob Storage za pomocą języka Python
 
 W tym artykule opisano użycie języka Python do przekazywania, pobierania i wyświetlania listy blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage. Obiekty blob są po prostu obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Obiekty blob w usłudze Azure Storage różnią się od udziałów plików, tabel bez schematu i kolejek komunikatów.  Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](/azure/storage/common/storage-introduction).
 

@@ -1,32 +1,32 @@
 ---
-title: Błędy nie znaleziono zasobów platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób naprawić błędy, gdy nie można odnaleźć zasobu.
+title: Błędy nie znaleziono zasobu platformy Azure | Microsoft Docs
+description: Opisuje sposób rozwiązywania błędów, gdy nie można znaleźć zasobu podczas wdrażania przy użyciu szablonu Azure Resource Manager.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9c999a70ffdbed0c954cfc960b5febdaff06e4ae
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4db50bbb3073fe98599923843e6afdded3a8ca62
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206182"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390275"
 ---
-# <a name="resolve-not-found-errors-for-azure-resources"></a>Rozwiąż błędy nie znaleziono zasobów platformy Azure
+# <a name="resolve-not-found-errors-for-azure-resources"></a>Nie znaleziono błędów dla zasobów platformy Azure
 
-W tym artykule opisano błędów, może zostać wyświetlony, gdy podczas wdrażania, w którym nie można odnaleźć zasobu.
+W tym artykule opisano błędy, które mogą pojawić się, gdy nie można znaleźć zasobu podczas wdrażania.
 
 ## <a name="symptom"></a>Objaw
 
-Szablon zawiera nazwę zasobu, którego nie można rozwiązać, pojawi się błąd podobny do:
+Jeśli szablon zawiera nazwę zasobu, którego nie można rozpoznać, zostanie wyświetlony komunikat o błędzie podobny do:
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Jeśli używasz [odwołania](resource-group-template-functions-resource.md#reference) lub [listKeys](resource-group-template-functions-resource.md#listkeys) funkcje z zasobem, którego nie można rozpoznać, zostanie wyświetlony następujący błąd:
+Jeśli używasz funkcji [Reference](resource-group-template-functions-resource.md#reference) lub [listKeys](resource-group-template-functions-resource.md#listkeys) z zasobem, którego nie można rozpoznać, zostanie wyświetlony następujący błąd:
 
 ```
 Code=ResourceNotFound;
@@ -36,11 +36,11 @@ group {resource group name} was not found.
 
 ## <a name="cause"></a>Przyczyna
 
-Menedżer zasobów musi pobrać właściwości zasobu, ale nie może zidentyfikować zasobów w ramach subskrypcji.
+Menedżer zasobów musi pobrać właściwości dla zasobu, ale nie może zidentyfikować zasobu w subskrypcji.
 
-## <a name="solution-1---set-dependencies"></a>Rozwiązanie 1 - zależności zestawu
+## <a name="solution-1---set-dependencies"></a>Rozwiązanie 1 — Ustawianie zależności
 
-Jeśli próbujesz wdrożyć brakuje zasobu w szablonie, sprawdź, czy należy dodać zależność. Menedżer zasobów optymalizuje wdrożenia, tworzenia zasobów w sposób równoległy, jeśli jest to możliwe. Jeśli jeden zasób należy wdrożyć po inny zasób, należy użyć **dependsOn** elementu w szablonie. Na przykład w przypadku wdrażania aplikacji sieci web, musi istnieć plan usługi App Service. Jeśli nie określono, że aplikacja sieci web zależy od planu usługi App Service, Menedżer zasobów tworzy oba zasoby w tym samym czasie. Otrzymasz komunikat o błędzie informujący, że usługi App Service, nie można odnaleźć zasobu planu, ponieważ nie istnieje jeszcze podczas próby ustawienia właściwości w aplikacji sieci web. Możesz uniknąć tego błędu, ustawiając zależność w aplikacji sieci web.
+Jeśli próbujesz wdrożyć brakujący zasób w szablonie, sprawdź, czy musisz dodać zależność. Menedżer zasobów optymalizuje wdrożenie przez tworzenie zasobów równolegle, gdy jest to możliwe. Jeśli jeden zasób musi zostać wdrożony po innym zasobie, należy użyć elementu **dependsOn** w szablonie. Na przykład podczas wdrażania aplikacji sieci Web plan App Service musi istnieć. Jeśli nie określono, że aplikacja sieci Web zależy od planu App Service, Menedżer zasobów tworzy jednocześnie oba zasoby. Zostanie wyświetlony komunikat o błędzie informujący o tym, że nie można odnaleźć zasobu planu App Service, ponieważ nie istnieje on jeszcze podczas próby ustawienia właściwości aplikacji sieci Web. Ten błąd można uniknąć, ustawiając zależność w aplikacji sieci Web.
 
 ```json
 {
@@ -53,29 +53,29 @@ Jeśli próbujesz wdrożyć brakuje zasobu w szablonie, sprawdź, czy należy do
 }
 ```
 
-Jednak aby uniknąć zależności, które nie są wymagane ustawienia. W przypadku zależności niepotrzebne można przedłużyć czas wdrażania poprzez uniemożliwienie zasoby, które są wzajemnie zależne od wdrożenia równoległego. Ponadto możesz utworzyć zależności cykliczne, które blokują wdrożenia. [Odwołania](resource-group-template-functions-resource.md#reference) funkcji i [listy *](resource-group-template-functions-resource.md#list) funkcji tworzy zależność niejawne na przywoływany zasób, gdy ten zasób został wdrożony w tym samym szablonie odwołuje się do jego nazwę (nie identyfikator zasobu ). W związku z tym, może mieć więcej zależności, niż określa zależności **dependsOn** właściwości. [ResourceId](resource-group-template-functions-resource.md#resourceid) funkcji nie tworzenie niejawne zależności lub zweryfikować, że zasób istnieje. [Odwołania](resource-group-template-functions-resource.md#reference) funkcji i [listy *](resource-group-template-functions-resource.md#list) funkcji nie twórz niejawne zależności, gdy zasób jest określany przez jego identyfikator zasobu. Aby utworzyć zależność niejawne, należy przekazać nazwę zasobu, który jest wdrożony w tym samym szablonie.
+Jednak chcesz uniknąć ustawiania zależności, które nie są potrzebne. W przypadku niepotrzebnych zależności można przedłużyć czas trwania wdrożenia, zapobiegając niezależnym zasobom, które nie są od siebie wzajemnie wdrażane. Ponadto można utworzyć zależności cykliczne, które blokują wdrożenie. Funkcja [Reference](resource-group-template-functions-resource.md#reference) i [list *](resource-group-template-functions-resource.md#list) Functions tworzy niejawną zależność od zasobu, do którego istnieje odwołanie, gdy ten zasób jest wdrażany w tym samym szablonie i jest przywoływany przez jego nazwę (nie identyfikator zasobu). W związku z tym może być większa zależność od zależności określonych we właściwości **dependsOn** . Funkcja [ResourceID](resource-group-template-functions-resource.md#resourceid) nie tworzy zależności niejawnej lub sprawdza, czy zasób istnieje. Funkcja [Reference](resource-group-template-functions-resource.md#reference) i [Lista *](resource-group-template-functions-resource.md#list) Functions nie tworzą niejawnej zależności, gdy zasób jest określany przez jego identyfikator zasobu. Aby utworzyć zależność niejawną, należy przekazać nazwę zasobu wdrożonego w tym samym szablonie.
 
-Gdy pojawi się problemy z zależnościami, musisz uzyskać wgląd w kolejności wdrażania zasobów. Aby wyświetlić kolejność operacji wdrażania:
+Gdy widzisz problemy z zależnościami, musisz uzyskać wgląd w kolejność wdrażania zasobów. Aby wyświetlić kolejność operacji wdrażania:
 
-1. Wybierz historię wdrożenia grupy zasobów.
+1. Wybierz historię wdrożenia dla grupy zasobów.
 
-   ![Wybierz pozycję Historia wdrażania](./media/resource-manager-not-found-errors/select-deployment.png)
+   ![Wybierz historię wdrożenia](./media/resource-manager-not-found-errors/select-deployment.png)
 
 2. Wybierz wdrożenie z historii, a następnie wybierz pozycję **zdarzenia**.
 
-   ![Wybierz zdarzenia wdrożenia](./media/resource-manager-not-found-errors/select-deployment-events.png)
+   ![Wybieranie zdarzeń wdrożenia](./media/resource-manager-not-found-errors/select-deployment-events.png)
 
-3. Sprawdź kolejność zdarzeń dla każdego zasobu. Należy zwrócić uwagę na stan każdej operacji. Na przykład na poniższej ilustracji przedstawiono trzy konta magazynu, które wdrożone równolegle. Należy zauważyć, że trzy konta magazynu są uruchamiane w tym samym czasie.
+3. Sprawdzanie sekwencji zdarzeń dla każdego zasobu. Zwróć uwagę na stan każdej operacji. Na przykład na poniższej ilustracji przedstawiono trzy konta magazynu, które zostały wdrożone równolegle. Należy zauważyć, że trzy konta magazynu są uruchamiane w tym samym czasie.
 
    ![wdrożenie równoległe](./media/resource-manager-not-found-errors/deployment-events-parallel.png)
 
-   Na następnej ilustracji przedstawiono trzy konta magazynu, które nie są wdrażane w sposób równoległy. Drugie konto magazynu jest zależny od pierwszego konta magazynu, a trzeci konta magazynu zależy od drugiego konta magazynu. Pierwsze konto magazynu jest pracę, zaakceptowane i ukończone przed rozpoczęciem następnego.
+   Następny obraz przedstawia trzy konta magazynu, które nie są wdrażane równolegle. Drugie konto magazynu zależy od pierwszego konta magazynu, a trzecie konto magazynu zależy od drugiego konta magazynu. Pierwsze konto magazynu zostało uruchomione, zaakceptowane i ukończone przed rozpoczęciem następnego.
 
-   ![kolejne wdrożenia](./media/resource-manager-not-found-errors/deployment-events-sequence.png)
+   ![wdrożenie sekwencyjne](./media/resource-manager-not-found-errors/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>Rozwiązanie 2 — pobieranie zasobów z innej grupy zasobów
+## <a name="solution-2---get-resource-from-different-resource-group"></a>Rozwiązanie 2 — Pobieranie zasobu z innej grupy zasobów
 
-Jeśli zasób istnieje w grupie zasobów innej niż wdrożenie, użyj [funkcja resourceId](resource-group-template-functions-resource.md#resourceid) można pobrać w pełni kwalifikowana nazwa zasobu.
+Gdy zasób istnieje w innej grupie zasobów niż ta, w której jest wdrażana, użyj [funkcji ResourceID](resource-group-template-functions-resource.md#resourceid) , aby uzyskać w pełni kwalifikowaną nazwę zasobu.
 
 ```json
 "properties": {
@@ -84,9 +84,9 @@ Jeśli zasób istnieje w grupie zasobów innej niż wdrożenie, użyj [funkcja r
 }
 ```
 
-## <a name="solution-3---check-reference-function"></a>Rozwiązanie 3 - wyboru odwołanie funkcji
+## <a name="solution-3---check-reference-function"></a>Rozwiązanie 3 — sprawdzanie funkcji referencyjnej
 
-Wyszukaj wyrażenie zawierające [odwołania](resource-group-template-functions-resource.md#reference) funkcji. Wartości, których udzielasz różnią się zależnie od tego, czy zasób jest w szablonie, grupy zasobów i subskrypcji. Sprawdź, czy udostępniasz wartości wymaganego parametru dla danego scenariusza. Jeśli zasób jest w innej grupie zasobów, należy podać identyfikator zasobu pełne. Na przykład aby odwoływać się do konta magazynu w innej grupie zasobów, należy użyć:
+Wyszukaj wyrażenie zawierające funkcję [Reference](resource-group-template-functions-resource.md#reference) . Wartości, które można określić, różnią się w zależności od tego, czy zasób znajduje się w tym samym szablonie, grupie zasobów i subskrypcji. Sprawdź dokładnie, czy podajesz wymagane wartości parametrów dla danego scenariusza. Jeśli zasób znajduje się w innej grupie zasobów, podaj pełny identyfikator zasobu. Na przykład, aby odwołać się do konta magazynu w innej grupie zasobów, należy użyć:
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"

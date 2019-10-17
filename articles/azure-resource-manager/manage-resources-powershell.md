@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie zasobami platformy Azure przy użyciu Azure PowerShell | Microsoft Docs
-description: Zarządzanie zasobami przy użyciu Azure PowerShell i zarządzania zasobami platformy Azure.
+description: Użyj Azure PowerShell i Azure Resource Manager do zarządzania zasobami. Pokazuje, jak wdrażać i usuwać zasoby.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: f61fcf7833021f23485992c7445f91d9a7b9ee45
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: aa215555fdd39e9d756d5fc925282b1eaffc9ebf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001521"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390364"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Zarządzanie zasobami platformy Azure przy użyciu Azure PowerShell
 
@@ -94,9 +94,9 @@ $storageAccount = Get-AzResource -ResourceGroupName $srcResourceGroupName -Resou
 Move-AzResource -DestinationResourceGroupName $destResourceGroupName -ResourceId $storageAccount.ResourceId
 ```
 
-Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).
+Aby uzyskać więcej informacji, zobacz [Move resources to new resource group or subscription](resource-group-move-resources.md) (Przenoszenie zasobów do nowej grupy lub subskrypcji).
 
-## <a name="lock-resources"></a>Zablokuj zasoby
+## <a name="lock-resources"></a>Blokowanie zasobów
 
 Blokowanie uniemożliwia innym użytkownikom w organizacji przypadkowe usuwanie lub modyfikowanie krytycznych zasobów, takich jak subskrypcja platformy Azure, Grupa zasobów lub zasób. 
 
@@ -128,15 +128,15 @@ $lockId = (Get-AzResourceLock -ResourceGroupName $resourceGroupName -ResourceNam
 Remove-AzResourceLock -LockId $lockId
 ```
 
-Aby uzyskać więcej informacji, zobacz [blokowanie zasobów przy użyciu Azure Resource Manager](resource-group-lock-resources.md).
+Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 
-## <a name="tag-resources"></a>Dodawanie tagów do zasobów
+## <a name="tag-resources"></a>Tagowanie zasobów
 
 Tagowanie pomaga w logicznym organizowaniu grupy zasobów i zasobów. Aby uzyskać więcej informacji, zobacz [Używanie tagów do organizowania zasobów platformy Azure](./resource-group-using-tags.md#powershell).
 
 ## <a name="manage-access-to-resources"></a>Zarządzanie dostępem do zasobów
 
-[Kontrola dostępu oparta na rolach (RBAC)](../role-based-access-control/overview.md) umożliwia zarządzanie dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](../role-based-access-control/overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

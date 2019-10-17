@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6edbd21eaf6f0a6f4f07263e006cc31fb1529511
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877840"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430710"
 ---
-# <a name="what-is-vmware-solution-on-azure-by-cloudsimple"></a>Co to jest rozwiązanie VMware na platformie Azure według CloudSimple
+# <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>Co to jest rozwiązanie Azure VMware według CloudSimple
 
-**Rozwiązanie VMware na platformie Azure według CloudSimple** to w pełni zarządzana usługa, która pozwala na uruchamianie platformy VMware na platformie Azure. To rozwiązanie zawiera vSphere, vCenter, sieci vSAN, NSX-T i odpowiadające im narzędzia. Środowisko oprogramowania VMware działa natywnie w infrastrukturze platformy Azure bez systemu operacyjnego w lokalizacjach w chmurze platformy Azure. Usługa obejmuje wszystkie funkcje wymagane do wydajnego i bezpiecznego korzystania z platform VMware.
+**Rozwiązanie Azure VMware CloudSimple** to w pełni zarządzana usługa, która pozwala na uruchamianie platformy VMware na platformie Azure. To rozwiązanie zawiera vSphere, vCenter, sieci vSAN, NSX-T i odpowiadające im narzędzia. Środowisko oprogramowania VMware działa natywnie w infrastrukturze platformy Azure bez systemu operacyjnego w lokalizacjach w chmurze platformy Azure. Usługa obejmuje wszystkie funkcje wymagane do wydajnego i bezpiecznego korzystania z platform VMware.
 
 ![Rozwiązanie VMware na platformie Azure według CloudSimple — Omówienie](media/azure-vmware-solution-by-cloudsimple.png)
 
@@ -38,9 +38,9 @@ ms.locfileid: "69877840"
 
 * **Ciągłość działania**. CloudSimple oferuje natywny dostęp do platform VMware. Architektura CloudSimple jest zgodna z istniejącymi:
     * Aplikacje
-    * Operacje
-    * Bezpieczeństwo
-    * Tworzenie kopii zapasowej
+    * Operations
+    * Zabezpieczenia
+    * Backup
     * Odzyskiwanie po awarii
     * Inspekcja
     * Narzędzia do oceny zgodności

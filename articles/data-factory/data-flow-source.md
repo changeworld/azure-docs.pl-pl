@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: aef9eaebc2da12e322ab6eda97385aa9cf14998a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029216"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387759"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Przekształcanie źródła na potrzeby mapowania przepływu danych 
 
@@ -39,7 +39,7 @@ Azure Data Factory ma dostęp do ponad 80 łączników natywnych. Aby dołączy�
 
 Po dodaniu źródła skonfiguruj go za pomocą karty **Ustawienia źródła** . W tym miejscu możesz wybrać lub utworzyć zestaw danych, do którego prowadzi punkty źródłowe. Możesz również wybrać opcje schematu i próbkowania dla danych.
 
-Karta ![Ustawienia źródła]karty(media/data-flow/source1.png "ustawienia źródłowe")
+![Karta Ustawienia źródła](media/data-flow/source1.png "Karta Ustawienia źródła")
 
 **Dryfowanie schematu:** [dryfowanie schematu](concepts-data-flow-schema-drift.md) to zdolność fabryki danych do natywnej obsługi elastycznych schematów w przepływach danych bez konieczności jawnego definiowania zmian w kolumnach.
 
@@ -62,7 +62,7 @@ Aby sprawdzić, czy źródło jest prawidłowo skonfigurowane, Włącz tryb debu
 
 Jeśli używasz zestawu danych opartego na plikach, takiego jak Azure Blob Storage lub Azure Data Lake Storage, karta **Opcje źródła** umożliwia zarządzanie sposobem odczytywania plików przez źródło.
 
-![](media/data-flow/sourceOPtions1.png "Opcje") źródła opcji źródła
+![Opcje źródła](media/data-flow/sourceOPtions1.png "Opcje źródła")
 
 **Ścieżka symboli wieloznacznych:** Użycie wzorca wieloznacznego spowoduje, że ADF będzie przełączać pętlę do każdego pasującego folderu i pliku w ramach pojedynczego przekształcenia źródła. Jest to efektywny sposób przetwarzania wielu plików w ramach pojedynczego przepływu. Dodaj wiele symboli wieloznacznych wzorców ze znakiem +, który pojawia się po umieszczeniu wskaźnika myszy na istniejącym wzorcu symboli wieloznacznych.
 
@@ -83,11 +83,11 @@ Przykłady symboli wieloznacznych:
 
 Najpierw ustaw symbol wieloznaczny, aby uwzględnić wszystkie ścieżki, które są folderami partycjonowanymi oraz pliki liści, które chcesz odczytać.
 
-(media/data-flow/partfile2.png "Ustawienie pliku partycji") ![ustawień plików źródłowych partycji]
+![Ustawienia pliku źródłowego partycji](media/data-flow/partfile2.png "Ustawienie pliku partycji")
 
 Użyj ustawienia ścieżka katalogu głównego partycji, aby określić, jaki jest najwyższy poziom struktury folderów. Gdy przeglądasz zawartość danych za pośrednictwem wersji zapoznawczej, zobaczysz, że na AUTOMATYCZNYm ekranie zostaną dodane rozpoznane partycje znalezione na każdym z poziomów folderów.
 
-![](media/data-flow/partfile1.png "Ścieżka katalogu głównego partycji") ścieżki głównej partycji
+![Ścieżka katalogu głównego partycji](media/data-flow/partfile1.png "Podgląd ścieżki katalogu głównego partycji")
 
 **Lista plików:** To jest zestaw plików. Utwórz plik tekstowy, który zawiera listę plików ścieżek względnych do przetworzenia. Wskaż ten plik tekstowy.
 
@@ -120,7 +120,7 @@ W takim przypadku wszystkie pliki, które zostały objęte usługą/Data/Sales, 
 
 Wszystkie ustawienia źródła można określić jako wyrażenia przy użyciu [języka wyrażenia przekształcenia przepływu danych mapowania](data-flow-expression-functions.md). Aby dodać zawartość dynamiczną, kliknij lub umieść kursor wewnątrz pól w panelu ustawień. Kliknij hiperlink, aby **dodać zawartość dynamiczną**. Spowoduje to uruchomienie konstruktora wyrażeń, w którym można ustawić wartości dynamicznie przy użyciu wyrażeń, statycznych wartości literałów lub parametrów.
 
-![Parametry parametrów](media/data-flow/params6.png "")
+![Parametry](media/data-flow/params6.png "Parametry")
 
 ## <a name="sql-source-options"></a>Opcje źródła SQL
 
@@ -139,13 +139,13 @@ Jeśli źródło jest w SQL Database lub SQL Data Warehouse, na karcie **Opcje �
 * Serializable
 * Brak (Ignoruj poziom izolacji)
 
-(media/data-flow/isolationlevel.png "Poziom izolacji") ![poziomu izolacji]
+![Poziom izolacji](media/data-flow/isolationlevel.png "Poziom izolacji")
 
 ## <a name="projection"></a>Projekcja
 
 Podobnie jak w przypadku schematów w zestawach danych, projekcja w źródle definiuje kolumny, typy i formaty dane z danych źródłowych. W przypadku większości typów zestawu danych, takich jak SQL i Parquet, projekcja w źródle jest stała, aby odzwierciedlała schemat zdefiniowany w zestawie danych. Jeśli pliki źródłowe nie są jednoznacznie wpisane (na przykład pliki w formacie Flat CSV, a nie pliki parquet), można zdefiniować typy danych dla każdego pola w transformacji źródłowej.
 
-![Ustawienia na](media/data-flow/source3.png "projekcji") karty projekcji
+![Ustawienia na karcie projekcja](media/data-flow/source3.png "Projekcja")
 
 Jeśli plik tekstowy nie ma zdefiniowanego schematu, wybierz pozycję **Wykryj typ danych** , aby Data Factory próbkować i wywnioskować typy danych. Wybierz opcję **Definiuj domyślny format** , aby automatycznie wykrywać domyślne formaty danych. 
 
@@ -155,7 +155,7 @@ Typy danych kolumny można modyfikować w transformacjach kolumn pochodnych w d�
 
 Na karcie **Optymalizacja** dla transformacji źródłowej może zostać wyświetlony typ partycji **źródłowej** . Ta opcja jest dostępna tylko wtedy, gdy źródło jest Azure SQL Database. Dzieje się tak, ponieważ Data Factory próbuje nawiązać połączenie równolegle, aby uruchamiać duże zapytania względem źródła SQL Database.
 
-(media/data-flow/sourcepart3.png "Partycjonowanie") ![ustawień partycji źródłowej]
+![Ustawienia partycji źródłowej](media/data-flow/sourcepart3.png "podziału")
 
 Nie ma potrzeby partycjonowania danych w źródle SQL Database, ale partycje są przydatne w przypadku dużych zapytań. Partycję można oprzeć na kolumnie lub zapytaniu.
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/11/2019
 ms.author: ramkris
-ms.openlocfilehash: 7d30b685d0debb0aeb0f79db8b078dcc165a8ca1
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 9da994550609b0be44362e0f0059844b288aabbd
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286671"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388061"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Biblioteka modułu wykonawczego platformy .NET: informacje o pobieraniu 
 
@@ -69,6 +69,10 @@ ms.locfileid: "72286671"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0 — wersja zapoznawcza
 
 * Dodano .NET Standard 2,0 jako jedną z obsługiwanych platform docelowych, aby Biblioteka wykonawców zbiorczych działała z aplikacjami .NET Core.
+
+### <a name="a-name184184"></a>@no__t — 01.8.4
+
+* Naprawiono obsługę identyfikatorów podczas wywoływania BulkImport z listą obiektów POCO z wartościami liczbowymi.
 
 ### <a name="a-name183183"></a>@no__t — 01.8.3
 

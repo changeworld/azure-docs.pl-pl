@@ -11,22 +11,23 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8c9b8489ded264a895d480ed180b411da079e883
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 3576f7cc0297ff1e9b10373ccc27b09e1a0ae8ae
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950124"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436692"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 
-W tym artykule dowiesz się, jak łatwo uzyskać dostęp do danych w usługach Azure Storage za pośrednictwem Azure Machine Learning magazynów zasobów. Magazyny danych służą do przechowywania informacji o połączeniu, takich jak identyfikator subskrypcji i autoryzacja tokenu. Użycie magazynów danych umożliwia dostęp do magazynu bez konieczności używania w skryptach informacji o połączeniu z kodem. Magazyny danych można tworzyć na podstawie tych [rozwiązań usługi Azure Storage](#matrix).
+W tym artykule dowiesz się, jak łatwo uzyskać dostęp do danych w usługach Azure Storage za pośrednictwem Azure Machine Learning magazynów zasobów. Magazyny danych służą do przechowywania informacji o połączeniu, takich jak identyfikator subskrypcji i autoryzacja tokenu. Użycie magazynów danych umożliwia dostęp do magazynu bez konieczności używania w skryptach informacji o połączeniu z kodem. Magazyny danych można tworzyć na podstawie tych [rozwiązań usługi Azure Storage](#matrix). W przypadku nieobsługiwanych rozwiązań magazynu, aby zaoszczędzić koszt ruchu wychodzącego w trakcie eksperymentów z uczeniem maszynowym, zalecamy przeniesienie danych do naszych obsługiwanych rozwiązań usługi Azure Storage. [Dowiedz się, jak przenieść dane](#move). 
 
 W tym przykładzie przedstawiono przykłady następujących zadań:
 * [Rejestrowanie magazynów danych](#access)
 * [Pobierz magazyny danych z obszaru roboczego](#get)
 * [Przekazuj i pobieraj dane przy użyciu magazynów danych](#up-and-down)
 * [Uzyskiwanie dostępu do danych podczas szkoleń](#train)
+* [Przenoszenie danych na platformę Azure](#move)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -276,6 +277,10 @@ Azure Machine Learning oferuje kilka sposobów na korzystanie z modeli do ocenia
 
 W przypadku sytuacji, w których zestaw SDK nie zapewnia dostępu do magazynów danych, można utworzyć niestandardowy kod przy użyciu odpowiedniego zestawu Azure SDK, aby uzyskać dostęp do tego programu. Na przykład [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python) jest biblioteką kliencką, za pomocą której można uzyskać dostęp do danych przechowywanych w obiektach Blob lub plikach.
 
+<a name="move"></a>
+## <a name="move-data-to-supported-azure-storage-solutions"></a>Przenoszenie danych do obsługiwanych rozwiązań usługi Azure Storage
+
+Usługa Azure Machine Learning obsługuje dostęp do danych z obiektów blob platformy Azure, plików platformy Azure, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL, Azure PostgreSQL. W przypadku nieobsługiwanego magazynu, aby zaoszczędzić koszt ruchu wychodzącego w trakcie eksperymentów z uczeniem maszynowym, zalecamy przeniesienie danych do naszych obsługiwanych rozwiązań usługi Azure Storage przy użyciu Azure Data Factory. Azure Data Factory zapewnia wydajny i odporny transfer danych z ponad 80 wstępnie skompilowanymi łącznikami, w tym usługami Azure Data Services, lokalnymi źródłami danych, Amazon S3 i RedShift oraz Google BigQuery — bez dodatkowych kosztów. [Postępuj zgodnie z przewodnikiem krok po kroku, aby przenieść dane przy użyciu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
 
 ## <a name="next-steps"></a>Następne kroki
 

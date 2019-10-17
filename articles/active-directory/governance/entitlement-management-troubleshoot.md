@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 420a7079a7961868277a2d78ffbac4adba240d9f
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: ea979731c27a8d332102c3215e80510994f2ab3f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678081"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430236"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Rozwiązywanie problemów z zarządzaniem prawami w usłudze Azure AD
 
@@ -45,7 +45,7 @@ W tym artykule opisano niektóre elementy, które należy zaznaczyć, aby pomóc
 
 * Biblioteki dokumentów usługi SharePoint Online i pojedyncze dokumenty nie mogą być dodawane jako zasoby.  Zamiast tego należy utworzyć grupę zabezpieczeń usługi Azure AD, dołączyć tę grupę i rolę lokacji w pakiecie dostępu, a w usłudze SharePoint Online używać tej grupy do kontrolowania dostępu do biblioteki dokumentów lub dokumentu.
 
-* Jeśli istnieją użytkownicy, którzy zostali już przypisani do zasobu, którym chcesz zarządzać za pomocą pakietu dostępu, upewnij się, że użytkownicy są przypisani do pakietu dostępu przy użyciu odpowiednich zasad. Na przykład możesz chcieć uwzględnić grupę w pakiecie dostępu, który ma już użytkowników w grupie. Jeśli Ci użytkownicy w grupie wymagają ciągłego dostępu, muszą mieć odpowiednie zasady dla pakietów dostępu, aby nie utracić dostępu do grupy. Pakiet dostępu można przypisać, prosząc użytkowników o zażądanie pakietu dostępu zawierającego ten zasób lub przez bezpośrednie przypisanie ich do pakietu dostępu. Aby uzyskać więcej informacji, zobacz [Edytowanie istniejącego pakietu dostępu i zarządzanie nim](entitlement-management-access-package-edit.md).
+* Jeśli istnieją użytkownicy, którzy zostali już przypisani do zasobu, którym chcesz zarządzać za pomocą pakietu dostępu, upewnij się, że użytkownicy są przypisani do pakietu dostępu przy użyciu odpowiednich zasad. Na przykład możesz chcieć uwzględnić grupę w pakiecie dostępu, który ma już użytkowników w grupie. Jeśli Ci użytkownicy w grupie wymagają ciągłego dostępu, muszą mieć odpowiednie zasady dla pakietów dostępu, aby nie utracić dostępu do grupy. Pakiet dostępu można przypisać, prosząc użytkowników o zażądanie pakietu dostępu zawierającego ten zasób lub przez bezpośrednie przypisanie ich do pakietu dostępu. Aby uzyskać więcej informacji, zobacz temat [Zmiana ustawień żądania i zatwierdzania dla pakietu dostępu](entitlement-management-access-package-request-policy.md).
 
 ## <a name="checklist-for-providing-external-users-access"></a>Lista kontrolna udostępniania dostępu użytkownikom zewnętrznym
 
@@ -55,16 +55,17 @@ W tym artykule opisano niektóre elementy, które należy zaznaczyć, aby pomóc
 
 ## <a name="checklist-for-request-issues"></a>Lista kontrolna dotycząca problemów z żądaniami
 
-* Gdy użytkownik chce zażądać dostępu do pakietu dostępu, należy się upewnić, że korzysta on z **linku my Access Portal** dla pakietu dostępu. Aby uzyskać więcej informacji, zobacz [łącze Kopiuj mój dostęp do portalu](entitlement-management-access-package-edit.md#copy-my-access-portal-link).  Jeśli użytkownik zewnętrzny odwiedzi **myaccess.Microsoft.com**, zobaczy dostępne dla nich pakiety dostępu w swojej organizacji.
+* Gdy użytkownik chce zażądać dostępu do pakietu dostępu, należy się upewnić, że korzysta on z **linku my Access Portal** dla pakietu dostępu. Aby uzyskać więcej informacji, zobacz [udostępnianie linku do żądania pakietu dostępu](entitlement-management-access-package-settings.md).  Jeśli użytkownik zewnętrzny odwiedzi **myaccess.Microsoft.com**, zobaczy dostępne dla nich pakiety dostępu w swojej organizacji.
 
 * Gdy użytkownik, który nie znajduje się jeszcze w katalogu, loguje się do portalu dostępu w celu zażądania pakietu dostępu, upewnij się, że uwierzytelnia się przy użyciu konta organizacyjnego. Konto organizacyjne może być kontem w katalogu zasobów lub w katalogu, który znajduje się w jednej z zasad pakietu dostępu. Jeśli konto użytkownika nie jest kontem organizacyjnym lub katalog, w którym są uwierzytelniane, nie jest uwzględniony w zasadach, wówczas użytkownik nie będzie widział pakietu dostępu. Aby uzyskać więcej informacji, zobacz [żądanie dostępu do pakietu dostępu](entitlement-management-request-access.md).
 
 * Jeśli użytkownik nie może się zalogować do katalogu zasobów, nie będzie w stanie żądać dostępu w portalu My Access. Aby użytkownik mógł zażądać dostępu, należy usunąć blok logowania z profilu użytkownika. Aby usunąć blok logowania, w Azure Portal kliknij pozycję **Azure Active Directory**, kliknij pozycję **Użytkownicy**, kliknij użytkownika, a następnie kliknij pozycję **profil**. Edytuj sekcję **Ustawienia** i Zmień **blok Zaloguj** się na **nie**. Aby uzyskać więcej informacji, zobacz [Dodawanie lub aktualizowanie informacji o profilu użytkownika przy użyciu Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Możesz również sprawdzić, czy użytkownik został zablokowany ze względu na [Zasady ochrony tożsamości](../identity-protection/howto-unblock-user.md).
 
-* Jeśli użytkownik jest obiektem żądającym i osobą zatwierdzającą, w portalu My Access nie zobaczy żądania dotyczącego pakietu dostępu na stronie **zatwierdzenia** . Takie zachowanie jest celowe — użytkownik nie może zatwierdzić własnego żądania. Upewnij się, że żądany pakiet dostępu ma dodatkowe osoby zatwierdzające skonfigurowane dla zasad. Aby uzyskać więcej informacji, zobacz [Edycja istniejących zasad](entitlement-management-access-package-edit.md#edit-an-existing-policy).
+* Jeśli użytkownik jest obiektem żądającym i osobą zatwierdzającą, w portalu My Access nie zobaczy żądania dotyczącego pakietu dostępu na stronie **zatwierdzenia** . Takie zachowanie jest celowe — użytkownik nie może zatwierdzić własnego żądania. Upewnij się, że żądany pakiet dostępu ma dodatkowe osoby zatwierdzające skonfigurowane dla zasad. Aby uzyskać więcej informacji, zobacz temat [Zmiana ustawień żądania i zatwierdzania dla pakietu dostępu](entitlement-management-access-package-request-policy.md).
 
 * Jeśli nowy użytkownik zewnętrzny, który nie został wcześniej podpisany w Twoim katalogu, odbierze pakiet dostępu zawierający witrynę usługi SharePoint Online, jego pakiet dostępu będzie wyświetlany jako nie w pełni dostarczone do momentu aprowizacji konta w usłudze SharePoint Online.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Wyświetlanie raportów dotyczących sposobu, w jaki użytkownicy uzyskują dostęp w usłudze zarządzania uprawnieniami](entitlement-management-reports.md)
+- [Zarządzanie dostępem użytkowników zewnętrznych](entitlement-management-external-users.md)

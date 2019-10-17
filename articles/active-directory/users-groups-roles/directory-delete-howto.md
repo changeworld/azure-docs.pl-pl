@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4fb2019b0298520d6bc2400e9fc2a2732664812
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329934"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439353"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Usuwanie katalogu w Azure Active Directory
 
@@ -69,25 +69,29 @@ Aby można było usunąć subskrypcję w stanie **anulowania** aprowizacji w ci�
 
 1. Zaloguj się do [Centrum administracyjnego Microsoft 365](https://admin.microsoft.com) przy użyciu konta, które jest administratorem globalnym w Twojej organizacji. Jeśli próbujesz usunąć katalog "contoso", który ma początkową domyślną domenę contoso.onmicrosoft.com, zaloguj się przy użyciu nazwy UPN, takiej jak admin@contoso.onmicrosoft.com.
 
-2. Musisz anulować subskrypcję, aby można było ją usunąć. Wybierz pozycję **rozliczenia** i wybierz pozycję **produkty & usługi**, a następnie wybierz pozycję **Anuluj subskrypcję** dla subskrypcji, którą chcesz anulować. Nastąpi przełączenie na stronę opinii.
+2. Wyświetl podgląd nowego centrum administracyjnego Microsoft 365, upewniając się, że jest włączona Nowa funkcja przełączania **Centrum administracyjnego** .
+
+   ![Podgląd nowego środowiska centrum administracyjnego M365](./media/directory-delete-howto/preview-toggle.png)
+
+3. Po włączeniu nowego centrum administracyjnego należy anulować subskrypcję, aby można było je usunąć. Wybierz pozycję **rozliczenia** i wybierz pozycję **produkty & usługi**, a następnie wybierz pozycję **Anuluj subskrypcję** dla subskrypcji, którą chcesz anulować. Nastąpi przełączenie na stronę opinii.
 
    ![Wybierz subskrypcję, aby anulować](./media/directory-delete-howto/cancel-choose-subscription.png)
 
-3. Wypełnij formularz opinii i wybierz pozycję **Anuluj subskrypcję** , aby anulować subskrypcję.
+4. Wypełnij formularz opinii i wybierz pozycję **Anuluj subskrypcję** , aby anulować subskrypcję.
 
    ![Anuluj polecenie w wersji zapoznawczej subskrypcji](./media/directory-delete-howto/cancel-command.png)
 
-4. Teraz możesz usunąć subskrypcję. Wybierz pozycję **Usuń** dla subskrypcji, którą chcesz usunąć. Jeśli nie możesz znaleźć subskrypcji na stronie **produkty & Services** , upewnij się, że masz **stan subskrypcji** ustawiony na **wszystkie**.
+5. Teraz możesz usunąć subskrypcję. Wybierz pozycję **Usuń** dla subskrypcji, którą chcesz usunąć. Jeśli nie możesz znaleźć subskrypcji na stronie **produkty & Services** , upewnij się, że masz **stan subskrypcji** ustawiony na **wszystkie**.
 
    ![Usuwanie linku do usuwania subskrypcji](./media/directory-delete-howto/delete-command.png)
 
-5. Wybierz pozycję **Usuń subskrypcję** , aby usunąć subskrypcję i zaakceptować warunki i postanowienia. Wszystkie dane zostaną trwale usunięte w ciągu trzech dni. Jeśli zmienisz zdanie, możesz [ponownie aktywować subskrypcję](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) w ciągu trzech dni.
+6. Wybierz pozycję **Usuń subskrypcję** , aby usunąć subskrypcję i zaakceptować warunki i postanowienia. Wszystkie dane zostaną trwale usunięte w ciągu trzech dni. Jeśli zmienisz zdanie, możesz [ponownie aktywować subskrypcję](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) w ciągu trzech dni.
   
    ![dokładne odczytywanie warunków i postanowień](./media/directory-delete-howto/delete-terms.png)
 
-6. Teraz stan subskrypcji został zmieniony i subskrypcja została oznaczona do usunięcia. Subskrypcja wprowadza stan **anulowania** aprowizacji 72 godzin później.
+7. Teraz stan subskrypcji został zmieniony i subskrypcja została oznaczona do usunięcia. Subskrypcja wprowadza stan **anulowania** aprowizacji 72 godzin później.
 
-7. Po usunięciu subskrypcji w katalogu i upłynięciu 72 godzin można ponownie zalogować się do centrum administracyjnego usługi Azure AD, a nie powinna istnieć żadna wymagana akcja i nie ma żadnych subskrypcji blokujących usuwanie katalogu. Należy mieć możliwość pomyślnego usunięcia katalogu usługi Azure AD.
+8. Po usunięciu subskrypcji w katalogu i upłynięciu 72 godzin można ponownie zalogować się do centrum administracyjnego usługi Azure AD, a nie powinna istnieć żadna wymagana akcja i nie ma żadnych subskrypcji blokujących usuwanie katalogu. Należy mieć możliwość pomyślnego usunięcia katalogu usługi Azure AD.
   
    ![ekran przekazywania subskrypcji po usunięciu](./media/directory-delete-howto/delete-checks-passed.png)
 

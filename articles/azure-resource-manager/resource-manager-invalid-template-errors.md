@@ -1,63 +1,63 @@
 ---
-title: Błędy Azure nieprawidłowy szablon | Dokumentacja firmy Microsoft
-description: Opisuje sposób rozwiązania błędów nieprawidłowego szablonu.
+title: Błędy związane z nieprawidłowym szablonem platformy Azure | Microsoft Docs
+description: Opisuje sposób rozwiązywania nieprawidłowych błędów szablonów podczas wdrażania szablonów Azure Resource Manager.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0417a975ffbbe0acd94ceac6c0f8e1de27a27aa6
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: bdf1d66ab345cc0d86206413db6617e9568b4d22
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206257"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390326"
 ---
-# <a name="resolve-errors-for-invalid-template"></a>Rozwiązywanie błędów dla szablonu jest nieprawidłowa
+# <a name="resolve-errors-for-invalid-template"></a>Rozwiązywanie błędów dla nieprawidłowego szablonu
 
-W tym artykule opisano sposób rozwiązania błędów nieprawidłowego szablonu.
+W tym artykule opisano sposób rozwiązywania nieprawidłowych błędów szablonów.
 
 ## <a name="symptom"></a>Objaw
 
-Podczas wdrażania szablonu, jest wyświetlany błąd wskazujący:
+Podczas wdrażania szablonu pojawia się błąd wskazujący:
 
 ```
 Code=InvalidTemplate
 Message=<varies>
 ```
 
-Komunikat o błędzie, zależy od typu błędu.
+Komunikat o błędzie zależy od typu błędu.
 
 ## <a name="cause"></a>Przyczyna
 
-Ten błąd może wynikać z kilku różnych typów błędów. Obejmują one zazwyczaj strukturalnych lub składnia błąd w szablonie.
+Ten błąd może wynikać z kilku różnych typów błędów. Zwykle obejmują one składnię lub błąd strukturalny w szablonie.
 
 <a id="syntax-error" />
 
-## <a name="solution-1---syntax-error"></a>Rozwiązanie 1 — błąd składni
+## <a name="solution-1---syntax-error"></a>Rozwiązanie 1 — błąd składniowy
 
-Jeśli zostanie wyświetlony komunikat o błędzie oznacza sprawdzanie poprawności szablonu nie powiodło się, możesz mieć problem składni w szablonie.
+Jeśli zostanie wyświetlony komunikat o błędzie z informacją, że sprawdzanie poprawności szablonu nie powiodło się, może wystąpić błąd składniowy w szablonie.
 
 ```
 Code=InvalidTemplate
 Message=Deployment template validation failed
 ```
 
-Ten błąd jest łatwe, ponieważ wyrażenia szablonu mogą być skomplikowanych. Na przykład następujące przypisanie nazwy dla konta magazynu ma jeden zestaw nawiasów, trzy funkcje, trzech zestawów nawiasów, jeden zestaw apostrofy i jedną właściwość:
+Ten błąd jest łatwy do przeprowadzenia, ponieważ wyrażenia szablonu mogą być Intricate. Na przykład następujące przypisanie nazwy dla konta magazynu ma jeden zestaw nawiasów, trzy funkcje, trzy zestawy nawiasów, jeden zestaw apostrofów i jedną właściwość:
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 ```
 
-Jeśli nie podasz Składnia dopasowania, szablon tworzy wartość, która różni się od zamiaru.
+Jeśli nie podano pasującej składni, szablon tworzy wartość różną od zamierzonej.
 
-Po otrzymaniu tego rodzaju błąd, należy dokładnie przejrzeć składni wyrażeń. Należy rozważyć użycie edytora JSON, takich jak [programu Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) lub [programu Visual Studio Code](resource-manager-vs-code.md), który może zostać wyświetlone ostrzeżenie dotyczące błędów składniowych.
+Po otrzymaniu tego typu błędu należy uważnie przejrzeć składnię wyrażenia. Rozważ użycie edytora JSON, takiego jak [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) lub [Visual Studio Code](resource-manager-vs-code.md), który może ostrzec o błędach składni.
 
 <a id="incorrect-segment-lengths" />
 
-## <a name="solution-2---incorrect-segment-lengths"></a>Rozwiązanie 2 - niepoprawną długość
+## <a name="solution-2---incorrect-segment-lengths"></a>Rozwiązanie 2 — nieprawidłowe długości segmentów
 
-Inny błąd nieprawidłowy szablon występuje, gdy nazwa zasobu jest w poprawnym formacie.
+Jeśli nazwa zasobu nie ma poprawnego formatu, występuje inny nieprawidłowy błąd szablonu.
 
 ```
 Code=InvalidTemplate
@@ -65,7 +65,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-Zasobu z poziomu katalogu głównego musi mieć jeden mniej segment w nazwie niż w typie zasób. Każdy z segmentów są zróżnicowane według ukośnika. W poniższym przykładzie Typ zawiera dwa segmenty, a nazwa ma jeden segment, dlatego ma **prawidłową nazwę**.
+Zasób poziomu głównego musi mieć jeden segment less w nazwie niż w typie zasobu. Każdy segment jest zróżnicowany przez ukośnik. W poniższym przykładzie typ ma dwa segmenty, a nazwa ma jeden segment, więc jest **prawidłową nazwą**.
 
 ```json
 {
@@ -75,7 +75,7 @@ Zasobu z poziomu katalogu głównego musi mieć jeden mniej segment w nazwie ni�
 }
 ```
 
-Ale w następnym przykładzie **Nieprawidłowa nazwa** ma on taką samą liczbę segmentów jak typ.
+Ale następny przykład nie jest **prawidłową nazwą** , ponieważ ma taką samą liczbę segmentów jak typ.
 
 ```json
 {
@@ -85,7 +85,7 @@ Ale w następnym przykładzie **Nieprawidłowa nazwa** ma on taką samą liczbę
 }
 ```
 
-Typ i nazwę dla zasoby podrzędne mają taką samą liczbę segmentów. Ta liczba segmentów ma sens, ponieważ Pełna nazwa i typ dla elementu podrzędnego zawiera nazwy nadrzędnego i typu. W związku z tym Pełna nazwa nadal ma jeden segment mniej niż pełny typ.
+W przypadku zasobów podrzędnych typ i nazwa mają tę samą liczbę segmentów. Ta liczba segmentów ma sens, ponieważ pełna nazwa i typ elementu podrzędnego zawierają nazwę i typ elementu nadrzędnego. W związku z tym pełna nazwa nadal ma jeden segment less niż pełny typ.
 
 ```json
 "resources": [
@@ -104,7 +104,7 @@ Typ i nazwę dla zasoby podrzędne mają taką samą liczbę segmentów. Ta licz
 ]
 ```
 
-Wprowadzenie segmenty odpowiednie może być trudne z typami Menedżera zasobów, które są stosowane do dostawcy zasobów. Na przykład stosowanie blokady zasobu w witrynie sieci web wymaga typu z czterech segmentów. W związku z tym nazwa jest trzy segmenty:
+Uzyskanie segmentów bezpośrednio może być trudne w przypadku Menedżer zasobów typów, które są stosowane w ramach dostawców zasobów. Na przykład zastosowanie blokady zasobu do witryny sieci Web wymaga typu z czterema segmentami. W związku z tym nazwa ma trzy segmenty:
 
 ```json
 {
@@ -116,9 +116,9 @@ Wprowadzenie segmenty odpowiednie może być trudne z typami Menedżera zasobów
 
 <a id="parameter-not-valid" />
 
-## <a name="solution-3---parameter-is-not-valid"></a>Rozwiązanie 3 - parametru jest nieprawidłowa
+## <a name="solution-3---parameter-is-not-valid"></a>Rozwiązanie 3 — parametr jest nieprawidłowy
 
-Jeśli podano wartość parametru, który nie jest jednym z dozwolonych wartości, pojawi się komunikat podobny do poniższego błędu:
+Jeśli podano wartość parametru, która nie jest jedną z dozwolonych wartości, zostanie wyświetlony komunikat podobny do następującego błędu:
 
 ```
 Code=InvalidTemplate;
@@ -127,40 +127,40 @@ for the template parameter {parameter name} is not valid. The parameter value is
 part of the allowed values
 ```
 
-Double Sprawdź dozwolonych wartości w szablonie, a następnie podaj jeden podczas wdrażania. Aby dowiedzieć się więcej o wartości dozwolony parametrów, zobacz [sekcji parametrów szablonów usługi Azure Resource Manager](resource-group-authoring-templates.md#parameters).
+Podwójne sprawdzanie dozwolonych wartości w szablonie i udostępnianie ich podczas wdrażania. Aby uzyskać więcej informacji na temat dozwolonych wartości parametrów, zobacz [sekcję parametry w szablonach Azure Resource Manager](resource-group-authoring-templates.md#parameters).
 
 <a id="too-many-resource-groups" />
 
-## <a name="solution-4---too-many-target-resource-groups"></a>Rozwiązanie 4 - zbyt wiele grup zasobów obiektu docelowego
+## <a name="solution-4---too-many-target-resource-groups"></a>Rozwiązanie 4 — zbyt wiele docelowych grup zasobów
 
-Jeśli określisz więcej niż pięć grup zasobów obiektu docelowego w pojedyncze wdrożenie, zostanie wyświetlony ten błąd. Należy rozważyć konsolidację liczba grup zasobów w danym wdrożeniu lub wdrażania niektóre szablony jako oddzielnych wdrożeń. Aby uzyskać więcej informacji, zobacz [wdrażania zasobów platformy Azure do więcej niż jedną subskrypcję lub grupę zasobów](resource-manager-cross-resource-group-deployment.md).
+W przypadku określenia więcej niż pięciu docelowych grup zasobów w jednym wdrożeniu zostanie wyświetlony ten błąd. Należy rozważyć skonsolidowanie liczby grup zasobów we wdrożeniu lub wdrożenie niektórych szablonów jako oddzielnych wdrożeń. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów](resource-manager-cross-resource-group-deployment.md).
 
 <a id="circular-dependency" />
 
-## <a name="solution-5---circular-dependency-detected"></a>Wykryto rozwiązania 5 - wykryto zależność cykliczną
+## <a name="solution-5---circular-dependency-detected"></a>Rozwiązanie 5 — Wykryto zależność cykliczną
 
-Ten błąd jest wyświetlany, gdy zasoby są zależne od siebie nawzajem w sposób, który uniemożliwia wdrożenie, uruchamianie. Kombinacja współzależności sprawia, że dwa lub więcej zasobów, poczekaj, aż inne zasoby, które oczekują na również. Na przykład zasób1 zależy od resource3 zasób2 zależy od zasób1 i resource3 zależy od zasób2. Można zwykle rozwiązać ten problem, usuwając zbędne zależności.
+Ten błąd występuje, gdy zasoby są zależne od siebie w sposób uniemożliwiający uruchomienie wdrożenia. Połączenie wzajemnych zależności powoduje, że co najmniej jeden zasób czeka na inne zasoby, które również oczekują. Na przykład Resource1 zależy od resource3, resource2 zależy od Resource1, a resource3 zależy od resource2. Zazwyczaj można rozwiązać ten problem, usuwając zbędne zależności.
 
 Aby rozwiązać zależność cykliczną:
 
-1. W szablonie należy znaleźć zasobu określonego w zależność cykliczną. 
-2. Dla tego zasobu, należy zbadać **dependsOn** właściwość i wszelkie przypadki użycia **odwołania** funkcji, aby wyświetlić zasoby zależy. 
-3. Sprawdź te zasoby, aby zobaczyć, jakie zasoby są one zależne od. Postępuj zgodnie z zależności, dopóki nie zauważysz, że zasób, który jest zależny od oryginalny zasób.
-5. Zasoby związane z zależność cykliczną dokładnie sprawdź wszystkie zastosowania **dependsOn** właściwości, aby zidentyfikować wszelkie zależności, które nie są wymagane. Usuń te zależności. Jeśli nie wiesz, czy zależność jest potrzebny, spróbuj go usunąć. 
-6. Ponownie wdróż szablon.
+1. W szablonie Znajdź zasób zidentyfikowany w zależności cyklicznej. 
+2. W przypadku tego zasobu Sprawdź Właściwość **dependsOn** i wszelkie zastosowania funkcji **Reference** , aby zobaczyć, które zasoby są od niego zależne. 
+3. Sprawdź te zasoby, aby zobaczyć, które zasoby są od nich zależne. Obserwuj zależności do momentu zauważenia zasobu, który zależy od oryginalnego zasobu.
+5. W przypadku zasobów związanych z zależnością cykliczną należy uważnie sprawdzić wszystkie zastosowania właściwości **dependsOn** , aby zidentyfikować wszelkie zależności, które nie są potrzebne. Usuń te zależności. Jeśli nie masz pewności, że jest wymagana zależność, spróbuj ją usunąć. 
+6. Wdróż ponownie szablon.
 
-Usuwanie wartości z **dependsOn** właściwości, które mogą powodować błędy podczas wdrażania szablonu. Jeśli wystąpi błąd, Dodaj zależności do szablonu. 
+Usunięcie wartości z właściwości **dependsOn** może spowodować błędy podczas wdrażania szablonu. Jeśli wystąpi błąd, Dodaj zależność z powrotem do szablonu. 
 
-Jeśli takie podejście nie rozwiąże zależność cykliczną, należy wziąć pod uwagę przeniesienie część logiki wdrożenia do zasoby podrzędne (np. rozszerzenia lub ustawienia konfiguracji). Skonfiguruj te zasoby podrzędne wdrożyć po zasoby zaangażowane w zależność cykliczną. Na przykład załóżmy, że wdrożysz dwie maszyny wirtualne, ale należy ustawić właściwości na każdym z nich, które odwołują się do drugiego. Można je wdrożyć w następującej kolejności:
+Jeśli takie podejście nie rozwiąże zależności cyklicznej, rozważ przeniesienie części logiki wdrażania do zasobów podrzędnych (takich jak rozszerzenia lub ustawienia konfiguracji). Skonfiguruj te zasoby podrzędne do wdrożenia po zasobach występujących w zależności cyklicznej. Załóżmy na przykład, że wdrażasz dwie maszyny wirtualne, ale musisz ustawić właściwości dla każdej z nich, która odwołuje się do drugiego. Można je wdrożyć w następującej kolejności:
 
-1. vm1
-2. vm2
-3. Rozszerzenie maszyny vm1 zależy od tego, vm1 i vm2. Rozszerzenie ustawia wartości maszyny vm1, który otrzymuje od maszyny vm2.
-4. Rozszerzenia dla maszyny vm2, zależy od vm1 i vm2. Rozszerzenie ustawia wartości dla maszyny vm2, która otrzymuje od vm1.
+1. VM1
+2. VM2
+3. Rozszerzenie na VM1 zależy od VM1 i VM2. Rozszerzenie ustawia wartości w VM1, które pobiera z VM2.
+4. Rozszerzenie na VM2 zależy od VM1 i VM2. Rozszerzenie ustawia wartości w VM2, które pobiera z VM1.
 
-To samo podejście działa w przypadku aplikacji usługi App Service. Należy rozważyć przeniesienie wartości konfiguracji do zasobu podrzędnego zasób aplikacji. Można wdrożyć dwie aplikacje internetowe w następującej kolejności:
+Takie samo podejście działa w przypadku aplikacji App Service. Rozważ przeniesienie wartości konfiguracyjnych do zasobu podrzędnego zasobu aplikacji. Dwie aplikacje sieci Web można wdrażać w następującej kolejności:
 
 1. webapp1
 2. webapp2
-3. Konfiguracja dla webapp1 zależy od tego, webapp1 i webapp2. Zawiera ustawienia aplikacji przy użyciu wartości z webapp2.
-4. Konfiguracja dla webapp2 zależy od tego, webapp1 i webapp2. Zawiera ustawienia aplikacji przy użyciu wartości z webapp1.
+3. Konfiguracja programu webapp1 zależy od webapp1 i webapp2. Zawiera ustawienia aplikacji z wartościami z webapp2.
+4. Konfiguracja programu webapp2 zależy od webapp1 i webapp2. Zawiera ustawienia aplikacji z wartościami z webapp1.

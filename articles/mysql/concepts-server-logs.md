@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 4d801ada8fd8a8b35c71601d3ca274f26afb24f6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262277"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434287"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Wolne dzienniki zapytań w Azure Database for MySQL
 W Azure Database for MySQL dziennik wolnych zapytań jest dostępny dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik wolnych zapytań może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
@@ -21,7 +21,7 @@ Aby uzyskać więcej informacji na temat dziennika wolnych zapytań programu MyS
 ## <a name="access-slow-query-logs"></a>Dostęp do dzienników wolnych zapytań
 Można wyświetlać i pobierać Azure Database for MySQL wolnych dzienników zapytań przy użyciu Azure Portal i interfejsu wiersza polecenia platformy Azure.
 
-W witrynie Azure portal wybierz usługi Azure Database for MySQL server. W obszarze nagłówek **monitorowania** wybierz stronę **Dzienniki serwera** .
+W Azure Portal wybierz serwer Azure Database for MySQL. W obszarze nagłówek **monitorowania** wybierz stronę **Dzienniki serwera** .
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Konfigurowanie i dostęp do dzienników serwera przy użyciu interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-in-cli.md).
 
@@ -38,7 +38,10 @@ Inne parametry, które można dostosować, obejmują:
 - **long_query_time**: Jeśli zapytanie trwa dłużej niż long_query_time (w sekundach), rejestrowane jest zapytanie. Wartość domyślna to 10 sekund.
 - **log_slow_admin_statements**: Jeśli on zawiera instrukcje administracyjne, takie jak ALTER_TABLE i ANALYZE_TABLE, w instrukcjach zapisywana w slow_query_log.
 - **log_queries_not_using_indexes**: określa, czy zapytania, które nie używają indeksów są rejestrowane w slow_query_log
-- **log_throttle_queries_not_using_indexes**: Ten parametr ogranicza liczbę zapytań niebędących indeksami, które można zapisać w dzienniku wolnych zapytań. Ten parametr obowiązuje, gdy log_queries_not_using_indexes jest ustawiony na wartość włączone.
+- **log_throttle_queries_not_using_indexes**: ten parametr ogranicza liczbę zapytań niebędących indeksami, które można zapisać w dzienniku wolnych zapytań. Ten parametr obowiązuje, gdy log_queries_not_using_indexes jest ustawiony na wartość włączone.
+
+> [!Note]
+> W przypadku `sql_text` Dziennik zostanie obcięty, jeśli przekracza 2048 znaków.
 
 Więcej opisów parametrów dziennika wolnych zapytań można znaleźć w [dokumentacji dziennika wolnych zapytań](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) programu MySQL.
 
@@ -46,28 +49,28 @@ Więcej opisów parametrów dziennika wolnych zapytań można znaleźć w [dokum
 Azure Database for MySQL jest zintegrowana z Azure Monitor dzienników diagnostycznych. Po włączeniu wolnych dzienników zapytań na serwerze MySQL można wybrać opcję ich emisji do Azure Monitor dzienników, Event Hubs lub Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz sekcję jak [znaleźć w dokumentacji dzienników diagnostycznych](../azure-monitor/platform/resource-logs-overview.md).
 
 > [!IMPORTANT]
-> Ta funkcja diagnostyczna dla dzienników serwera jest dostępna tylko w warstwach cenowych [](concepts-pricing-tiers.md)ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
+> Ta funkcja diagnostyczna dla dzienników serwera jest dostępna tylko w [warstwach cenowych](concepts-pricing-tiers.md)ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
 W poniższej tabeli opisano zawartość poszczególnych dzienników. W zależności od metody Output pola uwzględnione i kolejność ich wyświetlania mogą się różnić.
 
-| **Property** | **Opis** |
+| **Właściwość** | **Opis** |
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
-| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
+| `TimeGenerated` [UTC] | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
+| `Type` | Typ dziennika. Zawsze `AzureDiagnostics` |
 | `SubscriptionId` | Identyfikator GUID subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
-| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identyfikator URI zasobu |
 | `Resource` | Nazwa serwera |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Nazwa serwera |
-| `start_time_t`UTC | Godzina rozpoczęcia zapytania |
-| `query_time_s` | Łączny czas wykonywania zapytania |
-| `lock_time_s` | Łączny czas zablokowania zapytania |
+| `start_time_t` [UTC] | Godzina rozpoczęcia zapytania |
+| `query_time_s` | Łączny czas (w sekundach) wykonywania zapytania |
+| `lock_time_s` | Łączny czas w sekundach, przez który zapytanie zostało zablokowane |
 | `user_host_s` | Nazwa użytkownika |
 | `rows_sent_s` | Liczba wysłanych wierszy |
 | `rows_examined_s` | Liczba badanych wierszy |

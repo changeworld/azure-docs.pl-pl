@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099538"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430092"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Łącznik SAP LaMa dla platformy Azure
 
@@ -38,7 +38,7 @@ ms.locfileid: "70099538"
 [hana-ops-guide]:hana-vm-operations.md
 
 > [!NOTE]
-> Ogólna Instrukcja pomocy technicznej: Zawsze otwieraj zdarzenie przy użyciu oprogramowania SAP na składniku BC-VCM-LVM-HYPERV, jeśli potrzebujesz wsparcia SAP LaMa lub Azure Connector.
+> Ogólne zestawienie pomocy technicznej: zawsze otwieraj zdarzenie przy użyciu SAP na składniku BC-VCM-LVM-HYPERV, jeśli potrzebujesz wsparcia SAP LaMa lub Azure Connector.
 
 System SAP LaMa jest używany przez wielu klientów do obsługi i monitorowania ich krajobrazu. Ponieważ SAP LaMa 3,0 SP05, jest domyślnie dostarczany z łącznikiem do platformy Azure. Za pomocą tego łącznika można cofnąć alokację i uruchomienie maszyn wirtualnych, skopiować i zmienić lokalizację dysków zarządzanych oraz usunąć dyski zarządzane. Za pomocą tych podstawowych operacji można przenosić, kopiować, klonować i odświeżać systemy SAP przy użyciu rozwiązania SAP LaMa.
 
@@ -73,44 +73,44 @@ Przeczytaj także [Portal pomocy SAP dla oprogramowania SAP Lama](https://help.s
 
 Łącznik platformy Azure jest dostarczany jako system SAP LaMa 3,0 SP05. Zalecamy zawsze zainstalowanie najnowszego pakietu i poprawki dla oprogramowania SAP LaMa 3,0. Łącznik platformy Azure używa nazwy głównej usługi do autoryzacji przed Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi dla zarządzania SAP krajobrazem (LaMa).
 
-1. Przejdź do strony https://portal.azure.com
-1. Otwórz blok usługi Azure Active Directory
+1. Przejdź do usługi https://portal.azure.com
+1. Otwórz blok Azure Active Directory
 1. Kliknij Rejestracje aplikacji
 1. Kliknij pozycję Dodaj
-1. Wprowadź nazwę, wybierz pozycję typ aplikacji "Web App/API", wprowadź adres URL logowania (na przykład http:\//localhost), a następnie kliknij pozycję Utwórz.
-1. Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
+1. Wprowadź nazwę, wybierz pozycję typ aplikacji "Web App/API", wprowadź adres URL logowania (na przykład http: \//localhost), a następnie kliknij pozycję Utwórz.
+1. Adres URL logowania nie jest używany i może być dowolnym prawidłowym adresem URL
 1. Wybierz nową aplikację i kliknij pozycję klucze na karcie Ustawienia.
 1. Wprowadź opis nowego klucza, wybierz pozycję "nigdy nie wygasa" i kliknij pozycję Zapisz.
-1. Zanotuj wartość. Służy jako hasło dla nazwy głównej usługi
-1. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa główna usługi
+1. Zapisz wartość. Służy jako hasło dla nazwy głównej usługi
+1. Zapisz identyfikator aplikacji. Jest ona używana jako nazwa główna usługi
 
-Nazwa główna usługi nie ma uprawnień do dostępu do zasobów platformy Azure, domyślnie. Aby uzyskać dostęp do nich, należy nadać uprawnienia nazwy głównej usługi.
+Jednostka usługi nie ma uprawnień dostępu do zasobów platformy Azure domyślnie. Aby uzyskać dostęp do nich, należy nadać uprawnienia nazwy głównej usługi.
 
-1. Przejdź do strony https://portal.azure.com
+1. Przejdź do usługi https://portal.azure.com
 1. Otwórz blok grupy zasobów
 1. Wybierz grupę zasobów, której chcesz użyć
-1. Kliknij przycisk kontroli dostępu (IAM)
+1. Kliknij pozycję Kontrola dostępu (IAM)
 1. Kliknij pozycję Dodaj przypisanie roli
 1. Wybierz współautor roli
-1. Wprowadź nazwę aplikacji, które zostały utworzone powyżej
+1. Wprowadź nazwę utworzonej aplikacji
 1. Klikanie pozycji Zapisz.
 1. Powtórz kroki od 3 do 8 dla wszystkich grup zasobów, które mają być używane w oprogramowaniu SAP LaMa
 
 Otwórz witrynę sieci Web SAP LaMa i przejdź do infrastruktury. Przejdź do karty menedżerowie chmury i kliknij przycisk Dodaj. Wybierz Adapter chmury Microsoft Azure i kliknij przycisk Dalej. Wprowadź następujące informacje:
 
-* Oznakowan Wybierz nazwę wystąpienia łącznika
-* Nazwa użytkownika: Identyfikator aplikacji nazwy głównej usługi
-* Hasło Klucz jednostki usługi/hasło
-* Adres URL: Zachowaj domyślne https://management.azure.com/
-* Interwał monitorowania (w sekundach): Powinna wynosić co najmniej 300
+* Etykieta: wybierz nazwę wystąpienia łącznika
+* Nazwa użytkownika: Identyfikator aplikacji głównej usługi
+* Hasło: klucz główny usługi/hasło
+* Adres URL: Zachowaj wartość domyślną https://management.azure.com/
+* Interwał monitorowania (w sekundach): powinien wynosić co najmniej 300
 * Identyfikator subskrypcji: Identyfikator subskrypcji platformy Azure
-* Azure Active Directory identyfikator dzierżawy: Identyfikator dzierżawy Active Directory
+* Azure Active Directory identyfikator dzierżawy: Identyfikator dzierżawcy Active Directory
 * Host serwera proxy: Nazwa hosta serwera proxy, jeśli rozwiązanie SAP LaMa wymaga serwera proxy do łączenia się z Internetem
-* Port serwera proxy: Port TCP serwera proxy
+* Port serwera proxy: port TCP serwera proxy
 
 Kliknij pozycję Konfiguracja testu, aby sprawdzić poprawność danych wejściowych. Powinna zostać wyświetlona
 
-Pomyślnie nawiązano połączenie: Połączenie z chmurą Microsoft Cloud zakończyło się pomyślnie. Znaleziono 7 grup zasobów (zażądano tylko 10 grup)
+Pomyślnie nawiązano połączenie: połączenie z chmurą Microsoft Cloud zakończyło się pomyślnie. Znaleziono 7 grup zasobów (zażądano tylko 10 grup)
 
 w dolnej części witryny sieci Web.
 
@@ -123,7 +123,7 @@ Zalecamy używanie oddzielnej podsieci dla wszystkich maszyn wirtualnych, które
 > [!NOTE]
 > Jeśli to możliwe, Usuń wszystkie rozszerzenia maszyn wirtualnych, ponieważ mogą one powodować długotrwałe środowiska uruchomieniowe na potrzeby odłączania dysków od maszyny wirtualnej.
 
-Upewnij się, że \<użytkownik hanasid > adm \<, sapsid > adm i Group sapsys istnieje na maszynie docelowej z tym samym identyfikatorem i GID lub Użyj protokołu LDAP. Włącz i uruchom serwer NFS na maszynach wirtualnych, które powinny być używane do uruchamiania SCS SAP NetWeaver (A).
+Upewnij się, że użytkownik \<hanasid > adm, \<sapsid > adm i Group sapsys istnieje na maszynie docelowej z tego samego identyfikatora i identyfikatorem gid lub używają protokołu LDAP. Włącz i uruchom serwer NFS na maszynach wirtualnych, które powinny być używane do uruchamiania SCS SAP NetWeaver (A).
 
 ### <a name="manual-deployment"></a>Wdrażanie ręczne
 
@@ -133,7 +133,7 @@ Program SAP LaMa komunikuje się z maszyną wirtualną przy użyciu agenta hosta
 
 Utwórz nową maszynę wirtualną przy użyciu jednego z obsługiwanych systemów operacyjnych wymienionych w temacie SAP Note [2343511]. Dodaj dodatkowe konfiguracje protokołu IP dla wystąpień SAP. Każde wystąpienie wymaga co najmniej adresu IP i musi być zainstalowane przy użyciu wirtualnej nazwy hosta.
 
-Wystąpienie SAP NetWeaver ASCS wymaga dysków dla/sapmnt/\<SAPSID >,/usr/SAP/\<SAPSID >,/usr/SAP/Trans i/usr/SAP/\<SAPSID > adm. Serwery aplikacji SAP NetWeaver nie potrzebują dodatkowych dysków. Wszystkie elementy związane z wystąpieniem SAP muszą być przechowywane w ASCS i eksportowane za pośrednictwem systemu plików NFS. W przeciwnym razie nie jest możliwe dodawanie dodatkowych serwerów aplikacji przy użyciu rozwiązania SAP LaMa.
+Wystąpienie SAP NetWeaver ASCS wymaga dysków dla/sapmnt/\<SAPSID >,/usr/SAP/\<SAPSID >,/usr/SAP/Trans i/usr/SAP/\<sapsid > adm. Serwery aplikacji SAP NetWeaver nie potrzebują dodatkowych dysków. Wszystkie elementy związane z wystąpieniem SAP muszą być przechowywane w ASCS i eksportowane za pośrednictwem systemu plików NFS. W przeciwnym razie nie jest możliwe dodawanie dodatkowych serwerów aplikacji przy użyciu rozwiązania SAP LaMa.
 
 ![SAP NetWeaver ASCS w systemie Linux](media/lama/sap-lama-ascs-app-linux.png)
 
@@ -169,8 +169,8 @@ Rozwiązanie SAP LaMa nie może zmienić położenia SQL Server, więc maszyna w
 
 Pobierz następujące najnowsze dostępne archiwa z [portalu oprogramowania SAP](https://support.sap.com/swdc) dla systemu operacyjnego maszyn wirtualnych:
 
-1. SAPCAR 7.21
-1. SAP HOST AGENT 7.21
+1. SAPCAR 7,21
+1. AGENT HOSTA SAP 7,21
 1. ROZSZERZENIE SAP ADAPTACYJNE EXTENSION 1,0
 
 Pobierz również następujące składniki z [Centrum pobierania Microsoft](https://www.microsoft.com/download)
@@ -182,25 +182,25 @@ Składniki są wymagane do wdrożenia szablonu. Najprostszym sposobem udostępni
 
 Szablony mają następujące parametry:
 
-* sapSystemId: Identyfikator systemu SAP. Służy do tworzenia układu dysku (na przykład/usr/SAP/\<sapsid >).
+* sapSystemId: identyfikator systemu SAP. Służy do tworzenia układu dysku (na przykład/usr/SAP/\<sapsid >).
 
-* NazwaKomputera Nazwa komputera nowej maszyny wirtualnej. Ten parametr jest również używany przez oprogramowanie SAP LaMa. W przypadku użycia tego szablonu do aprowizacji nowej maszyny wirtualnej w ramach kopii systemu system SAP LaMa oczekuje na osiągnięcie hosta z tą nazwą komputera.
+* nazwa_komputera: Nazwa komputera nowej maszyny wirtualnej. Ten parametr jest również używany przez oprogramowanie SAP LaMa. W przypadku użycia tego szablonu do aprowizacji nowej maszyny wirtualnej w ramach kopii systemu system SAP LaMa oczekuje na osiągnięcie hosta z tą nazwą komputera.
 
-* OsType Typ systemu operacyjnego, który ma zostać wdrożony.
+* osType: typ systemu operacyjnego, który chcesz wdrożyć.
 
-* DbType Typ bazy danych. Ten parametr służy do określenia, ile dodatkowych konfiguracji protokołu IP należy dodać, oraz jak powinien wyglądać układ dysku.
+* DbType: typ bazy danych. Ten parametr służy do określenia, ile dodatkowych konfiguracji protokołu IP należy dodać, oraz jak powinien wyglądać układ dysku.
 
-* sapSystemSize: Rozmiar systemu SAP, który ma zostać wdrożony. Służy do określania typu i rozmiaru wystąpienia maszyny wirtualnej.
+* sapSystemSize: rozmiar systemu SAP, który ma zostać wdrożony. Służy do określania typu i rozmiaru wystąpienia maszyny wirtualnej.
 
-* AdminUsername Nazwa użytkownika dla maszyny wirtualnej.
+* adminUsername: Nazwa użytkownika dla maszyny wirtualnej.
 
-* adminPassword: Hasło dla maszyny wirtualnej. Możesz również podać klucz publiczny dla protokołu SSH.
+* adminPassword: hasło dla maszyny wirtualnej. Możesz również podać klucz publiczny dla protokołu SSH.
 
-* sshKeyData: Publiczny klucz SSH dla maszyn wirtualnych. Obsługiwane tylko w systemach operacyjnych Linux.
+* sshKeyData: publiczny klucz SSH dla maszyn wirtualnych. Obsługiwane tylko w systemach operacyjnych Linux.
 
-* subnetId: Identyfikator podsieci, której chcesz użyć.
+* subnetId: identyfikator podsieci, której chcesz użyć.
 
-* deployEmptyTarget: Jeśli chcesz użyć maszyny wirtualnej jako docelowej dla wystąpienia przeznaczenie lub podobne, możesz wdrożyć pusty cel. W takim przypadku nie są dołączone żadne dodatkowe dyski ani konfiguracje adresów IP.
+* deployEmptyTarget: można wdrożyć pusty cel, jeśli chcesz użyć maszyny wirtualnej jako docelowej dla wystąpienia przeznaczenie lub podobne. W takim przypadku nie są dołączone żadne dodatkowe dyski ani konfiguracje adresów IP.
 
 * sapcarLocation: Lokalizacja aplikacji SAPCAR, która odpowiada wdrażanym systemowi operacyjnemu. SAPCAR służy do wyodrębniania archiwów udostępnianych w innych parametrach.
 
@@ -212,15 +212,15 @@ Szablony mają następujące parametry:
 
 * odbcDriverLocation: Lokalizacja sterownika ODBC, który chcesz zainstalować. Obsługiwane są tylko sterowniki ODBC firmy Microsoft dla SQL Server.
 
-* sapadmPassword: Hasło użytkownika sapadm.
+* sapadmPassword: hasło użytkownika sapadm.
 
-* sapadmId: Identyfikator użytkownika systemu Linux użytkownika sapadm. Niewymagane dla systemu Windows.
+* sapadmId: identyfikator użytkownika systemu Linux użytkownika sapadm. Niewymagane dla systemu Windows.
 
 * sapsysGid: Identyfikator grupy systemu Linux grupy sapsys. Niewymagane dla systemu Windows.
 
-* _artifactsLocation: Podstawowy identyfikator URI, w którym znajdują się artefakty wymagane przez ten szablon. Gdy szablon zostanie wdrożony za pomocą towarzyszących skryptów, zostanie użyta prywatna lokalizacja w subskrypcji, która zostanie wygenerowana automatycznie. Tylko wtedy, gdy szablon nie zostanie wdrożony z usługi GitHub.
+* _artifactsLocation: podstawowy identyfikator URI, w którym znajdują się artefakty wymagane przez ten szablon. Gdy szablon zostanie wdrożony za pomocą towarzyszących skryptów, zostanie użyta prywatna lokalizacja w subskrypcji, która zostanie wygenerowana automatycznie. Tylko wtedy, gdy szablon nie zostanie wdrożony z usługi GitHub.
 
-* _artifactsLocationSasToken: SasToken wymagany do uzyskania dostępu do _artifactsLocation. Gdy szablon zostanie wdrożony za pomocą towarzyszących skryptów, zostanie automatycznie wygenerowany sasToken. Tylko wtedy, gdy szablon nie zostanie wdrożony z usługi GitHub.
+* _artifactsLocationSasToken: sasToken wymagany do uzyskania dostępu do _artifactsLocation. Gdy szablon zostanie wdrożony za pomocą towarzyszących skryptów, zostanie automatycznie wygenerowany sasToken. Tylko wtedy, gdy szablon nie zostanie wdrożony z usługi GitHub.
 
 ### <a name="sap-hana"></a>SAP HANA
 
@@ -246,7 +246,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 Uruchom SWPM i Użyj *AH1-ASCS* dla *nazwy hosta wystąpienia ASCS*.
 
-![Linux][Logo_Linux] Linux  
+![Linux @ no__t-1 Linux  
 Dodaj następujący parametr profilu do profilu agenta hosta SAP, który znajduje się w lokalizacji/usr/SAP/hostctrl/exe/host_profile. Aby uzyskać więcej informacji, zobacz temat SAP Note [2628497].
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -289,7 +289,7 @@ W ramach konta NetApp Pula pojemności określa rozmiar i typ dysków dla każde
 
 ![Utworzono pulę pojemności SAP LaMa NetApp ](media/lama/sap-lama-capacitypool-list.png)
 
-Można teraz definiować woluminy NFS. Ponieważ w jednej puli będą woluminy z wieloma systemami, należy wybrać schemat nazewnictwa samodzielnego. Dodanie identyfikatora SID pomaga zgrupować powiązane woluminy. W przypadku ASCS i wystąpienia as są potrzeby następujące instalacje:/sapmnt/\<SID\>,/usr/SAP/\<SID\> i/Home/\<SID\>adm. Opcjonalna/usr/SAP/Trans centralnego katalogu transportowego, który jest co najmniej używany przez wszystkie systemy o jednej orientacji poziomej.
+Można teraz definiować woluminy NFS. Ponieważ w jednej puli będą woluminy z wieloma systemami, należy wybrać schemat nazewnictwa samodzielnego. Dodanie identyfikatora SID pomaga zgrupować powiązane woluminy. W przypadku ASCS i wystąpienia AS są wymagany następujące instalacje: */sapmnt/\<SID @ no__t-2*, */usr/SAP/\<SID @ no__t-5*i */Home/\<sid @ no__t-8adm*. Opcjonalnie */usr/SAP/Trans* jest wymagany dla centralnego katalogu transportowego, który jest co najmniej używany przez wszystkie systemy o jednej poziomej.
 
 > [!NOTE]
 > W fazie BETA nazwa woluminów musi być unikatowa w ramach subskrypcji.
@@ -336,7 +336,7 @@ Po pomyślnej instalacji systemu należy odnaleźć system w oprogramowaniu SAP 
 
 Punkty instalacji powinny wyglądać następująco dla ASCS i wystąpienia AS:
 
-![Punkty instalacji SAP Lama w Lama ](media/lama/sap-lama-ascs.png) (jest to przykład. Adresy IP i ścieżki eksportu różnią się od tych, które zostały użyte przed
+![SAP LaMa punkty instalacji w LaMa ](media/lama/sap-lama-ascs.png) (jest to przykład. Adresy IP i ścieżki eksportu różnią się od tych, które zostały użyte przed
 
 
 #### <a name="install-sap-hana"></a>Instalowanie platformy SAP HANA
@@ -419,7 +419,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db
 
 Uruchom instalację wystąpienia bazy danych SWPM na maszynie wirtualnej programu SQL Server. Użyj SAPINST_USE_HOSTNAME =*AS1-DB* , aby zastąpić nazwę hosta używaną do łączenia się z SQL Server. Jeśli maszyna wirtualna została wdrożona przy użyciu szablonu Azure Resource Manager, upewnij się, że ustawisz katalog używany dla plików danych bazy danych do *C:\sql\data* i pliku dziennika bazy danych na *C:\sql\log*.
 
-Upewnij się, że użytkownik *NT NT\SYSTEM* ma dostęp do SQL Server i ma rolę serwera sysadmin. Aby uzyskać więcej informacji, zobacz uwagi dotyczące oprogramowania SAP [1877727] i [2562184].
+Upewnij się, że użytkownik *NT NT\SYSTEM* ma dostęp do SQL Server i ma rolę serwera *sysadmin*. Aby uzyskać więcej informacji, zobacz uwagi dotyczące oprogramowania SAP [1877727] i [2562184].
 
 #### <a name="install-sap-netweaver-application-server"></a>Zainstaluj serwer aplikacji SAP NetWeaver
 
@@ -447,7 +447,7 @@ W *wystąpieniu podstawowego serwera aplikacji*okna dialogowego Użyj *AS1-di-0*
 
 * Wystąpił wyjątek podczas sprawdzania poprawności HDB userstore  
   * Zobacz Podgląd dzienników  
-    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: Wyjątek w module walidacji o IDENTYFIKATORze "RuntimeHDBConnectionValidator" (Walidacja: 'VALIDATION_HDB_USERSTORE'): Nie można pobrać hdbuserstore  
+    com. SAP. NW. lm. ACI. Monitor. API. Validation. RuntimeValidationException: wyjątek w module walidacji o IDENTYFIKATORze "RuntimeHDBConnectionValidator" (Walidacja: "VALIDATION_HDB_USERSTORE"): nie można pobrać hdbuserstore  
     Userstore HANA nie znajduje się w poprawnej lokalizacji
   * Rozwiązanie  
     Upewnij się, że/usr/sap/AH1/hdbclient/install/installation.ini jest prawidłowy
@@ -455,33 +455,33 @@ W *wystąpieniu podstawowego serwera aplikacji*okna dialogowego Użyj *AS1-di-0*
 ### <a name="errors-and-warnings-during-a-system-copy"></a>Błędy i ostrzeżenia podczas kopiowania systemu
 
 * Wystąpił błąd podczas sprawdzania poprawności kroku aprowizacji systemu
-  * Spowodowane przez: com. SAP. NW. lm. ACI. Engine. Base. API. util. Exception. HAOperationException wywoływanie "/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level =\;0 status =\;5 port = 35013 PF =/usr/SAP/hostctrl /exe/host_profile-R-T dev_lvminfo-u SYSTEM-p hak-R "| /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-r-T dev_lvminfo-u system-p Hook-r
+  * Spowodowane przez: com. SAP. NW. lm. ACI. Engine. Base. API. util. Exception. HAOperationException wywołanie "/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 @ no__t-0status = 5 @ no__t-1port = 35013 PF =/usr/SAP/hostctrl/exe/host_ Profil-R-T dev_lvminfo-u SYSTEM-p Hook-R ' | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 @ no__t-2status = 5 @ no__t-3port = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-R-T dev_lvminfo-u SYSTEM-p Hook-r
   * Rozwiązanie  
     Utwórz kopię zapasową wszystkich baz danych w źródłowym systemie HANA
 
 * *Początek* wystąpienia bazy danych na etapie kopiowania systemu
-  * Operacja agenta hosta "000D3A282BC91EE8A1D76CF1F92E2944" nie powiodła się (OperationException. FaultCode: "127", komunikat: Wykonanie polecenia nie powiodło się. : [Microsoft] [ODBC SQL Server Driver] [SQL Server] użytkownik nie ma uprawnienia do zmiany bazy danych "AS2", baza danych nie istnieje lub baza danych nie znajduje się w stanie umożliwiającym sprawdzanie dostępu ").
+  * Operacja agenta hosta "000D3A282BC91EE8A1D76CF1F92E2944" nie powiodła się (OperationException. FaultCode: ' 127 ', komunikat: ' wykonywanie polecenia nie powiodło się. : [Microsoft] [ODBC SQL Server Driver] [SQL Server] użytkownik nie ma uprawnienia do zmiany bazy danych "AS2", baza danych nie istnieje lub baza danych nie znajduje się w stanie umożliwiającym sprawdzanie dostępu ").
   * Rozwiązanie  
     Upewnij się, że *NT NT\SYSTEM* ma dostęp do SQL Server. Zobacz uwagi dotyczące oprogramowania SAP [2562184]
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>Błędy i ostrzeżenia podczas klonowania systemu
 
 * Wystąpił błąd podczas próby zarejestrowania agenta wystąpienia w kroku *wymuszono rejestrowanie i uruchamianie agenta wystąpienia* serwera aplikacji lub ASCS
-  * Wystąpił błąd podczas próby zarejestrowania agenta wystąpienia. (Zdalnyexception: "Nie można załadować danych wystąpienia z profilu"\\AS1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0 ":  Nie można uzyskać dostępu\\do profilu "AS1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0": Brak pliku lub katalogu ")
+  * Wystąpił błąd podczas próby zarejestrowania agenta wystąpienia. (Zdalnyexception: ' nie powiodło się załadowanie danych wystąpienia z profilu "\\as1-ASCS \ sapmnt \ AS1 \ SYS \ profil \ AS1_D00_as1-di-0": nie można uzyskać dostępu do profilu "\\as1-ASCS \ sapmnt \ AS1 \ SYS \ profil \ AS1_D00_as1-di-0": Brak pliku lub katalogu ").
   * Rozwiązanie  
    Upewnij się, że udział sapmnt na ASCS/SCS ma pełny dostęp do SAP_AS1_GlobalAdmin
 
 * Błąd w kroku *włączania ochrony uruchamiania dla klonu*
-  * Nie można otworzyć pliku "\\AS1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0". Przyczyna: Nie ma takiego pliku lub katalogu
+  * Nie można otworzyć pliku "\\as1-ASCS \ sapmnt \ AS1 \ SYS \ profil \ AS1_D00_as1-di-0" Nmożliwa Przyczyna: Brak pliku lub katalogu
   * Rozwiązanie  
     Konto komputera serwera aplikacji musi mieć dostęp do zapisu w profilu
 
 ### <a name="errors-and-warnings-during-create-system-replication"></a>Błędy i ostrzeżenia podczas tworzenia replikacji systemu
 
 * Wyjątek podczas klikania opcji Utwórz replikację systemu
-  * Spowodowane przez: com. SAP. NW. lm. ACI. Engine. Base. API. util. Exception. HAOperationException wywoływanie "/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level =\;0 status =\;5 port = 35013 PF =/usr/SAP/hostctrl /exe/host_profile-R-T dev_lvminfo-u SYSTEM-p hak-R "| /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-r-T dev_lvminfo-u system-p Hook-r
+  * Spowodowane przez: com. SAP. NW. lm. ACI. Engine. Base. API. util. Exception. HAOperationException wywołanie "/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 @ no__t-0status = 5 @ no__t-1port = 35013 PF =/usr/SAP/hostctrl/exe/host_ Profil-R-T dev_lvminfo-u SYSTEM-p Hook-R ' | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 @ no__t-2status = 5 @ no__t-3port = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-R-T dev_lvminfo-u SYSTEM-p Hook-r
   * Rozwiązanie  
-    Testuj, czy sapacext można wykonać jako `<hanasid`> adm
+    Testuj, czy sapacext można wykonać jako `<hanasid` > adm
 
 * Błąd, gdy pełna kopia nie jest włączona w kroku magazynu
   * Wystąpił błąd podczas raportowania komunikatu atrybutu kontekstu dla ścieżki IStorageCopyData. storageVolumeCopyList: 1 i pola targetStorageSystemId
@@ -496,68 +496,68 @@ W *wystąpieniu podstawowego serwera aplikacji*okna dialogowego Użyj *AS1-di-0*
     Dodaj eksporty ASCS do profilu ASCS HostAgent. Zobacz uwagi dotyczące oprogramowania SAP [2628497]
 
 * Funkcja nie została zaimplementowana podczas relokalizacji ASCS
-  * Dane wyjściowe polecenia: exportfs: Host:/usr/SAP/AX1: Funkcja nie została zaimplementowana
+  * Dane wyjściowe polecenia: exportfs: Host:/usr/SAP/AX1: funkcja nie została zaimplementowana
   * Rozwiązanie  
     Upewnij się, że usługa serwera NFS jest włączona na docelowej maszynie wirtualnej.
 
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Błędy i ostrzeżenia podczas instalacji serwera aplikacji
 
 * Wystąpił błąd podczas wykonywania kroku SAPinst: getProfileDir
-  * PORN (Ostatni błąd zgłoszony przez krok: Przechwycono ESAPinstException w wywołaniu modułu: Moduł sprawdzania poprawności kroku "| NW_DI | IND | IND | IND | 0 | 0 | NW_GetSidFromProfiles | IND | IND | IND | getSid | 0 | NW_readProfileDir | IND | IND | IND | readProfile | 0 | getProfileDir ' zgłosił błąd: \As1-ascs\sapmnt\AS1\SYS\profile \\węzła nie istnieje. Uruchom SAPinst w trybie interaktywnym, aby rozwiązać ten problem)
+  * Błąd: (ostatni błąd zgłoszony przez krok: przechwycono ESAPinstException w wywołaniu modułu: walidator kroku "| NW_DI | IND | IND | IND | 0 | 0 | NW_GetSidFromProfiles | IND | IND | IND | getSid | 0 | NW_readProfileDir | IND | IND | IND | readProfile | 0 | getProfileDir ' zgłosił błąd: węzeł \\ \ as1-ascs\sapmnt\AS1\SYS\profile nie istnieje. Uruchom SAPinst w trybie interaktywnym, aby rozwiązać ten problem)
   * Rozwiązanie  
     Upewnij się, że SWPM jest uruchomiony z użytkownikiem, który ma dostęp do profilu. Ten użytkownik można skonfigurować w Kreatorze instalacji serwera aplikacji
 
 * Wystąpił błąd podczas wykonywania kroku SAPinst: askUnicode
-  * PORN (Ostatni błąd zgłoszony przez krok: Przechwycono ESAPinstException w wywołaniu modułu: Moduł sprawdzania poprawności kroku "| NW_DI | IND | IND | IND | 0 | 0 | NW_GetSidFromProfiles | IND | IND | IND | getSid | 0 | NW_getUnicode | IND | IND | IND | "Unicode | 0 | askUnicode" zgłosił błąd: Uruchom SAPinst w trybie interaktywnym, aby rozwiązać ten problem)
+  * Błąd: (ostatni błąd zgłoszony przez krok: przechwycono ESAPinstException w wywołaniu modułu: walidator kroku "| NW_DI | IND | IND | IND | 0 | 0 | NW_GetSidFromProfiles | IND | IND | IND | getSid | 0 | NW_getUnicode | IND | IND | IND | "Unicode | 0 | askUnicode" zgłosił błąd: Rozpocznij SAPinst w trybie interaktywnym, aby rozwiązać ten problem.
   * Rozwiązanie  
     W przypadku korzystania z najnowszego jądra SAP SWPM nie może określić, czy system jest już systemem Unicode przy użyciu serwera komunikatów ASCS. Aby uzyskać więcej informacji, zobacz temat SAP Note [2445033] .  
     Ten problem zostanie rozwiązany w nowym pakiecie obsługi/poprawek oprogramowania SAP LaMa.  
     Aby obejść ten problem, ustaw parametr profilu OS_UNICODE = UC w profilu domyślnym systemu SAP.
 
 * Wystąpił błąd podczas wykonywania kroku SAPinst: dCheckGivenServer
-  * Wystąpił błąd podczas wykonywania kroku SAPinst: dCheckGivenServer "Version =" 1.0 ": (Ostatni błąd zgłoszony przez krok: \<p > Instalacja została anulowana przez użytkownika. \</p>
+  * Wystąpił błąd podczas wykonywania kroku SAPinst: dCheckGivenServer "Version =" 1.0 "ERROR: (ostatni błąd zgłoszony przez krok: Instalacja > \<p została anulowana przez użytkownika. \</p >
   * Rozwiązanie  
     Upewnij się, że SWPM jest uruchomiony z użytkownikiem, który ma dostęp do profilu. Ten użytkownik można skonfigurować w Kreatorze instalacji serwera aplikacji
 
 * Wystąpił błąd podczas wykonywania kroku SAPinst: checkClient
-  * Wystąpił błąd podczas wykonywania kroku SAPinst: checkClient "Version =" 1.0 ": (Ostatni błąd zgłoszony przez krok: \<p > Instalacja została anulowana przez użytkownika. \</p>)
+  * Wystąpił błąd podczas wykonywania kroku SAPinst: checkClient "Version =" 1.0 "ERROR: (ostatni błąd zgłoszony przez krok: Instalacja > \<p została anulowana przez użytkownika. \</p >)
   * Rozwiązanie  
     Upewnij się, że sterownik Microsoft ODBC dla SQL Server jest zainstalowany na maszynie wirtualnej, na której chcesz zainstalować serwer aplikacji
 
 * Wystąpił błąd podczas wykonywania kroku SAPinst: copyScripts
-  * Ostatni błąd zgłoszony przez krok: Wywołanie systemowe nie powiodło się. UZYSKAĆ Błąd 13 (0x0000000d) (odmowa uprawnień) podczas wykonywania wywołania systemowego "fopenU" z parametrem (\\\ AS1-ASCS/sapmnt/AS1/sys/exe/UC/NTAMD64/strdbs. cmd, w), line (494) w pliku (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/Impl/src/syslib /FileSystem/syxxcfstrm2.cpp), ślad stosu:  
-  CThrThread.cpp: 85: CThrThread::threadFunction()  
-  CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
-  CSiStepExecute. cpp: 913: CSiStepExecute::execute()  
-  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase::call()  
-  iaxxcfile.cpp: 183: iastring CIaOsFileConnect:: callMemberFunction (iastring const & Name, args_t const & args)  
-  iaxxcfile.cpp: 1849: iastring CIaOsFileConnect:: newFileStream (args_t const & _args)  
-  iaxxbfile. cpp: 773: CIaOsFile::newFileStream_impl(4)  
-  syxxcfile. cpp: 233: CSyFileImpl::openStream(ISyFile::eFileOpenMode)  
-  syxxcfstrm. cpp: 29: CSyFileStreamImpl::CSyFileStreamImpl(CSyFileStream*,iastring,ISyFile::eFileOpenMode)  
+  * Ostatni błąd zgłoszony przez krok: wywołanie systemowe nie powiodło się. Szczegóły: błąd 13 (0x0000000d) (odmowa uprawnień) podczas wykonywania wywołania systemowego "fopenU" z parametrem (\\ \ AS1-ASCS/sapmnt/AS1/SYS/exe/UC/NTAMD64/strdbs. cmd, w), wiersz (494) w pliku (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/Impl/src/ syslib/FileSystem/syxxcfstrm2. cpp), ślad stosu:  
+  CThrThread. cpp: 85: CThrThread:: threadFunction ()  
+  CSiServiceSet. cpp: 63: CSiServiceSet:: executeService ()  
+  CSiStepExecute. cpp: 913: CSiStepExecute:: Execute ()  
+  EJSController. cpp: 179: EJSControllerImpl:: metodę executescript ()  
+  JSExtension. HPP: 1136: CallFunctionBase:: call ()  
+  iaxxcfile. cpp: 183: iastring CIaOsFileConnect:: callMemberFunction (iastring const & Name, args_t const & args)  
+  iaxxcfile. cpp: 1849: iastring CIaOsFileConnect:: newFileStream (args_t const & _args)  
+  iaxxbfile. cpp: 773: CIaOsFile:: newFileStream_impl (4)  
+  syxxcfile. cpp: 233: CSyFileImpl:: openStream (ISyFile:: eFileOpenMode)  
+  syxxcfstrm. cpp: 29: CSyFileStreamImpl:: CSyFileStreamImpl (CSyFileStream *, iastring, ISyFile:: eFileOpenMode)  
   syxxcfstrm. cpp: 265: CSyFileStreamImpl:: Open ()  
-  syxxcfstrm2. cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (const CSyPath & \\\ AW1-ASCS/sapmnt/AW1/sys/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
+  syxxcfstrm2. cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (const CSyPath & \\ \ AW1-ASCS/sapmnt/AW1/SYS/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
   syxxcfstrm2. cpp: 456: CSyFileStream2Impl:: Open ()
   * Rozwiązanie  
     Upewnij się, że SWPM jest uruchomiony z użytkownikiem, który ma dostęp do profilu. Ten użytkownik można skonfigurować w Kreatorze instalacji serwera aplikacji
 
 * Wystąpił błąd podczas wykonywania kroku SAPinst: askPasswords
-  * Ostatni błąd zgłoszony przez krok: Wywołanie systemowe nie powiodło się. UZYSKAĆ Błąd 5 (0x00000005) (odmowa dostępu.) podczas wykonywania wywołania systemowego "NetValidatePasswordPolicy" z parametrem (...), wierszem (359) w pliku (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/Impl/src/syslib/Account/synxcaccmg. cpp), ślad stosu:  
-  CThrThread.cpp: 85: CThrThread::threadFunction()  
-  CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
-  CSiStepExecute. cpp: 913: CSiStepExecute::execute()  
-  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase::call()  
-  CSiStepExecute. cpp: 764: CSiStepExecute::invokeDialog()  
-  DarkModeGuiEngine.cpp: 56: DarkModeGuiEngine::showDialogCalledByJs()  
-  DarkModeDialog.cpp: 85: DarkModeDialog::submit()  
-  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase::call()  
-  iaxxcaccount.cpp: 107: iastring CIaOsAccountConnect:: callMemberFunction (iastring const & Name, args_t const & args)  
-  iaxxcaccount.cpp: 1186: iastring CIaOsAccountConnect:: validatePasswordPolicy (args_t const & _args)  
-  iaxxbaccount. cpp: 430: CIaOsAccount::validatePasswordPolicy_impl()  
-  synxcaccmg.cpp: 297: ISyAccountMgt::P asswordValidationMessage CSyAccountMgtImpl:: validatePasswordPolicy (saponazure, * * * * *) const)
+  * Ostatni błąd zgłoszony przez krok: wywołanie systemowe nie powiodło się. Szczegóły: błąd 5 (0x00000005) (odmowa dostępu) w trakcie wykonywania wywołania systemowego "NetValidatePasswordPolicy" z parametrem (...), wierszem (359) w pliku (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/Impl/src/syslib/Account/synxcaccmg. cpp), ślad stosu:  
+  CThrThread. cpp: 85: CThrThread:: threadFunction ()  
+  CSiServiceSet. cpp: 63: CSiServiceSet:: executeService ()  
+  CSiStepExecute. cpp: 913: CSiStepExecute:: Execute ()  
+  EJSController. cpp: 179: EJSControllerImpl:: metodę executescript ()  
+  JSExtension. HPP: 1136: CallFunctionBase:: call ()  
+  CSiStepExecute. cpp: 764: CSiStepExecute:: invokeDialog ()  
+  DarkModeGuiEngine. cpp: 56: DarkModeGuiEngine:: showDialogCalledByJs ()  
+  DarkModeDialog. cpp: 85: DarkModeDialog:: Submit ()  
+  EJSController. cpp: 179: EJSControllerImpl:: metodę executescript ()  
+  JSExtension. HPP: 1136: CallFunctionBase:: call ()  
+  iaxxcaccount. cpp: 107: iastring CIaOsAccountConnect:: callMemberFunction (iastring const & Name, args_t const & args)  
+  iaxxcaccount. cpp: 1186: iastring CIaOsAccountConnect:: validatePasswordPolicy (args_t const & _args)  
+  iaxxbaccount. cpp: 430: CIaOsAccount:: validatePasswordPolicy_impl ()  
+  synxcaccmg. cpp: 297: ISyAccountMgt::P asswordValidationMessage CSyAccountMgtImpl:: validatePasswordPolicy (saponazure, * * * * *) const)
   * Rozwiązanie  
     Upewnij się, że dodano regułę hosta z *izolacją* krokową, aby umożliwić komunikację z maszyną wirtualną z kontrolerem domeny
 

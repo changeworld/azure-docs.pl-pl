@@ -1,123 +1,123 @@
 ---
-title: Wdrażaj zasoby platformy Azure za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
-description: Wdrożyć swoje zasoby za pomocą witryny Azure portal i usługi Azure Resource Manager.
+title: Użyj Azure Portal, aby wdrożyć zasoby platformy Azure | Microsoft Docs
+description: Użyj Azure Portal i Zarządzaj zasobami platformy Azure, aby wdrożyć swoje zasoby w grupie zasobów w ramach subskrypcji.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: a171d9b4f054c942eebb08e7e11dd1164545f408
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 249afcaad85d9031e0972d4fcfc185b5ff890f65
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460322"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390345"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)
 
-Dowiedz się, jak używać [witryny Azure portal](https://portal.azure.com) z [usługi Azure Resource Manager](resource-group-overview.md) do wdrażania zasobów platformy Azure. Aby dowiedzieć się więcej o zarządzaniu swoimi zasobami, zobacz [zarządzanie zasobami platformy Azure przy użyciu witryny Azure portal](manage-resources-portal.md).
+Dowiedz się, jak używać [Azure Portal](https://portal.azure.com) z [Azure Resource Manager](resource-group-overview.md) do wdrażania zasobów platformy Azure. Aby dowiedzieć się więcej o zarządzaniu zasobami, zobacz [Zarządzanie zasobami platformy Azure przy użyciu Azure Portal](manage-resources-portal.md).
 
-Wdrażanie zasobów platformy Azure przy użyciu witryny Azure portal, zwykle obejmuje dwa kroki:
+Wdrażanie zasobów platformy Azure przy użyciu Azure Portal zwykle obejmuje dwa kroki:
 
 - Utwórz grupę zasobów.
-- Wdrażanie zasobów w grupie zasobów.
+- Wdróż zasoby w grupie zasobów.
 
-Ponadto można także wdrożyć szablon usługi Azure Resource Manager do tworzenia zasobów platformy Azure.
+Ponadto można również wdrożyć szablon Azure Resource Manager, aby utworzyć zasoby platformy Azure.
 
 W tym artykule przedstawiono obie metody.
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
-1. Aby utworzyć nową grupę zasobów, wybierz **grup zasobów** z [witryny Azure portal](https://portal.azure.com).
+1. Aby utworzyć nową grupę zasobów, wybierz pozycję **grupy zasobów** z [Azure Portal](https://portal.azure.com).
 
-   ![Wybór grup zasobów](./media/resource-group-template-deploy-portal/select-resource-groups.png)
+   ![Wybierz grupy zasobów](./media/resource-group-template-deploy-portal/select-resource-groups.png)
 
-1. W obszarze grupy zasobów wybierz **Dodaj**.
+1. W obszarze grupy zasobów wybierz pozycję **Dodaj**.
 
    ![Dodaj grupę zasobów](./media/resource-group-template-deploy-portal/add-resource-group.png)
 
 1. Wybierz lub wprowadź następujące wartości właściwości:
 
-    - **Subskrypcja**: Wybierz subskrypcję platformy Azure.
-    - **Grupa zasobów**: Nazwij grupę zasobów.
-    - **Region**: Określ lokalizację platformy Azure. Jest to, gdy grupa zasobów przechowuje metadane dotyczące zasobów. Ze względu na zasady zgodności można określić miejsce przechowywania tych metadanych. Ogólnie rzecz biorąc firma Microsoft zaleca, aby określić lokalizację, w której będą znajdować się większość zasobów. Przy użyciu tej samej lokalizacji można uproszczenie szablonu.
+    - **Subskrypcja**: wybierz subskrypcję platformy Azure.
+    - **Grupa zasobów**: nadaj nazwę grupie zasobów.
+    - **Region**: Określ lokalizację platformy Azure. Jest to miejsce, w którym Grupa zasobów przechowuje metadane dotyczące zasobów. Ze względów związanych ze zgodnością warto określić miejsce przechowywania metadanych. Ogólnie rzecz biorąc, zalecamy określenie lokalizacji, w której będą znajdować się większość zasobów. Korzystanie z tej samej lokalizacji może uprościć szablon.
 
    ![Ustawianie wartości grupy](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
 1. Wybierz pozycję **Przegląd + utwórz**.
-1. Sprawdź wartości, a następnie wybierz **Utwórz**.
-1. Wybierz **Odśwież** zanim zobaczysz nową grupę zasobów, na liście.
+1. Przejrzyj wartości, a następnie wybierz pozycję **Utwórz**.
+1. Wybierz pozycję **Odśwież** , aby wyświetlić nową grupę zasobów na liście.
 
 ## <a name="deploy-resources-to-a-resource-group"></a>Wdrażanie zasobów w grupie zasobów
 
-Po utworzeniu grupy zasobów, możesz wdrożyć zasoby do grupy w portalu Marketplace. Portal Marketplace oferuje rozwiązania wstępnie zdefiniowane dla typowych scenariuszy.
+Po utworzeniu grupy zasobów można wdrożyć zasoby w grupie z portalu Marketplace. Portal Marketplace zawiera wstępnie zdefiniowane rozwiązania dla typowych scenariuszy.
 
-1. Aby uruchomić wdrożenie, zaznacz **Utwórz zasób** z [witryny Azure portal](https://portal.azure.com).
+1. Aby rozpocząć wdrożenie, wybierz pozycję **Utwórz zasób** na podstawie [Azure Portal](https://portal.azure.com).
 
    ![Nowy zasób](./media/resource-group-template-deploy-portal/new-resources.png)
 
-1. Znajdź typ zasobu, który chcesz wdrożyć. Zasoby są zorganizowane w kategoriach. Jeśli nie widać danego rozwiązania, które chcesz wdrożyć, możesz wyszukać rynku go. Poniższy zrzut ekranu pokazuje, że jest zaznaczony serwer Ubuntu.
+1. Znajdź Typ zasobu, który chcesz wdrożyć. Zasoby są zorganizowane w kategorii. Jeśli nie widzisz konkretnego rozwiązania, które chcesz wdrożyć, możesz wyszukać je w portalu Marketplace. Poniższy zrzut ekranu pokazuje, że wybrano serwer Ubuntu.
 
    ![Wybierz typ zasobu](./media/resource-group-template-deploy-portal/select-resource-type.png)
 
-1. W zależności od typu wybranego zasobu masz kolekcję odpowiednich właściwości można ustawić przed wdrożeniem. Dla wszystkich typów należy wybrać docelowa grupa zasobów. Na poniższej ilustracji przedstawiono sposób tworzenia maszyny wirtualnej systemu Linux i wdrożyć ją na utworzoną grupę zasobów.
+1. W zależności od typu wybranego zasobu masz kolekcję odpowiednich właściwości do ustawienia przed wdrożeniem. Dla wszystkich typów należy wybrać docelową grupę zasobów. Na poniższej ilustracji pokazano, jak utworzyć maszynę wirtualną z systemem Linux i wdrożyć ją w utworzonej grupie zasobów.
 
    ![Tworzenie grupy zasobów](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
-   Alternatywnie możesz zdecydować się na utworzenie grupy zasobów, podczas wdrażania zasobów. Wybierz **Utwórz nową** i nadaj nazwę grupie zasobów.
+   Alternatywnie można utworzyć grupę zasobów podczas wdrażania zasobów. Wybierz pozycję **Utwórz nową** i nadaj grupie zasobów nazwę.
 
-1. Rozpocznie się wdrożenie. Wdrożenie może potrwać kilka minut. Niektóre zasoby trwać dłużej niż inne zasoby. Po zakończeniu wdrażania zostanie wyświetlone powiadomienie. Wybierz **przejdź do zasobu** do otwarcia
+1. Wdrożenie rozpocznie się. Wdrożenie może potrwać kilka minut. Niektóre zasoby będą trwać dłużej niż w przypadku innych zasobów. Po zakończeniu wdrażania zostanie wyświetlone powiadomienie. Wybierz pozycję **Przejdź do zasobu** , aby otworzyć
 
-   ![Wyświetl powiadomienia](./media/resource-group-template-deploy-portal/view-notification.png)
+   ![Wyświetl powiadomienie](./media/resource-group-template-deploy-portal/view-notification.png)
 
-1. Po wdrożeniu Twoich zasobów, można dodać więcej zasobów do grupy zasobów, wybierając **Dodaj**.
+1. Po wdrożeniu zasobów możesz dodać więcej zasobów do grupy zasobów, wybierając pozycję **Dodaj**.
 
    ![Dodaj zasób](./media/resource-group-template-deploy-portal/add-resource.png)
 
-## <a name="deploy-resources-from-custom-template"></a>Wdrażanie zasobów za pomocą szablonu niestandardowego
+## <a name="deploy-resources-from-custom-template"></a>Wdróż zasoby z szablonu niestandardowego
 
-Jeśli chcesz wykonać wdrożenie, ale nie mogą używać tych szablonów w portalu Marketplace, można utworzyć szablon niestandardowy, który definiuje infrastrukturę Twojego rozwiązania. Aby dowiedzieć się więcej na temat tworzenia szablonów, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](resource-group-authoring-templates.md).
+Jeśli chcesz wykonać wdrożenie, ale nie używasz żadnego z szablonów w portalu Marketplace, możesz utworzyć dostosowany szablon, który definiuje infrastrukturę rozwiązania. Aby dowiedzieć się więcej na temat tworzenia szablonów, zobacz [Opis struktury i składni szablonów Azure Resource Manager](resource-group-authoring-templates.md).
 
 > [!NOTE]
-> W interfejsie portalu nie obsługuje odwołujące się do [wpisu tajnego z usługi Key Vault](resource-manager-keyvault-parameter.md). Zamiast tego należy użyć [PowerShell](resource-group-template-deploy.md) lub [wiersza polecenia platformy Azure](resource-group-template-deploy-cli.md) do wdrażania szablonu, lokalnie lub za pośrednictwem zewnętrznego identyfikatora URI.
+> Interfejs portalu nie obsługuje odwoływania się do [wpisu tajnego z Key Vault](resource-manager-keyvault-parameter.md). Zamiast tego należy użyć [programu PowerShell](resource-group-template-deploy.md) lub [interfejsu wiersza polecenia platformy Azure](resource-group-template-deploy-cli.md) do wdrożenia szablonu lokalnie lub z zewnętrznego identyfikatora URI.
 
-1. Aby wdrożyć szablon niestandardowy, za pośrednictwem portalu, wybierz **Utwórz zasób**, wyszukaj **szablonu**. a następnie wybierz **wdrożenie szablonu**.
+1. Aby wdrożyć dostosowany szablon za pomocą portalu, wybierz pozycję **Utwórz zasób**, Wyszukaj **szablon**. a następnie wybierz pozycję **Template Deployment**.
 
-   ![Wdrożenie szablonu wyszukiwania](./media/resource-group-template-deploy-portal/search-template.png)
+   ![Wyszukaj wdrożenie szablonu](./media/resource-group-template-deploy-portal/search-template.png)
 
 1. Wybierz pozycję **Utwórz**.
-1. Zostaną wyświetlone kilka opcji umożliwiających tworzenie szablonu:
+1. Zobaczysz kilka opcji tworzenia szablonu:
 
-    - **Utwórz własny szablon w edytorze**: Tworzenie szablonu przy użyciu szablonu portalu edytora.  Edytor jest w stanie dodać schemat szablonu zasobów.
-    - **Wspólnych szablonów**: Istnieją cztery templatess wspólne do tworzenia maszyny wirtualnej systemu Linux, maszyna wirtualna Windows, aplikacji sieci web i bazy danych Azure SQL.
-    - **Załaduj szablon szybkiego startu usługi GitHub**: Użyj istniejącego [szablony szybkiego startu](https://azure.microsoft.com/resources/templates/).
+    - **Kompiluj własny szablon w edytorze**: Utwórz szablon przy użyciu edytora szablonów portalu.  Edytor może dodać schemat szablonu zasobu.
+    - **Common templates**: Istnieją cztery popularne szablony służące do tworzenia maszyny wirtualnej z systemem Linux, maszyny wirtualnej systemu Windows, aplikacji sieci Web i bazy danych SQL Azure.
+    - **Załaduj szablon szybkiego startu usługi GitHub**: Użyj istniejących [szablonów szybkiego startu](https://azure.microsoft.com/resources/templates/).
 
-   ![Opcje wyświetlania](./media/resource-group-template-deploy-portal/see-options.png)
+   ![Opcje widoku](./media/resource-group-template-deploy-portal/see-options.png)
 
-    Ten samouczek zawiera instrukcję podczas ładowania szablonu szybkiego startu.
+    Ten samouczek zawiera instrukcje dotyczące ładowania szablonu szybkiego startu.
 
-1. W obszarze **Załaduj szablon szybkiego startu usługi GitHub**, wpisz lub wybierz **101-storage konta create**.
+1. W obszarze **ładowanie szablonu szybkiego startu usługi GitHub**wpisz lub wybierz pozycję **101-Storage-account-Create**.
 
     Dostępne są dwie opcje:
 
-    - **Wybierz szablon**: wdrożenia szablonu.
-    - **Edytuj szablon**: Edytuj szablon szybkiego startu, przed jego wdrożeniem.
+    - **Wybierz szablon**: Wdróż szablon.
+    - **Edytuj szablon**: Edytuj szablon szybkiego startu przed jego wdrożeniem.
 
-1. Wybierz **Edytuj szablon** do eksplorowania edytor szablonów portalu. Szablon jest ładowany w edytorze. Zwróć uwagę, istnieją dwa parametry: **storageAccountType** i **lokalizacji**.
+1. Wybierz pozycję **Edytuj szablon** , aby poznać Edytor szablonów portalu. Szablon jest ładowany w edytorze. Należy zauważyć, że istnieją dwa parametry: **storageAccountType** i **Location**.
 
    ![Tworzenie szablonu](./media/resource-group-template-deploy-portal/show-json.png)
 
-1. Wprowadź drobne zmiany do szablonu. Na przykład aktualizacji **storageAccountName** zmienną:
+1. Wprowadź drobne zmiany w szablonie. Na przykład zaktualizuj zmienną **storageAccountName** do:
 
     ```json
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
     ```
 
-1. Wybierz pozycję **Zapisz**. Spowoduje to wyświetlenie interfejs wdrażania szablonu portalu. Należy zauważyć dwa parametry, które są zdefiniowane w szablonie.
+1. Wybierz pozycję **Zapisz**. Teraz zostanie wyświetlony interfejs wdrożenia szablonu portalu. Zwróć uwagę na dwa parametry zdefiniowane w szablonie.
 1. Wprowadź lub wybierz wartości właściwości:
 
-    - **Subskrypcja**: Wybierz subskrypcję platformy Azure.
-    - **Grupa zasobów**: Wybierz **Utwórz nową** i nadaj nazwę.
+    - **Subskrypcja**: wybierz subskrypcję platformy Azure.
+    - **Grupa zasobów**: wybierz pozycję **Utwórz nową** i nadaj jej nazwę.
     - **Lokalizacja**: Wybierz lokalizację platformy Azure.
     - **Typ konta magazynu**: Użyj wartości domyślnej.
     - **Lokalizacja**: Użyj wartości domyślnej.
@@ -125,9 +125,9 @@ Jeśli chcesz wykonać wdrożenie, ale nie mogą używać tych szablonów w port
 
 1. Wybierz pozycję **Kup**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby wyświetlić dzienniki inspekcji, zobacz [inspekcji operacji przy użyciu usługi Resource Manager](./resource-group-audit.md).
-- Aby rozwiązać błędy związane z wdrażaniem, zobacz [wyświetlanie operacji wdrażania](./resource-manager-deployment-operations.md).
-- Aby wyeksportować szablon z wdrożenia lub grupy zasobów, zobacz [eksportu usługi Azure Resource Manager](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
-- Aby bezpiecznie wdrożyć usługę w wielu regionach, zobacz [Azure Deployment Manager](./deployment-manager-overview.md).
+- Aby wyświetlić dzienniki inspekcji, zobacz [operacje inspekcji z Menedżer zasobów](./resource-group-audit.md).
+- Aby rozwiązać problemy z błędami wdrażania, zobacz [Wyświetlanie operacji wdrażania](./resource-manager-deployment-operations.md).
+- Aby wyeksportować szablon z wdrożenia lub grupy zasobów, zobacz [eksportowanie Azure Resource Manager szablonów](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+- Aby bezpiecznie wdrożyć usługę w wielu regionach, zobacz [Azure Menedżer wdrażania](./deployment-manager-overview.md).

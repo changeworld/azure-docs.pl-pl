@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: d762bddbe098e30cbf9e9c02da3c06073a358b12
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249252"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387871"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Przekształcenie przeszukiwania przepływu danych Azure Data Factory mapowania
 
 Użyj wyszukiwania, aby dodać dane referencyjne z innego źródła do przepływu danych. Transformacja wyszukiwania wymaga zdefiniowanego źródła wskazującego tabelę referencyjną i dopasowuje się do pól kluczy.
 
-(media/data-flow/lookup1.png "Wyszukiwanie") ![transformacji wyszukiwania]
+![Transformacja wyszukiwania](media/data-flow/lookup1.png "Wyszukiwanie")
 
 Wybierz pola klucza, które chcesz dopasować między polami strumienia przychodzącego a polami ze źródła odwołania. Najpierw należy utworzyć nowe źródło na kanwie projektu przepływu danych do użycia jako po prawej stronie dla wyszukiwania.
 
@@ -33,7 +33,7 @@ Po przekształceniu wyszukiwania można użyć kolejnych przekształceń, aby sp
 
 W Data Factory przepływy danych są wykonywane w skalowanych środowiskach Spark. Jeśli zestaw danych może pasować do przestrzeni pamięci węzła procesu roboczego, możemy zoptymalizować wydajność wyszukiwania.
 
-(media/data-flow/broadcast.png "Sprzężenie emisji") ![sprzężenia]emisji
+![Sprzężenie emisji](media/data-flow/broadcast.png "Sprzężenie emisji")
 
 ### <a name="broadcast-join"></a>Sprzężenie emisji
 

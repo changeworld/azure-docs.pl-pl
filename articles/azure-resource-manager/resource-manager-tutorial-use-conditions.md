@@ -1,6 +1,6 @@
 ---
 title: Używanie warunków w szablonach usługi Azure Resource Manager | Microsoft Docs
-description: Dowiedz się, jak wdrażać zasoby platformy Azure na podstawie warunków.
+description: Dowiedz się, jak wdrażać zasoby platformy Azure na podstawie warunków. Pokazuje, jak wdrożyć nowy zasób lub użyć istniejącego zasobu.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 50c6c2a1f8be979d10b77793adb168e6bd276e49
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5fa1db5131f555c92aa12fc01a109469c2cf819e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258866"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390189"
 ---
-# <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Samouczek: Używanie warunków w szablonach usługi Azure Resource Manager
+# <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Samouczek: używanie warunków w szablonach usługi Azure Resource Manager
 
 Dowiedz się, jak wdrażać zasoby platformy Azure na podstawie warunków.
 
@@ -38,7 +38,7 @@ Ten samouczek obejmuje następujące zadania:
 
 Ten samouczek obejmuje tylko podstawowy scenariusz użycia warunków. Aby uzyskać więcej informacji, zobacz:
 
-* [Struktura pliku szablonu: Warunek](conditional-resource-deployment.md).
+* [Struktura pliku szablonu: warunek](conditional-resource-deployment.md).
 * [Warunkowego wdrażania zasobu w szablonie Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
 * [Funkcja szablonu: Jeśli](./resource-group-template-functions-logical.md#if).
 * [Funkcje porównania dla Azure Resource Manager szablonów](./resource-group-template-functions-comparison.md)
@@ -56,7 +56,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
     openssl rand -base64 32
     ```
 
-    Usługa Azure Key Vault została zaprojektowana w celu ochrony kluczy kryptograficznych i innych wpisów tajnych. Aby uzyskać więcej informacji, zobacz [Samouczek: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md). Zalecamy również aktualizowanie hasła co trzy miesiące.
+    Usługa Azure Key Vault została zaprojektowana w celu ochrony kluczy kryptograficznych i innych wpisów tajnych. Aby uzyskać więcej informacji, zobacz [Samouczek: integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md). Zalecamy również aktualizowanie hasła co trzy miesiące.
 
 ## <a name="open-a-quickstart-template"></a>Otwieranie szablonu szybkiego startu
 

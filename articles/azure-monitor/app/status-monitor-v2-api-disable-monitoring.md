@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Wyłącz monitorowanie | Microsoft Docs'
-description: Dokumentacja interfejsu API monitor stanu v2. Disable-ApplicationInsightsMonitoring. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: 'Informacje o interfejsie API usługi Azure Application Insights Agent: Wyłącz monitorowanie | Microsoft Docs'
+description: Dokumentacja interfejsu API agenta Application Insights. Disable-ApplicationInsightsMonitoring. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: af105a6a819ced475f490d3c99fc1e63d8eee5c8
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d305e664c68af34027510a4e27d293bb24abc021
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203433"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389898"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>Interfejs API monitor stanu v2: Disable-ApplicationInsightsMonitoring
+# <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Interfejs API agenta Application Insights: Disable-ApplicationInsightsMonitoring
 
 W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -42,7 +42,7 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ### <a name="-verbose"></a>-Verbose
 **Wspólny parametr.** Użyj tego przełącznika, aby wyświetlić szczegółowe dzienniki.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Dane wyjściowe
 
 
 #### <a name="example-output-from-successfully-disabling-monitoring"></a>Przykładowe dane wyjściowe z pomyślnym wyłączeniem monitorowania
@@ -71,5 +71,5 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="next-steps"></a>Następne kroki
 
- Więcej informacji o monitor stanu v2:
- - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.
+ Zrób więcej dzięki Application Insights agentowi:
+ - Skorzystaj z naszego przewodnika, aby [rozwiązać problemy z](status-monitor-v2-troubleshoot.md) agentem Application Insights.

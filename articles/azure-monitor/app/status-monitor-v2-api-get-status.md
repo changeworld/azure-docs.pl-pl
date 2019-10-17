@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Pobierz stan | Microsoft Docs'
-description: Dokumentacja interfejsu API monitor stanu v2. Get-ApplicationInsightsMonitoringStatus. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Działa z aplikacjami internetowymi platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure.
+title: 'Dokumentacja interfejsu API usługi Azure Application Insights Agent: pobieranie stanu | Microsoft Docs'
+description: Dokumentacja interfejsu API agenta Application Insights. Get-ApplicationInsightsMonitoringStatus. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Działa z aplikacjami internetowymi platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3982e7eb78c1113c73a8e7e9d7b00ad403ac486
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6e103e1856e338669224540a991c4b9ea6b10d6d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058254"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389871"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>Interfejs API monitor stanu v2: Get-ApplicationInsightsMonitoringStatus
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Interfejs API agenta Application Insights: Get-ApplicationInsightsMonitoringStatus
 
 W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -34,9 +34,9 @@ To polecenie cmdlet będzie zgłaszać informacje o wersji i informacje o plikac
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="example-application-status"></a>Przykład: Stan aplikacji
+### <a name="example-application-status"></a>Przykład: stan aplikacji
 
-Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus` , aby wyświetlić stan monitorowania witryn sieci Web.
+Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus`, aby wyświetlić stan monitorowania witryn sieci Web.
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -80,9 +80,9 @@ W tym przykładzie:
 - **DemoWebApp333** został ręcznie Instrumentacja przy użyciu zestawu SDK Application Insights. Monitor stanu wykrył zestaw SDK i nie będzie monitorował tej lokacji.
 
 
-### <a name="example-powershell-module-information"></a>Przykład: Informacje o module programu PowerShell
+### <a name="example-powershell-module-information"></a>Przykład: informacje o module programu PowerShell
 
-Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` , aby wyświetlić informacje o bieżącym module:
+Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -PowerShellModule`, aby wyświetlić informacje dotyczące bieżącego modułu:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -134,7 +134,7 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-### <a name="example-runtime-status"></a>Przykład: Stan środowiska uruchomieniowego
+### <a name="example-runtime-status"></a>Przykład: stan środowiska uruchomieniowego
 
 Możesz sprawdzić proces na komputerze z instrumentacją, aby sprawdzić, czy wszystkie biblioteki DLL zostały załadowane. Jeśli monitorowanie działa, należy załadować co najmniej 12 bibliotek DLL.
 
@@ -204,5 +204,5 @@ Jeśli ten proces nie powiedzie się z jakiegokolwiek powodu, można uruchomić 
 
 ## <a name="next-steps"></a>Następne kroki
 
- Więcej informacji o monitor stanu v2:
- - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.
+ Zrób więcej dzięki Application Insights agentowi:
+ - Skorzystaj z naszego przewodnika, aby [rozwiązać problemy z](status-monitor-v2-troubleshoot.md) agentem Application Insights.

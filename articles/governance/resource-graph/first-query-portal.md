@@ -3,15 +3,15 @@ title: Uruchamianie pierwszego zapytania za pomocą Eksploratora Azure Resource 
 description: W tym artykule omówiono procedurę uruchamiania pierwszego zapytania z Azure Portal przy użyciu Eksploratora Azure Resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/29/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: d533d24f9bfe133955c0f503e2458c8fcb0bf1de
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981246"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387603"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Szybki Start: uruchamianie pierwszego zapytania grafu zasobów przy użyciu Eksploratora Azure Resource Graph
 
@@ -27,19 +27,19 @@ Otwórz [Azure Portal](https://portal.azure.com) , aby znaleźć i użyć Eksplo
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Eksplorator grafów zasobów**.
 
-1. W części **kwerenda 1** okna wprowadź zapytanie `project name, type | limit 5` i wybierz polecenie **Uruchom zapytanie**.
+1. W części **kwerenda 1** okna wprowadź zapytanie `Resources | project name, type | limit 5` i wybierz polecenie **Uruchom zapytanie**.
 
    > [!NOTE]
    > Ponieważ w tym przykładzie zapytania nie określono modyfikatora sortowania, takiego jak `order by`, uruchomienie tego zapytania wiele razy może spowodować, że zostanie wyznaczony inny zestaw zasobów dla każdego żądania.
 
 1. Zapoznaj się z odpowiedzią zapytania na karcie **wyniki** . Wybierz kartę **komunikaty** , aby wyświetlić szczegółowe informacje o zapytaniu, w tym liczbę wyników i czas trwania zapytania. Błędy, jeśli istnieją, są wyświetlane na tej karcie.
 
-1. Zaktualizuj zapytanie do `order by` Właściwość **name** : `project name, type | limit 5 | order by name asc`. Następnie wybierz pozycję **Uruchom zapytanie**.
+1. Zaktualizuj zapytanie do `order by` Właściwość **name** : `Resources | project name, type | limit 5 | order by name asc`. Następnie wybierz pozycję **Uruchom zapytanie**.
 
    > [!NOTE]
    > Tak samo jak w przypadku pierwszego zapytania, wielokrotne uruchomienie tego zapytania prawdopodobnie zwróci inny zestaw zasobów dla każdego żądania. Kolejność poleceń zapytania jest ważna. W tym przykładzie polecenie `order by` następuje po poleceniu `limit`. Spowoduje to najpierw ograniczenie wyników zapytania, a następnie ich uporządkowanie.
 
-1. Zaktualizuj zapytanie do pierwszej `order by` Właściwość **name** , a następnie `limit` do pięciu pierwszych wyników: `project name, type | order by name asc | limit 5`. Następnie wybierz pozycję **Uruchom zapytanie**.
+1. Zaktualizuj zapytanie do pierwszej `order by` Właściwość **name** , a następnie `limit` do pięciu pierwszych wyników: `Resources | project name, type | order by name asc | limit 5`. Następnie wybierz pozycję **Uruchom zapytanie**.
 
 Gdy ostateczne zapytanie jest uruchamiane kilka razy, przy założeniu, że żadne zmiany w środowisku nie są zmieniane, zwrócone wyniki są spójne i oczekiwane przez właściwość **name** , ale nadal są ograniczone do pięciu pierwszych wyników.
 
@@ -54,7 +54,8 @@ Po uruchomieniu ostatniego zapytania powyżej, jeśli wybierzesz kartę **wykres
 1. W części **kwerenda 1** okna wprowadź następujące zapytanie i wybierz polecenie **Uruchom zapytanie**.
 
    ```kusto
-   where type =~ 'Microsoft.Compute/virtualMachines'
+   Resources
+   | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 

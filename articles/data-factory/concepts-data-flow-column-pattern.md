@@ -1,17 +1,17 @@
 ---
-title: Azure Data Factory mapowanie wzorców kolumn przepływu danych
+title: Wzorce kolumn w Azure Data Factory mapowania przepływów danych
 description: Tworzenie uogólnionych wzorców transformacji danych przy użyciu Azure Data Factory wzorców kolumn w mapowaniu przepływów danych
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 535656f315f65ffb7aa241618fe9e73b8246b71f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a95bbb726f8c391270d3f60ed769d9475004b1e4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027868"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388022"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>Mapowanie wzorców kolumn przepływów danych
 
@@ -21,7 +21,7 @@ Niektóre przekształcenia przepływu danych Azure Data Factory obsługują konc
 
 Ta "elastyczna obsługa schematu" znajduje się obecnie w kolumnie pochodnej i przekształceniach agregacji, a także w transformacjach wybranych i ujścia jako "mapowanie oparte na regułach".
 
-(media/data-flow/columnpattern2.png "wzorce") kolumn ![wzorców kolumn]
+![wzorce kolumn](media/data-flow/columnpattern2.png "Wzorce kolumn")
 
 ## <a name="column-patterns"></a>Wzorce kolumn
 Wzorce kolumn są przydatne do obsługi zarówno scenariuszy dryfowania schematu, jak i ogólnych scenariuszy. Jest to dobre w przypadku warunków, w których nie można w pełni znać nazw kolumn. Można dopasować wzorzec do nazwy kolumny i typu danych kolumny i utworzyć wyrażenie do przekształcenia, które wykona tę operację względem dowolnego pola w strumieniu danych, które pasuje do `name` @ no__t-2 wzorców.
@@ -35,16 +35,16 @@ Jeśli zdecydujesz się użyć jednej z funkcji wyrażenia regularnego konstrukt
 Przykładowy scenariusz wzorca kolumny korzysta z SUM z serią pól przychodzących. Obliczenia SUM zagregowanych są w transformacji agregowanej. Następnie można użyć SUM dla każdego dopasowania typów pól, które pasują do wartości "Integer", a następnie użyć $ $, aby odwołać się do każdego dopasowania w wyrażeniu.
 
 ## <a name="match-columns"></a>Dopasuj kolumny
-typy wzorców ![kolumn](media/data-flow/pattern2.png "typów wzorców")
+![typy wzorców kolumn](media/data-flow/pattern2.png "Typy wzorców")
 
 Aby kompilować wzorce na podstawie kolumn, można dopasować nazwę kolumny, typ, strumień lub pozycję i użyć dowolnej kombinacji z funkcjami wyrażeń i wyrażeniami regularnymi.
 
-położenie(media/data-flow/position.png "kolumny") ![położenia]kolumny
+![położenie kolumny](media/data-flow/position.png "Położenie kolumny")
 
 ## <a name="rule-based-mapping"></a>Mapowanie oparte na regułach
 Podczas mapowania kolumn w źródle i wybierania przekształceń będzie dostępna opcja wyboru "stałe mapowanie" lub "mapowanie oparte na regułach". Gdy znasz schemat danych i oczekujesz określonych kolumn ze źródłowego zestawu danych, który zawsze pasuje do określonych nazw statycznych, możesz użyć stałego mapowania. Ale podczas pracy z elastycznymi schematami Użyj mapowania opartego na regułach. Można utworzyć dopasowanie wzorca przy użyciu reguł opisanych powyżej.
 
-(media/data-flow/rule2.png "Mapowanie oparte na regułach") ![mapowania opartego na regułach]
+![Mapowanie oparte na regułach](media/data-flow/rule2.png "Mapowanie oparte na regułach")
 
 Kompiluj reguły przy użyciu Konstruktora wyrażeń. Wyrażenia zwróci wartość logiczną, aby dopasować kolumny (true) lub wykluczyć kolumny (false).
 

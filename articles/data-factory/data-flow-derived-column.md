@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/08/2018
-ms.openlocfilehash: aacd6f1799f1813e168bd04e78f18cf60ad5243f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
-ms.translationtype: MT
+ms.date: 10/15/2019
+ms.openlocfilehash: 5a4ee90717d46fe593d9e10083b349e069216dac
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026852"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436774"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformacja kolumn pochodnych w mapowaniu przepływu danych
 
@@ -21,11 +21,46 @@ Użyj przekształcenia kolumn pochodnych, aby wygenerować nowe kolumny w przep�
 
 Aby zastąpić istniejącą kolumnę, wybierz ją za pomocą listy rozwijanej kolumny. W przeciwnym razie użyj pola wybór kolumny jako pola tekstowego i wpisz nazwę nowej kolumny. Aby utworzyć wyrażenie kolumny pochodnej, kliknij pole "wprowadź wyrażenie", aby otworzyć [konstruktora wyrażeń przepływu danych](concepts-data-flow-expression-builder.md).
 
-Ustawienia kolumn ![pochodnych]dla ustawień(media/data-flow/dc1.png "kolumny pochodnej")
+![Ustawienia kolumn pochodnych](media/data-flow/dc1.png "Ustawienia kolumn pochodnych")
 
-Aby dodać dodatkowe kolumny pochodne, umieść kursor na istniejącej kolumnie pochodnej i kliknij przycisk "+". Następnie wybierz pozycję "Dodaj kolumnę" lub "Dodaj wzorzec kolumny". Wzorce kolumn mogą być przydatne, jeśli nazwy kolumn są zmienne ze źródeł. Aby uzyskać więcej informacji, zobacz [wzorce kolumn](concepts-data-flow-column-pattern.md).
+Aby dodać dodatkowe kolumny pochodne, umieść kursor na istniejącej kolumnie pochodnej i kliknij ikonę znaku plus. Wybierz opcję **Dodaj kolumnę** lub **Dodaj wzorzec kolumny**. Wzorce kolumn mogą być przydatne, jeśli nazwy kolumn są zmienne ze źródeł. Aby uzyskać więcej informacji, zobacz [wzorce kolumn](concepts-data-flow-column-pattern.md).
 
-![Nowy wybór kolumn pochodnych]—(media/data-flow/columnpattern.png "wybór nowej kolumny pochodnej")
+![Nowy wybór kolumny pochodnej](media/data-flow/columnpattern.png "Nowy wybór kolumny pochodnej")
+
+## <a name="data-flow-script"></a>Skrypt przepływu danych
+
+### <a name="syntax"></a>Składnia
+
+```
+<incomingStream>
+    derive(
+           <columnName1> = <expression1>,
+           <columnName2> = <expression2>,
+           each(
+                match(matchExpression),
+                <metadataColumn1> = <metadataExpression1>,
+                <metadataColumn2> = <metadataExpression2>
+               )
+          ) ~> <deriveTransformationName>
+```
+
+### <a name="example"></a>Przykład
+
+Poniższy przykład jest kolumną pochodną o nazwie `CleanData`, która przyjmuje strumień przychodzący `MoviesYear` i tworzy dwie kolumny pochodne. Pierwsza kolumna pochodna zastępuje kolumnę `Rating` wartością klasyfikacji jako typ liczby całkowitej. Druga kolumna pochodna to wzorzec pasujący do każdej kolumny, której nazwa rozpoczyna się od "filmów". Dla każdej dopasowanej kolumny tworzy kolumnę `movie`, która jest równa wartości dopasowanej kolumny poprzedzonej prefiksem "movie_". W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
+
+![Utwórz przykład](media/data-flow/derive-script1.png "Utwórz przykład")
+
+Skrypt przepływu danych dla tego przekształcenia znajduje się w poniższym fragmencie kodu:
+
+```
+MoviesYear derive(
+                Rating = toInteger(Rating),
+                each(
+                    match(startsWith(name,'movies')),
+                    'movie' = 'movie_' + toString($$)
+                )
+            ) ~> CleanData
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

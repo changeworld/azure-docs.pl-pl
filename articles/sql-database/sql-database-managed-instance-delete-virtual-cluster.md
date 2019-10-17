@@ -10,23 +10,24 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: f6e0b55ad2fbd9b4c45dbd1facaebd4750314c63
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7ad09682275b5cc2311b792899a85c1c47eafc0d
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567541"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431293"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Usuń podsieć po usunięciu Azure SQL Database wystąpienia zarządzanego
 
 Ten artykuł zawiera wskazówki dotyczące ręcznego usuwania podsieci po usunięciu ostatniego wystąpienia zarządzanego Azure SQL Database znajdującego się w nim.
 
-SQL Database używa [klastra wirtualnego](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) , aby zawierał usunięte wystąpienie zarządzane. Klaster wirtualny utrzymuje przez 12 godzin po usunięciu wystąpienia, aby umożliwić szybkie tworzenie wystąpień zarządzanych w tej samej podsieci. Nie jest naliczana opłata za utrzymywanie pustego klastra wirtualnego. W tym okresie nie można usunąć podsieci skojarzonej z klastrem wirtualnym.
+Wystąpienia zarządzane są wdrażane w [klastrach wirtualnych](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture). Każdy klaster wirtualny jest skojarzony z podsiecią. Klaster wirtualny utrzymuje się przez 12 godzin po usunięciu ostatniego wystąpienia, aby umożliwić szybsze tworzenie wystąpień zarządzanych w tej samej podsieci. Nie jest naliczana opłata za utrzymywanie pustego klastra wirtualnego. W tym okresie nie można usunąć podsieci skojarzonej z klastrem wirtualnym.
 
-Jeśli nie chcesz czekać 12 godzin i wolisz natychmiast usunąć klaster wirtualny i jego podsieć, możesz to zrobić ręcznie. Ręcznie usuń klaster wirtualny przy użyciu Azure Portal lub interfejsu API klastrów wirtualnych.
+Jeśli nie chcesz czekać 12 godzin i wolisz usunąć klaster wirtualny i jego podsieć, możesz to zrobić ręcznie. Ręcznie usuń klaster wirtualny przy użyciu Azure Portal lub interfejsu API klastrów wirtualnych.
 
-> [!NOTE]
-> Klaster wirtualny nie powinien zawierać żadnych wystąpień zarządzanych, aby usuwanie powiodło się.
+> [!IMPORTANT]
+> - Klaster wirtualny nie powinien zawierać żadnych wystąpień zarządzanych, aby usuwanie powiodło się. 
+> - Usunięcie klastra wirtualnego jest długotrwałą operacją trwającą przez około 1,5 godzin (zobacz [operacje zarządzania wystąpieniami zarządzanymi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) w celu uzyskania Aktualności czasu usuwania klastra wirtualnego), w którym klaster wirtualny będzie nadal widoczny w portalu do momentu tego proces został ukończony.
 
 ## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Usuwanie klastra wirtualnego z Azure Portal
 
@@ -38,10 +39,10 @@ Po znalezieniu klastra wirtualnego, który chcesz usunąć, wybierz pozycję ten
 
 ![Zrzut ekranu pulpitu nawigacyjnego Azure Portal klastrów wirtualnych z wyróżnioną opcją usuwania](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Obszar powiadomienia Azure Portal pokazuje, że klaster wirtualny został usunięty. Pomyślne usunięcie klastra wirtualnego natychmiast zwolni podsieć do ponownego użycia.
+W przypadku powiadomień Azure Portal zostanie wyświetlone potwierdzenie, że żądanie usunięcia klastra wirtualnego zostało pomyślnie przesłane. Sama operacja usuwania będzie trwać około 1,5 godzin, podczas których klaster wirtualny będzie nadal widoczny w portalu. Po zakończeniu procesu klaster wirtualny nie będzie już widoczny, a skojarzona z nim podsieć zostanie wydana do ponownego użycia.
 
 > [!TIP]
-> Jeśli w klastrze wirtualnym nie są wyświetlane żadne wystąpienia zarządzane i nie można usunąć klastra wirtualnego, upewnij się, że nie ma trwającego wdrożenia w toku. Obejmuje to uruchomione i anulowane wdrożenia, które nadal są w toku. Karta przeglądanie wdrożeń w grupie zasobów, w której wdrożono wystąpienie, będzie wskazywać wszystkie wdrożenia w toku. W tym przypadku oczekiwanie na ukończenie wdrożenia, Usuń wystąpienie zarządzane, a następnie klaster wirtualny.
+> Jeśli w klastrze wirtualnym nie są wyświetlane żadne wystąpienia zarządzane i nie można usunąć klastra wirtualnego, upewnij się, że nie ma trwającego wdrożenia w toku. Obejmuje to uruchomione i anulowane wdrożenia, które nadal są w toku. Wynika to z faktu, że te operacje nadal będą używać wirtualnego klastra do usuwania. Karta przeglądanie wdrożeń w grupie zasobów, w której wdrożono wystąpienie, będzie wskazywać wszystkie wdrożenia w toku. W takim przypadku poczekaj na zakończenie wdrożenia, Usuń wystąpienie zarządzane, a następnie klaster wirtualny.
 
 ## <a name="delete-virtual-cluster-by-using-the-api"></a>Usuwanie klastra wirtualnego przy użyciu interfejsu API
 

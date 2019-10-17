@@ -1,24 +1,24 @@
 ---
-title: Wdrażanie usługi Azure Machine Learning na urządzeniu — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
-description: W ramach tego samouczka możesz utworzyć model usługi Azure Machine Learning, a następnie wdrożyć go jako moduł na urządzeniu usługi edge
+title: Wdrażanie Azure Machine Learning na urządzeniu Azure IoT Edge | Microsoft Docs
+description: W tym samouczku utworzysz model Azure Machine Learning, a następnie wdrożono go jako moduł na urządzeniu brzegowym
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/07/2019
+ms.date: 10/16/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6c48aaf404803c45122ed3fad0d6af1345406f7b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 04c09c60a8b633c9ddb51fbe97ac02a319472448
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239662"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434685"
 ---
-# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Samouczek: Wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge (wersja zapoznawcza)
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Samouczek: wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge (wersja zapoznawcza)
 
-Korzystanie z notesów usługi Azure do tworzenia modułu nauczania maszyny i wdrożyć ją z urządzeniem z systemem Linux z usługą Azure IoT Edge. 
+Użyj Azure Notebooks do opracowania modułu uczenia maszynowego i wdrożenia go na urządzeniu z systemem Linux z Azure IoT Edge. 
 
 Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek zawiera opis sposobu wdrażania modułu usługi Azure Machine Learning, który przewiduje awarię urządzenia na podstawie symulowanych danych dotyczących temperatury maszyny. Więcej informacji na temat usługi Azure Machine Learning Service na platformie IoT Edge można znaleźć w [dokumentacji usługi Azure Machine Learning](../machine-learning/service/how-to-deploy-to-iot.md).
 
@@ -42,72 +42,72 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Urządzenie usługi Azure IoT Edge:
 
-* Maszynę wirtualną platformy Azure można użyć jako urządzenia usługi IoT Edge, wykonując kroki opisane w przewodniku Szybki Start dla [Linux](quickstart-linux.md).
-* Moduł usługi Azure Machine Learning nie obsługuje kontenery Windows.
-* Moduł usługi Azure Machine Learning nie obsługuje procesory ARM.
+* Możesz użyć maszyny wirtualnej platformy Azure jako urządzenia IoT Edge, wykonując czynności opisane w przewodniku szybki start dla systemu [Linux](quickstart-linux.md).
+* Moduł Azure Machine Learning nie obsługuje kontenerów systemu Windows.
+* Moduł Azure Machine Learning nie obsługuje procesorów ARM.
 
 Zasoby w chmurze:
 
 * Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Bezpłatna lub Standardowa na platformie Azure.
-* Obszar roboczy usługi Azure Machine Learning. Postępuj zgodnie z instrukcjami w [Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu witryny Azure portal](../machine-learning/service/quickstart-get-started.md) ją utworzyć i Dowiedz się, jak z niego korzystać.
-   * Zanotuj nazwę obszaru roboczego, grupy zasobów i identyfikatora subskrypcji. Te wartości są dostępne w obszarze Przegląd obszaru roboczego w witrynie Azure portal. Użyjesz tych wartości w dalszej części tego samouczka do łączenia z notesu platformy Azure do zasobów obszaru roboczego. 
+* Obszar roboczy usługi Azure Machine Learning. Postępuj zgodnie z instrukcjami w temacie [Use the Azure Portal, aby rozpocząć pracę z Azure Machine Learning](../machine-learning/service/quickstart-get-started.md) , aby je utworzyć i dowiedzieć się, jak z niej korzystać.
+   * Zanotuj nazwę obszaru roboczego, grupę zasobów i Identyfikator subskrypcji. Te wartości są dostępne w obszarze roboczym przegląd w Azure Portal. Te wartości zostaną użyte w dalszej części samouczka, aby połączyć Notes platformy Azure z zasobami obszaru roboczego. 
 
 
-## <a name="create-and-deploy-azure-machine-learning-module"></a>Tworzenie i wdrażanie modułu usługi Azure Machine Learning
+## <a name="create-and-deploy-azure-machine-learning-module"></a>Tworzenie i wdrażanie modułu Azure Machine Learning
 
-W tej sekcji Konwertuj maszynę uczonego modelu uczenia i do usługi Azure Machine Learning usługi kontenera. Wszystkie wymagane składniki obrazu platformy Docker znajdują się w [repozytorium zestawu narzędzi SI dla usługi Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial). Wykonaj następujące kroki, aby przekazać tego repozytorium do notesów usługi Azure firmy Microsoft do tworzenia kontenera i Wypchnij go do usługi Azure Container Registry.
+W tej sekcji przekonwertujesz przeszkolone pliki modelu uczenia maszynowego na Azure Machine Learning kontener usługi. Wszystkie wymagane składniki obrazu platformy Docker znajdują się w [repozytorium zestawu narzędzi SI dla usługi Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial). Wykonaj następujące kroki, aby przekazać repozytorium do Microsoft Azure Notebooks, aby utworzyć kontener i wypchnąć go do Azure Container Registry.
 
 
-1. Przejdź do swoich projektów notesy platformy Azure. Użytkownik może dostać się tam z obszaru roboczego usługi Azure Machine Learning w [witryny Azure portal](https://portal.azure.com) lub logując się do [Microsoft Azure notesów](https://notebooks.azure.com/home/projects) z kontem platformy Azure.
+1. Przejdź do projektu Azure Notebooks. Możesz uzyskać dostęp do obszaru roboczego usługi Azure Machine Learning w [Azure Portal](https://portal.azure.com) lub, logując się do [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) przy użyciu konta platformy Azure.
 
-2. Wybierz **repozytorium GitHub, aby przekazać**.
+2. Wybierz pozycję **Przekaż repozytorium GitHub**.
 
-3. Podaj następującą nazwę repozytorium usługi GitHub: `Azure/ai-toolkit-iot-edge`. Usuń zaznaczenie pola wyboru **publicznych** polu, aby zapewnić prywatność projektu. Wybierz **importu**. 
+3. Podaj następującą nazwę repozytorium GitHub: `Azure/ai-toolkit-iot-edge`. Usuń zaznaczenie pola **publicznego** , jeśli chcesz zachować prywatny projekt. Wybierz pozycję **Importuj**. 
 
-4. Po zakończeniu importowania, przejdź do nowego **sztucznej inteligencji — zestaw narzędzi iot-edge** projektu, a następnie otwórz **samouczek wykrywania anomalii w usłudze IoT Edge** folderu. 
+4. Po zakończeniu importowania przejdź do nowego projektu **AI-Toolkit-IoT-Edge** i Otwórz folder **samouczek wykrywania anomalii IoT Edge** . 
 
-5. Sprawdź, czy projekt jest uruchomiony. Jeśli nie, wybierz **systemem bezpłatne obliczenia**.
+5. Sprawdź, czy projekt jest uruchomiony. W przeciwnym razie wybierz pozycję **Uruchom przy bezpłatnej obliczeń**.
 
-   ![Uruchom na bezpłatnych zasobów obliczeniowych](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
+   ![Uruchamianie przy bezpłatnych obliczeniach](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
 
-6. Otwórz **aml_config/config.json** pliku.
+6. Otwórz plik **aml_config/config. JSON** .
 
-7. Edytuj plik konfiguracji, aby uwzględnić wartości dla Identyfikatora subskrypcji platformy Azure, grupę zasobów w subskrypcji i nazwę obszaru roboczego usługi Azure Machine Learning. Możesz uzyskać te wartości z **Przegląd** części obszaru roboczego na platformie Azure. 
+7. Edytuj plik konfiguracji, aby uwzględnić wartości identyfikatora subskrypcji platformy Azure, grupy zasobów w subskrypcji oraz nazwę obszaru roboczego usługi Azure Machine Learning. Wszystkie te wartości można uzyskać z sekcji **Przegląd** obszaru roboczego na platformie Azure. 
 
 8. Zapisz plik konfiguracji.
 
-9. Otwórz **00-anomalii — wykrywanie tutorial.ipynb** pliku.
+9. Otwórz plik **00-anomalia-Detection-samouczek. ipynb** .
 
-10. Po wyświetleniu monitu wybierz **środowiska Python 3.6** jądra polecenie **Ustaw jądra**.
+10. Po wyświetleniu monitu wybierz jądro **Python 3,6** , a następnie wybierz pozycję **Ustaw jądro**.
 
-11. Edytuj pierwszej komórki w notesie zgodnie z instrukcjami w komentarzach. Użyj tej samej grupie zasobów, identyfikator subskrypcji i nazwę obszaru roboczego, który został dodany do pliku konfiguracji.
+11. Edytuj pierwszą komórkę w notesie zgodnie z instrukcjami w komentarzach. Użyj tej samej grupy zasobów, identyfikatora subskrypcji i nazwy obszaru roboczego dodanej do pliku konfiguracji.
 
-12. Uruchom komórki w notesie, wybierając je i wybierając **Uruchom** lub naciskając klawisz `Shift + Enter`.
+12. Uruchom komórki w notesie, zaznaczając je i wybierając polecenie **Uruchom** lub naciskając `Shift + Enter`.
 
     >[!TIP]
-    >Niektóre z komórek w notesie samouczek wykrywania anomalii są opcjonalne, ponieważ mogą one tworzyć zasoby, które niektórzy użytkownicy mogą lub nie może mieć jeszcze, takich jak usługi IoT Hub. Jeśli istniejące informacje o zasobach przełączyć się do pierwszej komórki, otrzymasz błędy po uruchomieniu komórki, które tworzyć nowe zasoby, ponieważ platforma Azure nie będzie utworzyć powielonych zasobów. Jest to poprawne, i można zignorować błędy lub całkowicie pominąć te opcjonalne sekcje. 
+    >Niektóre komórki w notesie z samouczkiem wykrywania anomalii są opcjonalne, ponieważ tworzą zasoby, które niektórzy użytkownicy mogą lub nie mogą jeszcze nie, jak IoT Hub. Jeśli w pierwszej komórce umieścisz informacje o istniejących zasobach, zostaną wyświetlone błędy w przypadku uruchomienia komórek, które tworzą nowe zasoby, ponieważ platforma Azure nie będzie tworzyć zduplikowanych zasobów. Jest to dokładne i można zignorować błędy lub całkowicie pominąć te opcjonalne sekcje. 
 
-Przy wykonaniu wszystkich kroków w notesie uczony model wykrywania anomalii, powstała jako obraz kontenera Docker i wypchnięto obraz do usługi Azure Container Registry. Następnie przetestować model, a na koniec wdrożone do urządzenia usługi IoT Edge. 
+Wykonując wszystkie kroki w notesie, przeszkolony model wykrywania anomalii, skonstruowany jako obraz kontenera Docker i wypchnięciem tego obrazu do Azure Container Registry. Następnie przetestowano model i ostatecznie go wdrożono na urządzeniu IoT Edge. 
 
-## <a name="view-container-repository"></a>Widok repozytorium kontenerów
+## <a name="view-container-repository"></a>Wyświetl repozytorium kontenera
 
-Sprawdź, czy obraz kontenera został pomyślnie tworzone i przechowywane w rejestrze kontenerów platformy Azure skojarzony z wymaganiami środowiska szkoleniowego maszyny. Notes, które było używane w poprzedniej sekcji automatycznie udostępniane obrazu kontenera i poświadczenia rejestru, aby urządzenia usługi IoT Edge, ale należy wiedzieć, gdzie są one przechowywane, aby informacje można znaleźć samodzielnie później. 
+Sprawdź, czy obraz kontenera został pomyślnie utworzony i zapisany w rejestrze kontenerów platformy Azure skojarzonym ze środowiskiem uczenia maszynowego. W notesie użytym w poprzedniej sekcji automatycznie udostępniono obraz kontenera i poświadczenia rejestru na urządzeniu IoT Edge, ale należy wiedzieć, gdzie są przechowywane, aby można było później znaleźć informacje. 
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do obszaru roboczego usługi Machine Learning. 
+1. W [Azure Portal](https://portal.azure.com)przejdź do obszaru roboczego usługi Machine Learning. 
 
-2. **Przegląd** sekcja zawiera szczegóły obszaru roboczego, jak również skojarzone z nią zasoby. Wybierz **rejestru** wartość, która powinna być nazwy swojego obszaru roboczego, a następnie liczb losowych. 
+2. Sekcja **Przegląd** zawiera szczegóły obszaru roboczego, a także powiązane z nim zasoby. Wybierz wartość **rejestru** , która powinna być nazwą obszaru roboczego, a następnie liczbami losowymi. 
 
-3. W rejestrze kontenerów, wybierz **repozytoriów**. Powinien zostać wyświetlony repozytorium o nazwie **tempanomalydetection** utworzony przez notesu uruchomiono we wcześniejszej sekcji. 
+3. W rejestrze kontenerów wybierz pozycję **repozytoria**. Powinno zostać wyświetlone repozytorium o nazwie **tempanomalydetection** , które zostało utworzone przez Notes uruchomiony w poprzedniej sekcji. 
 
-4. Wybierz **tempanomalydetection**. Powinny pojawić się, że repozytorium ma jeden tag: **1**. 
+4. Wybierz pozycję **tempanomalydetection**. Powinno być widoczne, że repozytorium ma jeden tag: **1**. 
 
-   Skoro znasz nazwę rejestru, Nazwa repozytorium oraz tag, wiesz, ścieżka pełnego obrazu kontenera. Obraz ścieżek wyglądać  **\<registry_name\>.azurecr.io/tempanomalydetection:1**. Aby wdrożyć ten kontener na urządzeniach usługi IoT Edge, można użyć ścieżki obrazu. 
+   Teraz, gdy znasz nazwę rejestru, nazwę repozytorium i tag, znasz pełną ścieżkę obrazu do kontenera. Ścieżki obrazów wyglądają jak **@no__t -1registry_name\>.azurecr.io/tempanomalydetection: 1**. Możesz użyć ścieżki obrazu do wdrożenia tego kontenera na IoT Edge urządzeniach. 
 
-5. W rejestrze kontenerów, wybierz **klucze dostępu**. Powinna zostać wyświetlona liczba poświadczenia dostępu, w tym **serwer logowania** i **Username**, i **hasło** dla użytkownika administracyjnego.
+5. W rejestrze kontenerów wybierz pozycję **klucze dostępu**. Powinna zostać wyświetlona liczba poświadczeń dostępu, w tym **serwer logowania** i **Nazwa użytkownika**oraz **hasło** administratora.
 
-   Te poświadczenia mogą być dołączane w pliku manifestu wdrożenia, aby zapewnić usługi IoT Edge dostęp urządzenia do Ściągnij obrazy kontenerów z rejestru. 
+   Te poświadczenia mogą być zawarte w manifeście wdrożenia, aby umożliwić IoT Edge dostęp urządzenia do ściągania obrazów kontenerów z rejestru. 
 
-Teraz wiesz, gdzie jest przechowywany obraz kontenera usługi Machine Learning. Następnej sekcji przedstawiono kroki, aby wyświetlić działanie jako moduł na urządzeniu usługi IoT Edge kontenera. 
+Teraz wiesz, gdzie jest przechowywany obraz kontenera Machine Learning. W następnej sekcji omówiono procedurę wyświetlania kontenera działającego jako moduł na urządzeniu IoT Edge. 
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
@@ -117,7 +117,7 @@ Wyświetlać możesz komunikaty generowane przez poszczególne moduły usługi I
 
 Na urządzeniu usługi IoT Edge można wyświetlać komunikaty wysyłane z każdego pojedynczego modułu.
 
-Może być konieczne użycie `sudo` podwyższonym poziomem uprawnień do uruchomienia `iotedge` poleceń. Wylogowanie i zalogowanie do Twojego urządzenia automatycznie aktualizuje swoje uprawnienia.
+Aby uruchomić polecenia `iotedge`, może być konieczne użycie `sudo` dla podniesionych uprawnień. Wylogowanie się i ponowne zalogowanie do urządzenia automatycznie aktualizuje Twoje uprawnienia.
 
 1. Wyświetl wszystkie moduły na urządzeniu usługi IoT Edge.
 
@@ -145,9 +145,9 @@ Poniższe kroki pokazują, jak skonfigurować program Visual Studio Code w celu 
 
 3. W polu tekstowym, które zostanie otwarte w górnej części strony wprowadź ciąg połączenia iothubowner dla używanego centrum IoT Hub. Urządzenie usługi IoT Edge powinno zostać wyświetlone na liście IoT Hub Devices (Urządzenia centrum IoT Hub).
 
-4. Wybierz **...**  ponownie polecenie **rozpocząć monitorowanie wbudowany zdarzeń punkt końcowy**.
+4. Wybierz ponownie pozycję **...** , a następnie wybierz pozycję **Rozpocznij monitorowanie wbudowanego punktu końcowego zdarzenia**.
 
-5. Obserwuj komunikaty przychodzące z modułu tempSensor co pięć sekund. Treść wiadomości zawiera właściwość o nazwie **anomalii**, oferujący machinelearningmodule o wartości true lub false. Właściwość **AzureMLResponse** zawiera wartość „OK”, jeśli model został uruchomiony pomyślnie.
+5. Obserwuj komunikaty przychodzące z modułu tempSensor co pięć sekund. Treść wiadomości zawiera właściwość o nazwie **anomalia**, która machinelearningmodule zawiera wartość true lub false. Właściwość **AzureMLResponse** zawiera wartość „OK”, jeśli model został uruchomiony pomyślnie.
 
    ![Odpowiedź usługi Azure Machine Learning Service w treści komunikatu](./media/tutorial-deploy-machine-learning/ml-output.png)
 
@@ -159,7 +159,7 @@ W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Az
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wdrożono moduł usługi IoT Edge obsługiwany przez usługę Azure Machine Learning. Możesz teraz kontynuować pracę, korzystając ze wszystkich innych samouczków, aby dowiedzieć się o innych metodach, za pomocą których usługa Azure IoT Edge może ułatwiać przekształcanie danych w analizy biznesowe na urządzeniach brzegowych.
 

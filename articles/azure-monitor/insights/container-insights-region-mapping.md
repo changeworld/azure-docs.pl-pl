@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Monitor do mapowania regionów kontenerów
-description: W tym artykule opisano mapowania regionu, obsługiwany między usługi Azure Monitor dla kontenerów, obszar roboczy usługi Log Analytics i metryki niestandardowe.
+title: Azure Monitor mapowania regionów kontenerów
+description: W tym artykule opisano mapowania regionów obsługiwane między Azure Monitor for Containers, Log Analytics Workspace i metrykami niestandardowymi.
 services: azure-monitor
 ms.service: azure-monitor
 ms.workload: infrastructure-services
@@ -9,24 +9,24 @@ ms.author: magoedte
 ms.date: 06/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 481a2a400be4e983e0a2337a200324061494efa1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: ca77277c8d8d405b8fe81f612a8d7600d3c937ab
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67518081"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388188"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Mapowania regionu, obsługiwany przez usługi Azure Monitor dla kontenerów
+# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Mapowania regionów obsługiwane przez Azure Monitor dla kontenerów
 
- Podczas włączania usługi Azure Monitor dla kontenerów, tylko niektóre regiony są obsługiwane w przypadku łączenia z obszarem roboczym usługi Log Analytics i klaster AKS i zbieranie metryk niestandardowych przesłane do usługi Azure Monitor.
+ Podczas włączania Azure Monitor dla kontenerów tylko niektóre regiony są obsługiwane na potrzeby łączenia obszaru roboczego Log Analytics i klastra AKS oraz zbierania niestandardowych metryk przesłanych do Azure Monitor.
 
-## <a name="log-analytics-workspace-supported-mappings"></a>Obszar roboczy usługi log Analytics obsługiwanych mapowań
+## <a name="log-analytics-workspace-supported-mappings"></a>Mapowania obsługiwane w obszarze roboczym Log Analytics
 
-Zasoby klastra usługi AKS lub obszar roboczy usługi Log Analytics może znajdować się w innych regionach, a w poniższej tabeli przedstawiono naszych mapowania.
+Zasoby klastra AKS lub obszar roboczy Log Analytics mogą znajdować się w innych regionach, a w poniższej tabeli przedstawiono mapowania.
 
-|**Region klastra AKS** | **Region obszaru roboczego analizy dzienników** |
+|**Region klastra AKS** | **Log Analytics region obszaru roboczego** |
 |-----------------------|------------------------------------|
-|**Afryka** | |
+|**Kazał** | |
 |SouthAfricaNorth |WestEurope |
 |SouthAfricaWest |WestEurope |
 |**Australia** | |
@@ -65,14 +65,15 @@ Zasoby klastra usługi AKS lub obszar roboczy usługi Log Analytics może znajdo
 |EastUS2 |EastUS2 |
 |WestUS |WestUS |
 |WestUS2 |WestUS2 |
-|WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
+|WestCentralUS<sup>1</sup>|Wschodnie<sup>1</sup>|
+|US Gov Wirginia |US Gov Wirginia |
 
-<sup>1</sup> ze względu na ograniczenia wydajności region nie jest dostępna podczas tworzenia nowych zasobów. W tym obszar roboczy usługi Log Analytics. Jednak istniejących połączonych zasobów w regionie powinny nadal działać.
+<sup>1</sup> ze względu na ograniczenia pojemności region nie jest dostępny podczas tworzenia nowych zasobów. Obejmuje obszar roboczy Log Analytics. Jednak istniejące połączone zasoby w regionie powinny być nadal wykonywane.
 
-## <a name="custom-metrics-supported-regions"></a>Metryki niestandardowe obsługiwane regiony
+## <a name="custom-metrics-supported-regions"></a>Regiony niestandardowe obsługiwane przez metryki
 
-Zbieranie metryk z usługi Azure Kubernetes (AKS) klastrów węzłów i zasobników są obsługiwane w przypadku publikowania jako metryki niestandardowe tylko w następujących [regionów świadczenia usługi Azure](../platform/metrics-custom-overview.md#supported-regions).
+Zbieranie metryk z węzłów i zasobników klastrów usługi Azure Kubernetes Services (AKS) są obsługiwane w przypadku publikowania jako metryki niestandardowych tylko w następujących [regionach świadczenia usługi Azure](../platform/metrics-custom-overview.md#supported-regions).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć monitorowanie klastra usługi AKS, zapoznaj się z [sposób włączania usługi Azure Monitor dla kontenerów](container-insights-onboard.md) , aby zrozumieć wymagania i dostępnych metod, aby włączyć monitorowanie.  
+Aby rozpocząć monitorowanie klastra AKS, zapoznaj się z [tematem jak włączyć Azure monitor dla kontenerów](container-insights-onboard.md) , aby zrozumieć wymagania i dostępne metody umożliwiające monitorowanie.  

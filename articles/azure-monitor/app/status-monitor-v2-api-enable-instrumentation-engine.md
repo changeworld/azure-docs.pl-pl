@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Włącz aparat Instrumentacji | Microsoft Docs'
-description: Dokumentacja interfejsu API monitor stanu v2. Enable-InstrumentationEngine. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: 'Dokumentacja interfejsu API usługi Azure Application Insights Agent: Włączanie aparatu Instrumentacji | Microsoft Docs'
+description: Dokumentacja interfejsu API agenta Application Insights. Enable-InstrumentationEngine. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 3c0f4e015d3e01e86daaf101c15e16857540a520
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 9958121c38b96dc9cfa4dda2812fa9ce2b18d785
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033143"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388285"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine"></a>Interfejs API monitor stanu v2: Enable-InstrumentationEngine
+# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Interfejs API agenta Application Insights: Enable-InstrumentationEngine
 
 W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -51,12 +51,12 @@ PS C:\> Enable-InstrumentationEngine
 ## <a name="parameters"></a>Parametry
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**Opcjonalnie.** Ten przełącznik umożliwia zaakceptowanie licencji i zasad zachowania poufności informacji w instalacjach bezobsługowych.
+**Obowiązkowe.** Ten przełącznik umożliwia zaakceptowanie licencji i zasad zachowania poufności informacji w instalacjach bezobsługowych.
 
 ### <a name="-verbose"></a>-Verbose
 **Wspólny parametr.** Ten przełącznik umożliwia wyprowadzanie szczegółowych dzienników.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Dane wyjściowe
 
 
 #### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Przykładowe dane wyjściowe pomyślnie włączania aparatu Instrumentacji
@@ -79,7 +79,7 @@ Configuring registry for instrumentation engine...
 - [Dodaj telemetrię klienta sieci Web](../../azure-monitor/app/javascript.md) , aby zobaczyć wyjątki z kodu strony sieci Web i włączyć wywołania śledzenia.
 - [Dodaj do kodu zestaw SDK Application Insights](../../azure-monitor/app/asp-net.md) , aby móc wstawiać wywołania śledzenia i rejestrowania.
  
- Więcej informacji o monitor stanu v2:
- - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.
+ Zrób więcej dzięki Application Insights agentowi:
+ - Skorzystaj z naszego przewodnika, aby [rozwiązać problemy z](status-monitor-v2-troubleshoot.md) agentem Application Insights.
  - [Pobierz konfigurację](status-monitor-v2-api-get-config.md) , aby upewnić się, że Twoje ustawienia zostały poprawnie zarejestrowane.
  - [Pobierz stan,](status-monitor-v2-api-get-status.md) aby sprawdzić monitorowanie.

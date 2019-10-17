@@ -4,14 +4,14 @@ description: Dowiedz się, jak zarządzać konfliktami w usłudze Azure Cosmos D
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/15/2019
 ms.author: mjbrown
-ms.openlocfilehash: c58828fd8ed0de73c03e9e741d14705ad88b1333
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4c62fcc81eb3b045d3b4233e1bb3770ecb9865b3
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093228"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388080"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami rozwiązywania konfliktów w usłudze Azure Cosmos DB
 
@@ -19,7 +19,7 @@ W przypadku zapisów w wielu regionach, gdy wielu klientów zapisuje do tego sam
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Tworzenie zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego
 
-Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego. Domyślną ścieżką dla ostatniego składnika zapisywania usługi WINS jest pole timestamp lub `_ts` właściwość. W przypadku interfejsu API SQL może to również być ustawiona jako ścieżka zdefiniowana przez użytkownika z typem liczbowym. W konflikcie jest najwyższa wartość WINS. Jeśli ścieżka nie jest ustawiona lub jest nieprawidłowa, domyślnie `_ts`jest to. Konflikty rozwiązane z tymi zasadami nie są wyświetlane w kanale informacyjnym konfliktu. Te zasady mogą być używane przez wszystkie interfejsy API.
+Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego. Domyślną ścieżką dla ostatniego składnika zapisywania usługi WINS jest pole timestamp lub właściwość `_ts`. W przypadku interfejsu API SQL może to również być ustawiona jako ścieżka zdefiniowana przez użytkownika z typem liczbowym. W konflikcie jest najwyższa wartość WINS. Jeśli ścieżka nie jest ustawiona lub jest nieprawidłowa, wartość domyślna to `_ts`. Konflikty rozwiązane z tymi zasadami nie są wyświetlane w kanale informacyjnym konfliktu. Te zasady mogą być używane przez wszystkie interfejsy API.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>ZESTAW .NET SDK V2
 
@@ -107,15 +107,15 @@ Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą niestanda
 
 Procedury składowane rozwiązywania konfliktów niestandardowych należy zaimplementować przy użyciu sygnatury funkcji pokazanej poniżej. Nazwa funkcji nie musi być zgodna z nazwą używaną podczas rejestrowania procedury składowanej w kontenerze, ale upraszcza nazywanie. Poniżej znajduje się opis parametrów, które muszą zostać zaimplementowane dla tej procedury składowanej.
 
-- **incomingItem**: Element wstawiany lub aktualizowany w zatwierdzeniu, który generuje konflikty. Ma wartość null w przypadku operacji usuwania.
-- **existingItem**: Aktualnie przydzielony element. Ta wartość jest inna niż null w aktualizacjach i wartości null dla operacji INSERT lub usunięć.
-- **ischowania**: Wartość logiczna wskazująca, czy incomingItem powoduje konflikt z wcześniej usuniętym elementem. W przypadku wartości true existingItem ma również wartość null.
-- **conflictingItems**: Tablica zatwierdzonej wersji wszystkich elementów w kontenerze, które powodują konflikt z incomingItem na IDENTYFIKATORze lub wszelkich innych unikatowych właściwości indeksu.
+- **incomingItem**: element wstawiany lub aktualizowany w zatwierdzeniu, który generuje konflikty. Ma wartość null w przypadku operacji usuwania.
+- **existingItem**: aktualnie przydzielony element. Ta wartość jest inna niż null w aktualizacjach i wartości null dla operacji INSERT lub usunięć.
+- **ischowania**: wartość logiczna wskazująca, czy incomingItem powoduje konflikt z wcześniej usuniętym elementem. W przypadku wartości true existingItem ma również wartość null.
+- **conflictingItems**: tablica zatwierdzonej wersji wszystkich elementów w kontenerze, które powodują konflikt z INCOMINGITEM on ID lub innymi unikatowymi właściwościami indeksu.
 
 > [!IMPORTANT]
 > Podobnie jak w przypadku każdej procedury składowanej, niestandardowa procedura rozwiązywania konfliktów może uzyskać dostęp do dowolnych danych z tym samym kluczem partycji i można wykonać dowolną operację wstawiania, aktualizowania lub usuwania, aby rozwiązać konflikty.
 
-Ta przykładowa procedura składowana rozwiązuje konflikty, wybierając najniższą wartość `/myCustomId` ze ścieżki.
+Ta przykładowa procedura składowana rozwiązuje konflikty, wybierając najniższą wartość ze ścieżki `/myCustomId`.
 
 ```javascript
 function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
@@ -363,7 +363,7 @@ FeedResponse<Conflict> conflicts = await delClient.ReadConflictFeedAsync(this.co
 ### <a id="read-from-conflict-feed-dotnet-v3"></a>ZESTAW .NET SDK V3
 
 ```csharp
-FeedIterator<ConflictProperties> conflictFeed = container.Conflicts.GetConflictIterator();
+FeedIterator<ConflictProperties> conflictFeed = container.Conflicts.GetConflictQueryIterator();
 while (conflictFeed.HasMoreResults)
 {
     FeedResponse<ConflictProperties> conflicts = await conflictFeed.ReadNextAsync();

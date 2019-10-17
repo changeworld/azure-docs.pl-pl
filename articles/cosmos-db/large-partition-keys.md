@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5b0d182e09a4978a4d9c1184f085e140e5c698bc
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811708"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436813"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Tworzenie kontenerów z dużym kluczem partycji
 
@@ -21,7 +21,7 @@ Duże klucze partycji są obsługiwane przy użyciu funkcji rozszerzonej wersji 
 
 ## <a name="create-a-large-partition-key-azure-portal"></a>Tworzenie dużego klucza partycji (Azure Portal)
 
-Aby utworzyć duży klucz partycji, podczas tworzenia nowego kontenera przy użyciu Azure Portal zaznacz opcję **mój klucz partycji jest większy niż 100-bajtów** . Domyślnie wszystkie nowe kontenery są uwzględniane przy użyciu dużych kluczy partycji. Usuń zaznaczenie pola wyboru, jeśli nie są potrzebne duże klucze partycji lub aplikacje działające w wersji SDK starszej niż 1,18.
+Aby utworzyć duży klucz partycji, podczas tworzenia nowego kontenera przy użyciu Azure Portal zaznacz opcję **mój klucz partycji jest większy niż 100-bajtów** . Usuń zaznaczenie pola wyboru, jeśli nie są potrzebne duże klucze partycji lub aplikacje działające w wersji SDK starszej niż 1,18.
 
 ![Tworzenie dużych kluczy partycji przy użyciu Azure Portal](./media/large-partition-keys/large-partition-key-with-portal.png)
 
@@ -68,16 +68,16 @@ Klucze dużych partycji są obsługiwane z następującymi minimalnymi wersjami 
 
 |Typ zestawu SDK  | Wersja minimalna   |
 |---------|---------|
-|Architektury     |    1,18     |
+|.NET     |    1,18     |
 |Synchronizacja Java     |   2.4.0      |
 |Asynchroniczne środowisko Java   |  2.5.0        |
-| INTERFEJS API REST | wersja wyższa niż `2017-05-03` przy użyciu nagłówka żądania `x-ms-version`.|
+| Interfejs API REST | wersja wyższa niż `2017-05-03` przy użyciu nagłówka żądania `x-ms-version`.|
 
 Obecnie nie można używać kontenerów z dużym kluczem partycji w ramach Power BI i Azure Logic Apps. Z tych aplikacji można korzystać z kontenerów bez dużego klucza partycji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Partycjonowanie w Azure Cosmos DB](partitioning-overview.md)
-* [Jednostki żądań w Azure Cosmos DB](request-units.md)
+* [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partitioning-overview.md)
+* [Jednostki żądania w usłudze Azure Cosmos DB](request-units.md)
 * [Obsługa przepływności na kontenerach i bazach danych](set-throughput.md)
 * [Współpraca z kontem usługi Azure Cosmos](account-overview.md)

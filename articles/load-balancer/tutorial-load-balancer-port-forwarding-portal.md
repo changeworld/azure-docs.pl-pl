@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Konfigurowanie przekierowania portów w usłudze Load Balancer za pomocą witryny Azure Portal'
+title: 'Samouczek: Konfigurowanie przekazywania portów w Azure Load Balancer przy użyciu Azure Portal'
 titlesuffix: Azure Load Balancer
 description: W tym samouczku pokazano, jak skonfigurować przekierowanie portów przy użyciu usługi Azure Load Balancer w celu utworzenia połączeń z maszynami wirtualnymi w sieci wirtualnej platformy Azure.
 services: load-balancer
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: ee4ed818364d04f03caedc8b876ea29c41cb59b7
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: aa4837ec1fd8ef19eb6d0c77f946ef358becd542
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273446"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428230"
 ---
-# <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Samouczek: Konfigurowanie przekierowania portów w usłudze Azure Load Balancer za pomocą portalu
+# <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Samouczek: Konfigurowanie przekazywania portów w Azure Load Balancer przy użyciu portalu
 
 Przekierowanie portów umożliwia łączenie się z maszynami wirtualnymi w usłudze Azure Virtual Network przy użyciu publicznego adresu IP i numeru portu usługi Azure Load Balancer. 
 
@@ -47,14 +47,14 @@ Najpierw utwórz publiczny moduł równoważenia obciążenia w warstwie Standar
 1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
-    | Ustawienie                 | Value                                              |
+    | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subscription               | Wybierz subskrypcję.    |    
-    | Resource group         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
-    | Name (Nazwa)                   | *myLoadBalancer*                                   |
+    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
+    | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Type          | Wybierz pozycję **Publiczna**.                                        |
-    | SKU           | Wybierz opcję **Standardowa**.                          |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
+    | JSZ           | Wybierz pozycję **Standardowy**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
     |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
@@ -74,8 +74,8 @@ Utwórz sieć wirtualną z dwiema maszynami wirtualnymi i dodawaj maszyny wirtua
    
 1. W okienku **Tworzenie sieci wirtualnej** wpisz lub wybierz następujące wartości:
    
-   - **Nazwa**: wpisz *MyVNet*.
-   - **Grupa zasobów**: rozwiń listę **Wybierz istniejącą**, a następnie wybierz pozycję **MyResourceGroupLB**. 
+   - **Nazwa**: wpisz *MyVnet*.
+   - **Grupa zasobów**: lista rozwijana **Wybierz istniejącą**, wybierz pozycję **MyResourceGroupLB**. 
    - **Podsieć** > **Nazwa**: wpisz *MyBackendSubnet*.
    
 1. Wybierz pozycję **Utwórz**.
@@ -89,7 +89,7 @@ Utwórz sieć wirtualną z dwiema maszynami wirtualnymi i dodawaj maszyny wirtua
 1. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
    - **Subskrypcja** > **Grupa zasobów**: rozwiń listę i wybierz pozycję **MyResourceGroupLB**.
    - **Nazwa maszyny wirtualnej**: wpisz *MyVM1*.
-   - **Region**: Wybierz pozycję **Europa Zachodnia**. 
+   - **Region**: wybierz pozycję **Europa Zachodnia**. 
    - **Nazwa użytkownika**: wpisz *azureuser*.
    - **Hasło**: wpisz *Azure1234567*. 
      Wpisz ponownie hasło w polu **Potwierdź hasło**.
@@ -97,7 +97,7 @@ Utwórz sieć wirtualną z dwiema maszynami wirtualnymi i dodawaj maszyny wirtua
 1. Wybierz kartę **Sieć** lub wybierz pozycję **Dalej: Dyski**, a następnie pozycję **Dalej: Sieć**. 
    
    Upewnij się, że zostały wybrane następujące opcje:
-   - **Sieć wirtualna**: **MojaSiećWirtualna**
+   - **Sieć wirtualna**: **MyVNet**
    - **Podsieć**: **MyBackendSubnet**
    
 1. W obszarze **Publiczny adres IP** wybierz pozycję **Utwórz nowy**, wybierz opcję **Standardowy** na stronie **Utwórz publiczny adres IP**, a następnie wybierz przycisk **OK**. 
@@ -145,10 +145,10 @@ Utwórz regułę sieciowej grupy zabezpieczeń dla maszyn wirtualnych, aby zezwa
    
    - **Źródło**: wybierz pozycję **Tag usługi**.  
    - **Tag usługi źródłowej**: wybierz pozycję **Internet**. 
-   - **Zakresy portów docelowych**: wpisz wartość *80*.
+   - **Zakresy portów docelowych**: wpisz *80*.
    - **Protokół**: wybierz pozycję **TCP**. 
    - **Akcja**: wybierz pozycję **Zezwalaj**.  
-   - **Priorytet**: wpisz wartość *100*. 
+   - **Priorytet**: wpisz *100*. 
    - **Nazwa**: wpisz *MyHTTPRule*. 
    - **Opis**: wpisz *Zezwalaj na HTTP*. 
    
@@ -190,10 +190,10 @@ Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie st
    
    - **Nazwa**: wpisz *MyHealthProbe*.
    - **Protokół**: rozwiń listę i wybierz pozycję **HTTP**. 
-   - **Port**: wpisz wartość *80*. 
+   - **Port**: wpisz *80*. 
    - **Ścieżka**: zaakceptuj */* dla domyślnego identyfikatora URI. Tę wartość można zastąpić dowolnym innym identyfikatorem URI. 
-   - **Interwał**: wpisz wartość *15*. Interwał to liczba sekund między próbami sondy.
-   - **Próg złej kondycji**: wpisz wartość *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
+   - **Interwał**: wpisz *15*. Interwał to liczba sekund między próbami sondy.
+   - **Próg złej kondycji**: wpisz *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
    
 1. Kliknij przycisk **OK**.
    
@@ -213,8 +213,8 @@ Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nas�
    
    - **Nazwa**: wpisz *MyLoadBalancerRule*.
    - **Protokół**: wybierz pozycję **TCP**.
-   - **Port**: wpisz wartość *80*.
-   - **Port zaplecza**: wpisz wartość *80*.
+   - **Port**: wpisz *80*.
+   - **Port zaplecza**: wpisz *80*.
    - **Pula zaplecza**: wybierz pozycję **MyBackendPool**.
    - **Sonda kondycji**: wybierz pozycję **MyHealthProbe**. 
    
@@ -233,14 +233,15 @@ Utwórz regułę translatora adresów sieciowych modułu równoważenia obciąż
 1. Na stronie **Dodawanie reguły translatora adresów sieciowych dla ruchu przychodzącego** wpisz lub wybierz następujące wartości:
    
    - **Nazwa**: wpisz *MyNATRuleVM1*.
-   - **Port**: wpisz wartość *4221*.
+   - **Port**: type *4221*.
    - **Docelowa maszyna wirtualna**: wybierz pozycję **MyVM1** z listy rozwijanej.
-   - **Mapowanie portów**: wybierz pozycję **Niestandardowe**.
-   - **Port docelowy**: wpisz wartość *3389*.
+   - **Konfiguracja protokołu IP sieci**: wybierz pozycję **ipconfig1** z listy rozwijanej.
+   - **Mapowanie portów**: wybierz pozycję **niestandardowy**.
+   - **Port docelowy**: wpisz *3389*.
    
 1. Kliknij przycisk **OK**.
    
-1. Powtórz kroki, aby dodać regułę translatora adresów sieciowych dla ruchu przychodzącego o nazwie *MyNATRuleVM2*, używając wartości **Port**: *4222* i **Docelowa maszyna wirtualna**: **MyVM2**.
+1. Powtórz kroki, aby dodać regułę NAT dla ruchu przychodzącego o nazwie *MyNATRuleVM2*, używając **portu**: *4222* i **docelowej maszyny wirtualnej**: **MyVM2**.
 
 ## <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
 

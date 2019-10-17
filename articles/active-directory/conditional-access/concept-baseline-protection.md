@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 10/15/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 572371f4abec413be5a2320c7d69d8126f26924f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ecd46b8cb734355a8394b7480c6def341cf9700d
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533056"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430331"
 ---
 # <a name="what-are-baseline-policies"></a>Co to są zasady podstawowe?
 
@@ -28,20 +28,20 @@ Zarządzanie dostosowanymi zasadami dostępu warunkowego wymaga licencji Azure A
 
 ![Zasady dostępu warunkowego do punktu odniesienia w Azure Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
-Istnieją cztery zasady linii bazowej, które mogą być włączone w organizacjach:
+Istnieją cztery zasady linii bazowej:
 
-* [Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)](howto-baseline-protect-administrators.md)
-* [Ochrona użytkowników końcowych (wersja zapoznawcza)](howto-baseline-protect-end-users.md)
-* [Blokuj starsze uwierzytelnianie (wersja zapoznawcza)](howto-baseline-protect-legacy-auth.md)
-* [Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania usługami (wersja zapoznawcza)](howto-baseline-protect-azure.md)
+* Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)
+* Ochrona użytkowników końcowych (wersja zapoznawcza)
+* Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
+* Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania usługami (wersja zapoznawcza)
 
 Wszystkie cztery z tych zasad będą miały wpływ na starsze przepływy uwierzytelniania, takie jak POP, IMAP i starsze klienckie aplikacje biurowe.
 
 ### <a name="require-mfa-for-admins-preview"></a>Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)
 
-Ze względu na moc i dostęp do kont administratorów należy je traktować z uwzględnieniem specjalnych zaopieki. Jedną z typowych metod ulepszania ochrony uprzywilejowanych kont jest wymaganie, aby w przypadku logowania się do nich była wymagana silniejsza weryfikacja konta. W Azure Active Directory można uzyskać silniejszą weryfikację konta, wymagając od administratorów rejestracji w usłudze i korzystania z usługi Azure MFA Authentication.
+Ze względu na moc i dostęp do kont administratorów należy je traktować z uwzględnieniem specjalnych zaopieki. Jedną z typowych metod ulepszania ochrony uprzywilejowanych kont jest wymaganie, aby w przypadku logowania się do nich była wymagana silniejsza weryfikacja konta. W Azure Active Directory można uzyskać silniejszą weryfikację konta, wymagając od administratorów rejestracji w usłudze i korzystania z usługi Azure Multi-Factor Authentication.
 
-[Wymagaj uwierzytelniania WIELOskładnikowego dla administratorów (wersja zapoznawcza)](howto-baseline-protect-administrators.md) to zasady linii bazowej, które wymagają usługi uwierzytelnianie wieloskładnikowe (MFA) dla następujących ról katalogu, które są traktowane jako największe role usługi Azure AD:
+Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza) to zasady linii bazowej, które wymagają usługi uwierzytelnianie wieloskładnikowe (MFA) dla następujących ról katalogu, które są traktowane jako największe role usługi Azure AD:
 
 * Administrator globalny
 * Administrator programu SharePoint
@@ -50,22 +50,22 @@ Ze względu na moc i dostęp do kont administratorów należy je traktować z uw
 * Administrator zabezpieczeń
 * Administrator pomocy technicznej/administrator haseł
 * Administrator rozliczeń
-* Administrator użytkownika
+* Administrator użytkowników
 
-Jeśli w organizacji są używane te konta w skryptach lub kodzie, należy rozważyć zastępowanie [](../managed-identities-azure-resources/overview.md)ich tożsamościami zarządzanymi.
+Jeśli w organizacji są używane te konta w skryptach lub kodzie, należy rozważyć zastępowanie ich [tożsamościami zarządzanymi](../managed-identities-azure-resources/overview.md).
 
 ### <a name="end-user-protection-preview"></a>Ochrona użytkowników końcowych (wersja zapoznawcza)
 
 Administratorzy o wysokim poziomie uprawnień nie są jedynymi odpowiednimi atakami. Niewłaściwe podmioty mogą kierować do zwykłych użytkowników. Po uzyskaniu dostępu te niewłaściwe osoby mogą zażądać dostępu do informacji uprzywilejowanych w imieniu oryginalnego właściciela konta lub pobrać cały katalog i przeprowadzić atak na wyłudzanie informacji w całej organizacji. Jedną z typowych metod ulepszania ochrony dla wszystkich użytkowników jest wymaganie silniejszej weryfikacji konta w przypadku wykrycia ryzykownego logowania.
 
-**Ochrona użytkowników końcowych (wersja zapoznawcza)** to zasady linii bazowej chroniące wszystkich użytkowników w katalogu. Włączenie tych zasad wymaga, aby wszyscy użytkownicy rejestrowali się w usłudze Azure wieloskładnikowe Authentication w ciągu 14 dni. Po zarejestrowaniu użytkownicy będą monitowani o uwierzytelnianie MFA tylko w trakcie ryzykownych prób logowania. Naruszone konta użytkowników są blokowane do momentu zresetowania hasła i odrzucenia ryzyka. 
+**Ochrona użytkowników końcowych (wersja zapoznawcza)** to zasady linii bazowej chroniące wszystkich użytkowników w katalogu. Włączenie tych zasad wymaga, aby wszyscy użytkownicy rejestrowali się w usłudze Azure Multi-Factor Authentication w ciągu 14 dni. Po zarejestrowaniu użytkownicy będą monitowani o uwierzytelnianie MFA tylko w trakcie ryzykownych prób logowania. Naruszone konta użytkowników są blokowane do momentu zresetowania hasła i odrzucenia ryzyka. 
 
 [!NOTE]
 Wszyscy użytkownicy, którzy wcześniej oflagowani w związku z ryzykiem, są Zablokowani do momentu zresetowania hasła i odrzucenia ryzyka podczas aktywacji zasad.
 
 ### <a name="block-legacy-authentication-preview"></a>Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
 
-Starsze protokoły uwierzytelniania (np.: IMAP, SMTP, POP3) to protokoły zwykle używane przez starszych klientów poczty do uwierzytelniania. Starsze protokoły nie obsługują uwierzytelniania wieloskładnikowego. Nawet jeśli masz zasady wymagające uwierzytelniania wieloskładnikowego dla katalogu, niewłaściwy aktor może się uwierzytelnić przy użyciu jednego z tych starszych protokołów i pominąć uwierzytelnianie wieloskładnikowe.
+Starsze protokoły uwierzytelniania (np. IMAP, SMTP, POP3) to protokoły zwykle używane przez starszych klientów poczty do uwierzytelniania. Starsze protokoły nie obsługują uwierzytelniania wieloskładnikowego. Nawet jeśli masz zasady wymagające uwierzytelniania wieloskładnikowego dla katalogu, niewłaściwy aktor może się uwierzytelnić przy użyciu jednego z tych starszych protokołów i pominąć uwierzytelnianie wieloskładnikowe.
 
 Najlepszym sposobem na ochronę Twojego konta przed złośliwymi żądaniami uwierzytelniania podejmowanymi przez starsze protokoły jest ich zablokowanie.
 
@@ -76,30 +76,17 @@ Zasady linii bazowej **blokowania starszego uwierzytelniania (wersja zapoznawcza
 Organizacje korzystają z różnych usług platformy Azure i zarządzają nimi za pomocą narzędzi opartych na Azure Resource Manager, takich jak:
 
 * Azure Portal
-* Azure PowerShell
+* Program Azure PowerShell
 * Interfejs wiersza polecenia platformy Azure
 
 Zarządzanie zasobami odbywa się przy użyciu dowolnego z tych narzędzi, co jest wysoce uprzywilejowane. Narzędzia te mogą zmieniać konfiguracje dla całej subskrypcji, takie jak ustawienia usługi i rozliczenia subskrypcji.
 
 Aby chronić uprzywilejowane akcje, ta funkcja wymaga uwierzytelniania wieloskładnikowego **dla** wszystkich użytkowników uzyskujących dostęp do Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-## <a name="enable-a-baseline-policy"></a>Włączanie zasad linii bazowej
-
-Aby włączyć zasadę bazową:
-
-1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
-1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
-1. Z listy zasad wybierz zasady linii bazowej, które chcesz włączyć.
-1. Ustaw opcję **Włącz zasady** na **włączone**.
-1. Kliknij pozycję Zapisz.
-
 ## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz:
 
+* [Typowe zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
 * [Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości](../../security/fundamentals/steps-secure-identity.md)
 * [Co to jest dostęp warunkowy w Azure Active Directory?](overview.md)
-* [Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)](howto-baseline-protect-administrators.md)
-* [Ochrona użytkowników końcowych (wersja zapoznawcza)](howto-baseline-protect-end-users.md)
-* [Blokuj starsze uwierzytelnianie (wersja zapoznawcza)](howto-baseline-protect-legacy-auth.md)
-* [Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania usługami (wersja zapoznawcza)](howto-baseline-protect-azure.md)

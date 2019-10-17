@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie grupami Azure Resource Manager przy użyciu Azure PowerShell | Microsoft Docs
-description: Użyj Azure PowerShell, aby zarządzać grupami Azure Resource Manager.
+description: Użyj Azure PowerShell do zarządzania grupami zasobów przy użyciu Azure Resource Manager. Pokazuje, jak tworzyć, wyświetlać i usuwać grupy zasobów.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 59c83cb1becf8869d0e8710121816d1bb75e621e
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 1e057bc484a0b526927654fafa8f88ae4a5b4deb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001570"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390410"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Zarządzanie grupami zasobów Azure Resource Manager przy użyciu Azure PowerShell
 
@@ -26,9 +26,9 @@ Inne artykuły dotyczące zarządzania grupami zasobów:
 
 ## <a name="what-is-a-resource-group"></a>Co to jest Grupa zasobów
 
-Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Grupa zasobów może zawierać wszystkie zasoby rozwiązania lub tylko te zasoby, które mają być zarządzane jako Grupa. Użytkownik decyduje o tym, jak chcesz przydzielić zasoby do grup zasobów w oparciu o to, co jest największe dla Twojej organizacji. Ogólnie rzecz biorąc, Dodaj zasoby, które mają ten sam cykl życia do tej samej grupy zasobów, dzięki czemu możesz łatwo wdrażać, aktualizować i usuwać je jako grupę.
+Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Grupa zasobów może zawierać wszystkie zasoby dla rozwiązania lub tylko te zasoby, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji. Ogólnie rzecz biorąc, Dodaj zasoby, które mają ten sam cykl życia do tej samej grupy zasobów, dzięki czemu możesz łatwo wdrażać, aktualizować i usuwać je jako grupę.
 
-Grupa zasobów przechowuje metadane dotyczące zasobów. W związku z tym, gdy określisz lokalizację dla grupy zasobów, określasz miejsce przechowywania metadanych. Ze względów zgodności może być konieczne zapewnienie, że dane są przechowywane w określonym regionie.
+Grupa zasobów przechowuje metadane dotyczące zasobów. Z tego powodu określając lokalizację dla grupy zasobów, określasz miejsce, w którym przechowywane są metadane. Dla zachowania zgodności może być konieczne upewnienie się, że dane są przechowywane w odpowiednim regionie.
 
 Grupa zasobów przechowuje metadane dotyczące zasobów. W przypadku określania lokalizacji grupy zasobów należy określić miejsce przechowywania metadanych.
 
@@ -89,7 +89,7 @@ Ta funkcja jest również znana jako *Rollback w przypadku błędu*. Aby uzyska�
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>Przenieś do innej grupy zasobów lub subskrypcji
 
-Zasoby w grupie można przenieść do innej grupy zasobów. Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](./resource-group-move-resources.md).
+Zasoby w grupie można przenieść do innej grupy zasobów. Aby uzyskać więcej informacji, zobacz [Move resources to new resource group or subscription](./resource-group-move-resources.md) (Przenoszenie zasobów do nowej grupy lub subskrypcji).
 
 ## <a name="lock-resource-groups"></a>Zablokuj grupy zasobów
 
@@ -111,7 +111,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Get-AzResourceLock -ResourceGroupName $resourceGroupName 
 ```
 
-Aby uzyskać więcej informacji, zobacz [blokowanie zasobów przy użyciu Azure Resource Manager](resource-group-lock-resources.md).
+Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 
 ## <a name="tag-resource-groups"></a>Dodawanie tagów do grup zasobów
 
@@ -216,7 +216,7 @@ Aby uzyskać więcej informacji, zobacz [Eksportowanie jednego i wielu zasobów 
 
 ## <a name="manage-access-to-resource-groups"></a>Zarządzanie dostępem do grup zasobów
 
-[Kontrola dostępu oparta na rolach (RBAC)](../role-based-access-control/overview.md) umożliwia zarządzanie dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](../role-based-access-control/overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

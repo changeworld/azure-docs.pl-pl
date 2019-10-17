@@ -6,28 +6,28 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: fec2b09b9dc471135d9cdd00ac2465728a47bdbf
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d06b5b86737d0940930a3ccea3b6d65be0a802f9
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026922"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387904"
 ---
 # <a name="mapping-data-flow-conditional-split-transformation"></a>Mapowanie przekształcenia podziału warunkowego przepływu danych
 
 
 
-(media/data-flow/conditionalsplit2.png "Przybornik") podziału warunkowego dla ![przybornika]
+![Przybornik podziału warunkowego](media/data-flow/conditionalsplit2.png "Przybornik podziału warunkowego")
 
 Przekształcenie podziału warunkowego może kierować wiersze danych do różnych strumieni w zależności od zawartości danych. Implementacja przekształcenia podziału warunkowego jest podobna do struktury decyzji CASE w języku programowania. Transformacja oblicza wyrażenia, a na podstawie wyników kieruje wiersz danych do określonego strumienia. Ta transformacja zapewnia również domyślne dane wyjściowe, tak więc jeśli wiersz nie pasuje do żadnego wyrażenia, jest on przekierowywany do domyślnych danych wyjściowych.
 
-(media/data-flow/conditionalsplit1.png "Opcje podziału warunkowego") z podziałem ![warunkowym]
+![podział warunkowy](media/data-flow/conditionalsplit1.png "Opcje podziału warunkowego")
 
 ## <a name="multiple-paths"></a>Wiele ścieżek
 
 Aby dodać dodatkowe warunki, wybierz pozycję "Dodaj strumień" w dolnym okienku konfiguracji, a następnie kliknij pole tekstowe Konstruktor wyrażeń, aby skompilować wyrażenie.
 
-![podział warunkowy]z podziałem na wiele(media/data-flow/conditionalsplit3.png "warunkowe")
+![podział warunkowy — wiele](media/data-flow/conditionalsplit3.png "podział warunkowy — wiele")
 
 ## <a name="next-steps"></a>Następne kroki
 

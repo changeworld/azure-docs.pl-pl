@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure monitor stanu v2 | Microsoft Docs
-description: Przegląd monitor stanu v2. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: Omówienie usługi Azure Application Insights Agent | Microsoft Docs
+description: Przegląd Application Insights agenta. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,23 +12,28 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 7f045a95bcc9d5a61b26036e14e050a597347d1a
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 294b0d2d91650f33f0b92179a069a8c7cd845525
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286448"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389832"
 ---
-# <a name="status-monitor-v2"></a>Monitor stanu w wersji 2
+# <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Wdróż agenta Azure Monitor Application Insights dla serwerów lokalnych
 
-Monitor stanu V2 to moduł programu PowerShell opublikowany w [Galeria programu PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
+> [!IMPORTANT]
+> Te wskazówki są zalecane w przypadku wdrożeń Application Insights agenta lokalnych i nieopartych na platformie Azure w chmurze. Poniżej przedstawiono zalecane podejście do [wdrożeń maszyn wirtualnych platformy Azure i zestawu skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
+
+Agent Application Insights (wcześniej nazwany monitor stanu v2) to moduł programu PowerShell opublikowany w [Galeria programu PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
 Zastępuje [Monitor stanu](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
-Moduł zawiera instrumentację bezkodową aplikacji sieci Web platformy .NET hostowanych za pomocą usług IIS.
 Dane telemetryczne są wysyłane do Azure Portal, w którym można [monitorować](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) aplikację.
+
+> [!NOTE]
+> Moduł obsługuje obecnie tylko instrumentację programu .NET Web Apps hostowaną z usługami IIS. Użyj zestawu SDK do Instrumentacji aplikacji ASP.NET Core, Java i Node. js.
 
 ## <a name="powershell-gallery"></a>Galeria programu PowerShell
 
-Monitor stanu v2 znajduje się tutaj: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Agent Application Insights znajduje się tutaj: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 
 ![Galeria programu PowerShell](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -54,9 +59,9 @@ Monitor stanu v2 znajduje się tutaj: https://www.powershellgallery.com/packages
 
 ## <a name="faq"></a>Często zadawane pytania
 
-- Czy monitor stanu v2 obsługuje instalację serwera proxy?
+- Czy Agent Application Insights obsługuje instalacje serwera proxy?
 
-  *Tak*. Istnieje wiele sposobów pobierania monitor stanu v2. Jeśli komputer ma dostęp do Internetu, możesz dołączyć do Galeria programu PowerShell za pomocą parametrów `-Proxy`.
+  *Tak*. Istnieje wiele sposobów pobierania Application Insights agenta. Jeśli komputer ma dostęp do Internetu, możesz dołączyć do Galeria programu PowerShell za pomocą parametrów `-Proxy`.
 Możesz również ręcznie pobrać moduł, a następnie zainstalować go na komputerze lub użyć go bezpośrednio.
 Każda z tych opcji została opisana w [szczegółowym instrukcji](status-monitor-v2-detailed-instructions.md).
 
