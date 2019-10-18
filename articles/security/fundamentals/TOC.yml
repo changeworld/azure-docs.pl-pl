@@ -49,16 +49,6 @@
             - name: Informacje o usłudze Azure Disk Encryption
               displayName: 'BitLocker, bek'
               href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: Przewodniki Szybki start
-              items:
-                - name: Szyfrowanie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-cli-quickstart'
-                - name: Szyfrowanie maszyny wirtualnej z systemem Linux przy użyciu programu Azure PowerShell
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-powershell-quickstart'
-                - name: Szyfrowanie maszyny wirtualnej z systemem Windows przy użyciu interfejsu wiersza polecenia platformy Azure
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-cli-quickstart'
-                - name: Szyfrowanie maszyny wirtualnej z systemem Windows przy użyciu programu Azure PowerShell
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-powershell-quickstart'
             - name: Usługa Azure Disk Encryption
               items:
                 - name: Wymagania wstępne dotyczące szyfrowania dysków
@@ -151,8 +141,6 @@
           href: network-best-practices.md
         - name: DDoS Protection
           href: ddos-best-practices.md
-        - name: Zabezpieczenia graniczne
-          href: network-best-practices.md
 - name: Aplikacja
   items:
     - name: PaaS
@@ -185,9 +173,6 @@
   items:
     - name: Inspekcja i rejestrowanie
       items:
-        - name: Zarządzanie zabezpieczeniami
-          displayName: 'vulnerability, incident, virus,'
-          href: 'https://docs.microsoft.com/azure/security-center/security-center-intro?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
         - name: Zabezpieczenia zarządzania zdalnego
           href: management.md
         - name: Integracja dzienników platformy Azure
@@ -199,9 +184,6 @@
             - name: Integrowanie dzienników inspekcji usługi Azure AD
               displayName: active directory
               href: azure-log-integration-ad.md
-            - name: Integrowanie alertów usługi Security Center
-              displayName: splunk
-              href: 'https://docs.microsoft.com/azure/security-center/security-center-export-data-to-siem?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
             - name: Integrowanie dzienników z usługi Key Vault
               displayName: keyvault
               href: azure-log-integration-keyvault-eventhub.md

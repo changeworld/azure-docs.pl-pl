@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
+ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: bc03e10e40e90845c8e1a3dd064c4f50fafeac00
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 24f27dfde34413d1ac98f795eddc07103d3cbf3c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299816"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515263"
 ---
 # <a name="translator-text-api-30-translate"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: tłumaczenie
 
@@ -102,7 +102,7 @@ Nagłówki żądań obejmują:
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td><em>Wymagany nagłówek żądania</em>.<br/>Określa typ zawartości ładunku. Możliwe wartości to: <code>application/json</code>.</td>
+    <td><em>Wymagany nagłówek żądania</em>.<br/>Określa typ zawartości ładunku.<br/> Zaakceptowana wartość to <code>application/json; charset=UTF-8</code>.</td>
   </tr>
   <tr>
     <td>Długość zawartości</td>
@@ -155,7 +155,7 @@ Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego ciągu w tab
 
     Obiekt `transliteration` nie jest uwzględniany w przypadku, gdy nie ma miejsca.
 
-    * `alignment`: obiekt z właściwością pojedynczego ciągu o nazwie `proj`, która mapuje tekst wejściowy na przetłumaczony tekst. Informacje o wyrównaniu są podawane tylko wtedy, gdy parametr żądania `includeAlignment` jest `true`. Wyrównanie jest zwracane jako wartość ciągu w następującym formacie: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dwukropek oddziela indeks początkowy i końcowy, myślnik oddziela Języki, a spacja oddziela słowa. Jedno słowo może być wyrównane z zerem, jednym lub wieloma wyrazami w innym języku, a wyrównane słowa mogą nie być ciągłe. Gdy żadne informacje o wyrównaniu nie są dostępne, element wyrównania będzie pusty. Zobacz [Uzyskiwanie informacji o wyrównaniu](#obtain-alignment-information) dla przykładu i ograniczeń.
+    * `alignment`: obiekt z właściwością pojedynczego ciągu o nazwie `proj`, która mapuje tekst wejściowy na przetłumaczony tekst. Informacje o wyrównaniu są podawane tylko wtedy, gdy parametr żądania `includeAlignment` jest `true`. Wyrównanie jest zwracane jako wartość ciągu o następującym formacie: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dwukropek oddziela indeks początkowy i końcowy, myślnik oddziela Języki, a spacja oddziela słowa. Jedno słowo może być wyrównane z zerem, jednym lub wieloma wyrazami w innym języku, a wyrównane słowa mogą nie być ciągłe. Gdy żadne informacje o wyrównaniu nie są dostępne, element wyrównania będzie pusty. Zobacz [Uzyskiwanie informacji o wyrównaniu](#obtain-alignment-information) dla przykładu i ograniczeń.
 
     * `sentLen`: obiekt zwracający granice zdania w tekstach wejściowych i wyjściowych.
 
@@ -234,7 +234,7 @@ Jeśli wystąpi błąd, żądanie zwróci także odpowiedź na błąd JSON. Kod 
 Ten przykład pokazuje, jak przetłumaczyć pojedyncze zdanie z języka angielskiego na chiński uproszczony.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Treść odpowiedzi:
@@ -256,7 +256,7 @@ Tablica `translations` zawiera jeden element, który zapewnia tłumaczenie pojed
 Ten przykład pokazuje, jak przetłumaczyć pojedyncze zdanie z języka angielskiego na chiński uproszczony. Żądanie nie określa języka wejściowego. Zamiast tego użyto automatycznego wykrywania języka źródłowego.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Treść odpowiedzi:
@@ -278,7 +278,7 @@ Odpowiedź jest podobna do odpowiedzi z poprzedniego przykładu. Ponieważ zaż�
 Przyciągnijmy poprzedni przykład, dodając translitrę. Poniższe żądanie prosi o przekształcenie w języku chińskim zapisaną w skrypcie łacińskim.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Treść odpowiedzi:
@@ -305,7 +305,7 @@ Wyniki tłumaczenia zawierają teraz Właściwość `transliteration`, która da
 Tłumaczenie wielu ciągów jednocześnie jest kwestią określenia tablicy ciągów w treści żądania.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
 Treść odpowiedzi:
@@ -330,7 +330,7 @@ Treść odpowiedzi:
 Ten przykład pokazuje, jak przetłumaczyć te same dane wejściowe do kilku języków w jednym żądaniu.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Treść odpowiedzi:
@@ -374,17 +374,17 @@ Jeśli chcesz uniknąć niewulgarności w tłumaczeniu, niezależnie od obecnoś
     <td>Wyrazy wulgarne są zastępowane przez znacznik w danych wyjściowych. Znacznik zależy od parametru <code>ProfanityMarker</code>.<br/><br/>
 W przypadku <code>ProfanityMarker=Asterisk</code> wyrazy nie są zastępowane <code>***</code>:<br/>
     <strong>Przykładowe źródło (japoński)</strong>: 彼はジャッカスです.<br/>
-    <strong>Przykładowe tłumaczenie (angielski)</strong>: jest to \* @ no__t-2 @ no__t-3.<br/><br/>
-W przypadku <code>ProfanityMarker=Tag</code> wyrazy nie są otoczone tagami XML &lt;profanity @ no__t-2 i &lt;/wulgarności @ no__t-4:<br/>
+    <strong>Przykładowe tłumaczenie (angielski)</strong>: jest to \* \* \*.<br/><br/>
+W przypadku <code>ProfanityMarker=Tag</code> wulgarne słowa są otoczone tagami XML &lt;profanity &gt; i &lt;/profanity &gt;:<br/>
     <strong>Przykładowe źródło (japoński)</strong>: 彼はジャッカスです.<br/>
-    <strong>Przykładowe tłumaczenie (angielski)</strong>: jest to &lt;profanity @ no__t-2jackass @ no__t-3/wulgarne @ no__t-4.
+    <strong>Przykładowe tłumaczenie (angielski)</strong>: jest to &lt;profanity &gt;jackass &lt;/profanity &gt;.
   </tr>
 </table> 
 
 Na przykład:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 Spowoduje to zwrócenie:
 
@@ -401,7 +401,7 @@ Spowoduje to zwrócenie:
 Porównaj z:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 To ostatnie żądanie zwraca:
@@ -418,7 +418,7 @@ To ostatnie żądanie zwraca:
 
 ### <a name="translate-content-with-markup-and-decide-whats-translated"></a>Tłumaczenie zawartości przy użyciu znaczników i decydowanie o tym, co jest tłumaczone
 
-Często tłumaczy zawartość, która obejmuje znaczniki, takie jak zawartość ze strony HTML lub zawartość z dokumentu XML. Uwzględnij parametr zapytania `textType=html` podczas tłumaczenia zawartości ze znacznikami. Ponadto czasami warto wykluczyć określoną zawartość z tłumaczenia. Możesz użyć atrybutu `class=notranslate`, aby określić zawartość, która powinna pozostać w oryginalnym języku. W poniższym przykładzie zawartość wewnątrz pierwszego elementu `div` nie zostanie przetłumaczona, podczas gdy zawartość w drugim @no__t elementu zostanie przetłumaczona.
+Często tłumaczy zawartość, która obejmuje znaczniki, takie jak zawartość ze strony HTML lub zawartość z dokumentu XML. Uwzględnij parametr zapytania `textType=html` podczas tłumaczenia zawartości ze znacznikami. Ponadto czasami warto wykluczyć określoną zawartość z tłumaczenia. Możesz użyć atrybutu `class=notranslate`, aby określić zawartość, która powinna pozostać w oryginalnym języku. W poniższym przykładzie zawartość wewnątrz pierwszego elementu `div` nie zostanie przetłumaczona, podczas gdy zawartość drugiego elementu `div` zostanie przetłumaczona.
 
 ```
 <div class="notranslate">This will not be translated.</div>
@@ -428,7 +428,7 @@ Często tłumaczy zawartość, która obejmuje znaczniki, takie jak zawartość 
 Oto przykładowe żądanie do zilustrowania.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
 
 Odpowiedź:
@@ -448,7 +448,7 @@ Odpowiedź:
 Aby otrzymywać informacje o wyrównaniu, określ `includeAlignment=true` w ciągu zapytania.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
 ```
 
 Odpowiedź:
@@ -484,7 +484,7 @@ Należy pamiętać o następujących ograniczeniach:
 Aby uzyskać informacje o długości zdania w tekście źródłowym i przetłumaczonym tekście, określ `includeSentenceLength=true` w ciągu zapytania.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
 ```
 
 Odpowiedź:
@@ -516,7 +516,7 @@ Znacznik do dostarczenia używa następującej składni.
 Rozważmy na przykład zdanie w języku angielskim "słowo wordomatic jest wpisem słownika". Aby zachować słowo _wordomatic_ w tłumaczeniu, Wyślij żądanie:
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
 Wynik:

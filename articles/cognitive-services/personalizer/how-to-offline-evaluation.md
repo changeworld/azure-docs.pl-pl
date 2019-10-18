@@ -1,5 +1,5 @@
 ---
-title: Ocena w trybie offline — Personalizowanie
+title: Jak przeprowadzić ocenę w trybie offline — Personalizowanie
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak analizować pętlę szkoleniową za pomocą oceny w trybie offline
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: a157b36ad2b4f5a7f2e50a9609d8acd621efd5a8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884495"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515226"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Analizuj pętlę szkoleniową przy użyciu oceny w trybie offline
 
@@ -35,7 +35,7 @@ Przeczytaj o [ocenach w trybie offline](concepts-offline-evaluation.md) , aby do
 
 1. W [Azure Portal](https://azure.microsoft.com/free/)Znajdź zasób personalizacji.
 1. W Azure Portal przejdź do sekcji **oceny** i wybierz pozycję **Utwórz ocenę**.
-    ![Na Azure Portal przejdź do sekcji * * Evaluations * * i wybierz pozycję * * Utwórz ocenę * *.](./media/offline-evaluation/create-new-offline-evaluation.png)
+    ![In Azure Portal, przejdź do sekcji * * Evaluations * * i wybierz pozycję * * Utwórz ocenę * *. ](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. Wybierz następujące ustawienia:
 
     * Nazwa ewaluacyjna
@@ -54,11 +54,11 @@ Po zakończeniu możesz wybrać ocenę z listy ocen.
 
 Porównania zasad uczenia obejmują:
 
-* **Zasady online**: Bieżące zasady uczenia używane w programie Personalizacja
-* **Linia bazowa**: Wartość domyślna aplikacji (zgodnie z pierwszą akcją wysłaną w wywołaniach rangi),
-* **Zasady losowe**: Zachowanie rangi urojonej, które zawsze zwraca losowo wybór akcji z dostarczonych.
-* **Zasady niestandardowe**: Dodatkowe zasady uczenia zostały przekazane podczas uruchamiania oceny.
-* **Zoptymalizowane zasady**: Jeśli Ocena została rozpoczęta z opcją odnalezienia zoptymalizowanych zasad, zostanie również porównana i będzie można ją pobrać lub wprowadzić zasady uczenia online, zastępując bieżące.
+* **Zasady online**: bieżące zasady uczenia używane w programie personalizacji
+* **Linia bazowa**: wartość domyślna aplikacji (zgodnie z pierwszą akcją wysłaną w wywołaniach rangi),
+* **Zasady losowe**: zachowanie rangi urojonej, które zawsze zwraca losowo wybór akcji z dostarczonych.
+* **Zasady niestandardowe**: dodatkowe zasady uczenia zostały przekazane podczas uruchamiania oceny.
+* **Zoptymalizowane zasady**: Jeśli Ocena została rozpoczęta z opcją wykrywania zoptymalizowanych zasad, zostanie ona również porównana i będzie można ją pobrać lub wprowadzić zasady uczenia online, zastępując bieżące.
 
 ![Wykres wyników ustawień oceny w trybie offline](./media/offline-evaluation/evaluation-results.png)
 

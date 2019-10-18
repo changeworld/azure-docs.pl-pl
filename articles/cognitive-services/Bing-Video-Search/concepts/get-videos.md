@@ -1,5 +1,5 @@
 ---
-title: Wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania wideo Bing
+title: Wyszukiwanie filmów wideo przy użyciu interfejs API wyszukiwania wideo Bing
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak wysyłać żądania wyszukiwania do interfejsu API wyszukiwania wideo Bing.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: b565ad8be1d8529d3650ec36fe7c4d61f6c5dc8f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879092"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512418"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Wyszukiwanie wideo za pomocą interfejsu API wyszukiwania wideo Bing
 
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Rozwijanie zapytania
 
-Jeśli usługa Bing może rozwinąć zapytanie w celu zawężenia kryteriów oryginalnego wyszukiwania, obiekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) zawiera pole `queryExpansions`. Jeśli na przykład *Cleaning Gutters*, zapytania rozszerzone mogą być następujące: Gutter Cleaning **Tools**, Cleaning Gutters **From the Ground**, Gutter Cleaning **Machine** oraz **Easy** Gutter Cleaning.
+Jeśli usługa Bing może rozwinąć zapytanie w celu zawężenia kryteriów oryginalnego wyszukiwania, obiekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) zawiera pole `queryExpansions`. Jeśli na przykład zapytanie to *Cleaning Gutters* (Czyszczenie rynien), potencjalnymi rozwiniętymi zapytaniami mogą być: Gutter Cleaning **Tools** (Czyszczenie rynien — narzędzia), Cleaning Gutters **From the Ground** (Czyszczenie rynien — z poziomu gruntu), Gutter Cleaning **Machine** (Czyszczenie rynien — maszyna) oraz **Easy** Gutter Cleaning (Proste czyszczenie rynien).
 
 W poniższym przykładzie pokazano rozwinięte zapytania dla frazy *Cleaning Gutters*.
 

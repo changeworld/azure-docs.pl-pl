@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 10/12/2019
 ms.author: diberry
-ms.openlocfilehash: a63b6773a7546f8add0b2f2ab6280801e90bccca
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8f00ffeff4eb353fa70aa7df60b14c97d4b8e724
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248632"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554873"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedź przy użyciu interfejsu API GenerateAnswer i metadanych
 
@@ -48,7 +48,7 @@ Po opublikowaniu bazy wiedzy z poziomu [portalu QNA Maker](https://www.qnamaker.
 Aby uzyskać szczegółowe informacje o punkcie końcowym:
 1. Zaloguj się do witryny [https://www.qnamaker.ai](https://www.qnamaker.ai).
 1. W obszarze **Moje bazy wiedzy**wybierz pozycję **Wyświetl kod** dla bazy wiedzy.
-    ![Screenshot z mojej bazy wiedzy @ no__t-1
+    ![Screenshot moich baz wiedzy ](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. Pobierz szczegóły punktu końcowego GenerateAnswer.
 
     ![Zrzut ekranu przedstawiający szczegóły punktu końcowego](../media/qnamaker-how-to-metadata-usage/view-code.png)
@@ -83,6 +83,7 @@ Przykładowa treść JSON wygląda następująco:
     "top": 6,
     "isTest": true,
     "scoreThreshold": 30,
+    "rankerType": "" // values: QuestionOnly
     "strictFilters": [
     {
         "name": "category",
@@ -91,6 +92,8 @@ Przykładowa treść JSON wygląda następująco:
     "userId": "sd53lsY="
 }
 ```
+
+Dowiedz się więcej o [rankerType](../concepts/best-practices.md#choosing-ranker-type).
 
 Poprzedni kod JSON zażądał tylko odpowiedzi o wartości co najmniej 30% lub wyższej. 
 

@@ -1,7 +1,7 @@
 ---
-title: Uruchom w usłudze Azure Container Instances
+title: Uruchom kontener kroju w Azure Container Instances
 titleSuffix: Azure Cognitive Services
-description: Wdrażanie kontenera twarzy do wystąpienia kontenera platformy Azure i przetestuj ją w przeglądarce sieci web.
+description: Wdróż kontener do usługi Azure Container instance i przetestuj go w przeglądarce sieci Web.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: e67846b6b304b5425f7e8334eb3a4499a029d5ab
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2a596ea1f6f6405078d0e031de00212995342a19
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711594"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516810"
 ---
-# <a name="deploy-the-face-container-to-azure-container-instances"></a>Wdrażanie kontenera twarzy w usłudze Azure Container Instances
+# <a name="deploy-the-face-container-to-azure-container-instances"></a>Wdróż kontener programu Front-Azure Container Instances
 
-Informacje o wdrażaniu usług Cognitive Services [twarzy](../face-how-to-install-containers.md) kontenera na platformie Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Ta procedura pokazuje tworzenie zasobów Azure twarzy. Następnie omówimy ściąganie obrazów skojarzony kontener. Na koniec zaznacz mamy możliwość wykonywania aranżacji dwa z poziomu przeglądarki. Używanie kontenerów może przechodzić przez deweloperów uwagi od zarządzania infrastrukturą, aby zamiast koncentrowania się na tworzeniu aplikacji.
+Dowiedz się, jak wdrożyć kontener Cognitive Services [kroju](../face-how-to-install-containers.md) na platformie Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Ta procedura pokazuje tworzenie zasobu platformy Azure. Następnie omówiono ściąganie skojarzonego obrazu kontenera. Na koniec wyróżnimy możliwość wykonywania aranżacji tych dwóch z przeglądarki. Korzystanie z kontenerów umożliwia przechodzenie przez deweloperów do zarządzania infrastrukturą, aby zamiast tego koncentrować się na tworzeniu aplikacji.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
+## <a name="request-access-to-the-private-container-registry"></a>Zażądaj dostępu do rejestru kontenera prywatnego
 
 [!INCLUDE [Request access to private container registry](../../../../includes/cognitive-services-containers-request-access.md)]
 

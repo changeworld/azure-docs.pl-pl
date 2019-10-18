@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7e79d3119f5d2d0fe1894de0ab9535dd988706f8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e1e89612ee48aaf5ee9bda51f954add426bf6720
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935213"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516800"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Kroki migracji do zasobu tworzenia platformy Azure
 
@@ -43,7 +43,7 @@ Proces migracji jest dostępny, jeśli jesteś właścicielem dowolnych aplikacj
 
     ![Pierwsze okno podręczne w procesie migracji, wybierz pozycję Migruj teraz.](./media/migrate-authoring-key/migrate-now.png)
 
-1. Opcjonalnie, Jeśli którakolwiek z aplikacji ma współpracowników, zostanie wyświetlony monit o **wysłanie wiadomości e-mail** z informacją o migracji. Jest to krok opcjonalny. 
+1. Opcjonalnie, Jeśli którakolwiek z aplikacji ma współpracowników, zostanie wyświetlony monit o **wysłanie wiadomości e-mail** z informacją o migracji. Jest to opcjonalny krok. 
 
     Po przeprowadzeniu migracji konta na platformę Azure aplikacje nie będą już dostępne dla współpracowników.
 
@@ -91,14 +91,14 @@ Proces migracji jest dostępny, jeśli jesteś właścicielem dowolnych aplikacj
 
     Nie musisz znać klucza zasobu tworzenia, aby kontynuować edytowanie aplikacji w portalu LUIS. Jeśli planujesz edytować aplikacje programowo, potrzebujesz wartości klucza tworzenia. Te wartości są wyświetlane na stronie **zarządzaj > zasobów platformy Azure** w portalu Luis i są również dostępne na stronie Azure Portal na **kluczach** zasobów.  
 
-1. Przed uzyskaniem dostępu do aplikacji wybierz zasób subskrypcja i LUIS tworzenie, aby wyświetlić aplikacje, które mogą tworzyć autor.
+1. Przed uzyskaniem dostępu do aplikacji wybierz zasób subskrypcja i LUIS tworzenie, aby wyświetlić aplikacje, które możesz utworzyć.
 
     ![Wybierz pozycję subskrypcja i LUIS tworzenie zasobów, aby wyświetlić aplikacje, które mogą tworzyć autor.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
 
 
 ## <a name="app-contributor-begins-the-migration-process"></a>Współautor aplikacji rozpoczyna proces migracji
 
-Wykonaj te same czynności co właściciel aplikacji do migracji. Proces tworzy nowy zasób tworzenia rodzaju `LUIS.Authoring`. 
+Wykonaj te same czynności co właściciel aplikacji do migracji. Proces tworzy nowy zasób tworzenia typu `LUIS.Authoring`. 
 
 Należy zmigrować konto, aby można je było dodać jako współautor do zmigrowanych aplikacji należących do innych użytkowników.  
 
@@ -110,7 +110,7 @@ Dowiedz się [, jak dodać współautorów](luis-how-to-collaborate.md).
 
 ## <a name="troubleshooting-errors-with-the-migration-process"></a>Rozwiązywanie problemów z procesem migracji
 
-Jeśli podczas procesu [](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) migracji wystąpibłądwportaluLuiszczerwonympaskiempowiadomień,utwórzzasóbusługipoznawczejwAzurePortallubinterfejsiewierszapoleceniaplatformy`MissingSubscriptionRegistration` [Azure](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Dowiedz się więcej o [przyczynach tego błędu](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
+Jeśli podczas procesu migracji wystąpi błąd `MissingSubscriptionRegistration` w portalu LUIS z czerwonym paskiem powiadomień, utwórz zasób usługi poznawczej w [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) lub [interfejsie wiersza polecenia platformy Azure](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Dowiedz się więcej o [przyczynach tego błędu](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
 
 ## <a name="next-steps"></a>Następne kroki
 
