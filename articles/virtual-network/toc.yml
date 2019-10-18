@@ -35,20 +35,6 @@
       href: policy-samples.md
 - name: Pojęcia
   items:
-    - name: Brama translatora adresów sieciowych
-      items:
-        - name: Omówienie
-          items:
-            - name: Informacje o bramie translatora adresów sieciowych
-              href: nat-service-overview.md
-        - name: Przewodniki Szybki start
-          items:
-            - name: Tworzenie bramy translatora adresów sieciowych — interfejs wiersza polecenia platformy Azure
-              href: quickstart-create-nat-gateway-cli.md
-        - name: Samouczki
-          items:
-            - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — interfejs wiersza polecenia platformy Azure
-              href: tutorial-create-validate-nat-gateway-cli.md
     - name: Grupy zabezpieczeń
       href: security-overview.md
     - name: Routing
@@ -75,6 +61,8 @@
       href: public-ip-address-prefix.md
     - name: Protokół IPv6 dla sieci wirtualnej platformy Azure
       href: ipv6-overview.md
+    - name: Prefiks publicznego adresu IPv6
+      href: ipv6-public-ip-address-prefix.md
     - name: Ochrona przed atakami DDOS
       href: ddos-protection-overview.md
     - name: Współdziałanie łączności z zapleczem
@@ -248,6 +236,8 @@
           items:
             - name: Podsieci
               href: virtual-network-manage-subnet.md
+            - name: Delegowanie podsieci
+              href: manage-subnet-delegation.md
             - name: Komunikacja równorzędna
               href: virtual-network-manage-peering.md
             - name: Ochrona przed atakami DDOS
@@ -271,6 +261,8 @@
           href: virtual-network-public-ip-address.md
         - name: Prefiks publicznego adresu IP
           href: manage-public-ip-address-prefix.md
+        - name: Prefiks publicznego adresu IPv6
+          href: ipv6-reserve-public-ip-address-prefix.md
     - name: Przechodzenie między regionami
       items:
         - name: Sieciowe grupy zabezpieczeń — portal

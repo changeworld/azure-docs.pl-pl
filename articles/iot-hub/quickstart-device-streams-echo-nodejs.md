@@ -1,6 +1,6 @@
 ---
 title: Komunikacja z aplikacją urządzenia w języku Node. js za pośrednictwem IoT Hub strumieni urządzenia (wersja zapoznawcza) | Microsoft Docs
-description: W tym przewodniku Szybki start uruchomisz aplikację Node.js po stronie usługi, która komunikuje się z urządzeniem IoT za pomocą strumienia urządzenia.
+description: W tym przewodniku szybki start uruchomisz aplikację po stronie usługi dla środowiska Node. js, która komunikuje się z urządzeniem IoT za pośrednictwem strumienia urządzeń.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: e85f2ea849aca9deeb92da7d7b2381d6c2b1b725
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c7257ec35f9a53f84edebd5e15b7144c49daf682
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802443"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514957"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Szybki start: komunikacja z aplikacją urządzenia w środowisku Node.js za pomocą strumieni urządzeń usługi IoT Hub (wersja zapoznawcza)
+# <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Szybki Start: komunikacja z aplikacją urządzenia w języku Node. js za pośrednictwem IoT Hub strumieni urządzenia (wersja zapoznawcza)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
@@ -48,7 +48,7 @@ Podgląd strumieni urządzeń jest obecnie obsługiwany tylko dla centrów IoT u
 
 *  **Środkowe stany USA — EUAP**
 
-Aby uruchomić aplikację po stronie usługi w tym przewodniku Szybki Start, należy potrzebować środowiska Node. js v10. x. x lub nowszego na komputerze deweloperskim.
+Aby uruchomić aplikację po stronie usługi w tym przewodniku Szybki Start, musisz mieć Node. js v10. x. x lub nowszy na komputerze deweloperskim.
 
 W programie Node. js można pobrać wiele platform z [NodeJS.org](https://nodejs.org).
 
@@ -82,10 +82,10 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
-   **MyDevice**: jest to nazwa nadana dla zarejestrowanego urządzenia. Użyj nazwy MyDevice w pokazany sposób. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz również używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
+   Moje **urządzenie**: jest to nazwa urządzenia, które jest rejestrowany. Zalecane jest korzystanie z **urządzenia** , jak pokazano. W przypadku wybrania innej nazwy dla urządzenia należy również użyć tej nazwy w tym artykule i zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 2. Potrzebne będą także *parametry połączenia usługi*, aby umożliwić aplikacji zaplecza nawiązywanie połączenia z centrum IoT i pobieranie komunikatów. Następujące polecenie pobiera parametry połączenia usługi dla centrum IoT:
@@ -93,10 +93,10 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
     **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    Zanotuj zwróconą wartość, która wygląda następująco:
+    Zwróć uwagę na zwrócone parametry połączenia usługi do późniejszego użycia w tym przewodniku Szybki Start. Wygląda to następująco:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -106,7 +106,7 @@ W tej sekcji uruchomisz aplikację po stronie urządzenia i aplikację po stroni
 
 ### <a name="run-the-device-side-application"></a>Uruchamianie aplikacji po stronie urządzenia
 
-Jak wspomniano wcześniej, zestaw Node.js SDK usługi IoT Hub obsługuje tylko strumienie urządzeń po stronie usługi. W przypadku aplikacji po stronie urządzenia należy użyć towarzyszącego programu urządzenia dostępnego w jednym z następujących przewodników szybki start:
+Jak wspomniano wcześniej, zestaw Node.js SDK usługi IoT Hub obsługuje tylko strumienie urządzeń po stronie usługi. W przypadku aplikacji po stronie urządzenia Użyj jednego z towarzyszących programów urządzenia dostępnych w tych przewodnikach szybki start:
 
    * [Komunikacja z aplikacjami urządzeń w języku C za pośrednictwem IoT Hub strumieni urządzeń](./quickstart-device-streams-echo-c.md)
 
@@ -116,21 +116,21 @@ Przed przejściem do następnego kroku upewnij się, że aplikacja po stronie ur
 
 ### <a name="run-the-service-side-application"></a>Uruchamianie aplikacji po stronie usługi
 
-Jeśli aplikacja po stronie urządzenia jest uruchomiona, wykonaj poniższe czynności, aby uruchomić aplikację po stronie usługi napisaną w języku Node.js:
+Przy założeniu, że aplikacja po stronie urządzenia jest uruchomiona, wykonaj poniższe kroki w lokalnym oknie terminala, aby uruchomić aplikację po stronie usługi w programie Node. js:
 
 * Podaj poświadczenia usługi i identyfikator urządzenia jako zmienne środowiskowe.
  
    ```cmd/sh
    # In Linux
-   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
+   export IOTHUB_CONNECTION_STRING="{ServiceConnectionString}"
    export STREAMING_TARGET_DEVICE="MyDevice"
 
    # In Windows
-   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
+   SET IOTHUB_CONNECTION_STRING={ServiceConnectionString}
    SET STREAMING_TARGET_DEVICE=MyDevice
    ```
   
-   Zmień ciąg `MyDevice` na wybrany przez Ciebie identyfikator urządzenia.
+   Zmień symbol zastępczy serviceconnectionstring w taki sposób, aby pasował do parametrów połączenia z usługą, a **urządzenie** jest zgodne z identyfikatorem urządzenia, jeśli podałeś inną nazwę.
 
 * Przejdź do elementu `Quickstarts/device-streams-service` w folderze rozpakowanego projektu i uruchom przykład za pomocą węzła.
 
@@ -144,7 +144,7 @@ Jeśli aplikacja po stronie urządzenia jest uruchomiona, wykonaj poniższe czyn
    node echo.js
    ```
 
-Na końcu ostatniego kroku program po stronie usługi zainicjuje strumień do urządzenia, a po utworzeniu strumienia wyśle w nim bufor ciągu. W tym przykładzie program po stronie usługi po prostu odczytuje dane `stdin` w terminalu i wysyła je do urządzenia, które następnie będzie je ponownie wyświetlać. Pozwala to pokazać pomyślną dwukierunkową komunikację między dwiema aplikacjami.
+Na końcu ostatniego kroku program po stronie usługi zainicjuje strumień do urządzenia, a po utworzeniu strumienia wyśle w nim bufor ciągu. W tym przykładzie program po stronie usługi po prostu odczytuje `stdin` w terminalu i wysyła go do urządzenia, które następnie będzie je ponownie wyrównać. Pozwala to pokazać pomyślną dwukierunkową komunikację między dwiema aplikacjami.
 
 ![Dane wyjściowe konsoli po stronie usługi](./media/quickstart-device-streams-echo-nodejs/service-console-output.png)
 
@@ -156,7 +156,7 @@ Następnie możesz zakończyć program, naciskając ponownie klawisz Enter.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start skonfigurowano centrum IoT Hub, zarejestrowano urządzenie, utworzono strumień urządzenia między aplikacjami po stronie urządzenia i usługi oraz przesłano za pomocą strumienia dane między aplikacjami.
+W tym przewodniku szybki start skonfigurujesz usługę IoT Hub, zarejestrowano urządzenie, nałożyłeś strumień urządzeń między aplikacjami na urządzeniu i usłudze oraz użyto strumienia do przesyłania danych z powrotem i między aplikacjami.
 
 Aby dowiedzieć się więcej na temat strumieni urządzeń, użyj poniższych linków:
 

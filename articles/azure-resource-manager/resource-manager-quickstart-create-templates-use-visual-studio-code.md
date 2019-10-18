@@ -1,6 +1,6 @@
 ---
-title: Tworzenie Azure Resource Manager szablonu przy użyciu Visual Studio Code Microsoft Docs
-description: Użyj Visual Studio Code i rozszerzenia narzędzi Azure Resource Manager, aby móc korzystać z szablonów Menedżer zasobów.
+title: Utwórz szablon Azure Resource Manager — Visual Studio Code
+description: Program Visual Studio Code i rozszerzenie Narzędzia usługi Azure Resource Manager służą do pracy z szablonami usługi Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,56 +13,56 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: b62d4f8b43c62ff401b4d74932b131c1bf8fd63f
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3e4707e6c0d2a45c02933a5b6022f5604ca7dbed
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169558"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533637"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Szybki Start: Tworzenie szablonów Azure Resource Manager przy użyciu Visual Studio Code
+# <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Szybki start: tworzenie szablonów usługi Azure Resource Manager przy użyciu programu Visual Studio Code
 
-Dowiedz się, jak tworzyć i edytować szablony Azure Resource Manager przy użyciu programu Visual Studio Code i rozszerzenia narzędzi Azure Resource Manager. Szablony Menedżer zasobów można utworzyć w Visual Studio Code bez rozszerzenia, ale rozszerzenie zawiera opcje Autouzupełniania, które upraszczają programowanie szablonów. Aby zrozumieć koncepcje związane z wdrażaniem rozwiązań platformy Azure i zarządzaniem nimi, zobacz [Azure Resource Manager omówienie](resource-group-overview.md).
+Dowiedz się, jak używać kodu programu Visual Studio i rozszerzenia narzędzi usługi Azure Resource Manager do tworzenia i edytowania szablonów usługi Azure Resource Manager. Szablony usługi Resource Manager można tworzyć w programie Visual Studio Code bez korzystania z rozszerzenia, ale rozszerzenie udostępnia opcje autouzupełniania, które upraszczają proces tworzenia szablonu. Aby zrozumieć pojęcia związane z wdrażaniem rozwiązań platformy Azure i zarządzaniem nimi, zobacz [Usługa Azure Resource Manager — omówienie](resource-group-overview.md).
 
 W tym przewodniku szybki start wdrożono konto magazynu:
 
 ![szablon Resource Manager — szybki start — diagram kodu programu Visual Studio](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) .
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania tego artykułu są potrzebne następujące czynności:
+Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
-- [Visual Studio Code](https://code.visualstudio.com/).
-- Rozszerzenie narzędzi Menedżer zasobów. Aby przeprowadzić instalację, wykonaj następujące kroki:
+- [Program Visual Studio Code](https://code.visualstudio.com/)
+- Rozszerzenie Narzędzia usługi Resource Manager. Aby przeprowadzić instalację, wykonaj następujące kroki:
 
-    1. Otwórz Visual Studio Code.
-    2. Naciśnij **klawisze CTRL + SHIFT + X** , aby otworzyć okienko rozszerzenia
-    3. Wyszukaj **Azure Resource Manager narzędzia**, a następnie wybierz pozycję **Zainstaluj**.
-    4. Wybierz pozycję **Załaduj ponownie** , aby zakończyć instalację rozszerzenia.
+    1. Otwórz program Visual Studio Code.
+    2. Naciśnij klawisze **CTRL + SHIFT + X**, aby otworzyć okienko rozszerzenia.
+    3. Wyszukaj pozycję **Azure Resource Manager Tools**, a następnie wybierz pozycję **Install (Zainstaluj)** .
+    4. Wybierz pozycję **Reload (Załaduj ponownie)** , aby zakończyć instalację rozszerzenia.
 
-## <a name="open-a-quickstart-template"></a>Otwórz szablon szybkiego startu
+## <a name="open-a-quickstart-template"></a>Otwieranie szablonu szybkiego startu
 
-Zamiast tworzyć szablon od podstaw, należy otworzyć szablon z [szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/). Szablony szybkiego startu platformy Azure to repozytorium szablonów Menedżer zasobów.
+Zamiast tworzyć szablon od podstaw, otwórz szablon z obszaru [Azure Quickstart Templates (Szablony szybkiego startu platformy Azure)](https://azure.microsoft.com/resources/templates/). Szablony szybkiego startu platformy Azure to repozytorium szablonów usługi Resource Manager.
 
-Szablon używany w tym przewodniku szybki start nazywa się [Tworzenie konta magazynu w warstwie Standardowa](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Szablon definiuje zasób konta usługi Azure Storage.
+Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard storage account (Tworzenie standardowego konta magazynu)](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Szablon definiuje zasób konta usługi Azure Storage.
 
-1. W obszarze Visual Studio Code wybierz pozycję **plik**>**Otwórz plik**.
-2. W polu **Nazwa pliku**wklej następujący adres URL:
+1. W programie Visual Studio Code wybierz pozycję **File (Plik)** >**Open File (Otwórz plik)** .
+2. W polu **File name (Nazwa pliku)** wklej następujący adres URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
-3. Wybierz pozycję **Otwórz** , aby otworzyć plik.
-4. Wybierz pozycję **plik**>**Zapisz jako,** aby zapisać plik AS **azuredeploy. JSON** na komputerze lokalnym.
+3. Wybierz pozycję **Open (Otwórz)** , aby otworzyć plik.
+4. Wybierz pozycję **File (Plik)** >**Save As (Zapisz jako)** , aby zapisać plik jako **azuredeploy.json** na komputerze lokalnym.
 
-## <a name="edit-the-template"></a>Edytuj szablon
+## <a name="edit-the-template"></a>Edytowanie szablonu
 
-Aby dowiedzieć się, jak edytować szablon przy użyciu Visual Studio Code, należy dodać jeden element do sekcji `outputs` w celu wyświetlenia identyfikatora URI magazynu.
+Aby dowiedzieć się, jak edytować szablon za pomocą programu Visual Studio Code, dodaj jeszcze jeden element do sekcji `outputs` zawierający identyfikator URI magazynu.
 
-1. Dodaj jeden element wyjściowy do wyeksportowanego szablonu:
+1. Dodaj jeszcze jedno wyjście do wyeksportowanego szablonu:
 
     ```json
     "storageUri": {
@@ -71,7 +71,7 @@ Aby dowiedzieć się, jak edytować szablon przy użyciu Visual Studio Code, nal
     }
     ```
 
-    Gdy skończysz, sekcja Outputs będzie wyglądać następująco:
+    Po wykonaniu wszystkich czynności sekcja danych wyjściowych będzie wyglądać następująco:
 
     ```json
     "outputs": {
@@ -86,58 +86,58 @@ Aby dowiedzieć się, jak edytować szablon przy użyciu Visual Studio Code, nal
     }
     ```
 
-    Jeśli skopiowano i wklejono kod wewnątrz Visual Studio Code, spróbuj ponownie wpisać element **Value** , aby skorzystać z funkcji IntelliSense rozszerzenia narzędzi Menedżer zasobów Tools.
+    Jeśli skopiowano i wklejono kod w programie Visual Studio Code, spróbuj ponownie wpisać element **value**, aby użyć funkcji IntelliSense rozszerzenia Narzędzia usługi Resource Manager.
 
-    ![Szablon Menedżer zasobów Visual Studio Code IntelliSense](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
+    ![Funkcja IntelliSense programu Visual Studio Code szablonu usługi Resource Manager](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-2. Wybierz pozycję **plik**>**Zapisz** , aby zapisać plik.
+2. Wybierz pozycję **File (Plik)** >**Save (Zapisz)** , aby zapisać plik.
 
-## <a name="deploy-the-template"></a>Wdróż szablon
+## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
 Istnieje wiele metod wdrażania szablonów. Usługa Azure Cloud Shell jest używana w tym przewodniku Szybki Start. Usługa Cloud Shell obsługuje interfejs wiersza polecenia platformy Azure i Azure PowerShell. Użyj selektora kart, aby wybrać między interfejsem wiersza polecenia a programem PowerShell.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Logowanie się do [usługi Azure Cloud Shell](https://shell.azure.com)
+1. Logowanie do [usługi Azure Cloud Shell](https://shell.azure.com)
 
-2. Wybierz preferowane środowisko, wybierając opcję **PowerShell** lub **bash**(CLI) w lewym górnym rogu.  Po przełączeniu jest wymagane ponowne uruchomienie powłoki.
+2. Wybierz preferowane środowisko, wybierając opcję **PowerShell** lub **bash**(CLI) w lewym górnym rogu.  Po przełączeniu wymagane jest ponowne uruchomienie powłoki.
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
-    ![Interfejs wiersza polecenia Azure Portal Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
+    ![Interfejs wiersza polecenia usługi Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
-    # <a name="powershelltabpowershell"></a>[Narzędzia](#tab/PowerShell)
+    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
 
     ![Azure Portal PowerShell usługi Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
     ---
 
-3. Wybierz pozycję **pliki do przekazania/pobrania**, a następnie wybierz pozycję **Przekaż**.
+3. Wybierz pozycję **Przekaż/pobierz pliki**, a następnie wybierz pozycję **Przekaż**.
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
-    ![Azure Portal pliku przekazywania usługi Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
+    ![Przekazywanie pliku w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
-    # <a name="powershelltabpowershell"></a>[Narzędzia](#tab/PowerShell)
+    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
 
-    ![Azure Portal pliku przekazywania usługi Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
+    ![Przekazywanie pliku w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
     ---
 
-    Wybierz plik zapisany w poprzedniej sekcji. Nazwa domyślna to **azuredeploy. JSON**. Plik szablonu musi być dostępny z poziomu powłoki.
+    Wybierz plik, który został zapisany w poprzedniej sekcji. Nazwa domyślna to **azuredeploy.json**. Plik szablonu musi być dostępny z poziomu powłoki.
 
-    Opcjonalnie można użyć polecenia **ls** i **Cat** polecenia, aby sprawdzić, czy plik został pomyślnie przekazany.
+    Opcjonalnie możesz skorzystać z poleceń **ls** i **cat**, aby sprawdzić, czy plik został przekazany pomyślnie.
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
-    ![Azure Portal pliku listy usługi Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
+    ![Wyświetlanie listy plików w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
-    # <a name="powershelltabpowershell"></a>[Narzędzia](#tab/PowerShell)
+    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
 
-    ![Azure Portal pliku listy usługi Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
+    ![Wyświetlanie listy plików w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
     ---
-4. W usłudze Cloud Shell Uruchom następujące polecenia. Wybierz kartę, aby wyświetlić kod programu PowerShell lub kod interfejsu wiersza polecenia.
+4. W usłudze Cloud Shell uruchom poniższe polecenia. Wybierz kartę, aby wyświetlić kod programu PowerShell lub kod interfejsu wiersza polecenia.
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
     ```azurecli
@@ -149,7 +149,7 @@ Istnieje wiele metod wdrażania szablonów. Usługa Azure Cloud Shell jest używ
     az group deployment create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
 
-    # <a name="powershelltabpowershell"></a>[Narzędzia](#tab/PowerShell)
+    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -161,23 +161,23 @@ Istnieje wiele metod wdrażania szablonów. Usługa Azure Cloud Shell jest używ
 
     ---
 
-    Zaktualizuj nazwę pliku szablonu, jeśli zapiszesz plik pod nazwą inną niż **azuredeploy. JSON**.
+    Zaktualizuj nazwę pliku szablonu, jeśli plik zapisano pod nazwą inną niż **azuredeploy.json**.
 
     Poniższy zrzut ekranu przedstawia przykładowe wdrożenie:
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
-    ![Szablon wdrożenia usługi Cloud Shell Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
+    ![Wdrażanie szablonu w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
-    # <a name="powershelltabpowershell"></a>[Narzędzia](#tab/PowerShell)
+    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
 
-    ![Szablon wdrożenia usługi Cloud Shell Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
+    ![Wdrażanie szablonu w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
     ---
 
-    Nazwa konta magazynu i adres URL magazynu w sekcji dane wyjściowe są wyróżnione na zrzucie ekranu. W następnym kroku potrzebna jest nazwa konta magazynu.
+    Nazwa konta magazynu i adres URL magazynu w sekcji danych wyjściowych zostały wyróżnione na zrzucie ekranu. W następnym kroku będzie potrzebna nazwa konta magazynu.
 
-5. Uruchom następujące polecenie interfejsu wiersza polecenia lub programu PowerShell, aby wyświetlić listę nowo utworzonego konta magazynu:
+5. Uruchom następujące polecenie interfejsu wiersza polecenia lub programu PowerShell, aby wyświetlić nowo utworzone konto magazynu:
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
     ```azurecli
@@ -188,7 +188,7 @@ Istnieje wiele metod wdrażania szablonów. Usługa Azure Cloud Shell jest używ
     az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
 
-    # <a name="powershelltabpowershell"></a>[Narzędzia](#tab/PowerShell)
+    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -198,20 +198,20 @@ Istnieje wiele metod wdrażania szablonów. Usługa Azure Cloud Shell jest używ
 
     ---
 
-Aby dowiedzieć się więcej o korzystaniu z kont usługi Azure Storage, zobacz [Szybki Start: przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB przy użyciu Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+Aby dowiedzieć się więcej o korzystaniu z kont magazynu platformy Azure, zobacz przewodnik [Szybki start — przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy zasoby platformy Azure nie są już potrzebne, Oczyść wdrożone zasoby, usuwając grupę zasobów.
+Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby, usuwając grupę zasobów.
 
-1. Z Azure Portal z menu po lewej stronie wybierz pozycję **Grupa zasobów** .
-2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy** .
-3. Wybierz nazwę grupy zasobów.  Zobaczysz łącznie sześć zasobów w grupie zasobów.
-4. W górnym menu wybierz pozycję **Usuń grupę zasobów** .
+1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
+2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
+3. Wybierz nazwę grupy zasobów.  W grupie zasobów zostanie wyświetlonych łącznie sześć zasobów.
+4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Głównym celem tego przewodnika Szybki Start jest użycie Visual Studio Code do edytowania istniejącego szablonu z szablonów szybkiego startu platformy Azure. Wiesz również, jak wdrożyć szablon przy użyciu interfejsu wiersza polecenia lub programu PowerShell w usłudze Azure Cloud Shell. Szablony z szablonów szybkiego startu platformy Azure mogą nie zapewniać wszystkiego, czego potrzebujesz. Aby dowiedzieć się więcej na temat tworzenia szablonów, zobacz naszą nową serię samouczków dla początkujących:
+Ten przewodnik Szybki start koncentruje się głównie na użyciu programu Visual Studio Code do edycji jednego z istniejących szablonów szybkiego startu platformy Azure. Przedstawiono w nim również sposób wdrażania szablonu przy użyciu interfejsu wiersza polecenia lub programu PowerShell z poziomu usługi Azure Cloud Shell. Szablony spośród szablonów szybkiego startu platformy Azure mogą nie zaspokajać wszystkich Twoich potrzeb. Aby dowiedzieć się więcej na temat tworzenia szablonów, zobacz naszą nową serię samouczków dla początkujących:
 
 > [!div class="nextstepaction"]
 > [Samouczki początkującego](./template-tutorial-create-first-template.md)

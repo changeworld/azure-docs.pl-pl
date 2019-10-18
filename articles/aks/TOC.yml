@@ -304,19 +304,33 @@
           href: spark-job.md
         - name: Korzystanie z procesorów GPU
           href: gpu-cluster.md
-        - name: Używanie rozwiązania Istio
-          items:
-            - name: Instalowanie i konfigurowanie
-              href: istio-install.md
-            - name: Routing inteligentny i wydania Canary
-              href: istio-scenario-routing.md
-        - name: Używanie rozwiązania Hashicorp Consul Connect
-          items:
-            - name: Instalowanie i konfigurowanie
-              href: consul-install.md
         - name: Korzystanie z usługi Azure Database for PostgreSQL
           href: ../postgresql/concepts-aks.md
           maintainContext: true
+    - name: Wybór i wdrażanie siatki usług
+      items:
+        - name: Informacje o siatkach usług
+          href: servicemesh-about.md
+        - name: Używanie rozwiązania Istio
+          items:
+            - name: Informacje o rozwiązaniu Istio
+              href: servicemesh-istio-about.md
+            - name: Instalowanie i konfigurowanie
+              href: servicemesh-istio-install.md
+            - name: Scenariusz — routing inteligentny i wydania Canary
+              href: servicemesh-istio-scenario-routing.md
+        - name: Używanie rozwiązania Linkerd
+          items:
+            - name: Informacje o rozwiązaniu Linkerd
+              href: servicemesh-linkerd-about.md
+            - name: Instalowanie i konfigurowanie
+              href: servicemesh-linkerd-install.md
+        - name: Używanie rozwiązania Consul
+          items:
+            - name: Informacje o rozwiązaniu Consul
+              href: servicemesh-consul-about.md
+            - name: Instalowanie i konfigurowanie
+              href: servicemesh-consul-install.md
     - name: DevOps
       items:
         - name: Tworzenie klastrów usługi AKS przy użyciu rozwiązania Ansible
