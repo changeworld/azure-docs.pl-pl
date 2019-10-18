@@ -1,52 +1,52 @@
 ---
-title: Przenieś zasoby dotyczące wdrażania klasycznej platformy Azure do nowej subskrypcji lub grupy zasobów
-description: Usługa Azure Resource Manager, aby przenieść zasoby dotyczące wdrażania klasycznego do nowej grupy zasobów lub subskrypcji.
+title: Przenoszenie klasycznych zasobów wdrażania platformy Azure
+description: Użyj Azure Resource Manager, aby przenieść klasyczne zasoby wdrożenia do nowej grupy zasobów lub subskrypcji.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4770f957b6b9eea75b50776a7491b1ca479e50e2
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 783fcdca7637f3f67cf146bb827760cb4cdd7cbe
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723508"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533482"
 ---
-# <a name="move-guidance-for-classic-deployment-model-resources"></a>Przenieś wskazówki dotyczące zasobów modelu wdrożenia klasycznego
+# <a name="move-guidance-for-classic-deployment-model-resources"></a>Wskazówki dotyczące przenoszenia dla zasobów klasycznego modelu wdrażania
 
-Kroki wymagane do przeniesienia zasobów wdrożonych za pośrednictwem modelu klasycznego, różnią się zależnie od tego, czy przenosisz zasoby w ramach subskrypcji lub do nowej subskrypcji.
+Kroki dotyczące przenoszenia zasobów wdrożonych za pośrednictwem modelu klasycznego różnią się w zależności od tego, czy przenosisz zasoby w ramach subskrypcji, czy na nową subskrypcję.
 
-## <a name="move-in-the-same-subscription"></a>Przenieś do tej samej subskrypcji
+## <a name="move-in-the-same-subscription"></a>Przenieś w tej samej subskrypcji
 
-Podczas przenoszenia zasobów między grupami zasobów do innej grupy zasobów w ramach tej samej subskrypcji, obowiązują następujące ograniczenia:
+Gdy przenosisz zasoby z jednej grupy zasobów do innej grupy zasobów w ramach tej samej subskrypcji, mają zastosowanie następujące ograniczenia:
 
-* Nie można przenieść sieci wirtualne (klasyczne).
-* Maszyny wirtualne (klasyczne) należy przenieść z usługą w chmurze.
-* Usługa w chmurze mogą być przenoszone po przeniesieniu obejmuje wszystkie maszyny wirtualne.
-* Jednocześnie można przenosić tylko jedną usługę w chmurze.
-* Jednocześnie można przenosić tylko jedno konto magazynu (klasyczne).
-* Nie można przenieść konta magazynu (klasyczne) w tej samej operacji przy użyciu maszyny wirtualnej lub usługi w chmurze.
+* Nie można przenieść sieci wirtualnych (klasycznych).
+* Maszyny wirtualne (klasyczne) należy przenieść przy użyciu usługi w chmurze.
+* Usługę w chmurze można przenieść tylko wtedy, gdy przeniesienie obejmuje wszystkie jej maszyny wirtualne.
+* Jednocześnie można przenieść tylko jedną usługę w chmurze.
+* Jednocześnie można przenieść tylko jedno konto magazynu (klasyczne).
+* Nie można przenieść konta magazynu (klasycznego) do tej samej operacji z maszyną wirtualną lub usługą w chmurze.
 
-Można przenieść zasobów klasycznych do nowej grupy zasobów w ramach tej samej subskrypcji, za pomocą [operacji przenoszenia standardowa](../resource-group-move-resources.md) za pośrednictwem portalu, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. Możesz użyć tych samych operacji jak używane do przenoszenia zasobów usługi Resource Manager.
+Aby przenieść zasoby klasyczne do nowej grupy zasobów w ramach tej samej subskrypcji, użyj [standardowych operacji przenoszenia](../resource-group-move-resources.md) w portalu, Azure PowerShell, INTERFEJSIE wiersza polecenia platformy Azure lub interfejsu API REST. Te same operacje są używane do przeniesienia Menedżer zasobów zasobów.
 
-## <a name="move-across-subscriptions"></a>Przenoszenie między subskrypcjami
+## <a name="move-across-subscriptions"></a>Przechodzenie między subskrypcjami
 
-Podczas przenoszenia zasobów do nowej subskrypcji, obowiązują następujące ograniczenia:
+W przypadku przeniesienia zasobów do nowej subskrypcji obowiązują następujące ograniczenia:
 
-* Wszystkie zasoby klasyczne w subskrypcji należy przenieść w tej samej operacji.
-* Subskrypcja docelowa nie może mieć inne zasoby klasyczne.
-* Przeniesienie można jedynie żądać użycie oddzielnych interfejsu API REST, aby poruszać się klasycznego. Standardowe polecenia move Menedżera zasobów nie działają podczas przenoszenia zasobów klasycznych do nowej subskrypcji.
+* Wszystkie klasyczne zasoby w subskrypcji muszą być przenoszone w ramach tej samej operacji.
+* Subskrypcja docelowa nie może mieć żadnych innych zasobów klasycznych.
+* Do przenoszenia można żądać tylko za pomocą oddzielnego interfejsu API REST dla ruchów klasycznych. Standardowe Menedżer zasobów przenoszenia poleceń nie działają podczas przenoszenia zasobów klasycznych do nowej subskrypcji.
 
-Aby przenieść zasobów klasycznych do nowej subskrypcji, użyj operacji REST, które są specyficzne dla zasobów klasycznych. Aby korzystanie z interfejsu REST, wykonaj następujące czynności:
+Aby przenieść zasoby klasyczne do nowej subskrypcji, użyj operacji REST, które są specyficzne dla zasobów klasycznych. Aby użyć REST, wykonaj następujące czynności:
 
-1. Sprawdź, jeśli subskrypcja źródłowa mogą brać udział w przenoszenia między subskrypcjami. Użyj następujących operacji:
+1. Sprawdź, czy subskrypcja źródłowa może uczestniczyć w przenoszeniu między subskrypcjami. Użyj następującej operacji:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
    ```
 
-     W treści żądania obejmują:
+     W treści żądania należy uwzględnić:
 
    ```json
    {
@@ -54,7 +54,7 @@ Aby przenieść zasobów klasycznych do nowej subskrypcji, użyj operacji REST, 
    }
    ```
 
-     Odpowiedź dla operacji sprawdzania poprawności znajduje się w następującym formacie:
+     Odpowiedź na operację walidacji ma następujący format:
 
    ```json
    {
@@ -66,13 +66,13 @@ Aby przenieść zasobów klasycznych do nowej subskrypcji, użyj operacji REST, 
    }
    ```
 
-1. Sprawdź, jeśli subskrypcja docelowa mogą brać udział w przenoszenia między subskrypcjami. Użyj następujących operacji:
+1. Sprawdź, czy subskrypcja docelowa może uczestniczyć w przenoszeniu między subskrypcjami. Użyj następującej operacji:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
    ```
 
-     W treści żądania obejmują:
+     W treści żądania należy uwzględnić:
 
    ```json
    {
@@ -80,14 +80,14 @@ Aby przenieść zasobów klasycznych do nowej subskrypcji, użyj operacji REST, 
    }
    ```
 
-     Odpowiedź jest w formacie sprawdzania poprawności subskrypcji źródłowej.
-1. Jeśli obie subskrypcje pomyślnie weryfikacji, Przenieś wszystkie zasoby klasyczne z jednej subskrypcji do innej subskrypcji za pomocą następujących operacji:
+     Odpowiedź jest w tym samym formacie co Walidacja subskrypcji źródłowej.
+1. Jeśli subskrypcje przechodzą weryfikację, Przenieś wszystkie klasyczne zasoby z jednej subskrypcji do innej subskrypcji przy użyciu następującej operacji:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
    ```
 
-    W treści żądania obejmują:
+    W treści żądania należy uwzględnić:
 
    ```json
    {
@@ -95,10 +95,10 @@ Aby przenieść zasobów klasycznych do nowej subskrypcji, użyj operacji REST, 
    }
    ```
 
-Operacja może trwać kilka minut.
+Operacja może być wykonywana przez kilka minut.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli masz problemy z przenoszeniem zasobów klasycznych, skontaktuj się z pomocą [pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Jeśli masz problem z przeniesieniem zasobów klasycznych, skontaktuj się z [pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-Poleceń przenieść zasoby można znaleźć [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../resource-group-move-resources.md).
+Aby uzyskać polecenia przenoszenia zasobów, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../resource-group-move-resources.md).

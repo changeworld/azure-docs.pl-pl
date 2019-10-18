@@ -1,34 +1,34 @@
 ---
-title: Wdrażaj zasoby platformy Azure do wielu subskrypcji i grup zasobów | Dokumentacja firmy Microsoft
-description: Pokazuje, jak pod kątem więcej niż jeden Azure subskrypcji i grupie zasobów podczas wdrażania.
+title: Wdróż & grupę zasobów między subskrypcjami zasobów platformy Azure
+description: Pokazuje, w jaki sposób można określić więcej niż jedną subskrypcję platformy Azure i grupę zasobów podczas wdrażania.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 33b0a998206b68f1807f5bfa3c3f39164798842c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c90096043f54eb8db5834fbe83ed1d6ae710d371
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205486"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528328"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Wdrażaj zasoby platformy Azure do więcej niż jedną subskrypcję lub grupę zasobów
+# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Zazwyczaj można wdrażać wszystkich zasobów w szablonie do pojedynczego [grupy zasobów](resource-group-overview.md). Jednak istnieją scenariusze, w której chcesz wdrożyć zestaw zasobów ze sobą, ale umieścić je w różnych grupach zasobów lub subskrypcji. Na przykład można wdrożyć kopii zapasowej maszyny wirtualnej dla usługi Azure Site Recovery do oddzielnej grupie zasobów i lokalizacji. Usługi Resource Manager umożliwia korzystanie z szablonów zagnieżdżonych do różnych subskrypcji docelowej i grup zasobów niż subskrypcję i grupę zasobów używaną dla szablonu nadrzędnego.
+Zwykle wszystkie zasoby w szablonie są wdrażane w jednej [grupie zasobów](resource-group-overview.md). Istnieją jednak scenariusze, w których należy wspólnie wdrożyć zestaw zasobów, ale umieścić je w różnych grupach zasobów lub subskrypcjach. Na przykład możesz chcieć wdrożyć maszynę wirtualną kopii zapasowej dla Azure Site Recovery w oddzielnej grupie zasobów i lokalizacji. Menedżer zasobów umożliwia korzystanie z szablonów zagnieżdżonych jako docelowych dla różnych subskrypcji i grup zasobów niż subskrypcja i Grupa zasobów używana dla szablonu nadrzędnego.
 
 > [!NOTE]
-> Można wdrożyć tylko pięć grup zasobów w ramach pojedynczego wdrożenia. Zwykle to ograniczenie oznacza, że można wdrożyć do jednej grupy zasobów określona dla szablonu nadrzędnego i maksymalnie czterech grup zasobów w połączonych lub zagnieżdżonych wdrożeń. Jednak jeśli sama nie jest wdrażana żadnych zasobów szablonu nadrzędnego zawiera tylko połączonych lub zagnieżdżonych szablonów, można dołączyć maksymalnie pięć grup zasobów w połączonych lub zagnieżdżonych wdrożeń.
+> W jednym wdrożeniu można wdrożyć tylko pięć grup zasobów. Zwykle to ograniczenie oznacza, że można wdrożyć do jednej grupy zasobów określonej dla szablonu nadrzędnego oraz do czterech grup zasobów w ramach wdrożeń zagnieżdżonych lub połączonych. Jeśli jednak szablon nadrzędny zawiera tylko szablony zagnieżdżone lub połączone i nie wdraża żadnego zasobu, można dołączyć do pięciu grup zasobów w ramach wdrożeń zagnieżdżonych lub połączonych.
 
 ## <a name="specify-a-subscription-and-resource-group"></a>Określ subskrypcję i grupę zasobów
 
-Aby skierować je do innego zasobu, należy użyć szablonu połączonych lub zagnieżdżonych. `Microsoft.Resources/deployments` Typ zasobu zawiera parametry `subscriptionId` i `resourceGroup`. Właściwości te umożliwiają określenie różnych subskrypcji i grupy zasobów dla wdrożenia zagnieżdżonego. Wszystkie grupy zasobów musi istnieć przed uruchomieniem wdrożenia. Jeśli nie określisz subskrypcji identyfikator lub grupy zasobów, subskrypcji i grupy zasobów z szablonu nadrzędnego jest używany.
+Aby określić obiekt docelowy innego zasobu, użyj szablonu zagnieżdżone lub połączone. Typ zasobu `Microsoft.Resources/deployments` zapewnia parametry dla `subscriptionId` i `resourceGroup`. Te właściwości pozwalają określić inną subskrypcję i grupę zasobów dla wdrożenia zagnieżdżonego. Przed uruchomieniem wdrożenia muszą istnieć wszystkie grupy zasobów. Jeśli nie określisz identyfikatora subskrypcji lub grupy zasobów, zostanie użyta subskrypcja i Grupa zasobów z szablonu nadrzędnego.
 
-Konto, którego używasz do wdrożenia szablonu, musi mieć uprawnienia do wdrażania do identyfikatora określonej subskrypcji. Jeśli wybrana subskrypcja istnieje w innej dzierżawie usługi Azure Active Directory, musisz najpierw [dodać użytkowników-gości z innego katalogu](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
+Konto używane do wdrożenia szablonu musi mieć uprawnienia do wdrożenia określonego identyfikatora subskrypcji. Jeśli określona subskrypcja istnieje w innej dzierżawie Azure Active Directory, należy [dodać użytkowników-Gości z innego katalogu](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
-Aby określić inną grupę zasobów i subskrypcji, należy użyć:
+Aby określić inną grupę zasobów i subskrypcję, użyj:
 
 ```json
 "resources": [
@@ -43,9 +43,9 @@ Aby określić inną grupę zasobów i subskrypcji, należy użyć:
 ]
 ```
 
-Jeśli grup zasobów znajdują się w tej samej subskrypcji, możesz usunąć **subscriptionId** wartości.
+Jeśli grupy zasobów znajdują się w tej samej subskrypcji, możesz usunąć wartość identyfikatora **subskrypcji** .
 
-Poniższy przykład służy do wdrażania dwóch kont magazynu — jedną w grupie zasobów, określony podczas wdrażania i jeden w grupie zasobów określonej w `secondResourceGroup` parametru:
+W poniższym przykładzie zostały wdrożone dwa konta magazynu — jeden w grupie zasobów określonej podczas wdrażania i jeden w grupie zasobów określonej w `secondResourceGroup` parametr:
 
 ```json
 {
@@ -120,13 +120,13 @@ Poniższy przykład służy do wdrażania dwóch kont magazynu — jedną w grup
 }
 ```
 
-Jeśli ustawisz `resourceGroup` nazwę grupy zasobów, która nie istnieje, wdrożenie zakończy się niepowodzeniem.
+Jeśli ustawisz `resourceGroup` na nazwę grupy zasobów, która nie istnieje, wdrożenie nie powiedzie się.
 
-## <a name="use-the-resourcegroup-and-subscription-functions"></a>Użyj funkcji resourceGroup() i subscription()
+## <a name="use-the-resourcegroup-and-subscription-functions"></a>Korzystanie z funkcji Resources () i subskrypcji ()
 
-Dla wielu wdrożeniach grupy zasobów, [resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) i [subscription()](resource-group-template-functions-resource.md#subscription) funkcji rozwiązania uzależnione określania zagnieżdżonych szablonów. 
+W przypadku wdrożeń między grupami zasobów można rozróżnić usługi [()](resource-group-template-functions-resource.md#resourcegroup) i [subskrypcje ()](resource-group-template-functions-resource.md#subscription) w różny sposób w zależności od sposobu określania zagnieżdżonego szablonu. 
 
-Jeśli osadzasz jednego szablonu w ramach innego szablonu, funkcje w zagnieżdżonych szablonów prowadzić do nadrzędnej grupy zasobów i subskrypcji. Osadzony szablonu posługuje się następującym formatem:
+Jeśli osadzisz jeden szablon w innym szablonie, funkcje w szablonie zagnieżdżonym rozpoznają się z nadrzędną grupą zasobów i subskrypcją. Szablon osadzony używa następującego formatu:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -142,7 +142,7 @@ Jeśli osadzasz jednego szablonu w ramach innego szablonu, funkcje w zagnieżdż
 }
 ```
 
-Jeśli łączysz się do oddzielnych szablonu funkcji w szablonie połączone prowadzić do grupy zagnieżdżone zasobów i subskrypcji. Połączony szablon posługuje się następującym formatem:
+Jeśli połączysz się z osobnym szablonem, funkcje w połączonym szablonie rozpoznają się z zagnieżdżoną grupą zasobów i subskrypcją. Połączony szablon używa następującego formatu:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -160,16 +160,16 @@ Jeśli łączysz się do oddzielnych szablonu funkcji w szablonie połączone pr
 
 ## <a name="example-templates"></a>Przykładowe szablony
 
-Poniższe szablony pokazują wielu wdrożeń będących częścią grupy zasobów. Skrypty, aby wdrożyć szablony są wyświetlane pod tabelą.
+Poniższe szablony przedstawiają wiele wdrożeń grup zasobów. Skrypty do wdrożenia szablonów są wyświetlane po tabeli.
 
 |Szablon  |Opis  |
 |---------|---------|
-|[Wiele szablonów subskrypcji](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Wdraża jedno konto magazynu do jednej grupy zasobów i jedno konto magazynu do drugiej grupy zasobów. Dołączyć wartość dla Identyfikatora subskrypcji, gdy druga grupa zasobów znajduje się w innej subskrypcji. |
-|[Obejmujące wiele zasobów grupy właściwości szablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |Pokazuje, jak `resourceGroup()` funkcja rozwiązuje. Go nie wdrażają żadnych zasobów. |
+|[Szablon dla wielu subskrypcji](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Wdraża jedno konto magazynu w jednej grupie zasobów i jedno konto magazynu w drugiej grupie zasobów. Dołącz wartość identyfikatora subskrypcji, gdy druga grupa zasobów znajduje się w innej subskrypcji. |
+|[Szablon właściwości grupy zasobów krzyżowych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |Demonstruje sposób rozwiązywania `resourceGroup()` funkcji. Nie wdraża żadnych zasobów. |
 
 ### <a name="powershell"></a>PowerShell
 
-Dla programu PowerShell, aby wdrożyć dwa konta magazynu na dwie grupy zasobów w **tej samej subskrypcji**, użyj:
+Aby wdrożyć dwa konta magazynu dla programu PowerShell w ramach **jednej subskrypcji**, należy użyć:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -186,7 +186,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-Dla programu PowerShell, aby wdrożyć dwa konta magazynu do **dwiema subskrypcjami**, użyj:
+W celu wdrożenia dwóch kont magazynu w programie PowerShell **należy użyć**następujących poleceń:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -210,7 +210,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-Dla programu PowerShell, aby przetestować sposób, w jaki **obiektu grupy zasobów** jest rozpoznawana jako na użytek szablonu nadrzędnego, wbudowany szablon i połączony szablon:
+W przypadku programu PowerShell, aby sprawdzić, jak **obiekt grupy zasobów** jest rozpoznawany dla szablonu nadrzędnego, szablonu wbudowanego i połączonego szablonu, użyj:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -222,7 +222,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```
 
-W poprzednim przykładzie zarówno **parentRG** i **inlineRG** rozpoznać **parentGroup**. **linkedRG** jest rozpoznawana jako **linkedGroup**. Dane wyjściowe z poprzedniego przykładu są:
+W poprzednim przykładzie zarówno **parentRG** , jak i **inlineRG** są rozpoznawane jako **nadrzędne**. **linkedRG** jest rozpoznawana jako **połączona**. Dane wyjściowe z poprzedniego przykładu to:
 
 ```powershell
  Name             Type                       Value
@@ -255,7 +255,7 @@ W poprzednim przykładzie zarówno **parentRG** i **inlineRG** rozpoznać **pare
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Wiersza polecenia platformy Azure, aby wdrożyć dwa konta magazynu na dwie grupy zasobów w **tej samej subskrypcji**, użyj:
+W przypadku interfejsu wiersza polecenia platformy Azure w celu wdrożenia dwóch kont magazynu w dwóch grupach zasobów w ramach **tej samej subskrypcji**Użyj:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -270,7 +270,7 @@ az group deployment create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-Wiersza polecenia platformy Azure, aby wdrożyć dwa konta magazynu do **dwiema subskrypcjami**, użyj:
+Aby wdrożyć dwa konta magazynu w ramach interfejsu wiersza polecenia platformy **Azure, użyj**polecenia:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -292,7 +292,7 @@ az group deployment create \
   --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
 ```
 
-Wiersza polecenia platformy Azure, aby przetestować sposób, w jaki **obiektu grupy zasobów** jest rozpoznawana jako na użytek szablonu nadrzędnego, wbudowany szablon i połączony szablon:
+W przypadku interfejsu wiersza polecenia platformy Azure w celu przetestowania sposobu, w jaki **obiekt grupy zasobów** jest rozpoznawany dla szablonu nadrzędnego, szablonu wbudowanego i połączonego szablonu, użyj:
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -305,7 +305,7 @@ az group deployment create \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
 ```
 
-W poprzednim przykładzie zarówno **parentRG** i **inlineRG** rozpoznać **parentGroup**. **linkedRG** jest rozpoznawana jako **linkedGroup**. Dane wyjściowe z poprzedniego przykładu są:
+W poprzednim przykładzie zarówno **parentRG** , jak i **inlineRG** są rozpoznawane jako **nadrzędne**. **linkedRG** jest rozpoznawana jako **połączona**. Dane wyjściowe z poprzedniego przykładu to:
 
 ```azurecli
 ...
@@ -347,8 +347,8 @@ W poprzednim przykładzie zarówno **parentRG** i **inlineRG** rozpoznać **pare
 ...
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się, jak zdefiniować parametry w szablonie, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](resource-group-authoring-templates.md).
-* Aby uzyskać porady dotyczące rozwiązywania typowych problemów wdrażania, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
-* Aby uzyskać informacje o wdrażaniu szablonu, który wymaga tokenu sygnatury dostępu Współdzielonego, zobacz [wdrażanie prywatnego szablonu przy użyciu tokenu sygnatury dostępu Współdzielonego](resource-manager-powershell-sas-token.md).
+* Aby zrozumieć, jak definiować parametry w szablonie, zobacz [Opis struktury i składni szablonów Azure Resource Manager](resource-group-authoring-templates.md).
+* Aby uzyskać wskazówki dotyczące rozwiązywania typowych błędów wdrażania, zobacz [Rozwiązywanie typowych błędów wdrażania platformy Azure przy użyciu Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* Informacje o wdrażaniu szablonu wymagającego tokenu SAS można znaleźć w temacie [Deploy Private Template with SAS token](resource-manager-powershell-sas-token.md).

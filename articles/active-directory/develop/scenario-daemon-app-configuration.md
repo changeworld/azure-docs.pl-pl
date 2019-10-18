@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394137a1b7901a3272e36f6a6d74944b87f30082
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 76337c471a4032f879bee8382b2d958f6600671e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056490"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527071"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 
@@ -35,7 +35,7 @@ Biblioteki firmy Microsoft obsługujące aplikacje demona są następujące:
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Obsługiwane platformy do kompilowania aplikacji demona są .NET Framework i platformy .NET Core (nie platformy UWP, Xamarin. iOS i Xamarin. Android, ponieważ te platformy są używane do tworzenia publicznych aplikacji klienckich).
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL. Python | Opracowywanie w toku — w publicznej wersji zapoznawczej
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Opracowywanie w toku — w publicznej wersji zapoznawczej
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL. Oprogramowania | Opracowywanie w toku — w publicznej wersji zapoznawczej
 
 ## <a name="configuration-of-the-authority"></a>Konfiguracja urzędu
 
@@ -43,7 +43,7 @@ Mając na uwadze, że aplikacje demona nie korzystają z uprawnień delegowanych
 
 W związku z tym Urząd określony w konfiguracji aplikacji powinien mieć wartość dzierżawca (określając identyfikator dzierżawy lub nazwę domeny skojarzoną z Twoją organizacją).
 
-Jeśli jesteś niezależnym dostawcą oprogramowania i chcesz udostępnić narzędzie z wieloma dzierżawcami, możesz użyć `organizations`programu. Należy jednak pamiętać, że należy również wyjaśnić swoim klientom sposób udzielania zgody administratora. Aby uzyskać szczegółowe informacje, zobacz prośba o [zgodę na całą dzierżawę](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) . Istnieje również ograniczenie MSAL: `organizations` jest dozwolone tylko wtedy, gdy poświadczenia klienta są wpisem tajnym aplikacji (nie certyfikatem).
+Jeśli jesteś niezależnym dostawcą oprogramowania i chcesz udostępnić narzędzie z wieloma dzierżawcami, możesz użyć `organizations`. Należy jednak pamiętać, że należy również wyjaśnić swoim klientom sposób udzielania zgody administratora. Aby uzyskać szczegółowe informacje [, zobacz prośba o zgodę na całą dzierżawę](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) . Istnieje również ograniczenie MSAL: wartość `organizations` jest dozwolona tylko wtedy, gdy poświadczenia klienta to klucz tajny aplikacji (a nie certyfikat).
 
 ## <a name="application-configuration-and-instantiation"></a>Konfiguracja i tworzenie aplikacji
 
@@ -126,14 +126,14 @@ Aby utworzyć wystąpienie aplikacji MSAL, należy wykonać następujące:
 - Dodawanie, odwoływanie lub Importowanie pakietu MSAL (w zależności od języka)
 - Następnie konstrukcja jest różna w zależności od tego, czy używane są klucze tajne lub certyfikaty klienta (lub, jako zaawansowany scenariusz, podpisane potwierdzenia)
 
-Aplikacja demona będzie wyświetlana przez`IConfidentialClientApplication`
+Aplikacja demona zostanie przedstawiona przez `IConfidentialClientApplication`
 
 #### <a name="reference-the-package"></a>Odwoływanie się do pakietu
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 Dodaj pakiet NuGet [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) do swojej aplikacji.
-W programie MSAL.NET poufna aplikacja kliencka jest reprezentowana przez `IConfidentialClientApplication` interfejs.
+W MSAL.NET, poufna aplikacja kliencka jest reprezentowana przez interfejs `IConfidentialClientApplication`.
 Użyj przestrzeni nazw MSAL.NET w kodzie źródłowym
 
 ```CSharp
@@ -269,7 +269,7 @@ MSAL.NET ma dwie metody, aby zapewnić podpisane potwierdzenia do poufnej aplika
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-W przypadku korzystania `WithClientAssertion`z programu należy podać podpisany token JWT. Ten zaawansowany scenariusz jest szczegółowo opisany w potwierdzeniach [klienta](msal-net-client-assertions.md)
+W przypadku korzystania z `WithClientAssertion` należy zapewnić podpisany token JWT. Ten zaawansowany scenariusz jest szczegółowo opisany w [potwierdzeniach klienta](msal-net-client-assertions.md)
 
 ```CSharp
 string signedClientAssertion = ComputeAssertion();
@@ -278,7 +278,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-W przypadku korzystania `WithClientClaims`z programu MSAL.NET obliczy same podpisane potwierdzenie zawierające oświadczenia oczekiwane przez usługę Azure AD i dodatkowe oświadczenia klienta, które chcesz wysłać.
+W przypadku korzystania z `WithClientClaims`, MSAL.NET będzie same podpisane potwierdzenie zawierające oświadczenia oczekiwane przez usługę Azure AD i dodatkowe oświadczenia klienta, które chcesz wysłać.
 Oto fragment kodu dotyczący sposobu wykonywania tych czynności:
 
 ```CSharp
@@ -295,7 +295,7 @@ Aby uzyskać szczegółowe informacje, zobacz [potwierdzenia klientów](msal-net
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-W MSAL Python można dostarczyć oświadczenia klienta przy użyciu oświadczeń, które będą podpisane przez ten `ConfidentialClientApplication`klucz prywatny.
+W MSAL Python można dostarczyć oświadczenia klienta przy użyciu oświadczeń, które będą podpisane przez klucz prywatny tego `ConfidentialClientApplication`.
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -321,5 +321,19 @@ msal4j jest w publicznej wersji zapoznawczej. Podpisane potwierdzenia nie są je
 
 ## <a name="next-steps"></a>Następne kroki
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [Aplikacja demona — uzyskiwanie tokenów dla aplikacji](./scenario-daemon-acquire-token.md)
+> [Aplikacja demona — uzyskiwanie tokenów dla aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Aplikacja demona — uzyskiwanie tokenów dla aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Aplikacja demona — uzyskiwanie tokenów dla aplikacji](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+
+---

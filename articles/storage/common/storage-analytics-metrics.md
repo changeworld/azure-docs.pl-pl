@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: ca831fe66a0ce6a2dbfafc54a761b86473067b10
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846884"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514780"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metryki usługi Azure Storage Analytics (klasyczne)
 
@@ -30,7 +30,7 @@ Analityka magazynu mogą przechowywać metryki, które obejmują zagregowane sta
 
  Dane transakcji są rejestrowane na dwóch poziomach — poziom usługi i poziom operacji interfejsu API. Na poziomie usługi Statystyka podsumowująca wszystkie żądane operacje interfejsu API są zapisywane w jednostce tabeli co godzinę, nawet jeśli żadne żądania nie zostały wysłane do usługi. Na poziomie operacji interfejsu API statystyki są zapisywane tylko w jednostce, jeśli zażądano tej operacji w danej godzinie.  
 
- Na przykład jeśli wykonujesz operację **GetBlob** na Blob service, analityka magazynu metryki będą rejestrować żądanie i uwzględniać je w zagregowanych danych dla zarówno BLOB Service jak i operacji GetBlob. Jeśli jednak w ciągu godziny nie zażądano żadnej operacji GetBlob, jednostka nie zostanie zapisywana w *$MetricsTransactionsBlob* dla tej operacji.  
+ Na przykład jeśli wykonujesz operację **GetBlob** na Blob service, analityka magazynu metryki będą rejestrować żądanie i uwzględniać je w zagregowanych danych dla zarówno BLOB Service jak i operacji **GetBlob** . Jeśli jednak w ciągu godziny nie zażądano żadnej operacji **GetBlob** , jednostka nie zostanie zapisywana w *$MetricsTransactionsBlob* dla tej operacji.  
 
  Metryki transakcji są rejestrowane zarówno dla żądań użytkowników, jak i żądań wykonywanych przez analityka magazynu samego siebie. Na przykład zarejestrowano żądania analityka magazynu do zapisu dzienników i jednostek tabel.
 
@@ -39,11 +39,11 @@ Analityka magazynu mogą przechowywać metryki, które obejmują zagregowane sta
 > [!NOTE]
 >  Obecnie metryki pojemności są dostępne tylko dla Blob service.
 
- Dane pojemności są rejestrowane codziennie dla Blob service konta magazynu, a dwie jednostki tabeli są zapisywane. Jedna jednostka zawiera statystyki dotyczące danych użytkownika, a drugi zawiera dane statystyczne dotyczące `$logs` kontenera obiektów BLOB używanych przez analityka magazynu. Tabela *$MetricsCapacityBlob* zawiera następujące statystyki:  
+ Dane pojemności są rejestrowane codziennie dla Blob service konta magazynu, a dwie jednostki tabeli są zapisywane. Jedna jednostka zawiera statystyki dotyczące danych użytkownika, a druga zawiera dane statystyczne dotyczące `$logs` kontenera obiektów BLOB używanych przez analityka magazynu. Tabela *$MetricsCapacityBlob* zawiera następujące statystyki:  
 
-- **Pojemność**: Ilość miejsca do magazynowania używanego przez Blob service konta magazynu w bajtach.  
-- **ContainerCount**: Liczba kontenerów obiektów BLOB na koncie magazynu Blob service.  
-- **ObjectCount**: Liczba przekazanych i niezatwierdzonych obiektów BLOB bloków lub stronicowej strony na koncie magazynu Blob service.  
+- **Pojemność**: ilość miejsca do magazynowania używanego przez BLOB Service konta magazynu w bajtach.  
+- **ContainerCount**: liczba kontenerów obiektów BLOB na koncie magazynu BLOB Service.  
+- **ObjectCount**: Liczba przekazanych i nieprzydzielonych bloków lub stronicowych obiektów BLOB na koncie magazynu BLOB Service.  
 
   Aby uzyskać więcej informacji na temat metryk pojemności, zobacz [analityka magazynu metryk tabeli schematu](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
 
@@ -53,11 +53,11 @@ Analityka magazynu mogą przechowywać metryki, które obejmują zagregowane sta
 
 |Poziom metryk|Nazwy tabel|Obsługiwane w wersjach|  
 |-------------------|-----------------|----------------------------|  
-|Metryki godzinowe, podstawowa lokalizacja|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-   $MetricsTransactionsQueue|Wersje wcześniejsze niż 2013-08-15. Mimo że te nazwy są nadal obsługiwane, zaleca się przełączenie do korzystania z tabel wymienionych poniżej.|  
+|Metryki godzinowe, podstawowa lokalizacja|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-$MetricsTransactionsQueue|Wersje wcześniejsze niż 2013-08-15. Mimo że te nazwy są nadal obsługiwane, zaleca się przełączenie do korzystania z tabel wymienionych poniżej.|  
 |Metryki godzinowe, podstawowa lokalizacja|-$MetricsHourPrimaryTransactionsBlob<br />-$MetricsHourPrimaryTransactionsTable<br />-$MetricsHourPrimaryTransactionsQueue<br />-$MetricsHourPrimaryTransactionsFile|Wszystkie wersje. Obsługa metryk usługi plików jest dostępna tylko w wersji 2015-04-05 i nowszych.|  
 |Metryki minut, lokalizacja podstawowa|-$MetricsMinutePrimaryTransactionsBlob<br />-$MetricsMinutePrimaryTransactionsTable<br />-$MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|Wszystkie wersje. Obsługa metryk usługi plików jest dostępna tylko w wersji 2015-04-05 i nowszych.|  
 |Metryki godzinowe, lokacja dodatkowa|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-$MetricsHourSecondaryTransactionsQueue|Wszystkie wersje. Replikacja geograficznie nadmiarowa do odczytu musi być włączona.|  
-|Metryki minutowe, lokalizacja dodatkowa|-   $MetricsMinuteSecondaryTransactionsBlob<br />-   $MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|Wszystkie wersje. Replikacja geograficznie nadmiarowa do odczytu musi być włączona.|  
+|Metryki minutowe, lokalizacja dodatkowa|-$MetricsMinuteSecondaryTransactionsBlob<br />-$MetricsMinuteSecondaryTransactionsTable<br />-$MetricsMinuteSecondaryTransactionsQueue|Wszystkie wersje. Replikacja geograficznie nadmiarowa do odczytu musi być włączona.|  
 |Pojemność (tylko Blob service)|$MetricsCapacityBlob|Wszystkie wersje.|  
 
  Te tabele są tworzone automatycznie, gdy analityka magazynu jest włączona dla punktu końcowego usługi magazynu. Są one dostępne za pośrednictwem przestrzeni nazw konta magazynu, na przykład: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`. Tabele metryk nie są wyświetlane w operacji tworzenia listy i muszą być dostępne bezpośrednio za pośrednictwem nazwy tabeli.  
@@ -74,50 +74,47 @@ Wykonaj następujące kroki, aby włączyć metryki w [Azure Portal](https://por
 
 [Azure Portal](https://portal.azure.com) obecnie nie umożliwia konfigurowania metryk minut na koncie magazynu. należy włączyć metryki minut przy użyciu programu PowerShell lub programowo.
 
-> [!NOTE]
->  Należy pamiętać, że Azure Portal obecnie nie pozwala na konfigurowanie metryk minut na koncie magazynu. Należy włączyć metryki minut przy użyciu programu PowerShell lub programowo.
-
 ## <a name="enable-storage-metrics-using-powershell"></a>Włącz metryki magazynu przy użyciu programu PowerShell  
-Aby skonfigurować metryki magazynu na koncie magazynu przy Azure PowerShell użyciu polecenia cmdlet **Get-AzureStorageServiceMetricsProperty** w programie PowerShell, można użyć narzędzia do pobierania bieżących ustawień, a polecenie cmdlet  **Set-AzureStorageServiceMetricsProperty** , aby zmienić bieżące ustawienia.  
+Aby skonfigurować metryki magazynu na koncie magazynu przy Azure PowerShell użyciu polecenia cmdlet **Get-AzStorageServiceMetricsProperty** w programie PowerShell, można użyć narzędzia do pobierania bieżących ustawień, a polecenie cmdlet  **Set-AzStorageServiceMetricsProperty** , aby zmienić bieżące ustawienia.  
 
 Polecenia cmdlet kontrolujące metryki magazynu wykorzystują następujące parametry:  
 
 * **ServiceType**, możliwa wartość to **obiekt BLOB**, **Kolejka**, **tabela**i **plik**.
 * **Metrictype**, możliwe wartości to **Hour** i **minuta**.  
 * **MetricsLevel**, możliwe wartości to:
-* **Brak**: Wyłącza monitorowanie.
-* **Usługa**: Zbiera metryki, takie jak ruch przychodzący/ruch wychodzący, dostępność, opóźnienie i procent sukcesu, które są agregowane dla usług obiektów blob, kolejek, tabel i plików.
-* **ServiceAndApi**: Oprócz metryk usług program zbiera ten sam zestaw metryk dla każdej operacji magazynu w interfejsie API usługi Azure Storage.
+* **Brak**: wyłącza monitorowanie.
+* **Usługa**: zbiera metryki, takie jak ruch przychodzący/ruch wychodzący, dostępność, opóźnienie i procent sukcesu, które są agregowane dla usług obiektów blob, kolejek, tabel i plików.
+* **ServiceAndApi**: oprócz metryk usług zbiera ten sam zestaw metryk dla każdej operacji magazynu w interfejsie API usługi Azure Storage.
 
 Na przykład następujące polecenie przełącza metryki minut dla usługi BLOB Service na koncie magazynu z okresem przechowywania ustawionym na pięć dni: 
 
 > [!NOTE]
-> W tym poleceniu założono, że zalogowano się do subskrypcji platformy `Connect-AzAccount` Azure za pomocą polecenia.
+> W tym poleceniu założono, że zalogowano się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount`.
 
-```  
+```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
 
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
+Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
 
-* Zastąp `<resource-group-name>` wartość symbolu zastępczego nazwą grupy zasobów.
-
+* Zastąp wartość symbolu zastępczego `<resource-group-name>` nazwą grupy zasobów.
+        
 * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
 
 
 Następujące polecenie pobiera bieżące godzinowe poziomy metryk i dni przechowywania dla usługi BLOB na domyślnym koncie magazynu:  
 
-```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
+```powershell
+Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
-Informacje o sposobie konfigurowania Azure PowerShell poleceń cmdlet do pracy z subskrypcją platformy Azure i wybierania domyślnego konta magazynu do użycia można znaleźć w temacie: [Jak zainstalować i skonfigurować Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
+Aby uzyskać informacje dotyczące sposobu konfigurowania Azure PowerShell poleceń cmdlet do pracy z subskrypcją platformy Azure i wybierania domyślnego konta magazynu do użycia, zobacz: [jak zainstalować i skonfigurować Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
 ## <a name="enable-storage-metrics-programmatically"></a>Programowo Włącz metryki magazynu  
 Oprócz używania Azure Portal lub Azure PowerShell poleceń cmdlet do kontrolowania metryk magazynu, można również użyć jednego z interfejsów API usługi Azure Storage. Jeśli na przykład używasz języka .NET, możesz użyć biblioteki klienta usługi Storage.  
 
-Klasy **CloudBlobClient**, **CloudQueueClient**, **CloudTableClient**i **CloudFileClient** mają takie metody jak **SetServiceProperties** i **SetServicePropertiesAsync** , które przyjmująObiekt serviceproperties jako parametr. Aby skonfigurować metryki magazynu, można użyć obiektu serviceproperties. Na przykład poniższy C# fragment kodu przedstawia sposób zmiany poziomu metryk i dni przechowywania dla metryk kolejki godzinowej:  
+Klasy **CloudBlobClient**, **CloudQueueClient**, **CloudTableClient**i **CloudFileClient** mają takie metody jak **SetServiceProperties** i **SetServicePropertiesAsync** , które przyjmują  **Obiekt serviceproperties** jako parametr. Aby skonfigurować metryki magazynu, można użyć obiektu **serviceproperties** . Na przykład poniższy C# fragment kodu przedstawia sposób zmiany poziomu metryk i dni przechowywania dla metryk kolejki godzinowej:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -158,10 +155,10 @@ Wszystkie szczegóły schematów dla tych tabel można znaleźć w [schemacie ta
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
 |**PartitionKey**|**RowKey**|**Sygnatura czasowa**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Dostępność**|**Niską averagee2elatency**|**Wartość averageserverlatency**|**PercentSuccess**|  
-|20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
-|20140522T1100|Użytkownicy QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
-|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
-|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
+|20140522T1100|Użytkownicy Całą|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
+|20140522T1100|Użytkownicy QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
+|20140522T1100|Użytkownicy QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|Użytkownicy UpdateEntity|2014-05-22T11:01:16.7650250 Z|1|1|771|217|100|9|6|100|  
 
 W tym przykładowym czasie dane metryk są wykorzystywane przez klucz partycji. Klucz wiersza określa typ informacji przechowywanych w wierszu i składa się z dwóch informacji, typu dostępu i typu żądania:  
 

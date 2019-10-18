@@ -1,23 +1,23 @@
 ---
 title: Porty używane przez usługi Hadoop w usłudze HDInsight — Azure
-description: Zawiera listę portów używanych przez usługi Apache Hadoop Services uruchomionych w usłudze Azure HDInsight
+description: Ten artykuł zawiera listę portów używanych przez usługi Apache Hadoop Services uruchomionych w usłudze Azure HDInsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1fe66c1c171e779f48f4cc7c6767307feaafbd5f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.date: 10/15/2019
+ms.openlocfilehash: 46c2cd49258b8eb6813caaf50e9895990ce67287
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733429"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529543"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty używane przez usługi Apache Hadoop w usłudze HDInsight
 
-Ten dokument zawiera listę portów używanych przez Apache Hadoop usług działających w ramach klastrów usługi HDInsight opartych na systemie Linux. Zawiera również informacje o portach używanych do łączenia się z klastrem przy użyciu protokołu SSH.
+Ten dokument zawiera listę portów używanych przez Apache Hadoop usług uruchomionych w ramach klastrów usługi HDInsight. Zawiera również informacje o portach używanych do łączenia się z klastrem przy użyciu protokołu SSH.
 
 ## <a name="public-ports-vs-non-public-ports"></a>Porty publiczne a porty inne niż publiczne
 
@@ -34,27 +34,27 @@ Aby dołączyć dodatkowe maszyny do sieci wirtualnej, należy najpierw utworzy�
 
 Wszystkie węzły w klastrze usługi HDInsight znajdują się w usłudze Azure Virtual Network i nie można uzyskać do nich bezpośredniego dostępu z Internetu. Brama publiczna zapewnia dostęp do Internetu do następujących portów, które są wspólne dla wszystkich typów klastrów usługi HDInsight.
 
-| Usługa | Port | Protocol | Opis |
+| Usługa | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- |
-| SSHD |22 |Protokół SSH |Łączy klientów z usługą SSHD na podstawowym węzła głównego. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
-| SSHD |22 |Protokół SSH |Łączy klientów z sshdą w węźle brzegowym. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
-| SSHD |23 |Protokół SSH |Łączy klientów z usługą SSHD na pomocniczym węzła głównego. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
-| Ambari |443 |HTTPS |Ambari web UI. Zobacz [Zarządzanie usługą HDInsight za pomocą interfejsu użytkownika sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md) |
+| SSHD |22 |SSH |Łączy klientów z usługą SSHD na podstawowym węzła głównego. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
+| SSHD |22 |SSH |Łączy klientów z sshdą w węźle brzegowym. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
+| SSHD |23 |SSH |Łączy klientów z usługą SSHD na pomocniczym węzła głównego. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
+| Ambari |443 |HTTPS |Interfejs użytkownika sieci Web Ambari. Zobacz [Zarządzanie usługą HDInsight za pomocą interfejsu użytkownika sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Interfejs API REST usługi Ambari. Zobacz [Zarządzanie usługą HDInsight przy użyciu interfejsu API REST usługi Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md) |
 | WebHCat |443 |HTTPS |Interfejs API REST usługi HCatalog. Zobacz [Używanie MapReduce z zwinięciem](hadoop/apache-hadoop-use-mapreduce-curl.md) |
-| HiveServer2 |443 |ODBC |Nawiązuje połączenie z programem Hive przy użyciu ODBC. Zobacz [łączenie programu Excel z usługą HDInsight za pomocą sterownika ODBC firmy Microsoft](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
-| HiveServer2 |443 |JDBC |Nawiązuje połączenie z usługą ApacheHive przy użyciu JDBC. Zobacz [nawiązywanie połączenia Apache Hive w usłudze HDInsight przy użyciu sterownika Hive JDBC](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
+| Serwera hiveserver2 |443 |ODBC |Nawiązuje połączenie z programem Hive przy użyciu ODBC. Zobacz [łączenie programu Excel z usługą HDInsight za pomocą sterownika ODBC firmy Microsoft](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
+| Serwera hiveserver2 |443 |JDBC |Nawiązuje połączenie z usługą ApacheHive przy użyciu JDBC. Zobacz [nawiązywanie połączenia Apache Hive w usłudze HDInsight przy użyciu sterownika Hive JDBC](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 Dla określonych typów klastrów dostępne są następujące elementy:
 
-| Usługa | Port | Protocol | Typ klastra | Opis |
+| Usługa | Port | Protocol (Protokół) | Typ klastra | Opis |
 | --- | --- | --- | --- | --- |
 | Stargate |443 |HTTPS |HBase |Interfejs API REST usługi HBase. Zobacz Rozpoczynanie [korzystania z usługi Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |platforma Spark |Interfejs API REST platformy Spark. Zobacz [przesyłanie zadań Apache Spark zdalnie przy użyciu oprogramowania Apache usługi Livy](spark/apache-spark-livy-rest-interface.md) |
-| Serwer Spark Thrift |443 |HTTPS |platforma Spark |Serwer Spark Thrift używany do przesyłania zapytań Hive. Zobacz [Używanie z usługi Beeline z usługą Apache Hive w usłudze HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
+| Livy |443 |HTTPS |Spark |Interfejs API REST platformy Spark. Zobacz [przesyłanie zadań Apache Spark zdalnie przy użyciu oprogramowania Apache usługi Livy](spark/apache-spark-livy-rest-interface.md) |
+| Serwer Spark Thrift |443 |HTTPS |Spark |Serwer Spark Thrift używany do przesyłania zapytań Hive. Zobacz [Używanie z usługi Beeline z usługą Apache Hive w usłudze HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Interfejs użytkownika sieci Web burzy. Zobacz [wdrażanie topologii Apache Storm w usłudze HDInsight i zarządzanie nimi](storm/apache-storm-deploy-monitor-topology-linux.md) |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 
 Wszystkie usługi publicznie uwidocznione w Internecie muszą zostać uwierzytelnione:
 
@@ -73,18 +73,18 @@ Wszystkie usługi publicznie uwidocznione w Internecie muszą zostać uwierzytel
 
 ### <a name="ambari"></a>Ambari
 
-| Usługa | Węzły | Port | Ścieżka adresu URL | Protocol | 
+| Usługa | Węzły | Port | Ścieżka adresu URL | Protocol (Protokół) |
 | --- | --- | --- | --- | --- |
 | Interfejs użytkownika sieci Web Ambari | Węzły główne | 8080 | / | HTTP |
 | Interfejs API REST usługi Ambari | Węzły główne | 8080 | /api/v1 | HTTP |
 
 Przykłady:
 
-* Interfejs API REST usługi Ambari:`curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
+* Interfejs API REST usługi Ambari: `curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
 ### <a name="hdfs-ports"></a>Porty HDFS
 
-| Usługa | Węzły | Port | Protocol | Opis |
+| Usługa | Węzły | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- | --- |
 | Interfejs użytkownika sieci Web NameNode |Węzły główne |30070 |HTTPS |Interfejs użytkownika sieci Web do wyświetlania stanu |
 | Usługa metadanych NameNode |węzły główne |8020 |IPC |Metadane systemu plików |
@@ -95,7 +95,7 @@ Przykłady:
 
 ### <a name="yarn-ports"></a>Porty PRZĘDZy
 
-| Usługa | Węzły | Port | Protocol | Opis |
+| Usługa | Węzły | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- | --- |
 | Interfejs użytkownika sieci Web Menedżer zasobów |Węzły główne |8088 |HTTP |Interfejs użytkownika sieci Web dla Menedżer zasobów |
 | Interfejs użytkownika sieci Web Menedżer zasobów |Węzły główne |8090 |HTTPS |Interfejs użytkownika sieci Web dla Menedżer zasobów |
@@ -109,20 +109,20 @@ Przykłady:
 
 ### <a name="hive-ports"></a>Porty Hive
 
-| Usługa | Węzły | Port | Protocol | Opis |
+| Usługa | Węzły | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- | --- |
-| HiveServer2 |Węzły główne |10001 |Thrift |Usługa do łączenia z usługą Hive (Thrift/JDBC) |
+| Serwera hiveserver2 |Węzły główne |10001 |Thrift |Usługa do łączenia z usługą Hive (Thrift/JDBC) |
 | Magazyn metadanych Hive |Węzły główne |9083 |Thrift |Usługa do łączenia z metadanymi programu Hive (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>Porty WebHCat
 
-| Usługa | Węzły | Port | Protocol | Opis |
+| Usługa | Węzły | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- | --- |
 | Serwer WebHCat |Węzły główne |30111 |HTTP |Interfejs API sieci Web na platformie HCatalog i innych usług Hadoop |
 
 ### <a name="mapreduce-ports"></a>Porty MapReduce
 
-| Usługa | Węzły | Port | Protocol | Opis |
+| Usługa | Węzły | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- | --- |
 | JobHistory |Węzły główne |19888 |HTTP |Interfejs użytkownika sieci Web MapReduce JobHistory |
 | JobHistory |Węzły główne |10020 |&nbsp; |Serwer MapReduce JobHistory |
@@ -130,21 +130,21 @@ Przykłady:
 
 ### <a name="oozie"></a>Oozie
 
-| Usługa | Węzły | Port | Protocol | Opis |
+| Usługa | Węzły | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- | --- |
 | Serwer Oozie |Węzły główne |11000 |HTTP |Adres URL usługi Oozie |
 | Serwer Oozie |Węzły główne |11001 |HTTP |Port dla administratora Oozie |
 
 ### <a name="ambari-metrics"></a>Metryki systemu Ambari
 
-| Usługa | Węzły | Port | Protocol | Opis |
+| Usługa | Węzły | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- | --- |
 | Oś czasu (historia aplikacji) |Węzły główne |6188 |HTTP |Interfejs użytkownika sieci Web usługi oś czasu |
 | Oś czasu (historia aplikacji) |Węzły główne |30200 |RPC |Interfejs użytkownika sieci Web usługi oś czasu |
 
 ### <a name="hbase-ports"></a>Porty HBase
 
-| Usługa | Węzły | Port | Protocol | Opis |
+| Usługa | Węzły | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- | --- |
 | Serwera hmaster |Węzły główne |16000 |&nbsp; |&nbsp; |
 | Interfejs użytkownika sieci Web info serwera hmaster |Węzły główne |16010 |HTTP |Port internetowego interfejsu użytkownika HBase Master |
@@ -153,18 +153,18 @@ Przykłady:
 
 ### <a name="kafka-ports"></a>Porty Kafka
 
-| Usługa | Węzły | Port | Protocol | Opis |
+| Usługa | Węzły | Port | Protocol (Protokół) | Opis |
 | --- | --- | --- | --- | --- |
-| Brokera |Węzły procesu roboczego |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html) |Używany do komunikacji z klientem |
+| Brokera |Węzły procesu roboczego |9092 |[Protokół sieci Kafka](https://kafka.apache.org/protocol.html) |Używany do komunikacji z klientem |
 | &nbsp; |Węzły usługi Zookeeper |2181 |&nbsp; |Port używany przez klientów do łączenia się z usługą dozorcy |
 
 ### <a name="spark-ports"></a>Porty platformy Spark
 
-| Usługa | Węzły | Port | Protocol | Ścieżka adresu URL | Opis |
+| Usługa | Węzły | Port | Protocol (Protokół) | Ścieżka adresu URL | Opis |
 | --- | --- | --- | --- | --- | --- |
 | Serwery Spark Thrift |Węzły główne |10002 |Thrift | &nbsp; | Usługa do łączenia z platformą Spark SQL (Thrift/JDBC) |
 | Serwer usługi Livy | Węzły główne | 8998 | HTTP | &nbsp; | Usługa do uruchamiania instrukcji, zadań i aplikacji |
-| Notes Jupyter | Węzły główne | 8001 | HTTP | &nbsp; | Witryna sieci Web notesu Jupyter |
+| Jupyter Notes | Węzły główne | 8001 | HTTP | &nbsp; | Witryna sieci Web notesu Jupyter |
 
 Przykłady:
 

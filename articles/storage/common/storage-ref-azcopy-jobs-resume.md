@@ -4,18 +4,18 @@ description: Ten artykuł zawiera informacje dotyczące polecenia AzCopy zadania
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8786da42f000a2f13279499159a7af424aa10748
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 9e8dbbd40259c7a71f252d0d6e93dd6f135973de
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195791"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513546"
 ---
-# <a name="azcopy-jobs-resume"></a>wznowienie zadań AzCopy
+# <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
 Wznawia istniejące zadanie z danym IDENTYFIKATORem zadania.
 
@@ -30,7 +30,7 @@ azcopy jobs resume [jobID] [flags]
 |Opcja|Opis|
 |--|--|
 |--ciąg docelowy-sygnatura dostępu współdzielonego|Docelowe sygnatury dostępu współdzielonego miejsca docelowego dla danego identyfikatora zadania.|
-|--Wyklucz ciąg|Filtru Wyklucz te nieudane transfery podczas wznawiania zadania. Pliki powinny być rozdzielone znakami ";".|
+|--Wyklucz ciąg|Filtr: wykluczanie nieudanych transferów podczas wznawiania zadania. Pliki powinny być rozdzielone znakami ";".|
 |-h,--pomoc|Pokaż zawartość pomocy dla polecenia Resume.|
 |--include String|Filtr: Uwzględnij tylko te nieudane transfery podczas wznawiania zadania. Pliki powinny być rozdzielone znakami ";".|
 |--ciąg źródłowy-SAS |Źródło SAS źródła dla danego identyfikatora zadania.|

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4d7a21e8d9b660463f508513c158032be81a35c
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
-ms.translationtype: MT
+ms.openlocfilehash: c513a7fe4df14ee21f4b26993a5eddb93bb90eac
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686979"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533313"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Skonfiguruj środowisko programistyczne dla Azure Machine Learning
 
@@ -49,7 +49,7 @@ Aby zainstalować środowisko zestawu SDK dla [komputera lokalnego](#local), [Ju
 - W systemie Linux lub macOS potrzebna jest powłoka bash.
 
     > [!TIP]
-    > Jeśli korzystasz z systemu Linux lub macOS i używasz powłoki innej niż bash (na przykład ZSH), podczas uruchamiania niektórych poleceń mogą pojawić się błędy. Aby obejść ten problem, użyj `bash` polecenia, aby uruchomić nową powłokę bash i uruchomić polecenia w tym miejscu.
+    > Jeśli korzystasz z systemu Linux lub macOS i używasz powłoki innej niż bash (na przykład ZSH), podczas uruchamiania niektórych poleceń mogą pojawić się błędy. Aby obejść ten problem, użyj `bash` polecenia, aby uruchomić nową powłokę bash i uruchomić w niej polecenia.
 
 - W systemie Windows wymagany jest wiersz polecenia lub monit Anaconda (instalowany przez Anaconda i Miniconda).
 
@@ -185,7 +185,7 @@ Jeśli używasz komputera lokalnego (co może być również zdalną maszyną wi
 
 1. Użyj następujących poleceń, aby zainstalować pakiety:
 
-    To polecenie powoduje zainstalowanie podstawowego zestawu SDK Azure Machine Learning z dodatkiem Notes i `automl`. @No__t-0 Extra jest dużą instalacją i można ją usunąć z nawiasów, jeśli nie zamierzasz uruchamiać zautomatyzowanych eksperymentów w usłudze Machine Learning. @No__t-0 Extra obejmuje również zestaw SDK przygotowywania danych Azure Machine Learning domyślnie jako zależność.
+    To polecenie powoduje zainstalowanie podstawowego zestawu SDK Azure Machine Learning przy użyciu dodatków do notesu i `automl`. @No__t_0 Extra jest dużą instalacją i można ją usunąć z nawiasów, jeśli nie zamierzasz uruchamiać zautomatyzowanych eksperymentów w usłudze Machine Learning. @No__t_0 Extra również zawiera domyślnie zestaw SDK przygotowywania danych Azure Machine Learning jako zależność.
 
     ```shell
     pip install azureml-sdk[notebooks,automl]
@@ -196,7 +196,7 @@ Jeśli używasz komputera lokalnego (co może być również zdalną maszyną wi
    >
    >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
    >
-   > * Począwszy od macOS Catalina, zsh (Z powłoką) jest domyślną powłoką logowania i interaktywną powłoką. W ZSH Użyj poniższego polecenia, które umożliwia ucieczkę nawiasów z "\\" (ukośnik odwrotny):
+   > * Począwszy od macOS Catalina, zsh (Z powłoką) jest domyślną powłoką logowania i interaktywną powłoką. W ZSH, użyj następującego polecenia, które wyprowadza nawiasy klamrowe z "\\" (ukośnik odwrotny):
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
@@ -205,7 +205,7 @@ Jeśli używasz komputera lokalnego (co może być również zdalną maszyną wi
 
 1. Zainstaluj inne pakiety na potrzeby eksperymentowania w usłudze Machine Learning.
 
-    Użyj jednego z następujących poleceń i Zastąp *@no__t 1new pakietu >* pakietem, który chcesz zainstalować. Instalowanie pakietów za pośrednictwem `conda install` wymaga, aby pakiet był częścią bieżących kanałów (nowe kanały można dodać w chmurze Anaconda).
+    Użyj jednego z następujących poleceń i Zastąp *\<new pakietu >* pakietem, który chcesz zainstalować. Instalowanie pakietów za pośrednictwem `conda install` wymaga, aby pakiet był częścią bieżących kanałów (nowe kanały można dodać w chmurze Anaconda).
 
     ```shell
     conda install <new package>
@@ -318,13 +318,13 @@ Po uruchomieniu klastra [Utwórz bibliotekę](https://docs.databricks.com/user-g
 
 1. Wybierz **tylko jedną** opcję (nie jest obsługiwana żadna inna instalacja zestawu SDK)
 
-   |SDK @ no__t-0package @ no__t-1extras|Źródło|PyPi @ no__t-0Name @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6|
+   |@No__t_1extras &nbsp;package zestawu SDK|Źródło|PyPi &nbsp;Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
    |----|---|---|
    |Dla kostek datakostki| Przekaż Język Python lub PyPI | Azure-SDK [datakostki]|
-   |Dla kostek datakostks — with-<br> możliwości zautomatyzowanej ML| Przekaż Język Python lub PyPI | Azure-SDK [automl_databricks]|
+   |Dla kostek datakostks — with-<br> możliwości zautomatyzowanej ML| Przekaż Język Python lub PyPI | Azure-SDK [automl]|
 
    > [!Warning]
-   > Nie można zainstalować żadnych innych rozszerzeń zestawu SDK. Wybierz tylko jedną z powyższych opcji [datakostki] lub [automl_databricks].
+   > Nie można zainstalować żadnych innych rozszerzeń zestawu SDK. Wybierz tylko jedną z powyższych opcji [datakostki] lub [automl].
 
    * Nie wybieraj opcji **Dołącz automatycznie do wszystkich klastrów**.
    * Wybierz pozycję **Dołącz** obok nazwy klastra.
@@ -338,15 +338,15 @@ Po uruchomieniu klastra [Utwórz bibliotekę](https://docs.databricks.com/user-g
 
    Rozważ również:
    + W konfiguracji AutoML podczas korzystania z Azure Databricks dodać następujące parametry:
-       1. ```max_concurrent_iterations``` bazuje na liczbie węzłów procesu roboczego w klastrze.
+       1. ```max_concurrent_iterations``` jest oparty na liczbie węzłów procesu roboczego w klastrze.
         2. ```spark_context=sc``` jest oparty na domyślnym kontekście Spark.
    + Lub, jeśli masz starą wersję zestawu SDK, usuń zaznaczenie jej z zainstalowanego libs klastra i Przenieś do kosza. Zainstaluj nową wersję zestawu SDK i ponownie uruchom klaster. Jeśli po ponownym uruchomieniu wystąpi problem, odłącz i ponownie Dołącz klaster.
 
 Jeśli instalacja zakończyła się pomyślnie, zaimportowana biblioteka powinna wyglądać następująco:
 
-Zestaw SDK dla datakostek **_bez_** zautomatyzowanego uczenia maszynowego @no__t 2AZURE Machine Learning SDK dla datakosteks @ no__t-3
+Zestaw SDK dla datakostek **_bez_** ZAUTOMATYZOWANEGO zestawu SDK usługi machine learning ![Azure Machine Learning dla datakostki ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Zestaw SDK dla zestawów datakostks **z** automatycznym uczeniem maszynowym @no__t 1SDK z automatyczną nauką maszynową zainstalowaną w kostkach datas @ no__t-2
+Zestaw SDK dla kostek datakostks **z** automatycznym uczeniem maszynowym ![SDK z automatyczną nauką maszynową zainstalowaną w ramach datakostki ](./media/how-to-configure-environment/automlonadb.jpg)
 
 ### <a name="start-exploring"></a>Zacznij Eksplorowanie
 

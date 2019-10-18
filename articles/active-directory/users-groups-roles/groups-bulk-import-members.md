@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4412bc9ce8d78b5810b25b60724575af66774127
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 8ff4234d9fd28e655e868108e37b09c5afe2767c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146236"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517129"
 ---
 # <a name="bulk-import-group-members-preview-in-azure-active-directory"></a>Członkowie grupy importu zbiorczego (wersja zapoznawcza) w Azure Active Directory
 
 Za pomocą portalu usługi Azure Active Directory (Azure AD) można dodać dużą liczbę elementów członkowskich do grupy przy użyciu pliku wartości rozdzielanych przecinkami (CSV) w celu zbiorczego importowania elementów członkowskich grupy.
 
-> [!NOTE]
-> Operacje zbiorcze usługi Azure AD są publiczną funkcją w wersji zapoznawczej usługi Azure AD i są dostępne z dowolnym płatnym planem licencjonowania usługi Azure AD. Aby uzyskać więcej informacji na temat terminów korzystania z wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania programu Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)wersjach zapoznawczych.
-
 ## <a name="to-bulk-import-group-members"></a>Aby zaimportować zbiorczo członków grupy
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta administratora użytkowników w organizacji. Właściciele grupy mogą również zbiorczo importować członków należących do nich grup.
-1. W usłudze Azure AD wybierz kolejno pozycje **grupy** > **wszystkie grupy**.
+1. W usłudze Azure AD wybierz pozycję **grupy**  > **wszystkie grupy**.
 1. Otwórz grupę, do której dodawane są elementy członkowskie, a następnie wybierz pozycję **Członkowie**.
 1. Na stronie **Członkowie** wybierz pozycję **Importuj członków**.
 1. Na stronie **Importuj zbiorczo członków grupy (wersja zapoznawcza)** wybierz pozycję **Pobierz** , aby pobrać szablon pliku CSV z właściwościami wymaganych elementów członkowskich grupy.

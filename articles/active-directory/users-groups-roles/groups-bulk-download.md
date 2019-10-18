@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76aafa978732b3f4bae82f8ad3c09e67caf297ae
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 4b08e807e179270b63ca81d3777c230c3e129c3a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146288"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517138"
 ---
 # <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Pobierz zbiorczo listę grup (wersja zapoznawcza) w Azure Active Directory
 
 Korzystając z portalu usługi Azure Active Directory (Azure AD), można zbiorczo pobrać listę wszystkich grup w organizacji do pliku wartości rozdzielanych przecinkami (CSV).
 
-> [!NOTE]
-> Operacje zbiorcze usługi Azure AD są publiczną funkcją w wersji zapoznawczej usługi Azure AD i są dostępne z dowolnym płatnym planem licencjonowania usługi Azure AD. Aby uzyskać więcej informacji na temat terminów korzystania z wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania programu Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)wersjach zapoznawczych.
-
 ## <a name="to-download-a-list-of-groups"></a>Aby pobrać listę grup
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta administratora w organizacji.
-1. W usłudze Azure AD wybierz pozycję **grupy** > **Pobierz grupy**.
+1. W usłudze Azure AD wybierz pozycję **grupy**  > **grupy pobierania**.
 1. Na stronie **pobieranie grup** wybierz pozycję **Rozpocznij** , aby otrzymać plik CSV z listą Twoich grup.
 
    ![Polecenie Pobierz grupy znajduje się na stronie wszystkie grupy](./media/groups-bulk-download/bulk-download.png)

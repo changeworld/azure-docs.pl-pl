@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: b724e54eb2d9e61bd576ab8a094489bbed6db20d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975408"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515173"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Samouczek: używanie programu Personalizujer w notesie platformy Azure
 
@@ -122,7 +122,7 @@ personalization_base_url = "https://<your-resource-name>.cognitiveservices.azure
 resource_key = "<your-resource-key>"
 ```
 
-### <a name="print-current-data-and-time"></a>Drukuj bieżące dane i czas
+### <a name="print-current-date-and-time"></a>Drukuj bieżącą datę i godzinę
 Ta funkcja służy do zanotowania czasu rozpoczęcia i zakończenia funkcji iteracyjnej, iteracji.
 
 Te komórki nie mają danych wyjściowych. Funkcja wyprowadza bieżącą datę i godzinę, gdy zostanie wywołana.
@@ -198,7 +198,7 @@ Ta komórka
 * ustawia nagłówek zabezpieczeń przy użyciu klucza zasobu narzędzia Personalizacja 
 * Ustawia losowy inicjator dla identyfikatora zdarzenia rangi
 * odczytuje w plikach danych JSON
-* wywołania metody uczenia `get_last_updated` zostały usunięte z przykładowych danych wyjściowych
+* wywołania `get_last_updated` metodzie — zasady uczenia zostały usunięte z przykładowych danych wyjściowych
 * wywołuje metodę `get_service_settings`
 
 Komórka zawiera dane wyjściowe wywołania funkcji `get_last_updated` i `get_service_settings`.
@@ -263,7 +263,7 @@ Coffee count 4
 
 ### <a name="troubleshooting-the-first-rest-call"></a>Rozwiązywanie problemów z pierwszym wywołaniem REST
 
-Ta Poprzednia komórka jest pierwszą komórką, która wywołuje do personalizacji. Upewnij się, że kod stanu REST w danych wyjściowych to `<Response [200]>`. Jeśli wystąpi błąd, na przykład 404, ale upewnij się, że klucz zasobu i nazwa są poprawne, Załaduj ponownie Notes.
+Ta Poprzednia komórka jest pierwszą komórką, która wywołuje do personalizacji. Upewnij się, że kod stanu REST w danych wyjściowych jest `<Response [200]>`. Jeśli wystąpi błąd, na przykład 404, ale upewnij się, że klucz zasobu i nazwa są poprawne, Załaduj ponownie Notes.
 
 Upewnij się, że liczba kawy i użytkowników to 4. Jeśli wystąpi błąd, sprawdź, czy zostały przekazane wszystkie 3 pliki JSON. 
 
@@ -390,7 +390,7 @@ def get_reward_from_simulated_data(name, weather, timeofday, prediction):
 
 Następna komórka to _główna_ część notesu, pobierająca losowego użytkownika, pobierającego listę kawy, wysyłającą oba elementy do interfejsu API rangi. Porównanie prognoz z znanymi preferencjami użytkownika, a następnie wysłanie premii z powrotem do usługi personalizacji. 
 
-Pętla jest uruchamiana przez `num_requests` razy. Personalizacja potrzebuje kilku tysięcy wywołań do rangi i nagrody, aby utworzyć model. 
+Pętla jest uruchamiana `num_requests` razy. Personalizacja potrzebuje kilku tysięcy wywołań do rangi i nagrody, aby utworzyć model. 
 
 Przykład kodu JSON wysyłanego do interfejsu API rangi znajduje się poniżej. Lista kawy nie jest kompletna dla zwięzłości. Cały kod JSON dla kawy można zobaczyć w `coffee.json`.
 

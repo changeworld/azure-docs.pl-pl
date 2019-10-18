@@ -4,15 +4,15 @@ description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdro
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 075eaaa188307e4320337ef21fd0875942e9e7e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249353"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514665"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "72249353"
 
 * **Konto magazynu**: cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Aby uzyskać szczegółowe informacje na temat pojemności konta magazynu, zobacz [Cele dotyczące skalowalności i wydajności](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-* **Udział**: udział usługi File Storage jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi muszą być tworzone w udziale nadrzędnym. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików, do całkowitej pojemności udziału plików. W przypadku standardowych udziałów plików całkowita pojemność jest równa 5 TiB (GA) lub 100 TiB (wersja zapoznawcza) dla udziałów plików w warstwie Premium, łączna pojemność to 100 TiB.
+* **Udział**: udział usługi File Storage jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi muszą być tworzone w udziale nadrzędnym. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików, do całkowitej pojemności udziału plików. Całkowita pojemność udziałów plików w warstwie Premium i Standardowa to 100 TiB.
 
 * **Katalog**: opcjonalna hierarchia katalogów.
 
@@ -79,10 +79,8 @@ Azure Files oferuje dwie warstwy wydajności: standardowa i Premium.
 
 Standardowe udziały plików są obsługiwane przez dyski twarde (HDD). Standardowe udziały plików zapewniają niezawodną wydajność dla obciążeń we/wy, które są mniej wrażliwe na zmienności wydajności, takie jak udziały plików ogólnego przeznaczenia i środowiska deweloperskie/testowe. Standardowe udziały plików są dostępne tylko w modelu rozliczania z płatnością zgodnie z rzeczywistym użyciem.
 
-Standardowe udziały plików o rozmiarze do 5 TiB są dostępne jako oferta GA. W przypadku większych udziałów plików, które są udziałami większymi niż 5 TiB, do maksymalnie 100 TiB, są obecnie dostępne jako oferta w wersji zapoznawczej.
-
 > [!IMPORTANT]
-> Zapoznaj się z sekcją dołączanie [do większej liczby udziałów plików (warstwa standardowa)](#onboard-to-larger-file-shares-standard-tier) , aby zapoznać się z krokami do dołączenia, a także zakresem i ograniczeniami w wersji zapoznawczej.
+> Jeśli chcesz użyć udziałów plików większych niż 5 TiB, zobacz sekcję dołączanie [do większych udziałów plików (warstwa standardowa)](#onboard-to-larger-file-shares-standard-tier) , aby zapoznać się z krokami do dołączenia, a także regionalnej dostępności i ograniczeń.
 
 ### <a name="premium-file-shares"></a>Udziały plików w warstwie Premium
 
@@ -195,75 +193,43 @@ Przed wybraniem opcji replikacji należy pamiętać o następujących kwestiach:
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Dołączanie do większych udziałów plików (warstwa standardowa)
 
-Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie udziały plików w warstwie Premium są dostępne z 100 TiB jako oferty w całości.
+Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie udziały plików w warstwie Premium są dostępne z wydajnością 100 TiB.
 
 ### <a name="restrictions"></a>Ograniczenia
 
-- [Warunki](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) wersji zapoznawczej platformy Azure dotyczą dużych udziałów plików w wersji zapoznawczej, takich jak użycie z wdrożeniami Azure File Sync.
-- Wymaga utworzenia nowego konta magazynu ogólnego zastosowania (nie można rozwinąć istniejących kont magazynu).
-- Konwersja konta LRS/ZRS na GRS/GZRS nie będzie możliwa na żadnym nowym koncie magazynu utworzonym po zaakceptowaniu subskrypcji do większej wersji zapoznawczej udziałów plików.
-
+- Konwersja konta LRS/ZRS na GRS/GZRS nie będzie możliwa dla żadnego konta magazynu z włączonymi dużymi udziałami plików.
 
 ### <a name="regional-availability"></a>Dostępność regionalna
 
-Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W niektórych regionach jest dostępny z limitem 100 TiB, te regiony są wymienione w poniższej tabeli:
+Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W niektórych regionach są one dostępne z limitem 100 TiB, te regiony są wymienione w poniższej tabeli:
 
-|Region |Obsługiwana nadmiarowość |Obsługuje istniejące konta magazynu |Obsługa portalu * |
-|-------|---------|---------|---------|
-|Australia Wschodnia |LRS     |Nie    |Tak|
-|Australia Południowo-Wschodnia|LRS |Nie    |Tak|
-|Indie Środkowe  |LRS     |Nie    |Tak|
-|Azja Wschodnia      |LRS     |Nie    |Tak|
-|Wschodnie stany USA        |LRS     |Nie    |Tak|
-|Francja Środkowa |LRS, ZRS|Nie    |Tak|
-|Francja Południowa   |LRS     |Nie    |Tak|
-|Europa Północna   |LRS     |Nie    |Jeszcze nie|
-|Indie Południowe    |LRS     |Nie    |Tak|
-|Azja Południowo-wschodnia |LRS, ZRS|Nie    |Tak|
-|Zachodnio-środkowe stany USA|LRS     |Nie    |Tak|
-|Europa Zachodnia    |LRS, ZRS|Nie    |Tak|
-|Zachodnie stany USA        |LRS     |Nie    |Tak|
-|Zachodnie stany USA 2      |LRS, ZRS|Nie    |Tak|
+|Region |Obsługiwana nadmiarowość |
+|-------|---------|
+|Australia Wschodnia |LRS     |
+|Australia Południowo-Wschodnia|LRS |
+|Indie Środkowe  |LRS     |
+|Azja Wschodnia      |LRS     |
+|Wschodnie stany USA *        |LRS     |
+|Francja Środkowa |LRS, ZRS|
+|Francja Południowa   |LRS     |
+|Indie Południowe    |LRS     |
+|Azja Południowo-Wschodnia |LRS, ZRS|
+|Zachodnio-środkowe stany USA|LRS     |
+|Europa Zachodnia *    |LRS, ZRS|
+|Zachodnie stany USA *        |LRS     |
+|Zachodnie stany USA 2      |LRS, ZRS|
 
-
-\* W przypadku regionów bez obsługi portalu można nadal używać programu PowerShell lub interfejsu wiersza polecenia platformy Azure do tworzenia większych udziałów TiB. Alternatywnie możesz utworzyć nowy udział za pośrednictwem portalu bez określania limitu przydziału. Spowoduje to utworzenie udziału o domyślnym rozmiarze 100 TiB, który można później zaktualizować za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+\* obsługiwane dla nowych kont, a nie wszystkie istniejące konta ukończyły proces uaktualniania.
 
 Aby pomóc nam określić priorytety nowych regionów i funkcji, Wypełnij tę [ankietę](https://aka.ms/azurefilesatscalesurvey).
 
-### <a name="steps-to-onboard"></a>Kroki do dołączenia
+### <a name="enable-and-create-larger-file-shares"></a>Włączanie i tworzenie większych udziałów plików
 
-Aby zarejestrować subskrypcję w większej wersji zapoznawczej udziałów plików, musisz użyć Azure PowerShell. Możesz użyć [Azure Cloud Shell](https://shell.azure.com/) lub zainstalować [moduł Azure PowerShell lokalnie](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0) , aby uruchomić następujące polecenia programu PowerShell:
-
-Najpierw upewnij się, że wybrano subskrypcję, która ma zostać zarejestrowana w wersji zapoznawczej:
-
-```powershell
-$context = Get-AzSubscription -SubscriptionId ...
-Set-AzContext $context
-```
-
-Następnie zarejestruj się w wersji zapoznawczej przy użyciu następujących poleceń:
-
-```powershell
-Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-Twoja subskrypcja jest automatycznie zatwierdzana po uruchomieniu obu poleceń.
-
-Aby sprawdzić stan rejestracji, możesz uruchomić następujące polecenie:
-
-```powershell
-Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-```
-
-Zaktualizowanie stanu do **zarejestrowanego**może potrwać do 15 minut. Po **zarejestrowaniu**stanu powinno być możliwe korzystanie z tej funkcji.
-
-### <a name="use-larger-file-shares"></a>Użyj większych udziałów plików
-
-Aby rozpocząć korzystanie z większych udziałów plików, Utwórz nowe konto magazynu ogólnego przeznaczenia w wersji 2 i nowy udział plików.
+Aby rozpocząć korzystanie z większych udziałów plików, zapoznaj się z artykułem [Włączanie dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
 
 ## <a name="data-growth-pattern"></a>Wzorzec wzrostu danych
 
-Obecnie maksymalny rozmiar udziału plików platformy Azure to 5 TiB (100 TiB w wersji zapoznawczej). Ze względu na bieżące ograniczenie należy wziąć pod uwagę oczekiwany wzrost ilości danych podczas wdrażania udziału plików platformy Azure.
+Obecnie maksymalny rozmiar udziału plików platformy Azure to 100 TiB. Ze względu na bieżące ograniczenie należy wziąć pod uwagę oczekiwany wzrost ilości danych podczas wdrażania udziału plików platformy Azure.
 
 Istnieje możliwość synchronizacji wielu udziałów plików platformy Azure z jednym serwerem plików systemu Windows z Azure File Sync. Pozwala to zagwarantować, że starsze, duże udziały plików, które mogą być lokalnie dostępne, mogą zostać wprowadzone do Azure File Sync. Aby uzyskać więcej informacji, zobacz [Planowanie wdrożenia Azure File Sync](storage-files-planning.md).
 

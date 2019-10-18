@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/04/2019
-ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 10/16/2019
+ms.openlocfilehash: 97725099e82c5edb05447d97b47f352c440bd8e8
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034130"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529299"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Łączenie usługi HDInsight z siecią lokalną
 
@@ -24,7 +24,7 @@ Dowiedz się, jak połączyć usługę HDInsight z siecią lokalną przy użyciu
 * Konfigurowanie sieciowych grup zabezpieczeń w celu ograniczenia dostępu do Internetu do usługi HDInsight.
 * Porty udostępniane przez usługi HDInsight w sieci wirtualnej.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aby umożliwić usłudze HDInsight i zasobom w połączonej sieci komunikowanie się według nazwy, należy wykonać następujące czynności:
 
@@ -45,8 +45,8 @@ Na poniższym diagramie zielonymi wierszami są żądania dotyczące zasobów ko
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
-* W przypadku korzystania z programu PowerShell konieczne jest polecenie [AZ module](https://docs.microsoft.com/powershell/azure/overview).
-* Jeśli chcesz korzystać z interfejsu wiersza polecenia platformy Azure i jeszcze go nie zainstalowano, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* W przypadku korzystania z programu PowerShell należy użyć polecenia [AZ module](https://docs.microsoft.com/powershell/azure/overview).
+* Jeśli chcesz użyć interfejsu wiersza polecenia platformy Azure i jeszcze go nie zainstalowano, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-virtual-network-configuration"></a>Utwórz konfigurację sieci wirtualnej
 
@@ -63,22 +63,22 @@ Skorzystaj z następujących dokumentów, aby dowiedzieć się, jak utworzyć Vi
 
 Poniższe kroki służą do tworzenia maszyny wirtualnej platformy Azure przy użyciu [Azure Portal](https://portal.azure.com) . Aby poznać inne sposoby tworzenia maszyny wirtualnej, zobacz temat [Tworzenie maszyny wirtualnej — interfejs wiersza polecenia platformy Azure](../virtual-machines/linux/quick-create-cli.md) i [Tworzenie maszyny wirtualnej — Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md).  Aby utworzyć maszynę wirtualną z systemem Linux używającą oprogramowania [bind](https://www.isc.org/downloads/bind/) DNS, wykonaj następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
   
-2. W menu po lewej stronie przejdź do **+ Utwórz zasób** > **COMPUTE** > **Ubuntu Server 18,04 LTS**.
+2. W menu po lewej stronie przejdź do **+ Utwórz zasób**  > **COMPUTE**  > **Ubuntu Server 18,04 LTS**.
 
     ![Tworzenie maszyny wirtualnej Ubuntu](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. Na karcie __podstawowe__ wprowadź następujące informacje:  
   
-    | Pole | Value |
+    | Pole | Wartość |
     | --- | --- |
-    |Subscription |Wybierz odpowiednią subskrypcję.|
-    |Resource group |Wybierz grupę zasobów zawierającą wcześniej utworzoną sieć wirtualną.|
+    |Subskrypcja |Wybierz odpowiednią subskrypcję.|
+    |Grupa zasobów |Wybierz grupę zasobów zawierającą wcześniej utworzoną sieć wirtualną.|
     |Nazwa maszyny wirtualnej | Wprowadź przyjazną nazwę identyfikującą tę maszynę wirtualną. W tym przykładzie używa **DNSProxy**.|
     |Region | Wybierz ten sam region, w którym utworzono wcześniej sieć wirtualną.  Nie wszystkie rozmiary maszyn wirtualnych są dostępne we wszystkich regionach.  |
     |Opcje dostępności |  Wybierz żądany poziom dostępności.  Platforma Azure oferuje szeroką gamę opcji zarządzania dostępnością i odpornością aplikacji.  Zaarchitektj swoje rozwiązanie, aby używać zreplikowanych maszyn wirtualnych w Strefy dostępności lub zestawach dostępności w celu ochrony Twoich aplikacji i danych przed zdarzeniami awarii i konserwacji centrum danych. W tym przykładzie **nie jest wymagane użycie nadmiarowości infrastruktury**. |
-    |Image | Pozostaw na **serwerze Ubuntu Server 18,04 LTS**. |
+    |Image (Obraz) | Pozostaw na **serwerze Ubuntu Server 18,04 LTS**. |
     |Typ uwierzytelniania | __Hasło__ lub __klucz publiczny SSH__: Metoda uwierzytelniania dla konta SSH. Zalecamy korzystanie z kluczy publicznych, ponieważ są one bezpieczniejsze. Ten przykład używa **hasła**.  Aby uzyskać więcej informacji, zobacz dokument [dotyczący tworzenia i używania kluczy SSH dla maszyn wirtualnych z systemem Linux](../virtual-machines/linux/mac-create-ssh-keys.md) .|
     |Nazwa użytkownika |Wprowadź nazwę użytkownika administratora dla maszyny wirtualnej.  W tym przykładzie używa **sshuser**.|
     |Hasło lub klucz publiczny SSH | Dostępne pole jest określane przez wybór **typu uwierzytelniania**.  Wprowadź odpowiednią wartość.|
@@ -90,10 +90,10 @@ Poniższe kroki służą do tworzenia maszyny wirtualnej platformy Azure przy u�
 
 4. Na karcie **Sieć** wprowadź następujące informacje:
 
-    | Pole | Value |
+    | Pole | Wartość |
     | --- | --- |
     |Sieć wirtualna | Wybierz utworzoną wcześniej sieć wirtualną.|
-    |Subnet | Wybierz domyślną podsieć dla utworzonej wcześniej sieci wirtualnej. __Nie__ wybieraj podsieci używanej przez bramę sieci VPN.|
+    |Podsieć | Wybierz domyślną podsieć dla utworzonej wcześniej sieci wirtualnej. __Nie__ wybieraj podsieci używanej przez bramę sieci VPN.|
     |Publiczny adres IP | Użyj autowypełnianej wartości.  |
 
     ![Ustawienia sieci wirtualnej usługi HDInsight](./media/connect-on-premises-network/virtual-network-settings.png)
@@ -103,6 +103,7 @@ Poniższe kroki służą do tworzenia maszyny wirtualnej platformy Azure przy u�
 5. Na karcie **Recenzja i tworzenie** wybierz pozycję **Utwórz** , aby utworzyć maszynę wirtualną.
 
 ### <a name="review-ip-addresses"></a>Przejrzyj adresy IP
+
 Po utworzeniu maszyny wirtualnej otrzymasz powiadomienie o **pomyślnym wdrożeniu** za pomocą przycisku **Przejdź do zasobu** .  Wybierz pozycję **Przejdź do zasobu** , aby przejść do nowej maszyny wirtualnej.  Z widoku domyślnego dla nowej maszyny wirtualnej wykonaj następujące kroki, aby zidentyfikować skojarzone adresy IP:
 
 1. W obszarze **Ustawienia**wybierz pozycję **Właściwości**.
@@ -113,7 +114,7 @@ Po utworzeniu maszyny wirtualnej otrzymasz powiadomienie o **pomyślnym wdrożen
 
 ### <a name="install-and-configure-bind-dns-software"></a>Instalowanie i Konfigurowanie powiązania (oprogramowanie DNS)
 
-1. Użyj protokołu SSH, aby nawiązać połączenie z __publicznym adresem IP__ maszyny wirtualnej. Zamień `sshuser` na konto użytkownika ssh określone podczas tworzenia maszyny wirtualnej. Poniższy przykład nawiązuje połączenie z maszyną wirtualną w 40.68.254.142:
+1. Użyj protokołu SSH, aby nawiązać połączenie z __publicznym adresem IP__ maszyny wirtualnej. Zastąp `sshuser` kontem użytkownika SSH określonym podczas tworzenia maszyny wirtualnej. Poniższy przykład nawiązuje połączenie z maszyną wirtualną w 40.68.254.142:
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -126,7 +127,7 @@ Po utworzeniu maszyny wirtualnej otrzymasz powiadomienie o **pomyślnym wdrożen
     sudo apt-get install bind9 -y
     ```
 
-3. Aby skonfigurować powiązanie do przesyłania dalej żądań rozpoznawania nazw do lokalnego serwera DNS, użyj następującego tekstu jako zawartości `/etc/bind/named.conf.options` pliku:
+3. Aby skonfigurować powiązanie do przekazywania żądań rozpoznawania nazw do lokalnego serwera DNS, użyj następującego tekstu jako zawartości pliku `/etc/bind/named.conf.options`:
 
         acl goodclients {
             10.0.0.0/16; # Replace with the IP address range of the virtual network
@@ -153,9 +154,9 @@ Po utworzeniu maszyny wirtualnej otrzymasz powiadomienie o **pomyślnym wdrożen
         };
 
     > [!IMPORTANT]  
-    > Zastąp wartości w `goodclients` sekcji zakresem adresów IP sieci wirtualnej i sieci lokalnej. Ta sekcja definiuje adresy, z których ten serwer DNS akceptuje żądania.
+    > Zastąp wartości w sekcji `goodclients` zakresem adresów IP sieci wirtualnej i sieci lokalnej. Ta sekcja definiuje adresy, z których ten serwer DNS akceptuje żądania.
     >
-    > Zastąp `forwarders` wpis w sekcji adresem IP lokalnego serwera DNS. `192.168.0.1` Ten wpis kieruje żądania DNS do lokalnego serwera DNS w celu rozwiązania problemu.
+    > Zastąp wpis `192.168.0.1` w sekcji `forwarders` adresem IP lokalnego serwera DNS. Ten wpis kieruje żądania DNS do lokalnego serwera DNS w celu rozwiązania problemu.
 
     Aby edytować ten plik, użyj następującego polecenia:
 
@@ -177,9 +178,9 @@ Po utworzeniu maszyny wirtualnej otrzymasz powiadomienie o **pomyślnym wdrożen
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    Ten tekst jest __sufiksem DNS__ dla tej sieci wirtualnej. `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Zapisz tę wartość, ponieważ jest używana później.
+    @No__t_0 tekst jest __sufiksem DNS__ dla tej sieci wirtualnej. Zapisz tę wartość, ponieważ jest używana później.
 
-5. Aby skonfigurować powiązanie do rozpoznawania nazw DNS dla zasobów w sieci wirtualnej, użyj następującego tekstu jako zawartości `/etc/bind/named.conf.local` pliku:
+5. Aby skonfigurować powiązanie do rozpoznawania nazw DNS dla zasobów w sieci wirtualnej, użyj następującego tekstu jako zawartości pliku `/etc/bind/named.conf.local`:
 
         // Replace the following with the DNS suffix for your virtual network
         zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
@@ -212,9 +213,9 @@ Po utworzeniu maszyny wirtualnej otrzymasz powiadomienie o **pomyślnym wdrożen
     ```
 
     > [!IMPORTANT]  
-    > Zamień `dns.mynetwork.net` na w pełni kwalifikowaną nazwę domeny (FQDN) zasobu w sieci lokalnej.
+    > Zastąp `dns.mynetwork.net` z w pełni kwalifikowaną nazwą domeny (FQDN) zasobu w sieci lokalnej.
     >
-    > Zamień `10.0.0.4` na __wewnętrzny adres IP__ niestandardowego serwera DNS w sieci wirtualnej.
+    > Zastąp `10.0.0.4` __wewnętrznym adresem IP__ NIESTANDARDOWEGO serwera DNS w sieci wirtualnej.
 
     Odpowiedź będzie wyglądać podobnie do następującego tekstu:
 
@@ -231,13 +232,13 @@ Po utworzeniu maszyny wirtualnej otrzymasz powiadomienie o **pomyślnym wdrożen
 
 Aby skonfigurować sieć wirtualną do korzystania z niestandardowego serwera DNS zamiast programu rozpoznawania cyklicznego Azure, wykonaj następujące kroki w [Azure Portal](https://portal.azure.com):
 
-1. W menu po lewej stronie przejdź do **wszystkich usług** >  > sieci**wirtualne sieci wirtualnych**.
+1. W menu po lewej stronie przejdź do **wszystkich usług**  > **Sieć**  > **sieci wirtualne**.
 
 2. Z listy wybierz sieć wirtualną, która spowoduje otwarcie widoku domyślnego dla sieci wirtualnej.  
 
 3. W widoku domyślnym w obszarze **Ustawienia**wybierz pozycję **serwery DNS**.  
 
-4. Wybierz opcję __niestandardowy__, a następnie wprowadź **prywatny adres IP** niestandardowego serwera DNS.   
+4. Wybierz opcję __niestandardowy__, a następnie wprowadź **prywatny adres IP** niestandardowego serwera DNS.
 
 5. Wybierz pozycję __Zapisz__.  <br />  
 
@@ -260,15 +261,15 @@ Poniżej przedstawiono przykład konfiguracji warunkowego przesyłania dalej dla
 
 Aby uzyskać informacje na temat korzystania z usługi DNS w **systemie Windows Server 2016**, zobacz dokumentację [dodatku DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) ...
 
-Po skonfigurowaniu lokalnego serwera DNS można użyć `nslookup` programu z sieci lokalnej, aby sprawdzić, czy można rozpoznać nazwy w sieci wirtualnej. Poniższy przykład 
+Po skonfigurowaniu lokalnego serwera DNS można użyć `nslookup` z sieci lokalnej, aby sprawdzić, czy można rozpoznać nazwy w sieci wirtualnej. Poniższy przykład 
 
 ```bash
 nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.4
 ```
 
-Ten przykład używa lokalnego serwera DNS pod adresem 196.168.0.4, aby rozpoznać nazwę niestandardowego serwera DNS. Zastąp adres IP serwerem lokalnym DNS. Zastąp `dnsproxy` adres z w pełni kwalifikowaną nazwą domeny niestandardowego serwera DNS.
+Ten przykład używa lokalnego serwera DNS pod adresem 196.168.0.4, aby rozpoznać nazwę niestandardowego serwera DNS. Zastąp adres IP serwerem lokalnym DNS. Zastąp wartość `dnsproxy` adresem z w pełni kwalifikowaną nazwą domeny niestandardowego serwera DNS.
 
-## <a name="optional-control-network-traffic"></a>Opcjonalnie: Sterowanie ruchem sieciowym
+## <a name="optional-control-network-traffic"></a>Opcjonalne: sterowanie ruchem sieciowym
 
 Aby kontrolować ruch sieciowy, można użyć sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) lub tras zdefiniowanych przez użytkownika (UDR). Sieciowych grup zabezpieczeń umożliwiają filtrowanie ruchu przychodzącego i wychodzącego i Zezwalanie na ruch lub odmawianie go. UDR umożliwiają sterowanie sposobem przepływu ruchu między zasobami w sieci wirtualnej, Internecie i sieci lokalnej.
 
@@ -297,9 +298,9 @@ Aby utworzyć klaster usługi HDInsight, wykonaj kroki opisane w temacie [Tworze
 
 ## <a name="connecting-to-hdinsight"></a>Łączenie z usługą HDInsight
 
-W większości dokumentacji usługi HDInsight przyjęto założenie, że masz dostęp do klastra za pośrednictwem Internetu. Na przykład możesz połączyć się z klastrem pod adresem `https://CLUSTERNAME.azurehdinsight.net`. Ten adres używa bramy publicznej, która jest niedostępna, jeśli używasz sieciowych grup zabezpieczeń lub UDR, aby ograniczyć dostęp z Internetu.
+W większości dokumentacji usługi HDInsight przyjęto założenie, że masz dostęp do klastra za pośrednictwem Internetu. Na przykład możesz połączyć się z klastrem pod adresem `https://CLUSTERNAME.azurehdinsight.net`. Ten adres używa bramy publicznej, która jest niedostępna, jeśli użyto sieciowych grup zabezpieczeń lub UDR do ograniczenia dostępu z Internetu.
 
-Niektóre dokumenty odwołują `headnodehost` się również do łączenia się z klastrem z sesji SSH. Ten adres jest dostępny tylko z węzłów w klastrze i nie można go używać na klientach podłączonych za pośrednictwem sieci wirtualnej.
+Niektóre dokumenty odwołują się również `headnodehost` podczas nawiązywania połączenia z klastrem z poziomu sesji SSH. Ten adres jest dostępny tylko z węzłów w klastrze i nie można go używać na klientach podłączonych za pośrednictwem sieci wirtualnej.
 
 Aby bezpośrednio połączyć się z usługą HDInsight za pomocą sieci wirtualnej, wykonaj następujące czynności:
 

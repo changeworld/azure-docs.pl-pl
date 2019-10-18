@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/30/2019
 ms.author: aahi
 ms.openlocfilehash: 7fb00fd3ce588aeeba4f315f191f6b82d6b75715
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71695862"
 ---
 # <a name="quickstart-bing-visual-search-client-library-for-java"></a>Szybki Start: wyszukiwanie wizualne Binga Biblioteka kliencka dla języka Java
@@ -25,7 +25,7 @@ Użyj biblioteki klienta wyszukiwanie wizualne Bing dla języka Java, aby:
 * Przekaż obraz, aby wysłać żądanie wyszukiwania wizualnego.
 * Pobierz token Insights i Tagi wyszukiwania wizualnego.
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [artefakt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | [przykładów](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Dokumentacja referencyjna](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable)  | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch)  | [artefakt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/)  | [przykłady](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -52,7 +52,7 @@ W oknie konsoli (na przykład cmd, PowerShell lub bash) Utwórz nowy katalog dla
 mkdir myapp && cd myapp
 ```
 
-Uruchom polecenie `gradle init` z katalogu roboczego. To polecenie spowoduje utworzenie podstawowych plików kompilacji dla Gradle, w tym *Build. Gradle. KTS* , który jest używany w środowisku uruchomieniowym do tworzenia i konfigurowania aplikacji.
+Uruchom `gradle init` polecenie w katalogu roboczym. To polecenie spowoduje utworzenie podstawowych plików kompilacji dla Gradle, w tym *Build. Gradle. KTS* , który jest używany w środowisku uruchomieniowym do tworzenia i konfigurowania aplikacji.
 
 ```console
 gradle init --type basic
@@ -92,7 +92,7 @@ Utwórz folder dla obrazu, który ma zostać przekazany do interfejsu API. Umie�
 mkdir -p src/main/resources
 ``` 
 
-Przejdź do nowego folderu i Utwórz plik o nazwie *BingVisualSearchSample. Java*. Otwórz go w preferowanym edytorze lub środowisku IDE i Dodaj następujące instrukcje `import`:
+Przejdź do nowego folderu i Utwórz plik o nazwie *BingVisualSearchSample. Java*. Otwórz go w preferowanym edytorze lub w środowisku IDE i Dodaj następujące instrukcje `import`:
 
 [!code-java[Import statements](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=imports)]
 
@@ -103,7 +103,7 @@ public class BingVisualSearchSample {
 }
 ```
 
-W metodzie `main` w aplikacji Utwórz zmienne dla punktu końcowego i klucza usługi Azure Resource. Jeśli zmienna środowiskowa została utworzona po uruchomieniu aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę, na których jest uruchomiona, aby uzyskać dostęp do zmiennej. Następnie utwórz `byte[]` dla obrazu, który będzie przekazywany. Utwórz blok `try` dla metod, które zostaną zdefiniowane później, i Załaduj obraz i przekonwertuj go na bajty przy użyciu `toByteArray()`.
+W metodzie `main` aplikacji Utwórz zmienne dla punktu końcowego i klucza usługi Azure Resource. Jeśli zmienna środowiskowa została utworzona po uruchomieniu aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę, na których jest uruchomiona, aby uzyskać dostęp do zmiennej. Następnie utwórz `byte[]` obrazu, który będzie przekazywany. Utwórz blok `try` dla metod, które zostaną zdefiniowane później, i Załaduj obraz i przekonwertuj go na bajty przy użyciu `toByteArray()`.
 
 [!code-java[Main method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=main)]
 
@@ -112,7 +112,7 @@ W metodzie `main` w aplikacji Utwórz zmienne dla punktu końcowego i klucza us�
 
 Ten przewodnik Szybki Start używa Menedżera zależności Gradle. Bibliotekę i informacje o kliencie można znaleźć dla innych menedżerów zależności w [repozytorium centralnym Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
 
-W pliku *Build. Gradle. KTS* projektu należy uwzględnić bibliotekę klienta jako instrukcję `implementation`. 
+Upewnij się, że w pliku *Build. Gradle. KTS* projektu została uwzględniona Biblioteka kliencka jako instrukcja `implementation`. 
 
 ```kotlin
 dependencies {

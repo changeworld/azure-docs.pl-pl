@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: f72067637f9db84a432562ea5502861355426469
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186575"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533625"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Jak zaplanować indeksatory dla Azure Search
 Indeksator jest zwykle uruchamiany jednokrotnie, natychmiast po jego utworzeniu. Można uruchomić je ponownie na żądanie przy użyciu portalu, interfejsu API REST lub zestawu .NET SDK. Można również skonfigurować indeksator do uruchamiania okresowo zgodnie z harmonogramem.
@@ -48,13 +48,13 @@ Rozważmy przykład, aby zwiększyć tę liczbę. Załóżmy, że skonfigurowano
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>Definiowanie harmonogramu w portalu
+## <a name="schedule-in-the-portal"></a>Planowanie w portalu
 
 Kreator importu danych w portalu umożliwia zdefiniowanie harmonogramu indeksatora podczas tworzenia. Domyślne ustawienie harmonogramu jest **co godzinę**, co oznacza, że indeksator jest uruchamiany po utworzeniu i ponownie uruchamiany co godzinę.
 
 Jeśli nie chcesz, aby indeksator był uruchamiany automatycznie lub **codziennie** do uruchamiania raz dziennie, możesz zmienić ustawienie harmonogramu na **jeden raz** . Ustaw wartość na **Custom** , jeśli chcesz określić inny interwał lub określony przyszły czas rozpoczęcia.
 
-Po ustawieniu harmonogramu na **niestandardowy**, pola są wyświetlane, aby umożliwić określenie interwału i **godziny rozpoczęcia (UTC)** . Najkrótszy dozwolony interwał wynosi 5 minut, a najdłuższy czas to 1440 minut (24 godziny).
+Po ustawieniu harmonogramu na **niestandardowy**, pola są wyświetlane, aby umożliwić określenie **interwału** i **godziny rozpoczęcia (UTC)** . Najkrótszy dozwolony interwał wynosi 5 minut, a najdłuższy czas to 1440 minut (24 godziny).
 
    ![Ustawianie harmonogramu indeksatora w Kreatorze importu danych](media/search-howto-schedule-indexers/schedule-import-data.png "Ustawianie harmonogramu indeksatora w Kreatorze importu danych")
 
@@ -64,7 +64,7 @@ Po utworzeniu indeksatora można zmienić ustawienia harmonogramu za pomocą pan
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>Definiowanie harmonogramu przy użyciu interfejsu API REST
+## <a name="schedule-using-rest-apis"></a>Planowanie przy użyciu interfejsów API REST
 
 Można zdefiniować harmonogram dla indeksatora przy użyciu interfejsu API REST. W tym celu należy uwzględnić Właściwość **Schedule** podczas tworzenia lub aktualizowania indeksatora. Poniższy przykład przedstawia żądanie PUT, aby zaktualizować istniejący indeksator:
 
@@ -78,7 +78,7 @@ Można zdefiniować harmonogram dla indeksatora przy użyciu interfejsu API REST
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-Parametr **interwału** jest wymagany. Interwał odnosi się do czasu między rozpoczęciem dwóch kolejnych wykonań indeksatora. Najmniejszy dozwolony interwał wynosi 5 minut; Najdłuższa wartość to jeden dzień. Musi być sformatowana jako wartość XSD "dayTimeDuration" (ograniczony podzbiór wartości [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Wzorzec dla tego elementu to: `P(nD)(T(nH)(nM))`. Przykłady: `PT15M` co 15 minut, `PT2H` przez co 2 godziny.
+Parametr **interwału** jest wymagany. Interwał odnosi się do czasu między rozpoczęciem dwóch kolejnych wykonań indeksatora. Najmniejszy dozwolony interwał wynosi 5 minut; Najdłuższa wartość to jeden dzień. Musi być sformatowana jako wartość XSD "dayTimeDuration" (ograniczony podzbiór wartości [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Wzorzec dla tego elementu to: `P(nD)(T(nH)(nM))`. Przykłady: `PT15M` przez co 15 minut, `PT2H` przez co 2 godziny.
 
 Opcjonalny parametr **StartTime** wskazuje, kiedy mają zostać rozpoczęte zaplanowane wykonania. W przypadku pominięcia jest używany bieżący czas UTC. Ten czas może znajdować się w przeszłości, w tym przypadku pierwsze wykonanie jest zaplanowane tak, jakby indeksator działał w sposób ciągły od pierwotnego czasu **rozpoczęcia**.
 
@@ -86,7 +86,7 @@ Indeksator można również uruchomić na żądanie w dowolnym momencie przy uż
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>Definiowanie harmonogramu przy użyciu zestawu .NET SDK
+## <a name="schedule-using-the-net-sdk"></a>Planowanie przy użyciu zestawu .NET SDK
 
 Można zdefiniować harmonogram dla indeksatora przy użyciu zestawu SDK platformy .NET Azure Search. W tym celu należy uwzględnić Właściwość **Schedule** podczas tworzenia lub aktualizowania indeksatora.
 
@@ -110,7 +110,7 @@ Parametr **StartTime** można ustawić na godzinę w przeszłości. W takim przy
 
 Harmonogram jest definiowany przy użyciu klasy [IndexingSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) . Konstruktor **IndexingSchedule** wymaga parametru **interwału** określonego przy użyciu obiektu **TimeSpan** . Najmniejsza dozwolona wartość interwału wynosi 5 minut, a największe to 24 godziny. Drugi parametr **StartTime** określony jako obiekt **DateTimeOffset** jest opcjonalny.
 
-Zestaw SDK platformy .NET umożliwia kontrolowanie operacji indeksatora przy użyciu klasy [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) i [](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) jej właściwości indeksatorów, która implementuje metody z interfejsu **IIndexersOperations** . 
+Zestaw SDK platformy .NET umożliwia kontrolowanie operacji indeksatora przy użyciu klasy [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) i jej właściwości [indeksatorów](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) , która implementuje metody z interfejsu **IIndexersOperations** . 
 
 Indeksator można uruchomić na żądanie w dowolnym momencie przy użyciu jednej z metod [Run](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)lub [RunWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) .
 

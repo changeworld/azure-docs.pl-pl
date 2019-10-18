@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
 ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71036621"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Osadź Video Indexer widżety w aplikacjach
 
-W tym artykule przedstawiono sposób osadzania Video Indexer widżetów w aplikacjach. Video Indexer obsługuje osadzanie trzech typów elementów widget w aplikacji: *Szczegółowe informacje*, *odtwarzacze*i *Edytor*. 
+W tym artykule przedstawiono sposób osadzania Video Indexer widżetów w aplikacjach. Video Indexer obsługuje osadzanie trzech typów elementów widget w aplikacji: *szczegółowe informacje*, *odtwarzacze*i *Edytor*. 
 
 Począwszy od wersji 2, podstawowy adres URL widżetu zawiera region określonego konta. Na przykład konto w regionie zachodnie stany USA generuje: `https://wus2.videoindexer.ai/embed/insights/...`.
 
@@ -29,17 +29,17 @@ Począwszy od wersji 2, podstawowy adres URL widżetu zawiera region określoneg
 
 Widżet analizy poznawczej zawiera wszystkie informacje wizualne, które zostały wyodrębnione z procesu indeksowania wideo. Widżet szczegółowe informacje obsługuje następujące opcjonalne parametry adresu URL.
 
-|Name|Definicja|Opis|
+|Nazwa|Definicja|Opis|
 |---|---|---|
-|`widgets`|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji, które mają być renderowane. <br/> Przykład: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` renderuje tylko osoby i informacje o interfejsie użytkownika marki.<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Należy pamiętać, `widgets` że parametr adresu URL nie jest obsługiwany w wersji 2.<br/>|
+|`widgets`|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji, które mają być renderowane. <br/> Przykład: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` renderuje tylko osoby i informacje o interfejsie użytkownika marki.<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Należy pamiętać, że parametr adresu URL `widgets` nie jest obsługiwany w wersji 2.<br/>|
 |`locale`|Kod w języku krótkim|Steruje językiem usługi Insights. Wartość domyślna to `en`. <br/> Przykład: `locale=de`.|
-|`tab`|Domyślna wybrana karta|Steruje kartą usługi **Insights** , która jest renderowana domyślnie. <br/> Przykład: `tab=timeline` renderuje szczegółowych informacji przy użyciu karty **oś czasu** .|
+|`tab`|Domyślna wybrana karta|Steruje kartą usługi **Insights** , która jest renderowana domyślnie. <br/> Przykład: `tab=timeline` renderuje szczegółowe informacje z wybraną kartą **oś czasu** .|
 
 ### <a name="player-widget"></a>Widżet Player
 
 Możesz użyć widżetu odtwarzacza do przesyłania strumieniowego wideo przy użyciu adaptacyjnej szybkości transmisji bitów. Widżet odtwarzacza obsługuje następujące opcjonalne parametry adresu URL.
 
-|Name|Definicja|Opis|
+|Nazwa|Definicja|Opis|
 |---|---|---|
 |`t`|Sekund od początku|Sprawia, że gracz rozpocznie odtwarzanie od określonego momentu.<br/> Przykład: `t=60`.|
 |`captions`|Kod języka|Pobiera podpis w określonym języku podczas ładowania elementu widget, aby był dostępny w menu **podpisy** .<br/> Przykład: `captions=en-US`.|
@@ -52,13 +52,13 @@ Możesz użyć widżetu odtwarzacza do przesyłania strumieniowego wideo przy u�
 
 Za pomocą widżetu edytora można tworzyć nowe projekty i zarządzać szczegółowymi informacjami wideo. Widżet edytora obsługuje następujące opcjonalne parametry adresu URL.
 
-|Name|Definicja|Opis|
+|Nazwa|Definicja|Opis|
 |---|---|---|
-|`accessToken`<sup>*</sup>|String|Zapewnia dostęp do filmów wideo tylko na koncie, które jest używane do osadzenia widżetu.<br> Widżet edytora wymaga `accessToken` parametru.|
+|`accessToken`<sup>*</sup>|Ciąg|Zapewnia dostęp do filmów wideo tylko na koncie, które jest używane do osadzenia widżetu.<br> Widżet edytora wymaga parametru `accessToken`.|
 |`language`|Kod języka|Kontroluje język odtwarzacza. Wartość domyślna to `en-US`.<br/>Przykład: `language=de-DE`.|
 |`locale`|Kod w języku krótkim|Steruje językiem usługi Insights. Wartość domyślna to `en`.<br/>Przykład: `language=de`.|
 
-<sup>*</sup>Właściciel powinien zapewnić `accessToken` ostrożność.
+<sup>*</sup> Właściciel powinien zapewnić `accessToken` z zachowaniem ostrożności.
 
 ## <a name="embedding-public-content"></a>Osadzanie zawartości publicznej
 
@@ -76,7 +76,7 @@ Za pomocą widżetu edytora można tworzyć nowe projekty i zarządzać szczegó
     ![Widżet](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
 > [!NOTE]
-> Jeśli masz problemy z udostępnianiem adresów URL wideo, Dodaj `location` parametr do łącza. Parametr powinien być ustawiony na [regiony platformy Azure, w których istnieje Video Indexer](regions.md). Na przykład: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+> Jeśli masz problemy z udostępnianiem adresów URL wideo, Dodaj do łącza parametr `location`. Parametr powinien być ustawiony na [regiony platformy Azure, w których istnieje Video Indexer](regions.md). Na przykład: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 ## <a name="embedding-private-content"></a>Osadzanie zawartości prywatnej
 
@@ -88,7 +88,7 @@ Aby uzyskać zawartość widżetu wglądu w szczegółowe dane, użyj jednego z 
 - Interfejs API usługi [Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) .<br/>
 - [Token uzyskiwania dostępu do wideo](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?). Dodaj go jako parametr zapytania do adresu URL. Określ ten adres URL jako wartość **src** dla elementu iframe, jak pokazano wcześniej.
 
-Aby zapewnić możliwości edytowania szczegółowych informacji w osadzonym elemencie widget, należy przekazać token dostępu, który obejmuje uprawnienia do edycji. Użyj [widżetu Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) lub [Uzyskaj token dostępu wideo](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) przy `&allowEdit=true`użyciu. 
+Aby zapewnić możliwości edytowania szczegółowych informacji w osadzonym elemencie widget, należy przekazać token dostępu, który obejmuje uprawnienia do edycji. Użyj [widżetu Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) lub [Uzyskaj token dostępu wideo](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) z `&allowEdit=true`. 
 
 ## <a name="widgets-interaction"></a>Interakcje z widżetami
 
@@ -235,7 +235,7 @@ Na przykład jeśli chcesz osadzić widżet zawierający tylko osoby i szczegó�
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
 
-Tytuł okna elementu IFRAME można również dostosować, podając `&title=<YourTitle>` adres URL elementu iframe. (Dostosowuje tytuł HTML \<> wartość).
+Tytuł okna elementu IFRAME można również dostosować, dostarczając `&title=<YourTitle>` do adresu URL elementu iframe. (Dostosowuje \<title HTML > wartość).
     
 Na przykład jeśli chcesz nadać polu elementu IFRAME tytuł "MyInsights", adres URL będzie wyglądać następująco:
 
@@ -247,7 +247,7 @@ Ta opcja ma zastosowanie tylko w przypadkach, gdy trzeba otworzyć szczegółowe
 
 W przypadku osadzania widżetu Player usługi Video Indexer można wybrać rozmiar odtwarzacza, określając rozmiar elementu iframe.
 
-Przykład:
+Na przykład:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
@@ -259,10 +259,10 @@ Adres URL osadzania będzie wyglądać następująco:
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
 
-Jeśli chcesz wyłączyć podpisy, możesz przekazać `captions` wartość parametru jako. `false`
+Aby wyłączyć napisy, można przekazać `captions` wartość parametru jako `false`.
 
 #### <a name="autoplay"></a>Autoodtwarzania
-Domyślnie gracz rozpocznie odtwarzanie filmu wideo. Możesz zrezygnować z przekazywania `&autoplay=false` na poprzedni adres URL osadzania.
+Domyślnie gracz rozpocznie odtwarzanie filmu wideo. Możesz zrezygnować z przekazywania `&autoplay=false` do poprzedniego adresu URL osadzania.
 
 ## <a name="next-steps"></a>Następne kroki
 

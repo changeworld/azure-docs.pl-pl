@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802528"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515191"
 ---
-# <a name="quickstart-personalize-client-library-for-python"></a>Szybki Start: Personalizowanie biblioteki klienckiej dla języka Python
+# <a name="quickstart-personalizer-client-library-for-python"></a>Szybki Start: Biblioteka kliencka programu Personalizacja dla języka Python
 
 Wyświetl spersonalizowaną zawartość w tym przewodniku szybki start dla języka Python za pomocą usługi personalizacji.
 
@@ -26,7 +26,7 @@ Rozpocznij pracę z biblioteką klienta personalizacji dla języka Python. Wykon
  * Ustalanie rangi listy akcji do personalizacji.
  * Ocenę nagrody raportu wskazującej na powodzenie najwyższej funkcjonalnej akcji.
 
-[Pakiet (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/)—[przykłady](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)  | 
+[Pakiet (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) —[przykłady](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)  | 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -54,7 +54,7 @@ Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azur
 
 Po otrzymaniu klucza z subskrypcji próbnej lub zasobu Utwórz dwie [zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `PERSONALIZER_KEY` dla klucza zasobu.
+* `PERSONALIZER_KEY` klucza zasobu.
 * `PERSONALIZER_ENDPOINT` dla punktu końcowego zasobu.
 
 W Azure Portal wartości klucza i punktu końcowego są dostępne na stronie **Szybki Start** .

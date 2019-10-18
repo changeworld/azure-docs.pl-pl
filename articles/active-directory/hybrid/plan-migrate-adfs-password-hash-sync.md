@@ -1,5 +1,5 @@
 ---
-title: 'Program Azure AD Connect: Migrowanie z Federacji do PHS dla usługi Azure AD | Microsoft Docs'
+title: 'Azure AD Connect: Migrowanie z Federacji do PHS dla usługi Azure AD | Microsoft Docs'
 description: Ten artykuł zawiera informacje o przenoszeniu hybrydowego środowiska tożsamości z Federacji do synchronizacji skrótów haseł.
 services: active-directory
 author: billmath
@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b291f2243dfe28a8e866796e0b7375f94fa4f2e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 23ba9b06c9a3e6025d7227493713fe9187fba233
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779437"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514893"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migruj z Federacji do synchronizacji skrótów haseł dla Azure Active Directory
 
@@ -71,7 +71,7 @@ Aby sprawdzić bieżące ustawienia logowania użytkownika:
 1. Zaloguj się do [portalu usługi Azure AD](https://aad.portal.azure.com/) przy użyciu konta administratora globalnego.
 2. W sekcji **Logowanie użytkownika** sprawdź następujące ustawienia:
    * **Federacja** jest ustawiona na wartość **Enabled (włączone**).
-   * **Bezproblemowe logowanie** jednokrotne jest ustawione na **wyłączone**.
+   * **Bezproblemowe logowanie jednokrotne** jest ustawione na **wyłączone**.
    * **Uwierzytelnianie przekazywane** jest ustawione na **wyłączone**.
 
    ![Zrzut ekranu ustawień w sekcji Logowanie użytkownika Azure AD Connect](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image1.png)
@@ -85,11 +85,11 @@ Aby sprawdzić bieżące ustawienia logowania użytkownika:
 3. Na stronie **Przejrzyj swoje rozwiązanie** Sprawdź stan **synchronizacji skrótu hasła** .<br /> 
 
    * Jeśli **Synchronizacja skrótów haseł** jest **wyłączona**, wykonaj kroki opisane w tym artykule, aby je włączyć.
-   * Jeśli **Synchronizacja skrótów haseł** jest ustawiona na wartość **włączone**, można pominąć sekcję **krok 1: Włącz synchronizację** skrótów haseł w tym artykule.
+   * Jeśli **Synchronizacja skrótów haseł** jest ustawiona na wartość **włączone**, można pominąć sekcję **krok 1. Włączanie synchronizacji skrótów haseł** w tym artykule.
 4. Na stronie **Przejrzyj rozwiązanie** przewiń do **Active Directory Federation Services (AD FS)** .<br />
 
-   * Jeśli konfiguracja AD FS zostanie wyświetlona w tej sekcji, można bezpiecznie założyć, że AD FS pierwotnie skonfigurowane przy użyciu Azure AD Connect. Możesz skonwertować domeny z tożsamości federacyjnej na tożsamość zarządzaną przy użyciu opcji Zaloguj Azure AD Connect **zmienić użytkownika** . Ten proces jest szczegółowo opisany w **sekcji opcja A: Przełączenie z Federacji do synchronizacji skrótów haseł przy**użyciu Azure AD Connect.
-   * Jeśli AD FS nie ma na liście bieżących ustawień, należy ręcznie skonwertować domeny z tożsamości federacyjnej na tożsamość zarządzaną przy użyciu programu PowerShell. Aby uzyskać więcej informacji o tym procesie, zobacz sekcję **opcja B: Przełączenie z Federacji do synchronizacji skrótów haseł przy użyciu Azure AD Connect**i programu PowerShell.
+   * Jeśli konfiguracja AD FS zostanie wyświetlona w tej sekcji, można bezpiecznie założyć, że AD FS pierwotnie skonfigurowane przy użyciu Azure AD Connect. Możesz skonwertować domeny z tożsamości federacyjnej na tożsamość zarządzaną przy użyciu opcji Zaloguj Azure AD Connect **zmienić użytkownika** . Ten proces jest szczegółowo opisany w sekcji **Opcja A: przełączenie z Federacji do synchronizacji skrótów haseł przy użyciu Azure AD Connect**.
+   * Jeśli AD FS nie ma na liście bieżących ustawień, należy ręcznie skonwertować domeny z tożsamości federacyjnej na tożsamość zarządzaną przy użyciu programu PowerShell. Aby uzyskać więcej informacji o tym procesie, zobacz sekcję **Opcja B: przełączenie z Federacji do synchronizacji skrótów haseł przy użyciu Azure AD Connect i programu PowerShell**.
 
 ### <a name="document-current-federation-settings"></a>Bieżące ustawienia Federacji dokumentu
 
@@ -115,7 +115,7 @@ Więcej informacji można znaleźć w tych artykułach:
 > [!NOTE]
 > Jeśli **SupportsMfa** ma **wartość true**, korzystasz z lokalnego rozwiązania do uwierzytelniania wieloskładnikowego, aby wstrzyknąć wyzwanie drugiego czynnika do przepływu uwierzytelniania użytkownika. Ta konfiguracja nie działa już w przypadku scenariuszy uwierzytelniania usługi Azure AD po przeprowadzeniu konwersji tej domeny z federacyjnego na uwierzytelnianie zarządzane. Po wyłączeniu Federacji można nawiązać relację z Federacją w Federacji lokalnej, co obejmuje lokalne karty usługi MFA. 
 >
-> Zamiast tego należy użyć usługi Azure MFA w chmurze, aby wykonać tę samą funkcję. Przed kontynuowaniem Oceń wymagania dotyczące uwierzytelniania wieloskładnikowego. Przed przekonwertowaniem domen upewnij się, że rozumiesz, jak korzystać z usługi Azure MFA Authentication, implikacji licencjonowania i procesu rejestracji użytkownika.
+> Zamiast tego należy użyć usługi Azure Multi-Factor Authentication opartej na chmurze, aby wykonać tę samą funkcję. Przed kontynuowaniem Oceń wymagania dotyczące uwierzytelniania wieloskładnikowego. Przed przekonwertowaniem domen upewnij się, że rozumiesz, jak korzystać z usługi Azure Multi-Factor Authentication, implikacji licencjonowania i procesu rejestracji użytkownika.
 
 #### <a name="back-up-federation-settings"></a>Tworzenie kopii zapasowej ustawień federacyjnych
 
@@ -140,8 +140,8 @@ Przed przekonwertowaniem tożsamości federacyjnej na tożsamość zarządzaną 
 | Planujesz używać AD FS z innymi aplikacjami (innymi niż usługa Azure AD i pakietem Office 365). | Po przeprowadzeniu konwersji domen będziesz używać obu AD FS i usługi Azure AD. Weź pod uwagę środowisko użytkownika. W niektórych scenariuszach użytkownicy mogą być zobowiązani do dwukrotnego uwierzytelnienia: raz w usłudze Azure AD (w przypadku gdy użytkownik uzyskuje dostęp do logowania jednokrotnego do innych aplikacji, takich jak pakiet Office 365), i ponownie dla wszystkich aplikacji, które są nadal powiązane z AD FS jako relacja zaufania jednostki uzależnionej. |
 | Wystąpienie AD FS jest w dużym stopniu dostosowywane i opiera się na określonych ustawieniach dostosowania w pliku OnLoad. js (na przykład w przypadku zmiany środowiska logowania, tak aby użytkownicy używali tylko formatu **sAMAccountName** dla nazwy użytkownika zamiast podmiotu zabezpieczeń Nazwa (UPN) lub Twoja organizacja ma silnie oznakowane środowisko logowania. Nie można zduplikować pliku OnLoad. js w usłudze Azure AD. | Przed kontynuowaniem należy sprawdzić, czy usługa Azure AD może spełniać bieżące wymagania dotyczące dostosowywania. Aby uzyskać więcej informacji i uzyskać wskazówki, zobacz sekcję dotyczącą AD FS znakowania i AD FS dostosowywania.|
 | Aby zablokować wcześniejsze wersje klientów uwierzytelniania, należy użyć AD FS.| Należy rozważyć zastępowanie AD FS formantów blokujących wcześniejsze wersje klientów uwierzytelniania przy użyciu kombinacji [kontroli dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) i [reguł dostępu klienta usługi Exchange Online](https://aka.ms/EXOCAR). |
-| Użytkownik wymaga od użytkowników przeprowadzenia uwierzytelniania wieloskładnikowego w przypadku lokalnego rozwiązania do obsługi serwera usługi wieloskładnikowego, gdy użytkownicy uwierzytelniają się do AD FS.| W zarządzanej domenie tożsamości nie można wstrzyknąć wyzwania usługi uwierzytelnianie wieloskładnikowe za pośrednictwem lokalnego rozwiązania do uwierzytelniania wieloskładnikowego do przepływu uwierzytelniania. Można jednak użyć usługi Azure wieloskładnikowe Authentication do uwierzytelniania wieloskładnikowego po przeprowadzeniu konwersji domeny.<br /><br /> Jeśli użytkownicy nie korzystają obecnie z uwierzytelniania wieloskładnikowego platformy Azure, wymagany jest krok rejestracji użytkownika jednorazowej. Należy przygotować się do planowanej rejestracji i przekazać ją do użytkowników. |
-| Obecnie używasz zasad kontroli dostępu (reguł autoryzacji) w AD FS, aby kontrolować dostęp do pakietu Office 365.| Rozważ zastąpienie zasad zasadami [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) usługi Azure AD i regułami [dostępu klienta usługi Exchange Online](https://aka.ms/EXOCAR).|
+| Użytkownik wymaga od użytkowników przeprowadzenia uwierzytelniania wieloskładnikowego w przypadku lokalnego rozwiązania do obsługi serwera usługi wieloskładnikowego, gdy użytkownicy uwierzytelniają się do AD FS.| W zarządzanej domenie tożsamości nie można wstrzyknąć wyzwania usługi uwierzytelnianie wieloskładnikowe za pośrednictwem lokalnego rozwiązania do uwierzytelniania wieloskładnikowego do przepływu uwierzytelniania. Można jednak użyć usługi Azure Multi-Factor Authentication do uwierzytelniania wieloskładnikowego po przeprowadzeniu konwersji domeny.<br /><br /> Jeśli użytkownicy nie korzystają obecnie z usługi Azure Multi-Factor Authentication, wymagany jest krok rejestracji użytkownika jednorazowej. Należy przygotować się do planowanej rejestracji i przekazać ją do użytkowników. |
+| Obecnie używasz zasad kontroli dostępu (reguł autoryzacji) w AD FS, aby kontrolować dostęp do pakietu Office 365.| Rozważ zastąpienie zasad zasadami [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) usługi Azure AD i [regułami dostępu klienta usługi Exchange Online](https://aka.ms/EXOCAR).|
 
 ### <a name="common-ad-fs-customizations"></a>Typowe dostosowania AD FS
 
@@ -161,13 +161,13 @@ Aby uzyskać więcej informacji o warunku **lokalizacji** w dostępie warunkowym
 
 Po dołączeniu urządzenia do usługi Azure AD można utworzyć reguły dostępu warunkowego, które wymuszają, aby urządzenia spełniały standardy dostępu do zabezpieczeń i zgodności. Ponadto użytkownicy mogą logować się do urządzenia przy użyciu konta służbowego lub szkolnego, a nie konta osobistego. W przypadku korzystania z hybrydowych urządzeń przyłączonych do usługi Azure AD można przyłączyć Active Directory urządzenia przyłączone do domeny do usługi Azure AD. Środowisko federacyjne mogło zostać skonfigurowane do korzystania z tej funkcji.
 
-Aby zapewnić, że sprzężenie hybrydowe będzie nadal działało w przypadku urządzeń przyłączonych do domeny po przekonwertowaniu domen na synchronizację skrótów haseł dla klientów z systemem Windows 10, należy użyć Azure AD Connect do synchronizowania kont komputerów Active Directory z usługą Azure AD. 
+Aby zapewnić, że sprzężenie hybrydowe będzie nadal działało w przypadku urządzeń przyłączonych do domeny po przekonwertowaniu domen na synchronizację skrótów haseł dla klientów z systemem Windows 10, musisz użyć opcji Azure AD Connect urządzenia, aby wypełnić punkt połączenia usługi, a następnie zsynchronizować aktywny Konta komputerów katalogu z usługą Azure AD. 
 
 W przypadku kont komputerów z systemem Windows 8 i Windows 7 sprzężenie hybrydowe używa bezproblemowego logowania jednokrotnego do zarejestrowania komputera w usłudze Azure AD. Nie musisz synchronizować kont komputerów z systemem Windows 8 i Windows 7, takich jak w przypadku urządzeń z systemem Windows 10. Należy jednak wdrożyć zaktualizowany plik workplacejoin. exe (za pośrednictwem pliku msi) na klientach z systemami Windows 8 i Windows 7, aby mogli zarejestrować się przy użyciu bezproblemowego logowania jednokrotnego. [Pobierz plik msi](https://www.microsoft.com/download/details.aspx?id=53554).
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie hybrydowych urządzeń przyłączonych do usługi Azure AD](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
 
-#### <a name="branding"></a>Znakowanie
+#### <a name="branding"></a>Znakowania
 
 Jeśli Twoja organizacja [dostosował AD FS strony logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) , aby wyświetlić informacje, które są bardziej przydatne dla organizacji, rozważ wprowadzenie podobnych [dostosowań na stronie logowania do usługi Azure AD](https://docs.microsoft.com/azure/active-directory/customize-branding).
 
@@ -224,7 +224,7 @@ Twoje rozwiązanie zostało zaplanowane. Teraz można go zaimplementować. Imple
 * Przygotowanie do bezproblemowego logowania jednokrotnego.
 * Zmiana metody logowania na synchronizację skrótów haseł i włączenie bezproblemowego logowania jednokrotnego.
 
-### <a name="step-1-enable-password-hash-synchronization"></a>Krok 1: Włączanie synchronizacji skrótów haseł
+### <a name="step-1-enable-password-hash-synchronization"></a>Krok 1. Włączanie synchronizacji skrótów haseł
 
 Pierwszym krokiem wdrożenia tego rozwiązania jest włączenie synchronizacji skrótów haseł przy użyciu kreatora Azure AD Connect. Synchronizacja skrótów haseł jest opcjonalną funkcją, którą można włączyć w środowiskach korzystających z Federacji. Nie ma to wpływu na przepływ uwierzytelniania. W takim przypadku Azure AD Connect rozpocznie synchronizowanie skrótów haseł bez wpływu na użytkowników logujących się przy użyciu Federacji.
 
@@ -250,31 +250,31 @@ W celu planowania należy oszacować, że około 20 000 użytkowników jest prze
 Aby sprawdzić, czy synchronizacja skrótów haseł działa prawidłowo, wykonaj zadanie **rozwiązywania problemów** w Kreatorze Azure AD Connect:
 
 1. Otwórz nową sesję środowiska Windows PowerShell na serwerze Azure AD Connect przy użyciu opcji Uruchom jako administrator.
-2. Uruchom `Set-ExecutionPolicy RemoteSigned` system `Set-ExecutionPolicy Unrestricted`lub.
+2. Uruchom `Set-ExecutionPolicy RemoteSigned` lub `Set-ExecutionPolicy Unrestricted`.
 3. Uruchom Kreatora Azure AD Connect.
 4. Przejdź do strony **dodatkowe zadania** , wybierz pozycję **Rozwiązywanie problemów**, a następnie wybierz przycisk **dalej**.
 5. Na stronie **Rozwiązywanie problemów** wybierz pozycję **Uruchom** , aby uruchomić menu Rozwiązywanie problemów w programie PowerShell.
 6. W menu głównym wybierz pozycję **Rozwiązywanie problemów synchronizacja skrótów haseł**.
 7. W podmenu wybierz opcję **Synchronizacja skrótów haseł nie działa wcale**.
 
-Rozwiązywanie problemów można znaleźć w temacie Rozwiązywanie problemów z [synchronizacją skrótów haseł z synchronizacją Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization).
+Rozwiązywanie problemów można znaleźć w temacie [Rozwiązywanie problemów z synchronizacją skrótów haseł z synchronizacją Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization).
 
-### <a name="step-2-prepare-for-seamless-sso"></a>Krok 2: Przygotowanie do bezproblemowego logowania jednokrotnego
+### <a name="step-2-prepare-for-seamless-sso"></a>Krok 2: przygotowanie do bezproblemowego logowania jednokrotnego
 
 Aby urządzenia używały bezproblemowego logowania jednokrotnego, należy dodać adres URL usługi Azure AD do ustawień strefy intranetowej użytkowników przy użyciu zasad grupy w Active Directory.
 
-Domyślnie przeglądarki sieci Web automatycznie obliczają poprawną strefę, Internet lub intranet, z adresu URL. Na przykład **http\/:\/contoso/** mapuje do strefy intranet i **http:\/\/intranet.contoso.com** mapuje do strefy Internet (ponieważ adres URL zawiera kropkę). Przeglądarki wysyłają bilety Kerberos do punktu końcowego w chmurze, takiego jak adres URL usługi Azure AD, tylko wtedy, gdy jawnie dodasz adres URL do strefy intranetowej przeglądarki.
+Domyślnie przeglądarki sieci Web automatycznie obliczają poprawną strefę, Internet lub intranet, z adresu URL. Na przykład **http: \/ \/contoso/** Maps do strefy intranet i **http: \/ \/intranet. contoso.com** Maps do strefy Internet (ponieważ adres URL zawiera kropkę). Przeglądarki wysyłają bilety Kerberos do punktu końcowego w chmurze, takiego jak adres URL usługi Azure AD, tylko wtedy, gdy jawnie dodasz adres URL do strefy intranetowej przeglądarki.
 
 Wykonaj kroki, aby [wdrożyć](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) wymagane zmiany na urządzeniach.
 
 > [!IMPORTANT]
 > Wprowadzenie tej zmiany nie modyfikuje sposobu logowania użytkowników do usługi Azure AD. Ważne jest jednak, aby zastosować tę konfigurację do wszystkich urządzeń przed kontynuowaniem. Użytkownicy logujący się na urządzeniach, które nie otrzymały tej konfiguracji po prostu, muszą wprowadzić nazwę użytkownika i hasło, aby zalogować się do usługi Azure AD.
 
-### <a name="step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso"></a>Krok 3: Zmień metodę logowania na synchronizację skrótów haseł i Włącz bezproblemowe logowanie jednokrotne
+### <a name="step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso"></a>Krok 3. zmiana metody logowania na synchronizację skrótów haseł i włączenie bezproblemowego logowania jednokrotnego
 
 Dostępne są dwie opcje zmiany metody logowania na synchronizację skrótów haseł i włączenie bezproblemowego logowania jednokrotnego.
 
-#### <a name="option-a-switch-from-federation-to-password-hash-synchronization-by-using-azure-ad-connect"></a>Opcja A: Przełączanie z Federacji do synchronizacji skrótów haseł przy użyciu Azure AD Connect
+#### <a name="option-a-switch-from-federation-to-password-hash-synchronization-by-using-azure-ad-connect"></a>Opcja A: przełączenie z Federacji do synchronizacji skrótów haseł przy użyciu Azure AD Connect
 
 Użyj tej metody, jeśli początkowo skonfigurujesz środowisko AD FS przy użyciu Azure AD Connect. Nie można użyć tej metody, jeśli *nie* skonfigurowano pierwotnie środowiska AD FS przy użyciu Azure AD Connect.
 
@@ -285,17 +285,17 @@ Najpierw Zmień metodę logowania:
 
    ![Zrzut ekranu przedstawiający opcję zmiany logowania użytkownika na stronie dodatkowe zadania](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image7.png)<br />
 3. Na stronie **Połącz z usługą Azure AD** wprowadź nazwę użytkownika i hasło konta administratora globalnego.
-4. Na stronie **logowania użytkownika** wybierz **przycisk Synchronizacja skrótów haseł**. Upewnij się, że pole wyboru nie **Konwertuj kont użytkowników** jest zaznaczone. Opcja jest przestarzała. Wybierz pozycję **Włącz logowanie**jednokrotne, a następnie wybierz pozycję **dalej**.
+4. Na stronie **logowania użytkownika** wybierz **przycisk Synchronizacja skrótów haseł**. Upewnij się, że pole wyboru nie **Konwertuj kont użytkowników** jest zaznaczone. Opcja jest przestarzała. Wybierz pozycję **Włącz logowanie jednokrotne**, a następnie wybierz pozycję **dalej**.
 
    ![Zrzut ekranu przedstawiający stronę Włączanie logowania jednokrotnego](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image8.png)<br />
 
    > [!NOTE]
-   > Począwszy od Azure AD Connect wersja 1.1.880.0, pole wyboru bezproblemowego **logowania** jednokrotnego jest domyślnie zaznaczone.
+   > Począwszy od Azure AD Connect wersja 1.1.880.0, pole wyboru **bezproblemowego logowania jednokrotnego** jest domyślnie zaznaczone.
 
    > [!IMPORTANT]
    > Można bezpiecznie zignorować ostrzeżenia wskazujące, że konwersja użytkownika i pełna synchronizacja skrótów haseł są wymagane do konwersji z Federacji na uwierzytelnianie w chmurze. Należy zauważyć, że te kroki nie są już wymagane. Jeśli nadal widzisz te ostrzeżenia, upewnij się, że korzystasz z najnowszej wersji programu Azure AD Connect i że używasz najnowszej wersji tego przewodnika. Aby uzyskać więcej informacji, zobacz sekcję [aktualizacja Azure AD Connect](#update-azure-ad-connect).
 
-5. Na stronie **Włącz logowanie** jednokrotne wprowadź poświadczenia konta administratora domeny, a następnie wybierz przycisk **dalej**.
+5. Na stronie **Włącz logowanie jednokrotne** wprowadź poświadczenia konta administratora domeny, a następnie wybierz przycisk **dalej**.
 
    ![Zrzut ekranu przedstawiający stronę Włączanie logowania jednokrotnego](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
 
@@ -313,10 +313,10 @@ Najpierw Zmień metodę logowania:
    > [!IMPORTANT]
    > W tym momencie wszystkie domeny federacyjne zmienią się na uwierzytelnianie zarządzane. Synchronizacja skrótów haseł jest nową metodą uwierzytelniania.
 
-7. W portalu usługi Azure AD wybierz pozycję **Azure Active Directory** > **Azure AD Connect**.
+7. W portalu usługi Azure AD wybierz pozycję **Azure Active Directory**  > **Azure AD Connect**.
 8. Sprawdź te ustawienia:
    * Wartość **federacyjna** została **wyłączona**.
-   * **Bezproblemowe logowanie** jednokrotne jest ustawione na **włączone**.
+   * **Bezproblemowe logowanie jednokrotne** jest ustawione na **włączone**.
    * **Synchronizacja haseł** jest ustawiona na wartość **włączone**.<br /> 
 
    ![Zrzut ekranu pokazujący ustawienia w sekcji logowania użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
@@ -324,25 +324,25 @@ Najpierw Zmień metodę logowania:
 Przejdź do [testowania i następnych kroków](#testing-and-next-steps).
 
    > [!IMPORTANT]
-   > Pomiń opcję sekcja **B: Przełączenie z Federacji do synchronizacji skrótów haseł przy użyciu Azure AD Connect**i programu PowerShell. Kroki opisane w tej sekcji nie mają zastosowania w przypadku wybrania opcji A w celu zmiany metody logowania na synchronizację skrótów haseł i włączenia bezproblemowego logowania jednokrotnego.
+   > Pomiń opcję sekcja **B: przełączenie z Federacji do synchronizacji skrótów haseł przy użyciu Azure AD Connect i programu PowerShell**. Kroki opisane w tej sekcji nie mają zastosowania w przypadku wybrania opcji A w celu zmiany metody logowania na synchronizację skrótów haseł i włączenia bezproblemowego logowania jednokrotnego.
 
-#### <a name="option-b-switch-from-federation-to-password-hash-synchronization-using-azure-ad-connect-and-powershell"></a>Opcja B: Przełączanie z Federacji na synchronizację skrótów haseł przy użyciu Azure AD Connect i programu PowerShell
+#### <a name="option-b-switch-from-federation-to-password-hash-synchronization-using-azure-ad-connect-and-powershell"></a>Opcja B: przełączanie z Federacji na synchronizację skrótów haseł przy użyciu Azure AD Connect i programu PowerShell
 
 Użyj tej opcji, jeśli nie skonfigurowano wstępnie domen federacyjnych przy użyciu Azure AD Connect. W trakcie tego procesu włączasz bezproblemowe logowanie jednokrotne i przełączasz domeny z federacyjnego do zarządzanego.
 
 1. Na serwerze Azure AD Connect Otwórz Kreatora Azure AD Connect.
 2. Wybierz pozycję **Zmień Logowanie użytkownika**, a następnie wybierz przycisk **dalej**.
 3. Na stronie **Połącz z usługą Azure AD** wprowadź nazwę użytkownika i hasło dla konta administratora globalnego.
-4. Na stronie **logowania użytkownika** wybierz przycisk **Synchronizacja skrótów haseł** . Wybierz pozycję **Włącz logowanie**jednokrotne, a następnie wybierz pozycję **dalej**.
+4. Na stronie **logowania użytkownika** wybierz przycisk **Synchronizacja skrótów haseł** . Wybierz pozycję **Włącz logowanie jednokrotne**, a następnie wybierz pozycję **dalej**.
 
-   Przed włączeniem synchronizacji skrótów haseł: ![Zrzut ekranu, na którym jest wyświetlana opcja nie Konfiguruj na stronie logowania użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
+   Przed włączeniem synchronizacji skrótów haseł: ![Screenshot, na którym jest wyświetlana opcja nie Konfiguruj na stronie logowania użytkownika ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   Po włączeniu synchronizacji skrótów haseł: ![Zrzut ekranu pokazujący nowe opcje na stronie logowania użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   Po włączeniu synchronizacji skrótów haseł: ![Screenshot, które pokazują nowe opcje na stronie logowania użytkownika ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
-   > Począwszy od Azure AD Connect wersja 1.1.880.0, pole wyboru bezproblemowego **logowania** jednokrotnego jest domyślnie zaznaczone.
+   > Począwszy od Azure AD Connect wersja 1.1.880.0, pole wyboru **bezproblemowego logowania jednokrotnego** jest domyślnie zaznaczone.
 
-5. Na stronie **Włącz logowanie** jednokrotne wprowadź poświadczenia dla konta administratora domeny, a następnie wybierz przycisk **dalej**.
+5. Na stronie **Włącz logowanie jednokrotne** wprowadź poświadczenia dla konta administratora domeny, a następnie wybierz przycisk **dalej**.
 
    > [!NOTE]
    > Aby umożliwić bezproblemowe logowanie jednokrotne, wymagane są poświadczenia konta administratora domeny. Proces wykonuje następujące akcje, które wymagają podniesionych uprawnień. Poświadczenia konta administratora domeny nie są przechowywane w Azure AD Connect ani w usłudze Azure AD. Poświadczenia konta administratora domeny są używane tylko w celu włączenia tej funkcji. Poświadczenia są odrzucane po pomyślnym zakończeniu procesu.
@@ -353,7 +353,7 @@ Użyj tej opcji, jeśli nie skonfigurowano wstępnie domen federacyjnych przy u�
 
 6. Na stronie **gotowy do skonfigurowania** upewnij się, że jest zaznaczone pole wyboru **Rozpocznij proces synchronizacji po zakończeniu konfiguracji** . Następnie wybierz pozycję **Konfiguruj**.
 
-   ![Zrzut ekranu pokazujący przycisk Konfiguruj na stronie gotowy do konfiguracji](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
+   ![Screenshot, na którym jest wyświetlany przycisk Konfiguruj na stronie gotowy do konfiguracji ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
    Po wybraniu przycisku **Konfiguruj** bezproblemowo logowanie jest konfigurowane zgodnie z opisem w poprzednim kroku. Konfiguracja synchronizacji skrótów haseł nie jest modyfikowana, ponieważ została włączona wcześniej.
 
    > [!IMPORTANT]
@@ -361,7 +361,7 @@ Użyj tej opcji, jeśli nie skonfigurowano wstępnie domen federacyjnych przy u�
 
 7. Sprawdź następujące ustawienia w portalu usługi Azure AD:
    * **Federacja** jest ustawiona na wartość **Enabled (włączone**).
-   * **Bezproblemowe logowanie** jednokrotne jest ustawione na **włączone**.
+   * **Bezproblemowe logowanie jednokrotne** jest ustawione na **włączone**.
    * **Synchronizacja haseł** jest ustawiona na wartość **włączone**.
 
    ![Zrzut ekranu pokazujący ustawienia w sekcji logowania użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image16.png)
@@ -382,7 +382,7 @@ Ukończ konwersję przy użyciu modułu Azure AD PowerShell:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
 
-3. W portalu usługi Azure AD wybierz pozycję **Azure Active Directory** > **Azure AD Connect**.
+3. W portalu usługi Azure AD wybierz pozycję **Azure Active Directory**  > **Azure AD Connect**.
 4. Sprawdź, czy domena została przekonwertowana na zarządzane, uruchamiając następujące polecenie:
 
    ``` PowerShell
@@ -400,7 +400,7 @@ Gdy dzierżawca używa tożsamości federacyjnej, użytkownicy zostali przekiero
 Aby przetestować synchronizację skrótów haseł:
 
 1. Otwórz program Internet Explorer w trybie InPrivate, aby bezproblemowe logowanie jednokrotne nie zalogować Cię automatycznie.
-2. Przejdź do strony logowania do programu Office 365 ([https://portal.office.com](https://portal.office.com/)).
+2. Przejdź do strony logowania do programu Office 365 ([ https://portal.office.com](https://portal.office.com/)).
 3. Wprowadź nazwę UPN użytkownika, a następnie wybierz przycisk **dalej**. Upewnij się, że wprowadzasz nazwę UPN użytkownika hybrydowego, który został zsynchronizowany z wystąpienia lokalnego Active Directory i kto wcześniej użył uwierzytelniania federacyjnego. Strona, na której zostanie wprowadzona nazwa użytkownika i hasło:
 
    ![Zrzut ekranu przedstawiający stronę logowania, w której wprowadzasz nazwę użytkownika](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)
@@ -417,8 +417,8 @@ Aby przetestować synchronizację skrótów haseł:
 1. Zaloguj się na komputerze przyłączonym do domeny, który jest połączony z siecią firmową.
 2. W programie Internet Explorer lub Chrome przejdź do jednego z następujących adresów URL (Zastąp ciąg "contoso" domeną):
 
-   * https:\/\/myapps.Microsoft.com/contoso.com
-   * https:\/\/myapps.Microsoft.com/contoso.onmicrosoft.com
+   * https: \/ \/myapps. microsoft.com/contoso.com
+   * https: \/ \/myapps. microsoft.com/contoso.onmicrosoft.com
 
    Użytkownik zostanie krótko przekierowany do strony logowania usługi Azure AD, która wyświetla komunikat "próba zalogowania". Użytkownik nie jest monitowany o podanie nazwy użytkownika lub hasła.<br />
 
@@ -429,7 +429,7 @@ Aby przetestować synchronizację skrótów haseł:
    > Bezproblemowe logowanie jednokrotne działa w usługach Office 365, które obsługują wskazówkę domeny (na przykład myapps.microsoft.com/contoso.com). Obecnie portal Office 365 (portal.office.com) nie obsługuje podpowiedzi do domeny. Użytkownicy muszą wprowadzić nazwę UPN. Po wprowadzeniu nazwy UPN bezproblemowe logowanie jednokrotne pobiera bilet protokołu Kerberos w imieniu użytkownika. Użytkownik jest zalogowany bez wprowadzania hasła.
 
    > [!TIP]
-   > Rozważ wdrożenie funkcji dołączania [hybrydowego usługi Azure AD w systemie Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction) w celu usprawnienia logowania jednokrotnego.
+   > Rozważ wdrożenie funkcji [dołączania hybrydowego usługi Azure AD w systemie Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction) w celu usprawnienia logowania jednokrotnego.
 
 ### <a name="remove-the-relying-party-trust"></a>Usuń relację zaufania jednostki uzależnionej
 
@@ -437,7 +437,7 @@ Po sprawdzeniu, czy wszyscy użytkownicy i klienci pomyślnie uwierzytelniają s
 
 Jeśli nie używasz AD FS do innych celów (to oznacza, że w przypadku innych relacji zaufania jednostek uzależnionych), możesz bezpiecznie zlikwidować AD FS na tym etapie.
 
-### <a name="rollback"></a>Wycofywanie
+### <a name="rollback"></a>Wycofywania
 
 Jeśli odkryjesz główny problem i nie można go szybko rozwiązać, możesz zdecydować się na wycofanie rozwiązania do Federacji.
 

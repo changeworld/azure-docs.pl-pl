@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: tomfitz
 ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71300155"
 ---
 # <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
@@ -25,33 +25,33 @@ Aby zaimplementować infrastrukturę jako kod dla rozwiązań platformy Azure, u
 
 Jeśli próbujesz zdecydować się na korzystanie z szablonów Menedżer zasobów i jednej z innych infrastruktury jako usług kodu, weź pod uwagę następujące korzyści wynikające z używania szablonów:
 
-* **Składnia deklaracyjne**: Szablony Menedżer zasobów umożliwiają deklaratywne tworzenie i wdrażanie całej infrastruktury platformy Azure. Można na przykład wdrożyć nie tylko maszyny wirtualne, ale również infrastrukturę sieci, systemy magazynu i inne zasoby, które mogą być potrzebne.
+* **Składnia deklaracyjne**: szablony Menedżer zasobów umożliwiają deklaratywne tworzenie i wdrażanie całej infrastruktury platformy Azure. Można na przykład wdrożyć nie tylko maszyny wirtualne, ale również infrastrukturę sieci, systemy magazynu i inne zasoby, które mogą być potrzebne.
 
-* **Powtarzalne wyniki**: Należy wielokrotnie wdrażać infrastrukturę w całym cyklu życia i mieć pewność, że zasoby są wdrażane w spójny sposób. Szablony są idempotentne, co oznacza, że można wdrożyć ten sam szablon wiele razy i uzyskać te same typy zasobów w tym samym stanie. Możesz opracować jeden szablon, który reprezentuje żądany stan, a nie opracowując wielu oddzielnych szablonów do reprezentowania aktualizacji.
+* **Powtarzalne wyniki**: wielokrotnie wdrażać infrastrukturę w całym cyklu rozwoju i mieć pewność, że zasoby są wdrażane w spójny sposób. Szablony są idempotentne, co oznacza, że można wdrożyć ten sam szablon wiele razy i uzyskać te same typy zasobów w tym samym stanie. Możesz opracować jeden szablon, który reprezentuje żądany stan, a nie opracowując wielu oddzielnych szablonów do reprezentowania aktualizacji.
 
-* **Aranżacja**: Nie musisz martwić się o złożone operacje porządkowania. Menedżer zasobów organizuje wdrażanie zasobów zależnych, aby zostały utworzone w odpowiedniej kolejności. Gdy jest to możliwe, Menedżer zasobów wdraża zasoby równolegle, dzięki czemu wdrożenia kończą się szybciej niż wdrożenia seryjne. Szablon jest wdrażany za pomocą jednego polecenia, a nie przez wiele niekoniecznych poleceń.
+* **Aranżacja**: nie trzeba martwić się o złożone operacje porządkowania. Menedżer zasobów organizuje wdrażanie zasobów zależnych, aby zostały utworzone w odpowiedniej kolejności. Gdy jest to możliwe, Menedżer zasobów wdraża zasoby równolegle, dzięki czemu wdrożenia kończą się szybciej niż wdrożenia seryjne. Szablon jest wdrażany za pomocą jednego polecenia, a nie przez wiele niekoniecznych poleceń.
 
    ![Porównanie Template deployment](./media/template-deployment-overview/template-processing.png)
 
-* **Wbudowana weryfikacja**: Szablon jest wdrażany dopiero po przekazaniu walidacji. Menedżer zasobów sprawdza szablon przed rozpoczęciem wdrażania, aby upewnić się, że wdrożenie zakończy się pomyślnie. Wdrożenie jest mniej prawdopodobnie zatrzymane w stanie Half-gotowym.
+* **Wbudowana weryfikacja**: szablon jest wdrażany dopiero po przekazaniu walidacji. Menedżer zasobów sprawdza szablon przed rozpoczęciem wdrażania, aby upewnić się, że wdrożenie zakończy się pomyślnie. Wdrożenie jest mniej prawdopodobnie zatrzymane w stanie Half-gotowym.
 
-* **Pliki modularne**: Szablony można podzielić na mniejsze składniki wielokrotnego użytku i połączyć je ze sobą w czasie wdrażania. Możesz również zagnieżdżać jeden szablon w innych szablonach.
+* **Pliki modularne**: można rozbić szablony na mniejsze składniki, wielokrotnego użytku i łączyć je ze sobą w czasie wdrażania. Możesz również zagnieżdżać jeden szablon w innych szablonach.
 
-* **Utwórz dowolny zasób platformy Azure**: Możesz od razu korzystać z nowych usług i funkcji platformy Azure w szablonach. Gdy tylko dostawca zasobów wprowadza nowe zasoby, można wdrożyć te zasoby za pomocą szablonów. Nie musisz czekać na aktualizację narzędzi lub modułów przed rozpoczęciem korzystania z nowych usług.
+* **Utwórz dowolny zasób platformy Azure**: możesz od razu korzystać z nowych usług i funkcji platformy Azure w szablonach. Gdy tylko dostawca zasobów wprowadza nowe zasoby, można wdrożyć te zasoby za pomocą szablonów. Nie musisz czekać na aktualizację narzędzi lub modułów przed rozpoczęciem korzystania z nowych usług.
 
-* **Monitorowane wdrożenia**: W Azure Portal można przejrzeć historię wdrożenia i uzyskać informacje o wdrożeniu szablonu. Zobaczysz szablon, który został wdrożony, wartości parametrów przekazywane i wszystkie wartości wyjściowe. Inne infrastruktury jako usługi kodu nie są śledzone za pomocą portalu.
+* **Śledzone wdrożenia**: w Azure Portal można przejrzeć historię wdrożenia i uzyskać informacje o wdrożeniu szablonu. Zobaczysz szablon, który został wdrożony, wartości parametrów przekazywane i wszystkie wartości wyjściowe. Inne infrastruktury jako usługi kodu nie są śledzone za pomocą portalu.
 
    ![Historia wdrożenia](./media/template-deployment-overview/deployment-history.png)
 
 * **Zasady jako kod**: [Azure Policy](../governance/policy/overview.md) jest zasadą jako strukturę kodu do automatyzowania zarządzania. Jeśli korzystasz z zasad platformy Azure, korygowanie zasad odbywa się w przypadku niezgodnych zasobów w przypadku ich wdrożenia za pomocą szablonów.
 
-* **Plany wdrożenia**: Możesz skorzystać z [planów](../governance/blueprints/overview.md) dostarczonych przez firmę Microsoft, aby spełnić standardy zgodności i stosowania. Te plany obejmują wstępnie skompilowane szablony dla różnych architektur.
+* **Plany wdrożenia**: możesz skorzystać z [planów](../governance/blueprints/overview.md) zapewnianych przez firmę Microsoft, aby spełnić standardy zgodności z przepisami. Te plany obejmują wstępnie skompilowane szablony dla różnych architektur.
 
-* **Integracja ciągłej integracji/** ciągłego wdrażania: Szablony można zintegrować z narzędziami ciągłej integracji i ciągłego wdrażania (CI/CD), które umożliwiają automatyzację potoków wydań w celu uzyskania szybkich i niezawodnych aktualizacji aplikacji i infrastruktury. Za pomocą zadania DevOps platformy Azure i szablonu Menedżer zasobów można używać Azure Pipelines do ciągłego kompilowania i wdrażania projektów szablonów Azure Resource Manager. Aby dowiedzieć się więcej, zobacz [projekt programu vs z potokami](./vs-resource-groups-project-devops-pipelines.md) i [ciągłą integracją z Azure Pipelines](./resource-manager-tutorial-use-azure-pipelines.md).
+* **Integracja**ciągłej integracji i ciągłego wdrażania: możesz zintegrować szablony z narzędziami do ciągłego i nieciągłego wdrożenia (Ci/CD), które mogą zautomatyzować potoki wydań w celu uzyskania szybkich i niezawodnych aktualizacji aplikacji i infrastruktury. Za pomocą zadania DevOps platformy Azure i szablonu Menedżer zasobów można używać Azure Pipelines do ciągłego kompilowania i wdrażania projektów szablonów Azure Resource Manager. Aby dowiedzieć się więcej, zobacz [projekt programu vs z potokami](./vs-resource-groups-project-devops-pipelines.md) i [ciągłą integracją z Azure Pipelines](./resource-manager-tutorial-use-azure-pipelines.md).
 
-* **Kod możliwy do eksportu**: Możesz uzyskać szablon dla istniejącej grupy zasobów, eksportując bieżący stan grupy zasobów lub wyświetlając szablon używany do określonego wdrożenia. Przeglądając [wyeksportowany szablon](export-template-portal.md), można poznać jego składnię.
+* **Kod możliwy do eksportu**: można uzyskać szablon dla istniejącej grupy zasobów, eksportując bieżący stan grupy zasobów lub wyświetlając szablon używany do określonego wdrożenia. Przeglądając [wyeksportowany szablon](export-template-portal.md), można poznać jego składnię.
 
-* **Narzędzia do tworzenia**: Szablony można tworzyć przy użyciu [Visual Studio Code](resource-manager-tools-vs-code.md) i rozszerzenia narzędzia szablonu. Uzyskasz funkcję IntelliSense, wyróżnianie składni, pomoc w wierszu i wiele innych funkcji języka. Oprócz programu Visual Studio Code można również użyć [programu Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+* **Narzędzia autorskie**: szablony można tworzyć za pomocą [Visual Studio Code](resource-manager-tools-vs-code.md) i rozszerzenia narzędzia szablonu. Uzyskasz funkcję IntelliSense, wyróżnianie składni, pomoc w wierszu i wiele innych funkcji języka. Oprócz programu Visual Studio Code można również użyć [programu Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ## <a name="template-file"></a>Plik szablonu
 
@@ -126,4 +126,4 @@ Informacje dotyczące szablonów zagnieżdżonych można znaleźć w temacie [Us
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać informacje o właściwościach w plikach szablonów, zobacz [Opis struktury i składni szablonów Azure Resource Manager](resource-group-authoring-templates.md).
-* Aby dowiedzieć się więcej na temat [eksportowania szablonów, zobacz Szybki Start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).
+* Aby dowiedzieć się więcej na temat eksportowania szablonów, zobacz [Szybki Start: Tworzenie i wdrażanie szablonów Azure Resource Manager przy użyciu Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).

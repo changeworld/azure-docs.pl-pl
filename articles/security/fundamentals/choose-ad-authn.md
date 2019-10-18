@@ -9,18 +9,14 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "69997814"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529393"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz właściwą metodę uwierzytelniania dla Azure Active Directory rozwiązanie do tworzenia tożsamości hybrydowej 
-
-Ten artykuł rozpoczyna szereg artykułów, które ułatwiają organizacjom implementację kompletnego rozwiązania do tworzenia tożsamości hybrydowej w usłudze Azure Active Directory (Azure AD). To rozwiązanie zostało opisane jako [Struktura cyfrowego przekształcania tożsamości hybrydowej](https://aka.ms/aadframework). Obejmuje ona wyniki biznesowe i cele organizacji, które mogą skoncentrować się na wdrażaniu niezawodnego i bezpiecznego rozwiązania do tworzenia tożsamości hybrydowej. 
-
-Pierwszy wynik biznesowy platformy określa wymagania organizacji w celu zabezpieczenia procesu uwierzytelniania, gdy użytkownicy uzyskują dostęp do aplikacji w chmurze. Pierwszym celem biznesowym w przypadku bezpiecznego uwierzytelniania firmy jest możliwość logowania się do aplikacji w chmurze przy użyciu lokalnych nazw użytkowników i haseł. Ten proces logowania i uwierzytelniania sprawia, że wszystko w chmurze jest możliwe.
 
 Wybór odpowiedniej metody uwierzytelniania to pierwszy problem dotyczący organizacji, które chcą przenieść aplikacje do chmury. Nie podejmuj tej decyzji jasno, z następujących powodów:
 

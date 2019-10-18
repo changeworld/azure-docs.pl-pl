@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3cf30b53f950ff18dd6dcde332b7e97e332133aa
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034192"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516571"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Używanie IoT Edge w systemie Windows do uruchamiania kontenerów systemu Linux
 
@@ -28,7 +28,7 @@ W tym artykule przedstawiono procedurę instalowania środowiska uruchomienioweg
 
 Ta sekcja służy do sprawdzenia, czy urządzenie z systemem Windows może obsługiwać IoT Edge i przygotować je do aparatu kontenera przed instalacją. 
 
-### <a name="supported-windows-versions"></a>Obsługiwane wersje Windows
+### <a name="supported-windows-versions"></a>Obsługiwane wersje systemu Windows
 
 Azure IoT Edge z kontenerami systemu Linux można uruchamiać w dowolnym systemie Windows, który spełnia [wymagania programu Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)
 
@@ -38,16 +38,16 @@ Jeśli chcesz zainstalować IoT Edge na maszynie wirtualnej, Włącz wirtualizac
 
 ### <a name="prepare-the-container-engine"></a>Przygotowywanie aparatu kontenera 
 
-Azure IoT Edge opiera się na aparacie kontenera zgodnym ze [sterownikiem OCI](https://www.opencontainers.org/) . Największą różnicą między uruchomionymi kontenerami systemów Windows i Linux na komputerze z systemem Windows jest to, że instalacja IoT Edge obejmuje środowisko uruchomieniowe kontenera systemu Windows, ale przed zainstalowaniem IoT Edge należy zapewnić własne środowisko uruchomieniowe dla kontenerów z systemem Linux. 
+Azure IoT Edge opiera się na aparacie kontenera [zgodnym ze sterownikiem OCI](https://www.opencontainers.org/) . Największą różnicą między uruchomionymi kontenerami systemów Windows i Linux na komputerze z systemem Windows jest to, że instalacja IoT Edge obejmuje środowisko uruchomieniowe kontenera systemu Windows, ale przed zainstalowaniem IoT Edge należy zapewnić własne środowisko uruchomieniowe dla kontenerów z systemem Linux. 
 
-Aby skonfigurować maszynę z systemem Windows do tworzenia i testowania kontenerów dla urządzeń z systemem Linux, można użyć programu [Docker Desktop](https://www.docker.com/docker-windows) jako aparatu kontenera. Przed zainstalowaniem IoT Edge należy zainstalować platformę Docker i skonfigurować ją do korzystania z kontenerów systemu [Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) .  
+Aby skonfigurować maszynę z systemem Windows do tworzenia i testowania kontenerów dla urządzeń z systemem Linux, można użyć programu [Docker Desktop](https://www.docker.com/docker-windows) jako aparatu kontenera. Przed zainstalowaniem IoT Edge należy zainstalować platformę Docker i skonfigurować ją do [korzystania z kontenerów systemu Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) .  
 
 Jeśli urządzenie IoT Edge jest komputerem z systemem Windows, sprawdź, czy spełnia [wymagania systemowe](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) dla funkcji Hyper-V.
 
 ## <a name="install-iot-edge-on-a-new-device"></a>Instalowanie IoT Edge na nowym urządzeniu
 
 >[!NOTE]
->Pakiety oprogramowania w usłudze Azure IoT Edge to z zastrzeżeniem postanowień licencyjnych, znajduje się w pakietach (w katalogu licencji). Przeczytaj postanowienia licencyjne, aby korzystać z pakietu. Twoja instalacja i używanie pakietu stanowi zaakceptowania przez korzystającego tych warunków. Jeśli nie zgadzasz się z warunkami licencji, nie należy używać pakietu.
+>Azure IoT Edge pakiety oprogramowania podlegają postanowieniom licencyjnym znajdującym się w pakietach (w katalogu licencji). Przeczytaj postanowienia licencyjne przed użyciem pakietu. Instalacja i użycie pakietu oznacza akceptację tych warunków. Jeśli nie akceptujesz postanowień licencyjnych, nie używaj pakietu.
 
 Skrypt programu PowerShell pobiera i instaluje demona Security Azure IoT Edge. Następnie demon zabezpieczeń uruchamia pierwsze dwa moduły środowiska uruchomieniowego, Agent IoT Edge, który umożliwia zdalne wdrażanie innych modułów. 
 
@@ -88,24 +88,29 @@ Więcej informacji na temat różnych opcji instalacji i parametrów można znal
 
 6. Po wyświetleniu monitu podaj parametry połączenia urządzenia pobrane w kroku 1. Parametry połączenia urządzenia kojarzą urządzenie fizyczne z IDENTYFIKATORem urządzenia w IoT Hub. 
 
-   Parametry połączenia urządzenia mają następujący format i nie powinny zawierać znaków cudzysłowu:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Parametry połączenia urządzenia mają następujący format i nie powinny zawierać znaków cudzysłowu: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
-## <a name="verify-successful-installation"></a>Sprawdź pomyślnej instalacji
+## <a name="verify-successful-installation"></a>Weryfikuj pomyślną instalację
 
-Sprawdź stan usługi IoT Edge. Powinien być wymieniony jako uruchomiony.  
+Sprawdź stan usługi IoT Edge: 
 
 ```powershell
 Get-Service iotedge
 ```
 
-Sprawdź dzienniki usługi z ostatnich 5 minut. 
+Przeanalizuj dzienniki usług z ostatnich 5 minut: 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Utwórz listę uruchomionych modułów. Po nowej instalacji jedynym modułem, który powinien zostać uruchomiony, jest **edgeAgent**. Po [wdrożeniu modułów IoT Edge](how-to-deploy-modules-portal.md) po raz pierwszy na urządzeniu zostanie uruchomiony inny moduł systemowy **edgeHub**. 
+Uruchom automatyczne sprawdzanie najbardziej typowych błędów konfiguracji i sieci: 
 
+```powershell
+iotedge check
+```
+
+Wyświetl listę uruchomionych modułów. Po nowej instalacji jedynym modułem, który powinien zostać uruchomiony, jest **edgeAgent**. Po [wdrożeniu modułów IoT Edge](how-to-deploy-modules-portal.md) po raz pierwszy na urządzeniu zostanie uruchomiony inny moduł systemowy **edgeHub**. 
 
 ```powershell
 iotedge list
@@ -113,7 +118,7 @@ iotedge list
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy masz urządzenia usługi IoT Edge zaopatrzony zainstalowanego środowiska uruchomieniowego, można [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md).
+Teraz, gdy masz zainstalowaną IoT Edge urządzenie z zainstalowanym środowiskiem uruchomieniowym, możesz [wdrożyć moduły IoT Edge](how-to-deploy-modules-portal.md).
 
 Jeśli masz problemy z instalacją IoT Edge prawidłowo, zapoznaj się ze stroną [rozwiązywania problemów](troubleshoot.md) .
 

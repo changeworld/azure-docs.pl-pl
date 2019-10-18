@@ -1,22 +1,19 @@
 ---
 title: Dokumentacja dewelopera programu PowerShell dla Azure Functions
 description: Dowiedz się, jak opracowywać funkcje przy użyciu programu PowerShell.
-services: functions
-documentationcenter: na
-author: tylerleonhardt
-manager: jeconnoc
+author: eamonoreilly
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha
-ms.reviewer: glenga
-ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: glenga
+ms.openlocfilehash: 0d398e9848559e70883c07498057d1807651a867
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029020"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515670"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera programu Azure Functions PowerShell
 
@@ -403,13 +400,8 @@ Bieżącą wersję można zobaczyć, drukując `$PSVersionTable` z dowolnej funk
 
 ## <a name="dependency-management"></a>Zarządzanie zależnościami
 
-Funkcje programu PowerShell obsługują pobieranie modułów [Galerii programu PowerShell](https://www.powershellgallery.com) i zarządzanie nimi przez usługę. Zmodyfikowanie pliku host. JSON i ustawienie dla właściwości Enabled managedDependency wartości true, plik Requirements. psd1 zostanie przetworzony. Określone moduły zostaną automatycznie pobrane i udostępnione funkcji. 
+Funkcje umożliwiają używanie [Galerii programu PowerShell](https://www.powershellgallery.com) do zarządzania zależnościami. W przypadku włączenia zarządzania zależnością plik Requirements. psd1 służy do automatycznego pobierania wymaganych modułów. Aby włączyć to zachowanie, należy ustawić właściwość `managedDependency` na `true` w katalogu głównym [pliku host. JSON](functions-host-json.md), jak w poniższym przykładzie:
 
-Maksymalna obsługiwana liczba modułów to 10. Obsługiwana składnia to MajorNumber. * lub dokładna wersja modułu, jak pokazano poniżej. Usługa Azure AZ module jest uwzględniana domyślnie podczas tworzenia nowej aplikacji funkcji programu PowerShell.
-
-Proces roboczy języka spowoduje pobranie wszelkich zaktualizowanych modułów przy ponownym uruchomieniu.
-
-plik host. JSON
 ```json
 {
   "managedDependency": {
@@ -418,7 +410,7 @@ plik host. JSON
 }
 ```
 
-wymagania. psd1
+Podczas tworzenia nowego projektu funkcji programu PowerShell zarządzanie zależnościami jest domyślnie włączone z uwzględnieniem [modułu Azure `Az`](/powershell/azure/new-azureps-module-az) . Maksymalna obsługiwana liczba modułów to 10. Obsługiwana składnia jest _`MajorNumber`_ `.*` lub dokładnej wersji modułu, jak pokazano w następujących wymaganiach. psd1 przykład:
 
 ```powershell
 @{
@@ -427,32 +419,34 @@ wymagania. psd1
 }
 ```
 
-Dostępne są następujące ustawienia umożliwiające zmianę sposobu pobierania i instalowania zarządzanych zależności. Uaktualnienie aplikacji rozpocznie się w MDMaxBackgroundUpgradePeriod, a proces uaktualniania zakończy się w około MDNewSnapshotCheckPeriod.
+Po zaktualizowaniu pliku Requirements. psd1 zaktualizowane moduły zostaną zainstalowane po ponownym uruchomieniu.
+
+> [!NOTE]
+> Zarządzane zależności wymagają dostępu do www.powershellgallery.com do pobierania modułów. W przypadku uruchamiania lokalnego upewnij się, że środowisko uruchomieniowe ma dostęp do tego adresu URL, dodając wszystkie wymagane reguły zapory. 
+
+Następujące ustawienia aplikacji mogą służyć do zmiany sposobu pobierania i instalowania zarządzanych zależności. Uaktualnienie aplikacji rozpocznie się w `MDMaxBackgroundUpgradePeriod`, a proces uaktualniania kończy się w przybliżeniu `MDNewSnapshotCheckPeriod`.
 
 | Ustawienie aplikacja funkcji              | Wartość domyślna             | Opis                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| MDMaxBackgroundUpgradePeriod      | "7.00:00:00" (7 dni)     | Każdy proces roboczy programu PS inicjuje sprawdzanie uaktualnień modułu w galerii PS na początku procesu roboczego i każdy MDMaxBackgroundUpgradePeriod. Jeśli w galerii PS są dostępne nowe wersje modułów, zostaną one zainstalowane w systemie plików dostępnym dla procesów roboczych środowiska PS. Zmniejszenie tej wartości umożliwi aplikacji funkcji uzyskanie nowszych wersji modułów wcześniej, ale spowoduje również zwiększenie użycia zasobów aplikacji (we/wy sieci, procesora CPU, magazynu). Zwiększenie tej wartości spowoduje zmniejszenie użycia zasobów aplikacji, ale może również opóźnić dostarczenie nowej wersji modułu do aplikacji.      | 
-| MDNewSnapshotCheckPeriod          | "01:00:00" (1 godzina)       | Po zainstalowaniu nowych wersji modułu w systemie plików należy ponownie uruchomić każdy proces roboczy programu PS. Ponowne uruchomienie procesów roboczych programu PS może wpłynąć na dostępność aplikacji, ponieważ może to przerwać bieżące wywołania funkcji. Do momentu ponownego uruchomienia wszystkich procesów roboczych programu PS wywołania funkcji mogą używać starych lub nowych wersji modułu. Ponowne uruchomienie wszystkich procesów roboczych PS zakończy się w MDNewSnapshotCheckPeriod. Zwiększenie tej wartości spowoduje zmniejszenie częstotliwości przerw, ale może również wydłużyć czas, w którym wywołania funkcji używają starej lub nowej wersji modułu w sposób Niedeterministyczny. |
-| MDMinBackgroundUpgradePeriod      | "1,00:00:00" (1 dzień)     | Aby uniknąć nadmiernego przeprowadzania uaktualnień modułu podczas częstego ponownego uruchamiania procesów roboczych, sprawdzanie uaktualnień modułów nie zostanie wykonane, jeśli jakikolwiek proces roboczy został już zainicjowany w ostatnim MDMinBackgroundUpgradePeriod. |
-
-> [!NOTE]
-> Zarządzane zależności polegają na dostępie do www.powershellgallery.com modułów pobierania. Musisz upewnić się, że środowisko uruchomieniowe funkcji ma dostęp do tego adresu URL, dodając wymagane reguły zapory.
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 dni)     | Każdy proces roboczy programu PowerShell inicjuje sprawdzanie uaktualnień modułu na Galeria programu PowerShell podczas uruchamiania procesu i każdego `MDMaxBackgroundUpgradePeriod` po tym. Gdy w Galeria programu PowerShell jest dostępna nowa wersja modułu, zostanie ona zainstalowana w systemie plików i udostępniona dla procesów roboczych programu PowerShell. Zmniejszenie tej wartości pozwala aplikacji funkcji uzyskiwać nowsze wersje modułów wcześniej, ale również zwiększa użycie zasobów aplikacji (we/wy sieci, procesor CPU, magazyn). Zwiększenie tej wartości zmniejsza użycie zasobów aplikacji, ale może również opóźnić dostarczenie nowej wersji modułu do aplikacji. | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 godzina)       | Po zainstalowaniu nowych wersji modułu w systemie plików należy ponownie uruchomić każdy proces roboczy programu PowerShell. Ponowne uruchomienie programu PowerShell wpływa na dostępność aplikacji, ponieważ może przerwać bieżące wykonywanie funkcji. Do momentu ponownego uruchomienia wszystkich procesów roboczych programu PowerShell wywołania funkcji mogą używać starych lub nowych wersji modułu. Ponowne uruchamianie wszystkich procesów roboczych programu PowerShell kończy się w `MDNewSnapshotCheckPeriod`. Zwiększenie tej wartości zmniejsza częstotliwość przerw, ale może również wydłużyć czas, w którym wywołania funkcji używają starej lub nowej wersji modułu w sposób Niedeterministyczny. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 dzień)     | Aby uniknąć nadmiernych uaktualnień modułów podczas częstego ponownego uruchamiania procesów roboczych, sprawdzanie uaktualnień modułów nie jest wykonywane po zainicjowaniu jakiegokolwiek procesu roboczego, który zaewidencjonuje ostatni `MDMinBackgroundUpgradePeriod`. |
 
 Korzystanie z własnych modułów niestandardowych jest nieco inne niż w normalny sposób.
 
-Po zainstalowaniu modułu na komputerze lokalnym jest on w jednym z dostępnych globalnie folderów w `$env:PSModulePath`. Ponieważ funkcja działa na platformie Azure, nie będziesz mieć dostępu do modułów zainstalowanych na maszynie. Wymaga to, aby `$env:PSModulePath` dla aplikacji funkcji programu PowerShell różni się od `$env:PSModulePath` w zwykłym skrypcie programu PowerShell.
+Na komputerze lokalnym moduł jest instalowany w jednym z dostępnych globalnie folderów w `$env:PSModulePath`. W przypadku uruchamiania na platformie Azure nie masz dostępu do modułów zainstalowanych na maszynie. Oznacza to, że `$env:PSModulePath` aplikacji funkcji programu PowerShell różni się od `$env:PSModulePath` w zwykłych skryptach programu PowerShell.
 
 W funkcjach `PSModulePath` zawiera dwie ścieżki:
 
-* Folder `Modules`, który istnieje w katalogu głównym aplikacja funkcji.
-* Ścieżka do folderu `Modules`, który znajduje się w procesie roboczym języka programu PowerShell.
+* Folder `Modules`, który istnieje w katalogu głównym aplikacji funkcji.
+* Ścieżka do folderu `Modules`, który jest kontrolowany przez proces roboczy języka programu PowerShell.
 
 ### <a name="function-app-level-modules-folder"></a>Funkcja `Modules` na poziomie aplikacji
 
 Aby korzystać z modułów niestandardowych, można umieścić moduły, na których funkcje są zależne od folderu `Modules`. Z tego folderu moduły są automatycznie dostępne dla środowiska uruchomieniowego usługi Functions. Każda funkcja w aplikacji funkcji może korzystać z tych modułów. 
 
 > [!NOTE]
-> Moduły określone w pliku Requirements. psd1 są automatycznie pobierane i uwzględniane w ścieżce, więc nie trzeba ich dołączać do folderu modules. Są one przechowywane lokalnie w folderze $env: LOCALAPPDATA/AzureFunctions i w folderze/data/ManagedDependencies w przypadku uruchamiania w chmurze.
+> Moduły określone w pliku Requirements. psd1 są automatycznie pobierane i uwzględniane w ścieżce, więc nie trzeba ich dołączać do folderu modules. Są one przechowywane lokalnie w folderze `$env:LOCALAPPDATA/AzureFunctions` i w folderze `/data/ManagedDependencies` w przypadku uruchamiania w chmurze.
 
 Aby skorzystać z funkcji niestandardowego modułu, Utwórz folder `Modules` w katalogu głównym aplikacji funkcji. Skopiuj moduły, których chcesz używać w swoich funkcjach, do tej lokalizacji.
 
@@ -461,7 +455,7 @@ mkdir ./Modules
 Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-W przypadku folderu modułów aplikacja funkcji powinna mieć następującą strukturę folderów:
+W przypadku folderu `Modules` aplikacja funkcji powinna mieć następującą strukturę folderów:
 
 ```
 PSFunctionApp
@@ -488,7 +482,7 @@ Bieżąca lista modułów jest następująca:
 * [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): moduł używany do pracy z archiwami, takimi jak `.zip`, `.nupkg` i inne.
 * **ThreadJob**: implementacja oparta na wątkach interfejsów API zadań programu PowerShell.
 
-Najnowsza wersja tych modułów jest używana przez funkcje. Aby użyć określonej wersji tych modułów, można umieścić określoną wersję w folderze `Modules` aplikacji funkcji.
+Domyślnie funkcje używają najnowszej wersji tych modułów. Aby użyć określonej wersji modułu, należy umieścić tę określoną wersję w folderze `Modules` aplikacji funkcji.
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 
@@ -529,7 +523,7 @@ Azure PowerShell używa niektórych kontekstów i Stanów na _poziomie procesu_ 
 
 Ogromną wartość współbieżności z Azure PowerShell, ponieważ niektóre operacje mogą zająć dużo czasu. Należy jednak zachować ostrożność. Jeśli podejrzewasz, że masz sytuację wyścigu, ustaw dla ustawienia aplikacji PSWorkerInProcConcurrencyUpperBound wartość `1`, a zamiast tego użyj [izolacji poziomu procesu roboczego języka](functions-app-settings.md#functions_worker_process_count) dla współbieżności.
 
-## <a name="configure-function-scriptfile"></a>Konfiguruj @no__t funkcji-0
+## <a name="configure-function-scriptfile"></a>Konfiguruj `scriptFile` funkcji
 
 Domyślnie funkcja programu PowerShell jest wykonywana z `run.ps1`, plik, który współużytkuje ten sam katalog nadrzędny co odpowiadający mu `function.json`.
 

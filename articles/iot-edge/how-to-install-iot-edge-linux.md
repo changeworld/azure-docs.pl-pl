@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e08999798c72545f9fa1d1b5d362e23450ce16f5
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 9bc4d60eab0dac80d1b2b524f32bc506a66dee18
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695326"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516668"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Zainstaluj środowisko uruchomieniowe Azure IoT Edge w systemach Linux opartych na Debian
 
@@ -192,7 +192,7 @@ Znajdź konfiguracje aprowizacji pliku i Usuń komentarz z sekcji **Ręczna konf
    #     method: "tpm"
    #     registration_id: "{registration_id}"
 ```
-Aby wkleić zawartość schowka do nano `Shift+Right Click` lub naciśnij klawisz `Shift+Insert`.
+Aby wkleić zawartość schowka do systemu nano `Shift+Right Click` lub naciśnij klawisz `Shift+Insert`.
 
 Zapisz i zamknij plik.
 
@@ -232,7 +232,7 @@ Znajdź konfiguracje aprowizacji pliku i usuń znaczniki komentarza odpowiednie 
        registration_id: "{registration_id}"
    ```
 
-Aby wkleić zawartość schowka do nano `Shift+Right Click` lub naciśnij klawisz `Shift+Insert`.
+Aby wkleić zawartość schowka do systemu nano `Shift+Right Click` lub naciśnij klawisz `Shift+Insert`.
 
 Zapisz i zamknij plik.
 
@@ -248,19 +248,25 @@ sudo systemctl restart iotedge
 
 W przypadku użycia czynności **konfiguracyjnych ręcznych** w poprzedniej sekcji środowisko uruchomieniowe IoT Edge powinno zostać pomyślnie zainicjowane i uruchomione na urządzeniu. W przypadku korzystania z kroków **automatycznej konfiguracji** należy wykonać kilka dodatkowych kroków, aby środowisko uruchomieniowe mógł zarejestrować urządzenie w Twoim imieniu w usłudze IoT Hub. Aby uzyskać kolejne kroki, zobacz [Tworzenie i udostępnianie symulowanego urządzenia TPM IoT Edge na maszynie wirtualnej z systemem Linux](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
 
-Stan demona IoT Edge można sprawdzić przy użyciu:
+Możesz sprawdzić stan demona IoT Edge:
 
 ```bash
 systemctl status iotedge
 ```
 
-Sprawdzanie dzienników demona przy użyciu:
+Sprawdzanie dzienników demona:
 
 ```bash
 journalctl -u iotedge --no-pager --no-full
 ```
 
-I Wyświetl listę uruchomionych modułów w programie:
+Uruchom automatyczne sprawdzanie najbardziej typowych błędów konfiguracji i sieci: 
+
+```bash
+sudo iotedge check
+```
+
+I listę uruchomionych modułów:
 
 ```bash
 sudo iotedge list

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 925fed320359edc04ad6c91fe7a7d9bde5370254
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 68bf455bbdfb6d2d45c5eccc60c3ad8ce40d3247
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258467"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515786"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure
 [Dziennik aktywności platformy Azure](activity-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. Oprócz wyświetlania dziennika aktywności w Azure Portal lub kopiowania go do Log Analytics obszaru roboczego, gdzie można analizować z innymi danymi zebranymi przez Azure Monitor, można utworzyć profil dziennika w celu zarchiwizowania dziennika aktywności na koncie usługi Azure Storage lub przesyłania strumienia do niego  Centrum zdarzeń.
@@ -23,8 +23,8 @@ Archiwizowanie dziennika aktywności na koncie magazynu jest przydatne, jeśli c
 
 ## <a name="stream-activity-log-to-event-hub"></a>Przesyłanie strumieniowe dziennika aktywności do centrum zdarzeń
 [Azure Event Hubs](/azure/event-hubs/) to usługa przesyłania strumieniowego danych i usługi pozyskiwania zdarzeń, które mogą odbierać i przetwarzać miliony zdarzeń na sekundę. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. W przypadku dziennika aktywności można użyć funkcji przesyłania strumieniowego na dwa sposoby:
-* **Przesyłaj strumieniowo systemy rejestrowania i telemetrii innych**firm: Z upływem czasu usługa Azure Event Hubs Streaming stanie się mechanizmem przełączenia dziennika aktywności do rozwiązań rozwiązań Siem i log Analytics innych firm.
-* **Utwórz niestandardową platformę telemetrii i rejestrowania**: Jeśli masz już wbudowaną lub niestandardową platformę telemetrii lub zastanawiasz się, jak to zrobić, to wysoce skalowalny charakter publikowania/subskrybowania Event Hubs umożliwia elastyczne pozyskiwanie dziennika aktywności. 
+* **Przesyłaj strumieniowo systemy rejestrowania i telemetrii innych firm**: w czasie usługa Azure Event Hubs Streaming stanie się mechanizmem potokowym dziennika aktywności w rozwiązaniach rozwiązań Siem i log Analytics innych firm.
+* **Utwórz niestandardową platformę telemetrii i rejestrowania**: Jeśli masz już wbudowaną niestandardową platformę telemetrii lub zastanawiasz się, że tworzysz ten, wysoce skalowalny charakter publikowania/subskrybowania Event Hubs umożliwia elastyczne pozyskiwanie dziennika aktywności. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,7 +35,7 @@ Konto magazynu nie musi znajdować się w tej samej subskrypcji co subskrypcja e
 > [!NOTE]
 >  Obecnie nie można archiwizować danych na koncie magazynu, które znajduje się za bezpieczną siecią wirtualną.
 
-### <a name="event-hubs"></a>Event Hubs
+### <a name="event-hubs"></a>Centra zdarzeń
 Jeśli wysyłasz dziennik aktywności do centrum zdarzeń, musisz [utworzyć centrum zdarzeń](../../event-hubs/event-hubs-create.md) , jeśli jeszcze go nie masz. Jeśli wcześniej przesyłane strumieniowo zdarzenia dziennika aktywności do tej przestrzeni nazw Event Hubs, centrum zdarzeń zostanie ponownie użyte.
 
 Zasady dostępu współdzielonego definiują uprawnienia, które ma mechanizm przesyłania strumieniowego. Przesyłanie strumieniowe do Event Hubs wymaga uprawnień do zarządzania, wysyłania i nasłuchiwania. Można utworzyć lub zmodyfikować zasady dostępu współdzielonego dla przestrzeni nazw Event Hubs w Azure Portal na karcie Konfiguracja dla przestrzeni nazw Event Hubs.
@@ -55,9 +55,9 @@ Profil dziennika definiuje następujące elementy.
 
 **Które regiony (lokalizacje) powinny zostać wyeksportowane.** Należy uwzględnić wszystkie lokalizacje, ponieważ wiele zdarzeń w dzienniku aktywności jest zdarzeniami globalnymi.
 
-**Czas zachowywania dziennika aktywności na koncie magazynu.** Wpisanie wartości zero oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbą dni z zakresu od 1 do 365.
+**Czas zachowywania dziennika aktywności na koncie magazynu.** Przechowywanie przez zero dni oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbą dni z zakresu od 1 do 365.
 
-Jeśli zasady przechowywania są ustawione, ale przechowywanie dzienników na koncie magazynu jest wyłączone, zasady przechowywania nie będą miały żadnego efektu. Zasady przechowywania są stosowane dziennie, aby na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu.
+Jeśli zasady przechowywania są ustawione, ale przechowywanie dzienników na koncie magazynu jest wyłączone, zasady przechowywania nie będą miały żadnego efektu. Zasady przechowywania są stosowane dziennie, więc po zakończeniu dnia (UTC) dzienniki są usuwane z dnia, w którym dane są już poza tymi zasadami przechowywania. Na przykład jeśli masz zasady przechowywania o jeden dzień, na początku dnia dzisiaj dzienniki z dnia przed wczoraj zostałyby usunięte. Proces usuwania rozpoczyna się o północy czasu UTC, ale należy pamiętać, że może upłynąć nawet 24 godziny, aby dzienniki zostały usunięte z konta magazynu.
 
 
 > [!IMPORTANT]
@@ -92,16 +92,16 @@ Utwórz lub Edytuj profil dziennika za pomocą opcji **Eksportuj do centrum zdar
 
 Jeśli profil dziennika już istnieje, najpierw musisz usunąć istniejący profil dziennika, a następnie utworzyć nowy.
 
-1. Użyj `Get-AzLogProfile` , aby określić, czy profil dziennika istnieje.  W przypadku istnienia profilu dziennika należy zwrócić uwagę na Właściwość *name* .
+1. Użyj `Get-AzLogProfile`, aby określić, czy profil dziennika istnieje.  W przypadku istnienia profilu dziennika należy zwrócić uwagę na Właściwość *name* .
 
-1. Użyj `Remove-AzLogProfile` polecenia, aby usunąć profil dziennika przy użyciu wartości z właściwości *Nazwa* .
+1. Użyj `Remove-AzLogProfile`, aby usunąć profil dziennika przy użyciu wartości z właściwości *Nazwa* .
 
     ```powershell
     # For example, if the log profile name is 'default'
     Remove-AzLogProfile -Name "default"
     ```
 
-3. Użyj `Add-AzLogProfile` , aby utworzyć nowy profil dziennika:
+3. Użyj `Add-AzLogProfile`, aby utworzyć nowy profil dziennika:
 
     ```powershell
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
@@ -109,12 +109,12 @@ Jeśli profil dziennika już istnieje, najpierw musisz usunąć istniejący prof
 
     | Właściwość | Wymagane | Opis |
     | --- | --- | --- |
-    | Name |Tak |Nazwa profilu dziennika. |
+    | Nazwa |Tak |Nazwa profilu dziennika. |
     | StorageAccountId |Nie |Identyfikator zasobu konta magazynu, w którym ma zostać zapisany dziennik aktywności. |
     | serviceBusRuleId |Nie |Service Bus Identyfikator reguły dla przestrzeni nazw Service Bus, w której chcesz utworzyć Centra zdarzeń. Jest to ciąg o formacie: `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Location |Tak |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
+    | Lokalizacja |Tak |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
     | RetentionInDays |Tak |Liczba dni, przez jaką zdarzenia mają być przechowywane na koncie magazynu, z zakresu od 1 do 365. Wartość zero przechowuje dzienniki w nieskończoność. |
-    | Category |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które mają być zbierane. Możliwe wartości to _Write_, _delete_i _Action_. |
+    | Kategoria |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które mają być zbierane. Możliwe wartości to _Write_, _delete_i _Action_. |
 
 ### <a name="example-script"></a>Przykładowy skrypt
 Poniżej znajduje się przykładowy skrypt programu PowerShell służący do tworzenia profilu dziennika, który zapisuje dziennik aktywności zarówno do konta magazynu, jak i do centrum zdarzeń.
@@ -142,9 +142,9 @@ Poniżej znajduje się przykładowy skrypt programu PowerShell służący do two
 
 Jeśli profil dziennika już istnieje, należy najpierw usunąć istniejący profil dziennika, a następnie utworzyć nowy profil dziennika.
 
-1. Użyj `az monitor log-profiles list` , aby określić, czy profil dziennika istnieje.
-2. Użyj `az monitor log-profiles delete --name "<log profile name>` polecenia, aby usunąć profil dziennika przy użyciu wartości z właściwości *Nazwa* .
-3. Użyj `az monitor log-profiles create` , aby utworzyć nowy profil dziennika:
+1. Użyj `az monitor log-profiles list`, aby określić, czy profil dziennika istnieje.
+2. Użyj `az monitor log-profiles delete --name "<log profile name>`, aby usunąć profil dziennika przy użyciu wartości z właściwości *Nazwa* .
+3. Użyj `az monitor log-profiles create`, aby utworzyć nowy profil dziennika:
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
@@ -153,11 +153,11 @@ Jeśli profil dziennika już istnieje, należy najpierw usunąć istniejący pro
     | Właściwość | Wymagane | Opis |
     | --- | --- | --- |
     | name |Tak |Nazwa profilu dziennika. |
-    | storage-account-id |Tak |Identyfikator zasobu konta magazynu, do którego mają zostać zapisane dzienniki aktywności. |
-    | lokalizacje |Tak |Rozdzielana spacjami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Możesz wyświetlić listę wszystkich regionów dla subskrypcji przy użyciu programu `az account list-locations --query [].name`. |
-    | days |Tak |Liczba dni przechowywania zdarzeń między 1 a 365. Wartość zerowa spowoduje przechowywanie dzienników w nieskończoność (w nieskończoność).  W przypadku wartości zero wartość parametru enabled powinna być równa true. |
-    |enabled | Tak |Wartość TRUE lub False.  Służy do włączania lub wyłączania zasad przechowywania.  W przypadku wartości true wartość parametru Days musi być większa niż 0.
-    | kategorie |Tak |Rozdzielana spacjami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to Write, DELETE i Action. |
+    | Magazyn — identyfikator konta |Tak |Identyfikator zasobu konta magazynu, do którego mają zostać zapisane dzienniki aktywności. |
+    | locations |Tak |Rozdzielana spacjami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Listę wszystkich regionów dla subskrypcji można wyświetlić przy użyciu `az account list-locations --query [].name`. |
+    | dni |Tak |Liczba dni przechowywania zdarzeń między 1 a 365. Wartość zerowa spowoduje przechowywanie dzienników w nieskończoność (w nieskończoność).  Jeśli wartość jest równa zero, wartość parametru enabled powinna być równa false. |
+    |dostępny | Tak |Wartość true lub false.  Służy do włączania lub wyłączania zasad przechowywania.  W przypadku wartości true wartość parametru Days musi być większa niż 0.
+    | categories |Tak |Rozdzielana spacjami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to Write, DELETE i Action. |
 
 
 
@@ -232,14 +232,14 @@ Elementy w tym formacie JSON są opisane w poniższej tabeli.
 | category |Kategoria akcji, np. Zapis, Odczyt, akcja. |
 | resultType |Typ wyniku, np. Sukces, Niepowodzenie, rozpoczęcie |
 | resultSignature |Zależy od typu zasobu. |
-| durationMs |Czas trwania działania (w milisekundach) |
+| durationMs |Czas trwania operacji w milisekundach |
 | callerIpAddress |Adres IP użytkownika, który wykonał operację, oświadczenie nazwy UPN lub oświadczenie SPN na podstawie dostępności. |
 | correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które współużytkują identyfikator korelacji, należy do tej samej akcji Uber. |
-| identity |Obiekt BLOB JSON opisujący autoryzację i oświadczenia. |
-| authorization |Obiekt BLOB właściwości RBAC zdarzenia. Zazwyczaj obejmuje właściwości "Action", "role" i "Scope". |
-| level |Poziom zdarzenia. Jedna z następujących wartości: _Krytyczne_, _błąd_, _Ostrzeżenie_, _informacyjny_i _pełny_ |
+| tożsamość |Obiekt BLOB JSON opisujący autoryzację i oświadczenia. |
+| Zgody |Obiekt BLOB właściwości RBAC zdarzenia. Zazwyczaj obejmuje właściwości "Action", "role" i "Scope". |
+| poziomie |Poziom zdarzenia. Jedna z następujących wartości: _krytyczny_, _błąd_, _Ostrzeżenie_, _informacyjny_i _pełny_ |
 | location |Region, w którym wystąpiła lokalizacja (lub globalna). |
-| properties |`<Key, Value>` Zestaw par (tj. Dictionary) opisujących szczegóły zdarzenia. |
+| properties |Zestaw par `<Key, Value>` (tj. Dictionary) opisujących szczegóły zdarzenia. |
 
 > [!NOTE]
 > Właściwości i użycie tych właściwości mogą się różnić w zależności od zasobu.

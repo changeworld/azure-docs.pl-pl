@@ -4,20 +4,20 @@ description: Ten artykuł zawiera informacje referencyjne dotyczące polecenia A
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0cc366ab2cdad9c7258dca905d8f4a06472119fe
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fc23afb9a407fc2e6689c5c8766cb4beba868269
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195908"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513428"
 ---
-# <a name="azcopy-remove"></a>AzCopy Usuń
+# <a name="azcopy-remove"></a>azcopy remove
 
-Usuwa jednostki z Azure Storage Blob, pliku i Azure Data Lake Storage Gen2.
+Usuwanie obiektów blob lub plików z konta usługi Azure Storage.
 
 ## <a name="synopsis"></a>Streszczenie
 
@@ -57,13 +57,24 @@ Usuń cały katalog wirtualny, ale Wyklucz określone obiekty blob z zakresu (na
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude="foo*;*bar"
 ```
 
-Usuń pojedynczy plik z Data Lake Storage Gen2 (dołączanie i wykluczanie nie jest obsługiwane):
+Usuń określone obiekty blob i katalogi wirtualne, umieszczając ich ścieżki względne (nie kodowane w adresie URL) w pliku:
+
+```azcopy
+azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/dir]" --recursive=true --list-of-files=/usr/bar/list.txt
+file content:
+  dir1/dir2
+  blob1
+  blob2
+
+```
+
+Usuń pojedynczy plik z konta Blob Storage, które ma hierarchiczną przestrzeń nazw (dołączanie/wykluczanie nie jest obsługiwane).
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/file]?[SAS]"
 ```
 
-Usuń jeden katalog z Data Lake Storage Gen2 (dołączanie i wykluczanie nie jest obsługiwane):
+Usuń pojedynczy katalog a Blob Storage konto, które ma hierarchiczną przestrzeń nazw (nie obsługiwane/wykluczone):
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
@@ -71,13 +82,21 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Opcje
 
-|Opcja|Opis|
-|--|--|
-|--Wyklucz ciąg|Wyklucz pliki, w których nazwa jest zgodna z listą wzorców. Na przykład: *. jpg;* . PDF; exactname|
-|-h,--pomoc|Pokaż zawartość pomocy dla polecenia Usuń.|
-|--include String|Uwzględnij tylko pliki, w których nazwa jest zgodna z listą wzorców. Na przykład: *. jpg;* . PDF; exactname|
-|--ciąg poziomu dziennika|Zdefiniuj poziom szczegółowości dziennika w pliku dziennika. Dostępne poziomy obejmują: INFORMACJE (wszystkie żądania/odpowiedzi), ostrzeżenie (wolne odpowiedzi), błąd (tylko Nieudane żądania) i brak (bez dzienników wyjściowych). (wartość domyślna: "INFO")|
-|--rekursywnie|Poszukaj podkatalogów cyklicznie podczas synchronizacji między katalogami.|
+**--exclude-Path — ciąg**      Wyklucz te ścieżki podczas usuwania. Ta opcja nie obsługuje symboli wieloznacznych (*). Sprawdza prefiks ścieżki względnej. Na przykład: folder. webfolders/subDirName/plik. PDF.
+
+**--exclude-String wykluczanie** plików, w których nazwa jest zgodna z listą wzorców. Na przykład: *. jpg;* . PDF; exactname
+
+**-h,--** Pomoc dotycząca usuwania
+
+**--include-Path** ciąg Uwzględnij tylko te ścieżki podczas usuwania. Ta opcja nie obsługuje symboli wieloznacznych (*). Sprawdza prefiks ścieżki względnej. Na przykład: Moja folder; folder/subDirName/plik. PDF
+
+**--dołączany** ciąg do wzorca zawiera tylko pliki, w których nazwa jest zgodna z listą wzorców. Na przykład: *. jpg;* . PDF; exactname
+
+**--ciąg listy plików** definiuje lokalizację pliku, który zawiera listę plików i katalogów do usunięcia. Ścieżki względne powinny być rozdzielane przez podziały wierszy, a ścieżki nie powinny być kodowane przy użyciu adresu URL.
+
+**--ciąg poziomu dziennika** definiuje szczegółowość dziennika dla pliku dziennika. Dostępne poziomy obejmują: informacje (wszystkie żądania/odpowiedzi), ostrzeżenie (wolne odpowiedzi), błąd (tylko Nieudane żądania) i brak (bez dzienników wyjściowych). (wartość domyślna to "INFO") (wartość domyślna: "INFO")
+
+**--rekursywnie**                Poszukaj podkatalogów cyklicznie podczas synchronizacji między katalogami.
 
 ## <a name="options-inherited-from-parent-commands"></a>Opcje dziedziczone z poleceń nadrzędnych
 

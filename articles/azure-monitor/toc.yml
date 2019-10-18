@@ -217,7 +217,7 @@
                   href: app/asp-net-troubleshoot-no-data.md
             - name: Monitorowanie bez użycia kodu
               items:
-                - name: Maszyna wirtualna i zestaw skalowania platformy Azure
+                - name: Zestaw skalowania platformy Azure i maszyn wirtualnych platformy Azure
                   href: app/azure-vm-vmss-apps.md
                 - name: Azure App Service
                   displayname: 'App Service, web app, PaaS, Azure web app'
@@ -231,10 +231,10 @@
                 - name: Aplikacje rozwiązania Kubernetes
                   displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
                   href: app/kubernetes.md
-                - name: Monitor stanu (starsza wersja)
+                - name: Monitor stanu
                   displayname: 'IIS monitoring, on premises monitoring, on prem,'
                   href: app/monitor-performance-live-website-now.md
-                - name: Serwery lokalne
+                - name: Monitor stanu w wersji 2
                   items:
                     - name: Omówienie
                       displayname: 'IIS monitoring, on premises monitoring, on prem,'

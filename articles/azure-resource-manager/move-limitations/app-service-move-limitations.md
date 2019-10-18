@@ -1,73 +1,73 @@
 ---
-title: Przenoszenie zasobów usługi Azure App Service do nowej subskrypcji lub grupy zasobów
-description: Usługa Azure Resource Manager, aby przenieść zasoby usługi App Service do nowej grupy zasobów lub subskrypcji.
+title: Przenoszenie Azure App Service zasobów
+description: Użyj Azure Resource Manager, aby przenieść zasoby App Service do nowej grupy zasobów lub subskrypcji.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: c1a09ff4c29a2fedfea2c165a95c042985b3c83a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 04ddf644c58434531dde708ee3b6432b1fce8f91
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723573"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533513"
 ---
-# <a name="move-guidance-for-app-service-resources"></a>Przenieś wskazówki dotyczące zasobów usługi App Service
+# <a name="move-guidance-for-app-service-resources"></a>Wskazówki dotyczące przenoszenia dla App Service zasobów
 
-Kroki umożliwiające przeniesienie różnią się zasoby usługi App Service na podstawie tego, czy przenosisz zasoby w ramach subskrypcji lub do nowej subskrypcji.
+Kroki służące do przenoszenia zasobów App Service różnią się w zależności od tego, czy przenosisz zasoby w ramach subskrypcji, czy na nową subskrypcję.
 
-## <a name="move-in-same-subscription"></a>Przenieś w tej samej subskrypcji
+## <a name="move-in-same-subscription"></a>Przenieś w ramach tej samej subskrypcji
 
-Podczas przenoszenia aplikacji sieci Web _w ramach tej samej subskrypcji_, nie można przenieść certyfikaty SSL innej firmy. Aplikacja sieci Web można przenieść do nowej grupy zasobów, bez konieczności przenoszenia jego certyfikatów innych firm i funkcje protokołu SSL aplikacji nadal działa.
+Podczas przenoszenia aplikacji sieci Web _w ramach tej samej subskrypcji_nie można przenieść certyfikatów SSL innych firm. Można jednak przenieść aplikację sieci Web do nowej grupy zasobów bez przenoszenia jej certyfikatu innej firmy, a funkcja SSL aplikacji nadal działa.
 
-Jeśli chcesz przenieść certyfikatu SSL z aplikacją sieci Web, wykonaj następujące czynności:
+Jeśli chcesz przenieść certyfikat SSL przy użyciu aplikacji sieci Web, wykonaj następujące kroki:
 
-1. Usuwanie certyfikatu innej firmy z aplikacji sieci Web, ale zachować kopię certyfikatu
-2. Przenoszenie aplikacji sieci Web.
-3. Przekaż certyfikat innej firmy do przeniesionych aplikacji sieci Web.
+1. Usuń certyfikat innej firmy z aplikacji sieci Web, ale zachowaj kopię certyfikatu
+2. Przenieś aplikację sieci Web.
+3. Przekaż certyfikat innej firmy do przeniesionej aplikacji sieci Web.
 
-## <a name="move-across-subscriptions"></a>Przenoszenie między subskrypcjami
+## <a name="move-across-subscriptions"></a>Przechodzenie między subskrypcjami
 
-Podczas przenoszenia aplikacji sieci Web _w subskrypcjach_, obowiązują następujące ograniczenia:
+Podczas przemieszczania aplikacji sieci Web _w ramach subskrypcji_obowiązują następujące ograniczenia:
 
-- Docelowa grupa zasobów nie może mieć żadnych istniejących zasobów usługi App Service. Zasoby usługi App Service obejmują:
-    - Web Apps
+- Docelowa Grupa zasobów nie może mieć żadnych istniejących zasobów App Service. App Service zasoby obejmują:
+    - Aplikacje internetowe
     - Plany usługi App Service
     - Przekazane lub zaimportowane certyfikaty SSL
     - Środowiska usługi App Service
-- Wszystkie zasoby usługi App Service w grupie zasobów, muszą zostać przeniesione razem.
-- Zasoby usługi App Service mogą być przenoszone z grupy zasobów, w której zostały pierwotnie utworzone. Jeśli zasób usługi App Service nie jest już w jego oryginalnej grupie zasobów, przenieś go ponownie do jego oryginalnej grupy zasobów. Następnie przenieś zasób w subskrypcjach.
+- Wszystkie zasoby App Service w grupie zasobów należy przenieść razem.
+- Zasoby App Service można przenosić tylko z grupy zasobów, w której zostały pierwotnie utworzone. Jeśli zasób App Service nie jest już w oryginalnej grupie zasobów, przenieś go z powrotem do jego oryginalnej grupy zasobów. Następnie przenieś zasób między subskrypcjami.
 
-Jeśli nie pamiętasz oryginalnej grupy zasobów, mogą ją odnaleźć za pomocą diagnostyki. Dla aplikacji sieci web wybierz **diagnozowanie i rozwiązywanie problemów**. Następnie wybierz **Konfiguracja i zarządzanie nim**.
+Jeśli nie pamiętasz oryginalnej grupy zasobów, możesz ją znaleźć za pomocą diagnostyki. W przypadku aplikacji sieci Web wybierz opcję **Diagnozuj i rozwiąż problemy**. Następnie wybierz pozycję **Konfiguracja i zarządzanie**.
 
-![Wybierz pozycję Diagnostyka](./media/app-service-move-limitations/select-diagnostics.png)
+![Wybierz diagnostykę](./media/app-service-move-limitations/select-diagnostics.png)
 
-Wybierz **opcje migracji**.
+Wybierz **Opcje migracji**.
 
-![Wybierz opcje migracji](./media/app-service-move-limitations/select-migration.png)
+![Wybieranie opcji migracji](./media/app-service-move-limitations/select-migration.png)
 
-Wybierz opcję, aby uzyskać zalecane kroki, aby przenieść aplikację sieci web.
+Wybierz opcję zalecanych kroków, aby przenieść aplikację sieci Web.
 
-![Wybierz zalecane czynności](./media/app-service-move-limitations/recommended-steps.png)
+![Wybierz zalecane kroki](./media/app-service-move-limitations/recommended-steps.png)
 
-Zostanie wyświetlony zalecane akcje, które należy wykonać przed przenoszenia zasobów. Informacje dotyczące oryginalnej grupy zasobów dla aplikacji sieci web.
+Przed przeniesieniem zasobów zobaczysz zalecane czynności do wykonania. Informacje obejmują oryginalną grupę zasobów dla aplikacji sieci Web.
 
-![Zalecenia](./media/app-service-move-limitations/recommendations.png)
+![Polecane elementy](./media/app-service-move-limitations/recommendations.png)
 
-## <a name="move-app-service-certificate"></a>Przenieś certyfikatu usługi App Service
+## <a name="move-app-service-certificate"></a>Przenieś Certyfikat usługi App Service
 
-Certyfikatu usługi App Service można przenieść do nowej grupy zasobów lub subskrypcji. Jeśli certyfikatu usługi App Service jest powiązana z aplikacją internetową, należy wykonać pewne kroki przed przeniesieniem zasobów do nowej subskrypcji. Usuwanie powiązania SSL i certyfikatu prywatnego aplikacji sieci web przed przejściem do zasobów. Certyfikat usługi App Service nie ma konieczności zostać usunięte, po prostu certyfikatu prywatnego aplikacji sieci web.
+Możesz przenieść Certyfikat usługi App Service do nowej grupy zasobów lub subskrypcji. Jeśli Certyfikat usługi App Service jest powiązany z aplikacją sieci Web, przed przeniesieniem zasobów do nowej subskrypcji należy wykonać kilka czynności. Przed przeniesieniem zasobów Usuń powiązanie SSL i certyfikat prywatny z aplikacji sieci Web. Nie trzeba usuwać Certyfikat usługi App Service, tylko certyfikatu prywatnego w aplikacji sieci Web.
 
 ## <a name="move-support"></a>Obsługa przenoszenia
 
-Aby określić, które zasoby usługi App Service można przenosić, zobacz przenieść stan pomocy technicznej:
+Aby określić, które zasoby App Service można przenieść, zobacz Przenoszenie stanu wsparcia dla:
 
-- [Microsoft.AppService](../move-support-resources.md#microsoftappservice)
-- [Microsoft.CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
-- [Microsoft.DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
-- [Microsoft.Web](../move-support-resources.md#microsoftweb)
+- [Microsoft. AppService](../move-support-resources.md#microsoftappservice)
+- [Microsoft. CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
+- [Microsoft. DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
+- [Microsoft. Web](../move-support-resources.md#microsoftweb)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Poleceń przenieść zasoby można znaleźć [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../resource-group-move-resources.md).
+Aby uzyskać polecenia przenoszenia zasobów, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../resource-group-move-resources.md).

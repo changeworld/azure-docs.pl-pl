@@ -4,18 +4,18 @@ description: Ten artykuł zawiera informacje referencyjne dotyczące polecenia A
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 4da9206f4500941179d781a0fe2a57ad15d7393d
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 984d0c570c6c0d5048d58377f113319157411244
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195895"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513383"
 ---
-# <a name="azcopy"></a>AzCopy
+# <a name="azcopy"></a>azcopy
 
 AzCopy to narzędzie wiersza polecenia, które przenosi dane do i z usługi Azure Storage.
 
@@ -23,15 +23,15 @@ AzCopy to narzędzie wiersza polecenia, które przenosi dane do i z usługi Azur
 
 Ogólny format poleceń to: `azcopy [command] [arguments] --[flag-name]=[flag-value]`.
 
-Aby zgłosić problemy lub dowiedzieć się więcej na temat narzędzia, [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy)Zobacz.
+Aby zgłosić problemy lub dowiedzieć się więcej na temat narzędzia, zobacz [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy).
 
 ## <a name="options"></a>Opcje
 
-|Opcja|Opis|
-|---|---|
-|--Cap-MB/s UInt32|Szybkość transferu w megabitach na sekundę. Przepływność czasu na chwilę może się nieco różnić od końca. Jeśli ta opcja jest ustawiona na zero lub zostanie pominięta, przepływność nie zostanie ograniczona.|
-|-h,--pomoc|Wyświetla zawartość pomocy dla AzCopy.|
-|--ciąg typu wyjściowego|Format danych wyjściowych polecenia. Dostępne opcje to: text, JSON. Wartość domyślna to "text".|
+**--Cap-MB/s UInt32**   Szybkość transferu w megabitach na sekundę. Przepływność czasu na chwilę może się nieco różnić od końca. Jeśli ta opcja jest ustawiona na zero lub zostanie pominięta, przepływność nie zostanie ograniczona.
+
+**-h,--pomoc** Pomoc dla AzCopy
+      
+**--Typ danych wyjściowych**  Format danych wyjściowych polecenia. Dostępne opcje to: text, JSON. Wartość domyślna to "text". (domyślny "tekst")
 
 ## <a name="see-also"></a>Zobacz także
 

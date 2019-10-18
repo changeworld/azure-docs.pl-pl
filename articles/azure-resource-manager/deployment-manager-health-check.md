@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do usługi Azure Deployment Manager wdrożenie integracji kondycji
-description: W tym artykule opisano, jak wdrożyć usługę w wielu regionach za pomocą usługi Azure Deployment Manager. Przedstawia on praktyki bezpiecznego wdrażania, aby sprawdzić stabilność wdrożenie, zanim zetknie się we wszystkich regionach.
+title: Wdrażanie integracji z kondycją — Menedżer wdrażania platformy Azure
+description: Opisuje sposób wdrażania usługi w wielu regionach za pomocą usługi Azure Menedżer wdrażania. Przedstawiono w nim bezpieczne praktyki wdrażania, aby zweryfikować stabilność wdrożenia przed wdrożeniem we wszystkich regionach.
 services: azure-resource-manager
 documentationcenter: na
 author: mumian
@@ -8,43 +8,43 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
-ms.openlocfilehash: 0c6d32f06e30bd85c12967ce4b15a053bb505ab7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 72ddc900a892e6391d6b54046ac6f3a42358526f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594306"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528569"
 ---
-# <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Wprowadzenie do usługi Azure Deployment Manager (publiczna wersja zapoznawcza) wdrożenia integracji kondycji
+# <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Wprowadzanie wdrożenia integracji z kondycją na platformie Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
 
-[Azure Deployment Manager](./deployment-manager-overview.md) umożliwia wykonywanie wprowadzanie przygotowanych zasobów usługi Azure Resource Manager. Zasoby są wdrażane przez regionu, w sposób uporządkowany. Sprawdzenie kondycji zintegrowane usługi Azure Deployment Manager można monitorować wprowadzanie i automatycznie wprowadzanie problematyczne stop, dzięki czemu mogą Rozwiązywanie problemów i Zmniejsz skalę wpływ. Ta funkcja może ograniczyć niedostępność usługi spowodowane wystąpieniu regresji w aktualizacji.
+[Usługa Azure Menedżer wdrażania](./deployment-manager-overview.md) umożliwia wykonywanie etapowych rozmieszczenia zasobów Azure Resource Manager. Zasoby są wdrażane region według regionów w uporządkowany sposób. Zintegrowane Sprawdzanie kondycji Menedżer wdrażania platformy Azure może monitorować wdrożenia i automatycznie zatrzymywać problemy, dzięki czemu można rozwiązywać problemy i zmniejszać skalę wpływu. Ta funkcja może zmniejszyć dostępność usługi spowodowaną przez regresje w aktualizacjach.
 
 ## <a name="health-monitoring-providers"></a>Dostawcy monitorowania kondycji
 
-W celu integracji kondycji tak proste, jak to możliwe, Microsoft pracował nad z niektórymi monitorowania firmy mogą udostępniać prostego kopiowania/wklejania rozwiązania do integracji kontroli kondycji z wdrożeniami kondycji najważniejszych usług. Jeśli jeszcze nie używasz monitor kondycji, są to wspaniałe rozwiązania zacząć:
+Aby zapewnić integrację z kondycją tak jak to możliwe, firma Microsoft współpracuje z niektórymi firmami monitorowania kondycji usług w celu zapewnienia prostego rozwiązania do kopiowania/wklejania w celu zintegrowania kontroli kondycji z wdrożeniami. Jeśli monitor kondycji nie jest jeszcze używany, są to doskonałe rozwiązania, które można zacząć od:
 
-| ![wdrożenie usługi Azure Menedżera kondycji monitora dostawcy pomocą usługi datadog](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![wdrożenie usługi Azure Menedżera kondycji monitora dostawcy site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![wdrożenie usługi Azure Menedżera kondycji monitora dostawcy wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
+| ![Dostawca monitora kondycji programu Azure Deployment Manager usługi Datadog](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![Dostawca monitora kondycji programu Azure Deployment Manager Site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![Dostawca monitora kondycji programu Azure Deployment Manager plik Wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
 |-----|------|------|
-|Pomocą usługi Datadog, wiodący monitorowanie i platforma analiz dla środowisk nowoczesnym rozwiązaniom w chmurze. Zobacz [jak pomocą usługi Datadog integruje się z usługą Azure Deployment Manager](https://www.datadoghq.com/azure-deployment-manager/).|Site24x7, chmury prywatnej i publicznej w jednym usług rozwiązania do monitorowania. Zobacz [jak Site24x7 integruje się z usługą Azure Deployment Manager](https://www.site24x7.com/azure/adm.html).| Wavefront, analizowania i monitorowania platformy dla aplikacji w chmurze w wielu środowiskach. Zobacz [jak Wavefront integruje się z usługą Azure Deployment Manager](https://go.wavefront.com/wavefront-adm/).|
+|Usługi Datadog, wiodąca platforma do monitorowania i analizowania dla nowoczesnych środowisk chmurowych. Zobacz, [jak usługi Datadog integruje się z usługą Azure Menedżer wdrażania](https://www.datadoghq.com/azure-deployment-manager/).|Site24x7 — rozwiązanie do monitorowania usług w chmurze prywatnej i publicznej. Zobacz, [jak Site24x7 integruje się z usługą Azure Menedżer wdrażania](https://www.site24x7.com/azure/adm.html).| Plik Wavefront, platforma monitorowania i analizy dla środowisk aplikacji wielochmurowych. Zobacz, [jak plik Wavefront integruje się z usługą Azure Menedżer wdrażania](https://go.wavefront.com/wavefront-adm/).|
 
-## <a name="how-service-health-is-determined"></a>Sposób ustalania kondycji usługi
+## <a name="how-service-health-is-determined"></a>Sposób określania kondycji usługi
 
-[Dostawcy monitorowania kondycji](#health-monitoring-providers) oferuje kilka mechanizmów monitorowania usługi i wysyłać alerty o wszelkich problemów dotyczących kondycji usługi. [Usługa Azure Monitor](../azure-monitor/overview.md) znajduje się przykład jednego ofertą. Usługa Azure Monitor może służyć do tworzenia alertów, po przekroczeniu określonych wartości progowych. Na przykład Twoje pamięci i Procesora CPU Skacze powyżej oczekiwanego poziomu podczas wdrażania nowej aktualizacji do usługi. Po wyświetleniu powiadomienia, można wykonać akcje naprawcze.
+[Dostawcy monitorowania kondycji](#health-monitoring-providers) oferują kilka mechanizmów monitorowania usług i powiadamiania o wszelkich problemach z kondycją usługi. [Azure monitor](../azure-monitor/overview.md) to przykład jednej oferty. Azure Monitor może służyć do tworzenia alertów w przypadku przekroczenia określonych progów. Na przykład użycie pamięci i procesora CPU przekracza oczekiwane poziomy podczas wdrażania nowej aktualizacji do usługi. Po powiadomieniu można wykonać akcje naprawcze.
 
-Te opiekę zdrowotną oferują zazwyczaj interfejsów API REST, dzięki czemu można programowo zbadać stan monitorów z usługą. Interfejsy API REST można albo wróć za pomocą prostego sygnału dobrej kondycji/złej kondycji (według kodu odpowiedzi HTTP) i/lub szczegółowe informacje o sygnały, że odbiera.
+Ci dostawcy kondycji zazwyczaj oferują interfejsy API REST, aby można było programowo sprawdzić stan monitorów usługi. Interfejsy API REST mogą wrócić do prostej kondycji w dobrej kondycji (określonej przez kod odpowiedzi HTTP) i/lub ze szczegółowymi informacjami na temat sygnałów, które otrzymuje.
 
-Nowy *healthCheck* krok w usłudze Azure Deployment Manager pozwala zadeklarować kody HTTP, które wskazują usług w dobrej kondycji, ale dla bardziej złożonych wyników REST, można nawet określić wyrażeń regularnych, które są zgodne, wskazywać dobrej kondycji odpowiedź.
+Nowy krok *healthCheck* na platformie Azure Menedżer wdrażania umożliwia deklarowanie kodów http wskazujących usługę zdrowej lub, w przypadku bardziej złożonych wyników REST, można nawet określić wyrażenia regularne, które, jeśli są zgodne, wskazują na dobrą odpowiedź.
 
-Przepływ do pobierania Instalatora z kontroli kondycji platformy Azure Deployment Manager:
+Przepływ pobierania Instalatora przy użyciu usługi Azure Menedżer wdrażania Health checks:
 
-1. Tworzenie usługi za pomocą wybranego dostawcy usługi kondycji z monitorów kondycji.
-1. Utwórz co najmniej jednego kroku test kondycji w ramach wdrożenia usługi Azure Deployment Manager. Wypełnij test kondycji kroki z następującymi informacjami:
+1. Utwórz monitory kondycji za pomocą wybranego przez siebie dostawcy usług kondycji.
+1. Utwórz co najmniej jedno healthCheck kroki w ramach wdrożenia Menedżer wdrażania platformy Azure. Wypełnij kroki healthCheck, podając następujące informacje:
 
-    1. Identyfikator URI dla interfejsu API REST dla usługi kondycji monitoruje (zdefiniowanej przez dostawcę usług kondycji).
-    1. Informacje o uwierzytelnianiu. Obecnie obsługiwane jest tylko uwierzytelnianie kluczy interfejsu API w stylu.
-    1. [Kody stanu HTTP](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) lub wyrażeniami regularnymi definiującymi odpowiedzi dobrej kondycji. Należy pamiętać, że może zapewnić wyrażeń regularnych, które musi być wszystkie dopasowania dla odpowiedzi, aby zostały uznane za dobrej kondycji, lub może dostarczyć wyrażeń, których DOWOLNE musi odpowiadać odpowiedzi zostały uznane za dobrej kondycji. Obie metody są obsługiwane.
+    1. Identyfikator URI interfejsu API REST dla monitorów kondycji (zgodnie z definicją dostawcy usługi kondycji).
+    1. Informacje o uwierzytelnianiu. Obecnie obsługiwane jest tylko uwierzytelnianie w stylu kluczowym interfejsu API.
+    1. [Kody stanu HTTP](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) lub wyrażenia regularne, które definiują dobrą odpowiedź. Należy zauważyć, że można podać wyrażenia regularne, które wszystkie muszą być zgodne, aby można je było traktować w dobrej kondycji, lub podać wyrażenia, które muszą być zgodne, aby odpowiedź została uznana za prawidłową. Obsługiwane są obie metody.
 
-    Następujące dane Json znajduje się przykład:
+    Poniższy kod JSON jest przykładem:
 
     ```json
     {
@@ -93,7 +93,7 @@ Przepływ do pobierania Instalatora z kontroli kondycji platformy Azure Deployme
     },
     ```
 
-1. Wywołania funkcji healthCheck kroki w odpowiednim czasie w swoim wdrożeniu platformy Azure Deployment Manager. W poniższym przykładzie kroku sprawdzenia kondycji jest wywoływana w **postDeploymentSteps** z **stepGroup2**.
+1. Wywołaj kroki healthCheck w odpowiednim czasie we wdrożeniu Menedżer wdrażania platformy Azure. W poniższym przykładzie krok sprawdzania kondycji jest wywoływany w **postDeploymentSteps** of **stepGroup2**.
 
     ```json
     "stepGroups": [
@@ -131,33 +131,33 @@ Przepływ do pobierania Instalatora z kontroli kondycji platformy Azure Deployme
     ]
     ```
 
-Aby zapoznać się z przykładu, zobacz [samouczka: Użyj sprawdzania kondycji w usłudze Azure Deployment Manager](./deployment-manager-health-check.md).
+Aby zapoznać się z przykładem, zobacz [Samouczek: korzystanie z kontroli kondycji w usłudze Azure Menedżer wdrażania](./deployment-manager-health-check.md).
 
-## <a name="phases-of-a-health-check"></a>Fazy kontrola kondycji
+## <a name="phases-of-a-health-check"></a>Fazy kontroli kondycji
 
-W tym momencie Azure Deployment Manager wie, jak utworzyć zapytanie dotyczące kondycji usługi i na jakie etapy w swoim wdrożeniu, aby to zrobić. Jednak Azure Deployment Manager umożliwia również głębokiego konfiguracji w czasie tych sprawdzeń. Krok test kondycji jest wykonywane w 3 kolejne etapy, wszystkich z nich jest konfigurowalne czasów trwania: 
+W tym momencie usługa Azure Menedżer wdrażania wie, jak wykonywać zapytania dotyczące kondycji usługi i etapów wdrożenia, aby to zrobić. Jednak usługa Azure Menedżer wdrażania umożliwia również dokładne skonfigurowanie czasu tych sprawdzeń. Krok healthCheck jest wykonywany w 3 fazach sekwencyjnych, z których wszystkie mają konfigurowalne czasy trwania: 
 
 1. Oczekiwanie
 
-    1. Po zakończeniu operacji wdrażania, może być ponowne uruchamianie maszyn wirtualnych, ponownej konfiguracji na podstawie nowych danych lub nawet uruchamiany po raz pierwszy. Ponadto czas na uruchomienie emitowanie sygnałów kondycji będą agregowane przez monitorowania dostawcy w coś, co jest przydatne kondycji usług. W trakcie tego procesu tumultuous go może nie mieć sensu pod kątem kondycji usługi, ponieważ aktualizacja nie została jeszcze osiągają stanu stabilnego. W rzeczywistości usługi może Densytometr między Stanami zdrowe i niezdrowe, jak zasoby rozliczenia. 
-    1. W fazie oczekiwania usługi kondycji nie będzie monitorowana. To jest stosowane do umożliwienia wdrożonych zasobów czasu na tworzenie przed rozpoczęciem procesu sprawdzania kondycji. 
+    1. Po zakończeniu operacji wdrażania maszyny wirtualne mogą być ponownie uruchamiane, ponownie konfigurowane na podstawie nowych danych, a nawet uruchamiane po raz pierwszy. Trwa także czas, aby usługa mogła rozpocząć emitowanie sygnałów kondycji, które mają być agregowane przez dostawcę monitorowania kondycji, aby coś użyteczne. Podczas tego procesu tumultuous może nie mieć sensu Sprawdzenie kondycji usługi, ponieważ aktualizacja nie osiągnęła jeszcze stałego stanu. W rzeczywistości usługa może napadać na zbyt dobre i niezdrowe Stany w miarę ich rozliczania. 
+    1. W fazie oczekiwania usługa Service Health nie jest monitorowana. Służy to do zezwalania na tworzenie wdrożonych zasobów przed rozpoczęciem procesu kontroli kondycji. 
 1. Elastyczność
 
-    1. Ponieważ nie jest możliwe dowiedzieć się we wszystkich przypadkach, jak długo potrwa zasobów, wprowadzić, zanim staną się stabilne, elastyczne fazy umożliwia elastyczne okres między gdy wszystkie zasoby są potencjalnie niestabilny i kiedy są one wymagane do zachowania stabilności dobrej kondycji Stan.
-    1. Po rozpoczęciu elastycznej fazy rozpoczyna się Azure Deployment Manager okresowo sondowanie podany punkt końcowy REST dla usługi kondycji. Interwał sondowania jest konfigurowalne. 
-    1. Monitor kondycji wróci z sygnałów wskazująca, że usługa jest w złej kondycji, są ignorowane, te sygnały, nadal fazy elastycznej i kontynuuje sondowanie. 
-    1. Zaraz po monitorowanie kondycji wróci z sygnałów wskazujący, że usługa jest w dobrej kondycji, elastyczne fazy kończy się i faza HealthyState rozpoczyna się. 
-    1. W związku z tym czas trwania, określone w fazie elastycznej jest maksymalną ilość czasu, który można wydać sondowanie kondycji usługi przed dobrej kondycji odpowiedzi uważanego za obowiązkowy. 
+    1. Ponieważ nie można już wiedzieć, jak długo zasoby zajmieją się tworzenie zanim staną się stabilne, faza elastyczna pozwala na elastyczne okresy czasu między zasobami, które są potencjalnie niestabilne i gdy są wymagane do utrzymania dobrej kondycji Państwu.
+    1. Po rozpoczęciu fazy elastycznej usługa Azure Menedżer wdrażania rozpocznie okresowe sondowanie podanego punktu końcowego REST w celu zapewnienia kondycji usługi. Interwał sondowania można skonfigurować. 
+    1. Jeśli monitor kondycji powróci do sygnałów wskazujących, że usługa jest w złej kondycji, te sygnały są ignorowane, faza elastyczna jest kontynuowana i sondowanie jest kontynuowane. 
+    1. Gdy tylko monitor kondycji powróci do sygnałów wskazujących, że usługa jest w dobrej kondycji, zostanie zakończona faza elastyczna i rozpocznie się faza HealthyState. 
+    1. W ten sposób czas określony dla fazy elastycznej jest maksymalną ilością czasu, którą można wypróbować w przypadku kondycji usługi, zanim zostanie uznana za obowiązkową. 
 1. HealthyState
 
-    1. W fazie HealthyState usługi kondycji jest stale sondowania z takim samym okresem elastycznej fazy. 
-    1. Usługa oczekuje się, utrzymanie dobrej kondycji sygnały od dostawcy monitorowania kondycji całego określonego czasu trwania. 
-    1. Jeśli w dowolnym momencie odpowiedź złej kondycji zostanie wykryte, Azure Deployment Manager zatrzymać całego wdrożenia i zwraca odpowiedź REST przenosić sygnały usługi w złej kondycji.
-    1. Po zakończeniu czasu trwania HealthyState test kondycji zostało zakończone, a wdrożenie nadal do następnego kroku.
+    1. W fazie HealthyState kondycja usługi jest ciągle sondowana w tym samym interwale co w przypadku fazy elastycznej. 
+    1. Oczekuje się, że usługa utrzymuje sygnały w dobrej kondycji od dostawcy monitorowania kondycji przez cały określony czas. 
+    1. Jeśli w dowolnym momencie zostanie wykryta odpowiedź w złej kondycji, usługa Azure Menedżer wdrażania przestanie całe wdrożenie i zwróci odpowiedź REST przenoszącą sygnały usługi w złej kondycji.
+    1. Po zakończeniu HealthyState czas healthCheck zostanie ukończony, a wdrożenie przejdzie do następnego kroku.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano sposób integracji, monitorowanie kondycji w usłudze Azure Deployment Manager. Przejdź do następnego artykułu, aby dowiedzieć się, jak wdrożyć za pomocą programu Deployment Manager.
+W tym artykule przedstawiono sposób integrowania monitorowania kondycji w usłudze Azure Menedżer wdrażania. Przejdź do następnego artykułu, aby dowiedzieć się, jak wdrożyć program przy użyciu Menedżer wdrażania.
 
 > [!div class="nextstepaction"]
-> [Samouczek: integracja kontroli kondycji w usłudze Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)
+> [Samouczek: Integracja kontroli kondycji w usłudze Azure Menedżer wdrażania](./deployment-manager-tutorial-health-check.md)

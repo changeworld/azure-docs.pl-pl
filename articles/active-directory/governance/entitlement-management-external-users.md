@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcf4a0272e21a1fba3cf9adbd9158492e4318578
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452993"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527101"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Zarządzanie dostępem użytkowników zewnętrznych w usłudze Azure AD uprawniań (wersja zapoznawcza)
 
@@ -90,12 +90,15 @@ Możesz wybrać, co się stanie, gdy użytkownik zewnętrzny, który został zap
 
 1. Gdy użytkownik zewnętrzny utraci ostatnie przypisanie do dowolnych pakietów dostępu, jeśli chcesz zablokować użytkownikom możliwość logowania się do tego katalogu, ustaw opcję **Zablokuj użytkownikom zewnętrznym na logowanie do tego katalogu** na **wartość tak**.
 
-1. Gdy użytkownik zewnętrzny utraci swoje ostatnie przypisanie do wszystkich pakietów dostępu, jeśli chcesz usunąć swoje konto użytkownika-gościa w katalogu, ustaw opcję **Usuń użytkownika zewnętrznego** na **wartość tak**.
+    > [!NOTE]
+    > Jeśli użytkownik nie może się zalogować do tego katalogu, użytkownik nie będzie mógł ponownie zażądać pakietu dostępu lub poprosić o dodatkowy dostęp w tym katalogu. Nie należy konfigurować blokowania logowania, jeśli będą później musieli zażądać dostępu do innych pakietów dostępu.
+
+1. Gdy użytkownik zewnętrzny utraci swoje ostatnie przypisanie do wszystkich pakietów dostępu, jeśli chcesz usunąć swoje konto użytkownika-gościa w tym katalogu, ustaw opcję **Usuń użytkownika zewnętrznego** na **wartość tak**.
 
     > [!NOTE]
-    > Zarządzanie prawami powoduje usunięcie tylko tych kont, które zostały zaproszone przez Zarządzanie uprawnieniami. Należy również pamiętać, że użytkownik zostanie zablokowany przed logowaniem i usunięty z katalogu, nawet jeśli ten użytkownik został dodany do zasobów w katalogu, który nie ma dostępu do przypisań pakietów. Jeśli gość znajdował się w Twoim katalogu przed odebraniem przypisań pakietów dostępu, pozostanie. Jeśli jednak gość został zaproszony przez przypisanie pakietu dostępu, a po jego zaproszeniu również zostanie przypisany do witryny usługi OneDrive dla firm lub SharePoint Online, zostaną one usunięte.
+    > Zarządzanie prawami powoduje usunięcie tylko tych kont, które zostały zaproszone przez Zarządzanie uprawnieniami. Należy również pamiętać, że użytkownik zostanie zablokowany przed zalogowaniem się i usunięciem z tego katalogu, nawet jeśli ten użytkownik został dodany do zasobów w tym katalogu, które nie mają dostępu do przypisań pakietów. Jeśli gość znajdował się w tym katalogu przed odebraniem przypisań pakietów dostępu, pozostanie. Jeśli jednak gość został zaproszony przez przypisanie pakietu dostępu, a po jego zaproszeniu również zostanie przypisany do witryny usługi OneDrive dla firm lub SharePoint Online, zostaną one usunięte.
 
-1. Jeśli chcesz usunąć konto użytkownika-gościa w katalogu, możesz ustawić liczbę dni, po której ma zostać usunięta. Jeśli chcesz usunąć konto użytkownika-gościa, gdy tylko utracisz swoje ostatnie przypisanie do wszystkich pakietów dostępu, ustaw **liczbę dni przed usunięciem użytkownika zewnętrznego z tego katalogu** do **0**.
+1. Jeśli chcesz usunąć konto użytkownika-gościa w tym katalogu, możesz ustawić liczbę dni, po której ma zostać usunięta. Jeśli chcesz usunąć konto użytkownika-gościa, gdy tylko utracisz swoje ostatnie przypisanie do wszystkich pakietów dostępu, ustaw **liczbę dni przed usunięciem użytkownika zewnętrznego z tego katalogu** do **0**.
 
 1. Kliknij przycisk **Save** (Zapisz).
 
@@ -113,6 +116,6 @@ Możesz również zmienić to ustawienie po utworzeniu katalogu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dla użytkowników nieznajdujących się w katalogu](entitlement-management-access-package-create.md#for-users-not-in-your-directory)
+- [Dla użytkowników nieznajdujących się w katalogu](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [Tworzenie wykazu zasobów i zarządzanie nim](entitlement-management-catalog-create.md)
 - [Delegowanie i role](entitlement-management-delegate.md)

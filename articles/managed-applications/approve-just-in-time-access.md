@@ -1,78 +1,78 @@
 ---
-title: Konfigurowanie i zatwierdzić dostęp just in time dla usługi Azure Managed Applications
-description: W tym artykule opisano, jak użytkownicy usługi Azure Managed Applications zatwierdzenie żądania dostępu just in time do aplikacji zarządzanej.
+title: Zatwierdzanie dostępu just in Time — aplikacja zarządzana przez platformę Azure
+description: Opisuje, w jaki sposób konsumenci Azure Managed Applications zatwierdzają żądania dostępu just in Time do aplikacji zarządzanej.
 author: MSEvanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
-ms.openlocfilehash: 55fbf7292ab894cad3de3de9e96ddc96fe0b79b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd5c3f21b1a4b71d129ccbebeaa7ee66274a672f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481717"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529126"
 ---
-# <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Konfigurowanie i zatwierdzić dostęp just in time dla usługi Azure Managed Applications
+# <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Konfigurowanie i zatwierdzanie dostępu just in Time do Azure Managed Applications
 
-Jako użytkownik aplikacji zarządzanej, może okazać się komfortowo, jednocześnie zapewniając wydawcy stały dostęp do zarządzanej grupy zasobów. Daje większą kontrolę nad udzielanie dostępu do zasobów zarządzanych, usługi Azure Managed Applications udostępnia funkcję dostępu just in time (JIT), która jest obecnie dostępna w wersji zapoznawczej. Go umożliwia zatwierdzenia, kiedy i jak długo wydawca ma dostęp do grupy zasobów. Wydawca może spowodować wymaganych aktualizacji w tym samym czasie, ale po upływie tego czasu wygaśnięcia dostępu wydawcy.
+Jako użytkownik aplikacji zarządzanej może nie mieć możliwości udzielenia wydawcy stałego dostępu do zarządzanej grupy zasobów. Aby zapewnić większą kontrolę nad udzieleniem dostępu do zarządzanych zasobów, Azure Managed Applications zapewnia funkcję o nazwie dostęp just-in-Time (JIT), która jest obecnie dostępna w wersji zapoznawczej. Umożliwia zatwierdzenie czasu i czasu, w którym Wydawca ma dostęp do grupy zasobów. Wydawca może wprowadzić wymagane aktualizacje w tym czasie, ale po przekroczeniu tego czasu dostęp wydawcy wygaśnie.
 
-Przepływ pracy do przyznawania dostępu jest następujący:
+Przepływ pracy do udzielania dostępu to:
 
-1. Wydawca dodaje aplikację zarządzaną w portalu marketplace i określa, że dostęp JIT jest dostępna.
+1. Wydawca dodaje aplikację zarządzaną do portalu Marketplace i określa, że dostęp JIT jest dostępny.
 
-1. Podczas wdrażania możesz włączyć dostęp JIT dla swojego wystąpienia usługi zarządzanej aplikacji.
+1. Podczas wdrażania można włączyć dostęp JIT dla swojego wystąpienia aplikacji zarządzanej.
 
-1. Po wdrożeniu możesz zmienić ustawienia dostępu JIT.
+1. Po wdrożeniu można zmienić ustawienia dostępu JIT.
 
 1. Wydawca wysyła żądanie dostępu.
 
-1. Należy zatwierdzić żądanie.
+1. Zatwierdzenie żądania.
 
-Ten artykuł koncentruje się na akcjach, które konsumentów podjąć w celu Włącz dostęp JIT i zatwierdzać żądania. Aby dowiedzieć się więcej o publikowaniu aplikacji zarządzanej dostęp JIT, zobacz [żądania dostępu just in time w usłudze Azure Managed Applications](request-just-in-time-access.md).
+Ten artykuł koncentruje się na działaniach podejmowanych przez klientów w celu umożliwienia dostępu JIT i zatwierdzania żądań. Aby dowiedzieć się więcej o publikowaniu aplikacji zarządzanej z dostępem JIT, zobacz [żądanie dostępu just in Time w Azure Managed Applications](request-just-in-time-access.md).
 
 > [!NOTE]
-> Aby korzystać z dostępu just in time, konieczne jest posiadanie [licencji usługi Azure Active Directory P2](../active-directory/privileged-identity-management/subscription-requirements.md).
+> Aby korzystać z dostępu just in Time, musisz mieć [licencję na Azure Active Directory P2](../active-directory/privileged-identity-management/subscription-requirements.md).
 
 ## <a name="enable-during-deployment"></a>Włącz podczas wdrażania
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
-1. Znajdź wpis witryny marketplace dla aplikacji zarządzanej, używając JIT włączone. Wybierz pozycję **Utwórz**.
+1. Znajdź wpis w witrynie Marketplace dla aplikacji zarządzanej z włączoną funkcją JIT. Wybierz pozycję **Utwórz**.
 
-1. Przy jednoczesnym zapewnieniu wartości dla nowej aplikacji zarządzanej, **Konfiguracja JIT** krok pozwala włączyć lub wyłączyć dostęp JIT dla aplikacji zarządzanej. Wybierz **tak** dla **Włącz dostęp JIT**. Ta opcja jest domyślnie zaznaczone do zarządzanych aplikacji, które zdefiniowane przy użyciu JIT włączone w portalu marketplace.
+1. Podczas udostępniania wartości dla nowej aplikacji zarządzanej, krok **konfiguracji JIT** umożliwia włączenie lub wyłączenie dostępu JIT dla aplikacji zarządzanej. Wybierz opcję **tak** , aby **włączyć dostęp JIT**. Ta opcja jest domyślnie wybrana dla aplikacji zarządzanych, które zdefiniowano przy użyciu JIT w portalu Marketplace.
 
    ![Konfigurowanie dostępu](./media/approve-just-in-time-access/configure-jit-access.png)
 
-   Dostęp JIT można włączyć tylko podczas wdrażania. Jeśli wybierzesz **nie**, wydawca pobiera stały dostęp do zarządzanej grupy zasobów. Nie można włączyć dostępu JIT do później.
+   Dostęp JIT można włączyć tylko podczas wdrażania. Jeśli wybierzesz opcję **nie**, Wydawca uzyska stały dostęp do zarządzanej grupy zasobów. Nie można włączyć dostępu JIT później.
 
-1. Aby zmienić domyślne ustawienia zatwierdzania, wybierz **dostosować Konfiguracja JIT**.
+1. Aby zmienić domyślne ustawienia zatwierdzania, wybierz pozycję **Dostosuj konfigurację JIT**.
 
-   ![Dostosowywanie dostępu](./media/approve-just-in-time-access/customize-jit-access.png)
+   ![Dostosuj dostęp](./media/approve-just-in-time-access/customize-jit-access.png)
 
-   Domyślnie zarządzanych aplikacji z włączoną JIT ma następujące ustawienia:
+   Domyślnie aplikacja zarządzana z włączoną funkcją JIT ma następujące ustawienia:
 
    * Tryb zatwierdzania — automatyczne
-   * Czas trwania maksymalny dostęp – 8 godzin
-   * Osoby zatwierdzające — Brak
+   * Maksymalny czas trwania dostępu — 8 godzin
+   * Osoby zatwierdzające — brak
 
-   Jeśli tryb zatwierdzania jest równa **automatyczne**, osób zatwierdzających otrzymywać powiadomienia dla każdego żądania, ale żądanie zostanie automatycznie zatwierdzone. Po ustawieniu **ręczne**osób zatwierdzających otrzymywać powiadomienia dla każdego żądania i jeden z nich musi zatwierdzić ją.
+   Gdy tryb zatwierdzania jest ustawiony na **automatyczny**, osoby zatwierdzające odbierają powiadomienie dla każdego żądania, ale żądanie jest automatycznie zatwierdzane. Po wybraniu opcji **ręcznie**osoby zatwierdzające odbierają powiadomienie dla każdego żądania, a jedna z nich musi je zatwierdzić.
 
-   Maksymalny czas trwania aktywacji określa maksymalną ilość czasu, którego wydawcy mogą żądać dostępu do zarządzanej grupy zasobów.
+   Maksymalny czas trwania aktywacji określa maksymalną ilość czasu, przez który Wydawca może zażądać dostępu do zarządzanej grupy zasobów.
 
-   Lista osób zatwierdzających jest użytkowników usługi Azure Active Directory, którzy mogą zatwierdzać żądania dostępu JIT. Aby dodać osobę zatwierdzającą, wybierz **Dodawanie osoby zatwierdzającej** i Wyszukaj użytkownika.
+   Lista osoby zatwierdzające to Azure Active Directory użytkownicy, którzy mogą zatwierdzać żądania dostępu JIT. Aby dodać osobę zatwierdzającą, wybierz pozycję **Dodaj osobę zatwierdzającą** i Wyszukaj użytkownika.
 
-   Po zaktualizowaniu ustawienie, wybierz **Zapisz**.
+   Po zaktualizowaniu ustawienia wybierz pozycję **Zapisz**.
 
 ## <a name="update-after-deployment"></a>Aktualizuj po wdrożeniu
 
-Można zmienić wartości jak żądania są zatwierdzane. Jednak jeśli dostęp JIT nie zostały włączone podczas wdrażania, nie można włączyć je później.
+Można zmienić wartości sposobu zatwierdzania żądań. Jeśli jednak nie włączono dostępu JIT podczas wdrażania, nie można go włączyć później.
 
-Aby zmienić ustawienia dla wdrożonej aplikacji zarządzanych:
+Aby zmienić ustawienia wdrożonej aplikacji zarządzanej:
 
-1. W portalu wybierz aplikację, zarządzanie.
+1. W portalu wybierz pozycję Zarządzaj aplikacją.
 
-1. Wybierz **Konfiguracja JIT** i zmień ustawienia zgodnie z potrzebami.
+1. Wybierz opcję **Konfiguracja JIT** i Zmień ustawienia zgodnie z potrzebami.
 
    ![Zmień ustawienia dostępu](./media/approve-just-in-time-access/change-settings.png)
 
@@ -80,34 +80,34 @@ Aby zmienić ustawienia dla wdrożonej aplikacji zarządzanych:
 
 ## <a name="approve-requests"></a>Zatwierdzanie żądań
 
-Gdy wydawca żąda dostępu, są powiadamiani o wniosku. Możesz zatwierdzać żądania dostępu JIT bezpośrednio za pomocą aplikacji zarządzanej lub we wszystkich aplikacjach zarządzanych przez usługę Azure AD Privileged Identity Management. Aby korzystać z dostępu just in time, konieczne jest posiadanie [licencji usługi Azure Active Directory P2](../active-directory/privileged-identity-management/subscription-requirements.md).
+Gdy Wydawca zażąda dostępu, otrzymujesz powiadomienie o żądaniu. Żądania dostępu JIT mogą być zatwierdzane bezpośrednio za pośrednictwem aplikacji zarządzanej lub przez wszystkie zarządzane aplikacje za pośrednictwem usługi Azure AD Privileged Identity Management. Aby korzystać z dostępu just in Time, musisz mieć [licencję na Azure Active Directory P2](../active-directory/privileged-identity-management/subscription-requirements.md).
 
-Aby zatwierdzić żądań za pośrednictwem zarządzanej aplikacji:
+Aby zatwierdzić żądania przez zarządzaną aplikację:
 
-1. Wybierz **dostępu JIT do** dla aplikacji zarządzanej, a następnie wybierz **zatwierdzanie żądań**.
+1. Wybierz pozycję **dostęp JIT** dla aplikacji zarządzanej, a następnie wybierz pozycję **Zatwierdź żądania**.
 
    ![Zatwierdzanie żądań](./media/approve-just-in-time-access/approve-requests.png)
  
-1. Zaznacz żądania do zatwierdzenia.
+1. Wybierz żądanie do zatwierdzenia.
 
-   ![Wybierz żądanie](./media/approve-just-in-time-access/select-request.png)
+   ![Wybieranie żądania](./media/approve-just-in-time-access/select-request.png)
 
-1. W formularzu, podaj przyczynę zatwierdzenia i wybierz pozycję **Zatwierdź**.
+1. W formularzu podaj przyczynę zatwierdzenia i wybierz pozycję **Zatwierdź**.
 
-Aby zatwierdzić żądań za pośrednictwem usługi Azure AD Privileged Identity Management:
+Aby zatwierdzić żądania przez Azure AD Privileged Identity Management:
 
-1. Wybierz **wszystkich usług** i rozpocząć wyszukiwanie **usługi Azure AD Privileged Identity Management**. Wybierz go z listy dostępnych opcji.
+1. Wybierz pozycję **wszystkie usługi** i rozpocznij wyszukiwanie **Azure AD Privileged Identity Management**. Wybierz ją z dostępnych opcji.
 
-   ![Wyszukiwanie usługi](./media/approve-just-in-time-access/search.png)
+   ![Wyszukaj usługę](./media/approve-just-in-time-access/search.png)
 
-1. Wybierz **zatwierdzanie żądań**.
+1. Wybierz pozycję **Zatwierdź żądania**.
 
-   ![Wybieranie pozycji Zatwierdź żądania](./media/approve-just-in-time-access/select-approve-requests.png)
+   ![Wybierz pozycję Zatwierdź żądania](./media/approve-just-in-time-access/select-approve-requests.png)
 
-1. Wybierz **usługi Azure managed applications**i zaznacz żądania do zatwierdzenia.
+1. Wybierz pozycję **aplikacje zarządzane przez platformę Azure**i wybierz żądanie do zatwierdzenia.
 
-   ![Zaznacz żądania](./media/approve-just-in-time-access/view-requests.png)
+   ![Wybierz żądania](./media/approve-just-in-time-access/view-requests.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o publikowaniu aplikacji zarządzanej dostęp JIT, zobacz [żądania dostępu just in time w usłudze Azure Managed Applications](request-just-in-time-access.md).
+Aby dowiedzieć się więcej o publikowaniu aplikacji zarządzanej z dostępem JIT, zobacz [żądanie dostępu just in Time w Azure Managed Applications](request-just-in-time-access.md).

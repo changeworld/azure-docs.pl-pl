@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 23479692e815b5dda010ec2035c206df15715347
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 28a0418fd94c03f1fe308c7cd6f17b6d9a331fb0
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167426"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529358"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania Service Fabric
 
@@ -44,7 +44,7 @@ Podstawowa technologia klastrowania Service Fabric może służyć do łączenia
 
 Jeśli interesuje Cię ten scenariusz, zachęcamy Cię do skontaktowania Service Fabric się z [listą problemów](https://github.com/azure/service-fabric-issues) w witrynie GitHub, aby uzyskać dodatkowe wskazówki. Zespół Service Fabric pracuje nad zapewnieniem dodatkowego przejrzystości, wskazówek i zaleceń dotyczących tego scenariusza. 
 
-Niektóre zagadnienia, które należy wziąć pod uwagę: 
+Oto kilka rzeczy, które warto przemyśleć: 
 
 1. Zasób klastra Service Fabric na platformie Azure jest obecnie regionalny, podobnie jak w przypadku zestawów skalowania maszyn wirtualnych, na których jest oparty klaster. Oznacza to, że w przypadku awarii regionalnej można utracić możliwość zarządzania klastrem za pośrednictwem Azure Resource Manager lub Azure Portal. Może to być spowodowane tym, że klaster jest uruchomiony i będzie można z nim korzystać bezpośrednio. Ponadto platforma Azure obecnie nie oferuje możliwości korzystania z jednej sieci wirtualnej, która jest używana w różnych regionach. Oznacza to, że klaster wieloregionowy na platformie Azure wymaga [publiczne adresy IP dla każdej maszyny wirtualnej w VM Scale Sets lub w](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) [bramach sieci VPN platformy Azure](../vpn-gateway/vpn-gateway-about-vpngateways.md). Te wybory sieci mają różne wpływ na koszty, wydajność i w pewnym stopniu projekcie aplikacji, dlatego należy zachować ostrożność analizy i planowania przed zarządzeniem takim środowiskiem.
 2. Konserwacja, zarządzanie i monitorowanie tych maszyn może stać się skomplikowany, szczególnie w przypadku, gdy są one łączone w różne _typy_ środowisk, takie jak między różnymi dostawcami chmury lub między zasobami lokalnymi i platformą Azure. Należy pamiętać, aby upewnić się, że uaktualnienia, monitorowanie, zarządzanie i Diagnostyka są zrozumiałe dla klastra i aplikacji przed uruchomieniem obciążeń produkcyjnych w takim środowisku. Jeśli masz już doświadczenie w rozwiązywaniu tych problemów na platformie Azure lub w własnych centrach danych, prawdopodobnie te same rozwiązania można zastosować podczas tworzenia lub uruchamiania klastra Service Fabric. 
@@ -74,7 +74,7 @@ Firma Microsoft wymaga, aby klaster produkcyjny miał co najmniej 5 węzłów z 
 2. Zawsze umieszczamy jedną replikę usługi na węzeł, więc rozmiar klastra to górny limit liczby replik, które może mieć usługa (w rzeczywistości partycja).
 3. Ponieważ uaktualnienie klastra spowoduje przełączenie co najmniej jednego węzła, chcemy buforować co najmniej jeden węzeł, dlatego chcemy, aby klaster produkcyjny miał co najmniej dwa węzły *oprócz* minimum dla systemu operacyjnego. Minimum od zera to rozmiar kworum usługi systemowej, jak wyjaśniono poniżej.  
 
-Chcemy, aby klaster był dostępny w przypadku równoczesnego uszkodzenia dwóch węzłów. Aby klaster Service Fabric był dostępny, usługi systemowe muszą być dostępne. Stanowe usługi systemowe, takie jak nazwa usługi i Menedżer trybu failover, które śledzą, jakie usługi zostały wdrożone w klastrze i gdzie są obecnie hostowane, zależą od silnej spójności. Ta silna spójność z kolei zależy od możliwości uzyskania *kworum* dla każdej danej aktualizacji stanu tych usług, gdzie kworum reprezentuje ścisłą większość replik (N/2 + 1) dla danej usługi. Z tego względu, jeśli chcemy odporny na równoczesną utratę dwóch węzłów (w ten sposób jednocześnie przełączać dwie repliki usługi systemowej), musimy mieć ClusterSize-QuorumSize > = 2, co wymusza, aby minimalny rozmiar wynosił pięć. Aby to sprawdzić, należy wziąć pod uwagę, że klaster ma N węzłów, a istnieją N replik usługi systemowej — jeden w każdym węźle. Rozmiar kworum usługi systemowej to (N/2 + 1). Powyższa nierówność wygląda jak N-(N/2 + 1) > = 2. Istnieją dwa przypadki, które należy wziąć pod uwagę: gdy N jest parzyste i gdy N jest nieparzysty. Jeśli N to nawet, należy powiedzieć N = 2 @ no__t-0M gdzie m > = 1, nierówność wygląda jak 2 @ no__t-1M-(2 @ no__t-2 mln/2 + 1) > = 2 lub m > = 3. Minimalna wartość dla N to 6 i osiągnięta, gdy m = 3. Z drugiej strony, jeśli N jest nieparzysta, powiedz N = 2 @ no__t-0M + 1, gdzie m > = 1, nierówność wygląda jak 2 @ no__t-1M + 1-((2 @ no__t-2 mln + 1)/2 + 1) > = 2 lub 2 @ no__t-3m + 1-(m + 1) > = 2 lub m > = 2. Minimalna wartość dla N to 5 i osiągnięta przy m = 2. W związku z tym między wszystkimi wartościami N, które spełniają nierówność ClusterSize-QuorumSize > = 2, minimalna wartość to 5.
+Chcemy, aby klaster był dostępny w przypadku równoczesnego uszkodzenia dwóch węzłów. Aby klaster Service Fabric był dostępny, usługi systemowe muszą być dostępne. Stanowe usługi systemowe, takie jak nazwa usługi i Menedżer trybu failover, które śledzą, jakie usługi zostały wdrożone w klastrze i gdzie są obecnie hostowane, zależą od silnej spójności. Ta silna spójność z kolei zależy od możliwości uzyskania *kworum* dla każdej danej aktualizacji stanu tych usług, gdzie kworum reprezentuje ścisłą większość replik (N/2 + 1) dla danej usługi. Z tego względu, jeśli chcemy odporny na równoczesną utratę dwóch węzłów (w ten sposób jednocześnie przełączać dwie repliki usługi systemowej), musimy mieć ClusterSize-QuorumSize > = 2, co wymusza, aby minimalny rozmiar wynosił pięć. Aby to sprawdzić, należy wziąć pod uwagę, że klaster ma N węzłów, a istnieją N replik usługi systemowej — jeden w każdym węźle. Rozmiar kworum usługi systemowej to (N/2 + 1). Powyższa nierówność wygląda jak N-(N/2 + 1) > = 2. Istnieją dwa przypadki, które należy wziąć pod uwagę: gdy N jest parzyste i gdy N jest nieparzysty. Jeśli N jest nawet, należy powiedzieć N = 2 \*m gdzie m > = 1, nierówność wygląda jak 2 \*m-(2 \*m/2 + 1) > = 2 lub m > = 3. Minimalna wartość dla N to 6 i osiągnięta, gdy m = 3. Z drugiej strony, jeśli N jest nieparzysta, powiedz N = 2 \*m + 1, gdzie m > = 1, nierówność wygląda następująco: 2 \*m + 1-((2 \*m + 1)/2 + 1) > = 2 lub 2 \*m + 1-(m + 1) > = 2 lub m > = 2. Minimalna wartość dla N to 5 i osiągnięta przy m = 2. W związku z tym między wszystkimi wartościami N, które spełniają nierówność ClusterSize-QuorumSize > = 2, minimalna wartość to 5.
 
 Należy pamiętać, że w powyższym argumencie przyjęto, że każdy węzeł ma replikę usługi systemowej, w ten sposób rozmiar kworum jest obliczany na podstawie liczby węzłów w klastrze. Jednak przez zmianę *wartość targetreplicasetsize* rozmiar kworum może być mniejszy niż (N/2 + 1), co może dać wrażenie, że klaster jest mniejszy niż 5 węzłów i nadal ma 2 dodatkowe węzły powyżej rozmiaru kworum. Na przykład w klastrze z 4 węzłami, jeśli ustawimy wartość targetreplicasetsize na 3, rozmiar kworum oparty na wartość targetreplicasetsize to (3/2 + 1) lub 2, dlatego mamy ClusterSize-QuorumSize = 4-2 > = 2. Niemniej jednak firma Microsoft nie może zagwarantować, że usługa systemowa będzie działać na poziomie lub wyższym niż kworum w przypadku utraty pary węzłów jednocześnie, może się zdarzyć, że dwa węzły zostały utracone w ramach obsługi dwóch replik, więc usługa systemowa przejdzie do utraty kworum (ma tylko pojedynczą replikę) ND stanie się niedostępne.
 
@@ -104,7 +104,7 @@ Jeśli chcesz utworzyć klastry do testowania aplikacji przed jej wdrożeniem, z
 Mimo że pracujemy nad udoskonalonym doświadczeniem, już dziś użytkownik jest odpowiedzialny za uaktualnienie. Obraz systemu operacyjnego należy uaktualnić na maszynach wirtualnych klastra pojedynczo. 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Czy można zaszyfrować dołączone dyski danych w typie węzła klastra (zestaw skalowania maszyn wirtualnych)?
-Tak.  Aby uzyskać więcej informacji, zobacz [Tworzenie klastra z dołączonymi dyskami danych](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [szyfrowanie dysków (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md)i [szyfrowanie dysków (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
+Tak.  Aby uzyskać więcej informacji, zobacz [Tworzenie klastra z dołączonymi dyskami danych](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) i [Azure Disk Encryption dla Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Czy można używać maszyn wirtualnych o niskim priorytecie w typie węzła klastra (zestaw skalowania maszyn wirtualnych)?
 Nie. Maszyny wirtualne o niskim priorytecie nie są obsługiwane. 
@@ -135,8 +135,8 @@ Nie. Maszyny wirtualne o niskim priorytecie nie są obsługiwane.
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Jak moja aplikacja może uwierzytelniać się w magazynie kluczy, aby uzyskać wpisy tajne?
 Poniżej przedstawiono sposób, w jaki aplikacja uzyskuje poświadczenia do uwierzytelniania w magazynie kluczy:
 
-z. Podczas tworzenia i pakowania aplikacji można ściągnąć certyfikat do pakietu danych aplikacji SF i używać go do uwierzytelniania w magazynie kluczy.
-b. W przypadku hostów z włączonym zestawem skalowania maszyn wirtualnych można utworzyć prostą SetupEntryPoint programu PowerShell dla aplikacji SF, aby uzyskać [token dostępu z punktu końcowego MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), a następnie [pobrać klucze tajne z magazynu kluczy](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+A. Podczas tworzenia i pakowania aplikacji można ściągnąć certyfikat do pakietu danych aplikacji SF i używać go do uwierzytelniania w magazynie kluczy.
+B. W przypadku hostów z włączonym zestawem skalowania maszyn wirtualnych można utworzyć prostą SetupEntryPoint programu PowerShell dla aplikacji SF, aby uzyskać [token dostępu z punktu końcowego MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), a następnie [pobrać klucze tajne z magazynu kluczy](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Projekt aplikacji
 

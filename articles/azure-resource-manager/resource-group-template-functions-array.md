@@ -1,39 +1,39 @@
 ---
-title: Azure Resource Manager funkcje szablonu — tablice i obiekty | Microsoft Docs
+title: Funkcje szablonu Azure Resource Manager — tablice i obiekty
 description: Opisuje funkcje, które mają być używane w Azure Resource Manager szablonu do pracy z tablicami i obiektami.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: cd4a74a9e9e9bb1c91a0a7a103a1cfb861fa7770
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 3366a1be88043c792de8efa3b0d0ab735e558e2a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194412"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528503"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Funkcje tablic i obiektów dla Azure Resource Manager szablonów
 
 Menedżer zasobów udostępnia kilka funkcji do pracy z tablicami i obiektami.
 
-* [array](#array)
+* [macierzy](#array)
 * [łączonych](#coalesce)
-* [concat](#concat)
-* [contains](#contains)
-* [createArray](#createarray)
-* [empty](#empty)
-* [first](#first)
-* [intersection](#intersection)
+* [Concat](#concat)
+* [wyświetlana](#contains)
+* [przearray](#createarray)
+* [ciągiem](#empty)
+* [pierwszego](#first)
+* [część wspólną](#intersection)
 * [kodu](#json)
 * [ostatniego](#last)
-* [length](#length)
-* [max](#max)
-* [min](#min)
+* [Długość](#length)
+* [Maksymalny](#max)
+* [długości](#min)
 * [zakresu](#range)
 * [Skocz](#skip)
-* [take](#take)
-* [union](#union)
+* [czasochłonn](#take)
+* [Unii](#union)
 
 Aby uzyskać tablicę wartości ciągów rozdzielanych wartością, zobacz [Split](resource-group-template-functions-string.md#split).
 
@@ -41,7 +41,7 @@ Aby uzyskać tablicę wartości ciągów rozdzielanych wartością, zobacz [Spli
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="array"></a>array
+## <a name="array"></a>tablica
 `array(convertToArray)`
 
 Konwertuje wartość na tablicę.
@@ -50,7 +50,7 @@ Konwertuje wartość na tablicę.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Tak |int, string, array lub object |Wartość do przekonwertowania na tablicę. |
+| convertToArray |Tak |int, String, array lub Object |Wartość do przekonwertowania na tablicę. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -97,21 +97,21 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| intOutput | Array | [1] |
-| stringOutput | Array | ["efgh"] |
-| objectOutput | Array | [{"a": "b", "c": "d"}] |
+| intOutput | Tablica | jedno |
+| stringOutput | Tablica | ["efgh"] |
+| objectOutput | Tablica | [{"a": "b", "c": "d"}] |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
@@ -119,7 +119,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="coalesce" />
 
-## <a name="coalesce"></a>łączonych
+## <a name="coalesce"></a>Łączonych
 `coalesce(arg1, arg2, arg3, ...)`
 
 Zwraca pierwszą wartość różną od zera z parametrów. Puste ciągi, puste tablice i puste obiekty nie mają wartości null.
@@ -128,8 +128,8 @@ Zwraca pierwszą wartość różną od zera z parametrów. Puste ciągi, puste t
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int, string, array lub object |Pierwsza wartość do przetestowania dla wartości null. |
-| dodatkowe argumenty |Nie |int, string, array lub object |Dodatkowe wartości do przetestowania na wartość null. |
+| arg1 |Tak |int, String, array lub Object |Pierwsza wartość do przetestowania dla wartości null. |
+| dodatkowe argumenty |Nie |int, String, array lub Object |Dodatkowe wartości do przetestowania na wartość null. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -183,23 +183,23 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| stringOutput | String | default |
-| intOutput | Int | 1 |
-| objectOutput | Object | {"First": "default"} |
-| arrayOutput | Array | [1] |
-| emptyOutput | Bool | Prawda |
+| stringOutput | Ciąg | default |
+| intOutput | ZAOKR | 1 |
+| objectOutput | Obiekt | {"First": "default"} |
+| arrayOutput | Tablica | jedno |
+| emptyOutput | Logiczna | True |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
@@ -261,19 +261,19 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| przesłać | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| przesłać | Tablica | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
@@ -301,19 +301,19 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | Ciąg | prefiks — 5yj4yjf5mbg72 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
@@ -321,7 +321,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="contains" />
 
-## <a name="contains"></a>zawiera
+## <a name="contains"></a>wyświetlana
 `contains(container, itemToFind)`
 
 Sprawdza, czy tablica zawiera wartość, obiekt zawiera klucz, lub ciąg zawiera podciąg. W porównaniu z rozróżnianiem wielkości liter są rozróżniane wielkie litery. Jednak podczas testowania, jeśli obiekt zawiera klucz, w porównaniu nie jest rozróżniana wielkość liter.
@@ -330,7 +330,7 @@ Sprawdza, czy tablica zawiera wartość, obiekt zawiera klucz, lub ciąg zawiera
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| container |Tak |Tablica, obiekt lub ciąg |Wartość, która zawiera wartość do znalezienia. |
+| kontener |Tak |Tablica, obiekt lub ciąg |Wartość, która zawiera wartość do znalezienia. |
 | itemToFind |Tak |ciąg lub int |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -390,24 +390,24 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| stringTrue | Bool | Prawda |
-| stringFalse | Bool | False |
-| objectTrue | Bool | Prawda |
-| objectFalse | Bool | False |
-| arrayTrue | Bool | Prawda |
-| arrayFalse | Bool | False |
+| stringTrue | Logiczna | True |
+| stringFalse | Logiczna | False |
+| objectTrue | Logiczna | True |
+| objectFalse | Logiczna | False |
+| arrayTrue | Logiczna | True |
+| arrayFalse | Logiczna | False |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
@@ -472,22 +472,22 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| stringArray | Array | ["a", "b", "c"] |
-| intArray | Array | [1, 2, 3] |
-| objectArray | Array | [{"jeden": "a", "dwa": "b", "trzy": "c"}] |
-| arrayArray | Array | [["jeden", "dwa", "trzy"]] |
+| stringArray | Tablica | ["a", "b", "c"] |
+| intArray | Tablica | [1, 2, 3] |
+| objectArray | Tablica | [{"jeden": "a", "dwa": "b", "trzy": "c"}] |
+| arrayArray | Tablica | [["jeden", "dwa", "trzy"]] |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
@@ -552,21 +552,21 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | Prawda |
-| objectEmpty | Bool | Prawda |
-| stringEmpty | Bool | Prawda |
+| arrayEmpty | Logiczna | True |
+| objectEmpty | Logiczna | True |
+| stringEmpty | Logiczna | True |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
@@ -574,7 +574,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="first" />
 
-## <a name="first"></a>pierwszego
+## <a name="first"></a>Pierwszego
 `first(arg1)`
 
 Zwraca pierwszy element tablicy lub pierwszy znak ciągu.
@@ -618,20 +618,20 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayOutput | String | jeden |
-| stringOutput | String | O |
+| arrayOutput | Ciąg | jeden |
+| stringOutput | Ciąg | O |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
@@ -639,7 +639,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="intersection" />
 
-## <a name="intersection"></a>część wspólną
+## <a name="intersection"></a>Część wspólną
 `intersection(arg1, arg2, arg3, ...)`
 
 Zwraca pojedynczą tablicę lub obiekt ze wspólnymi elementami z parametrów.
@@ -697,26 +697,26 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| objectOutput | Object | {"jeden": "a", "3": "c"} |
-| arrayOutput | Array | ["dwa", "trzy"] |
+| objectOutput | Obiekt | {"jeden": "a", "3": "c"} |
+| arrayOutput | Tablica | ["dwa", "trzy"] |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
-## <a name="json"></a>json
+## <a name="json"></a>kodu
 `json(arg1)`
 
 Zwraca obiekt JSON.
@@ -725,7 +725,7 @@ Zwraca obiekt JSON.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |ciąg |Wartość do przekonwertowania na format JSON. |
+| arg1 |Tak |string |Wartość do przekonwertowania na format JSON. |
 
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -769,21 +769,21 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| jsonOutput | Object | {"a": "b"} |
-| nullOutput | Boolean | Prawda |
-| paramOutput | Object | {"a": "wartość demonstracyjna"}
+| jsonOutput | Obiekt | {"a": "b"} |
+| nullOutput | Wartość logiczna | True |
+| paramOutput | Obiekt | {"a": "wartość demonstracyjna"}
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
@@ -835,20 +835,20 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayOutput | String | trzy |
-| stringOutput | String | adres |
+| arrayOutput | Ciąg | trzy |
+| stringOutput | Ciąg | Adres |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
@@ -856,7 +856,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="length" />
 
-## <a name="length"></a>length
+## <a name="length"></a>Długość
 `length(arg1)`
 
 Zwraca liczbę elementów w tablicy, znaków w ciągu lub we właściwościach poziomu głównego w obiekcie.
@@ -923,21 +923,21 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayLength | Int | 3 |
-| stringLength | Int | 13 |
-| objectLength | Int | 4 |
+| arrayLength | ZAOKR | 3 |
+| stringLength | ZAOKR | 13 |
+| objectLength | ZAOKR | 4 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
@@ -956,7 +956,7 @@ Aby uzyskać więcej informacji o używaniu tej funkcji z tablicą, zobacz [Twor
 
 <a id="max" />
 
-## <a name="max"></a>maks.
+## <a name="max"></a>Maksymalny
 `max(arg1)`
 
 Zwraca maksymalną wartość z tablicy liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych.
@@ -999,20 +999,20 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 5 |
-| intOutput | Int | 5 |
+| arrayOutput | ZAOKR | 5 |
+| intOutput | ZAOKR | 5 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
@@ -1020,7 +1020,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min
+## <a name="min"></a>min.
 `min(arg1)`
 
 Zwraca minimalną wartość z tablicy liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych.
@@ -1063,20 +1063,20 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 0 |
-| intOutput | Int | 0 |
+| arrayOutput | ZAOKR | 0 |
+| intOutput | ZAOKR | 0 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
@@ -1128,19 +1128,19 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| rangeOutput | Array | [5, 6, 7] |
+| rangeOutput | Tablica | [5, 6, 7] |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
@@ -1148,7 +1148,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="skip" />
 
-## <a name="skip"></a>pomiń
+## <a name="skip"></a>Skocz
 `skip(originalValue, numberToSkip)`
 
 Zwraca tablicę zawierającą wszystkie elementy po określonej liczbie w tablicy lub zwraca ciąg ze wszystkimi znakami po określonej liczbie w ciągu.
@@ -1208,20 +1208,20 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayOutput | Array | ["trzy"] |
-| stringOutput | String | 2 3 |
+| arrayOutput | Tablica | ["trzy"] |
+| stringOutput | Ciąg | 2 3 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
@@ -1229,7 +1229,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="take" />
 
-## <a name="take"></a>czasochłonn
+## <a name="take"></a>Czasochłonn
 `take(originalValue, numberToTake)`
 
 Zwraca tablicę o określonej liczbie elementów od początku tablicy lub ciąg z określoną liczbą znaków od początku ciągu.
@@ -1289,20 +1289,20 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayOutput | Array | ["jeden", "dwa"] |
-| stringOutput | String | włączone |
+| arrayOutput | Tablica | ["jeden", "dwa"] |
+| stringOutput | Ciąg | z |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
@@ -1368,28 +1368,28 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
-| Name (Nazwa) | Typ | Value |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| objectOutput | Object | {"jeden": "a", "dwa": "b", "trzy": "C2", "4": "d", "pięć": "e"} |
-| arrayOutput | Array | ["jeden", "dwa", "trzy", "cztery"] |
+| objectOutput | Obiekt | {"jeden": "a", "dwa": "b", "trzy": "C2", "4": "d", "pięć": "e"} |
+| arrayOutput | Tablica | ["jeden", "dwa", "trzy", "cztery"] |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, użyj polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
-* Aby scalić wiele szablonów, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
-* Do iteracji określoną liczbę razy podczas tworzenia dla typu zasobów, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md).
+## <a name="next-steps"></a>Następne kroki
+* Opis sekcji w szablonie Azure Resource Manager można znaleźć w temacie [tworzenie Azure Resource Manager szablonów](resource-group-authoring-templates.md).
+* Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](resource-group-linked-templates.md).
+* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](resource-group-create-multiple.md).
 * Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](resource-group-template-deploy.md).
 

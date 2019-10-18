@@ -1,5 +1,5 @@
 ---
-title: Agregowanie transformacji w przepływie danych mapowania — Azure Data Factory | Microsoft Docs
+title: Przekształcanie agregacji w przepływie danych mapowania Azure Data Factory | Microsoft Docs
 description: Dowiedz się, jak agregować dane w skali w Azure Data Factory przy użyciu transformacji zagregowanej przepływu danych mapowania.
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 3f2a3219a731133ecaedf30fec1854f1a128caa3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: HT
+ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431607"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514831"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregowanie transformacji w strumieniu danych mapowania 
 
@@ -68,7 +68,9 @@ Przekształcenia agregowane przypominają zapytania select SQL Aggregate. Kolumn
 
 ### <a name="example"></a>Przykład
 
-Poniższy przykład przyjmuje strumień przychodzący `MoviesYear` i grupuje wiersze według kolumny `year`. Transformacja tworzy kolumnę agregującą `avgrating`, która oblicza średnią z kolumny `Rating`. Ta transformacja zagregowana ma nazwę `AvgComedyRatingsByYear`. W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
+Poniższy przykład przyjmuje strumień przychodzący `MoviesYear` i grupuje wiersze według kolumny `year`. Transformacja tworzy kolumnę agregującą `avgrating`, która oblicza średnią z kolumny `Rating`. Ta transformacja zagregowana ma nazwę `AvgComedyRatingsByYear`.
+
+W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
 
 ![Grupuj według przykładu](media/data-flow/agg-script1.png "Grupuj według przykładu")
 

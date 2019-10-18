@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71262338"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Tworzenie ustawień diagnostycznych na platformie Azure przy użyciu szablonu Menedżer zasobów
@@ -59,7 +59,7 @@ W zależności od [miejsc docelowych](diagnostic-settings.md#destinations) dla u
 ```
 
 ### <a name="resources"></a>Zasoby
-W tablicy zasobów zasobu, dla którego chcesz utworzyć ustawienie diagnostyczne, Dodaj zasób typu `[resource namespace]/providers/diagnosticSettings`. Sekcja właściwości jest zgodna z formatem opisanym w [ustawieniach diagnostycznych — Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Dodaj właściwość, aby zbierać metryki zasobów do tych samych miejsc docelowych, jeśli [zasób obsługuje metryki.](metrics-supported.md) `metrics`
+W tablicy zasobów zasobu, dla którego chcesz utworzyć ustawienie diagnostyczne, Dodaj zasób typu `[resource namespace]/providers/diagnosticSettings`. Sekcja właściwości jest zgodna z formatem opisanym w [ustawieniach diagnostycznych — Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Dodaj właściwość `metrics`, aby zbierać metryki zasobów do tych samych miejsc docelowych, jeśli [zasób obsługuje metryki](metrics-supported.md).
    
 ```json
 "resources": [

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 046c2308d5cef2df7e12b6185fc24b8df4f821dc
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 293d0de024ad815b4755d48833b7058c29ebcd5a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326974"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513306"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu
 
@@ -39,15 +39,15 @@ Gdy aplikacja osiągnie limit, co może obsłużyć partycja w obciążeniu, us�
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
 
-## <a name="azure-files-scale-targets"></a>Usługa Azure celów skalowania plików
+## <a name="azure-files-scale-targets"></a>Elementy docelowe skalowania Azure Files
 
 Aby uzyskać więcej informacji na temat elementów docelowych skalowania i wydajności dla Azure Files i Azure File Sync, zobacz [Azure Files cele dotyczące skalowalności i wydajności](../files/storage-files-scale-targets.md).
 
 > [!IMPORTANT]
 > Limity konta magazynu dotyczą wszystkich udziałów. Skalowanie w górę do wartości maksymalnej dla kont magazynu jest osiągalne tylko wtedy, gdy istnieje tylko jeden udział na konto magazynu.
 >
-> Standardowe udziały plików większe niż 5 TiB są w wersji zapoznawczej i mają pewne ograniczenia.
-> Aby zapoznać się z listą ograniczeń i dołączyć do wersji zapoznawczej tych większych rozmiarów udziałów plików, zobacz sekcję [standardowe udziały plików](../files/storage-files-planning.md#standard-file-shares) w przewodniku planowania Azure Files.
+> Standardowe udziały plików większe niż 5 TiB mają pewne ograniczenia i ograniczenia regionalne.
+> Aby uzyskać listę ograniczeń, informacje regionalne i instrukcje dotyczące włączania większych rozmiarów udziałów plików, zobacz sekcję dołączanie [do większej liczby udziałów plików (warstwa standardowa)](../files/storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) w przewodniku planowania Azure Files.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -55,13 +55,13 @@ Aby uzyskać więcej informacji na temat elementów docelowych skalowania i wyda
 
 Istnieją trzy kategorie ograniczeń, które należy wziąć pod uwagę w przypadku plików Premium: konta magazynu, udziały i pliki.
 
-Na przykład: Pojedynczy udział może osiągać 100 000 operacji we/wy, a pojedynczy plik może być skalowany w górę do 5 000 operacji we/wy na sekundę. Jeśli na przykład masz trzy pliki w jednym udziale, Maksymalna liczba IOPs, którą można uzyskać z tego udziału, to 15 000.
+Na przykład: pojedynczy udział może osiągać 100 000 operacji we/wy, a pojedynczy plik może skalować do 5 000 operacji we/wy na sekundę. Jeśli na przykład masz trzy pliki w jednym udziale, Maksymalna liczba IOPs, którą można uzyskać z tego udziału, to 15 000.
 
 #### <a name="premium-file-share-limits"></a>Limity udziałów plików w warstwie Premium
 
 [!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
-### <a name="azure-file-sync-scale-targets"></a>Cele skalowania usługi Azure File Sync
+### <a name="azure-file-sync-scale-targets"></a>Elementy docelowe skalowania Azure File Sync
 
 Azure File Sync został zaprojektowany z myślą o celu nieograniczonego użycia, ale nieograniczone użycie nie zawsze jest możliwe. Poniższa tabela wskazuje granice testowania firmy Microsoft, a także wskazuje, które cele są sztywne:
 

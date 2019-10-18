@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 68fe50c75fc25106a0f47af8bf6cfc0db562fbe5
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874939"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529101"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Przepustowość sieci maszyny wirtualnej
 
@@ -39,10 +39,10 @@ Usługi Azure Virtual Machines muszą mieć jeden, ale może mieć kilka podłą
 Oczekiwana przepływność wychodząca i liczba interfejsów sieciowych obsługiwanych przez poszczególne rozmiary maszyn wirtualnych są szczegółowo opisane w obszarze rozmiary maszyn wirtualnych w [systemie Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Wybierz typ, taki jak ogólnego przeznaczenia, a następnie wybierz serię rozmiarów na stronie wyników, na przykład Dv2. Każda seria zawiera tabelę z specyfikacjami sieci w ostatniej kolumnie zatytułowaną, **Maksymalna liczba kart sieciowych/oczekiwana wydajność sieci (MB/s)** . 
 
 Limit przepływności ma zastosowanie do maszyny wirtualnej. Następujące czynniki nie mają wpływ na przepływność:
-- **Liczba interfejsów sieciowych**: Limit przepustowości jest kumulowany dla całego ruchu wychodzącego z maszyny wirtualnej.
-- **Przyspieszona sieć**: Chociaż ta funkcja może być przydatna w osiągnięciu opublikowanego limitu, nie powoduje zmiany limitu.
-- **Miejsce docelowe ruchu**: Liczba wszystkich miejsc docelowych w kierunku limitu wychodzącego.
-- **Protokół**: Cały ruch wychodzący przez wszystkie protokoły jest liczony do limitu.
+- **Liczba interfejsów sieciowych**: limit przepustowości jest kumulowany dla całego ruchu wychodzącego z maszyny wirtualnej.
+- **Przyspieszona sieć**: Mimo że funkcja może być przydatna w osiągnięciu opublikowanego limitu, nie zmienia limitu.
+- **Miejsce docelowe ruchu**: liczba wszystkich miejsc docelowych w kierunku limitu wychodzącego.
+- **Protokół**: cały ruch wychodzący przez wszystkie protokoły jest liczony do limitu.
 
 ## <a name="network-flow-limits"></a>Limity przepływu sieci
 
@@ -60,11 +60,11 @@ Obecnie stos sieci platformy Azure obsługuje 250 000 łączne przepływy siecio
 |---|---|---|
 |<b>Dobra wydajność</b>|Przepływy 100 000 |Przepływy 250 000|
 |<b>Wydajność obniżona</b>|Powyżej przepływy 100 000|Powyżej przepływy 250 000|
-|<b>Limit przepływu</b>|1M przepływów|1M przepływów|
+|<b>Limit przepływu</b>|Przepływy 500 000|Przepływy 500 000|
 
 Metryki są dostępne w [Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) , aby śledzić liczbę przepływów sieciowych i szybkość tworzenia przepływu na maszynach wirtualnych lub wystąpieniach VMSS.
 
-![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![Azure-monitor-Flow-Metrics. png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
 Stawki za połączenia i zwolnienia mogą również wpływać na wydajność sieci, ponieważ ustanowienie połączenia i zakończenie współużytkują procesor z procedurami przetwarzania pakietów. Firma Microsoft zaleca, aby przeprowadzić testy porównawcze względem oczekiwanych wzorców ruchu i odpowiednio skalować obciążenia w celu dopasowania do potrzeb związanych z wydajnością. 
 

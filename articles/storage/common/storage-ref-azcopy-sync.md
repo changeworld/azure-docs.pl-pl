@@ -4,18 +4,18 @@ description: Ten artykuł zawiera informacje referencyjne dotyczące polecenia S
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fb6c3b711a89ae7e4ef403a75927c4c6172523d0
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8b4ab0e44f2432056c9c94061c59c99c89a6407d
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195765"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513424"
 ---
-# <a name="azcopy-sync"></a>AzCopy synchronizacji
+# <a name="azcopy-sync"></a>azcopy sync
 
 Replikuje lokalizację źródłową do lokalizacji docelowej.
 
@@ -26,19 +26,18 @@ Czas ostatniej modyfikacji jest używany do porównania. Plik zostanie pominięt
 Obsługiwane są następujące pary:
 
 - < lokalnego — > obiektu blob platformy Azure (można użyć uwierzytelniania SAS lub OAuth)
+- < Obiektów blob platformy Azure — > obiekt blob platformy Azure (Źródło musi zawierać sygnaturę dostępu współdzielonego lub być publicznie dostępna; można używać uwierzytelniania SAS lub OAuth na potrzeby miejsca docelowego).
+- Usługa Azure File < — > plik platformy Azure (Źródło musi zawierać sygnaturę dostępu współdzielonego lub być publicznie dostępna; Uwierzytelnianie SAS powinno być używane na potrzeby lokalizacji docelowej.
 
 Polecenie Sync różni się od polecenia copy na kilka sposobów:
 
-  1. Flaga cykliczna jest domyślnie włączona.
-  2. Źródło i miejsce docelowe nie powinny zawierać wzorców (takich jak * lub?).
-  3. Flagi include i Exclude mogą być listami wzorców pasujących do nazw plików. Zapoznaj się z sekcją przykładową.
-  4. Jeśli w miejscu docelowym znajdują się pliki lub obiekty blob, które nie są obecne w źródle, użytkownik zostanie poproszony o ich usunięcie.
+1. Domyślnie flaga cykliczna to true, a Sync kopiuje wszystkie podkatalogi. Synchronizacja kopiuje tylko pliki najwyższego poziomu znajdujące się w katalogu, jeśli flaga cykliczna ma wartość false.
+2. Podczas synchronizowania katalogów wirtualnych Dodaj końcowy ukośnik do ścieżki (Zobacz przykłady), jeśli istnieje obiekt BLOB o takiej samej nazwie jak jeden z katalogów wirtualnych.
+3. Jeśli flaga "deleteDestination" ma wartość true lub Prompt, wówczas synchronizacja spowoduje usunięcie plików i obiektów BLOB w miejscu docelowym, które nie znajdują się w źródle.
 
-     Ten monit można wyciszać przy użyciu odpowiednich flag, aby automatycznie odpowiedzieć na pytanie dotyczące usuwania.
+### <a name="advanced"></a>Advanced
 
-### <a name="advanced"></a>Zaawansowane
-
-AzCopy automatycznie wykrywa typ zawartości plików podczas przekazywania z dysku lokalnego na podstawie rozszerzenia lub zawartości pliku (jeśli nie określono rozszerzenia).
+Jeśli nie określisz rozszerzenia pliku, AzCopy automatycznie wykryje typ zawartości plików podczas przekazywania z dysku lokalnego na podstawie rozszerzenia lub zawartości pliku (jeśli nie określono rozszerzenia).
 
 Wbudowana tabela odnośnika jest mała, ale w systemie UNIX, została uzupełniona o pliki MIME. Types systemu lokalnego, jeśli są dostępne w jednej lub kilku z tych nazw:
 
@@ -96,22 +95,55 @@ Zsynchronizuj cały katalog, ale Wyklucz określone pliki z zakresu (na przykła
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
 ```
 
+Synchronizuj pojedynczy obiekt BLOB:
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
+
+Sync a virtual directory:
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
+```
+
+Zsynchronizuj katalog wirtualny o takiej samej nazwie jak obiekt BLOB (Dodaj końcowy ukośnik do ścieżki, aby usunąć niejednoznaczność):
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
+```
+
+Zsynchronizuj katalog plików platformy Azure (w tej samej składni co obiekt BLOB):
+
+```azcopy
+azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
+```
+
 > [!NOTE]
 > Jeśli wszystkie flagi dołączania/wykluczania są używane razem, wyszukiwane są tylko pliki zgodne ze wzorcami dołączania, ale te zgodne ze wzorcami wykluczania byłyby zawsze ignorowane.
 
 ## <a name="options"></a>Opcje
 
-|Opcja|Opis|
-|--|--|
-|--rozmiar bloku-MB zmiennoprzecinkowego|Użyj tego rozmiaru bloku (określonego w MiB) podczas przekazywania do usługi Azure Storage lub pobierania z usługi Azure Storage. Wartość domyślna jest obliczana automatycznie na podstawie rozmiaru pliku. Dozwolone są ułamki dziesiętne (na przykład: 0,25).|
-|--Check-MD5 — ciąg|Określa, jak ściśle skróty MD5 mają być sprawdzane podczas pobierania. Ta opcja jest dostępna tylko podczas pobierania. Dostępne wartości to: NOCHECK, LogOn, FailIfDifferent, FailIfDifferentOrMissing. (domyślnie "FailIfDifferent").|
-|--Usuń ciąg docelowy|Określa, czy należy usunąć dodatkowe pliki z lokalizacji docelowej, które nie znajdują się w źródle. Może być ustawiona na wartość true, false lub Prompt. Jeśli ustawiono opcję Monituj, użytkownik zostanie poproszony o podanie pytania przed zaplanowaniem plików i obiektów BLOB do usunięcia. (wartość domyślna to "false").|
-|--Wyklucz ciąg|Wyklucz pliki, w których nazwa jest zgodna z listą wzorców. Na przykład: *. jpg;* . PDF; exactname.|
-|-h,--pomoc|Pokaż zawartość pomocy dla polecenia Sync.|
-|--include String|Uwzględnij tylko pliki, w których nazwa jest zgodna z listą wzorców. Na przykład: *. jpg;* . PDF; exactname.|
-|--ciąg poziomu dziennika|Zdefiniuj poziom szczegółowości dziennika dla pliku dziennika, dostępne poziomy: INFORMACJE (wszystkie żądania/odpowiedzi), ostrzeżenie (wolne odpowiedzi), błąd (tylko Nieudane żądania) i brak (bez dzienników wyjściowych). (wartość domyślna to "INFO").|
-|--Put-MD5|Utwórz skrót MD5 każdego pliku i Zapisz skrót jako właściwość Content-MD5 docelowego obiektu BLOB lub pliku. (Domyślnie skrót nie jest tworzony). Dostępne tylko podczas przekazywania.|
-|--rekursywnie|Domyślnie wartość true powoduje cykliczne poszukiwanie katalogów podrzędnych podczas synchronizacji między katalogami. (wartość domyślna to true).|
+**--rozmiar bloku-MB** zmiennoprzecinkowy Użyj tego rozmiaru bloku (określonego w MIB) podczas przekazywania do usługi Azure Storage lub pobierania z usługi Azure Storage. Wartość domyślna jest obliczana automatycznie na podstawie rozmiaru pliku. Dozwolone są ułamki dziesiętne (na przykład: 0,25).
+
+**--check-MD5** ciąg Określa, jak ściśle skróty MD5 powinny być sprawdzane podczas pobierania. Ta opcja jest dostępna tylko podczas pobierania. Dostępne wartości to: NOCHECK, LogOnd, FailIfDifferent, FailIfDifferentOrMissing. (wartość domyślna to "FailIfDifferent"). (domyślnie "FailIfDifferent")
+
+**--delete-Destination** ciąg definiuje, czy usunąć dodatkowe pliki z miejsca docelowego, które nie są obecne w źródle. Może być ustawiona na wartość true, false lub Prompt. Jeśli ustawiono opcję Monituj, użytkownik zostanie poproszony o podanie pytania przed zaplanowaniem plików i obiektów BLOB do usunięcia. (wartość domyślna to "false"). (wartość domyślna to "false")
+
+**--exclude-Attribute** (tylko system Windows) wyklucza pliki, których atrybuty pasują do listy atrybutów. Na przykład: A; Wolumin ®
+
+**--exclude-String wykluczanie** plików, w których nazwa jest zgodna z listą wzorców. Na przykład: *. jpg;* . PDF; exactname
+
+**-h,--** Pomoc dotycząca synchronizacji
+
+**--include — ciąg atrybutów** (tylko system Windows) Uwzględnij tylko pliki, których atrybuty pasują do listy atrybutów. Na przykład: A; Wolumin ®
+
+**--dołączany** ciąg do wzorca zawiera tylko pliki, w których nazwa jest zgodna z listą wzorców. Na przykład: *. jpg;* . PDF; exactname
+
+**--ciąg na poziomie dziennika** definiuje szczegółowość dziennika dla pliku dziennika, dostępne poziomy: info (wszystkie żądania i odpowiedzi), ostrzeżenie (wolne odpowiedzi), błąd (tylko Nieudane żądania) i brak (bez dzienników wyjściowych). (informacje domyślne). (wartość domyślna: "INFO")
+
+**--Put-MD5**                     Utwórz skrót MD5 każdego pliku i Zapisz skrót jako właściwość Content-MD5 docelowego obiektu BLOB lub pliku. (Domyślnie skrót nie jest tworzony). Dostępne tylko podczas przekazywania.
+
+**--rekursywnie**                   Domyślnie wartość true powoduje cykliczne poszukiwanie katalogów podrzędnych podczas synchronizacji między katalogami. (wartość domyślna to true). (wartość domyślna to true)
 
 ## <a name="options-inherited-from-parent-commands"></a>Opcje dziedziczone z poleceń nadrzędnych
 

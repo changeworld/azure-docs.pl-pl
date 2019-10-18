@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244040"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529024"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania IoT Edge w środowisku produkcyjnym
 
@@ -93,7 +93,7 @@ Przykład tego procesu znajduje się w temacie [Konfigurowanie urządzenia IoT E
 
 Moduły IoT Edge Hub i Agent używają magazynu lokalnego do utrzymania stanu i włączania obsługi komunikatów między modułami, urządzeniami i chmurą. Aby zapewnić lepszą niezawodność i wydajność, należy skonfigurować moduły systemowe do korzystania z magazynu w systemie plików hosta.
 
-Aby uzyskać więcej informacji, zobacz [host Storage for System modules](offline-capabilities.md#host-storage-for-system-modules).
+Aby uzyskać więcej informacji, zobacz [host Storage for System modules](how-to-access-host-storage-from-module.md).
 
 ### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Zmniejszanie ilości miejsca w pamięci używanej przez Centrum IoT Edge
 
@@ -176,10 +176,10 @@ Ta lista kontrolna jest punktem początkowym dla reguł zapory:
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Rejestr kontenerów firmy Microsoft |
    | global.azure-devices-provisioning.net  | 443 | Dostęp do punktu dystrybucji (opcjonalnie) |
-   | @no__t — 0.azurecr.io | 443 | Rejestry kontenerów osobistych i innych firm |
+   | \*. azurecr.io | 443 | Rejestry kontenerów osobistych i innych firm |
    | \*.blob.core.windows.net | 443 | Pobieranie Azure Container Registry różnic obrazu z magazynu obiektów BLOB  | 
-   | @no__t — 0.azure-devices.net | 5671, 8883, 443 | Dostęp IoT Hub |
-   | @no__t — 0.docker.io  | 443 | Dostęp do centrum platformy Docker (opcjonalnie) |
+   | \*. azure-devices.net | 5671, 8883, 443 | Dostęp IoT Hub |
+   | \*. docker.io  | 443 | Dostęp do centrum platformy Docker (opcjonalnie) |
 
 Niektóre z tych reguł zapory są dziedziczone z Azure Container Registry. Aby uzyskać więcej informacji, zobacz [Konfigurowanie reguł dostępu do usługi Azure Container Registry za zaporą](../container-registry/container-registry-firewall-access-rules.md).
 

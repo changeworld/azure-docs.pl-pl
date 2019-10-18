@@ -1,6 +1,6 @@
 ---
-title: 'Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika | Dokumentacja firmy Microsoft'
-description: Ten dokument zawiera szczegółowe informacje dotyczące konfigurowania konta łącznik usługi AD DS za pomocą nowego modułu ADSyncConfig PowerShell
+title: 'Azure AD Connect: Skonfiguruj uprawnienia konta łącznika AD DS | Microsoft Docs'
+description: Ten dokument zawiera szczegółowe informacje dotyczące konfigurowania konta łącznika AD DS przy użyciu nowego modułu programu PowerShell w programie ADSyncConfig
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,63 +11,63 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff151ff8e14b5cf9602d4e7e2e9c6cb2118a8a65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64918499"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515823"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Skonfiguruj uprawnienia konta łącznika AD DS 
 
-Moduł programu PowerShell o nazwie [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) wprowadzono w systemie kompilacji 1.1.880.0 (wydanej w sierpniu 2018 r.), który zawiera zbiór poleceń cmdlet ułatwiają konfigurowanie odpowiednich uprawnień usługi Active Directory dla usługi Azure AD Połącz z wdrożenia. 
+Moduł programu PowerShell o nazwie [ADSyncConfig. PSM1](reference-connect-adsyncconfig.md) został wprowadzony z kompilacją 1.1.880.0 (wydana w sierpniu 2018) zawierającym kolekcję poleceń cmdlet, które ułatwiają konfigurowanie odpowiednich uprawnień Active Directory dla wdrożenia Azure AD Connect. 
 
-## <a name="overview"></a>Omówienie 
-Następujące polecenia cmdlet programu PowerShell może służyć do ustawienia uprawnień usługi Active Directory, konta usługi AD DS łącznika dla każdej funkcji, którą wybrano do włączenia w programie Azure AD Connect. Aby uniknąć problemów, przygotuj uprawnień usługi Active Directory z wyprzedzeniem zawsze wtedy, gdy chcesz zainstalować program Azure AD Connect przy użyciu konta domeny niestandardowej, aby nawiązać połączenie z lasem usługi. Ten moduł ADSyncConfig można również skonfigurować uprawnienia, po wdrożeniu usługi Azure AD Connect.
+## <a name="overview"></a>Przegląd 
+Następujące polecenia cmdlet programu PowerShell mogą służyć do konfigurowania Active Directory uprawnień konta łącznika AD DS dla każdej funkcji wybranej do włączenia w Azure AD Connect. Aby zapobiec wszelkim problemom, należy przygotować Active Directory uprawnień z wyprzedzeniem, jeśli chcesz zainstalować Azure AD Connect przy użyciu niestandardowego konta domeny w celu nawiązania połączenia z lasem. Tego modułu ADSyncConfig można także użyć w celu skonfigurowania uprawnień po wdrożeniu Azure AD Connect.
 
-![Omówienie usługi ad ds konto](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
+![Przegląd konta usług AD DS](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
-Dla usługi Azure AD Connect instalacji programu Express, automatycznie generowanych (MSOL_nnnnnnnnnn) utworzono konto w usłudze Active Directory wszystkie niezbędne uprawnienia, więc nie trzeba używać tego modułu ADSyncConfig, chyba że został zablokowany uprawnień dziedziczenie w jednostkach organizacyjnych lub w określonych obiektach usługi Active Directory, które chcesz zsynchronizować z usługą Azure AD. 
+W przypadku instalacji programu Azure AD Connect Express automatycznie generowane konto (MSOL_nnnnnnnnnn) jest tworzone w Active Directory ze wszystkimi niezbędnymi uprawnieniami, więc nie ma potrzeby korzystania z tego modułu ADSyncConfig, chyba że masz zablokowane uprawnienia dziedziczenie w jednostkach organizacyjnych lub na określonych obiektach Active Directory, które mają być synchronizowane z usługą Azure AD. 
  
 ### <a name="permissions-summary"></a>Podsumowanie uprawnień 
-Poniższa tabela zawiera podsumowanie uprawnień wymaganych do obiektów usługi AD: 
+Poniższa tabela zawiera podsumowanie uprawnień wymaganych w przypadku obiektów usługi AD: 
 
-| Cecha | Uprawnienia |
+| Funkcja | Uprawnienia |
 | --- | --- |
-| funkcja MS-DS-ConsistencyGuid |Uprawnienia do zapisu do atrybutu ms-DS-ConsistencyGuid udokumentowane w artykule [pojęć dotyczących projektowania — przy użyciu ms-DS-ConsistencyGuid jako sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
-| Synchronizacja skrótów haseł |<li>Replikuj zmiany katalogu</li>  <li>Replikacja katalogu zmienia wszystkie |
-| Wdrożenie hybrydowe programu Exchange |Uprawnienia do zapisu do atrybutów w [zapisywania zwrotnego hybrydowego programu Exchange](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) dla użytkowników, grup i kontakty. |
-| Folder publiczne poczty programu Exchange |Odczyt atrybutów udokumentowane w artykule [folderu publicznego poczty Exchange](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) dla folderów publicznych. | 
-| Zapisywanie zwrotne haseł |Uprawnienia do zapisu do atrybutów w [wprowadzenie do zarządzania hasłami](../authentication/howto-sspr-writeback.md) dla użytkowników. |
-| Zapisywanie zwrotne urządzeń |Uprawnienia do zapisu do urządzenia obiektów i kontenerów, które opisano w [zapisywanie zwrotne urządzeń](how-to-connect-device-writeback.md). |
-| Zapisywanie zwrotne grup |Przeczytaj, tworzenia, aktualizowania lub usuwania grupy obiektów zsynchronizowane **grup usługi Office 365**.  Aby uzyskać więcej informacji, zobacz [zapisu zwrotnego grup](how-to-connect-preview.md#group-writeback).|
+| Funkcja MS-DS-ConsistencyGuid |Uprawnienia do odczytu i zapisu do atrybutu MS-DS-ConsistencyGuid udokumentowanego w [koncepcji projektowania — przy użyciu MS-ds-ConsistencyGuid jako sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
+| Synchronizacja skrótów haseł |<li>Replikowanie zmian w katalogu</li>  <li>Replikuj wszystkie zmiany katalogu |
+| Wdrożenie hybrydowe programu Exchange |Uprawnienia do odczytu i zapisu w odniesieniu do atrybutów przedstawionych w funkcji [zapisywania zwrotnego hybrydowego programu Exchange](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) dla użytkowników, grup i kontaktów. |
+| Folder publiczny poczty programu Exchange |Uprawnienia Odczyt do atrybutów przedstawionych w [folderze publicznym poczty programu Exchange](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) dla folderów publicznych. | 
+| Zapisywanie zwrotne haseł |Uprawnienia do odczytu i zapisu w odniesieniu do atrybutów opisanych w temacie [wprowadzenie do zarządzania hasłami](../authentication/howto-sspr-writeback.md) dla użytkowników. |
+| Zapisywanie zwrotne urządzeń |Uprawnienia do odczytu i zapisu dla obiektów urządzeń i kontenerów udokumentowanych w funkcji [zapisywania zwrotnego urządzeń](how-to-connect-device-writeback.md). |
+| Zapisywanie zwrotne grup |Odczytuj, twórz, Aktualizuj i usuwaj obiekty grupy do zsynchronizowanych **grup pakietu Office 365**.  Aby uzyskać więcej informacji, zobacz [zapisywanie zwrotne grup](how-to-connect-preview.md#group-writeback).|
 
-## <a name="using-the-adsyncconfig-powershell-module"></a>Za pomocą modułu programu ADSyncConfig PowerShell 
-Moduł ADSyncConfig wymaga [zdalnego serwera Administracja narzędzia (RSAT) dla usług AD DS](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) ponieważ zależy od modułu programu PowerShell usługi AD DS i narzędzia. Aby zainstalować narzędzia administracji zdalnej serwera dla usług AD DS, Otwórz okno programu Windows PowerShell z "Uruchom jako Administrator" i wykonaj: 
+## <a name="using-the-adsyncconfig-powershell-module"></a>Korzystanie z modułu ADSyncConfig PowerShell 
+Moduł ADSyncConfig wymaga [Narzędzia administracji zdalnej serwera (RSAT) dla AD DS](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) , ponieważ zależy on od modułu i narzędzi AD DS PowerShell. Aby zainstalować narzędzia RSAT dla AD DS, Otwórz okno programu Windows PowerShell za pomocą polecenia "Uruchom jako administrator" i wykonaj: 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 
 ```
-![Konfigurowanie](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
+![Konfiguracja](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
 
 >[!NOTE]
->Możesz również skopiować plik **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** do poziomu kontrolera domeny, która ma już narzędzia administracji zdalnej serwera dla usług AD DS zainstalowane i używaj tego modułu programu PowerShell w tym miejscu.
+>Możesz również skopiować plik **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.PSM1** do kontrolera domeny, który ma już narzędzia RSAT dla AD DS zainstalowane i korzystać z tego modułu programu PowerShell.
 
-Aby rozpocząć korzystanie z ADSyncConfig musisz załadować moduł w oknie programu Windows PowerShell: 
+Aby rozpocząć korzystanie z ADSyncConfig, należy załadować moduł w oknie programu Windows PowerShell: 
 
 ``` powershell
 Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1" 
 ```
 
-Aby sprawdzić wszystkie poleceń cmdlet zawartych w tym module, który można wpisać:  
+Aby sprawdzić wszystkie polecenia cmdlet zawarte w tym module, możesz wpisać:  
 
 ``` powershell
 Get-Command -Module AdSyncConfig  
 ```
 
-![Sprawdź](media/how-to-connect-configure-ad-ds-connector-account/configure3.png)
+![Zaznacz](media/how-to-connect-configure-ad-ds-connector-account/configure3.png)
 
-Każde polecenie cmdlet ma takie same parametry wejściowe konta łącznika usługi AD DS i przełącznik AdminSDHolder. Aby określić konto łącznika usługi AD DS, można dostarczyć nazwę konta i domeny lub tylko konta wyróżniającą nazwę (DN)
+Każde polecenie cmdlet ma te same parametry, aby wprowadzić konto łącznika AD DS i przełącznik AdminSDHolder. Aby określić konto łącznika AD DS, można podać nazwę konta i domenę lub tylko nazwę wyróżniającą konta (DN).
 
 np.:
 
@@ -75,209 +75,209 @@ np.:
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -ADConnectorAccountDomain <ADDomainName>
 ```
 
-Lub;
+Oraz
 
 ```powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 ```
 
-Upewnij się zastąpić `<ADAccountName>`, `<ADDomainName>` i `<ADAccountDN>` odpowiednimi wartościami dla danego środowiska.
+Upewnij się, że `<ADAccountName>`, `<ADDomainName>` i `<ADAccountDN>` z prawidłowymi wartościami dla danego środowiska.
 
-W przypadku, gdy nie chcesz zmodyfikować uprawnienia do kontenera AdminSDHolder, należy użyć przełącznika `-SkipAdminSdHolders`. 
+Jeśli nie chcesz modyfikować uprawnień w kontenerze AdminSDHolder, użyj przełącznika `-SkipAdminSdHolders`. 
 
-Domyślnie wszystkie zestaw uprawnień poleceń cmdlet programu spróbuje ustawić uprawnienia usług AD DS w katalogu głównym każdej domeny w lesie, co oznacza, że użytkownik uruchamiający sesji programu PowerShell wymaga uprawnień administratora domeny w każdej domenie w lesie.  Ze względu na to wymaganie zaleca się używać Administrator przedsiębiorstwa z katalogu głównego lasu. Jeśli wdrożenie usługi Azure AD Connect ma wiele łączników usługi AD DS, będzie wymagane do uruchomienia tego samego polecenia cmdlet w każdym lesie, który ma łącznika usługi AD DS. 
+Domyślnie wszystkie polecenia cmdlet ustawiania uprawnień będą podejmować próby ustawienia uprawnień AD DS w katalogu głównym każdej domeny w lesie, co oznacza, że użytkownik uruchamiający sesję programu PowerShell wymaga uprawnień administratora domeny w każdej domenie w lesie.  Z powodu tego wymagania zaleca się użycie administratora przedsiębiorstwa z katalogu głównego lasu. Jeśli wdrożenie Azure AD Connect ma wiele łączników AD DS, będzie wymagane uruchomienie tego samego polecenia cmdlet w każdym lesie zawierającym łącznik AD DS. 
 
-Można również ustawić uprawnienia dla określonego obiektu jednostki Organizacyjnej lub usług AD DS, przy użyciu parametru `-ADobjectDN` następuje nazwa Wyróżniająca obiektu docelowego gdzie mają zostać ustawione uprawnienia. Korzystając z obiektu docelowego ADobjectDN, polecenia cmdlet ustawi uprawnienia dla tego obiektu, tylko, a nie na katalog główny domeny lub AdminSDHolder kontenera. Ten parametr może być przydatne, gdy masz niektórych jednostek organizacyjnych lub usług AD DS obiekty, że dziedziczenie uprawnień wyłączono (zobacz lokalizowania usługi AD DS obiekty za pomocą dziedziczenia uprawnień wyłączone) 
+Możesz również ustawić uprawnienia dla konkretnej jednostki organizacyjnej lub obiektu AD DS przy użyciu parametru `-ADobjectDN` po którym następuje nazwa wyróżniająca obiektu docelowego, w którym chcesz ustawić uprawnienia. W przypadku korzystania z ADobjectDN docelowego polecenie cmdlet ustawi uprawnienia tylko dla tego obiektu, a nie w katalogu głównym domeny lub kontenerze AdminSDHolder. Ten parametr może być przydatny w przypadku niektórych jednostek organizacyjnych lub AD DS obiektów, które mają wyłączone dziedziczenie uprawnień (Zobacz Lokalizowanie obiektów AD DS z wyłączonym dziedziczeniem uprawnień) 
 
-Są wyjątki od tych wspólnych parametrów `Set-ADSyncRestrictedPermissions` polecenia cmdlet, który jest używany, aby ustawić uprawnienia dla konta łącznika usługi AD DS, a `Set-ADSyncPasswordHashSyncPermissions` polecenia cmdlet, ponieważ w katalogu głównym domeny, dlatego tylko ustawiono uprawnienia wymagane do synchronizacji skrótów haseł to polecenie cmdlet nie obejmuje `-ObjectDN` lub `-SkipAdminSdHolders` parametrów.
+Wyjątkami od tych typowych parametrów jest polecenie cmdlet `Set-ADSyncRestrictedPermissions`, które służy do ustawiania uprawnień na samym koncie łącznika AD DS, a polecenie cmdlet `Set-ADSyncPasswordHashSyncPermissions`, ponieważ uprawnienia wymagane do synchronizacji skrótów haseł są ustawiane tylko w katalogu głównym domeny. , dlatego to polecenie cmdlet nie obejmuje parametrów `-ObjectDN` ani `-SkipAdminSdHolders`.
 
-### <a name="determine-your-ad-ds-connector-account"></a>Określić łącznika usługi AD DS konto 
-W przypadku, gdy program Azure AD Connect jest już zainstalowana, i chcesz sprawdzić, co to jest konta łącznika usługi AD DS, obecnie w użyciu przy użyciu usługi Azure AD Connect, można wykonać polecenia cmdlet: 
+### <a name="determine-your-ad-ds-connector-account"></a>Określanie konta łącznika AD DS 
+W przypadku Azure AD Connect jest już zainstalowany i chcesz sprawdzić, co to jest konto łącznika AD DS aktualnie używane przez Azure AD Connect, można wykonać polecenie cmdlet: 
 
 ``` powershell
 Get-ADSyncADConnectorAccount 
 ```
-### <a name="locate-ad-ds-objects-with-permission-inheritance-disabled"></a>Znajdź obiekty usług AD DS za pomocą dziedziczenia uprawnień wyłączone 
-W przypadku, gdy chcesz sprawdzić, czy dowolny obiekt usług AD DS za pomocą dziedziczenia uprawnień wyłączone, można uruchomić: 
+### <a name="locate-ad-ds-objects-with-permission-inheritance-disabled"></a>Lokalizowanie obiektów AD DS z wyłączonym dziedziczeniem uprawnień 
+Jeśli chcesz sprawdzić, czy istnieje AD DS obiekt z wyłączonym dziedziczeniem uprawnień, możesz uruchomić następujące polecenie: 
 
 ``` powershell
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' 
 ```
-Domyślnie to polecenie cmdlet tylko wygląd dla jednostek organizacyjnych z dziedziczeniem wyłączone, ale można określić innych klas obiektów usług AD DS w `-ObjectClass` parametr lub użyj "*" dla wszystkich obiektów klasy, w następujący sposób: 
+Domyślnie to polecenie cmdlet wyszuka tylko jednostki organizacyjne z wyłączonym dziedziczeniem, ale można określić inne klasy obiektów AD DS w parametrze `-ObjectClass` lub użyć znaku "*" dla wszystkich klas obiektów w następujący sposób: 
 
 ``` powershell
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -ObjectClass * 
 ```
  
-### <a name="view-ad-ds-permissions-of-an-object"></a>Wyświetlanie uprawnień obiektu w usługach AD DS 
-Poniższe polecenie cmdlet służy do wyświetlania listy uprawnień aktualnie ustawiona na obiekt usługi Active Directory, podając jego DistinguishedName: 
+### <a name="view-ad-ds-permissions-of-an-object"></a>Wyświetlanie uprawnień AD DS obiektu 
+Możesz użyć poniższego polecenia cmdlet, aby wyświetlić listę uprawnień aktualnie ustawionych na obiekcie Active Directory, podając jego wyróżniającą: 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
 ```
 
-## <a name="configure-ad-ds-connector-account-permissions"></a>Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
+## <a name="configure-ad-ds-connector-account-permissions"></a>Konfigurowanie uprawnień konta łącznika AD DS 
  
-### <a name="configure-basic-read-only-permissions"></a>Konfiguruj podstawowe uprawnienia tylko do odczytu 
-Aby ustawić podstawowe uprawnienia tylko do odczytu dla konta usługi AD DS łącznika, bez korzystania z dowolnej funkcji Azure AD Connect, uruchom polecenie: 
+### <a name="configure-basic-read-only-permissions"></a>Skonfiguruj podstawowe uprawnienia tylko do odczytu 
+Aby ustawić podstawowe uprawnienia tylko do odczytu dla konta łącznika AD DS, gdy nie jest używana żadna funkcja Azure AD Connect, uruchom polecenie: 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-lub; 
+Oraz 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 
 
-To polecenie cmdlet będzie ustawić następujące uprawnienia: 
+To polecenie cmdlet ustawi następujące uprawnienia: 
  
 
-|Typ |Name (Nazwa) |Access |Dotyczy| 
+|Typ |Nazwa |Dostęp |Dotyczy| 
 |-----|-----|-----|-----|
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne urządzeń| 
-|Zezwalaj |Łącznik usługi AD DS Account|Odczyt wszystkich właściwości |Obiekty zależne InetOrgPerson| 
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Podrzędne obiekty komputerów| 
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne foreignSecurityPrincipal| 
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty grupy elementów podrzędnych| 
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne użytkownika| 
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne kontaktu| 
+|Zezwól |Konto łącznika AD DS |Odczyt wszystkich właściwości |Obiekty podrzędne urządzenia| 
+|Zezwól |Konto łącznika AD DS|Odczyt wszystkich właściwości |Podrzędne obiekty InetOrgPerson| 
+|Zezwól |Konto łącznika AD DS |Odczyt wszystkich właściwości |Obiekty podrzędne komputera| 
+|Zezwól |Konto łącznika AD DS |Odczyt wszystkich właściwości |Podrzędne obiekty foreignSecurityPrincipal| 
+|Zezwól |Konto łącznika AD DS |Odczyt wszystkich właściwości |Obiekty grupy podrzędnej| 
+|Zezwól |Konto łącznika AD DS |Odczyt wszystkich właściwości |Obiekty podrzędne użytkownika| 
+|Zezwól |Konto łącznika AD DS |Odczyt wszystkich właściwości |Podrzędne obiekty Contact| 
 
  
-### <a name="configure-ms-ds-consistency-guid-permissions"></a>Skonfiguruj uprawnienia MS-DS-spójności — identyfikator Guid 
-Aby ustawić uprawnienia dla konta usługi AD DS łącznika, w przypadku używania atrybutu ms-Ds-spójności — identyfikator Guid jako zakotwiczenie źródła (zwane również "Let platforma Azure zarządzała zakotwiczeniem źródła dla mnie" opcja), uruchom polecenie: 
+### <a name="configure-ms-ds-consistency-guid-permissions"></a>Konfigurowanie uprawnień usługi MS-DS-spójności-identyfikatora GUID 
+Aby ustawić uprawnienia dla konta łącznika AD DS przy użyciu atrybutu MS-ds-Consistency-GUID jako kotwicy źródłowej ("Zezwól na platformę Azure zarządzać zakotwiczeniem źródła dla mnie"), uruchom polecenie: 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
-lub; 
+Oraz 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 
-To polecenie cmdlet będzie ustawić następujące uprawnienia: 
+To polecenie cmdlet ustawi następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Access |Dotyczy|
+|Typ |Nazwa |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
-|Zezwalaj|Łącznik usługi AD DS Account|Właściwości odczytu/zapisu|Obiekty zależne użytkownika|
+|Zezwól|Konto łącznika AD DS|Właściwość odczytu/zapisu|Obiekty podrzędne użytkownika|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>Uprawnienia do synchronizacji skrótów haseł 
-Aby ustawić uprawnienia dla konta usługi AD DS łącznika, korzystając z synchronizacji skrótów haseł, uruchom polecenie: 
+Aby ustawić uprawnienia dla konta łącznika AD DS podczas korzystania z synchronizacji skrótów haseł, uruchom polecenie: 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [<CommonParameters>] 
 ```
 
 
-lub; 
+Oraz 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonParameters>] 
 ```
 
-To polecenie cmdlet będzie ustawić następujące uprawnienia: 
+To polecenie cmdlet ustawi następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Access |Dotyczy|
+|Typ |Nazwa |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
-|Zezwalaj |Łącznik usługi AD DS Account |Replikowanie zmian katalogów |Tylko ten obiekt (katalog główny domeny)| 
-|Zezwalaj |Łącznik usługi AD DS Account |Replikowanie zmian katalogów wszystkie |Tylko ten obiekt (katalog główny domeny)| 
+|Zezwól |Konto łącznika AD DS |Replikowanie zmian w katalogu |Tylko ten obiekt (katalog główny domeny)| 
+|Zezwól |Konto łącznika AD DS |Wszystkie zmiany katalogu replikowanego |Tylko ten obiekt (katalog główny domeny)| 
   
 ### <a name="permissions-for-password-writeback"></a>Uprawnienia do zapisywania zwrotnego haseł 
-Aby ustawić uprawnienia dla konta usługi AD DS łącznika, korzystając z funkcji zapisywania zwrotnego haseł, uruchom polecenie: 
+Aby ustawić uprawnienia dla konta łącznika AD DS podczas korzystania z funkcji zapisywania zwrotnego haseł, uruchom polecenie: 
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-lub;
+Oraz
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
-To polecenie cmdlet będzie ustawić następujące uprawnienia: 
+To polecenie cmdlet ustawi następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Access |Dotyczy|
+|Typ |Nazwa |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
-|Zezwalaj |Łącznik usługi AD DS Account |Resetowanie hasła |Obiekty zależne użytkownika| 
-|Zezwalaj |Łącznik usługi AD DS Account |Zapis właściwości lockoutTime |Obiekty zależne użytkownika| 
-|Zezwalaj |Łącznik usługi AD DS Account |Zapis właściwości pwdLastSet |Obiekty zależne użytkownika| 
+|Zezwól |Konto łącznika AD DS |Resetowanie hasła |Obiekty podrzędne użytkownika| 
+|Zezwól |Konto łącznika AD DS |Zapisz Właściwość lockoutTime |Obiekty podrzędne użytkownika| 
+|Zezwól |Konto łącznika AD DS |Zapisz Właściwość pwdLastSet |Obiekty podrzędne użytkownika| 
 
-### <a name="permissions-for-group-writeback"></a>Uprawnienia do zapisu zwrotnego grup 
-Aby ustawić uprawnienia dla konta usługi AD DS łącznika, używając zapisu zwrotnego grup, uruchom polecenie: 
+### <a name="permissions-for-group-writeback"></a>Uprawnienia do zapisywania zwrotnego grup 
+Aby ustawić uprawnienia dla konta łącznika AD DS podczas korzystania z funkcji zapisywania zwrotnego grup, uruchom polecenie: 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
-lub; 
+Oraz 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
 ```
  
-To polecenie cmdlet będzie ustawić następujące uprawnienia: 
+To polecenie cmdlet ustawi następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Access |Dotyczy|
+|Typ |Nazwa |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
-|Zezwalaj |Łącznik usługi AD DS Account |Ogólny odczytu/zapisu |Wszystkie atrybuty grupy typów obiektu i podobiektów| 
-|Zezwalaj |Łącznik usługi AD DS Account |Tworzenie/usuwanie obiektu podrzędnego |Wszystkie atrybuty grupy typów obiektu i podobiektów| 
-|Zezwalaj |Łącznik usługi AD DS Account |Usuń/usuwania drzewa obiektów|Wszystkie atrybuty grupy typów obiektu i podobiektów|
+|Zezwól |Konto łącznika AD DS |Ogólny Odczyt/zapis |Wszystkie atrybuty grupy typów obiektów i podobiektów| 
+|Zezwól |Konto łącznika AD DS |Tworzenie/usuwanie obiektu podrzędnego |Wszystkie atrybuty grupy typów obiektów i podobiektów| 
+|Zezwól |Konto łącznika AD DS |Usuwanie/usuwanie obiektów drzewa|Wszystkie atrybuty grupy typów obiektów i podobiektów|
 
-### <a name="permissions-for-exchange-hybrid-deployment"></a>Uprawnienia dla wdrożenia hybrydowego programu Exchange 
-Aby ustawić uprawnienia dla konta usługi AD DS łącznika, korzystając z wdrożenie hybrydowe programu Exchange, uruchom polecenie: 
+### <a name="permissions-for-exchange-hybrid-deployment"></a>Uprawnienia do wdrożenia hybrydowego programu Exchange 
+Aby ustawić uprawnienia dla konta łącznika AD DS podczas korzystania z wdrożenia hybrydowego programu Exchange, uruchom polecenie: 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-lub; 
+Oraz 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 
-To polecenie cmdlet będzie ustawić następujące uprawnienia:  
+To polecenie cmdlet ustawi następujące uprawnienia:  
  
 
-|Typ |Name (Nazwa) |Access |Dotyczy|
+|Typ |Nazwa |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt/zapis wszystkich właściwości |Obiekty zależne użytkownika| 
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt/zapis wszystkich właściwości |Obiekty zależne InetOrgPerson| 
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt/zapis wszystkich właściwości |Obiekty grupy elementów podrzędnych| 
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt/zapis wszystkich właściwości |Obiekty zależne kontaktu| 
+|Zezwól |Konto łącznika AD DS |Odczyt/zapis wszystkich właściwości |Obiekty podrzędne użytkownika| 
+|Zezwól |Konto łącznika AD DS |Odczyt/zapis wszystkich właściwości |Podrzędne obiekty InetOrgPerson| 
+|Zezwól |Konto łącznika AD DS |Odczyt/zapis wszystkich właściwości |Obiekty grupy podrzędnej| 
+|Zezwól |Konto łącznika AD DS |Odczyt/zapis wszystkich właściwości |Podrzędne obiekty Contact| 
 
-### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Uprawnienia do folderów publicznych poczty programu Exchange (wersja zapoznawcza) 
-Aby ustawić uprawnienia dla konta usługi AD DS łącznika, podczas korzystania z funkcji Foldery publiczne poczty programu Exchange, uruchom polecenie: 
+### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Uprawnienia dla folderów publicznych poczty programu Exchange (wersja zapoznawcza) 
+Aby ustawić uprawnienia dla konta łącznika AD DS podczas korzystania z funkcji folderów publicznych poczty programu Exchange, uruchom polecenie: 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-lub; 
+Oraz 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
-To polecenie cmdlet będzie ustawić następujące uprawnienia: 
+To polecenie cmdlet ustawi następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Access |Dotyczy|
+|Typ |Nazwa |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
-|Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne PublicFolder| 
+|Zezwól |Konto łącznika AD DS |Odczyt wszystkich właściwości |Podrzędne obiekty PublicFolder| 
 
-### <a name="restrict-permissions-on-the-ad-ds-connector-account"></a>Ogranicz uprawnienia w łączniku usługi AD DS konto 
-Ten skrypt programu PowerShell spowoduje podwyższenie poziomu uprawnień dla konta łącznika AD podać jako parametr. Obostrzenie uprawnień obejmuje następujące czynności: 
+### <a name="restrict-permissions-on-the-ad-ds-connector-account"></a>Ogranicz uprawnienia na koncie łącznika AD DS 
+Ten skrypt programu PowerShell zwiększy uprawnienia do konta łącznika usługi AD dostarczonego jako parametr. Podwyższenie poziomu uprawnień obejmuje następujące kroki: 
 
 - Wyłącz dziedziczenie dla określonego obiektu 
-- Usunąć wszystkie wpisy kontroli dostępu dla określonego obiektu, z wyjątkiem ACE specyficzne dla siebie, ponieważ chcemy zachować uprawnienia domyślne, jeśli chodzi o SAMODZIELNIE. 
+- Usuń wszystkie wpisy kontroli dostępu do określonego obiektu, z wyjątkiem kontroli dostępu do własnych, gdy chcemy zachować domyślne uprawnienia, które są niezmienione, gdy nastąpi samodzielne. 
  
-  Parametr - ADConnectorAccountDN jest konto usługi AD, w której uprawnienia muszą być ściągane. Jest to zazwyczaj MSOL_nnnnnnnnnnnn konta domeny, który jest skonfigurowany w łączniku usługi AD DS (zobacz Określanie konta łącznika AD DS). Credential parametr niezbędne jest określenie konta administratora, które ma niezbędne uprawnienia, aby ograniczyć uprawnienia usługi Active Directory w obiekcie docelowym usługi AD. Jest to zazwyczaj, Enterprise lub administratora domeny.  
+  Parametr-ADConnectorAccountDN jest kontem usługi AD, którego uprawnienia należy wzmocnić. Jest to zazwyczaj konto domeny MSOL_nnnnnnnnnnnn, które jest skonfigurowane w łączniku AD DS (zobacz Określanie konta łącznika AD DS). Parametr-Credential jest wymagany do określenia konta administratora, które ma niezbędne uprawnienia, aby ograniczyć uprawnienia Active Directory do docelowego obiektu usługi AD. Jest to zwykle administrator przedsiębiorstwa lub domeny.  
 
 ``` powershell
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
@@ -290,23 +290,23 @@ $credential = Get-Credential
 Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
 ```
 
-To polecenie cmdlet będzie ustawić następujące uprawnienia: 
+To polecenie cmdlet ustawi następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Access |Dotyczy|
+|Typ |Nazwa |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
-|Zezwalaj |SYSTEM |Pełna kontrola |Ten obiekt 
-|Zezwalaj |Enterprise Admins |Pełna kontrola |Ten obiekt 
-|Zezwalaj |Administratorzy domeny |Pełna kontrola |Ten obiekt 
-|Zezwalaj |Administratorzy |Pełna kontrola |Ten obiekt 
-|Zezwalaj |Enterprise Domain Controllers |Wyświetl zawartość |Ten obiekt 
-|Zezwalaj |Enterprise Domain Controllers |Odczyt wszystkich właściwości |Ten obiekt 
-|Zezwalaj |Enterprise Domain Controllers |Uprawnienia do odczytu |Ten obiekt 
-|Zezwalaj |Uwierzytelnieni użytkownicy |Wyświetl zawartość |Ten obiekt 
-|Zezwalaj |Uwierzytelnieni użytkownicy |Odczyt wszystkich właściwości |Ten obiekt 
-|Zezwalaj |Uwierzytelnieni użytkownicy |Uprawnienia do odczytu |Ten obiekt 
+|Zezwól |SYSTEMAMI |Pełna kontrola |Ten obiekt 
+|Zezwól |Administratorzy przedsiębiorstwa |Pełna kontrola |Ten obiekt 
+|Zezwól |Administratorzy domeny |Pełna kontrola |Ten obiekt 
+|Zezwól |Administratorzy |Pełna kontrola |Ten obiekt 
+|Zezwól |Kontrolery domeny przedsiębiorstwa |Wyświetl zawartość |Ten obiekt 
+|Zezwól |Kontrolery domeny przedsiębiorstwa |Odczyt wszystkich właściwości |Ten obiekt 
+|Zezwól |Kontrolery domeny przedsiębiorstwa |Uprawnienia do odczytu |Ten obiekt 
+|Zezwól |Uwierzytelnieni użytkownicy |Wyświetl zawartość |Ten obiekt 
+|Zezwól |Uwierzytelnieni użytkownicy |Odczyt wszystkich właściwości |Ten obiekt 
+|Zezwól |Uwierzytelnieni użytkownicy |Uprawnienia do odczytu |Ten obiekt 
 
 ## <a name="next-steps"></a>Następne kroki
-- [Azure AD Connect: Konta i uprawnienia](reference-connect-accounts-permissions.md)
+- [Azure AD Connect: Accounts and permissions](reference-connect-accounts-permissions.md) (Azure AD Connect: konta i uprawnienia)
 - [Instalacja ekspresowa](how-to-connect-install-express.md)
 - [Instalacja niestandardowa](how-to-connect-install-custom.md)
 - [Odwołanie ADSyncConfig](reference-connect-adsyncconfig.md)

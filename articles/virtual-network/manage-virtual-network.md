@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 04cd5035d012e7846cc97a5a057fd71ebe103ce3
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 242cdcc07821151503dc6765f820187c0c3dfc53
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168746"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515569"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Tworzenie, zmienianie i usuwanie sieci wirtualnej
 
@@ -37,7 +37,7 @@ Przed wykonaniem kroków opisanych w sekcji tego artykułu wykonaj następujące
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-1. Wybierz pozycję **+ Utwórz zasób**@no__t **-1 sieć** **wirtualna** > .
+1. Wybierz pozycję **+ Utwórz zasób**  > **sieci**  > **sieci wirtualnej**.
 2. Wprowadź lub wybierz wartości dla następujących ustawień, a następnie wybierz pozycję **Utwórz**:
    - **Nazwa**: nazwa musi być unikatowa w wybranej [grupie zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) , w której ma zostać utworzona sieć wirtualna. Nie można zmienić nazwy po utworzeniu sieci wirtualnej. W miarę upływu czasu można utworzyć wiele sieci wirtualnych. Aby uzyskać sugestie dotyczące nazewnictwa, zobacz [konwencje nazewnictwa](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming). Postępując zgodnie z konwencją nazewnictwa, można ułatwić zarządzanie wieloma sieciami wirtualnymi.
    - **Przestrzeń adresowa**: przestrzeń adresowa dla sieci wirtualnej składa się z co najmniej jednego nienakładających się zakresów adresów, które są określone w notacji CIDR. Zdefiniowany zakres adresów może być publiczny lub prywatny (RFC 1918). Niezależnie od tego, czy zakres adresów został zdefiniowany jako publiczny, czy prywatny, zakres adresów jest dostępny tylko w ramach sieci wirtualnej, z połączonych sieci wirtualnych oraz z dowolnych sieci lokalnych, które zostały podłączone do sieci wirtualnej. Nie można dodać następujących zakresów adresów:
@@ -47,7 +47,7 @@ Przed wykonaniem kroków opisanych w sekcji tego artykułu wykonaj następujące
      - 169.254.0.0/16 (połączenie lokalne)
      - 168.63.129.16/32 (wewnętrzna usługa DNS, DHCP i Azure Load Balancer [sonda kondycji](../load-balancer/load-balancer-custom-probe-overview.md#probesource))
 
-     Chociaż można zdefiniować tylko jeden zakres adresów podczas tworzenia sieci wirtualnej, można dodać więcej zakresów adresów do przestrzeni adresowej po utworzeniu sieci wirtualnej. Aby dowiedzieć się, jak dodać zakres adresów do istniejącej sieci wirtualnej, zobacz [Dodawanie lub usuwanie zakresu adresów](#add-or-remove-an-address-range).
+     Chociaż można zdefiniować tylko jeden zakres adresów podczas tworzenia sieci wirtualnej w portalu, można dodać więcej zakresów adresów do przestrzeni adresowej po utworzeniu sieci wirtualnej. Aby dowiedzieć się, jak dodać zakres adresów do istniejącej sieci wirtualnej, zobacz [Dodawanie lub usuwanie zakresu adresów](#add-or-remove-an-address-range).
 
      >[!WARNING]
      >Jeśli sieć wirtualna ma zakresy adresów, które nakładają się na inną sieć wirtualną lub sieć lokalną, nie można połączyć obu tych sieci. Przed zdefiniowaniem zakresu adresów należy rozważyć, czy w przyszłości warto połączyć sieć wirtualną z innymi sieciami wirtualnymi lub sieciami lokalnymi.

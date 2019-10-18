@@ -4,18 +4,18 @@ description: Ten artykuł zawiera informacje referencyjne dotyczące polecenia A
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9afcd8de1af42424649dd8e44fc07f7bfd881257
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ebed5c8dbe5001e9beab17bdbff41610277143b2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195713"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514690"
 ---
-# <a name="azcopy-make"></a>AzCopy
+# <a name="azcopy-make"></a>azcopy make
 
 Tworzy kontener lub udział plików.
 

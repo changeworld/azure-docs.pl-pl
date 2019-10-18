@@ -1,39 +1,76 @@
 ---
-title: Przekształcenie przepływu danych mapowania Azure Data Factory istnieje
-description: Sprawdzanie istniejących wierszy przy użyciu funkcji mapowania usługi Fabryka danych z przekształceniem EXISTS
+title: Istnieje transformacja w przepływie danych mapowania Azure Data Factory | Microsoft Docs
+description: Sprawdzanie istniejących wierszy przy użyciu transformacji EXISTS w Azure Data Factory mapowaniu przepływu danych
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: 6048a6d30d37b9d2b46c3105c5f8eac0a9ca41c0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: HT
+ms.date: 10/16/2019
+ms.openlocfilehash: dfd304b0c15b325208daba104bb79863fcd3f53f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387850"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527449"
 ---
-# <a name="mapping-data-flow-exists-transformation"></a>Przekształcenie przepływu danych mapowania istnieje
+# <a name="exists-transformation-in-mapping-data-flow"></a>Istnieje transformacja przepływu danych mapowania
 
+Transformacja EXISTS to transformacja filtrowania wierszy, która sprawdza, czy dane istnieją w innym źródle lub strumieniu. Strumień wyjściowy zawiera wszystkie wiersze w lewym strumieniu, który istnieje lub nie istnieje w odpowiednim strumieniu. Transformacja istnieje podobna do ```SQL WHERE EXISTS``` i ```SQL WHERE NOT EXISTS```.
 
+## <a name="configuration"></a>Konfigurowanie
 
-Transformacja EXISTS to transformacja filtru wierszy, która powoduje zatrzymanie lub umożliwienie przepływania wierszy w danych. Transformacja istnieje podobna do ```SQL WHERE EXISTS``` i ```SQL WHERE NOT EXISTS```. Po przekształceniu EXISTS wiersze ze strumienia danych będą obejmować wszystkie wiersze, w których wartości kolumn ze źródła 1 istnieją w źródle 2 lub nie istnieją w źródle 2.
+Wybierz, który strumień danych ma być używany na liście rozwijanej **odpowiedniego strumienia** .
+
+Określ, czy chcesz, aby dane były już istniejące, czy nie istnieją w ustawieniu **typu istnieją** .
+
+Wybierz kolumny klucza, które mają zostać porównane jako warunki istnienia. Domyślnie przepływ danych wyszukuje równość między jedną kolumną w każdym strumieniu. Aby porównać za pośrednictwem wartości obliczeniowej, umieść kursor nad listą rozwijaną kolumny i wybierz **kolumnę obliczaną**.
 
 ![Istnieją ustawienia](media/data-flow/exists.png "Istnieje 1")
 
-Wybierz drugie źródło istnieje, aby przepływ danych mógł porównać wartości z strumienia 1 w strumieniu 2.
+### <a name="multiple-exists-conditions"></a>Istnieje wiele warunków
 
-Wybierz kolumnę ze źródła 1 i ze źródła 2, których wartości mają być sprawdzane, czy nie istnieją.
+Aby porównać wiele kolumn z każdego strumienia, Dodaj warunek "istnieje", klikając ikonę znaku plus obok istniejącego wiersza. Każdy dodatkowy warunek jest przyłączony do instrukcji "i". Porównywanie dwóch kolumn jest takie samo jak następujące wyrażenie:
 
-## <a name="multiple-exists-conditions"></a>Istnieje wiele warunków
+`source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
-Obok każdego wiersza w warunkach kolumny istnieje znak + dostępny po umieszczeniu wskaźnika myszy nad wierszem REACH. Pozwoli to dodać wiele wierszy dla warunków istnienia. Każdy dodatkowy warunek jest "i".
+### <a name="custom-expression"></a>Wyrażenie niestandardowe
 
-## <a name="custom-expression"></a>Wyrażenie niestandardowe
+Aby utworzyć wyrażenie o dowolnej postaci zawierające operatory inne niż "i" i "Equals do", zaznacz pole **wyrażenie niestandardowe** . Wprowadź wyrażenie niestandardowe za pośrednictwem konstruktora wyrażeń przepływu danych, klikając niebieskie pole.
 
 ![Istnieją ustawienia niestandardowe](media/data-flow/exists1.png "Istnieje niestandardowe")
 
-Możesz kliknąć pozycję "wyrażenie niestandardowe", aby zamiast tego utworzyć wyrażenie o dowolnej postaci jako warunek istnieje lub nie istnieje. Zaznaczenie tego pola wyboru umożliwi wpisanie własnego wyrażenia jako warunku.
+## <a name="data-flow-script"></a>Skrypt przepływu danych
+
+### <a name="syntax"></a>Składnia
+
+```
+<leftStream>, <rightStream>
+    exists(
+        <conditionalExpression>,
+        negate: { true | false },
+        broadcast: {'none' | 'left' | 'right' | 'both'}
+    ) ~> <existsTransformationName>
+```
+
+### <a name="example"></a>Przykład
+
+Poniższy przykład jest przekształceniem o nazwie `checkForChanges`, które pobiera lewe `NameNorm2` strumienia i właściwe `TypeConversions` przesyłania strumieniowego.  Warunek EXISTS jest wyrażeniem, `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` zwraca wartość true, jeśli zarówno kolumny `EMPID`, jak i `Region` w poszczególnych strumieniach pasują do siebie. Gdy sprawdzimy obecność, `negate` ma wartość false. Nie włączamy żadnej emisji na karcie Optymalizacja, więc `broadcast` ma `'none'` wartości.
+
+W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
+
+![Istnieje przykład](media/data-flow/exists-script.png "Istnieje przykład")
+
+Skrypt przepływu danych dla tego przekształcenia znajduje się w poniższym fragmencie kodu:
+
+```
+NameNorm2, TypeConversions
+    exists(
+        NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region,
+        negate:false,
+        broadcast: 'none'
+    ) ~> checkForChanges
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

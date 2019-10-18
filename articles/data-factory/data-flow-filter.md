@@ -1,37 +1,58 @@
 ---
-title: Przekształcenie filtru przepływu danych Azure Data Factory mapowania
-description: Przekształcenie filtru przepływu danych Azure Data Factory mapowania
+title: Przekształcenie filtru w Azure Data Factory mapowaniu przepływu danych | Microsoft Docs
+description: Filtrowanie wierszy przy użyciu transformacji filtru w przepływie danych mapowania Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: 2afe079c346a15ec212664ce022ac5e2926b12d4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 10/16/2019
+ms.openlocfilehash: a4dd53f37a8a963d05a3ad9c49769528e945f6a1
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387808"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527372"
 ---
-# <a name="azure-data-factory-filter-transformation"></a>Przekształcanie filtrów usługi Azure Data Factory
+# <a name="filter-transformation-in-mapping-data-flow"></a>Przekształcenie filtru w strumieniu danych mapowania
 
+Przekształcenia filtru umożliwiają filtrowanie wierszy na podstawie warunku. Strumień wyjściowy zawiera wszystkie wiersze, które pasują do warunku filtrowania. Transformacja filtru jest podobna do klauzuli WHERE w SQL.
 
+## <a name="configuration"></a>Konfigurowanie
 
-Przekształcenia filtru zapewniają filtrowanie wierszy. Utwórz wyrażenie definiujące warunek filtru. Kliknij w polu tekstowym, aby uruchomić Konstruktora wyrażeń. Wewnątrz konstruktora wyrażeń Utwórz wyrażenie filtru, aby określić, które wiersze z bieżącego strumienia danych mogą być przekazywane (filtrowanie) do następnej transformacji. Przekształcenie filtru należy traktować jako klauzulę WHERE instrukcji SQL.
+Użyj konstruktora wyrażeń przepływu danych, aby wprowadzić wyrażenie dla warunku filtru. Aby otworzyć Konstruktora wyrażeń, kliknij niebieską ramkę. Warunek filtru musi być typu Boolean. Aby uzyskać więcej informacji na temat tworzenia wyrażenia, zobacz dokumentację programu [Expression Builder](concepts-data-flow-expression-builder.md) .
 
-## <a name="filter-on-loan_status-column"></a>Filtruj według kolumny loan_status:
+![Przekształcenie filtru](media/data-flow/filter1.png "Przekształcenie filtru")
+
+## <a name="data-flow-script"></a>Skrypt przepływu danych
+
+### <a name="syntax"></a>Składnia
 
 ```
-in([‘Default’, ‘Charged Off’, ‘Fully Paid’], loan_status).
+<incomingStream>
+    filter(
+        <conditionalExpression>
+    ) ~> <filterTransformationName>
 ```
 
-Filtrowanie w kolumnie Year w pokazie filmów:
+### <a name="example"></a>Przykład
+
+Poniższy przykład to transformacja podziału warunkowego o nazwie `FilterBefore1960`, która przyjmuje `CleanData` strumienia przychodzącego. Warunek filtru jest `year <= 1960` wyrażenia.
+
+W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
+
+![Przekształcenie filtru](media/data-flow/filter1.png "Przekształcenie filtru")
+
+Skrypt przepływu danych dla tego przekształcenia znajduje się w poniższym fragmencie kodu:
 
 ```
-year > 1980
+CleanData
+    filter(
+        year <= 1960
+    ) ~> FilterBefore1960
+
 ```
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wypróbuj transformację filtrowania kolumn, [przekształcenie SELECT](data-flow-select.md)
+Odfiltruj kolumny z użyciem [przekształcenia SELECT](data-flow-select.md)

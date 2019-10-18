@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: b69eda59c9c8032510df036d3aa0d160105fbc16
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286550"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533176"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Znane problemy i rozwiązywanie problemów Azure Machine Learning
 
@@ -37,7 +37,7 @@ Możesz chcieć uruchomić eksperyment zawierający tylko zestaw danych, aby wiz
  
 Przed usunięciem można połączyć zestaw danych z dowolnym modułem przekształcania danych (Wybierz kolumny w zestawie danych, edytować metadane, podzielić dane itp.) i uruchomić eksperyment. Następnie można wizualizować zestaw danych. 
 
-Poniższy obraz pokazuje, jak: ![visulize-Data @ no__t-1
+Poniższy obraz pokazuje, jak: ![visulize — ](./media/resource-known-issues/aml-visualize-data.png) danych
 
 ## <a name="sdk-installation-issues"></a>Problemy z instalacją zestawu SDK
 
@@ -101,7 +101,7 @@ W przypadku korzystania z funkcji automatycznego uczenia maszynowego na Azure Da
 
 ### <a name="10-iterations-for-automated-machine-learning"></a>> 10 iteracji dla automatycznej uczenia maszynowego
 
-W obszarze zautomatyzowane ustawienia uczenia maszynowego, jeśli masz więcej niż 10 iteracji, ustaw wartość `show_output` na `False` podczas przesyłania przebiegu.
+W obszarze zautomatyzowane ustawienia uczenia maszynowego, jeśli masz więcej niż 10 iteracji, ustaw `show_output` na `False` podczas przesyłania przebiegu.
 
 ### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Element widget dla Azure Machine Learning SDK/automatycznej uczenia maszynowego
 
@@ -130,7 +130,7 @@ Jeśli te kroki nie rozwiążą problemu, spróbuj ponownie uruchomić klaster.
 
 Jeśli podczas odczytywania danych w klastrze Azure Databricks wyświetlany jest błąd `FailToSendFeather`, zapoznaj się z następującymi rozwiązaniami:
 
-* Uaktualnij pakiet `azureml-sdk[automl_databricks]` do najnowszej wersji.
+* Uaktualnij pakiet `azureml-sdk[automl]` do najnowszej wersji.
 * Dodaj `azure-dataprep` w wersji 1.1.8 lub nowszej.
 * Dodaj `pyarrow` w wersji 0,11 lub nowszej.
 
@@ -177,7 +177,7 @@ Jeśli używasz udziału plików dla innych obciążeń, takich jak transfer dan
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Awarie usług WebServices w usłudze Azure Kubernetes 
 
-Wiele błędów sieci Web w usłudze Azure Kubernetes można debugować, łącząc się z klastrem przy użyciu `kubectl`. @No__t-0 dla klastra usługi Azure Kubernetes Service można uzyskać, uruchamiając
+Wiele błędów sieci Web w usłudze Azure Kubernetes można debugować, łącząc się z klastrem przy użyciu `kubectl`. @No__t_0 klastra usługi Azure Kubernetes Service można uzyskać, uruchamiając
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -218,7 +218,7 @@ kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes przechowuje wpisy tajne w zakodowanym formacie Base-64. Aby zapewnić ich `attach_config.enable_ssl`, należy 64 najpierw zdekodować składniki `cert.pem` i `key.pem` wpisów tajnych. 
+>Kubernetes przechowuje wpisy tajne w zakodowanym formacie Base-64. Aby zapewnić `attach_config.enable_ssl`, należy 64 najpierw zdekodować `cert.pem` i `key.pem` składniki wpisów tajnych. 
 
 ## <a name="recommendations-for-error-fix"></a>Zalecenia dotyczące poprawki błędów
 W oparciu o ogólną obserwację poniżej przedstawiono zalecenia dotyczące platformy Azure ML do rozwiązywania niektórych typowych błędów w usłudze Azure ML.
@@ -226,7 +226,7 @@ W oparciu o ogólną obserwację poniżej przedstawiono zalecenia dotyczące pla
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (Brak modułu o nazwie)
 Jeśli używasz programu ModuleErrors podczas przesyłania eksperymentów na platformie Azure ML, oznacza to, że skrypt szkoleniowy oczekuje na zainstalowanie pakietu, ale nie został dodany. Po podaniu nazwy pakietu platforma Azure ML zainstaluje pakiet w środowisku używanym do uczenia się. 
 
-Jeśli używasz [szacowania](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) do przesyłania eksperymentów, możesz określić nazwę pakietu za pośrednictwem `pip_packages` lub `conda_packages` parametru w szacowania, na podstawie którego źródła chcesz zainstalować pakiet. Można również określić plik yml ze wszystkimi zależnościami przy użyciu polecenia `conda_dependencies_file`or Wyświetl wszystkie wymagania dotyczące PIP w pliku txt przy użyciu parametru `pip_requirements_file`.
+Jeśli używasz [szacowania](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) do przesyłania eksperymentów, możesz określić nazwę pakietu za pośrednictwem `pip_packages` lub `conda_packages` parametru w szacowania, na podstawie którego źródła chcesz zainstalować pakiet. Można również określić plik yml ze wszystkimi zależnościami przy użyciu `conda_dependencies_file`or wyświetlić wszystkie wymagania dotyczące PIP w pliku txt przy użyciu parametru `pip_requirements_file`.
 
 Usługa Azure ML udostępnia również strukturę specyficzną dla szacowania dla Tensorflow, PyTorch, łańcucha i skryptu sklearn. Przy użyciu tych szacowania upewnij się, że zależności struktury są zainstalowane w Twoim imieniu w środowisku używanym do uczenia się. Istnieje możliwość określenia dodatkowych zależności, jak opisano powyżej. 
  

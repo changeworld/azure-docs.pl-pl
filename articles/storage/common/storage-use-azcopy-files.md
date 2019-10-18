@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 361b16ff074baaf0118ccfe6d3c2a20f0e66c623
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 8f86839a11afca746b228aa9b9c25c9813b69ec7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273910"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528687"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Transferowanie danych za pomocą AzCopy i magazynu plików 
 
@@ -38,7 +38,7 @@ Aby przekazać pliki i katalogi z komputera lokalnego, można użyć polecenia [
 Ta sekcja zawiera następujące przykłady:
 
 > [!div class="checklist"]
-> * Przekaż plik
+> * Przekazywanie pliku
 > * Przekaż katalog
 > * Przekaż zawartość katalogu
 > * Przekaż określony plik
@@ -48,7 +48,7 @@ Ta sekcja zawiera następujące przykłady:
 
 Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md).
 
-### <a name="upload-a-file"></a>Przekaż plik
+### <a name="upload-a-file"></a>Przekazywanie pliku
 
 |    |     |
 |--------|-----------|
@@ -116,14 +116,14 @@ Można również wykluczać pliki przy użyciu opcji `--exclude-pattern`. Aby do
 
 Opcje `--include-pattern` i `--exclude-pattern` mają zastosowanie tylko do nazw plików, a nie do ścieżki.  Jeśli chcesz skopiować wszystkie pliki tekstowe, które istnieją w drzewie katalogów, użyj opcji `–recursive`, aby uzyskać całe drzewo katalogów, a następnie użyj `–include-pattern` i określ `*.txt`, aby pobrać wszystkie pliki tekstowe.
 
-## <a name="download-files"></a>Pobierz pliki
+## <a name="download-files"></a>Pobieranie plików
 
 Można użyć polecenia [copy AzCopy](storage-ref-azcopy-copy.md) do pobrania plików, katalogów i udziałów plików na komputer lokalny.
 
 Ta sekcja zawiera następujące przykłady:
 
 > [!div class="checklist"]
-> * Pobierz plik
+> * Pobieranie pliku
 > * Pobierz katalog
 > * Pobierz zawartość katalogu
 > * Pobieranie określonych plików
@@ -133,7 +133,7 @@ Ta sekcja zawiera następujące przykłady:
 
 Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md).
 
-### <a name="download-a-file"></a>Pobierz plik
+### <a name="download-a-file"></a>Pobieranie pliku
 
 |    |     |
 |--------|-----------|
@@ -237,7 +237,7 @@ Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-
 
 ## <a name="synchronize-files"></a>Synchronizuj pliki
 
-Zawartość lokalnego systemu plików można zsynchronizować z udziałem plików. Synchronizacja jest jednokierunkowa. Innymi słowy, możesz wybrać, które z tych dwóch punktów końcowych są źródłem, a które są lokalizacją docelową. Synchronizacja używa także serwera do interfejsów API serwera.
+Zawartość udziału plików można zsynchronizować z innym udziałem plików. Możesz również zsynchronizować zawartość katalogu w udziale plików z zawartością katalogu znajdującego się w innym udziale plików. Synchronizacja jest jednokierunkowa. Innymi słowy, możesz wybrać, które z tych dwóch punktów końcowych są źródłem, a które są lokalizacją docelową. Synchronizacja używa także serwera do interfejsów API serwera.
 
 > [!NOTE]
 > Obecnie ten scenariusz jest obsługiwany tylko w przypadku kont, które nie mają hierarchicznej przestrzeni nazw. Bieżąca wersja programu AzCopy nie jest synchronizowana między Azure Files i Blob Storage.
@@ -248,23 +248,23 @@ Jeśli ustawisz flagę `--delete-destination` do `true` AzCopy usuwa pliki bez w
 
 Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Sync](storage-ref-azcopy-sync.md).
 
-### <a name="update-a-file-share-with-changes-to-a-local-file-system"></a>Aktualizowanie udziału plików ze zmianami w lokalnym systemie plików
+### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Aktualizowanie udziału plików ze zmianami w innym udziale plików
 
-W takim przypadku udział plików jest miejscem docelowym, a lokalny system plików jest źródłem.
-
-|    |     |
-|--------|-----------|
-| **Obowiązuje** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-name>' --recursive` |
-| **Przykład** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/mycontainer' --recursive` |
-
-### <a name="update-a-local-file-system-with-changes-to-a-file-share"></a>Aktualizowanie lokalnego systemu plików ze zmianami w udziale plików
-
-W takim przypadku lokalny system plików jest miejscem docelowym, a udział plików to źródło.
+Pierwszym udziałem plików, który pojawia się w tym poleceniu jest źródło. Drugim z nich jest miejsce docelowe.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy sync 'https://<storage-account-name>.file.core.windows.net/<file-share-name>' 'C:\myDirectory' --recursive` |
-| **Przykład** | `azcopy sync 'https://mystorageaccount.file.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
+| **Obowiązuje** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>' --recursive` |
+| **Przykład** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare' --recursive` |
+
+### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Aktualizowanie katalogu ze zmianami w katalogu w innym udziale plików
+
+Pierwszym katalogiem, który pojawia się w tym poleceniu jest źródło. Drugim z nich jest miejsce docelowe.
+
+|    |     |
+|--------|-----------|
+| **Obowiązuje** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>' --recursive` |
+| **Przykład** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>Następne kroki
 

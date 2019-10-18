@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: a83980c3d4d03f53a19918ed213c965e50baa406
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720055"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515717"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Samouczek: łączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych z użyciem witryny Azure Portal
 
@@ -46,21 +46,18 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
 2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Sieć wirtualna**.
-3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
+3. Na stronie **podstawowe** wprowadź lub wybierz poniższe informacje, a następnie zaakceptuj ustawienia domyślne dla pozostałych ustawień:
 
     |Ustawienie|Wartość|
     |---|---|
-    |Nazwa|myVirtualNetwork1|
-    |Przestrzeń adresowa|10.0.0.0/16|
     |Subskrypcja| Wybierz subskrypcję.|
     |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*.|
-    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
-    |Nazwa podsieci|Subnet1|
-    |Zakres adresów podsieci|10.0.0.0/24|
-
-      ![Tworzenie sieci wirtualnej](./media/tutorial-connect-virtual-networks-portal/create-virtual-network.png)
-
-4. Ponownie wykonaj kroki 1–3 z następującymi zmianami:
+    |Region| Wybierz pozycję **Wschodnie stany USA**.|
+    |Nazwa|myVirtualNetwork1|
+    ! [Konfigurowanie ustawień podstawowej sieci wirtualnej] (
+4. Na stronie **adresy IP** wprowadź wartość 10.0.0.0/16 dla pola **przestrzeń adresowa** . Kliknij przycisk **Dodaj podsieć** poniżej i wprowadź Subnet1 dla **nazwy podsieci** i 10.0.0.0/24 dla **zakresu adresów podsieci**.
+   
+5. Ponownie wykonaj kroki 1–3 z następującymi zmianami:
 
     |Ustawienie|Wartość|
     |---|---|
@@ -105,22 +102,26 @@ Utwórz maszynę wirtualną w każdej sieci wirtualnej, dzięki czemu będzie mo
 
     |Ustawienie|Wartość|
     |---|---|
+    |Grupa zasobów| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
     |Nazwa|myVm1|
+    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Grupa zasobów| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
-    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
-4. Wybierz rozmiar maszyny wirtualnej w obszarze **Wybierz rozmiar**.
-5. Wybierz następujące wartości w obszarze **Ustawienia**, a następnie wybierz przycisk **OK**:
+   
+4. Wybierz rozmiar maszyny wirtualnej dla opcji **rozmiar** .
+5. Wybierz następujące wartości w obszarze **Sieć**:
 
     |Ustawienie|Wartość|
     |---|---|
-    |Sieć wirtualna| myVirtualNetwork1 — jeśli jeszcze nie jest wybrana, wybierz pozycję **Sieć wirtualna**, a następnie wybierz pozycję **myVirtualNetwork1** w obszarze **Wybierz sieć wirtualną**.|
-    |Podsieć| Subnet1 — jeśli jeszcze nie jest wybrana, wybierz pozycję **Podsieć**, a następnie wybierz pozycję **Subnet1** w obszarze **Wybierz podsieć**.|
+    |Sieć wirtualna| myVirtualNetwork1 — Jeśli nie została jeszcze wybrana, wybierz pozycję **Sieć wirtualna** , a następnie wybierz pozycję **myVirtualNetwork1**.|
+    |Podsieć| Subnet1 — Jeśli nie została jeszcze wybrana, wybierz pozycję **podsieć** , a następnie wybierz pozycję **Subnet1**.|
     
+
     ![Ustawienia maszyny wirtualnej](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
- 
-6. W obszarze **Utwórz** w sekcji **Podsumowanie** wybierz pozycję **Utwórz**, aby rozpocząć wdrażanie maszyny wirtualnej.
+   
+6. Wybierz pozycję **Sieć**. Wybierz opcję **Zezwalaj na wybrane porty** dla **publicznych portów przychodzących** . Wybierz pozycję **RDP** dla opcji **Wybierz porty przychodzące** poniżej. 
+
+7. Wybierz przycisk **Recenzja + Utwórz** w dolnym lewym rogu, aby rozpocząć wdrażanie maszyny wirtualnej.
 
 ### <a name="create-the-second-vm"></a>Tworzenie drugiej maszyny wirtualnej
 

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Biblioteka kliencka personalizacji dla platformy .NET | Microsoft Docs'
+title: 'Szybki Start: Biblioteka klienta personalizacji dla platformy .NET | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Rozpocznij pracę z biblioteką klienta narzędzia Personalizacja dla platformy .NET za pomocą pętli szkoleniowej.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4308ed6d00bd3900986f08a93a686f0d7d00bcfb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345235"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515599"
 ---
-# <a name="quickstart-personalize-client-library-for-net"></a>Szybki start: Personalizowanie biblioteki klienckiej dla platformy .NET
+# <a name="quickstart-personalizer-client-library-for-net"></a>Szybki Start: Biblioteka klienta personalizacji dla platformy .NET
 
 Wyświetl spersonalizowaną zawartość w C# tym przewodniku szybki start za pomocą usługi personalizacji.
 
@@ -26,7 +26,7 @@ Wprowadzenie do biblioteki klienta programu Personalizacja dla platformy .NET. W
  * Ustalanie rangi listy akcji do personalizacji.
  * Ocenę nagrody raportu wskazującej na powodzenie najwyższej funkcjonalnej akcji.
 
-[](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [Przykłady](https://github.com/Azure-Samples/cognitive-services-personalizer-samples) pakietu | [kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)[](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)źródłowego w bibliotece dokumentacji referencyjnej (NuGet) | 
+[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  |   |  pakietu[kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) [ | ](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -53,8 +53,8 @@ Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azur
 <!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
 Po otrzymaniu klucza z subskrypcji próbnej lub zasobu Utwórz dwie [zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `PERSONALIZER_RESOURCE_KEY`dla klucza zasobu.
-* `PERSONALIZER_RESOURCE_ENDPOINT`dla punktu końcowego zasobu.
+* `PERSONALIZER_RESOURCE_KEY` klucza zasobu.
+* `PERSONALIZER_RESOURCE_ENDPOINT` dla punktu końcowego zasobu.
 
 W Azure Portal wartości klucza i punktu końcowego są dostępne na stronie **Szybki Start** .
 
@@ -70,7 +70,7 @@ W przypadku pierwszego wystąpienia pętli programu personalizacji nie istnieje 
 
 Utwórz nową aplikację platformy .NET Core w preferowanym edytorze lub środowisku IDE. 
 
-W oknie konsoli (na przykład cmd, PowerShell lub bash) Użyj polecenia dotnet `new` , aby utworzyć nową aplikację konsolową o nazwie. `personalizer-quickstart` To polecenie tworzy prosty projekt "Hello world" C# z pojedynczym plikiem źródłowym: `Program.cs`. 
+W oknie konsoli (na przykład cmd, PowerShell lub bash) Użyj polecenia dotnet `new`, aby utworzyć nową aplikację konsolową o nazwie `personalizer-quickstart`. To polecenie tworzy prosty projekt "Hello world" C# z pojedynczym plikiem źródłowym: `Program.cs`. 
 
 ```console
 dotnet new console -n personalizer-quickstart
@@ -122,19 +122,19 @@ Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą bi
 
 ## <a name="add-the-dependencies"></a>Dodawanie zależności
 
-W katalogu projektu Otwórz plik **program.cs** w preferowanym edytorze lub w środowisku IDE. Zastąp istniejący `using` kod następującymi `using` dyrektywami:
+W katalogu projektu Otwórz plik **program.cs** w preferowanym edytorze lub w środowisku IDE. Zastąp istniejący kod `using` następującymi dyrektywami `using`:
 
 [!code-csharp[Using statements](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Dodawanie informacji o zasobach personalizacji
 
-W klasie **program** Utwórz zmienne dla klucza i punktu końcowego usługi Azure Resource pobrane ze zmiennych środowiskowych o nazwie `PERSONALIZER_RESOURCE_KEY` i. `PERSONALIZER_RESOURCE_ENDPOINT` Jeśli po uruchomieniu aplikacji zostały utworzone zmienne środowiskowe, Edytor, środowisko IDE lub powłoka, na których działa, będzie musiał zostać zamknięte i ponownie załadowane w celu uzyskania dostępu do zmiennej. Metody zostaną utworzone w dalszej części tego przewodnika Szybki Start.
+W klasie **program** Utwórz zmienne dla klucza i punktu końcowego usługi Azure Resource pobrane ze zmiennych środowiskowych o nazwie `PERSONALIZER_RESOURCE_KEY` i `PERSONALIZER_RESOURCE_ENDPOINT`. Jeśli po uruchomieniu aplikacji zostały utworzone zmienne środowiskowe, Edytor, środowisko IDE lub powłoka, na których działa, będzie musiał zostać zamknięte i ponownie załadowane w celu uzyskania dostępu do zmiennej. Metody zostaną utworzone w dalszej części tego przewodnika Szybki Start.
 
 [!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=classVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Tworzenie klienta programu Personalizacja
 
-Następnie Utwórz metodę zwracającą klienta programu Personalizacja. Parametr do metody ma `PERSONALIZER_RESOURCE_ENDPOINT` wartość, a ApiKey `PERSONALIZER_RESOURCE_KEY`jest.
+Następnie Utwórz metodę zwracającą klienta programu Personalizacja. Parametr do metody jest `PERSONALIZER_RESOURCE_ENDPOINT`, a ApiKey jest `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-csharp[Create the Personalizer client](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=authorization)]
 
@@ -146,7 +146,7 @@ Akcje reprezentują opcje zawartości, które chcesz spersonalizować. Dodaj nas
 
 [!code-csharp[Present food taste preference to the user](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createUserFeatureTastePreference)]
 
-Obie metody wykorzystują `GetKey` metodę, aby odczytać wybór użytkownika z wiersza polecenia. 
+Obie metody wykorzystują metodę `GetKey`, aby odczytać wybór użytkownika z wiersza polecenia. 
 
 [!code-csharp[Read user's choice from the command line](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=readCommandLine)]
 
@@ -154,7 +154,7 @@ Obie metody wykorzystują `GetKey` metodę, aby odczytać wybór użytkownika z 
 
 Pętla szkoleniowa personalizacji jest cyklem wywołań rangi i nagrody. W tym przewodniku szybki start każdy wywołania rangi, aby spersonalizować zawartość, nastąpi wywołanie zarobkowe, aby poinformować program Personalizuj, jak dobrze zaklasyfikował zawartość usługi. 
 
-Poniższy kod w `main` metodzie jest pętlą przez cykl, który prosi użytkownika o ich preferencje w wierszu polecenia, wysyłając te informacje do narzędzia Personalizowanie do rangi, prezentując wybór rangi do klienta, aby wybrać spośród , a następnie wysłanie nagrody do programu Personalizowanie sygnalizujące, jak dobrze ta usługa w klasyfikacji zaznaczenia.
+Poniższy kod w metodzie `main` programu pętle przez cykl monitowania użytkownika o ich preferencje w wierszu polecenia, wysyłając te informacje do narzędzia Personalizacja, aby określić rangę i przedstawiony wybór do klienta w celu wybrania spośród listy , a następnie wysyłając do personalizacji wynagrodzenie sygnalizujące, jak dobrze ta usługa przeszedł w wyborze.
 
 ```csharp
 static void Main(string[] args)
@@ -242,7 +242,7 @@ Dodaj następujące metody, które [pobierają Opcje zawartości](#get-content-c
 
 ## <a name="request-a-rank"></a>Żądaj rangi
 
-Aby ukończyć żądanie rangi, program prosi o preferencje użytkownika w celu utworzenia `currentContent` opcji zawartości. Proces może utworzyć zawartość, która ma zostać wykluczona z rangi `excludeActions`, pokazana jako. Żądanie rangi wymaga akcji, currentContext, excludeActions i unikatowego identyfikatora zdarzenia rangi (jako identyfikatora GUID), aby otrzymać żądaną odpowiedź. 
+Aby ukończyć żądanie rangi, program prosi o preferencje użytkownika w celu utworzenia `currentContent` opcji zawartości. Proces może utworzyć zawartość, która ma zostać wykluczona z rangi, pokazana jako `excludeActions`. Żądanie rangi wymaga akcji, currentContext, excludeActions i unikatowego identyfikatora zdarzenia rangi (jako identyfikatora GUID), aby otrzymać żądaną odpowiedź. 
 
 Ten przewodnik Szybki Start zawiera proste funkcje kontekstu o porze dnia i preferencjach żywności dla użytkowników. W systemach produkcyjnych określenie i [Ocena](concept-feature-evaluation.md) [działań i funkcji](concepts-features.md) może być nieuproszczona.  
 
@@ -258,7 +258,7 @@ Ten przewodnik Szybki Start przypisuje prostą liczbę jako wynagrodzenie, zero 
 
 ## <a name="run-the-program"></a>Uruchamianie programu
 
-Uruchom aplikację za pomocą polecenia dotnet `run` z katalogu aplikacji.
+Uruchom aplikację z poleceniem dotnet `run` z katalogu aplikacji.
 
 ```console
 dotnet run

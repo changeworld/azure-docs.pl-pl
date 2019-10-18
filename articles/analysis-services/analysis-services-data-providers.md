@@ -4,15 +4,15 @@ description: Zawiera opis bibliotek klienckich wymaganych przez aplikacje klienc
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ea14f141ed4fa698a21da8030878b04a81f1d08
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298662"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512773"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Biblioteki klienckie do łączenia się z Azure Analysis Services
 
@@ -44,7 +44,7 @@ Analysis Services wykorzystywać trzy biblioteki klienckie, znane także jako do
 
 Aplikacje klienckie firmy Microsoft, takie jak Power BI Desktop i Excel, instalują wszystkie trzy biblioteki klienckie i aktualizują je, gdy są dostępne nowe wersje. W zależności od wersji lub częstotliwości aktualizacji niektóre biblioteki klienckie mogą nie być najnowszymi wersjami wymaganymi przez Azure Analysis Services. To samo dotyczy aplikacji niestandardowych lub innych interfejsów, takich jak AsCmd, TOM czy ADOMD.NET. Aplikacje te wymagają ręcznej lub programowo instalacji bibliotek. Biblioteki klienckie do instalacji ręcznej są zawarte w pakietach SQL Server Feature Pack jako pakiety dystrybucyjne. Jednak te biblioteki klienckie są powiązane z wersją SQL Server i mogą być nieaktualne.  
 
-Biblioteki klienckie dla połączeń klientów różnią się od dostawców danych wymaganych do nawiązania połączenia z serwerem Azure Analysis Services ze źródłem danych. Aby dowiedzieć się więcej o połączeniach DataSource, zobacz [DataSource Connections](analysis-services-datasource.md).
+Biblioteki klienckie dla połączeń klientów różnią się od dostawców danych wymaganych do nawiązania połączenia z serwerem Azure Analysis Services ze źródłem danych. Aby dowiedzieć się więcej o połączeniach ze źródłem danych, zobacz [połączenia ze źródłami danych](analysis-services-datasource.md).
 
 ## <a name="client-library-types"></a>Typy bibliotek klienta
 

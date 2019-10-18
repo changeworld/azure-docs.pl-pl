@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/17/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: c475bfc6179f3604ed6b83cafc75d34f4359513f
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373545"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532839"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co nowego w Azure Active Directory?
 
->Otrzymuj powiadomienia o tym, kiedy ponownie odwiedzasz Tę stronę pod kątem aktualizacji przez skopiowanie i wklejenie tego adresu URL: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` do ikony czytnika kanału @no__t 1RSS @ no__t-2.
+>Otrzymuj powiadomienia o tym, kiedy należy ponownie odwiedzić Tę stronę pod kątem aktualizacji przez skopiowanie i wklejenie tego adresu URL: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` do ikony czytnika ![RSS kanału informacyjnego ](./media/whats-new/feed-icon-16x16.png) czytnika kanału informacyjnego.
 
 Usługa Azure AD otrzymuje ulepszenia na bieżąco. Aby zachować aktualność najnowszych zmian, ten artykuł zawiera informacje na temat:
 
@@ -39,7 +39,21 @@ Ta strona jest aktualizowana co miesiąc, dlatego należy ją regularnie odwiedz
 
 ---
 
-## <a name="september-2019"></a>2019 września
+## <a name="october-2019"></a>Październik 2019
+
+### <a name="deprecation-of-the-identityriskevent-api-for-azure-ad-identity-protection-risk-detections"></a>Wycofanie interfejsu API identityRiskEvent na potrzeby wykrywania ryzyka Azure AD Identity Protection  
+
+**Typ:** Planowanie zmiany  
+**Kategoria usługi:** Ochrona tożsamości  
+**Możliwość produktu:** Ochrona tożsamości & zabezpieczenia
+
+W odpowiedzi na opinie dla deweloperów Azure AD — wersja Premium w przypadku subskrybentów P2 mogą teraz wykonywać złożone zapytania dotyczące danych wykrywania ryzyka Azure AD Identity Protection przy użyciu nowego interfejsu API riskDetection na potrzeby Microsoft Graph. Istniejąca wersja beta interfejsu API [identityRiskEvent](https://docs.microsoft.com/en-us/graph/api/resources/identityriskevent?view=graph-rest-beta) przestanie zwracać dane **na około 10 stycznia 2020**. Jeśli Twoja organizacja korzysta z interfejsu API identityRiskEvent, należy przejść do nowego interfejsu API riskDetection.
+
+Więcej informacji na temat nowego interfejsu API riskDetection można znaleźć w [dokumentacji dotyczącej interfejsu API wykrywania ryzyka](https://aka.ms/RiskDetectionsAPI).
+
+---
+
+## <a name="september-2019"></a>Wrzesień 2019 r.
 
 ### <a name="deprecation-of-the-power-bi-content-packs"></a>Przestarzałe pakiety zawartości Power BI
 
@@ -50,6 +64,8 @@ Ta strona jest aktualizowana co miesiąc, dlatego należy ją regularnie odwiedz
 Power BI Przestarzałe pakiety zawartości z magazynu i od **1 października 2019**, nie obsługujemy pakietu zawartości Power BI usługi Azure AD. Klienci korzystający obecnie z pakietu zawartości mogą nadal z nich korzystać, nawet jeśli źródłowe interfejsy API są starszymi wersjami. Alternatywą dla tego pakietu zawartości jest użycie skoroszytów usługi Azure AD (opartych na Log Analytics) w celu uzyskania szczegółowych informacji dotyczących usług związanych z usługą Azure AD.
 
 Aby uzyskać więcej informacji na temat skoroszytów, zobacz [jak używać skoroszytów Azure monitor dla Azure Active Directory raportów](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). Aby uzyskać więcej informacji na temat wycofania pakietów zawartości, zobacz wpis w blogu dotyczący [ogłaszania Power BI szablonów aplikacji ogólnie dostępna](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
+
+---
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>Moje profile są zmieniane i integrowane za pomocą strony konta Microsoft Office
 
@@ -175,7 +191,7 @@ Od 1 lipca 2019 firma Microsoft zatrzymała ofertę serwera usługi MFA dla nowy
 
 ---
 
-## <a name="august-2019"></a>2019 sierpnia
+## <a name="august-2019"></a>Sierpień 2019 r.
 
 ### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>Zaplanuj zmianę: zaniechanie Power BI pakietów zawartości
 
@@ -367,7 +383,7 @@ Aby uzyskać więcej informacji na temat konfigurowania Azure Monitor, zobacz [d
 
 25 września 2019 zostanie wyłączone stare, nieulepszone środowisko informacyjne zabezpieczeń na potrzeby rejestrowania i zarządzania informacjami o zabezpieczeniach użytkownika i włączania tylko nowej, [ulepszonej wersji](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271). Oznacza to, że użytkownicy nie będą już mogli używać starego środowiska.
 
-Aby uzyskać więcej informacji na temat udoskonalonego środowiska informacji o zabezpieczeniach, zobacz [dokumentację administracyjną](https://aka.ms/securityinfodocs)@no__t 1and naszej dokumentacji dotyczącej [użytkowników](https://aka.ms/securityinfoguide).
+Aby uzyskać więcej informacji na temat udoskonalonego środowiska informacji o zabezpieczeniach, zobacz [dokumentację administracyjną](https://aka.ms/securityinfodocs)  and naszej [dokumentacji użytkownika](https://aka.ms/securityinfoguide).
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>Aby włączyć to nowe środowisko, musisz:
 
@@ -400,7 +416,7 @@ Aby uzyskać więcej informacji, zobacz [powiadomienia o zmianach w usłudze Azu
 
 ---
 
-## <a name="july-2019"></a>Lipiec 2019
+## <a name="july-2019"></a>Lipiec 2019 r.
 
 ### <a name="plan-for-change-application-proxy-service-update-to-support-only-tls-12"></a>Zaplanuj zmianę: Aktualizacja usługi proxy aplikacji do obsługi tylko protokołu TLS 1,2
 
@@ -444,7 +460,7 @@ Usuwamy adres IP serwera usługi MFA z [usługi sieci Web adresu IP pakietu Offi
 
 26 lipca 2019 zmieniono sposób dostarczania tokenów tylko aplikacji za pomocą [uprawnień do przydzielenia poświadczeń klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow). Wcześniej aplikacje mogły uzyskać tokeny do wywoływania innych aplikacji, niezależnie od tego, czy aplikacja kliencka była w dzierżawie. Zaktualizowaliśmy to zachowanie, więc zasoby o pojedynczej dzierżawie nazywane czasami interfejsami API sieci Web mogą być wywoływane tylko przez aplikacje klienckie, które znajdują się w dzierżawie zasobów.
 
-Jeśli aplikacja nie znajduje się w dzierżawie zasobów, zostanie wyświetlony komunikat o błędzie z informacją o tym, `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` Aby rozwiązać ten problem, należy utworzyć nazwę główną usługi App Service w dzierżawie przy użyciu [punktu końcowego zgody administratora](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) lub [za pomocą programu PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell). dzięki czemu dzierżawca otrzymuje uprawnienia aplikacji do działania w ramach dzierżawy.
+Jeśli aplikacja nie znajduje się w dzierżawie zasobów, zostanie wyświetlony komunikat o błędzie z informacją o tym, `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` aby rozwiązać ten problem, należy utworzyć nazwę główną usługi App Service w dzierżawie przy użyciu [punktu końcowego zgody użytkownika](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) lub [za pomocą programu PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell). dzięki czemu dzierżawca otrzymuje uprawnienia aplikacji do działania w ramach dzierżawy.
 
 Aby uzyskać więcej informacji, zobacz [co nowego w uwierzytelnianiu?](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant).
 
@@ -657,7 +673,7 @@ Aby uzyskać więcej informacji o tych aktualizacjach, zobacz [filtrowanie dzien
 
 ---
 
-## <a name="june-2019"></a>Czerwiec 2019
+## <a name="june-2019"></a>Czerwiec 2019 r.
 
 ### <a name="new-riskdetections-api-for-microsoft-graph-public-preview"></a>Nowy interfejs API riskDetections dla Microsoft Graph (publiczna wersja zapoznawcza)
 
@@ -741,7 +757,7 @@ Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure se
 
 ---
 
-## <a name="may-2019"></a>2019 maja
+## <a name="may-2019"></a>Maj 2019 r.
 
 ### <a name="service-change-future-support-for-only-tls-12-protocols-on-the-application-proxy-service"></a>Zmiana usługi: w przyszłości obsługuje tylko protokoły TLS 1,2 w usłudze serwera proxy aplikacji.
 
@@ -927,7 +943,7 @@ Aby uzyskać więcej informacji na temat dostępu warunkowego i resetowania has�
 
 ---
 
-## <a name="april-2019"></a>Kwiecień 2019
+## <a name="april-2019"></a>Kwiecień 2019 r.
 
 ### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-as-part-of-azure-ad-identity-protection"></a>Nowe wykrywanie analizy zagrożeń w usłudze Azure AD jest teraz dostępne w ramach Azure AD Identity Protection
 

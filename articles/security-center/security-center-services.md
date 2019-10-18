@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331146"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529483"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Obsługiwane funkcje dostępne w Azure Security Center
 
@@ -96,14 +96,14 @@ Następujące zasoby PaaS są obsługiwane przez Azure Security Center:
 |MySQL|✔| ✔|
 |CosmosDB|X| ✔|
 |Magazyn obiektów Blob|✔| ✔|
-|Konto magazynu|✔| Nie dotyczy|
+|Konto magazynu|✔| X|
 |Usługa App Service|✔| ✔|
 |Funkcja|✔| X|
 |Usługa w chmurze|✔| X|
-|VNet|✔| Nie dotyczy|
-|Podsieć|✔| Nie dotyczy|
-|Karta sieciowa|✔| Nie dotyczy|
-|Sieciowa grupa zabezpieczeń|✔| Nie dotyczy|
+|VNet|✔| X|
+|Podsieć|✔| X|
+|Karta sieciowa|✔| X|
+|Sieciowa grupa zabezpieczeń|✔| X|
 |Subskrypcja|✔ * *| ✔|
 |Konto usługi Batch|✔| X|
 |Konto usługi Service Fabric|✔| X|
@@ -114,14 +114,14 @@ Następujące zasoby PaaS są obsługiwane przez Azure Security Center:
 |Stream Analytics|✔| X|
 |Przestrzeń nazw centrum zdarzeń|✔| X|
 |Aplikacje logiki|✔| X|
-|Redis|✔| Nie dotyczy|
+|Redis|✔| X|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
 |Key Vault|✔| X|
 
 \* te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej.
 
-zalecenia dotyczące \* @ no__t-1 Azure Active Directory (Azure AD) są dostępne tylko w przypadku subskrypcji w warstwie Standardowa.
+zalecenia dotyczące \* \* Azure Active Directory (Azure AD) są dostępne tylko dla subskrypcji w warstwie Standardowa.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c59a0b40065be1554e79186227cd2e90d68e7222
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174205"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517063"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Pobieranie listy użytkowników (wersja zapoznawcza) w portalu Azure Active Directory
 
@@ -35,6 +35,38 @@ Aby pobrać listę użytkowników z centrum administracyjnego usługi Azure AD, 
 1. Na stronie **pobieranie użytkowników** wybierz pozycję **Rozpocznij** , aby wyświetlić plik CSV z listą właściwości profilu użytkownika. W przypadku wystąpienia błędów można pobrać i wyświetlić plik wyników na stronie wyników operacji zbiorczej. Plik zawiera przyczynę każdego błędu.
 
    ![Wybierz, gdzie chcesz wyświetlić listę użytkowników, których chcesz pobrać](./media/users-bulk-download/bulk-download.png)
+
+   Plik do pobrania będzie zawierać przefiltrowaną listę użytkowników.
+
+   Zostaną uwzględnione następujące atrybuty użytkownika: 
+
+   - userPrincipalName
+   - displayName
+   - surname
+   - mail (poczta)
+   - GivenName
+   - Obiektu
+   - userType
+   - Stanowiska
+   - department
+   - Menedżera
+   - AccountEnabled
+   - usageLocation
+   - streetAddress
+   - state
+   - Trzeciego
+   - physicalDeliveryOfficeName
+   - city
+   - Pocztowy
+   - TelephoneNumber
+   - urządzenie
+   - authenticationPhoneNumber
+   - authenticationAlternativePhoneNumber
+   - authenticationEmail
+   - alternateEmailAddress
+   - Grupy wiekowej
+   - consentProvidedForMinor
+   - legalAgeGroupClassification
 
 ## <a name="check-status"></a>Sprawdzanie stanu
 

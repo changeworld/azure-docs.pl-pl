@@ -1,6 +1,6 @@
 ---
 title: Automatyzacja Application Insights platformy Azure przy użyciu programu PowerShell | Microsoft Docs
-description: Automatyzacja tworzenia zasobów, alertów i testów dostępności w programie PowerShell przy użyciu szablonu Azure Resource Manager.
+description: Automatyzacja tworzenia zasobów, alertów i testów dostępności w programie PowerShell oraz zarządzania nimi przy użyciu szablonu Azure Resource Manager.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,22 +10,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 10/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: b4f3d2eba70be39b23e86ebde3c71dfc7c19a374
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: MT
+ms.openlocfilehash: 7ac5d933406af10307ba3312a8f609bfde2413fc
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936702"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514388"
 ---
-#  <a name="create-application-insights-resources-using-powershell"></a>Tworzenie zasobów usługi Application Insights przy użyciu programu PowerShell
+#  <a name="manage-application-insights-resources-using-powershell"></a>Zarządzanie zasobami Application Insights przy użyciu programu PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 W tym artykule przedstawiono sposób automatycznego automatyzowania tworzenia i aktualizowania zasobów [Application Insights](../../azure-monitor/app/app-insights-overview.md) przy użyciu usługi Azure Resource Management. Można to zrobić na przykład w ramach procesu kompilacji. Wraz z zasobem podstawowa Application Insights można tworzyć [testy sieci Web dostępności](../../azure-monitor/app/monitor-web-app-availability.md), konfigurować [alerty](../../azure-monitor/app/alerts.md), ustawiać [schemat cenowy](pricing.md)oraz tworzyć inne zasoby platformy Azure.
 
-Kluczem do tworzenia tych zasobów są szablony JSON dla [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). W Nutshell procedura to: Pobierz definicje JSON istniejących zasobów; Sparametryzuj pewne wartości, takie jak Names; a następnie uruchom szablon, gdy chcesz utworzyć nowy zasób. Można spakować wiele zasobów razem, aby utworzyć je wszystkie w jednym miejscu, na przykład monitor aplikacji z testami dostępności, alertami i magazynem na potrzeby eksportu ciągłego. Istnieje kilka subtleties niektórych parameterizations, które wyjaśnimy tutaj.
+Kluczem do tworzenia tych zasobów są szablony JSON dla [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). Podstawowa procedura: pobieranie definicji JSON istniejących zasobów; Sparametryzuj pewne wartości, takie jak Names; a następnie uruchom szablon, gdy chcesz utworzyć nowy zasób. Można spakować wiele zasobów razem, aby utworzyć je wszystkie w jednym miejscu, na przykład monitor aplikacji z testami dostępności, alertami i magazynem na potrzeby eksportu ciągłego. Istnieje kilka subtleties niektórych parameterizations, które wyjaśnimy tutaj.
 
 ## <a name="one-time-setup"></a>Konfiguracja jednorazowa
 Jeśli nie korzystasz z programu PowerShell z subskrypcją platformy Azure przed:
@@ -35,8 +35,31 @@ Zainstaluj moduł Azure PowerShell na komputerze, na którym chcesz uruchomić s
 1. Zainstaluj [Instalator platformy Microsoft Web (w wersji 5 lub nowszej)](https://www.microsoft.com/web/downloads/platform.aspx).
 2. Służy do instalowania programu Microsoft Azure PowerShell.
 
-## <a name="create-an-azure-resource-manager-template"></a>Tworzenie szablonu Azure Resource Manager
-Utwórz nowy plik JSON — Zadzwońmy do niego `template1.json` w tym przykładzie. Skopiuj do niej tę zawartość:
+Oprócz używania szablonów Menedżer zasobów istnieje bogaty zestaw [Application Insights poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights), które ułatwiają konfigurowanie Application Insights zasobów programowo. Funkcje dostępne w poleceniach cmdlet obejmują:
+
+* Tworzenie i usuwanie zasobów Application Insights
+* Pobierz listy zasobów Application Insights i ich właściwości
+* Tworzenie eksportu ciągłego i zarządzanie nim
+* Tworzenie kluczy aplikacji i zarządzanie nimi
+* Ustaw limit dzienny
+* Ustawianie planu cenowego
+
+## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>Tworzenie zasobów Application Insights przy użyciu polecenia cmdlet programu PowerShell
+
+Poniżej przedstawiono sposób tworzenia nowego zasobu usługi Application Insights w centrum danych we/wschodnich stanach USA przy użyciu polecenia cmdlet [New-AzApplicationInsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) :
+
+```PS
+New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource name> -location eastus
+```
+
+
+## <a name="create-application-insights-resources-using-a-resource-manager-template"></a>Tworzenie Application Insights zasobów przy użyciu szablonu Menedżer zasobów
+
+Poniżej przedstawiono sposób tworzenia nowego zasobu Application Insights przy użyciu szablonu Menedżer zasobów.
+
+### <a name="create-the-azure-resource-manager-template"></a>Tworzenie szablonu Azure Resource Manager
+
+Utwórz nowy plik JSON — Wywołaj go `template1.json` w tym przykładzie. Skopiuj do niej tę zawartość:
 
 ```JSON
     {
@@ -160,7 +183,7 @@ Utwórz nowy plik JSON — Zadzwońmy do niego `template1.json` w tym przykładz
                 ],
                 "properties": {
                     "CurrentBillingFeatures": "[variables('pricePlan')]",
-                    "retentionInDays": "[variables('retentionInDays')]",
+                    "retentionInDays": "[parameters('retentionInDays')]",
                     "DataVolumeCap": {
                         "Cap": "[parameters('dailyQuota')]",
                         "WarningThreshold": "[parameters('warningThreshold')]",
@@ -172,63 +195,114 @@ Utwórz nowy plik JSON — Zadzwońmy do niego `template1.json` w tym przykładz
     }
 ```
 
+### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>Tworzenie nowego zasobu Application Insights przy użyciu szablonu Menedżer zasobów
 
-
-## <a name="create-application-insights-resources"></a>Tworzenie zasobów usługi Application Insights
-1. W programie PowerShell Zaloguj się do platformy Azure:
-   
-    `Connect-AzAccount`
-2. Uruchom polecenie podobne do tego:
+1. W programie PowerShell Zaloguj się do platformy Azure przy użyciu `$Connect-AzAccount`
+2. Ustaw kontekst na subskrypcję z `Set-AzContext "<subscription ID>"`
+2. Uruchom nowe wdrożenie, aby utworzyć nowy zasób Application Insights:
    
     ```PS
-   
         New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -appName myNewApp
 
     ``` 
    
-   * `-ResourceGroupName` to grupa, w której chcesz utworzyć nowe zasoby.
+   * `-ResourceGroupName` jest grupą, w której chcesz utworzyć nowe zasoby.
    * `-TemplateFile` musi następować przed parametrami niestandardowymi.
-   * `-appName` nazwa zasobu do utworzenia.
+   * `-appName` nazwę zasobu do utworzenia.
 
 Możesz dodać inne parametry — opisy można znaleźć w sekcji Parametry szablonu.
 
-## <a name="to-get-the-instrumentation-key"></a>Aby uzyskać klucz Instrumentacji
+## <a name="get-the-instrumentation-key"></a>Pobieranie klucza Instrumentacji
+
 Po utworzeniu zasobu aplikacji należy użyć klucza Instrumentacji: 
 
+1. `$Connect-AzAccount`
+2. `Set-AzContext "<subscription ID>"`
+3. `$resource = Get-AzResource -Name "<resource name>" -ResourceType "Microsoft.Insights/components"`
+4. `$details = Get-AzResource -ResourceId $resource.ResourceId`
+5. `$details.Properties.InstrumentationKey`
+
+Aby wyświetlić listę wielu innych właściwości zasobu Application Insights, użyj:
+
 ```PS
-    $resource = Find-AzResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
-    $details = Get-AzResource -ResourceId $resource.ResourceId
-    $ikey = $details.Properties.InstrumentationKey
+Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Format-List
 ```
 
+Dodatkowe właściwości są dostępne za pośrednictwem poleceń cmdlet:
+* `Set-AzApplicationInsightsDailyCap`
+* `Set-AzApplicationInsightsPricingPlan`
+* `Get-AzApplicationInsightsApiKey`
+* `Get-AzApplicationInsightsContinuousExport`
 
-<a id="price"></a>
-## <a name="set-the-price-plan"></a>Ustawianie planu cen
+Zapoznaj się z [dokumentacją](https://docs.microsoft.com/powershell/module/az.applicationinsights) dotyczącą parametrów tych poleceń cmdlet.  
 
-Możesz ustawić [Plan cen](pricing.md).
+## <a name="set-the-data-retention"></a>Ustaw przechowywanie danych 
 
-Aby utworzyć zasób aplikacji z planem cen przedsiębiorstwa, użyj szablonu powyżej:
+Aby uzyskać bieżące przechowywanie danych dla zasobu Application Insights, można użyć narzędzia OSS [ARMClient](https://github.com/projectkudu/ARMClient).  (Dowiedz się więcej na temat ARMClient z artykułów przez [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) i [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)).  Oto przykład użycia `ARMClient`, aby uzyskać bieżące przechowywanie:
 
 ```PS
-        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
+```
+
+Aby ustawić przechowywanie, polecenie jest podobne do UMIESZCZAnia:
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview "{location: 'eastus', properties: {'retentionInDays': 365}}"
+```
+
+Aby ustawić przechowywanie danych na 365 dni przy użyciu szablonu powyżej, uruchom polecenie:
+
+```PS
+        New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
                -TemplateFile .\template1.json `
-               -priceCode 2 `
-               -appName myNewApp
+               -retentionInDays 365 `
+               -appName myApp
+```
+
+## <a name="set-the-daily-cap"></a>Ustaw limit dzienny
+
+Aby uzyskać właściwości dziennego zakończenia, użyj polecenia cmdlet [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) : 
+
+```PS
+Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
+```
+
+Aby ustawić właściwości dziennego limitu, użyj tego samego polecenia cmdlet. Na przykład, aby ustawić limit na 300 GB/dzień, 
+
+```PS
+Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
+```
+
+<a id="price"></a>
+## <a name="set-the-pricing-plan"></a>Ustawianie planu cenowego 
+
+Aby uzyskać bieżący plan cenowy, należy użyć polecenia cmdlet [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) : 
+
+```PS
+Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
+```
+
+Aby ustawić plan cenowy, użyj tego samego polecenia cmdlet z określonym `-PricingPlan`:  
+
+```PS
+Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> -PricingPlan Basic
+```
+
+Możesz również ustawić plan cenowy dla istniejącego zasobu Application Insights przy użyciu szablonu Menedżer zasobów powyżej, pomijając zasób "Microsoft. Insights/Components" i węzeł `dependsOn` z zasobu rozliczeń. Na przykład aby ustawić dla planu na GB (dawniej nazywany planem Basic), uruchom polecenie:
+
+```PS
+        New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
+               -TemplateFile .\template1.json `
+               -priceCode 1 `
+               -appName myApp
 ```
 
 |priceCode|zamierza|
 |---|---|
-|1|Basic|
-|2|Enterprise|
-
-* Jeśli chcesz tylko użyć domyślnego planu cenowego w warstwie Podstawowa, możesz pominąć zasób CurrentBillingFeatures z szablonu.
-* Jeśli chcesz zmienić plan cen po utworzeniu zasobu składnika, możesz użyć szablonu, który pomija zasób "Microsoft. Insights/Components". Ponadto należy pominąć węzeł `dependsOn` z zasobu rozliczeń. 
-
-Aby sprawdzić zaktualizowany plan cen, zapoznaj się z blokiem **użycie i szacowane koszty** w przeglądarce. **Odśwież widok przeglądarki** , aby upewnić się, że jest wyświetlany najnowszy stan.
-
-
+|1|Za GB (dawniej nazwany plan podstawowy)|
+|2|Na węzeł (dawniej Nazwa planu przedsiębiorstwa)|
 
 ## <a name="add-a-metric-alert"></a>Dodawanie alertu metryki
 
@@ -412,7 +486,7 @@ Aby odnaleźć kody dla innych lokalizacji testowych lub zautomatyzować tworzen
 
 Aby zautomatyzować tworzenie dowolnego innego zasobu dowolnego rodzaju, Utwórz przykład ręcznie, a następnie skopiuj i Sparametryzuj jego kod z [Azure Resource Manager](https://resources.azure.com/). 
 
-1. Otwórz [Azure Resource Manager](https://resources.azure.com/). Przejdź w dół o `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components` do zasobu aplikacji. 
+1. Otwórz [Azure Resource Manager](https://resources.azure.com/). Przejdź w dół `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components` do zasobu aplikacji. 
    
     ![Nawigacja w Azure Resource Explorer](./media/powershell/01.png)
    
@@ -424,7 +498,7 @@ Aby zautomatyzować tworzenie dowolnego innego zasobu dowolnego rodzaju, Utwórz
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. Otwórz sekcje webtests i alertrules i skopiuj kod JSON dla poszczególnych elementów do szablonu. (Nie Kopiuj z węzłów webtests lub alertrules: Przejdź do elementów znajdujących się poniżej).
+4. Otwórz sekcje `webtests` i `alertrules` i skopiuj dane JSON dla poszczególnych elementów do szablonu. (Nie Kopiuj z węzłów `webtests` lub `alertrules`: Przejdź do elementów znajdujących się poniżej).
    
     Każdy test sieci Web ma skojarzoną regułę alertu, dlatego należy skopiować oba te testy.
    
@@ -449,7 +523,7 @@ Poniżej przedstawiono przykłady podstawień, które należy wykonać. Istnieje
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
 | `"myappname"` (małe litery) |`"[toLower(parameters('appName'))]"` |
-| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Usuń identyfikator GUID i identyfikator. |
+| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`|
 
 ### <a name="set-dependencies-between-the-resources"></a>Ustawianie zależności między zasobami
 Platforma Azure powinna skonfigurować zasoby w ścisłej kolejności. Aby upewnić się, że jedna konfiguracja zostanie zakończona przed rozpoczęciem następnego, Dodaj linie zależności:

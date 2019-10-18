@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 10/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd932d2b11c61c380638a1a95f8da357d0c62e3
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d41e011fd58c20cbe6d2dc8d9029e645f8851bd9
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533002"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513033"
 ---
 # <a name="authentication-flows"></a>Przepływy uwierzytelniania
 
 W tym artykule opisano różne przepływy uwierzytelniania udostępniane przez bibliotekę uwierzytelniania firmy Microsoft (MSAL).  Te przepływy mogą być używane w różnych scenariuszach aplikacji.
 
-| Ruch | Opis | Używany w|  
+| Przepływ | Opis | Używany w|  
 | ---- | ----------- | ------- | 
 | [Interaktywne](#interactive) | Pobiera token przez proces interaktywny, który wyświetla użytkownikowi komunikat o poświadczeniach za pomocą przeglądarki lub okna podręcznego. | [Aplikacje klasyczne](scenario-desktop-overview.md), [aplikacje mobilne](scenario-mobile-overview.md) |
 | [Niejawne przyznanie](#implicit-grant) | Zezwala aplikacji na pobieranie tokenów bez przeprowadzania wymiany poświadczeń serwera zaplecza. Dzięki temu aplikacja może logować się do użytkownika, obsługiwać sesję i uzyskiwać tokeny do innych interfejsów API sieci Web, a wszystko to w kodzie JavaScript klienta.| [Aplikacje jednostronicowe (SPA)](scenario-spa-overview.md) |
@@ -37,9 +37,26 @@ W tym artykule opisano różne przepływy uwierzytelniania udostępniane przez b
 | [Poświadczenia klienta](#client-credentials) | Umożliwia dostęp do zasobów hostowanych przez sieć Web przy użyciu tożsamości aplikacji. Często używane do interakcji między serwerami, które muszą działać w tle bez natychmiastowej interakcji z użytkownikiem. | [Aplikacje demona](scenario-daemon-overview.md) |
 | [Kod urządzenia](#device-code) | Umożliwia użytkownikom logowanie się na urządzeniach z ograniczeniami, takich jak inteligentna telewizja, urządzenie IoT lub drukarka. | [Aplikacje klasyczne i mobilne](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
 | [Zintegrowane uwierzytelnianie systemu Windows](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Zezwala aplikacjom w domenie lub Azure Active Directory (Azure AD) przyłączonym do uzyskiwania tokenu w trybie dyskretnym (bez interakcji z użytkownikiem).| [Aplikacje klasyczne i mobilne](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [Nazwa użytkownika/hasło](scenario-desktop-acquire-token.md#username--password) | Zezwala aplikacji na logowanie użytkownika przez bezpośrednią obsługę hasła. Ten przepływ nie jest zalecany. | [Aplikacje klasyczne i mobilne](scenario-desktop-acquire-token.md#username--password) | 
+| [Nazwa użytkownika/hasło](scenario-desktop-acquire-token.md#username--password) | Zezwala aplikacji na logowanie użytkownika przez bezpośrednią obsługę hasła. Ten przepływ nie jest zalecany. | [Aplikacje klasyczne i mobilne](scenario-desktop-acquire-token.md#username--password) |
+
+## <a name="how-each-flow-emits-tokens-and-codes"></a>Jak każdy przepływ emituje tokeny i kody
+ 
+W zależności od sposobu skompilowania klienta można użyć jednego (lub kilku) przepływów uwierzytelniania obsługiwanych przez platformę tożsamości firmy Microsoft.  Te przepływy mogą generować różne tokeny (id_tokens, tokeny odświeżenia, tokeny dostępu), a także kody autoryzacji i wymagać różnych tokenów, aby umożliwić ich działanie. Ten wykres proides przegląd:
+ 
+|Przepływ | KONIECZN | id_token | token dostępu | Odśwież token | kod autoryzacji | 
+|-----|----------|----------|--------------|---------------|--------------------|
+|[Przepływ kodu autoryzacji](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Niejawny przepływ](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[Hybrydowy przepływ OIDC](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Odświeżanie umorzenia tokenu](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | Odśwież token | x | x | x| |
+|[Przepływ „w imieniu”](v2-oauth2-on-behalf-of-flow.md) | token dostępu| x| x| x| |
+|[Przepływ kodu urządzenia](v2-oauth2-device-code.md) | | x| x| x| |
+|[Poświadczenia klienta](v2-oauth2-client-creds-grant-flow.md) | | | x (tylko aplikacja)| | |
+ 
+Tokeny wystawione za pośrednictwem trybu niejawnego mają ograniczenie długości z powodu przekazanie z powrotem do przeglądarki za pośrednictwem adresu URL (gdzie `response_mode` jest `query` lub `fragment`).  Niektóre przeglądarki mają limit rozmiaru adresu URL, który może być umieszczony na pasku przeglądarki i niepowodzenie, gdy jest zbyt długi.  W rezultacie te tokeny nie mają oświadczeń `groups` ani `wids`.
 
 ## <a name="interactive"></a>Interaktywne
+
 Usługa MSAL obsługuje możliwość interaktywnego monitowania użytkownika o podanie poświadczeń w celu zalogowania się i uzyskania tokenu przy użyciu tych poświadczeń.
 
 ![Diagram interaktywnego przepływu](media/msal-authentication-flows/interactive.png)
@@ -61,10 +78,11 @@ Wiele nowoczesnych aplikacji sieci Web jest zbudowanych jako aplikacje jednostro
 
 Ten przepływ uwierzytelniania nie obejmuje scenariuszy aplikacji, które wykorzystują Międzyplatformowe platformy JavaScript, takie jak elektron i reagowanie na aplikacje natywne, ponieważ wymagają one dalszych możliwości interakcji z platformami macierzystymi.
 
-## <a name="authorization-code"></a>Kod autoryzacji
+## <a name="authorization-code"></a>kod autoryzacji
+
 MSAL obsługuje [przyznawanie kodu autoryzacji OAuth 2](v2-oauth2-auth-code-flow.md). Tego uprawnienia można używać w aplikacjach zainstalowanych na urządzeniu w celu uzyskania dostępu do chronionych zasobów, takich jak interfejsy API sieci Web. Pozwala to na dodawanie funkcji logowania i dostępu do interfejsu API do aplikacji mobilnych i klasycznych. 
 
-Gdy użytkownicy logują się do aplikacji sieci Web (websites), aplikacja sieci Web otrzymuje kod autoryzacji.  Kod autoryzacji jest realizowany w celu uzyskania tokenu do wywoływania interfejsów API sieci Web. W ASP.NET i ASP.NET Core Web Apps jedynym celem `AcquireTokenByAuthorizationCode` jest dodanie tokenu do pamięci podręcznej tokenów. Token może być następnie używany przez aplikację (zazwyczaj w kontrolerach, które po prostu otrzymują token dla interfejsu API za pomocą programu `AcquireTokenSilent`).
+Gdy użytkownicy logują się do aplikacji sieci Web (websites), aplikacja sieci Web otrzymuje kod autoryzacji.  Kod autoryzacji jest realizowany w celu uzyskania tokenu do wywoływania interfejsów API sieci Web. W ASP.NET i ASP.NET Core Web Apps jedynym celem `AcquireTokenByAuthorizationCode` jest dodanie tokenu do pamięci podręcznej tokenów. Token może być następnie używany przez aplikację (zazwyczaj w kontrolerach, która po prostu pobiera token dla interfejsu API za pomocą `AcquireTokenSilent`).
 
 ![Diagram przepływu kodu autoryzacji](media/msal-authentication-flows/authorization-code.png)
 
@@ -74,9 +92,10 @@ Na powyższym diagramie aplikacja:
 2. Używa tokenu dostępu do wywoływania internetowego interfejsu API.
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
-- Aby zrealizować token, można użyć kodu autoryzacji tylko raz. Nie próbuj uzyskać tokenu wiele razy przy użyciu tego samego kodu autoryzacji (jest to jawnie zabronione przez standardową specyfikację protokołu). W przypadku zrealizowania kodu kilkakrotnie lub z tego powodu nie masz świadomego, że struktura również go wykonuje, zostanie wyświetlony następujący błąd:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
-- Jeśli piszesz aplikację ASP.NET lub ASP.NET Core, może się tak zdarzyć, jeśli nie poinformujesz platformy o tym, że kod autoryzacji został już zrealizowany. W tym celu należy wywołać `context.HandleCodeRedemption()` metodę `AuthorizationCodeReceived` programu obsługi zdarzeń.
+- Aby zrealizować token, można użyć kodu autoryzacji tylko raz. Nie próbuj uzyskać tokenu wiele razy przy użyciu tego samego kodu autoryzacji (jest to jawnie zabronione przez standardową specyfikację protokołu). W przypadku zrealizowania kodu kilkakrotnie lub z tego powodu nie masz świadomego, że struktura również go wykonuje, zostanie wyświetlony następujący błąd: `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
+
+- Jeśli piszesz aplikację ASP.NET lub ASP.NET Core, może się tak zdarzyć, jeśli nie poinformujesz platformy o tym, że kod autoryzacji został już zrealizowany. W tym celu należy wywołać metodę `context.HandleCodeRedemption()` procedury obsługi zdarzeń `AuthorizationCodeReceived`.
 
 - Unikaj udostępniania tokenu dostępu za pomocą ASP.NET, co może uniemożliwić prawidłowe poprawność. Aby uzyskać więcej informacji, zobacz temat [#693 problemu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693).
 
@@ -104,7 +123,7 @@ Przepływ przyznania poświadczeń klienta umożliwia usłudze sieci Web (poufne
 
 MSAL.NET obsługuje dwa typy poświadczeń klienta. Te poświadczenia klienta muszą być zarejestrowane w usłudze Azure AD. Poświadczenia są przesyłane do konstruktorów poufnej aplikacji klienckiej w kodzie.
 
-### <a name="application-secrets"></a>Wpisy tajne aplikacji 
+### <a name="application-secrets"></a>Wpisy tajne aplikacji
 
 ![Diagram poufnego klienta z hasłem](media/msal-authentication-flows/confidential-client-password.png)
 
@@ -113,7 +132,7 @@ Na powyższym diagramie aplikacja:
 1. Uzyskuje token przy użyciu klucza tajnego aplikacji lub poświadczeń hasła.
 2. Używa tokenu do żądania zasobu.
 
-### <a name="certificates"></a>Certyfikaty 
+### <a name="certificates"></a>Certyfikaty
 
 ![Diagram poufnego klienta z certyfikatem](media/msal-authentication-flows/confidential-client-certificate.png)
 
@@ -126,8 +145,8 @@ Te poświadczenia klienta muszą być następujące:
 - Zarejestrowano w usłudze Azure AD.
 - Przeszedł do konstruowania poufnej aplikacji klienckiej w kodzie.
 
-
 ## <a name="device-code"></a>Kod urządzenia
+
 MSAL obsługuje [przepływ kodu urządzenia OAuth 2](v2-oauth2-device-code.md), który umożliwia użytkownikom logowanie się na urządzeniach z ograniczeniami, takich jak inteligentna telewizja, urządzenie IoT lub drukarka. Interaktywne uwierzytelnianie w usłudze Azure AD wymaga przeglądarki sieci Web. Przepływ kodu urządzenia umożliwia użytkownikowi Używanie innego urządzenia (na przykład innego komputera lub telefonu komórkowego) do interaktywnego logowania, w którym urządzenie lub system operacyjny nie udostępnia przeglądarki sieci Web.
 
 Za pomocą przepływu kodu urządzenia aplikacja uzyskuje tokeny przez proces dwuetapowy przeznaczony specjalnie dla tych urządzeń lub systemów operacyjnych. Przykładami takich aplikacji są procesy działające na urządzeniach IoT lub w narzędziach wiersza polecenia (CLI). 
@@ -136,7 +155,7 @@ Za pomocą przepływu kodu urządzenia aplikacja uzyskuje tokeny przez proces dw
 
 Na powyższym diagramie:
 
-1. Za każdym razem, gdy wymagane jest uwierzytelnienie użytkownika, aplikacja udostępnia kod i prosi użytkownika o użycie innego urządzenia (takiego jak telefon smartphone połączone z Internetem), aby przejść do adresu URL (na https://microsoft.com/devicelogin) przykład. Następnie użytkownik jest monitowany o wprowadzenie kodu i przechodzi przez normalne środowisko uwierzytelniania, w tym monity o zgodę i uwierzytelnianie wieloskładnikowe, w razie potrzeby.
+1. Za każdym razem, gdy wymagane jest uwierzytelnienie użytkownika, aplikacja udostępnia kod i prosi użytkownika o użycie innego urządzenia (takiego jak telefon smartphone połączone z Internetem), aby przejść do adresu URL (na przykład https://microsoft.com/devicelogin). Następnie użytkownik jest monitowany o wprowadzenie kodu i przechodzi przez normalne środowisko uwierzytelniania, w tym monity o zgodę i uwierzytelnianie wieloskładnikowe, w razie potrzeby.
 
 2. Po pomyślnym uwierzytelnieniu aplikacja wiersza polecenia otrzymuje wymagane tokeny za pośrednictwem kanału zaplecza i używa ich do wykonywania wywołań interfejsu API sieci Web.
 
@@ -144,11 +163,12 @@ Na powyższym diagramie:
 
 - Przepływ kodu urządzenia jest dostępny tylko w publicznych aplikacjach klienckich.
 - Urząd przeszedł podczas konstruowania publicznej aplikacji klienckiej, musi mieć jedną z następujących czynności:
-  - Dzierżawca (w postaci `https://login.microsoftonline.com/{tenant}/` , gdzie `{tenant}` jest identyfikator GUID reprezentujący identyfikator dzierżawy lub domenę skojarzoną z dzierżawcą).
-  - Dla dowolnego konta służbowego (`https://login.microsoftonline.com/organizations/`).
-- Konta osobiste firmy Microsoft nie są jeszcze obsługiwane przez punkt końcowy usługi Azure AD v 2.0 (nie `/common` można `/consumers` używać dzierżawców).
+  - Dzierżawca (formularza `https://login.microsoftonline.com/{tenant}/`, gdzie `{tenant}` jest identyfikatorem GUID reprezentującym identyfikator dzierżawy lub domenę skojarzoną z dzierżawcą).
+  - Dla wszystkich kont służbowych (`https://login.microsoftonline.com/organizations/`).
+- Konta osobiste firmy Microsoft nie są jeszcze obsługiwane przez punkt końcowy usługi Azure AD v 2.0 (nie można używać dzierżaw `/common` ani `/consumers`).
 
 ## <a name="integrated-windows-authentication"></a>Zintegrowane uwierzytelnianie systemu Windows
+
 Usługa MSAL obsługuje zintegrowane uwierzytelnianie systemu Windows (IWA) dla aplikacji dla komputerów stacjonarnych lub mobilnych, które działają na przyłączonych do domeny lub komputerze z systemem Windows AD Korzystając z IWA, te aplikacje mogą uzyskać token dyskretnie (bez interakcji z INTERFEJSem użytkownika). 
 
 ![Diagram zintegrowanego uwierzytelniania systemu Windows](media/msal-authentication-flows/integrated-windows-authentication.png)
@@ -169,15 +189,15 @@ IWA nie pomija uwierzytelniania wieloskładnikowego. Jeśli skonfigurowano uwier
 Nie kontrolujesz, kiedy dostawca tożsamości żąda wykonania uwierzytelniania dwuskładnikowego. Administrator dzierżawy. Zazwyczaj uwierzytelnianie dwuskładnikowe jest wymagane, gdy użytkownik loguje się z innego kraju, gdy nie jest połączony za pośrednictwem sieci VPN z siecią firmową, a czasami nawet wtedy, gdy użytkownik nawiązuje połączenie za pośrednictwem sieci VPN. Usługa Azure AD używa systemu AI do ciągłego uczenia się, czy wymagane jest uwierzytelnianie dwuskładnikowe. Jeśli IWA nie powiedzie się, należy wrócić do [monitu użytkownika interaktywnego] (#interactive).
 
 Urząd przeszedł podczas konstruowania publicznej aplikacji klienckiej, musi mieć jedną z następujących czynności:
-- Dzierżawca (w postaci `https://login.microsoftonline.com/{tenant}/` , gdzie `tenant` jest identyfikator GUID reprezentujący identyfikator dzierżawy lub domenę skojarzoną z dzierżawcą).
-- Dla dowolnego konta służbowego (`https://login.microsoftonline.com/organizations/`). Konta osobiste firmy Microsoft nie są obsługiwane (nie można `/common` używać `/consumers` ani dzierżawców).
+- Dzierżawca (formularza `https://login.microsoftonline.com/{tenant}/`, gdzie `tenant` jest identyfikatorem GUID reprezentującym identyfikator dzierżawy lub domenę skojarzoną z dzierżawcą).
+- Dla wszystkich kont służbowych (`https://login.microsoftonline.com/organizations/`). Konta osobiste firmy Microsoft nie są obsługiwane (nie można używać dzierżaw `/common` ani `/consumers`ch).
 
 Ponieważ IWA jest przepływem dyskretnym, musi być spełniony jeden z następujących warunków:
 - Użytkownik Twojej aplikacji musi być wcześniej wyraził zgodę na korzystanie z aplikacji. 
 - Administrator dzierżawy musi zostać wcześniej wysłany do wszystkich użytkowników w dzierżawie, aby mógł korzystać z aplikacji.
 
 Oznacza to, że jest spełniony jeden z następujących warunków:
-- Jesteś deweloperem, który zaznaczył Azure Portal dla siebie.
+- Jesteś deweloperem, który **zaznaczył** Azure Portal dla siebie.
 - Administrator dzierżawy zaznaczył **zgodę na przyznanie/odwołanie administratora dla {domena dzierżawy}** na karcie **uprawnienia interfejsu API** rejestracji aplikacji (zobacz [Dodawanie uprawnień dostępu do interfejsów API sieci Web](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
 - Użytkownik podał sposób, aby użytkownicy wyrażali zgodę na aplikację (patrz [żądanie zgody poszczególnych użytkowników](v2-permissions-and-consent.md#requesting-individual-user-consent)).
 - Podano sposób, w jaki Administrator dzierżawy wyrazi zgodę na aplikację (zobacz [zgoda administratora](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
@@ -186,7 +206,8 @@ Przepływ IWA jest włączony dla aplikacji platformy .NET dla komputerów stacj
   
 Aby uzyskać więcej informacji na temat zgody, zobacz temat [uprawnienia i zgoda dotyczące programu v 2.0](v2-permissions-and-consent.md).
 
-## <a name="usernamepassword"></a>Nazwa użytkownika/hasło 
+## <a name="usernamepassword"></a>Nazwa użytkownika/hasło
+
 MSAL obsługuje [uprawnienie do uwierzytelniania poświadczeń hasła właściciela zasobu OAuth 2](v2-oauth-ropc.md), które umożliwia aplikacji Logowanie użytkownika przez bezpośrednią obsługę hasła. W aplikacji komputerowej można użyć przepływu nazwy użytkownika/hasła w celu odzyskania tokenu w trybie dyskretnym. W przypadku korzystania z aplikacji nie jest wymagany żaden interfejs użytkownika.
 
 ![Diagram przepływu nazwy użytkownika/hasła](media/msal-authentication-flows/username-password.png)
@@ -207,7 +228,7 @@ Chociaż jest to przydatne w niektórych przypadkach (scenariusze DevOps), jeśl
 
 ### <a name="constraints"></a>Ograniczenia
 
-Poza zintegrowanymi [ograniczeniami uwierzytelniania systemu Windows](#integrated-windows-authentication)obowiązują również następujące ograniczenia:
+Poza [zintegrowanymi ograniczeniami uwierzytelniania systemu Windows](#integrated-windows-authentication)obowiązują również następujące ograniczenia:
 
 - Przepływ nazwy użytkownika/hasła nie jest zgodny z dostępem warunkowym i uwierzytelnianiem wieloskładnikowym. W związku z tym, jeśli aplikacja działa w dzierżawie usługi Azure AD, w której Administrator dzierżawy wymaga uwierzytelniania wieloskładnikowego, nie można użyć tego przepływu. Wiele organizacji to.
 - Działa tylko w przypadku kont służbowych (nie kont Microsoft).

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji zarządzanej przez platformę Azure z niestandardowymi akcjami i zasobami
+title: Aplikacja zarządzana przez platformę Azure z niestandardowymi akcjami & zasoby
 description: W tym samouczku opisano sposób tworzenia aplikacji zarządzanej przez platformę Azure za pomocą niestandardowego dostawcy platformy Azure.
 services: managed-applications
 ms.service: managed-applications
@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
-ms.openlocfilehash: 3dd0887114156956b55f554d0265e3ca2b9b10ab
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f70bb768dae3de80f85ffc49558b9ef51d2fce49
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335999"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529204"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Samouczek: Tworzenie aplikacji zarządzanej z niestandardowymi akcjami i zasobami
 
-W tym samouczku utworzysz własną zarządzaną aplikację z niestandardowymi akcjami i zasobami. Aplikacja zarządzana będzie zawierać akcję niestandardową na `Overview` stronie, niestandardowy typ zasobu wyświetlany jako oddzielny element menu w `Table of Content` i niestandardowa Akcja kontekstowa na stronie zasobów niestandardowych.
+W tym samouczku utworzysz własną zarządzaną aplikację z niestandardowymi akcjami i zasobami. Aplikacja zarządzana będzie zawierać akcję niestandardową na stronie `Overview`, niestandardowy typ zasobu wyświetlany jako oddzielny element menu w `Table of Content` i niestandardowa Akcja kontekstowa na stronie zasobów niestandardowych.
 
 Ten samouczek obejmuje następujące kroki:
 
@@ -42,7 +42,7 @@ Aby ukończyć ten samouczek, musisz znać:
 
 W tym samouczku utworzysz zarządzaną aplikację, a jej zarządzana Grupa zasobów będzie zawierać niestandardowe wystąpienie dostawcy, konto magazynu i funkcję. Funkcja platformy Azure używana w tym przykładzie implementuje interfejs API obsługujący niestandardowe operacje dostawcy dla akcji i zasobów. Konto usługi Azure Storage jest używane jako magazyn podstawowy dla niestandardowych zasobów dostawcy.
 
-Definicja interfejsu użytkownika służąca do tworzenia wystąpienia aplikacji zarządzanej `funcname` zawiera `storagename` elementy i. Nazwa konta magazynu i nazwa funkcji musi być globalnie unikatowa. Domyślnie pliki funkcji zostaną wdrożone z [przykładowego pakietu funkcji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), ale można je zmienić przez dodanie elementu wejściowego dla linku do pakietu w pliku *createUIDefinition. JSON*:
+Definicja interfejsu użytkownika służąca do tworzenia wystąpienia aplikacji zarządzanej zawiera `funcname` i `storagename` elementów wejściowych. Nazwa konta magazynu i nazwa funkcji musi być globalnie unikatowa. Domyślnie pliki funkcji zostaną wdrożone z [przykładowego pakietu funkcji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), ale można je zmienić przez dodanie elementu wejściowego dla linku do pakietu w pliku *createUIDefinition. JSON*:
 
 ```json
 {
@@ -83,13 +83,13 @@ i dane wyjściowe w pliku *createUIDefinition. JSON*:
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-Pełną próbkę *createUIDefinition. JSON* można znaleźć w [temacie Reference: Artefakty](reference-createuidefinition-artifact.md)elementów interfejsu użytkownika.
+Pełną próbkę *createUIDefinition. JSON* można znaleźć w temacie [Reference: elementy interfejsu użytkownika artefakty](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Szablon z niestandardowym dostawcą
 
-Aby utworzyć zarządzane wystąpienie aplikacji z dostawcą niestandardowym, należy zdefiniować zasób niestandardowego dostawcy o nazwie **Public** i wpisać **Microsoft. CustomProviders/ResourceProviders** w pliku **mainTemplate. JSON**. W tym zasobie należy zdefiniować typy zasobów i akcje dla usługi. Aby wdrożyć funkcje platformy Azure i wystąpienia konta usługi Azure Storage, zdefiniuj `Microsoft.Web/sites` zasoby `Microsoft.Storage/storageAccounts` typu i odpowiednio.
+Aby utworzyć zarządzane wystąpienie aplikacji z dostawcą niestandardowym, należy zdefiniować zasób niestandardowego dostawcy o nazwie **Public** i wpisać **Microsoft. CustomProviders/ResourceProviders** w pliku **mainTemplate. JSON**. W tym zasobie należy zdefiniować typy zasobów i akcje dla usługi. Aby wdrożyć funkcje platformy Azure i wystąpienia konta usługi Azure Storage, zdefiniuj odpowiednio zasoby typu `Microsoft.Web/sites` i `Microsoft.Storage/storageAccounts`.
 
-`users` W tym samouczku utworzysz jeden typ zasobu, `ping` akcję niestandardową i `users/contextAction` akcję niestandardową, która `users` zostanie wykonana w kontekście niestandardowego zasobu. Dla każdego typu zasobu i akcji Podaj punkt końcowy wskazujący funkcję o nazwie podanej w pliku [createUIDefinition. JSON](#user-interface-definition). Określ typ **routingtype** jako `Proxy,Cache` dla typów zasobów i `Proxy` akcji:
+W tym samouczku utworzysz jeden `users` typ zasobu, `ping` akcję niestandardową i `users/contextAction` akcję niestandardową, która zostanie wykonana w kontekście `users` niestandardowego zasobu. Dla każdego typu zasobu i akcji Podaj punkt końcowy wskazujący funkcję o nazwie podanej w pliku [createUIDefinition. JSON](#user-interface-definition). Określ typ **routingtype** jako `Proxy,Cache` dla typów zasobów i `Proxy` dla akcji:
 
 ```json
 {
@@ -124,16 +124,16 @@ Aby utworzyć zarządzane wystąpienie aplikacji z dostawcą niestandardowym, na
 }
 ```
 
-Pełną próbkę *mainTemplate. JSON* można znaleźć w [temacie Reference: Artefakt](reference-main-template-artifact.md)szablonu wdrożenia.
+Pełną próbkę *mainTemplate. JSON* można znaleźć w temacie [Reference: artefakt szablonu wdrożenia](reference-main-template-artifact.md).
 
 ## <a name="view-definition-artifact"></a>Wyświetlanie artefaktu definicji
 
 Aby zdefiniować interfejs użytkownika, który zawiera niestandardowe akcje i zasoby niestandardowe w aplikacji zarządzanej, należy utworzyć artefakt **galerii. JSON** . Aby uzyskać więcej informacji na temat artefaktu definicji widoku, zobacz temat [artefakt definicji widoku w Azure Managed Applications](concepts-view-definition.md).
 
 W tym samouczku zdefiniujesz:
-* Strona *przeglądu* z przyciskiem paska narzędzi, który reprezentuje akcję `TestAction` niestandardową z podstawowymi danymi wejściowymi.
-* Strona *użytkowników* reprezentująca niestandardowy typ `users`zasobu.
-* Niestandardowa Akcja `users/contextAction` zasobu na stronie *Użytkownicy* , która zostanie wykonana w kontekście niestandardowego zasobu typu `users`.
+* Strona *przeglądu* z przyciskiem paska narzędzi, który reprezentuje akcję niestandardową `TestAction` przy użyciu podstawowego wejścia tekstu.
+* Strona *użytkowników* , która reprezentuje niestandardowy typ zasobu `users`.
+* Niestandardowa Akcja zasobu `users/contextAction` na stronie *Użytkownicy* , która zostanie wykonana w kontekście niestandardowego zasobu typu `users`.
 
 W poniższym przykładzie przedstawiono konfigurację widoku na stronie "przegląd":
 
@@ -176,13 +176,13 @@ Poniższy przykład obejmuje konfigurację strony zasobów "Użytkownicy" z akcj
   }
 ```
 
-Pełną próbkę *galerii. JSON* można znaleźć w [temacie Reference: Wyświetl artefakt](reference-view-definition-artifact.md)definicji.
+Pełną próbkę *galerii. JSON* można znaleźć w temacie [Reference: artefakt definicji widoku](reference-view-definition-artifact.md).
 
 ## <a name="managed-application-definition"></a>Definicja aplikacji zarządzanej
 
 Spakuj następujące artefakty aplikacji zarządzanych do archiwum zip i przekaż je do magazynu:
 
-* createUiDefinition.json
+* createUiDefinition. JSON
 * mainTemplate. JSON
 * Galerii. JSON
 
@@ -328,11 +328,11 @@ az managedapp create \
 
 ## <a name="custom-actions-and-resources"></a>Niestandardowe akcje i zasoby
 
-Po wdrożeniu wystąpienia aplikacji wykazu usług masz dwie nowe grupy zasobów. Pierwsza grupa `applicationGroup` zasobów zawiera wystąpienie aplikacji zarządzanej. Druga grupa `managedResourceGroup` zasobów przechowuje zasoby dla aplikacji zarządzanej, w tym **dostawcę niestandardowego**.
+Po wdrożeniu wystąpienia aplikacji wykazu usług masz dwie nowe grupy zasobów. Pierwsza grupa zasobów `applicationGroup` zawiera wystąpienie aplikacji zarządzanej. Druga grupa zasobów `managedResourceGroup` przechowuje zasoby dla aplikacji zarządzanej, w tym **dostawcę niestandardowego**.
 
 ![Grupy zasobów aplikacji](./media/managed-application-with-custom-providers/application-resource-groups.png)
 
-Możesz przejść do wystąpienia aplikacji zarządzanej i wykonać **akcję** niestandardową na stronie "przegląd", utworzyć zasób niestandardowy **Użytkownicy** na stronie "Użytkownicy" i uruchomić **akcję niestandardowego kontekstu** w zasobie niestandardowym.
+Możesz przejść do wystąpienia aplikacji zarządzanej i wykonać **akcję niestandardową** na stronie "przegląd", utworzyć zasób niestandardowy **Użytkownicy** na stronie "Użytkownicy" i uruchomić **akcję niestandardowego kontekstu** w zasobie niestandardowym.
 
 * Przejdź do strony "przegląd" i kliknij przycisk "Akcja ping":
 
@@ -350,7 +350,7 @@ Możesz przejść do wystąpienia aplikacji zarządzanej i wykonać **akcję** n
 
 ## <a name="looking-for-help"></a>Szukasz pomocy
 
-Jeśli masz pytania dotyczące Azure Managed Applications, spróbuj zadać pytanie na [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-managedapps). Podobne pytanie mogło zostać już zgłoszone i nie udzielono odpowiedzi, więc najpierw należy sprawdzić przed opublikowaniem. Dodaj tag `azure-managedapps` , aby uzyskać szybką odpowiedź!
+Jeśli masz pytania dotyczące Azure Managed Applications, spróbuj zadać pytanie na [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-managedapps). Podobne pytanie mogło zostać już zgłoszone i nie udzielono odpowiedzi, więc najpierw należy sprawdzić przed opublikowaniem. Dodaj tag `azure-managedapps`, aby uzyskać szybką odpowiedź!
 
 ## <a name="next-steps"></a>Następne kroki
 

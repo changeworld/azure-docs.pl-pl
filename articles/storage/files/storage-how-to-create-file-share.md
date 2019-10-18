@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3b30df7410f56c203eb600089cce130a8de23d1b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013560"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514609"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Tworzenie udziału plików w usłudze Azure Files
 Udziały plików platformy Azure można tworzyć przy użyciu witryny  [Azure Portal](https://portal.azure.com/), poleceń cmdlet programu PowerShell usługi Azure Storage, bibliotek klienckich usługi Azure Storage lub interfejsu API REST usługi Azure Storage. Z tego samouczka dowiesz się:
@@ -23,6 +23,9 @@ Udziały plików platformy Azure można tworzyć przy użyciu witryny  [Azure P
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby utworzyć udział plików Azure, można użyć istniejącego konta magazynu lub [utworzyć nowe konto usługi Azure Storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Aby utworzyć udział plików Azure przy użyciu programu PowerShell, konieczny jest klucz konta i nazwa konta magazynu. Jeśli planujesz użyć programu PowerShell lub interfejsu wiersza polecenia, niezbędny będzie klucz konta usługi Storage.
 
+> [!NOTE]
+> Jeśli chcesz utworzyć udziały plików większe niż 5 TiB, zapoznaj się z artykułem [Włączanie dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
+
 ## <a name="create-a-file-share-through-the-azure-portal"></a>Tworzenie udziału plików za pośrednictwem witryny Azure Portal
 1. **Przejdź do bloku Konto usługi Storage w witrynie Azure Portal**:    
     ![Blok Konto magazynu](./media/storage-how-to-create-file-share/create-file-share-portal1.png)
@@ -30,14 +33,14 @@ Aby utworzyć udział plików Azure, można użyć istniejącego konta magazynu 
 2. **Kliknij przycisk Dodaj udział pliku**:    
     ![Kliknij przycisk Dodaj udział pliku](./media/storage-how-to-create-file-share/create-file-share-portal2.png)
 
-3. **Podaj nazwę i limit przydziału. Maksymalna wartość limitu przydziału wynosi obecnie 5 TiB**:    
+3. **Podaj nazwę i limit przydziału**:    
     ![Podaj nazwę i żądany limit przydziału dla nowego udziału plików](./media/storage-how-to-create-file-share/create-file-share-portal3.png)
 
-4. **Wyświetl nowy udziału plików**:  ![Wyświetlanie nowego udziału plików](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
+4. **Wyświetl nowy udział plików**: ![Wyświetl swój nowy udział plików](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
 
-5. **Przekaż plik**:  ![Przekazywanie pliku](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
+5. **Przekaż plik**: ![Przekaż plik](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
 
-6. **Przejdź do udziału plików i zarządzaj swoimi katalogami i plikami**:  ![Przeglądanie udziału plików](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
+6. **Przejdź do udziału plików i zarządzaj swoimi plikami i katalogami**: ![Przeglądaj udział plików](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
 
 
 ## <a name="create-file-share-through-powershell"></a>Tworzenie udziału plików za pośrednictwem programu PowerShell

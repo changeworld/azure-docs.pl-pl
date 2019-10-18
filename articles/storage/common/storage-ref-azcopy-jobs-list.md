@@ -4,18 +4,18 @@ description: Ten artykuł zawiera informacje referencyjne dotyczące listy zada�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ff10a1e4544f80d618d6989ab251096e6cb77baf
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: a37735fcfec7909e37177140116ebcf7de8a298e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195986"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513667"
 ---
-# <a name="azcopy-jobs-list"></a>Lista zadań AzCopy
+# <a name="azcopy-jobs-list"></a>azcopy jobs list
 
 Wyświetla informacje o wszystkich zadaniach.
 

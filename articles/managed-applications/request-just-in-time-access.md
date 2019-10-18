@@ -1,17 +1,17 @@
 ---
-title: Włącz i Żądaj dostępu just in Time do Azure Managed Applications
+title: Żądaj dostępu just in Time-Azure Managed Applications
 description: Opisuje, w jaki sposób wydawcy Azure Managed Applications żądania dostępu just in Time do zarządzanej aplikacji.
 author: MSEvanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
-ms.openlocfilehash: 0d595d4c96e9f87f1c8eece5d47bf4c8cdd58d7c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: fdd1dcf5ab6b58a91534a465a8c92c10de0d2097
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574984"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528955"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Włącz i Żądaj dostępu just in Time do Azure Managed Applications
 
@@ -81,7 +81,7 @@ Podczas definiowania oferty w portalu Marketplace upewnij się, że włączono d
 
 Dodano krok konfiguracji JIT do interfejsu użytkownika i włączono dostęp JIT w ofercie Marketplace. Gdy użytkownicy wdrażają aplikację zarządzaną, mogą [włączyć dostęp JIT dla swojego wystąpienia](approve-just-in-time-access.md#enable-during-deployment).
 
-## <a name="request-access"></a>Żądaj dostępu
+## <a name="request-access"></a>Żądanie dostępu
 
 Gdy musisz uzyskać dostęp do zarządzanych zasobów konsumenta, Wyślij żądanie dotyczące określonej roli, godziny i czasu trwania. Użytkownik musi następnie zatwierdzić żądanie.
 
@@ -101,7 +101,7 @@ Aby wysłać żądanie dostępu JIT:
 
    ![Powiadomienia](./media/request-just-in-time-access/in-progress.png)
 
-   Teraz musisz poczekać, aż konsument zatwierdzi [Twoje żądanie](approve-just-in-time-access.md#approve-requests).
+   Teraz musisz poczekać, aż konsument [zatwierdzi Twoje żądanie](approve-just-in-time-access.md#approve-requests).
 
 1. Aby wyświetlić stan wszystkich żądań JIT dla aplikacji zarządzanej, wybierz pozycję **dostęp JIT** i **historię żądań**.
 
