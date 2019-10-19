@@ -170,6 +170,7 @@
       items:
         - name: Projekt programu VS z potokami
           href: vs-resource-groups-project-devops-pipelines.md
+          displayName: DevOps
     - name: Eksportowanie szablonu
       href: export-template-portal.md
     - name: Move

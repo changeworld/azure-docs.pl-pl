@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Dokumentacja usługi Azure Notebooks
 metadata:
-  title: 'Dokumentacja usługi Azure Notebooks — przewodniki Szybki Start, samouczki i przewodniki | Microsoft Docs'
+  title: Dokumentacja usługi Azure Notebooks
   description: 'Dowiedz się, jak tworzyć, uruchamiać i udostępniać notesy Jupyter za pomocą hostowanej usługi Azure Notebooks.'
   services: notebooks
   author: kraigb
