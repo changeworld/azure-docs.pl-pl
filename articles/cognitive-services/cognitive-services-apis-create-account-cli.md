@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d50b0858ac7c4c0e5e0263bd157e044d0fec4489
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 8ca994b0b4abb27eef284eedf5a76571fe19699d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972669"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595317"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Tworzenie zasobu Cognitive Services przy użyciu interfejsu wiersza polecenia platformy Azure (CLI)
 
@@ -60,7 +60,7 @@ az account list-locations \
 
 Po utworzeniu lokalizacji platformy Azure Utwórz nową grupę zasobów w interfejsie wiersza polecenia platformy Azure przy użyciu poleceń [AZ Group Create](/cli/azure/group#az-group-create) .
 
-W poniższym przykładzie Zastąp lokalizację platformy Azure `westus2` jednym z lokalizacji platformy Azure dostępnych dla Twojej subskrypcji.
+W poniższym przykładzie Zastąp lokalizację platformy Azure `westus2` jedną z lokalizacji platformy Azure dostępnych dla Twojej subskrypcji.
 
 ```azurecli-interactive
 az group create \
@@ -74,8 +74,15 @@ az group create \
 
 Podczas tworzenia nowego zasobu należy znać "rodzaj" usługi, która ma być używana, wraz z żądaną [warstwą cenową](https://azure.microsoft.com/pricing/details/cognitive-services/) (lub jednostką SKU). Te i inne informacje są używane jako parametry podczas tworzenia zasobu.
 
+### <a name="multi-service"></a>Wiele usług
+
+| Usługa                    | Natur                      |
+|----------------------------|---------------------------|
+| Wiele usług. Aby uzyskać więcej informacji, zobacz stronę z [cennikiem](https://azure.microsoft.com/pricing/details/cognitive-services/) .            | `CognitiveServices`     |
+
+
 > [!NOTE]
-> Wiele usług poznawczej ma bezpłatną warstwę, której można użyć do wypróbowania usługi. Aby skorzystać z warstwy Bezpłatna, użyj `F0` jako jednostki SKU dla zasobu.
+> Wiele Cognitive Services poniżej ma bezpłatną warstwę, której można użyć do wypróbowania usługi. Aby skorzystać z warstwy Bezpłatna, użyj `F0` jako jednostki SKU dla zasobu.
 
 ### <a name="vision"></a>Obraz
 

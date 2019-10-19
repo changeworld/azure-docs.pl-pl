@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: bde68a70ac047433e86b7e06bc5f4a56bdd28595
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028515"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595343"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst często zadawanych pytań
 
@@ -71,6 +71,28 @@ Odp **.: można**skalować w górę modelu w przyrostach 20 współbieżnych ż�
 
 Skontaktuj się z [pomocą techniczną mowy](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) , jeśli potrzebujesz wyższej skali.
 
+Aby zwiększyć współbieżność modelu niestandardowego, potrzebne są następujące informacje:
+
+- Region, w którym został wdrożony model.
+- Identyfikator punktu końcowego wdrożonego modelu.
+
+Aby zwiększyć współbieżność dla modeli podstawowych, potrzebne są następujące informacje:
+
+- Region usługi,
+
+i albo
+
+- token dostępu dla Ciebie subrscription (zobacz [tutaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
+
+lub
+
+- Identyfikator zasobu dla subskrypcji:
+  - Przejdź do https://portal.azure.com,
+  - Wybierz `Cognitive Services` w polu wyszukiwania
+  - z wyświetlanych usług wybierz usługę mowy, dla której chcesz zwiększyć współbieżność,
+  - Wyświetl właściwości tej usługi,
+  - Skopiuj kompletną `Resource ID`.
+
 **P: Czy można pobrać model i uruchomić go lokalnie?**
 
 Odp **.: nie**można pobrać i wykonać lokalnie modeli.
@@ -94,7 +116,7 @@ Odp.: **w**przypadku przesłania każdego kanału osobno (każdego kanału w oso
 
 **P: jaki jest limit rozmiaru zestawu danych i dlaczego jest to limit?**
 
-Odp **.: bieżący**limit zestawu danych wynosi 2 GB. Limit jest spowodowany przez ograniczenie rozmiaru pliku na potrzeby przekazywania HTTP. 
+Odp **.: bieżący**limit zestawu danych wynosi 2 GB. Limit jest spowodowany przez ograniczenie rozmiaru pliku na potrzeby przekazywania HTTP.
 
 **P: Czy mogę zip moje pliki tekstowe, aby można było przekazać większy plik tekstowy?** 
 
