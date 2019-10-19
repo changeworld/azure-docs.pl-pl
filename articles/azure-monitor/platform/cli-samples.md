@@ -1,81 +1,80 @@
 ---
-title: Przykłady — szybki start usługi Azure Monitor interfejsu wiersza polecenia
-description: Przykładowe polecenia interfejsu wiersza polecenia dla funkcji usługi Azure Monitor. Usługa Azure Monitor to usługa Microsoft Azure, dzięki czemu można wysłać powiadomienia o alertach, wywołania adresu URL sieci web na podstawie wartości danych telemetrycznych skonfigurowane i automatycznego skalowania usługi w chmurze, maszyny wirtualne i aplikacje sieci Web.
-author: rboucher
-services: azure-monitor
+title: Przykłady szybkiego startu interfejsu wiersza polecenia Azure Monitor
+description: Przykłady poleceń interfejsu wiersza polecenia dla Azure Monitor funkcji. Azure Monitor to usługa Microsoft Azure, która umożliwia wysyłanie powiadomień o alertach, wywoływanie internetowych adresów URL na podstawie wartości skonfigurowanych danych telemetrycznych oraz automatyczne skalowanie Cloud Services, Virtual Machines i Web Apps.
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: fa3293346fee6f6666db01dab5587dd760df84b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 05/16/2018
+ms.openlocfilehash: 48ce748a95f58abb060cd6f54ac29c877356f5de
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60740887"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555592"
 ---
-# <a name="azure-monitor-cli-quick-start-samples"></a>Przykłady — szybki start usługi Azure Monitor interfejsu wiersza polecenia
-W tym artykule przedstawiono przykładowe polecenia interfejsu wiersza polecenia (CLI), aby ułatwić dostęp do funkcji usługi Azure Monitor. Usługa Azure Monitor umożliwia automatyczne skalowanie usługi w chmurze, maszyny wirtualne i aplikacje sieci Web i wysyłać powiadomienia o alertach lub zadzwoń do adresu URL sieci web na podstawie wartości danych telemetrycznych skonfigurowany.
+# <a name="azure-monitor-cli-quick-start-samples"></a>Przykłady szybkiego startu interfejsu wiersza polecenia Azure Monitor
+W tym artykule przedstawiono przykładowe polecenia interfejsu wiersza polecenia (CLI) ułatwiające dostęp do funkcji Azure Monitor. Azure Monitor pozwala na automatyczne skalowanie Cloud Services, Virtual Machines i Web Apps oraz wysyłanie powiadomień o alertach lub wywoływanie adresów URL sieci Web na podstawie wartości skonfigurowanych danych telemetrycznych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie została jeszcze zainstalowana wiersza polecenia platformy Azure, postępuj zgodnie z instrukcjami dotyczącymi [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Można również użyć [usługi Azure Cloud Shell](/azure/cloud-shell) do uruchamiania interfejsu wiersza polecenia jako środowisko interaktywne w przeglądarce. Zobacz pełną dokumentację wszystkich dostępnych poleceń w [odwołanie do wiersza polecenia platformy Azure Monitor](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
+Jeśli nie zainstalowano jeszcze interfejsu wiersza polecenia platformy Azure, postępuj zgodnie z instrukcjami dotyczącymi [instalacji interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Możesz również użyć [Azure Cloud Shell](/azure/cloud-shell) , aby uruchomić interfejs wiersza polecenia jako interaktywny w przeglądarce. Pełne odwołanie do wszystkich dostępnych poleceń znajduje się w [dokumentacji interfejsu wiersza polecenia Azure monitor](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-Pierwszym krokiem jest Zaloguj się do konta platformy Azure.
+Pierwszym krokiem jest zalogowanie się do konta platformy Azure.
 
 ```azurecli
 az login
 ```
 
-Po uruchomieniu tego polecenia, musisz zalogować się za pośrednictwem zgodnie z instrukcjami na ekranie. Wszystkie polecenia działają w ramach subskrypcji domyślnej.
+Po uruchomieniu tego polecenia należy zalogować się za pomocą instrukcji na ekranie. Wszystkie polecenia działają w kontekście domyślnej subskrypcji.
 
-Aby wyświetlić szczegółowe informacje o Twojej bieżącej subskrypcji, użyj następującego polecenia.
+Aby wyświetlić szczegóły bieżącej subskrypcji, użyj następującego polecenia.
 
 ```azurecli
 az account show
 ```
 
-Aby zmienić kontekst pracy do innej subskrypcji, użyj następującego polecenia.
+Aby zmienić kontekst roboczy na inną subskrypcję, użyj następującego polecenia.
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-Aby wyświetlić listę wszystkich obsługiwanych poleceń usługi Azure Monitor, wykonaj następujące czynności.
+Aby wyświetlić listę wszystkich obsługiwanych poleceń Azure Monitor, wykonaj następujące czynności.
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>Wyświetl dziennik aktywności subskrypcji
+## <a name="view-activity-log-for-a-subscription"></a>Wyświetlanie dziennika aktywności dla subskrypcji
 
-Aby wyświetlić listę zdarzenia dziennika aktywności, wykonaj następujące czynności.
+Aby wyświetlić listę zdarzeń dziennika aktywności, wykonaj następujące czynności.
 
 ```azurecli
 az monitor activity-log list
 ```
 
-Spróbuj wykonać następujące czynności, aby wyświetlić wszystkie dostępne opcje.
+Spróbuj wykonać poniższe czynności, aby wyświetlić wszystkie dostępne opcje.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Oto przykład dzienniki listy według grupy zasobów
+Oto przykład wyświetlania listy dzienników według źródła
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Przykład listy dzienniki przez obiekt wywołujący
+Przykład wyświetlania listy dzienników według obiektu wywołującego
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Przykład listy dzienniki przez obiekt wywołujący na typu zasobu w zakresie dat.
+Przykład wyświetlania listy dzienników według obiektu wywołującego dla typu zasobu w ramach zakresu dat
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \
@@ -84,18 +83,18 @@ az monitor activity-log list --resource-provider Microsoft.Web \
     --end-time 2016-03-16T00:00:00Z
 ```
 
-## <a name="work-with-alerts"></a>Praca z alertami 
+## <a name="work-with-alerts"></a>Pracuj z alertami 
 > [!NOTE]
-> W tej chwili tylko alerty (klasyczne) jest obsługiwana w interfejsie wiersza polecenia. 
+> W tym momencie w interfejsie wiersza polecenia są obsługiwane tylko alerty (klasyczne). 
 
-### <a name="get-alert-classic-rules-in-a-resource-group"></a>Pobierz reguły alertów (klasyczne) w grupie zasobów
+### <a name="get-alert-classic-rules-in-a-resource-group"></a>Pobieranie reguł alertów (klasycznych) w grupie zasobów
 
 ```azurecli
 az monitor activity-log alert list --resource-group <group name>
 az monitor activity-log alert show --resource-group <group name> --name <alert name>
 ```
 
-### <a name="create-a-metric-alert-classic-rule"></a>Utwórz regułę alertu metryki (klasyczne)
+### <a name="create-a-metric-alert-classic-rule"></a>Tworzenie reguły alertu metryki (klasycznej)
 
 ```azurecli
 az monitor alert create --name <alert name> --resource-group <group name> \
@@ -105,7 +104,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
     --condition "<METRIC> {>,>=,<,<=} <THRESHOLD> {avg,min,max,total,last} ##h##m##s"
 ```
 
-### <a name="delete-an-alert-classic-rule"></a>Usuwanie reguły alertów (klasyczne)
+### <a name="delete-an-alert-classic-rule"></a>Usuwanie reguły alertu (klasycznego)
 
 ```azurecli
 az monitor alert delete --name <alert name> --resource-group <group name>
@@ -113,16 +112,16 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 ## <a name="log-profiles"></a>Profile dziennika
 
-Skorzystaj z informacji w tej sekcji, aby pracować z profile dziennika.
+Informacje przedstawione w tej sekcji służą do pracy z profilami dzienników.
 
-### <a name="get-a-log-profile"></a>Pobieranie profilu dziennika
+### <a name="get-a-log-profile"></a>Pobierz profil dziennika
 
 ```azurecli
 az monitor log-profiles list
 az monitor log-profiles show --name <profile name>
 ```
 
-### <a name="add-a-log-profile-with-retention"></a>Dodaj profil dziennika z przechowywaniem
+### <a name="add-a-log-profile-with-retention"></a>Dodawanie profilu dziennika z przechowywaniem
 
 ```azurecli
 az monitor log-profiles create --name <profile name> --location <location of profile> \
@@ -133,7 +132,7 @@ az monitor log-profiles create --name <profile name> --location <location of pro
     --storage-account-id <storage account ID to store the logs in>
 ```
 
-### <a name="add-a-log-profile-with-retention-and-eventhub"></a>Dodaj profil dziennika, przechowywania i Centrum zdarzeń
+### <a name="add-a-log-profile-with-retention-and-eventhub"></a>Dodawanie profilu dziennika z przechowywaniem i EventHub
 
 ```azurecli
 az monitor log-profiles create --name <profile name> --location <location of profile> \
@@ -153,7 +152,7 @@ az monitor log-profiles delete --name <profile name>
 
 ## <a name="diagnostics"></a>Diagnostyka
 
-Skorzystaj z informacji w tej sekcji, aby pracować z ustawień diagnostycznych.
+Skorzystaj z informacji w tej sekcji, aby korzystać z ustawień diagnostycznych.
 
 ### <a name="get-a-diagnostic-setting"></a>Pobierz ustawienie diagnostyczne
 
@@ -178,7 +177,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-### <a name="delete-a-diagnostic-setting"></a>Usuwanie ustawień diagnostycznych
+### <a name="delete-a-diagnostic-setting"></a>Usuń ustawienie diagnostyczne
 
 ```azurecli
 az monitor diagnostic-settings delete --name <diagnostic name> \
@@ -187,7 +186,7 @@ az monitor diagnostic-settings delete --name <diagnostic name> \
 
 ## <a name="autoscale"></a>Automatyczne skalowanie
 
-Skorzystaj z informacji w tej sekcji, aby pracować z ustawień automatycznego skalowania. Należy modyfikować tych przykładów.
+Skorzystaj z informacji w tej sekcji, aby korzystać z ustawień skalowania automatycznego. Należy zmodyfikować te przykłady.
 
 ### <a name="get-autoscale-settings-for-a-resource-group"></a>Pobieranie ustawień automatycznego skalowania dla grupy zasobów
 
@@ -195,13 +194,13 @@ Skorzystaj z informacji w tej sekcji, aby pracować z ustawień automatycznego s
 az monitor autoscale list --resource-group <group name>
 ```
 
-### <a name="get-autoscale-settings-by-name-in-a-resource-group"></a>Pobieranie ustawień automatycznego skalowania o nazwie w grupie zasobów
+### <a name="get-autoscale-settings-by-name-in-a-resource-group"></a>Pobieranie ustawień automatycznego skalowania według nazwy w grupie zasobów
 
 ```azurecli
 az monitor autoscale show --name <settings name> --resource-group <group name>
 ```
 
-### <a name="set-autoscale-settings"></a>Ustawienia automatycznego skalowania
+### <a name="set-autoscale-settings"></a>Ustawianie ustawień skalowania automatycznego
 
 ```azurecli
 az monitor autoscale create --name <settings name> --resource-group <group name> \

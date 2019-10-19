@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 780e639ad6e1ee721820749da2df9ea6efa07bd6
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: b97db5fcebeea67cc593a4d2c1fd677a55ad8559
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273727"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550181"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
@@ -54,7 +54,7 @@ Aby rozpocząć, potrzebne są trzy dodatkowe elementy:
 Aby utworzyć nowe środowisko Time Series Insights, wybierz identyfikator szeregów czasowych. Wykonanie tej czynności jako partycji logicznej dla danych. Upewnij się, że identyfikatory szeregów czasowych są gotowe.
 
 > [!IMPORTANT]
-> Identyfikatory szeregów czasowych są *niezmienne* i *nie można ich później zmienić*. Sprawdź każdy z nich przed ostatecznym zaznaczeniem i pierwszym użyciem.
+> Identyfikatorów szeregów czasowych *nie można później zmienić*. Sprawdź każdy z nich przed ostatecznym zaznaczeniem i pierwszym użyciem.
 
 Można wybrać maksymalnie trzy klucze, aby jednoznacznie odróżnić zasoby. Aby uzyskać więcej informacji, zapoznaj się z [najlepszymi rozwiązaniami dotyczącymi wybierania identyfikatora szeregów czasowych](./time-series-insights-update-how-to-id.md) i [danych wejściowych](./time-series-insights-update-storage-ingress.md).
 

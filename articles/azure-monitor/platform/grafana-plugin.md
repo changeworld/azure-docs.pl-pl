@@ -1,20 +1,18 @@
 ---
 title: Monitorowanie usług i aplikacji platformy Azure przy użyciu Grafana
 description: Roześlij Azure Monitor i Application Insights dane, aby można było je przeglądać w Grafana.
-services: azure-monitor
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: ''
+ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 11/06/2017
-ms.topic: conceptual
-ms.service: azure-monitor
-ms.subservice: ''
-ms.openlocfilehash: b9a9d0a16a31d06d0d4edc1b6f0617a5771b179e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f5464710d5c7908eeec5dd917bfeff4756ff4e80
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872841"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552099"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorowanie usług platformy Azure w Grafana
 Teraz możesz monitorować usługi i aplikacje platformy Azure z [Grafana](https://grafana.com/) przy użyciu [wtyczki źródła danych Azure monitor](https://grafana.com/plugins/grafana-azure-monitor-datasource). Wtyczka zbiera dane wydajności aplikacji zebrane przez Azure Monitor, w tym różne dzienniki i metryki. Następnie można wyświetlić te dane na pulpicie nawigacyjnym Grafana.
@@ -47,7 +45,7 @@ Aby skonfigurować lokalny serwer Grafana, [Pobierz i zainstaluj Grafana w środ
 
 ## <a name="sign-in-to-grafana"></a>Zaloguj się do Grafana
 
-1. Korzystając z adresu IP serwera, Otwórz stronę logowania pod *adresem\<\>IP http://: 3000* lub  *\<dnsname >\:3000* w przeglądarce. Chociaż 3000 jest portem domyślnym, należy zauważyć, że podczas instalacji mógł zostać wybrany inny port. Powinna zostać wyświetlona strona logowania dla skompilowanego serwera Grafana.
+1. Korzystając z adresu IP serwera, Otwórz stronę logowania pod *adresem http://\<IP \>:3000* lub *\<DNSName > \:3000* w przeglądarce. Chociaż 3000 jest portem domyślnym, należy zauważyć, że podczas instalacji mógł zostać wybrany inny port. Powinna zostać wyświetlona strona logowania dla skompilowanego serwera Grafana.
 
     ![Ekran logowania Grafana](./media/grafana-plugin/grafana-login-screen.png)
 
@@ -82,7 +80,7 @@ Po pomyślnym zalogowaniu powinna zostać wyświetlona, że wtyczka Azure Monito
 5. Jeśli używasz Application Insights, możesz również uwzględnić interfejs API Application Insights i identyfikator aplikacji, aby zbierać metryki oparte na Application Insights. Aby uzyskać więcej informacji, zobacz [Uzyskiwanie klucza interfejsu API i identyfikatora aplikacji](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
 6. Wybierz pozycję **Zapisz**, a Grafana przetestuje poświadczenia dla każdego interfejsu API. Powinien zostać wyświetlony komunikat podobny do następującego.  
-    ![Zatwierdzono konfigurację źródła danych Grafana](./media/grafana-plugin/grafana-data-source-config-approved-dark.png)
+    ![Grafana zatwierdzonej konfiguracji źródła danych ](./media/grafana-plugin/grafana-data-source-config-approved-dark.png)
 
 ## <a name="build-a-grafana-dashboard"></a>Tworzenie pulpitu nawigacyjnego Grafana
 
@@ -91,12 +89,12 @@ Po pomyślnym zalogowaniu powinna zostać wyświetlona, że wtyczka Azure Monito
 2. Na nowym pulpicie nawigacyjnym wybierz **Wykres**. Możesz wypróbować inne opcje wykresów, ale w tym artykule użyto programu *Graph* jako przykładu.
 
 3. Pusty wykres zostanie wyświetlony na pulpicie nawigacyjnym. Kliknij tytuł panelu i wybierz pozycję **Edytuj** , aby wprowadzić szczegóły danych, które mają zostać wykreślone na tym wykresie grafu.
-    ![Grafana nowy Graf](./media/grafana-plugin/grafana-new-graph-dark.png)
+    ![Grafana nowych grafów ](./media/grafana-plugin/grafana-new-graph-dark.png)
 
 4. Wybierz skonfigurowane źródło danych Azure Monitor.
    * Zbieranie metryk Azure Monitor — wybierz **Azure monitor** na liście rozwijanej usługi. Zostanie wyświetlona lista selektorów, w której można wybrać zasoby i metryki do monitorowania na tym wykresie. Aby zbierać metryki z maszyny wirtualnej, użyj przestrzeni nazw **Microsoft. COMPUTE/VirtualMachines**. Po wybraniu maszyn wirtualnych i metryk można rozpocząć wyświetlanie ich danych na pulpicie nawigacyjnym.
-     ![Konfiguracja grafu Grafana dla Azure Monitor](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-   * Zbieranie danych dziennika Azure Monitor — wybierz pozycję **Azure log Analytics** na liście rozwijanej usługi. Wybierz obszar roboczy, do którego chcesz wykonać zapytanie, i Ustaw tekst zapytania. W tym miejscu możesz skopiować dowolne zapytanie dziennika, które już istnieje, lub utworzyć nowe. Podczas wpisywania zapytania technologia IntelliSense będzie wyświetlać i sugerują opcje Autouzupełniania. Wybierz typ wizualizacji, **tabelę**szeregów czasowych i uruchom zapytanie.
+     ![Grafana konfigurację grafu dla Azure Monitor ](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
+   * Zbieranie danych dziennika Azure Monitor — wybierz pozycję **Azure log Analytics** na liście rozwijanej usługi. Wybierz obszar roboczy, do którego chcesz wykonać zapytanie, i Ustaw tekst zapytania. W tym miejscu możesz skopiować dowolne zapytanie dziennika, które już istnieje, lub utworzyć nowe. Podczas wpisywania zapytania technologia IntelliSense będzie wyświetlać i sugerują opcje Autouzupełniania. Wybierz typ wizualizacji, **tabelę** **szeregów czasowych** i uruchom zapytanie.
     
      > [!NOTE]
      >
@@ -106,10 +104,10 @@ Po pomyślnym zalogowaniu powinna zostać wyświetlona, że wtyczka Azure Monito
      ![Grafana Graph dla Log Analytics platformy Azure](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
 5. Poniżej znajduje się prosty pulpit nawigacyjny z dwoma wykresami. Po lewej stronie jest wyświetlany procent procesora CPU dwóch maszyn wirtualnych. Wykres po prawej stronie przedstawia transakcje na koncie usługi Azure Storage, które zostało przerwane przez typ interfejsu API transakcji.
-    ![Przykład Grafana dwóch wykresów](media/grafana-plugin/grafana6.png)
+    Przykład ![Grafana dwóch wykresów ](media/grafana-plugin/grafana6.png)
 
 
-## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Opcjonalnie: Monitoruj niestandardowe metryki na tym samym serwerze Grafana
+## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Opcjonalne: Monitoruj niestandardowe metryki na tym samym serwerze Grafana
 
 Można również zainstalować telegraf i InfluxDB do zbierania i wykreślania zarówno niestandardowych, jak i opartych na agentach metryk tego samego wystąpienia Grafana. Istnieje wiele wtyczek źródła danych, których można użyć do przełączenia tych metryk razem na pulpicie nawigacyjnym.
 
@@ -121,7 +119,7 @@ Poniżej znajdują się dobre artykuły referencyjne dotyczące korzystania z te
  - [Rozwiązanie do monitorowania dla hostów platformy Docker, kontenerów i usług kontenerowych](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
 Poniżej znajduje się obraz pełnego pulpitu nawigacyjnego Grafana, który zawiera metryki z Azure Monitor i Application Insights.
-![Przykładowe metryki Grafana](media/grafana-plugin/grafana8.png)
+![Grafana przykładowe metryki ](media/grafana-plugin/grafana8.png)
 
 ## <a name="advanced-grafana-features"></a>Zaawansowane funkcje Grafana
 
@@ -137,7 +135,7 @@ Usage
 Można skonfigurować zmienną, która będzie wyświetlać wszystkie dostępne wartości **rozwiązania** , a następnie zaktualizować zapytanie, aby go użyć.
 Aby utworzyć nową zmienną, kliknij przycisk Ustawienia pulpitu nawigacyjnego w prawym górnym rogu, wybierz opcję **zmienne**, a następnie **Nowy**.
 Na stronie zmienna Zdefiniuj źródło danych i zapytanie do uruchomienia w celu uzyskania listy wartości.
-![Grafana Konfiguruj zmienną](./media/grafana-plugin/grafana-configure-variable-dark.png)
+![Grafana skonfigurować zmiennej ](./media/grafana-plugin/grafana-configure-variable-dark.png)
 
 Po utworzeniu należy dostosować zapytanie, tak aby korzystało z wybranych wartości, a Twoje wykresy będą odpowiadały odpowiednio:
 ```

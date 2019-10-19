@@ -9,12 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: b5a161e570489e6382f2226ab5dc9a1c34dc67df
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a8d5fc30299dbb16373b1cfbbd89563bad471f39
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028324"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553613"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Typowe błędy i ostrzeżenia dotyczące potoku wzbogacenia AI w Azure Search
 
@@ -36,7 +36,7 @@ Indeksator nie mógł odczytać dokumentu ze źródła danych. Przyczyną może 
 | Przyczyna | Przykład | Działanie |
 | --- | --- | --- |
 | niespójne typy pól w różnych dokumentach | Typ wartości jest niezgodny z typem kolumny. Nie można zapisać `'{47.6,-122.1}'` w kolumnie autorów.  Oczekiwany typ to JArray. | Upewnij się, że typ każdego pola jest taki sam w różnych dokumentach. Na przykład jeśli pierwszy dokument `'startTime'` ma wartość DateTime, a w drugim dokumencie jest ciągiem, ten błąd zostanie trafiony. |
-| błędy usługi źródłowej źródła danych | (od Cosmos DB) `{"Errors":["Request rate is large"]}` | Sprawdź wystąpienie magazynu, aby upewnić się, że jest w dobrej kondycji. Może być konieczne dostosowanie skalowania/partycjonowania. |
+| błędy usługi źródłowej źródła danych | (z Cosmos DB) `{"Errors":["Request rate is large"]}` | Sprawdź wystąpienie magazynu, aby upewnić się, że jest w dobrej kondycji. Może być konieczne dostosowanie skalowania/partycjonowania. |
 | problemy przejściowe | Wystąpił błąd poziomu transportu podczas otrzymywania wyników z serwera. (Dostawca: Dostawca TCP, błąd: 0 — istniejące połączenie zostało wymuszone przez hosta zdalnego | Sporadycznie występują nieoczekiwane problemy z łącznością. Spróbuj ponownie uruchomić dokument za pomocą indeksatora później. |
 
 ### <a name="could-not-extract-document-content"></a>Nie można wyodrębnić zawartości dokumentu
@@ -59,38 +59,20 @@ Indeksator odczytuje dokument ze źródła danych, ale wystąpił problem podcza
 | Nie można zastosować mapowania pola do pola | Nie można zastosować funkcji mapowania `'functionName'` do pola `'fieldName'`. Tablica nie może mieć wartości null. Nazwa parametru: bajty | Dokładnie sprawdź [mapowania pól](search-indexer-field-mappings.md) zdefiniowane w indeksatorze i porównaj z danymi określonego pola dokumentu, który się nie powiódł. Może być konieczne zmodyfikowanie mapowań pól lub danych dokumentu. |
 | Nie można odczytać wartości pola | Nie można odczytać wartości kolumny `'fieldName'` przy indeksie `'fieldIndex'`. Wystąpił błąd poziomu transportu podczas otrzymywania wyników z serwera. (Dostawca: Dostawca TCP, błąd: 0 — istniejące połączenie zostało wymuszone przez hosta zdalnego). | Te błędy są zwykle spowodowane nieoczekiwanymi problemami z łącznością z usługą źródłową źródła danych. Spróbuj ponownie uruchomić dokument za pomocą indeksatora później. |
 
-### <a name="could-not-index-document"></a>Nie można indeksować dokumentu
-Dokument został odczytany i przetworzony, ale indeksator nie mógł go dodać do indeksu wyszukiwania. Przyczyną może być:
+### <a name="could-not-execute-skill"></a>Nie można wykonać umiejętności
+Indeksator nie mógł uruchomić umiejętności w zestawu umiejętności.
 
 | Przyczyna | Przykład | Działanie |
 | --- | --- | --- |
-| Pole zawiera termin, który jest zbyt duży | Termin w dokumencie jest większy niż [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Można uniknąć tego ograniczenia, upewniając się, że pole nie jest skonfigurowane jako możliwe do filtrowania, tworzenia i sortowania.
-| Dokument jest zbyt duży, aby można go było zindeksować | Dokument jest większy niż [Maksymalny rozmiar żądania interfejsu API](search-limits-quotas-capacity.md#api-request-limits) | [Jak indeksować duże zestawy danych](search-howto-large-index.md)
+| Przejściowe problemy z łącznością | Wystąpił błąd przejściowy. Spróbuj ponownie później. | Sporadycznie występują nieoczekiwane problemy z łącznością. Spróbuj ponownie uruchomić dokument za pomocą indeksatora później. |
+| Potencjalna usterka produktu | Wystąpił nieoczekiwany błąd. | Oznacza to nieznaną klasę błędu i może oznaczać, że występuje usterka produktu. Zapoznaj się z [biletem pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) , aby uzyskać pomoc. |
+| Umiejętność napotkała błąd podczas wykonywania | (Z poziomu umiejętności scalania) Co najmniej jedna wartość przesunięcia była nieprawidłowa i nie można jej przeanalizować. Wstawiono elementy na końcu tekstu | Aby rozwiązać ten problem, użyj informacji w komunikacie o błędzie. Ten rodzaj błędu będzie wymagał działania do rozwiązania. |
 
-### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Dane wejściowe umiejętności "languageCode" zawierają następujące kody języka: "X, Y, Z", co najmniej jeden z nich jest nieprawidłowy.
-Co najmniej jedna wartość przeniesiona do opcjonalnego wejścia `languageCode` z poziomu umiejętności podrzędnej nie jest obsługiwana. Taka sytuacja może wystąpić, jeśli przekazujesz dane wyjściowe [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) do kolejnych umiejętności, a dane wyjściowe składają się z większej liczby języków niż jest to obsługiwane w tych umiejętnościach podrzędnych.
+### <a name="could-not-execute-skill-because-the-web-api-request-failed"></a>Nie można wykonać umiejętności, ponieważ żądanie internetowego interfejsu API nie powiodło się
+Wykonanie kwalifikacji nie powiodło się, ponieważ wywołanie interfejsu API sieci Web nie powiodło się. Zazwyczaj ta klasa awarii występuje, gdy są używane niestandardowe umiejętności, w takim przypadku konieczne będzie debugowanie niestandardowego kodu w celu rozwiązania problemu. Jeśli zamiast tego błąd pochodzi z wbudowanej umiejętności, zapoznaj się z komunikatem o błędzie, aby uzyskać pomoc w rozwiązywaniu problemu.
 
-Jeśli wiesz, że zestaw danych znajduje się w jednym języku, należy usunąć [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) i dane wejściowe dotyczące umiejętności `languageCode` i użyć dla nich parametru umiejętności `defaultLanguageCode`, przy założeniu, że język jest obsługiwany dla tej umiejętności.
-
-Jeśli wiesz, że zestaw danych zawiera wiele języków i w ten sposób potrzebujesz danych wejściowych [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) i `languageCode`, rozważ dodanie [ConditionalSkill](cognitive-search-skill-conditional.md) w celu odfiltrowania tekstu w językach, które nie są obsługiwane przed przekazaniem w tekst na kwalifikacje podrzędne.  Oto przykład tego, co może wyglądać jak w przypadku EntityRecognitionSkill:
-
-```json
-{
-    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
-    "context": "/document",
-    "inputs": [
-        { "name": "condition", "source": "= $(/document/language) == 'de' || $(/document/language) == 'en' || $(/document/language) == 'es' || $(/document/language) == 'fr' || $(/document/language) == 'it'" },
-        { "name": "whenTrue", "source": "/document/content" },
-        { "name": "whenFalse", "source": "= null" }
-    ],
-    "outputs": [ { "name": "output", "targetName": "supportedByEntityRecognitionSkill" } ]
-}
-```
-
-Poniżej przedstawiono niektóre odwołania do obecnie obsługiwanych języków dla każdej z umiejętności, które mogą generować ten komunikat o błędzie:
-* [Obsługiwane języki analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (dla [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)i [SentimentSkill](cognitive-search-skill-sentiment.md))
-* [Języki obsługiwane przez translatora](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (dla [tekstu TranslationSkill](cognitive-search-skill-text-translation.md))
-* [SplitSkill tekstu](cognitive-search-skill-textsplit.md) Obsługiwane języki: `da, de, en, es, fi, fr, it, ko, pt`
+### <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>Nie można wykonać umiejętności, ponieważ odpowiedź dotycząca umiejętności interfejsu API sieci Web jest nieprawidłowa
+Wykonanie kwalifikacji nie powiodło się, ponieważ wywołanie interfejsu API sieci Web zwróciło nieprawidłową odpowiedź. Zazwyczaj ta klasa awarii występuje, gdy są używane niestandardowe umiejętności, w takim przypadku konieczne będzie debugowanie niestandardowego kodu w celu rozwiązania problemu. Jeśli zamiast tego niepowodzenie pochodzi z wbudowanej umiejętności, Utwórz [bilet pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) , aby uzyskać pomoc.
 
 ### <a name="skill-did-not-execute-within-the-time-limit"></a>Umiejętność nie została wykonana w ramach limitu czasu
 Istnieją dwa przypadki, w których może wystąpić ten komunikat o błędzie, z których każdy powinien być traktowany inaczej. Postępuj zgodnie z poniższymi instrukcjami, w zależności od tego, jaką umiejętność zwróciła ten błąd.
@@ -137,8 +119,74 @@ Dokument został odczytany i przetworzony, ale indeksator nie mógł go dodać d
 | Trwa poprawianie usługi wyszukiwania w ramach aktualizacji usługi lub jest ona w trakcie ponownej konfiguracji topologii. | Nie można ustanowić połączenia w celu zaktualizowania indeksu. Usługa wyszukiwania jest obecnie wyłączona/usługa wyszukiwania przechodzi do przejścia. | Skonfiguruj usługę z co najmniej 3 replikami na 99,9% dostępności na potrzeby [dokumentacji umowy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
 | Niepowodzenie w źródłowym zasobów obliczeniowych/sieciowych (rzadkich) | Nie można ustanowić połączenia w celu zaktualizowania indeksu. Wystąpił nieznany błąd. | Skonfiguruj indeksatory do [uruchomienia zgodnie z harmonogramem](search-howto-schedule-indexers.md) , aby przeprowadzić pobieranie z niepowodzenia.
 
+### <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Nie można indeksować dokumentu, ponieważ dane indeksatora są nieprawidłowe
+
+Dokument został odczytany i przetworzony, ale z powodu niezgodności konfiguracji pól indeksu i charakteru danych wyodrębnionych przez indeksator, nie można go dodać do indeksu wyszukiwania. Przyczyną może być:
+
+| Przyczyna | Przykład
+| --- | ---
+| Typ danych pól wyodrębnionych przez indeksator jest niezgodny z modelem danych odpowiedniego docelowego pola indeksu. | Pole danych "_Data_" w dokumencie z kluczem "_Data_" ma nieprawidłową wartość "typu EDM. String" ". Oczekiwany typ to "Kolekcja (EDM. String)". |
+| Nie można wyodrębnić żadnej jednostki JSON z wartości ciągu. | Nie można przeanalizować wartości "typu" EDM. String "" dla pola "_Data_" jako obiektu JSON. Błąd: "po przeanalizowaniu wartości napotkano nieoczekiwany znak:" ". Ścieżka "_Path_", wiersz 1, pozycja 3162. " |
+| Nie można wyodrębnić kolekcji jednostek JSON z wartości ciągu.  | Nie można przeanalizować wartości "typu" EDM. String "" dla pola "_Data_" jako tablicy JSON. Błąd: "po przeanalizowaniu wartości napotkano nieoczekiwany znak:" ". Ścieżka ' [0] ', wiersz 1, pozycja 27. ' |
+| W dokumencie źródłowym odnaleziono nieznany typ. | Nieznany typ "_nieznany_" nie może być indeksowany |
+| W dokumencie źródłowym użyto niezgodnej notacji punktów geograficznych. | Literały ciągu punktu WKT nie są obsługiwane. Zamiast tego użyj literałów punktu GEOJSON |
+
+We wszystkich tych przypadkach należy zapoznać się z [obsługiwanymi typami danych (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) i [mapą typów danych dla indeksatorów w Azure Search](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) , aby upewnić się, że schemat indeksu został prawidłowo skonstruowany i skonfigurowano odpowiednie [mapowania pól indeksatora](search-indexer-field-mappings.md). Komunikat o błędzie będzie zawierać szczegóły, które mogą pomóc w śledzeniu źródła niezgodności.
+
 ##  <a name="warnings"></a>Ostrzeżeni
 Ostrzeżenia nie zatrzymują indeksowania, ale wskazują warunki, które mogą spowodować nieoczekiwane wyniki. Niezależnie od tego, czy podejmujesz akcję, czy nie zależą od danych i Twojego scenariusza.
+
+### <a name="could-not-execute-skill-because-a-skill-input-was-invalid"></a>Nie można wykonać umiejętności, ponieważ dane wejściowe dotyczące kwalifikacji były nieprawidłowe
+Indeksator nie mógł uruchomić umiejętności w zestawu umiejętności, ponieważ brakuje w nim danych wejściowych, niewłaściwego typu lub w inny sposób.
+
+Umiejętności poznawcze mają wymagane dane wejściowe i opcjonalne dane wejściowe. Na przykład [umiejętność wyodrębniania frazy klucza](cognitive-search-skill-keyphrases.md) ma dwa wymagane dane wejściowe `text`, `languageCode` i brak opcjonalnych danych wejściowych. Jeśli jakiekolwiek wymagane dane wejściowe są nieprawidłowe, umiejętność zostanie pominięta i wygeneruje ostrzeżenie. Pominięte umiejętności nie generują żadnych danych wyjściowych, więc jeśli inne umiejętności korzystają z wyników pominiętych umiejętności, mogą generować dodatkowe ostrzeżenia.
+
+Jeśli chcesz podać wartość domyślną w przypadku braku danych wejściowych, możesz użyć [umiejętności warunkowej](cognitive-search-skill-conditional.md) do wygenerowania wartości domyślnej, a następnie użyć danych wyjściowych z [umiejętności warunkowej](cognitive-search-skill-conditional.md) jako danych wejściowych umiejętności.
+
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
+    "context": "/document",
+    "inputs": [
+        { "name": "condition", "source": "= $(/document/language) == null" },
+        { "name": "whenTrue", "source": "= 'en'" },
+        { "name": "whenFalse", "source": "= $(/document/language)" }
+    ],
+    "outputs": [ { "name": "output", "targetName": "languageWithDefault" } ]
+}
+```
+
+| Przyczyna | Przykład | Działanie |
+| --- | --- | --- |
+| Dane wejściowe umiejętności są niewłaściwego typu | Wymagane `X` danych wejściowych kwalifikacji nie ma oczekiwanego typu `String`. Wymagane `X` danych wejściowych kwalifikacji nie ma oczekiwanego formatu. | Pewne umiejętności oczekują danych wejściowych określonych typów, na przykład [umiejętność tonacji](cognitive-search-skill-sentiment.md) oczekuje, że `text` być ciągiem. Jeśli dane wejściowe określają wartość różną od ciągu, wówczas umiejętność nie zostanie wykonana i nie wygeneruje żadnych danych wyjściowych. Upewnij się, że zestaw danych zawiera wartości wejściowe, które są jednorodne w typie, lub Użyj [niestandardowej umiejętności interfejsu API sieci Web](cognitive-search-custom-skill-web-api.md) , aby wstępnie przetworzyć dane wejściowe. Jeśli Iteracja jest przeprowadzana przez tablicę, sprawdź kontekst umiejętności i wprowadź `*` w poprawnych pozycjach. Zwykle zarówno kontekst, jak i źródło danych wejściowych powinny kończyć się `*` dla tablic. |
+| Brak danych wejściowych kwalifikacji | Brak wymaganego `X` wejściowego umiejętności. | Jeśli wszystkie dokumenty otrzymają to ostrzeżenie, prawdopodobnie występuje literówka w ścieżkach wejściowych i należy dokładnie sprawdzić wielkość liter nazwy właściwości, dodatkowe lub brakujące `*` w ścieżce, a dokumenty ze źródła danych definiują wymagane dane wejściowe. |
+| Dane wejściowe kodu języka umiejętności są nieprawidłowe | @No__t_0 danych wejściowych umiejętności zawiera następujące kody języka `X,Y,Z`, co najmniej jeden z nich jest nieprawidłowy. | Zobacz więcej szczegółów [poniżej](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) |
+
+### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Dane wejściowe umiejętności "languageCode" zawierają następujące kody języka: "X, Y, Z", co najmniej jeden z nich jest nieprawidłowy.
+Co najmniej jedna wartość przeniesiona do opcjonalnego wejścia `languageCode` z poziomu umiejętności podrzędnej nie jest obsługiwana. Taka sytuacja może wystąpić, jeśli przekazujesz dane wyjściowe [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) do kolejnych umiejętności, a dane wyjściowe składają się z większej liczby języków niż jest to obsługiwane w tych umiejętnościach podrzędnych.
+
+Jeśli wiesz, że zestaw danych znajduje się w jednym języku, należy usunąć [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) i dane wejściowe dotyczące umiejętności `languageCode` i użyć dla nich parametru umiejętności `defaultLanguageCode`, przy założeniu, że język jest obsługiwany dla tej umiejętności.
+
+Jeśli wiesz, że zestaw danych zawiera wiele języków i w ten sposób potrzebujesz danych wejściowych [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) i `languageCode`, rozważ dodanie [ConditionalSkill](cognitive-search-skill-conditional.md) w celu odfiltrowania tekstu w językach, które nie są obsługiwane przed przekazaniem w tekst na kwalifikacje podrzędne.  Oto przykład tego, co może wyglądać jak w przypadku EntityRecognitionSkill:
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
+    "context": "/document",
+    "inputs": [
+        { "name": "condition", "source": "= $(/document/language) == 'de' || $(/document/language) == 'en' || $(/document/language) == 'es' || $(/document/language) == 'fr' || $(/document/language) == 'it'" },
+        { "name": "whenTrue", "source": "/document/content" },
+        { "name": "whenFalse", "source": "= null" }
+    ],
+    "outputs": [ { "name": "output", "targetName": "supportedByEntityRecognitionSkill" } ]
+}
+```
+
+Poniżej przedstawiono niektóre odwołania do obecnie obsługiwanych języków dla każdej z umiejętności, które mogą generować ten komunikat o błędzie:
+* [Obsługiwane języki analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (dla [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)i [SentimentSkill](cognitive-search-skill-sentiment.md))
+* [Języki obsługiwane przez translatora](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (dla [tekstu TranslationSkill](cognitive-search-skill-text-translation.md))
+* [SplitSkill tekstu](cognitive-search-skill-textsplit.md) Obsługiwane języki: `da, de, en, es, fi, fr, it, ko, pt`
 
 ### <a name="skill-input-was-truncated"></a>Dane wejściowe kwalifikacji zostały obcięte
 Umiejętności poznawcze mają ograniczone długość tekstu, który można analizować jednocześnie. Jeśli wprowadzanie tekstu tych umiejętności przekracza ten limit, spowoduje to obcinanie tekstu w celu spełnienia limitu, a następnie przeprowadzenie wzbogacania tego tekstu. Oznacza to, że umiejętność jest wykonywana, ale nie na wszystkich Twoich danych.
@@ -159,3 +207,6 @@ W poniższym przykładzie LanguageDetectionSkill pole wejściowe `'text'` może 
 ```
 
 Jeśli chcesz upewnić się, że cały tekst jest analizowany, rozważ użycie opcji [Podziel umiejętność](cognitive-search-skill-textsplit.md).
+
+### <a name="web-api-skill-response-contains-warnings"></a>Odpowiedź na umiejętność interfejsu API sieci Web zawiera ostrzeżenia
+Indeksator mógł uruchomić umiejętność w zestawu umiejętności, ale odpowiedź z żądania internetowego interfejsu API wskazywała, że wystąpiły ostrzeżenia podczas wykonywania. Zapoznaj się z ostrzeżeniami, aby zrozumieć, w jaki sposób wpływają dane oraz czy nie są wymagane akcje.

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie usługi G Suite dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do usługi G Suite.
+title: 'Samouczek: Konfigurowanie usługi G Suite do automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak automatycznie udostępniać i cofać obsługę administracyjną kont użytkowników z usługi Azure AD w usłudze G Suite.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,170 +15,200 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1f4d4a6b60961515826a1ba7409bf149b318e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0187d17f8210800aef1c68def0614ce26913e09a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60276972"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555071"
 ---
-# <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi G Suite dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi G Suite do automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest przedstawiają sposób automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure Active Directory (Azure AD) do usługi G Suite.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w usłudze G Suite i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup w usłudze G Suite.
 
 > [!NOTE]
-> W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
+
+> [!NOTE]
+> Łącznik pakietu G Suite został niedawno zaktualizowany o 2019 października. Zmiany wprowadzone do łącznika G Suite obejmują:
+- Dodano obsługę dodatkowych atrybutów użytkowników i grup usługi G Suite. 
+- Zaktualizowano nazwy atrybutów docelowych G Suite, aby były zgodne z informacjami zdefiniowanymi w [tym miejscu]().
+- Zaktualizowano domyślne mapowania atrybutów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD z usługą G Suite, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Subskrypcja usługi G Suite z obsługą logowania jednokrotnego
-- Subskrypcja usługi Google Apps lub usługi Google Cloud Platform
+- Dzierżawa usługi Azure AD
+- [Dzierżawa G Suite](https://gsuite.google.com/pricing.html)
+- Konto użytkownika w pakiecie G Suite z uprawnieniami administratora.
 
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
+## <a name="assign-users-to-g-suite"></a>Przypisywanie użytkowników do zestawu G Suite
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Azure Active Directory używa koncepcji zwanej zadaniami w celu określenia, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznej aprowizacji użytkowników są synchronizowane tylko użytkownicy i/lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD potrzebują dostępu do usługi G Suite. Po ustaleniu tych użytkowników i/lub grup można przypisać do pakietu G Suite, postępując zgodnie z poniższymi instrukcjami:
 
-## <a name="assign-users-to-g-suite"></a>Przypisywanie użytkowników do usługi G Suite
+* [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md)
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
+### <a name="important-tips-for-assigning-users-to-g-suite"></a>Ważne porady dotyczące przypisywania użytkowników do usługi G Suite
 
-Przed skonfigurowaniem i włączyć usługę aprowizacji, musisz zdecydować, którzy użytkownicy lub grupy w usłudze Azure AD muszą mieć dostęp do aplikacji. Po utworzeniu tej decyzji, tych użytkowników można przypisać do swojej aplikacji, postępując zgodnie z instrukcjami w [przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
+* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do pakietu G Suite w celu przetestowania automatycznej konfiguracji inicjowania obsługi użytkowników. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-> [!IMPORTANT]
-> Zaleca się pojedynczego użytkownika usługi Azure AD można przypisać do usługi G Suite, aby przetestować konfigurację aprowizacji. Później można przypisać dodatkowych użytkowników i grup.
-> 
-> Gdy użytkownik jest przypisany do usługi G Suite, wybierz pozycję **użytkownika** lub **grupy** roli w oknie dialogowym przydział. **Domyślnego dostępu** roli nie działa dla inicjowania obsługi administracyjnej.
+* Podczas przypisywania użytkownika do pakietu G Suite należy wybrać dowolną prawidłową rolę specyficzną dla aplikacji (jeśli jest dostępna) w oknie dialogowym przypisania. Użytkownicy z **domyślną rolą dostępu** są wykluczeni z aprowizacji.
 
-## <a name="enable-automated-user-provisioning"></a>Włączanie użytkownika automatyczne Inicjowanie obsługi administracyjnej.
+## <a name="setup-g-suite-for-provisioning"></a>Konfiguracja usługi G Suite na potrzeby aprowizacji
 
-Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Azure AD, do konta użytkownika, inicjowania obsługi interfejsu API usługi G Suite. Pomaga również możesz skonfigurować usługę aprowizacji, aby tworzyć, aktualizować i wyłączania kont przypisanych użytkowników w usłudze G Suite, w oparciu o użytkownika i przypisanie do grupy w usłudze Azure AD.
+Przed skonfigurowaniem pakietu G dla automatycznej aprowizacji użytkowników w usłudze Azure AD należy włączyć Inicjowanie obsługi Standard scim w usłudze G Suite.
 
->[!TIP]
->Można także włączyć opartej na SAML logowanie jednokrotne dla zestawów G, postępując zgodnie z instrukcjami wyświetlanymi w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+1. Zaloguj się do [konsoli administracyjnej G Suite](https://admin.google.com/) przy użyciu konta administratora, a następnie wybierz pozycję **zabezpieczenia**. Jeśli łącze nie jest widoczne, może być ukryte w menu **Więcej kontrolek** w dolnej części ekranu.
 
-### <a name="configure-automatic-user-account-provisioning"></a>Konfigurowanie automatycznej konta aprowizacji użytkowników
+    ![Wybierz pozycję Zabezpieczenia.][10]
 
-> [!NOTE]
-> Automatyzowanie aprowizacji użytkowników do usługi G Suite innego rentowną opcją jest użycie [usługi Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en). GADS aprowizuje Twoich tożsamości: lokalnej usługi Active Directory do usługi G Suite. Z kolei rozwiązania, w tym samouczku aprowizuje użytkowników usługi Azure Active Directory (w chmurze) i grupy usługi G Suite i włączona obsługa poczty e-mail. 
+2. Na stronie **zabezpieczenia** wybierz pozycję **Dokumentacja interfejsu API**.
 
-1. Zaloguj się do [konsoli administracyjnej aplikacje Google](https://admin.google.com/) przy użyciu konta administratora, a następnie wybierz **zabezpieczeń**. Jeśli nie widzisz łącza może być ukryty pod przyciskiem **więcej formantów** menu wyświetlanym u dołu ekranu.
+    ![Wybierz pozycję dokumentacja interfejsu API.][15]
 
-    ![Wybierz opcję Zabezpieczenia.][10]
+3. Wybierz pozycję **Włącz dostęp do interfejsu API**.
 
-1. Na **zabezpieczeń** wybierz opcję **dokumentacja interfejsu API**.
-
-    ![Wybierz odwołanie do interfejsu API.][15]
-
-1. Wybierz **dostęp do włączenia interfejsu API**.
-
-    ![Wybierz odwołanie do interfejsu API.][16]
+    ![Wybierz pozycję dokumentacja interfejsu API.][16]
 
    > [!IMPORTANT]
-   > Dla każdego użytkownika, który ma zostać aprowizować do usługi G Suite, nazwa ich użytkownika w usłudze Azure Active Directory *musi* ograniczeni do domeny niestandardowej. Na przykład użytkownik nazwy tego wyglądały bob@contoso.onmicrosoft.com nie są akceptowane przez usługi G Suite. Z drugiej strony bob@contoso.com jest akceptowane. Możesz zmienić istniejącego użytkownika domeny, edytując ich właściwości w usłudze Azure AD. Dołączyliśmy instrukcje dotyczące sposobu ustawiania domeny niestandardowej dla usługi Azure Active Directory i usługi G Suite w poniższych krokach.
+   > Dla każdego użytkownika, który zamierzasz udostępnić do usługi G Suite, jego nazwa użytkownika w usłudze Azure AD **musi** być powiązana z domeną niestandardową. Na przykład nazwy użytkowników, które wyglądają jak bob@contoso.onmicrosoft.com nie są akceptowane przez pakiet G Suite. Z drugiej strony bob@contoso.com zostanie zaakceptowany. Istniejącą domenę użytkownika można zmienić, postępując zgodnie z instrukcjami znajdującymi się [tutaj](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain).
 
-1. Jeśli nie dodano jeszcze niestandardowej nazwy domeny do usługi Azure Active Directory, następnie wykonaj następujące czynności:
-  
-    a. W [witryny Azure portal](https://portal.azure.com), w okienku nawigacji po lewej stronie wybierz **usługi Active Directory**. Na liście katalogu wybierz swój katalog.
+4.  Po dodaniu i zweryfikowaniu żądanych domen niestandardowych za pomocą usługi Azure AD należy zweryfikować je ponownie z pakietem G Suite. Aby sprawdzić domeny w usłudze G Suite, zapoznaj się z następującymi krokami:
 
-    b. Wybierz **nazwy domeny** w okienku nawigacji po lewej stronie, a następnie wybierz **Dodaj**.
-
-    ![Domain](./media/google-apps-provisioning-tutorial/domain_1.png)
-
-    ![Dodawanie domeny](./media/google-apps-provisioning-tutorial/domain_2.png)
-
-    c. Wpisz nazwę domeny do **nazwy domeny** pola. Ta nazwa domeny powinny być tą samą nazwą domeny, który ma być używana dla usługi G Suite. Następnie wybierz pozycję **dodawania domeny** przycisku.
-
-    ![Nazwa domeny](./media/google-apps-provisioning-tutorial/domain_3.png)
-
-    d. Wybierz **dalej** aby przejść do strony weryfikacji. Aby sprawdzić, czy jesteś właścicielem tej domeny, należy edytować rekordy DNS w domenie, zgodnie z wartościami, które znajdują się na tej stronie. Można sprawdzić za pomocą **rekordów MX** lub **rekordów TXT**, w zależności od wybrania dla **typu rekordu** opcji.
-
-    Aby uzyskać bardziej szczegółowe instrukcje dotyczące sposobu zweryfikować nazwy domeny z usługą Azure AD, zobacz [Dodaj własną nazwę domeny do usługi Azure AD](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409).
-
-    ![Domain](./media/google-apps-provisioning-tutorial/domain_4.png)
-
-    e. Powtórz te czynności dla wszystkich domen, które mają zostać dodane do katalogu.
-
-    > [!NOTE]
-    > Inicjowanie obsługi użytkowników, domena niestandardowa musi odpowiadać nazwa domeny źródła usługi Azure AD. Jeśli nie są zgodne, można rozwiązać problem, implementowanie dostosowywania mapowanie atrybutu.
-
-1. Teraz, gdy sprawdzeniu wszystkich domen w usłudze Azure AD, należy sprawdzić je ponownie przy użyciu usługi Google Apps. Dla każdej domeny, który nie jest już zarejestrowany za pomocą usługi Google wykonaj następujące czynności:
-
-    a. W [konsoli administracyjnej usługi Google Apps](https://admin.google.com/), wybierz opcję **domen**.
+    a. W [konsoli administracyjnej programu G Suite](https://admin.google.com/)wybierz pozycję **domeny**.
 
     ![Wybierz domeny][20]
 
-    b. Wybierz **dodać domenę lub alias domeny**.
+    b. Wybierz pozycję **Dodaj domenę lub alias domeny**.
 
     ![Dodaj nową domenę][21]
 
-    c. Wybierz **Dodaj inną domenę**, a następnie wpisz nazwę domeny, który chcesz dodać.
+    d. Wybierz pozycję **Dodaj inną domenę**, a następnie wpisz nazwę domeny, którą chcesz dodać.
 
     ![Wpisz nazwę domeny][22]
 
-    d. Wybierz **Kontynuuj i weryfikowanie własności domeny**. Następnie postępuj zgodnie z instrukcjami, aby sprawdzić, czy jesteś właścicielem nazwy domeny. Aby uzyskać kompleksowe instrukcje dotyczące sposobu weryfikowania Twojej domeny za pomocą usługi Google, zobacz [Sprawdź Twoja własność lokacji za pomocą usługi Google Apps](https://support.google.com/webmasters/answer/35179).
+    d. Wybierz pozycję **Kontynuuj i sprawdź własność domeny**. Następnie postępuj zgodnie z instrukcjami, aby sprawdzić, czy jesteś właocicielem nazwy domeny. Aby uzyskać wyczerpujące instrukcje dotyczące weryfikowania domeny za pomocą usługi Google, zobacz [Sprawdzanie własności lokacji](https://support.google.com/webmasters/answer/35179).
 
-    e. Powtórz poprzednie kroki dla dodatkowych domenach, które mają zostać dodane do usługi Google Apps.
+    e. Powtórz powyższe kroki dla wszystkich dodatkowych domen, które mają zostać dodane do usługi G Suite.
 
-    > [!WARNING]
-    > Jeśli zmienisz domenę podstawową dla dzierżawy usługi G Suite i skonfigurowano już logowanie jednokrotne z usługą Azure AD, musisz powtórzyć krok #3 w sekcji Krok 2: Włącz logowanie jednokrotne.
+5. Następnie określ konto administratora, które ma być używane do zarządzania aprowizacji użytkowników w usłudze G Suite. Przejdź do **ról administratora**.
 
-1. W [konsoli administracyjnej aplikacje Google](https://admin.google.com/), wybierz opcję **ról administratora**.
+    ![Wybierz aplikacje Google Apps][26]
+    
+6. W przypadku **roli administratora** tego konta Edytuj **uprawnienia** dla tej roli. Upewnij się, że wszystkie **uprawnienia administratora interfejsu API** są włączone, aby można było używać tego konta do obsługi administracyjnej.
 
-    ![Wybierz usługi Google Apps][26]
+    ![Wybierz aplikacje Google Apps][27]
 
-1. Określ konto administratora, które chcesz użyć do zarządzania, inicjowanie obsługi użytkowników. Aby uzyskać **rolę administratora** tego konta, Edytuj **uprawnienia** dla tej roli. Upewnij się włączyć wszystkie **uprawnień interfejsu API administratora** tak, aby to konto może służyć do inicjowania obsługi.
+## <a name="add-g-suite-from-the-gallery"></a>Dodaj pakiet G Suite z galerii
 
-    ![Wybierz usługi Google Apps][27]
+Aby skonfigurować usługę G dla automatycznej aprowizacji użytkowników w usłudze Azure AD, musisz dodać pakiet G Suite z galerii aplikacji usługi Azure AD do listy zarządzanych aplikacji SaaS. 
 
-    > [!NOTE]
-    > W przypadku konfigurowania środowiska produkcyjnego, najlepszym rozwiązaniem jest tworzenie konta administratora w usłudze G Suite specjalnie dla tego kroku. Te konta muszą mieć rolę administratora skojarzonych z nimi, które ma niezbędne uprawnienia interfejsu API.
+1. W **[Azure Portal](https://portal.azure.com)** w lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** sekcji.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. Jeśli już skonfigurowano usługi G Suite dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi G Suite, przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj**, a następnie wyszukaj **usługi G Suite** lub **Google Apps** w galerii aplikacji. Wybierz aplikację z poziomu wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-1. Wybierz wystąpienie usługi G Suite, a następnie wybierz **aprowizacji** kartę.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. Ustaw **tryb obsługi administracyjnej** do **automatyczne**. 
+3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
 
-    ![Inicjowanie obsługi](./media/google-apps-provisioning-tutorial/provisioning.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-1. W obszarze **poświadczeń administratora** zaznacz **Autoryzuj**. Otwiera okno dialogowe autoryzacji Google w nowym oknie przeglądarki.
+4. W polu wyszukiwania wprowadź wartość **g Suite**, wybierz pozycję **g Suite** w panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-1. Upewnij się, że chcesz przyznać uprawnienia usługi Azure Active Directory, aby wprowadzić zmiany do dzierżawy usługi G Suite. Wybierz pozycję **Zaakceptuj**.
+    ![Usługa G Suite na liście wyników](common/search-new-app.png)
 
-    ![Upewnij się, uprawnienia.][28]
+## <a name="configuring-automatic-user-provisioning-to-g-suite"></a>Konfigurowanie automatycznej aprowizacji użytkowników w usłudze G Suite 
 
-1. W witrynie Azure portal wybierz **Testuj połączenie** do upewnij się, że połączenie usługi Azure AD do swojej aplikacji. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto usługi G Suite, ma uprawnienia administratora zespołu. Spróbuj **Autoryzuj** krok ponownie.
+Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu tworzenia, aktualizowania i wyłączania użytkowników i/lub grup w usłudze G Suite na podstawie przypisań użytkowników i/lub grup w usłudze Azure AD.
 
-1. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola. Następnie zaznacz pole wyboru.
+> [!TIP]
+> Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla pakietu G Suite, postępując zgodnie z instrukcjami podanymi w samouczku Logowanie jednokrotne w [usłudze g Suite](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, chociaż te dwie funkcje napadają nawzajem.
 
-1. Wybierz przycisk **Save** (Zapisz).
+### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi administracyjnej użytkowników dla pakietu G Suite w usłudze Azure AD:
 
-1. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do usługi Google Apps**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-1. W **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do usługi G Suite. Atrybuty, które są **zgodne** właściwości są używane do dopasowania kont użytkowników w usłudze G Suite dla operacji aktualizacji. Wybierz **Zapisz** aby zatwierdzić zmiany.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. Aby włączyć usługi Azure AD, inicjowania obsługi usługi G Suite, zmień **stanie aprowizacji** do **na** w **ustawienia**.
+2. Na liście Aplikacje wybierz pozycję **G Suite**.
 
-1. Wybierz pozycję **Zapisz**.
+    ![Link do usługi G Suite na liście aplikacji](common/all-applications.png)
 
-Ten proces jest uruchamiany początkowa synchronizacja jakichkolwiek użytkowników lub grup, które są przypisane do usługi G Suite w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które są wykonywane co około 40 minut w przypadku, gdy usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności. Te dzienniki opisano wszystkie akcje, które są wykonywane przez usługę aprowizacji w aplikacji.
+3. Wybierz kartę **aprowizacji** .
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+    ![Karta aprowizacji](common/provisioning.png)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
+    ![Karta aprowizacji](common/provisioning-automatic.png)
+
+5. W sekcji **poświadczenia administratora** wybierz pozycję **Autoryzuj**. Spowoduje to otwarcie okna dialogowego autoryzacji Google w nowym oknie przeglądarki.
+
+    ![G Suite — Autoryzuj](media/google-apps-provisioning-tutorial/authorize.png)
+
+6. Potwierdź, że chcesz nadać uprawnienia usługi Azure AD, aby wprowadzić zmiany w dzierżawie w usłudze G Suite. Wybierz pozycję **Zaakceptuj**.
+
+    ![Potwierdź uprawnienia.][28]
+
+7. W Azure Portal wybierz pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z Twoją aplikacją. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi G Suite ma uprawnienia administratora zespołu. Następnie spróbuj ponownie wykonać krok **Autoryzuj** .
+
+8. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru — **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
+
+    ![Wiadomość E-mail z powiadomieniem](common/provisioning-notification-email.png)
+
+8. Kliknij przycisk **Save** (Zapisz).
+
+9. W sekcji **mapowania** wybierz pozycję **Synchronizuj Azure Active Directory użytkownicy z usługą G Suite**.
+
+    ![Mapowania użytkowników w ramach pakietu G Suite](media/google-apps-provisioning-tutorial/usermappings.png)
+
+10. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD z usługą G Suite w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane w celu dopasowania do kont użytkowników w usłudze G Suite dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
+
+    ![Atrybuty użytkownika w usłudze G Suite](media/google-apps-provisioning-tutorial/userattributes.png)
+
+11. W sekcji **mapowania** wybierz pozycję **Synchronizuj grupy Azure Active Directory z usługą G Suite**.
+
+    ![Mapowania grupy G Suite](media/google-apps-provisioning-tutorial/groupmappings.png)
+
+12. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD z usługą G Suite w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania do grup w usłudze G Suite dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
+
+    ![Atrybuty grupy G Suite](media/google-apps-provisioning-tutorial/groupattributes.png)
+
+13. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+
+14. Aby włączyć usługę Azure AD Provisioning dla usługi G Suite, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
+
+    ![Stan aprowizacji jest przełączany](common/provisioning-toggle-on.png)
+
+15. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić do zbioru G Suite, wybierając odpowiednie wartości w **zakresie** w sekcji **Ustawienia** .
+
+    ![Zakres aprowizacji](common/provisioning-scope.png)
+
+16. Gdy wszystko będzie gotowe do udostępnienia, kliknij przycisk **Zapisz**.
+
+    ![Zapisywanie konfiguracji aprowizacji](common/provisioning-configuration-save.png)
+
+Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w usłudze G Suite.
+
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
+
+> [!NOTE]
+> Kolejną opłacalną opcją automatyzacji aprowizacji użytkowników w usłudze G Suite jest korzystanie z usługi [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en). Ta opcja umożliwia zarezerwowanie lokalnych tożsamości Active Directory na pakiet G Suite.
+
+## <a name="additional-resources"></a>Zasoby dodatkowe
+
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie logowania jednokrotnego](google-apps-tutorial.md)
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
+
 
 <!--Image references-->
 

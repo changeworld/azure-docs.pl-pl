@@ -1,24 +1,18 @@
 ---
 title: Monitoruj usługi Azure Storage za pomocą Azure Monitor dla magazynu (wersja zapoznawcza) | Microsoft Docs
 description: W tym artykule opisano Azure Monitor funkcji Storage, która zapewnia administratorom magazynu szybkie zrozumienie problemów z wydajnością i wykorzystaniem ich kont usługi Azure Storage.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/15/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1ab49d17ebf10a1ae0277768ddbd1878195d835d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.date: 08/15/2019
+ms.openlocfilehash: e5738b9f7cca03898d3bb5c593004bb316aa0b23
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212768"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553885"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Monitorowanie usługi magazynu za pomocą Azure Monitor dla magazynu (wersja zapoznawcza)
 
@@ -53,7 +47,7 @@ Z poziomu Azure Monitor można wyświetlać szczegóły transakcji, opóźnień 
 
 Aby wyświetlić wykorzystanie i dostępność kont magazynu we wszystkich subskrypcjach, wykonaj następujące czynności.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 2. Wybierz pozycję **monitor** w okienku po lewej stronie w Azure Portal i w sekcji **szczegółowe informacje** wybierz pozycję **konta magazynu (wersja zapoznawcza)** .
 
@@ -195,7 +189,7 @@ Te same zmiany można wykonać w odniesieniu do jednego ze wstępnie skompilowan
 
 4. Będziemy usuwać kolumnę **oś czasu o używanej pojemności** , więc wybierz pozycję **Ustawienia kolumny** w siatce metryk.
 
-    ![Edytuj ustawienia kolumny](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
+    ![Edytowanie ustawień kolumny](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
 5. W okienku **Edytowanie ustawień kolumny** wybierz pozycję w sekcji **kolumny** **Microsoft. Storage/Storageaccounts-pojemność-UsedCapacity oś czasu $ | Oś czasu o używanej pojemności $** , a w obszarze **renderowania kolumna** listy rozwijanej wybierz pozycję **ukryty**. 
 

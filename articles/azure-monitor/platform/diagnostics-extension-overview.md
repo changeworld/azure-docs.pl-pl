@@ -1,18 +1,18 @@
 ---
 title: Przegląd rozszerzenia Diagnostyka Azure
 description: Korzystaj z diagnostyki platformy Azure na potrzeby debugowania, mierzenia wydajności, monitorowania, analizy ruchu w usługach Cloud Services, Virtual Machines i Service Fabric
-author: rboucher
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 02/13/2019
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: e0325a3bda912c95d8d27646bc1e80fff5ce10a8
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 02/13/2019
+ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639429"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552146"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie Diagnostyka Azure
 Rozszerzenie Diagnostyka Azure jest agentem na platformie Azure, który umożliwia zbieranie danych diagnostycznych we wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki z wielu różnych źródeł. Obecnie obsługiwane są role sieci Web i procesu roboczego usługi w chmurze Azure (klasycznej), Virtual Machines, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure mają różne metody diagnostyki. Zobacz [Omówienie monitorowania na platformie Azure](../../azure-monitor/overview.md).
@@ -27,7 +27,7 @@ Rozszerzenie Diagnostyka Azure może zbierać następujące typy danych:
 | --- | --- |
 | Metryki licznika wydajności |System operacyjny i niestandardowe liczniki wydajności |
 | Dzienniki aplikacji |Śledzenie komunikatów pisanych przez aplikację |
-| Dzienniki zdarzeń Windows |Informacje wysyłane do systemu rejestrowania zdarzeń systemu Windows |
+| Dzienniki zdarzeń systemu Windows |Informacje wysyłane do systemu rejestrowania zdarzeń systemu Windows |
 | Dzienniki zdarzeń platformy .NET |Kod pisania zdarzeń przy użyciu klasy [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) platformy .NET |
 | Dzienniki usług IIS |Informacje o witrynach sieci Web usług IIS |
 | [Dzienniki ETW oparte na manifestach](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Śledzenie zdarzeń dla zdarzeń systemu Windows generowanych przez dowolny proces. jedno |
@@ -35,7 +35,7 @@ Rozszerzenie Diagnostyka Azure może zbierać następujące typy danych:
 | Dzienniki błędów niestandardowych |Dzienniki utworzone przez aplikację lub usługę |
 | Dzienniki infrastruktury diagnostycznej platformy Azure |Informacje dotyczące Diagnostyka Azure samego siebie |
 
-(1) Aby uzyskać listę dostawców ETW, uruchom `c:\Windows\System32\logman.exe query providers` polecenie w oknie konsoli na komputerze, z którego chcesz zebrać informacje.
+(1) Aby uzyskać listę dostawców ETW, uruchom `c:\Windows\System32\logman.exe query providers` w oknie konsoli na komputerze, z którego chcesz zebrać informacje.
 
 ## <a name="data-storage"></a>Magazyn danych
 Rozszerzenie przechowuje swoje dane na [koncie usługi Azure Storage](diagnostics-extension-to-storage.md) , które określisz.
@@ -47,7 +47,7 @@ Innym rozwiązaniem jest przesyłanie strumieniowe do [centrum zdarzeń](../../e
 Istnieje również możliwość wysłania danych do Azure Monitor metryki bazy danych szeregów czasowych. W tej chwili ten obiekt sink ma zastosowanie tylko do liczników wydajności. Umożliwia wysyłanie liczników wydajności w postaci metryk niestandardowych. Ta funkcja jest dostępna w wersji zapoznawczej. Azure Monitor sink obsługuje:
 * Pobieranie wszystkich liczników wydajności wysyłanych do Azure Monitor za pośrednictwem [interfejsów API metryk Azure monitor.](https://docs.microsoft.com/rest/api/monitor/)
 * Generowanie alertów dotyczących wszystkich liczników wydajności wysyłanych do Azure Monitor za pośrednictwem [alertów metryk](../../azure-monitor/platform/alerts-overview.md) w Azure monitor
-* Sposób traktowania operatora wieloznacznego w licznikach wydajności jako wymiar "wystąpienie" w metryce.  Na przykład jeśli zebrano licznik "dysk logiczny (\*)/DiskWrites/SEC", można filtrować i dzielić na wymiarze "wystąpienie" w celu wykreślania lub alertu dotyczącego zapisu dysku/s dla każdego dysku logicznego na maszynie wirtualnej (na przykład C:)
+* Sposób traktowania operatora wieloznacznego w licznikach wydajności jako wymiar "wystąpienie" w metryce.  Na przykład jeśli zebrano licznik "dysk logiczny (\*)/DiskWrites/sec", można filtrować i dzielić w wymiarze "wystąpienie" na potrzeby wykreślania lub generowania alertów na dysku zapisy/s dla każdego dysku logicznego na maszynie wirtualnej (na przykład C:)
 
 Aby dowiedzieć się więcej na temat konfigurowania tego ujścia, zapoznaj się z [dokumentacją schematu usługi Diagnostyka Azure.](diagnostics-extension-schema-1dot3.md)
 
@@ -72,7 +72,7 @@ Aby uzyskać bardziej zaawansowane tematy, zobacz
 * [Śledzenie przepływu aplikacji Cloud Services z Diagnostyka Azure](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 * [Konfigurowanie diagnostyki na Cloud Services przy użyciu programu PowerShell](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="virtual-machines"></a>Maszyny wirtualne
+## <a name="virtual-machines"></a>Virtual Machines
 * Jeśli używasz programu Visual Studio, zobacz [Korzystanie z programu Visual Studio do śledzenia Virtual Machines platformy Azure](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) , aby rozpocząć pracę. W przeciwnym razie Zobacz
 * [Konfigurowanie Diagnostyka Azure na maszynie wirtualnej platformy Azure](/azure/virtual-machines/extensions/diagnostics-windows)
 
@@ -81,7 +81,7 @@ Aby uzyskać bardziej zaawansowane tematy, zobacz
 * [Konfigurowanie diagnostyki na platformie Azure Virtual Machines przy użyciu programu PowerShell](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Tworzenie maszyny wirtualnej z systemem Windows z funkcją monitorowania i diagnostyki przy użyciu szablonu Azure Resource Manager](../../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="service-fabric"></a>Service Fabric
+## <a name="service-fabric"></a>Sieć szkieletowa usługi
 Rozpocznij od [monitorowania aplikacji Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). Wiele innych artykułów diagnostyki Service Fabric jest dostępnych w drzewie nawigacyjnym po lewej stronie po przeprowadzeniu tego artykułu.
 
 ## <a name="general-articles"></a>Ogólne artykuły

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: memildin
-ms.openlocfilehash: cce57053e265446a6307554509c34c5f802ed07f
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: c5e457a6478fce070070ba7d0d610cbfe4f55024
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372592"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554678"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Uaktualnij do warstwy Standardowa Security Center na potrzeby zwiększonych zabezpieczeń
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby obciążeń uruchamianych na platformie Azure, lokalnie i w innych chmurach. Zapewnia widoczność i kontrolę nad obciążeniami w chmurze hybrydowej, aktywną obroną, która zmniejsza narażenie na zagrożenia oraz Inteligentne wykrywanie, które ułatwiają szybkie rozwijanie ataków cybernetycznymi.
@@ -26,9 +26,10 @@ Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniam
 ## <a name="pricing-tiers"></a>Warstwy cenowe
 Usługa Security Center jest oferowana w dwóch warstwach:
 
-- Warstwa **bezpłatna** jest włączana we wszystkich subskrypcjach platformy Azure, gdy po raz pierwszy odwiedzisz pulpit nawigacyjny Azure Security Center w witrynie Azure Portal lub progremmaticaly za pośrednictwem interfejsu API. Warstwa Bezpłatna zapewnia zasady zabezpieczeń, ciągłą ocenę zabezpieczeń i zalecenia dotyczące zabezpieczeń, które ułatwiają ochronę zasobów platformy Azure.
+- Warstwa **bezpłatna** jest włączana we wszystkich subskrypcjach platformy Azure, gdy po raz pierwszy odwiedzisz pulpit nawigacyjny Azure Security Center w witrynie Azure Portal lub progremmaticaly za pośrednictwem interfejsu API. Jeśli dodasz inne subskrypcje aftewards, Nowa subskrypcja nie będzie mieć domyślnie włączonej Security Center, jednak wystarczy uruchomić Portal Security Center, a nowa subskrypcja zostanie zarejestrowana i zostanie zastosowana bezpłatna warstwa. Warstwa Bezpłatna zapewnia zasady zabezpieczeń, ciągłą ocenę zabezpieczeń i zalecenia dotyczące zabezpieczeń, które ułatwiają ochronę zasobów platformy Azure.
 - Warstwa **standardowa** rozszerza możliwości warstwy Bezpłatna do obciążeń działających w prywatnych i innych chmurach publicznych, zapewniając ujednolicone Zarządzanie zabezpieczeniami i ochronę przed zagrożeniami w ramach obciążeń chmury hybrydowej. Warstwa standardowa dodaje także zaawansowane możliwości wykrywania zagrożeń, które wykorzystują wbudowaną analizę behawioralną i uczenie maszynowe, aby identyfikować ataki i luki w zabezpieczeniach, kontrolę dostępu i aplikacji w celu ograniczenia narażenia na ataki sieciowe i złośliwe oprogramowanie. szczegółowe. Możesz bezpłatnie wypróbować warstwę Standardowa. Standard Security Center obsługuje zasoby platformy Azure, w tym maszyny wirtualne, zestawy skalowania maszyn wirtualnych, App Service, serwery SQL i konta magazynu. Jeśli masz Azure Security Center Standard, możesz zrezygnować z obsługi na podstawie typu zasobu. 
 
+Większość ocen zabezpieczeń warstwy Bezpłatna dla maszyn wirtualnych oraz wielu alertów zabezpieczeń warstwy Standardowa wymaga instalacji funkcji Microsoft Monitoring Agent (MMA). Możesz włączyć automatyczne Inicjowanie obsługi administracyjnej Security Center, aby automatycznie wdrożyć agenta dla maszyn wirtualnych platformy Azure.
 
 Aby uzyskać więcej informacji, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/)Security Center.
 
@@ -45,7 +46,7 @@ Aby uzyskać warstwę standardową:
 4. Wybierz pozycję **standardowa** , aby przeprowadzić uaktualnienie.
 5. Kliknij przycisk **Save** (Zapisz).
 
-(Ceny na obrazie są tylko do celów). @no__t — ceny 0Security Center @ no__t-1
+(Ceny na obrazie są tylko do celów).  Cennik ](./media/security-center-pricing/get-standard.png) ![Security Center
 
 > [!NOTE]
 > Aby włączyć wszystkie funkcje usługi Security Center, należy najpierw do subskrypcji zawierającej odpowiednie maszyny wirtualne zastosować warstwę cenową Standardowa. Konfigurowanie cen dla obszaru roboczego nie umożliwia dostępu just in Time do maszyny wirtualnej, adaptacyjnych kontroli aplikacji i wykrywania sieci dla zasobów platformy Azure.

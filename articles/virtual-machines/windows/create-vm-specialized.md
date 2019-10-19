@@ -2,7 +2,6 @@
 title: Tworzenie maszyny wirtualnej z systemem Windows na podstawie wyspecjalizowanego wirtualnego dysku twardego na platformie Azure | Microsoft Docs
 description: Utwórz nową maszynę wirtualną z systemem Windows przez dołączenie wyspecjalizowanego dysku zarządzanego jako dysku systemu operacyjnego przy użyciu modelu wdrażania Menedżer zasobów.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
 manager: gwallace
 editor: ''
@@ -12,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6adeae69a4ef9e6f2d77588f8071498fd25beb3e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: be773779b25a32a5904012ae31950b18c33341dc
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390606"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553433"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Tworzenie maszyny wirtualnej z systemem Windows na podstawie wyspecjalizowanego dysku przy użyciu programu PowerShell
 
@@ -63,100 +62,15 @@ Aby utworzyć nową maszynę wirtualną, użyj wirtualnego dysku twardego.
   * Upewnij się, że maszyna wirtualna jest skonfigurowana do pobierania adresu IP i ustawień DNS z protokołu DHCP. Dzięki temu serwer uzyskuje adres IP w ramach sieci wirtualnej podczas uruchamiania. 
 
 
-### <a name="get-the-storage-account"></a>Pobierz konto magazynu
-Do zapisania przekazanego wirtualnego dysku twardego będzie potrzebne konto magazynu na platformie Azure. Możesz użyć istniejącego konta magazynu lub utworzyć nowe. 
+### <a name="upload-the-vhd"></a>Przekazywanie wirtualnego dysku twardego
 
-Pokaż dostępne konta magazynu.
-
-```powershell
-Get-AzStorageAccount
-```
-
-Aby użyć istniejącego konta magazynu, należy przejoć do sekcji [przekazywanie wirtualnego dysku twardego](#upload-the-vhd-to-your-storage-account) .
-
-Tworzenie konta magazynu
-
-1. Wymagana jest nazwa grupy zasobów, w której zostanie utworzone konto magazynu. Użyj Get-AzResourceGroup Zobacz wszystkie grupy zasobów, które znajdują się w Twojej subskrypcji.
-   
-    ```powershell
-    Get-AzResourceGroup
-    ```
-
-    Utwórz grupę zasobów o nazwie Moja *resourceName* w regionie *zachodnie stany USA* .
-
-    ```powershell
-    New-AzResourceGroup `
-       -Name myResourceGroup `
-       -Location "West US"
-    ```
-
-2. Utwórz konto magazynu o nazwie *mojekontomagazynu* w nowej grupie zasobów za pomocą polecenia cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) .
-   
-    ```powershell
-    New-AzStorageAccount `
-       -ResourceGroupName myResourceGroup `
-       -Name mystorageaccount `
-       -Location "West US" `
-       -SkuName "Standard_LRS" `
-       -Kind "Storage"
-    ```
-
-### <a name="upload-the-vhd-to-your-storage-account"></a>Przekazywanie wirtualnego dysku twardego do konta magazynu 
-Użyj polecenia cmdlet [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) , aby przekazać wirtualny dysk twardy do kontenera na koncie magazynu. Ten przykład przekazuje plik *myVHD. VHD* z dysku twardego C:\Users\Public\Documents\Virtual @ no__t-1 do konta magazynu o nazwie *mojekontomagazynu* w *grupie zasobów zasobu* . Ten plik jest przechowywany w kontenerze o *nazwie* *myUploadedVHD. VHD*.
-
-```powershell
-$resourceGroupName = "myResourceGroup"
-$urlOfUploadedVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzVhd -ResourceGroupName $resourceGroupName `
-   -Destination $urlOfUploadedVhd `
-   -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
-```
-
-
-Jeśli polecenia zakończą się pomyślnie, otrzymasz odpowiedź podobną do:
-
-```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
-MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
-Creating new page blob of size 53687091712...
-Elapsed time for upload: 01:12:49
-
-LocalFilePath           DestinationUri
--------------           --------------
-C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
-```
-
-Wykonanie tego polecenia może chwilę potrwać, w zależności od połączenia sieciowego i rozmiaru pliku VHD.
-
-### <a name="create-a-managed-disk-from-the-vhd"></a>Tworzenie dysku zarządzanego na podstawie dysku VHD
-
-Utwórz dysk zarządzany na podstawie wyspecjalizowanego wirtualnego dysku twardego na koncie magazynu przy użyciu polecenia [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). W tym przykładzie używa *myOSDisk1* dla nazwy dysku, umieszcza dysk w magazynie *Standard_LRS* i używa *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* jako identyfikatora URI źródłowego wirtualnego dysku twardego.
-
-Utwórz nową grupę zasobów dla nowej maszyny wirtualnej.
-
-```powershell
-$destinationResourceGroup = 'myDestinationResourceGroup'
-New-AzResourceGroup -Location $location `
-   -Name $destinationResourceGroup
-```
-
-Utwórz nowy dysk systemu operacyjnego na podstawie przekazanego wirtualnego dysku twardego. 
-
-```powershell
-$sourceUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-$osDiskName = 'myOsDisk'
-$osDisk = New-AzDisk -DiskName $osDiskName -Disk `
-    (New-AzDiskConfig -AccountType Standard_LRS  `
-    -Location $location -CreateOption Import `
-    -SourceUri $sourceUri) `
-    -ResourceGroupName $destinationResourceGroup
-```
+Możesz teraz przekazać dysk VHD bezpośrednio do dysku zarządzanego. Aby uzyskać instrukcje, zobacz [przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu Azure PowerShell](disks-upload-vhd-to-managed-disk-powershell.md).
 
 ## <a name="option-3-copy-an-existing-azure-vm"></a>Opcja 3: kopiowanie istniejącej maszyny wirtualnej platformy Azure
 
 Można utworzyć kopię maszyny wirtualnej korzystającej z dysków zarządzanych, pobierając migawkę maszyny wirtualnej, a następnie używając tej migawki do utworzenia nowego dysku zarządzanego i nowej maszyny wirtualnej.
 
+Jeśli chcesz skopiować istniejącą maszynę wirtualną do innego regionu, możesz użyć AzCopy, aby utworzyć [kopię dysku w innym regionie](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Utwórz migawkę dysku systemu operacyjnego
 

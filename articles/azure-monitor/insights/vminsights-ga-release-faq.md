@@ -1,21 +1,18 @@
 ---
 title: Azure Monitor dla maszyn wirtualnych (GA) — często zadawane pytania | Microsoft Docs
 description: Azure Monitor dla maszyn wirtualnych to rozwiązanie na platformie Azure, które łączy kondycję i monitorowanie wydajności systemu operacyjnego Azure VM, a także automatycznie odnajduje składniki aplikacji i zależności z innymi zasobami oraz mapuje komunikację między niego. W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące wersji GA.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 10/07/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: cb21d3bed1efc8f6ee7e16a0976ce46d03404983
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 10/07/2019
+ms.openlocfilehash: 523fb2d3a3b148afc9219e666c2fbe7fa40d58ad
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275967"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553802"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor dla maszyn wirtualnych ogólnie dostępna (GA) często zadawanych pytań
 
@@ -27,7 +24,7 @@ Firma Microsoft publikuje nową wersję Azure Monitor dla maszyn wirtualnych w l
 
 W przypadku tego uaktualnienia Azure Monitor dla maszyn wirtualnych zestawy danych wydajności są teraz przechowywane w tej samej tabeli `InsightsMetrics` jako [Azure monitor dla kontenerów](container-insights-overview.md)i ułatwiają wykonywanie zapytań do dwóch zestawów. Ponadto można przechowywać bardziej zróżnicowane zestawy danych, które nie mogły być przechowywane w wcześniej używanej tabeli.  Nasze widoki wydajności zostaną również zaktualizowane pod kątem korzystania z tej nowej tabeli.
 
-Przenosimy do nowych typów danych dla naszych zestawów danych połączenia. Dane, które są przechowywane w `ServiceMapComputer_CL` i `ServiceMapProcess_CL`, które są używane w niestandardowych tabelach dzienników, przechodzą do typów danych dedykowanych o nazwie `VMComputer` i `VMProcess`.  Przenosząc do typów danych dedykowanych, możemy zapewnić im priorytet pozyskiwania danych, a schemat tabeli zostanie znormalizowany dla wszystkich klientów.
+Przenosimy do nowych typów danych dla naszych zestawów danych połączenia. Dane przechowywane w `ServiceMapComputer_CL` i `ServiceMapProcess_CL`, które używają niestandardowych tabel dzienników, przechodzą do typów danych dedykowanych o nazwie `VMComputer` i `VMProcess`.  Przenosząc do typów danych dedykowanych, możemy zapewnić im priorytet pozyskiwania danych, a schemat tabeli zostanie znormalizowany dla wszystkich klientów.
 
 Zdajemy sobie sprawę, że zaproszenie istniejących klientów o uaktualnienie powoduje zakłócenia w przepływie pracy, co oznacza, że wybrano tę czynność teraz w publicznej wersji zapoznawczej, a nie później, gdy docieramy do firmy Microsoft.
 
@@ -46,7 +43,7 @@ Po zaktualizowaniu naszego interfejsu użytkownika w celu korzystania z danych w
 [!NOTE]
 >Jeśli istnieją reguły alertów odwołujące się do tych liczników w tabeli wydajności, należy je zaktualizować w celu odwoływania się do nowych danych w tabeli `InsightsMetrics`.  Zapoznaj się z naszą dokumentacją dotyczącą przykładowych zapytań dzienników, których można użyć w odniesieniu do tej tabeli.
 
-Jeśli zdecydujesz się na włączenie włączonych liczników wydajności, naliczanie opłat za dane pozyskane i zachowane w tabeli wydajności w oparciu o [Log Analytics ceny [(https://azure.microsoft.com/pricing/details/monitor/).
+W przypadku podjęcia decyzji o włączeniu włączonych liczników wydajności opłaty zostaną naliczone za dane pozyskane i zachowane w tabeli wydajności w oparciu o [Log Analytics ceny [(https://azure.microsoft.com/pricing/details/monitor/).
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>Jak ta zmiana wpłynie na moje reguły alertów?
 
@@ -66,23 +63,23 @@ Jest to dokładne.  Podczas przeglądania Azure Monitor dla maszyn wirtualnych d
 
 Jeśli wybrano opcję ręcznego włączania liczników wydajności w obszarze roboczym, można zobaczyć dane na niektórych z naszych wykresów wydajności wyświetlanych w Azure Monitor. Po wydaniu nowego rozwiązania będziemy aktualizować nasze wykresy wydajności, aby wykonywać zapytania dotyczące danych przechowywanych w tabeli `InsightsMetrics`. Jeśli chcesz zobaczyć dane z tej tabeli na tych wykresach, musisz przeprowadzić uaktualnienie do nowej wersji Azure Monitor dla maszyn wirtualnych.
 
-Zmiany dotyczące przenoszenia danych z `ServiceMapComputer_CL` i `ServiceMapProcess_CL` wpłyną na Service Map i Azure Monitor dla maszyn wirtualnych, dlatego należy zaplanować tę aktualizację.
+Zmiany dotyczące przenoszenia danych z `ServiceMapComputer_CL` i `ServiceMapProcess_CL` mają wpływ na Service Map i Azure Monitor dla maszyn wirtualnych, dlatego należy zaplanować tę aktualizację.
 
 W przypadku wybrania opcji Nie uaktualniaj do rozwiązania **VMInsights** będziemy nadal podawać starsze wersje naszych skoroszytów wydajności, które odwołują się do danych w tabeli `Perf`.  
 
 ## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>Czy Service Map zestawy danych będą również przechowywane w InsightsMetrics?
 
-Zestawy danych nie będą duplikowane, jeśli używasz obu rozwiązań. Obie oferty współdzielą zestawy danych, które będą przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection` i `VMBoundPort` tabel do przechowywania zbieranych zestawów danych mapy.  
+Zestawy danych nie będą duplikowane, jeśli używasz obu rozwiązań. Obie oferty współdzielą zestawy danych, które będą przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection` i `VMBoundPort` tabel do przechowywania zbieranych przez nas zestawów danych.  
 
 Tabela `InsightsMetrics` będzie używana do przechowywania zestawów danych maszyn wirtualnych, procesów i usług zbieranych i zostanie wypełniona tylko w przypadku korzystania z Azure Monitor dla maszyn wirtualnych.
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-on-my-workspace"></a>Czy przy użyciu rozwiązań Service Map i VMInsights w obszarze mój obszar roboczy zostanie podwojona opłata?
 
-Nie, dwa rozwiązania współużytkują zestawy danych mapy, które przechowujemy w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection` i `VMBoundPort`.  Jeśli w obszarze roboczym znajdują się oba rozwiązania, nie będziesz mieć podwójnej opłaty za te dane.
+Nie, dwa rozwiązania udostępniają zestawy danych mapy, które przechowujemy w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection` i `VMBoundPort`.  Jeśli w obszarze roboczym znajdują się oba rozwiązania, nie będziesz mieć podwójnej opłaty za te dane.
 
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data-in-log-analytics"></a>Jeśli usunę rozwiązanie Service Map lub VMInsights, usuniemy moje dane w Log Analytics?
 
-Nie, dwa rozwiązania współużytkują zestawy danych mapy, które przechowujemy w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection` i `VMBoundPort`.  W przypadku usunięcia jednego z tych rozwiązań te zestawy danych będą inejść, że nadal istnieje rozwiązanie, które korzysta z danych i pozostanie w Log Analytics.  Musisz usunąć oba rozwiązania z obszaru roboczego, aby dane zostały usunięte z obszaru roboczego Log Analytics.
+Nie, dwa rozwiązania udostępniają zestawy danych mapy, które przechowujemy w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection` i `VMBoundPort`.  W przypadku usunięcia jednego z tych rozwiązań te zestawy danych będą inejść, że nadal istnieje rozwiązanie, które korzysta z danych i pozostanie w Log Analytics.  Musisz usunąć oba rozwiązania z obszaru roboczego, aby dane zostały usunięte z obszaru roboczego Log Analytics.
 
 ## <a name="when-will-this-update-be-released"></a>Kiedy ta aktualizacja zostanie wydana?
 

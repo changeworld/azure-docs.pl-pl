@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: 726d04cdfbc21c21a52945f11d3b5097978c5d1d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d9d135136efea72017399b5888bc6591582ffe67
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168830"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553560"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Obsługa wdrażania Docker Compose w usłudze Azure Service Fabric (wersja zapoznawcza)
 
 Platforma Docker używa pliku [Docker-Compose. yml](https://docs.docker.com/compose) do definiowania aplikacji wielokontenerowych. Aby ułatwić klientom zaznajomionym z platformą Docker w celu organizowania istniejących aplikacji kontenera w usłudze Azure Service Fabric, w tej platformie dodaliśmy obsługę wersji zapoznawczej dla Docker Compose wdrożenia w sposób natywny. Service Fabric może akceptować wersję 3 lub nowszą plików `docker-compose.yml`. 
 
-Ponieważ ta obsługa jest dostępna w wersji zapoznawczej, obsługiwane są tylko podzbiór dyrektyw redagowania. Na przykład uaktualnienia aplikacji nie są obsługiwane. Można jednak zawsze usuwać i wdrażać aplikacje zamiast uaktualniać je.
+Ponieważ ta obsługa jest dostępna w wersji zapoznawczej, obsługiwane są tylko podzbiór dyrektyw redagowania.
 
 Aby użyć tej wersji zapoznawczej, należy utworzyć klaster z wersją 5,7 lub nowszą Service Fabric środowiska uruchomieniowego za pomocą Azure Portal wraz z odpowiednim zestawem SDK. 
 

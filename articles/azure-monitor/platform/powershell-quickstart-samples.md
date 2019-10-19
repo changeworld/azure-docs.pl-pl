@@ -1,19 +1,18 @@
 ---
 title: Przykłady szybki start dla programu Azure Monitor PowerShell
 description: Użyj programu PowerShell, aby uzyskiwać dostęp do funkcji Azure Monitor, takich jak automatyczne skalowanie, alerty, elementy webhook i wyszukiwanie dzienników aktywności.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 2/14/2018
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 886eb8578e004eba3b6fabc1deb42db0fb7fac70
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 2/14/2018
+ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350250"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551840"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Przykłady szybki start dla programu Azure Monitor PowerShell
 W tym artykule przedstawiono przykładowe polecenia programu PowerShell ułatwiające dostęp do funkcji Azure Monitor.
@@ -98,7 +97,7 @@ Następujące polecenie pobiera ostatnie 1000 zdarzeń z dziennika aktywności:
 Get-AzLog -MaxRecord 10
 ```
 
-`Get-AzLog` obsługuje wiele innych parametrów. Aby uzyskać więcej informacji, zobacz Odwołanie `Get-AzLog`.
+`Get-AzLog` obsługuje wiele innych parametrów. Zobacz odwołanie `Get-AzLog`, aby uzyskać więcej informacji.
 
 > [!NOTE]
 > `Get-AzLog` zawiera tylko 15 dni historii. Użycie parametru **-MaxRecords** umożliwia wykonywanie zapytań dotyczących ostatnich N zdarzeń, po upływie 15 dni. Aby uzyskać dostęp do zdarzeń starszych niż 15 dni, użyj interfejsu API REST lubC# zestawu SDK (przykład przy użyciu zestawu SDK). Jeśli nie dołączysz wartości **StartTime**, wartość domyślna to **Endtime** minus jedna godzina. Jeśli nie dołączysz **Endtime**, wartość domyślna to bieżąca godzina. Wszystkie czasy są w formacie UTC.
@@ -118,7 +117,7 @@ Aby wyświetlić historię określonej reguły alertu, można użyć polecenia c
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-Polecenie cmdlet `Get-AzAlertHistory` obsługuje różne parametry. Więcej informacji można znaleźć w temacie [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
+@No__t_0 polecenie cmdlet obsługuje różne parametry. Więcej informacji można znaleźć w temacie [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
 
 ## <a name="retrieve-information-on-alert-rules"></a>Pobierz informacje o regułach alertów
 Wszystkie poniższe polecenia działają w grupie zasobów o nazwie "montest".
@@ -146,22 +145,22 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 ## <a name="create-metric-alerts"></a>Tworzenie alertów dotyczących metryk
 Za pomocą polecenia cmdlet `Add-AlertRule` można utworzyć, zaktualizować lub wyłączyć regułę alertu.
 
-Możesz tworzyć właściwości poczty e-mail i elementu webhook odpowiednio przy użyciu `New-AzAlertRuleEmail` i `New-AzAlertRuleWebhook`. W oknie polecenia cmdlet reguły alertu Przypisz te właściwości jako akcje do właściwości Actions reguły alertu.
+Możesz tworzyć właściwości poczty e-mail i elementu webhook odpowiednio przy użyciu `New-AzAlertRuleEmail` i `New-AzAlertRuleWebhook`. W oknie polecenia cmdlet reguły alertu Przypisz te właściwości jako akcje do właściwości **Actions** reguły alertu.
 
 W poniższej tabeli opisano parametry i wartości używane do tworzenia alertu przy użyciu metryki.
 
-| Konstruktora | value |
+| konstruktora | wartość |
 | --- | --- |
-| Name |simpletestdiskwrite |
-| Lokalizacja tej reguły alertu |East US |
+| Nazwa |simpletestdiskwrite |
+| Lokalizacja tej reguły alertu |Wschodnie stany USA |
 | ResourceGroup |montest |
-| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| Wartość metryki alertu, który został utworzony |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
-| Zakład |GreaterThan |
+| Element targetresourceid |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| Wartość metryki alertu, który został utworzony |\PhysicalDisk (_Total) \Bajty zapisów/s. Aby uzyskać dokładne nazwy metryk, zobacz polecenie cmdlet `Get-MetricDefinitions`. |
+| zakład |GreaterThan |
 | Wartość progowa (licznik/s w dla tej metryki) |1 |
 | WindowSize (hh: mm: SS) |00:05:00 |
-| agregator (Statystyka metryki, która używa w tym przypadku średniej liczby) |Average |
-| niestandardowe wiadomości e-mail (Tablica ciągów) |'foo@example.com','bar@example.com' |
+| agregator (Statystyka metryki, która używa w tym przypadku średniej liczby) |Średnia |
+| niestandardowe wiadomości e-mail (Tablica ciągów) |"foo@example.com", "bar@example.com" |
 | Wyślij wiadomość e-mail do właścicieli, współautorów i czytelników |-SendToServiceOwners |
 
 Utwórz akcję poczty E-mail
@@ -191,7 +190,7 @@ Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 Polecenie cmdlet Add alertu aktualizuje także regułę, jeśli istnieje już reguła alertu dla danej właściwości. Aby wyłączyć regułę alertu, należy uwzględnić parametr **-DisableRule**.
 
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>Pobierz listę dostępnych metryk dla alertów
-Można użyć polecenia cmdlet `Get-AzMetricDefinition`, aby wyświetlić listę wszystkich metryk dla określonego zasobu.
+Możesz użyć polecenia cmdlet `Get-AzMetricDefinition`, aby wyświetlić listę wszystkich metryk dla określonego zasobu.
 
 ```powershell
 Get-AzMetricDefinition -ResourceId <resource_id>
@@ -206,7 +205,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 Pełna lista dostępnych opcji dla `Get-AzMetricDefinition` jest dostępna w witrynie [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
 
 ## <a name="create-and-manage-activity-log-alerts"></a>Tworzenie alertów dziennika aktywności i zarządzanie nimi
-Aby ustawić alert dziennika aktywności, można użyć polecenia cmdlet `Set-AzActivityLogAlert`. Alert dziennika aktywności wymaga, aby najpierw zdefiniować warunki jako słownik warunków, a następnie utworzyć alert, który używa tych warunków.
+Do ustawienia alertu dziennika aktywności można użyć polecenia cmdlet `Set-AzActivityLogAlert`. Alert dziennika aktywności wymaga, aby najpierw zdefiniować warunki jako słownik warunków, a następnie utworzyć alert, który używa tych warunków.
 
 ```powershell
 
@@ -229,7 +228,7 @@ Poniżej przedstawiono kroki, które należy wykonać:
 
 1. Utwórz reguły.
 2. Utwórz profil (y), które mapują reguły, które zostały wcześniej utworzone w profilach.
-3. Opcjonalnie: Twórz powiadomienia dla skalowania automatycznego przez skonfigurowanie elementu webhook i właściwości wiadomości e-mail.
+3. Opcjonalne: Utwórz powiadomienia dla skalowania automatycznego przez skonfigurowanie elementu webhook i właściwości wiadomości e-mail.
 4. Utwórz ustawienie automatycznego skalowania z nazwą w zasobie docelowym, mapując profile i powiadomienia utworzone w poprzednich krokach.
 
 W poniższych przykładach pokazano, jak utworzyć ustawienia automatycznego skalowania dla zestawu skalowania maszyn wirtualnych dla systemu operacyjnego Windows w oparciu o użycie metryki użycia procesora CPU.
@@ -310,7 +309,7 @@ Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>Zarządzanie profilami dzienników dla dziennika aktywności
-Możesz utworzyć *profil dziennika* i wyeksportować dane z dziennika aktywności do konta magazynu, aby można było skonfigurować dla niego przechowywanie danych. Opcjonalnie można również przesłać strumieniowo dane do centrum zdarzeń. Ta funkcja jest obecnie dostępna w wersji zapoznawczej i można utworzyć tylko jeden profil dziennika na subskrypcję. Do tworzenia profilów dzienników i zarządzania nimi można użyć następujących poleceń cmdlet z bieżącą subskrypcją. Możesz również wybrać określoną subskrypcję. Mimo że program PowerShell domyślnie ma bieżącą subskrypcję, zawsze możesz ją zmienić przy użyciu `Set-AzContext`. Dziennik aktywności można skonfigurować w taki sposób, aby dane były kierowane do dowolnego konta magazynu lub centrum zdarzeń w ramach danej subskrypcji. Dane są zapisywane jako pliki obiektów BLOB w formacie JSON.
+Możesz utworzyć *profil dziennika* i wyeksportować dane z dziennika aktywności do konta magazynu, aby można było skonfigurować dla niego przechowywanie danych. Opcjonalnie można również przesłać strumieniowo dane do centrum zdarzeń. Ta funkcja jest obecnie dostępna w wersji zapoznawczej i można utworzyć tylko jeden profil dziennika na subskrypcję. Do tworzenia profilów dzienników i zarządzania nimi można użyć następujących poleceń cmdlet z bieżącą subskrypcją. Możesz również wybrać określoną subskrypcję. Mimo że program PowerShell domyślnie jest bieżącą subskrypcją, można zawsze zmienić ten program przy użyciu `Set-AzContext`. Dziennik aktywności można skonfigurować w taki sposób, aby dane były kierowane do dowolnego konta magazynu lub centrum zdarzeń w ramach danej subskrypcji. Dane są zapisywane jako pliki obiektów BLOB w formacie JSON.
 
 ### <a name="get-a-log-profile"></a>Pobierz profil dziennika
 Aby pobrać istniejące profile dziennika, użyj polecenia cmdlet `Get-AzLogProfile`.
@@ -389,7 +388,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 
 ```
 
-Należy pamiętać, że właściwość identyfikator obszaru roboczego Pobiera *Identyfikator zasobu* obszaru roboczego. Możesz uzyskać identyfikator zasobu obszaru roboczego usługi Log Analytics przy użyciu następującego polecenia:
+Należy pamiętać, że właściwość identyfikator obszaru roboczego Pobiera *Identyfikator zasobu* obszaru roboczego. Identyfikator zasobu obszaru roboczego Log Analytics można uzyskać przy użyciu następującego polecenia:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId

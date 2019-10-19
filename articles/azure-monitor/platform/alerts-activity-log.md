@@ -1,22 +1,22 @@
 ---
 title: Tworzenie i wyświetlanie alertów dziennika aktywności oraz zarządzanie nimi w Azure Monitor
 description: Tworzenie alertów dziennika aktywności przy użyciu Azure Portal, szablonu Azure Resource Manager i Azure PowerShell.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 06/25/2019
+author: rboucher
 ms.author: robb
-ms.openlocfilehash: e93b6f9c74bb44cb7341f5763261ecb699432ae2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.date: 06/25/2019
+ms.openlocfilehash: 6c133f99ce31d4994753aba11cee90cfc1b5afc9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675261"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552818"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Tworzenie i wyświetlanie alertów dziennika aktywności oraz zarządzanie nimi za pomocą Azure Monitor  
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Alerty dziennika aktywności są alertami, które są aktywowane w przypadku wystąpienia nowego zdarzenia dziennika aktywności zgodnego z warunkami określonymi w alercie.
 
 Te alerty dotyczą zasobów platformy Azure i można je utworzyć przy użyciu szablonu Azure Resource Manager. Można je także tworzyć, aktualizować lub usuwać w Azure Portal. Zazwyczaj tworzysz alerty dziennika aktywności, aby otrzymywać powiadomienia o wystąpieniu konkretnych zmian w zasobach w ramach subskrypcji platformy Azure. Alerty często są ograniczone do określonych grup zasobów lub zasobów. Na przykład możesz chcieć otrzymywać powiadomienia, gdy dowolna maszyna wirtualna w przykładowej grupie zasobów **myProductionResourceGroup** jest usuwana. Możesz również otrzymać powiadomienie, jeśli dowolna z nowych ról zostanie przypisana do użytkownika w ramach subskrypcji.
@@ -40,7 +40,7 @@ Za pomocą Azure Portal można tworzyć i modyfikować reguły alertów dziennik
 
 Wykonaj poniższą procedurę.
 
-1. W Azure Portal wybierz pozycję **Monitoruj** **alerty** > .
+1. W Azure Portal wybierz pozycję **monitoruj**  > **alerty**.
 2. W lewym górnym rogu okna **alerty** wybierz pozycję **Nowa reguła alertu** .
 
      ![Nowa reguła alertu](media/alerts-activity-log/AlertsPreviewOption.png)
@@ -51,7 +51,7 @@ Wykonaj poniższą procedurę.
 
 3. W obszarze **Zdefiniuj warunek alertu**podaj następujące informacje, a następnie wybierz pozycję **gotowe**:
 
-   - **Obiekt docelowy alertu:** Aby wyświetlić i wybrać miejsce docelowe dla nowego alertu, Użyj filtru **filtrowanie według subskrypcji** / **według typu zasobu**. Wybierz zasób lub grupę zasobów z wyświetlonej listy.
+   - **Obiekt docelowy alertu:** Aby wyświetlić i wybrać cel dla nowego alertu, użyj opcji **Filtruj według subskrypcji**  / **Filtr według typu zasobu**. Wybierz zasób lub grupę zasobów z wyświetlonej listy.
 
      > [!NOTE]
      > 
@@ -59,7 +59,7 @@ Wykonaj poniższą procedurę.
 
      **Przykładowy widok docelowy alertu**
 
-     ![Wybierz element docelowy](media/alerts-activity-log/select-target.png)
+     ![Wybieranie obiektu docelowego](media/alerts-activity-log/select-target.png)
 
    - W obszarze **kryteria docelowe**wybierz pozycję **Dodaj kryteria**. Wyświetlane są wszystkie dostępne sygnały dla elementu docelowego, które obejmują te z różnych kategorii **dziennika aktywności**. Nazwa kategorii jest dołączana do nazwy **usługi monitorowania** .
 
@@ -106,7 +106,7 @@ Prostą analogową dla zrozumienie warunków, w których można tworzyć reguły
 
 ### <a name="view-and-manage-in-the-azure-portal"></a>Wyświetlanie w Azure Portal i zarządzanie nimi
 
-1. W Azure Portal wybierz pozycję **Monitoruj** **alerty** > . Wybierz pozycję **Zarządzaj regułami alertów** w lewym górnym rogu okna.
+1. W Azure Portal wybierz pozycję **monitoruj**  > **alerty**. Wybierz pozycję **Zarządzaj regułami alertów** w lewym górnym rogu okna.
 
     ![Zarządzaj regułami alertów](media/alerts-activity-log/manage-alert-rules.png)
 
@@ -129,7 +129,7 @@ Prostą analogową dla zrozumienie warunków, w których można tworzyć reguły
 4. Możesz włączyć, wyłączyć lub usunąć regułę. Wybierz odpowiednią opcję w górnej części okna, po wybraniu reguły zgodnie z opisem w kroku 2.
 
 
-## <a name="azure-resource-manager-template"></a>Szablon Azure Resource Manager
+## <a name="azure-resource-manager-template"></a>Szablon usługi Azure Resource Manager
 Aby utworzyć alert dziennika aktywności przy użyciu szablonu Azure Resource Manager, należy utworzyć zasób typu `microsoft.insights/activityLogAlerts`. Następnie Wypełnij wszystkie powiązane właściwości. Oto szablon służący do tworzenia alertu dziennika aktywności:
 
 ```json
@@ -202,7 +202,7 @@ Poprzedni przykładowy kod JSON można zapisać jako, na przykład sampleActivit
 > [!NOTE]
 > Skonfigurowanie nowej reguły alertu dziennika aktywności może potrwać do 5 minut.
 
-## <a name="rest-api"></a>INTERFEJS API REST 
+## <a name="rest-api"></a>Interfejs API REST 
 [Interfejs API alertów dziennika aktywności Azure monitor](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) jest interfejsem API REST. Jest w pełni zgodna z interfejsem API REST Azure Resource Manager. Można go użyć za pośrednictwem programu PowerShell za pomocą polecenia cmdlet Menedżer zasobów lub interfejsu wiersza poleceń platformy Azure.
 
 ## <a name="powershell"></a>PowerShell

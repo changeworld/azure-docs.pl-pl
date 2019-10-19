@@ -1,11 +1,11 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Drift | Microsoft Docs'
+title: 'Samouczek: integracja z logowaniem jednokrotnym (SSO) Azure Active Directory z dryfem | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a aplikacją Drift.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: celested
+ms.reviewer: barbkess
 ms.assetid: 39dcbb95-c192-448c-86a1-cedede1c0972
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,128 +13,146 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/27/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4728ad4fcd44c754a62ec19037562e63d92ec304
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 0cd749ef66ee62f6d89d949cef7ce800bc46d59a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656604"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554357"
 ---
-# <a name="tutorial-integrate-drift-with-azure-active-directory"></a>Samouczek: Integrowanie odejściem od tego stanu za pomocą usługi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-drift"></a>Samouczek: integracja logowania jednokrotnego (SSO) Azure Active Directory z dryfem
 
-W tym samouczku dowiesz się, jak zintegrować odejściem od tego stanu za pomocą usługi Azure Active Directory (Azure AD). Po odejściem od tego stanu jest integracja z usługą Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować dryf z Azure Active Directory (Azure AD). Gdy integrujesz dryf z usługą Azure AD, możesz:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do odejściem od tego stanu.
-* Umożliwianie użytkownikom można automatycznie zalogowany odejściem od tego stanu za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do dryfu.
+* Zezwól użytkownikom na automatyczne logowanie się, aby przepisywać swoje konta usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Odejściem od tego stanu logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Odstępstw obsługuje **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez i **Just In Time** Inicjowanie obsługi użytkowników.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* Dryf obsługuje zainicjowanie logowania jednokrotnego **z użyciem SP i dostawcy tożsamości**
+* Aplikacja Drift obsługuje aprowizowanie użytkowników typu **Just in Time**
+
+> [!NOTE]
+> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
 
 ## <a name="adding-drift-from-the-gallery"></a>Dodawanie aplikacji Drift z galerii
 
 Aby skonfigurować integrację aplikacji Drift z usługą Azure AD, musisz dodać aplikację Drift z galerii do swojej listy zarządzanych aplikacji SaaS.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **dryfu** w polu wyszukiwania.
-1. Wybierz **dryfu** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **dryf** w polu wyszukiwania.
+1. Wybierz pozycję **dryf** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on-for-drift"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD na potrzeby dryfowania
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą odejściem od tego stanu za pomocą użytkownika testu o nazwie **B. Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w kilka.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą dryfu przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w dryfie.
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą odejściem od tego stanu, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD z dryfem, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Skonfiguruj kilka](#configure-drift)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego dryfu](#create-drift-test-user)**  mieć odpowiednikiem B. Simon dryfu połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj Logowanie jednokrotne](#configure-drift-sso)** w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+    1. **[Utwórz użytkownika testowego dryfu](#create-drift-test-user)** — Aby uzyskać odpowiednika B. Simon w dryfie, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **dryfu** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. W [Azure Portal](https://portal.azure.com/)na stronie **integracja aplikacji do** rozłożenia Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawową konfigurację protokołu SAML** sekcji, aplikacja jest wstępnie skonfigurowana i wymaganych adresów URL już są wstępnie wypełniane przy użyciu platformy Azure. Użytkownik musi zapisać konfigurację, klikając **Zapisz** znajdujący się i wykonać następujące czynności:
+1. Na **podstawowej konfiguracji SAML** section aplikacja została wstępnie skonfigurowana w trybie **dostawcy tożsamości** Initiated, a wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **zapisz** Button.
 
     a. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
  
     b. W polu tekstowym **Stan przekaźnika** wpisz adres URL: `https://app.drift.com` 
 
-    c. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę usług**, wykonaj następujący krok:
+    d. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę usług**, wykonaj następujący krok:
 
     d. W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://start.drift.com`
 
-6. Aplikacja dryfu oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe Atrybuty użytkownika.
+6. Aplikacja dryfu oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
     ![image](common/edit-attribute.png)
 
-7. Ponadto do powyżej, aplikacja oczekuje, że kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji oświadczenia użytkownika w oknie dialogowym atrybutów użytkownika wykonaj następujące kroki, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli: 
+7. Oprócz powyższych, aplikacja dryfu oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je przejrzeć zgodnie z wymaganiami. 
 
-    | Name (Nazwa) | Atrybut źródłowy|
+    | Nazwa | Atrybut źródłowy|
     | ---------------| --------------- |    
-    | Name (Nazwa) | user.displayname |
+    | Nazwa | user.displayname |
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![image](common/new-save-attribute.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![image](common/new-attribute-details.png)
+1. W sekcji **Konfigurowanie dryfu** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
-    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    d. Pozostaw pole **Przestrzeń nazw** puste.
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
-    f. Kliknij przycisk **OK**.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-    g. Kliknij pozycję **Zapisz**.
+W tej sekcji włączysz funkcję B. Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do dryfu.
 
-1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **XML metadanych Federacji** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście aplikacji wybierz pozycję **Drift**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link pobierania certyfikatu](common/metadataxml.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Na **Konfigurowanie dryfu** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-### <a name="configure-drift"></a>Konfigurowanie odejściem od tego stanu
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Aby zautomatyzować konfigurację w ramach odejściem od tego stanu, należy zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
+## <a name="configure-drift-sso"></a>Konfigurowanie rejestracji jednokrotnej
 
-    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
+1. Aby zautomatyzować konfigurację w ramach dryfowania, należy zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
 
-2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **Dryft konfiguracji** nastąpi bezpośrednie przekierowanie do aplikacji odejściem od tego stanu. W tym miejscu podaj poświadczenia administratora do logowania się do odejściem od tego stanu. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzować kroki 3 i 4.
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
 
-    ![Konfiguracja instalacji](common/setup-sso.png)
+2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **dryf konfiguracji** nakazujesz aplikacji z dryfem. Z tego miejsca podaj poświadczenia administratora, aby zalogować się do dryfu. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzuje kroki 3-4.
 
-3. Jeśli chcesz ręcznie skonfigurować dryfu, Otwórz nowe okno przeglądarki sieci web i logowania do witryny firmy dryfu jako administrator i wykonaj następujące czynności:
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
+
+3. Jeśli chcesz ręcznie skonfigurować dryf, Otwórz nowe okno przeglądarki sieci Web i zaloguj się do firmowej witryny z przedziału jako administrator i wykonaj następujące czynności:
 
 4. Z lewej strony paska menu kliknij kolejno pozycje **ikonę ustawień** > **App Settings (Ustawienia aplikacji)**  > **Authentication (Uwierzytelnianie)** i wykonaj następujące kroki:
 
@@ -144,37 +162,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     b. Po przekazaniu pliku metadanych pozostałe wartości na stronie zostaną automatycznie wypełnione.
 
-    c. Kliknij pozycję **Enable SAML** (Włącz protokół SAML).
-
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B. Simon.
-
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
-   1. W polu **Nazwa** wprowadź wartość `B. Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B. Simon@contoso.com`.
-   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji można udostępnić Simon B. korzystać z platformy Azure logowania jednokrotnego przez udzielenie dostępu po odejściem od tego stanu.
-
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz pozycję **Drift**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
-
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
-
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
-
-    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
-
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B. Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+    d. Kliknij pozycję **Enable SAML** (Włącz protokół SAML).
 
 ### <a name="create-drift-test-user"></a>Tworzenie użytkownika testowego aplikacji Drift
 
@@ -183,14 +171,19 @@ W tej sekcji w aplikacji Drift jest tworzony użytkownik o nazwie Britta Simon. 
 >[!Note]
 >Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej aplikacji Drift](mailto:integrations@drift.com).
 
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-Po wybraniu kafelka odejściem od tego stanu w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze odejściem od tego stanu, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+Po kliknięciu kafelka Drift w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Drift, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj dryfowanie za pomocą usługi Azure AD](https://aad.portal.azure.com/)
+

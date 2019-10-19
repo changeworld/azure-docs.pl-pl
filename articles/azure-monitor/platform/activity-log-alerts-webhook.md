@@ -1,19 +1,18 @@
 ---
 title: Informacje o schemacie elementu webhook używanym w alertach dziennika aktywności
 description: Informacje o schemacie JSON, który jest publikowany w adresie URL elementu webhook po aktywowaniu alertu dziennika aktywności.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/31/2017
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: b9ba809baa8fc4adddfad1344d6f36375cb361c4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/31/2017
+ms.openlocfilehash: a79bf07c91ef80509355a10c1401d1ab94cc5118
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675213"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552738"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Elementy webhook dla alertów dziennika aktywności platformy Azure
 W ramach definicji grupy akcji można skonfigurować punkty końcowe elementu webhook, aby otrzymywać powiadomienia o alertach dziennika aktywności. Za pomocą elementów webhook można kierować te powiadomienia do innych systemów na potrzeby akcji wykonywanych po przetworzeniu lub w niestandardowym. W tym artykule przedstawiono sposób, w jaki zostanie wyświetlony ładunek dla wpisu HTTP dla elementu webhook.
@@ -32,7 +31,7 @@ Element webhook może opcjonalnie użyć autoryzacji opartej na tokenach na potr
 ## <a name="payload-schema"></a>Schemat ładunku
 Ładunek JSON zawarty w operacji POST różni się w zależności od pola Data. Context. activityLog. eventSource.
 
-### <a name="common"></a>Wspólna
+### <a name="common"></a>Wspólne
 
 ```json
 {
@@ -61,7 +60,7 @@ Element webhook może opcjonalnie użyć autoryzacji opartej na tokenach na potr
 }
 ```
 
-### <a name="administrative"></a>Administracyjn
+### <a name="administrative"></a>Administracyjne
 
 ```json
 {
@@ -132,7 +131,7 @@ Element webhook może opcjonalnie użyć autoryzacji opartej na tokenach na potr
 }
 ```
 
-### <a name="recommendation"></a>Zaleca
+### <a name="recommendation"></a>Zalecenie
 
 ```json
 {
@@ -260,32 +259,32 @@ Aby uzyskać szczegółowe informacje dotyczące schematu alertów dziennika akt
 
 | Nazwa elementu | Opis |
 | --- | --- |
-| stan |Używane na potrzeby alertów dotyczących metryk. Zawsze ustawione na "aktywowane" dla alertów dziennika aktywności. |
-| kontekst |Kontekst zdarzenia. |
+| status |Używane na potrzeby alertów dotyczących metryk. Zawsze ustawione na "aktywowane" dla alertów dziennika aktywności. |
+| Context |Kontekst zdarzenia. |
 | resourceProviderName |Dostawca zasobów zasobu, którego to dotyczy. |
 | warunektype |Zawsze "zdarzenie". |
-| nazwa |Nazwa reguły alertu. |
-| identyfikator |Identyfikator zasobu alertu. |
-| opis |Opis alertu ustawiany podczas tworzenia alertu. |
-| Identyfikator |Identyfikator subskrypcji platformy Azure. |
-| znacznik czasu |Godzina, o której zdarzenie zostało wygenerowane przez usługę platformy Azure, która przetworzyła żądanie. |
-| Identyfikator |Identyfikator zasobu zasobu, którego dotyczy problem. |
+| name |Nazwa reguły alertu. |
+| id |Identyfikator zasobu alertu. |
+| description |Opis alertu ustawiany podczas tworzenia alertu. |
+| subscriptionId |Identyfikator subskrypcji platformy Azure. |
+| sygnatura czasowa |Godzina, o której zdarzenie zostało wygenerowane przez usługę platformy Azure, która przetworzyła żądanie. |
+| resourceId |Identyfikator zasobu zasobu, którego dotyczy problem. |
 | resourceGroupName |Nazwa grupy zasobów dla zasobu, którego dotyczy problem. |
-| właściwości |Zestaw par `<Key, Value>` (czyli `Dictionary<String, String>`), które zawierają szczegółowe informacje o zdarzeniu. |
-| zdarzenie |Element, który zawiera metadane dotyczące zdarzenia. |
-| autoryzacja |Właściwości Access Control oparte na rolach zdarzenia. Te właściwości zazwyczaj obejmują akcję, rolę i zakres. |
+| properties |Zestaw par `<Key, Value>` (czyli `Dictionary<String, String>`), który zawiera szczegółowe informacje o zdarzeniu. |
+| wydarzen |Element, który zawiera metadane dotyczące zdarzenia. |
+| Zgody |Właściwości Access Control oparte na rolach zdarzenia. Te właściwości zazwyczaj obejmują akcję, rolę i zakres. |
 | category |Kategoria zdarzenia. Obsługiwane wartości to: administracyjne, alert, zabezpieczenia, servicehealth i rekomendacja. |
 | Obiekt wywołujący |Adres e-mail użytkownika, który wykonał operację, oświadczenie nazwy UPN lub oświadczenie SPN na podstawie dostępności. Może mieć wartość null w przypadku niektórych wywołań systemowych. |
-| Korelacj |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia z identyfikatorem korelacji należy do tej samej większej akcji i zwykle współużytkują identyfikator korelacji. |
+| correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia z identyfikatorem korelacji należy do tej samej większej akcji i zwykle współużytkują identyfikator korelacji. |
 | eventDescription |Tekst statyczny opisu zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia. |
 | EventSource |Nazwa usługi lub infrastruktury platformy Azure, która wygenerowała zdarzenie. |
 | httpRequest |Żądanie zwykle obejmuje metodę identyfikatorem żądania klienta, clientIpAddress i HTTP (na przykład PUT). |
-| Poziomie |Jedna z następujących wartości: krytyczne, błąd, ostrzeżenie i informacje. |
+| poziomie |Jedna z następujących wartości: krytyczne, błąd, ostrzeżenie i informacje. |
 | operationId |Zazwyczaj identyfikator GUID współużytkowany przez zdarzenia odpowiadające pojedynczej operacji. |
-| OperationName |Nazwa operacji. |
-| właściwości |Właściwości zdarzenia. |
-| stan |Parametry. Stan operacji. Wspólne wartości obejmują rozpoczęte, w toku, zakończone powodzeniem, zakończone niepowodzeniem, aktywne i rozwiązane. |
+| operationName |Nazwa operacji. |
+| properties |Właściwości zdarzenia. |
+| status |parametry. Stan operacji. Wspólne wartości obejmują rozpoczęte, w toku, zakończone powodzeniem, zakończone niepowodzeniem, aktywne i rozwiązane. |
 | subStatus |Zwykle zawiera kod stanu HTTP odpowiadającego wywołania REST. Może również zawierać inne ciągi opisujące podstan. Typowe wartości stanu podstanu to OK (kod stanu HTTP: 200), utworzono (kod stanu HTTP: 201), zaakceptowane (kod stanu HTTP: 202), brak zawartości (kod stanu http: 204), niewłaściwe żądanie (kod stanu http: 400), nie znaleziono (kod stanu http: 404), konflikt (kod stanu http: 409 ), Wewnętrzny błąd serwera (kod stanu HTTP: 500), Usługa niedostępna (kod stanu HTTP: 503) i limit czasu bramy (kod stanu HTTP: 504). |
 
 Szczegółowe informacje o schemacie wszystkich innych alertów dziennika aktywności można znaleźć w temacie [Omówienie dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md).

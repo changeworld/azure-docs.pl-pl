@@ -7,16 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 1d6560613294584c77f002e2380065d64ea143f7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8c2764535515d0aeb1eb65a1621148fa58317cac
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387963"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553700"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Dryf schematu w mapowaniu przepływu danych
-
-
 
 Dryfowanie schematu to przypadek, w którym źródła często zmieniają metadane. Pola, kolumny i typy można dodawać, usuwać lub zmieniać na bieżąco. Bez obsługi dryfowania schematu przepływ danych jest narażony na zmiany nadrzędnego źródła danych. Typowe wzorce ETL kończą się niepowodzeniem, gdy przychodzące kolumny i pola są zmieniane, ponieważ mają one być powiązane z tymi nazwami źródłowymi.
 
@@ -31,6 +29,8 @@ Azure Data Factory natywnie obsługuje elastyczne schematy, które zmieniają si
 Należy podjąć decyzję dotyczącą architektury w przepływie danych, aby akceptować dryf schematu w ramach przepływu. Gdy to zrobisz, możesz chronić przed zmianami schematu ze źródeł. Jednak w ramach przepływu danych utracisz wczesne powiązania kolumn i typów. Azure Data Factory traktuje przepływy napływu schematu jako przepływy późnego wiązania, dlatego podczas kompilowania przekształceń nie będą dostępne nazwy kolumn z przełożeniami w widoku schematu w całym przepływie.
 
 ## <a name="schema-drift-in-source"></a>Dryf schematu w źródle
+
+Kolumny przesyłane do przepływu danych z definicji źródłowej są zdefiniowane jako "przedzielone", gdy nie są obecne w projekcji źródłowej. Projekcję źródła można wyświetlić na karcie projekcja w transformacji źródłowej. Po wybraniu zestawu danych dla źródła, ADF automatycznie przeniesie schemat z zestawu danych i utworzy projekt z tej definicji schematu zestawu danych.
 
 W transformacji źródłowej, dryfowanie schematu jest zdefiniowane jako odczytane kolumny, które nie są zdefiniowane w schemacie zestawu danych. Aby włączyć dryfowanie schematu, zaznacz pole wyboru **Zezwalaj na dryfowanie schematu** w transformacji źródłowej.
 

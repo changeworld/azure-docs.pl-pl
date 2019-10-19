@@ -1,38 +1,32 @@
 ---
-title: Usługa Azure Monitor znane problemy dotyczące maszyn wirtualnych (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: W tym artykule opisano znane problemy z usługą Azure Monitor dla maszyn wirtualnych, rozwiązanie na platformie Azure, który łączy, wykrywania zależności aplikacji, monitorowania kondycji i wydajności systemu operacyjnego maszyny Wirtualnej platformy Azure.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
+title: Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) znane problemy | Microsoft Docs
+description: W tym artykule opisano znane problemy dotyczące Azure Monitor dla maszyn wirtualnych, rozwiązania na platformie Azure, które łączy kondycję, odnajdywanie zależności aplikacji i monitorowanie wydajności systemu operacyjnego Azure VM.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 86a56e71b89e7408d1bc8ca0ee1dc8112bea368f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/02/2019
+ms.openlocfilehash: f6719a8c28571faceb6ebad0567d13a4edc60fe6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522142"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553759"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Znane problemy z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Znane problemy z Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
-W tym artykule opisano znane problemy z usługą Azure Monitor dla maszyn wirtualnych z rozwiązań platformy Azure, która łączy zdrowia, odnajdywania składników aplikacji i monitorowania wydajności systemu operacyjnego maszyny Wirtualnej platformy Azure. 
+W tym artykule opisano znane problemy związane z Azure Monitor dla maszyn wirtualnych, rozwiązanie na platformie Azure, które łączy kondycję, odnajdywanie składników aplikacji i monitorowanie wydajności systemu operacyjnego Azure VM. 
 
-## <a name="health"></a>Health 
-Następujące znane problemy związane z bieżącej wersji funkcji kondycji:
+## <a name="health"></a>Zdrowie 
+Poniżej przedstawiono znane problemy związane z bieżącą wersją funkcji kondycji:
 
-- Jeśli Maszynę wirtualną platformy Azure zostało usunięte lub usunięte, jest on wyświetlany w widoku listy maszyn wirtualnych za jakiś czas. Ponadto kliknięcie stan usunięto ani nie usunięto maszyny Wirtualnej spowoduje otwarcie **Diagnostyka kondycji** wyświetlić, a następnie inicjuje pętli ładowania. Wybierając nazwę usuniętej maszyny Wirtualnej powoduje otwarcie okienka z komunikat informujący, że maszyna wirtualna została usunięta.
-- Nawet wtedy, gdy portal lub interfejsu API Monitor obciążenie może je wykonać natychmiastową aktualizację, zmiany konfiguracji, takie jak aktualizowanie wartości progowej, potrwać do 30 minut. 
-- Diagnostyka kondycji środowiska aktualizacje szybciej niż inne widoki. Informacje mogą zostać opóźnione, podczas przełączania między nimi. 
-- W przypadku maszyn wirtualnych systemu Linux tytuł strony ofercie kryteria kondycji dla pojedynczego widoku maszyny Wirtualnej o nazwie całej domeny maszyny Wirtualnej, zamiast nazwy maszyny Wirtualnej użytkownika. 
-- Po wyłączeniu monitorowanie dla maszyny Wirtualnej przy użyciu jednej z obsługiwanych metod i przystąpieniem do wdrażania go ponownie, należy wdrożyć ją w tym samym obszarze roboczym. Jeśli wybierzesz inny obszar roboczy i spróbuj, aby wyświetlić stan kondycji dla tej maszyny Wirtualnej, może wyświetlać niespójne zachowanie.
-- Po usunięciu składników rozwiązania z obszaru roboczego, może być nadal widoczny stan kondycji z maszynami wirtualnymi portalu Azure; w szczególności mapy danych o wydajności i po przejściu do widoku, albo w portalu. Dane po pewnym czasie zostanie zatrzymane, pojawiają się w widoku wydajności i mapy po pewnym czasie; Widok kondycji będą jednak nadal pokazują stan kondycji dla maszyn wirtualnych. **Wypróbuj teraz usługę** opcji będzie można ponownie dołączyć tylko widokach wydajności i mapy.
+- Jeśli maszyna wirtualna platformy Azure zostanie usunięta lub usunięta, zostanie ona wyświetlona w widoku listy maszyn wirtualnych przez jakiś czas. Ponadto kliknięcie stanu usuniętej lub usuniętej maszyny wirtualnej spowoduje otwarcie widoku **Diagnostyka kondycji** , a następnie zainicjowanie pętli ładowania. Wybranie nazwy usuniętej maszyny wirtualnej powoduje otwarcie okienka z komunikatem informującym o usunięciu maszyny wirtualnej.
+- Zmiany konfiguracji, takie jak aktualizowanie progu, potrwają do 30 minut, nawet jeśli interfejs API monitora lub obciążenia może natychmiast je zaktualizować. 
+- Diagnostyka kondycji jest aktualizowana szybciej niż w przypadku innych widoków. Informacje mogą być opóźnione po przełączeniu między nimi. 
+- W przypadku maszyn wirtualnych z systemem Linux tytuł strony zawierający kryteria kondycji dla pojedynczego widoku maszyny wirtualnej ma całą nazwę domeny maszyny wirtualnej zamiast nazwy maszyny wirtualnej zdefiniowanej przez użytkownika. 
+- Po wyłączeniu monitorowania dla maszyny wirtualnej przy użyciu jednej z obsługiwanych metod i ponowieniu próby wdrożenia należy wdrożyć ją w tym samym obszarze roboczym. Jeśli wybierzesz inny obszar roboczy i spróbujesz wyświetlić stan kondycji tej maszyny wirtualnej, może to spowodować niespójne zachowanie.
+- Po usunięciu składników rozwiązania z obszaru roboczego można nadal zobaczyć stan kondycji maszyn wirtualnych platformy Azure; Zapoznaj się z wydajnością i zamapuj dane po przejściu do widoku w portalu. Dane będą ostatecznie wyświetlane w widoku wydajność i mapa po pewnym czasie; jednak widok kondycji będzie nadal przedstawiał stan kondycji maszyn wirtualnych. Opcja **Wypróbuj teraz** będzie dostępna, aby ponownie dołączyć tylko do widoków wydajności i map.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby poznać wymagania i metod umożliwiających monitorowanie maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-enable-overview.md).
+## <a name="next-steps"></a>Następne kroki
+Aby poznać wymagania i metody włączania monitorowania maszyn wirtualnych, przejrzyj temat [włączanie Azure monitor dla maszyn wirtualnych](vminsights-enable-overview.md).

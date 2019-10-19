@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 4e2cd3b66385d37815d0fc51a70ca31aba25db29
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
-ms.translationtype: HT
+ms.openlocfilehash: aab5d9a4cb7527e8a2085f826febc64bbd74854c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528614"
+ms.locfileid: "72551966"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z Azure Monitor
 
@@ -1437,68 +1437,78 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Brak wymiarów|
-|physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|Brak wymiarów|
-|log_write_percent|Procent operacji we/wy dziennika|Procent|Średnia|Procent operacji we/wy dziennika. Nie dotyczy hurtowni danych.|Brak wymiarów|
-|dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|Brak wymiarów|
-|magazyn|Używane miejsce na dane|Szybkość|Maksimum|Łączny rozmiar bazy danych. Nie dotyczy hurtowni danych.|Brak wymiarów|
-|connection_successful|Udane połączenia|Liczba|Łącznie|Udane połączenia|Brak wymiarów|
-|connection_failed|Połączenia zakończone niepowodzeniem|Liczba|Łącznie|Połączenia zakończone niepowodzeniem|Brak wymiarów|
-|blocked_by_firewall|Zablokowane przez zaporę|Liczba|Łącznie|Zablokowane przez zaporę|Brak wymiarów|
-|Stanu|Zakleszczenia|Liczba|Łącznie|Zakleszczenia. Nie dotyczy hurtowni danych.|Brak wymiarów|
-|storage_percent|Procent użytego miejsca na danych|Procent|Maksimum|Procent rozmiaru bazy danych. Nie dotyczy magazynów danych ani baz danych w skali.|Brak wymiarów|
-|xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci. Nie dotyczy hurtowni danych.|Brak wymiarów|
-|workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników. Nie dotyczy hurtowni danych.|Brak wymiarów|
-|sessions_percent|Procent sesji|Procent|Średnia|Procent sesji. Nie dotyczy hurtowni danych.|Brak wymiarów|
-|dtu_limit|Limit jednostek DTU|Liczba|Średnia|Limit jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|Brak wymiarów|
-|dtu_used|Używane jednostki DTU|Liczba|Średnia|Użyto jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|Brak wymiarów|
-|cpu_limit|Limit CPU|Liczba|Średnia|Limit czasu procesora CPU. Dotyczy baz danych opartych na rdzeń wirtualny.|Brak wymiarów|
-|cpu_used|Użycie procesora CPU|Liczba|Średnia|Użycie procesora CPU. Dotyczy baz danych opartych na rdzeń wirtualny.|Brak wymiarów|
-|dwu_limit|Limit jednostek dwu|Liczba|Maksimum|Limit jednostek dwu. Dotyczy tylko magazynów danych.|Brak wymiarów|
-|dwu_consumption_percent|JEDNOSTEK dwu procent|Procent|Maksimum|Procent jednostek dwu. Dotyczy tylko magazynów danych.|Brak wymiarów|
-|dwu_used|JEDNOSTEK dwu używane|Liczba|Maksimum|JEDNOSTEK dwu. Dotyczy tylko magazynów danych.|Brak wymiarów|
-|dw_cpu_percent|Wartość procentowa procesora CPU na poziomie węzła DW|Procent|Średnia|Wartość procentowa procesora CPU na poziomie węzła DW|DwLogicalNodeId|
-|dw_physical_data_read_percent|Procent operacji we/wy danych na poziomie węzła DW|Procent|Średnia|Procent operacji we/wy danych na poziomie węzła DW|DwLogicalNodeId|
-|cache_hit_percent|Procent trafień w pamięci podręcznej|Procent|Maksimum|Procent trafień w pamięci podręcznej. Dotyczy tylko magazynów danych.|Brak wymiarów|
-|cache_used_percent|Procent użycia pamięci podręcznej|Procent|Maksimum|Procent użycia pamięci podręcznej. Dotyczy tylko magazynów danych.|Brak wymiarów|
-|local_tempdb_usage_percent|Procent lokalnej bazy danych tempdb|Procent|Średnia|Procent lokalnej bazy danych tempdb. Dotyczy tylko magazynów danych.|Brak wymiarów|
+|allocated_data_storage|Przydzielono miejsce na danych|Szybkość|Średnia|Przydzielono miejsce na danych. Nie dotyczy hurtowni danych.|Brak wymiarów|
 |app_cpu_billed|Rozliczane użycie procesora przez aplikację|Liczba|Łącznie|Rozliczane użycie procesora przez aplikację. Dotyczy bezserwerowych baz danych.|Brak wymiarów|
 |app_cpu_percent|Procent użycia procesora CPU aplikacji|Procent|Średnia|Procent użycia procesora CPU aplikacji. Dotyczy bezserwerowych baz danych.|Brak wymiarów|
 |app_memory_percent|Procent użycia pamięci aplikacji|Procent|Średnia|Procent wykorzystania pamięci aplikacji. Dotyczy bezserwerowych baz danych.|Brak wymiarów|
-|allocated_data_storage|Przydzielono miejsce na danych|Szybkość|Średnia|Przydzielono miejsce na danych. Nie dotyczy hurtowni danych.|Brak wymiarów|
+|blocked_by_firewall|Zablokowane przez zaporę|Liczba|Łącznie|Zablokowane przez zaporę|Brak wymiarów|
+|cache_hit_percent|Procent trafień w pamięci podręcznej|Procent|Maksimum|Procent trafień w pamięci podręcznej. Dotyczy tylko magazynów danych.|Brak wymiarów|
+|cache_used_percent|Procent użycia pamięci podręcznej|Procent|Maksimum|Procent użycia pamięci podręcznej. Dotyczy tylko magazynów danych.|Brak wymiarów|
+|connection_failed|Połączenia zakończone niepowodzeniem|Liczba|Łącznie|Połączenia zakończone niepowodzeniem|Brak wymiarów|
+|connection_successful|Udane połączenia|Liczba|Łącznie|Udane połączenia|Brak wymiarów|
+|cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Brak wymiarów|
+|cpu_limit|Limit CPU|Liczba|Średnia|Limit czasu procesora CPU. Dotyczy baz danych opartych na rdzeń wirtualny.|Brak wymiarów|
+|cpu_used|Użycie procesora CPU|Liczba|Średnia|Użycie procesora CPU. Dotyczy baz danych opartych na rdzeń wirtualny.|Brak wymiarów|
+|Stanu|Zakleszczenia|Liczba|Łącznie|Zakleszczenia. Nie dotyczy hurtowni danych.|Brak wymiarów|
+|dtu_limit|Limit jednostek DTU|Liczba|Średnia|Limit jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|Brak wymiarów|
+|dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|Brak wymiarów|
+|dtu_used|Używane jednostki DTU|Liczba|Średnia|Użyto jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|Brak wymiarów|
+|dw_cpu_percent|Wartość procentowa procesora CPU na poziomie węzła DW|Procent|Średnia|Wartość procentowa procesora CPU na poziomie węzła DW|DwLogicalNodeId|
+|dw_physical_data_read_percent|Procent operacji we/wy danych na poziomie węzła DW|Procent|Średnia|Procent operacji we/wy danych na poziomie węzła DW|DwLogicalNodeId|
+|dwu_consumption_percent|JEDNOSTEK dwu procent|Procent|Maksimum|Procent jednostek dwu. Dotyczy tylko magazynów danych.|Brak wymiarów|
+|dwu_limit|Limit jednostek dwu|Liczba|Maksimum|Limit jednostek dwu. Dotyczy tylko magazynów danych.|Brak wymiarów|
+|dwu_used|JEDNOSTEK dwu używane|Liczba|Maksimum|JEDNOSTEK dwu. Dotyczy tylko magazynów danych.|Brak wymiarów|
+|local_tempdb_usage_percent|Procent lokalnej bazy danych tempdb|Procent|Średnia|Procent lokalnej bazy danych tempdb. Dotyczy tylko magazynów danych.|Brak wymiarów|
+|log_write_percent|Procent operacji we/wy dziennika|Procent|Średnia|Procent operacji we/wy dziennika. Nie dotyczy hurtowni danych.|Brak wymiarów|
+|physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|Brak wymiarów|
+|sessions_percent|Procent sesji|Procent|Średnia|Procent sesji. Nie dotyczy hurtowni danych.|Brak wymiarów|
+|sqlserver_process_core_percent|Procent podstawowych procesów SQL Server|Procent|Maksimum|Ta Metryka jest symbolem zastępczym i nie jest w tej chwili wypełniana.|Brak wymiarów|
+|sqlserver_process_memory_percent|Procent pamięci procesu SQL Server|Procent|Maksimum|Ta Metryka jest symbolem zastępczym i nie jest w tej chwili wypełniana.|Brak wymiarów|
+|magazyn|Używane miejsce na dane|Szybkość|Maksimum|Łączny rozmiar bazy danych. Nie dotyczy hurtowni danych.|Brak wymiarów|
+|storage_percent|Procent użytego miejsca na danych|Procent|Maksimum|Procent rozmiaru bazy danych. Nie dotyczy magazynów danych ani baz danych w skali.|Brak wymiarów|
+|tempdb_data_size|Rozmiar pliku danych tempdb kilobajtów|Liczba|Maksimum|Rozmiar pliku danych tempdb kilobajtów. Nie dotyczy hurtowni danych. Ta Metryka będzie dostępna dla baz danych z modelem zakupów rdzeń wirtualny lub 100 jednostek DTU i wyższych dla modeli zakupów opartych na jednostkach DTU.|Brak wymiarów|
+|tempdb_log_size|Rozmiar pliku dziennika bazy danych tempdb kilobajtów|Liczba|Maksimum|Rozmiar pliku dziennika bazy danych tempdb kilobajtów. Nie dotyczy hurtowni danych. Ta Metryka będzie dostępna dla baz danych z modelem zakupów rdzeń wirtualny lub 100 jednostek DTU i wyższych dla modeli zakupów opartych na jednostkach DTU.|Brak wymiarów|
+|tempdb_log_used_percent|Użyto dziennika% tempdb|Procent|Maksimum|Użyto dziennika bazy danych tempdb. Nie dotyczy hurtowni danych. Ta Metryka będzie dostępna dla baz danych z modelem zakupów rdzeń wirtualny lub 100 jednostek DTU i wyższych dla modeli zakupów opartych na jednostkach DTU.|Brak wymiarów|
+|workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników. Nie dotyczy hurtowni danych.|Brak wymiarów|
+|xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci. Nie dotyczy hurtowni danych.|Brak wymiarów|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/serwery/elasticPools
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Brak wymiarów|
-|physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|Brak wymiarów|
-|log_write_percent|Procent operacji we/wy dziennika|Procent|Średnia|Procent operacji we/wy dziennika|Brak wymiarów|
-|dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent jednostek DTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|Brak wymiarów|
-|storage_percent|Procent użytego miejsca na danych||Procent|Średnia|Procent miejsca do magazynowania|Brak wymiarów|
-|workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników|Brak wymiarów|
-|sessions_percent|Procent sesji|Procent|Średnia|Procent sesji|Brak wymiarów|
-|eDTU_limit|limit liczby jednostek eDTU|Liczba|Średnia|limit liczby jednostek eDTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|Brak wymiarów|
-|storage_limit|Maksymalny rozmiar danych|Szybkość|Średnia|Limit magazynu|Brak wymiarów|
-|eDTU_used|użyta wartość eDTU|Liczba|Średnia|użyta wartość eDTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|Brak wymiarów|
-|storage_used|Używane miejsce na dane|Szybkość|Średnia|Użyty magazyn|Brak wymiarów|
-|xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci|Brak wymiarów|
-|cpu_limit|Limit CPU|Liczba|Średnia|Limit czasu procesora CPU. Dotyczy pul elastycznych opartych na rdzeń wirtualny.|Brak wymiarów|
-|cpu_used|Użycie procesora CPU|Liczba|Średnia|Użycie procesora CPU. Dotyczy pul elastycznych opartych na rdzeń wirtualny.|Brak wymiarów|
 |allocated_data_storage|Przydzielono miejsce na danych|Szybkość|Średnia|Przydzielono miejsce na danych|Brak wymiarów|
 |allocated_data_storage_percent|Procent przydzielonych przestrzeni danych|Procent|Maksimum|Procent przydzielonych przestrzeni danych|Brak wymiarów|
+|cpu_limit|Limit CPU|Liczba|Średnia|Limit czasu procesora CPU. Dotyczy pul elastycznych opartych na rdzeń wirtualny.|Brak wymiarów|
+|cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Brak wymiarów|
+|cpu_used|Użycie procesora CPU|Liczba|Średnia|Użycie procesora CPU. Dotyczy pul elastycznych opartych na rdzeń wirtualny.|Brak wymiarów|
+|dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent jednostek DTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|Brak wymiarów|
+|eDTU_limit|limit liczby jednostek eDTU|Liczba|Średnia|limit liczby jednostek eDTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|Brak wymiarów|
+|eDTU_used|użyta wartość eDTU|Liczba|Średnia|użyta wartość eDTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|Brak wymiarów|
+|log_write_percent|Procent operacji we/wy dziennika|Procent|Średnia|Procent operacji we/wy dziennika|Brak wymiarów|
+|physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|Brak wymiarów|
+|sessions_percent|Procent sesji|Procent|Średnia|Procent sesji|Brak wymiarów|
+|storage_limit|Maksymalny rozmiar danych|Szybkość|Średnia|Limit magazynu|Brak wymiarów|
+|storage_percent|Procent użytego miejsca na danych||Procent|Średnia|Procent miejsca do magazynowania|Brak wymiarów|
+|storage_used|Używane miejsce na dane|Szybkość|Średnia|Użyty magazyn|Brak wymiarów|
+|sqlserver_process_core_percent|Procent podstawowych procesów SQL Server|Procent|Maksimum|Ta Metryka jest symbolem zastępczym i nie jest w tej chwili wypełniana.|Brak wymiarów|
+|sqlserver_process_memory_percent|Procent pamięci procesu SQL Server|Procent|Maksimum|Ta Metryka jest symbolem zastępczym i nie jest w tej chwili wypełniana.|Brak wymiarów|
+|tempdb_data_size|Rozmiar pliku danych tempdb kilobajtów|Liczba|Maksimum|Rozmiar pliku danych tempdb kilobajtów. Nie dotyczy hurtowni danych. Ta Metryka będzie dostępna dla baz danych z modelem zakupów rdzeń wirtualny lub 100 jednostek DTU i wyższych dla modeli zakupów opartych na jednostkach DTU.|Brak wymiarów|
+|tempdb_log_size|Rozmiar pliku dziennika bazy danych tempdb kilobajtów|Liczba|Maksimum|Rozmiar pliku dziennika bazy danych tempdb kilobajtów. Nie dotyczy hurtowni danych. Ta Metryka będzie dostępna dla baz danych z modelem zakupów rdzeń wirtualny lub 100 jednostek DTU i wyższych dla modeli zakupów opartych na jednostkach DTU.|Brak wymiarów|
+|tempdb_log_used_percent|Użyto dziennika% tempdb|Procent|Maksimum|Użyto dziennika bazy danych tempdb. Nie dotyczy hurtowni danych. Ta Metryka będzie dostępna dla baz danych z modelem zakupów rdzeń wirtualny lub 100 jednostek DTU i wyższych dla modeli zakupów opartych na jednostkach DTU.|Brak wymiarów|
+|workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników|Brak wymiarów|
+|xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci|Brak wymiarów|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|virtual_core_count|Liczba rdzeni wirtualnych|Liczba|Średnia|Liczba rdzeni wirtualnych|Brak wymiarów|
 |avg_cpu_percent|Średni procent procesora CPU|Procent|Średnia|Średni procent procesora CPU|Brak wymiarów|
+|io_bytes_read|Odczytane bajty we/wy|Szybkość|Średnia|Odczytane bajty we/wy|Brak wymiarów|
+|io_requests|Liczba żądań we/wy|Liczba|Średnia|Liczba żądań we/wy|Brak wymiarów|
+|io_bytes_written|Bajty we/wy zapisywane|Szybkość|Średnia|Bajty we/wy zapisywane|Brak wymiarów|
 |reserved_storage_mb|Zarezerwowane miejsce w magazynie|Liczba|Średnia|Zarezerwowane miejsce w magazynie|Brak wymiarów|
 |storage_space_used_mb|Używane miejsce do magazynowania|Liczba|Średnia|Używane miejsce do magazynowania|Brak wymiarów|
-|io_requests|Liczba żądań we/wy|Liczba|Średnia|Liczba żądań we/wy|Brak wymiarów|
-|io_bytes_read|Odczytane bajty we/wy|Szybkość|Średnia|Odczytane bajty we/wy|Brak wymiarów|
-|io_bytes_written|Bajty we/wy zapisywane|Szybkość|Średnia|Bajty we/wy zapisywane|Brak wymiarów|
+|virtual_core_count|Liczba rdzeni wirtualnych|Liczba|Średnia|Liczba rdzeni wirtualnych|Brak wymiarów|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 

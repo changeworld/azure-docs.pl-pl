@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180106"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550641"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
-Podczas tworzenia aplikacji funkcji na platformie Azure musisz wybrać plan hostingu dla swojej aplikacji. Istnieją trzy plany hostingu dostępne dla Azure Functions: Plan [zużycia](#consumption-plan), [Plan Premium](#premium-plan)i [Plan App Service](#app-service-plan).
+Podczas tworzenia aplikacji funkcji na platformie Azure musisz wybrać plan hostingu dla swojej aplikacji. Istnieją trzy plany hostingu dostępne dla Azure Functions: [Plan zużycia](#consumption-plan), [Plan Premium](#premium-plan)i [Plan App Service](#app-service-plan).
 
 Wybrany plan hostingu wymusza następujące zachowania:
 
@@ -45,7 +45,7 @@ Obsługa funkcji znajduje się w następujących dwóch kategoriach:
 
 Poniższa tabela przedstawia bieżący poziom wsparcia dla trzech planów hostingu w przypadku uruchamiania w systemie Windows lub Linux:
 
-| | Plan Zużycie | Plan Premium | Plan dedykowany |
+| | Plan Zużycie | Plan w warstwie Premium | Plan dedykowany |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | Ogólna dostępność | wersja zapoznawcza | Ogólna dostępność |
 | Linux | Ogólna dostępność | wersja zapoznawcza | Ogólna dostępność |
@@ -78,11 +78,12 @@ W przypadku korzystania z planu Premium wystąpienia hosta Azure Functions są d
 
 Informacje na temat sposobu konfigurowania tych opcji można znaleźć w [dokumencie Azure Functions planu Premium](functions-premium-plan.md).
 
-Zamiast naliczania opłat za wykonanie i zużywaną pamięć rozliczenia dla planu Premium bazują na liczbie podstawowych sekund, czasie wykonywania i ilości pamięci używanej w ramach wymaganych i zarezerwowanych wystąpień.  Co najmniej jedno wystąpienie musi być aktywne przez cały czas. Oznacza to, że dla aktywnego planu istnieje stały koszt miesięczny, niezależnie od liczby wykonań.
+Zamiast naliczania opłat za wykonanie i zużywaną pamięć rozliczenia dla planu Premium są oparte na liczbie podstawowych sekund i ilości pamięci używanej w ramach wymaganych i wstępnie rozgrzanych wystąpień. Co najmniej jedno wystąpienie musi być aktywne przez cały czas dla każdego planu. Oznacza to, że jest minimalny miesięczny koszt dla aktywnego planu, niezależnie od liczby wykonań. Należy pamiętać, że wszystkie aplikacje funkcji w planie Premium udostępniają wstępnie rozgrzane i aktywne wystąpienia.
 
 Zapoznaj się z planem Azure Functions Premium w następujących sytuacjach:
 
 * Aplikacje funkcji działają w sposób ciągły lub niemal nieustannie.
+* Masz dużą liczbę niewielkich wykonań i masz rozliczenie o dużym obciążeniu, ale niski GB drugiego rachunku w planie zużycia.
 * Potrzebujesz więcej opcji dotyczących procesora CPU lub pamięci niż to, co jest dostępne w ramach planu zużycia.
 * Twój kod musi działać dłużej niż [Maksymalny dozwolony czas wykonywania](#timeout) w planie zużycia.
 * Wymagane są funkcje, które są dostępne tylko w planie Premium, np. łączność sieci wirtualnej/VPN.
@@ -112,7 +113,7 @@ Jeśli uruchamiasz plan App Service, należy włączyć ustawienie **zawsze** w�
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-Nawet przy włączonej `functionTimeout` opcji zawsze włączone przekroczenie limitu czasu wykonywania poszczególnych funkcji jest kontrolowane przez ustawienie w pliku projektu [host. JSON](functions-host-json.md#functiontimeout) .
+Nawet przy włączonej opcji zawsze włączone przekroczenie limitu czasu wykonywania poszczególnych funkcji jest kontrolowane przez ustawienie `functionTimeout` w pliku projektu [host. JSON](functions-host-json.md#functiontimeout) .
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Określanie planu hostingu istniejącej aplikacji
 
@@ -127,7 +128,7 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Gdy dane wyjściowe tego polecenia `dynamic`to, aplikacja funkcji jest w planie zużycia. Gdy dane wyjściowe tego polecenia `ElasticPremium`to, aplikacja funkcji jest w planie Premium. Wszystkie inne wartości wskazują różne warstwy planu App Service.
+Gdy dane wyjściowe tego polecenia są `dynamic`, aplikacja funkcji jest w planie zużycia. Gdy dane wyjściowe tego polecenia są `ElasticPremium`, aplikacja funkcji jest w planie Premium. Wszystkie inne wartości wskazują różne warstwy planu App Service.
 
 ## <a name="storage-account-requirements"></a>Wymagania konta magazynu
 

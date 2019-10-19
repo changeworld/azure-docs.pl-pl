@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
-ms.translationtype: MT
+ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035113"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554553"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Dostrajanie wydajności z uporządkowanym klastrowanym indeksem magazynu kolumn  
 
@@ -119,12 +119,16 @@ Oto przykład uporządkowanej dystrybucji tabel WIK, która ma zerowy segment na
 ## <a name="create-ordered-cci-on-large-tables"></a>Tworzenie uporządkowanej WIK w dużych tabelach
 Tworzenie uporządkowanej WIK jest operacją offline.  W przypadku tabel bez partycji dane nie będą dostępne dla użytkowników, dopóki nie zostanie ukończony uporządkowany proces tworzenia WIK.   W przypadku partycjonowanych tabel, ponieważ aparat tworzy uporządkowaną partycję WIK według partycji, użytkownicy mogą nadal uzyskiwać dostęp do danych w partycjach, w których uporządkowane tworzenie WIK nie jest w toku.   Za pomocą tej opcji można zminimalizować przestoje podczas tworzenia uporządkowanej WIK w dużych tabelach: 
 
-1.  Utwórz partycje w docelowej dużej tabeli (zwanej tabelą A).
-2.  Tworzenie pustej uporządkowanej tabeli WIK (zwanej tabelą B) za pomocą tej samej tabeli i schematu partycji co tabela A.
+1.  Utwórz partycje w docelowej dużej tabeli (o nazwie Table_A).
+2.  Utwórz pustą tabelę z uporządkowaną WIK (o nazwie Table_B) z tą samą tabelą i schematem partycji co tabela A.
 3.  Przełącz jedną partycję z tabeli A na tabelę B.
-4.  Uruchom polecenie ALTER INDEX < Ordered_CCI_Index > Rebuild PARTITION = < Partition_ID > w tabeli B w celu odbudowania partycji przełączonej.  
-5.  Powtórz kroki 3 i 4 dla każdej partycji w tabeli A.
-6.  Po przełączeniu wszystkich partycji z tabeli A do tabeli B i zostały one ponownie skompilowane, Porzuć tabelę A i Zmień nazwę tabeli B na tabelę A. 
+4.  Uruchom polecenie ALTER INDEX < Ordered_CCI_Index > na < Table_B > Rebuild PARTITION = < Partition_ID > w tabeli B w celu odbudowania partycji przełączanej.  
+5.  Powtórz kroki 3 i 4 dla każdej partycji w Table_A.
+6.  Po przełączeniu wszystkich partycji z Table_A do Table_B i zostały one ponownie skompilowane, Porzuć Table_A i Zmień nazwę Table_B na Table_A. 
+
+>[!NOTE]
+>W ramach wersji zapoznawczej uporządkowanego klastrowanego indeksu magazynu kolumn (WIK) w Azure SQL Data Warehouse można generować zduplikowane dane w przypadku utworzenia lub odtworzenia uporządkowanej WIK indeksu magazynu kolumn w partycjonowanej tabeli. Nie ma żadnych utraconych danych. Poprawka tego problemu będzie dostępna wkrótce. Aby obejść obejście, użytkownicy mogą tworzyć uporządkowaną WIK na partycjonowanej tabeli przy użyciu polecenia CTAS
+
 
 ## <a name="examples"></a>Przykłady
 

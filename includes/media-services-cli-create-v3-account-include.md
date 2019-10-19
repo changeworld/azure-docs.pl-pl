@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: feec6a695ad867d26d32904d020648b029f9da35
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: da27f818bf368108568287f1ed1bbdae4c3902d4
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183321"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72560510"
 ---
 ## <a name="create-a-media-services-account"></a>Tworzenie konta usługi Media Services
 
-Najpierw należy utworzyć konto usługi Media Services. W tej sekcji przedstawiono, co jest potrzebne do tworzenia konta przy użyciu wiersza polecenia platformy Azure.
+Najpierw należy utworzyć konto usługi Media Services. Ta sekcja zawiera informacje o tym, co jest potrzebne do utworzenia konta za pomocą interfejsu wiersza polecenia platformy Azure.
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Utwórz grupę zasobów przy użyciu poniższego polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów, takich jak konta usługi Azure Media Services i skojarzone konta usługi Storage, oraz zarządzania nimi.
 
-Można zastąpić `amsResourceGroup` z wartością.
+Możesz podstawić `amsResourceGroup` z wartością.
 
 ```azurecli
 az group create --name amsResourceGroup --location westus2
@@ -37,7 +37,7 @@ Musisz mieć jedno **główne** konto magazynu i możesz mieć dowolną liczbę 
 
 W tym przykładzie utworzymy konto ogólnego przeznaczenia w wersji 2 magazynu LRS w warstwie Standardowa. Jeśli chcesz poeksperymentować z kontami magazynu, użyj parametru `--sku Standard_LRS`. Jednak podczas wybierania jednostki SKU dla środowiska produkcyjnego weź pod uwagę użycie parametru `--sku Standard_RAGRS`, co zapewnia replikację geograficzną na potrzeby zapewnienia ciągłości działania. Aby uzyskać więcej informacji, zobacz temat [Konta magazynu](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
  
-Poniższe polecenie tworzy konto usługi Storage, które ma zostać skojarzone z kontem usługi Media Services. W poniższym skrypcie możesz zastąpić wartość `storageaccountforams` swoją wartością. `amsResourceGroup` musi być zgodna wartość, która udostępniła dla grupy zasobów w poprzednim kroku. Nazwa konta magazynu musi mieć długość mniejszą niż 24.
+Poniższe polecenie tworzy konto usługi Storage, które ma zostać skojarzone z kontem usługi Media Services. W poniższym skrypcie możesz zastąpić wartość `storageaccountforams` swoją wartością. `amsResourceGroup` musi być zgodna z wartością podaną dla grupy zasobów w poprzednim kroku. Nazwa konta magazynu musi mieć długość mniejszą niż 24.
 
 ```azurecli
 az storage account create --name storageaccountforams \  
@@ -53,6 +53,6 @@ Poniższe polecenie interfejsu wiersza polecenia platformy Azure tworzy nowe kon
 
 ```azurecli
 az ams account create --name amsaccount \
-  -l westus2 \
-  -g amsResourceGroup --storage-account storageaccountforams
+   -g amsResourceGroup --storage-account storageaccountforams \
+   -l westus2 
 ```

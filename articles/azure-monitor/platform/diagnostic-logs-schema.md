@@ -1,19 +1,18 @@
 ---
 title: Usługa Azure Diagnostic Logs rejestruje obsługiwane usługi i schematy
 description: Poznaj obsługiwane usługi i schemat zdarzeń dla dzienników diagnostycznych platformy Azure.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: reference
-ms.date: 10/11/2018
-ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: 70dd4af16746ecf54310dffcb854c3c0857283ba
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.topic: reference
+author: rboucher
+ms.author: robb
+ms.date: 10/11/2018
+ms.openlocfilehash: f2d71972fa8acc930800a70193f688246ee7415c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033870"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555559"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematy i kategorie dla dzienników diagnostycznych platformy Azure
 

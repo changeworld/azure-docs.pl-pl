@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 09/20/2019
 ms.author: curtand
 ms.reviewer: vincesm
-ms.custom: it-pro
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb424866a681316af23e9d2bba28a8da8c3a6f78
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: MT
+ms.openlocfilehash: 6f6e1ab2c2b02ab4279e95840135bdc87710cd66
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286803"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551665"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -49,10 +49,15 @@ Dostępne są następujące role administratorów:
 
 ### <a name="application-administratorapplication-administrator-permissions"></a>[Administrator aplikacji](#application-administrator-permissions)
 
-Użytkownicy w tej roli mogą tworzyć wszystkie aspekty aplikacji przedsiębiorstwa, rejestracji aplikacji i ustawień serwera proxy aplikacji oraz zarządzać nimi. Ta rola umożliwia również zgodę na uprawnienia delegowane i uprawnienia aplikacji z wyłączeniem Microsoft Graph i Azure AD Graph. Użytkownicy przypisani do tej roli nie są dodawani jako właściciele podczas tworzenia nowych rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
+Użytkownicy w tej roli mogą tworzyć wszystkie aspekty aplikacji przedsiębiorstwa, rejestracji aplikacji i ustawień serwera proxy aplikacji oraz zarządzać nimi. Należy pamiętać, że użytkownicy przypisani do tej roli nie są dodawani jako właściciele podczas tworzenia nowych rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
 
 > [!IMPORTANT]
 > Ta rola umożliwia zarządzanie poświadczeniami aplikacji. Użytkownicy przypisani do tej roli mogą dodawać poświadczenia do aplikacji i używać tych poświadczeń do personifikacji tożsamości aplikacji. Jeśli tożsamość aplikacji ma udzielony dostęp do Azure Active Directory, na przykład możliwość tworzenia lub aktualizowania użytkowników lub innych obiektów, wówczas użytkownik przypisany do tej roli może wykonywać te akcje podczas personifikowania aplikacji. Ta możliwość personifikacji tożsamości aplikacji może być podniesieniem uprawnień przez użytkownika za pośrednictwem ich przypisań ról w usłudze Azure AD. Ważne jest, aby zrozumieć, że przypisanie użytkownika do roli administratora aplikacji daje im możliwość personifikacji tożsamości aplikacji.
+
+Ta rola zapewnia również możliwość _wyrażania zgody_ na delegowane uprawnienia i uprawnienia aplikacji, z wyjątkiem uprawnień do Microsoft Graph i wykresu usługi Azure AD.
+
+> [!IMPORTANT]
+> Ten wyjątek oznacza, że nadal można wyrazić zgodę na uprawnienia do _innych_ aplikacji (np. aplikacji innych firm lub aplikacji, które zostały zarejestrowane), ale nie do uprawnień do samej usługi Azure AD. Nadal możesz _poprosić_ o te uprawnienia w ramach rejestracji aplikacji, ale _udzielając_ (tj. zgodę na) te uprawnienia wymagają administratora usługi Azure AD. Oznacza to, że złośliwy użytkownik nie może łatwo podnieść poziomu uprawnień, na przykład przez utworzenie i zgodę na dostęp do aplikacji, która może zapisywać w całym katalogu i za pośrednictwem uprawnień tej aplikacji Podnieś poziom do administratora globalnego.
 
 ### <a name="application-developerapplication-developer-permissions"></a>[Deweloper aplikacji](#application-developer-permissions)
 

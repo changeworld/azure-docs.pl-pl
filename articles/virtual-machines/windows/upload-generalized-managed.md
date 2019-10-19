@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: be3ccfd0c562763d0968398ddb042dc5f07dbdcf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6382a39e67805eb9bddb356a7b76205a82f3f7c2
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101558"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553454"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Przekazywanie uogólnionego wirtualnego dysku twardego i używanie go do tworzenia nowych maszyn wirtualnych na platformie Azure
 
@@ -42,12 +42,12 @@ Narzędzie Sysprep między innymi usuwa wszystkie informacje osobiste związane 
 Upewnij się, że role serwera uruchomione na komputerze są obsługiwane przez program Sysprep. Aby uzyskać więcej informacji, zobacz [Obsługa programu Sysprep dla ról serwera](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
 > [!IMPORTANT]
-> Jeśli planujesz uruchomienie programu Sysprep przed przekazaniem wirtualnego dysku twardego do platformy Azure po raz pierwszy, upewnij się, że [maszyna wirtualna](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)została przygotowana. 
+> Jeśli planujesz uruchomienie programu Sysprep przed przekazaniem wirtualnego dysku twardego do platformy Azure po raz pierwszy, upewnij się, że [maszyna wirtualna została przygotowana](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 > 
 > 
 
 1. Zaloguj się do maszyny wirtualnej z systemem Windows.
-2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na%windir%\System32\Sysprep, a następnie uruchom `sysprep.exe`polecenie.
+2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na%windir%\System32\Sysprep, a następnie uruchom `sysprep.exe`.
 3. W oknie dialogowym **Narzędzie przygotowywania systemu** wybierz opcję **Wprowadź system out-of-Box Experience (OOBE)** i upewnij się, że pole wyboru **generalize** jest włączone.
 4. W obszarze **Opcje zamykania**wybierz pozycję **Zamknij**.
 5. Kliknij przycisk **OK**.
@@ -56,67 +56,14 @@ Upewnij się, że role serwera uruchomione na komputerze są obsługiwane przez 
 6. Po zakończeniu działania narzędzia Sysprep zamyka ono maszynę wirtualną. Nie uruchamiaj ponownie maszyny wirtualnej.
 
 
-## <a name="get-a-storage-account"></a>Pobierz konto magazynu
-
-Do zapisania przekazanego obrazu maszyny wirtualnej konieczne będzie konto magazynu na platformie Azure. Możesz użyć istniejącego konta magazynu lub utworzyć nowe. 
-
-W przypadku utworzenia dysku zarządzanego dla maszyny wirtualnej przy użyciu dysku VHD Lokalizacja konta magazynu musi być taka sama jak lokalizacja, w której będzie tworzona maszyna wirtualna.
-
-Aby wyświetlić dostępne konta magazynu, wprowadź:
-
-```azurepowershell
-Get-AzStorageAccount | Format-Table
-```
-
 ## <a name="upload-the-vhd-to-your-storage-account"></a>Przekazywanie wirtualnego dysku twardego do konta magazynu
 
-Użyj polecenia cmdlet [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) , aby przekazać wirtualny dysk twardy do kontenera na koncie magazynu. Ten przykład przekazuje plik *myVHD. VHD* z *dysków\\ twardych C:\Users\Public\Documents\Virtual* do konta magazynu o nazwie *mojekontomagazynu* w grupie zasobów. Plik zostanie umieszczony w kontenerze o nazwie Moja kontener, a nowa nazwa pliku będzie *myUploadedVHD. VHD*.
-
-```powershell
-$rgName = "myResourceGroup"
-$urlOfUploadedImageVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
-    -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
-```
-
-
-Jeśli to się powiedzie, otrzymasz odpowiedź podobną do:
-
-```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
-MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
-Creating new page blob of size 53687091712...
-Elapsed time for upload: 01:12:49
-
-LocalFilePath           DestinationUri
--------------           --------------
-C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
-```
-
-W zależności od połączenia sieciowego i rozmiaru pliku VHD, wykonanie tego polecenia może potrwać trochę czasu.
-
-### <a name="other-options-for-uploading-a-vhd"></a>Inne opcje przekazywania dysku VHD
- 
-Możesz również przekazać wirtualny dysk twardy do konta magazynu, korzystając z jednego z następujących elementów:
-
-- [Narzędzie AzCopy](https://aka.ms/downloadazcopy)
-- [Interfejs API kopiowania obiektów BLOB usługi Azure Storage](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-- [Eksplorator usługi Azure Storage przekazywanie obiektów BLOB](https://azurestorageexplorer.codeplex.com/)
-- [Dokumentacja interfejsu API REST usługi Magazyn importowania/eksportowania](https://msdn.microsoft.com/library/dn529096.aspx)
--   Zalecamy korzystanie z usługi Import/Export, jeśli szacowany czas przekazywania jest dłuższy niż siedem dni. Możesz użyć [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) , aby oszacować czas od rozmiaru danych i jednostki transferu. 
-    Za pomocą importu/eksportu można kopiować do konta magazynu w warstwie Standardowa. Należy skopiować ze standardowego magazynu do konta magazynu w warstwie Premium przy użyciu narzędzia, takiego jak AzCopy.
-
-> [!IMPORTANT]
-> Jeśli używasz AzCopy do przekazania wirtualnego dysku twardego do platformy Azure, przed uruchomieniem skryptu przekazywania upewnij się, że ustawiono opcję [ **/BlobType: Page**](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) . Jeśli obiektem docelowym jest obiekt BLOB, a ta opcja nie jest określona, domyślnie AzCopy tworzy blokowy obiekt BLOB.
-> 
-> 
-
+Możesz teraz przekazać dysk VHD bezpośrednio do dysku zarządzanego. Aby uzyskać instrukcje, zobacz [przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu Azure PowerShell](disks-upload-vhd-to-managed-disk-powershell.md).
 
 
 ## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Utwórz obraz zarządzany na podstawie przekazanego wirtualnego dysku twardego 
 
-Utwórz obraz zarządzany na podstawie uogólnionego wirtualnego dysku twardego systemu operacyjnego. Zastąp następujące wartości własnymi informacjami.
+Utwórz obraz zarządzany na podstawie uogólnionego dysku zarządzanego systemu operacyjnego. Zastąp następujące wartości własnymi informacjami.
 
 
 Najpierw ustaw niektóre parametry:

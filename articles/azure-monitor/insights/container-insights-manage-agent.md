@@ -1,45 +1,39 @@
 ---
-title: Sposób zarządzania usługi Azure Monitor dla agenta kontenerów | Dokumentacja firmy Microsoft
-description: W tym artykule opisano zarządzanie najbardziej typowych zadań konserwacji przy użyciu agenta usługi Log Analytics konteneryzowanych używane przez usługi Azure Monitor dla kontenerów.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
+title: Jak zarządzać Azure Monitor dla agenta kontenerów | Microsoft Docs
+description: W tym artykule opisano zarządzanie najbardziej typowymi zadaniami konserwacji przy użyciu Log Analytics agenta kontenera używanego przez Azure Monitor dla kontenerów.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/06/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: e1d47be159d4721aed4b055a51acf675688b855e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/06/2018
+ms.openlocfilehash: bfedd7989e71bcb8cf58cef7ad7122749350ae26
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071801"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554055"
 ---
-# <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Jak zarządzać usługi Azure Monitor dla agenta kontenerów
-Usługa Azure Monitor dla kontenerów używa konteneryzowanych wersję agenta usługi Log Analytics dla systemu Linux. Po początkowym wdrożeniu istnieją procedury lub opcjonalnych zadań, który może być konieczne do wykonania podczas jej cyklu projektowania. Ten artykuł zawiera o tym, jak ręcznie uaktualnić agenta i wyłączyć kolekcji zmiennych środowiskowych w określonym kontenerze. 
+# <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Jak zarządzać Azure Monitor dla agenta kontenerów
+Azure Monitor kontenerów używa zastosowanej wersji agenta Log Analytics dla systemu Linux. Po początkowym wdrożeniu dostępne są zadania rutynowe lub opcjonalne, które mogą być konieczne do wykonania w trakcie jego cyklu życia. W tym artykule szczegółowo opisano, jak ręcznie uaktualnić agenta i wyłączyć zbieranie zmiennych środowiskowych z określonego kontenera. 
 
-## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>Jak uaktualnić usługi Azure Monitor dla agenta kontenerów
-Usługa Azure Monitor dla kontenerów używa konteneryzowanych wersję agenta usługi Log Analytics dla systemu Linux. Po udostępnieniu nowej wersji agenta, agent jest automatycznie uaktualniany na zarządzanych klastrów Kubernetes hostowanych na platformie Azure Kubernetes Service (AKS).  
+## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>Jak uaktualnić Azure Monitor dla agenta kontenerów
+Azure Monitor kontenerów używa zastosowanej wersji agenta Log Analytics dla systemu Linux. Po wydaniu nowej wersji agenta Agent jest automatycznie uaktualniany do zarządzanych klastrów Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS).  
 
-Jeśli uaktualnienie agenta nie powiedzie się, w tym artykule opisano proces, aby ręcznie uaktualnić agenta. Aby skorzystać z wersji wydanych, zobacz [anonse wersji agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).   
+Jeśli uaktualnienie agenta nie powiedzie się, w tym artykule opisano proces ręcznego uaktualniania agenta. Aby postępować zgodnie z wydaną wersją, zobacz [anonse dotyczące wersji agentów](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).   
 
-### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>Uaktualnienie agenta na monitorowanych klastra Kubernetes
-Proces uaktualniania agenta składa się z dwa proste kroki. Pierwszym krokiem jest wyłączyć monitorowanie za pomocą usługi Azure Monitor dla kontenerów za pomocą narzędzia wiersza polecenia platformy Azure.  Wykonaj kroki opisane w [Wyłącz monitorowanie](container-insights-optout.md?#azure-cli) artykułu. Przy użyciu wiersza polecenia platformy Azure pozwala usunąć agenta z węzłów w klastrze bez wywierania wpływu na rozwiązanie i odpowiadające im dane, które są przechowywane w obszarze roboczym. 
+### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>Uaktualnianie agenta w monitorowanym klastrze Kubernetes
+Proces uaktualniania agenta obejmuje dwa proste kroki do przodu. Pierwszym krokiem jest wyłączenie monitorowania za pomocą Azure Monitor dla kontenerów przy użyciu interfejsu wiersza polecenia platformy Azure.  Wykonaj kroki opisane w artykule [wyłączanie monitorowania](container-insights-optout.md?#azure-cli) . Korzystając z interfejsu wiersza polecenia platformy Azure, można usunąć agenta z węzłów w klastrze bez wywierania wpływu na rozwiązanie i odpowiadające im dane przechowywane w obszarze roboczym. 
 
 >[!NOTE]
->Podczas wykonywania związanych z konserwacją, węzły w klastrze nie przekazuje dalej zebranych danych i widokach wydajności nie będą wyświetlane dane w czasie między usunąć agenta i zainstalowanie nowej wersji. 
+>Podczas wykonywania tej czynności konserwacyjnej węzły w klastrze nie przesyłają dalej zebranych danych, a w widokach wydajności nie będą wyświetlane dane między momentem usunięcia agenta i zainstalowania nowej wersji. 
 >
 
-Aby zainstalować nową wersję agenta, wykonaj czynności opisane w [Włącz monitorowanie przy użyciu wiersza polecenia platformy Azure](container-insights-enable-new-cluster.md#enable-using-azure-cli), aby ukończyć ten proces.  
+Aby zainstalować nową wersję agenta, wykonaj kroki opisane w temacie [Włączanie monitorowania przy użyciu interfejsu wiersza polecenia platformy Azure](container-insights-enable-new-cluster.md#enable-using-azure-cli), aby ukończyć ten proces.  
 
-Po ponownym włączeniu, monitorowania, może upłynąć około 15 minut, zanim będzie można wyświetlić metryki kondycji zaktualizowane dla klastra. Aby sprawdzić, czy agent pomyślnie uaktualnione, uruchom polecenie: `kubectl logs omsagent-484hw --namespace=kube-system`
+Po ponownym włączeniu monitorowania może upłynąć około 15 minut, zanim będzie możliwe wyświetlenie zaktualizowanych metryk kondycji klastra. Aby sprawdzić, czy Agent został uaktualniony pomyślnie, uruchom polecenie: `kubectl logs omsagent-484hw --namespace=kube-system`
 
-Stan powinny być podobne do następującego przykładu, gdzie wartość *omi* i *omsagent* powinien być zgodny z najnowszej wersji, które są określone w [historię wersji agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).  
+Stan powinien wyglądać podobnie do poniższego przykładu, gdzie wartość parametru *OMI* i *omsagent* powinna być zgodna z najnowszą wersją określoną w [historii wydania agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).  
 
     User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
     :
@@ -60,26 +54,26 @@ Stan powinny być podobne do następującego przykładu, gdzie wartość *omi* i
     omsagent 1.6.0-163
     docker-cimprov 1.0.0.31
 
-## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Jak wyłączyć kolekcji zmiennych środowiskowych w kontenerze
-Usługa Azure Monitor dla kontenerów umożliwia zbieranie informacji o zmiennych środowiskowych z kontenery działające w zasobniku i przedstawia je w okienku właściwości wybranego kontenera w **kontenery** widoku. To zachowanie można kontrolować, wyłączając zbieranie dla określonego kontenera albo podczas wdrażania klastra AKS, lub po przez ustawienie zmiennej środowiskowej *AZMON_COLLECT_ENV*. Ta funkcja jest dostępna w wersji agenta — ciprod11292018 lub nowszy.  
+## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Jak wyłączyć zbieranie zmiennych środowiskowych w kontenerze
+Azure Monitor dla kontenerów zbiera zmienne środowiskowe z kontenerów uruchomionych w obszarze pod i wyświetla je w okienku właściwości wybranego kontenera w widoku **kontenerów** . Możesz kontrolować to zachowanie, wyłączając kolekcję dla określonego kontenera albo podczas wdrażania klastra AKS, albo po ustawieniu zmiennej środowiskowej *AZMON_COLLECT_ENV*. Ta funkcja jest dostępna w wersji agenta — ciprod11292018 lub nowszej.  
 
-Aby wyłączyć zbieranie zmienne środowiskowe do nowego lub istniejącego kontenera, ustaw zmienną **AZMON_COLLECT_ENV** o wartości **False** w pliku konfiguracyjnym yaml wdrożenia rozwiązania Kubernetes.   
+Aby wyłączyć zbieranie zmiennych środowiskowych w nowym lub istniejącym kontenerze, Ustaw zmienną **AZMON_COLLECT_ENV** o wartości **false** w pliku konfiguracji Kubernetes Deployment YAML.   
 
 ```  
 - name: AZMON_COLLECT_ENV  
   value: "False"  
 ```  
 
-Uruchom następujące polecenie, aby zastosować zmianę na kontenerze usługi AKS: `kubectl apply -f  <path to yaml file>`.
+Uruchom następujące polecenie, aby zastosować zmianę do kontenera AKS: `kubectl apply -f  <path to yaml file>`.
 
-Aby sprawdzić, czy zmiana konfiguracji weszło w życie, wybierz kontener w **kontenery** Wyświetl w usłudze Azure Monitor dla kontenerów i na panelu Właściwości, rozwiń **zmienne środowiskowe**.  Sekcja powinny być widoczne tylko zmiennej utworzonej wcześniej — **AZMON_COLLECT_ENV = FALSE**. Dla innych kontenerów w sekcji zmiennych środowiskowych powinien zawierać wszystkie zmienne środowiskowe odnalezione.   
+Aby sprawdzić, czy zmiana konfiguracji zadziałała, wybierz kontener w widoku **kontenery** w Azure monitor dla kontenerów, a następnie w panelu właściwości rozwiń pozycję **zmienne środowiskowe**.  W sekcji powinna być wyświetlana tylko zmienna utworzona wcześniej — **AZMON_COLLECT_ENV = false**. W przypadku wszystkich innych kontenerów w sekcji zmienne środowiskowe powinny być wystawione wszystkie odnalezione zmienne środowiskowe.   
 
-Aby ponownie włączyć odnajdywanie zmiennych środowiskowych, zastosuj ten sam proces wcześniej, a następnie zmień wartość z **False** do **True**, a następnie ponownie uruchom `kubectl` polecenia do aktualizacji kontenera.  
+Aby ponownie włączyć odnajdywanie zmiennych środowiskowych, Zastosuj ten sam proces wcześniej i zmień wartość z **false** na **true**, a następnie ponownie uruchom polecenie `kubectl` w celu zaktualizowania kontenera.  
 
 ```  
 - name: AZMON_COLLECT_ENV  
   value: "True"  
 ```  
 
-## <a name="next-steps"></a>Kolejne kroki
-Jeśli występują problemy podczas uaktualniania agenta, zapoznaj się z [przewodnik rozwiązywania problemów z](container-insights-troubleshoot.md) pomocy technicznej.
+## <a name="next-steps"></a>Następne kroki
+W przypadku wystąpienia problemów podczas uaktualniania agenta zapoznaj się z [przewodnikiem rozwiązywania problemów](container-insights-troubleshoot.md) , aby uzyskać pomoc techniczną.

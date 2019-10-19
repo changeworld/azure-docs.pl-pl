@@ -1,45 +1,39 @@
 ---
-title: Tworzenie pliku rozwiązania zarządzania na platformie Azure | Dokumentacja firmy Microsoft
-description: Rozwiązania do zarządzania zapewniają scenariuszy zarządzania spakowane, dodawanych przez klientów do ich środowiska platformy Azure.  Ten artykuł zawiera szczegółowe informacje dotyczące tworzenia rozwiązania do zarządzania do użycia we własnym środowisku lub udostępniane klientom.
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
+title: Tworzenie pliku rozwiązania do zarządzania na platformie Azure | Microsoft Docs
+description: Rozwiązania do zarządzania zapewniają spakowane scenariusze zarządzania, które klienci mogą dodawać do środowiska platformy Azure.  Ten artykuł zawiera szczegółowe informacje dotyczące sposobu tworzenia rozwiązań do zarządzania, które mają być używane w Twoim środowisku lub udostępniane klientom.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47ee691186da7f915ca8fcf87415784ab12ef1e0
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595766"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553842"
 ---
-# <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania zarządzania na platformie Azure (wersja zapoznawcza)
+# <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
-> Jest to wersję wstępną dokumentacji dotyczące tworzenia rozwiązania do zarządzania na platformie Azure, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej ulec zmianie.  
+> Jest to wstępna dokumentacja dotycząca tworzenia rozwiązań do zarządzania na platformie Azure, które są obecnie dostępne w wersji zapoznawczej. Każdy schemat opisany poniżej może ulec zmianie.  
 
-Rozwiązania do zarządzania na platformie Azure są implementowane jako [szablonów usługi Resource Manager](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).  Głównym zadaniem, jak tworzyć rozwiązania do zarządzania jest uczenie jak [Tworzenie szablonu](../../azure-resource-manager/resource-group-authoring-templates.md).  Ten artykuł zawiera unikatowe szczegółowe informacje o szablonów używanych dla rozwiązania i sposobie konfigurowania typowe rozwiązanie z zasobów.
+Rozwiązania do zarządzania na platformie Azure są implementowane jako [szablony Menedżer zasobów](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).  Głównym zadaniem w nauce tworzenia rozwiązań do zarządzania jest zapoznanie się z sposobem [tworzenia szablonu](../../azure-resource-manager/resource-group-authoring-templates.md).  Ten artykuł zawiera unikatowe szczegóły dotyczące szablonów używanych na potrzeby rozwiązań oraz sposób konfigurowania typowych zasobów rozwiązania.
 
 
 ## <a name="tools"></a>Narzędzia
 
-Można użyć dowolnego edytora tekstów, aby pracować z plikami rozwiązania, ale firma Microsoft zaleca korzystanie z funkcji oferowanych w programie Visual Studio lub Visual Studio Code, zgodnie z opisem w następujących artykułach.
+Możesz użyć dowolnego edytora tekstu do pracy z plikami rozwiązania, ale zalecamy korzystanie z funkcji dostępnych w programie Visual Studio lub Visual Studio Code zgodnie z opisem w poniższych artykułach.
 
 - [Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Praca z szablonów usługi Resource Manager platformy Azure w programie Visual Studio Code](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Praca z szablonami Azure Resource Manager w programie Visual Studio Code](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 
 
 
 
-## <a name="structure"></a>Struktura
-Podstawowa struktura pliku rozwiązania zarządzania jest taka sama jak [szablonu usługi Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md#template-format), który jest w następujący sposób.  Każdego z poniższych sekcjach opisano elementy najwyższego poziomu i ich zawartość w rozwiązaniu.  
+## <a name="structure"></a>XML
+Podstawowa struktura pliku rozwiązania do zarządzania jest taka sama jak [szablon Menedżer zasobów](../../azure-resource-manager/resource-group-authoring-templates.md#template-format), który jest następujący:  W każdej z poniższych sekcji opisano elementy najwyższego poziomu i ich zawartość w rozwiązaniu.  
 
     {
        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -51,9 +45,9 @@ Podstawowa struktura pliku rozwiązania zarządzania jest taka sama jak [szablon
     }
 
 ## <a name="parameters"></a>Parametry
-[Parametry](../../azure-resource-manager/resource-group-authoring-templates.md#parameters) są wartościami, które wymagają od użytkownika podczas instalacjo rozwiązania do zarządzania.  Istnieją standardowe parametry, które będą miały wszystkie rozwiązania, a następnie można dodać dodatkowe parametry zgodnie z wymaganiami dla określonego rozwiązania.  Jak użytkownicy będą podać wartości parametrów podczas instalacjo rozwiązania będzie zależeć od określonego parametru i sposób instalacji rozwiązania.
+[Parametry](../../azure-resource-manager/resource-group-authoring-templates.md#parameters) są wartościami, które są wymagane od użytkownika podczas instalacji rozwiązania do zarządzania.  Istnieją standardowe parametry, które będą dostępne dla wszystkich rozwiązań, i można dodać dodatkowe parametry wymagane dla danego rozwiązania.  Sposób, w jaki użytkownicy będą podawać wartości parametrów podczas instalacji rozwiązania, będą zależeć od określonego parametru i sposobu instalowania rozwiązania.
 
-Gdy użytkownik [zainstalowanie rozwiązania do zarządzania](solutions.md#install-a-monitoring-solution) za pośrednictwem witryny Azure Marketplace lub szybkiego startu platformy Azure szablonów wyświetlony monit o wybranie [obszar roboczy usługi Log Analytics i konto usługi Automation](solutions.md#log-analytics-workspace-and-automation-account).  Są one używane do wypełniania wartości każdego standardowe parametry.  Użytkownik nie jest monitowany o bezpośrednio podać wartości parametrów standardowych, ale są monitowani o podanie wartości żadnych dodatkowych parametrów.
+Gdy użytkownik [instaluje rozwiązanie do zarządzania](solutions.md#install-a-monitoring-solution) za pomocą witryny Azure Marketplace lub szablonów szybkiego startu platformy Azure, zostanie wyświetlony monit o wybranie [log Analytics obszaru roboczego i konta usługi Automation](solutions.md#log-analytics-workspace-and-automation-account).  Są one używane do wypełniania wartości każdego z parametrów standardowych.  Użytkownik nie jest monitowany o bezpośrednie podanie wartości parametrów standardowych, ale jest monitowany o podanie wartości dla wszelkich dodatkowych parametrów.
 
 
 Poniżej przedstawiono przykładowy parametr.  
@@ -70,30 +64,30 @@ W poniższej tabeli opisano atrybuty parametru.
 
 | Atrybut | Opis |
 |:--- |:--- |
-| type |Typ danych parametru. Kontrolka wejściowa wyświetlane użytkownikowi zależy od typu danych.<br><br>bool — menu rozwijane<br>ciąg — pole tekstowe<br>int — pole tekstowe<br>SecureString - pole hasła<br> |
-| category |Kategoria opcjonalny parametr.  Parametry w tej samej kategorii są grupowane razem. |
-| control |Dodatkowe funkcje dla parametrów.<br><br>DATETIME — formant typu DataGodzina jest wyświetlany.<br>Identyfikator GUID — wartość identyfikatora Guid jest generowany automatycznie, a parametr nie jest wyświetlana. |
-| description |Opcjonalny opis dla parametru.  Wyświetlane w dymku informacji obok parametru. |
+| type |Typ danych dla parametru. Kontrolka wejściowa wyświetlana dla użytkownika zależy od typu danych.<br><br>pole listy rozwijanej bool<br>ciąg — pole tekstowe<br>pole tekstowe int<br>SecureString — pole hasła<br> |
+| category |Opcjonalna kategoria dla parametru.  Parametry w tej samej kategorii są grupowane razem. |
+| Kontroli |Dodatkowa funkcjonalność parametrów ciągu.<br><br>wyświetlana jest kontrolka DateTime-DateTime.<br>Identyfikator GUID — wartość GUID jest generowana automatycznie, a parametr nie jest wyświetlany. |
+| description |Opcjonalny opis parametru.  Wyświetlany w dymku informacyjnym obok parametru. |
 
-### <a name="standard-parameters"></a>Standardowe parametry
-W poniższej tabeli wymieniono standardowe parametry dla wszystkich rozwiązań zarządzania.  Te wartości zostaną wypełnione dla użytkownika, który nie jest już dla nich, po zainstalowaniu rozwiązania z witryny Azure Marketplace lub szablonów szybkiego startu.  Użytkownik musi podać wartości dla nich, jeśli rozwiązanie jest zainstalowane za pomocą innej metody.
+### <a name="standard-parameters"></a>Parametry standardowe
+W poniższej tabeli wymieniono standardowe parametry dla wszystkich rozwiązań do zarządzania.  Te wartości są wypełniane dla użytkownika, ale nie są wyświetlane w przypadku, gdy rozwiązanie zostanie zainstalowane z witryny Azure Marketplace lub szablonów szybkiego startu.  Użytkownik musi podać wartości dla nich, jeśli rozwiązanie jest zainstalowane z inną metodą.
 
 > [!NOTE]
-> Interfejs użytkownika w portalu Azure Marketplace i szablony szybkiego startu oczekuje nazwy parametrów w tabeli.  Jeśli używasz nazwy różnych parametrów następnie użytkownik jest monitowany dla nich, a nie zostaną one automatycznie wypełnione.
+> Interfejs użytkownika w portalu Azure Marketplace i Szablony szybkiego startu oczekują nazw parametrów w tabeli.  Jeśli używasz innych nazw parametrów, użytkownik zostanie poproszony o podanie ich, a nie zostanie automatycznie wypełniony.
 >
 >
 
 | Parametr | Typ | Opis |
 |:--- |:--- |:--- |
-| accountName |string |Nazwa konta usługi Azure Automation. |
-| pricingTier |string |Warstwa cenowa obszaru roboczego usługi Log Analytics i konto usługi Azure Automation. |
-| regionId |string |Region konta usługi Azure Automation. |
-| solutionName |string |Nazwa rozwiązania.  Jeśli wdrażasz swoje rozwiązanie przy użyciu szablonów szybkiego startu, następnie należy zdefiniować solutionName jako parametr, dzięki czemu można zdefiniować ciąg zamiast konieczności użytkownikowi na określenie jednego. |
-| workspaceName |string |Nazwa obszaru roboczego analizy dzienników. |
-| workspaceRegionId |string |Region obszaru roboczego usługi Log Analytics. |
+| accountName |string |Nazwa konta Azure Automation. |
+| pricingTier |string |Warstwa cenowa zarówno Log Analytics obszaru roboczego, jak i konta Azure Automation. |
+| regionId |string |Region konta Azure Automation. |
+| solutionName |string |Nazwa rozwiązania.  W przypadku wdrażania rozwiązania za pomocą szablonów szybkiego startu należy zdefiniować rozwiązanie jako parametr, aby można było zdefiniować ciąg zamiast tego, aby użytkownik mógł go określić. |
+| workspaceName |string |Log Analytics nazwa obszaru roboczego. |
+| workspaceRegionId |string |Region obszaru roboczego Log Analytics. |
 
 
-Poniżej przedstawiono strukturę standardowe parametry, które można skopiować i wkleić do pliku rozwiązania.  
+Poniżej znajduje się struktura standardowych parametrów, które można kopiować i wklejać do pliku rozwiązania.  
 
     "parameters": {
         "workspaceName": {
@@ -129,12 +123,12 @@ Poniżej przedstawiono strukturę standardowe parametry, które można skopiowa�
     }
 
 
-Możesz odwołać się do wartości parametrów w innych elementach rozwiązania przy użyciu składni **parametry ("Nazwa parametru")** .  Na przykład, aby uzyskać dostęp do nazwy obszaru roboczego, należy użyć **parameters('workspaceName')**
+Odwołujesz się do wartości parametrów w innych elementach rozwiązania z **parametrami składni ("Nazwa parametru")** .  Na przykład aby uzyskać dostęp do nazwy obszaru roboczego, należy użyć **parametrów ("WorkspaceName")**
 
 ## <a name="variables"></a>Zmienne
-[Zmienne](../../azure-resource-manager/resource-group-authoring-templates.md#variables) są wartościami, które będą używane w pozostałej części rozwiązania do zarządzania.  Te wartości nie są widoczne dla użytkownika, instalowanie rozwiązania.  Są one przeznaczone do zapewnienia Autor z jednej lokalizacji, w którym można zarządzać wartości, które mogą być wielokrotnie używane w całym rozwiązaniu. Należy umieścić wszelkie wartości określonych do rozwiązania w zmiennych twardych kodowania, w przeciwieństwie do **zasobów** elementu.  To czytelność kodu i pozwala łatwo zmieniać te wartości w nowszych wersjach.
+[Zmienne](../../azure-resource-manager/resource-group-authoring-templates.md#variables) to wartości, które będą używane w pozostałej części rozwiązania do zarządzania.  Te wartości nie są widoczne dla użytkownika instalującego rozwiązanie.  Są one przeznaczone do udostępniania autorowi pojedynczej lokalizacji, gdzie mogą zarządzać wartościami, które mogą być używane wiele razy w całym rozwiązaniu. Należy umieścić wszystkie wartości charakterystyczne dla Twojego rozwiązania w zmiennych, a nie stałe kodowanie ich w elemencie **resources** .  Sprawia to, że kod jest bardziej czytelny i pozwala łatwo zmienić te wartości w nowszych wersjach.
 
-Poniżej przedstawiono przykład **zmienne** element z typowych parametrów używane w rozwiązaniach.
+Poniżej znajduje się przykład elementu **zmiennych** z typowymi parametrami używanymi w rozwiązaniach.
 
     "variables": {
         "SolutionVersion": "1.1",
@@ -144,9 +138,9 @@ Poniżej przedstawiono przykład **zmienne** element z typowych parametrów uży
         "AutomationApiVersion": "2015-10-31"
     },
 
-Możesz odwołać się do wartości zmiennych za pośrednictwem rozwiązania przy użyciu składni **zmiennych ("Nazwa zmiennej")** .  Na przykład, aby uzyskać dostęp do zmiennej SolutionName, należy użyć **variables('SolutionName')** .
+Odwołujesz się do wartości zmiennych za pomocą rozwiązania ze **zmiennymi składni ("nazwa zmiennej")** .  Na przykład aby uzyskać dostęp do zmiennej SolutionName, należy użyć **zmiennych ("SolutionName")** .
 
-Można również zdefiniować zmienne złożonych zestawów wiele wartości.  Są to szczególnie przydatne w rozwiązaniach do zarządzania której definiujesz wiele właściwości dla różnych typów zasobów.  Można na przykład restrukturyzacji roztwór zmiennych powyżej do następujących.
+Można również zdefiniować złożone zmienne, które mają wiele zestawów wartości.  Są one szczególnie przydatne w rozwiązaniach do zarządzania, w których definiujesz wiele właściwości dla różnych typów zasobów.  Można na przykład zmienić strukturę zmiennych rozwiązań przedstawionych powyżej do poniższego.
 
     "variables": {
         "Solution": {
@@ -158,21 +152,21 @@ Można również zdefiniować zmienne złożonych zestawów wiele wartości.  S�
         "AutomationApiVersion": "2015-10-31"
     },
 
-W tym przypadku odwołasz się do wartości zmiennych za pośrednictwem rozwiązania przy użyciu składni **variables('variable name').property**.  Na przykład, aby uzyskać dostęp do zmiennej nazwę rozwiązania, należy użyć **variables('Solution'). Nazwa**.
+W tym przypadku należy odwołać się do wartości zmiennych za pomocą rozwiązania ze **zmiennymi składni ("Zmienna name"). Właściwość**.  Aby na przykład uzyskać dostęp do zmiennej nazwy rozwiązania, należy użyć **zmiennych ("rozwiązanie"). Nazwa**.
 
 ## <a name="resources"></a>Zasoby
-[Zasoby](../../azure-resource-manager/resource-group-authoring-templates.md#resources) określają różne zasoby instalowanych i konfigurowanych rozwiązania do zarządzania.  Są to największych i najbardziej złożonych części szablonu.  Możesz uzyskać struktury i pełny opis zasobu elementów w [tworzenia usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md#resources).  Różne zasoby, które będą zazwyczaj definiują są szczegółowo opisane w innych artykułach w tej dokumentacji. 
+[Zasoby](../../azure-resource-manager/resource-group-authoring-templates.md#resources) definiują różne zasoby, które będą instalowane i konfigurowane w ramach rozwiązania do zarządzania.  Będzie to największa i najbardziej złożona część szablonu.  Możesz uzyskać strukturę i pełen opis elementów zasobów w [szablonach tworzenia Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md#resources).  Różne zasoby, które zwykle zdefiniujesz, są szczegółowo opisane w innych artykułach w tej dokumentacji. 
 
 
 ### <a name="dependencies"></a>Zależności
-**DependsOn** element Określa [zależności](../../azure-resource-manager/resource-group-define-dependencies.md) na inny zasób.  Po zainstalowaniu rozwiązania zasób nie został utworzony, dopóki wszystkie jego zależności zostały utworzone.  Na przykład może być rozwiązania [uruchamiania elementu runbook](solutions-resources-automation.md#runbooks) po jej zainstalowaniu, za pomocą [zadania zasobów](solutions-resources-automation.md#automation-jobs).  Zasób zadanie będzie zależał od zasobu elementu runbook, aby upewnić się, czy element runbook został utworzony przed utworzeniem zadania.
+Element **dependsOn** określa [zależność](../../azure-resource-manager/resource-group-define-dependencies.md) od innego zasobu.  Po zainstalowaniu rozwiązania zasób nie zostanie utworzony, dopóki nie zostaną utworzone wszystkie jego zależności.  Na przykład rozwiązanie może [uruchomić element Runbook](solutions-resources-automation.md#runbooks) , gdy zostanie on zainstalowany przy użyciu [zasobu zadania](solutions-resources-automation.md#automation-jobs).  Zasób zadania będzie zależny od zasobu elementu Runbook, aby upewnić się, że element Runbook został utworzony przed utworzeniem zadania.
 
-### <a name="log-analytics-workspace-and-automation-account"></a>Obszar roboczy usługi log Analytics i konto usługi Automation
-Rozwiązania do zarządzania wymagają [obszaru roboczego usługi Log Analytics](../../azure-monitor/platform/manage-access.md) zawierają widoki i [konta usługi Automation](../../automation/automation-security-overview.md#automation-account-overview) zawiera elementy runbook i powiązane zasoby.  Te muszą być dostępne, zanim zasobów w rozwiązaniu są tworzone i nie powinna być zdefiniowana w samym rozwiązaniem.  Użytkownik zostanie [Określ obszar roboczy i konto](solutions.md#log-analytics-workspace-and-automation-account) podczas ich wdrażania rozwiązania, ale Autor należy wziąć pod uwagę następujące kwestie.
+### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics obszaru roboczego i konta usługi Automation
+Rozwiązania do zarządzania wymagają, aby [obszar roboczy log Analytics](../../azure-monitor/platform/manage-access.md) mógł zawierać widoki i [konto usługi Automation](../../automation/automation-security-overview.md#automation-account-overview) zawierające elementy Runbook i powiązane zasoby.  Muszą one być dostępne przed utworzeniem zasobów w rozwiązaniu i nie powinny być zdefiniowane w samym rozwiązaniu.  Użytkownik [określi obszar roboczy i konto](solutions.md#log-analytics-workspace-and-automation-account) podczas wdrażania rozwiązania, ale jako autora należy wziąć pod uwagę następujące kwestie.
 
 
-## <a name="solution-resource"></a>Rozwiązanie zasobów
-Każde rozwiązanie wymaga zapisu zasobów w **zasobów** element, który definiuje samego rozwiązania.  Będzie to miało typu **Microsoft.OperationsManagement/solutions** i mają następującą strukturę. Obejmuje to [standardowe parametry](#parameters) i [zmienne](#variables) które zwykle są używane do definiowania właściwości rozwiązania.
+## <a name="solution-resource"></a>Zasób rozwiązania
+Każde rozwiązanie wymaga wpisu zasobu w elemencie **resources** , który definiuje samo rozwiązanie.  Będzie to miało typ **Microsoft. OperationsManagement/Solutions** i ma następującą strukturę. Obejmuje to [standardowe parametry](#parameters) i [zmienne](#variables) , które są zwykle używane do definiowania właściwości rozwiązania.
 
 
     {
@@ -206,34 +200,34 @@ Każde rozwiązanie wymaga zapisu zasobów w **zasobów** element, który defini
 
 
 ### <a name="dependencies"></a>Zależności
-Zasób rozwiązanie musi mieć [zależności](../../azure-resource-manager/resource-group-define-dependencies.md) na wszystkich innych zasobów w rozwiązaniu, ponieważ one muszą istnieć przed utworzeniem rozwiązania.  Możesz to zrobić, dodając wpis dla każdego zasobu w **dependsOn** elementu.
+Aby można było utworzyć rozwiązanie, zasób rozwiązania musi mieć [zależność](../../azure-resource-manager/resource-group-define-dependencies.md) od każdego innego zasobu w rozwiązaniu.  W tym celu Dodaj wpis dla każdego zasobu w elemencie **dependsOn** .
 
 ### <a name="properties"></a>Właściwości
-Zasób rozwiązanie ma właściwości w poniższej tabeli.  Obejmują one zasoby, do których odwołuje się i zawarty w rozwiązaniu, który definiuje, jak zasób jest zarządzany, po zainstalowaniu rozwiązania.  Każdy zasób w rozwiązaniu powinien zostać wyświetlony w jednym **referencedResources** lub **containedResources** właściwości.
+Zasób rozwiązania ma właściwości w poniższej tabeli.  Obejmuje to zasoby, do których istnieją odwołania i zawarte w rozwiązaniu, które definiują sposób zarządzania zasobem po zainstalowaniu rozwiązania.  Każdy zasób w rozwiązaniu powinien być wymieniony we właściwości **referencedResources** lub **containedResources** .
 
 | Właściwość | Opis |
 |:--- |:--- |
-| workspaceResourceId |Identyfikator obszaru roboczego usługi Log Analytics w formie  *\<identyfikator grupy zasobów > /providers/Microsoft.OperationalInsights/workspaces/\<nazwa obszaru roboczego\>* . |
-| referencedResources |Lista zasobów w rozwiązaniu, które nie powinny być usuwane, gdy rozwiązanie zostanie usunięty. |
-| containedResources |Lista zasobów w rozwiązaniu, które powinny zostać usunięte po usunięciu rozwiązania. |
+| workspaceResourceId |Identyfikator obszaru roboczego Log Analytics w formularzu *\<Resource identyfikator grupy >/providers/Microsoft.OperationalInsights/workspaces/\<Workspace nazwa \>* . |
+| referencedResources |Lista zasobów w rozwiązaniu, które nie powinny zostać usunięte po usunięciu rozwiązania. |
+| containedResources |Lista zasobów w rozwiązaniu, które należy usunąć po usunięciu rozwiązania. |
 
-W powyższym przykładzie jest rozwiązanie z elementu runbook, harmonogram i widoku.  Harmonogram i elementu runbook są *odwołania* w **właściwości** elementu, więc nie są usuwane po usunięciu rozwiązania.  Widok jest *zawarte* , zostanie ono usunięte po usunięciu rozwiązania.
+Powyższy przykład dotyczy rozwiązania z elementem Runbook, harmonogramem i widokiem.  W elemencie **Properties** *odwołuje* się do harmonogramu i elementu Runbook, dzięki czemu nie zostaną usunięte po usunięciu rozwiązania.  Widok jest *zawarty* , dlatego jest usuwany po usunięciu rozwiązania.
 
-### <a name="plan"></a>Planowanie
-**Plan** jednostki zasobów rozwiązanie ma właściwości w poniższej tabeli.
+### <a name="plan"></a>Plan
+Jednostka **planu** zasobu rozwiązania ma właściwości w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | name |Nazwa rozwiązania. |
-| version |Wersja rozwiązania, zgodnie z ustaleniami autora. |
-| product |Unikatowy ciąg do identyfikowania rozwiązania. |
-| publisher |Z wydawcą rozwiązania. |
+| version |Wersja rozwiązania określona przez autora. |
+| product |Unikatowy ciąg identyfikujący rozwiązanie. |
+| dawc |Wydawca rozwiązania. |
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Dodawanie zapisanego wyszukiwania i alerty](solutions-resources-searches-alerts.md) do rozwiązania do zarządzania.
-* [Dodawanie widoków](solutions-resources-views.md) do rozwiązania do zarządzania.
-* [Dodawanie elementów runbook i innych zasobów usługi Automation](solutions-resources-automation.md) do rozwiązania do zarządzania.
-* Poznaj lepiej [tworzenia usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md).
-* Wyszukiwanie [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates) przykłady różnych szablonów usługi Resource Manager.
+## <a name="next-steps"></a>Następne kroki
+* [Dodaj zapisane wyszukiwania i alerty](solutions-resources-searches-alerts.md) do rozwiązania do zarządzania.
+* [Dodaj widoki](solutions-resources-views.md) do rozwiązania do zarządzania.
+* [Dodaj elementy Runbook i inne zasoby usługi Automation](solutions-resources-automation.md) do rozwiązania do zarządzania.
+* Poznaj szczegóły dotyczące [tworzenia szablonów Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md).
+* Przeszukaj [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates) , aby zapoznać się z przykładami różnych szablonów Menedżer zasobów.

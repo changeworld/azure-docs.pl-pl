@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2201b7701dae90b43a01a6fb45decd94e45bab74
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 40d0cd29452b5473d16851451a88c93e78ef3f36
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430020"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554429"
 ---
 # <a name="authentication-basics"></a>Podstawowe informacje o uwierzytelnianiu
 
@@ -35,7 +35,7 @@ W tym artykule omówiono wiele pojęć związanych z uwierzytelnianiem, które n
 
 **Autoryzacja** to czynność udzielenia uprawnienia uwierzytelnionej stronie. Określa dane, do których można uzyskać dostęp i co można zrobić z tymi danymi. Autoryzacja jest czasami określana terminem AuthZ.
 
-Zamiast tworzyć aplikacje, które zachowują swoje własne informacje o nazwie użytkownika i hasła, które wiążą się z wysokim obciążeniem administracyjnym, jeśli masz wiele aplikacji i chcesz dodawać lub usuwać użytkowników w nich, aplikacje mogą delegować tę odpowiedzialność do scentralizowanego dostawca tożsamości.
+Zamiast tworzyć aplikacje, które zachowują własne informacje o nazwie użytkownika i hasła, co wiąże się z dużym obciążeniem administracyjnym, gdy trzeba dodać lub usunąć użytkowników w wielu aplikacjach, aplikacje mogą delegować tę odpowiedzialność do scentralizowanego dostawcy tożsamości.
 
 Azure Active Directory (Azure AD) to scentralizowany dostawca tożsamości w chmurze. Delegowanie uwierzytelniania i autoryzacji pozwala na takie scenariusze, jak zasady dostępu warunkowego, które wymagają, aby użytkownik znajdował się w określonej lokalizacji, korzystać z uwierzytelniania wieloskładnikowego, a także umożliwiać użytkownikowi logowanie się raz, a następnie automatyczne zalogowano się do wszystkich aplikacji sieci Web, które współużytkują ten sam katalog scentralizowany. Ta funkcja jest określana jako logowanie jednokrotne (SSO).
 
@@ -43,7 +43,7 @@ Scentralizowany dostawca tożsamości jest jeszcze ważniejszy dla aplikacji, kt
 
 Platforma tożsamości firmy Microsoft upraszcza uwierzytelnianie dla deweloperów aplikacji, dostarczając tożsamość jako usługę, z obsługą standardowych protokołów, takich jak OAuth 2,0 i OpenID Connect Connect, a także bibliotek typu "open source" dla różnych platformy ułatwiające szybkie rozpoczęcie tworzenia kodu. Dzięki niej deweloperzy mogą tworzyć aplikacje, które logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania programu Microsoft Graph, innych interfejsów API firmy Microsoft lub interfejsów API opracowanych przez deweloperów. Aby uzyskać więcej informacji, zobacz [ewolucja platformy tożsamości firmy Microsoft](about-microsoft-identity-platform.md).
 
-## <a name="tenants"></a>Dzierżaw
+### <a name="tenants"></a>Dzierżaw
 
 Dostawca tożsamości w chmurze służy do zapewniania wielu organizacji. Aby zapewnić, że użytkownicy z różnych organizacji są oddzielni, usługa Azure AD jest dzielona na dzierżawców z jedną dzierżawą na organizację.
 
@@ -76,7 +76,7 @@ Tokeny są prawidłowe tylko przez ograniczony czas. Zazwyczaj usługa STS oferu
 
 Tokeny dostępu są przesyłane do internetowego interfejsu API jako token okaziciela w nagłówku `Authenticate`. Aplikacja może dostarczyć token odświeżania do usługi STS, a jeśli użytkownik nie ma dostępu do aplikacji, zostanie przywrócony nowy token dostępu i nowy token odświeżania. Jest to sposób obsługi scenariusza, w którym ktoś opuszcza przedsiębiorstwo. Gdy usługa STS odbierze token odświeżenia, nie będzie wydawać innego prawidłowego tokenu dostępu, jeśli użytkownik nie jest już autoryzowany.
 
-### <a name="applications"></a>Aplikacje
+## <a name="application-model"></a>Model aplikacji
 
 Aplikacje mogą logować się samodzielnie lub delegować użytkowników do dostawcy tożsamości. Zobacz [przepływy uwierzytelniania i scenariusze aplikacji](authentication-flows-app-scenarios.md) , aby poznać scenariusze logowania obsługiwane przez usługę Azure AD.
 
@@ -90,18 +90,16 @@ Aby dostawca tożsamości mógł wiedzieć, że użytkownik ma dostęp do okreś
 
 Po zarejestrowaniu aplikacja będzie mieć identyfikator GUID, który jest udostępniany aplikacji z usługą Azure AD, gdy żąda tokenów. Jeśli aplikacja jest poufną aplikacją kliencką, będzie również współużytkować klucz tajny lub publiczny, w zależności od tego, czy zostały użyte certyfikaty lub wpisy tajne.
 
-### <a name="application-model"></a>Model aplikacji
-
 Platforma tożsamości firmy Microsoft reprezentuje aplikacje przy użyciu modelu, który spełnia dwie główne funkcje:
 
-**Zidentyfikuj aplikację według obsługiwanych przez siebie protokołów uwierzytelniania i podaj wszystkie identyfikatory, adresy URL, wpisy tajne i powiązane informacje, które są niezbędne do uwierzytelnienia.**
+Zidentyfikuj aplikację według obsługiwanych przez siebie protokołów uwierzytelniania i podaj wszystkie identyfikatory, adresy URL, wpisy tajne i powiązane informacje, które są niezbędne do uwierzytelnienia.
 Platforma tożsamości firmy Microsoft:
 
 * Przechowuje wszystkie dane wymagane do obsługi uwierzytelniania w czasie wykonywania.
 * Program przechowuje wszystkie dane dotyczące podejmowania decyzji o zasobach, do których aplikacja może potrzebować, i w jakich okolicznościach należy spełnić dane żądanie.
 * Oferuje infrastrukturę do implementowania aprowizacji aplikacji w ramach dzierżawy dewelopera aplikacji oraz do innych dzierżaw usługi Azure AD.
 
-**Obsługuj zgodę użytkownika podczas żądania tokenu i Ułatwiaj dynamiczne Inicjowanie obsługi aplikacji między dzierżawcami** Wyrażanie zgody polega na tym, że właściciel zasobu udziela autoryzacji do aplikacji klienckiej w celu uzyskania dostępu do chronionych zasobów w ramach określonych uprawnień w imieniu właściciela zasobu. Platforma tożsamości firmy Microsoft:
+Obsługuj zgodę użytkownika podczas żądania tokenu i Ułatwiaj dynamiczne Inicjowanie obsługi aplikacji między dzierżawcami. jest to proces polegający na tym, że właściciel zasobu udziela autoryzacji do aplikacji klienckiej w celu uzyskania dostępu do chronionych zasobów, w obszarze określonych uprawnień na imienie właściciela zasobu. Platforma tożsamości firmy Microsoft:
 
 * Umożliwia użytkownikom i administratorom dynamiczne wyrażanie zgody lub odmawianie zgody dla aplikacji na uzyskiwanie przez nią dostępu do zasobów w ich imieniu.
 * Umożliwia administratorom ostateczne zdecydowanie, jakie działania mogą podejmować aplikacje, którzy użytkownicy mogą używać określonych aplikacji i w jaki sposób uzyskiwany jest dostęp do zasobów katalogu.
@@ -154,7 +152,7 @@ Uwierzytelnianie użytkowników odbywa się za pośrednictwem przeglądarki. Pro
 - Przekierowanie jest dostarczane przez aplikację internetową w formie identyfikatora URI przekierowania. Ten identyfikator URI przekierowania jest zarejestrowany w obiekcie aplikacji usługi Azure AD. Może istnieć kilka identyfikatorów URI przekierowania, ponieważ aplikacja może zostać wdrożona w kilku adresach URL. W związku z tym aplikacja sieci Web będzie również musiała określić identyfikator URi przekierowania, który ma być używany.
 - Usługa Azure AD weryfikuje, czy identyfikator URI przekierowania Wysłany przez aplikację sieci Web jest jednym z zarejestrowanych identyfikatorów URI przekierowania dla aplikacji.
 
-## <a name="generalization-to-desktop-and-mobile-apps"></a>Uogólnianie do aplikacji klasycznych i mobilnych
+## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>Przepływ logowania aplikacji klasycznych i mobilnych przy użyciu usługi Azure AD
 
 Opisany powyżej przepływ ma zastosowanie z niewielkimi różnicami w aplikacjach komputerowych i mobilnych.
 

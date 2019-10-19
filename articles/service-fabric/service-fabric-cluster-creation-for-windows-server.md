@@ -1,6 +1,6 @@
 ---
-title: Tworzenie autonomicznego klastra usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Tworzenie klastra usługi Azure Service Fabric na dowolnym komputerze (fizyczny lub wirtualny) uruchomiona w systemie Windows Server w środowisku lokalnym lub w dowolnej chmurze.
+title: Tworzenie autonomicznego klastra Service Fabric platformy Azure | Microsoft Docs
+description: Utwórz klaster Service Fabric platformy Azure na dowolnym komputerze (fizycznym lub wirtualnym) z systemem Windows Server, niezależnie od tego, czy jest on lokalny, czy w dowolnej chmurze.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: ed775bfca2db02b9bfddebb85bbd3f1f668cf3e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fce1957101050c6ff3a2c3aba2b4b87d4f66f1d
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142690"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554652"
 ---
-# <a name="create-a-standalone-cluster-running-on-windows-server"></a>Tworzenie klastra autonomicznego w systemie Windows Server
-Azure Service Fabric umożliwia tworzenie klastrów usługi Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server. Oznacza to, można wdrożyć i uruchamianie aplikacji usługi Service Fabric w dowolnym środowisku, które zawiera zestaw wzajemnie połączonych komputery serwera Windows, lokalnie lub za pomocą dowolnego dostawcy chmury. Usługa Service Fabric udostępnia pakiet instalacyjny służący do tworzenia klastrów usługi Service Fabric o nazwie pakietu autonomicznego w systemie Windows Server.
+# <a name="create-a-standalone-cluster-running-on-windows-server"></a>Tworzenie klastra autonomicznego działającego w systemie Windows Server
+Za pomocą usługi Azure Service Fabric można tworzyć klastry Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server. Oznacza to, że można wdrażać i uruchamiać aplikacje Service Fabric w dowolnym środowisku zawierającym zestaw połączonych komputerów z systemem Windows Server, być lokalnym lub dowolnym dostawcą chmury. Service Fabric udostępnia pakiet instalacyjny do tworzenia klastrów Service Fabric o nazwie autonomiczny pakiet systemu Windows Server. Tradycyjne Service Fabric klastrów na platformie Azure są dostępne jako usługa zarządzana, natomiast autonomiczne klastry Service Fabric są samoobsługowe.
 
-W tym artykule przedstawiono procedurę tworzenia klastra autonomicznego usługi Service Fabric.
+W tym artykule omówiono procedurę tworzenia klastra autonomicznego Service Fabric.
 
 > [!NOTE]
-> Pakiet systemu Windows Server to autonomiczne jest dostępny bezpłatnie i mogą być używane w przypadku wdrożeń produkcyjnych. Ten pakiet może zawierać nowe funkcje usługi Service Fabric, które znajdują się w "Preview". Przewiń w dół do "[funkcje dołączone do tego pakietu w wersji zapoznawczej](#previewfeatures_anchor)." sekcja na liście funkcji w wersji zapoznawczej. Możesz [pobrać kopię tej umowy licencyjnej](https://go.microsoft.com/fwlink/?LinkID=733084) teraz.
+> Ten autonomiczny pakiet systemu Windows Server jest dostępny komercyjnie bez opłat i może być używany do wdrożeń produkcyjnych. Ten pakiet może zawierać nowe funkcje Service Fabric, które znajdują się w wersji zapoznawczej. Przewiń w dół do "[funkcji wersji zapoznawczej zawartej w tym pakiecie](#previewfeatures_anchor)". Lista funkcji w wersji zapoznawczej. [Kopię umowy EULA można pobrać](https://go.microsoft.com/fwlink/?LinkID=733084) teraz.
 > 
 > 
 
 <a id="getsupport"></a>
 
-## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Uzyskaj pomoc techniczną dla pakietu programu Service Fabric dla systemu Windows Server
-* Zapytaj społeczność o pakietu autonomicznego usługi Service Fabric dla systemu Windows Server w [forum usługi Azure Service Fabric](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
-* Otwórz bilet dla [profesjonalnej pomocy dla usługi Service Fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  Dowiedz się więcej o profesjonalnej pomocy technicznej firmy Microsoft [tutaj](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
-* Można również uzyskać pomoc techniczną dla tego pakietu, jako część [pomocy technicznej Microsoft Premier](https://support.microsoft.com/en-us/premier).
-* Aby uzyskać więcej informacji, zobacz [opcje pomocy technicznej usługi Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
-* Do zbierania dzienników dla celów pomocy technicznej, należy uruchomić [usługi Service Fabric autonomiczny moduł zbierający dzienniki](service-fabric-cluster-standalone-package-contents.md).
+## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Uzyskaj pomoc techniczną dotyczącą pakietu Service Fabric dla systemu Windows Server
+* Zwróć się do społeczności o Service Fabric pakiet autonomiczny dla systemu Windows Server na [Forum usługi Azure Service Fabric](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
+* Otwórz bilet dla [profesjonalnej pomocy technicznej dla Service Fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  Dowiedz się więcej na temat profesjonalnej pomocy technicznej firmy Microsoft [tutaj](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
+* Możesz również uzyskać pomoc techniczną dotyczącą tego pakietu w ramach [programu Microsoft Pomoc techniczna Premier](https://support.microsoft.com/en-us/premier).
+* Aby uzyskać więcej informacji, zobacz [Opcje pomocy technicznej platformy Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+* Aby zbierać dzienniki do celów pomocy technicznej, uruchom [Service Fabric autonomiczny moduł zbierający dzienniki](service-fabric-cluster-standalone-package-contents.md).
 
 <a id="downloadpackage"></a>
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Pobieranie pakietu usługi Service Fabric dla systemu Windows Server
-Aby utworzyć klaster, należy użyć pakietu Service Fabric dla systemu Windows Server (Windows Server 2012 R2 i nowszych) znaleźć tutaj: <br>
-[Pobierz Link - pakietu autonomicznego usługi Service Fabric — system Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
+Aby utworzyć klaster, należy użyć pakietu Service Fabric dla systemu Windows Server (Windows Server 2012 R2 i nowszego) znalezionego tutaj: <br>
+[Link do pobierania — Service Fabric autonomiczny pakiet — Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
 
-Szczegółowe informacje można znaleźć na zawartość pakietu [tutaj](service-fabric-cluster-standalone-package-contents.md).
+Znajdź [tutaj](service-fabric-cluster-standalone-package-contents.md)szczegółowe informacje o zawartości pakietu.
 
-Od pakietu środowiska uruchomieniowego usługi Service Fabric jest automatycznie pobierana podczas tworzenia klastra. Jeśli wdrażana na komputerze nie jest połączony z Internetem, w tym miejscu pobrać od pakietu środowiska uruchomieniowego poza pasmem: <br>
-[Pobierz Link — środowisko uruchomieniowe usługi Service Fabric — system Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)
+Pakiet środowiska uruchomieniowego Service Fabric jest pobierany automatycznie podczas tworzenia klastra. Jeśli wdrożenie z komputera nie jest połączone z Internetem, Pobierz pakiet środowiska uruchomieniowego poza pasmem z tego miejsca: <br>
+[Link do pobierania — środowisko uruchomieniowe Service Fabric — system Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)
 
-Znajdź przykłady konfiguracji klastra autonomicznego na: <br>
+Znajdź przykłady konfiguracji klastra autonomicznego w: <br>
 [Przykłady konfiguracji klastra autonomicznego](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
 <a id="createcluster"></a>
@@ -59,25 +59,25 @@ Znajdź przykłady konfiguracji klastra autonomicznego na: <br>
 ## <a name="create-the-cluster"></a>Tworzenie klastra
 W ramach pakietu instalacyjnego jest instalowanych kilka przykładowych plików konfiguracji klastra. *ClusterConfig.Unsecure.DevCluster.json* to najprostsza konfiguracja klastra: niezabezpieczony klaster z trzema węzłami działającymi na pojedynczym komputerze.  Inne pliki konfiguracji zawierają opis klastrów dla jednej lub wielu maszyn, zabezpieczonych za pomocą certyfikatów X.509 lub zabezpieczeń systemu Windows.  Nie musisz modyfikować żadnych domyślnych ustawień konfiguracji w tym samouczku, ale przyjrzyj się plikowi konfiguracji i zapoznaj się z ustawieniami.  Sekcja **węzły** opisuje trzy węzły w klastrze: nazwę, adres IP, [typ węzła, domenę błędów i domenę uaktualnień](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  Sekcja **właściwości** definiuje [zabezpieczenia, poziom niezawodności, zbieranie diagnostyki i typy węzłów](service-fabric-cluster-manifest.md#cluster-properties) klastra.
 
-Klaster utworzony w tym artykule jest niebezpieczne.  Każda osoba może połączyć się z nim anonimowo i przeprowadzić operacje związane z zarządzaniem. Dlatego też klastry produkcyjne należy zawsze zabezpieczać przy użyciu certyfikatów X.509 lub zabezpieczeń systemu Windows.  Zabezpieczenia są konfigurowane tylko w momencie tworzenia klastra. Nie można włączyć zabezpieczeń później, gdy klaster jest już utworzony. Aktualizacja pliku konfiguracji, Włącz [certyfikatów zabezpieczeń](service-fabric-windows-cluster-x509-security.md) lub [zabezpieczeń Windows](service-fabric-windows-cluster-windows-security.md). Dalsze informacje na temat zabezpieczeń klastra usługi Service Fabric można znaleźć w temacie [Secure a cluster](service-fabric-cluster-security.md) (Zabezpieczanie klastra).
+Klaster utworzony w tym artykule jest niezabezpieczony.  Każda osoba może połączyć się z nim anonimowo i przeprowadzić operacje związane z zarządzaniem. Dlatego też klastry produkcyjne należy zawsze zabezpieczać przy użyciu certyfikatów X.509 lub zabezpieczeń systemu Windows.  Zabezpieczenia są konfigurowane tylko w momencie tworzenia klastra. Nie można włączyć zabezpieczeń później, gdy klaster jest już utworzony. Zaktualizuj plik konfiguracji, Włącz [zabezpieczenia certyfikatu](service-fabric-windows-cluster-x509-security.md) lub [zabezpieczenia systemu Windows](service-fabric-windows-cluster-windows-security.md). Dalsze informacje na temat zabezpieczeń klastra usługi Service Fabric można znaleźć w temacie [Secure a cluster](service-fabric-cluster-security.md) (Zabezpieczanie klastra).
 
-### <a name="step-1-create-the-cluster"></a>Krok 1: Tworzenie klastra
+### <a name="step-1-create-the-cluster"></a>Krok 1. Tworzenie klastra
 
-#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>Scenariusz A: Utwórz niezabezpieczony lokalnego klastra projektowego
-Usługa Service Fabric można wdrożyć klaster programowania z jednego komputera przy użyciu *ClusterConfig.Unsecure.DevCluster.json* plik dołączony [przykłady](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>Scenariusz A: Tworzenie niezabezpieczonego lokalnego klastra projektowego
+Service Fabric można wdrożyć w klastrze programistycznym z jednym maszyną przy użyciu pliku *ClusterConfig. Unsecure. DevCluster. JSON* zawartego w [przykładach](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
-Rozpakowywanie pakietu autonomicznego na komputerze, skopiuj przykładowy plik konfiguracji na komputer lokalny, a następnie uruchom *CreateServiceFabricCluster.ps1* skryptu za pomocą sesji programu PowerShell administratora z folderu pakietu autonomicznego .
+Rozpakuj pakiet autonomiczny na maszynę, skopiuj przykładowy plik konfiguracji na komputer lokalny, a następnie uruchom skrypt *CreateServiceFabricCluster. ps1* za pośrednictwem sesji programu PowerShell administratora z autonomicznego folderu pakietu.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 ```
 
-Zobacz sekcję Konfiguracja środowiska na [planowanie i przygotowanie wdrożenia programu klastra](service-fabric-cluster-standalone-deployment-preparation.md) Aby uzyskać szczegółowe informacje o rozwiązywaniu.
+Aby uzyskać szczegółowe informacje dotyczące rozwiązywania problemów, zobacz sekcję Konfigurowanie środowiska w temacie [Planowanie i przygotowywanie wdrożenia klastra](service-fabric-cluster-standalone-deployment-preparation.md) .
 
-Zakończeniu uruchamianie scenariuszy programowania można usunąć klastra usługi Service Fabric na komputerze, korzystając z procedury opisanej w sekcji "[usuwania klastra](#removecluster_anchor)". 
+Jeśli skończysz wykonywanie scenariuszy programistycznych, możesz usunąć klaster Service Fabric z komputera, odwołując się do kroków w sekcji "[usuwanie klastra](#removecluster_anchor)". 
 
-#### <a name="scenario-b-create-a-multi-machine-cluster"></a>Scenariusz B: Tworzenie klastra dla wielu maszyn
-Po przejściu planowania i przygotowania kroki szczegółowe w [planowanie i przygotowanie wdrożenia programu klastra](service-fabric-cluster-standalone-deployment-preparation.md), możesz przystąpić do tworzenia klastra produkcyjnego przy użyciu pliku konfiguracji klastra.
+#### <a name="scenario-b-create-a-multi-machine-cluster"></a>Scenariusz B: Tworzenie klastra obejmującego wiele maszyn
+Po wykonaniu kroków związanych z planowaniem i przygotowaniem w ramach [planu i przygotowania wdrożenia klastra](service-fabric-cluster-standalone-deployment-preparation.md)można utworzyć klaster produkcyjny przy użyciu pliku konfiguracji klastra.
 
 Administrator klastra wdrażający i konfigurujący klaster musi mieć uprawnienia administratora na komputerze. Usługi Service Fabric nie można zainstalować na kontrolerze domeny.
 
@@ -87,7 +87,7 @@ Administrator klastra wdrażający i konfigurujący klaster musi mieć uprawnien
     .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
     ```
 
-    Powinny pojawić się dane wyjściowe podobne do następujących: Jeśli pole dolnej "Zakończono pomyślnie" jest zwracana jako "Prawda", wykonuje sprawdzenie powiodło się i klaster wydaje się być możliwy do wdrożenia na podstawie danych wejściowych konfiguracji.
+    Powinny pojawić się dane wyjściowe podobne do następujących: Jeśli ostatnie pole "Passed" jest zwracane jako "true", testy Sanity zostały zakończone, a klaster zostanie wdrożony na podstawie konfiguracji wejściowej.
 
     ```powershell
     Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
@@ -106,7 +106,7 @@ Administrator klastra wdrażający i konfigurujący klaster musi mieć uprawnien
     Passed                     : True
     ```
 
-2. Utwórz klaster:  Uruchom *CreateServiceFabricCluster.ps1* skrypt, aby wdrożyć klaster usługi Service Fabric w każdej maszynie w konfiguracji. 
+2. Utwórz klaster: Uruchom skrypt *CreateServiceFabricCluster. ps1* , aby wdrożyć klaster Service Fabric na każdym komputerze w konfiguracji. 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -116,20 +116,20 @@ Administrator klastra wdrażający i konfigurujący klaster musi mieć uprawnien
 > 
 > 
 
-#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>Scenariusz C: Tworzenie klastra w trybie offline (odłączony od Internetu)
-Od pakietu środowiska uruchomieniowego usługi Service Fabric jest automatycznie pobierana podczas tworzenia klastra. W przypadku wdrażania klastra na maszynach, które nie jest połączony z Internetem, należy pobrać oddzielnie od pakietu środowiska uruchomieniowego usługi Service Fabric i podaj ścieżkę do niego podczas tworzenia klastra.
-Od pakietu środowiska uruchomieniowego można je pobrać oddzielnie, z innego komputera połączonego z Internetem w [łącze Pobierz — środowisko uruchomieniowe usługi Service Fabric — system Windows Server](https://go.microsoft.com/fwlink/?linkid=839354). Skopiuj pakiet środowiska uruchomieniowego, do której są wdrażane do klastra w trybie offline z, a następnie utworzyć klaster, uruchamiając `CreateServiceFabricCluster.ps1` z `-FabricRuntimePackagePath` parametru, jak pokazano w poniższym przykładzie: 
+#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>Scenariusz C: Tworzenie klastra w trybie offline (odłączony internetowo)
+Pakiet środowiska uruchomieniowego Service Fabric jest pobierany automatycznie podczas tworzenia klastra. W przypadku wdrażania klastra na maszynach, które nie są połączone z Internetem, należy pobrać pakiet środowiska uruchomieniowego Service Fabric oddzielnie i podać ścieżkę do niej podczas tworzenia klastra.
+Pakiet środowiska uruchomieniowego można pobrać oddzielnie, z innej maszyny połączonej z Internetem, przy użyciu [linku pobierania — Service Fabric środowiska uruchomieniowego — Windows Server](https://go.microsoft.com/fwlink/?linkid=839354). Skopiuj pakiet środowiska uruchomieniowego do lokalizacji, w której jest wdrażany klaster trybu offline, i Utwórz klaster, uruchamiając `CreateServiceFabricCluster.ps1` z dołączonym parametrem `-FabricRuntimePackagePath`, jak pokazano w tym przykładzie: 
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
 
-*.\ClusterConfig.JSON* i *.\MicrosoftAzureServiceFabric.cab* są odpowiednio ścieżki do konfiguracji klastra i plik cab środowiska uruchomieniowego.
+*.\ClusterConfig.JSON* i *.\MicrosoftAzureServiceFabric.cab* są ścieżkami do konfiguracji klastra i pliku Runtime. cab odpowiednio.
 
-### <a name="step-2-connect-to-the-cluster"></a>Krok 2: Łączenie z klastrem
-Łączenie z klastrem, aby sprawdzić, czy klaster jest uruchomione i dostępne. Moduł ServiceFabric programu PowerShell został zainstalowany w środowisku uruchomieniowym.  Możesz połączyć się z klastrem w jednym z węzłów klastra lub z komputera zdalnego ze środowiskiem uruchomieniowym usługi Service Fabric.  Polecenie cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) umożliwia ustanowienie połączenia z klastrem.
+### <a name="step-2-connect-to-the-cluster"></a>Krok 2. Nawiązywanie połączenia z klastrem
+Połącz się z klastrem, aby sprawdzić, czy klaster działa i jest dostępny. Moduł ServiceFabric programu PowerShell został zainstalowany w środowisku uruchomieniowym.  Można nawiązać połączenie z klastrem z jednego z węzłów klastra lub z komputera zdalnego przy użyciu środowiska uruchomieniowego Service Fabric.  Polecenie cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) umożliwia ustanowienie połączenia z klastrem.
 
-Aby połączyć się niezabezpieczonym klastrem, uruchom następujące polecenie programu PowerShell:
+Aby nawiązać połączenie z niezabezpieczonym klastrem, uruchom następujące polecenie programu PowerShell:
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
@@ -152,8 +152,8 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
                      vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
-### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>Krok 3: Wizualizowanie klastra za pomocą narzędzia Service Fabric Explorer
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) to odpowiednie narzędzie do wizualizowania klastra i zarządzania aplikacjami.  Service Fabric Explorer to usługa, która działa w klastrze otwieranym w przeglądarce, przechodząc do [ http://localhost:19080/Explorer ](http://localhost:19080/Explorer).
+### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>Krok 3. wizualizowanie klastra przy użyciu Eksploratora Service Fabric
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) to odpowiednie narzędzie do wizualizowania klastra i zarządzania aplikacjami.  Service Fabric Explorer to usługa uruchamiana w klastrze, do której można uzyskać dostęp za pomocą przeglądarki, przechodząc do [http://localhost:19080/Explorer](http://localhost:19080/Explorer).
 
 Pulpit nawigacyjny klastra zawiera omówienie klastra, w tym podsumowanie kondycji węzła i aplikacji. Widok węzła przedstawia fizyczny układ klastra. Dla danego węzła można sprawdzić, które aplikacje mają kod wdrożony w tym węźle.
 
@@ -166,7 +166,7 @@ Możesz dodawać i usuwać węzły w klastrze autonomicznym usługi Service Fabr
 ## <a name="remove-a-cluster"></a>Usuwanie klastra
 Aby usunąć klaster, uruchom skrypt *RemoveServiceFabricCluster.ps1* programu PowerShell z folderu pakietu i przekaż ścieżkę do pliku konfiguracji JSON. Możesz opcjonalne określić lokalizację dziennika usuwania.
 
-Ten skrypt można uruchomić na dowolnym komputerze, który ma dostęp administratora do wszystkich maszyn, które są wymienione jako węzły w pliku konfiguracji klastra. Komputer, na którym uruchamiany jest skrypt nie musi być częścią klastra.
+Ten skrypt można uruchomić na dowolnym komputerze, który ma dostęp administratora do wszystkich maszyn wymienionych jako węzły w pliku konfiguracji klastra. Maszyna, na której jest uruchomiony ten skrypt, nie musi być częścią klastra.
 
 ```powershell
 # Removes Service Fabric from each machine in the configuration
@@ -180,18 +180,18 @@ Ten skrypt można uruchomić na dowolnym komputerze, który ma dostęp administr
 
 <a id="telemetry"></a>
 
-## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Dane telemetryczne zbierane i jak zrezygnować z niego
-Domyślnie produktu gromadzi dane telemetryczne użycia usługi Service Fabric w ulepszaniu produktu. Analizator najlepszych rozwiązań, która działa jako część instalacji sprawdza, czy łączność [ https://vortex.data.microsoft.com/collect/v1 ](https://vortex.data.microsoft.com/collect/v1). Jeśli nie jest dostępny, instalacja kończy się niepowodzeniem, jeśli nie możesz zrezygnować z danych telemetrycznych.
+## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Zebrane dane telemetryczne i sposoby ich wycofania
+Domyślnie produkt zbiera dane telemetryczne dotyczące użycia Service Fabric, aby ulepszyć produkt. Analizator najlepszych rozwiązań, który jest uruchamiany w ramach instalacji, sprawdza łączność z [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1). Jeśli ta opcja jest nieosiągalna, instalacja kończy się niepowodzeniem, chyba że zrezygnujesz z używania telemetrii.
 
-1. Potok danych telemetrycznych spróbuje przekazać następujące dane [ https://vortex.data.microsoft.com/collect/v1 ](https://vortex.data.microsoft.com/collect/v1) jeden raz każdego dnia. Jest przekazywanie największej staranności i nie ma wpływu na funkcjonalność klastra. Dane telemetryczne są zgodne z węzła, który jest uruchamiany w trybie failover Menedżerze podstawowym. Nie inne węzły Wyślij dane telemetryczne.
-2. Dane telemetryczne składa się z następujących czynności:
+1. Potok telemetrii próbuje przekazać następujące dane, aby [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) raz dziennie. Jest to najlepszy przekazanie i nie ma wpływu na funkcjonalność klastra. Dane telemetryczne są wysyłane tylko z węzła, na którym jest uruchomiony Menedżer trybu failover. Żadne inne węzły nie wysyłają danych telemetrycznych.
+2. Dane telemetryczne składają się z następujących elementów:
 
 * Liczba usług
-* Liczba ServiceTypes
+* Liczba typów ServiceType
 * Liczba aplikacji
 * Liczba ApplicationUpgrades
-* Liczba jednostek trybu failover
-* Liczba stanie Inbuild
+* Liczba jednostek failoverunits
+* Liczba InBuildFailoverUnits
 * Liczba UnhealthyFailoverUnits
 * Liczba replik
 * Liczba InBuildReplicas
@@ -203,31 +203,31 @@ Domyślnie produktu gromadzi dane telemetryczne użycia usługi Service Fabric w
 * CommitQueueLength
 * Liczba węzłów
 * IsContextComplete: PRAWDA/FAŁSZ
-* ClusterId: Jest to identyfikator GUID generowany losowo dla każdego klastra
+* ClusterId: jest to identyfikator GUID generowany losowo dla każdego klastra
 * ServiceFabricVersion
-* Adres IP maszyny wirtualnej lub maszyny, z którego został przekazany telemetrii
+* Adres IP maszyny wirtualnej lub maszyny, z której zostało przekazane dane telemetryczne
 
-Aby wyłączyć telemetrię, Dodaj następujący kod do *właściwości* w pliku config klastra: *enableTelemetry: false*.
+Aby wyłączyć telemetrię, Dodaj następujące elementy do *Właściwości* w konfiguracji klastra: *enableTelemetry: false*.
 
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
-## <a name="preview-features-included-in-this-package"></a>Dołączone do tego pakietu w wersji zapoznawczej
+## <a name="preview-features-included-in-this-package"></a>Funkcje w wersji zapoznawczej zawarte w tym pakiecie
 Brak.
 
 
 > [!NOTE]
-> Uruchamianie przy użyciu nowego [wersją GA usługi klastra autonomicznego w systemie Windows Server (wersja 5.3.204.x)](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/), klaster można uaktualnić do kolejnych wersji ręcznie lub automatycznie. Zapoznaj się [uaktualnienie wersji autonomicznego klastra usługi Service Fabric](service-fabric-cluster-upgrade-windows-server.md) dokumentu, aby uzyskać szczegółowe informacje.
+> Począwszy od nowej [wersji platformy autonomicznej klastra dla systemu Windows Server (wersja 5.3.204. x)](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/), można uaktualnić klaster do przyszłych wersji ręcznie lub automatycznie. Aby uzyskać szczegółowe informacje, zapoznaj się z tematem [uaktualnianie autonomicznego dokumentu wersji klastra Service Fabric](service-fabric-cluster-upgrade-windows-server.md) .
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Wdrażanie i usunąć aplikacje przy użyciu programu PowerShell](service-fabric-deploy-remove-applications.md)
-* [Ustawienia konfiguracji dla autonomicznego klastra Windows](service-fabric-cluster-manifest.md)
-* [Dodawanie lub usuwanie węzłów do klastra usługi Service Fabric autonomicznego](service-fabric-cluster-windows-server-add-remove-nodes.md)
-* [Uaktualnienie wersji autonomicznego klastra usługi Service Fabric](service-fabric-cluster-upgrade-windows-server.md)
-* [Tworzenie klastra autonomicznego usługi Service Fabric z systemem Windows maszyn wirtualnych platformy Azure](service-fabric-cluster-creation-with-windows-azure-vms.md)
-* [Zabezpieczanie klastra autonomicznego w Windows przy użyciu zabezpieczeń Windows](service-fabric-windows-cluster-windows-security.md)
-* [Zabezpieczanie klastra autonomicznego w Windows przy użyciu X509 certyfikatów](service-fabric-windows-cluster-x509-security.md)
+## <a name="next-steps"></a>Następne kroki
+* [Wdrażanie i usuwanie aplikacji przy użyciu programu PowerShell](service-fabric-deploy-remove-applications.md)
+* [Ustawienia konfiguracji autonomicznego klastra systemu Windows](service-fabric-cluster-manifest.md)
+* [Dodawanie lub usuwanie węzłów w autonomicznym klastrze Service Fabric](service-fabric-cluster-windows-server-add-remove-nodes.md)
+* [Uaktualnianie autonomicznej wersji klastra Service Fabric](service-fabric-cluster-upgrade-windows-server.md)
+* [Tworzenie autonomicznego klastra Service Fabric z maszynami wirtualnymi platformy Azure z systemem Windows](service-fabric-cluster-creation-with-windows-azure-vms.md)
+* [Zabezpieczanie klastra autonomicznego w systemie Windows przy użyciu zabezpieczeń systemu Windows](service-fabric-windows-cluster-windows-security.md)
+* [Zabezpieczanie klastra autonomicznego w systemie Windows przy użyciu certyfikatów x509](service-fabric-windows-cluster-x509-security.md)
 
 <!--Image references-->
 [Trusted Zone]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png

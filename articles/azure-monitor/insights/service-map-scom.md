@@ -1,24 +1,18 @@
 ---
 title: Integracja Azure Monitor dla maszyn wirtualnych z System Center Operations Manager | Microsoft Docs
 description: Azure Monitor dla maszyn wirtualnych automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. W tym artykule omówiono używanie funkcji map do automatycznego tworzenia diagramów aplikacji rozproszonych w Operations Manager.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: b16505eb2c12819532b8675472cf0e6f4177f7bf
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 07/12/2019
+ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489717"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553964"
 ---
 # <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>Integracja System Center Operations Manager z funkcją Azure Monitor dla maszyn wirtualnych map
 
@@ -78,7 +72,7 @@ Aby skonfigurować integrację z mapowaniem Azure Monitor dla maszyn wirtualnych
 
      ![Grupa konfiguracji Operations Manager](media/service-map-scom/scom-config-group.png)
 
-6. Opcjonalnie: Wybierz pulę zasobów wszystkich serwerów zarządzania, z którą ma się komunikować Log Analytics, a następnie kliknij pozycję **Dodaj obszar roboczy**.
+6. Opcjonalne: wybierz pulę zasobów wszystkich serwerów zarządzania, z którą ma się komunikować Log Analytics, a następnie kliknij pozycję **Dodaj obszar roboczy**.
 
     ![Pula zasobów konfiguracji Operations Manager](media/service-map-scom/scom-config-pool.png)
 
@@ -94,26 +88,26 @@ Po nawiązaniu połączenia z obszarem roboczym Log Analytics w okienku **monito
 
 Folder Service Map ma cztery węzły:
 
-* **Aktywne alerty**: Wyświetla listę wszystkich aktywnych alertów dotyczących komunikacji między Operations Manager i Azure Monitor.  
+* **Aktywne alerty**: zawiera listę wszystkich aktywnych alertów dotyczących komunikacji między Operations Manager i Azure monitor.  
 
   >[!NOTE]
   >Te alerty nie są Log Analytics alerty zsynchronizowane z Operations Manager, są generowane w grupie zarządzania w oparciu o przepływy pracy zdefiniowane w pakiecie administracyjnym Service Map.
 
-* **Serwery**: Wyświetla listę monitorowanych serwerów, które są skonfigurowane do synchronizacji z funkcji mapy Azure Monitor dla maszyn wirtualnych.
+* **Serwery**: Wyświetla listę monitorowanych serwerów, które są skonfigurowane do synchronizacji z funkcji Azure monitor dla maszyn wirtualnych map.
 
     ![Okienko Operations Manager monitorowania serwerów](media/service-map-scom/scom-monitoring-servers.png)
 
-* **Widoki zależności grupy maszyn**: Wyświetla listę wszystkich grup maszyn, które są synchronizowane z funkcji mapy. Możesz kliknąć dowolną grupę, aby wyświetlić jej diagram aplikacji rozproszonej.
+* **Widoki zależności grupy maszyn**: zawiera listę wszystkich grup maszyn, które są synchronizowane z funkcji mapy. Możesz kliknąć dowolną grupę, aby wyświetlić jej diagram aplikacji rozproszonej.
 
     ![Diagram aplikacji rozproszonej Operations Manager](media/service-map-scom/scom-group-dad.png)
 
-* **Widoki zależności serwera**: Wyświetla wszystkie serwery, które są synchronizowane z funkcji map. Możesz kliknąć dowolny serwer, aby wyświetlić jego diagram aplikacji rozproszonej.
+* **Widoki zależności serwera**: wyświetla wszystkie serwery, które są synchronizowane z funkcji mapy. Możesz kliknąć dowolny serwer, aby wyświetlić jego diagram aplikacji rozproszonej.
 
     ![Diagram aplikacji rozproszonej Operations Manager](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Edytowanie lub usuwanie obszaru roboczego
 
-Skonfigurowany obszar roboczy można edytować lub usunąć za pomocą okienka **Przegląd Service map** (okienko**Administracja** > **Pakiet Operations Management Suite** > **Service map**).
+Skonfigurowany obszar roboczy można edytować lub usunąć za pomocą okienka **przegląd Service map** (okienko**Administracja** > **pakiet operations Management Suite**  > **Service map**).
 
 >[!NOTE]
 >[Pakiet Operations Management Suite to zbiór usług](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) należących do log Analytics, które są teraz częścią [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
@@ -128,10 +122,10 @@ Reguła, *Microsoft. Center. ServiceMapImport. Rule*, okresowo pobiera informacj
 
 ![Okno właściwości zastąpień Operations Manager](media/service-map-scom/scom-overrides.png)
 
-* **Włączone**: Włączać lub wyłączać aktualizacje automatyczne.
-* **IntervalMinutes**: Określa czas między aktualizacjami. Domyślny interwał wynosi godzinę. Jeśli chcesz synchronizować mapy częściej, możesz zmienić wartość.
-* **TimeoutSeconds**: Określa czas, po jakim upłynął limit czasu żądania.
-* **TimeWindowMinutes**: Określa przedział czasu na potrzeby wykonywania zapytań dotyczących danych. Wartość domyślna to 60 minut, co jest maksymalnym dozwolonym interwałem.
+* **Włączone**: włącza lub wyłącza aktualizacje automatyczne.
+* **IntervalMinutes**: określa czas między aktualizacjami. Domyślny interwał wynosi godzinę. Jeśli chcesz synchronizować mapy częściej, możesz zmienić wartość.
+* **TimeoutSeconds**: określa czas, po jakim upłynął limit czasu żądania.
+* **TimeWindowMinutes**: określa przedział czasu na potrzeby wykonywania zapytań dotyczących danych. Wartość domyślna to 60 minut, co jest maksymalnym dozwolonym interwałem.
 
 ## <a name="known-issues-and-limitations"></a>Znane problemy i ograniczenia
 
@@ -141,7 +135,7 @@ Bieżący projekt przedstawia następujące problemy i ograniczenia:
 * Mimo że serwery programu można dodać do grupy Serwery Service Map ręcznie za pomocą okienka **Tworzenie** , mapy dla tych serwerów nie są synchronizowane natychmiast. Zostaną one zsynchronizowane z funkcji mapy Azure Monitor dla maszyn wirtualnych podczas następnego cyklu synchronizacji.
 * Po wprowadzeniu zmian w diagramach aplikacji rozproszonych utworzonych przez pakiet administracyjny te zmiany prawdopodobnie zostaną zastąpione podczas następnej synchronizacji z Azure Monitor dla maszyn wirtualnych.
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
 Aby uzyskać oficjalną dokumentację platformy Azure dotyczącą tworzenia nazwy głównej usługi, zobacz:
 

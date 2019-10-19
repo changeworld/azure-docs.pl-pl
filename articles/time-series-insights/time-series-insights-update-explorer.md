@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: a0d8f7cdace8d3e810dfcda6e54df5823840307c
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a1707740d673ea49a4b4494f5d2e6a5753982090
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034332"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553414"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>Wizualizowanie danych w Eksploratorze (wersja zapoznawcza)
 
@@ -35,7 +35,7 @@ Aby rozpocząć pracę z Eksploratorem Azure Time Series Insights w wersji zapoz
 
 Eksplorator Azure Time Series Insights w wersji zapoznawczej składa się z następujących elementów:
 
-[@no__t — widok Eksploratora 1The](media/v2-update-explorer/explorer-one.png)](media/v2-update-explorer/explorer-one.png#lightbox)
+[widok Eksploratora ![The](media/v2-update-explorer/explorer-one.png)](media/v2-update-explorer/explorer-one.png#lightbox)
 
 - <a href="#environment-drop-down-list">Panel środowiska</a>: wyświetla środowiska Azure Time Series Insights.
 - <a href="#navigation-menu">Menu nawigacji</a>: służy do przełączania się między stronami **Analizowanie** i **modelem** .
@@ -51,13 +51,13 @@ Lista rozwijana środowisko zawiera wszystkie Time Series Insights środowiska, 
 
 1. Wybierz strzałkę listy rozwijanej obok wyświetlanego środowiska.
 
-   [@no__t — Panel sterowania 1The](media/v2-update-explorer/explorer-two.png)](media/v2-update-explorer/explorer-two.png#lightbox)
+   [Panel sterowania ![The](media/v2-update-explorer/explorer-two.png)](media/v2-update-explorer/explorer-two.png#lightbox)
 
 1. Następnie wybierz odpowiednie środowisko.
 
 ## <a name="navigation-menu"></a>Menu nawigacji
 
-  [@no__t — menu nawigacji 1The](media/v2-update-explorer/explorer-three.png)](media/v2-update-explorer/explorer-three.png#lightbox)
+  [![The menu nawigacji](media/v2-update-explorer/explorer-three.png)](media/v2-update-explorer/explorer-three.png#lightbox)
 
 Użyj menu nawigacji, aby wybrać dwa widoki:
 
@@ -72,7 +72,7 @@ W drzewie hierarchii są wyświetlane wybrane elementy danych, które obejmują 
 
 Korzystając z panelu wyszukiwania modelowego, można łatwo przeszukiwać hierarchię modelu szeregów czasowych i przechodzić do nich, aby znaleźć określone wystąpienia szeregów czasowych, które mają być wyświetlane na wykresie. Po wybraniu Twoich wystąpień są one dodawane zarówno do bieżącego wykresu, jak i do danych.
 
-  [@no__t — panel wyszukiwania modelu 1The](media/v2-update-explorer/explorer-four.png)](media/v2-update-explorer/explorer-four.png#lightbox)
+  [Panel wyszukiwania modeli ![The](media/v2-update-explorer/explorer-four.png)](media/v2-update-explorer/explorer-four.png#lightbox)
 
 ### <a name="model-authoring"></a>Tworzenie modelu
 
@@ -88,11 +88,11 @@ Aby dowiedzieć się więcej na temat modelu szeregów czasowych, zobacz [Times 
 
 Wyświetla pola wystąpienia i inne metadane skojarzone z wybranymi wystąpieniami Time Series Insights. Zaznaczając pola wyboru po prawej stronie, można ukryć lub wyświetlić określone wystąpienia z bieżącego wykresu. Można również usunąć konkretne elementy danych z bieżących danych, zaznaczając formant Red **delete** (kosza) po lewej stronie elementu.
 
-  [1The — wersja zapoznawcza @no__t](media/v2-update-explorer/explorer-five.png)](media/v2-update-explorer/explorer-five.png#lightbox)
+  [Podgląd ![The](media/v2-update-explorer/explorer-five.png)](media/v2-update-explorer/explorer-five.png#lightbox)
 
 Aby zmienić konfigurację układu strony **Analizowanie** wykresu, wybierz ikonę wielokropka w prawym górnym rogu:
 
-  [Opcje układu @no__t 1Telemetry](media/v2-update-explorer/explorer-six.png)](media/v2-update-explorer/explorer-six.png#lightbox)
+  [Opcje układu ![Telemetry](media/v2-update-explorer/explorer-six.png)](media/v2-update-explorer/explorer-six.png#lightbox)
 
 > [!NOTE]
 > Jeśli zobaczysz następujący komunikat, wystąpienie nie ma żadnych danych w wybranym okresie. Aby rozwiązać ten problem, należy zwiększyć przedział czasu lub potwierdzić, że wystąpienie jest wypychane dane.
@@ -103,7 +103,7 @@ Aby zmienić konfigurację układu strony **Analizowanie** wykresu, wybierz ikon
 
 Za pomocą wykresu można wyświetlać wystąpienia Time Series Insights jako linie. Możesz zwinąć panel środowiska, model danych i Panel sterowania przedział czasu, wybierając kontrolki sieci Web, aby wykres był większy.
 
-  [@no__t — przegląd wykresu 1Preview](media/v2-update-explorer/explorer-eight.png)](media/v2-update-explorer/explorer-eight.png#lightbox)
+  [Przegląd wykresu ![Preview](media/v2-update-explorer/explorer-eight.png)](media/v2-update-explorer/explorer-eight.png#lightbox)
 
 - **Wybrany zakres dat**: kontroluje, które elementy danych są dostępne do wizualizacji.
 
@@ -121,21 +121,21 @@ Za pomocą wykresu można wyświetlać wystąpienia Time Series Insights jako li
 
 Aby przejść do szczegółów określonego wycinka danych, kliknij lewym przyciskiem myszy punkt danych na bieżącym grafie, a następnie przeciągnij wybrany obszar do wybranego punktu końcowego. Kliknij prawym przyciskiem myszy szary zaznaczony obszar i wybierz polecenie **powiększenie**, jak pokazano na poniższej ilustracji:
 
-  [@no__t — powiększenie wykresu 1Preview](media/v2-update-explorer/explorer-nine.png)](media/v2-update-explorer/explorer-nine.png#lightbox)
+  [![Preview powiększenie wykresu](media/v2-update-explorer/explorer-nine.png)](media/v2-update-explorer/explorer-nine.png#lightbox)
 
 Po wykonaniu akcji **powiększenia** zobaczysz wybrany zestaw danych. Wybierz kontrolkę format osi y, aby przechodzić przez trzy reprezentacje osi y danych Time Series Insights.
 
-  [@no__t — oś y wykresu 1Preview](media/v2-update-explorer/explorer-ten.png)](media/v2-update-explorer/explorer-ten.png#lightbox)
+  [oś y wykresu ![Preview](media/v2-update-explorer/explorer-ten.png)](media/v2-update-explorer/explorer-ten.png#lightbox)
 
 W tym miejscu można zobaczyć przykład udostępnionych osi Y:
 
-  [współdzielona oś Y @no__t 1Preview](media/v2-update-explorer/explorer-eleven.png)](media/v2-update-explorer/explorer-eleven.png#lightbox)
+  [![Preview udostępnione osie Y](media/v2-update-explorer/explorer-eleven.png)](media/v2-update-explorer/explorer-eleven.png#lightbox)
 
 ## <a name="time-editor-panel"></a>Panel edytora czasu
 
 Podczas pracy z podglądem Time Series Insights należy najpierw wybrać przedział czasu. Wybrany przedział czasu kontroluje zestaw danych, który jest dostępny do manipulowania przy użyciu widżetów Time Series Insights Preview. Następujące kontrolki sieci Web są dostępne w wersji zapoznawczej Time Series Insights w celu wybrania zakresu czasu pracy:
 
-  [Panel wyboru @no__t 1Time](media/v2-update-explorer/explorer-twelve.png)](media/v2-update-explorer/explorer-twelve.png#lightbox)
+  [Panel wyboru ![Time](media/v2-update-explorer/explorer-twelve.png)](media/v2-update-explorer/explorer-twelve.png#lightbox)
 
 1. **Wewnętrzny suwak zakresu dat**: Użyj dwóch kontrolek punktu końcowego, przeciągając je w żądanym przedziale czasu. Ten wewnętrzny zakres dat jest ograniczony przez kontrolkę suwaka zewnętrznego zakresu dat.
 
@@ -155,7 +155,7 @@ Podczas pracy z podglądem Time Series Insights należy najpierw wybrać przedzi
 
 ## <a name="navigation-panel"></a>Panel nawigacji
 
-Panel nawigacji Time Series Insights Preview pojawia się u góry aplikacji Time Series Insights. Zapewnia następujące funkcje.
+Panel nawigacji Time Series Insights Preview pojawia się u góry aplikacji Time Series Insights. Zapewnia następujące funkcje:
 
 ### <a name="current-session-share-link-control"></a>Bieżąca kontrola linku do udziału sesji
 
@@ -163,11 +163,11 @@ Panel nawigacji Time Series Insights Preview pojawia się u góry aplikacji Time
 
 Wybierz ikonę Nowy **udział** , aby udostępnić link adresu URL do zespołu.
 
-  [@no__t — 1Share adres URL wystąpienia](media/v2-update-explorer/url-share.png)](media/v2-update-explorer/url-share.png#lightbox)
+  [![Share adres URL wystąpienia](media/v2-update-explorer/url-share.png)](media/v2-update-explorer/url-share.png#lightbox)
 
 ### <a name="tenant-section"></a>Sekcja dzierżawy
 
-  [@no__t — wybór 1Tenant](media/v2-update-explorer/explorer-sixteen.png)](media/v2-update-explorer/explorer-sixteen.png#lightbox)
+  [![Tenant wybór](media/v2-update-explorer/explorer-sixteen.png)](media/v2-update-explorer/explorer-sixteen.png#lightbox)
 
 * Wyświetla bieżące informacje o koncie logowania Time Series Insights.
 * Użyj go, aby przełączać się między dostępnymi Time Series Insightsmi motywami.
@@ -177,7 +177,7 @@ Wybierz ikonę Nowy **udział** , aby udostępnić link adresu URL do zespołu.
 
 Aby wybrać nowy motyw, wybierz ikonę profilu znajdującą się w prawym górnym rogu. Następnie wybierz pozycję **Zmień motyw**.
 
-  [@no__t — wybór 1Theme](media/v2-update-explorer/theme-selection.png)](media/v2-update-explorer/theme-selection.png#lightbox)
+  [![Theme wybór](media/v2-update-explorer/theme-selection.png)](media/v2-update-explorer/theme-selection.png#lightbox)
 
 > [!TIP]
 > Wybór języka jest również dostępny przez wybranie ikony profilu.
@@ -187,7 +187,7 @@ Wersja zapoznawcza Azure Time Series Insights obsługuje dwa motywy:
 * **Motyw jasny**: motyw domyślny pokazywany w tym dokumencie.
 * **Ciemny motyw**: renderuje Eksploratora, jak pokazano poniżej:
 
-  [motyw @no__t — 1Selected ciemny](media/v2-update-explorer/explorer-seventeen.png)](media/v2-update-explorer/explorer-seventeen.png#lightbox)
+  [motyw ![Selected ciemny](media/v2-update-explorer/explorer-seventeen.png)](media/v2-update-explorer/explorer-seventeen.png#lightbox)
 
 ## <a name="s1s2-environment-controls"></a>Kontrolki środowiska S1/S2
 
@@ -197,11 +197,11 @@ Ta sekcja ma zastosowanie tylko do istniejących środowisk S1/S2, które próbu
 
 Zamiast hierarchii zobaczysz panel warunki Time Series Insights, w którym można definiować zapytania w danym środowisku. Służy do filtrowania danych w oparciu o predykat.
 
-  [@no__t — panel zapytania 1Where](media/v2-update-explorer/explorer-eighteen.png)](media/v2-update-explorer/explorer-eighteen.png#lightbox)
+  [![Where panelu zapytań](media/v2-update-explorer/explorer-eighteen.png)](media/v2-update-explorer/explorer-eighteen.png#lightbox)
 
 Panel Edytor warunków podglądu Time Series Insights przyjmuje następujące parametry:
 
-**Gdzie**: Użyj klauzuli WHERE, aby szybko filtrować zdarzenia przy użyciu zestawu argumentów zamieszczonych w poniższej tabeli. W przypadku przeprowadzania wyszukiwania przez wybranie operandu predykat jest automatycznie aktualizowany na podstawie tego wyszukiwania. Obsługiwane typy operandów to:
+**Gdzie**: Użyj klauzuli WHERE, aby szybko filtrować zdarzenia przy użyciu zestawu argumentów zamieszczonych w poniższej tabeli. W przypadku przeprowadzania wyszukiwania przez wybranie operandu predykat jest automatycznie aktualizowany na podstawie tego wyszukiwania. Obsługiwane są następujące typy operandów:
 
 | Operacja | Obsługiwane typy   | Uwagi |
 | --- | --- | --- |

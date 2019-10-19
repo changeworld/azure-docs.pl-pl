@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b7d041b678ccf2a476afc6d0744f6971349677e
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 0b2f89a846747eaf78c60077372b48802506731e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034869"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553369"
 ---
 # <a name="data-querying"></a>Wykonywanie zapytań dotyczących danych
 
@@ -25,7 +25,7 @@ Trzy podstawowe kategorie interfejsu API są dostępne w Time Series Insights:
 
 * **Interfejsy API środowiska**: umożliwiają wykonywanie zapytań dotyczących środowiska Time Series Insightsowego. Przykłady zapytań to lista środowisk, do których obiekt wywołujący ma dostęp i metadane środowiska.
 
-* **Interfejsy szeregów czasowych (TSM-Q) API**: umożliwia tworzenie, odczytywanie, aktualizowanie i usuwanie metadanych przechowywanych w części środowisko modelu szeregów czasowych. Przykłady to wystąpienia, typy i hierarchie.
+* **Interfejsy szeregów czasowych (TSM-Q) API**: umożliwia tworzenie, odczytywanie, aktualizowanie i usuwanie (CRUD) operacji na metadanych przechowywanych w części środowisko modelu szeregów czasowych. Przykłady to wystąpienia, typy i hierarchie.
 
 * **Interfejsy API kwerendy szeregów czasowych (TSQ)** : umożliwia pobieranie danych zdarzeń, które są rejestrowane przez dostawcę źródłowego. Te interfejsy API mogą wykonywać operacje przekształcania, łączenia i wykonywania obliczeń w danych szeregów czasowych.
 
@@ -35,7 +35,7 @@ Trzy podstawowe kategorie interfejsu API są dostępne w Time Series Insights:
 
 Obsługiwane są następujące podstawowe interfejsy API.
 
-[Przegląd zapytania @no__t 1Time Series](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[Przegląd zapytania dotyczącego serii ![Time](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
 ## <a name="environment-apis"></a>Interfejsy API środowiska
 

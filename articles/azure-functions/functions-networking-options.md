@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170656"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550864"
 ---
 # <a name="azure-functions-networking-options"></a>Opcje sieci Azure Functions
 
@@ -33,11 +33,11 @@ Aplikacje funkcji można hostować na kilka sposobów:
 
 |                |[Plan zużycia](functions-scale.md#consumption-plan)|[Plan Premium (wersja zapoznawcza)](functions-scale.md#premium-plan)|[Plan usługi App Service](functions-scale.md#app-service-plan)|[Środowisko usługi App Service](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Ograniczenia przychodzącego adresu IP & dostęp do lokacji prywatnej](#inbound-ip-restrictions)|✅ Tak|✅ Tak|✅ Tak|✅ Tak|
-|[Integracja sieci wirtualnej](#virtual-network-integration)|❌ Nie|✅ Tak (regionalne)|✅ Tak (regionalne i brama)|✅ Tak|
-|[Wyzwalacze sieci wirtualnej (bez protokołu HTTP)](#virtual-network-triggers-non-http)|❌ Nie| ❌ Nie|✅ Tak|✅ Tak|
-|[Połączenia hybrydowe](#hybrid-connections)|❌ Nie|❌ Nie|✅ Tak|✅ Tak|
-|[Ograniczenia wychodzącego adresu IP](#outbound-ip-restrictions)|❌ Nie| ❌ Nie|❌ Nie|✅ Tak|
+|[Ograniczenia przychodzącego adresu IP & dostęp do lokacji prywatnej](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
+|[Integracja sieci wirtualnej](#virtual-network-integration)|❌No|✅Yes (regionalny)|✅Yes (regionalne i bramy)|✅Yes|
+|[Wyzwalacze sieci wirtualnej (bez protokołu HTTP)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
+|[Połączenia hybrydowe](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[Ograniczenia wychodzącego adresu IP](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
 ## <a name="inbound-ip-restrictions"></a>Ograniczenia przychodzącego adresu IP
@@ -52,7 +52,7 @@ Aby dowiedzieć się więcej, zobacz [Azure App Service ograniczenia dostępu st
 ## <a name="private-site-access"></a>Dostęp do witryn prywatnych
 
 Dostęp do lokacji prywatnej dotyczy udostępniania aplikacji tylko z sieci prywatnej, takiej jak z poziomu sieci wirtualnej platformy Azure. 
-* Dostęp do lokacji prywatnej jest dostępny w planie [Premium](./functions-premium-plan.md), [zużycia](functions-scale.md#consumption-plan) i [App Service](functions-scale.md#app-service-plan) w przypadku skonfigurowania **punktów końcowych usługi** . 
+* Dostęp do lokacji prywatnej jest dostępny w wersji [Premium](./functions-premium-plan.md), [zużycie], (Functions. MD # zużycie-plan) i [App Service plan](functions-scale.md#app-service-plan) podczas konfigurowania **punktów końcowych usługi** . 
     * Punkty końcowe usługi można skonfigurować dla poszczególnych aplikacji w obszarze funkcje platformy > sieci > skonfigurować ograniczenia dostępu > Dodaj regułę. Sieci wirtualne można teraz wybrać jako "typ" reguły.
     * Aby uzyskać więcej informacji, zobacz [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md)
         * Należy pamiętać, że dzięki punktom końcowym usługi funkcja nadal ma pełny dostęp wychodzący do Internetu, nawet z skonfigurowaną integracją sieci wirtualnej.
@@ -87,13 +87,13 @@ Niezależnie od używanej wersji integracja z siecią wirtualną zapewnia aplika
 Funkcja integracji sieci wirtualnej:
 
 * Wymaga planu App Service w warstwie Standardowa, Premium lub PremiumV2
-* Obsługuje protokoły TCP i UDP
-* Współpracuje z aplikacjami App Service i aplikacjami funkcji
+* obsługuje protokoły TCP i UDP
+* współpracuje z aplikacjami App Service i aplikacjami funkcji
 
 Istnieje kilka rzeczy, które nie są obsługiwane przez integrację sieci wirtualnej, w tym:
 
 * Instalowanie dysku
-* Integracja z usługą AD 
+* Integracja usługi AD 
 * NetBios
 
 Integracja sieci wirtualnej w usłudze Functions używa udostępnionej infrastruktury z App Service Web Apps. Aby dowiedzieć się więcej o dwóch typach integracji z siecią wirtualną, zobacz:
@@ -102,12 +102,20 @@ Integracja sieci wirtualnej w usłudze Functions używa udostępnionej infrastru
 
 Aby dowiedzieć się więcej o korzystaniu z integracji z siecią wirtualną, zobacz [Integrowanie aplikacji funkcji z siecią wirtualną platformy Azure](functions-create-vnet.md).
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Ograniczanie konta magazynu do sieci wirtualnej
+## <a name="connecting-to-service-endpoint-secured-resources"></a>Łączenie z zabezpieczonymi zasobami punktu końcowego usługi
 
 > [!note] 
-> Chwilowo może upłynąć do 12 godzin, zanim Twoje konto magazynu stanie się dostępne w aplikacji funkcji po skonfigurowaniu ograniczeń dostępu dla tego konta magazynu. W tym czasie aplikacja będzie całkowicie w trybie offline.
+> Czasowo nowe punkty końcowe usługi staną się dostępne w aplikacji funkcji dopiero po upływie 12 godzin. W tym czasie zasób będzie całkowicie niedostępny dla aplikacji.
 
-Aby zapewnić wyższy poziom zabezpieczeń, można ograniczyć konto magazynu aplikacji do sieci wirtualnej. Następnie należy zintegrować swoją lokację z tą siecią wirtualną, aby uzyskać dostęp do konta magazynu. Ta konfiguracja jest obsługiwana we wszystkich planach, które obsługują integrację z siecią wirtualną.
+Aby zapewnić wyższy poziom zabezpieczeń, można ograniczyć liczbę usług platformy Azure do sieci wirtualnej za pomocą punktów końcowych usługi. Następnie należy zintegrować aplikację funkcji z tą siecią wirtualną, aby uzyskać dostęp do zasobu. Ta konfiguracja jest obsługiwana we wszystkich planach, które obsługują integrację z siecią wirtualną.
+
+[Więcej informacji na temat punktów końcowych usługi sieci wirtualnej można znaleźć tutaj.](../virtual-network/virtual-network-service-endpoints-overview.md)
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Ograniczanie konta magazynu do sieci wirtualnej
+Podczas tworzenia aplikacji funkcji należy utworzyć konto usługi Azure Storage ogólnego przeznaczenia lub połączyć się z nim, które obsługuje magazyn obiektów blob, kolejek i tabel. Nie jest obecnie możliwe używanie żadnych ograniczeń sieci wirtualnej na tym koncie. W przypadku skonfigurowania punktu końcowego usługi sieci wirtualnej na koncie magazynu używanym przez aplikację funkcji aplikacja zostanie przerwana.
+
+[Przeczytaj więcej na temat wymagań dotyczących konta magazynu tutaj.](./functions-create-function-app-portal.md#storage-account-requirements
+) 
 
 ## <a name="virtual-network-triggers-non-http"></a>Wyzwalacze sieci wirtualnej (bez protokołu HTTP)
 
@@ -117,7 +125,7 @@ Aby podać przykład, jeśli chcesz skonfigurować Azure Cosmos DB tak, aby akce
 
 Zaznacz [tę listę dla wszystkich wyzwalaczy innych niż http](./functions-triggers-bindings.md#supported-bindings) , aby dokładnie sprawdzić, co jest obsługiwane.
 
-## <a name="hybrid-connections"></a>Połączenia hybrydowe
+## <a name="hybrid-connections"></a>Hybrydowe
 
 [Połączenia hybrydowe](../service-bus-relay/relay-hybrid-connections-protocol.md) to funkcja Azure Relay, z której można korzystać w celu uzyskania dostępu do zasobów aplikacji w innych sieciach. Zapewnia dostęp z aplikacji do punktu końcowego aplikacji. Nie można używać go do uzyskiwania dostępu do aplikacji. Połączenia hybrydowe jest dostępny dla funkcji uruchomionych w [planie App Service](functions-scale.md#app-service-plan) i [App Service Environment](../app-service/environment/intro.md).
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: db96663ef3d901546e1b32362a9eb9c9ae09dd21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1ef9f3f847cb74aca0cae66dc8354838d28a645f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377514"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553655"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integracja z usługą git dla Azure Machine Learning
 
@@ -26,15 +26,15 @@ Ponieważ Azure Machine Learning śledzi informacje z lokalnego repozytorium git
 
 Po przesłaniu szkolenia z zestawu SDK języka Python lub interfejsu wiersza polecenia Machine Learning pliki potrzebne do uczenia modelu są przekazywane do obszaru roboczego. Jeśli `git` polecenie jest dostępne w środowisku deweloperskim, proces przekazywania używa go do sprawdzenia, czy pliki są przechowywane w repozytorium git. Jeśli tak, to w ramach przebiegu szkoleniowego zostanie również przekazane informacje z repozytorium git. Te informacje są przechowywane w następujących właściwościach przebiegu szkoleniowego:
 
-| Właściwość | Opis |
-| ----- | ----- |
-| `azureml.git.repository_uri` | Identyfikator URI, z którego zostało Sklonowane repozytorium. |
-| `mlflow.source.git.repoURL` | Identyfikator URI, z którego zostało Sklonowane repozytorium. |
-| `azureml.git.branch` | Aktywna gałąź podczas przesyłania przebiegu. |
-| `mlflow.source.git.branch` | Aktywna gałąź podczas przesyłania przebiegu. |
-| `azureml.git.commit` | Skrót zatwierdzenia kodu, który został przesłany dla uruchomienia. |
-| `mlflow.source.git.commit` | Skrót zatwierdzenia kodu, który został przesłany dla uruchomienia. |
-| `azureml.git.dirty` | `True`, jeśli zatwierdzenie jest zanieczyszczone; w przeciwnym razie `false`. |
+| Właściwość | Polecenie git użyte do pobrania wartości | Opis |
+| ----- | ----- | ----- |
+| `azureml.git.repository_uri` | `git ls-remote --get-url` | Identyfikator URI, z którego zostało Sklonowane repozytorium. |
+| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Identyfikator URI, z którego zostało Sklonowane repozytorium. |
+| `azureml.git.branch` | `git symbolic-ref --short HEAD` | Aktywna gałąź podczas przesyłania przebiegu. |
+| `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | Aktywna gałąź podczas przesyłania przebiegu. |
+| `azureml.git.commit` | `git rev-parse HEAD` | Skrót zatwierdzenia kodu, który został przesłany dla uruchomienia. |
+| `mlflow.source.git.commit` | `git rev-parse HEAD` | Skrót zatwierdzenia kodu, który został przesłany dla uruchomienia. |
+| `azureml.git.dirty` | `git status --porcelain .` | `True`, jeśli gałąź/zatwierdzenie są zanieczyszczone; w przeciwnym razie `false`. |
 
 Te informacje są wysyłane do przebiegów korzystających z szacowania, potoku uczenia maszynowego lub uruchamiania skryptów.
 
@@ -49,7 +49,9 @@ Informacje dotyczące usługi git są przechowywane we właściwościach przebie
 1. Na [Azure Portal](https://portal.azure.com)wybierz swój obszar roboczy.
 1. Wybierz pozycję __eksperymenty__, a następnie wybierz jedno z eksperymentów.
 1. Wybierz jeden z przebiegów z kolumny __numer uruchomienia__ .
-1. Wybierz pozycję __dzienniki__, a następnie rozwiń pozycje __dzienniki__ i __Azure__ . Wybierz łącze zaczynające się od __### @ no__t-2azure__.
+1. Wybierz pozycję __dzienniki__, a następnie rozwiń pozycje __dzienniki__ i __Azure__ . Wybierz łącze zaczynające się od __### \_azure__.
+
+    ![Wpis # # #_azure w portalu](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
 Zarejestrowane informacje zawierają tekst podobny do następującego:
 

@@ -1,34 +1,34 @@
 ---
-title: Użyj Centrum zdarzeń z aplikacji platformy Apache Kafka — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera informacje na temat obsługi platformy Apache Kafka w usłudze Azure Event Hubs.
+title: Korzystanie z centrum zdarzeń w programie Apache Kafka App — Azure Event Hubs | Microsoft Docs
+description: Ten artykuł zawiera informacje na temat obsługi Apache Kafka przez usługę Azure Event Hubs.
 services: event-hubs
 documentationcenter: .net
-author: shvija
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 8bf381e7c66e06bbaa140ed865f0f7c9b4f001af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shvija
+ms.openlocfilehash: d3271d6e8cb7d423e1dccd235b244688e7ab5683
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821698"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555795"
 ---
-# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Za pomocą usługi Azure Event Hubs z poziomu aplikacji platformy Apache Kafka
-Usługa Event Hubs zapewnia punktu końcowego platformy Kafka, który może być używany przez istniejącą platformy Kafka na podstawie aplikacji zamiast uruchamiania klastra Kafka. Usługa Event Hubs obsługuje [protokołu platformy Apache Kafka w wersji 1.0 lub nowszy](https://kafka.apache.org/documentation/)i współpracuje z istniejącymi aplikacjami platformy Kafka, w tym narzędzia MirrorMaker.  
+# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Korzystanie z Event Hubs platformy Azure z aplikacji Apache Kafka
+Event Hubs udostępnia punkt końcowy Kafka, który może być używany przez istniejące aplikacje oparte na Kafka jako alternatywę dla uruchamiania własnego klastra Kafka. Event Hubs obsługuje [protokół Apache Kafka 1,0 i nowsze](https://kafka.apache.org/documentation/)i współpracuje z istniejącymi aplikacjami Kafka, w tym narzędzia MirrorMaker.  
 
-## <a name="what-does-event-hubs-for-kafka-provide"></a>Co oferuje usługi Event Hubs dla platformy Kafka
+## <a name="what-does-event-hubs-for-kafka-provide"></a>Co zapewnia Event Hubs Kafka?
 
-Usługa Event Hubs dla platformy Kafka funkcji zawiera head protokołu, na podstawie usługi Azure Event Hubs jest binarny zgodny z platformą Kafka w wersji 1.0 i nowszym w przypadku zarówno odczytywanie z oraz zapisywanie do tematów platformy Kafka. Punkt końcowy platformy Kafka z poziomu aplikacji może korzystać z żadne zmiany kodu, ale zmiana minimalnej konfiguracji. Należy zaktualizować parametry połączenia w konfiguracji w celu wskazania punktu końcowego platformy Kafka, udostępnianych przez Centrum zdarzeń zamiast wskazujący klastra Kafka. Następnie należy uruchomić, przesyłanie strumieniowe zdarzeń z poziomu aplikacji, które używają protokołu Kafka do usługi Event Hubs. Integracja ta obsługuje również środowisk, takich jak [połączyć Kafka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect), który jest obecnie dostępna w wersji zapoznawczej. 
+Funkcja Event Hubs for Kafka udostępnia nagłówek protokołu w oparciu o usługę Azure Event Hubs, która jest binarna zgodna z Kafka wersjami 1,0 i nowszymi w przypadku odczytywania i zapisywania w tematach Kafka. Możesz rozpocząć korzystanie z punktu końcowego Kafka z aplikacji bez zmiany kodu, ale minimalnej zmiany konfiguracji. Należy zaktualizować parametry połączenia w konfiguracjach, aby wskazywały punkt końcowy Kafka uwidoczniony przez centrum zdarzeń zamiast wskazywać klaster Kafka. Następnie można rozpocząć przesyłanie strumieniowe zdarzeń z aplikacji korzystających z protokołu Kafka do Event Hubs. Ta integracja obsługuje również platformy, takie jak [Kafka Connect](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect), które są obecnie dostępne w wersji zapoznawczej. 
 
-Koncepcyjnie Kafka i usługi Event Hubs są niemal identyczne: są obydwa dzienniki podzielonym na partycje, stworzona z myślą o danych przesyłanych strumieniowo. Poniższa tabela zawiera mapowanie pojęcia między platformy Kafka i centrów zdarzeń.
+Kafka koncepcyjnie i Event Hubs są niemal identyczne: są to dzienniki partycjonowane dla danych przesyłanych strumieniowo. W poniższej tabeli przedstawiono koncepcje między Kafka i Event Hubs.
 
-### <a name="kafka-and-event-hub-conceptual-mapping"></a>Usługi Kafka i Centrum zdarzeń koncepcyjne mapowanie
+### <a name="kafka-and-event-hub-conceptual-mapping"></a>Mapowanie koncepcyjne Kafka i centrum zdarzeń
 
-| Koncepcja platformy Kafka | Koncepcja centrów zdarzeń|
+| Koncepcja Kafka | Koncepcja Event Hubs|
 | --- | --- |
 | Klaster | Przestrzeń nazw |
 | Temat | Centrum zdarzeń |
@@ -36,36 +36,36 @@ Koncepcyjnie Kafka i usługi Event Hubs są niemal identyczne: są obydwa dzienn
 | Grupa konsumentów | Grupa konsumentów |
 | Przesunięcie | Przesunięcie|
 
-### <a name="key-differences-between-kafka-and-event-hubs"></a>Podstawowe różnice między Kafka i usługi Event Hubs
+### <a name="key-differences-between-kafka-and-event-hubs"></a>Kluczowe różnice między Kafka i Event Hubs
 
-Gdy [platformy Apache Kafka](https://kafka.apache.org/) to oprogramowanie, które można uruchomić wszędzie tam, gdzie możesz wybrać, usługa Event Hubs to usługa w chmurze podobne do usługi Azure Blob Storage. Brak serwerów lub sieci do zarządzania ani nie brokerów, aby skonfigurować. Tworzenie przestrzeni nazw, czyli nazwę FQDN, w którym będzie funkcjonować tematów, a następnie utworzyć usługi Event Hubs lub tematów w ramach tej przestrzeni nazw. Aby uzyskać więcej informacji na temat usługi Event Hubs i przestrzenie nazw, zobacz [funkcji usługi Event Hubs](event-hubs-features.md#namespace). Jako usługa w chmurze usługa Event Hubs używa pojedynczego stabilne wirtualnego adresu IP jako punkt końcowy, dzięki czemu klienci nie muszą wiedzieć o brokerów lub maszyn w ramach klastra. 
+Gdy [Apache Kafka](https://kafka.apache.org/) to oprogramowanie, które można uruchomić w dowolnym miejscu, Event Hubs jest usługą w chmurze podobną do BLOB Storage platformy Azure. Brak serwerów lub sieci do zarządzania i nie ma żadnych brokerów do skonfigurowania. Tworzysz przestrzeń nazw, która jest nazwą FQDN, w której znajdują się tematy, a następnie utwórz Event Hubs lub tematy w tej przestrzeni nazw. Aby uzyskać więcej informacji na temat Event Hubs i przestrzeni nazw, zobacz [Event Hubs Features](event-hubs-features.md#namespace). Jako usługa w chmurze Event Hubs używa jednego stabilnego wirtualnego adresu IP jako punktu końcowego, dlatego klienci nie muszą znać brokerów ani maszyn w klastrze. 
 
-Skalowanie w usłudze Event Hubs jest kontrolowana przez liczbę jednostek przepływności można kupić, każda jednostka przepływności uprawniających należy do 1 MB na sekundę lub 1000 zdarzeń na sekundę transferu danych przychodzących. Domyślnie usługa Event Hubs jest skalowany w górę jednostek przepływności w przypadku osiągnięcia limitu z [automatyczne rozszerzanie](event-hubs-auto-inflate.md) funkcji; to także funkcji współpracuje z usługą Event Hubs dla platformy Kafka funkcji. 
+Skalowanie w Event Hubs jest kontrolowane przez liczbę jednostek przepływności, które można kupić, a każda jednostka przepływności entitling do 1 MB na sekundę lub 1000 zdarzeń na sekundę. Domyślnie Event Hubs skaluje jednostki przepływności po osiągnięciu limitu przez funkcję [autostartu](event-hubs-auto-inflate.md) . Ta funkcja działa również z funkcją Event Hubs for Kafka. 
 
 ### <a name="security-and-authentication"></a>Zabezpieczenia i uwierzytelnianie
 
-Usługa Azure Event Hubs wymaga protokołu SSL lub TLS dla całej komunikacji i używa sygnatur dostępu współdzielonego (SAS) do uwierzytelniania. To wymaganie obowiązuje również punkt końcowy platformy Kafka w usłudze Event Hubs. Zgodność z platformą Kafka usługa Event Hubs używa zwykły SASL dla uwierzytelniania oraz protokołu SSL SASL zabezpieczeń transportu. Aby uzyskać więcej informacji na temat zabezpieczeń w usłudze Event Hubs, zobacz [uwierzytelniania usługi Event Hubs i zabezpieczeń](event-hubs-authentication-and-security-model-overview.md).
+Usługa Azure Event Hubs wymaga protokołu SSL lub TLS dla całej komunikacji i używa sygnatur dostępu współdzielonego (SAS) do uwierzytelniania. To wymaganie ma również wartość true dla punktu końcowego Kafka w Event Hubs. W celu zapewnienia zgodności z programem Kafka Event Hubs używa SASL PLAIN do uwierzytelniania i protokołu SASL SSL na potrzeby zabezpieczeń transportu. Aby uzyskać więcej informacji na temat zabezpieczeń w Event Hubs, zobacz [Event Hubs Authentication and Security](event-hubs-authentication-and-security-model-overview.md).
 
-## <a name="other-event-hubs-features-available-for-kafka"></a>Inne funkcje usługi Event Hubs jest dostępna dla platformy Kafka
+## <a name="other-event-hubs-features-available-for-kafka"></a>Inne funkcje Event Hubs dostępne dla Kafka
 
-Centra zdarzeń dla funkcji platformy Kafka umożliwia jeden protokół do pisania i odczytać za pomocą innego, tak, aby kontynuować publikowanie za pomocą platformy Kafka w Twojej bieżącej producentów platformy Kafka i dodawać czytelników przy użyciu usługi Event Hubs, takich jak Azure Stream Analytics lub Azure Functions. Ponadto usługa Event Hubs funkcje, takie jak [przechwytywania](event-hubs-capture-overview.md) i [odzyskiwania po awarii replikacji geograficznej](event-hubs-geo-dr.md) również działać z usługą Event Hubs dla platformy Kafka funkcji.
+Funkcja Event Hubs for Kafka umożliwia pisanie przy użyciu jednego protokołu i odczytywanie go w inny sposób, dzięki czemu aktualni producenci Kafka mogą kontynuować publikowanie za pośrednictwem Kafkau i można dodać czytelników z Event Hubs, takimi jak Azure Stream Analytics lub Azure Functions. Ponadto funkcje Event Hubs, takie jak [przechwytywanie](event-hubs-capture-overview.md) i replikacja [geograficzna](event-hubs-geo-dr.md) , działają również z funkcją Event Hubs for Kafka.
 
 ## <a name="features-that-are-not-yet-supported"></a>Funkcje, które nie są jeszcze obsługiwane 
 
-Poniżej przedstawiono listę funkcji platformy Kafka, które nie są jeszcze obsługiwane:
+Poniżej znajduje się lista funkcji Kafka, które nie są jeszcze obsługiwane:
 
-*   Producent Idempotentne
-*   Transakcji
+*   Producent idempotentne
+*   Transaction
 *   Kompresja
-*   Przechowywania na podstawie rozmiaru
+*   Przechowywanie na podstawie rozmiaru
 *   Kompaktowanie dziennika
-*   Dodawanie partycji istniejącemu tematowi
-*   Obsługa protokołu HTTP platformy Kafka interfejsu API
-*   Kafka Streams
+*   Dodawanie partycji do istniejącego tematu
+*   Obsługa interfejsu API HTTP Kafka
+*   Kafka strumienie
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule podano zapoznać się z wprowadzeniem do usługi Event Hubs dla platformy Kafka. Aby dowiedzieć się więcej, zobacz następujące linki:
+W tym artykule przedstawiono wprowadzenie do Event Hubs Kafka. Aby dowiedzieć się więcej, zobacz następujące linki:
 
 - [Jak utworzyć centra Event Hubs z obsługą platformy Kafka](event-hubs-create-kafka-enabled.md)
 - [Przesyłanie strumieniowe do usługi Event Hubs z aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)

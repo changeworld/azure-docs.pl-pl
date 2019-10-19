@@ -1,24 +1,18 @@
 ---
 title: Twórz interaktywne raporty przy użyciu skoroszytów Azure Monitor | Microsoft Docs
 description: Uprość złożone raporty ze wstępnie zdefiniowanymi i niestandardowymi skoroszytami dla Azure Monitor dla maszyn wirtualnych.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 9e1427ce8cd83b49f4b9b39fa82eff1e8a32cd10
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.date: 10/15/2019
+ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515396"
+ms.locfileid: "72553729"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Tworzenie interaktywnych raportów przy użyciu skoroszytów Azure Monitor
 

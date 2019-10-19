@@ -1,25 +1,22 @@
 ---
 title: Azure Monitor for Containers — często zadawane pytania | Microsoft Docs
 description: Azure Monitor for Containers to rozwiązanie monitorujące kondycję klastrów AKS i Container Instances na platformie Azure. Ten artykuł zawiera odpowiedzi na często zadawane pytania.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f8d763f8bb228a0d4d83a3776f818d59939b942d
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.date: 08/14/2019
+ms.openlocfilehash: bda64dd555f1970b70878d827f6be1dab3f1e2d5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559084"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555432"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor for Containers — często zadawane pytania
 
-Ta firma Microsoft — często zadawane pytania dotyczące Azure Monitor kontenerów. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do [forum dyskusyjnego](https://feedback.azure.com/forums/34192--general-feedback) i Opublikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
+Ta firma Microsoft — często zadawane pytania dotyczące Azure Monitor kontenerów. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do [forum dyskusyjnego](https://feedback.azure.com/forums/34192--general-feedback) i Opublikuj swoje pytania. Gdy pytanie jest często zadawane, dodamy je do tego artykułu, aby można je było szybko i łatwo znaleźć.
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Czy mogę monitorować klaster AKS-Engine z Azure Monitor dla kontenerów?
 
@@ -71,20 +68,20 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 
 ```
 
-Aby zapoznać się z szczegółowym opisem problemu, zapoznaj się z następującym linkiem w witrynie [GitHub](https://github.com/moby/moby/issues/22920).
+Aby zapoznać się z szczegółowym opisem problemu, zapoznaj się z następującym [linkiem](https://github.com/moby/moby/issues/22920)w witrynie GitHub.
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Jak mogę rozwiązać problemy z usługą Azure AD po włączeniu dzienników na żywo? 
 
-Może zostać wyświetlony następujący błąd: **Adres URL odpowiedzi określony w żądaniu jest niezgodny z adresami URL odpowiedzi skonfigurowanymi dla aplikacji: "< identyfikator\>aplikacji"** . Rozwiązanie, które pozwala rozwiązać ten problem, można znaleźć w artykule [jak wyświetlić dzienniki kontenerów w czasie rzeczywistym za pomocą Azure monitor dla kontenerów](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
+Może zostać wyświetlony następujący błąd: **adres URL odpowiedzi określony w żądaniu nie pasuje do adresów URL odpowiedzi skonfigurowanych dla aplikacji: "< identyfikator aplikacji \>"** . Rozwiązanie, które pozwala rozwiązać ten problem, można znaleźć w artykule [jak wyświetlić dzienniki kontenerów w czasie rzeczywistym za pomocą Azure monitor dla kontenerów](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Dlaczego nie mogę uaktualnić klastra po dołączeniu?
 
 Jeśli po włączeniu Azure Monitor dla kontenerów dla klastra AKS zostanie usunięty obszar roboczy Log Analytics, do którego klaster wysłał swoje dane, podczas próby uaktualnienia klastra zakończy się niepowodzeniem. Aby obejść ten krok, należy wyłączyć monitorowanie, a następnie włączyć go ponownie, odwołując się do innego prawidłowego obszaru roboczego w ramach subskrypcji. Podczas próby ponownego wykonania uaktualnienia klastra należy przetworzyć i zakończyć pracę.  
 
 ## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Które porty i domeny muszę otworzyć/dozwolonych dla agenta?
-- *.ods.opinsights.azure.com   443
-- *.oms.opinsights.azure.com   443
-- *.blob.core.windows.net      443
+- *. ods.opinsights.azure.com 443
+- *. oms.opinsights.azure.com 443
+- *. blob.core.windows.net 443
 - dc.services.visualstudio.com 443
 - *. microsoftonline.com 443
 - *. monitoring.azure.com 443
@@ -92,4 +89,4 @@ Jeśli po włączeniu Azure Monitor dla kontenerów dla klastra AKS zostanie usu
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć monitorowanie klastra usługi AKS, zapoznaj się z [sposób dołączania Azure Monitor wykrywający sytuacje, kontenery](container-insights-onboard.md) , aby zrozumieć wymagania i dostępnych metod, aby włączyć monitorowanie. 
+Aby rozpocząć monitorowanie klastra AKS, zapoznaj się z [tematem jak dołączyć Azure monitor dla kontenerów](container-insights-onboard.md) , aby zrozumieć wymagania i dostępne metody umożliwiające monitorowanie. 

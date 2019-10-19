@@ -1,19 +1,18 @@
 ---
 title: Grupy inteligentne
 description: Grupy inteligentne to agregacja alertów, które pomagają zredukować hałas alertów
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/15/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 05/15/2018
+ms.openlocfilehash: 83ea68ad92a6c78ccf56483e1f0c2cbcbcd7d22a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702872"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552350"
 ---
 # <a name="smart-groups"></a>Grupy inteligentne
 Typowym wyzwaniem związanym z alertami jest przechodzenie między zakłóceniami, aby dowiedzieć się, jakie są rzeczywiste kwestie — grupy inteligentne są przeznaczone do rozwiązania tego problemu.  
@@ -33,7 +32,7 @@ Obsługiwane są następujące inteligentne Stany grup.
 |:---|:---|
 | Nowość | Problem został właśnie wykryty i nie został jeszcze zweryfikowany. |
 | Potwierdzone | Administrator przejrzał grupę inteligentną i uruchomił ją. |
-| Napis | Problem został rozwiązany. Po zamknięciu grupy inteligentnej można ją otworzyć ponownie, zmieniając ją na inny stan. |
+| napis | Problem został rozwiązany. Po zamknięciu grupy inteligentnej można ją otworzyć ponownie, zmieniając ją na inny stan. |
 
 [Dowiedz się, jak zmienić stan grupy inteligentnej.](https://aka.ms/managing-alert-smart-group-states)
 

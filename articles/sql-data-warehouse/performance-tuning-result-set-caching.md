@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: f6323501fc0078677c4c0e2cd0e43a15583df29b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.openlocfilehash: 3e6af57840cf60516aba994a6b5728bfb7b35f09
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513986"
+ms.locfileid: "72553530"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Dostrajanie wydajności z buforowaniem zestawu wyników  
 Gdy buforowanie zestawu wyników jest włączone, Azure SQL Data Warehouse automatycznie buforuje wyniki zapytania w bazie danych użytkownika do powtarzanego użycia.  Dzięki temu kolejne wykonania zapytania będą uzyskiwać wyniki bezpośrednio z utrwalonej pamięci podręcznej, więc ponowne obliczenie nie jest konieczne.   Buforowanie zestawu wyników zwiększa wydajność zapytań i zmniejsza użycie zasobów obliczeniowych.  Ponadto zapytania korzystające z zbuforowanego zestawu wyników nie używają żadnych miejsc współbieżności, więc nie są wliczane do istniejących limitów współbieżności. W celu zapewnienia bezpieczeństwa użytkownicy mogą uzyskiwać dostęp do buforowanych wyników tylko wtedy, gdy mają one takie same uprawnienia dostępu do danych, jak użytkownicy tworzący buforowane wyniki.  
@@ -34,11 +34,10 @@ Gdy buforowanie zestawu wyników jest włączone, Azure SQL Data Warehouse autom
 Po włączeniu buforowania zestawu wyników dla bazy danych wyniki są buforowane dla wszystkich zapytań do momentu zapełnienia pamięci podręcznej, z wyjątkiem tych zapytań:
 - Zapytania korzystające z funkcji niedeterministycznych, takich jak DateTime. Now ()
 - Zapytania korzystające z funkcji zdefiniowanych przez użytkownika
+- Zapytania korzystające z tabel z włączonymi zabezpieczeniami na poziomie wierszy lub zabezpieczeniami
 - Zapytania zwracające dane z rozmiarem wiersza większym niż 64 KB
 
 Zapytania z dużymi zestawami wyników (na przykład > 1 000 000 wierszy) mogą spowodować wolniejszą wydajność podczas pierwszego uruchomienia podczas tworzenia pamięci podręcznej wyników.
-
-Zabezpieczenia na poziomie wiersza nie są obsługiwane przez buforowanie zestawu wyników.  
 
 ## <a name="when-cached-results-are-used"></a>Gdy są używane buforowane wyniki
 

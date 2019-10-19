@@ -1,24 +1,18 @@
 ---
 title: Wyświetl Azure Monitor dla dzienników kontenerów w czasie rzeczywistym | Microsoft Docs
 description: W tym artykule opisano widok w czasie rzeczywistym dzienników kontenerów (stdout/stderr) i zdarzenia bez używania polecenia kubectl z Azure Monitor dla kontenerów.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: d947b44177e9aa5777d759286d982e974e378497
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 07/12/2019
+ms.openlocfilehash: 25cfe10ec192f874d050bca22ce1b85c2d1afbb4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389791"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554091"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Jak wyświetlać dzienniki i zdarzenia w czasie rzeczywistym (wersja zapoznawcza)
 Azure Monitor dla kontenerów zawiera funkcję, która jest obecnie dostępna w wersji zapoznawczej, która umożliwia wyświetlanie na żywo w usłudze Azure Kubernetes Service (AKS) Logs (stdout/stderr) i zdarzenia bez konieczności uruchamiania poleceń polecenia kubectl. Po wybraniu jednej z tych opcji nowe okienko zostanie wyświetlone poniżej tabeli dane wydajności w **węźle węzły**, **Kontrolery**i **kontenery** . Pokazuje rejestrowanie na żywo i zdarzenia wygenerowane przez aparat kontenera, aby dodatkowo pomóc w rozwiązywaniu problemów w czasie rzeczywistym.

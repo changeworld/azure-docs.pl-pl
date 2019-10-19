@@ -1,19 +1,18 @@
 ---
 title: Konfigurowanie Diagnostyka Azure do wysyłania danych do Application Insights
 description: Zaktualizuj konfigurację publiczną Diagnostyka Azure, aby wysyłać dane do Application Insights.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/19/2016
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/19/2016
+ms.openlocfilehash: 5328d2be4b8bf733041c39fe029ae2d02ecc3a6e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60396142"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552047"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Wyślij usługę w chmurze, maszynę wirtualną lub Service Fabric dane diagnostyczne do Application Insights
 Cloud Services, Virtual Machines, Virtual Machine Scale Sets i Service Fabric wszystkie używają rozszerzenia Diagnostyka Azure do zbierania danych.  Diagnostyka Azure wysyła dane do tabel usługi Azure Storage.  Można jednak również potokować wszystkie lub podzbiór danych do innych lokalizacji przy użyciu rozszerzenia Diagnostyka Azure 1,5 lub nowszego.
@@ -67,11 +66,11 @@ Przykładowa konfiguracja ujścia dla Application Insights:
 - Element **Channels** zawiera jeden lub więcej elementów **kanału** .
     - Atrybut *name* jednoznacznie odwołuje się do tego kanału.
     - Atrybut *LogLevel* umożliwia określenie poziomu dziennika, który umożliwia kanał. Dostępne poziomy dziennika są następujące:
-        - Pełny
-        - Information
+        - Pełne
+        - Informacje
         - Ostrzeżenie
         - Błąd
-        - Krytyczny
+        - Krytyczna
 
 Kanał działa jak filtr i umożliwia wybranie określonych poziomów dziennika do wysłania do docelowego ujścia. Można na przykład zebrać pełne dzienniki i wysłać je do magazynu, ale wysłać tylko błędy do ujścia.
 
