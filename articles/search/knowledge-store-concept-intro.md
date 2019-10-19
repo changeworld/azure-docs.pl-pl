@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: b092c7251bc2a6794db36f8eaa279a7eeb931723
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
-ms.translationtype: HT
+ms.openlocfilehash: 8a0022ce429b1359d8771f5089589fc779b8a751
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533776"
+ms.locfileid: "72554896"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Co to jest sklep merytoryczny w Azure Search?
 
@@ -21,17 +21,17 @@ ms.locfileid: "72533776"
 > Magazyn wiedzy jest w wersji zapoznawczej i nie jest przeznaczony do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
 >
 
-Magazyn wiedzy to funkcja w Azure Search, która utrzymuje dane wyjściowe z [potoku wzbogacania AI](cognitive-search-concept-intro.md) na potrzeby późniejszej analizy lub przetwarzania podrzędnego. *Wzbogacony dokument* to dane wyjściowe potoku, utworzone na podstawie zawartości wyodrębnionej, strukturalnej i analizowanej przy użyciu zasobów w Cognitive Services. W standardowym potoku opartym na formacie AI, wzbogacone dokumenty są przejściowe, używane tylko podczas indeksowania, a następnie odrzucane. W sklepie z bazami danych dokumenty są zapisywane do użycia w innych aplikacjach lub w ramach obciążeń związanych z nauką. 
+Magazyn wiedzy to funkcja w Azure Search, która utrzymuje dane wyjściowe z [potoku wzbogacania AI](cognitive-search-concept-intro.md) na potrzeby późniejszej analizy lub przetwarzania podrzędnego. *Wzbogacony dokument* to dane wyjściowe potoku, utworzone na podstawie zawartości wyodrębnionej, strukturalnej i analizowanej przy użyciu procesów AI. W standardowym potoku AI, wzbogacone dokumenty są nietrwałe, używane tylko podczas indeksowania, a następnie odrzucane. W sklepie merytorycznym chronione dokumenty są zachowywane. 
 
-Jeśli korzystasz z umiejętności systemu AI z Azure Search w przeszłości, wiesz już, że *umiejętności* są używane do przenoszenia dokumentu przez sekwencję wzbogacania. Wynikiem może być indeks Azure Search lub (Nowość w tej wersji zapoznawczej) projekcje w sklepie z bazami danych. Dwa dane wyjściowe, indeks wyszukiwania i magazyn wiedzy są fizycznie odrębne. Korzystają one z tej samej zawartości, ale są przechowywane i używane na różne sposoby.
+Jeśli korzystasz z umiejętności systemu AI z Azure Search w przeszłości, wiesz już, że *umiejętności* przenieść dokument przez sekwencję wzbogacania. Wynikiem może być indeks wyszukiwania lub (Nowość w tej wersji zapoznawczej) projekcje w sklepie z bazami danych. Dwa dane wyjściowe, indeks wyszukiwania i magazyn wiedzy mają tę samą zawartość, ale są przechowywane i używane na różne sposoby.
 
-Fizycznie magazyn wiedzy to [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), w tym Azure Table Storage, Azure Blob Storage lub oba, w zależności od sposobu skonfigurowania potoku. Każde narzędzie lub proces, który może nawiązać połączenie z kontem usługi Azure Storage, może korzystać z zawartości sklepu z bazami danych.
+Fizycznie magazyn wiedzy to [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), Azure Table Storage, Azure Blob Storage lub oba te elementy. Wszystkie narzędzia i procesy, które mogą łączyć się z usługą Azure Storage, mogą zużywać zawartość sklepu z bazami wiedzy.
 
-Projekcje to mechanizm służący do tworzenia struktury danych w sklepie z bazami wiedzy. Na przykład za pomocą projekcji można określić, czy dane wyjściowe mają być zapisywane jako pojedynczy obiekt BLOB, czy jako kolekcja powiązanych tabel. Prostym sposobem wyświetlania zawartości sklepu merytorycznego jest użycie wbudowanej [Eksplorator usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) usługi Azure Storage.
+![Magazyn wiedzy w diagramie potoku](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Magazyn wiedzy w diagramie potoku")
 
-![Magazyn wiedzy w diagramie potoku](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Magazyn wiedzy w diagramie potoku")
+Projekcje to mechanizm służący do tworzenia struktury danych w sklepie z bazami wiedzy. Na przykład za pomocą projekcji można określić, czy dane wyjściowe mają być zapisywane jako pojedynczy obiekt BLOB, czy jako kolekcja powiązanych tabel. 
 
-Aby korzystać ze sklepu z bazami danych, Dodaj `knowledgeStore` element do zestawu umiejętności, który definiuje operacje krok po kroku w potoku indeksowania. Podczas wykonywania Azure Search tworzy miejsce na koncie usługi Azure Storage i projektuje wzbogacone dokumenty z definicją utworzoną w potoku.
+Aby korzystać ze sklepu z bazami danych, Dodaj `knowledgeStore` element do zestawu umiejętności, który definiuje operacje krok po kroku w potoku indeksowania. Podczas wykonywania Azure Search tworzy miejsce na koncie usługi Azure Storage i projektuje wzbogacone dokumenty jako obiekty blob lub tabele, w zależności od konfiguracji.
 
 ## <a name="benefits-of-knowledge-store"></a>Zalety sklepu z bazami danych
 

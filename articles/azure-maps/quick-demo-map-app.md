@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6afe76aca388f1f6bd479f53eb4e18cc62c10584
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 092da53c3179d939ebf0472219338b8d8392fda6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62116571"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554278"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Tworzenie interaktywnego wyszukiwania na mapie za pomocą usługi Azure Maps
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-an-account-and-get-your-key"></a>Tworzenie konta i uzyskiwanie klucza
 
@@ -43,7 +43,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
      ![Tworzenie konta usługi Azure Maps w portalu](./media/quick-demo-map-app/create-account.png)
 
-5. Po pomyślnym utworzeniu konta otwórz je i znajdź sekcję ustawień menu konta. Wybierz pozycję **Klucze**, aby wyświetlić klucze podstawowe i pomocnicze dla Twojego konta usługi Azure Maps. Skopiuj wartość pola **Klucz podstawowy** do lokalnego schowka do użycia w następnej sekcji.
+5. Po pomyślnym utworzeniu konta otwórz je i znajdź sekcję ustawień menu konta. Wybierz pozycję **uwierzytelnianie** , aby wyświetlić klucze podstawowe i pomocnicze dla konta Azure Maps. Skopiuj wartość pola **Klucz podstawowy** do lokalnego schowka do użycia w następnej sekcji.
 
 ## <a name="download-the-application"></a>Pobieranie aplikacji
 
@@ -55,7 +55,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Otwórz plik **AzureMapDemo.html** w wybranej przeglądarce.
 2. Spójrz na mapę miasta Los Angeles. Powiększ i pomniejsz, aby zobaczyć, jak mapa jest automatycznie renderowana z większą lub mniejszą ilością informacji w zależności od poziomu powiększenia. 
-3. Zmień domyślny środek mapy. W pliku **AzureMapDemo.html** wyszukaj zmienną o nazwie **center**. Zastąp parę wartości długości i szerokości geograficznej tej zmiennej nowymi wartościami **[-74.0060, 40.7128]**. Zapisz plik i odśwież przeglądarkę.
+3. Zmień domyślny środek mapy. W pliku **AzureMapDemo.html** wyszukaj zmienną o nazwie **center**. Zastąp parę wartości długości i szerokości geograficznej tej zmiennej nowymi wartościami **[-74.0060, 40.7128]** . Zapisz plik i odśwież przeglądarkę.
 4. Wypróbuj funkcję wyszukiwania interaktywnego. W polu wyszukiwania w lewym górnym rogu demonstracyjnej aplikacji internetowej wyszukaj **restauracje**.
 5. Przesuń wskaźnik myszy na liście adresów i lokalizacji, które są wyświetlane pod polem wyszukiwania. Zwróć uwagę, jak za pomocą odpowiedniej pinezki na mapie wyświetlane są informacje o tej lokalizacji. Ze względu na ochronę danych prywatnych firm wyświetlono fikcyjne nazwy i adresy.
 
@@ -68,9 +68,9 @@ W tych samouczkach szczegółowo opisano sposób użycia i konfigurowania usług
 1. Zamknij przeglądarkę z uruchomioną aplikacją internetową **AzureMapDemo.html**.
 2. W menu po lewej stronie w witrynie Azure Portal wybierz pozycję **Wszystkie zasoby**. Następnie wybierz swoje konto usługi Azure Maps. W górnej części okienka **Wszystkie zasoby** wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start utworzyliśmy konto usługi Azure Maps i utworzyliśmy aplikację demonstracyjną. Przyjrzyj się następujące samouczki, aby dowiedzieć się więcej na temat usługi Azure Maps:
+W tym przewodniku Szybki start utworzyliśmy konto usługi Azure Maps i utworzyliśmy aplikację demonstracyjną. Zapoznaj się z następującymi samouczkami, aby dowiedzieć się więcej na temat Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Wyszukiwanie pobliskich punktów orientacyjnych za pomocą usługi Azure Maps](tutorial-search-location.md)

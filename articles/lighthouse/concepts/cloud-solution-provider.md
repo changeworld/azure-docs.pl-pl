@@ -1,24 +1,27 @@
 ---
 title: Zagadnienia dotyczące programu Cloud Solution Provider
-description: W przypadku korzystania z funkcji zarządzania zasobami delegowanymi przez platformę Azure ważne jest, aby uwzględnić zabezpieczenia i kontrolę dostępu.
+description: W przypadku partnerów programu CSP delegowane zarządzanie zasobami systemu Azure pomaga zwiększyć bezpieczeństwo i kontrolę dzięki włączeniu szczegółowych uprawnień.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 08/22/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 76df2942b176fd7d0e785213e44655ffd11da410
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: cdb9eaf0b1f1a6e7a136432586ad186308e4e3d3
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286207"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550297"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse i program dostawcy rozwiązań w chmurze
 
 Jeśli jesteś partnerem [CSP (dostawca rozwiązań w chmurze)](https://docs.microsoft.com/partner-center/csp-overview) , możesz uzyskać dostęp do subskrypcji platformy Azure utworzonych dla klientów za pośrednictwem programu CSP przy użyciu funkcji [Administruj w imieniu (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) . Ten dostęp pozwala bezpośrednio obsługiwać i konfigurować subskrypcje klientów oraz zarządzać nimi.
 
 Usługa Azure Lighthouse umożliwia zarządzanie zasobami delegowanymi na platformie Azure wraz z AOBO. Pozwala to zwiększyć bezpieczeństwo i ograniczyć niepotrzebny dostęp przez umożliwienie użytkownikom bardziej szczegółowych uprawnień. Umożliwia również zwiększenie wydajności i skalowalności, ponieważ użytkownicy mogą korzystać z wielu subskrypcji klienta przy użyciu jednej nazwy logowania w dzierżawie.
+
+> [!TIP]
+> Aby pomóc w zabezpieczeniu zasobów klientów, należy zapoznać się z naszymi [zalecanymi rozwiązaniami](recommended-security-practices.md) dotyczącymi zabezpieczeń oraz z [wymaganiami dotyczącymi zabezpieczeń partnerów](https://docs.microsoft.com/partner-center/partner-security-requirements).
 
 ## <a name="administer-on-behalf-of-aobo"></a>Administruj w imieniu (AOBO)
 

@@ -1,21 +1,21 @@
 ---
-title: Danych przesyłanych strumieniowo z usługi Azure Event Hubs przy użyciu protokołu Kafka | Dokumentacja firmy Microsoft
+title: Przesyłanie strumieniowe danych za pomocą usługi Azure Event Hubs przy użyciu protokołu Kafka | Microsoft Docs
 description: Ten artykuł zawiera informacje na temat przesyłania strumieniowego danych do usługi Azure Event Hubs przy użyciu protokołu Kafka i interfejsów API.
 services: event-hubs
-author: basilhariri
-ms.author: bahariri
+author: ShubhaVijayasarathy
+ms.author: shvija
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 05/06/2019
-ms.openlocfilehash: a4e050fdef20cdc62ee92e6383c455ffcb9abc90
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ebe3dc39cf135f09c084a8325d380b9bc9ef48dc
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203921"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554975"
 ---
-# <a name="data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Danych przesyłanych strumieniowo z usługi Event Hubs przy użyciu protokołu platformy Kafka
+# <a name="data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Przesyłanie strumieniowe danych z Event Hubs przy użyciu protokołu Kafka
 W tym przewodniku Szybki start przedstawiono sposób przesyłania strumieniowego usługi Event Hubs z obsługą platformy Kafka bez konieczności zmiany klientów protokołu lub uruchamiania własnych klastrów. Dowiesz się, jak producenci i użytkownicy mogą komunikować się z usługą Event Hubs z obsługą platformy Kafka tylko dzięki zmianie konfiguracji aplikacji. Usługa Azure Event Hubs obsługuje [platformę Apache Kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
 
 > [!NOTE]
@@ -40,7 +40,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
     
     ![Wyszukiwanie usługi Event Hubs w portalu](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Podaj unikatową nazwę i włącz platformę Kafka w przestrzeni nazw. Kliknij pozycję **Utwórz**. Uwaga: Usługa Event Hubs dla platformy Kafka jest obsługiwana wyłącznie przez warstwy Standardowa i Dedykowana usługi Event Hubs. Warstwa Podstawowa usługi Event Hubs zwróci błąd autoryzacji tematu w odpowiedzi na każdą operację platformy Kafka.
+3. Podaj unikatową nazwę i włącz platformę Kafka w przestrzeni nazw. Kliknij przycisk **Utwórz**. Uwaga: Event Hubs dla Kafka jest obsługiwany tylko w warstwie Standardowa i dedykowana Event Hubs. Warstwa Podstawowa usługi Event Hubs zwróci błąd autoryzacji tematu w odpowiedzi na każdą operację platformy Kafka.
     
     ![Tworzenie przestrzeni nazw](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
@@ -98,11 +98,11 @@ Teraz możesz przesyłać strumieniowo zdarzenia z aplikacji, które używają p
 
 Jeśli klaster platformy Kafka w usłudze Event Hub ma zdarzenia, teraz powinno się rozpocząć ich odbieranie od konsumenta.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule przedstawiono sposób przesyłania strumieniowego usługi Event Hubs z obsługą platformy Kafka bez konieczności zmiany klientów protokołu lub uruchamiania własnych klastrów. Aby dowiedzieć się więcej, przejdź do następującego samouczka:
 
 * [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Dowiedz się więcej na temat usługi Event Hubs dla platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Poznaj więcej przykładów w usłudze Event Hubs dla platformy Kafka](https://github.com/Azure/azure-event-hubs-for-kafka)
-* Użyj [narzędzia MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) do [Przesyłaj strumieniowo wydarzenia z platformy Kafka w środowisku lokalnym, do platformy Kafka włączone usługi Event Hubs w chmurze.](event-hubs-kafka-mirror-maker-tutorial.md)
+* Używaj [Narzędzia MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) do [przesyłania strumieniowego zdarzeń z Kafka lokalnie do Kafka włączonych Event Hubs w chmurze.](event-hubs-kafka-mirror-maker-tutorial.md)
 * Dowiedz się, jak przesyłać strumieniowo do usługi Event Hubs z obsługą platformy Kafka przy użyciu narzędzi [Apache Flink](event-hubs-kafka-flink-tutorial.md) lub [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md)

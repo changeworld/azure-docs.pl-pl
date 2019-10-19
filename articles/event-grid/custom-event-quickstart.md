@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: fb57d69b4969bcbf66717a8ca29ede23f2ed8e43
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 30ffcd9bdb8170777c245d95b0c07198a34c5464
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429138"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72556066"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Szybki Start: kierowanie zdarzeń niestandardowych do punktu końcowego sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure i Event Grid
 
@@ -27,7 +27,7 @@ Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następu
 
 Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikacji internetowej.
 
-![Użyj przeglądarki Azure Event Grid, aby sprawdzić, czy dane zdarzenia zostały wysłane](./media/custom-event-quickstart/azure-event-grid-viewer-displays-event-data.png)
+![Wyświetl wyniki w podglądzie Azure Event Grid](./media/custom-event-quickstart/azure-event-grid-viewer-record-inserted-event.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -98,7 +98,8 @@ az eventgrid event-subscription create \
 
 Wyświetl aplikację sieci Web ponownie i zwróć uwagę, że zdarzenie sprawdzania poprawności subskrypcji zostało do niej wysłane. Wybierz ikonę oka, aby rozwinąć dane zdarzenia. Usługa Event Grid wysyła zdarzenie weryfikacji, aby w punkcie końcowym mogło nastąpić sprawdzenie, czy dane zdarzenia mają być odbierane. Aplikacja internetowa zawiera kod do sprawdzania poprawności subskrypcji.
 
-![Wyświetl kod weryfikacyjny subskrypcji w podglądzie Azure Event Grid](./media/custom-event-quickstart/view-subscription-validation-code-in-azure-event-grid-viewer.png)
+![Wyświetl zdarzenie subskrypcji w podglądzie Azure Event Grid](./media/custom-event-quickstart/azure-event-grid-viewer-subscription-validation-event.png)
+
 
 ## <a name="send-an-event-to-your-custom-topic"></a>Wysyłanie zdarzenia do tematu niestandardowego
 

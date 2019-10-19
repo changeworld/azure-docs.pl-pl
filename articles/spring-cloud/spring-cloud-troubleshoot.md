@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ebb960085691206b096090813636ef56366e6536
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
-ms.translationtype: MT
+ms.openlocfilehash: 51062437b4fc1169ce166eb27067e56b9de262e6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039028"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554377"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Przewodnik rozwiązywania problemów z typowymi problemami
 
@@ -37,7 +37,7 @@ Powiązania usługi mogą również spowodować błędy uruchomienia aplikacji. 
 
 `java.sql.SQLException: The server time zone value 'Coordinated Universal Time' is unrecognized or represents more than one time zone.`
 
-Aby naprawić ten błąd, przejdź do `server parameters` wystąpienia MySql i Zmień `time_zone` z `SYSTEM` na `+0:00`.
+Aby naprawić ten błąd, przejdź do `server parameters` wystąpienia programu MySql i Zmień `time_zone` `SYSTEM` na `+0:00`.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Moja aplikacja ulega awarii lub zgłasza nieoczekiwany błąd
@@ -147,11 +147,51 @@ Możesz również sprawdzić dzienniki klienta _usługi_ w usłudze _Azure log A
 
 Odwiedź [ten artykuł Wprowadzenie](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) , aby rozpocząć pracę z _usługą Azure log Analytics_. Wykonaj zapytanie dotyczące dzienników przy użyciu [języka zapytań Kusto](https://docs.microsoft.com/azure/kusto/query/).
 
+### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Chcę sprawdzić zmienne środowiskowe aplikacji
+
+Zmienne środowiskowe informują platformę chmurową Azure ze sprężyną, dzięki czemu platforma Azure rozumie, gdzie i jak skonfigurować usługi wchodzące w skład Twojej aplikacji.  Upewnienie się, że zmienne środowiskowe są poprawne, jest to konieczne w pierwszym kroku w rozwiązywaniu potencjalnych problemów.  Aby przejrzeć zmienne środowiskowe, można użyć punktu końcowego uruchamiającego rozruchu sprężynowego.  
+
+[!WARNING]
+> Ta procedura może uwidaczniać zmienne środowiskowe.  Nie należy przechodzić, jeśli punkt końcowy testu jest publicznie dostępny lub jeśli przypisano nazwę domeny do aplikacji.
+
+1. Przejdź do tego adresu URL: `https://<your application test endpoint>/actuator/health`.  
+    - Odpowiedź podobna do `{"status":"UP"}` wskazuje, że punkt końcowy został włączony.
+    - Jeśli odpowiedź jest ujemna, Uwzględnij w `POM.xml` następujący zależność:
+
+        ```xml
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>
+        ```
+
+1. Po włączeniu punktu końcowego uruchamiającego uruchamianie sprężyny przejdź do Azure Portal i Znajdź stronę Konfiguracja aplikacji.  Dodaj zmienną środowiskową o nazwie `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value ` * '. 
+
+1. Uruchom ponownie aplikację.
+
+1. Przejdź do `https://<the test endpoint of your app>/actuator/env` i sprawdź odpowiedź.  Powinny wyglądać następująco:
+
+    ```json
+    {
+        "activeProfiles": [],
+        "propertySources": {,
+            "name": "server.ports",
+            "properties": {
+                "local.server.port": {
+                    "value": 1025
+                }
+            }
+        }
+    }
+    ```
+
+Znajdź węzeł podrzędny o nazwie `systemEnvironment`.  Ten węzeł zawiera zmienne środowiskowe aplikacji.
+
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Nie mogę odnaleźć metryk ani dzienników dla mojej aplikacji
 
 Przejdź do pozycji _Zarządzanie aplikacjami_ _, aby_upewnić się, że aplikacja jest _uruchomiona i działa_ .
 
-Jeśli są wyświetlane metryki z _JVM_ , ale nie metryki z _Tomcat_, sprawdź, czy w pakiecie aplikacji włączono zależność @ no__t-2 i czy uruchomiono pomyślnie rozruch.
+Jeśli są wyświetlane metryki z _JVM_ , ale nie metryki z _Tomcat_, sprawdź, czy w pakiecie aplikacji jest włączona zależność `spring-boot-actuator` i czy rozruch został pomyślnie uruchomiony.
 
 ```xml
 <dependency>

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 240c0e157d7fcd8b76ee7f42f4c780361df6281d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246123"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553436"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Szybki Start: Tworzenie i szyfrowanie maszyny wirtualnej z systemem Windows przy użyciu Azure Portal
 
@@ -60,8 +60,8 @@ Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. W polu **region**wybierz ten sam region, który został użyty podczas tworzenia magazynu kluczy (np. **Wschodnie stany USA**).
 1. Upewnij się, że **rozmiar** jest *Standardowy D2s v3*.
 1. W obszarze **konto administratora**wybierz pozycję **hasło**. Wprowadź nazwę użytkownika i hasło.
-    @no__t — ekran tworzenia 0ResourceGroup @ no__t-1
-1. Wybierz kartę Zarządzanie i sprawdź, czy masz konto magazynu diagnostyki. Jeśli nie masz żadnych kont magazynu, wybierz pozycję "Utwórz nowe", Nadaj nowemu kontu nazwę i wybierz pozycję "OK" @no__t — ekran tworzenia 0ResourceGroup @ no__t-1
+    ](../media/disk-encryption/portal-qs-windows-vm-creation.png) ekranu tworzenia ![ResourceGroup
+1. Wybierz kartę Zarządzanie i sprawdź, czy masz konto magazynu diagnostyki. Jeśli nie masz żadnych kont magazynu, wybierz pozycję "Utwórz nowe", Nadaj nowemu kontu nazwę i wybierz pozycję "OK" ![ResourceGroup ekranie tworzenia ](../media/disk-encryption/portal-qs-vm-creation-storage.png)
 1. Kliknij pozycję "Przejrzyj + Utwórz".
 1. Na stronie **Tworzenie maszyny wirtualnej** wyświetlone są szczegółowe informacje o maszynie wirtualnej, którą masz zamiar utworzyć. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
@@ -77,7 +77,7 @@ Wdrożenie maszyny wirtualnej potrwa kilka minut. Po zakończeniu wdrażania prz
 
 1. Na ekranie szyfrowanie w obszarze **dyski do zaszyfrowania**wybierz opcję **dyski systemu operacyjnego i danych**.
 1. W obszarze **Ustawienia szyfrowania**kliknij pozycję "Wybierz magazyn kluczy i klucz do szyfrowania".
-1. Na pasku bocznym po prawej stronie wybierz nazwę magazynu kluczy utworzonego wcześniej jako wartość * Magazyn kluczy * *, a następnie kliknij pozycję **Wybierz**.
+1. Na pasku bocznym po prawej stronie wybierz nazwę magazynu kluczy utworzonego wcześniej jako wartość dla **magazynu kluczy**, a następnie kliknij pozycję **Wybierz**.
 
     ![wybór dysków i szyfrowania](../media/disk-encryption/portal-qs-encrypt-vm-screen.png)
 1. W górnej części ekranu szyfrowania kliknij pozycję "Zapisz". W oknie podręcznym zostanie wyświetlone ostrzeżenie o ponownym uruchomieniu maszyny wirtualnej. Kliknij przycisk **Yes** (Tak).
