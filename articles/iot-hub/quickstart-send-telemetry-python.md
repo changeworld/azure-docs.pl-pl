@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/28/2019
-ms.openlocfilehash: 0e4cafee26d9d3345d9099c3c9fc048fb982ada5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 10/17/2019
+ms.openlocfilehash: a5ccf2d45d2c699f1f2261884f09f8cefe92b615
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166411"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598184"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Szybki Start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub i odczytywanie ich z użyciem aplikacji zaplecza (Python)
 
@@ -24,8 +24,6 @@ ms.locfileid: "72166411"
 IoT Hub to usługa platformy Azure, która umożliwia pozyskiwanie dużych ilości danych telemetrycznych z urządzeń IoT do chmury w celu magazynowania lub przetwarzania. W tym przewodniku Szybki start wyślesz dane telemetryczne z aplikacji urządzenia symulowanego za pośrednictwem usługi IoT Hub do aplikacji zaplecza w celu ich przetworzenia.
 
 W tym przewodniku Szybki start używana jest wstępnie napisana aplikacja języka Python wysyłająca dane telemetryczne oraz narzędzie interfejsu wiersza polecenia odczytujące dane telemetryczne z centrum. Przed uruchomieniem tych dwóch aplikacji należy utworzyć centrum IoT i zarejestrować urządzenie w centrum.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -38,6 +36,8 @@ az extension add --name azure-cli-iot-ext
 ```
 
 Pobierz przykładowy projekt Python z https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip i wyodrębnij archiwum ZIP.
+
+Program Python w wersji 3.5.3 + zainstalowany na komputerze deweloperskim. 
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
@@ -79,7 +79,7 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym
 
 1. Otwórz plik **SimulatedDevice.py** w wybranym edytorze tekstów.
 
-    Zastąp wartość zmiennej `CONNECTION_STRING` parametrami połączenia urządzenia, które zostały wykonane wcześniej. Następnie Zapisz zmiany w **SimulatedDevice.py**.
+    Zastąp wartość zmiennej `CONNECTION_STRING` parametrami połączenia urządzenia, które zostały wykonane wcześniej jako uwagi. Następnie Zapisz zmiany w **SimulatedDevice.py**.
 
 1. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki dla aplikacji urządzenia symulowanego:
 

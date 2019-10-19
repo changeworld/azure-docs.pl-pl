@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e814c9f7859fb18280c3a9ffd72bd4053a4895ad
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cfaa2598d53fa57b4a628a7ad1b847a9b078bf2b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883218"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598160"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
@@ -71,7 +71,7 @@ Usługa Azure Key Vault umożliwia także rozdzielenie wpisów tajnych aplikacji
 ### <a name="integrate-with-other-azure-services"></a>Integracja z innymi usługami platformy Azure
 
 Jako bezpieczny magazyn na platformie Azure usługa Key Vault jest używana do upraszczania takich scenariuszy jak:
--  [Usługa Azure Disk Encryption](../security/azure-security-disk-encryption.md)
+-  [Usługa Azure Disk Encryption](../security/fundamentals/encryption-overview.md)
 -  Funkcja [Zawsze szyfrowane]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) na platformie SQL Server i w usłudze Azure SQL Database
 - [Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). 
 

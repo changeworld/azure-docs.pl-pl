@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 51062437b4fc1169ce166eb27067e56b9de262e6
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554377"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592486"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Przewodnik rozwiązywania problemów z typowymi problemami
 
@@ -151,8 +151,8 @@ Odwiedź [ten artykuł Wprowadzenie](https://docs.microsoft.com/azure/azure-moni
 
 Zmienne środowiskowe informują platformę chmurową Azure ze sprężyną, dzięki czemu platforma Azure rozumie, gdzie i jak skonfigurować usługi wchodzące w skład Twojej aplikacji.  Upewnienie się, że zmienne środowiskowe są poprawne, jest to konieczne w pierwszym kroku w rozwiązywaniu potencjalnych problemów.  Aby przejrzeć zmienne środowiskowe, można użyć punktu końcowego uruchamiającego rozruchu sprężynowego.  
 
-[!WARNING]
-> Ta procedura może uwidaczniać zmienne środowiskowe.  Nie należy przechodzić, jeśli punkt końcowy testu jest publicznie dostępny lub jeśli przypisano nazwę domeny do aplikacji.
+> [!WARNING]
+> Ta procedura udostępnia zmienne środowiskowe za pomocą punktu końcowego testu.  Nie należy przechodzić, jeśli punkt końcowy testu jest publicznie dostępny lub jeśli przypisano nazwę domeny do aplikacji.
 
 1. Przejdź do tego adresu URL: `https://<your application test endpoint>/actuator/health`.  
     - Odpowiedź podobna do `{"status":"UP"}` wskazuje, że punkt końcowy został włączony.
@@ -186,6 +186,9 @@ Zmienne środowiskowe informują platformę chmurową Azure ze sprężyną, dzi�
     ```
 
 Znajdź węzeł podrzędny o nazwie `systemEnvironment`.  Ten węzeł zawiera zmienne środowiskowe aplikacji.
+
+> [!IMPORTANT]
+> Pamiętaj, aby wycofać narażenie zmiennych środowiskowych przed udostępnieniem aplikacji publicznie.  Przejdź do Azure Portal, Znajdź stronę konfiguracji aplikacji i Usuń tę zmienną środowiskową: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
 
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Nie mogę odnaleźć metryk ani dzienników dla mojej aplikacji
 

@@ -14,12 +14,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: f98950a73c74537fb0d3762d08810646c9ecb875
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ae67ed5e6b23d9d2fae3f3d6e73597876bf7315c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435596"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592957"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Szybki Start: Wdrażanie klastra usługi Azure Kubernetes Service przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -68,6 +68,8 @@ Następujące przykładowe dane wyjściowe przedstawiają pomyślnie utworzoną 
 ## <a name="create-aks-cluster"></a>Tworzenie klastra AKS
 
 Użyj polecenia [AZ AKS Create][az-aks-create] , aby utworzyć klaster AKS. W poniższym przykładzie pokazano tworzenie klastra o nazwie *myAKSCluster* z jednym węzłem. Usługę Azure Monitor dla kontenerów można również włączyć przy użyciu parametru *--enable-addons monitoring*.  Wykonanie tej czynności potrwa kilka minut.
+
+> KORYGUJĄC Podczas tworzenia klastra AKS zostaje automatycznie utworzona druga grupa zasobów do przechowywania zasobów AKS. Aby uzyskać więcej informacji, zobacz [co to są dwie grupy zasobów utworzone za pomocą AKS?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks)
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys

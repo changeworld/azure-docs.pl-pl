@@ -4,15 +4,15 @@ description: Dowiedz się, jak opublikować ofertę usługi zarządzanej, która
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300302"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595272"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikowanie oferty usług zarządzanych w witrynie Azure Marketplace
 
@@ -132,7 +132,7 @@ Gdy będziesz zadowolony ze wszystkich dostarczonych informacji, następnym krok
 
 ## <a name="the-customer-onboarding-process"></a>Proces dołączania klienta
 
-Po dodaniu oferty przez klienta będzie można [delegować jedną lub więcej określonych subskrypcji lub grup zasobów](view-manage-service-providers.md#delegate-resources) , które zostaną następnie dołączone do zarządzania zasobami delegowanymi przez platformę Azure. Jeśli klient zaakceptuje ofertę, ale nie oddelegowano jeszcze żadnych zasobów, w górnej części **strony dostawcy** [**usług**](view-manage-service-providers.md) w Azure Portal zostanie wyświetlona Uwaga.
+Po dodaniu oferty przez klienta będzie można [delegować jedną lub więcej określonych subskrypcji lub grup zasobów](view-manage-service-providers.md#delegate-resources) , które zostaną następnie dołączone do zarządzania zasobami delegowanymi przez platformę Azure. Jeśli klient zaakceptuje ofertę, ale nie oddelegowano jeszcze żadnych zasobów, w górnej części **strony dostawcy** [**usług**](view-manage-service-providers.md) w Azure Portal zostanie wyświetlona Uwaga. Jeśli użytkownik w dzierżawie klienta nie będzie w stanie wykonać tego delegowania, prawdopodobnie nie ma roli właściciela dla subskrypcji. Aby znaleźć użytkowników, którzy mogą delegować subskrypcję, użytkownik może wybrać subskrypcję w Azure Portal, otworzyć funkcję **Kontrola dostępu (IAM)** i [wyświetlić wszystkich użytkowników z rolą właściciela](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
 Aby można było dołączyć subskrypcję (lub grupy zasobów w ramach subskrypcji), subskrypcja musi być autoryzowana do dołączenia przez ręczne zarejestrowanie dostawcy zasobów **Microsoft. ManagedServices** . Użytkownik w dzierżawie klienta z rolą współautor lub właściciela może wykonać tę czynność, wykonując czynności opisane w temacie [dostawcy zasobów platformy Azure i typy](../../azure-resource-manager/resource-manager-supported-services.md).
 

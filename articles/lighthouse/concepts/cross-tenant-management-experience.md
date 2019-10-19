@@ -4,15 +4,15 @@ description: Zarządzanie zasobami delegowanymi przez platformę Azure umożliwi
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/11/2019
+ms.date: 10/18/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 8d7b1f24d5dcf3d66ffd04704c79a284c4810365
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300986"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598449"
 ---
 # <a name="cross-tenant-management-experiences"></a>Środowiska zarządzania wieloma dzierżawami
 
@@ -123,6 +123,7 @@ We wszystkich scenariuszach należy pamiętać o następujących bieżących ogr
 - Żądania obsługiwane przez Azure Resource Manager można wykonać przy użyciu funkcji zarządzania zasobami delegowanymi przez platformę Azure. Identyfikatory URI operacji dla tych żądań zaczynają się od `https://management.azure.com`. Jednak żądania, które są obsługiwane przez wystąpienie typu zasobu (takie jak dostęp do magazynu kluczy lub dostęp do danych magazynu), nie są obsługiwane przez delegowane zarządzanie zasobami platformy Azure. Identyfikatory URI operacji dla tych żądań zwykle zaczynają się od adresu, który jest unikatowy dla Twojego wystąpienia, takiego jak `https://myaccount.blob.core.windows.net` lub `https://mykeyvault.vault.azure.net/`. Te ostatnie również są zazwyczaj operacjami na danych, a nie operacjami zarządzania. 
 - Przypisania ról muszą używać [wbudowanych ról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kontroli dostępu opartej na ROLACH (RBAC). Wszystkie wbudowane role są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z wyjątkiem właściciela, administratora dostępu użytkowników lub wszelkich wbudowanych ról z uprawnieniami [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Role niestandardowe i [role administratora klasycznej subskrypcji](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nie są również obsługiwane.
 - Obecnie nie można dołączyć subskrypcji (lub grupy zasobów w ramach subskrypcji) do zarządzania zasobami delegowanymi przez platformę Azure, jeśli subskrypcja używa Azure Databricks. Podobnie, jeśli subskrypcja została zarejestrowana w celu dołączenia do dostawcy zasobów **Microsoft. ManagedServices** , nie będzie można w tej chwili utworzyć obszaru roboczego dla tej subskrypcji.
+- W trakcie dodawania subskrypcji i grup zasobów na potrzeby zarządzania zasobami delegowanymi przez platformę Azure, które mają blokadę zasobów, te blokady nie uniemożliwią wykonywania akcji przez użytkowników w dzierżawie zarządzającej. [Odmów przypisań](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) , które chronią zasoby zarządzane przez system, takie jak te utworzone przez aplikacje zarządzane przez platformę Azure lub plany platformy Azure (przypisań odmowy przypisanych do systemu), uniemożliwiają użytkownikom z dzierżawy zarządzającej wykonywanie tych zasobów. Jednak w tej chwili użytkownicy w dzierżawie klienta nie mogą tworzyć własnych przypisań Odmów (przypisań Odmów przez użytkownika).
 
 ## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>Korzystanie z interfejsów API i narzędzi do zarządzania w ramach zarządzania przez wiele dzierżawców
 

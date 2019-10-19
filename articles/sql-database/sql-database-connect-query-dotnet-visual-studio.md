@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 4472ff10c42cd9163693e7316b6bdaef50258db6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ed11d2b1628cecc0696e4c37135cfc7d2190de5
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569240"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597923"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Szybki start: Korzystanie z platformy .NET i języka C# w programie Visual Studio w celu nawiązywania połączenia i wykonywania zapytań w bazie danych Azure SQL Database
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Szybki Start: korzystanie z C# platformy .NET i programu Visual Studio w celu nawiązania połączenia z bazą danych Azure SQL i wykonywania w niej zapytań
 
 Ten przewodnik Szybki Start przedstawia sposób użycia [platformy .NET ](https://www.microsoft.com/net/) i kodu w języku C# w programie Visual Studio do wykonywania zapytań do bazy danych Azure SQL Database za pomocą instrukcji w języku Transact-SQL.
 
@@ -33,9 +33,9 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
   | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
-  |Ładuj dane|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
@@ -48,7 +48,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 
 Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 2. Otwórz stronę **Bazy danych SQL** lub **Wystąpienia zarządzane SQL**.
 
@@ -72,7 +72,7 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
    
 1. Po zakończeniu instalacji można zamknąć **Menedżera pakietów NuGet**. 
    
-1. W edytorze kodu zastąp zawartość **Program.cs** następującym kodem. Zastąp wartości dla `<server>`, `<username>`, `<password>`i `<database>`.
+1. W edytorze kodu zastąp zawartość **Program.cs** następującym kodem. Zastąp wartości dla `<server>`, `<username>`, `<password>` i `<database>`.
    
    >[!IMPORTANT]
    >Kod w tym przykładzie używa przykładowych danych AdventureWorksLT, które można wybrać jako źródło podczas tworzenia bazy danych. Jeśli baza danych zawiera różne dane, w zapytaniu SELECT należy użyć tabel z własnej bazy danych. 
@@ -142,10 +142,10 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 - Dowiedz się więcej o [rozpoczynaniu pracy z platformą .NET Core w systemie Windows/Linux/macOS przy użyciu wiersza polecenia](/dotnet/core/tutorials/using-with-xplat-cli).
 - Dowiedz się, jak [zaprojektować pierwszą bazę danych Azure SQL Database przy użyciu narzędzia SSMS](sql-database-design-first-database.md) lub [zaprojektować pierwszą bazę danych Azure SQL Database przy użyciu platformy .NET](sql-database-design-first-database-csharp.md).
 - Aby uzyskać więcej informacji na temat platformy .NET, zobacz [.NET documentation](https://docs.microsoft.com/dotnet/) (Dokumentacja platformy .NET).
-- Przykład logiki ponowień: [Odłączaj się do bazy danych SQL za pomocą ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
+- Przykład logiki ponownych prób: [Połącz się z usługą SQL za pomocą ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 

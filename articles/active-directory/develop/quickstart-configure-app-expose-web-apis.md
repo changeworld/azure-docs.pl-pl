@@ -18,13 +18,13 @@ ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68989271"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Szybki start: Konfigurowanie aplikacji w celu udostępnienia interfejsów API sieci Web
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Szybki Start: Konfigurowanie aplikacji do udostępniania interfejsów API sieci Web
 
 Opracowane internetowe interfejsy API można udostępniać aplikacjom klienckim przez uwidocznienie [uprawnień/zakresów](developer-glossary.md#scopes) i [ról](developer-glossary.md#roles). Prawidłowo skonfigurowany internetowy interfejs API jest udostępniany podobnie jak inne internetowe interfejsy API firmy Microsoft, w tym interfejs API programu Graph i interfejsy API usługi Office 365.
 
@@ -52,7 +52,7 @@ Przed skonfigurowaniem aplikacji wykonaj następujące kroki:
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Uwidacznianie nowego zakresu za pomocą interfejsu użytkownika
 
-[![Pokazuje, jak uwidocznić interfejs API przy użyciu interfejsu użytkownika](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![Shows sposobu uwidaczniania interfejsu API przy użyciu interfejsu użytkownika](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Aby uwidocznić nowy zakres za pomocą interfejsu użytkownika:
 

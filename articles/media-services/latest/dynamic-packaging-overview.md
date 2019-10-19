@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383536"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595516"
 ---
 # <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
 
@@ -26,7 +26,7 @@ Microsoft Azure Media Services może służyć do kodowania wielu formatów plik
 
 W Media Services [punkt końcowy przesyłania strumieniowego](streaming-endpoint-concept.md) reprezentuje dynamiczny (just-in-Time) pakiet i pierwotną usługę, która umożliwia dostarczanie zawartości na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienckiego przy użyciu jednego z typowych protokołów multimediów przesyłania strumieniowego wymienione w poniższej sekcji. Dynamiczne tworzenie pakietów to funkcja, w którą są standardowo wyposażone wszystkie punkty końcowe przesyłania strumieniowego (w warstwie Standard lub Premium). 
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a>@no__t — 0To Przygotuj pliki źródłowe do dostarczenia
+## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>To Przygotuj pliki źródłowe do dostarczenia
 
 Aby skorzystać z funkcji dynamicznego tworzenia pakietów, musisz [zakodować](encoding-concept.md) plik Mezzanine (Source) do zestawu wielu plików MP4 (ISO Base Media 14496-12). Musisz mieć [zasób](assets-concept.md) z zakodowanymi plikami MP4 i plikami konfiguracji przesyłania strumieniowego, które są wymagane przez Media Services dynamiczne pakowanie. Z tego zestawu plików MP4 można użyć pakowania dynamicznego do dostarczania wideo za pośrednictwem następujących protokołów multimediów strumieniowych:
 
@@ -98,9 +98,9 @@ Aby uzyskać informacje na temat przesyłania strumieniowego na żywo w Media Se
 Dynamiczne pakowanie obsługuje pliki MP4, które zawierają wideo kodowane przy użyciu [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC lub avc1) lub [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 lub hvc1).
 
 > [!NOTE]
-> Rozdzielczości do 4 KB i szybkości klatek do 60 klatek/s zostały przetestowane przy użyciu dynamicznego tworzenia pakietów. [Koder w warstwie Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) obsługuje kodowanie do H. 265 za pośrednictwem starszych interfejsów API v2. Skontaktuj się z amshelp@microsoft.com, jeśli masz pytania dotyczące tego tematu. 
+> Rozdzielczości do 4 KB i szybkości klatek do 60 klatek/s zostały przetestowane przy użyciu dynamicznego tworzenia pakietów. [Koder w warstwie Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) obsługuje kodowanie do H. 265 za pośrednictwem starszych interfejsów API v2.
 
-## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a>kodery-dekoder @no__t 0Audio obsługiwane przez pakowanie dynamiczne
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a>kodery-dekoder <a id="audio-codecs"/>Audio obsługiwane przez pakowanie dynamiczne
 
 Pakowanie dynamiczne obsługuje dźwięk kodowany przy użyciu następujących protokołów:
 
@@ -124,7 +124,7 @@ Dynamiczne pakowanie obsługuje wiele ścieżek audio z KRESKami lub HLS (w wers
 Dynamiczne pakowanie nie obsługuje plików zawierających audio [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) (jest to starszy koder-dekoder).
 
 > [!NOTE]
-> [Koder w warstwie Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) obsługuje kodowanie do Dolby Digital Plus, za pośrednictwem starszych interfejsów API v2. Skontaktuj się z amshelp@microsoft.com, jeśli masz pytania dotyczące tego tematu. 
+> [Koder w warstwie Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) obsługuje kodowanie do Dolby Digital Plus, za pośrednictwem starszych interfejsów API v2. 
 
 ## <a name="manifests"></a>Manifesty 
  
@@ -272,6 +272,10 @@ Przy użyciu *szyfrowania dynamicznego* można dynamicznie szyfrować zawartoś�
 ## <a name="more-information"></a>Więcej informacji
 
 Wyewidencjonuj [Azure Media Services społeczność](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
+
+## <a name="need-help"></a>Potrzebujesz pomocy?
+
+Możesz otworzyć bilet pomocy technicznej, przechodząc do [nowego żądania obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Następne kroki
 

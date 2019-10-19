@@ -1,5 +1,5 @@
 ---
-title: Co to jest pulpit wirtualny systemu Windows?  — Platforma Azure
+title: Co to jest Windows Virtual Desktop?  — Azure
 description: Omówienie pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e1ae0501e2a558967b7d53229dc629e035c5e067
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676548"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597898"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Co to jest pulpit wirtualny systemu Windows? 
+# <a name="what-is-windows-virtual-desktop"></a>Co to jest Windows Virtual Desktop? 
 
 Windows Virtual Desktop to usługa wirtualizacji pulpitu i aplikacji działająca w chmurze.
 
@@ -35,7 +35,7 @@ Dowiedz się więcej o usłudze Windows Virtual Desktop, dlaczego jest ona unika
 
 Aby uzyskać więcej filmów wideo dotyczących pulpitu wirtualnego systemu Windows, zobacz [nasze listy odtwarzania](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev).
 
-## <a name="key-capabilities"></a>Kluczowe możliwości
+## <a name="key-capabilities"></a>Najważniejsze możliwości
 
 Za pomocą pulpitu wirtualnego systemu Windows można skonfigurować skalowalne i elastyczne środowisko:
 
@@ -64,7 +64,7 @@ Istnieje kilka rzeczy potrzebnych do skonfigurowania pulpitu wirtualnego systemu
 
 Planujemy dodanie obsługi następujących systemów operacyjnych, więc upewnij się, że masz [odpowiednie licencje](https://azure.microsoft.com/pricing/details/virtual-desktop/) dla użytkowników na podstawie pulpitu i aplikacji, które planujesz wdrożyć:
 
-|Macintosh|Wymagana licencja|
+|System operacyjny|Wymagana licencja|
 |---|---|
 |Wiele sesji systemu Windows 10 Enterprise lub Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
@@ -74,10 +74,10 @@ Aby zapewnić obsługę pulpitu wirtualnego systemu Windows, Twoja infrastruktur
 
 * [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 * Active Directory systemu Windows Server synchronizacja z Azure Active Directory. Można to zrobić w następujący sposób:
-  * Azure AD Connect
-  * Azure AD Domain Services
-  >[!NOTE]
-  >Pulpit wirtualny systemu Windows obsługuje tylko Azure AD Domain Services użytkowników, którzy pochodzą z Azure Active Directory. Użytkownicy z usługi AD z systemem Windows Server nie są w tej chwili obsługiwani.
+  * Program Azure AD Connect
+  * Usługi domenowe Azure AD
+     >[!NOTE]
+     >Jeśli używasz Azure AD Domain Services, użytkownicy muszą pochodzić z Azure Active Directory. W tej chwili nie jest obsługiwane używanie Azure AD Domain Services z użytkownikami z systemem Windows Server AD.
 * Subskrypcja platformy Azure zawierająca sieć wirtualną, która zawiera lub jest połączona z systemem Windows Server Active Directory
   
 Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windows muszą być:
@@ -91,9 +91,9 @@ Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windo
 Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windows muszą mieć dostęp do następujących adresów URL wychodzącego protokołu TCP 443:
 
 * *. wvd.microsoft.com
-* *. blob.core.windows.net
+* *.blob.core.windows.net
 * *. core.windows.net
-* *. servicebus.windows.net
+* *.servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
 
@@ -122,26 +122,26 @@ Pulpit wirtualny systemu Windows obsługuje następujące obrazy systemu operacy
 * Wiele sesji systemu Windows 10 Enterprise
 * Windows 10 Enterprise
 * Windows 7 Enterprise
-* System Windows Server 2019
+* Windows Server 2019
 * Windows Server 2016
-* Windows Server 2012 z dodatkiem R2
+* Windows Server 2012 R2
 
 Dostępne opcje automatyzacji i wdrażania zależą od wybranego systemu operacyjnego i wersji, jak pokazano w poniższej tabeli: 
 
 |System operacyjny|Galeria obrazów platformy Azure|Ręczne wdrożenie maszyny wirtualnej|Integracja z szablonem Azure Resource Manager|Inicjowanie obsługi pul hostów w witrynie Azure Marketplace|Aktualizacje agenta pulpitu wirtualnego systemu Windows|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Wiele sesji systemu Windows 10, wersja 1903|Tak|Tak|Tak|Tak|Automatyczne|
-|Wiele sesji systemu Windows 10, wersja 1809|Tak|Tak|Nie|Nie|Automatyczne|
-|Windows 10 Enterprise, wersja 1903|Tak|Tak|Tak|Tak|Automatyczne|
-|Windows 10 Enterprise, wersja 1809|Tak|Tak|Nie|Nie|Automatyczne|
-|Windows 7 Enterprise|Tak|Tak|Nie|Nie|Ręcznie|
-|System Windows Server 2019|Tak|Tak|Nie|Nie|Automatyczne|
-|Windows Server 2016|Tak|Tak|Tak|Tak|Automatyczne|
-|Windows Server 2012 z dodatkiem R2|Tak|Tak|Nie|Nie|Automatyczne|
+|Wiele sesji systemu Windows 10, wersja 1903|Tak|Tak|Tak|Tak|Automatyczny|
+|Wiele sesji systemu Windows 10, wersja 1809|Tak|Tak|Nie|Nie|Automatyczny|
+|Windows 10 Enterprise, wersja 1903|Tak|Tak|Tak|Tak|Automatyczny|
+|Windows 10 Enterprise, wersja 1809|Tak|Tak|Nie|Nie|Automatyczny|
+|Windows 7 Enterprise|Tak|Tak|Nie|Nie|Ręczna|
+|Windows Server 2019|Tak|Tak|Nie|Nie|Automatyczny|
+|Windows Server 2016|Tak|Tak|Tak|Tak|Automatyczny|
+|Windows Server 2012 R2|Tak|Tak|Nie|Nie|Automatyczny|
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć, musisz utworzyć dzierżawę. Aby dowiedzieć się więcej na temat tworzenia dzierżawy, przejdź do samouczka dotyczącego tworzenia dzierżawy.
 
 > [!div class="nextstepaction"]
-> [Tworzenie dzierżawy w programie Virtual Desktop systemu Windows](tenant-setup-azure-active-directory.md)
+> [Tworzenie dzierżawy w usłudze Windows Virtual Desktop](tenant-setup-azure-active-directory.md)
