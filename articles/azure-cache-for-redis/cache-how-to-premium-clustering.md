@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: a919ccd2a23acf6e1bd04cda8a5dd18782ff31b0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: d81647e8d09d8f10827e8eb6038363db73395c1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315979"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596921"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować klastrowanie Redis dla pamięci podręcznej systemu Azure w warstwie Premium dla Redis
 Usługa Azure cache for Redis ma różne oferty pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiaru i funkcji pamięci podręcznej, w tym funkcji warstwy Premium, takich jak klastrowanie, trwałość i obsługa sieci wirtualnej. W tym artykule opisano sposób konfigurowania klastrowania w pamięci podręcznej systemu Azure w warstwie Premium dla wystąpienia Redis.
@@ -31,8 +31,8 @@ Usługa Azure cache for Redis oferuje klaster Redis jako [zaimplementowany w Red
 
 * Możliwość automatycznego podziału zestawu danych między wieloma węzłami. 
 * Możliwość kontynuowania operacji, gdy podzbiór węzłów ma błędy lub nie mogą komunikować się z resztą klastra. 
-* Większa przepływność: Przepływność wzrasta liniowo w miarę zwiększania liczby fragmentów. 
-* Więcej pamięci: Zwiększa się liniowo w miarę zwiększania liczby fragmentów.  
+* Większa przepływność: przepływność wzrasta liniowo w miarę zwiększania liczby fragmentów. 
+* Więcej pamięci: zwiększa się liniowo w miarę zwiększania liczby fragmentów.  
 
 Klastrowanie nie zwiększa liczby połączeń dostępnych dla klastrowanej pamięci podręcznej. Aby uzyskać więcej informacji o rozmiarze, przepływności i przepustowości z pamięcią podręczną Premium, zobacz, [w jaki sposób usługa Azure cache dla oferty Redis i rozmiar należy użyć?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
@@ -99,7 +99,7 @@ Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące usług
 * [Co mam zrobić w przypadku korzystania z StackExchange. Redis i klastrowania?](#i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do)
 
 ### <a name="do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering"></a>Czy muszę wprowadzić zmiany w aplikacji klienckiej w celu korzystania z klastrowania?
-* Gdy klastrowanie jest włączone, dostępna jest tylko baza danych 0. Jeśli aplikacja kliencka używa wielu baz danych i próbuje odczytać lub zapisać w bazie danych innej niż 0, zgłaszany jest następujący wyjątek. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->``StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
+* Gdy klastrowanie jest włączone, dostępna jest tylko baza danych 0. Jeśli aplikacja kliencka używa wielu baz danych i próbuje odczytać lub zapisać w bazie danych innej niż 0, zgłaszany jest następujący wyjątek. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
   
   Aby uzyskać więcej informacji, zobacz temat [Redis Cluster Specification-zaimplementowany podzestaw](https://redis.io/topics/cluster-spec#implemented-subset).
 * Jeśli używasz [stackexchange. Redis](https://www.nuget.org/packages/StackExchange.Redis/), musisz użyć 1.0.481 lub nowszego. Łączysz się z pamięcią podręczną przy użyciu tych samych [punktów końcowych, portów i kluczy](cache-configure.md#properties) , które są używane podczas nawiązywania połączenia z pamięcią podręczną, w której nie włączono obsługi klastrowania. Jedyną różnicą jest to, że wszystkie operacje odczytu i zapisu należy wykonać w bazie danych 0.
@@ -109,9 +109,9 @@ Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące usług
 * Jeśli używasz dostawcy stanu sesji Redis ASP.NET, musisz użyć wersji 2.0.1 lub nowszej. Zobacz [, czy można używać klastrowania z Redisem sesji ASP.NET i dostawcy buforowania danych wyjściowych?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>W jaki sposób klucze są dystrybuowane w klastrze?
-Dokumentacja [modelu dystrybucji kluczy](https://redis.io/topics/cluster-spec#keys-distribution-model) Redis: Klucz jest podzielony na 16384 gniazd. Każdy klucz jest przypisywany do jednego z tych miejsc, które są rozproszone w węzłach klastra. Można skonfigurować, która część klucza ma być używana do mieszania, aby mieć pewność, że wiele kluczy znajduje się w tym samym fragmentu za pomocą tagów skrótu.
+Dokumentacja [modelu dystrybucji kluczy](https://redis.io/topics/cluster-spec#keys-distribution-model) Redis: przestrzeń klucza jest dzielona na 16384 gniazd. Każdy klucz jest przypisywany do jednego z tych miejsc, które są rozproszone w węzłach klastra. Można skonfigurować, która część klucza ma być używana do mieszania, aby mieć pewność, że wiele kluczy znajduje się w tym samym fragmentu za pomocą tagów skrótu.
 
-* Klucze ze znacznikiem skrótu — Jeśli jakakolwiek część klucza jest zawarta w `{` i `}`, tylko ta część klucza ma wartość hash dla celów określania miejsca skrótu klucza. Na przykład następujące trzy klucze mogą znajdować się w tym `{key}1`samym fragmentu:, `{key}2` `key` , i `{key}3` , ponieważ tylko część nazwy jest skrótem. Aby zapoznać się z pełną listą parametrów skrótu kluczy, zobacz [Tagi skrótów kluczy](https://redis.io/topics/cluster-spec#keys-hash-tags).
+* Klucze ze znacznikiem skrótu — Jeśli jakakolwiek część klucza jest zawarta w `{` i `}`, tylko ta część klucza ma wartość hash dla celów określania gniazda skrótu klucza. Na przykład następujące trzy klucze powinny znajdować się w tym samym fragmentu: `{key}1`, `{key}2` i `{key}3`, ponieważ tylko część `key` nazwy jest poddana skrótowi. Aby zapoznać się z pełną listą parametrów skrótu kluczy, zobacz [Tagi skrótów kluczy](https://redis.io/topics/cluster-spec#keys-hash-tags).
 * Klucze bez znacznika skrótu — cała nazwa klucza jest używana do tworzenia skrótów. Wynikiem tego jest statystycznie równomierny rozkład w fragmentów pamięci podręcznej.
 
 W celu uzyskania najlepszej wydajności i przepływności zalecamy równomierne dystrybuowanie kluczy. Jeśli używasz kluczy ze znacznikiem skrótu, jest on odpowiedzialny za zapewnienie, że klucze są dystrybuowane równomiernie.
@@ -124,9 +124,9 @@ Przykładowy kod dotyczący pracy z klastrowaniem i lokalizowanie kluczy w tym s
 Największy rozmiar pamięci podręcznej Premium to 120 GB. Można utworzyć maksymalnie 10 fragmentów, co zapewnia maksymalny rozmiar 1,2 TB GB. Jeśli potrzebujesz większego rozmiaru, możesz [poprosić o więcej](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Aby uzyskać więcej informacji, zobacz [Azure cache for Redis — Cennik](https://azure.microsoft.com/pricing/details/cache/).
 
 ### <a name="do-all-redis-clients-support-clustering"></a>Czy wszyscy klienci Redis obsługują klastrowanie?
-W obecnym czasie nie wszyscy klienci obsługują klastrowanie Redis. StackExchange. Redis to taki, który obsługuje go. Aby uzyskać więcej informacji na temat innych klientów, zobacz sekcję [granie z klastrem](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) w [samouczku klastra Redis](https://redis.io/topics/cluster-tutorial). 
+Nie wszyscy klienci obsługują klastrowanie Redis. Zapoznaj się z dokumentacją używanej biblioteki, aby sprawdzić, czy korzystasz z biblioteki i wersji, która obsługuje klaster. StackExchange. Redis to jedna biblioteka, która obsługuje klastrowanie w nowszych wersjach. Aby uzyskać więcej informacji na temat innych klientów, zobacz sekcję [granie z klastrem](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) w [samouczku klastra Redis](https://redis.io/topics/cluster-tutorial). 
 
-Protokół klastrowania Redis wymaga, aby każdy klient łączył się z każdym fragmentu bezpośrednio w trybie klastrowania. Próba użycia klienta, który nie obsługuje klastrowania, prawdopodobnie spowoduje wiele [przenoszonych wyjątków przekierowań](https://redis.io/topics/cluster-spec#moved-redirection).
+Protokół klastrowania Redis wymaga, aby każdy klient łączył się z każdym fragmentu bezpośrednio w trybie klastrowania, a także definiuje nowe odpowiedzi na błędy, takie jak "przeniesione" na "CROSSSLOTS". Próba użycia klienta, który nie obsługuje klastrowania z pamięcią podręczną trybu klastra, może skutkować dużą ilością [przenoszonych wyjątków przekierowań](https://redis.io/topics/cluster-spec#moved-redirection)lub po prostu przerwać swoją aplikację, jeśli wykonujesz wielowymiarowe żądania wielokluczowe.
 
 > [!NOTE]
 > Jeśli używasz StackExchange. Redis jako klienta, upewnij się, że używasz najnowszej wersji [stackexchange. Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 lub nowszej, aby klaster działał poprawnie. Jeśli masz problemy z wyjątkiem przenoszenia wyjątków, zobacz sekcję [przenoszenie wyjątków](#move-exceptions) , aby uzyskać więcej informacji.
@@ -137,7 +137,7 @@ Protokół klastrowania Redis wymaga, aby każdy klient łączył się z każdym
 Można nawiązać połączenie z pamięcią podręczną przy użyciu tych samych [punktów końcowych](cache-configure.md#properties), [portów](cache-configure.md#properties)i [kluczy](cache-configure.md#access-keys) , które są używane podczas nawiązywania połączenia z pamięcią podręczną, w której nie włączono obsługi klastrowania. Redis zarządza klastrowaniem w zapleczu, aby nie trzeba było zarządzać nim z poziomu klienta.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Czy mogę połączyć się bezpośrednio z konkretną fragmentówą pamięci podręcznej?
-Protokół klastrowania wymaga, aby klient przełączył poprawne połączenia usługi fragmentu. Dlatego klient powinien prawidłowo wykonać tę czynność. Z tego powodu każdy fragmentu składa się z pary pamięci podręcznej podstawowej/repliki, zwanej wspólnie wystąpieniem pamięci podręcznej. Można nawiązać połączenie z tymi wystąpieniami pamięci podręcznej za pomocą narzędzia [](https://redis.io/download) Redis-CLI w niestabilnej gałęzi repozytorium Redis w witrynie GitHub. Ta wersja implementuje podstawową pomoc techniczną po uruchomieniu `-c` przełącznika. Aby uzyskać więcej informacji [, zobacz temat granie z klastrem](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) [https://redis.io](https://redis.io) w [samouczku klastra Redis](https://redis.io/topics/cluster-tutorial).
+Protokół klastrowania wymaga, aby klient przełączył poprawne połączenia usługi fragmentu. Dlatego klient powinien prawidłowo wykonać tę czynność. Z tego powodu każdy fragmentu składa się z pary pamięci podręcznej podstawowej/repliki, zwanej wspólnie wystąpieniem pamięci podręcznej. Można nawiązać połączenie z tymi wystąpieniami pamięci podręcznej za pomocą narzędzia Redis-CLI w [niestabilnej](https://redis.io/download) gałęzi repozytorium Redis w witrynie GitHub. Ta wersja implementuje podstawową obsługę podczas uruchamiania z przełącznikiem `-c`. Aby uzyskać więcej informacji [, zobacz temat granie z klastrem](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) na [https://redis.io](https://redis.io) w [samouczku klastra Redis](https://redis.io/topics/cluster-tutorial).
 
 W przypadku innych niż SSL Użyj następujących poleceń.
 
@@ -147,10 +147,13 @@ W przypadku innych niż SSL Użyj następujących poleceń.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-W przypadku protokołu SSL `1300N` Zastąp ciąg opcją `1500N`.
+W przypadku protokołu SSL Zastąp `1300N` z `1500N`.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Czy można skonfigurować klastrowanie dla wcześniej utworzonej pamięci podręcznej?
-Obecnie można włączyć funkcję klastrowania tylko podczas tworzenia pamięci podręcznej. Rozmiar klastra można zmienić po utworzeniu pamięci podręcznej, ale nie można dodać klastra do pamięci podręcznej Premium lub usunąć klastrowanie z pamięci podręcznej Premium po utworzeniu pamięci podręcznej. Pamięć podręczna Premium z włączoną obsługą klastrowania i tylko jedna fragmentu różni się od pamięci podręcznej Premium o takim samym rozmiarze bez klastrowania.
+Tak. Najpierw upewnij się, że pamięć podręczna jest Premium, przez skalowanie Jeśli nie jest. Następnie powinno być możliwe wyświetlenie opcji konfiguracji klastra, w tym opcji włączenia clsuter. Rozmiar klastra można zmienić po utworzeniu pamięci podręcznej lub po pierwszym włączeniu klastra.
+
+   >[!IMPORTANT]
+   >Nie można cofnąć włączania klastrowania. I pamięć podręczna z włączoną obsługą klastrowania i tylko jeden fragmentu działa *inaczej* niż w przypadku *braku* klastrowania.
 
 ### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache"></a>Czy można skonfigurować klastrowanie dla podstawowej lub standardowej pamięci podręcznej?
 Klastrowanie jest dostępne tylko dla pamięci podręcznych w warstwie Premium.
@@ -162,7 +165,7 @@ Klastrowanie jest dostępne tylko dla pamięci podręcznych w warstwie Premium.
 <a name="move-exceptions"></a>
 
 ### <a name="i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do"></a>Co mam zrobić w przypadku korzystania z StackExchange. Redis i klastrowania?
-Jeśli używasz stackexchange. Redis i odbierasz `MOVE` wyjątki podczas korzystania z klastrowania, upewnij się, że używasz [stackexchange. Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) lub nowszego. Aby uzyskać instrukcje dotyczące konfigurowania aplikacji .NET do korzystania z StackExchange. Redis, zobacz [Konfigurowanie klientów pamięci podręcznej](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+Jeśli używasz StackExchange. Redis i odbierasz wyjątki `MOVE` podczas korzystania z klastrowania, upewnij się, że używasz [stackexchange. Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) lub nowszego. Aby uzyskać instrukcje dotyczące konfigurowania aplikacji .NET do korzystania z StackExchange. Redis, zobacz [Konfigurowanie klientów pamięci podręcznej](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
 ## <a name="next-steps"></a>Następne kroki
 Dowiedz się, jak korzystać z większej liczby funkcji pamięci podręcznej Premium.

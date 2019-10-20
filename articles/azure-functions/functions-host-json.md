@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: b714559c6c009139da97c7d90425011fb3130ef8
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263339"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596871"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x  
 
@@ -69,7 +69,7 @@ W poniższych przykładowych plikach *hosta. JSON* dostępne są wszystkie możl
         "applicationInsights": {
             "samplingSettings": {
               "isEnabled": true,
-              "maxTelemetryItemsPerSecond" : 5
+              "maxTelemetryItemsPerSecond" : 20
             }
         }
     },
@@ -104,7 +104,7 @@ Kontroluje [funkcję próbkowania w Application Insights](./functions-monitoring
     "applicationInsights": {
         "samplingSettings": {
           "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
+          "maxTelemetryItemsPerSecond" : 20
         }
     }
 }
@@ -116,7 +116,7 @@ Kontroluje [funkcję próbkowania w Application Insights](./functions-monitoring
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |isEnabled|true|Włącza lub wyłącza próbkowanie.| 
-|maxTelemetryItemsPerSecond|5|Próg, w którym rozpoczyna się próbkowanie.| 
+|maxTelemetryItemsPerSecond|20|Próg, w którym rozpoczyna się próbkowanie.| 
 |EnableLiveMetrics |true|Włącza zbieranie metryk na żywo.|
 |EnableDependencyTracking|true|Włącza śledzenie zależności.|
 |EnablePerformanceCountersCollection|true|Włącza Zbieranie liczników wydajności kudu.|

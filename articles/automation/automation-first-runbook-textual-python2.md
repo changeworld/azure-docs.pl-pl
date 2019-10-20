@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65cd59933fa31d870a507cbe80b454934c9008d0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 626f446c18acf1f07f458fb1b4238f182546e479
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265100"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596927"
 ---
 # <a name="my-first-python-runbook"></a>Mój pierwszy element Runbook w języku Python
 
@@ -78,14 +78,14 @@ Utworzony element Runbook nadal działa w trybie roboczym. Należy ją opublikow
 Po opublikowaniu elementu Runbook Zastąp istniejącą opublikowaną wersję wersją roboczą.
 W takim przypadku nie masz jeszcze opublikowanej wersji, ponieważ element Runbook został właśnie utworzony.
 
-1. Kliknij pozycję **Opublikuj**, aby opublikować element Runbook, a następnie kliknij pozycję **Tak** po wyświetleniu monitu.
+1. Kliknij przycisk **Opublikuj**, aby opublikować element Runbook, a następnie kliknij opcję **Tak** po wyświetleniu monitu.
 1. Jeśli przewiniesz w lewo, aby wyświetlić element Runbook w okienku **elementy Runbook** , zostanie wyświetlony **Stan tworzenia** **opublikowanych**.
 1. Przewiń z powrotem w prawo, aby wyświetlić okienko dla **MyFirstRunbook-Python**.
    Opcje w górnej części umożliwiają nam Uruchamianie elementu Runbook, wyświetlanie elementu Runbook lub planowanie jego uruchomienia w przyszłości.
 2. Chcesz uruchomić element Runbook, a następnie kliknij przycisk **Start** , a następnie kliknij przycisk **OK** , gdy zostanie otwarty blok Uruchamianie elementu Runbook.
-3. Zostanie otwarte okienko zadań dla utworzonego zadania elementu Runbook. Można zamknąć to okienko, ale w tym przypadku pozostawić otwarte, aby można było obserwować postęp zadania.
+3. Zostanie otwarte okienko zadań dla utworzonego zadania elementu Runbook. można zamknąć to okienko, ale w tym przypadku pozostawić otwarte, aby można było obserwować postęp zadania.
 1. Stan zadania jest pokazywany w **podsumowaniu zadania** i jest zgodny z Stanami wyświetlonymi podczas testowania elementu Runbook.
-2. Gdy stanem elementu Runbook będzie *Ukończono*, kliknij pozycję **Dane wyjściowe**. Zostanie otwarte okienko danych wyjściowych i będzie można zobaczyć *Hello World*.
+2. Gdy stan elementu Runbook zmieni się na *Ukończono*, kliknij pozycję **Dane wyjściowe**. Zostanie otwarte okienko danych wyjściowych i będzie można zobaczyć *Hello World*.
 3. Zamknij okienko danych wyjściowych.
 4. Kliknij pozycję **Wszystkie dzienniki**, aby otworzyć okienko strumieni dla zadania elementu Runbook. W strumieniu danych wyjściowych powinien być widoczny tylko ciąg *Witaj, świecie*, ale mogą zostać wyświetlone inne strumienie zadania elementu runbook, takie jak Pełne informacje i Błąd, jeśli element runbook wykonuje w nich operacje zapisywania.
 5. Zamknij okienko strumieni i okienko zadania, aby wrócić do okienka MyFirstRunbook-Python.
@@ -164,7 +164,7 @@ async_vm_start = compute_client.virtual_machines.start(
 async_vm_start.wait()
 ```
 
-Gdzie moja resourceName jest nazwą grupy zasobów ZAWIERAJĄCEj maszynę wirtualną, a _TestVM_ to nazwa maszyny wirtualnej, która ma zostać uruchomiona.
+Gdzie moja _resourceName_ jest nazwą grupy zasobów ZAWIERAJĄCEj maszynę wirtualną, a _TestVM_ to nazwa maszyny wirtualnej, która ma zostać uruchomiona.
 
 Przetestuj i uruchom ponownie element Runbook, aby zobaczyć, że uruchamia maszynę wirtualną.
 
@@ -173,8 +173,8 @@ Przetestuj i uruchom ponownie element Runbook, aby zobaczyć, że uruchamia masz
 Element Runbook obecnie używa trwale zakodowanych wartości nazw grupy zasobów i maszyny wirtualnej.
 Teraz Dodajmy kod, który pobiera te wartości z parametrów wejściowych.
 
-`sys.argv` Zmienna służy do pobierania wartości parametrów.
-Dodaj następujący kod do elementu Runbook bezpośrednio po innych `import` instrukcjach:
+Użyj zmiennej `sys.argv`, aby pobrać wartości parametrów.
+Dodaj następujący kod do elementu Runbook bezpośrednio po innych instrukcjach `import`:
 
 ```python
 import sys
@@ -183,8 +183,8 @@ resource_group_name = str(sys.argv[1])
 vm_name = str(sys.argv[2])
 ```
 
-Spowoduje to zaimportowanie `sys` modułu i utworzenie dwóch zmiennych w celu przechowywania nazw grup zasobów i maszyn wirtualnych.
-Zauważ, że element listy `sys.argv[0]`argumentów,, jest nazwą skryptu i nie jest wejściowy przez użytkownika.
+Spowoduje to zaimportowanie modułu `sys` i utworzenie dwóch zmiennych w celu przechowywania nazw grup zasobów i maszyn wirtualnych.
+Zauważ, że element listy argumentów, `sys.argv[0]`, to nazwa skryptu i nie jest wprowadzany przez użytkownika.
 
 Teraz można zmodyfikować ostatnie dwa wiersze elementu Runbook, aby używały wartości parametrów wejściowych zamiast używać zakodowanych wartości:
 
@@ -198,13 +198,37 @@ Po uruchomieniu elementu Runbook w języku Python (na stronie **test** lub jako 
 
 Po rozpoczęciu wprowadzania wartości w pierwszym polu zostanie wyświetlona druga sekunda, tak aby można było wprowadzić tyle wartości parametrów, ile jest to konieczne.
 
-Wartości są dostępne dla skryptu jako `sys.argv` tablica w postaci kodu, który właśnie został dodany.
+Wartości są dostępne dla skryptu jako tablica `sys.argv`, jak w kodzie, który właśnie został dodany.
 
 Wprowadź nazwę grupy zasobów jako wartość pierwszego parametru i nazwę maszyny wirtualnej, która ma być uruchamiana jako wartość drugiego parametru.
 
 ![Wprowadź wartości parametrów](media/automation-first-runbook-textual-python/runbook-python-params.png)
 
 Kliknij przycisk **OK** , aby uruchomić element Runbook. Element Runbook działa i uruchamia określoną maszynę wirtualną.
+
+## <a name="error-handling-in-python"></a>Obsługa błędów w języku Python
+
+Można również użyć poniższych konwencji do pobrania różnych strumieni z elementów Runbook języka Python, w tym **ostrzeżeń**, **błędów**i **debugowania** strumieni.
+
+```python
+print("Hello World output") 
+print("ERROR: - Hello world error")
+print("WARNING: - Hello world warning")
+print("DEBUG: - Hello world debug")
+print("VERBOSE: - Hello world verbose")
+```
+
+W poniższym przykładzie przedstawiono Konwencję używaną w bloku `try...except`.
+
+```python
+try:
+    raise Exception('one', 'two')
+except Exception as detail:
+    print 'ERROR: Handling run-time error:', detail
+```
+
+> [!NOTE]
+> **sys. stderr** nie jest obsługiwany w Azure Automation.
 
 ## <a name="next-steps"></a>Następne kroki
 

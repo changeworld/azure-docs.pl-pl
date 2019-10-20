@@ -1,5 +1,5 @@
 ---
-title: Testowanie Azure Functions
+title: Testowanie usługi Azure Functions
 description: Utwórz testy automatyczne dla C# funkcji w programie Visual Studio i w funkcji JavaScript w vs Code
 services: functions
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: ff3d7d1272f9067f6bf9791c7964f8bf5f71945b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 9155df315a5afb9a0fa7722c955333a47a73085a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709333"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596854"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie testowania kodu w Azure Functions
 
@@ -30,7 +30,7 @@ Następująca zawartość jest podzielona na dwie różne sekcje przeznaczone dl
 
 Przykładowe repozytorium jest dostępne w witrynie [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
 
-## <a name="c-in-visual-studio"></a>Język C# w programie Visual Studio
+## <a name="c-in-visual-studio"></a>C#w programie Visual Studio
 W poniższym przykładzie opisano sposób tworzenia aplikacji C# funkcji w programie Visual Studio oraz uruchamiania i testowania przy użyciu [xUnit](https://xunit.github.io).
 
 ![Testowanie Azure Functions C# w programie Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
@@ -52,7 +52,7 @@ Teraz, gdy aplikacje są tworzone, można utworzyć klasy używane do uruchamian
 
 Każda funkcja przyjmuje wystąpienie [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) do obsługi rejestrowania komunikatów. Niektóre testy nie rejestrują komunikatów lub nie mają żadnych obaw dotyczących sposobu zaimplementowania rejestrowania. Inne testy muszą mieć na celu sprawdzenie, czy test kończy się powodzeniem.
 
-Klasa `ListLogger` ma zaimplementować interfejs `ILogger` i utrzymywać w wewnętrznej liście komunikatów do oceny podczas testu.
+Klasa `ListLogger` ma zaimplementować interfejs `ILogger` i przechowywać w wewnętrznej liście komunikatów do oceny podczas testu.
 
 **Kliknij prawym przyciskiem myszy** aplikację *Functions. test* i wybierz polecenie **Dodaj > Class**, nadaj jej nazwę **NullScope.cs** i wprowadź następujący kod:
 
@@ -108,13 +108,13 @@ namespace Functions.Tests
 }
 ```
 
-Klasa `ListLogger` implementuje następujących członków zgodnie z umową w interfejsie `ILogger`:
+Klasa `ListLogger` implementuje następujących członków zgodnie z umową `ILogger` Interface:
 
-- **BeginScope**: zakresy dodają kontekst do rejestrowania. W takim przypadku test tylko wskazuje na wystąpienie statyczne w klasie `NullScope`, aby zezwolić na działanie testu.
+- **BeginScope**: zakresy dodają kontekst do rejestrowania. W takim przypadku test tylko wskazuje na wystąpienie statyczne w klasie `NullScope`, aby umożliwić testowi działanie.
 
 - **IsEnabled**: podano wartość domyślną `false`.
 
-- **Dziennik**: Ta metoda używa podanej funkcji `formatter` do sformatowania wiadomości, a następnie dodania otrzymanego tekstu do kolekcji `Logs`.
+- **Dziennik**: Ta metoda używa podanej funkcji `formatter`, aby sformatować komunikat, a następnie dodać tekst otrzymany do kolekcji `Logs`.
 
 Kolekcja `Logs` jest wystąpieniem `List<string>` i jest inicjowana w konstruktorze.
 
@@ -193,7 +193,7 @@ namespace Functions.Tests
     }
 }
 ```
-Klasa `TestFactory` implementuje następujące elementy członkowskie:
+Klasa `TestFactory` implementuje następujących członków:
 
 - **Dane**: Ta właściwość zwraca kolekcję [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) przykładowych danych. Pary klucz wartość reprezentują wartości, które są przesyłane do ciągu zapytania.
 
@@ -201,7 +201,7 @@ Klasa `TestFactory` implementuje następujące elementy członkowskie:
 
 - Zdarzenie **: Ta**Metoda tworzy żądanie HTTP zainicjowane przy użyciu podanym parametrów ciągu zapytania.
 
-- **Wyrejestrowania**: na podstawie typu rejestratora ta metoda zwraca klasę rejestratora używaną do testowania. @No__t-0 śledzi zarejestrowane komunikaty dostępne do oceny w testach.
+- **Wyrejestrowania**: na podstawie typu rejestratora ta metoda zwraca klasę rejestratora używaną do testowania. @No__t_0 śledzi zarejestrowane komunikaty dostępne do oceny w testach.
 
 Następnie **kliknij prawym przyciskiem myszy** aplikację *Functions. test* , a następnie wybierz pozycję **Dodaj > Class**, nadaj jej nazwę **FunctionsTests.cs** i wprowadź następujący kod:
 
@@ -246,7 +246,7 @@ namespace Functions.Tests
 ```
 Członkowie zaimplementowani w tej klasie są:
 
-- **Http_trigger_should_return_known_string**: ten test tworzy żądanie z wartościami ciągu zapytania wynoszącą `name=Bill` do funkcji http i sprawdza, czy zwracana jest oczekiwana odpowiedź.
+- **Http_trigger_should_return_known_string**: ten test tworzy żądanie z wartościami ciągu zapytania `name=Bill` do funkcji http i sprawdza, czy zwracana jest oczekiwana odpowiedź.
 
 - **Http_trigger_should_return_string_from_member_data**: ten test używa atrybutów xUnit, aby zapewnić dane przykładowe do funkcji http.
 
@@ -309,7 +309,7 @@ module.exports = {
     IsPastDue: false
 };
 ```
-Ten moduł implementuje Właściwość `IsPastDue` jako wystąpienie fałszywego czasomierza.
+Ten moduł implementuje Właściwość `IsPastDue`, aby było to wystąpienie fałszywego czasomierza.
 
 Następnie użyj rozszerzenia funkcji VS Code, aby [utworzyć nową funkcję http języka JavaScript](/azure/javascript/tutorial-vscode-serverless-node-01) i nadaj jej nazwę *HttpTrigger*. Po utworzeniu funkcji Dodaj nowy plik do tego samego folderu o nazwie **index. test. js**i Dodaj następujący kod:
 
@@ -363,7 +363,8 @@ Aby debugować testy, Dodaj następującą konfigurację do pliku *Launch. JSON*
   "type": "node",
   "request": "launch",
   "name": "Jest Tests",
-  "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
+  "disableOptimisticBPs": true,
+  "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
   "args": [
       "-i"
   ],
@@ -378,4 +379,4 @@ Następnie ustaw punkt przerwania w teście i naciśnij klawisz **F5**.
 Teraz, gdy wiesz już, jak pisać zautomatyzowane testy dla swoich funkcji, przejdź do następujących zasobów:
 - [Ręcznie uruchom funkcję niewyzwalaną przez protokół HTTP](./functions-manually-run-non-http.md)
 - [Obsługa błędów Azure Functions](./functions-bindings-error-pages.md)
-- [Lokalne debugowanie wyzwalacza usługi Azure Function Event Grid](./functions-debug-event-grid-trigger-local.md)
+- [Debugowanie lokalnego wyzwalacza siatki zdarzeń funkcji platformy Azure](./functions-debug-event-grid-trigger-local.md)

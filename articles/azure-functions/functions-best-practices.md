@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294360"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596881"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizacja wydajności i niezawodności Azure Functions
 
-Ten artykuł zawiera wskazówki dotyczące poprawy wydajności i niezawodności aplikacji funkcji [bezserwerowych](https://azure.microsoft.com/solutions/serverless/) . 
+Ten artykuł zawiera wskazówki dotyczące poprawy wydajności i niezawodności aplikacji funkcji [bezserwerowych](https://azure.microsoft.com/solutions/serverless/) .  
 
 ## <a name="general-best-practices"></a>Ogólne najlepsze praktyki
 
@@ -100,7 +100,7 @@ Programowanie asynchroniczne jest zalecanym najlepszym rozwiązaniem. Jednak zaw
 
 Niektóre wyzwalacze, takie jak centrum zdarzeń, umożliwiają otrzymywanie wsadowych komunikatów na pojedynczym wywołaniu.  Przetwarzanie wsadowe komunikatów ma znacznie lepszą wydajność.  Maksymalny rozmiar wsadu można skonfigurować w pliku `host.json`, zgodnie z opisem w [dokumentacji dotyczącej pliku host. JSON.](functions-host-json.md)
 
-W C# przypadku funkcji można zmienić typ na tablicę o jednoznacznie określonym typie.  Na przykład zamiast `EventData sensorEvent` sygnatura metody może być `EventData[] sensorEvent`.  W przypadku innych języków należy jawnie ustawić właściwość Kardynalność w `function.json` na `many`, aby włączyć przetwarzanie wsadowe [jak pokazano poniżej](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+W C# przypadku funkcji można zmienić typ na tablicę o jednoznacznie określonym typie.  Na przykład zamiast `EventData sensorEvent` można `EventData[] sensorEvent` podpis metody.  W przypadku innych języków należy jawnie ustawić właściwość Kardynalność w `function.json` na `many`, aby włączyć przetwarzanie wsadowe [jak pokazano poniżej](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurowanie zachowań hosta w celu lepszego obsłużenia współbieżności
 
