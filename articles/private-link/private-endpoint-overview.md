@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 1fff9c076349d98d7a72c4bf69edb0a2795ac88f
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 75b8ea5e8dcaed533eac424bb8df1d1862889490
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937375"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592375"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -30,7 +30,7 @@ Prywatny punkt końcowy platformy Azure to interfejs sieciowy, który nawiązuje
 |Podzasób docelowy   |      Podzasób do nawiązania połączenia. Każdy typ zasobu link prywatny ma różne opcje, które można wybrać na podstawie preferencji.    |
 |Metoda zatwierdzania połączeń    |  Automatyczne lub ręczne. W oparciu o uprawnienia kontroli dostępu opartej na rolach (RBAC) można automatycznie zatwierdzać prywatny punkt końcowy. Jeśli spróbujesz nawiązać połączenie z prywatnym zasobem linku bez RBAC, użyj metody ręcznej, aby zezwolić właścicielowi zasobu na zatwierdzanie połączenia.        |
 |Komunikat żądania     |  Można określić komunikat dla żądanych połączeń, które mają być zatwierdzane ręcznie. Ten komunikat może służyć do identyfikowania konkretnego żądania.        |
-|Stan połączenia   |   Właściwość tylko do odczytu określająca, czy prywatny punkt końcowy jest aktywny. Do wysyłania ruchu można używać tylko prywatnych punktów końcowych w zatwierdzonym stanie. Dostępne są dodatkowe Stany: <br>-**zatwierdzono**: połączenie zostało automatycznie lub ręcznie zatwierdzone i jest gotowe do użycia.</br><br>-**oczekujące**: połączenie zostało utworzone ręcznie i oczekuje na zatwierdzenie przez właściciela zasobu link prywatny.</br><br>-**odrzucono**: połączenie zostało odrzucone przez właściciela zasobu linku prywatnego.</br><br>-**Rozłączono**: połączenie zostało usunięte przez właściciela zasobu link prywatny. Prywatny punkt końcowy zmienia się na format i powinien zostać usunięty do oczyszczenia. </br>|
+|Stan połączenia   |   Właściwość tylko do odczytu określająca, czy prywatny punkt końcowy jest aktywny. Do wysyłania ruchu można używać tylko prywatnych punktów końcowych w zatwierdzonym stanie. Dostępne są dodatkowe Stany: <br>-**zatwierdzone**: połączenie zostało automatycznie lub ręcznie zatwierdzone i jest gotowe do użycia.</br><br>**oczekujące**-: połączenie zostało utworzone ręcznie i oczekuje na zatwierdzenie przez właściciela zasobu link prywatny.</br><br>-**odrzucony**: połączenie zostało odrzucone przez właściciela zasobu linku prywatnego.</br><br>-**Rozłączono**: połączenie zostało usunięte przez właściciela zasobu link prywatny. Prywatny punkt końcowy zmienia się na format i powinien zostać usunięty do oczyszczenia. </br>|
 
 Poniżej przedstawiono niektóre kluczowe szczegóły dotyczące prywatnych punktów końcowych: 
 - Prywatny punkt końcowy umożliwia łączność między konsumentami z tej samej sieci wirtualnej, z regionalnie równorzędną sieci wirtualnych, globalnie równorzędną sieci wirtualnych i lokalnie przy użyciu [sieci VPN](https://azure.microsoft.com/services/vpn-gateway/) lub [Express Route](https://azure.microsoft.com/services/expressroute/) i usługi obsługiwane przez link prywatny.
@@ -121,7 +121,7 @@ Poniższa tabela zawiera listę znanych ograniczeń dotyczących używania prywa
 
 |Ograniczenia |Opis |Środki zaradcze  |
 |---------|---------|---------|
-|Reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) nie mają zastosowania do prywatnego punktu końcowego    |SIECIOWEJ grupy zabezpieczeń nie jest obsługiwany w prywatnych punktach końcowych. W podsieciach zawierających prywatny punkt końcowy może być skojarzonych sieciowej grupy zabezpieczeń, więc reguły nie będą obowiązywać w przypadku ruchu przetwarzanego przez prywatny punkt końcowy. Aby wdrażać prywatne punkty końcowe w podsieci, należy [wyłączyć wymuszanie zasad sieciowych](disable-private-endpoint-network-policy.md) . SIECIOWEJ grupy zabezpieczeń jest nadal wymuszane dla innych obciążeń hostowanych w tej samej podsieci.   | Kontroluj ruch przy użyciu reguł sieciowej grupy zabezpieczeń dla ruchu wychodzącego na klientach źródłowych.        |
+|Reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) i trasy zdefiniowane przez użytkownika nie mają zastosowania do prywatnego punktu końcowego    |SIECIOWEJ grupy zabezpieczeń nie jest obsługiwany w prywatnych punktach końcowych. W podsieciach zawierających prywatny punkt końcowy może być skojarzonych sieciowej grupy zabezpieczeń, więc reguły nie będą obowiązywać w przypadku ruchu przetwarzanego przez prywatny punkt końcowy. Aby wdrażać prywatne punkty końcowe w podsieci, należy [wyłączyć wymuszanie zasad sieciowych](disable-private-endpoint-network-policy.md) . SIECIOWEJ grupy zabezpieczeń jest nadal wymuszane dla innych obciążeń hostowanych w tej samej podsieci. Trasy w dowolnej podsieci klienta będą używać prefiksu/32, zmiana domyślnego zachowania routingu wymaga podobnego UDR  | Kontroluj ruch przy użyciu reguł sieciowej grupy zabezpieczeń dla ruchu wychodzącego na klientach źródłowych. Wdróż pojedyncze trasy z prefiksem/32, aby przesłonić prywatne trasy punktów końcowych        |
 |Nie można tworzyć prywatnych punktów końcowych w podsieciach włączonych dla punktu końcowego usługi lub obciążeń wyspecjalizowanych    |Nie można wdrożyć prywatnych punktów końcowych w podsieciach z włączonymi punktami końcowymi usług lub podsieciami delegowanymi do wyspecjalizowanych obciążeń|  Utwórz oddzielną podsieć do wdrożenia prywatnych punktów końcowych.        |
 |prywatny punkt końcowy można zamapować tylko do usługi linku prywatnego (należącej do klienta) w tym samym regionie.    |   Łączenie się z usługą linku prywatnego (własne) z innego regionu nie jest obsługiwane       |  W trakcie okresu zapoznawczego należy wdrożyć usługę prywatnego linku w tym samym regionie.        |
 |  Virtual Network komunikacji równorzędnej z prywatnymi punktami końcowymi nie są obsługiwane   |   Podczas nawiązywania połączenia z prywatnymi punktami końcowymi w Virtual Network komunikacji równorzędnej bez żadnych innych obciążeń nie jest obsługiwane       | Wdróż pojedynczą maszynę wirtualną na Virtual Network komunikacji równorzędnej w celu włączenia łączności |

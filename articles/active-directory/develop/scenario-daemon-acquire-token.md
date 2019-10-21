@@ -16,16 +16,16 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef28520edd8500be0da52996e6484a0407fb03c8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 605614265d033647bfcf22bb99d45c89f275298b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056439"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596395"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — pozyskiwanie tokenu
 
-Po skonstruowaniu poufnej aplikacji klienckiej można uzyskać token dla aplikacji przez wywołanie ``AcquireTokenForClient``, przekazanie zakresu i wymuszenie lub nie odświeżenie tokenu.
+Po skonstruowaniu poufnej aplikacji klienckiej można uzyskać token dla aplikacji, wywołując ``AcquireTokenForClient``, przekazując zakres i wymuszanie lub nie odświeżanie tokenu.
 
 ## <a name="scopes-to-request"></a>Zakresy do żądania
 
@@ -62,11 +62,11 @@ Zakres używany na potrzeby poświadczeń klienta zawsze powinien być identyfik
 
 > [!IMPORTANT]
 > W przypadku MSAL z prośbą o token dostępu dla zasobu akceptującego token dostępu w wersji 1.0 usługa Azure AD analizuje żądanych odbiorców od żądanego zakresu, pobierając wszystko przed ostatnim ukośnikiem i używając go jako identyfikatora zasobu.
-> W związku z tym, jeśli tak **https://database.windows.net** , jak Azure SQL (), zasób oczekuje odbiorców kończących się ukośnikiem ( `https://database.windows.net/` w przypadku usługi Azure SQL:), należy zażądać zakresu `https://database.windows.net//.default` (należy pamiętać o podwójnym ukośniku). Zobacz również [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)problemu MSAL.NET: Końcowy ukośnik adresu URL zasobu został pominięty, co spowodowało błąd uwierzytelniania SQL.
+> W związku z tym, jeśli tak, jak Azure SQL ( **https://database.windows.net** ), zasób oczekuje odbiorców kończących się ukośnikiem (w przypadku usługi Azure sql: `https://database.windows.net/` ), należy zażądać zakresu `https://database.windows.net//.default` (należy pamiętać o podwójnym ukośniku). Zobacz również [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)problemu MSAL.NET: zostanie pominięty końcowy ukośnik adresu URL zasobu, co spowodowało błąd uwierzytelniania SQL.
 
 ## <a name="acquiretokenforclient-api"></a>Interfejs API AcquireTokenForClient
 
-Aby uzyskać token dla aplikacji, należy użyć `AcquireTokenForClient` lub odpowiedni odpowiednik w zależności od platform.
+Aby uzyskać token dla aplikacji, użyj `AcquireTokenForClient` lub odpowiednika w zależności od platform.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -148,11 +148,11 @@ future.join();
 
 ---
 
-### <a name="protocol"></a>Protocol
+### <a name="protocol"></a>Protocol (Protokół)
 
 Jeśli nie masz jeszcze biblioteki dla wybranego języka, możesz chcieć użyć protokołu bezpośrednio:
 
-#### <a name="first-case-access-token-request-with-a-shared-secret"></a>Pierwszy przypadek: Żądanie tokenu dostępu z wspólnym kluczem tajnym
+#### <a name="first-case-access-token-request-with-a-shared-secret"></a>Pierwszy przypadek: żądanie tokenu dostępu przy użyciu wspólnego klucza tajnego
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
@@ -165,7 +165,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: Żądanie tokenu dostępu z certyfikatem
+#### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: żądanie tokenu dostępu z certyfikatem
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
@@ -179,17 +179,17 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-Aby uzyskać więcej informacji, zobacz dokumentację protokołu: [Program Microsoft Identity platform i przepływ poświadczeń klienta OAuth 2,0](v2-oauth2-client-creds-grant-flow.md).
+Aby uzyskać więcej informacji, zobacz dokumentację protokołu: [Microsoft Identity platform oraz przepływ poświadczeń klienta OAuth 2,0](v2-oauth2-client-creds-grant-flow.md).
 
 ## <a name="application-token-cache"></a>Pamięć podręczna tokenów aplikacji
 
-W programie MSAL.NET `AcquireTokenForClient` korzysta z **pamięci podręcznej tokenów aplikacji** (wszystkie inne metody AcquireTokenXX używają pamięci podręcznej `AcquireTokenSilent` tokenów użytkowników `AcquireTokenSilent` ), które nie są wywoływane przed wywołaniem `AcquireTokenForClient` jako używa pamięci podręcznej tokenów **użytkownika** `AcquireTokenForClient`sprawdza sam pamięć podręczną tokenu **aplikacji** i aktualizuje go.
+W MSAL.NET `AcquireTokenForClient` korzysta z **pamięci podręcznej tokenów aplikacji** (wszystkie inne metody AcquireTokenXX używają pamięci podręcznej tokenów użytkowników) nie wywołuj `AcquireTokenSilent` przed wywołaniem `AcquireTokenForClient` jako `AcquireTokenSilent` korzysta z pamięci podręcznej tokenów **użytkownika** . `AcquireTokenForClient` sprawdza sam pamięć podręczną tokenów **aplikacji** i aktualizuje go.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Czy używasz tego zakresu zasobu/. default?
 
-Jeśli zostanie wyświetlony komunikat o błędzie z informacją, że użyto nieprawidłowego zakresu, prawdopodobnie nie był `resource/.default` używany zakres.
+Jeśli zostanie wyświetlony komunikat o błędzie z informacją, że użyto nieprawidłowego zakresu, prawdopodobnie nie użyto zakresu `resource/.default`.
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Czy pamiętasz o podaniu zgody administratora? Aplikacje demonów wymagają!
 
@@ -212,5 +212,19 @@ Content: {
 
 ## <a name="next-steps"></a>Następne kroki
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [Aplikacja demona — wywoływanie internetowego interfejsu API](scenario-daemon-call-api.md)
+> [Aplikacja demona — wywoływanie internetowego interfejsu API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Aplikacja demona — wywoływanie internetowego interfejsu API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Aplikacja demona — wywoływanie internetowego interfejsu API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+
+---

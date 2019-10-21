@@ -1,22 +1,18 @@
 ---
 title: Zarządzanie platformą Azure i pakiet Operations Management Suite (OMS) | Microsoft Docs
 description: Omówienie obszarów zarządzania aplikacjami i zasobami platformy Azure oraz linki do zawartości narzędzi zarządzania platformą Azure, które zostały wcześniej połączone w obrębie pakietu Operations Management Suite (OMS).
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/07/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 4096ee477dc1d40ff6b98b20dd384c6ffad17e5f
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 09/07/2018
+ms.openlocfilehash: 7f515c1c5d44058e14f02f7681bfbb7fd2787c6f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779270"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597365"
 ---
 # <a name="azure-management---monitoring"></a>Zarządzanie platformą Azure — monitorowanie
 
@@ -36,7 +32,7 @@ W poniższych sekcjach krótko opisano różne obszary zarządzania oraz podano 
 ## <a name="monitor"></a>Monitorowanie
 Monitorowanie to proces zbierania i analizowania danych w celu ustalania wydajności, kondycji i dostępności aplikacji biznesowych i zasobów, od których one zależą. Skuteczna strategia monitorowania pomoże poznać szczegółowe działanie różnych składników aplikacji i zwiększyć czas aktywności przez proaktywne powiadamianie o istotnych kwestiach w celu umożliwienia rozwiązywania ich, zanim staną się problemami. Monitorowanie na platformie Azure jest realizowane przede wszystkim za pomocą usługi [Azure Monitor](../azure-monitor/overview.md), która zapewnia wspólne magazyny do przechowywania danych monitorowania, wiele źródeł danych do zbierania danych z różnych warstw obsługi aplikacji i funkcje do analizowania zebranych danych oraz do reagowania na nie.
 
-## <a name="configure"></a>Konfigurowanie
+## <a name="configure"></a>Konfiguracja
 Konfigurowanie dotyczy początkowego wdrażania i konfigurowania aplikacji i zasobów oraz ich ciągłej obsługi przy użyciu poprawek i aktualizacji.  Automatyzacja tych zadań za pomocą skryptów i zasad pozwala wyeliminować nadmiarowość, zminimalizować poświęcany czas i wysiłek oraz zwiększyć dokładność i wydajność.  [Usługa Azure Automation](../automation/automation-intro.md) dostarcza większość usług do automatyzowania zadań konfiguracji.  Oprócz elementów Runbook do automatyzowania procesów zapewnia ona zarządzanie konfiguracją i aktualizacjami, co pomaga zarządzać konfiguracją za pośrednictwem zasad oraz identyfikować i wdrażać aktualizacje.
 
 ## <a name="govern"></a>Ład
@@ -49,6 +45,6 @@ Zarządzanie zabezpieczeniami aplikacji, zasobów i danych obejmuje ocenę zagro
 ## <a name="protect"></a>Ochrona
 Ochrona dotyczy zapewniania, że aplikacje i dane są zawsze dostępne, nawet w przypadku awarii poza Twoją kontrolą.  Ochrona na platformie Azure jest zapewniana przez dwie usługi.  [Usługa Azure Backup](../backup/backup-introduction-to-azure-backup.md) oferuje tworzenie kopii zapasowych i odzyskiwanie danych w chmurze lub lokalnie.    [Usługa Azure Site Recovery](../site-recovery/site-recovery-overview.md) zapewnia wysoką dostępność aplikacji, gwarantując ciągłość działania i natychmiastowe odzyskiwanie w przypadku awarii.
 
-## <a name="migrate"></a>Migrate (Migracja) 
+## <a name="migrate"></a>Migrowanie 
 Migracja dotyczy przenoszenia obciążeń działających obecnie lokalnie do chmury platformy Azure.  [Usługa Azure Migrate](../migrate/migrate-overview.md) pomaga oceniać gotowość do migracji maszyn wirtualnych do platformy Azure, uwzględniając dostosowywanie rozmiaru do wydajności oraz szacunkowe koszty.  Usługa Azure Site Recovery może ułatwić rzeczywistą migrację maszyn wirtualnych [ze środowiska lokalnego](../site-recovery/migrate-tutorial-on-premises-azure.md) lub [z usług Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md).  [Usługa Azure Database Migration](../dms/dms-overview.md) pomaga w migracji wielu źródłowych baz danych do platformy danych Azure.
 

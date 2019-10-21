@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
 ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "67466645"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Projektowanie pod kątem wysokiej dostępności dzięki ExpressRoute
@@ -54,7 +54,7 @@ Alternatywnie, uruchamianie podstawowych i pomocniczych połączeń obwodu usłu
 
 Komunikacja równorzędna firmy Microsoft jest przeznaczona do komunikacji między publicznymi punktami końcowymi. Często lokalne, prywatne punkty końcowe to adresy sieci tłumaczone (z identyfikatorem firmy) z publicznym adresem IP w sieci klienta lub partnera, zanim będą komunikować się za pośrednictwem komunikacji równorzędnej firmy Microsoft. Zakładając, że używane są zarówno podstawowe, jak i pomocnicze połączenia w trybie aktywny-aktywny, gdzie i w jaki sposób translator adresów sieciowych ma wpływ na sposób szybkiego odzyskiwania po awarii w jednym z połączeń ExpressRoute. Dwie różne opcje NAT przedstawiono na poniższej ilustracji:
 
-[![3]][3]
+[![r.3]][3]
 
 W opcji 1 jest stosowane translator adresów sieciowych po rozdzieleniu ruchu między podstawowymi i pomocniczymi połączeniami ExpressRoute. Aby spełnić wymagania stanowe dotyczące translatora adresów sieciowych, na urządzeniach podstawowych i pomocniczych są używane niezależne pule NAT, dzięki czemu ruch powrotny dociera do tego samego urządzenia brzegowego, za pomocą którego przepływ egressed.
 
@@ -87,9 +87,9 @@ W tym artykule omówiono sposób projektowania pod kątem wysokiej dostępności
 Aby poznać zagadnienia dotyczące projektowania w celu utworzenia geograficznie nadmiarowej łączności sieciowej z siecią szkieletową firmy Microsoft, która może wytrzymywać błędy krytyczne, które mają wpływ na cały region, zobacz [projektowanie pod kątem odzyskiwania po awarii za pomocą prywatnej komunikacji równorzędnej][DR]
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png  "Zalecany sposób nawiązywania połączenia przy użyciu ExpressRoute"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png  "Nieoptymalna łączność z ostatnim kilometrem"
-[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png  "Opcje NAT"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "zalecany sposób nawiązywania połączenia przy użyciu ExpressRoute"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "najoptymalna łączność z ostatnim kilometrem"
+[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "Opcje NAT"
 
 
 <!--Link References-->

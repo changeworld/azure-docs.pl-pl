@@ -1,6 +1,6 @@
 ---
 title: Uruchamianie skryptów powłoki na maszynie wirtualnej z systemem Linux na platformie Azure
-description: W tym temacie opisano sposób uruchamiania skryptów w maszynie wirtualnej platformy Azure z systemem Linux przy użyciu polecenia Uruchom
+description: W tym temacie opisano sposób uruchamiania skryptów w maszynie wirtualnej platformy Azure z systemem Linux przy użyciu funkcji run polecenia
 services: automation
 ms.service: automation
 author: bobbytreed
@@ -8,42 +8,42 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6550b6e3f59ff7e6bac39dfc1abcf829256122d4
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 21787854590d3ca0be2cbd6e9d167de33482c787
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376357"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597882"
 ---
-# <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Uruchamianie skryptów powłoki na maszynie wirtualnej z systemem Linux przy użyciu polecenia Run
+# <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Uruchamianie skryptów powłoki na maszynie wirtualnej z systemem Linux przy użyciu polecenia Run
 
-Polecenie Run używa agenta maszyny wirtualnej do uruchamiania skryptów powłoki na maszynie wirtualnej z systemem Linux systemu Azure. Te skrypty mogą służyć do ogólnego zarządzania maszynami i aplikacjami oraz mogą być używane do szybkiego diagnozowania i rozwiązywania problemów z dostępem do maszyn wirtualnych oraz z powrotem do dobrego stanu.
+Funkcja Run command używa agenta maszyny wirtualnej do uruchamiania skryptów powłoki w ramach maszyny wirtualnej platformy Azure z systemem Linux. Za pomocą tych skryptów można zarządzać ogólnymi maszynami lub aplikacjami. Mogą one pomóc w szybkim zdiagnozowaniu i rozpoczęciu problemów z dostępem do maszyn wirtualnych i rozpoczęciu pracy z powrotem do dobrego stanu.
 
 ## <a name="benefits"></a>Korzyści
 
-Istnieje wiele opcji, których można użyć w celu uzyskania dostępu do maszyn wirtualnych. Polecenie Uruchom może zdalnie uruchamiać skrypty na maszynach wirtualnych za pomocą agenta maszyny wirtualnej. Polecenia Run można używać w przypadku maszyn wirtualnych z systemem Linux w Azure Portal, [interfejsie API REST](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)lub [platformie Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) .
+Dostęp do maszyn wirtualnych można uzyskać na wiele sposobów. Polecenie Uruchom może zdalnie uruchamiać skrypty na maszynach wirtualnych za pomocą agenta maszyny wirtualnej. Używasz polecenia Run za pośrednictwem Azure Portal, [interfejsu API REST](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)lub [wiersza polecenia platformy Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) dla maszyn wirtualnych z systemem Linux.
 
-Ta funkcja jest przydatna w każdym scenariuszu, w którym chcesz uruchomić skrypt w ramach maszyn wirtualnych. jest to jeden z jedynych sposobów rozwiązywania problemów i korygowania maszyny wirtualnej, która nie ma otwartego portu RDP lub protokołu SSH z powodu nieprawidłowej sieci lub użytkownika administracyjnego skonfigurować.
+Ta funkcja jest przydatna we wszystkich scenariuszach, w których chcesz uruchomić skrypt w ramach maszyny wirtualnej. Jest to jeden z jedynych sposobów rozwiązywania problemów i korygowania maszyny wirtualnej, która nie ma otwartego portu RDP lub protokołu SSH z powodu nieprawidłowej konfiguracji sieci lub użytkownika administracyjnego.
 
 ## <a name="restrictions"></a>Ograniczenia
 
-Poniżej przedstawiono listę ograniczeń, które są obecne podczas korzystania z polecenia Uruchom.
+W przypadku korzystania z polecenia Uruchom należy zastosować następujące ograniczenia:
 
-* Dane wyjściowe są ograniczone do ostatnich 4096 bajtów
-* Minimalny czas uruchomienia skryptu około 20 sekund
-* Skrypty uruchomione domyślnie jako użytkownicy z podwyższonym poziomem uprawnień w systemie Linux
-* Jeden skrypt w czasie może być uruchomiony
+* Dane wyjściowe są ograniczone do ostatnich 4 096 bajtów.
+* Minimalny czas uruchomienia skryptu wynosi około 20 sekund.
+* Skrypty są domyślnie uruchamiane jako użytkownicy z podwyższonym poziomem uprawnień w systemie Linux.
+* Można uruchomić jeden skrypt jednocześnie.
 * Skrypty, które monitują o informacje (tryb interaktywny) nie są obsługiwane.
-* Nie można anulować uruchomionego skryptu
-* Maksymalny czas uruchomienia skryptu wynosi 90 minut, po upływie którego limit czasu zostanie przekroczony
+* Nie można anulować uruchomionego skryptu.
+* Maksymalny czas uruchomienia skryptu to 90 minut. Po tym czasie skrypt zostanie przekroczony.
 * Łączność wychodząca z maszyny wirtualnej jest wymagana do zwrócenia wyników skryptu.
 
 > [!NOTE]
-> Aby prawidłowo działać, polecenie Run wymaga łączności (port 443) z publicznymi adresami IP platformy Azure. Jeśli rozszerzenie nie ma dostępu do tych punktów końcowych, skrypty mogą działać prawidłowo, ale nie zwracają wyników. W przypadku blokowania ruchu na maszynie wirtualnej można używać [tagów usługi](../../virtual-network/security-overview.md#service-tags) , aby zezwalać na ruch do publicznych adresów IP platformy Azure przy użyciu znacznika `AzureCloud`.
+> Aby działało prawidłowo, polecenie Run wymaga łączności (port 443) z publicznymi adresami IP platformy Azure. Jeśli rozszerzenie nie ma dostępu do tych punktów końcowych, skrypty mogą działać pomyślnie, ale nie zwracają wyników. W przypadku blokowania ruchu na maszynie wirtualnej można użyć [tagów usługi](../../virtual-network/security-overview.md#service-tags) , aby zezwolić na ruch do publicznych adresów IP platformy Azure przy użyciu tagu `AzureCloud`.
 
 ## <a name="available-commands"></a>Dostępne polecenia
 
-W tej tabeli przedstawiono listę poleceń dostępnych dla maszyn wirtualnych z systemem Linux. Polecenie **RunShellScript** może służyć do uruchamiania dowolnego niestandardowego skryptu. Korzystając z interfejsu wiersza polecenia platformy Azure lub programu PowerShell, aby uruchomić polecenie, wartość podana dla parametru `--command-id` lub `-CommandId` musi być jedną z wartości wymienionych poniżej. Jeśli określisz wartość, która nie jest dostępnym poleceniem, zostanie wyświetlony komunikat o błędzie.
+W tej tabeli przedstawiono listę poleceń dostępnych dla maszyn wirtualnych z systemem Linux. Możesz użyć polecenia **RunShellScript** , aby uruchomić dowolny niestandardowy skrypt. W przypadku korzystania z interfejsu wiersza polecenia platformy Azure lub programu PowerShell, aby uruchomić polecenie, wartość podana dla `--command-id` lub parametru `-CommandId` musi być jedną z następujących wartości. Jeśli określisz wartość, która nie jest dostępnym poleceniem, zostanie wyświetlony następujący błąd:
 
 ```error
 The entity was not found in this Azure location
@@ -51,38 +51,38 @@ The entity was not found in this Azure location
 
 |**Nazwa**|**Opis**|
 |---|---|
-|**RunShellScript**|Wykonuje skrypt powłoki systemu Linux.|
-|**ifconfig**| Pobierz konfigurację wszystkich interfejsów sieciowych.|
+|**RunShellScript**|Uruchamia skrypt powłoki systemu Linux.|
+|**ifconfig**| Pobiera konfigurację wszystkich interfejsów sieciowych.|
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Poniżej znajduje się przykład za pomocą polecenia [AZ VM Run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) do uruchomienia skryptu powłoki na maszynie wirtualnej z systemem Linux.
+W poniższym przykładzie za pomocą polecenia [AZ VM Run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) można uruchomić skrypt powłoki na maszynie wirtualnej platformy Azure z systemem Linux.
 
 ```azurecli-interactive
 az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript --scripts "sudo apt-get update && sudo apt-get install -y nginx"
 ```
 
 > [!NOTE]
-> Aby uruchomić polecenia jako inny użytkownik, możesz użyć `sudo -u`, aby określić konto użytkownika, które ma być używane.
+> Aby uruchomić polecenia jako inny użytkownik, wprowadź `sudo -u`, aby określić konto użytkownika.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Przejdź do maszyny wirtualnej na [platformie Azure](https://portal.azure.com) i wybierz pozycję **Uruchom polecenie** w obszarze **operacje**. Zostanie wyświetlona lista dostępnych poleceń do uruchomienia na maszynie wirtualnej.
+Przejdź do maszyny wirtualnej w [Azure Portal](https://portal.azure.com) i wybierz pozycję **Uruchom polecenie** w obszarze **operacje**. Zostanie wyświetlona lista dostępnych poleceń do uruchomienia na maszynie wirtualnej.
 
-![Uruchom listę poleceń](./media/run-command/run-command-list.png)
+![Lista poleceń](./media/run-command/run-command-list.png)
 
-Wybierz polecenie do uruchomienia. Niektóre polecenia mogą zawierać opcjonalne lub wymagane parametry wejściowe. Dla tych poleceń parametry są prezentowane jako pola tekstowe umożliwiające podanie wartości wejściowych. Dla każdego polecenia można wyświetlić skrypt, który jest uruchamiany, rozszerzając **skrypt widoku**. **RunShellScript** różni się od innych poleceń, ponieważ umożliwia udostępnianie własnego skryptu niestandardowego.
+Wybierz polecenie do uruchomienia. Niektóre polecenia mogą zawierać opcjonalne lub wymagane parametry wejściowe. W przypadku tych poleceń parametry są prezentowane jako pola tekstowe umożliwiające podanie wartości wejściowych. Dla każdego polecenia można wyświetlić skrypt, który jest uruchamiany, rozszerzając **skrypt widoku**. **RunShellScript** różni się od innych poleceń, ponieważ umożliwia udostępnianie własnego skryptu niestandardowego.
 
 > [!NOTE]
 > Wbudowane polecenia nie są edytowalne.
 
-Po wybraniu polecenia kliknij przycisk **Uruchom** , aby uruchomić skrypt. Skrypt jest uruchamiany i po zakończeniu zwraca dane wyjściowe i wszystkie błędy w oknie danych wyjściowych. Poniższy zrzut ekranu przedstawia przykładowe dane wyjściowe polecenia **ifconfig** .
+Po wybraniu polecenia wybierz pozycję **Uruchom** , aby uruchomić skrypt. Po zakończeniu działania skryptu zwraca dane wyjściowe i wszystkie błędy w oknie danych wyjściowych. Poniższy zrzut ekranu przedstawia przykładowe dane wyjściowe polecenia **ifconfig** .
 
 ![Uruchom dane wyjściowe skryptu polecenia](./media/run-command/run-command-script-output.png)
 
 ### <a name="powershell"></a>PowerShell
 
-Poniżej przedstawiono przykład użycia polecenia cmdlet [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) w celu uruchomienia skryptu programu PowerShell na maszynie wirtualnej platformy Azure. Polecenie cmdlet oczekuje, że skrypt, do którego odwołuje się parametr `-ScriptPath`, ma być lokalny w miejscu, w którym jest uruchamiane polecenie cmdlet.
+W poniższym przykładzie za pomocą polecenia cmdlet [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) można uruchomić skrypt programu PowerShell na maszynie wirtualnej platformy Azure. Polecenie cmdlet oczekuje, że skrypt, do którego odwołuje się parametr `-ScriptPath`, ma być lokalny w miejscu, w którym jest uruchamiane polecenie cmdlet.
 
 ```powershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
@@ -90,12 +90,12 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>Ograniczanie dostępu do polecenia Run
 
-Wyświetlanie listy poleceń uruchamiania lub wyświetlanie szczegółów polecenia wymaga uprawnienia `Microsoft.Compute/locations/runCommands/read` na poziomie subskrypcji, który ma wbudowaną rolę [czytnika](../../role-based-access-control/built-in-roles.md#reader) i wyższą.
+Wyświetlanie listy poleceń uruchamiania lub wyświetlanie szczegółów polecenia wymaga uprawnienia `Microsoft.Compute/locations/runCommands/read` na poziomie subskrypcji. To uprawnienie ma wbudowaną rolę [czytnika](../../role-based-access-control/built-in-roles.md#reader) i wyższe poziomy.
 
-Uruchomienie polecenia wymaga uprawnienia `Microsoft.Compute/virtualMachines/runCommand/action` na poziomie subskrypcji, który ma rola [współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) i nowsza.
+Uruchomienie polecenia wymaga uprawnienia `Microsoft.Compute/virtualMachines/runCommand/action` na poziomie subskrypcji. Rola [współautora maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) i wyższe poziomy mają to uprawnienie.
 
-Możesz użyć jednej z [wbudowanych](../../role-based-access-control/built-in-roles.md) ról lub utworzyć rolę [niestandardową](../../role-based-access-control/custom-roles.md) , aby użyć polecenia Uruchom.
+Możesz użyć jednej z [wbudowanych ról](../../role-based-access-control/built-in-roles.md) lub utworzyć [rolę niestandardową](../../role-based-access-control/custom-roles.md) , aby użyć polecenia Uruchom.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz [Uruchamianie skryptów na maszynie wirtualnej z systemem Linux](run-scripts-in-vm.md) , aby dowiedzieć się więcej na temat innych sposobów uruchamiania skryptów i poleceń zdalnie na maszynie wirtualnej.
+Aby dowiedzieć się więcej na temat innych metod zdalnego uruchamiania skryptów i poleceń na maszynie wirtualnej, zobacz [Uruchamianie skryptów na maszynie wirtualnej z systemem Linux](run-scripts-in-vm.md).

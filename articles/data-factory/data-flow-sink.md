@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 5fc9262dd53f390dbc43646626cc324d8655f1de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387778"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596543"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Przekształcanie ujścia dla przepływu danych
 
@@ -61,6 +61,10 @@ Gdy automapowanie jest wyłączone, będzie można dodać mapowanie oparte na ko
 Po wybraniu mapowania opartego na regułach, nastąpi naliczanie PODAJNIKa, aby oszacować pasujące wyrażenie zgodne z regułami przychodzącego wzorca i zdefiniować nazwy pól wychodzących. Możesz dodać dowolną kombinację mapowań pól i reguł. Nazwy pól są następnie generowane w czasie wykonywania przez moduł ADF na podstawie przychodzących metadanych ze źródła. Podczas debugowania można wyświetlać nazwy wygenerowanych pól i korzystać z okienka Podgląd danych.
 
 Szczegóły dopasowania wzorca znajdują się w [dokumentacji wzorca kolumny](concepts-data-flow-column-pattern.md).
+
+Można także wprowadzać wzorce wyrażeń regularnych w przypadku używania dopasowania opartego na regułach, rozszerzając wiersz i wprowadzając wyrażenie regularne obok "nazwa pasuje:".
+
+![Mapowanie wyrażenia regularnego](media/data-flow/scdt1g4.png "Mapowanie wyrażenia regularnego")
 
 ## <a name="file-name-options"></a>Opcje nazwy pliku
 

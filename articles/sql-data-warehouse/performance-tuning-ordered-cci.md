@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554553"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595371"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Dostrajanie wydajności z uporządkowanym klastrowanym indeksem magazynu kolumn  
 
@@ -125,10 +125,6 @@ Tworzenie uporządkowanej WIK jest operacją offline.  W przypadku tabel bez par
 4.  Uruchom polecenie ALTER INDEX < Ordered_CCI_Index > na < Table_B > Rebuild PARTITION = < Partition_ID > w tabeli B w celu odbudowania partycji przełączanej.  
 5.  Powtórz kroki 3 i 4 dla każdej partycji w Table_A.
 6.  Po przełączeniu wszystkich partycji z Table_A do Table_B i zostały one ponownie skompilowane, Porzuć Table_A i Zmień nazwę Table_B na Table_A. 
-
->[!NOTE]
->W ramach wersji zapoznawczej uporządkowanego klastrowanego indeksu magazynu kolumn (WIK) w Azure SQL Data Warehouse można generować zduplikowane dane w przypadku utworzenia lub odtworzenia uporządkowanej WIK indeksu magazynu kolumn w partycjonowanej tabeli. Nie ma żadnych utraconych danych. Poprawka tego problemu będzie dostępna wkrótce. Aby obejść obejście, użytkownicy mogą tworzyć uporządkowaną WIK na partycjonowanej tabeli przy użyciu polecenia CTAS
-
 
 ## <a name="examples"></a>Przykłady
 

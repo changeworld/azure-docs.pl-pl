@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
 ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "70085661"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions miejsc wdrożenia
@@ -33,9 +33,9 @@ Poniżej przedstawiono sposób, w jaki funkcje mają wpływ na zamienienie gniaz
 
 Istnieją różne zalety korzystania z miejsc wdrożenia. W poniższych scenariuszach opisano typowe zastosowania dla miejsc:
 
-- **Różne środowiska do różnych celów**: Korzystanie z różnych gniazd umożliwia rozróżnianie wystąpień aplikacji przed zastąpieniem do produkcji lub miejsca przejściowego.
-- Przedgrzane: Wdrożenie w gnieździe zamiast bezpośrednio do środowiska produkcyjnego umożliwia rozgrzanie aplikacji przed jej rozpoczęciem. Ponadto użycie gniazd zmniejsza czas oczekiwania dla obciążeń wyzwalanych przez protokół HTTP. Wystąpienia są rozgrzane przed wdrożeniem, co zmniejsza zimny start dla nowo wdrożonych funkcji.
-- **Łatwe powrotu**: Po wymianie w środowisku produkcyjnym gniazdo z wcześniej przemieszczoną aplikacją ma teraz poprzednią aplikację produkcyjną. Jeśli zmiany wprowadzone w gnieździe produkcyjnym nie są oczekiwane, możesz natychmiast cofnąć zamianę, aby przywrócić "ostatnie znane dobre wystąpienie".
+- **Różne środowiska do różnych celów**: korzystanie z różnych gniazd umożliwia odróżnienie wystąpień aplikacji przed zamianą na miejsce produkcyjne lub w miejscu przejściowym.
+- **Przedgrzane**: wdrożenie w gnieździe zamiast bezpośrednio do środowiska produkcyjnego umożliwia rozgrzanie aplikacji przed przeprowadzeniem jej na żywo. Ponadto użycie gniazd zmniejsza czas oczekiwania dla obciążeń wyzwalanych przez protokół HTTP. Wystąpienia są rozgrzane przed wdrożeniem, co zmniejsza zimny start dla nowo wdrożonych funkcji.
+- **Łatwe powrotu**: po wymianie w środowisku produkcyjnym gniazdo z wcześniej przygotowaną aplikacją ma teraz poprzednią aplikację produkcyjną. Jeśli zmiany wprowadzone w gnieździe produkcyjnym nie są oczekiwane, możesz natychmiast cofnąć zamianę, aby przywrócić "ostatnie znane dobre wystąpienie".
 
 ## <a name="swap-operations"></a>Operacje zamiany
 
@@ -58,7 +58,7 @@ Należy pamiętać o następujących kwestiach:
 
 - Aby wymienić miejsce przejściowe z miejscem produkcyjnym, upewnij się, że miejsce produkcyjne jest *zawsze* miejscem docelowym. W ten sposób operacja zamiany nie ma wpływu na aplikację produkcyjną.
 
-- Ustawienia związane ze źródłami i powiązaniami zdarzeń muszą zostać skonfigurowane jako [Ustawienia miejsca wdrożenia](#manage-settings) *przed*zainicjowaniem zamiany. Oznaczanie ich jako "Sticky" przed czasem gwarantuje, że zdarzenia i wyjścia są kierowane do właściwego wystąpienia.
+- Ustawienia związane ze źródłami i powiązaniami zdarzeń muszą zostać skonfigurowane jako [Ustawienia miejsca wdrożenia](#manage-settings) *przed zainicjowaniem zamiany*. Oznaczanie ich jako "Sticky" przed czasem gwarantuje, że zdarzenia i wyjścia są kierowane do właściwego wystąpienia.
 
 ## <a name="manage-settings"></a>Zarządzanie ustawieniami
 
@@ -82,7 +82,7 @@ Wykonaj następujące kroki, aby utworzyć ustawienie wdrożenia:
 
 ![Ustawienie miejsca wdrożenia](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Wdrożenie
+## <a name="deployment"></a>Wdrażanie
 
 Gniazda są puste podczas tworzenia gniazda. Możesz użyć dowolnej z [obsługiwanych technologii wdrażania](./functions-deployment-technologies.md) , aby wdrożyć aplikację w gnieździe.
 
@@ -93,11 +93,11 @@ Wszystkie gniazda są skalowane do tej samej liczby procesów roboczych co miejs
 - W przypadku planów zużycia gniazdo jest skalowane w miarę skalowania aplikacji funkcji.
 - W przypadku planów App Service aplikacja jest skalowana do stałej liczby procesów roboczych. Gniazda są uruchamiane na tej samej liczbie procesów roboczych co plan aplikacji.
 
-## <a name="add-a-slot"></a>Dodaj miejsce
+## <a name="add-a-slot"></a>Dodaj gniazdo
 
 Możesz dodać gniazdo za pośrednictwem [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) lub portalu. Poniższe kroki pokazują, jak utworzyć nowe miejsce w portalu:
 
-1. Przejdź do aplikacji funkcji i kliknij znak **Plus** obok pozycji miejsca.
+1. Przejdź do aplikacji funkcji i kliknij znak **Plus** *obok pozycji miejsca.*
 
     ![Dodaj Azure Functions miejsce wdrożenia](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
 
@@ -111,8 +111,8 @@ Możesz zamienić gniazda za pośrednictwem [interfejsu wiersza polecenia](https
 
 1. Przejdź do aplikacji funkcji
 1. Kliknij nazwę miejsca źródłowego, które chcesz zamienić
-1. Na karcie *Omówienie* kliknij przycisk ![ **swap** Zamień Azure Functions miejsce wdrożenia](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Sprawdź ustawienia konfiguracji wymiany i kliknij pozycję ![Swap swap Azure Functions miejsce wdrożenia](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Na karcie *Omówienie* kliknij przycisk **wymiany** ![Swap Azure Functions miejsce wdrożenia ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Sprawdź ustawienia konfiguracji wymiany i kliknij pozycję **zamień** ![Swap Azure Functions miejsce wdrożenia ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
 Operacja może chwilę potrwać, gdy trwa wykonywanie operacji zamiany.
 
@@ -137,7 +137,7 @@ Korzystając z [interfejsu wiersza polecenia platformy Azure](https://docs.micro
 - [create](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [usuwanie](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
 - [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [wymiany](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [Zamień na siebie](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>Zmień plan usługi App Service
@@ -169,15 +169,15 @@ Aby zmienić plan usługi App Service na miejscu, wykonaj następujące kroki:
 Azure Functions miejsca wdrożenia mają następujące ograniczenia:
 
 - Liczba gniazd dostępnych dla aplikacji zależy od planu. Plan zużycia jest dozwolony tylko w jednym miejscu wdrożenia. Dodatkowe gniazda są dostępne dla aplikacji uruchamianych w ramach planu App Service.
-- Wymiana gniazda powoduje zresetowanie kluczy dla aplikacji, których ustawienie `AzureWebJobsSecretStorageType` aplikacji jest `files`równe.
+- Wymiana gniazda powoduje zresetowanie kluczy dla aplikacji mających ustawienie aplikacji `AzureWebJobsSecretStorageType` równe `files`.
 - Gniazda nie są dostępne dla planu zużycia systemu Linux.
 
 ## <a name="support-levels"></a>Poziomy pomocy technicznej
 
 Istnieją dwa poziomy wsparcia dla miejsc wdrożenia:
 
-- **Ogólna dostępność (ga)** : W pełni obsługiwane i zatwierdzone do użycia w środowisku produkcyjnym.
-- **Wersja**zapoznawcza: Nie jest jeszcze obsługiwane, ale oczekuje się, że w przyszłości zostanie osiągnięty stan GA.
+- **Ogólna dostępność (ga)** : w pełni obsługiwana i zatwierdzona do użycia w środowisku produkcyjnym.
+- **Wersja zapoznawcza**: nie jest jeszcze obsługiwana, ale oczekuje się, że w przyszłości zostanie osiągnięty stan ga.
 
 | System operacyjny/plan hostingu           | Poziom pomocy technicznej     |
 | ------------------------- | -------------------- |

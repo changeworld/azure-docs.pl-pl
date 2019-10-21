@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9f053cc7646a2a4f41c57010f7e43a3fe3255b7e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 8bc396611f2e6f611de5a41de9525ba71287b363
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931790"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595120"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux na platformie Azure podczas pierwszego rozruchu za pomocą pakietu cloud-init
 
-W poprzednim samouczku przedstawiono sposób nawiązywania połączenia SSH z maszyną wirtualną oraz ręcznego instalowania NGINX. Aby w szybki i spójny sposób utworzyć maszyny wirtualne, stosuje się na ogół jakąś formę automatyzacji. Typową metodą dostosowywania maszyny wirtualnej podczas pierwszego rozruchu jest użycie pakietu [cloud-init](https://cloudinit.readthedocs.io). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W poprzednim samouczku przedstawiono sposób nawiązywania połączenia SSH z maszyną wirtualną oraz ręcznego instalowania NGINX. Aby w szybki i spójny sposób utworzyć maszyny wirtualne, stosuje się na ogół jakąś formę automatyzacji. Typową metodą dostosowywania maszyny wirtualnej podczas pierwszego rozruchu jest użycie pakietu [cloud-init](https://cloudinit.readthedocs.io). Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie pliku konfiguracji cloud-init
@@ -33,7 +33,7 @@ W poprzednim samouczku przedstawiono sposób nawiązywania połączenia SSH z ma
 > * Używanie usługi Key Vault do bezpiecznego przechowywania certyfikatów
 > * Automatyzacja bezpiecznych wdrożeń NGINX przy użyciu pakietu cloud-init
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="cloud-init-overview"></a>Omówienie pakietu cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest uruchamiany w trakcie początkowego rozruchu, więc do zastosowania konfiguracji nie są wymagane żadne dodatkowe kroki ani agenci.
@@ -42,7 +42,7 @@ Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie 
 
 Wraz z partnerami pracujemy nad tym, aby pakiet cloud-init był uwzględniany i uruchamiany w obrazach, których dostarczają na platformie Azure. W poniższej tabeli przedstawiono bieżącą dostępność pakietu cloud-init w obrazach na platformie Azure:
 
-| Wydawca | Oferta | SKU | Wersja | gotowe pakietu cloud-init |
+| Publisher | Oferta | JSZ | Wersja | Cloud-init gotowe |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |najnowsza |tak | 
 |Canonical |UbuntuServer |16.04-LTS |najnowsza |tak | 
@@ -56,7 +56,7 @@ Wraz z partnerami pracujemy nad tym, aby pakiet cloud-init był uwzględniany i 
 ## <a name="create-cloud-init-config-file"></a>Tworzenie pliku konfiguracji cloud-init
 Aby zobaczyć pakiet cloud-init w akcji, utwórz maszynę wirtualną instalującą NGINX i uruchamiającą prostą aplikację Node.js „Hello World”. Następująca konfiguracja cloud-init instaluje wymagane pakiety, tworzy aplikację Node.js, a następnie inicjuje i uruchamia aplikację.
 
-W wierszu polecenia bash lub w Cloud Shell Utwórz plik o nazwie *Cloud-init. txt* i wklej następującą konfigurację. Na przykład wpisz `sensible-editor cloud-init.txt` , aby utworzyć plik i wyświetlić listę dostępnych edytorów. Upewnij się, że skopiowano cały plik cloud-init chmury, a szczególnie pierwszy wiersz:
+W wierszu polecenia bash lub w Cloud Shell Utwórz plik o nazwie *Cloud-init. txt* i wklej następującą konfigurację. Na przykład wpisz `sensible-editor cloud-init.txt`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Upewnij się, że skopiowano cały plik cloud-init chmury, a szczególnie pierwszy wiersz:
 
 ```azurecli-interactive
 #cloud-config
@@ -126,11 +126,11 @@ Utworzenie maszyny wirtualnej, zainstalowanie pakietów i uruchomienie aplikacji
 Aby zezwolić na ruch internetowy do maszyny wirtualnej, otwórz port 80 z Internetu za pomocą polecenia [az vm open-port](/cli/azure/vm#az-vm-open-port):
 
 ```azurecli-interactive
-az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
+az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAutomatedVM
 ```
 
 ## <a name="test-web-app"></a>Testowanie aplikacji internetowej
-Teraz możesz otworzyć przeglądarkę internetową i wprowadzić *http:\/\/\<publicIpAddress >* na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Aplikacja Node.js jest wyświetlana jak w poniższym przykładzie:
+Teraz możesz otworzyć przeglądarkę internetową i wprowadzić *http: \/ \/ \<publicIpAddress >* na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Aplikacja Node.js jest wyświetlana jak w poniższym przykładzie:
 
 ![Wyświetlanie uruchomionej witryny serwera NGINX](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -165,7 +165,7 @@ Do użycia w środowisku produkcyjnym należy zaimportować prawidłowy certyfik
 az keyvault certificate create \
     --vault-name $keyvault_name \
     --name mycert \
-    --policy "$(az keyvault certificate get-default-policy)"
+    --policy "$(az keyvault certificate get-default-policy --output json)"
 ```
 
 
@@ -177,14 +177,14 @@ secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm secret format --secret "$secret")
+vm_secret=$(az vm secret format --secret "$secret" --output json)
 ```
 
 
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>Tworzenie konfiguracji cloud-init do zabezpieczenia serwera NGINX
 Podczas tworzenia maszyny wirtualnej certyfikaty i klucze są przechowywane w chronionym katalogu */var/lib/agentawaagent/* . Aby zautomatyzować dodawanie certyfikatu do maszyny wirtualnej i konfigurowanie serwera NGINX, możesz użyć zaktualizowanego pliku konfiguracji cloud-init z poprzedniego przykładu.
 
-Utwórz plik o nazwie *cloud-init-secured.txt* i wklej następującą konfigurację. Jeśli używasz Cloud Shell, Utwórz plik konfiguracji Cloud-init w tym miejscu, a nie na komputerze lokalnym. Na przykład wpisz `sensible-editor cloud-init-secured.txt` , aby utworzyć plik i wyświetlić listę dostępnych edytorów. Upewnij się, że skopiowano cały plik cloud-init chmury, a szczególnie pierwszy wiersz:
+Utwórz plik o nazwie *cloud-init-secured.txt* i wklej następującą konfigurację. Jeśli używasz Cloud Shell, Utwórz plik konfiguracji Cloud-init w tym miejscu, a nie na komputerze lokalnym. Na przykład wpisz `sensible-editor cloud-init-secured.txt`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Upewnij się, że skopiowano cały plik cloud-init chmury, a szczególnie pierwszy wiersz:
 
 ```yaml
 #cloud-config
@@ -256,12 +256,12 @@ Aby zezwolić na bezpieczny ruch internetowy do maszyny wirtualnej, otwórz port
 ```azurecli-interactive
 az vm open-port \
     --resource-group myResourceGroupAutomate \
-    --name myVMSecured \
+    --name myVMWithCerts \
     --port 443
 ```
 
 ### <a name="test-secure-web-app"></a>Testowanie bezpiecznej aplikacji internetowej
-Teraz możesz otworzyć przeglądarkę internetową i wprowadzić wartość *https:\/\/\<publicIpAddress >* na pasku adresu. Podaj własny publiczny adres IP, widoczny w danych wyjściowych poprzedniego procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
+Teraz możesz otworzyć przeglądarkę sieci Web i wprowadzić *https: \/ \/ \<publicIpAddress >* na pasku adresu. Podaj własny publiczny adres IP, widoczny w danych wyjściowych poprzedniego procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
 
 ![Akceptowanie ostrzeżenia dotyczącego zabezpieczeń w przeglądarce sieci Web](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

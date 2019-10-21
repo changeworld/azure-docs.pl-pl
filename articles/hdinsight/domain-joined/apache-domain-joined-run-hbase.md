@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: da6903aa9f51fbba00ca599805ff3213e9388dd1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037269"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597935"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Samouczek: Konfigurowanie zasad Apache HBase w usłudze HDInsight przy użyciu pakiet Enterprise Security
 
@@ -30,7 +30,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-* Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+* Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 * Utwórz [klaster bazy danych HBase usługi HDInsight, używając pakietu Enterprise Security](apache-domain-joined-configure-using-azure-adds.md).
 
@@ -86,7 +86,7 @@ Protokół SSH umożliwia połączenie z klastrami HBase, a następnie korzystan
 4. Wyświetl zawartość tabeli:
     
     ```hbaseshell
-    scan 'Contacts'
+    scan 'Customers'
     ```
 
     ![Dane wyjściowe powłoki HBase usługi HDInsight Hadoop](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
@@ -107,12 +107,12 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
 
    |**Ustawienie**  |**Sugerowana wartość**  |
    |---------|---------|
-   |Nazwa zasad  |  sales_customers_name_contact   |
+   |Policy Name (Nazwa zasad)  |  sales_customers_name_contact   |
    |Tabela bazy danych HBase   |  Klienci |
    |Rodzina kolumn bazy danych HBase   |  Nazwa, kontakt |
    |Kolumna bazy danych HBase   |  * |
    |Wybierz grupę  | |
-   |Wybór użytkownika  | sales_user1 |
+   |Select User (Wybierz użytkownika)  | sales_user1 |
    |Uprawnienia  | Odczyt |
 
    W nazwie tematu można uwzględnić następujące symbole wieloznaczne:
@@ -131,12 +131,12 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
 
    |**Ustawienie**  |**Sugerowana wartość**  |
    |---------|---------|
-   |Nazwa zasad  |  marketing_customers_contact   |
+   |Policy Name (Nazwa zasad)  |  marketing_customers_contact   |
    |Tabela bazy danych HBase   |  Klienci |
-   |Rodzina kolumn bazy danych HBase   |  Skontaktuj się z |
+   |Rodzina kolumn bazy danych HBase   |  Kontakt |
    |Kolumna bazy danych HBase   |  * |
    |Wybierz grupę  | |
-   |Wybór użytkownika  | marketing_user1 |
+   |Select User (Wybierz użytkownika)  | marketing_user1 |
    |Uprawnienia  | Odczyt |
 
    ![Tworzenie marketingowe zasad w usłudze Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
@@ -161,7 +161,7 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
    kinit sales_user1
    ```
 
-2. Otwórz powłokę HBase i Zeskanuj tabelę `Customers`.
+2. Otwórz powłokę programu HBase i przeprowadź skanowanie tabeli `Customers`.
 
    ```hbaseshell
    hbase shell
@@ -203,7 +203,7 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
    kinit marketing_user1
    ```
 
-1. Otwórz powłokę HBase i Zeskanuj tabelę `Customers`:
+1. Otwórz powłokę programu HBase i przeprowadź skanowanie tabeli `Customers`:
 
     ```hbaseshell
     hbase shell
@@ -235,11 +235,11 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
 
 Jeśli nie zamierzasz nadal korzystać z tej aplikacji, usuń utworzony klaster bazy danych HBase, wykonując następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. W polu **Wyszukaj** w górnej części wpisz **HDInsight**. 
 1. Wybierz pozycję **Klastry usługi HDInsight** w obszarze **Usługi**.
 1. Na wyświetlonej liście klastrów usługi HDInsight kliknij symbol **...** obok klastra utworzonego na potrzeby tego samouczka. 
-1. Kliknij przycisk **Usuń**. Kliknij przycisk **Yes** (Tak).
+1. Kliknij polecenie **Usuń**. Kliknij przycisk **Yes** (Tak).
 
 ## <a name="next-steps"></a>Następne kroki
 

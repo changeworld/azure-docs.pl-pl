@@ -4,16 +4,16 @@ description: Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCop
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 42d2dae148b83687ff06d4ed321a881bcb9e7ae0
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273927"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595126"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy
 
@@ -33,12 +33,12 @@ Aby skonfigurować ustawienia serwera proxy dla AzCopy, należy ustawić zmienn�
 | System operacyjny | Polecenie  |
 |--------|-----------|
 | **Windows** | W wierszu polecenia Użyj: `set https_proxy=<proxy IP>:<proxy port>`<br> W programie PowerShell Użyj: `$env:https_proxy="<proxy IP>:<proxy port>"`|
-| **System** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 Obecnie AzCopy nie obsługuje serwerów proxy, które wymagają uwierzytelniania przy użyciu protokołu NTLM lub Kerberos.
 
-## <a name="optimize-performance"></a>Optymalizacja wydajności
+## <a name="optimize-performance"></a>Optymalizowanie wydajności
 
 Możesz przeprowadzić test wydajności, a następnie użyć poleceń i zmiennych środowiskowych, aby znaleźć optymalną kompromis między wydajnością i użyciem zasobów.
 
@@ -75,7 +75,7 @@ Jeśli komputer ma mniej niż 5 procesorów CPU, wartość tej zmiennej jest ust
 | System operacyjny | Polecenie  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **System** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
 Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, można odczytać, która wartość jest używana, przeglądając początek dowolnego pliku dziennika AzCopy. W tym miejscu są raportowane wybrane wartości i powód, w którym została wybrana.
@@ -90,7 +90,7 @@ Ta wartość jest wyrażana w gigabajtach (GB).
 | System operacyjny | Polecenie  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
-| **System** | `export AZCOPY_BUFFER_GB=<value>` |
+| **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ## <a name="troubleshoot-issues"></a>Rozwiązywanie problemów
@@ -99,7 +99,7 @@ AzCopy tworzy dziennik i planowanie plików dla każdego zadania. Możesz użyć
 
 Dzienniki będą zawierać stan niepowodzenia (`UPLOADFAILED`, `COPYFAILED` i `DOWNLOADFAILED`), pełną ścieżkę i przyczynę niepowodzenia.
 
-Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE$\.azcopy` w katalogu systemu Windows lub `$HOME$\.azcopy` na komputerach Mac i w systemie Linux, ale można je zmienić w razie potrzeby.
+Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE$\.azcopy` w katalogu systemu Windows lub `$HOME$\.azcopy` na komputerach Mac i Linux, ale można je zmienić w razie potrzeby.
 
 > [!IMPORTANT]
 > Podczas przesyłania żądania do pomoc techniczna firmy Microsoft (lub rozwiązywania problemu związanego z jakąkolwiek osobą trzecią) należy udostępnić redagowane wersję polecenia, które chcesz wykonać. Gwarantuje to, że SYGNATURa dostępu współdzielonego nie zostanie przypadkowo udostępniona z każdy. Wersję redagowane można znaleźć na początku pliku dziennika.
@@ -114,7 +114,7 @@ Następujące polecenie spowoduje wyświetlenie wszystkich błędów o stanie `U
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 ```
 
-**System**
+**Linux**
 
 ```
 grep UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -160,7 +160,7 @@ Użyj dowolnego z tych poleceń.
 | System operacyjny | Polecenie  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
-| **System** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
 Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, Zaplanuj pliki są zapisywane w domyślnej lokalizacji.
@@ -172,7 +172,7 @@ Użyj dowolnego z tych poleceń.
 | System operacyjny | Polecenie  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
-| **System** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
 Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, dzienniki są zapisywane w domyślnej lokalizacji.

@@ -4,14 +4,14 @@ description: Opisuje sposób konfigurowania ciągłej integracji w Azure Pipelin
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: ae896fa0820fbd25ed3f2d29c89fbcd56e7fd6f5
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982456"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597517"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Integrowanie szablonów Menedżer zasobów z Azure Pipelines
 
@@ -71,7 +71,7 @@ steps:
   inputs:
     azureSubscription: 'demo-deploy-sp'
     ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus' 
+    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus'
     azurePowerShellVersion: LatestVersion
 ```
 
@@ -82,14 +82,14 @@ steps:
 - task: AzurePowerShell@4
 ```
 
-W `azureSubscription`polu podaj nazwę utworzonego połączenia z usługą.
+W polu `azureSubscription` Podaj nazwę utworzonego połączenia z usługą.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-W `scriptPath`przypadku, podaj ścieżkę względną z pliku potoku do skryptu. Możesz wyszukać w repozytorium, aby zobaczyć ścieżkę.
+Aby uzyskać `scriptPath`, podaj ścieżkę względną z pliku potoku do skryptu. Możesz wyszukać w repozytorium, aby zobaczyć ścieżkę.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -139,7 +139,7 @@ Możesz wybrać aktualnie uruchomiony potok, aby wyświetlić szczegółowe info
 
 ## <a name="copy-and-deploy-tasks"></a>Kopiowanie i wdrażanie zadań
 
-W tej sekcji pokazano, jak skonfigurować ciągłe wdrażanie przy użyciu dwóch zadań do przygotowania artefaktów i wdrożenia szablonu. 
+W tej sekcji pokazano, jak skonfigurować ciągłe wdrażanie przy użyciu dwóch zadań do przygotowania artefaktów i wdrożenia szablonu.
 
 W poniższym YAML przedstawiono [zadanie kopiowania plików platformy Azure](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops):
 
@@ -157,13 +157,13 @@ W poniższym YAML przedstawiono [zadanie kopiowania plików platformy Azure](/az
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Istnieje kilka części tego zadania, które można poprawić w danym środowisku. `SourcePath` Wskazuje lokalizację artefaktów względem pliku potoku. W tym przykładzie pliki znajdują się w folderze o nazwie `AzureResourceGroup1` , która jest nazwą projektu.
+Istnieje kilka części tego zadania, które można poprawić w danym środowisku. @No__t_0 wskazuje lokalizację artefaktów względem pliku potoku. W tym przykładzie pliki znajdują się w folderze o nazwie `AzureResourceGroup1`, który był nazwą projektu.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-W `azureSubscription`polu podaj nazwę utworzonego połączenia z usługą.
+W polu `azureSubscription` Podaj nazwę utworzonego połączenia z usługą.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -176,35 +176,45 @@ storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
-W poniższym YAML przedstawiono [zadanie wdrażania grupy zasobów platformy Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops):
+W poniższym YAML przedstawiono [zadanie wdrażania szablonu Azure Resource Manager](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md):
 
 ```yaml
 - task: AzureResourceGroupDeployment@2
   displayName: 'Deploy template'
   inputs:
-    azureSubscription: 'demo-deploy-sp'
+    deploymentScope: 'Resource Group'
+    ConnectedServiceName: 'demo-deploy-sp'
+    subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+    action: 'Create Or Update Resource Group'
     resourceGroupName: 'demogroup'
-    location: 'centralus'
+    location: 'Central US'
     templateLocation: 'URL of the file'
     csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
     csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
     overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    deploymentMode: 'Incremental'
 ```
 
-Istnieje kilka części tego zadania, które można poprawić w danym środowisku. W `azureSubscription`polu podaj nazwę utworzonego połączenia z usługą.
+Istnieje kilka części tego zadania, które można poprawić w danym środowisku.
 
-```yaml
-azureSubscription: '<your-connection-name>'
-```
+- `deploymentScope`: Wybierz zakres wdrożenia z opcji: `Management Group`, `Subscription` i `Resource Group`. Użyj **grupy zasobów** w tym instruktażu. Aby dowiedzieć się więcej o zakresach, zobacz sekcję [Deployment Scopes](./resource-group-template-deploy-rest.md#deployment-scope).
 
-W `resourceGroupName` przypadku `location`systemów i podaj nazwę i lokalizację grupy zasobów, w której chcesz wdrożyć. Zadanie tworzy grupę zasobów, jeśli nie istnieje.
+- `ConnectedServiceName`: Podaj nazwę utworzonego połączenia z usługą.
 
-```yaml
-resourceGroupName: '<resource-group-name>'
-location: '<location>'
-```
+    ```yaml
+    ConnectedServiceName: '<your-connection-name>'
+    ```
 
-Zadanie wdrażania łączy się z szablonem o `WebSite.json` nazwie i plikiem parametrów o nazwie website. Parameters. JSON. Użyj nazw szablonu i plików parametrów.
+- `subscriptionName`: podaj identyfikator subskrypcji docelowej. Ta właściwość dotyczy tylko zakresu wdrożenia grupy zasobów i informacje wdrożenia subskrypcji.
+
+- `resourceGroupName` i `location`: Podaj nazwę i lokalizację grupy zasobów, w której chcesz wdrożyć. Zadanie tworzy grupę zasobów, jeśli nie istnieje.
+
+    ```yaml
+    resourceGroupName: '<resource-group-name>'
+    location: '<location>'
+    ```
+
+Zadanie wdrażania łączy się z szablonem o nazwie `WebSite.json` i plikiem parametrów o nazwie WebSite. Parameters. JSON. Użyj nazw szablonu i plików parametrów.
 
 Teraz, gdy zrozumiesz, jak tworzyć zadania, przejdźmy do kroków, aby edytować potok.
 
@@ -226,16 +236,20 @@ Teraz, gdy zrozumiesz, jak tworzyć zadania, przejdźmy do kroków, aby edytowa�
        outputStorageUri: 'artifactsLocation'
        outputStorageContainerSasToken: 'artifactsLocationSasToken'
        sasTokenTimeOutInMinutes: '240'
-   - task: AzureResourceGroupDeployment@2
-     displayName: 'Deploy template'
-     inputs:
-       azureSubscription: 'demo-deploy-sp'
-       resourceGroupName: demogroup
-       location: 'centralus'
-       templateLocation: 'URL of the file'
-       csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-       csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-       overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Deploy template'
+      inputs:
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: 'demo-deploy-sp'
+        subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'demogroup'
+        location: 'Central US'
+        templateLocation: 'URL of the file'
+        csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
+        csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
+        overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+        deploymentMode: 'Incremental'
    ```
 
 1. Wybierz pozycję **Zapisz**.
@@ -250,4 +264,4 @@ Możesz wybrać aktualnie uruchomiony potok, aby wyświetlić szczegółowe info
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać instrukcje krok po kroku dotyczące korzystania z Azure Pipelines z szablonami Menedżer zasobów, [zobacz Samouczek: Ciągła integracja szablonów Azure Resource Manager z Azure Pipelines](resource-manager-tutorial-use-azure-pipelines.md).
+Aby zapoznać się z procesem krok po kroku na temat używania Azure Pipelines z szablonami Menedżer zasobów, zobacz [Samouczek: Ciągła integracja szablonów Azure Resource Manager z Azure Pipelines](resource-manager-tutorial-use-azure-pipelines.md).

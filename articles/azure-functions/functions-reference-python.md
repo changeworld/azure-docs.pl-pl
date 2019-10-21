@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 97b954ee5e00c13211a3b2a2254b6d34bccb780c
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243278"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674945"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 
@@ -250,7 +250,7 @@ Aby dowiedzieć się więcej o rejestrowaniu, zobacz [Monitor Azure Functions](f
 
 ## <a name="http-trigger-and-bindings"></a>Wyzwalacz i powiązania HTTP
 
-Wyzwalacz HTTP jest zdefiniowany w pliku Function. Jan. @No__t-0 powiązania musi być zgodna z nazwanym parametrem w funkcji. W poprzednich przykładach nazwa powiązania `req` jest używana. Ten parametr jest obiektem [HttpRequest] i zwracany jest obiekt [HttpResponse] .
+Wyzwalacz HTTP jest zdefiniowany w pliku Function. Jan. @No__t_0 powiązania musi być zgodna z nazwanym parametrem w funkcji. W poprzednich przykładach nazwa powiązania `req` jest używana. Ten parametr jest obiektem [HttpRequest] i zwracany jest obiekt [HttpResponse] .
 
 Z obiektu [HttpRequest] można uzyskać nagłówki żądań, parametry zapytania, parametry tras i treść wiadomości. 
 
@@ -360,7 +360,7 @@ def main(req):
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 
-W funkcjach, [Ustawienia aplikacji](functions-app-settings.md), takie jak parametry połączenia usługi, są ujawniane jako zmienne środowiskowe podczas wykonywania. Możesz uzyskać dostęp do tych ustawień, deklarując `import os`, a następnie używając `setting = os.environ["setting-name"]`.
+W funkcjach, [Ustawienia aplikacji](functions-app-settings.md), takie jak parametry połączenia usługi, są ujawniane jako zmienne środowiskowe podczas wykonywania. Możesz uzyskać dostęp do tych ustawień, deklarując `import os` a następnie używając `setting = os.environ["setting-name"]`.
 
 Poniższy przykład pobiera [ustawienie aplikacji](functions-how-to-use-azure-function-app-settings.md#settings)z kluczem o nazwie `myAppSetting`:
 
@@ -398,22 +398,15 @@ pip install -r requirements.txt
 
 Gdy wszystko jest gotowe do opublikowania, upewnij się, że wszystkie zależności są wymienione w pliku *Requirements. txt* , który znajduje się w katalogu głównym katalogu projektu. Azure Functions można [zdalnie kompilować](functions-deployment-technologies.md#remote-build) te zależności.
 
-Pliki projektu i foldery, które są wykluczone z publikowania, łącznie z folderem środowiska wirtualnego, są wymienione w pliku. funcignore.  
+Pliki projektu i foldery, które są wykluczone z publikowania, łącznie z folderem środowiska wirtualnego, są wymienione w pliku. funcignore. 
 
-Aby wdrożyć platformę Azure i przeprowadzić kompilację zdalną, użyj następującego polecenia:
+Zarówno [Azure Functions Core Tools](functions-run-local.md#v2) , jak i [rozszerzenie Azure Functions dla vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) będą domyślnie wykonywały zdalną kompilację. Na przykład użyj następującego polecenia:
 
 ```bash
-func azure functionapp publish <app name> --build remote
+func azure functionapp publish <app name>
 ```
 
-Jeśli nie korzystasz z kompilacji zdalnej i korzystasz z pakietu wymagającego kompilatora i nie obsługuje on instalacji wielu kół zgodnych z systemem Linux z PyPI, publikowanie na platformie Azure bez tworzenia lokalnie zakończy się niepowodzeniem z powodu następującego błędu:
-
-```
-There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
-The terminal process terminated with exit code: 1
-```
-
-Aby utworzyć lokalnie i skonfigurować wymagane pliki binarne, [Zainstaluj platformę Docker](https://docs.docker.com/install/) na komputerze lokalnym i uruchom następujące polecenie w celu opublikowania przy użyciu [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Pamiętaj, aby zastąpić `<app name>` nazwą swojej aplikacji funkcji na platformie Azure. 
+Jeśli chcesz skompilować aplikację lokalnie, a nie na platformie Azure, [Zainstaluj platformę Docker](https://docs.docker.com/install/) na komputerze lokalnym i uruchom następujące polecenie, aby opublikować przy użyciu [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Pamiętaj, aby zastąpić `<app name>` nazwą swojej aplikacji funkcji na platformie Azure. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps

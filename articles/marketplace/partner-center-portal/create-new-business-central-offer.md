@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 78a73e687d653998cf4e641c216f383474dcc8bd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9376493cdd1a8a9790f4de8ee3769acf8dca5ade
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244451"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595571"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Utwórz nową ofertę Dynamics 365 Business Central
 
@@ -300,7 +300,7 @@ Firma Microsoft może usunąć złożoność konfigurowania dysku testowego, udo
 
 - **Adres URL wystąpienia** (wymagany): adres URL, pod którym klient zacznie testować swój dysk. Zwykle jest to adres URL wystąpienia usługi Dynamics 365 z uruchomioną aplikacją z zainstalowanymi przykładowymi danymi (na przykład https://testdrive.crm.dynamics.com).
 
-- **Adres URL internetowego interfejsu API wystąpienia** (wymagane): Pobierz adres URL internetowego interfejsu API dla wystąpienia usługi Dynamics 365, logując się do konta usługi Microsoft 365 i przechodząc do **ustawień** \&GT; **Dostosowanie** @no__t — 4GT; **Zasoby dla deweloperów** \&gt; **Interfejs API sieci Web wystąpienia (główny adres URL usługi)** , skopiuj adres URL znaleziony w tym miejscu (na przykład https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Adres URL internetowego interfejsu API wystąpienia** (wymagane): Pobierz adres URL internetowego interfejsu API dla wystąpienia usługi Dynamics 365, logując się do konta usługi Microsoft 365 i przechodząc do **ustawień** \&gt; @No__t_4gt **dostosowania** ; **Zasoby dla deweloperów** \&gt; **Interfejs API sieci Web wystąpienia (główny adres URL usługi)** , skopiuj adres URL znaleziony w tym miejscu (na przykład https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Nazwa roli** (wymagana): Podaj nazwę roli zabezpieczeń, która została zdefiniowana w niestandardowym dysku testowym Dynamics 365, która zostanie przypisana do użytkownika podczas testu na dysku (na przykład "rola stacji testowych").
 

@@ -12,16 +12,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/02/2019
-ms.openlocfilehash: 19febc5a0a6e4a72cfebfaecd917185538130152
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8d4e7fa314ce3a5f8534e7742880114ccc7f7144
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035023"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598141"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla SQL Database aplikacji klienckich: Błędy połączenia z bazą danych i inne problemy
 
-W tym artykule przedstawiono listę kodów błędów SQL dla SQL Database aplikacji klienckich, w tym błędów połączeń z bazą danych, błędów przejściowych (nazywanych także błędami przejściowymi), błędów ładu zasobów, problemów z kopiowaniem bazy danych, elastycznej puli i innych błędów. Większość kategorii jest określonych do Azure SQL Database i nie ma zastosowania do Microsoft SQL Server. Zobacz również [komunikaty o błędach systemu](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx).
+W tym artykule przedstawiono listę kodów błędów SQL dla SQL Database aplikacji klienckich, w tym błędów połączeń z bazą danych, błędów przejściowych (nazywanych także błędami przejściowymi), błędów ładu zasobów, problemów z kopiowaniem bazy danych, elastycznej puli i innych błędów. Większość kategorii jest określonych do Azure SQL Database i nie ma zastosowania do Microsoft SQL Server. Zobacz również [komunikaty o błędach systemu](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15).
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>Błędy połączenia z bazą danych, błędy przejściowe i inne błędy tymczasowe
 
@@ -35,8 +35,8 @@ Zdecydowanie zaleca się, aby program kliencki miał logikę ponowień, aby moż
 
 Błędy przejściowe zwykle manifestu jako jeden z następujących komunikatów o błędach z programów klienckich:
 
-* Baza danych &lt;db_name @ no__t-1 na serwerze &lt;Azure_instance @ no__t-3 jest obecnie niedostępna. Spróbuj ponownie nawiązać połączenie później. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji &lt;session_id @ no__t-1
-* Baza danych &lt;db_name @ no__t-1 na serwerze &lt;Azure_instance @ no__t-3 jest obecnie niedostępna. Spróbuj ponownie nawiązać połączenie później. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji &lt;session_id @ no__t-1. (Microsoft SQL Server, błąd: 40613)
+* @No__t_0db_name bazy danych &gt; na serwerze &lt;Azure_instance &gt; nie są obecnie dostępne. Spróbuj ponownie nawiązać połączenie później. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji &lt;session_id &gt;
+* @No__t_0db_name bazy danych &gt; na serwerze &lt;Azure_instance &gt; nie są obecnie dostępne. Spróbuj ponownie nawiązać połączenie później. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji &lt;session_id &gt;. (Microsoft SQL Server, błąd: 40613)
 * Istniejące połączenie zostało wymuszone przez hosta zdalnego.
 * System. Data. Entity. Core. EntityCommandExecutionException: Wystąpił błąd podczas wykonywania definicji polecenia. Aby uzyskać szczegółowe informacje, zobacz wyjątek wewnętrzny. ---> System. Data. SqlClient. SqlException: Wystąpił błąd poziomu transportu podczas uzyskiwania wyników z serwera. (Dostawca: dostawca sesji, błąd: 19 — połączenie fizyczne nie jest możliwe do użycia)
 * Próba połączenia z pomocniczą bazą danych nie powiodła się, ponieważ baza danych jest w trakcie ponownej konfiguracji i jest zajęta przez zastosowanie nowych stron w trakcie aktywnej transakcji w podstawowej bazie danych. 
@@ -176,9 +176,9 @@ Następujące błędy nie należą do żadnych poprzednich kategorii.
 | Kod błędu | Ważność | Opis |
 | ---:| ---:|:--- |
 | [15006](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-15000-to-15999) |16 |(AdministratorLogin) nie jest prawidłową nazwą, ponieważ zawiera nieprawidłowe znaki.|
-| [18452](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |Logowanie nie powiodło się. Nazwa logowania pochodzi z niezaufanej domeny i nie można jej używać z uwierzytelnianiem systemu Windows.%. &#x2a;LS (nazwy logowania systemu Windows są nieobsługiwane w tej wersji programu SQL Server). |
+| [18452](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |Logowanie nie powiodło się. Nazwa logowania pochodzi z niezaufanej domeny i nie można jej używać z uwierzytelnianiem systemu Windows .%. &#x2a;LS (nazwy logowania systemu Windows są nieobsługiwane w tej wersji programu SQL Server). |
 | [18456](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |Logowanie użytkownika "% nie powiodło się. &#x2a;ls ".%. &#x2a;% ls%. &#x2a;LS (Logowanie użytkownika "% nie powiodło się&#x2a; . ls ".) |
-| [18470](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |Logowanie użytkownika "% nie powiodło się. &#x2a;ls '. Przyczyna: konto jest wyłączone.%. &#x2a;ls |
+| [18470](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |Logowanie użytkownika "% nie powiodło się. &#x2a;ls '. Przyczyna: konto jest wyłączone .%. &#x2a;ls |
 | 40014 |16 |Nie można użyć wielu baz danych w tej samej transakcji. |
 | 40054 |16 |Tabele bez indeksu klastrowanego nie są obsługiwane w tej wersji programu SQL Server. Utwórz klastrowany indeks i spróbuj ponownie. |
 | 40133 |15 |Ta operacja nie jest obsługiwana w tej wersji programu SQL Server. |
@@ -211,7 +211,7 @@ Następujące błędy nie należą do żadnych poprzednich kategorii.
 | 40607 |16 |Nazwy logowania systemu Windows są nieobsługiwane w tej wersji programu SQL Server. |
 | 40611 |16 |Serwery mogą mieć co najwyżej 128 reguł zapory. |
 | 40614 |16 |Początkowy adres IP reguły zapory nie może być większy niż końcowy adres IP. |
-| 40615 |16 |Nie można otworzyć serwera "{0}" żądanego podczas logowania. Klient z adresem IP "{1}" nie może uzyskać dostępu do serwera.<br /><br />Aby włączyć dostęp, użyj portalu SQL Database lub uruchom polecenie Sp @ no__t-0set @ no__t-1firewall @ no__t-2rule w bazie danych Master, aby utworzyć regułę zapory dla tego adresu IP lub zakresu adresów. Wprowadzenie zmian może potrwać do 5 minut. |
+| 40615 |16 |Nie można otworzyć serwera "{0}" żądanego podczas logowania. Klient z adresem IP "{1}" nie może uzyskać dostępu do serwera.<br /><br />Aby włączyć dostęp, użyj portalu SQL Database lub Uruchom \_set \_firewall programu Sp \_rule w bazie danych Master, aby utworzyć regułę zapory dla tego adresu IP lub zakresu adresów. Wprowadzenie zmian może potrwać do 5 minut. |
 | 40617 |16 |Nazwa reguły zapory rozpoczynająca się od (Nazwa reguły) jest za długa. Maksymalna długość to 128. |
 | 40618 |16 |Nazwa reguły zapory nie może być pusta. |
 | 40620 |16 |Logowanie użytkownika "% nie powiodło się. &#x2a;ls ". Zmienianie hasła nie powiodło się. Zmiana hasła podczas logowania nie jest obsługiwana w tej wersji programu SQL Server. |
@@ -236,7 +236,7 @@ Następujące błędy nie należą do żadnych poprzednich kategorii.
 | 40651 |16 |Nie można utworzyć serwera, ponieważ subskrypcja (Identyfikator subskrypcji) jest wyłączona. |
 | 40652 |16 |Nie można przenieść ani utworzyć serwera. Subskrypcja (Identyfikator subskrypcji) spowoduje przekroczenie limitu przydziału serwera. |
 | 40671 |17 |Błąd komunikacji między bramą a usługą zarządzania. Spróbuj ponownie później. |
-| 40852 |16 |Nie można otworzyć bazy danych "%. \*LS" na serwerze "%. \*LS" żądanym przez nazwę logowania. Dostęp do bazy danych jest dozwolony tylko przy użyciu parametrów połączenia z włączoną obsługą zabezpieczeń. Aby uzyskać dostęp do tej bazy danych, zmodyfikuj parametry połączenia tak, aby zawierały wartość "Secure" w nazwie FQDN serwera — "Nazwa serwera". baza danych. Windows. NET należy zmodyfikować na "Nazwa serwera". baza danych. `secure`.windows.net. |
+| 40852 |16 |Nie można otworzyć bazy danych "%. \*ls "na serwerze"%. \*ls ' zażądał zalogowania. Dostęp do bazy danych jest dozwolony tylko przy użyciu parametrów połączenia z włączoną obsługą zabezpieczeń. Aby uzyskać dostęp do tej bazy danych, zmodyfikuj parametry połączenia tak, aby zawierały wartość "Secure" w nazwie FQDN serwera — "Nazwa serwera". baza danych. Windows. NET należy zmodyfikować na "Nazwa serwera". baza danych. `secure`.windows.net. |
 | 40914 | 16 | Nie można otworzyć serwera " *[nazwa serwera]* " żądanego podczas logowania. Klient nie może uzyskać dostępu do serwera.<br /><br />Aby rozwiązać ten problem, należy rozważyć dodanie [reguły sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md). |
 | 45168 |16 |System SQL Azure jest objęty obciążeniem i wprowadza górny limit współbieżnych operacji CRUD DB dla jednego serwera SQL Database (np. Create Database). Serwer określony w komunikacie o błędzie przekroczył maksymalną liczbę jednoczesnych połączeń. Spróbuj ponownie później. |
 | 45169 |16 |System SQL Azure jest objęty obciążeniem i wprowadza górny limit liczby współbieżnych operacji serwera CRUD dla jednej subskrypcji (np. Create Server). Subskrypcja określona w komunikacie o błędzie przekroczyła maksymalną liczbę jednoczesnych połączeń i żądanie zostało odrzucone. Spróbuj ponownie później. |

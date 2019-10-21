@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6361814a30cc7d1bc9703dae8ddb14d955c1582d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514665"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598044"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -219,13 +219,13 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |Zachodnie stany USA *        |LRS     |
 |Zachodnie stany USA 2      |LRS, ZRS|
 
-\* obsługiwane dla nowych kont, a nie wszystkie istniejące konta ukończyły proces uaktualniania.
+\* obsługiwane dla nowych kont, a nie wszystkie istniejące konta ukończyły proces uaktualniania. Możesz sprawdzić, czy istniejące konta magazynu ukończyły proces uaktualniania, podejmując próbę [włączenia dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
 
 Aby pomóc nam określić priorytety nowych regionów i funkcji, Wypełnij tę [ankietę](https://aka.ms/azurefilesatscalesurvey).
 
 ### <a name="enable-and-create-larger-file-shares"></a>Włączanie i tworzenie większych udziałów plików
 
-Aby rozpocząć korzystanie z większych udziałów plików, zapoznaj się z artykułem [Włączanie dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
+Aby rozpocząć korzystanie z większych udziałów plików, zobacz artykuł [jak włączyć i utworzyć duże udziały plików](storage-files-how-to-create-large-file-share.md).
 
 ## <a name="data-growth-pattern"></a>Wzorzec wzrostu danych
 

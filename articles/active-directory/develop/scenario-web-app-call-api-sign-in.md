@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3036f8cb72f2a07673743a77e8be37614002563f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720194"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596377"
 ---
 # <a name="web-app-that-calls-web-apis---sign-in"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — logowanie
 
@@ -30,13 +30,13 @@ Co więcej, jest to, że jeśli użytkownik wyloguje się z tej aplikacji lub z 
 
 ## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Przechwytywanie wywołania zwrotnego po wylogowaniu — Rejestracja jednokrotna
 
-Aplikacja może przechwycić zdarzenie po `logout`, aby na przykład wyczyścić wpis pamięci podręcznej tokenów skojarzonej z kontem, które wylogowano. Aplikacja sieci Web będzie przechowywać tokeny dostępu dla użytkownika w pamięci podręcznej. Przechwycenie wywołania zwrotnego po `logout` umożliwia aplikacji sieci Web usunięcie użytkownika z pamięci podręcznej tokenów.
+Aplikacja może przechwycić zdarzenie po `logout`, aby na przykład wyczyścić wpis pamięci podręcznej tokenów skojarzonej z kontem, które zostało wylogowane. Aplikacja sieci Web będzie przechowywać tokeny dostępu dla użytkownika w pamięci podręcznej. Przechwycenie po `logout` wywołanie zwrotne umożliwia aplikacji sieci Web usunięcie użytkownika z pamięci podręcznej tokenów.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Ten mechanizm jest zilustrowany w metodzie `AddMsal()` [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)
+Ten mechanizm jest przedstawiony w `AddMsal()` metodzie [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)
 
-**Adres URL wylogowania** , który został zarejestrowany dla aplikacji, umożliwia wdrożenie rejestracji jednokrotnej. Punkt końcowy na platformie tożsamości firmy Microsoft `logout` wywoła **adres URL wylogowania** zarejestrowany w aplikacji. To wywołanie występuje, jeśli wylogowanie zostało zainicjowane z aplikacji sieci Web lub z innej aplikacji sieci Web lub przeglądarki. Aby uzyskać więcej informacji, zobacz [Logowanie](v2-protocols-oidc.md#single-sign-out)jednokrotne.
+**Adres URL wylogowania** , który został zarejestrowany dla aplikacji, umożliwia wdrożenie rejestracji jednokrotnej. Punkt końcowy `logout` platformy tożsamości firmy Microsoft będzie wywoływał **adres URL wylogowania** zarejestrowany w aplikacji. To wywołanie występuje, jeśli wylogowanie zostało zainicjowane z aplikacji sieci Web lub z innej aplikacji sieci Web lub przeglądarki. Aby uzyskać więcej informacji, zobacz [Logowanie](v2-protocols-oidc.md#single-sign-out)jednokrotne.
 
 ```CSharp
 public static class WebAppServiceCollectionExtensions
@@ -80,5 +80,24 @@ Przykład języka Python nie usuwa kont z pamięci podręcznej na globalnym wylo
 
 ## <a name="next-steps"></a>Następne kroki
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 > [!div class="nextstepaction"]
-> [Uzyskiwanie tokenu dla aplikacji sieci Web](scenario-web-app-call-api-acquire-token.md)
+> [Uzyskiwanie tokenu dla aplikacji sieci Web](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [Uzyskiwanie tokenu dla aplikacji sieci Web](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Uzyskiwanie tokenu dla aplikacji sieci Web](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Uzyskiwanie tokenu dla aplikacji sieci Web](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
+
+---

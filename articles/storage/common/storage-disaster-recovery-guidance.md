@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671080"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595207"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Odzyskiwanie po awarii i tryb failover konta magazynu (wersja zapoznawcza) w usłudze Azure Storage
 
@@ -47,16 +47,16 @@ Inne opcje nadmiarowości usługi Azure Storage obejmują magazyn strefowo nadmi
 
 Ważne jest, aby zaprojektować aplikację pod kątem wysokiej dostępności od początku. Zapoznaj się z tymi zasobami platformy Azure, aby uzyskać wskazówki dotyczące projektowania aplikacji i planowania odzyskiwania po awarii:
 
-* [Projektowanie odpornych aplikacji na platformę Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Przegląd najważniejszych pojęć związanych z projektowaniem aplikacji o wysokiej dostępności na platformie Azure.
-* [Lista kontrolna dostępności](https://docs.microsoft.com/azure/architecture/checklist/availability): Lista kontrolna służąca do sprawdzania, czy aplikacja implementuje najlepsze rozwiązania w zakresie projektowania pod kątem wysokiej dostępności.
-* [Projektowanie aplikacji o wysokiej dostępności przy użyciu usługi RA-GRS](storage-designing-ha-apps-with-ragrs.md): Wskazówki dotyczące projektowania dotyczące kompilowania aplikacji w celu skorzystania z usługi RA-GRS.
-* [Samouczek: Tworzenie aplikacji o wysokiej dostępności przy użyciu magazynu obiektów BLOB @ no__t-0: Samouczek pokazujący, jak utworzyć aplikację o wysokiej dostępności, która automatycznie przełącza się między punktami końcowymi jako awarie i operacje odzyskiwania są symulowane. 
+* [Projektowanie odpornych aplikacji na platformę Azure](https://docs.microsoft.com/azure/architecture/resiliency/): przegląd najważniejszych pojęć dotyczących tworzenia aplikacji o wysokiej dostępności na platformie Azure.
+* [Lista kontrolna dostępności](https://docs.microsoft.com/azure/architecture/checklist/availability): Lista kontrolna służąca do sprawdzania, czy aplikacja implementuje najlepsze rozwiązania w zakresie projektowania wysokiej dostępności.
+* [Projektowanie aplikacji o wysokiej dostępności przy użyciu usługi RA-GRS](storage-designing-ha-apps-with-ragrs.md): wskazówki dotyczące projektowania do kompilowania aplikacji w celu skorzystania z usługi RA-GRS.
+* [Samouczek: Tworzenie aplikacji o wysokiej dostępności przy użyciu magazynu obiektów BLOB](../blobs/storage-create-geo-redundant-storage.md): samouczek pokazujący sposób tworzenia aplikacji o wysokiej dostępności, która automatycznie przełącza się między punktami końcowymi w miarę awarii i odzyskiwania. 
 
 Ponadto należy pamiętać o najlepszych rozwiązaniach dotyczących utrzymania wysokiej dostępności dla danych usługi Azure Storage:
 
-* **Dysku** Użyj [Azure Backup](https://azure.microsoft.com/services/backup/) , aby utworzyć kopię zapasową dysków maszyny wirtualnej używanych przez maszyny wirtualne platformy Azure. Należy również rozważyć użycie [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) do ochrony maszyn wirtualnych w przypadku awarii regionalnej.
+* **Dyski:** Użyj [Azure Backup](https://azure.microsoft.com/services/backup/) , aby utworzyć kopię zapasową dysków maszyny wirtualnej używanych przez maszyny wirtualne platformy Azure. Należy również rozważyć użycie [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) do ochrony maszyn wirtualnych w przypadku awarii regionalnej.
 * **Blokowe obiekty blob:** Włącz opcję [usuwania nietrwałego](../blobs/storage-blob-soft-delete.md) , aby chronić przed usuwaniem na poziomie obiektów i zastępowaniem, lub kopiować blokowe obiekty blob na inne konto magazynu w innym regionie przy użyciu [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)lub [biblioteki przenoszenia danych platformy Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
-* **Plikach** Użyj [AzCopy](storage-use-azcopy.md) lub [Azure PowerShell](storage-powershell-guide-full.md) , aby skopiować pliki do innego konta magazynu w innym regionie.
+* **Pliki:** Użyj [AzCopy](storage-use-azcopy.md) lub [Azure PowerShell](storage-powershell-guide-full.md) , aby skopiować pliki do innego konta magazynu w innym regionie.
 * **Tabele:** Użyj [AzCopy](storage-use-azcopy.md) , aby wyeksportować dane tabeli do innego konta magazynu w innym regionie.
 
 ## <a name="track-outages"></a>Śledź przerwy
@@ -119,8 +119,14 @@ Konto można zainicjować w trybie failover z poziomu Azure Portal, programu Pow
 
 Tryb failover konta jest dostępny w wersji zapoznawczej dla wszystkich klientów korzystających z usługi GRS lub RA-GRS z wdrożeniami Azure Resource Manager. Obsługiwane są tylko typy kont ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 i BLOB Storage. Tryb failover konta jest obecnie dostępny w następujących regionach:
 
-- Zachodnie stany USA 2
+- Azja Wschodnia
+- Azja Południowo-wschodnia
+- Australia Wschodnia
+- Australia Południowo-Wschodnia
+- Środkowe stany USA
+- Wschodnie stany USA 2
 - Zachodnio-środkowe stany USA
+- Zachodnie stany USA 2
 
 Wersja zapoznawcza jest przeznaczona wyłącznie do użytku nieprodukcyjnego. Umowy dotyczące poziomu usług produkcyjnych (umowy SLA) nie są obecnie dostępne.
 
@@ -170,7 +176,7 @@ Następujące funkcje lub usługi nie są obsługiwane w przypadku przełączani
 - Azure File Sync nie obsługuje trybu failover dla konta magazynu. Konta magazynu zawierające udziały plików platformy Azure używane jako punkty końcowe chmury w Azure File Sync nie powinny być przenoszone do trybu failover. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych.  
 - Nie można przełączyć konta magazynu zawierającego zarchiwizowane obiekty blob w tryb failover. Obsługa zarchiwizowanych obiektów BLOB na oddzielnym koncie magazynu, które nie są planowane do trybu failover.
 - Nie można przełączyć konta magazynu zawierającego blokowe obiekty blob w warstwie Premium. Konta magazynu obsługujące blokowe obiekty blob w warstwie Premium nie obsługują obecnie nadmiarowości geograficznej.
-- Po zakończeniu pracy w trybie failover następujące funkcje przestaną działać, jeśli są one początkowo włączone: [Subskrypcje zdarzeń](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Zasady cyklu życia](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Rejestrowanie analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- Po zakończeniu pracy w trybie failover następujące funkcje przestaną działać, jeśli zostały początkowo włączone: [subskrypcje zdarzeń](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Zasady cyklu życia](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Rejestrowanie analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopiowanie danych jako alternatywy dla trybu failover
 

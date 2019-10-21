@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: d1ff58611278f02d74f064f0536e5f6f77195fb2
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a02228593a9d8efc9fb363232da1cede3c80a8b3
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828877"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592530"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Poprawianie systemu operacyjnego Windows w klastrze Service Fabric
 
@@ -27,8 +27,11 @@ ms.locfileid: "71828877"
 > [!IMPORTANT]
 > Od 30 kwietnia 2019, aplikacja aranżacji poprawek w wersji 1,2. * nie jest już obsługiwana. Upewnij się, że uaktualniono do najnowszej wersji.
 
+> [!NOTE]
+> Korzystanie z [automatycznych uaktualnień obrazu systemu operacyjnego w zestawie skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) to najlepsze rozwiązanie w celu zachowania poprawek systemu operacyjnego na platformie Azure. Automatyczne uaktualnienia obrazu systemu operacyjnego oparte na zestawie skalowania maszyn wirtualnych są wymagane do zastosowania Silver lub wyższej trwałości w zestawie skalowania.
+>
 
-Korzystanie z [automatycznych uaktualnień obrazu systemu operacyjnego w zestawie skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) to najlepsze rozwiązanie w celu zachowania poprawek systemu operacyjnego na platformie Azure. Poprawka Orchestration Application (POA) to otoka obejmująca usługę Azure Service Fabric Menedżer naprawy, która umożliwia planowanie poprawek systemu operacyjnego opartych na konfiguracji dla klastrów hostowanych poza platformą Azure. POA nie jest wymagany w przypadku klastrów hostowanych poza platformą Azure, ale planowanie instalacji poprawek przy użyciu domeny aktualizacji jest wymagane do poprawki Service Fabric hostach klastra bez ponoszenia przestojów.
+ Poprawka Orchestration Application (POA) to otoka obejmująca usługę Azure Service Fabric Menedżer naprawy, która umożliwia planowanie poprawek systemu operacyjnego opartych na konfiguracji dla klastrów hostowanych poza platformą Azure. POA nie jest wymagany w przypadku klastrów hostowanych poza platformą Azure, ale planowanie instalacji poprawek przy użyciu domeny aktualizacji jest wymagane do poprawki Service Fabric hostach klastra bez ponoszenia przestojów.
 
 POA jest aplikacją Service Fabric, która automatyzuje stosowanie poprawek systemu operacyjnego w klastrze Service Fabric bez ponoszenia przestojów.
 
@@ -73,7 +76,7 @@ POA wymaga włączenia usługi Menedżer naprawy w klastrze.
 
 W klastrach platformy Azure w warstwie trwałości Silver domyślnie włączona jest usługa Menedżer naprawy. W przypadku klastrów platformy Azure w warstwie trwałości Gold może być włączona usługa Menedżer naprawy, w zależności od tego, kiedy te klastry zostały utworzone. W klastrach platformy Azure w warstwie trwałości Bronze domyślnie nie jest włączona usługa Menedżer naprawy. Jeśli usługa jest już włączona, można ją zobaczyć w sekcji usługi systemowe w Service Fabric Explorer.
 
-##### <a name="the-azure-portal"></a>Azure Portal
+##### <a name="the-azure-portal"></a>Witryna Azure Portal
 Podczas konfigurowania klastra można włączyć Menedżer naprawy z Azure Portal. Podczas konfigurowania klastra wybierz opcję **uwzględnij Menedżer naprawy** w obszarze **funkcje dodatków**.
 
 ![Obraz przedstawiający Włączanie Menedżer naprawy z Azure Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
@@ -83,7 +86,7 @@ Alternatywnie można użyć [Azure Resource Manager model wdrażania](https://do
 
 Aby włączyć usługę Menedżer naprawy przy użyciu [szablonu modelu wdrażania Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm), wykonaj następujące czynności:
 
-1. Upewnij się, że `apiVersion` jest ustawiona na *2017-07-01-Preview* dla zasobu *Microsoft. servicefabric/Clusters* . Jeśli jest inny, należy zaktualizować `apiVersion` do *2017-07-01 — wersja zapoznawcza* lub nowsza:
+1. Upewnij się, że `apiVersion` jest ustawiona na *2017-07-01 — wersja zapoznawcza* dla zasobu *Microsoft. servicefabric/klastrów* . Jeśli jest inny, należy zaktualizować `apiVersion` do *2017-07-01 — wersja zapoznawcza* lub nowsza:
 
     ```json
     {
@@ -150,31 +153,31 @@ Aby pobrać pakiet aplikacji, przejdź do [strony udostępnianie aplikacji aran�
 
 ## <a name="configure-poa-behavior"></a>Skonfiguruj zachowanie POA
 
-Zachowanie POA można skonfigurować w celu spełnienia Twoich potrzeb. Zastąp wartości domyślne, przekazując parametr aplikacji podczas tworzenia lub aktualizowania aplikacji. Parametry aplikacji można podać, określając `ApplicationParameter` w @no__t poleceniach cmdlet `Start-ServiceFabricApplicationUpgrade` lub.
+Zachowanie POA można skonfigurować w celu spełnienia Twoich potrzeb. Zastąp wartości domyślne, przekazując parametr aplikacji podczas tworzenia lub aktualizowania aplikacji. Parametry aplikacji można podać, określając `ApplicationParameter` do poleceń cmdlet `Start-ServiceFabricApplicationUpgrade` lub `New-ServiceFabricApplication`.
 
 | Parametr        | Typ                          | Szczegóły |
 |:-|-|-|
-|MaxResultsToCache    |długo                              | Maksymalna liczba Windows Updateych wyników, które powinny być buforowane. <br><br>Wartość domyślna to 3000, przy założeniu, że: <br> &nbsp; @ no__t-1 — Liczba węzłów wynosi 20. <br> &nbsp; @ no__t-1 — liczba aktualizacji w węźle miesięcznie wynosi 5. <br> &nbsp; @ no__t-1 — liczba wyników na operację może wynosić 10. <br> &nbsp; @ no__t-1 — wyniki dla ostatnich trzech miesięcy powinny być przechowywane. |
+|MaxResultsToCache    |Długie                              | Maksymalna liczba Windows Updateych wyników, które powinny być buforowane. <br><br>Wartość domyślna to 3000, przy założeniu, że: <br> &nbsp; &nbsp; — liczba węzłów wynosi 20. <br> &nbsp; &nbsp; — liczba aktualizacji węzła miesięcznie wynosi 5. <br> &nbsp; &nbsp; — liczba wyników na operację może wynosić 10. <br> &nbsp; &nbsp; — należy przechowywać wyniki z ostatnich trzech miesięcy. |
 |TaskApprovalPolicy   |Wyliczenie <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które mają być używane przez usługę koordynatora do instalowania aktualizacji systemu Windows na Service Fabric węzłach klastra.<br><br>Dozwolone wartości to: <br>*NodeWise*: aktualizacje systemu Windows są instalowane po jednym węźle w danym momencie. <br> *UpgradeDomainWise*: aktualizacje systemu Windows są instalowane w jednej domenie aktualizacji jednocześnie. (W większości, wszystkie węzły należące do domeny aktualizacji mogą przejść do usługi Windows Update).<br><br> Aby ułatwić podjęcie decyzji, które zasady najlepiej nadają się dla klastra, zobacz sekcję [często zadawanych pytań](#frequently-asked-questions) .
-|LogsDiskQuotaInMB   |długo  <br> (Domyślnie: *1024*)               | Maksymalny rozmiar dzienników aplikacji aranżacji w MB, które mogą być utrwalane lokalnie w węzłach.
+|LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: *1024*)               | Maksymalny rozmiar dzienników aplikacji aranżacji w MB, które mogą być utrwalane lokalnie w węzłach.
 | WUQuery               | string<br>(Domyślnie: *IsInstalled = 0*)                | Zapytanie w celu pobrania aktualizacji systemu Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | *Typu* <br> (wartość domyślna: false)                 | Użyj tej flagi, aby określić, które aktualizacje mają zostać pobrane i zainstalowane. Następujące wartości są dozwolone <br>true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>false — instaluje wszystkie dostępne aktualizacje na komputerze.          |
-| WUOperationTimeOutInMinutes | int <br>(Domyślnie: *90*)                   | Określa limit czasu dla każdej operacji Windows Update (Wyszukaj lub Pobierz lub zainstaluj). Jeśli operacja nie zostanie zakończona w określonym limicie czasu, zostanie przerwana.       |
-| WURescheduleCount     | int <br> (Domyślnie: *5*)                  | Maksymalna liczba przypadków, w których usługa ponownie planuje aktualizację systemu Windows, jeśli operacja nie powiedzie się.          |
-| WURescheduleTimeInMinutes | int <br>(Wartość domyślna: *30*) | Interwał, w którym usługa ponownie planuje aktualizacje systemu Windows, jeśli błąd będzie nadal występował. |
-| WUFrequency           | Ciąg rozdzielony przecinkami (wartość domyślna: *Weekly, środa, 7:00:00*)     | Częstotliwość instalowania aktualizacji systemu Windows. Format i możliwe wartości to: <br>&nbsp; @ no__t-1-miesięczny: DD, gg: MM: SS (na przykład *miesięcznie, 5, 12:22:32*)<br>Dozwolone wartości pola DD (Day) to liczby od 1 do 28 i "Last". <br> &nbsp; @ no__t-1 — tydzień, dzień, HH: MM: SS (na przykład *Weekly, wtorek, 12:22:32*)  <br> &nbsp; @ no__t-1-dziennie, gg: MM: SS (na przykład *dziennie, 12:22:32*)  <br> &nbsp; @ no__t-1 @ no__t-2*Brak* wskazuje, że aktualizacje systemu Windows nie należy wykonywać.  <br><br> Czasy są w formacie UTC.|
-| AcceptWindowsUpdateEula | Boolean <br>(Wartość domyślna: *true*) | Ustawiając tę flagę, aplikacja akceptuje umowę licencyjną użytkownika końcowego dla Windows Update w imieniu właściciela maszyny.              |
+| InstallWindowsOSOnlyUpdates | *Wartość logiczna* <br> (wartość domyślna: false)                 | Użyj tej flagi, aby określić, które aktualizacje mają zostać pobrane i zainstalowane. Następujące wartości są dozwolone <br>true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>false — instaluje wszystkie dostępne aktualizacje na komputerze.          |
+| WUOperationTimeOutInMinutes | ZAOKR <br>(Domyślnie: *90*)                   | Określa limit czasu dla każdej operacji Windows Update (Wyszukaj lub Pobierz lub zainstaluj). Jeśli operacja nie zostanie zakończona w określonym limicie czasu, zostanie przerwana.       |
+| WURescheduleCount     | ZAOKR <br> (Domyślnie: *5*)                  | Maksymalna liczba przypadków, w których usługa ponownie planuje aktualizację systemu Windows, jeśli operacja nie powiedzie się.          |
+| WURescheduleTimeInMinutes | ZAOKR <br>(Wartość domyślna: *30*) | Interwał, w którym usługa ponownie planuje aktualizacje systemu Windows, jeśli błąd będzie nadal występował. |
+| WUFrequency           | Ciąg rozdzielony przecinkami (wartość domyślna: *Weekly, środa, 7:00:00*)     | Częstotliwość instalowania aktualizacji systemu Windows. Format i możliwe wartości to: <br>&nbsp; &nbsp; — miesięcznie: DD, gg: MM: SS (na przykład *miesięcznie, 5, 12:22:32*)<br>Dozwolone wartości pola DD (Day) to liczby od 1 do 28 i "Last". <br> &nbsp; &nbsp; — tydzień, dzień, HH: MM: SS (na przykład *Weekly, wtorek, 12:22:32*)  <br> &nbsp; &nbsp; — codziennie, HH: MM: SS (na przykład *dziennie, 12:22:32*)  <br> &nbsp; &nbsp; -  *Brak* wskazuje, że nie można wykonać aktualizacji systemu Windows.  <br><br> Czasy są w formacie UTC.|
+| AcceptWindowsUpdateEula | Wartość logiczna <br>(Wartość domyślna: *true*) | Ustawiając tę flagę, aplikacja akceptuje umowę licencyjną użytkownika końcowego dla Windows Update w imieniu właściciela maszyny.              |
 
 > [!TIP]
-> Jeśli aktualizacje systemu Windows mają być wykonywane natychmiast, ustaw wartość `WUFrequency` względem czasu wdrożenia aplikacji. Załóżmy na przykład, że masz klaster testowy z pięcioma węzłami i planujesz wdrożenie aplikacji na około 5:00 PM czasu UTC. Jeśli założono, że uaktualnienie lub wdrożenie aplikacji trwa 30 minut, ustaw WUFrequency jako *codziennie, 17:30:00*.
+> Jeśli aktualizacje systemu Windows mają być wykonywane natychmiast, ustaw `WUFrequency` względem czasu wdrożenia aplikacji. Załóżmy na przykład, że masz klaster testowy z pięcioma węzłami i planujesz wdrożenie aplikacji na około 5:00 PM czasu UTC. Jeśli założono, że uaktualnienie lub wdrożenie aplikacji trwa 30 minut, ustaw WUFrequency jako *codziennie, 17:30:00*.
 
 ## <a name="deploy-poa"></a>Wdróż aplikację POA
 
 1. Wykonaj wszystkie kroki wymagań wstępnych, aby przygotować klaster.
 1. Wdróż program POA podobnie jak każda inna aplikacja Service Fabric. Aby wdrożyć go przy użyciu programu PowerShell, zobacz [wdrażanie i usuwanie aplikacji przy użyciu programu PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-1. Aby skonfigurować aplikację w czasie wdrażania, należy przekazać `ApplicationParameter` do polecenia cmdlet `New-ServiceFabricApplication`. Dla wygody użytkownika udostępniamy skrypt Deploy. ps1 wraz z aplikacją. Aby użyć skryptu:
+1. Aby skonfigurować aplikację w czasie wdrażania, Przekaż `ApplicationParameter` do `New-ServiceFabricApplication` polecenie cmdlet. Dla wygody użytkownika udostępniamy skrypt Deploy. ps1 wraz z aplikacją. Aby użyć skryptu:
 
-    - Połącz się z klastrem Service Fabric przy użyciu `Connect-ServiceFabricCluster`.
+    - Nawiązywanie połączenia z klastrem Service Fabric przy użyciu `Connect-ServiceFabricCluster`.
     - Wykonaj skrypt PowerShell Deploy. ps1 z odpowiednią wartością `ApplicationParameter`.
 
 > [!NOTE]
@@ -190,7 +193,7 @@ Aby usunąć aplikację, postępuj zgodnie z instrukcjami w temacie [wdrażanie 
 
 Dla wygody udostępniamy skrypt undeploy. ps1 wraz z aplikacją. Aby użyć skryptu:
 
-  - Połącz się z klastrem Service Fabric przy użyciu ```Connect-ServiceFabricCluster```.
+  - Nawiązywanie połączenia z klastrem Service Fabric przy użyciu ```Connect-ServiceFabricCluster```.
   - Wykonanie skryptu programu PowerShell undeploy. ps1.
 
 > [!NOTE]
@@ -235,25 +238,25 @@ Pola JSON są opisane w poniższej tabeli:
 Pole | Wartości | Szczegóły
 -- | -- | --
 Klasy OperationResult | 0 — powodzenie<br> 1 — powodzenie z błędami<br> 2 — Niepowodzenie<br> 3 — przerwana<br> 4 — przerwano z limitem czasu | Wskazuje wynik operacji ogólnej, która zwykle obejmuje instalację jednej lub kilku aktualizacji.
-resultCode | Analogicznie jak klasy OperationResult | To pole wskazuje wynik operacji instalacji dla pojedynczej aktualizacji.
-operationType | 1 — Instalacja<br> 0 — wyszukiwanie i pobieranie| Domyślnie instalacja jest jedyną operacją, która jest wyświetlana w wynikach.
+ResultCode | Analogicznie jak klasy OperationResult | To pole wskazuje wynik operacji instalacji dla pojedynczej aktualizacji.
+OperationType | 1 — Instalacja<br> 0 — wyszukiwanie i pobieranie| Domyślnie instalacja jest jedyną operacją, która jest wyświetlana w wynikach.
 WindowsUpdateQuery | Wartość domyślna to "IsInstalled = 0" | Zapytanie Windows Update używane do wyszukiwania aktualizacji. Aby uzyskać więcej informacji, zobacz [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
 RebootRequired | true — wymagany jest ponowny rozruch<br> FAŁSZ — nie jest wymagane ponowne uruchomienie komputera | Wskazuje, czy do ukończenia instalacji aktualizacji jest wymagany ponowny rozruch.
-OperationStartTime | DataGodzina | Wskazuje czas, w którym uruchomiono operację (pobieranie/instalacja).
-OperationTime | DataGodzina | Wskazuje czas ukończenia operacji (pobieranie/instalacja).
+OperationStartTime | Data i godzina | Wskazuje czas, w którym uruchomiono operację (pobieranie/instalacja).
+OperationTime | Data i godzina | Wskazuje czas ukończenia operacji (pobieranie/instalacja).
 Wynik | 0 — powodzenie<br> inne — niepowodzenie| Wskazuje przyczynę niepowodzenia usługi Windows Update z updateID "7392acaf-6a85-427c-8a8d-058c25beb0d6".
 
 Jeśli nie zaplanowano jeszcze żadnej aktualizacji, wynikowy kod JSON jest pusty.
 
-Zaloguj się do klastra w celu zbadania Windows Update wyników. Sprawdź adres IP repliki dla podstawowego adresu usługi koordynatora i Otwórz następujący adres URL w przeglądarce: http://&lt;REPLICA-IP @ no__t-1: &lt;ApplicationPort @ no__t-3/PatchOrchestrationApplication/V1/GetWindowsUpdateResults.
+Zaloguj się do klastra w celu zbadania Windows Update wyników. Sprawdź adres IP repliki dla podstawowego adresu usługi koordynatora i Otwórz następujący adres URL w przeglądarce: http://&lt;REPLICA-IP &gt;: &lt;ApplicationPort &gt;/PatchOrchestrationApplication/v1/ GetWindowsUpdateResults.
 
-Punkt końcowy REST usługi koordynatora ma port dynamiczny. Aby sprawdzić dokładny adres URL, zapoznaj się z tematem Service Fabric Explorer. Na przykład wyniki są dostępne pod adresem *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* .
+Punkt końcowy REST usługi koordynatora ma port dynamiczny. Aby sprawdzić dokładny adres URL, zapoznaj się z tematem Service Fabric Explorer. Na przykład wyniki są dostępne na *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* .
 
 ![Obraz punktu końcowego REST](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
 Jeśli zwrotny serwer proxy jest włączony w klastrze, można uzyskać dostęp do adresu URL spoza klastra.
 
-Wymagany punkt końcowy to *http://&lt;SERVERURL @ no__t-2: &lt;REVERSEPROXYPORT @ no__t-4/PatchOrchestrationApplication/CoordinatorService/V1/GetWindowsUpdateResults*.
+Wymagany punkt końcowy to *http://&lt;SERVERURL &gt;: &lt;REVERSEPROXYPORT &gt;/patchorchestrationapplication/coordinatorservice/V1/getwindowsupdateresults*.
 
 Aby włączyć zwrotny serwer proxy w klastrze, postępuj zgodnie z instrukcjami w [odwrotnym serwerze proxy na platformie Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
 
@@ -274,7 +277,7 @@ Aby ułatwić zrozumienie, jak aktualizacje są realizowane w węźle, przejdźm
 
 1. NodeAgentNTService, uruchomione w każdym węźle, wyszukuje dostępne aktualizacje systemu Windows w zaplanowanym czasie. Jeśli aktualizacje są dostępne, pobiera je w węźle.
 
-1. Po pobraniu aktualizacji Agent węzła NTService tworzy odpowiednie zadanie naprawy dla węzła o nazwie *POS___ @ no__t-1unique_id >* . Te zadania naprawy można wyświetlić za pomocą polecenia cmdlet [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) lub za pomocą SFX w sekcji Szczegóły węzła. Po utworzeniu zadania naprawy szybko przechodzi do [stanu *zatwierdzono* ](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+1. Po pobraniu aktualizacji Agent węzła NTService tworzy odpowiednie zadanie naprawy dla węzła o nazwie *POS___ \<unique_id >* . Te zadania naprawy można wyświetlić za pomocą polecenia cmdlet [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) lub za pomocą SFX w sekcji Szczegóły węzła. Po utworzeniu zadania naprawy szybko przechodzi do [stanu *zatwierdzono* ](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
 
 1. Usługa koordynatora okresowo szuka zadań naprawy w stanie *zatwierdzono* , a następnie aktualizuje je w celu *przygotowania* stanu na podstawie TaskApprovalPolicy. Jeśli TaskApprovalPolicy jest skonfigurowany jako NodeWise, zadanie naprawy odnoszące się do węzła jest przygotowywane tylko wtedy, gdy żadne inne zadanie naprawy nie jest obecnie *przygotowywane*, *zatwierdzane*, *wykonywane*lub *przywracane* . 
 
@@ -430,7 +433,7 @@ Może być również możliwe, że stosowanie poprawek węzłów zostało zablok
 
 Odp.: POA wyłącza węzeł z zamiarą *ponownego uruchomienia* , która powoduje zatrzymanie lub ponowne przydzielenie wszystkich usług Service Fabric uruchomionych w węźle. POA robi to, aby upewnić się, że aplikacje nie zakończą się przy użyciu kombinacji nowych i starych bibliotek DLL, dlatego nie zaleca się stosowania poprawek do węzła bez wyłączania go.
 
-## <a name="disclaimers"></a>Zastrzeżeniami
+## <a name="disclaimers"></a>Zastrzeżenia
 
 - POA akceptuje umowę licencyjną użytkownika końcowego dla Windows Update w imieniu użytkownika. Opcjonalnie ustawienie to może być wyłączone w konfiguracji aplikacji.
 

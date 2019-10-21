@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: 3d97fd167f0f946239d4de24bb180796ebb498d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cd61a30ccc9de08c3f0950d811d0d10ec5cd842a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885877"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598370"
 ---
 # <a name="private-offers"></a>Oferty prywatne
 
@@ -49,6 +49,9 @@ Oferty prywatne są wykrywalne wyłącznie za pośrednictwem [Azure Portal](http
 ![[Oferty prywatne]](./media/marketplace-publishers-guide/private-offer.png)
 
 Oferty prywatne będą również wyświetlane w wynikach wyszukiwania. Po prostu wyszukaj wskaźnik "prywatny".
+
+>[!Note]
+>Oferty prywatne nie są obsługiwane w przypadku subskrypcji ustanowionych przez odsprzedawcę programu dostawcy rozwiązań w chmurze (CSP).
 
 ## <a name="next-steps"></a>Następne kroki
 

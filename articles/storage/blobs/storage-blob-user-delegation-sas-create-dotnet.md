@@ -5,89 +5,58 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 59de768e75a88d7cfa5b68fa306d0e83f1aa0ba3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: c75a13a20c1dbb222db69145e24838deb111fb66
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671325"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595209"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB przy użyciu platformy .NET (wersja zapoznawcza)
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-W tym artykule pokazano, jak używać poświadczeń usługi Azure Active Directory (Azure AD) do tworzenia sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą [biblioteki klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/Azure.Storage.Blobs).
+W tym artykule pokazano, jak używać poświadczeń usługi Azure Active Directory (Azure AD) do tworzenia sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą biblioteki klienta usługi Azure Storage dla platformy .NET.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
+## <a name="authenticate-with-the-azure-identity-library-preview"></a>Uwierzytelnianie za pomocą biblioteki tożsamości platformy Azure (wersja zapoznawcza)
+
+Biblioteka klienta tożsamości platformy Azure dla programu .NET (wersja zapoznawcza) uwierzytelnia podmiot zabezpieczeń. Gdy kod jest uruchomiony na platformie Azure, podmiot zabezpieczeń jest zarządzaną tożsamością dla zasobów platformy Azure.
+
+Gdy kod jest uruchomiony w środowisku programistycznym, uwierzytelnianie może być obsługiwane automatycznie lub może wymagać logowania w przeglądarce, w zależności od tego, które narzędzia są używane. Microsoft Visual Studio obsługuje logowanie jednokrotne (SSO), dzięki czemu aktywne konto użytkownika usługi Azure AD jest automatycznie używane do uwierzytelniania. Aby uzyskać więcej informacji na temat rejestracji jednokrotnej, zobacz Logowanie jednokrotne [do aplikacji](../../active-directory/manage-apps/what-is-single-sign-on.md).
+
+Inne narzędzia programistyczne mogą monitować o zalogowanie się za pośrednictwem przeglądarki sieci Web. Można również użyć jednostki usługi do uwierzytelniania ze środowiska deweloperskiego. Aby uzyskać więcej informacji, zobacz [Tworzenie tożsamości dla aplikacji platformy Azure w portalu](../../active-directory/develop/howto-create-service-principal-portal.md).
+
+Po uwierzytelnieniu Biblioteka klienta tożsamości platformy Azure Pobiera poświadczenia tokenu. To poświadczenie tokenu jest następnie hermetyzowane w obiekcie klienta usługi tworzonym w celu wykonywania operacji w usłudze Azure Storage. Biblioteka obsługuje to bezproblemowo, pobierając odpowiednie poświadczenia tokenu.
+
+Aby uzyskać więcej informacji na temat biblioteki klienta tożsamości platformy Azure, zobacz [Biblioteka klienta tożsamości platformy Azure dla platformy .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+
+## <a name="assign-rbac-roles-for-access-to-data"></a>Przypisywanie ról RBAC na potrzeby dostępu do danych
+
+Gdy podmiot zabezpieczeń usługi Azure AD próbuje uzyskać dostęp do danych obiektów blob, musi mieć uprawnienia do tego zasobu. Niezależnie od tego, czy podmiot zabezpieczeń jest tożsamością zarządzaną na platformie Azure, czy konto użytkownika usługi Azure AD z uruchomionym kodem w środowisku deweloperskim, podmiot zabezpieczeń musi mieć przypisaną rolę RBAC, która przyznaje dostęp do danych obiektów BLOB w usłudze Azure Storage. Informacje o przypisywaniu uprawnień za pośrednictwem RBAC zawiera sekcja zatytułowana **Przypisywanie ról RBAC dla praw dostępu** w artykule [Autoryzuj dostęp do obiektów blob i kolejek platformy Azure przy użyciu Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
+
 ## <a name="install-the-preview-packages"></a>Zainstaluj pakiety wersji zapoznawczej
 
-W przykładach w tym artykule użyto najnowszej wersji zapoznawczej biblioteki klienta usługi Azure Storage dla magazynu obiektów BLOB. Aby zainstalować pakiet wersji zapoznawczej, uruchom następujące polecenie w konsoli Menedżera pakietów NuGet:
+W przykładach w tym artykule użyto najnowszej wersji zapoznawczej [biblioteki klienta usługi Azure Storage dla magazynu obiektów BLOB](https://www.nuget.org/packages/Azure.Storage.Blobs). Aby zainstalować pakiet wersji zapoznawczej, uruchom następujące polecenie w konsoli Menedżera pakietów NuGet:
 
-```
+```powershell
 Install-Package Azure.Storage.Blobs -IncludePrerelease
 ```
 
-W przykładach w tym artykule użyto również najnowszej wersji zapoznawczej [biblioteki klienta usługi Azure Identity dla platformy .NET](https://www.nuget.org/packages/Azure.Identity/) do uwierzytelniania przy użyciu poświadczeń usługi Azure AD. Biblioteka klienta tożsamości platformy Azure uwierzytelnia podmiot zabezpieczeń. Uwierzytelniony podmiot zabezpieczeń może następnie utworzyć sygnaturę dostępu współdzielonego delegowania użytkownika. Aby uzyskać więcej informacji na temat biblioteki klienta tożsamości platformy Azure, zobacz [Biblioteka klienta tożsamości platformy Azure dla platformy .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+W przykładach w tym artykule użyto również najnowszej wersji zapoznawczej [biblioteki klienta usługi Azure Identity dla platformy .NET](https://www.nuget.org/packages/Azure.Identity/) do uwierzytelniania przy użyciu poświadczeń usługi Azure AD. Aby zainstalować pakiet wersji zapoznawczej, uruchom następujące polecenie w konsoli Menedżera pakietów NuGet:
 
-```
+```powershell
 Install-Package Azure.Identity -IncludePrerelease
 ```
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
-
-Aby uwierzytelnić się przy użyciu poświadczeń usługi Azure AD za pomocą biblioteki klienta tożsamości platformy Azure, użyj nazwy głównej usługi lub tożsamości zarządzanej jako podmiot zabezpieczeń, w zależności od tego, gdzie działa kod. Jeśli Twój kod jest uruchomiony w środowisku programistycznym, użyj jednostki usługi do celów testowych. Jeśli Twój kod jest uruchomiony na platformie Azure, Użyj tożsamości zarządzanej. W tym artykule przyjęto założenie, że uruchomiono kod ze środowiska programistycznego i pokazano, jak używać nazwy głównej usługi do tworzenia sygnatury dostępu współdzielonego delegowania użytkownika.
-
-Aby utworzyć jednostkę usługi przy użyciu interfejsu wiersza polecenia platformy Azure i przypisać rolę RBAC, wywołaj polecenie [AZ AD Sp Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) . Podaj rolę dostępu do danych usługi Azure Storage, która ma zostać przypisana do nowej nazwy głównej usługi. Rola musi zawierać akcję **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** . Aby uzyskać więcej informacji na temat ról wbudowanych dla usługi Azure Storage, zobacz [wbudowane role dla zasobów platformy Azure](../../role-based-access-control/built-in-roles.md).
-
-Ponadto Podaj zakres przypisania roli. Jednostka usługi utworzy klucz delegowania użytkownika, który jest operacją wykonywaną na poziomie konta magazynu, więc przypisanie roli powinno być ograniczone do zakresu konta magazynu, grupy zasobów lub subskrypcji. Aby uzyskać więcej informacji na temat uprawnień RBAC do tworzenia sygnatury dostępu współdzielonego delegowania użytkowników, zobacz sekcję **przypisywanie uprawnień z RBAC** w temacie [Tworzenie funkcji SAS delegowania użytkowników (REST)](/rest/api/storageservices/create-user-delegation-sas).
-
-Jeśli nie masz wystarczających uprawnień do przypisania roli do jednostki usługi, może być konieczne poproszenie właściciela konta lub administratora o wykonanie przypisania roli.
-
-Poniższy przykład używa interfejsu wiersza polecenia platformy Azure, aby utworzyć nową nazwę główną usługi i przypisać do niej rolę **czytnika danych obiektów blob magazynu** z zakresem konta
-
-```azurecli-interactive
-az ad sp create-for-rbac \
-    --name <service-principal> \
-    --role "Storage Blob Data Reader" \
-    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
-```
-
-Polecenie `az ad sp create-for-rbac` zwraca listę właściwości nazwy głównej usługi w formacie JSON. Skopiuj te wartości, aby można było użyć ich do utworzenia niezbędnych zmiennych środowiskowych w następnym kroku.
-
-```json
-{
-    "appId": "generated-app-ID",
-    "displayName": "service-principal-name",
-    "name": "http://service-principal-uri",
-    "password": "generated-password",
-    "tenant": "tenant-ID"
-}
-```
-
-> [!IMPORTANT]
-> Propagowanie przypisań ról RBAC może potrwać kilka minut.
-
-## <a name="set-environment-variables"></a>Ustawianie zmiennych środowiskowych
-
-Biblioteka klienta tożsamości platformy Azure odczytuje wartości z trzech zmiennych środowiskowych w czasie wykonywania w celu uwierzytelnienia nazwy głównej usługi. W poniższej tabeli opisano wartość ustawioną dla każdej zmiennej środowiskowej.
-
-|Zmienna środowiskowa|Value
-|-|-
-|`AZURE_CLIENT_ID`|Identyfikator aplikacji dla jednostki usługi
-|`AZURE_TENANT_ID`|Identyfikator dzierżawy usługi Azure AD w jednostce nazwy
-|`AZURE_CLIENT_SECRET`|Hasło wygenerowane dla jednostki usługi
-
-> [!IMPORTANT]
-> Po ustawieniu zmiennych środowiskowych Zamknij i ponownie otwórz okno konsoli. Jeśli używasz programu Visual Studio lub innego środowiska programistycznego, może być konieczne ponowne uruchomienie środowiska programistycznego w celu zarejestrowania nowych zmiennych środowiskowych.
-
 ## <a name="add-using-directives"></a>Dodawanie dyrektyw using
 
-Dodaj następujące dyrektywy `using` do kodu, aby korzystać z wersji zapoznawczej tożsamości platformy Azure i bibliotek klienckich usługi Azure Storage.
+Dodaj następujące dyrektywy `using` do kodu, aby użyć wersji zapoznawczej tożsamości platformy Azure i bibliotek klienckich usługi Azure Storage.
 
 ```csharp
 using System;
@@ -100,11 +69,11 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 ```
 
-## <a name="authenticate-the-service-principal"></a>Uwierzytelnianie jednostki usługi
+## <a name="get-an-authenticated-token-credential"></a>Pobieranie poświadczeń uwierzytelnionego tokenu
 
-Aby uwierzytelnić jednostkę usługi, Utwórz wystąpienie klasy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) . Konstruktor `DefaultAzureCredential` odczytuje wcześniej utworzone zmienne środowiskowe.
+Aby uzyskać poświadczenia tokenu, których kod może użyć do autoryzacji żądań do usługi Azure Storage, Utwórz wystąpienie klasy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) .
 
-Poniższy fragment kodu przedstawia sposób pobierania uwierzytelnionego poświadczenia i używania go do tworzenia klienta usługi dla magazynu obiektów BLOB
+Poniższy fragment kodu przedstawia sposób pobierania poświadczeń tokenu uwierzytelnionego i używania go do tworzenia klienta usługi dla magazynu obiektów blob:
 
 ```csharp
 string blobEndpoint = string.Format("https://{0}.blob.core.windows.net", accountName);
@@ -165,7 +134,7 @@ UriBuilder fullUri = new UriBuilder()
 };
 ```
 
-## <a name="example-get-a-user-delegation-sas"></a>Przykład: Uzyskiwanie sygnatury dostępu współdzielonego użytkownika
+## <a name="example-get-a-user-delegation-sas"></a>Przykład: pobieranie sygnatury dostępu współdzielonego użytkownika
 
 Poniższa przykładowa Metoda przedstawia pełen kod uwierzytelniania podmiotu zabezpieczeń i tworzenia sygnatury dostępu współdzielonego delegowania użytkownika:
 
@@ -221,7 +190,7 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
 }
 ```
 
-## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Przykład: Odczytywanie obiektu BLOB przy użyciu delegowania SKOJARZEŃ użytkowników
+## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Przykład: odczytywanie obiektu BLOB z delegowaniem przez użytkownika
 
 Poniższy przykład sprawdza, czy w poprzednim przykładzie utworzono sygnaturę dostępu współdzielonego delegowania użytkownika z symulowanej aplikacji klienckiej. Jeśli sygnatura dostępu współdzielonego jest prawidłowa, aplikacja kliencka może odczytać zawartość obiektu BLOB. Jeśli sygnatura dostępu współdzielonego jest nieprawidłowa, na przykład jeśli wygasła, usługa Azure Storage zwraca kod błędu 403 (dostęp zabroniony).
 

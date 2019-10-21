@@ -15,66 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 6443cb727573645792a4e6c929b80c3406d72025
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 41e0bdc1f04c9491ebe939f46b59ae4eb2bc7ab6
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261806"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592470"
 ---
-# <a name="service-bus-diagnostic-logs"></a>Service Bus dzienników diagnostycznych
+# <a name="enable-diagnostic-logs-for-service-bus"></a>Włączanie dzienników diagnostycznych dla Service Bus
 
-Można wyświetlić dwa typy dzienników dla Azure Service Bus:
-* **[Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md)** . Te dzienniki zawierają informacje o operacjach wykonywanych w ramach zadania. Dzienniki są zawsze włączone.
-* **[Dzienniki diagnostyczne](../azure-monitor/platform/resource-logs-overview.md)** . Dzienniki diagnostyczne można skonfigurować w celu uzyskania bardziej szczegółowych informacji na temat wszystkiego, co się dzieje w ramach zadania. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
+Po rozpoczęciu korzystania z przestrzeni nazw Azure Service Bus można monitorować sposób i czas tworzenia, usuwania lub uzyskiwania dostępu do przestrzeni nazw. Ten artykuł zawiera omówienie wszystkich dostępnych dzienników operacyjnych/diagnostycznych.
 
-## <a name="turn-on-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
+Azure Service Bus obecnie obsługuje dzienniki aktywności/działania, które przechwytują **operacje zarządzania** wykonane na Azure Service Bus przestrzeni nazw. W szczególności te dzienniki przechwytują typ operacji, w tym Tworzenie kolejki, używane zasoby i stan operacji.
 
-Dzienniki diagnostyczne są domyślnie wyłączone. Aby włączyć dzienniki diagnostyczne, wykonaj następujące czynności:
+## <a name="operational-logs-schema"></a>Schemat dzienników operacyjnych
 
-1.  W [witryny Azure portal](https://portal.azure.com)w obszarze **monitorowanie + zarządzanie**, kliknij przycisk **dzienniki diagnostyczne**.
+Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSON) w poniższych dwóch lokalizacjach.
 
-    ![Nawigacja w bloku do dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image1.png)
+- **Azure** — wyświetla dzienniki z operacji/akcji wykonywanych względem przestrzeni nazw w portalu lub za pomocą wdrożeń szablonów Azure Resource Manager.
+- **AzureDiagnostics** — wyświetla dzienniki z operacji/akcji wykonywanych w odniesieniu do przestrzeni nazw za pomocą interfejsu API lub przez klientów zarządzania w zestawie SDK języka.
 
-2. Kliknij zasób, który chcesz monitorować.  
+Ciągi JSON dziennika operacyjnego zawierają elementy wymienione w poniższej tabeli:
 
-3.  Kliknij pozycję **Włącz diagnostykę**.
-
-    ![Włączanie dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image2.png)
-
-4.  Aby uzyskać **stan**, kliknij przycisk **na**.
-
-    ![Zmień stan dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image3.png)
-
-5.  Ustaw żądany cel Archiwum; na przykład konto magazynu, centrum zdarzeń lub dzienniki Azure Monitor.
-
-6.  Zapisz nowe ustawienia diagnostyki.
-
-Nowe ustawienia zaczną obowiązywać w ciągu około 10 minut. Następnie dzienniki są wyświetlane w skonfigurowanym miejscu docelowym archiwizowania w bloku **dzienniki diagnostyczne** .
-
-Aby uzyskać więcej informacji na temat konfigurowania diagnostyki zobacz [Przegląd dzienniki diagnostyczne platformy Azure](../azure-monitor/platform/resource-logs-overview.md).
-
-## <a name="diagnostic-logs-schema"></a>Dzienniki diagnostyczne schematu
-
-Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSON). Każdy wpis zawiera pola ciągów, które używają formatu opisanego w poniższej sekcji.
-
-## <a name="operational-logs-schema"></a>Dzienniki operacyjne schematu
-
-Dzienniki w kategorii **OperationalLogs** przechwytują, co się dzieje podczas operacji Service Bus. W szczególności te dzienniki przechwytują typ operacji, w tym Tworzenie kolejki, używane zasoby i stan operacji.
-
-Dziennik operacyjny ciągów JSON obejmują elementy wymienione w poniższej tabeli:
-
-Name (Nazwa) | Opis
-------- | -------
-Identyfikator działania | Identyfikator wewnętrzny używany do śledzenia
-EventName | Nazwa operacji           
-resourceId | Identyfikator zasobu Azure Resource Manager
-SubscriptionId | Identyfikator subskrypcji
-EventTimeString | Czas operacji
-EventProperties | Właściwości operacji
-State | Stan operacji
-Caller | Obiekt wywołujący operacji (Azure Portal lub klient zarządzania)
-category | OperationalLogs
+| Nazwa | Opis |
+| ------- | ------- |
+| ActivityId | Wewnętrzny identyfikator używany do identyfikowania określonego działania |
+| eventName | Nazwa operacji |
+| ResourceId | Identyfikator zasobu Azure Resource Manager |
+| SubscriptionId | Identyfikator subskrypcji |
+| EventTimeString | Czas operacji |
+| EventProperties | Właściwości operacji |
+| Stan | Stan operacji |
+| Obiekt wywołujący | Obiekt wywołujący operacji (Azure Portal lub klient zarządzania) |
+| Kategoria | OperationalLogs |
 
 Oto przykład ciągu JSON dziennika operacyjnego:
 
@@ -91,6 +64,54 @@ Oto przykład ciągu JSON dziennika operacyjnego:
   "category": "OperationalLogs"
 }
 ```
+
+## <a name="what-eventsoperations-are-captured-in-operational-logs"></a>Jakie zdarzenia/operacje są przechwytywane w dziennikach operacyjnych?
+
+Dzienniki operacji przechwytują wszystkie operacje zarządzania wykonane na Azure Service Bus przestrzeni nazw. Operacje na danych nie są przechwytywane z powodu dużej ilości operacji na danych, które są wykonywane w Azure Service Bus.
+
+> [!NOTE]
+> Aby lepiej śledzić operacje na danych, zalecamy korzystanie z funkcji śledzenia po stronie klienta.
+
+Poniższe operacje zarządzania są przechwytywane w dziennikach operacyjnych — 
+
+| Zakres | Operacja|
+|-------| -------- |
+| Przestrzeń nazw | <ul> <li> Utwórz przestrzeń nazw</li> <li> Aktualizowanie przestrzeni nazw </li> <li> Usuń przestrzeń nazw </li>  </ul> | 
+| Kolejka | <ul> <li> Utwórz kolejkę</li> <li> Aktualizuj kolejkę</li> <li> Usuń kolejkę </li> </ul> | 
+| Temat | <ul> <li> Utwórz temat </li> <li> Aktualizowanie tematu </li> <li> Usuń temat </li> </ul> |
+| Subskrypcja | <ul> <li> Tworzenie subskrypcji </li> <li> Aktualizowanie subskrypcji </li> <li> Usuń subskrypcję </li> </ul> |
+
+> [!NOTE]
+> Obecnie operacje **odczytu** nie są śledzone w dziennikach operacyjnych.
+
+## <a name="how-to-enable-operational-logs"></a>Jak włączyć dzienniki operacyjne?
+
+Dzienniki operacyjne są domyślnie wyłączone. Aby włączyć dzienniki diagnostyczne, wykonaj następujące czynności:
+
+1. W [Azure Portal](https://portal.azure.com)przejdź do przestrzeni nazw Azure Service Bus i w obszarze **monitorowanie**kliknij pozycję **Ustawienia diagnostyki**.
+
+   ![Nawigacja w bloku do dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image1.png)
+
+2. Kliknij pozycję **Dodaj ustawienie diagnostyczne** , aby skonfigurować ustawienia diagnostyczne.  
+
+   ![Włączanie dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image2.png)
+
+3. Konfigurowanie ustawień diagnostycznych
+   1. Wpisz **nazwę** , aby zidentyfikować ustawienia diagnostyczne.
+   2. Wybierz lokalizację docelową dla diagnostyki.
+      - W przypadku wybrania **konta magazynu**należy skonfigurować konto magazynu, na którym będzie przechowywana Diagnostyka.
+      - W przypadku wybrania **centrów zdarzeń**należy skonfigurować odpowiednie centrum zdarzeń, do którego zostaną przesłane strumieniowo ustawienia diagnostyki.
+      - W przypadku wybrania **log Analytics**należy określić wystąpienie log Analytics do wysłania diagnostyki.
+    3. Sprawdź **OperationalLogs**.
+
+       ![Zmień stan dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image3.png)
+
+4. Kliknij przycisk **Save** (Zapisz).
+
+
+Nowe ustawienia zaczną obowiązywać od około 10 minut. Następnie dzienniki są wyświetlane w skonfigurowanym miejscu docelowym archiwizowania w bloku **dzienniki diagnostyczne** .
+
+Więcej informacji o konfigurowaniu diagnostyki znajduje się w temacie [Omówienie dzienników diagnostycznych platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

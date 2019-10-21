@@ -8,80 +8,91 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
-ms.openlocfilehash: a5717d8ee44e4d2e086a6e7bc1b7c3d0deb614c8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 77655f08350419f0d102c9927b3e09b87edba341
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827539"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592874"
 ---
 # <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>Wersja zapoznawcza — używanie zarządzanych tożsamości w usłudze Azure Kubernetes Service
 
-Obecnie użytkownicy muszą podać nazwę główną usługi lub AKS w Twoim imieniu w celu utworzenia dodatkowych zasobów, takich jak moduły równoważenia obciążenia i dyski zarządzane na platformie Azure. Nazwy główne usług są zwykle tworzone z datą wygaśnięcia. Klastry będą ostatecznie dotrzeć do stanu, w którym należy odnowić jednostkę usługi w przeciwnym razie klaster nie będzie działać. Zarządzanie jednostkami usługi zwiększa złożoność. Tożsamości zarządzane są zasadniczo otoką dla podmiotów usługi i upraszczają zarządzanie nimi. Przeczytaj więcej na temat [zarządzanych tożsamości](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) .
+Obecnie klaster usługi Azure Kubernetes Service (AKS) (w odróżnieniu od dostawcy usług w chmurze Kubernetes) wymaga jednostki *usługi* , aby utworzyć dodatkowe zasoby, takie jak moduły równoważenia obciążenia i dyski zarządzane na platformie Azure. Należy podać nazwę główną usługi lub AKS, która jest tworzona w Twoim imieniu. Nazwy główne usług zazwyczaj mają datę wygaśnięcia. Klastry ostatecznie osiągną stan, w którym należy przeprowadzić odnowienie jednostki usługi w celu zachowania działania klastra. Zarządzanie jednostkami usługi zwiększa złożoność.
 
-AKS tworzy dwie zarządzane tożsamości jednej tożsamości zarządzanej przypisanej przez system i drugą tożsamość przypisanej przez użytkownika. Tożsamość zarządzana przypisana przez system jest używana przez dostawcę chmury Kubernetes do tworzenia zasobów platformy Azure w imieniu użytkownika. Cykl życia tego przypisanej tożsamości zarządzanej jest powiązany z tym klastrem i jest usuwany po usunięciu klastra. AKS tworzy również tożsamość zarządzaną przypisaną przez użytkownika, która jest używana w klastrze do autoryzacji AKS do uzyskiwania dostępu do rekordami ACR, kubelet w celu uzyskania metadanych z platformy Azure itd.
+*Tożsamości zarządzane* są zasadniczo otoką dla podmiotów usługi i upraszczają zarządzanie nimi. Aby dowiedzieć się więcej, Przeczytaj o [zarządzanych tożsamościach dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-W tym okresie korzystania z wersji zapoznawczej nadal wymagana jest jednostka usługi. Będzie on używany do autoryzacji dodatków, takich jak monitorowanie, węzeł wirtualny, zasady platformy Azure i Routing aplikacji protokołu HTTP. Jest to konieczne, aby usunąć zależność dodatków do nazw SPN, a ostatecznie żądanie głównej nazwy SPN w programie AKS zostanie całkowicie usunięte.
+AKS tworzy dwie zarządzane tożsamości:
+
+- **Tożsamość zarządzana przypisana przez system**: tożsamość wykorzystywana przez dostawcę chmury Kubernetes do tworzenia zasobów platformy Azure w imieniu użytkownika. Cykl życia tożsamości przypisanej do systemu jest powiązany z tym klastrem. Tożsamość jest usuwana po usunięciu klastra.
+- **Tożsamość zarządzana przypisana przez użytkownika**: tożsamość, która jest używana na potrzeby autoryzacji w klastrze. Na przykład tożsamość przypisana przez użytkownika służy do autoryzacji AKS do używania rekordów kontroli dostępu (rekordami ACR) lub do autoryzacji kubelet do uzyskiwania metadanych z platformy Azure.
+
+W tym okresie korzystania z wersji zapoznawczej nadal wymagana jest jednostka usługi. Jest on używany do autoryzacji dodatków, takich jak monitorowanie, węzły wirtualne, Azure Policy i Routing aplikacji protokołu HTTP. Działa w trakcie usuwania zależności dodatków w głównej nazwie usługi (SPN). Ostatecznie wymóg nazwy SPN w AKS zostanie całkowicie usunięty.
 
 > [!IMPORTANT]
-> Funkcja AKS w wersji zapoznawczej to samoobsługowe uczestnictwo. Wersje zapoznawcze są udostępniane w postaci "AS-IS" i "jako dostępne" i są wyłączone z umów dotyczących poziomu usług i ograniczonej rękojmi. Wersje zapoznawcze AKS są częściowo objęte obsługą klienta w oparciu o najlepszy nakład pracy. W związku z tym te funkcje nie są przeznaczone do użytku produkcyjnego. Aby dowiedzieć się więcej, zobacz następujące artykuły pomocy technicznej:
+> Funkcje w wersji zapoznawczej AKS są dostępne w ramach samoobsługowego i samodzielnego wyboru. Wersje zapoznawcze są udostępniane w postaci "AS-IS" i "jako dostępne" i są wykluczone z umów dotyczących poziomu usług i ograniczonej rękojmi. Wersje zapoznawcze AKS są częściowo objęte obsługą klienta na podstawie najlepszego wysiłku. W związku z tym te funkcje nie są przeznaczone do użytku produkcyjnego. Aby uzyskać więcej informacji, zobacz następujące artykuły pomocy technicznej:
 >
-> * [Zasady pomocy technicznej AKS](support-policies.md)
-> * [Pomoc techniczna platformy Azure — często zadawane pytania](faq.md)
+> - [Zasady pomocy technicznej AKS](support-policies.md)
+> - [Pomoc techniczna platformy Azure — często zadawane pytania](faq.md)
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Wymagane są następujące elementy:
+Wymagane są następujące zasoby:
 
-* Potrzebujesz także interfejsu wiersza polecenia platformy Azure w wersji 2.0.70 lub nowszej oraz rozszerzenia AKS-Preview 0.4.14
+- Interfejs wiersza polecenia platformy Azure w wersji 2.0.70 lub nowszej
+- Rozszerzenie AKS-Preview 0.4.14
 
-## <a name="install-latest-aks-cli-preview-extension"></a>Zainstaluj rozszerzenie najnowszej wersji zapoznawczej interfejsu wiersza polecenia AKS
-
-Potrzebujesz rozszerzenia **AKS-Preview 0.4.14** lub nowszego.
+Aby zainstalować rozszerzenie AKS-Preview 0.4.14 lub nowsze, użyj następujących poleceń interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli
-az extension update --name aks-preview 
+az extension update --name aks-preview
 az extension list
 ```
 
 > [!CAUTION]
-> Po zarejestrowaniu funkcji w ramach subskrypcji nie można obecnie wyrejestrować tej funkcji. Po włączeniu niektórych funkcji w wersji zapoznawczej można użyć wartości domyślnych dla wszystkich klastrów AKS utworzonych w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji produkcyjnych. Korzystaj z oddzielnej subskrypcji, aby testować funkcje w wersji zapoznawczej i zbierać opinie.
+> Po zarejestrowaniu funkcji w ramach subskrypcji nie można obecnie wyrejestrować tej funkcji. Po włączeniu niektórych funkcji w wersji zapoznawczej mogą być stosowane wartości domyślne dla wszystkich klastrów AKS utworzonych później w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji produkcyjnych. Zamiast tego należy użyć oddzielnej subskrypcji do testowania funkcji w wersji zapoznawczej i zebrania opinii.
 
 ```azurecli-interactive
 az feature register --name MSIPreview --namespace Microsoft.ContainerService
 ```
 
-Wyświetlenie *zarejestrowanego*stanu może potrwać kilka minut. Stan rejestracji można sprawdzić za pomocą polecenia [AZ Feature list] [AZ-Feature-list]:
+Wyświetlenie stanu jako **zarejestrowanego**może potrwać kilka minut. Stan rejestracji można sprawdzić za pomocą polecenia [AZ Feature list](https://docs.microsoft.com/en-us/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
 ```
 
-Po zarejestrowaniu stanu Odśwież rejestrację dostawcy zasobów *Microsoft. ContainerService* za pomocą polecenia [AZ Provider Register] [AZ-Provider-Register]:
+Gdy stan jest wyświetlany jako zarejestrowane, Odśwież rejestrację dostawcy zasobów `Microsoft.ContainerService` przy użyciu polecenia [AZ Provider Register](https://docs.microsoft.com/en-us/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="create-an-aks-cluster-with-managed-identity"></a>Tworzenie klastra AKS z tożsamością zarządzaną
+## <a name="create-an-aks-cluster-with-managed-identities"></a>Tworzenie klastra AKS z tożsamościami zarządzanymi
 
-Teraz można utworzyć klaster AKS z tożsamościami zarządzanymi przy użyciu poniższego polecenia interfejsu CLI
+Można teraz utworzyć klaster AKS z tożsamościami zarządzanymi przy użyciu następujących poleceń interfejsu wiersza polecenia.
+
+Najpierw utwórz grupę zasobów platformy Azure:
+
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location westus2
 ```
 
-## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
+Następnie utwórz klaster AKS:
+
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
 ```
 
-## <a name="get-credentials-to-access-the-cluster"></a>Uzyskiwanie poświadczeń w celu uzyskania dostępu do klastra
+Na koniec Uzyskaj poświadczenia, aby uzyskać dostęp do klastra:
+
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-Po utworzeniu klastra w ciągu kilku minut można wdrożyć obciążenia aplikacji i współdziałać z nim, tak jak w przypadku klastrów AKS opartych na jednostkach usługi. 
+
+Klaster zostanie utworzony w ciągu kilku minut. Następnie można wdrożyć obciążenia aplikacji w nowym klastrze i korzystać z nich w taki sam sposób, jak w przypadku klastrów AKS opartych na głównej usłudze.
 
 > [!IMPORTANT]
-> * Klastry AKS z tożsamościami zarządzanymi można włączać tylko podczas tworzenia klastra
-> * Nie można zaktualizować/uaktualnić istniejących klastrów AKS, aby umożliwić zarządzanie tożsamościami
+>
+> - Klastry AKS z tożsamościami zarządzanymi można włączać tylko podczas tworzenia klastra.
+> - Istniejących klastrów AKS nie można zaktualizować ani uaktualnić, aby umożliwić zarządzanie tożsamościami.

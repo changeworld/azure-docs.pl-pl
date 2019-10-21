@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/06/2018
 ms.author: atsenthi
 ms.openlocfilehash: 123795730e8468591bb02fa7c756ad48222dff82
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68600020"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Tworzenie klastra Service Fabric na platformie Azure przy użyciu Azure Portal
@@ -53,7 +53,7 @@ Aby można było zrealizować te cele, certyfikat musi spełniać następujące 
 
 * Certyfikat musi zawierać klucz prywatny.
 * Należy utworzyć certyfikat do wymiany kluczy, który można wyeksportować do pliku wymiany informacji osobistych (pfx).
-* **Nazwa podmiotu certyfikatu musi być zgodna z domeną** używaną do uzyskiwania dostępu do klastra Service Fabric. Jest to wymagane w celu udostępnienia protokołu SSL dla punktów końcowych zarządzania HTTPS klastra i Service Fabric Explorer. Nie można uzyskać certyfikatu SSL z urzędu certyfikacji dla `.cloudapp.azure.com` domeny. Uzyskaj niestandardową nazwę domeny dla klastra. W przypadku żądania certyfikatu z urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną przez klaster.
+* **Nazwa podmiotu certyfikatu musi być zgodna z domeną** używaną do uzyskiwania dostępu do klastra Service Fabric. Jest to wymagane w celu udostępnienia protokołu SSL dla punktów końcowych zarządzania HTTPS klastra i Service Fabric Explorer. Nie można uzyskać certyfikatu SSL z urzędu certyfikacji dla domeny `.cloudapp.azure.com`. Uzyskaj niestandardową nazwę domeny dla klastra. W przypadku żądania certyfikatu z urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną przez klaster.
 
 #### <a name="client-authentication-certificates"></a>Certyfikaty uwierzytelniania klienta
 Dodatkowe certyfikaty klienta uwierzytelniają administratorów do zadań zarządzania klastrami. Service Fabric ma dwa poziomy dostępu: **administrator** i **użytkownik tylko do odczytu**. Należy użyć co najmniej jednego certyfikatu na potrzeby dostępu administracyjnego. Aby uzyskać dodatkowy dostęp na poziomie użytkownika, należy podać oddzielny certyfikat. Aby uzyskać więcej informacji na temat ról dostępu, zobacz [kontroli dostępu opartej na rolach dla klientów Service Fabric][service-fabric-cluster-security-roles].
@@ -79,7 +79,7 @@ Utworzenie klastra produkcyjnego w celu spełnienia wymagań dotyczących aplika
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Wyszukaj zasób klastra Service Fabric
 
-Zaloguj się w witrynie [Azure Portal][azure-portal].
+Zaloguj się do [portalu Azure][azure-portal].
 Kliknij pozycję **Utwórz zasób** , aby dodać nowy szablon zasobu. Wyszukaj szablon klastra Service Fabric w **portalu Marketplace** w obszarze **wszystko**.
 Wybierz z listy pozycję **klaster Service Fabric** .
 
@@ -89,7 +89,7 @@ Przejdź do bloku **klaster Service Fabric** i kliknij przycisk **Utwórz**.
 
 Blok **Utwórz klaster Service Fabric** obejmuje następujące cztery kroki:
 
-### <a name="1-basics"></a>1. Ustawienia podstawowe
+### <a name="1-basics"></a>1. podstawy
 ![Zrzut ekranu przedstawiający tworzenie nowej grupy zasobów.][CreateRG]
 
 W bloku podstawowe należy podać podstawowe informacje o klastrze.
@@ -118,18 +118,18 @@ Skonfiguruj węzły klastra. Typy węzłów definiują rozmiary maszyn wirtualny
 2. Minimalny **rozmiar** maszyn wirtualnych dla typu węzła podstawowego jest uzależniony od **warstwy trwałości** wybranej dla klastra. Wartością domyślną dla warstwy trwałości jest brązowy. Aby uzyskać więcej informacji na temat trwałości, zobacz [jak wybrać Service Fabric trwałość klastra][service-fabric-cluster-durability].
 3. Wybierz **rozmiar maszyny wirtualnej**. Maszyny wirtualne z serii D mają dyski SSD i są zdecydowanie zalecane w przypadku aplikacji stanowych. Nie należy używać żadnej jednostki SKU maszyny wirtualnej, która ma częściowe rdzenie lub nie może być mniejsza niż 10 GB dostępnego miejsca na dysku. Zapoznaj się z [dokumentem uwagi dotyczące planowania klastrów usługi Service Fabric][service-fabric-cluster-capacity] , aby uzyskać pomoc w wyborze rozmiaru maszyny wirtualnej.
 4.  **Klaster z pojedynczym węzłem i trzy klastry węzłów** są przeznaczone tylko do użytku testowego. Nie są one obsługiwane w przypadku żadnych uruchomionych obciążeń produkcyjnych.
-5. Wybierz **początkową pojemność zestawu skalowania maszyn wirtualnych** dla typu węzła. Można skalować w górę lub w dół liczbę maszyn wirtualnych w typie węzła w późniejszym czasie, ale w przypadku podstawowego typu węzła minimalna wartość to pięć dla obciążeń produkcyjnych. Inne typy węzłów mogą mieć co najmniej jedną maszynę wirtualną. Minimalna **Liczba** maszyn wirtualnych dla typu węzła podstawowego jest niezawodnością klastra .  
+5. Wybierz **początkową pojemność zestawu skalowania maszyn wirtualnych** dla typu węzła. Można skalować w górę lub w dół liczbę maszyn wirtualnych w typie węzła w późniejszym czasie, ale w przypadku podstawowego typu węzła minimalna wartość to pięć dla obciążeń produkcyjnych. Inne typy węzłów mogą mieć co najmniej jedną maszynę wirtualną. Minimalna **Liczba** maszyn wirtualnych dla typu węzła podstawowego jest **niezawodnością** klastra.  
 6. Skonfiguruj **niestandardowe punkty końcowe**. W tym polu można wprowadzić rozdzieloną przecinkami listę portów, które mają zostać ujawnione za pomocą Azure Load Balancer do publicznego Internetu dla aplikacji. Na przykład jeśli planujesz wdrożyć aplikację sieci Web w klastrze, wprowadź "80" tutaj, aby zezwolić na ruch na porcie 80 do klastra. Aby uzyskać więcej informacji na temat punktów końcowych, zobacz [komunikowanie się z aplikacjami][service-fabric-connect-and-communicate-with-services]
 7. **Włącz zwrotny serwer proxy**.  [Service Fabric odwrotny serwer proxy](service-fabric-reverseproxy.md) pomaga mikrousługi działające w klastrze Service Fabric odnajdywać i komunikować się z innymi usługami, które mają punkty końcowe http.
-8. Z powrotem w bloku **Konfiguracja klastra** w obszarze **+ Pokaż ustawienia opcjonalne**Skonfiguruj diagnostykęklastra. Domyślnie Diagnostyka jest włączona w klastrze, aby pomóc w rozwiązywaniu problemów. Jeśli chcesz wyłączyć diagnostykę, Zmień **stan** na **wyłączony**. Wyłączenie diagnostyki **nie** jest zalecane. Jeśli utworzono już projekt Application Insights, podaj jego klucz, aby ślady aplikacji były kierowane do niej.
+8. Z powrotem w bloku **Konfiguracja klastra** w obszarze **+ Pokaż ustawienia opcjonalne**Skonfiguruj **diagnostykę**klastra. Domyślnie Diagnostyka jest włączona w klastrze, aby pomóc w rozwiązywaniu problemów. Jeśli chcesz wyłączyć diagnostykę, Zmień **stan** na **wyłączony**. Wyłączenie diagnostyki **nie** jest zalecane. Jeśli utworzono już projekt Application Insights, podaj jego klucz, aby ślady aplikacji były kierowane do niej.
 9. **Uwzględnij usługę DNS**.  [Usługa DNS](service-fabric-dnsservice.md) to opcjonalna usługa, która umożliwia znalezienie innych usług przy użyciu protokołu DNS.
-10. Wybierz **tryb uaktualniania sieci szkieletowej** , na który ma zostać ustawiony klaster. Wybierz **opcję**automatycznie, jeśli chcesz, aby system automatycznie pobierał najnowszą dostępną wersję, a następnie spróbuj uaktualnić do niej klaster. Jeśli chcesz wybrać obsługiwaną wersję, ustaw tryb na **ręczny**. Aby uzyskać więcej informacji na temat trybu uaktualniania sieci szkieletowej, zobacz [dokument Uaktualnij klaster Service Fabric.][service-fabric-cluster-upgrade]
+10. Wybierz **tryb uaktualniania sieci szkieletowej** , na który ma zostać ustawiony klaster. Wybierz **opcję automatycznie,** Jeśli chcesz, aby system automatycznie pobierał najnowszą dostępną wersję, a następnie spróbuj uaktualnić do niej klaster. Jeśli chcesz wybrać obsługiwaną wersję, ustaw tryb na **ręczny**. Aby uzyskać więcej informacji na temat trybu uaktualniania sieci szkieletowej, zobacz [dokument Uaktualnij klaster Service Fabric.][service-fabric-cluster-upgrade]
 
 > [!NOTE]
 > Obsługiwane są tylko klastry z obsługiwanymi wersjami Service Fabric. Wybierając tryb **ręczny** , podejmujesz odpowiedzialność za uaktualnienie klastra do obsługiwanej wersji.
 > 
 
-### <a name="3-security"></a>3. Bezpieczeństwo
+### <a name="3-security"></a>3. zabezpieczenia
 ![Zrzut ekranu konfiguracji zabezpieczeń na Azure Portal.][BasicSecurityConfigs]
 
 Aby łatwo skonfigurować bezpieczny klaster testowy dla Ciebie, udostępniamy opcję **podstawowa** . Jeśli masz już certyfikat i przekazano go do [magazynu kluczy](/azure/key-vault/) (i włączono Magazyn kluczy na potrzeby wdrożenia), użyj opcji **niestandardowej**
@@ -186,7 +186,7 @@ Aby ukończyć tworzenie klastra, kliknij przycisk **Utwórz**. Opcjonalnie moż
 
 ![Podsumowanie]
 
-Możesz zobaczyć postępy tworzenia w powiadomieniach. (Kliknij ikonę „Dzwonka” w pobliżu paska stanu w prawym górnym rogu ekranu). Jeśli kliknięto opcję **Przypnij do tablicy startowej** podczas tworzenia klastra, zobaczysz pozycję **Wdrażanie klastra usługi Service Fabric** przypiętą do tablicy **Start**. Ten proces zajmie trochę czasu. 
+Możesz zobaczyć postępy tworzenia w powiadomieniach. (Kliknij ikonę "dzwonka" obok paska stanu w prawym górnym rogu ekranu). Jeśli kliknięto opcję **Przypnij do tablicy startowej** podczas tworzenia klastra, zobaczysz **wdrożenie Service Fabric klaster** przypięty do tablicy **startowej** . Ten proces zajmie trochę czasu. 
 
 Aby wykonywać operacje zarządzania w klastrze przy użyciu programu PowerShell lub interfejsu wiersza polecenia, musisz nawiązać połączenie z klastrem, aby dowiedzieć się więcej na temat [nawiązywania połączenia z klastrem](service-fabric-connect-to-secure-cluster.md).
 
@@ -210,7 +210,7 @@ Sekcja **monitor węzłów** w bloku pulpitu nawigacyjnego klastra wskazuje licz
 Każdy elementów NodeType określony w klastrze powoduje pobranie konfiguracji zestawu skalowania maszyn wirtualnych. <!--See [Remote connect to a Virtual Machine Scale Set instance][remote-connect-to-a-vm-scale-set] for details. -->
 
 ## <a name="next-steps"></a>Następne kroki
-W tym momencie istnieje bezpieczny klaster używający certyfikatów do uwierzytelniania zarządzania. Następnie [Połącz](service-fabric-connect-to-secure-cluster.md) się z klastrem i Dowiedz się, jak zarządzać wpisami [tajnymi aplikacji](service-fabric-application-secret-management.md).  Dowiedz się więcej o [opcjach pomocy technicznej Service Fabric](service-fabric-support.md).
+W tym momencie istnieje bezpieczny klaster używający certyfikatów do uwierzytelniania zarządzania. Następnie połącz się z [klastrem](service-fabric-connect-to-secure-cluster.md) i Dowiedz się, jak zarządzać wpisami [tajnymi aplikacji](service-fabric-application-secret-management.md).  Dowiedz się więcej o [opcjach pomocy technicznej Service Fabric](service-fabric-support.md).
 
 <!-- Links -->
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/

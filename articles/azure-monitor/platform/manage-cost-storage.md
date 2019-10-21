@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/17/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5b6ec913226f44a47bfa5c734e0c20ef3a87ca67
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1480418a70166887e7327452d407f78c2c992378
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329429"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597302"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użyciem i kosztami za pomocą dzienników Azure Monitor
 
@@ -191,7 +191,7 @@ Jeśli obszar roboczy Log Analytics ma dostęp do starszych warstw cenowych, aby
 2. W okienku obszaru roboczego w obszarze **Ogólne**wybierz pozycję **warstwa cenowa**.  
 
 3. W obszarze **warstwa cenowa**wybierz warstwę cenową, a następnie kliknij pozycję **Wybierz**.  
-    @no__t — plan cennika 0Selected @ no__t-1
+    ![Selected plan cenowy ](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
 Możesz również [ustawić warstwę cenową za pośrednictwem Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy użyciu parametru `sku` (`pricingTier` w szablonie ARM). 
 
@@ -229,7 +229,7 @@ Heartbeat | where TimeGenerated > startofday(ago(31d))
 | render timechart
 ```
 
-Aby uzyskać listę komputerów, które będą rozliczane jako węzły w przypadku, gdy obszar roboczy znajduje się w starszej warstwie cenowej węzła, poszukaj węzłów, które wysyłają **opłaty za typy danych** (niektóre typy danych są bezpłatne). Aby to zrobić, użyj [właściwości](log-standard-properties.md#_isbillable) `_IsBillable` i użyj pola z lewej strony w pełni kwalifikowanej nazwy domeny. Spowoduje to zwrócenie listy komputerów z danymi rozliczanymi:
+Aby uzyskać listę komputerów, które będą rozliczane jako węzły w przypadku, gdy obszar roboczy znajduje się w starszej warstwie cenowej węzła, poszukaj węzłów, które wysyłają **opłaty za typy danych** (niektóre typy danych są bezpłatne). Aby to zrobić, użyj [właściwości](log-standard-properties.md#_isbillable) `_IsBillable` i użyj pola z lewej strony w w pełni kwalifikowanej nazwy domeny. Spowoduje to zwrócenie listy komputerów z danymi rozliczanymi:
 
 ```kusto
 union withsource = tt * 
@@ -268,7 +268,7 @@ Na stronie **użycie i szacowane koszty** pozyskiwanie *danych na wykres rozwią
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 Należy zauważyć, że klauzula "gdzie ismiliarded = true" odfiltruje typy danych z niektórych rozwiązań, dla których nie jest naliczana opłata za pozyskiwanie. 
@@ -278,7 +278,7 @@ Możesz również przejść do szczegółów, aby zobaczyć trendy danych dla ok
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 ### <a name="data-volume-by-computer"></a>Ilość danych według komputera
@@ -292,7 +292,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
-[Właściwość](log-standard-properties.md#_isbillable) `_IsBillable` Określa, czy pozyskane dane będą naliczane opłaty.
+[Właściwość](log-standard-properties.md#_isbillable) `_IsBillable` określa, czy pozyskane dane będą naliczane opłaty.
 
 Aby zobaczyć liczbę zdarzeń **rozliczanych** pobieranych na komputer, użyj 
 
@@ -322,7 +322,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-W przypadku danych z węzłów hostowanych na platformie Azure możesz uzyskać **wielkość** rozliczania zdarzeń pozyskanych w __ramach subskrypcji platformy Azure__, Przeanalizuj Właściwość `_ResourceId` jako:
+W przypadku danych z węzłów hostowanych na platformie Azure możesz uzyskać **wielkość** rozliczania zdarzeń pobieranych __na subskrypcję platformy Azure__, Przeanalizuj Właściwość `_ResourceId` jako:
 
 ```kusto
 union withsource = tt * 
@@ -428,7 +428,7 @@ Poniższe zapytanie daje rezultat, jeśli w ciągu ostatnich 24 godzin zebrano w
 ```kusto
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type 
+| extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type 
 | where DataGB > 100
 ```
 
@@ -438,7 +438,7 @@ Następujące zapytanie używa prostej formuły umożliwiającej przewidywanie, 
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
 | extend Type = $table 
-| summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type 
+| summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type 
 | where EstimatedGB > 100
 ```
 
@@ -451,7 +451,7 @@ Podczas tworzenia alertu dla pierwszego zapytania odnoszącego się do przypadku
 - **Zdefiniuj warunek alertu** — określ obszar roboczy usługi Log Analytics jako element docelowy zasobu.
 - **Kryteria alertu** — określ następujące informacje:
    - **Nazwa sygnału** — wybierz pozycję **Przeszukiwanie dzienników niestandardowych**
-   - **Zapytanie wyszukiwania** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - **Zapytanie wyszukiwania** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
    - **Alert logiki** **opiera się na** *liczbie wyników*, a **warunek** jest *większy niż*  **próg**  wynoszący *0*
    - **Okres** o długości *1440* minut i **częstotliwość alertów** o wartości *60* minut, ponieważ dane użycia są aktualizowane tylko raz na godzinę.
 - **Zdefiniuj szczegóły alertu** — określ następujące informacje:
@@ -465,7 +465,7 @@ Podczas tworzenia alertu dla drugiego zapytania dotyczącego przypadku, w który
 - **Zdefiniuj warunek alertu** — określ obszar roboczy usługi Log Analytics jako element docelowy zasobu.
 - **Kryteria alertu** — określ następujące informacje:
    - **Nazwa sygnału** — wybierz pozycję **Przeszukiwanie dzienników niestandardowych**
-   - **Zapytanie wyszukiwania** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - **Zapytanie wyszukiwania** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
    - **Alert logiki** **opiera się na** *liczbie wyników*, a **warunek** jest *większy niż*  **próg**  wynoszący *0*
    - **Okres** o długości *180* minut i **częstotliwość alertów** o wartości *60* minut, ponieważ dane użycia są aktualizowane tylko raz na godzinę.
 - **Zdefiniuj szczegóły alertu** — określ następujące informacje:

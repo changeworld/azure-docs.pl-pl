@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: c8517d4754d10b61f7ee4c8075830860e1d22864
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 10d300638f95fe275a23dfbc239f8f961f46b127
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172994"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598019"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Opis obsługi czasu w Azure Stream Analytics
 
@@ -22,11 +22,11 @@ W tym artykule omówiono sposób tworzenia opcji projektowania w celu rozwiązyw
 
 Aby lepiej utworzyć ramkę w dyskusji, zdefiniujmy niektóre koncepcje w tle:
 
-- **Czas zdarzenia**: Czas wystąpienia oryginalnego zdarzenia. Na przykład, gdy przesuwanie samochodu na autostradę zbliża się do kabiny.
+- **Czas zdarzenia**: czas wystąpienia oryginalnego zdarzenia. Na przykład, gdy przesuwanie samochodu na autostradę zbliża się do kabiny.
 
-- **Czas przetwarzania**: Czas, w którym zdarzenie osiągnie system przetwarzania i jest zaobserwowane. Na przykład, gdy czujnik kabiny z opłatami jest widoczny dla samochodu i system komputerowy zajmuje kilka chwil, aby przetwarzać dane.
+- **Czas przetwarzania**: czas, gdy zdarzenie osiągnie system przetwarzania i jest zaobserwowane. Na przykład, gdy czujnik kabiny z opłatami jest widoczny dla samochodu i system komputerowy zajmuje kilka chwil, aby przetwarzać dane.
 
-- **Znak wodny**: Znacznik czasu zdarzenia wskazujący, które zdarzenia punktu zostały ingressed do procesora przesyłania strumieniowego. Znaki wodne pozwalają systemowi wskazywać na wyczyszczenie zdarzeń. Ze względu na charakter strumieni, przychodzące dane zdarzeń nigdy nie są przerywane, dlatego znaki wodne wskazują postęp do określonego punktu w strumieniu.
+- **Znak wodny**: znacznik czasu zdarzenia wskazujący, które zdarzenia punktu zostały ingressed do procesora przesyłania strumieniowego. Znaki wodne pozwalają systemowi wskazywać na wyczyszczenie zdarzeń. Ze względu na charakter strumieni, przychodzące dane zdarzeń nigdy nie są przerywane, dlatego znaki wodne wskazują postęp do określonego punktu w strumieniu.
 
    Koncepcja znaku wodnego jest ważna. Znaki wodne umożliwiają Stream Analytics określenie, kiedy system może generować kompletne, poprawne i powtarzalne wyniki, które nie muszą zostać wycofane. Przetwarzanie może odbywać się w sposób gwarantowany i powtarzalny. Na przykład jeśli należy wykonać ponowną inwentaryzację dla określonego warunku obsługi błędów, znaki wodne są bezpiecznymi punktami początkowymi i końcowymi.
 
@@ -42,7 +42,7 @@ Stream Analytics zapewnia użytkownikom dwie opcje dla czasu pobrania:
 
    Użycie czasu przybycia jest zachowaniem domyślnym i najlepszym sposobem korzystania z scenariuszy archiwizowania danych, w których nie jest wymagana żadna niestandardowa logika.
 
-2. **Czas aplikacji** (również nazwana godzina zdarzenia)
+2. **Czas aplikacji** (nazywany także czasem zdarzenia)
 
    Czas aplikacji jest przypisywany podczas generowania zdarzenia i jest częścią ładunku zdarzenia. Aby przetwarzać zdarzenia według czasu aplikacji, należy użyć klauzuli **timestamp by** w zapytaniu SELECT. Jeśli jest nieobecna klauzula **timestamp by** , zdarzenia są przetwarzane przez czas przybycia.
 
@@ -72,13 +72,13 @@ Projekt służy do dwóch dodatkowych celów, poza generowaniem znaków wodnych:
 
    Znak wodny jest uzyskiwany od czasu wejścia i czasu aplikacji. Oba elementy są utrwalane w brokerze zdarzeń i w rezultacie powtarzane. W przypadku, gdy czas przybycia musi zostać oszacowany w przypadku braku zdarzeń, Azure Stream Analytics arkusza przewidywany czas przybycia do powtarzalności podczas odtwarzania na potrzeby odzyskiwania po awarii.
 
-Należy zauważyć, że jeśli zdecydujesz się na użycie **czasu** dojazdu jako czasu zdarzenia, nie ma potrzeby konfigurowania tolerancji niezwiązanych z kolejnością i opóźnienia przybycia. Ponieważ **czas przybycia** ma być monotonicznie rosnący w brokerze zdarzeń wejściowych, Azure Stream Analytics po prostu oduważa konfiguracje.
+Należy zauważyć, że jeśli zdecydujesz się na użycie **czasu dojazdu** jako czasu zdarzenia, nie ma potrzeby konfigurowania tolerancji niezwiązanych z kolejnością i opóźnienia przybycia. Ponieważ **czas przybycia** ma być monotonicznie rosnący w brokerze zdarzeń wejściowych, Azure Stream Analytics po prostu oduważa konfiguracje.
 
 ## <a name="late-arriving-events"></a>Późne nadejście zdarzeń
 
 Według definicji okna tolerancji opóźnionego przybycia dla każdego przychodzącego zdarzenia Azure Stream Analytics porównuje **czas zdarzenia** z **czasem nadejścia**; Jeśli czas zdarzenia znajduje się poza oknem tolerancji, można skonfigurować system do porzucenia zdarzenia lub dostosować czas do przekroczenia tolerancji.
 
-Należy pamiętać, że po wygenerowaniu znaków wodnych usługa może potencjalnie odbierać zdarzenia ze zdarzeniem krótszym niż limit czasu. Można skonfigurować usługę do porzucenia tych zdarzeń lub **dostosować** czas do wartości limitu.
+Należy pamiętać, że po wygenerowaniu znaków wodnych usługa może potencjalnie odbierać zdarzenia ze zdarzeniem krótszym niż limit czasu. Można skonfigurować usługę do **porzucenia** tych zdarzeń lub **dostosować** czas do wartości limitu.
 
 W ramach korekty zdarzenie **System. timestamp** ma ustawioną nową wartość, ale samo pole **czasu zdarzenia** nie jest zmieniane. Ta korekta jest jedyną sytuacją, w której zdarzenie **System. timestamp** może różnić się od wartości w polu czas zdarzenia i może spowodować wygenerowanie nieoczekiwanych wyników.
 
@@ -86,7 +86,7 @@ W ramach korekty zdarzenie **System. timestamp** ma ustawioną nową wartość, 
 
 Opisany tutaj mechanizm generowania znaku wodnego algorytmu heurystycznego działa dobrze w większości przypadków, w których czas jest przeważnie synchronizowany między różnymi nadawcami zdarzeń. Jednak w rzeczywistości, szczególnie w wielu scenariuszach IoT, system ma małą kontrolę nad zegarem dla nadawców zdarzeń. Nadawcy zdarzeń mogą wyróżnić wszystkie urządzenia w polu, na przykład na różnych wersjach sprzętu i oprogramowania.
 
-Zamiast używać globalnego znaku wodnego do wszystkich zdarzeń na partycji wejściowej, Stream Analytics ma inny mechanizm nazywany podstrumieniami, aby pomóc. Można użyć podstrumieńów w zadaniu, pisząc kwerendę zadania, która używa klauzuli [**timestamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) i słowa kluczowegow. Aby wyznaczyć Podstrumień, podaj nazwę kolumny klucza po słowie kluczowym **over** , `deviceid`na przykład, tak aby system stosował zasady czasu według tej kolumny. Każdy Podstrumień pobiera własny niezależny znak wodny. Mechanizm ten jest przydatny do zezwalania na generowanie czasowych danych wyjściowych w przypadku dużych pochylenia zegara lub opóźnień sieci między nadawcami zdarzeń.
+Zamiast używać globalnego znaku wodnego do wszystkich zdarzeń na partycji wejściowej, Stream Analytics ma inny mechanizm nazywany podstrumieniami, aby pomóc. Można użyć podstrumieńów w zadaniu, pisząc kwerendę zadania, która używa klauzuli [**timestamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) **i słowa kluczowego w.** Aby wyznaczyć Podstrumień, podaj nazwę kolumny klucza po słowie kluczowym **over** , takie jak `deviceid`, tak aby system stosował zasady czasu według tej kolumny. Każdy Podstrumień pobiera własny niezależny znak wodny. Mechanizm ten jest przydatny do zezwalania na generowanie czasowych danych wyjściowych w przypadku dużych pochylenia zegara lub opóźnień sieci między nadawcami zdarzeń.
 
 Podstrumieńy są unikatowym rozwiązaniem oferowanym przez Azure Stream Analytics i nie są oferowane przez inne systemy przetwarzania danych przesyłanych strumieniowo. Stream Analytics stosuje okno tolerancja opóźnionego przybycia do zdarzeń przychodzących, gdy są używane podstrumienie. Ustawienie domyślne (5 sekund) jest prawdopodobnie zbyt małe w przypadku urządzeń z rozbieżnymi sygnaturami czasowymi. Zalecamy rozpoczęcie od 5 minut i dostosowanie ich zgodnie z wzorcem odchylenia zegara urządzenia.
 
@@ -102,7 +102,7 @@ Ta koncepcja służy do zapewnienia powtarzania przetwarzania niezależnie od te
 
 ## <a name="side-effects-of-event-ordering-time-tolerances"></a>Skutki uboczne dla tolerancji czasu porządkowania zdarzeń
 
-Stream Analytics zadania mają kilka opcji **określania kolejności zdarzeń** . Dwie można skonfigurować w Azure Portal: ustawienia **zdarzenia poza kolejnością** (Tolerancja braku kolejności) oraz **zdarzenia, które docierają** do późnego ustawienia (Tolerancja późnego przybycia). Tolerancja **wczesnego przybycia** jest stała i nie można jej skorygować. Te zasady czasu są używane przez Stream Analytics, aby zapewnić silne gwarancje. Jednak te ustawienia mają pewne nieoczekiwane konsekwencje:
+Stream Analytics zadania mają kilka opcji **określania kolejności zdarzeń** . Dwie można skonfigurować w Azure Portal: ustawienia **zdarzenia poza kolejnością** (Tolerancja braku kolejności) oraz **zdarzenia, które docierają do późnego** ustawienia (Tolerancja późnego przybycia). Tolerancja **wczesnego przybycia** jest stała i nie można jej skorygować. Te zasady czasu są używane przez Stream Analytics, aby zapewnić silne gwarancje. Jednak te ustawienia mają pewne nieoczekiwane konsekwencje:
 
 1. Przypadkowe wysyłanie zdarzeń, które są zbyt wczesne.
 
@@ -118,7 +118,7 @@ Stream Analytics zadania mają kilka opcji **określania kolejności zdarzeń** 
 
 4. Dane wejściowe są rozrzedzone.
 
-   Gdy nie ma danych wejściowych w danej partycji, czas znaku wodnego jest obliczany jako **czas przybycia** pomniejszony o opóźnione okno tolerancja przybycia. W związku z tym, jeśli zdarzenia wejściowe są rzadko i rozrzedzone, dane wyjściowe można opóźnić o ten czas. Domyślne **zdarzenia, które docierają** do wartości późnej, to 5 sekund. Należy się spodziewać, że podczas wysyłania zdarzeń wejściowych po jednym naraz będzie widoczne pewne opóźnienie, na przykład. Opóźnienia mogą uzyskać gorszą wartość, gdy ustawiasz **zdarzenia, które docierają** do późnego okna do dużej wartości.
+   Gdy nie ma danych wejściowych w danej partycji, czas znaku wodnego jest obliczany jako **czas przybycia** pomniejszony o opóźnione okno tolerancja przybycia. W związku z tym, jeśli zdarzenia wejściowe są rzadko i rozrzedzone, dane wyjściowe można opóźnić o ten czas. Domyślne **zdarzenia, które docierają do wartości późnej,** to 5 sekund. Należy się spodziewać, że podczas wysyłania zdarzeń wejściowych po jednym naraz będzie widoczne pewne opóźnienie, na przykład. Opóźnienia mogą uzyskać gorszą wartość, gdy ustawiasz **zdarzenia, które docierają do późnego** okna do dużej wartości.
 
 5. Wartość **System. timestamp** jest różna od godziny w polu **czas zdarzenia** .
 
@@ -131,7 +131,7 @@ Można obserwować liczbę efektów tolerancji czasu porządkowania zdarzeń za 
 |Metryka  | Opis  |
 |---------|---------|
 | **Zdarzenia poza kolejnością** | Wskazuje liczbę zdarzeń odebranych poza kolejnością, które zostały porzucone lub miały skorygowaną sygnaturę czasową. Ta Metryka jest bezpośrednio objęta konfiguracją ustawienia **zdarzenia poza kolejnością** na stronie **porządkowania zdarzeń** w zadaniu w Azure Portal. |
-| **Opóźnione zdarzenia wejściowe** | Wskazuje liczbę zdarzeń opóźnionych ze źródła. Ta Metryka obejmuje zdarzenia, które zostały usunięte lub miały sygnaturę czasową. Ta Metryka ma bezpośredni wpływ na konfigurację **zdarzeń, które docierają** do późnego ustawienia na stronie **porządkowanie zdarzeń** w zadaniu w Azure Portal. |
+| **Opóźnione zdarzenia wejściowe** | Wskazuje liczbę zdarzeń opóźnionych ze źródła. Ta Metryka obejmuje zdarzenia, które zostały usunięte lub miały sygnaturę czasową. Ta Metryka ma bezpośredni wpływ na konfigurację **zdarzeń, które docierają do późnego** ustawienia na stronie **porządkowanie zdarzeń** w zadaniu w Azure Portal. |
 | **Wczesne zdarzenia wejściowe** | Wskazuje liczbę zdarzeń, które docierają wcześniej ze źródła, które zostały usunięte, lub jeśli ich sygnatura czasowa została dostosowana, jeśli są dłuższe niż 5 minut. |
 | **Opóźnienie znaku wodnego** | Wskazuje opóźnienie zadania przetwarzania danych przesyłanych strumieniowo. Więcej informacji znajduje się w poniższej sekcji.|
 
@@ -171,7 +171,7 @@ Na poniższych ilustracjach przedstawiono, jak ma postępować w różnych sytua
 
 W tej tabeli przedstawiono przykładowe dane przedstawione poniżej. Należy zauważyć, że czas zdarzenia i czas przybycia różnią się, czasami dopasowuje i czasami nie.
 
-| Czas zdarzenia | Czas przybycia | DeviceId |
+| Czas zdarzenia | Czas przybycia | Identyfikator |
 | --- | --- | --- |
 | 12:07 | 12:07 | device1
 | 12:08 | 12:08 | device2
@@ -208,7 +208,7 @@ Na tej ilustracji są używane następujące tolerancje:
 
    4. Po przetworzeniu szóstego zdarzenia (device3) godzina przybycia (12:17) i czas zdarzenia (12:12) są poniżej poziomu znaku wodnego. Czas zdarzenia jest dostosowywany do poziomu znaku wodnego (12:17).
 
-   5. Po przetworzeniu dziewiątego zdarzenia (device3) czas przybycia (12:27) wynosi 6 minut przed czasem zdarzenia (12:21). Zasady późnego przybycia są stosowane. Czas zdarzenia jest dostosowywany (12:22), który znajduje się powyżej znaku wodnego (12:21), co oznacza, że dalsze korekty nie są stosowane.
+   5. Po przetworzeniu dwunastego zdarzenia (device3) czas przybycia (12:27) wynosi 6 minut przed czasem zdarzenia (12:21). Zasady późnego przybycia są stosowane. Czas zdarzenia jest dostosowywany (12:22), który znajduje się powyżej znaku wodnego (12:21), co oznacza, że dalsze korekty nie są stosowane.
 
 2. Druga ilustracja przedstawiająca znak wodny postępu bez zasad wczesnego przybycia:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: b3d05e71726ae37dd30bbb68ceb84b67a3bef0e5
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: aa4e8f165320327788255605470bda789047c347
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71822274"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592492"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Zastosuj szyfrowanie dysków w Azure Security Center
 Azure Security Center zaleca zastosowanie szyfrowania dysków, jeśli masz dyski maszyn wirtualnych z systemem Windows lub Linux, które nie są zaszyfrowane przy użyciu Azure Disk Encryption. Szyfrowanie dysków umożliwia szyfrowanie dysków maszyn wirtualnych z systemami Windows i Linux IaaS.  Szyfrowanie jest zalecane zarówno w przypadku woluminów z systemem operacyjnym, jak i z danymi maszyny wirtualnej.
@@ -43,15 +43,15 @@ Aby zaszyfrować Virtual Machines platformy Azure, które zostały zidentyfikowa
 * Uzyskaj i uruchom Azure Disk Encryption wymagania wstępne Azure PowerShell skrypt.
 * Zaszyfruj maszyny wirtualne.
 
-[Szyfrowanie maszyny wirtualnej z systemem Windows IaaS z Azure PowerShell](../virtual-machines/linux/disk-encryption-powershell-quickstart.md) przeprowadzi Cię przez te kroki. W tym temacie przyjęto założenie, że używasz komputera klienckiego z systemem Windows, z którego można skonfigurować szyfrowanie dysków.
+[Szyfrowanie maszyny wirtualnej z systemem Windows IaaS z Azure PowerShell](../virtual-machines/windows/disk-encryption-powershell-quickstart.md) przeprowadzi Cię przez te kroki. W tym temacie przyjęto założenie, że używasz komputera klienckiego z systemem Windows, z którego można skonfigurować szyfrowanie dysków.
 
-Istnieje wiele metod, których można użyć w przypadku usługi Azure Virtual Machines. Jeśli użytkownik ma dużą wiedzę na temat programu Azure PowerShell lub interfejsu wiersza polecenia Azure, może wybrać inne rozwiązania. Aby dowiedzieć się więcej na temat tych innych metod, zobacz [Azure Disk Encryption](../security/azure-security-disk-encryption.md).
+Istnieje wiele metod, których można użyć w przypadku usługi Azure Virtual Machines. Jeśli użytkownik ma dużą wiedzę na temat programu Azure PowerShell lub interfejsu wiersza polecenia Azure, może wybrać inne rozwiązania. Aby dowiedzieć się więcej na temat tych innych metod, zobacz [Azure Disk Encryption](../security/fundamentals/encryption-overview.md).
 
 ## <a name="see-also"></a>Zobacz także
 W tym dokumencie przedstawiono sposób implementacji zalecenia Security Center "Zastosuj szyfrowanie dysków". Aby dowiedzieć się więcej na temat szyfrowania dysków, zobacz następujące tematy:
 
 * [Szyfrowanie i zarządzanie kluczami za pomocą Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (wideo, 36 min 39 s) — Dowiedz się, jak używać funkcji zarządzania szyfrowaniem dysków dla maszyn wirtualnych IaaS i Azure Key Vault do ochrony danych.
-* [Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md) (dokument) — Dowiedz się, jak włączyć szyfrowanie dysków dla maszyn wirtualnych z systemami Windows i Linux.
+* [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) (dokument) — Dowiedz się, jak włączyć szyfrowanie dysków dla maszyn wirtualnych z systemami Windows i Linux.
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 

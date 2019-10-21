@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387871"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596581"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Przekształcenie przeszukiwania przepływu danych Azure Data Factory mapowania
 
@@ -29,6 +29,20 @@ Transformacja wyszukiwania wykonuje odpowiednik lewego sprzężenia zewnętrzneg
 
 Po przekształceniu wyszukiwania można użyć kolejnych przekształceń, aby sprawdzić wyniki każdego wiersza dopasowania przy użyciu funkcji wyrażenia `isMatch()`, aby dokonać dalszych wyborów w logice w zależności od tego, czy wyszukiwanie spowodowało dopasowanie wierszy, czy nie.
 
+![Wzorzec wyszukiwania](media/data-flow/lookup111.png "Wzorzec wyszukiwania")
+
+Po użyciu transformacji wyszukiwania można dodać podział przekształcenia warunkowego do funkcji ```isMatch()```. W powyższym przykładzie pasujące wiersze przechodzą przez górny strumień i niepasujące wiersze w strumieniu ```NoMatch```.
+
+## <a name="first-or-last-value"></a>Pierwsza lub Ostatnia wartość
+
+Jeśli masz wiele dopasowań z wyszukiwania, możesz chcieć zmniejszyć liczbę dopasowanych wierszy, wybierając pierwsze lub ostatnie dopasowanie. Można to zrobić przy użyciu transformacji agregacji po wyszukiwaniu.
+
+W takim przypadku transformacja agregacji o nazwie ```PickFirst``` jest używana do wybrania pierwszej wartości z dopasowań wyszukiwania.
+
+![Agregowanie wyszukiwania](media/data-flow/lookup333.png "Agregowanie wyszukiwania")
+
+![Wyszukaj w pierwszej kolejności](media/data-flow/lookup444.png "Wyszukaj w pierwszej kolejności")
+
 ## <a name="optimizations"></a>Optymalizacje
 
 W Data Factory przepływy danych są wykonywane w skalowanych środowiskach Spark. Jeśli zestaw danych może pasować do przestrzeni pamięci węzła procesu roboczego, możemy zoptymalizować wydajność wyszukiwania.
@@ -45,4 +59,5 @@ Możesz również określić Partycjonowanie danych, wybierając pozycję "Ustaw
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przekształcenia [sprzężeń](data-flow-join.md) i [istniejących](data-flow-exists.md) są podobne do zadań w MAPOWANIU przepływów danych ADF. Zapoznaj się z tymi przekształceniami dalej.
+* Przekształcenia [sprzężeń](data-flow-join.md) i [istniejących](data-flow-exists.md) są podobne do zadań w MAPOWANIU przepływów danych ADF. Zapoznaj się z tymi przekształceniami dalej.
+* Użyj [podziału warunkowego](data-flow-conditional-split.md) z ```isMatch()```, aby podzielić wiersze na pasujące i niezgodne wartości

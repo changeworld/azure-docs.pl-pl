@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b281344084cb558ab490e9e3c24774311ede7866
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: cba7102c39f9e5231a3fe726f2e4c74e814109f1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529431"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597992"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurowanie SQL Server wystąpienia klastra trybu failover z udziałem plików w warstwie Premium na platformie Azure Virtual Machines
 
@@ -45,7 +45,7 @@ Ponadto należy ogólnie zrozumieć następujące technologie:
 - [Grupy zasobów platformy Azure](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> W tej chwili SQL Server wystąpienia klastra trybu failover w usłudze Azure Virtual Machines są obsługiwane tylko w trybie [uproszczonego](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) zarządzania [rozszerzenia agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Aby zmienić tryb pełnego rozszerzenia na lekki, Usuń zasób "maszyna wirtualna SQL" dla maszyn wirtualnych correspinding, a następnie zarejestruj je u dostawcy zasobów maszyny wirtualnej SQL w trybie `lightweight`. Podczas usuwania zasobu "maszyna wirtualna SQL" przy użyciu Azure Portal upewnij się, że wybrano opcję rzeczywistą maszynę wirtualną. Pełne rozszerzenie obsługuje takie funkcje, jak automatyczne tworzenie kopii zapasowych, stosowanie poprawek i zaawansowane zarządzanie portalem. Te funkcje nie będą działały w przypadku maszyn wirtualnych SQL po ponownym zainstalowaniu agenta w trybie uproszczonego zarządzania.
+> W tej chwili SQL Server wystąpienia klastra trybu failover w usłudze Azure Virtual Machines są obsługiwane tylko w trybie [uproszczonego](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) zarządzania [rozszerzenia agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Aby zmienić tryb pełnego rozszerzenia na lekki, Usuń zasób **maszyny wirtualnej SQL** dla odpowiednich maszyn wirtualnych, a następnie zarejestruj je u dostawcy zasobów maszyny wirtualnej SQL w trybie [uproszczonym](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) . Podczas usuwania zasobu **maszyny wirtualnej SQL** przy użyciu Azure Portal wyczyść pole wyboru obok odpowiedniej maszyny wirtualnej. Pełne rozszerzenie obsługuje takie funkcje, jak automatyczne tworzenie kopii zapasowych, stosowanie poprawek i zaawansowane zarządzanie portalem. Te funkcje nie będą działały w przypadku maszyn wirtualnych SQL po ponownym zainstalowaniu agenta w trybie [uproszczonego](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) zarządzania.
 
 ### <a name="workload-consideration"></a>Obciążenie
 

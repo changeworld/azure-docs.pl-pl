@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 10/19/2019
 ms.author: victorh
-ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: f64e9717a1e6391c15ee5207c7566114f2bf9f8f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130222"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596778"
 ---
 # <a name="azure-firewall-faq"></a>Często zadawane pytania dotyczące zapory platformy Azure
 
@@ -25,7 +25,7 @@ Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze,
 * Zapora stanowa jako usługa
 * Wbudowana wysoka dostępność z nieograniczoną skalowalnością w chmurze
 * Filtrowanie według nazw FQDN
-* Tagi nazw FQDN
+* Tagi w pełni kwalifikowanych nazw domen
 * Reguły filtrowania ruchu sieciowego
 * Obsługa translacji adresów sieciowych źródła (SNAT) dla ruchu wychodzącego
 * Obsługa technologii DNAT dla ruchu przychodzącego
@@ -40,7 +40,7 @@ Zaletą tego modelu jest możliwość scentralizowanej kontroli nad wieloma szpr
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Jak zainstalować zaporę platformy Azure?
 
-Zaporę platformy Azure można skonfigurować przy użyciu Azure Portal, programu PowerShell, interfejsu API REST lub przy użyciu szablonów. Zobacz [samouczek: Wdróż i skonfiguruj zaporę platformy Azure przy](tutorial-firewall-deploy-portal.md) użyciu Azure Portal, aby uzyskać instrukcje krok po kroku.
+Zaporę platformy Azure można skonfigurować przy użyciu Azure Portal, programu PowerShell, interfejsu API REST lub przy użyciu szablonów. Zobacz [Samouczek: wdrażanie i Konfigurowanie zapory platformy Azure przy użyciu Azure Portal,](tutorial-firewall-deploy-portal.md) Aby uzyskać instrukcje krok po kroku.
 
 ## <a name="what-are-some-azure-firewall-concepts"></a>Jakie są pojęcia związane z zaporą platformy Azure?
 
@@ -50,7 +50,7 @@ Istnieją trzy typy kolekcji reguł:
 
 * *Reguły aplikacji*: Skonfiguruj w pełni kwalifikowane nazwy domen (FQDN), do których można uzyskać dostęp z podsieci.
 * *Reguły sieci*: Skonfiguruj reguły, które zawierają adresy źródłowe, protokoły, porty docelowe i adresy docelowe.
-* *Reguły NAT*: Skonfiguruj reguły DNAT, aby zezwalać na połączenia przychodzące.
+* *Reguły translatora adresów sieciowych*: Skonfiguruj reguły DNAT, aby zezwalać na połączenia przychodzące.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Czy Zapora platformy Azure obsługuje filtrowanie ruchu przychodzącego?
 
@@ -58,7 +58,7 @@ Zapora platformy Azure obsługuje filtrowanie przychodzące i wychodzące. Ochro
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Które usługi rejestrowania i analizy są obsługiwane przez zaporę systemu Azure?
 
-Zapora platformy Azure jest zintegrowana z Azure Monitor do przeglądania i analizowania dzienników zapory. Dzienniki mogą być wysyłane do Log Analytics, usługi Azure Storage lub Event Hubs. Można je analizować w Log Analytics lub przy użyciu różnych narzędzi, takich jak program Excel i Power BI. Aby uzyskać więcej informacji, zobacz [Samouczek: Monitoruj dzienniki](tutorial-diagnostics.md)zapory platformy Azure.
+Zapora platformy Azure jest zintegrowana z Azure Monitor do przeglądania i analizowania dzienników zapory. Dzienniki mogą być wysyłane do Log Analytics, usługi Azure Storage lub Event Hubs. Można je analizować w Log Analytics lub przy użyciu różnych narzędzi, takich jak program Excel i Power BI. Aby uzyskać więcej informacji, zobacz [Samouczek: monitorowanie dzienników zapory platformy Azure](tutorial-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Jak Zapora platformy Azure różni się od istniejących usług, takich jak urządzeń WUS w portalu Marketplace?
 
@@ -145,7 +145,7 @@ Nie. Reguły translatora adresów sieciowych niejawnie Dodaj odpowiednią reguł
 
 Skonfigurowanie * **. contoso.com**umożliwia *anyvalue*. contoso.com, ale nie contoso.com (wierzchołk domeny). Jeśli chcesz zezwolić na wierzchołk domeny, musisz jawnie skonfigurować go jako docelową nazwę FQDN.
 
-## <a name="what-does-provisioning-state-failed-mean"></a>Co to *jest stan aprowizacji: Co* się nie powiodło?
+## <a name="what-does-provisioning-state-failed-mean"></a>Co to jest *stan aprowizacji: niepowodzenie* ?
 
 Za każdym razem, gdy stosowana jest zmiana konfiguracji, Zapora platformy Azure próbuje zaktualizować wszystkie jej bazowe wystąpienia zaplecza. W rzadkich przypadkach nie można zaktualizować jednego z tych wystąpień zaplecza przy użyciu nowej konfiguracji, a proces aktualizacji zostanie zatrzymany z nieprawidłowym stanem aprowizacji. Zapora platformy Azure nadal działa, ale zastosowana konfiguracja może być w niespójnym stanie, w którym niektóre wystąpienia mają poprzednią konfigurację, gdzie inne mają zaktualizowany zestaw reguł. W takim przypadku spróbuj zaktualizować konfigurację jeszcze raz, dopóki operacja się nie powiedzie, a Zapora *zakończyła się pomyślnie* .
 
@@ -162,7 +162,15 @@ Zapora platformy Azure musi obsługiwać więcej wystąpień maszyn wirtualnych 
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Czy rozmiar podsieci zapory musi ulec zmianie w miarę skalowania usługi?
 
-Nie. Zapora platformy Azure nie potrzebuje podsieci większej niż/26.
+Nie. Zapora platformy Azure nie wymaga podsieci większej niż/26.
+
+## <a name="how-can-i-increase-my-firewall-throughput"></a>Jak zwiększyć przepływność zapory?
+
+Początkowa przepustowość zapory platformy Azure to 2,5 – 3 GB/s. Obecnie skalowanie w poziomie jest oparte tylko na wykorzystaniu procesora. W niektórych przypadkach Zapora z regułami sieci nie będzie skalowana w górę w celu zwiększenia przepływności, ponieważ reguły sieci nie wpływają znacząco na użycie procesora CPU. Jeśli potrzebujesz wyższej przepływności dla zapory, skontaktuj się z pomocą techniczną, aby zwiększyć początkową przepustowość swojej zapory.
+
+## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Jak długo trwa skalowanie w poziomie zapory platformy Azure?
+
+Trwa to obecnie od pięciu do siedmiu minut na skalowanie w poziomie zapory platformy Azure. Jeśli masz szeregi, które wymagają szybszego skalowania, skontaktuj się z pomocą techniczną, aby zwiększyć początkową przepustowość swojej zapory.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Czy Zapora platformy Azure domyślnie zezwala na dostęp do Active Directory?
 

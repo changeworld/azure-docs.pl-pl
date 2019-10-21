@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8070d0cc302e0c0745216cdd40c9cbbf34e2bf58
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016628"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598332"
 ---
 # <a name="azure-media-services-community"></a>Społeczność usługi Azure Media Services  
 
@@ -36,11 +36,11 @@ Ta strona społeczności Azure Media Services (AMS) omawia różne sposoby uzysk
 ## <a name="provide-feedback-and-make-suggestions"></a>Prześlij opinię i Utwórz sugestie
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Dyskusja
+## <a name="discussion"></a>Dyskusji
 
-### <a name="twitter"></a>Twitter
+### <a name="twitter"></a>Serwis Twitter
 
-Skontaktuj się z nami przy użyciu uchwytu [TwitterlubpostępujzgodniezaktualizacjąwserwisieTwitter.@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Możesz użyć uchwytu [@AzureSupport](https://twitter.com/azuresupport) Twitter, aby zażądać pomocy technicznej w serwisie Twitter.  
+Aby skontaktować się z nami lub korzystać z aktualizacji w serwisie Twitter, użyj dojścia do [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitter. Aby zażądać pomocy technicznej w serwisie Twitter, możesz użyć uchwytu usługi Twitter [@AzureSupport](https://twitter.com/azuresupport) .  
 
 ### <a name="online-forums"></a>Fora online
 
@@ -48,15 +48,15 @@ Poniższe fora mogą służyć do zadawania pytań dotyczących bieżących prod
 
 Obecnie Witryna MSDN jest Media Services głównym forum społeczności zespołu.
 
-[![SPOŁECZNOŚĆ](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 Zespół monitoruje również pytania otagowane Stack Overflow z "Azure-Media-Services".
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Skontaktuj się z zespołem
+## <a name="need-help"></a>Potrzebujesz pomocy?
 
-Azure Media Services podstawowe wiadomości e-mail pomocy technicznej **amshelp@microsoft.com** :.
+Możesz otworzyć bilet pomocy technicznej, przechodząc do [nowego żądania obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Następne kroki
 

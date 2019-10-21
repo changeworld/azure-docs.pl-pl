@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 72e695762f2e45309787e6f62fa97aae4c959f34
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299621"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598085"
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach usługi Azure Storage
 
@@ -25,7 +25,7 @@ Usługa Azure Storage zapewnia kompleksowy zestaw funkcji zabezpieczeń, które 
     - Role RBAC można przypisywać do konta magazynu do podmiotów zabezpieczeń i używać usługi Azure AD do autoryzacji operacji zarządzania zasobami, takich jak zarządzanie kluczami.
     - Integracja z usługą Azure AD jest obsługiwana w przypadku operacji na danych obiektów blob i kolejek. Role RBAC można przypisać do zakresu subskrypcji, grupy zasobów, konta magazynu lub pojedynczego kontenera lub kolejki do podmiotu zabezpieczeń lub do zarządzanej tożsamości dla zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz temat [uwierzytelnianie dostępu do usługi Azure Storage przy użyciu Azure Active Directory](storage-auth-aad.md).   
 - Dane mogą być zabezpieczone podczas przesyłania między aplikacją i platformą Azure przy użyciu [szyfrowania po stronie klienta](../storage-client-side-encryption.md), protokołu HTTPS lub protokołu SMB 3,0.  
-- Dyski systemu operacyjnego i danych używane przez maszyny wirtualne platformy Azure mogą być szyfrowane przy użyciu [Azure Disk Encryption](../../security/azure-security-disk-encryption.md).
+- Dyski systemu operacyjnego i danych używane przez maszyny wirtualne platformy Azure mogą być szyfrowane przy użyciu [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).
 - Dostęp delegowany do obiektów danych w usłudze Azure Storage można udzielić przy użyciu sygnatury dostępu współdzielonego. Aby uzyskać więcej informacji, zobacz [udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatur dostępu współdzielonego (SAS)](storage-sas-overview.md).
 
 Ten artykuł zawiera omówienie każdej z tych funkcji zabezpieczeń, które mogą być używane z usługą Azure Storage. Dostępne są linki do artykułów, które będą zawierać szczegółowe informacje o każdej z tych funkcji, dzięki czemu można łatwo przeprowadzić dalsze badania dotyczące poszczególnych tematów.
@@ -328,7 +328,7 @@ Rozwiązanie nie obsługuje następujących scenariuszy, funkcji i technologii w
 Ta funkcja zapewnia, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane w usłudze Azure Storage.
 
 #### <a name="resources"></a>Zasoby
-* [Azure Disk Encryption dla maszyn wirtualnych z systemami Windows i Linux IaaS](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
+* [Azure Disk Encryption dla maszyn wirtualnych z systemami Windows i Linux IaaS](../../security/fundamentals/encryption-overview.md)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Porównanie Azure Disk Encryption, SSE i szyfrowania po stronie klienta
 
@@ -389,7 +389,7 @@ W poniższych zasobach znajduje się artykuł zawierający listę wielu pól w d
 
 ![Migawka pól w pliku dziennika](./media/storage-security-guide/image3.png)
 
-Interesuje Cię wpisy dla elementu GetBlob i sposobu ich autoryzacji, dlatego musimy szukać wpisów z typem operacji "Get-BLOB" i sprawdzić żądanie-status (czwarta kolumna @ no__t-0) i typ autoryzacji (ósma kolumna @ no__t-1).
+Interesuje Cię wpisy dla elementu GetBlob i sposobu ich autoryzacji, dlatego musimy szukać wpisów z typem operacji "Get-BLOB" i sprawdzić stan żądania-status (czwartej </sup> kolumnie) i typ autoryzacji (ósma </sup> kolumny).
 
 Na przykład w pierwszych kilku wierszach na powyższej liście żądanie-status ma wartość "powodzenie", a typ autoryzacji to "uwierzytelnione". Oznacza to, że żądanie było autoryzowane przy użyciu klucza konta magazynu.
 

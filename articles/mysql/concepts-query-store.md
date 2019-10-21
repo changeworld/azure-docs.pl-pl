@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: bac270dc0d49c0eaa8c01b030256aa9bb597db80
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/17/2019
+ms.openlocfilehash: 40718cdb12cbc46bf0587dfdc657ee06c090061b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029868"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598239"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorowanie wydajności Azure Database for MySQL przy użyciu magazynu zapytań
 
@@ -71,6 +71,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="finding-wait-queries"></a>Znajdowanie zapytań oczekujących
 
+> [!NOTE]
+> Statystykę oczekiwania nie należy włączać w godzinach szczytowego obciążenia lub być wyłączone w nieskończoność w przypadku cennych obciążeń. <br>W przypadku obciążeń z wysokim użyciem procesora CPU lub na serwerach skonfigurowanych przy użyciu mniejszej rdzeni wirtualnych należy zachować ostrożność podczas włączania statystyk oczekiwania. Nie powinna być włączona w nieskończoność. 
+
 Typy zdarzeń oczekiwania łączą różne zdarzenia oczekiwania do zasobników według podobieństwa. Magazyn zapytań zawiera typ zdarzenia oczekiwania, konkretną nazwę zdarzenia oczekiwania i zapytanie, którego dotyczy. Aby skorelować te informacje o poczekaniu z statystykami środowiska uruchomieniowego zapytań, można lepiej zrozumieć, co przyczynia się do charakterystyki wydajności zapytań.
 
 Poniżej przedstawiono kilka przykładów, w których można uzyskać więcej szczegółowych informacji na temat obciążenia przy użyciu statystyk oczekiwania w magazynie zapytań:
@@ -104,7 +107,7 @@ Poniższe opcje są stosowane w odniesieniu do statystyk oczekiwania.
 > [!NOTE]
 > Obecnie **query_store_capture_mode** zastępuje tę konfigurację, co oznacza, że zarówno **query_store_capture_mode** , jak i **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** muszą być włączone dla wszystkich, aby statystyki oczekiwania mogły działać. Jeśli **query_store_capture_mode** jest wyłączone, a następnie zaczekaj, statystyki są również wyłączone, ponieważ statystyki oczekiwania wykorzystują performance_schema włączone i zapytanie_tekst przechwycone przez magazyn zapytań.
 
-Użyj [Azure Portal](howto-server-parameters.md)@no__t 1or [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md) to Pobierz lub ustaw inną wartość dla parametru.
+Użyj [Azure Portal](howto-server-parameters.md)  or [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md)  to Pobierz lub ustaw inną wartość dla parametru.
 
 ## <a name="views-and-functions"></a>Widoki i funkcje
 
@@ -171,10 +174,10 @@ Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden 
 
 ## <a name="limitations-and-known-issues"></a>Ograniczenia i znane problemy
 
-- Jeśli serwer MySQL ma parametr `default_transaction_read_only` na, magazyn zapytań nie może przechwycić danych.
+- Jeśli serwer MySQL ma parametr `default_transaction_read_only` on, magazyn zapytań nie może przechwycić danych.
 - Funkcja magazynu zapytań może zostać przerwana, jeśli napotka długie zapytania Unicode (\> = 6000 bajtów).
 - Okres przechowywania statystyk oczekiwania wynosi 24 godziny.
-- Statystyki oczekiwania wykorzystują przykładowe przechwycenie zdarzenia. Częstotliwość można zmodyfikować przy użyciu parametru `query_store_wait_sampling_frequency`.
+- Statystyki oczekiwania używają przykładu do przechwytywania części zdarzeń. Częstotliwość można zmodyfikować przy użyciu parametru `query_store_wait_sampling_frequency`.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71262338"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597283"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Tworzenie ustawień diagnostycznych na platformie Azure przy użyciu szablonu Menedżer zasobów
 [Dzienniki platformy](platform-logs-overview.md) na platformie Azure zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure i platformy Azure, od których zależą. Ten artykuł zawiera szczegółowe informacje na temat używania [szablonu Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) w celu skonfigurowania ustawień diagnostycznych w celu zbierania dzienników platformy do różnych miejsc docelowych. Dzięki temu można automatycznie rozpocząć zbieranie dzienników platformy podczas tworzenia zasobu.
@@ -53,7 +53,7 @@ W zależności od [miejsc docelowych](diagnostic-settings.md#destinations) dla u
 "workspaceId":{
   "type": "string",
   "metadata": {
-    "description": "Azure Resource ID of the Log Analytics workspace for the Log Analytics workspace to which logs will be sent."
+    "description": "Azure Resource ID of the Log Analytics workspace to which logs will be sent."
   }
 }
 ```

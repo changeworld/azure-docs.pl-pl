@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 642b99e3eaaf73844d30d1cd464ae0b777b0b3fa
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 30398b5f81ac1893129ba222c5f1a2d762ad1e7f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71957806"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595061"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
@@ -131,7 +131,7 @@ Tak. W ustawieniach sieci wirtualnej można określić adresy IP serwerów DNS. 
 Odwołania do [limitów platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Czy mogę zmodyfikować moje serwery DNS po utworzeniu sieci?
-Tak. W dowolnym momencie możesz zmienić listę serwerów DNS dla sieci wirtualnej. W przypadku zmiany listy serwerów DNS należy ponownie uruchomić wszystkie maszyny wirtualne w sieci wirtualnej, aby można było wybrać nowy serwer DNS.
+Tak. W dowolnym momencie możesz zmienić listę serwerów DNS dla sieci wirtualnej. W przypadku zmiany listy serwerów DNS należy wykonać odnowienie dzierżawy DHCP na wszystkich maszynach wirtualnych, których dotyczy ta sieć wirtualna, aby nowe ustawienia DNS zaczęły obowiązywać. W przypadku maszyn wirtualnych z systemem operacyjnym Windows można to zrobić, wpisując `ipconfig /renew` bezpośrednio na maszynie wirtualnej. W przypadku innych typów systemów operacyjnych zapoznaj się z dokumentacją dotyczącą odnawiania dzierżawy DHCP dla określonego typu systemu operacyjnego. 
 
 ### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Co to jest usługa DNS udostępniona przez platformę Azure i czy działa ona z usługą sieci wirtualnych?
 System DNS udostępniany przez platformę Azure to wielodostępna usługa DNS oferowana przez firmę Microsoft. Platforma Azure rejestruje wszystkie maszyny wirtualne i wystąpienia roli usługi w chmurze w tej usłudze. Ta usługa zapewnia rozpoznawanie nazw według nazwy hosta dla maszyn wirtualnych i wystąpień ról zawartych w tej samej usłudze w chmurze oraz według nazwy FQDN dla maszyn wirtualnych i wystąpień roli w tej samej sieci wirtualnej. Aby dowiedzieć się więcej na temat usługi DNS, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień ról Cloud Services](virtual-networks-name-resolution-for-vms-and-role-instances.md).

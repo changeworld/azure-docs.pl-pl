@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 2e9008d039f014c95d473f3197b48651bdaa5a45
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 1f4760713eccd612014f6b75a1623dd9ad0c8c0f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019370"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595502"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migrowanie z systemu Windows Azure Media Encoder do Media Encoder Standard
 
 W tym artykule omówiono procedurę migrowania ze starszego procesora nośników Azure Media Encoder systemu Windows (WAME), który jest wycofywany z 30 listopada 2019 do Media Encoder Standard procesora multimediów.
 
-Podczas kodowania plików przy użyciu WAME klienci zazwyczaj używają nazwanego ciągu wstępnie zdefiniowanego `H264 Adaptive Bitrate MP4 Set 1080p`, takiego jak. Aby przeprowadzić migrację, należy zaktualizować kod, aby używał **Media Encoder Standard** procesora multimediów zamiast WAME oraz jednego z odpowiedników [ustawień systemowych](media-services-mes-presets-overview.md) , takich jak `H264 Multiple Bitrate 1080p`. 
+Podczas kodowania plików przy użyciu WAME klienci zazwyczaj używają nazwanego ciągu wstępnie zdefiniowanego, takiego jak `H264 Adaptive Bitrate MP4 Set 1080p`. Aby przeprowadzić migrację, należy zaktualizować kod, aby używał **Media Encoder Standard** procesora multimediów zamiast WAME oraz jednego z odpowiedników [ustawień systemowych](media-services-mes-presets-overview.md) , takich jak `H264 Multiple Bitrate 1080p`. 
 
 ## <a name="migrating-to-media-encoder-standard"></a>Migrowanie do Media Encoder Standard
 
@@ -64,7 +64,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Scenariusze zaawansowane 
 
-Jeśli utworzono własne ustawienie wstępne kodowania dla WAME przy użyciu jego schematu, istnieje [odpowiedni schemat dla Media Encoder Standard](media-services-mes-schema.md). Jeśli masz pytania dotyczące sposobu mapowania starszych ustawień do nowego kodera, skontaktuj się z nami za pośrednictwemmailto:amshelp@microsoft.com  
+Jeśli utworzono własne ustawienie wstępne kodowania dla WAME przy użyciu jego schematu, istnieje [odpowiedni schemat dla Media Encoder Standard](media-services-mes-schema.md).
 
 ## <a name="known-differences"></a>Znane różnice 
 
@@ -73,6 +73,10 @@ Media Encoder Standard jest bardziej niezawodna, niezawodna, ma lepszą wydajno�
 * Media Encoder Standard tworzy pliki wyjściowe z inną konwencją nazewnictwa niż WAME.
 * Media Encoder Standard tworzy artefakty, takie jak pliki zawierające [metadane plików wejściowych](media-services-input-metadata-schema.md) i [metadane plików wyjściowych](media-services-output-metadata-schema.md).
 * Zgodnie z opisem na [stronie cennika](https://azure.microsoft.com/pricing/details/media-services/#encoding) (szczególnie w sekcji często zadawane pytania) podczas kodowania filmów wideo przy użyciu Media Encoder Standard, opłaty są naliczane na podstawie czasu trwania plików utworzonych jako dane wyjściowe. W przypadku WAME opłaty są naliczane na podstawie rozmiarów wejściowych plików wideo i wyjściowych plików wideo.
+
+## <a name="need-help"></a>Potrzebujesz pomocy?
+
+Możesz otworzyć bilet pomocy technicznej, przechodząc do [nowego żądania obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 1bfd156f9fbdb69766e4588a342a695fbd79ca3a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268846"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595298"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Przewodnik dewelopera Azure Key Vault
 
@@ -28,7 +28,7 @@ Aby uzyskać więcej ogólnych informacji na temat Azure Key Vault, zobacz [co t
 
 ## <a name="public-previews"></a>Publiczne podglądy
 
-Okresowo firma Microsoft udostępnia publiczną wersję zapoznawczą nowej funkcji Key Vault. Wypróbuj je i daj nam znać, co myślisz, azurekeyvault@microsoft.comza pośrednictwem adresu e-mail z opiniami.
+Okresowo firma Microsoft udostępnia publiczną wersję zapoznawczą nowej funkcji Key Vault. Wypróbuj je i daj nam znać, co myślisz za pośrednictwem azurekeyvault@microsoft.com, nasz adres e-mail z opiniami.
 
 ## <a name="creating-and-managing-key-vaults"></a>Tworzenie magazynów kluczy i zarządzanie nimi
 
@@ -80,11 +80,11 @@ W programie Node. js interfejs API zarządzania Key Vault i interfejs API obiekt
 
 [Interfejs wiersza polecenia platformy Azure dla Key Vault](/cli/azure/keyvault)
 
-#### <a name="azure-powershell"></a>Azure PowerShell 
+#### <a name="azure-powershell"></a>Program Azure PowerShell 
 
 [Azure PowerShell Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
-### <a name="quick-start-guides"></a>Przewodniki Szybki start
+### <a name="quickstart-guides"></a>Przewodniki Szybki Start
 
 - [Utwórz Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Wprowadzenie do Key Vault w języku Node. js](https://github.com/Azure-Samples/key-vault-node-getting-started)
@@ -117,7 +117,7 @@ Poniższe artykuły i scenariusze zapewniają wskazówki dotyczące zadań zwią
 
 W tych artykułach przedstawiono inne scenariusze i usługi, które korzystają z Key Vault lub integrują się z nimi.
 
-- [Azure Disk Encryption](../security/azure-security-disk-encryption.md) korzysta z funkcji funkcji [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) standardowego w branży w systemie Windows i funkcji [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systemu Linux, aby zapewnić szyfrowanie woluminów dla systemu operacyjnego i dysków danych. Rozwiązanie jest zintegrowane z Azure Key Vault, które ułatwiają sterowanie kluczami szyfrowania dysków i wpisami tajnymi w ramach subskrypcji magazynu kluczy oraz zarządzanie nimi, przy jednoczesnym zapewnieniu, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane w usłudze Azure Storage.
+- [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) korzysta z funkcji funkcji [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) standardowego w branży w systemie Windows i funkcji [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systemu Linux, aby zapewnić szyfrowanie woluminów dla systemu operacyjnego i dysków danych. Rozwiązanie jest zintegrowane z Azure Key Vault, które ułatwiają sterowanie kluczami szyfrowania dysków i wpisami tajnymi w ramach subskrypcji magazynu kluczy oraz zarządzanie nimi, przy jednoczesnym zapewnieniu, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane w usłudze Azure Storage.
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) zapewnia opcję szyfrowania danych przechowywanych na koncie. W przypadku zarządzania kluczami Data Lake Store zapewnia dwa tryby zarządzania głównymi kluczami szyfrowania (głównymi kluczami szyfrowania), które są wymagane do odszyfrowania danych przechowywanych w Data Lake Store. Możesz pozwolić, Data Lake Store zarządzać głównymi kluczami szyfrowaniaem, lub wybrać opcję zachowania własności głównymi kluczami szyfrowania przy użyciu konta Azure Key Vault. Podczas tworzenia konta Data Lake Store należy określić tryb zarządzania kluczami.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) umożliwia kierownika własnego klucza dzierżawy. Na przykład zamiast firmy Microsoft zarządzającej kluczem dzierżawy (domyślnie) można zarządzać własnym kluczem dzierżawy w celu zapewnienia zgodności z określonymi przepisami obowiązującymi w organizacji. Zarządzanie własnym kluczem dzierżawy jest również określane jako przeprowadzenie własnego klucza lub BYOK.
 
@@ -128,7 +128,7 @@ W tych artykułach przedstawiono inne scenariusze i usługi, które korzystają 
 - [Omówienie kluczy konta magazynu Key Vault](key-vault-ovw-storage-keys.md) opis Key Vault integracji kluczy kont usługi Azure Storage.
 - [Key Vault światy zabezpieczeń](key-vault-ovw-security-worlds.md) opisuje relacje między regionami i obszarami zabezpieczeń.
 
-## <a name="social"></a>Społeczności
+## <a name="social"></a>Aspekty społeczne
 
 - [Blog Key Vault](https://aka.ms/kvblog)
 - [Forum Key Vault](https://aka.ms/kvforum)

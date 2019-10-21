@@ -13,14 +13,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: f417d83a67f2f3afa33a83a56a72d0d82c64ab0d
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850004"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597204"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Rozwiązywanie problemów związanych z błędami dostawcy zasobów usługi Azure NetApp Files 
 
@@ -30,12 +30,12 @@ W tym artykule opisano typowe błędy dostawcy zasobów Azure NetApp Files, ich 
 
 ***Nie można zmienić BareMetalTenantId.***  
 
-Ten błąd występuje, gdy próbujesz zaktualizować lub poprawić wolumin, a `BaremetalTenantId` właściwość ma zmienioną wartość.
+Ten błąd występuje podczas próby zaktualizowania lub poprawki woluminu, a właściwość `BaremetalTenantId` ma zmienioną wartość.
 
 * Przyczyna:   
-Próbujesz zaktualizować wolumin, a `BaremetalTenantId` właściwość ma inną wartość niż wartość przechowywana na platformie Azure.
+Próbujesz zaktualizować wolumin, a właściwość `BaremetalTenantId` ma inną wartość niż wartość przechowywana na platformie Azure.
 * Narzędzie   
-Nie dołączaj `BaremetalTenantId` do żądania patch i Update (Put). Alternatywnie upewnij się, `BaremetalTenantId` że w żądaniu jest taka sama.
+Nie dołączaj `BaremetalTenantId` do żądania patch i Update (Put). Alternatywnie upewnij się, że `BaremetalTenantId` jest taka sama w żądaniu.
 
 ***Nie można zmienić poziomu ServiceLevel.***  
 
@@ -45,27 +45,27 @@ Ten błąd występuje podczas próby zaktualizowania lub poprawki puli pojemnoś
 Podjęto próbę zaktualizowania poziomu usługi puli pojemności, gdy pula zawiera woluminy.
 * Narzędzie   
 Usuń wszystkie woluminy z puli pojemności, a następnie zmień poziom usługi.
-* Obejście problemu:   
+* Poprawkę   
 Utwórz kolejną pulę pojemności, a następnie ponownie utwórz woluminy w nowej puli pojemności.
 
 ***Nie można zmienić PoolId***  
 
-Ten błąd występuje podczas próby zaktualizowania lub poprawki puli pojemności przy użyciu zmienionej `PoolId` właściwości.
+Ten błąd występuje podczas próby zaktualizowania lub poprawki puli pojemności przy użyciu zmienionej właściwości `PoolId`.
 
 * Przyczyna:   
-Próbujesz zaktualizować Właściwość puli `PoolId` pojemności. `PoolId` Właściwość jest właściwością tylko do odczytu i nie można jej zmienić.
+Podjęto próbę zaktualizowania właściwości `PoolId` puli pojemności. Właściwość `PoolId` jest właściwością tylko do odczytu i nie można jej zmienić.
 * Narzędzie   
-Nie dołączaj `PoolId` do żądania patch i Update (Put).  Alternatywnie upewnij się, `PoolId` że w żądaniu jest taka sama.
+Nie dołączaj `PoolId` do żądania patch i Update (Put).  Alternatywnie upewnij się, że `PoolId` jest taka sama w żądaniu.
 
 ***Nie można zmienić CreationToken.***
 
 Ten błąd występuje podczas próby zmiany ścieżki pliku (`CreationToken`) po utworzeniu woluminu. Ścieżka pliku (`CreationToken`) musi być ustawiona podczas tworzenia woluminu i nie można jej później zmienić.
 
 * Przyczyna:   
-Próbujesz zmienić ścieżkę pliku (`CreationToken`) po utworzeniu woluminu, który nie jest obsługiwaną operacją. 
+Próbujesz zmienić ścieżkę pliku (`CreationToken`) po utworzeniu woluminu, co nie jest obsługiwaną operacją. 
 * Narzędzie   
 Jeśli zmiana ścieżki pliku nie jest konieczna, Rozważ usunięcie parametru z żądania, aby odrzucić komunikat o błędzie.
-* Obejście problemu:   
+* Poprawkę   
 Jeśli musisz zmienić ścieżkę pliku (`CreationToken`), możesz utworzyć nowy wolumin z nową ścieżką pliku, a następnie przeprowadzić migrację danych do nowego woluminu.
 
 ***CreationToken musi składać się z co najmniej 16 znaków.***
@@ -75,7 +75,7 @@ Ten błąd występuje, gdy ścieżka pliku (`CreationToken`) nie spełnia wymaga
 * Przyczyna:   
 Ścieżka pliku jest pusta.  W przypadku tworzenia woluminu przy użyciu interfejsu API wymagany jest token tworzenia. Jeśli używasz Azure Portal, ścieżka pliku jest generowana automatycznie.
 * Narzędzie   
-Wprowadź co najmniej jeden znak jako ścieżkę pliku (`CreationToken`).
+Wprowadź co najmniej jeden znak jako ścieżkę do pliku (`CreationToken`).
 
 ***Nie można zmienić nazwy domeny.***
 
@@ -85,7 +85,7 @@ Ten błąd występuje podczas próby zmiany nazwy domeny w Active Directory.
 Próbujesz zaktualizować Właściwość nazwy domeny.
 * Narzędzie    
 Brak. Nie można zmienić nazwy domeny.
-* Obejście problemu:   
+* Poprawkę   
 Usuń wszystkie woluminy, korzystając z konfiguracji Active Directory. Następnie usuń konfigurację Active Directory i ponownie utwórz woluminy.
 
 ***Błąd zduplikowanej wartości dla obiektu ExportPolicy. rules [RuleIndex].***
@@ -96,18 +96,18 @@ Ten błąd występuje, gdy zasady eksportowania nie są zdefiniowane przy użyci
 Zdefiniowane zasady eksportowania nie spełniają wymagań dotyczących eksportu reguł zasad. Na poziomie minimalnym i pięciu reguł dotyczących zasad eksportu wymagana jest jedna reguła eksportowania zasad.
 * Narzędzie   
 Upewnij się, że indeks nie jest jeszcze używany i że znajduje się w zakresie od 1 do 5.
-* Obejście problemu:   
+* Poprawkę   
 Użyj innego indeksu dla reguły, którą próbujesz ustawić.
 
 ***Błąd {Action} {resourceTypeName}***
 
-Ten błąd jest wyświetlany, gdy w innej obsłudze błędów nie udało się obsłużyć błędu podczas wykonywania akcji dla zasobu.   Zawiera tekst "Error". Może `{action}` to być dowolne z (`getting`, `creating`, `updating`lub `deleting`).  `netAppAccount` Jestto`capacityPool`(na przykład ,,,itd.).`volume` `{resourceTypeName}` `resourceTypeName`
+Ten błąd jest wyświetlany, gdy w innej obsłudze błędów nie udało się obsłużyć błędu podczas wykonywania akcji dla zasobu.   Zawiera tekst "Error". @No__t_0 może być dowolną z (`getting`, `creating`, `updating` lub `deleting`).  @No__t_0 jest `resourceTypeName` (na przykład `netAppAccount`, `capacityPool`, `volume` itd.).
 
 * Przyczyna:   
 Ten błąd jest nieobsługiwanym wyjątkiem, gdy przyczyna jest nieznana.
 * Narzędzie   
 Skontaktuj się z centrum pomocy technicznej platformy Azure, aby zgłosić szczegółowy powód w dziennikach.
-* Obejście problemu:   
+* Poprawkę   
 Brak.
 
 ***Nazwa ścieżki pliku może zawierać litery, cyfry i łączniki (""-"").***
@@ -118,7 +118,7 @@ Ten błąd występuje, gdy ścieżka pliku zawiera nieobsługiwane znaki, na prz
 Ścieżka pliku zawiera nieobsługiwane znaki, na przykład kropkę ("."), przecinek (","), podkreślenie ("_") lub znak dolara ("$").
 * Narzędzie   
 Usuń znaki, które nie mają liter, cyfr ani łączników ("-") z wprowadzonej ścieżki pliku.
-* Obejście problemu:   
+* Poprawkę   
 Możesz zamienić znak podkreślenia na łącznik lub użyć wielkich liter zamiast spacji, aby wskazać początek nowych wyrazów.  Na przykład użyj "NewVolume" zamiast "New Volume".
 
 ***Nie można zmienić FileSystemId.***
@@ -126,16 +126,16 @@ Możesz zamienić znak podkreślenia na łącznik lub użyć wielkich liter zami
 Ten błąd występuje podczas próby zmiany `FileSystemId`.  Zmiana `FileSystemdId` nie jest obsługiwaną operacją. 
 
 * Przyczyna:   
-Identyfikator systemu plików jest ustawiany podczas tworzenia woluminu. `FileSystemId`nie można później zmienić.
+Identyfikator systemu plików jest ustawiany podczas tworzenia woluminu. nie można później zmienić `FileSystemId`.
 * Narzędzie   
-Nie dołączaj `FileSystemId` do żądania patch i Update (Put).  Alternatywnie upewnij się, `FileSystemId` że jest taka sama w żądaniu.
+Nie dołączaj `FileSystemId` do żądania patch i Update (Put).  Alternatywnie upewnij się, że `FileSystemId` jest taka sama w żądaniu.
 
 ***ActiveDirectory o identyfikatorze: "{String}" nie istnieje.***
 
-Część jest wartością wprowadzoną `ActiveDirectoryId` we właściwości dla połączenia Active Directory. `{string}`
+Część `{string}` jest wartością wprowadzoną we właściwości `ActiveDirectoryId` dla połączenia Active Directory.
 
 * Przyczyna:   
-Podczas tworzenia konta z konfiguracją Active Directory wprowadzono wartość `ActiveDirectoryId` , która powinna być pusta.
+Podczas tworzenia konta z konfiguracją Active Directory wprowadzono wartość dla `ActiveDirectoryId`, która powinna być pusta.
 * Narzędzie   
 Nie dołączaj `ActiveDirectoryId` do żądania Create (Put).
 
@@ -144,22 +144,22 @@ Nie dołączaj `ActiveDirectoryId` do żądania Create (Put).
 Wersja interfejsu API nie została przesłana lub zawiera nieprawidłową wartość.
 
 * Przyczyna:   
-Wartość w parametrze `api-version` zapytania zawiera nieprawidłową wartość.
+Wartość w parametrze zapytania `api-version` zawiera nieprawidłową wartość.
 * Narzędzie   
 Użyj poprawnej wartości wersji interfejsu API.  Dostawca zasobów obsługuje wiele wersji interfejsu API. Wartość jest w formacie RRRR-MM-DD.
 
-***Odebrano nieprawidłową wartość "{value}" dla {1}elementu.***
+***Odebrano nieprawidłową wartość "{value}" dla {1}.***
 
-Ten komunikat wskazuje na błąd w polach dla `RuleIndex`, `UnixReadOnly` `UnixReadWrite` `AllowedClients`, `Nfsv3`,, i `Nfsv4`.
+Ten komunikat wskazuje na błąd w polach dla `RuleIndex`, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv3` i `Nfsv4`.
 
 * Przyczyna:   
-Żądanie walidacji danych wejściowych nie powiodło się dla co najmniej jednego z następujących `RuleIndex`pól `AllowedClients`: `UnixReadOnly`, `UnixReadWrite`, `Nfsv`,, 3 `Nfsv4`i.
+Żądanie walidacji danych wejściowych nie powiodło się dla co najmniej jednego z następujących pól: `RuleIndex`, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv`3 i `Nfsv4`.
 * Narzędzie   
-Upewnij się, że ustawiono wszystkie wymagane i niepowodujące konflikt parametry w wierszu polecenia. Na przykład nie można jednocześnie ustawić `UnixReadOnly` parametrów i. `UnixReadWrite`
-* Obejście problemu:   
+Upewnij się, że ustawiono wszystkie wymagane i niepowodujące konflikt parametry w wierszu polecenia. Na przykład nie można jednocześnie ustawić parametrów `UnixReadOnly` i `UnixReadWrite`.
+* Poprawkę   
 Zapoznaj się z powyższym rozwiązaniem.
 
-***Zakres {0} {2} adresów IP dla sieci VLAN jest już używany {1}***
+***Zakres adresów IP {0} do {1} dla sieci VLAN {2} jest już używany***
 
 Ten błąd występuje, ponieważ wewnętrzne rekordy używanych zakresów adresów IP mają konflikt z nowo przypisanym adresem IP.
 
@@ -183,7 +183,7 @@ Upewnij się, że w żądaniu ustawiono wszystkie wymagane i niepowodujące konf
 Ten błąd występuje, gdy użytkownik próbuje zaktualizować lub poprawić Właściwość MountTargets woluminu.
 
 * Przyczyna:   
-Próbujesz zaktualizować Właściwość woluminu `MountTargets` . Zmiana tej właściwości nie jest obsługiwana.
+Próbujesz zaktualizować Właściwość `MountTargets` woluminu. Zmiana tej właściwości nie jest obsługiwana.
 * Narzędzie   
 Nie dołączaj `MountTargets` do żądania patch i Update (Put).  Alternatywnie upewnij się, że `MountTargets` jest taka sama w żądaniu.
 
@@ -249,7 +249,7 @@ Interfejs API platformy Azure opiera się na interfejsie API Azure NetApp Files,
 Źródłowy interfejs API nie odpowiada, co spowodowało błąd wewnętrzny. Ten błąd może być tymczasowy.
 * Narzędzie   
 Problem jest prawdopodobnie tymczasowy. Żądanie powinno zakończyć się za jakiś czas.
-* Obejście problemu:   
+* Poprawkę   
 Brak. Podstawowy interfejs API jest istotny do zarządzania woluminami.
 
 ***Nie znaleziono identyfikatora wyniku operacji dla "{0}".***
@@ -260,7 +260,7 @@ Ten błąd wskazuje, że błąd wewnętrzny uniemożliwia ukończenie operacji.
 Wystąpił błąd wewnętrzny i uniemożliwiło ukończenie operacji.
 * Narzędzie   
 Ten błąd może być tymczasowy. Poczekaj kilka minut i spróbuj ponownie. Jeśli problem będzie nadal występować, Utwórz bilet, aby uzyskać pomoc techniczną w celu zbadania problemu.
-* Obejście problemu:   
+* Poprawkę   
 Poczekaj kilka minut i sprawdź, czy problem nadal występuje.
 
 ***Nie można mieszać typów protokołów CIFS i NFS***
@@ -271,10 +271,10 @@ Ten błąd występuje, gdy próbujesz utworzyć wolumin, a w właściwościach w
 Typy protokołów CIFS (SMB) i NFS są używane we właściwościach woluminu.
 * Narzędzie   
 Usuń jeden z typów protokołów.
-* Obejście problemu:   
+* Poprawkę   
 Pozostaw pustą właściwość typu protokołu lub wartość null.
 
-***Liczba elementów: {value} dla obiektu: ExportPolicy. rules [RuleIndex] jest poza minimalnym zakresem.***
+***Liczba elementów: {value} dla obiektu: ExportPolicy. rules [RuleIndex] jest poza zakresem minimalnym.***
 
 Ten błąd występuje, gdy reguły eksportowania zasad nie spełniają wymagań dotyczących minimalnej lub maksymalnej liczby zakresów. Jeśli zdefiniujesz zasady eksportowania, musi mieć jedną regułę eksportowania zasad z minimalnym i pięcioma regułami eksportowania zasad.
 
@@ -282,7 +282,7 @@ Ten błąd występuje, gdy reguły eksportowania zasad nie spełniają wymagań 
 Zdefiniowane zasady eksportowania nie są zgodne z wymaganym zakresem.
 * Narzędzie   
 Upewnij się, że indeks nie jest jeszcze używany i znajduje się w zakresie od 1 do 5.
-* Obejście problemu:   
+* Poprawkę   
 Użycie zasad eksportowania na woluminach nie jest obowiązkowe. Zasady eksportu można pominąć całkowicie, jeśli nie jest konieczne używanie reguł eksportowania zasad.
 
 ***Dozwolona jest tylko jedna usługa Active Directory***
@@ -293,7 +293,7 @@ Ten błąd występuje podczas próby utworzenia konfiguracji Active Directory, k
 Próbujesz utworzyć (nie zaktualizować) usługi Active Directory, ale już istnieje.
 * Narzędzie   
 Jeśli konfiguracja Active Directory nie jest używana, można najpierw usunąć istniejącą konfigurację, a następnie ponowić próbę wykonania operacji tworzenia.
-* Obejście problemu:   
+* Poprawkę   
 Brak. Dozwolony jest tylko jeden Active Directory.
 
 ***Operacja "{Operation}" nie jest obsługiwana.***
@@ -310,7 +310,7 @@ Upewnij się, że operacja została wprowadzona poprawnie i że jest dostępna d
 Ten błąd występuje podczas próby zmiany właściwości OwnerId woluminu. Zmiana OwnerId nie jest obsługiwaną operacją. 
 
 * Przyczyna:   
-`OwnerId` Właściwość jest ustawiana podczas tworzenia woluminu. Nie można później zmienić właściwości.
+Właściwość `OwnerId` jest ustawiana podczas tworzenia woluminu. Nie można później zmienić właściwości.
 * Narzędzie   
 Nie dołączaj `OwnerId` do żądania patch i Update (Put). Alternatywnie upewnij się, że `OwnerId` jest taka sama w żądaniu.
 
@@ -335,16 +335,16 @@ Brak. Te zasoby nie mają żadnych właściwości, które można zmienić.
 
 ***Rozmiar puli jest za mały dla łącznego rozmiaru woluminu.***
 
-Ten błąd występuje, gdy aktualizujesz rozmiar puli pojemności, a rozmiar jest mniejszy niż całkowita `usedBytes` wartość wszystkich woluminów w tej puli.  Ten błąd może również wystąpić podczas tworzenia nowego woluminu lub zmiany rozmiaru istniejącego woluminu, a nowy rozmiar woluminu przekracza ilość wolnego miejsca w puli pojemności.
+Ten błąd występuje, gdy aktualizujesz rozmiar puli pojemności, a rozmiar jest mniejszy niż łączna wartość `usedBytes` wszystkich woluminów w tej puli pojemności.  Ten błąd może również wystąpić podczas tworzenia nowego woluminu lub zmiany rozmiaru istniejącego woluminu, a nowy rozmiar woluminu przekracza ilość wolnego miejsca w puli pojemności.
 
 * Przyczyna:   
 Podjęto próbę zaktualizowania puli pojemności do mniejszej wielkości niż usedBytes we wszystkich woluminach w puli pojemności.  Lub próbujesz utworzyć wolumin, który jest większy niż ilość wolnego miejsca w puli pojemności.  Alternatywnie należy zmienić rozmiar woluminu, a nowy rozmiar przekracza ilość wolnego miejsca w puli pojemności.
 * Narzędzie   
 Ustaw rozmiar puli pojemności na większą wartość lub Utwórz mniejszy wolumin dla woluminu.
-* Obejście problemu:   
+* Poprawkę   
 Usuń wystarczającą ilość woluminów, aby można było zaktualizować rozmiar puli pojemności do tego rozmiaru.
 
-***Właściwość: Lokalizacja migawki musi być taka sama jak wolumin***
+***Właściwość: Location dla migawki musi być taka sama jak wolumin***
 
 Ten błąd występuje podczas tworzenia migawki z lokalizacją inną niż wolumin, który jest właścicielem migawki.
 
@@ -360,39 +360,39 @@ Ten błąd występuje podczas tworzenia zasobu i wypełnij Właściwość Name i
 * Przyczyna:   
 Nieprawidłowa wartość właściwości Name podczas tworzenia zasobu.
 * Narzędzie   
-Pozostaw Właściwość Name pustą lub Zezwól, aby używała tej samej wartości co Właściwość Name (od ostatniego ukośnika odwrotnego "/" i znaku zapytania "?") w `resourceId`temacie.
+Pozostaw Właściwość Name pustą lub Zezwól, aby używała tej samej wartości co Właściwość Name (od ostatniego ukośnika odwrotnego "/" i znaku zapytania "?") w `resourceId`.
 
 ***Nieznany typ protokołu {Value}***
 
-Ten błąd występuje podczas tworzenia woluminu z nieznanym typem protokołu.  Prawidłowe wartości to "NFSv3" i "CIFS".
+Ten błąd występuje podczas tworzenia woluminu z nieznanym typem protokołu.  Prawidłowe wartości to "NFSv3", "NFSv4" i "CIFS".
 
 * Przyczyna:   
 Podjęto próbę ustawienia nieprawidłowej wartości we właściwości `protocolType` woluminu.
 * Narzędzie   
 Ustaw prawidłowy ciąg w `protocolType`.
-* Obejście problemu:   
-Ustaw `protocolType` jako wartość null.
+* Poprawkę   
+Ustaw `protocolType` jako null.
 
 ***Nie można zmienić typów protokołów***
 
-Ten błąd występuje podczas próby aktualizacji lub poprawki `ProtocolType` dla woluminu.  Zmiana ProtocolType nie jest obsługiwaną operacją.
+Ten błąd występuje podczas próby aktualizacji lub poprawki `ProtocolType` woluminu.  Zmiana ProtocolType nie jest obsługiwaną operacją.
 
 * Przyczyna:   
-`ProtocolType` Właściwość jest ustawiana podczas tworzenia woluminu.  Nie można jej zaktualizować.
+Właściwość `ProtocolType` jest ustawiana podczas tworzenia woluminu.  Nie można jej zaktualizować.
 * Narzędzie   
 Brak.
-* Obejście problemu:   
+* Poprawkę   
 Utwórz inny wolumin z nowymi typami protokołów.
 
 ***Utworzenie zasobu typu {ResourceType} spowodowałoby przekroczenie przydziału zasobów {Quote} typu {ResourceType} na {parentResourceType}. Bieżąca liczba zasobów to {currentCount}, Usuń część zasobów tego typu przed utworzeniem nowego.***
 
-Ten błąd występuje, gdy próbujesz utworzyć zasób`NetAppAccount`(, `CapacityPool`, `Volume`lub `Snapshot`), ale limit przydziału osiągnął wartość limitu.
+Ten błąd występuje podczas próby utworzenia zasobu (`NetAppAccount`, `CapacityPool`, `Volume` lub `Snapshot`), ale limit przydziału został osiągnięty.
 
 * Przyczyna:   
 Podjęto próbę utworzenia zasobu, ale osiągnięto limit przydziału (przykład: `NetAppAccounts` na subskrypcję lub `CapacityPools` na `NetAppAccount`).
 * Narzędzie   
 Zwiększ limit przydziału.
-* Obejście problemu:   
+* Poprawkę   
 Usuń nieużywane zasoby tego samego typu i utwórz je ponownie.
 
 ***Odebrano wartość właściwości "{propertyName}" tylko do odczytu.***
@@ -412,7 +412,7 @@ Ten błąd występuje podczas próby odwołania się do nieistniejącego zasobu,
 Próbujesz odwołać się do nieistniejącego zasobu (na przykład woluminu lub migawki), który został już usunięty lub ma błędną nazwę zasobu.
 * Narzędzie   
 Sprawdź żądanie błędów pisowni, aby upewnić się, że jest ono prawidłowo wywoływane.
-* Obejście problemu:   
+* Poprawkę   
 Zobacz sekcję rozwiązanie powyżej.
 
 ***Poziom usług "{volumeServiceLevel}" jest wyższy niż element nadrzędny "{poolServiceLevel}"***
@@ -423,7 +423,7 @@ Ten błąd występuje podczas tworzenia lub aktualizowania woluminu oraz ustawia
 Próbujesz utworzyć lub zaktualizować wolumin o wyższym poziomie rangi usługi niż Pula nadrzędna pojemności.
 * Narzędzie   
 Ustaw poziom usługi na taki sam lub niższy od nadrzędnej puli pojemności.
-* Obejście problemu:   
+* Poprawkę   
 Utwórz wolumin w innej puli pojemności przy użyciu poprawnego poziomu usługi. Alternatywnie Usuń wszystkie woluminy z puli pojemności i ustaw poziom usług dla puli pojemności na wyższą rangę.
 
 ***Nazwa serwera SMB nie może być dłuższa niż 10 znaków.***
@@ -434,40 +434,40 @@ Ten błąd występuje podczas tworzenia lub aktualizowania konfiguracji Active D
 Długość nazwy serwera SMB przekracza 10 znaków.
 * Narzędzie   
 Użyj krótszej nazwy serwera. Maksymalna długość wynosi 10 znaków.
-* Obejście problemu:   
+* Poprawkę   
 Brak.  Zapoznaj się z powyższym rozwiązaniem. 
 
 ***Nie można zmienić SubnetId.***
 
-Ten błąd występuje podczas próby zmiany `subnetId` po utworzeniu woluminu.  `SubnetId`należy ustawić podczas tworzenia woluminu i nie można go później zmienić.
+Ten błąd występuje podczas próby zmiany `subnetId` po utworzeniu woluminu.  należy ustawić `SubnetId`, gdy wolumin jest tworzony i nie można go później zmienić.
 
 * Przyczyna:   
-Próbujesz zmienić `subnetId` po utworzeniu woluminu, który nie jest obsługiwaną operacją. 
+Podjęto próbę zmiany `subnetId` po utworzeniu woluminu, który nie jest obsługiwaną operacją. 
 * Narzędzie   
 Jeśli zmiana `subnetId` nie jest konieczna, Rozważ usunięcie parametru z żądania, aby odrzucić komunikat o błędzie.
-* Obejście problemu:   
+* Poprawkę   
 Jeśli trzeba zmienić `subnetId`, można utworzyć nowy wolumin z nowym `subnetId`, a następnie przeprowadzić migrację danych do nowego woluminu.
 
 ***SubnetId ma nieprawidłowy format.***
 
-Ten błąd występuje podczas próby utworzenia nowego woluminu, `subnetId` ale `resourceId` nie jest to dla podsieci.
+Ten błąd występuje podczas próby utworzenia nowego woluminu, ale `subnetId` nie jest `resourceId` dla podsieci.
 
 * Przyczyna:   
-Ten błąd występuje podczas próby utworzenia nowego woluminu, ale `subnetId` `resourceId` nie jest to dla podsieci. 
+Ten błąd występuje podczas próby utworzenia nowego woluminu, ale `subnetId` nie jest `resourceId` dla podsieci. 
 * Narzędzie   
-Sprawdź wartość, `subnetId` aby upewnić się, że `resourceId` zawiera ona dla używanej podsieci.
-* Obejście problemu:   
+Sprawdź wartość `subnetId`, aby upewnić się, że zawiera `resourceId` dla używanej podsieci.
+* Poprawkę   
 Brak. Zapoznaj się z powyższym rozwiązaniem. 
 
 ***Podsieć musi mieć delegowanie "Microsoft. NetApp/Volumes".***
 
-Ten błąd występuje podczas tworzenia woluminu, a wybrana podsieć nie jest delegowana do programu `Microsoft.NetApp/volumes`.
+Ten błąd występuje podczas tworzenia woluminu, a wybrana podsieć nie jest delegowana do `Microsoft.NetApp/volumes`.
 
 * Przyczyna:   
-Podjęto próbę utworzenia woluminu i wybrania podsieci, do `Microsoft.NetApp/volumes`której nie delegowano.
+Podjęto próbę utworzenia woluminu i wybrania podsieci, która nie jest delegowana do `Microsoft.NetApp/volumes`.
 * Narzędzie   
-Wybierz inną podsieć, do `Microsoft.NetApp/volumes`której jest delegowane.
-* Obejście problemu:   
+Wybierz inną podsieć delegowaną do `Microsoft.NetApp/volumes`.
+* Poprawkę   
 Dodaj poprawne delegowanie do podsieci.
 
 ***Określony typ zasobu jest nieznany/nie ma zastosowania.***
@@ -478,7 +478,7 @@ Ten błąd występuje, gdy zażądano sprawdzenia nazwy dla nieodpowiedniego typ
 Zażądano sprawdzenia nazwy dla nieznanego lub nieobsługiwanego typu zasobu.
 * Narzędzie   
 Sprawdź, czy zasób, dla którego wykonujesz żądanie, jest obsługiwany lub nie zawiera błędów pisowni.
-* Obejście problemu:   
+* Poprawkę   
 Zapoznaj się z powyższym rozwiązaniem.
 
 ***Nieznany błąd Azure NetApp Files.***
@@ -489,7 +489,7 @@ Interfejs API platformy Azure opiera się na interfejsie API Azure NetApp Files,
 Źródłowy interfejs API wysyła nieznanego błędu. Ten błąd może być tymczasowy.
 * Narzędzie   
 Problem jest prawdopodobnie tymczasowy i żądanie powinno zakończyć się powodzeniem po pewnym czasie. Jeśli problem będzie nadal występować, Utwórz bilet pomocy technicznej, aby rozwiązać problem.
-* Obejście problemu:   
+* Poprawkę   
 Brak. Podstawowy interfejs API jest istotny do zarządzania woluminami.
 
 ***Odebrano wartość dla nieznanej właściwości "{propertyName}".***
@@ -500,7 +500,7 @@ Ten błąd występuje, gdy dla zasobu, takiego jak wolumin, migawka lub miejsce 
 Żądanie zawiera zestaw właściwości, które mogą być używane z każdym zasobem. W żądaniu nie można uwzględnić żadnych nieistniejących właściwości.
 * Narzędzie   
 Upewnij się, że wszystkie nazwy właściwości są poprawnie napisane i że właściwości są dostępne dla subskrypcji i zasobu.
-* Obejście problemu:   
+* Poprawkę   
 Zmniejsz liczbę właściwości zdefiniowanych w żądaniu, aby wyeliminować właściwość, która powoduje błąd.
 
 ***Operacja aktualizacji nie jest obsługiwana dla tego typu zasobu.***
@@ -511,7 +511,7 @@ Można aktualizować tylko woluminy. Ten błąd występuje podczas próby wykona
 Zasób, który próbujesz zaktualizować, nie obsługuje operacji aktualizacji. Tylko woluminy mogą mieć zmodyfikowane właściwości.
 * Narzędzie   
 Brak. Zasób, który próbujesz zaktualizować, nie obsługuje operacji aktualizacji. W związku z tym nie można go zmienić.
-* Obejście problemu:   
+* Poprawkę   
 W przypadku woluminu Utwórz nowy zasób z aktualizacją w miejscu i Przeprowadź migrację danych.
 
 ***Nie można utworzyć woluminu w puli, która nie ma stanu powiodła się.***
@@ -522,7 +522,7 @@ Ten błąd występuje podczas próby utworzenia woluminu w puli, która nie jest
 Pula pojemności zawierająca nowy wolumin jest w stanie niepowodzenia.
 * Narzędzie   
 Sprawdź, czy pula pojemności została utworzona pomyślnie i czy nie jest w stanie niepowodzenia.
-* Obejście problemu:   
+* Poprawkę   
 Utwórz nową pulę pojemności i Utwórz wolumin w nowej puli.
 
 ***Trwa Tworzenie woluminu i nie można go usunąć.***
@@ -533,7 +533,7 @@ Ten błąd występuje podczas próby usunięcia woluminu, który jest nadal twor
 Wolumin jest wciąż tworzony podczas próby usunięcia woluminu.
 * Narzędzie   
 Poczekaj na zakończenie tworzenia woluminu, a następnie spróbuj ponownie wykonać operację usuwania.
-* Obejście problemu:   
+* Poprawkę   
 Zapoznaj się z powyższym rozwiązaniem.
 
 ***Trwa Usuwanie woluminu i nie można go usunąć.***
@@ -544,7 +544,7 @@ Ten błąd występuje podczas próby usunięcia woluminu, gdy jest już usuwany.
 Wolumin jest już usuwany podczas próby usunięcia woluminu.
 * Narzędzie   
 Poczekaj na zakończenie bieżącej operacji usuwania.
-* Obejście problemu:   
+* Poprawkę   
 Zapoznaj się z powyższym rozwiązaniem.
 
 ***Trwa aktualizowanie woluminu i nie można go usunąć.***
@@ -555,7 +555,7 @@ Ten błąd występuje podczas próby usunięcia woluminu, który jest aktualizow
 Wolumin jest aktualizowany podczas próby usunięcia woluminu.
 * Narzędzie   
 Poczekaj na zakończenie operacji aktualizacji, a następnie ponów próbę usunięcia.
-* Obejście problemu:   
+* Poprawkę   
 Zapoznaj się z powyższym rozwiązaniem.
 
 ***Nie odnaleziono woluminu lub nie został on utworzony pomyślnie.***
@@ -566,7 +566,7 @@ Ten błąd występuje, gdy Tworzenie woluminu nie powiodło się i podjęto pró
 Wolumin nie istnieje lub tworzenie nie powiodło się.
 * Narzędzie   
 Sprawdź, czy zmieniasz prawidłowy wolumin i czy Tworzenie woluminu zakończyło się pomyślnie. Możesz też sprawdzić, czy istnieje wolumin, dla którego tworzysz migawkę.
-* Obejście problemu:   
+* Poprawkę   
 Brak.  Zapoznaj się z powyższym rozwiązaniem. 
 
 ***Określony token tworzenia już istnieje***

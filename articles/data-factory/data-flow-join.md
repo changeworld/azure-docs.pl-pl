@@ -1,77 +1,127 @@
 ---
-title: Przekształcanie dołączania przepływu danych Azure Data Factory
-description: Przekształcanie dołączania przepływu danych Azure Data Factory
+title: Transformacja sprzężenia w Azure Data Factory mapowaniu przepływu danych | Microsoft Docs
+description: Łączenie danych z dwóch źródeł danych przy użyciu transformacji sprzężenia w przepływie danych mapowania Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.openlocfilehash: da6c3c90ebbeffcf468aad3809da097976d8ef0d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 10/17/2019
+ms.openlocfilehash: 78de9f2bedfc36add567053e1de47e8893bfaf3c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387242"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597004"
 ---
-# <a name="mapping-data-flow-join-transformation"></a>Mapowanie transformacji przepływu danych
+# <a name="join-transformation-in-mapping-data-flow"></a>Przekształcenie łączenia w przepływie danych mapowania
 
-
-
-Użyj sprzężenia, aby połączyć dane z dwóch tabel w przepływie danych. Kliknij transformację, która będzie lewą relacją i Dodaj transformację sprzężenia z przybornika. Wewnątrz transformacji sprzężenia wybierz inny strumień danych z przepływu danych, aby uzyskać odpowiednią relację.
-
-![Przekształcanie sprzężenia](media/data-flow/join.png "Join")
+Użyj transformacji sprzężenia, aby połączyć dane z dwóch źródeł lub strumieni w przepływie danych mapowania. Strumień wyjściowy będzie uwzględniał wszystkie kolumny z obu źródeł dopasowane na podstawie warunku sprzężenia. 
 
 ## <a name="join-types"></a>Typy sprzężeń
 
-Do przekształcenia sprzężenia jest wymagane wybranie typu sprzężenia.
+Mapowanie przepływów danych obsługuje obecnie pięć różnych typów sprzężeń.
 
 ### <a name="inner-join"></a>Sprzężenie wewnętrzne
 
-Sprzężenie wewnętrzne przejdzie tylko do wierszy, które pasują do warunków kolumny w obu tabelach.
+Sprzężenie wewnętrzne wyświetla tylko wiersze, które mają pasujące wartości obu tabel.
 
 ### <a name="left-outer"></a>Lewe zewnętrzne
 
-Wszystkie wiersze ze strumienia po lewej stronie, które nie spełniają warunku sprzężenia, są przekazywane, a kolumny wyjściowe z innej tabeli są ustawione na wartość NULL oprócz wszystkich wierszy zwracanych przez sprzężenie wewnętrzne.
+Lewe sprzężenie zewnętrzne zwraca wszystkie wiersze z lewego strumienia i dopasowane rekordy z odpowiedniego strumienia. Jeśli wiersz z lewego strumienia nie ma dopasowania, kolumny danych wyjściowych z odpowiedniego strumienia są ustawione na wartość NULL. Dane wyjściowe będą wierszami zwracanymi przez sprzężenie wewnętrzne oraz niedopasowane wiersze z lewego strumienia.
 
 ### <a name="right-outer"></a>Prawe zewnętrzne
 
-Wszystkie wiersze z odpowiedniego strumienia, które nie spełniają warunku sprzężenia, są przekazywane przez, a kolumny wyjściowe, które odpowiadają innej tabeli, są ustawione na wartość NULL, oprócz wszystkich wierszy zwracanych przez sprzężenie wewnętrzne.
+Lewe sprzężenie zewnętrzne zwraca wszystkie wiersze z odpowiedniego strumienia i dopasowane rekordy z lewego strumienia. Jeśli wiersz z odpowiedniego strumienia nie ma dopasowania, kolumny wyjściowe z odpowiedniego strumienia mają ustawioną wartość NULL. Dane wyjściowe będą wierszami zwracanymi przez sprzężenie wewnętrzne oraz niedopasowane wiersze z odpowiedniego strumienia.
 
 ### <a name="full-outer"></a>Pełny zewnętrzny
 
-Pełny zewnętrzny produkuje wszystkie kolumny i wiersze z obu stron z wartościami NULL dla kolumn, które nie znajdują się w drugiej tabeli.
+Pełne sprzężenie zewnętrzne wyprowadza wszystkie kolumny i wiersze z obu stron z wartościami NULL dla kolumn, które nie pasują do siebie.
 
 ### <a name="cross-join"></a>Sprzężenie krzyżowe
 
-Określ iloczyn poprzeczny dwóch strumieni z wyrażeniem. Służy do tworzenia niestandardowych warunków sprzężenia.
+Sprzężenie krzyżowe wyprowadza iloczyn między dwoma strumieniami w oparciu o warunek. Jeśli używasz warunku, który nie jest równy, Określ wyrażenie niestandardowe jako warunek sprzężenia krzyżowego. Strumień wyjściowy będzie zawierać wszystkie wiersze, które spełniają warunek sprzężenia. Aby utworzyć produkt kartezjańskiego, który wyprowadza każdą kombinację wierszy, określ `true()` jako warunek sprzężenia.
 
-## <a name="specify-join-conditions"></a>Określ warunki sprzężenia
+## <a name="configuration"></a>Konfigurowanie
 
-Warunek sprzężenia w lewo pochodzi ze strumienia danych połączonego z lewej strony sprzężenia. Warunek sprzężenia w prawo jest drugim strumieniem danych podłączonym do sprzężenia u dołu, który będzie bezpośrednim łącznikiem do innego strumienia lub odwołaniem do innego strumienia.
+1. Wybierz strumień danych, z którym chcesz się połączyć, na liście rozwijanej **odpowiedniego strumienia** .
+1. Wybierz **Typ sprzężenia**
+1. Wybierz kolumny klucza, dla których chcesz dopasować warunek sprzężenia. Domyślnie przepływ danych wyszukuje równość między jedną kolumną w każdym strumieniu. Aby porównać przez obliczoną wartość, umieść kursor na liście rozwijanej kolumny i wybierz **kolumnę obliczaną**.
 
-Musisz wprowadzić co najmniej 1 (1.. n) warunki sprzężenia. Mogą to być pola, do których odwołuje się bezpośrednio, wybrane z menu rozwijanego lub wyrażeń.
+![Przekształcanie sprzężenia](media/data-flow/join.png "Join")
 
-## <a name="join-performance-optimizations"></a>Dołączanie optymalizacji wydajności
+## <a name="optimizing-join-performance"></a>Optymalizowanie wydajności dołączania
 
-W przeciwieństwie do łączenia scalania w narzędziach takich jak SSIS, sprzężenie w przepływie danych ADF nie jest obowiązkową operacją scalania łączenia. W związku z tym klucze Join nie muszą być sortowane jako pierwsze. Operacja join zostanie wykonana na podstawie optymalnej operacji JOIN w usłudze Spark: sprzężenie po stronie emisji/mapy:
+W przeciwieństwie do łączenia scalania w narzędziach takich jak SSIS, transformacja sprzężenia nie jest obowiązkową operacją scalania sprzężenia. Klucze sprzężenia nie wymagają sortowania. Operacja join odbywa się na podstawie optymalnej operacji JOIN w platformie Spark, emisji lub sprzężenia po stronie mapy.
 
 ![Optymalizacja transformacji sprzężeń](media/data-flow/joinoptimize.png "Optymalizacja dołączania")
 
-Jeśli zestaw danych może pasować do pamięci węzła procesu roboczego, możemy zoptymalizować wydajność przyłączania. Można również określić Partycjonowanie danych w operacji JOIN, aby utworzyć zestawy danych, które mogą być lepiej dopasowane do pamięci na proces roboczy.
+Jeśli jeden lub oba strumienie danych mieszczą się w pamięci węzła procesu roboczego, należy jeszcze bardziej zoptymalizować wydajność przez włączenie **emisji** na karcie Optymalizacja. Możesz również ponownie podzielić na partycje dane w operacji JOIN, aby lepiej mieściły się w pamięci na proces roboczy.
 
 ## <a name="self-join"></a>Samosprzężenie
 
-Możesz uzyskać warunki samosprzężenia w przepływie danych ADF przy użyciu wybierz transformację do aliasu istniejącego strumienia. Najpierw utwórz "nowe rozgałęzienie" ze strumienia, a następnie Dodaj pozycję Wybierz, aby utworzyć alias całego oryginalnego strumienia.
+Aby dołączyć do siebie strumień danych z samym sobą, aliasuje istniejący strumień z przekształceniem SELECT. Utwórz nową gałąź, klikając ikonę znaku plus obok przekształcenia i wybierając pozycję **nowe rozgałęzienie**. Dodaj wybraną transformację do aliasowania oryginalnego strumienia. Dodaj transformację sprzężenia i wybierz oryginalny strumień jako **lewy strumień** i wybierz transformację jako **właściwy strumień**.
 
 ![Samosprzężenie](media/data-flow/selfjoin.png "Samosprzężenie")
 
-Na powyższym diagramie wybór przekształceń znajduje się u góry. Wszystko to wykonuje aliasowanie oryginalnego strumienia do "OrigSourceBatting". W wyróżnionym przekształceniu Join poniżej można zobaczyć, że używamy tego strumienia SELECT aliasu jako sprzężenia po prawej stronie, umożliwiając nam odwoływanie się do tego samego klucza zarówno w lewej & po prawej stronie sprzężenia wewnętrznego.
+## <a name="testing-join-conditions"></a>Testowanie warunków sprzężenia
 
-## <a name="composite-and-custom-keys"></a>Klucze złożone i niestandardowe
+Podczas testowania transformacji sprzężenia z podglądem danych w trybie debugowania należy użyć małego zestawu znanych danych. Podczas próbkowania wierszy z dużego zestawu danych nie można przewidzieć, które wiersze i klucze mają być odczytywane w celu przetestowania. Wynik jest niejednoznaczny, co oznacza, że warunki sprzężenia mogą nie zwracać żadnych dopasowań.
 
-Możesz tworzyć niestandardowe i złożone klucze na bieżąco wewnątrz transformacji sprzężenia. Dodaj wiersze dla dodatkowych kolumn sprzężenia ze znakiem plus (+) obok każdego wiersza relacji. Lub Oblicz nową wartość klucza w Konstruktorze wyrażeń dla wartości sprzężenia na bieżąco.
+## <a name="data-flow-script"></a>Skrypt przepływu danych
+
+### <a name="syntax"></a>Składnia
+
+```
+<leftStream>, <rightStream>
+    join(
+        <conditionalExpression>,
+        joinType: { 'inner'> | 'outer' | 'left_outer' | 'right_outer' | 'cross' }
+        broadcast: { 'none' | 'left' | 'right' | 'both' }
+    ) ~> <joinTransformationName>
+```
+
+### <a name="inner-join-example"></a>Przykład sprzężenia wewnętrznego
+
+Poniższy przykład to transformacja sprzężenia o nazwie `JoinMatchedData`, która pobiera lewe `TripData` strumienia i właściwe `TripFare` przesyłania strumieniowego.  Warunek sprzężenia jest `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` wyrażenia, które zwraca wartość true, jeśli kolumny `hack_license`, `medallion`, `vendor_id` i `pickup_datetime` w każdym dopasowaniu strumienia. @No__t_0 jest `'inner'`. Włączamy emisję tylko w lewym strumieniu, więc `broadcast` ma `'left'` wartości.
+
+W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
+
+![Przykład sprzężenia](media/data-flow/join-script1.png "Przykład sprzężenia")
+
+Skrypt przepływu danych dla tego przekształcenia znajduje się w poniższym fragmencie kodu:
+
+```
+TripData, TripFare
+    join(
+        hack_license == { hack_license}
+        && TripData@medallion == TripFare@medallion
+        && vendor_id == { vendor_id}
+        && pickup_datetime == { pickup_datetime},
+        joinType:'inner',
+        broadcast: 'left'
+    )~> JoinMatchedData
+```
+
+### <a name="cross-join-example"></a>Przykład sprzężenia krzyżowego
+
+Poniższy przykład to transformacja sprzężenia o nazwie `CartesianProduct`, która pobiera lewe `TripData` strumienia i właściwe `TripFare` przesyłania strumieniowego. Ta transformacja zajmuje dwa strumienie i zwraca kartezjańskiegoy produkt ich wierszy. Warunek sprzężenia jest `true()`, ponieważ wyprowadza pełny produkt kartezjańskiego. @No__t_0 w `cross`. Włączamy emisję tylko w lewym strumieniu, więc `broadcast` ma `'left'` wartości.
+
+W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
+
+![Przykład sprzężenia](media/data-flow/join-script2.png "Przykład sprzężenia")
+
+Skrypt przepływu danych dla tego przekształcenia znajduje się w poniższym fragmencie kodu:
+
+```
+TripData, TripFare
+    join(
+        true(),
+        joinType:'cross',
+        broadcast: 'left'
+    )~> CartesianProduct
+```
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po dołączeniu danych można [tworzyć nowe kolumny](data-flow-derived-column.md) i [odujścia danych do docelowego magazynu danych](data-flow-sink.md).
+Po dołączeniu danych Utwórz [kolumnę pochodną](data-flow-derived-column.md) i [ujścia](data-flow-sink.md) danych do docelowego magazynu danych.

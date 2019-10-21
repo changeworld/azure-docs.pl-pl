@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 03fb21197b2e71603b8078945e16ccd69f151577
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: a5674658fa237e44c7caea45c8f6d587a471b981
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555763"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595633"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 
@@ -263,11 +263,18 @@ Następujący YAML jest przykładem pliku zależności Conda dla wnioskowania:
 name: project_environment
 dependencies:
   - python=3.6.2
+  - scikit-learn=0.20.0
   - pip:
     - azureml-defaults
-    - scikit-learn==0.20.0
     - inference-schema[numpy-support]
 ```
+
+> [!IMPORTANT]
+> Jeśli zależność jest dostępna zarówno w Conda, jak i PIP (od PyPi), firma Microsoft zaleca korzystanie z wersji Conda, ponieważ pakiety Conda zwykle są dostarczane z wstępnie skompilowanymi plikami binarnymi, które sprawiają, że instalacja jest bardziej niezawodna.
+>
+> Aby uzyskać więcej informacji, zobacz [Omówienie Conda i PIP](https://www.anaconda.com/understanding-conda-and-pip/).
+>
+> Aby sprawdzić, czy zależność jest dostępna za pomocą Conda, użyj polecenia `conda search <package-name>` lub użyj indeksów pakietów w [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) i [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
 
 Jeśli chcesz użyć automatycznej generacji schematu, skrypt wejściowy musi zaimportować pakiety `inference-schema`.
 

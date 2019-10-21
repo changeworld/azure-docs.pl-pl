@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387989"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597120"
 ---
 # <a name="monitor-data-flows"></a>Monitorowanie przepływów danych
 
@@ -47,6 +47,11 @@ Gdy przepływ danych jest wykonywany w platformie Spark, Azure Data Factory okre
   * Obliczono: używasz kolumny na potrzeby przetwarzania warunkowego lub w obrębie wyrażenia w przepływie danych, ale nie należy go wystawić w ujścia
   * Pochodny: kolumna jest nową kolumną wygenerowaną w przepływie, tj. nie znajdowała się w źródle
   * Zamapowana: kolumna pochodzi ze źródła i mapuje ją do pola ujścia
+  * Stan przepływu danych: bieżący stan wykonania
+  * Czas uruchamiania klastra: ilość czasu na uzyskanie środowiska obliczeniowego JIT platformy Spark na potrzeby wykonywania przepływu danych
+  * Liczba przekształceń: ile kroków transformacji jest wykonywanych w przepływie
+  
+![Monitorowanie przepływu danych Acit](media/data-flow/monitornew.png "Monitorowanie przepływu danych nowe")  
   
 ## <a name="monitor-icons"></a>Monitoruj ikony
 

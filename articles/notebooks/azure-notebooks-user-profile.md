@@ -1,6 +1,6 @@
 ---
 title: Profil użytkownika i identyfikator do użycia z Azure Notebooks
-description: Jak utworzyć profil użytkownika i identyfikator użytkownika oraz zarządzać nim przy użyciu Azure Notebooks.
+description: Tworzenie profilu użytkownika i identyfikatora użytkownika oraz zarządzanie nim przy użyciu Azure Notebooks, który jest częścią adresu URL udostępnionych notesów.
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 1fddefeb2a54ae775a9016799ffff1963eab247e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 3985e3d5fbe6e24014694665557f13bcc9a35a25
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970152"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598206"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Twój profil i identyfikator użytkownika dla Azure Notebooks
 
 W ramach zaawansowanego obszaru współpracy Azure Notebooks Twój profil użytkownika przedstawia publiczny obraz innym użytkownikom:
 
-[Strona profilu Azure Notebooks @no__t 1An](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[Strona profilu Azure Notebooks ![An](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 Identyfikator użytkownika jest częścią adresów URL używanych do udostępniania projektów i notesów. Na poniższej liście opisano różne wzorce adresów URL:
 

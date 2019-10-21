@@ -8,25 +8,28 @@ ms.topic: include
 ms.date: 07/11/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 099bca7483100da1a4ee2f8f10057c416ad145b0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a9a837d8a486e10ea2a62be69b889e657b1dbc05
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841492"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72601071"
 ---
-Stosowanie tagów do Twoich zasobów platformy Azure, zapewniając metadanych umożliwia ich logiczne zorganizowanie w taksonomii. Każdy tag składa się z nazwy i pary wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
+Znaczniki są stosowane do zasobów platformy Azure, dzięki czemu metadane są logicznie organizowane w taksonomii. Każdy tag składa się z nazwy i pary wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
 
-Po zastosowaniu tagów można pobrać wszystkie zasoby w subskrypcji o nazwie i wartości konkretnego tagu. Tagi umożliwiają pobranie powiązanych zasobów z różnych grup zasobów. To pomocne rozwiązanie, gdy trzeba zorganizować zasoby w celach rozliczeniowych lub zarządzania.
+Po zastosowaniu tagów można pobrać wszystkie zasoby w subskrypcji o nazwie i wartości konkretnego tagu. Tagi umożliwiają pobieranie pokrewnych zasobów z różnych grup zasobów. To pomocne rozwiązanie, gdy trzeba zorganizować zasoby w celach rozliczeniowych lub zarządzania.
 
-Taksonomii należy wziąć pod uwagę samoobsługi metadane tagowania strategii oprócz strategii znakowanie automatycznie w celu zmniejszenia obciążenia użytkowników i zwiększyć dokładność.
+Taksonomia powinna uwzględniać samoobsługową strategię tagowania metadanych oprócz strategii automatycznego tagowania, aby zmniejszyć obciążenie użytkownikami i zwiększyć dokładność.
 
 Tagi mają następujące ograniczenia:
 
-* Nie wszystkie typy zasobów obsługują tagów. Aby określić, jeśli tag można zastosować do typu zasobu, zobacz [obsługę dla zasobów platformy Azure tagów](../articles/azure-resource-manager/tag-support.md).
-* Każdy zasób lub grupa zasobów może mieć maksymalnie 50 par nazwa/wartość tagu. Obecnie jest obsługiwany tylko kont magazynu, liczba tagów wynosząca 15, ale ten limit zostanie wygenerowany, 50 w przyszłej wersji. Jeśli potrzebujesz więcej tagów niż maksymalna liczba dozwolonych, użyj ciągu JSON jako wartości tagu. Ciąg JSON może zawierać wiele wartości, które są stosowane do jednej nazwy tagu. Grupa zasobów może zawierać wiele zasobów, w których każdy może mieć 50 par nazwa/wartość tagu.
+* Nie wszystkie typy zasobów obsługują Tagi. Aby określić, czy można zastosować tag do typu zasobu, zobacz [obsługa tagów dla zasobów platformy Azure](../articles/azure-resource-manager/tag-support.md).
+* Każdy zasób lub Grupa zasobów może mieć maksymalnie 50 par nazwa/wartość tagu. Obecnie konta magazynu obsługują tylko 15 tagów, ale ten limit zostanie podniesiony do 50 w przyszłej wersji. Jeśli musisz zastosować więcej tagów niż maksymalna dozwolona liczba, użyj ciągu JSON dla wartości tagu. Ciąg JSON może zawierać wiele wartości, które są stosowane do jednej nazwy tagu. Grupa zasobów może zawierać wiele zasobów, dla których każda z nich ma 50 par nazwa/wartość.
 * Nazwa tagu może zawierać maksymalnie 512 znaków, a wartość tagu jest ograniczona do 256 znaków. W przypadku kont magazynu nazwa tagu jest ograniczona do 128 znaków, a wartość tagu jest ograniczona do 256 znaków.
-* Tagi uogólnionej maszyny wirtualne nie są obsługiwane.
+* Uogólnione maszyny wirtualne nie obsługują tagów.
 * Tagi zastosowane do grupy zasobów nie są dziedziczone przez zasoby należące do tej grupy.
-* Nie można zastosować znaczniki do klasycznych zasobów, takich jak usługi w chmurze.
-* Nazwy tagów nie może zawierać następujących znaków: `<`, `>`, `%`, `&`, `\`, `?`, `/`
+* Nie można zastosować tagów do zasobów klasycznych, takich jak Cloud Services.
+* Nazwy tagów nie mogą zawierać następujących znaków: `<`, `>`, `%`, `&`, `\`, `?`, `/`
+
+   > [!NOTE]
+   > Obecnie Azure DNS strefy i usługi Traffic Manager nie umożliwiają również używania spacji w tagu. 

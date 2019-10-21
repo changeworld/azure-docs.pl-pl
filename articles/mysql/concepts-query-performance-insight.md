@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: f6c74582760d77ae4318739c74f77d0bcd0501fe
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 10/17/2019
+ms.openlocfilehash: b7395a8ab71e860c2e584339dcd581077a4f4020
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950357"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595493"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Szczegółowe informacje o wydajności zapytań w Azure Database for MySQL
 
@@ -59,7 +59,7 @@ Klikając i przeciągając na wykresie, możesz zawęzić go do konkretnego prze
 ### <a name="wait-statistics"></a>Statystyka oczekiwania
 
 > [!NOTE]
-> Statystyki oczekiwania są przeznaczone do rozwiązywania problemów z wydajnością zapytań. Zaleca się włączenie tylko do celów związanych z rozwiązywaniem problemów.
+> Statystyki oczekiwania są przeznaczone do rozwiązywania problemów z wydajnością zapytań. Zaleca się włączenie tylko do celów związanych z rozwiązywaniem problemów. <br>Jeśli zostanie wyświetlony komunikat o błędzie w Azure Portal "*napotkano problem dotyczący elementu" Microsoft. DBforMySQL "; nie można zrealizować żądania. Jeśli ten problem będzie się powtarzał lub jest nieoczekiwany, skontaktuj się z pomocą techniczną, podając te informacje.* podczas przeglądania statystyk oczekiwania należy użyć mniejszego okresu.
 
 Statystyka oczekiwania zawiera widok zdarzeń oczekiwania występujących podczas wykonywania określonego zapytania. Dowiedz się więcej o typach zdarzeń oczekiwania w [dokumentacji aparatu MySQL](https://go.microsoft.com/fwlink/?linkid=2098206).
 

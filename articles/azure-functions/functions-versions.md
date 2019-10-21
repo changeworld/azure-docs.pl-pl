@@ -1,138 +1,144 @@
 ---
-title: Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie
-description: Usługa Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Dowiedz się, różnice między nimi i sposobu wybierz ten, który jest odpowiedni dla Ciebie.
-services: functions
-documentationcenter: ''
+title: Przegląd wersji środowiska uruchomieniowego Azure Functions
+description: Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Poznaj różnice między nimi i wybierz odpowiedni dla siebie.
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 10/10/2019
 ms.author: glenga
-ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ca7006bb842cbe235d2e982e611613e1fd74ed9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036318"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597431"
 ---
-# <a name="azure-functions-runtime-versions-overview"></a>Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie
+# <a name="azure-functions-runtime-versions-overview"></a>Przegląd wersji środowiska uruchomieniowego Azure Functions
 
- Istnieją dwie wersje główne środowiska uruchomieniowego usługi Azure Functions: w wersji 1.x i 2.x. Bieżącą wersję, w których wprowadzono nowe pracy nad funkcjami i ulepszenia jest 2.x, jeśli obie są obsługiwane w przypadku scenariuszy produkcyjnych.  Następujące szczegóły, niektóre różnice między nimi, jak można utworzyć każdej wersji i uaktualnić wersję 1.x do 2.x.
+Główne wersje środowiska uruchomieniowego Azure Functions są powiązane z wersją platformy .NET, w której bazuje środowisko uruchomieniowe. W poniższej tabeli znajduje się bieżąca wersja środowiska uruchomieniowego, poziom wersji i powiązana wersja platformy .NET. 
 
-> [!NOTE]
-> Ten artykuł odnosi się do usługi w chmurze usługi Azure Functions. Aby uzyskać informacji na temat produktu w wersji zapoznawczej, który pozwala na uruchamianie usługi Azure Functions w środowisku lokalnym, zobacz [Przegląd środowiska uruchomieniowego usługi Azure Functions](functions-runtime-overview.md).
+| Wersja środowiska uruchomieniowego | Poziom wydania<sup>1</sup> | Wersja platformy .NET | 
+| --------------- | ------------- | ------------ |
+| wersji  | wersja zapoznawcza | .NET Core 3. x | 
+| 2.x | Ogólna dostępność | .NET Core 2.2 |
+| 1.x | GA<sup>2</sup> | .NET Framework 4,6<sup>3</sup> |
 
-## <a name="cross-platform-development"></a>Programowanie dla wielu platform
+<sup>1</sup> Wersje GA są obsługiwane w scenariuszach produkcyjnych.   
+<sup>2</sup> Wersja 1. x jest w trybie konserwacji. Ulepszenia są dostępne tylko w nowszych wersjach.   
+<sup>3</sup> Program obsługuje tylko programowanie w Azure Portal lub lokalnie na komputerach z systemem Windows.
 
-Środowisko uruchomieniowe 2.x wersji działa na .NET Core 2, co umożliwia jego uruchomienie na wszystkich platformach obsługiwanych przez platformę .NET Core, w tym w systemach macOS i Linux. Uruchamianie na platformie .NET Core umożliwia programowanie dla wielu platform i scenariuszach hostingu.
+>[!NOTE]  
+> Wersja 3. x środowiska uruchomieniowego usługi Functions jest w wersji zapoznawczej i nie jest obsługiwana w środowiskach produkcyjnych. Aby uzyskać więcej informacji na temat wypróbowania wersji 3. x, zobacz [ten anons](https://dev.to/azure/develop-azure-functions-using-net-core-3-0-gcm).
 
-Dla porównania środowisko uruchomieniowe 1.x wersji obsługuje tylko programowania i hostowania w witrynie Azure portal lub na komputerach z Windows.
+W tym artykule opisano niektóre różnice między różnymi wersjami, sposoby tworzenia poszczególnych wersji oraz zmiany wersji.
 
 ## <a name="languages"></a>Języki
 
-Środowisko uruchomieniowe 2.x wersji używa nowego modelu rozszerzalności języka. W wersji 2.x, wszystkie funkcje w aplikacji funkcji muszą współużytkować ten sam język. Język funkcji w aplikacji funkcji jest wybierany podczas tworzenia aplikacji.
+Począwszy od wersji 2. x, środowisko uruchomieniowe używa modelu rozszerzalności języka, a wszystkie funkcje w aplikacji funkcji muszą korzystać z tego samego języka. Język funkcji w aplikacji funkcji jest wybierany podczas tworzenia aplikacji i jest przechowywany w [\_WORKER funkcje \_RUNTIME](functions-app-settings.md#functions_worker_runtime) ustawienie. 
 
-Usługa Azure języków eksperymentalnych 1.x funkcji nie zostaną zaktualizowane do użycia nowego modelu, dzięki czemu nie są one obsługiwane w 2.x. Poniższa tabela wskazuje, które języki programowania są obecnie obsługiwane w każdej wersji środowiska uruchomieniowego.
+Azure Functions 1. x Języki eksperymentalne nie mogą używać nowego modelu, więc nie są obsługiwane w 2. x. Poniższa tabela wskazuje, które języki programowania są obecnie obsługiwane w poszczególnych wersjach środowiska uruchomieniowego.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 Więcej informacji, zobacz [Obsługiwane języki](supported-languages.md).
 
-## <a name="creating-1x-apps"></a>Działa w wersji 1.x
+## <a name="creating-1x-apps"></a>Uruchom w określonej wersji
 
-Domyślnie funkcja aplikacje utworzone w witrynie Azure portal są ustawione na wersji 2.x. Jeśli to możliwe, należy użyć tej wersji środowiska uruchomieniowego, gdzie zostaną wprowadzone nowe inwestycje funkcji. Jeśli zachodzi potrzeba, nadal można uruchomić aplikacji funkcji na środowisko uruchomieniowe 1.x wersji. Wersja środowiska uruchomieniowego można zmienić tylko po utworzeniu aplikacji funkcji, ale przed dodaniem wszystkie funkcje. Aby dowiedzieć się, jak przypiąć wersji 1.x środowiska uruchomieniowego, zobacz [Podgląd i aktualizacja bieżącą wersję środowiska uruchomieniowego](set-runtime-version.md#view-and-update-the-current-runtime-version).
+Domyślnie aplikacje funkcji utworzone w Azure Portal i przez interfejs wiersza polecenia platformy Azure są ustawione na wersję 2. x. Jeśli to możliwe, należy użyć tej wersji środowiska uruchomieniowego. Jeśli zachodzi taka potrzeba, można nadal uruchamiać aplikację funkcji w środowisku uruchomieniowym w wersji 1. x. Wersję środowiska uruchomieniowego można zmienić tylko po utworzeniu aplikacji funkcji, ale przed dodaniem jakichkolwiek funkcji. Aby dowiedzieć się, jak przypiąć wersję środowiska uruchomieniowego do wersji 1. x, zobacz [Wyświetlanie i aktualizowanie bieżącej wersji środowiska uruchomieniowego](set-runtime-version.md#view-and-update-the-current-runtime-version).
 
-## <a name="migrating-from-1x-to-2x"></a>Migrowanie z 1.x do 2.x
+Możesz również uaktualnić program do wersji 3. x środowiska uruchomieniowego, które jest z niego w wersji zapoznawczej. Zrób tak, jeśli musisz mieć możliwość uruchamiania funkcji w programie .NET Core 3. x. Aby dowiedzieć się, jak przeprowadzić uaktualnienie do wersji 3. x, zobacz [Wyświetlanie i aktualizowanie bieżącego środowiska uruchomieniowego](set-runtime-version.md#view-and-update-the-current-runtime-version).
 
-Możesz przeprowadzić migrację istniejącej aplikacji napisanej na potrzeby zamiast tego użyj wersji przez środowisko uruchomieniowe 1.x wersji 2.x. Większość zmian, które należy wprowadzić odnoszą się do zmian w środowisku uruchomieniowym języka, takich jak interfejs API języka C# zmian między wersjami programu .NET Framework 4.7 i .NET Core 2. Należy także upewnić się, że Twój kod i biblioteki są zgodne ze środowiskiem uruchomieniowym języka, możesz wybrać. Na koniec upewnij się, należy pamiętać, wszelkie zmiany w wyzwalacza, powiązania i funkcje, które przedstawiono poniżej. Aby uzyskać najlepsze wyniki migracji, należy utworzyć nową aplikację funkcji w wersji 2.x i port istniejących funkcji w wersji 1.x kodu w nowej aplikacji.  
+## <a name="migrating-from-1x-to-later-versions"></a>Migrowanie z 1. x do nowszych wersji
 
-### <a name="changes-in-triggers-and-bindings"></a>Zmiany w wyzwalaczy i powiązań
+Możesz zdecydować się na migrację istniejącej aplikacji w celu użycia wersji 1. x środowiska uruchomieniowego, aby zamiast tego użyć wersji 2. x. Większość zmian, które należy wprowadzić, dotyczy zmian w środowisku uruchomieniowym języka, takich jak C# zmiany interfejsu API między .NET Framework 4,7 i .NET Core 2. Należy również upewnić się, że kod i biblioteki są zgodne z wybranym środowiskiem uruchomieniowym języka. Na koniec pamiętaj o uwzględnieniu wszelkich zmian w wyzwalaczu, powiązaniach i funkcjach wyróżnionych poniżej. Aby uzyskać najlepsze wyniki migracji, należy utworzyć nową aplikację funkcji dla wersji 2. x i przenieść istniejący kod funkcji w wersji 1. x do nowej aplikacji.  
 
-W wersji 2.x, musisz zainstalować rozszerzenia dla określonych wyzwalaczy i powiązań, które korzystają z funkcji w aplikacji. Jedynym wyjątkiem to HTTP oraz czasomierzem wyzwalacze, które nie wymagają rozszerzenia.  Aby uzyskać więcej informacji, zobacz [rejestru i instalowanie rozszerzeń powiązania](./functions-bindings-register.md).
+### <a name="changes-in-triggers-and-bindings"></a>Zmiany w wyzwalaczach i powiązaniach
 
-Wprowadzono również drobne zmiany w `function.json` lub atrybutów funkcji między wersjami. Na przykład Centrum zdarzeń `path` właściwość jest obecnie `eventHubName`. Zobacz [istniejącej tabeli powiązania](#bindings) linki do dokumentacji dla każdego powiązania.
+Wersja 2. x wymaga zainstalowania rozszerzeń dla określonych wyzwalaczy i powiązań używanych przez funkcje w aplikacji. Jedyny wyjątek dla tych wyzwalaczy HTTP i Timer, które nie wymagają rozszerzenia.  Aby uzyskać więcej informacji, zobacz [Rejestrowanie i instalowanie rozszerzeń powiązań](./functions-bindings-register.md).
 
-### <a name="changes-in-features-and-functionality"></a>Zmiany w funkcji i możliwości
+Wprowadzono również pewne zmiany w `function.json` lub atrybuty funkcji między wersjami. Na przykład właściwość `path` centrum zdarzeń jest teraz `eventHubName`. W [istniejącej tabeli powiązań](#bindings) znajdziesz linki do dokumentacji dla każdego powiązania.
 
-Kilka funkcji, które również zostaną usunięte, zaktualizowane lub zamienione w nowej wersji. Tej sekcji opisano szczegółowo zmian zostanie wyświetlony w wersji 2.x po o używane wersji 1.x.
+### <a name="changes-in-features-and-functionality"></a>Zmiany w funkcjach i funkcjach
 
-W wersji 2.x, wprowadzono następujące zmiany:
+Kilka funkcji, które zostały również usunięte, zaktualizowane lub zastąpione w nowej wersji. Ta sekcja zawiera szczegółowe informacje o zmianach, które są widoczne w wersji 2. x po użyciu wersji 1. x.
 
-* Klucze dla wywoływanie punktów końcowych HTTP zawsze są przechowywane w postaci zaszyfrowanej w usłudze Azure Blob storage. W wersji 1.x, klucze były przechowywane w usłudze Azure File storage jest domyślnie. Podczas uaktualniania aplikacji z wersji 1.x do wersji 2.x, istniejące wpisów tajnych, które znajdują się w pliku magazynu zostaną zresetowane.
+W wersji 2. x wprowadzono następujące zmiany:
 
-* Środowisko uruchomieniowe 2.x wersja nie zawiera wbudowaną obsługę dostawców elementu webhook. Ta zmiana została wprowadzona w celu zwiększenia wydajności. Można nadal używać wyzwalaczy HTTP jako punkty końcowe, dla elementów webhook.
+* Klucze do wywoływania punktów końcowych HTTP są zawsze przechowywane w postaci zaszyfrowanej w usłudze Azure Blob Storage. W wersji 1. x klucze były przechowywane w usłudze Azure File Storage. Podczas uaktualniania aplikacji z wersji 1. x do wersji 2. x istniejące klucze tajne w magazynie plików są resetowane.
 
-* Plik konfiguracji hosta (host.json) powinna być pusta ani mieć ciąg `"version": "2.0"`.
+* Środowisko uruchomieniowe w wersji 2. x nie obejmuje wbudowanej obsługi dostawców elementu webhook. Ta zmiana została wprowadzona w celu zwiększenia wydajności. Można nadal używać wyzwalaczy HTTP jako punktów końcowych dla elementów webhook.
 
-* Aby ulepszyć monitorowanie pulpitu nawigacyjnego zadań Webjob w portalu i użyć [ `AzureWebJobsDashboard` ](functions-app-settings.md#azurewebjobsdashboard) zastępuje ustawienie przy użyciu usługi Azure Application Insights, który używa [ `APPINSIGHTS_INSTRUMENTATIONKEY` ](functions-app-settings.md#appinsights_instrumentationkey) ustawienie. Aby uzyskać więcej informacji, zobacz [monitora usługi Azure Functions](functions-monitoring.md).
+* Plik konfiguracji hosta (host. JSON) powinien być pusty lub mieć ciąg `"version": "2.0"`.
 
-* Wszystkie funkcje w aplikacji funkcji muszą współużytkować ten sam język. Podczas tworzenia aplikacji funkcji, musisz wybrać stosu środowiska uruchomieniowego aplikacji. Stos środowiska uruchomieniowego jest określona przez [ `FUNCTIONS_WORKER_RUNTIME` ](functions-app-settings.md#functions_worker_runtime) wartość w ustawieniach aplikacji. To wymaganie zostało dodane do poprawić czas zużycia i uruchamiania. Podczas tworzenia lokalnie, należy również uwzględnić to ustawienie w [pliku local.settings.json](functions-run-local.md#local-settings-file).
+* Aby poprawić monitorowanie, pulpit nawigacyjny zadań WebJob w portalu, który użył ustawienia [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) , jest zastępowany Application Insights platformy Azure, który używa ustawienia [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) . Aby uzyskać więcej informacji, zobacz [Monitor Azure Functions](functions-monitoring.md).
 
-* Domyślna wartość limitu czasu dla funkcji w ramach planu usługi App Service jest zmieniany na 30 minut. Można ręcznie zmienić limit czasu na nieograniczony, za pomocą [functionTimeout](functions-host-json.md#functiontimeout) ustawienie w host.json.
+* Wszystkie funkcje w aplikacji funkcji muszą korzystać z tego samego języka. Podczas tworzenia aplikacji funkcji należy wybrać stos środowiska uruchomieniowego dla aplikacji. Stos środowiska uruchomieniowego jest określany przez wartość [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) w ustawieniach aplikacji. Ten wymóg został dodany w celu poprawy rozmiaru i czasu uruchamiania. Podczas programowania lokalnego należy również uwzględnić to ustawienie w [pliku Local. Settings. JSON](functions-run-local.md#local-settings-file).
 
-* Ograniczenia współbieżności HTTP są implementowane przez domyślną dla funkcji planu zużycie, z domyślną 100 równoczesnych żądań dla każdego wystąpienia. Tę wartość można zmienić w [ `maxConcurrentRequests` ](functions-host-json.md#http) ustawienia w pliku host.json.
+* Domyślny limit czasu dla funkcji w planie App Service został zmieniony na 30 minut. Limit czasu można zmienić ręcznie na nieograniczony przy użyciu ustawienia [functionTimeout](functions-host-json.md#functiontimeout) w pliku host. JSON.
 
-* Z powodu [.NET core ograniczenia](https://github.com/Azure/azure-functions-host/issues/3414), obsługa F# skrypt (.fsx) funkcje zostały usunięte. Skompilowany F# funkcji (.fs) są nadal obsługiwane.
+* Ograniczenia współbieżności HTTP są implementowane domyślnie dla funkcji planu zużycia, z wartością domyślną 100 współbieżnych żądań na wystąpienie. Można to zmienić w ustawieniach [`maxConcurrentRequests`](functions-host-json.md#http) w pliku host. JSON.
 
-* Format adresu URL elementów webhook wyzwalacza usługi Event Grid została zmieniona na `https://{app}/runtime/webhooks/{triggerName}`.
+* Ze względu na [ograniczenia programu .NET Core](https://github.com/Azure/azure-functions-host/issues/3414), obsługa funkcji F# skryptów (. FSX) została usunięta. Skompilowane F# funkcje (. FS) są nadal obsługiwane.
 
-### <a name="migrating-a-locally-developed-application"></a>Migrowanie aplikacji opracowanych lokalnie
+* Format adresu URL elementu webhook wyzwalacza Event Grid został zmieniony na `https://{app}/runtime/webhooks/{triggerName}`.
 
-Masz istniejące projekty aplikacji opracowanych lokalnie przy użyciu środowisko uruchomieniowe 1.x wersji funkcji. Aby uaktualnić do wersji 2.x, należy utworzyć projekt aplikacji funkcji lokalnej wersji 2.x i port istniejący kod w nowej aplikacji. Można ręcznie zaktualizować istniejącego projektu i kodu, rodzaj uaktualnienia "w miejscu". Jednak istnieje kilka innych ulepszeń między wersji 1.x i wersji 2.x, które nadal może zajść potrzeba wprowadzenia. Na przykład w języku C# debugowania obiektu został zmieniony z `TraceWriter` do `ILogger`. Tworząc nowy projekt w wersji 2.x, należy rozpocząć zaktualizowane funkcje oparte na najnowszych szablonów w wersji 2.x.
+### <a name="migrating-a-locally-developed-application"></a>Migrowanie aplikacji opracowanej lokalnie
 
-#### <a name="visual-studio-runtime-versions"></a>Wersje środowiska uruchomieniowego usługi Visual Studio
+Istnieje możliwość, że istniejące projekty aplikacji funkcji są opracowywane lokalnie przy użyciu wersji 1. x środowiska uruchomieniowego. Aby uaktualnić do wersji 2. x, należy utworzyć projekt aplikacji funkcji lokalnych dla wersji 2. x i przenieść istniejący kod do nowej aplikacji. Możesz ręcznie zaktualizować istniejący projekt i kod, sortując uaktualnienie "w miejscu". Istnieje jednak wiele innych ulepszeń między wersjami 1. x i 2. x, które nadal mogą być potrzebne. Na przykład, w C# obiekcie debugowania został zmieniony z `TraceWriter` na `ILogger`. Utworzenie nowego projektu w wersji 2. x, rozpoczyna się od zaktualizowania funkcji na podstawie najnowszych szablonów w wersji 2. x.
 
-W programie Visual Studio wybranej wersji środowiska uruchomieniowego podczas tworzenia projektu. Narzędzia usługi Azure Functions dla programu Visual Studio obsługuje obie wersje główne środowiska uruchomieniowego. Poprawna wersja jest używany podczas debugowania i publikowania zgodnie z ustawieniami projektu. Ustawienia wersji są zdefiniowane w `.csproj` pliku w następujących właściwościach:
+#### <a name="visual-studio-runtime-versions"></a>Wersje środowiska uruchomieniowego programu Visual Studio
 
-##### <a name="version-1x"></a>W wersji 1.x
+W programie Visual Studio podczas tworzenia projektu wybierana jest wersja środowiska uruchomieniowego. Narzędzia Azure Functions Tools for Visual Studio obsługują zarówno główne wersje środowiska uruchomieniowego. Poprawna wersja jest używana podczas debugowania i publikowania na podstawie ustawień projektu. Ustawienia wersji są zdefiniowane w pliku `.csproj` w następujących właściwościach:
+
+##### <a name="version-1x"></a>Wersja 1. x
 
 ```xml
 <TargetFramework>net461</TargetFramework>
 <AzureFunctionsVersion>v1</AzureFunctionsVersion>
 ```
 
-##### <a name="version-2x"></a>W wersji 2.x
+##### <a name="version-2x"></a>Wersja 2. x
 
 ```xml
 <TargetFramework>netcoreapp2.2</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-Podczas debugowania lub opublikować projekt poprawną wersję środowiska uruchomieniowego jest używany.
+Podczas debugowania lub publikowania projektu jest używana poprawna wersja środowiska uruchomieniowego.
 
-#### <a name="vs-code-and-azure-functions-core-tools"></a>Program VS Code i podstawowych narzędzi usługi Azure Functions
+#### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code i Azure Functions Core Tools
 
-[Podstawowe narzędzia usługi Azure Functions](functions-run-local.md) służy do tworzenia aplikacji wiersza polecenia, a także przez [rozszerzenia usługi Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) dla programu Visual Studio Code. Aby można było wprowadzać zmiany w wersji 2.x, zainstaluj w wersji 2.x podstawowych narzędzi. Narzędzia deweloperskie dla wersji 1.x wymagają wersji 1.x podstawowych narzędzi. Aby uzyskać więcej informacji, zobacz [instalowanie podstawowych narzędzi usługi Azure Functions](functions-run-local.md#install-the-azure-functions-core-tools).
+[Azure Functions Core Tools](functions-run-local.md) jest używany do tworzenia wierszy poleceń, a także przez [rozszerzenie Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) do Visual Studio Code. Aby opracowywać wersję 2. x, Zainstaluj wersję 2. x podstawowych narzędzi. Programowanie w wersji 1. x wymaga wersji 1. x podstawowych narzędzi. Aby uzyskać więcej informacji, zobacz [instalowanie Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools).
 
-Do tworzenia aplikacji programu Visual Studio Code, konieczne może być zaktualizować ustawienia użytkownika dla `azureFunctions.projectRuntime` wersją zainstalowane narzędzia.  To ustawienie, aktualizuje również szablony i języki używane podczas tworzenia aplikacji funkcji.
+Na potrzeby tworzenia Visual Studio Code może być również konieczne zaktualizowanie ustawień użytkownika dla `azureFunctions.projectRuntime`, aby odpowiadały zainstalowanej wersji narzędzi.  To ustawienie powoduje także aktualizację szablonów i języków używanych podczas tworzenia aplikacji funkcji.
 
 ### <a name="changing-version-of-apps-in-azure"></a>Zmiana wersji aplikacji na platformie Azure
 
-Wersja środowisko uruchomieniowe usługi Functions używana przez opublikowane aplikacje na platformie Azure jest zależna od [ `FUNCTIONS_EXTENSION_VERSION` ](functions-app-settings.md#functions_extension_version) ustawienia aplikacji. Wartość `~2` jest przeznaczony dla środowiska uruchomieniowego w wersji 2.x i `~1` elementy docelowe środowisko uruchomieniowe 1.x wersji. Arbitralnie nie zmieniaj tego ustawienia, ponieważ prawdopodobnie wymagane są inne zmiany w ustawieniach aplikacji i zmiany kodu w funkcji. Aby dowiedzieć się o zalecanym sposobem migracji aplikacji funkcji do środowiskiem uruchomieniowym w różnych wersji, zobacz [sposobu kierowania wersje środowiska uruchomieniowego usługi Azure Functions](set-runtime-version.md).
+Wersja środowiska uruchomieniowego funkcji używanych przez opublikowane aplikacje na platformie Azure jest określana przez ustawienie aplikacji [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) . Wartość `~2` jest przeznaczona dla środowiska uruchomieniowego w wersji 2. x i `~1` jako wersja 1. x środowiska uruchomieniowego. Nie zmieniaj arbitralnie tego ustawienia, ponieważ prawdopodobnie wymagane są inne zmiany ustawień aplikacji i zmiany kodu w Twoich funkcjach. Aby dowiedzieć się więcej o zalecanym sposobie migrowania aplikacji funkcji do innej wersji środowiska uruchomieniowego, zobacz [jak kierować Azure Functions wersjami środowiska uruchomieniowego](set-runtime-version.md).
 
 ## <a name="bindings"></a>Powiązania
 
-Środowisko uruchomieniowe 2.x wersji używa nowego [powiązanie modelu rozszerzalności](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) , oferuje następujące korzyści:
+Począwszy od wersji 2. x, środowisko uruchomieniowe używa nowego [modelu rozszerzalności powiązania](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) , który oferuje następujące korzyści:
 
-* Obsługa rozszerzeń powiązania innych firm.
+* Obsługa rozszerzeń powiązań innych firm.
 
-* Rozdzielenie środowiska uruchomieniowego i powiązania. Ta zmiana umożliwia rozszerzeń powiązania jako numerów wersji i wydania niezależnie. Można na przykład zdecydować się na uaktualnienie do wersji rozszerzenia, która opiera się na nowszą wersję zestawu SDK bazowego.
+* Rozdzielenie środowiska uruchomieniowego i powiązań. Ta zmiana umożliwia niezależne i wyłączanie rozszerzeń powiązań. Możesz na przykład wybrać opcję Uaktualnij do wersji rozszerzenia, która zależy od nowszej wersji bazowego zestawu SDK.
 
-* Jaśniejszy środowiska wykonania, gdy tylko powiązania używane są znane i ładowane w czasie wykonywania.
+* Jaśniejsze środowisko wykonawcze, w którym tylko powiązania są znane i ładowane przez środowisko uruchomieniowe.
 
-Z wyjątkiem wyzwalaczy HTTP oraz czasomierzem wszystkie powiązania musi być jawnie dodane do projektu aplikacji funkcji lub zarejestrowane w portalu. Aby uzyskać więcej informacji, zobacz [zarejestrować rozszerzeń powiązania](./functions-bindings-expressions-patterns.md).
+Z wyjątkiem wyzwalaczy HTTP i Timer, wszystkie powiązania muszą być jawnie dodane do projektu aplikacji funkcji lub zarejestrowane w portalu. Aby uzyskać więcej informacji, zobacz [Rejestrowanie rozszerzeń powiązań](./functions-bindings-expressions-patterns.md).
 
-W poniższej tabeli przedstawiono, które powiązania są obsługiwane w każdej wersji środowiska uruchomieniowego.
+W poniższej tabeli przedstawiono powiązania obsługiwane w poszczególnych wersjach środowiska uruchomieniowego.
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Więcej informacji zawierają następujące zasoby:
 
 * [Kodowanie i testowanie usługi Azure Functions lokalnie](functions-run-local.md)
-* [Jak odwoływać się wersje środowiska uruchomieniowego usługi Azure Functions](set-runtime-version.md)
+* [Jak docelowa Azure Functions wersje środowiska uruchomieniowego](set-runtime-version.md)
 * [Informacje o wersji](https://github.com/Azure/azure-functions-host/releases)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 64e1095466f9494ccd8aa052a739729542920784
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 4add98ae092359c6f070bfc93b69257894f44e48
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305038"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596416"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 
@@ -47,7 +47,7 @@ Klasyczne sieci wirtualne nie są obsługiwane w przypadku nowych wdrożeń. Ist
 Tak. Azure AD Domain Services można włączyć w Azure Resource Manager sieci wirtualnej. Klasyczne sieci wirtualne platformy Azure nie są już obsługiwane w przypadku tworzenia nowej domeny zarządzanej.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Czy mogę migrować istniejącą domenę zarządzaną z klasycznej sieci wirtualnej do sieci wirtualnej Menedżer zasobów?
-Nie w tej chwili. W trakcie pracy inżynieryjnej można migrować istniejące domeny zarządzane z klasycznej sieci wirtualnej do Menedżer zasobów sieci wirtualnej.
+Tak, ta funkcja jest dostępna w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Migrowanie Azure AD Domain Services z klasycznego modelu sieci wirtualnej do Menedżer zasobów (wersja zapoznawcza)] [Migrowanie z-klasyczne-vnet.md]
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Czy mogę włączyć Azure AD Domain Services w ramach subskrypcji dostawcy rozwiązań w chmurze (CSP) platformy Azure?
 Tak. Aby uzyskać więcej informacji, zobacz [How to enable Azure AD Domain Services in Azure CSP subscriptions](csp.md).

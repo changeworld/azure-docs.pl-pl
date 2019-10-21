@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: ef46c1a631a79dd1c50b2bf7d263538298de233f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333315"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598221"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Często zadawane pytania dotyczące usługi Azure Network Watcher
 Usługa [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) udostępnia zestaw narzędzi do monitorowania, diagnozowania, wyświetlania metryk i włączania i wyłączania dzienników dla zasobów w sieci wirtualnej platformy Azure. W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące usługi.
@@ -54,16 +54,26 @@ Odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/network-w
 ### <a name="which-regions-is-network-watcher-available-in"></a>Które regiony są Network Watcher dostępne w?
 Najnowszą dostępność regionalną można wyświetlić na [stronie dostępności usługi platformy Azure](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)
 
+### <a name="what-are-resource-limits-on-network-watcher"></a>Co to są limity zasobów na Network Watcher?
+Wszystkie limity można znaleźć na stronie [limity usługi](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits) .  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Dlaczego jest dozwolone tylko jedno wystąpienie Network Watcher na region?
+Aby subskrypcja usługi mogła działać, Network Watcher należy ją włączyć, ponieważ nie jest to limit usług.
+
 ## <a name="nsg-flow-logs"></a>Dzienniki przepływu sieciowej grupy zabezpieczeń
 
 ### <a name="what-does-nsg-flow-logs-do"></a>Co robią dzienniki przepływu sieciowej grupy zabezpieczeń?
 Zasoby sieciowe platformy Azure można łączyć i zarządzać nimi za pomocą [sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń)](https://docs.microsoft.com/azure/virtual-network/security-overview). Dzienniki przepływu sieciowej grupy zabezpieczeń umożliwiają rejestrowanie 5-informacje o przepływie krotki na cały ruch przez sieciowych grup zabezpieczeń. Dzienniki nieprzetworzonych przepływów są zapisywane na koncie usługi Azure Storage, z poziomu którego mogą być przetwarzane, analizowane, badane lub eksportowane zgodnie z wymaganiami.
 
-### <a name="are-there-caveats-for-using-nsg-flow-logs"></a>Czy istnieją jakieś zastrzeżenia dotyczące korzystania z dzienników przepływu sieciowej grupy zabezpieczeń?
+### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>Czy istnieją jakieś zastrzeżenia dotyczące korzystania z dzienników przepływu sieciowej grupy zabezpieczeń?
 Nie ma wymagań wstępnych dotyczących korzystania z dzienników przepływu sieciowej grupy zabezpieczeń. Istnieją jednak dwa ograniczenia
 - **Punkty końcowe usługi nie mogą być obecne w sieci wirtualnej**: dzienniki przepływu sieciowej grupy zabezpieczeń są emitowane z agentów na maszynach wirtualnych do kont magazynu. Jednak obecnie można emitować dzienniki tylko bezpośrednio do kont magazynu i nie można użyć punktu końcowego usługi dodanego do sieci wirtualnej.
 
-Istnieją dwa sposoby, aby rozwiązać ten problem:
+- **Konto magazynu nie może być chronione przez zaporę**: ze względu na ograniczenia wewnętrzne konta magazynu muszą być dostępne za pomocą publicznego Internetu dla dzienników przepływu sieciowej grupy zabezpieczeń, aby z nich korzystać. Ruch nadal będzie kierowany przez platformę Azure wewnętrznie i nie będą naliczane dodatkowe opłaty za wychodzące.
+
+Zapoznaj się z następnymi dwoma pytaniami, aby uzyskać instrukcje dotyczące obejścia tych problemów. Należy oczekiwać, że oba te ograniczenia są kierowane do sty 2020.
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>Jak mogę użyć dzienników przepływu sieciowej grupy zabezpieczeń z punktami końcowymi usługi?
 
 *Opcja 1: Skonfiguruj ponownie dzienniki przepływu sieciowej grupy zabezpieczeń, aby emitować je do konta usługi Azure Storage bez punktów końcowych sieci wirtualnych*
 
@@ -88,8 +98,7 @@ Możesz sprawdzić dzienniki magazynu po kilku minutach — powinna być widoczn
 
 Jeśli punkty końcowe usługi Microsoft.Storage są niezbędne, konieczne będzie wyłączenie dzienników przepływu sieciowych grup zabezpieczeń.
 
-
-- **Konta magazynu nie mogą być chronione przez zaporę**: ze względu na ograniczenia wewnętrzne konta magazynu muszą być dostępne za pomocą publicznego Internetu dla dzienników przepływu sieciowej grupy zabezpieczeń, aby z nich korzystać. Ruch nadal będzie kierowany przez platformę Azure wewnętrznie i nie będą naliczane dodatkowe opłaty za wychodzące.
+### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>Jak mogę wyłączyć zaporę na moim koncie magazynu?
 
 Ten problem został rozwiązany przez włączenie "wszystkich sieci" w celu uzyskania dostępu do konta magazynu:
 
@@ -97,8 +106,6 @@ Ten problem został rozwiązany przez włączenie "wszystkich sieci" w celu uzys
 * Przejdź do konta magazynu, wpisując jego nazwę w polu wyszukiwania globalnego w portalu
 * W sekcji **USTAWIENIA** wybierz pozycję **Zapory i sieci wirtualne**
 * Wybierz pozycję **Wszystkie sieci** i zapisz ustawienia. Jeśli jest ona już zaznaczona, nie trzeba wprowadzać żadnych zmian.  
-
-Należy oczekiwać, że oba te ograniczenia są kierowane do sty 2020.
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Jaka jest różnica między dziennikami przepływów w wersjach 1 & 2?
 Dzienniki przepływów w wersji 2 wprowadzają koncepcję *stanu przepływu* & przechowuje informacje o transmitowanych bajtach i pakietach. [Dowiedz się więcej](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).

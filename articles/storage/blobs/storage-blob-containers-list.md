@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a76b83218a194c2b5cbf3ce582e8094014004123
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: b7e5b0725049fa5de95f435c848502c36a3a1726
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803381"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598119"
 ---
 # <a name="list-blob-containers-with-net"></a>Wyświetlanie listy kontenerów obiektów BLOB przy użyciu platformy .NET
 
@@ -30,7 +30,7 @@ Przeciążenia tych metod zawierają dodatkowe opcje zarządzania kontenerami zw
 
 ### <a name="manage-how-many-results-are-returned"></a>Zarządzanie liczbą zwracanych wyników
 
-Domyślnie operacja tworzenia listy zwraca do 5000 wyników jednocześnie. Aby zwrócić mniejszy zestaw wyników, podaj wartość różną od zera dla parametru `maxresults` podczas wywoływania jednej z metod **ListContainerSegmented** .
+Domyślnie operacja tworzenia listy zwraca do 5000 wyników jednocześnie. Aby zwrócić mniejszy zestaw wyników, podaj wartość różną od zera dla `maxresults` parametru podczas wywoływania jednej z metod **ListContainerSegmented** .
 
 Jeśli konto magazynu zawiera więcej niż 5000 kontenerów lub jeśli określono wartość `maxresults` w taki sposób, że operacja tworzenia listy zwróci podzestaw kontenerów na koncie magazynu, usługa Azure Storage zwraca *token kontynuacji* z listą opakowania. Token kontynuacji jest wartością nieprzezroczystą, która służy do pobierania następnego zestawu wyników z usługi Azure Storage.
 
@@ -40,9 +40,9 @@ W kodzie Sprawdź wartość tokenu kontynuacji, aby określić, czy ma ona warto
 
 Aby odfiltrować listę kontenerów, Określ ciąg dla parametru `prefix`. Ciąg prefiksu może zawierać jeden lub więcej znaków. Usługa Azure Storage zwraca tylko te kontenery, których nazwy rozpoczynają się od tego prefiksu.
 
-### <a name="return-container-metadata"></a>Zwracanie metadanych kontenera
+### <a name="return-metadata"></a>Metadane zwrotne
 
-Aby zwrócić metadane kontenera z wynikami, określ wartość **metadanych** dla wyliczenia [ContainerListDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) . Usługa Azure Storage obejmuje metadane z każdym zwracanym kontenerem, dlatego nie trzeba również wywoływać jednej z metod **FetchAttributes** , aby pobrać metadane kontenera.
+Aby zwrócić metadane kontenera z wynikami, określ wartość **metadanych** dla wyliczenia [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) . Usługa Azure Storage obejmuje metadane z każdym zwracanym kontenerem, dlatego nie trzeba również wywoływać jednej z metod **FetchAttributes** , aby pobrać metadane kontenera.
 
 ## <a name="example-list-containers"></a>Przykład: kontenery list
 
@@ -99,5 +99,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Zobacz także
 
-[Kontenery List](/rest/api/storageservices/list-containers2)
+[Lista kontenerów](/rest/api/storageservices/list-containers2) 
 [wyliczanie zasobów obiektów BLOB](/rest/api/storageservices/enumerating-blob-resources)

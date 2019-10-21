@@ -1,23 +1,18 @@
 ---
 title: Wizualizowanie danych z Azure Monitor | Microsoft Docs
 description: Zawiera podsumowanie dostępnych metod wizualizacji danych metryk i dzienników przechowywanych w Azure Monitor.
-author: bwren
-manager: carmonm
-editor: ''
-services: azure-monitor
-documentationcenter: azure-monitor
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 11/24/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6390384220830d473b56f4082a98dfaa8aa686d1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 11/24/2018
+ms.openlocfilehash: c350cb1f8e7343f6d8e7a416aa0bba71388eaa86
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984189"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597831"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod wizualizacji danych dziennika i metryk przechowywanych w Azure Monitor.
@@ -53,7 +48,7 @@ Wizualizacje, takie jak wykresy i wykresy, mogą ułatwić analizowanie danych m
 ## <a name="azure-monitor-views"></a>Widoki Azure Monitor
 [Widoki w Azure monitor](platform/view-designer.md) umożliwiają tworzenie niestandardowych wizualizacji przy użyciu danych dziennika. Są one używane przez [rozwiązania monitorujące](insights/solutions.md) , które umożliwiają prezentowanie zbieranych danych.
 
-![Widok](media/visualizations/view.png)
+![Wyświetl](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Zalety
 - Rozbudowane wizualizacje danych dziennika.
@@ -74,7 +69,7 @@ Wizualizacje, takie jak wykresy i wykresy, mogą ułatwić analizowanie danych m
 ## <a name="workbooks"></a>Skoroszyty
 [Skoroszyty](../azure-monitor/app/usage-workbooks.md) to interaktywne dokumenty, które zapewniają szczegółowe informacje o danych, badaniu i współpracy w zespole. Konkretne przykłady, w których przydatne są skoroszyty, to przewodniki dotyczące rozwiązywania problemów i postmortem zdarzeń.
 
-![Skoroszyt](media/visualizations/workbook.png)
+![Arkuszu](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Zalety
 - Obsługuje metryki i dzienniki.
@@ -140,7 +135,7 @@ Możesz uzyskać dostęp do danych w dziennikach i danych metryk w Azure Monitor
 - Dowiedz się więcej na temat [danych zbieranych przez Azure monitor](platform/data-platform.md).
 - Dowiedz się więcej o [pulpitach nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards.md).
 - Dowiedz się więcej o [widokach w Azure monitor](platform/view-designer.md).
-- Dowiedz [](../azure-monitor/app/usage-workbooks.md)się więcej na temat skoroszytów.
+- Dowiedz się więcej na temat [skoroszytów](../azure-monitor/app/usage-workbooks.md).
 - Dowiedz się więcej [na temat importowania danych dziennika do Power BI](../azure-monitor/platform/powerbi.md).
 - Dowiedz się więcej na temat [wtyczki źródła danych Grafana Azure monitor](../azure-monitor/platform/grafana-plugin.md).
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1f02cf3abaae7d67ba3d204dc9419d9fbfa4a86d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374487"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597081"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
@@ -132,6 +132,7 @@ Konta rozliczeń umowy klienta firmy Microsoft mają następujące zakresy:
 
 W przeciwieństwie do zakresów rozliczeniowych EA, konta rozliczeń umowy klienta _są_ powiązane z pojedynczym katalogiem i nie mogą zawierać subskrypcji wielu katalogów usługi Azure AD.
 
+Zakresy rozliczeń umowy klienta nie mają zastosowania do partnerów. Role i uprawnienia partnerów są udokumentowane w obszarze [Przypisywanie ról i uprawnień użytkowników](/partner-center/permissions-overview).
 
 Zakresy rozliczeń umowy klienta obsługują następujące role:
 
@@ -159,11 +160,25 @@ Po zakończeniu integracji AWS zapoznaj się z tematem Konfigurowanie [i Konfigu
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>Zakresy dostawcy rozwiązań w chmurze (CSP)
 
-Partnerzy dostawcy rozwiązań w chmurze (CSP) nie są obecnie obsługiwani w Cost Management. Zamiast tego można użyć [Centrum partnerskiego](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+Następujące zakresy są obsługiwane dla dostawców usług kryptograficznych dla klientów z umową klienta firmy Microsoft:
+
+- **Konto rozliczeniowe** — reprezentuje umowę klienta dla wielu produktów i usług firmy Microsoft. Konta rozliczeń umowy klienta nie działają tak samo jak rejestracje EA. Rejestracje EA są bardziej ściśle wyrównane do profilów rozliczeń.
+
+    Typ zasobu: `Microsoft.Billing/billingAccounts (accountType = Organization)`
+
+- **Profil rozliczeń** — definiuje subskrypcje dołączone do faktury. Profile rozliczeń to funkcjonalny odpowiednik rejestracji w ramach umowy EA, ponieważ jest to zakres, w którym są generowane faktury. Podobnie zakupy, które nie są oparte na użyciu (takie jak witryna Marketplace i rezerwacje), są dostępne tylko w tym zakresie.
+
+    Typ zasobu: `Microsoft.Billing/billingAccounts/billingProfiles`
+
+- **Klient** — reprezentuje grupę subskrypcji powiązanych z konkretnym klientem, który jest dołączony do umowy klienta firmy Microsoft przez partnera.
+
+Tylko użytkownicy z rolami *administrator globalny* i *administrator mogą* zarządzać kosztami kont rozliczeń, profilów rozliczeń i klientów bezpośrednio w dzierżawie platformy Azure partnera. Aby uzyskać więcej informacji na temat ról Centrum partnerskiego, zobacz [Przypisywanie ról i uprawnień użytkowników](/partner-center/permissions-overview).
+
+Azure Cost Management obsługuje tylko klientów partnerskich dostawcy usług kryptograficznych, jeśli klienci mają umowę klienta firmy Microsoft. W przypadku klientów z dostawcami usług kryptograficznych, którzy nie znajdują się jeszcze w umowie klienta firmy Microsoft, zobacz [Centrum partnerskie](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Przełączanie między zakresami w Cost Management
 
-Wszystkie widoki Cost Management w Azure Portal obejmują wybór **zakresu** pill w lewym górnym rogu widoku. Użyj go, aby szybko zmienić zakres. Kliknij **zakres** pill, aby otworzyć selektor zakresu. Są w nim wyświetlane konta rozliczeniowe, główna Grupa zarządzania i wszystkie subskrypcje, które nie są zagnieżdżone w głównej grupie zarządzania. Aby wybrać zakres, kliknij tło, aby je zaznaczyć, a następnie kliknij przycisk **Wybierz** w dolnej części. Aby przejść do szczegółów zakresów zagnieżdżonych, takich jak grupy zasobów w subskrypcji, kliknij link Nazwa zakresu. Aby wybrać zakres nadrzędny na dowolnym poziomie zagnieżdżonym, kliknij pozycję **Wybierz tę &lt;scope @ no__t-2** w górnej części selektora zakresów.
+Wszystkie widoki Cost Management w Azure Portal obejmują wybór **zakresu** pill w lewym górnym rogu widoku. Użyj go, aby szybko zmienić zakres. Kliknij **zakres** pill, aby otworzyć selektor zakresu. Są w nim wyświetlane konta rozliczeniowe, główna Grupa zarządzania i wszystkie subskrypcje, które nie są zagnieżdżone w głównej grupie zarządzania. Aby wybrać zakres, kliknij tło, aby je zaznaczyć, a następnie kliknij przycisk **Wybierz** w dolnej części. Aby przejść do szczegółów zakresów zagnieżdżonych, takich jak grupy zasobów w subskrypcji, kliknij link Nazwa zakresu. Aby wybrać zakres nadrzędny na dowolnym poziomie zagnieżdżonym, kliknij przycisk **zaznacz ten &lt;scope &gt;** w górnej części selektora zakresu.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Identyfikowanie identyfikatora zasobu dla zakresu
 

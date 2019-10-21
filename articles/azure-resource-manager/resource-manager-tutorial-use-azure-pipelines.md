@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 06/12/2019
+ms.date: 10/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 462d9cd6d2a911e660221621ebde5829e928cf00
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b176e97a546335f597d4cf424d7feb4f5fa0f775
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122225"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597252"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Samouczek: Ciągła integracja szablonów Azure Resource Manager z Azure Pipelines
 
@@ -91,7 +91,7 @@ To repozytorium jest określane jako *zdalne repozytorium*. Każdy deweloper teg
 
     Zastąp ciąg **[YourAccountName]** nazwą konta usługi GitHub i Zastąp ciąg **[YourGitHubRepositoryName]** nazwą swojego repozytorium utworzoną w poprzedniej procedurze.
 
-    Na poniższym zrzucie ekranu przedstawiono przykład.
+    Poniższy zrzut ekranu przedstawia przykład.
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines tworzenia witryny GitHub bash](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
 
@@ -126,7 +126,7 @@ Plik azuredeploy. JSON został dodany do repozytorium lokalnego. Następnie Prze
     ```
 
     Może pojawić się ostrzeżenie dotyczące LF. Możesz zignorować to ostrzeżenie. **główny** jest gałęzią główną.  Tworzona jest zwykle gałąź dla każdej aktualizacji. Aby uprościć samouczek, należy bezpośrednio użyć gałęzi głównej.
-1. Przejdź do repozytorium GitHub z przeglądarki.  Adres URL to  **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . W folderze jest widoczny folder **CreateAzureStorage** i plik **Azuredeploy. JSON** .
+1. Przejdź do repozytorium GitHub z przeglądarki.  Adres URL jest **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . W folderze jest widoczny folder **CreateAzureStorage** i plik **Azuredeploy. JSON** .
 
 Do tej pory utworzono repozytorium GitHub i przekazano szablon do repozytorium.
 
@@ -143,7 +143,7 @@ Aby można było wykonać następną procedurę, wymagana jest organizacja DevOp
 1. Wprowadź następujące wartości:
 
     * **Nazwa projektu**: Wprowadź nazwę projektu. Możesz użyć nazwy projektu, która została pobrana na początku samouczka.
-    * **Kontrola wersji**: Wybierz pozycję **git**. Może być konieczne rozszerzenie **Zaawansowane** , aby zobaczyć **kontrolę wersji**.
+    * **Kontrola wersji**: wybierz pozycję **git**. Może być konieczne rozszerzenie **Zaawansowane** , aby zobaczyć **kontrolę wersji**.
 
     Użyj wartości domyślnej dla innych właściwości.
 1. Wybierz pozycję **Create project** (Utwórz projekt).
@@ -158,7 +158,7 @@ Utwórz połączenie usługi używane do wdrażania projektów na platformie Azu
     * **Nazwa połączenia**: Wprowadź nazwę połączenia. Na przykład **AzureRmPipeline-poł**. Zapisz tę nazwę, podczas tworzenia potoku musisz mieć nazwę.
     * **Poziom zakresu**: Wybierz **subskrypcję**.
     * **Subskrypcja**: wybierz subskrypcję.
-    * **Grupa zasobów**: Pozostaw to pole puste.
+    * **Grupa zasobów**: pozostaw to pole puste.
     * **Zezwalaj wszystkim potokom na korzystanie z tego połączenia**. niezaznaczone
 1. Kliknij przycisk **OK**.
 
@@ -183,9 +183,11 @@ Aby utworzyć potok z krokiem do wdrożenia szablonu:
 
     ```yaml
     steps:
-    - task: AzureResourceGroupDeployment@2
+    - task: AzureResourceManagerTemplateDeployment@3
       inputs:
-        azureSubscription: '[YourServiceConnectionName]'
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: '[EnterYourServiceConnectionName]'
+        subscriptionName: '[EnterTheTargetSubscriptionID]'
         action: 'Create Or Update Resource Group'
         resourceGroupName: '[EnterANewResourceGroupName]'
         location: 'Central US'
@@ -200,14 +202,16 @@ Aby utworzyć potok z krokiem do wdrożenia szablonu:
 
     Wprowadź następujące zmiany:
 
-    * **azureSubscription**: zaktualizuj wartość przy użyciu połączenia usługi utworzonego w poprzedniej procedurze.
+    * **deloymentScope**: Wybierz zakres wdrożenia z opcji: `Management Group`, `Subscription` i `Resource Group`. Użyj **grupy zasobów** w tym samouczku. Aby dowiedzieć się więcej o zakresach, zobacz sekcję [Deployment Scopes](./resource-group-template-deploy-rest.md#deployment-scope).
+    * **ConnectedServiceName**: Określ nazwę połączenia usługi utworzoną wcześniej.
+    * **Subscriptionname**: Określ Identyfikator subskrypcji docelowej.
     * **Akcja**: Akcja **Utwórz lub Zaktualizuj grupę zasobów** wykonuje 2 akcje — 1. Utwórz grupę zasobów, jeśli podano nową nazwę grupy zasobów; dwóch. Wdróż określony szablon.
     * **resourceGroupName**: Określ nową nazwę grupy zasobów. Na przykład **AzureRmPipeline-RG**.
     * **Lokalizacja**: Określ lokalizację grupy zasobów.
     * **templateLocation**: po określeniu **połączonego artefaktu** zadanie szuka pliku szablonu bezpośrednio z połączonego repozytorium.
     * **csmFile** jest ścieżką do pliku szablonu. Nie musisz określać pliku parametrów szablonu, ponieważ wszystkie parametry zdefiniowane w szablonie mają wartości domyślne.
 
-    Aby uzyskać więcej informacji o zadaniu, zobacz [zadanie wdrażania grupy zasobów platformy Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)
+    Aby uzyskać więcej informacji o zadaniu, zobacz zadanie [wdrażania grupy zasobów platformy Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)i [zadanie wdrażania Azure Resource Manager szablonu](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 1. Wybierz polecenie **Zapisz i uruchom**.
 1. Wybierz pozycję **Zapisz i uruchom** ponownie. Kopia pliku YAML jest zapisywana w połączonym repozytorium. Plik YAML można zobaczyć, przechodzenie do repozytorium.
 1. Sprawdź, czy potok został pomyślnie wykonany.
@@ -216,10 +220,10 @@ Aby utworzyć potok z krokiem do wdrożenia szablonu:
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Otwórz grupę zasobów. Nazwa jest określona w pliku YAML potoku.  Zobaczysz jedno utworzone konto magazynu.  Nazwa konta magazynu rozpoczyna się od **zapisania**.
 1. Wybierz nazwę konta magazynu, aby go otworzyć.
-1. Wybierz **właściwości**. Zwróć uwagę, że **jednostka SKU** to **Standard_LRS**.
+1. Wybierz pozycję **Właściwości**. Zwróć uwagę, że **jednostka SKU** to **Standard_LRS**.
 
     ![Azure Resource Manager weryfikacji portalu usługi Azure DevOps Azure Pipelines](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 

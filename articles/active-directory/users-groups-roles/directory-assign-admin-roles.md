@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6e1ab2c2b02ab4279e95840135bdc87710cd66
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 56e5fb986431ec47a34b81491bc61b4c38a24e31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551665"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592884"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -224,12 +224,14 @@ Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjn
 > [!NOTE]
 > Globalna rola czytnika ma teraz kilka ograniczeń —
 >
->* Centrum administracyjne programu SharePoint — centrum administracyjne programu SharePoint nie obsługuje roli czytnika globalnego. Nie zobaczysz "SharePoint" w lewym okienku w obszarze centra administracyjne w [Microsoft 365 centrum administracyjnym](https://admin.microsoft.com/Adminportal/Home#/homepage), a w przypadku próby przejścia do *protokołu https://{Nazwa organizacji usługi Azure AD}-admin.SharePoint.com*zostanie wyświetlony dostęp zabroniony.
+>* Centrum administracyjne programu SharePoint — centrum administracyjne programu SharePoint nie obsługuje roli czytnika globalnego. Nie zobaczysz "SharePoint" w lewym okienku w obszarze centra administracyjne w [Microsoft 365 centrum administracyjnym](https://admin.microsoft.com/Adminportal/Home#/homepage).
+>* [Centrum administracyjne usługi OneDrive](https://admin.onedrive.com/) — centrum administracyjne usługi OneDrive nie obsługuje roli czytnika globalnego.
 >* [Portal usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) — globalny czytnik nie może odczytać trybu aprowizacji aplikacji dla przedsiębiorstw.
 >* [Centrum administracyjne M365](https://admin.microsoft.com/Adminportal/Home#/homepage) — globalny czytnik nie może odczytać żądań skrytki klienta. Nie znajdziesz karty **żądania skrytki klienta** w obszarze **Pomoc techniczna** w lewym okienku Centrum administracyjnego M365.
 >* [M365 Security Center](https://security.microsoft.com/homepage) — czytnik globalny nie może odczytać etykiet czułości i przechowywania. W lewym okienku Centrum zabezpieczeń M365 nie znajdziesz **etykiet czułości**, **etykiet przechowywania**oraz kart **analitycznych etykiet** .
 >* [Centrum administracyjne zespołów](https://admin.teams.microsoft.com) — globalny czytnik nie może odczytywać **zespołów cykl życia**, **Analiza & raporty**, **Zarządzanie urządzeniami telefonicznymi IP** i **wykaz aplikacji**.
 >* [Privileged Access Management (PAM)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) nie obsługuje roli czytnika globalnego.
+>* [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) — Global Reader jest obsługiwany tylko w przypadku [raportowania centralnego](https://docs.microsoft.com/azure/information-protection/reports-aip) i gdy dzierżawca nie znajduje się na [ujednoliconej platformie etykietowania](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform).
 >
 > Te funkcje są obecnie opracowywane.
 >

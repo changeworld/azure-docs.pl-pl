@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: dfd304b0c15b325208daba104bb79863fcd3f53f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 79bdfc84310686b2648e12d73d783de049e9d2fa
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527449"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596513"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Istnieje transformacja przepływu danych mapowania
 
@@ -20,11 +20,10 @@ Transformacja EXISTS to transformacja filtrowania wierszy, która sprawdza, czy 
 
 ## <a name="configuration"></a>Konfigurowanie
 
-Wybierz, który strumień danych ma być używany na liście rozwijanej **odpowiedniego strumienia** .
-
-Określ, czy chcesz, aby dane były już istniejące, czy nie istnieją w ustawieniu **typu istnieją** .
-
-Wybierz kolumny klucza, które mają zostać porównane jako warunki istnienia. Domyślnie przepływ danych wyszukuje równość między jedną kolumną w każdym strumieniu. Aby porównać za pośrednictwem wartości obliczeniowej, umieść kursor nad listą rozwijaną kolumny i wybierz **kolumnę obliczaną**.
+1. Wybierz, który strumień danych ma być używany na liście rozwijanej **odpowiedniego strumienia** .
+1. Określ, czy chcesz, aby dane były już istniejące, czy nie istnieją w ustawieniu **typu istnieją** .
+1. Wybierz, czy chcesz utworzyć **wyrażenie niestandardowe**.
+1. Wybierz kolumny klucza, które mają zostać porównane jako warunki istnienia. Domyślnie przepływ danych wyszukuje równość między jedną kolumną w każdym strumieniu. Aby porównać przez obliczoną wartość, umieść kursor na liście rozwijanej kolumny i wybierz **kolumnę obliczaną**.
 
 ![Istnieją ustawienia](media/data-flow/exists.png "Istnieje 1")
 
