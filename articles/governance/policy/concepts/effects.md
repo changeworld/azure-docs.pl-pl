@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9a21242cbb16466ed4c12746ff64bd7352925fed
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330765"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592800"
 ---
 # <a name="understand-azure-policy-effects"></a>Zrozumienie efektów Azure Policy
 
@@ -82,7 +82,7 @@ Przykład 1: pojedynczej pary **pól/wartości** przy użyciu [aliasu](definitio
 }
 ```
 
-Przykład 2: pojedyncze pary **pól/wartości** przy użyciu [aliasu](definition-structure.md#aliases) **[\*]** z **wartością** tablicy, aby ustawić reguły adresów IP na koncie magazynu. Używając aliasu **[\*]** , efekt dołącza **wartość** do potencjalnie istniejącej tablicy. Jeśli tablica jeszcze nie istnieje, zostanie utworzona.
+Przykład 2: pojedyncze pary **pól/wartości** przy użyciu [aliasu](definition-structure.md#aliases) **[\*]** z **wartością** tablicy, aby ustawić reguły adresów IP na koncie magazynu. Korzystając z aliasu **[\*]** , efekt dołącza **wartość** do potencjalnie istniejącej tablicy. Jeśli tablica jeszcze nie istnieje, zostanie utworzona.
 
 ```json
 "then": {
@@ -152,7 +152,7 @@ Tablica właściwości **operacji** umożliwia zmianę kilku tagów na różne s
         {
             "operation": "addOrReplace",
             "field": "tags['Dept']",
-            "field": "[parameters('DeptName')]"
+            "value": "[parameters('DeptName')]"
         }
     ]
 }
@@ -275,7 +275,7 @@ Właściwość **Details** efektów AuditIfNotExists ma wszystkie właściwości
   - Jeśli **details. Type** jest typem zasobu poniżej zasobu warunku **if** , zasady zapytania dotyczące zasobów tego **typu** w zakresie szacowanego zasobu. W przeciwnym razie zapytania zasad w ramach tej samej grupy zasobów co obliczony zasób.
 - **Nazwa** (opcjonalnie)
   - Określa dokładną nazwę zasobu do dopasowania i powoduje, że zasady umożliwiają pobranie jednego określonego zasobu zamiast wszystkich zasobów określonego typu.
-  - Gdy wartości warunku dla opcji **IF. Field. Type** i **then. details. Type** są zgodne, należy _podać_ **nazwę** i musi być `[field('name')]`. Jednak zamiast tego należy rozważyć efekt [inspekcji](#audit) .
+  - Gdy wartości warunku dla opcji **IF. Field. Type** i **then. details. Type** są zgodne, **Nazwa** jest _wymagana_ i musi być `[field('name')]`. Jednak zamiast tego należy rozważyć efekt [inspekcji](#audit) .
 - **ResourceGroupName** (opcjonalnie)
   - Umożliwia dopasowanie powiązanego zasobu do pochodzącego z innej grupy zasobów.
   - Nie ma zastosowania, jeśli **Typ** jest zasobem, który byłby poniżej zasobu warunku **if** .
@@ -346,7 +346,7 @@ Właściwość **Details** efektu DeployIfNotExists ma wszystkie właściwości,
   - Uruchamia się, próbując pobrać zasób poniżej zasobu warunku **if** , a następnie wykonać zapytania w tej samej grupie zasobów co zasób warunku **if** .
 - **Nazwa** (opcjonalnie)
   - Określa dokładną nazwę zasobu do dopasowania i powoduje, że zasady umożliwiają pobranie jednego określonego zasobu zamiast wszystkich zasobów określonego typu.
-  - Gdy wartości warunku dla opcji **IF. Field. Type** i **then. details. Type** są zgodne, należy _podać_ **nazwę** i musi być `[field('name')]`.
+  - Gdy wartości warunku dla opcji **IF. Field. Type** i **then. details. Type** są zgodne, **Nazwa** jest _wymagana_ i musi być `[field('name')]`.
 - **ResourceGroupName** (opcjonalnie)
   - Umożliwia dopasowanie powiązanego zasobu do pochodzącego z innej grupy zasobów.
   - Nie ma zastosowania, jeśli **Typ** jest zasobem, który byłby poniżej zasobu warunku **if** .
