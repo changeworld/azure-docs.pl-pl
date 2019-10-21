@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 45bc55141c9f338ae2f69cf4ccefae3d2492b239
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 28502c49c0eebce84ffd5aa376e7b20bd52213c0
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336932"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674983"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -54,7 +54,7 @@ W wersji 2. x narzędzi jest używane środowisko uruchomieniowe Azure Functions
 > [!IMPORTANT]
 > Istnieje możliwość obejścia wymagania dotyczącego instalowania zestawu SDK platformy .NET Core 2. x przy użyciu [Pakiety rozszerzeń].
 
-#### <a name="windows-npm"></a>Windows
+#### <a name="windows-npm"></a>Systemy
 
 Poniższe kroki służą do instalowania podstawowych narzędzi w systemie Windows przy użyciu programu npm. Możesz również użyć [czekolady](https://chocolatey.org/). Aby uzyskać więcej informacji, zobacz [plik Readme podstawowych narzędzi](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
@@ -113,14 +113,14 @@ Poniższe kroki używają [apt](https://wiki.debian.org/Apt) do instalowania pod
 
 1. Sprawdź plik `/etc/apt/sources.list.d/dotnetdev.list` dla jednego z odpowiednich ciągów wersji systemu Linux wymienionych poniżej:
 
-    | Dystrybucja systemu Linux | Version |
+    | Dystrybucja systemu Linux | Wersja |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17.04    | `zesty`     |
+    | Ubuntu 17,04    | `zesty`     |
     | Ubuntu 16.04/Linux mennic 18    | `xenial`  |
 
 1. Uruchom aktualizację źródła APT:
@@ -173,12 +173,12 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
-`func init` obsługuje następujące opcje, które są dostępne tylko w wersji 2. x, chyba że wskazano inaczej:
+`func init` obsługuje następujące opcje, które są dostępne tylko w wersji 2. x, chyba że zaznaczono inaczej:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
 | **`--csx`** | Inicjuje projekt C# skryptu (. CSX). W kolejnych poleceniach należy określić `--csx`. |
-| **`--docker`** | Utwórz pliku dockerfile dla kontenera przy użyciu obrazu podstawowego, który jest oparty na wybranym `--worker-runtime`. Użyj tej opcji, jeśli planujesz publikowanie do niestandardowego kontenera systemu Linux. |
+| **`--docker`** | Utwórz pliku dockerfile dla kontenera przy użyciu obrazu podstawowego, który jest oparty na wybranych `--worker-runtime`. Użyj tej opcji, jeśli planujesz publikowanie do niestandardowego kontenera systemu Linux. |
 | **`--force`** | Zainicjuj projekt nawet wtedy, gdy istnieją pliki w projekcie. To ustawienie zastępuje istniejące pliki o tej samej nazwie. Nie ma to wpływu na inne pliki w folderze projektu. |
 | **`--no-source-control -n`** | Zapobiega domyślnym tworzeniu repozytorium Git w wersji 1. x. W wersji 2. x repozytorium Git nie jest tworzone domyślnie. |
 | **`--source-control`** | Określa, czy tworzone jest repozytorium git. Domyślnie repozytorium nie jest tworzone. Gdy `true`, tworzone jest repozytorium. |
@@ -196,13 +196,13 @@ Domyślnie te ustawienia nie są migrowane automatycznie, gdy projekt jest publi
 Wartości ustawień aplikacji funkcji można także odczytać w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji, zobacz sekcję zmienne środowiskowe w następujących tematach referencyjnych dotyczących języka:
 
 * [C#prekompilowanego](functions-dotnet-class-library.md#environment-variables)
-* [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
+* [C#skrypt (. CSX)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
 Gdy nie ustawiono prawidłowych parametrów połączenia magazynu dla [`AzureWebJobsStorage`] i emulator nie jest używany, zostanie wyświetlony następujący komunikat o błędzie:
 
-> Brak wartości elementu AzureWebJobsStorage w pliku Local. Settings. JSON. Jest to wymagane dla wszystkich wyzwalaczy innych niż HTTP. Można uruchomić polecenie "Func Azure functionapp Fetch-App-Settings \<functionAppName @ no__t-1" lub określić parametry połączenia w pliku Local. Settings. JSON.
+> Brak wartości elementu AzureWebJobsStorage w pliku Local. Settings. JSON. Jest to wymagane dla wszystkich wyzwalaczy innych niż HTTP. Można uruchomić polecenie "Func Azure functionapp Fetch-App-Settings \<functionAppName \>" lub określić parametry połączenia w pliku Local. Settings. JSON.
 
 ### <a name="get-your-storage-connection-strings"></a>Pobieranie parametrów połączenia magazynu
 
@@ -330,12 +330,12 @@ func host start
 | **`--cors-credentials`** | Zezwalaj na żądania uwierzytelniane między źródłami (np. pliki cookie i nagłówek uwierzytelniania) tylko w wersji 2. x. |
 | **`--cors`** | Rozdzielana przecinkami lista źródeł CORS bez spacji. |
 | **`--language-worker`** | Argumenty umożliwiające skonfigurowanie procesu roboczego języka. Tylko wersja 2. x. |
-| **`--nodeDebugPort -n`** | Port do użycia przez debuger węzła. Wartooć Wartość z pliku Launch. JSON lub 5858. Tylko wersja 1. x. |
+| **`--nodeDebugPort -n`** | Port do użycia przez debuger węzła. Domyślnie: wartość z pliku Launch. JSON lub 5858. Tylko wersja 1. x. |
 | **`--password`** | Hasło lub plik zawierający hasło dla pliku PFX. Używane tylko z `--cert`. Tylko wersja 2. x. |
 | **`--port -p`** | Port lokalny, na którym nasłuchuje. Wartość domyślna: 7071. |
 | **`--pause-on-error`** | Wstrzymaj, aby uzyskać dodatkowe dane wejściowe przed wyjściem z procesu. Używane tylko w przypadku uruchamiania podstawowych narzędzi z zintegrowanego środowiska programistycznego (IDE).|
-| **`--script-root --prefix`** | Służy do określania ścieżki do katalogu głównego aplikacji funkcji, która ma być uruchamiana lub wdrażana. Służy do kompilowania projektów, które generują pliki projektu w podfolderze. Na przykład podczas kompilowania projektu biblioteki C# klas plik host. JSON, Local. Settings. JSON i Function. JSON jest generowany w podfolderze *głównym* z ścieżką taką jak `MyProject/bin/Debug/netstandard2.0`. W takim przypadku Ustaw prefiks jako `--script-root MyProject/bin/Debug/netstandard2.0`. Jest to katalog główny aplikacji funkcji w przypadku uruchamiania na platformie Azure. |
-| **`--timeout -t`** | Limit czasu uruchamiania hosta usługi Functions (w sekundach). Wartooć 20 sekund.|
+| **`--script-root --prefix`** | Służy do określania ścieżki do katalogu głównego aplikacji funkcji, która ma być uruchamiana lub wdrażana. Służy do kompilowania projektów, które generują pliki projektu w podfolderze. Na przykład podczas kompilowania projektu biblioteki C# klas plik host. JSON, Local. Settings. JSON i Function. JSON jest generowany w podfolderze *głównym* z ścieżką taką jak `MyProject/bin/Debug/netstandard2.0`. W takim przypadku należy ustawić prefiks jako `--script-root MyProject/bin/Debug/netstandard2.0`. Jest to katalog główny aplikacji funkcji w przypadku uruchamiania na platformie Azure. |
+| **`--timeout -t`** | Limit czasu uruchamiania hosta usługi Functions (w sekundach). Wartość domyślna: 20 sekund.|
 | **`--useHttps`** | Powiąż z `https://localhost:{port}`, a nie `http://localhost:{port}`. Domyślnie ta opcja tworzy zaufany certyfikat na komputerze.|
 
 Po uruchomieniu hosta funkcji wyświetla adres URL funkcji wyzwalanych przez protokół HTTP:
@@ -368,13 +368,13 @@ Przywołująsz następujący punkt końcowy do lokalnego uruchamiania funkcji HT
 
 Upewnij się, że używasz tej samej nazwy serwera i portu, na którym nasłuchuje hosty funkcji. Ta wartość jest wyświetlana w danych wyjściowych generowanych podczas uruchamiania hosta funkcji. Możesz wywołać ten adres URL przy użyciu dowolnej metody HTTP obsługiwanej przez wyzwalacz.
 
-Następujące polecenie zwinięcie wyzwala funkcję szybkiego startu `MyHttpTrigger` z żądania GET z parametrem _name_ przekazaną w ciągu zapytania.
+Następujące polecenie zwinięcie wyzwala funkcję `MyHttpTrigger` szybkiego startu z żądania GET z parametrem _name_ przekazaną w ciągu zapytania.
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
-Poniższy przykład to ta sama funkcja wywołana z żądania POST w treści żądania :
+Poniższy przykład to ta sama funkcja wywołana z żądania _post w treści_ żądania:
 
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
@@ -398,7 +398,7 @@ Aby przekazać dane testowe do punktu końcowego administratora funkcji, należy
 }
 ```
 
-Wartość `<trigger_input>` zawiera dane w formacie oczekiwanym przez funkcję. Poniższy przykład założenia jest WPISem do funkcji `QueueTriggerJS`. W tym przypadku dane wejściowe to ciąg, który jest odpowiednikiem komunikatu, który powinien zostać znaleziony w kolejce.
+Wartość `<trigger_input>` zawiera dane w formacie oczekiwanym przez funkcję. Poniższy przykład zazwinięcia jest WPISem do funkcji `QueueTriggerJS`. W tym przypadku dane wejściowe to ciąg, który jest odpowiednikiem komunikatu, który powinien zostać znaleziony w kolejce.
 
 ```bash
 curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
@@ -409,7 +409,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 >[!IMPORTANT]
 > Polecenie `func run` nie jest obsługiwane w wersji 2. x narzędzi. Aby uzyskać więcej informacji, zobacz temat [jak dowiedzieć się, jak kierować Azure Functions wersji środowiska uruchomieniowego](set-runtime-version.md).
 
-Można również wywołać funkcję bezpośrednio przy użyciu `func run <FunctionName>` i podać dane wejściowe dla funkcji. To polecenie jest podobne do uruchamiania funkcji za pomocą karty **test** w Azure Portal.
+Możesz również wywołać funkcję bezpośrednio przy użyciu `func run <FunctionName>` i podać dane wejściowe dla funkcji. To polecenie jest podobne do uruchamiania funkcji za pomocą karty **test** w Azure Portal.
 
 `func run` obsługuje następujące opcje:
 
@@ -441,7 +441,7 @@ Aby opublikować kod lokalny w aplikacji funkcji na platformie Azure, użyj pole
 func azure functionapp publish <FunctionAppName>
 ```
 
-To polecenie publikuje w istniejącej aplikacji funkcji na platformie Azure. Wystąpi błąd podczas próby opublikowania w `<FunctionAppName>`, który nie istnieje w Twojej subskrypcji. Aby dowiedzieć się, jak utworzyć aplikację funkcji z poziomu wiersza polecenia lub okna terminalu przy użyciu interfejsu CLI platformy Azure, zobacz [tworzenie aplikacja funkcji do wykonywania bezserwerowego](./scripts/functions-cli-create-serverless.md). Domyślnie to polecenie wdraża aplikację do [uruchamiania z pakietu wdrożeniowego](run-functions-from-deployment-package.md). Aby wyłączyć ten zalecany tryb wdrażania, użyj opcji `--nozip`.
+To polecenie publikuje w istniejącej aplikacji funkcji na platformie Azure. Wystąpi błąd podczas próby opublikowania w `<FunctionAppName>`, który nie istnieje w Twojej subskrypcji. Aby dowiedzieć się, jak utworzyć aplikację funkcji z poziomu wiersza polecenia lub okna terminalu przy użyciu interfejsu CLI platformy Azure, zobacz [tworzenie aplikacja funkcji do wykonywania bezserwerowego](./scripts/functions-cli-create-serverless.md). Domyślnie to polecenie korzysta z [kompilacji zdalnej](functions-deployment-technologies.md#remote-build) i wdraża aplikację do [uruchamiania z pakietu wdrożeniowego](run-functions-from-deployment-package.md). Aby wyłączyć ten zalecany tryb wdrażania, użyj opcji `--nozip`.
 
 >[!IMPORTANT]
 > Podczas tworzenia aplikacji funkcji w Azure Portal jest domyślnie używane środowisko uruchomieniowe funkcji w wersji 2. x. Aby aplikacja funkcji korzystała z wersji 1. x środowiska uruchomieniowego, postępuj zgodnie z instrukcjami w temacie [Run on Version 1. x](functions-versions.md#creating-1x-apps).
@@ -452,7 +452,7 @@ Poniższe opcje publikowania dotyczą obu wersji, 1. x i 2. x:
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Publikuj ustawienia w pliku Local. Settings. JSON na platformie Azure, monitując o zastąpienie, jeśli to ustawienie już istnieje. Jeśli używasz emulatora magazynu, najpierw Zmień ustawienie aplikacji na [rzeczywiste połączenie magazynu](#get-your-storage-connection-strings). |
-| **`--overwrite-settings -y`** | Pomiń monit o zastąpienie ustawień aplikacji, gdy zostanie użyta wartość `--publish-local-settings -i`.|
+| **`--overwrite-settings -y`** | Pomiń monit o zastąpienie ustawień aplikacji, gdy zostanie użyta `--publish-local-settings -i`.|
 
 Następujące opcje publikowania są obsługiwane tylko w wersji 2. x:
 
@@ -463,6 +463,7 @@ Następujące opcje publikowania są obsługiwane tylko w wersji 2. x:
 | **`--list-included-files`** | Wyświetla listę opublikowanych plików, która jest oparta na pliku. funcignore. |
 | **`--nozip`** | Wyłącza domyślny tryb `Run-From-Package`. |
 | **`--build-native-deps`** | Pomija generowanie folderu. kół podczas publikowania aplikacji funkcji języka Python. |
+| **`--build [-b]`** | Wykonuje akcję kompilacji podczas wdrażania w aplikacji funkcji systemu Linux. (akceptowane: zdalne, lokalne) |
 | **`--additional-packages`** | Lista pakietów do zainstalowania podczas kompilowania natywnych zależności. Na przykład: `python3-dev libevent-dev`. |
 | **`--force`** | Ignoruj weryfikację przed publikacją w określonych scenariuszach. |
 | **`--csx`** | Opublikuj projekt C# skryptu (. CSX). |
@@ -520,5 +521,5 @@ Aby zgłosić błąd lub żądanie funkcji, [Otwórz problem z usługą GitHub](
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
 [Pakiety rozszerzeń]: functions-bindings-register.md#extension-bundles

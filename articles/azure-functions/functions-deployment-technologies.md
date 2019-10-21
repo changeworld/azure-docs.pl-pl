@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: f468b2afce1609de126859546a72544ba403424e
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 4d32a652219d48a2cc101259ea6b76fbfa910821
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838886"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674959"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie wdrażania w Azure Functions
 
@@ -26,7 +26,7 @@ Do wdrożenia kodu projektu Azure Functions na platformie Azure można użyć ki
 Azure Functions obsługuje Międzyplatformowe programowanie lokalne i hosting w systemach Windows i Linux. Obecnie dostępne są trzy plany hostingu:
 
 + [Wyrażon](functions-scale.md#consumption-plan)
-+ [Tytułu](functions-scale.md#premium-plan)
++ [Premium](functions-scale.md#premium-plan)
 + [Dedykowane (App Service)](functions-scale.md#app-service-plan)
 
 Każdy plan ma inne zachowania. Nie wszystkie technologie wdrażania są dostępne dla każdej wersji Azure Functions. Na poniższym wykresie przedstawiono, które technologie wdrażania są obsługiwane dla każdej kombinacji systemu operacyjnego i planu hostingu:
@@ -63,27 +63,26 @@ Po zmianie któregokolwiek z wyzwalaczy infrastruktura funkcji musi pamiętać o
 Azure Functions może automatycznie wykonywać kompilacje na kodzie, który odbiera po wdrożeniach zip. Te kompilacje działają nieco inaczej w zależności od tego, czy aplikacja działa w systemie Windows, czy Linux. Kompilacje zdalne nie są wykonywane, gdy aplikacja została wcześniej ustawiona do uruchamiania w trybie [uruchamiania z pakietu](run-functions-from-deployment-package.md) . Aby dowiedzieć się, jak korzystać z kompilacji zdalnej, przejdź do pliku [zip Deploy](#zip-deploy).
 
 > [!NOTE]
-> Jeśli masz problemy z kompilacją zdalną, może to być spowodowane tym, że aplikacja została utworzona przed udostępnieniem funkcji (1 sierpnia 2019). Spróbuj utworzyć nową aplikację funkcji.
+> Jeśli masz problemy z kompilacją zdalną, może to być spowodowane tym, że aplikacja została utworzona przed udostępnieniem funkcji (1 sierpnia 2019). Spróbuj utworzyć nową aplikację funkcji lub uruchomić `az functionapp update -g <RESOURCE_GROUP_NAME> -n <APP_NAME>`, aby zaktualizować aplikację funkcji. Wykonanie tego polecenia może potrwać dwie próby.
 
 #### <a name="remote-build-on-windows"></a>Kompilacja zdalna w systemie Windows
 
 Wszystkie aplikacje funkcji działające w systemie Windows mają małą aplikację do zarządzania, witrynę SCM (lub [kudu](https://github.com/projectkudu/kudu)). Ta lokacja obsługuje wiele wdrożeń i logikę kompilacji dla Azure Functions.
 
-Gdy aplikacja jest wdrażana w systemie Windows, uruchamiane są polecenia specyficzne dla języka, takie jakC#`dotnet restore` () lub `npm install` (JavaScript).
+Gdy aplikacja jest wdrażana w systemie Windows, uruchamiane są polecenia specyficzne dla języka,C#takie jak `dotnet restore` () lub `npm install` (JavaScript).
 
-#### <a name="remote-build-on-linux-preview"></a>Kompilacja zdalna w systemie Linux (wersja zapoznawcza)
+#### <a name="remote-build-on-linux"></a>Kompilacja zdalna w systemie Linux
 
-Aby włączyć kompilację zdalną w systemie Linux, należy ustawić następujące [Ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings):
+Aby włączyć kompilację zdalną w systemie Linux, należy ustawić następujące [Ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings) :
 
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Gdy aplikacje są kompilowane zdalnie w systemie Linux, są one [uruchamiane z pakietu wdrożeniowego](run-functions-from-deployment-package.md).
+Domyślnie zarówno [Azure Functions Core Tools](functions-run-local.md) , jak i [rozszerzenie Azure Functions dla Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) wykonują kompilacje zdalne podczas wdrażania w systemie Linux. W związku z tym oba narzędzia automatycznie tworzą te ustawienia na platformie Azure. 
 
-> [!NOTE]
-> Kompilacja zdalna w ramach planu dedykowanego (App Service) systemu Linux jest obecnie obsługiwana tylko dla środowiska Node. js i języka Python.
+Gdy aplikacje są kompilowane zdalnie w systemie Linux, są one [uruchamiane z pakietu wdrożeniowego](run-functions-from-deployment-package.md). 
 
-##### <a name="consumption-preview-plan"></a>Plan zużycia (wersja zapoznawcza)
+##### <a name="consumption-plan"></a>Plan Zużycie
 
 Aplikacje funkcji systemu Linux działające w ramach planu zużycia nie mają witryny SCM/kudu, która ogranicza opcje wdrażania. Jednak aplikacje funkcji w systemie Linux działające w ramach planu zużycia obsługują kompilacje zdalne.
 
@@ -103,23 +102,15 @@ Możesz użyć zewnętrznego adresu URL pakietu, aby odwołać się do pliku pak
 >
 >Jeśli używasz usługi Azure Blob Storage, użyj prywatnego kontenera z [sygnaturą dostępu współdzielonego](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) , aby zapewnić funkcje dostępu do pakietu. Za każdym razem, gdy aplikacja zostanie ponownie uruchomiona, pobiera kopię zawartości. Twoje odwołanie musi być ważne przez okres istnienia aplikacji.
 
->__Kiedy używać go:__ Zewnętrzny adres URL pakietu to jedyna obsługiwana metoda wdrażania dla Azure Functions działających w systemie Linux w planie zużycia, jeśli użytkownik nie chce, aby zdalna kompilacja była wykonywana. Gdy aktualizujesz plik pakietu, do którego odwołuje się aplikacja funkcji, musisz [ręcznie zsynchronizować wyzwalacze](#trigger-syncing) , aby poinformować platformę Azure, że Twoja aplikacja uległa zmianie.
+>__Kiedy używać go:__ Zewnętrzny adres URL pakietu to jedyna obsługiwana metoda wdrażania dla Azure Functions uruchamiana w systemie Linux w planie zużycia, jeśli użytkownik nie chce, aby [zdalna kompilacja](#remote-build) była wykonywana. Gdy aktualizujesz plik pakietu, do którego odwołuje się aplikacja funkcji, musisz [ręcznie zsynchronizować wyzwalacze](#trigger-syncing) , aby poinformować platformę Azure, że Twoja aplikacja uległa zmianie.
 
 ### <a name="zip-deploy"></a>Wdróż plik zip
 
 Użyj narzędzia zip Deploy, aby wypchnąć plik zip, który zawiera aplikację funkcji na platformie Azure. Opcjonalnie możesz ustawić aplikację, aby rozpocząć [Uruchamianie z pakietu](run-functions-from-deployment-package.md)lub określić, że [kompilacja zdalna](#remote-build) jest wykonywana.
 
->__Jak z niej korzystać:__ Wdróż przy użyciu ulubionego narzędzia klienckiego: [vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)lub [interfejsu wiersza polecenia platformy Azure](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Aby ręcznie wdrożyć plik zip w aplikacji funkcji, postępuj zgodnie z instrukcjami w temacie [Deploy from a. zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+>__Jak z niej korzystać:__ Wdróż przy użyciu ulubionego narzędzia klienckiego: [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure), [Azure Functions Core Tools](functions-run-local.md)lub [interfejsu wiersza polecenia platformy Azure](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Domyślnie narzędzia te używają wdrożenia zip i [uruchamiania z pakietu](run-functions-from-deployment-package.md). Podstawowe narzędzia i rozszerzenie Visual Studio Code umożliwiają [zdalne Kompilowanie](#remote-build) podczas wdrażania w systemie Linux. Aby ręcznie wdrożyć plik zip w aplikacji funkcji, postępuj zgodnie z instrukcjami w temacie [Deploy from a. zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
-Aby przeprowadzić wdrożenie zip przy użyciu [kompilacji zdalnej](#remote-build), użyj następującego [podstawowego narzędzia narzędzi](functions-run-local.md) :
-
-```bash
-func azure functionapp publish <app name> --build remote
-```
-
-Alternatywnie można wydać VS Code, aby wykonać kompilację zdalną podczas wdrażania przez dodanie flagi "azureFunctions. scmDoBuildDuringDeployment". Aby dowiedzieć się, jak dodać flagę do VS Code, przeczytaj instrukcje w [witrynie typu wiki rozszerzenia Azure Functions](https://github.com/microsoft/vscode-azurefunctions/wiki).
-
->Podczas wdrażania przy użyciu narzędzia zip Deploy można ustawić [Uruchamianie aplikacji z pakietu](run-functions-from-deployment-package.md). Aby uruchomić z pakietu, ustaw wartość ustawienia aplikacji `WEBSITE_RUN_FROM_PACKAGE` na `1`. Zalecamy wdrożenie pliku zip. Zapewnia ona krótszy czas ładowania aplikacji i jest to wartość domyślna dla VS Code, Visual Studio i interfejsu wiersza polecenia platformy Azure. 
+>Podczas wdrażania przy użyciu narzędzia zip Deploy można ustawić [Uruchamianie aplikacji z pakietu](run-functions-from-deployment-package.md). Aby uruchomić z pakietu, ustaw wartość ustawienia `WEBSITE_RUN_FROM_PACKAGE` aplikacji na `1`. Zalecamy wdrożenie pliku zip. Zapewnia ona krótszy czas ładowania aplikacji i jest to wartość domyślna dla VS Code, Visual Studio i interfejsu wiersza polecenia platformy Azure. 
 
 >__Kiedy używać go:__ Wdrożenie zip jest zalecaną technologią wdrażania dla Azure Functions.
 
@@ -154,7 +145,7 @@ Użyj kontroli źródła, aby połączyć aplikację funkcji z repozytorium git.
 
 >__Kiedy używać go:__ Użycie kontroli źródła jest najlepszym rozwiązaniem dla zespołów, które współpracują ze swoimi aplikacjami funkcji. Kontrola źródła jest dobrą opcją wdrażania, która umożliwia bardziej zaawansowane potoki wdrażania.
 
-### <a name="local-git"></a>Lokalny git
+### <a name="local-git"></a>Lokalna usługa Git
 
 Możesz użyć lokalnego narzędzia Git do wypychania kodu z komputera lokalnego do Azure Functions przy użyciu narzędzia Git.
 
@@ -182,7 +173,7 @@ Za pomocą protokołu FTP można bezpośrednio przetransferować pliki do Azure 
 
 W edytorze opartym na portalu można bezpośrednio edytować pliki znajdujące się w aplikacji funkcji (zasadniczo wdrażane za każdym razem, gdy zapisujesz zmiany).
 
->__Jak z niej korzystać:__ Aby móc edytować funkcje w Azure Portal, musisz [utworzyć funkcje w portalu](functions-create-first-azure-function.md). Aby zachować pojedyncze Źródło prawdy, przy użyciu dowolnej innej metody wdrażania funkcja jest tylko do odczytu i zapobiega edytowaniu portalu. Aby powrócić do stanu, w którym można edytować pliki w Azure Portal, można ręcznie włączyć tryb edycji z powrotem do `Read/Write` i usunąć wszystkie ustawienia aplikacji związane z wdrożeniem (takie jak `WEBSITE_RUN_FROM_PACKAGE`). 
+>__Jak z niej korzystać:__ Aby móc edytować funkcje w Azure Portal, musisz [utworzyć funkcje w portalu](functions-create-first-azure-function.md). Aby zachować pojedyncze Źródło prawdy, przy użyciu dowolnej innej metody wdrażania funkcja jest tylko do odczytu i zapobiega edytowaniu portalu. Aby powrócić do stanu, w którym można edytować pliki w Azure Portal, można ręcznie włączyć tryb edycji z powrotem do `Read/Write` i usunąć wszystkie ustawienia aplikacji powiązane z wdrożeniem (takie jak `WEBSITE_RUN_FROM_PACKAGE`). 
 
 >__Kiedy używać go:__ Portal jest dobrym sposobem na rozpoczęcie pracy z Azure Functions. Aby uzyskać więcej intensywnych prac programistycznych, zalecamy użycie jednego z następujących narzędzi klienta:
 >
@@ -195,10 +186,10 @@ W poniższej tabeli przedstawiono systemy operacyjne i języki obsługujące edy
 | | Użycie systemu Windows | Windows Premium (wersja zapoznawcza) | Dedykowane systemu Windows | Użycie systemu Linux | Linux Premium (wersja zapoznawcza)| System Linux — dedykowany |
 |-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
-| C#Napisy |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
+| C#Napisy |✔|✔|✔| |✔<sup> \*</sup> |✔<sup> \*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
-| JavaScript (Node. js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
+| JavaScript (Node.js) |✔|✔|✔| |✔<sup> \*</sup>|✔<sup> \*</sup>|
 | Python (wersja zapoznawcza) | | | | | | |
 | PowerShell (wersja zapoznawcza) |✔|✔|✔| | | |
 | TypeScript (Node. js) | | | | | | |
@@ -213,7 +204,7 @@ Po wdrożeniu aplikacji funkcji na platformie Azure można wdrożyć ją w osobn
 
 Przeczytaj te artykuły, aby dowiedzieć się więcej o wdrażaniu aplikacji funkcji: 
 
-+ [Ciągłe wdrażanie dla Azure Functions](functions-continuous-deployment.md)
++ [Ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md)
 + [Ciągłe dostarczanie za pomocą usługi Azure DevOps](functions-how-to-azure-devops.md)
 + [Wdrożenia ZIP dla Azure Functions](deployment-zip-push.md)
 + [Uruchamianie Azure Functions z pliku pakietu](run-functions-from-deployment-package.md)

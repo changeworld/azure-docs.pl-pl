@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 10/18/2019
 ms.author: spelluru
-ms.openlocfilehash: e2831191905da1b9e0ad55131be9eaa7aa13950e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 842392ab425628a1c82a39e25a65066064747211
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777636"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675754"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Samouczek: śledzenie użycia laboratorium w usłudze Azure Lab Service
 W tym samouczku zostanie pokazane, w jaki sposób twórca/właściciel laboratorium może śledzić użycie laboratorium.
@@ -49,19 +49,12 @@ W tym samouczku wykonasz następujące czynności:
     ![Użycie maszyny wirtualnej](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>Zarządzanie maszynami wirtualnymi uczniów 
-Po umieszczeniu wskaźnika myszy nad wierszem na liście maszyn wirtualnych zostaną wyświetlone funkcje sterowania umożliwiające wykonywanie następujących zadań (jak pokazano na ilustracji w poprzedniej sekcji): 
-
-- Łączenie z maszyną wirtualną
-- Uruchamianie maszyny wirtualnej
-- Zatrzymywanie maszyny wirtualnej
-- Usuwanie maszyny wirtualnej
-
+Na tej stronie można uruchamiać, zatrzymywać lub resetować maszyny wirtualne uczniów przy użyciu jednej z list rozwijanych w kolumnie **stan** lub przyciski na pasku narzędzi. 
 
 ![Funkcje sterowania maszyny wirtualnej](../media/tutorial-track-usage/vm-controls.png)
 
 Za pomocą przycisków paska narzędzi możesz również uruchomić, zatrzymać lub usunąć maszynę wirtualną. 
 
 
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat laboratoriów na potrzeby zajęć, zobacz artykuły w sekcji [Przewodniki z instrukcjami](how-to-manage-lab-accounts.md).

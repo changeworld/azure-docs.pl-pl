@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bdb0322083f842922359f0c91da77f5df81613cb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201639"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675812"
 ---
 # <a name="supported-platforms"></a>Obsługiwane platformy 
 
@@ -41,15 +41,15 @@ W poniższych sekcjach wymieniono obsługiwane systemy operacyjne serwera, na kt
 
 ### Systemy operacyjne Windows Server<a name="os-windows"></a>
 
-* Windows Server 2019
-* Windows Server 2016
-* Windows Server 2012 R2
-* Windows Server 2012
-* Windows Server 2008 R2
-* Windows Server 2008
-
-> [!NOTE]
-> Integracja z usługą Microsoft Defender ATP obsługuje tylko systemy Windows Server 2012 R2 i Windows Server 2016.
+[!div class="mx-tableFixed"]
+|System operacyjny|Obsługiwane przez Azure Security Center|Obsługa integracji z usługą Microsoft Defender ATP|
+|---|---|---|
+|Windows Server 2019|✔|X|
+|Windows Server 2016|✔|✔|
+|Windows Server 2012 R2|✔|✔|
+|Windows Server 2012|✔|✔|
+|Windows Server 2008 R2|✔|✔|
+|Windows Server 2008|✔|✔|
 
 Aby dowiedzieć się więcej o obsługiwanych funkcjach systemów operacyjnych Windows wymienionych powyżej, zobacz [funkcje obsługiwane przez maszynę wirtualną/serwer](security-center-services.md##vm-server-features).
 
@@ -94,26 +94,26 @@ Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Ce
 * MySQL
 * CosmosDB
 * Konto magazynu
-* App Service
+* Usługa App Service
 * Funkcja
 * Usługa w chmurze
-* Sieć wirtualna
-* Subnet
-* NIC
+* VNet
+* Podsieć
+* Karta sieciowa
 * Sieciowa grupa zabezpieczeń
 * Konto usługi Batch
 * Konto usługi Service Fabric
 * Konto usługi Automation
 * Moduł równoważenia obciążenia
-* Wyszukiwanie
-* Przestrzeń nazw magistrala usług
+* Search
+* Przestrzeń nazw usługi Service Bus
 * Stream Analytics
 * Przestrzeń nazw centrum zdarzeń
 * Aplikacje logiki
 * Redis
 * Data Lake Analytics
 * Data Lake Store
-* Magazyn kluczy
+* Key Vault
 
 Aby dowiedzieć się więcej na temat obsługiwanych funkcji dla powyższej listy zasobów PaaS, zobacz [obsługiwane funkcje usług PaaS Services](security-center-services.md#paas-services).
 

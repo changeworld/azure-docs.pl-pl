@@ -1,5 +1,5 @@
 ---
-title: Co to są dokumenty równoległe? — Niestandardowy w usłudze Translator
+title: Co to są dokumenty równoległe? — Translator niestandardowy
 titleSuffix: Azure Cognitive Services
 description: Dokumenty równoległe to pary dokumentów, które są tłumaczeniami innych. Jeden dokument w parze zawiera zdania w języku źródłowym, a drugi dokumentu zawiera te zdania tłumaczone na język docelowy.
 author: swmachan
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fb54df2e1eb89d30e62ae80355635356343994ee
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595448"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675465"
 ---
 # <a name="what-are-parallel-documents"></a>Co to są dokumenty równoległe?
 
@@ -23,7 +23,7 @@ Nie ma znaczenia, który język jest oznaczony jako "Źródło" i który język 
 
 ## <a name="requirements"></a>Wymagania
 
-Do uczenia systemu będzie wymagane co najmniej 10 000 unikatowych zdań równoległych. Najlepszym rozwiązaniem jest ciągłe dodawanie bardziej równoległych zawartości i ponowne uczenie w celu zwiększenia jakości systemu tłumaczenia.
+Do uczenia systemu wymagane są co najmniej 10 000 unikatowe, wyrównane do siebie zdania równoległe. To ograniczenie jest środkiem bezpieczeństwa, aby upewnić się, że zdania równoległe zawierają wystarczającą liczbę unikatowych słownictwa, aby pomyślnie szkolić model tłumaczenia. Najlepszym rozwiązaniem jest ciągłe dodawanie bardziej równoległych zawartości i ponowne uczenie w celu poprawy jakości systemu tłumaczenia. Zapoznaj się z [wyrównaniem zdania](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment).
 
 Firma Microsoft wymaga, aby dokumenty przekazane do translatora niestandardowego nie naruszają praw autorskich lub własności intelektualnych osób trzecich. Aby uzyskać więcej informacji, zobacz [warunki użytkowania](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 Przekazywanie dokumentu przy użyciu portalu nie zmienia własności własności intelektualnej w samym dokumencie.
@@ -44,6 +44,6 @@ Przekazane dokumenty są prywatne dla każdego obszaru roboczego i mogą być u�
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak używać [słownika](what-is-dictionary.md) w translatoru niestandardowym.

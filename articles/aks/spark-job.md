@@ -6,15 +6,15 @@ author: lenadroid
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 647cb0573922bb53232dbce3f3a7a2557553d47d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: c4fca9b8f4c8a01124074396985b1ec3f1c896c6
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263895"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675145"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Uruchamianie Apache Spark zadań w AKS
 
@@ -43,10 +43,16 @@ Utwórz grupę zasobów dla klastra.
 az group create --name mySparkCluster --location eastus
 ```
 
-Utwórz klaster AKS z węzłami o rozmiarze `Standard_D3_v2`.
+Utwórz nazwę główną usługi dla klastra. Po jego utworzeniu do następnego polecenia potrzebny będzie identyfikator appId i hasło jednostki usługi.
 
 ```azurecli
-az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2
+az ad sp create-for-rbac --name SparkSP
+```
+
+Utwórz klaster AKS z węzłami o rozmiarze `Standard_D3_v2` i wartościami identyfikatora appId i hasła przekazaną jako parametry podmiotu zabezpieczeń i klucza klienta.
+
+```azurecli
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
 
 Nawiąż połączenie z klastrem AKS.
@@ -64,7 +70,7 @@ Przed uruchomieniem zadań platformy Spark w klastrze AKS należy skompilować k
 Sklonuj repozytorium projektów platformy Spark do systemu deweloperskiego.
 
 ```bash
-git clone -b branch-2.3 https://github.com/apache/spark
+git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
 Przejdź do katalogu sklonowanego repozytorium i Zapisz ścieżkę źródła Spark do zmiennej.
@@ -74,7 +80,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-Jeśli masz zainstalowaną wiele wersji JDK, ustaw `JAVA_HOME`, aby użyć wersji 8 dla bieżącej sesji.
+Jeśli masz zainstalowaną wiele wersji JDK, ustaw `JAVA_HOME` na używanie wersji 8 dla bieżącej sesji.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -136,7 +142,7 @@ Uruchom następujące polecenia, aby dodać wtyczkę SBT, która umożliwia pako
 
 ```bash
 touch project/assembly.sbt
-echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' >> project/assembly.sbt
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
 Uruchom te polecenia, aby skopiować przykładowy kod do nowo utworzonego projektu i dodać wszystkie wymagane zależności.
@@ -151,7 +157,7 @@ cat <<EOT >> build.sbt
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0" % "provided"
 EOT
 
-sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11",/' build.sbt
+sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
@@ -214,6 +220,13 @@ Przejdź z powrotem do katalogu głównego repozytorium Spark.
 cd $sparkdir
 ```
 
+Utwórz konto usługi, które ma wystarczające uprawnienia do uruchamiania zadania.
+
+```bash
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+```
+
 Prześlij zadanie przy użyciu `spark-submit`.
 
 ```bash
@@ -223,6 +236,7 @@ Prześlij zadanie przy użyciu `spark-submit`.
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```

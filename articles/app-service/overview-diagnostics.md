@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: c9d6bc8802b54e970fe863ed6a7283f01c947916
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5631b34fee64c6ad0917b95ec68fcd586717a1b0
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066852"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675196"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Omówienie diagnostyki Azure App Service
 
@@ -37,7 +37,7 @@ W przypadku Azure Functions przejdź do aplikacji funkcji, a następnie w górne
 
 Na stronie głównej diagnostyki App Service możesz wybrać kategorię, która najlepiej opisuje problem z aplikacją przy użyciu słów kluczowych w każdym fragmencie strony głównej. Ta strona służy również do znajdowania **Narzędzia diagnostyczne** aplikacji systemu Windows. Zobacz [Narzędzia diagnostyczne (tylko dla aplikacji systemu Windows)](#diagnostic-tools-only-for-windows-app).
 
-![Strona główna](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+![Głównej](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
 ## <a name="interactive-interface"></a>Interfejs interaktywny
 
@@ -68,7 +68,7 @@ W programie Health Checkup znajdują się cztery różne wykresy.
 - **żądania i błędy:** Wykres przedstawiający liczbę żądań wykonanych w ciągu ostatnich 24 godzin wraz z błędami serwera HTTP.
 - **wydajność aplikacji:** Wykres przedstawiający czas odpowiedzi w ciągu ostatnich 24 godzin dla różnych grup percentylu.
 - **Użycie procesora CPU:** Wykres przedstawiający całkowity procent użycia procesora CPU na wystąpienie w ciągu ostatnich 24 godzin.  
-- **Użycie pamięci:** Wykres przedstawiający całkowity procent użycia pamięci fizycznej na wystąpienie w ciągu ostatnich 24 godzin.
+- **użycie pamięci:** Wykres przedstawiający całkowity procent użycia pamięci fizycznej na wystąpienie w ciągu ostatnich 24 godzin.
 
 ![Health Checkup](./media/app-service-diagnostics/health-checkup-6.png)
 
@@ -92,17 +92,17 @@ Narzędzia diagnostyczne zawierają bardziej zaawansowane narzędzia diagnostycz
 
 ### <a name="proactive-cpu-monitoring"></a>Aktywne monitorowanie procesora
 
-Aktywne monitorowanie procesora CPU zapewnia łatwy i aktywny sposób podejmowania akcji, gdy aplikacja lub proces podrzędny aplikacji zużywa duże zasoby procesora CPU. Można ustawić własne reguły progu procesora CPU, aby tymczasowo wyeliminować problemy związane z dużym procesorem CPU do momentu znalezienia rzeczywistej przyczyny nieoczekiwanego problemu.
+Aktywne monitorowanie procesora CPU zapewnia łatwy i aktywny sposób podejmowania akcji, gdy aplikacja lub proces podrzędny aplikacji zużywa duże zasoby procesora CPU. Można ustawić własne reguły progu procesora CPU, aby tymczasowo wyeliminować problemy związane z dużym procesorem CPU do momentu znalezienia rzeczywistej przyczyny nieoczekiwanego problemu. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z procesorami przed ich wdrożeniem](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html). Aktywne monitorowanie procesora CPU zapewnia łatwy i aktywny sposób podejmowania akcji, gdy aplikacja lub proces podrzędny aplikacji zużywa duże zasoby procesora CPU. Można ustawić własne reguły progu procesora CPU, aby tymczasowo wyeliminować problemy związane z dużym procesorem CPU do momentu znalezienia rzeczywistej przyczyny nieoczekiwanego problemu.
 
 ![Aktywne monitorowanie procesora](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
 ### <a name="auto-healing-and-proactive-auto-healing"></a>Funkcja autonaprawy i proaktywna funkcja autonaprawy
 
-Funkcja autonaprawy jest akcją zaradczą, którą można wykonać, gdy aplikacja ma nieoczekiwane zachowanie. Możesz ustawić własne reguły na podstawie liczby żądań, wolnego żądania, limitu pamięci i kodu stanu HTTP, aby wyzwolić akcje zaradcze. Użyj narzędzia, aby tymczasowo ograniczyć nieoczekiwane zachowanie do momentu znalezienia głównej przyczyny problemu.
+Funkcja autonaprawy jest akcją zaradczą, którą można wykonać, gdy aplikacja ma nieoczekiwane zachowanie. Możesz ustawić własne reguły na podstawie liczby żądań, wolnego żądania, limitu pamięci i kodu stanu HTTP, aby wyzwolić akcje zaradcze. Użyj narzędzia, aby tymczasowo ograniczyć nieoczekiwane zachowanie do momentu znalezienia głównej przyczyny problemu. Aby uzyskać więcej informacji, zobacz temat [ogłaszanie nowego środowiska autonaprawy w diagnostyce usługi App Service](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html).
 
 ![automatyczne naprawianie](./media/app-service-diagnostics/auto-healing-10.png)
 
-Podobnie jak w przypadku aktywnego monitorowania procesora, proaktywne Samonaprawianie to rozwiązanie, które pozwala ograniczyć nieoczekiwane zachowanie aplikacji. Proaktywna funkcja automatycznego naprawiania ponownie uruchamia aplikację, gdy App Service ustali, że aplikacja jest w stanie nieodwracalnym. Aby uzyskać więcej informacji, zobacz temat [ogłaszanie nowego środowiska autonaprawy w diagnostyce usługi App Service](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html).
+Podobnie jak w przypadku aktywnego monitorowania procesora, proaktywne Samonaprawianie to rozwiązanie, które pozwala ograniczyć nieoczekiwane zachowanie aplikacji. Proaktywna funkcja automatycznego naprawiania ponownie uruchamia aplikację, gdy App Service ustali, że aplikacja jest w stanie nieodwracalnym. Aby uzyskać więcej informacji, zobacz [wprowadzenie do proaktywnego Autokorekty](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html).
 
 ## <a name="navigator-and-change-analysis-only-for-windows-app"></a>Nawigator i Analiza zmian (tylko dla aplikacji systemu Windows)
 

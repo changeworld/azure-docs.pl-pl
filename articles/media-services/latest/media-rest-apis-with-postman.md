@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: juliako
-ms.openlocfilehash: d25596884acdb356779eafa4348240239855ce37
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c402381534087f1e8cdab711bd1b2a34c78417f4
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308465"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675726"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurowanie programu Poster do Media Services wywołań interfejsu API REST
 
@@ -28,11 +28,11 @@ Przed rozpoczęciem opracowywania programu zapoznaj [się z tematem Programowani
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Utwórz konto usługi Media Services](create-account-cli-how-to.md). Upewnij się, że do zapamiętania nazwę grupy zasobów i nazwę konta usługi Media Services. 
+- [Utwórz konto usługi Media Services](create-account-cli-how-to.md). Pamiętaj, aby zapamiętać nazwę grupy zasobów i nazwę konta Media Services. 
 - Uzyskaj informacje konieczne do [uzyskania dostępu do interfejsów API](access-api-cli-how-to.md)
 - Zainstaluj klienta REST programu [Postman](https://www.getpostman.com/), aby uruchomić interfejsy API REST przedstawione w niektórych samouczkach dotyczących AMS REST. 
 
-    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Inne możliwości: Program **Visual Studio Code** z wtyczką REST lub program **Telerik Fiddler**. 
+    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Można również użyć: programu **Visual Studio Code** z wtyczką REST lub programu **Telerik Fiddler**. 
 
 > [!IMPORTANT]
 > Zapoznaj się z [konwencjami nazewnictwa](media-services-apis-overview.md#naming-conventions).
@@ -47,11 +47,9 @@ Sklonuj repozytorium GitHub zawierające kolekcję programu Postman oraz pliki �
 
 ## <a name="configure-postman"></a>Konfigurowanie programu Postman
 
-W tej sekcji skonfigurowano program Postman.
-
 ### <a name="configure-the-environment"></a>Konfigurowanie środowiska 
 
-1. Otwórz program **Postman**.
+1. Otwórz aplikację **Poster** .
 2. Po prawej stronie ekranu wybierz opcję **Zarządzaj środowiskiem**.
 
     ![Zarządzanie środowiskiem](./media/develop-with-postman/postman-import-env.png)
@@ -80,7 +78,7 @@ W tej sekcji skonfigurowano program Postman.
 
 Przed rozpoczęciem manipulowania zasobami usługi AMS v3 musisz uzyskać i ustawić token usługi Azure AD na potrzeby uwierzytelniania w ramach jednostki usług.
 
-1. W lewym oknie programu Postman wybierz opcję „Krok 1: Pobierz token uwierzytelniania usługi AAD”.
+1. W lewym oknie aplikacji Poster wybierz pozycję "krok 1: pobieranie tokenu uwierzytelniania usługi AAD".
 2. Następnie wybierz pozycję „Pobieranie tokenu usługi Azure AD do uwierzytelniania jednostki usługi”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -103,4 +101,4 @@ Przed rozpoczęciem manipulowania zasobami usługi AMS v3 musisz uzyskać i usta
 ## <a name="next-steps"></a>Następne kroki
 
 - [Przesyłaj strumieniowo pliki przy użyciu protokołu REST](stream-files-tutorial-with-rest.md).  
-- [Samouczek: Kodowanie pliku zdalnego na podstawie adresu URL i przesyłanie strumieniowe wideo — REST](stream-files-tutorial-with-rest.md)
+- [Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — REST](stream-files-tutorial-with-rest.md)

@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: niestandardowy program Virtual Machines (wersja zapoznawcza), Java (Windows, Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start dowiesz się, jak używać zestawu SDK (Cognitive Services Speech Software Development Kit) w aplikacji konsolowej Java. Dowiesz się, jak połączyć aplikację kliencką z wcześniej utworzonym bot Framework bot skonfigurowanym do korzystania z kanału mowy linii Direct, a także włączyć funkcję głosowego asystenta wirtualnego.
+description: W tym przewodniku szybki start dowiesz się, jak używać zestawu SDK mowy Cognitive Services w aplikacji konsolowej Java. Dowiesz się, jak połączyć aplikację kliencką z wcześniej utworzonym bot Framework bot skonfigurowanym do korzystania z kanału mowy linii Direct, a także włączyć funkcję głosowego asystenta wirtualnego.
 services: cognitive-services
 author: bidishac
 manager: nitinme
@@ -10,33 +10,33 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: c5a6042e4b181190849b3759325e4aab0c22413b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: ca3d650f9a53f536a00f2a11aca37b2a61556129
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71800031"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675531"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Szybki Start: tworzenie wirtualnego asystenta głosowego przy użyciu zestawu Speech SDK, Java
 
-Przewodniki Szybki Start są również dostępne w przypadku [zamiany mowy na tekst](quickstart-java-jre.md), zamiany [tekstu na mowę](quickstart-text-to-speech-java-jre.md)i zamiany [mowy](quickstart-translate-speech-java-jre.md)na mowę.
+Przewodniki Szybki Start są również dostępne dla [zamiany mowy na tekst](quickstart-java-jre.md), [zamiany tekstu na mowę](quickstart-text-to-speech-java-jre.md)i [Tłumaczenie mowy](quickstart-translate-speech-java-jre.md).
 
-W tym artykule opisano tworzenie aplikacji konsolowej Java za pomocą narzędzia [Cognitive Services Speech SDK](speech-sdk.md). Aplikacja nawiąże połączenie z wcześniej utworzonym bot skonfigurowanym do korzystania ze kanału mowy Direct line, wysyła żądanie głosowe i zwraca działanie odpowiedzi głosowej (jeśli jest skonfigurowane). Aplikacja została skompilowana za pomocą pakietu Maven zestawu mowy SDK oraz środowiska IDE języka Java w systemie Windows, Ubuntu Linux lub na macOS. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
+W tym artykule opisano tworzenie aplikacji konsolowej Java za pomocą [zestawu Azure Cognitive Services Speech SDK](speech-sdk.md). Aplikacja nawiązuje połączenie z wcześniej utworzonym bot skonfigurowanym do używania kanału bezpośredniej linii mowy, wysyła żądanie głosowe i zwraca działanie odpowiedzi głosowej (jeśli jest skonfigurowane). Aplikacja została skompilowana za pomocą pakietu Maven zestawu mowy SDK oraz środowiska IDE języka Java w systemie Windows, Ubuntu Linux lub na macOS. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* System operacyjny: Windows (64-bitowy), Ubuntu Linux 16.04/18.04 (64-bitowy) lub macOS 10,13 lub nowszy
-* [Zintegrowane środowisko projektowe Eclipse Java](https://www.eclipse.org/downloads/)
-* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [zestaw JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go na [Azure Portal](https://portal.azure.com).
-* Wstępnie skonfigurowany bot utworzony przy użyciu bot Framework w wersji 4,2 lub nowszej. Bot musi subskrybować nowy kanał "Direct line Speech", aby odbierać dane wejściowe głos.
+* System operacyjny: Windows (64-bitowy), Ubuntu Linux 16.04/18.04 (64-bitowy) lub macOS 10,13 lub nowszy.
+* [Zaćmienie IDE Java](https://www.eclipse.org/downloads/).
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go w [Azure Portal](https://portal.azure.com).
+* Wstępnie skonfigurowany bot utworzony przy użyciu platformy bot Framework w wersji 4,2 lub nowszej. Bot musi subskrybować nowy kanał mowy linii bezpośredniej do odbierania danych wejściowych głosowych.
 
     > [!NOTE]
-    > Bezpośredni wiersz mowy (wersja zapoznawcza) jest obecnie dostępny w podzestawie regionów usługi Speech Services. Zapoznaj się z [listą obsługiwanych regionów dla wirtualnych asystentów głosowych](regions.md#Voice-first virtual assistants) i upewnij się, że zasoby są wdrożone w jednym z tych regionów.
+    > Bezpośredni podgląd mowy w wierszu jest obecnie dostępny w podzestawie regionów usługi Speech Services. Zapoznaj [się z listą obsługiwanych regionów dla wirtualnych asystentów głosowych](regions.md#voice-first-virtual-assistants)i upewnij się, że zasoby są wdrożone w jednym z tych regionów.
 
-W przypadku korzystania z programu Ubuntu 16.04/18.04 upewnij się, że te zależności są zainstalowane przed rozpoczęciem przezaćmienia:
+Jeśli korzystasz z programu Ubuntu 16.04/18.04, upewnij się, że te zależności są zainstalowane przed rozpoczęciem przezaćmienia:
 
 ```console
 sudo apt-get update
@@ -48,13 +48,13 @@ Jeśli korzystasz z systemu Windows (64-bitowego), upewnij się, że zainstalowa
 
 ## <a name="optional-get-started-fast"></a>Opcjonalne: szybkie rozpoczynanie pracy
 
-Ten przewodnik Szybki Start opisuje krok po kroku, jak utworzyć prostą aplikację kliencką do łączenia się z botem z obsługą mowy. Jeśli wolisz szczegółowe, kompletny, gotowy do skompilowania kod źródłowy użyty w tym przewodniku Szybki Start jest dostępny w [przykładach zestawu Speech SDK](https://aka.ms/csspeech/samples) w folderze `quickstart`.
+W tym przewodniku szybki start opisano krok po kroku, jak utworzyć prostą aplikację kliencką do łączenia się z botem z obsługą mowy. Jeśli chcesz szczegółowe bezpośrednio w programie, kompletny, gotowy do skompilowania kod źródłowy użyty w tym przewodniku Szybki Start jest dostępny w [przykładach zestawu Speech SDK](https://aka.ms/csspeech/samples) w folderze `quickstart`.
 
 ## <a name="create-and-configure-project"></a>Tworzenie i konfigurowanie projektu
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu uwzględnienia poniższej zależności.
+Ponadto aby włączyć rejestrowanie, zaktualizuj plik *pliku pom. XML* w celu uwzględnienia następujących zależności:
 
    ```xml
     <dependency>
@@ -68,11 +68,11 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu
 
 1. Aby dodać nową pustą klasę do projektu języka Java, wybierz kolejno pozycje **Plik** > **Nowy** > **Klasa**.
 
-1. W oknie **Nowa klasa Java** wprowadź ciąg **speechsdk.quickstart** w polu **Pakiet** i **Main** w polu **Nazwa**.
+1. W **nowym oknie klasy Java** wprowadź *speechsdk. szybkiego startu* w polu **pakiet** i *Main* w polu **Nazwa** .
 
    ![Zrzut ekranu okna Nowa klasa Java](media/sdk/qs-java-jre-06-create-main-java.png)
 
-1. Otwórz nowo utworzoną klasę **główną** i Zastąp zawartość pliku `Main.java` następującym kodem początkowym.
+1. Otwórz nowo utworzoną klasę `Main` i Zastąp zawartość pliku `Main.java` następującym kodem początkowym:
 
     ```java
     package speechsdk.quickstart;
@@ -139,58 +139,58 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu
     }
     ```
 
-1. W metodzie **Main** należy najpierw skonfigurować `DialogServiceConfig` i użyć go do utworzenia wystąpienia `DialogServiceConnector`. Spowoduje to połączenie z kanałem mowy linii bezpośredniej w celu korzystania z bot. Wystąpienie `AudioConfig` służy również do określania źródła danych wejściowych audio. W tym przykładzie domyślny mikrofon jest używany z `AudioConfig.fromDefaultMicrophoneInput()`.
+1. W metodzie `main` należy najpierw skonfigurować `DialogServiceConfig` i użyć jej do utworzenia wystąpienia `DialogServiceConnector`. To wystąpienie nawiązuje połączenie z kanałem mowy linii bezpośredniej w celu korzystania z bot. Wystąpienie `AudioConfig` jest również używane do określania źródła danych wejściowych audio. W tym przykładzie domyślny mikrofon jest używany z `AudioConfig.fromDefaultMicrophoneInput()`.
 
-    * Zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji, który możesz uzyskać w [tym miejscu](get-started.md).
+    * Zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji, który można uzyskać z [tej witryny sieci Web](get-started.md).
     * Zastąp ciąg `YourServiceRegion` z [regionem](regions.md) skojarzonym z subskrypcją.
-    * Zastąp ciąg `YourChannelSecret` własnym wpisem tajnym kanału mowy w wierszu.
+    * Zastąp ciąg `YourChannelSecret`m tajemnicą kanału mowy z bezpośrednim wierszem.
 
     > [!NOTE]
-    > Bezpośredni wiersz mowy (wersja zapoznawcza) jest obecnie dostępny w podzestawie regionów usługi Speech Services. Zapoznaj się z [listą obsługiwanych regionów dla wirtualnych asystentów głosowych](regions.md#voice-first-virtual-assistants) i upewnij się, że zasoby są wdrożone w jednym z tych regionów.
+    > Bezpośredni podgląd mowy w wierszu jest obecnie dostępny w podzestawie regionów usługi Speech Services. Zapoznaj [się z listą obsługiwanych regionów dla wirtualnych asystentów głosowych](regions.md#voice-first-virtual-assistants) i upewnij się, że zasoby są wdrożone w jednym z tych regionów.
 
     ```java
     final String channelSecret = "YourChannelSecret"; // Your channel secret
     final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
-    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: only a subset of regions are currently supported
+    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: Only a subset of regions are currently supported.
     final DialogServiceConfig botConfig = DialogServiceConfig.fromBotSecret(channelSecret, subscriptionKey, region);
 
-    // Configure audio input from microphone.
+    // Configure audio input from a microphone.
     final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
-    // Create a DialogServiceConnector instance
+    // Create a DialogServiceConnector instance.
     final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. `DialogServiceConnector` bazuje na kilku zdarzeniach, aby komunikować swoje działania bot, wyniki rozpoznawania mowy i inne informacje. Dodaj te detektory zdarzeń dalej.
+1. Łącznik `DialogServiceConnector` opiera się na kilku zdarzeniach, aby komunikować swoje działania bot, wyniki rozpoznawania mowy i inne informacje. Dodaj te detektory zdarzeń dalej.
 
     ```java
-    // Recognizing will provide the intermediate recognized text while an audio stream is being processed
+    // Recognizing will provide the intermediate recognized text while an audio stream is being processed.
     connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
-    // Recognized will provide the final recognized text once audio capture is completed
+    // Recognized will provide the final recognized text once audio capture is completed.
     connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
-    // SessionStarted will notify when audio begins flowing to the service for a turn
+    // SessionStarted will notify when audio begins flowing to the service for a turn.
     connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
         log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
     });
 
-    // SessionStopped will notify when a turn is complete and it's safe to begin listening again
+    // SessionStopped will notify when a turn is complete and it's safe to begin listening again.
     connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
         log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
     });
 
-    // Canceled will be signaled when a turn is aborted or experiences an error condition
+    // Canceled will be signaled when a turn is aborted or experiences an error condition.
     connector.canceled.addEventListener((o, canceledEventArgs) -> {
         log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
         connector.disconnectAsync();
     });
 
-    // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities.
+    // ActivityReceived is the main way your bot will communicate with the client and uses Bot Framework activities.
     connector.activityReceived.addEventListener((o, activityEventArgs) -> {
         final String act = activityEventArgs.getActivity().serialize();
             log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
@@ -200,7 +200,7 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu
         });
     ```
 
-1. Połącz `DialogServiceConnector`, aby skierować mowę liniową przez wywołanie metody `connectAsync()`. Aby przetestować bot, możesz wywołać metodę `listenOnceAsync` w celu wysłania danych wejściowych audio z mikrofonu. Ponadto można również użyć metody `sendActivityAsync`, aby wysłać działanie niestandardowe jako ciąg serializowany. Te niestandardowe działania mogą zapewnić dodatkowe dane, które będą używane przez bot w konwersacji.
+1. Połącz `DialogServiceConnector`, aby skierować mowę liniową przez wywołanie metody `connectAsync()`. Aby przetestować bot, możesz wywołać metodę `listenOnceAsync`, aby wysyłać dane wejściowe audio z mikrofonu. Ponadto można również użyć metody `sendActivityAsync`, aby wysłać działanie niestandardowe jako ciąg serializowany. Te niestandardowe działania mogą zapewnić dodatkowe dane używane przez bot w konwersacji.
 
     ```java
     connector.connectAsync();
@@ -213,11 +213,11 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu
 
 1. Zapisz zmiany w pliku `Main`.
 
-1. Aby obsłużyć odtwarzanie odpowiedzi, należy dodać dodatkową klasę, która spowoduje transformację obiektu PullAudioOutputStream zwróconego z interfejsu API getaudio () do środowiska Java InputStream w celu ułatwienia obsługi. ActivityAudioStream to wyspecjalizowana Klasa, która będzie obsługiwać odpowiedź audio z "kanału Direct Speech line". Umożliwi to metodom dostępu pobranie informacji o formacie audio wymaganych do obsługi odtwarzania: dla tej opcji wybierz **plik** > **Nowa** > **klasy**.
+1. Aby obsłużyć odtwarzanie odpowiedzi, należy dodać dodatkową klasę, która przekształca obiekt PullAudioOutputStream zwrócony z interfejsu API getaudio () na InputStream języka Java w celu ułatwienia obsługi. Ta `ActivityAudioStream` jest wyspecjalizowaną klasą, która obsługuje odpowiedź audio z kanału Direct Speech line. Zapewnia metody dostępu do pobierania informacji o formacie audio, które są wymagane do obsługi odtwarzania. W tym celu wybierz pozycję **plik**  > **nowej** **klasy** > .
 
-1. W **nowym oknie klasy Java** wprowadź **speechsdk. szybkiego startu** w polu **pakiet** i **ActivityAudioStream** w polu **Nazwa** .
+1. W **nowym oknie klasy Java** wprowadź *speechsdk. szybkiego startu* w polu **pakiet** i *ActivityAudioStream* w polu **Nazwa** .
 
-1. Otwórz nowo utworzoną klasę **ActivityAudioStream** i Zastąp kod podany poniżej.
+1. Otwórz nowo utworzoną klasę `ActivityAudioStream` i Zastąp ją następującym kodem:
 
     ```java
     package com.speechsdk.quickstart;
@@ -230,11 +230,11 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu
 
     public final class ActivityAudioStream extends InputStream {
         /**
-         * The number of samples played per second. (16 kHz)
+         * The number of samples played per second (16 kHz).
          */
         public static final long SAMPLE_RATE = 16000;
         /**
-         * The number of bits in each sample of a sound that has this format. (16 bits)
+         * The number of bits in each sample of a sound that has this format (16 bits).
          */
         public static final int BITS_PER_SECOND = 16;
         /**
@@ -294,7 +294,7 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu
         }
 
         /**
-         * Reads up to a specified maximum number of bytes of data from the activity audio stream
+         * Reads up to a specified maximum number of bytes of data from the activity audio stream,
          * putting them into the given byte array.
          *
          * @param b the buffer into which the data is read
@@ -348,7 +348,7 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu
         }
 
         /**
-         * Fetch the audio format for the ActivityAudioStream. The ActivityAudioFormat defines the sample rate, bits per sample and the # channels
+         * Fetch the audio format for the ActivityAudioStream. The ActivityAudioFormat defines the sample rate, bits per sample, and the # channels.
          *
          * @return instance of the ActivityAudioFormat associated with the stream
          */
@@ -361,7 +361,7 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu
          * audio input stream without blocking.
          *
          * @return the number of bytes that can be read from this audio input stream without blocking.
-         * As this implementation does not buffer this will be defaulted to 0
+         * As this implementation does not buffer, this will be defaulted to 0
          */
         @Override
         public int available() {
@@ -444,7 +444,7 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu
         }
 
         /**
-         * Enum defining the types of audio encoding supported by this stream
+         * Enum defining the types of audio encoding supported by this stream.
          */
         public enum AudioEncoding {
             PCM_SIGNED("PCM_SIGNED");
@@ -463,8 +463,9 @@ Ponadto aby włączyć rejestrowanie, zaktualizuj plik **pliku pom. XML** w celu
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
-Naciśnij klawisz F11 lub wybierz kolejno pozycje **Uruchom** > **Debugowanie**.
-W konsoli programu zostanie wyświetlony komunikat "Powiedz coś" w tym momencie możesz zagłosować na zdanie w języku angielskim lub zdaniu, które bot zrozumieć. Twoja mowa zostanie przesłana do bot za pośrednictwem kanału bezpośredniej linii mowy, gdzie zostanie rozpoznany, przetworzony przez bot, a odpowiedź zostanie zwrócona jako działanie. Jeśli bot zwraca mowę jako odpowiedź, dźwięk zostanie odtworzony przy użyciu klasy `AudioPlayer`.
+Wybierz polecenie F11 lub wybierz polecenie **uruchom**  > **Debuguj**.
+W konsoli programu jest wyświetlany komunikat "Powiedz coś".
+W tym momencie Porozmawiaj z angielską frazą lub zdaniem bot. Twoja Zamiana jest przekazywana do bot za pośrednictwem kanału bezpośredniej linii mowy, który jest rozpoznawany i przetwarzany przez bot. Odpowiedź jest zwracana jako działanie. Jeśli bot zwraca mowę jako odpowiedź, dźwięk jest odtwarzany przy użyciu klasy `AudioPlayer`.
 
 ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-java-jre-08-console-output.png)
 

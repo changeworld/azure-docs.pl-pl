@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 10/03/2019
+ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: cad57e3e7e52ec291819110bab9d8d79f51e5a2f
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: e862cd604263c5125259344baf2e990ad56a3291
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958158"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675820"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Udostępnianie widoku niestandardowego przy użyciu sparametryzowanego adresu URL
 
@@ -66,7 +66,7 @@ Akceptowane wartości odpowiadają menu **szybkiego czasu** Eksploratora Time Se
 
 ### <a name="optional-parameters"></a>Parametry opcjonalne
 
-Parametr `timeSeriesDefinitions=<collection of term objects>` określa warunki widoku Time Series Insights:
+@No__t_0 parametr określa warunki widoku Time Series Insights:
 
 | Parametr | Element adresu URL | Opis |
 | --- | --- | --- |
@@ -74,17 +74,17 @@ Parametr `timeSeriesDefinitions=<collection of term objects>` określa warunki w
 | **splitBy** | `\<string>` | Nazwa kolumny, według której ma zostać wykonany *podział*. |
 | **measureName** | `\<string>` | Nazwa kolumny *miary*. |
 | **predykatu** | `\<string>` | Klauzula *where* na potrzeby filtrowania po stronie serwera. |
-| **useSum** | `true` | Opcjonalny parametr, który określa użycie sum dla miary. </br>  Zwróć uwagę, że jeśli `Events` to wybrana miara, liczba jest domyślnie zaznaczona.  </br>  Jeśli nie wybrano `Events`, wartość średnia jest domyślnie zaznaczona. |
+| **useSum** | `true` | Opcjonalny parametr, który określa użycie sum dla miary. </br>  Zwróć uwagę, że jeśli `Events` jest wybrana miara, liczba jest zaznaczona domyślnie.  </br>  Jeśli nie wybrano `Events`, wartość średnia jest domyślnie zaznaczona. |
 
 * Para klucz-wartość `multiChartStack=<true/false>` umożliwia tworzenie stosów na wykresie.
 * Para klucz-wartość `multiChartSameScale=<true/false>` umożliwia tej samej skali osi Y w warunkach w ramach opcjonalnego parametru.  
-* @No__t-0 umożliwia dostosowanie suwaka interwału, aby zapewnić bardziej szczegółowy lub płynny, bardziej Zagregowany widok wykresu.  
+* @No__t_0 umożliwia dostosowanie suwaka interwału, aby zapewnić bardziej szczegółowy lub gładszy, bardziej Zagregowany widok wykresu.  
 * Parametr `timezoneOffset=<integer>` umożliwia ustawienie strefy czasowej na potrzeby wyświetlania wykresu jako przesunięcia do czasu UTC.
 
 | Pary | Opis |
 | --- | --- |
-| `multiChartStack=false` | `true` jest domyślnie włączone, więc Przekaż `false` do stosu. |
-| `multiChartStack=false&multiChartSameScale=true` | Układanie na stosie musi mieć możliwość użycia takiej samej skali osi Y dla warunków.  Domyślnie jest `false`, więc przekazanie wartości "true" spowoduje włączenie tej funkcji. |
+| `multiChartStack=false` | `true` jest domyślnie włączona, więc Przekaż `false` do stosu. |
+| `multiChartStack=false&multiChartSameScale=true` | Układanie na stosie musi mieć możliwość użycia takiej samej skali osi Y dla warunków.  Jest ona domyślnie `false`, więc przekazanie wartości "true" spowoduje włączenie tej funkcji. |
 | `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Jednostki = dni, godziny, minuty, sekundy, milisekundy.  Jednostka zawsze wielką literą. </br> Zdefiniuj liczbę jednostek, przekazując żądaną liczbę całkowitą do timeBucketSize.  Zapamiętaj, że zostało wygładzonych do 7 dni.  |
 | `timezoneOffset=-<integer>` | Liczba całkowita jest zawsze w milisekundach. </br> Należy pamiętać, że ta funkcja jest nieco inna niż ta, która została włączona w Eksploratorze Time Series Insights, w którym można wybrać lokalny (czas przeglądarki) lub UTC. |
 
@@ -114,11 +114,11 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 Powyższy adres URL opisuje i kompiluje widok Eksploratora Time Series Insights:
 
-[@no__t — warunki Eksploratora usługi 1Time Series Insights](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+[Warunki Eksploratora usługi ![Time Series Insights](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
 
 Widok pełny (łącznie z wykresem):
 
-[@no__t — widok 1Chart](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+[Widok ![Chart](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 

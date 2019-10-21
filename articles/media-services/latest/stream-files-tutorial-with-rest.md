@@ -12,20 +12,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: f9ca4b54db305a5c088b4dda27a6844c8439fa1a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb62a28798010d3e18c5f19fa0062001a70b9622
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055302"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675649"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Samouczek: Kodowanie pliku zdalnego na podstawie adresu URL i przesyłanie strumieniowe wideo — REST
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — REST
 
 Usługa Azure Media Services umożliwia kodowanie plików multimedialnych do formatów, które można odtworzyć w różnych przeglądarkach i na różnych urządzeniach. Na przykład może zaistnieć potrzeba strumieniowego odtwarzania treści w formatach HLS lub MPEG DASH firmy Apple. Przed odtwarzaniem strumieniowym należy zakodować wysokiej jakości plik multimediów cyfrowych. Aby uzyskać wskazówki dotyczące kodowania, zobacz temat [Encoding concept](encoding-concept.md) (Koncepcja kodowania).
 
 Ten samouczek zawiera instrukcje pozwalające zakodować plik na podstawie adresu URL i przesłać strumieniowo zawartość wideo za pośrednictwem usługi Azure Media Services, korzystając z usługi REST. 
 
-![Odtwarzanie wideo](./media/stream-files-tutorial-with-api/final-video.png)
+![Odtwórz wideo](./media/stream-files-tutorial-with-api/final-video.png)
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:    
 
@@ -48,7 +48,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 - Zainstaluj klienta REST programu [Postman](https://www.getpostman.com/), aby uruchomić interfejsy API REST przedstawione w niektórych samouczkach dotyczących AMS REST. 
 
-    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Inne możliwości: Program **Visual Studio Code** z wtyczką REST lub program **Telerik Fiddler**. 
+    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Można również użyć: programu **Visual Studio Code** z wtyczką REST lub programu **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Pobieranie plików Postman
 
@@ -62,11 +62,9 @@ Sklonuj repozytorium GitHub zawierające kolekcję programu Postman oraz pliki �
 
 ## <a name="configure-postman"></a>Konfigurowanie programu Postman
 
-W tej sekcji skonfigurowano program Postman.
-
 ### <a name="configure-the-environment"></a>Konfigurowanie środowiska 
 
-1. Otwórz program **Postman**.
+1. Otwórz aplikację **Poster** .
 2. Po prawej stronie ekranu wybierz opcję **Zarządzaj środowiskiem**.
 
     ![Zarządzanie środowiskiem](./media/develop-with-postman/postman-import-env.png)
@@ -107,7 +105,7 @@ W tej sekcji opisano wysyłanie żądań istotnych dla kodowania i tworzenia adr
 
 ### <a name="get-azure-ad-token"></a>Pobieranie tokenu usługi Azure AD 
 
-1. W lewym oknie programu Postman wybierz opcję „Krok 1: Pobierz token uwierzytelniania usługi AAD”.
+1. W lewym oknie aplikacji Poster wybierz pozycję "krok 1: pobieranie tokenu uwierzytelniania usługi AAD".
 2. Następnie wybierz pozycję „Pobieranie tokenu usługi Azure AD do uwierzytelniania jednostki usługi”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -125,7 +123,7 @@ W tej sekcji opisano wysyłanie żądań istotnych dla kodowania i tworzenia adr
 
 [Zasób](https://docs.microsoft.com/rest/api/media/assets) wyjściowy przechowuje wynik zadania kodowania. 
 
-1. W lewym oknie programu Postman wybierz opcję „Zasoby”.
+1. W lewym oknie aplikacji Poster wybierz pozycję "zasoby".
 2. Następnie wybierz opcję „Utwórz lub aktualizuj zasób”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -156,7 +154,7 @@ Możesz użyć wbudowanych elementów EncoderNamedPreset lub użyć niestandardo
 > [!Note]
 > Podczas tworzenia obiektu [Transform](https://docs.microsoft.com/rest/api/media/transforms) należy najpierw sprawdzić, czy taki obiekt już istnieje, używając metody **Get**. W tym samouczku założono, że tworzysz przekształcenie o unikatowej nazwie.
 
-1. W lewym oknie programu Postman wybierz opcję „Kodowania i analiza”.
+1. W lewym oknie aplikacji Poster wybierz pozycję "kodowanie i analiza".
 2. Następnie wybierz pozycję „Utwórz przekształcenie”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -189,9 +187,9 @@ Możesz użyć wbudowanych elementów EncoderNamedPreset lub użyć niestandardo
 
 Obiekt [Job](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie skierowane do usługi Media Services i mające na celu zastosowanie utworzonego obiektu **Transform** do określonej wejściowej zawartości wideo lub dźwiękowej. Obiekt **Job** określa informacje takie jak lokalizacja wejściowego pliku wideo oraz danych wyjściowych.
 
-W tym przykładzie dane wejściowe zadania opiera się na adres URL HTTPS ("https: \/ /nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
+W tym przykładzie dane wejściowe zadania są oparte na adresie URL HTTPS ("https: \//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
 
-1. W lewym oknie programu Postman wybierz opcję „Kodowania i analiza”.
+1. W lewym oknie aplikacji Poster wybierz pozycję "kodowanie i analiza".
 2. Następnie wybierz opcję „Utwórz lub aktualizuj zadanie”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -222,9 +220,9 @@ W tym przykładzie dane wejściowe zadania opiera się na adres URL HTTPS ("http
         }
         ```
 
-Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Aby wyświetlić postęp zadania, zaleca się użycie usługi Event Grid. Zaprojektowano ją pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń.  Zobacz [Kierowanie zdarzeń do niestandardowego internetowego punktu końcowego](job-state-events-cli-how-to.md).
+Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Aby wyświetlić postęp zadania, zaleca się użycie usługi Event Grid. Zaprojektowano ją pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń i reagować na zdarzenia w praktycznie wszystkich usługach platformy Azure, a także źródłach niestandardowych. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń.  Zobacz [Kierowanie zdarzeń do niestandardowego internetowego punktu końcowego](job-state-events-cli-how-to.md).
 
-**Zadanie** zwykle przechodzi przez następujące stany: **Scheduled** (Zaplanowane), **Queued** (W kolejce), **Processing** (Przetwarzane), **Finished** (Zakończone — jest to stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)** . Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)** , a po zakończeniu tej operacji w stanie **Canceled (Anulowane)** .
+**Zadanie** zwykle przechodzi przez następujące stany: **Scheduled (Zaplanowane)** , **Queued (W kolejce)** , **Processing (Przetwarzane)** , **Finished (Zakończone)** (stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)** . Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)** , a po zakończeniu tej operacji w stanie **Canceled (Anulowane)** .
 
 #### <a name="job-error-codes"></a>Kody błędów zadań
 
@@ -236,14 +234,14 @@ Po zakończeniu kodowania następnym krokiem jest udostępnienie wideo w **zasob
 
 Proces tworzenia **lokalizatora przesyłania strumieniowego** jest nazywany publikowaniem. Domyślnie **lokalizator przesyłania strumieniowego** jest ważny natychmiast po wykonaniu wywołań interfejsu API i aż do jego usunięcia, chyba że skonfigurujesz opcjonalne czasy rozpoczęcia i zakończenia. 
 
-Podczas tworzenia [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators), musisz określić żądaną **StreamingPolicyName**. W tym przykładzie można będzie można przesyłania strumieniowego zawartości w zwykłym (lub niezaszyfrowane), więc wstępnie zdefiniowanego wyczyść przesyłania strumieniowego zasad, które "Predefined_ClearStreamingOnly" jest używany.
+Podczas tworzenia [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators)należy określić żądany **StreamingPolicyName**. W tym przykładzie będziesz przesyłać strumieniowo zawartość w postaci nieoczyszczonej (lub nieszyfrowanej), więc zostanie użyta wstępnie zdefiniowana zasada "Predefined_ClearStreamingOnly".
 
 > [!IMPORTANT]
 > W przypadku korzystania z niestandardowego elementu [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) należy zaprojektować ograniczony zestaw takich zasad dla konta usługi Media Service i używać ich ponownie dla obiektów StreamingLocator zawsze, gdy są potrzebne takie same opcje szyfrowania i protokoły. 
 
 Konto usługi Media Service jest objęte limitem przydziału dotyczącym liczby pozycji **zasad przesyłania strumieniowego**. Nie należy tworzyć nowych **zasad przesyłania strumieniowego** dla każdego **lokalizatora przesyłania strumieniowego**.
 
-1. W lewym oknie programu Postman wybierz opcję „Zasady przesyłania strumieniowego”.
+1. W lewym oknie aplikacji Poster wybierz pozycję "zasady przesyłania strumieniowego".
 2. Następnie wybierz pozycję „Utwórz lokalizatora przesyłania strumieniowego”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -269,7 +267,7 @@ Konto usługi Media Service jest objęte limitem przydziału dotyczącym liczby 
 
 Teraz, po utworzeniu obiektu [Lokalizator przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators), możesz pobrać adresy URL przesyłania strumieniowego.
 
-1. W lewym oknie programu Postman wybierz opcję „Zasady przesyłania strumieniowego”.
+1. W lewym oknie aplikacji Poster wybierz pozycję "zasady przesyłania strumieniowego".
 2. Następnie wybierz opcję „Ścieżki listy”.
 3. Kliknij pozycję **Wyślij**.
 
@@ -364,11 +362,11 @@ Wykonaj następujące polecenie interfejsu wiersza polecenia:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Prześlij opinię i pobieranie aktualizacji
+## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Przekaż opinię, uzyskaj aktualizacje
 
-Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
+Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, kiedy już wiesz, jak przekazywać, kodować i przesyłać strumieniowo wideo, zobacz następujący artykuł: 
 

@@ -11,16 +11,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b69eda59c9c8032510df036d3aa0d160105fbc16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: a3ba28960327f1e0a56b1ac838b2cb90ab6ac72a
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533176"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675644"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Znane problemy i rozwiązywanie problemów Azure Machine Learning
 
 Ten artykuł pomaga znaleźć i poprawić błędy lub błędy występujące podczas korzystania z Azure Machine Learning.
+
+## <a name="upcoming-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Nadchodzące uaktualnienie SR-IOV do maszyn seria NCV3 w AmlCompute
+
+Usługa Azure COMPUTE będzie aktualizować jednostki SKU seria NCV3 zaczynające się od początku listopada do obsługi wszystkich implementacji i wersji MPI oraz czasowników RDMA dla maszyn wirtualnych z systemem InfiniBand. Będzie to wymagało krótkiego przestoju — [Przeczytaj więcej na temat uaktualnienia wirtualizacji SR-IOV](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
+
+Jako klient z zarządzaną ofertą obliczeniową Azure Machine Learning (AmlCompute) nie musisz wprowadzać żadnych zmian w tym momencie. Na podstawie [harmonogramu aktualizacji](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) konieczne jest zaplanowanie krótkiej przerwy w szkoleniu. Usługa będzie odpowiedzialna za Aktualizowanie obrazów maszyn wirtualnych w węzłach klastra i automatyczne skalowanie klastra w górę. Po zakończeniu uaktualniania może być możliwe użycie wszystkich innych MPI discibutions (na przykład OpenMPI z Pytorchem), a następnie uzyskanie wyższych przepustowości InfiniBand, krótszych opóźnień i lepszą wydajność aplikacji rozproszonej.
 
 ## <a name="visual-interface-issues"></a>Problemy z interfejsem wizualnym
 
