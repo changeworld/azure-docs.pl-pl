@@ -11,39 +11,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: banders
-ms.openlocfilehash: 1324b60de05805cd409975358ff78e5b2b27eef1
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 97e6e04bf7fab3a48f1ce0552e1b653b208be77b
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70114449"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375437"
 ---
 # <a name="azure-spending-limit"></a>Azure — limit wydatków
 
-Dzięki limitowi wydatków na platformie Azure nie można wydawać więcej niż wynosi kwota środków. Wszyscy nowi klienci, którzy rejestrują się w celu skorzystania z oferty wersji próbnej platformy Azure lub ofert obejmujących środki na wiele miesięcy, mają domyślnie włączony limit wydatków. Limit wydatków wynosi 0 USD i nie można go zmienić. Na przykład nie można zmienić limitu wydatków na 100 USD. Limit wydatków można jednak usunąć. Dlatego albo nie masz limitu lub obowiązuje limit równy zero, który uniemożliwia wykonanie większości rodzajów wydatków. Limit wydatków nie jest dostępny dla subskrypcji w ramach niektórych planów, takich jak plany zobowiązań i plany z cenami płatności zgodnie z rzeczywistym użyciem. Zobacz [pełną listę ofert platformy Azure i sprawdź dostępność limitu wydatków](https://azure.microsoft.com/support/legal/offer-details/).
+Dzięki limitowi wydatków na platformie Azure nie można wydawać więcej niż wynosi kwota środków. Wszyscy nowi klienci, którzy rejestrują się w celu założenia bezpłatnego konta platformy Azure lub skorzystania z typów subskrypcji obejmujących środki na wiele miesięcy, mają domyślnie włączony limit wydatków. Limit wydatków jest równy kwocie środków i nie można go zmienić. Jeśli na przykład zarejestrujesz się w celu założenia bezpłatnego konta platformy Azure, Twój limit wydatków będzie wynosić 200 USD i nie będzie można go zmienić na 500 USD. Limit wydatków można jednak usunąć. Więc albo nie masz limitu, albo masz limit równy kwocie środków. Pozwala to uniknąć większości rodzajów wydatków. Limit wydatków nie jest dostępny dla subskrypcji z planami zobowiązań lub z cenami po stawkach płatności zgodnie z rzeczywistym użyciem. Zobacz [pełną listę typów subskrypcji platformy Azure i dostępność limitu wydatków](https://azure.microsoft.com/support/legal/offer-details/).
 
 ## <a name="reaching-a-spending-limit"></a>Osiąganie limitu wydatków
 
-Jeśli opłaty za użycie przekroczą miesięczne kwoty określone w subskrypcji platformy Azure, wdrożone usługi zostaną wyłączone na pozostałą część okresu rozliczeniowego.
+Gdy użycie spowoduje naliczenie opłat wyczerpujących limit wydatków, wdrożone usługi zostaną wyłączone na pozostałą część danego okresu rozliczeniowego.
 
-Jeśli na przykład wydasz wszystkie środki związane z subskrypcją, wdrożone zasoby platformy Azure zostaną usunięte z produkcji, a maszyny wirtualne platformy Azure zostaną zatrzymane i ich przydział zostanie cofnięty. Dane na kontach magazynu są dostępne tylko do odczytu.
+Jeśli na przykład wydasz wszystkie środki zawarte na bezpłatnym koncie platformy Azure, wdrożone zasoby platformy Azure zostaną usunięte ze środowiska produkcyjnego, a maszyny wirtualne platformy Azure zostaną zatrzymane i ich przydział zostanie cofnięty. Dane na kontach magazynu są dostępne tylko do odczytu.
 
-Jeśli oferta subskrypcji obejmuje środki na wiele miesięcy, na początku kolejnego okresu rozliczeniowego subskrypcja zostanie ponownie włączona automatycznie. Następnie możesz ponownie wdrożyć zasoby platformy Azure i mieć pełny dostęp do kont magazynu oraz baz danych.
+Jeśli Twój typ subskrypcji obejmuje środki na wiele miesięcy, na początku kolejnego okresu rozliczeniowego subskrypcja zostanie ponownie włączona automatycznie. Następnie możesz ponownie wdrożyć zasoby platformy Azure i mieć pełny dostęp do kont magazynu oraz baz danych.
 
-Platforma Azure wysyła powiadomienia e-mail, gdy limit wydatków dla subskrypcji zostanie osiągnięty. Zaloguj się do [Centrum konta](https://account.windowsazure.com/Subscriptions), aby zobaczyć powiadomienia dotyczące subskrypcji, w przypadku których osiągnięto limit wydatków.
+Platforma Azure wysyła powiadomienia e-mail po osiągnięciu limit wydatków. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), aby zobaczyć powiadomienia dotyczące subskrypcji, w przypadku których osiągnięto limit wydatków.
 
-Jeśli masz bezpłatną subskrypcję wersji próbnej i osiągniesz limit wydatków, możesz przeprowadzić uaktualnienie do planu z cenami typu [płatność zgodnie z rzeczywistym użyciem](billing-upgrade-azure-subscription.md), aby usunąć limit wydatków i automatycznie włączyć subskrypcję.
+Jeśli masz bezpłatne konto platformy Azure i osiągniesz limit wydatków, możesz przejść na ceny [płatności zgodnie z rzeczywistym użyciem](billing-upgrade-azure-subscription.md), aby usunąć limit wydatków i automatycznie włączyć ponownie subskrypcję.
 
 <a id="remove"></a>
 
-## <a name="remove-the-spending-limit-in-account-center"></a>Usuwanie limitu wydatków w Centrum konta
+## <a name="remove-the-spending-limit-in-azure-portal"></a>Usuwanie limitu wydatków w witrynie Azure Portal
 
-Możesz usunąć limit wydatków w dowolnym momencie, o ile z subskrypcją platformy Azure została skojarzona prawidłowa forma płatności. W przypadku ofert obejmujących środki na wiele miesięcy możesz też włączyć limit wydatków na początku następnego okresu rozliczeniowego.
+Możesz usunąć limit wydatków w dowolnym momencie, o ile z subskrypcją platformy Azure została skojarzona prawidłowa forma płatności. W przypadku typów subskrypcji ze środkami na wiele miesięcy, takich jak Visual Studio Enterprise i Visual Studio Professional, możesz również włączyć limit wydatków na początku następnego okresu rozliczeniowego.
 
 Aby usunąć limit wydatków, wykonaj następujące czynności:
 
-1. Zaloguj się do [Centrum konta](https://account.windowsazure.com/Subscriptions).
-1. Wybierz subskrypcję. Jeśli subskrypcja została wyłączona z powodu osiągnięcia limitu wydatków, kliknij powiadomienie: **Subskrypcja osiągnęła limit wydatków i została wyłączona, aby nie naliczono opłat**. W przeciwnym razie kliknij pozycję **Usuń limit wydatków** w obszarze **STAN SUBSKRYPCJI**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Wybierz subskrypcję. Jeśli limit wydatków dla subskrypcji zostanie osiągnięty, zostanie ona wyłączona.
+1. Wybierz pozycję **Usuń limit wydatków** w górnej części strony.
 1. Wybierz odpowiednią opcję.
 
 ![Wybieranie opcji usuwania limitu wydatków](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -57,13 +58,13 @@ Aby usunąć limit wydatków, wykonaj następujące czynności:
 
 Limit wydatków może uniemożliwić wdrażanie lub używanie niektórych usług innych firm i firmy Microsoft. Poniżej przedstawiono sytuacje, w których należy usunąć limit wydatków dla subskrypcji.
 
--  Planujesz wdrożyć obrazy firmy Microsoft, takie jak Oracle, i usługi, takie jak Azure DevOps Services. Ta sytuacja powoduje niemal natychmiastowe przekroczenie limitu wydatków i wyłączenie subskrypcji.
-- Masz usługi, których działania nie chcesz zakłócać.
-- Masz usługi i zasoby z ustawieniami, takimi jak wirtualne adresy IP, których nie chcesz utracić. Te ustawienia zostaną utracone w przypadku cofnięcia przydziałów usług i zasobów.
+-  Planujesz wdrożyć obrazy firmy Microsoft, takie jak Oracle, lub usługi, takie jak Azure DevOps Services. Ta sytuacja powoduje niemal natychmiastowe osiągnięcie limitu wydatków i wyłączenie subskrypcji.
+- Masz usługi, których działania nie chcesz zakłócać. Po osiągnięciu limitu wydatków wdrożone zasoby platformy Azure zostaną usunięte ze środowiska produkcyjnego, a maszyny wirtualne platformy Azure zostaną zatrzymane i zostanie cofnięty ich przydział. Jeśli masz usługi, których działania nie chcesz zakłócać, musisz usunąć limit wydatków.
+- Masz usługi i zasoby z ustawieniami, takimi jak wirtualne adresy IP, których nie chcesz utracić. Te ustawienia zostaną utracone, gdy osiągniesz limit wydatków, a przydział usługi i zasobów zostanie cofnięty.
 
 ## <a name="turn-on-the-spending-limit-after-removing"></a>Włączanie limitu wydatków po usunięciu
 
-Ta funkcja jest dostępna tylko wtedy, gdy limit wydatków został usunięty trwale. Zmień go, aby włączyć funkcję automatycznie na początku następnego okresu rozliczeniowego.
+Ta funkcja jest dostępna tylko wtedy, gdy limit wydatków dla typów subskrypcji obejmujących środki na wiele miesięcy został usunięty na czas nieokreślony. Za pomocą tej funkcji można automatycznie włączyć limit wydatków na początku kolejnego okresu rozliczeniowego.
 
 1. Zaloguj się do [Centrum konta](https://account.windowsazure.com/Subscriptions).
 1. Kliknij żółty baner, aby zmienić opcję limitu wydatków.

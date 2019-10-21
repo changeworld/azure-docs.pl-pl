@@ -57,6 +57,8 @@
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: sample-scripts-azure-cli.md
+    - name: Buforowanie połączeń Java
+      href: sample-scripts-java-connection-pooling.md
 - name: Pojęcia
   items:
     - name: Bazy danych i serwery

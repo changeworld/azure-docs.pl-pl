@@ -39,6 +39,8 @@
           href: cache-best-practices.md
         - name: Najlepsze rozwiązania architektury platformy Azure dotyczące buforowania
           href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+    - name: Objaśnienia trybu failover i stosowania poprawek
+      href: cache-failover.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Planowanie

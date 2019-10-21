@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43986ce57b8d320beeae748d3b848cf9ef38744d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2803f8d659726ac95bcefa6191a816ed2b2dcb2d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718723"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375410"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Informacje o opłatach za usługi zewnętrzne na platformie Azure
 Usługi zewnętrzne są publikowane przez zewnętrznych dostawców oprogramowania na platformie Azure Marketplace. Na przykład SendGrid to usługa zewnętrzna, którą można zakupić na platformie Azure, ale która nie jest publikowana przez firmę Microsoft. Także niektóre produkty firmy Microsoft są sprzedawane na platformie Azure Marketplace.
 
 ## <a name="how-external-services-are-billed"></a>Jak są rozliczane usługi zewnętrzne
 
-- Jeśli masz [umowę klienta firmy Microsoft](#check-access), usługi innych firm są rozliczane łącznie z pozostałymi usługami platformy Azure.
-- Jeśli nie masz umowy klienta firmy Microsoft, usługi zewnętrzne są rozliczane oddzielnie od usług platformy Azure.
+- Jeśli masz umowę klienta firmy Microsoft (MCA) lub umowę partnerską firmy Microsoft (MPA), usługi innych firm są rozliczane łącznie z pozostałymi usługami platformy Azure. [Sprawdź typ konta rozliczeniowego](#check-billing-account-type), aby sprawdzić, czy masz dostęp do umowy MCA lub MPA.
+- Jeśli nie masz umowy MCA ani MPA, usługi zewnętrzne są rozliczane oddzielnie od usług platformy Azure.
 - Każda usługa zewnętrzna ma inny model rozliczeń. Niektóre usługi są rozliczane na zasadzie płatności zgodnie z rzeczywistym użyciem, a inne mają stałe opłaty miesięczne.
 - Za usługi zewnętrzne nie można płacić przy użyciu otrzymywanych co miesiąc bezpłatnych środków. Jeśli korzystasz z subskrypcji platformy Azure, w ramach której otrzymujesz [bezpłatne środki](https://azure.microsoft.com/pricing/spending-limits/), nie możesz użyć tych środków do opłacenia usług zewnętrznych. Podczas aprowizacji nowych usług i zasobów zewnętrznych jest wyświetlane ostrzeżenie:
 
@@ -48,11 +48,11 @@ You can view a list of the external services that are on each subscription withi
 
     ![View external services billing history](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png) -->
 
-## <a name="view-and-download-invoices"></a>Wyświetlanie i pobieranie faktur
+## <a name="view-and-download-invoices-for-external-services"></a>Wyświetlanie i pobieranie faktur dla usług zewnętrznych
 
-Jeśli masz [umowę klienta firmy Microsoft](#check-access), opłaty za usługi innych firm są uwzględniane na fakturze za korzystanie z platformy Azure. Dowiedz się, [jak wyświetlać i pobierać faktury](billing-download-azure-invoice.md) dotyczące platformy Azure z witryny Azure Portal, i jak znaleźć na nich opłaty za usługi innych firm.
+Jeśli masz umowę klienta firmy Microsoft (MCA) lub umowę partnerską firmy Microsoft (MPA), usługi innych firm są rozliczane łącznie z pozostałymi usługami platformy Azure. [Sprawdź typ konta rozliczeniowego](#check-billing-account-type), aby sprawdzić, czy masz dostęp do umowy MCA lub MPA. Jeśli to zrobisz, zobacz [Wyświetlanie i pobieranie faktur w witrynie Azure Portal](billing-download-azure-invoice.md), aby zobaczyć opłaty na rzecz innych firm.
 
-Jeśli nie masz umowy klienta firmy Microsoft, otrzymasz oddzielne faktury za usługi innych firm. Możesz wyświetlać i pobierać faktury za usługi z platformy Azure Marketplace w witrynie Azure Portal, wykonując następujące czynności:
+Jeśli nie masz umowy MCA lub MPA, dostajesz oddzielne faktury z opłatami na rzecz innych firm. Możesz wyświetlać i pobierać faktury za usługi z platformy Azure Marketplace w witrynie Azure Portal, wykonując następujące czynności:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
@@ -108,8 +108,8 @@ Jeśli chcesz anulować zamówienie usługi zewnętrznej, usuń odpowiedni zasó
     ![Usuwanie zasobu](./media/billing-understand-your-azure-marketplace-charges/delete-resource.PNG)
 1. Kliknij polecenie **Usuń**.
 
-## <a name="check-access"></a>Sprawdzanie dostępu
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>Sprawdzanie typu konta rozliczeniowego
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 

@@ -1,6 +1,6 @@
 ---
-title: Wyświetlanie dokumentów podatkowych dotyczących umowy klienta firmy Microsoft na platformie Azure
-description: Dowiedz się, jak wyświetlać i pobierać dokumenty do celów podatkowych dla profilu rozliczeniowego umowy klienta firmy Microsoft.
+title: Wyświetlanie dokumentów podatkowych dla faktury za korzystanie z platformy Azure
+description: Dowiedz się, jak wyświetlać i pobierać dokumenty do celów podatkowych dla profilu rozliczeniowego.
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -12,35 +12,31 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 66d47ad1d67c963d70fb40e43eb077222ad8b360
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c8c39a832f54cd5075b57507ead14cbcdff2bb53
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709803"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375513"
 ---
-# <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>Wyświetlanie dokumentów podatkowych dotyczących umowy klienta firmy Microsoft
+# <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>Wyświetlanie i pobieranie dokumentów podatkowych dla faktury za korzystanie z platformy Azure
 
-Ten artykuł dotyczy konta rozliczeniowego związanego z umową klienta firmy Microsoft. [Sprawdź, czy masz dostęp do umowy klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Jeśli masz dostęp do faktur w witrynie Azure Portal, możesz pobrać dokumenty podatkowe dla swojej faktury za korzystanie z platformy Azure. Dostęp do faktur mają tylko niektóre role, na przykład Administrator konta. Jeśli masz umowę klienta firmy Microsoft, musisz być właścicielem, współautorem, czytelnikiem lub menedżerem faktur dla profilu rozliczeniowego, aby móc pobierać faktury i dokumenty podatkowe. Jeśli masz umowę partnerską firmy Microsoft, musisz mieć rolę Administrator globalny lub Agent administratora w organizacji partnera. [Sprawdź typ konta rozliczeniowego](#check-billing-account-type), aby zobaczyć, jakie uprawnienia są potrzebne do pobrania dokumentów podatkowych.
 
 ## <a name="view-and-download-tax-documents"></a>Wyświetlanie i pobieranie dokumentów podatkowych
 
-Aby móc wyświetlać i pobierać dokumenty podatkowe, musisz być właścicielem, współautorem, czytelnikiem lub menedżerem faktur w profilu rozliczeniowym. Aby dowiedzieć się więcej o rolach rozliczeniowych na potrzeby umów klienta firmy Microsoft, zobacz [Zadania i role profilu rozliczeniowego](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
-
-
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wyszukaj pozycję *Zarządzanie kosztami i rozliczenia*.
-1. Wybierz profil rozliczeniowy.
-1. Wybierz pozycję **Faktury**.
+1. W zależności od praw dostępu może być konieczne wybranie konta rozliczeniowego lub profilu rozliczeniowego.
+1. W menu po lewej stronie wybierz pozycję **Faktury** w obszarze **Rozliczenia**.
 1. W siatce faktur znajdź wiersz faktury odpowiadającej dokumentowi podatkowemu do pobrania.
-1. Kliknij symbol wielokropka (`...`) na końcu wiersza.
-7. Wybierz pozycję **Dokument podatkowy**. W zależności od kraju/regionu Twojego profilu rozliczeniowego może być widocznych kilka dokumentów podatkowych dla każdej faktury.
+1. Kliknij ikonę pobierania lub symbol wielokropka (`...`) na końcu wiersza.
+7. W menu pobierania wybierz pozycję **Dokument podatkowy**. W zależności od kraju/regionu Twojego profilu rozliczeniowego może być widocznych kilka dokumentów podatkowych dla każdej faktury.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>Sprawdzanie typu konta rozliczeniowego
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Wyświetlanie i pobieranie faktury platformy Microsoft Azure](billing-download-azure-invoice.md)
 - [Wyświetlanie i pobieranie danych na temat użycia i opłat na platformie Microsoft Azure](billing-download-azure-daily-usage.md)
-- [Informacje o opłatach na fakturze w profilu rozliczeniowym](billing-mca-understand-your-bill.md).

@@ -269,6 +269,8 @@
         - name: Potoki platformy Azure dla ciągłej integracji i ciągłego wdrażania
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: Planowanie potoków ML w języku Python
+          href: how-to-schedule-pipelines.md
     - name: Zarządzanie przydziałami zasobów
       displayName: limits
       href: how-to-manage-quotas.md

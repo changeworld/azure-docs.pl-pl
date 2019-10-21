@@ -4,16 +4,16 @@ description: W tym artykule opisano typowe zadania wykonywane przez administrato
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f344436b1e1f1a97b981c1ead469d965b06a12ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035207"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329339"
 ---
 # <a name="azure-ea-portal-administration"></a>Administracja przy użyciu witryny Azure EA Portal
 
@@ -62,7 +62,7 @@ Podczas przenoszenia konta przedsiębiorstwa do nowej rejestracji pamiętaj o na
 
 Data obowiązywania przeniesienia może być datą początkową rejestracji, do której chcesz dokonać przeniesienia, lub późniejszą. Przenoszona rejestracja to _rejestracja docelowa_. Po przeniesieniu konta wszystkie informacje dotyczące użycia na koncie przed datą obowiązywania przeniesienia pozostają w obrębie rejestracji, z której następuje przeniesienie. Rejestracja, z której przenosisz, to _rejestracja źródłowa_.  Użycie rejestracji źródłowej jest obciążane opłatą w odniesieniu do zobowiązania pieniężnego lub jako nadwyżka. Użycie, które następuje po dacie obowiązywania przeniesienia, jest transferowane do nowej rejestracji i są naliczane odpowiednie opłaty.
 
-Datę przeniesienia konta można cofnąć nawet do daty początkowej rejestracji docelowej. Albo do daty rozpoczęcia obowiązywania rejestracji źródłowej.
+Datę przeniesienia rejestracji można cofnąć nawet do daty początkowej rejestracji docelowej. Albo do daty rozpoczęcia obowiązywania rejestracji źródłowej.
 
 ### <a name="monetary-commitment"></a>Zobowiązanie pieniężne
 
@@ -212,12 +212,11 @@ Jeśli użytkownik nie otrzymuje powiadomienia, sprawdź, czy ustawienia powiado
 ![Przykład pokazujący okno dodawania kontaktu ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Oferta dostępu sponsorowanego Azure
+
 Oferta dostępu sponsorowanego Azure to ograniczone, sponsorowane konto platformy Microsoft Azure. Jest ono dostępne tylko na zaproszenie e-mail dla ograniczonej liczby klientów wybranych przez firmę Microsoft. Jeśli masz upoważnienie do oferty dostępu sponsorowanego Microsoft Azure, otrzymasz zaproszenie e-mail oferty dla Twojego identyfikatora konta.
+
 Aby uzyskać więcej informacji, zobacz:
 
-- Omówienie oferty dostępu sponsorowanego — https://azure.microsoft.com/en-us/offers/ms-azr-0143p/
-- Portal salda dostępu sponsorowanego — https://www.microsoftazuresponsorships.com/balance  
-- Zewnętrzne pytania i odpowiedzi dotyczące dostępu sponsorowanego — https://azuresponsorships-staging.azurewebsites.net/faq
 - Wniosek o pomoc techniczną dotyczącą aktywacji dostępu sponsorowanego — http://aka.ms/azrsponsorship
 
 ## <a name="next-steps"></a>Następne kroki

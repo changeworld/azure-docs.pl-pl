@@ -10,19 +10,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ed69775de71a371153a888749efc9069389e61d5
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 90fa6b0db180ca93d9b57178c32c5e156ecc3bb0
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709690"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375799"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Tworzenie usług uwzględnionych w ramach bezpłatnego konta platformy Azure
 
-W ramach bezpłatnego konta platformy Azure można korzystać z ograniczonej liczby bezpłatnych usług przez 12 miesięcy. Aby uzyskać więcej informacji, zobacz [Co to jest bezpłatne konto platformy Azure](https://azure.microsoft.com/free/free-account-faq/). Platforma Azure śledzi użycie każdej usługi i nie nalicza opłat, o ile nie zostaną przekroczone limity. W ramach tych limitów bezpłatne konto platformy Azure zapewnia elastyczność korzystania z różnych konfiguracji usług dopasowanych do Twoich potrzeb.
+W ramach bezpłatnego konta platformy Azure można korzystać z ograniczonej liczby bezpłatnych usług przez 12 miesięcy. W ramach tych limitów można elastycznie korzystać z bezpłatnych usług w różnych konfiguracjach dopasowanych do Twoich potrzeb.
 
 ## <a name="create-free-services-in-the-azure-portal"></a>Tworzenie bezpłatnych usług w witrynie Azure Portal
-Nowe usługi zalecamy tworzyć przy użyciu [strony Usługi bezpłatne](https://go.microsoft.com/fwlink/?linkid=859151). Możesz też zalogować się do witryny [Azure Portal](https://portal.azure.com), wybrać pozycję **Wszystkie usługi** po lewej stronie i wyszukać **bezpłatne usługi**.
+Bezpłatne usługi zalecamy tworzyć przy użyciu [strony Usługi bezpłatne](https://go.microsoft.com/fwlink/?linkid=859151). Możesz też zalogować się do witryny [Azure Portal](https://portal.azure.com) i wyszukać **bezpłatne usługi**. Podczas tworzenia usług na stronie bezpłatnych usług większość pól jest wstępnie zaznaczona, aby można było z łatwością bezpłatnie tworzyć usługi.
+
+![Zrzut ekranu przedstawiający stronę bezpłatnych usług](./media/billing-create-free-services-included-free-account/billing-freeservices-grid.png)
 
 ## <a name="services-can-be-created-in-any-region"></a>Usługi można tworzyć w dowolnym regionie
 O ile nie przekraczasz limitów, możesz bezpłatnie tworzyć usługi w dowolnym regionie, w którym te usługi są dostępne. Na przykład mając bezpłatne konto platformy Azure, możesz co miesiąc skorzystać z bezpłatnych 750 godzin maszyny wirtualnej B1S z systemem Windows. Tę maszynę wirtualną możesz utworzyć w dowolnym regionie, w którym są dostępne maszyny wirtualne z serii B. Opłaty nie są naliczane za platformę Azure, dopóki nie zostanie przekroczony limit 750 godzin. Na przykład klient ze Stanów Zjednoczonych może zaaprowizować maszynę wirtualną B1S z systemem Windows w Europie Zachodniej i bezpłatnie korzystać z niej przez 750 godzin.
@@ -37,5 +39,5 @@ Możesz bezpłatnie utworzyć wiele wystąpień usług, o ile suma ich użycia m
 Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Następne kroki
-
+- Dowiedz się, jak [sprawdzać użycie bezpłatnych usług dostępnych w ramach bezpłatnego konta platformy Azure](billing-check-free-service-usage.md).
 - Dowiedz się, jak [uniknąć naliczania opłat za bezpłatne konto platformy Azure](billing-avoid-charges-free-account.md).

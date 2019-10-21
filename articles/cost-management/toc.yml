@@ -32,6 +32,8 @@
       items:
         - name: Przypisywanie dostępu do danych
           href: assign-access-acm-data.md
+        - name: Korzystanie z analizy kosztów na potrzeby typowych zadań
+          href: cost-analysis-common-uses.md
         - name: Korzystanie z alertów dotyczących kosztów
           href: cost-mgt-alerts-monitor-usage-spending.md
         - name: Ustawianie i konfigurowanie integracji z usługami AWS

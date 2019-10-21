@@ -44,39 +44,8 @@
           href: data-encryption-best-practices.md
         - name: Szyfrowanie danych w spoczynku
           href: encryption-atrest.md
-        - name: Szyfrowanie dysków dla maszyn wirtualnych IaaS
-          items:
-            - name: Informacje o usłudze Azure Disk Encryption
-              displayName: 'BitLocker, bek'
-              href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: Usługa Azure Disk Encryption
-              items:
-                - name: Wymagania wstępne dotyczące szyfrowania dysków
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites'
-                - name: Szyfrowanie dysków dla maszyn wirtualnych z systemem Windows
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows'
-                - name: Szyfrowanie dysków dla maszyn wirtualnych z systemem Linux
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux'
-                - name: Szyfrowanie dysków przy użyciu sekwencjonowania rozszerzenia zestawu skalowania maszyn wirtualnych
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-extension-sequencing'
-                - name: Dodatek dotyczący szyfrowania dysków
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-appendix'
-                - name: Często zadawane pytania o szyfrowanie dysków
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq'
-                - name: Rozwiązywanie problemów
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg'
-                - name: Usługa Azure Disk Encryption z aplikacją usługi Azure AD (wcześniejsza wersja)
-                  displayName: active directory
-                  items:
-                    - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD — wymagania wstępne
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad'
-                    - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD dla maszyn wirtualnych z systemem Windows
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows-aad'
-                    - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD dla maszyn wirtualnych z systemem Linux
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
+        - name: Usługa Azure Disk Encryption dla maszyn wirtualnych i zestawów skalowania maszyn wirtualnych
+          href: azure-disk-encryption-vms-vmss.md
     - name: Przewodnik po zabezpieczeniach magazynu
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Skrytka klienta
@@ -154,13 +123,6 @@
           href: paas-applications-using-sql.md
     - name: IoT
       href: iot-overview.md
-      items:
-        - name: Najlepsze rozwiązania z zakresu zabezpieczeń IoT
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-best-practices?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
-        - name: Zabezpieczenia IoT
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-architecture?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot'
-        - name: Zabezpieczanie wdrożenia IoT
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-security-deployment?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Zabezpieczenia usługi Azure Service Fabric
       href: service-fabric-overview.md
       items:
@@ -273,8 +235,8 @@
           href: ../blueprints/ukofficial-iaaswa-overview.md
         - name: Aplikacja internetowa PaaS
           href: ../blueprints/ukofficial-paaswa-overview.md
-- name: Oficjalne dokumenty
-  href: white-papers.md
+- name: Oficjalne dokumenty dotyczące zabezpieczeń
+  href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Usługi zabezpieczeń platformy Azure
   href: services-technologies.md
 - name: Omówienia techniczne

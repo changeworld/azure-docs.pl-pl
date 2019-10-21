@@ -83,6 +83,8 @@
           href: azure-pim-resource-rbac.md
         - name: Korzystanie z ról niestandardowych
           href: pim-resource-roles-custom-role-policy.md
+    - name: Rozwiązywanie problemów z usługą PIM
+      href: pim-troubleshoot.md
     - name: Przeglądy dostępu
       items:
         - name: Role usługi Azure AD

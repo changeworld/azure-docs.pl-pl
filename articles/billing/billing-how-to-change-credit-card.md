@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: f89f9a08feb2ea2bcb7a9e8180002557df1d2b56
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e652237e6faa705aa3ea09e7cf80c4eb692acc98
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300309"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375588"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Dodawanie, aktualizowanie lub usuwanie karty kredytowej dla platformy Azure
 
@@ -131,7 +131,7 @@ Jeśli chcesz zmienić domyślną formę płatności na czek/przelew, dowiedz si
 1. Wybierz istniejącą kartę lub dodaj nową.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Jeśli podczas dodawania lub aktualizowania karty kredytowej pojawiają się błędy, spróbuj otworzyć przeglądarkę w trybie prywatnym.
+Nie obsługujemy kart wirtualnych i przedpłaconych. Jeśli podczas dodawania lub aktualizowania ważnej karty kredytowej pojawiają się błędy, spróbuj otworzyć przeglądarkę w trybie prywatnym.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 W poniższych sekcjach zamieszczono odpowiedzi na często zadawane pytania dotyczące zmiany danych karty kredytowej.

@@ -75,9 +75,9 @@
       href: functions-cli-samples.md
 - name: Pojęcia
   items:
-    - name: Porównanie wersji 1.x i 2.x
+    - name: Porównywanie wersji środowiska uruchomieniowego
       href: functions-versions.md
-      displayName: 'migrate, migration'
+      displayName: 'migrate, migration, v3'
     - name: Plan Premium
       href: functions-premium-plan.md
     - name: Wdrożenia

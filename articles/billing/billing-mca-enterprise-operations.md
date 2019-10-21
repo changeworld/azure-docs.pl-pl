@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b6d1de1ee24ce9ca67d3bd8fa514ec9ea7a5c771
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca0f83628edeef9e55ebc81798d0229791b80a7a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709556"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375508"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Wykonywanie zadań umowy Enterprise Agreement na koncie rozliczeniowym dla umowy klienta firmy Microsoft
 
@@ -27,7 +27,7 @@ Jeśli w Twojej organizacji podpisano umowę klienta firmy Microsoft umożliwiaj
 
 Na poniższym schemacie pokazano organizację rozliczeń w ramach nowego konta rozliczeniowego.
 
-![Obraz elementu ea-mca-post-transition-hierarchy](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![Obraz elementu ea-mca-post-transition-hierarchy](./media/mca-setup-account/mca-post-transition-hierarchy.png)
 
 | Enterprise Agreement   | Umowa klienta firmy Microsoft    |
 |------------------------|--------------------------------------------------------|
@@ -72,9 +72,9 @@ Aby wyświetlić zagregowany koszt dla subskrypcji należących do konta, musisz
 
 Dla każdego profilu rozliczeniowego na koncie jest generowana faktura miesięczna. Dla każdej faktury można pobrać plik CSV zawierający opłaty i dane użycia platformy Azure, arkusz cen i dokument podatkowy (jeśli dotyczy). Można również pobrać plik CSV zawierający dane użycia platformy Azure i opłaty w bieżącym miesiącu.
 
-Aby dowiedzieć się, jak pobrać plik CSV zawierający opłaty i dane użycia platformy Azure, zobacz [Pobieranie zestawienia użycia dotyczącego umowy klienta firmy Microsoft](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement).
+Aby dowiedzieć się, jak pobrać plik CSV zawierający opłaty i dane użycia platformy Azure, zobacz [Pobieranie zestawienia użycia dotyczącego umowy klienta firmy Microsoft](billing-download-azure-daily-usage.md).
 
-Aby dowiedzieć się, jak pobrać arkusz cen, zobacz [Pobieranie cennika dotyczącego umowy klienta firmy Microsoft](billing-ea-pricing.md#microsoft-customer-agreement-pricing).
+Aby dowiedzieć się, jak pobrać arkusz cen, zobacz [Pobieranie cennika dotyczącego umowy klienta firmy Microsoft](billing-ea-pricing.md).
 
 Aby dowiedzieć się, jak pobrać dokumenty podatkowe, zobacz [Wyświetlanie dokumentów podatkowych dotyczących umowy klienta firmy Microsoft](billing-mca-download-tax-document.md#view-and-download-tax-documents).
 
@@ -90,7 +90,7 @@ Po utworzeniu sekcji faktury można organizować koszty zgodnie z potrzebami, po
 
 ### <a name="create-a-new-account"></a>Tworzenie nowego konta
 
-Przypisując użytkownikom rolę twórcy subskrypcji platformy Azure w sekcjach faktury, można nadawać im uprawnienie do tworzenia subskrypcji platformy Azure, podobnie jak w przypadku kont utworzonych w ramach rejestracji umowy Enterprise Agreement. Aby uzyskać więcej informacji, zobacz [Nadawanie innym użytkownikom uprawnień do tworzenia subskrypcji platformy Azure](billing-mca-create-subscription.md#give-others-permission).
+Przypisując użytkownikom rolę twórcy subskrypcji platformy Azure w sekcjach faktury, można nadawać im uprawnienie do tworzenia subskrypcji platformy Azure, podobnie jak w przypadku kont utworzonych w ramach rejestracji umowy Enterprise Agreement. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [Zarządzanie rolami rozliczeniowymi w witrynie Azure Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
 ## <a name="changes-for-department-administrators"></a>Zmiany dla administratorów działów
 
@@ -116,7 +116,7 @@ Aby dowiedzieć się, jak zapewnić dostęp do sekcji faktury, zobacz [Zarządza
 
 ### <a name="create-a-new-account-in-your-department"></a>Tworzenie nowego konta w dziale
 
-Przypisz użytkownikom rolę twórcy subskrypcji platformy Azure w sekcji faktury, która została utworzona dla działu. Aby uzyskać więcej informacji, zobacz [Nadawanie innym użytkownikom uprawnień do tworzenia subskrypcji platformy Azure](billing-mca-create-subscription.md#give-others-permission).
+Przypisz użytkownikom rolę twórcy subskrypcji platformy Azure w sekcji faktury, która została utworzona dla działu. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [Zarządzanie rolami rozliczeniowymi w witrynie Azure Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>Wyświetlanie opłat dla kont w działach
 

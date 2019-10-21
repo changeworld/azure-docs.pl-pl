@@ -1,6 +1,6 @@
 ---
-title: Zmiana bezpłatnej subskrypcji platformy Azure na wyższy plan
-description: Opisano tutaj, jak można zmienić bezpłatną subskrypcję na wyższy plan.
+title: Uaktualnianie konta platformy Azure
+description: Opisuje, jak można uaktualnić konto platformy Azure.
 keywords: zmiana planu na płatność zgodnie z rzeczywistym użyciem
 author: bandersmsft
 manager: jureid
@@ -13,36 +13,40 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 208909c31fc5bcdc8876d95eca0aac62c7df2129
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2ef679da4aa0bfb8abde124457755f47c4fd6b47
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719611"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375381"
 ---
-# <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-subscription"></a>Zmień bezpłatne konto platformy Azure lub subskrypcję Microsoft Azure for Students Starter na wyższy plan
+# <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Uaktualnianie bezpłatnego konta platformy Azure lub konto subskrypcji Microsoft Azure for Students Starter
 
-Jeśli masz [bezpłatną wersję próbną](https://azure.microsoft.com/free/) lub subskrypcję [Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/), możesz ją zmienić na [indywidualną subskrypcję z płatnością zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/) w witrynie Azure Portal. Jeśli masz subskrypcję Azure for Students Starter i chcesz skorzystać z bezpłatnej wersji próbnej, możesz zmienić plan na bezpłatną wersję próbną.
+Swoje [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) lub [konto subskrypcji Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/) możesz w witrynie Azure Portal uaktualnić do [stawek płatności zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/).
+
+Jeśli zarejestrujesz się w celu uzyskania [konta subskrypcji Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/) i będziesz kwalifikować się do [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), będziesz w stanie przeprowadzić uaktualnienie do bezpłatnego konta. Po uaktualnieniu otrzymasz 200 USD środków na korzystanie z platformy Azure i 12 miesięcy bezpłatnego korzystania z usług.
 
 <a id="freetrial"></a>
 
-## <a name="upgrade-your-free-trial"></a>Zmiana bezpłatnej wersji próbnej na wyższy plan
+## <a name="upgrade-your-azure-free-account"></a>Uaktualnienie bezpłatnego konta platformy Azure
 
-Po podwyższeniu poziomu planu z subskrypcji bezpłatnej wersji próbnej zachowasz swoje pozostałe środki przez pełne 30 dni od utworzenia subskrypcji. Masz również dostęp do bezpłatnych usług przez 12 miesięcy.
+Po uaktualnieniu bezpłatnego konta platformy Azure możesz zachować pozostałe środki przez pełne 30 dni od momentu zarejestrowania się. Na przykład: Rejestracja została przeprowadzona 1 listopada, a uaktualnienie 5 listopada. Wszystkie niewykorzystane środki będą dostępne do 30 listopada. Masz również dostęp do bezpłatnych usług przez 12 miesięcy po uaktualnieniu.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Subskrypcje**.
 
     ![Zrzut ekranu przedstawiający wyszukiwanie](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
-1. Wybierz subskrypcję bezpłatnej wersji próbnej.
-1. W obszarze Przegląd subskrypcji kliknij pozycję **Uaktualnij subskrypcję** na pasku poleceń.
+1. Wybierz subskrypcję utworzoną podczas tworzenia bezpłatnego konta na platformie Azure.
+1. W obrębie przeglądu subskrypcji kliknij przycisk **Uaktualnij subskrypcję** na pasku poleceń. Jeśli nie widzisz przycisku Uaktualnij subskrypcję, kliknij transparent uaktualnienia w górnej części strony.
 
     ![Zrzut ekranu przedstawiający przycisk Uaktualnij](./media/billing-upgrade-azure-subscription/free-upgrade-button.png)
 
-1. Jeśli nie masz jeszcze metody płatności skojarzonej z subskrypcją bezpłatnej wersji próbnej, zostanie wyświetlony monit o dodanie metody płatności.
+1. Jeśli nie masz formy płatności dla swojego konta, zostanie wyświetlony monit o jej dodanie.
+
 1. Może być konieczne wprowadzenie numeru telefonu w celu zweryfikowania tożsamości.
-1. Wpisz nazwę subskrypcji. Domyślna nazwa to *Płatność zgodnie z rzeczywistym użyciem*.
+
+1. Wpisz nazwę subskrypcji.
 
      ![Zrzut ekranu przedstawiający nazwę](./media/billing-upgrade-azure-subscription/free-upgrade-name.png)
 
@@ -50,33 +54,32 @@ Po podwyższeniu poziomu planu z subskrypcji bezpłatnej wersji próbnej zachowa
 
 1. Kliknij przycisk **Uaktualnij**.
 
-Jeśli chcesz [przenieść subskrypcję](billing-subscription-transfer.md) po podwyższeniu poziomu planu, musisz poczekać, aż identyfikator oferty subskrypcji zmieni się na **MS-AZR-003P**. Identyfikator oferty zmieni się w następujących przypadkach:
-
-* Zużyjesz wszystkie pozostałe środki
-* Upłynie 30 dni od czasu rozpoczęcia bezpłatnej wersji próbnej
-
 <a id="student"></a>
 
-## <a name="upgrade-your-azure-for-students-starter-subscription"></a>Zmiana subskrypcji Azure for Students Starter na wyższy plan
+## <a name="upgrade-your-azure-for-students-starter-account"></a>Uaktualnianie konta subskrypcji Azure for Students Starter
 
-Jeśli masz odpowiednie uprawnienia, możesz zmienić plan na bezpłatną wersję próbną, korzystając z poniższych instrukcji.
+### <a name="upgrade-to-an-azure-free-account"></a>Uaktualnianie do bezpłatnego konta platformy Azure
+
+Jeśli kwalifikujesz się, wykonaj poniższe kroki w celu wykonania uaktualnienia do bezpłatnego konta platformy Azure.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Subskrypcje**.
 
     ![Zrzut ekranu przedstawiający wyszukiwanie](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
-1. Wybierz subskrypcję Azure for Students Starter.
-1. W obszarze Przegląd subskrypcji kliknij pozycję **Uaktualnij subskrypcję** na pasku poleceń.
+1. Wybierz subskrypcję utworzoną po zarejestrowaniu się w celu uzyskania konta subskrypcji Azure for Students Starter.
+1. W obrębie przeglądu subskrypcji kliknij pozycję **Uaktualnij subskrypcję** na pasku poleceń.
 
     ![Zrzut ekranu przedstawiający przycisk Uaktualnij w przypadku subskrypcji dla uczniów](./media/billing-upgrade-azure-subscription/student-upgrade-ibiza.png)
 
-1. Jeśli zmieniasz plan na konto indywidualne z płatnością zgodnie z rzeczywistym użyciem, a nie masz jeszcze metody płatności skojarzonej z subskrypcją, zostanie wyświetlony monit o dodanie metody płatności.
+### <a name="upgrade-to-pay-as-you-go-rates"></a>Uaktualnianie do stawek płatności zgodnie z rzeczywistym użyciem
+
+1. Jeśli wykonujesz uaktualnienie do stawek płatności zgodnie z rzeczywistym użyciem, a nie masz jeszcze formy płatności skojarzonej z subskrypcją, zostanie wyświetlony monit o jej dodanie.
 1. Może być konieczne wprowadzenie numeru telefonu w celu zweryfikowania tożsamości.
 1. Wpisz nazwę subskrypcji.
-1. Jeśli zmieniasz plan na konto indywidualne z płatnością zgodnie z rzeczywistym użyciem, wybierz plan pomocy technicznej dla subskrypcji. Aby dowiedzieć się więcej o planach pomocy technicznej, zobacz [Plany pomocy technicznej platformy Azure](https://azure.microsoft.com/us/support/plans/).
+1. Wybierz plan pomocy technicznej dla subskrypcji. Aby dowiedzieć się więcej o planach pomocy technicznej, zobacz [Plany pomocy technicznej platformy Azure](https://azure.microsoft.com/us/support/plans/).
 1. Kliknij przycisk **Uaktualnij**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy masz już subskrypcję indywidualną z płatnością zgodnie z rzeczywistym użyciem, zobacz [Zapobieganie nieoczekiwanym opłatom — rozliczenia i zarządzanie kosztami na platformie Azure](billing-getting-started.md).
+Teraz, gdy już masz uaktualnione konto, zobacz [Zapobieganie nieoczekiwanym opłatom za pomocą funkcji rozliczeń i zarządzania kosztami platformy Azure.](billing-getting-started.md)

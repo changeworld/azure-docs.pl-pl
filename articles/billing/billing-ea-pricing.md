@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 486a6b46b6c4590b7f49cd8aba449204cd8f4fac
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c38cd7f4b2fb1ae88b65031d3c93b153500b96ac
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709699"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375778"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Wyświetlanie i pobieranie cennika platformy Azure organizacji
 
-Klienci platformy Azure z umową Azure Enterprise Agreement (EA) lub [umową klienta firmy Microsoft](#check-your-access-to-a-microsoft-customer-agreement) mogą wyświetlać i pobierać cennik za pośrednictwem witryny Azure Portal.
+Klienci platformy Azure z umową Azure Enterprise Agreement (EA), umową klienta firmy Microsoft (MCA) lub umową partnerską firmy Microsoft (MPA) mogą wyświetlać i pobierać cennik za pośrednictwem witryny Azure Portal. [Dowiedz się, jak sprawdzić typ konta rozliczeniowego](#check-your-billing-account-type).
 
-## <a name="ea-pricing"></a>Cennik EA
+## <a name="download-pricing-for-an-enterprise-agreement"></a>Pobieranie cennika dla umowy Enterprise Agreement
 
 W zależności od zasad ustawionych dla organizacji przez administratora przedsiębiorstwa tylko niektóre role administracyjne zapewniają dostęp do informacji o cenniku EA organizacji. Aby uzyskać więcej informacji, zobacz [Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure](billing-understand-ea-roles.md).
 
@@ -42,18 +42,9 @@ W zależności od zasad ustawionych dla organizacji przez administratora przedsi
 
    ![Zrzut ekranu przedstawiający przycisk pobierania pliku CSV z arkuszem cen](./media/billing-ea-pricing/download-ea-price-sheet.png)
 
-## <a name="microsoft-customer-agreement-pricing"></a>Cennik umowy klienta firmy Microsoft
+## <a name="download-pricing-for-an-mca-or-mpa-account"></a>Pobieranie cennika dla konta z umową MCA lub MPA
 
-Aby móc wyświetlać i pobierać cennik, musisz być właścicielem, współautorem, czytelnikiem lub menedżerem faktur w profilu rozliczeniowym. Aby dowiedzieć się więcej o rolach rozliczeniowych na potrzeby umów klienta firmy Microsoft, zobacz [Zadania i role profilu rozliczeniowego](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
-
-### <a name="download-price-sheets-for-the-current-billing-period"></a>Pobieranie arkuszy cen dla bieżącego okresu rozliczeniowego
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukaj pozycję *Zarządzanie kosztami i rozliczenia*.
-1. Wybierz profil rozliczeniowy. W zależności od praw dostępu może być konieczne wybranie najpierw konta rozliczeniowego.
-1. W obszarze **Przegląd** znajdź linki pobierania pod opłatami za bieżący miesiąc.
-1. Wybierz pozycję **Arkusz cen platformy Azure**.
-![Zrzut ekranu przedstawiający pobieranie z obszaru Przegląd](./media/billing-ea-pricing/open-pricing.png)
+Jeśli masz umowę MCA, to aby móc wyświetlać i pobierać cennik, musisz być właścicielem, współautorem, czytelnikiem lub menedżerem faktur w profilu rozliczeniowym. Jeśli masz umowę MPA, to aby móc wyświetlać i pobierać cennik, musisz mieć rolę Administrator globalny lub Agent administratora w organizacji partnera.
 
 ### <a name="download-price-sheets-for-billed-charges"></a>Pobieranie arkuszy cen dla naliczanych opłat
 
@@ -69,6 +60,17 @@ Aby móc wyświetlać i pobierać cennik, musisz być właścicielem, współaut
 1. Jeśli chcesz zobaczyć ceny dla wszystkich usług platformy Azure w danym okresie rozliczeniowym, wybierz pozycję **Arkusz cen platformy Azure**.
 
 ![Zrzut ekranu przedstawiający menu kontekstowe z arkuszami cen](./media/billing-ea-pricing/contextmenu-pricesheet.png)
+
+### <a name="download-price-sheets-for-the-current-billing-period"></a>Pobieranie arkuszy cen dla bieżącego okresu rozliczeniowego
+
+Jeśli masz umowę MCA, możesz pobrać cennik dla bieżącego okresu rozliczeniowego.
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Wyszukaj pozycję *Zarządzanie kosztami i rozliczenia*.
+1. Wybierz profil rozliczeniowy. W zależności od praw dostępu może być konieczne wybranie najpierw konta rozliczeniowego.
+1. W obszarze **Przegląd** znajdź linki pobierania pod opłatami za bieżący miesiąc.
+1. Wybierz pozycję **Arkusz cen platformy Azure**.
+![Zrzut ekranu przedstawiający pobieranie z obszaru Przegląd](./media/billing-ea-pricing/open-pricing.png)
 
 ## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Szacowanie kosztów za pomocą kalkulatora cen platformy Azure
 
@@ -86,8 +88,8 @@ Możesz również użyć cennika organizacji, aby oszacować koszty za pomocą k
 1. Wyszukaj, a następnie dodaj produkty do oszacowania.
 1. Wyświetlane szacowane ceny są oparte na cenach dla wybranej organizacji.
 
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-your-billing-account-type"></a>Sprawdzanie typu konta rozliczeniowego
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

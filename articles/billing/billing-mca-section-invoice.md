@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ba2a274397aa1941ef2be03ce97b0f0c9ce96a31
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 77dd8a5e54697a37a2039238ecdedb3e2a2fa326
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709564"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375476"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Tworzenie sekcji na fakturze w celu organizacji kosztów
 
@@ -54,6 +54,6 @@ Jeśli potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://port
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Tworzenie dodatkowej subskrypcji platformy Azure dla umowy klienta firmy Microsoft](billing-mca-create-subscription.md)
-- [Nadawanie innym użytkownikom uprawnień do tworzenia subskrypcji platformy Azure](billing-mca-create-subscription.md#give-others-permission)
+- [Tworzenie dodatkowej subskrypcji platformy Azure dla Umowy klienta firmy Microsoft](billing-mca-create-subscription.md)
+- [Zarządzanie rolami rozliczeniowymi w witrynie Azure Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 - [Uzyskiwanie własności rozliczeń subskrypcji platformy Azure od użytkowników z innych kont rozliczeniowych](billing-mca-request-billing-ownership.md)

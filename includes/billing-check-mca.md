@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: d163c88469ec767c8e0d18f5978ecb61f7997c8b
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ea7add9277dde79d0dd2bf960d287f3aba0c3df9
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490343"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375417"
 ---
 Sprawdź typ umowy, aby określić, czy masz dostęp do konta rozliczeniowego umowy klienta firmy Microsoft.
  
@@ -23,7 +23,7 @@ Sprawdź typ umowy, aby określić, czy masz dostęp do konta rozliczeniowego um
  
     ![Zrzut ekranu przedstawiający umowę klienta firmy Microsoft na stronie właściwości](./media/billing-check-mca/billing-mca-property.png)
  
-4. Jeśli masz dostęp do wielu zakresów rozliczeń, sprawdź typ w kolumnie Konto rozliczeniowe. Masz dostęp do konta rozliczeniowego umowy klienta firmy Microsoft, jeśli typ konta rozliczeniowego w dowolnym z Twoich zakresów to **Umowa klienta firmy Microsoft**.
+4. Jeśli masz dostęp do wielu zakresów rozliczeniowych, sprawdź typ w kolumnie konta rozliczeniowego. Masz dostęp do konta rozliczeniowego umowy klienta firmy Microsoft, jeśli typ konta rozliczeniowego w dowolnym z Twoich zakresów to **Umowa klienta firmy Microsoft**.
  
     ![Zrzut ekranu przedstawiający umowę klienta firmy Microsoft na stronie listy kont rozliczeniowych](./media/billing-check-mca/billing-mca-in-the-list.png)
  

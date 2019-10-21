@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806346"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390155"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
@@ -40,11 +40,11 @@ W przypadku maszyn wirtualnych z systemem Windows i usługi SQL Database koszty 
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Kto jest uprawniony do zakupu rezerwacji?
 
-Aby kupić plan, musisz mieć rolę właściciela subskrypcji w subskrypcji Enterprise (MS-AZR-0017P lub MS-AZR-0148P) albo subskrypcji z płatnością zgodnie z rzeczywistym użyciem (MS-AZR-0003P lub MS-AZR-0023P). Dostawy rozwiązań w chmurze mogą użyć witryny Azure Portal lub [Centrum partnerskiego](/partner-center/azure-reservations), aby zakupić rezerwacje platformy Azure.
+Aby kupić plan, musisz mieć rolę właściciela subskrypcji w subskrypcji Enterprise (MS-AZR-0017P lub MS-AZR-0148P), subskrypcji z płatnością zgodnie z rzeczywistym użyciem (MS-AZR-0003P lub MS-AZR-0023P) albo subskrypcji w ramach umowy klienta firmy Microsoft. Dostawy rozwiązań w chmurze mogą użyć witryny Azure Portal lub [Centrum partnerskiego](/partner-center/azure-reservations), aby zakupić rezerwacje platformy Azure.
 
 Klienci korzystający z umowy Enterprise Agreement (EA) mogą ograniczyć możliwość zakupów tylko do administratorów EA, wyłączając opcję **Dodaj wystąpienia zarezerwowane** w portalu EA. Administrator EA musi być właścicielem co najmniej jednej subskrypcji EA, aby mieć możliwość zakupu rezerwacji. Ta opcja jest przydatna w przypadku przedsiębiorstw, które chcą kupować rezerwacje dla różnych centrów kosztów za pośrednictwem centralnego zespołu. Po zakupie centralne zespoły mogą dodawać do rezerwacji właścicieli centrów kosztów. Właściciele mogą następnie ograniczyć rezerwację do swoich subskrypcji. Centralny zespół nie musi mieć dostępu właściciela subskrypcji do obszaru, w którym zakupiono rezerwację.
 
-Rabat na rezerwację dotyczy tylko zasobów skojarzonych z subskrypcjami zakupionymi w ramach umowy Enterprise, subskrypcji dostawcy rozwiązań w chmurze (CSP) i planów indywidualnych ze stawkami płatności zgodnie z rzeczywistym użyciem.
+Rabat na rezerwację dotyczy tylko zasobów skojarzonych z subskrypcjami zakupionymi w ramach umowy Enterprise, subskrypcji dostawcy usług w chmurze, umowy klienta firmy Microsoft i planów indywidualnych ze stawkami płatności zgodnie z rzeczywistym użyciem.
 
 ## <a name="scope-reservations"></a>Określanie zakresu rezerwacji
 
@@ -56,7 +56,7 @@ W przypadku określania zakresu grupy zasobów masz trzy opcje zakresu rezerwacj
 
 - **Zakres pojedynczej grupy zasobów** — rabat na rezerwację jest stosowany do odpowiednich zasobów tylko w wybranej grupie zasobów.
 - **Zakres pojedynczej subskrypcji** — rabat na rezerwację jest stosowany do odpowiednich zasobów w wybranej subskrypcji.
-- **Zakres udostępniony** — rabat na rezerwację jest stosowany do odpowiednich zasobów w kwalifikujących się subskrypcjach w ramach kontekstu rozliczeń. W przypadku klientów korzystających z umowy Enterprise Agreement kontekstem rozliczeń jest rejestracja. W przypadku indywidualnych subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem kontekst rozliczeń stanowią wszystkie kwalifikujące się subskrypcje utworzone przez administratora konta.
+- **Zakres udostępniony** — rabat na rezerwację jest stosowany do odpowiednich zasobów w kwalifikujących się subskrypcjach w ramach kontekstu rozliczeń. W przypadku klientów korzystających z umowy Enterprise Agreement kontekstem rozliczeń jest rejestracja. W przypadku klientów z umową klienta firmy Microsoft zakres rozliczeniowy to profil rozliczeniowy. W przypadku indywidualnych subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem kontekst rozliczeń stanowią wszystkie kwalifikujące się subskrypcje utworzone przez administratora konta.
 
 Podczas stosowania rabatów na rezerwację w stosunku do użycia platforma Azure przetwarza rezerwacje w następującej kolejności:
 
@@ -84,7 +84,7 @@ Zakres można zaktualizować w dowolnym momencie po zakupie rezerwacji. W tym ce
 
 Możesz monitorować użycie rezerwacji na wiele sposobów — przez witrynę Azure Portal lub za pośrednictwem interfejsów API albo danych użycia. Aby wyświetlić wszystkie rezerwacje, do których masz dostęp, przejdź do pozycji **Rezerwacje** w witrynie Azure Portal. Siatka rezerwacji pokazuje ostatni zarejestrowany procent wykorzystania dla rezerwacji. Kliknij rezerwację, aby wyświetlić długoterminowe wykorzystanie rezerwacji.
 
-Wykorzystanie rezerwacji możesz również sprawdzić przy użyciu [interfejsów API](billing-reservation-apis.md#see-reservation-usage) i [danych użycia](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks), jeśli jesteś klientem z umową Enterprise Agreement.
+Wykorzystanie rezerwacji możesz również sprawdzić przy użyciu [interfejsów API](billing-reservation-apis.md#see-reservation-usage) i [danych użycia](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks), jeśli jesteś klientem z umową Enterprise Agreement lub umową klienta firmy Microsoft.
 
 Jeśli zauważysz, że wykorzystanie rezerwacji w zakresie grupy zasobów jest niskie, możesz zaktualizować zakres rezerwacji do pojedynczej subskrypcji lub udostępnić go w ramach kontekstu rozliczeń. Można również podzielić rezerwację i zastosować uzyskane w ten sposób rezerwacje do różnych grup zasobów.
 
@@ -99,6 +99,7 @@ Zakres rezerwacji nie jest automatycznie aktualizowany w przypadku przenoszenia 
 Rabaty na rezerwacje dotyczą następujących kwalifikujących się subskrypcji i typów ofert.
 
 - Umowy Enterprise Agreement (oferty o numerach: MS-AZR-0017P i MS-AZR-0148P)
+- Subskrypcje w ramach umów klienta firmy Microsoft
 - Indywidualne plany ze stawką płatności zgodnie z rzeczywistym użyciem (oferty o numerach: MS-AZR-0003P i MS-AZR-0023P)
 - Subskrypcje CSP
 
@@ -106,7 +107,7 @@ Zasoby działające w ramach subskrypcji z innymi typami ofert nie otrzymują ra
 
 ## <a name="how-is-a-reservation-billed"></a>Jak jest rozliczana rezerwacja?
 
-Kosztem rezerwacji jest obciążana forma płatności powiązana z subskrypcją. W przypadku subskrypcji Enterprise koszt rezerwacji jest odejmowany od salda zobowiązania pieniężnego. Gdy saldo zobowiązania pieniężnego nie pokrywa kosztu rezerwacji, są naliczane opłaty za użycie nadwyżkowe. Jeśli masz subskrypcję z planu indywidualnego z płatnością zgodnie z rzeczywistym użyciem, karta kredytowa powiązana z kontem jest obciążana natychmiast w przypadku zakupów płatnych z góry. Płatności miesięczne są widoczne na fakturze, a karta kredytowa jest obciążana co miesiąc. W przypadku rozliczania z użyciem faktury opłaty pojawią się na następnej fakturze.
+Kosztem rezerwacji jest obciążana forma płatności powiązana z subskrypcją. Koszt rezerwacji jest odejmowany od salda zobowiązania pieniężnego, jeśli jest dostępne. Gdy saldo zobowiązania pieniężnego nie pokrywa kosztu rezerwacji, są naliczane opłaty za użycie nadwyżkowe. Jeśli masz subskrypcję z planu indywidualnego z płatnością zgodnie z rzeczywistym użyciem, karta kredytowa powiązana z kontem jest obciążana natychmiast w przypadku zakupów płatnych z góry. Płatności miesięczne są widoczne na fakturze, a karta kredytowa jest obciążana co miesiąc. W przypadku rozliczania z użyciem faktury opłaty pojawią się na następnej fakturze.
 
 ## <a name="how-reservation-discount-is-applied"></a>Jak jest stosowany rabat na rezerwacje
 
@@ -114,13 +115,13 @@ Rabat związany z rezerwacją dotyczy użycia zasobów pasującego do atrybutów
 
 Rabat na rezerwację jest dostępny na zasadzie „*wykorzystaj lub strać*”. Jeśli w ciągu jakiejś godziny nie będziesz mieć pasujących zasobów, utracisz ilość rezerwacji dla tej godziny. Niewykorzystanych godzin zarezerwowanych nie można przenieść na później.
 
-Po wyłączeniu zasobu rabat na rezerwację automatycznie stosuje się do innego pasującego zasobu w określonym zakresie. Jeśli w określonym zakresie nie uda się znaleźć pasujących zasobów, zarezerwowane godziny zostaną *utracone*.
+Po wyłączeniu zasobu rabat za rezerwację automatycznie stosuje się do innego pasującego zasobu w określonym zakresie. Jeśli w określonym zakresie nie uda się znaleźć pasujących zasobów, zarezerwowane godziny zostaną *utracone*.
 
 Na przykład możesz później utworzyć zasób i dopasować go do rezerwacji, która jest niedostatecznie wykorzystywana. Rabat na rezerwację zostanie automatycznie zastosowany do nowego pasującego zasobu.
 
 Jeśli maszyny wirtualne są uruchomione w różnych subskrypcjach w ramach rejestracji/konta, wybierz zakres jako udostępniony. Zakres udostępniony umożliwia stosowanie rabatu na rezerwację w różnych subskrypcjach. Zakres można zmienić po zakupie rezerwacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacjami platformy Azure](billing-manage-reserved-vm-instance.md).
 
-Rabat na rezerwację dotyczy tylko zasobów skojarzonych z subskrypcją Enterprise, CSP lub subskrypcjami ze stawkami płatności zgodnie z rzeczywistym użyciem. Zasoby działające w ramach subskrypcji z innymi typami ofert nie otrzymują rabatu na rezerwację.
+Rabat na rezerwację dotyczy tylko zasobów skojarzonych z subskrypcją Enterprise, umową klienta firmy Microsoft, dostawcą usług w chmurze lub subskrypcjami ze stawkami płatności zgodnie z rzeczywistym użyciem. Zasoby działające w ramach subskrypcji z innymi typami ofert nie otrzymują rabatu na rezerwację.
 
 ## <a name="when-the-reservation-term-expires"></a>Gdy okres rezerwacji wygaśnie
 
@@ -168,7 +169,7 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
     - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
     - [Understand reservation usage for your subscription with pay-as-you-go rates](billing-understand-reserved-instance-usage.md) (Informacje na temat użycia rezerwacji w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)
     - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)
-    - [Windows software costs not included with reservations](billing-reserved-instance-windows-software-costs.md) (Koszty oprogramowania systemu Windows nieuwzględniane w przypadku wystąpień zarezerwowanych)
+    - [Koszty oprogramowania systemu Windows nieuwzględniane w przypadku wystąpień zarezerwowanych](billing-reserved-instance-windows-software-costs.md)
     - [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](/partner-center/azure-reservations) (Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim)
 
 - Dowiedz się więcej na temat rezerwacji w przypadku planów usługi:
